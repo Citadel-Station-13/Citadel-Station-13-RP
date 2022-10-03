@@ -1,8 +1,20 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/turf/template_noop,
-/area/template_noop)
-"b" = (
+"at" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/turf/simulated/floor/wood/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"aC" = (
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/carpet/bcarpet/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"aG" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/effect/spider/stickyweb/dark,
+/turf/simulated/floor/tiled/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"bm" = (
 /obj/structure/sink{
 	dir = 4;
 	pixel_x = 12
@@ -15,43 +27,387 @@
 	},
 /turf/simulated/floor/tiled/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
-"d" = (
-/obj/structure/cable{
-	icon_state = "2-6"
+"bE" = (
+/obj/structure/table/rack,
+/obj/machinery/light/small{
+	dir = 4
 	},
+/obj/effect/floor_decal/rust,
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
-"g" = (
-/obj/machinery/door/airlock/external,
-/obj/effect/overlay/snow/airlock,
-/obj/structure/catwalk,
-/turf/simulated/floor/lythios43c/indoors,
-/area/submap/lythios/west_caves/buried_structure)
-"j" = (
-/obj/structure/table/hardwoodtable,
-/obj/machinery/microwave,
-/turf/simulated/floor/tiled/lythios43c,
-/area/submap/lythios/west_caves/buried_structure)
-"k" = (
+"bS" = (
+/obj/random/crystal/ice,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"cX" = (
 /obj/item/storage/briefcase/inflatable{
 	pixel_x = -2;
 	pixel_y = -2
 	},
 /obj/structure/table/rack,
-/turf/simulated/floor/lythios43c/indoors,
+/turf/simulated/floor/tiled/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
-"l" = (
-/obj/machinery/power/port_gen/pacman,
+"dv" = (
+/obj/structure/toilet{
+	pixel_y = 9
+	},
+/obj/effect/floor_decal/corner/white/bordercee,
+/turf/simulated/floor/tiled/monotile/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"dT" = (
 /obj/structure/cable{
-	icon_state = "0-10"
+	icon_state = "1-4"
+	},
+/obj/item/paper/crumpled{
+	info = "cold... so cold... I can hardly keep my hand strait. This is... my last will and... testim.... [i] the writing becomes mere scribbles at this point before trailing off the paper [/i]"
+	},
+/obj/item/pen{
+	pixel_x = -12
 	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
-"o" = (
-/obj/machinery/door/airlock/maintenance_hatch,
+"eU" = (
+/obj/structure/catwalk,
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
-"q" = (
+"fZ" = (
+/obj/structure/cable{
+	icon_state = "4-9"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"ge" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/wood/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"hm" = (
+/obj/effect/spider/stickyweb/dark,
+/turf/simulated/floor/tiled/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"hE" = (
+/obj/effect/spider/stickyweb/dark,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"hH" = (
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"ix" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"kE" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/overlay/snow/airlock,
+/obj/structure/catwalk,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"mq" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/obj/machinery/alarm/alarms_hidden{
+	dir = 1;
+	pixel_y = -24
+	},
+/mob/living/simple_mob/animal/giant_spider/frost,
+/turf/simulated/floor/wood/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"mK" = (
+/obj/structure/table/rack,
+/obj/item/storage/toolbox/electrical,
+/turf/simulated/floor/tiled/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"mS" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9
+	},
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/wood/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"oP" = (
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 24
+	},
+/obj/structure/closet/secure_closet/personal,
+/obj/item/clothing/suit/tajaran/furs,
+/turf/simulated/floor/carpet/arcadecarpet/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"oS" = (
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"pE" = (
+/turf/simulated/floor/carpet/bcarpet/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"pO" = (
+/obj/structure/bed/double/padded,
+/obj/item/bedsheet/browndouble,
+/turf/simulated/floor/carpet/arcadecarpet/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"sa" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"sP" = (
+/obj/structure/table/hardwoodtable,
+/obj/machinery/microwave,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"tC" = (
+/obj/machinery/door/airlock/external/glass,
+/obj/structure/catwalk,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"uo" = (
+/obj/structure/table/rack,
+/obj/item/storage/toolbox/mechanical,
+/turf/simulated/floor/tiled/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"vg" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/arcadecarpet/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"vZ" = (
+/obj/machinery/power/apc/alarms_hidden/north_bump{
+	start_charge = 0
+	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"wd" = (
+/turf/simulated/floor/tiled/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"wf" = (
+/obj/structure/bed/chair/sofa/black/left{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"xj" = (
+/obj/random/crystal/normal_ice,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"xE" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 10
+	},
+/obj/machinery/light{
+	dir = 8;
+	light_range = 12
+	},
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/wood/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"yA" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 5
+	},
+/turf/simulated/floor/wood/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"yC" = (
+/obj/structure/bed/chair/sofa/black/right{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"Bs" = (
+/obj/machinery/door/airlock,
+/turf/simulated/floor/tiled/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"Dw" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 6
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/wood/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"DR" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/overlay/snow/airlock,
+/obj/structure/catwalk,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"Ew" = (
+/obj/structure/fireplace{
+	pixel_y = 14
+	},
+/turf/simulated/floor/carpet/bcarpet/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"FW" = (
+/obj/effect/floor_decal/corner/white/border{
+	dir = 5
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"Id" = (
+/obj/structure/table/rack/steel,
+/obj/fiftyspawner/log,
+/obj/fiftyspawner/log,
+/obj/effect/debris/cleanable/cobweb,
+/turf/simulated/floor/carpet/bcarpet/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"Ij" = (
+/obj/structure/cable{
+	icon_state = "2-6"
+	},
+/obj/effect/decal/remains/tajaran,
+/obj/item/clothing/head/tajaran/scarf,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"JN" = (
+/obj/structure/table/wooden_reinforced,
+/obj/item/flashlight/lamp,
+/turf/simulated/floor/carpet/arcadecarpet/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"JP" = (
+/obj/structure/table/hardwoodtable,
+/turf/simulated/floor/tiled/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"Kw" = (
+/obj/structure/catwalk,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"KP" = (
+/obj/machinery/door/airlock{
+	name = "Bathroom"
+	},
+/turf/simulated/floor/tiled/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"Lj" = (
+/obj/machinery/door/airlock{
+	icon_state = "door_open"
+	},
+/obj/effect/spider/stickyweb/dark,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"Lm" = (
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 24
+	},
+/obj/machinery/pipedispenser,
+/turf/simulated/floor/tiled/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"MK" = (
+/obj/structure/undies_wardrobe,
+/turf/simulated/floor/carpet/arcadecarpet/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"Ns" = (
+/obj/spawner/window/reinforced/full,
+/obj/structure/curtain/black{
+	anchored = 1
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"Nv" = (
+/obj/structure/table/hardwoodtable,
+/obj/item/material/knife/butch,
+/turf/simulated/floor/tiled/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"Oz" = (
+/obj/effect/floor_decal/corner/white/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"OI" = (
+/obj/structure/grille/broken,
+/obj/effect/spider/stickyweb/dark,
+/obj/item/material/shard,
+/obj/item/material/shard,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"OM" = (
+/obj/structure/window/wooden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"OZ" = (
+/obj/machinery/alarm/alarms_hidden{
+	pixel_y = 24
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"Pt" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"PD" = (
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_caves)
+"PO" = (
+/obj/structure/table/wooden_reinforced,
+/obj/item/clothing/mask/smokable/pipe/cobpipe,
+/turf/simulated/floor/carpet/bcarpet/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"PV" = (
+/obj/structure/catwalk,
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"QE" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/simulated/floor/tiled/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"Rc" = (
+/turf/template_noop,
+/area/template_noop)
+"RB" = (
+/obj/structure/table/rack,
+/obj/fiftyspawner/rods,
+/obj/fiftyspawner/steel,
+/obj/fiftyspawner/glass,
+/turf/simulated/floor/tiled/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"Tz" = (
+/mob/living/simple_mob/animal/giant_spider/frost,
+/turf/simulated/floor/carpet/bcarpet/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"TF" = (
+/obj/structure/cable{
+	icon_state = "5-8"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"TY" = (
+/obj/structure/sink/kitchen{
+	pixel_y = 28
+	},
+/obj/structure/window/wooden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"Uc" = (
+/obj/effect/floor_decal/corner/white/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"UK" = (
 /obj/machinery/shower{
 	pixel_y = 18
 	},
@@ -69,568 +425,485 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
 	},
+/obj/random/soap,
 /turf/simulated/floor/tiled/monotile/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
-"r" = (
-/obj/structure/table/rack,
-/turf/simulated/floor/lythios43c/indoors,
-/area/submap/lythios/west_caves/buried_structure)
-"s" = (
-/turf/simulated/floor/lythios43c/indoors,
-/area/submap/lythios/west_caves/buried_structure)
-"t" = (
-/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
-/area/rift/surfacebase/outside/west_caves)
-"v" = (
-/obj/random/crystal/ice,
-/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
-/area/rift/surfacebase/outside/west_caves)
-"w" = (
-/obj/effect/floor_decal/corner/white/border{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/lythios43c,
-/area/submap/lythios/west_caves/buried_structure)
-"x" = (
-/turf/simulated/floor/carpet/arcadecarpet/lythios43c,
-/area/submap/lythios/west_caves/buried_structure)
-"y" = (
-/obj/machinery/door/airlock{
-	name = "Bathroom"
-	},
-/turf/simulated/floor/tiled/lythios43c,
-/area/submap/lythios/west_caves/buried_structure)
-"z" = (
-/obj/structure/cable{
-	icon_state = "5-8"
-	},
-/turf/simulated/floor/lythios43c/indoors,
-/area/submap/lythios/west_caves/buried_structure)
-"B" = (
-/obj/random/crystal/normal_ice,
-/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
-/area/rift/surfacebase/outside/west_caves)
-"D" = (
-/obj/structure/sink/kitchen{
-	pixel_y = 28
-	},
-/turf/simulated/floor/tiled/lythios43c,
-/area/submap/lythios/west_caves/buried_structure)
-"E" = (
-/turf/simulated/floor/tiled/lythios43c,
-/area/submap/lythios/west_caves/buried_structure)
-"G" = (
-/obj/effect/floor_decal/corner/white/border{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/lythios43c,
-/area/submap/lythios/west_caves/buried_structure)
-"H" = (
-/obj/structure/table/hardwoodtable,
-/turf/simulated/floor/tiled/lythios43c,
-/area/submap/lythios/west_caves/buried_structure)
-"I" = (
-/obj/structure/toilet{
-	pixel_y = 9
-	},
-/obj/effect/floor_decal/corner/white/bordercee,
-/turf/simulated/floor/tiled/monotile/lythios43c,
-/area/submap/lythios/west_caves/buried_structure)
-"M" = (
-/turf/simulated/wall/lythios43c,
-/area/submap/lythios/west_caves/buried_structure)
-"N" = (
-/obj/structure/cable{
-	icon_state = "4-9"
-	},
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/lythios43c/indoors,
-/area/submap/lythios/west_caves/buried_structure)
-"O" = (
-/obj/machinery/door/airlock/external/glass,
-/obj/structure/catwalk,
-/turf/simulated/floor/lythios43c/indoors,
-/area/submap/lythios/west_caves/buried_structure)
-"P" = (
-/obj/structure/table/hardwoodtable,
-/obj/item/material/knife/butch,
-/turf/simulated/floor/tiled/lythios43c,
-/area/submap/lythios/west_caves/buried_structure)
-"Q" = (
-/obj/machinery/door/airlock,
-/turf/simulated/floor/tiled/lythios43c,
-/area/submap/lythios/west_caves/buried_structure)
-"U" = (
-/obj/effect/floor_decal/corner/white/border{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/lythios43c,
-/area/submap/lythios/west_caves/buried_structure)
-"V" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/lythios43c/indoors,
-/area/submap/lythios/west_caves/buried_structure)
-"W" = (
-/obj/structure/cable{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/lythios43c/indoors,
-/area/submap/lythios/west_caves/buried_structure)
-"X" = (
-/obj/machinery/power/apc/alarms_hidden/north_bump,
-/obj/structure/cable{
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/lythios43c/indoors,
-/area/submap/lythios/west_caves/buried_structure)
-"Y" = (
-/obj/spawner/window/reinforced/full,
-/turf/simulated/floor/lythios43c/indoors,
-/area/submap/lythios/west_caves/buried_structure)
-"Z" = (
+"VD" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /turf/simulated/floor/tiled/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
+"Wx" = (
+/turf/simulated/wall/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"WK" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	icon_state = "door_locked"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"XI" = (
+/obj/machinery/power/port_gen/pacman,
+/obj/structure/cable{
+	icon_state = "0-10"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"XR" = (
+/turf/simulated/floor/carpet/arcadecarpet/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"YB" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/wood/lythios43c,
+/area/submap/lythios/west_caves/buried_structure)
+"YM" = (
+/mob/living/simple_mob/animal/giant_spider/frost,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
+"Zu" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/lythios43c/indoors,
+/area/submap/lythios/west_caves/buried_structure)
 
 (1,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
 "}
 (2,1,1) = {"
-a
-a
-M
-M
-M
-M
-M
-M
-M
-M
-M
-M
-M
-t
-v
-t
-a
-a
-a
-a
+Rc
+Rc
+Wx
+Wx
+Wx
+Wx
+Wx
+Wx
+Wx
+Wx
+Wx
+Wx
+Wx
+PD
+bS
+PD
+Rc
+Rc
+Rc
+Rc
 "}
 (3,1,1) = {"
-a
-a
-M
-H
-E
-E
-E
-M
-x
-x
-x
-x
-M
-t
-t
-t
-a
-a
-a
-a
+Rc
+Rc
+Wx
+JP
+wd
+wd
+mS
+xE
+Wx
+oP
+XR
+MK
+Wx
+PD
+PD
+PD
+Rc
+Rc
+Rc
+Rc
 "}
 (4,1,1) = {"
-a
-a
-M
-H
-E
-E
-E
-Q
-x
-x
-x
-x
-M
-B
-t
-t
-t
-v
-a
-a
+Rc
+Rc
+Wx
+JP
+wd
+wd
+at
+ge
+Bs
+XR
+XR
+XR
+Ns
+xj
+PD
+PD
+PD
+bS
+Rc
+Rc
 "}
 (5,1,1) = {"
-a
-a
-M
-P
-E
-E
-E
-M
-x
-x
-x
-x
-M
-t
-t
-t
-t
-t
-a
-a
+Rc
+Rc
+Wx
+Nv
+wd
+wd
+at
+YB
+Wx
+vg
+XR
+XR
+Ns
+PD
+PD
+PD
+PD
+PD
+Rc
+Rc
 "}
 (6,1,1) = {"
-a
-a
-M
-j
-E
-E
-E
-M
-x
-x
-x
-x
-M
-t
-v
-t
-t
-t
-a
-a
+Rc
+Rc
+Wx
+sP
+wd
+wd
+at
+YB
+Wx
+pO
+JN
+XR
+Wx
+PD
+bS
+PD
+PD
+PD
+Rc
+Rc
 "}
 (7,1,1) = {"
-a
-a
-M
-Z
-E
-E
-E
-M
-M
-M
-M
-y
-M
-t
-t
-t
-B
-t
-B
-a
+Rc
+Rc
+Wx
+VD
+wd
+wd
+at
+mq
+Wx
+Wx
+Wx
+KP
+Wx
+PD
+PD
+PD
+xj
+PD
+xj
+Rc
 "}
 (8,1,1) = {"
-a
-a
-M
-D
-E
-E
-E
-E
-M
-q
-U
-G
-M
-t
-t
-t
-t
-t
-t
-a
+Rc
+Rc
+Wx
+TY
+OM
+OM
+at
+YB
+Wx
+UK
+Uc
+Oz
+Wx
+PD
+PD
+PD
+PD
+PD
+PD
+Rc
 "}
 (9,1,1) = {"
-a
-a
-M
-E
-E
-E
-E
-E
-M
-I
-w
-b
-M
-t
-t
-t
-t
-t
-t
-a
+Rc
+Rc
+Wx
+Id
+wf
+yC
+at
+YB
+Wx
+dv
+FW
+bm
+Wx
+PD
+PD
+PD
+PD
+PD
+PD
+Rc
 "}
 (10,1,1) = {"
-a
-a
-M
-E
-E
-E
-E
-E
-M
-M
-M
-M
-M
-t
-t
-t
-v
-t
-B
-a
+Rc
+Rc
+Wx
+pE
+pE
+Tz
+at
+YB
+Wx
+Wx
+Wx
+Wx
+Wx
+ix
+PD
+PD
+bS
+PD
+xj
+Rc
 "}
 (11,1,1) = {"
-a
-a
-M
-E
-E
-E
-E
-E
-O
-V
-V
-V
-g
-t
-B
-t
-t
-t
-t
-a
+Rc
+Rc
+Wx
+Ew
+pE
+pE
+at
+YB
+tC
+eU
+Kw
+PV
+DR
+PD
+xj
+PD
+PD
+PD
+PD
+Rc
 "}
 (12,1,1) = {"
-a
-a
-M
-E
-E
-E
-E
-E
-O
-V
-V
-V
-g
-t
-t
-t
-t
-B
-a
-a
+Rc
+Rc
+Wx
+aC
+sa
+PO
+at
+YB
+tC
+eU
+eU
+PV
+kE
+PD
+PD
+PD
+PD
+xj
+Rc
+Rc
 "}
 (13,1,1) = {"
-a
-a
-M
-M
-M
-M
-E
-E
-M
-M
-M
-M
-M
-t
-t
-t
-t
-t
-a
-a
+Rc
+Rc
+Wx
+Wx
+Wx
+Wx
+yA
+Dw
+Wx
+Wx
+Wx
+Wx
+Wx
+ix
+PD
+PD
+PD
+PD
+Rc
+Rc
 "}
 (14,1,1) = {"
-a
-a
-M
-d
-W
-M
-Q
-M
-M
-s
-s
-s
-M
-s
-t
-t
-t
-t
-a
-a
+Rc
+Rc
+Wx
+Ij
+dT
+Wx
+Lj
+Wx
+Wx
+Lm
+QE
+aG
+Wx
+PD
+PD
+PD
+PD
+PD
+Rc
+Rc
 "}
 (15,1,1) = {"
-a
-a
-M
-X
-N
-M
-s
-s
-s
-s
-s
-s
-Y
-s
-t
-t
-B
-t
-a
-a
+Rc
+Rc
+Wx
+vZ
+fZ
+Wx
+hH
+hH
+Zu
+hH
+hH
+hE
+OI
+Pt
+PD
+PD
+xj
+PD
+Rc
+Rc
 "}
 (16,1,1) = {"
-a
-a
-M
-s
-z
-o
-s
-s
-s
-s
-s
-s
-M
-s
-v
-t
-t
-a
-a
-a
+Rc
+Rc
+Wx
+OZ
+TF
+WK
+hH
+YM
+hH
+Pt
+hH
+hE
+oS
+hH
+bS
+PD
+PD
+Rc
+Rc
+Rc
 "}
 (17,1,1) = {"
-a
-a
-M
-l
-r
-M
-s
-r
-k
-r
-r
-s
-M
-t
-t
-t
-a
-a
-a
-a
+Rc
+Rc
+Wx
+XI
+bE
+Wx
+wd
+uo
+cX
+mK
+RB
+hm
+Wx
+PD
+PD
+PD
+Rc
+Rc
+Rc
+Rc
 "}
 (18,1,1) = {"
-a
-a
-M
-M
-M
-M
-M
-M
-M
-M
-M
-M
-M
-B
-a
-a
-a
-a
-a
-a
+Rc
+Rc
+Wx
+Wx
+Wx
+Wx
+Wx
+Wx
+Wx
+Wx
+Wx
+Wx
+Wx
+xj
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
 "}
 (19,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
 "}
 (20,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
+Rc
 "}

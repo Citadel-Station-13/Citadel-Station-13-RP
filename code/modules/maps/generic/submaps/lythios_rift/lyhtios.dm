@@ -59,12 +59,19 @@
 
 /datum/map_template/submap/level_specific/rift/west_caves/buried_structure_1
 	name = "Buried Structure 1"
-	desc = "A buried Structure"
+	desc = "A buried Structure. Beware of spiders"
 	suffix = "west_caves_buriedstructure_1.dmm"
 	template_group = "Buried Structure"
 	fixed_orientation = TRUE
-	cost = 10
+	cost = 5
 
+/datum/map_template/submap/level_specific/rift/west_caves/buried_structure_2
+	name = "Buried Structure 2"
+	desc = "A buried Structure. Someone abandoned this construction project"
+	suffix = "west_caves_buriedstructure_2.dmm"
+	template_group = "Buried Structure"
+	fixed_orientation = TRUE
+	cost = 5
 
 /datum/map_template/submap/level_specific/rift/west_caves/west_caves_small_crystal
 	name = "Crystal 1"

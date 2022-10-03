@@ -23,6 +23,10 @@
 /obj/random/triumph,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/space)
+"lX" = (
+/obj/structure/girder/displaced,
+/turf/space/basic,
+/area/space)
 "mC" = (
 /obj/machinery/crystal/lava,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
@@ -87,8 +91,15 @@
 /obj/machinery/door/airlock/external,
 /turf/space/basic,
 /area/space)
+"yj" = (
+/obj/structure/girder,
+/turf/space/basic,
+/area/space)
 "yR" = (
 /turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
+/area/space)
+"zU" = (
+/turf/simulated/floor/wood/lythios43c,
 /area/space)
 "Au" = (
 /turf/simulated/floor/tiled/lythios43c,
@@ -425,7 +436,7 @@ xi
 AG
 gc
 xu
-xu
+yj
 RW
 xu
 xu
@@ -447,7 +458,7 @@ mZ
 AG
 xu
 xu
-xu
+lX
 RW
 xu
 xu
@@ -515,8 +526,8 @@ bx
 bx
 pm
 pm
-xu
-xu
+zU
+zU
 xu
 xu
 xu
@@ -537,8 +548,8 @@ bx
 bx
 pm
 pm
-xu
-xu
+zU
+zU
 xu
 xu
 xu

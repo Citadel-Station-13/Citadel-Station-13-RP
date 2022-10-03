@@ -562,6 +562,13 @@
 /obj/machinery/light/flamp/noshade,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
+"nK" = (
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -25
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/quartermaster/belterdock)
 "nN" = (
 /turf/simulated/wall,
 /area/rift/facility/interior/undergound2)
@@ -1344,6 +1351,9 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
+"MI" = (
+/turf/simulated/mineral/icerock/ignore_cavegen/lythios43c,
+/area/rift/surfacebase/outside/west_deep/submap_seedzone)
 "MM" = (
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/exterior/bunker/bottom)
@@ -2019,154 +2029,154 @@ XQ
 XQ
 XQ
 XQ
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 sN
 "}
 (3,1,1) = {"
@@ -2360,7 +2370,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (4,1,1) = {"
@@ -2554,7 +2564,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (5,1,1) = {"
@@ -2748,7 +2758,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (6,1,1) = {"
@@ -2942,7 +2952,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (7,1,1) = {"
@@ -3136,7 +3146,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (8,1,1) = {"
@@ -3330,7 +3340,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (9,1,1) = {"
@@ -3524,7 +3534,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (10,1,1) = {"
@@ -3718,7 +3728,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (11,1,1) = {"
@@ -3912,7 +3922,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (12,1,1) = {"
@@ -4106,7 +4116,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (13,1,1) = {"
@@ -4300,7 +4310,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (14,1,1) = {"
@@ -4494,7 +4504,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (15,1,1) = {"
@@ -4688,7 +4698,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (16,1,1) = {"
@@ -4882,7 +4892,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (17,1,1) = {"
@@ -5076,7 +5086,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (18,1,1) = {"
@@ -5270,7 +5280,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (19,1,1) = {"
@@ -5464,7 +5474,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (20,1,1) = {"
@@ -5658,7 +5668,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (21,1,1) = {"
@@ -5852,7 +5862,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (22,1,1) = {"
@@ -6046,7 +6056,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (23,1,1) = {"
@@ -6240,7 +6250,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (24,1,1) = {"
@@ -6434,7 +6444,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (25,1,1) = {"
@@ -6628,7 +6638,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (26,1,1) = {"
@@ -6822,7 +6832,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (27,1,1) = {"
@@ -7016,7 +7026,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (28,1,1) = {"
@@ -7210,7 +7220,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (29,1,1) = {"
@@ -7404,7 +7414,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (30,1,1) = {"
@@ -7598,7 +7608,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (31,1,1) = {"
@@ -7792,7 +7802,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (32,1,1) = {"
@@ -7986,7 +7996,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (33,1,1) = {"
@@ -8180,7 +8190,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (34,1,1) = {"
@@ -8374,7 +8384,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (35,1,1) = {"
@@ -8568,7 +8578,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (36,1,1) = {"
@@ -8762,7 +8772,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (37,1,1) = {"
@@ -8956,7 +8966,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (38,1,1) = {"
@@ -9150,7 +9160,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (39,1,1) = {"
@@ -9344,7 +9354,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (40,1,1) = {"
@@ -9538,7 +9548,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (41,1,1) = {"
@@ -9732,7 +9742,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (42,1,1) = {"
@@ -9926,7 +9936,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (43,1,1) = {"
@@ -10120,7 +10130,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (44,1,1) = {"
@@ -10314,7 +10324,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (45,1,1) = {"
@@ -10508,7 +10518,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (46,1,1) = {"
@@ -10702,7 +10712,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (47,1,1) = {"
@@ -10896,7 +10906,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (48,1,1) = {"
@@ -11090,7 +11100,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (49,1,1) = {"
@@ -11284,7 +11294,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (50,1,1) = {"
@@ -11478,7 +11488,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (51,1,1) = {"
@@ -11672,7 +11682,7 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (52,1,1) = {"
@@ -11866,12 +11876,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (53,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -12060,12 +12070,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (54,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -12254,12 +12264,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (55,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -12448,12 +12458,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (56,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -12642,12 +12652,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (57,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -12836,12 +12846,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (58,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -13030,12 +13040,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (59,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -13224,12 +13234,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (60,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -13418,12 +13428,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (61,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -13612,12 +13622,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (62,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -13806,12 +13816,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (63,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -14000,12 +14010,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (64,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -14194,12 +14204,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (65,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -14388,12 +14398,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (66,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -14582,12 +14592,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (67,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -14776,12 +14786,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (68,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -14970,12 +14980,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (69,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -15164,12 +15174,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (70,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -15358,12 +15368,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (71,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -15552,12 +15562,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (72,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -15746,12 +15756,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (73,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -15940,12 +15950,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (74,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -16134,12 +16144,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (75,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -16328,12 +16338,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (76,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -16522,12 +16532,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (77,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -16716,12 +16726,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (78,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -16910,12 +16920,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (79,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -17104,12 +17114,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (80,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -17298,12 +17308,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (81,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -17492,12 +17502,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (82,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -17686,12 +17696,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (83,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -17880,12 +17890,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (84,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -18074,12 +18084,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (85,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -18268,12 +18278,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (86,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -18462,12 +18472,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (87,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -18656,12 +18666,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (88,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -18850,12 +18860,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (89,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -19044,12 +19054,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (90,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -19238,12 +19248,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (91,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -19432,12 +19442,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (92,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -19626,12 +19636,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (93,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -19820,12 +19830,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (94,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -20014,12 +20024,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (95,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -20208,12 +20218,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (96,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -20402,12 +20412,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (97,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -20596,12 +20606,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (98,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -20790,12 +20800,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (99,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -20984,12 +20994,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (100,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -21178,12 +21188,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (101,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -21372,12 +21382,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (102,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -21566,12 +21576,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (103,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -21760,12 +21770,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (104,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -21954,12 +21964,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (105,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -22148,12 +22158,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (106,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -22342,12 +22352,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (107,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -22536,12 +22546,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (108,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -22730,12 +22740,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (109,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -22924,12 +22934,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (110,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -23118,12 +23128,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (111,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -23312,12 +23322,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (112,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -23506,12 +23516,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (113,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -23700,12 +23710,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (114,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -23894,12 +23904,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (115,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -24088,12 +24098,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (116,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -24282,12 +24292,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (117,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -24476,12 +24486,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (118,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -24670,12 +24680,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (119,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -24864,12 +24874,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (120,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -25058,12 +25068,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (121,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -25252,12 +25262,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (122,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -25446,12 +25456,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (123,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -25640,12 +25650,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (124,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -25834,12 +25844,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (125,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -26028,12 +26038,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (126,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -26222,12 +26232,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (127,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -26416,12 +26426,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (128,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -26610,12 +26620,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (129,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -26804,12 +26814,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (130,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -26998,12 +27008,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (131,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -27192,12 +27202,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (132,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -27386,12 +27396,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (133,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -27580,12 +27590,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (134,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -27774,12 +27784,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (135,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -27968,12 +27978,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (136,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -28162,12 +28172,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (137,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -28356,12 +28366,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (138,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -28550,12 +28560,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (139,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -28744,12 +28754,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (140,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -28938,12 +28948,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (141,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -29132,12 +29142,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (142,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -29326,12 +29336,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (143,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -29520,12 +29530,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (144,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -29714,12 +29724,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (145,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -29908,12 +29918,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (146,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -30102,12 +30112,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (147,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -30296,12 +30306,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (148,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -30490,12 +30500,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (149,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -30684,12 +30694,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (150,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -30878,12 +30888,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (151,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -31072,12 +31082,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (152,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -31266,12 +31276,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (153,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -31460,12 +31470,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (154,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -31654,12 +31664,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (155,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -31848,12 +31858,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (156,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -32042,12 +32052,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (157,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -32236,12 +32246,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (158,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -32430,12 +32440,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (159,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -32624,12 +32634,12 @@ WW
 WW
 WW
 WW
-so
+XQ
 sN
 "}
 (160,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -32817,13 +32827,13 @@ WW
 WW
 WW
 WW
-WW
-so
+MI
+XQ
 sN
 "}
 (161,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -33011,13 +33021,13 @@ WW
 WW
 WW
 WW
-WW
-so
+MI
+XQ
 sN
 "}
 (162,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -33102,7 +33112,7 @@ ww
 Cl
 Cl
 bM
-Cl
+nK
 rn
 ky
 ky
@@ -33205,13 +33215,13 @@ WW
 WW
 WW
 WW
-WW
-so
+MI
+XQ
 sN
 "}
 (163,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -33399,13 +33409,13 @@ WW
 WW
 WW
 WW
-WW
-so
+MI
+XQ
 sN
 "}
 (164,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -33593,13 +33603,13 @@ WW
 WW
 WW
 WW
-WW
-so
+MI
+XQ
 sN
 "}
 (165,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -33787,13 +33797,13 @@ WW
 WW
 WW
 WW
-WW
-so
+MI
+XQ
 sN
 "}
 (166,1,1) = {"
 sN
-so
+XQ
 WW
 WW
 WW
@@ -33981,13 +33991,13 @@ WW
 WW
 WW
 WW
-WW
-so
+MI
+XQ
 sN
 "}
 (167,1,1) = {"
 sN
-so
+XQ
 so
 so
 so
@@ -34175,13 +34185,13 @@ WW
 WW
 WW
 WW
-WW
-so
+MI
+XQ
 sN
 "}
 (168,1,1) = {"
 sN
-so
+XQ
 so
 so
 so
@@ -34369,13 +34379,13 @@ WW
 WW
 WW
 WW
-WW
-so
+MI
+XQ
 sN
 "}
 (169,1,1) = {"
 sN
-so
+XQ
 so
 sN
 sN
@@ -34563,8 +34573,8 @@ WW
 WW
 WW
 WW
-WW
-so
+MI
+XQ
 sN
 "}
 (170,1,1) = {"
@@ -34757,8 +34767,8 @@ so
 so
 so
 so
-so
-so
+XQ
+XQ
 sN
 "}
 (171,1,1) = {"
@@ -34951,8 +34961,8 @@ so
 so
 so
 so
-so
-so
+XQ
+XQ
 sN
 "}
 (172,1,1) = {"
@@ -35145,8 +35155,8 @@ so
 so
 so
 so
-so
-so
+XQ
+XQ
 sN
 "}
 (173,1,1) = {"
