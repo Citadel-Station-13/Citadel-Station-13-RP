@@ -71,14 +71,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
  * Can equip supports some abstract slots but not others.
  */
 /datum/inventory_slot_meta
+	//! Intrinsics
 	/// slot name
 	var/name = "unknown"
-	/// player friendly name
-	var/display_name = "unknown"
-	/// player friendly preposition
-	var/display_preposition = "on"
-	/// is this a "plural" slot?
-	var/display_plural = FALSE
 	/// id
 	var/id
 	/// next id
@@ -89,24 +84,48 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/inventory_slot_flags = INV_SLOT_IS_RENDERED
 	/// display order - higher is upper. a <hr> is applied on 0.
 	var/sort_order = 0
-	/// always show on strip/force equip menu, or only show when full
-	var/always_show_on_strip_menu = TRUE
-	/// rendering slot key
-	var/render_key
+
+	//! HUD
 	/// our screen loc
 	var/hud_position
+
+	//! Grammar
+	/// player friendly name
+	var/display_name = "unknown"
+	/// player friendly preposition
+	var/display_preposition = "on"
+	/// is this a "plural" slot?
+	var/display_plural = FALSE
+
+	//! Equip Checks
 	/// equip checks to use
 	var/slot_equip_checks = NONE
 	/// slot flags required to have if checking
 	var/slot_flags_required = NONE
 	/// slot flags forbidden to have if checking
 	var/slot_flags_forbidden = NONE
+
+	//! Stripping
+	/// always show on strip/force equip menu, or only show when full
+	var/always_show_on_strip_menu = TRUE
 	/// default INV_VIEW flags for stripping
 	var/default_strip_inv_view_flags = NONE
+
+	//! Rendering
+	/// rendering slot key
+	var/render_key
+	/// rendering default layer
+	var/render_layer
+	/// rendering icon state cache for default icons
+	VAR_PRIVATE/list/render_state_cache
+	/// rendering default icons by bodytype
+	VAR_PROTECTED/list/render_default_icons
 
 /datum/inventory_slot_meta/New()
 	if(!id && (inventory_slot_flags & INV_SLOT_ALLOW_RANDOM_ID))
 		id = "[++id_next]"
+
+	rebuild_rendering_caches()
 
 /datum/inventory_slot_meta/proc/_equip_check(obj/item/I, mob/wearer, mob/user, flags)
 	if(slot_equip_checks & SLOT_EQUIP_CHECK_USE_FLAGS)
@@ -132,6 +151,26 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 /datum/inventory_slot_meta/proc/strip_obfuscation_check(obj/item/equipped, mob/wearer, mob/user)
 	return default_strip_inv_view_flags
 
+/datum/inventory_slot_meta/proc/rebuild_rendering_caches()
+	PROTECTED_PROC(TRUE) // if you think you need this outside you should rethink
+	render_state_cache = list()
+	for(var/bodytype_str in render_default_icons)
+		render_default_icons[bodytype_str] = isicon(render_default_icons[bodytype_str])? render_default_icons[bodytype_str] : icon(render_default_icons[bodytype_str])
+		if(!isicon(render_default_icons[bodytype_str]))
+			stack_trace("invalid icon in cache for bodytype [bodytype_str]; discarding")
+			render_default_icons -= bodytype_str
+			continue
+		render_state_cache[bodytype_str] = icon_states(render_default_icons[bodytype_str])
+
+/**
+ * returns icon if found in defaults, null if not
+ */
+/datum/inventory_slot_meta/proc/resolve_default_icon(bodytype, state)
+	var/bodytype_str = bodytype_to_string(bodytype)
+	if(!render_state_cache[bodytype_str]?[state])
+		return
+	return render_default_icons[bodytype_str]
+
 /datum/inventory_slot_meta/inventory
 	abstract_type = /datum/inventory_slot_meta/inventory
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
@@ -147,6 +186,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN
 	slot_flags_required = SLOT_BACK
+	render_default_icons = list(
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/back.dmi'
+	)
 
 /datum/inventory_slot_meta/inventory/uniform
 	name = "uniform"
@@ -159,6 +201,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_ICLOTHING
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
+	render_default_icons = list(
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/uniform.dmi'
+	)
 
 /datum/inventory_slot_meta/inventory/head
 	name = "head"
@@ -173,6 +218,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_HEAD
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
+	render_default_icons = list(
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/head.dmi'
+	)
 
 /datum/inventory_slot_meta/inventory/suit
 	name = "outerwear"
@@ -186,6 +234,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_OCLOTHING
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
+	render_default_icons = list(
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/suits.dmi'
+	)
 
 /datum/inventory_slot_meta/inventory/belt
 	name = "belt"
@@ -198,6 +249,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_BELT
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN
+	render_default_icons = list(
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/belt.dmi'
+	)
 
 /datum/inventory_slot_meta/inventory/pocket
 	abstract_type = /datum/inventory_slot_meta/inventory/pocket
@@ -239,6 +293,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_ID
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN
+	render_default_icons = list(
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/mob.dmi'
+	)
 
 /datum/inventory_slot_meta/inventory/shoes
 	name = "shoes"
@@ -251,6 +308,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_FEET
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
+	render_default_icons = list(
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/feet.dmi'
+	)
 
 /datum/inventory_slot_meta/inventory/gloves
 	name = "gloves"
@@ -263,6 +323,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_GLOVES
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
+	render_default_icons = list(
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/hands.dmi'
+	)
 
 /datum/inventory_slot_meta/inventory/glasses
 	name = "glasses"
@@ -275,6 +338,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_EYES
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
+	render_default_icons = list(
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/eyes.dmi'
+	)
 
 /datum/inventory_slot_meta/inventory/suit_storage
 	name = "suit storage"
@@ -301,6 +367,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	sort_order = 9500
 	abstract_type = /datum/inventory_slot_meta/inventory/ears
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
+	render_default_icons = list(
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/ears.dmi'
+	)
 
 /datum/inventory_slot_meta/inventory/ears/left
 	name = "left ear"
@@ -332,6 +401,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	hud_position = ui_mask
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_MASK
+	render_default_icons = list(
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/mask.dmi'
+	)
 
 /datum/inventory_slot_meta/restraints
 	sort_order = -250
@@ -346,6 +418,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_name = "hands"
 	display_preposition = "around"
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
+	render_default_icons = list(
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/mob.dmi'
+	)
 
 /datum/inventory_slot_meta/restraints/handcuffs/allow_equip(obj/item/I, mob/wearer, mob/user, force)
 	return istype(I, /obj/item/handcuffs) && !istype(I, /obj/item/handcuffs/legcuffs)
@@ -357,6 +432,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_name = "legs"
 	display_preposition = "around"
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
+	render_default_icons = list(
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/mob.dmi'
+	)
 
 /datum/inventory_slot_meta/restraints/legcuffs/allow_equip(obj/item/I, mob/wearer, mob/user, force)
 	return istype(I, /obj/item/handcuffs/legcuffs)
@@ -408,8 +486,20 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	name = "put in left hand"
 	display_name = "left hand"
 	display_preposition = "in"
+	id = SLOT_ID_LEFT_HAND
+	render_key = "left"
+	render_layer = L_HAND_LAYER
+	render_default_icons = list(
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/items/lefthand.dmi'
+	)
 
 /datum/inventory_slot_meta/abstract/right_hand
 	name = "put in right hand"
 	display_name = "right hand"
 	display_preposition = "in"
+	id = SLOT_ID_RIGHT_HAND
+	render_key = "right"
+	render_layer = R_HAND_LAYER
+	render_default_icons = list(
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/items/righthand.dmi'
+	)

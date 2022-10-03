@@ -1,23 +1,25 @@
-// bodytypes - they are flags for var storage, but should only be passed one at a time to rendering!
-/// normal human bodytype
+//! bodytypes - they are flags for var storage, but should only be passed one at a time to rendering!
+/// normal human bodytype (or generally everyone else)
 #define BODYTYPE_DEFAULT			(1<<0)
-/// teshari bodytype
+/// teshari bodytype (or generally tiny birds)
 #define BODYTYPE_TESHARI			(1<<2)
-/// adherent bodytype
+/// adherent bodytype (or generally giant serpent creatures)
 #define BODYTYPE_ADHERENT			(1<<3)
-/// unathi bodytype
+/// unathi bodytype (or generally lizard)
 #define BODYTYPE_UNATHI				(1<<4)
-/// tajaran bodytype
+/// tajaran bodytype (or generally cat)
 #define BODYTYPE_TAJARAN			(1<<5)
-/// vulp bodytype
+/// vulp bodytype (or generally foxes)
 #define BODYTYPE_VULPKANIN			(1<<6)
-/// skrell bodytype
+/// skrell bodytype (or generally weird fleshy fishpeople)
 #define BODYTYPE_SKRELL				(1<<7)
-/// sergal bodytype
+/// sergal bodytype (or generally cheese)
 #define BODYTYPE_SERGAL				(1<<8)
-/// akula bodytype
+/// akula bodytype (or generally shark)
 #define BODYTYPE_AKULA				(1<<9)
 
+// todo: what are we going to do with these?
+/*
 /// has snout - usually relevant for masks and headgear
 #define BODYTYPE_SNOUT				(1<<20)
 /// snake taur bodytype - usually relevant for hardsuits and similar
@@ -26,3 +28,38 @@
 #define BODYTYPE_TAUR_HORSE			(1<<22)
 /// digitigrade feet - usually relevant for leg covering gear
 #define BODYTYPE_DIGITIGRADE		(1<<23)
+*/
+
+//! bodytypes as strings
+#define BODYTYPE_STRING_DEFAULT "default"
+#define BODYTYPE_STRING_TESHARI "teshari"
+#define BODYTYPE_STRING_ADHERENT "adherent"
+#define BODYTYPE_STRING_UNATHI "unathi"
+#define BODYTYPE_STRING_TAJARAN "tajaran"
+#define BODYTYPE_STRING_VULPKANIN "vulpkanin"
+#define BODYTYPE_STRING_SKRELL "skrell"
+#define BODYTYPE_STRING_SERGAL "sergal"
+#define BODYTYPE_STRING_AKULA "akula"
+
+/proc/bodytype_to_string(bodytype)
+	switch(bodytype)
+		if(BODYTYPE_DEFAULT)
+			return BODYTYPE_STRING_DEFAULT
+		if(BODYTYPE_TESHARI)
+			return BODYTYPE_STRING_TESHARI
+		if(BODYTYPE_ADHERENT)
+			return BODYTYPE_STRING_ADHERENT
+		if(BODYTYPE_UNATHI)
+			return BODYTYPE_STRING_UNATHI
+		if(BODYTYPE_TAJARAN)
+			return BODYTYPE_STRING_TAJARAN
+		if(BODYTYPE_VULPKANIN)
+			return BODYTYPE_STRING_VULPKANIN
+		if(BODYTYPE_SKRELL)
+			return BODYTYPE_STRING_SKRELL
+		if(BODYTYPE_SERGAL)
+			return BODYTYPE_STRING_SKRELL
+		if(BODYTYPE_AKULA)
+			return BODYTYPE_STRING_AKULA
+		else
+			CRASH("unknown bodytype: [bodytype]")

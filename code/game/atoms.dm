@@ -33,6 +33,7 @@
 	/// The orbiter comopnent if we're being orbited.
 	var/datum/component/orbiter/orbiters
 
+//! Colors
 	/**
 	 * used to store the different colors on an atom
 	 *
@@ -66,9 +67,6 @@
 
 //! ## Chemistry
 	var/datum/reagents/reagents = null
-
-	//? replaced by OPENCONTAINER flags and atom/proc/is_open_container()
-	//var/chem_is_open_container = 0
 
 //! ## Detective Work
 	/// Used for the duplicate data points kept in the scanners.

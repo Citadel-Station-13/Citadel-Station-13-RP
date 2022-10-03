@@ -358,7 +358,7 @@
 			return sheet
 
 	//4: item's default icon
-	if(worn_icon)
+	if(!inhands && worn_icon)
 		return worn_icon
 
 	//5: provided default_icon

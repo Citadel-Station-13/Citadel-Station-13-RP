@@ -49,11 +49,7 @@
 /// do not show on strip panel unless it's occupied by an item
 #define INV_SLOT_STRIP_ONLY_REMOVES			(1<<8)
 
-/// Takes 40ds = 4s to strip someone.
-#define HUMAN_STRIP_DELAY		4 SECONDS
-/// Takes 2s to use a UI element in somebody else's hands.
-#define HUMAN_INTERACT_DELAY	2 SECONDS
-
+//! slot flags
 // Item inventory slot bitmasks.
 #define SLOT_OCLOTHING  (1<<0)
 #define SLOT_ICLOTHING  (1<<1)
@@ -76,6 +72,12 @@
 /// items with this can fit in holster no matter what
 // todo: this shouldn't be a slot flag wtf
 #define SLOT_HOLSTER	(1<<15)
+
+//! legacy
+/// Takes 40ds = 4s to strip someone.
+#define HUMAN_STRIP_DELAY		4 SECONDS
+/// Takes 2s to use a UI element in somebody else's hands.
+#define HUMAN_INTERACT_DELAY	2 SECONDS
 
 // Inventory slot strings.
 // since numbers cannot be used as associative list keys.
