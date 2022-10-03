@@ -660,10 +660,10 @@
 	flags_inv = HIDEJUMPSUIT | HIDETIE
 
 	item_icons = list(
-		slot_l_hand_str = 'icons/vore/custom_clothes_vr.dmi',
-		slot_r_hand_str = 'icons/vore/custom_clothes_vr.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/vore/custom_clothes_vr.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/vore/custom_clothes_vr.dmi',
 		)
-	item_state_slots = list(slot_r_hand_str = "aika_coat_mob_r", slot_l_hand_str = "aika_coat_mob_l")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "aika_coat_mob_r", SLOT_ID_LEFT_HAND = "aika_coat_mob_l")
 
 //Burrito Justice: Jayda Wilson
 /obj/item/clothing/under/oricon/utility/sysguard/medical/fluff

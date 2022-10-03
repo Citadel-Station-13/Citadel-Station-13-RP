@@ -82,8 +82,8 @@
 // Inventory slot strings.
 // since numbers cannot be used as associative list keys.
 //icon_back, icon_l_hand, etc would be much better names for these...
-#define slot_l_hand_str		"slot_l_hand"
-#define slot_r_hand_str		"slot_r_hand"
+#define SLOT_ID_LEFT_HAND		"slot_l_hand"
+#define SLOT_ID_RIGHT_HAND		"slot_r_hand"
 
 // rest got converted to typepath ids
 // one day i'll come for you, inhand icons.

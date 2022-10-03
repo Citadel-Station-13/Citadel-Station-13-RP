@@ -34,8 +34,8 @@
 	desc = "It's a NT blue ballcap with a NanoTrasen crest. It looks surprisingly sturdy."
 	icon_state = "fleetsoft"
 	item_state_slots = list(
-		slot_l_hand_str = "darkbluesoft",
-		slot_r_hand_str = "darkbluesoft",
+		SLOT_ID_LEFT_HAND = "darkbluesoft",
+		SLOT_ID_RIGHT_HAND = "darkbluesoft",
 		)
 	armor = list(melee = 10, bullet = 5, laser = 5, energy = 5, bomb = 5, bio = 0, rad = 0)
 
@@ -50,6 +50,6 @@
 	name = "security armor vest"
 	desc = "A Sturdy kevlar plate carrier with webbing attached."
 	icon_state = "webvest"
-	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	armor = list(melee = 50, bullet = 40, laser = 40, energy = 25, bomb = 25, bio = 0, rad = 0)
 	slowdown = 0.5

@@ -120,6 +120,10 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	VAR_PRIVATE/list/render_state_cache
 	/// rendering default icons by bodytype
 	VAR_PROTECTED/list/render_default_icons
+	/// rendering dim x
+	VAR_PRIVATE/list/render_dim_x_cache
+	/// rendering dim y
+	VAR_PRIVATE/list/render_dim_y_cache
 
 /datum/inventory_slot_meta/New()
 	if(!id && (inventory_slot_flags & INV_SLOT_ALLOW_RANDOM_ID))
@@ -154,27 +158,32 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 /datum/inventory_slot_meta/proc/rebuild_rendering_caches()
 	PROTECTED_PROC(TRUE) // if you think you need this outside you should rethink
 	render_state_cache = list()
+	render_dim_x_cache = list()
+	render_dim_y_cache = list()
 	for(var/bodytype_str in render_default_icons)
 		render_default_icons[bodytype_str] = isicon(render_default_icons[bodytype_str])? render_default_icons[bodytype_str] : icon(render_default_icons[bodytype_str])
 		if(!isicon(render_default_icons[bodytype_str]))
 			stack_trace("invalid icon in cache for bodytype [bodytype_str]; discarding")
 			render_default_icons -= bodytype_str
 			continue
-		render_state_cache[bodytype_str] = icon_states(render_default_icons[bodytype_str])
+		var/icon/I = render_default_icons[bodytype_str]
+		render_state_cache[bodytype_str] = icon_states(I)
+		render_dim_x_cache[bodytype_str] = I.Width()
+		render_dim_y_cache[bodytype_str] = I.Height()
 
 /**
- * returns icon if found in defaults, null if not
+ * returns (icon, dim_x, dim_y) if found in defaults, null if not
  */
-/datum/inventory_slot_meta/proc/resolve_default_icon(bodytype, state, mob/wearer, obj/item/equipped)
+/datum/inventory_slot_meta/proc/resolve_default_assets(bodytype, state, mob/wearer, obj/item/equipped)
 	var/bodytype_str = bodytype_to_string(bodytype)
 	if(!render_state_cache[bodytype_str]?[state])
 		return
-	return render_default_icons[bodytype_str]
+	return list(render_default_icons[bodytype_str], render_dim_x_cache[bodytype_str], render_dim_y_cache[bodytype_str])
 
 /**
  * returns layer
  */
-/datum/inventory_slot_meta/proc/resolve_default_layer(bodytype, state, mob/wearer, obj/item/equipped)
+/datum/inventory_slot_meta/proc/resolve_default_layer(bodytype, mob/wearer, obj/item/equipped)
 	if(!islist(render_layer))
 		return render_layer
 	var/index = 1

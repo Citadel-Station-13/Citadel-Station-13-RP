@@ -3,8 +3,8 @@
 	name = "shoes"
 	icon = 'icons/obj/clothing/shoes.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_shoes.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_shoes.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_shoes.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_shoes.dmi',
 		)
 	desc = "Comfortable-looking shoes."
 	gender = PLURAL //Carn: for grammarically correct text-parsing

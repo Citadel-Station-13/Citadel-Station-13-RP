@@ -21,7 +21,7 @@
 	name = "bee costume"
 	desc = "Bee the true Queen!"
 	icon_state = "bee"
-	item_state_slots = list(slot_r_hand_str = "bee", slot_l_hand_str = "bee")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bee", SLOT_ID_LEFT_HAND = "bee")
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
@@ -34,7 +34,7 @@
 	icon_state = "beehood"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-	item_state_slots = list(slot_r_hand_str = "bee", slot_l_hand_str = "bee") //Does not exist -S2-
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bee", SLOT_ID_LEFT_HAND = "bee") //Does not exist -S2-
 	body_parts_covered = HEAD
 
 /obj/item/clothing/mask/red_mask
@@ -95,7 +95,7 @@
 	icon_state = "blackberet"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-	item_state_slots = list(slot_r_hand_str = "blackberet", slot_l_hand_str = "blackberet")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blackberet", SLOT_ID_LEFT_HAND = "blackberet")
 	body_parts_covered = HEAD
 
 /obj/item/clothing/head/donator/woolhat //ckey vfivesix. delete this later
@@ -112,7 +112,7 @@
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_state = "carcharodon"
 	item_state = "carcharodon"
-	item_icons = list(slot_r_hand_str = 'icons/mob/inhands/clothing_right.dmi', slot_l_hand_str = 'icons/mob/inhands/clothing_left.dmi')
+	item_icons = list(SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/clothing_right.dmi', SLOT_ID_LEFT_HAND = 'icons/mob/inhands/clothing_left.dmi')
 	rolled_sleeves = -1
 	rolled_down = -1
 
@@ -137,7 +137,7 @@
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_state = "mantleofheaven"
 	item_state = "mantleofheaven"
-	item_icons = list(slot_r_hand_str = 'icons/mob/inhands/clothing_right.dmi', slot_l_hand_str = 'icons/mob/inhands/clothing_left.dmi')
+	item_icons = list(SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/clothing_right.dmi', SLOT_ID_LEFT_HAND = 'icons/mob/inhands/clothing_left.dmi')
 	rolled_sleeves = -1
 	rolled_down = -1
 

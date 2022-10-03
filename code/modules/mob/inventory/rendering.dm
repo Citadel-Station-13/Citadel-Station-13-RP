@@ -87,12 +87,13 @@
 
 	var/list/resolved = = resolve_worn_assets(mob/M, slot_meta, inhands, bodytype)
 
-	return _render_mob_appearance(M, slot_meta, inhands, bodytype, resolved[1], resolved[2], resolved[3])
+	return _render_mob_appearance(M, slot_meta, inhands, bodytype, resolved[1], resolved[2], resolved[3], resolved [4], resolved[5])
 
-/obj/item/proc/_render_mob_appearance(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype, icon_used, state_used, layer_used)
+/obj/item/proc/_render_mob_appearance(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype, icon_used, state_used, layer_used, dim_x, dim_y)
 	SHOULD_NOT_OVERRIDE(TRUE)
 	PRIVATE_PROC(TRUE)
-	var/mutable_appearance/MA = mutable_appearance(icon_used, state_used, layer_used, FLOAT_PLANE)
+	var/mutable_appearance/MA = mutable_appearance(icon_used, state_used, BODY_LAYER + layer_used, FLOAT_PLANE)
+	MA = center_appearance(MA, dim_x, dim_y)
 	var/list/additional = render_additional(MA, bodytype, inhands, slot_meta)
 	// todo: signal with (args, add)
 	MA = render_apply_overlays(MA, bodytype, inhands, slot_meta)
@@ -132,52 +133,75 @@
 	return MA
 
 /**
- * returns a tuple of (icon, state, layer)
+ * returns a tuple of (icon, state, layer, size_x, size_y)
  */
 /obj/item/proc/resolve_worn_assets(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
+	. = new /list(5)	// 5 tuple
 
-/// Worn icon generation for on-mob sprites
-/obj/item/proc/make_worn_icon(var/body_type,var/slot_id,var/inhands,var/default_icon,var/default_layer,var/icon/clip_mask = null)
-	//Get the required information about the base icon
-	var/icon/icon2use = get_worn_icon_file(body_type = body_type, slot_id = slot_id, default_icon = default_icon, inhands = inhands)
-	var/state2use = get_worn_icon_state(slot_id = slot_id)
-	var/layer2use = get_worn_layer(default_layer = default_layer)
 
+	//? state ; item_state_slots --> item_state --> icon_state
+	.[2] = (item_state_slots?[slot_meta.id]) || item_state || icon_state
+
+	//? icon, size
+	//* icon_override
+	if(icon_override)
+		.[1] = icon_override
+		if(inhands)
+			switch(slot_meta.id)
+				if(SLOT_ID_LEFT_HAND)
+					.[2] += "_l"
+				if(SLOT_ID_RIGHT_HAND)
+					.[2] += "_r"
+		.[4] = worn_x_dimension
+		.[5] = worn_y_dimension
+
+	//* species-specific sprite sheets
+	else if()
+	#warn god what the fuck
+
+	//* slot-specific sprite sheets
+	else if(item_icons?[slot_meta.id])
+		.[1] = item_icons[slot_meta.id]
+		.[4] = worn_x_dimension
+		.[5] = worn_y_dimension
+
+	//* item worn_icon override
+	else if(worn_icon && !inhands)
+		// todo: rework
+		.[1] = worn_icon
+		.[4] = worn_x_dimension
+		.[5] = worn_y_dimension
+
+	//* inventory slot defaults
+	else
+		var/list/resolved = slot_meta.resolve_default_assets(bodytype, .[2], M, src)
+		if(resolved)
+			.[1] = resolved[1]
+			.[4] = resolved[2]
+			.[5] = resolved[3]
+
+	//* our icon
+	if(!.[1])
+		.[1] = icon
+		.[4] = icon_dimension_x
+		.[5] = icon_dimension_y
+
+	//? layer ; wonr_layer --> slot defaults for the item in question
+	.[3] = worn_layer || slot_meta.resolve_default_layer(bodytype, M, src)
+
+
+//! legacy
 	//Snowflakey inhand icons in a specific slot
 	if(inhands && icon2use == icon_override)
 		switch(slot_id)
-			if(slot_r_hand_str)
+			if(SLOT_ID_RIGHT_HAND)
 				state2use += "_r"
-			if(slot_l_hand_str)
+			if(SLOT_ID_LEFT_HAND)
 				state2use += "_l"
 
-	//Generate the base onmob icon
-	var/icon/standing_icon = icon(icon = icon2use, icon_state = state2use)
-
-	if(!inhands)
-		apply_custom(standing_icon)		//Pre-image overridable proc to customize the thing
-		apply_addblends(icon2use,standing_icon)		//Some items have ICON_ADD blend shaders
-
-	var/image/standing = image(standing_icon)
-	standing = center_image(standing, inhands ? inhand_x_dimension : worn_x_dimension, inhands ? inhand_y_dimension : worn_y_dimension)
-	standing.alpha = alpha
-	standing.color = color
-	standing.layer = layer2use
-
-	//Apply any special features
-	if(!inhands)
-		apply_blood(standing)			//Some items show blood when bloodied
-		apply_accessories(standing)		//Some items sport accessories like webbing
-
-	//Return our icon
-	return standing
 
 //Returns the icon object that should be used for the worn icon
 /obj/item/proc/get_worn_icon_file(var/body_type,var/slot_id,var/default_icon,var/inhands)
-
-	//1: icon_override var
-	if(icon_override)
-		return icon_override
 
 	//2: species-specific sprite sheets (skipped for inhands)
 	if(LAZYLEN(sprite_sheets))
@@ -185,49 +209,6 @@
 		if(sheet && !inhands)
 			return sheet
 
-	//3: slot-specific sprite sheets
-	if(LAZYLEN(item_icons))
-		var/sheet = item_icons[slot_id]
-		if(sheet)
-			return sheet
-
-	//4: item's default icon
-	if(!inhands && worn_icon)
-		return worn_icon
-
-	//5: provided default_icon
-	if(default_icon)
-		return default_icon
-
-	//6: give up
-	return
-
-//Returns the state that should be used for the worn icon
-/obj/item/proc/get_worn_icon_state(var/slot_id)
-
-	//1: slot-specific sprite sheets
-	if(LAZYLEN(item_state_slots))
-		var/state = item_state_slots[slot_id]
-		if(state)
-			return state
-
-	//2: item_state variable
-	if(item_state)
-		return item_state
-
-	//3: icon_state variable
-	if(icon_state)
-		return icon_state
-
-/// Returns the layer that should be used for the worn icon (as a FLOAT_LAYER layer, so negative)
-/obj/item/proc/get_worn_layer(default_layer = 0)
-
-	//1: worn_layer variable
-	if(!isnull(worn_layer)) //Can be zero, so...
-		return BODY_LAYER+worn_layer
-
-	//2: your default
-	return BODY_LAYER+default_layer
 
 //! legacy
 //Apply the addblend blends onto the icon

@@ -2,8 +2,8 @@
 /obj/item/clothing/suit
 	icon = 'icons/obj/clothing/suits.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_suits.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_suits.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_suits.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_suits.dmi',
 		)
 	name = "suit"
 	var/fire_resist = T0C+100

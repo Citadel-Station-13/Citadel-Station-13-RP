@@ -315,7 +315,7 @@
 /obj/item/clothing/glasses/chameleon
 	name = "Optical Meson Scanner"
 	icon_state = "meson"
-	item_state_slots = list(slot_r_hand_str = "meson", slot_l_hand_str = "meson")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "meson", SLOT_ID_LEFT_HAND = "meson")
 	desc = "It looks like a plain set of mesons, but on closer inspection, it seems to have a small dial inside."
 	origin_tech = list(TECH_ILLEGAL = 3)
 	var/list/global/clothing_choices

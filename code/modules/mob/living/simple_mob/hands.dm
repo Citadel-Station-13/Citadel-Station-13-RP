@@ -19,8 +19,8 @@
 
 		//determine icon state to use
 		var/t_state
-		if(r_hand.item_state_slots && r_hand.item_state_slots[slot_r_hand_str])
-			t_state = r_hand.item_state_slots[slot_r_hand_str]
+		if(r_hand.item_state_slots && r_hand.item_state_slots[SLOT_ID_RIGHT_HAND])
+			t_state = r_hand.item_state_slots[SLOT_ID_RIGHT_HAND]
 		else if(r_hand.item_state)
 			t_state = r_hand.item_state
 		else
@@ -28,8 +28,8 @@
 
 		//determine icon to use
 		var/icon/t_icon
-		if(r_hand.item_icons && (slot_r_hand_str in r_hand.item_icons))
-			t_icon = r_hand.item_icons[slot_r_hand_str]
+		if(r_hand.item_icons && (SLOT_ID_RIGHT_HAND in r_hand.item_icons))
+			t_icon = r_hand.item_icons[SLOT_ID_RIGHT_HAND]
 		else if(r_hand.icon_override)
 			t_state += "_r"
 			t_icon = r_hand.icon_override
@@ -56,8 +56,8 @@
 
 		//determine icon state to use
 		var/t_state
-		if(l_hand.item_state_slots && l_hand.item_state_slots[slot_l_hand_str])
-			t_state = l_hand.item_state_slots[slot_l_hand_str]
+		if(l_hand.item_state_slots && l_hand.item_state_slots[SLOT_ID_LEFT_HAND])
+			t_state = l_hand.item_state_slots[SLOT_ID_LEFT_HAND]
 		else if(l_hand.item_state)
 			t_state = l_hand.item_state
 		else
@@ -65,8 +65,8 @@
 
 		//determine icon to use
 		var/icon/t_icon
-		if(l_hand.item_icons && (slot_l_hand_str in l_hand.item_icons))
-			t_icon = l_hand.item_icons[slot_l_hand_str]
+		if(l_hand.item_icons && (SLOT_ID_LEFT_HAND in l_hand.item_icons))
+			t_icon = l_hand.item_icons[SLOT_ID_LEFT_HAND]
 		else if(l_hand.icon_override)
 			t_state += "_l"
 			t_icon = l_hand.icon_override

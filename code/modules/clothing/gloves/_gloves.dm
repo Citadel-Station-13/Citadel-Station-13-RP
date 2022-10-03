@@ -2,8 +2,8 @@
 /obj/item/clothing/gloves
 	name = "gloves"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_gloves.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_gloves.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_gloves.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_gloves.dmi',
 		)
 	gender = PLURAL //Carn: for grammarically correct text-parsing
 	w_class = ITEMSIZE_SMALL

@@ -3,8 +3,8 @@
 	name = "mask"
 	icon = 'icons/obj/clothing/masks.dmi' //custom species support.
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_masks.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_masks.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_masks.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_masks.dmi',
 		)
 	body_parts_covered = HEAD
 	slot_flags = SLOT_MASK

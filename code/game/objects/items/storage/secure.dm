@@ -143,7 +143,7 @@
 	name = "secure briefcase"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "secure"
-	item_state_slots = list(slot_r_hand_str = "case", slot_l_hand_str = "case")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "case", SLOT_ID_LEFT_HAND = "case")
 	desc = "A large briefcase with a digital locking system."
 	force = 8.0
 	throw_speed = 1
@@ -185,7 +185,7 @@
 	slot_flags = SLOT_BACK
 	icon = 'icons/obj/clothing/backpack.dmi'
 	icon_state = "securev"
-	item_state_slots = list(slot_r_hand_str = "securev", slot_l_hand_str = "securev")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "securev", SLOT_ID_LEFT_HAND = "securev")
 	desc = "A large briefcase with a digital locking system and a magnetic attachment system."
 	force = 0
 	throw_speed = 1

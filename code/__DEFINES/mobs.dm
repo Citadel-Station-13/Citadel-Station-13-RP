@@ -1,7 +1,7 @@
 
 // These are used as the layers for the icons, as well as indexes in a list that holds onto them.
 // Technically the layers used are all -100+layer to make them FLOAT_LAYER overlays.
-//Human Overlays Indexes/////////
+//! Human Overlays Indexes/////////
 /// Mutations like fat, and lasereyes
 #define MUTATIONS_LAYER			1
 /// Skin things added by a call on species
@@ -70,6 +70,8 @@
 #define TARGETED_LAYER			33
 //! KEEP THIS UPDATED, should always equal the highest number here, used to initialize a list.
 #define TOTAL_LAYERS			33
+//! the offset used
+#define BODY_LAYER		-100
 //////////////////////////////////
 
 // Bitflags defining which status effects could be or are inflicted on a mob.
@@ -334,8 +336,6 @@
 #define VIS_SONAR			17
 ///Must be highest number from above.
 #define VIS_COUNT			17
-//Some mob icon layering defines
-#define BODY_LAYER		-100
 
 // Clothing flags, organized in roughly top-bottom
 #define EXAMINE_SKIPHELMET			0x0001

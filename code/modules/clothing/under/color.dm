@@ -13,7 +13,7 @@
 	name = "black jumpskirt"
 	desc = "A slimming black jumpskirt."
 	icon_state = "blackjumpskirt"
-	item_state_slots = list(slot_r_hand_str = "black", slot_l_hand_str = "black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black", SLOT_ID_LEFT_HAND = "black")
 
 /obj/item/clothing/under/color/blue
 	name = "blue jumpsuit"
@@ -78,14 +78,14 @@
 	name = "lightblue jumpsuit"
 	desc = "A light blue jumpsuit."
 	icon_state = "lightblue"
-	item_state_slots = list(slot_r_hand_str = "blue", slot_l_hand_str = "blue")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blue", SLOT_ID_LEFT_HAND = "blue")
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/color/aqua
 	name = "aqua jumpsuit"
 	desc = "An aqua jumpsuit."
 	icon_state = "aqua"
-	item_state_slots = list(slot_r_hand_str = "blue", slot_l_hand_str = "blue")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blue", SLOT_ID_LEFT_HAND = "blue")
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/color
@@ -98,14 +98,14 @@
 	name = "lightpurple jumpsuit"
 	desc = "A light purple jumpsuit."
 	icon_state = "lightpurple"
-	item_state_slots = list(slot_r_hand_str = "purple", slot_l_hand_str = "purple")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "purple", SLOT_ID_LEFT_HAND = "purple")
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/color/lightgreen
 	name = "lightgreen jumpsuit"
 	desc = "A light green jumpsuit."
 	icon_state = "lightgreen"
-	item_state_slots = list(slot_r_hand_str = "green", slot_l_hand_str = "green")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "green", SLOT_ID_LEFT_HAND = "green")
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/color/lightbrown
@@ -118,35 +118,35 @@
 	name = "brown jumpsuit"
 	desc = "A brown jumpsuit."
 	icon_state = "brown"
-	item_state_slots = list(slot_r_hand_str = "lightbrown", slot_l_hand_str = "lightbrown")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lightbrown", SLOT_ID_LEFT_HAND = "lightbrown")
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/color/yellowgreen
 	name = "yellowgreen jumpsuit"
 	desc = "A... yellow green jumpsuit?"
 	icon_state = "yellowgreen"
-	item_state_slots = list(slot_r_hand_str = "yellow", slot_l_hand_str = "yellow")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "yellow", SLOT_ID_LEFT_HAND = "yellow")
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/color/darkblue
 	name = "darkblue jumpsuit"
 	desc = "A dark blue jumpsuit."
 	icon_state = "darkblue"
-	item_state_slots = list(slot_r_hand_str = "blue", slot_l_hand_str = "blue")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blue", SLOT_ID_LEFT_HAND = "blue")
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/color/lightred
 	name = "lightred jumpsuit"
 	desc = "A light red jumpsuit."
 	icon_state = "lightred"
-	item_state_slots = list(slot_r_hand_str = "red", slot_l_hand_str = "red")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
 	rolled_sleeves = 0
 
 /obj/item/clothing/under/color/darkred
 	name = "darkred jumpsuit"
 	desc = "A dark red jumpsuit."
 	icon_state = "darkred"
-	item_state_slots = list(slot_r_hand_str = "red", slot_l_hand_str = "red")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
 	rolled_sleeves = 0
 
 //Colored Skirts

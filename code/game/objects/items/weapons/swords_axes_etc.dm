@@ -123,8 +123,8 @@
 	icon_state = "newspaper"
 	item_state = "newspaper"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 
 /obj/item/melee/disruptor
@@ -134,8 +134,8 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "armblade"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_material.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 			)
 	item_state = "armblade"
 	force = 15 // same force as a drill
@@ -166,8 +166,8 @@
 	edge = TRUE
 	icon_state = "embed_spike"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_material.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 			)
 	item_state = "switchblade_open"
 

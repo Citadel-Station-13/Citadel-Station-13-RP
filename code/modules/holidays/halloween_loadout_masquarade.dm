@@ -115,8 +115,8 @@
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_masks.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_masks.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_masks.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_masks.dmi'
 	)
 
 /datum/gear/seasonal/masquarade/syndicate/contractor_helmet
@@ -224,8 +224,8 @@
 	icon_state = "arm_blade"
 	icon = 'icons/antagonists/changeling/items/weapons.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/changeling/on_mob/left_hand.dmi',
-		slot_r_hand_str = 'icons/antagonists/changeling/on_mob/right_hand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/changeling/on_mob/left_hand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/changeling/on_mob/right_hand.dmi'
 	)
 
 /datum/gear/seasonal/masquarade/changeling/tentacle
@@ -237,8 +237,8 @@
 	icon_state = "tentacle"
 	icon = 'icons/antagonists/changeling/items/weapons.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/changeling/on_mob/left_hand.dmi',
-		slot_r_hand_str = 'icons/antagonists/changeling/on_mob/right_hand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/changeling/on_mob/left_hand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/changeling/on_mob/right_hand.dmi'
 	)
 
 /datum/gear/seasonal/masquarade/changeling/shield
@@ -250,8 +250,8 @@
 	icon_state = "ling_shield"
 	icon = 'icons/antagonists/changeling/items/weapons.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/changeling/on_mob/left_hand.dmi',
-		slot_r_hand_str = 'icons/antagonists/changeling/on_mob/right_hand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/changeling/on_mob/left_hand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/changeling/on_mob/right_hand.dmi'
 	)
 
 /**
@@ -319,8 +319,8 @@
 	icon = 'icons/antagonists/clockcult/items/slab.dmi'
 	icon_state = "clockwork_slab"
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/clockcult/on_mob/left_hand.dmi',
-		slot_r_hand_str = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/clockcult/on_mob/left_hand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
 	)
 
 /datum/gear/seasonal/masquarade/clockcult/spear
@@ -332,8 +332,8 @@
 	icon = 'icons/antagonists/clockcult/items/weapons.dmi'
 	icon_state = "ratvarian_spear"
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/clockcult/on_mob/left_hand.dmi',
-		slot_r_hand_str = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/clockcult/on_mob/left_hand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
 	)
 
 /datum/gear/seasonal/masquarade/clockcult/shield
@@ -345,8 +345,8 @@
 	icon = 'icons/antagonists/clockcult/items/weapons.dmi'
 	icon_state = "ratvarian_shield"
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/clockcult/on_mob/left_hand.dmi',
-		slot_r_hand_str = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/clockcult/on_mob/left_hand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
 	)
 
 /datum/gear/seasonal/masquarade/clockcult/claw
@@ -358,8 +358,8 @@
 	icon = 'icons/antagonists/clockcult/items/weapons.dmi'
 	icon_state = "brass_claw"
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/clockcult/on_mob/left_hand.dmi',
-		slot_r_hand_str = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/clockcult/on_mob/left_hand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
 	)
 
 /datum/gear/seasonal/masquarade/clockcult/visor
@@ -398,8 +398,8 @@
 	icon = 'icons/antagonists/cult/items/weapons.dmi'
 	icon_state = "bloodspear0"
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/cult/on_mob/left_hand.dmi',
-		slot_r_hand_str = 'icons/antagonists/cult/on_mob/right_hand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/cult/on_mob/left_hand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/cult/on_mob/right_hand.dmi'
 	)
 
 /datum/gear/seasonal/masquarade/cult/shield
@@ -411,8 +411,8 @@
 	icon = 'icons/antagonists/cult/items/weapons.dmi'
 	icon_state = "mirror_shield"
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/cult/on_mob/left_hand.dmi',
-		slot_r_hand_str = 'icons/antagonists/cult/on_mob/right_hand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/cult/on_mob/left_hand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/cult/on_mob/right_hand.dmi'
 	)
 
 /datum/gear/seasonal/masquarade/cult/hardsuit
@@ -580,8 +580,8 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/heretic/on_mob/left_hand_64.dmi',
-		slot_r_hand_str = 'icons/antagonists/heretic/on_mob/right_hand_64.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/heretic/on_mob/left_hand_64.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/heretic/on_mob/right_hand_64.dmi'
 	)
 
 /obj/item/toy/heretic_blade/ash

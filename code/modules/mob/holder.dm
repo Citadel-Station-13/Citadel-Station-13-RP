@@ -13,8 +13,8 @@
 
 	origin_tech = null
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_holder.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_holder.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_holder.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_holder.dmi',
 		)
 	pixel_y = 8
 	throw_range = 14
@@ -225,7 +225,7 @@
 
 /obj/item/holder/human
 	icon = 'icons/mob/holder_complex.dmi'
-	var/list/generate_for_slots = list(slot_l_hand_str, slot_r_hand_str, SLOT_ID_BACK)
+	var/list/generate_for_slots = list(SLOT_ID_LEFT_HAND, SLOT_ID_RIGHT_HAND, SLOT_ID_BACK)
 	slot_flags = SLOT_BACK
 
 /obj/item/holder/human/sync(var/mob/living/M)
