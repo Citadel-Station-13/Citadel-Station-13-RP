@@ -34,6 +34,7 @@
 /obj/structure/table/rack,
 /obj/item/storage/toolbox/emergency,
 /obj/item/pickaxe,
+/obj/item/shovel,
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
 /area/submap/lythios/west_caves/survival_cave1)
 "C" = (
@@ -44,7 +45,8 @@
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/submap/lythios/west_caves/survival_cave1)
 "I" = (
-/obj/machinery/crystal/lava,
+/obj/item/flame/lighter/zippo/taj,
+/obj/structure/table/woodentable,
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
 /area/submap/lythios/west_caves/survival_cave1)
 "L" = (
@@ -91,9 +93,9 @@ g
 n
 n
 n
-x
-x
 I
+x
+x
 n
 n
 n
@@ -131,7 +133,7 @@ x
 x
 x
 x
-I
+x
 n
 n
 "}
