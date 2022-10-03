@@ -80,13 +80,14 @@
 	/// dimensions of inhand sprites
 	var/inhand_y_dimension
 
-/obj/item/proc/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype)
+/obj/item/proc/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype = BODYTYPE_STRING_DEFAULT)
+	SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.
 	// determine if in hands
 	var/inhands = isnum(slot_id_or_hand_index)
 	var/datum/inventory_slot_meta/slot_meta
 	// resolve slot
 	if(inhands)
-		slot_meta = (inhands % 2)? resolve_inventory_slot_meta(/datum/inventory_slot_meta/abstract/right_hand : /datum/inventory_slot_meta/abstract/left_hand
+		slot_meta = resolve_inventory_slot_meta((inhands % 2)? /datum/inventory_slot_meta/abstract/right_hand : /datum/inventory_slot_meta/abstract/left_hand)
 	else
 		slot_meta = resolve_inventory_slot_meta(slot_id_or_hand_index)
 
@@ -95,8 +96,8 @@
 	return _render_mob_appearance(M, slot_meta, inhands, bodytype, resolved[WORN_DATA_ICON], resolved[WORN_DATA_STATE], resolved[WORN_DATA_LAYER], resolved [WORN_DATA_SIZE_X], resolved[WORN_DATA_SIZE_Y])
 
 /obj/item/proc/_render_mob_appearance(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype, icon_used, state_used, layer_used, dim_x, dim_y)
-	SHOULD_NOT_OVERRIDE(TRUE)
-	PRIVATE_PROC(TRUE)
+	SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.
+	PRIVATE_PROC(TRUE) // if you think you need to call this, rethink.
 	var/mutable_appearance/MA = mutable_appearance(icon_used, state_used, BODY_LAYER + layer_used, FLOAT_PLANE)
 	MA = center_appearance(MA, dim_x, dim_y)
 	var/list/additional = render_additional(MA, bodytype, inhands, slot_meta)
@@ -226,8 +227,8 @@
 		var/addblend_icon = icon("icon" = source_icon, "icon_state" = addblends)
 		standing_icon.Blend(addblend_icon, ICON_ADD)
 
-#undef WORN_DATA_ICON 1
-#undef WORN_DATA_STATE 2
-#undef WORN_DATA_LAYER 3
-#undef WORN_DATA_SIZE_X 4
-#undef WORN_DATA_SIZE_Y 5
+#undef WORN_DATA_ICON
+#undef WORN_DATA_STATE
+#undef WORN_DATA_LAYER
+#undef WORN_DATA_SIZE_X
+#undef WORN_DATA_SIZE_Y

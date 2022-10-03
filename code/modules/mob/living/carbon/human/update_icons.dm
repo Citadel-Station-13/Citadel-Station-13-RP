@@ -756,6 +756,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	var/tail_is_rendered = (overlays_standing[TAIL_LAYER] || overlays_standing[TAIL_LAYER_ALT])
 	var/valid_clip_mask = tail_style?.clip_mask
 
+	var/obj/item/suit/S = wear_suit
 	if(tail_is_rendered && valid_clip_mask && !(istype(S) && S.taurized)) //Clip the lower half of the suit off using the tail's clip mask for taurs since taur bodies aren't hidden.
 		c_mask = valid_clip_mask
 	var/mutable_appearance/MA = wear_suit.render_mob_appearance(src, SLOT_ID_SUIT, species.get_effective_bodytype())

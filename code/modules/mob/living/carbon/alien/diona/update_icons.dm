@@ -9,4 +9,7 @@
 
 	overlays.Cut()
 	if(hat)
-		overlays |= get_hat_icon(hat, 0, -8)
+		var/mutable_appearance/MA = hat.render_mob_appearance(src, SLOT_ID_HEAD)
+		MA.pixel_x = hat_x_offset
+		MA.pixel_y = hat_y_offset
+		overlays |= MA
