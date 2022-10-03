@@ -1,3 +1,8 @@
+#define WORN_DATA_ICON 1
+#define WORN_DATA_STATE 2
+#define WORN_DATA_LAYER 3
+#define WORN_DATA_SIZE_X 4
+#define WORN_DATA_SIZE_Y 5
 /**
  * Item rendering system
  *
@@ -87,7 +92,7 @@
 
 	var/list/resolved = = resolve_worn_assets(mob/M, slot_meta, inhands, bodytype)
 
-	return _render_mob_appearance(M, slot_meta, inhands, bodytype, resolved[1], resolved[2], resolved[3], resolved [4], resolved[5])
+	return _render_mob_appearance(M, slot_meta, inhands, bodytype, resolved[WORN_DATA_ICON], resolved[WORN_DATA_STATE], resolved[WORN_DATA_LAYER], resolved [WORN_DATA_SIZE_X], resolved[WORN_DATA_SIZE_Y])
 
 /obj/item/proc/_render_mob_appearance(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype, icon_used, state_used, layer_used, dim_x, dim_y)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -142,28 +147,28 @@
  * - bodytype - bodytype in question
  */
 /obj/item/proc/resolve_worn_assets(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
-	. = new /list(5)	// 5 tuple
+	var/list/data = new /list(5)	// 5 tuple
 
 
 	//? state ; item_state_slots --> item_state --> icon_state
-	.[2] = (item_state_slots?[slot_meta.id]) || item_state || icon_state
+	data[WORN_DATA_STATE] = (item_state_slots?[slot_meta.id]) || item_state || icon_state
 
 	//? icon, size
 	//* icon_override
 	if(icon_override)
-		.[1] = icon_override
+		data[WORN_DATA_ICON] = icon_override
 		if(inhands)
 			switch(slot_meta.id)
 				if(SLOT_ID_LEFT_HAND)
-					.[2] += "_l"
+					data[WORN_DATA_STATE] += "_l"
 				if(SLOT_ID_RIGHT_HAND)
-					.[2] += "_r"
+					data[WORN_DATA_STATE] += "_r"
 				if(SLOT_ID_LEFT_EAR)
-					.[2] += "_l"
+					data[WORN_DATA_STATE] += "_l"
 				if(SLOT_ID_RIGHT_EAR)
-					.[2] += "_l"
-		.[4] = worn_x_dimension
-		.[5] = worn_y_dimension
+					data[WORN_DATA_STATE] += "_l"
+		data[WORN_DATA_SIZE_X] = worn_x_dimension
+		data[WORN_DATA_SIZE_Y] = worn_y_dimension
 
 	//* species-specific sprite sheets
 	else if()
@@ -171,46 +176,36 @@
 
 	//* slot-specific sprite sheets
 	else if(item_icons?[slot_meta.id])
-		.[1] = item_icons[slot_meta.id]
-		.[4] = worn_x_dimension
-		.[5] = worn_y_dimension
+		data[WORN_DATA_ICON] = item_icons[slot_meta.id]
+		data[WORN_DATA_SIZE_X] = worn_x_dimension
+		data[WORN_DATA_SIZE_Y] = worn_y_dimension
 
 	//* item worn_icon override
 	else if(worn_icon && !inhands)
 		// todo: rework
-		.[1] = worn_icon
-		.[4] = worn_x_dimension
-		.[5] = worn_y_dimension
+		data[WORN_DATA_ICON] = worn_icon
+		data[WORN_DATA_SIZE_X] = worn_x_dimension
+		data[WORN_DATA_SIZE_Y] = worn_y_dimension
 
 	//* inventory slot defaults
 	else
-		var/list/resolved = slot_meta.resolve_default_assets(bodytype, .[2], M, src)
+		var/list/resolved = slot_meta.resolve_default_assets(bodytype, data[WORN_DATA_STATE], M, src)
 		if(resolved)
-			.[1] = resolved[1]
-			.[4] = resolved[2]
-			.[5] = resolved[3]
+			data[WORN_DATA_ICON] = resolved[WORN_DATA_ICON]
+			data[WORN_DATA_SIZE_X] = resolved[WORN_DATA_STATE]
+			data[WORN_DATA_SIZE_Y] = resolved[WORN_DATA_LAYER]
 
 	//* our icon
-	if(!.[1])
-		.[1] = icon
-		.[4] = icon_dimension_x
-		.[5] = icon_dimension_y
+	if(!data[WORN_DATA_ICON])
+		data[WORN_DATA_ICON] = icon
+		#warn icon state generation nebula style
+		data[WORN_DATA_SIZE_X] = icon_dimension_x
+		data[WORN_DATA_SIZE_Y] = icon_dimension_y
 
 	//? layer ; wonr_layer --> slot defaults for the item in question
-	.[3] = worn_layer || slot_meta.resolve_default_layer(bodytype, M, src)
+	data[WORN_DATA_LAYER] = worn_layer || slot_meta.resolve_default_layer(bodytype, M, src)
 
-
-//! legacy
-	//Snowflakey inhand icons in a specific slot
-	if(inhands && icon2use == icon_override)
-		switch(slot_id)
-			if(SLOT_ID_RIGHT_HAND)
-				state2use += "_r"
-			if(SLOT_ID_LEFT_HAND)
-				state2use += "_l"
-			if(SLOT_ID_LEFT_EAR)
-				state2use
-
+	return data
 
 //Returns the icon object that should be used for the worn icon
 /obj/item/proc/get_worn_icon_file(var/body_type,var/slot_id,var/default_icon,var/inhands)
@@ -230,3 +225,9 @@
 	if(addblends && standing_icon && source_icon)
 		var/addblend_icon = icon("icon" = source_icon, "icon_state" = addblends)
 		standing_icon.Blend(addblend_icon, ICON_ADD)
+
+#undef WORN_DATA_ICON 1
+#undef WORN_DATA_STATE 2
+#undef WORN_DATA_LAYER 3
+#undef WORN_DATA_SIZE_X 4
+#undef WORN_DATA_SIZE_Y 5
