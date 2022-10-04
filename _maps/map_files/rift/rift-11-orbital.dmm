@@ -6302,7 +6302,7 @@
 /area/centcom/simulated/medical)
 "sq" = (
 /obj/machinery/door/airlock/medical{
-	name = "Operating Theatre";
+	name = "Morgue";
 	req_access = list(45)
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7123,19 +7123,19 @@
 "tW" = (
 /obj/structure/table/rack,
 /obj/item/clothing/gloves/swat{
-	armor = list("melee" = 80, "bullet" = 80, "laser" = 80, "energy" = 80, "bomb" = 80, "bio" = 80, "rad" = 80)
+	armor = list("melee"=80,"bullet"=80,"laser"=80,"energy"=80,"bomb"=80,"bio"=80,"rad"=80)
 	},
 /obj/item/clothing/gloves/swat{
-	armor = list("melee" = 80, "bullet" = 80, "laser" = 80, "energy" = 80, "bomb" = 80, "bio" = 80, "rad" = 80)
+	armor = list("melee"=80,"bullet"=80,"laser"=80,"energy"=80,"bomb"=80,"bio"=80,"rad"=80)
 	},
 /obj/item/clothing/gloves/swat{
-	armor = list("melee" = 80, "bullet" = 80, "laser" = 80, "energy" = 80, "bomb" = 80, "bio" = 80, "rad" = 80)
+	armor = list("melee"=80,"bullet"=80,"laser"=80,"energy"=80,"bomb"=80,"bio"=80,"rad"=80)
 	},
 /obj/item/clothing/gloves/swat{
-	armor = list("melee" = 80, "bullet" = 80, "laser" = 80, "energy" = 80, "bomb" = 80, "bio" = 80, "rad" = 80)
+	armor = list("melee"=80,"bullet"=80,"laser"=80,"energy"=80,"bomb"=80,"bio"=80,"rad"=80)
 	},
 /obj/item/clothing/gloves/swat{
-	armor = list("melee" = 80, "bullet" = 80, "laser" = 80, "energy" = 80, "bomb" = 80, "bio" = 80, "rad" = 80)
+	armor = list("melee"=80,"bullet"=80,"laser"=80,"energy"=80,"bomb"=80,"bio"=80,"rad"=80)
 	},
 /obj/item/clothing/shoes/boots/swat,
 /obj/item/clothing/shoes/boots/swat,
@@ -7150,47 +7150,47 @@
 /obj/item/clothing/suit/armor/swat,
 /obj/item/clothing/suit/armor/swat,
 /obj/item/clothing/mask/gas/commando{
-	armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 50, "bomb" = 50, "bio" = 75, "rad" = 0);
+	armor = list("melee"=50,"bullet"=50,"laser"=50,"energy"=50,"bomb"=50,"bio"=75,"rad"=0);
 	name = "Commando Mask"
 	},
 /obj/item/clothing/mask/gas/commando{
-	armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 50, "bomb" = 50, "bio" = 75, "rad" = 0);
+	armor = list("melee"=50,"bullet"=50,"laser"=50,"energy"=50,"bomb"=50,"bio"=75,"rad"=0);
 	name = "Commando Mask"
 	},
 /obj/item/clothing/mask/gas/commando{
-	armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 50, "bomb" = 50, "bio" = 75, "rad" = 0);
+	armor = list("melee"=50,"bullet"=50,"laser"=50,"energy"=50,"bomb"=50,"bio"=75,"rad"=0);
 	name = "Commando Mask"
 	},
 /obj/item/clothing/mask/gas/commando{
-	armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 50, "bomb" = 50, "bio" = 75, "rad" = 0);
+	armor = list("melee"=50,"bullet"=50,"laser"=50,"energy"=50,"bomb"=50,"bio"=75,"rad"=0);
 	name = "Commando Mask"
 	},
 /obj/item/clothing/mask/gas/commando{
-	armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 50, "bomb" = 50, "bio" = 75, "rad" = 0);
+	armor = list("melee"=50,"bullet"=50,"laser"=50,"energy"=50,"bomb"=50,"bio"=75,"rad"=0);
 	name = "Commando Mask"
 	},
 /obj/item/clothing/head/helmet/space/deathsquad{
-	armor = list("melee" = 80, "bullet" = 80, "laser" = 60, "energy" = 70, "bomb" = 50, "bio" = 100, "rad" = 60);
+	armor = list("melee"=80,"bullet"=80,"laser"=60,"energy"=70,"bomb"=50,"bio"=100,"rad"=60);
 	name = "swat helmet"
 	},
 /obj/item/clothing/head/helmet/space/deathsquad{
-	armor = list("melee" = 80, "bullet" = 80, "laser" = 60, "energy" = 70, "bomb" = 50, "bio" = 100, "rad" = 60);
+	armor = list("melee"=80,"bullet"=80,"laser"=60,"energy"=70,"bomb"=50,"bio"=100,"rad"=60);
 	name = "swat helmet"
 	},
 /obj/item/clothing/head/helmet/space/deathsquad{
-	armor = list("melee" = 80, "bullet" = 80, "laser" = 60, "energy" = 70, "bomb" = 50, "bio" = 100, "rad" = 60);
+	armor = list("melee"=80,"bullet"=80,"laser"=60,"energy"=70,"bomb"=50,"bio"=100,"rad"=60);
 	name = "swat helmet"
 	},
 /obj/item/clothing/head/helmet/space/deathsquad{
-	armor = list("melee" = 80, "bullet" = 80, "laser" = 60, "energy" = 70, "bomb" = 50, "bio" = 100, "rad" = 60);
+	armor = list("melee"=80,"bullet"=80,"laser"=60,"energy"=70,"bomb"=50,"bio"=100,"rad"=60);
 	name = "swat helmet"
 	},
 /obj/item/clothing/head/helmet/space/deathsquad{
-	armor = list("melee" = 80, "bullet" = 80, "laser" = 60, "energy" = 70, "bomb" = 50, "bio" = 100, "rad" = 60);
+	armor = list("melee"=80,"bullet"=80,"laser"=60,"energy"=70,"bomb"=50,"bio"=100,"rad"=60);
 	name = "swat helmet"
 	},
 /obj/item/clothing/head/helmet/space/deathsquad{
-	armor = list("melee" = 80, "bullet" = 80, "laser" = 60, "energy" = 70, "bomb" = 50, "bio" = 100, "rad" = 60);
+	armor = list("melee"=80,"bullet"=80,"laser"=60,"energy"=70,"bomb"=50,"bio"=100,"rad"=60);
 	name = "swat helmet"
 	},
 /turf/unsimulated/floor{
@@ -7998,7 +7998,7 @@
 /obj/machinery/vending/cigarette{
 	name = "hacked cigarette machine";
 	prices = list();
-	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
+	products = list(/obj/item/storage/fancy/cigarettes=10,/obj/item/storage/box/matches=10,/obj/item/flame/lighter/zippo=4,/obj/item/clothing/mask/smokable/cigarette/cigar/havana=2)
 	},
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors_vr.dmi';
@@ -10360,6 +10360,14 @@
 "Ve" = (
 /turf/space/transit/south,
 /area/space)
+"VP" = (
+/obj/machinery/door/airlock/medical{
+	name = "Chemistry and Resleeving";
+	req_access = list(45)
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/white,
+/area/centcom/simulated/medical)
 "Xm" = (
 /turf/unsimulated/map/edge,
 /area/overmap)
@@ -21483,7 +21491,7 @@ nU
 pX
 nE
 nE
-qo
+VP
 nE
 nE
 sq
