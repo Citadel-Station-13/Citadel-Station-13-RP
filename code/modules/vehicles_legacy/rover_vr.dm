@@ -30,11 +30,11 @@
 	var/obj/item/key/rover/key
 	var/siren = 0 //This is for eventually getting the siren sprite to work.
 
-	dunebuggy
-		name = "Research Dune Buggy"
-		desc = "A Dune Buggy developed for asteroid exploration and transportation. It has a sSSticker that says to wear EVA suits if used in space."
-		icon = 'icons/vore/rover_vr.dmi'
-		icon_state = "dunebug"
+/obj/vehicle_old/train/rover/engine/dunebuggy
+	name = "Research Dune Buggy"
+	desc = "A Dune Buggy developed for asteroid exploration and transportation. It has a sSSticker that says to wear EVA suits if used in space."
+	icon = 'icons/vore/rover_vr.dmi'
+	icon_state = "dunebug"
 
 
 /obj/item/key/rover
