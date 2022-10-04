@@ -1,5 +1,5 @@
 /datum/job/station/pathfinder
-	id = "pathfinder"
+	id = JOB_ID_PATHFINDER
 	title = "Pathfinder"
 	flag = PATHFINDER
 	departments = list(DEPARTMENT_PLANET)

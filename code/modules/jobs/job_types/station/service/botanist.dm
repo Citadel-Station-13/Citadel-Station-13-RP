@@ -1,5 +1,5 @@
 /datum/job/station/hydro
-	id = "botanist"
+	id = JOB_ID_BOTANIST
 	title = "Botanist"
 	flag = BOTANIST
 	departments = list(DEPARTMENT_CIVILIAN)
