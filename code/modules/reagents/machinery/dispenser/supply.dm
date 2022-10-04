@@ -148,7 +148,7 @@
 	group = "Reagents"
 
 #define SEC_PACK(_tname, _type, _name, _cname, _cost, _access)\
-	datum/supply_pack/dispenser_cartridges{\
+	/datum/supply_pack/dispenser_cartridges{\
 		_tname {\
 			name = _name ;\
 			container_name = _cname ;\
@@ -160,7 +160,7 @@
 		}\
 	}
 #define PACK(_tname, _type, _name, _cname, _cost)\
-	datum/supply_pack/dispenser_cartridges{\
+	/datum/supply_pack/dispenser_cartridges{\
 		_tname {\
 			name = _name ;\
 			container_name = _cname ;\
