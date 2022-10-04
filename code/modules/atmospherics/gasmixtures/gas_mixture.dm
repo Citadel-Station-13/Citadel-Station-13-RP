@@ -192,7 +192,7 @@
 	which is bit more realistic (natural log), and returns a fairly accurate entropy around room temperatures and pressures.
 */
 /datum/gas_mixture/proc/specific_entropy_gas(var/gasid)
-	if (!gasid || !(gasid in gas) || gas[gasid] == 0)
+	if (!(gasid in gas) || gas[gasid] == 0)
 		return SPECIFIC_ENTROPY_VACUUM	//that gas isn't here
 
 	//group_multiplier gets divided out in volume/gas[gasid] - also, V/(m*T) = R/(partial pressure)
