@@ -1,3 +1,4 @@
+//! Bodytypes; Primary mutators for icon state and what something looks like.
 // bodytypes - they are flags for var storage, but should only be passed one at a time to rendering!
 /// normal human bodytype
 #define BODYTYPE_DEFAULT			(1<<0)
@@ -18,6 +19,8 @@
 /// akula bodytype
 #define BODYTYPE_AKULA				(1<<9)
 
+// todo: above bodytypes may still need pruning, need to decide ASAP
+// todo: how to modify sprites for these? these don't make sense on some bodytypes
 /// has snout - usually relevant for masks and headgear
 #define BODYTYPE_SNOUT				(1<<20)
 /// snake taur bodytype - usually relevant for hardsuits and similar

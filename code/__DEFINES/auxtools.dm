@@ -23,4 +23,5 @@ GLOBAL_LIST_EMPTY(auxtools_initialized)
 		GLOB.auxtools_initialized[LIB] = FALSE;\
 	}\
 
-#define AUXYAML "auxyaml.dll"
+#warn ok we need a linux .so
+#define AUXTOOLS_YAML (world.system_type == MS_WINDOWS? "auxyaml.dll" : null)

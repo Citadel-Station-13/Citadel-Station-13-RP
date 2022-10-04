@@ -7,6 +7,7 @@
 	deform       = 'icons/mob/species/akula/deformed_body.dmi'
 	preview_icon = 'icons/mob/species/akula/preview.dmi'
 	husk_icon    = 'icons/mob/species/akula/husk.dmi'
+	default_bodytype = BODYTYPE_AKULA
 	tail = "tail"
 	icobase_tail = 1
 
