@@ -18,7 +18,6 @@ SUBSYSTEM_DEF(characters)
 
 	var/list/save_queue = list()
 
-	//! Species Lookup
 
 /*
 /datum/controller/subsystem/characters/Initialize()
@@ -45,3 +44,5 @@ SUBSYSTEM_DEF(characters)
 
 /datum/controller/subsystem/characters/proc/queue_preferences_save(var/datum/preferences/prefs)
 	save_queue |= prefs
+
+

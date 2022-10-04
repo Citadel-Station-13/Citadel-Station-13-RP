@@ -1,6 +1,7 @@
-- Dud
-	- content: ayy
-	- num: 2
-	- arr: ["3", 3, ~, True]
-	- map: {"3" : 2, "4" : True}
-	- nul: ~
+- type: Dud
+  content: ayy
+  num: 2
+  fragments:
+  - trait: faction
+    ATC: NT
+  nul: ~
