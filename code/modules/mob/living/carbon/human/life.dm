@@ -574,7 +574,7 @@
 		//var/datum/gas/gas = gasname
 		if(gasname == breath_type)
 			continue
-		if(GLOB.meta_gas_reagent_id[gasname])
+		if(!GLOB.meta_gas_reagent_id[gasname])
 			continue
 		// Little bit of sanity so we aren't trying to add 0.0000000001 units of CO2, and so we don't end up with 99999 units of CO2.
 		var/reagent_amount = breath.gas[gasname] * 10 * gas_to_process_ratio * GLOB.meta_gas_reagent_amount[gasname] //10 is for the u per gas mol, ratio is defined further up where we have the lungs for checks
