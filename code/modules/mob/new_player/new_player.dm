@@ -138,7 +138,7 @@
 				else
 					//they claim to be of age, so allow them to continue and update their flags
 					client.set_preference(/datum/client_preference/debug/age_verified, 1)
-					SScharacter_setup.queue_preferences_save(client.prefs)
+					SScharacters.queue_preferences_save(client.prefs)
 					//log this
 					message_admins("[ckey] has joined through the automated age gate process.")
 					return TRUE
@@ -451,7 +451,7 @@
 	var/savefile/F = get_server_news()
 	if(F)
 		client.prefs.lastnews = md5(F["body"])
-		SScharacter_setup.queue_preferences_save(client.prefs)
+		SScharacters.queue_preferences_save(client.prefs)
 
 		var/dat = "<html><body><center>"
 		dat += "<h1>[F["title"]]</h1>"

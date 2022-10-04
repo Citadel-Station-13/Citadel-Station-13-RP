@@ -31,7 +31,8 @@ SUBSYSTEM_DEF(prototypes)
 				Load(path)
 
 /datum/controller/subsystem/prototypes/proc/Load(fname)
-	var/list/L = yaml_decode(file2text(fname))
+	var/yaml = file2text(file(fname))
+	var/list/L = yaml_decode(yaml)
 	to_chat(world, json_encode(L))
 
 /datum/controller/subsystem/prototypes/proc/Type(t)

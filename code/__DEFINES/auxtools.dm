@@ -1,5 +1,5 @@
 /proc/auxtools_stack_trace(msg)
-	CRASH(msg)
+ 	CRASH(msg)
 
 GLOBAL_LIST_EMPTY(auxtools_initialized)
 

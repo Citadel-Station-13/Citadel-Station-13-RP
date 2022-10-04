@@ -146,7 +146,7 @@
 						if(!length(pref.key_bindings[old_key]))
 							pref.key_bindings -= old_key
 					user << browse(null, "window=capturekeypress")
-					SScharacter_setup.queue_preferences_save(pref)
+					SScharacters.queue_preferences_save(pref)
 					return TOPIC_REFRESH
 
 				var/new_key = uppertext(href_list["key"])
@@ -178,7 +178,7 @@
 
 				user << browse(null, "window=capturekeypress")
 				user.client.update_movement_keys()
-				SScharacter_setup.queue_preferences_save(pref)
+				SScharacters.queue_preferences_save(pref)
 
 			if("keybindings_reset")
 				var/choice = tgalert(user, "Would you prefer 'hotkey' or 'classic' defaults?", "Setup keybindings", "Hotkey", "Classic", "Cancel")

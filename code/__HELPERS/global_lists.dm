@@ -205,7 +205,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 
 	if(!length(GLOB.species_meta))	// yeah i hate it too but hey
 		initialize_static_species_cache()
-	// SScharacter_setup handling static caches and body markings and sprit eaccessories when?? this is all awful
+	// SScharacters handling static caches and body markings and sprit eaccessories when?? this is all awful
 
 	//Languages and species.
 	paths = subtypesof(/datum/language)
