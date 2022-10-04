@@ -21,8 +21,8 @@
 
 	pto_type = PTO_CIVILIAN
 
-	get_access()
-		return get_all_accesses().Copy()
+/datum/job/station/centcom_officer/get_access()
+	return get_all_accesses().Copy()
 
 /datum/outfit/job/station/centcom_officer
 	name = OUTFIT_JOB_NAME("CentCom Officer")
@@ -36,4 +36,3 @@
 	head = /obj/item/clothing/head/beret/centcom/officer
 	r_pocket = /obj/item/pda/centcom
 	id_pda_assignment = "CentCom Officer"
-
