@@ -13,7 +13,7 @@
 
 /datum/prototype/New(id, list/data)
 	src.id = id
-	Read(data)
+	Initialize(data)
 
-/datum/prototype/proc/Read(list/data)
+/datum/prototype/proc/Initialize(list/data)
 	return

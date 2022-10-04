@@ -69,6 +69,7 @@ DEFINE_BITFIELD(runlevels, list(
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
 
+#define INIT_ORDER_PROTOTYPES		103
 #define INIT_ORDER_FAIL2TOPIC		102
 #define INIT_ORDER_DBCORE			101
 #define INIT_ORDER_INPUT			100
