@@ -75,10 +75,10 @@ GLOBAL_LIST_BOILERPLATE(all_beacons, /obj/item/radio/beacon)
 		else
 			to_chat(user, SPAN_WARNING("You can't work on \the [src] until its been opened up."))
 
-/obj/item/radio/beacon/bacon //Probably a better way of doing this, I'm lazy.
-	proc/digest_delay()
-		spawn(600)
-			qdel(src)
+// Probably a better way of doing this, I'm lazy.
+/obj/item/radio/beacon/bacon/proc/digest_delay()
+	spawn(600)
+		qdel(src)
 
 
 /// SINGULO BEACON SPAWNER

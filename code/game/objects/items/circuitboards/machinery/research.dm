@@ -2,7 +2,7 @@
 #error T_BOARD macro is not defined but we need it!
 #endif
 
-obj/item/circuitboard/rdserver
+/obj/item/circuitboard/rdserver
 	name = T_BOARD("R&D server")
 	build_path = /obj/machinery/r_n_d/server/core
 	board_type = new /datum/frame/frame_types/machine
@@ -12,7 +12,7 @@ obj/item/circuitboard/rdserver
 		/obj/item/stock_parts/scanning_module = 1,
 	)
 
-obj/item/circuitboard/rdserver/attackby(obj/item/I, mob/user)
+/obj/item/circuitboard/rdserver/attackby(obj/item/I, mob/user)
 	if(I.is_screwdriver())
 		playsound(src, I.tool_sound, 50, 1)
 		user.visible_message(

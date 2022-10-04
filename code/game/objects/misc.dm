@@ -1,22 +1,20 @@
 /obj/structure/signpost
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "signpost"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 
-	attackby(obj/item/W as obj, mob/user as mob)
-		return attack_hand(user)
+/obj/structure/signpost/attackby(obj/item/W, mob/user)
+	return attack_hand(user)
 
-	attack_hand(mob/user as mob)
-		switch(alert("Travel back to ss13?",,"Yes","No"))
-			if("Yes")
-				if(user.z != src.z)
-					return
-				user.forceMove(SSjob.GetLatejoinSpawnpoint(faction = JOB_FACTION_STATION))
-			if("No")
-				return
+/obj/structure/signpost/attack_hand(mob/user)
+	switch(tgui_alert(user, "Do you want to go to SS13?", "Travel", list("Yes", "No")))
+		if("Yes")
+			user.forceMove(SSjob.GetLatejoinSpawnpoint(faction = JOB_FACTION_STATION))
+		if("No")
+			return
 
-/*
+/**
  * This item is completely unused, but removing it will break something in R&D and Radio code causing PDA and Ninja code to fail on compile
  */
 /var/list/acting_rank_prefixes = list("acting", "temporary", "interim", "provisional")
