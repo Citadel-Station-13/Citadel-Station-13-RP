@@ -16,32 +16,9 @@
 			if("No")
 				return
 
-/obj/effect/mark
-	var/mark = ""
-	icon = 'icons/misc/mark.dmi'
-	icon_state = "blank"
-	anchored = 1
-	layer = 99
-	mouse_opacity = 0
-	unacidable = 1//Just to be sure.
-
-/obj/effect/beam
-	name = "beam"
-	density = FALSE
-	var/def_zone
-	pass_flags = ATOM_PASS_TABLE
-
-
-/obj/effect/begin
-	name = "begin"
-	icon = 'icons/obj/stationobjs.dmi'
-	icon_state = "begin"
-	anchored = TRUE
-
 /*
  * This item is completely unused, but removing it will break something in R&D and Radio code causing PDA and Ninja code to fail on compile
  */
-
 /var/list/acting_rank_prefixes = list("acting", "temporary", "interim", "provisional")
 
 /proc/make_list_rank(rank)
@@ -49,15 +26,6 @@
 		if(findtext(rank, "[prefix] ", 1, 2+length(prefix)))
 			return copytext(rank, 2+length(prefix))
 	return rank
-
-/obj/effect/list_container
-	name = "list container"
-
-/obj/effect/list_container/mobl
-	name = "mobl"
-	var/master = null
-
-	var/list/container = list(  )
 
 /obj/structure/showcase
 	name = "Showcase"
@@ -90,19 +58,5 @@
 	drop_sound = 'sound/items/drop/rubber.ogg'
 	pickup_sound = 'sound/items/pickup/rubber.ogg'
 
-/obj/item/beach_ball/afterattack(atom/target as mob|obj|turf|area, mob/user as mob)
+/obj/item/beach_ball/afterattack(atom/target, mob/user)
 	user.throw_item(src, target)
-
-/obj/effect/stop
-	icon_state = "empty"
-	name = "Geas"
-	desc = "You can't resist."
-	var/atom/movable/victim
-
-/obj/effect/stop/Uncross(atom/movable/AM)
-	. = ..()
-	if(AM == victim)
-		return FALSE
-
-/obj/effect/spawner
-	name = "object spawner"
