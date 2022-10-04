@@ -8295,7 +8295,9 @@
 	dir = 1
 	},
 /obj/structure/sign/atmos_plasma{
-	pixel_y = -32
+	pixel_y = -32;
+	name = "Phoron warning sign";
+	desc = "WARNING! Phoron flow tube. Ensure the flow is disengaged before working."
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
