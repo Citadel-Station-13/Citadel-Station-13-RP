@@ -412,7 +412,7 @@
 		//get amount from user
 		var/max = get_amount()
 		// var/stackmaterial = round(input(user,"How many sheets do you wish to take out of this stack? (Maximum  [max])") as null|num)
-		var/stackmaterial = tgui_input_number(user, "How many sheets do you wish to take out of this stack?", "Stack", stackmaterial, max, 1, round_value=TRUE)
+		var/stackmaterial = tgui_input_number(user, "How many sheets do you wish to take out of this stack?", "Stack", max, max, 1, round_value=TRUE)
 		max = get_amount() // Not sure why this is done twice but whatever.
 		stackmaterial = min(max, stackmaterial)
 		if(stackmaterial == null || stackmaterial <= 0 || !in_range(user, src) || !user.canmove)
