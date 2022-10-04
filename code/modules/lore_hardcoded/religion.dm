@@ -1,4 +1,5 @@
 /datum/lore/character_background/religion
+	abstract_type = /datum/lore/character_background/religion
 
 /datum/lore/character_background/religion/custom
 	name = "Other"

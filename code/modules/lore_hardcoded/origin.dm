@@ -1,4 +1,5 @@
 /datum/lore/character_background/origin
+	abstract_type = /datum/lore/character_background/origin
 
 /datum/lore/character_background/origin/custom
 	name = "Other"
