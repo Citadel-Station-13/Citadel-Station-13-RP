@@ -194,6 +194,14 @@
 "aR" = (
 /turf/simulated/shuttle/wall/hard_corner,
 /area/shuttle/supply)
+"aS" = (
+/obj/machinery/door/airlock/medical{
+	name = "Chemistry and Resleeving";
+	req_access = list(45)
+	},
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/white,
+/area/centcom/simulated/medical)
 "aT" = (
 /obj/structure/shuttle/engine/propulsion{
 	dir = 1
@@ -2904,7 +2912,10 @@
 	},
 /area/centcom/simulated/evac)
 "iS" = (
-/obj/structure/memorial,
+/obj/structure/memorial{
+	icon = 'icons/obj/structures_vr.dmi';
+	icon_state = "memorial-l"
+	},
 /turf/unsimulated/floor/steel{
 	icon_state = "asteroidfloor"
 	},
@@ -10288,6 +10299,15 @@
 /obj/effect/shuttle_landmark/rift/deck4/northeast,
 /turf/simulated/sky/lythios43c/moving/south,
 /area/space)
+"NZ" = (
+/obj/structure/memorial{
+	icon = 'icons/obj/structures_vr.dmi';
+	icon_state = "memorial-r"
+	},
+/turf/unsimulated/floor/steel{
+	icon_state = "asteroidfloor"
+	},
+/area/centcom/simulated/evac)
 "Oc" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -10360,14 +10380,6 @@
 "Ve" = (
 /turf/space/transit/south,
 /area/space)
-"VP" = (
-/obj/machinery/door/airlock/medical{
-	name = "Chemistry and Resleeving";
-	req_access = list(45)
-	},
-/obj/machinery/door/firedoor,
-/turf/simulated/floor/tiled/white,
-/area/centcom/simulated/medical)
 "Xm" = (
 /turf/unsimulated/map/edge,
 /area/overmap)
@@ -21084,7 +21096,7 @@ hP
 cN
 hy
 ij
-iT
+NZ
 iT
 iP
 ij
@@ -21491,7 +21503,7 @@ nU
 pX
 nE
 nE
-VP
+aS
 nE
 nE
 sq
