@@ -19318,10 +19318,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
-"nnX" = (
-/obj/effect/overlay/snow/floor/grav_edges,
-/turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "noc" = (
 /obj/structure/grille,
 /obj/structure/railing,
@@ -32407,13 +32403,6 @@
 /obj/effect/zone_divider,
 /turf/simulated/wall/r_wall,
 /area/maintenance/cargo)
-"vHX" = (
-/obj/effect/zone_divider,
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "vIa" = (
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/reagentgrinder,
@@ -39726,7 +39715,7 @@ piF
 oFG
 oFG
 oFG
-vHX
+hcn
 oFG
 oFG
 iFN
@@ -40109,7 +40098,7 @@ lcN
 lcN
 lcN
 lcN
-nnX
+lcN
 jhV
 oFG
 oFG
@@ -40303,7 +40292,7 @@ lcN
 lcN
 lcN
 lcN
-nnX
+lcN
 jhV
 oFG
 oFG
@@ -40497,7 +40486,7 @@ lcN
 lcN
 lcN
 lcN
-nnX
+lcN
 jhV
 oFG
 oFG
@@ -40691,7 +40680,7 @@ lcN
 lcN
 lcN
 lcN
-nnX
+lcN
 jhV
 oFG
 oFG
@@ -41661,7 +41650,7 @@ lcN
 lcN
 lcN
 lcN
-nnX
+lcN
 jhV
 oFG
 oFG
@@ -43975,8 +43964,8 @@ bGT
 bGT
 bGT
 bGT
-bGT
-bGT
+oFG
+oFG
 bGT
 xVm
 iFN
@@ -44128,7 +44117,7 @@ dXx
 bGT
 bGT
 bGT
-jKv
+hcn
 bGT
 bGT
 bGT
