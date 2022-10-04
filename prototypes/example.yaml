@@ -1,0 +1,6 @@
+- Dud
+	- content: ayy
+	- num: 2
+	- arr: ["3", 3, ~, True]
+	- map: {"3" : 2, "4" : True}
+	- nul: ~
