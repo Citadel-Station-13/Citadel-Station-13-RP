@@ -65,13 +65,13 @@
 		to_chat(src, SPAN_WARNING("Not enough energy for that ability!"))
 		return FALSE
 
-	if(!(ability_flags & AB_PHASE_SHIFTED))
-		shadekin_adjust_energy(-ability_cost)
-	playsound(src, 'sound/effects/stealthoff.ogg', 75, TRUE)
-
 	if(!T.CanPass(src,T) || loc != T)
 		to_chat(src, SPAN_WARNING("You can't use that here!"))
 		return FALSE
+
+	if(!(ability_flags & AB_PHASE_SHIFTED))
+		shadekin_adjust_energy(-ability_cost)
+	playsound(src, 'sound/effects/stealthoff.ogg', 75, TRUE)
 
 	forceMove(T)
 	var/original_canmove = canmove

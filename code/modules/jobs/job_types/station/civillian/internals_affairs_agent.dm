@@ -1,4 +1,5 @@
 /datum/job/station/lawyer
+	id = "lawyer"
 	title = "Internal Affairs Agent"
 	flag = LAWYER
 	departments = list(DEPARTMENT_CIVILIAN)

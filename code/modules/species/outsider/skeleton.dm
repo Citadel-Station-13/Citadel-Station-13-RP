@@ -1,4 +1,5 @@
 /datum/species/skeleton
+	id = SPECIES_ID_SKELETON
 	name = SPECIES_SKELETON
 	name_plural = "Skeletons"
 	primitive_form = SPECIES_MONKEY

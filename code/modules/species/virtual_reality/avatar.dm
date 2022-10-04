@@ -4,7 +4,8 @@
 // ###
 // Species definition follows.
 /datum/species/shapeshifter/promethean/avatar
-
+	uid = SPECIES_ID_VIRTUAL_REALITY
+	id = SPECIES_ID_VIRTUAL_REALITY
 	name =             SPECIES_VR
 	name_plural =      "Virtual Reality Avatars"
 	blurb =            "A 3-dimensional representation of some sort of animate object used to display the presence and actions of some-one or -thing using a virtual reality program."

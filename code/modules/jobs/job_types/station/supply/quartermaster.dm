@@ -1,4 +1,5 @@
 /datum/job/station/quartermaster
+	id = "quartermaster"
 	title = "Quartermaster"
 	flag = QUARTERMASTER
 	departments = list(DEPARTMENT_CARGO)

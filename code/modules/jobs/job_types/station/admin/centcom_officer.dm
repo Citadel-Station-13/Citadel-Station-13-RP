@@ -1,4 +1,5 @@
 /datum/job/station/centcom_officer //For Business
+	id = "centcom_officer"
 	title = "CentCom Officer"
 	departments = list("Central Command")
 	department_accounts = list(DEPARTMENT_COMMAND, DEPARTMENT_ENGINEERING, DEPARTMENT_MEDICAL, DEPARTMENT_RESEARCH, DEPARTMENT_SECURITY, DEPARTMENT_CARGO, DEPARTMENT_PLANET, DEPARTMENT_CIVILIAN)

@@ -1,4 +1,5 @@
 /datum/job/station/explorer
+	id = "explorer"
 	title = "Explorer"
 	flag = EXPLORER
 	departments = list(DEPARTMENT_PLANET)

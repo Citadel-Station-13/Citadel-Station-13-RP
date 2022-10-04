@@ -1,4 +1,6 @@
 /datum/species/hi_zoxxen
+	uid = SPECIES_ID_ZORREN_HIGH
+	id = SPECIES_ID_ZORREN
 	name = SPECIES_ZORREN_HIGH
 	name_plural = "Zorren"
 	//primitive_form = "" //We don't have fox-monkey sprites.
@@ -59,6 +61,8 @@
 	)
 
 /datum/species/fl_zorren
+	uid = SPECIES_ID_ZORREN_FLAT
+	id = SPECIES_ID_ZORREN
 	name = SPECIES_ZORREN_FLAT
 	name_plural = "Zorren"
 	//primitive_form = "" //We don't have fennec-monkey sprites.

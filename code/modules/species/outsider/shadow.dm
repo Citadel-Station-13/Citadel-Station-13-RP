@@ -1,4 +1,5 @@
 /datum/species/shadow
+	uid = SPECIES_ID_SHADOW
 	name = SPECIES_SHADOW
 	name_plural = "shadows"
 

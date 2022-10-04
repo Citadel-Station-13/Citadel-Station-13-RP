@@ -1,4 +1,5 @@
 /datum/species/shadekin
+	uid = SPECIES_ID_SHADEKIN
 	name = SPECIES_SHADEKIN
 	name_plural = SPECIES_SHADEKIN
 

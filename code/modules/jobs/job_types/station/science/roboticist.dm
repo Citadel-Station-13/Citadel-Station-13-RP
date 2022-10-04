@@ -1,4 +1,5 @@
 /datum/job/station/roboticist
+	id = "roboticist"
 	title = "Roboticist"
 	flag = ROBOTICIST
 	departments = list(DEPARTMENT_RESEARCH)

@@ -1,4 +1,5 @@
 /datum/job/station/command_secretary
+	id = "command_secretary"
 	title = "Command Secretary"
 	flag = BRIDGE
 	departments = list(DEPARTMENT_COMMAND)

@@ -1,4 +1,6 @@
 /datum/species/human
+	id = SPECIES_ID_HUMAN
+	uid = SPECIES_ID_HUMAN
 	name = SPECIES_HUMAN
 	name_plural = "Humans"
 	primitive_form = SPECIES_MONKEY

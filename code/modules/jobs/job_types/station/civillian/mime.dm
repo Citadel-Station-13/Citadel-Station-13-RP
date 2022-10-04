@@ -1,4 +1,5 @@
 /datum/job/station/mime
+	id = "mime"
 	title = "Mime"
 	flag = MIME
 	departments = list(DEPARTMENT_CIVILIAN)

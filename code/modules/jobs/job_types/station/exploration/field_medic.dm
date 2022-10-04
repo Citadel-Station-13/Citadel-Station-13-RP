@@ -1,4 +1,5 @@
 /datum/job/station/field_medic
+	id = "field_medic"
 	title = "Field Medic"
 	flag = SAR
 	departments = list(DEPARTMENT_PLANET, DEPARTMENT_MEDICAL)

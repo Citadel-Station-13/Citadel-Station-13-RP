@@ -1,4 +1,5 @@
 /datum/species/sergal
+	uid = SPECIES_ID_NARAMADI
 	name = SPECIES_SERGAL
 	name_plural = "Naramadi"
 	default_bodytype = BODYTYPE_SERGAL

@@ -1,4 +1,5 @@
 /datum/species/zaddat
+	uid = SPECIES_ID_ZADDAT
 	name = SPECIES_ZADDAT
 	name_plural = SPECIES_ZADDAT
 	icobase = 'icons/mob/species/zaddat/body.dmi'

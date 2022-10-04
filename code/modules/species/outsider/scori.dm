@@ -1,4 +1,5 @@
 /datum/species/scori
+	uid = SPECIES_ID_SCORI
 	name = "Scorian"
 	name_plural = SPECIES_SCORI
 	default_language = LANGUAGE_EVENT1

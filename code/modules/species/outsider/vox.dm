@@ -1,7 +1,7 @@
 /datum/species/vox
 	name = SPECIES_VOX
 	name_plural = SPECIES_VOX
-	id = SPECIES_ID_VOX
+	uid = SPECIES_ID_VOX
 
 	icobase = 'icons/mob/species/vox/body.dmi'
 	deform  = 'icons/mob/species/vox/deformed_body.dmi'

@@ -3,6 +3,7 @@
  */
 
 /datum/species/shapeshifter/replicant
+	uid = SPECIES_ID_REPLICANT
 	name = SPECIES_REPLICANT
 	name_plural = "Replicants"
 	primitive_form = SPECIES_MONKEY

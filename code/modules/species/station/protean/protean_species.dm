@@ -2,6 +2,7 @@
 #define METAL_PER_TICK 100
 
 /datum/species/protean
+	uid = SPECIES_ID_PROTEAN
 	name = SPECIES_PROTEAN
 	name_plural = "Proteans"
 	blurb = "Sometimes very advanced civilizations will produce the ability to swap into manufactured, robotic bodies. And sometimes \

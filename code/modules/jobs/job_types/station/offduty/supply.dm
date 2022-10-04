@@ -1,4 +1,5 @@
 /datum/job/station/off_duty/cargo
+	id = "offduty_cargo"
 	title = "Off-duty Cargo"
 	selection_color = "#9b633e"
 	access = list(access_maint_tunnels)

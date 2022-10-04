@@ -1,4 +1,5 @@
 /datum/job/station/engineer
+	id = "station_engineer"
 	title = "Station Engineer"
 	flag = ENGINEER
 	departments = list(DEPARTMENT_ENGINEERING)
