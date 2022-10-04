@@ -17,7 +17,7 @@
 	//First, check if we're already wearing the armor, and if so, take it off.
 	if(istype(M.wear_suit, armor_type) || istype(M.head, helmet_type) || istype(M.shoes, boot_type))
 		M.visible_message(
-			SPAN_WARNING("[M] casts off their [M.wear_suit.name]!")",
+			SPAN_WARNING("[M] casts off their [M.wear_suit.name]!"),
 			SPAN_WARNING("We cast off our [M.wear_suit.name]"),
 			SPAN_HEAR("You hear the organic matter ripping and tearing!"),
 		)
