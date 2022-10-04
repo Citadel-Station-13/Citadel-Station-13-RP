@@ -17,6 +17,9 @@ SUBSYSTEM_DEF(characters)
 	var/list/newplayers_requiring_init = list()
 
 	var/list/save_queue = list()
+
+	//! Species Lookup
+
 /*
 /datum/controller/subsystem/characters/Initialize()
 	while(prefs_awaiting_setup.len)

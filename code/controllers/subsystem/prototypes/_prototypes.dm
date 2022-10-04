@@ -26,11 +26,13 @@ SUBSYSTEM_DEF(prototypes)
 		var/list/files = flist(dir)
 		for(var/path in files)
 			if(path[length(path)] == "/")
-				walking += path
+				walking += dir + path
 			else
-				Load(path)
+				Load(dir + path)
 
 /datum/controller/subsystem/prototypes/proc/Load(fname)
+	if(!fexists(fname))
+		CRASH("failed to load filename [fname]")
 	var/yaml = file2text(file(fname))
 	var/list/L = yaml_decode(yaml)
 	to_chat(world, json_encode(L))
