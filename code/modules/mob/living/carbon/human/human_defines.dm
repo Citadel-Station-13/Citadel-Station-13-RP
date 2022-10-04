@@ -46,7 +46,7 @@
 	/// Skin flag
 	var/skin_state = SKIN_NORMAL
 
-//! ## ears, tails, wings and custom species.
+//! ## ears, horns, tails, wings and custom species.
 	var/datum/sprite_accessory/ears/ear_style = null
 	var/r_ears = 30
 	var/g_ears = 30
@@ -57,6 +57,17 @@
 	var/r_ears3 = 30 //Trust me, we could always use more colour. No japes.
 	var/g_ears3 = 30
 	var/b_ears3 = 30
+
+	var/datum/sprite_accessory/ears/horn_style = null
+	var/r_horn = 30
+	var/g_horn = 30
+	var/b_horn = 30
+	var/r_horn2 = 30
+	var/g_horn2 = 30
+	var/b_horn2 = 30
+	var/r_horn3 = 30
+	var/g_horn3 = 30
+	var/b_horn3 = 30
 
 	var/datum/sprite_accessory/tail/tail_style = null
 	var/r_tail = 30
