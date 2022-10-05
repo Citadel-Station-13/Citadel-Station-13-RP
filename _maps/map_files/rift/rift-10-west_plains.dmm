@@ -792,7 +792,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/exterior/nuketown)
 "dP" = (
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "dQ" = (
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
@@ -1032,7 +1032,7 @@
 /area/rnd/outpost/atmos)
 "fe" = (
 /obj/random/multiple/underdark/treasure,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "fh" = (
 /obj/machinery/light/small,
@@ -1174,7 +1174,7 @@
 /area/rnd/outpost/storage)
 "fQ" = (
 /obj/structure/inflatable,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "fS" = (
 /obj/structure/bed/double,
@@ -1299,7 +1299,7 @@
 /area/rnd/outpost/anomaly_lab/storage)
 "gv" = (
 /obj/item/flashlight/lantern,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/exterior/mineshaft)
 "gw" = (
 /obj/machinery/atmospherics/portables_connector,
@@ -1602,7 +1602,7 @@
 /area/rnd/outpost/atmos)
 "hI" = (
 /obj/structure/inflatable/door,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "hK" = (
 /obj/effect/floor_decal/industrial/warning/corner,
@@ -2076,7 +2076,7 @@
 "jY" = (
 /obj/structure/table/rack,
 /obj/fiftyspawner/log,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "jZ" = (
 /obj/machinery/firealarm{
@@ -3074,7 +3074,7 @@
 /area/rift/surfacebase/outside/west)
 "oG" = (
 /obj/structure/bonfire/permanent,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "oL" = (
 /obj/effect/floor_decal/rust,
@@ -3873,7 +3873,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "su" = (
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/exterior/mineshaft)
 "sv" = (
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -4092,7 +4092,7 @@
 /area/rnd/outpost/xenoarch_storage)
 "tk" = (
 /obj/structure/loot_pile/mecha/ripley/random_sprite,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "tl" = (
 /obj/structure/cable/yellow{
@@ -5970,7 +5970,7 @@
 /area/rnd/outpost)
 "Cd" = (
 /obj/random/outcrop,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/exterior/mineshaft)
 "Cf" = (
 /obj/effect/floor_decal/corner/purple{
@@ -6190,7 +6190,7 @@
 /area/rnd/outpost/mixing)
 "Dt" = (
 /obj/structure/loot_pile/surface/bones,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "Du" = (
 /obj/machinery/door/airlock/glass_science{
@@ -6307,7 +6307,7 @@
 /area/rnd/outpost/xenoarch_storage)
 "DP" = (
 /obj/random/roguemineloot,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "DT" = (
 /obj/structure/cable/green{
@@ -6957,7 +6957,7 @@
 "Hc" = (
 /obj/structure/closet/crate/miningcar,
 /obj/random/multiple/ores,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/exterior/mineshaft)
 "He" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -9004,7 +9004,7 @@
 /area/rnd/outpost/anomaly_lab)
 "QO" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "QP" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/blue{
@@ -9132,7 +9132,7 @@
 /obj/random/multiple/ores,
 /obj/random/multiple/underdark/miningdrills,
 /obj/item/flashlight/lantern,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/exterior/mineshaft)
 "Rr" = (
 /obj/effect/overlay/snow/floor/grav_edges{
@@ -10833,7 +10833,7 @@
 /area/rift/exterior/nuketown)
 "ZM" = (
 /obj/random/multiple/underdark/miningdrills,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/exterior/mineshaft)
 "ZN" = (
 /obj/machinery/power/apc{

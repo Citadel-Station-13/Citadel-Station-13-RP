@@ -13,3 +13,9 @@
 
 /turf/simulated/mineral/floor/ignore_cavegen
 	ignore_cavegen = TRUE
+
+/turf/simulated/mineral/icerock/ignore_cavegen
+	ignore_cavegen = TRUE
+
+/turf/simulated/mineral/icerock/floor/ignore_cavegen
+	ignore_cavegen = TRUE
