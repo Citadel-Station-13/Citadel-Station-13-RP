@@ -53,10 +53,10 @@ if grep -P '\W\/turf\s*[,\){]' _maps/**/*.dmm; then
     echo "ERROR: base /turf path use detected in maps, please replace with proper paths."
     st=1
 fi;
-# if grep -P '^/*var/' code/**/*.dm; then
-#     echo "ERROR: Unmanaged global var use detected in code, please use the helpers."
-#     st=1
-# fi;
+if grep -P '^/*var/' code/**/*.dm; then
+    echo "ERROR: Unmanaged global var use detected in code, please use the helpers."
+    st=1
+fi;
 # echo "Checking for space indentation"
 # if grep -P '(^ {2})|(^ [^ * ])|(^    +)' code/**/*.dm; then
 #     echo "space indentation detected"

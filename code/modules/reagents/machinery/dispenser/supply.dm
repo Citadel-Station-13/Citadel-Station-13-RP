@@ -148,28 +148,25 @@
 	group = "Reagents"
 
 #define SEC_PACK(_tname, _type, _name, _cname, _cost, _access)\
-	/datum/supply_pack/dispenser_cartridges{\
-		_tname {\
-			name = _name ;\
-			container_name = _cname ;\
-			container_type = /obj/structure/closet/crate/secure;\
-			access = list( _access );\
-			cost = _cost ;\
-			contains = list( _type , _type );\
-			group = "Reagent Cartridges"\
-		}\
-	}
+/datum/supply_pack/dispenser_cartridges/_tname{\
+	name = _name ;\
+	container_name = _cname ;\
+	container_type = /obj/structure/closet/crate/secure;\
+	access = list( _access );\
+	cost = _cost ;\
+	contains = list( _type , _type );\
+	group = "Reagent Cartridges"\
+}\
+
 #define PACK(_tname, _type, _name, _cname, _cost)\
-	/datum/supply_pack/dispenser_cartridges{\
-		_tname {\
-			name = _name ;\
-			container_name = _cname ;\
-			container_type = /obj/structure/closet/crate;\
-			cost = _cost ;\
-			contains = list( _type , _type );\
-			group = "Reagent Cartridges"\
-		}\
-	}
+/datum/supply_pack/dispenser_cartridges/_tname{\
+	name = _name ;\
+	container_name = _cname ;\
+	container_type = /obj/structure/closet/crate;\
+	cost = _cost ;\
+	contains = list( _type , _type );\
+	group = "Reagent Cartridges"\
+}\
 
 // Chemistry-restricted (raw reagents excluding sugar/water)
 //      Datum path  Contents type                                                       Supply pack name                  Container name                         Cost  Container access
