@@ -140,14 +140,14 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_OVERLAYS		500
 #define FIRE_PRIORITY_SMOOTHING		500
 #define FIRE_PRIORITY_TIMER			700
-///never drop input
-#define FIRE_PRIORITY_INPUT			1000
+#define FIRE_PRIORITY_SOUND_LOOPS	800
+#define FIRE_PRIORITY_INPUT			1000 //! Never drop input
 
 /**
-	Create a new timer and add it to the queue.
-	* Arguments:
-	* * callback the callback to call on timer finish
-	* * wait deciseconds to run the timer for
-	* * flags flags for this timer, see: code\__DEFINES\subsystems.dm
-*/
+ * Create a new timer and add it to the queue.
+ * ! Arguments:
+ * * * callback the callback to call on timer finish
+ * * * wait deciseconds to run the timer for
+ * * * flags flags for this timer, see: code\__DEFINES\subsystems.dm
+ */
 #define addtimer(args...) _addtimer(args, file = __FILE__, line = __LINE__)

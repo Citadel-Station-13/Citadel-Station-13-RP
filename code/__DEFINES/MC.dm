@@ -41,6 +41,7 @@
 
 /** Treat wait as a tick count, not DS, run every wait ticks. */
 /// (also forces it to run first in the tick, above even SS_NO_TICK_CHECK subsystems)
+/// (We don't want to be choked out by other subsystems queuing into us)
 /// (implies all runlevels because of how it works)
 /// (overrides SS_BACKGROUND)
 /// This is designed for basically anything that works as a mini-mc (like SStimer)
@@ -78,12 +79,20 @@ DEFINE_BITFIELD(subsystem_flags, list(
 #define SS_SLEEPING 4
 /// in the middle of pausing
 #define SS_PAUSING 5
+
 #define SUBSYSTEM_DEF(X) GLOBAL_REAL(SS##X, /datum/controller/subsystem/##X);\
 /datum/controller/subsystem/##X/New(){\
     NEW_SS_GLOBAL(SS##X);\
     PreInit();\
 }\
 /datum/controller/subsystem/##X
+
+#define TIMER_SUBSYSTEM_DEF(X) GLOBAL_REAL(SS##X, /datum/controller/subsystem/timer/##X);\
+/datum/controller/subsystem/timer/##X/New(){\
+	NEW_SS_GLOBAL(SS##X);\
+	PreInit();\
+}\
+/datum/controller/subsystem/timer/##X
 
 #define PROCESSING_SUBSYSTEM_DEF(X) GLOBAL_REAL(SS##X, /datum/controller/subsystem/processing/##X);\
 /datum/controller/subsystem/processing/##X/New(){\
