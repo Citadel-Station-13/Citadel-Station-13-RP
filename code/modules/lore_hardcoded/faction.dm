@@ -8,8 +8,224 @@
 
 /datum/lore/character_background/faction/nanotrasen
 	name = "Nanotrasen"
-	// @ LORE PEOPLE EDIT THIS
-	desc = "One of the biggest megacorporations in known space."
-	var/contractor_info = "You are an employee under Nanotrasen. You are not a contractor, <i>you belong here.</i>"
+	desc = "Formally established in 2274, NanoTrasen is one of the foremost research and development companies in the galaxy. \
+	Originally focused on logistics and consumer product manufacturing, their swift move into the field of Phoron has lead to \
+	them becoming the foremost experts on the substance and its uses. In the modern day, NanoTrasen prides \
+	itself on being an early adopter to as many new technologies as possible, often offering the newest \
+	products to their employees. In an effort to combat complaints about being 'guinea pigs', Nanotrasen \
+	also offers one of the most comprehensive medical plans in Frontier space, up to and including cloning, \
+	dedicated resleeving, mirror maintenance, and therapy.\
+	<br><br>\
+	NT's most well known products are its phoron based creations; especially those used in Cryotherapy. \
+	It also boasts an prosthetic line, which is provided to its employees as needed, and is used as an incentive \
+	for newly tested posibrains to remain with the company. NanoTrasen's corporate headquarters is based out of \
+	the NTS Creon in the privateyl owned Thebes system."
+	var/contractor_info = "You are an employee working for NanoTrasen. You are not a contractor, <i>you belong here.</i>"
 	job_whitelist = null
 
+/datum/lore/character_background/faction/aether
+	name = "Aether Atmospherics and Recycling"
+	desc = "Aether Atmospherics and Recycling is the prime maintainer and provider of atmospherics systems to both the many ships that navigate the \
+	vast expanses of space, and the life support on current and future Human colonies. The byproducts from the filtration of atmospheres across the galaxy \
+	are then resold for a variety of uses to those willing to buy. With the nature of their services, most work they do is contracted for the construction of \
+	these systems, or staffing to maintain them for colonies across human space. Recently, Aether executed a shockingly effective set of hostile acquisitions, \
+	purchasing Focal Point Energistics and the Xion Manufacturing Group."
+	var/contractor_info = "You're used to being contracted out to maintain systems for other corporations. This assignment is probably routine to you."
+	job_whitelist = list(
+		"quartermaster",
+		"cargo_technician",
+		"station_engineer",
+		"atmospheric_technician",
+		"botanist",
+		"janitor",
+		"assistant",
+		"offduty_civillian",
+		"offduty_cargo",
+		"offduty_engineer"
+		)
+
+/datum/lore/character_background/faction/centauri
+	name = "Centauri Provisions"
+	desc = "Headquartered in Alpha Centauri, Centauri Provisions made a name in the snack-food industry primarily by being the first to focus on colonial holdings. \
+	The various brands of Centauri snackfoods are now household names, from SkrellSnax and Space Mountain Wind to the ubiquitous and allegedly edible Bread Tube. \
+	They are well known for targeting as many species as possible with each brand - which, some will argue, is due to some of those brands being rather bland \
+	in taste and texture. Their staying power is legendary, and many spacers have grown up on a mix of their cheap snacks and protein shakes."
+	var/contractor_info = "Although the occasional marketing trip isn't unheard of, it's meant to be rare. It may seem strange to be assigned to a different Corporate outpost, but it's a good marketing opportunity regardless, and the bosses are watching!"
+	job_whitelist = list(
+		"quartermaster",
+		"cargo_technician",
+		"bartender",
+		"botanist",
+		"chef",
+		"janitor",
+		"entertainer",
+		"assistant",
+		"clown",
+		"mime",
+		"offduty_civillian",
+		"offduty_cargo"
+		)
+
+/datum/lore/character_background/faction/freetradeunion
+	name = "Free Trade Union"
+	desc = "The Free Trade Union is different from other tran-stellars in that they are not just a company, but also a large conglomerate \
+	of various traders and merchants from across the galaxy. They control a sizable fleet of vessels of various classes, all of which maintain autonomy \
+	from the centralized FTU to engage in free trade. They also host a fleet of combat vessels responsible for defending traders when necessary. They \
+	control many large scale trade stations across the galaxy - even in non-human space. Generally, their multi-purpose stations keep local sectors \
+	filled with duty-free shops and wares. Almost anything is sold at FTU markets, including products that are forbidden or have insanely high taxes in \
+	government or Corporate space. The FTU are the originators of the Tradeband language, created specially to serve as the lingua franca for Merchants \
+	across the Galaxy, to ensure members may understand each other regardless of native language or nationality."
+	var/contractor_info = "Working under a Corporation feels strange. You're used to exercising your autonomy, or perhaps you're used to the more strict maritime environment of your former vessel. Being surrounded by Corporate employees reminds you of why you're with the FTU."
+	job_whitelist = list(
+		"quartermaster",
+		"cargo_technician",
+		"pathfinder",
+		"explorer",
+		"field_medic",
+		"station_engineer",
+		"paramedic",
+		"pilot",
+		"botanist",
+		"chef",
+		"janitor",
+		"entertainer",
+		"assistant",
+		"clown",
+		"mime",
+		"offduty_civillian",
+		"offduty_explorer",
+		"offduty_medbay",
+		"offduty_cargo",
+		"offduty_engineer"
+		)
+	innate_languages = list(
+		/datum/language/trader
+		)
+
+/datum/lore/character_background/faction/gilthari
+	name = "Gilthari Exports"
+	desc = "Gilthari started as Sol's premier supplier of luxury goods, specializing in extracting money from the rich and successful that weren't already shareholders. \
+	Their largest holdings are in gambling, but they maintain subsidiaries in everything from VR equipment to luxury watches. Their holdings in \
+	mass media are a smaller but still important part of their empire. Gilthari is known for treating its positronic employees very well, sparking a number of \
+	conspiracy theories. The gorgeous FBP model that Gilthari provides them is a symbol of the corporation's wealth and is known to reach ludicrous prices when \
+	available on the black market, with legal ownership of the chassis limited, by contract, to employees."
+	var/contractor_info = "The drab atmosphere of this assignment is frustrating. Hardly any thought is put into how the environment might be made more elegant and pleasing to the senses. On the bright side, Corporate employees tend to have plenty of disposable income."
+	job_whitelist = list(
+		"quartermaster",
+		"cargo_technician",
+		"shaft_miner",
+		"pathfinder",
+		"explorer",
+		"bartender",
+		"chef",
+		"entertainer",
+		"chaplain",
+		"librarian",
+		"assistant",
+		"offduty_civillian",
+		"offduty_explorer",
+		"offduty_cargo"
+		)
+
+/datum/lore/character_background/faction/hephaestus
+	name = "Hephaestus Industries"
+	desc = "Hephaestus Industries is the largest supplier of arms, ammunition, and small millitary vehicles on the Frontier. \
+	Hephaestus products have a reputation for reliability, and the corporation itself has a notable trade and research pact \
+	with NanoTrasen. They otherwise enforce pacts and trade arrangements with the help of a fairly large asset-protection contingent which \
+	prevents any contracting polities from using their own materiel against them. The Orion Confederation itself is one of Hephaestus' largest \
+	non-corporate bulk contractors."
+	var/contractor_info = "NanoTrasen and Hephaestus have a long and beneficial working relationship. Your employers would not like it if you strained that relationship in any way, and therefore, neither would you."
+	job_whitelist = list(
+		"quartermaster",
+		"cargo_technician",
+		"shaft_miner",
+		"station_engineer",
+		"atmospheric_technician",
+		"assistant",
+		"offduty_civillian",
+		"offduty_cargo",
+		"offduty_engineer"
+		)
+
+/datum/lore/character_background/faction/oculum
+	name = "Oculum News Network"
+	desc = "Oculum owns approximately 30% of Frontier-wide news networks, including microblogging aggregate sites, network and comedy news, and even \
+	old-fashioned newspapers. Staunchly apolitical, they specialize in delivering the most popular news available - which means telling people what they \
+	already want to hear. Oculum is a specialist in branding, and most people don't know that the reactionary Daedalus Dispatch newsletter and the radically \
+	transhuman Liquid Steel webcrawler are in fact both controlled by the same organization."
+	var/contractor_info = "You're no stranger to working in a variety of Corporate environments. However you conduct your business, you're always chasing the story, even if that brings you into conflict with whoever's contracting you at the time."
+	job_whitelist = list(
+		"bartender",
+		"entertainer",
+		"librarian",
+		"assistant",
+		"offduty_civillian"
+		)
+
+/datum/lore/character_background/faction/veymed
+	name = "Vey-Med"
+	desc = "VVey-Med is a medical supply and research company notable for being largely owned and opperated by Skrell. \
+	Despite their alien origin, Vey-Med has obtained market dominance on the Frontier due to the quality and reliability \
+	of their medical equipment - from surgical tools and industrial medical devices to the Oddyseus trauma response mecha \
+	and everything in between. Their equipment tends to be top-of-the-line, most obviously shown by their incredibly \
+	human-like FBP designs. Vey's rise to stardom came from their introduction of cosmetic resleeving, although in \
+	recent years they've been forced to diversify as their patents expired and NanoTrasen-made medications became \
+	essential to modern sleeving techniques. Vey-Medical possesses a number of trade agreements and research pacts with NanoTrasen, \
+	resulting in what is functionally considered an alliance."
+	var/contractor_info = "Working with NanoTrasen has become a fact of life for Vey-Med employees over the years. You're no stranger to these types of environments, although you have seen better medical facilities before."
+	job_whitelist = list(
+		"field_medic",
+		"medical_doctor",
+		"paramedic",
+		"chemist",
+		"psychiatrist",
+		"pilot",
+		"assistant",
+		"offduty_civillian",
+		"offduty_explorer",
+		"offduty_medbay"
+		)
+
+/datum/lore/character_background/faction/wardtakahashi
+	name = "Ward-Takahashi GMB"
+	desc = "Ward-Takahashi focuses on the sale of small consumer electronics, with its computers, communicators, \
+	and mid-class automobiles a fixture of many households. Less famously, Ward-Takahashi also supplies most \
+	of the AI cores on which vital control systems are mounted, and it is this branch of their industry that has \
+	led to their tertiary interest in the development and sale of high-grade AI systems. Ward-Takahashi's economies \
+	of scale frequently steal market share from Nanotrasen's high-price products, leading to a bitter rivalry in the \
+	consumer electronics market."
+	var/contractor_info = "Being allowed to work on a NanoTrasen facility is atypical. In fact, being employed here at all has made you suspicious. You're probably being watched. But Headquarters would love to hear about anything strange that you find."
+	job_whitelist = list(
+		"quartermaster",
+		"cargo_technician",
+		"shaft_miner",
+		"station_engineer",
+		"atmospheric_technician",
+		"janitor",
+		"assistant",
+		"offduty_civillian",
+		"offduty_cargo",
+		"offduty_engineer"
+		)
+
+/datum/lore/character_background/faction/zenghu
+	name = "Zeng-Hu Pharmaceuticals"
+	desc = "Zeng-Hu is an old corporation, based close to Confederation space. Until the discovery of Phoron, Zeng-Hu maintained a stranglehold \
+	on the market for medications, and many household names are patentted by Zeng-Hu-- Bicaridine, Dylovene, Tricordrizine, \
+	and Dexalin all came from a Zeng-Hu medical laboratory. Zeng-Hu's fortunes have been in decline as Nanotrasen's near monopoly \
+	on phoron research cut into their R&D capabilities and Vey-Med's superior medical equipment effectively decimated their own equipment \
+	interests. The three-way rivalry between these companies for dominance in the medical field is well-known and a matter of \
+	constant economic speculation."
+	var/contractor_info = "You dislike working under NanoTrasen. Zeng Hu saw fit to assign you to this post as part of a work exchange program. Although you were not explicitly told, you are presumably here to keep an eye on NanoTrasen's medical research."
+	job_whitelist = list(
+		"field_medic",
+		"medical_doctor",
+		"paramedic",
+		"chemist",
+		"psychiatrist",
+		"botanist",
+		"assistant",
+		"offduty_civillian",
+		"offduty_explorer",
+		"offduty_medbay"
+		)
