@@ -13,3 +13,26 @@
   - refactor: new, multiseat vehicle backend added
   - refactor: riding components (handlers and filters)
   - refactor: buckling
+2022-10-02:
+  Captain277:
+  - rscadd: Adds the Kanabo.
+  - bugfix: Fixes turf edge blending.
+2022-10-03:
+  jakeramsay007:
+  - bugfix: Borgs can now remove beakers from the grinder correctly
+  - bugfix: Stunprods and teleprods can once more be constructed
+  - rscdel: Removed redundant shielding and cell UI elements from the atmospheric
+      canister UI
+  - bugfix: Fixes alt-clicking for borgs to not double-call AltClick() thereby breaking
+      some interactions
+2022-10-05:
+  Captain277:
+  - rscadd: Adds the Twintails Short Hairstyle.
+  FreeStylaLT:
+  - tweak: Makes Ears and Horns separate
+  TheLordME:
+  - tweak: tweaked xenomorph hybrids to pass over tables like teshari
+  - bugfix: fixed plasma transfer only working at a distance
+  Zandario:
+  - bugfix: Fixed the Account Terminal's Visual
+  - code_imp: Un-relative-defined some procs
