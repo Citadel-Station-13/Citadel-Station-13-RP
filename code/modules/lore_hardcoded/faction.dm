@@ -32,16 +32,16 @@
 	purchasing Focal Point Energistics and the Xion Manufacturing Group."
 	var/contractor_info = "You're used to being contracted out to maintain systems for other corporations. This assignment is probably routine to you."
 	job_whitelist = list(
-		"quartermaster",
-		"cargo_technician",
-		"station_engineer",
-		"atmospheric_technician",
-		"botanist",
-		"janitor",
-		"assistant",
-		"offduty_civillian",
-		"offduty_cargo",
-		"offduty_engineer"
+		JOB_ID_QUARTERMASTER,
+		JOB_ID_CARGO_TECHNICIAN,
+		JOB_ID_STATION_ENGINEER,
+		JOB_ID_ATMOSPHERIC_TECHNICIAN,
+		JOB_ID_BOTANIST,
+		JOB_ID_JANITOR,
+		JOB_ID_ASSISTANT,
+		JOB_ID_OFFDUTY_CIVILLIAN,
+		JOB_ID_OFFDUTY_CARGO,
+		JOB_ID_OFFDUTY_ENGINEER
 		)
 
 /datum/lore/character_background/faction/centauri
@@ -52,18 +52,18 @@
 	in taste and texture. Their staying power is legendary, and many spacers have grown up on a mix of their cheap snacks and protein shakes."
 	var/contractor_info = "Although the occasional marketing trip isn't unheard of, it's meant to be rare. It may seem strange to be assigned to a different Corporate outpost, but it's a good marketing opportunity regardless, and the bosses are watching!"
 	job_whitelist = list(
-		"quartermaster",
-		"cargo_technician",
-		"bartender",
-		"botanist",
-		"chef",
-		"janitor",
-		"entertainer",
-		"assistant",
-		"clown",
-		"mime",
-		"offduty_civillian",
-		"offduty_cargo"
+		JOB_ID_QUARTERMASTER,
+		JOB_ID_CARGO_TECHNICIAN,
+		JOB_ID_BARTENDER,
+		JOB_ID_BOTANIST,
+		JOB_ID_CHEF,
+		JOB_ID_JANITOR,
+		JOB_ID_ENTERTAINER,
+		JOB_ID_ASSISTANT,
+		JOB_ID_CLOWN,
+		JOB_ID_MIME,
+		JOB_ID_OFFDUTY_CIVILLIAN,
+		JOB_ID_OFFDUTY_CARGO
 		)
 
 /datum/lore/character_background/faction/freetradeunion
@@ -77,26 +77,26 @@
 	across the Galaxy, to ensure members may understand each other regardless of native language or nationality."
 	var/contractor_info = "Working under a Corporation feels strange. You're used to exercising your autonomy, or perhaps you're used to the more strict maritime environment of your former vessel. Being surrounded by Corporate employees reminds you of why you're with the FTU."
 	job_whitelist = list(
-		"quartermaster",
-		"cargo_technician",
-		"pathfinder",
-		"explorer",
-		"field_medic",
-		"station_engineer",
-		"paramedic",
-		"pilot",
-		"botanist",
-		"chef",
-		"janitor",
-		"entertainer",
-		"assistant",
-		"clown",
-		"mime",
-		"offduty_civillian",
-		"offduty_explorer",
-		"offduty_medbay",
-		"offduty_cargo",
-		"offduty_engineer"
+		JOB_ID_QUARTERMASTER,
+		JOB_ID_CARGO_TECHNICIAN,
+		JOB_ID_PATHFINDER,
+		JOB_ID_EXPLORER,
+		JOB_ID_FIELD_MEDIC,
+		JOB_ID_STATION_ENGINEER,
+		JOB_ID_PARAMEDIC,
+		JOB_ID_PILOT,
+		JOB_ID_BOTANIST,
+		JOB_ID_CHEF,
+		JOB_ID_JANITOR,
+		JOB_ID_ENTERTAINER,
+		JOB_ID_ASSISTANT,
+		JOB_ID_CLOWN,
+		JOB_ID_MIME,
+		JOB_ID_OFFDUTY_CIVILLIAN,
+		JOB_ID_OFFDUTY_EXPLORER,
+		JOB_ID_OFFDUTY_MEDBAY,
+		JOB_ID_OFFDUTY_CARGO,
+		JOB_ID_OFFDUTY_ENGINEER
 		)
 	innate_languages = list(
 		/datum/language/trader
@@ -111,20 +111,20 @@
 	available on the black market, with legal ownership of the chassis limited, by contract, to employees."
 	var/contractor_info = "The drab atmosphere of this assignment is frustrating. Hardly any thought is put into how the environment might be made more elegant and pleasing to the senses. On the bright side, Corporate employees tend to have plenty of disposable income."
 	job_whitelist = list(
-		"quartermaster",
-		"cargo_technician",
-		"shaft_miner",
-		"pathfinder",
-		"explorer",
-		"bartender",
-		"chef",
-		"entertainer",
-		"chaplain",
-		"librarian",
-		"assistant",
-		"offduty_civillian",
-		"offduty_explorer",
-		"offduty_cargo"
+		JOB_ID_QUARTERMASTER,
+		JOB_ID_CARGO_TECHNICIAN,
+		JOB_ID_SHAFT_MINER,
+		JOB_ID_PATHFINDER,
+		JOB_ID_EXPLORER,
+		JOB_ID_BARTENDER,
+		JOB_ID_CHEF,
+		JOB_ID_ENTERTAINER,
+		JOB_ID_CHAPLAIN,
+		JOB_ID_LIBRARIAN,
+		JOB_ID_ASSISTANT,
+		JOB_ID_OFFDUTY_CIVILLIAN,
+		JOB_ID_OFFDUTY_EXPLORER,
+		JOB_ID_OFFDUTY_CARGO
 		)
 
 /datum/lore/character_background/faction/hephaestus
@@ -136,15 +136,15 @@
 	non-corporate bulk contractors."
 	var/contractor_info = "NanoTrasen and Hephaestus have a long and beneficial working relationship. Your employers would not like it if you strained that relationship in any way, and therefore, neither would you."
 	job_whitelist = list(
-		"quartermaster",
-		"cargo_technician",
-		"shaft_miner",
-		"station_engineer",
-		"atmospheric_technician",
-		"assistant",
-		"offduty_civillian",
-		"offduty_cargo",
-		"offduty_engineer"
+		JOB_ID_QUARTERMASTER,
+		JOB_ID_CARGO_TECHNICIAN,
+		JOB_ID_SHAFT_MINER,
+		JOB_ID_STATION_ENGINEER,
+		JOB_ID_ATMOSPHERIC_TECHNICIAN,
+		JOB_ID_ASSISTANT,
+		JOB_ID_OFFDUTY_CIVILLIAN,
+		JOB_ID_OFFDUTY_CARGO,
+		JOB_ID_OFFDUTY_ENGINEER
 		)
 
 /datum/lore/character_background/faction/oculum
@@ -155,16 +155,16 @@
 	transhuman Liquid Steel webcrawler are in fact both controlled by the same organization."
 	var/contractor_info = "You're no stranger to working in a variety of Corporate environments. However you conduct your business, you're always chasing the story, even if that brings you into conflict with whoever's contracting you at the time."
 	job_whitelist = list(
-		"bartender",
-		"entertainer",
-		"librarian",
-		"assistant",
-		"offduty_civillian"
+		JOB_ID_BARTENDER,
+		JOB_ID_ENTERTAINER,
+		JOB_ID_LIBRARIAN,
+		JOB_ID_ASSISTANT,
+		JOB_ID_OFFDUTY_CIVILLIAN
 		)
 
 /datum/lore/character_background/faction/veymed
 	name = "Vey-Med"
-	desc = "VVey-Med is a medical supply and research company notable for being largely owned and opperated by Skrell. \
+	desc = "Vey-Med is a medical supply and research company notable for being largely owned and opperated by Skrell. \
 	Despite their alien origin, Vey-Med has obtained market dominance on the Frontier due to the quality and reliability \
 	of their medical equipment - from surgical tools and industrial medical devices to the Oddyseus trauma response mecha \
 	and everything in between. Their equipment tends to be top-of-the-line, most obviously shown by their incredibly \
@@ -174,16 +174,16 @@
 	resulting in what is functionally considered an alliance."
 	var/contractor_info = "Working with NanoTrasen has become a fact of life for Vey-Med employees over the years. You're no stranger to these types of environments, although you have seen better medical facilities before."
 	job_whitelist = list(
-		"field_medic",
-		"medical_doctor",
-		"paramedic",
-		"chemist",
-		"psychiatrist",
-		"pilot",
-		"assistant",
-		"offduty_civillian",
-		"offduty_explorer",
-		"offduty_medbay"
+		JOB_ID_FIELD_MEDIC,
+		JOB_ID_MEDICAL_DOCTOR,
+		JOB_ID_PARAMEDIC,
+		JOB_ID_CHEMIST,
+		JOB_ID_PSYCHIATRIST,
+		JOB_ID_PILOT,
+		JOB_ID_ASSISTANT,
+		JOB_ID_OFFDUTY_CIVILLIAN,
+		JOB_ID_OFFDUTY_EXPLORER,
+		JOB_ID_OFFDUTY_MEDBAY
 		)
 
 /datum/lore/character_background/faction/wardtakahashi
@@ -196,16 +196,16 @@
 	consumer electronics market."
 	var/contractor_info = "Being allowed to work on a NanoTrasen facility is atypical. In fact, being employed here at all has made you suspicious. You're probably being watched. But Headquarters would love to hear about anything strange that you find."
 	job_whitelist = list(
-		"quartermaster",
-		"cargo_technician",
-		"shaft_miner",
-		"station_engineer",
-		"atmospheric_technician",
-		"janitor",
-		"assistant",
-		"offduty_civillian",
-		"offduty_cargo",
-		"offduty_engineer"
+		JOB_ID_QUARTERMASTER,
+		JOB_ID_CARGO_TECHNICIAN,
+		JOB_ID_SHAFT_MINER,
+		JOB_ID_STATION_ENGINEER,
+		JOB_ID_ATMOSPHERIC_TECHNICIAN,
+		JOB_ID_JANITOR,
+		JOB_ID_ASSISTANT,
+		JOB_ID_OFFDUTY_CIVILLIAN,,
+		JOB_ID_OFFDUTY_CARGO,
+		JOB_ID_OFFDUTY_ENGINEER
 		)
 
 /datum/lore/character_background/faction/zenghu
@@ -218,14 +218,14 @@
 	constant economic speculation."
 	var/contractor_info = "You dislike working under NanoTrasen. Zeng Hu saw fit to assign you to this post as part of a work exchange program. Although you were not explicitly told, you are presumably here to keep an eye on NanoTrasen's medical research."
 	job_whitelist = list(
-		"field_medic",
-		"medical_doctor",
-		"paramedic",
-		"chemist",
-		"psychiatrist",
-		"botanist",
-		"assistant",
-		"offduty_civillian",
-		"offduty_explorer",
-		"offduty_medbay"
+		JOB_ID_FIELD_MEDIC,
+		JOB_ID_MEDICAL_DOCTOR,
+		JOB_ID_PARAMEDIC,
+		JOB_ID_CHEMIST,
+		JOB_ID_PSYCHIATRIST,
+		JOB_ID_BOTANIST,
+		JOB_ID_ASSISTANT,
+		JOB_ID_OFFDUTY_CIVILLIAN,
+		JOB_ID_OFFDUTY_EXPLORER,
+		JOB_ID_OFFDUTY_MEDBAY
 		)
