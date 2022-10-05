@@ -16,7 +16,31 @@
  * - inhand state only supports left and right; no weird index-based for now. this can easily change.
  *
  * * State Generation
- * #warn impl
+ * This is only pertinent to single-icon rendering, which the system falls back to
+ * if it can't find anything else. This is what people should be using for non-reused
+ * item sprites.
+ *
+ * Pattern:
+ *
+ * state_slot_bodytype, where
+ * state: worn_state || icon_state
+ * slot: the inventory slot's `render_key`, or null if worn slot is ignored
+ *       if it's a hand, it'll be _left or _right if it's not ignored.
+ * bodytype: if not trampled, or ignored, the bodytype as string (see DEFINES)
+ *           if trampled to default, or it is default, or is ignored, this is null
+ *
+ * Obviously the _ part of the state is left out if the part doesn't exist
+ *
+ * Examples:
+ * held:
+ * pickaxe
+ *
+ * worn:
+ * pickaxe_belt		(implicit default bodytype)
+ * pickaxe_belt_teshari
+ * pickaxe_left
+ * pickaxe_right
+ * pickaxe_right_teshari		(overrides on teshari)
  *
  * * Coloration
  *
