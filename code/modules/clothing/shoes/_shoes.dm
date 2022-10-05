@@ -29,11 +29,6 @@
 	force = 2
 	var/overshoes = 0
 	species_restricted = list("exclude",SPECIES_TESHARI, SPECIES_VOX)
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/shoes.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/shoes.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/feet.dmi'
-		)
 	drop_sound = 'sound/items/drop/shoes.ogg'
 // todo: this is an awful way to do it but it works
 	unequip_sound = 'sound/items/drop/shoes.ogg'

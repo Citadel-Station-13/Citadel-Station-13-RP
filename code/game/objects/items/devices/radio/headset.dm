@@ -475,11 +475,6 @@
 	centComm = 1
 	ks2type = /obj/item/encryptionkey/ert
 
-/obj/item/radio/headset
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/ears.dmi',
-						SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/ears.dmi',
-						SPECIES_VOX = 'icons/mob/clothing/species/vox/ears.dmi')
-
 /obj/item/radio/headset/mob_headset	//Adminbus headset for simplemob shenanigans.
 	name = "nonhuman radio implant"
 	desc = "An updated, modular intercom that requires no hands to operate. Takes encryption keys"

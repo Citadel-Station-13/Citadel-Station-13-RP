@@ -7,10 +7,6 @@
 	desc = "You wear this on your back and put items into it."
 	icon = 'icons/obj/clothing/backpack.dmi'
 	icon_state = "backpack"
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/back.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/back.dmi'
-		)
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BACK
 	max_w_class = ITEMSIZE_LARGE

@@ -844,13 +844,6 @@ BLIND     // can't see anything
 	off_state = "tajblind"
 	body_parts_covered = EYES
 
-/obj/item/clothing/glasses
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/eyes.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/eyes.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/eyes.dmi'
-		)
-
 /obj/item/clothing/glasses/welding/laconic
 	name = "laconic goggles"
 	desc = "Welding goggles fashioned out of brass. Brass goggles."

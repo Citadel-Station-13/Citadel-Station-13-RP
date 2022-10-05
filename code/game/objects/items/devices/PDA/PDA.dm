@@ -11,7 +11,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 	item_state = "electronic"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_ID | SLOT_BELT
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/id.dmi')
 
 	//Main variables
 	var/pdachoice = 1

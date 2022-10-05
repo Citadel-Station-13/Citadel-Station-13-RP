@@ -21,11 +21,6 @@
 	body_parts_covered = HANDS
 	slot_flags = SLOT_GLOVES
 	attack_verb = list("challenged")
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/gloves.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/gloves.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/hands.dmi'
-		)
 	drop_sound = 'sound/items/drop/gloves.ogg'
 // todo: this is an awful way to do it but it works
 	unequip_sound = 'sound/items/drop/gloves.ogg'

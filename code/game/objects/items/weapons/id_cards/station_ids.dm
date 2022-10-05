@@ -7,10 +7,6 @@
 		SLOT_ID_WORN_ID = "id"
 	)
 
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/id.dmi'
-		)
-
 	/// Access levels held by this card.
 	var/list/access = list()
 	/// The name registered_name on the card.

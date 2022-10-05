@@ -167,10 +167,6 @@
 	desc = "An armored helmet capable of being fitted with a multitude of attachments."
 	icon_state = "swathelm"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
-	sprite_sheets = list(
-		SPECIES_TAJ = 'icons/mob/clothing/species/tajaran/helmet.dmi',
-		SPECIES_UNATHI = 'icons/mob/clothing/species/unathi/helmet.dmi',
-		)
 
 	armor = list(melee = 60, bullet = 60, laser = 60, energy = 40, bomb = 40, bio = 0, rad = 0)
 	flags_inv = HIDEEARS|BLOCKHAIR

@@ -221,7 +221,7 @@
 		data[WORN_DATA_SIZE_X] = icon_dimension_x
 		data[WORN_DATA_SIZE_Y] = icon_dimension_y
 
-	//? layer ; wonr_layer --> slot defaults for the item in question
+	//? layer ; worn_layer --> slot defaults for the item in question
 	data[WORN_DATA_LAYER] = worn_layer || slot_meta.resolve_default_layer(bodytype, M, src)
 
 	return data

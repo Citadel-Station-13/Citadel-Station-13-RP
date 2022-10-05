@@ -17,12 +17,6 @@
 	var/on = 0
 	var/image/helmet_light
 
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/head.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/head.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/head.dmi'
-		)
-
 	drop_sound = 'sound/items/drop/hat.ogg'
 // todo: this is an awful way to do it but it works
 	unequip_sound = 'sound/items/drop/hat.ogg'
