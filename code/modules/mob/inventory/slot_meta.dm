@@ -255,6 +255,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		SPECIES_UNATHI = 'icons/mob/clothing/species/unathi/helmet.dmi',
 		SPECIES_AKULA       = 'icons/mob/clothing/species/akula/helmet.dmi',
 		SPECIES_NEVREAN     = 'icons/mob/clothing/species/nevrean/helmet.dmi',
+		SPECIES_PHORONOID   = 'icons/mob/clothing/species/phoronoid/head.dmi',
 		SPECIES_PROMETHEAN  = 'icons/mob/clothing/species/skrell/helmet.dmi',
 		SPECIES_SERGAL      = 'icons/mob/clothing/species/sergal/helmet.dmi',
 		SPECIES_SKRELL      = 'icons/mob/clothing/species/skrell/helmet.dmi',
@@ -281,6 +282,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/suits.dmi',
 		SPECIES_AKULA       = 'icons/mob/clothing/species/akula/suits.dmi',
 		SPECIES_NEVREAN     = 'icons/mob/clothing/species/nevrean/suits.dmi',
+		SPECIES_PHORONOID   = 'icons/mob/clothing/species/phoronoid/suits.dmi',
 		SPECIES_PROMETHEAN  = 'icons/mob/clothing/species/skrell/suits.dmi',
 		SPECIES_SERGAL      = 'icons/mob/clothing/species/sergal/suits.dmi',
 		SPECIES_SKRELL      = 'icons/mob/clothing/species/skrell/suits.dmi',
@@ -293,7 +295,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		SPECIES_ZORREN_FLAT = 'icons/mob/clothing/species/fennec/suits.dmi',
 		SPECIES_ZORREN_HIGH = 'icons/mob/clothing/species/fox/suits.dmi',
 		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/suits.dmi',
-		)
+		SPECIES_ZADDAT      = 'icons/mob/clothing/species/zaddat/suits.dmi',
+	)
 	render_layer = SUIT_LAYER
 
 /datum/inventory_slot_meta/inventory/belt
@@ -376,6 +379,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/shoes.dmi',
 		SPECIES_VOX = 'icons/mob/clothing/species/vox/shoes.dmi',
 		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/feet.dmi',
+		SPECIES_ZADDAT    = 'icons/mob/clothing/species/zaddat/shoes.dmi',
  	)
 	render_layer = list(SHOES_LAYER, SHOES_LAYER_ALT)
 

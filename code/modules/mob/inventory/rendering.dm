@@ -88,11 +88,13 @@
 	/// state to use; icon_state is used if this isn't set
 	var/worn_state
 	/// bodytypes that get trampled to default - set to all if we shouldn't care about bodytypes at all
-	var/worn_bodytypes_trampled = NONE
+	var/worn_bodytypes_ignored = NONE
+	/// bodytypes that *can* get trampled to default if the default icon is not found on species
+	var/worn_bodytypes_converted = ALL
 	/// do we care about slot render key?
-	var/worn_slot_trampled = TRUE
+	var/worn_slot_ignored = TRUE
 	/// do we care about inhand _left and _right keys?
-	var/worn_inhand_trampled = FALSE
+	var/worn_inhand_ignored = FALSE
 	/// worn rendering flags; reserved for now
 	var/worn_render_flags = NONE
 

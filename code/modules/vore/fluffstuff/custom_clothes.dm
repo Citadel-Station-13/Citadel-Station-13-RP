@@ -560,9 +560,6 @@
 	icon_state = "latexmaid"
 	item_state = "latexmaid_mob"
 
-	sprite_sheets = list(
-			SPECIES_TESHARI = 'icons/vore/custom_clothes_tesh_vr.dmi'
-			)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 //Aztectornado:Tron inspired Siren outfit

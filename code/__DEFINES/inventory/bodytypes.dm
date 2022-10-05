@@ -27,8 +27,14 @@
 #define BODYTYPE_ZORREN_HIGHLANDER	(1<<13)
 /// flatlander zorren
 #define BODYTYPE_ZORREN_FLATLANDER	(1<<14)
+/// zaddat
+#define BODYTYPE_ZADDAT				(1<<15)
+/// phoronoid
+#define BODYTYPE_PHORONOID			(1<<16)
+/// werebeast
+#define BODYTYPE_WEREBEAST			(1<<17)
 
-#warn impl vox, nevrean, promethean, zorren's in species and the shit below
+#warn impl vox, nevrean, promethean, zorren's, zaddat, phoronoid, werebeastin species and the shit below
 
 // todo: what are we going to do with these?
 /*
