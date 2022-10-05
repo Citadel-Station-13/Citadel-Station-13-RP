@@ -1,0 +1,7 @@
+author: "ktoma36"
+delete-after: True
+changes: 
+  - rscadd: "Submap Generation for the west part of rift"
+  - rscadd: "Directional Variants for some objects and some objects"
+  - bugfix: "Fixed a few bugs regarding window spawners, map defines,"
+  - code_imp: "Touched up on map defines and lateloading for the rift. Messed with largecrates to get them to work as intended"
