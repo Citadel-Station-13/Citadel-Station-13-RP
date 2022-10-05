@@ -378,7 +378,7 @@
 // Helmet Covers
 /////////////////
 
-obj/item/clothing/accessory/armor/helmcover
+/obj/item/clothing/accessory/armor/helmcover
 	name = "helmet cover"
 	desc = "A fabric cover for armored helmets."
 	icon_override = 'icons/mob/clothing/ties.dmi'

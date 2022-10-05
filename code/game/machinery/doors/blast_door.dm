@@ -276,7 +276,7 @@
 
 // SUBTYPE: Regular
 // Your classical blast door, found almost everywhere.
-obj/machinery/door/blast/regular
+/obj/machinery/door/blast/regular
 	icon_state_open = "pdoor0"
 	icon_state_opening = "pdoorc0"
 	icon_state_closed = "pdoor1"
@@ -284,7 +284,7 @@ obj/machinery/door/blast/regular
 	icon_state = "pdoor1"
 	maxhealth = 600
 
-obj/machinery/door/blast/regular/open
+/obj/machinery/door/blast/regular/open
 	icon_state = "pdoor0"
 	density = 0
 	opacity = 0

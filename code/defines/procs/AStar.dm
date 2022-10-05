@@ -1,104 +1,106 @@
-
-/*
-A Star pathfinding algorithm
-Returns a list of tiles forming a path from A to B, taking dense objects as well as walls, and the orientation of
-windows along the route into account.
-Use:
-your_list = AStar(start location, end location, adjacent turf proc, distance proc)
-For the adjacent turf proc i wrote:
-/turf/proc/AdjacentTurfs
-And for the distance one i wrote:
-/turf/proc/Distance
-So an example use might be:
-
-src.path_list = AStar(src.loc, target.loc, /turf/proc/AdjacentTurfs, /turf/proc/Distance)
-
-Note: The path is returned starting at the END node, so i wrote reverselist to reverse it for ease of use.
-
-src.path_list = reverselist(src.pathlist)
-
-Then to start on the path, all you need to do it:
-Step_to(src, src.path_list[1])
-src.path_list -= src.path_list[1] or equivilent to remove that node from the list.
-
-Optional extras to add on (in order):
-MaxNodes: The maximum number of nodes the returned path can be (0 = infinite)
-Maxnodedepth: The maximum number of nodes to search (default: 30, 0 = infinite)
-Mintargetdist: Minimum distance to the target before path returns, could be used to get
-near a target, but not right to it - for an AI mob with a gun, for example.
-Minnodedist: Minimum number of nodes to return in the path, could be used to give a path a minimum
-length to avoid portals or something i guess?? Not that they're counted right now but w/e.
-*/
+/**
+ * A Star pathfinding algorithm
+ *
+ * Returns a list of tiles forming a path from A to B, taking dense objects as well as walls, and the orientation of
+ * windows along the route into account.
+ *
+ *
+ * Use:
+ * your_list = AStar(start location, end location, adjacent turf proc, distance proc)
+ * For the adjacent turf proc i wrote:
+ * /turf/proc/AdjacentTurfs
+ * And for the distance one i wrote:
+ * /turf/proc/Distance
+ *
+ * So an example use might be:
+ *
+ * src.path_list = AStar(src.loc, target.loc, /turf/proc/AdjacentTurfs, /turf/proc/Distance)
+ *
+ * Note: The path is returned starting at the END node, so i wrote reverselist to reverse it for ease of use.
+ *
+ * src.path_list = reverselist(src.pathlist)
+ *
+ * Then to start on the path, all you need to do it:
+ * Step_to(src, src.path_list[1])
+ * src.path_list -= src.path_list[1] or equivilent to remove that node from the list.
+ *
+ * Optional extras to add on (in order):
+ * MaxNodes: The maximum number of nodes the returned path can be (0 = infinite)
+ * Maxnodedepth: The maximum number of nodes to search (default: 30, 0 = infinite)
+ * Mintargetdist: Minimum distance to the target before path returns, could be used to get
+ * near a target, but not right to it - for an AI mob with a gun, for example.
+ * Minnodedist: Minimum number of nodes to return in the path, could be used to give a path a minimum
+ * length to avoid portals or something i guess?? Not that they're counted right now but w/e.
+ */
 
 // Modified to provide ID argument - supplied to 'adjacent' proc, defaults to null
 // Used for checking if route exists through a door which can be opened
 
 // Also added 'exclude' turf to avoid travelling over; defaults to null
 
-
-PriorityQueue
+/PriorityQueue
 	var/list/queue
 	var/comparison_function
 
-	New(compare)
-		queue = list()
-		comparison_function = compare
+/PriorityQueue/New(compare)
+	queue = list()
+	comparison_function = compare
 
-	proc/IsEmpty()
-		return !queue.len
+/PriorityQueue/proc/IsEmpty()
+	return !queue.len
 
-	proc/Enqueue(var/data)
-		queue.Add(data)
-		var/index = queue.len
+/PriorityQueue/proc/Enqueue(data)
+	queue.Add(data)
+	var/index = queue.len
 
-		//From what I can tell, this automagically sorts the added data into the correct location.
-		while(index > 2 && call(comparison_function)(queue[index / 2], queue[index]) > 0)
-			queue.Swap(index, index / 2)
-			index /= 2
+	//From what I can tell, this automagically sorts the added data into the correct location.
+	while(index > 2 && call(comparison_function)(queue[index / 2], queue[index]) > 0)
+		queue.Swap(index, index / 2)
+		index /= 2
 
-	proc/Dequeue()
-		if(!queue.len)
-			return 0
-		return Remove(1)
+/PriorityQueue/proc/Dequeue()
+	if(!queue.len)
+		return 0
+	return Remove(1)
 
-	proc/Remove(var/index)
-		if(index > queue.len)
-			return 0
+/PriorityQueue/proc/Remove(index)
+	if(index > queue.len)
+		return 0
 
-		var/thing = queue[index]
-		queue.Swap(index, queue.len)
-		queue.Cut(queue.len)
-		if(index < queue.len)
-			FixQueue(index)
-		return thing
+	var/thing = queue[index]
+	queue.Swap(index, queue.len)
+	queue.Cut(queue.len)
+	if(index < queue.len)
+		FixQueue(index)
+	return thing
 
-	proc/FixQueue(var/index)
-		var/child = 2 * index
-		var/item = queue[index]
+/PriorityQueue/proc/FixQueue(index)
+	var/child = 2 * index
+	var/item = queue[index]
 
-		while(child <= queue.len)
-			if(child < queue.len && call(comparison_function)(queue[child], queue[child + 1]) > 0)
-				child++
-			if(call(comparison_function)(item, queue[child]) > 0)
-				queue[index] = queue[child]
-				index = child
-			else
-				break
-			child = 2 * index
-		queue[index] = item
+	while(child <= queue.len)
+		if(child < queue.len && call(comparison_function)(queue[child], queue[child + 1]) > 0)
+			child++
+		if(call(comparison_function)(item, queue[child]) > 0)
+			queue[index] = queue[child]
+			index = child
+		else
+			break
+		child = 2 * index
+	queue[index] = item
 
-	proc/List()
-		return queue.Copy()
+/PriorityQueue/proc/List()
+	return queue.Copy()
 
-	proc/Length()
-		return queue.len
+/PriorityQueue/proc/Length()
+	return queue.len
 
-	proc/RemoveItem(data)
-		var/index = queue.Find(data)
-		if(index)
-			return Remove(index)
+/PriorityQueue/proc/RemoveItem(data)
+	var/index = queue.Find(data)
+	if(index)
+		return Remove(index)
 
-PathNode
+/PathNode
 	var/datum/position
 	var/PathNode/previous_node
 
@@ -108,21 +110,21 @@ PathNode
 	var/cost
 	var/nodes_traversed
 
-	New(_position, _previous_node, _known_cost, _cost, _nodes_traversed)
-		position = _position
-		previous_node = _previous_node
+/PathNode/New(_position, _previous_node, _known_cost, _cost, _nodes_traversed)
+	position = _position
+	previous_node = _previous_node
 
-		known_cost = _known_cost
-		cost = _cost
-		estimated_cost = cost + known_cost
+	known_cost = _known_cost
+	cost = _cost
+	estimated_cost = cost + known_cost
 
-		best_estimated_cost = estimated_cost
-		nodes_traversed = _nodes_traversed
+	best_estimated_cost = estimated_cost
+	nodes_traversed = _nodes_traversed
 
 /proc/PathWeightCompare(PathNode/a, PathNode/b)
 	return a.estimated_cost - b.estimated_cost
 
-/proc/AStar(var/start, var/end, var/adjacent, var/dist, var/max_nodes, var/max_node_depth = 30, var/min_target_dist = 0, var/min_node_dist, var/id, var/datum/exclude)
+/proc/AStar(start, end, adjacent, dist, max_nodes, max_node_depth = 30, min_target_dist = 0, min_node_dist, id, datum/exclude)
 	var/PriorityQueue/open = new /PriorityQueue(/proc/PathWeightCompare)
 	var/list/closed = list()
 	var/list/path

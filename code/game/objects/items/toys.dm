@@ -266,26 +266,26 @@
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list("attacked", "struck", "hit")
 
-	attack_self(mob/user as mob)
-		src.active = !( src.active )
-		if (src.active)
-			to_chat(user, "<span class='notice'>You extend the plastic blade with a quick flick of your wrist.</span>")
-			playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
-			src.icon_state = "swordblue"
-			src.w_class = ITEMSIZE_LARGE
-		else
-			to_chat(user, "<span class='notice'>You push the plastic blade back down into the handle.</span>")
-			playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
-			src.icon_state = "sword0"
-			src.w_class = ITEMSIZE_SMALL
+/obj/item/toy/sword/attack_self(mob/user)
+	src.active = !( src.active )
+	if (src.active)
+		to_chat(user, SPAN_NOTICE("You extend the plastic blade with a quick flick of your wrist."))
+		playsound(user, 'sound/weapons/saberon.ogg', 50, TRUE)
+		src.icon_state = "swordblue"
+		src.w_class = ITEMSIZE_LARGE
+	else
+		to_chat(user, SPAN_NOTICE("You push the plastic blade back down into the handle."))
+		playsound(user, 'sound/weapons/saberoff.ogg', 50, TRUE)
+		src.icon_state = "sword0"
+		src.w_class = ITEMSIZE_SMALL
 
-		if(istype(user,/mob/living/carbon/human))
-			var/mob/living/carbon/human/H = user
-			H.update_inv_l_hand()
-			H.update_inv_r_hand()
+	if(istype(user,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = user
+		H.update_inv_l_hand()
+		H.update_inv_r_hand()
 
-		src.add_fingerprint(user)
-		return
+	src.add_fingerprint(user)
+	return
 
 /obj/item/toy/katana
 	name = "replica katana"
@@ -313,15 +313,19 @@
 	icon_state = "snappop"
 	w_class = ITEMSIZE_TINY
 
-	throw_impact(atom/hit_atom)
-		..()
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(3, 1, src)
-		s.start()
-		new /obj/effect/debris/cleanable/ash(src.loc)
-		src.visible_message("<span class='warning'>The [src.name] explodes!</span>","<span class='warning'>You hear a snap!</span>")
-		playsound(src, 'sound/effects/snap.ogg', 50, 1)
-		qdel(src)
+/obj/item/toy/snappop/throw_impact(atom/hit_atom)
+	..()
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+	s.set_up(3, 1, src)
+	s.start()
+	new /obj/effect/debris/cleanable/ash(src.loc)
+	src.visible_message(
+		SPAN_WARNING("The [src.name] explodes!"),
+		SPAN_WARNING("You hear a snap!"),
+		SPAN_HEAR("You hear a snap!"),
+	)
+	playsound(src, 'sound/effects/snap.ogg', 50, TRUE)
+	qdel(src)
 
 /obj/item/toy/snappop/Crossed(atom/movable/H as mob|obj)
 	. = ..()

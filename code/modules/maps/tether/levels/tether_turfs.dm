@@ -96,7 +96,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 		mineral = GLOB.ore_data[mineral_name]
 		UpdateMineral()
 
-turf/simulated/mineral/rich/make_ore(var/rare_ore)
+/turf/simulated/mineral/rich/make_ore(rare_ore)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name
