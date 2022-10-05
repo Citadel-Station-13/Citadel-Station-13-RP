@@ -66,7 +66,7 @@
 	desc = "A suit that protects against low pressure environments."
 	icon = 'icons/obj/clothing/spacesuits.dmi'
 	// todo: remove somehow
-	worn_icon = 'icons/mob/clothing/spacesuits.dmi'
+	default_worn_icon = 'icons/mob/clothing/spacesuits.dmi'
 	icon_state = "space"
 	w_class = ITEMSIZE_HUGE // So you can't fit this in your bag and be prepared at all times.
 	gas_transfer_coefficient = 0.01

@@ -20,10 +20,12 @@
  * if it can't find anything else. This is what people should be using for non-reused
  * item sprites.
  *
+ * This system also supports worn_icon and inhand_icon if you really want to split it up.
+ *
  * Pattern:
  *
  * state_slot_bodytype, where
- * state: worn_state || icon_state
+ * state: inhand_state (if inhand) || worn_state || icon_state
  * slot: the inventory slot's `render_key`, or null if worn slot is ignored
  *       if it's a hand, it'll be _left or _right if it's not ignored.
  * bodytype: if not trampled, or ignored, the bodytype as string (see DEFINES)
@@ -88,29 +90,30 @@
 	/// Works similarly to worn sprite_sheets, except the alternate sprites are used when the clothing/refit_for_species() proc is called.
 	var/list/sprite_sheets_obj = list()
 
-	#warn deal with these two; they need to fit with neb's
-	//! vv/map only
-	/// when set, use this state always when in a specific slot id or just in general; list or state
-	VAR_PRIVATE/list/mob_state_override
-	/// when set, use this icon always when in a specific slot id or just in general; list or state
-	VAR_PRIVATE/list/mob_icon_override
-
+	// todo: remove
 	/// worn icon file
-	var/icon/worn_icon
-
-	/// dimensions of our worn icon file
-	var/worn_x_dimension
-	/// dimensions of our worn icon file
-	var/worn_y_dimension
-
-	/// dimensions of inhand sprites
-	var/inhand_x_dimension
-	/// dimensions of inhand sprites
-	var/inhand_y_dimension
+	var/icon/default_worn_icon
 
 	//! NEW RENDERING SYSTEM (to be used by all new content tm); read comment section at top
+	//? prioritized over icon, icon_state, icon dimensions
 	/// state to use; icon_state is used if this isn't set
 	var/worn_state
+	/// worn icon used instead of base icon
+	var/icon/worn_icon
+	/// dimensions of our worn icon file if different from icon
+	var/worn_x_dimension
+	/// dimensions of our worn icon file if different from icon
+	var/worn_y_dimension
+	//? prioritized over worn_icon, worn_state, icon dimensions
+	/// state to use; worn_state, then icon_state is used if this isn't set
+	var/inhand_state
+	/// inhand icon used instead of worn_icon -> base icon
+	var/icon/inhand_icon
+	/// dimensions of inhand sprites if different from icon
+	var/inhand_x_dimension
+	/// dimensions of inhand sprites if different from icon
+	var/inhand_y_dimension
+	//? general handling directives
 	/// bodytypes that get trampled to default - set to all if we shouldn't care about bodytypes at all
 	var/worn_bodytypes_ignored = NONE
 	/// bodytypes that *can* get trampled to default if the default icon is not found on species
@@ -121,6 +124,11 @@
 	var/worn_inhand_ignored = FALSE
 	/// worn rendering flags; reserved for now
 	var/worn_render_flags = NONE
+	#warn impl
+	/// vv only; slot id to icon
+	VAR_PRIVATE/list/worn_icon_override
+	/// vv only; slot id to state
+	VAR_PRIVATE/list/worn_state_override
 
 	#warn finish; inhands, worn icon diffentiation, etc
 
@@ -142,10 +150,11 @@
 /obj/item/proc/_render_mob_appearance(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype, icon_used, state_used, layer_used, dim_x, dim_y)
 	SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.
 	PRIVATE_PROC(TRUE) // if you think you need to call this, rethink.
+	var/list/additional = render_additional(icon_used, state_used, layer_used, dim_x, dim_y, bodytype, inhands, slot_meta)
+	// todo: signal with (args, add)
+	// todo: args' indices should be defines
 	var/mutable_appearance/MA = mutable_appearance(icon_used, state_used, BODY_LAYER + layer_used, FLOAT_PLANE)
 	MA = center_appearance(MA, dim_x, dim_y)
-	var/list/additional = render_additional(MA, bodytype, inhands, slot_meta)
-	// todo: signal with (args, add)
 	MA = render_apply_overlays(MA, bodytype, inhands, slot_meta)
 	MA = render_apply_blood(MA, bodytype, inhands, slot_meta)
 	MA = render_apply_custom(MA, bodytype, inhands, slot_meta)
@@ -169,10 +178,8 @@
 
 /**
  * override to include additional appearances while rendering
- *
- * icon/icon state/layer information is included in the mutable appearance
  */
-/obj/item/proc/render_additional(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+/obj/item/proc/render_additional(icon/icon_used, state_used, layer_used, dim_x, dim_y, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
 	RETURN_TYPE(/list)
 	return list()
 
@@ -225,10 +232,10 @@
 		data[WORN_DATA_SIZE_X] = worn_x_dimension
 		data[WORN_DATA_SIZE_Y] = worn_y_dimension
 
-	//* item worn_icon override
-	else if(worn_icon && !inhands)
+	//* item default_worn_icon override
+	else if(default_worn_icon && !inhands)
 		// todo: rework
-		data[WORN_DATA_ICON] = worn_icon
+		data[WORN_DATA_ICON] = default_worn_icon
 		data[WORN_DATA_SIZE_X] = worn_x_dimension
 		data[WORN_DATA_SIZE_Y] = worn_y_dimension
 
