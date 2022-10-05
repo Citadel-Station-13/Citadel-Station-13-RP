@@ -725,7 +725,7 @@
 	dir = 1
 	},
 /obj/structure/closet{
-	name = "Contraband: Patient 60"
+	name = "closet"
 	},
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
@@ -891,7 +891,7 @@
 "cc" = (
 /obj/structure/railing,
 /obj/structure/closet{
-	name = "Contraband: Patient 60"
+	name = "closet"
 	},
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
@@ -1308,7 +1308,7 @@
 "cP" = (
 /obj/structure/railing,
 /obj/structure/closet{
-	name = "Contraband: Patient 60"
+	name = "closet"
 	},
 /obj/random/maintenance/engineering,
 /obj/random/maintenance/clean,
@@ -6502,7 +6502,7 @@
 /area/maintenance/engineering/pumpstation)
 "mB" = (
 /obj/structure/closet{
-	name = "Contraband: Patient 60"
+	name = "closet"
 	},
 /obj/random/maintenance/clean,
 /obj/random/maintenance/engineering,
@@ -10766,7 +10766,7 @@
 "uO" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/closet{
-	name = "Contraband: Patient 60"
+	name = "closet"
 	},
 /obj/item/clothing/suit/tajaran/furs,
 /obj/item/clothing/head/tajaran/scarf,
@@ -11441,7 +11441,7 @@
 "xA" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/closet{
-	name = "Contraband: Patient 60"
+	name = "closet"
 	},
 /obj/item/clothing/suit/tajaran/furs,
 /obj/item/clothing/head/tajaran/scarf,
@@ -13782,7 +13782,7 @@
 /area/hallway/secondary/engineering_hallway)
 "GU" = (
 /obj/structure/closet{
-	name = "Contraband: Patient 60"
+	name = "closet"
 	},
 /obj/random/maintenance/engineering,
 /turf/simulated/floor/plating,
@@ -14008,7 +14008,7 @@
 	dir = 1
 	},
 /obj/structure/closet{
-	name = "Contraband: Patient 60"
+	name = "closet"
 	},
 /obj/random/maintenance/engineering,
 /obj/random/tool,
@@ -18159,7 +18159,7 @@
 /area/maintenance/engineering)
 "Xz" = (
 /obj/structure/closet{
-	name = "Contraband: Patient 60"
+	name = "closet"
 	},
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
