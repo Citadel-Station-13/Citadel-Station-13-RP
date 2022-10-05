@@ -38,70 +38,6 @@
 
 
 
-////
-
-/datum/map_z_level/rift/base
-	z = Z_LEVEL_WEST_BASE
-	name = "Western Canyon"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
-
-/datum/map_z_level/rift/deep
-	z = Z_LEVEL_WEST_DEEP
-	name = "Western Deep Caves"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
-
-
-/datum/map_z_level/rift/caves
-	z = Z_LEVEL_WEST_CAVERN
-	name = "Western Caves"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
-
-
-/datum/map_z_level/rift/plains
-	z = Z_LEVEL_WEST_PLAIN
-	name = "Western Plains"
-	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
-
-
-
-/// Cave Generation
-/datum/map/rift/perform_map_generation()
-	. = ..()
-	seed_submaps(list(Z_LEVEL_WEST_CAVERN), 50, /area/rift/surfacebase/outside/west_caves/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_caves)
-	seed_submaps(list(Z_LEVEL_WEST_DEEP), 50, /area/rift/surfacebase/outside/west_deep/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_deep)
-	seed_submaps(list(Z_LEVEL_WEST_BASE), 50, /area/rift/surfacebase/outside/west_base/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_base)
-	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 3, 3, Z_LEVEL_WEST_CAVERN, world.maxx - 3, world.maxy - 3)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 3, 3, Z_LEVEL_WEST_DEEP, world.maxx - 3, world.maxy - 3)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 3, 3, Z_LEVEL_WEST_BASE, world.maxx - 3, world.maxy - 3)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 3, 3, Z_LEVEL_UNDERGROUND_FLOOR, world.maxx - 3, world.maxy - 3)         // Create the mining ore distribution map.
-
-	return 1
-
-////
-/*
-/datum/map_template/tether_lateload/tether_underdark
-	name = "Tether - Underdark"
-	desc = "Mining, but harder."
-	mappath = "_maps/map_files/tether/tether_underdark.dmm"
-
-	associated_map_datum = /datum/map_z_level/tether_lateload/underdark
-
-/datum/map_z_level/tether_lateload/underdark
-	name = "Underdark"
-	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
-	base_turf = /turf/simulated/mineral/floor/virgo3b
-
-/datum/map_template/tether_lateload/tether_underdark/on_map_loaded(z)
-	. = ..()
-	seed_submaps(list(z), 150, /area/mine/unexplored/underdark, /datum/map_template/submap/level_specific/underdark)
-	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z, world.maxx - 4, world.maxy - 4) // Create the mining Z-level.
-	new /datum/random_map/noise/ore(null, 1, 1, z, 64, 64)         // Create the mining ore distribution map.
-
-*/
 
 //////////////////////////////////////////////////////////////////////////////
 /// Away Missions
@@ -344,7 +280,7 @@
 //////////////////////////////////////////////////////////////////////////////////////
 // Code Shenanigans for rift lateload maps
 
-/*
+/*	// Move to  the top for organzation sake
 /datum/map_template/rift_lateload
 	allow_duplicates = FALSE
 	var/associated_map_datum
