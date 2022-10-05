@@ -3,7 +3,7 @@
 	desc = "A neosilk clip-on tie."
 	icon = 'icons/obj/clothing/ties.dmi'
 	icon_state = "bluetie"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "", SLOT_ID_LEFT_HAND = "")
+	item_state_slots = list(slot_r_hand_str = "", slot_l_hand_str = "")
 	appearance_flags = RESET_COLOR	// Stops has_suit's color from being multiplied onto the accessory
 	slot_flags = SLOT_TIE
 	w_class = ITEMSIZE_SMALL
