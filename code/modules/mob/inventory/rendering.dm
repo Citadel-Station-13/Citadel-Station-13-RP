@@ -15,6 +15,9 @@
  * * Limitations
  * - inhand state only supports left and right; no weird index-based for now. this can easily change.
  *
+ * * State Generation
+ * #warn impl
+ *
  * * Coloration
  *
  * ! Coloration WIP. For now, color var only.
@@ -81,7 +84,18 @@
 	/// dimensions of inhand sprites
 	var/inhand_y_dimension
 
-	//! NEW RENDERING SYSTEM (to be used by all new content tm)
+	//! NEW RENDERING SYSTEM (to be used by all new content tm); read comment section at top
+	/// state to use; icon_state is used if this isn't set
+	var/worn_state
+	/// bodytypes that get trampled to default - set to all if we shouldn't care about bodytypes at all
+	var/worn_bodytypes_trampled = NONE
+	/// do we care about slot render key?
+	var/worn_slot_trampled = TRUE
+	/// do we care about inhand _left and _right keys?
+	var/worn_inhand_trampled = FALSE
+	/// worn rendering flags; reserved for now
+	var/worn_render_flags = NONE
+
 	#warn finish; inhands, worn icon diffentiation, etc
 
 /obj/item/proc/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype = BODYTYPE_STRING_DEFAULT)

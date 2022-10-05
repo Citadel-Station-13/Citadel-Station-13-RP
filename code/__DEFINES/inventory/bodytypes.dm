@@ -17,6 +17,18 @@
 #define BODYTYPE_SERGAL				(1<<8)
 /// akula bodytype (or generally shark)
 #define BODYTYPE_AKULA				(1<<9)
+/// vox bodytype
+#define BODYTYPE_VOX				(1<<10)
+/// neverean bodytype
+#define BODYTYPE_NEVREAN			(1<<11)
+/// promethean bodytype
+#define BODYTYPE_PROMETHEAN			(1<<12)
+/// highlander zorren
+#define BODYTYPE_ZORREN_HIGHLANDER	(1<<13)
+/// flatlander zorren
+#define BODYTYPE_ZORREN_FLATLANDER	(1<<14)
+
+#warn impl vox, nevrean, promethean, zorren's in species and the shit below
 
 // todo: what are we going to do with these?
 /*
