@@ -152,18 +152,18 @@
 	w_class = ITEMSIZE_LARGE
 	max_storage_space = ITEMSIZE_COST_NORMAL * 4
 
-	attack_hand(mob/user as mob)
-		if ((src.loc == user) && (src.locked == 1))
-			to_chat(user, "<span class='warning'>[src] is locked and cannot be opened!</span>")
-		else if ((src.loc == user) && (!src.locked))
-			src.open(usr)
-		else
-			..()
-			for(var/mob/M in range(1))
-				if (M.s_active == src)
-					src.close(M)
-		src.add_fingerprint(user)
-		return
+/obj/item/storage/secure/briefcase/attack_hand(mob/user)
+	if ((src.loc == user) && (src.locked == 1))
+		to_chat(user, "<span class='warning'>[src] is locked and cannot be opened!</span>")
+	else if ((src.loc == user) && (!src.locked))
+		src.open(usr)
+	else
+		..()
+		for(var/mob/M in range(1))
+			if (M.s_active == src)
+				src.close(M)
+	src.add_fingerprint(user)
+	return
 
 //LOADOUT ITEM
 /obj/item/storage/secure/briefcase/portable

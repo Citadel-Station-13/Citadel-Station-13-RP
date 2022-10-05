@@ -25,7 +25,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-obj/item/chainsaw/proc/turnOn(mob/user as mob)
+/obj/item/chainsaw/proc/turnOn(mob/user as mob)
 	to_chat(user, "You start pulling the string on \the [src].")
 	//visible_message("[usr] starts pulling the string on the [src].")
 
@@ -138,7 +138,7 @@ obj/item/chainsaw/proc/turnOn(mob/user as mob)
 	hitsound = 'sound/weapons/chainsaw_attack.ogg'
 	armor_penetration = 30
 
-obj/item/chainsaw/chainsword/turnOn(mob/user as mob)
+/obj/item/chainsaw/chainsword/turnOn(mob/user as mob)
 	to_chat(user, "You begin pulling the throttle on \the [src].")
 	//visible_message("[usr] starts pulling the throttle on the [src].")
 

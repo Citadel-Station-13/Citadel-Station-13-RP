@@ -1,6 +1,6 @@
 /obj/spawner/window
 	icon = 'icons/mapping/spawners/windows.dmi'
-	icon_state = "glass_grille_pane"
+	icon_state = "window_grille_pane"
 	late = TRUE
 
 	/// spawn full windows or panes on grille?
@@ -41,15 +41,15 @@
 
 /obj/spawner/window/full
 	full_window = TRUE
-	icon_state = "glass_grille_full"
+	icon_state = "window_grille_full"
 
 /obj/spawner/window/reinforced
-	icon_state = "rglass_grille_pane"
+	icon_state = "rwindow_grille_pane"
 	window_pane_path = /obj/structure/window/reinforced
 	window_full_path = /obj/structure/window/reinforced/full
 
 /obj/spawner/window/reinforced/full
-	icon_state = "rglass_grille_full"
+	icon_state = "rwindow_grille_full"
 	full_window = TRUE
 
 /obj/spawner/window/borosillicate

@@ -9,33 +9,53 @@ var/global/list/additional_antag_types = list()
 	var/votable = 1
 	var/probability = 0
 
-	var/required_players = 0                 // Minimum players for round to start if voted in.
-	var/required_players_secret = 0          // Minimum number of players for that game mode to be chose in Secret
-	var/required_enemies = 0                 // Minimum antagonists for round to start.
+	/// Minimum players for round to start if voted in.
+	var/required_players = 0
+	/// Minimum number of players for that game mode to be chose in Secret
+	var/required_players_secret = 0
+	/// Minimum antagonists for round to start.
+	var/required_enemies = 0
 	var/newscaster_announcements = null
-	var/end_on_antag_death = 0               // Round will end when all antagonists are dead.
-	var/ert_disabled = 0                     // ERT cannot be called.
-	var/deny_respawn = 0	                 // Disable respawn during this round.
+	/// Round will end when all antagonists are dead.
+	var/end_on_antag_death = 0
+	/// ERT cannot be called.
+	var/ert_disabled = 0
+	/// Disable respawn during this round.
+	var/deny_respawn = 0
 
-	var/list/disabled_jobs = list()           // Mostly used for Malf.  This check is performed in job_controller so it doesn't spawn a regular AI.
+	/// Mostly used for Malf.  This check is performed in job_controller so it doesn't spawn a regular AI.
+	var/list/disabled_jobs = list()
 
-	var/shuttle_delay = 1                    // Shuttle transit time is multiplied by this.
-	var/auto_recall_shuttle = 0              // Will the shuttle automatically be recalled?
+	/// Shuttle transit time is multiplied by this.
+	var/shuttle_delay = 1
+	/// Will the shuttle automatically be recalled?
+	var/auto_recall_shuttle = 0
 
-	var/list/antag_tags = list()             // Core antag templates to spawn.
-	var/list/antag_templates                 // Extra antagonist types to include.
+	/// Core antag templates to spawn.
+	var/list/antag_tags = list()
+	/// Extra antagonist types to include.
+	var/list/antag_templates
 	var/list/latejoin_templates = list()
-	var/round_autoantag = 0                  // Will this round attempt to periodically spawn more antagonists?
-	var/antag_scaling_coeff = 5              // Coefficient for scaling max antagonists to player count.
-	var/require_all_templates = 0            // Will only start if all templates are checked and can spawn.
+	/// Will this round attempt to periodically spawn more antagonists?
+	var/round_autoantag = 0
+	/// Coefficient for scaling max antagonists to player count.
+	var/antag_scaling_coeff = 5
+	/// Will only start if all templates are checked and can spawn.
+	var/require_all_templates = 0
 
-	var/station_was_nuked = 0                // See nuclearbomb.dm and malfunction.dm.
-	var/explosion_in_progress = 0            // Sit back and relax
-	var/waittime_l = 600                     // Lower bound on time before intercept arrives (in tenths of seconds)
-	var/waittime_h = 1800                    // Upper bound on time before intercept arrives (in tenths of seconds)
+	/// See nuclearbomb.dm and malfunction.dm.
+	var/station_was_nuked = 0
+	/// Sit back and relax
+	var/explosion_in_progress = 0
+	/// Lower bound on time before intercept arrives (in tenths of seconds)
+	var/waittime_l = 600
+	/// Upper bound on time before intercept arrives (in tenths of seconds)
+	var/waittime_h = 1800
 
-	var/event_delay_mod_moderate             // Modifies the timing of random events.
-	var/event_delay_mod_major                // As above.
+	/// Modifies the timing of random events.
+	var/event_delay_mod_moderate
+	/// Modifies the timing of random events.
+	var/event_delay_mod_major
 
 /datum/game_mode/Topic(href, href_list[])
 	if(..())
@@ -114,7 +134,7 @@ var/global/list/additional_antag_types = list()
 				return
 
 /datum/game_mode/proc/announce() //to be called when round starts
-	to_chat(world, "<B>The current game mode is [capitalize(name)]!</B>") 
+	to_chat(world, "<B>The current game mode is [capitalize(name)]!</B>")
 	to_chat(world, "<B>The current engine is [GLOB.used_engine]!</B>")//Actually, why not expand this....
 	if(round_description) to_chat(world, "[round_description]")
 	if(round_autoantag) to_chat(world, "Antagonists will be added to the round automagically as needed.")
@@ -298,7 +318,7 @@ var/global/list/additional_antag_types = list()
 	var/escaped_total = 0
 	var/escaped_on_shuttle = 0
 
-	var/list/area/escape_locations = list(/area/shuttle/escape/centcom, /area/shuttle/escape_pod1/centcom, 
+	var/list/area/escape_locations = list(/area/shuttle/escape/centcom, /area/shuttle/escape_pod1/centcom,
 		/area/shuttle/escape_pod2/centcom, /area/shuttle/escape_pod3/centcom, /area/shuttle/escape_pod5/centcom,
 		/area/shuttle/escape,/area/centcom/terminal)
 
@@ -438,7 +458,7 @@ var/global/list/additional_antag_types = list()
 //////////////////////////
 //Reports player logouts//
 //////////////////////////
-proc/display_roundstart_logout_report()
+/proc/display_roundstart_logout_report()
 	var/msg = "<span class='notice'><b>Roundstart logout report</b>\n\n"
 	for(var/mob/living/L in GLOB.mob_list)
 
@@ -490,7 +510,7 @@ proc/display_roundstart_logout_report()
 		if(M.client && M.client.holder)
 			to_chat(M, msg)
 
-proc/get_nt_opposed()
+/proc/get_nt_opposed()
 	var/list/dudes = list()
 	for(var/mob/living/carbon/human/man in player_list)
 		if(man.client)

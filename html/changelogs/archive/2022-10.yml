@@ -25,3 +25,14 @@
       canister UI
   - bugfix: Fixes alt-clicking for borgs to not double-call AltClick() thereby breaking
       some interactions
+2022-10-05:
+  Captain277:
+  - rscadd: Adds the Twintails Short Hairstyle.
+  FreeStylaLT:
+  - tweak: Makes Ears and Horns separate
+  TheLordME:
+  - tweak: tweaked xenomorph hybrids to pass over tables like teshari
+  - bugfix: fixed plasma transfer only working at a distance
+  Zandario:
+  - bugfix: Fixed the Account Terminal's Visual
+  - code_imp: Un-relative-defined some procs

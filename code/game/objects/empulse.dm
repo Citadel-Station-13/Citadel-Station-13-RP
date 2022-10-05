@@ -4,8 +4,9 @@
 
 // #define EMPDEBUG 10
 
-proc/empulse(turf/epicenter, first_range, second_range, third_range, fourth_range, log=0)
-	if(!epicenter) return
+/proc/empulse(turf/epicenter, first_range, second_range, third_range, fourth_range, log=0)
+	if(!epicenter)
+		return
 
 	if(!istype(epicenter, /turf))
 		epicenter = get_turf(epicenter.loc)

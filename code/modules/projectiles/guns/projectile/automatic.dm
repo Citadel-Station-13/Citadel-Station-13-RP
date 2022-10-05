@@ -466,7 +466,7 @@
 	. = ..()
 	update_held_icon()
 
-obj/item/gun/projectile/automatic/fal
+/obj/item/gun/projectile/automatic/fal
 	name = "FN-FAL"
 	desc = "A 20th century Assault Rifle originally designed by Fabrique National. Famous for its use by mercs in grinding proxy wars in backwater nations. This reproduction was probably made for similar purposes."
 	icon_state = "fal"
@@ -494,7 +494,7 @@ obj/item/gun/projectile/automatic/fal
 	else
 		icon_state = "[initial(icon_state)]-empty"
 
-obj/item/gun/projectile/automatic/automat
+/obj/item/gun/projectile/automatic/automat
 	name = "Avtomat Rifle"
 	desc = " A Bolt Action Rifle taken apart and retooled into a primitive machine gun. Bulky and obtuse, it still capable of unleashing devastating firepower with its 15 round internal drum magazine. Loads with 7.62 stripper clips."
 	icon_state = "automat"
@@ -516,11 +516,11 @@ obj/item/gun/projectile/automatic/automat
 	burst_accuracy = list(60,30,15)
 	dispersion = list(0.0, 0.6,1.0)
 
-obj/item/gun/projectile/automatic/automat/holy
+/obj/item/gun/projectile/automatic/automat/holy
 	ammo_type = /obj/item/ammo_casing/a762/silver
 	holy = TRUE
 
-obj/item/gun/projectile/automatic/automat/taj
+/obj/item/gun/projectile/automatic/automat/taj
 	name = "Adhomai automat"
 	desc = "The Hadii-Wrack Avtomat, is an aging internal magazine automatic rifle of the People's Republic of Adhomai's Grand People's Army whose long and storied service life is coming to an end as it is phased out in favor of more modern automatics."
 	icon_state = "automat-taj"
