@@ -58,7 +58,7 @@
 	set desc = "Transfer Plasma to another alien"
 	set category = "Abilities"
 
-	if (get_dist(src,M) <= 1)
+	if (get_dist(src,M) > 1)
 		to_chat(src, "<span class='green'>You need to be closer.</span>")
 		return
 

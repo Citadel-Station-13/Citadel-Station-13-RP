@@ -502,6 +502,14 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		apply_layer(HAIR_LAYER)
 		return
 
+	var/icon/horns_s = get_horns_overlay()
+	if(horns_s)
+		face_standing.Blend(horns_s, ICON_OVERLAY)
+	if(istype(head_organ,/obj/item/organ/external/head/vr))
+		var/obj/item/organ/external/head/vr/head_organ_vr = head_organ
+		overlays_standing[HAIR_LAYER] = image(face_standing, layer = BODY_LAYER+HAIR_LAYER, "pixel_y" = head_organ_vr.head_offset)
+		apply_layer(HAIR_LAYER)
+		return
 
 	if(head_organ.transparent)
 		face_standing += rgb(,,,120)
