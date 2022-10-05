@@ -30,11 +30,6 @@ BLIND     // can't see anything
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/eyes.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/eyes.dmi'
-		)
-
 /obj/item/clothing/glasses/attack_self(mob/user)
 	if(toggleable)
 		if(active)

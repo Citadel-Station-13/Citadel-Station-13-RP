@@ -70,7 +70,6 @@
 	icon = 'icons/obj/clothing/suits.dmi'
 	icon_state = "labcoat_rd"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "science_labcoat", SLOT_ID_LEFT_HAND = "science_labcoat")
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/suits.dmi')
 
 /obj/item/clothing/suit/storage/toggle/labcoat/robotics
 	name = "Roboticist labcoat"
