@@ -1,4 +1,4 @@
-/var/global/list/all_objectives = list()
+var/global/list/all_objectives = list()
 
 /datum/objective
 	/// Who owns the objective.
