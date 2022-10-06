@@ -256,6 +256,8 @@
 /atom/movable/proc/can_fall()
 	if(anchored)
 		return FALSE
+	// if(throwing)
+		// return FALSE
 	return TRUE
 
 /obj/effect/can_fall()
