@@ -10,6 +10,6 @@
 	overlays.Cut()
 	if(hat)
 		var/mutable_appearance/MA = hat.render_mob_appearance(src, SLOT_ID_HEAD)
-		MA.pixel_x = hat_x_offset
-		MA.pixel_y = hat_y_offset
+		MA.pixel_x = 0
+		MA.pixel_y = -8
 		overlays |= MA
