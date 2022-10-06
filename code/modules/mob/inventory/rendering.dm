@@ -317,6 +317,7 @@
 		data[WORN_DATA_ICON] = default_worn_icon
 		data[WORN_DATA_SIZE_X] = worn_x_dimension
 		data[WORN_DATA_SIZE_Y] = worn_y_dimension
+		#warn convert the funny antag gear
 
 	//* inventory slot defaults
 	else if(worn_species_default)
