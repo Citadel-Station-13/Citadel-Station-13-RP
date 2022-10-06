@@ -200,8 +200,6 @@
 	/// vv only; slot id to state
 	VAR_PRIVATE/list/worn_state_override
 
-	#warn finish; inhands, worn icon diffentiation, etc
-
 /obj/item/proc/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype = BODYTYPE_STRING_DEFAULT)
 	SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.
 	// determine if in hands
@@ -213,7 +211,7 @@
 	else
 		slot_meta = resolve_inventory_slot_meta(slot_id_or_hand_index)
 
-	var/list/resolved = = resolve_worn_assets(mob/M, slot_meta, inhands, bodytype)
+	var/list/resolved = resolve_worn_assets(mob/M, slot_meta, inhands, bodytype)
 
 	return _render_mob_appearance(M, slot_meta, inhands, bodytype, resolved[WORN_DATA_ICON], resolved[WORN_DATA_STATE], resolved[WORN_DATA_LAYER], resolved [WORN_DATA_SIZE_X], resolved[WORN_DATA_SIZE_Y])
 

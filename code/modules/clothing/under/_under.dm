@@ -32,6 +32,8 @@
 		SPECIES_VOX = 'icons/mob/clothing/species/vox/uniform.dmi',
 		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/uniform.dmi')
 
+	// todo: unify this iwth worn state, probably by converting the system used to do this
+	// todo: awful shit.
 	//convenience var for defining the icon state for the overlay used when the clothing is worn.
 	//Also used by rolling/unrolling.
 	var/snowflake_worn_state = null
