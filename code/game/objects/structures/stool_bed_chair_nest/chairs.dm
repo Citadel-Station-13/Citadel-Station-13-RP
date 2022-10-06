@@ -145,25 +145,10 @@
 		return
 	..()
 
-/obj/structure/bed/chair/office/Move()
-	..()
-	if(has_buckled_mobs())
-		for(var/A in buckled_mobs)
-			var/mob/living/occupant = A
-			occupant.buckled = null
-			occupant.Move(src.loc)
-			occupant.buckled = src
-			if (occupant && (src.loc != occupant.loc))
-				if (propelled)
-					for (var/mob/O in src.loc)
-						if (O != occupant)
-							Bump(O)
-				else
-					unbuckle_mob()
-
 /obj/structure/bed/chair/office/Bump(atom/A)
 	..()
-	if(!has_buckled_mobs())	return
+	if(!has_buckled_mobs())
+		return
 
 	if(propelled)
 		for(var/a in buckled_mobs)

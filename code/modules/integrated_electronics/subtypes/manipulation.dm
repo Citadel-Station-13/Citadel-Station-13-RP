@@ -316,7 +316,7 @@
 /obj/item/integrated_circuit/manipulation/claw/do_work(ord)
 	var/obj/acting_object = get_object()
 	var/atom/movable/AM = get_pin_data_as_type(IC_INPUT, 1, /atom/movable)
-	var/mode = get_pin_data(IC_INPUT, 2)
+	// var/mode = get_pin_data(IC_INPUT, 2)
 	switch(ord)
 		if(1)
 			// mode = clamp(mode, GRAB_PASSIVE, max_grab)

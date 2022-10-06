@@ -99,33 +99,6 @@
 		create_track()
 	driving = 0
 
-/obj/structure/bed/chair/wheelchair/Move()
-	..()
-	if(world.time < last_active_move + move_delay)
-		return
-	if(has_buckled_mobs())
-		for(var/A in buckled_mobs)
-			var/mob/living/occupant = A
-			if(!driving)
-				occupant.buckled = null
-				occupant.Move(src.loc)
-				occupant.buckled = src
-				if (occupant && (src.loc != occupant.loc))
-					if (propelled)
-						for (var/mob/O in src.loc)
-							if (O != occupant)
-								Bump(O)
-					else
-						unbuckle_mob()
-				if (pulling_along && (get_dist(src, pulling_along) > 1))
-					pulling_along.pulledby = null
-					to_chat(pulling_along, "<span class='warning'>You lost your grip!</span>")
-					pulling_along = null
-			else
-				if (occupant && (src.loc != occupant.loc))
-					src.forceMove(occupant.loc) // Failsafe to make sure the wheelchair stays beneath the occupant after driving
-		last_active_move = world.time
-
 /obj/structure/bed/chair/wheelchair/attack_hand(mob/living/user as mob)
 	if (pulling_along)
 		MouseDrop(usr)

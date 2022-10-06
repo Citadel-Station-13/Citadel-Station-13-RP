@@ -136,6 +136,11 @@
 					newtonian_move(direct)
 			moving_diagonally = 0
 			return
+	else
+		if(direct)
+			last_move_dir = direct
+			setDir(direct)
+		return TRUE		// we didn't even move!!
 
 	if(!loc || (loc == oldloc && oldloc != newloc))
 		last_move_dir = NONE
@@ -163,8 +168,9 @@
 					// end
 			check_pulling()
 
-	last_move_dir = direct
-	setDir(direct)
+	if(direct)
+		last_move_dir = direct
+		setDir(direct)
 
 	//glide_size strangely enough can change mid movement animation and update correctly while the animation is playing
 	//This means that if you don't override it late like this, it will just be set back by the movement update that's called when you move turfs.
