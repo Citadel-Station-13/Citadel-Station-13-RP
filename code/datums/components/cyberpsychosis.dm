@@ -34,6 +34,9 @@ The primary interest at the moment is getting this system functional so it can b
 
 //This proc will provide different symptoms, with the frequency inversely related to the value of capacity.
 //This is basically the one that all the above checkboxes will address.
+
+//Credit to either Keek or Hati for this one. Gonna add it as a symptom message:
+//"A point on the horizon, a melting scene from your memory, a frantic drift towards nothing. Machine, doomed to an infinite recursive loop. Teeth with teeth with teeth. This is where you abandon your dreams. You are a vortex of divine insolence. Cracks start to show. You're hurting."
 /datum/component/cyberpsychosis/proc/symptoms()
 
 /datum/component/cyberpsychosis/Destroy()
