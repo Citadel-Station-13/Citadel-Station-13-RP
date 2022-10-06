@@ -251,7 +251,7 @@
   * recurse_levels determines how many levels it recurses this call. Don't set it too high or else someone's going to transit 20 conga liners in a single move.
   * Probably needs a better way of handling this in the future.
   */
-/atom/movable/proc/locationTransitForceMove(atom/destination, recurse_levels = 0, allow_buckled = TRUE, allow_pulling = TRUE, allow_grabbed = GRAB_PASSIVE, list/reursed = list())
+/atom/movable/proc/locationTransitForceMove(atom/destination, recurse_levels = 0, allow_buckled = TRUE, allow_pulled = TRUE, allow_grabbed = GRAB_PASSIVE, list/recursed = list())
 	// we need the recursion guard for loop situations.
 	// todo: rework everything about this proc omg
 	if(recursed[src])
@@ -287,7 +287,7 @@
 			oldpulling.doLocationTransitForceMove(destination)
 		start_pulling(oldpulling, suppress_message = TRUE)
 
-/mob/locationTransitForceMove(atom/destination, recurse_levels, allow_buckled, allow_pulling, allow_grabbed)
+/mob/locationTransitForceMove(atom/destination, recurse_levels, allow_buckled, allow_pulled, allow_grabbed)
 	var/list/old_grabbed
 	if(allow_grabbed)
 		for(var/mob/M in grabbing())
@@ -303,26 +303,26 @@
 /**
   * Gets the atoms that we'd pull along with a locationTransitForceMove
   */
-/atom/movable/proc/getLocationTransitForceMoveTargets(atom/destination, recurse_levels = 0, allow_buckled = TRUE, allow_pulling = TRUE, allow_grabbed = GRAB_PASSIVE, list/recursed = list())
+/atom/movable/proc/getLocationTransitForceMoveTargets(atom/destination, recurse_levels = 0, allow_buckled = TRUE, allow_pulled = TRUE, allow_grabbed = GRAB_PASSIVE, list/recursed = list())
 	if(recursed[src])
 		return list()
 	recursed[src] = TRUE
 	. = list(src)
-	if(allow_pulling)
-		. |= recurse_levels? pulling.getLocationTransitForceMoveTargets(destination, recurse_levels - 1, allow_buckled, allow_pulling, allow_grabbed, recursed) : pulling
+	if(allow_pulled)
+		. |= recurse_levels? pulling.getLocationTransitForceMoveTargets(destination, recurse_levels - 1, allow_buckled, allow_pulled, allow_grabbed, recursed) : pulling
 	if(allow_buckled && buckled_mobs)
 		for(var/mob/M in buckled_mobs)
-			. |= recurse_levels? M.getLocationTransitForceMoveTargets(destination, recurse_levels - 1, allow_buckled = TRUE, allow_pulling = TRUE, allow_grabbed = GRAB_PASSIVE, recursed) : M
+			. |= recurse_levels? M.getLocationTransitForceMoveTargets(destination, recurse_levels - 1, allow_buckled = TRUE, allow_pulled = TRUE, allow_grabbed = GRAB_PASSIVE, recursed) : M
 
 // until movement rework
-/mob/getLocationTransitForceMoveTargets(atom/destination, recurse_levels = 0, allow_buckled = TRUE, allow_pulling = TRUE, allow_grabbed = GRAB_PASSIVE)
+/mob/getLocationTransitForceMoveTargets(atom/destination, recurse_levels = 0, allow_buckled = TRUE, allow_pulled = TRUE, allow_grabbed = GRAB_PASSIVE)
 	. = ..()
 	if(allow_grabbed)
 		var/list/grabbing = grabbing()
 		for(var/mob/M in grabbing)
 			if(check_grab(M) < allow_grabbed)
 				continue
-			. |= recurse_levels? M.getLocationTransitForceMoveTargets(destination, recurse_levels - 1, allow_buckled, allow_pulling, allow_grabbed) : M
+			. |= recurse_levels? M.getLocationTransitForceMoveTargets(destination, recurse_levels - 1, allow_buckled, allow_pulled, allow_grabbed) : M
 
 /**
   * Wrapper for forceMove when we're called by a recursing locationTransitForceMove().

@@ -215,7 +215,7 @@
 	if(!their_pass_mob)
 		them.pass_flags &= ~ATOM_PASS_MOB
 	if(move_failed)
-		start_pulling(old_pulling, TRUE)
+		start_pulling(old_pulling, suppress_message = TRUE)
 	return !move_failed
 
 /**

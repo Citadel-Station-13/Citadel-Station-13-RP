@@ -319,11 +319,11 @@
 	var/mode = get_pin_data(IC_INPUT, 2)
 	switch(ord)
 		if(1)
-			mode = clamp(mode, GRAB_PASSIVE, max_grab)
+			// mode = clamp(mode, GRAB_PASSIVE, max_grab)
 			if(AM)
 				if(check_target(AM, exclude_contents = TRUE))
 					acting_object.investigate_log("grabbed ([AM]) using [src].", INVESTIGATE_CIRCUIT)
-					acting_object.start_pulling(AM,mode)
+					acting_object.start_pulling(AM)
 					if(acting_object.pulling)
 						set_pin_data(IC_OUTPUT, 1, TRUE)
 					else
