@@ -42,7 +42,7 @@
 		1, 0, 0,
 		0, 1, 0,
 		0, 0, 1,
-		0, 0, 0
+		0, 0, 0,
 	)
 
 /obj/machinery/gear_painter/update_icon()
@@ -133,7 +133,7 @@
 /obj/machinery/gear_painter/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Colormate", src.name)
+		ui = new(user, src, "ColorMate", src.name)
 		ui.set_autoupdate(FALSE) //This might be a bit intensive, better to not update it every few ticks
 		ui.open()
 
@@ -141,19 +141,19 @@
 	. = list()
 	.["activemode"] = active_mode
 	.["matrixcolors"] = list(
-			"rr" = color_matrix_last[1],
-			"rg" = color_matrix_last[2],
-			"rb" = color_matrix_last[3],
-			"gr" = color_matrix_last[4],
-			"gg" = color_matrix_last[5],
-			"gb" = color_matrix_last[6],
-			"br" = color_matrix_last[7],
-			"bg" = color_matrix_last[8],
-			"bb" = color_matrix_last[9],
-			"cr" = color_matrix_last[10],
-			"cg" = color_matrix_last[11],
-			"cb" = color_matrix_last[12]
-			)
+		"rr" = color_matrix_last[1],
+		"rg" = color_matrix_last[2],
+		"rb" = color_matrix_last[3],
+		"gr" = color_matrix_last[4],
+		"gg" = color_matrix_last[5],
+		"gb" = color_matrix_last[6],
+		"br" = color_matrix_last[7],
+		"bg" = color_matrix_last[8],
+		"bb" = color_matrix_last[9],
+		"cr" = color_matrix_last[10],
+		"cg" = color_matrix_last[11],
+		"cb" = color_matrix_last[12],
+	)
 	.["buildhue"] = build_hue
 	.["buildsat"] = build_sat
 	.["buildval"] = build_val
@@ -177,7 +177,7 @@
 				active_mode = text2num(params["mode"])
 				return TRUE
 			if("choose_color")
-				var/chosen_color = input(usr, "Choose a color: ", "Colormate color picking", activecolor) as color|null
+				var/chosen_color = input(usr, "Choose a color: ", "ColorMate colour picking", activecolor) as color|null
 				if(chosen_color)
 					activecolor = chosen_color
 				return TRUE
@@ -215,19 +215,19 @@
 			color_to_use = activecolor
 		if(COLORMATE_MATRIX)
 			color_to_use = rgb_construct_color_matrix(
-							text2num(color_matrix_last[1]),
-							text2num(color_matrix_last[2]),
-							text2num(color_matrix_last[3]),
-							text2num(color_matrix_last[4]),
-							text2num(color_matrix_last[5]),
-							text2num(color_matrix_last[6]),
-							text2num(color_matrix_last[7]),
-							text2num(color_matrix_last[8]),
-							text2num(color_matrix_last[9]),
-							text2num(color_matrix_last[10]),
-							text2num(color_matrix_last[11]),
-							text2num(color_matrix_last[12])
-							)
+				text2num(color_matrix_last[1]),
+				text2num(color_matrix_last[2]),
+				text2num(color_matrix_last[3]),
+				text2num(color_matrix_last[4]),
+				text2num(color_matrix_last[5]),
+				text2num(color_matrix_last[6]),
+				text2num(color_matrix_last[7]),
+				text2num(color_matrix_last[8]),
+				text2num(color_matrix_last[9]),
+				text2num(color_matrix_last[10]),
+				text2num(color_matrix_last[11]),
+				text2num(color_matrix_last[12]),
+			)
 		if(COLORMATE_HSV)
 			color_to_use = color_matrix_hsv(build_hue, build_sat, build_val)
 			color_matrix_last = color_to_use
@@ -246,19 +246,19 @@
 		switch(active_mode)
 			if(COLORMATE_MATRIX)
 				cm = rgb_construct_color_matrix(
-							text2num(color_matrix_last[1]),
-							text2num(color_matrix_last[2]),
-							text2num(color_matrix_last[3]),
-							text2num(color_matrix_last[4]),
-							text2num(color_matrix_last[5]),
-							text2num(color_matrix_last[6]),
-							text2num(color_matrix_last[7]),
-							text2num(color_matrix_last[8]),
-							text2num(color_matrix_last[9]),
-							text2num(color_matrix_last[10]),
-							text2num(color_matrix_last[11]),
-							text2num(color_matrix_last[12])
-							)
+					text2num(color_matrix_last[1]),
+					text2num(color_matrix_last[2]),
+					text2num(color_matrix_last[3]),
+					text2num(color_matrix_last[4]),
+					text2num(color_matrix_last[5]),
+					text2num(color_matrix_last[6]),
+					text2num(color_matrix_last[7]),
+					text2num(color_matrix_last[8]),
+					text2num(color_matrix_last[9]),
+					text2num(color_matrix_last[10]),
+					text2num(color_matrix_last[11]),
+					text2num(color_matrix_last[12]),
+				)
 				if(!check_valid_color(cm, usr))
 					return getFlatIcon(inserted, defdir=SOUTH, no_anim=TRUE)
 
