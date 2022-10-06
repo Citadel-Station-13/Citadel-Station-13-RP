@@ -284,7 +284,8 @@
 				M.locationTransitForceMove(destination, recurse_levels - 1)
 			else
 				M.doLocationTransitForceMove(destination)
-			buckle_mob(M, BUCKLE_OP_FORCE | BUCKLE_OP_IGNORE_LOC | BUCKLE_OP_SILENT)
+			if(!(M in buckled_mobs))
+				buckle_mob(M, BUCKLE_OP_FORCE | BUCKLE_OP_IGNORE_LOC | BUCKLE_OP_SILENT, oldbuckled[M])
 
 	if(oldpulling)
 		if(recurse_levels)
