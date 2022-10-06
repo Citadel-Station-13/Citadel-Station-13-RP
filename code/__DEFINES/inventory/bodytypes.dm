@@ -104,7 +104,7 @@
 #define BODYTYPE_STRING_ZORREN_FLATLANDER "zorren_flatlander"
 #define BODYTYPE_STRING_ZADDAT "zaddat"
 #define BODYTYPE_STRING_PHORONOID "phoronoid"
-#define BODYTYPE_STINRG_WEREBEAST "werebeast"
+#define BODYTYPE_STRING_WEREBEAST "werebeast"
 
 /proc/bodytype_to_string(bodytype)
 	switch(bodytype)

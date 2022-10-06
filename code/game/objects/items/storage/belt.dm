@@ -31,7 +31,7 @@
 		var/state = resolve_belt_state(I, funny_belt_icon)
 		if(!state)
 			continue
-		MA.add_overlay(image(icon = funny_belt_icon, state))
+		MA.add_overlay(image(icon = funny_belt_icon, icon_state = state))
 
 // todo: this bad lol x2
 /obj/item/storage/belt/proc/resolve_belt_state(obj/item/I, icon/ifile)
