@@ -3,23 +3,28 @@
 #define WORN_DATA_LAYER 3
 #define WORN_DATA_SIZE_X 4
 #define WORN_DATA_SIZE_Y 5
-#warn sane species defaults for generic devices how to handle
 /**
  * Item rendering system
  *
  * * IF YOU ONLY CARE ABOUT MAKING A NEW ITEM OR ARE CONVERTING AN ITEM, JUST READ THIS!!
  *
- * 0. Do you want the on-mob icons to be *entirely* shared/defaulted? If so, why are you here? Use the old system.
+ * 0. Do you want the on-mob icons to be *entirely* shared/defaulted? If so, why are you here?
+ *        Use the old system, by putting your states into the default icons as defined in
+ *        [code/modules/mob/inventory/slot_meta.dm]
+ *        and setting inhand_state and worn_state so they're found.
  *        If you want to share *some* icons, read State Generation and
  *        use worn_icon, and inhand_icon to do what you need to do.
  *
  *        !! If your sprite already exists in default icons, it will override what !!
  *        !! we do here. This is an unfortunate tradeoff of speed we have to make. !!
- *        !! For a quick and dirty workaround, set worn_state to whatever state    !!
- *        !! want to override this behaviour.                                      !!
+ *        !! Make sure to set worn_species_default to FALSE to stop this.          !!
  *        ?? THIS IS SOMETIMES A GOOD THING.                                       ??
  *        ?? There's common states available for inhands and some worn stuff.      ??
  *        ?? You just need to set inhand_state and worn_state to use them!         ??
+ *
+ *    Otherwise, continue on with the rest of the steps, setting
+ *        worn_species_default = FALSE
+ *    to instruct the system to ignore default icons entirely.
  *
  * 1. Have a sensical place for your item's .dmi.
  *    e.g. /obj/item/pickaxe goes in icons/modules/mining/tools/pickaxe.dmi
@@ -185,8 +190,10 @@
 	var/worn_slot_ignored = FALSE
 	/// do we care about inhand _left and _right keys? Set to TRUE to force slot id to `_all` regardless of state.
 	var/worn_inhand_ignored = FALSE
-	/// worn rendering flags; reserved for now
-	var/worn_render_flags = NONE
+	/// attempt to use species default sprite, if one is found.
+	var/worn_species_default = TRUE
+	/// worn rendering flags; unused for now
+	// var/worn_render_flags = NONE
 	//? support for adminbus
 	/// vv only; slot id to icon; worn_x_dimension and worn_y_dimension will be used in this case.
 	VAR_PRIVATE/list/worn_icon_override
@@ -305,7 +312,7 @@
 		data[WORN_DATA_SIZE_Y] = worn_y_dimension
 
 	//* inventory slot defaults
-	else if(!worn_icon && !(inhands && inhand_icon))	// setting the new vars indicate opting out of defaulting.
+	else if(worn_species_default)
 		var/list/resolved = slot_meta.resolve_default_assets(bodytype, data[WORN_DATA_STATE], M, src)
 		if(!resolved && (bodytype != BODYTYPE_DEFAULT) && (bodytype & worn_bodytypes_converted))
 			// attempt 2 - convert to default if specified to convert
@@ -315,7 +322,7 @@
 			data[WORN_DATA_SIZE_X] = resolved[WORN_DATA_STATE]
 			data[WORN_DATA_SIZE_Y] = resolved[WORN_DATA_LAYER]
 
-	//* Our icon
+	//* Now, the actual intended render system.
 	if(!data[WORN_DATA_ICON])
 		// grab icon based on priority
 		if(inhands && inhand_icon)
