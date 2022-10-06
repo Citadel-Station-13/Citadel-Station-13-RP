@@ -313,7 +313,7 @@
 		. |= recurse_levels? pulling.getLocationTransitForceMoveTargets(destination, recurse_levels - 1, allow_buckled, allow_pulled, allow_grabbed, recursed) : pulling
 	if(allow_buckled && buckled_mobs)
 		for(var/mob/M in buckled_mobs)
-			. |= recurse_levels? M.getLocationTransitForceMoveTargets(destination, recurse_levels - 1, allow_buckled = TRUE, allow_pulled = TRUE, allow_grabbed = GRAB_PASSIVE, recursed) : M
+			. |= recurse_levels? M.getLocationTransitForceMoveTargets(destination, recurse_levels - 1, allow_buckled, allow_pulled, allow_grabbed, recursed) : M
 
 // until movement rework
 /mob/getLocationTransitForceMoveTargets(atom/destination, recurse_levels = 0, allow_buckled = TRUE, allow_pulled = TRUE, allow_grabbed = GRAB_PASSIVE)

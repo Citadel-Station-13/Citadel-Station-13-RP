@@ -8,15 +8,7 @@
 		if(MOVE_INTENT_WALK)
 			. += config_legacy.walk_speed
 
-/mob/living/Move(NewLoc, Dir)
-	// what the hell does this do i don't know fine we'll keep it for now..
-	if (buckled && buckled.loc != NewLoc) //not updating position
-		if(istype(buckled, /mob))	//If you're buckled to a mob, a la slime things, keep on rolling.
-			return buckled.Move(NewLoc, Dir)
-		else	//Otherwise, no running around for you.
-			return 0
-	// end
-
+/mob/living/Moved()
 	. = ..()
 	if(s_active && !CheapReachability(s_active))
 		s_active.close(src)
@@ -33,6 +25,9 @@
 
 
 /mob/living/CanAllowThrough(atom/movable/mover, turf/target)
+	if(buckled && mover.buckled == buckled)
+		// riding same thing, don't block each other
+		return TRUE
 	// can't throw blob stuff through blob stuff
 	if(istype(mover, /obj/structure/blob) && faction == "blob" && !mover.throwing) //Blobs should ignore things on their faction.
 		return TRUE
