@@ -91,6 +91,7 @@
 	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, .proc/signal_hook_handle_turn)
 	RegisterSignal(parent, COMSIG_ATOM_RELAYMOVE_FROM_BUCKLED, .proc/signal_hook_handle_relaymove)
 	RegisterSignal(parent, COMSIG_MOVABLE_PRE_BUCKLE_MOB, .proc/signal_hook_pre_buckle_mob)
+	RegisterSignal(parent, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED, .proc/signal_hook_pixel_offset_changed)
 
 /datum/component/riding_handler/UnregisterFromParent()
 	. = ..()
@@ -127,6 +128,9 @@
 	SIGNAL_HANDLER_DOES_SLEEP
 	if(!check_rider(M, semantic, TRUE, user = user))
 		return COMPONENT_BLOCK_BUCKLE_OPERATION
+
+/datum/component/riding_handler/proc/signal_hook_pixel_offset_changed(atom/movable/source)
+	full_update_riders(null, TRUE)
 
 /datum/component/riding_handler/proc/update_vehicle_on_turn(dir)
 	if(!vehicle_offsets)
