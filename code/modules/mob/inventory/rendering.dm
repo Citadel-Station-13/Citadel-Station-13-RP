@@ -141,10 +141,14 @@
 
 	//** These specify item/icon overrides for _species_
 	//TODO Refactor this from the ground up. Too many overrides. -Zandario
+	//! THIS IS NOW BANNED. DO NOT USE THIS OR I WILL PUT A LEMON ON YOUR EYES. ~silicons
+	//! Use the new bodytype system, PLEASE.
+	//! Accessories are currently exempt from the ban, but also accessories need refactored
+	//! God this is fucking asinine
 	/* Species-specific sprites, concept stolen from Paradise//vg/.
 	 * ex:
 	 * sprite_sheets = list(
-	 * 	SPECIES_TAJ = 'icons/cat/are/bad'
+	 * 	BODYTYPE_STRING_TAJARAN = 'icons/cat/are/bad'
 	 * 	)
 	 * If index term exists and icon_override is not set, this sprite sheet will be used.
 	*/
@@ -159,7 +163,7 @@
 	var/icon/default_worn_icon
 
 	//! NEW RENDERING SYSTEM (to be used by all new content tm); read comment section at top
-	//? prioritized over icon, icon_state, icon dimensions
+	//? for equipment slots: prioritized over icon, icon_state, icon dimensions
 	/// state to use; icon_state is used if this isn't set
 	var/worn_state
 	/// worn icon used instead of base icon
@@ -168,7 +172,7 @@
 	var/worn_x_dimension
 	/// dimensions of our worn icon file if different from icon
 	var/worn_y_dimension
-	//? prioritized over icon, icon_state, icon dimensions
+	//? for hands: prioritized over icon, icon_state, icon dimensions
 	/// state to use; worn_state, then icon_state is used if this isn't set
 	var/inhand_state
 	/// inhand icon used instead of base icon
@@ -177,6 +181,9 @@
 	var/inhand_x_dimension
 	/// dimensions of inhand sprites if different from icon
 	var/inhand_y_dimension
+	//? for belts
+	/// state to use in [icons/mob/clothing/belt.dmi] for belt overlay
+	var/belt_state
 	//? general handling directives
 	/**
 	 * bodytypes that *can* get trampled to default if the default icon is not found on species
@@ -293,8 +300,10 @@
 		data[WORN_DATA_SIZE_Y] = worn_y_dimension
 
 	//* species-specific sprite sheets
-	else if()
-	#warn god what the fuck
+	else if(length(sprite_sheets) && !inhands && (sprite_sheets[bodytype_to_string(bodytype)]))
+		data[WORN_DATA_ICON] = sprite_sheets[bodytype_to_string(bodytype)]
+		data[WORN_DATA_SIZE_X] = WORLD_ICON_SIZE
+		data[WORN_DATA_SIZE_Y] = WORLD_ICON_SIZE
 
 	//* slot-specific sprite sheets
 	else if(item_icons?[slot_meta.id])
