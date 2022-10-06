@@ -35,6 +35,10 @@
 	 */
 	parent_type = /datum
 
+	//! Intrinsics
+	/// Persistent round-by-round data holder
+	var/datum/client_data/persistent
+
 	//! Rendering
 	/// Click catcher
 	var/atom/movable/screen/click_catcher/click_catcher
@@ -65,6 +69,7 @@
 		/////////
 		//OTHER//
 		/////////
+	// todo: rename to `preferences` & put it next to `persistent` to sate my OCD ~silicons
 	///Player preferences datum for the client
 	var/datum/preferences/prefs = null
 	var/moving = null

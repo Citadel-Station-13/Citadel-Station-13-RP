@@ -9,6 +9,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/default_slot = 1
 	var/savefile_version = 0
 
+// todo: kick this out of prefs
 //! ## Non-Preference Stuff
 	var/warns = 0
 	var/muted = 0
@@ -21,6 +22,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/loadprefcooldown
 	var/savecharcooldown
 	var/loadcharcooldown
+
+	//? Someday everything'll be in these lists.
+	//? These lists may only ever contain associative key-values, where
+	//? values MUST be string, number, or null.
+	//? Savefiles do not play nice with typepaths.
+	//! Loaded data
+	/// character data
+	var/list/character
+	/// global data
+	var/list/options
 
 //! ## Game Preferences
 	var/tgui_fancy = TRUE

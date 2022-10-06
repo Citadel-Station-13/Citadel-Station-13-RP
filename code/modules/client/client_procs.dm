@@ -168,6 +168,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
+	// resolve persistent data
+	persistent = resolve_client_data(ckey)
+
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
 
@@ -410,6 +413,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.directory -= ckey
 	log_access("Logout: [key_name(src)]")
 	GLOB.ahelp_tickets.ClientLogout(src)
+	persistent = null
+	prefs = null
 	SSserver_maint.UpdateHubStatus()
 	if(holder)
 		holder.owner = null
