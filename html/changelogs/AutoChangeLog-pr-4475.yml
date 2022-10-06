@@ -1,0 +1,5 @@
+author: "CharlesWedge"
+delete-after: True
+changes: 
+  - rscadd: "Asylum Dungeon to the north of the underground areas of the station. Puzzle Focus with three entrances."
+  - tweak: "Perma is now much hard to escape, feel free to add more pickaxes to it for now."
