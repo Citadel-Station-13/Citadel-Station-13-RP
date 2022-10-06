@@ -221,7 +221,7 @@
 	else
 		slot_meta = resolve_inventory_slot_meta(slot_id_or_hand_index)
 
-	var/list/resolved = resolve_worn_assets(mob/M, slot_meta, inhands, bodytype)
+	var/list/resolved = resolve_worn_assets(M, slot_meta, inhands, bodytype)
 
 	return _render_mob_appearance(M, slot_meta, inhands, bodytype, resolved[WORN_DATA_ICON], resolved[WORN_DATA_STATE], resolved[WORN_DATA_LAYER], resolved [WORN_DATA_SIZE_X], resolved[WORN_DATA_SIZE_Y])
 

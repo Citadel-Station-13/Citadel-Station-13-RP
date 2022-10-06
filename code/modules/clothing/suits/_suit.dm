@@ -40,12 +40,11 @@
 
 	return ..()
 
-/obj/item/clothing/suit/make_worn_icon(var/body_type,var/slot_id,var/inhands,var/default_icon,var/default_layer = 0,var/icon/clip_mask) // Taur suits need to be shifted so its centered on their taur half.
-	var/image/standing = ..()
-	if(taurized) //Special snowflake var on suits
-		standing.pixel_x = -16
-		standing.layer = BODY_LAYER + 15 // 15 is above tail layer, so will not be covered by taurbody.
-	return standing
+/obj/item/clothing/suit/render_apply_custom(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+	. = ..()
+	if(taurized)
+		MA.pixel_x = -16
+		MA.layer = TAIL_LAYER + 1	// kick it over tail
 
 // todo: accesosries shouldn't be directly done on this proc, use a helper proc to override
 /obj/item/clothing/suit/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)

@@ -212,8 +212,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	slot_flags_required = SLOT_BACK
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/back.dmi',
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/back.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/back.dmi',
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/back.dmi',
+		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/back.dmi',
 	)
 	render_layer = BACK_LAYER
 
@@ -251,18 +251,18 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/head.dmi',
 		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/head.dmi',
 		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/head.dmi',
-		SPECIES_TAJ = 'icons/mob/clothing/species/tajaran/helmet.dmi',
-		SPECIES_UNATHI = 'icons/mob/clothing/species/unathi/helmet.dmi',
-		SPECIES_AKULA       = 'icons/mob/clothing/species/akula/helmet.dmi',
-		SPECIES_NEVREAN     = 'icons/mob/clothing/species/nevrean/helmet.dmi',
-		SPECIES_PHORONOID   = 'icons/mob/clothing/species/phoronoid/head.dmi',
-		SPECIES_PROMETHEAN  = 'icons/mob/clothing/species/skrell/helmet.dmi',
-		SPECIES_SERGAL      = 'icons/mob/clothing/species/sergal/helmet.dmi',
-		SPECIES_SKRELL      = 'icons/mob/clothing/species/skrell/helmet.dmi',
-		SPECIES_VULPKANIN   = 'icons/mob/clothing/species/vulpkanin/helmet.dmi',
-		SPECIES_XENOHYBRID  = 'icons/mob/clothing/species/unathi/helmet.dmi',
-		SPECIES_ZORREN_FLAT = 'icons/mob/clothing/species/fennec/helmet.dmi',
-		SPECIES_ZORREN_HIGH = 'icons/mob/clothing/species/fox/helmet.dmi',
+		BODYTYPE_STRING_TAJARAN = 'icons/mob/clothing/species/tajaran/helmet.dmi',
+		BODYTYPE_STRING_UNATHI = 'icons/mob/clothing/species/unathi/helmet.dmi',
+		BODYTYPE_STRING_AKULA       = 'icons/mob/clothing/species/akula/helmet.dmi',
+		BODYTYPE_STRING_NEVREAN     = 'icons/mob/clothing/species/nevrean/helmet.dmi',
+		BODYTYPE_STRING_PHORONOID   = 'icons/mob/clothing/species/phoronoid/head.dmi',
+		BODYTYPE_STRING_PROMETHEAN  = 'icons/mob/clothing/species/skrell/helmet.dmi',
+		BODYTYPE_STRING_SERGAL      = 'icons/mob/clothing/species/sergal/helmet.dmi',
+		BODYTYPE_STRING_SKRELL      = 'icons/mob/clothing/species/skrell/helmet.dmi',
+		BODYTYPE_STRING_VULPKANIN   = 'icons/mob/clothing/species/vulpkanin/helmet.dmi',
+		BODYTYPE_STRING_XENOHYBRID  = 'icons/mob/clothing/species/unathi/helmet.dmi',
+		BODYTYPE_STRING_ZORREN_FLAT = 'icons/mob/clothing/species/fennec/helmet.dmi',
+		BODYTYPE_STRING_ZORREN_HIGH = 'icons/mob/clothing/species/fox/helmet.dmi',
 	)
 	render_layer = HEAD_LAYER
 
@@ -280,22 +280,22 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/suits.dmi',
-		SPECIES_AKULA       = 'icons/mob/clothing/species/akula/suits.dmi',
-		SPECIES_NEVREAN     = 'icons/mob/clothing/species/nevrean/suits.dmi',
-		SPECIES_PHORONOID   = 'icons/mob/clothing/species/phoronoid/suits.dmi',
-		SPECIES_PROMETHEAN  = 'icons/mob/clothing/species/skrell/suits.dmi',
-		SPECIES_SERGAL      = 'icons/mob/clothing/species/sergal/suits.dmi',
-		SPECIES_SKRELL      = 'icons/mob/clothing/species/skrell/suits.dmi',
-		SPECIES_TAJ         = 'icons/mob/clothing/species/tajaran/suits.dmi',
-		SPECIES_TESHARI     = 'icons/mob/clothing/species/teshari/suits.dmi',
-		SPECIES_UNATHI      = 'icons/mob/clothing/species/unathi/suits.dmi',
-		SPECIES_VOX         = 'icons/mob/clothing/species/vox/suits.dmi',
-		SPECIES_VULPKANIN   = 'icons/mob/clothing/species/vulpkanin/suits.dmi',
-		SPECIES_XENOHYBRID  = 'icons/mob/clothing/species/unathi/suits.dmi',
-		SPECIES_ZORREN_FLAT = 'icons/mob/clothing/species/fennec/suits.dmi',
-		SPECIES_ZORREN_HIGH = 'icons/mob/clothing/species/fox/suits.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/suits.dmi',
-		SPECIES_ZADDAT      = 'icons/mob/clothing/species/zaddat/suits.dmi',
+		BODYTYPE_STRING_AKULA       = 'icons/mob/clothing/species/akula/suits.dmi',
+		BODYTYPE_STRING_NEVREAN     = 'icons/mob/clothing/species/nevrean/suits.dmi',
+		BODYTYPE_STRING_PHORONOID   = 'icons/mob/clothing/species/phoronoid/suits.dmi',
+		BODYTYPE_STRING_PROMETHEAN  = 'icons/mob/clothing/species/skrell/suits.dmi',
+		BODYTYPE_STRING_SERGAL      = 'icons/mob/clothing/species/sergal/suits.dmi',
+		BODYTYPE_STRING_SKRELL      = 'icons/mob/clothing/species/skrell/suits.dmi',
+		BODYTYPE_STRING_TAJARAN         = 'icons/mob/clothing/species/tajaran/suits.dmi',
+		BODYTYPE_STRING_TESHARI     = 'icons/mob/clothing/species/teshari/suits.dmi',
+		BODYTYPE_STRING_UNATHI      = 'icons/mob/clothing/species/unathi/suits.dmi',
+		BODYTYPE_STRING_VOX         = 'icons/mob/clothing/species/vox/suits.dmi',
+		BODYTYPE_STRING_VULPKANIN   = 'icons/mob/clothing/species/vulpkanin/suits.dmi',
+		BODYTYPE_STRING_XENOHYBRID  = 'icons/mob/clothing/species/unathi/suits.dmi',
+		BODYTYPE_STRING_ZORREN_FLAT = 'icons/mob/clothing/species/fennec/suits.dmi',
+		BODYTYPE_STRING_ZORREN_HIGH = 'icons/mob/clothing/species/fox/suits.dmi',
+		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/suits.dmi',
+		BODYTYPE_STRING_ZADDAT      = 'icons/mob/clothing/species/zaddat/suits.dmi',
 	)
 	render_layer = SUIT_LAYER
 
@@ -312,8 +312,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/belt.dmi',
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/belt.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/belt.dmi',
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/belt.dmi',
+		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/belt.dmi',
 	)
 	render_layer = list(BELT_LAYER, BELT_LAYER_ALT)
 
@@ -359,7 +359,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/mob.dmi',
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/id.dmi',
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/id.dmi',
 	)
 	render_layer = ID_LAYER
 
@@ -376,10 +376,10 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/feet.dmi',
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/shoes.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/shoes.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/feet.dmi',
-		SPECIES_ZADDAT    = 'icons/mob/clothing/species/zaddat/shoes.dmi',
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/shoes.dmi',
+		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/shoes.dmi',
+		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/feet.dmi',
+		BODYTYPE_STRING_ZADDAT    = 'icons/mob/clothing/species/zaddat/shoes.dmi',
  	)
 	render_layer = list(SHOES_LAYER, SHOES_LAYER_ALT)
 
@@ -396,9 +396,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/hands.dmi',
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/gloves.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/gloves.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/hands.dmi',
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/gloves.dmi',
+		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/gloves.dmi',
+		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/hands.dmi',
 	)
 	render_layer = GLOVES_LAYER
 
@@ -415,9 +415,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/eyes.dmi',
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/eyes.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/eyes.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/eyes.dmi',
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/eyes.dmi',
+		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/eyes.dmi',
+		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/eyes.dmi',
 	)
 	render_layer = GLASSES_LAYER
 
@@ -449,9 +449,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_CONSIDERED_WORN | INV_SLOT_HUD_REQUIRES_EXPAND
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/ears.dmi',
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/ears.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/ears.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/ears.dmi',
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/ears.dmi',
+		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/ears.dmi',
+		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/ears.dmi',
 	)
 	render_layer = EARS_LAYER
 
@@ -488,18 +488,18 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	slot_flags_required = SLOT_MASK
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/mask.dmi',
-		SPECIES_AKULA       = 'icons/mob/clothing/species/akula/mask.dmi',
-		SPECIES_NEVREAN     = 'icons/mob/clothing/species/nevrean/mask.dmi',
-		SPECIES_SERGAL      = 'icons/mob/clothing/species/sergal/mask.dmi',
-		SPECIES_TAJ         = 'icons/mob/clothing/species/tajaran/mask.dmi',
-		SPECIES_TESHARI     = 'icons/mob/clothing/species/teshari/masks.dmi',
-		SPECIES_UNATHI      = 'icons/mob/clothing/species/unathi/mask.dmi',
-		SPECIES_VOX         = 'icons/mob/clothing/species/vox/masks.dmi',
-		SPECIES_VULPKANIN   = 'icons/mob/clothing/species/vulpkanin/mask.dmi',
-		SPECIES_WEREBEAST   = 'icons/mob/clothing/species/werebeast/masks.dmi',
-		SPECIES_XENOCHIMERA = 'icons/mob/clothing/species/tajaran/mask.dmi',
-		SPECIES_ZORREN_FLAT = 'icons/mob/clothing/species/fennec/mask.dmi',
-		SPECIES_ZORREN_HIGH = 'icons/mob/clothing/species/fox/mask.dmi',
+		BODYTYPE_STRING_AKULA       = 'icons/mob/clothing/species/akula/mask.dmi',
+		BODYTYPE_STRING_NEVREAN     = 'icons/mob/clothing/species/nevrean/mask.dmi',
+		BODYTYPE_STRING_SERGAL      = 'icons/mob/clothing/species/sergal/mask.dmi',
+		BODYTYPE_STRING_TAJARAN         = 'icons/mob/clothing/species/tajaran/mask.dmi',
+		BODYTYPE_STRING_TESHARI     = 'icons/mob/clothing/species/teshari/masks.dmi',
+		BODYTYPE_STRING_UNATHI      = 'icons/mob/clothing/species/unathi/mask.dmi',
+		BODYTYPE_STRING_VOX         = 'icons/mob/clothing/species/vox/masks.dmi',
+		BODYTYPE_STRING_VULPKANIN   = 'icons/mob/clothing/species/vulpkanin/mask.dmi',
+		BODYTYPE_STRING_WEREBEAST   = 'icons/mob/clothing/species/werebeast/masks.dmi',
+		BODYTYPE_STRING_XENOCHIMERA = 'icons/mob/clothing/species/tajaran/mask.dmi',
+		BODYTYPE_STRING_ZORREN_FLAT = 'icons/mob/clothing/species/fennec/mask.dmi',
+		BODYTYPE_STRING_ZORREN_HIGH = 'icons/mob/clothing/species/fox/mask.dmi',
 	)
 	render_layer = FACEMASK_LAYER
 
@@ -518,7 +518,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/mob.dmi',
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/handcuffs.dmi',
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/handcuffs.dmi',
 	)
 	render_layer = HANDCUFF_LAYER
 
@@ -534,7 +534,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_PROC
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/mob.dmi',
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/handcuffs.dmi',
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/handcuffs.dmi',
 	)
 	render_layer = LEGCUFF_LAYER
 
@@ -605,5 +605,3 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_default_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/items/righthand.dmi'
 	)
-
-#warn regex SPECIES_ away

@@ -185,16 +185,6 @@
 	siemens_coefficient = 1.5
 	item_icons = list()
 
-/obj/item/clothing/head/kitty/update_icon(mob/living/carbon/human/user)
-	if(!istype(user))
-		return
-	var/icon/ears = new/icon("icon" = INV_HEAD_DEF_ICON, "icon_state" = "kitty")
-	ears.Blend(rgb(user.r_hair, user.g_hair, user.b_hair), ICON_ADD)
-
-	var/icon/earbit = new/icon("icon" = INV_HEAD_DEF_ICON, "icon_state" = "kittyinner")
-	ears.Blend(earbit, ICON_OVERLAY)
-	#warn what the fuck is this
-
 /obj/item/clothing/head/richard
 	name = "chicken mask"
 	desc = "You can hear the distant sounds of rhythmic electronica."
