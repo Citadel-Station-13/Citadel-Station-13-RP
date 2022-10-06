@@ -219,6 +219,7 @@ BLIND     // can't see anything
 	icon_state = "plaingoggles"
 	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
 	body_parts_covered = EYES
+	item_flags = PHORONGUARD
 
 /obj/item/clothing/glasses/night
 	name = "night vision goggles"

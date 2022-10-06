@@ -26,6 +26,11 @@ GLOBAL_LIST_INIT(meta_gas_by_flag, meta_gas_by_flag_list())
 GLOBAL_LIST_INIT(meta_gas_molar_mass, meta_gas_molar_mass_list())
 /// Typecache of gases with no overlays
 GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_list())
+/// The reagents gases give mobs when breathed
+GLOBAL_LIST_INIT(meta_gas_reagent_id, meta_gas_reagent_id_list())
+/// The amount of the reagents gases give mobs
+GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
+
 
 /proc/meta_gas_heat_list()
 	. = subtypesof(/datum/gas)
@@ -121,6 +126,19 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 		if (!initial(gasvar.gas_overlay))
 			.[gastype] = TRUE
 
+/proc/meta_gas_reagent_id_list()
+	. = list()
+	for(var/gastype in subtypesof(/datum/gas))
+		var/datum/gas/gasvar = gastype
+		if(initial(gasvar.gas_reagent_id))
+			.[gastype] = initial(gasvar.gas_reagent_id)
+
+/proc/meta_gas_reagent_amount_list()
+	. = list()
+	for(var/gastype in subtypesof(/datum/gas))
+		var/datum/gas/gasvar = gastype
+		if(initial(gasvar.gas_reagent_amount))
+			.[gastype] = initial(gasvar.gas_reagent_amount)
 // Visual overlay
 /*
 /obj/effect/overlay/gas
@@ -166,6 +184,10 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	var/molar_mass = 0
 	/// Gas flags. See [code/__DEFINES/atmospherics/flags.dm]
 	var/gas_flags
+
+	var/gas_reagent_id //What is the ID of the reagent we want to apply
+	var/gas_reagent_amount = 0//How much of the reagent is applied 
+	//For a gas that makes up 21% of the atmos you need to be above 1.39, for it to instill any reagents, for lower percentages the number needs to be higher,and viceversa
 
 /datum/gas/oxygen
 	id = "o2"
@@ -357,6 +379,10 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	toxicity = 15*/
 	gas_overlay = "chlorine"
 	moles_visible = 1
+	
+	gas_reagent_id = "sacid"
+	gas_reagent_amount = 10
+
 
 /datum/gas/sulfur_dioxide
 	id = "sulfur dioxide"
