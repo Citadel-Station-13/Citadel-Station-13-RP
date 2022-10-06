@@ -380,16 +380,16 @@
 	slot = ACCESSORY_SLOT_OVER
 
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/ties.dmi'
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/ties.dmi'
 		)
 
 /obj/item/clothing/accessory/sweater/equipped(mob/user, slot, flags) // Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
-		if(H.species.name == SPECIES_TESHARI)
+		if(H.species.get_effective_bodytype() == BODYTYPE_TESHARI)
 			icon_override = 'icons/mob/clothing/species/teshari/ties.dmi'
-		else if(H.species.name == SPECIES_VOX)
+		else if(H.species.get_effective_bodytype() == BODYTYPE_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/ties.dmi'
 		else
 			icon_override = 'icons/mob/clothing/ties.dmi'

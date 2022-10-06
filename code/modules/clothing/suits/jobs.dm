@@ -252,8 +252,8 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
 	icon = 'icons/map_assets/southern_cross/obj/sc_suits.dmi'
 	sprite_sheets = list(
-			SPECIES_TESHARI = 'icons/map_assets/southern_cross/mob/species/teshari/sc_suits.dmi',
-			SPECIES_VOX = 'icons/map_assets/southern_cross/mob/species/vox/sc_suits.dmi'
+			BODYTYPE_STRING_TESHARI = 'icons/map_assets/southern_cross/mob/species/teshari/sc_suits.dmi',
+			BODYTYPE_STRING_VOX = 'icons/map_assets/southern_cross/mob/species/vox/sc_suits.dmi'
 			)
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 

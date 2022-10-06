@@ -28,9 +28,9 @@
 	var/rolled_down = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
 	var/rolled_sleeves = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/uniform.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/uniform.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/uniform.dmi')
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/uniform.dmi',
+		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/uniform.dmi',
+		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/uniform.dmi')
 
 	// todo: unify this iwth worn state, probably by converting the system used to do this
 	// todo: awful shit.

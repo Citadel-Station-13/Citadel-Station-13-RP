@@ -269,7 +269,7 @@
 	item_icons = list(SLOT_ID_UNIFORM = 'icons/map_assets/southern_cross/mob/sc_under.dmi')
 	icon = 'icons/map_assets/southern_cross/obj/sc_uniforms.dmi'
 	sprite_sheets = list(
-			SPECIES_TESHARI = 'icons/map_assets/southern_cross/mob/species/teshari/sc_uniform.dmi'
+			BODYTYPE_STRING_TESHARI = 'icons/map_assets/southern_cross/mob/species/teshari/sc_uniform.dmi'
 			)
 	starting_accessories = list(/obj/item/clothing/accessory/storage/webbing/pilot1)
 
@@ -283,7 +283,7 @@
 	item_icons = list(SLOT_ID_UNIFORM = 'icons/map_assets/southern_cross/mob/sc_under.dmi')
 	icon = 'icons/map_assets/southern_cross/obj/sc_uniforms.dmi'
 	sprite_sheets = list(
-			SPECIES_TESHARI = 'icons/map_assets/southern_cross/mob/species/teshari/sc_uniform.dmi'
+			BODYTYPE_STRING_TESHARI = 'icons/map_assets/southern_cross/mob/species/teshari/sc_uniform.dmi'
 			)
 	starting_accessories = list(/obj/item/clothing/accessory/storage/webbing/pilot2)
 

@@ -7,8 +7,8 @@
 	show_messages = 1
 
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/head.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/head.dmi'
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/head.dmi',
+		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/head.dmi'
 		)
 
 	origin_tech = null
