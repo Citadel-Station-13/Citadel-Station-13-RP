@@ -65,7 +65,7 @@
 
 		var/obj/item/clothing/under/U = item
 		if(istype(U))
-			U.worn_state = U.icon_state
+			U.snowflake_worn_state = U.icon_state
 			U.update_rolldown_status()
 
 	// Kits are dumb so this is going to have to be hardcoded/snowflake.

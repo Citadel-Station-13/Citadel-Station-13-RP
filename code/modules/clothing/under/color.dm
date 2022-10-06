@@ -7,7 +7,7 @@
 	name = "feminine black jumpsuit"
 	desc = "It's very smart and in a ladies size!"
 	icon_state = "black"
-	worn_state = "blackf"
+	snowflake_worn_state = "blackf"
 
 /obj/item/clothing/under/color/blackjumpskirt
 	name = "black jumpskirt"

@@ -889,94 +889,94 @@
 	name = "\improper Aether jumpsuit"
 	desc = "A jumpsuit belonging to Aether Atmospherics and Recycling, a Trans-Stellar that supplies recycling and atmospheric systems to colonies."
 	icon_state = "aether"
-	worn_state = "aether"
+	snowflake_worn_state = "aether"
 
 /obj/item/clothing/under/pcrc
 	name = "\improper PCRC uniform"
 	desc = "A uniform belonging to Proxima Centauri Risk Control, a private security firm."
 	icon_state = "pcrc"
 	item_state = "jensensuit"
-	worn_state = "pcrc"
+	snowflake_worn_state = "pcrc"
 
 /obj/item/clothing/under/pcrc_fem
 	name = "\improper PCRC uniform"
 	desc = "A uniform belonging to Proxima Centauri Risk Control, a private security firm."
 	icon_state = "pcrc_fem"
 	item_state = "jensensuit"
-	worn_state = "pcrc"
+	snowflake_worn_state = "pcrc"
 
 /obj/item/clothing/under/brandjumpsuit/grayson
 	name = "\improper Grayson overalls"
 	desc = "A set of overalls belonging to Grayson Manufactories, a mining Trans-Stellar."
 	icon_state = "mechanic"
-	worn_state = "mechanic"
+	snowflake_worn_state = "mechanic"
 
 /obj/item/clothing/under/brandjumpsuit/wardt
 	name = "\improper Ward-Takahashi jumpsuit"
 	desc = "A jumpsuit belonging to Ward-Takahashi, a Trans-Stellar in the consumer goods market."
 	icon_state = "robotics2"
-	worn_state = "robotics2"
+	snowflake_worn_state = "robotics2"
 
 /obj/item/clothing/under/brandjumpsuit/mbill
 	name = "\improper Major Bill's uniform"
 	desc = "A uniform belonging to Major Bill's Transportation, a shipping megacorporation."
 	icon_state = "mbill"
-	worn_state = "mbill"
+	snowflake_worn_state = "mbill"
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/major_bills)
 
 /obj/item/clothing/under/confederacy
 	name = "\improper Confederacy uniform"
 	desc = "A military uniform belonging to the Confederacy of Man, an independent human government." //Name pending review
 	icon_state = "confed"
-	worn_state = "confed"
+	snowflake_worn_state = "confed"
 
 /obj/item/clothing/under/saare
 	name = "SAARE uniform"
 	desc = "A dress uniform belonging to Stealth Assault Enterprises, a minor private military corporation." //Name pending review
 	icon_state = "saare"
-	worn_state = "saare"
+	snowflake_worn_state = "saare"
 
 /obj/item/clothing/under/saare_fem
 	name = "SAARE uniform"
 	desc = "A dress uniform belonging to Stealth Assault Enterprises, a minor private military corporation."
 	icon_state = "saare_fem"
-	worn_state = "saare_fem"
+	snowflake_worn_state = "saare_fem"
 
 /obj/item/clothing/under/frontier
 	name = "frontier clothes"
 	desc = "A rugged flannel shirt and denim overalls. A popular style among frontier colonists."
 	icon_state = "frontier"
-	worn_state = "frontier"
+	snowflake_worn_state = "frontier"
 
 /obj/item/clothing/under/brandjumpsuit/focal
 	name = "\improper Focal Point jumpsuit"
 	desc = "A jumpsuit belonging to Focal Point Energistics, an engineering megacorporation."
 	icon_state = "focal"
-	worn_state = "focal"
+	snowflake_worn_state = "focal"
 
 /obj/item/clothing/under/brandjumpsuit/hephaestus
 	name = "\improper Hephaestus jumpsuit"
 	desc = "A jumpsuit belonging to Hephaestus Industries, a Trans-Stellar best known for its arms production."
 	icon_state = "heph"
-	worn_state = "heph"
+	snowflake_worn_state = "heph"
 
 /obj/item/clothing/under/brandjumpsuit/hephaestus_fem
 	name = "\improper Hephaestus jumpsuit (female)"
 	desc = "A jumpsuit belonging to Hephaestus Industries, a Trans-Stellar best known for its arms production."
 	icon_state = "heph_fem"
-	worn_state = "heph_fem"
+	snowflake_worn_state = "heph_fem"
 
 /obj/item/clothing/under/rank/psych/turtleneck/sweater
 	desc = "A warm looking sweater and a pair of dark blue slacks."
 	name = "sweater"
 	icon_state = "turtleneck"
-	worn_state = "turtleneck"
+	snowflake_worn_state = "turtleneck"
 
 /obj/item/clothing/under/rank/psych/turtleneck/sweater
 	desc = "A warm looking sweater and a pair of dark blue slacks."
 	name = "sweater"
 	icon_state = "turtleneck_fem"
-	worn_state = "turtleneck_fem"
+	snowflake_worn_state = "turtleneck_fem"
 
 //And this is where the real game begins
 /obj/item/clothing/under/future_fashion
@@ -1013,14 +1013,14 @@
 	name = "medical gown"
 	desc = "A flimsy examination gown, the back ties never close."
 	icon_state = "medicalgown"
-	worn_state = "medicalgown"
+	snowflake_worn_state = "medicalgown"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/bathrobe
 	name = "bathrobe"
 	desc = "A fluffy robe to keep you from showing off to the world."
 	icon_state = "bathrobe"
-	worn_state = "bathrobe"
+	snowflake_worn_state = "bathrobe"
 
 /obj/item/clothing/under/explorer
 	desc = "A green uniform for operating in hazardous environments."
@@ -1788,7 +1788,7 @@
 	equip_sound = null
 
 	item_state = "golem"  //This is dumb and hacky but was here when I got here.
-	worn_state = "golem"  //It's basically just a coincidentally black iconstate in the file.
+	snowflake_worn_state = "golem"  //It's basically just a coincidentally black iconstate in the file.
 
 /obj/item/clothing/under/bluespace
 	name = "bluespace jumpsuit"
@@ -1798,7 +1798,7 @@
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_uniforms.dmi',
 			)
 	item_state = "lingchameleon"
-	worn_state = "lingchameleon"
+	snowflake_worn_state = "lingchameleon"
 	desc = "Do you feel like warping spacetime today? Because it seems like that's on the agenda, now. \
 			Allows one to resize themselves at will, and conceals their true weight."
 	hides_bulges = TRUE
@@ -1932,10 +1932,10 @@
     if(usr.stat)
         return
     to_chat(usr, "You rearrange the suit's configuration.")
-    if(worn_state == "antediluvian_s")
-        worn_state = "antediluvian_d_s"
-    if(worn_state == "antediluvian_d_s")
-        worn_state = "antediluvian_s"
+    if(snowflake_worn_state == "antediluvian_s")
+        snowflake_worn_state = "antediluvian_d_s"
+    if(snowflake_worn_state == "antediluvian_d_s")
+        snowflake_worn_state = "antediluvian_s"
 */
 
 /obj/item/clothing/under/hasie

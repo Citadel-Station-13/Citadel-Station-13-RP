@@ -125,10 +125,10 @@
     if(usr.stat)
         return
     to_chat(usr, "You rearrange the suit's configuration.")
-    if(worn_state == "carcharodon_s")
-        worn_state = "carcharodon_d_s"
-    if(worn_state == "carcharodon_d_s")
-        worn_state = "carcharodon_s"
+    if(snowflake_worn_state == "carcharodon_s")
+        snowflake_worn_state = "carcharodon_d_s"
+    if(snowflake_worn_state == "carcharodon_d_s")
+        snowflake_worn_state = "carcharodon_s"
 
 /obj/item/clothing/under/mantleofheaven
 	name = "Mantle of the Heavens"
@@ -150,10 +150,10 @@
     if(usr.stat)
         return
     to_chat(usr, "You rearrange the suit's configuration.")
-    if(worn_state == "mantleofheaven_s")
-        worn_state = "mantleofheaven_d_s"
-    if(worn_state == "mantleofheaven_d_s")
-        worn_state = "mantleofheaven_s"
+    if(snowflake_worn_state == "mantleofheaven_s")
+        snowflake_worn_state = "mantleofheaven_d_s"
+    if(snowflake_worn_state == "mantleofheaven_d_s")
+        snowflake_worn_state = "mantleofheaven_s"
 
 /obj/item/clothing/suit/storage/hooded/techpriest/chaos
 	name = "chaote robe"
@@ -275,10 +275,10 @@
     if(usr.stat)
         return
     to_chat(usr, "You rearrange the suit's configuration.")
-    if(worn_state == "dancer_costume_s")
-        worn_state = "dancer_costume_d_s"
-    if(worn_state == "dancer_costume_d_s")
-        worn_state = "dancer_costume_s"
+    if(snowflake_worn_state == "dancer_costume_s")
+        snowflake_worn_state = "dancer_costume_d_s"
+    if(snowflake_worn_state == "dancer_costume_d_s")
+        snowflake_worn_state = "dancer_costume_s"
 /obj/item/clothing/shoes/donator/dancer
 	name = "belly dancer footwraps"
 	desc = "Soft silk wraps meant to provide some protection without hampering agility."

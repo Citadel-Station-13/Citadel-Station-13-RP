@@ -43,7 +43,7 @@
 			I.icon_state = new_icon
 		var/obj/item/clothing/under/U = I
 		if(istype(U))
-			U.worn_state = I.icon_state
+			U.snowflake_worn_state = I.icon_state
 			U.update_rolldown_status()
 		use(1, user)
 

@@ -38,7 +38,7 @@ var/global/list/changeling_fabricated_clothing = list(
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_uniforms.dmi',
 			)
 	item_state = "lingchameleon"
-	worn_state = "lingchameleon"
+	snowflake_worn_state = "lingchameleon"
 	desc = "The flesh all around us has grown a new layer of cells that can shift appearance and create a biological fabric that cannot be distinguished from \
 	ordinary cloth, allowing us to make ourselves appear to wear almost anything."
 	origin_tech = list() //The base chameleon items have origin technology, which we will inherit if we don't null out this variable.

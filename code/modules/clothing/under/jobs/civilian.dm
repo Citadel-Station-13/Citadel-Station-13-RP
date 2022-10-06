@@ -263,7 +263,7 @@
 	name = "\improper NanoTrasen flight suit"
 	desc = "A blue and grey NanoTrasen flight suit. Warm and practical, it feels cozy."
 	icon_state = "pilot1"
-	worn_state = "pilot1"
+	snowflake_worn_state = "pilot1"
 	rolled_down = 0
 	rolled_sleeves = 0
 	item_icons = list(SLOT_ID_UNIFORM = 'icons/map_assets/southern_cross/mob/sc_under.dmi')
@@ -277,7 +277,7 @@
 	name = "\improper NanoTrasen flight suit"
 	desc = "A dark blue NanoTrasen flight suit. Warm and practical, several patches are scattered across it."
 	icon_state = "pilot2"
-	worn_state = "pilot2"
+	snowflake_worn_state = "pilot2"
 	rolled_down = 0
 	rolled_sleeves = 0
 	item_icons = list(SLOT_ID_UNIFORM = 'icons/map_assets/southern_cross/mob/sc_under.dmi')

@@ -48,7 +48,7 @@
 
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "wolfgirluni"
-	worn_state = "wolfgirluni_mob"
+	snowflake_worn_state = "wolfgirluni_mob"
 	rolled_sleeves = 0
 	rolled_down = 0
 
@@ -571,7 +571,7 @@
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "tronsiren"
-	worn_state = "tronsiren_mob"
+	snowflake_worn_state = "tronsiren_mob"
 	item_state = "tronsiren_mob"
 	rolled_sleeves = 0
 
@@ -670,7 +670,7 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 
 	icon_state = "blackutility_med"
-	worn_state = "blackutility_med"
+	snowflake_worn_state = "blackutility_med"
 	item_state = "blackutility_med"
 
 	rolled_down = 0
