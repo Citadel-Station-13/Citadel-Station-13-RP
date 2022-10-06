@@ -136,11 +136,11 @@
 					newtonian_move(direct)
 			moving_diagonally = 0
 			return
-	else
+	else		// trying to move to the same place
 		if(direct)
 			last_move_dir = direct
 			setDir(direct)
-		return TRUE		// we didn't even move!!
+		return TRUE		// not moving is technically success
 
 	if(!loc || (loc == oldloc && oldloc != newloc))
 		last_move_dir = NONE

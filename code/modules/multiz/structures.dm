@@ -70,6 +70,8 @@
 	return null
 
 /obj/structure/stairs/proc/common_prechecks(atom/movable/AM, atom/oldLoc)
+	if(!isturf(AM.loc))		// maybe don't yank things out that're being picked up huh
+		return
 	if(oldLoc && ((get_turf(oldLoc) == get_destination_turf()) || (get_turf(oldLoc) == GetBelow(src))))
 		return FALSE
 	if(isobserver(AM))

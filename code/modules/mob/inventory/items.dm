@@ -291,7 +291,10 @@
 	else
 		stack_trace("item Move inv hook called without a mob as loc??")
 		worn_slot = null
-	return ..()
+	. = ..()
+	if(!. || (loc == M))
+		// kick them out
+		forceMove(M.drop_location())
 
 /**
  * checks if we're in inventory. if so, returns mob we're in
