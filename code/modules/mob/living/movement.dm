@@ -25,9 +25,11 @@
 
 
 /mob/living/CanAllowThrough(atom/movable/mover, turf/target)
-	if(buckled && mover.buckled == buckled)
-		// riding same thing, don't block each other
-		return TRUE
+	if(ismob(mover))
+		var/mob/M = mover
+		if(buckled && M.buckled == buckled)
+			// riding same thing, don't block each other
+			return TRUE
 	// can't throw blob stuff through blob stuff
 	if(istype(mover, /obj/structure/blob) && faction == "blob" && !mover.throwing) //Blobs should ignore things on their faction.
 		return TRUE
