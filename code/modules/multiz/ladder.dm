@@ -54,7 +54,7 @@
 	. = ..()
 	var/target_ladder = getTargetLadder(M)
 	if(target_ladder)
-		M.locationTransitForceMove(get_turf(target_ladder), 1, allow_buckled = TRUE, allow_pulling = FALSE)
+		M.locationTransitForceMove(get_turf(target_ladder), 1, allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
 
 /obj/structure/ladder/attack_robot(var/mob/M)
 	attack_hand(M)

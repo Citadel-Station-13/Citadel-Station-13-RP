@@ -287,9 +287,10 @@
 			oldpulling.doLocationTransitForceMove(destination)
 		start_pulling(oldpulling, suppress_message = TRUE)
 
-/mob/locationTransitForceMove(atom/destination, recurse_levels, allow_buckled, allow_pulled, allow_grabbed)
+/mob/locationTransitForceMove(atom/destination, recurse_levels = 0, allow_buckled = TRUE, allow_pulled = TRUE, allow_grabbed = GRAB_PASSIVE, list/recursed = list())
 	var/list/old_grabbed
 	if(allow_grabbed)
+		old_grabbed = list()
 		for(var/mob/M in grabbing())
 			if(check_grab(M) < allow_grabbed)
 				continue
