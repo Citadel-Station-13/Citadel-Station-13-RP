@@ -31,7 +31,7 @@
 /obj/structure/bed/chair/wheelchair/relaymove(mob/user, direction)
 	if(world.time < last_active_move + move_delay)
 		return
- 	last_active_move = world.time
+	last_active_move = world.time
 
 	if(user.stat || user.stunned || user.weakened || user.paralysis || user.lying || user.restrained())
 		if(user==pulling_along)
