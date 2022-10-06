@@ -361,16 +361,6 @@
 		return "[inhand_state || icon_state][worn_inhand_ignored? "_all" : "_[slot_key]"]"
 	return "[worn_state || icon_state][worn_slot_ignored? "_all" : "_[slot_key]"][((worn_bodytypes & (~BODYTYPE_DEFAULT)) & bodytype)? "_[bodytype_to_string(bodytype)]" : ""]"
 
-//Returns the icon object that should be used for the worn icon
-/obj/item/proc/get_worn_icon_file(var/body_type,var/slot_id,var/default_icon,var/inhands)
-
-	//2: species-specific sprite sheets (skipped for inhands)
-	if(LAZYLEN(sprite_sheets))
-		var/sheet = sprite_sheets[body_type]
-		if(sheet && !inhands)
-			return sheet
-
-
 //! legacy
 //Apply the addblend blends onto the icon
 /obj/item/proc/apply_addblends(var/source_icon, var/icon/standing_icon)

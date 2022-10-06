@@ -16,11 +16,11 @@
 		bloodsies.color		= blood_color
 		MA.overlays += bloodsies
 
+// todo : NUKE THIS SHIT FROM ORBIT ~silicons
 //UNIFORM: Always appends "_s" to iconstate, stupidly.
-/obj/item/clothing/under/get_worn_icon_state(var/slot_id)
-	var/state2use = ..()
-	state2use += "_s"
-	return state2use
+/obj/item/clothing/under/resolve_worn_assets(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
+	. = ..()
+	.[WORN_DATA_STATE] += "_s" // WHY IS THIS NEEDED???
 
 //HELMET: May have a lighting overlay
 /obj/item/clothing/head/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
