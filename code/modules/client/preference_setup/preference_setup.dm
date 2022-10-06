@@ -97,6 +97,9 @@
 * Category Category Setup *
 **************************/
 /datum/category_group/player_setup_category
+	/// primary data key for intrinsic data (NOT OF OUR ITEMS.)
+	// todo: unit test for this to exist
+	var/save_key
 	var/sort_order = 0
 
 /datum/category_group/player_setup_category/compare_to(datum/D)
@@ -153,6 +156,9 @@
 * Category Item Setup *
 **********************/
 /datum/category_item/player_setup_item
+	/// primary data key
+	// todo: unit test for this to exist
+	var/save_key
 	var/sort_order = 0
 	var/datum/preferences/pref
 

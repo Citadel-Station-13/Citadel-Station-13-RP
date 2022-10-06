@@ -69,3 +69,6 @@ GLOBAL_LIST_INIT(species_meta, initialize_static_species_cache())
 	for(var/id in GLOB.species_meta)
 		var/datum/species/S = GLOB.species_meta[id]
 		. += S.name
+
+
+#warn AAAAAAAAAAAAAA NEED UID LOOKUP

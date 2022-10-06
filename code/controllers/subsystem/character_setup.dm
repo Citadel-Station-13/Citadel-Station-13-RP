@@ -18,6 +18,34 @@ SUBSYSTEM_DEF(characters)
 
 	var/list/save_queue = list()
 
+	//! Species
+	/// species cache - list of species UIDs to list(category, name, desc).
+	var/list/species_data
+	/// reverse species cache lookup: [category][name] = uid
+	var/list/species_lookup
+	/// direct ui data cache
+	var/list/species_ui_cache
+	/// species ids that are whitelisted
+	var/list/species_whitelisted
+
+/datum/controller/subsystem/characters/Initialize()
+	rebuild_caches()
+	return ..()
+
+/datum/controller/subsystem/characters/Recover()
+	. = ..()
+	rebuild_caches()
+
+/datum/controller/subsystem/characters/proc/rebuild_caches()
+	rebuild_species()
+
+/datum/controller/subsystem/characters/proc/rebuild_species()
+	species_data = list()
+	species_lookup = list()
+	species_ui_cache = list()
+	species_whitelisted = list()
+	#warn impl
+
 
 /*
 /datum/controller/subsystem/characters/Initialize()
