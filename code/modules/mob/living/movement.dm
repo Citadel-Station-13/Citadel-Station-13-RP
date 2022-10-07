@@ -20,6 +20,11 @@
 	if(s_active && !CheapReachability(s_active))
 		s_active.close(src)
 
+/mob/living/forceMove(atom/destination)
+	if(buckled && (buckled.loc != destination))
+		unbuckle(BUCKLE_OP_FORCE | BUCKLE_OP_SILENT)
+	return ..()
+
 ///Checks mobility move as well as parent checks
 /mob/living/canface()
 /*

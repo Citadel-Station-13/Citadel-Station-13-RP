@@ -284,7 +284,7 @@
 				M.locationTransitForceMove(destination, recurse_levels - 1)
 			else
 				M.doLocationTransitForceMove(destination)
-			if(!(M in buckled_mobs))
+			if(!(M.buckled == src))
 				buckle_mob(M, BUCKLE_OP_FORCE | BUCKLE_OP_IGNORE_LOC | BUCKLE_OP_SILENT, oldbuckled[M])
 
 	if(oldpulling)
@@ -352,8 +352,6 @@
 /atom/movable/proc/doMove(atom/destination)
 	. = FALSE
 	if(destination)
-		if(pulledby)
-			pulledby.stop_pulling()
 		var/atom/oldloc = loc
 		var/same_loc = oldloc == destination
 		var/area/old_area = get_area(oldloc)
@@ -386,6 +384,8 @@
 		Moved(oldloc, NONE, TRUE)
 		if(pulling)
 			check_pulling()
+		if(pulledby)
+			pulledby.check_pulling()
 		if(buckled_mobs)
 			handle_buckled_mob_movement(destination, dir, glide_size, TRUE)
 		. = TRUE
@@ -393,17 +393,18 @@
 	//If no destination, move the atom into nullspace (don't do this unless you know what you're doing)
 	else
 		. = TRUE
+		if(buckled_mobs)
+			unbuckle_all_mobs(BUCKLE_OP_FORCE)
+		pulledby?.stop_pulling()
+		if(pulling)
+			stop_pulling()
 		if (loc)
 			var/atom/oldloc = loc
 			var/area/old_area = get_area(oldloc)
 			oldloc.Exited(src, null)
 			if(old_area)
 				old_area.Exited(src, null)
-		if(buckled_mobs)
-			unbuckle_all_mobs(BUCKLE_OP_FORCE)
 		loc = null
-		if(pulling)
-			stop_pulling()
 
 /atom/movable/proc/onTransitZ(old_z,new_z)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, old_z, new_z)
