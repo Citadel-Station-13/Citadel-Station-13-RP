@@ -19,14 +19,17 @@ SUBSYSTEM_DEF(characters)
 	var/list/save_queue = list()
 
 	//! Species
-	/// species cache - list of species UIDs to list(category, name, desc).
-	var/list/species_data
-	/// reverse species cache lookup: [category][name] = uid
-	var/list/species_lookup
-	/// direct ui data cache
-	var/list/species_ui_cache
-	/// species ids that are whitelisted
-	var/list/species_whitelisted
+	/**
+	 * yeah so funny right
+	 *
+	 * we have a lot of fake-people around (minor races/human reskins)
+	 * i can't remove them because that'd ruffle feathers
+	 *              ( literally, looking at you harpies )
+	 * so **everyone** gets to be a /datum/character_species
+	 * that way we get the name, desc, and species id of what
+	 * actual species we should be any are able to do roundstart tweaks.
+	 */
+	var/list/species_lookup = list()
 
 /datum/controller/subsystem/characters/Initialize()
 	rebuild_caches()
@@ -45,6 +48,14 @@ SUBSYSTEM_DEF(characters)
 	species_ui_cache = list()
 	species_whitelisted = list()
 	#warn impl
+
+/datum/controller/subsystem/characters/proc/resolve_real_species(uid)
+	RETURN_TYPE(/datum/character_species)
+
+/datum/controller/subsystem/characters/proc/run_species_tweaks(uid, datum/species/S)
+	var/datum/character_species/faux = resolve_real_species(uid)
+	if(faux.is_real)
+		return			// why tf you using this instead of the species system?
 
 
 /*
