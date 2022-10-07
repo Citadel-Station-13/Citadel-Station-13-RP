@@ -3,6 +3,7 @@
  */
 #define SPECIES_ID_AKULA "akula"
 #define SPECIES_ID_AURIL "auril"
+#define SPECIES_ID_CUSTOM "custom"
 #define SPECIES_ID_DREMACHIR "dremachir"
 #define SPECIES_ID_HARPY "harpy"
 #define SPECIES_ID_HUMAN "human"

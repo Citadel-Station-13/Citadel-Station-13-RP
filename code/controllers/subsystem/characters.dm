@@ -55,8 +55,16 @@ SUBSYSTEM_DEF(characters)
 /datum/controller/subsystem/characters/proc/run_species_tweaks(uid, datum/species/S)
 	var/datum/character_species/faux = resolve_real_species(uid)
 	if(faux.is_real)
-		return			// why tf you using this instead of the species system?
+		return FALSE			// why tf you using this instead of the species system?
+	faux.tweak(S)
+	return TRUE
 
+/datum/controller/subsystem/characters/proc/construct_species(uid)
+	RETURN_TYPE(/datum/species)
+	var/datum/character_species/faux = resolve_real_species(uid)
+	var/datum/species/built = new faux.real_species_type
+	faux.tweak(S)
+	return S
 
 /*
 /datum/controller/subsystem/characters/Initialize()

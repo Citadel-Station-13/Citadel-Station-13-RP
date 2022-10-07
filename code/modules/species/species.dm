@@ -29,6 +29,8 @@
 	/// Species real name.
 	// TODO: STOP USING THIS. This is being phased out for species IDs.
 	var/name
+	/// Category in character setup
+	var/category = "Miscellaneous"
 	/// what you see on tooltip/examine
 	var/examine_name
 	/// what you see on health analyzers/IC

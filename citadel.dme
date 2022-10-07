@@ -386,7 +386,7 @@
 #include "code\controllers\subsystem\atoms.dm"
 #include "code\controllers\subsystem\automata.dm"
 #include "code\controllers\subsystem\bellies_vr.dm"
-#include "code\controllers\subsystem\character_setup.dm"
+#include "code\controllers\subsystem\characters.dm"
 #include "code\controllers\subsystem\chat.dm"
 #include "code\controllers\subsystem\dcs.dm"
 #include "code\controllers\subsystem\emergency_shuttle.dm"

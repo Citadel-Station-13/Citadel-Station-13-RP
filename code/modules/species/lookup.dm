@@ -1,6 +1,8 @@
 /// all species by typepath
 GLOBAL_LIST_INIT(species_meta, initialize_static_species_cache())
 
+// todo: this entire system needs to support UID as well as path based
+
 /proc/initialize_static_species_cache()
 	. = GLOB.species_meta = list()
 	for(var/path in typesof(/datum/species))
@@ -70,5 +72,4 @@ GLOBAL_LIST_INIT(species_meta, initialize_static_species_cache())
 		var/datum/species/S = GLOB.species_meta[id]
 		. += S.name
 
-
-#warn AAAAAAAAAAAAAA NEED UID LOOKUP
+// todo: this entire system needs to support UID as well as path based
