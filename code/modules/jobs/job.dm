@@ -28,7 +28,7 @@
 	var/list/departments = list()			// List of departments this job belongs to, if any. The first one on the list will be the 'primary' department.
 	var/sorting_order = 0					// Used for sorting jobs so boss jobs go above regular ones, and their boss's boss is above that. Higher numbers = higher in sorting.
 	var/departments_managed = null			// Is this a management position?  If yes, list of departments managed.  Otherwise null.
-	var/GLOB.department_accounts = null			// Which department accounts should people with this position be given the pin for?
+	var/department_accounts = null			// Which department accounts should people with this position be given the pin for?
 	var/assignable = TRUE					// Should it show up on things like the ID computer?
 	var/minimum_character_age = 0
 	var/ideal_character_age = 30
