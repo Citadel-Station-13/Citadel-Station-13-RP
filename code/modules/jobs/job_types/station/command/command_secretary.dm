@@ -2,7 +2,7 @@
 	title = "Command Secretary"
 	flag = BRIDGE
 	departments = list(DEPARTMENT_COMMAND)
-	GLOB.department_accounts = list(DEPARTMENT_COMMAND)
+	department_accounts = list(DEPARTMENT_COMMAND)
 	department_flag = CIVILIAN
 	disallow_jobhop = TRUE
 	pto_type = PTO_CIVILIAN
