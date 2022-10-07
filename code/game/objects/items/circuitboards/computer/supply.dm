@@ -29,7 +29,7 @@
 
 /obj/item/circuitboard/supplycomp/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/multitool))
-		var/catastasis = src.contraband_enabled
+		var/catastasis = contraband_enabled
 		var/opposite_catastasis
 		if(catastasis)
 			opposite_catastasis = "STANDARD"
@@ -38,11 +38,6 @@
 			opposite_catastasis = "BROAD"
 			catastasis = "STANDARD"
 
-		var/choice = tgui_alert(user, "Current receiver spectrum is set to: [catastasis]", "Multitool-Circuitboard interface", list("Switch to [opposite_catastasis]", "Cancel"))
-		if(choice == "Switch to [catastasis]")
-			src.contraband_enabled = !src.contraband_enabled
-		if(choice == "Cancel")
-			return
-		else
-			to_chat(user, SPAN_DEBUGERROR("DERP! BUG! Report this (And what you were doing to cause it) to the Maintainers"))
-	return
+		if(tgui_alert(user, "Current receiver spectrum is set to: [catastasis]", "Multitool-Circuitboard Interface", list("Switch to [opposite_catastasis]", "Cancel")) != "Cancel")
+			contraband_enabled = !contraband_enabled
+		return
