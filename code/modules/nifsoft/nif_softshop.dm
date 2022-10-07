@@ -160,7 +160,7 @@
 				return
 			else
 				currently_vending = R
-				if(!vendor_account || vendor_account.suspended)
+				if(!GLOB.vendor_account || GLOB.vendor_account.suspended)
 					status_message = "This machine is currently unable to process payments due to problems with the associated account."
 					status_error = 1
 				else

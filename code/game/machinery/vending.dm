@@ -170,7 +170,7 @@
 /obj/machinery/vending/attackby(obj/item/W, mob/user)
 	var/obj/item/card/id/I = W.GetID()
 
-	if(currently_vending && vendor_account && !vendor_account.suspended)
+	if(currently_vending && GLOB.vendor_account && !GLOB.vendor_account.suspended)
 		var/paid = FALSE
 		var/handled = FALSE
 
@@ -258,7 +258,7 @@
 	.[CHARGE_DETAIL_DEVICE] = name
 	.[CHARGE_DETAIL_LOCATION] = get_area(src).name
 	.[CHARGE_DETAIL_REASON] = currently_vending? "Purchase of [currently_vending.item_name]" : "Unknown"
-	.[CHARGE_DETAIL_RECIPIENT] = vendor_account.owner_name
+	.[CHARGE_DETAIL_RECIPIENT] = GLOB.vendor_account.owner_name
 
 /**
  *  Add money for current purchase to the vendor account.
@@ -266,16 +266,16 @@
  *  Called after the money has already been taken from the customer.
  */
 /obj/machinery/vending/proc/credit_purchase(var/target as text)
-	vendor_account.money += currently_vending.price
+	GLOB.vendor_account.money += currently_vending.price
 
 	var/datum/transaction/T = new()
 	T.target_name = target
 	T.purpose = "Purchase of [currently_vending.item_name]"
 	T.amount = "[currently_vending.price]"
 	T.source_terminal = name
-	T.date = current_date_string
+	T.date = GLOB.current_date_string
 	T.time = stationtime2text()
-	vendor_account.transaction_log.Add(T)
+	GLOB.vendor_account.transaction_log.Add(T)
 
 /obj/machinery/vending/attack_ai(mob/user as mob)
 	return attack_hand(user)
@@ -381,7 +381,7 @@
 				return
 			else
 				currently_vending = R
-				if(!vendor_account || vendor_account.suspended)
+				if(!GLOB.vendor_account || GLOB.vendor_account.suspended)
 					status_message = "This machine is currently unable to process payments due to issues with the associated account."
 					status_error = 1
 				else
