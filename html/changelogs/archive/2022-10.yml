@@ -43,3 +43,14 @@
   - bugfix: Fixed a few bugs regarding window spawners, map defines,
   - code_imp: Touched up on map defines and lateloading for the rift. Messed with
       largecrates to get them to work as intended
+2022-10-07:
+  CharlesWedge:
+  - rscadd: Psychiatric wing at the back of medical.
+  - rscadd: Asylum Dungeon to the north of the underground areas of the station. Puzzle
+      Focus with three entrances.
+  - tweak: Perma is now much hard to escape, feel free to add more pickaxes to it
+      for now.
+  TheLordME:
+  - rscadd: Added the ability to make gases be processed like reagents in the body.
+  Zandario:
+  - bugfix: Fixes ColorMate TGUI
