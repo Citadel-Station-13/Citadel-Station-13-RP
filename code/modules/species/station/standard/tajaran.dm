@@ -2,6 +2,7 @@
 	uid = SPECIES_ID_TAJARAN
 	name = SPECIES_TAJ
 	name_plural = "Tajaran"
+	category = "Tajaran"
 
 	icobase      = 'icons/mob/species/tajaran/body_greyscale.dmi'
 	deform       = 'icons/mob/species/tajaran/deformed_body_greyscale.dmi'

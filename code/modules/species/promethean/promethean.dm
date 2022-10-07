@@ -5,6 +5,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	name = SPECIES_PROMETHEAN
 	uid = SPECIES_ID_PROMETHEAN
 	name_plural = "Prometheans"
+	category = "Special"
 
 	blurb = {"
 	Prometheans (Macrolimus artificialis) are a species of artificially-created gelatinous humanoids, chiefly characterized

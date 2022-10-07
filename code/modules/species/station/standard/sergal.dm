@@ -2,6 +2,7 @@
 	uid = SPECIES_ID_NARAMADI
 	name = SPECIES_SERGAL
 	name_plural = "Naramadi"
+	category = "Naramadi"
 	default_bodytype = BODYTYPE_SERGAL
 	icobase = 'icons/mob/human_races/r_sergal.dmi'
 	deform = 'icons/mob/human_races/r_def_sergal.dmi'

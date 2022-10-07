@@ -2,6 +2,7 @@
 	uid = SPECIES_ID_TESHARI
 	name = SPECIES_TESHARI
 	default_bodytype = BODYTYPE_TESHARI
+	category = "Teshari"
 	name_plural = "Tesharii"
 	uid = SPECIES_ID_TESHARI
 

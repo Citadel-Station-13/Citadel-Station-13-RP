@@ -1,18 +1,17 @@
 // todo: proper tgui preferences
 
 /datum/preferences/proc/species_pick(mob/user)
+	if(GLOB.species_picker_active[REF(user)])
+		return
+	var/current_species_id
 	#warn impl
+	new /datum/tgui_species_picker(user, resolve_whitelisted_species(), current_species_id)
 
 /**
- * returns list(category = list({id, name, desc: 1 | 0}, ...))
+ * gets list of species we can play of those who are whitelisted
  */
-/datum/preferences/proc/resolve_species_data()
-	return SScharacters.species_ui_cache
-
-/**
- * gets list of species we *can't* play
- */
-/datum/preferences/proc/resolve_locked_species()
+/datum/preferences/proc/resolve_whitelisted_species()
+	#warn impl
 
 /**
  * check if we can play a species
@@ -20,9 +19,41 @@
 /datum/preferences/proc/check_species_id(uid)
 	var/datum/species/S = get_static_species_meta(uid)
 
-
+GLOBAL_LIST_EMPTY(species_picker_active)
 /datum/tgui_species_picker
-	/// allowed species ids
+	/// user ref
+	var/user_ref
+	/// whitelisted uids
+	var/list/whitelisted
+	/// default uid
+	var/default
 
+/datum/tgui_species_picker/New(mob/user, list/whitelisted_for = list(), default_id)
+	if(!istype(user))
+		qdel(src)
+		CRASH("what?")
+	src.whitelisted = whitelisted_for
+	src.default = default_id
+	user_ref = REF(user)
+	GLOB.species_picker_active += user_ref
+	open()
 
-/datum/tgui_species_picker
+/datum/tgui_species_picker/Destroy()
+	GLOB.species_picker_active -= user_ref
+	return ..()
+
+/datum/tgui_species_picker/ui_status(mob/user, datum/ui_state/state)
+	return UI_INTERACTIVE
+
+/datum/tgui_species_picker/ui_static_data(mob/user)
+	. = ..()
+	.["whitelisted"] = whitelisted
+	.["species"] = SScharacters.species_cache
+	.["default"] = default
+
+/datum/tgui_species_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	switch(action)
+		if("pick")
+			#warn impl
+			qdel(src)

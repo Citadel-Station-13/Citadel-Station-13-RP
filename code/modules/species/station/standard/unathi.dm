@@ -1,6 +1,7 @@
 /datum/species/unathi
 	uid = SPECIES_ID_UNATHI
 	name = SPECIES_UNATHI
+	category = "Unathi"
 	name_plural = SPECIES_UNATHI
 	primitive_form = SPECIES_MONKEY_UNATHI
 

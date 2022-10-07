@@ -8,6 +8,7 @@
 	name = SPECIES_XENOCHIMERA
 	name_plural = "Xenochimeras"
 	base_species = SPECIES_XENOCHIMERA
+	category = "Special"
 
 	selects_bodytype = TRUE
 

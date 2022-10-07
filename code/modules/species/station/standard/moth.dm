@@ -8,6 +8,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	name = SPECIES_MOTH
 	uid = SPECIES_ID_MOTH
 	id = SPECIES_ID_MOTH
+	category = "Dnin-Nepid (Moth)"
 	abstract_type = /datum/species/moth
 	name_plural   = "Dnin-Nepids"
 	examine_name  = "Dnin-Nepid"

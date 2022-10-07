@@ -2,6 +2,7 @@
 	name = SPECIES_AURIL
 	name_plural = SPECIES_AURIL
 	uid = SPECIES_ID_AURIL
+	category = "Daedalic (\"Angels/Demons\")"
 
 	blurb = {"
 	The Auril are humanoids that resemble the angelic figures of Old Earth Christian myth.  The resemblance, however,
@@ -57,6 +58,7 @@
 	uid = SPECIES_ID_DREMACHIR
 	name = SPECIES_DREMACHIR
 	name_plural = SPECIES_DREMACHIR
+	category = "Daedalic (\"Angels/Demons\")"
 
 	blurb = {"
 	Dremachir lore is still a work in progress.  They are not actual supernatural creatures.  They are aliens.
