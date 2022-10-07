@@ -69,9 +69,9 @@
 	if(href_list["toggle_on"])
 		var/bit = text2num(href_list["toggle_on"])
 		pref.persistence_settings |= bit
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	else if(href_list["toggle_off"])
 		var/bit = text2num(href_list["toggle_off"])
 		pref.persistence_settings &= ~bit
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	return ..()

@@ -347,13 +347,13 @@
 
 	var/action = 0
 	action = B.OnTopic(href, href_list, user)
-	if(action & TOPIC_UPDATE_PREVIEW && mannequin && active_br)
+	if(action & PREFERENCES_UPDATE_PREVIEW && mannequin && active_br)
 		B.copy_to_mob(mannequin)
 		active_br.mydna.dna.ResetUIFrom(mannequin)
 		preview_icon = null
 		return 1
 	action = E.OnTopic(href, href_list, user)
-	if(action & TOPIC_UPDATE_PREVIEW && mannequin && active_br)
+	if(action & PREFERENCES_UPDATE_PREVIEW && mannequin && active_br)
 		E.copy_to_mob(mannequin)
 		active_br.mydna.dna.ResetUIFrom(mannequin)
 		preview_icon = null

@@ -62,14 +62,14 @@
 		if (!ISINRANGE(new_size,25,200))
 			pref.size_multiplier = 1
 			to_chat(user, "<span class='notice'>Invalid size.</span>")
-			return TOPIC_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 		else if(new_size)
 			pref.size_multiplier = (new_size/100)
-			return TOPIC_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["toggle_fuzzy"])
 		pref.fuzzy = pref.fuzzy ? 0 : 1;
-		return TOPIC_REFRESH_UPDATE_PREVIEW
+		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["weight"])
 		var/new_weight = input(user, "Choose your character's relative body weight.\n\
@@ -84,7 +84,7 @@
 			if(unit_of_measurement == "Kilograms")
 				new_weight = round(2.20462*text2num(new_weight),4)
 			pref.weight_vr = sanitize_integer(new_weight, WEIGHT_MIN, WEIGHT_MAX, pref.weight_vr)
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 
 	else if(href_list["weight_gain"])
 		var/weight_gain_rate = input(user, "Choose your character's rate of weight gain between 100% \
@@ -93,7 +93,7 @@
 			([WEIGHT_CHANGE_MIN]-[WEIGHT_CHANGE_MAX])", "Character Preference") as num|null
 		if(weight_gain_rate)
 			pref.weight_gain = round(text2num(weight_gain_rate),1)
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 
 	else if(href_list["weight_loss"])
 		var/weight_loss_rate = input(user, "Choose your character's rate of weight loss between 100% \
@@ -102,6 +102,6 @@
 			([WEIGHT_CHANGE_MIN]-[WEIGHT_CHANGE_MAX])", "Character Preference") as num|null
 		if(weight_loss_rate)
 			pref.weight_loss = round(text2num(weight_loss_rate),1)
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 
 	return ..();

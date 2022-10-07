@@ -37,7 +37,7 @@
 /datum/category_item/player_setup_item/vore/vantag/OnTopic(var/href, var/list/href_list, var/mob/user)
 	if(href_list["toggle_vantag_volunteer"])
 		pref.vantag_volunteer = pref.vantag_volunteer ? 0 : 1
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["change_vantag"])
 		var/list/names_list = list()
@@ -48,5 +48,5 @@
 		if(selection && selection != "Normal")
 			pref.vantag_preference = names_list[selection]
 
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	return ..()

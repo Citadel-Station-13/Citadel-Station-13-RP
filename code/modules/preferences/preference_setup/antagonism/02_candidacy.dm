@@ -57,7 +57,7 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 	if(href_list["be_special"])
 		var/num = text2num(href_list["be_special"])
 		pref.be_special ^= (1<<num)
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	if(href_list["event_role_help"])
 		to_chat(user, "<span class='boldnotice'>Toggles candidacy/preferences for partaking in certain kinds of events. Note that this doesn't mean you necessarily will or will not be involved in a certain way, \
 		but this may help administrators decide on candidates when necessary.</span>")
@@ -68,5 +68,5 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 		return
 	if(href_list["event_role_toggle"])
 		pref.be_event_role ^= text2num(href_list["event_role_toggle"])		// do i care about href exploits no what are you gonna do turn your own prefs off LOL
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	return ..()

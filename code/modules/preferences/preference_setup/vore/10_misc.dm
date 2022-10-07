@@ -40,27 +40,27 @@
 /datum/category_item/player_setup_item/vore/misc/OnTopic(var/href, var/list/href_list, var/mob/user)
 	if(href_list["toggle_show_in_directory"])
 		pref.show_in_directory = pref.show_in_directory ? 0 : 1;
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	else if(href_list["directory_tag"])
 		var/new_tag = input(user, "Pick a new tag for the character directory", "Character Tag", pref.directory_tag) as null|anything in GLOB.char_directory_tags
 		if(!new_tag)
 			return
 		pref.directory_tag = new_tag
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	else if(href_list["directory_erptag"])
 		var/new_erptag = input(user, "Pick a new ERP tag for the character directory", "Character ERP Tag", pref.directory_erptag) as null|anything in GLOB.char_directory_erptags
 		if(!new_erptag)
 			return
 		pref.directory_erptag = new_erptag
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	else if(href_list["directory_ad"])
 		var/msg = sanitize(input(user,"Write your advertisement here!", "Flavor Text", html_decode(pref.directory_ad)) as message, extra = 0)
 		pref.directory_ad = msg
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	//TFF 5/8/19 - add new thing so you can choose the sensor setting your character can get.
 	else if(href_list["toggle_sensor_setting"])
 		var/new_sensorpref = input(user, "Choose your character's sensor preferences:", "Character Preferences", sensorpreflist[pref.sensorpref]) as null|anything in sensorpreflist
 		if (!isnull(new_sensorpref) && CanUseTopic(user))
 			pref.sensorpref = sensorpreflist.Find(new_sensorpref)
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 	return ..();

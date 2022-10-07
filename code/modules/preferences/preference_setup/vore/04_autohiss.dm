@@ -70,22 +70,22 @@
 /datum/category_item/player_setup_item/vore/autohiss/OnTopic(var/href, var/list/href_list, var/mob/user)
 	if(href_list["toggle_off"])
 		pref.autohiss = AUTOHISS_OFF
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	if(href_list["toggle_basic"])
 		pref.autohiss = AUTOHISS_BASIC
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	if(href_list["toggle_full"])
 		pref.autohiss = AUTOHISS_FULL
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	if(href_list["toggle_type_none"])
 		pref.autohiss_type = AUTOHISS_TYPE_NONE
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	if(href_list["toggle_type_unathi"])
 		pref.autohiss_type = AUTOHISS_TYPE_UNATHI
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	if(href_list["toggle_type_tajaran"])
 		pref.autohiss_type = AUTOHISS_TYPE_TAJARAN
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	return ..();

@@ -40,6 +40,12 @@ SUBSYSTEM_DEF(characters)
 	var/list/species_cache
 	#warn more
 
+	//! Backgrounds - to be shoved into some lore system later (maybe)
+	var/list/character_origins
+	var/list/character_citizenships
+	var/list/character_religions
+	var/list/character_factions
+
 /datum/controller/subsystem/characters/Initialize()
 	rebuild_caches()
 	return ..()
@@ -50,6 +56,27 @@ SUBSYSTEM_DEF(characters)
 
 /datum/controller/subsystem/characters/proc/rebuild_caches()
 	rebuild_species()
+	rebuild_backgrounds()
+
+/datum/controller/subsystem/characters/proc/rebuild_backgrounds()
+	character_origins = list()
+	character_citizenships = list()
+	character_religions = list()
+	character_factions = list()
+
+	for(var/path in subtypesof(/datum/lore/character_background))
+		var/datum/lore/character_background/L = path
+		if(initial(L.abstract_type) == path)
+			continue
+		L = new path
+		if(istype(L, /datum/lore/character_background/citizenship))
+			character_citizenships += L
+		if(istype(L, /datum/lore/character_background/origin))
+			character_origins += L
+		if(istype(L, /datum/lore/character_background/religion))
+			character_religions += L
+		if(istype(L, /datum/lore/character_background/faction))
+			character_factions += L
 
 /datum/controller/subsystem/characters/proc/rebuild_species()
 	// make species lookup

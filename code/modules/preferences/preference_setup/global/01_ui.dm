@@ -43,42 +43,42 @@
 /datum/category_item/player_setup_item/player_global/ui/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(href_list["select_style"])
 		var/UI_style_new = input(user, "Choose UI style.", "Character Preference", pref.UI_style) as null|anything in all_ui_styles
-		if(!UI_style_new || !CanUseTopic(user)) return TOPIC_NOACTION
+		if(!UI_style_new || !CanUseTopic(user)) return PREFERENCES_NOACTION
 		pref.UI_style = UI_style_new
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["select_color"])
 		var/UI_style_color_new = input(user, "Choose UI color, dark colors are not recommended!", "Global Preference", pref.UI_style_color) as color|null
-		if(isnull(UI_style_color_new) || !CanUseTopic(user)) return TOPIC_NOACTION
+		if(isnull(UI_style_color_new) || !CanUseTopic(user)) return PREFERENCES_NOACTION
 		pref.UI_style_color = UI_style_color_new
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["select_alpha"])
 		var/UI_style_alpha_new = input(user, "Select UI alpha (transparency) level, between 50 and 255.", "Global Preference", pref.UI_style_alpha) as num|null
-		if(isnull(UI_style_alpha_new) || (UI_style_alpha_new < 50 || UI_style_alpha_new > 255) || !CanUseTopic(user)) return TOPIC_NOACTION
+		if(isnull(UI_style_alpha_new) || (UI_style_alpha_new < 50 || UI_style_alpha_new > 255) || !CanUseTopic(user)) return PREFERENCES_NOACTION
 		pref.UI_style_alpha = UI_style_alpha_new
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["select_ooc_color"])
 		var/new_ooccolor = input(user, "Choose OOC color:", "Global Preference") as color|null
 		if(new_ooccolor && can_select_ooc_color(user) && CanUseTopic(user))
 			pref.ooccolor = new_ooccolor
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 
 	else if(href_list["select_tooltip_style"])
 		var/tooltip_style_new = input(user, "Choose tooltip style.", "Global Preference", pref.tooltipstyle) as null|anything in all_tooltip_styles
-		if(!tooltip_style_new || !CanUseTopic(user)) return TOPIC_NOACTION
+		if(!tooltip_style_new || !CanUseTopic(user)) return PREFERENCES_NOACTION
 		pref.tooltipstyle = tooltip_style_new
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["select_client_fps"])
 		var/fps_new = input(user, "Input Client FPS (1-200, 0 uses server FPS)", "Global Preference", pref.client_fps) as null|num
-		if(isnull(fps_new) || !CanUseTopic(user)) return TOPIC_NOACTION
-		if(fps_new < 0 || fps_new > MAX_CLIENT_FPS) return TOPIC_NOACTION
+		if(isnull(fps_new) || !CanUseTopic(user)) return PREFERENCES_NOACTION
+		if(fps_new < 0 || fps_new > MAX_CLIENT_FPS) return PREFERENCES_NOACTION
 		pref.client_fps = fps_new
 		if(pref.client)
 			pref.client.fps = fps_new
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["reset"])
 		switch(href_list["reset"])
@@ -88,7 +88,7 @@
 				pref.UI_style_alpha = initial(pref.UI_style_alpha)
 			if("ooc")
 				pref.ooccolor = initial(pref.ooccolor)
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	return ..()
 

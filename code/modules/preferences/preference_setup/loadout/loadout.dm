@@ -264,17 +264,17 @@ var/list/gear_datums = list()
 				if(istype(G)) total_cost += G.cost
 			if((total_cost+TG.cost) <= max_gear_points())
 				pref.gear += TG.name
-		return TOPIC_REFRESH_UPDATE_PREVIEW
+		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 	if(href_list["gear"] && href_list["tweak"])
 		var/datum/gear/gear = gear_datums[href_list["gear"]]
 		var/datum/gear_tweak/tweak = locate(href_list["tweak"])
 		if(!tweak || !istype(gear) || !(tweak in gear.gear_tweaks))
-			return TOPIC_NOACTION
+			return PREFERENCES_NOACTION
 		var/metadata = tweak.get_metadata(user, get_tweak_metadata(gear, tweak))
 		if(!metadata || !CanUseTopic(user))
-			return TOPIC_NOACTION
+			return PREFERENCES_NOACTION
 		set_tweak_metadata(gear, tweak, metadata)
-		return TOPIC_REFRESH_UPDATE_PREVIEW
+		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 	if(href_list["next_slot"] || href_list["prev_slot"])
 		// Set the current slot in the gear list to the currently selected gear
 		pref.gear_list["[pref.gear_slot]"] = pref.gear
@@ -297,13 +297,13 @@ var/list/gear_datums = list()
 			pref.gear = list()
 			pref.gear_list["[pref.gear_slot]"] = list()
 		// Refresh?
-		return TOPIC_REFRESH_UPDATE_PREVIEW
+		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 	else if(href_list["select_category"])
 		current_tab = href_list["select_category"]
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	else if(href_list["clear_loadout"])
 		pref.gear.Cut()
-		return TOPIC_REFRESH_UPDATE_PREVIEW
+		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 	return ..()
 
 /proc/max_gear_points()

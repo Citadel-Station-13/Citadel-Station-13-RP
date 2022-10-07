@@ -44,7 +44,7 @@
 	if(href_list["remove_language"])
 		var/index = text2num(href_list["remove_language"])
 		pref.alternate_languages.Cut(index, index+1)
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	else if(href_list["add_language"])
 		var/datum/species/S = pref.character_static_species_meta()
 		if(pref.alternate_languages.len >= S.num_alternate_languages)
@@ -67,7 +67,7 @@
 				var/new_lang = input(user, "Select an additional language", "Character Generation", null) as null|anything in available_languages
 				if(new_lang && pref.alternate_languages.len < S.num_alternate_languages)
 					pref.alternate_languages |= new_lang
-					return TOPIC_REFRESH
+					return PREFERENCES_REFRESH
 
 	else if(href_list["change_prefix"])
 		var/char
@@ -89,9 +89,9 @@
 
 		if(keys.len == 3)
 			pref.language_prefixes = keys
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 	else if(href_list["reset_prefix"])
 		pref.language_prefixes = config_legacy.language_prefixes.Copy()
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	return ..()

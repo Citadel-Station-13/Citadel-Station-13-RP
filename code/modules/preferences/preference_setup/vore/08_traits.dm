@@ -178,7 +178,7 @@
 
 /datum/category_item/player_setup_item/vore/traits/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(!CanUseTopic(user))
-		return TOPIC_NOACTION
+		return PREFERENCES_NOACTION
 
 	else if(href_list["custom_species"])
 		/*if(pref.species != SPECIES_CUSTOM)
@@ -186,12 +186,12 @@
 			species on the 'General' tab. If you have this set to something, it's because you had it set before the \
 			Trait system was implemented. If you wish to change it, set your species to 'Custom Species' and configure \
 			the species completely.")
-			return TOPIC_REFRESH*/ //There was no reason to have this.
+			return PREFERENCES_REFRESH*/ //There was no reason to have this.
 		var/raw_choice = sanitize(input(user, "Input your custom species name:",
 			"Character Preference", pref.custom_species) as null|text, MAX_NAME_LEN)
 		if (CanUseTopic(user))
 			pref.custom_species = raw_choice
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["custom_base"])
 		var/list/choices = GLOB.custom_species_bases
@@ -200,64 +200,64 @@
 		var/text_choice = input("Pick an icon set for your species:","Icon Base") in choices
 		if(text_choice in choices)
 			pref.custom_base = text_choice
-		return TOPIC_REFRESH_UPDATE_PREVIEW
+		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["blood_color"])
 		var/color_choice = input("Pick a blood color (does not apply to synths)","Blood Color",pref.blood_color) as color
 		if(color_choice)
 			pref.blood_color = sanitize_hexcolor(color_choice, 6, TRUE, default = "#A10808")
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["blood_reset"])
 		var/choice = alert("Reset blood color to human default (#A10808)?","Reset Blood Color","Reset","Cancel")
 		if(choice == "Reset")
 			pref.blood_color = "#A10808"
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["clicked_pos_trait"])
 		var/datum/trait/trait = text2path(href_list["clicked_pos_trait"])
 		var/choice = alert("Remove [initial(trait.name)] and regain [initial(trait.cost)] points?","Remove Trait","Remove","Cancel")
 		if(choice == "Remove")
 			pref.pos_traits -= trait
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["clicked_neu_trait"])
 		var/datum/trait/trait = text2path(href_list["clicked_neu_trait"])
 		var/choice = alert("Remove [initial(trait.name)]?","Remove Trait","Remove","Cancel")
 		if(choice == "Remove")
 			pref.neu_traits -= trait
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["clicked_neg_trait"])
 		var/datum/trait/trait = text2path(href_list["clicked_neg_trait"])
 		var/choice = alert("Remove [initial(trait.name)] and lose [initial(trait.cost)] points?","Remove Trait","Remove","Cancel")
 		if(choice == "Remove")
 			pref.neg_traits -= trait
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["custom_say"])
 		var/say_choice = sanitize(input(usr, "This word or phrase will appear instead of 'says': [pref.real_name] says, \"Hi.\"", "Custom Say", pref.custom_say) as null|text, 12)
 		if(say_choice)
 			pref.custom_say = say_choice
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["custom_whisper"])
 		var/whisper_choice = sanitize(input(usr, "This word or phrase will appear instead of 'whispers': [pref.real_name] whispers, \"Hi...\"", "Custom Whisper", pref.custom_whisper) as null|text, 12)
 		if(whisper_choice)
 			pref.custom_whisper = whisper_choice
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["custom_ask"])
 		var/ask_choice = sanitize(input(usr, "This word or phrase will appear instead of 'asks': [pref.real_name] asks, \"Hi?\"", "Custom Ask", pref.custom_ask) as null|text, 12)
 		if(ask_choice)
 			pref.custom_ask = ask_choice
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["custom_exclaim"])
 		var/exclaim_choice = sanitize(input(usr, "This word or phrase will appear instead of 'exclaims', 'shouts' or 'yells': [pref.real_name] exclaims, \"Hi!\"", "Custom Exclaim", pref.custom_exclaim) as null|text, 12)
 		if(exclaim_choice)
 			pref.custom_exclaim = exclaim_choice
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["add_trait"])
 		var/mode = text2num(href_list["add_trait"])
@@ -280,10 +280,10 @@
 			else
 
 		if(isnull(picklist))
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 
 		if(isnull(mylist))
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 
 		var/list/nicelist = list()
 		for(var/P in picklist)
@@ -312,7 +312,7 @@
 					done = TRUE
 
 		if(!trait_choice)
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 		else if(trait_choice in nicelist)
 			var/datum/trait/path = nicelist[trait_choice]
 			var/datum/trait/instance = all_traits[path]
@@ -321,11 +321,11 @@
 
 			// if(pref.species in instance.banned_species)
 			// 	tgui_alert_async(usr, "The trait you've selected cannot be taken by the species you've chosen!", "Error")
-			// 	return TOPIC_REFRESH
+			// 	return PREFERENCES_REFRESH
 
 			if( LAZYLEN(instance.allowed_species) && !(pref.species in instance.allowed_species))
 				tgui_alert_async(usr, "The trait you've selected cannot be taken by the species you've chosen!", "Error")
-				return TOPIC_REFRESH
+				return PREFERENCES_REFRESH
 			if(trait_choice in pref.pos_traits + pref.neu_traits + pref.neg_traits)
 				conflict = instance.name
 
@@ -344,10 +344,10 @@
 			if(conflict)
 				alert("You cannot take this trait and [conflict] at the same time. \
 				Please remove that trait, or pick another trait to add.","Error")
-				return TOPIC_REFRESH
+				return PREFERENCES_REFRESH
 
 			mylist += path
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 
 	return ..()
 

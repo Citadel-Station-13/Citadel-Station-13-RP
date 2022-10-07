@@ -225,16 +225,16 @@
 
 	. = OnTopic(href, href_list, usr)
 
-	if(. & TOPIC_UPDATE_PREVIEW)
+	if(. & PREFERENCES_UPDATE_PREVIEW)
 		pref_mob.client.prefs.update_preview_icon()
-	if(. & TOPIC_REFRESH)
+	if(. & PREFERENCES_REFRESH)
 		pref_mob.client.prefs.ShowChoices(usr)
 
 /datum/category_item/player_setup_item/CanUseTopic(var/mob/user)
 	return 1
 
 /datum/category_item/player_setup_item/proc/OnTopic(var/href,var/list/href_list, var/mob/user)
-	return TOPIC_NOACTION
+	return PREFERENCES_NOACTION
 
 /datum/category_item/player_setup_item/proc/preference_mob()
 	if(!pref.client)

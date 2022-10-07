@@ -60,14 +60,14 @@
 		var/datum/skill/S = locate(href_list["skillinfo"])
 		var/HTML = "<b>[S.name]</b><br>[S.desc]"
 		user << browse(HTML, "window=\ref[user]skillinfo")
-		return TOPIC_HANDLED
+		return PREFERENCES_HANDLED
 
 	else if(href_list["setskill"])
 		var/datum/skill/S = locate(href_list["setskill"])
 		var/value = text2num(href_list["newvalue"])
 		pref.skills[S.ID] = value
 		pref.CalculateSkillPoints()
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["preconfigured"])
 		var/selected = input(user, "Select a skillset", "Skillset") as null|anything in SKILL_PRE
@@ -81,11 +81,11 @@
 			pref.skills[V] = SKILL_PRE[selected][V]
 		pref.CalculateSkillPoints()
 
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["setspecialization"])
 		pref.skill_specialization = href_list["setspecialization"]
 		pref.CalculateSkillPoints()
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	return ..()

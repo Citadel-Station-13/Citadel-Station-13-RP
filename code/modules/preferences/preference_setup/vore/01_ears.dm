@@ -263,7 +263,7 @@
 
 /datum/category_item/player_setup_item/vore/ears/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if(!CanUseTopic(user))
-		return TOPIC_NOACTION
+		return PREFERENCES_NOACTION
 
 	else if(href_list["ear_style"])
 		// Construct the list of names allowed for this user.
@@ -278,7 +278,7 @@
 		if(new_ear_style)
 			pref.ear_style = pretty_ear_styles[new_ear_style]
 
-		return TOPIC_REFRESH_UPDATE_PREVIEW
+		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["ear_color"])
 		var/new_earc = input(user, "Choose your character's ear colour:", "Character Preference",
@@ -287,7 +287,7 @@
 			pref.r_ears = hex2num(copytext(new_earc, 2, 4))
 			pref.g_ears = hex2num(copytext(new_earc, 4, 6))
 			pref.b_ears = hex2num(copytext(new_earc, 6, 8))
-			return TOPIC_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["ear_color2"])
 		var/new_earc2 = input(user, "Choose your character's secondary ear colour:", "Character Preference",
@@ -296,7 +296,7 @@
 			pref.r_ears2 = hex2num(copytext(new_earc2, 2, 4))
 			pref.g_ears2 = hex2num(copytext(new_earc2, 4, 6))
 			pref.b_ears2 = hex2num(copytext(new_earc2, 6, 8))
-			return TOPIC_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["ear_color3"])
 		var/new_earc3 = input(user, "Choose your character's tertiary ear colour:", "Character Preference",
@@ -305,7 +305,7 @@
 			pref.r_ears3 = hex2num(copytext(new_earc3, 2, 4))
 			pref.g_ears3 = hex2num(copytext(new_earc3, 4, 6))
 			pref.b_ears3 = hex2num(copytext(new_earc3, 6, 8))
-			return TOPIC_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["tail_style"])
 		// Construct the list of names allowed for this user.
@@ -320,7 +320,7 @@
 		if(new_tail_style)
 			pref.tail_style = pretty_tail_styles[new_tail_style]
 
-		return TOPIC_REFRESH_UPDATE_PREVIEW
+		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["tail_color"])
 		var/new_tailc = input(user, "Choose your character's tail/taur colour:", "Character Preference",
@@ -329,7 +329,7 @@
 			pref.r_tail = hex2num(copytext(new_tailc, 2, 4))
 			pref.g_tail = hex2num(copytext(new_tailc, 4, 6))
 			pref.b_tail = hex2num(copytext(new_tailc, 6, 8))
-			return TOPIC_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["tail_color2"])
 		var/new_tailc2 = input(user, "Choose your character's secondary tail/taur colour:", "Character Preference",
@@ -338,7 +338,7 @@
 			pref.r_tail2 = hex2num(copytext(new_tailc2, 2, 4))
 			pref.g_tail2 = hex2num(copytext(new_tailc2, 4, 6))
 			pref.b_tail2 = hex2num(copytext(new_tailc2, 6, 8))
-			return TOPIC_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["tail_color3"])
 		var/new_tailc3 = input(user, "Choose your character's tertiary tail/taur colour:", "Character Preference",
@@ -347,7 +347,7 @@
 			pref.r_tail3 = hex2num(copytext(new_tailc3, 2, 4))
 			pref.g_tail3 = hex2num(copytext(new_tailc3, 4, 6))
 			pref.b_tail3 = hex2num(copytext(new_tailc3, 6, 8))
-			return TOPIC_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["wing_style"])
 		// Construct the list of names allowed for this user.
@@ -362,7 +362,7 @@
 		if(new_wing_style)
 			pref.wing_style = pretty_wing_styles[new_wing_style]
 
-		return TOPIC_REFRESH_UPDATE_PREVIEW
+		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["wing_color"])
 		var/new_wingc = input(user, "Choose your character's wing colour:", "Character Preference",
@@ -371,7 +371,7 @@
 			pref.r_wing = hex2num(copytext(new_wingc, 2, 4))
 			pref.g_wing = hex2num(copytext(new_wingc, 4, 6))
 			pref.b_wing = hex2num(copytext(new_wingc, 6, 8))
-			return TOPIC_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["wing_color2"])
 		var/new_wingc2 = input(user, "Choose your character's secondary wing colour:", "Character Preference",
@@ -380,7 +380,7 @@
 			pref.r_wing2 = hex2num(copytext(new_wingc2, 2, 4))
 			pref.g_wing2 = hex2num(copytext(new_wingc2, 4, 6))
 			pref.b_wing2 = hex2num(copytext(new_wingc2, 6, 8))
-			return TOPIC_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["wing_color3"])
 		var/new_wingc3 = input(user, "Choose your character's tertiary wing colour:", "Character Preference",
@@ -389,7 +389,7 @@
 			pref.r_wing3 = hex2num(copytext(new_wingc3, 2, 4))
 			pref.g_wing3 = hex2num(copytext(new_wingc3, 4, 6))
 			pref.b_wing3 = hex2num(copytext(new_wingc3, 6, 8))
-			return TOPIC_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["grad_wingcolor"])
 		var/new_gradwing = input(user, "Choose your character's wing gradiant color:", "Character Preference", rgb(pref.r_gradwing, pref.g_gradwing, pref.b_gradwing)) as color|null
@@ -397,7 +397,7 @@
 			pref.r_gradwing = hex2num(copytext(new_gradwing, 2, 4))
 			pref.g_gradwing = hex2num(copytext(new_gradwing, 4, 6))
 			pref.b_gradwing = hex2num(copytext(new_gradwing, 6, 8))
-			return TOPIC_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["grad_wingstyle"])
 		var/list/valid_gradients = GLOB.hair_gradients
@@ -405,6 +405,6 @@
 		var/new_grad_wingstyle = input(user, "Choose a color pattern for your wings:", "Character Preference", pref.grad_wingstyle)  as null|anything in valid_gradients
 		if(new_grad_wingstyle && CanUseTopic(user))
 			pref.grad_wingstyle = new_grad_wingstyle
-			return TOPIC_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	return ..()

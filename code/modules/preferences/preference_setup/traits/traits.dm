@@ -124,18 +124,18 @@ var/list/trait_categories = list() // The categories available for the trait men
 			var/invalidity = T.test_for_invalidity(src)
 			if(invalidity)
 				to_chat(user, "<span class='warning'>You cannot take the [T.name] trait.  Reason: [invalidity]</span>")
-				return TOPIC_NOACTION
+				return PREFERENCES_NOACTION
 
 			var/conflicts = T.test_for_trait_conflict(pref.traits)
 			if(conflicts)
 				to_chat(user, "<span class='warning'>The [T.name] trait is mutually exclusive with [conflicts].</span>")
-				return TOPIC_NOACTION
+				return PREFERENCES_NOACTION
 
 			pref.traits += T.name
-		return TOPIC_REFRESH_UPDATE_PREVIEW
+		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 	else if(href_list["select_category"])
 		current_tab = href_list["select_category"]
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	return ..()
 
 

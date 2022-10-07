@@ -67,7 +67,7 @@
 				if(CanUseTopic(user))
 					pref.flavor_texts[href_list["flavor_text"]] = msg
 		SetFlavorText(user)
-		return TOPIC_HANDLED
+		return PREFERENCES_HANDLED
 
 	else if(href_list["flavour_text_robot"])
 		switch(href_list["flavour_text_robot"])
@@ -81,7 +81,7 @@
 				if(CanUseTopic(user))
 					pref.flavour_texts_robot[href_list["flavour_text_robot"]] = msg
 		SetFlavourTextRobot(user)
-		return TOPIC_HANDLED
+		return PREFERENCES_HANDLED
 
 	return ..()
 

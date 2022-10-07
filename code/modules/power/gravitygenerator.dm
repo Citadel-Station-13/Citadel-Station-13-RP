@@ -269,7 +269,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 			breaker = !breaker
 			investigate_log("was toggled [breaker ? "<font color='green'>ON</font>" : "<font color='red'>OFF</font>"] by [key_name(usr)].", "gravity")
 			set_power()
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 
 // Power and Icon States
 

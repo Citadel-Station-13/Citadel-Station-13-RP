@@ -86,18 +86,18 @@ datum/preferences/proc/set_biological_gender(var/gender)
 			var/new_name = sanitize_name(raw_name, pref.species, is_FBP())
 			if(new_name)
 				pref.real_name = new_name
-				return TOPIC_REFRESH
+				return PREFERENCES_REFRESH
 			else
 				to_chat(user, "<span class='warning'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</span>")
-				return TOPIC_NOACTION
+				return PREFERENCES_NOACTION
 
 	else if(href_list["random_name"])
 		pref.real_name = random_name(pref.identifying_gender, pref.species)
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["always_random_name"])
 		pref.be_random_name = !pref.be_random_name
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["nickname"])
 		var/raw_nickname = input(user, "Choose your character's nickname:", "Character Nickname")  as text|null
@@ -105,22 +105,22 @@ datum/preferences/proc/set_biological_gender(var/gender)
 			var/new_nickname = sanitize_name(raw_nickname, pref.species, is_FBP())
 			if(new_nickname)
 				pref.nickname = new_nickname
-				return TOPIC_REFRESH
+				return PREFERENCES_REFRESH
 			else
 				to_chat(user, "<span class='warning'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</span>")
-				return TOPIC_NOACTION
+				return PREFERENCES_NOACTION
 
 	else if(href_list["bio_gender"])
 		var/new_gender = input(user, "Choose your character's biological sex:", "Character Preference", pref.biological_gender) as null|anything in get_genders()
 		if(new_gender && CanUseTopic(user))
 			pref.set_biological_gender(new_gender)
-		return TOPIC_REFRESH_UPDATE_PREVIEW
+		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["id_gender"])
 		var/new_gender = input(user, "Choose your character's pronouns:", "Character Preference", pref.identifying_gender) as null|anything in all_genders_define_list
 		if(new_gender && CanUseTopic(user))
 			pref.identifying_gender = new_gender
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["age"])
 		var/min_age = get_min_age()
@@ -128,22 +128,22 @@ datum/preferences/proc/set_biological_gender(var/gender)
 		var/new_age = input(user, "Choose your character's age:\n([min_age]-[max_age])", "Character Preference", pref.age) as num|null
 		if(new_age && CanUseTopic(user))
 			pref.age = max(min(round(text2num(new_age)), max_age), min_age)
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 
 	else if(href_list["spawnpoint"])
 		var/list/spawnkeys = list()
 		for(var/spawntype in spawntypes)
 			spawnkeys += spawntype
 		var/choice = input(user, "Where would you like to spawn when late-joining?") as null|anything in spawnkeys
-		if(!choice || !spawntypes[choice] || !CanUseTopic(user))	return TOPIC_NOACTION
+		if(!choice || !spawntypes[choice] || !CanUseTopic(user))	return PREFERENCES_NOACTION
 		pref.spawnpoint = choice
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["metadata"])
 		var/new_metadata = sanitize(input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , html_decode(pref.metadata)) as message, extra = 0)
 		if(new_metadata && CanUseTopic(user))
 			pref.metadata = new_metadata
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 
 	return ..()
 

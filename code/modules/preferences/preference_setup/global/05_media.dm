@@ -39,7 +39,7 @@
 				pref.media_volume = value/100.0
 				if(user.client && user.client.media)
 					user.client.media.update_volume(pref.media_volume)
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 	else if(href_list["set_media_player"])
 		if(CanUseTopic(user))
 			var/newval = sanitize_inlist(text2num(href_list["set_media_player"]), list(0, 1, 2), pref.media_player)
@@ -49,5 +49,5 @@
 					user.client.media.open()
 					spawn(10)
 						user.update_music()
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 	return ..()

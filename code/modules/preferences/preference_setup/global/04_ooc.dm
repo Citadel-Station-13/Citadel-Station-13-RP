@@ -25,7 +25,7 @@
 	if(href_list["unignore_player"])
 		if(CanUseTopic(user))
 			pref.ignored_players -= href_list["unignore_player"]
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 
 	if(href_list["ignore_player"])
 		if(CanUseTopic(user))
@@ -34,9 +34,9 @@
 				player_to_ignore = sanitize(ckey(player_to_ignore))
 				if(player_to_ignore == user.ckey)
 					to_chat(user, "<span class='notice'>You can't ignore yourself.</span>")
-					return TOPIC_REFRESH
+					return PREFERENCES_REFRESH
 				pref.ignored_players |= player_to_ignore
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 
 	return ..()
 */

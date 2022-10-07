@@ -41,32 +41,32 @@ var/global/list/uplink_locations = list("PDA", "Headset", "None")
 /datum/category_item/player_setup_item/antagonism/basic/OnTopic(var/href,var/list/href_list, var/mob/user)
 	if (href_list["antagtask"])
 		pref.uplinklocation = next_list_item(pref.uplinklocation, uplink_locations)
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	if(href_list["exploitable_record"])
 		var/exploitmsg = sanitize(input(user,"Set exploitable information about you here.","Exploitable Information", html_decode(pref.exploit_record)) as message|null, MAX_RECORD_LENGTH, extra = 0)
 		if(!isnull(exploitmsg) && !jobban_isbanned(user, "Records") && CanUseTopic(user))
 			pref.exploit_record = exploitmsg
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 
 	if(href_list["antagfaction"])
 		var/choice = input(user, "Please choose an antagonistic faction to work for.", "Character Preference", pref.antag_faction) as null|anything in antag_faction_choices + list("None","Other")
 		if(!choice || !CanUseTopic(user))
-			return TOPIC_NOACTION
+			return PREFERENCES_NOACTION
 		if(choice == "Other")
 			var/raw_choice = sanitize(input(user, "Please enter a faction.", "Character Preference")  as text|null, MAX_NAME_LEN)
 			if(raw_choice)
 				pref.antag_faction = raw_choice
 		else
 			pref.antag_faction = choice
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	if(href_list["antagvis"])
 		var/choice = input(user, "Please choose an antagonistic visibility level.", "Character Preference", pref.antag_vis) as null|anything in antag_visiblity_choices
 		if(!choice || !CanUseTopic(user))
-			return TOPIC_NOACTION
+			return PREFERENCES_NOACTION
 		else
 			pref.antag_vis = choice
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	return ..()

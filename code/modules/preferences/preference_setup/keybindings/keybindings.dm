@@ -55,7 +55,7 @@
 			if("hotkeys")
 				pref.hotkeys = !pref.hotkeys
 				user.client.set_macros()
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	return ..()
 
 /datum/category_item/player_setup_item/keybinding/bindings
@@ -136,7 +136,7 @@
 				var/kb_name = href_list["keybinding"]
 				if(!kb_name)
 					user << browse(null, "window=capturekeypress")
-					return TOPIC_REFRESH
+					return PREFERENCES_REFRESH
 
 				var/clear_key = text2num(href_list["clear_key"])
 				var/old_key = href_list["old_key"]
@@ -147,7 +147,7 @@
 							pref.key_bindings -= old_key
 					user << browse(null, "window=capturekeypress")
 					SScharacters.queue_preferences_save(pref)
-					return TOPIC_REFRESH
+					return PREFERENCES_REFRESH
 
 				var/new_key = uppertext(href_list["key"])
 				var/AltMod = text2num(href_list["alt"]) ? "Alt" : ""
@@ -183,11 +183,11 @@
 			if("keybindings_reset")
 				var/choice = tgalert(user, "Would you prefer 'hotkey' or 'classic' defaults?", "Setup keybindings", "Hotkey", "Classic", "Cancel")
 				if(choice == "Cancel")
-					return TOPIC_REFRESH
+					return PREFERENCES_REFRESH
 				pref.hotkeys = (choice == "Hotkey")
 				pref.key_bindings = (pref.hotkeys) ? deepCopyList(GLOB.hotkey_keybinding_list_by_key) : deepCopyList(GLOB.classic_keybinding_list_by_key)
 				user.client.update_movement_keys()
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	return ..()
 
 /datum/preferences/proc/CaptureKeybinding(mob/user, datum/keybinding/kb, old_key, datum/category_item/player_setup_item/keybinding/bindings/host)

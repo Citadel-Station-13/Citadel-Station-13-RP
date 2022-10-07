@@ -67,6 +67,8 @@
 		if(alt_title && !(alt_title in job.alt_titles))
 			pref.player_alt_titles -= job.title
 
+#warn take faction into account
+
 /datum/category_item/player_setup_item/occupation/content(mob/user, limit = 25, list/splitJobs = list())
 	if(!job_master)
 		return
@@ -217,14 +219,14 @@
 /datum/category_item/player_setup_item/occupation/OnTopic(href, href_list, user)
 	if(href_list["reset_jobs"])
 		ResetJobs()
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["job_alternative"])
 		if(pref.alternate_option == GET_RANDOM_JOB || pref.alternate_option == BE_ASSISTANT)
 			pref.alternate_option += 1
 		else if(pref.alternate_option == RETURN_TO_LOBBY)
 			pref.alternate_option = 0
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	else if(href_list["select_alt_title"])
 		var/datum/job/job = locate(href_list["select_alt_title"])
@@ -233,11 +235,11 @@
 			var/choice = input("Choose a title for [job.title].", "Choose Title", pref.GetPlayerAltTitle(job)) as anything in choices|null
 			if(choice && CanUseTopic(user))
 				SetPlayerAltTitle(job, choice)
-				return (pref.equip_preview_mob ? TOPIC_REFRESH_UPDATE_PREVIEW : TOPIC_REFRESH)
+				return (pref.equip_preview_mob ? PREFERENCES_REFRESH_UPDATE_PREVIEW : PREFERENCES_REFRESH)
 
 	else if(href_list["set_job"])
 		if(SetJob(user, href_list["set_job"], text2num(href_list["level"])))
-			return (pref.equip_preview_mob ? TOPIC_REFRESH_UPDATE_PREVIEW : TOPIC_REFRESH)
+			return (pref.equip_preview_mob ? PREFERENCES_REFRESH_UPDATE_PREVIEW : PREFERENCES_REFRESH)
 
 	else if(href_list["job_info"])
 		var/rank = href_list["job_info"]

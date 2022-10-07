@@ -38,13 +38,13 @@ var/XENOMORPH_EGG 	= SPECIES_XENO
 
 /datum/category_item/player_setup_item/vore/egg/OnTopic(var/href, var/list/href_list, var/mob/user)
 	if(!CanUseTopic(user))
-		return TOPIC_NOACTION
+		return PREFERENCES_NOACTION
 
 	else if(href_list["vore_egg_type"])
 		var/list/vore_egg_types = global_vore_egg_types
 		var/selection = input(user, "Choose your character's egg type:", "Character Preference", pref.vore_egg_type) as null|anything in vore_egg_types
 		if(selection)
 			pref.vore_egg_type = vore_egg_types[selection]
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 	else
 		return

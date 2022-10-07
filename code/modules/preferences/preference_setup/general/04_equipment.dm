@@ -118,13 +118,13 @@
 		var/new_backbag = input(user, "Choose your character's style of bag:", "Character Preference", backbaglist[pref.backbag]) as null|anything in backbaglist
 		if(!isnull(new_backbag) && CanUseTopic(user))
 			pref.backbag = backbaglist.Find(new_backbag)
-			return TOPIC_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["change_pda"])
 		var/new_pdachoice = input(user, "Choose your character's style of PDA:", "Character Preference", pdachoicelist[pref.pdachoice]) as null|anything in pdachoicelist
 		if(!isnull(new_pdachoice) && CanUseTopic(user))
 			pref.pdachoice = pdachoicelist.Find(new_pdachoice)
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 
 	else if(href_list["change_underwear"])
 		var/datum/category_group/underwear/UWC = GLOB.global_underwear.categories_by_name[href_list["change_underwear"]]
@@ -133,26 +133,26 @@
 		var/datum/category_item/underwear/selected_underwear = input(user, "Choose underwear:", "Character Preference", pref.all_underwear[UWC.name]) as null|anything in UWC.items
 		if(selected_underwear && CanUseTopic(user))
 			pref.all_underwear[UWC.name] = selected_underwear.name
-		return TOPIC_REFRESH_UPDATE_PREVIEW
+		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["underwear"] && href_list["tweak"])
 		var/underwear = href_list["underwear"]
 		if(!(underwear in pref.all_underwear))
-			return TOPIC_NOACTION
+			return PREFERENCES_NOACTION
 		var/datum/gear_tweak/gt = locate(href_list["tweak"])
 		if(!gt)
-			return TOPIC_NOACTION
+			return PREFERENCES_NOACTION
 		var/new_metadata = gt.get_metadata(usr, get_metadata(underwear, gt))
 		if(new_metadata)
 			set_metadata(underwear, gt, new_metadata)
-			return TOPIC_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 	else if(href_list["toggle_comm_visibility"])
 		if(CanUseTopic(user))
 			pref.communicator_visibility = !pref.communicator_visibility
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 	else if(href_list["set_ringtone"])
 		if(CanUseTopic(user))
 			pref.ringtone = sanitize(input(user, "Please enter a new ringtone.", "Character Preference") as null|text, 20)
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 
 	return ..()

@@ -41,8 +41,8 @@
 /datum/category_item/player_setup_item/vore/resleeve/OnTopic(var/href, var/list/href_list, var/mob/user)
 	if(href_list["toggle_resleeve_lock"])
 		pref.resleeve_lock = pref.resleeve_lock ? 0 : 1;
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	else if(href_list["toggle_resleeve_scan"])
 		pref.resleeve_scan = pref.resleeve_scan ? 0 : 1;
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 	return ..();

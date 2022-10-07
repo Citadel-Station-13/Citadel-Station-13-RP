@@ -79,7 +79,7 @@
 	else if(href_list["toggle_off"])
 		. = pref_mob.set_preference(href_list["toggle_off"], FALSE)
 	if(.)
-		return TOPIC_REFRESH
+		return PREFERENCES_REFRESH
 
 	return ..()
 
