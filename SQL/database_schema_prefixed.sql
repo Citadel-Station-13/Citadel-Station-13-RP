@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `rp_feedback` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
 
-CREATE TABLE IF NOT EXISTS `rp_player` (
+CREATE TABLE IF NOT EXISTS `rp_player_lookup` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ckey` varchar(32) NOT NULL,
   `firstseen` datetime NOT NULL,
