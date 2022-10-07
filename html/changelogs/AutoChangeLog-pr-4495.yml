@@ -1,0 +1,5 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - bugfix: "Supply Computer Circuitboard TGUI Fixed"
+  - bugfix: "AI's name prompt TGUI Fixed"
