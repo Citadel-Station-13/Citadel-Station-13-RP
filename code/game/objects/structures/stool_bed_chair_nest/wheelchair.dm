@@ -99,11 +99,7 @@
 /obj/structure/bed/chair/wheelchair/attack_hand(mob/living/user as mob)
 	if (pulling_along)
 		MouseDrop(usr)
-	else
-		if(has_buckled_mobs())
-			for(var/A in buckled_mobs)
-				user_unbuckle_mob(A, user)
-	return
+	return ..()
 
 /obj/structure/bed/chair/wheelchair/CtrlClick(var/mob/user)
 	if(in_range(src, user))

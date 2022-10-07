@@ -228,11 +228,10 @@
 /mob/living/proc/can_bump_position_swap(mob/living/them)
 	// we must both be on help (or restrained) (or be pulling them)
 	// todo: only grabs should work for this..
-	if(them == pulling)
-		return TRUE
+	var/we_are_grabbing_them = them == pulling
 	if(a_intent != INTENT_HELP && !restrained())
 		return FALSE
-	if(them.a_intent != INTENT_HELP && !them.restrained())
+	if(them.a_intent != INTENT_HELP && !them.restrained() && !we_are_grabbing_them)
 		return FALSE
 
 	// sigh, polaris.
