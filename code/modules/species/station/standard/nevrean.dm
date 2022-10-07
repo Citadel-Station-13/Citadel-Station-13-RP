@@ -2,6 +2,7 @@
 	name = SPECIES_NEVREAN
 	name_plural = "Nevreans"
 	primitive_form = SPECIES_MONKEY_NEVREAN
+	default_bodytype = BODYTYPE_NEVREAN
 
 	icobase      = 'icons/mob/species/nevrean/body.dmi'
 	deform       = 'icons/mob/species/nevrean/deformed_body.dmi'

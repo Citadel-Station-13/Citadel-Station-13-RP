@@ -67,9 +67,6 @@
 /// werebeast
 #define BODYTYPE_WEREBEAST			(1<<17)
 
-#warn impl vox, nevrean, promethean, zorren's, zaddat, phoronoid, werebeastin species and the shit below
-#warn in species.
-
 // todo: what are we going to do with these?
 //? we should probably standardize bodytypes as entirely different sprites, and also
 //? have a set of "mutators" for items that apply to the default humanoid form

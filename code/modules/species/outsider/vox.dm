@@ -2,6 +2,7 @@
 	name = SPECIES_VOX
 	name_plural = SPECIES_VOX
 	uid = SPECIES_ID_VOX
+	default_bodytype = BODYTYPE_VOX
 
 	icobase = 'icons/mob/species/vox/body.dmi'
 	deform  = 'icons/mob/species/vox/deformed_body.dmi'

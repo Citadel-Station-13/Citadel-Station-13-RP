@@ -18,9 +18,12 @@
 
 // todo : NUKE THIS SHIT FROM ORBIT ~silicons
 //UNIFORM: Always appends "_s" to iconstate, stupidly.
-/obj/item/clothing/under/resolve_worn_assets(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
+/obj/item/clothing/under/resolve_worn_state(inhands, slot_key, bodytype)
 	. = ..()
-	.[WORN_DATA_STATE] += "_s" // WHY IS THIS NEEDED???
+	// if it uses new rendering, don't fucking do this stupid shit
+	if(worn_state || inhand_state || !worn_species_default)
+		return
+	. += "_s" // WHY IS THIS NEEDED???
 
 //HELMET: May have a lighting overlay
 /obj/item/clothing/head/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)

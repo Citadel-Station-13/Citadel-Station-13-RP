@@ -198,13 +198,14 @@
 	spark_system = null
 	return ..()
 
-/obj/item/rig/get_worn_icon_file(var/body_type,var/slot_id,var/default_icon,var/inhands)
-	if(!inhands && (slot_id == SLOT_ID_BACK || slot_id == SLOT_ID_BELT))
-		if(icon_override)
-			return icon_override
-		else if(mob_icon)
-			return mob_icon
-
+/obj/item/rig/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype)
+	switch(slot_id_or_hand_index)
+		if(SLOT_ID_BACK)
+			if(mob_icon)
+				return mob_icon
+		if(SLOT_ID_BELT)
+			if(mob_icon)
+				return mob_icon
 	return ..()
 
 /obj/item/rig/proc/suit_is_deployed()

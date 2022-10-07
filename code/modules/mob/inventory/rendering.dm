@@ -208,7 +208,6 @@
 	VAR_PRIVATE/list/worn_state_override
 	/// vv only; set to override layer
 	VAR_PRIVATE/worn_layer_override
-	#warn impl icon/state overrides
 
 /obj/item/proc/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype = BODYTYPE_STRING_DEFAULT)
 	SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.
@@ -352,6 +351,12 @@
 
 	//? layer ; worn_layer --> slot defaults for the item in question
 	data[WORN_DATA_LAYER] = worn_layer_override || slot_meta.resolve_default_layer(bodytype, M, src)
+
+	//* Handle overrides
+	if(LAZYACCESS(worn_icon_override, slot_meta.id))
+		data[WORN_DATA_ICON] = worn_icon_override[slot_meta.id]
+	if(LAZYACCESS(worn_state_override, slot_meta.id))
+		data[WORN_DATA_STATE] = worn_state_override[slot_meta.id]
 
 	return data
 
