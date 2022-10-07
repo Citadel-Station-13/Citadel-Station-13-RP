@@ -8,6 +8,13 @@
 		if(MOVE_INTENT_WALK)
 			. += config_legacy.walk_speed
 
+/mob/living/Move(NewLoc, Dir)
+	if(buckled && buckled.loc != NewLoc) // buckled and it's not a buckled movement update
+		// only move if it's not anchored (if it is just move it)
+		// todo: this is awful lol this doesn't respect move force and why tf should this even work?
+		return buckled.anchored? FALSE : buckled.Move(NewLoc, Dir)
+	return ..()
+
 /mob/living/Moved()
 	. = ..()
 	if(s_active && !CheapReachability(s_active))
