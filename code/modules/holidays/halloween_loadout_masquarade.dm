@@ -47,11 +47,13 @@
 
 /obj/item/clothing/under/fake_sneaksuit
 	STD_DEF("cloth uniform")
-	icon_state = "infiltrator_uniform"
-	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	icon_state = "under"
+	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
+	worn_slot_ignored = TRUE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+
+#warn we probably need to have domain'd inhands..
 
 /datum/gear/seasonal/masquarade/syndicate/sneaksuit_armor
 	display_name = "Sneaksuit Armor"
@@ -59,9 +61,9 @@
 
 /obj/item/clothing/suit/storage/fake_sneaksuit
 	STD_DEF("plastic armor")
-	icon_state = "infiltrator_armor"
-	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	icon_state = "armor"
+	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
+	worn_slot_ignored = TRUE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	cold_protection = UPPER_TORSO|LOWER_TORSO
 

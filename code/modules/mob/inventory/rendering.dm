@@ -172,6 +172,8 @@
 	var/worn_x_dimension
 	/// dimensions of our worn icon file if different from icon
 	var/worn_y_dimension
+	/// allow species default
+	var/worn_default_allowed = TRUE
 	//? for hands: prioritized over icon, icon_state, icon dimensions
 	/// state to use; worn_state, then icon_state is used if this isn't set
 	var/inhand_state
@@ -181,6 +183,10 @@
 	var/inhand_x_dimension
 	/// dimensions of inhand sprites if different from icon
 	var/inhand_y_dimension
+	/// inhand allow default
+	var/inhand_default_allowed = TRUE
+	/// inhand default domain aka which icon we grab to check for state
+	var/inhand_default_domain = INHAND_DEFAULT_ICON_GENERAL
 	//? for belts
 	/// state to use in [icons/mob/clothing/belt.dmi] for belt overlay
 	var/belt_state
@@ -197,8 +203,6 @@
 	var/worn_slot_ignored = FALSE
 	/// do we care about inhand _left and _right keys? Set to TRUE to force slot id to `_all` regardless of state.
 	var/worn_inhand_ignored = FALSE
-	/// attempt to use species default sprite, if one is found.
-	var/worn_species_default = TRUE
 	/// worn rendering flags; unused for now
 	// var/worn_render_flags = NONE
 	//? support for adminbus
@@ -282,8 +286,8 @@
 	var/list/data = new /list(5)	// 5 tuple
 
 
-	//? state ; item_state_slots --> item_state --> icon_state
-	data[WORN_DATA_STATE] = (item_state_slots?[slot_meta.id]) || item_state || icon_state
+	//? state ; item_state_slots --> (worn_state | inhand_state) --> item_state --> icon_state
+	data[WORN_DATA_STATE] = (item_state_slots?[slot_meta.id]) || (inhands? inhand_state : worn_state) item_state || icon_state
 
 	//? icon, size
 	//* icon_override
@@ -323,11 +327,11 @@
 		#warn convert the funny antag gear
 
 	//* inventory slot defaults
-	else if(worn_species_default)
-		var/list/resolved = slot_meta.resolve_default_assets(bodytype, data[WORN_DATA_STATE], M, src)
+	else if(inhands? inhand_default_allowed : worn_default_allowed)
+		var/list/resolved = slot_meta.resolve_default_assets(bodytype, data[WORN_DATA_STATE], M, src, inhand_default_domain)
 		if(!resolved && (bodytype != BODYTYPE_DEFAULT) && (bodytype & worn_bodytypes_converted))
 			// attempt 2 - convert to default if specified to convert
-			resolved = slot_meta.resolve_default_assets(BODYTYPE_DEFAULT, data[WORN_DATA_STATE], M, src)
+			resolved = slot_meta.resolve_default_assets(BODYTYPE_DEFAULT, data[WORN_DATA_STATE], M, src, inhand_default_domain)
 		if(resolved)
 			data[WORN_DATA_ICON] = resolved[WORN_DATA_ICON]
 			data[WORN_DATA_SIZE_X] = resolved[WORN_DATA_STATE]

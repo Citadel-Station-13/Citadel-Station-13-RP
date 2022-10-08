@@ -168,6 +168,7 @@
 #include "code\__DEFINES\economy\worth.dm"
 #include "code\__DEFINES\inventory\accessories.dm"
 #include "code\__DEFINES\inventory\bodytypes.dm"
+#include "code\__DEFINES\inventory\icons.dm"
 #include "code\__DEFINES\inventory\misc.dm"
 #include "code\__DEFINES\inventory\procs.dm"
 #include "code\__DEFINES\inventory\slots.dm"
