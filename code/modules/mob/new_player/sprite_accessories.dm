@@ -50,7 +50,10 @@
 	///
 
 //! Emissives
-/datum/sprite_accessory/proc/render_emissive_images()
+/**
+ * returns list of mutable appearances to render onto the mob
+ */
+/datum/sprite_accessory/proc/render_emissive_appearances()
 	#warn impl
 
 //skin styles - WIP

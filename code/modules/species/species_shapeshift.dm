@@ -450,6 +450,9 @@ var/list/wrapped_species_by_ref = list()
 
 	update_wing_showing()
 
+#warn allow selecting emissiveness on ears, tail, wings
+#warn BODY MARKING SELECTER + EMISSIVES
+
 /mob/living/carbon/human/proc/promethean_select_opaqueness()
 
 	set name = "Toggle Transparency"
