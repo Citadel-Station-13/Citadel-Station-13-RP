@@ -7,7 +7,6 @@
 	baseturfs = /turf/simulated/floor/outdoors/dirt
 	var/list/crossed_dirs = list()
 
-
 /turf/simulated/floor/outdoors/snow/Entered(atom/A)
 	if(isliving(A))
 		var/mob/living/L = A
@@ -22,9 +21,6 @@
 	..()
 	for(var/d in crossed_dirs)
 		add_overlay(image(icon = 'icons/turf/outdoors.dmi', icon_state = "snow_footprints", dir = text2num(d)))
-	var/datum/planet/P
-	if(P.weather_holder.current_weather == WEATHER_SNOW)
-		cut_overlay()
 
 /turf/simulated/floor/outdoors/snow/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W, /obj/item/shovel))
