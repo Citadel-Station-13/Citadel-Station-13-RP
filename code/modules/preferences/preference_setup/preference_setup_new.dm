@@ -58,3 +58,16 @@
  * @return deserialized data to set on preferences data lists
  */
 /datum/category_item/player_setup_item/proc/deserialize_data(datum/preferences/prefs, raw)
+	return raw
+
+/**
+ * write data
+ */
+/datum/category_item/player_setup_item/proc/write(datum/preferences/prefs, data)
+	#warn impl
+
+/**
+ * read data
+ */
+/datum/category_item/player_setup_item/proc/read(datum/preferences/prefs)
+	#warn impl
