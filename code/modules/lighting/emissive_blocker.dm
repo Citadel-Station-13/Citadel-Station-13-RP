@@ -23,5 +23,13 @@
 	render_source = source
 	color = GLOB.em_block_color
 
+/atom/movable/emissive_blocker/Destroy()
+	if(ismovable(loc))
+		var/atom/movable/AM = loc
+		AM.vis_contents -= src
+		if(AM.em_block == src)
+			AM.em_block = null
+	return ..()
+
 /atom/movable/emissive_blocker/forceMove(atom/destination)
 	return FALSE	// nope.

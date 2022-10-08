@@ -40,11 +40,20 @@ What is the naming convention for planes or layers?
 
 */
 
+/// smallest reasonable base layer resolution - YOU SHOULD NOT VIOLATE THIS
+#define LAYER_RESOLUTION_BASE 0.01
+/// smallest relative layer resolution - YOU SHOULD NOT VIOLATE THIS
+#define LAYER_RESOLUTION_FULL 0.001
+
+/// lowest reasonable plane; this should stay at -99. NO, YOU DON'T NEED MORE.
+#define LOWEST_PLANE -99
+/// The clickcatcher lives on this plane.
+#define CLICKCATCHER_PLANE		-99
+
 // TODO: UNFUCK PLANES. HALF OF THESE HAVE NO REASON TO EXIST. WHOEVER ADDED THEM IS AN IDIOT!
 
 //! todo: layers still need to be linear regardless of plane. stuff like projectiles DO CARE.
 
-#define CLICKCATCHER_PLANE		-99
 /// Reserved for use in space/parallax
 #define SPACE_PLANE				-95
 /// Reserved for use in space/parallax
@@ -225,7 +234,29 @@ What is the naming convention for planes or layers?
 #define PLANE_PLAYER_HUD_ABOVE	97
 ///Purely for shenanigans (above HUD)
 #define PLANE_ADMIN3			99
-//////////////////////////
 
-//Check if a mob can "logically" see an atom plane
+/// Highest plane. This should stay at 99. No, you don't need more than that.
+#define HIGHEST_PLANE 99
+/// Master rendering plane - we actually render onto this plane
+// todo: unified rendering and a single game render master plane?
+// #define MASTER_RENDERER_PLANE
+
+//! Helpers
+/**
+ * "mangle" a plane and layer to get a layer that'll always layer it correctly
+ * this is useful for multiz/emissive purposes if you don't want to make multiple sets of planes.
+ *
+ * luckily, as of right now, lowest is -99 and highest is 99
+ * and we don't do /tg/'s planecube thing
+ * thus, we can get away with stuffing everything with those assumptions
+ *
+ * we also can't be negative because of FLOAT_LAYER behavior so..
+ *
+ * oh yeah and this does NOT work well with FLOAT_LAYER.
+ */
+#define MANGLE_PLANE_AND_LAYER(P, L) ((P - LOWEST_PLANE + 1) * (PLANE_MANGLING_FACTOR) + L)
+/// computed based on highest/lowest plane, and highest/lowest layer (which I assume to be 10k.)
+#define PLANE_MANGLING_FACTOR 40
+// todo: optimize
+/// Check if a mob can "logically" see an atom plane
 #define 	MOB_CAN_SEE_PLANE(M, P) (P <= PLANE_WORLD || (P in M.planes_visible) || P >= PLANE_PLAYER_HUD)

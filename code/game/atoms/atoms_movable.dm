@@ -131,8 +131,10 @@
 	//! Emissives
 	/// Either FALSE, [EMISSIVE_BLOCK_GENERIC], or [EMISSIVE_BLOCK_UNIQUE]
 	var/blocks_emissive = FALSE
-	///Internal holder for emissive blocker object, do not use directly use blocks_emissive
+	/// Internal holder for emissive blocker object, do not use directly use; use blocks_emissive
 	var/atom/movable/emissive_blocker/em_block
+	/// Internal holder for emissives. Definitely don't directly use, this is absolutely an insane Citadel Moment(tm).
+	var/atom/movable/emissive_render/em_render
 
 /atom/movable/Initialize(mapload)
 	. = ..()
@@ -144,9 +146,7 @@
 			gen_emissive_blocker.appearance_flags |= appearance_flags
 			add_overlay(list(gen_emissive_blocker))
 		if(EMISSIVE_BLOCK_UNIQUE)
-			render_target = ref(src)
-			em_block = new(src, render_target)
-			vis_contents += em_block
+			add_emissive_blocker()
 
 /atom/movable/Destroy(force)
 	if(reagents)
@@ -448,3 +448,58 @@
 /atom/movable/get_centering_pixel_y_offset(dir, atom/aligning)
 	. = ..()
 	. *= icon_scale_y
+
+//! Emissives
+/atom/movable/proc/add_emissive_blocker()
+	if(em_block)
+		update_emissive_blocker()
+		return
+	render_target = ref(src)
+	em_block = new(src, render_target)
+	update_emissive_blocker()
+
+/atom/movable/proc/add_or_update_emissive_blocker()
+	if(!em_block)
+		add_emissive_blocker()
+	else
+		update_emissive_blocker()
+
+/atom/movable/proc/update_emissive_blocker()
+	if(!em_block)
+		return
+	// layer it BELOW us incase WE wanna be fuh-nee with our own emissives
+	em_block.layer = MANGLE_PLANE_AND_LAYER(plane, layer - LAYER_RESOLUTION_FULL)
+
+/atom/movable/proc/remove_emissive_blocker()
+	if(!em_block)
+		return
+	vis_contents -= em_block
+	qdel(em_block)
+	em_block = null
+
+/atom/movable/proc/add_emissive_render()
+	if(em_render)
+		update_emissive_render()
+		return
+	render_target = ref(src)
+	em_render = new(src, render_target)
+	update_emissive_render()
+
+/atom/movable/proc/add_or_update_emissive_render()
+	if(!em_render)
+		add_emissive_render()
+	else
+		update_emissive_render()
+
+/atom/movable/proc/update_emissive_render()
+	if(!em_render)
+		return
+	// layer it at our layer
+	em_render.layer = MANGLE_PLANE_AND_LAYER(plane, layer - LAYER_RESOLUTION_FULL)
+
+/atom/movable/proc/remove_emissive_render()
+	if(!em_render)
+		return
+	vis_contents -= em_render
+	qdel(em_render)
+	em_render = null
