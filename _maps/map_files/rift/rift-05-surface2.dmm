@@ -10960,6 +10960,7 @@
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "ikz" = (
+/mob/living/bot/medibot/medass,
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/medbay_primary_storage)
 "ikK" = (
