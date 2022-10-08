@@ -36,7 +36,7 @@
 	exotic_amount = 5
 
 	speak_emote = list("bellows")
-	ai_holder_type = /datum/ai_holder/simple_mob/melee
+	ai_holder_type = /datum/ai_holder/simple_mob/destructive
 	say_list_type = /datum/say_list/goliath
 
 	var/pre_attack = 0
@@ -45,9 +45,8 @@
 	//var/pre_attack_icon = "Goliath_preattack"
 
 /datum/say_list/goliath
-	speak = list("Wails!", "Rumbles!", "Glows!")
-	emote_hear = list("flashes briefly.", "shudders.", "trills.")
-	emote_see = list ("glows faintly.", "tenses up.")
+	emote_hear = list("flashes briefly.", "wails!", "shudders.", "trills.")
+	emote_see = list ("glows faintly.", "rumbles.", "tenses up.")
 
 /mob/living/simple_mob/animal/goliath/should_special_attack(atom/A)
 	. = ..()
@@ -79,7 +78,6 @@
 	desc = "Goliaths are biologically immortal, and rare specimens have survived for centuries. This one is clearly ancient, and its tentacles constantly churn the earth around it."
 	maxHealth = 400
 	health = 400
-	guaranteed_butcher_results = list()
 	var/list/cached_tentacle_turfs
 	var/turf/last_location
 	var/tentacle_recheck_cooldown = 100
