@@ -17,22 +17,22 @@
 	icon_state = "backbone"
 	var/datum/construction/construct
 
-	attackby(obj/item/W as obj, mob/user as mob)
-		if(!construct || !construct.action(W, user))
-			..()
-		return
+/obj/item/mecha_parts/chassis/attackby(obj/item/W, mob/user)
+	if(!construct || !construct.action(W, user))
+		..()
+	return
 
-	attack_hand()
-		return
+/obj/item/mecha_parts/chassis/attack_hand()
+	return
 
-/////////// Ripley
+//! Ripley
 
 /obj/item/mecha_parts/chassis/ripley
 	name = "Ripley Chassis"
 
-	New()
-		..()
-		construct = new /datum/construction/mecha/ripley_chassis(src)
+/obj/item/mecha_parts/chassis/ripley/New()
+	..()
+	construct = new /datum/construction/mecha/ripley_chassis(src)
 
 /obj/item/mecha_parts/part/ripley_torso
 	name="Ripley Torso"
@@ -64,14 +64,14 @@
 	icon_state = "ripley_r_leg"
 	origin_tech = list(TECH_DATA = 2, TECH_MATERIAL = 2, TECH_ENGINEERING = 2)
 
-///////// Gygax
+//! Gygax
 
 /obj/item/mecha_parts/chassis/gygax
 	name = "Gygax Chassis"
 
-	New()
-		..()
-		construct = new /datum/construction/mecha/gygax_chassis(src)
+/obj/item/mecha_parts/chassis/gygax/New()
+	..()
+	construct = new /datum/construction/mecha/gygax_chassis(src)
 
 /obj/item/mecha_parts/part/gygax_torso
 	name="Gygax Torso"
@@ -112,23 +112,23 @@
 	icon_state = "gygax_armour"
 	origin_tech = list(TECH_MATERIAL = 6, TECH_COMBAT = 4, TECH_ENGINEERING = 5)
 
-////////// Serenity
+//! Serenity
 
 /obj/item/mecha_parts/chassis/serenity
 	name = "Serenity Chassis"
 
-	New()
-		..()
-		construct = new /datum/construction/mecha/serenity_chassis(src)
+/obj/item/mecha_parts/chassis/serenity/New()
+	..()
+	construct = new /datum/construction/mecha/serenity_chassis(src)
 
-//////////// Durand
+//! Durand
 
 /obj/item/mecha_parts/chassis/durand
 	name = "Durand Chassis"
 
-	New()
-		..()
-		construct = new /datum/construction/mecha/durand_chassis(src)
+/obj/item/mecha_parts/chassis/durand/New()
+	..()
+	construct = new /datum/construction/mecha/durand_chassis(src)
 
 /obj/item/mecha_parts/part/durand_torso
 	name="Durand Torso"
@@ -167,14 +167,14 @@
 
 
 
-////////// Firefighter
+//! Firefighter
 
 /obj/item/mecha_parts/chassis/firefighter
 	name = "Firefighter Chassis"
 
-	New()
-		..()
-		construct = new /datum/construction/mecha/firefighter_chassis(src)
+/obj/item/mecha_parts/chassis/firefighter/New()
+	..()
+	construct = new /datum/construction/mecha/firefighter_chassis(src)
 /*
 /obj/item/mecha_parts/part/firefighter_torso
 	name="Ripley-on-Fire Torso"
@@ -197,29 +197,29 @@
 	icon_state = "ripley_r_leg"
 */
 
-////////// Firefighter
+//! Geiger
 
 /obj/item/mecha_parts/chassis/geiger
 	name = "Lightweight APLU Chassis"
 
-	New()
-		..()
-		construct = new /datum/construction/mecha/geiger_chassis(src)
+/obj/item/mecha_parts/chassis/geiger/New()
+	..()
+	construct = new /datum/construction/mecha/geiger_chassis(src)
 
 /obj/item/mecha_parts/part/geiger_torso
 	name="Lightweight APLU Torso"
 	icon_state = "ripley_harness"
 
 
-////////// Phazon
+//! Phazon
 
 /obj/item/mecha_parts/chassis/phazon
 	name = "Phazon Chassis"
 	origin_tech = list(TECH_MATERIAL = 7)
 
-	New()
-		..()
-		construct = new /datum/construction/mecha/phazon_chassis(src)
+/obj/item/mecha_parts/chassis/phazon/New()
+	..()
+	construct = new /datum/construction/mecha/phazon_chassis(src)
 
 /obj/item/mecha_parts/part/phazon_torso
 	name="Phazon Torso"
@@ -269,9 +269,9 @@
 /obj/item/mecha_parts/chassis/odysseus
 	name = "Odysseus Chassis"
 
-	New()
-		..()
-		construct = new /datum/construction/mecha/odysseus_chassis(src)
+/obj/item/mecha_parts/chassis/odysseus/New()
+	..()
+	construct = new /datum/construction/mecha/odysseus_chassis(src)
 
 /obj/item/mecha_parts/part/odysseus_head
 	name="Odysseus Head"
@@ -315,15 +315,15 @@
 	construction_time = 200
 	construction_cost = list(MAT_STEEL=15000)*/
 
-////////// Janus
+//! Janus
 
 /obj/item/mecha_parts/chassis/janus
 	name = "Janus Chassis"
 	origin_tech = list(TECH_MATERIAL = 7)
 
-	New()
-		..()
-		construct = new /datum/construction/mecha/janus_chassis(src)
+/obj/item/mecha_parts/chassis/janus/New()
+	..()
+	construct = new /datum/construction/mecha/janus_chassis(src)
 
 /obj/item/mecha_parts/part/janus_torso
 	name="Imperion Torso"
@@ -355,14 +355,14 @@
 	icon_state = "janus_r_leg"
 	origin_tech = list(TECH_MATERIAL = 5, TECH_BLUESPACE = 3, TECH_MAGNET = 3, TECH_ARCANE = 1)
 
-///////// Honker
+//! Honker
 
 /obj/item/mecha_parts/chassis/honker
 	name = "H.O.N.K. Chassis"
 
-	New()
-		..()
-		construct = new /datum/construction/mecha/honker_chassis(src)
+/obj/item/mecha_parts/chassis/honker/New()
+	..()
+	construct = new /datum/construction/mecha/honker_chassis(src)
 
 /obj/item/mecha_parts/part/honker_torso
 	name="H.O.N.K. Torso"
@@ -403,14 +403,14 @@
 	icon_state = "honker_armour"
 	origin_tech = list(TECH_MATERIAL = 6, TECH_COMBAT = 4, TECH_ENGINEERING = 5, TECH_ILLEGAL = 5)
 
-///////// Reticent
+//! Reticent
 
 /obj/item/mecha_parts/chassis/reticent
 	name = "Reticent Chassis"
 
-	New()
-		..()
-		construct = new /datum/construction/mecha/reticent_chassis(src)
+/obj/item/mecha_parts/chassis/reticent/New()
+	..()
+	construct = new /datum/construction/mecha/reticent_chassis(src)
 
 /obj/item/mecha_parts/part/reticent_torso
 	name="Reticent Torso"

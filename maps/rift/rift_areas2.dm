@@ -816,6 +816,40 @@ Do this eventually. */
 /area/rift/facility/interior/core
 	name = "\improper Lythios Facility -  Reactor Core"
 
+///Asylum Dungeon Areas
+/area/rift/asylum
+	name = "\improper ERROR: Area Not Found"
+
+/area/rift/asylum/cellblock
+
+/area/rift/asylum/common
+
+/area/rift/asylum/janitorial
+
+/area/rift/asylum/mess
+
+/area/rift/asylum/staff
+
+/area/rift/asylum/trash
+
+/area/rift/asylum/medical
+
+/area/rift/asylum/fitness
+
+/area/rift/asylum/halls
+
+/area/rift/asylum/pit
+
+/area/rift/asylum/training
+
+/area/rift/asylum/surgical
+
+/area/rift/asylum/near_death
+
+/area/rift/asylum/science
+
+/area/rift/asylum/command
+
 //Other Lythios outdoor areas
 /area/rift/exterior/nuketown
 	name = "\improper High Yield Explosives Test Site"
@@ -840,3 +874,6 @@ Do this eventually. */
 
 /area/rift/exterior/mineshaft
 	name = "\improper Abandoned Mineshaft"
+
+
+

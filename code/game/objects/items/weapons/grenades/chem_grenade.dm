@@ -5,7 +5,7 @@
 	desc = "A hand made chemical grenade."
 	w_class = ITEMSIZE_SMALL
 	force = 2.0
-	det_time = null
+	det_time = 50
 	unacidable = 1
 
 	var/stage = 0
@@ -123,8 +123,7 @@
 		. += "With attached [detonator.name]"
 
 /obj/item/grenade/chem_grenade/activate(mob/user as mob)
-	if(active) return
-
+	. = ..()
 	if(detonator)
 		if(!isigniter(detonator.a_left))
 			detonator.a_left.activate()
@@ -132,13 +131,7 @@
 		if(!isigniter(detonator.a_right))
 			detonator.a_right.activate()
 			active = 1
-	if(active)
-		icon_state = initial(icon_state) + "_active"
 
-		if(user)
-			msg_admin_attack("[key_name_admin(user)] primed \a [src.name]")
-
-	return
 
 /obj/item/grenade/chem_grenade/proc/primed(var/primed = 1)
 	if(active)

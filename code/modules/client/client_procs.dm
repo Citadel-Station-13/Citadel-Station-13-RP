@@ -462,7 +462,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/sql_ckey = sql_sanitize_text(ckey(key))
 
 	var/datum/db_query/query = SSdbcore.RunQuery(
-		"SELECT datediff(Now(), firstseen) as age FROM [format_table_name("player")] WHERE ckey = :ckey",
+		"SELECT datediff(Now(), firstseen) as age FROM [format_table_name("player_lookup")] WHERE ckey = :ckey",
 		list(
 			"ckey" = sql_ckey
 		)
@@ -485,7 +485,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/sql_ckey = sql_sanitize_text(src.ckey)
 
 	var/datum/db_query/query = SSdbcore.RunQuery(
-		"SELECT id, datediff(Now(), firstseen) as age FROM [format_table_name("player")] WHERE ckey = :ckey",
+		"SELECT id, datediff(Now(), firstseen) as age FROM [format_table_name("player_lookup")] WHERE ckey = :ckey",
 		list(
 			"ckey" = sql_ckey
 		)
@@ -509,7 +509,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			account_age = text2num(query_datediff.item[1])
 
 	var/datum/db_query/query_ip = SSdbcore.RunQuery(
-		"SELECT ckey FROM [format_table_name("player")] WHERE ip = :addr",
+		"SELECT ckey FROM [format_table_name("player_lookup")] WHERE ip = :addr",
 		list(
 			"addr" = address
 		)
@@ -520,7 +520,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		break
 
 	var/datum/db_query/query_cid = SSdbcore.RunQuery(
-		"SELECT ckey FROM [format_table_name("player")] WHERE computerid = :cid",
+		"SELECT ckey FROM [format_table_name("player_lookup")] WHERE computerid = :cid",
 		list(
 			"cid" = sanitizeSQL(computer_id)
 		)
@@ -590,7 +590,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	if(sql_id)
 		SSdbcore.RunQuery(
-			"UPDATE [format_table_name("player")] SET lastseen = Now(), ip = :ip, computerid = :computerid, lastadminrank = :lastadminrank WHERE id = :id",
+			"UPDATE [format_table_name("player_lookup")] SET lastseen = Now(), ip = :ip, computerid = :computerid, lastadminrank = :lastadminrank WHERE id = :id",
 			list(
 				"ip" = sql_ip,
 				"computerid" = sql_computerid,
@@ -601,7 +601,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	else
 		//New player!! Need to insert all the stuff
 		SSdbcore.RunQuery(
-			"INSERT INTO [format_table_name("player")] (id, ckey, firstseen, lastseen, ip, computerid, lastadminrank) VALUES (null, :ckey, Now(), Now(), :ip, :cid, :rank)",
+			"INSERT INTO [format_table_name("player_lookup")] (id, ckey, firstseen, lastseen, ip, computerid, lastadminrank) VALUES (null, :ckey, Now(), Now(), :ip, :cid, :rank)",
 			list(
 				"ckey" = sql_ckey,
 				"ip" = sql_ip,

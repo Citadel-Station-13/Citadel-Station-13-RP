@@ -4,10 +4,10 @@
 /datum/gene/monkey/New()
 	block=MONKEYBLOCK
 
-/datum/gene/monkey/can_activate(var/mob/M,var/flags)
+/datum/gene/monkey/can_activate(mob/M, flags)
 	return istype(M, /mob/living/carbon/human) || istype(M,/mob/living/carbon/monkey)
 
-/datum/gene/monkey/activate(var/mob/living/M, var/connected, var/flags)
+/datum/gene/monkey/activate(mob/living/M, connected, flags)
 	if(!istype(M,/mob/living/carbon/human))
 		//testing("Cannot monkey-ify [M], type is [M.type].")
 		return
@@ -78,7 +78,7 @@
 	qdel(M)
 	return
 
-/datum/gene/monkey/deactivate(var/mob/living/M, var/connected, var/flags)
+/datum/gene/monkey/deactivate(mob/living/M, connected, flags)
 	if(!istype(M,/mob/living/carbon/monkey))
 		//testing("Cannot humanize [M], type is [M.type].")
 		return

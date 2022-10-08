@@ -1,5 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - bugfix: "Fixed the Account Terminal's Visual"
-  - code_imp: "Un-relative-defined some procs"

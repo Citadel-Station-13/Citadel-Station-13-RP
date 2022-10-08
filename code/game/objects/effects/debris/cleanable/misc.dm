@@ -22,12 +22,11 @@
 		F.dirt += 4
 	qdel(src)
 
-/obj/effect/debris/cleanable/greenglow
 
-	New()
-		..()
-		spawn(1200)// 2 minutes
-			qdel(src)
+/obj/effect/debris/cleanable/greenglow/New()
+	..()
+	spawn(1200)// 2 minutes
+		qdel(src)
 
 /obj/effect/debris/cleanable/dirt
 	name = "dirt"

@@ -146,13 +146,15 @@ I said no!
 		/obj/item/reagent_containers/food/snacks/meatball
 	)
 	result = /obj/item/reagent_containers/food/snacks/donkpocket //SPECIAL
-	proc/warm_up(var/obj/item/reagent_containers/food/snacks/donkpocket/being_cooked)
+
+/datum/recipe/donkpocket/proc/warm_up(obj/item/reagent_containers/food/snacks/donkpocket/being_cooked)
 		being_cooked.heat()
-	make_food(var/obj/container as obj)
-		. = ..(container)
-		for (var/obj/item/reagent_containers/food/snacks/donkpocket/D in .)
-			if (!D.warm)
-				warm_up(D)
+
+/datum/recipe/donkpocket/make_food(obj/container)
+	. = ..(container)
+	for (var/obj/item/reagent_containers/food/snacks/donkpocket/D in .)
+		if (!D.warm)
+			warm_up(D)
 
 /datum/recipe/donkpocket/warm
 	reagents = list() //This is necessary since this is a child object of the above recipe and we don't want donk pockets to need flour
@@ -305,11 +307,11 @@ I said no!
 /datum/recipe/amanitajelly
 	reagents = list("water" = 5, "vodka" = 5, "amatoxin" = 5)
 	result = /obj/item/reagent_containers/food/snacks/amanitajelly
-	make_food(var/obj/container as obj)
 
-		. = ..(container)
-		for (var/obj/item/reagent_containers/food/snacks/amanitajelly/being_cooked in .)
-			being_cooked.reagents.del_reagent("amatoxin")
+/datum/recipe/amanitajelly/make_food(obj/container)
+	. = ..(container)
+	for (var/obj/item/reagent_containers/food/snacks/amanitajelly/being_cooked in .)
+		being_cooked.reagents.del_reagent("amatoxin")
 
 /datum/recipe/meatballsoup
 	fruit = list("carrot" = 1, "potato" = 1)
@@ -644,12 +646,11 @@ I said no!
 	fruit = list("potato" = 1, "ambrosia" = 3)
 	items = list(/obj/item/reagent_containers/food/snacks/meatball)
 	result = /obj/item/reagent_containers/food/snacks/validsalad
-	make_food(var/obj/container as obj)
 
-		. = ..(container)
-		for (var/obj/item/reagent_containers/food/snacks/validsalad/being_cooked in .)
-			being_cooked.reagents.del_reagent("toxin")
-
+/datum/recipe/validsalad/make_food(obj/container)
+	. = ..(container)
+	for (var/obj/item/reagent_containers/food/snacks/validsalad/being_cooked in .)
+		being_cooked.reagents.del_reagent("toxin")
 
 
 /datum/recipe/stuffing

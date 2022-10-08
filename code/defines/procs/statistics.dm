@@ -1,4 +1,4 @@
-proc/sql_poll_population()
+/proc/sql_poll_population()
 	var/admincount = admins.len
 	var/playercount = 0
 	for(var/mob/M in player_list)
@@ -12,7 +12,7 @@ proc/sql_poll_population()
 			"INSERT INTO [format_table_name("population")] (playercount, admincount, time) VALUES (:pc, :ac, NOW())",
 			list(
 				"pc" = sanitizeSQL(playercount),
-				"ac" = sanitizeSQL(admincount)
+				"ac" = sanitizeSQL(admincount),
 			)
 		)
 		if(!query.Execute())
@@ -20,7 +20,7 @@ proc/sql_poll_population()
 			log_game("SQL ERROR during population polling. Error : \[[err]\]\n")
 		qdel(query)
 
-proc/sql_report_death(var/mob/living/carbon/human/H)
+/proc/sql_report_death(mob/living/carbon/human/H)
 	if(!H)
 		return
 	if(!H.key || !H.mind)
@@ -64,7 +64,7 @@ proc/sql_report_death(var/mob/living/carbon/human/H)
 				"fireloss" = H.getFireLoss(),
 				"brainloss" = H.getBrainLoss(),
 				"oxyloss" = H.getOxyLoss(),
-				"coord" = coord
+				"coord" = coord,
 			)
 		)
 		if(!query.Execute())
@@ -72,7 +72,7 @@ proc/sql_report_death(var/mob/living/carbon/human/H)
 			log_game("SQL ERROR during death reporting. Error : \[[err]\]\n")
 		qdel(query)
 
-proc/sql_report_cyborg_death(var/mob/living/silicon/robot/H)
+/proc/sql_report_cyborg_death(mob/living/silicon/robot/H)
 	if(!H)
 		return
 	if(!H.key || !H.mind)
@@ -114,7 +114,7 @@ proc/sql_report_cyborg_death(var/mob/living/silicon/robot/H)
 				"fireloss" = H.getFireLoss(),
 				"brainloss" = H.getBrainLoss(),
 				"oxyloss" = H.getOxyLoss(),
-				"coord" = coord
+				"coord" = coord,
 			)
 		)
 		if(!query.Execute())
@@ -123,13 +123,13 @@ proc/sql_report_cyborg_death(var/mob/living/silicon/robot/H)
 		qdel(query)
 
 
-proc/statistic_cycle()
+/proc/statistic_cycle()
 	while(1)
 		sql_poll_population()
 		sleep(6000)
 
-//This proc is used for feedback. It is executed at round end.
-proc/sql_commit_feedback()
+// This proc is used for feedback. It is executed at round end.
+/proc/sql_commit_feedback()
 	if(!blackbox)
 		log_game("Round ended without a blackbox recorder. No feedback was sent to the database.")
 		return
@@ -147,7 +147,7 @@ proc/sql_commit_feedback()
 
 		var/datum/db_query/max_query = SSdbcore.RunQuery(
 			"SELECT MAX(roundid) AS max_round_id FROM [format_table_name("feedback")]",
-			list()
+			list(),
 		)
 
 		var/newroundid
@@ -172,7 +172,7 @@ proc/sql_commit_feedback()
 				list(
 					"rid" = newroundid,
 					"var" = sanitizeSQL(variable),
-					"val" = sanitizeSQL(value)
+					"val" = sanitizeSQL(value),
 				)
 			)
 			if(!query.Execute())
