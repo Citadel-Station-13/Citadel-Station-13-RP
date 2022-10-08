@@ -3464,12 +3464,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
-/obj/machinery/access_button/airlock_interior{
-	dir = 4;
-	master_tag = "central_airlock";
-	pixel_x = 8;
-	pixel_y = -26
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
 "cEL" = (
@@ -11950,12 +11944,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
 	},
-/obj/machinery/access_button/airlock_interior{
-	dir = 4;
-	master_tag = "central_airlock_two";
-	pixel_x = 8;
-	pixel_y = 26
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
 "ijr" = (
@@ -13546,6 +13534,21 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/tool_storage)
+"jfd" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor/grav_surround{
+	dir = 8
+	},
+/obj/machinery/access_button/airlock_exterior{
+	dir = 8;
+	master_tag = "central_airlock_two";
+	pixel_x = 24;
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "jfw" = (
 /obj/machinery/door/airlock/maintenance/engi{
 	name = "RTG Access";
@@ -20097,10 +20100,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
-"nnX" = (
-/obj/effect/overlay/snow/floor/grav_edges,
-/turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "noc" = (
 /obj/structure/grille,
 /obj/structure/railing,
@@ -23548,6 +23547,12 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4;
 	icon_state = "pipe-c"
+	},
+/obj/machinery/access_button/airlock_interior{
+	dir = 4;
+	master_tag = "central_airlock_two";
+	pixel_x = -24;
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva)
@@ -28453,12 +28458,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
-/obj/machinery/access_button/airlock_exterior{
-	dir = 8;
-	master_tag = "central_airlock";
-	pixel_x = -8;
-	pixel_y = -26
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
 "srP" = (
@@ -32458,6 +32457,21 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/xenoarch_storage)
+"uNc" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor/grav_surround{
+	dir = 8
+	},
+/obj/machinery/access_button/airlock_exterior{
+	dir = 8;
+	master_tag = "central_airlock";
+	pixel_x = 24;
+	pixel_y = -26
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "uND" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -33730,13 +33744,6 @@
 /obj/effect/zone_divider,
 /turf/simulated/wall/r_wall,
 /area/maintenance/cargo)
-"vHX" = (
-/obj/effect/zone_divider,
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "vIa" = (
 /obj/structure/table/wooden_reinforced,
 /obj/machinery/reagentgrinder,
@@ -33907,6 +33914,12 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
+	},
+/obj/machinery/access_button/airlock_interior{
+	dir = 4;
+	master_tag = "central_airlock";
+	pixel_x = -24;
+	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva)
@@ -36032,12 +36045,6 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
-	},
-/obj/machinery/access_button/airlock_exterior{
-	dir = 8;
-	master_tag = "central_airlock_two";
-	pixel_x = -8;
-	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
@@ -41162,7 +41169,7 @@ piF
 oFG
 oFG
 oFG
-vHX
+hcn
 oFG
 oFG
 iFN
@@ -41545,7 +41552,7 @@ lcN
 lcN
 lcN
 lcN
-nnX
+lcN
 jhV
 oFG
 oFG
@@ -41739,7 +41746,7 @@ lcN
 lcN
 lcN
 lcN
-nnX
+lcN
 jhV
 oFG
 oFG
@@ -41933,7 +41940,7 @@ lcN
 lcN
 lcN
 lcN
-nnX
+lcN
 jhV
 oFG
 oFG
@@ -42127,7 +42134,7 @@ lcN
 lcN
 lcN
 lcN
-nnX
+lcN
 jhV
 oFG
 oFG
@@ -43097,7 +43104,7 @@ lcN
 lcN
 lcN
 lcN
-nnX
+lcN
 jhV
 oFG
 oFG
@@ -45411,8 +45418,8 @@ bGT
 bGT
 bGT
 bGT
-bGT
-bGT
+oFG
+oFG
 bGT
 xVm
 iFN
@@ -45564,7 +45571,7 @@ dXx
 bGT
 bGT
 bGT
-jKv
+hcn
 bGT
 bGT
 bGT
@@ -48142,11 +48149,11 @@ hgE
 kxc
 jZZ
 nbg
-nbg
+uNc
 vNx
 iFN
 jZZ
-nbg
+jfd
 nbg
 vNx
 kxc

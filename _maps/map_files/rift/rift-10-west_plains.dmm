@@ -7433,6 +7433,11 @@
 /obj/item/melee/umbrella/random,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenoarch_storage)
+"JK" = (
+/obj/structure/catwalk,
+/obj/effect/overlay/snow/floor/edges_new,
+/turf/simulated/floor/plating/lythios43c,
+/area/outpost/mining_main/outpost)
 "JL" = (
 /obj/random/obstruction,
 /turf/simulated/floor/lythios43c/indoors,
@@ -9538,7 +9543,10 @@
 /area/rnd/outpost)
 "Tn" = (
 /obj/structure/catwalk,
-/turf/simulated/open/lythios43c,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 1
+	},
+/turf/simulated/floor/plating/lythios43c,
 /area/outpost/mining_main/outpost)
 "Tq" = (
 /obj/structure/cable/yellow{
@@ -10541,6 +10549,10 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/facility/exterior)
+"Yp" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/plating/lythios43c,
+/area/outpost/mining_main/outpost)
 "Yq" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/elevator)
@@ -44362,14 +44374,14 @@ Yd
 Yd
 Lb
 Tn
-BR
+Yp
 Zb
 Zb
-Zb
-Zb
-Zb
-mp
-Tn
+Yp
+Yp
+Yp
+Yp
+JK
 Uw
 Yd
 sv
@@ -44555,15 +44567,15 @@ Yd
 Yd
 Yd
 Lb
-Tn
-Tn
+BR
+mp
 Qf
 WK
-Tn
-Tn
-Tn
-Tn
-Tn
+Zb
+Zb
+Zb
+Zb
+mp
 Uw
 Yd
 Yd
