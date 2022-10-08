@@ -101,10 +101,8 @@
 		var/list/subplanes = PM.sub_planes
 		for(var/SP in subplanes)
 			alter_values(SP, values)
-
-////////////////////
-// The Plane Master
-////////////////////
+///
+// The Plane Master///
 /atom/movable/screen/plane_master
 	screen_loc = "1,1"
 	plane = -100 //Dodge just in case someone instantiates one of these accidentally, don't end up on 0 with plane_master
@@ -149,12 +147,9 @@
 
 /atom/movable/screen/plane_master/proc/alter_plane_values()
 	return //Stub
+///
+// Special masters///
 
-////////////////////
-// Special masters
-////////////////////
-
-/////////////////
 //Lighting is weird and has matrix shenanigans. Think of this as turning on/off darkness.
 /atom/movable/screen/plane_master/fullbright
 	plane = LIGHTING_PLANE
@@ -193,45 +188,40 @@
 	plane = EMISSIVE_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	render_target = EMISSIVE_RENDER_TARGET
+	alpha = 255
 
 /atom/movable/screen/plane_master/emissive/Initialize(mapload)
 	. = ..()
 	add_filter("em_block_masking", 1, color_matrix_filter(GLOB.em_mask_matrix))
 
-/////////////////
 //Ghosts has a special alpha level
 /atom/movable/screen/plane_master/ghosts
 	plane = PLANE_GHOSTS
 	desired_alpha = 127 //When enabled, they're like half-transparent
 
-/////////////////
 //Cloaked atoms are visible to ghosts (or for other reasons?)
 /atom/movable/screen/plane_master/cloaked
 	plane = CLOAKED_PLANE
 	desired_alpha = 80
 	color = "#0000FF"
 
-////////////////
 // parallax
 /atom/movable/screen/plane_master/parallax
 	plane = PARALLAX_PLANE
 	blend_mode = BLEND_MULTIPLY
 	alpha = 255
 
-////////////////
 // space
 /atom/movable/screen/plane_master/parallax_white
 	plane = SPACE_PLANE
 	alpha = 255
 	mouse_opacity = 1
 
-/////////////////
 //The main game planes start normal and visible
 /atom/movable/screen/plane_master/main
 	alpha = 255
 	mouse_opacity = 1
 
-/////////////////
 //AR planemaster does some special image handling
 /atom/movable/screen/plane_master/augmented
 	plane = PLANE_AUGMENTED
