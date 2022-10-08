@@ -174,7 +174,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 /**
  * returns (icon, dim_x, dim_y) if found in defaults, null if not
  */
-/datum/inventory_slot_meta/proc/resolve_default_assets(bodytype, state, mob/wearer, obj/item/equipped)
+/datum/inventory_slot_meta/proc/resolve_default_assets(bodytype, state, mob/wearer, obj/item/equipped, inhand_domain)
 	var/bodytype_str = bodytype_to_string(bodytype)
 	if(!render_state_cache[bodytype_str]?[state])
 		return
@@ -183,7 +183,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 /**
  * returns layer
  */
-/datum/inventory_slot_meta/proc/resolve_default_layer(bodytype, mob/wearer, obj/item/equipped)
+/datum/inventory_slot_meta/proc/resolve_default_layer(bodytype, mob/wearer, obj/item/equipped, inhand_domain)
 	if(!islist(render_layer))
 		return render_layer
 	var/index = 1
@@ -584,7 +584,20 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	display_name = "storage"
 	display_name = "in"
 
-/datum/inventory_slot_meta/abstract/left_hand
+/datum/inventory_slot_meta/abstract/hand
+	abstract_type = /datum/inventory_slot_meta/abstract/hand
+	// our render default icons are based on inhand type
+	// this hijacks render_default_icons SO much but i don't care!
+
+/**
+ * returns (icon, dim_x, dim_y) if found in defaults, null if not
+ */
+/datum/inventory_slot_meta/abstract/hand/resolve_default_assets(bodytype, state, mob/wearer, obj/item/equipped, inhand_domain)
+	if(!render_state_cache[inhand_domain]?[state])
+		return
+	return list(render_default_icons[inhand_domain], render_dim_x_cache[inhand_domain], render_dim_y_cache[inhand_domain])
+
+/datum/inventory_slot_meta/abstract/hand/left
 	name = "put in left hand"
 	display_name = "left hand"
 	display_preposition = "in"
@@ -592,10 +605,23 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_key = "left"
 	render_layer = L_HAND_LAYER
 	render_default_icons = list(
-		BODYTYPE_STRING_DEFAULT = 'icons/mob/items/lefthand.dmi'
+		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
+		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
+		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
+		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
+		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
+		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
+		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
+		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
+		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
+		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
+		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
+		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
+		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
+		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
 	)
 
-/datum/inventory_slot_meta/abstract/right_hand
+/datum/inventory_slot_meta/abstract/hand/right
 	name = "put in right hand"
 	display_name = "right hand"
 	display_preposition = "in"
