@@ -43,18 +43,6 @@
 
 	var/color_blend_mode = ICON_MULTIPLY	// If checked.
 
-	#warn oh god oh fuck
-	//! Emissives
-	/// supports emissives
-	var/emissive_support = TRUE
-	///
-
-//! Emissives
-/**
- * returns list of mutable appearances to render onto the mob
- */
-/datum/sprite_accessory/proc/render_emissive_appearances()
-	#warn impl
 
 //skin styles - WIP
 //going to have to re-integrate this with surgery
