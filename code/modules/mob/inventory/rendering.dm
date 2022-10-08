@@ -210,7 +210,8 @@
 	VAR_PRIVATE/worn_layer_override
 
 /obj/item/proc/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype = BODYTYPE_STRING_DEFAULT)
-	SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.
+	// SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.
+	// todo: eh reevaluate later
 	// determine if in hands
 	var/inhands = isnum(slot_id_or_hand_index)
 	var/datum/inventory_slot_meta/slot_meta
@@ -361,7 +362,7 @@
 	return data
 
 /obj/item/proc/resolve_worn_state(inhands, slot_key, bodytype)
-	PRIVATE_PROC(TRUE)
+	// PRIVATE_PROC(TRUE)
 	if(inhands)
 		return "[inhand_state || icon_state][worn_inhand_ignored? "_all" : "_[slot_key]"]"
 	return "[worn_state || icon_state][worn_slot_ignored? "_all" : "_[slot_key]"][((worn_bodytypes & (~BODYTYPE_DEFAULT)) & bodytype)? "_[bodytype_to_string(bodytype)]" : ""]"
