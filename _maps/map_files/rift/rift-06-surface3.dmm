@@ -1263,7 +1263,7 @@
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "cd" = (
 /obj/structure/grille,
@@ -5089,10 +5089,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
-"jp" = (
-/obj/structure/metal_edge,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "jq" = (
 /obj/machinery/atmospherics/component/unary/engine{
 	dir = 1
@@ -5734,10 +5730,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
-"kC" = (
-/obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "kD" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -17263,7 +17255,7 @@
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Hy" = (
 /obj/structure/closet,
@@ -40335,7 +40327,7 @@ Ad
 Ad
 Ad
 Ad
-Zv
+Qv
 IA
 IA
 IA
@@ -43459,7 +43451,7 @@ Uu
 Uu
 Uu
 Wz
-jp
+ej
 cH
 Eu
 Hi
@@ -43652,7 +43644,7 @@ yc
 yc
 Uu
 ry
-jp
+ej
 cH
 cH
 Eu
@@ -43827,7 +43819,7 @@ Ad
 Ad
 Ad
 Ad
-Zv
+Qv
 qc
 IA
 IA
@@ -45010,7 +45002,7 @@ us
 NG
 GF
 IA
-kC
+pa
 cH
 fq
 WN
@@ -45204,7 +45196,7 @@ xD
 Zy
 nU
 IA
-kC
+pa
 cH
 fq
 fq
