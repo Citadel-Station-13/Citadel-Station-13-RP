@@ -22,6 +22,9 @@
 	..()
 	for(var/d in crossed_dirs)
 		add_overlay(image(icon = 'icons/turf/outdoors.dmi', icon_state = "snow_footprints", dir = text2num(d)))
+	var/datum/planet/P
+	if(P.weather_holder.current_weather == WEATHER_SNOW)
+		cut_overlay()
 
 /turf/simulated/floor/outdoors/snow/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W, /obj/item/shovel))
@@ -41,6 +44,9 @@
 		user.put_in_hands_or_drop(new /obj/item/stack/material/snow)
 		visible_message("[user] scoops up a pile of snow.", "You scoop up a pile of snow.")
 	return
+
+/turf/simulated/floor/outdoors/snow/noblend
+	edge_blending_priority = 0
 
 /turf/simulated/floor/outdoors/ice
 	name = "ice"

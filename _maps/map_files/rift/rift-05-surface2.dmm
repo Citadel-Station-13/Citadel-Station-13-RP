@@ -18495,6 +18495,9 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
+"ohX" = (
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside2)
 "oio" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
@@ -42116,12 +42119,12 @@ hJs
 cUW
 cUW
 oLJ
-oLJ
+ohX
 aXY
 biq
 biq
 aXY
-oLJ
+ohX
 oLJ
 oLJ
 oLJ
@@ -42310,12 +42313,12 @@ hJs
 hJs
 cUW
 cUW
-oLJ
+ohX
 aZm
 bog
 bog
 aZm
-oLJ
+ohX
 oLJ
 oLJ
 oLJ

@@ -176,6 +176,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
+"afQ" = (
+/obj/effect/zone_divider,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "afV" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/closet/crate,
@@ -264,7 +268,7 @@
 	dir = 8
 	},
 /obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "akr" = (
 /obj/structure/table/standard,
@@ -353,6 +357,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/medical/virologymaint)
+"aqe" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "aqu" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -2121,10 +2131,6 @@
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/wood,
 /area/rift/station/public_garden)
-"bGT" = (
-/obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "bGX" = (
 /obj/structure/closet/secure_closet/personal/patient,
 /obj/effect/floor_decal/corner/beige{
@@ -2404,13 +2410,6 @@
 "bRs" = (
 /turf/simulated/wall/r_wall,
 /area/rift/surfaceeva/aa/surface_south)
-"bRK" = (
-/obj/structure/metal_edge,
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "bRY" = (
 /obj/structure/table/woodentable,
 /obj/random/plushie,
@@ -3709,6 +3708,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/rnd/tankstorage)
+"cMO" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "cNc" = (
 /obj/machinery/door/firedoor/glass/hidden,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -3776,7 +3781,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "cPe" = (
 /obj/structure/railing{
@@ -3917,7 +3922,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfaceeva/aa/surface_south)
 "cVJ" = (
 /obj/structure/grille,
@@ -4377,13 +4382,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/foyer)
-"din" = (
-/obj/structure/metal_edge,
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "diw" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -5139,10 +5137,8 @@
 /turf/simulated/floor/carpet,
 /area/library/study)
 "dER" = (
-/obj/effect/overlay/snow/floor/surround_new{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/obj/structure/metal_edge,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "dFf" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -10543,7 +10539,7 @@
 	dir = 4
 	},
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "hqU" = (
 /obj/effect/floor_decal/industrial/loading,
@@ -11210,7 +11206,7 @@
 /area/maintenance/starboard)
 "hNW" = (
 /obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "hOH" = (
 /obj/structure/table/rack/steel,
@@ -12717,7 +12713,7 @@
 "iGS" = (
 /obj/effect/floor_decal/industrial/halfstair,
 /obj/effect/zone_divider,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "iHI" = (
 /obj/machinery/door/airlock/multi_tile/glass{
@@ -15351,7 +15347,7 @@
 /area/security/forensics)
 "ktw" = (
 /obj/structure/metal_edge,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfaceeva/aa/surface_south)
 "ktI" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -16312,7 +16308,7 @@
 "kWH" = (
 /obj/structure/metal_edge,
 /obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "kWT" = (
 /obj/effect/floor_decal/borderfloor{
@@ -17621,6 +17617,9 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/game_room)
+"lPZ" = (
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "lQh" = (
 /turf/simulated/wall,
 /area/security/prison)
@@ -19378,6 +19377,10 @@
 	},
 /turf/simulated/floor/grass,
 /area/rnd/xenobiology/xenoflora)
+"mUL" = (
+/obj/structure/railing,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "mUU" = (
 /turf/simulated/wall,
 /area/crew_quarters/medbreak)
@@ -21217,7 +21220,7 @@
 /area/medical/exam_room)
 "nWh" = (
 /obj/structure/railing,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfaceeva/aa/surface_south)
 "nWJ" = (
 /obj/machinery/door/airlock/glass_research,
@@ -28179,7 +28182,7 @@
 /area/rnd/outpost/xenobiology/outpost_main)
 "sph" = (
 /obj/structure/fake_stairs/south/bottom,
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "spM" = (
 /obj/effect/floor_decal/borderfloor{
@@ -29489,7 +29492,7 @@
 "teB" = (
 /obj/effect/zone_divider,
 /obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfaceeva/aa/surface_south)
 "teC" = (
 /obj/effect/floor_decal/borderfloor{
@@ -30355,7 +30358,7 @@
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "tFL" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -30892,6 +30895,12 @@
 /obj/effect/floor_decal/techfloor/hole,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/library)
+"tYv" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "tYC" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -31869,7 +31878,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "uxJ" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -32533,6 +32542,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/cargo_hallway)
+"uXr" = (
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfaceeva/aa/surface_south)
 "uXB" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -33135,6 +33147,11 @@
 /obj/machinery/fitness/punching_bag/clown,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
+"vow" = (
+/obj/effect/zone_divider,
+/obj/effect/zone_divider,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "vqd" = (
 /obj/machinery/cryopod{
 	dir = 4
@@ -33536,7 +33553,7 @@
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "vFR" = (
 /obj/structure/table/standard,
@@ -37243,7 +37260,7 @@
 	dir = 4
 	},
 /obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "yaV" = (
 /obj/machinery/firealarm{
@@ -41014,7 +41031,7 @@ iFN
 iFN
 iFN
 iFN
-dER
+ubp
 iFN
 ujT
 ujT
@@ -41513,7 +41530,7 @@ iFN
 oFG
 oFG
 oFG
-oFG
+mix
 sph
 sEO
 tmv
@@ -42272,7 +42289,7 @@ vUA
 vUA
 vUA
 aXA
-din
+uxH
 hcn
 oFG
 oFG
@@ -44548,7 +44565,7 @@ kAb
 kAb
 kAb
 kAb
-arS
+dER
 iFN
 kAb
 kAb
@@ -44562,7 +44579,7 @@ iFN
 iFN
 iFN
 iFN
-evV
+tYv
 mif
 iFN
 iFN
@@ -45336,11 +45353,11 @@ kAb
 kAb
 kAb
 kAb
-arS
+dER
 iFN
-mfX
+aqe
 mif
-oFG
+iFN
 oFG
 oFG
 iFN
@@ -45530,7 +45547,7 @@ kAb
 thE
 iws
 mWr
-bRK
+cOG
 iFN
 iFN
 mif
@@ -46155,17 +46172,17 @@ mif
 iFN
 lFn
 mif
-mif
-mif
-mif
-mif
-mif
-mif
-mif
-mif
-lFn
-mif
-mif
+afQ
+afQ
+afQ
+afQ
+afQ
+afQ
+afQ
+afQ
+vow
+afQ
+afQ
 mif
 mif
 lFn
@@ -46294,7 +46311,7 @@ omm
 vmW
 buC
 kAb
-arS
+dER
 iFN
 kAb
 kAb
@@ -46306,7 +46323,7 @@ kAb
 kAb
 kAb
 kAb
-arS
+dER
 iFN
 iFN
 mif
@@ -46348,7 +46365,7 @@ iFN
 mif
 iFN
 mif
-iFN
+lPZ
 rVE
 nZY
 hhD
@@ -46360,7 +46377,7 @@ nZY
 hhD
 xzC
 jjm
-arS
+dER
 iFN
 mif
 iFN
@@ -46488,7 +46505,7 @@ kAb
 kAb
 kAb
 kAb
-arS
+dER
 iFN
 iFN
 iFN
@@ -46541,7 +46558,7 @@ iFN
 iFN
 mif
 iFN
-mif
+afQ
 wya
 unD
 kYl
@@ -46555,7 +46572,7 @@ kYl
 kYl
 rEy
 jjm
-arS
+dER
 mif
 oFG
 oFG
@@ -46735,7 +46752,7 @@ mif
 mif
 kbD
 mif
-lFn
+vow
 gVW
 kYl
 kYl
@@ -46929,7 +46946,7 @@ iFN
 iFN
 mif
 iFN
-iFN
+lPZ
 xWX
 kYl
 kYl
@@ -46943,7 +46960,7 @@ kYl
 kYl
 kYl
 fss
-hHw
+hNW
 ylu
 oFG
 oFG
@@ -47105,7 +47122,7 @@ iFN
 iFN
 iFN
 iFN
-evV
+tYv
 iFN
 oFG
 oFG
@@ -47123,7 +47140,7 @@ iFN
 iFN
 mif
 iFN
-iFN
+lPZ
 wXQ
 wXk
 kYl
@@ -47137,7 +47154,7 @@ kYl
 kYl
 kYl
 fss
-hHw
+hNW
 ylu
 oFG
 oFG
@@ -47298,9 +47315,9 @@ iFN
 iFN
 iFN
 iFN
-jZZ
+mUL
 kfH
-bGT
+hNW
 oFG
 oFG
 mif
@@ -47317,7 +47334,7 @@ iFN
 iFN
 mif
 iFN
-iFN
+lPZ
 wXQ
 kYl
 kYl
@@ -47331,7 +47348,7 @@ kYl
 kYl
 kYl
 veF
-arS
+dER
 iFN
 iFN
 hgE
@@ -47491,11 +47508,11 @@ iFN
 iFN
 iFN
 iFN
-iFN
+lPZ
 vIt
 jzK
 sWF
-arS
+dER
 iFN
 mif
 iFN
@@ -47511,7 +47528,7 @@ iFN
 iFN
 mif
 iFN
-iFN
+lPZ
 qQY
 kYl
 kYl
@@ -47525,7 +47542,7 @@ kYl
 kYl
 kYl
 iSM
-arS
+dER
 iFN
 hgE
 hgE
@@ -47684,13 +47701,13 @@ iFN
 iFN
 iFN
 iFN
-iFN
+lPZ
 hun
 mtT
 jzK
 col
 xPr
-arS
+dER
 mif
 iFN
 iFN
@@ -47705,7 +47722,7 @@ iFN
 iFN
 mif
 iFN
-iFN
+lPZ
 vCB
 tSK
 kYl
@@ -47736,9 +47753,9 @@ mif
 vUA
 tEY
 tEY
-vNx
+cMO
 vUA
-jZZ
+mUL
 tEY
 tEY
 vUA
@@ -47878,13 +47895,13 @@ iFN
 iFN
 iFN
 iFN
-iFN
+lPZ
 rRS
 wug
 jzK
 rRS
 uhQ
-arS
+dER
 mif
 iFN
 iFN
@@ -47900,7 +47917,7 @@ iFN
 mif
 iFN
 iFN
-iFN
+lPZ
 cMh
 nBa
 uiH
@@ -47927,15 +47944,15 @@ hgE
 hgE
 hgE
 kxc
-jZZ
+mUL
 nbg
 uNc
-vNx
+cMO
 iFN
-jZZ
+mUL
 jfd
 nbg
-vNx
+cMO
 kxc
 hgE
 hgE
@@ -47978,7 +47995,7 @@ iFN
 iFN
 iFN
 iFN
-xdb
+uXr
 rPa
 cTN
 rMj
@@ -48072,13 +48089,13 @@ iFN
 iFN
 iFN
 iFN
-iFN
+lPZ
 sFP
 mtT
 jzK
 col
 uLd
-arS
+dER
 mif
 iFN
 iFN
@@ -48095,16 +48112,16 @@ mif
 iFN
 iFN
 iFN
-iFN
-iFN
-iFN
+lPZ
+lPZ
+lPZ
 qNG
 rEL
 uYH
 uxJ
 wbG
-iFN
-iFN
+lPZ
+lPZ
 hgE
 hgE
 hgE
@@ -48177,7 +48194,7 @@ nYy
 cTN
 fbN
 wSo
-arS
+dER
 iFN
 iFN
 hgE
@@ -48267,11 +48284,11 @@ iFN
 iFN
 iFN
 iFN
-iFN
+lPZ
 jkc
 jzK
 vXi
-arS
+dER
 iFN
 mif
 iFN
@@ -48370,7 +48387,7 @@ hgE
 bTN
 cTN
 fWO
-arS
+dER
 iFN
 hgE
 hgE

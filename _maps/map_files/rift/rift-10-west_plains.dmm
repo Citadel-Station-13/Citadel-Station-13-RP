@@ -1884,6 +1884,9 @@
 "jm" = (
 /turf/simulated/wall,
 /area/rift/facility/interior/elevator)
+"jn" = (
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/west)
 "jp" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -5964,7 +5967,7 @@
 /area/rnd/outpost/anomaly_lab)
 "Do" = (
 /obj/structure/metal_edge,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfacebase/outside/west)
 "Dp" = (
 /obj/structure/lattice,
@@ -35604,33 +35607,33 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
+jn
+jn
+jn
 qX
 PC
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
 qX
 qX
-sv
-sv
-sv
+jn
+jn
+jn
 sv
 sv
 sv
@@ -35797,7 +35800,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 SQ
 hS
 hS
@@ -35990,7 +35993,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 SQ
 wU
 wU
@@ -36183,7 +36186,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 SQ
 wU
 wU
@@ -36377,7 +36380,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 Dx
 wU
 wU
@@ -36571,7 +36574,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 Dx
 wU
 wU
@@ -36765,7 +36768,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 Dx
 wU
 wU
@@ -36959,7 +36962,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 Dx
 wU
 wU
@@ -37153,7 +37156,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 cU
 wU
 wU
@@ -37347,7 +37350,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 cU
 wU
 wU
@@ -37541,7 +37544,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 cU
 lb
 lb
@@ -37735,7 +37738,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 cU
 lb
 lb
@@ -37929,7 +37932,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 cU
 lb
 lb
@@ -38123,7 +38126,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 cU
 lb
 lb
@@ -38317,7 +38320,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 cU
 lb
 lb
@@ -38511,7 +38514,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 cU
 lb
 lb
@@ -38705,7 +38708,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 cU
 lb
 lb
@@ -38899,7 +38902,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 cU
 lb
 lb
@@ -39093,7 +39096,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 cU
 lb
 lb
@@ -39287,7 +39290,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 cU
 lb
 lb
@@ -39481,7 +39484,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 Dx
 wU
 lb
@@ -39675,7 +39678,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 Dx
 wU
 lb
@@ -39869,7 +39872,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 Dx
 wU
 wU
@@ -40063,7 +40066,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 Dx
 wU
 wU
@@ -40257,7 +40260,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 Dx
 wU
 wU
@@ -40451,7 +40454,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 Dx
 wU
 wU
@@ -40645,7 +40648,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 Dx
 wU
 wU
@@ -40839,7 +40842,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 Dx
 wU
 wU
@@ -41033,7 +41036,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 Dx
 wU
 wU
@@ -41227,7 +41230,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 uE
 wU
 wU
@@ -41422,7 +41425,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 uE
 wU
 wU
@@ -41617,7 +41620,7 @@ sv
 sv
 sv
 sv
-sv
+jn
 uE
 Oc
 RE
@@ -41812,33 +41815,33 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
+jn
 FP
 FP
-sv
-sv
+jn
+jn
 sv
 sv
 sv
@@ -42031,7 +42034,7 @@ sv
 sv
 VH
 rY
-sv
+jn
 sv
 sv
 sv
