@@ -392,7 +392,7 @@
 		if(new_horn_style)
 			pref.horn_style = pretty_horn_styles[new_horn_style]
 
-		return TOPIC_REFRESH_UPDATE_PREVIEW
+		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["horn_color"])
 		var/new_hornc = input(user, "Choose your character's horn colour:", "Character Preference",
@@ -401,7 +401,7 @@
 			pref.r_horn = hex2num(copytext(new_hornc, 2, 4))
 			pref.g_horn = hex2num(copytext(new_hornc, 4, 6))
 			pref.b_horn = hex2num(copytext(new_hornc, 6, 8))
-			return TOPIC_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["horn_color2"])
 		var/new_hornc2 = input(user, "Choose your character's secondary horn colour:", "Character Preference",
@@ -410,7 +410,7 @@
 			pref.r_horn2 = hex2num(copytext(new_hornc2, 2, 4))
 			pref.g_horn2 = hex2num(copytext(new_hornc2, 4, 6))
 			pref.b_horn2 = hex2num(copytext(new_hornc2, 6, 8))
-			return TOPIC_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["horn_color3"])
 		var/new_hornc3 = input(user, "Choose your character's tertiary horn colour:", "Character Preference",
@@ -419,7 +419,7 @@
 			pref.r_horn3 = hex2num(copytext(new_hornc3, 2, 4))
 			pref.g_horn3 = hex2num(copytext(new_hornc3, 4, 6))
 			pref.b_horn3 = hex2num(copytext(new_hornc3, 6, 8))
-			return TOPIC_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["tail_style"])
 		// Construct the list of names allowed for this user.

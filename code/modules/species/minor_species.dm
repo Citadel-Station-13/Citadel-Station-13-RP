@@ -5,7 +5,7 @@
 	template.category = category
 	template.desc = blurb
 	template.whitelisted = !!(spawn_flags & SPECIES_IS_WHITELISTED)
-	template.real_species = uid
+	template.real_species_type = type
 
 /**
  * since we're a server of snowflakes, we have this to embody character species

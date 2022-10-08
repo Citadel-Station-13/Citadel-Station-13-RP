@@ -5,7 +5,7 @@
 		return
 	var/current_species_id
 	#warn impl
-	new /datum/tgui_species_picker(user, resolve_whitelisted_species(), current_species_id)
+	new /datum/tgui_species_picker(user, resolve_whitelisted_species(), current_species_id, src)
 
 /**
  * gets list of species we can play of those who are whitelisted
@@ -20,6 +20,8 @@
 	var/datum/species/S = get_static_species_meta(uid)
 	#warn impl
 
+/datum/preferences/proc/route_species_pick(uid)
+
 GLOBAL_LIST_EMPTY(species_picker_active)
 /datum/tgui_species_picker
 	/// user ref
@@ -28,13 +30,16 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	var/list/whitelisted
 	/// default uid
 	var/default
+	/// preferences
+	var/datum/preferences/prefs
 
-/datum/tgui_species_picker/New(mob/user, list/whitelisted_for = list(), default_id)
-	if(!istype(user))
+/datum/tgui_species_picker/New(mob/user, list/whitelisted_for = list(), default_id, datum/preferences/prefs)
+	if(!istype(user) || !istype(prefs))
 		qdel(src)
 		CRASH("what?")
 	src.whitelisted = whitelisted_for
 	src.default = default_id
+	src.prefs = prefs
 	user_ref = REF(user)
 	GLOB.species_picker_active += user_ref
 	open()
@@ -73,5 +78,5 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	. = ..()
 	switch(action)
 		if("pick")
-			#warn impl
+			prefs.route_species_pick(params["id"])
 			qdel(src)
