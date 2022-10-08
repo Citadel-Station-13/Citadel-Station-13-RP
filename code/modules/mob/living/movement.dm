@@ -8,6 +8,11 @@
 		if(MOVE_INTENT_WALK)
 			. += config_legacy.walk_speed
 
+/mob/living/Move(atom/newloc, direct, glide_size_override)
+	if(buckled && buckled.loc != newloc)
+		return FALSE
+	return ..()
+
 /mob/living/Moved()
 	. = ..()
 	if(s_active && !CheapReachability(s_active))
