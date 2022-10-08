@@ -21,7 +21,7 @@
 /obj/item/clothing/under/resolve_worn_state(inhands, slot_key, bodytype)
 	. = ..()
 	// if it uses new rendering, don't fucking do this stupid shit
-	if(worn_state || inhand_state || !worn_species_default)
+	if(worn_state || inhand_state || !worn_default_allowed)
 		return
 	. += "_s" // WHY IS THIS NEEDED???
 

@@ -49,6 +49,8 @@
 	STD_DEF("cloth uniform")
 	icon_state = "under"
 	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
+	inhand_domain = INHAND_DEFAULT_ICON_UNIFORMS
+	inhand_state = "black"
 	worn_slot_ignored = TRUE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -63,6 +65,8 @@
 	STD_DEF("plastic armor")
 	icon_state = "armor"
 	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
+	inhand_domain = INHAND_DEFAULT_ICON_SUITS
+	inhand_state = "armor"
 	worn_slot_ignored = TRUE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	cold_protection = UPPER_TORSO|LOWER_TORSO
@@ -73,9 +77,10 @@
 
 /obj/item/clothing/gloves/fake_sneaksuit
 	STD_DEF("plastic gloves")
-	icon_state = "infiltrator_gloves"
-	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	icon_state = "gloves"
+	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
+	inhand_domain = INHAND_DEFAULT_ICON_GLOVES
+	inhand_state = "black"
 	body_parts_covered = HANDS
 	cold_protection = HANDS
 
@@ -85,9 +90,10 @@
 
 /obj/item/clothing/head/fake_sneaksuit
 	STD_DEF("plastic helmet")
-	icon_state = "infiltrator_helmet"
-	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	icon_state = "helmet"
+	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
+	inhand_domain = INHAND_DEFAULT_ICON_HATS
+	inhand_state = "helmet"
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
@@ -98,9 +104,10 @@
 
 /obj/item/clothing/shoes/fake_sneaksuit
 	STD_DEF("plastic shoes")
-	icon_state = "infiltrator_boots"
-	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	icon_state = "boots"
+	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
+	inhand_domain = INHAND_DEFAULT_ICON_SHOES
+	inhand_state = "cult"
 	body_parts_covered = FEET
 	cold_protection = FEET
 
@@ -110,16 +117,13 @@
 
 /obj/item/clothing/mask/fake_sneaksuit
 	STD_DEF_NON_HIDING("plastic mask")
-	icon_state = "infiltrator_mask"
-	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	icon_state = "mask"
+	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
+	inhand_domain = INHAND_DEFAULT_ICON_MASKS
+	inhand_state = "gas"
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
-	item_icons = list(
-		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_masks.dmi',
-		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_masks.dmi'
-	)
 
 /datum/gear/seasonal/masquarade/syndicate/contractor_helmet
 	display_name = "Contractor Helmet"
@@ -127,9 +131,10 @@
 
 /obj/item/clothing/head/fake_contractor
 	STD_DEF("plastic helmet")
-	icon_state = "syndicate-contract-helm"
-	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	icon_state = "helm"
+	icon = 'icons/antagonists/syndicate/items/clothing/contractor.dmi'
+	inhand_domain = INHAND_DEFAULT_ICON_HATS
+	inhand_state = "helmet"
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
@@ -140,9 +145,10 @@
 
 /obj/item/clothing/suit/storage/fake_contractor
 	STD_DEF("plastic suit")
-	icon_state = "syndicate-contract"
-	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	icon_state = "suit"
+	icon = 'icons/antagonists/syndicate/items/clothing/contractor.dmi'
+	inhand_domain = INHAND_DEFAULT_ICON_GLOVES
+	inhand_state = "armor"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 

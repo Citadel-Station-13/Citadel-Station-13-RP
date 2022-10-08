@@ -287,7 +287,7 @@
 
 
 	//? state ; item_state_slots --> (worn_state | inhand_state) --> item_state --> icon_state
-	data[WORN_DATA_STATE] = (item_state_slots?[slot_meta.id]) || (inhands? inhand_state : worn_state) item_state || icon_state
+	data[WORN_DATA_STATE] = (item_state_slots?[slot_meta.id]) || (inhands? inhand_state : worn_state) || item_state || icon_state
 
 	//? icon, size
 	//* icon_override
@@ -324,7 +324,7 @@
 		data[WORN_DATA_ICON] = default_worn_icon
 		data[WORN_DATA_SIZE_X] = worn_x_dimension
 		data[WORN_DATA_SIZE_Y] = worn_y_dimension
-		#warn convert the funny antag gear
+		#warn test the funny antag gear
 
 	//* inventory slot defaults
 	else if(inhands? inhand_default_allowed : worn_default_allowed)

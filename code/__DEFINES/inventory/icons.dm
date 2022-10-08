@@ -1,6 +1,8 @@
 //! inhand domains
 /// balls
 #define INHAND_DEFAULT_ICON_BALLS "balls"
+/// books
+#define INHAND_DEFAULT_ICON_BOOKS "books"
 /// general
 #define INHAND_DEFAULT_ICON_GENERAL "general"
 /// gloves
@@ -21,6 +23,10 @@
 #define INHAND_DEFAULT_ICON_MELEE "melee"
 /// shoes
 #define INHAND_DEFAULT_ICON_SHOES "shoes"
+/// shoes
+#define INHAND_DEFAULT_ICON_STORAGE "storage"
+/// shoes
+#define INHAND_DEFAULT_ICON_SUITS "suits"
 /// switchtool
 #define INHAND_DEFAULT_ICON_SWITCHTOOL "switchtool"
 /// uniforms

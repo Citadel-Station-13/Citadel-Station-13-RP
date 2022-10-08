@@ -606,19 +606,22 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_layer = L_HAND_LAYER
 	render_default_icons = list(
 		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
-		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
-		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
-		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
-		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
-		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
-		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
-		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
-		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
-		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
-		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
-		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
-		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
-		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/lefthand_balls.dmi',
+		INHAND_DEFAULT_ICON_BOOKS = 'icons/mob/items/lefthand_books.dmi',
+		INHAND_DEFAULT_ICON_GENERAL = 'icons/mob/items/lefthand.dmi',
+		INHAND_DEFAULT_ICON_GLOVES = 'icons/mob/items/lefthand_gloves.dmi',
+		INHAND_DEFAULT_ICON_GUNS = 'icons/mob/items/lefthand_guns.dmi',
+		INHAND_DEFAULT_ICON_HATS = 'icons/mob/items/lefthand_hats.dmi',
+		INHAND_DEFAULT_ICON_HOLDERS = 'icons/mob/items/lefthand_holder.dmi',
+		INHAND_DEFAULT_ICON_MAGIC = 'icons/mob/items/lefthand_magic.dmi',
+		INHAND_DEFAULT_ICON_MASKS = 'icons/mob/items/lefthand_masks.dmi',
+		INHAND_DEFAULT_ICON_MATERIAL = 'icons/mob/items/lefthand_material.dmi',
+		INHAND_DEFAULT_ICON_MELEE = 'icons/mob/items/lefthand_melee.dmi',
+		INHAND_DEFAULT_ICON_SHOES = 'icons/mob/items/lefthand_shoes.dmi',
+		INHAND_DEFAULT_ICON_STORAGE = 'icons/mob/items/lefthand_storage.dmi',
+		INHAND_DEFAULT_ICON_SUITS = 'icons/mob/items/lefthand_suits.dmi',
+		INHAND_DEFAULT_ICON_SWITCHTOOL = 'icons/mob/items/lefthand_switchtool.dmi',
+		INHAND_DEFAULT_ICON_UNIFORMS = 'icons/mob/items/lefthand_uniforms.dmi',
+		INHAND_DEFAULT_ICON_64X64 = 'icons/mob/items/64x64_lefthand.dmi',
 	)
 
 /datum/inventory_slot_meta/abstract/hand/right
@@ -629,5 +632,21 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_key = "right"
 	render_layer = R_HAND_LAYER
 	render_default_icons = list(
-		BODYTYPE_STRING_DEFAULT = 'icons/mob/items/righthand.dmi'
+		INHAND_DEFAULT_ICON_BALLS = 'icons/mob/items/righthand_balls.dmi',
+		INHAND_DEFAULT_ICON_BOOKS = 'icons/mob/items/righthand_books.dmi',
+		INHAND_DEFAULT_ICON_GENERAL = 'icons/mob/items/righthand.dmi',
+		INHAND_DEFAULT_ICON_GLOVES = 'icons/mob/items/righthand_gloves.dmi',
+		INHAND_DEFAULT_ICON_GUNS = 'icons/mob/items/righthand_guns.dmi',
+		INHAND_DEFAULT_ICON_HATS = 'icons/mob/items/righthand_hats.dmi',
+		INHAND_DEFAULT_ICON_HOLDERS = 'icons/mob/items/righthand_holder.dmi',
+		INHAND_DEFAULT_ICON_MAGIC = 'icons/mob/items/righthand_magic.dmi',
+		INHAND_DEFAULT_ICON_MASKS = 'icons/mob/items/righthand_masks.dmi',
+		INHAND_DEFAULT_ICON_MATERIAL = 'icons/mob/items/righthand_material.dmi',
+		INHAND_DEFAULT_ICON_MELEE = 'icons/mob/items/righthand_melee.dmi',
+		INHAND_DEFAULT_ICON_SHOES = 'icons/mob/items/righthand_shoes.dmi',
+		INHAND_DEFAULT_ICON_STORAGE = 'icons/mob/items/righthand_storage.dmi',
+		INHAND_DEFAULT_ICON_SUITS = 'icons/mob/items/righthand_suits.dmi',
+		INHAND_DEFAULT_ICON_SWITCHTOOL = 'icons/mob/items/righthand_switchtool.dmi',
+		INHAND_DEFAULT_ICON_UNIFORMS = 'icons/mob/items/righthand_uniforms.dmi',
+		INHAND_DEFAULT_ICON_64X64 = 'icons/mob/items/64x64_righthand.dmi',
 	)
