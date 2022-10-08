@@ -25,12 +25,12 @@
 		*/
 	var/sensorpref = 5
 	var/displays_id = 1
+
+	//! Rolldown Status
+	#warn god these are awful
 	var/rolled_down = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
 	var/rolled_sleeves = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
-	sprite_sheets = list(
-		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/uniform.dmi',
-		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/uniform.dmi',
-		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/uniform.dmi')
+	#warn way to have better rolldown/rollsleeve sprites on default rendering holy shit
 
 	// todo: unify this iwth worn state, probably by converting the system used to do this
 	// todo: awful shit.
@@ -73,6 +73,7 @@
 	else
 		snowflake_worn_state = icon_state
 
+	#warn better autodetector
 	//autodetect rollability
 	if(rolled_down < 0)
 		if(("[snowflake_worn_state]_d_s" in icon_states(INV_W_UNIFORM_DEF_ICON)) || ("[snowflake_worn_state]_s" in icon_states(rolled_down_icon)) || ("[snowflake_worn_state]_d_s" in icon_states(icon_override)))
@@ -97,20 +98,17 @@
 
 /obj/item/clothing/under/proc/update_rolldown_status()
 	var/mob/living/carbon/human/H = ishuman(loc)? loc : null
-	#warn AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 	var/icon/under_icon = resolve_worn_assets(H, SLOT_ID_UNIFORM, FALSE, H?.species?.get_effective_bodytype(src, SLOT_ID_UNIFORM))[1]
-
-	var/icon/under_icon
-	if(icon_override)
-		under_icon = icon_override
-	else if(H && sprite_sheets && sprite_sheets[H.species.get_worn_legacy_bodytype(H)])
-		under_icon = sprite_sheets[H.species.get_worn_legacy_bodytype(H)]
-	else if(item_icons && item_icons[SLOT_ID_UNIFORM])
-		under_icon = item_icons[SLOT_ID_UNIFORM]
-	else if ("[snowflake_worn_state]_s" in icon_states(rolled_down_icon))
-		under_icon = rolled_down_icon
-	else
-		under_icon = INV_W_UNIFORM_DEF_ICON
+	// if(icon_override)
+	// 	under_icon = icon_override
+	// else if(H && sprite_sheets && sprite_sheets[H.species.get_worn_legacy_bodytype(H)])
+	// 	under_icon = sprite_sheets[H.species.get_worn_legacy_bodytype(H)]
+	// else if(item_icons && item_icons[SLOT_ID_UNIFORM])
+	// 	under_icon = item_icons[SLOT_ID_UNIFORM]
+	// else if ("[snowflake_worn_state]_s" in icon_states(rolled_down_icon))
+	// 	under_icon = rolled_down_icon
+	// else
+	// 	under_icon = INV_W_UNIFORM_DEF_ICON
 
 	// The _s is because the icon update procs append it.
 	if((under_icon == rolled_down_icon && ("[snowflake_worn_state]_s" in icon_states(under_icon))) || ("[snowflake_worn_state]_d_s" in icon_states(under_icon)))
@@ -125,17 +123,18 @@
 	if(istype(src.loc, /mob/living/carbon/human))
 		H = src.loc
 
-	var/icon/under_icon = resolve_worn_assets()
-	if(icon_override)
-		under_icon = icon_override
-	else if(H && sprite_sheets && sprite_sheets[H.species.get_worn_legacy_bodytype(H)])
-		under_icon = sprite_sheets[H.species.get_worn_legacy_bodytype(H)]
-	else if(item_icons && item_icons[SLOT_ID_UNIFORM])
-		under_icon = item_icons[SLOT_ID_UNIFORM]
-	else if ("[snowflake_worn_state]_s" in icon_states(rolled_down_sleeves_icon))
-		under_icon = rolled_down_sleeves_icon
-	else
-		under_icon = INV_W_UNIFORM_DEF_ICON
+	var/icon/under_icon = resolve_worn_assets(H, SLOT_ID_UNIFORM, FALSE, H?.species?.get_effective_bodytype(src, SLOT_ID_UNIFORM))[1]
+	// var/icon/under_icon = resolve_worn_assets()
+	// if(icon_override)
+	// 	under_icon = icon_override
+	// else if(H && sprite_sheets && sprite_sheets[H.species.get_worn_legacy_bodytype(H)])
+	// 	under_icon = sprite_sheets[H.species.get_worn_legacy_bodytype(H)]
+	// else if(item_icons && item_icons[SLOT_ID_UNIFORM])
+	// 	under_icon = item_icons[SLOT_ID_UNIFORM]
+	// else if ("[snowflake_worn_state]_s" in icon_states(rolled_down_sleeves_icon))
+	// 	under_icon = rolled_down_sleeves_icon
+	// else
+	// 	under_icon = INV_W_UNIFORM_DEF_ICON
 
 	// The _s is because the icon update procs append it.
 	if((under_icon == rolled_down_sleeves_icon && ("[snowflake_worn_state]_s" in icon_states(under_icon))) || ("[snowflake_worn_state]_r_s" in icon_states(under_icon)))
@@ -202,6 +201,7 @@
 	if(!istype(usr, /mob/living)) return
 	if(usr.stat) return
 
+	#warn better detector
 	update_rolldown_status()
 	if(rolled_down == -1)
 		to_chat(usr, "<span class='notice'>You cannot roll down [src]!</span>")
@@ -235,6 +235,7 @@
 	if(!istype(usr, /mob/living)) return
 	if(usr.stat) return
 
+	#warn better detector
 	update_rollsleeves_status()
 	if(rolled_sleeves == -1)
 		to_chat(usr, "<span class='notice'>You cannot roll up your [src]'s sleeves!</span>")

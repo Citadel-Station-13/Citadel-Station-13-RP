@@ -229,9 +229,20 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	slot_flags_required = SLOT_ICLOTHING
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
 	render_default_icons = list(
-		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/uniform.dmi'
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/uniform.dmi',
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/uniform.dmi',
+		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/uniform.dmi',
+		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/uniform.dmi',
 	)
 	render_layer = UNIFORM_LAYER
+
+	/// list of rolldown icons; must DIRECTLY corrospond to default icons.
+	var/list/render_rolldown_icons = list(
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/uniform_rolled_down.dmi'
+	)
+
+#warn finish
+#warn detect rolldown proc
 
 /datum/inventory_slot_meta/inventory/head
 	name = "head"
