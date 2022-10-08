@@ -60,9 +60,9 @@
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.save_preferences(S)
 
-/datum/category_collection/player_setup_collection/proc/copy_to_mob(var/mob/living/carbon/human/C)
+/datum/category_collection/player_setup_collection/proc/copy_to_mob(var/mob/living/carbon/human/C, flags)
 	for(var/datum/category_group/player_setup_category/PS in categories)
-		PS.copy_to_mob(C)
+		PS.copy_to_mob(C, flags)
 
 /datum/category_collection/player_setup_collection/proc/header()
 	var/dat = ""
@@ -101,6 +101,7 @@
 	// todo: unit test for this to exist
 	var/save_key
 	var/sort_order = 0
+	var/auto_split = TRUE
 
 /datum/category_group/player_setup_category/compare_to(datum/D)
 	if(istype(D, /datum/category_group/player_setup_category))
@@ -137,28 +138,30 @@
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.save_preferences(S)
 
-/datum/category_group/player_setup_category/proc/copy_to_mob(var/mob/living/carbon/human/C)
+/datum/category_group/player_setup_category/proc/copy_to_mob(mob/living/carbon/human/C, flags)
 	for(var/datum/category_item/player_setup_item/PI in items)
-		PI.copy_to_mob(C)
+		PI.copy_to_mob(C, flags)
 
 /datum/category_group/player_setup_category/proc/content(var/mob/user)
 	. = "<table style='width:100%'><tr style='vertical-align:top'><td style='width:50%'>"
-	var/current = 0
-	var/halfway = items.len / 2
-	for(var/datum/category_item/player_setup_item/PI in items)
-		if(halfway && current++ >= halfway)
-			halfway = 0
-			. += "</td><td></td><td style='width:50%'>"
-		. += "[PI.content(user)]<br>"
-	. += "</td></tr></table>"
+	if(auto_split)
+		var/current = 0
+		var/halfway = items.len / 2
+		for(var/datum/category_item/player_setup_item/PI in items)
+			if(halfway && current++ >= halfway)
+				halfway = 0
+				. += "</td><td></td><td style='width:50%'>"
+			. += "[PI.content(user)]<br>"
+		. += "</td></tr></table>"
+	else
+		for(var/datum/category_item/player_setup_item/PI in items)
+			var/list/content = PI.content(user)
+			. += content.Join("")
 
 /**********************
 * Category Item Setup *
 **********************/
 /datum/category_item/player_setup_item
-	/// primary data key
-	// todo: unit test for this to exist
-	var/save_key
 	var/sort_order = 0
 	var/datum/preferences/pref
 
@@ -201,14 +204,46 @@
 /datum/category_item/player_setup_item/proc/save_preferences(var/savefile/S)
 	return
 
-/*
-* Called when the item is asked to apply its per character settings to a new mob.
-*/
-/datum/category_item/player_setup_item/proc/copy_to_mob(var/mob/living/carbon/human/C)
-	return
+/**
+ * called to render the text the user sees.
+ *
+ * if sanitizing for admin, always check prefs ckey, not user ckey; they are not always the same.
+ *
+ * @params
+ * - user - viewer
+ * - data - our save data
+ * - prefs - preferences the data is on
+ *
+ * @return list of html text
+ */
+/datum/category_item/player_setup_item/proc/content(mob/user, data, datum/preferences/prefs)
+	RETURN_TYPE(/list)
+	return list()
 
-/datum/category_item/player_setup_item/proc/content()
-	return
+/**
+ * called to set our data to a certain value
+ */
+/datum/category_item/player_setup_item/proc/set_data(datum/preferences/prefs, k, v)
+	#warn impl
+
+/**
+ * called to get our data
+ */
+/datum/category_item/player_setup_item/proc/get_data(datum/preferences/prefs, k)
+	#warn impl
+
+/**
+ * OnTopic but reformatted
+ *
+ * Why this pattern?
+ * So going to hopefully in house tgui preferences in the far future is easier.
+ * If we don't go to tgui prefs, this is still useful.
+ * (see: you can regex this).
+ */
+/datum/category_item/player_setup_item/proc/Act(action, list/params, mob/user, datum/preferences/prefs)
+	return PREFERENCES_NOACTION
+
+#warn above 3 procs need their args hooked up
 
 /datum/category_item/player_setup_item/proc/sanitize_character()
 	return
@@ -224,6 +259,8 @@
 		return 1
 
 	. = OnTopic(href, href_list, usr)
+	var/resolved = href_list["action"]
+	. |= Act(resolved, href_list, usr, pref)
 
 	if(. & PREFERENCES_UPDATE_PREVIEW)
 		pref_mob.client.prefs.update_preview_icon()

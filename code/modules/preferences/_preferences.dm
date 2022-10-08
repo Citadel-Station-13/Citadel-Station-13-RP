@@ -469,7 +469,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	ShowChoices(usr)
 	return 1
 
-/datum/preferences/proc/copy_to(mob/living/carbon/human/character, icon_updates = TRUE)
+/datum/preferences/proc/copy_to(mob/living/carbon/human/character, flags, icon_updates = TRUE)
 	// Sanitizing rather than saving as someone might still be editing when copy_to occurs.
 	player_setup.sanitize_setup()
 
@@ -480,7 +480,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		real_name = random_name(identifying_gender,species)
 
 	// Ask the preferences datums to apply their own settings to the new mob
-	player_setup.copy_to_mob(character)
+	player_setup.copy_to_mob(character, flags)
 
 	// Sync up all their organs and species one final time
 	character.force_update_organs()

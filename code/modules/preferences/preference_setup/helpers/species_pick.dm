@@ -18,6 +18,7 @@
  */
 /datum/preferences/proc/check_species_id(uid)
 	var/datum/species/S = get_static_species_meta(uid)
+	#warn impl
 
 GLOBAL_LIST_EMPTY(species_picker_active)
 /datum/tgui_species_picker
@@ -42,6 +43,18 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	GLOB.species_picker_active -= user_ref
 	return ..()
 
+/datum/tgui_species_picker/proc/open()
+	var/mob/M = locate(user_ref)
+	ASSERT(M)
+	ui_interact(M)
+
+/datum/tgui_species_picker/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(M, src, "SpeciesPicker", "Choose Species")
+		ui.autoupdate = FALSE			// why the fuck are you updating species data??
+		ui.open()
+
 /datum/tgui_species_picker/ui_status(mob/user, datum/ui_state/state)
 	return UI_INTERACTIVE
 
@@ -50,6 +63,11 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	.["whitelisted"] = whitelisted
 	.["species"] = SScharacters.species_cache
 	.["default"] = default
+
+/datum/tgui_species_picker/ui_close(mob/user)
+	. = ..()
+	if(!QDELING(src))
+		qdel(src)
 
 /datum/tgui_species_picker/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()

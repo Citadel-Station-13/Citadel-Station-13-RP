@@ -34,7 +34,7 @@
 	age = rand(current_species.min_age, current_species.max_age)
 	b_type = RANDOM_BLOOD_TYPE
 	if(H)
-		copy_to(H,1)
+		copy_to(H)
 
 
 /datum/preferences/proc/randomize_hair_color(var/target = "hair")
@@ -194,7 +194,7 @@
 	b_skin = blue
 
 /datum/preferences/proc/dress_preview_mob(var/mob/living/carbon/human/mannequin)
-	copy_to(mannequin, TRUE)
+	copy_to(mannequin)
 
 	if(!equip_preview_mob)
 		return
