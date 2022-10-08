@@ -297,10 +297,6 @@
 	mob.last_move_time = world.time
 
 /mob/proc/SelfMove(turf/T, dir)
-	if(buckled)	// if we're buckled we shouldn't be moving, this also means ais can't relaymove but we'll fix this someday
-		// todo: this is fucking awful, don't do it
-		// or is it?
-		return FALSE
 	. = Move(T, dir)
 	if(.)
 		throwing?.terminate()
