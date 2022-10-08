@@ -186,7 +186,7 @@
 	/// inhand allow default
 	var/inhand_default_allowed = TRUE
 	/// inhand default domain aka which icon we grab to check for state
-	var/inhand_default_domain = INHAND_DEFAULT_ICON_GENERAL
+	var/inhand_default_type = INHAND_DEFAULT_ICON_GENERAL
 	//? for belts
 	/// state to use in [icons/mob/clothing/belt.dmi] for belt overlay
 	var/belt_state
@@ -328,10 +328,10 @@
 
 	//* inventory slot defaults
 	else if(inhands? inhand_default_allowed : worn_default_allowed)
-		var/list/resolved = slot_meta.resolve_default_assets(bodytype, data[WORN_DATA_STATE], M, src, inhand_default_domain)
+		var/list/resolved = slot_meta.resolve_default_assets(bodytype, data[WORN_DATA_STATE], M, src, inhand_default_type)
 		if(!resolved && (bodytype != BODYTYPE_DEFAULT) && (bodytype & worn_bodytypes_converted))
 			// attempt 2 - convert to default if specified to convert
-			resolved = slot_meta.resolve_default_assets(BODYTYPE_DEFAULT, data[WORN_DATA_STATE], M, src, inhand_default_domain)
+			resolved = slot_meta.resolve_default_assets(BODYTYPE_DEFAULT, data[WORN_DATA_STATE], M, src, inhand_default_type)
 		if(resolved)
 			data[WORN_DATA_ICON] = resolved[WORN_DATA_ICON]
 			data[WORN_DATA_SIZE_X] = resolved[WORN_DATA_STATE]

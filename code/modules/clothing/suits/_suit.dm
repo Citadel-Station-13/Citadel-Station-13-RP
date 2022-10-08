@@ -29,7 +29,8 @@
 		var/mob/living/carbon/human/H = user
 		if(isTaurTail(H.tail_style))
 			var/datum/sprite_accessory/tail/taur/taurtail = H.tail_style
-			if(taurtail.suit_sprites && (get_worn_icon_state(SLOT_ID_SUIT) in icon_states(taurtail.suit_sprites)))
+			var/list/resolved = resolve_worn_assets(user, resolve_inventory_slot_meta(/datum/inventory_slot_meta/inventory/suit), FALSE, H.species.get_effective_bodytype(src, SLOT_ID_SUIT))
+			if(taurtail.suit_sprites && (resolved[3] in icon_states(taurtail.suit_sprites)))
 				icon_override = taurtail.suit_sprites
 				normalize = FALSE
 				taurized = TRUE

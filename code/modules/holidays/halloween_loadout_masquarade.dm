@@ -49,13 +49,11 @@
 	STD_DEF("cloth uniform")
 	icon_state = "under"
 	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
-	inhand_domain = INHAND_DEFAULT_ICON_UNIFORMS
+	inhand_default_type = INHAND_DEFAULT_ICON_UNIFORMS
 	inhand_state = "black"
 	worn_slot_ignored = TRUE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-
-#warn we probably need to have domain'd inhands..
 
 /datum/gear/seasonal/masquarade/syndicate/sneaksuit_armor
 	display_name = "Sneaksuit Armor"
@@ -65,7 +63,7 @@
 	STD_DEF("plastic armor")
 	icon_state = "armor"
 	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
-	inhand_domain = INHAND_DEFAULT_ICON_SUITS
+	inhand_default_type = INHAND_DEFAULT_ICON_SUITS
 	inhand_state = "armor"
 	worn_slot_ignored = TRUE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
@@ -79,7 +77,7 @@
 	STD_DEF("plastic gloves")
 	icon_state = "gloves"
 	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
-	inhand_domain = INHAND_DEFAULT_ICON_GLOVES
+	inhand_default_type = INHAND_DEFAULT_ICON_GLOVES
 	inhand_state = "black"
 	body_parts_covered = HANDS
 	cold_protection = HANDS
@@ -92,7 +90,7 @@
 	STD_DEF("plastic helmet")
 	icon_state = "helmet"
 	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
-	inhand_domain = INHAND_DEFAULT_ICON_HATS
+	inhand_default_type = INHAND_DEFAULT_ICON_HATS
 	inhand_state = "helmet"
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
@@ -106,7 +104,7 @@
 	STD_DEF("plastic shoes")
 	icon_state = "boots"
 	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
-	inhand_domain = INHAND_DEFAULT_ICON_SHOES
+	inhand_default_type = INHAND_DEFAULT_ICON_SHOES
 	inhand_state = "cult"
 	body_parts_covered = FEET
 	cold_protection = FEET
@@ -119,7 +117,7 @@
 	STD_DEF_NON_HIDING("plastic mask")
 	icon_state = "mask"
 	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
-	inhand_domain = INHAND_DEFAULT_ICON_MASKS
+	inhand_default_type = INHAND_DEFAULT_ICON_MASKS
 	inhand_state = "gas"
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
@@ -133,7 +131,7 @@
 	STD_DEF("plastic helmet")
 	icon_state = "helm"
 	icon = 'icons/antagonists/syndicate/items/clothing/contractor.dmi'
-	inhand_domain = INHAND_DEFAULT_ICON_HATS
+	inhand_default_type = INHAND_DEFAULT_ICON_HATS
 	inhand_state = "helmet"
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
@@ -147,7 +145,7 @@
 	STD_DEF("plastic suit")
 	icon_state = "suit"
 	icon = 'icons/antagonists/syndicate/items/clothing/contractor.dmi'
-	inhand_domain = INHAND_DEFAULT_ICON_GLOVES
+	inhand_default_type = INHAND_DEFAULT_ICON_GLOVES
 	inhand_state = "armor"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
