@@ -25,3 +25,8 @@
 	if(alpha_override)
 		cloned.alpha = alpha_override
 	return cloned
+
+/atom/proc/cheap_become_emissive(alpha_override = alpha)
+	add_overlay(vfx_clone_as_emissive(src, alpha_override))
+
+#warn auto layer mangle
