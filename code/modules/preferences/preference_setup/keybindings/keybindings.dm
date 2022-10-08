@@ -20,10 +20,7 @@
 	name = "Keybindings"
 	sort_order = 7
 	category_item_type = /datum/category_item/player_setup_item/keybinding
-
-/datum/category_group/player_setup_category/keybindings/content(var/mob/user)
-	for(var/datum/category_item/player_setup_item/PI in items)
-		. += "[PI.content(user)]<br>"
+	auto_split = FALSE
 
 /datum/category_item/player_setup_item/keybinding/hotkey_mode
 	name = "Hotkey Mode"

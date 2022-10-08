@@ -148,15 +148,19 @@
 		var/current = 0
 		var/halfway = items.len / 2
 		for(var/datum/category_item/player_setup_item/PI in items)
+			var/c = PI.content(PI.pref, null, user)
 			if(halfway && current++ >= halfway)
 				halfway = 0
 				. += "</td><td></td><td style='width:50%'>"
-			. += "[PI.content(user)]<br>"
+			. += "[islist(c)? c.Join("") : c]<br>"
 		. += "</td></tr></table>"
 	else
 		for(var/datum/category_item/player_setup_item/PI in items)
-			var/list/content = PI.content(user)
-			. += content.Join("")
+			var/list/content = PI.content(PI.pref, null, user)
+			. += islist(content)? content.Join("") : content
+			. += "<br>"
+
+	#warn above 2 content calls need to put in data
 
 /**********************
 * Category Item Setup *
@@ -169,6 +173,10 @@
 	..()
 	var/datum/category_collection/player_setup_collection/psc = category.collection
 	pref = psc.preferences
+	pref.preference_datums += src
+	if(save_key)
+		pref.preference_by_key[save_key] = src
+	pref.preference_by_type[type] = src
 
 /datum/category_item/player_setup_item/Destroy()
 	pref = null
@@ -204,35 +212,6 @@
 /datum/category_item/player_setup_item/proc/save_preferences(var/savefile/S)
 	return
 
-/**
- * called to render the text the user sees.
- *
- * if sanitizing for admin, always check prefs ckey, not user ckey; they are not always the same.
- *
- * @params
- * - user - viewer
- * - data - our save data
- * - prefs - preferences the data is on
- *
- * @return list of html text
- */
-/datum/category_item/player_setup_item/proc/content(datum/preferences/prefs, mob/user, data)
-	RETURN_TYPE(/list)
-	return list()
-
-/**
- * OnTopic but reformatted
- *
- * Why this pattern?
- * So going to hopefully in house tgui preferences in the far future is easier.
- * If we don't go to tgui prefs, this is still useful.
- * (see: you can regex this).
- */
-/datum/category_item/player_setup_item/proc/Act(action, list/params, mob/user, datum/preferences/prefs)
-	return PREFERENCES_NOACTION
-
-#warn above 3 procs need their args hooked up
-
 /datum/category_item/player_setup_item/proc/sanitize_character()
 	return
 
@@ -248,7 +227,7 @@
 
 	. = OnTopic(href, href_list, usr)
 	var/resolved = href_list["action"]
-	. |= Act(resolved, href_list, usr, pref)
+	. |= act(pref, usr, resolved, href_list)
 
 	if(. & PREFERENCES_UPDATE_PREVIEW)
 		pref_mob.client.prefs.update_preview_icon()

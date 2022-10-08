@@ -2,10 +2,7 @@
 	name = "Occupation"
 	sort_order = 3
 	category_item_type = /datum/category_item/player_setup_item/occupation
-
-/datum/category_group/player_setup_category/occupation_preferences/content(var/mob/user)
-	for(var/datum/category_item/player_setup_item/PI in items)
-		. += "[PI.content(user)]<br>"
+	auto_split = FALSE
 
 /datum/category_item/player_setup_item/occupation
 	name = "Occupation"

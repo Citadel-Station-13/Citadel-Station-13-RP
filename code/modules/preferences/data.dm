@@ -43,6 +43,7 @@
 /datum/preferences/proc/read_global_data()
 
 #warn impl all
+#warn hook up de/serialization somehow
 
 /**
  * checked set preference data
@@ -62,3 +63,42 @@
 		return options[preference.save_key]
 	else
 		return character[preference.save_key]
+
+/**
+ * sanitize prefs data
+ */
+/datum/preferences/proc/sanitize_preference_data(datum/category_item/player_setup_item/preference)
+	if(preference.is_global)
+		return options[preference.save_key] = preference.filter(options[preference.save_key])
+	else
+		return character[preference.save_key] = preference.filter(character[preference.save_key])
+
+#warn above should sanitize on sanitize_character and sanitize_global
+
+/**
+ * resanitize everything
+ */
+/datum/preferences/proc/sanitize_everything()
+
+/datum/preferences/proc/sanitize_character()
+
+/datum/preferences/proc/sanitize_global()
+
+#warn impl
+
+/**
+ * json export
+ */
+/datum/preferences/proc/json_export_character()
+	return json_encode(character)
+
+/**
+ * json import
+ */
+/datum/preferences/proc/json_import_character(list/json, list/errors)
+	if(!islist(json))
+		json = safe_json_decode(json)
+	if(!islist(json))
+		return FALSE
+	#warn impl
+	return TRUE

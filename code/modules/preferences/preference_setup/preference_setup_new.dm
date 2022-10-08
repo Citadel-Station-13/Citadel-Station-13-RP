@@ -28,9 +28,11 @@
 /**
  * called to check for errors; if non null, players get showed this while spawning and the
  * spawn is blocked.
+ *
+ * put reasons into errors
  */
-/datum/category_item/player_setup_item/proc/spawn_checks(datum/preferences/prefs, data, flags)
-	return
+/datum/category_item/player_setup_item/proc/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
+	return TRUE
 
 #warn hook spawn_checks in spawning
 
@@ -38,8 +40,10 @@
  * called to sanitize our value.
  *
  * called after deserialization.
+ *
+ * put errors into errors for user feedback
  */
-/datum/category_item/player_setup_item/proc/filter(datum/preferences/prefs, data)
+/datum/category_item/player_setup_item/proc/filter(datum/preferences/prefs, data, list/errors)
 	return data
 
 /**
@@ -47,7 +51,7 @@
  *
  * @return raw data to save
  */
-/datum/category_item/player_setup_item/proc/serialize_data(datum/preferences/prefs, data)
+/datum/category_item/player_setup_item/proc/serialize_data(datum/preferences/prefs, data, list/errors)
 	return data
 
 /**
@@ -57,7 +61,7 @@
  *
  * @return deserialized data to set on preferences data lists
  */
-/datum/category_item/player_setup_item/proc/deserialize_data(datum/preferences/prefs, raw)
+/datum/category_item/player_setup_item/proc/deserialize_data(datum/preferences/prefs, raw, list/errors)
 	return raw
 
 /**
@@ -83,3 +87,38 @@
  */
 /datum/category_item/player_setup_item/proc/informed_default_value(randomizing)
 	return default_value(randomizing)
+
+/**
+ * called to render the text the user sees
+ *
+ * @params
+ * - prefs - host preferences datum
+ * - user - viewer
+ * - data - our save data
+ */
+/datum/category_item/player_setup_item/proc/content(datum/preferences/prefs, mob/user, data)
+	RETURN_TYPE(/list)
+	return list()
+
+/**
+ * called when something acts on a href
+ * returns PREFERENCES_X bitfields for what to do
+ *
+ * @params
+ * - prefs - prefs we're acting on
+ * - user - person acting on us
+ * - action - the action
+ * - params - additional parameters
+ */
+/datum/category_item/player_setup_item/proc/act(datum/preferences/prefs, mob/user, action, list/params)
+	return PREFERENCES_NOACTION
+
+/**
+ * encodes href
+ */
+/datum/category_item/player_setup_item/proc/href(datum/preferences/prefs, action, innerhtml, list/params)
+	if(length(params))
+		return "<a href='?src=\ref[src];prefs=\ref[prefs];act=[action];[list2params(params)]'>[innerhtml]</a>"
+	return "<a href='?src=\ref[src];prefs=\ref[prefs];act=[action]'>[innerhtml]</a>"
+
+//! warning not all content() procs return a list properly
