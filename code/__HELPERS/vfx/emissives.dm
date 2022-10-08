@@ -26,8 +26,8 @@
 		cloned.alpha = alpha_override
 	return cloned
 
-/atom/proc/cheap_become_emissive(alpha_override)
-	add_overlay(vfx_clone_as_emissive(src, alpha_override, MANGLE_PLANE_AND_LAYER(plane, layer)))
+/atom/proc/cheap_become_emissive(alpha_override, layer_override)
+	add_overlay(vfx_clone_as_emissive(src, alpha_override, layer_override || MANGLE_PLANE_AND_LAYER(plane, layer)))
 
-
-#warn auto layer mangle
+/atom/proc/cheap_become_emissive_blocker(alpha_override, layer_override)
+	adD_overlay(vfx_clone_as_emissive_blocker(src, alpha_override, layer_override || MANGLE_PLANE_AND_LAYER(plane, layer)))

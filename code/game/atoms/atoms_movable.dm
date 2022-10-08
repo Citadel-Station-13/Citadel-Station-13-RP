@@ -499,3 +499,5 @@
 	vis_contents -= em_render
 	qdel(em_render)
 	em_render = null
+
+// todo: we should probably have a way to just copy an appearance clone or something without render-targeting
