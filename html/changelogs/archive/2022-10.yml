@@ -54,3 +54,9 @@
   - rscadd: Added the ability to make gases be processed like reagents in the body.
   Zandario:
   - bugfix: Fixes ColorMate TGUI
+2022-10-08:
+  Captain277:
+  - rscadd: Adds chlorine gas mines.
+  Zandario:
+  - bugfix: Supply Computer Circuitboard TGUI Fixed
+  - bugfix: AI's name prompt TGUI Fixed
