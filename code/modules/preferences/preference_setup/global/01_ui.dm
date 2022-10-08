@@ -26,7 +26,7 @@
 	pref.tooltipstyle	= sanitize_inlist(pref.tooltipstyle, all_tooltip_styles, initial(pref.tooltipstyle))
 	pref.client_fps		= sanitize_integer(pref.client_fps, 0, MAX_CLIENT_FPS, initial(pref.client_fps))
 
-/datum/category_item/player_setup_item/player_global/ui/content(var/mob/user)
+/datum/category_item/player_setup_item/player_global/ui/content(datum/preferences/prefs, mob/user, data)
 	. = "<b>UI Style:</b> <a href='?src=\ref[src];select_style=1'><b>[pref.UI_style]</b></a><br>"
 	. += "<b>Custom UI</b> (recommended for White UI):<br>"
 	. += "-Color: <a href='?src=\ref[src];select_color=1'><b>[pref.UI_style_color]</b></a> [color_square(hex = pref.UI_style_color)] <a href='?src=\ref[src];reset=ui'>reset</a><br>"

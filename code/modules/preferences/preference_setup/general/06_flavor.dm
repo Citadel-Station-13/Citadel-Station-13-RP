@@ -49,7 +49,7 @@
 	character.flavor_texts["feet"]		= pref.flavor_texts["feet"]
 	character.ooc_notes 				= pref.metadata
 
-/datum/category_item/player_setup_item/general/flavor/content(var/mob/user)
+/datum/category_item/player_setup_item/general/flavor/content(datum/preferences/prefs, mob/user, data)
 	. += "<b>Flavor:</b><br>"
 	. += "<a href='?src=\ref[src];flavor_text=open'>Set Flavor Text</a><br/>"
 	. += "<a href='?src=\ref[src];flavour_text_robot=open'>Set Robot Flavor Text</a><br/>"

@@ -18,7 +18,7 @@
 	pref.media_volume = isnum(pref.media_volume) ? clamp(pref.media_volume, 0, 1) : initial(pref.media_volume)
 	pref.media_player = sanitize_inlist(pref.media_player, list(0, 1, 2), initial(pref.media_player))
 
-/datum/category_item/player_setup_item/player_global/media/content(var/mob/user)
+/datum/category_item/player_setup_item/player_global/media/content(datum/preferences/prefs, mob/user, data)
 	. += "<b>Jukebox Volume:</b>"
 	. += "<a href='?src=\ref[src];change_media_volume=1'><b>[round(pref.media_volume * 100)]%</b></a><br>"
 	. += "<b>Media Player Type:</b> Depending on you operating system, one of these might work better. "

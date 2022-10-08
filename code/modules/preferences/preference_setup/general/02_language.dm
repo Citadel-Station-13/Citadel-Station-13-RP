@@ -19,7 +19,7 @@
 	if(isnull(pref.language_prefixes) || !pref.language_prefixes.len)
 		pref.language_prefixes = config_legacy.language_prefixes.Copy()
 
-/datum/category_item/player_setup_item/general/language/content()
+/datum/category_item/player_setup_item/general/language/content(datum/preferences/prefs, mob/user, data)
 	. += "<b>Languages</b><br>"
 	var/datum/species/S = pref.character_static_species_meta()
 	if(S.language)

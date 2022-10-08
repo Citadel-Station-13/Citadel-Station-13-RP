@@ -27,7 +27,7 @@
 		BITSET(character.hud_updateflag, VANTAG_HUD)		- whoever made hud updateflags is a curse
 */
 
-/datum/category_item/player_setup_item/vore/vantag/content(var/mob/user)
+/datum/category_item/player_setup_item/vore/vantag/content(datum/preferences/prefs, mob/user, data)
 /* no, we have our own system
 	. += "<br>"
 	. += "<b>Event Volunteer:</b> <a [pref.vantag_volunteer ? "class='linkOn'" : ""] href='?src=\ref[src];toggle_vantag_volunteer=1'><b>[pref.vantag_volunteer ? "Yes" : "No"]</b></a><br>"

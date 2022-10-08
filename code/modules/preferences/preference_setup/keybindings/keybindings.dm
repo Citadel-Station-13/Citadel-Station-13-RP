@@ -38,7 +38,7 @@
 /datum/category_item/player_setup_item/keybinding/hotkey_mode/sanitize_preferences()
 	pref.hotkeys = sanitize_integer(pref.hotkeys, 0, 1, initial(pref.hotkeys))
 
-/datum/category_item/player_setup_item/keybinding/hotkey_mode/content(mob/user)
+/datum/category_item/player_setup_item/keybinding/hotkey_mode/content(datum/preferences/prefs, mob/user, data)
 	. += "<b>Hotkey mode:</b> <a href='?src=[REF(src)];option=hotkeys'>[(pref.hotkeys) ? "Hotkeys" : "Default"]</a><br>"
 	. += "Keybindings mode controls how the game behaves with tab and map/input focus.<br>If it is on <b>Hotkeys</b>, the game will always attempt to force you to map focus, meaning keypresses are sent \
 	directly to the map instead of the input. You will still be able to use the command bar, but you need to tab to do it every time you click on the game map.<br>\
@@ -78,7 +78,7 @@
 		if(!length(L))
 			pref.key_bindings -= key
 
-/datum/category_item/player_setup_item/keybinding/bindings/content(mob/user)
+/datum/category_item/player_setup_item/keybinding/bindings/content(datum/preferences/prefs, mob/user, data)
 	. = list()
 	var/list/key_bindings = pref.key_bindings		//cache for speed or atleast my finger's sake..
 	// Create an inverted list of keybindings -> key

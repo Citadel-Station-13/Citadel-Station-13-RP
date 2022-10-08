@@ -42,7 +42,7 @@
 	character.personal_faction	= pref.faction
 	character.religion			= pref.religion
 
-/datum/category_item/player_setup_item/general/background/content(var/mob/user)
+/datum/category_item/player_setup_item/general/background/content(datum/preferences/prefs, mob/user, data)
 	. += "<b>Background Information</b><br>"
 	. += "Economic Status: <a href='?src=\ref[src];econ_status=1'>[pref.economic_status]</a><br/>"
 	. += "Home System: <a href='?src=\ref[src];home_system=1'>[pref.home_system]</a><br/>"

@@ -25,7 +25,7 @@
 	character.autohiss_mode = pref.autohiss
 	character.autohiss_type = pref.autohiss_type
 
-/datum/category_item/player_setup_item/vore/autohiss/content(var/mob/user)
+/datum/category_item/player_setup_item/vore/autohiss/content(datum/preferences/prefs, mob/user, data)
 	. += "<br>"
 	. += "<b>Autohiss Type:</b> "
 

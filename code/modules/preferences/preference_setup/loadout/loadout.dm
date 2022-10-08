@@ -170,7 +170,7 @@ var/list/gear_datums = list()
 			else
 				total_cost += G.cost
 
-/datum/category_item/player_setup_item/loadout/content()
+/datum/category_item/player_setup_item/loadout/content(datum/preferences/prefs, mob/user, data)
 	. = list()
 	var/mob/preference_mob = preference_mob()
 	var/total_cost = 0

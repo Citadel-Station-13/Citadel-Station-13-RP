@@ -14,7 +14,7 @@
 	if(isnull(pref.ignored_players))
 		pref.ignored_players = list()
 
-/datum/category_item/player_setup_item/player_global/ooc/content(var/mob/user)
+/datum/category_item/player_setup_item/player_global/ooc/content(datum/preferences/prefs, mob/user, data)
 	. += "<b>OOC:</b><br>"
 	. += "Ignored Players<br>"
 	for(var/ignored_player in pref.ignored_players)

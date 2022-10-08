@@ -77,7 +77,7 @@
 	pref.pdachoice	= sanitize_integer(pref.pdachoice, 1, pdachoicelist.len, initial(pref.pdachoice))
 	pref.ringtone	= sanitize(pref.ringtone, 20)
 
-/datum/category_item/player_setup_item/general/equipment/content()
+/datum/category_item/player_setup_item/general/equipment/content(datum/preferences/prefs, mob/user, data)
 	. = list()
 	. += "<b>Equipment:</b><br>"
 	for(var/datum/category_group/underwear/UWC in GLOB.global_underwear.categories)

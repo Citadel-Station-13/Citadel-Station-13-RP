@@ -32,7 +32,7 @@ var/XENOMORPH_EGG 	= SPECIES_XENO
 /datum/category_item/player_setup_item/vore/egg/copy_to_mob(var/mob/living/carbon/human/character)
 	character.vore_egg_type	= pref.vore_egg_type
 
-/datum/category_item/player_setup_item/vore/egg/content(var/mob/user)
+/datum/category_item/player_setup_item/vore/egg/content(datum/preferences/prefs, mob/user, data)
 	. += "<br>"
 	. += " Egg Type: <a href='?src=\ref[src];vore_egg_type=1'>[pref.vore_egg_type]</a><br>"
 

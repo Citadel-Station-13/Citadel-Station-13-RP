@@ -31,7 +31,7 @@
 /datum/category_item/player_setup_item/vore/persistence/sanitize_character()
 	pref.persistence_settings		= sanitize_integer(pref.persistence_settings, 0, (1<<(PERSIST_COUNT+1)-1), initial(pref.persistence_settings))
 
-/datum/category_item/player_setup_item/vore/persistence/content(var/mob/user)
+/datum/category_item/player_setup_item/vore/persistence/content(datum/preferences/prefs, mob/user, data)
 	. = list()
 	. += "<b>Round-to-Round Persistence</b><br>"
 	. += "<table>"

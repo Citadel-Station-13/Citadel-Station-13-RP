@@ -47,7 +47,7 @@
 	character.fuzzy				= pref.fuzzy
 	character.resize(pref.size_multiplier, animate = FALSE)
 
-/datum/category_item/player_setup_item/vore/size/content(var/mob/user)
+/datum/category_item/player_setup_item/vore/size/content(datum/preferences/prefs, mob/user, data)
 	. += "<br>"
 	. += "<b>Scale:</b> <a href='?src=\ref[src];size_multiplier=1'>[round(pref.size_multiplier*100)]%</a><br>"
 	. += "<b>Scaled Appearance:</b> <a [pref.fuzzy ? "" : ""] href='?src=\ref[src];toggle_fuzzy=1'><b>[pref.fuzzy ? "Fuzzy" : "Sharp"]</b></a><br>"

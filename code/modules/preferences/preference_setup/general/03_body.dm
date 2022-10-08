@@ -218,7 +218,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	return
 
-/datum/category_item/player_setup_item/general/body/content(var/mob/user)
+/datum/category_item/player_setup_item/general/body/content(datum/preferences/prefs, mob/user, data)
 	. = list()
 
 	var/datum/species/mob_species = pref.character_static_species_meta()

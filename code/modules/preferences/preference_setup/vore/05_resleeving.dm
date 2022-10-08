@@ -33,7 +33,7 @@
 				character.resleeve_lock = character.ckey
 			character.original_player = character.ckey
 
-/datum/category_item/player_setup_item/vore/resleeve/content(var/mob/user)
+/datum/category_item/player_setup_item/vore/resleeve/content(datum/preferences/prefs, mob/user, data)
 	. += "<br>"
 	. += "<b>Start With Body Scan:</b> <a [pref.resleeve_scan ? "class='linkOn'" : ""] href='?src=\ref[src];toggle_resleeve_scan=1'><b>[pref.resleeve_scan ? "Yes" : "No"]</b></a><br>"
 	. += "<b>Prevent Body Impersonation:</b> <a [pref.resleeve_lock ? "class='linkOn'" : ""] href='?src=\ref[src];toggle_resleeve_lock=1'><b>[pref.resleeve_lock ? "Yes" : "No"]</b></a><br>"

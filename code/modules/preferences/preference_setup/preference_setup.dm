@@ -216,7 +216,7 @@
  *
  * @return list of html text
  */
-/datum/category_item/player_setup_item/proc/content(mob/user, data, datum/preferences/prefs)
+/datum/category_item/player_setup_item/proc/content(datum/preferences/prefs, mob/user, data)
 	RETURN_TYPE(/list)
 	return list()
 

@@ -27,7 +27,7 @@ var/global/list/uplink_locations = list("PDA", "Headset", "None")
 	character.antag_faction = pref.antag_faction
 	character.antag_vis = pref.antag_vis
 
-/datum/category_item/player_setup_item/antagonism/basic/content(var/mob/user)
+/datum/category_item/player_setup_item/antagonism/basic/content(datum/preferences/prefs, mob/user, data)
 	. += "Faction: <a href='?src=\ref[src];antagfaction=1'>[pref.antag_faction]</a><br/>"
 	. += "Visibility: <a href='?src=\ref[src];antagvis=1'>[pref.antag_vis]</a><br/>"
 	. +="<b>Uplink Type : <a href='?src=\ref[src];antagtask=1'>[pref.uplinklocation]</a></b>"

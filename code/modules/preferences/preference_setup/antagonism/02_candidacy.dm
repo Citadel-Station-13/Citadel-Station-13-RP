@@ -35,7 +35,7 @@ var/global/list/special_roles = list( //keep synced with the defines BE_* in set
 	pref.be_special	= sanitize_integer(pref.be_special, 0, 65535, initial(pref.be_special))
 	pref.be_event_role = sanitize_integer(pref.be_event_role, NONE, ALL, default = NONE)
 
-/datum/category_item/player_setup_item/antagonism/candidacy/content(var/mob/user)
+/datum/category_item/player_setup_item/antagonism/candidacy/content(datum/preferences/prefs, mob/user, data)
 	. += "<b>Event Role Preferences</b> <a href='?src=[REF(src)];event_role_help=1'>\[?]</a><br>"
 	for(var/i in GLOB.event_role_list)
 		. += "<b>[i]</b> <a href='?src=[REF(src)];event_role_help_flag=[GLOB.event_role_list[i]]'>\[?]</a>: <a href='?src=[REF(src)];event_role_toggle=[GLOB.event_role_list[i]]'><b>[pref.be_event_role & GLOB.event_role_list[i]? "Yes" : "No"]</b></a><br>"

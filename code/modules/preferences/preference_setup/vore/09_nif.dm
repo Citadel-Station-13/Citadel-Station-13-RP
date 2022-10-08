@@ -51,5 +51,5 @@
 		S.cd = "/character[pref.default_slot]"
 		save_character(S)
 */
-/datum/category_item/player_setup_item/vore/nif/content(var/mob/user)
+/datum/category_item/player_setup_item/vore/nif/content(datum/preferences/prefs, mob/user, data)
 	. += "<b>NIF:</b> [pref.nif_id ? "Present" : "None"]"

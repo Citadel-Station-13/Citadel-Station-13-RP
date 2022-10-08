@@ -254,7 +254,7 @@
 
 
 
-/datum/category_item/player_setup_item/vore/ears/content(var/mob/user)
+/datum/category_item/player_setup_item/vore/ears/content(datum/preferences/prefs, mob/user, data)
 	. += "<h2>Appearance and Custom Species Settings</h2>"
 
 	var/ear_display = "Normal"

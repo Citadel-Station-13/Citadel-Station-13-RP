@@ -62,7 +62,7 @@
 	character.identifying_gender = pref.identifying_gender
 	character.age = pref.age
 
-/datum/category_item/player_setup_item/general/basic/content()
+/datum/category_item/player_setup_item/general/basic/content(datum/preferences/prefs, mob/user, data)
 	. = list()
 	. += "<b>Name:</b> "
 	. += "<a href='?src=\ref[src];rename=1'><b>[pref.real_name]</b></a><br>"

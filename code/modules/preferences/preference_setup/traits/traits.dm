@@ -36,7 +36,7 @@ var/list/trait_categories = list() // The categories available for the trait men
 	S["traits"] << pref.traits
 
 
-/datum/category_item/player_setup_item/traits/content()
+/datum/category_item/player_setup_item/traits/content(datum/preferences/prefs, mob/user, data)
 	. = list()
 	. += "<table align = 'center' width = 100%>"
 	. += "<tr><td colspan=3><hr></td></tr>"

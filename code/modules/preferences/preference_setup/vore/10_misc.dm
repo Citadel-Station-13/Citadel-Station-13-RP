@@ -30,7 +30,7 @@
 	pref.directory_erptag			= sanitize_inlist(pref.directory_erptag, GLOB.char_directory_erptags, initial(pref.directory_erptag))
 	pref.sensorpref				= sanitize_integer(pref.sensorpref, 1, sensorpreflist.len, initial(pref.sensorpref))	//TFF - 5/8/19 - add santisation for sensor prefs
 
-/datum/category_item/player_setup_item/vore/misc/content(var/mob/user)
+/datum/category_item/player_setup_item/vore/misc/content(datum/preferences/prefs, mob/user, data)
 	. += "<br>"
 	. += "<b>Appear in Character Directory:</b> <a [pref.show_in_directory ? "class='linkOn'" : ""] href='?src=\ref[src];toggle_show_in_directory=1'><b>[pref.show_in_directory ? "Yes" : "No"]</b></a><br>"
 	. += "<b>Character Directory Vore Tag:</b> <a href='?src=\ref[src];directory_tag=1'><b>[pref.directory_tag]</b></a><br>"
