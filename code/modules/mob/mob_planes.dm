@@ -16,6 +16,7 @@
 	// 'Utility' planes
 	plane_masters[VIS_FULLBRIGHT] 	= new /atom/movable/screen/plane_master/fullbright						//Lighting system (lighting_overlay objects)
 	plane_masters[VIS_LIGHTING] 	= new /atom/movable/screen/plane_master/lighting							//Lighting system (but different
+	plane_masters[VIS_EMISSIVE]     = new /atom/movable/screen/plane_master/emissive
 	plane_masters[VIS_GHOSTS] 		= new /atom/movable/screen/plane_master/ghosts							//Ghosts!
 	plane_masters[VIS_AI_EYE]		= new /atom/movable/screen/plane_master{plane = PLANE_AI_EYE}			//AI Eye!
 
@@ -167,6 +168,35 @@
 	plane = LIGHTING_PLANE
 	blend_mode = BLEND_MULTIPLY
 	alpha = 255
+
+/*!
+ * This system works by exploiting BYONDs color matrix filter to use layers to handle emissive blockers.
+ *
+ * Emissive overlays are pasted with an atom color that converts them to be entirely some specific color.
+ * Emissive blockers are pasted with an atom color that converts them to be entirely some different color.
+ * Emissive overlays and emissive blockers are put onto the same plane.
+ * The layers for the emissive overlays and emissive blockers cause them to mask eachother similar to normal BYOND objects.
+ * A color matrix filter is applied to the emissive plane to mask out anything that isn't whatever the emissive color is.
+ * This is then used to alpha mask the lighting plane.
+ */
+
+/atom/movable/screen/plane_master/lighting/Initialize(mapload)
+	. = ..()
+	add_filter("emissives", 1, alpha_mask_filter(render_source = EMISSIVE_RENDER_TARGET, flags = MASK_INVERSE))
+	// add_filter("object_lighting", 2, alpha_mask_filter(render_source = O_LIGHTING_VISUAL_RENDER_TARGET, flags = MASK_INVERSE))
+
+/**
+ * Handles emissive overlays and emissive blockers.
+ */
+/atom/movable/screen/plane_master/emissive
+	name = "emissive plane master"
+	plane = EMISSIVE_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	render_target = EMISSIVE_RENDER_TARGET
+
+/atom/movable/screen/plane_master/emissive/Initialize(mapload)
+	. = ..()
+	add_filter("em_block_masking", 1, color_matrix_filter(GLOB.em_mask_matrix))
 
 /////////////////
 //Ghosts has a special alpha level

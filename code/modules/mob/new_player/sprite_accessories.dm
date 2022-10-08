@@ -43,6 +43,15 @@
 
 	var/color_blend_mode = ICON_MULTIPLY	// If checked.
 
+	#warn oh god oh fuck
+	//! Emissives
+	/// supports emissives
+	var/emissive_support = TRUE
+	///
+
+//! Emissives
+/datum/sprite_accessory/proc/render_emissive_images()
+	#warn impl
 
 //skin styles - WIP
 //going to have to re-integrate this with surgery

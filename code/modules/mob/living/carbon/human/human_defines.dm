@@ -1,4 +1,5 @@
 /mob/living/carbon/human
+	blocks_emissive = EMISSIVE_BLOCK_UNIQUE
 	hud_possible = list(
 		LIFE_HUD,
 		STATUS_HUD,
