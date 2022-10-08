@@ -450,19 +450,14 @@
 	. *= icon_scale_y
 
 //! Emissives
-/atom/movable/proc/add_emissive_blocker()
+/atom/movable/proc/add_emissive_blocker(full_copy = TRUE)
 	if(em_block)
+		em_block.render_source = full_copy? render_target : null
 		update_emissive_blocker()
 		return
 	render_target = ref(src)
-	em_block = new(src, render_target)
+	em_block = new(src, full_copy? render_target : null)
 	update_emissive_blocker()
-
-/atom/movable/proc/add_or_update_emissive_blocker()
-	if(!em_block)
-		add_emissive_blocker()
-	else
-		update_emissive_blocker()
 
 /atom/movable/proc/update_emissive_blocker()
 	if(!em_block)
@@ -477,12 +472,13 @@
 	qdel(em_block)
 	em_block = null
 
-/atom/movable/proc/add_emissive_render()
+/atom/movable/proc/add_emissive_render(full_copy = TRUE)
 	if(em_render)
+		em_render.render_source = full_copy? render_target : null
 		update_emissive_render()
 		return
 	render_target = ref(src)
-	em_render = new(src, render_target)
+	em_render = new(src, full_copy? render_target : null)
 	update_emissive_render()
 
 /atom/movable/proc/add_or_update_emissive_render()
