@@ -30,4 +30,4 @@
 	add_overlay(vfx_clone_as_emissive(src, alpha_override, layer_override || MANGLE_PLANE_AND_LAYER(plane, layer)))
 
 /atom/proc/cheap_become_emissive_blocker(alpha_override, layer_override)
-	adD_overlay(vfx_clone_as_emissive_blocker(src, alpha_override, layer_override || MANGLE_PLANE_AND_LAYER(plane, layer)))
+	add_overlay(vfx_clone_as_emissive_blocker(src, alpha_override, layer_override || MANGLE_PLANE_AND_LAYER(plane, layer)))
