@@ -26,18 +26,18 @@ The primary interest at the moment is getting this system functional so it can b
 
 //This proc will tabulate the number of prosthetic limbs, organs, augments, and implants into a number, and subtract that from var/capacity, which is set to 100 by default.
 /datum/component/cyberpsychosis/proc/update_capacity(var/mob/living/carbon/human/H)
-	/*
 	if(ishuman(H))
 		for(parent)
-			H.capacity -= H.robolimb_count*10-max(0,H.robolimb_count*10-30)
-				continue
+			H.capacity -= H.robolimb_count*10-(H.robolimb_count*10-20)
+			continue
 		if(H.internal_organs.len)
 			for(var/obj/item/organ/O in H.internal_organs)
 				if(O.robotic >= ORGAN_ROBOT)
 					H.capacity -= 30
 			return
-	*/
+	/*
 	H.capacity -= H.robolimb_count*10-max(0,H.robolimb_count*10-30)
+	*/
 
 //This proc will provide different symptoms, with the frequency inversely related to the value of capacity.
 //This is basically the one that all the above checkboxes will address.
