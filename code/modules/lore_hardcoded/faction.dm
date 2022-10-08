@@ -20,7 +20,7 @@
 	It also boasts an prosthetic line, which is provided to its employees as needed, and is used as an incentive \
 	for newly tested posibrains to remain with the company. NanoTrasen's corporate headquarters is based out of \
 	the NTS Creon in the privateyl owned Thebes system."
-	var/contractor_info = "You are an employee working for NanoTrasen. You are not a contractor, <i>you belong here.</i>"
+	contractor_info = "You are an employee working for NanoTrasen. You are not a contractor, <i>you belong here.</i>"
 	job_whitelist = null
 
 /datum/lore/character_background/faction/aether
@@ -30,7 +30,7 @@
 	are then resold for a variety of uses to those willing to buy. With the nature of their services, most work they do is contracted for the construction of \
 	these systems, or staffing to maintain them for colonies across human space. Recently, Aether executed a shockingly effective set of hostile acquisitions, \
 	purchasing Focal Point Energistics and the Xion Manufacturing Group."
-	var/contractor_info = "You're used to being contracted out to maintain systems for other corporations. This assignment is probably routine to you."
+	contractor_info = "You're used to being contracted out to maintain systems for other corporations. This assignment is probably routine to you."
 	job_whitelist = list(
 		JOB_ID_QUARTERMASTER,
 		JOB_ID_CARGO_TECHNICIAN,
@@ -50,7 +50,7 @@
 	The various brands of Centauri snackfoods are now household names, from SkrellSnax and Space Mountain Wind to the ubiquitous and allegedly edible Bread Tube. \
 	They are well known for targeting as many species as possible with each brand - which, some will argue, is due to some of those brands being rather bland \
 	in taste and texture. Their staying power is legendary, and many spacers have grown up on a mix of their cheap snacks and protein shakes."
-	var/contractor_info = "Although the occasional marketing trip isn't unheard of, it's meant to be rare. It may seem strange to be assigned to a different Corporate outpost, but it's a good marketing opportunity regardless, and the bosses are watching!"
+	contractor_info = "Although the occasional marketing trip isn't unheard of, it's meant to be rare. It may seem strange to be assigned to a different Corporate outpost, but it's a good marketing opportunity regardless, and the bosses are watching!"
 	job_whitelist = list(
 		JOB_ID_QUARTERMASTER,
 		JOB_ID_CARGO_TECHNICIAN,
@@ -75,7 +75,7 @@
 	filled with duty-free shops and wares. Almost anything is sold at FTU markets, including products that are forbidden or have insanely high taxes in \
 	government or Corporate space. The FTU are the originators of the Tradeband language, created specially to serve as the lingua franca for Merchants \
 	across the Galaxy, to ensure members may understand each other regardless of native language or nationality."
-	var/contractor_info = "Working under a Corporation feels strange. You're used to exercising your autonomy, or perhaps you're used to the more strict maritime environment of your former vessel. Being surrounded by Corporate employees reminds you of why you're with the FTU."
+	contractor_info = "Working under a Corporation feels strange. You're used to exercising your autonomy, or perhaps you're used to the more strict maritime environment of your former vessel. Being surrounded by Corporate employees reminds you of why you're with the FTU."
 	job_whitelist = list(
 		JOB_ID_QUARTERMASTER,
 		JOB_ID_CARGO_TECHNICIAN,
@@ -109,7 +109,7 @@
 	mass media are a smaller but still important part of their empire. Gilthari is known for treating its positronic employees very well, sparking a number of \
 	conspiracy theories. The gorgeous FBP model that Gilthari provides them is a symbol of the corporation's wealth and is known to reach ludicrous prices when \
 	available on the black market, with legal ownership of the chassis limited, by contract, to employees."
-	var/contractor_info = "The drab atmosphere of this assignment is frustrating. Hardly any thought is put into how the environment might be made more elegant and pleasing to the senses. On the bright side, Corporate employees tend to have plenty of disposable income."
+	contractor_info = "The drab atmosphere of this assignment is frustrating. Hardly any thought is put into how the environment might be made more elegant and pleasing to the senses. On the bright side, Corporate employees tend to have plenty of disposable income."
 	job_whitelist = list(
 		JOB_ID_QUARTERMASTER,
 		JOB_ID_CARGO_TECHNICIAN,
@@ -134,7 +134,7 @@
 	with NanoTrasen. They otherwise enforce pacts and trade arrangements with the help of a fairly large asset-protection contingent which \
 	prevents any contracting polities from using their own materiel against them. The Orion Confederation itself is one of Hephaestus' largest \
 	non-corporate bulk contractors."
-	var/contractor_info = "NanoTrasen and Hephaestus have a long and beneficial working relationship. Your employers would not like it if you strained that relationship in any way, and therefore, neither would you."
+	contractor_info = "NanoTrasen and Hephaestus have a long and beneficial working relationship. Your employers would not like it if you strained that relationship in any way, and therefore, neither would you."
 	job_whitelist = list(
 		JOB_ID_QUARTERMASTER,
 		JOB_ID_CARGO_TECHNICIAN,
@@ -153,7 +153,7 @@
 	old-fashioned newspapers. Staunchly apolitical, they specialize in delivering the most popular news available - which means telling people what they \
 	already want to hear. Oculum is a specialist in branding, and most people don't know that the reactionary Daedalus Dispatch newsletter and the radically \
 	transhuman Liquid Steel webcrawler are in fact both controlled by the same organization."
-	var/contractor_info = "You're no stranger to working in a variety of Corporate environments. However you conduct your business, you're always chasing the story, even if that brings you into conflict with whoever's contracting you at the time."
+	contractor_info = "You're no stranger to working in a variety of Corporate environments. However you conduct your business, you're always chasing the story, even if that brings you into conflict with whoever's contracting you at the time."
 	job_whitelist = list(
 		JOB_ID_BARTENDER,
 		JOB_ID_ENTERTAINER,
@@ -172,7 +172,7 @@
 	recent years they've been forced to diversify as their patents expired and NanoTrasen-made medications became \
 	essential to modern sleeving techniques. Vey-Medical possesses a number of trade agreements and research pacts with NanoTrasen, \
 	resulting in what is functionally considered an alliance."
-	var/contractor_info = "Working with NanoTrasen has become a fact of life for Vey-Med employees over the years. You're no stranger to these types of environments, although you have seen better medical facilities before."
+	contractor_info = "Working with NanoTrasen has become a fact of life for Vey-Med employees over the years. You're no stranger to these types of environments, although you have seen better medical facilities before."
 	job_whitelist = list(
 		JOB_ID_FIELD_MEDIC,
 		JOB_ID_MEDICAL_DOCTOR,
@@ -194,7 +194,7 @@
 	led to their tertiary interest in the development and sale of high-grade AI systems. Ward-Takahashi's economies \
 	of scale frequently steal market share from Nanotrasen's high-price products, leading to a bitter rivalry in the \
 	consumer electronics market."
-	var/contractor_info = "Being allowed to work on a NanoTrasen facility is atypical. In fact, being employed here at all has made you suspicious. You're probably being watched. But Headquarters would love to hear about anything strange that you find."
+	contractor_info = "Being allowed to work on a NanoTrasen facility is atypical. In fact, being employed here at all has made you suspicious. You're probably being watched. But Headquarters would love to hear about anything strange that you find."
 	job_whitelist = list(
 		JOB_ID_QUARTERMASTER,
 		JOB_ID_CARGO_TECHNICIAN,
@@ -216,7 +216,7 @@
 	on phoron research cut into their R&D capabilities and Vey-Med's superior medical equipment effectively decimated their own equipment \
 	interests. The three-way rivalry between these companies for dominance in the medical field is well-known and a matter of \
 	constant economic speculation."
-	var/contractor_info = "You dislike working under NanoTrasen. Zeng Hu saw fit to assign you to this post as part of a work exchange program. Although you were not explicitly told, you are presumably here to keep an eye on NanoTrasen's medical research."
+	contractor_info = "You dislike working under NanoTrasen. Zeng Hu saw fit to assign you to this post as part of a work exchange program. Although you were not explicitly told, you are presumably here to keep an eye on NanoTrasen's medical research."
 	job_whitelist = list(
 		JOB_ID_FIELD_MEDIC,
 		JOB_ID_MEDICAL_DOCTOR,

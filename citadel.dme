@@ -190,6 +190,7 @@
 #include "code\__DEFINES\preferences\data_keys_character.dm"
 #include "code\__DEFINES\preferences\data_keys_global.dm"
 #include "code\__DEFINES\preferences\event_antag.dm"
+#include "code\__DEFINES\preferences\misc.dm"
 #include "code\__DEFINES\preferences\procs.dm"
 #include "code\__DEFINES\preferences\savefiles.dm"
 #include "code\__DEFINES\procs\buckling.dm"

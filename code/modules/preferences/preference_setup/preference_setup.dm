@@ -221,18 +221,6 @@
 	return list()
 
 /**
- * called to set our data to a certain value
- */
-/datum/category_item/player_setup_item/proc/set_data(datum/preferences/prefs, k, v)
-	#warn impl
-
-/**
- * called to get our data
- */
-/datum/category_item/player_setup_item/proc/get_data(datum/preferences/prefs, k)
-	#warn impl
-
-/**
  * OnTopic but reformatted
  *
  * Why this pattern?
