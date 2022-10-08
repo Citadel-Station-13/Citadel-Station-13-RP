@@ -1,0 +1,11 @@
+author: "AlphaM01"
+delete-after: True
+changes: 
+  - tweak: "Changed Atmos' Phoron tank hazard sign to correctly call the gas \"Phoron\" instead of \"Plasma\"."
+  - tweak: "Renamed the doors inside Centcomm's Medbay to accurately say what they are instead of all being the same copied \"Operating Theatre\" door."
+  - bugfix: "Split the Memorial monument in Centcomm into two different objects, each occupying their own tile to prevent phasing through it."
+  - bugfix: "Anchored the memorial room's statues in place."
+  - bugfix: "Moved Surface 1 airlock buttons to the outsides of the airlock, instead of inside the doors, to prevent them being interactable from the wrong side of the doors."
+  - rscadd: "Connected the central heating area of the Emergency Bunker to the power grid by adding a missing section of wire under a door."
+  - rscadd: "Added plating to the underside of the catwalks on the Mining Outpost to prevent situations where it was possible to fall through the catwalk because of the empty space it was on (in a few spots leading to insta-death)."
+  - rscdel: "Deleted outdated/floating path edge overlays."
