@@ -51,7 +51,7 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 /datum/tgui_species_picker/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(M, src, "SpeciesPicker", "Choose Species")
+		ui = new(user, src, "SpeciesPicker", "Choose Species")
 		ui.autoupdate = FALSE			// why the fuck are you updating species data??
 		ui.open()
 

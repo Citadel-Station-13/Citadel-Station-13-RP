@@ -28,7 +28,7 @@
 		if(!(S.spawn_flags & SPECIES_CAN_JOIN))		// don't bother lmao
 			continue
 		if(species_lookup[S.uid])
-			stack_trace("species uid collision on [uid] from [S.type].")
+			stack_trace("species uid collision on [S.uid] from [S.type].")
 			continue
 		species_lookup[S.uid] = S.construct_character_species()
 	for(var/path in subtypesof(/datum/character_species))
@@ -37,7 +37,7 @@
 			continue
 		S = new path
 		if(species_lookup[S.uid])
-			stack_trace("ignoring custom character species path [path] - collides on uid [uid]")
+			stack_trace("ignoring custom character species path [path] - collides on uid [S.uid]")
 			continue
 		species_lookup[S.uid] = S
 
@@ -67,5 +67,5 @@
 	RETURN_TYPE(/datum/species)
 	var/datum/character_species/faux = resolve_real_species(uid)
 	var/datum/species/built = new faux.real_species_type
-	faux.tweak(S)
-	return S
+	faux.tweak(built)
+	return built
