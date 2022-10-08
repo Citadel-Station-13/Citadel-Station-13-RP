@@ -3410,6 +3410,7 @@
 #include "code\modules\power\tesla\telsa_construction.dm"
 #include "code\modules\power\tesla\tesla_act.dm"
 #include "code\modules\preferences\_preferences.dm"
+#include "code\modules\preferences\apply.dm"
 #include "code\modules\preferences\data.dm"
 #include "code\modules\preferences\migration.dm"
 #include "code\modules\preferences\preferences_factions.dm"

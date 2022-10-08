@@ -71,3 +71,15 @@
  */
 /datum/category_item/player_setup_item/proc/read(datum/preferences/prefs)
 	#warn impl
+
+/**
+ * get default value
+ */
+/datum/category_item/player_setup_item/proc/default_value(randomizing)
+	return null
+
+/**
+ * get default value assuming pref
+ */
+/datum/category_item/player_setup_item/proc/informed_default_value(randomizing)
+	return default_value(randomizing)
