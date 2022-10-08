@@ -3,34 +3,34 @@
 	var/obj/machinery/atmospherics/mains_pipe/parent_pipe
 	var/list/obj/machinery/atmospherics/pipe/mains_component/nodes = new()
 
-	New(loc)
-		..(loc)
-		parent_pipe = loc
+/obj/machinery/atmospherics/pipe/mains_component/New(loc)
+	..(loc)
+	parent_pipe = loc
 
-	check_pressure(pressure)
-		var/datum/gas_mixture/environment = loc.loc.return_air()
+/obj/machinery/atmospherics/pipe/mains_component/check_pressure(pressure)
+	var/datum/gas_mixture/environment = loc.loc.return_air()
 
-		var/pressure_difference = pressure - environment.return_pressure()
+	var/pressure_difference = pressure - environment.return_pressure()
 
-		if(pressure_difference > parent_pipe.maximum_pressure)
+	if(pressure_difference > parent_pipe.maximum_pressure)
+		mains_burst()
+
+	else if(pressure_difference > parent_pipe.fatigue_pressure)
+		//TODO: leak to turf, doing pfshhhhh
+		if(prob(5))
 			mains_burst()
 
-		else if(pressure_difference > parent_pipe.fatigue_pressure)
-			//TODO: leak to turf, doing pfshhhhh
-			if(prob(5))
-				mains_burst()
+	else return 1
 
-		else return 1
+/obj/machinery/atmospherics/pipe/mains_component/pipeline_expansion()
+	return nodes
 
-	pipeline_expansion()
-		return nodes
+/obj/machinery/atmospherics/pipe/mains_component/disconnect(obj/machinery/atmospherics/reference)
+	if(nodes.Find(reference))
+		nodes.Remove(reference)
 
-	disconnect(obj/machinery/atmospherics/reference)
-		if(nodes.Find(reference))
-			nodes.Remove(reference)
-
-	proc/mains_burst()
-		parent_pipe.burst()
+/obj/machinery/atmospherics/pipe/mains_component/proc/mains_burst()
+	parent_pipe.burst()
 
 /obj/machinery/atmospherics/mains_pipe
 	icon = 'icons/obj/atmospherics/mainspipe.dmi'

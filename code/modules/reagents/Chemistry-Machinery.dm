@@ -258,7 +258,7 @@
 	if(!user)
 		return FALSE
 	if(beaker)
-		if(!user.incapacitated() && Adjacent(user))
+		if(!user.incapacitated() && Adjacent(user) && !isrobot(user))
 			user.put_in_hands(beaker)
 		else
 			beaker.forceMove(drop_location())

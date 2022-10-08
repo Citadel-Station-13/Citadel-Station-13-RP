@@ -118,17 +118,17 @@
 	container_type = /obj/structure/closet
 	container_name = "Formalwear for the best occasions."
 
-datum/supply_pack/costumes/witch
+/datum/supply_pack/costumes/witch
 	name = "Witch costume"
 	container_name = "Witch costume"
 	container_type = /obj/structure/closet
 	cost = 20
 	contains = list(
-			/obj/item/clothing/suit/wizrobe/marisa/fake,
-			/obj/item/clothing/shoes/sandal,
-			/obj/item/clothing/head/wizard/marisa/fake,
-			/obj/item/staff/broom
-			)
+		/obj/item/clothing/head/wizard/marisa/fake,
+		/obj/item/clothing/shoes/sandal,
+		/obj/item/clothing/suit/wizrobe/marisa/fake,
+		/obj/item/staff/broom,
+	)
 
 /datum/supply_pack/randomised/costumes/costume_hats
 	name = "Costume hats"

@@ -63,6 +63,8 @@ var/global/list/ear_styles_list = list()
 var/global/list/tail_styles_list = list()
 /// Stores /datum/sprite_accessory/wing indexed by type
 var/global/list/wing_styles_list = list()
+/// Stores /datum/sprite_accessory/ears again indexed by type
+var/global/list/horn_styles_list = list()
 //!Underwear
 var/datum/category_collection/underwear/global_underwear = new()
 //!Backpacks - The load order here is important to maintain. Don't go swapping these around.
@@ -256,6 +258,9 @@ GLOBAL_LIST_EMPTY(mannequins)
 	for(var/path in paths)
 		var/datum/sprite_accessory/wing/instance = new path()
 		wing_styles_list[path] = instance
+
+	//Custom Ears2 -- Repathing was deemed worse than this I'm so sorry
+	horn_styles_list = LAZYCOPY(ear_styles_list)
 
 	// Custom species traits
 	paths = typesof(/datum/trait) - /datum/trait - /datum/trait/negative - /datum/trait/neutral - /datum/trait/positive

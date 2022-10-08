@@ -42,6 +42,15 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/shuttle/floor/voidcraft)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor)
 LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/mineral/icerock)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/ignore_cavegen)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/floor/ignore_cavegen)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/floor/icerock)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/ignore_cavegen)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
+
+
+/turf/simulated/mineral/icerock/ignore_cavegen/lythios43c
+	baseturfs = /turf/simulated/mineral/icerock/floor/ignore_cavegen/lythios43c
 
 /turf/simulated/floor/outdoors/snow/lythios43c
 	baseturfs = /turf/simulated/floor/outdoors/safeice/lythios43c
@@ -56,6 +65,9 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/mineral/icerock)
 
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 	outdoors = FALSE
+
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen	// I hate having to make such a long typepath for this, very annyoing -Bloop
+	ignore_cavegen = TRUE
 
 /turf/simulated/floor/lythios43c/indoors
 	outdoors = FALSE

@@ -1,13 +1,13 @@
 /**
-  * Convert random parts of a passed in message to stars
-  *
-  * * phrase - the string to convert
-  * * probability - probability any character doesn't gets changed
-  * * max - max characters
-  *
-  * This proc is dangerously laggy, avoid it or die
-  * On another note this is main's but probability is reversed because RP code is stupid.
-  */
+ * Convert random parts of a passed in message to stars
+ *
+ * * phrase - the string to convert
+ * * probability - probability any character doesn't gets changed
+ * * max - max characters
+ *
+ * This proc is dangerously laggy, avoid it or die
+ * On another note this is main's but probability is reversed because RP code is stupid.
+ */
 /proc/stars(phrase, probability = 25, max = 4096)
 	if(probability >= 100)
 		return phrase
@@ -28,7 +28,7 @@
 			. += "*"
 	return sanitize(.)
 
-proc/slur(phrase)
+/proc/slur(phrase)
 	phrase = html_decode(phrase)
 	var/leng=length(phrase)
 	var/counter=length(phrase)
@@ -36,19 +36,30 @@ proc/slur(phrase)
 	var/newletter=""
 	while(counter>=1)
 		newletter=copytext(phrase,(leng-counter)+1,(leng-counter)+2)
-		if(rand(1,3)==3)
-			if(lowertext(newletter)=="o")	newletter="u"
-			if(lowertext(newletter)=="s")	newletter="ch"
-			if(lowertext(newletter)=="a")	newletter="ah"
-			if(lowertext(newletter)=="c")	newletter="k"
+		if(rand(1,3) == 3)
+			if(lowertext(newletter)=="o")
+				newletter="u"
+			if(lowertext(newletter)=="s")
+				newletter="ch"
+			if(lowertext(newletter)=="a")
+				newletter="ah"
+			if(lowertext(newletter)=="c")
+				newletter="k"
 		switch(rand(1,15))
-			if(1,3,5,8)	newletter="[lowertext(newletter)]"
-			if(2,4,6,15)	newletter="[uppertext(newletter)]"
-			if(7)	newletter+="'"
-			if(9,10,11,12,13,14) newletter = newletter
-			//if(9,10)	newletter="<b>[newletter]</b>"
-			//if(11,12)	newletter="<big>[newletter]</big>"
-			//if(13)	newletter="<small>[newletter]</small>"
+			if(1, 3, 5, 8)
+				newletter="[lowertext(newletter)]"
+			if(2, 4, 6, 15)
+				newletter="[uppertext(newletter)]"
+			if(7)
+				newletter+="'"
+			if(9 to 14)
+				newletter = newletter
+			// if(9,10)
+			// 	newletter="<b>[newletter]</b>"
+			// if(11,12)
+			// 	newletter="<big>[newletter]</big>"
+			// if(13)
+			// 	newletter="<small>[newletter]</small>"
 		newphrase+="[newletter]";counter-=1
 	return newphrase
 
@@ -75,9 +86,12 @@ proc/slur(phrase)
 		p++//for each letter p is increased to find where the next letter will be.
 	return sanitize(t)
 
-
-proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 for p will cause letters to be replaced instead of added
-	/* Turn text into complete gibberish! */
+/**
+ * Turn text into complete gibberish!
+ *
+ * t is the inputted message, and any value higher than 70 for p will cause letters to be replaced instead of added.
+ */
+/proc/Gibberish(t, p)
 	var/returntext = ""
 	for(var/i = 1, i <= length(t), i++)
 
@@ -93,13 +107,12 @@ proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 fo
 
 	return returntext
 
-
+/**
+ * The difference with stutter is that this proc can stutter more than 1 letter
+ * The issue here is that anything that does not have a space is treated as one word (in many instances). For instance, "LOOKING," is a word, including the comma.
+ * It's fairly easy to fix if dealing with single letters but not so much with compounds of letters./N
+ */
 /proc/ninjaspeak(n)
-/*
-The difference with stutter is that this proc can stutter more than 1 letter
-The issue here is that anything that does not have a space is treated as one word (in many instances). For instance, "LOOKING," is a word, including the comma.
-It's fairly easy to fix if dealing with single letters but not so much with compounds of letters./N
-*/
 	var/te = html_decode(n)
 	var/t = ""
 	n = length(n)

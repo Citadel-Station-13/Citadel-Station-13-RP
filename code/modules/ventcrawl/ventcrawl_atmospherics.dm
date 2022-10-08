@@ -29,7 +29,7 @@
 		return
 	ventcrawl_to(user,findConnecting(direction, user.ventcrawl_layer),direction)
 
-/obj/machinery/atmospherics/proc/ventcrawl_to(var/mob/living/user, var/obj/machinery/atmospherics/target_move, var/direction)
+/obj/machinery/atmospherics/proc/ventcrawl_to(mob/living/user, obj/machinery/atmospherics/target_move, direction)
 	if(direction & (direction-1))//supresses Diagonal movement
 		return
 	if(target_move)
@@ -66,32 +66,32 @@
 
 	. = ..()
 
-/obj/machinery/atmospherics/proc/findConnecting(var/direction)
+/obj/machinery/atmospherics/proc/findConnecting(direction)
 	for(var/obj/machinery/atmospherics/target in get_step(src,direction))
 		if(target.initialize_directions & get_dir(target,src))
 			if(isConnectable(target) && target.isConnectable(src))
 				return target
 
-/obj/machinery/atmospherics/proc/isConnectable(var/obj/machinery/atmospherics/target)
+/obj/machinery/atmospherics/proc/isConnectable(obj/machinery/atmospherics/target)
 	return (target == node1 || target == node2)
 
-/obj/machinery/atmospherics/pipe/manifold/isConnectable(var/obj/machinery/atmospherics/target)
+/obj/machinery/atmospherics/pipe/manifold/isConnectable(obj/machinery/atmospherics/target)
 	return (target == node3 || ..())
 
-obj/machinery/atmospherics/component/trinary/isConnectable(var/obj/machinery/atmospherics/target)
+/obj/machinery/atmospherics/component/trinary/isConnectable(obj/machinery/atmospherics/target)
 	return (target == node3 || ..())
 
-/obj/machinery/atmospherics/pipe/manifold4w/isConnectable(var/obj/machinery/atmospherics/target)
+/obj/machinery/atmospherics/pipe/manifold4w/isConnectable(obj/machinery/atmospherics/target)
 	return (target == node3 || target == node4 || ..())
 
-/obj/machinery/atmospherics/tvalve/isConnectable(var/obj/machinery/atmospherics/target)
+/obj/machinery/atmospherics/tvalve/isConnectable(obj/machinery/atmospherics/target)
 	return (target == node3 || ..())
 
-/obj/machinery/atmospherics/pipe/cap/isConnectable(var/obj/machinery/atmospherics/target)
+/obj/machinery/atmospherics/pipe/cap/isConnectable(obj/machinery/atmospherics/target)
 	return (target == node || ..())
 
-/obj/machinery/atmospherics/portables_connector/isConnectable(var/obj/machinery/atmospherics/target)
+/obj/machinery/atmospherics/portables_connector/isConnectable(obj/machinery/atmospherics/target)
 	return (target == node || ..())
 
-/obj/machinery/atmospherics/component/unary/isConnectable(var/obj/machinery/atmospherics/target)
+/obj/machinery/atmospherics/component/unary/isConnectable(obj/machinery/atmospherics/target)
 	return (target == node || ..())

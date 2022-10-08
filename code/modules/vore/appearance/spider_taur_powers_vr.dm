@@ -9,7 +9,7 @@
 //ahuhuhuhu
 //-Antsnap
 
-obj/item/clothing/suit/web_bindings
+/obj/item/clothing/suit/web_bindings
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	name = "web bindings"

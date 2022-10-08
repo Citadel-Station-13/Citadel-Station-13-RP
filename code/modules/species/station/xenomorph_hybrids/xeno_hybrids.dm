@@ -43,6 +43,7 @@
 		)
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
+		/mob/living/proc/toggle_pass_table,
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/psychic_whisper,
