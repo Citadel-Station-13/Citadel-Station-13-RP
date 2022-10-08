@@ -22,6 +22,8 @@
 /atom/movable/proc/drag_drop_buckle_interaction(atom/A, mob/user)
 	set waitfor = FALSE
 	. = TRUE
+	if(A == src)
+		return FALSE
 	if(!user.Adjacent(src) || !A.Adjacent(src))
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_DRAG_DROP_BUCKLE_INTERACTION, A, user) & COMPONENT_HANDLED_BUCKLE_INTERACTION)
