@@ -1263,7 +1263,7 @@
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "cd" = (
 /obj/structure/grille,
@@ -3624,12 +3624,6 @@
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/excursion/general)
-"gv" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/tiled/techfloor/grid,
-/area/ai)
 "gw" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -6609,12 +6603,6 @@
 /obj/structure/railing,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside3)
-"mo" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 10
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "mp" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -7567,7 +7555,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "oe" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -8064,10 +8052,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/teleporter/departing)
-"pc" = (
-/obj/effect/overlay/snow/floor/edges_new,
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "pd" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
@@ -15127,12 +15111,6 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/excursion/cargo)
-"De" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 9
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "Df" = (
 /obj/machinery/power/smes/buildable/point_of_interest,
 /obj/structure/cable/cyan{
@@ -15966,7 +15944,7 @@
 /area/shuttle/excursion/cargo)
 "EP" = (
 /obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfaceeva/aa/cliff_north)
 "EQ" = (
 /obj/structure/cable/green{
@@ -17260,7 +17238,7 @@
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Hy" = (
 /obj/structure/closet,
@@ -17535,9 +17513,6 @@
 /area/shuttle/courser/cockpit)
 "Id" = (
 /obj/structure/railing,
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 10
-	},
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "Ie" = (
@@ -21283,12 +21258,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/civvie/general)
-"Pz" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "PA" = (
 /obj/machinery/door/airlock/command{
 	name = "Bridge Meeting Room";
@@ -21519,7 +21488,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "PU" = (
 /obj/structure/railing,
@@ -22402,12 +22371,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/nuke_storage)
-"Ry" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 6
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "Rz" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
@@ -22461,12 +22424,6 @@
 /obj/structure/window/reinforced/tinted/frosted,
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/captain)
-"RD" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 5
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "RE" = (
 /obj/machinery/computer/secure_data{
 	dir = 1
@@ -24050,12 +24007,6 @@
 /obj/structure/table/bench/steel,
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
-"UI" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "UJ" = (
 /obj/machinery/photocopier,
 /obj/effect/floor_decal/corner/lightgrey{
@@ -24438,12 +24389,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
-"Vv" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "Vw" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
@@ -25184,12 +25129,6 @@
 /obj/item/clothing/head/helmet/space/void/exploration/alt,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
-"WR" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/outside3)
 "WS" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/corner/blue{
@@ -37625,13 +37564,13 @@ lL
 Yn
 Yn
 nF
-De
-Vv
-Vv
-Vv
-Vv
-Vv
-mo
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
 cH
 cH
 cH
@@ -37816,18 +37755,18 @@ us
 us
 mn
 jp
-WR
-Ad
-Vv
 Ad
 Ad
-Pz
-Pz
-Pz
 Ad
 Ad
-Vv
-mo
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
 cH
 cH
 cH
@@ -38010,18 +37949,18 @@ us
 us
 mn
 jp
-RD
-Pz
-Pz
-Pz
-Ry
-cH
-cH
-cH
-RD
-Pz
 Ad
-pc
+Ad
+Ad
+Ad
+Ad
+cH
+cH
+cH
+Ad
+Ad
+Ad
+Ad
 cH
 cH
 cH
@@ -38214,8 +38153,8 @@ kr
 kr
 kr
 jp
-WR
-pc
+Ad
+Ad
 cH
 cH
 cH
@@ -38408,8 +38347,8 @@ kr
 Uw
 kr
 jp
-WR
-pc
+Ad
+Ad
 cH
 cH
 cH
@@ -38602,8 +38541,8 @@ kr
 HG
 kr
 jp
-WR
-pc
+Ad
+Ad
 cH
 cH
 cH
@@ -38796,8 +38735,8 @@ kr
 OT
 kr
 jp
-WR
-pc
+Ad
+Ad
 cH
 cH
 cH
@@ -38990,8 +38929,8 @@ kr
 Cj
 kr
 jp
-WR
-pc
+Ad
+Ad
 cH
 cH
 cH
@@ -39029,7 +38968,7 @@ us
 NG
 IA
 IA
-NG
+Zh
 cH
 cH
 WU
@@ -39184,8 +39123,8 @@ Sb
 Du
 kr
 jp
-WR
-pc
+Ad
+Ad
 cH
 cH
 cH
@@ -39223,7 +39162,7 @@ xD
 Zy
 Tp
 IA
-NG
+Zh
 cH
 cH
 WU
@@ -39378,8 +39317,8 @@ kr
 kr
 kr
 jp
-WR
-pc
+Ad
+Ad
 cH
 cH
 cH
@@ -39572,8 +39511,8 @@ Vt
 nu
 kr
 jp
-WR
-pc
+Ad
+Ad
 cH
 cH
 cH
@@ -39768,12 +39707,12 @@ Dw
 PT
 Ad
 Ad
-Vv
-Vv
-Vv
-Vv
-Vv
-mo
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
 cH
 cH
 cH
@@ -39962,17 +39901,17 @@ tZ
 od
 Ad
 Ad
-Pz
-Pz
-Pz
 Ad
 Ad
 Ad
-Vv
-Vv
-Vv
-Vv
-mo
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
 cH
 cH
 cH
@@ -40154,23 +40093,23 @@ Xx
 SS
 kr
 jp
-WR
-pc
+Ad
+Ad
 cH
 cH
 cH
-RD
-Pz
-Pz
-Pz
-Pz
 Ad
 Ad
 Ad
-Vv
-Vv
-Vv
-mo
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
 cH
 iL
 LW
@@ -40348,27 +40287,27 @@ kr
 kr
 kr
 jp
-WR
-pc
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-RD
-Pz
-Pz
-Pz
-Pz
 Ad
 Ad
-Vv
-Vv
-Vv
-UI
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Zv
 IA
 IA
 IA
@@ -40535,33 +40474,33 @@ AF
 cH
 cH
 cH
-De
-Vv
-Vv
-Vv
-Vv
-Vv
-Vv
-Ad
-Ry
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-RD
 Ad
 Ad
-Pz
-Pz
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+Ad
+Ad
+Ad
+Ad
+Ad
 cc
 mX
 IM
@@ -40725,18 +40664,18 @@ us
 us
 us
 us
-NG
-Vv
-Vv
-Vv
+Zh
 Ad
-Pz
-Pz
-Pz
-Pz
-Pz
-Pz
-Ry
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
 cH
 cH
 cH
@@ -40752,8 +40691,8 @@ cH
 cH
 cH
 cH
-WR
-pc
+Ad
+Ad
 cH
 fk
 Uu
@@ -40919,35 +40858,35 @@ us
 us
 us
 us
-NG
-Pz
-Pz
-Pz
-Ry
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-De
+Zh
 Ad
-pc
+Ad
+Ad
+Ad
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+Ad
+Ad
+Ad
 Nk
 Uu
 Uu
@@ -41139,9 +41078,9 @@ cH
 cH
 cH
 cH
-WR
 Ad
-Ry
+Ad
+Ad
 fk
 Uu
 Uu
@@ -41333,8 +41272,8 @@ cH
 cH
 cH
 cH
-WR
-pc
+Ad
+Ad
 Nk
 Uu
 Uu
@@ -41527,8 +41466,8 @@ cH
 cH
 cH
 cH
-WR
-pc
+Ad
+Ad
 Nk
 Uu
 Uu
@@ -41721,8 +41660,8 @@ cH
 cH
 cH
 cH
-WR
-pc
+Ad
+Ad
 Nk
 Uu
 Uu
@@ -41915,8 +41854,8 @@ cH
 cH
 cH
 cH
-WR
-pc
+Ad
+Ad
 Nk
 Uu
 Uu
@@ -42109,8 +42048,8 @@ cH
 cH
 cH
 cH
-WR
-pc
+Ad
+Ad
 Nk
 Uu
 Uu
@@ -42303,8 +42242,8 @@ cH
 cH
 cH
 cH
-WR
-pc
+Ad
+Ad
 Nk
 Uu
 Uu
@@ -42497,8 +42436,8 @@ cH
 cH
 cH
 cH
-WR
-pc
+Ad
+Ad
 Nk
 Uu
 Uu
@@ -42691,8 +42630,8 @@ cH
 cH
 cH
 cH
-WR
-pc
+Ad
+Ad
 Nk
 Uu
 Uu
@@ -42885,7 +42824,7 @@ cH
 cH
 cH
 cH
-WR
+Ad
 Ad
 Id
 Uu
@@ -43079,9 +43018,9 @@ cH
 cH
 cH
 cH
-RD
 Ad
-pc
+Ad
+Ad
 iL
 Uu
 Uu
@@ -43274,8 +43213,8 @@ cH
 cH
 cH
 cH
-WR
-pc
+Ad
+Ad
 Nk
 Uu
 Uu
@@ -43468,9 +43407,9 @@ cH
 cH
 cH
 cH
-WR
 Ad
-mo
+Ad
+Ad
 iL
 Uu
 Uu
@@ -43662,10 +43601,10 @@ cH
 cH
 cH
 cH
-WR
 Ad
 Ad
-Vv
+Ad
+Ad
 Hx
 SZ
 UE
@@ -43855,12 +43794,12 @@ cH
 cH
 cH
 cH
-De
 Ad
-Pz
-Pz
-Pz
-UI
+Ad
+Ad
+Ad
+Ad
+Zv
 qc
 IA
 IA
@@ -44049,8 +43988,8 @@ cH
 cH
 cH
 cH
-WR
-pc
+Ad
+Ad
 cH
 fk
 xj
@@ -44243,8 +44182,8 @@ cH
 cH
 cH
 cH
-WR
-pc
+Ad
+Ad
 Nk
 us
 us
@@ -44437,8 +44376,8 @@ cH
 cH
 cH
 cH
-WR
-pc
+Ad
+Ad
 Nk
 us
 us
@@ -44631,8 +44570,8 @@ cH
 cH
 cH
 cH
-WR
-pc
+Ad
+Ad
 Nk
 us
 us
@@ -44824,9 +44763,9 @@ cH
 cH
 cH
 cH
-De
 Ad
-pc
+Ad
+Ad
 Nk
 us
 us
@@ -45018,9 +44957,9 @@ cH
 cH
 cH
 cH
-WR
 Ad
-Ry
+Ad
+Ad
 Nk
 us
 us
@@ -45043,7 +44982,7 @@ us
 NG
 GF
 IA
-NG
+Zh
 cH
 fq
 WN
@@ -45212,8 +45151,8 @@ cH
 cH
 cH
 cH
-WR
-pc
+Ad
+Ad
 cH
 Nk
 us
@@ -45237,7 +45176,7 @@ xD
 Zy
 nU
 IA
-NG
+Zh
 cH
 fq
 fq
@@ -45406,8 +45345,8 @@ cH
 cH
 cH
 cH
-WR
-pc
+Ad
+Ad
 cH
 Nk
 us
@@ -45587,21 +45526,21 @@ cH
 cH
 Ba
 cH
-De
-Vv
-mo
-cH
-cH
-cH
-cH
-De
-Vv
-Vv
-Vv
-Vv
-Vv
 Ad
-pc
+Ad
+Ad
+cH
+cH
+cH
+cH
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
 cH
 Nk
 us
@@ -45781,21 +45720,21 @@ cH
 Nk
 CG
 EP
-Pz
 Ad
 Ad
-Vv
-Vv
-Vv
-Vv
 Ad
 Ad
-Pz
-Pz
-Pz
-Pz
-Pz
-Ry
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
 cH
 Nk
 us
@@ -45976,14 +45915,14 @@ Cb
 Ac
 TK
 jp
-RD
-Pz
-Pz
-Pz
-Pz
-Pz
-Pz
-Ry
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
+Ad
 cH
 cH
 cH
@@ -53413,7 +53352,7 @@ So
 NN
 Bw
 NN
-gv
+EW
 kH
 kH
 Vl

@@ -224,6 +224,7 @@
 	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "reinforced"
 	initial_flooring = /decl/flooring/reinforced
+	edge_blending_priority = 1
 
 /turf/simulated/floor/reinforced/airless
 	initial_gas_mix = GAS_STRING_VACUUM
