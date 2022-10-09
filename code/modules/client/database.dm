@@ -99,7 +99,7 @@
 /datum/client_dbdata/proc/UpdateLastSeen()
 	// don't interrupt
 	UNTIL(!loading)
-	qde(SSdbcore.ExecuteQuery(
+	qdel(SSdbcore.ExecuteQuery(
 		"UPDATE [format_table_name("player")] SET lastseen = Now() WHERE id = :id",
 		list(
 			"id" = player_id
