@@ -29,7 +29,7 @@
 	var/displays_id = 1
 
 	//! Rolldown Status
-	//? Rolldown, sleeve appends are _rollsuit, _rollsleeve respectively.
+	//? Rolldown, sleeve appends are _down, _sleeve respectively.
 	/// if true, we assume *all* bodytypes have rolldown states, and to use the new system.
 	var/worn_has_rolldown = FALSE
 	/// if true, we assume *all* bodytypes have rollsleeve states, and to use the new system.
@@ -111,8 +111,14 @@
 	. = ..()
 	// if it uses new rendering, don't fucking do this stupid shit
 	if(worn_state || inhand_state || !worn_default_allowed)
+		#warn ok snowflake_worn_state needs to be properly referneced too fuck
+		#warn take into account rolldown/rollsleeve
 		return
 	. += "_s" // WHY IS THIS NEEDED???
+
+/obj/item/clothing/under/base_worn_state(inhands, slot_key, bodytype)
+	#warn ugh
+	return ..()
 
 /obj/item/clothing/under/proc/update_rolldown_status()
 	var/mob/living/carbon/human/H = ishuman(loc)? loc : null

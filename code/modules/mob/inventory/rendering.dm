@@ -367,5 +367,10 @@
 /obj/item/proc/resolve_worn_state(inhands, slot_key, bodytype)
 	// PRIVATE_PROC(TRUE)
 	if(inhands)
-		return "[inhand_state || icon_state][worn_inhand_ignored? "_all" : "_[slot_key]"]"
-	return "[worn_state || icon_state][worn_slot_ignored? "_all" : "_[slot_key]"][((worn_bodytypes & (~BODYTYPE_DEFAULT)) & bodytype)? "_[bodytype_to_string(bodytype)]" : ""]"
+		return "[base_worn_state(inhands, slot_key, bodytype)][worn_inhand_ignored? "_all" : "_[slot_key]"]"
+	return "[base_worn_state(inhands, slot_key, bodytype)][worn_slot_ignored? "_all" : "_[slot_key]"][((worn_bodytypes & (~BODYTYPE_DEFAULT)) & bodytype)? "_[bodytype_to_string(bodytype)]" : ""]"
+
+/obj/item/proc/base_worn_state(inhands, slot_key, bodytype)
+	if(inhands)
+		return inhand_state || icon_state
+	return worn_state || icon_state
