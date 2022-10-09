@@ -75,6 +75,7 @@
 
 /obj/item/clothing/under/Initialize(mapload)
 	. = ..()
+	var/mob/living/carbon/human/H = loc
 	init_sensors(istype(H)? H : null)
 
 /obj/item/clothing/under/proc/init_sensors(mob/living/carbon/human/H)
@@ -106,7 +107,8 @@
 //UNIFORM: Always appends "_s" to iconstate, stupidly.
 /obj/item/clothing/under/resolve_legacy_state(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
 	if(snowflake_worn_state && (slot_meta.id == SLOT_ID_UNIFORM))
-		return snowflake_worn_state + "_s"
+		return snowflake_worn_state + + "_s"
+		#warn take into account _d for down, _r for sleeve
 	return ..()
 
 /obj/item/clothing/under/base_worn_state(inhands, slot_key, bodytype)
@@ -161,10 +163,6 @@
 		if(("[snowflake_worn_state]_d_s" in icon_states(INV_W_UNIFORM_DEF_ICON)) || ("[snowflake_worn_state]_s" in icon_states(rolled_down_icon)) || ("[snowflake_worn_state]_d_s" in icon_states(icon_override)))
 			rolled_down = 0
 
-	if(rolled_down == -1)
-		verbs -= /obj/item/clothing/under/verb/rollsuit
-	if(rolled_sleeves == -1)
-		verbs -= /obj/item/clothing/under/verb/rollsleeves
 */
 
 /obj/item/clothing/under/proc/update_rolldown_status()
@@ -223,67 +221,58 @@
 	set name = "Roll Jumpsuit"
 	set category = "Object"
 	set src in usr
-	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
 
-	#warn better detector
-	update_rolldown_status()
-	if(rolled_down == -1)
-		to_chat(usr, "<span class='notice'>You cannot roll down [src]!</span>")
-		return
-	if((rolled_sleeves == 1) && !(rolled_down))
-		rolled_sleeves = 0
+	var/mob/user = usr
+	// todo: mobility flags
+	if(!istype(user, /mob/living)) return
+	if(user.stat) return
 
-	rolled_down = !rolled_down
-	if(rolled_down)
-		body_parts_covered = initial(body_parts_covered)
-		body_parts_covered &= ~(UPPER_TORSO|ARMS)
-		if("[snowflake_worn_state]_s" in icon_states(rolled_down_icon))
-			icon_override = rolled_down_icon
-			item_state_slots[SLOT_ID_UNIFORM] = "[snowflake_worn_state]"
-		else
-			item_state_slots[SLOT_ID_UNIFORM] = "[snowflake_worn_state]_d"
+	update_rolldown()
 
-		to_chat(usr, "<span class='notice'>You roll your [src].</span>")
-	else
-		body_parts_covered = initial(body_parts_covered)
-		if(icon_override == rolled_down_icon)
-			icon_override = initial(icon_override)
-		item_state_slots[SLOT_ID_UNIFORM] = "[snowflake_worn_state]"
-		to_chat(usr, "<span class='notice'>You unroll your [src].</span>")
+	switch(worn_rolled_down)
+		if(UNIFORM_ROLL_NULLED)
+			to_chat(user, SPAN_NOTICE("[src] cannot be rolled down."))
+			return
+		if(UNIFORM_ROLL_FALSE)
+			worn_rolled_down = UNIFORM_ROLL_TRUE
+			// todo: update_bodypart_coverage() for clothing damage
+			body_parts_covered &= ~(UPPER_TORSO | ARMS)
+			to_chat(user, SPAN_NOTICE("You roll [src] down."))
+		if(UNIFORM_ROLL_TRUE)
+			worn_rolled_down = UNIFORM_ROLL_FALSE
+			// todo: update_bodypart_coverage() for clothing damage
+			body_parts_covered = initial(body_parts_covered)
+			to_chat(user, SPAN_NOTICE("You roll [src] up."))
+
 	update_worn_icon()
 
 /obj/item/clothing/under/verb/rollsleeves()
 	set name = "Roll Up Sleeves"
 	set category = "Object"
 	set src in usr
-	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
 
-	#warn better detector
-	update_rollsleeves_status()
-	if(rolled_sleeves == -1)
-		to_chat(usr, "<span class='notice'>You cannot roll up your [src]'s sleeves!</span>")
-		return
-	if(rolled_down == 1)
-		to_chat(usr, "<span class='notice'>You must roll up your [src] first!</span>")
-		return
+	var/mob/user = usr
+	// todo: mobility flags
+	if(!istype(user, /mob/living)) return
+	if(user.stat) return
 
-	rolled_sleeves = !rolled_sleeves
-	if(rolled_sleeves)
-		body_parts_covered &= ~(ARMS)
-		if("[snowflake_worn_state]_s" in icon_states(rolled_down_sleeves_icon))
-			icon_override = rolled_down_sleeves_icon
-			item_state_slots[SLOT_ID_UNIFORM] = "[snowflake_worn_state]"
-		else
-			item_state_slots[SLOT_ID_UNIFORM] = "[snowflake_worn_state]_r"
-		to_chat(usr, "<span class='notice'>You roll up your [src]'s sleeves.</span>")
-	else
-		body_parts_covered = initial(body_parts_covered)
-		if(icon_override == rolled_down_sleeves_icon)
-			icon_override = initial(icon_override)
-		item_state_slots[SLOT_ID_UNIFORM] = "[snowflake_worn_state]"
-		to_chat(usr, "<span class='notice'>You roll down your [src]'s sleeves.</span>")
+	update_rollsleeve()
+
+	switch(worn_rolled_sleeves)
+		if(UNIFORM_ROLL_NULLED)
+			to_chat(user, SPAN_NOTICE("[src] cannot have its sleeves rolled."))
+			return
+		if(UNIFORM_ROLL_FALSE)
+			worn_rolled_sleeves = UNIFORM_ROLL_TRUE
+			// todo: update_bodypart_coverage() for clothing damage
+			body_parts_covered &= ~(ARMS)
+			to_chat(user, SPAN_NOTICE("You roll [src]'s sleeves up."))
+		if(UNIFORM_ROLL_TRUE)
+			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
+			// todo: update_bodypart_coverage() for clothing damage
+			body_parts_covered = initial(body_parts_covered)
+			to_chat(user, SPAN_NOTICE("You roll [src]'s sleeves back down."))
+
 	update_worn_icon()
 
 //! Examine
