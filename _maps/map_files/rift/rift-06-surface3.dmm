@@ -22444,6 +22444,12 @@
 /obj/structure/window/reinforced/tinted/frosted,
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/captain)
+"RD" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 1
+	},
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "RE" = (
 /obj/machinery/computer/secure_data{
 	dir = 1
@@ -25149,6 +25155,12 @@
 /obj/item/clothing/head/helmet/space/void/exploration/alt,
 /turf/simulated/floor/tiled,
 /area/exploration/explorer_prep)
+"WR" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 5
+	},
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "WS" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/corner/blue{
@@ -36887,13 +36899,13 @@ CA
 CA
 JO
 Tq
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+do
+do
+do
+do
+do
+do
+do
 Oi
 Oi
 Oi
@@ -37067,7 +37079,7 @@ cH
 cH
 cH
 cH
-cH
+QK
 Zv
 CA
 CA
@@ -37081,14 +37093,14 @@ UN
 CA
 CA
 Zh
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-Oi
+QK
+QK
+QK
+QK
+QK
+QK
+QK
+WR
 Oi
 Oi
 Oi
@@ -37281,9 +37293,9 @@ aN
 aN
 bx
 bx
-cH
-cH
-Oi
+QK
+QK
+RD
 Oi
 Oi
 Oi
