@@ -8,6 +8,7 @@
 
 /datum/lore/character_background/faction/nanotrasen
 	name = "Nanotrasen"
+	id = "nanotrasen"
 	desc = "Formally established in 2274, NanoTrasen is one of the foremost research and development companies in the galaxy. \
 	Originally focused on logistics and consumer product manufacturing, their swift move into the field of Phoron has lead to \
 	them becoming the foremost experts on the substance and its uses. In the modern day, NanoTrasen prides \
@@ -25,6 +26,7 @@
 
 /datum/lore/character_background/faction/aether
 	name = "Aether Atmospherics and Recycling"
+	id = "aether"
 	desc = "Aether Atmospherics and Recycling is the prime maintainer and provider of atmospherics systems to both the many ships that navigate the \
 	vast expanses of space, and the life support on current and future Human colonies. The byproducts from the filtration of atmospheres across the galaxy \
 	are then resold for a variety of uses to those willing to buy. With the nature of their services, most work they do is contracted for the construction of \
@@ -46,6 +48,7 @@
 
 /datum/lore/character_background/faction/centauri
 	name = "Centauri Provisions"
+	id = "centauri"
 	desc = "Headquartered in Alpha Centauri, Centauri Provisions made a name in the snack-food industry primarily by being the first to focus on colonial holdings. \
 	The various brands of Centauri snackfoods are now household names, from SkrellSnax and Space Mountain Wind to the ubiquitous and allegedly edible Bread Tube. \
 	They are well known for targeting as many species as possible with each brand - which, some will argue, is due to some of those brands being rather bland \
@@ -68,6 +71,7 @@
 
 /datum/lore/character_background/faction/freetradeunion
 	name = "Free Trade Union"
+	id = "ftu"
 	desc = "The Free Trade Union is different from other tran-stellars in that they are not just a company, but also a large conglomerate \
 	of various traders and merchants from across the galaxy. They control a sizable fleet of vessels of various classes, all of which maintain autonomy \
 	from the centralized FTU to engage in free trade. They also host a fleet of combat vessels responsible for defending traders when necessary. They \
@@ -104,6 +108,7 @@
 
 /datum/lore/character_background/faction/gilthari
 	name = "Gilthari Exports"
+	id = "gilthari"
 	desc = "Gilthari started as Sol's premier supplier of luxury goods, specializing in extracting money from the rich and successful that weren't already shareholders. \
 	Their largest holdings are in gambling, but they maintain subsidiaries in everything from VR equipment to luxury watches. Their holdings in \
 	mass media are a smaller but still important part of their empire. Gilthari is known for treating its positronic employees very well, sparking a number of \
@@ -129,6 +134,7 @@
 
 /datum/lore/character_background/faction/hephaestus
 	name = "Hephaestus Industries"
+	id = "hephaestus"
 	desc = "Hephaestus Industries is the largest supplier of arms, ammunition, and small millitary vehicles on the Frontier. \
 	Hephaestus products have a reputation for reliability, and the corporation itself has a notable trade and research pact \
 	with NanoTrasen. They otherwise enforce pacts and trade arrangements with the help of a fairly large asset-protection contingent which \
@@ -149,6 +155,7 @@
 
 /datum/lore/character_background/faction/oculum
 	name = "Oculum News Network"
+	id = "oculum"
 	desc = "Oculum owns approximately 30% of Frontier-wide news networks, including microblogging aggregate sites, network and comedy news, and even \
 	old-fashioned newspapers. Staunchly apolitical, they specialize in delivering the most popular news available - which means telling people what they \
 	already want to hear. Oculum is a specialist in branding, and most people don't know that the reactionary Daedalus Dispatch newsletter and the radically \
@@ -164,6 +171,7 @@
 
 /datum/lore/character_background/faction/veymed
 	name = "Vey-Med"
+	id = "veymed"
 	desc = "Vey-Med is a medical supply and research company notable for being largely owned and opperated by Skrell. \
 	Despite their alien origin, Vey-Med has obtained market dominance on the Frontier due to the quality and reliability \
 	of their medical equipment - from surgical tools and industrial medical devices to the Oddyseus trauma response mecha \
@@ -188,6 +196,7 @@
 
 /datum/lore/character_background/faction/wardtakahashi
 	name = "Ward-Takahashi GMB"
+	id = "wardtakashi"
 	desc = "Ward-Takahashi focuses on the sale of small consumer electronics, with its computers, communicators, \
 	and mid-class automobiles a fixture of many households. Less famously, Ward-Takahashi also supplies most \
 	of the AI cores on which vital control systems are mounted, and it is this branch of their industry that has \
@@ -210,6 +219,7 @@
 
 /datum/lore/character_background/faction/zenghu
 	name = "Zeng-Hu Pharmaceuticals"
+	id = "zenghu"
 	desc = "Zeng-Hu is an old corporation, based close to Confederation space. Until the discovery of Phoron, Zeng-Hu maintained a stranglehold \
 	on the market for medications, and many household names are patentted by Zeng-Hu-- Bicaridine, Dylovene, Tricordrizine, \
 	and Dexalin all came from a Zeng-Hu medical laboratory. Zeng-Hu's fortunes have been in decline as Nanotrasen's near monopoly \

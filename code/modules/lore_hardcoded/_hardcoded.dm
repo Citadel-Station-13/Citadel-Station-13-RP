@@ -6,6 +6,8 @@
 	abstract_type = /datum/lore/character_background
 	/// name
 	var/name = "Unknown"
+	/// id - **must be unique on subtypes
+	var/id
 	/// description/what the player sees
 	var/desc = "What is this?"
 	/// subspecies are counted as the master species
