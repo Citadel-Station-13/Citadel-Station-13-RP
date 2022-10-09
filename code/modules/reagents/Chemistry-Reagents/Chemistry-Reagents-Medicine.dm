@@ -1607,7 +1607,7 @@
 	taste_description = "sour metal"
 	taste_mult = 2
 	reagent_state = REAGENT_LIQUID
-	metabolism = REM * 0.1
+	metabolism = REM * 3
 	color = "#52ca22"
 	scannable = 1
 	overdose = 20
@@ -1630,6 +1630,7 @@
 	var/mob/living/carbon/human/H = S
 	if(S.is_cyberpsycho && H.capacity == 100)
 		CRS.adjusted = 0
+		CRS.update_capacity()
 
 /datum/reagent/neuratrextate/overdose(var/datum/species/S)
 	..()
