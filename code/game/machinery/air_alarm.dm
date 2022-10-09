@@ -81,7 +81,7 @@
 	/// Keys are things like temperature and certain gasses. Values are lists, which contain, in order:
 	/// red warning minimum value, yellow warning minimum value, yellow warning maximum value, red warning maximum value
 	var/list/TLV = list()
-	var/list/trace_gas = list("nitrous_oxide", "volatile_fuel") //list of other gases that this air alarm is able to detect
+	var/list/trace_gas = list(GAS_ID_NITROUS_OXIDE, GAS_ID_VOLATILE_FUEL) //list of other gases that this air alarm is able to detect
 
 	var/danger_level = 0
 	var/pressure_dangerlevel = 0

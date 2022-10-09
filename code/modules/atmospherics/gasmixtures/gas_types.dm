@@ -186,30 +186,30 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	var/gas_flags
 
 	var/gas_reagent_id //What is the ID of the reagent we want to apply
-	var/gas_reagent_amount = 0//How much of the reagent is applied 
+	var/gas_reagent_amount = 0//How much of the reagent is applied
 	//For a gas that makes up 21% of the atmos you need to be above 1.39, for it to instill any reagents, for lower percentages the number needs to be higher,and viceversa
 
 /datum/gas/oxygen
-	id = "o2"
+	id = GAS_ID_OXYGEN
 	name = "Oxygen"
 	specific_heat = 20
 	molar_mass = 0.032
 	gas_flags = GAS_FLAG_OXIDIZER
 
 /datum/gas/nitrogen
-	id = "n2"
+	id = GAS_ID_NITROGEN
 	name = "Nitrogen"
 	specific_heat = 20
 	molar_mass = 0.028
 
 /datum/gas/carbon_dioxide
-	id = "co2"
+	id = GAS_ID_CARBON_DIOXIDE
 	name = "Carbon Dioxide"
 	specific_heat = 30
 	molar_mass = 0.044
 
 /datum/gas/phoron
-	id = "phoron"
+	id = GAS_ID_PHORON
 	name = "Phoron"
 	//Note that this has a significant impact on TTV yield.
 	//Because it is so high, any leftover phoron soaks up a lot of heat and drops the yield pressure.
@@ -227,7 +227,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	gas_flags = GAS_FLAG_FUEL | GAS_FLAG_FUSION_FUEL | GAS_FLAG_CONTAMINANT
 
 /datum/gas/volatile_fuel
-	id = "volatile_fuel"
+	id = GAS_ID_VOLATILE_FUEL
 	name = "Volatile Fuel"
 	specific_heat = 253	// J/(mol*K)	C8H18 gasoline. Isobaric, but good enough.
 	molar_mass = 0.114	// kg/mol. 		same.
@@ -235,7 +235,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	gas_flags = GAS_FLAG_FUEL
 
 /datum/gas/nitrous_oxide
-	id = "n2o"
+	id = GAS_ID_NITROUS_OXIDE
 	name = "Nitrous Oxide"
 	specific_heat = 40
 	molar_mass = 0.044
@@ -248,7 +248,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 //The following is partially stolen from Nebula
 //I am not rewriting our handling of air for this, at least for now.
 /datum/gas/helium
-	id = "helium"
+	id = GAS_ID_HELIUM
 	name = "Helium"
 	specific_heat = 80
 	molar_mass = 0.004
@@ -256,7 +256,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	gas_flags = GAS_FLAG_FUSION_FUEL
 
 /datum/gas/carbon_monoxide
-	id = "carbon monoxide"
+	id = GAS_ID_CARBON_MONOXIDE
 	name = "Carbon Monoxide"
 	//lore_text = "A highly poisonous gas."
 	specific_heat = 30
@@ -268,7 +268,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	//metabolism = 0.05 // As with helium.
 
 /datum/gas/methyl_bromide
-	id = "methyl bromide"
+	id = GAS_ID_METHYL_BROMIDE
 	name = "Methyl Bromide"
 	//lore_text = "A once-popular fumigant and weedkiller."
 	specific_heat = 42.59
@@ -282,7 +282,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	value = 0.25*/
 
 /datum/gas/nitrodioxide
-	id = "nitrogen dioxide"
+	id = GAS_ID_NITROGEN_DIOXIDE
 	name = "Nitrogen Dioxide"
 	//color = "#ca6409"
 	specific_heat = 37
@@ -292,7 +292,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	//gas_symbol = "NO2"
 
 /datum/gas/nitricoxide
-	id = "nitric oxide"
+	id = GAS_ID_NITRIC_OXIDE
 	name = "Nitric Oxide"
 	specific_heat = 10
 	molar_mass = 0.030
@@ -301,7 +301,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	//gas_symbol = "NO"
 
 /datum/gas/methane
-	id = "methane"
+	id = GAS_ID_METHANE
 	name = "Methane"
 	specific_heat = 30
 	molar_mass = 0.016
@@ -310,7 +310,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	//gas_symbol = "CH4"
 
 /datum/gas/argon
-	id = "argon"
+	id = GAS_ID_ARGON
 	name = "Argon"
 	//lore_text = "Just when you need it, all of your supplies argon."
 	specific_heat = 10
@@ -321,7 +321,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 
 // If narcosis is ever simulated, krypton has a narcotic potency seven times greater than regular airmix.
 /datum/gas/krypton
-	id = "krypton"
+	id = GAS_ID_KRYPTON
 	name = "Krypton"
 	specific_heat = 5
 	molar_mass = 0.036
@@ -330,7 +330,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	//value = 0.25
 
 /datum/gas/neon
-	id = "neon"
+	id = GAS_ID_NEON
 	name = "Neon"
 	specific_heat = 20
 	molar_mass = 0.01
@@ -339,7 +339,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	//value = 0.25
 
 /datum/gas/ammonia
-	id = "Ammonia"
+	id = GAS_ID_AMMONIA
 	name = "ammonia"
 	specific_heat = 20
 	molar_mass = 0.017
@@ -354,7 +354,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	//overdose = 5
 
 /datum/gas/xenon
-	id = "Xenon"
+	id = GAS_ID_XENON
 	name = "xenon"
 	specific_heat = 3
 	molar_mass = 0.054
@@ -363,7 +363,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	//value = 0.25
 
 /datum/gas/chlorine
-	id = "chlorine"
+	id = GAS_ID_CHLORINE
 	name = "Chlorine"
 	//color = "#c5f72d"
 	//gas_overlay_limit = 0.5
@@ -379,13 +379,13 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	toxicity = 15*/
 	gas_overlay = "chlorine"
 	moles_visible = 1
-	
+
 	gas_reagent_id = "sacid"
 	gas_reagent_amount = 10
 
 
 /datum/gas/sulfur_dioxide
-	id = "sulfur dioxide"
+	id = GAS_ID_SULFUR_DIOXIDE
 	name = "Sulfur Dioxide"
 	specific_heat = 30
 	molar_mass = 0.044
@@ -397,7 +397,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	)*/
 
 /datum/gas/hydrogen
-	id = "hydrogen"
+	id = GAS_ID_HYDROGEN
 	name = "Hydrogen"
 	//lore_text = "A colorless, flammable gas."
 	//flags = MAT_FLAG_FUSION_FUEL
@@ -415,7 +415,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	value = 0.4*/
 
 /datum/gas/hydrogen/tritium
-	id = "tritium"
+	id = GAS_ID_TRITIUM
 	name = "Tritium"
 	/*lore_text = "A radioactive isotope of hydrogen. Useful as a fusion reactor fuel material."
 	mechanics_text = "Tritium is useable as a fuel in some forms of portable generator. It can also be converted into a fuel rod suitable for a R-UST fusion plant injector by using a fuel compressor. It fuses hotter than deuterium but is correspondingly more unstable."
@@ -426,7 +426,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	gas_symbol = "T"*/
 
 /datum/gas/hydrogen/deuterium
-	id = "Deuterium"
+	id = GAS_ID_DEUTERIUM
 	name = "Deuterium"
 	/*lore_text = "One of the two stable isotopes of hydrogen; also known as heavy hydrogen. Useful as a chemically synthesised fusion reactor fuel material."
 	mechanics_text = "Deuterium can be converted into a fuel rod suitable for a R-UST fusion plant injector by using a fuel compressor. It is the most 'basic' fusion fuel."
@@ -448,7 +448,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 
 //Special gas type that are very powerful and shouldnt be avaiable in large portions
 /datum/gas/vimur
-	id = "vimur"
+	id = GAS_ID_VIMUR
 	name = "Vimur"
 	specific_heat = 500	// J/(mol*K) //250% the heat capacity of phoron
 	molar_mass = 0.054 // Standard Mass of xenon
