@@ -13,6 +13,17 @@
 /datum/config_entry/flag/nightshifts_enabled
 	default = TRUE
 
+/// Forbids players from joining if they have no set General flavor text.
+/datum/config_entry/flag/require_flavor
+	default = FALSE
+
+/datum/config_entry/flag/emojis
+	default = TRUE
+
+
+
+//! ### ALERT LEVELS ### !//
+
 /datum/config_entry/string/alert_desc_green
 	default = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
 
@@ -49,22 +60,20 @@
 /datum/config_entry/string/alert_desc_delta
 	default = "The station is under immediate threat of imminent destruction! All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill."
 
-/datum/config_entry/flag/emojis
-	default = TRUE
 
+
+//! ### PTO ### !//
 /// Controls if the 'time off' system is used for determining if players can play 'Off-Duty' jobs (requires SQL).
 /datum/config_entry/flag/time_off
+	default = TRUE
 
 /// If 'time off' system is on, controls whether or not players can switch on/off duty midround using timeclocks.
 /datum/config_entry/flag/pto_job_change
+	default = TRUE
 
 /datum/config_entry/number/pto_cap
 	default = 100
 	min_val = 0
-
-/// Forbids players from joining if they have no set General flavor text.
-/datum/config_entry/flag/require_flavor
-	default = FALSE
 
 
 
