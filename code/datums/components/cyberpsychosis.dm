@@ -13,6 +13,8 @@ The primary interest at the moment is getting this system functional so it can b
 */
 
 /datum/component/cyberpsychosis
+	var/capacity = 100
+	var/cybernetics_count = 0
 
 /datum/component/cyberpsychosis/Initialize(radius)
 	if(!istype(parent))
@@ -20,29 +22,29 @@ The primary interest at the moment is getting this system functional so it can b
 	else
 		START_PROCESSING(SSobj, src)
 
-/datum/component/cyberpsychosis/process()
-	update_capacity()
-	symptoms()
+/datum/component/cyberpsychosis/process(times_fired)
+	if(!(times_fired % 60))
+		update_cybernetics_count()
+		update_capacity()
+		symptoms()
 
-//This proc will tabulate the number of prosthetic limbs, organs, augments, and implants into a number, and subtract that from var/capacity, which is set to 100 by default.
-/datum/component/cyberpsychosis/proc/update_capacity(var/mob/living/carbon/human/H)
-	if(ishuman(H))
-		for(parent)
-			H.capacity -= H.robolimb_count*10-(H.robolimb_count*10-20)
-			continue
-		if(H.internal_organs.len)
-			for(var/obj/item/organ/O in H.internal_organs)
-				if(O.robotic >= ORGAN_ROBOT)
-					H.capacity -= 30
-			return
-	/*
-	H.capacity -= H.robolimb_count*10-max(0,H.robolimb_count*10-30)
-	*/
+//This proc will tabulate the number of prosthetic limbs, organs, augments, and implants into a number.
+/datum/component/cyberpsychosis/proc/update_cybernetics_count()
+	. = 0
+	var/mob/living/carbon/human/H = parent
+	for(var/obj/item/organ/O in H.organs)
+		if(O.robotic < ORGAN_ROBOT)
+			cybernetics_count++
+
+//This subtracts the above sum from var/capacity, which is set to 100 by default.
+/datum/component/cyberpsychosis/proc/update_capacity()
+	if(cybernetics_count >= 1)
+		capacity -= min(100, (cybernetics_count*10))
 
 //This proc will provide different symptoms, with the frequency inversely related to the value of capacity.
 //This is basically the one that all the above checkboxes will address.
-/datum/component/cyberpsychosis/proc/symptoms(var/mob/living/carbon/human/H)
-	if(H.capacity >= 90)
+/datum/component/cyberpsychosis/proc/symptoms()
+	if(capacity >= 90)
 		return
 
 /datum/component/cyberpsychosis/Destroy()
