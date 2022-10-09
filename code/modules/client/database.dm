@@ -10,12 +10,18 @@
 	var/loaded = FALSE
 	/// loading?
 	var/loading = FALSE
+	/// saving?
+	var/saving = FALSE
+	// todo: this lock system sucks ass
+	// todo: it should realistically be able to queue if something modifies us a lot
 
 	//! loaded data
 	/// player id
 	var/player_id
 	/// player flags
 	var/player_flags = NONE
+	/// player age
+	var/player_age
 
 /datum/client_dbdata/New(ckey)
 	src.ckey = ckey
@@ -23,6 +29,9 @@
 		return
 	Load()
 
+/**
+ * async
+ */
 /datum/client_dbdata/proc/Load()
 	set waitfor = FALSE
 	// allow admin proccalls - there's no args here.
@@ -44,20 +53,62 @@
 	loading = FALSE
 
 /datum/client_dbdata/proc/_Load()
+	var/datum/db_query/lookup = SSdbcore.ExecuteQuery(
+		"SELECT id, flags"
+	)
+	#warn finish, including player_age and auto inserts
 
-/datum/client_dbdata/proc/SaveFlags()
+/**
+ * async
+ */
+/datum/client_dbdata/proc/Save()
 	set waitfor = FALSE
+	// why are we in here if we're write locked?
+	if(saving)
+		CRASH("write locked")
 	// don't fuck with things if we're read-locked
 	UNTIL(!loading)
+	// check again
+	if(saving)
+		CRASH("write locked")
 	// allow admin proccalls - there's no args here.
 	var/old_usr = usr
 	usr = null
 	// don't lock; if something is spamming our flags they probably shouldn't be
-	_SaveFlags()
+	saving = TRUE
+	_Save()
+	saving = FALSE
 	usr = old_usr
 
-/datum/client_dbdata/proc/_SaveFlags()
+/datum/client_dbdata/proc/_Save()
+	qdel(SSdbcore.ExecuteQuery(
+		"UPDATE [format_table_name("player")] SET flags = :flags WHERE id = :id",
+		list(
+			"flags" = player_flags,
+			"id" = player_id
+		)
+	))
 
+/**
+ * async
+ */
+/datum/client_dbdata/proc/LogConnect()
+	set waitfor = FALSE
+	UpdateLastSeen()
 
+/datum/client_dbdata/proc/UpdateLastSeen()
+	// don't interrupt
+	UNTIL(!loading)
+	qde(SSdbcore.ExecuteQuery(
+		"UPDATE [format_table_name("player")] SET lastseen = Now() WHERE id = :id",
+		list(
+			"id" = player_id
+		)
+	))
 
-#warn finish this file
+/**
+ * sync
+ */
+/datum/client_dbdata/proc/player_age()
+	UNTIL(!loading)
+	return player_age

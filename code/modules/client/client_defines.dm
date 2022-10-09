@@ -36,8 +36,12 @@
 	parent_type = /datum
 
 	//! Intrinsics
+	/// did New() finish?
+	var/initialized = FALSE
 	/// Persistent round-by-round data holder
 	var/datum/client_data/persistent
+	/// Database data
+	var/datum/client_dbdata/database
 
 	//! Rendering
 	/// Click catcher

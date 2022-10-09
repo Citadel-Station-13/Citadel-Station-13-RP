@@ -98,6 +98,16 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%player_lookup` (
   UNIQUE KEY `ckey` (`ckey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+---              Primary player table               ---
+--- Allows for one-to-many player-ckey association. ---
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%player` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `flags` int(24) NOT NULL DEFAULT 0,
+  `firstseen` datetime NOT NULL DEFAULT Now(),
+  `lastseen` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%poll_option` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pollid` int(11) NOT NULL,

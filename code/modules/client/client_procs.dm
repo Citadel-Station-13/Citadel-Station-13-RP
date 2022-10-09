@@ -170,6 +170,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	// resolve persistent data
 	persistent = resolve_client_data(ckey)
+	// resolve database data
+	database = new(ckey)
+	database.LogConnect()
 
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
@@ -397,7 +400,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		if(isnum(account_age) && account_age <= 2)
 			log_and_message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([account_age] days).")
 
-	fully_created = TRUE
+	initialized = TRUE
 
 	//////////////
 	//DISCONNECT//
@@ -414,6 +417,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	log_access("Logout: [key_name(src)]")
 	GLOB.ahelp_tickets.ClientLogout(src)
 	persistent = null
+	database = null
 	prefs = null
 	SSserver_maint.UpdateHubStatus()
 	if(holder)
@@ -459,25 +463,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 */
 
 // Returns null if no DB connection can be established, or -1 if the requested key was not found in the database
-
-/proc/get_player_age(key)
-	if(!SSdbcore.Connect())
-		return null
-
-	var/sql_ckey = sql_sanitize_text(ckey(key))
-
-	var/datum/db_query/query = SSdbcore.RunQuery(
-		"SELECT datediff(Now(), firstseen) as age FROM [format_table_name("player_lookup")] WHERE ckey = :ckey",
-		list(
-			"ckey" = sql_ckey
-		)
-	)
-
-	if(query.NextRow())
-		return text2num(query.item[1])
-	else
-		return -1
-
 
 /client/proc/log_client_to_db()
 
