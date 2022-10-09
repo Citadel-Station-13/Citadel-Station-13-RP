@@ -1,20 +1,3 @@
-#### GENERAL ####
-
-## Comment out to disable holidays (you monster)
-ALLOW_HOLIDAYS
-
-### Engine submap probabilities
-## Supermatter
-ENGINE_SUBMAP EngineSubmap_SM 40
-## R-UST Fusion
-ENGINE_SUBMAP EngineSubmap_RUST 40
-## Tesla
-ENGINE_SUBMAP EngineSubmap_Tesla 20
-## Singulo
-ENGINE_SUBMAP EngineSubmap_Singulo 20
-
-
-
 #### ALERT LEVELS ####
 ALERT_DESC_GREEN All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced.
 
@@ -37,10 +20,40 @@ ALERT_DESC_DELTA The station is under immediate threat of imminent destruction! 
 
 
 
-#### PLAYER CONFIGS ####
+#### FETISH CONTENT ####
 
-## Forbids players from joining if they have no set General flavor text
-#REQUIRE_FLAVOR
+## If the important_items survive digestion.
+ITEMS_SURVIVE_DIGESTION
+
+
+
+#### GENERAL ####
+
+## Comment out to disable holidays (you monster)
+ALLOW_HOLIDAYS
+
+### Engine submap probabilities
+## Supermatter
+ENGINE_SUBMAP EngineSubmap_SM 40
+## R-UST Fusion
+ENGINE_SUBMAP EngineSubmap_RUST 40
+## Tesla
+ENGINE_SUBMAP EngineSubmap_Tesla 20
+## Singulo
+ENGINE_SUBMAP EngineSubmap_Singulo 20
+
+
+
+#### MISC ####
+
+## Config options which, of course, don't fit into previous categories.
+
+
+## Whether or not humans show an area message when they die.
+SHOW_HUMAN_DEATH_MESSAGE
+
+## Remove the # in front of this config option to have loyalty implants spawn by default on your server.
+#USE_LOYALTY_IMPLANTS
 
 
 
@@ -70,16 +83,10 @@ FOOTSTEP_VOLUME 60
 
 
 
-#### MISC ####
+#### PLAYER CONFIGS ####
 
-## Config options which, of course, don't fit into previous categories.
-
-
-## Whether or not humans show an area message when they die.
-SHOW_HUMAN_DEATH_MESSAGE
-
-## Remove the # in front of this config option to have loyalty implants spawn by default on your server.
-#USE_LOYALTY_IMPLANTS
+## Forbids players from joining if they have no set General flavor text
+#REQUIRE_FLAVOR
 
 
 

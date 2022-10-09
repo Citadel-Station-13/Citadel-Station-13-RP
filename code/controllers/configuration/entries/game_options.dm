@@ -1,27 +1,3 @@
-/// Set to FALSE to disable holidays (you monster)
-/datum/config_entry/flag/allow_holidays
-	default = TRUE
-
-/datum/config_entry/keyed_list/engine_submap
-	key_mode = KEY_MODE_TEXT
-	value_mode = VALUE_MODE_NUM
-	lowercase = TRUE
-
-/datum/config_entry/number/starlight
-	default = 2
-
-/datum/config_entry/flag/nightshifts_enabled
-	default = TRUE
-
-/// Forbids players from joining if they have no set General flavor text.
-/datum/config_entry/flag/require_flavor
-	default = FALSE
-
-/datum/config_entry/flag/emojis
-	default = TRUE
-
-
-
 //! ### ALERT LEVELS ### !//
 
 /datum/config_entry/string/alert_desc_green
@@ -62,18 +38,46 @@
 
 
 
-//! ### PTO ### !//
-/// Controls if the 'time off' system is used for determining if players can play 'Off-Duty' jobs (requires SQL).
-/datum/config_entry/flag/time_off
+//! ### FETISH CONTENT ### !//
+
+/// If the important_items survive digestion.
+/datum/config_entry/flag/items_survive_digestion
 	default = TRUE
 
-/// If 'time off' system is on, controls whether or not players can switch on/off duty midround using timeclocks.
-/datum/config_entry/flag/pto_job_change
+
+
+//! ### GENERAL ### !//
+
+/// Set to FALSE to disable holidays (you monster)
+/datum/config_entry/flag/allow_holidays
 	default = TRUE
 
-/datum/config_entry/number/pto_cap
-	default = 100
-	min_val = 0
+/datum/config_entry/keyed_list/engine_submap
+	key_mode = KEY_MODE_TEXT
+	value_mode = VALUE_MODE_NUM
+	lowercase = TRUE
+
+/datum/config_entry/number/starlight
+	default = 2
+
+/datum/config_entry/flag/nightshifts_enabled
+	default = TRUE
+
+/datum/config_entry/flag/emojis
+	default = TRUE
+
+
+
+//! ### MISC ### !//
+//? Config options which, of course, don't fit into previous categories.
+
+/// Whether or not humans show an area message when they die.
+/datum/config_entry/flag/show_human_death_message
+	default = TRUE
+
+/// Enable loyalty implants to spawn on your server.
+/datum/config_entry/flag/use_loyalty_implants
+	default = FALSE
 
 
 
@@ -119,21 +123,22 @@
 
 
 
-//! ### FETISH CONTENT ### !//
-
-/// If the important_items survive digestion.
-/datum/config_entry/flag/items_survive_digestion
+//! ## PLAYER CONFIGS ## !//
+/// Forbids players from joining if they have no set General flavor text.
+/datum/config_entry/flag/require_flavor
 	default = FALSE
 
 
 
-//! ### MISC ### !//
-//? Config options which, of course, don't fit into previous categories.
-
-/// Whether or not humans show an area message when they die.
-/datum/config_entry/flag/show_human_death_message
+//! ### PTO ### !//
+/// Controls if the 'time off' system is used for determining if players can play 'Off-Duty' jobs (requires SQL).
+/datum/config_entry/flag/time_off
 	default = TRUE
 
-/// Enable loyalty implants to spawn on your server.
-/datum/config_entry/flag/use_loyalty_implants
-	default = FALSE
+/// If 'time off' system is on, controls whether or not players can switch on/off duty midround using timeclocks.
+/datum/config_entry/flag/pto_job_change
+	default = TRUE
+
+/datum/config_entry/number/pto_cap
+	default = 100
+	min_val = 0
