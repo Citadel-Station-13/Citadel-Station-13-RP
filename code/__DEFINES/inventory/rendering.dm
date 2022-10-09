@@ -12,6 +12,15 @@
 /// don't render in inhands; render_additional still used, others aren't
 #define WORN_RENDER_INHAND_NO_RENDER (1<<5)
 
+DEFINE_BITFIELD(worn_render_flags, list(
+	BITFIELD(WORN_RENDER_SLOT_ONE_FOR_ALL),
+	BITFIELD(WORN_RENDER_INHAND_ONE_FOR_ALL),
+	BITFIELD(WORN_RENDER_SLOT_ALLOW_DEFAULT),
+	BITFIELD(WORN_RENDER_INHAND_ALLOW_DEFAULT),
+	BITFIELD(WORN_RENDER_SLOT_NO_RENDER),
+	BITFIELD(WORN_RENDER_INHAND_NO_RENDER),
+))
+
 //! list indices for resolve_worn_assets
 //? the fact this proc is necessary is bad, so, we'll remove it later for something better.
 #define WORN_DATA_ICON 1

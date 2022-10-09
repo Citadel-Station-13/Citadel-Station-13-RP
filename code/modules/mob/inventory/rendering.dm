@@ -335,7 +335,7 @@
 		#warn test the funny antag gear
 
 	//* inventory slot defaults
-	else if(inhands? inhand_default_allowed : worn_default_allowed)
+	else if(inhands? (worn_render_flags & WORN_RENDER_SLOT_ALLOW_DEFAULT) : (worn_render_flags & WORN_RENDER_SLOT_ALLOW_DEFAULT))
 		var/list/resolved = slot_meta.resolve_default_assets(bodytype, data[WORN_DATA_STATE], M, src, inhand_default_type)
 		if(!resolved && (bodytype != BODYTYPE_DEFAULT) && (bodytype & worn_bodytypes_converted))
 			// attempt 2 - convert to default if specified to convert
@@ -380,8 +380,8 @@
 /obj/item/proc/resolve_worn_state(inhands, slot_key, bodytype)
 	// PRIVATE_PROC(TRUE)
 	if(inhands)
-		return "[base_worn_state(inhands, slot_key, bodytype)][worn_inhand_ignored? "_all" : "_[slot_key]"]"
-	return "[base_worn_state(inhands, slot_key, bodytype)][worn_slot_ignored? "_all" : "_[slot_key]"][((worn_bodytypes & (~BODYTYPE_DEFAULT)) & bodytype)? "_[bodytype_to_string(bodytype)]" : ""]"
+		return "[base_worn_state(inhands, slot_key, bodytype)][(worn_render_flags & WORN_RENDER_INHAND_ONE_FOR_ALL)? "_all" : "_[slot_key]"]"
+	return "[base_worn_state(inhands, slot_key, bodytype)][(worn_render_flags & WORN_RENDER_SLOT_ONE_FOR_ALL)? "_all" : "_[slot_key]"][((worn_bodytypes & (~BODYTYPE_DEFAULT)) & bodytype)? "_[bodytype_to_string(bodytype)]" : ""]"
 
 /obj/item/proc/base_worn_state(inhands, slot_key, bodytype)
 	if(inhands)
