@@ -1,8 +1,3 @@
-#define WORN_DATA_ICON 1
-#define WORN_DATA_STATE 2
-#define WORN_DATA_LAYER 3
-#define WORN_DATA_SIZE_X 4
-#define WORN_DATA_SIZE_Y 5
 /**
  * Item rendering system
  *
@@ -271,6 +266,10 @@
  * override to apply overlays to our current mutable appearance; called first
  */
 /obj/item/proc/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+	if(addblends)
+		var/mutable_appearance/adding = mutable_appearance(icon = MA.icon, icon_state = addblends)
+		adding.blend_mode = BLEND_ADD
+		MA.add_overlay(adding)
 	return MA
 
 /**
@@ -370,18 +369,3 @@
 	if(inhands)
 		return "[inhand_state || icon_state][worn_inhand_ignored? "_all" : "_[slot_key]"]"
 	return "[worn_state || icon_state][worn_slot_ignored? "_all" : "_[slot_key]"][((worn_bodytypes & (~BODYTYPE_DEFAULT)) & bodytype)? "_[bodytype_to_string(bodytype)]" : ""]"
-
-//! legacy
-//Apply the addblend blends onto the icon
-/obj/item/proc/apply_addblends(var/source_icon, var/icon/standing_icon)
-#warn impl
-	//If we have addblends, blend them onto the provided icon
-	if(addblends && standing_icon && source_icon)
-		var/addblend_icon = icon("icon" = source_icon, "icon_state" = addblends)
-		standing_icon.Blend(addblend_icon, ICON_ADD)
-
-#undef WORN_DATA_ICON
-#undef WORN_DATA_STATE
-#undef WORN_DATA_LAYER
-#undef WORN_DATA_SIZE_X
-#undef WORN_DATA_SIZE_Y
