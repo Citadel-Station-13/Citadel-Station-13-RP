@@ -281,6 +281,21 @@
 		M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
 	return ..()
 
+// todo: this is fucking awful
+/obj/item/Move(atom/newloc, direct, glide_size_override)
+	if(!worn_slot)
+		return ..()
+	var/mob/M = worn_mob()
+	if(istype(M))
+		M.temporarily_remove_from_inventory(src, INV_OP_FORCE)
+	else
+		stack_trace("item Move inv hook called without a mob as loc??")
+		worn_slot = null
+	. = ..()
+	if(!. || (loc == M))
+		// kick them out
+		forceMove(M.drop_location())
+
 /**
  * checks if we're in inventory. if so, returns mob we're in
  * **hands count**

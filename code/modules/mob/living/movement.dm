@@ -8,18 +8,20 @@
 		if(MOVE_INTENT_WALK)
 			. += config_legacy.walk_speed
 
-/mob/living/Move(NewLoc, Dir)
-	// what the hell does this do i don't know fine we'll keep it for now..
-	if (buckled && buckled.loc != NewLoc) //not updating position
-		if(istype(buckled, /mob))	//If you're buckled to a mob, a la slime things, keep on rolling.
-			return buckled.Move(NewLoc, Dir)
-		else	//Otherwise, no running around for you.
-			return 0
-	// end
+/mob/living/Move(atom/newloc, direct, glide_size_override)
+	if(buckled && buckled.loc != newloc)
+		return FALSE
+	return ..()
 
+/mob/living/Moved()
 	. = ..()
 	if(s_active && !CheapReachability(s_active))
 		s_active.close(src)
+
+/mob/living/forceMove(atom/destination)
+	if(buckled && (buckled.loc != destination))
+		unbuckle(BUCKLE_OP_FORCE | BUCKLE_OP_SILENT)
+	return ..()
 
 ///Checks mobility move as well as parent checks
 /mob/living/canface()
@@ -33,6 +35,11 @@
 
 
 /mob/living/CanAllowThrough(atom/movable/mover, turf/target)
+	if(ismob(mover))
+		var/mob/M = mover
+		if(buckled && M.buckled == buckled)
+			// riding same thing, don't block each other
+			return TRUE
 	// can't throw blob stuff through blob stuff
 	if(istype(mover, /obj/structure/blob) && faction == "blob" && !mover.throwing) //Blobs should ignore things on their faction.
 		return TRUE
@@ -215,7 +222,7 @@
 	if(!their_pass_mob)
 		them.pass_flags &= ~ATOM_PASS_MOB
 	if(move_failed)
-		start_pulling(old_pulling, TRUE)
+		start_pulling(old_pulling, suppress_message = TRUE)
 	return !move_failed
 
 /**
@@ -224,11 +231,10 @@
 /mob/living/proc/can_bump_position_swap(mob/living/them)
 	// we must both be on help (or restrained) (or be pulling them)
 	// todo: only grabs should work for this..
-	if(them == pulling)
-		return TRUE
+	var/we_are_grabbing_them = them == pulling
 	if(a_intent != INTENT_HELP && !restrained())
 		return FALSE
-	if(them.a_intent != INTENT_HELP && !them.restrained())
+	if(them.a_intent != INTENT_HELP && !them.restrained() && !we_are_grabbing_them)
 		return FALSE
 
 	// sigh, polaris.
