@@ -5,9 +5,9 @@ This feature is WIP. Here are my current wants/to-dos:
 []Occasional visual glitching, similar to hallucinations, but less pervasive.
 []Occasional audio glitching, as above.
 []Messages posted in the user's chat randomly. (Snippets of memories, visual glitching descriptions, intrusive thoughts, etc.)
-[X]The creation of a specialized drug that can reduce the above symptoms when ingested.
-[X]Related to the drug, some form of *temporarily* extending the time between symptom firing while the chem is in-system.
-[/]Some form of system that calculates "instability" based off of prosthetics, augments, and implants at spawn, that also increases when more are added.
+[/]The creation of a specialized drug that can reduce the above symptoms when ingested.
+[/]Related to the drug, some form of *temporarily* extending the time between symptom firing while the chem is in-system.
+[X]Some form of system that calculates "instability" based off of prosthetics, augments, and implants at spawn, that also increases when more are added.
 
 The primary interest at the moment is getting this system functional so it can be added as a Neutral trait selection.
 */
@@ -81,6 +81,7 @@ The primary interest at the moment is getting this system functional so it can b
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
+/*
 //Subsystem for CRS
 SUBSYSTEM_DEF(cyberpsychosis)
 	name = "Cyernetics Rejection Syndrome"
@@ -88,3 +89,4 @@ SUBSYSTEM_DEF(cyberpsychosis)
 
 /datum/controller/subsystem/cyberpsychosis/fire(var/datum/component/cyberpsychosis/CRS)
 	CRS.process()
+*/

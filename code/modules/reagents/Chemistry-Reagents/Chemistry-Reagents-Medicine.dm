@@ -1600,6 +1600,8 @@
 	M.ExtinguishMob()
 
 //CRS (Cyberpsychosis) Medication
+#define PURGE_DELAY 5*60*10
+
 /datum/reagent/neuratrextate
 	name = "Neuratrextate"
 	id = "neuratrextate"
@@ -1607,30 +1609,39 @@
 	taste_description = "sour metal"
 	taste_mult = 2
 	reagent_state = REAGENT_LIQUID
-	metabolism = REM * 3
+	metabolism = REM * 0.25
+	mrate_static = TRUE
 	color = "#52ca22"
 	scannable = 1
 	overdose = 20
 	var/potency = 10
+	var/triggered = FALSE
+	data = 0
 
-/datum/reagent/neuratrextate/affect_blood(var/mob/living/carbon/M, var/datum/species/S, var/datum/component/cyberpsychosis/CRS)
+/datum/reagent/neuratrextate/affect_blood(var/mob/living/carbon/M)
 	var/mob/living/carbon/human/H = M
-	if(ishuman(M))
+	if(ishuman(M) && !triggered)
+		triggered = TRUE
 		if(H.capacity < 90)
 			H.capacity = (H.capacity + potency)
 		else if(H.capacity < 70)
-			H.capacity = (H.capacity + (potency / 2))
+			H.capacity = (H.capacity + (potency * 0.5))
 		else if(H.capacity < 30)
-			H.capacity = (H.capacity + (potency / 5))
+			H.capacity = (H.capacity + (potency * 0.2))
 		else
 			H.capacity = 100
-		wear_off()
+	else
+		if(world.time > data + PURGE_DELAY)
+			data = world.time
+			purge()
 
-/datum/reagent/neuratrextate/proc/wear_off(var/datum/species/S, var/datum/component/cyberpsychosis/CRS)
+/datum/reagent/neuratrextate/proc/purge(var/datum/species/S, var/datum/component/cyberpsychosis/CRS)
 	var/mob/living/carbon/human/H = S
+	remove_self(15)
 	if(S.is_cyberpsycho && H.capacity == 100)
 		CRS.adjusted = 0
 		CRS.update_capacity()
+		triggered = FALSE
 
 /datum/reagent/neuratrextate/overdose(var/datum/species/S)
 	..()
