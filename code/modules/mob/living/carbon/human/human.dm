@@ -1519,23 +1519,24 @@
 		else
 			set_base_layer(HIDING_LAYER)
 
+/**
+ * Shows species in tooltips and examine.
+ *
+ * Get custom species name if set, otherwise use the species name
+ * Beepboops get extra special text based on gender if obviously beepboop
+ * Else species name
+ */
 /mob/living/carbon/human/proc/get_display_species()
-	//Shows species in tooltip
-	if(src.custom_species)
-		return custom_species
-	//Beepboops get special text if obviously beepboop
-	if(looksSynthetic())
-		if(gender == MALE)
-			return "Android"
-		else if(gender == FEMALE)
-			return "Gynoid"
+	var/species_name = src.custom_species ? custom_species : species.get_examine_name()
+	switch(gender) //Not identifying_gender as this is relating to physical traits.
+		if(MALE)
+			return "[looksSynthetic() ? "[species_name] Android" : species_name]"
+		if(FEMALE)
+			return "[looksSynthetic() ? "[species_name] Gynoid" : species_name]"
+		if(NEUTER, PLURAL)
+			return "[looksSynthetic() ? "Synthetic [species_name]" : species_name]"
 		else
-			return "Synthetic"
-	//Else species name
-	if(species)
-		return species.get_examine_name()
-	//Else CRITICAL FAILURE!
-	return ""
+			return SPAN_WARNING("Unknown")
 
 /mob/living/carbon/human/get_nametag_name(mob/user)
 	return name //Could do fancy stuff here?
