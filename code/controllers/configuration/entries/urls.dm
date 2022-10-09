@@ -3,3 +3,10 @@
 
 /datum/config_entry/string/wiki_page_root
 	default = "https://citadel-station.net/wikiRP/index.php?title="
+
+
+/// URL of the webhook for sending announcements/faxes to discord chat.
+/datum/config_entry/string/chat_webhook_url
+
+/// Shared secret for authenticating to the chat webhook.
+/datum/config_entry/string/chat_webhook_key

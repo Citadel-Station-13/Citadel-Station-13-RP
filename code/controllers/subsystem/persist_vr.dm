@@ -15,8 +15,8 @@ SUBSYSTEM_DEF(persist)
 	update_department_hours(resumed)
 
 // Do PTO Accruals
-/datum/controller/subsystem/persist/proc/update_department_hours(var/resumed = FALSE)
-	if(!config_legacy.time_off)
+/datum/controller/subsystem/persist/proc/update_department_hours(resumed = FALSE)
+	if(!CONFIG_GET(flag/time_off))
 		return
 
 	if(!SSdbcore.Connect())
@@ -68,7 +68,7 @@ SUBSYSTEM_DEF(persist)
 			dept_hours[department_earning] = pto_factored
 
 		// Cap it
-		dept_hours[department_earning] = clamp(dept_hours[department_earning], 0, config_legacy.pto_cap)
+		dept_hours[department_earning] = clamp(dept_hours[department_earning], 0, CONFIG_GET(number/pto_cap))
 
 		// Okay we figured it out, lets update database!
 		var/sql_ckey = sql_sanitize_text(C.ckey)

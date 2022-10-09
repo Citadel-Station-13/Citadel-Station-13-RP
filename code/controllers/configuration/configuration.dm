@@ -35,7 +35,7 @@
 	Load(world.params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
 /datum/controller/configuration/proc/Load(_directory)
-	if(IsAdminAdvancedProcCall())		//If admin proccall is detected down the line it will horribly break everything.
+	if(IsAdminAdvancedProcCall()) //If admin proccall is detected down the line it will horribly break everything.
 		return
 	if(_directory)
 		directory = _directory

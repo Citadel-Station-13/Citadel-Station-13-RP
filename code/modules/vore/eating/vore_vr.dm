@@ -1,17 +1,11 @@
-///This is a Define so you don't have to worry about magic numbers.
-#define VORE_VERSION	2
-//
+/// This is a Define so you don't have to worry about magic numbers.
+#define VORE_VERSION 2
+
 // Overrides/additions to stock defines go here, as well as hooks. Sort them by
 // the object they are overriding. So all /mob/living together, etc.
-//
-/datum/configuration_legacy
-	var/items_survive_digestion = TRUE		//For configuring if the important_items survive digestion
 
-//
 // The datum type bolted onto normal preferences datums for storing Virgo stuff
-//
-/client
-	var/datum/vore_preferences/prefs_vr
+/client/var/datum/vore_preferences/prefs_vr
 
 /hook/client_new/proc/add_prefs_vr(client/C)
 	C.prefs_vr = new/datum/vore_preferences(C)

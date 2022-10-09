@@ -35,22 +35,14 @@
 /**
  * Call the chat webhook to transmit a notification of an admin fax to the admin chat.
  */
-/obj/machinery/photocopier/faxmachine/proc/message_chat_admins(var/mob/sender, var/faxname, var/obj/item/sent, var/faxid, font_colour="#006100")
-	if (config_legacy.chat_webhook_url)
+/obj/machinery/photocopier/faxmachine/proc/message_chat_admins(mob/sender, faxname, obj/item/sent, faxid, font_colour="#006100")
+	if (CONFIG_GET(string/chat_webhook_url))
 		spawn(0)
 			var/query_string = "type=fax"
-			query_string += "&key=[url_encode(config_legacy.chat_webhook_key)]"
+			query_string += "&key=[url_encode(CONFIG_GET(string/chat_webhook_key))]"
 			query_string += "&faxid=[url_encode(faxid)]"
 			query_string += "&color=[url_encode(font_colour)]"
 			query_string += "&faxname=[url_encode(faxname)]"
 			query_string += "&sendername=[url_encode(sender.name)]"
 			query_string += "&sentname=[url_encode(sent.name)]"
-			world.Export("[config_legacy.chat_webhook_url]?[query_string]")
-
-//
-// Overrides/additions to stock defines go here, as well as hooks. Sort them by
-// the object they are overriding. So all /mob/living together, etc.
-//
-/datum/configuration_legacy
-	var/chat_webhook_url = ""		// URL of the webhook for sending announcements/faxes to discord chat.
-	var/chat_webhook_key = ""		// Shared secret for authenticating to the chat webhook
+			world.Export("[CONFIG_GET(string/chat_webhook_url)]?[query_string]")

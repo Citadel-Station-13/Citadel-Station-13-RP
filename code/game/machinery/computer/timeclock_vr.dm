@@ -100,9 +100,9 @@
 				"selection_color" = job.selection_color,
 				"economic_modifier" = job.economic_modifier,
 				"timeoff_factor" = job.timeoff_factor,
-				"pto_department" = job.pto_type
+				"pto_department" = job.pto_type,
 			)
-		if(config_legacy.time_off && config_legacy.pto_job_change)
+		if(CONFIG_GET(flag/time_off) && CONFIG_GET(flag/pto_job_change))
 			data["allow_change_job"] = TRUE
 			if(job && job.timeoff_factor < 0) // Currently are Off Duty, so gotta lookup what on-duty jobs are open
 				data["job_choices"] = getOpenOnDutyJobs(user, job.pto_type)

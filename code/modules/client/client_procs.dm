@@ -576,7 +576,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			log_admin("Couldn't perform IP check on [key] with [address]")
 
 	// Department Hours
-	if(config_legacy.time_off)
+	if(CONFIG_GET(flag/time_off))
 		var/datum/db_query/query_hours = SSdbcore.RunQuery(
 			"SELECT department, hours FROM [format_table_name("vr_player_hours")] WHERE ckey = :ckey",
 			list(

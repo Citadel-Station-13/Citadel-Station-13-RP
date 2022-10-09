@@ -51,3 +51,24 @@
 
 /datum/config_entry/flag/emojis
 	default = TRUE
+
+/// Controls if the 'time off' system is used for determining if players can play 'Off-Duty' jobs (requires SQL).
+/datum/config_entry/flag/time_off
+
+/// If 'time off' system is on, controls whether or not players can switch on/off duty midround using timeclocks.
+/datum/config_entry/flag/pto_job_change
+
+/datum/config_entry/number/pto_cap
+	default = 100
+	min_val = 0
+
+/// Forbids players from joining if they have no set General flavor text.
+/datum/config_entry/flag/require_flavor
+
+
+
+//! ## Fetish Content
+
+/// If the important_items survive digestion.
+/datum/config_entry/flag/items_survive_digestion
+	default = FALSE

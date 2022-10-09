@@ -384,11 +384,11 @@
 
 	return
 
-// Handle the death of a mob via digestion.
-// Called from the process_Life() methods of bellies that digest prey.
-// Default implementation calls M.death() and removes from internal contents.
-// Indigestable items are removed, and M is deleted.
-/obj/belly/proc/digestion_death(var/mob/living/M)
+/// Handle the death of a mob via digestion.
+/// Called from the process_Life() methods of bellies that digest prey.
+/// Default implementation calls M.death() and removes from internal contents.
+/// Indigestable items are removed, and M is deleted.
+/obj/belly/proc/digestion_death(mob/living/M)
 	//M.death(1) // "Stop it he's already dead..." Basically redundant and the reason behind screaming mouse carcasses.
 	if(M.ckey)
 		message_admins("[key_name(owner)] has digested [key_name(M)] in their [lowertext(name)] ([owner ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[owner.x];Y=[owner.y];Z=[owner.z]'>JMP</a>" : "null"])")
@@ -398,7 +398,7 @@
 		M.release_vore_contents(include_absorbed = TRUE, silent = TRUE)
 
 	//Drop all items into the belly.
-	if(config_legacy.items_survive_digestion)
+	if(CONFIG_GET(flag/items_survive_digestion))
 		for(var/obj/item/W in M)
 			if(istype(W,/obj/item/organ/internal/mmi_holder/posibrain))
 				var/obj/item/organ/internal/mmi_holder/MMI = W

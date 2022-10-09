@@ -1564,18 +1564,18 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 /// Sender is optional
 /proc/admin_chat_message(message = "Debug Message", color = "#FFFFFF", sender)
 	// Adds TGS3 integration to those fancy verbose round event messages.
-	if(message)
+	if (message)
 		send2irc("Event", message)
-	if (!config_legacy.chat_webhook_url || !message)
+	if(!CONFIG_GET(string/chat_webhook_url) || !message)
 		return
 	spawn(0)
 		var/query_string = "type=adminalert"
-		query_string += "&key=[url_encode(config_legacy.chat_webhook_key)]"
+		query_string += "&key=[url_encode(CONFIG_GET(string/chat_webhook_key))]"
 		query_string += "&msg=[url_encode(message)]"
 		query_string += "&color=[url_encode(color)]"
 		if(sender)
 			query_string += "&from=[url_encode(sender)]"
-		world.Export("[config_legacy.chat_webhook_url]?[query_string]")
+		world.Export("[CONFIG_GET(string/chat_webhook_url)]?[query_string]")
 
 /// This is a helper for anything that wants to render the map in TGUI.
 /proc/get_tgui_plane_masters()

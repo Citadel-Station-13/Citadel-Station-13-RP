@@ -758,7 +758,7 @@
 	var/pass = TRUE
 
 	//No Flavor Text
-	if (config_legacy.require_flavor && client && client.prefs && client.prefs.flavor_texts && !client.prefs.flavor_texts["general"])
+	if (CONFIG_GET(flag/require_flavor) && client && client.prefs && client.prefs.flavor_texts && !client.prefs.flavor_texts["general"])
 		to_chat(src,"<span class='warning'>Please set your general flavor text to give a basic description of your character. Set it using the 'Set Flavor text' button on the 'General' tab in character setup, and choosing 'General' category.</span>")
 		pass = FALSE
 

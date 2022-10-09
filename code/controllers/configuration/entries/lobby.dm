@@ -8,7 +8,7 @@
 
 /datum/config_entry/number/lobby_gamemode_vote_delay
 	default = 120
-	min_val = -1		//-1 for disabled
+	min_val = -1 //-1 for disabled
 
 /// if the game appears on the hub or not
 /datum/config_entry/flag/hub

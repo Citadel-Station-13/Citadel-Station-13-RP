@@ -1,0 +1,92 @@
+## Forces tgui hrefs to be logged. Debug only.
+# EMERGENCY_TGUI_LOGGING
+
+## log client access (logon/logoff)
+LOG_ACCESS
+
+## log admin actions
+LOG_ADMIN
+
+## log admin chat
+LOG_ADMINCHAT
+
+## log assets
+LOG_ASSET
+
+## log attack messages
+LOG_ATTACK
+
+## log debug information
+LOG_DEBUG
+
+## log economy events
+#LOG_ECON
+
+## log emotes
+LOG_EMOTE
+
+## log game actions (start of round, results, etc.)
+LOG_GAME
+
+## log all Topic() calls (for use by coders in tracking down Topic issues)
+LOG_HREFS
+
+## log crew manifest
+#LOG_MANIFEST
+
+## log mecha
+#LOG_MECHA
+
+## log OOC channel
+LOG_OOC
+
+## log pda messages
+LOG_PDA
+
+## log prayers
+#LOG_PRAYERS
+
+## log world.log and runtime errors to a file
+#LOG_RUNTIME
+
+## log client Say
+LOG_SAY
+
+## log shuttles
+LOG_SHUTTLE
+
+## log silicons
+#LOG_SILICON
+
+## log suspecious logins
+LOG_SUSPICIOUS_LOGIN
+
+## log telecoms
+#LOG_TELECOMMS
+
+## log tool usage
+#LOG_TOOLS
+
+## log world.Topic() calls
+LOG_TOPIC
+
+## log traitors
+#LOG_TRAITOR
+
+## log twitter aka a certain parrot.
+#LOG_TWITTER
+
+## log traitor uplink
+#LOG_UPLINK
+
+## log viruses
+#LOG_VIRUS
+
+## log player votes
+LOG_VOTE
+
+## log client Whisper
+LOG_WHISPER
+
+## Uncomment to enable Paranoia Logging. This will notify admins and write to a file any time a new player (byond or your server) connects.
+# PARANOIA_LOGGING

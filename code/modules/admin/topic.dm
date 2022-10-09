@@ -1282,13 +1282,13 @@
 				if((R_ADMIN|R_MOD|R_EVENT|R_SERVER) & X.holder.rights)
 					to_chat(X, take_msg)
 			to_chat(M, "<span class='notice'><b>Your adminhelp is being attended to by [usr.client]. Thanks for your patience!</b></span>")
-			if (config_legacy.chat_webhook_url)
+			if (CONFIG_GET(string/chat_webhook_url))
 				spawn(0)
 					var/query_string = "type=admintake"
-					query_string += "&key=[url_encode(config_legacy.chat_webhook_key)]"
+					query_string += "&key=[url_encode(CONFIG_GET(string/chat_webhook_key))]"
 					query_string += "&admin=[url_encode(key_name(usr.client))]"
 					query_string += "&user=[url_encode(key_name(M))]"
-					world.Export("[config_legacy.chat_webhook_url]?[query_string]")
+					world.Export("[CONFIG_GET(string/chat_webhook_url)]?[query_string]")
 		else
 			to_chat(usr, "<span class='warning'>Unable to locate mob.</span>")
 
