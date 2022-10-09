@@ -3119,7 +3119,7 @@
 /turf/simulated/shuttle/wall/voidcraft/green,
 /area/shuttle/overmapdemo)
 "JA" = (
-/obj/effect/overmap/visitable/sector/citadel_minitest/station,
+/obj/effect/overmap/visitable/sector/miniteststation/station,
 /turf/space,
 /area/space)
 "ML" = (

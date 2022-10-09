@@ -756,7 +756,7 @@
 /turf/simulated/floor/airless,
 /area/space)
 "co" = (
-/obj/effect/overmap/visitable/sector/citadel_minitest/carpfarm,
+/obj/effect/overmap/visitable/sector/miniteststation/carpfarm,
 /turf/space,
 /area/space)
 
