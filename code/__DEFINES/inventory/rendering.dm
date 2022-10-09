@@ -1,3 +1,17 @@
+//! worn_render_flags on /obj/item
+/// _all for state
+#define WORN_RENDER_SLOT_ONE_FOR_ALL (1<<0)
+/// _all for state on inhands
+#define WORN_RENDER_INHAND_ONE_FOR_ALL (1<<1)
+/// allow worn defaulting
+#define WORN_RENDER_SLOT_ALLOW_DEFAULT (1<<2)
+/// allow inhand defaulting
+#define WORN_RENDER_INHAND_ALLOW_DEFAULT (1<<3)
+/// don't render in slots; render_additional still used, others aren't
+#define WORN_RENDER_SLOT_NO_RENDER (1<<4)
+/// don't render in inhands; render_additional still used, others aren't
+#define WORN_RENDER_INHAND_NO_RENDER (1<<5)
+
 //! list indices for resolve_worn_assets
 //? the fact this proc is necessary is bad, so, we'll remove it later for something better.
 #define WORN_DATA_ICON 1

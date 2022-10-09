@@ -51,7 +51,7 @@
 	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
 	inhand_default_type = INHAND_DEFAULT_ICON_UNIFORMS
 	inhand_state = "black"
-	worn_slot_ignored = TRUE
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
@@ -65,7 +65,7 @@
 	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
 	inhand_default_type = INHAND_DEFAULT_ICON_SUITS
 	inhand_state = "armor"
-	worn_slot_ignored = TRUE
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	cold_protection = UPPER_TORSO|LOWER_TORSO
 

@@ -18,8 +18,17 @@
  *        ?? You just need to set inhand_state and worn_state to use them!         ??
  *
  *    Otherwise, continue on with the rest of the steps, setting
- *        worn_species_default = FALSE
+ *        worn_render_flags = NONE
  *    to instruct the system to ignore default icons entirely.
+ *
+ *    ?? A note on bitfields: worn_render_flags                                             ??
+ *    ?? Without getting into the nitty gritty, worn_render_flags control all               ??
+ *    ?? behavior and logic. When the guide below says "add" a flag of a certain            ??
+ *    ?? name to it, it means boolean OR it.                                                ??
+ *    ?? For noncoders, basically: to combine, say, WORN_RENDER_SLOT_ONE_FOR_ALL            ??
+ *    ?? and WORN_RENDER_INHAND_ONE_FOR_ALL, you just put a | between them, like so:        ??
+ *    ?? worn_render_flags =  WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ONE_FOR_ALL ??
+ *    ?? Congratulations, you used a bitfield.                                              ??
  *
  * 1. Have a sensical place for your item's .dmi.
  *    e.g. /obj/item/pickaxe goes in icons/modules/mining/tools/pickaxe.dmi
@@ -33,7 +42,8 @@
  *    If you for some reason want it to use a singular state only when inhand,
  *    set worn_inhand_ignored to TRUE, and it'll render as pickaxe_all instead.
  * 4. Does the item go in multiple slots and require multiple sprites?
- *    If not, set worn_slot_ignored to TRUE, and it'll render as pickaxe_all always.
+ *    If not, add WORN_RENDER_SLOT_ONE_TO_ALL to worn_render_flags,
+ *    and it'll render as pickaxe_all always.
  *        pickaxe_all
  *    If so, set states for each slot id, e.g. in this case,
  *        pickaxe_back
@@ -63,7 +73,11 @@
  *    and for inhands
  *        pickaxe_onhand_left
  *        pickaxe_onhand_right
- * 7. Congratulations, you're done!
+ * 7. Defaulting: In the case you want to default slot/inhands (usually one but not the other),
+ *    simply add to worn_render_flags, depending on which:
+ *        WORN_RENDER_SLOT_ALLOW_DEFAULT
+ *        WORN_RENDER_INHAND_ALLOW_DEFAULt
+ * 8. Congratulations, you're done!
  *
  * * Overall Goal
  * - Being able to stuff an entire item's assets in one icon
@@ -167,8 +181,6 @@
 	var/worn_x_dimension
 	/// dimensions of our worn icon file if different from icon
 	var/worn_y_dimension
-	/// allow species default
-	var/worn_default_allowed = TRUE
 	//? for hands: prioritized over icon, icon_state, icon dimensions
 	/// state to use; worn_state, then icon_state is used if this isn't set
 	var/inhand_state
@@ -178,8 +190,6 @@
 	var/inhand_x_dimension
 	/// dimensions of inhand sprites if different from icon
 	var/inhand_y_dimension
-	/// inhand allow default
-	var/inhand_default_allowed = TRUE
 	/// inhand default domain aka which icon we grab to check for state
 	var/inhand_default_type = INHAND_DEFAULT_ICON_GENERAL
 	//? for belts
@@ -194,12 +204,8 @@
 	var/worn_bodytypes_converted = ALL
 	/// bodytypes that are implemented. Anything not in here is converted to default.
 	var/worn_bodytypes = NONE
-	/// do we care about slot render key? Set to TRUE to force slot id to `_all` regardless of state.
-	var/worn_slot_ignored = FALSE
-	/// do we care about inhand _left and _right keys? Set to TRUE to force slot id to `_all` regardless of state.
-	var/worn_inhand_ignored = FALSE
-	/// worn rendering flags; unused for now
-	// var/worn_render_flags = NONE
+	/// worn rendering flags
+	var/worn_render_flags = WORN_RENDER_INHAND_ALLOW_DEFAULT | WORN_RENDER_SLOT_ALLOW_DEFAULT
 	//? support for adminbus
 	/// vv only; slot id to icon; worn_x_dimension and worn_y_dimension will be used in this case.
 	VAR_PRIVATE/list/worn_icon_override
@@ -230,8 +236,11 @@
 	var/list/additional = render_additional(icon_used, state_used, layer_used, dim_x, dim_y, bodytype, inhands, slot_meta)
 	// todo: signal with (args, add)
 	// todo: args' indices should be defines
+	var/no_render = inhands? (worn_render_flags & WORN_RENDER_INHAND_NO_RENDER) : (worn_render_flags & WORN_RENDER_SLOT_NO_RENDER)
 	var/mutable_appearance/MA
 	// worn_state_guard makes us not render if we'd render the same as in-inventory icon.
+	if(no_render)		// don't bother
+		return additional
 	MA = mutable_appearance(icon_used, state_used, BODY_LAYER + layer_used, FLOAT_PLANE)
 	MA = center_appearance(MA, dim_x, dim_y)
 	MA = render_apply_overlays(MA, bodytype, inhands, slot_meta)
