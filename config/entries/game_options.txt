@@ -1,7 +1,7 @@
 ## Set to 0 to disable holidays (you monster)
 ALLOW_HOLIDAYS
 
-## Engine submap probabilities
+### Engine submap probabilities
 ## Supermatter
 ENGINE_SUBMAP EngineSubmap_SM 40
 ## R-UST Fusion

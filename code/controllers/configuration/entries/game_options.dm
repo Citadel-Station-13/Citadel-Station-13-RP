@@ -1,14 +1,14 @@
-/datum/config_entry/number/starlight
-	default = 2
+/// Set to FALSE to disable holidays (you monster)
+/datum/config_entry/flag/allow_holidays
+	default = TRUE
 
 /datum/config_entry/keyed_list/engine_submap
 	key_mode = KEY_MODE_TEXT
 	value_mode = VALUE_MODE_NUM
 	lowercase = TRUE
 
-/// Set to FALSE to disable holidays (you monster)
-/datum/config_entry/flag/allow_holidays
-	default = TRUE
+/datum/config_entry/number/starlight
+	default = 2
 
 /datum/config_entry/flag/nightshifts_enabled
 	default = TRUE
