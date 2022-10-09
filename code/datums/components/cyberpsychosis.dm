@@ -13,8 +13,10 @@ The primary interest at the moment is getting this system functional so it can b
 */
 
 /datum/component/cyberpsychosis
-	var/capacity = 100
+	//var/capacity = 100
 	var/cybernetics_count = 0
+	var/counted = 0
+	var/adjusted = 0
 
 /datum/component/cyberpsychosis/Initialize(radius)
 	if(!istype(parent))
@@ -22,30 +24,58 @@ The primary interest at the moment is getting this system functional so it can b
 	else
 		START_PROCESSING(SSobj, src)
 
-/datum/component/cyberpsychosis/process(times_fired)
-	if(!(times_fired % 60))
-		update_cybernetics_count()
-		update_capacity()
-		symptoms()
+/datum/component/cyberpsychosis/process()
+	update_cybernetics_count()
+	update_capacity()
+	symptoms()
 
 //This proc will tabulate the number of prosthetic limbs, organs, augments, and implants into a number.
 /datum/component/cyberpsychosis/proc/update_cybernetics_count()
-	. = 0
 	var/mob/living/carbon/human/H = parent
-	for(var/obj/item/organ/O in H.organs)
-		if(O.robotic < ORGAN_ROBOT)
-			cybernetics_count++
+	. = 0
+	if(counted)
+		return
+	else
+		for(var/obj/item/organ/O in H.organs)
+			if(O.robotic < ORGAN_ROBOT)
+				cybernetics_count++
+				counted = 1
 
 //This subtracts the above sum from var/capacity, which is set to 100 by default.
 /datum/component/cyberpsychosis/proc/update_capacity()
-	if(cybernetics_count >= 1)
-		capacity -= min(100, (cybernetics_count*10))
+	var/mob/living/carbon/human/H = parent
+	if(adjusted)
+		return
+	else if(cybernetics_count >= 1)
+		H.capacity -= cybernetics_count*5
+		adjusted = 1
 
 //This proc will provide different symptoms, with the frequency inversely related to the value of capacity.
 //This is basically the one that all the above checkboxes will address.
-/datum/component/cyberpsychosis/proc/symptoms()
-	if(capacity >= 90)
+/datum/component/cyberpsychosis/proc/symptoms(var/mob/living/carbon/human/H)
+	if(H.capacity >= 90)
 		return
+
+/*
+/datum/reagent/paroxetine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+	if(alien == IS_DIONA)
+		return
+	if(volume <= 0.1 && data != -1)
+		data = -1
+		to_chat(M, "<span class='warning'>Your mind feels much less stable...</span>")
+	else
+		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY)
+			data = world.time
+			if(prob(90))
+				to_chat(M, "<span class='notice'>Your mind feels much more stable.</span>")
+			else
+				to_chat(M, "<span class='warning'>Your mind breaks apart...</span>")
+				M.hallucination += 200
+*/
+
+
+
+
 
 /datum/component/cyberpsychosis/Destroy()
 	STOP_PROCESSING(SSobj, src)

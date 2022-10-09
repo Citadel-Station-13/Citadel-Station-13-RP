@@ -1604,13 +1604,35 @@
 	name = "Neuratrextate"
 	id = "neuratrextate"
 	description = "This military grade chemical compound functions as both a powerful immunosuppressant and a potent antipsychotic. Its trademark lime green coloration makes it easy to identify."
-	taste_description = "sour"
+	taste_description = "sour metal"
+	taste_mult = 2
 	reagent_state = REAGENT_LIQUID
+	metabolism = REM * 0.1
 	color = "#52ca22"
 	scannable = 1
+	overdose = 20
 	var/potency = 10
 
-/datum/reagent/neuratrextate/affect_blood(var/mob/living/carbon/M, var/datum/component/cyberpsychosis/CRS)
+/datum/reagent/neuratrextate/affect_blood(var/mob/living/carbon/M, var/datum/species/S, var/datum/component/cyberpsychosis/CRS)
+	var/mob/living/carbon/human/H = M
 	if(ishuman(M))
-		if(CRS.capacity < 100)
-			CRS.capacity = min(CRS.capacity + potency, 100)
+		if(H.capacity < 90)
+			H.capacity = (H.capacity + potency)
+		else if(H.capacity < 70)
+			H.capacity = (H.capacity + (potency / 2))
+		else if(H.capacity < 30)
+			H.capacity = (H.capacity + (potency / 5))
+		else
+			H.capacity = 100
+		wear_off()
+
+/datum/reagent/neuratrextate/proc/wear_off(var/datum/species/S, var/datum/component/cyberpsychosis/CRS)
+	var/mob/living/carbon/human/H = S
+	if(S.is_cyberpsycho && H.capacity == 100)
+		CRS.adjusted = 0
+
+/datum/reagent/neuratrextate/overdose(var/datum/species/S)
+	..()
+	var/mob/living/carbon/human/H = S
+	if(S.is_cyberpsycho)
+		H.capacity = (H.capacity - (potency * 2))
