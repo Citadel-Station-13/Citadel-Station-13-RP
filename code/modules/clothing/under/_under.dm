@@ -80,9 +80,6 @@
 	else
 		snowflake_worn_state = icon_state
 
-	update_rolldown()
-	update_rollsleeve()
-
 	//TFF 5/8/19 - define numbers and specifics for suit sensor settings
 	sensorpref = isnull(H) ? 1 : (ishuman(H) ? H.sensorpref : 1)
 	switch(sensorpref)
@@ -94,6 +91,13 @@
 		else
 			sensor_mode = pick(0,1,2,3)
 			log_debug("Invalid switch for suit sensors, defaulting to random. [sensorpref] chosen")
+
+//! Inventory
+/obj/item/clothing/under/pickup(mob/user, flags, atom/oldLoc)
+	. = ..()
+	// since updating is now semi-cheap, update immediately
+	update_rolldown()
+	update_rollsleeve()
 
 //! Rendering
 // todo : NUKE THIS SHIT FROM ORBIT ~silicons
