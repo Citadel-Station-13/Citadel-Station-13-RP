@@ -34,6 +34,8 @@ SUBSYSTEM_DEF(air)
 	var/list/startup_active_edge_log = list()
 
 /datum/controller/subsystem/air/PreInit()
+	if(!gas_data)
+		gas_data = new
 	air_master = src
 
 /datum/controller/subsystem/air/Initialize(timeofday)

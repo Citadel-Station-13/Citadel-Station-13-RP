@@ -90,6 +90,8 @@
 	///If the alarms from this machine are visible on consoles
 	var/alarms_hidden = FALSE
 
+#warn groups
+
 /obj/machinery/alarm/nobreach
 	breach_detection = 0
 

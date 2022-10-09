@@ -28,6 +28,8 @@
 	var/radio_filter_out
 	var/radio_filter_in
 
+#warn groups
+
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on
 	use_power = USE_POWER_IDLE
 	icon_state = "map_scrubber_on"
@@ -36,14 +38,10 @@
 	. = ..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_FILTER
 
-	for(var/i in scrubbing_gas)
-		if(!ispath(i))
-			scrubbing_gas -= i
-			var/path = gas_id2path(i)
-			if(!path)
-				stack_trace("Invalid gasid [i]")
-			else
-				scrubbing_gas += path
+	for(var/id in scrubbing_gas)
+		if(!gas_data.gases[id])
+			scrubbing_gas -= id
+			stack_trace("Invalid gas id [i]")
 
 	icon = null
 	initial_loc = get_area(loc)

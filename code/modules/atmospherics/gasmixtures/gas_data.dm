@@ -1,4 +1,4 @@
-GLOBAL_DATUM_INIT(gas_data, /datum/gas_data, new)
+GLOBAL_REAL(gas_data, /datum/gas_data)
 
 /**
  * master datum holding all atmospherics gas data

@@ -1,43 +1,8 @@
-/// List of gases that can't react amongst themselves. KEEP THIS UP TO DATE!
-GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(/datum/gas/oxygen, /datum/gas/nitrogen, /datum/gas/carbon_dioxide)))
 
-/**
-  * Converts a gas ID to typepath
-  */
-/proc/gas_id2path(id)
-	return GLOB.meta_gas_id_lookup[id]
-
-//Unomos - global list inits for all of the meta gas lists.
-//This setup allows procs to only look at one list instead of trying to dig around in lists-within-lists
-GLOBAL_LIST_INIT(meta_gas_specific_heats, meta_gas_heat_list())
-GLOBAL_LIST_INIT(meta_gas_names, meta_gas_name_list())
 GLOBAL_LIST_INIT(meta_gas_visibility, meta_gas_visibility_list())
 GLOBAL_LIST_INIT(meta_gas_overlays, meta_gas_overlay_list())
-GLOBAL_LIST_INIT(meta_gas_dangers, meta_gas_danger_list())
-GLOBAL_LIST_INIT(meta_gas_ids, meta_gas_id_list())
-GLOBAL_LIST_INIT(meta_gas_fusions, meta_gas_fusion_list())
-/// Gas ID to typepath conversion lookup for optimal speed.
-GLOBAL_LIST_INIT(meta_gas_id_lookup, meta_gas_id_lookup_list())
-/// Gas flags by gas
-GLOBAL_LIST_INIT(meta_gas_flags, meta_gas_flag_list())
-/// Gases by gas flag
-GLOBAL_LIST_INIT(meta_gas_by_flag, meta_gas_by_flag_list())
-/// Gas molar mass by gas
-GLOBAL_LIST_INIT(meta_gas_molar_mass, meta_gas_molar_mass_list())
 /// Typecache of gases with no overlays
 GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_list())
-
-/proc/meta_gas_heat_list()
-	. = subtypesof(/datum/gas)
-	for(var/gas_path in .)
-		var/datum/gas/gas = gas_path
-		.[gas_path] = initial(gas.specific_heat)
-
-/proc/meta_gas_name_list()
-	. = subtypesof(/datum/gas)
-	for(var/gas_path in .)
-		var/datum/gas/gas = gas_path
-		.[gas_path] = initial(gas.name)
 
 /proc/meta_gas_visibility_list()
 	. = subtypesof(/datum/gas)
@@ -59,60 +24,6 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 				I.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 				I.appearance_flags = RESET_TRANSFORM | RESET_COLOR | RESET_ALPHA | KEEP_APART
 				.[gas_path][i] = I
-
-/proc/meta_gas_danger_list()
-	. = subtypesof(/datum/gas)
-	for(var/gas_path in .)
-		var/datum/gas/gas = gas_path
-		.[gas_path] = initial(gas.dangerous)
-
-/proc/meta_gas_id_list()
-	. = subtypesof(/datum/gas)
-	for(var/gas_path in .)
-		var/datum/gas/gas = gas_path
-		.[gas_path] = initial(gas.id)
-
-/proc/meta_gas_fusion_list()
-	. = subtypesof(/datum/gas)
-	for(var/gas_path in .)
-		var/datum/gas/gas = gas_path
-		.[gas_path] = initial(gas.fusion_power)
-
-/proc/meta_gas_id_lookup_list()
-	var/list/gases = subtypesof(/datum/gas)
-	. = list()
-	for(var/gas_path in gases)
-		var/datum/gas/gas = gas_path
-		.[initial(gas.id)] = gas_path
-
-/proc/meta_gas_flag_list()
-	. = subtypesof(/datum/gas)
-	for(var/gas_path in .)
-		var/datum/gas/gas = gas_path
-		.[gas_path] = initial(gas.gas_flags)
-
-/proc/meta_gas_by_flag_list()
-	. = list()
-	// slightly more tricky
-	var/list/gases = subtypesof(/datum/gas)
-	// for each gas
-	for(var/gas_path in gases)
-		var/datum/gas/gas = gas_path
-		// cache flags
-		var/gas_flags = initial(gas.gas_flags)
-		// for each bitfield
-		for(var/i in GLOB.bitflags)
-			// if we have it
-			if(gas_flags & i)
-				// add to list
-				LAZYADD(.["[i]"], gas_path)
-
-/proc/meta_gas_molar_mass_list()
-	. = list()
-	var/list/gases = subtypesof(/datum/gas)
-	for(var/gas_path in gases)
-		var/datum/gas/G = gas_path
-		.[gas_path] = initial(G.molar_mass)
 
 /proc/meta_gas_typecache_no_overlays_list()
 	. = list()

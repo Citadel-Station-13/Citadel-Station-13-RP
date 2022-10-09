@@ -701,7 +701,7 @@
 
 	//Check for contaminants before anything else because we don't want to skip it.
 	for(var/g in environment.gas)
-		if(GLOB.meta_gas_flags[g] & GAS_FLAG_CONTAMINANT && environment.gas[g] > GLOB.meta_gas_visibility[g] + 1)
+		if(gas_data.flags[g] & GAS_FLAG_CONTAMINANT && environment.gas[g] > GLOB.meta_gas_visibility[g] + 1)
 			pl_effects()
 			break
 

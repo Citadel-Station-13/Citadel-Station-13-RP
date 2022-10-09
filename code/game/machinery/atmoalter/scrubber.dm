@@ -22,16 +22,14 @@
 		GAS_ID_METHANE, GAS_ID_ARGON, GAS_ID_KRYPTON, GAS_ID_NEON, GAS_ID_AMMONIA, GAS_ID_XENON, GAS_ID_CHLORINE,
 		GAS_ID_SULFUR_DIOXIDE, GAS_ID_HYDROGEN)
 
+#warn groups
+
 /obj/machinery/portable_atmospherics/powered/scrubber/Initialize(mapload)
 	. = ..()
-	for(var/i in scrubbing_gas)
-		if(!ispath(i))
-			scrubbing_gas -= i
-			var/path = gas_id2path(i)
-			if(!path)
-				stack_trace("Invalid gas id [i]")
-			else
-				scrubbing_gas += path
+	for(var/id in scrubbing_gas)
+		if(!gas_data.gases[id])
+			scrubbing_gas -= id
+			stack_trace("Invalid gas id [i]")
 	cell = new/obj/item/cell/apc(src)
 
 /obj/machinery/portable_atmospherics/powered/scrubber/emp_act(severity)

@@ -40,7 +40,7 @@
 		return
 
 	var/self_heat_capacity = heat_capacity()
-	var/giver_heat_capacity = GLOB.meta_gas_specific_heats[gasid] * moles
+	var/giver_heat_capacity = gas_data.specific_heats[gasid] * moles
 
 	var/combined_heat_capacity = giver_heat_capacity + self_heat_capacity
 	if(combined_heat_capacity != 0)
@@ -133,7 +133,7 @@
 /datum/gas_mixture/proc/heat_capacity()
 	. = 0
 	for(var/g in gas)
-		. += GLOB.meta_gas_specific_heats[g] * gas[g]
+		. += gas_data.specific_heats[g] * gas[g]
 	. *= group_multiplier
 
 /**
@@ -196,8 +196,8 @@
 		return SPECIFIC_ENTROPY_VACUUM	//that gas isn't here
 
 	//group_multiplier gets divided out in volume/gas[gasid] - also, V/(m*T) = R/(partial pressure)
-	var/molar_mass = GLOB.meta_gas_molar_mass[gasid]
-	var/specific_heat = GLOB.meta_gas_specific_heats[gasid]
+	var/molar_mass = gas_data.molar_masses[gasid]
+	var/specific_heat = gas_data.specific_heats[gasid]
 	return R_IDEAL_GAS_EQUATION * ( log( (IDEAL_GAS_ENTROPY_CONSTANT*volume/(gas[gasid] * temperature)) * (molar_mass*specific_heat*temperature)**(2/3) + 1 ) +  15 )
 
 	//alternative, simpler equation
@@ -273,13 +273,13 @@
 
 	var/sum = 0
 	for(var/g in gas)
-		if(GLOB.meta_gas_flags[g] & flag)
+		if(gas_data.flags[g] & flag)
 			sum += gas[g]
 
 	var/datum/gas_mixture/removed = new
 
 	for(var/g in gas)
-		if(GLOB.meta_gas_flags[g] & flag)
+		if(gas_data.flags[g] & flag)
 			removed.gas[g] = QUANTIZE((gas[g] / sum) * amount)
 			gas[g] -= removed.gas[g] / group_multiplier
 
@@ -293,7 +293,7 @@
 /datum/gas_mixture/proc/get_by_flag(flag)
 	. = 0
 	for(var/g in gas)
-		if(GLOB.meta_gas_flags[g] & flag)
+		if(gas_data.flags[g] & flag)
 			. += gas[g]
 
 //Copies gas and temperature from another gas_mixture.
@@ -459,7 +459,7 @@
 
 /datum/gas_mixture/proc/get_mass()
 	for(var/g in gas)
-		. += gas[g] * GLOB.meta_gas_molar_mass[g] * group_multiplier
+		. += gas[g] * gas_data.molar_masses[g] * group_multiplier
 
 // todo: sort above
 
@@ -477,10 +477,7 @@
 		gas -= "TEMP"
 	gases.Cut()
 	for(var/id in gas)
-		var/path = id
-		if(!ispath(path))
-			path = gas_id2path(path) //a lot of these strings can't have embedded expressions (especially for mappers), so support for IDs needs to stick around
-		gases[path] = text2num(gas[id])
+		gases[pathid] = text2num(gas[id])
 	//archive()
 	update_values()
 	return TRUE
@@ -578,7 +575,7 @@
 	// update
 	update_values()
 	other.update_values()
-	
+
 	// if empty
 	if(!total_moles)
 		return compare(other)
@@ -630,7 +627,7 @@
 	var/their_capacity = 0
 	for(var/id in gases)
 		// in the same loop, we'll calculate their total capacity, at the same time expanding their moles to the true value
-		their_capacity += GLOB.meta_gas_specific_heats[id] * gases[id] * group_multiplier
+		their_capacity += gas_data.specific_heats[id] * gases[id] * group_multiplier
 		gases[id] *= group_multiplier
 
 	for(var/id in our_gas)
@@ -643,7 +640,7 @@
 
 	// update
 	update_values()
-	
+
 	if(!total_moles)
 		return compare_virtual(gases, src.volume, temperature)
 

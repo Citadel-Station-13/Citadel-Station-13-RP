@@ -19,6 +19,8 @@
 
 	var/list/filtering_outputs = list()	//maps gasids to gas_mixtures
 
+#warn groups
+
 /obj/machinery/atmospherics/component/quaternary/atmos_filter/Initialize(mapload)
 	. = ..()
 	rebuild_filtering_list()
