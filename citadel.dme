@@ -119,6 +119,7 @@
 #include "code\__DEFINES\atmospherics\constants.dm"
 #include "code\__DEFINES\atmospherics\environmental.dm"
 #include "code\__DEFINES\atmospherics\flags.dm"
+#include "code\__DEFINES\atmospherics\gas_groups.dm"
 #include "code\__DEFINES\atmospherics\gas_ids.dm"
 #include "code\__DEFINES\atmospherics\gas_strings.dm"
 #include "code\__DEFINES\atmospherics\helpers.dm"

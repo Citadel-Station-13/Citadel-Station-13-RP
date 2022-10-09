@@ -184,6 +184,8 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	var/molar_mass = 0
 	/// Gas flags. See [code/__DEFINES/atmospherics/flags.dm]
 	var/gas_flags
+	/// gas group - list support can be added later
+	var/gas_group
 
 	var/gas_reagent_id //What is the ID of the reagent we want to apply
 	var/gas_reagent_amount = 0//How much of the reagent is applied

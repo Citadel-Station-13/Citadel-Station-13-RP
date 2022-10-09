@@ -27,6 +27,8 @@
 	/// Maximum temperature this atmosphere can be
 	var/maximum_temp
 
+#warn procgen
+
 /datum/atmosphere/New()
 	if(!id)
 		id = "[type]"
