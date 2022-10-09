@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(minimaps)
 
 /datum/controller/subsystem/minimaps/Initialize()
 	if(!CONFIG_GET(flag/minimaps_enabled))
-		to_chat(world, "<span class='boldwarning'>Minimaps disabled! Skipping init.</span>")
+		to_chat(world, SPAN_BOLDWARNING("Minimaps disabled! Skipping init."))
 		return ..()
 	build_minimaps()
 	return ..()

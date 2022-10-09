@@ -1,0 +1,22 @@
+#### GUESTS ####
+
+## Set to jobban "Guest-" accounts for whitelisted jobs.
+## Uncomment to jobban them from those positions.
+GUEST_JOBBAN
+
+## Set to stop people connecting to your server without a registered ckey. (i.e. guest-* are all blocked from connecting)
+GUEST_BAN
+
+
+
+#### WHITELIST TOGGLES ####
+
+## Set to require a ckey whitelist to join.
+#USE_WHITELIST
+
+## Set to jobban everyone who's key is not listed in data/whitelist.txt for whitelisted jobs.
+## Uncomment to jobban, leave commented out to allow these positions for everyone (but see GUEST_JOBBAN above and regular jobbans)
+USE_JOB_WHITELIST
+
+## Uncomment to restrict non-admins from using humanoid alien races
+USE_SPECIES_WHITELIST

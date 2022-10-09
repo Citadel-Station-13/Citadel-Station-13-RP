@@ -2,7 +2,7 @@
 ### Automated IP bans for world/Topic() spammers
 ## Enabled
 FAIL2TOPIC_ENABLED
-## Minimum wait time in deciseconds between valid requests 
+## Minimum wait time in deciseconds between valid requests
 FAIL2TOPIC_RATE_LIMIT 10
 ## Number of requests after breaching rate limit that triggers a ban
 FAIL2TOPIC_MAX_FAILS 5

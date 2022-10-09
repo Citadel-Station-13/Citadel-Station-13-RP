@@ -23,7 +23,7 @@ ALERT_DESC_DELTA The station is under immediate threat of imminent destruction! 
 #### FETISH CONTENT ####
 
 ## If the important_items survive digestion.
-ITEMS_SURVIVE_DIGESTION
+#ITEMS_SURVIVE_DIGESTION
 
 
 
@@ -41,6 +41,10 @@ ENGINE_SUBMAP EngineSubmap_RUST 40
 ENGINE_SUBMAP EngineSubmap_Tesla 20
 ## Singulo
 ENGINE_SUBMAP EngineSubmap_Singulo 20
+
+## Starlight for exterior walls and breaches. Uncomment for starlight!
+## This is disabled by default to make testing quicker, should be enabled on production servers or testing servers messing with lighting
+#STARLIGHT
 
 
 

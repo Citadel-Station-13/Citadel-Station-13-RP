@@ -49,7 +49,7 @@
 	return locate(/obj/structure/lattice, src)	// Counts as solid structure if it has a lattice
 
 /turf/space/proc/update_starlight()
-	var/power = CONFIG_GET(number/starlight)
+	var/power = CONFIG_GET(flag/starlight)
 	if(power)
 		for(var/t in RANGE_TURFS(1,src)) //RANGE_TURFS is in code\__HELPERS\game.dm
 			if(isspaceturf(t))

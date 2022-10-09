@@ -6,15 +6,12 @@
 
 /// Determines whether heads can be gibbed through excessive damage.
 /datum/config_entry/flag/allow_headgibs
-	default = TRUE
 
 /// Determines whether bones can be broken through excessive damage to the organ.
 /datum/config_entry/flag/bones_can_break
-	default = TRUE
 
 /// Determines whether limbs can be amputated through excessive damage to the organ.
 /datum/config_entry/flag/limbs_can_break
-	default = TRUE
 
 
 //! ## Health
@@ -36,26 +33,33 @@
 	default = -100
 
 
+
 //! ## Organs
 /// Enable to have organs decay when someone's dead.
 /datum/config_entry/flag/organ_decay
-	default = TRUE
 
 /// Organ decay multiplier.
 /datum/config_entry/number/organ_decay_multiplier
+	integer = FALSE
 	default = 1
+	min_val = 0
 
 /// Multiplier which enables organs to take more damage before bones breaking or limbs being destroyed.
 /datum/config_entry/number/organ_health_multiplier
+	integer = FALSE
 	default = 100
+	min_val = 0
 
 /// Multiplier which influences how fast organs regenerate naturally.
 /datum/config_entry/number/organ_regeneration_multiplier
+	integer = FALSE
 	default = 75
+	min_val = 0
 
 /// Paincrit knocks someone down once they hit 60 shock_stage, so by default make it so that close to 100 additional damage needs to be dealt,
 /// so that it's similar to HALLOSS. Lowered it a bit since hitting paincrit takes much longer to wear off than a halloss stun.
 /datum/config_entry/number/organ_damage_spillover_multiplier
+	integer = FALSE
 	default = 0.5
 
 
@@ -64,7 +68,8 @@
 /// Amount of time (in hundredths of seconds) for which a brain retains the "spark of life" after the person's death (set to -1 for infinite)
 /datum/config_entry/number/revival_brain_life
 	default = -1
+	integer = FALSE
+	min_val = -1
 
 /// Whether cloning tubes work or not.
 /datum/config_entry/flag/revival_cloning
-	default = TRUE

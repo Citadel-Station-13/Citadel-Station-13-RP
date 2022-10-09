@@ -1,6 +1,5 @@
 /// Logs tgui_Topic client calls.
 /datum/config_entry/flag/emergency_tgui_logging
-	default = FALSE
 
 /// Log login/logout.
 /datum/config_entry/flag/log_access
@@ -66,6 +65,7 @@
 
 /// Config entry which special logging of failed logins under suspicious circumstances.
 /datum/config_entry/flag/log_suspicious_login
+	protection = CONFIG_ENTRY_LOCKED
 
 /// Log telecomms messages.
 // /datum/config_entry/flag/log_telecomms
@@ -85,7 +85,7 @@
 /// Log certain expliotable parrots and other such fun things in a JSON file of twitter valid phrases.
 // /datum/config_entry/flag/log_twitter
 
-/// Log uplink/spellbook/codex ciatrix purchases and refunds.
+/// Log uplink/spellbook/codex purchases and refunds.
 /datum/config_entry/flag/log_uplink
 
 /// Log virology data.
@@ -93,9 +93,11 @@
 
 /// Log voting.
 /datum/config_entry/flag/log_vote
+	protection = CONFIG_ENTRY_LOCKED
 
 /// Log client whisper.
 /datum/config_entry/flag/log_whisper
 
 /// This will notify admins and write to a file any time a new player (byond or your server) connects.
 /datum/config_entry/flag/paranoia_logging
+	protection = CONFIG_ENTRY_LOCKED
