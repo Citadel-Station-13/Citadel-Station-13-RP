@@ -1610,8 +1610,7 @@
 	scannable = 1
 	var/potency = 10
 
-/datum/reagent/neuratrextate/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/neuratrextate/affect_blood(var/mob/living/carbon/M, var/datum/component/cyberpsychosis/CRS)
 	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.capacity < 100)
-			H.capacity = min(H.capacity + potency, 100)
+		if(CRS.capacity < 100)
+			CRS.capacity = min(CRS.capacity + potency, 100)

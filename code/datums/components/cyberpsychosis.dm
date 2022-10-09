@@ -50,3 +50,11 @@ The primary interest at the moment is getting this system functional so it can b
 /datum/component/cyberpsychosis/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
+
+//Subsystem for CRS
+SUBSYSTEM_DEF(cyberpsychosis)
+	name = "Cyernetics Rejection Syndrome"
+	wait = 7
+
+/datum/controller/subsystem/cyberpsychosis/fire(var/datum/component/cyberpsychosis/CRS)
+	CRS.process()
