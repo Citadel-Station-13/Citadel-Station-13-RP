@@ -1,18 +1,23 @@
 /datum/category_item/player_setup_item/background/species
 	sort_order = 1
+	save_key = CHARACTER_DATA_SPECIES
+	// todo: proper view-only section support
 
 /datum/category_item/player_setup_item/background/species/content(datum/preferences/prefs, mob/user, data)
 	. = list()
+	var/datum/character_species/S = prefs.character_species_datum()
+	. += "<center>"
+	. += "Selected species: [S.name]"
+	. += "</center>"
+	. += "<div>"
+	. += "[S.desc]"
+	. += "</div>"
 
-/datum/category_item/player_setup_item/background/species/act(datum/preferences/prefs, mob/user, action, list/params)
-	. = PREFERENCES_NOACTION
+#warn main species selector has to use save key
 
-/datum/category_item/player_setup_item/background/species/filter(datum/preferences/prefs, data, list/errors)
+/datum/preferences/proc/character_species_id()
+	return get_character_data(CHARACTER_DATA_SPECIES)
 
-/datum/category_item/player_setup_item/background/species/copy_to_mob(mob/M, data, flags)
-
-/datum/category_item/player_setup_item/background/species/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
-
-/datum/category_item/player_setup_item/background/species/default_value(randomizing)
-
-#warn impl above
+/datum/preferences/proc/character_species_datum()
+	RETURN_TYPE(/datum/character_species)
+	return SScharacters.resolve_character_species(get_character_data(CHARACTER_DATA_SPECIES))

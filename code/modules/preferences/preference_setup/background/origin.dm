@@ -4,6 +4,10 @@
 
 /datum/category_item/player_setup_item/background/origin/content(datum/preferences/prefs, mob/user, data)
 	. = list()
+	var/list/datum/lore/character_background/origin/available = SScharacters.available_origins(prefs.character_species_id())
+	. += "<center>"
+
+	. -= "</center>"
 
 /datum/category_item/player_setup_item/background/origin/act(datum/preferences/prefs, mob/user, action, list/params)
 	. = PREFERENCES_NOACTION

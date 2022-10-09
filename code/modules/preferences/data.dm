@@ -44,6 +44,8 @@
 
 #warn impl all
 #warn hook up de/serialization somehow
+#warn the actual read-from-desk needs to filter()
+#warn global migrations must run before to transition data properly
 
 /**
  * checked set preference data

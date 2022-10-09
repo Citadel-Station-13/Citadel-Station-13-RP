@@ -2,6 +2,9 @@
 //! please use these for new datums; in the future we'll standardize to this and decide
 //! how to handle UI.
 //! in the future, these are going to be singletons.
+//? furthermore, in each item, "helper" functions for getting/setting related data from external
+//? should be in the file too; this makes it easier to update/harder to forget about during
+//? refactors.
 /datum/category_item/player_setup_item
 	/// primary data key
 	// todo: unit test for this to exist
@@ -47,6 +50,14 @@
 	return data
 
 /**
+ * called to sanitize our value on a preferences datum
+ *
+ * put errors into errors for user feedback
+ */
+/datum/category_item/player_setup_item/proc/sanitize(datum/preferences/prefs, list/errors)
+	write(prefs, filter(prefs, read(prefs), errors))
+
+/**
  * called to serialize our value for saving
  *
  * @return raw data to save
@@ -65,13 +76,13 @@
 	return raw
 
 /**
- * write data
+ * write data, sanitizing in the process
  */
 /datum/category_item/player_setup_item/proc/write(datum/preferences/prefs, data)
 	#warn impl
 
 /**
- * read data
+ * read data; does not auto-sanitize
  */
 /datum/category_item/player_setup_item/proc/read(datum/preferences/prefs)
 	#warn impl

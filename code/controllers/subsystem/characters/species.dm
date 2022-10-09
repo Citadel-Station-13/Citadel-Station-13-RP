@@ -53,11 +53,12 @@
 			"desc" = S.desc
 		))
 
-/datum/controller/subsystem/characters/proc/resolve_real_species(uid)
+/datum/controller/subsystem/characters/proc/resolve_character_species(uid)
 	RETURN_TYPE(/datum/character_species)
+	return species_lookup[uid]
 
 /datum/controller/subsystem/characters/proc/run_species_tweaks(uid, datum/species/S)
-	var/datum/character_species/faux = resolve_real_species(uid)
+	var/datum/character_species/faux = resolve_character_species(uid)
 	if(faux.is_real)
 		return FALSE			// why tf you using this instead of the species system?
 	faux.tweak(S)
@@ -65,7 +66,7 @@
 
 /datum/controller/subsystem/characters/proc/construct_species(uid)
 	RETURN_TYPE(/datum/species)
-	var/datum/character_species/faux = resolve_real_species(uid)
+	var/datum/character_species/faux = resolve_character_species(uid)
 	var/datum/species/built = new faux.real_species_type
 	faux.tweak(built)
 	return built

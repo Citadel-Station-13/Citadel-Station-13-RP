@@ -17,10 +17,30 @@
 			continue
 		L = new path
 		if(istype(L, /datum/lore/character_background/citizenship))
-			character_citizenships += L
+			if(character_citizenships[L.id])
+				stack_trace("dupe [L.id] on [L.type]")
+				continue
+			character_citizenships[L.id] = L
 		if(istype(L, /datum/lore/character_background/origin))
-			character_origins += L
+			if(character_origins[L.id])
+				stack_trace("dupe [L.id] on [L.type]")
+				continue
+			character_origins[L.id] = L
 		if(istype(L, /datum/lore/character_background/religion))
-			character_religions += L
+			if(character_religions[L.id])
+				stack_trace("dupe [L.id] on [L.type]")
+				continue
+			character_religions[L.id] = L
 		if(istype(L, /datum/lore/character_background/faction))
-			character_factions += L
+			if(character_factions[L.id])
+				stack_trace("dupe [L.id] on [L.type]")
+				continue
+			character_factions[L.id] = L
+
+/datum/controller/subsystem/characters/proc/available_citizenships(species_id)
+
+/datum/controller/subsystem/characters/proc/available_religions(species_id)
+
+/datum/controller/subsystem/characters/proc/available_factions(species_id)
+
+/datum/controller/subsystem/characters/proc/available_origins(species_id)

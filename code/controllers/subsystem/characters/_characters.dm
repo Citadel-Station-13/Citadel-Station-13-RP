@@ -18,6 +18,7 @@ SUBSYSTEM_DEF(characters)
 
 	var/list/save_queue = list()
 
+#warn we need to block prefs load until this loads lmao
 
 /datum/controller/subsystem/characters/Initialize()
 	rebuild_caches()

@@ -101,7 +101,10 @@
 	// todo: unit test for this to exist
 	var/save_key
 	var/sort_order = 0
+	/// automatically split into 2 horizontally
 	var/auto_split = TRUE
+	/// automatic <hr>
+	var/auto_rule = FALSE
 
 /datum/category_group/player_setup_category/compare_to(datum/D)
 	if(istype(D, /datum/category_group/player_setup_category))
@@ -161,6 +164,7 @@
 			. += "<br>"
 
 	#warn above 2 content calls need to put in data
+	#warn implement auto_rule
 
 /**********************
 * Category Item Setup *
