@@ -92,15 +92,12 @@
 	var/allow_ai_shells = FALSE
 	/// allows a specific spawner object to instantiate a premade AI Shell
 	var/give_free_ai_shell = FALSE
-	var/hostedby = null
 
 	var/respawn = 1
 	/// Time before a dead player is allowed to respawn (in ds, though the config file asks for minutes, and it's converted below)
 	var/static/respawn_time = 3000
 	var/static/respawn_message = SPAN_BOLDNOTICE("Make sure to play a different character, and please roleplay correctly!")
 
-	var/guest_jobban = 1
-	var/usewhitelist = 0
 	/// Force disconnect for inactive players after this many minutes, if non-0
 	var/kick_inactive = 0
 	var/show_mods = 0
@@ -138,11 +135,9 @@
 	/// Set to 1 to prevent newly-spawned mice from understanding human speech.
 	var/uneducated_mice = 0
 
-	var/usealienwhitelist = 0
 	var/limitalienplayers = 0
 	var/alien_to_human_ratio = 0.5
 	var/allow_extra_antags = 0
-	var/guests_allowed = 1
 	var/debugparanoid = 0
 	var/panic_bunker = 0
 	var/panic_bunker_message = "Sorry, this server is not accepting connections from never seen before players."
@@ -206,18 +201,6 @@
 
 	var/enter_allowed = 1
 
-	var/use_irc_bot = 0
-	var/use_node_bot = 0
-	var/irc_bot_port = 0
-	var/irc_bot_host = ""
-	/// Whether the IRC bot in use is a Bot32 (or similar) instance; Bot32 uses world.Export() instead of nudge.py/libnudge
-	var/irc_bot_export = 0
-	var/main_irc = ""
-	var/admin_irc = ""
-	/// Path to the python executable.  Defaults to "python" on windows and "/usr/bin/env python2" on unix.
-	var/python_path = ""
-	/// Use the C library nudge instead of the python nudge.
-	var/use_lib_nudge = 0
 	var/use_overmap = 0
 
 //! ## Event settings
@@ -262,8 +245,6 @@
 	var/second_click_limit = 15
 	var/minute_topic_limit = 500
 	var/second_topic_limit = 10
-	/// If true, submaps loaded automatically can be rotated.
-	var/random_submap_orientation = FALSE
 	/// If true, specifically mapped in solar control computers will set themselves up when the round starts.
 	var/autostart_solars = FALSE
 
@@ -424,9 +405,6 @@
 				if ("nudge_script_path")
 					config_legacy.nudge_script_path = value
 
-				if ("hostedby")
-					config_legacy.hostedby = value
-
 				if ("serverurl")
 					config_legacy.serverurl = value
 
@@ -451,12 +429,6 @@
 				if ("mapurl")
 					config_legacy.mapurl = value
 
-				if ("guest_jobban")
-					config_legacy.guest_jobban = 1
-
-				if ("guest_ban")
-					config_legacy.guests_allowed = 0
-
 				if ("disable_ooc")
 					config_legacy.ooc_allowed = 0
 					config_legacy.looc_allowed = 0
@@ -472,9 +444,6 @@
 
 				if ("disable_respawn")
 					config_legacy.abandon_allowed = 0
-
-				if ("usewhitelist")
-					config_legacy.usewhitelist = 1
 
 				if ("feature_object_spell_system")
 					config_legacy.feature_object_spell_system = 1
@@ -570,18 +539,6 @@
 				if("popup_admin_pm")
 					config_legacy.popup_admin_pm = 1
 
-				if("use_irc_bot")
-					use_irc_bot = 1
-
-				if("use_node_bot")
-					use_node_bot = 1
-
-				if("irc_bot_port")
-					config_legacy.irc_bot_port = value
-
-				if("irc_bot_export")
-					irc_bot_export = 1
-
 				if("ticklag")
 					var/ticklag = text2num(value)
 					if(ticklag > 0)
@@ -610,9 +567,6 @@
 				if("automute_on")
 					automute_on = 1
 
-				if("usealienwhitelist")
-					usealienwhitelist = 1
-
 				if("alien_player_ratio")
 					limitalienplayers = 1
 					alien_to_human_ratio = text2num(value)
@@ -634,22 +588,6 @@
 
 				if("uneducated_mice")
 					config_legacy.uneducated_mice = 1
-
-				if("irc_bot_host")
-					config_legacy.irc_bot_host = value
-
-				if("main_irc")
-					config_legacy.main_irc = value
-
-				if("admin_irc")
-					config_legacy.admin_irc = value
-
-				if("python_path")
-					if(value)
-						config_legacy.python_path = value
-
-				if("use_lib_nudge")
-					config_legacy.use_lib_nudge = 1
 
 				if("allow_cult_ghostwriter")
 					config_legacy.cult_ghostwriter = 1
@@ -771,8 +709,6 @@
 
 				if("minute_topic_limit")
 					config_legacy.minute_topic_limit = text2num(value)
-				if("random_submap_orientation")
-					config_legacy.random_submap_orientation = 1
 
 				if("second_topic_limit")
 					config_legacy.second_topic_limit = text2num(value)
@@ -810,12 +746,3 @@
 		if(M && M.can_start() && !isnull(config_legacy.probabilities[M.config_tag]) && config_legacy.probabilities[M.config_tag] > 0)
 			runnable_modes |= M
 	return runnable_modes
-
-/datum/configuration_legacy/proc/post_load()
-	//apply a default value to config_legacy.python_path, if needed
-	if (!config_legacy.python_path)
-		if(world.system_type == UNIX)
-			config_legacy.python_path = "/usr/bin/env python2"
-		else //probably windows, if not this should work anyway
-			config_legacy.python_path = "python"
-	world.update_hub_visibility(hub_visibility)			//CITADEL CHANGE - HUB CONFIG

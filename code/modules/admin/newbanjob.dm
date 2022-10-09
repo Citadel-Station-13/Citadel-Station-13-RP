@@ -1,13 +1,14 @@
 var/savefile/Banlistjob
 
 
-/proc/_jobban_isbanned(var/client/clientvar, var/rank)
-	if(!clientvar) return 1
+/proc/_jobban_isbanned(client/clientvar, rank)
+	if(!clientvar)
+		return 1
 	ClearTempbansjob()
 	var/id = clientvar.computer_id
 	var/key = clientvar.ckey
 	if (guest_jobbans(rank))
-		if(config_legacy.guest_jobban && IsGuestKey(key))
+		if(CONFIG_GET(flag/guest_jobban) && IsGuestKey(key))
 			return 1
 	Banlistjob.cd = "/base"
 	if (Banlistjob.dir.Find("[key][id][rank]"))

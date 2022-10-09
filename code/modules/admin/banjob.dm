@@ -13,7 +13,7 @@ var/jobban_keylist[0]		//to store the keys & ranks
 	jobban_keylist.Add(text("[ckey] - [rank]"))
 	jobban_savebanfile()
 
-//returns a reason if M is banned from rank, returns 0 otherwise
+/// Returns a reason if M is banned from rank, returns FALSE otherwise.
 /proc/jobban_isbanned(mob/M, rank)
 	if(M && rank)
 		/*
@@ -21,9 +21,9 @@ var/jobban_keylist[0]		//to store the keys & ranks
 		*/
 
 		if (guest_jobbans(rank))
-			if(config_legacy.guest_jobban && IsGuestKey(M.key))
+			if(CONFIG_GET(flag/guest_jobban) && IsGuestKey(M.key))
 				return "Guest Job-ban"
-			if(config_legacy.usewhitelist && !check_whitelist(M))
+			if(CONFIG_GET(flag/use_job_whitelist) && !is_job_whitelisted(M, rank))
 				return "Whitelisted Job"
 
 		for (var/s in jobban_keylist)
@@ -34,7 +34,7 @@ var/jobban_keylist[0]		//to store the keys & ranks
 					if(text)
 						return text
 				return "Reason Unspecified"
-	return 0
+	return FALSE
 
 /*
 DEBUG

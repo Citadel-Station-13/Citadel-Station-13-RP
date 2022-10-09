@@ -36,7 +36,7 @@
 		return ..()
 
 	//Guest Checking
-	if(!config_legacy.guests_allowed && IsGuestKey(key))
+	if(CONFIG_GET(flag/guest_ban) && IsGuestKey(key))
 		message_admins("<font color=#4F49AF>Failed Login: [key] - Guests not allowed</font>")
 		key_cache[key] = 0
 		return list("reason"="guest", "desc"="\nReason: Guests not allowed. Please sign in with a byond account.")

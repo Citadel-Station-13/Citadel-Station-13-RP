@@ -1212,13 +1212,13 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	set category = "Server"
 	set desc="Guests can't enter"
 	set name="Toggle guests"
-	config_legacy.guests_allowed = !(config_legacy.guests_allowed)
-	if (!(config_legacy.guests_allowed))
-		to_chat(world, "<B>Guests may no longer enter the game.</B>")
+	CONFIG_SET(flag/guest_ban, !CONFIG_GET(flag/guest_ban))
+	if(CONFIG_GET(flag/guest_ban))
+		to_chat(world, SPAN_BOLD("Guests may no longer enter the game."))
 	else
-		to_chat(world, "<B>Guests may now enter the game.</B>")
-	log_admin("[key_name(usr)] toggled guests game entering [config_legacy.guests_allowed?"":"dis"]allowed.")
-	message_admins("<font color=#4F49AF>[key_name_admin(usr)] toggled guests game entering [config_legacy.guests_allowed?"":"dis"]allowed.</font>", 1)
+		to_chat(world, SPAN_BOLD("Guests may now enter the game."))
+	log_admin("[key_name(usr)] toggled guests game entering [CONFIG_GET(flag/guest_ban)?"":"dis"]allowed.")
+	message_admins("<font color=#4F49AF>[key_name_admin(usr)] toggled guests game entering [CONFIG_GET(flag/guest_ban)?"":"dis"]allowed.</font>", 1)
 	feedback_add_details("admin_verb","TGU") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /datum/admins/proc/output_ai_laws()

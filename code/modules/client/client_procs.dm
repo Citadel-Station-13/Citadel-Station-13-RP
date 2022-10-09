@@ -158,7 +158,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(connection != "seeker" && connection != "web")//Invalid connection type.
 		return null
 
-	if(!config_legacy.guests_allowed && IsGuestKey(key))
+	if(CONFIG_GET(flag/guest_ban) && IsGuestKey(key))
 		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
 		del(src)
 		return

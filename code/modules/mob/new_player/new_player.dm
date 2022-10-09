@@ -293,7 +293,7 @@
 			return
 /*
 		if(client.prefs.species != SPECIES_HUMAN && !check_rights(R_ADMIN, 0))
-			if (config_legacy.usealienwhitelist)
+			if CONFIG_GET(flag/use_species_whitelist))
 				if(!is_alien_whitelisted(src, client.prefs.species))
 					src << alert("You are currently not whitelisted to Play [client.prefs.species].")
 					return 0

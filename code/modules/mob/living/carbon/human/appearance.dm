@@ -182,12 +182,12 @@
 	check_dna()
 	dna.ready_dna(src)
 
-/mob/living/carbon/human/proc/generate_valid_species(var/check_whitelist = 1, var/list/whitelist = list(), var/list/blacklist = list())
+/mob/living/carbon/human/proc/generate_valid_species(check_whitelist = 1, list/whitelist = list(), list/blacklist = list())
 	var/list/valid_species = new()
 	for(var/datum/species/S in all_static_species_meta())
 		var/current_species_name = S.name
 
-		if(check_whitelist && config_legacy.usealienwhitelist && !check_rights(R_ADMIN, 0, src)) //If we're using the whitelist, make sure to check it!
+		if(check_whitelist && CONFIG_GET(flag/use_species_whitelist) && !check_rights(R_ADMIN, FALSE, src)) //If we're using the whitelist, make sure to check it!
 			if(!(S.spawn_flags & SPECIES_CAN_JOIN))
 				continue
 			if(whitelist.len && !(current_species_name in whitelist))
