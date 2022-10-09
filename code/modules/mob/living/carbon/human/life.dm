@@ -467,13 +467,13 @@
 	if(species.breath_type)
 		breath_type = species.breath_type
 	else
-		breath_type = /datum/gas/oxygen
+		breath_type = GAS_ID_OXYGEN
 	inhaling = breath.gas[breath_type]
 
 	if(species.poison_type)
 		poison_type = species.poison_type
 	else
-		poison_type = /datum/gas/phoron
+		poison_type = GAS_ID_PHORON
 	poison = breath.gas[poison_type]
 
 	if(species.exhale_type)
@@ -569,7 +569,7 @@
 			if(prob(20))
 				spawn(0) emote(pick("giggle", "laugh"))
 		breath.adjust_gas(/datum/gas/nitrous_oxide, -breath.gas[/datum/gas/nitrous_oxide]/6, update = 0) //update after
-	
+
 	for(var/gasname in breath.gas) //datum/gas/
 		//var/datum/gas/gas = gasname
 		if(gasname == breath_type)

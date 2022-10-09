@@ -4,9 +4,9 @@
 
 /datum/atmosphere/planet/virgo3b
 	base_gases = list(
-	/datum/gas/nitrogen = 0.16,
-	/datum/gas/phoron = 0.72,
-	/datum/gas/carbon_dioxide = 0.12
+	GAS_ID_NITROGEN = 0.16,
+	GAS_ID_PHORON = 0.72,
+	GAS_ID_CARBON_DIOXIDE = 0.12
 	)
 	base_target_pressure = 82.4
 	minimum_pressure = 82.4

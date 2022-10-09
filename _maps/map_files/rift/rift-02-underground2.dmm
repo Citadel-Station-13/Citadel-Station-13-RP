@@ -1060,8 +1060,7 @@
 /area/engineering/engine_core)
 "cz" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1;
-	scrubbing_gas = list(/datum/gas/carbon_dioxide)
+	dir = 1
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
@@ -1258,9 +1257,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "cW" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	scrubbing_gas = list(/datum/gas/carbon_dioxide)
-	},
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "cX" = (

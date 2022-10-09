@@ -83,8 +83,8 @@
 	air_temporary.volume = volume
 	air_temporary.temperature = T20C
 
-	air_temporary.adjust_multi(/datum/gas/oxygen,  (start_pressure*O2STANDARD)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature), \
-	                           /datum/gas/nitrogen,(start_pressure*N2STANDARD)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
+	air_temporary.adjust_multi(GAS_ID_OXYGEN,  (start_pressure*O2STANDARD)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature), \
+	                           GAS_ID_NITROGEN,(start_pressure*N2STANDARD)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
 
 	. = ..()
 	icon_state = "air"
@@ -98,7 +98,7 @@
 	air_temporary.volume = volume
 	air_temporary.temperature = T20C
 
-	air_temporary.adjust_gas(/datum/gas/oxygen, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
+	air_temporary.adjust_gas(GAS_ID_OXYGEN, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
 	. = ..()
 	icon_state = "o2"
 
@@ -112,7 +112,7 @@
 	air_temporary.volume = volume
 	air_temporary.temperature = T20C
 
-	air_temporary.adjust_gas(/datum/gas/nitrogen, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
+	air_temporary.adjust_gas(GAS_ID_NITROGEN, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
 
 	. = ..()
 	icon_state = "n2"
@@ -126,7 +126,7 @@
 	air_temporary.volume = volume
 	air_temporary.temperature = T20C
 
-	air_temporary.adjust_gas(/datum/gas/carbon_dioxide, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
+	air_temporary.adjust_gas(GAS_ID_CARBON_DIOXIDE, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
 
 	. = ..()
 	icon_state = "co2"
@@ -141,7 +141,7 @@
 	air_temporary.volume = volume
 	air_temporary.temperature = T20C
 
-	air_temporary.adjust_gas(/datum/gas/phoron, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
+	air_temporary.adjust_gas(GAS_ID_PHORON, (start_pressure)*(air_temporary.volume)/(R_IDEAL_GAS_EQUATION*air_temporary.temperature))
 
 	. = ..()
 	icon_state = "phoron"

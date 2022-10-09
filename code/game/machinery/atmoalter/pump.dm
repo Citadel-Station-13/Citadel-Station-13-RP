@@ -26,7 +26,7 @@
 	cell = new/obj/item/cell/apc(src)
 
 	var/list/air_mix = StandardAirMix()
-	src.air_contents.adjust_multi(/datum/gas/oxygen, air_mix[/datum/gas/oxygen], /datum/gas/nitrogen, air_mix[/datum/gas/nitrogen])
+	src.air_contents.adjust_multi(GAS_ID_OXYGEN, air_mix[GAS_ID_OXYGEN], GAS_ID_NITROGEN, air_mix[GAS_ID_NITROGEN])
 
 /obj/machinery/portable_atmospherics/powered/pump/update_icon()
 	src.overlays = 0

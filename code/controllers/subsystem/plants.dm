@@ -111,8 +111,8 @@ SUBSYSTEM_DEF(plants)
 
 	if(survive_on_station)
 		if(seed.consume_gasses)
-			seed.consume_gasses[/datum/gas/phoron] = null
-			seed.consume_gasses[/datum/gas/carbon_dioxide] = null
+			seed.consume_gasses[GAS_ID_PHORON] = null
+			seed.consume_gasses[GAS_ID_CARBON_DIOXIDE] = null
 		if(seed.chems && !isnull(seed.chems["pacid"]))
 			seed.chems["pacid"] = null //Eating through the hull will make these plants completely inviable, albeit very dangerous.
 			seed.chems -= null //Setting to null does not actually remove the entry, which is weird.

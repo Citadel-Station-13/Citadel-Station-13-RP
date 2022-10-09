@@ -478,8 +478,7 @@
 /area/tcommsat/computer)
 "bO" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 8;
-	scrubbing_gas = list(/datum/gas/carbon_dioxide)
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
@@ -9657,8 +9656,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 8;
-	scrubbing_gas = list(/datum/gas/carbon_dioxide)
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/tcommsat/computer)
@@ -11048,8 +11046,7 @@
 /area/storage/tech)
 "NT" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 8;
-	scrubbing_gas = list(/datum/gas/carbon_dioxide)
+	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5

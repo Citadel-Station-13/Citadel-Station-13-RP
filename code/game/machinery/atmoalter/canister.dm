@@ -435,17 +435,17 @@ update_flag
 
 /obj/machinery/portable_atmospherics/canister/phoron/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/phoron, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_PHORON, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/oxygen/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/oxygen, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_OXYGEN, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/oxygen/prechilled/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/oxygen, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_OXYGEN, MolesForPressure())
 	src.air_contents.temperature = 80
 	src.update_icon()
 
@@ -551,35 +551,35 @@ update_flag
 
 /obj/machinery/portable_atmospherics/canister/nitrogen/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/nitrogen, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_NITROGEN, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/carbon_dioxide, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_CARBON_DIOXIDE, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/air/Initialize(mapload)
 	. = ..()
 	var/list/air_mix = StandardAirMix()
-	src.air_contents.adjust_multi(/datum/gas/oxygen, air_mix[/datum/gas/oxygen], /datum/gas/nitrogen, air_mix[/datum/gas/nitrogen])
+	src.air_contents.adjust_multi(GAS_ID_OXYGEN, air_mix[GAS_ID_OXYGEN], GAS_ID_NITROGEN, air_mix[GAS_ID_NITROGEN])
 	src.update_icon()
 
 //R-UST port
 // Special types used for engine setup admin verb, they contain double amount of that of normal canister.
 /obj/machinery/portable_atmospherics/canister/nitrogen/engine_setup/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/nitrogen, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_NITROGEN, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide/engine_setup/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/carbon_dioxide, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_CARBON_DIOXIDE, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/phoron/engine_setup/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/phoron, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_PHORON, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/take_damage(var/damage)

@@ -1,8 +1,8 @@
 /datum/atmosphere/planet/classh
 	base_gases = list(
-	/datum/gas/oxygen = 0.24,
-	/datum/gas/nitrogen = 0.72,
-	/datum/gas/carbon_dioxide = 0.04
+	GAS_ID_OXYGEN = 0.24,
+	GAS_ID_NITROGEN = 0.72,
+	GAS_ID_CARBON_DIOXIDE = 0.04
 	)
 	base_target_pressure = 110.1
 	minimum_pressure = 110.1

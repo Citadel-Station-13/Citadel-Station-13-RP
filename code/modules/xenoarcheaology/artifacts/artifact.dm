@@ -93,13 +93,13 @@
 			else if(env.temperature > 375)
 				trigger_hot = 1
 
-			if(env.gas[/datum/gas/phoron] >= 2)
+			if(env.gas[GAS_ID_PHORON] >= 2)
 				trigger_phoron = 1
-			if(env.gas[/datum/gas/oxygen] >= 2)
+			if(env.gas[GAS_ID_OXYGEN] >= 2)
 				trigger_oxy = 1
-			if(env.gas[/datum/gas/carbon_dioxide] >= 2)
+			if(env.gas[GAS_ID_CARBON_DIOXIDE] >= 2)
 				trigger_co2 = 1
-			if(env.gas[/datum/gas/nitrogen] >= 2)
+			if(env.gas[GAS_ID_NITROGEN] >= 2)
 				trigger_nitro = 1
 
 	//COLD ACTIVATION

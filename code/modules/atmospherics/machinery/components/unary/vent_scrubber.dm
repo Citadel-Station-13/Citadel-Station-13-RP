@@ -20,7 +20,7 @@
 
 	var/hibernate = 0 //Do we even process?
 	var/scrubbing = 1 //0 = siphoning, 1 = scrubbing
-	var/list/scrubbing_gas = list(/datum/gas/carbon_dioxide)
+	var/list/scrubbing_gas = list(GAS_ID_CARBON_DIOXIDE)
 
 	var/panic = 0 //is this scrubber panicked?
 
@@ -112,10 +112,10 @@
 		"power" = use_power,
 		"scrubbing" = scrubbing,
 		"panic" = panic,
-		"filter_o2" = (/datum/gas/oxygen in scrubbing_gas),
-		"filter_n2" = (/datum/gas/nitrogen in scrubbing_gas),
-		"filter_co2" = (/datum/gas/carbon_dioxide in scrubbing_gas),
-		"filter_phoron" = (/datum/gas/phoron in scrubbing_gas),
+		"filter_o2" = (GAS_ID_OXYGEN in scrubbing_gas),
+		"filter_n2" = (GAS_ID_NITROGEN in scrubbing_gas),
+		"filter_co2" = (GAS_ID_CARBON_DIOXIDE in scrubbing_gas),
+		"filter_phoron" = (GAS_ID_PHORON in scrubbing_gas),
 		"filter_n2o" = (/datum/gas/nitrous_oxide in scrubbing_gas),
 		"filter_fuel" = (/datum/gas/volatile_fuel in scrubbing_gas),
 		"sigtype" = "status"
@@ -214,25 +214,25 @@
 
 	var/list/toggle = list()
 
-	if(!isnull(signal.data["o2_scrub"]) && text2num(signal.data["o2_scrub"]) != (/datum/gas/oxygen in scrubbing_gas))
-		toggle += /datum/gas/oxygen
+	if(!isnull(signal.data["o2_scrub"]) && text2num(signal.data["o2_scrub"]) != (GAS_ID_OXYGEN in scrubbing_gas))
+		toggle += GAS_ID_OXYGEN
 	else if(signal.data["toggle_o2_scrub"])
-		toggle += /datum/gas/oxygen
+		toggle += GAS_ID_OXYGEN
 
-	if(!isnull(signal.data["n2_scrub"]) && text2num(signal.data["n2_scrub"]) != (/datum/gas/nitrogen in scrubbing_gas))
-		toggle += /datum/gas/nitrogen
+	if(!isnull(signal.data["n2_scrub"]) && text2num(signal.data["n2_scrub"]) != (GAS_ID_NITROGEN in scrubbing_gas))
+		toggle += GAS_ID_NITROGEN
 	else if(signal.data["toggle_n2_scrub"])
-		toggle += /datum/gas/nitrogen
+		toggle += GAS_ID_NITROGEN
 
-	if(!isnull(signal.data["co2_scrub"]) && text2num(signal.data["co2_scrub"]) != (/datum/gas/carbon_dioxide in scrubbing_gas))
-		toggle += /datum/gas/carbon_dioxide
+	if(!isnull(signal.data["co2_scrub"]) && text2num(signal.data["co2_scrub"]) != (GAS_ID_CARBON_DIOXIDE in scrubbing_gas))
+		toggle += GAS_ID_CARBON_DIOXIDE
 	else if(signal.data["toggle_co2_scrub"])
-		toggle += /datum/gas/carbon_dioxide
+		toggle += GAS_ID_CARBON_DIOXIDE
 
-	if(!isnull(signal.data["tox_scrub"]) && text2num(signal.data["tox_scrub"]) != (/datum/gas/phoron in scrubbing_gas))
-		toggle += /datum/gas/phoron
+	if(!isnull(signal.data["tox_scrub"]) && text2num(signal.data["tox_scrub"]) != (GAS_ID_PHORON in scrubbing_gas))
+		toggle += GAS_ID_PHORON
 	else if(signal.data["toggle_tox_scrub"])
-		toggle += /datum/gas/phoron
+		toggle += GAS_ID_PHORON
 
 	if(!isnull(signal.data["n2o_scrub"]) && text2num(signal.data["n2o_scrub"]) != (/datum/gas/nitrous_oxide in scrubbing_gas))
 		toggle += /datum/gas/nitrous_oxide
