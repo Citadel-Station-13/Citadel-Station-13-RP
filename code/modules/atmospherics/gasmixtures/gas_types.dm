@@ -26,11 +26,6 @@ GLOBAL_LIST_INIT(meta_gas_by_flag, meta_gas_by_flag_list())
 GLOBAL_LIST_INIT(meta_gas_molar_mass, meta_gas_molar_mass_list())
 /// Typecache of gases with no overlays
 GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_list())
-/// The reagents gases give mobs when breathed
-GLOBAL_LIST_INIT(meta_gas_reagent_id, meta_gas_reagent_id_list())
-/// The amount of the reagents gases give mobs
-GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
-
 
 /proc/meta_gas_heat_list()
 	. = subtypesof(/datum/gas)
@@ -126,34 +121,6 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 		if (!initial(gasvar.gas_overlay))
 			.[gastype] = TRUE
 
-/proc/meta_gas_reagent_id_list()
-	. = list()
-	for(var/gastype in subtypesof(/datum/gas))
-		var/datum/gas/gasvar = gastype
-		if(initial(gasvar.gas_reagent_id))
-			.[gastype] = initial(gasvar.gas_reagent_id)
-
-/proc/meta_gas_reagent_amount_list()
-	. = list()
-	for(var/gastype in subtypesof(/datum/gas))
-		var/datum/gas/gasvar = gastype
-		if(initial(gasvar.gas_reagent_amount))
-			.[gastype] = initial(gasvar.gas_reagent_amount)
-// Visual overlay
-/*
-/obj/effect/overlay/gas
-	icon = 'icons/effects/atmospherics.dmi'
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	anchored = TRUE  // should only appear in vis_contents, but to be safe
-	layer = FLY_LAYER
-	appearance_flags = TILE_BOUND
-	vis_flags = NONE
-
-/obj/effect/overlay/gas/New(state, alph)
-	. = ..()
-	icon_state = state
-	alpha = alph
-*/
 
 /*||||||||||||||/----------\||||||||||||||*\
 ||||||||||||||||[GAS DATUMS]||||||||||||||||
@@ -164,32 +131,48 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 ||||only by meta_gas_list().            ||||
 \*||||||||||||||||||||||||||||||||||||||||*/
 /datum/gas
+	//! Intrinsics
 	/// Text ID for things like gas strings. THIS SHOULD NEVER, EVER, BE CHANGED! Pick one and stick with it. Change this and EVERYTHING breaks. The typepath, infact, is more mutable than this!
 	var/id = ""
-	/// Specific heat in J/(mol*K)
-	var/specific_heat = 0
 	/// Textual name
 	var/name = "Unnamed Gas"
+	/// Gas flags. See [code/__DEFINES/atmospherics/flags.dm]
+	var/gas_flags = GAS_FLAG_KNOWN
+	/// gas group - list support can be added later
+	var/gas_group = GAS_GROUP_UNKONWN
+
+	//! physics
+	/// Specific heat in J/(mol*K)
+	var/specific_heat = 0
+	/// Molar mass in kg/mol
+	var/molar_mass = 0
+
+	#warn unit test for reagent sanity
+	//! reagents
+	/// reagent id to apply
+	var/gas_reagent_id
+	/// reagent amount to add to someone breathing it at minimum moles
+	var/gas_reagent_amount = 0
+	/// minimum moles to affect
+	var/gas_reagent_threshold = 0
+	/// reagent amount to additionally add per mole
+	var/gas_reagent_factor = 0
+	/// reagent amount to not exceed in them
+	var/gas_reagent_max = 10
+	/// reserved for chemgas - how many moles of this gas corrospond to 1 unit; should always be inverse of reagent's side of this lookup
+	var/gas_reagent_moles = 0.1
+
+	//! visuals
 	/// icon_state in icons/effects/atmospherics.dmi
 	var/gas_overlay = ""
 	/// How many moles is required to make this gas visible
 	var/moles_visible
-	/// Is this gas considered dangerous? Used by canister and admin logging in general.
-	var/dangerous = FALSE
+
+	//! reactions
 	/// Fusion is not yet implemented : How much the gas accelerates a fusion reaction
 	var/fusion_power = 0
 	/// Relative rarity compared to other gases, used when setting up the reactions list.
 	var/rarity = 0
-	/// Molar mass in kg/mol
-	var/molar_mass = 0
-	/// Gas flags. See [code/__DEFINES/atmospherics/flags.dm]
-	var/gas_flags
-	/// gas group - list support can be added later
-	var/gas_group
-
-	var/gas_reagent_id //What is the ID of the reagent we want to apply
-	var/gas_reagent_amount = 0//How much of the reagent is applied
-	//For a gas that makes up 21% of the atmos you need to be above 1.39, for it to instill any reagents, for lower percentages the number needs to be higher,and viceversa
 
 /datum/gas/oxygen
 	id = GAS_ID_OXYGEN

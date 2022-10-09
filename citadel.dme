@@ -1842,6 +1842,7 @@
 #include "code\modules\atmospherics\gasmixtures\gas_data.dm"
 #include "code\modules\atmospherics\gasmixtures\gas_generation.dm"
 #include "code\modules\atmospherics\gasmixtures\gas_mixture.dm"
+#include "code\modules\atmospherics\gasmixtures\gas_overlay.dm"
 #include "code\modules\atmospherics\gasmixtures\gas_types.dm"
 #include "code\modules\atmospherics\gasmixtures\immutable_mixtures.dm"
 #include "code\modules\atmospherics\gasmixtures\reactions.dm"

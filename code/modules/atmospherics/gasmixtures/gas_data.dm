@@ -7,18 +7,28 @@ GLOBAL_DATUM_INIT(gas_data, /datum/gas_data, new)
  */
 /datum/gas_data
 	//! gas data
+	//? intrinsics
 	/// ids; associative list to the instantiated datum
 	var/list/gases = list()
 	/// names
 	var/list/names = list()
-	/// specific heat
-	var/list/specific_heats = list()
-	/// molar masses
-	var/list/molar_masses = list()
 	/// flags
 	var/list/flags = list()
 	/// groups
 	var/list/groups = list()
+	//? physics
+	/// specific heat
+	var/list/specific_heats = list()
+	/// molar masses
+	var/list/molar_masses = list()
+	//? reagents
+	/// reagents: id = (reagentid, base amount, minimum moles, mole factor, max amount)
+	/// this is a sparse lookup, not all gases are in here.
+	var/list/reagents = list()
+	//? visuals
+	#warn wip lmao visuals need slight rework
+	//? reactions
+	var/list/rarities = list()
 
 	//! gas cache lists
 	/// list of lists of gas ids by flag
@@ -37,8 +47,41 @@ GLOBAL_DATUM_INIT(gas_data, /datum/gas_data, new)
 
 /datum/gas_data/proc/build_hardcoded()
 
+#warn impl
+
 /datum/gas_data/proc/register_gas(datum/gas/G)
+	ASSERT(G.id)
+	ASSERT(!gases[G.id])
+	_register_gas(G)
 
 /datum/gas_data/proc/_register_gas(datum/gas/G)
-
-#warn impl
+	//? intrinsics
+	gases[G.id] = G
+	names[G.id] = G.name
+	flags[G.id] = G.gas_flags
+	groups[G.id] = G.gas_groups
+	//? physics
+	specific_heats[G.id] = G.specific_heat
+	molar_masses[G.id] = G.molar_mass
+	//? reagents
+	if(G.gas_reagent_id)
+		reagents[G.id] = list(
+			G.gas_reagent_id,
+			G.gas_reagent_amount,
+			G.gas_reagent_threshold
+			G.gas_reagent_factor,
+			G.gas_reagent_max
+		)
+	else
+		reagents -= G.id
+	//? visuals
+	//? reactions
+	rarities[G.id] = G.rarity
+	//? rebuild cheap cache lists
+	//* gas groups
+	LAZYINITLIST(gas_by_group[G.gas_group])
+	LAZYOR(gas_by_group[G.gas_group], G.id)
+	//* gas flags
+	for(var/bit in bitfield2list(G.gas_flags))
+		LAZYINITLIST(gas_by_flag, "[bit]")
+		LAZYOR(gas_flags["[bit]"], G.id)
