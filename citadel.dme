@@ -1839,6 +1839,7 @@
 #include "code\modules\atmospherics\environmental\zas\variable_settings.dm"
 #include "code\modules\atmospherics\environmental\zas\zone.dm"
 #include "code\modules\atmospherics\gasmixtures\gas_data.dm"
+#include "code\modules\atmospherics\gasmixtures\gas_generation.dm"
 #include "code\modules\atmospherics\gasmixtures\gas_mixture.dm"
 #include "code\modules\atmospherics\gasmixtures\gas_types.dm"
 #include "code\modules\atmospherics\gasmixtures\immutable_mixtures.dm"
