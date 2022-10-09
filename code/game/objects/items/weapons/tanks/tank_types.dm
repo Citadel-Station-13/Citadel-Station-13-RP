@@ -52,7 +52,7 @@
 	. = ..()
 
 	air_contents.gas[GAS_ID_OXYGEN] = (3*ONE_ATMOSPHERE)*70/(R_IDEAL_GAS_EQUATION*T20C) * O2STANDARD
-	air_contents.gas[/datum/gas/nitrous_oxide] = (3*ONE_ATMOSPHERE)*70/(R_IDEAL_GAS_EQUATION*T20C) * N2STANDARD
+	air_contents.gas[GAS_ID_NITROUS_OXIDE] = (3*ONE_ATMOSPHERE)*70/(R_IDEAL_GAS_EQUATION*T20C) * N2STANDARD
 	air_contents.update_values()
 
 /*

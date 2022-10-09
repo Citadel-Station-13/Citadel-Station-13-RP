@@ -84,7 +84,7 @@
 			data["SM_gas_CO2"] = round(100*air.gas[GAS_ID_CARBON_DIOXIDE]/air.total_moles,0.01)
 			data["SM_gas_N2"] = round(100*air.gas[GAS_ID_NITROGEN]/air.total_moles,0.01)
 			data["SM_gas_PH"] = round(100*air.gas[GAS_ID_PHORON]/air.total_moles,0.01)
-			data["SM_gas_N2O"] = round(100*air.gas[/datum/gas/nitrous_oxide]/air.total_moles,0.01)
+			data["SM_gas_N2O"] = round(100*air.gas[GAS_ID_NITROUS_OXIDE]/air.total_moles,0.01)
 		else
 			data["SM_gas_O2"] = 0
 			data["SM_gas_CO2"] = 0

@@ -22,7 +22,7 @@
 	EVENT_LEVEL_MAJOR = 3
 	)
 
-	var/gas_choices = list(GAS_ID_CARBON_DIOXIDE, /datum/gas/nitrous_oxide) // Annoying
+	var/gas_choices = list(GAS_ID_CARBON_DIOXIDE, GAS_ID_NITROUS_OXIDE) // Annoying
 	if(severity >= EVENT_LEVEL_MODERATE)
 		gas_choices += GAS_ID_PHORON // Dangerous
 	if(severity >= EVENT_LEVEL_MAJOR)

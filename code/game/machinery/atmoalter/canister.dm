@@ -451,7 +451,7 @@ update_flag
 
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide/Initialize(mapload)
 	. = ..()
-	air_contents.adjust_gas(/datum/gas/nitrous_oxide, MolesForPressure())
+	air_contents.adjust_gas(GAS_ID_NITROUS_OXIDE, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/helium/Initialize(mapload)
@@ -491,27 +491,27 @@ update_flag
 
 /obj/machinery/portable_atmospherics/canister/krypton/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/krypton, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_KRYPTON, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/neon/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/neon, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_NEON, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/ammonia/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/ammonia, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_AMMONIA, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/xenon/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/xenon, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_XENON, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/chlorine/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/chlorine, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_CHLORINE, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/sulfur_dioxide/Initialize(mapload)
@@ -537,7 +537,7 @@ update_flag
 //Dirty way to fill room with gas. However it is a bit easier to do than creating some floor/engine/n2o -rastaf0
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide/roomfiller/Initialize(mapload)
 	. = ..()
-	air_contents.gas[/datum/gas/nitrous_oxide] = 9*4000
+	air_contents.gas[GAS_ID_NITROUS_OXIDE] = 9*4000
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide/roomfiller/LateInitialize()

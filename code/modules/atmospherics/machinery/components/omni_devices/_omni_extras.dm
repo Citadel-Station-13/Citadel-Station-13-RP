@@ -104,6 +104,6 @@
 		if(ATM_P)
 			return GAS_ID_PHORON
 		if(ATM_N2O)
-			return /datum/gas/nitrous_oxide
+			return GAS_ID_NITROUS_OXIDE
 		else
 			return null

@@ -51,7 +51,7 @@
 		if(3) //removing CO2
 			filtered_out += GAS_ID_CARBON_DIOXIDE
 		if(4)//removing N2O
-			filtered_out += /datum/gas/nitrous_oxide
+			filtered_out += GAS_ID_NITROUS_OXIDE
 
 	air1.volume = ATMOS_DEFAULT_VOLUME_FILTER
 	air2.volume = ATMOS_DEFAULT_VOLUME_FILTER
@@ -175,7 +175,7 @@
 				if(3) //removing CO2
 					filtered_out += GAS_ID_CARBON_DIOXIDE
 				if(4)//removing N2O
-					filtered_out += /datum/gas/nitrous_oxide
+					filtered_out += GAS_ID_NITROUS_OXIDE
 
 	update_icon()
 

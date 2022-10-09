@@ -11,7 +11,7 @@
 	permeability_coefficient = 0.01
 	siemens_coefficient = 0.9
 	var/gas_filter_strength = 1			//For gas mask filters
-	var/list/filtered_gases = list(GAS_ID_PHORON, /datum/gas/nitrous_oxide)
+	var/list/filtered_gases = list(GAS_ID_PHORON, GAS_ID_NITROUS_OXIDE)
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 75, rad = 0)
 
 /obj/item/clothing/mask/gas/filter_air(datum/gas_mixture/air)
@@ -106,7 +106,7 @@
 	flags = PHORONGUARD
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS
 	species_restricted = list(SPECIES_VOX)
-	filtered_gases = list(GAS_ID_OXYGEN, /datum/gas/nitrous_oxide)
+	filtered_gases = list(GAS_ID_OXYGEN, GAS_ID_NITROUS_OXIDE)
 	var/mask_open = FALSE	// Controls if the Vox can eat through this mask
 	action_button_name = "Toggle Feeding Port"
 
@@ -133,7 +133,7 @@
 	//body_parts_covered = 0
 	species_restricted = list(SPECIES_ZADDAT)
 	flags_inv = HIDEEARS //semi-transparent
-	filtered_gases = list(GAS_ID_PHORON, /datum/gas/nitrous_oxide, GAS_ID_NITROGEN)
+	filtered_gases = list(GAS_ID_PHORON, GAS_ID_NITROUS_OXIDE, GAS_ID_NITROGEN)
 
 /obj/item/clothing/mask/gas/syndicate
 	name = "tactical mask"
