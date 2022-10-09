@@ -27,7 +27,13 @@
 	var/displays_id = 1
 
 	//! Rolldown Status
-	#warn god these are awful
+	//? Rolldown, sleeve appends are _rollsuit, _rollsleeve respectively.
+	/// if true, we assume *all* bodytypes have rolldown states, and to use the new system.
+	var/worn_has_rolldown = FALSE
+	/// if true, we assume *all* bodytypes have rollsleeve states, and to use the new system.
+	var/worn_has_rollsleeve = FALSE
+	#warn impl above
+	#warn parse below
 	var/rolled_down = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
 	var/rolled_sleeves = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
 	#warn way to have better rolldown/rollsleeve sprites on default rendering holy shit

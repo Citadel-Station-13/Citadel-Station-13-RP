@@ -168,6 +168,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 			continue
 		var/icon/I = render_default_icons[bodytype_str]
 		render_state_cache[bodytype_str] = icon_states(I)
+		// turn into hash
+		for(var/state in render_state_cache[bodytype_str])
+			render_state_cache[bodytype_str][state] = TRUE
 		render_dim_x_cache[bodytype_str] = I.Width()
 		render_dim_y_cache[bodytype_str] = I.Height()
 
@@ -240,6 +243,38 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/list/render_rolldown_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/uniform_rolled_down.dmi'
 	)
+	/// list of rollsleeve icons; must DIRECTLY corrospond to default icons.
+	var/list/render_rollsleeve_icons = list(
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/uniform_sleeves_rolled.dmi'
+	)
+	/// list of rolldown states
+	var/list/render_rolldown_states
+	/// list of rollsleeve states
+	var/list/render_rollsleeve_states
+
+/datum/inventory_slot_meta/inventory/uniform/rebuild_rendering_caches()
+	. = ..()
+	render_rolldown_states = list()
+	for(var/bodytype_str in render_rolldown_icons)
+		var/icon/I = icon(render_rolldown_icons[bodytype_str])
+		render_rolldown_states[bodytype_str] = icon_states(I)
+		// turn into hash
+		for(var/state in render_rolldown_states[bodytype_str])
+			render_rolldown_states[bodytype_str][state] = TRUE
+	render_rollsleeve_states = list()
+	for(var/bodytype_str in render_rollsleeve_icons)
+		var/icon/I = icon(render_rolldown_icons[bodytype_str])
+		render_rollsleeve_states[bodytype_str] = icon_states(I)
+		// turn into hash
+		for(var/state in render_rollsleeve_states[bodytype_str])
+			render_rollsleeve_states[bodytype_str][state] = TRUE
+
+/datum/inventory_slot_meta/inventory/uniform/resolve_default_assets(bodytype, state, mob/wearer, obj/item/equipped, inhand_domain)
+	. = ..()
+
+/datum/inventory_slot_meta/inventory/uniform/proc/check_rolldown_cache(state)
+
+/datum/inventory_slot_meta/inventory/uniform/proc/check_rollsleeve_cache(state)
 
 #warn finish
 #warn detect rolldown proc
