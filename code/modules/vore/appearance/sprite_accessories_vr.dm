@@ -17,5 +17,8 @@
 	var/dimension_x = 32
 	var/dimension_y = 32
 
+	//! emissives
+	/// allow emissives
+	var/emissives_allowed = TRUE
 
-
+/datum/sprite_accessory/proc/render_emissives(mob/M)

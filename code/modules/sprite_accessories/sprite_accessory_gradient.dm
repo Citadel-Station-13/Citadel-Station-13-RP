@@ -1,0 +1,1 @@
+/datum/sprite_accessory_gradient

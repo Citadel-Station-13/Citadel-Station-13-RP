@@ -12,28 +12,29 @@
 /atom/vv_edit_var(var_name, var_value)
 	if(!GLOB.Debug2)
 		flags |= ADMIN_SPAWNED
-	switch(var_name)
-		if(NAMEOF(src, smoothing_junction))
-			set_smoothed_icon_state(var_value)
-			. = TRUE
-		if(NAMEOF(src, opacity))
-			set_opacity(var_value)
-			. = TRUE
-		if(NAMEOF(src, base_pixel_x))
-			set_base_pixel_x(var_value)
-			. = TRUE
-		if(NAMEOF(src, base_pixel_y))
-			set_base_pixel_y(var_value)
-			. = TRUE
-		if(NAMEOF(src, contents))
-			var/list/O = contents
-			var/list/N = var_value
-			for(var/atom/movable/AM in O - N)
-				// these go away
-				AM.moveToNullspace()
-			for(var/atom/movable/AM in N - O)
-				// these go in
-				AM.forceMove(src)
+	if(!raw_edit)
+		switch(var_name)
+			if(NAMEOF(src, smoothing_junction))
+				set_smoothed_icon_state(var_value)
+				. = TRUE
+			if(NAMEOF(src, opacity))
+				set_opacity(var_value)
+				. = TRUE
+			if(NAMEOF(src, base_pixel_x))
+				set_base_pixel_x(var_value)
+				. = TRUE
+			if(NAMEOF(src, base_pixel_y))
+				set_base_pixel_y(var_value)
+				. = TRUE
+			if(NAMEOF(src, contents))
+				var/list/O = contents
+				var/list/N = var_value
+				for(var/atom/movable/AM in O - N)
+					// these go away
+					AM.moveToNullspace()
+				for(var/atom/movable/AM in N - O)
+					// these go in
+					AM.forceMove(src)
 
 	if(!isnull(.))
 		datum_flags |= DF_VAR_EDITED
@@ -44,13 +45,14 @@
 
 	. = ..()
 
-	switch(var_name)
-		if(NAMEOF(src, color))
-			add_atom_colour(color, ADMIN_COLOUR_PRIORITY)
-		if(NAMEOF(src, base_layer), NAMEOF(src, layer))
-			set_base_layer(var_value)
-		if(NAMEOF(src, relative_layer))
-			set_relative_layer(var_value)
+	if(!raw_edit)
+		switch(var_name)
+			if(NAMEOF(src, color))
+				add_atom_colour(color, ADMIN_COLOUR_PRIORITY)
+			if(NAMEOF(src, base_layer), NAMEOF(src, layer))
+				set_base_layer(var_value)
+			if(NAMEOF(src, relative_layer))
+				set_relative_layer(var_value)
 
 /atom/vv_get_var(var_name)
 	switch(var_name)
