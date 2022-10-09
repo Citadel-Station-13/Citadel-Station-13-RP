@@ -36,8 +36,11 @@
 	var/worn_has_rollsleeve = FALSE
 	#warn impl above
 	#warn parse below
-	var/rolled_down = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
-	var/rolled_sleeves = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
+	#warn switch it to enums
+	/// rolldown status
+	var/worn_rolled_down = UNIFORM_ROLL_NULLED
+	/// rollsleeve status
+	var/worn_rolled_sleeves = UNIFORM_ROLL_NULLED
 	#warn way to have better rolldown/rollsleeve sprites on default rendering holy shit
 
 	// todo: unify this iwth worn state, probably by converting the system used to do this

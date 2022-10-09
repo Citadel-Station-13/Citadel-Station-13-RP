@@ -15,3 +15,11 @@
 #define SUIT_SENSOR_VITAL    2
 /// location
 #define SUIT_SENSOR_TRACKING 3
+
+//! rolldown/rollsleeve status
+/// not supported
+#define UNIFORM_ROLL_NULLED 1
+/// not rolled
+#define UNIFORM_ROLL_FALSE 2
+/// rolled
+#define UNIFORM_ROLL_TRUE 3

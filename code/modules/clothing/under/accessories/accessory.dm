@@ -55,7 +55,7 @@
 
 	if(istype(loc,/obj/item/clothing/under))
 		var/obj/item/clothing/under/C = loc
-		if(on_rolled["down"] && C.rolled_down > 0)
+		if(on_rolled["down"] && C.worn_rolled_down == UNIFORM_ROLL_TRUE)
 			tmp_icon_state = on_rolled["down"]
 		else if(on_rolled["rolled"] && C.rolled_sleeves > 0)
 			tmp_icon_state = on_rolled["rolled"]
