@@ -25,10 +25,17 @@
 
 	//! Rolldown Status
 	//? Rolldown, sleeve appends are _down, _sleeve respectively.
+	//? AUTODETECT ONLY WORKS FOR SHARED SPRITES.
+	//? If you are using new rendering, you must NOT use autodetection.
+	//? Read the procs for these in the rendering section to know why.
 	/// if true, we assume *all* bodytypes have rolldown states, and to use the new system.
 	var/worn_has_rolldown = UNIFORM_AUTODETECT_ROLL
 	/// if true, we assume *all* bodytypes have rollsleeve states, and to use the new system.
 	var/worn_has_rollsleeve = UNIFORM_AUTODETECT_ROLL
+	/// these bodytypes have rolldown if not autodetecting
+	var/worn_rolldown_bodytypes = ALL
+	/// these bodytypes have rollsleeve if not autodetecting
+	var/worn_rollsleeve_bodytypes = ALL
 	/// rolldown status
 	var/worn_rolled_down = UNIFORM_ROLL_NULLED
 	/// rollsleeve status
@@ -58,6 +65,7 @@
 	var/icon/rolled_down_icon = 'icons/mob/clothing/uniform_rolled_down.dmi'
 	var/icon/rolled_down_sleeves_icon = 'icons/mob/clothing/uniform_sleeves_rolled.dmi'
 
+// todo kick to item flag for auto-unequip-without-clickdrag
 /obj/item/clothing/under/attack_hand(var/mob/user)
 	if(LAZYLEN(accessories))
 		..()
@@ -67,14 +75,6 @@
 
 /obj/item/clothing/under/Initialize(mapload)
 	. = ..()
-	var/mob/living/carbon/human/H = loc
-	if(snowflake_worn_state)
-		if(!item_state_slots)
-			item_state_slots = list()
-		item_state_slots[SLOT_ID_UNIFORM] = snowflake_worn_state
-	else
-		snowflake_worn_state = icon_state
-
 	init_sensors(istype(H)? H : null)
 
 /obj/item/clothing/under/proc/init_sensors(mob/living/carbon/human/H)
@@ -105,8 +105,9 @@
 // todo : NUKE THIS SHIT FROM ORBIT ~silicons
 //UNIFORM: Always appends "_s" to iconstate, stupidly.
 /obj/item/clothing/under/resolve_legacy_state(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
-	. = ..()
-	. += "_s"
+	if(snowflake_worn_state && (slot_meta.id == SLOT_ID_UNIFORM))
+		return snowflake_worn_state + "_s"
+	return ..()
 
 /obj/item/clothing/under/base_worn_state(inhands, slot_key, bodytype)
 	. = ..()
@@ -116,9 +117,42 @@
 		. += "_sleeves"
 
 /obj/item/clothing/under/proc/update_rolldown()
+	var/has_roll
+	var/detected_bodytype = BODYTYPE_DEFAULT
+	var/mob/living/carbon/human/H = worn_mob()
+	if(istype(H))
+		detected_bodytype = H.species.get_effective_bodytype(src, worn_slot)
+	switch(worn_has_rolldown)
+		if(UNIFORM_HAS_ROLL)
+			has_roll = (worn_rolldown_bodytypes & detected_bodytype)
+		if(UNIFORM_HAS_NO_ROLL)
+			has_roll = FALSE
+		if(UNIFORM_AUTODETECT_ROLL)
+
+	if(!has_roll)
+		verbs -= /obj/item/clothing/under/verb/rollsuit
+		return
+	verbs |= /obj/item/clothing/under/verb/rollsuit
 
 /obj/item/clothing/under/proc/update_rollsleeve()
+	var/has_sleeves
+	var/detected_bodytype = BODYTYPE_DEFAULT
+	var/mob/living/carbon/human/H = worn_mob()
+	if(istype(H))
+		detected_bodytype = H.species.get_effective_bodytype(src, worn_slot)
+	switch(worn_has_rollsleeve)
+		if(UNIFORM_HAS_ROLL)
+			has_sleeves = (worn_rollsleeve_bodytypes & detected_bodytype)
+		if(UNIFORM_HAS_NO_ROLL)
+			has_sleeves = FALSE
+		if(UNIFORM_AUTODETECT_ROLL)
 
+	if(!has_sleeves)
+		verbs -= /obj/item/clothing/under/verb/rollsleeves
+		return
+	verbs |= /obj/item/clothing/under/verb/rollsleeves
+
+#warn autodetect
 /*
 	#warn better autodetector
 	//autodetect rollability
