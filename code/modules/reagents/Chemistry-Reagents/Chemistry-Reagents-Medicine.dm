@@ -1600,8 +1600,6 @@
 	M.ExtinguishMob()
 
 //CRS (Cyberpsychosis) Medication
-#define PURGE_DELAY 5*60*10
-
 /datum/reagent/neuratrextate
 	name = "Neuratrextate"
 	id = "neuratrextate"
@@ -1615,36 +1613,36 @@
 	scannable = 1
 	overdose = 20
 	var/potency = 10
-	var/triggered = FALSE
-	data = 0
 
 /datum/reagent/neuratrextate/affect_blood(var/mob/living/carbon/M)
 	var/mob/living/carbon/human/H = M
-	if(ishuman(M) && !triggered)
-		triggered = TRUE
-		if(H.capacity < 90)
-			H.capacity = (H.capacity + potency)
-		else if(H.capacity < 70)
-			H.capacity = (H.capacity + (potency * 0.5))
-		else if(H.capacity < 30)
-			H.capacity = (H.capacity + (potency * 0.2))
-		else
-			H.capacity = 100
-	else
-		if(world.time > data + PURGE_DELAY)
-			data = world.time
-			purge()
-
-/datum/reagent/neuratrextate/proc/purge(var/datum/species/S, var/datum/component/cyberpsychosis/CRS)
-	var/mob/living/carbon/human/H = S
-	remove_self(15)
-	if(S.is_cyberpsycho && H.capacity == 100)
-		CRS.adjusted = 0
-		CRS.update_capacity()
-		triggered = FALSE
+	if(ishuman(M))
+		switch(H.capacity)
+			if(71 to 90)
+				H.capacity = (H.capacity + potency)
+			if(31 to 70)
+				H.capacity = (H.capacity + (potency * 0.5))
+			if(0 to 30)
+				H.capacity = (H.capacity + (potency * 0.2))
+			else
+				H.capacity = 100
 
 /datum/reagent/neuratrextate/overdose(var/datum/species/S)
 	..()
 	var/mob/living/carbon/human/H = S
 	if(S.is_cyberpsycho)
 		H.capacity = (H.capacity - (potency * 2))
+
+//Create Neuratrextate Inert. This'll be the one that does all the shit I want.
+/*
+Not that i know off, you could replace all of the reagent with reagen-inert(a second reagent with a var edited to not really process
+(reagents have their own metabolism rate var as well iirc)) but without a var on the mob we can't completely freeze it and unthaw it on its own
+
+You know, swapping it out after the initial dose isn't a terrible idea. (edited)
+
+I am not sure if a reagent that's removed = 0 calls the affect functions
+
+Maybe simulating the effect of the chem catalyzing in the body and replacing it with an inert drug with an overdose threshold would work best here.
+Gives me the exact effect I want.
+Although it doesn't solve the issue of why the drug is still triggering multiple adjustments to capacity all at once.
+*/
