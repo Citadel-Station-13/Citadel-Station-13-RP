@@ -18,14 +18,9 @@
 	//! Suit Sensors
 	/// do we have suit sensors?
 	var/has_sensors = UNIFORM_HAS_SUIT_SENSORS
-	//TFF 5/8/19 - sets /obj/item/clothing/under sensor setting default?
-	var/sensor_mode = 3
-		/*
-		1 = Report living/dead
-		2 = Report detailed damages
-		3 = Report location
-		*/
-	var/sensorpref = 5
+	/// suit sensor mode
+	var/sensor_mode = SUIT_SENSOR_OFF
+
 	var/displays_id = 1
 
 	//! Rolldown Status
@@ -80,17 +75,24 @@
 	else
 		snowflake_worn_state = icon_state
 
-	//TFF 5/8/19 - define numbers and specifics for suit sensor settings
-	sensorpref = isnull(H) ? 1 : (ishuman(H) ? H.sensorpref : 1)
-	switch(sensorpref)
-		if(1) sensor_mode = 0				//Sensors off
-		if(2) sensor_mode = 1				//Sensors on binary
-		if(3) sensor_mode = 2				//Sensors display vitals
-		if(4) sensor_mode = 3				//Sensors display vitals and enables tracking
-		if(5) sensor_mode = pick(0,1,2,3)	//Select a random setting
-		else
-			sensor_mode = pick(0,1,2,3)
-			log_debug("Invalid switch for suit sensors, defaulting to random. [sensorpref] chosen")
+	init_sensors(istype(H)? H : null)
+
+/obj/item/clothing/under/proc/init_sensors(mob/living/carbon/human/H)
+	if(H)
+		switch(H.sensorpref)
+			if(1) sensor_mode = SUIT_SENSOR_OFF				//Sensors off
+			if(2) sensor_mode = SUIT_SENSOR_BINARY				//Sensors on binary
+			if(3) sensor_mode = SUIT_SENSOR_VITAL				//Sensors display vitals
+			if(4) sensor_mode = SUIT_SENSOR_TRACKING				//Sensors display vitals and enables tracking
+			else
+				sensor_mode = pick(
+					SUIT_SENSOR_OFF,
+					SUIT_SENSOR_BINARY,
+					SUIT_SENSOR_VITAL,
+					SUIT_SENSOR_TRACKING
+				)	//Select a random setting
+	else
+		sensor_mode = SUIT_SENSOR_OFF
 
 //! Inventory
 /obj/item/clothing/under/pickup(mob/user, flags, atom/oldLoc)
@@ -326,8 +328,13 @@
 	set_sensors(user)
 
 /obj/item/clothing/under/rank
-	#warn random sensors
 
-/obj/item/clothing/under/rank/Initialize(mapload)
-	. = ..()
-	sensor_mode = pick(0,1,2,3)
+/obj/item/clothing/under/rank/init_sensors(mob/living/carbon/human/H)
+	if(!H)
+		sensor_mode = pick(
+			SUIT_SENSOR_OFF,
+			SUIT_SENSOR_BINARY,
+			SUIT_SENSOR_VITAL,
+			SUIT_SENSOR_TRACKING
+		)	//Select a random setting
+	return ..()
