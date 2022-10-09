@@ -107,18 +107,16 @@
 //! Rendering
 // todo : NUKE THIS SHIT FROM ORBIT ~silicons
 //UNIFORM: Always appends "_s" to iconstate, stupidly.
-/obj/item/clothing/under/resolve_worn_state(inhands, slot_key, bodytype)
+/obj/item/clothing/under/resolve_legacy_state(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
 	. = ..()
-	// if it uses new rendering, don't fucking do this stupid shit
-	if(worn_state || inhand_state || !worn_default_allowed)
-		#warn ok snowflake_worn_state needs to be properly referneced too fuck
-		#warn take into account rolldown/rollsleeve
-		return
-	. += "_s" // WHY IS THIS NEEDED???
+	. += "_s"
 
 /obj/item/clothing/under/base_worn_state(inhands, slot_key, bodytype)
-	#warn ugh
-	return ..()
+	. = ..()
+	if(rolled_down)
+		. += "_down"
+	else if(rolled_sleeves)
+		. += "_sleeves"
 
 /obj/item/clothing/under/proc/update_rolldown_status()
 	var/mob/living/carbon/human/H = ishuman(loc)? loc : null

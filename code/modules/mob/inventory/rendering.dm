@@ -286,7 +286,7 @@
 
 
 	//? state ; item_state_slots --> (worn_state | inhand_state) --> item_state --> icon_state
-	data[WORN_DATA_STATE] = (item_state_slots?[slot_meta.id]) || (inhands? inhand_state : worn_state) || item_state || icon_state
+	data[WORN_DATA_STATE] = resolve_legacy_state(M, slot_meta, inhands, bodytype)
 
 	//? icon, size
 	//* icon_override
@@ -363,6 +363,10 @@
 		data[WORN_DATA_STATE] = worn_state_override[slot_meta.id]
 
 	return data
+
+// todo: remove, aka get rid of fucking uniform _s state
+/obj/item/proc/resolve_legacy_state(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
+	return (item_state_slots?[slot_meta.id]) || (inhands? inhand_state : worn_state) || item_state || icon_state
 
 /obj/item/proc/resolve_worn_state(inhands, slot_key, bodytype)
 	// PRIVATE_PROC(TRUE)
