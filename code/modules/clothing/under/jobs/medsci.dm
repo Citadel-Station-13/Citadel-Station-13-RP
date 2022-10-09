@@ -43,7 +43,6 @@
 	name = "research director's turtleneck"
 	icon_state = "rdturtle"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "director", SLOT_ID_LEFT_HAND = "director")
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/scientist
 	desc = "It's made of a special fiber that provides minor protection against biohazards. It has markings that denote the wearer as a scientist."
@@ -52,7 +51,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/scientist/jeans
 	name = "scientist's jumpjeans"
@@ -78,8 +76,8 @@
 	icon_state = "turtle_sci"
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 10, bio = 0, rad = 0)
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "purple", SLOT_ID_LEFT_HAND = "purple")
-	rolled_down = -1
-	rolled_sleeves = -1
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/scientist/turtleneck_fem
 	name = "science turtleneck"
@@ -94,7 +92,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/chemist/jeans
 	name = "chemist's jumpjeans"
@@ -125,7 +122,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/chief_medical_officer/skirt_pleated
 	name = "chief medical officer's pleated skirt"
@@ -137,7 +133,6 @@
 	desc = "It's a turtleneck worn by those with the experience to be \"Chief Medical Officer\". It provides minor biological protection, for an officer with a superior sense of style and practicality."
 	name = "chief medical officer's turtleneck"
 	icon_state = "cmoturtle"
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/chief_medical_officer/jeans
 	name = "chief medical officer's jeans"
@@ -158,7 +153,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/geneticist/skirt_pleated
 	name = "geneticist's pleated skirt"
@@ -173,7 +167,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/virologist/jeans
 	name = "virologist's jumpjeans"
@@ -200,7 +193,7 @@
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	rolled_sleeves = -1
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/nurse
 	desc = "A dress commonly worn by the nursing staff in the medical department."
@@ -210,7 +203,7 @@
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	rolled_sleeves = -1
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/orderly
 	desc = "A white suit to be worn by medical attendants."
@@ -219,7 +212,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "nursesuit", SLOT_ID_LEFT_HAND = "nursesuit")
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/medical
 	desc = "It's made of a special fiber that provides minor protection against biohazards. It has a cross on the chest denoting that the wearer is trained medical personnel."
@@ -228,7 +220,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/medical/jeans
 	name = "medical doctor's jeans"
@@ -252,8 +243,8 @@
 	name = "medical turtleneck"
 	desc = "It's a stylish turtleneck made of bioresistant fiber. Look good, save lives- what more could you want?"
 	icon_state = "turtle_med"
-	rolled_down = -1
-	rolled_sleeves = -1
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/medical/turtleneck_fem
 	name = "medical turtleneck"
@@ -266,7 +257,7 @@
 	icon_state = "medical_short"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS
-	rolled_sleeves = -1
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/medical/scrubs
 	name = "blue scrubs"
@@ -344,7 +335,6 @@
 	name = "psychologist's turtleneck"
 	icon_state = "psychturtle"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "psyche", SLOT_ID_LEFT_HAND = "psyche")
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/psych/turtleneck_fem
 	name = "psychologist's turtleneck"
@@ -361,7 +351,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/chemist_new
 	desc = "It's made of a special fiber which provides minor protection against biohazards."
@@ -370,7 +359,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/scientist_new
 	desc = "Made of a special fiber that gives special protection against biohazards and small explosions."
@@ -379,7 +367,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 10, bio = 0, rad = 0)
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/virologist_new
 	desc = "Made of a special fiber that gives increased protection against biohazards."
@@ -388,4 +375,3 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
-	rolled_sleeves = 0

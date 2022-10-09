@@ -49,8 +49,6 @@
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "wolfgirluni"
 	snowflake_worn_state = "wolfgirluni_mob"
-	rolled_sleeves = 0
-	rolled_down = 0
 
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "wolfgirluni_mob"
@@ -573,7 +571,6 @@
 	icon_state = "tronsiren"
 	snowflake_worn_state = "tronsiren_mob"
 	item_state = "tronsiren_mob"
-	rolled_sleeves = 0
 
 /obj/item/clothing/gloves/fluff/siren
 	name = "Siren Gloves"
@@ -673,8 +670,6 @@
 	snowflake_worn_state = "blackutility_med"
 	item_state = "blackutility_med"
 
-	rolled_down = 0
-	rolled_sleeves = 0
 	starting_accessories = null
 	item_icons = list()
 

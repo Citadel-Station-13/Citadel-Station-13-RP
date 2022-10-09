@@ -78,7 +78,6 @@
 	name = "Green formal uniform"
 	icon_state = "greensuit"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "centcom", SLOT_ID_LEFT_HAND = "centcom")
-	rolled_sleeves = 0
 	starting_accessories = list(/obj/item/clothing/accessory/tie/darkgreen)
 
 /obj/item/clothing/under/gov/skirt

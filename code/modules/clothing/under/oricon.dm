@@ -5,8 +5,6 @@
 	name = "master oricon uniform"
 	desc = "You shouldn't be seeing this."
 	icon = 'icons/obj/clothing/uniforms_oricon.dmi'
-	rolled_down = 0
-	rolled_sleeves = 0
 	item_icons = list(SLOT_ID_UNIFORM = 'icons/mob/clothing/uniform_oricon.dmi')
 	armor = list(melee = 5, bullet = 0, laser = 5, energy = 5, bomb = 0, bio = 5, rad = 5)
 	siemens_coefficient = 0.8
@@ -47,7 +45,6 @@
 	desc = "A comfortable turtleneck and black utility trousers."
 	icon_state = "blackutility"
 	snowflake_worn_state = "blackutility"
-	rolled_sleeves = 0
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.9
 

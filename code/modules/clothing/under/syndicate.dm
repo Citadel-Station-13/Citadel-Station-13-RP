@@ -27,7 +27,6 @@
 	icon_state = "tactifool"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black", SLOT_ID_LEFT_HAND = "black")
 	siemens_coefficient = 1
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/syndicate/tacticool/skirt_pleated
 	name = "tacticool pleated skirt"

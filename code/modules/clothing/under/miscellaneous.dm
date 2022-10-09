@@ -40,13 +40,11 @@
 	desc = "It's a very amish looking suit."
 	name = "amish suit"
 	icon_state = "sl_suit"
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/waiter
 	name = "waiter's outfit"
 	desc = "It's a very smart uniform with a special pocket for tips."
 	icon_state = "waiter"
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/waiter_fem
 	name = "waiter's outfit"
@@ -66,7 +64,6 @@
 	desc = "<i>'Special delivery!'</i>"
 	icon_state = "mailman"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blue", SLOT_ID_LEFT_HAND = "blue")
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/sexyclown
 	name = "sexy-clown suit"
@@ -74,7 +71,7 @@
 	icon_state = "sexyclown"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "clown", SLOT_ID_LEFT_HAND = "clown")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	rolled_sleeves = -1 //Please never
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL //Please never
 
 /obj/item/clothing/under/rank/vice
 	name = "vice officer's jumpsuit"
@@ -92,7 +89,6 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | ARMS //Needs gloves and shoes with cold protection to be fully protected.
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/acj
 	name = "administrative cybernetic jumpsuit"
@@ -134,7 +130,6 @@
 	desc = "A silk black shirt with matching gray slacks. Feels proper."
 	icon_state = "gentlesuit"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "grey", SLOT_ID_LEFT_HAND = "grey")
-	rolled_sleeves = 0
 	starting_accessories = list(/obj/item/clothing/accessory/tie/white, /obj/item/clothing/accessory/wcoat/gentleman)
 
 /obj/item/clothing/under/gentlesuit/skirt
@@ -286,7 +281,6 @@
 	desc = "Includes shoes and plaid"
 	icon_state = "kilt"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|FEET
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/sexymime
 	name = "sexy mime outfit"
@@ -294,7 +288,7 @@
 	icon_state = "sexymime"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "mime", SLOT_ID_LEFT_HAND = "mime")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	rolled_sleeves = -1 //Please never
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL //Please never
 
 /obj/item/clothing/under/gladiator
 	name = "gladiator uniform"
@@ -638,7 +632,6 @@
 	desc = "The very image of a working man. Not that you're probably doing work."
 	icon_state = "mechanic"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cargo", SLOT_ID_LEFT_HAND = "cargo")
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/cheongsam
 	name = "white cheongsam"
@@ -1036,7 +1029,7 @@
 	name = "black cohesion suit"
 	desc = "A plain black cohesion suit intended to assist Prometheans in maintaining their form and prevent direct skin exposure."
 	icon_state = "cohesionsuit"
-	rolled_sleeves = -1 // defeats the purpose!!!
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL // defeats the purpose!!!
 
 /obj/item/clothing/under/cohesion
 	name = "black cohesion suit (female)"
@@ -1093,8 +1086,6 @@
 	This costume is instead made from genuine cotton fibre and is based on the season three uniform."
 	icon = 'icons/obj/clothing/ranger.dmi'
 	icon_state = "ranger_uniform"
-	rolled_down = 0
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/color/ranger/Initialize(mapload)
 	. = ..()
@@ -1614,7 +1605,6 @@
 	desc = "A cozy knit turtleneck. It's too baggy and comfortable to be tactical."
 	icon_state = "bb_turtle"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/turtlebaggy/cream_fem
 	name = "baggy turtleneck (cream)(female)"
@@ -1666,7 +1656,6 @@
 	desc = "A hardy and practical uniform distributed to Nebula Gas employees, meant to provide protection and comfort in industrial environments."
 	icon_state = "mechanic"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cargo", SLOT_ID_LEFT_HAND = "cargo")
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/safari
 	name = "safari uniform"
@@ -1918,8 +1907,8 @@
 	desc = "This metallic corset and sturdy cloth bustier provide very little coverage. A dismountable sheer bodystocking integrated into the clothing retains some modesty. It is unknown whether it serveed ceremonial or official purpose."
 	icon_state = "antediluvian"
 	item_state = "antediluvian"
-	rolled_sleeves = -1
-	rolled_down = -1
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	//action_button_name = "Reconfigure Suit"
 
 /*

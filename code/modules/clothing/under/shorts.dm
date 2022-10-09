@@ -98,7 +98,7 @@
 	desc = "A skirt that is a shiny black."
 	icon_state = "skirt_short_black"
 	body_parts_covered = LOWER_TORSO
-	rolled_sleeves = -1
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/skirt/khaki
 	name = "khaki skirt"

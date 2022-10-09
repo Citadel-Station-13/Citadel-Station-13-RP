@@ -16,6 +16,14 @@
 /// location
 #define SUIT_SENSOR_TRACKING 3
 
+//! has rolldown/rollsleeve
+/// don't allow rolling
+#define UNIFORM_HAS_NO_ROLL 1
+/// allow rolling
+#define UNIFORM_HAS_ROLL 2
+/// autodetect rolling dynamically - only works if we're on default icons!
+#define UNIFORM_AUTODETECT_ROLL 3
+
 //! rolldown/rollsleeve status
 /// not supported
 #define UNIFORM_ROLL_NULLED 1

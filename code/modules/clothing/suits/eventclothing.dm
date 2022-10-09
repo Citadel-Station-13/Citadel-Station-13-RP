@@ -6,8 +6,8 @@
 	icon_override = 'icons/mob/eventclothing.dmi'
 	icon_state = "foxmiko"
 	item_state = "foxmiko"
-	rolled_sleeves = -1 //Don't want to try and roll sleeves like you can with a normal jumpsuit
-	rolled_down = -1
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL //Don't want to try and roll sleeves like you can with a normal jumpsuit
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	var/kimono = 0 //Custom vars for tracking kimono and skirt state
 	var/skirt = 0
 

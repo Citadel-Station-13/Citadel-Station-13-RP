@@ -113,8 +113,8 @@
 	icon_state = "carcharodon"
 	item_state = "carcharodon"
 	item_icons = list(SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/clothing_right.dmi', SLOT_ID_LEFT_HAND = 'icons/mob/inhands/clothing_left.dmi')
-	rolled_sleeves = -1
-	rolled_down = -1
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/carcharodon/verb/switchsprite()
     set name = "Reconfigure Suit"
@@ -138,8 +138,8 @@
 	icon_state = "mantleofheaven"
 	item_state = "mantleofheaven"
 	item_icons = list(SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/clothing_right.dmi', SLOT_ID_LEFT_HAND = 'icons/mob/inhands/clothing_left.dmi')
-	rolled_sleeves = -1
-	rolled_down = -1
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/mantleofheaven/verb/switchsprite()
     set name = "Reconfigure Suit"
@@ -175,7 +175,6 @@
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	rolled_down_sleeves_icon = 'icons/obj/clothing/donatorclothing.dmi'
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/donator/mikubikini
 	name = "starlight singer bikini"
@@ -262,8 +261,8 @@
 	icon_state = "dancer_costume"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-	rolled_sleeves = -1
-	rolled_down = -1
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	action_button_name = "Reconfigure Suit"
 
 /obj/item/clothing/under/donator/dancer/verb/switchsprite()

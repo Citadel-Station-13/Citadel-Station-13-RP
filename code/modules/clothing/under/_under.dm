@@ -31,17 +31,13 @@
 	//! Rolldown Status
 	//? Rolldown, sleeve appends are _down, _sleeve respectively.
 	/// if true, we assume *all* bodytypes have rolldown states, and to use the new system.
-	var/worn_has_rolldown = FALSE
+	var/worn_has_rolldown = UNIFORM_AUTODETECT_ROLL
 	/// if true, we assume *all* bodytypes have rollsleeve states, and to use the new system.
-	var/worn_has_rollsleeve = FALSE
-	#warn impl above
-	#warn parse below
-	#warn switch it to enums
+	var/worn_has_rollsleeve = UNIFORM_AUTODETECT_ROLL
 	/// rolldown status
 	var/worn_rolled_down = UNIFORM_ROLL_NULLED
 	/// rollsleeve status
 	var/worn_rolled_sleeves = UNIFORM_ROLL_NULLED
-	#warn way to have better rolldown/rollsleeve sprites on default rendering holy shit
 
 	// todo: unify this iwth worn state, probably by converting the system used to do this
 	// todo: awful shit.
@@ -84,16 +80,8 @@
 	else
 		snowflake_worn_state = icon_state
 
-	#warn better autodetector
-	//autodetect rollability
-	if(rolled_down < 0)
-		if(("[snowflake_worn_state]_d_s" in icon_states(INV_W_UNIFORM_DEF_ICON)) || ("[snowflake_worn_state]_s" in icon_states(rolled_down_icon)) || ("[snowflake_worn_state]_d_s" in icon_states(icon_override)))
-			rolled_down = 0
-
-	if(rolled_down == -1)
-		verbs -= /obj/item/clothing/under/verb/rollsuit
-	if(rolled_sleeves == -1)
-		verbs -= /obj/item/clothing/under/verb/rollsleeves
+	update_rolldown()
+	update_rollsleeve()
 
 	//TFF 5/8/19 - define numbers and specifics for suit sensor settings
 	sensorpref = isnull(H) ? 1 : (ishuman(H) ? H.sensorpref : 1)
@@ -116,10 +104,28 @@
 
 /obj/item/clothing/under/base_worn_state(inhands, slot_key, bodytype)
 	. = ..()
-	if(rolled_down)
+	if(worn_rolled_down == UNIFORM_ROLL_TRUE)
 		. += "_down"
-	else if(rolled_sleeves)
+	else if(worn_rolled_sleeves == UNIFORM_ROLL_TRUE)
 		. += "_sleeves"
+
+/obj/item/clothing/under/proc/update_rolldown()
+
+/obj/item/clothing/under/proc/update_rollsleeve()
+
+/*
+	#warn better autodetector
+	//autodetect rollability
+
+	if(rolled_down < 0)
+		if(("[snowflake_worn_state]_d_s" in icon_states(INV_W_UNIFORM_DEF_ICON)) || ("[snowflake_worn_state]_s" in icon_states(rolled_down_icon)) || ("[snowflake_worn_state]_d_s" in icon_states(icon_override)))
+			rolled_down = 0
+
+	if(rolled_down == -1)
+		verbs -= /obj/item/clothing/under/verb/rollsuit
+	if(rolled_sleeves == -1)
+		verbs -= /obj/item/clothing/under/verb/rollsleeves
+*/
 
 /obj/item/clothing/under/proc/update_rolldown_status()
 	var/mob/living/carbon/human/H = ishuman(loc)? loc : null
@@ -141,7 +147,7 @@
 		if(rolled_down != 1)
 			rolled_down = 0
 	else
-		rolled_down = -1
+		worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	if(H)
 		update_worn_icon()
 
@@ -169,7 +175,7 @@
 		if(rolled_sleeves != 1)
 			rolled_sleeves = 0
 	else
-		rolled_sleeves = -1
+		worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 	if(H)
 		update_worn_icon()
 
