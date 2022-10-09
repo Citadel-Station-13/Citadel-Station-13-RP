@@ -232,7 +232,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
 	/*
 	var/alert_mob_dupe_login = FALSE
-	if(CONFIG_GET(flag/log_access))
+	if (CONFIG_GET(flag/log_access))
 		for(var/I in GLOB.clients)
 			if(!I || I == src)
 				continue
@@ -388,7 +388,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	hook_vr("client_new",list(src))
 
-	if(config_legacy.paranoia_logging)
+	if(CONFIG_GET(flag/paranoia_logging))
 		if(isnum(player_age) && player_age == -1)
 			log_and_message_admins("PARANOIA: [key_name(src)] has connected here for the first time.")
 		if(isnum(account_age) && account_age <= 2)
@@ -548,8 +548,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	//Panic bunker code
 	if ((player_age == -1) && !(ckey in GLOB.bunker_passthrough)) //first connection
 		if (config_legacy.panic_bunker && !holder && !deadmin_holder)
-			log_adminwarn("Failed Login: [key] - New account attempting to connect during panic bunker")
-			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
+			message_admins(SPAN_ADMINNOTICE("Failed Login: [key] - New account attempting to connect during panic bunker"))
 			to_chat(src, config_legacy.panic_bunker_message)
 			return "BUNKER_DROPPED"
 	if(player_age == -1)
@@ -561,7 +560,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		else if(update_ip_reputation()) //It is set now
 			if(ip_reputation >= config_legacy.ipr_bad_score) //It's bad
 				//Log it
-				if(config_legacy.paranoia_logging) //We don't block, but we want paranoia log messages
+				if(CONFIG_GET(flag/paranoia_logging)) //We don't block, but we want paranoia log messages
 					log_and_message_admins("[key] at [address] has bad IP reputation: [ip_reputation]. Will be kicked if enabled in config.")
 				else //We just log it
 					log_admin("[key] at [address] has bad IP reputation: [ip_reputation]. Will be kicked if enabled in config.")

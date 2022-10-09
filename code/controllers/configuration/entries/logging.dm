@@ -1,26 +1,33 @@
+/// This will notify admins and write to a file any time a new player (byond or your server) connects.
+/datum/config_entry/flag/paranoia_logging
+
+/// Logs tgui_Topic client calls.
 /datum/config_entry/flag/emergency_tgui_logging
 	default = FALSE
 
-/// log messages sent in OOC
+/// Log messages sent in OOC.
 /datum/config_entry/flag/log_ooc
 
-/// log login/logout
+/// Log login/logout.
 /datum/config_entry/flag/log_access
 
 /// Config entry which special logging of failed logins under suspicious circumstances.
 /datum/config_entry/flag/log_suspicious_login
 
-/// log client say
+/// Log client say.
 /datum/config_entry/flag/log_say
 
-/// log admin actions
+/// Log admin actions.
 /datum/config_entry/flag/log_admin
 	protection = CONFIG_ENTRY_LOCKED
 
-/// log prayers
+/// Log debug output.
+/datum/config_entry/flag/log_debug
+
+/// Log prayers.
 /datum/config_entry/flag/log_prayer
 
-/// log silicons
+/// Log silicons.
 /datum/config_entry/flag/log_silicon
 
 /datum/config_entry/flag/log_law
@@ -29,66 +36,75 @@
 /datum/config_entry/flag/log_law/DeprecationUpdate(value)
 	return value
 
-/// log usage of tools
+/// Log usage of tools.
 /datum/config_entry/flag/log_tools
 
-/// log game events
+/// Log game events.
 /datum/config_entry/flag/log_game
 
-/// log mech data
+/// Log mech data.
 /datum/config_entry/flag/log_mecha
 
-/// log virology data
+/// Log virology data.
 /datum/config_entry/flag/log_virus
 
-/// log assets
+/// Log assets.
 /datum/config_entry/flag/log_asset
 
-/// log voting
+/// Log voting.
 /datum/config_entry/flag/log_vote
 
-/// log client whisper
+/// Log client whisper.
 /datum/config_entry/flag/log_whisper
 
-/// log attack messages
+/// Log attack messages.
 /datum/config_entry/flag/log_attack
 
-/// log emotes
+/// Log emotes.
 /datum/config_entry/flag/log_emote
 
-/// log economy actions
+/// Log economy actions.
 /datum/config_entry/flag/log_econ
 
-/// log traitor objectives
+/// Log traitor objectives.
 /datum/config_entry/flag/log_traitor
 
-/// log admin chat messages
+/// Log admin chat messages.
 /datum/config_entry/flag/log_adminchat
 	protection = CONFIG_ENTRY_LOCKED
 
-/// log pda messages
+/// Log pda messages.
 /datum/config_entry/flag/log_pda
 
-/// log uplink/spellbook/codex ciatrix purchases and refunds
+/// Log uplink/spellbook/codex ciatrix purchases and refunds.
 /datum/config_entry/flag/log_uplink
 
-/// log telecomms messages
+/// Log telecomms messages.
 /datum/config_entry/flag/log_telecomms
 
-/// log certain expliotable parrots and other such fun things in a JSON file of twitter valid phrases.
+/// Log certain expliotable parrots and other such fun things in a JSON file of twitter valid phrases.
 /datum/config_entry/flag/log_twitter
 
-/// log all world.Topic() calls
+/// Log all world.Topic() calls.
 /datum/config_entry/flag/log_world_topic
 
-/// log crew manifest to separate file
+/// Log crew manifest to separate file.
 /datum/config_entry/flag/log_manifest
 
-/// log roundstart divide occupations debug information to a file
+/// Log roundstart divide occupations debug information to a file.
 /datum/config_entry/flag/log_job_debug
 
-/// log shuttle related actions, ie shuttle computers, shuttle manipulator, emergency console
+/// Log shuttle related actions, ie shuttle computers, shuttle manipulator, emergency console.
 /datum/config_entry/flag/log_shuttle
 
-/// logs all timers in buckets on automatic bucket reset (Useful for timer debugging)
+/// Logs all timers in buckets on automatic bucket reset. (Useful for timer debugging)
 /datum/config_entry/flag/log_timers_on_bucket_reset
+
+/// Logs all links clicked in-game/Topic() calls. Could be used for debugging and tracking down exploits.
+/datum/config_entry/flag/log_hrefs
+
+/// Logs world.log to a file.
+/datum/config_entry/flag/log_runtime
+
+/// Logs world.Topic() calls to a file.
+/datum/config_entry/flag/log_topic

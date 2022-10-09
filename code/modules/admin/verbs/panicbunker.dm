@@ -54,10 +54,10 @@ GLOBAL_LIST_EMPTY(bunker_passthrough)
 	if(!check_rights(R_ADMIN))
 		return
 
-	config_legacy.paranoia_logging = (!config_legacy.paranoia_logging)
+	CONFIG_SET(flag/paranoia_logging, !CONFIG_GET(flag/paranoia_logging))
 
-	log_and_message_admins("[key_name(usr)] has toggled Paranoia Logging, it is now [(config_legacy.paranoia_logging?"on":"off")]")
-	if (config_legacy.paranoia_logging && (!SSdbcore.Connect()))
+	log_and_message_admins("[key_name(usr)] has toggled Paranoia Logging, it is now [(CONFIG_GET(flag/paranoia_logging) ? "on" : "off")]")
+	if (CONFIG_GET(flag/paranoia_logging) && (!SSdbcore.Connect()))
 		message_admins("The Database is not connected! Paranoia logging will not be able to give 'player age' (time since first connection) warnings, only Byond account warnings.")
 	feedback_add_details("admin_verb","PARLOG") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

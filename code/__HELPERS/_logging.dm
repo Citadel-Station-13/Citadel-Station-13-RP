@@ -75,66 +75,67 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 #define log_reftracker(msg)
 #endif
 
-/* Items with ADMINPRIVATE prefixed are stripped from public logs. */
+//? Items with ADMINPRIVATE prefixed are stripped from public logs.
+//! ## Admin Logs
 /proc/log_admin(text)
 	admin_log.Add(text)
-	if (config_legacy.log_admin)
+	if (CONFIG_GET(flag/log_admin))
 		WRITE_LOG(GLOB.world_game_log, "ADMIN: [text]")
 
 /proc/log_admin_private(text)
 	admin_log.Add(text)
-	if (config_legacy.log_admin)
+	if (CONFIG_GET(flag/log_admin))
 		WRITE_LOG(GLOB.world_game_log, "ADMINPRIVATE: [text]")
 
 /proc/log_adminsay(text, mob/speaker)
-	if (config_legacy.log_adminchat)
+	if (CONFIG_GET(flag/log_adminchat))
 		if(speaker)
 			WRITE_LOG(GLOB.world_game_log, "ADMINPRIVATE: ASAY: [speaker.simple_info_line()]: [text]")
 		else
 			WRITE_LOG(GLOB.world_game_log, "ADMINPRIVATE: ASAY: [text]")
 
 /proc/log_modsay(text, mob/speaker)
-	if (config_legacy.log_adminchat)
+	if (CONFIG_GET(flag/log_adminchat))
 		WRITE_LOG(GLOB.world_game_log, "MODSAY: [speaker.simple_info_line()]: [html_decode(text)]")
 
 /proc/log_eventsay(text, mob/speaker)
-	if (config_legacy.log_adminchat)
+	if (CONFIG_GET(flag/log_adminchat))
 		WRITE_LOG(GLOB.world_game_log, "EVENTSAY: [speaker.simple_info_line()]: [html_decode(text)]")
 
 /proc/log_adminpm(text, client/source, client/dest)
 	admin_log.Add(text)
-	if (config_legacy.log_admin)
+	if (CONFIG_GET(flag/log_admin))
 		WRITE_LOG(GLOB.world_game_log, "ADMINPM: [key_name(source)]->[key_name(dest)]: [html_decode(text)]")
 
-/* All other items are public. */
+//? All other items are public.
 /proc/log_game(text)
-	if (config_legacy.log_game)
+	if (CONFIG_GET(flag/log_game))
 		WRITE_LOG(GLOB.world_game_log, "GAME: [text]")
 
 /proc/log_asset(text)
 	WRITE_LOG(GLOB.world_asset_log, "ASSET: [text]")
 
+//! ## Server Access Logs.
 /proc/log_access(text)
-	WRITE_LOG(GLOB.world_game_log, "ACCESS: [text]")
+	if (CONFIG_GET(flag/log_access))
+		WRITE_LOG(GLOB.world_game_log, "ACCESS: [text]")
 
-/// <VStation_specific>
 /proc/log_access_in(client/new_client)
-	if (config_legacy.log_access)
+	if (CONFIG_GET(flag/log_access))
 		var/message = "[key_name(new_client)] - IP:[new_client.address] - CID:[new_client.computer_id] - BYOND v[new_client.byond_version]"
 		WRITE_LOG(GLOB.world_game_log, "ACCESS IN: [message]")
 
 /proc/log_access_out(mob/last_mob)
-	if (config_legacy.log_access)
+	if (CONFIG_GET(flag/log_access))
 		var/message = "[key_name(last_mob)] - IP:[last_mob.lastKnownIP] - CID:Logged Out - BYOND Logged Out"
 		WRITE_LOG(GLOB.world_game_log, "ACCESS OUT: [message]")
-/// </VStation_specific>
 
 /proc/log_attack(attacker, defender, message)
-	if (config_legacy.log_attack)
+	if (CONFIG_GET(flag/log_attack))
 		WRITE_LOG(GLOB.world_attack_log, "ATTACK: [attacker] against [defender]: [message]")
 
 /proc/log_say(text, mob/speaker)
-	if (config_legacy.log_say)
+	if (CONFIG_GET(flag/log_say))
 		WRITE_LOG(GLOB.world_game_log, "SAY: [speaker.simple_info_line()]: [html_decode(text)]")
 
 	//Log the message to in-game dialogue logs, as well.
@@ -143,13 +144,13 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>SAY:</u> - <span style='color:#32cd32'>[text]</span>"
 
 /proc/log_ooc(text, client/user)
-	if (config_legacy.log_ooc)
+	if (CONFIG_GET(flag/log_ooc))
 		WRITE_LOG(GLOB.world_game_log, "OOC: [user.simple_info_line()]: [html_decode(text)]")
 
 	GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[user]</b>) <u>OOC:</u> - <span style='color:blue'><b>[text]</b></span>"
 
 /proc/log_whisper(text, mob/speaker)
-	if (config_legacy.log_whisper)
+	if (CONFIG_GET(flag/log_whisper))
 		WRITE_LOG(GLOB.world_game_log, "WHISPER: [speaker.simple_info_line()]: [html_decode(text)]")
 
 	if(speaker.client)
@@ -157,7 +158,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>SAY:</u> - <span style='color:gray'><i>[text]</i></span>"
 
 /proc/log_emote(text, mob/speaker)
-	if (config_legacy.log_emote)
+	if (CONFIG_GET(flag/log_emote))
 		WRITE_LOG(GLOB.world_game_log, "EMOTE: [speaker.simple_info_line()]: [html_decode(text)]")
 
 	if(speaker.client)
@@ -165,31 +166,32 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>EMOTE:</u> - <span style='color:#CCBADC'>[text]</span>"
 
 /proc/log_subtle(text, mob/speaker)
-	if (config_legacy.log_emote)
+	if (CONFIG_GET(flag/log_emote))
 		WRITE_LOG(GLOB.world_game_log, "SUBTLE: [speaker.simple_info_line()]: [html_decode(text)]")
 
 /proc/log_subtle_anti_ghost(text, mob/speaker)
-	if (config_legacy.log_emote)
+	if (CONFIG_GET(flag/log_emote))
 		WRITE_LOG(GLOB.world_game_log, "SUBTLER: [speaker.simple_info_line()]: [html_decode(text)]")
 
 /proc/log_aooc(text, client/user)
-	if (config_legacy.log_ooc)
+	if (CONFIG_GET(flag/log_ooc))
 		WRITE_LOG(GLOB.world_game_log, "AOOC: [user.simple_info_line()]: [html_decode(text)]")
 
 	GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[user]</b>) <u>AOOC:</u> - <span style='color:red'><b>[text]</b></span>"
 
 /proc/log_looc(text, client/user)
-	if (config_legacy.log_ooc)
+	if (CONFIG_GET(flag/log_ooc))
 		WRITE_LOG(GLOB.world_game_log, "LOOC: [user.simple_info_line()]: [html_decode(text)]")
 
 	GLOB.round_text_log += "<b>([time_stamp()])</b> (<b>[user]</b>) <u>LOOC:</u> - <span style='color:orange'><b>[text]</b></span>"
 
 /proc/log_vote(text)
-	if (config_legacy.log_vote)
+	if (CONFIG_GET(flag/log_vote))
 		WRITE_LOG(GLOB.world_game_log, "VOTE: [text]")
 
 /proc/log_topic(text)
-	WRITE_LOG(GLOB.world_game_log, "TOPIC: [text]")
+	if (CONFIG_GET(flag/log_topic))
+		WRITE_LOG(GLOB.world_game_log, "TOPIC: [text]")
 
 /proc/log_href(text)
 	WRITE_LOG(GLOB.world_href_log, "HREF: [text]")
@@ -215,7 +217,8 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 
 /* Log to the logfile only. */
 /proc/log_runtime(text)
-	WRITE_LOG(GLOB.world_runtime_log, text)
+	if (CONFIG_GET(flag/log_runtime))
+		WRITE_LOG(GLOB.world_runtime_log, text)
 
 /* Rarely gets called; just here in case the config breaks. */
 /proc/log_config(text)
@@ -376,7 +379,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 
 /// VSTATION SPECIFIC LOGGING. ///
 /proc/log_debug(text)
-	if (config_legacy.log_debug)
+	if (CONFIG_GET(flag/log_debug))
 		WRITE_LOG(GLOB.world_runtime_log, "DEBUG: [text]")
 
 	for(var/client/C in admins)
@@ -384,22 +387,18 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 			to_chat(C, "DEBUG: [text]")
 
 /proc/log_ghostsay(text, mob/speaker)
-	if (config_legacy.log_say)
+	if (CONFIG_GET(flag/log_say))
 		WRITE_LOG(GLOB.world_game_log, "DEADCHAT: [speaker.simple_info_line()]: [html_decode(text)]")
 
 	speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>DEADSAY:</u> - <span style='color:green'>[text]</span>"
 	GLOB.round_text_log += "<font size=1><span style='color:#7e668c'><b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>DEADSAY:</u> - [text]</span></font>"
 
 /proc/log_ghostemote(text, mob/speaker)
-	if (config_legacy.log_emote)
+	if (CONFIG_GET(flag/log_emote))
 		WRITE_LOG(GLOB.world_game_log, "DEADEMOTE: [speaker.simple_info_line()]: [html_decode(text)]")
 
-/proc/log_adminwarn(text)
-	if (config_legacy.log_adminwarn)
-		WRITE_LOG(GLOB.world_game_log, "ADMINWARN: [html_decode(text)]")
-
 /proc/log_pda(text, mob/speaker)
-	if (config_legacy.log_pda)
+	if (CONFIG_GET(flag/log_pda))
 		WRITE_LOG(GLOB.world_game_log, "PDA: [speaker.simple_info_line()]: [html_decode(text)]")
 
 	speaker.dialogue_log += "<b>([time_stamp()])</b> (<b>[speaker]/[speaker.client]</b>) <u>MSG:</u> - <span style='color:green'>[text]</span>"
@@ -424,11 +423,11 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	log_world(progress_message)
 
 /proc/log_nsay(text, inside, mob/speaker)
-	if (config_legacy.log_say)
+	if (CONFIG_GET(flag/log_say))
 		WRITE_LOG(GLOB.world_game_log, "NSAY (NIF:[inside]): [speaker.simple_info_line()]: [html_decode(text)]")
 
 /proc/log_nme(text, inside, mob/speaker)
-	if (config_legacy.log_emote)
+	if (CONFIG_GET(flag/log_emote))
 		WRITE_LOG(GLOB.world_game_log, "NME (NIF:[inside]): [speaker.simple_info_line()]: [html_decode(text)]")
 
 
@@ -439,10 +438,10 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	var/list/comps = list()
 	if(dir & NORTH) comps += "NORTH"
 	if(dir & SOUTH) comps += "SOUTH"
-	if(dir & EAST) comps += "EAST"
-	if(dir & WEST) comps += "WEST"
-	if(dir & UP) comps += "UP"
-	if(dir & DOWN) comps += "DOWN"
+	if(dir & EAST)  comps += "EAST"
+	if(dir & WEST)  comps += "WEST"
+	if(dir & UP)    comps += "UP"
+	if(dir & DOWN)  comps += "DOWN"
 
 	return english_list(comps, nothing_text="0", and_text="|", comma_text="|")
 
@@ -486,5 +485,5 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /proc/log_suspicious_login(text, access_log_mirror = TRUE)
 	if (CONFIG_GET(flag/log_suspicious_login))
 		WRITE_LOG(GLOB.world_suspicious_login_log, "SUSPICIOUS_ACCESS: [text]")
-	if(access_log_mirror)
+	if (access_log_mirror)
 		log_access(text)

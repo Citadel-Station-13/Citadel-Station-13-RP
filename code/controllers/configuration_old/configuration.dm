@@ -16,39 +16,6 @@
 	//CITADEL CHANGE - HUB CONFIG
 	var/hub_visibility = FALSE
 
-	/// log OOC channel
-	var/log_ooc = 0
-	/// log login/logout
-	var/log_access = 0
-	/// log client say
-	var/log_say = 0
-	/// log admin actions
-	var/log_admin = 0
-	/// log debug output
-	var/log_debug = 1
-	/// log game events
-	var/log_game = 0
-	/// log voting
-	var/log_vote = 0
-	/// log client whisper
-	var/log_whisper = 0
-	/// log emotes
-	var/log_emote = 0
-	/// log attack messages
-	var/log_attack = 0
-	/// log admin chat messages
-	var/log_adminchat = 0
-	/// log warnings admins get about bomb construction and such
-	var/log_adminwarn = 0
-	/// log pda messages
-	var/log_pda = 0
-	/// logs all links clicked in-game. Could be used for debugging and tracking down exploits
-	var/log_hrefs = 0
-	/// logs world.log to a file
-	var/log_runtime = 0
-	/// log world.log << messages
-	var/log_world_output = 0
-	var/log_topic = TRUE
 	/// allow votes to restart
 	var/allow_vote_restart = 0
 	var/ert_admin_call_only = 0
@@ -179,7 +146,6 @@
 	var/debugparanoid = 0
 	var/panic_bunker = 0
 	var/panic_bunker_message = "Sorry, this server is not accepting connections from never seen before players."
-	var/paranoia_logging = 0
 
 	/// Should we query IPs to get scores? Generates HTTP traffic to an API service.
 	var/ip_reputation = FALSE
@@ -416,60 +382,6 @@
 
 				if ("multi_z_explosion_scalar")
 					multi_z_explosion_scalar = text2num(value)
-
-				if ("log_ooc")
-					config_legacy.log_ooc = 1
-
-				if ("log_access")
-					config_legacy.log_access = 1
-
-				if ("log_say")
-					config_legacy.log_say = 1
-
-				if ("debug_paranoid")
-					config_legacy.debugparanoid = 1
-
-				if ("log_admin")
-					config_legacy.log_admin = 1
-
-				if ("log_debug")
-					config_legacy.log_debug = text2num(value)
-
-				if ("log_game")
-					config_legacy.log_game = 1
-
-				if ("log_vote")
-					config_legacy.log_vote = 1
-
-				if ("log_whisper")
-					config_legacy.log_whisper = 1
-
-				if ("log_attack")
-					config_legacy.log_attack = 1
-
-				if ("log_emote")
-					config_legacy.log_emote = 1
-
-				if ("log_adminchat")
-					config_legacy.log_adminchat = 1
-
-				if ("log_adminwarn")
-					config_legacy.log_adminwarn = 1
-
-				if ("log_pda")
-					config_legacy.log_pda = 1
-
-				if ("log_world_output")
-					config_legacy.log_world_output = 1
-
-				if ("log_hrefs")
-					config_legacy.log_hrefs = 1
-
-				if ("log_runtime")
-					config_legacy.log_runtime = 1
-
-				if ("log_topic")
-					config_legacy.log_topic = text2num(value)
 
 				if ("generate_map")
 					config_legacy.generate_map = 1
@@ -873,9 +785,6 @@
 
 				if ("panic_bunker_message")
 					config_legacy.panic_bunker_message = value
-
-				if ("paranoia_logging")
-					config_legacy.paranoia_logging = 1
 
 				if("ip_reputation")
 					config_legacy.ip_reputation = 1
