@@ -1,0 +1,4 @@
+author: "jakeramsay007"
+delete-after: True
+changes: 
+  - bugfix: "Fixes borg alt-click to show objects on a turf"
