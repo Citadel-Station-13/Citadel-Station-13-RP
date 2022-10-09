@@ -65,7 +65,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 
 /obj/item/organ/internal/brain/Initialize(mapload, ...)
 	. = ..()
-	health = config_legacy.default_brain_health
+	health = CONFIG_GET(number/default_brain_health)
 	addtimer(CALLBACK(src, .proc/clear_brainmob_hud), 15)
 
 /obj/item/organ/internal/brain/proc/clear_brainmob_hud()

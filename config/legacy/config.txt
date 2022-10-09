@@ -207,8 +207,6 @@ WIKISEARCHURL https://citadel-station.net/wiki_rp/index.php?search=%s&title=Spec
 ## The intention is to make adminPMs more visible. (although I fnd popups annoying so this defaults to off)
 #POPUP_ADMIN_PM
 
-## Remove the # to allow special 'Easter-egg' events on special holidays such as seasonal holidays and stuff like 'Talk Like a Pirate Day' :3 YAARRR
-ALLOW_HOLIDAYS
 ##Defines the ticklag for the world.
 TICKLAG 0.5
 
@@ -355,9 +353,6 @@ GENERATE_MAP
 ## Uncomment to have the changelog file automatically open when a user connects and hasn't seen the latest changelog
 #AGGRESSIVE_CHANGELOG
 
-## Uncomment to override default brain health.
-#DEFAULT_BRAIN_HEALTH 400
-
 ## Default language prefix keys, separated with spaces. Only single character keys are supported. If unset, defaults to , and #
 # DEFAULT_LANGUAGE_PREFIXES , #
 
@@ -370,8 +365,6 @@ ENGINE_MAP Supermatter Engine,Edison's Bane
 # If 'time off' system is on, controls whether or not players can switch on/off duty midround using timeclocks
 # PTO_JOB_CHANGE
 
-# Forbids players from joining if they have no set General flavor text
-# REQUIRE_FLAVOR
 
 ## Uncomment to enable the Panic Bunker by default. This will prevent all unseen-before players from connecting. Requires SQL.
 # PANIC_BUNKER

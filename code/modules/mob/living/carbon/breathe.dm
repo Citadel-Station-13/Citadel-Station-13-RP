@@ -2,7 +2,8 @@
 
 //Start of a breath chain, calls breathe()
 /mob/living/carbon/handle_breathing()
-	if(air_master.current_cycle%4==2 || failed_last_breath || (health < config_legacy.health_threshold_crit)) 	//First, resolve location and get a breath
+	// First, resolve location and get a breath.
+	if(air_master.current_cycle%4==2 || failed_last_breath || (health < CONFIG_GET(number/health_threshold_crit)))
 		breathe()
 
 /mob/living/carbon/proc/breathe()
@@ -16,7 +17,7 @@
 
 	//First, check if we can breathe at all
 	// cpr completely nullifies brainstem requirement
-	if(health < config_legacy.health_threshold_crit && !(CE_STABLE in chem_effects) && !stabilization) //crit aka circulatory shock
+	if(health < CONFIG_GET(number/health_threshold_crit) && !(CE_STABLE in chem_effects) && !stabilization) //crit aka circulatory shock
 		AdjustLosebreath(1)
 
 	if(losebreath>0) //Suffocating so do not take a breath

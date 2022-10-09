@@ -411,7 +411,7 @@
 
 	if(!breath || (breath.total_moles == 0))
 		failed_last_breath = 1
-		if(health > config_legacy.health_threshold_crit)
+		if(health > CONFIG_GET(number/health_threshold_crit))
 			adjustOxyLoss(HUMAN_MAX_OXYLOSS)
 		else
 			adjustOxyLoss(HUMAN_CRIT_MAX_OXYLOSS)
@@ -569,7 +569,7 @@
 			if(prob(20))
 				spawn(0) emote(pick("giggle", "laugh"))
 		breath.adjust_gas(/datum/gas/nitrous_oxide, -breath.gas[/datum/gas/nitrous_oxide]/6, update = 0) //update after
-	
+
 	for(var/gasname in breath.gas) //datum/gas/
 		//var/datum/gas/gas = gasname
 		if(gasname == breath_type)
@@ -1048,14 +1048,14 @@
 	else				//ALIVE. LIGHTS ARE ON
 		updatehealth()	//TODO
 
-		if(health <= config_legacy.health_threshold_dead || (should_have_organ("brain") && !has_brain()))
+		if(health <= CONFIG_GET(number/health_threshold_dead) || (should_have_organ("brain") && !has_brain()))
 			death()
-			blinded = 1
-			silent = 0
-			return 1
+			blinded = TRUE
+			silent = FALSE
+			return TRUE
 
 		//UNCONSCIOUS. NO-ONE IS HOME
-		if((getOxyLoss() > (species.total_health/2)) || (health <= config_legacy.health_threshold_crit))
+		if((getOxyLoss() > (species.total_health/2)) || (health <= CONFIG_GET(number/health_threshold_crit)))
 			Paralyse(3)
 
 		if(hallucination)
@@ -1648,12 +1648,12 @@
 	if(status_flags & GODMODE)	return 0	//godmode
 	if(!can_feel_pain()) return
 
-	if(health < config_legacy.health_threshold_softcrit)// health 0 makes you immediately collapse
+	if(health < CONFIG_GET(number/health_threshold_softcrit))// health 0 makes you immediately collapse
 		shock_stage = max(shock_stage, 61)
 
 	if(traumatic_shock >= 80)
 		shock_stage += 1
-	else if(health < config_legacy.health_threshold_softcrit)
+	else if(health < CONFIG_GET(number/health_threshold_softcrit))
 		shock_stage = max(shock_stage, 61)
 	else
 		shock_stage = min(shock_stage, 160)

@@ -49,7 +49,7 @@
 	if(stat == DEAD)
 		I.icon_state = "-100"
 	else
-		I.icon_state = RoundHealth((health-config_legacy.health_threshold_crit)/(getMaxHealth()-config_legacy.health_threshold_crit)*100)
+		I.icon_state = RoundHealth((CONFIG_GET(number/health_threshold_crit)) / (getMaxHealth() - CONFIG_GET(number/health_threshold_crit)) * 100)
 
 /mob/proc/update_hud_med_status()
 	var/image/holder = hud_list[STATUS_HUD]

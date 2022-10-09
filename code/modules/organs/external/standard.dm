@@ -264,7 +264,7 @@
 	var/eye_icon_location = 'icons/mob/human_face.dmi'
 
 /obj/item/organ/external/head/Initialize(mapload)
-	if(config_legacy.allow_headgibs)
+	if (!CONFIG_GET(flag/allow_headgibs)) // Not sure why this is backwards, but it is. @Zandario
 		cannot_gib = FALSE
 	return ..()
 

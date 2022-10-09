@@ -109,7 +109,7 @@
 		occupantData["stat"] = occupant.stat
 		occupantData["health"] = occupant.health
 		occupantData["maxHealth"] = occupant.getMaxHealth()
-		occupantData["minHealth"] = config_legacy.health_threshold_dead
+		occupantData["minHealth"] = CONFIG_GET(number/health_threshold_dead)
 		occupantData["bruteLoss"] = occupant.getBruteLoss()
 		occupantData["oxyLoss"] = occupant.getOxyLoss()
 		occupantData["toxLoss"] = occupant.getToxLoss()

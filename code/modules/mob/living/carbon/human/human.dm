@@ -201,7 +201,8 @@
 	if(update)	UpdateDamageIcon()
 
 /mob/living/carbon/human/proc/implant_loyalty(override = FALSE) // Won't override by default.
-	if(!config_legacy.use_loyalty_implants && !override) return // Nuh-uh.
+	if(!CONFIG_GET(flag/use_loyalty_implants) && !override)
+		return // Nuh-uh.
 
 	var/obj/item/implant/loyalty/L = new/obj/item/implant/loyalty(src)
 	if(L.handle_implant(src, BP_HEAD))

@@ -247,7 +247,7 @@
 	var/limb_icon
 	/// Used for if the mob can drop limbs. Overrides the icon cache key, so it doesn't keep remaking the icon needlessly.
 	var/limb_icon_key
-	
+
 	///Does the simple mob drop organs when butchered?
 	butchery_drops_organs = FALSE
 
@@ -355,7 +355,7 @@
 	if(m_intent == "walk")
 		tally *= 1.5
 
-	return . + tally + config_legacy.animal_delay
+	return . + tally + CONFIG_GET(number/animal_delay)
 
 
 /mob/living/simple_mob/Stat()

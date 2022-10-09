@@ -59,14 +59,14 @@
 			qdel(P)
 
 		var/DPS = weapon_damage / weapon_attack_speed
-		to_chat(user, "<span class='notice'>Damage: [weapon_damage][modified_damage_percent != 1 ? " (Modified by [modified_damage_percent*100]%)":""]</span>")
-		to_chat(user, "<span class='notice'>Attack Speed: [weapon_attack_speed]/s</span>")
-		to_chat(user, "<span class='notice'>\The [I] does <b>[DPS]</b> damage per second.</span>")
+		to_chat(user, SPAN_NOTICE("Damage: [weapon_damage][modified_damage_percent != 1 ? " (Modified by [modified_damage_percent*100]%)":""]"))
+		to_chat(user, SPAN_NOTICE("Attack Speed: [weapon_attack_speed]/s"))
+		to_chat(user, SPAN_NOTICE("\The [I] does <b>[DPS]</b> damage per second."))
 		if(DPS > 0)
-			to_chat(user, "<span class='notice'>At your maximum health ([user.getMaxHealth()]), it would take approximately;</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config_legacy.health_threshold_softcrit) / DPS] seconds to softcrit you. ([config_legacy.health_threshold_softcrit] health)</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config_legacy.health_threshold_crit) / DPS] seconds to hardcrit you. ([config_legacy.health_threshold_crit] health)</span>")
-			to_chat(user, "<span class='notice'>[(user.getMaxHealth() - config_legacy.health_threshold_dead) / DPS] seconds to kill you. ([config_legacy.health_threshold_dead] health)</span>")
+			to_chat(user, SPAN_NOTICE("At your maximum health ([user.getMaxHealth()]), it would take approximately;"))
+			to_chat(user, SPAN_NOTICE("[(user.getMaxHealth() - CONFIG_GET(number/health_threshold_softcrit)) / DPS] seconds to softcrit you. ([CONFIG_GET(number/health_threshold_softcrit)] health)"))
+			to_chat(user, SPAN_NOTICE("[(user.getMaxHealth() - CONFIG_GET(number/health_threshold_crit)) / DPS] seconds to hardcrit you. ([CONFIG_GET(number/health_threshold_crit)] health)"))
+			to_chat(user, SPAN_NOTICE("[(user.getMaxHealth() - CONFIG_GET(number/health_threshold_dead)) / DPS] seconds to kill you. ([CONFIG_GET(number/health_threshold_dead)] health)"))
 
 	else
 		to_chat(user, "<span class='warning'>You need to be a living mob, with hands, and for an object to be in your active hand, to use this verb.</span>")

@@ -1,2 +1,2 @@
 /mob/living/carbon/is_in_critical()
-	return !IS_DEAD(src) && (health < config_legacy.health_threshold_crit)
+	return !IS_DEAD(src) && (health < CONFIG_GET(number/health_threshold_crit))

@@ -662,7 +662,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/pull_damage()
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
-		if(H.health - H.halloss <= config_legacy.health_threshold_softcrit)
+		if(H.health - H.halloss <= CONFIG_GET(number/health_threshold_softcrit))
 			for(var/name in H.organs_by_name)
 				var/obj/item/organ/external/e = H.organs_by_name[name]
 				if(e && H.lying)

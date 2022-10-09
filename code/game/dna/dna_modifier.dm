@@ -414,7 +414,7 @@
 			occupantData["isViableSubject"] = 0
 		occupantData["health"] = connected.occupant.health
 		occupantData["maxHealth"] = connected.occupant.maxHealth
-		occupantData["minHealth"] = config_legacy.health_threshold_dead
+		occupantData["minHealth"] = CONFIG_GET(number/health_threshold_dead)
 		occupantData["uniqueEnzymes"] = connected.occupant.dna.unique_enzymes
 		occupantData["uniqueIdentity"] = connected.occupant.dna.uni_identity
 		occupantData["structuralEnzymes"] = connected.occupant.dna.struc_enzymes

@@ -10,6 +10,7 @@ $include entries/game_options.txt
 $include entries/hub.txt
 $include entries/lobby.txt
 $include entries/logging.txt
+$include entries/medical.txt
 $include entries/resources.txt
 $include entries/urls.txt
 

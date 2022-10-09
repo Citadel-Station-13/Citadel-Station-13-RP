@@ -107,16 +107,16 @@
 	if(!istype(T))
 		return;
 	if(src.imprinted != "empty")
-		to_chat(U, "<span class='danger'>Capture failed!</span>: The soul stone has already been imprinted with [src.imprinted]'s mind!")
+		to_chat(U, "[SPAN_DANGER("Capture failed!")]: The soul stone has already been imprinted with [src.imprinted]'s mind!")
 		return
-	if ((T.health + T.halloss) > config_legacy.health_threshold_crit && T.stat != DEAD)
-		to_chat(U, "<span class='danger'>Capture failed!</span>: Kill or maim the victim first!")
+	if ((T.health + T.halloss) > CONFIG_GET(number/health_threshold_crit) && T.stat != DEAD)
+		to_chat(U, "[SPAN_DANGER("Capture failed!")]: Kill or maim the victim first!")
 		return
 	if(T.client == null)
-		to_chat(U, "<span class='danger'>Capture failed!</span>: The soul has already fled it's mortal frame.")
+		to_chat(U, "[SPAN_DANGER("Capture failed!")]: The soul has already fled it's mortal frame.")
 		return
 	if(src.contents.len)
-		to_chat(U, "<span class='danger'>Capture failed!</span>: The soul stone is full! Use or free an existing soul to make room.")
+		to_chat(U, "[SPAN_DANGER("Capture failed!")]: The soul stone is full! Use or free an existing soul to make room.")
 		return
 
 	T.drop_inventory(TRUE, TRUE, TRUE)

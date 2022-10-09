@@ -91,7 +91,7 @@
 		H.add_modifier(modifier_type)
 
 	//Apply damage
-	H.adjustCloneLoss((H.getMaxHealth() - config_legacy.health_threshold_dead)*-0.75)
+	H.adjustCloneLoss((H.getMaxHealth() - CONFIG_GET(number/health_threshold_dead)) * -0.75)
 	H.Paralyse(4)
 	H.updatehealth()
 

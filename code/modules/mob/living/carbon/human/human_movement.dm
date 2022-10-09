@@ -116,7 +116,8 @@
 			tally = (tally + tally/4) //Add a quarter of penalties on top.
 		tally += chem_effects[CE_SLOWDOWN]
 
-	return max(HUMAN_LOWEST_SLOWDOWN, tally + . + config_legacy.human_delay)	// Minimum return should be the same as force_max_speed
+	// Minimum return should be the same as force_max_speed
+	return max(HUMAN_LOWEST_SLOWDOWN, tally + . + CONFIG_GET(number/human_delay))
 
 // This calculates the amount of slowdown to receive from items worn. This does NOT include species modifiers.
 // It is in a seperate place to avoid an infinite loop situation with dragging mobs dragging each other.
@@ -225,7 +226,7 @@
 /mob/living/carbon/human/handle_footstep(turf/T)
 	if(is_incorporeal())
 		return
-	if(!config_legacy.footstep_volume || !T.footstep_sounds || !T.footstep_sounds.len)
+	if(!CONFIG_GET(number/footstep_volume) || !T.footstep_sounds || !T.footstep_sounds.len)
 		return
 	// Future Upgrades - Multi species support
 	var/list/footstep_sounds = T.footstep_sounds["human"]
@@ -243,7 +244,7 @@
 	if(m_intent == "run" && step_count++ % 2 != 0)
 		return
 
-	var/volume = config_legacy.footstep_volume
+	var/volume = CONFIG_GET(number/footstep_volume)
 
 	// Reduce volume while walking or barefoot
 	if(!shoes || m_intent == "walk")

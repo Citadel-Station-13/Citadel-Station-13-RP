@@ -1,4 +1,6 @@
-## Set to 0 to disable holidays (you monster)
+#### GENERAL ####
+
+## Comment out to disable holidays (you monster)
 ALLOW_HOLIDAYS
 
 ### Engine submap probabilities
@@ -10,3 +12,49 @@ ENGINE_SUBMAP EngineSubmap_RUST 40
 ENGINE_SUBMAP EngineSubmap_Tesla 20
 ## Singulo
 ENGINE_SUBMAP EngineSubmap_Singulo 20
+
+
+
+#### PLAYER CONFIGS ####
+
+## Forbids players from joining if they have no set General flavor text
+#REQUIRE_FLAVOR
+
+
+
+#### MOB MOVEMENT ####
+
+## We suggest editing these variabled in-game to find a good speed for your server.
+## To do this you must be a high level admin. Open the 'debug' tab ingame. Select "Debug Controller" and then, in the popup, select "Configuration". These variables should have the same name.
+
+## These values get directly added to values and totals in-game.
+## To speed things up make the number negative, to slow things down, make the number positive.
+
+
+## These modify the run/walk speed of all mobs before the mob-specific modifiers are applied.
+RUN_SPEED 2
+WALK_SPEED 5
+
+
+## The variables below affect the movement of specific mob types.
+HUMAN_DELAY 0
+ROBOT_DELAY 0
+ANIMAL_DELAY 0
+
+
+## Volume of footstep sound effects.
+## Range: 1-100, Set to 0 to disable footstep sounds.
+FOOTSTEP_VOLUME 60
+
+
+
+#### MISC ####
+
+## Config options which, of course, don't fit into previous categories.
+
+
+## Whether or not humans show an area message when they die.
+SHOW_HUMAN_DEATH_MESSAGE
+
+## Remove the # in front of this config option to have loyalty implants spawn by default on your server.
+#USE_LOYALTY_IMPLANTS

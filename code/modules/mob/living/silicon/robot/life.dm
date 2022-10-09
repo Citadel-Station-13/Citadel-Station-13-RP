@@ -68,7 +68,7 @@
 /mob/living/silicon/robot/handle_regular_UI_updates()
 
 	if(src.camera && !scrambledcodes)
-		if(src.stat == 2 || wires.is_cut(WIRE_BORG_CAMERA))
+		if(src.stat == DEAD || wires.is_cut(WIRE_BORG_CAMERA))
 			src.camera.set_status(0)
 		else
 			src.camera.set_status(1)
@@ -79,10 +79,10 @@
 		Paralyse(3)
 		AdjustSleeping(-1)
 
-	if(health < config_legacy.health_threshold_dead && src.stat != 2) //die only once
+	if(health < CONFIG_GET(number/health_threshold_dead) && src.stat != DEAD) //die only once
 		death()
 
-	if (src.stat != 2) //Alive.
+	if (src.stat != DEAD) //Alive.
 		if (src.paralysis || src.stunned || src.weakened || !src.has_power) //Stunned etc.
 			src.set_stat(UNCONSCIOUS)
 			if (src.stunned > 0)
@@ -130,7 +130,7 @@
 		src.druggy = max(0, src.druggy)
 
 	//update the state of modules and components here
-	if (src.stat != 0)
+	if (src.stat != CONSCIOUS)
 		uneq_all()
 
 	if(radio)
@@ -200,7 +200,7 @@
 						src.healths.icon_state = "health3"
 					if(0 to 50)
 						src.healths.icon_state = "health4"
-					if(config_legacy.health_threshold_dead to 0)
+					if(CONFIG_GET(number/health_threshold_dead) to 0)
 						src.healths.icon_state = "health5"
 					else
 						src.healths.icon_state = "health6"

@@ -682,4 +682,3 @@
 	damage = clamp(round(damage - amount, DAMAGE_PRECISION), 0, max_damage)
 	if(dead && can_revive)
 		revive()
-

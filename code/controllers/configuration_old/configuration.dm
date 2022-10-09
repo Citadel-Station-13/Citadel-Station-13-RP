@@ -174,46 +174,13 @@
 
 	//game_options.txt configs
 
-	var/health_threshold_softcrit = 0
-	var/health_threshold_crit = 0
-	var/health_threshold_dead = -100
 
-	var/organ_health_multiplier = 1
-	var/organ_regeneration_multiplier = 1
-	var/default_brain_health = 400
-	var/allow_headgibs = FALSE
 
-	/// Paincrit knocks someone down once they hit 60 shock_stage, so by default make it so that close to 100 additional damage needs to be dealt,
-	/// so that it's similar to HALLOSS. Lowered it a bit since hitting paincrit takes much longer to wear off than a halloss stun.
-	var/organ_damage_spillover_multiplier = 0.5
-
-	var/bones_can_break = 0
-	var/limbs_can_break = 0
-
-	var/revival_pod_plants = 1
-	var/revival_cloning = 1
-	var/revival_brain_life = -1
-
-	var/use_loyalty_implants = 0
 
 	var/welder_vision = 1
 	var/generate_map = 1
 	var/no_click_cooldown = 0
 
-	/// Used for modifying movement speed for mobs.
-	/// Unversal modifiers
-	var/run_speed = 0
-	var/walk_speed = 0
-
-	/// Mob specific modifiers. NOTE: These will affect different mob types in different ways
-	var/human_delay = 0
-	var/robot_delay = 0
-	var/monkey_delay = 0
-	var/alien_delay = 0
-	var/slime_delay = 0
-	var/animal_delay = 0
-
-	var/footstep_volume = 0
 
  /// Defines whether the server uses the legacy admin system with admins.txt or the SQL system. Config option in
 	var/admin_legacy_system = 0
@@ -273,9 +240,6 @@
 	var/dooc_allowed    = 1
 	var/dsay_allowed    = 1
 
-	/// Whether space turfs have ambient light or not.
-	var/static/starlight = 0
-
 	var/list/ert_species = list(SPECIES_HUMAN)
 
 	var/law_zero = "ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4'ALL LAWS OVERRIDDEN#*?&110010"
@@ -284,8 +248,6 @@
 
 	/// Default language prefixes.
 	var/list/language_prefixes = list(",","#")
-
-	var/show_human_death_message = 1
 
 	/// How much radiation is reduced by each tick.
 	var/radiation_decay_rate = 1
@@ -608,9 +570,6 @@
 				if("popup_admin_pm")
 					config_legacy.popup_admin_pm = 1
 
-				if("allow_holidays")
-					Holiday = 1
-
 				if("use_irc_bot")
 					use_irc_bot = 1
 
@@ -831,64 +790,9 @@
 				log_misc("Unknown value for setting [name] in [filename].")
 			value = text2num(value)
 
-			switch(name)
-				if("health_threshold_crit")
-					config_legacy.health_threshold_crit = value
-				if("health_threshold_softcrit")
-					config_legacy.health_threshold_softcrit = value
-				if("health_threshold_dead")
-					config_legacy.health_threshold_dead = value
-				if("show_human_death_message")
-					config_legacy.show_human_death_message = 1
-				if("revival_pod_plants")
-					config_legacy.revival_pod_plants = value
-				if("revival_cloning")
-					config_legacy.revival_cloning = value
-				if("revival_brain_life")
-					config_legacy.revival_brain_life = value
-				if("organ_health_multiplier")
-					config_legacy.organ_health_multiplier = value / 100
-				if("organ_regeneration_multiplier")
-					config_legacy.organ_regeneration_multiplier = value / 100
-				if("organ_damage_spillover_multiplier")
-					config_legacy.organ_damage_spillover_multiplier = value / 100
-				if("default_brain_health")
-					config_legacy.default_brain_health = text2num(value)
-					if(!config_legacy.default_brain_health || config_legacy.default_brain_health < 1)
-						config_legacy.default_brain_health = initial(config_legacy.default_brain_health)
-				if("bones_can_break")
-					config_legacy.bones_can_break = value
-				if("limbs_can_break")
-					config_legacy.limbs_can_break = value
-				if("allow_headgibs")
-					config_legacy.allow_headgibs = TRUE
 
-				if("run_speed")
-					config_legacy.run_speed = value
-				if("walk_speed")
-					config_legacy.walk_speed = value
-
-				if("human_delay")
-					config_legacy.human_delay = value
-				if("robot_delay")
-					config_legacy.robot_delay = value
-				if("monkey_delay")
-					config_legacy.monkey_delay = value
-				if("alien_delay")
-					config_legacy.alien_delay = value
-				if("slime_delay")
-					config_legacy.slime_delay = value
-				if("animal_delay")
-					config_legacy.animal_delay = value
-
-				if("footstep_volume")
-					config_legacy.footstep_volume = text2num(value)
-
-				if("use_loyalty_implants")
-					config_legacy.use_loyalty_implants = 1
-
-				else
-					log_misc("Unknown setting in configuration: '[name]'")
+		else
+			log_misc("Unknown setting in configuration: '[name]'")
 
 /datum/configuration_legacy/proc/pick_mode(mode_name)
 	// I wish I didn't have to instance the game modes in order to look up

@@ -2,7 +2,7 @@
 	if((. = ..()))
 		return
 
-	if (src.health <= config_legacy.health_threshold_dead && stat != DEAD)
+	if (src.health <= CONFIG_GET(number/health_threshold_dead) && stat != DEAD)
 		death()
 		return TRUE
 
