@@ -456,37 +456,37 @@ update_flag
 
 /obj/machinery/portable_atmospherics/canister/helium/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/helium, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_HELIUM, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/carbon_monoxide/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/carbon_monoxide, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_CARBON_MONOXIDE, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/methyl_bromide/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/methyl_bromide, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_METHYL_BROMIDE, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/nitrodioxide/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/nitrodioxide, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_NITROGEN_DIOXIDE, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/nitricoxide/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/nitricoxide, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_NITRIC_OXIDE, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/methane/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/methane, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_METHANE, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/argon/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/argon, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_ARGON, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/krypton/Initialize(mapload)
@@ -516,22 +516,22 @@ update_flag
 
 /obj/machinery/portable_atmospherics/canister/sulfur_dioxide/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/sulfur_dioxide, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_SULFUR_DIOXIDE, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/hydrogen/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/hydrogen, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_HYDROGEN, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/tritium/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/hydrogen/tritium, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_TRITIUM, MolesForPressure())
 	src.update_icon()
 
 /obj/machinery/portable_atmospherics/canister/deuterium/Initialize(mapload)
 	. = ..()
-	src.air_contents.adjust_gas(/datum/gas/hydrogen/deuterium, MolesForPressure())
+	src.air_contents.adjust_gas(GAS_ID_DEUTERIUM, MolesForPressure())
 	src.update_icon()
 
 //Dirty way to fill room with gas. However it is a bit easier to do than creating some floor/engine/n2o -rastaf0

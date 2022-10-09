@@ -26,7 +26,7 @@
 	if(severity >= EVENT_LEVEL_MODERATE)
 		gas_choices += GAS_ID_PHORON // Dangerous
 	if(severity >= EVENT_LEVEL_MAJOR)
-		gas_choices += /datum/gas/volatile_fuel // Dangerous and no default atmos setup!
+		gas_choices += GAS_ID_VOLATILE_FUEL // Dangerous and no default atmos setup!
 	gas_type = pick(gas_choices)
 
 	var/list/area/grand_list_of_areas = get_station_areas(excluded)

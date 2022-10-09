@@ -43,7 +43,7 @@
 	switch(filter_type)
 		if(0) //removing hydrocarbons
 			filtered_out += GAS_ID_PHORON
-			filtered_out += /datum/gas/volatile_fuel
+			filtered_out += GAS_ID_VOLATILE_FUEL
 		if(1) //removing O2
 			filtered_out += GAS_ID_OXYGEN
 		if(2) //removing N2
@@ -167,7 +167,7 @@
 			switch(filter_type)
 				if(0) //removing hydrocarbons
 					filtered_out += GAS_ID_PHORON
-					filtered_out += /datum/gas/volatile_fuel
+					filtered_out += GAS_ID_VOLATILE_FUEL
 				if(1) //removing O2
 					filtered_out += GAS_ID_OXYGEN
 				if(2) //removing N2

@@ -117,7 +117,7 @@
 		"filter_co2" = (GAS_ID_CARBON_DIOXIDE in scrubbing_gas),
 		"filter_phoron" = (GAS_ID_PHORON in scrubbing_gas),
 		"filter_n2o" = (GAS_ID_NITROUS_OXIDE in scrubbing_gas),
-		"filter_fuel" = (/datum/gas/volatile_fuel in scrubbing_gas),
+		"filter_fuel" = (GAS_ID_VOLATILE_FUEL in scrubbing_gas),
 		"sigtype" = "status"
 	)
 	if(!initial_loc.air_scrub_names[id_tag])
@@ -239,10 +239,10 @@
 	else if(signal.data["toggle_n2o_scrub"])
 		toggle += GAS_ID_NITROUS_OXIDE
 
-	if(!isnull(signal.data["fuel_scrub"]) && text2num(signal.data["fuel_scrub"]) != (/datum/gas/volatile_fuel in scrubbing_gas))
-		toggle += /datum/gas/volatile_fuel
+	if(!isnull(signal.data["fuel_scrub"]) && text2num(signal.data["fuel_scrub"]) != (GAS_ID_VOLATILE_FUEL in scrubbing_gas))
+		toggle += GAS_ID_VOLATILE_FUEL
 	else if(signal.data["toggle_fuel_scrub"])
-		toggle += /datum/gas/volatile_fuel
+		toggle += GAS_ID_VOLATILE_FUEL
 
 	scrubbing_gas ^= toggle
 

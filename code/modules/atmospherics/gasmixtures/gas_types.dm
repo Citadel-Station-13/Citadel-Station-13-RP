@@ -416,7 +416,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	)
 	value = 0.4*/
 
-/datum/gas/hydrogen/tritium
+/datum/gas/tritium
 	id = GAS_ID_TRITIUM
 	name = "Tritium"
 	/*lore_text = "A radioactive isotope of hydrogen. Useful as a fusion reactor fuel material."
@@ -427,7 +427,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	gas_symbol_html = "T"
 	gas_symbol = "T"*/
 
-/datum/gas/hydrogen/deuterium
+/datum/gas/deuterium
 	id = GAS_ID_DEUTERIUM
 	name = "Deuterium"
 	/*lore_text = "One of the two stable isotopes of hydrogen; also known as heavy hydrogen. Useful as a chemically synthesised fusion reactor fuel material."

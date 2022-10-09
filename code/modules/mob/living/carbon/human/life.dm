@@ -570,8 +570,7 @@
 				spawn(0) emote(pick("giggle", "laugh"))
 		breath.adjust_gas(GAS_ID_NITROUS_OXIDE, -breath.gas[GAS_ID_NITROUS_OXIDE]/6, update = 0) //update after
 
-	for(var/gasname in breath.gas) //datum/gas/
-		//var/datum/gas/gas = gasname
+	for(var/gasname in breath.gas)
 		if(gasname == breath_type)
 			continue
 		if(!GLOB.meta_gas_reagent_id[gasname])
