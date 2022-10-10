@@ -44,7 +44,7 @@
 		var/obj/item/clothing/under/U = I
 		if(istype(U))
 			U.snowflake_worn_state = I.icon_state
-			U.update_rolldown_status()
+			U.update_rolldown()
 		use(1, user)
 
 // Generic use

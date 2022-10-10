@@ -305,10 +305,5 @@
 
 /obj/item/clothing/under/rank/init_sensors(mob/living/carbon/human/H)
 	if(!H)
-		sensor_mode = pick(
-			SUIT_SENSOR_OFF,
-			SUIT_SENSOR_BINARY,
-			SUIT_SENSOR_VITAL,
-			SUIT_SENSOR_TRACKING
-		)	//Select a random setting
+		sensor_mode = pick(SUIT_SENSOR_OFF, SUIT_SENSOR_BINARY, SUIT_SENSOR_VITAL, SUIT_SENSOR_TRACKING)	//Select a random setting
 	return ..()
