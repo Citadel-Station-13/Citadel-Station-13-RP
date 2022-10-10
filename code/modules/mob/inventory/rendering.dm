@@ -178,18 +178,18 @@
 	/// worn icon used instead of base icon
 	var/icon/worn_icon
 	/// dimensions of our worn icon file if different from icon
-	var/worn_x_dimension
+	var/worn_x_dimension = 32
 	/// dimensions of our worn icon file if different from icon
-	var/worn_y_dimension
+	var/worn_y_dimension = 32
 	//? for hands: prioritized over icon, icon_state, icon dimensions
 	/// state to use; worn_state, then icon_state is used if this isn't set
 	var/inhand_state
 	/// inhand icon used instead of base icon
 	var/icon/inhand_icon
 	/// dimensions of inhand sprites if different from icon
-	var/inhand_x_dimension
+	var/inhand_x_dimension = 32
 	/// dimensions of inhand sprites if different from icon
-	var/inhand_y_dimension
+	var/inhand_y_dimension = 32
 	/// inhand default domain aka which icon we grab to check for state
 	var/inhand_default_type = INHAND_DEFAULT_ICON_GENERAL
 	//? for belts
@@ -291,6 +291,8 @@
  * - bodytype - bodytype in question
  */
 /obj/item/proc/resolve_worn_assets(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
+	if(istext(slot_meta))
+		slot_meta = resolve_inventory_slot_meta(slot_meta)
 	var/list/data = new /list(5)	// 5 tuple
 
 
@@ -335,7 +337,7 @@
 		#warn test the funny antag gear
 
 	//* inventory slot defaults
-	else if(inhands? (worn_render_flags & WORN_RENDER_SLOT_ALLOW_DEFAULT) : (worn_render_flags & WORN_RENDER_SLOT_ALLOW_DEFAULT))
+	else if(inhands? (worn_render_flags & WORN_RENDER_INHAND_ALLOW_DEFAULT) : (worn_render_flags & WORN_RENDER_SLOT_ALLOW_DEFAULT))
 		var/list/resolved = slot_meta.resolve_default_assets(bodytype, data[WORN_DATA_STATE], M, src, inhand_default_type)
 		if(!resolved && (bodytype != BODYTYPE_DEFAULT) && (bodytype & worn_bodytypes_converted))
 			// attempt 2 - convert to default if specified to convert
