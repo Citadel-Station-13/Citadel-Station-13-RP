@@ -288,7 +288,6 @@ var/list/shoreline_icon_cache = list()
 /turf/simulated/floor/water/acid/Entered(atom/movable/AM, atom/oldloc)
 	if(istype(AM, /mob/living))
 		var/mob/living/L = AM
-		L.update_acidsub()
 		if(L.check_submerged() <= 0)
 			return
 		if(!istype(oldloc, /turf/simulated/floor/water/acid))
@@ -298,7 +297,6 @@ var/list/shoreline_icon_cache = list()
 /turf/simulated/floor/water/acid/Exited(atom/movable/AM, atom/newloc)
 	if(istype(AM, /mob/living))
 		var/mob/living/L = AM
-		L.update_acidsub()
 		if(L.check_submerged() <= 0)
 			return
 		if(!istype(newloc, /turf/simulated/floor/water/acid))
@@ -384,7 +382,6 @@ var/list/shoreline_icon_cache = list()
 /turf/simulated/floor/water/blood/Entered(atom/movable/AM, atom/oldloc)
 	if(istype(AM, /mob/living))
 		var/mob/living/L = AM
-		L.update_bloodsub()
 		if(L.check_submerged() <= 0)
 			return
 		if(!istype(oldloc, /turf/simulated/floor/water/blood))
@@ -394,7 +391,6 @@ var/list/shoreline_icon_cache = list()
 /turf/simulated/floor/water/blood/Exited(atom/movable/AM, atom/newloc)
 	if(istype(AM, /mob/living))
 		var/mob/living/L = AM
-		L.update_bloodsub()
 		if(L.check_submerged() <= 0)
 			return
 		if(!istype(newloc, /turf/simulated/floor/water/blood))

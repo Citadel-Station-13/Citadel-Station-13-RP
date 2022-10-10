@@ -21,4 +21,4 @@
 	/// allow emissives
 	var/emissives_allowed = TRUE
 
-/datum/sprite_accessory/proc/render_emissives(mob/M)
+#warn full shapeshifter tgui panel after this rework it won't be enough to use menu

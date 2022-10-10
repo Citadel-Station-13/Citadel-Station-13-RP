@@ -8,13 +8,6 @@
 	update_icon() //Ugh.
 	return
 
-// Obsolete
-/mob/proc/update_icons_layers()
-	return
-
-/mob/proc/update_icons_huds()
-	return
-
 /mob/proc/update_icons_body()
 	return
 

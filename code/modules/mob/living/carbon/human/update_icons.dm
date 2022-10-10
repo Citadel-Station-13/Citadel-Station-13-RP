@@ -146,12 +146,6 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	//Do any species specific layering updates, such as when hiding.
 	update_icon_special()
 
-/mob/living/carbon/human/update_icons_layers()
-	stack_trace("CANARY: Old human update_icons_layers was called.")
-
-/mob/living/carbon/human/update_icons_huds()
-	stack_trace("CANARY: Old human update_icons_huds was called.")
-
 /mob/living/carbon/human/update_transform()
 	var/desired_scale_x = size_multiplier * icon_scale_x
 	var/desired_scale_y = size_multiplier * icon_scale_y
@@ -1127,34 +1121,6 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_2", layer = BODY_LAYER+MOB_WATER_LAYER)
 		apply_layer(MOB_WATER_LAYER)
 
-/mob/living/carbon/human/update_acidsub()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(MOB_WATER_LAYER)
-
-	var/depth = check_submerged()
-	if(!depth || lying)
-		return
-
-	overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hacid_[depth]", layer = BODY_LAYER+MOB_WATER_LAYER) //TODO: Improve
-
-	apply_layer(MOB_WATER_LAYER)
-
-/mob/living/carbon/human/update_bloodsub()
-	if(QDESTROYING(src))
-		return
-
-	remove_layer(MOB_WATER_LAYER)
-
-	var/depth = check_submerged()
-	if(!depth || lying)
-		return
-
-	overlays_standing[MOB_WATER_LAYER] = image(icon = 'icons/mob/submerged.dmi', icon_state = "hblood_[depth]", layer = BODY_LAYER+MOB_WATER_LAYER) //TODO: Improve
-
-	apply_layer(MOB_WATER_LAYER)
-
 /mob/living/carbon/human/proc/update_surgery()
 	if(QDESTROYING(src))
 		return
@@ -1170,6 +1136,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(total.overlays.len)
 		overlays_standing[SURGERY_LAYER] = total
 		apply_layer(SURGERY_LAYER)
+
 
 /mob/living/carbon/human/proc/get_wing_image(front) //redbull gives you wings
 	var/icon/grad_swing
