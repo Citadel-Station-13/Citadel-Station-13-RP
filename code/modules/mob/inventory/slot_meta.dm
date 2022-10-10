@@ -243,12 +243,12 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/list/render_rolldown_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/uniform_rolled_down.dmi',
 		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/uniform_rolled_down.dmi',
-		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/uniform_rolled_down.dmi'
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/uniform_rolled_down.dmi',
 	)
 	/// list of rollsleeve icons; must DIRECTLY corrospond to default icons.
 	var/list/render_rollsleeve_icons = list(
-		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/uniform_sleeves_rolled.dmi'
-		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/uniform_sleeves_rolled.dmi'
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/uniform_sleeves_rolled.dmi',
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/uniform_sleeves_rolled.dmi',
 	)
 	/// list of rolldown states
 	var/list/render_rolldown_states
