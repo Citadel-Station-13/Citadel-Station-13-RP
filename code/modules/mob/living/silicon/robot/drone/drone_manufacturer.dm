@@ -24,11 +24,13 @@
 	var/produce_drones = 2
 	var/time_last_drone = 500
 	var/drone_type = /mob/living/silicon/robot/drone
+	var/is_spawn_safe = TRUE
 
 /obj/machinery/drone_fabricator/derelict
 	name = "construction drone fabricator"
 	fabricator_tag = "Upper Level Construction"
 	drone_type = /mob/living/silicon/robot/drone/construction
+	is_spawn_safe = FALSE
 
 /obj/machinery/drone_fabricator/mining
 	name = "mining drone fabricator"
@@ -146,6 +148,8 @@
 	for(var/obj/machinery/drone_fabricator/DF in GLOB.machines)
 		if(DF.machine_stat & NOPOWER || !DF.produce_drones)
 			continue
+		if(!DF.is_spawn_safe)
+			continue
 		if(DF.drone_progress >= 100)
 			all_fabricators[DF.fabricator_tag] = DF
 
@@ -157,3 +161,8 @@
 	if(choice)
 		var/obj/machinery/drone_fabricator/chosen_fabricator = all_fabricators[choice]
 		chosen_fabricator.create_drone(src.client)
+
+/obj/machinery/drone_fabricator/attack_hand(mob/user)
+	if(!is_spawn_safe)
+		is_spawn_safe = TRUE
+		to_chat(user, "You inform the fabricator that it is safe for drones to roam around.")
