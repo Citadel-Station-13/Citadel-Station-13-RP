@@ -300,6 +300,10 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 				robolimb_count++
 				if((part.robotic == ORGAN_ROBOT || part.robotic == ORGAN_LIFELIKE) && (part.organ_tag == BP_HEAD || part.organ_tag == BP_TORSO || part.organ_tag == BP_GROIN))
 					robobody_count ++
+				if(species.is_cyberpsycho) //This check should hopefully automatically update the capacity of CRS patients if cybernetics are installed.
+					var/datum/component/cyberpsychosis/C
+					C.capacity = 100
+					C.adjusted = 0
 			else if(part.status & ORGAN_DEAD)
 				icon_key += "3"
 			else

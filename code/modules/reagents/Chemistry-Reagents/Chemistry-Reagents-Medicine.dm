@@ -1607,42 +1607,13 @@
 	taste_description = "sour metal"
 	taste_mult = 2
 	reagent_state = REAGENT_LIQUID
-	metabolism = REM * 0.25
+	metabolism = 10
 	mrate_static = TRUE
 	color = "#52ca22"
 	scannable = 1
-	overdose = 20
-	var/potency = 10
+	overdose = REAGENTS_OVERDOSE * 0.6
 
-/datum/reagent/neuratrextate/affect_blood(var/mob/living/carbon/M)
-	var/mob/living/carbon/human/H = M
-	if(ishuman(M))
-		switch(H.capacity)
-			if(71 to 90)
-				H.capacity = (H.capacity + potency)
-			if(31 to 70)
-				H.capacity = (H.capacity + (potency * 0.5))
-			if(0 to 30)
-				H.capacity = (H.capacity + (potency * 0.2))
-			else
-				H.capacity = 100
-
-/datum/reagent/neuratrextate/overdose(var/datum/species/S)
+/datum/reagent/neuratrextate/overdose(var/mob/living/carbon/M)
 	..()
-	var/mob/living/carbon/human/H = S
-	if(S.is_cyberpsycho)
-		H.capacity = (H.capacity - (potency * 2))
-
-//Create Neuratrextate Inert. This'll be the one that does all the shit I want.
-/*
-Not that i know off, you could replace all of the reagent with reagen-inert(a second reagent with a var edited to not really process
-(reagents have their own metabolism rate var as well iirc)) but without a var on the mob we can't completely freeze it and unthaw it on its own
-
-You know, swapping it out after the initial dose isn't a terrible idea. (edited)
-
-I am not sure if a reagent that's removed = 0 calls the affect functions
-
-Maybe simulating the effect of the chem catalyzing in the body and replacing it with an inert drug with an overdose threshold would work best here.
-Gives me the exact effect I want.
-Although it doesn't solve the issue of why the drug is still triggering multiple adjustments to capacity all at once.
-*/
+	M.druggy = max(M.druggy, 10)
+	M.hallucination = max(M.hallucination, 3)
