@@ -14,8 +14,8 @@
 	icon_state = "rpd"
 	item_state = "rpd"
 	item_icons = list(
-		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_vr.dmi',
-		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_vr.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 	)
 	item_flags = ITEM_NOBLUDGEON
 	force = 10

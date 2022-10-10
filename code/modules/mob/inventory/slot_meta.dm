@@ -533,7 +533,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	hud_position = ui_r_ear
 	slot_equip_checks = SLOT_EQUIP_CHECK_USE_FLAGS
 	slot_flags_required = SLOT_EARS
-	render_layer = EARS_LAYERw
+	render_layer = EARS_LAYER
 
 /datum/inventory_slot_meta/inventory/mask
 	name = "mask"

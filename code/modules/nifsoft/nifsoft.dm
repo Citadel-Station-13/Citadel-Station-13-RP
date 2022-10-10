@@ -202,8 +202,8 @@
 	icon_state = "medical"
 	item_state = "nanomod"
 	item_icons = list(
-		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_vr.dmi',
-		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_vr.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 		)
 	w_class = ITEMSIZE_SMALL
 	var/datum/nifsoft/stored = null

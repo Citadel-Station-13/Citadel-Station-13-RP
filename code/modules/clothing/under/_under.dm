@@ -86,12 +86,7 @@
 			if(3) sensor_mode = SUIT_SENSOR_VITAL				//Sensors display vitals
 			if(4) sensor_mode = SUIT_SENSOR_TRACKING				//Sensors display vitals and enables tracking
 			else
-				sensor_mode = pick(
-					SUIT_SENSOR_OFF,
-					SUIT_SENSOR_BINARY,
-					SUIT_SENSOR_VITAL,
-					SUIT_SENSOR_TRACKING
-				)	//Select a random setting
+				sensor_mode = pick(SUIT_SENSOR_OFF, SUIT_SENSOR_BINARY, SUIT_SENSOR_VITAL, SUIT_SENSOR_TRACKING)	//Select a random setting
 	else
 		sensor_mode = SUIT_SENSOR_OFF
 
@@ -141,7 +136,7 @@
 	if(!updating)
 		update_worn_icon()
 
-/obj/item/clothing/under/proc/update_rollsleeve()
+/obj/item/clothing/under/proc/update_rollsleeve(updating)
 	var/has_sleeves
 	var/detected_bodytype = BODYTYPE_DEFAULT
 	var/mob/living/carbon/human/H = worn_mob()
@@ -153,7 +148,7 @@
 		if(UNIFORM_HAS_NO_ROLL)
 			has_sleeves = FALSE
 		if(UNIFORM_AUTODETECT_ROLL)
-			has_roll = autodetect_rollsleeve(detected_bodytype)
+			has_sleeves  = autodetect_rollsleeve(detected_bodytype)
 
 	if(!has_sleeves)
 		verbs -= /obj/item/clothing/under/verb/rollsleeves
