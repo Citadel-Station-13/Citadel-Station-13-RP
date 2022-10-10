@@ -75,6 +75,8 @@
 	. = ..()
 	if(produce_drones && drone_progress >= 100 && istype(user,/mob/observer/dead) && config_legacy.allow_drone_spawn && count_drones() < config_legacy.max_maint_drones)
 		. += "<BR><B>A drone is prepared. Select 'Join As Drone' from the Ghost tab to spawn as a maintenance drone.</B>"
+	if(!is_spawn_safe)
+		. += "<BR> It seems this fabricator has gone into safety lockdown, maybe you can reset it."
 
 /obj/machinery/drone_fabricator/proc/create_drone(var/client/player)
 
