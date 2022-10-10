@@ -107,8 +107,7 @@
 //UNIFORM: Always appends "_s" to iconstate, stupidly.
 /obj/item/clothing/under/resolve_legacy_state(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
 	if(snowflake_worn_state && (slot_meta.id == SLOT_ID_UNIFORM))
-		. = snowflake_worn_state
-		return . + "_s"
+		return snowflake_worn_state + "_s"
 	return ..()
 
 /obj/item/clothing/under/base_worn_state(inhands, slot_key, bodytype)
@@ -130,6 +129,7 @@
 		if(UNIFORM_HAS_NO_ROLL)
 			has_roll = FALSE
 		if(UNIFORM_AUTODETECT_ROLL)
+			has_roll = autodetect_rolldown(detected_bodytype)
 
 	if(!has_roll)
 		verbs -= /obj/item/clothing/under/verb/rollsuit
@@ -153,6 +153,7 @@
 		if(UNIFORM_HAS_NO_ROLL)
 			has_sleeves = FALSE
 		if(UNIFORM_AUTODETECT_ROLL)
+			has_roll = autodetect_rollsleeve(detected_bodytype)
 
 	if(!has_sleeves)
 		verbs -= /obj/item/clothing/under/verb/rollsleeves
@@ -164,72 +165,13 @@
 	if(!updating)
 		update_worn_icon()
 
-/obj/item/clothing/under/proc/autodetect_rolldown()
+/obj/item/clothing/under/proc/autodetect_rolldown(bodytype)
+	var/datum/inventory_slot_meta/inventory/uniform/wow_this_sucks = resolve_inventory_slot_meta(SLOT_ID_UNIFORM)
+	return wow_this_sucks.check_rolldown_cache(bodytype, resolve_legacy_state(null, wow_this_sucks, FALSE, bodytype))
 
-/obj/item/clothing/under/proc/autodetect_rollsleeve()
-
-#warn autodetect
-/*
-	#warn better autodetector
-	//autodetect rollability
-
-	if(rolled_down < 0)
-		if(("[snowflake_worn_state]_d_s" in icon_states(INV_W_UNIFORM_DEF_ICON)) || ("[snowflake_worn_state]_s" in icon_states(rolled_down_icon)) || ("[snowflake_worn_state]_d_s" in icon_states(icon_override)))
-			rolled_down = 0
-
-*/
-
-/obj/item/clothing/under/proc/update_rolldown_status()
-	var/mob/living/carbon/human/H = ishuman(loc)? loc : null
-	var/icon/under_icon = resolve_worn_assets(H, SLOT_ID_UNIFORM, FALSE, H?.species?.get_effective_bodytype(src, SLOT_ID_UNIFORM))[1]
-	#warn fix
-	// if(icon_override)
-	// 	under_icon = icon_override
-	// else if(H && sprite_sheets && sprite_sheets[H.species.get_worn_legacy_bodytype(H)])
-	// 	under_icon = sprite_sheets[H.species.get_worn_legacy_bodytype(H)]
-	// else if(item_icons && item_icons[SLOT_ID_UNIFORM])
-	// 	under_icon = item_icons[SLOT_ID_UNIFORM]
-	// else if ("[snowflake_worn_state]_s" in icon_states(rolled_down_icon))
-	// 	under_icon = rolled_down_icon
-	// else
-	// 	under_icon = INV_W_UNIFORM_DEF_ICON
-
-	// The _s is because the icon update procs append it.
-	if((under_icon == rolled_down_icon && ("[snowflake_worn_state]_s" in icon_states(under_icon))) || ("[snowflake_worn_state]_d_s" in icon_states(under_icon)))
-		if(rolled_down != 1)
-			rolled_down = 0
-	else
-		worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	if(H)
-		update_worn_icon()
-
-/obj/item/clothing/under/proc/update_rollsleeves_status()
-	var/mob/living/carbon/human/H
-	if(istype(src.loc, /mob/living/carbon/human))
-		H = src.loc
-
-	var/icon/under_icon = resolve_worn_assets(H, SLOT_ID_UNIFORM, FALSE, H?.species?.get_effective_bodytype(src, SLOT_ID_UNIFORM))[1]
-	#warn fix
-	// var/icon/under_icon = resolve_worn_assets()
-	// if(icon_override)
-	// 	under_icon = icon_override
-	// else if(H && sprite_sheets && sprite_sheets[H.species.get_worn_legacy_bodytype(H)])
-	// 	under_icon = sprite_sheets[H.species.get_worn_legacy_bodytype(H)]
-	// else if(item_icons && item_icons[SLOT_ID_UNIFORM])
-	// 	under_icon = item_icons[SLOT_ID_UNIFORM]
-	// else if ("[snowflake_worn_state]_s" in icon_states(rolled_down_sleeves_icon))
-	// 	under_icon = rolled_down_sleeves_icon
-	// else
-	// 	under_icon = INV_W_UNIFORM_DEF_ICON
-
-	// The _s is because the icon update procs append it.
-	if((under_icon == rolled_down_sleeves_icon && ("[snowflake_worn_state]_s" in icon_states(under_icon))) || ("[snowflake_worn_state]_r_s" in icon_states(under_icon)))
-		if(rolled_sleeves != 1)
-			rolled_sleeves = 0
-	else
-		worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
-	if(H)
-		update_worn_icon()
+/obj/item/clothing/under/proc/autodetect_rollsleeve(bodytype)
+	var/datum/inventory_slot_meta/inventory/uniform/wow_this_sucks = resolve_inventory_slot_meta(SLOT_ID_UNIFORM)
+	return wow_this_sucks.check_rollsleeve_cache(bodytype, resolve_legacy_state(null, wow_this_sucks, FALSE, bodytype))
 
 /obj/item/clothing/under/verb/rollsuit()
 	set name = "Roll Jumpsuit"

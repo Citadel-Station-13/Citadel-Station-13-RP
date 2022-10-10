@@ -241,11 +241,14 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 
 	/// list of rolldown icons; must DIRECTLY corrospond to default icons.
 	var/list/render_rolldown_icons = list(
-		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/uniform_rolled_down.dmi'
+		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/uniform_rolled_down.dmi',
+		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/uniform_rolled_down.dmi',
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/uniform_rolled_down.dmi'
 	)
 	/// list of rollsleeve icons; must DIRECTLY corrospond to default icons.
 	var/list/render_rollsleeve_icons = list(
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/clothing/uniform_sleeves_rolled.dmi'
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/uniform_sleeves_rolled.dmi'
 	)
 	/// list of rolldown states
 	var/list/render_rolldown_states
@@ -270,14 +273,24 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 			render_rollsleeve_states[bodytype_str][state] = TRUE
 
 /datum/inventory_slot_meta/inventory/uniform/resolve_default_assets(bodytype, state, mob/wearer, obj/item/equipped, inhand_domain)
-	. = ..()
+	if(!istype(equipped, /obj/item/clothing/under))
+		return ..()
+	var/obj/item/clothing/under/U = equipped
+	var/bodytype_str = bodytype_to_string(bodytype)
+	if(U.worn_rolled_down == UNIFORM_ROLL_TRUE)
+		if(check_rolldown_cache(bodytype, state))
+			return list(render_rolldown_icons[bodytype_str], render_dim_x_cache[bodytype_str], render_dim_y_cache[bodytype_str])
+	else if(U.worn_rolled_sleeves == UNIFORM_ROLL_TRUE)
+		if(check_rollsleeve_cache(bodytype, state))
+			return list(render_rollsleeve_icons[bodytype_str], render_dim_x_cache[bodytype_str], render_dim_y_cache[bodytype_str])
+	else
+		return ..()
 
-/datum/inventory_slot_meta/inventory/uniform/proc/check_rolldown_cache(state)
+/datum/inventory_slot_meta/inventory/uniform/proc/check_rolldown_cache(bodytype, state)
+	return render_rolldown_states[bodytype_to_string(bodytype)]?[state]
 
-/datum/inventory_slot_meta/inventory/uniform/proc/check_rollsleeve_cache(state)
-
-#warn finish
-#warn detect rolldown proc
+/datum/inventory_slot_meta/inventory/uniform/proc/check_rollsleeve_cache(bodytype, state)
+	return render_rollsleeve_states[bodytype_to_string(bodytype)]?[state]
 
 /datum/inventory_slot_meta/inventory/head
 	name = "head"
