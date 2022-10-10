@@ -161,7 +161,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_dim_x_cache = list()
 	render_dim_y_cache = list()
 	for(var/bodytype_str in render_default_icons)
-		render_default_icons[bodytype_str] = isicon(render_default_icons[bodytype_str])? render_default_icons[bodytype_str] : icon(render_default_icons[bodytype_str])
+		render_default_icons[bodytype_str] = istype(render_default_icons[bodytype_str], /icon)? render_default_icons[bodytype_str] : icon(render_default_icons[bodytype_str])
 		if(!isicon(render_default_icons[bodytype_str]))
 			stack_trace("invalid icon in cache for bodytype [bodytype_str]; discarding")
 			render_default_icons -= bodytype_str
@@ -259,14 +259,24 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	. = ..()
 	render_rolldown_states = list()
 	for(var/bodytype_str in render_rolldown_icons)
-		var/icon/I = icon(render_rolldown_icons[bodytype_str])
+		render_rolldown_icons[bodytype_str] = istype(render_rolldown_icons[bodytype_str], /icon)? render_rolldown_icons[bodytype_str] : icon(render_rolldown_icons[bodytype_str])
+		if(!isicon(render_rolldown_icons[bodytype_str]))
+			stack_trace("invalid icon in rolldown cache for bodytype [bodytype_str]; discarding")
+			render_rolldown_icons -= bodytype_str
+			continue
+		var/icon/I = render_rolldown_icons[bodytype_str]
 		render_rolldown_states[bodytype_str] = icon_states(I)
 		// turn into hash
 		for(var/state in render_rolldown_states[bodytype_str])
 			render_rolldown_states[bodytype_str][state] = TRUE
 	render_rollsleeve_states = list()
 	for(var/bodytype_str in render_rollsleeve_icons)
-		var/icon/I = icon(render_rolldown_icons[bodytype_str])
+		render_rollsleeve_icons[bodytype_str] = istype(render_rollsleeve_icons[bodytype_str], /icon)? render_rollsleeve_icons[bodytype_str] : icon(render_rollsleeve_icons[bodytype_str])
+		if(!isicon(render_rollsleeve_icons[bodytype_str]))
+			stack_trace("invalid icon in rollsleeve cache for bodytype [bodytype_str]; discarding")
+			render_rollsleeve_icons -= bodytype_str
+			continue
+		var/icon/I = render_rollsleeve_icons[bodytype_str]
 		render_rollsleeve_states[bodytype_str] = icon_states(I)
 		// turn into hash
 		for(var/state in render_rollsleeve_states[bodytype_str])
