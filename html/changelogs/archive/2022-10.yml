@@ -83,3 +83,6 @@
   ktoma36:
   - rscadd: Oregen to Station Z levels and added object generation to lythios snow
       turfs
+2022-10-10:
+  jakeramsay007:
+  - bugfix: Fixes borg alt-click to show objects on a turf
