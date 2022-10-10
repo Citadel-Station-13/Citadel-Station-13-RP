@@ -1607,11 +1607,15 @@
 	taste_description = "sour metal"
 	taste_mult = 2
 	reagent_state = REAGENT_LIQUID
-	metabolism = 10
+	metabolism = REM * 0.0001
 	mrate_static = TRUE
 	color = "#52ca22"
 	scannable = 1
-	overdose = REAGENTS_OVERDOSE * 0.6
+	overdose = 16
+
+/datum/reagent/neuratrextate/affect_ingest(mob/living/carbon/M)
+	remove_self(30)
+	M.vomit()
 
 /datum/reagent/neuratrextate/overdose(var/mob/living/carbon/M)
 	..()
