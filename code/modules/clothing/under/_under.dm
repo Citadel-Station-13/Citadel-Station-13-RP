@@ -107,8 +107,8 @@
 //UNIFORM: Always appends "_s" to iconstate, stupidly.
 /obj/item/clothing/under/resolve_legacy_state(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
 	if(snowflake_worn_state && (slot_meta.id == SLOT_ID_UNIFORM))
-		return snowflake_worn_state + + "_s"
-		#warn take into account _d for down, _r for sleeve
+		. = snowflake_worn_state
+		return . + "_s"
 	return ..()
 
 /obj/item/clothing/under/base_worn_state(inhands, slot_key, bodytype)
@@ -118,7 +118,7 @@
 	else if(worn_rolled_sleeves == UNIFORM_ROLL_TRUE)
 		. += "_sleeves"
 
-/obj/item/clothing/under/proc/update_rolldown()
+/obj/item/clothing/under/proc/update_rolldown(updating)
 	var/has_roll
 	var/detected_bodytype = BODYTYPE_DEFAULT
 	var/mob/living/carbon/human/H = worn_mob()
@@ -133,8 +133,13 @@
 
 	if(!has_roll)
 		verbs -= /obj/item/clothing/under/verb/rollsuit
-		return
-	verbs |= /obj/item/clothing/under/verb/rollsuit
+		worn_rolled_down = UNIFORM_ROLL_NULLED
+	else
+		verbs |= /obj/item/clothing/under/verb/rollsuit
+		if(worn_rolled_down == UNIFORM_ROLL_NULLED)
+			worn_rolled_down = UNIFORM_ROLL_FALSE
+	if(!updating)
+		update_worn_icon()
 
 /obj/item/clothing/under/proc/update_rollsleeve()
 	var/has_sleeves
@@ -151,8 +156,17 @@
 
 	if(!has_sleeves)
 		verbs -= /obj/item/clothing/under/verb/rollsleeves
-		return
-	verbs |= /obj/item/clothing/under/verb/rollsleeves
+		worn_rolled_sleeves = UNIFORM_ROLL_NULLED
+	else
+		verbs |= /obj/item/clothing/under/verb/rollsleeves
+		if(worn_rolled_sleeves == UNIFORM_ROLL_NULLED)
+			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
+	if(!updating)
+		update_worn_icon()
+
+/obj/item/clothing/under/proc/autodetect_rolldown()
+
+/obj/item/clothing/under/proc/autodetect_rollsleeve()
 
 #warn autodetect
 /*
@@ -227,7 +241,7 @@
 	if(!istype(user, /mob/living)) return
 	if(user.stat) return
 
-	update_rolldown()
+	update_rolldown(TRUE)
 
 	switch(worn_rolled_down)
 		if(UNIFORM_ROLL_NULLED)
@@ -256,7 +270,7 @@
 	if(!istype(user, /mob/living)) return
 	if(user.stat) return
 
-	update_rollsleeve()
+	update_rollsleeve(TRUE)
 
 	switch(worn_rolled_sleeves)
 		if(UNIFORM_ROLL_NULLED)
