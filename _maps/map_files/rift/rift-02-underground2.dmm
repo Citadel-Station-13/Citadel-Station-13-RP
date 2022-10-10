@@ -176,6 +176,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/visible/black,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "aA" = (
@@ -547,13 +548,14 @@
 /area/engineering/engine_room)
 "bo" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
-	dir = 8
+	dir = 9
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "bp" = (
-/obj/machinery/atmospherics/pipe/simple/visible/black{
-	dir = 10
+/obj/machinery/atmospherics/pipe/simple/visible/black,
+/obj/machinery/atmospherics/pipe/simple/visible/blue{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -618,9 +620,11 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "bw" = (
-/obj/machinery/atmospherics/pipe/simple/visible/black,
 /obj/effect/floor_decal/industrial/danger/corner{
 	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 9
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -631,46 +635,49 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "by" = (
-/obj/effect/floor_decal/industrial/danger/corner,
-/obj/machinery/atmospherics/pipe/simple/visible/blue{
-	dir = 6
-	},
+/obj/machinery/floodlight,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
-/area/engineering/engine_room)
+/area/maintenance/lower/mining)
 "bz" = (
-/obj/machinery/atmospherics/pipe/simple/visible/blue{
-	dir = 4
-	},
-/obj/effect/floor_decal/industrial/danger/corner,
+/obj/item/stack/material/plasteel,
+/obj/item/stack/material/plasteel,
+/obj/item/stack/material/plasteel,
+/obj/item/stack/material/plasteel,
+/obj/item/stack/material/plasteel,
+/obj/item/stack/material/plasteel,
 /turf/simulated/floor/plating,
-/area/engineering/engine_room)
+/area/maintenance/lower/mining)
 "bA" = (
-/obj/machinery/atmospherics/pipe/simple/visible/blue{
-	dir = 4
-	},
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "bB" = (
-/obj/machinery/atmospherics/pipe/simple/visible/blue{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/visible/black,
 /obj/effect/floor_decal/industrial/danger,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "bC" = (
-/obj/machinery/atmospherics/pipe/simple/visible/blue{
-	dir = 4
-	},
-/obj/effect/floor_decal/industrial/danger/corner{
+/obj/effect/floor_decal/industrial/danger{
 	dir = 1
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 6
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "bD" = (
-/obj/machinery/atmospherics/pipe/simple/visible/blue{
-	dir = 10
+/obj/effect/floor_decal/industrial/danger{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -741,45 +748,22 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "bN" = (
-/obj/machinery/atmospherics/pipe/simple/visible/black,
+/obj/effect/floor_decal/industrial/danger{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 10
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "bO" = (
 /turf/simulated/wall,
 /area/maintenance/chapel)
-"bP" = (
-/obj/effect/floor_decal/industrial/danger,
-/obj/structure/railing,
-/obj/machinery/atmospherics/pipe/simple/visible/blue{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
 "bQ" = (
 /turf/simulated/wall/r_wall,
-/area/engineering/engine_core)
-"bR" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 1
-	},
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	id = "sm_core_blast";
-	name = "Supermatter Core Blast Door"
-	},
-/turf/simulated/floor/plating,
-/area/engineering/engine_core)
-"bS" = (
-/obj/machinery/atmospherics/pipe/simple/visible/black,
-/obj/effect/floor_decal/industrial/danger{
-	dir = 1
-	},
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	id = "sm_core_blast";
-	name = "Supermatter Core Blast Door"
-	},
-/turf/simulated/floor/plating,
 /area/engineering/engine_core)
 "bT" = (
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
@@ -942,12 +926,13 @@
 /turf/simulated/floor/tiled/white,
 /area/rift/asylum/mess)
 "cm" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 10
+/obj/machinery/alarm{
+	desc = " ";
+	dir = 8;
+	pixel_x = 24
 	},
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
+/turf/simulated/wall/r_wall,
+/area/engineering/engine_core)
 "cn" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/blue{
 	dir = 8
@@ -1016,35 +1001,7 @@
 /obj/structure/railing,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
-"cw" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 4
-	},
-/obj/effect/floor_decal/industrial/danger{
-	dir = 8
-	},
-/obj/machinery/door/blast/regular{
-	dir = 2;
-	id = "sm_core_blast";
-	name = "Supermatter Core Blast Door"
-	},
-/turf/simulated/floor/plating,
-/area/engineering/engine_core)
 "cx" = (
-/obj/structure/grille,
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 4
-	},
-/obj/structure/window/phoronreinforced/full,
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/engineering/engine_core)
-"cy" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/engine{
 	dir = 8;
 	external_pressure_bound = 100;
@@ -1058,26 +1015,7 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
-"cz" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 1;
-	scrubbing_gas = list(/datum/gas/carbon_dioxide)
-	},
-/turf/simulated/floor/reinforced,
-/area/engineering/engine_core)
-"cA" = (
-/obj/machinery/atmospherics/component/unary/outlet_injector{
-	dir = 4;
-	frequency = 1438;
-	id = "cooling_in";
-	name = "Coolant Injector";
-	power_rating = 30000;
-	use_power = 1;
-	volume_rate = 700
-	},
-/turf/simulated/floor/reinforced,
-/area/engineering/engine_core)
-"cB" = (
+"cC" = (
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
 	dir = 8
 	},
@@ -1088,15 +1026,6 @@
 	},
 /obj/structure/window/phoronreinforced{
 	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/engineering/engine_core)
-"cC" = (
-/obj/machinery/atmospherics/pipe/simple/visible/blue{
-	dir = 8
-	},
-/obj/effect/floor_decal/industrial/danger{
-	dir = 4
 	},
 /obj/machinery/door/blast/regular{
 	dir = 2;
@@ -1176,14 +1105,14 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "cM" = (
-/obj/item/stack/material/plasteel,
-/obj/item/stack/material/plasteel,
-/obj/item/stack/material/plasteel,
-/obj/item/stack/material/plasteel,
-/obj/item/stack/material/plasteel,
-/obj/item/stack/material/plasteel,
+/obj/machinery/atmospherics/pipe/simple/visible/blue{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/danger,
+/obj/structure/railing,
+/obj/machinery/atmospherics/pipe/simple/visible/black,
 /turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
+/area/engineering/engine_room)
 "cN" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -1257,12 +1186,6 @@
 /obj/item/bedsheet,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
-"cW" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	scrubbing_gas = list(/datum/gas/carbon_dioxide)
-	},
-/turf/simulated/floor/reinforced,
-/area/engineering/engine_core)
 "cX" = (
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
 	dir = 9
@@ -1286,32 +1209,29 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "da" = (
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
-/obj/structure/window/phoronreinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "db" = (
-/obj/structure/grille,
-/obj/machinery/atmospherics/pipe/simple/visible/black,
-/obj/structure/window/phoronreinforced/full,
-/obj/structure/window/phoronreinforced{
-	dir = 1
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 1;
+	scrubbing_gas = list(/datum/gas/carbon_dioxide)
 	},
-/obj/structure/window/phoronreinforced,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "dc" = (
-/obj/effect/floor_decal/industrial/danger/corner{
-	dir = 1
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/manifold/visible/black{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "dd" = (
-/obj/effect/floor_decal/industrial/danger,
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced,
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "sm_core_blast";
@@ -1320,8 +1240,13 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_core)
 "de" = (
+/obj/structure/grille,
 /obj/machinery/atmospherics/pipe/simple/visible/black,
-/obj/effect/floor_decal/industrial/danger,
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced{
+	dir = 1
+	},
+/obj/structure/window/phoronreinforced,
 /obj/machinery/door/blast/regular{
 	dir = 4;
 	id = "sm_core_blast";
@@ -1360,32 +1285,28 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "dj" = (
-/obj/machinery/atmospherics/pipe/simple/visible/black,
 /obj/effect/floor_decal/industrial/danger/corner{
 	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 10
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "dk" = (
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 9
-	},
 /obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/visible/red{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "dl" = (
-/obj/machinery/atmospherics/pipe/simple/visible/blue{
-	dir = 4
-	},
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "dm" = (
-/obj/machinery/atmospherics/pipe/simple/visible/blue{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/visible/black,
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1
@@ -1393,17 +1314,32 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "dn" = (
-/obj/effect/floor_decal/industrial/danger/corner{
-	dir = 8
+/obj/structure/catwalk,
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/manifold4w/visible/red,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "do" = (
+/obj/structure/grille,
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
-	dir = 9
+	dir = 8
+	},
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced{
+	dir = 4
+	},
+/obj/structure/window/phoronreinforced{
+	dir = 8
+	},
+/obj/machinery/door/blast/regular{
+	dir = 2;
+	id = "sm_core_blast";
+	name = "Supermatter Core Blast Door"
 	},
 /turf/simulated/floor/plating,
-/area/engineering/engine_room)
+/area/engineering/engine_core)
 "dp" = (
 /obj/effect/floor_decal/industrial/danger/corner,
 /turf/simulated/floor/plating,
@@ -1455,27 +1391,24 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "dv" = (
-/obj/machinery/atmospherics/pipe/simple/visible/blue,
-/obj/machinery/atmospherics/pipe/simple/visible/red{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/visible/blue{
+	dir = 8
 	},
 /obj/effect/floor_decal/industrial/danger{
-	dir = 4
+	dir = 1
 	},
 /obj/structure/railing{
-	dir = 4
+	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/visible/black,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "dw" = (
-/obj/machinery/atmospherics/pipe/simple/visible/blue{
-	dir = 4
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	scrubbing_gas = list(/datum/gas/carbon_dioxide)
 	},
-/obj/effect/floor_decal/industrial/danger/corner{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/engineering/engine_room)
+/turf/simulated/floor/reinforced,
+/area/engineering/engine_core)
 "dx" = (
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
 	dir = 8
@@ -1498,9 +1431,10 @@
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "dz" = (
-/obj/machinery/atmospherics/pipe/simple/visible/black{
-	dir = 9
+/obj/machinery/atmospherics/pipe/simple/visible/blue{
+	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/visible/black,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "dA" = (
@@ -2911,11 +2845,10 @@
 /turf/simulated/floor/airless,
 /area/engineering/atmos)
 "gj" = (
-/obj/machinery/atmospherics/pipe/simple/visible/blue{
-	dir = 4
-	},
-/obj/effect/floor_decal/industrial/danger/corner{
-	dir = 8
+/obj/effect/floor_decal/industrial/danger,
+/obj/structure/railing,
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 5
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -3541,9 +3474,9 @@
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/black,
 /obj/effect/floor_decal/industrial/danger,
 /obj/structure/railing,
+/obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "hD" = (
@@ -3638,10 +3571,10 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_room)
 "hN" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/black{
-	dir = 4
-	},
 /obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/manifold/visible/red{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "hP" = (
@@ -3660,13 +3593,13 @@
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/black,
 /obj/effect/floor_decal/industrial/danger{
 	dir = 1
 	},
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/visible/red,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "hR" = (
@@ -4127,7 +4060,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/cryo/station)
 "iV" = (
-/obj/effect/floor_decal/industrial/danger,
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
 	dir = 9
 	},
@@ -4163,18 +4095,16 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "iY" = (
-/obj/structure/grille,
-/obj/machinery/atmospherics/pipe/simple/visible/blue{
-	dir = 8
+/obj/machinery/atmospherics/component/unary/outlet_injector{
+	dir = 4;
+	frequency = 1438;
+	id = "cooling_in";
+	name = "Coolant Injector";
+	power_rating = 30000;
+	use_power = 1;
+	volume_rate = 700
 	},
-/obj/structure/window/phoronreinforced/full,
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "iZ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
@@ -4327,11 +4257,8 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "jn" = (
-/obj/effect/floor_decal/industrial/danger/corner{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/blue{
-	dir = 5
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 10
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
@@ -5634,21 +5561,12 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/turbine_room)
 "lK" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "lL" = (
-/obj/effect/floor_decal/industrial/danger{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
 	dir = 10
 	},
@@ -8352,9 +8270,9 @@
 	dir = 1
 	},
 /obj/structure/sign/atmos_plasma{
-	pixel_y = -32;
+	desc = "WARNING! Phoron flow tube. Ensure the flow is disengaged before working.";
 	name = "Phoron warning sign";
-	desc = "WARNING! Phoron flow tube. Ensure the flow is disengaged before working."
+	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
@@ -8896,16 +8814,16 @@
 	},
 /obj/structure/filingcabinet,
 /obj/item/paper{
-	name = "Patient 53";
-	info = "Patient shows extreme intelligence, unnaturally so considering his lack of formal education. Patient seems to have ways of either manufacturing or otherwise getting a hold of specialist tools outside of what the facility normally stocks which patient uses to sabotage the facility or otherwise attempt escape. Patient has an obession with mechanical items, with a equal disinterest in their electrical equivalents. Patient is also sklled in mechanical operations, in one case he was able to repair the family heirloom watch of one of the Orderlies that hadn't functioned since it became damaged in the civil war on Adhomai. Patient is to be checked for contraband regularly especially when entering or leaving areas outside the common."
+	info = "Patient shows extreme intelligence, unnaturally so considering his lack of formal education. Patient seems to have ways of either manufacturing or otherwise getting a hold of specialist tools outside of what the facility normally stocks which patient uses to sabotage the facility or otherwise attempt escape. Patient has an obession with mechanical items, with a equal disinterest in their electrical equivalents. Patient is also sklled in mechanical operations, in one case he was able to repair the family heirloom watch of one of the Orderlies that hadn't functioned since it became damaged in the civil war on Adhomai. Patient is to be checked for contraband regularly especially when entering or leaving areas outside the common.";
+	name = "Patient 53"
 	},
 /obj/item/paper{
-	name = "Patient 49";
-	info = "Patient was admitted to insitution following arrest for cannibalism. Patient is obsessed with food to the point of gluttony, often has to be restrained from eating the very wrappers his food comes in. Patient as had several points attacked staff and other patients often with biting. One Orderly has lost an ear to the patient who has already swallowed it by the time other orderlies arrived. Patient should only be handled with a muzzle and generous use of chloral hydrate."
+	info = "Patient was admitted to insitution following arrest for cannibalism. Patient is obsessed with food to the point of gluttony, often has to be restrained from eating the very wrappers his food comes in. Patient as had several points attacked staff and other patients often with biting. One Orderly has lost an ear to the patient who has already swallowed it by the time other orderlies arrived. Patient should only be handled with a muzzle and generous use of chloral hydrate.";
+	name = "Patient 49"
 	},
 /obj/item/paper{
-	name = "Patient 60";
-	info = "Patient was admitted following role ina  mass tabbing incident which killed 6. Patient is also suspect in 6 additional murders. Patient is obsessed with blood and the shedding of blood. Anti psychotics must be given to the patient as perscribed to protect other patients and himself from his blood shedding tendencies. Patient has been in the past been able to acquire specialized blades from unknown sources. If he is found with such a blade then he is to be immediately sedated and the blade confiscated before being handed over to the testing wing."
+	info = "Patient was admitted following role ina  mass tabbing incident which killed 6. Patient is also suspect in 6 additional murders. Patient is obsessed with blood and the shedding of blood. Anti psychotics must be given to the patient as perscribed to protect other patients and himself from his blood shedding tendencies. Patient has been in the past been able to acquire specialized blades from unknown sources. If he is found with such a blade then he is to be immediately sedated and the blade confiscated before being handed over to the testing wing.";
+	name = "Patient 60"
 	},
 /turf/simulated/floor/tiled/white,
 /area/rift/asylum/medical)
@@ -9083,8 +9001,8 @@
 	dir = 4
 	},
 /obj/item/paper{
-	name = "contraband notice";
-	info = "Attention All Orderlies: 'Unique' contaband is to be handed over to the Outsiders Division after lights out every day. It is not to remain in the head orderly's office and for the last time, No we do not know where patient 53 got the firearm or the other tools. No matter where they got it from you are not suppose to keep them. This is an order, further infractions will result in disciplinary action."
+	info = "Attention All Orderlies: 'Unique' contaband is to be handed over to the Outsiders Division after lights out every day. It is not to remain in the head orderly's office and for the last time, No we do not know where patient 53 got the firearm or the other tools. No matter where they got it from you are not suppose to keep them. This is an order, further infractions will result in disciplinary action.";
+	name = "contraband notice"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/common)
@@ -9274,8 +9192,8 @@
 "vL" = (
 /obj/effect/debris/cleanable/blood/writing{
 	dir = 4;
-	name = "DELICIOUS MEAT!!!";
-	message = "DELICIOUS MEAT!!!"
+	message = "DELICIOUS MEAT!!!";
+	name = "DELICIOUS MEAT!!!"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/asylum/cellblock)
@@ -9298,8 +9216,8 @@
 /area/maintenance/lower/mining)
 "vQ" = (
 /obj/machinery/door/blast/puzzle{
-	name = "medical locks";
-	id = "asylum_medical"
+	id = "asylum_medical";
+	name = "medical locks"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/halls)
@@ -9529,11 +9447,13 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "wW" = (
-/obj/machinery/light/small/emergency/flicker{
-	dir = 2
+/obj/effect/floor_decal/industrial/danger,
+/obj/structure/railing,
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 8
 	},
-/turf/simulated/floor/tiled/dark,
-/area/rift/asylum/halls)
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "wZ" = (
 /obj/structure/toilet{
 	dir = 4
@@ -9607,8 +9527,8 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
-	pixel_x = -6;
-	id = "asylum_hounds"
+	id = "asylum_hounds";
+	pixel_x = -6
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
@@ -9626,8 +9546,8 @@
 	pixel_y = -6
 	},
 /obj/item/paper{
-	name = "Warning";
-	info = "Pressing the wrong button may have serious consequences."
+	info = "Pressing the wrong button may have serious consequences.";
+	name = "Warning"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/staff)
@@ -9754,7 +9674,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	icon_state = "32-$1";
 	icon_state = "32-1"
 	},
 /turf/simulated/open,
@@ -9801,8 +9720,8 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
-	pixel_x = -6;
-	id = "asylum_employee"
+	id = "asylum_employee";
+	pixel_x = -6
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
@@ -9816,9 +9735,9 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
+	id = "asylum_gas";
 	pixel_x = 6;
-	pixel_y = -6;
-	id = "asylum_gas"
+	pixel_y = -6
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/staff)
@@ -10012,8 +9931,8 @@
 /area/rift/surfacebase/underground/under2)
 "yU" = (
 /obj/machinery/door/blast/puzzle{
-	name = "riot gas distributor";
-	id = "asylum_gas"
+	id = "asylum_gas";
+	name = "riot gas distributor"
 	},
 /turf/simulated/floor/airless,
 /area/rift/asylum/mess)
@@ -10135,8 +10054,8 @@
 /area/rift/asylum/medical)
 "zF" = (
 /obj/machinery/door/blast/puzzle{
-	name = "mess hall locks";
-	id = "asylum_mess"
+	id = "asylum_mess";
+	name = "mess hall locks"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/common)
@@ -10162,8 +10081,8 @@
 "zL" = (
 /obj/effect/debris/cleanable/blood/writing{
 	dir = 1;
-	name = "DELICIOUS MEAT!!!";
-	message = "DELICIOUS MEAT!!!"
+	message = "DELICIOUS MEAT!!!";
+	name = "DELICIOUS MEAT!!!"
 	},
 /turf/simulated/wall/dungeon,
 /area/rift/asylum/mess)
@@ -10238,8 +10157,8 @@
 "Al" = (
 /obj/structure/table/marble,
 /obj/machinery/door/blast/puzzle{
-	name = "kitchen locks";
-	id = "asylum_kitchen"
+	id = "asylum_kitchen";
+	name = "kitchen locks"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/mess)
@@ -10463,8 +10382,8 @@
 /area/engineering/engine_room)
 "Bs" = (
 /obj/machinery/button/remote/blast_door{
-	name = "Outsider Wing Locks";
 	id = "asylum_testing";
+	name = "Outsider Wing Locks";
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/dark,
@@ -11221,8 +11140,8 @@
 /area/chapel/observation)
 "FN" = (
 /obj/machinery/door/blast/puzzle{
-	name = "Outsiders Division";
-	id = "asylum_testing"
+	id = "asylum_testing";
+	name = "Outsiders Division"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/halls)
@@ -11303,8 +11222,8 @@
 "Gj" = (
 /obj/effect/debris/cleanable/blood/writing{
 	dir = 1;
-	name = "bloody message";
-	message = "Every thing you see may be a clue. Don't waste time Tik Tok"
+	message = "Every thing you see may be a clue. Don't waste time Tik Tok";
+	name = "bloody message"
 	},
 /obj/machinery/light/small/emergency/flicker{
 	dir = 8
@@ -11388,8 +11307,8 @@
 	dir = 4
 	},
 /obj/machinery/door/blast/puzzle{
-	name = "kitchen locks";
-	id = "asylum_kitchen"
+	id = "asylum_kitchen";
+	name = "kitchen locks"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/staff)
@@ -11963,8 +11882,8 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/debris/cleanable/blood/writing{
 	dir = 4;
-	name = "bloody message";
-	message = "Take the plunge. You won't die."
+	message = "Take the plunge. You won't die.";
+	name = "bloody message"
 	},
 /turf/simulated/floor/tiled/white,
 /area/rift/asylum/mess)
@@ -12003,15 +11922,16 @@
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/common)
 "Kv" = (
+/obj/structure/grille,
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/danger{
-	dir = 8
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/window/phoronreinforced{
+	dir = 4
 	},
-/obj/machinery/alarm{
-	desc = " ";
-	pixel_y = 24
+/obj/structure/window/phoronreinforced{
+	dir = 8
 	},
 /obj/machinery/door/blast/regular{
 	dir = 2;
@@ -12101,8 +12021,8 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
-	name = "mess hall doors control";
-	id = "asylum_mess"
+	id = "asylum_mess";
+	name = "mess hall doors control"
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -12218,8 +12138,8 @@
 /area/rift/surfacebase/underground/under2)
 "Ly" = (
 /obj/machinery/door/blast/puzzle{
-	name = "staff room locks";
-	id = "asylum_employee"
+	id = "asylum_employee";
+	name = "staff room locks"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/common)
@@ -12903,8 +12823,8 @@
 "OS" = (
 /obj/structure/table/steel,
 /obj/item/paper{
-	name = "escape note";
-	info = "If you are reading this I am on the way out. If you are quick you can get out too Tik-Tok"
+	info = "If you are reading this I am on the way out. If you are quick you can get out too Tik-Tok";
+	name = "escape note"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/asylum/cellblock)
@@ -13012,8 +12932,8 @@
 /area/engineering/engine_gas)
 "PC" = (
 /obj/machinery/door/blast/puzzle{
-	name = "riot gas distributor";
-	id = "asylum_gas"
+	id = "asylum_gas";
+	name = "riot gas distributor"
 	},
 /turf/simulated/floor/airless,
 /area/rift/asylum/staff)
@@ -13307,8 +13227,8 @@
 "RH" = (
 /obj/effect/debris/cleanable/blood/writing{
 	dir = 8;
-	name = "bloody message";
-	message = "Tik Tok, this looks like the wrong way, now doesn't it?"
+	message = "Tik Tok, this looks like the wrong way, now doesn't it?";
+	name = "bloody message"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/asylum/cellblock)
@@ -13379,8 +13299,8 @@
 "Sa" = (
 /obj/effect/debris/cleanable/blood/writing{
 	dir = 4;
-	name = "DELICIOUS MEAT!!!";
-	message = "DELICIOUS MEAT!!!"
+	message = "DELICIOUS MEAT!!!";
+	name = "DELICIOUS MEAT!!!"
 	},
 /turf/simulated/wall/dungeon,
 /area/rift/asylum/mess)
@@ -13474,9 +13394,9 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
+	id = "asylum_kitchen";
 	pixel_x = 6;
-	pixel_y = 6;
-	id = "asylum_kitchen"
+	pixel_y = 6
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
@@ -13696,8 +13616,8 @@
 /area/engineering/engine_gas)
 "TE" = (
 /obj/machinery/door/blast/puzzle{
-	name = "mess hall locks";
-	id = "asylum_mess"
+	id = "asylum_mess";
+	name = "mess hall locks"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/halls)
@@ -13714,8 +13634,8 @@
 /obj/item/gun/projectile/dartgun,
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
-	name = "medical lockdown door-control";
-	id = "asylum_medical"
+	id = "asylum_medical";
+	name = "medical lockdown door-control"
 	},
 /turf/simulated/floor/tiled/white,
 /area/rift/asylum/medical)
@@ -13933,8 +13853,8 @@
 /area/rift/asylum/pit)
 "Vh" = (
 /obj/machinery/door/blast/puzzle{
-	name = "riot gas distributor";
-	id = "asylum_gas"
+	id = "asylum_gas";
+	name = "riot gas distributor"
 	},
 /turf/simulated/floor/airless,
 /area/rift/asylum/common)
@@ -14251,9 +14171,9 @@
 /area/quartermaster/miningdock)
 "Wz" = (
 /obj/machinery/door/blast/puzzle{
-	name = "doggie door";
 	desc = "You have a strange feeling its not going to be a corgi on the other side of that door";
-	id = "asylum_hounds"
+	id = "asylum_hounds";
+	name = "doggie door"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/staff)
@@ -14262,8 +14182,8 @@
 /area/rift/surfacebase/underground/under2)
 "WB" = (
 /obj/machinery/door/blast/puzzle{
-	name = "Outsiders Division";
-	id = "asylum_testing"
+	id = "asylum_testing";
+	name = "Outsiders Division"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/pit)
@@ -14483,8 +14403,8 @@
 /area/chapel/main)
 "XI" = (
 /obj/machinery/door/blast/puzzle{
-	name = "mess hall locks";
-	id = "asylum_mess"
+	id = "asylum_mess";
+	name = "mess hall locks"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/staff)
@@ -14591,10 +14511,13 @@
 /turf/simulated/floor/tiled/white,
 /area/rift/asylum/medical)
 "Ym" = (
-/obj/machinery/floodlight,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/floor_decal/industrial/danger,
+/obj/structure/railing,
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 9
+	},
 /turf/simulated/floor/plating,
-/area/maintenance/lower/mining)
+/area/engineering/engine_room)
 "Yq" = (
 /obj/machinery/door/airlock{
 	name = "Chapel Office";
@@ -25829,8 +25752,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+FD
+FD
 FD
 FD
 FD
@@ -26019,11 +25942,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+FD
+FD
+FD
+FD
+FD
 uC
 uC
 uC
@@ -26211,9 +26134,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+FD
+FD
+FD
 uC
 uC
 uC
@@ -26405,7 +26328,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 XU
 RN
 XN
@@ -26596,10 +26519,10 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
+FD
+FD
+FD
+FD
 YF
 wq
 uC
@@ -26784,13 +26707,13 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+FD
+FD
+FD
+FD
+FD
+FD
+FD
 Zw
 Zw
 Zw
@@ -26978,7 +26901,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 IZ
 zL
 zL
@@ -27172,7 +27095,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 Sa
 CR
 td
@@ -27366,7 +27289,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 Sa
 NR
 NA
@@ -27560,7 +27483,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 Sa
 AI
 Uk
@@ -27605,14 +27528,14 @@ MZ
 MZ
 Eo
 FD
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
 aa
 bO
 Bw
@@ -27754,7 +27677,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 Yk
 zL
 Zw
@@ -27806,7 +27729,7 @@ Sr
 Sr
 Sr
 Sr
-aa
+FD
 aa
 bO
 Bw
@@ -27948,8 +27871,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+FD
+FD
 aa
 Zw
 jG
@@ -28000,7 +27923,7 @@ Cy
 XB
 ud
 Sr
-aa
+FD
 aa
 bO
 Bw
@@ -28143,7 +28066,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 aa
 Zw
 Nu
@@ -28194,7 +28117,7 @@ Cy
 XB
 OS
 Sr
-aa
+FD
 aa
 bO
 ws
@@ -28337,7 +28260,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 aa
 Zw
 jG
@@ -28388,7 +28311,7 @@ Cy
 sq
 Cy
 Sr
-aa
+FD
 aa
 bO
 Jx
@@ -28531,7 +28454,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 Zw
 Zw
 jG
@@ -28582,7 +28505,7 @@ XB
 XB
 XB
 Sr
-aa
+FD
 aa
 bO
 EW
@@ -28725,7 +28648,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 Zw
 Vs
 Kl
@@ -28776,7 +28699,7 @@ XB
 XB
 XB
 Sr
-aa
+FD
 aa
 bO
 MP
@@ -28919,7 +28842,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 Zw
 Zw
 jG
@@ -28970,7 +28893,7 @@ Cy
 sl
 Cy
 Sr
-aa
+FD
 aa
 bO
 Ga
@@ -29024,15 +28947,15 @@ cF
 Pa
 cF
 cF
-aL
+bC
 az
-cb
-hB
-cJ
-hP
-cb
+cg
+cM
+dc
+dv
+cg
 az
-cv
+gj
 cF
 cF
 Pa
@@ -29113,8 +29036,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+FD
+FD
 Zw
 Nu
 Jd
@@ -29164,7 +29087,7 @@ Cy
 XB
 cq
 Sr
-aa
+FD
 aa
 bO
 uL
@@ -29219,13 +29142,13 @@ cF
 cF
 bv
 bw
-bN
-cg
+aB
+br
 hC
 hN
 hQ
-cg
-bN
+dg
+aB
 dj
 hu
 cF
@@ -29308,7 +29231,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 Zw
 jG
 NF
@@ -29358,7 +29281,7 @@ Cy
 XB
 Ka
 Sr
-aa
+FD
 aa
 bO
 km
@@ -29413,13 +29336,13 @@ cF
 aJ
 bn
 aB
-by
-dv
+bx
+bJ
 dD
-aD
+dk
 bu
-dv
-jn
+bJ
+bT
 aB
 dy
 hS
@@ -29502,7 +29425,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 Zw
 GZ
 ZO
@@ -29552,7 +29475,7 @@ Cy
 Cy
 Cy
 Sr
-aa
+FD
 aa
 bO
 Bw
@@ -29604,19 +29527,19 @@ cs
 cs
 cF
 cF
-aL
+bC
 bo
-aB
-bP
+ar
+lK
 cm
 eW
+dn
 eW
-eW
-dk
+bQ
 lK
-aB
-bo
-cv
+ar
+jn
+gj
 cF
 jD
 aA
@@ -29696,7 +29619,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 sy
 sy
 sy
@@ -29720,7 +29643,7 @@ SA
 TS
 JX
 JX
-wW
+Qy
 Cy
 TK
 VU
@@ -29746,7 +29669,7 @@ CU
 CU
 CU
 SU
-aa
+FD
 aa
 bO
 Bw
@@ -29798,19 +29721,19 @@ rV
 hF
 bM
 cF
-aL
-bo
+bD
 bx
+bJ
 iV
 bQ
 Kv
-cw
-cw
+Kv
+Kv
 bQ
 lL
+bJ
 bT
-bo
-cv
+wW
 cF
 lq
 aA
@@ -29890,7 +29813,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 sy
 UI
 UU
@@ -29992,9 +29915,9 @@ hA
 hA
 cF
 cF
-aL
-bo
-bz
+bD
+lK
+bQ
 bQ
 bQ
 cx
@@ -30002,9 +29925,9 @@ cx
 cx
 bQ
 bQ
-dw
-bo
-cv
+bQ
+lK
+wW
 cF
 jD
 aA
@@ -30084,7 +30007,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 sy
 UI
 Nz
@@ -30186,19 +30109,19 @@ jt
 ju
 kX
 cF
-aL
-bo
+bD
+lK
 bA
-bR
+dd
 da
-cy
-cy
-cy
+da
+da
+da
 da
 dd
 dl
-bo
-cv
+lK
+wW
 cF
 lr
 aA
@@ -30278,7 +30201,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 sy
 UI
 VK
@@ -30380,19 +30303,19 @@ hF
 hi
 jD
 cF
-aL
+bN
 bp
 bB
-bS
+de
 db
-cz
+da
 cO
-cW
-db
+da
+dw
 de
 dm
 dz
-cv
+Ym
 cF
 ls
 lx
@@ -30472,7 +30395,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 sy
 UI
 Oi
@@ -30575,17 +30498,17 @@ hM
 lp
 iH
 aQ
-aB
+lK
 bA
-bR
+dd
 da
-cA
-cA
-cA
+da
+da
+da
 da
 dd
 dl
-aB
+lK
 hY
 iH
 lt
@@ -30666,7 +30589,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 sy
 zM
 UI
@@ -30690,7 +30613,7 @@ sh
 CO
 JX
 JX
-wW
+Qy
 Cy
 Sb
 Cy
@@ -30769,17 +30692,17 @@ hA
 Wl
 cF
 ba
-aB
-bC
+lK
 bQ
 bQ
-cB
+bQ
 iY
 iY
+iY
 bQ
 bQ
-gj
-aB
+bQ
+lK
 it
 cF
 lU
@@ -30860,7 +30783,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 sy
 sy
 sy
@@ -30963,17 +30886,17 @@ hF
 Vu
 cF
 ba
-aB
-bD
+lL
+bJ
 bT
 bQ
 cC
-cC
-cC
+do
+do
 bQ
 bx
-do
-aB
+bJ
+iV
 it
 cF
 lv
@@ -31054,7 +30977,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 CO
 RS
 JX
@@ -31158,15 +31081,15 @@ lU
 cF
 ba
 aB
-aB
+ar
 bU
-dc
+bQ
 cD
 cP
 cX
-dn
+bQ
 bU
-aB
+ar
 aB
 it
 cF
@@ -31248,7 +31171,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 CO
 JX
 JX
@@ -31442,7 +31365,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 PK
 PK
 PK
@@ -31480,8 +31403,8 @@ Cy
 XB
 cq
 Sr
-aa
-aa
+FD
+FD
 aa
 aa
 aa
@@ -31636,7 +31559,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 PK
 Hn
 mC
@@ -31674,7 +31597,7 @@ Cy
 Kr
 GC
 Sr
-aa
+FD
 aa
 aa
 aa
@@ -31830,7 +31753,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 PK
 Tv
 YY
@@ -32024,7 +31947,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 PK
 Qa
 yo
@@ -32218,7 +32141,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 PK
 PK
 PK
@@ -32412,7 +32335,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 PK
 Le
 zW
@@ -32606,7 +32529,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 PK
 uS
 tW
@@ -32800,7 +32723,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 PK
 nQ
 YY
@@ -32994,7 +32917,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 PK
 LL
 YY
@@ -33188,7 +33111,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 PK
 uS
 tK
@@ -33382,7 +33305,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 PK
 LO
 WS
@@ -33576,7 +33499,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 PK
 PK
 PK
@@ -33637,8 +33560,8 @@ aa
 JP
 vO
 Tg
-Ze
-Ym
+by
+JP
 ad
 GG
 GG
@@ -33770,7 +33693,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 PK
 Le
 zz
@@ -33831,8 +33754,8 @@ aa
 JP
 vO
 Tg
-Ze
-cM
+bz
+JP
 GG
 EC
 EC
@@ -33964,7 +33887,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 PK
 LO
 Pk
@@ -34026,7 +33949,7 @@ JP
 vO
 Tg
 Ze
-Ze
+JP
 GG
 EC
 EC
@@ -34158,7 +34081,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 PK
 DI
 PK
@@ -34352,7 +34275,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 PK
 PK
 PK
@@ -34377,7 +34300,7 @@ JX
 JX
 JX
 JX
-wW
+Qy
 CO
 CO
 CO
@@ -34546,7 +34469,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 CO
 JX
 JX
@@ -34740,7 +34663,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 CO
 RS
 HH
@@ -34934,7 +34857,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 CO
 HH
 HH
@@ -35128,7 +35051,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 CO
 HH
 HH
@@ -35322,7 +35245,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 CO
 HH
 HH
@@ -35516,7 +35439,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 CO
 HH
 HH
@@ -35550,7 +35473,7 @@ AK
 AK
 AK
 AK
-aa
+FD
 aa
 aa
 aa
@@ -35710,7 +35633,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 CO
 JX
 HH
@@ -35744,7 +35667,7 @@ Qk
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -35904,7 +35827,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 CO
 JX
 HH
@@ -35938,7 +35861,7 @@ Qk
 Qk
 wP
 AK
-aa
+FD
 aa
 aa
 aa
@@ -36098,7 +36021,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 CO
 JX
 JX
@@ -36132,7 +36055,7 @@ Qk
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -36292,7 +36215,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 CO
 RS
 JX
@@ -36326,7 +36249,7 @@ Qk
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -36486,7 +36409,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 CO
 JX
 JX
@@ -36520,15 +36443,15 @@ Qk
 Qk
 Qk
 AK
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
 aa
 aa
 aa
@@ -36680,7 +36603,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 CO
 JX
 JX
@@ -36722,7 +36645,7 @@ AK
 AK
 AK
 AK
-aa
+FD
 aa
 aa
 aa
@@ -36874,7 +36797,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 CO
 JX
 JX
@@ -36900,7 +36823,7 @@ Yc
 Yc
 Yc
 FD
-aa
+FD
 AK
 Qk
 Qk
@@ -36916,7 +36839,7 @@ Qk
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -37068,7 +36991,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 CO
 JX
 JX
@@ -37094,7 +37017,7 @@ Yc
 Yc
 Yc
 FD
-aa
+FD
 AK
 Qk
 Qk
@@ -37110,7 +37033,7 @@ Qk
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -37262,7 +37185,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 CO
 Gt
 Gt
@@ -37288,7 +37211,7 @@ Yc
 Yc
 Yc
 FD
-aa
+FD
 AK
 AK
 Kz
@@ -37304,7 +37227,7 @@ AK
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -37456,7 +37379,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 CO
 CO
 CO
@@ -37482,7 +37405,7 @@ FD
 FD
 FD
 FD
-aa
+FD
 AK
 Qk
 Qk
@@ -37498,7 +37421,7 @@ Qk
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -37650,10 +37573,10 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
+FD
+FD
+FD
+FD
 KV
 Fu
 zx
@@ -37672,11 +37595,11 @@ tH
 EV
 tH
 KV
+FD
 aa
 aa
 aa
-aa
-aa
+FD
 AK
 Qk
 Qk
@@ -37692,7 +37615,7 @@ Qk
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -37847,7 +37770,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 KV
 KO
 Rz
@@ -37866,11 +37789,11 @@ tH
 Ms
 tH
 KV
+FD
 aa
 aa
 aa
-aa
-aa
+FD
 AK
 Qk
 Qk
@@ -37886,7 +37809,7 @@ Qk
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -38041,7 +37964,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 KV
 KV
 KV
@@ -38060,11 +37983,11 @@ KV
 KV
 KV
 KV
-aa
-aa
-aa
+FD
 aa
 aa
+aa
+FD
 AK
 Qk
 Qk
@@ -38080,7 +38003,7 @@ Qk
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -38235,30 +38158,30 @@ aa
 aa
 aa
 aa
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+FD
 AK
 AK
 Kz
@@ -38274,7 +38197,7 @@ AK
 Qk
 wP
 AK
-aa
+FD
 aa
 aa
 aa
@@ -38452,7 +38375,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 AK
 Qk
 XM
@@ -38468,7 +38391,7 @@ Qk
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -38646,7 +38569,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 AK
 Qk
 XM
@@ -38662,7 +38585,7 @@ Qk
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -38840,7 +38763,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 AK
 Qk
 XM
@@ -38856,7 +38779,7 @@ yn
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -39034,7 +38957,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 AK
 AK
 Mn
@@ -39050,7 +38973,7 @@ CL
 tf
 QG
 AK
-aa
+FD
 aa
 aa
 aa
@@ -39228,7 +39151,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 AK
 Qk
 XM
@@ -39244,7 +39167,7 @@ QY
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -39422,7 +39345,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 AK
 Qk
 XM
@@ -39438,7 +39361,7 @@ Qk
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -39616,7 +39539,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 AK
 Qk
 XM
@@ -39632,7 +39555,7 @@ Qk
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -39810,7 +39733,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 AK
 AK
 Kz
@@ -39826,7 +39749,7 @@ AK
 Qk
 wP
 AK
-aa
+FD
 aa
 aa
 aa
@@ -40004,7 +39927,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 AK
 Qk
 Qk
@@ -40020,7 +39943,7 @@ Qk
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -40198,7 +40121,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 AK
 Qk
 Qk
@@ -40214,7 +40137,7 @@ Qk
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -40392,7 +40315,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 AK
 Qk
 Qk
@@ -40408,7 +40331,7 @@ Qk
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -40586,7 +40509,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 AK
 Qk
 Qk
@@ -40602,7 +40525,7 @@ Qk
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -40780,7 +40703,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 AK
 AK
 Kz
@@ -40796,7 +40719,7 @@ AK
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -40974,7 +40897,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 AK
 Qk
 Qk
@@ -40990,7 +40913,7 @@ Qk
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -41168,7 +41091,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 AK
 Qk
 Qk
@@ -41184,7 +41107,7 @@ Qk
 Qk
 Qk
 AK
-aa
+FD
 aa
 aa
 aa
@@ -41362,7 +41285,7 @@ aa
 aa
 aa
 aa
-aa
+FD
 AK
 AK
 AK
@@ -41378,7 +41301,7 @@ AK
 AK
 AK
 AK
-aa
+FD
 aa
 aa
 aa
@@ -41556,23 +41479,23 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
+FD
 aa
 aa
 aa
