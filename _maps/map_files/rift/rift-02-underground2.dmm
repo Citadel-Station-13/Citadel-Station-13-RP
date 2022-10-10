@@ -26,13 +26,13 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/outdoors/snow/noblend/indoors/lythios43c,
 /area/engineering/engine_room)
 "ai" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/outdoors/snow/noblend/indoors/lythios43c,
 /area/engineering/engine_room)
 "aj" = (
 /obj/effect/floor_decal/techfloor{
@@ -50,17 +50,17 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/outdoors/snow/noblend/indoors/lythios43c,
 /area/engineering/engine_room)
 "al" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/outdoors/snow/noblend/indoors/lythios43c,
 /area/engineering/engine_room)
 "am" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/outdoors/snow/noblend/indoors/lythios43c,
 /area/engineering/engine_room)
 "an" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -90,7 +90,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/outdoors/snow/noblend/indoors/lythios43c,
 /area/engineering/engine_room)
 "aq" = (
 /obj/structure/grille,
@@ -8352,9 +8352,9 @@
 	dir = 1
 	},
 /obj/structure/sign/atmos_plasma{
-	pixel_y = -32;
+	desc = "WARNING! Phoron flow tube. Ensure the flow is disengaged before working.";
 	name = "Phoron warning sign";
-	desc = "WARNING! Phoron flow tube. Ensure the flow is disengaged before working."
+	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/atmos)
@@ -8896,16 +8896,16 @@
 	},
 /obj/structure/filingcabinet,
 /obj/item/paper{
-	name = "Patient 53";
-	info = "Patient shows extreme intelligence, unnaturally so considering his lack of formal education. Patient seems to have ways of either manufacturing or otherwise getting a hold of specialist tools outside of what the facility normally stocks which patient uses to sabotage the facility or otherwise attempt escape. Patient has an obession with mechanical items, with a equal disinterest in their electrical equivalents. Patient is also sklled in mechanical operations, in one case he was able to repair the family heirloom watch of one of the Orderlies that hadn't functioned since it became damaged in the civil war on Adhomai. Patient is to be checked for contraband regularly especially when entering or leaving areas outside the common."
+	info = "Patient shows extreme intelligence, unnaturally so considering his lack of formal education. Patient seems to have ways of either manufacturing or otherwise getting a hold of specialist tools outside of what the facility normally stocks which patient uses to sabotage the facility or otherwise attempt escape. Patient has an obession with mechanical items, with a equal disinterest in their electrical equivalents. Patient is also sklled in mechanical operations, in one case he was able to repair the family heirloom watch of one of the Orderlies that hadn't functioned since it became damaged in the civil war on Adhomai. Patient is to be checked for contraband regularly especially when entering or leaving areas outside the common.";
+	name = "Patient 53"
 	},
 /obj/item/paper{
-	name = "Patient 49";
-	info = "Patient was admitted to insitution following arrest for cannibalism. Patient is obsessed with food to the point of gluttony, often has to be restrained from eating the very wrappers his food comes in. Patient as had several points attacked staff and other patients often with biting. One Orderly has lost an ear to the patient who has already swallowed it by the time other orderlies arrived. Patient should only be handled with a muzzle and generous use of chloral hydrate."
+	info = "Patient was admitted to insitution following arrest for cannibalism. Patient is obsessed with food to the point of gluttony, often has to be restrained from eating the very wrappers his food comes in. Patient as had several points attacked staff and other patients often with biting. One Orderly has lost an ear to the patient who has already swallowed it by the time other orderlies arrived. Patient should only be handled with a muzzle and generous use of chloral hydrate.";
+	name = "Patient 49"
 	},
 /obj/item/paper{
-	name = "Patient 60";
-	info = "Patient was admitted following role ina  mass tabbing incident which killed 6. Patient is also suspect in 6 additional murders. Patient is obsessed with blood and the shedding of blood. Anti psychotics must be given to the patient as perscribed to protect other patients and himself from his blood shedding tendencies. Patient has been in the past been able to acquire specialized blades from unknown sources. If he is found with such a blade then he is to be immediately sedated and the blade confiscated before being handed over to the testing wing."
+	info = "Patient was admitted following role ina  mass tabbing incident which killed 6. Patient is also suspect in 6 additional murders. Patient is obsessed with blood and the shedding of blood. Anti psychotics must be given to the patient as perscribed to protect other patients and himself from his blood shedding tendencies. Patient has been in the past been able to acquire specialized blades from unknown sources. If he is found with such a blade then he is to be immediately sedated and the blade confiscated before being handed over to the testing wing.";
+	name = "Patient 60"
 	},
 /turf/simulated/floor/tiled/white,
 /area/rift/asylum/medical)
@@ -9083,8 +9083,8 @@
 	dir = 4
 	},
 /obj/item/paper{
-	name = "contraband notice";
-	info = "Attention All Orderlies: 'Unique' contaband is to be handed over to the Outsiders Division after lights out every day. It is not to remain in the head orderly's office and for the last time, No we do not know where patient 53 got the firearm or the other tools. No matter where they got it from you are not suppose to keep them. This is an order, further infractions will result in disciplinary action."
+	info = "Attention All Orderlies: 'Unique' contaband is to be handed over to the Outsiders Division after lights out every day. It is not to remain in the head orderly's office and for the last time, No we do not know where patient 53 got the firearm or the other tools. No matter where they got it from you are not suppose to keep them. This is an order, further infractions will result in disciplinary action.";
+	name = "contraband notice"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/common)
@@ -9274,8 +9274,8 @@
 "vL" = (
 /obj/effect/debris/cleanable/blood/writing{
 	dir = 4;
-	name = "DELICIOUS MEAT!!!";
-	message = "DELICIOUS MEAT!!!"
+	message = "DELICIOUS MEAT!!!";
+	name = "DELICIOUS MEAT!!!"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/asylum/cellblock)
@@ -9298,8 +9298,8 @@
 /area/maintenance/lower/mining)
 "vQ" = (
 /obj/machinery/door/blast/puzzle{
-	name = "medical locks";
-	id = "asylum_medical"
+	id = "asylum_medical";
+	name = "medical locks"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/halls)
@@ -9528,12 +9528,6 @@
 /obj/effect/floor_decal/corner/purple/border,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
-"wW" = (
-/obj/machinery/light/small/emergency/flicker{
-	dir = 2
-	},
-/turf/simulated/floor/tiled/dark,
-/area/rift/asylum/halls)
 "wZ" = (
 /obj/structure/toilet{
 	dir = 4
@@ -9607,8 +9601,8 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
-	pixel_x = -6;
-	id = "asylum_hounds"
+	id = "asylum_hounds";
+	pixel_x = -6
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
@@ -9626,8 +9620,8 @@
 	pixel_y = -6
 	},
 /obj/item/paper{
-	name = "Warning";
-	info = "Pressing the wrong button may have serious consequences."
+	info = "Pressing the wrong button may have serious consequences.";
+	name = "Warning"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/staff)
@@ -9754,7 +9748,6 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	icon_state = "32-$1";
 	icon_state = "32-1"
 	},
 /turf/simulated/open,
@@ -9801,8 +9794,8 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
-	pixel_x = -6;
-	id = "asylum_employee"
+	id = "asylum_employee";
+	pixel_x = -6
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
@@ -9816,9 +9809,9 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
+	id = "asylum_gas";
 	pixel_x = 6;
-	pixel_y = -6;
-	id = "asylum_gas"
+	pixel_y = -6
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/staff)
@@ -10012,8 +10005,8 @@
 /area/rift/surfacebase/underground/under2)
 "yU" = (
 /obj/machinery/door/blast/puzzle{
-	name = "riot gas distributor";
-	id = "asylum_gas"
+	id = "asylum_gas";
+	name = "riot gas distributor"
 	},
 /turf/simulated/floor/airless,
 /area/rift/asylum/mess)
@@ -10135,8 +10128,8 @@
 /area/rift/asylum/medical)
 "zF" = (
 /obj/machinery/door/blast/puzzle{
-	name = "mess hall locks";
-	id = "asylum_mess"
+	id = "asylum_mess";
+	name = "mess hall locks"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/common)
@@ -10162,8 +10155,8 @@
 "zL" = (
 /obj/effect/debris/cleanable/blood/writing{
 	dir = 1;
-	name = "DELICIOUS MEAT!!!";
-	message = "DELICIOUS MEAT!!!"
+	message = "DELICIOUS MEAT!!!";
+	name = "DELICIOUS MEAT!!!"
 	},
 /turf/simulated/wall/dungeon,
 /area/rift/asylum/mess)
@@ -10238,8 +10231,8 @@
 "Al" = (
 /obj/structure/table/marble,
 /obj/machinery/door/blast/puzzle{
-	name = "kitchen locks";
-	id = "asylum_kitchen"
+	id = "asylum_kitchen";
+	name = "kitchen locks"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/mess)
@@ -10463,8 +10456,8 @@
 /area/engineering/engine_room)
 "Bs" = (
 /obj/machinery/button/remote/blast_door{
-	name = "Outsider Wing Locks";
 	id = "asylum_testing";
+	name = "Outsider Wing Locks";
 	pixel_y = 24
 	},
 /turf/simulated/floor/tiled/dark,
@@ -11221,8 +11214,8 @@
 /area/chapel/observation)
 "FN" = (
 /obj/machinery/door/blast/puzzle{
-	name = "Outsiders Division";
-	id = "asylum_testing"
+	id = "asylum_testing";
+	name = "Outsiders Division"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/halls)
@@ -11303,8 +11296,8 @@
 "Gj" = (
 /obj/effect/debris/cleanable/blood/writing{
 	dir = 1;
-	name = "bloody message";
-	message = "Every thing you see may be a clue. Don't waste time Tik Tok"
+	message = "Every thing you see may be a clue. Don't waste time Tik Tok";
+	name = "bloody message"
 	},
 /obj/machinery/light/small/emergency/flicker{
 	dir = 8
@@ -11388,8 +11381,8 @@
 	dir = 4
 	},
 /obj/machinery/door/blast/puzzle{
-	name = "kitchen locks";
-	id = "asylum_kitchen"
+	id = "asylum_kitchen";
+	name = "kitchen locks"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/staff)
@@ -11963,8 +11956,8 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/debris/cleanable/blood/writing{
 	dir = 4;
-	name = "bloody message";
-	message = "Take the plunge. You won't die."
+	message = "Take the plunge. You won't die.";
+	name = "bloody message"
 	},
 /turf/simulated/floor/tiled/white,
 /area/rift/asylum/mess)
@@ -12101,8 +12094,8 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
-	name = "mess hall doors control";
-	id = "asylum_mess"
+	id = "asylum_mess";
+	name = "mess hall doors control"
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -12218,8 +12211,8 @@
 /area/rift/surfacebase/underground/under2)
 "Ly" = (
 /obj/machinery/door/blast/puzzle{
-	name = "staff room locks";
-	id = "asylum_employee"
+	id = "asylum_employee";
+	name = "staff room locks"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/common)
@@ -12903,8 +12896,8 @@
 "OS" = (
 /obj/structure/table/steel,
 /obj/item/paper{
-	name = "escape note";
-	info = "If you are reading this I am on the way out. If you are quick you can get out too Tik-Tok"
+	info = "If you are reading this I am on the way out. If you are quick you can get out too Tik-Tok";
+	name = "escape note"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/asylum/cellblock)
@@ -13012,8 +13005,8 @@
 /area/engineering/engine_gas)
 "PC" = (
 /obj/machinery/door/blast/puzzle{
-	name = "riot gas distributor";
-	id = "asylum_gas"
+	id = "asylum_gas";
+	name = "riot gas distributor"
 	},
 /turf/simulated/floor/airless,
 /area/rift/asylum/staff)
@@ -13307,8 +13300,8 @@
 "RH" = (
 /obj/effect/debris/cleanable/blood/writing{
 	dir = 8;
-	name = "bloody message";
-	message = "Tik Tok, this looks like the wrong way, now doesn't it?"
+	message = "Tik Tok, this looks like the wrong way, now doesn't it?";
+	name = "bloody message"
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/asylum/cellblock)
@@ -13379,8 +13372,8 @@
 "Sa" = (
 /obj/effect/debris/cleanable/blood/writing{
 	dir = 4;
-	name = "DELICIOUS MEAT!!!";
-	message = "DELICIOUS MEAT!!!"
+	message = "DELICIOUS MEAT!!!";
+	name = "DELICIOUS MEAT!!!"
 	},
 /turf/simulated/wall/dungeon,
 /area/rift/asylum/mess)
@@ -13474,9 +13467,9 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
+	id = "asylum_kitchen";
 	pixel_x = 6;
-	pixel_y = 6;
-	id = "asylum_kitchen"
+	pixel_y = 6
 	},
 /obj/machinery/button/remote/blast_door{
 	dir = 8;
@@ -13696,8 +13689,8 @@
 /area/engineering/engine_gas)
 "TE" = (
 /obj/machinery/door/blast/puzzle{
-	name = "mess hall locks";
-	id = "asylum_mess"
+	id = "asylum_mess";
+	name = "mess hall locks"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/halls)
@@ -13714,8 +13707,8 @@
 /obj/item/gun/projectile/dartgun,
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
-	name = "medical lockdown door-control";
-	id = "asylum_medical"
+	id = "asylum_medical";
+	name = "medical lockdown door-control"
 	},
 /turf/simulated/floor/tiled/white,
 /area/rift/asylum/medical)
@@ -13933,8 +13926,8 @@
 /area/rift/asylum/pit)
 "Vh" = (
 /obj/machinery/door/blast/puzzle{
-	name = "riot gas distributor";
-	id = "asylum_gas"
+	id = "asylum_gas";
+	name = "riot gas distributor"
 	},
 /turf/simulated/floor/airless,
 /area/rift/asylum/common)
@@ -14251,9 +14244,9 @@
 /area/quartermaster/miningdock)
 "Wz" = (
 /obj/machinery/door/blast/puzzle{
-	name = "doggie door";
 	desc = "You have a strange feeling its not going to be a corgi on the other side of that door";
-	id = "asylum_hounds"
+	id = "asylum_hounds";
+	name = "doggie door"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/staff)
@@ -14262,8 +14255,8 @@
 /area/rift/surfacebase/underground/under2)
 "WB" = (
 /obj/machinery/door/blast/puzzle{
-	name = "Outsiders Division";
-	id = "asylum_testing"
+	id = "asylum_testing";
+	name = "Outsiders Division"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/pit)
@@ -14483,8 +14476,8 @@
 /area/chapel/main)
 "XI" = (
 /obj/machinery/door/blast/puzzle{
-	name = "mess hall locks";
-	id = "asylum_mess"
+	id = "asylum_mess";
+	name = "mess hall locks"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/staff)
@@ -29720,7 +29713,7 @@ SA
 TS
 JX
 JX
-wW
+Qy
 Cy
 TK
 VU
@@ -30690,7 +30683,7 @@ sh
 CO
 JX
 JX
-wW
+Qy
 Cy
 Sb
 Cy
@@ -34377,7 +34370,7 @@ JX
 JX
 JX
 JX
-wW
+Qy
 CO
 CO
 CO

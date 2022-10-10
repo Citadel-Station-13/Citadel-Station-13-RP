@@ -44,6 +44,9 @@
 /turf/simulated/floor/outdoors/snow/noblend
 	edge_blending_priority = 0
 
+/turf/simulated/floor/outdoors/snow/noblend/indoors
+	outdoors = FALSE
+
 /turf/simulated/floor/outdoors/ice
 	name = "ice"
 	icon_state = "ice"
