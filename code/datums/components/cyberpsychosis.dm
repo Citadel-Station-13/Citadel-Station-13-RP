@@ -1,15 +1,13 @@
 /*
 Following a resurgence in interest regarding cybernetics, augments, and general Cyberpunk themes, I was asked if I could make Cyberpsychosis viable.
 This is an attempt at that. It isn't intended to produce any serious long-term effects, so much as provide some internal feedback to Role-Play off of.
-This feature is WIP. Here are my current wants/to-dos:
-[]Occasional visual glitching, similar to hallucinations, but less pervasive.
-[]Occasional audio glitching, as above.
-[]Messages posted in the user's chat randomly. (Snippets of memories, visual glitching descriptions, intrusive thoughts, etc.)
+Initial Design Goals (X = Complete, / = WIP):
+[/]Occasional visual glitching, similar to hallucinations, but less pervasive.
+[/]Occasional audio glitching, as above.
+[/]Messages posted in the user's chat randomly. (Snippets of memories, visual glitching descriptions, intrusive thoughts, etc.)
 [X]The creation of a specialized drug that can reduce the above symptoms when ingested.
-[X]Related to the drug, some form of *temporarily* extending the time between symptom firing while the chem is in-system.
+[X]Related to the drug, some form of temporarily extending the time between symptom firing while the chem is in-system.
 [X]Some form of system that calculates "instability" based off of prosthetics, augments, and implants at spawn, that also increases when more are added.
-
-The primary interest at the moment is getting this system functional so it can be added as a Neutral trait selection.
 */
 
 /datum/component/cyberpsychosis
@@ -55,6 +53,8 @@ The primary interest at the moment is getting this system functional so it can b
 	var/mob/living/carbon/human/H = parent
 	if(!medicated && H.reagents.has_reagent("neuratrextate", 1))
 		medicated = 1
+	if(medicated && !H.reagents.has_reagent("neuratrextate", 1))
+		medicated = 0
 
 //Dynamically changing the Capacity of a cyberware user isn't really working out.
 //So instead I think we can just flag them as medicated, and use that as a check in rendering symptoms.
@@ -62,8 +62,19 @@ The primary interest at the moment is getting this system functional so it can b
 //This is basically the one that all the above checkboxes will address.
 /*
 /datum/component/cyberpsychosis/proc/symptoms(var/mob/living/carbon/human/H)
-	if(H.capacity >= 90)
-		return
+	if(capacity >= 90)
+		return //This level is benign in terms of capacity loss. Don't want to just dump symptoms on them in the daily.
+	if(capacity < 90)
+		//At this level, we just want snippets of memories and audible hallucinations.
+	if(capacity < 70)
+		//At this level, the user starts to get snippets and messages reminding them of past memories. If this is coded right, they cascade down to the bottom.
+	if(capacity < 40)
+		//At this level, the victim begins to have more pronounced visual hallucinations, on top of the stacking symptoms above.
+	if(capacity < 20)
+		//The user's condition is rapidly degrading. More aggressive and intrusive messages come into play. Paranoia and aggravation increases.
+	if(capacity < 10)
+		//This is the most critical level. On top of stacking everything above, this should be pretty critical in some way.
+		//Deafness? Berserk?
 
 //Examples?
 /datum/reagent/paroxetine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
@@ -85,13 +96,3 @@ The primary interest at the moment is getting this system functional so it can b
 /datum/component/cyberpsychosis/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
-
-/*
-//Subsystem for CRS
-SUBSYSTEM_DEF(cyberpsychosis)
-	name = "Cyernetics Rejection Syndrome"
-	wait = 7
-
-/datum/controller/subsystem/cyberpsychosis/fire(var/datum/component/cyberpsychosis/CRS)
-	CRS.process()
-*/
