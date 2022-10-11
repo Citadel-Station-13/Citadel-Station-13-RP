@@ -67,14 +67,16 @@
 	O.uses_charge = 1
 	O.charge_costs = list(1000)
 	O.synths = list(medicine)
+	/*
 	N.uses_charge = 1
 	N.charge_costs = list(1000)
 	N.synths = list(medicine)
+	*/
 	B.uses_charge = 1
 	B.charge_costs = list(1000)
 	B.synths = list(medicine)
 	src.modules += O
-	src.modules += N
+	//src.modules += N
 	src.modules += B
 
 /obj/item/robot_module/robot/medical/surgeon/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
@@ -160,9 +162,11 @@
 	//var/obj/item/stack/nanopaste/P = new /obj/item/stack/nanopaste(src)
 	var/obj/item/stack/medical/advanced/ointment/K = new /obj/item/stack/medical/advanced/ointment(src)
 	var/obj/item/stack/medical/advanced/bruise_pack/L = new /obj/item/stack/medical/advanced/bruise_pack(src)
+	/*
 	P.uses_charge = 1
 	P.charge_costs = list(1000)
 	P.synths = list(medicine)
+	*/
 	K.uses_charge = 1
 	K.charge_costs = list(1000)
 	K.synths = list(medicine)
@@ -171,7 +175,7 @@
 	L.synths = list(medicine)
 	src.modules += K
 	src.modules += L
-	src.modules += P
+	//src.modules += P
 	// END CITADEL CHANGES
 
 	R.icon = 'icons/mob/widerobot_vr.dmi'
