@@ -28,6 +28,9 @@ Class Procs:
 	rebuild()
 		Invalidates the zone and marks all its former tiles for updates.
 
+	add_tile_air(turf/simulated/T)
+		Adds the air contained in T.air to the zone's air supply. Called when adding a turf.
+
 	tick()
 		Called only when the gas content is changed. Archives values and changes gas graphics.
 
@@ -62,8 +65,11 @@ Class Procs:
 	ASSERT(istype(T))
 	ASSERT(!T.has_valid_zone())
 #endif
-	add_tile_and_merge_air(T)
+
+	var/datum/gas_mixture/turf_air = T.return_air()
+	add_tile_air(turf_air)
 	T.zone = src
+	contents += T
 	if(T.fire)
 		var/obj/effect/debris/cleanable/liquid_fuel/fuel = locate() in T
 		fire_tiles += T
@@ -136,14 +142,13 @@ Class Procs:
 		//T.dbg(invalid_zone)
 		T.queue_zone_update()
 
-/**
- * adds a tile's worth of air and increments air group multiplier
- */
-/datum/zas_zone/proc/add_tile_and_merge_air(turf/T)
-	var/datum/gas_mixture/turf_air = T.return_air()
-	air.tile_incrementing_merge(turf_air, contents.len)
-	air.group_multiplier = contents.len + 1
-	contents += T
+/datum/zas_zone/proc/add_tile_air(datum/gas_mixture/tile_air)
+	//air.volume += CELL_VOLUME
+	air.group_multiplier = 1
+	air.multiply(contents.len)
+	air.merge(tile_air)
+	air.divide(contents.len+1)
+	air.group_multiplier = contents.len+1
 
 /datum/zas_zone/proc/tick()
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)

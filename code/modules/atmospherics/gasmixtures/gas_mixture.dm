@@ -1,4 +1,3 @@
-// todo: write unit tests for gas mixture operations
 /datum/gas_mixture
 	//Associative list of gas moles.
 	//Gases with 0 moles are not tracked and are pruned by update_values()
@@ -97,30 +96,6 @@
 
 	update_values()
 
-/**
- * merges all the gas from another mixture into this one, taking into accounts contents amount
- *
- * this does not take group multiplier into account! our_multiplier is passed in externally.
- * used for ZAS; assumes all tiles are same size
- * assumes giver is same volume, and a multiplier of **1**.
- * does not modify giver
- */
-/datum/gas_mixture/proc/tile_incrementing_merge(datum/gas_mixture/giver, our_multiplier)
-	var/self_heat_capacity = heat_capacity() * our_multiplier
-	var/giver_heat_capacity = giver.heat_capacity()
-	var/combined_heat_capacity = giver_heat_capacity + self_heat_capacity
-	if(combined_heat_capacity != 0)
-		temperature = (giver.temperature * giver_heat_capacity + temperature * self_heat_capacity) / combined_heat_capacity
-	var/list/our_gas = src.gas
-	var/list/their_gas = giver.gas
-	if(our_multiplier == 1)
-		for(var/id in their_gas)
-			our_gas[id] += their_gas[id] * (1 / 2)
-	else
-		var/factor = 1 / (our_multiplier + 1)
-		for(var/id in their_gas)
-			our_gas[id] += (their_gas[id] - our_gas[id]) * factor
-	update_values()
 
 // Used to equalize the mixture between two zones before sleeping an edge.
 /datum/gas_mixture/proc/equalize(datum/gas_mixture/sharer)
@@ -500,7 +475,6 @@
 	if(gas["TEMP"])
 		temperature = text2num(gas["TEMP"])
 		gas -= "TEMP"
-	gases.len = 0
 	gases.Cut()
 	for(var/id in gas)
 		var/path = id
