@@ -86,6 +86,10 @@
 	to_chat(user, "<span class='danger'>You cannot reload the [src]!</span>")
 	return
 
+/obj/item/gun/projectile/rocket/collapsible/attack_hand(mob/user as mob)
+	to_chat(user, "<span class='danger'>You cannot unload the [src]'s munition!</span>")
+	return
+
 /obj/item/gun/projectile/rocket/collapsible/attack_self(mob/user, obj/item/gun/G)
 	if(collapsed)
 		to_chat(user, "<span class='notice'>You pull out the tube on the [src], readying the weapon to be fired.</span>")
