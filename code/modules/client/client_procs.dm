@@ -170,9 +170,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	// resolve persistent data
 	persistent = resolve_client_data(ckey)
-	// resolve database data
-	database = new(ckey)
-	database.LogConnect()
+	// todo: move resolve database data up here
 
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
@@ -281,6 +279,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(log_client_to_db() == "BUNKER_DROPPED")
 		disconnect_with_message("Disconnected by bunker: [config_legacy.panic_bunker_message]")
 		return FALSE
+
+	// resolve database data
+	// this is down here because player_lookup won't have an entry for us until log_client_to_db() runs!!
+	database = new(ckey)
+	database.LogConnect()
 
 	if (byond_version >= 512)
 		if (!byond_build || byond_build < 1386)

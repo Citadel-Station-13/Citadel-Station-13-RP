@@ -18,10 +18,14 @@ SUBSYSTEM_DEF(characters)
 
 	var/list/save_queue = list()
 
-#warn we need to block prefs load until this loads lmao
-
 /datum/controller/subsystem/characters/Initialize()
 	rebuild_caches()
+	for(var/ckey in GLOB.preferences_datums)
+		var/datum/preferences/P = GLOB.preferences_datums[ckey]
+		if(!istype(P))
+			stack_trace("what?")
+			continue
+		P.Initialize()
 	return ..()
 
 /datum/controller/subsystem/characters/Recover()

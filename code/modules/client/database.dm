@@ -53,10 +53,57 @@
 	loading = FALSE
 
 /datum/client_dbdata/proc/_Load()
-	var/datum/db_query/lookup = SSdbcore.ExecuteQuery(
-		"SELECT id, flags"
+	var/datum/db_query/lookup
+	lookup = SSdbcore.ExecuteQuery(
+		"SELECT id, playerid FROM [format_table_name("player_lookup")] WHERE ckey = :ckey",
+		list(
+			"ckey" = ckey
+		)
 	)
-	#warn finish, including player_age and auto inserts
+	if(!lookup.NextRow())
+		CRASH("failed to load lookup data")
+	var/lookup_id = lookup.item[1]
+	var/lookup_pid = lookup.item[2]
+	if(istext(lookup_id))
+		lookup_id = text2num(lookup_id)
+	if(istext(lookup_pid))
+		lookup_pid = text2num(lookup_pid)
+	qdel(lookup)
+	lookup = SSdbcore.ExecuteQuery(
+		"SELECT id, flags, datediff(Now(), firstseen) FROM [format_table_name("player")] WHERE id = :id",
+		list(
+			"id" = lookup_pid
+		)
+	)
+	if(lookup.NextRow())
+		// found!
+		var/lookup_flags = lookup.item[2]
+		var/lookup_age = lookup.item[3]
+		if(istext(lookup_flags))
+			lookup_flags = text2num(lookup_flags)
+		if(istext(lookup_age))
+			lookup_age = text2num(lookup_age)
+		player_id = lookup_pid
+		player_flags = lookup_flags
+		player_age = lookup_age
+	else
+		// new person!
+		player_age = 0
+		player_flags = NONE
+		var/datum/db_query/insert = SSdbcore.Executequery(
+			"INSERT INTO [format_table_name("player")] (flags, firstseen, lastseen) VALUES (:flags, Now(), Now())",
+			list(
+				"flags" = player_flags,
+			)
+		)
+		var/insert_id = insert.last_insert_id
+		if(istext(insert_id))
+			insert_id = text2num(insert_id)
+		if(!isnum(insert_id))
+			stack_trace("invalid insert id??")
+		player_id = insert_id
+		qdel(insert)
+	qdel(lookup)
 
 /**
  * async
@@ -112,3 +159,5 @@
 /datum/client_dbdata/proc/player_age()
 	UNTIL(!loading)
 	return player_age
+
+#warn when testmerging to live, playerid needs to be added on player_lookup

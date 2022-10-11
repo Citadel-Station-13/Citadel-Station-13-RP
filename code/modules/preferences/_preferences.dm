@@ -3,6 +3,10 @@
 GLOBAL_LIST_EMPTY(preferences_datums)
 
 /datum/preferences
+	//! Intrinsics
+	/// did we load yet?
+	var/initialized = FALSE
+
 //! ## Doohickeys For Savefiles
 	var/path
 	/// Holder so it doesn't default to slot 1, rather the last one used.
@@ -256,7 +260,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/widescreenpref = FALSE	// Doesn't exist... Yet.
 
 /datum/preferences/New(client/C)
+	if(istype(C))
+		client = C
+		client_ckey = C.ckey
+	if(SScharacters.initialized)
+		Initialize()
+
+/datum/preferences/proc/Initialize()
+	// todo: refactor
 	player_setup = new(src)
+
 	set_biological_gender(pick(MALE, FEMALE))
 	real_name = random_name(identifying_gender,species)
 	b_type = RANDOM_BLOOD_TYPE
@@ -265,9 +278,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	gear_list = list()
 	gear_slot = 1
 
-	if(istype(C))
-		client = C
-		client_ckey = C.ckey
+	if(client)
 		if(!IsGuestKey(C.key))
 			load_path(C.ckey)
 			if(load_preferences())
@@ -276,6 +287,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	C?.update_movement_keys(src)
+
+/datum/preferences/proc/block_until_initialized()
+	UNTIL(initialized)
 
 /datum/preferences/Destroy()
 	. = ..()
