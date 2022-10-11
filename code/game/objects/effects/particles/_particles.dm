@@ -102,14 +102,14 @@
 	 * Can be assigned a weighted list of icon files, to choose an icon at random.
 	 * * Type: icon
 	 */
-	icon = ''
+	icon = null
 
 	/**
 	 * Icon state to use, if any.
 	 * Can be assigned a weighted list of strings, to choose an icon at random.
 	 * * Type: string
 	 */
-	icon_state = ""
+	icon_state = null
 
 	/**
 	 * Particle color (not a color matrix); can be a number if a gradient is used.
