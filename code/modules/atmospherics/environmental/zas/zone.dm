@@ -141,7 +141,7 @@ Class Procs:
  */
 /datum/zas_zone/proc/add_tile_and_merge_air(turf/T)
 	var/datum/gas_mixture/turf_air = T.return_air()
-	air.tile_incrementing_merge(tile_air, contents.len)
+	air.tile_incrementing_merge(turf_air, contents.len)
 	air.group_multiplier = contents.len + 1
 	contents += T
 
