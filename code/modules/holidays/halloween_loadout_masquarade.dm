@@ -79,6 +79,7 @@
 	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
 	inhand_default_type = INHAND_DEFAULT_ICON_GLOVES
 	inhand_state = "black"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_parts_covered = HANDS
 	cold_protection = HANDS
 
@@ -92,6 +93,7 @@
 	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
 	inhand_default_type = INHAND_DEFAULT_ICON_HATS
 	inhand_state = "helmet"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
@@ -106,6 +108,7 @@
 	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
 	inhand_default_type = INHAND_DEFAULT_ICON_SHOES
 	inhand_state = "cult"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_parts_covered = FEET
 	cold_protection = FEET
 
@@ -119,6 +122,7 @@
 	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
 	inhand_default_type = INHAND_DEFAULT_ICON_MASKS
 	inhand_state = "gas"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
@@ -133,6 +137,7 @@
 	icon = 'icons/antagonists/syndicate/items/clothing/contractor.dmi'
 	inhand_default_type = INHAND_DEFAULT_ICON_HATS
 	inhand_state = "helmet"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
@@ -147,6 +152,7 @@
 	icon = 'icons/antagonists/syndicate/items/clothing/contractor.dmi'
 	inhand_default_type = INHAND_DEFAULT_ICON_GLOVES
 	inhand_state = "armor"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 
