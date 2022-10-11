@@ -61,7 +61,7 @@
 /obj/item/clothing/suit/storage/toggle/labcoat/emt
 	name = "EMT's labcoat"
 	desc = "A dark blue labcoat with reflective strips for emergency medical technicians."
-	icon_state = "labcoat_emt"
+	icon_state = "labcoat_paramedic"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "emt_labcoat", SLOT_ID_LEFT_HAND = "emt_labcoat")
 
 /obj/item/clothing/suit/storage/toggle/labcoat/rd

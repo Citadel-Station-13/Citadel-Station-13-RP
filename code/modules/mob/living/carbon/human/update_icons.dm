@@ -650,15 +650,9 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		return //Why bother, if no ear sprites
 
 	// Blank image upon which to layer left & right overlays.
-	var/image/both = image(icon = 'icons/effects/effects.dmi', icon_state = "nothing", layer = BODY_LAYER+EARS_LAYER)
-
-	if(l_ear)
-		var/image/standing = l_ear.render_mob_appearance(src, SLOT_ID_LEFT_EAR, species.get_effective_bodytype())
-		both.add_overlay(standing)
-
-	if(r_ear)
-		var/image/standing = r_ear.render_mob_appearance(src, SLOT_ID_RIGHT_EAR, species.get_effective_bodytype())
-		both.add_overlay(standing)
+	var/list/mutable_appearance/both = list()
+	both += l_ear.render_mob_appearance(src, SLOT_ID_LEFT_EAR, species.get_effective_bodytype())
+	both += r_ear.render_mob_appearance(src, SLOT_ID_RIGHT_EAR, species.get_effective_bodytype())
 
 	overlays_standing[EARS_LAYER] = both
 	apply_layer(EARS_LAYER)
