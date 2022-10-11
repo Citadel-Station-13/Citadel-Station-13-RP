@@ -651,8 +651,10 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	// Blank image upon which to layer left & right overlays.
 	var/list/mutable_appearance/both = list()
-	both += l_ear.render_mob_appearance(src, SLOT_ID_LEFT_EAR, species.get_effective_bodytype())
-	both += r_ear.render_mob_appearance(src, SLOT_ID_RIGHT_EAR, species.get_effective_bodytype())
+	if(l_ear)
+		both += l_ear.render_mob_appearance(src, SLOT_ID_LEFT_EAR, species.get_effective_bodytype())
+	if(r_ear)
+		both += r_ear.render_mob_appearance(src, SLOT_ID_RIGHT_EAR, species.get_effective_bodytype())
 
 	overlays_standing[EARS_LAYER] = both
 	apply_layer(EARS_LAYER)

@@ -242,6 +242,8 @@
 	if(no_render)		// don't bother
 		return additional
 	MA = mutable_appearance(icon_used, state_used, BODY_LAYER + layer_used, FLOAT_PLANE)
+	// temporary - until coloration
+	MA.color = color
 	MA = center_appearance(MA, dim_x, dim_y)
 	MA = render_apply_overlays(MA, bodytype, inhands, slot_meta)
 	MA = render_apply_blood(MA, bodytype, inhands, slot_meta)
