@@ -418,10 +418,10 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 
 // Radiation 'levels'. Used for the geiger counter, for visuals and sound. They are in different files so this goes here.
 /// Around the level at which radiation starts to become harmful
-#define RAD_LEVEL_LOW		0.5
-#define RAD_LEVEL_MODERATE	5
-#define RAD_LEVEL_HIGH		25
-#define RAD_LEVEL_VERY_HIGH	75
+#define RAD_LEVEL_LOW        0.5
+#define RAD_LEVEL_MODERATE   5
+#define RAD_LEVEL_HIGH      25
+#define RAD_LEVEL_VERY_HIGH 75
 
 /// Radiation will not affect a tile when below this value.
 #define RADIATION_THRESHOLD_CUTOFF	0.1
@@ -431,14 +431,14 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define PR_ANNOUNCEMENTS_PER_ROUND	5
 
 //https://secure.byond.com/docs/ref/info.html#/atom/var/mouse_opacity
-#define MOUSE_OPACITY_TRANSPARENT	0
-#define MOUSE_OPACITY_ICON			1
-#define MOUSE_OPACITY_OPAQUE		2
+#define MOUSE_OPACITY_TRANSPARENT 0
+#define MOUSE_OPACITY_ICON        1
+#define MOUSE_OPACITY_OPAQUE      2
 
 //world/proc/shelleo
 #define SHELLEO_ERRORLEVEL 1
-#define SHELLEO_STDOUT 2
-#define SHELLEO_STDERR 3
+#define SHELLEO_STDOUT     2
+#define SHELLEO_STDERR     3
 
 /// Embed chance unset for embed_chance var on /obj/item.
 #define EMBED_CHANCE_UNSET	-1337
