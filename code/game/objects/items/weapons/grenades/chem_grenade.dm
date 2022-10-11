@@ -363,3 +363,25 @@
 	beakers += B1
 	beakers += B2
 	icon_state = initial(icon_state) +"_locked"
+
+/obj/item/grenade/chem_grenade/chlorine_gas
+	name = "chlorine gas grenade"
+	desc = "Chlorine is a powerful corrosive. When deployed in gas form it may often be used for area denial or clearing trenches."
+	stage = 2
+	path = 1
+
+/obj/item/grenade/chem_grenade/chlorine_gas/Initialize(mapload)
+	. = ..()
+	var/obj/item/reagent_containers/glass/beaker/large/B1 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/large/B2 = new(src)
+
+	B1.reagents.add_reagent("phosphorus", 40)
+	B1.reagents.add_reagent("chlorine", 80)
+	B2.reagents.add_reagent("potassium", 40)
+	B2.reagents.add_reagent("sugar", 40)
+
+	detonator = new/obj/item/assembly_holder/timer_igniter(src)
+
+	beakers += B1
+	beakers += B2
+	icon_state = initial(icon_state) +"_locked"
