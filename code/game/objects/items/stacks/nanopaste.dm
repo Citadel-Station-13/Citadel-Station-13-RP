@@ -19,6 +19,9 @@
 	if (istype(M,/mob/living/silicon/robot))	//Repairing cyborgs
 		var/mob/living/silicon/robot/R = M
 		if (R.getBruteLoss() || R.getFireLoss())
+			if(!can_use(1))
+				to_chat(user, SPAN_WARNING("There isn't enough left."))
+				return CLICKCHAIN_DO_NOT_PROPAGATE
 			if(do_after(user,7 * tool_speed))
 				R.adjustBruteLoss(-15)
 				R.adjustFireLoss(-15)
