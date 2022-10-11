@@ -19,7 +19,7 @@
 //HELMET: May have a lighting overlay
 /obj/item/clothing/head/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
 	. = ..()
-	if(slot_meta.id == SLOT_ID_HEAD)
+	if(on && (slot_meta.id == SLOT_ID_HEAD))
 		var/bodytype_str = bodytype_to_string(bodytype)
 		var/cache_key = "[light_overlay][LAZYACCESS(sprite_sheets, bodytype_str) ? "_[bodytype_str]" : ""]"
 		var/image/I = GLOB.light_overlay_cache[cache_key]

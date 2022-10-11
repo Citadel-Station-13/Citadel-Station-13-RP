@@ -192,6 +192,8 @@
 	for(var/obj/item/piece in list(gloves,boots,helmet,chest))
 		qdel(piece)
 	STOP_PROCESSING(SSobj, src)
+	if(minihud)
+		QDEL_NULL(minihud)
 	qdel(wires)
 	wires = null
 	qdel(spark_system)

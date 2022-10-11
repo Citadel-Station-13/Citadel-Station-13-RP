@@ -129,6 +129,9 @@
 	/// What mobs are interacting with us right now, associated directly to concurrent interactions. (use defines)
 	var/list/interacting_mobs
 
+	#warn temp
+	var/updated_icons = 0
+
 /**
  * Called when an atom is created in byond (built in engine proc)
  *
@@ -467,6 +470,7 @@
 
 /// Updates the icon of the atom
 /atom/proc/update_icon(updates=ALL)
+	updated_icons++
 	SIGNAL_HANDLER
 	// SHOULD_CALL_PARENT(TRUE)
 

@@ -66,6 +66,8 @@
 #define BODYTYPE_PHORONOID			(1<<16)
 /// werebeast
 #define BODYTYPE_WEREBEAST			(1<<17)
+/// xenomorph hybrid
+#define BODYTYPE_XENOHYBRID			(1<<18)
 
 // todo: what are we going to do with these?
 //? we should probably standardize bodytypes as entirely different sprites, and also
@@ -97,11 +99,12 @@
 #define BODYTYPE_STRING_VOX "vox"
 #define BODYTYPE_STRING_NEVREAN "nevrean"
 #define BODYTYPE_STRING_PROMETHEAN "promethean"
-#define BODYTYPE_STRING_ZORREN_HIGHLANDER "zorren_highlander"
-#define BODYTYPE_STRING_ZORREN_FLATLANDER "zorren_flatlander"
+#define BODYTYPE_STRING_ZORREN_HIGH "zorren_highlander"
+#define BODYTYPE_STRING_ZORREN_FLAT "zorren_flatlander"
 #define BODYTYPE_STRING_ZADDAT "zaddat"
 #define BODYTYPE_STRING_PHORONOID "phoronoid"
 #define BODYTYPE_STRING_WEREBEAST "werebeast"
+#define BODYTYPE_STRING_XENOHYBRID "xenohybrid"
 
 /proc/bodytype_to_string(bodytype)
 	switch(bodytype)
