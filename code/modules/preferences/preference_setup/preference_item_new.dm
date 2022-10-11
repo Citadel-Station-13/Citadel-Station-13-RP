@@ -54,7 +54,7 @@
  *
  * put errors into errors for user feedback
  */
-/datum/category_item/player_setup_item/proc/sanitize(datum/preferences/prefs, list/errors)
+/datum/category_item/player_setup_item/proc/sanitize_data(datum/preferences/prefs, list/errors)
 	write(prefs, filter(prefs, read(prefs), errors))
 
 /**
