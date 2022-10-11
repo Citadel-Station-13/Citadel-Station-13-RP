@@ -560,7 +560,6 @@
 	desc = "A female head of security's formal-wear, for special occasions."
 	icon_state = "hos_formal_fem"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lawyer_red", SLOT_ID_LEFT_HAND = "lawyer_red")
-#warn verify the slots still work
 
 /obj/item/clothing/under/assistantformal
 	name = "assistant's formal uniform"

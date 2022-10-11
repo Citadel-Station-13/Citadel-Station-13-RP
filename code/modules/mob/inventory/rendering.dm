@@ -334,7 +334,6 @@
 		data[WORN_DATA_ICON] = default_worn_icon
 		data[WORN_DATA_SIZE_X] = worn_x_dimension
 		data[WORN_DATA_SIZE_Y] = worn_y_dimension
-		#warn test the funny antag gear
 
 	//* inventory slot defaults
 	else if(inhands? (worn_render_flags & WORN_RENDER_INHAND_ALLOW_DEFAULT) : (worn_render_flags & WORN_RENDER_SLOT_ALLOW_DEFAULT))
