@@ -1607,7 +1607,7 @@
 	taste_description = "sour metal"
 	taste_mult = 2
 	reagent_state = REAGENT_LIQUID
-	metabolism = REM * 0.01
+	metabolism = REM * 0.016
 	mrate_static = TRUE
 	color = "#52ca22"
 	scannable = 1
