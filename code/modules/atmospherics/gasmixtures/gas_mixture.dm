@@ -578,7 +578,7 @@
 	// update
 	update_values()
 	other.update_values()
-
+	
 	// if empty
 	if(!total_moles)
 		return compare(other)
@@ -643,7 +643,7 @@
 
 	// update
 	update_values()
-
+	
 	if(!total_moles)
 		return compare_virtual(gases, src.volume, temperature)
 
