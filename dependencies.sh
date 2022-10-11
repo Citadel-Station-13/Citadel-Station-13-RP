@@ -15,7 +15,7 @@ export NODE_VERSION=14
 export NODE_VERSION_PRECISE=14.16.1
 
 # SpacemanDMM git tag
-export SPACEMAN_DMM_VERSION=suite-1.7.1
+export SPACEMAN_DMM_VERSION=suite-1.7.2
 
 # Extools git tag
 # export EXTOOLS_VERSION=v0.0.7
