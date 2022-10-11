@@ -97,7 +97,6 @@
 
 	update_values()
 
-#warn old self cpu 9.3 on add_tile_air
 /**
  * merges all the gas from another mixture into this one, taking into accounts contents amount
  *

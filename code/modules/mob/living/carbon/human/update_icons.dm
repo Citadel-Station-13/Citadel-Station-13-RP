@@ -633,7 +633,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!glasses)
 		return //Not wearing glasses, no need to update anything.
 
-	overlays_standing[GLASSES_LAYER] = glasses.render_mob_appearance(src, SLOT_ID_GLOVES, species.get_effective_bodytype())
+	overlays_standing[GLASSES_LAYER] = glasses.render_mob_appearance(src, SLOT_ID_GLASSES, species.get_effective_bodytype())
 
 	apply_layer(GLASSES_LAYER)
 

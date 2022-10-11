@@ -27,28 +27,23 @@
 
 /obj/item/card/Initialize(mapload)
 	. = ..()
+	initial_sprite_stack = typelist(NAMEOF(src, initial_sprite_stack), initial_sprite_stack)
+	if(isnull(base_icon_state))
+		base_icon_state = icon_state
 	reset_icon()
 
 /obj/item/card/proc/reset_icon()
-	sprite_stack = initial_sprite_stack
+	sprite_stack = initial_sprite_stack.Copy()
 	update_icon()
 
+#warn test
 /obj/item/card/update_icon()
-	if(!sprite_stack || !istype(sprite_stack) || sprite_stack == list(""))
-		icon = base_icon
-		icon_state = initial(icon_state)
-
-	var/icon/I = null
-	for(var/iconstate in sprite_stack)
-		if(!iconstate)
-			iconstate = icon_state
-		if(I)
-			var/icon/IC = new(base_icon, iconstate)
-			I.Blend(IC, ICON_OVERLAY)
-		else
-			I = new/icon(base_icon, iconstate)
-	if(I)
-		icon = I
+	cut_overlays()
+	. = ..()
+	for(var/state in sprite_stack)
+		if(state == "")
+			state = base_icon_state
+		add_overlay(state)
 
 /obj/item/card/data
 	name = "data disk"
