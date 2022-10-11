@@ -20,12 +20,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/mining_airlock)
-"bC" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 9
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
-/area/rift/surfacebase/underground/under2)
 "bX" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
@@ -39,15 +33,11 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden,
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor/phoron{
-	pixel_y = 28;
-	pixel_x = 30
+	pixel_x = 30;
+	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/mining_airlock)
-"cf" = (
-/obj/effect/overlay/snow/floor/grav_edges,
-/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
-/area/rift/surfacebase/underground/under2)
 "cn" = (
 /obj/structure/railing{
 	dir = 1
@@ -244,12 +234,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/mining_airlock)
-"mG" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "ne" = (
 /turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
 /area/rift/surfacebase/underground/under2)
@@ -367,18 +351,11 @@
 /obj/structure/catwalk,
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
-	pixel_y = -28;
-	master_tag = "mining_underground_airlock"
+	master_tag = "mining_underground_airlock";
+	pixel_y = -28
 	},
 /turf/simulated/floor,
 /area/quartermaster/mining_airlock)
-"so" = (
-/obj/effect/zone_divider,
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "tB" = (
 /obj/machinery/atmospherics/component/binary/passive_gate/on{
 	dir = 8;
@@ -405,15 +382,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/mining_airlock)
-"uY" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "vr" = (
 /turf/simulated/floor/plating,
 /area/quartermaster/mining_airlock)
@@ -481,11 +449,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/mining_airlock)
-"yo" = (
-/obj/effect/zone_divider,
-/obj/effect/overlay/snow/floor/grav_edges,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "yP" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -541,8 +504,8 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/embedded_controller/radio/airlock/phoron{
-	pixel_y = 26;
-	id_tag = "mining_underground_airlock"
+	id_tag = "mining_underground_airlock";
+	pixel_y = 26
 	},
 /turf/simulated/floor,
 /area/quartermaster/mining_airlock)
@@ -567,12 +530,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/mining_airlock)
-"EA" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
-/area/rift/surfacebase/underground/under2)
 "FV" = (
 /obj/structure/catwalk,
 /obj/machinery/door/airlock/glass_external/public{
@@ -580,19 +537,13 @@
 	},
 /obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
-	pixel_y = -28;
-	master_tag = "mining_underground_airlock"
+	master_tag = "mining_underground_airlock";
+	pixel_y = -28
 	},
 /turf/simulated/floor,
 /area/quartermaster/mining_airlock)
 "Ho" = (
 /obj/effect/overlay/snow/floor/grav_surround{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
-/area/rift/surfacebase/underground/under2)
-"Ie" = (
-/obj/effect/overlay/snow/floor/grav_edges{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
@@ -678,7 +629,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/mining_airlock)
 "Ok" = (
-/obj/effect/overlay/snow/floor/grav_edges,
 /obj/machinery/light/flamp/noshade,
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/rift/surfacebase/underground/under2)
@@ -740,10 +690,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/mining_airlock)
-"Sy" = (
-/obj/effect/overlay/snow/floor/grav_edges,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/underground/under2)
 "SJ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
@@ -826,13 +772,6 @@
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
 /turf/simulated/mineral/icerock/lythios43c,
-/area/rift/surfacebase/underground/under2)
-"YU" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/grav_edges,
-/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "Zn" = (
 /obj/machinery/light/small{
@@ -919,10 +858,10 @@ wN
 wN
 wN
 wN
-YU
+wN
 SW
 SW
-uY
+wN
 wN
 wN
 wN
@@ -1113,10 +1052,10 @@ uC
 uC
 uC
 uC
-Sy
+uC
 CE
 CE
-mG
+uC
 uC
 uC
 uC
@@ -1307,10 +1246,10 @@ uC
 uC
 uC
 uC
-Sy
+uC
 CE
 CE
-mG
+uC
 uC
 uC
 uC
@@ -1501,10 +1440,10 @@ uC
 uC
 uC
 uC
-Sy
+uC
 CE
 CE
-mG
+uC
 uC
 uC
 uC
@@ -1695,10 +1634,10 @@ uC
 uC
 uC
 uC
-Sy
+uC
 CE
 CE
-mG
+uC
 uC
 uC
 uC
@@ -1889,10 +1828,10 @@ uC
 uC
 uC
 uC
-Sy
+uC
 CE
 CE
-mG
+uC
 uC
 uC
 uC
@@ -2083,10 +2022,10 @@ uC
 uC
 uC
 uC
-Sy
+uC
 CE
 CE
-mG
+uC
 uC
 uC
 uC
@@ -2277,10 +2216,10 @@ uC
 uC
 uC
 uC
-Sy
+uC
 CE
 CE
-mG
+uC
 uC
 uC
 uC
@@ -2471,10 +2410,10 @@ uC
 uC
 uC
 uC
-Sy
+uC
 CE
 CE
-mG
+uC
 uC
 uC
 uC
@@ -2665,10 +2604,10 @@ uC
 uC
 uC
 uC
-Sy
+uC
 CE
 CE
-mG
+uC
 uC
 uC
 uC
@@ -2859,10 +2798,10 @@ uC
 uC
 uC
 uC
-Sy
+uC
 CE
 CE
-mG
+uC
 uC
 uC
 uC
@@ -3053,10 +2992,10 @@ wH
 wH
 wH
 wH
-yo
+wH
 xj
 xj
-so
+wH
 wH
 wH
 wH
@@ -3247,10 +3186,10 @@ uC
 uC
 uC
 uC
-Sy
+uC
 CE
 CE
-mG
+uC
 uC
 uC
 uC
@@ -3441,10 +3380,10 @@ uC
 uC
 uC
 uC
-Sy
+uC
 CE
 CE
-mG
+uC
 uC
 uC
 uC
@@ -3635,10 +3574,10 @@ uC
 uC
 uC
 uC
-Sy
+uC
 ne
 ne
-mG
+uC
 uC
 uC
 uC
@@ -3829,10 +3768,10 @@ uC
 uC
 uC
 uC
-Sy
+uC
 ne
 ne
-mG
+uC
 uC
 uC
 uC
@@ -4023,10 +3962,10 @@ Ro
 Ro
 XL
 XL
-cf
+XL
 ne
 ne
-Ie
+XL
 XL
 Ro
 Ro
@@ -4220,7 +4159,7 @@ XL
 Ok
 ne
 ne
-Ie
+XL
 XL
 Ro
 Ro
@@ -4411,10 +4350,10 @@ dq
 dq
 XL
 XL
-cf
+XL
 ne
 ne
-Ie
+XL
 XL
 dq
 dq
@@ -4605,7 +4544,7 @@ dq
 dq
 XL
 XL
-cf
+XL
 ne
 Ho
 XL
@@ -4799,10 +4738,10 @@ dq
 dq
 XL
 XL
-cf
+XL
 ne
 ne
-Ie
+XL
 XL
 dq
 dq
@@ -4993,9 +4932,9 @@ dq
 dq
 dq
 XL
-cf
+XL
 ne
-bC
+XL
 XL
 XL
 dq
@@ -5188,7 +5127,7 @@ dq
 dq
 XL
 XL
-EA
+XL
 lp
 XL
 dq

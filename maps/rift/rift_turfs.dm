@@ -19,6 +19,8 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/gravsnow)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow)
+LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow/noblend)
+LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow/noblend/indoors)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/sky/depths)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/sky/depths/west)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/safeice)
@@ -83,6 +85,7 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	if(object_spawn_chance && prob(object_spawn_chance) && !check_density())
 		new /obj/random/snow_debris(src)	///mapping.dm is where this obj's at
 	. = ..()
+
 /// Indoor Variants (Cause we need em). It bugs me that outdoor varients are the default but what can you do -Bloop
 /turf/simulated/floor/outdoors/safeice/indoors
 	outdoors = FALSE /* So that we don't get weather effects for the ice used indoors. Convuluted, I know, but this

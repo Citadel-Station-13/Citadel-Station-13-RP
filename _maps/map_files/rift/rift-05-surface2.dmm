@@ -624,7 +624,7 @@
 "ayd" = (
 /obj/structure/morgue/crematorium{
 	dir = 2;
-	id = "medbay_cematorium"
+	id = "medbay_crematorium"
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -8751,6 +8751,7 @@
 	},
 /obj/machinery/door/airlock/glass_security/polarized{
 	id_tag = "warden_office";
+	id_tint = "warden_office";
 	name = "Warden's Office";
 	req_one_access = list(3)
 	},
@@ -10283,7 +10284,6 @@
 /obj/item/clothing/accessory/holster/leg,
 /obj/item/clothing/accessory/holster/leg,
 /obj/item/clothing/accessory/holster/hip,
-/obj/item/clothing/accessory/holster/hip,
 /obj/item/clothing/accessory/holster/armpit,
 /obj/item/clothing/accessory/holster/armpit,
 /turf/simulated/floor/tiled/red,
@@ -10960,6 +10960,7 @@
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "ikz" = (
+/mob/living/bot/medibot/medass,
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/medbay_primary_storage)
 "ikK" = (
@@ -18495,6 +18496,9 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/range)
+"ohX" = (
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside2)
 "oio" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
@@ -28860,10 +28864,12 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "wux" = (
-/obj/structure/table/bench/steel,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/item/gun/energy/phasegun/pistol,
+/obj/item/gun/energy/phasegun/pistol,
+/obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "wwb" = (
@@ -42116,12 +42122,12 @@ hJs
 cUW
 cUW
 oLJ
-oLJ
+ohX
 aXY
 biq
 biq
 aXY
-oLJ
+ohX
 oLJ
 oLJ
 oLJ
@@ -42310,12 +42316,12 @@ hJs
 hJs
 cUW
 cUW
-oLJ
+ohX
 aZm
 bog
 bog
 aZm
-oLJ
+ohX
 oLJ
 oLJ
 oLJ
