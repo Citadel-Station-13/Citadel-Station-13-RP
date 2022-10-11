@@ -16,6 +16,9 @@
 /obj/item/stack/nanopaste/attack(mob/living/M as mob, mob/user as mob)
 	if (!istype(M) || !istype(user))
 		return 0
+	if (istype(M,/mob/living/silicon/robot) && istype(user))
+		to_chat(user, "<span class='notice'>You are unable to apply this paste to yourself.</span>")
+		return 0
 	if (istype(M,/mob/living/silicon/robot))	//Repairing cyborgs
 		var/mob/living/silicon/robot/R = M
 		if (R.getBruteLoss() || R.getFireLoss())

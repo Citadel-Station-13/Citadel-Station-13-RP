@@ -108,7 +108,7 @@
 
 	var/obj/item/stack/nanopaste/N = new /obj/item/stack/nanopaste(src)
 	N.uses_charge = 1
-	N.charge_costs = list(1000)
+	N.charge_costs = list(20000)
 	N.synths = list(nanite)
 	src.modules += N
 

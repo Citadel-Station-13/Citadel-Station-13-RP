@@ -47,13 +47,11 @@
 	var/datum/matter_synth/wire = new /datum/matter_synth/wire()						//Added to allow repairs, would rather add cable now than be asked to add it later,
 	synths += wire																		//Cable code, taken from engiborg,
 
-	/*
 	var/obj/item/stack/nanopaste/N = new /obj/item/stack/nanopaste(src)
 	N.uses_charge = 1
 	N.charge_costs = list(1000)
 	N.synths = list(nanite)
 	src.modules += N
-	*/
 
 	var/obj/item/stack/cable_coil/cyborg/C = new /obj/item/stack/cable_coil/cyborg(src)	//Cable code, taken from engiborg,
 	C.synths = list(wire)
@@ -119,13 +117,11 @@
 	var/datum/matter_synth/wire = new /datum/matter_synth/wire()
 	synths += wire
 
-	/*
 	var/obj/item/stack/nanopaste/N = new /obj/item/stack/nanopaste(src)
 	N.uses_charge = 1
-	N.charge_costs = list(1000)
+	N.charge_costs = list(20000)
 	N.synths = list(nanite)
 	src.modules += N
-	*/
 
 	var/obj/item/dogborg/tongue/T = new /obj/item/dogborg/tongue(src)
 	T.water = water
