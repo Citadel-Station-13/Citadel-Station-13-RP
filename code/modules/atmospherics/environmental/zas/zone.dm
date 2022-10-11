@@ -140,23 +140,6 @@ Class Procs:
  * adds a tile's worth of air and increments air group multiplier
  */
 /datum/zas_zone/proc/add_tile_and_merge_air(turf/T)
-	#warn benchmarking
-	var/static/next = 0
-	if(!((++next) % 2))
-		add_tile_and_merge_air_1(T)
-	else
-		add_tile_and_merge_air_2(T)
-
-/datum/zas_zone/proc/add_tile_and_merge_air_2(turf/T)
-	var/datum/gas_mixture/turf_air = T.return_air()
-	air.group_multiplier = 1
-	air.multiply(contents.len)
-	air.merge(tile_air)
-	air.divide(contents.len+1)
-	air.group_multiplier = contents.len + 1
-	contents += T
-
-/datum/zas_zone/proc/add_tile_and_merge_air_1(turf/T)
 	var/datum/gas_mixture/turf_air = T.return_air()
 	air.tile_incrementing_merge(turf_air, contents.len)
 	air.group_multiplier = contents.len + 1

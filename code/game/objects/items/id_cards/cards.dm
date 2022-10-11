@@ -36,7 +36,6 @@
 	sprite_stack = initial_sprite_stack.Copy()
 	update_icon()
 
-#warn test
 /obj/item/card/update_icon()
 	cut_overlays()
 	. = ..()
