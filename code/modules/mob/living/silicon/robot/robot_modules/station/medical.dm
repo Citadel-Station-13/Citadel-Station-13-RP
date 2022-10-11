@@ -62,7 +62,7 @@
 	synths += medicine
 
 	var/obj/item/stack/medical/advanced/ointment/O = new /obj/item/stack/medical/advanced/ointment(src)
-	var/obj/item/stack/nanopaste/N = new /obj/item/stack/nanopaste(src)
+	//var/obj/item/stack/nanopaste/N = new /obj/item/stack/nanopaste(src)
 	var/obj/item/stack/medical/advanced/bruise_pack/B = new /obj/item/stack/medical/advanced/bruise_pack(src)
 	O.uses_charge = 1
 	O.charge_costs = list(1000)
@@ -157,7 +157,7 @@
 
 	var/datum/matter_synth/medicine = new /datum/matter_synth/medicine(15000) // BEGIN CITADEL CHANGES - adds trauma kits to medihounds
 	synths += medicine
-	var/obj/item/stack/nanopaste/P = new /obj/item/stack/nanopaste(src)
+	//var/obj/item/stack/nanopaste/P = new /obj/item/stack/nanopaste(src)
 	var/obj/item/stack/medical/advanced/ointment/K = new /obj/item/stack/medical/advanced/ointment(src)
 	var/obj/item/stack/medical/advanced/bruise_pack/L = new /obj/item/stack/medical/advanced/bruise_pack(src)
 	P.uses_charge = 1
