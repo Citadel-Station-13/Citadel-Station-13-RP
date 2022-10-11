@@ -16,7 +16,7 @@ Initial Design Goals (X = Complete, / = WIP):
 	var/counted = 0
 	var/adjusted = 0
 	var/medicated = 0
-	var/symptom_delay = 300
+	var/symptom_delay = 3000
 	var/last_symptom = 0
 
 /datum/component/cyberpsychosis/Initialize(radius)
