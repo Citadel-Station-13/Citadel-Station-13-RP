@@ -129,7 +129,7 @@
 /obj/vehicle_old/bike/relaymove(mob/user, direction)
 	if(user != load || !on)
 		return 0
-	if(Move(get_step(src, direction)))
+	if(Move(get_step(src, direction), direction))
 		return 1
 	return 0
 

@@ -603,11 +603,19 @@
 		if(!can_equip(I, slot, flags | INV_OP_IS_FINAL_CHECK, user))
 			return FALSE
 
+		var/atom/oldLoc = I.loc
+		if(I.loc != src)
+			I.forceMove(src)
+		if(I.loc != src)
+			// UH OH, SOMEONE MOVED US
+			log_inventory("[key_name(src)] failed to equip [I] to slot (loc sanity failed).")
+			// UH OH x2, WE GOT WORN OVER SOMETHING
+			if(I.worn_over)
+				handle_item_denesting(I, slot, INV_OP_FATAL, user)
+			return FALSE
+
 		_equip_slot(I, slot, flags)
 
-		var/atom/oldLoc = I.loc
-
-		I.forceMove(src)
 		// TODO: HANDLE DELETIONS IN PICKUP AND EQUIPPED PROPERLY
 		I.pickup(src, flags, oldLoc)
 		I.equipped(src, slot, flags)

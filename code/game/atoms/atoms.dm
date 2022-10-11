@@ -794,7 +794,7 @@
 
 	var/list/hearing_mobs = hear["mobs"]
 	var/list/hearing_objs = hear["objs"]
-	var/list/heard_to_floating_message
+	var/list/heard_to_floating_message = list()
 	for(var/obj in hearing_objs)
 		var/obj/O = obj
 		O.show_message(message, 2, deaf_message, 1)
@@ -803,7 +803,7 @@
 		var/mob/M = mob
 		var/msg = message
 		M.show_message(msg, 2, deaf_message, 1)
-		M += heard_to_floating_message
+		heard_to_floating_message += M
 	INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, (message ? message : deaf_message), null, FALSE, heard_to_floating_message, 30)
 
 

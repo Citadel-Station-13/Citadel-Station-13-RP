@@ -36,3 +36,62 @@
   Zandario:
   - bugfix: Fixed the Account Terminal's Visual
   - code_imp: Un-relative-defined some procs
+2022-10-06:
+  ktoma36:
+  - rscadd: Submap Generation for the west part of rift
+  - rscadd: Directional Variants for some objects and some objects
+  - bugfix: Fixed a few bugs regarding window spawners, map defines,
+  - code_imp: Touched up on map defines and lateloading for the rift. Messed with
+      largecrates to get them to work as intended
+2022-10-07:
+  CharlesWedge:
+  - rscadd: Psychiatric wing at the back of medical.
+  - rscadd: Asylum Dungeon to the north of the underground areas of the station. Puzzle
+      Focus with three entrances.
+  - tweak: Perma is now much hard to escape, feel free to add more pickaxes to it
+      for now.
+  TheLordME:
+  - rscadd: Added the ability to make gases be processed like reagents in the body.
+  Zandario:
+  - bugfix: Fixes ColorMate TGUI
+2022-10-08:
+  Captain277:
+  - rscadd: Adds chlorine gas mines.
+  Zandario:
+  - bugfix: Supply Computer Circuitboard TGUI Fixed
+  - bugfix: AI's name prompt TGUI Fixed
+2022-10-09:
+  AlphaM01:
+  - tweak: Changed Atmos' Phoron tank hazard sign to correctly call the gas "Phoron"
+      instead of "Plasma".
+  - tweak: Renamed the doors inside Centcomm's Medbay to accurately say what they
+      are instead of all being the same copied "Operating Theatre" door.
+  - bugfix: Split the Memorial monument in Centcomm into two different objects, each
+      occupying their own tile to prevent phasing through it.
+  - bugfix: Anchored the memorial room's statues in place.
+  - bugfix: Moved Surface 1 airlock buttons to the outsides of the airlock, instead
+      of inside the doors, to prevent them being interactable from the wrong side
+      of the doors.
+  - rscadd: Connected the central heating area of the Emergency Bunker to the power
+      grid by adding a missing section of wire under a door.
+  - rscadd: Added plating to the underside of the catwalks on the Mining Outpost to
+      prevent situations where it was possible to fall through the catwalk because
+      of the empty space it was on (in a few spots leading to insta-death).
+  - rscdel: Deleted outdated/floating path edge overlays.
+  Captain277:
+  - bugfix: '''Fixes'' Chem Grenade timer.'
+  ktoma36:
+  - rscadd: Oregen to Station Z levels and added object generation to lythios snow
+      turfs
+2022-10-10:
+  jakeramsay007:
+  - bugfix: Fixes borg alt-click to show objects on a turf
+2022-10-11:
+  Captain277:
+  - rscadd: Adds chlorine gas grenade.
+  - tweak: Tweaks edge blending.
+  CharlesWedge:
+  - bugfix: Toxins Medibot Now Uses Right Skin name
+  Zandario:
+  - bugfix: You'll no longer be "a a gynoid" / "an a android"
+  - refactor: Species examine text is de-duplicated.
