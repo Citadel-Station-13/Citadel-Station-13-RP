@@ -7,7 +7,6 @@
 	spawning = 4
 	lifespan = 1.5 SECONDS
 	fade = 1 SECONDS
-	fadein = 0.1 SECONDS
 	velocity = list(0, 0.4, 0)
 	position = list(6, 0, 0)
 	drift = generator("sphere", 0, 2, NORMAL_RAND)
