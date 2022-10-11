@@ -65,8 +65,8 @@
 	..()
 
 /obj/item/gun/projectile/rocket/collapsible
-	name = "collapsible missile launcher"
-	desc = "A one-shot missile launcher designed with portability in mind. This disposable launcher must be extended before it can fire."
+	name = "disposable rocket launcher"
+	desc = "A single use rocket launcher designed with portability in mind. This disposable launcher must be extended before it can fire."
 	icon_state = "missile"
 	item_state = "missile"
 	w_class = ITEMSIZE_NORMAL
@@ -81,6 +81,10 @@
 		to_chat(user, "<span class='warning'>[src] is collapsed! You must extend it before firing!</span>")
 		return 0
 	return ..()
+
+/obj/item/gun/projectile/rocket/collapsible/attackby(var/obj/item/A as obj, mob/user as mob)
+	to_chat(user, "<span class='danger'>You cannot reload the [src]!</span>")
+	return
 
 /obj/item/gun/projectile/rocket/collapsible/attack_self(mob/user, obj/item/gun/G)
 	if(collapsed)
