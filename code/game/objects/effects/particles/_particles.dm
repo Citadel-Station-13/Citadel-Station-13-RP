@@ -92,7 +92,7 @@
 	 * Fade-in time, in ticks.
 	 * * Type: number
 	 */
-	fadein = null
+	fadein = 0
 
 //? The icon and icon_state values are special in that they can't be assigned a generator, but they
 //? can be assigned a constant icon or string, respectively, or a list of possible values to choose from.
