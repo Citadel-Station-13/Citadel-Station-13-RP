@@ -72,7 +72,7 @@ Initial Design Goals (X = Complete, / = WIP):
 
 /datum/component/cyberpsychosis/proc/fire_symptoms()
 	var/mob/living/carbon/human/H = parent
-	if(capacity >= 90) //This level is benign in terms of capacity loss. Don't want to just dump symptoms on them on the daily.
+	if(capacity <= 95) //This level is benign in terms of capacity loss. Don't want to just dump symptoms on them on the daily.
 		var/message_t1 = rand(1,6)
 		switch(message_t1)
 			if(1)
