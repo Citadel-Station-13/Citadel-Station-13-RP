@@ -97,7 +97,6 @@
 	update_values()
 
 #warn impl this microoptimization
-/*
 /**
  * merges all the gas from another mixture into this one, taking into accounts contents amount
  *
@@ -123,7 +122,7 @@
             our_gas[id] += (their_gas[id] - our_gas[id]) * factor
     update_values()
 
-
+#warn impl this microopt
 /**
  * adds a tile's worth of air and increments air group multiplier
  */
@@ -132,7 +131,6 @@
     air.tile_incrementing_merge(turf_air, contents.len)
     air.group_multiplier = contents.len + 1
     contents += T
-*/
 
 // Used to equalize the mixture between two zones before sleeping an edge.
 /datum/gas_mixture/proc/equalize(datum/gas_mixture/sharer)
