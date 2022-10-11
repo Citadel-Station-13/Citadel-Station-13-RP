@@ -31,7 +31,7 @@
 	/// real species type
 	var/real_species_type = /datum/species/custom
 
-	//! Defaults to set
+	//! Defaults to set for visuals
 	/// default ear path
 	var/ear_style_default
 	/// default tail path
@@ -41,8 +41,41 @@
 	/// set species bodytype to this
 	var/our_bodytype = BODYTYPE_DEFAULT
 
+	//! Defaults to set for background
+	/// default origin
+	var/default_origin = "custom"
+	/// default citizenship
+	var/default_citizenship = "custom"
+	/// default faction
+	var/default_faction = "nanotrasen"
+	/// default religion
+	var/default_religion = "custom"
+
+	//! Languages
+	/// has galactic common? you better not disable this unless you know what you're doing
+	var/language_galactic_common = FALSE
+	/// additional languages we always have, regardless of background
+	var/list/language_species = list()
+
+	#warn impl in general
+
+	#warn impl defaults on species datums and consider #defining or allowing typepaths
+
 /datum/character_species/proc/tweak(datum/species/S)
 	S.default_bodytype = our_bodytype
+
+/datum/character_species/proc/get_default_origin_id()
+
+/datum/character_species/proc/get_default_citizenship_id()
+
+/datum/character_species/proc/get_default_faction_id()
+
+/datum/character_species/proc/get_default_religion_id()
+
+/datum/character_species/proc/get_default_language_ids()
+	#warn impl
+
+#warn impl
 
 //! LORE PEOPLE, SHOVE YOUR SNOWFLAKE HERE
 

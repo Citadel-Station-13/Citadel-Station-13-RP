@@ -44,3 +44,9 @@
 /datum/controller/subsystem/characters/proc/available_factions(species_id)
 
 /datum/controller/subsystem/characters/proc/available_origins(species_id)
+
+/datum/controller/subsystme/characters/proc/job_locks_for_faction(id)
+	var/datum/lore/character_background/faction/F = character_factions[id]
+	return F.job_whitelist
+
+#warn impl

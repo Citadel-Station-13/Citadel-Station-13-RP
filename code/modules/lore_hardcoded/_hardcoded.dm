@@ -18,3 +18,8 @@
 	var/list/forbid_species
 	/// languages that someone gets by picking this
 	var/list/innate_languages
+
+	#warn consider allowing typepaths as well as ids for species/language
+
+/datum/lore/character_background/proc/check_species_id(id)
+	#warn impl

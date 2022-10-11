@@ -96,7 +96,7 @@
 /**
  * get default value assuming pref
  */
-/datum/category_item/player_setup_item/proc/informed_default_value(randomizing)
+/datum/category_item/player_setup_item/proc/informed_default_value(datum/preferences/prefs, randomizing)
 	return default_value(randomizing)
 
 /**
@@ -130,6 +130,16 @@
 /datum/category_item/player_setup_item/proc/href(datum/preferences/prefs, action, innerhtml, list/params)
 	if(length(params))
 		return "<a href='?src=\ref[src];prefs=\ref[prefs];act=[action];[list2params(params)]'>[innerhtml]</a>"
+	return "<a href='?src=\ref[src];prefs=\ref[prefs];act=[action]'>[innerhtml]</a>"
+
+/**
+ * encodes href
+ *
+ * act() will be called with action and the action associated to the option in params.
+ */
+/datum/category_item/player_setup_item/proc/href_simple(datum/preferences/prefs, action, innerhtml, option)
+	if(option)
+		return "<a href='?src=\ref[src];prefs=\ref[prefs];act=[action];[action]=[option]'>[innerhtml]</a>"
 	return "<a href='?src=\ref[src];prefs=\ref[prefs];act=[action]'>[innerhtml]</a>"
 
 //! warning not all content() procs return a list properly

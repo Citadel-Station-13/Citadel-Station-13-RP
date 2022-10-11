@@ -6,7 +6,9 @@
 	. = list()
 
 /datum/category_item/player_setup_item/background/religion/act(datum/preferences/prefs, mob/user, action, list/params)
-	. = PREFERENCES_NOACTION
+	. = ..()
+	if(.)
+		return
 
 /datum/category_item/player_setup_item/background/religion/filter(datum/preferences/prefs, data, list/errors)
 
