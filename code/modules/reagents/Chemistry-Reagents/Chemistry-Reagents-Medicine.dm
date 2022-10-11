@@ -1607,7 +1607,7 @@
 	taste_description = "sour metal"
 	taste_mult = 2
 	reagent_state = REAGENT_LIQUID
-	metabolism = REM * 0.0001
+	metabolism = REM * 0.01
 	mrate_static = TRUE
 	color = "#52ca22"
 	scannable = 1
@@ -1615,9 +1615,11 @@
 
 /datum/reagent/neuratrextate/affect_ingest(mob/living/carbon/M)
 	remove_self(30)
+	to_chat(M, "<span class='warning'>It feels like there's a pile of knives in your stomach!</span>")
+	M.druggy += 10
 	M.vomit()
 
 /datum/reagent/neuratrextate/overdose(var/mob/living/carbon/M)
 	..()
-	M.druggy = max(M.druggy, 10)
-	M.hallucination = max(M.hallucination, 3)
+	M.druggy += 30
+	M.hallucination += 20
