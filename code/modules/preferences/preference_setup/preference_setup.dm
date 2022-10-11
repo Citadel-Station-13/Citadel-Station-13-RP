@@ -151,7 +151,7 @@
 		var/current = 0
 		var/halfway = items.len / 2
 		for(var/datum/category_item/player_setup_item/PI in items)
-			var/c = PI.content(PI.pref, null, user)
+			var/list/c = PI.content(PI.pref, null, user)
 			if(halfway && current++ >= halfway)
 				halfway = 0
 				. += "</td><td></td><td style='width:50%'>"

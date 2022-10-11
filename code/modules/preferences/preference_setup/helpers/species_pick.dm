@@ -53,6 +53,7 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	ASSERT(M)
 	ui_interact(M)
 
+#warn make ui
 /datum/tgui_species_picker/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)

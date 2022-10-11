@@ -279,8 +279,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	gear_slot = 1
 
 	if(client)
-		if(!IsGuestKey(C.key))
-			load_path(C.ckey)
+		if(!IsGuestKey(client.key))
+			load_path(client.ckey)
 			if(load_preferences())
 				if(load_character())
 					return

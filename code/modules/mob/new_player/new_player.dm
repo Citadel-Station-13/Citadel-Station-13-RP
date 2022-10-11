@@ -618,9 +618,14 @@
 
 
 /mob/new_player/proc/create_character(var/turf/T)
-	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified)) return
-	if (!attempt_vr(src,"spawn_checks_vr",list()))
-		return 0
+	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified))
+		return FALSE
+	if(!spawn_checks_vr())
+		return FALSE
+	var/list/errors = list()
+	if(!client.prefs.spawn_checks(PREF_COPY_TO_IS_SPAWNING | PREF_COPY_TO_ROUNDSTART, errors))
+		to_chat(src, SPAN_WARNING("An error has occured while trying to spawn you in:<br>[errors.Join("<br>")]"))
+		return FALSE
 	spawning = 1
 	close_spawn_windows()
 

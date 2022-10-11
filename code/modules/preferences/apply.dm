@@ -1,3 +1,9 @@
+/datum/preferences/proc/spawn_checks(flags, list/errors)
+	. = TRUE
+	for(var/datum/category_group/category in player_setup.categories)
+		if(!category.spawn_checks(src, flags, errors))
+			. = FALSE
+
 /datum/preferences/proc/copy_to(mob/living/carbon/human/character, flags, icon_updates = TRUE)
 	// Sanitizing rather than saving as someone might still be editing when copy_to occurs.
 	player_setup.sanitize_setup()
