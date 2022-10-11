@@ -303,6 +303,8 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 				if(species.is_cyberpsycho) //This check should hopefully automatically update the capacity of CRS patients if cybernetics are installed.
 					var/datum/component/cyberpsychosis/C
 					C.capacity = 100
+					C.cybernetics_count = 0
+					C.counted = 0
 					C.adjusted = 0
 			else if(part.status & ORGAN_DEAD)
 				icon_key += "3"

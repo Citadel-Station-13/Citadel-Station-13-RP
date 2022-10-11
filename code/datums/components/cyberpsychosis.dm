@@ -88,7 +88,7 @@ Initial Design Goals (X = Complete, / = WIP):
 			if(6)
 				to_chat(H, "<span class='notice'>For a brief moment you nearly remember the scent of your mother's perfume.</span>")
 	else if(capacity < 90) //At this level, we just want snippets of memories and audible hallucinations.
-		var/message_t2 = rand(1,7)
+		var/message_t2 = rand(1,8)
 		var/audio_t1 = rand(1,8)
 		var/select_symptom = rand(1,2)
 		switch(select_symptom)
@@ -108,6 +108,8 @@ Initial Design Goals (X = Complete, / = WIP):
 						to_chat(H, "<span class='notice'>You came here once, on a school trip.</span>")
 					if(7)
 						to_chat(H, "<span class='notice'>Didn't I tell you not to come back?</span>")
+					if(8)
+						to_chat(H, "<span class='notice'>The walls seem to bubble at the corners of your vision.</span>")
 			if(2)
 				switch(audio_t1)
 					if(1)
@@ -148,12 +150,16 @@ Initial Design Goals (X = Complete, / = WIP):
 				to_chat(H, "<span class='danger'>You look down at your hands. Weren't you going to make it big? What happened?</span>")
 			if(8)
 				to_chat(H, "<span class='danger'>You are having trouble breathing. Oh God. You're drowning.</span>")
-		H.hallucination += 5
 	else if(capacity < 40) //At this level, the victim begins to have more pronounced visual hallucinations, on top of the stacking symptoms above.
-		H.hallucination += 20
-	else if(capacity < 20) //The user's condition is rapidly degrading. More aggressive and intrusive messages come into play. Paranoia and aggravation increases.
-		var/message_t4 = rand(1,7)
+		var/message_t4 = rand(1,2)
 		switch(message_t4)
+			if(1)
+				to_chat(H, "<span class='notice'>Visual pixel artifacting crackles into the air before you. Just as quickly as it appears, it's gone.</span>")
+			if(2)
+				to_chat(H, "<span class='notice'>The ground suddenly falls out from under you, smearing into neon vertex lines on a skewed Z-Axis.</span>")
+	else if(capacity < 20) //The user's condition is rapidly degrading. More aggressive and intrusive messages come into play. Paranoia and aggravation increases.
+		var/message_t5 = rand(1,7)
+		switch(message_t5)
 			if(1)
 				to_chat(H, "<span class='danger'>You should rip out your implants.</span>")
 			if(2)
@@ -170,7 +176,6 @@ Initial Design Goals (X = Complete, / = WIP):
 				to_chat(H, "<span class='danger'>The screeching pain of your cybernetics is unending. It drowns you.</span>")
 			if(8) //Cruelty Squad direct quote here. Bit of an easter egg.
 				to_chat(H, "<span class='danger'>A point in the horizon, a melting scene from your childhood. Your mortality is showing. A frantic drift towards nothing, biology doomed to an infinite recursive loop. Teeth with teeth with teeth. Take a bite. Serene scent of a coastal town, warmth of the sun. Bitter tears. Lust for power. This is where you abandoned your dreams. You are a high net worth individual, an expanding vortex of pathetic trauma. Finally a beautiful fucking nerve ape. A pure soul is born, its neurotransactions stutter into being. 30583750937509353 operations per nanosecond. Beauty eludes your porous mind.</span>")
-		H.hallucination += 30
 	else if(capacity < 10) //This is the most critical level. On top of stacking everything above, this should be pretty critical in some way.
 		var/modifier_to_add = /datum/modifier/berserk
 		var/berserk_length = 30 SECONDS
