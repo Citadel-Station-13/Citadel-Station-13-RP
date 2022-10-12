@@ -290,19 +290,6 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
-"als" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass/hidden,
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/surfaceone)
 "aml" = (
 /turf/simulated/wall,
 /area/security/security_cell_hallway)
@@ -3206,10 +3193,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/medical/mentalhealth)
-"cxg" = (
-/obj/machinery/door/airlock/lift,
-/turf/simulated/floor/holofloor/tiled/dark,
-/area/turbolift/rmine/surface)
 "cxt" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
@@ -3919,13 +3902,10 @@
 /obj/structure/railing{
 	dir = 8
 	},
-<<<<<<< HEAD
 /turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-=======
 /turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside1,
 /area/rift/surfaceeva/aa/surface_south)
->>>>>>> upstream/master
 "cVJ" = (
 /obj/structure/grille,
 /obj/structure/foamedmetal,
@@ -4164,6 +4144,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 2
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfaceone)
@@ -5423,6 +5406,13 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/medbay_emt_bay)
+"dMw" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/security/lower)
 "dMB" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -7033,7 +7023,10 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass/hidden{
-	dir = 8
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
@@ -7660,7 +7653,12 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "fvP" = (
@@ -10819,7 +10817,7 @@
 /area/crew_quarters/medbreak)
 "hDy" = (
 /obj/structure/closet/excavation,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/rnd/xenoarch_storage)
 "hDI" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -11329,7 +11327,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden,
 /obj/effect/floor_decal/corner/lightgrey/bordercorner{
 	dir = 8
 	},
@@ -12185,7 +12182,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/machinery/door/firedoor/glass/hidden,
 /obj/effect/floor_decal/corner/lightgrey/bordercorner{
 	dir = 8
 	},
@@ -12882,6 +12878,11 @@
 	},
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside1)
+"iMB" = (
+/obj/structure/foamedmetal,
+/obj/structure/grille,
+/turf/simulated/floor/plating,
+/area/rift/surfacebase/outside/outside1)
 "iMK" = (
 /obj/machinery/light{
 	dir = 4
@@ -13325,8 +13326,13 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/medbreak)
 "jcI" = (
-/obj/machinery/door/firedoor/glass/hidden,
-/turf/simulated/floor/tiled/monotile,
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "jcL" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -14277,7 +14283,7 @@
 /area/rnd/outpost/xenobiology/outpost_stairs)
 "jLS" = (
 /obj/machinery/suspension_gen,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/rnd/xenoarch_storage)
 "jMu" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -15359,10 +15365,10 @@
 /obj/effect/overlay/snow/wall{
 	dir = 1
 	},
-/turf/simulated/floor/plating/lythios43c,
-/area/space)
 /obj/structure/metal_edge,
+/turf/simulated/floor/plating/lythios43c,
 /turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/space,
 /area/rift/surfaceeva/aa/surface_south)
 "ktI" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -15502,6 +15508,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
+"kwP" = (
+/obj/effect/zone_divider,
+/turf/simulated/wall,
+/area/rift/surfacebase/outside/outside1)
 "kwS" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -16295,6 +16305,9 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfaceone)
@@ -17604,9 +17617,6 @@
 	},
 /obj/effect/floor_decal/corner/brown/border{
 	dir = 4
-	},
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfaceone)
@@ -20399,9 +20409,12 @@
 /area/maintenance/tool_storage)
 "nyx" = (
 /obj/machinery/door/firedoor/glass/hidden{
-	dir = 8
+	req_one_access = list(18,47)
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "nyE" = (
 /obj/structure/cable/green{
@@ -20439,6 +20452,14 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/psych)
+"nzD" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/industrial/warning,
+/obj/structure/railing,
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/security/lower)
 "nzE" = (
 /obj/structure/table/woodentable,
 /obj/machinery/chemical_dispenser/bar_coffee/full{
@@ -20676,9 +20697,6 @@
 	icon_state = "4-8"
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals5{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/glass/hidden{
 	dir = 8
 	},
 /obj/effect/floor_decal/corner/lightgrey/bordercorner,
@@ -21118,6 +21136,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/foyer)
+"nQJ" = (
+/obj/effect/floor_decal/techfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/industrial/warning,
+/obj/structure/railing,
+/obj/structure/ladder{
+	pixel_y = 10
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/security/lower)
 "nRK" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -21262,9 +21291,12 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/exam_room)
 "nWh" = (
-/obj/structure/railing,
-/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
-/area/rift/surfaceeva/aa/surface_south)
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/plating,
+/area/maintenance/security/lower)
 "nWJ" = (
 /obj/machinery/door/airlock/glass_research,
 /obj/machinery/door/blast/regular/open{
@@ -24914,9 +24946,6 @@
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
-"qig" = (
-/turf/simulated/shuttle/wall/voidcraft,
-/area/turbolift/rmine/surface)
 "qih" = (
 /obj/effect/debris/cleanable/blood/drip,
 /obj/effect/debris/cleanable/blood/drip{
@@ -25098,10 +25127,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/forensics)
 "qlA" = (
-/obj/machinery/door/airlock/maintenance/engi{
-	name = "Elevator Shaft Access"
-	},
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/turbolift/rmine/surface)
 "qlX" = (
 /obj/structure/railing,
@@ -25119,6 +25145,10 @@
 /obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/airlock/main/secondary)
+"qmG" = (
+/obj/machinery/door/airlock/lift,
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/turbolift/rmine/surface)
 "qnr" = (
 /obj/machinery/computer/med_data/laptop,
 /obj/structure/table/reinforced,
@@ -29508,8 +29538,8 @@
 /obj/effect/zone_divider,
 /obj/effect/floor_decal/industrial/halfstair,
 /turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 /turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside1,
 /area/rift/surfaceeva/aa/surface_south)
 "teC" = (
 /obj/effect/floor_decal/borderfloor{
@@ -29651,6 +29681,12 @@
 "tjd" = (
 /obj/machinery/floor_light/prebuilt,
 /turf/simulated/floor/wood,
+/area/maintenance/research/lower)
+"tjq" = (
+/obj/structure/table/rack/shelf/steel,
+/obj/item/clothing/suit/space/anomaly,
+/obj/item/clothing/head/helmet/space/anomaly,
+/turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "tjx" = (
 /obj/structure/table/standard,
@@ -31164,8 +31200,9 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass/hidden{
-	dir = 8
+	dir = 2
 	},
+/obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
 "ufV" = (
@@ -32554,8 +32591,11 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/cargo_hallway)
 "uXr" = (
-/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
-/area/rift/surfaceeva/aa/surface_south)
+/obj/machinery/door/airlock/maintenance/engi{
+	name = "Elevator Shaft Access"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/lower)
 "uXB" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -34353,7 +34393,7 @@
 "weM" = (
 /obj/item/storage/briefcase/inflatable,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/structure/table/rack/steel,
+/obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "weO" = (
@@ -35489,6 +35529,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
+"wMZ" = (
+/obj/machinery/door/airlock/maintenance/engi{
+	name = "Elevator Shaft Access"
+	},
+/turf/simulated/floor/holofloor/tiled/dark,
+/area/turbolift/rmine/surface)
 "wNE" = (
 /obj/structure/catwalk,
 /obj/effect/debris/cleanable/liquid_fuel,
@@ -36881,7 +36927,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/storage/tools)
 "xPm" = (
-/turf/simulated/shuttle/wall/voidcraft/hard_corner,
+/turf/simulated/shuttle/wall/voidcraft,
 /area/turbolift/rmine/surface)
 "xPr" = (
 /obj/effect/overlay/snow/floor/pointy{
@@ -40707,7 +40753,7 @@ iFN
 iFN
 iFN
 iFN
-vUA
+iFN
 ayM
 ayM
 dXo
@@ -48972,8 +49018,8 @@ bND
 bRs
 bRs
 bRs
-hgE
-hgE
+ujT
+ujT
 hgE
 hgE
 hgE
@@ -49166,8 +49212,8 @@ nRY
 xaP
 iCq
 bRs
-kxc
-kxc
+iMB
+kwP
 kxc
 kxc
 kxc
@@ -49360,8 +49406,8 @@ grU
 bRs
 aRh
 bRs
-hgE
-hgE
+iMB
+ujT
 hgE
 hgE
 hgE
@@ -49554,8 +49600,8 @@ bRs
 bRs
 bRs
 kqq
-hgE
-hgE
+iMB
+ujT
 hgE
 hgE
 hgE
@@ -49748,8 +49794,8 @@ xaw
 xaw
 nkX
 rZY
-hgE
-hgE
+iMB
+ujT
 hgE
 hgE
 hgE
@@ -49922,7 +49968,7 @@ ngB
 tDZ
 pbQ
 qvB
-eSr
+tjq
 eHL
 fXj
 qCS
@@ -49942,8 +49988,8 @@ qCS
 qCS
 qCS
 rZY
-hgE
-hgE
+iMB
+ujT
 hgE
 hgE
 hgE
@@ -50116,7 +50162,7 @@ wOB
 heV
 sPq
 qvB
-eSr
+fLU
 aeZ
 oXj
 oXj
@@ -50136,8 +50182,8 @@ oXj
 oXj
 oXj
 rZY
-hgE
-hgE
+iMB
+ujT
 hgE
 hgE
 hgE
@@ -50330,9 +50376,9 @@ rZY
 eHL
 oTP
 rZY
-hgE
-hgE
-hgE
+iMB
+ujT
+ujT
 hgE
 hgE
 hgE
@@ -50524,9 +50570,9 @@ rZY
 rZY
 oXj
 rZY
-hgE
-hgE
-hgE
+iMB
+iMB
+ujT
 hgE
 hgE
 hgE
@@ -50719,12 +50765,12 @@ rZY
 oXj
 rZY
 rZY
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
+iMB
+ujT
+ujT
+ujT
+ujT
+ujT
 hgE
 hgE
 hgE
@@ -50895,10 +50941,10 @@ ucf
 woJ
 xsc
 oXj
-tpH
-tpH
-tpH
-tpH
+uBP
+uBP
+uBP
+uBP
 uBP
 uBP
 gFo
@@ -50913,12 +50959,12 @@ rZY
 oXj
 eHL
 rZY
-hgE
-hgE
-hgE
-hgE
-hgE
-hgE
+iMB
+iMB
+iMB
+iMB
+iMB
+ujT
 hgE
 hgE
 hgE
@@ -54737,7 +54783,7 @@ kVL
 fYd
 fYd
 fYd
-als
+ufE
 jcI
 jcI
 jcI
@@ -56078,10 +56124,10 @@ vgW
 mva
 xlm
 oIR
-bXZ
-bXZ
-bXZ
-xTe
+qlA
+xPm
+xPm
+qlA
 vRV
 pbz
 jCQ
@@ -56273,8 +56319,8 @@ bXZ
 bXZ
 bXZ
 xPm
-qig
-qig
+bzQ
+bzQ
 xPm
 vRV
 vRV
@@ -56464,12 +56510,12 @@ flB
 dMX
 dMX
 dMX
-dMX
-dMX
-qig
+tdI
+nzD
+qlA
 bzQ
 bzQ
-qig
+qmG
 jxt
 vRV
 oEx
@@ -56658,12 +56704,12 @@ hiS
 gLY
 gLY
 bDh
-dMX
-dMX
+uXr
+dMw
+wMZ
+bzQ
+bzQ
 xPm
-bzQ
-bzQ
-cxg
 vRV
 vRV
 wUt
@@ -56851,13 +56897,13 @@ jAY
 ncE
 dMX
 dMX
-pAu
-dMX
-dMX
+nWh
+tdI
+nQJ
 qlA
-bzQ
-bzQ
-qig
+xPm
+xPm
+qlA
 usB
 oLb
 ewn
@@ -57046,12 +57092,12 @@ dcR
 dMX
 dMX
 pAu
-dMX
-dMX
-xPm
-qig
-qig
-xPm
+tdI
+tdI
+xTe
+xTe
+xTe
+xTe
 xTe
 xTe
 xTe

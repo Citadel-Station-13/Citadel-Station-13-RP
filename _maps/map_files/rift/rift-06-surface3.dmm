@@ -1077,21 +1077,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
-"bL" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/dark,
-/area/bridge/bridge_hallway)
 "bM" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -1293,6 +1278,9 @@
 	dir = 1;
 	name = "Station Intercom (General)";
 	pixel_y = 24
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
@@ -1778,7 +1766,10 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/carpet,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "di" = (
 /obj/machinery/light{
@@ -1914,6 +1905,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
+"dt" = (
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "du" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -2514,6 +2514,9 @@
 /area/shuttle/civvie/cockpit)
 "eu" = (
 /obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "ev" = (
@@ -3868,11 +3871,14 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/crew_quarters/cafeteria)
 "gS" = (
-/obj/structure/bed/chair{
+/obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/carpet,
-/area/bridge/bridge_hallway)
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 4
+	},
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "gT" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -4012,8 +4018,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "hj" = (
-/turf/simulated/floor/carpet,
-/area/bridge/bridge_hallway)
+/obj/structure/catwalk,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 5
+	},
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "hk" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -4415,6 +4425,7 @@
 "hX" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/glass{
+	id_tint = "botany_hallway";
 	name = "Hydroponics";
 	req_one_access = list(35,28)
 	},
@@ -5131,10 +5142,13 @@
 	dir = 4;
 	pixel_x = -30
 	},
-/obj/structure/bed/chair{
-	dir = 4
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 9
 	},
-/turf/simulated/floor/carpet,
+/obj/effect/floor_decal/borderfloorblack/corner2{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "jw" = (
 /obj/structure/cable/green{
@@ -5493,6 +5507,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "ke" = (
@@ -5573,6 +5590,12 @@
 /obj/structure/inflatable,
 /turf/simulated/floor/plating,
 /area/rift/surfaceeva/aa/cliff_north)
+"kk" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "kl" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -6193,13 +6216,12 @@
 /turf/simulated/floor/plating,
 /area/maintenance/ai)
 "lu" = (
-/obj/machinery/appliance/mixer/cereal{
-	anchored = 0;
-	pixel_x = 1;
-	pixel_y = -1
+/obj/structure/catwalk,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 4
 	},
-/turf/simulated/floor/plating,
-/area/maintenance/bar/lower)
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "lv" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -6355,17 +6377,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "lN" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
+/obj/structure/catwalk,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 6
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/secondary/docking_hallway)
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "lO" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
@@ -7440,9 +7457,6 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 8
 	},
-/obj/machinery/light{
-	dir = 8
-	},
 /obj/effect/floor_decal/borderfloor/corner2{
 	dir = 8
 	},
@@ -7513,6 +7527,12 @@
 	},
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
+"nV" = (
+/obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/hydroponics)
 "nW" = (
 /obj/structure/flora/pottedplant/minitree{
 	pixel_y = 12
@@ -7552,7 +7572,7 @@
 "oa" = (
 /obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
-/area/bridge/bridge_hallway)
+/area/maintenance/commandmaint)
 "ob" = (
 /turf/simulated/wall/r_wall,
 /area/bridge/office)
@@ -7662,6 +7682,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/ai)
+"om" = (
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "on" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 6
@@ -7703,12 +7732,6 @@
 /turf/simulated/floor/carpet/turcarpet,
 /area/crew_quarters/bar)
 "ot" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 1
-	},
 /obj/machinery/holoposter{
 	pixel_y = 32
 	},
@@ -7724,7 +7747,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/carpet,
 /area/bridge/bridge_hallway)
 "ou" = (
 /obj/machinery/door/window/eastleft{
@@ -8069,6 +8092,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/teleporter/departing)
+"pc" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "pd" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
@@ -8269,6 +8298,15 @@
 /obj/machinery/portable_atmospherics/hydroponics,
 /turf/simulated/floor/grass,
 /area/hydroponics)
+"px" = (
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "py" = (
 /obj/item/reagent_containers/glass/bucket,
 /obj/effect/floor_decal/borderfloor/cee{
@@ -8393,7 +8431,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "pN" = (
-/turf/simulated/floor/plating/lythios43c,
+/obj/effect/overlay/snow/floor/pointy,
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "pO" = (
 /obj/structure/cable{
@@ -8987,7 +9029,12 @@
 /turf/simulated/floor/tiled/monotile,
 /area/hydroponics)
 "qW" = (
-/obj/effect/zone_divider,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 4
+	},
+/obj/structure/railing{
+	dir = 4
+	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "qX" = (
@@ -9152,6 +9199,14 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/explorer_prep)
+"rp" = (
+/obj/machinery/appliance/mixer/cereal{
+	anchored = 0;
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/bar/lower)
 "rq" = (
 /turf/simulated/wall/r_wall,
 /area/rift/surfaceeva/aa/cliff_north)
@@ -9231,6 +9286,10 @@
 /obj/structure/railing,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/shuttle)
+"rz" = (
+/obj/effect/overlay/snow/floor/pointy,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "rA" = (
 /obj/machinery/door/airlock/voidcraft/vertical,
 /obj/map_helper/airlock/door/ext_door,
@@ -9509,13 +9568,14 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "se" = (
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 8
-	},
+/obj/machinery/door/firedoor/glass/hidden,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "sf" = (
 /obj/structure/barricade,
@@ -9577,7 +9637,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/plating,
-/area/bridge/bridge_hallway)
+/area/maintenance/commandmaint)
 "sm" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
@@ -10162,6 +10222,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/trade_shop/landing_pad)
+"tt" = (
+/obj/machinery/door/airlock/glass_external/public{
+	name = "Public External Airlock"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/commandmaint)
 "tu" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -10222,11 +10288,16 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/exploration)
 "ty" = (
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 8
+	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/monotile,
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "tz" = (
 /obj/machinery/message_server,
@@ -10326,9 +10397,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "tK" = (
-/obj/structure/closet,
-/obj/random/maintenance/engineering,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/maintenance/commandmaint)
 "tL" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -10481,12 +10550,11 @@
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "tY" = (
-/obj/machinery/light/small{
-	dir = 4
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 6
 	},
-/obj/effect/debris/cleanable/dirt,
-/turf/simulated/floor/plating,
-/area/bridge/bridge_hallway)
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "tZ" = (
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Public External Airlock"
@@ -10771,6 +10839,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
+"uD" = (
+/obj/effect/overlay/snow/floor/pointy,
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "uE" = (
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
@@ -11083,6 +11158,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
@@ -12083,6 +12164,9 @@
 	name = "Station Intercom (General)";
 	pixel_y = 24
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "wY" = (
@@ -12250,7 +12334,10 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor/glass/hidden{
-	dir = 8
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
@@ -12283,8 +12370,8 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/smartfridge,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/smartfridge,
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "xq" = (
@@ -12763,6 +12850,12 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 6
 	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+	dir = 6
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "ym" = (
@@ -12822,6 +12915,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/bar)
+"ys" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 5
+	},
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "yt" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -12907,8 +13009,11 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "yB" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
-/area/bridge/bridge_hallway)
+/area/maintenance/commandmaint)
 "yC" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/random/maintenance/cargo,
@@ -13254,6 +13359,13 @@
 	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/cockpit)
+"zr" = (
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor/pointy,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "zs" = (
 /obj/machinery/computer/rcon{
 	dir = 8
@@ -13319,18 +13431,6 @@
 	},
 /turf/simulated/floor/carpet/tealcarpet,
 /area/shuttle/civvie/general)
-"zy" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/lightgrey/border{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/surfacethree)
 "zz" = (
 /obj/structure/bed/chair/office/dark,
 /obj/landmark/spawnpoint/job/pathfinder,
@@ -13420,6 +13520,13 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
+"zI" = (
+/obj/structure/catwalk,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 1
+	},
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "zJ" = (
 /turf/simulated/wall,
 /area/crew_quarters/kitchen)
@@ -13564,7 +13671,10 @@
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 2
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "zY" = (
@@ -13578,9 +13688,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
 "zZ" = (
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 1
-	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -13593,7 +13700,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/carpet,
 /area/bridge/bridge_hallway)
 "Aa" = (
 /obj/effect/floor_decal/spline/plain{
@@ -13800,6 +13907,13 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
+"Au" = (
+/obj/effect/overlay/snow/floor/pointy,
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Av" = (
 /obj/structure/bed/chair/wood{
 	dir = 1
@@ -14342,7 +14456,12 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass/hidden,
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "By" = (
@@ -14363,6 +14482,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/kitchen)
+"Bz" = (
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "BA" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -14642,6 +14767,15 @@
 /obj/structure/railing,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfaceeva/aa/cliff_north)
+"Cc" = (
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Cd" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -14664,6 +14798,11 @@
 /obj/machinery/light/small/emergency,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
+"Cf" = (
+/obj/structure/catwalk,
+/obj/structure/sign/warning/falling,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Cg" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -14751,12 +14890,11 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/excursion_dock)
 "Cq" = (
-/obj/effect/floor_decal/borderfloorblack,
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/carpet,
 /area/bridge/bridge_hallway)
 "Cr" = (
 /obj/structure/handrail,
@@ -14839,7 +14977,10 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/turf/simulated/floor/carpet,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "Cz" = (
 /obj/effect/floor_decal/spline/plain{
@@ -14910,6 +15051,12 @@
 /obj/item/storage/box/freezer,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
+"CF" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "CG" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 8
@@ -15544,6 +15691,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker/laundry_arrival)
+"DX" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "DY" = (
 /obj/structure/railing{
 	dir = 8
@@ -15876,11 +16029,16 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "EG" = (
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 8
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/plating,
+/area/hallway/secondary/docking_hallway)
+"EH" = (
+/obj/effect/overlay/snow/floor/edges_new,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 1
 	},
-/turf/simulated/floor/tiled/monotile,
-/area/hallway/primary/surfacethree)
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "EI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -16694,6 +16852,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
+"Gm" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Gn" = (
 /obj/structure/handrail,
 /obj/structure/cable/green{
@@ -16782,9 +16946,8 @@
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
 "Gw" = (
-/obj/random/trash_pile,
 /turf/simulated/floor/plating,
-/area/bridge/bridge_hallway)
+/area/rift/surfacebase/outside/outside3)
 "Gx" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/simulated/floor/tiled/freezer/cold,
@@ -17111,6 +17274,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
+"Hj" = (
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Hk" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -17400,6 +17566,12 @@
 	dir = 5
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 5
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel,
@@ -17720,18 +17892,15 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "Iw" = (
-/obj/structure/table/woodentable,
-/obj/structure/flora/pottedplant/minitree{
-	pixel_y = 12
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorblack{
-	dir = 6
-	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/dark,
-/area/bridge/bridge_hallway)
+/turf/simulated/floor/plating,
+/area/maintenance/commandmaint)
 "Ix" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /obj/machinery/atmospherics/portables_connector{
@@ -18093,7 +18262,7 @@
 "Jh" = (
 /obj/machinery/door/airlock/maintenance/command,
 /turf/simulated/floor/plating,
-/area/bridge/bridge_hallway)
+/area/maintenance/commandmaint)
 "Ji" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/monotile,
@@ -18258,6 +18427,10 @@
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 1
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 2
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
@@ -18627,8 +18800,10 @@
 /area/shuttle/courser/cockpit)
 "Kf" = (
 /obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced/polarized/full{
+	id = "botany_hallway"
+	},
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "Kg" = (
@@ -18764,7 +18939,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass/hidden,
 /obj/effect/floor_decal/corner/lightgrey/bordercorner{
 	dir = 8
 	},
@@ -19949,6 +20123,9 @@
 	icon_state = "4-8"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "MR" = (
@@ -20012,10 +20189,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/exploration/showers)
 "Na" = (
-/obj/effect/floor_decal/borderfloorblack,
 /obj/structure/reagent_dispensers/water_cooler,
 /obj/item/reagent_containers/glass/cooler_bottle,
-/turf/simulated/floor/tiled/dark,
+/turf/simulated/floor/carpet,
 /area/bridge/bridge_hallway)
 "Nb" = (
 /obj/structure/cable/green{
@@ -20041,6 +20217,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
+"Nd" = (
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Ne" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -20342,9 +20524,10 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
 "NJ" = (
-/obj/random/trash,
+/obj/structure/closet,
+/obj/random/maintenance/engineering,
 /turf/simulated/floor/plating,
-/area/bridge/bridge_hallway)
+/area/maintenance/commandmaint)
 "NK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
@@ -20444,6 +20627,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
+"NV" = (
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "NW" = (
 /obj/effect/floor_decal/steeldecal/steel_decals9{
 	dir = 8
@@ -21152,6 +21341,12 @@
 	},
 /turf/simulated/floor/tiled/freezer/cold,
 /area/crew_quarters/freezer)
+"Pj" = (
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Pk" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/turbolift/rsurface/level3)
@@ -21331,9 +21526,17 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway2)
 "PE" = (
-/obj/machinery/door/firedoor/glass/hidden,
-/turf/simulated/floor/tiled/monotile,
-/area/hallway/primary/surfacethree)
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/commandmaint)
 "PF" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -21554,6 +21757,15 @@
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cargo)
+"PZ" = (
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Qa" = (
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 5
@@ -22121,6 +22333,11 @@
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/courser/general)
+"QZ" = (
+/obj/structure/catwalk,
+/obj/effect/overlay/snow/floor/edges_new,
+/turf/simulated/open/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Ra" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -22211,6 +22428,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
+"Rk" = (
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 1
+	},
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "Rl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
@@ -22448,6 +22674,9 @@
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 1
 	},
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 4
+	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside3)
 "RE" = (
@@ -22528,6 +22757,10 @@
 /obj/machinery/shipsensors,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c,
 /area/shuttle/civvie/cockpit)
+"RL" = (
+/obj/effect/overlay/snow/floor/edges_new,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "RM" = (
 /obj/item/bee_pack,
 /obj/item/honey_frame,
@@ -23278,7 +23511,7 @@
 "Ti" = (
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/plating,
-/area/bridge/bridge_hallway)
+/area/maintenance/commandmaint)
 "Tj" = (
 /obj/structure/railing{
 	dir = 1
@@ -24020,9 +24253,6 @@
 /obj/machinery/alarm{
 	dir = 8;
 	pixel_x = 24
-	},
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 8
 	},
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 4
@@ -24919,8 +25149,8 @@
 	dir = 4
 	},
 /obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
+/obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/hydroponics)
 "Ww" = (
@@ -25582,6 +25812,15 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/exploration/showers)
+"XE" = (
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 8
+	},
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "XF" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -25946,6 +26185,13 @@
 /obj/effect/floor_decal/corner/lime/border,
 /turf/simulated/floor/tiled/steel,
 /area/hydroponics)
+"Yz" = (
+/obj/effect/overlay/snow/floor/pointy{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor/pointy,
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside3)
 "YA" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -26547,6 +26793,9 @@
 /obj/structure/flora/ausbushes/leafybush,
 /obj/structure/table/woodentable,
 /obj/item/reagent_containers/glass/bucket/wood,
+/obj/machinery/button/windowtint/multitint{
+	pixel_x = 24
+	},
 /turf/simulated/floor/grass,
 /area/hydroponics)
 "ZL" = (
@@ -29575,7 +29824,7 @@ Oi
 Oi
 Oi
 Oi
-qW
+Oi
 Oi
 Oi
 Oi
@@ -29723,6 +29972,44 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+Oi
+Oi
+Oi
+Oi
+cH
+cH
+cH
+cH
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -29732,44 +30019,6 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-qW
 Oi
 Oi
 Oi
@@ -29916,58 +30165,58 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+fq
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+fq
+cH
+fq
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
+cH
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-qW
-Oi
-Oi
-Oi
-Oi
+cH
+cH
 Oi
 Oi
 Oi
@@ -30109,60 +30358,60 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-qW
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+fq
+fq
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+fq
+fq
+fq
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+fq
+fq
+fq
+fq
+cH
+fq
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -30303,60 +30552,60 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-qW
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+fq
+fq
+fq
+fq
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+fq
+fq
+fq
+fq
+cH
+cH
+cH
+cH
+kk
+CF
+Pj
+cH
+cH
+cH
+fq
+fq
+fq
+cH
+fq
+fq
+fq
+fq
+cH
+cH
+cH
+cH
+fq
+fq
+fq
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -30497,60 +30746,60 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+fq
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-qW
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+Gm
+Hj
+DX
+cH
+cH
+cH
+cH
+fq
+cH
+cH
+cH
+fq
+fq
+cH
+cH
+cH
+cH
+cH
+fq
+fq
+cH
+cH
+fq
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -30692,6 +30941,11 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -30701,50 +30955,45 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-qW
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+EH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+fq
+fq
+fq
+fq
+fq
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -30886,6 +31135,10 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -30902,42 +31155,38 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-qW
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+EH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+fq
+fq
+fq
+fq
+fq
+cH
+cH
 Oi
 Oi
 Oi
@@ -31079,6 +31328,11 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -31101,6 +31355,9 @@ Oi
 Oi
 Oi
 Oi
+CA
+Au
+CA
 Oi
 Oi
 Oi
@@ -31114,25 +31371,17 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+fq
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -31273,6 +31522,11 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -31295,6 +31549,9 @@ Oi
 Oi
 Oi
 Oi
+CA
+Au
+CA
 Oi
 Oi
 Oi
@@ -31309,24 +31566,16 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -31467,6 +31716,11 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -31489,6 +31743,9 @@ Oi
 Oi
 Oi
 Oi
+CA
+Au
+CA
 Oi
 Oi
 Oi
@@ -31505,23 +31762,15 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -31661,6 +31910,12 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+fq
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -31682,6 +31937,9 @@ Oi
 Oi
 Oi
 Oi
+CA
+Au
+CA
 Oi
 Oi
 Oi
@@ -31700,22 +31958,13 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -31855,6 +32104,12 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+fq
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -31876,6 +32131,9 @@ Oi
 Oi
 Oi
 Oi
+CA
+Au
+CA
 Oi
 Oi
 Oi
@@ -31895,22 +32153,13 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -32050,6 +32299,11 @@ Oi
 Oi
 Oi
 Oi
+cH
+fq
+fq
+cH
+cH
 Oi
 Oi
 Oi
@@ -32070,6 +32324,11 @@ Oi
 Oi
 Oi
 Oi
+CA
+CA
+Au
+CA
+CA
 Oi
 Oi
 Oi
@@ -32088,22 +32347,12 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -32244,6 +32493,11 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+fq
+cH
+cH
 Oi
 Oi
 Oi
@@ -32264,6 +32518,11 @@ Oi
 Oi
 Oi
 Oi
+CA
+pN
+Hj
+PZ
+CA
 Oi
 Oi
 Oi
@@ -32282,22 +32541,12 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -32438,11 +32687,11 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -32457,27 +32706,27 @@ Oi
 Oi
 Oi
 pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
+px
+px
+px
+px
+px
+px
+px
+NV
+NV
+NV
+px
+px
+px
+px
+px
+px
+px
+px
+px
+px
+PZ
 Oi
 Oi
 Oi
@@ -32485,14 +32734,14 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -32632,6 +32881,10 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -32646,33 +32899,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-Oi
+Au
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+zr
 Oi
 Oi
 Oi
@@ -32681,12 +32929,13 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -32826,6 +33075,10 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -32840,33 +33093,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-Oi
+Au
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+zr
 Oi
 Oi
 Oi
@@ -32875,13 +33123,14 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -33020,6 +33269,10 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -33034,33 +33287,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-Oi
+Au
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+zr
 Oi
 Oi
 Oi
@@ -33070,12 +33318,13 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -33214,6 +33463,10 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -33228,34 +33481,29 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-Oi
+Au
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+uD
+PZ
 Oi
 Oi
 Oi
@@ -33264,12 +33512,13 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -33408,6 +33657,10 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -33422,34 +33675,29 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-Oi
+Au
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+zr
 Oi
 Oi
 Oi
@@ -33458,12 +33706,13 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -33602,6 +33851,11 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
+CA
 Oi
 Oi
 Oi
@@ -33615,35 +33869,29 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-Oi
+Au
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+zr
 Oi
 Oi
 Oi
@@ -33651,14 +33899,15 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+CA
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -33796,63 +34045,63 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+kk
+Rk
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+Au
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+zr
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+kk
+Pj
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -33990,63 +34239,63 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+pc
+Hj
+px
+px
+px
+px
+px
+px
+px
+px
+px
+px
+px
+px
+px
+px
+Nd
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+rz
+XE
+XE
+XE
+XE
+XE
+XE
+XE
+XE
+Hj
+RL
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -34184,63 +34433,63 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+Gm
+dt
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+Au
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+zr
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+CA
+Gm
+DX
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -34378,6 +34627,11 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
+CA
 Oi
 Oi
 Oi
@@ -34391,35 +34645,29 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-Oi
+Au
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+zr
 Oi
 Oi
 Oi
@@ -34427,14 +34675,15 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+CA
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -34572,6 +34821,10 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -34586,34 +34839,29 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-Oi
+Au
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+zr
 Oi
 Oi
 Oi
@@ -34622,12 +34870,13 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -34766,6 +35015,10 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -34780,33 +35033,29 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
+Au
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
 pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
+Nd
 Oi
 Oi
 Oi
@@ -34815,13 +35064,13 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -34960,6 +35209,10 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -34974,33 +35227,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-Oi
+Au
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+zr
 Oi
 Oi
 Oi
@@ -35010,11 +35258,12 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -35154,6 +35403,9 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -35169,32 +35421,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-Oi
+Au
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+zr
 Oi
 Oi
 Oi
@@ -35204,11 +35452,12 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -35347,6 +35596,10 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -35362,33 +35615,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-Oi
+Au
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+us
+zr
 Oi
 Oi
 Oi
@@ -35399,11 +35647,12 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -35541,6 +35790,10 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -35556,33 +35809,28 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-pN
-Oi
+Yz
+px
+px
+px
+px
+px
+px
+px
+Bz
+Bz
+Bz
+px
+px
+px
+px
+px
+px
+px
+px
+px
+px
+Cc
 Oi
 Oi
 Oi
@@ -35592,11 +35840,12 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -35735,6 +35984,10 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -35757,6 +36010,11 @@ Oi
 Oi
 Oi
 Oi
+CA
+uD
+Hj
+om
+CA
 Oi
 Oi
 Oi
@@ -35777,19 +36035,10 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -35929,6 +36178,10 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -35951,6 +36204,11 @@ Oi
 Oi
 Oi
 Oi
+CA
+CA
+Au
+CA
+CA
 Oi
 Oi
 Oi
@@ -35971,20 +36229,11 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -36123,6 +36372,10 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -36146,6 +36399,9 @@ Oi
 Oi
 Oi
 Oi
+CA
+Au
+CA
 Oi
 Oi
 Oi
@@ -36168,16 +36424,9 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -36317,6 +36566,11 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -36339,6 +36593,9 @@ Oi
 Oi
 Oi
 Oi
+CA
+Au
+CA
 Oi
 Oi
 Oi
@@ -36361,18 +36618,10 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -36492,6 +36741,9 @@ Oi
 Oi
 Oi
 Oi
+do
+do
+do
 Oi
 Oi
 Oi
@@ -36508,6 +36760,11 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -36530,6 +36787,9 @@ Oi
 Oi
 Oi
 Oi
+CA
+Au
+CA
 Oi
 Oi
 Oi
@@ -36552,40 +36812,29 @@ Oi
 Oi
 Oi
 Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -36682,6 +36931,76 @@ Oi
 Oi
 Oi
 Oi
+do
+do
+do
+tY
+cH
+cH
+cH
+WR
+do
+do
+Oi
+Oi
+Tq
+Tq
+Tq
+Tq
+Tq
+Tq
+Tq
+Tq
+Tq
+Oi
+Oi
+Oi
+cH
+cH
+cH
+cH
+cH
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+CA
+Au
+CA
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
+Oi
 Oi
 Oi
 Oi
@@ -36689,98 +37008,28 @@ Oi
 cH
 cH
 cH
-Oi
-Oi
-Oi
-Oi
-Oi
-Tq
-Tq
-Tq
-Tq
-Tq
-Tq
-Tq
-Tq
-Tq
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 OC
@@ -36868,14 +37117,14 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
+do
+do
+do
+do
+do
+do
+do
+tY
 cH
 cH
 cH
@@ -36886,7 +37135,7 @@ cH
 cH
 cH
 cH
-Tq
+ys
 Zd
 CA
 CA
@@ -36898,14 +37147,14 @@ CA
 CA
 CA
 JO
-Tq
+gS
 do
+cH
+cH
+cH
+cH
+cH
 do
-do
-do
-do
-do
-do
 Oi
 Oi
 Oi
@@ -36926,6 +37175,9 @@ Oi
 Oi
 Oi
 Oi
+CA
+Au
+CA
 Oi
 Oi
 Oi
@@ -36947,37 +37199,34 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-OC
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+Xj
 "}
 (54,1,1) = {"
 OC
@@ -37060,8 +37309,8 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
+do
+tY
 cH
 cH
 cH
@@ -37081,7 +37330,7 @@ cH
 cH
 QK
 Zv
-CA
+zI
 CA
 Tj
 si
@@ -37091,7 +37340,7 @@ DY
 si
 UN
 CA
-CA
+QZ
 Zh
 QK
 QK
@@ -37119,6 +37368,16 @@ Oi
 Oi
 Oi
 Oi
+CA
+CA
+Au
+CA
+CA
+Oi
+Oi
+Oi
+Oi
+cH
 Oi
 Oi
 Oi
@@ -37132,46 +37391,36 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-OC
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+fq
+cH
+cH
+fq
+cH
+cH
+Xj
 "}
 (55,1,1) = {"
 OC
@@ -37251,9 +37500,9 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
+do
+do
+tY
 cH
 cH
 cH
@@ -37313,6 +37562,17 @@ Oi
 Oi
 Oi
 Oi
+CA
+pN
+Hj
+PZ
+CA
+Oi
+Oi
+Oi
+cH
+cH
+cH
 Oi
 Oi
 Oi
@@ -37324,48 +37584,37 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-OC
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+fq
+cH
+fq
+fq
+fq
+fq
+fq
+cH
+Xj
 "}
 (56,1,1) = {"
 xS
@@ -37442,9 +37691,9 @@ Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
+do
+do
+tY
 cH
 cH
 cH
@@ -37490,6 +37739,8 @@ bx
 bx
 cH
 cH
+WR
+do
 Oi
 Oi
 Oi
@@ -37505,52 +37756,50 @@ Oi
 Oi
 Oi
 Oi
+CA
+Yz
+NV
+Cc
+CA
+Oi
+Oi
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 Oi
 Oi
 Oi
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-fq
-fq
-fq
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 fq
 fq
 fq
@@ -37615,27 +37864,27 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
+Oi
+do
+do
+do
+do
+gS
+Tq
+Tq
+Tq
+Tq
+Tq
+Tq
+Tq
+Tq
+Tq
+Tq
+Tq
+Tq
+qW
+do
+tY
 cH
 cH
 cH
@@ -37686,6 +37935,7 @@ cH
 cH
 cH
 cH
+WR
 Oi
 Oi
 Oi
@@ -37700,50 +37950,49 @@ Oi
 Oi
 Oi
 Oi
+Cf
+CA
+CA
+CA
+CA
 Oi
 Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-Oi
-fq
-fq
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
 fq
 fq
 fq
@@ -37815,18 +38064,18 @@ cH
 cH
 cH
 cH
-cH
-QK
-QK
-QK
-QK
-QK
-QK
-QK
-QK
-QK
-QK
-QK
+hj
+lu
+lu
+lu
+lu
+lu
+lu
+lu
+lu
+lu
+lu
+lN
 QK
 QK
 QK
@@ -37881,10 +38130,21 @@ cH
 cH
 cH
 cH
+WR
+do
+do
+do
+do
+do
 Oi
 Oi
 Oi
-Oi
+do
+do
+do
+do
+do
+tY
 cH
 cH
 cH
@@ -37926,17 +38186,6 @@ cH
 cH
 cH
 cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-cH
-fq
 fq
 fq
 fq
@@ -38081,6 +38330,9 @@ cH
 cH
 cH
 cH
+WR
+do
+tY
 cH
 cH
 cH
@@ -38129,9 +38381,6 @@ cH
 cH
 cH
 cH
-cH
-fq
-fq
 fq
 fq
 fq
@@ -38324,7 +38573,7 @@ cH
 cH
 cH
 cH
-fq
+cH
 fq
 fq
 fq
@@ -38517,7 +38766,7 @@ cH
 cH
 cH
 cH
-cH
+fq
 fq
 fq
 fq
@@ -38710,8 +38959,8 @@ cH
 cH
 cH
 cH
-cH
-cH
+fq
+fq
 fq
 fq
 fq
@@ -39238,8 +39487,8 @@ Ln
 Ln
 Ln
 ne
-cH
-cH
+OY
+OY
 cH
 cH
 cH
@@ -39432,7 +39681,7 @@ Tv
 Tv
 rr
 OY
-OY
+rp
 OY
 OY
 cH
@@ -40015,7 +40264,7 @@ iX
 XK
 OY
 lc
-lu
+OY
 OY
 dx
 us
@@ -40210,7 +40459,7 @@ kh
 OY
 OY
 OY
-OY
+cH
 dx
 us
 xQ
@@ -40781,7 +41030,7 @@ JT
 VO
 Xu
 Xu
-Kf
+nV
 Wv
 xp
 Xu
@@ -40964,9 +41213,9 @@ YM
 xl
 xl
 xl
-zy
+zX
 se
-EG
+ZM
 se
 xk
 Xu
@@ -43294,7 +43543,7 @@ xl
 xl
 zX
 ty
-PE
+YT
 ty
 Bx
 jr
@@ -43858,7 +44107,7 @@ Pt
 Ja
 Bk
 WN
-cp
+PE
 ce
 ev
 Ec
@@ -44052,7 +44301,7 @@ UK
 FQ
 wm
 WN
-aA
+tK
 ce
 yG
 Bv
@@ -44245,8 +44494,8 @@ KO
 CP
 Vq
 db
-WN
-Ex
+Eu
+tK
 Pg
 Wn
 am
@@ -44439,8 +44688,8 @@ DI
 ve
 xJ
 RS
-WN
-aA
+Eu
+tK
 Pg
 gQ
 ik
@@ -44633,8 +44882,8 @@ UQ
 cf
 GH
 QL
-WN
-aA
+Eu
+tK
 Pg
 qQ
 pn
@@ -44825,10 +45074,10 @@ UQ
 UQ
 UQ
 HO
-lN
+ve
 yl
 WN
-aA
+tK
 Pg
 XR
 yI
@@ -45019,10 +45268,10 @@ cH
 fq
 WN
 WN
+EG
 WN
 WN
-WN
-aA
+tK
 Pg
 Pg
 Pg
@@ -45211,12 +45460,12 @@ IA
 pa
 cH
 fq
-fq
-fq
-fq
-YF
-vu
-aA
+cH
+TP
+Gw
+Iw
+tK
+tK
 Pg
 TE
 TE
@@ -45227,7 +45476,7 @@ LE
 Pg
 bP
 Cd
-gS
+rF
 jv
 dr
 kt
@@ -45404,13 +45653,13 @@ me
 me
 me
 cH
-fq
-fq
 cH
 cH
-YF
+TP
+Gw
+Iw
 tK
-aA
+tK
 Pg
 hg
 WY
@@ -45421,7 +45670,7 @@ zt
 Pg
 jO
 Cd
-hj
+nh
 dh
 ds
 pM
@@ -45601,10 +45850,10 @@ fq
 YF
 YF
 YF
+cp
 YF
 YF
-vS
-aA
+tt
 Pg
 Pg
 Pg
@@ -45615,7 +45864,7 @@ Pg
 Pg
 eQ
 Cd
-hj
+rF
 Cy
 Dk
 GU
@@ -45794,18 +46043,18 @@ fq
 fq
 YF
 vu
-aA
-aA
-sQ
-yK
-aA
 yB
-Gw
-NJ
-Gw
+aA
+aA
+YF
+bS
+YF
+vu
+Ex
+vu
 oa
 Ti
-rF
+MK
 yp
 yQ
 kd
@@ -45990,15 +46239,15 @@ bS
 aA
 yK
 aA
-yK
+aA
+aA
+aA
 yK
 aA
-tY
-yB
-yB
-yB
+aA
+aA
 sl
-yB
+aA
 Jh
 PL
 XT
@@ -46378,7 +46627,7 @@ YF
 vu
 yK
 YF
-aA
+vu
 LK
 LK
 bD
@@ -46572,7 +46821,7 @@ YF
 vS
 yK
 YF
-aA
+NJ
 LK
 fy
 aw
@@ -46583,8 +46832,8 @@ NT
 jj
 Su
 LK
-bL
-Iw
+zZ
+bP
 rF
 bZ
 IF
