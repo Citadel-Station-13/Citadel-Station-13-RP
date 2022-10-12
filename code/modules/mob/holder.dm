@@ -83,6 +83,7 @@
 	MA.appearance = M
 	MA.plane = plane
 	MA.dir = SOUTH
+	overlays += MA
 	name = M.name
 	desc = M.desc
 	update_worn_icon()
@@ -225,7 +226,6 @@
 	slot_flags = SLOT_BACK
 
 /obj/item/holder/human/sync(var/mob/living/M)
-	. = ..()
 	// Generate appropriate on-mob icons.
 	var/mob/living/carbon/human/owner = M
 	if(istype(owner) && owner.species)
@@ -233,18 +233,19 @@
 		var/skin_colour = rgb(owner.r_skin, owner.g_skin, owner.b_skin)
 		var/hair_colour = rgb(owner.r_hair, owner.g_hair, owner.b_hair)
 		var/eye_colour =  rgb(owner.r_eyes, owner.g_eyes, owner.b_eyes)
-		var/species_name = lowertext(owner.species.get_bodytype_legacy(owner))
+		var/species_name = bodytype_to_string(owner.species.default_bodytype)
 
 		for(var/cache_entry in generate_for_slots)
 			var/cache_key = "[owner.species]-[cache_entry]-[skin_colour]-[hair_colour]"
 			if(!holder_mob_icon_cache[cache_key])
+				var/render_key = resolve_inventory_slot_render_key(cache_entry)
 
 				// Generate individual icons.
-				var/icon/mob_icon = icon(icon, "[species_name]_holder_[cache_entry]_base")
+				var/icon/mob_icon = icon(icon, "[species_name]_holder_[render_key]_base")
 				mob_icon.Blend(skin_colour, ICON_ADD)
-				var/icon/hair_icon = icon(icon, "[species_name]_holder_[cache_entry]_hair")
+				var/icon/hair_icon = icon(icon, "[species_name]_holder_[render_key]_hair")
 				hair_icon.Blend(hair_colour, ICON_ADD)
-				var/icon/eyes_icon = icon(icon, "[species_name]_holder_[cache_entry]_eyes")
+				var/icon/eyes_icon = icon(icon, "[species_name]_holder_[render_key]_eyes")
 				eyes_icon.Blend(eye_colour, ICON_ADD)
 
 				// Blend them together.
@@ -254,6 +255,7 @@
 				// Add to the cache.
 				holder_mob_icon_cache[cache_key] = mob_icon
 			holder_slot_icons[cache_entry] = holder_mob_icon_cache[cache_key]
+	return ..()
 
 /obj/item/holder/human/resolve_worn_assets(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
 	var/list/generated = list()

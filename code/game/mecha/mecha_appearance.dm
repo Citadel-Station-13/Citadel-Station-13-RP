@@ -8,7 +8,7 @@
 	var/face_state = null
 	var/icon/face_overlay
 
-	var/icon/pilot_image
+	var/mutable_appearance/pilot_appearance
 
 	// How many pixels do we bump the pilot upward?
 	var/pilot_lift = 0
@@ -33,26 +33,24 @@
 	cut_overlays()
 
 	if(show_pilot)
-		if(occupant)
-			pilot_image = getCompoundIcon(occupant)
+		if(occupant && !istype(occupant, /mob/living/carbon/brain))
+			pilot_appearance = new
+			pilot_appearance.appearance = occupant
 
-			if(!istype(occupant, /mob/living/carbon/brain))
+			var/icon/Cutter
+			if("[initial_icon]_cutter" in icon_states(icon))
+				Cutter = new(src.icon, "[initial_icon]_cutter")
 
-				var/icon/Cutter
+			if(Cutter)
+				var/image/cutting_image = image(Cutter)
+				cutting_image.blend_mode = BLEND_MULTIPLY
+				cutting_image.pixel_y = -pilot_lift
+				pilot_appearance.overlays += cutting_image
 
-				if("[initial_icon]_cutter" in icon_states(icon))
-					Cutter = new(src.icon, "[initial_icon]_cutter")
-
-				if(Cutter)
-					pilot_image.Blend(Cutter, ICON_MULTIPLY, y = (-1 * pilot_lift))
-
-				var/image/Pilot = image(pilot_image)
-
-				Pilot.pixel_y = pilot_lift
-
-				add_overlay(Pilot)
+			appearance.pixel_y = pilot_lift
+			add_overlay(pilot_appearance)
 		else
-			pilot_image = null
+			pilot_appearance = null
 
 	if(face_state && !face_overlay)
 		face_overlay = new(src.icon, icon_state = face_state)
@@ -62,4 +60,3 @@
 
 	for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
 		ME.add_equip_overlay(src)
-	return

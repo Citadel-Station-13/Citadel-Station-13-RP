@@ -43,6 +43,12 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	return GLOB.inventory_slot_meta[id]
 
 /**
+ * returns inventory slot render key for an id
+ */
+/proc/resolve_inventory_slot_render_key(datum/inventory_slot_meta/id)
+	return resolve_inventory_slot_meta(id)?.render_key
+
+/**
  * get inventory slot meta of a typepath
  */
 /proc/inventory_slot_type_lookup(type)
