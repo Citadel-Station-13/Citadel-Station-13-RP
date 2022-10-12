@@ -47,7 +47,7 @@
 				cutting_image.pixel_y = -pilot_lift
 				pilot_appearance.overlays += cutting_image
 
-			appearance.pixel_y = pilot_lift
+			pilot_appearance.pixel_y = pilot_lift
 			add_overlay(pilot_appearance)
 		else
 			pilot_appearance = null
