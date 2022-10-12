@@ -36,13 +36,20 @@
 		if(occupant && !istype(occupant, /mob/living/carbon/brain))
 			pilot_appearance = new
 			pilot_appearance.appearance = occupant
+			pilot_appearance.plane = plane
+			pilot_appearance.layer = FLOAT_LAYER
+			// sue me
+			pilot_appearance.appearance_flags |= KEEP_TOGETHER | KEEP_APART
 
 			var/icon/Cutter
 			if("[initial_icon]_cutter" in icon_states(icon))
 				Cutter = new(src.icon, "[initial_icon]_cutter")
 
 			if(Cutter)
-				pilot_appearance.filters += filter(type = "alpha", icon = Cutter)
+				var/mutable_appearance/cutter_appearance = mutable_appearance(Cutter, layer = FLOAT_LAYER)
+				cutter_appearance.blend_mode = BLEND_MULTIPLY
+				cutter_appearance.pixel_y = -pilot_lift
+				pilot_appearance.overlays += cutter_appearance
 
 			pilot_appearance.pixel_y = pilot_lift
 
