@@ -302,6 +302,9 @@
 
 	// start generating
 	if(!A.overlays.len && !A.underlays.len)
+		// we don't even have ourselves!
+		if(none)
+			return BLANK
 		// no overlays/underlays, we're done, just mix in ourselves
 		var/icon/self_icon = icon(icon(icon, state, ourdir), "", SOUTH, no_anim? 1 : null)
 		if(A.alpha < 255)
