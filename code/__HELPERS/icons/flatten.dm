@@ -249,7 +249,7 @@
 		dir = I.dir
 	return getFlatIcon_new_actual(appearancelike, dir, no_anim)
 
-/proc/getFlatIcon_new_actual(appearance/A, defdir, no_anim)
+/proc/getFlatIcon_new_actual(appearance/A, defdir, no_anim, deficon)
 	// start with blank image
 	var/static/icon/template = icon('icons/system/blank_32x32.dmi', "")
 
@@ -274,7 +274,7 @@
 		return BLANK
 
 	// detect if state exists
-	var/icon/icon = A.icon
+	var/icon/icon = A.icon || deficon
 	var/state = A.icon_state
 	var/none = !icon
 	if(!none)
@@ -282,7 +282,7 @@
 		if(!(state in states))
 			if(!("" in states))
 				none = TRUE
-			else
+			elsem
 				state = ""
 
 	// determine if there's directionals
@@ -401,7 +401,7 @@
 		else
 			// use full getflaticon
 			blend_mode = copying.blend_mode
-			adding = getFlatIcon_new_actual(copying, defdir, no_anim)
+			adding = getFlatIcon_new_actual(copying, defdir, no_anim, icon)
 
 		// if we got nothing, skip
 		if(!adding)
