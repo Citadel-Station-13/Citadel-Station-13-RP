@@ -24588,7 +24588,7 @@
 /area/rnd/outpost/xenobiology/outpost_storage)
 "pPL" = (
 /obj/structure/toilet{
-	desc = "A cheap knockoff of the HT-42069 HEPHAESTUS 'Tactical' Toilet, it's durasteel applique armor poorly mimicked with slabs of porcelain, the flush buttons magnesium. It's a nice toilet, but the engravings serve no tactical advantage whatsoever.";
+	desc = "A cheap knockoff of the HT-42069 HEPHAESTUS 'Tactical' Toilet, its durasteel applique armor poorly mimicked with slabs of porcelain, the flush buttons magnesium. It's a nice toilet, but the engravings serve no tactical advantage whatsoever.";
 	dir = 1;
 	name = "TACTICOOL TOILET";
 	pixel_y = -2
