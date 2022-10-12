@@ -117,7 +117,7 @@
 	set category = "Object"
 
 	if(shoes_under_pants == -1)
-		to_chat(usr, "<span class='notice'>\The [src] cannot be worn above your suit!</span>")
+		to_chat(usr, SPAN_NOTICE("\The [src] cannot be worn under your pants"))
 		return
 	shoes_under_pants = !shoes_under_pants
 	update_icon()

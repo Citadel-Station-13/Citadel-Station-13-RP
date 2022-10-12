@@ -481,7 +481,6 @@
 /obj/item/card/id/medical/sar
 	assignment = "Field Medic"
 	rank = "Field Medic"
-	icon_state = "cyan"
 	primary_color = rgb(47,189,189)
 	secondary_color = rgb(127,223,223)
 	job_access_type = /datum/job/station/field_medic
@@ -489,7 +488,6 @@
 /obj/item/card/id/explorer
 	name = "identification card"
 	desc = "A card issued to station exploration staff."
-	icon_state = "cyan"
 	primary_color = rgb(47,189,189)
 	secondary_color = rgb(127,223,223)
 
@@ -506,7 +504,6 @@
 /obj/item/card/id/explorer/head
 	name = "identification card"
 	desc = "A card which represents discovery of the unknown."
-	icon_state = "cyanGold"
 	primary_color = rgb(47,189,189)
 	secondary_color = rgb(127,223,223)
 

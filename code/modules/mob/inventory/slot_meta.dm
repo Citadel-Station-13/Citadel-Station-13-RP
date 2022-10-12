@@ -198,10 +198,10 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/index = 1
 	if(istype(equipped, /obj/item/clothing/shoes))
 		var/obj/item/clothing/shoes/S = equipped
-		index = S.shoes_under_pants? 2 : 1
+		index = (S.shoes_under_pants == 1)? 2 : 1
 	else if(istype(equipped, /obj/item/storage/belt))
 		var/obj/item/storage/belt/B = equipped
-		index = B.show_above_suit? 2 : 1
+		index = (B.show_above_suit == 1)? 2 : 1
 	return render_layer[clamp(index, 1, length(render_layer))]
 
 /datum/inventory_slot_meta/inventory

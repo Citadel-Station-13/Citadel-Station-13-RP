@@ -57,9 +57,9 @@
 /// promethean bodytype
 #define BODYTYPE_PROMETHEAN			(1<<12)
 /// highlander zorren
-#define BODYTYPE_ZORREN_HIGH	(1<<13)
+#define BODYTYPE_ZORREN_HIGH		(1<<13)
 /// flatlander zorren
-#define BODYTYPE_ZORREN_FLAT	(1<<14)
+#define BODYTYPE_ZORREN_FLAT		(1<<14)
 /// zaddat
 #define BODYTYPE_ZADDAT				(1<<15)
 /// phoronoid

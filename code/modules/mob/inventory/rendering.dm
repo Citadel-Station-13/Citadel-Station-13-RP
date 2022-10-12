@@ -343,9 +343,9 @@
 			// attempt 2 - convert to default if specified to convert
 			resolved = slot_meta.resolve_default_assets(BODYTYPE_DEFAULT, data[WORN_DATA_STATE], M, src, inhand_default_type)
 		if(resolved)
-			data[WORN_DATA_ICON] = resolved[WORN_DATA_ICON]
-			data[WORN_DATA_SIZE_X] = resolved[WORN_DATA_STATE]
-			data[WORN_DATA_SIZE_Y] = resolved[WORN_DATA_LAYER]
+			data[WORN_DATA_ICON] = resolved[1]
+			data[WORN_DATA_SIZE_X] = resolved[2]
+			data[WORN_DATA_SIZE_Y] = resolved[3]
 
 	//* Now, the actual intended render system.
 	if(!data[WORN_DATA_ICON])
