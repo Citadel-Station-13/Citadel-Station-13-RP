@@ -17,7 +17,7 @@
 	/// path to deepmaint template
 	var/datum/map_template/submap/deepmaint/template
 	/// which way to rotate the map
-	var/orientation = NORTH
+	var/orientation = SOUTH
 	/// index in the generation - 1 = we are the first room to be placed, etc
 	var/index
 	/// did we spawn yet

@@ -52,6 +52,7 @@
 	var/list/datum/deepmaint_room/rooms_totality = host.blackboard["rooms"]
 
 	// step 1: seed rooms
+	#warn use the common algorithm
 	var/list/datum/deepmaint_room/rooms = seed(host, from, markers, templates)
 
 	// step 2: triangulation, create graph

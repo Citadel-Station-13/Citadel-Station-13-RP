@@ -34,14 +34,62 @@
 	var/mid_x = (x_min + x_max) * 0.5
 	var/mid_y = (y_min + y_max) * 0.5
 
-	var/datum/geometry/point/p1 = new(x_mid - 2 * max_d, y_mid - max_d)
-	var/datum/geometry/point/p2 = new(x_mid, y_mid + 2 * max_d)
-	var/datum/geometry/point/p3 = new(x_mid + 2 * max_d, y_mid - max_d)
+	var/datum/geometry/point/p1 = new(mid_x - 2 * max_d, mid_y - max_d)
+	var/datum/geometry/point/p2 = new(mid_x, mid_y + 2 * max_d)
+	var/datum/geometry/point/p3 = new(mid_x + 2 * max_d, mid_y - max_d)
 	p1.algorithm_metadata = vertex_amount + 1
 	p2.algorithm_metadata = vertex_amount + 2
-	p3.algorithm_metadata = veretx_amount + 3
+	p3.algorithm_metadata = vertex_amount + 3
 	vertices += p1
 	vertices += p2
 	vertices += p3
+
+	var/list/datum/geometry/triangle/triangles = list()
+	triangles += new /datum/geometry/triangle(p1, p2, p3)
+
+	for(var/i in 1 to vertex_amount)
+		var/list/datum/geometry/edge/edges = list()
+		var/triangle_amount = length(triangles)
+
+		for(var/j in triangles.len to 1 step -1)
+			var/datum/geometry/triangle/T = triangles[j]
+/*
+			if curTriangle:inCircumCircle(vertices[i]) then
+				edges[#edges + 1] = curTriangle.e1
+				edges[#edges + 1] = curTriangle.e2
+				edges[#edges + 1] = curTriangle.e3
+				remove(triangles, j)
+			end
+		end
+
+		for(var/j in edges.len to 1 step -1)
+			for(var/k in edges.len to j + 1 step -1)
+				if(edges[k].equals(edges[j]))
+		for j = #edges - 1, 1, -1 do
+			for k = #edges, j + 1, -1 do
+				if edges[j] and edges[k] and edges[j]:same(edges[k]) then
+					remove(edges, j)
+					remove(edges, k-1)
+				end
+			end
+		end
+
+		for(var/j in 1 to edges.len)
+			var/triangle_amount_2 = triangles.len
+			ASSERT(triangle_amount_2 <= trmax)
+			triangles += new /datum/geometry/triangle(edges[j].a, edges[j].b, vertices[i])
+
+	for(var/datum/geometry/triangle/T as anything in triangles)
+		if(T.a.algorithm_metadata > vertex_amount || T.b.algorithm_metadata > vertex_amount || T.c.algorithm_metadata > vertex_amount)
+			triangles -= T
+
+	vertices.len -= 3
+
+
+
+*/
+
+	// now that triangles are set, generate graph
+	#warn LMAO GRAPHGEN
 
 #warn finish

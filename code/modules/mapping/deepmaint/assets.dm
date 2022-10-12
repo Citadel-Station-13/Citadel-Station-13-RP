@@ -153,6 +153,7 @@ GLOBAL_VAR(deepmaint_current_exterior_floor)
 	if(var_name == NAMEOF(src, id))
 		SSmapping.add_deepmaint_marker(src, id)
 
+/*
 /**
  * deepmaint generation directive: less danger towards this area
  */
@@ -191,16 +192,21 @@ GLOBAL_VAR(deepmaint_current_exterior_floor)
 
 /**
  * deepmaint generation directive: attepmt to use this as an entrance connector
- * this can be put in entrance templates.
  */
 /obj/landmark/deepmaint_marker/generation/entrance
 	icon_state = "entrance"
+*/
 
 /**
  * forcefully place a room here
  */
 /obj/landmark/deepmaint_marker/generation/force_room
 	icon_state = "room"
-	
+
 	/// room submap id to place
 	var/room_id
+	/// centered?
+	var/room_centered = FALSE
+	/// room orientation
+	var/room_orientation = SOUTH
+

@@ -1,5 +1,5 @@
 /// mutex to prevent more than one from generating at once
-GLOBAL_VAR(deepmaint_generating)
+GLOBAL_VAR_INIT(deepmaint_generating, FALSE)
 
 /obj/landmark/deepmaint_root/proc/_lock_for_generation()
 	while(GLOB.deepmaint_generating != src)

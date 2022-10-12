@@ -1,3 +1,11 @@
+/**
+ * core of geometry: the point
+ *
+ * if data is specified, data will be carried through on cloning of any object with this point
+ *
+ * data is basically never considered for geometry; it's only there to be helpful for
+ * algorithms where converting to/from points can be annoying otherwise.
+ */
 /datum/geometry/point
 	var/x
 	var/y
@@ -9,23 +17,17 @@
 	src.y = y
 	src.data
 
-/datum/geometry/point/proc/dist(datum/geometry/point/p)
-	return sqrt((p.x - x) ** 2 + (p.y - y) ** 2
+/datum/geometry/point/equals(datum/geometry/point/other)
+	return x == other.x && y == other.y
 
-/datum/geometry/point/proc/dist2(datum/geometry/point/p)
+/datum/geometry/point/volume()
+	return 0
+
+/datum/geometry/point/clone()
+	return new /datum/geometry/point(x, y, data)
+
+/datum/geometry/point/proc/dist_point(datum/geometry/point/p)
+	return sqrt((p.x - x) ** 2 + (p.y - y) ** 2)
+
+/datum/geometry/point/proc/dist2_point(datum/geometry/point/p)
 	return (p.x - x) ** 2 + (p.y - y) ** 2
-
-/datum/geometry/point/proc/in_circle(x, y, r)
-	if(istype(x, /datum/geometry/circle))
-		var/datum/geometry/circle/C = x
-		x = C.x
-		y = C.y
-		r = C.r
-
-	return ((x - src.x) ** 2 + (y - src.y) ** 2) <= r ** 2
-
-/datum/geometry/point/proc/circle_center_dist(datum/geometry/circle/c)
-	return sqrt((x - c.x) ** 2 + (y - c.y) ** 2)
-
-/datum/geometry/point/proc/circle_edge_dist(datum/geometry/circle/c)
-	return sqrt((x - c.x) ** 2 + (y - c.y) ** 2) - c.r
