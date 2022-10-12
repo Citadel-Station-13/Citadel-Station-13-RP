@@ -65,7 +65,8 @@
 		return ..()
 
 /obj/item/storage/laundry_basket/dropped(mob/user, flags, atom/newLoc)
-	QDEL_NULL(linked)
+	if(use_to_pickup)	// sigh refactor this shit when
+		QDEL_NULL(linked)
 	return ..()
 
 /obj/item/storage/laundry_basket/show_to(mob/user as mob)
