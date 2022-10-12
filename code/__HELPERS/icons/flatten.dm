@@ -247,9 +247,9 @@
 	if(!dir && isloc(appearancelike))
 		var/image/I = appearancelike		// just cast it
 		dir = I.dir
-	return getFlatIcon_new_actual(appearancelike, dir, no_anim)
+	return getFlatIcon_new_actual(appearancelike, dir, no_anim, null, TRUE)
 
-/proc/getFlatIcon_new_actual(appearance/A, defdir, no_anim, deficon)
+/proc/getFlatIcon_new_actual(image/A, defdir, no_anim, deficon, start)
 	// start with blank image
 	var/static/icon/template = icon('icons/system/blank_32x32.dmi', "")
 
@@ -282,22 +282,25 @@
 		if(!(state in states))
 			if(!("" in states))
 				none = TRUE
-			elsem
+			else
 				state = ""
 
 	// determine if there's directionals
-	var/dir = defdir
-	if(!none && defdir != SOUTH)
+	// propagate forced direcitons down if and only if A has a direction
+	// todo: this results in a mismatch if someone is facing east but their overlays are facing south.
+	var/dir = start? defdir : (((A.dir != SOUTH) && A.dir) || defdir)
+	var/ourdir = dir
+	if(!none && ourdir != SOUTH)
 		if(length(icon_states(icon(icon, state, NORTH))))
 		else if(length(icon_states(icon(icon, state, EAST))))
 		else if(length(icon_states(icon(icon ,state, WEST))))
 		else
-			dir = SOUTH
+			ourdir = SOUTH
 
 	// start generating
 	if(!A.overlays.len && !A.underlays.len)
 		// no overlays/underlays, we're done, just mix in ourselves
-		var/icon/self_icon = icon(icon(icon, state, dir), "", SOUTH, no_anim? 1 : null)
+		var/icon/self_icon = icon(icon(icon, state, ourdir), "", SOUTH, no_anim? 1 : null)
 		if(A.alpha < 255)
 			self_icon.Blend(rgb(255, 255, 255, A.alpha), ICON_MULTIPLY)
 		if(A.color)
@@ -324,7 +327,7 @@
 
 	if(!none)
 		// add the atom itself
-		self = image(icon = icon, icon_state = state, layer = A.layer, dir = dir)
+		self = image(icon = icon, icon_state = state, layer = A.layer, dir = ourdir)
 		self.color = A.color
 		self.alpha = A.alpha
 		self.blend_mode = A.blend_mode
@@ -347,7 +350,7 @@
 			++current_layer
 
 		// inject with insertion sort
-		for(i in 1 to gathered)
+		for(i in 1 to gathered.len)
 			comparing = gathered[i]
 			if(current_layer < gathered[comparing])
 				gathered.Insert(i, copying)
@@ -393,7 +396,7 @@
 			continue
 
 		// detect if it's literally ourselves
-		if(adding == self)
+		if(copying == self)
 			// blend in normally (no sense doing otherwise unless we're on map)
 			// we can't assume we're on map.
 			blend_mode = BLEND_OVERLAY
@@ -401,7 +404,7 @@
 		else
 			// use full getflaticon
 			blend_mode = copying.blend_mode
-			adding = getFlatIcon_new_actual(copying, defdir, no_anim, icon)
+			adding = getFlatIcon_new_actual(copying, dir, no_anim, icon)
 
 		// if we got nothing, skip
 		if(!adding)
