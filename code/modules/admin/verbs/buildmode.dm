@@ -6,7 +6,7 @@
 			log_admin("[key_name(usr)] has left build mode.")
 			M.client.buildmode = 0
 			M.client.show_popup_menus = 1
-			for(var/obj/effect/bmode/buildholder/H)
+			for(var/obj/effect/bmode/buildholder/H in GLOB.buildholders)
 				if(H.cl == M.client)
 					qdel(H)
 		else
@@ -151,6 +151,8 @@
 	togglebuildmode(master.cl.mob)
 	return 1
 
+GLOBAL_LIST_EMPTY(buildholders)
+
 /obj/effect/bmode/buildholder
 	density = 0
 	anchored = 1
@@ -162,7 +164,12 @@
 	var/atom/movable/throw_atom = null
 	var/list/selected_mobs = list()
 
+/obj/effect/bmode/buildholder/New()
+	GLOB.buildholders += src
+	return ..()
+
 /obj/effect/bmode/buildholder/Destroy()
+	GLOB.buildholders -= src
 	qdel(builddir)
 	builddir = null
 	qdel(buildhelp)
@@ -185,7 +192,6 @@
 /obj/effect/bmode/buildholder/proc/deselect_AI_mob(client/C, mob/living/unit)
 	selected_mobs -= unit
 	C.images -= unit.selected_image
-
 
 /obj/effect/bmode/buildmode
 	icon_state = "buildmode1"
@@ -295,7 +301,7 @@
 
 /proc/build_click(var/mob/user, buildmode, params, var/obj/object)
 	var/obj/effect/bmode/buildholder/holder = null
-	for(var/obj/effect/bmode/buildholder/H)
+	for(var/obj/effect/bmode/buildholder/H in GLOB.buildholders)
 		if(H.cl == user.client)
 			holder = H
 			break

@@ -86,3 +86,12 @@
 2022-10-10:
   jakeramsay007:
   - bugfix: Fixes borg alt-click to show objects on a turf
+2022-10-11:
+  Captain277:
+  - rscadd: Adds chlorine gas grenade.
+  - tweak: Tweaks edge blending.
+  CharlesWedge:
+  - bugfix: Toxins Medibot Now Uses Right Skin name
+  Zandario:
+  - bugfix: You'll no longer be "a a gynoid" / "an a android"
+  - refactor: Species examine text is de-duplicated.
