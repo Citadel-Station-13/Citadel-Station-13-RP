@@ -15,7 +15,7 @@
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "pump"
 
-	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_SUPPLY|CONNECT_TYPE_SCRUBBER|CONNECT_TYPE_FUEL|CONNECT_TYPE_AUX
+	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_AUX
 
 	use_power = USE_POWER_OFF
 	//Internal circuitry, friction losses and stuff
