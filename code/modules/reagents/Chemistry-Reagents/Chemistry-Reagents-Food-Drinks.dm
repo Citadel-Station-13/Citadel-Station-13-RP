@@ -4217,7 +4217,7 @@ End Citadel Change */
 	strength = 20
 	blood_content = 2
 
-	glass_name = "Vampire's Delight"
+	glass_name = "Night's Delight"
 	glass_desc = "A nighttime vigilante and a bloodsucking parasite could bond over a drink like this."
 
 /datum/reagent/ethanol/bludsfizz

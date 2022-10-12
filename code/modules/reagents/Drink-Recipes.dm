@@ -1735,21 +1735,21 @@
 	name = "Blud's Fizz"
 	id = "bludsfizz"
 	result = "bludsfizz"
-	required_reagents = list("champagne" = 1 "orange" = 1, "blud" = 1)
+	required_reagents = list("champagne" = 1, "orangejuice" = 1, "blud" = 1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/wronghat
 	name = "Wrong Hat"
 	id = "wronghat"
 	result = "wronghat"
-	required_reagents = list("wine" = 1, "blud" = 1=)
+	required_reagents = list("wine" = 1, "blud" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/drinks/braindrain
 	name = "Brain Drain"
 	id = "braindrain"
-	result = "braindran"
-	required_reagents = list("blud" = 1, "vodka" = 1, "kalhua" = 1)
+	result = "braindrain"
+	required_reagents = list("blud" = 1, "vodka" = 1, "kahlua" = 1)
 	result_amount = 3\
 
 //Blood-based Cocktails

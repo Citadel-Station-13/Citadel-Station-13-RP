@@ -990,3 +990,18 @@ Drinks Data
 
 /datum/reagent/ethanol/coquito
 	glass_icon_state = "coconut"
+
+/datum/reagent/ethanol/bludsfizz
+	glass_icon_state = "blud_orange"
+
+/datum/reagent/ethanol/nightsdelight
+	glass_icon_state = "nightsdelight"
+
+/datum/reagent/ethanol/wronghat
+	glass_icon_state = "wronghat"
+
+/datum/reagent/ethanol/braindrain
+	glass_icon_state = "braindrain"
+
+/datum/reagent/ethanol/holygrail
+	glass_icon_state = "holygrail"
