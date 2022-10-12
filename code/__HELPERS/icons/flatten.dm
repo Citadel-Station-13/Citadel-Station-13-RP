@@ -287,7 +287,11 @@
 	// determine if there's directionals
 	// propagate forced direcitons down if and only if A has a direction
 	// todo: this results in a mismatch if someone is facing east but their overlays are facing south.
-	var/dir = start? defdir : (((A.dir != SOUTH) && A.dir) || defdir)
+	var/dir
+	if(start || !A.dir)
+		dir = defdir
+	else
+		dir = A.dir
 	var/ourdir = dir
 	if(!none && ourdir != SOUTH)
 		if(length(icon_states(icon(icon, state, NORTH))))
@@ -399,11 +403,11 @@
 			// blend in normally (no sense doing otherwise unless we're on map)
 			// we can't assume we're on map.
 			blend_mode = BLEND_OVERLAY
-			adding = icon(icon, state, dir)
+			adding = icon(icon, state, ourdir)
 		else
 			// use full getflaticon
 			blend_mode = copying.blend_mode
-			adding = getFlatIcon_new_actual(copying, dir, no_anim, icon)
+			adding = getFlatIcon_new_actual(copying, defdir, no_anim, icon)
 
 		// if we got nothing, skip
 		if(!adding)
