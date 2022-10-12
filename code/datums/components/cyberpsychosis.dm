@@ -176,6 +176,8 @@ Initial Design Goals (X = Complete, / = WIP):
 				to_chat(H, "<span class='danger'>The screeching pain of your cybernetics is unending. It drowns you.</span>")
 			if(8) //Cruelty Squad direct quote here. Bit of an easter egg.
 				to_chat(H, "<span class='danger'>A point in the horizon, a melting scene from your childhood. Your mortality is showing. A frantic drift towards nothing, biology doomed to an infinite recursive loop. Teeth with teeth with teeth. Take a bite. Serene scent of a coastal town, warmth of the sun. Bitter tears. Lust for power. This is where you abandoned your dreams. You are a high net worth individual, an expanding vortex of pathetic trauma. Finally a beautiful fucking nerve ape. A pure soul is born, its neurotransactions stutter into being. 30583750937509353 operations per nanosecond. Beauty eludes your porous mind.</span>")
+			if(9)
+				to_chat(H, "<span class='danger'>An image of a fractal parrot renders over your vision. Something about it draws you in, crushing, spinning. A black hole. Glory unending. You taste meat between your synapses. You cannot think. You are falling into the Parrot.</span>")
 	else if(capacity < 10) //This is the most critical level. On top of stacking everything above, this should be pretty critical in some way.
 		var/modifier_to_add = /datum/modifier/berserk
 		var/berserk_length = 30 SECONDS
