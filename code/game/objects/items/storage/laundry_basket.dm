@@ -20,7 +20,6 @@
 	collection_mode = 1
 	var/linked
 
-
 /obj/item/storage/laundry_basket/attack_hand(mob/living/user as mob)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -43,6 +42,8 @@
 
 /obj/item/storage/laundry_basket/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
+	if(!use_to_pickup)
+		return		// DON'T FUCKING INFINITELY RECURSE
 	var/obj/item/storage/laundry_basket/offhand/O = new(user)
 	O.name = "[name] - second hand"
 	O.desc = "Your second grip on the [name]."
@@ -74,6 +75,7 @@
 
 
 //Offhand
+// TODO: REFACTOR THIS SHIT
 /obj/item/storage/laundry_basket/offhand
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "offhand"
@@ -83,4 +85,3 @@
 /obj/item/storage/laundry_basket/offhand/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	user.drop_item_to_ground(linked)
-
