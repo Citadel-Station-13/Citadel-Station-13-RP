@@ -6714,9 +6714,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
-"eDR" = (
-/turf/simulated/mineral/icerock/lythios43c,
-/area/maintenance/engineering/upper)
 "eEi" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -16102,10 +16099,6 @@
 	},
 /turf/simulated/floor/lino,
 /area/tether/surfacebase/entertainment/backstage)
-"kNZ" = (
-/obj/structure/catwalk,
-/turf/space/basic,
-/area/engineering/engine_eva)
 "kOT" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/medical,
@@ -50598,7 +50591,7 @@ teV
 xcD
 bwN
 bwN
-kNZ
+bwN
 woJ
 aeZ
 oXj
@@ -53142,7 +53135,7 @@ ygX
 rZY
 rZY
 rZY
-eDR
+hgE
 hgE
 hgE
 hgE
@@ -53333,7 +53326,7 @@ rZY
 rZY
 rZY
 rZY
-eDR
+hgE
 hgE
 hgE
 hgE
