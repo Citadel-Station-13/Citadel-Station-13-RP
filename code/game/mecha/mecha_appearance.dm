@@ -42,12 +42,10 @@
 				Cutter = new(src.icon, "[initial_icon]_cutter")
 
 			if(Cutter)
-				var/image/cutting_image = image(Cutter)
-				cutting_image.blend_mode = BLEND_MULTIPLY
-				cutting_image.pixel_y = -pilot_lift
-				pilot_appearance.overlays += cutting_image
+				pilot_appearance.filters += filter(type = "alpha", icon = Cutter)
 
 			pilot_appearance.pixel_y = pilot_lift
+
 			add_overlay(pilot_appearance)
 		else
 			pilot_appearance = null
