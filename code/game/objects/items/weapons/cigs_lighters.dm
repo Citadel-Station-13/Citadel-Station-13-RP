@@ -266,7 +266,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	throw_speed = 0.5
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS | SLOT_MASK
-	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER
+	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_ALLOW_DEFAULT
 	attack_verb = list("burnt", "singed")
 	type_butt = /obj/item/cigbutt
 	chem_volume = 15

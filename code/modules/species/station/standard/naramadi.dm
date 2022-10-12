@@ -1,6 +1,7 @@
 /datum/species/naramadi
 	name = SPECIES_SERGAL
 	name_plural = "Naramadi"
+	default_bodytype = BODYTYPE_SERGAL
 	icobase = 'icons/mob/species/naramadi/body.dmi'
 	deform = 'icons/mob/species/naramadi/deformed_body.dmi'
 	tail = "tail"
