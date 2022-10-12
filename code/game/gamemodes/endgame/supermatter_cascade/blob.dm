@@ -93,8 +93,6 @@
 		"<span class=\"warning\">Everything suddenly goes silent.</span>")
 
 	playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
-
-	user.drop_from_inventory(W)
 	Consume(W)
 
 
@@ -110,12 +108,11 @@
 		"<span class=\"warning\">You hear a loud crack as you are washed with a wave of heat.</span>")
 
 	playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
-
 	Consume(AM)
 
 
-/turf/unsimulated/wall/supermatter/proc/Consume(var/mob/living/user)
-	if(istype(user,/mob/observer))
+/turf/unsimulated/wall/supermatter/proc/Consume(atom/movable/AM)
+	if((!isobj(AM) && !ismob(AM)) || isobserver(AM))
 		return
 
-	qdel(user)
+	qdel(AM)

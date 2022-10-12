@@ -194,6 +194,12 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /proc/log_href(text)
 	WRITE_LOG(GLOB.world_href_log, "HREF: [text]")
 
+/proc/log_sql(text)
+	WRITE_LOG(GLOB.sql_error_log, "SQL: [text]")
+
+/proc/log_query_debug(text)
+	// does nothing right now, sorry
+
 /proc/log_qdel(text)
 	WRITE_LOG(GLOB.world_qdel_log, "QDEL: [text]")
 

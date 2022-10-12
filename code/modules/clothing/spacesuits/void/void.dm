@@ -104,60 +104,53 @@
 		return
 
 	if(boots)
-		if (H.equip_to_slot_if_possible(boots, slot_shoes))
+		if (H.equip_to_slot_if_possible(boots, SLOT_ID_SHOES))
 			to_chat(M, "Your suit's magboots deploy with a click.")
-			boots.canremove = 0
+			ADD_TRAIT(boots, TRAIT_NODROP, TOGGLE_CLOTHING_TRAIT)
 
 	if(helmet)
 		if(H.head)
 			to_chat(M, "You are unable to deploy your suit's helmet as \the [H.head] is in the way.")
-		else if (H.equip_to_slot_if_possible(helmet, slot_head))
+		else if (H.equip_to_slot_if_possible(helmet, SLOT_ID_HEAD))
 			to_chat(M, "Your suit's helmet deploys with a hiss.")
-			helmet.canremove = 0
+			ADD_TRAIT(helmet, TRAIT_NODROP, TOGGLE_CLOTHING_TRAIT)
 
 	if(tank)
 		if(H.s_store) //In case someone finds a way.
 			to_chat(M, "Alarmingly, the valve on your suit's installed tank fails to engage.")
-		else if (H.equip_to_slot_if_possible(tank, slot_s_store))
+		else if (H.equip_to_slot_if_possible(tank, SLOT_ID_SUIT_STORAGE))
 			to_chat(M, "The valve on your suit's installed tank safely engages.")
-			tank.canremove = 0
+			ADD_TRAIT(tank, TRAIT_NODROP, TOGGLE_CLOTHING_TRAIT)
 
 	if(cooler)
 		if(H.s_store) //Ditto
 			to_chat(M, "Alarmingly, the cooling unit installed into your suit fails to deploy.")
-		else if (H.equip_to_slot_if_possible(cooler, slot_s_store))
+		else if (H.equip_to_slot_if_possible(cooler, SLOT_ID_SUIT_STORAGE))
 			to_chat(M, "Your suit's cooling unit deploys.")
-			cooler.canremove = 0
+			ADD_TRAIT(cooler, TRAIT_NODROP, TOGGLE_CLOTHING_TRAIT)
 
-
-/obj/item/clothing/suit/space/void/dropped()
-	..()
-
-	var/mob/living/carbon/human/H
+/obj/item/clothing/suit/space/void/unequipped(mob/user, slot, flags)
+	. = ..()
 
 	if(helmet)
-		helmet.canremove = 1
-		H = helmet.loc
-		if(istype(H))
-			if(helmet && H.head == helmet)
-				H.drop_from_inventory(helmet)
-				helmet.forceMove(src)
+		REMOVE_TRAIT(helmet, TRAIT_NODROP, TOGGLE_CLOTHING_TRAIT)
+		if(helmet.loc != src)
+			helmet.forceMove(src)
 
 	if(boots)
-		boots.canremove = 1
-		H = boots.loc
-		if(istype(H))
-			if(boots && H.shoes == boots)
-				H.drop_from_inventory(boots)
-				boots.forceMove(src)
+		REMOVE_TRAIT(boots, TRAIT_NODROP, TOGGLE_CLOTHING_TRAIT)
+		if(boots.loc != src)
+			boots.forceMove(src)
 
 	if(tank)
-		tank.canremove = 1
-		tank.forceMove(src)
+		REMOVE_TRAIT(tank, TRAIT_NODROP, TOGGLE_CLOTHING_TRAIT)
+		if(tank.loc != src)
+			tank.forceMove(src)
 
 	if(cooler)
-		cooler.canremove = 1
-		cooler.forceMove(src)
+		REMOVE_TRAIT(cooler, TRAIT_NODROP, TOGGLE_CLOTHING_TRAIT)
+		if(cooler.loc != src)
+			cooler.forceMove(src)
 
 /obj/item/clothing/suit/space/void/verb/toggle_helmet()
 
@@ -183,16 +176,14 @@
 	if(H.head == helmet)
 		to_chat(H, "<span class='notice'>You retract your suit helmet.</span>")
 		playsound(src, 'sound/items/helmetdeploy.ogg', 40, 1)
-		helmet.canremove = 1
-		H.drop_from_inventory(helmet)
 		helmet.forceMove(src)
+		REMOVE_TRAIT(helmet, TRAIT_NODROP, TOGGLE_CLOTHING_TRAIT)
 	else
 		if(H.head)
 			to_chat(H, "<span class='danger'>You cannot deploy your helmet while wearing \the [H.head].</span>")
 			return
-		if(H.equip_to_slot_if_possible(helmet, slot_head))
-			helmet.pickup(H)
-			helmet.canremove = 0
+		if(H.equip_to_slot_if_possible(helmet, SLOT_ID_HEAD))
+			ADD_TRAIT(helmet, TRAIT_NODROP, TOGGLE_CLOTHING_TRAIT)
 			to_chat(H, "<span class='info'>You deploy your suit helmet, sealing you off from the world.</span>")
 			playsound(src, 'sound/items/helmetdeploy.ogg', 40, 1)
 	helmet.update_light(H)
@@ -220,13 +211,11 @@
 
 	if(H.shoes == boots)
 		to_chat(H, "<span class='notice'>You retract your magboots.</span>")
-		boots.canremove = 1
-		H.drop_from_inventory(boots)
+		REMOVE_TRAIT(boots, TRAIT_NODROP, TOGGLE_CLOTHING_TRAIT)
 		boots.forceMove(src)
 	else
-		if(H.equip_to_slot_if_possible(boots, slot_shoes))
-			boots.pickup(H)
-			boots.canremove = 0
+		if(H.equip_to_slot_if_possible(boots, SLOT_ID_SHOES))
+			ADD_TRAIT(boots, TRAIT_NODROP, TOGGLE_CLOTHING_TRAIT)
 			to_chat(H, "<span class='info'>You deploy your magboots.</span>")
 
 // below is code for the action button method. im dumb. but it works? if you figure out a way to make it better tell me // hey peesh i made it better -hatter
@@ -248,9 +237,12 @@
 
 	var/mob/living/carbon/human/H = usr
 
-	if(!istype(H)) return
-	if(H.stat) return
-	if(H.wear_suit != src) return
+	if(!istype(H))
+		return
+	if(H.stat)
+		return
+	if(H.wear_suit != src)
+		return
 
 	var/obj/item/removing = null
 	if(tank)
@@ -260,8 +252,8 @@
 		removing = cooler
 		cooler = null
 	to_chat(H, "<span class='info'>You press the emergency release, ejecting \the [removing] from your suit.</span>")
-	removing.canremove = 1
-	H.drop_from_inventory(removing)
+	REMOVE_TRAIT(removing, TRAIT_NODROP, TOGGLE_CLOTHING_TRAIT)
+	removing.forceMove(drop_location())
 
 /obj/item/clothing/suit/space/void/attackby(obj/item/W as obj, mob/user as mob)
 
@@ -270,7 +262,7 @@
 	if(istype(W,/obj/item/clothing/accessory) || istype(W, /obj/item/hand_labeler))
 		return ..()
 
-	if(user.get_inventory_slot(src) == slot_wear_suit)
+	if(is_being_worn())
 		to_chat(user, "<span class='warning'>You cannot modify \the [src] while it is being worn.</span>")
 		return
 
@@ -282,21 +274,25 @@
 			if(choice == tank)	//No, a switch doesn't work here. Sorry. ~Techhead
 				to_chat(user, "You pop \the [tank] out of \the [src]'s storage compartment.")
 				tank.forceMove(get_turf(src))
+				tank.clothing_flags &= ~EQUIP_IGNORE_DELIMB
 				playsound(src, W.usesound, 50, 1)
 				src.tank = null
 			else if(choice == cooler)
 				to_chat(user, "You pop \the [cooler] out of \the [src]'s storage compartment.")
 				cooler.forceMove(get_turf(src))
+				cooler.clothing_flags &= ~EQUIP_IGNORE_DELIMB
 				playsound(src, W.usesound, 50, 1)
 				src.cooler = null
 			else if(choice == helmet)
 				to_chat(user, "You detach \the [helmet] from \the [src]'s helmet mount.")
 				helmet.forceMove(get_turf(src))
+				helmet.clothing_flags &= ~EQUIP_IGNORE_DELIMB
 				playsound(src, W.usesound, 50, 1)
 				src.helmet = null
 			else if(choice == boots)
 				to_chat(user, "You detach \the [boots] from \the [src]'s boot mounts.")
 				boots.forceMove(get_turf(src))
+				boots.clothing_flags &= ~EQUIP_IGNORE_DELIMB
 				playsound(src, W.usesound, 50, 1)
 				src.boots = null
 		else
@@ -305,20 +301,18 @@
 	else if(istype(W,/obj/item/clothing/head/helmet/space))
 		if(helmet)
 			to_chat(user, "\The [src] already has a helmet installed.")
-		else
+		else if(user.attempt_insert_item_for_installation(W, src))
 			to_chat(user, "You attach \the [W] to \the [src]'s helmet mount.")
-			user.drop_item()
-			W.forceMove(src)
-			src.helmet = W
+			helmet = W
+			helmet.clothing_flags |= EQUIP_IGNORE_DELIMB
 		return
 	else if(istype(W,/obj/item/clothing/shoes/magboots))
 		if(boots)
 			to_chat(user, "\The [src] already has magboots installed.")
-		else
+		else if(user.attempt_insert_item_for_installation(W, src))
 			to_chat(user, "You attach \the [W] to \the [src]'s boot mounts.")
-			user.drop_item()
-			W.forceMove(src)
 			boots = W
+			boots.clothing_flags |= EQUIP_IGNORE_DELIMB
 		return
 	else if(istype(W,/obj/item/tank))
 		if(tank)
@@ -327,22 +321,20 @@
 			to_chat(user, "\The [src]'s suit cooling unit is in the way.  Remove it first.")
 		else if(istype(W,/obj/item/tank/phoron))
 			to_chat(user, "\The [W] cannot be inserted into \the [src]'s storage compartment.")
-		else
+		else if(user.attempt_insert_item_for_installation(W, src))
 			to_chat(user, "You insert \the [W] into \the [src]'s storage compartment.")
-			user.drop_item()
-			W.forceMove(src)
 			tank = W
+			tank.clothing_flags |= EQUIP_IGNORE_DELIMB
 		return
 	else if(istype(W,/obj/item/suit_cooling_unit))
 		if(cooler)
 			to_chat(user, "\The [src] already has a suit cooling unit installed.")
 		else if(tank)
 			to_chat(user, "\The [src]'s airtank is in the way.  Remove it first.")
-		else
+		else if(user.attempt_insert_item_for_installation(W, src))
 			to_chat(user, "You insert \the [W] into \the [src]'s storage compartment.")
-			user.drop_item()
-			W.forceMove(src)
 			cooler = W
+			cooler.clothing_flags |= EQUIP_IGNORE_DELIMB
 		return
 
 	..()

@@ -91,29 +91,15 @@ var/global/photo_count = 0
 	item_state = "briefcase"
 	can_hold = list(/obj/item/photo)
 
-/obj/item/storage/photo_album/MouseDrop(obj/over_object as obj)
-
+/obj/item/storage/photo_album/OnMouseDropLegacy(obj/over_object as obj)
 	if((istype(usr, /mob/living/carbon/human)))
-		var/mob/living/carbon/human/M = usr
 		if(!( istype(over_object, /atom/movable/screen) ))
 			return ..()
 		playsound(loc, "rustle", 50, 1, -5)
-		if((!( M.restrained() ) && !( M.stat ) && M.back == src))
-			switch(over_object.name)
-				if("r_hand")
-					M.unEquip(src)
-					M.put_in_r_hand(src)
-				if("l_hand")
-					M.unEquip(src)
-					M.put_in_l_hand(src)
-			add_fingerprint(usr)
-			return
 		if(over_object == usr && in_range(src, usr) || usr.contents.Find(src))
 			if(usr.s_active)
 				usr.s_active.close(usr)
 			show_to(usr)
-			return
-	return
 
 /*********
 * camera *
@@ -160,9 +146,9 @@ var/global/photo_count = 0
 		if(pictures_left)
 			to_chat(user, "<span class='notice'>[src] still has some film in it!</span>")
 			return
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
-		user.drop_item()
-		qdel(I)
 		pictures_left = pictures_max
 		return
 	..()
@@ -306,7 +292,7 @@ var/global/photo_count = 0
 
 /obj/item/camera/proc/printpicture(mob/user, obj/item/photo/p)
 	p.loc = user.loc
-	if(!user.get_inactive_hand())
+	if(!user.get_inactive_held_item())
 		user.put_in_inactive_hand(p)
 
 /obj/item/photo/proc/copy(var/copy_id = 0)

@@ -289,9 +289,11 @@
 		to_chat(user,"<span class='notice'>There is already a reagent container inside.</span>")
 		return
 
+	if(!user.attempt_insert_item_for_installation(I, src))
+		return
+
 	//The current beaker is the one we just attached, its location is inside the circuit
 	current_beaker = I
-	user.transferItemToLoc(I,src)
 
 	to_chat(user,"<span class='warning'>You put the [I.name] inside the beaker connector.</span>")
 

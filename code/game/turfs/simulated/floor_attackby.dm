@@ -151,7 +151,7 @@
 /turf/simulated/floor/proc/try_replace_tile(obj/item/stack/tile/T as obj, mob/user as mob)
 	if(T.type == flooring.build_type)
 		return
-	var/obj/item/W = user.is_holding_item_of_type(/obj/item)
+	var/obj/item/W = user.get_inactive_held_item()
 	if(!try_deconstruct_tile(W, user))
 		return
 	if(flooring)

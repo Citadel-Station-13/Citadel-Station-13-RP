@@ -323,14 +323,11 @@
 		"<span class='[class]'>You hold \the [P] up to \the [src], burning it slowly.</span>")
 
 		spawn(20)
-			if(get_dist(src, user) < 2 && user.get_active_hand() == P && P.lit)
+			if(get_dist(src, user) < 2 && user.get_active_held_item() == P && P.lit)
 				user.visible_message("<span class='[class]'>[user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>", \
 				"<span class='[class]'>You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>")
-
-				if(user.get_inactive_hand() == src)
-					user.drop_from_inventory(src)
-
-				new /obj/effect/decal/cleanable/ash(src.loc)
+				forceMove(drop_location())
+				new /obj/effect/debris/cleanable/ash(src.loc)
 				qdel(src)
 
 			else
@@ -355,14 +352,14 @@
 		if(!t)
 			return
 
-		var/obj/item/i = usr.get_active_hand() // Check to see if he still got that darn pen, also check if he's using a crayon or pen.
+		var/obj/item/i = usr.get_active_held_item() // Check to see if he still got that darn pen, also check if he's using a crayon or pen.
 		var/iscrayon = 0
 		if(!istype(i, /obj/item/pen))
 			var/mob/living/M = usr
 			if(istype(M) && M.back && istype(M.back,/obj/item/rig))
 				var/obj/item/rig/r = M.back
 				var/obj/item/rig_module/device/pen/m = locate(/obj/item/rig_module/device/pen) in r.installed_modules
-				if(!r.offline && m)
+				if(r.is_online() && m)
 					i = m.device
 				else
 					return
@@ -413,12 +410,9 @@
 		update_icon()
 
 /obj/item/paper/get_worn_icon_state(var/slot_id)
-	if(slot_id == /datum/inventory_slot_meta/inventory/head)
+	if(slot_id == SLOT_ID_HEAD)
 		return "paper" //Gross, but required for now.
 	return ..()
-
-/obj/item/paper/attackby(obj/item/P as obj, mob/user as mob)
-	. = ..()
 
 /obj/item/paper/attackby(obj/item/P as obj, mob/user as mob)
 	..()
@@ -438,42 +432,20 @@
 				to_chat(user, "<span class='notice'>Take off the carbon copy first.</span>")
 				add_fingerprint(user)
 				return
-		var/obj/item/paper_bundle/B = new(src.loc)
+		var/old_slot = worn_slot
+		if(!user.attempt_void_item_for_installation(P))
+			return
+		var/obj/item/paper_bundle/B = new(loc)
 		if (name != "paper")
 			B.name = name
 		else if (P.name != "paper" && P.name != "photo")
 			B.name = P.name
-		user.drop_from_inventory(P)
-		if (istype(user, /mob/living/carbon/human))
-			var/mob/living/carbon/human/h_user = user
-			if (h_user.r_hand == src)
-				h_user.drop_from_inventory(src)
-				h_user.put_in_r_hand(B)
-			else if (h_user.l_hand == src)
-				h_user.drop_from_inventory(src)
-				h_user.put_in_l_hand(B)
-			else if (h_user.l_store == src)
-				h_user.drop_from_inventory(src)
-				B.loc = h_user
-				B.hud_layerise()
-				h_user.l_store = B
-				//h_user.update_inv_pockets() //Doesn't do anything
-			else if (h_user.r_store == src)
-				h_user.drop_from_inventory(src)
-				B.loc = h_user
-				B.hud_layerise()
-				h_user.r_store = B
-				//h_user.update_inv_pockets() //Doesn't do anything
-			else if (h_user.head == src)
-				h_user.u_equip(src)
-				h_user.put_in_hands(B)
-			else if (!istype(src.loc, /turf))
-				src.loc = get_turf(h_user)
-				if(h_user.client)	h_user.client.screen -= src
-				h_user.put_in_hands(B)
+		if(!(old_slot? (user.equip_to_slot_if_possible(B, old_slot)) : (user.put_in_hands(B))))
+			B.forceMove(get_turf(src))
+
 		to_chat(user, "<span class='notice'>You clip the [P.name] to [(src.name == "paper") ? "the paper" : src.name].</span>")
-		src.loc = B
-		P.loc = B
+		forceMove(B)
+		P.forceMove(B)
 
 		B.pages.Add(src)
 		B.pages.Add(P)
@@ -492,7 +464,7 @@
 		return
 
 	else if(istype(P, /obj/item/stamp) || istype(P, /obj/item/clothing/gloves/ring/seal))
-		if((!in_range(src, usr) && loc != user && !( istype(loc, /obj/item/clipboard) ) && loc.loc != user && user.get_active_hand() != P))
+		if((!in_range(src, usr) && loc != user && !( istype(loc, /obj/item/clipboard) ) && loc.loc != user && user.get_active_held_item() != P))
 			return
 		playsound(P, pick(stamp_sounds), 30, 1, -1)
 

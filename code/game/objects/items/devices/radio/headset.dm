@@ -76,9 +76,9 @@
 	var/append = ""
 	if(icon_override)
 		switch(slot_id)
-			if(/datum/inventory_slot_meta/inventory/ears/left)
+			if(SLOT_ID_LEFT_EAR)
 				append = "_l"
-			if(/datum/inventory_slot_meta/inventory/ears/right)
+			if(SLOT_ID_RIGHT_EAR)
 				append = "_r"
 
 	return "[..()][append]"
@@ -400,22 +400,14 @@
 		if(keyslot1 && keyslot2)
 			to_chat(user, "The headset can't hold another key!")
 			return
-
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		if(!keyslot1)
-			user.drop_item()
-			W.loc = src
 			keyslot1 = W
-
 		else
-			user.drop_item()
-			W.loc = src
 			keyslot2 = W
 
-
 		recalculateChannels()
-
-	return
-
 
 /obj/item/radio/headset/recalculateChannels(var/setDescription = 0)
 	src.channels = list()

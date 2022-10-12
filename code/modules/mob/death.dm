@@ -25,7 +25,7 @@
 //This is the proc for turning a mob into ash. Mostly a copy of gib code (above).
 //Originally created for wizard disintegrate. I've removed the virus code since it's irrelevant here.
 //Dusting robots does not eject the MMI, so it's a bit more powerful than gib() /N
-/mob/proc/dust(anim="dust-m",remains=/obj/effect/decal/cleanable/ash)
+/mob/proc/dust(anim="dust-m",remains=/obj/effect/debris/cleanable/ash)
 	death(1)
 	var/atom/movable/overlay/animation = null
 	transforming = 1
@@ -81,9 +81,6 @@
 
 	see_in_dark = 8
 	see_invisible = SEE_INVISIBLE_LEVEL_TWO
-
-	drop_r_hand()
-	drop_l_hand()
 
 	if(healths)
 		healths.overlays = null // This is specific to humans but the relevant code is here; shouldn't mess with other mobs.

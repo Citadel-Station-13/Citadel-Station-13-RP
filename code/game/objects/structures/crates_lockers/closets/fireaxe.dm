@@ -62,14 +62,12 @@
 		return
 	if (istype(O, /obj/item/material/twohanded/fireaxe) && src.localopened)
 		if(!fireaxe)
-			if(O:wielded)
-				O:wielded = 0
-				O.update_icon()
-				//to_chat(user, "<span class='warning'>Unwield the axe first.</span>")
-				//return
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
 			fireaxe = O
-			user.remove_from_mob(O)
-			src.contents += O
+			if(fireaxe.wielded)
+				fireaxe.wielded = FALSE
+				fireaxe.update_icon()
 			to_chat(user, "<span class='notice'>You place the fire axe back in the [src.name].</span>")
 			update_icon()
 		else

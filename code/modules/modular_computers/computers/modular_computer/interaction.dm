@@ -131,9 +131,9 @@
 		if(card_slot.stored_card)
 			to_chat(user, "You try to insert \the [I] into \the [src], but it's ID card slot is occupied.")
 			return
-		user.drop_from_inventory(I)
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		card_slot.stored_card = I
-		I.forceMove(src)
 		update_uis()
 		to_chat(user, "You insert \the [I] into \the [src].")
 		return

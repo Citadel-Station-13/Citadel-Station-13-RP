@@ -17,7 +17,7 @@
 		slot_l_hand_str = 'icons/mob/items/lefthand_vr.dmi',
 		slot_r_hand_str = 'icons/mob/items/righthand_vr.dmi',
 	)
-	flags = NOBLUDGEON
+	item_flags = NOBLUDGEON
 	force = 10
 	throwforce = 10
 	throw_speed = 1
@@ -92,14 +92,14 @@
 	. = ..()
 	. += "You can scroll your mouse wheel to change the piping layer."
 
-/obj/item/pipe_dispenser/equipped(mob/user, slot, initial)
+/obj/item/pipe_dispenser/equipped(mob/user, slot, flags)
 	. = ..()
-	if(slot == slot_r_hand || slot_l_hand)
+	if(slot == SLOT_ID_HANDS)
 		RegisterSignal(user, COMSIG_MOUSE_SCROLL_ON, .proc/mouse_wheeled)
 	else
 		UnregisterSignal(user, COMSIG_MOUSE_SCROLL_ON)
 
-/obj/item/pipe_dispenser/dropped(mob/user)
+/obj/item/pipe_dispenser/unequipped(mob/user, slot, flags)
 	UnregisterSignal(user, COMSIG_MOUSE_SCROLL_ON)
 	return ..()
 

@@ -415,21 +415,10 @@
 			return
 
 		// If the item is in mob's inventory, try to remove it from there.
+			// No. this is not going to work out since mob code would need to shift can equip/unequip to atom level. ~silicons
 		if(ismob(A.loc))
-			var/mob/living/M = A.loc
-			if(A.current_equipped_slot && M.canUnEquip(A))
-				visible_message(SPAN_DANGER("\The [src] is trying to remove \the [M]'s [A.name]!"))
-				do_atom(src, M, HUMAN_STRIP_DELAY)
-				if(!check_target(A, exclude_components = TRUE))
-					activate_pin(3)
-					return
-				add_attack_logs("IC Assembly",src,"Removed equipment from slot [A]")
-				M.unEquip(A)
-				activate_pin(2)
-				return TRUE
-			if(!M.unEquip(A))
-				activate_pin(3)
-				return
+			activate_pin(3)
+			return FALSE
 
 		// If the item is in a grabber circuit we'll update the grabber's outputs after we've thrown it.
 		var/obj/item/integrated_circuit/manipulation/grabber/G = A.loc
@@ -853,10 +842,10 @@
 		if(installed_gun)
 			to_chat(user, "<span class='warning'>There's already a weapon installed.</span>")
 			return
-		user.drop_from_inventory(gun)
+		if(!user.attempt_insert_item_for_installation(gun, src))
+			return
 		installed_gun = gun
 		size += gun.w_class
-		gun.forceMove(src)
 		to_chat(user, "<span class='notice'>You slide \the [gun] into the firing mechanism.</span>")
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
 	else
@@ -864,7 +853,7 @@
 
 /obj/item/integrated_circuit/manipulation/weapon_firing/attack_self(var/mob/user)
 	if(installed_gun)
-		installed_gun.forceMove(get_turf(src))
+		user.put_in_hands_or_drop(installed_gun)
 		to_chat(user, "<span class='notice'>You slide \the [installed_gun] out of the firing mechanism.</span>")
 		size = initial(size)
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
@@ -957,22 +946,26 @@
 
 /obj/item/integrated_circuit/manipulation/grenade/attackby_react(var/obj/item/grenade/G, var/mob/user)
 	if(istype(G))
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(attached_grenade)
 			to_chat(user, "<span class='warning'>There is already a grenade attached!</span>")
-		else if(user.unEquip(G, force=1))
+		else
+			if(!user.attempt_insert_item_for_installation(G, src))
+				return
 			user.visible_message("<span class='warning'>\The [user] attaches \a [G] to \the [src]!</span>", "<span class='notice'>You attach \the [G] to \the [src].</span>")
 			attach_grenade(G)
-			G.forceMove(src)
+		return
 	else
-		..()
+		return ..()
 
 /obj/item/integrated_circuit/manipulation/grenade/attack_self(var/mob/user)
 	if(attached_grenade)
 		user.visible_message("<span class='warning'>\The [user] removes \an [attached_grenade] from \the [src]!</span>", "<span class='notice'>You remove \the [attached_grenade] from \the [src].</span>")
-		user.put_in_any_hand_if_possible(attached_grenade) || attached_grenade.dropInto(loc)
+		user.put_in_hands(attached_grenade) || attached_grenade.dropInto(loc)
 		detach_grenade()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	else
-		..()
+		return ..()
 
 /obj/item/integrated_circuit/manipulation/grenade/do_work()
 	if(attached_grenade && !attached_grenade.active)

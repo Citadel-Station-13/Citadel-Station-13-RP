@@ -5,21 +5,23 @@
 		"short",
 		"of average height",
 		"tall",
-		"very tall"
-		)
+		"very tall",
+	)
+
 	comparative_value_descriptor_equivalent = "around the same height as you"
 	comparative_value_descriptors_smaller = list(
 		"slightly shorter than you",
 		"shorter than you",
 		"much shorter than you",
-		"tiny and insignificant next to you"
-		)
+		"tiny and insignificant next to you",
+	)
+
 	comparative_value_descriptors_larger = list(
 		"slightly taller than you",
 		"taller than you",
 		"much taller than you",
-		"towering over you"
-		)
+		"towering over you",
+	)
 
 /datum/mob_descriptor/build
 	name = "build"
@@ -29,17 +31,19 @@
 		"thin",
 		"of average build",
 		"broad-shouldered",
-		"heavily built"
-		)
+		"heavily built",
+	)
+
 	comparative_value_descriptors_smaller = list(
 		"a bit smaller in build than you",
 		"smaller in build than you",
 		"much smaller in build than you",
-		"dwarfed by your height"
-		)
+		"dwarfed by your height",
+	)
+
 	comparative_value_descriptors_larger = list(
 		"slightly larger than you in build",
 		"built larger than you",
 		"built much larger than you",
-		"dwarfing you"
-		)
+		"dwarfing you",
+	)

@@ -74,7 +74,7 @@
 	if(user.incapacitated() || user.stat > CONSCIOUS)
 		return
 
-	var/obj/item/reagent_containers/container = user.get_active_hand()
+	var/obj/item/reagent_containers/container = user.get_active_held_item()
 	if(!container)
 		to_chat(user,"<span class='notice'>You need an open container to do this!</span>")
 		return

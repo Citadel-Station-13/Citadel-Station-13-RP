@@ -34,7 +34,7 @@
 	var/kit_icon
 	var/additional_data //for modular modkits, item path; for mech modkits, allowed mechs; for voidsuit modkits, light overlays
 
-/datum/custom_item/proc/spawn_item(var/newloc)
+/datum/custom_item/proc/spawn_item(newloc)
 	var/obj/item/citem = new item_path(newloc)
 	apply_to_item(citem)
 	return citem
@@ -224,15 +224,16 @@
 
 // Places the item on the target mob.
 /proc/place_custom_item(mob/living/carbon/human/M, var/datum/custom_item/citem)
+	if(!citem)
+		return
 
-	if(!citem) return
-	var/obj/item/newitem = citem.spawn_item()
+	var/obj/item/newitem = citem.spawn_item(M)
 
-	if(M.equip_to_appropriate_slot(newitem))
+	if(M.equip_to_appropriate_slot(newitem, INV_OP_SILENT))
 		return newitem
 
-	if(M.equip_to_storage(newitem))
+	if(M.equip_to_slot_if_possible(newitem, /datum/inventory_slot_meta/abstract/put_in_storage, INV_OP_SILENT))
 		return newitem
 
-	newitem.loc = get_turf(M.loc)
+	newitem.forceMove(M.drop_location())
 	return newitem

@@ -7,4 +7,7 @@
 }\
 ##Path/CanProcCall(procname){\
     return FALSE;\
+}\
+##Path/can_vv_mark(){\
+	return FALSE;\
 }

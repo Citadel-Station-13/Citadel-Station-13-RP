@@ -422,7 +422,7 @@
 	s.set_up(3, 1, src)
 	s.start()
 
-	new /obj/effect/decal/cleanable/blood/oil(Tsec)
+	new /obj/effect/debris/cleanable/blood/oil(Tsec)
 	qdel(src)
 
 /mob/living/bot/secbot/proc/target_name(mob/living/T)
@@ -457,9 +457,8 @@
 	if(S.secured)
 		qdel(S)
 		var/obj/item/secbot_assembly/A = new /obj/item/secbot_assembly
-		user.put_in_hands(A)
+		user.put_in_hands_or_drop(A)
 		to_chat(user, "You add the signaler to the helmet.")
-		user.drop_from_inventory(src)
 		qdel(src)
 	else
 		return
@@ -487,23 +486,24 @@
 			to_chat(user, "You weld a hole in \the [src].")
 
 	else if(isprox(W) && (build_step == 1))
-		user.drop_item()
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		build_step = 2
 		to_chat(user, "You add \the [W] to [src].")
 		overlays += image('icons/obj/aibots.dmi', "hs_eye")
 		name = "helmet/signaler/prox sensor assembly"
-		qdel(W)
 
 	else if((istype(W, /obj/item/robot_parts/l_arm) || istype(W, /obj/item/robot_parts/r_arm) || (istype(W, /obj/item/organ/external/arm) && ((W.name == "robotic right arm") || (W.name == "robotic left arm")))) && build_step == 2)
-		user.drop_item()
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		build_step = 3
 		to_chat(user, "You add \the [W] to [src].")
 		name = "helmet/signaler/prox sensor/robot arm assembly"
 		overlays += image('icons/obj/aibots.dmi', "hs_arm")
-		qdel(W)
 
 	else if(istype(W, /obj/item/melee/baton) && build_step == 3)
-		user.drop_item()
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		to_chat(user, "You complete the Securitron! Beep boop.")
 		if(istype(W, /obj/item/melee/baton/slime))
 			var/mob/living/bot/secbot/slime/S = new /mob/living/bot/secbot/slime(get_turf(src))
@@ -511,7 +511,6 @@
 		else
 			var/mob/living/bot/secbot/S = new /mob/living/bot/secbot(get_turf(src))
 			S.name = created_name
-		qdel(W)
 		qdel(src)
 
 	else if(istype(W, /obj/item/pen))

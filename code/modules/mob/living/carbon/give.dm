@@ -8,9 +8,9 @@
 	if(!istype(target) || target.stat || target.lying || target.resting || target.handcuffed || target.client == null)
 		return
 
-	var/obj/item/I = src.get_active_hand()
+	var/obj/item/I = src.get_active_held_item()
 	if(!I)
-		I = src.get_inactive_hand()
+		I = src.get_inactive_held_item()
 	if(!I)
 		to_chat(src, "<span class='warning'>You don't have anything in your hands to give to \the [target].</span>")
 		return
@@ -27,18 +27,18 @@
 		to_chat(target, "<span class='warning'>\The [src] moved too far away.</span>")
 		return
 
-	if(I.loc != src || !src.item_is_in_hands(I))
+	if(I.loc != src || !is_holding(I))
 		to_chat(src, "<span class='warning'>You need to keep the item in your hands.</span>")
 		to_chat(target, "<span class='warning'>\The [src] seems to have given up on passing \the [I] to you.</span>")
 		return
 
-	if(target.hands_are_full())
+	if(target.hands_full())
 		to_chat(target, "<span class='warning'>Your hands are full.</span>")
 		to_chat(src, "<span class='warning'>Their hands are full.</span>")
 		return
 
-	if(src.unEquip(I))
-		target.put_in_hands(I) // If this fails it will just end up on the floor, but that's fitting for things like dionaea.
+	if(transfer_item_to_loc(I, target))
+		target.put_in_hands_or_drop(I) // If this fails it will just end up on the floor, but that's fitting for things like dionaea.
 		target.visible_message("<span class='notice'>\The [src] handed \the [I] to \the [target].</span>")
 
 /mob/living/carbon/human/proc/valid_give_mobs()

@@ -25,6 +25,15 @@
 		if(NAMEOF(src, base_pixel_y))
 			set_base_pixel_y(var_value)
 			. = TRUE
+		if(NAMEOF(src, contents))
+			var/list/O = contents
+			var/list/N = var_value
+			for(var/atom/movable/AM in O - N)
+				// these go away
+				AM.moveToNullspace()
+			for(var/atom/movable/AM in N - O)
+				// these go in
+				AM.forceMove(src)
 
 	if(!isnull(.))
 		datum_flags |= DF_VAR_EDITED

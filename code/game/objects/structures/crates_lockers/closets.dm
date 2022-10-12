@@ -259,7 +259,7 @@
 	if(src.opened)
 		if(istype(W, /obj/item/grab))
 			var/obj/item/grab/G = W
-			src.MouseDrop_T(G.affecting, user)      //act like they were dragged onto the closet
+			src.MouseDroppedOn(G.affecting, user)      //act like they were dragged onto the closet
 			return 0
 		if(istype(W,/obj/item/tk_grab))
 			return 0
@@ -290,9 +290,8 @@
 			return
 		if(W.loc != user) // This should stop mounted modules ending up outside the module.
 			return
-		usr.drop_item()
-		if(W)
-			W.forceMove(src.loc)
+		if(!user.attempt_insert_item_for_installation(W, opened? loc : src))
+			return
 	else if(istype(W, /obj/item/packageWrap))
 		return
 	else if(istype(W, /obj/item/extraction_pack)) //so fulton extracts dont open closets
@@ -332,7 +331,7 @@
 		src.attack_hand(user)
 	return
 
-/obj/structure/closet/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
+/obj/structure/closet/MouseDroppedOnLegacy(atom/movable/O as mob|obj, mob/user as mob)
 	if(istype(O, /atom/movable/screen))	//fix for HUD elements making their way into the world	-Pete
 		return
 	if(O.loc == user)
@@ -458,6 +457,7 @@
 		visible_message(SPAN_DANGER("\The [escapee] successfully broke out of \the [src]!"))
 		playsound(src.loc, breakout_sound, 100, 1)
 		animate_shake()
+		break_open()
 
 /obj/structure/closet/proc/break_open()
 	sealed = 0
@@ -478,7 +478,7 @@
 	return
 
 /obj/structure/closet/AllowDrop()
-	return TRUE
+	return !opened
 
 /obj/structure/closet/return_air_for_internal_lifeform(var/mob/living/L)
 	if(src.loc)

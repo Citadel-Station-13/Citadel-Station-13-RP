@@ -161,10 +161,10 @@ obj/structure/windoor_assembly/Destroy()
 				user.visible_message("[user] installs the electronics into the airlock assembly.", "You start to install electronics into the airlock assembly.")
 
 				if(do_after(user, 40))
-					if(!src) return
-
-					user.drop_item()
-					W.loc = src
+					if(!src)
+						return
+					if(!user.attempt_insert_item_for_installation(W, src))
+						return
 					to_chat(user,"<span class='notice'>You've installed the airlock electronics!</span>")
 					step = 2
 					src.electronics = W

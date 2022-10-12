@@ -38,6 +38,7 @@
 	return standing
 
 /obj/item/storage/update_icon()
+	. = ..()
 	if (ismob(src.loc))
 		var/mob/M = src.loc
 		M.update_inv_belt()

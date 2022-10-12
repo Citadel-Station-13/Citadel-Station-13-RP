@@ -42,7 +42,6 @@ var/global/list/weavable_items = list()
 
 /obj/effect/weaversilk/floor
 	var/possible_icon_states = list("floorweb1", "floorweb2", "floorweb3", "floorweb4", "floorweb5", "floorweb6", "floorweb7", "floorweb8")
-	plane = DIRTY_PLANE
 
 /obj/effect/weaversilk/floor/Initialize(mapload)
 	..()
@@ -118,7 +117,7 @@ var/global/list/weavable_items = list()
 
 
 
-/obj/effect/weaversilk/trap/MouseDrop_T(atom/movable/AM,mob/user)
+/obj/effect/weaversilk/trap/MouseDroppedOnLegacy(atom/movable/AM,mob/user)
 	return
 
 // Items

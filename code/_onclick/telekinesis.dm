@@ -39,13 +39,13 @@ var/const/tk_maxrange = 15
 
 /obj/item/attack_tk(mob/user)
 	if(user.stat || !isturf(loc)) return
-	if((TK in user.mutations) && !user.get_active_hand()) // both should already be true to get here
+	if((TK in user.mutations) && !user.get_active_held_item()) // both should already be true to get here
 		var/obj/item/tk_grab/O = new(src)
 		user.put_in_active_hand(O)
 		O.host = user
 		O.focus_object(src)
 	else
-		warning("Strange attack_tk(): TK([TK in user.mutations]) empty hand([!user.get_active_hand()])")
+		warning("Strange attack_tk(): TK([TK in user.mutations]) empty hand([!user.get_active_held_item()])")
 	return
 
 
@@ -65,7 +65,7 @@ var/const/tk_maxrange = 15
 	desc = "Magic"
 	icon = 'icons/obj/magic.dmi'//Needs sprites
 	icon_state = "2"
-	flags = NOBLUDGEON
+	item_flags = DROPDEL | NOBLUDGEON
 	//item_state = null
 	w_class = ITEMSIZE_NO_CONTAINER
 	layer = HUD_LAYER
@@ -74,19 +74,11 @@ var/const/tk_maxrange = 15
 	var/atom/movable/focus = null
 	var/mob/living/host = null
 
-/obj/item/tk_grab/dropped(mob/user as mob)
-	. = ..()
-	if(focus && user && loc != user && loc != user.loc) // drop_item() gets called when you tk-attack a table/closet with an item
-		if(focus.Adjacent(loc))
-			focus.forceMove(loc)
-	qdel(src)
-
 //stops TK grabs being equipped anywhere but into hands
-/obj/item/tk_grab/equipped(var/mob/user, var/slot)
-	..()
-	if( (slot == slot_l_hand) || (slot== slot_r_hand) )	return
-	qdel(src)
-	return
+/obj/item/tk_grab/equipped(mob/user, slot, accessory, creation, silent)
+	. = ..()
+	if(slot != SLOT_ID_HANDS)
+		qdel(src)
 
 /obj/item/tk_grab/attack_self(mob/user as mob)
 	if(focus)

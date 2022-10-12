@@ -59,7 +59,7 @@
 	name = "Ruined Softsuit"
 	},
 /obj/item/clothing/head/helmet/space/emergency,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/tank/emergency/oxygen,
 /obj/item/clothing/mask/breath,
 /turf/simulated/floor/outdoors/classd,
@@ -69,7 +69,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/shuttle/floor,
 /area/class_d/explored)
 

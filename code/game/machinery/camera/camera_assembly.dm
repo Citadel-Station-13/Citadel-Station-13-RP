@@ -125,10 +125,10 @@
 
 	// Upgrades!
 	if(is_type_in_list(W, possible_upgrades) && !is_type_in_list(W, upgrades)) // Is a possible upgrade and isn't in the camera already.
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		to_chat(user, "You attach \the [W] into the assembly inner circuits.")
 		upgrades += W
-		user.remove_from_mob(W)
-		W.loc = src
 		return
 
 	// Taking out upgrades
@@ -137,7 +137,7 @@
 		if(U)
 			to_chat(user, "You unattach an upgrade from the assembly.")
 			playsound(src, W.usesound, 50, 1)
-			U.loc = get_turf(src)
+			user.grab_item_from_interacted_with(U, src)
 			upgrades -= U
 		return
 

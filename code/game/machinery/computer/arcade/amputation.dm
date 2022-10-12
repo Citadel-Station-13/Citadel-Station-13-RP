@@ -18,7 +18,7 @@
 		to_chat(c_user, SPAN_USERDANGER("The guillotine drops on your arm, and the machine sucks it in!"))
 		playsound(loc, 'sound/weapons/slice.ogg', 25, TRUE, -1)
 		var/which_hand = BP_L_ARM
-		if(!(c_user.get_active_hand() % 2))
+		if(!(c_user.get_active_held_item() % 2))
 			which_hand = BP_R_ARM
 		var/obj/item/organ/external/chopchop = c_user.get_organ(which_hand)
 		chopchop.droplimb()

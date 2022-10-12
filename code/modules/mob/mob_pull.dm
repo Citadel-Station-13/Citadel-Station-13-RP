@@ -135,4 +135,4 @@
 	update_pull_hud_icon()
 
 /mob/proc/update_pull_hud_icon()
-	pullin.icon_state = pulling? "pull1" : "pull0"
+	pullin?.icon_state = pulling? "pull1" : "pull0"

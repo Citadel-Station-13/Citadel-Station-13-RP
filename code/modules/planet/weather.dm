@@ -30,6 +30,9 @@
 		old_light_modifier = current_weather.light_modifier // We store the old one, so we can determine if recalculating the sun is needed.
 		old_weather = current_weather
 	current_weather = allowed_weather_types[new_weather]
+	if(!current_weather)
+		current_weather = old_weather
+		// todo: actually unit test this because rp devs fucked it up royally and we can have unknown types!
 	next_weather_shift = world.time + rand(current_weather.timer_low_bound, current_weather.timer_high_bound) MINUTES
 	if(new_weather != old_weather)
 		if(istype(old_weather)) // At roundstart this is null.

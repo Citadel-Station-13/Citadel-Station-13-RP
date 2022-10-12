@@ -1,5 +1,5 @@
 // Stuff worn on the ears. Items here go in the "ears" sort_category but they must not use
-// the slot_r_ear or slot_l_ear as the slot, or else players will spawn with no headset.
+// the SLOT_ID_RIGHT_EAR or SLOT_ID_LEFT_EAR as the slot, or else players will spawn with no headset.
 /datum/gear/ears
 	name = "Earmuffs"
 	path = /obj/item/clothing/ears/earmuffs

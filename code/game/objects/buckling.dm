@@ -36,7 +36,7 @@
 		return attack_hand(user) //Process as if we're a normal person touching the object.
 	return ..() //Otherwise, treat this as an AI click like usual.
 
-/atom/movable/MouseDrop_T(mob/living/M, mob/living/user)
+/atom/movable/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
 	. = ..()
 	if(can_buckle && istype(M))
 		if(user_buckle_mob(M, user))

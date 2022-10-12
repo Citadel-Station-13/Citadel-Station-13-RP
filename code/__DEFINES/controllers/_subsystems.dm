@@ -4,65 +4,6 @@
 //! Lots of important stuff in here, make sure you have your brain switched on
 //! when editing this file
 
-//! ## DB defines
-/**
- * DB major schema version
- *
- * Update this whenever the db schema changes
- *
- * make sure you add an update to the schema_version stable in the db changelog
- */
-//#define DB_MAJOR_VERSION 5
-
-/**
- * DB minor schema version
- *
- * Update this whenever the db schema changes
- *
- * make sure you add an update to the schema_version stable in the db changelog
- */
-//#define DB_MINOR_VERSION 0
-
-//! ## Timing subsystem
-/**
- * Don't run if there is an identical unique timer active
- *
- * if the arguments to addtimer are the same as an existing timer, it doesn't create a new timer,
- * and returns the id of the existing timer
- */
-#define TIMER_UNIQUE			(1<<0)
-
-///For unique timers: Replace the old timer rather then not start this one
-#define TIMER_OVERRIDE			(1<<1)
-
-/**
- * Timing should be based on how timing progresses on clients, not the server.
- *
- * Tracking this is more expensive,
- * should only be used in conjuction with things that have to progress client side, such as
- * animate() or sound()
- */
-#define TIMER_CLIENT_TIME		(1<<2)
-
-///Timer can be stopped using deltimer()
-#define TIMER_STOPPABLE			(1<<3)
-
-///prevents distinguishing identical timers with the wait variable
-///
-///To be used with TIMER_UNIQUE
-#define TIMER_NO_HASH_WAIT		(1<<4)
-
-///Loops the timer repeatedly until qdeleted
-///
-///In most cases you want a subsystem instead, so don't use this unless you have a good reason
-#define TIMER_LOOP				(1<<5)
-
-///Delete the timer on parent datum Destroy() and when deltimer'd
-#define TIMER_DELETE_ME			(1<<6)
-
-///Empty ID define
-#define TIMER_ID_NULL -1
-
 //! ## Initialization subsystem
 
 ///New should not call Initialize
@@ -115,11 +56,21 @@
 var/global/list/runlevel_flags = list(RUNLEVEL_LOBBY, RUNLEVEL_SETUP, RUNLEVEL_GAME, RUNLEVEL_POSTGAME)
 /// Convert from the runlevel bitfield constants to index in runlevel_flags list
 #define RUNLEVEL_FLAG_TO_INDEX(flag) (log(2, flag) + 1)
+
+DEFINE_BITFIELD(runlevels, list(
+	BITFIELD(RUNLEVEL_INIT),
+	BITFIELD(RUNLEVEL_LOBBY),
+	BITFIELD(RUNLEVEL_SETUP),
+	BITFIELD(RUNLEVEL_GAME),
+	BITFIELD(RUNLEVEL_POSTGAME),
+))
+
 // Subsystem init_order, from highest priority to lowest priority
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
 
-#define INIT_ORDER_FAIL2TOPIC		101
+#define INIT_ORDER_FAIL2TOPIC		102
+#define INIT_ORDER_DBCORE			101
 #define INIT_ORDER_INPUT			100
 #define INIT_ORDER_SOUNDS			95
 #define INIT_ORDER_JOBS				85

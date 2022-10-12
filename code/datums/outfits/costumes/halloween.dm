@@ -28,7 +28,7 @@
 	new_briefcase.contents += new /obj/item/toy/crossbow
 	new_briefcase.contents += new /obj/item/gun/projectile/revolver/capgun
 	new_briefcase.contents += new /obj/item/clothing/mask/gas/clown_hat
-	H.equip_to_slot_or_del(new_briefcase, slot_l_hand)
+	H.put_in_hands_or_del(new_briefcase)
 
 /datum/outfit/costume/horrorcop
 	name = OUTFIT_COSTUME("Slasher Movie Cop")

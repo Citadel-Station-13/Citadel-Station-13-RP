@@ -212,9 +212,9 @@
 	magazine_type = /obj/item/ammo_magazine/m9mm/compact/flash
 
 /obj/item/gun/projectile/pistol/attack_hand(mob/living/user as mob)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		if(silenced)
-			if(!user.item_is_in_hands(src))
+			if(!user.is_holding(src))
 				..()
 				return
 			to_chat(user, "<span class='notice'>You unscrew [silenced] from [src].</span>")
@@ -227,17 +227,17 @@
 
 /obj/item/gun/projectile/pistol/attackby(obj/item/I as obj, mob/living/user as mob)
 	if(istype(I, /obj/item/silencer))
-		if(!user.item_is_in_hands(src))	//if we're not in his hands
+		if(!user.is_holding(src))	//if we're not in his hands
 			to_chat(user, "<span class='notice'>You'll need [src] in your hands to do that.</span>")
-			return
-		user.drop_item()
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return CLICKCHAIN_DO_NOT_PROPAGATE
 		to_chat(user, "<span class='notice'>You screw [I] onto [src].</span>")
 		silenced = I	//dodgy?
 		w_class = ITEMSIZE_NORMAL
-		I.loc = src		//put the silencer into the gun
 		update_icon()
-		return
-	..()
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/item/gun/projectile/pistol/update_icon_state()
 	. = ..()

@@ -80,7 +80,7 @@
 	icon_state = "[base_icon][wielded]"
 	item_state = icon_state
 
-/obj/item/material/twohanded/dropped()
+/obj/item/material/twohanded/dropped(mob/user, flags, atom/newLoc)
 	..()
 	if(wielded)
 		spawn(0)
@@ -112,7 +112,7 @@
 
 /obj/item/material/twohanded/fireaxe/update_held_icon()
 	var/mob/living/M = loc
-	if(istype(M) && M.can_wield_item(src) && M.item_is_in_hands(src) && !M.hands_are_full())
+	if(istype(M) && M.can_wield_item(src) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
 		pry = 1
 		force = force_wielded
@@ -299,7 +299,7 @@
 
 /obj/item/material/twohanded/sledgehammer/update_held_icon()
 	var/mob/living/M = loc
-	if(istype(M) && M.can_wield_item(src) && M.item_is_in_hands(src) && !M.hands_are_full())
+	if(istype(M) && M.can_wield_item(src) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
 		pry = 1
 		force = force_wielded

@@ -21,7 +21,7 @@
 			to_chat(world, "<span class='warning'>Gib list length mismatch!</span>")
 			return
 
-		var/obj/effect/decal/cleanable/blood/gibs/gib = null
+		var/obj/effect/debris/cleanable/blood/gibs/gib = null
 
 		if(sparks)
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread()

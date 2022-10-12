@@ -19,10 +19,10 @@
 
 /obj/item/syringe_cartridge/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/reagent_containers/syringe))
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		syringe = I
 		to_chat(user, "<span class='notice'>You carefully insert [syringe] into [src].</span>")
-		user.remove_from_mob(syringe)
-		syringe.loc = src
 		sharp = 1
 		name = "syringe dart"
 		update_icon()
@@ -30,8 +30,8 @@
 /obj/item/syringe_cartridge/attack_self(mob/user)
 	if(syringe)
 		to_chat(user, "<span class='notice'>You remove [syringe] from [src].</span>")
-		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
-		user.put_in_hands(syringe)
+		playsound(src, 'sound/weapons/empty.ogg', 50, 1)
+		user.grab_item_from_interacted_with(syringe, src)
 		syringe = null
 		sharp = initial(sharp)
 		name = initial(name)
@@ -103,7 +103,7 @@
 	add_fingerprint(user)
 
 /obj/item/gun/launcher/syringe/attack_hand(mob/living/user as mob)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		if(!darts.len)
 			to_chat(user, "<span class='warning'>[src] is empty.</span>")
 			return
@@ -124,8 +124,8 @@
 		if(darts.len >= max_darts)
 			to_chat(user, "<span class='warning'>[src] is full!</span>")
 			return
-		user.remove_from_mob(C)
-		C.loc = src
+		if(!user.attempt_insert_item_for_installation(C, src))
+			return
 		darts += C //add to the end
 		user.visible_message("[user] inserts \a [C] into [src].", "<span class='notice'>You insert \a [C] into [src].</span>")
 	else

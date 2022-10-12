@@ -105,7 +105,7 @@
 
 	if(!.)
 		var/has_organ = FALSE
-		var/obj/item/organ/internal/O = H.get_active_hand()
+		var/obj/item/organ/internal/O = H.get_active_held_item()
 		if(istype(O) && O.robotic < ORGAN_ROBOT && !(O.status & ORGAN_DEAD))
 			has_organ = TRUE
 		return has_organ

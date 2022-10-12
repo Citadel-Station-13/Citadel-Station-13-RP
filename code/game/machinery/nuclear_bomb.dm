@@ -85,8 +85,8 @@ var/bomb_set
 
 	if(extended)
 		if(istype(O, /obj/item/disk/nuclear))
-			usr.drop_item()
-			O.loc = src
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
 			auth = O
 			add_fingerprint(user)
 			return
@@ -239,7 +239,7 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 		if(href_list["act"])
 			var/temp_wire = href_list["wire"]
 			if(href_list["act"] == "pulse")
-				if(!istype(usr.get_active_hand(), /obj/item/multitool))
+				if(!istype(usr.get_active_held_item(), /obj/item/multitool))
 					to_chat(usr, "You need a multitool!")
 				else
 					if(wires[temp_wire])
@@ -262,7 +262,7 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 							else
 								visible_message("<span class='notice'>The [src] emits a quiet whirling noise!</span>")
 			if(href_list["act"] == "wire")
-				var/obj/item/I = usr.get_active_hand()
+				var/obj/item/I = usr.get_active_held_item()
 				if(!I.is_wirecutter())
 					to_chat(usr, "You need wirecutters!")
 				else
@@ -285,10 +285,10 @@ obj/machinery/nuclearbomb/proc/nukehack_win(mob/user as mob)
 				yes_code = 0
 				auth = null
 			else
-				var/obj/item/I = usr.get_active_hand()
+				var/obj/item/I = usr.get_active_held_item()
 				if(istype(I, /obj/item/disk/nuclear))
-					usr.drop_item()
-					I.loc = src
+					if(!usr.attempt_insert_item_for_installation(I, src))
+						return
 					auth = I
 		if(auth)
 			if(href_list["type"])

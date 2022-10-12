@@ -38,7 +38,7 @@
 
 	id_type = /obj/item/card/id/medical/chemist
 	pda_type = /obj/item/pda/chemist
-	pda_slot = slot_l_store
+	pda_slot = SLOT_ID_LEFT_POCKET
 
 	backpack = /obj/item/storage/backpack/chemistry
 	satchel_one = /obj/item/storage/backpack/satchel/chem

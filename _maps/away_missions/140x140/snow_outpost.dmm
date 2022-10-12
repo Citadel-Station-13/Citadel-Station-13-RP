@@ -1018,7 +1018,7 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/snow_outpost/dark)
 "dG" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/outside)
 "dH" = (
@@ -1209,7 +1209,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "ej" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "ek" = (
@@ -1270,7 +1270,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "et" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "eu" = (
@@ -1894,7 +1894,7 @@
 	},
 /area/awaymission/snow_outpost/dark)
 "gs" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -1912,7 +1912,7 @@
 	},
 /area/awaymission/snow_outpost/dark)
 "gv" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -1924,7 +1924,7 @@
 	},
 /area/awaymission/snow_outpost/dark)
 "gx" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /mob/living/simple_mob/animal/giant_spider/lurker,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
@@ -2533,7 +2533,7 @@
 	dir = 8
 	},
 /obj/effect/decal/remains,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/ammo_casing/spent,
 /obj/item/clothing/under/suit_jacket/really_black,
 /obj/item/clothing/shoes/dress,

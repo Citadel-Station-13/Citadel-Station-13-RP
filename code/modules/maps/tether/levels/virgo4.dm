@@ -156,29 +156,29 @@
 /area/tether_away/beach/resort/dorm1
 	name = "\improper Away Mission - Virgo 4 Private Room 1"
 	icon_state = "bluwhicir"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 /area/tether_away/beach/resort/dorm2
 	name = "\improper Away Mission - Virgo 4 Private Room 2"
 	icon_state = "bluwhicir"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 /area/tether_away/beach/resort/dorm3
 	name = "\improper Away Mission - Virgo 4 Private Room 3"
 	icon_state = "bluwhicir"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 /area/tether_away/beach/resort/dorm4
 	name = "\improper Away Mission - Virgo 4 Private Room 4"
 	icon_state = "bluwhicir"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 
 /area/tether_away/beach/cavebase
 	name = "\improper Away Mission - Virgo 4 Mysterious Cave"
 	icon = 'icons/turf/areas_vr.dmi'
 	icon_state = "orawhicir"
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 
 //Some areas for the cave, which are referenced by our init object to seed submaps and ores
 /area/tether_away/cave
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	ambience = list('sound/ambience/ambimine.ogg', 'sound/ambience/song_game.ogg')
 
 /area/tether_away/cave/explored/normal

@@ -25,8 +25,8 @@
 		return
 	if(istype(O, /obj/item/extinguisher))
 		if(!has_extinguisher && opened)
-			user.remove_from_mob(O)
-			contents += O
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
 			has_extinguisher = O
 			to_chat(user, "<span class='notice'>You place [O] in [src].</span>")
 		else

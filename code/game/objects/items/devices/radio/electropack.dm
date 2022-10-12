@@ -27,19 +27,18 @@
 		if(!b_stat)
 			to_chat(user, "<span class='notice'>[src] is not ready to be attached!</span>")
 			return
+		if(!user.attempt_void_item_for_installation(W))
+			return
+		if(!user.attempt_void_item_for_installation(src))
+			return
 		var/obj/item/assembly/shock_kit/A = new /obj/item/assembly/shock_kit( user )
 		A.icon = 'icons/obj/assemblies.dmi'
-
-		user.drop_from_inventory(W)
-		W.loc = A
+		W.forceMove(A)
 		W.master = A
 		A.part1 = W
-
-		user.drop_from_inventory(src)
-		loc = A
+		forceMove(A)
 		master = A
 		A.part2 = src
-
 		user.put_in_hands(A)
 
 /obj/item/radio/electropack/Topic(href, href_list)

@@ -34,7 +34,7 @@
 	if(!data["donor"] || istype(data["donor"], /mob/living/carbon/human))
 		blood_splatter(T, src, 1)
 	else if(istype(data["donor"], /mob/living/carbon/alien))
-		var/obj/effect/decal/cleanable/blood/B = blood_splatter(T, src, 1)
+		var/obj/effect/debris/cleanable/blood/B = blood_splatter(T, src, 1)
 		if(B)
 			B.blood_DNA["UNKNOWN DNA STRUCTURE"] = "X*"
 
@@ -235,7 +235,7 @@
 	glass_desc = "Unless you are an industrial tool, this is probably not safe for consumption."
 
 /datum/reagent/fuel/touch_turf(var/turf/T, var/amount)
-	new /obj/effect/decal/cleanable/liquid_fuel(T, amount, FALSE)
+	new /obj/effect/debris/cleanable/liquid_fuel(T, amount, FALSE)
 	remove_self(amount)
 	return
 

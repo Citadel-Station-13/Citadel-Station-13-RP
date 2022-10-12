@@ -98,10 +98,6 @@
 		icon_state = "aicard"
 
 /obj/item/aicard/proc/grab_ai(var/mob/living/silicon/ai/ai, var/mob/living/user)
-	if(!ai.client && !ai.deployed_shell)
-		to_chat(user, "<span class='danger'>ERROR:</span> AI [ai.name] is offline. Unable to transfer.")
-		return 0
-
 	if(carded_ai)
 		to_chat(user, "<span class='danger'>Transfer failed:</span> Existing AI found on remote device. Remove existing AI to install a new one.")
 		return 0
@@ -137,7 +133,8 @@
 
 		ai.canmove = 1
 		update_icon()
-	return 1
+		return TRUE
+	return FALSE
 
 /obj/item/aicard/proc/clear()
 	if(carded_ai && istype(carded_ai.loc, /turf))

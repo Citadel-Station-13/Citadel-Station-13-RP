@@ -170,7 +170,7 @@
 	display_name = "blood tomato plant"
 	mutants = list("killer")
 	chems = list("nutriment" = list(1,10), "blood" = list(1,5))
-	splat_type = /obj/effect/decal/cleanable/blood/splatter
+	splat_type = /obj/effect/debris/cleanable/blood/splatter
 
 /datum/seed/tomato/blood/New()
 	..()

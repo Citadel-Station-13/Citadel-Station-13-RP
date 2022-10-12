@@ -377,7 +377,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 				else if(H && (!isTaurTail(H.tail_style) && !H.shoes))
 					to_chat(src,"<span class='danger'>You pin [tmob] down onto the floor with your foot and curl your toes up around their body, trapping them inbetween them!</span>")
 					to_chat(tmob,"<span class='danger'>[src] pins you down to the floor with their foot and curls their toes up around your body, trapping you inbetween them!</span>")
-					equip_to_slot_if_possible(tmob.get_scooped(H), slot_shoes, 0, 1)
+					equip_to_slot_if_possible(tmob.get_scooped(H), SLOT_ID_SHOES, INV_OP_SILENT)
 					add_attack_logs(src,tmob,"Grabbed underfoot (nontaur, no shoes)")
 
 				//Human, taur, shoes = no grab, special message
@@ -392,7 +392,7 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 					var/datum/sprite_accessory/tail/taur/tail = H.tail_style
 					to_chat(src,STEP_TEXT_OWNER("<span class='danger'>[tail.msg_owner_grab_success]</span>"))
 					to_chat(tmob,STEP_TEXT_PREY("<span class='danger'>[tail.msg_prey_grab_success]</span>"))
-					equip_to_slot_if_possible(tmob.get_scooped(H), slot_shoes, 0, 1)
+					equip_to_slot_if_possible(tmob.get_scooped(H), SLOT_ID_SHOES, INV_OP_SILENT)
 					add_attack_logs(src,tmob,"Grabbed underfoot (taur, no shoes)")
 
 				//Return true, the sizediff was enough that we handled it.

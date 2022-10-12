@@ -69,7 +69,7 @@ Class Procs:
 	T.zone = src
 	contents.Add(T)
 	if(T.fire)
-		var/obj/effect/decal/cleanable/liquid_fuel/fuel = locate() in T
+		var/obj/effect/debris/cleanable/liquid_fuel/fuel = locate() in T
 		fire_tiles.Add(T)
 		air_master.active_fire_zones |= src
 		if(fuel) fuel_objs += fuel
@@ -89,7 +89,7 @@ Class Procs:
 	contents.Remove(T)
 	fire_tiles.Remove(T)
 	if(T.fire)
-		var/obj/effect/decal/cleanable/liquid_fuel/fuel = locate() in T
+		var/obj/effect/debris/cleanable/liquid_fuel/fuel = locate() in T
 		fuel_objs -= fuel
 	T.zone = null
 	T.vis_contents -= turf_graphics

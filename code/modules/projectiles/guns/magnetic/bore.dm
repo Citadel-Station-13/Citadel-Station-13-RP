@@ -49,7 +49,7 @@
 		. += image(icon, "[icon_state]_loaded")
 
 /obj/item/gun/magnetic/matfed/attack_hand(var/mob/user) // It doesn't keep a loaded item inside.
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		var/obj/item/removing
 
 		if(cell && removable_components)
@@ -60,7 +60,7 @@
 			removing.forceMove(get_turf(src))
 			user.put_in_hands(removing)
 			user.visible_message("<span class='notice'>\The [user] removes \the [removing] from \the [src].</span>")
-			playsound(loc, 'sound/machines/click.ogg', 10, 1)
+			playsound(src, 'sound/machines/click.ogg', 10, 1)
 			update_icon()
 			return
 	. = ..()
@@ -79,10 +79,10 @@
 			if(cell)
 				to_chat(user, "<span class='warning'>\The [src] already has \a [cell] installed.</span>")
 				return
+			if(!user.attempt_insert_item_for_installation(thing, src))
+				return
 			cell = thing
-			user.drop_from_inventory(cell)
-			cell.forceMove(src)
-			playsound(loc, 'sound/machines/click.ogg', 10, 1)
+			playsound(src, 'sound/machines/click.ogg', 10, 1)
 			user.visible_message("<span class='notice'>\The [user] slots \the [cell] into \the [src].</span>")
 			update_icon()
 			return
@@ -90,10 +90,9 @@
 			if(!manipulator)
 				to_chat(user, "<span class='warning'>\The [src] has no manipulator installed.</span>")
 				return
-			manipulator.forceMove(get_turf(src))
-			user.put_in_hands(manipulator)
+			user.put_in_hands_or_drop(manipulator)
 			user.visible_message("<span class='notice'>\The [user] levers \the [manipulator] from \the [src].</span>")
-			playsound(loc, 'sound/items/Crowbar.ogg', 50, 1)
+			playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
 			manipulator = null
 			update_icon()
 			return
@@ -101,10 +100,9 @@
 			if(!capacitor)
 				to_chat(user, "<span class='warning'>\The [src] has no capacitor installed.</span>")
 				return
-			capacitor.forceMove(get_turf(src))
-			user.put_in_hands(capacitor)
+			user.put_in_hands_or_drop(capacitor)
 			user.visible_message("<span class='notice'>\The [user] unscrews \the [capacitor] from \the [src].</span>")
-			playsound(loc, 'sound/items/Screwdriver.ogg', 50, 1)
+			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
 			capacitor = null
 			update_icon()
 			return
@@ -113,10 +111,10 @@
 			if(capacitor)
 				to_chat(user, "<span class='warning'>\The [src] already has \a [capacitor] installed.</span>")
 				return
+			if(!user.attempt_insert_item_for_installation(thing, src))
+				return
 			capacitor = thing
-			user.drop_from_inventory(capacitor)
-			capacitor.forceMove(src)
-			playsound(loc, 'sound/machines/click.ogg', 10, 1)
+			playsound(src, 'sound/machines/click.ogg', 10, 1)
 			power_per_tick = (power_cost*0.15) * capacitor.rating
 			user.visible_message("<span class='notice'>\The [user] slots \the [capacitor] into \the [src].</span>")
 			update_icon()
@@ -126,10 +124,10 @@
 			if(manipulator)
 				to_chat(user, "<span class='warning'>\The [src] already has \a [manipulator] installed.</span>")
 				return
+			if(!user.attempt_insert_item_for_installation(thing, src))
+				return
 			manipulator = thing
-			user.drop_from_inventory(manipulator)
-			manipulator.forceMove(src)
-			playsound(loc, 'sound/machines/click.ogg', 10,1)
+			playsound(src, 'sound/machines/click.ogg', 10,1)
 			mat_cost = initial(mat_cost) % (2*manipulator.rating)
 			user.visible_message("<span class='notice'>\The [user] slots \the [manipulator] into \the [src].</span>")
 			update_icon()
@@ -152,14 +150,14 @@
 			if(mat_storage + 2000 <= max_mat_storage && do_after(user,1.5 SECONDS))
 				can_hold_val ++
 				mat_storage += 2000
-				playsound(loc, 'sound/effects/phasein.ogg', 15, 1)
+				playsound(src, 'sound/effects/phasein.ogg', 15, 1)
 			else
 				loading = FALSE
 				break
 		M.use(can_hold_val)
 
 		user.visible_message("<span class='notice'>\The [user] loads \the [src] with \the [M].</span>")
-		playsound(loc, 'sound/weapons/flipblade.ogg', 50, 1)
+		playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
 		update_icon()
 		return
 	. = ..()

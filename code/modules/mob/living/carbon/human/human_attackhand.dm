@@ -61,45 +61,10 @@
 
 	switch(M.a_intent)
 		if(INTENT_HELP)
-
-
 			if (istype(H) && attempt_to_scoop(H))
 				return 0;
-
-			if(istype(H) && health < config_legacy.health_threshold_crit)
-				if(!H.check_has_mouth())
-					to_chat(H, "<span class='danger'>You don't have a mouth, you cannot perform CPR!</span>")
-					return
-				if(!check_has_mouth())
-					to_chat(H, "<span class='danger'>They don't have a mouth, you cannot perform CPR!</span>")
-					return
-				if((H.head && (H.head.body_parts_covered & FACE)) || (H.wear_mask && (H.wear_mask.body_parts_covered & FACE)))
-					to_chat(H, "<span class='notice'>Remove your mask!</span>")
-					return 0
-				if((head && (head.body_parts_covered & FACE)) || (wear_mask && (wear_mask.body_parts_covered & FACE)))
-					to_chat(H, "<span class='notice'>Remove [src]'s mask!</span>")
-					return 0
-
-				if (!cpr_time)
-					return 0
-
-				cpr_time = 0
-				spawn(30)
-					cpr_time = 1
-
-				H.visible_message("<span class='danger'>\The [H] is trying to perform CPR on \the [src]!</span>")
-
-				if(!do_after(H, 30))
-					return
-
-				H.visible_message("<span class='danger'>\The [H] performs CPR on \the [src]!</span>")
-				to_chat(H, "<span class='warning'>Repeat at least every 7 seconds.</span>")
-
-				if(istype(H) && health > config_legacy.health_threshold_dead)
-					adjustOxyLoss(-(min(getOxyLoss(), 5)))
-					updatehealth()
-					to_chat(src, "<span class='notice'>You feel a breath of fresh air enter your lungs. It feels good.</span>")
-
+			if(iscarbon(M) && attempt_cpr_interaction(M))
+				return TRUE
 			else if(!(M == src && apply_pressure(M, M.zone_sel.selecting)))
 				help_shake_act(M)
 			return TRUE
@@ -276,7 +241,7 @@
 				w_uniform.add_fingerprint(M)
 			var/obj/item/organ/external/affecting = get_organ(ran_zone(M.zone_sel.selecting))
 
-			var/list/holding = list(get_active_hand() = 40, get_inactive_hand = 20)
+			var/list/holding = list(get_active_held_item() = 40, get_inactive_held_item = 20)
 
 			//See if they have any guns that might go off
 			for(var/obj/item/gun/W in holding)
@@ -298,7 +263,7 @@
 			if(!(species.flags & NO_SLIP) && randn <= 25)
 				var/armor_check = run_armor_check(affecting, "melee")
 				apply_effect(3, WEAKEN, armor_check)
-				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+				playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 				if(armor_check < 60)
 					if(M.zone_sel.selecting == BP_L_LEG || M.zone_sel.selecting == BP_R_LEG || M.zone_sel.selecting == BP_L_FOOT || M.zone_sel.selecting == BP_R_FOOT)
 						visible_message("<span class='danger'>[M] has leg swept [src]!</span>")
@@ -311,18 +276,17 @@
 			if(randn <= 60)
 				//See about breaking grips or pulls
 				if(break_all_grabs(M))
-					playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+					playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 					return
 
 				//Actually disarm them
-				for(var/obj/item/I in holding)
-					if(I)
-						drop_from_inventory(I)
-						visible_message("<span class='danger'>[M] has disarmed [src]!</span>")
-						playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
-						return
+				drop_all_held_items()
 
-			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
+				visible_message("<span class='danger'>[M] has disarmed [src]!</span>")
+				playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+				return
+
+			playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 			visible_message("<font color='red'> <B>[M] attempted to disarm [src]!</B></font>")
 	return
 

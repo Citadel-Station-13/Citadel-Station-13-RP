@@ -125,11 +125,11 @@
 			else
 				user.visible_message("[user] is reloading [src].", "<span class='notice'>You start to insert [P] into [src].</span>")
 				if(do_after(user, 5 * P.w_class))
-					user.remove_from_mob(P)
+					if(!user.attempt_insert_item_for_installation(P, src))
+						return
 					power_supply = P
-					P.loc = src
 					user.visible_message("[user] inserts [P] into [src].", "<span class='notice'>You insert [P] into [src].</span>")
-					playsound(src.loc, 'sound/weapons/flipblade.ogg', 50, 1)
+					playsound(src, 'sound/weapons/flipblade.ogg', 50, 1)
 					update_icon()
 					update_held_icon()
 		else
@@ -145,7 +145,7 @@
 		power_supply.update_icon()
 		user.visible_message("[user] removes [power_supply] from [src].", "<span class='notice'>You remove [power_supply] from [src].</span>")
 		power_supply = null
-		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
+		playsound(src, 'sound/weapons/empty.ogg', 50, 1)
 		update_icon()
 		update_held_icon()
 	else
@@ -156,7 +156,7 @@
 	load_ammo(A, user)
 
 /obj/item/gun/energy/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		unload_ammo(user)
 	else
 		return ..()
@@ -196,7 +196,7 @@
 			icon_state = "[initial(icon_state)]_open"
 		return
 	else if(charge_meter)
-		var/ratio = power_supply.charge / power_supply.maxcharge
+		var/ratio = power_supply.percent() * 0.01
 
 		//make sure that rounding down will not give us the empty state even if we have charge for a shot left.
 		if(power_supply.charge < charge_cost)

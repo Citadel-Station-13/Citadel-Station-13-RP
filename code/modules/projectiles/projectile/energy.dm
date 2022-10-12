@@ -43,7 +43,7 @@
 	sparks.set_up(2, 1, T)
 	sparks.start()
 
-	new /obj/effect/decal/cleanable/ash(src.loc) //always use src.loc so that ash doesn't end up inside windows
+	new /obj/effect/debris/cleanable/ash(src.loc) //always use src.loc so that ash doesn't end up inside windows
 	new /obj/effect/particle_effect/smoke/illumination(T, 5, brightness, brightness, light_colour)
 
 //No longer blinds, and flash strength has been greatly lowered but now set's on fire.

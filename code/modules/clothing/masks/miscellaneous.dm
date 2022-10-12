@@ -53,7 +53,7 @@
 			icon_state = initial(icon_state)
 			armor = initial(armor)
 			to_chat(usr, "You pull the mask up to cover your face.")
-		update_clothing_icon()
+		update_worn_icon()
 
 /obj/item/clothing/mask/surgical/verb/toggle()
 	set category = "Object"
@@ -165,7 +165,7 @@
 
 /obj/item/clothing/mask/ai/equipped(var/mob/user, var/slot)
 	..(user, slot)
-	if(slot == slot_wear_mask)
+	if(slot == SLOT_ID_MASK)
 		eye.owner = user
 		user.eyeobj = eye
 
@@ -173,7 +173,7 @@
 			c.remove(eye)
 		eye.setLoc(user)
 
-/obj/item/clothing/mask/ai/dropped(var/mob/user)
+/obj/item/clothing/mask/ai/dropped(mob/user, flags, atom/newLoc)
 	..()
 	if(eye.owner == user)
 		for(var/datum/chunk/c in eye.visibleChunks)
@@ -211,12 +211,12 @@
 
 /obj/item/clothing/mask/bandana/equipped(var/mob/user, var/slot)
 	switch(slot)
-		if(slot_wear_mask) //Mask is the default for all the settings
+		if(SLOT_ID_MASK) //Mask is the default for all the settings
 			flags_inv = initial(flags_inv)
 			body_parts_covered = initial(body_parts_covered)
 			icon_state = initial(icon_state)
 
-		if(slot_head)
+		if(SLOT_ID_HEAD)
 			flags_inv = 0
 			body_parts_covered = HEAD
 			icon_state = "[initial(icon_state)]_up"

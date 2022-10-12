@@ -62,9 +62,9 @@
 			if(a.power_equip == 0) // There's no APC in this area, don't try to cheat power!
 				to_chat(user, SPAN_WARNING("\The [src] blinks red as you try to insert [W]!"))
 				return
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 
-			user.drop_item()
-			W.loc = src
 			charging = W
 			user.visible_message("[user] inserts [charging] into [src].", "You insert [charging] into [src].")
 			chargelevel = -1

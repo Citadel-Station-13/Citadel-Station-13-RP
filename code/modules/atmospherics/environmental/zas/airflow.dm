@@ -33,7 +33,7 @@ Contains helper procs for airflow, handled in /connection_group.
 
 /atom/movable/proc/check_airflow_movable(n)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/airflow/dense_pressure, dense_pressure)
-	if(flags & AF_ABSTRACT)
+	if(flags & ATOM_ABSTRACT)
 		return 0
 
 	if(anchored && !ismob(src))
@@ -89,7 +89,7 @@ Contains helper procs for airflow, handled in /connection_group.
 		return 0
 	if(buckled)
 		return 0
-	var/obj/item/shoes = get_equipped_item(slot_shoes)
+	var/obj/item/shoes = item_by_slot(SLOT_ID_SHOES)
 	if(istype(shoes) && (shoes.clothing_flags & NOSLIP))
 		return 0
 	return 1
@@ -159,6 +159,6 @@ Contains helper procs for airflow, handled in /connection_group.
 	. = list()
 	for(var/turf/T in contents)
 		for(var/atom/movable/A in T)
-			if((A.flags & AF_ABSTRACT) || A.anchored || istype(A, /obj/effect) || istype(A, /mob/observer))
+			if((A.flags & ATOM_ABSTRACT) || A.anchored || istype(A, /obj/effect) || istype(A, /mob/observer))
 				continue
 			. += A

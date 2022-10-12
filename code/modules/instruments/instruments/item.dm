@@ -248,7 +248,7 @@
 	. = ..()
 	RegisterSignal(M, COMSIG_MOB_SAY, .proc/handle_speech)
 
-/obj/item/instrument/harmonica/dropped(mob/M)
+/obj/item/instrument/harmonica/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	UnregisterSignal(M, COMSIG_MOB_SAY)
 */

@@ -26,8 +26,8 @@
 
 
 	if(user)
-		user.remove_from_mob(D)
-		user.remove_from_mob(D2)
+		user.temporarily_remove_from_inventory(D, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+		user.temporarily_remove_from_inventory(D2, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 
 	D.holder = src
 	D2.holder = src
@@ -37,7 +37,7 @@
 	a_right = D2
 	name = "[D.name]-[D2.name] assembly"
 	update_icon()
-	user.put_in_hands(src)
+	user.put_in_hands_or_drop(src)
 
 	return TRUE
 

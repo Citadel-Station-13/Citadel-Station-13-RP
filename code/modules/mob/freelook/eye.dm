@@ -52,6 +52,9 @@
 	return 0
 
 /mob/observer/eye/examine(mob/user)
+	return list(
+		"An eye object belonging to [owner || "no one in particular."]"
+	)
 
 // Use this when setting the eye's location.
 // It will also stream the chunk that the new loc is in.
@@ -59,7 +62,9 @@
 	if(owner)
 		T = get_turf(T)
 		if(T != loc)
+			var/old = loc
 			loc = T
+			SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, old, NONE, TRUE)
 			visualnet.visibility(src)
 			return 1
 	return 0

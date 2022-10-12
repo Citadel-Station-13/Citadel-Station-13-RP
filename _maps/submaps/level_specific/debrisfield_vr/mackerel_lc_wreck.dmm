@@ -888,11 +888,11 @@
 /turf/simulated/floor/airless,
 /area/shuttle/mackerel_lc_wreck)
 "Zb" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/airless,
 /area/shuttle/mackerel_lc_wreck)
 "Zp" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /atom/movable/spawner/corpse/vintage/pilot,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/mackerel_lc_wreck)

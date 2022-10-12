@@ -217,7 +217,7 @@ modular computers
 /datum/gear/utility/dufflebag
 	name = "Dufflebag"
 	path = /obj/item/storage/backpack/dufflebag
-	slot = slot_back
+	slot = SLOT_ID_BACK
 	cost = 2
 
 /datum/gear/utility/dufflebag/black

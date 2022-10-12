@@ -91,8 +91,8 @@
 		if(scanned_item)
 			to_chat(user, SPAN_WARNING("\The [src] already has \a [scanned_item] inside!"))
 			return
-		user.drop_item()
-		I.loc = src
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		scanned_item = I
 		to_chat(user, SPAN_NOTICE("You put \the [I] into \the [src]."))
 

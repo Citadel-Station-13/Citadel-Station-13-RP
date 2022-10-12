@@ -14,7 +14,7 @@
  *		Box of Chocolates
  */
 
-/obj/item/storage/fancy/
+/obj/item/storage/fancy
 	icon = 'icons/obj/food.dmi'
 	icon_state = "donutbox6"
 	name = "donut box"
@@ -22,10 +22,9 @@
 	drop_sound = 'sound/items/drop/cardboardbox.ogg'
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 
-/obj/item/storage/fancy/update_icon(var/itemremoved = 0)
-	var/total_contents = contents.len - itemremoved
-	icon_state = "[icon_type]box[total_contents]"
-	return
+/obj/item/storage/fancy/update_icon_state()
+	. = ..()
+	icon_state = "[icon_type]box[contents.len]"
 
 /obj/item/storage/fancy/examine(mob/user)
 	. = ..()
@@ -262,8 +261,8 @@
 	// Don't try to transfer reagents to lighters
 	if(istype(W, /obj/item/clothing/mask/smokable/cigarette))
 		var/obj/item/clothing/mask/smokable/cigarette/C = W
-		reagents.trans_to_obj(C, (reagents.total_volume/contents.len))
-	..()
+		reagents?.trans_to_obj(C, (reagents.total_volume/contents.len))
+	return ..()
 
 /obj/item/storage/fancy/cigarettes/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M, /mob))
@@ -279,13 +278,14 @@
 
 		// Instead of running equip_to_slot_if_possible() we check here first,
 		// to avoid dousing cig with reagents if we're not going to equip it
-		if(!cig.mob_can_equip(user, slot_wear_mask))
+		if(!user.can_equip(cig, SLOT_ID_MASK, user = user))
 			return
 
 		// We call remove_from_storage first to manage the reagent transfer and
 		// UI updates.
 		remove_from_storage(cig, null)
-		user.equip_to_slot(cig, slot_wear_mask)
+		if(!user.equip_to_slot_if_possible(cig, SLOT_ID_MASK, INV_OP_SUPPRESS_WARNING))
+			cig.forceMove(user.drop_location())
 
 		reagents.maximum_volume = 15 * contents.len
 		to_chat(user, "<span class='notice'>You take a cigarette out of the pack.</span>")
@@ -368,9 +368,10 @@
 
 /obj/item/storage/fancy/cigar/remove_from_storage(obj/item/W as obj, atom/new_location)
 	var/obj/item/clothing/mask/smokable/cigarette/cigar/C = W
-	if(!istype(C)) return
-	reagents.trans_to_obj(C, (reagents.total_volume/contents.len))
-	..()
+	if(!istype(C))
+		return ..()
+	reagents?.trans_to_obj(C, (reagents.total_volume/contents.len))
+	return ..()
 
 /obj/item/storage/rollingpapers
 	name = "rolling paper pack"

@@ -28,8 +28,8 @@
 
 /obj/structure/bookcase/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/book))
-		user.drop_item()
-		O.loc = src
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 		update_icon()
 	else if(istype(O, /obj/item/pen))
 		var/newname = sanitizeSafe(input("What would you like to title this bookshelf?"), MAX_NAME_LEN)
@@ -61,7 +61,7 @@
 			if(!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
 				return
 			if(ishuman(user))
-				if(!user.get_active_hand())
+				if(!user.get_active_held_item())
 					user.put_in_hands(choice)
 			else
 				choice.loc = get_turf(src)
@@ -234,12 +234,12 @@
 	else
 		to_chat(user, "This book is completely blank!")
 
-/obj/item/book/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/book/attackby(obj/item/W, mob/user)
 	if(carved)
 		if(!store)
 			if(W.w_class < ITEMSIZE_LARGE)
-				user.drop_item()
-				W.loc = src
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				store = W
 				to_chat(user, "<span class='notice'>You put [W] in [title].</span>")
 				return

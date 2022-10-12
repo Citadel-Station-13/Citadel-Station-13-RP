@@ -162,7 +162,7 @@
 					M.gib()
 				else if(istype(AM, /mob/zshadow))
 					qdel(AM)
-				else if(!(AM.flags & AF_ABSTRACT) && !(istype(AM, /mob/observer)))
+				else if(!(AM.flags & ATOM_ABSTRACT) && !(istype(AM, /mob/observer)))
 					qdel(AM)
 
 	origin.move_contents_to(destination)

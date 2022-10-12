@@ -282,12 +282,9 @@
 
 /obj/item/clothing/suit/straight_jacket/equipped(var/mob/living/user,var/slot)
 	. = ..()
-	if(slot == slot_wear_suit)
-		user.drop_l_hand()
-		user.drop_r_hand()
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			H.drop_from_inventory(H.handcuffed)
+	if(slot == SLOT_ID_SUIT)
+		user.drop_all_held_items()
+		user.drop_item_to_ground(user.item_by_slot(SLOT_ID_HANDCUFFED), INV_OP_FORCE)
 
 /obj/item/clothing/suit/ianshirt
 	name = "worn shirt"
@@ -921,7 +918,7 @@ obj/item/clothing/suit/kamishimo
 		icon_state += "t"
 	if(buttoned)
 		icon_state += "b"
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/suit/storage/flannel/red
 	desc = "A comfy, red flannel shirt.  Unleash your inner hipster."
@@ -1248,3 +1245,9 @@ obj/item/clothing/suit/kamishimo
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
+
+/obj/item/clothing/suit/storage/mindelectric
+	name = "「 The Mind Electric 」"
+	desc = "A set of cybernetic upgrades of an alien origin, this peculiar jacket reads the user's nerver in order to control a set of drones as if they were an additional set of less dexterous hands. Attached terminals buzz with bizarre symbols that appear to form an incomprehensibly complex pattern."
+	item_state = "mindelectric_w"
+	icon_state = "mindelectric"

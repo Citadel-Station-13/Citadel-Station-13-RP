@@ -18,12 +18,12 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "k" = (
-/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/debris/cleanable/blood/gibs,
 /obj/structure/table/bench/wooden,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "l" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "q" = (
@@ -43,14 +43,14 @@
 /area/lavaland/idleruins)
 "x" = (
 /obj/item/bone,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/material/shard/shrapnel,
 /obj/structure/table,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "y" = (
 /obj/item/bone,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/idleruins)
 "D" = (
@@ -69,16 +69,16 @@
 /area/lavaland/idleruins)
 "N" = (
 /obj/structure/loot_pile/surface/bones,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "P" = (
 /obj/structure/loot_pile/surface/bones,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/idleruins)
 "T" = (
-/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/debris/cleanable/blood/gibs,
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 

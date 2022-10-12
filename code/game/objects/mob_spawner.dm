@@ -74,7 +74,7 @@
 		spawned_mobs.Remove(L)
 
 /obj/structure/mob_spawner/attackby(var/obj/item/I, var/mob/living/user)
-	if(!I.force || I.flags & NOBLUDGEON || !destructible)
+	if(!I.force || I.item_flags & NOBLUDGEON || !destructible)
 		return
 
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)

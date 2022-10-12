@@ -1,24 +1,34 @@
+// helpers
+/// sets up a simple log. only use this for dumber logs that don't need any special logic.
+#define SIMPLE_LOG_BOILERPLATE(type)						\
+/world/_setup_logs_boilerplate(){							\
+	GLOB.##type_log = "[GLOB.log_directory]/[#type].log";	\
+	start_log(GLOB.##type_log);								\
+}															\
+/proc/log_##type(text){										\
+	WRITE_LOG(GLOB.##type_log, text);						\
+}															\
+GLOBAL_PROTECT(##type_log);									\
+GLOBAL_VAR(##type_log);
+
 //Investigate logging defines
-#define INVESTIGATE_ACCESSCHANGES "id_card_changes"
 #define INVESTIGATE_ATMOS "atmos"
-#define INVESTIGATE_BOTANY "botany"
-#define INVESTIGATE_CARGO "cargo"
 #define INVESTIGATE_CIRCUIT "circuit"
-#define INVESTIGATE_CRAFTING "crafting"
-#define INVESTIGATE_EXONET "exonet"
-#define INVESTIGATE_EXPERIMENTOR "experimentor"
-#define INVESTIGATE_GRAVITY "gravity"
-#define INVESTIGATE_HALLUCINATIONS "hallucinations"
-#define INVESTIGATE_HYPERTORUS "hypertorus"
-#define INVESTIGATE_PORTAL "portals"
 #define INVESTIGATE_PRESENTS "presents"
-#define INVESTIGATE_RADIATION "radiation"
 #define INVESTIGATE_RECORDS "records"
-#define INVESTIGATE_RESEARCH "research"
 #define INVESTIGATE_SINGULO "singulo"
 #define INVESTIGATE_SUPERMATTER "supermatter"
 #define INVESTIGATE_TELESCI "telesci"
-#define INVESTIGATE_WIRES "wires"
+
+#define ALL_INVESTIGATE_SUBJECTS list(	\
+	INVESTIGATE_ATMOS,					\
+	INVESTIGATE_CIRCUIT,				\
+	INVESTIGATE_PRESENTS,				\
+	INVESTIGATE_RECORDS,				\
+	INVESTIGATE_SINGULO,				\
+	INVESTIGATE_SUPERMATTER,			\
+	INVESTIGATE_TELESCI					\
+)
 
 // Logging types for log_message()
 #define LOG_ATTACK (1 << 0)

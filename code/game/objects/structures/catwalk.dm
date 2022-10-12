@@ -178,15 +178,16 @@
 
 /obj/structure/catwalk/plank/Crossed()
 	. = ..()
-	switch(rand(1,100))
-		if(1 to 5)
-			qdel(src)
-			visible_message("<span class='danger'>The planks splinter and disintegrate beneath the weight!</span>")
-		if(6 to 50)
-			take_damage(rand(10,20))
-			visible_message("<span class='danger'>The planks creak and groan as they're crossed.</span>")
-		if(51 to 100)
-			return
+	if(isliving(usr) && !usr.is_incorporeal())
+		switch(rand(1,100))
+			if(1 to 5)
+				qdel(src)
+				visible_message("<span class='danger'>The planks splinter and disintegrate beneath the weight!</span>")
+			if(6 to 50)
+				take_damage(rand(10,20))
+				visible_message("<span class='danger'>The planks creak and groan as they're crossed.</span>")
+			if(51 to 100)
+				return
 
 /obj/structure/catwalk/plank/take_damage(amount)
 	health -= amount

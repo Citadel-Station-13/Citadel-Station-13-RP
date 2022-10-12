@@ -1,5 +1,0 @@
-author: "silicons"
-delete-after: True
-changes: 
-  - bugfix: "visible examines showing for atoms not in the world"
-  - bugfix: "visible examines showing for atoms within oneself"

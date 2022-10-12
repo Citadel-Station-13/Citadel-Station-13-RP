@@ -417,7 +417,7 @@ steam.start() -- spawns the effect
 			oldposition = current
 			I.setDir(src.holder.dir)
 			flick("ion_fade", I)
-			I.icon_state = "blank"
+			I.icon_state = null
 			QDEL_IN(I, 20)
 
 /datum/effect_system/ion_trail_follow/proc/stop()

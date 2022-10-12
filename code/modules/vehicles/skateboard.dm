@@ -40,7 +40,7 @@
 		return 0
 	return ..(M, user)
 
-/obj/vehicle/skateboard/MouseDrop_T(var/atom/movable/C, var/mob/user as mob)
+/obj/vehicle/skateboard/MouseDroppedOnLegacy(var/atom/movable/C, var/mob/user as mob)
 	if(!load(C, user))
 		to_chat(user, "<span class='warning'> You were unable to load \the [C] onto \the [src].</span>")
 		return
@@ -144,7 +144,7 @@
 		grinding = FALSE
 		icon_state = board_icon
 
-/obj/vehicle/skateboard/MouseDrop(atom/over_object)
+/obj/vehicle/skateboard/OnMouseDropLegacy(atom/over_object)
 	. = ..()
 	var/mob/living/carbon/M = usr
 	if(!istype(M) || M.incapacitated() || !Adjacent(M))
@@ -396,8 +396,8 @@
 
 		if(3)
 			if(istype(W, /obj/item/skate_wheels))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				build_step++
 				to_chat(user, "<span class='notice'>You mount \the [W] on \the [src] trucks.</span>")
 				name = "skateboard frame (loose wheels)"
@@ -417,7 +417,6 @@
 				playsound(src, 'sound/items/screwdriver.ogg', 40, TRUE)
 				var/turf/T = get_turf(src)
 				new /obj/vehicle/skateboard/improv(T)
-				user.drop_from_inventory(src)
 				qdel(src)
 
 //Pro Board
@@ -464,8 +463,8 @@
 
 		if(4)
 			if(istype(W, /obj/item/skate_wheels))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				build_step++
 				to_chat(user, "<span class='notice'>You mount \the [W] on \the [src] trucks.</span>")
 				name = "skateboard frame (loose wheels)"
@@ -485,7 +484,6 @@
 				playsound(src, 'sound/items/screwdriver.ogg', 40, TRUE)
 				var/turf/T = get_turf(src)
 				new /obj/vehicle/skateboard/pro(T)
-				user.drop_from_inventory(src)
 				qdel(src)
 
 // Scooters
@@ -539,8 +537,8 @@
 
 		if(1)
 			if(istype(W, /obj/item/skate_wheels))
-				user.drop_item()
-				qdel(W)
+				if(!user.attempt_consume_item_for_construction(W))
+					return
 				build_step++
 				to_chat(user, "<span class='notice'>You install \the [W] on \the [src].</span>")
 				name = "scooter frame (loose wheels)"
@@ -552,7 +550,6 @@
 				playsound(src, 'sound/items/screwdriver.ogg', 40, TRUE)
 				var/turf/T = get_turf(src)
 				new /obj/vehicle/skateboard/scooter(T)
-				user.drop_from_inventory(src)
 				qdel(src)
 
 //Decontstruction
@@ -573,7 +570,6 @@
 		new /obj/item/stack/material/plastic(drop_location(), 6)
 		var/turf/T = get_turf(src)
 		new /obj/item/scooter_frame(T)
-		user.drop_from_inventory(src)
 		qdel(src)
 	if(has_buckled_mobs())
 		var/mob/living/carbon/H = buckled_mobs[1]

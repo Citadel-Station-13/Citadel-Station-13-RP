@@ -70,7 +70,7 @@
 		if(nonhuman_key_exemption && !ishuman(user))
 			return TRUE
 
-		if(user.is_holding_item_of_type(keytype))
+		if(user.get_held_item_of_type(keytype))
 			return TRUE
 	else
 		return TRUE

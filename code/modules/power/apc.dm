@@ -535,9 +535,8 @@ GLOBAL_LIST_EMPTY(apcs)
 		if(W.w_class != ITEMSIZE_NORMAL)
 			to_chat(user,"\The [W] is too [W.w_class < 3? "small" : "large"] to work here.")
 			return
-
-		user.drop_item()
-		W.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		cell = W
 		user.visible_message(\
 			"<span class='warning'>[user.name] has inserted a power cell into [src.name]!</span>",\

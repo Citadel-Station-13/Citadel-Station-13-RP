@@ -12,7 +12,7 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Shack1)
 "e" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/holofloor/wood{
 	 icon_state = "wood_broken1"
 	},
@@ -30,7 +30,7 @@
 /turf/simulated/floor/wood,
 /area/submap/Shack1)
 "h" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/wood,
 /area/submap/Shack1)
 "i" = (
@@ -42,7 +42,7 @@
 	},
 /area/submap/Shack1)
 "k" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/holofloor/wood{
 	 icon_state = "wood_broken5"
 	},
@@ -65,19 +65,19 @@
 /turf/simulated/floor/wood,
 /area/submap/Shack1)
 "p" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/table/wooden_reinforced,
 /obj/item/storage/toolbox,
 /turf/simulated/floor/wood,
 /area/submap/Shack1)
 "q" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/table/wooden_reinforced,
 /obj/item/material/twohanded/fireaxe/scythe,
 /turf/simulated/floor/wood,
 /area/submap/Shack1)
 "r" = (
-/obj/effect/decal/cleanable/spiderling_remains,
+/obj/effect/debris/cleanable/spiderling_remains,
 /turf/simulated/floor/wood,
 /area/submap/Shack1)
 "s" = (
@@ -86,7 +86,7 @@
 	},
 /area/submap/Shack1)
 "t" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/table/wooden_reinforced,
 /obj/item/flashlight/lamp,
 /turf/simulated/floor/wood,

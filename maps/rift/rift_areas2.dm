@@ -360,6 +360,8 @@
 	name = "\improper Xenobiology Cell 5"
 /area/rnd/xenobiology/cell/six
 	name = "\improper Xenobiology Cell 6"
+/area/rnd/xenobiology/cell/seven
+	name = "\improper Xenobiology Cell 7"
 /area/rnd/xenobiology/xenoflora/lab_atmos
 	name = "\improper Xenoflora Atmospherics Lab"
 /area/rnd/breakroom

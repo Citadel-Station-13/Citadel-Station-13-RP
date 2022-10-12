@@ -68,7 +68,7 @@
 /area/awaymission/challenge/start)
 "aw" = (
 /obj/item/stack/rods,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/start)
 "ax" = (
@@ -76,7 +76,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/challenge/start)
 "ay" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/start)
 "az" = (
@@ -119,7 +119,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/main)
 "aK" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/main)
 "aM" = (
@@ -210,7 +210,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/challenge/main)
 "bc" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/plating,
 /area/awaymission/challenge/main)
 "bd" = (
@@ -1076,7 +1076,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/main)
 "fm" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/awaymission/challenge/main)
 "kp" = (

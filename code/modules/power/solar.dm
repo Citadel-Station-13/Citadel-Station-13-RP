@@ -262,9 +262,9 @@ GLOBAL_LIST_EMPTY(solars_list)
 
 	if(!tracker)
 		if(istype(W, /obj/item/tracker_electronics))
+			if(!user.attempt_consume_item_for_construction(W))
+				return
 			tracker = 1
-			user.drop_item()
-			qdel(W)
 			user.visible_message("<span class='notice'>[user] inserts the electronics into the solar assembly.</span>")
 			return 1
 	else

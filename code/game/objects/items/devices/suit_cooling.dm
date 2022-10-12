@@ -161,8 +161,8 @@
 			if(cell)
 				to_chat(user, "There is a [cell] already installed here.")
 			else
-				user.drop_item()
-				W.loc = src
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				cell = W
 				to_chat(user, "You insert the [cell].")
 		updateicon()

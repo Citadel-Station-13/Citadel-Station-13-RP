@@ -125,11 +125,11 @@ var/list/tape_roll_applications = list()
 		overlays += overlay
 
 
-/obj/item/barrier_tape_roll/dropped(mob/user)
+/obj/item/barrier_tape_roll/dropped(mob/user, flags, atom/newLoc)
 	update_icon()
 	return ..()
 
-/obj/item/barrier_tape_roll/pickup(mob/user)
+/obj/item/barrier_tape_roll/pickup(mob/user, flags, atom/oldLoc)
 	update_icon()
 	return ..()
 

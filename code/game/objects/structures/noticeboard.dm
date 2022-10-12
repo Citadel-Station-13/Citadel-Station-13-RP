@@ -26,10 +26,10 @@
 /obj/structure/noticeboard/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/paper))
 		if(notices < 5)
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
 			O.add_fingerprint(user)
 			add_fingerprint(user)
-			user.drop_from_inventory(O)
-			O.loc = src
 			notices++
 			icon_state = "nboard0[notices]"	//update sprite
 			to_chat(user, "<span class='notice'>You pin the paper to the noticeboard.</span>")
@@ -42,7 +42,6 @@
 			to_chat(user, "<span class='notice'>You unwrench the noticeboard.</span>")
 			new /obj/item/frame/noticeboard( src.loc )
 			qdel(src)
-		return
 
 /obj/structure/noticeboard/attack_hand(var/mob/user)
 	examine(user)
@@ -81,7 +80,7 @@
 		if((P && P.loc == src)) //ifthe paper's on the board
 			var/mob/living/M = usr
 			if(istype(M))
-				var/obj/item/pen/E = M.get_type_in_hands(/obj/item/pen)
+				var/obj/item/pen/E = M.get_held_item_of_type(/obj/item/pen)
 				if(E)
 					add_fingerprint(M)
 					P.attackby(E, usr)

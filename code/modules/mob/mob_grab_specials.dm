@@ -111,10 +111,7 @@
 	playsound(attacker.loc, "swing_hit", 25, 1, -1)
 	add_attack_logs(attacker,target,"Headbutted using grab")
 
-	attacker.drop_from_inventory(src)
-	src.loc = null
 	qdel(src)
-	return
 
 /obj/item/grab/proc/dislocate(mob/living/carbon/human/target, mob/living/attacker, var/target_zone)
 	if(state < GRAB_NECK)

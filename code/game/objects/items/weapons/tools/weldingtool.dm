@@ -90,32 +90,20 @@
 			to_chat(user, "<span class='notice'>You secure the welder.</span>")
 		else
 			to_chat(user, "<span class='notice'>The welder can now be attached and modified.</span>")
-		src.add_fingerprint(user)
+		add_fingerprint(user)
 		return
 
 	if((!status) && (istype(W,/obj/item/stack/rods)))
 		var/obj/item/stack/rods/R = W
 		R.use(1)
-		var/obj/item/flamethrower/F = new/obj/item/flamethrower(user.loc)
-		src.loc = F
+		var/obj/item/flamethrower/F = new /obj/item/flamethrower(user.drop_location())
+		forceMove(F)
 		F.weldtool = src
-		if (user.client)
-			user.client.screen -= src
-		if (user.r_hand == src)
-			user.remove_from_mob(src)
-		else
-			user.remove_from_mob(src)
-		src.master = F
-		src.layer = initial(src.layer)
-		user.remove_from_mob(src)
-		if (user.client)
-			user.client.screen -= src
-		src.loc = F
-		src.add_fingerprint(user)
+		master = F
+		reset_plane_and_layer()
+		add_fingerprint(user)
 		return
-
 	..()
-	return
 
 /obj/item/weldingtool/process(delta_time)
 	if(welding)
@@ -128,7 +116,7 @@
 			var/turf/location = src.loc
 			if(istype(location, /mob/living))
 				var/mob/living/M = location
-				if(M.item_is_in_hands(src))
+				if(M.is_holding(src))
 					location = get_turf(M)
 			if (istype(location, /turf))
 				location.hotspot_expose(700, 5)
@@ -221,38 +209,6 @@
 	if(istype(M))
 		M.update_inv_l_hand()
 		M.update_inv_r_hand()
-
-/obj/item/weldingtool/MouseDrop(obj/over_object as obj)
-	if(!canremove)
-		return
-
-	if (ishuman(usr) || issmall(usr)) //so monkeys can take off their backpacks -- Urist
-
-		if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech. why?
-			return
-
-		if (!( istype(over_object, /atom/movable/screen) ))
-			return ..()
-
-		//makes sure that the thing is equipped, so that we can't drag it into our hand from miles away.
-		//there's got to be a better way of doing this.
-		if (!(src.loc == usr) || (src.loc && src.loc.loc == usr))
-			return
-
-		if (( usr.restrained() ) || ( usr.stat ))
-			return
-
-		if ((src.loc == usr) && !(istype(over_object, /atom/movable/screen)) && !usr.unEquip(src))
-			return
-
-		switch(over_object.name)
-			if("r_hand")
-				usr.u_equip(src)
-				usr.put_in_r_hand(src)
-			if("l_hand")
-				usr.u_equip(src)
-				usr.put_in_l_hand(src)
-		src.add_fingerprint(usr)
 
 //Sets the welding state of the welding tool. If you see W.welding = 1 anywhere, please change it to W.setWelding(1)
 //so that the welding tool updates accordingly
@@ -520,7 +476,7 @@
 
 	..()
 
-/obj/item/weldingtool/tubefed/dropped(mob/user)
+/obj/item/weldingtool/tubefed/dropped(mob/user, flags, atom/newLoc)
 	..()
 	if(src.loc != user)
 		mounted_pack.return_nozzle()
@@ -629,7 +585,7 @@
 		return 0
 
 /obj/item/weldingtool/electric/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		if(power_supply)
 			power_supply.update_icon()
 			user.put_in_hands(power_supply)
@@ -646,8 +602,8 @@
 	if(istype(W, /obj/item/cell))
 		if(istype(W, /obj/item/cell/device))
 			if(!power_supply)
-				user.drop_item()
-				W.loc = src
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				power_supply = W
 				to_chat(user, "<span class='notice'>You install a cell in \the [src].</span>")
 				update_icon()

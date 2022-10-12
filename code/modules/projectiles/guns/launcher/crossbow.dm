@@ -142,7 +142,8 @@
 /obj/item/gun/launcher/crossbow/attackby(obj/item/W as obj, mob/user as mob)
 	if(!bolt)
 		if (istype(W,/obj/item/arrow))
-			user.drop_from_inventory(W, src)
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			bolt = W
 			user.visible_message("[user] slides [bolt] into [src].","You slide [bolt] into [src].")
 			update_icon()
@@ -160,9 +161,9 @@
 
 	if(istype(W, /obj/item/cell))
 		if(!cell)
-			user.drop_item()
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			cell = W
-			cell.loc = src
 			to_chat(user, "<span class='notice'>You jam [cell] into [src] and wire it to the firing coil.</span>")
 			superheat_rod(user)
 		else

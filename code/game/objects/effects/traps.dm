@@ -126,7 +126,6 @@ Add those other swinging traps you mentioned above!
 			var/turf/T = get_turf(src)
 			new /obj/structure/catwalk/plank(T)
 			to_chat(user, "<span class='notice'>You carefully lay the planks over the trap, creating a bridge.</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need three planks of wood to construct a bridge.</span>")
@@ -141,7 +140,6 @@ Add those other swinging traps you mentioned above!
 			tripped = 0
 			update_icon()
 			to_chat(user, "<span class='notice'>You patch over the hole, rearming the trap.</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need two tiles to rearm the trap.</span>")
@@ -189,7 +187,6 @@ Add those other swinging traps you mentioned above!
 			tripped = 0
 			update_icon()
 			to_chat(user, "<span class='notice'>You conceal the pit, rearming the trap.</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need two tiles to rearm the trap.</span>")
@@ -236,8 +233,6 @@ Add those other swinging traps you mentioned above!
 			tripped = 0
 			update_icon()
 			to_chat(user, "<span class='notice'>You conceal the pit, rearming the trap.</span>")
-			user.drop_from_inventory(src)
-			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need two tiles to rearm the trap.</span>")
 
@@ -283,8 +278,6 @@ Add those other swinging traps you mentioned above!
 			tripped = 0
 			update_icon()
 			to_chat(user, "<span class='notice'>You conceal the pit, rearming the trap.</span>")
-			user.drop_from_inventory(src)
-			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need two tiles to rearm the trap.</span>")
 
@@ -365,7 +358,6 @@ Add those other swinging traps you mentioned above!
 			M.use(5)
 			Break()
 			to_chat(user, "<span class='notice'>You slip the rods into the firing mechanism, jamming it.</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need five rods to jam the mechanism.</span>")
@@ -666,7 +658,6 @@ if (istype(AM, /mob/living))
 			M.use(3)
 			Break()
 			to_chat(user, "<span class='notice'>You slip the rods between the plate and its base, jamming it.</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need three rods to jam the mechanism.</span>")
@@ -713,7 +704,6 @@ if (istype(AM, /mob/living))
 			M.use(5)
 			Reset()
 			to_chat(user, "<span class='notice'>You use the coils to raise the [src] back up, resetting it.</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 
 	if(istype(W,/obj/item/tool/wirecutters))

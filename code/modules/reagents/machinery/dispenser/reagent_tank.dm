@@ -184,9 +184,10 @@
 				message_admins("[key_name_admin(user)] rigged fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) for explosion. (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)")
 				log_game("[key_name(user)] rigged fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]) for explosion.")
 
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
+
 			rig = W
-			user.drop_item()
-			W.loc = src
 
 			var/icon/test = getFlatIcon(W)
 			test.Shift(NORTH,1)
@@ -238,7 +239,7 @@
 
 	amount = min(amount, reagents.total_volume)
 	reagents.remove_reagent("fuel",amount)
-	new /obj/effect/decal/cleanable/liquid_fuel(src.loc, amount,1)
+	new /obj/effect/debris/cleanable/liquid_fuel(src.loc, amount,1)
 
 /obj/structure/reagent_dispensers/peppertank
 	name = "Pepper Spray Refiller"

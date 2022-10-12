@@ -363,13 +363,6 @@
 	item_state = "serdy_armor"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS //It's a full body suit, minus hands and feet. Arms and legs should be protected, not just the torso. Retains normal security armor values still.
 
-/obj/item/clothing/suit/armor/vest/wolftaur/serdy/mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
-	if(istype(H) && istype(H.tail_style, /datum/sprite_accessory/tail/taur/wolf))
-		return ..()
-	else
-		to_chat(H, "<span class='warning'>You need to have a wolf-taur half to wear this.</span>")
-		return 0
-
 /obj/item/clothing/head/helmet/serdy //SilencedMP5A5's specialty helmet. Uncomment if/when they make their custom item app and are accepted.
 	name = "KSS-8 security helmet"
 	desc = "desc = An old production model steel-ceramic lined helmet with a white stripe and a custom orange holographic visor. It has ear holes, and smells of dog. It's been heavily modified, and fitted with a metal mask to protect the jaw."
@@ -1202,7 +1195,6 @@
 		var/obj/item/card/id/O = I
 		access |= O.access
 		to_chat(user, "<span class='notice'>You copy the access from \the [I] to \the [src].</span>")
-		user.drop_from_inventory(I)
 		qdel(I)
 		accessset = 1
 	..()
@@ -1256,6 +1248,7 @@
 	desc = "Seems absurd, doesn't it? Yet, here we are. Generally considered dangerous contraband unless the user has permission from Central Command."
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "hand_tele"
+	item_flags = NOBLUDGEON
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 7)
 
@@ -1274,7 +1267,6 @@
 
 /obj/item/perfect_tele/Initialize(mapload)
 	. = ..()
-	flags |= NOBLUDGEON
 	if(cell_type)
 		power_source = new cell_type(src)
 	else
@@ -1303,7 +1295,7 @@
 	..()
 
 /obj/item/perfect_tele/attack_hand(mob/user)
-	if(user.get_inactive_hand() == src && power_source)
+	if(user.get_inactive_held_item() == src && power_source)
 		to_chat(user,"<span class='notice'>You eject \the [power_source] from \the [src].</span>")
 		user.put_in_hands(power_source)
 		power_source = null
@@ -1343,7 +1335,7 @@
 			beacons_left--
 			if(isliving(user))
 				var/mob/living/L = user
-				L.put_in_any_hand_if_possible(nb)
+				L.put_in_hands(nb)
 
 		if("Target Beacon")
 			if(!beacons.len)
@@ -1358,20 +1350,20 @@
 
 /obj/item/perfect_tele/attackby(obj/W, mob/user)
 	if(istype(W,cell_type) && !power_source)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		power_source = W
 		power_source.update_icon() //Why doesn't a cell do this already? :|
-		user.unEquip(power_source)
-		power_source.forceMove(src)
 		to_chat(user,"<span class='notice'>You insert \the [power_source] into \the [src].</span>")
 		update_icon()
 
 	else if(istype(W,/obj/item/perfect_tele_beacon))
 		var/obj/item/perfect_tele_beacon/tb = W
 		if(tb.tele_name in beacons)
+			if(!user.attempt_consume_item_for_construction(tb))
+				return
 			to_chat(user,"<span class='notice'>You re-insert \the [tb] into \the [src].</span>")
 			beacons -= tb.tele_name
-			user.unEquip(tb)
-			qdel(tb)
 			beacons_left++
 		else
 			to_chat(user,"<span class='notice'>\The [tb] doesn't belong to \the [src].</span>")
@@ -1546,15 +1538,12 @@
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "motion2"
 	w_class = ITEMSIZE_TINY
+	item_flags = NOBLUDGEON
 
 	var/tele_name
 	var/obj/item/perfect_tele/tele_hand
 	var/creator
 	var/warned_users = list()
-
-/obj/item/perfect_tele_beacon/Initialize(mapload)
-	. = ..()
-	flags |= NOBLUDGEON
 
 /obj/item/perfect_tele_beacon/Destroy()
 	tele_name = null
@@ -1583,8 +1572,8 @@
 		if(bellychoice)
 			user.visible_message("<span class='warning'>[user] is trying to stuff \the [src] into [user.gender == MALE ? "his" : user.gender == FEMALE ? "her" : "their"] [bellychoice]!</span>","<span class='notice'>You begin putting \the [src] into your [bellychoice]!</span>")
 			if(do_after(user,5 SECONDS,src))
-				user.unEquip(src)
-				forceMove(bellychoice)
+				if(!user.attempt_insert_item_for_installation(src, bellychoice))
+					return
 				user.visible_message("<span class='warning'>[user] eats a telebeacon!</span>","You eat the the beacon!")
 
 // A single-beacon variant for use by miners (or whatever)
@@ -1852,7 +1841,7 @@
 
 /obj/item/melee/baton/fluff/stunstaff/update_held_icon()
 	var/mob/living/M = loc
-	if(istype(M) && !issmall(M) && M.item_is_in_hands(src) && !M.hands_are_full())
+	if(istype(M) && !issmall(M) && M.is_holding(src) && !M.hands_full())
 		wielded = 1
 		force = 15
 		name = "[base_name] (wielded)"
@@ -1879,7 +1868,7 @@
 	else
 		set_light(0)
 
-/obj/item/melee/baton/fluff/stunstaff/dropped()
+/obj/item/melee/baton/fluff/stunstaff/dropped(mob/user, flags, atom/newLoc)
 	..()
 	if(wielded)
 		wielded = 0
@@ -1906,7 +1895,7 @@
 	icon_state = "holster_stunstaff"
 	desc = "A sturdy synthetic leather sheath with matching belt and rubberized interior."
 	slot_flags = SLOT_BACK
-	item_icons = list(/datum/inventory_slot_meta/inventory/back = 'icons/vore/custom_onmob_vr.dmi', slot_l_hand_str = 'icons/vore/custom_items_left_hand_vr.dmi', slot_r_hand_str = 'icons/vore/custom_items_right_hand_vr.dmi')
+	item_icons = list(SLOT_ID_BACK = 'icons/vore/custom_onmob_vr.dmi', slot_l_hand_str = 'icons/vore/custom_items_left_hand_vr.dmi', slot_r_hand_str = 'icons/vore/custom_items_right_hand_vr.dmi')
 
 	can_hold = list(/obj/item/melee/baton/fluff/stunstaff)
 
@@ -1995,12 +1984,12 @@
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
-	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi', /datum/inventory_slot_meta/inventory/back = 'icons/vore/custom_items_vr.dmi', /datum/inventory_slot_meta/inventory/suit = 'icons/vore/custom_items_vr.dmi')
+	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi', SLOT_ID_BACK = 'icons/vore/custom_items_vr.dmi', SLOT_ID_SUIT = 'icons/vore/custom_items_vr.dmi')
 	var/active_state = "wolfgirlsword"
 	allowed = list(/obj/item/shield/fluff/wolfgirlshield)
 	damtype = HALLOSS
 
-/obj/item/melee/fluffstuff/wolfgirlsword/dropped(var/mob/user)
+/obj/item/melee/fluffstuff/wolfgirlsword/dropped(mob/user, flags, atom/newLoc)
 	..()
 	if(!istype(loc,/mob))
 		deactivate(user)
@@ -2097,14 +2086,6 @@
 
    icon_override = 'icons/vore/custom_clothes_vr.dmi'
    icon_state = "tiemgogs"
-
-/obj/item/clothing/glasses/welding/tiemgogs/mob_can_equip(var/mob/living/carbon/human/H, slot, disable_warning = 0)
-   if(..())
-      if(H.ckey != "radiantaurora")
-         to_chat(H, "<span class='warning'>These don't look like they were made to fit you...</span>")
-         return 0
-      else
-         return 1
 
 //FauxMagician
 /obj/item/faketvcamera

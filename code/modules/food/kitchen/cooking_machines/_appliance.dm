@@ -266,7 +266,7 @@
 
 //Override for container mechanics
 /obj/machinery/appliance/proc/add_content(var/obj/item/I, var/mob/user)
-	if(!user.unEquip(I))
+	if(!user.attempt_insert_item_for_installation(I, src))
 		return
 
 	var/datum/cooking_item/CI = has_space(I)

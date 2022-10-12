@@ -178,7 +178,7 @@
 					new /obj/item/stack/material/steel(src.loc, 2)
 					new /obj/item/stack/rods(src.loc, 3)
 				if(BURN)
-					new /obj/effect/decal/cleanable/ash(src.loc) // Turn it to ashes!
+					new /obj/effect/debris/cleanable/ash(src.loc) // Turn it to ashes!
 			qdel(src)
 
 	if(damage)

@@ -61,7 +61,7 @@
 /// Radiation causes this character to glow.
 #define RADIATION_GLOWS (1<<6)
 /// Sets default skin colors based on icons.
-#define BASE_SKIN_COLOR (1<<7)
+#define HAS_BASE_SKIN_COLOR (1<<7)
 
 DEFINE_BITFIELD(species_appearance_flags, list(
 	"HAS_SKIN_TONE"   = HAS_SKIN_TONE,
@@ -71,7 +71,7 @@ DEFINE_BITFIELD(species_appearance_flags, list(
 	"HAS_EYE_COLOR"   = HAS_EYE_COLOR,
 	"HAS_HAIR_COLOR"  = HAS_HAIR_COLOR,
 	"RADIATION_GLOWS" = RADIATION_GLOWS,
-	"BASE_SKIN_COLOR" = BASE_SKIN_COLOR,
+	"HAS_BASE_SKIN_COLOR" = HAS_BASE_SKIN_COLOR,
 ))
 
 

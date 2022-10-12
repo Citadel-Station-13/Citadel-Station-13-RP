@@ -97,7 +97,6 @@ GLOBAL_LIST_EMPTY(smeses)
 	GLOB.smeses -= src
 	return ..()
 
-
 /obj/machinery/power/smes/disconnect_terminal()
 	if(terminal)
 		terminal.master = null

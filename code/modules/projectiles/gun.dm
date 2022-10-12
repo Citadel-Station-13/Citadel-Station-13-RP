@@ -217,7 +217,7 @@
 					"<span class='danger'>\The [user] shoots [TU.himself] in the foot with \the [src]!</span>",
 					"<span class='danger'>You shoot yourself in the foot with \the [src]!</span>"
 					)
-				M.drop_item()
+				M.drop_item_to_ground(src)
 		else
 			handle_click_empty(user)
 		return 0
@@ -227,11 +227,11 @@
 	for(var/obj/O in contents)
 		O.emp_act(severity)
 
-/obj/item/gun/dropped(mob/living/user)
+/obj/item/gun/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	update_appearance()
 
-/obj/item/gun/equipped(mob/user, slot)
+/obj/item/gun/equipped(mob/user, slot, flags)
 	. = ..()
 	update_appearance()
 
@@ -260,14 +260,14 @@
 	else
 		return ..() //Pistolwhippin'
 
-/obj/item/gun/attackby(var/obj/item/A as obj, mob/user as mob)
+/obj/item/gun/attackby(obj/item/A, mob/user)
 	if(istype(A, /obj/item/dnalockingchip))
 		if(dna_lock)
 			to_chat(user, "<span class='notice'>\The [src] already has a [attached_lock].</span>")
 			return
+		if(!user.attempt_insert_item_for_installation(A, src))
+			return
 		to_chat(user, "<span class='notice'>You insert \the [A] into \the [src].</span>")
-		user.drop_item()
-		A.loc = src
 		attached_lock = A
 		dna_lock = 1
 		verbs += /obj/item/gun/verb/remove_dna
@@ -345,38 +345,6 @@
 	if(pin)
 		pin.emag_act(remaining_charges, user)
 
-/obj/item/gun/MouseDrop(obj/over_object as obj)
-	if(!canremove)
-		return
-
-	if (ishuman(usr) || issmall(usr)) //so monkeys can take off their backpacks -- Urist
-
-		if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech. why?
-			return
-
-		if (!( istype(over_object, /atom/movable/screen) ))
-			return ..()
-
-		//makes sure that the thing is equipped, so that we can't drag it into our hand from miles away.
-		//there's got to be a better way of doing this.
-		if (!(src.loc == usr) || (src.loc && src.loc.loc == usr))
-			return
-
-		if (( usr.restrained() ) || ( usr.stat ))
-			return
-
-		if ((src.loc == usr) && !(istype(over_object, /atom/movable/screen)) && !usr.unEquip(src))
-			return
-
-		switch(over_object.name)
-			if("r_hand")
-				usr.u_equip(src)
-				usr.put_in_r_hand(src)
-			if("l_hand")
-				usr.u_equip(src)
-				usr.put_in_l_hand(src)
-		src.add_fingerprint(usr)
-
 /obj/item/gun/proc/Fire(atom/target, mob/living/user, clickparams, pointblank=0, reflex=0)
 	if(!user || !target) return
 	if(target.z != user.z) return
@@ -446,7 +414,7 @@
 
 
 	// We do this down here, so we don't get the message if we fire an empty gun.
-	if(user.item_is_in_hands(src) && user.hands_are_full())
+	if(user.is_holding(src) && user.hands_full())
 		if(one_handed_penalty >= 20)
 			to_chat(user, "<span class='warning'>You struggle to keep \the [src] pointed at the correct position with just one hand!</span>")
 
@@ -463,7 +431,7 @@
 
 	next_fire_time = world.time + fire_delay
 
-	accuracy = initial(accuracy)	//Reset the gun's accuracy
+	accuracy = initial(accuracy)	//Reset the gun's accuracyw
 
 	if(muzzle_flash)
 		if(gun_light)

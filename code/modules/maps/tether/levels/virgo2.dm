@@ -172,7 +172,7 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 	dynamic_lighting = TRUE
 
 /area/tether_away/aerostat/surface
-	area_flags = AF_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	ambience = list('sound/ambience/ambimine.ogg', 'sound/ambience/song_game.ogg')
 
 /area/tether_away/aerostat/surface/explored

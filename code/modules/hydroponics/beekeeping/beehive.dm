@@ -65,11 +65,11 @@
 		if(H.honey)
 			to_chat(user, "<span class='notice'>\The [I] is full with beeswax and honey, empty it in the extractor first.</span>")
 			return
+		if(!user.attempt_consume_item_for_construction(I))
+			return
 		++frames
 		user.visible_message("<span class='notice'>[user] loads \the [I] into \the [src].</span>", "<span class='notice'>You load \the [I] into \the [src].</span>")
 		update_icon()
-		user.drop_from_inventory(I)
-		qdel(I)
 		return
 	else if(istype(I, /obj/item/bee_pack))
 		var/obj/item/bee_pack/B = I
@@ -230,7 +230,6 @@
 	if(do_after(user, 30))
 		user.visible_message("<span class='notice'>[user] constructs a beehive.</span>", "<span class='notice'>You construct a beehive.</span>")
 		new /obj/machinery/beehive(get_turf(user))
-		user.drop_from_inventory(src)
 		qdel(src)
 
 /obj/item/bee_pack

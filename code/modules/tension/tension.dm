@@ -146,7 +146,7 @@
 
 	. = ..()
 
-	var/obj/item/I = get_active_hand()
+	var/obj/item/I = get_active_held_item()
 	if(!I || !istype(I))
 		var/damage_guess = 0
 		if(ishuman(src) && ishuman(threatened))

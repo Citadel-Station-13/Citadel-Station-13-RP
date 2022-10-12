@@ -4,9 +4,9 @@
 	if(istype(I, /obj/item/glass_extra))
 		var/obj/item/glass_extra/GE = I
 		if(can_add_extra(GE))
+			if(!user.attempt_insert_item_for_installation(GE, src))
+				return
 			extras += GE
-			user.remove_from_mob(GE)
-			GE.loc = src
 			to_chat(user, "<span class=notice>You add \the [GE] to \the [src].</span>")
 			update_icon()
 		else
@@ -15,19 +15,19 @@
 		if(!rim_pos)
 			to_chat(user, "<span class=warning>There's no space to put \the [I] on \the [src]!</span>")
 			return
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		var/obj/item/reagent_containers/food/snacks/fruit_slice/FS = I
 		extras += FS
-		user.remove_from_mob(FS)
 		FS.pixel_x = 0 // Reset its pixel offsets so the icons work!
 		FS.pixel_y = 0
-		FS.loc = src
 		to_chat(user, "<span class=notice>You add \the [FS] to \the [src].</span>")
 		update_icon()
 	else
 		return ..()
 
 /obj/item/reagent_containers/food/drinks/glass2/attack_hand(mob/user as mob)
-	if(src != user.get_inactive_hand())
+	if(src != user.get_inactive_held_item())
 		return ..()
 
 	if(!extras.len)

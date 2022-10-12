@@ -287,9 +287,9 @@
 /datum/reagent/uranium/touch_turf(var/turf/T)
 	if(volume >= 3)
 		if(!istype(T, /turf/space))
-			var/obj/effect/decal/cleanable/greenglow/glow = locate(/obj/effect/decal/cleanable/greenglow, T)
+			var/obj/effect/debris/cleanable/greenglow/glow = locate(/obj/effect/debris/cleanable/greenglow, T)
 			if(!glow)
-				new /obj/effect/decal/cleanable/greenglow(T)
+				new /obj/effect/debris/cleanable/greenglow(T)
 			return
 
 /datum/reagent/adrenaline

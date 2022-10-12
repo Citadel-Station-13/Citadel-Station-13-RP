@@ -92,18 +92,15 @@ var/global/list/light_type_cache = list()
 		if(!cell_connectors)
 			to_chat(user, "<span class='warning'>This [name] can't support a power cell!</span>")
 			return
-		if(!user.unEquip(W))
-			to_chat(user, "<span class='warning'>[W] is stuck to your hand!</span>")
-			return
 		if(cell)
 			to_chat(user, "<span class='warning'>There is a power cell already installed!</span>")
-		else if(user.drop_from_inventory(W))
-			user.visible_message("<span class='notice'>[user] hooks up [W] to [src].</span>", \
-			"<span class='notice'>You add [W] to [src].</span>")
-			playsound(src, 'sound/machines/click.ogg', 50, TRUE)
-			W.forceMove(src)
-			cell = W
-			add_fingerprint(user)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
+		user.visible_message("<span class='notice'>[user] hooks up [W] to [src].</span>", \
+		"<span class='notice'>You add [W] to [src].</span>")
+		playsound(src, 'sound/machines/click.ogg', 50, TRUE)
+		cell = W
+		add_fingerprint(user)
 		return
 
 

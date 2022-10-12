@@ -329,7 +329,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 		var/empsev = max(1, min(3, CEILING(size/2, 1)))
 		for(var/atom/movable/AM in range(max(1,FLOOR(size/2, 1)), loc))
 
-			if(AM == src || AM == owned_core || (AM.flags & AF_ABSTRACT))
+			if(AM == src || AM == owned_core || (AM.flags & ATOM_ABSTRACT))
 				continue
 			if(ignore_types[AM.type])
 				continue

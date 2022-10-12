@@ -39,12 +39,12 @@
 					anchored = 0
 					state = 0
 			if(istype(P, /obj/item/circuitboard/aicore) && !circuit)
+				if(!user.attempt_insert_item_for_installation(P, src))
+					return
 				playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
 				to_chat(user, "<span class='notice'>You place the circuit board inside the frame.</span>")
 				icon_state = "1"
 				circuit = P
-				user.drop_item()
-				P.loc = src
 			if(P.is_screwdriver() && circuit)
 				playsound(loc, P.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You screw the circuit board into place.</span>")
@@ -131,16 +131,14 @@
 				if(M.brainmob.stat == 2)
 					to_chat(user, "<span class='warning'>Sticking a dead [P] into the frame would sort of defeat the purpose.</span>")
 					return
-
 				if(jobban_isbanned(M.brainmob, "AI"))
 					to_chat(user, "<span class='warning'>This [P] does not seem to fit.</span>")
+					return
+				if(!user.attempt_insert_item_for_installation(P, src))
 					return
 
 				if(M.brainmob.mind)
 					clear_antag_roles(M.brainmob.mind, 1)
-
-				user.drop_item()
-				P.loc = src
 				brain = P
 				to_chat(usr, "Added [P].")
 				icon_state = "3b"

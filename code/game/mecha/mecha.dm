@@ -1347,22 +1347,20 @@
 
 	if(istype(W, /obj/item/mecha_parts/mecha_equipment))
 		var/obj/item/mecha_parts/mecha_equipment/E = W
-		spawn()
-			if(E.can_attach(src))
-				user.drop_item()
-				E.attach(src)
-				user.visible_message("[user] attaches [W] to [src]", "You attach [W] to [src]")
-			else
-				to_chat(user, "You were unable to attach [W] to [src]")
+		if(E.can_attach(src))
+			if(!user.attempt_insert_item_for_installation(E, src))
+				return
+			E.attach(src)
+			user.visible_message("[user] attaches [W] to [src]", "You attach [W] to [src]")
+		else
+			to_chat(user, "You were unable to attach [W] to [src]")
 		return
 
 	if(istype(W, /obj/item/mecha_parts/component) && state == MECHA_CELL_OUT)
 		var/obj/item/mecha_parts/component/MC = W
-		spawn()
-			if(MC.attach(src))
-				user.drop_item()
-				MC.forceMove(src)
-				user.visible_message("[user] installs \the [W] in \the [src]", "You install \the [W] in \the [src].")
+		if(MC.attach(src))
+			user.transfer_item_to_loc(W, src, INV_OP_FORCE)
+			user.visible_message("[user] installs \the [W] in \the [src]", "You install \the [W] in \the [src].")
 		return
 
 	if(istype(W, /obj/item/card/robot))
@@ -1455,9 +1453,9 @@
 	else if(istype(W, /obj/item/cell))
 		if(state==MECHA_CELL_OUT)
 			if(!src.cell)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				to_chat(user, "You install the powercell")
-				user.drop_item()
-				W.forceMove(src)
 				src.cell = W
 				src.log_message("Powercell installed")
 			else
@@ -1481,8 +1479,8 @@
 		return
 
 	else if(istype(W, /obj/item/mecha_parts/mecha_tracking))
-		user.drop_from_inventory(W)
-		W.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		user.visible_message("[user] attaches [W] to [src].", "You attach [W] to [src]")
 		return
 
@@ -1577,10 +1575,11 @@
 		if(!mmi_as_oc.brainmob || !mmi_as_oc.brainmob.client)
 			to_chat(user, "Consciousness matrix not detected.")
 			return 0
-		else if(mmi_as_oc.brainmob.stat)
+		else if(mmi_as_oc.brainmob.stat == DEAD)
 			to_chat(user, "Beta-rhythm below acceptable level.")
 			return 0
-		user.drop_from_inventory(mmi_as_oc)
+		if(!user.attempt_insert_item_for_installation(mmi_as_oc, src))
+			return FALSE
 		var/mob/brainmob = mmi_as_oc.brainmob
 	/*
 		brainmob.client.eye = src
@@ -1590,7 +1589,6 @@
 		brainmob.forceMove(src)
 		brainmob.reset_perspective(src)
 		brainmob.canmove = 1
-		mmi_as_oc.forceMove(src)
 		mmi_as_oc.mecha = src
 		src.verbs += /obj/mecha/verb/eject
 		src.Entered(mmi_as_oc)
@@ -1769,7 +1767,7 @@
 	src.log_message("Toggled strafing mode [strafing?"on":"off"].")
 	return
 
-/obj/mecha/MouseDrop_T(mob/O, mob/user as mob)
+/obj/mecha/MouseDroppedOnLegacy(mob/O, mob/user as mob)
 	//Humans can pilot mechs.
 	if(!ishuman(O))
 		return
@@ -1995,7 +1993,7 @@
 /////////////////////////
 
 /obj/mecha/proc/operation_allowed(mob/living/carbon/human/H)
-	for(var/ID in list(H.get_active_hand(), H.wear_id, H.belt))
+	for(var/ID in list(H.get_active_held_item(), H.wear_id, H.belt))
 		if(src.check_access(ID,src.operation_req_access))
 			return 1
 	return 0
@@ -2003,7 +2001,7 @@
 
 /obj/mecha/proc/internals_access_allowed(mob/living/carbon/human/H)
 	if(istype(H))
-		for(var/atom/ID in list(H.get_active_hand(), H.wear_id, H.belt))
+		for(var/atom/ID in list(H.get_active_held_item(), H.wear_id, H.belt))
 			if(src.check_access(ID,src.internals_req_access))
 				return 1
 	else if(istype(H, /mob/living/silicon/robot))

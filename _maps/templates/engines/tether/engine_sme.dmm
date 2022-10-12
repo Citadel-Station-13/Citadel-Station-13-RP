@@ -1435,7 +1435,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "dk" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
@@ -1475,14 +1475,14 @@
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "dp" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "dq" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -1517,7 +1517,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_gas)
 "dt" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/effect/floor_decal/industrial/warning/corner,
 /turf/simulated/floor,
 /area/engineering/engine_gas)

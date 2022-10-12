@@ -97,8 +97,8 @@
 	if(istype(W, /obj/item/cell))
 		if(opened)
 			if(!cell)
-				user.drop_from_inventory(W)
-				W.forceMove(src)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				to_chat(user, "<span class='notice'>You insert [W] into [src].</span>")
 				cell = W
 				update_icon()

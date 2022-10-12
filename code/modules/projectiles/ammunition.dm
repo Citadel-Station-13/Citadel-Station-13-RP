@@ -112,8 +112,8 @@
 		if(stored_ammo.len >= max_ammo)
 			to_chat(user, "<span class='warning'>[src] is full!</span>")
 			return
-		user.remove_from_mob(C)
-		C.loc = src
+		if(!user.attempt_insert_item_for_installation(C, src))
+			return
 		stored_ammo.Add(C)
 		update_icon()
 	if(istype(W, /obj/item/ammo_magazine/clip))
@@ -159,7 +159,7 @@
 // This puts one bullet from the magazine into your hand
 /obj/item/ammo_magazine/attack_hand(mob/user)
 	if(can_remove_ammo)	// For Smart Magazines
-		if(user.get_inactive_hand() == src)
+		if(user.get_inactive_held_item() == src)
 			if(stored_ammo.len)
 				var/obj/item/ammo_casing/C = stored_ammo[stored_ammo.len]
 				stored_ammo-=C
