@@ -4,6 +4,7 @@
  * only:
  * - this isn't a real object rather than a struct
  * - i'm making a cast for it so we can VV it
+ * - this is also used to cast procs that operate on appearance-like things.
  *
  * Sue me, I need to debug things somehow
  *
