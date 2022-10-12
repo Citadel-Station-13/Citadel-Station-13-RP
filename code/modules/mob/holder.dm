@@ -235,8 +235,6 @@
 		var/eye_colour =  rgb(owner.r_eyes, owner.g_eyes, owner.b_eyes)
 		var/species_name = lowertext(owner.species.get_bodytype_legacy(owner))
 
-		worn_icon = holder_mob_icon_cache[cache_key]
-
 		for(var/cache_entry in generate_for_slots)
 			var/cache_key = "[owner.species]-[cache_entry]-[skin_colour]-[hair_colour]"
 			if(!holder_mob_icon_cache[cache_key])
