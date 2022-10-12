@@ -9383,6 +9383,10 @@
 "rF" = (
 /turf/simulated/wall/r_wall,
 /area/bridge/bridge_hallway)
+"rG" = (
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/tiled/steel,
+/area/maintenance/commandmaint)
 "rH" = (
 /obj/machinery/vending/nifsoft_shop,
 /obj/effect/floor_decal/borderfloor{
@@ -16030,7 +16034,7 @@
 /area/bridge/bunker)
 "EG" = (
 /obj/machinery/door/airlock/maintenance/common,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "EH" = (
 /obj/effect/overlay/snow/floor/edges_new,
@@ -16946,7 +16950,19 @@
 /turf/simulated/floor,
 /area/shuttle/civvie/general)
 "Gw" = (
-/turf/simulated/floor/plating,
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 9
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 6
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel,
 /area/rift/surfacebase/outside/outside3)
 "Gx" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
@@ -45850,7 +45866,7 @@ fq
 YF
 YF
 YF
-cp
+rG
 YF
 YF
 tt

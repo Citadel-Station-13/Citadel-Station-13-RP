@@ -3917,8 +3917,7 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /turf/simulated/floor/outdoors/snow/noblend/lythios43c,
-/area/rift/surfacebase/outside/outside1,
-/area/rift/surfaceeva/aa/surface_south)
+/area/rift/surfacebase/outside/outside1)
 "cVJ" = (
 /obj/structure/grille,
 /obj/structure/foamedmetal,
@@ -15392,7 +15391,6 @@
 /obj/structure/metal_edge,
 /turf/simulated/floor/plating/lythios43c,
 /turf/simulated/floor/outdoors/snow/noblend/lythios43c,
-/area/space,
 /area/rift/surfaceeva/aa/surface_south)
 "ktI" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -29578,7 +29576,6 @@
 /obj/effect/floor_decal/industrial/halfstair,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /turf/simulated/floor/plating/lythios43c,
-/area/rift/surfacebase/outside/outside1,
 /area/rift/surfaceeva/aa/surface_south)
 "teC" = (
 /obj/effect/floor_decal/borderfloor{
