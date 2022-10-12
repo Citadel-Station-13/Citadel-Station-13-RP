@@ -1176,7 +1176,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 // DEPRICATED SOON
 /proc/downloadImage(atom/A, dir) //this is expensive and dumb
-	var/icon/this_icon = getFlatIcon(A, defdir=dir)
+	var/icon/this_icon = getFlatIcon(A, dir=dir)
 	usr << ftp(this_icon,"[A.name].png")
 
 /*
