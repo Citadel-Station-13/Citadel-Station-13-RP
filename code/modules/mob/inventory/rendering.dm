@@ -295,8 +295,7 @@
 /obj/item/proc/resolve_worn_assets(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
 	if(istext(slot_meta))
 		slot_meta = resolve_inventory_slot_meta(slot_meta)
-	var/list/data = new /list(5)	// 5 tuple
-
+	var/list/data = new /list(WORN_DATA_LIST_SIZE)	// 5 tuple
 
 	//? state ; item_state_slots --> (worn_state | inhand_state) --> item_state --> icon_state
 	data[WORN_DATA_STATE] = resolve_legacy_state(M, slot_meta, inhands, bodytype)
