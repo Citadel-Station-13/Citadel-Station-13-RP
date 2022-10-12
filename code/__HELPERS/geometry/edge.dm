@@ -2,6 +2,10 @@
 	var/datum/geometry/point/a
 	var/datum/geometry/point/b
 
+/datum/geometry/edge/New(datum/geometry/point/a, datum/geometry/point/b)
+	src.a = a
+	src.b = b
+
 /datum/geometry/edge/equals(datum/geometry/edge/other)
 	return a.equals(other.a) && b.equals(other.b)
 

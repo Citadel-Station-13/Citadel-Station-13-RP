@@ -246,6 +246,7 @@
 #include "code\__HELPERS\view.dm"
 #include "code\__HELPERS\geometry\algorithms.dm"
 #include "code\__HELPERS\geometry\circle.dm"
+#include "code\__HELPERS\geometry\deluaney_lua_example.dm"
 #include "code\__HELPERS\geometry\edge.dm"
 #include "code\__HELPERS\geometry\geometry.dm"
 #include "code\__HELPERS\geometry\point.dm"
