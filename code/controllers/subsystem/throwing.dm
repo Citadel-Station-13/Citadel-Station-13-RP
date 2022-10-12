@@ -151,9 +151,10 @@ SUBSYSTEM_DEF(throwing)
 /datum/thrownthing/Destroy()
 	if(!finished)
 		terminate(TRUE)
-	SSthrowing.processing -= thrownthing
-	thrownthing.throwing = null
-	thrownthing = null
+	if(thrownthing)
+		SSthrowing.processing -= thrownthing
+		thrownthing.throwing = null
+		thrownthing = null
 	target = null
 	thrower = null
 	on_hit = null

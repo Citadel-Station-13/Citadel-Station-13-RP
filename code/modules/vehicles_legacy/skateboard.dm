@@ -56,7 +56,7 @@
 /obj/vehicle_old/skateboard/relaymove(mob/user, direction)
 	if(user != load || grinding || world.time < next_crash)
 		return 0
-	if(Move(get_step(src, direction)))
+	if(Move(get_step(src, direction), direction))
 		return 0
 	return 0
 
@@ -221,6 +221,7 @@
 	board_icon = "skateboard2"
 	move_delay = 1
 
+/*
 /obj/vehicle_old/skateboard/pro/Bump(atom/A)
 	if(A.density && has_buckled_mobs())
 		var/mob/living/H = buckled_mobs[1]
@@ -252,7 +253,9 @@
 			Move(backdir)
 			H.spin(4, 1)
 	next_crash = world.time + 10
-
+*/
+// who the fuck wrote this
+// this doesn't even fucking work
 
 //Hoverboards
 

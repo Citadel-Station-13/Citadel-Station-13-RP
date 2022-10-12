@@ -21,7 +21,7 @@
 "bc" = (
 /obj/structure/catwalk,
 /obj/machinery/light/small,
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "bd" = (
 /obj/structure/cable/green{
@@ -120,11 +120,8 @@
 /area/rift/surfacebase/outside/west_caves)
 "dK" = (
 /obj/structure/catwalk,
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 1
-	},
 /turf/simulated/floor/lythios43c,
-/area/outpost/mining_main/outpost)
+/area/rift/surfacebase/outside/west_caves)
 "dM" = (
 /obj/structure/closet/medical_wall{
 	pixel_x = 32
@@ -1094,6 +1091,11 @@
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
+"xo" = (
+/obj/structure/catwalk,
+/obj/effect/overlay/snow/floor/edges_new,
+/turf/simulated/floor/lythios43c,
+/area/outpost/mining_main/outpost)
 "xt" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -1703,8 +1705,11 @@
 /area/outpost/mining_main/outpost)
 "Kh" = (
 /obj/structure/catwalk,
-/turf/simulated/open/lythios43c,
-/area/outpost/mining_main/outpost)
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 4
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
 "Kj" = (
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 10
@@ -1745,6 +1750,13 @@
 /obj/structure/lattice,
 /turf/simulated/open/lythios43c,
 /area/rift/facility/interior/workroom)
+"Li" = (
+/obj/structure/catwalk,
+/obj/effect/overlay/snow/floor/edges_new{
+	dir = 8
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west_caves)
 "Lj" = (
 /obj/structure/stairs/spawner/east,
 /obj/structure/railing{
@@ -2438,10 +2450,10 @@
 "XY" = (
 /obj/structure/catwalk,
 /obj/effect/overlay/snow/floor/edges_new{
-	dir = 5
+	dir = 1
 	},
 /turf/simulated/floor/lythios43c,
-/area/outpost/mining_main/outpost)
+/area/rift/surfacebase/outside/west_caves)
 "Yl" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -34187,7 +34199,7 @@ Ra
 wH
 wH
 mJ
-kx
+XY
 bc
 PP
 CN
@@ -34381,8 +34393,8 @@ Ra
 wH
 wH
 mJ
-kx
-kx
+XY
+dK
 CN
 gz
 gz
@@ -34575,8 +34587,8 @@ Ra
 wH
 wH
 mJ
-kx
-kx
+XY
+dK
 BR
 gz
 gz
@@ -34769,8 +34781,8 @@ Ra
 wH
 wH
 mJ
-kx
-kx
+XY
+dK
 BR
 gz
 gz
@@ -34963,8 +34975,8 @@ Ra
 wH
 wH
 mJ
-kx
-kx
+XY
+dK
 CN
 gz
 gz
@@ -35157,7 +35169,7 @@ Ra
 AL
 AL
 Vp
-kx
+XY
 bc
 PP
 CN
@@ -35170,8 +35182,8 @@ oq
 oq
 ZV
 Zy
-kx
-kx
+XY
+dK
 vY
 XL
 KR
@@ -35364,8 +35376,8 @@ Sv
 Sv
 xa
 mJ
-kx
-kx
+XY
+dK
 vY
 XL
 KC
@@ -35558,8 +35570,8 @@ Sv
 Sv
 xa
 mJ
-kx
-kx
+XY
+dK
 vY
 ET
 ET
@@ -35752,7 +35764,7 @@ Sv
 Sv
 xa
 mJ
-kx
+XY
 bc
 ga
 vY
@@ -35946,9 +35958,9 @@ Sv
 Sv
 fz
 bZ
-kx
-kx
+XY
 dK
+PO
 PO
 PO
 PO
@@ -36138,18 +36150,18 @@ vz
 cD
 Sv
 Sv
-kx
-kx
-kx
-kx
-XY
-rI
-rI
+Li
+Li
+dK
+dK
+PO
+PO
+PO
 yU
 Ul
-rI
-rI
-UF
+PO
+PO
+xo
 XD
 Ra
 Ra
@@ -36332,18 +36344,18 @@ pV
 Sv
 Sv
 Sv
-kx
-kx
-kx
-kx
 Kh
 Kh
 Kh
 Kh
-Kh
-Kh
-Kh
-Kh
+rI
+rI
+rI
+rI
+rI
+rI
+rI
+UF
 XD
 Ra
 Ra
