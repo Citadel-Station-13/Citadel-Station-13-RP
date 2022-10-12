@@ -1,10 +1,7 @@
 //Suit
 /obj/item/clothing/suit
 	icon = 'icons/obj/clothing/suits.dmi'
-	item_icons = list(
-		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_suits.dmi',
-		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_suits.dmi',
-		)
+	inhand_default_type = INHAND_DEFAULT_ICON_SUITS
 	name = "suit"
 	var/fire_resist = T0C+100
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS

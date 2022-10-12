@@ -245,8 +245,7 @@
 
 /proc/getFlatIcon_new(appearance/appearancelike, dir, no_anim)
 	if(!dir && isloc(appearancelike))
-		var/image/I = appearancelike		// just cast it
-		dir = I.dir
+		dir = appearancelike.dir
 	return getFlatIcon_new_actual(appearancelike, dir, no_anim, null, TRUE)
 
 /proc/getFlatIcon_new_actual(image/A, defdir, no_anim, deficon, start)
@@ -293,7 +292,7 @@
 	if(!none && ourdir != SOUTH)
 		if(length(icon_states(icon(icon, state, NORTH))))
 		else if(length(icon_states(icon(icon, state, EAST))))
-		else if(length(icon_states(icon(icon ,state, WEST))))
+		else if(length(icon_states(icon(icon, state, WEST))))
 		else
 			ourdir = SOUTH
 

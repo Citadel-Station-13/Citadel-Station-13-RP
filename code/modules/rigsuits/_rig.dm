@@ -7,7 +7,6 @@
  */
 
 /obj/item/rig
-
 	name = "hardsuit control module"
 	icon = 'icons/obj/rig_modules.dmi'
 	desc = "A back-mounted hardsuit deployment and control mechanism."
