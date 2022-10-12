@@ -217,3 +217,12 @@
 	desc = "The internal cooling system of the jacket can be swapped to fire hot air in cold environments."
 	icon_state = "empty_hood"
 	flags_inv = NONE
+
+/obj/item/clothing/head/hood/runner
+	name = "Runner Jacket hood"
+	desc = "The internal cooling system of the jacket can be swapped to fire hot air in cold environments."
+	icon_state = "empty_hood"
+	flags_inv = NONE
+
+/obj/item/clothing/head/hood/runner/half_pint
+	name = "Half-Pint hood"
