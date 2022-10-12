@@ -8,6 +8,8 @@
 	var/hood_up = FALSE
 	var/toggleicon
 	action_button_name = "Toggle Hood"
+	allowed =  list (/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches,
+	/obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
 
 /obj/item/clothing/suit/storage/hooded/Initialize(mapload)
 	. = ..()
