@@ -43,14 +43,14 @@
 	name = "black flats"
 	desc = "Sleek black flats."
 	icon_state = "flatsblack"
-	item_state_slots = list(slot_r_hand_str = "black", slot_l_hand_str = "black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black", SLOT_ID_LEFT_HAND = "black")
 
 /obj/item/clothing/shoes/flats/white
 	name = "white flats"
 	desc = "Shiny white flats."
 	icon_state = "flatswhite"
 	addblends = "flatswhite_a"
-	item_state_slots = list(slot_r_hand_str = "white", slot_l_hand_str = "white")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
 
 /obj/item/clothing/shoes/flats/white/color
 	name = "flats"
@@ -60,31 +60,31 @@
 	name = "red flats"
 	desc = "Ruby red flats."
 	icon_state = "flatsred"
-	item_state_slots = list(slot_r_hand_str = "red", slot_l_hand_str = "red")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
 
 /obj/item/clothing/shoes/flats/purple
 	name = "purple flats"
 	desc = "Royal purple flats."
 	icon_state = "flatspurple"
-	item_state_slots = list(slot_r_hand_str = "purple", slot_l_hand_str = "purple")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "purple", SLOT_ID_LEFT_HAND = "purple")
 
 /obj/item/clothing/shoes/flats/blue
 	name = "blue flats"
 	desc = "Sleek blue flats."
 	icon_state = "flatsblue"
-	item_state_slots = list(slot_r_hand_str = "blue", slot_l_hand_str = "blue")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blue", SLOT_ID_LEFT_HAND = "blue")
 
 /obj/item/clothing/shoes/flats/brown
 	name = "brown flats"
 	desc = "Sleek brown flats."
 	icon_state = "flatsbrown"
-	item_state_slots = list(slot_r_hand_str = "brown", slot_l_hand_str = "brown")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown", SLOT_ID_LEFT_HAND = "brown")
 
 /obj/item/clothing/shoes/flats/orange
 	name = "orange flats"
 	desc = "Radiant orange flats."
 	icon_state = "flatsorange"
-	item_state_slots = list(slot_r_hand_str = "orange", slot_l_hand_str = "orange")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "orange", SLOT_ID_LEFT_HAND = "orange")
 
 /obj/item/clothing/shoes/orange
 	name = "orange shoes"

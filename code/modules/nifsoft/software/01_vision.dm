@@ -1,6 +1,7 @@
 //////////////////
 // AR HUD Overlays
 /datum/nifsoft/hud
+	abstract_type = /datum/nifsoft/hud
 	var/list/data_huds = list()
 
 /datum/nifsoft/hud/activate(force)

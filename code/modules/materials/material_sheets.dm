@@ -8,8 +8,8 @@
 	throw_range = 3
 	max_amount = 50
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_material.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 		)
 
 	var/default_type = MAT_STEEL

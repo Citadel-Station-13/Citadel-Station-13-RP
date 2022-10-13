@@ -1,6 +1,3 @@
-/// world.icon_size
-#define PIXELS 32
-
 // These get to go at the top, because they're special
 //You can use these defines to get the typepath of the currently running proc/verb (yes procs + verbs are objects)
 /* eg:
@@ -314,8 +311,6 @@ var/list/economy_station_departments = list(
 ///The number of deciseconds in a day
 #define MIDNIGHT_ROLLOVER		864000
 
-/// Needed for the R-UST port
-#define WORLD_ICON_SIZE 32
 ///Needed for the R-UST port
 #define PIXEL_MULTIPLIER WORLD_ICON_SIZE/32
 /// Maximum effective value of client.view (According to DM references)

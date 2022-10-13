@@ -4,6 +4,7 @@
  * only:
  * - this isn't a real object rather than a struct
  * - i'm making a cast for it so we can VV it
+ * - this is also used to cast procs that operate on appearance-like things.
  *
  * Sue me, I need to debug things somehow
  *
@@ -15,6 +16,7 @@
 	var/blend_mode
 	var/color
 	var/desc
+	var/dir
 	var/gender
 	var/icon
 	var/icon_state
@@ -58,6 +60,7 @@ GLOBAL_REAL_VAR(_appearance_var_list) = list(
 	"blend_mode",
 	"color",
 	"desc",
+	"dir",
 	"gender",
 	"icon",
 	"icon_state",
@@ -102,6 +105,7 @@ GLOBAL_REAL_VAR(_appearance_var_list) = list(
 		DEBUG_APPEARANCE_VAR(blend_mode)
 		DEBUG_APPEARANCE_VAR(color)
 		DEBUG_APPEARANCE_VAR(desc)
+		DEBUG_APPEARANCE_VAR(dir)
 		DEBUG_APPEARANCE_VAR(gender)
 		DEBUG_APPEARANCE_VAR(icon)
 		DEBUG_APPEARANCE_VAR(icon_state)
