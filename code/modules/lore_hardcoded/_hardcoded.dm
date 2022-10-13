@@ -12,11 +12,11 @@
 	var/desc = "What is this?"
 	/// subspecies are counted as the master species
 	var/subspecies_included = TRUE
-	/// allowed species ids - if is list, only these species can have them; these are species uids, not normal species ids, subspecies do count
+	/// allowed species ids - if is list, only these species can have them; these are species uids, not normal species ids, subspecies do count; typepaths are allowed
 	var/list/allow_species
-	/// forbidden species ids - overridden by allowed
+	/// forbidden species ids - overridden by allowed; typepaths are lalowed
 	var/list/forbid_species
-	/// languages that someone gets by picking this
+	/// languages that someone gets by picking this; typepaths are allowed
 	var/list/innate_languages
 
 	#warn consider allowing typepaths as well as ids for species/language

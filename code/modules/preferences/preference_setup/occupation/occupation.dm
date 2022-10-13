@@ -8,6 +8,8 @@
 	name = "Occupation"
 	sort_order = 1
 
+#warn rework to not use flags this is fucking asinine and against god and nature
+
 /datum/category_item/player_setup_item/occupation/load_character(var/savefile/S)
 	S["alternate_option"]	>> pref.alternate_option
 	S["job_civilian_high"]	>> pref.job_civilian_high

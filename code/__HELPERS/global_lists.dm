@@ -210,6 +210,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 	// SScharacters handling static caches and body markings and sprit eaccessories when?? this is all awful
 
 	//Languages and species.
+	#warn subsystem for this
 	paths = subtypesof(/datum/language)
 	for(var/T in paths)
 		var/datum/language/L = T
@@ -223,6 +224,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 		if(!(L.flags & NONGLOBAL))
 			GLOB.language_keys[L.key] = L
 
+	#warn species lookup on Sscharacters?
 	for(var/datum/species/S as anything in all_static_species_meta())
 		if(!(S.spawn_flags & SPECIES_IS_RESTRICTED))
 			GLOB.playable_species += S.name

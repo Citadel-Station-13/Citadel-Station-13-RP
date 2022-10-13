@@ -435,6 +435,8 @@
 #include "code\controllers\subsystem\xenoarch.dm"
 #include "code\controllers\subsystem\characters\_characters.dm"
 #include "code\controllers\subsystem\characters\backgrounds.dm"
+#include "code\controllers\subsystem\characters\character_species.dm"
+#include "code\controllers\subsystem\characters\languages.dm"
 #include "code\controllers\subsystem\characters\species.dm"
 #include "code\controllers\subsystem\dbcore\_dbcore.dm"
 #include "code\controllers\subsystem\dbcore\query.dm"

@@ -142,4 +142,6 @@
 		return "<a href='?src=\ref[src];prefs=\ref[prefs];act=[action];[action]=[option]'>[innerhtml]</a>"
 	return "<a href='?src=\ref[src];prefs=\ref[prefs];act=[action]'>[innerhtml]</a>"
 
-//! warning not all content() procs return a list properly
+//! warning not all content() procs return a list properly for now
+
+// todo: multi stage random character generation

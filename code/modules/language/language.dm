@@ -3,7 +3,7 @@
 /*
 	Datum based languages. Easily editable and modular.
 */
-
+#warn make sure all languages have uids
 /datum/language
 	/// abstract type
 	var/abstract_type = /datum/language
