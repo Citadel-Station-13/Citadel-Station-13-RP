@@ -14810,6 +14810,9 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass/hidden,
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
 "lmf" = (

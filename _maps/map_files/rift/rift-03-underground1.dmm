@@ -3650,7 +3650,7 @@
 	anchored = 1
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
-/turf/simulated/open,
+/turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "gU" = (
 /obj/structure/cable{
@@ -4007,7 +4007,7 @@
 /area/hallway/secondary/engineering_hallway)
 "hD" = (
 /obj/effect/blocker,
-/turf/simulated/open,
+/turf/simulated/open/lythios43c,
 /area/security/prison)
 "hE" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -5053,11 +5053,10 @@
 "jN" = (
 /obj/structure/cable/cyan,
 /obj/machinery/power/rad_collector,
-/obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/open,
+/turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "jO" = (
 /obj/structure/railing{
@@ -6590,11 +6589,10 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/rad_collector,
-/obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/open,
+/turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "mM" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -6695,11 +6693,10 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/rad_collector,
-/obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/open,
+/turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "mT" = (
 /obj/effect/floor_decal/techfloor/orange{
@@ -6773,8 +6770,7 @@
 	},
 /obj/machinery/power/rad_collector,
 /obj/structure/railing,
-/obj/structure/catwalk,
-/turf/simulated/open,
+/turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "nc" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
@@ -6799,20 +6795,18 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/rad_collector,
-/obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/open,
+/turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "ne" = (
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
 /obj/machinery/power/rad_collector,
-/obj/structure/catwalk,
 /obj/structure/railing,
-/turf/simulated/open,
+/turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "ng" = (
 /obj/structure/catwalk,
@@ -10679,9 +10673,8 @@
 /obj/structure/cable/cyan{
 	icon_state = "1-4"
 	},
-/obj/structure/catwalk,
 /obj/structure/railing,
-/turf/simulated/open,
+/turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "uw" = (
 /obj/structure/fence/door,
@@ -10793,7 +10786,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/engineering)
 "uS" = (
-/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/turf/simulated/floor/outdoors/snow,
 /area/rift/surfacebase/underground/under1)
 "uT" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
@@ -12522,7 +12515,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "BK" = (
-/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/turf/simulated/floor/outdoors/snow,
 /area/rift/asylum/halls)
 "BL" = (
 /obj/effect/trap/launcher/web{
@@ -13194,7 +13187,7 @@
 /area/rift/station/adherent_maintenance)
 "EE" = (
 /obj/machinery/crystal/ice,
-/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/turf/simulated/floor/outdoors/snow,
 /area/rift/surfacebase/underground/under1)
 "EF" = (
 /obj/effect/floor_decal/borderfloorblack{
@@ -13478,11 +13471,10 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/rad_collector,
-/obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/open,
+/turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "FK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -14210,11 +14202,10 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/rad_collector,
-/obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/open,
+/turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "HU" = (
 /obj/machinery/telecomms/server/presets/service/rift,
@@ -14435,11 +14426,10 @@
 "II" = (
 /obj/structure/cable/cyan,
 /obj/machinery/power/rad_collector,
-/obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/open,
+/turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "IJ" = (
 /obj/effect/zone_divider,
@@ -15141,11 +15131,10 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/rad_collector,
-/obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/open,
+/turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "Ld" = (
 /obj/structure/sign/signnew/cryogenics,
@@ -15257,11 +15246,10 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/rad_collector,
-/obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/open,
+/turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
 "LD" = (
 /obj/structure/table/rack,
@@ -16466,7 +16454,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Qp" = (
-/turf/simulated/open,
+/turf/simulated/open/lythios43c,
 /area/security/prison)
 "Qr" = (
 /obj/item/stock_parts/manipulator,
@@ -17411,7 +17399,7 @@
 /area/storage/tech)
 "TY" = (
 /obj/structure/barricade,
-/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/turf/simulated/floor/outdoors/snow,
 /area/rift/surfacebase/underground/under1)
 "TZ" = (
 /obj/effect/zone_divider,
@@ -18155,7 +18143,7 @@
 /area/rift/station/fighter_bay)
 "WI" = (
 /obj/structure/barricade,
-/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/turf/simulated/floor/outdoors/snow,
 /area/rift/asylum/halls)
 "WK" = (
 /obj/structure/grille,
@@ -33843,7 +33831,7 @@ Ac
 Ta
 Ta
 Ta
-aa
+Ta
 aa
 aa
 aa
@@ -34426,7 +34414,7 @@ uS
 uS
 uS
 Ta
-aa
+Ta
 aa
 aa
 aa
@@ -35787,7 +35775,7 @@ GX
 GX
 GX
 GX
-Ta
+GX
 Ta
 aa
 aa
@@ -39268,7 +39256,7 @@ uS
 uS
 uS
 Ta
-GX
+Ta
 GX
 GX
 GX
