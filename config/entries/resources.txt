@@ -38,3 +38,12 @@ EXTERNAL_RSC_URLS http://tgstation13.download/byond/tgstationv2.zip
 # for best results the webserver powering this should return a long cache validity time, as all assets sent via this transport use hash based urls
 # if you want to test this locally, you simpily run the `localhost-asset-webroot-server.py` python3 script to host assets stored in `data/asset-store/` via http://localhost:58715/
 #ASSET_CDN_URL http://localhost:58715/
+
+
+
+## Assets can opt-in to caching their results into `tmp`.
+## This is important, as preferences assets take upwards of 30 seconds (without sleeps) to collect.
+## The cache is assumed to be cleared by TGS recompiling, which deletes `tmp`.
+## This should be disabled (through `CACHE_ASSETS 0`) on development,
+## but enabled on production (the default).
+CACHE_ASSETS 0

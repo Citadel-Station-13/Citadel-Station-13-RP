@@ -59,6 +59,9 @@ SHOW_HUMAN_DEATH_MESSAGE
 ## Remove the # in front of this config option to have loyalty implants spawn by default on your server.
 #USE_LOYALTY_IMPLANTS
 
+## Comment out to disable minimap generation
+MINIMAPS_ENABLED
+
 
 
 #### MOB MOVEMENT ####
