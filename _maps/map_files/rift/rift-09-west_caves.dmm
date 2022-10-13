@@ -14,6 +14,7 @@
 	name = "Mining Outpost Airlock"
 	},
 /obj/structure/catwalk,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -45,6 +46,12 @@
 "be" = (
 /turf/simulated/mineral/icerock/ignore_cavegen/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
+"bf" = (
+/obj/structure/transit_tube/station{
+	automatic_launch_time = 40
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/outpost)
 "bk" = (
 /obj/structure/ore_box,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -120,6 +127,10 @@
 	dir = 1;
 	pixel_x = -2
 	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	frequency = 1379
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
 "dc" = (
@@ -134,6 +145,12 @@
 /obj/structure/ladder/updown,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/exterior/bunker/lower)
+"dE" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/outpost/mining_main/outpost)
 "dI" = (
 /turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
@@ -275,10 +292,6 @@
 /obj/structure/lattice,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
-"fL" = (
-/obj/structure/transit_tube/high_velocity,
-/turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/west_caves)
 "fU" = (
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/outpost)
@@ -293,6 +306,11 @@
 	name = "Mining Outpost Airlock"
 	},
 /obj/structure/catwalk,
+/obj/map_helper/airlock/door/int_door,
+/obj/machinery/access_button/airlock_interior{
+	master_tag = "mining_outpost1_airlock";
+	pixel_y = -28
+	},
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost)
 "ga" = (
@@ -319,6 +337,15 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/outpost/mining_main/outpost)
+"gG" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/yellow/bordercorner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "gK" = (
 /obj/structure/mirror/long/left_broke{
@@ -386,6 +413,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
+/obj/structure/barricade,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
 "ie" = (
@@ -409,8 +437,6 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/bathrooms)
 "im" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/yellow/border,
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
@@ -512,6 +538,12 @@
 /obj/structure/table/marble,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/command)
+"km" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/outpost/mining_main/outpost)
 "kx" = (
 /obj/structure/catwalk,
 /turf/simulated/open/lythios43c,
@@ -638,14 +670,11 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "nk" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 8
-	},
-/obj/effect/floor_decal/corner/yellow/border{
-	dir = 8
-	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
+	},
+/obj/machinery/conveyor_switch{
+	id = "miningboxtransfer2"
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
@@ -656,19 +685,17 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/bathrooms)
 "nG" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
-/obj/item/barrier_tape_segment/engineering,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
+/obj/item/barrier_tape_segment/engineering,
+/obj/structure/barricade,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
 "nL" = (
@@ -730,11 +757,11 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/outpost)
 "ox" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/disposalpipe/segment{
-	dir = 8
+/obj/structure/plasticflaps/mining,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "miningboxtransfer2"
 	},
-/obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
 "oz" = (
@@ -802,11 +829,10 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "qf" = (
-/obj/structure/transit_tube/high_velocity,
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "qy" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10,
@@ -893,6 +919,9 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
 "rq" = (
@@ -918,6 +947,15 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
+/area/outpost/mining_main/outpost)
+"rF" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock/heater{
+	on = 1
+	},
+/turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
 "rI" = (
 /obj/structure/catwalk,
@@ -974,17 +1012,9 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/command)
 "sk" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 8
-	},
-/obj/machinery/disposal/deliveryChute{
-	dir = 4
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 10
-	},
-/obj/effect/floor_decal/corner/yellow/border{
-	dir = 10
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "miningboxtransfer2"
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
@@ -1085,6 +1115,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/outpost)
 "uP" = (
@@ -1184,9 +1217,9 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
 "wt" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/yellow/border,
 /obj/machinery/light,
+/obj/effect/floor_decal/borderfloor/corner,
+/obj/effect/floor_decal/corner/yellow/bordercorner,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "wy" = (
@@ -1619,15 +1652,16 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "DM" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/item/barrier_tape_segment/engineering,
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 1
+/obj/structure/railing,
+/obj/machinery/light/small{
+	dir = 1;
+	pixel_x = -2
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
-	dir = 8
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	frequency = 1379
 	},
-/turf/simulated/floor/tiled/steel_grid,
+/turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
 "DQ" = (
 /obj/structure/salvageable/console_broken_os{
@@ -1747,10 +1781,15 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/exterior/mineshaft)
 "Gc" = (
-/obj/structure/transit_tube/high_velocity{
-	icon_state = "N-S"
+/obj/structure/railing{
+	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor,
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
+	frequency = 1379;
+	on = 1;
+	scrub_id = "mining_outpost1_airlock_scrubber"
+	},
+/turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
 "Gm" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -1884,10 +1923,16 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/outpost)
 "IZ" = (
-/obj/structure/transit_tube/station{
-	automatic_launch_time = 40
+/obj/structure/catwalk,
+/obj/machinery/door/airlock/glass_external/public{
+	name = "Mining Outpost Airlock"
 	},
-/turf/simulated/floor/tiled/techfloor,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/access_button/airlock_exterior{
+	master_tag = "mining_outpost1_airlock";
+	pixel_y = -28
+	},
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost)
 "Jl" = (
 /obj/machinery/mech_recharger,
@@ -2002,6 +2047,12 @@
 "LT" = (
 /turf/simulated/floor/lythios43c/indoors,
 /area/outpost/mining_main/outpost)
+"LW" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/outpost/mining_main/outpost)
 "LY" = (
 /obj/structure/cable,
 /obj/structure/cable{
@@ -2057,6 +2108,9 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
 "Nk" = (
@@ -2087,9 +2141,6 @@
 "NE" = (
 /obj/machinery/space_heater,
 /obj/structure/railing,
-/obj/machinery/alarm{
-	pixel_y = 20
-	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
 "NP" = (
@@ -2123,6 +2174,15 @@
 /obj/machinery/door/firedoor/glass,
 /obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating,
+/area/outpost/mining_main/outpost)
+"Oy" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
 "OF" = (
 /obj/structure/railing{
@@ -2178,8 +2238,7 @@
 /obj/effect/map_effect/portal/line/side_b{
 	dir = 8
 	},
-/obj/structure/transit_tube/high_velocity,
-/turf/simulated/open/lythios43c,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "PM" = (
 /obj/effect/overlay/snow/floor/edges_new{
@@ -2305,7 +2364,9 @@
 /area/rift/facility/interior/workroom)
 "QZ" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
 "Ra" = (
@@ -2319,6 +2380,7 @@
 /area/rift/facility/interior/workroom)
 "Rj" = (
 /obj/item/barrier_tape_segment/engineering,
+/obj/structure/barricade,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "Rk" = (
@@ -2460,11 +2522,9 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "TR" = (
-/obj/machinery/disposal/deliveryChute{
-	dir = 8
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 4
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "miningboxtransfer2"
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/outpost/mining_main/outpost)
@@ -2499,6 +2559,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
+/obj/structure/barricade,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
 "UE" = (
@@ -2666,7 +2727,11 @@
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Mining Outpost Airlock"
 	},
-/obj/structure/fans/tiny,
+/obj/map_helper/airlock/door/ext_door,
+/obj/machinery/embedded_controller/radio/airlock/phoron{
+	id_tag = "mining_outpost1_airlock";
+	pixel_y = 26
+	},
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost)
 "WX" = (
@@ -2685,6 +2750,9 @@
 "Xz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/outpost)
@@ -2770,6 +2838,12 @@
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/machinery/airlock_sensor/phoron{
+	pixel_x = 30;
+	pixel_y = 28
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
@@ -33765,8 +33839,8 @@ ox
 sV
 ga
 WW
-WW
-sV
+IZ
+ga
 ga
 Ou
 ga
@@ -33953,18 +34027,18 @@ Ao
 ug
 PT
 jX
-PT
+gG
 nk
 sk
 ga
 db
 Ne
 Dk
+rF
 ga
 Sl
-Sl
+LW
 wd
-Gc
 zZ
 yH
 hd
@@ -34154,10 +34228,10 @@ ga
 NE
 ro
 Hp
+Gc
 ga
 Sl
 Yg
-Sl
 Sl
 ga
 WX
@@ -34345,13 +34419,13 @@ SZ
 iO
 wt
 ga
-db
+DM
 Ym
 PS
+rF
 ga
 Sl
-IZ
-Sl
+bf
 Sl
 Ou
 WX
@@ -34543,7 +34617,7 @@ ga
 aK
 fX
 ga
-DM
+ga
 nG
 UD
 ic
@@ -34739,7 +34813,7 @@ SO
 SO
 SO
 QZ
-XL
+km
 XL
 Ou
 ux
@@ -34930,10 +35004,10 @@ hR
 VH
 BI
 XL
-XL
+dE
 XL
 cX
-XL
+Oy
 XL
 Ou
 ux
@@ -36881,7 +36955,7 @@ Ra
 tW
 WX
 wS
-TG
+qf
 Ra
 Ra
 Ra
@@ -37075,7 +37149,7 @@ Ra
 tW
 kx
 YW
-fL
+tr
 Ra
 Ra
 Ra
@@ -37269,7 +37343,7 @@ Ra
 tW
 kx
 wS
-fL
+ZM
 Ra
 Ra
 Ra
@@ -37463,7 +37537,7 @@ Ra
 tW
 Sp
 wS
-qf
+TG
 Ra
 Ra
 Ra
@@ -37657,7 +37731,7 @@ Ra
 tW
 kx
 wS
-fL
+tr
 Ra
 Ra
 Ra
@@ -37851,7 +37925,7 @@ Ra
 tW
 kx
 YW
-fL
+ZM
 Ra
 Ra
 Ra
@@ -38045,7 +38119,7 @@ Ra
 tW
 kx
 wS
-fL
+tr
 Ra
 Ra
 Ra
@@ -38239,7 +38313,7 @@ Ra
 tW
 Sp
 wS
-qf
+TG
 Ra
 Ra
 Ra
@@ -38433,7 +38507,7 @@ Ra
 tW
 kx
 wS
-fL
+tr
 Ra
 Ra
 Ra
@@ -38627,7 +38701,7 @@ Ra
 tW
 kx
 YW
-fL
+ZM
 Ra
 Ra
 Ra
@@ -38821,7 +38895,7 @@ Ra
 tW
 kx
 wS
-fL
+ZM
 Ra
 Ra
 Ra
@@ -39015,7 +39089,7 @@ Ra
 tW
 Sp
 wS
-qf
+TG
 Ra
 Ra
 Ra
@@ -39209,7 +39283,7 @@ Ra
 tW
 kx
 wS
-fL
+ZM
 Ra
 Ra
 Ra
@@ -39403,7 +39477,7 @@ Ra
 tW
 kx
 YW
-fL
+tr
 Ra
 Ra
 Ra
@@ -39597,7 +39671,7 @@ Ra
 tW
 kx
 wS
-fL
+tr
 Ra
 Ra
 Ra

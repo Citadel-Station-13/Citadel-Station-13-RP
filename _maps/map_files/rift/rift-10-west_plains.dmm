@@ -66,11 +66,6 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/outpost/chamber)
-"au" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/effect/floor_decal/industrial/warning/dust,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/outpost/mining_main/outpost)
 "az" = (
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
@@ -1081,12 +1076,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
-"fy" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 9
-	},
-/turf/simulated/floor/tiled,
-/area/outpost/mining_main/outpost)
 "fz" = (
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/facility/exterior)
@@ -1891,9 +1880,6 @@
 /obj/effect/floor_decal/corner/yellow/bordercorner{
 	dir = 4
 	},
-/obj/machinery/vending/snack{
-	dir = 4
-	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "jq" = (
@@ -2153,12 +2139,6 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/simulated/floor,
 /area/rnd/outpost/atmospherics)
-"kG" = (
-/obj/effect/overlay/snow/floor/grav_surround{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/exterior/nuketown)
 "kH" = (
 /obj/structure/table/woodentable,
 /obj/machinery/vending/wallmed1{
@@ -2248,16 +2228,13 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/west)
 "kW" = (
-/obj/machinery/disposal/deliveryChute{
-	dir = 1
-	},
-/obj/structure/disposalpipe/trunk,
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
 	},
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 6
 	},
+/obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "lb" = (
@@ -2389,12 +2366,6 @@
 "lK" = (
 /turf/simulated/mineral/icerock/lythios43c,
 /area/rift/facility/exterior)
-"lL" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/outpost/mining_main/outpost)
 "lM" = (
 /obj/structure/fence/cut/large{
 	dir = 4
@@ -2612,14 +2583,6 @@
 /obj/item/broken_device/random,
 /turf/simulated/floor/plating,
 /area/rift/exterior/nuketown/interior)
-"mV" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/yellow/border,
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
-/area/outpost/mining_main/outpost)
 "mW" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /obj/effect/floor_decal/rust,
@@ -2849,12 +2812,6 @@
 	},
 /turf/simulated/floor/wood/lythios43c,
 /area/rift/exterior/nuketown/interior)
-"oa" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/outpost/mining_main/outpost)
 "oe" = (
 /obj/structure/cable/green{
 	icon_state = "2-4"
@@ -3358,12 +3315,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/tether/outpost/solars_outside)
-"qp" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/outpost/mining_main/outpost)
 "qs" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 9
@@ -3628,9 +3579,8 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
+/obj/structure/closet/crate/bin{
+	anchored = 1
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
@@ -3694,13 +3644,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
-"rQ" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor,
-/area/outpost/mining_main/outpost)
 "rU" = (
 /obj/structure/fence/door/opened,
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
@@ -5160,16 +5103,6 @@
 /obj/effect/map_effect/radiation_emitter,
 /turf/simulated/open/lythios43c,
 /area/rift/facility/interior/surface)
-"yB" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/effect/floor_decal/corner/yellow/border{
-	dir = 1
-	},
-/obj/machinery/vending/coffee,
-/turf/simulated/floor/tiled,
-/area/outpost/mining_main/outpost)
 "yC" = (
 /obj/structure/railing{
 	dir = 4
@@ -5212,13 +5145,6 @@
 /obj/machinery/door/firedoor/glass/hidden/steel,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
-"yL" = (
-/obj/machinery/disposal/deliveryChute,
-/obj/structure/disposalpipe/trunk{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/outpost/mining_main/outpost)
 "yN" = (
 /obj/structure/closet/crate/science,
 /turf/simulated/floor,
@@ -5540,15 +5466,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/anomaly_lab/testing)
-"AN" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4
-	},
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/outpost/mining_main/outpost)
 "AO" = (
 /obj/effect/floor_decal/spline/fancy{
 	dir = 1
@@ -5640,14 +5557,11 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 5
 	},
-/turf/simulated/floor/tiled,
-/area/outpost/mining_main/outpost)
-"BB" = (
-/obj/effect/overlay/snow/floor/grav_surround{
+/obj/machinery/vending/snack{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/west)
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/outpost)
 "BC" = (
 /obj/machinery/camera/network/engineering{
 	dir = 1
@@ -7615,12 +7529,6 @@
 	},
 /turf/simulated/floor/greengrid,
 /area/rnd/outpost/testing_lab)
-"LL" = (
-/obj/effect/overlay/snow/floor/grav_surround{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/exterior/nuketown)
 "LM" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/effect/floor_decal/industrial/warning{
@@ -9637,12 +9545,6 @@
 /obj/structure/symbol/em,
 /turf/simulated/wall,
 /area/tether/outpost/solars_shed)
-"Vk" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
-/area/rift/surfacebase/outside/west)
 "Vl" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 8
@@ -10313,9 +10215,6 @@
 	},
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 1
-	},
-/obj/structure/closet/crate/bin{
-	anchored = 1
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
@@ -19154,7 +19053,7 @@ ed
 ed
 sS
 sS
-LL
+ed
 sS
 sS
 ed
@@ -20899,7 +20798,7 @@ jq
 Yg
 yO
 sS
-kG
+ed
 sS
 sS
 sS
@@ -39910,7 +39809,7 @@ sv
 ah
 yr
 dQ
-BB
+sv
 dQ
 dQ
 sv
@@ -39923,12 +39822,12 @@ sv
 dQ
 dQ
 dQ
-bw
-bw
-bw
+dQ
+dQ
+dQ
 sv
 dQ
-BB
+sv
 dQ
 dQ
 dQ
@@ -40117,9 +40016,9 @@ dQ
 dQ
 dQ
 dQ
-bw
-bw
-bw
+dQ
+dQ
+dQ
 dQ
 dQ
 dQ
@@ -40311,9 +40210,9 @@ dQ
 sv
 sv
 dQ
-Vk
-Vk
-Vk
+dQ
+dQ
+dQ
 dQ
 dQ
 dQ
@@ -40321,7 +40220,7 @@ dQ
 sv
 sv
 dQ
-BB
+sv
 dQ
 dQ
 lb
@@ -43201,7 +43100,7 @@ Yd
 Yd
 Yd
 pn
-yB
+og
 WG
 OQ
 ga
@@ -43396,11 +43295,11 @@ Yd
 Yd
 pn
 og
-fy
-mV
+WG
+OQ
 pn
-qp
-lL
+vp
+vp
 vp
 vp
 xC
@@ -43592,9 +43491,9 @@ pn
 Bv
 rI
 kW
-rQ
-yL
-au
+pn
+vp
+vp
 vp
 vp
 bL
@@ -43787,8 +43686,8 @@ pn
 pn
 pn
 ga
-AN
-oa
+XC
+vp
 vp
 Iu
 sv
