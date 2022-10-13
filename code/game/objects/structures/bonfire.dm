@@ -149,17 +149,14 @@
 		qdel(consumed_fuel) // Don't know, don't care.
 		return FALSE
 
-	if(istype(consumed_fuel, /obj/item/stack/material/log))
-		next_fuel_consumption = world.time + 4 MINUTES
-		qdel(consumed_fuel)
+	if(consumed_fuel.use(1))
+		if(istype(consumed_fuel, /obj/item/stack/material/log))
+			next_fuel_consumption = world.time + 8 MINUTES //Wood does burn much longer than 2 minutes
+		else if(istype(consumed_fuel, /obj/item/stack/material/wood)) // One log makes two planks of wood.
+			next_fuel_consumption = world.time + 4 MINUTE
 		update_icon()
 		return TRUE
 
-	else if(istype(consumed_fuel, /obj/item/stack/material/wood)) // One log makes two planks of wood.
-		next_fuel_consumption = world.time + 2 MINUTE
-		qdel(consumed_fuel)
-		update_icon()
-		return TRUE
 	return FALSE
 
 /obj/structure/bonfire/permanent/consume_fuel()
@@ -237,7 +234,7 @@
 		extinguish()
 		return
 	if(world.time >= next_fuel_consumption)
-		if(!consume_fuel(pop(contents)))
+		if(!consume_fuel(DEFAULTPICK(contents, null)))
 			extinguish()
 			return
 	if(!grill)
@@ -330,17 +327,15 @@
 		qdel(consumed_fuel) // Don't know, don't care.
 		return FALSE
 
-	if(istype(consumed_fuel, /obj/item/stack/material/log))
-		next_fuel_consumption = world.time + 2 MINUTES
-		qdel(consumed_fuel)
+	
+	if(consumed_fuel.use(1))
+		if(istype(consumed_fuel, /obj/item/stack/material/log))
+			next_fuel_consumption = world.time + 10 MINUTES
+		else if(istype(consumed_fuel, /obj/item/stack/material/wood)) // One log makes two planks of wood.
+			next_fuel_consumption = world.time + 5 MINUTE
 		update_icon()
 		return TRUE
 
-	else if(istype(consumed_fuel, /obj/item/stack/material/wood)) // One log makes two planks of wood.
-		next_fuel_consumption = world.time + 1 MINUTE
-		qdel(consumed_fuel)
-		update_icon()
-		return TRUE
 	return FALSE
 
 /obj/structure/fireplace/proc/check_oxygen()
@@ -398,7 +393,7 @@
 		extinguish()
 		return
 	if(world.time >= next_fuel_consumption)
-		if(!consume_fuel(pop(contents)))
+		if(!consume_fuel(DEFAULTPICK(contents, null)))
 			extinguish()
 			return
 
