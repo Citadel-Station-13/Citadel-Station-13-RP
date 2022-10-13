@@ -95,3 +95,20 @@
   Zandario:
   - bugfix: You'll no longer be "a a gynoid" / "an a android"
   - refactor: Species examine text is de-duplicated.
+2022-10-13:
+  Captain277:
+  - bugfix: Fixes bad path in rocket unload proc.
+  - bugfix: Restores Dufflebag of Holding icons.
+  - tweak: Tweaks storage contents for hooded suits.
+  - bugfix: Fixes issue with rockets firing even after expended.
+  G0atman:
+  - rscadd: '"url": "https://files.catbox.moe/9kd1dl.m4a",'
+  - rscdel: '"url": "https://files.catbox.moe/0rlr3j.m4a",'
+  TheLordME:
+  - tweak: tweaked heat pumps to connect to aux and normal pipe layer
+  - balance: rebalanced gas cooler and gas heater magic factor
+  - admin: the cheat factor of gas coolers and gas heaters can be adjusted by admins
+  - code_imp: removes an old debug log entry I forgot about....
+  - tweak: tweaked derlict drone fab dont show on the list until cleared by a player
+  - code_imp: adds a var to drone fabricators to signal them to not show up on the
+      drone list until cleared
