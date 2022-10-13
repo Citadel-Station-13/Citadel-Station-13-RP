@@ -1,0 +1,9 @@
+author: "silicons"
+delete-after: True
+changes: 
+  - rscadd: "new item rendering system, please report bugs"
+  - refactor: "items now can support species-default-icons and per-file-icons. A new worn rendering system has been added that is extensible, modular, and will help when we implement emissives."
+  - code_imp: "all future item PRs/item containing PRs MUST USE PER FILE when possible, to reduce the bloat in default icons"
+  - rscdel: "some useless files that weren't used for years
+icon: some inhand files were merged (ironically) because they were too small for default files to justify another category"
+  - code_imp: "getFlatIcon has been optimized and rewritten."
