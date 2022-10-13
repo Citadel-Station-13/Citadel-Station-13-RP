@@ -1,5 +1,0 @@
-author: "TheLordME"
-delete-after: True
-changes: 
-  - tweak: "tweaked derlict drone fab dont show on the list until cleared by a player"
-  - code_imp: "adds a var to drone fabricators to signal them to not show up on the drone list until cleared"
