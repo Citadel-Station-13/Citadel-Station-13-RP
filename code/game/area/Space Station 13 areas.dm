@@ -2612,6 +2612,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Cargo Belter Access"
 	icon_state = "mining"
 
+/area/quartermaster/garage
+	name = "\improper Cargo Garage"
+
 // SCIENCE
 
 /area/rnd/research
