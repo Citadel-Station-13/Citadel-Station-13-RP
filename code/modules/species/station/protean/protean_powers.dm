@@ -59,7 +59,7 @@
 		var/datum/robolimb/M = GLOB.chargen_robolimbs[company]
 		if(!(choice in M.parts))
 			continue
-		if(impersonate_bodytype in M.species_cannot_use)
+		if(impersonate_bodytype_legacy in M.species_cannot_use)
 			continue
 		if(M.whitelisted_to && !(ckey in M.whitelisted_to))
 			continue
@@ -112,7 +112,7 @@
 			var/datum/robolimb/M = GLOB.chargen_robolimbs[company]
 			if(!(BP_TORSO in M.parts))
 				continue
-			if(impersonate_bodytype in M.species_cannot_use)
+			if(impersonate_bodytype_legacy in M.species_cannot_use)
 				continue
 			if(M.whitelisted_to && !(ckey in M.whitelisted_to))
 				continue
