@@ -31,7 +31,7 @@
 /datum/category_item/player_setup_item/background/faction/filter(datum/preferences/prefs, data, list/errors)
 	var/datum/lore/character_background/faction/current = SScharacters.resolve_faction(data)
 	if(!current?.check_species_id(prefs.character_species_id()))
-		return SScharacters.resolve_religion(/datum/lore/character_background/faction/custom).id
+		return SScharacters.resolve_religion(/datum/lore/character_background/faction/nanotrasen).id
 	return data
 
 /datum/category_item/player_setup_item/background/faction/copy_to_mob(mob/M, data, flags)
@@ -45,7 +45,7 @@
 	return TRUE
 
 /datum/category_item/player_setup_item/background/faction/default_value(randomizing)
-	return SScharacters.resolve_faction(/datum/lore/character_background/faction/custom).id
+	return SScharacters.resolve_faction(/datum/lore/character_background/faction/nanotrasen).id
 
 /datum/category_item/player_setup_item/background/faction/informed_default_value(datum/preferences/prefs, randomizing)
 	var/datum/character_species/S = SScharacters.resolve_character_species(prefs.character_species_id())

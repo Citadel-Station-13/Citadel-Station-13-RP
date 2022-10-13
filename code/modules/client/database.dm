@@ -90,7 +90,7 @@
 		// new person!
 		player_age = 0
 		player_flags = NONE
-		var/datum/db_query/insert = SSdbcore.Executequery(
+		var/datum/db_query/insert = SSdbcore.ExecuteQuery(
 			"INSERT INTO [format_table_name("player")] (flags, firstseen, lastseen) VALUES (:flags, Now(), Now())",
 			list(
 				"flags" = player_flags,

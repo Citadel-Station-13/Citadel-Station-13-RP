@@ -159,7 +159,7 @@
 /datum/ghostrole_instantiator/human/player_static/Create(client/C, atom/location, list/params)
 	var/mob/living/carbon/human/H = ..()
 	var/list/errors = list()
-	if(!C.prefs.spawn_checks(PREF_COPY_TO_GHOSTROLE | PREF_COPY_TO_IS_SPAWNING, errors))
+	if(!C.prefs.spawn_checks(PREF_COPY_TO_GHOSTROLE, errors))
 		to_chat(C, SPAN_WARNING("An error has occured while attempting to spawn you in:<br>[errors.Join("<br>")]"))
 		return
 	LoadSavefile(C, H)

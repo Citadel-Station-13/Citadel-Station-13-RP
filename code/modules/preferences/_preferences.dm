@@ -286,7 +286,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					return
 
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
-	C?.update_movement_keys(src)
+	client?.update_movement_keys(src)
 
 /datum/preferences/proc/block_until_initialized()
 	UNTIL(initialized)

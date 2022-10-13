@@ -1,6 +1,6 @@
 /datum/preferences/proc/spawn_checks(flags, list/errors)
 	. = TRUE
-	for(var/datum/category_group/category in player_setup.categories)
+	for(var/datum/category_group/player_setup_category/category in player_setup.categories)
 		if(!category.spawn_checks(src, flags, errors))
 			. = FALSE
 
