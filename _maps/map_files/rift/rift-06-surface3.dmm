@@ -9802,6 +9802,7 @@
 /area/bridge/bunker)
 "sC" = (
 /obj/structure/table/steel,
+/obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
 "sD" = (
