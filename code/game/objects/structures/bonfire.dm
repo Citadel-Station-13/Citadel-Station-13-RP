@@ -215,7 +215,7 @@
 		extinguish()
 		return
 	if(world.time >= next_fuel_consumption)
-		if(!consume_fuel(pick(contents)))
+		if(!consume_fuel(DEFAULTPICK(contents, null)))
 			extinguish()
 			return
 	if(!grill)
@@ -381,7 +381,7 @@
 		extinguish()
 		return
 	if(world.time >= next_fuel_consumption)
-		if(!consume_fuel(pick(contents)))
+		if(!consume_fuel(DEFAULTPICK(contents, null)))
 			extinguish()
 			return
 
