@@ -318,18 +318,15 @@
 		qdel(consumed_fuel) // Don't know, don't care.
 		return FALSE
 
-	if(istype(consumed_fuel, /obj/item/stack/material/log))
-		if(consumed_fuel.use(1))
-			next_fuel_consumption = world.time + 2 MINUTES
-			update_icon()
-			return TRUE
+	
+	if(consumed_fuel.use(1))
+		if(istype(consumed_fuel, /obj/item/stack/material/log))
+			next_fuel_consumption = world.time + 10 MINUTES
+		else if(istype(consumed_fuel, /obj/item/stack/material/wood)) // One log makes two planks of wood.
+			next_fuel_consumption = world.time + 5 MINUTE
+		update_icon()
+		return TRUE
 
-	else if(istype(consumed_fuel, /obj/item/stack/material/wood)) // One log makes two planks of wood.
-		if(consumed_fuel.use(1))
-			next_fuel_consumption = world.time + 1 MINUTE
-			qdel(consumed_fuel)
-			update_icon()
-			return TRUE
 	return FALSE
 
 /obj/structure/fireplace/proc/check_oxygen()
@@ -387,7 +384,7 @@
 		extinguish()
 		return
 	if(world.time >= next_fuel_consumption)
-		if(!consume_fuel(pop(contents)))
+		if(!consume_fuel(pick(contents)))
 			extinguish()
 			return
 
