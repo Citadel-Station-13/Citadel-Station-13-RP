@@ -4,6 +4,12 @@
 	Datum based languages. Easily editable and modular.
 */
 #warn make sure all languages have uids
+
+/**
+ * language datums
+ *
+ * singletons stored on SScharacters, only referenced by id most of the time.
+ */
 /datum/language
 	/// abstract type
 	var/abstract_type = /datum/language

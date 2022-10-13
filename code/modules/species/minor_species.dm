@@ -11,6 +11,8 @@
  * since we're a server of snowflakes, we have this to embody character species
  *
  * they store real species UID so we can change species, and allow us to tweak the species on spawn.
+ *
+ * /datum/character_species is a singleton type stored on SScharacters.
  */
 /datum/character_species
 	//! Intrinsics

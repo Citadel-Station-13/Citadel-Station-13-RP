@@ -1,5 +1,6 @@
 /datum/controller/subsystem/characters
 
+/datum/controller/subsystem/characters/proc/rebuild_languages()
 
 #warn languages cache
 

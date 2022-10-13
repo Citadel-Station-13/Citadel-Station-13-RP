@@ -1,8 +1,10 @@
 /**
  * Species Datums
  *
- * They are globally cached by typepath. This is out of necessity, because unlike things like movespeed modifiers,
- * species are always assumed to be variable.
+ * They are **not** singletons, however, they are globally cached as a static set
+ * for use in preferences to determine default properties/whatever
+ *
+ * ? Someday we'll rework this. Someday. I believe.
  *
  * Mob set_species supports either a datum or a typepath. Mobs, upon receiving a typepath, will make their own copy for modification.
  *
