@@ -45,6 +45,34 @@
 
 /datum/controller/subsystem/characters/proc/available_origins(species_id)
 
+/datum/controller/subsystem/characters/proc/resolve_citizenship(id)
+	RETURN_TYPE(/datum/lore/character_background/citizenship)
+	if(ispath(id))
+		var/datum/lore/character_background/bg = id
+		id = initial(bg.id)
+	return character_citizenships[id]
+
+/datum/controller/subsystem/characters/proc/resolve_faction(id)
+	RETURN_TYPE(/datum/lore/character_background/faction)
+	if(ispath(id))
+		var/datum/lore/character_background/bg = id
+		id = initial(bg.id)
+	return character_factions[id]
+
+/datum/controller/subsystem/characters/proc/resolve_religion(id)
+	RETURN_TYPE(/datum/lore/character_background/religion)
+	if(ispath(id))
+		var/datum/lore/character_background/bg = id
+		id = initial(bg.id)
+	return character_religions[id]
+
+/datum/controller/subsystem/characters/proc/resolve_origin(id)
+	RETURN_TYPE(/datum/lore/character_background/origin)
+	if(ispath(id))
+		var/datum/lore/character_background/bg = id
+		id = initial(bg.id)
+	return character_origins[id]
+
 /datum/controller/subsystme/characters/proc/job_locks_for_faction(id)
 	var/datum/lore/character_background/faction/F = character_factions[id]
 	return F.job_whitelist

@@ -7,7 +7,7 @@
 	var/list/datum/lore/character_background/origin/available = SScharacters.available_origins(prefs.character_species_id())
 	var/datum/lore/character_background/origin/current = SScharacters.character_origins[data]
 	. += "<center>"
-	for(var/datum/lore/character_background/origin/O in current)
+	for(var/datum/lore/character_background/origin/O in available)
 		. += href_simple(prefs, "pick", "[O.name] ", O.id)
 	. += "</center>"
 	. += "<div>"
@@ -15,38 +15,40 @@
 	. += "</div>"
 
 /datum/category_item/player_setup_item/background/origin/act(datum/preferences/prefs, mob/user, action, list/params)
-	. = ..()
-	if(.)
-		return
 	switch(action)
 		if("pick")
 			var/id = params["pick"]
-			#warn impl
+			var/datum/lore/character_background/origin/O = SScharacters.resolve_origin(id)
+			if(!id)
+				return
+			if(!O.check_species_id(prefs.character_species_id()))
+				to_chat(user, SPAN_WARNING("[prefs.character_species_name()] cannot pick this origin."))
+				return PREFERENCES_NOACTION
+			write(prefs, id)
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
+	return ..()
 
 /datum/category_item/player_setup_item/background/origin/filter(datum/preferences/prefs, data, list/errors)
-	var/datum/lore/character_background/origin/current = SScharacters.character_origins[data]
+	var/datum/lore/character_background/origin/current = SScharacters.resolve_origin(data)
 	if(!current?.check_species_id(prefs.character_species_id()))
-		return "custom"	// this is hardcoded; if things break, sucks for you.
-						// todo: put all ids on defines when lorewriters are done messing around
+		return SScharacters.resolve_religion(/datum/lore/character_background/origin/custom).id
 	return data
 
 /datum/category_item/player_setup_item/background/origin/copy_to_mob(mob/M, data, flags)
 	#warn impl
 
 /datum/category_item/player_setup_item/background/origin/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
-	var/datum/lore/character_background/origin/current = SScharacters.character_origins[data]
+	var/datum/lore/character_background/origin/current = SScharacters.resolve_origin(data)
 	if(!current?.check_species_id(prefs.character_species_id()))
 		errors?.Add("Invalid origin for your current species.")
 		return FALSE
 	return TRUE
 
 /datum/category_item/player_setup_item/background/origin/default_value(randomizing)
-	return "custom"
+	return SScharacters.resolve_religion(/datum/lore/character_background/origin/custom).id
 
 /datum/category_item/player_setup_item/background/origin/informed_default_value(datum/preferences/prefs, randomizing)
 	var/datum/character_species/S = SScharacters.resolve_character_species(prefs.character_species_id())
 	if(!S)
 		return ..()
 	return S.get_default_origin_id()
-
-#warn impl above
