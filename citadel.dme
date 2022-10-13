@@ -1933,6 +1933,7 @@
 #include "code\modules\cargo\supplypacks\science.dm"
 #include "code\modules\cargo\supplypacks\security.dm"
 #include "code\modules\cargo\supplypacks\supply.dm"
+#include "code\modules\cargo\supplypacks\vehicles.dm"
 #include "code\modules\cargo\supplypacks\voidsuits.dm"
 #include "code\modules\catalogue\atoms.dm"
 #include "code\modules\catalogue\catalogue_data.dm"
