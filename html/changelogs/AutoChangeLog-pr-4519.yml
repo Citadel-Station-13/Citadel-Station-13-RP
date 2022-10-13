@@ -1,4 +1,0 @@
-author: "Captain277"
-delete-after: True
-changes: 
-  - bugfix: "Fixes issue with rockets firing even after expended."
