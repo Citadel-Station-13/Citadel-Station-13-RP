@@ -5,17 +5,6 @@
 
 /datum/configuration_legacy
 
-	/// server name (for world name / status)
-	var/server_name = null
-	/// generate numeric suffix based on server port
-	var/server_suffix = 0
-
-	/// where the nudge.py script is located
-	var/nudge_script_path = "nudge.py"
-
-	//CITADEL CHANGE - HUB CONFIG
-	var/hub_visibility = FALSE
-
 	/// allow votes to restart
 	var/allow_vote_restart = 0
 	var/ert_admin_call_only = 0
@@ -308,9 +297,6 @@
 				if ("ban_legacy_system")
 					config_legacy.ban_legacy_system = 1
 
-				if ("hub_visibility")					//CITADEL CHANGE - ADDS HUB CONFIG
-					config_legacy.hub_visibility = 1
-
 				if ("use_age_restriction_for_jobs")
 					config_legacy.use_age_restriction_for_jobs = 1
 
@@ -395,15 +381,6 @@
 
 				if ("respawn_message")
 					config_legacy.respawn_message = value
-
-				if ("servername")
-					config_legacy.server_name = value
-
-				if ("serversuffix")
-					config_legacy.server_suffix = 1
-
-				if ("nudge_script_path")
-					config_legacy.nudge_script_path = value
 
 				if ("serverurl")
 					config_legacy.serverurl = value

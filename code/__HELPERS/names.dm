@@ -92,8 +92,8 @@ var/religion_name = null
 			new_station_name += pick("13","XIII","Thirteen")
 
 
-	if(config_legacy?.server_name)
-		world.name = "[config_legacy.server_name]: [name]"
+	if(CONFIG_GET(string/servername))
+		world.name = "[CONFIG_GET(string/servername)]: [name]"
 	else
 		world.name = new_station_name
 
@@ -104,8 +104,8 @@ var/religion_name = null
 
 	GLOB.using_map.station_name = name
 
-	if(config_legacy?.server_name)
-		world.name = "[config_legacy.server_name]: [name]"
+	if(CONFIG_GET(string/servername))
+		world.name = "[CONFIG_GET(string/servername)]: [name]"
 	else
 		world.name = name
 

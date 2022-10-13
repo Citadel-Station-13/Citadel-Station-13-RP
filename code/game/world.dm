@@ -55,12 +55,8 @@ GLOBAL_LIST(topic_status_cache)
 	// shunt redirected world log from Master's init back into world log proper, now that logging has been set up.
 	shunt_redirected_log()
 
-	if(config && config_legacy.server_name != null && config_legacy.server_suffix && world.port > 0)
-		// dumb and hardcoded but I don't care~
-		config_legacy.server_name += " #[(world.port % 1000) / 100]"
-
 	// TODO - Figure out what this is. Can you assign to world.log?
-	// if(config && config_legacy.log_runtime)
+	// if(config && CONFIG_GET(flag/log_runtime))
 	// 	log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
 
 	GLOB.timezoneOffset = get_timezone_offset()
@@ -355,57 +351,52 @@ GLOBAL_LIST(topic_status_cache)
 				D.associate(GLOB.directory[ckey])
 
 /world/proc/update_status()
-	. = ""
+	var/new_status = ""
 	if(!config)
 		status = "<b>SERVER LOADING OR BROKEN.</b> (18+)"
 		return
 
 	// ---Hub title---
-	var/servername = config_legacy?.server_name
+	var/servername = CONFIG_GET(string/servername)
 	var/stationname = station_name()
 	var/defaultstation = GLOB.using_map ? GLOB.using_map.station_name : stationname
 	if(servername || stationname != defaultstation)
-		. += (servername ? "<b>[servername]" : "<b>")
-		. += (stationname != defaultstation ? "[servername ? " - " : ""][stationname]</b>\] " : "</b>\] ")
+		new_status += (servername ? "<b>[servername]" : "<b>")
+		new_status += (stationname != defaultstation ? "[servername ? " - " : ""][stationname]</b>\] " : "</b>\] ")
 
 	var/communityname = CONFIG_GET(string/community_shortname)
 	var/communitylink = CONFIG_GET(string/community_link)
 	if(communityname)
-		. += (communitylink ? "(<a href=\"[communitylink]\">[communityname]</a>) " : "([communityname]) ")
+		new_status += (communitylink ? "(<a href=\"[communitylink]\">[communityname]</a>) " : "([communityname]) ")
 
-	. += "(18+)<br>" //This is obligatory for obvious reasons.
+	new_status += "(18+)<br>" //This is obligatory for obvious reasons.
 
 	// ---Hub body---
 	var/tagline = (CONFIG_GET(flag/usetaglinestrings) ? pick(GLOB.server_taglines) : CONFIG_GET(string/tagline))
 	if(tagline)
-		. += "[tagline]<br>"
+		new_status += "[tagline]<br>"
 
 	// ---Hub footer---
-	. += "\["
+	new_status += "\["
 	if(GLOB.using_map)
-		. += "[GLOB.using_map.station_short], "
+		new_status += "[GLOB.using_map.station_short], "
 
-	. += "[get_security_level()] alert, "
+	new_status += "[get_security_level()] alert, "
 
-	. += "[GLOB.clients.len] players"
+	new_status += "[GLOB.clients.len] players"
 
-	status = .
+	status = new_status
 
-/world/proc/update_hub_visibility(new_value)					//CITADEL PROC: TG's method of changing visibility
-	if(new_value)				//I'm lazy so this is how I wrap it to a bool number
-		new_value = TRUE
-	else
-		new_value = FALSE
-	if(new_value == visibility)
+/world/proc/update_hub_visibility(new_visibility)
+	if(new_visibility == GLOB.hub_visibility)
 		return
-
-	visibility = new_value
-	if(visibility)
+	GLOB.hub_visibility = new_visibility
+	if(GLOB.hub_visibility)
 		hub_password = "kMZy3U5jJHSiBQjr"
 	else
 		hub_password = "SORRYNOPASSWORD"
 
-// Things to do when a new z-level was just made.
+/// Things to do when a new z-level was just made.
 /world/proc/max_z_changed()
 	assert_players_by_zlevel_list()
 

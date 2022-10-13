@@ -10,3 +10,6 @@ TAGLINE <br><small><a href='https://discord.gg/citadelstation'>Roleplay focused 
 
 ## Use tagline strings: Uncomment to have the server's tagline be randomly selected from taglines.txt
 # USETAGLINESTRINGS
+
+## Comment out to hide from the hub by default.
+HUB_VISIBILITY

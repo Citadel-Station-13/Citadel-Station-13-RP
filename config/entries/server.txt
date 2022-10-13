@@ -1,0 +1,4 @@
+#### SERVER SETTINGS ####
+
+# Set to what you want the server name to be
+SERVER_NAME Citadel Station 13 RP

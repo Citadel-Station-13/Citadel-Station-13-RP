@@ -6,3 +6,6 @@
 	default = "<br><small><a href='https://discord.gg/citadelstation'>Roleplay focused 18+ server with extensive species choices.</a></small></br>"
 
 /datum/config_entry/flag/usetaglinestrings
+
+/// If the game appears on the hub or not.
+/datum/config_entry/flag/hub_visibility
