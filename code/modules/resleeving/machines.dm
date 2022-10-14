@@ -16,7 +16,7 @@
 	for(var/i = 1 to container_limit)
 		containers += new /obj/item/reagent_containers/glass/bottle/biomass(src)
 
-/obj/machinery/clonepod/transhuman/growclone(var/datum/transhuman/body_record/current_project)
+/obj/machinery/clonepod/transhuman/growclone(datum/transhuman/body_record/current_project)
 	//Manage machine-specific stuff.
 	if(mess || attempting)
 		return 0
@@ -33,6 +33,7 @@
 	var/datum/dna2/record/R = current_project.mydna
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src)
 	H.set_species(species_type_by_name(R.dna.species))
+	H.dna.base_species = R.dna.base_species //! Hacky way to get the DNA to work.
 	if(current_project.locked)
 		H.resleeve_lock = current_project.ckey
 
@@ -197,13 +198,7 @@
 
 /obj/machinery/transhuman/synthprinter/Initialize(mapload)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/matter_bin(src)
-	component_parts += new /obj/item/stock_parts/scanning_module(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stock_parts/manipulator(src)
-	component_parts += new /obj/item/stack/cable_coil(src, 2)
-	RefreshParts()
+	default_apply_parts()
 	update_icon()
 
 /obj/machinery/transhuman/synthprinter/RefreshParts()
