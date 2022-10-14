@@ -10,6 +10,9 @@
 
 	/// Used for changing icon states for different base sprites.
 	var/base_icon_state
+	/// Used for changing tiem states for different base sprites.
+	var/base_item_state
+
 	/// Atom flags.
 	var/flags = NONE
 	/// Intearaction flags.

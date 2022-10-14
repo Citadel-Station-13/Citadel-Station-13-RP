@@ -4,38 +4,51 @@
 /obj/item/clothing/ears/earmuffs
 	name = "earmuffs"
 	desc = "Protects your hearing from loud noises, and quiet ones as well."
-	icon_state = "earmuffs"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "earmuffs", SLOT_ID_LEFT_HAND = "earmuffs")
 	slot_flags = SLOT_EARS | SLOT_TWOEARS
 	ear_protection = 2
+
+	icon = 'icons/modules/clothing/ears/earmuffs.dmi'
+	worn_render_flags = NONE
+	worn_bodytypes = BODYTYPE_TESHARI
+
+	icon_state   = "earmuffs"
+	inhand_state = "earmuffs"
+
 
 /obj/item/clothing/ears/earmuffs/headphones
 	name = "headphones"
 	desc = "Unce unce unce unce."
-	var/headphones_on = 0
-	icon_state = "headphones_off"
-	item_state_slots = list(SLOT_ID_RIGHT_HAND = "headphones", SLOT_ID_LEFT_HAND = "headphones")
 	slot_flags = SLOT_EARS
 	ear_protection = 0
+	var/headphones_on = FALSE
+
+	icon = 'icons/modules/clothing/ears/headphones.dmi'
+	worn_render_flags = NONE
+	worn_bodytypes = BODYTYPE_TESHARI
+
+	base_icon_state = "headphones"
+	base_item_state = "headphones"
+
+	icon_state   = "headphones-off"
+	inhand_state = "headphones-off"
+
 
 /obj/item/clothing/ears/earmuffs/headphones/verb/togglemusic()
 	set name = "Toggle Headphone Music"
 	set category = "Object"
 	set src in usr
-	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
 
-	var/base_icon = copytext(icon_state,1,(length(icon_state) - 3 + headphones_on))
+	if(!istype(usr, /mob/living))
+		return
+	if(usr.stat)
+		return
 
-	if(headphones_on)
-		icon_state = "[base_icon]_off"
-		headphones_on = 0
-		to_chat(usr, "<span class='notice'>You turn the music off.</span>")
-	else
-		icon_state = "[base_icon]_on"
-		headphones_on = 1
-		to_chat(usr, "<span class='notice'>You turn the music on.</span>")
+	headphones_on = !headphones_on
 
+	icon_state   = "[base_icon_state]-[headphones_on ? "on" : "off"]"
+	inhand_state = "[base_item_state]-[headphones_on ? "on" : "off"]"
+
+	to_chat(usr, SPAN_NOTICE("[headphones_on ? "You turn the music on." : "You turn the music off."]"))
 	update_worn_icon()
 
 /obj/item/clothing/ears/earmuffs/headphones/AltClick(mob/user)
