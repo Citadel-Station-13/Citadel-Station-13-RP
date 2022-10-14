@@ -2,8 +2,8 @@
 /obj/item/clothing/gloves
 	name = "gloves"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_gloves.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_gloves.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_gloves.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_gloves.dmi',
 		)
 	gender = PLURAL //Carn: for grammarically correct text-parsing
 	w_class = ITEMSIZE_SMALL
@@ -21,11 +21,6 @@
 	body_parts_covered = HANDS
 	slot_flags = SLOT_GLOVES
 	attack_verb = list("challenged")
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/gloves.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/gloves.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/hands.dmi'
-		)
 	drop_sound = 'sound/items/drop/gloves.ogg'
 // todo: this is an awful way to do it but it works
 	unequip_sound = 'sound/items/drop/gloves.ogg'

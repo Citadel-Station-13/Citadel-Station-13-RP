@@ -4,8 +4,8 @@
 	icon_state = "crusher"
 	item_state = "crusher0"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/inhands/weapons/hammers_lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/inhands/weapons/hammers_righthand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/mob/inhands/weapons/hammers_lefthand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/weapons/hammers_righthand.dmi'
 		)
 	name = "proto-kinetic crusher"
 	desc = "An early design of the proto-kinetic accelerator, it is little more than an combination of various mining tools cobbled together, forming a high-tech club. \
@@ -291,8 +291,8 @@
 	desc = "A scaled down version of a protokinetic crusher, usually used in a last ditch scenario."
 	icon_state = "glaive-dagger"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_material.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 			)
 	item_state = "machete"
 	w_class = WEIGHT_CLASS_SMALL

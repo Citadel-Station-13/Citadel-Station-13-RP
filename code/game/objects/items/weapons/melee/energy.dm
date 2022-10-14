@@ -20,8 +20,8 @@
 	var/obj/item/cell/bcell = null
 	var/cell_type = /obj/item/cell/device
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 
 /obj/item/melee/energy/proc/activate(mob/living/user)
@@ -736,7 +736,7 @@
 	desc = "A broad, short energy blade.  You'll be glad to have this in a fight."
 	icon_state = "sword0"
 	icon = 'icons/obj/weapons_vr.dmi'
-	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi')
+	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi')
 
 /obj/item/melee/energy/sword/imperial/activate(mob/living/user)
 	..()

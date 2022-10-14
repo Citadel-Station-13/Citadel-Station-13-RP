@@ -63,6 +63,8 @@
 		starting_illegal_nifsoft = list()
 		for(var/P in (subtypesof(/datum/nifsoft) - typesof(/datum/nifsoft/package)))
 			var/datum/nifsoft/NS = P
+			if(initial(NS.abstract_type) == P)
+				continue
 			if(initial(NS.vended))
 				switch(initial(NS.illegal))
 					if(TRUE)

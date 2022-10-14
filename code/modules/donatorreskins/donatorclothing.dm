@@ -21,7 +21,7 @@
 	name = "bee costume"
 	desc = "Bee the true Queen!"
 	icon_state = "bee"
-	item_state_slots = list(slot_r_hand_str = "bee", slot_l_hand_str = "bee")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bee", SLOT_ID_LEFT_HAND = "bee")
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
@@ -34,7 +34,7 @@
 	icon_state = "beehood"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-	item_state_slots = list(slot_r_hand_str = "bee", slot_l_hand_str = "bee") //Does not exist -S2-
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bee", SLOT_ID_LEFT_HAND = "bee") //Does not exist -S2-
 	body_parts_covered = HEAD
 
 /obj/item/clothing/mask/red_mask
@@ -95,7 +95,7 @@
 	icon_state = "blackberet"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-	item_state_slots = list(slot_r_hand_str = "blackberet", slot_l_hand_str = "blackberet")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blackberet", SLOT_ID_LEFT_HAND = "blackberet")
 	body_parts_covered = HEAD
 
 /obj/item/clothing/head/donator/woolhat //ckey vfivesix. delete this later
@@ -112,9 +112,9 @@
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_state = "carcharodon"
 	item_state = "carcharodon"
-	item_icons = list(slot_r_hand_str = 'icons/mob/inhands/clothing_right.dmi', slot_l_hand_str = 'icons/mob/inhands/clothing_left.dmi')
-	rolled_sleeves = -1
-	rolled_down = -1
+	item_icons = list(SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/clothing_right.dmi', SLOT_ID_LEFT_HAND = 'icons/mob/inhands/clothing_left.dmi')
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/carcharodon/verb/switchsprite()
     set name = "Reconfigure Suit"
@@ -125,10 +125,10 @@
     if(usr.stat)
         return
     to_chat(usr, "You rearrange the suit's configuration.")
-    if(worn_state == "carcharodon_s")
-        worn_state = "carcharodon_d_s"
-    if(worn_state == "carcharodon_d_s")
-        worn_state = "carcharodon_s"
+    if(snowflake_worn_state == "carcharodon_s")
+        snowflake_worn_state = "carcharodon_d_s"
+    if(snowflake_worn_state == "carcharodon_d_s")
+        snowflake_worn_state = "carcharodon_s"
 
 /obj/item/clothing/under/mantleofheaven
 	name = "Mantle of the Heavens"
@@ -137,9 +137,9 @@
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	icon_state = "mantleofheaven"
 	item_state = "mantleofheaven"
-	item_icons = list(slot_r_hand_str = 'icons/mob/inhands/clothing_right.dmi', slot_l_hand_str = 'icons/mob/inhands/clothing_left.dmi')
-	rolled_sleeves = -1
-	rolled_down = -1
+	item_icons = list(SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/clothing_right.dmi', SLOT_ID_LEFT_HAND = 'icons/mob/inhands/clothing_left.dmi')
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/mantleofheaven/verb/switchsprite()
     set name = "Reconfigure Suit"
@@ -150,10 +150,10 @@
     if(usr.stat)
         return
     to_chat(usr, "You rearrange the suit's configuration.")
-    if(worn_state == "mantleofheaven_s")
-        worn_state = "mantleofheaven_d_s"
-    if(worn_state == "mantleofheaven_d_s")
-        worn_state = "mantleofheaven_s"
+    if(snowflake_worn_state == "mantleofheaven_s")
+        snowflake_worn_state = "mantleofheaven_d_s"
+    if(snowflake_worn_state == "mantleofheaven_d_s")
+        snowflake_worn_state = "mantleofheaven_s"
 
 /obj/item/clothing/suit/storage/hooded/techpriest/chaos
 	name = "chaote robe"
@@ -175,7 +175,6 @@
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
 	rolled_down_sleeves_icon = 'icons/obj/clothing/donatorclothing.dmi'
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/donator/mikubikini
 	name = "starlight singer bikini"
@@ -262,8 +261,8 @@
 	icon_state = "dancer_costume"
 	icon = 'icons/obj/clothing/donatorclothing.dmi'
 	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-	rolled_sleeves = -1
-	rolled_down = -1
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	action_button_name = "Reconfigure Suit"
 
 /obj/item/clothing/under/donator/dancer/verb/switchsprite()
@@ -275,10 +274,10 @@
     if(usr.stat)
         return
     to_chat(usr, "You rearrange the suit's configuration.")
-    if(worn_state == "dancer_costume_s")
-        worn_state = "dancer_costume_d_s"
-    if(worn_state == "dancer_costume_d_s")
-        worn_state = "dancer_costume_s"
+    if(snowflake_worn_state == "dancer_costume_s")
+        snowflake_worn_state = "dancer_costume_d_s"
+    if(snowflake_worn_state == "dancer_costume_d_s")
+        snowflake_worn_state = "dancer_costume_s"
 /obj/item/clothing/shoes/donator/dancer
 	name = "belly dancer footwraps"
 	desc = "Soft silk wraps meant to provide some protection without hampering agility."

@@ -14,8 +14,8 @@
 	force = 3
 	w_class = ITEMSIZE_SMALL
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_switchtool.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_switchtool.dmi')
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_switchtool.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_switchtool.dmi')
 	throw_force = 6
 	throw_speed = 3
 	throw_range = 6

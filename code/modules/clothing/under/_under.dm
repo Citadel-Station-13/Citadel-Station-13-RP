@@ -2,8 +2,8 @@
 /obj/item/clothing/under
 	icon = 'icons/obj/clothing/uniforms.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_uniforms.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_uniforms.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_uniforms.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_uniforms.dmi',
 		)
 	name = "under"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -15,26 +15,37 @@
 	show_messages = 1
 	blood_sprite_state = "uniformblood"
 
-	var/has_sensor = 1 //For the crew computer 2 = unable to change mode
-	//TFF 5/8/19 - sets /obj/item/clothing/under sensor setting default?
-	var/sensor_mode = 3
-		/*
-		1 = Report living/dead
-		2 = Report detailed damages
-		3 = Report location
-		*/
-	var/sensorpref = 5
-	var/displays_id = 1
-	var/rolled_down = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
-	var/rolled_sleeves = -1 //0 = unrolled, 1 = rolled, -1 = cannot be toggled
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/uniform.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/uniform.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/uniform.dmi')
+	//! Suit Sensors
+	/// do we have suit sensors?
+	var/has_sensors = UNIFORM_HAS_SUIT_SENSORS
+	/// suit sensor mode
+	var/sensor_mode = SUIT_SENSOR_OFF
 
+	var/displays_id = 1
+
+	//! Rolldown Status
+	//? Rolldown, sleeve appends are _down, _sleeve respectively.
+	//? AUTODETECT ONLY WORKS FOR SHARED SPRITES.
+	//? If you are using new rendering, you must NOT use autodetection.
+	//? Read the procs for these in the rendering section to know why.
+	/// if true, we assume *all* bodytypes have rolldown states, and to use the new system.
+	var/worn_has_rolldown = UNIFORM_AUTODETECT_ROLL
+	/// if true, we assume *all* bodytypes have rollsleeve states, and to use the new system.
+	var/worn_has_rollsleeve = UNIFORM_AUTODETECT_ROLL
+	/// these bodytypes have rolldown if not autodetecting
+	var/worn_rolldown_bodytypes = ALL
+	/// these bodytypes have rollsleeve if not autodetecting
+	var/worn_rollsleeve_bodytypes = ALL
+	/// rolldown status
+	var/worn_rolled_down = UNIFORM_ROLL_NULLED
+	/// rollsleeve status
+	var/worn_rolled_sleeves = UNIFORM_ROLL_NULLED
+
+	// todo: unify this iwth worn state, probably by converting the system used to do this
+	// todo: awful shit.
 	//convenience var for defining the icon state for the overlay used when the clothing is worn.
 	//Also used by rolling/unrolling.
-	var/worn_state = null
+	var/snowflake_worn_state = null
 	valid_accessory_slots = (\
 		ACCESSORY_SLOT_UTILITY\
 		|ACCESSORY_SLOT_WEAPON\
@@ -54,6 +65,7 @@
 	var/icon/rolled_down_icon = 'icons/mob/clothing/uniform_rolled_down.dmi'
 	var/icon/rolled_down_sleeves_icon = 'icons/mob/clothing/uniform_sleeves_rolled.dmi'
 
+// todo kick to item flag for auto-unequip-without-clickdrag
 /obj/item/clothing/under/attack_hand(var/mob/user)
 	if(LAZYLEN(accessories))
 		..()
@@ -63,89 +75,165 @@
 
 /obj/item/clothing/under/Initialize(mapload)
 	. = ..()
+	// for NOW, we need to autoset if null.
+	// todo: remove this lol
+	if(isnull(snowflake_worn_state))
+		snowflake_worn_state = item_state_slots?[SLOT_ID_UNIFORM] || item_state || icon_state
 	var/mob/living/carbon/human/H = loc
-	if(worn_state)
-		if(!item_state_slots)
-			item_state_slots = list()
-		item_state_slots[SLOT_ID_UNIFORM] = worn_state
+	init_sensors(istype(H)? H : null)
+
+/obj/item/clothing/under/proc/init_sensors(mob/living/carbon/human/H)
+	if(H)
+		switch(H.sensorpref)
+			if(1) sensor_mode = SUIT_SENSOR_OFF				//Sensors off
+			if(2) sensor_mode = SUIT_SENSOR_BINARY				//Sensors on binary
+			if(3) sensor_mode = SUIT_SENSOR_VITAL				//Sensors display vitals
+			if(4) sensor_mode = SUIT_SENSOR_TRACKING				//Sensors display vitals and enables tracking
+			else
+				sensor_mode = pick(SUIT_SENSOR_OFF, SUIT_SENSOR_BINARY, SUIT_SENSOR_VITAL, SUIT_SENSOR_TRACKING)	//Select a random setting
 	else
-		worn_state = icon_state
+		sensor_mode = SUIT_SENSOR_OFF
 
-	//autodetect rollability
-	if(rolled_down < 0)
-		if(("[worn_state]_d_s" in icon_states(INV_W_UNIFORM_DEF_ICON)) || ("[worn_state]_s" in icon_states(rolled_down_icon)) || ("[worn_state]_d_s" in icon_states(icon_override)))
-			rolled_down = 0
+//! Inventory
+/obj/item/clothing/under/pickup(mob/user, flags, atom/oldLoc)
+	. = ..()
+	// since updating is now semi-cheap, update immediately
+	update_rolldown()
+	update_rollsleeve()
 
-	if(rolled_down == -1)
+//! Rendering
+// todo : NUKE THIS SHIT FROM ORBIT ~silicons
+//UNIFORM: Always appends "_s" to iconstate, stupidly.
+/obj/item/clothing/under/resolve_legacy_state(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
+	if(snowflake_worn_state && (slot_meta.id == SLOT_ID_UNIFORM))
+		return snowflake_worn_state + "_s"
+	return ..()
+
+/obj/item/clothing/under/base_worn_state(inhands, slot_key, bodytype)
+	. = ..()
+	if(worn_rolled_down == UNIFORM_ROLL_TRUE)
+		. += "_down"
+	else if(worn_rolled_sleeves == UNIFORM_ROLL_TRUE)
+		. += "_sleeves"
+
+/obj/item/clothing/under/proc/update_rolldown(updating)
+	var/has_roll
+	var/detected_bodytype = BODYTYPE_DEFAULT
+	var/mob/living/carbon/human/H = worn_mob()
+	if(istype(H))
+		detected_bodytype = H.species.get_effective_bodytype(src, worn_slot)
+	switch(worn_has_rolldown)
+		if(UNIFORM_HAS_ROLL)
+			has_roll = (worn_rolldown_bodytypes & detected_bodytype)
+		if(UNIFORM_HAS_NO_ROLL)
+			has_roll = FALSE
+		if(UNIFORM_AUTODETECT_ROLL)
+			has_roll = autodetect_rolldown(detected_bodytype)
+
+	if(!has_roll)
 		verbs -= /obj/item/clothing/under/verb/rollsuit
-	if(rolled_sleeves == -1)
+		worn_rolled_down = UNIFORM_ROLL_NULLED
+	else
+		verbs |= /obj/item/clothing/under/verb/rollsuit
+		if(worn_rolled_down == UNIFORM_ROLL_NULLED)
+			worn_rolled_down = UNIFORM_ROLL_FALSE
+	if(!updating)
+		update_worn_icon()
+
+/obj/item/clothing/under/proc/update_rollsleeve(updating)
+	var/has_sleeves
+	var/detected_bodytype = BODYTYPE_DEFAULT
+	var/mob/living/carbon/human/H = worn_mob()
+	if(istype(H))
+		detected_bodytype = H.species.get_effective_bodytype(src, worn_slot)
+	switch(worn_has_rollsleeve)
+		if(UNIFORM_HAS_ROLL)
+			has_sleeves = (worn_rollsleeve_bodytypes & detected_bodytype)
+		if(UNIFORM_HAS_NO_ROLL)
+			has_sleeves = FALSE
+		if(UNIFORM_AUTODETECT_ROLL)
+			has_sleeves  = autodetect_rollsleeve(detected_bodytype)
+
+	if(!has_sleeves)
 		verbs -= /obj/item/clothing/under/verb/rollsleeves
-
-	//TFF 5/8/19 - define numbers and specifics for suit sensor settings
-	sensorpref = isnull(H) ? 1 : (ishuman(H) ? H.sensorpref : 1)
-	switch(sensorpref)
-		if(1) sensor_mode = 0				//Sensors off
-		if(2) sensor_mode = 1				//Sensors on binary
-		if(3) sensor_mode = 2				//Sensors display vitals
-		if(4) sensor_mode = 3				//Sensors display vitals and enables tracking
-		if(5) sensor_mode = pick(0,1,2,3)	//Select a random setting
-		else
-			sensor_mode = pick(0,1,2,3)
-			log_debug("Invalid switch for suit sensors, defaulting to random. [sensorpref] chosen")
-
-/obj/item/clothing/under/proc/update_rolldown_status()
-	var/mob/living/carbon/human/H
-	if(istype(src.loc, /mob/living/carbon/human))
-		H = src.loc
-
-	var/icon/under_icon
-	if(icon_override)
-		under_icon = icon_override
-	else if(H && sprite_sheets && sprite_sheets[H.species.get_worn_legacy_bodytype(H)])
-		under_icon = sprite_sheets[H.species.get_worn_legacy_bodytype(H)]
-	else if(item_icons && item_icons[SLOT_ID_UNIFORM])
-		under_icon = item_icons[SLOT_ID_UNIFORM]
-	else if ("[worn_state]_s" in icon_states(rolled_down_icon))
-		under_icon = rolled_down_icon
+		worn_rolled_sleeves = UNIFORM_ROLL_NULLED
 	else
-		under_icon = INV_W_UNIFORM_DEF_ICON
+		verbs |= /obj/item/clothing/under/verb/rollsleeves
+		if(worn_rolled_sleeves == UNIFORM_ROLL_NULLED)
+			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
+	if(!updating)
+		update_worn_icon()
 
-	// The _s is because the icon update procs append it.
-	if((under_icon == rolled_down_icon && ("[worn_state]_s" in icon_states(under_icon))) || ("[worn_state]_d_s" in icon_states(under_icon)))
-		if(rolled_down != 1)
-			rolled_down = 0
-	else
-		rolled_down = -1
-	if(H) update_worn_icon()
+/obj/item/clothing/under/proc/autodetect_rolldown(bodytype)
+	var/datum/inventory_slot_meta/inventory/uniform/wow_this_sucks = resolve_inventory_slot_meta(SLOT_ID_UNIFORM)
+	return wow_this_sucks.check_rolldown_cache(bodytype, resolve_legacy_state(null, wow_this_sucks, FALSE, bodytype))
 
-/obj/item/clothing/under/proc/update_rollsleeves_status()
-	var/mob/living/carbon/human/H
-	if(istype(src.loc, /mob/living/carbon/human))
-		H = src.loc
+/obj/item/clothing/under/proc/autodetect_rollsleeve(bodytype)
+	var/datum/inventory_slot_meta/inventory/uniform/wow_this_sucks = resolve_inventory_slot_meta(SLOT_ID_UNIFORM)
+	return wow_this_sucks.check_rollsleeve_cache(bodytype, resolve_legacy_state(null, wow_this_sucks, FALSE, bodytype))
 
-	var/icon/under_icon
-	if(icon_override)
-		under_icon = icon_override
-	else if(H && sprite_sheets && sprite_sheets[H.species.get_worn_legacy_bodytype(H)])
-		under_icon = sprite_sheets[H.species.get_worn_legacy_bodytype(H)]
-	else if(item_icons && item_icons[SLOT_ID_UNIFORM])
-		under_icon = item_icons[SLOT_ID_UNIFORM]
-	else if ("[worn_state]_s" in icon_states(rolled_down_sleeves_icon))
-		under_icon = rolled_down_sleeves_icon
-	else
-		under_icon = INV_W_UNIFORM_DEF_ICON
+/obj/item/clothing/under/verb/rollsuit()
+	set name = "Roll Jumpsuit"
+	set category = "Object"
+	set src in usr
 
-	// The _s is because the icon update procs append it.
-	if((under_icon == rolled_down_sleeves_icon && ("[worn_state]_s" in icon_states(under_icon))) || ("[worn_state]_r_s" in icon_states(under_icon)))
-		if(rolled_sleeves != 1)
-			rolled_sleeves = 0
-	else
-		rolled_sleeves = -1
-	if(H) update_worn_icon()
+	var/mob/user = usr
+	// todo: mobility flags
+	if(!istype(user, /mob/living)) return
+	if(user.stat) return
 
+	update_rolldown(TRUE)
+
+	switch(worn_rolled_down)
+		if(UNIFORM_ROLL_NULLED)
+			to_chat(user, SPAN_NOTICE("[src] cannot be rolled down."))
+			return
+		if(UNIFORM_ROLL_FALSE)
+			worn_rolled_down = UNIFORM_ROLL_TRUE
+			// todo: update_bodypart_coverage() for clothing damage
+			body_parts_covered &= ~(UPPER_TORSO | ARMS)
+			to_chat(user, SPAN_NOTICE("You roll [src] down."))
+		if(UNIFORM_ROLL_TRUE)
+			worn_rolled_down = UNIFORM_ROLL_FALSE
+			// todo: update_bodypart_coverage() for clothing damage
+			body_parts_covered = initial(body_parts_covered)
+			to_chat(user, SPAN_NOTICE("You roll [src] up."))
+
+	update_worn_icon()
+
+/obj/item/clothing/under/verb/rollsleeves()
+	set name = "Roll Up Sleeves"
+	set category = "Object"
+	set src in usr
+
+	var/mob/user = usr
+	// todo: mobility flags
+	if(!istype(user, /mob/living)) return
+	if(user.stat) return
+
+	update_rollsleeve(TRUE)
+
+	switch(worn_rolled_sleeves)
+		if(UNIFORM_ROLL_NULLED)
+			to_chat(user, SPAN_NOTICE("[src] cannot have its sleeves rolled."))
+			return
+		if(UNIFORM_ROLL_FALSE)
+			worn_rolled_sleeves = UNIFORM_ROLL_TRUE
+			// todo: update_bodypart_coverage() for clothing damage
+			body_parts_covered &= ~(ARMS)
+			to_chat(user, SPAN_NOTICE("You roll [src]'s sleeves up."))
+		if(UNIFORM_ROLL_TRUE)
+			worn_rolled_sleeves = UNIFORM_ROLL_FALSE
+			// todo: update_bodypart_coverage() for clothing damage
+			body_parts_covered = initial(body_parts_covered)
+			to_chat(user, SPAN_NOTICE("You roll [src]'s sleeves back down."))
+
+	update_worn_icon()
+
+//! Examine
 /obj/item/clothing/under/examine(mob/user)
 	. = ..()
-	switch(src.sensor_mode)
+	switch(sensor_mode)
 		if(0)
 			. += "Its sensors appear to be disabled."
 		if(1)
@@ -155,37 +243,40 @@
 		if(3)
 			. += "Its vital tracker and tracking beacon appear to be enabled."
 
-/obj/item/clothing/under/proc/set_sensors(mob/usr as mob)
-	var/mob/M = usr
-	if (istype(M, /mob/observer)) return
-	if (usr.stat || usr.restrained()) return
-	if(has_sensor >= 2)
-		to_chat(usr, "The controls are locked.")
-		return 0
-	if(has_sensor <= 0)
-		to_chat(usr, "This suit does not have any sensors.")
-		return 0
+//! Suit Sensors
+/obj/item/clothing/under/proc/set_sensors(mob/user)
+	if (istype(user, /mob/observer))
+		return FALSE
+	if (user.stat || user.restrained())
+		return FALSE
+	switch(has_sensors)
+		if(UNIFORM_HAS_LOCKED_SENSORS)
+			to_chat(user, "The controls are locked.")
+			return FALSE
+		if(UNIFORM_HAS_NO_SENSORS)
+			to_chat(user, "This suit does not have any sensors.")
+			return FALSE
 
 	var/list/modes = list("Off", "Binary sensors", "Vitals tracker", "Tracking beacon")
-	var/switchMode = input("Select a sensor mode:", "Suit Sensor Mode", modes[sensor_mode + 1]) in modes
-	if(get_dist(usr, src) > 1)
-		to_chat(usr, "You have moved too far away.")
+	var/switchMode = input(user, "Select a sensor mode:", "Suit Sensor Mode", modes[sensor_mode + 1]) in modes
+	if(get_dist(user, src) > 1)
+		to_chat(user, "You have moved too far away.")
 		return
 	sensor_mode = modes.Find(switchMode) - 1
 
-	if (src.loc == usr)
+	if (loc == user)
 		switch(sensor_mode)
-			if(0)
-				usr.visible_message("[usr] adjusts their sensors.", "You disable your suit's remote sensing equipment.")
-			if(1)
-				usr.visible_message("[usr] adjusts their sensors.", "Your suit will now report whether you are live or dead.")
-			if(2)
-				usr.visible_message("[usr] adjusts their sensors.", "Your suit will now report your vital lifesigns.")
-			if(3)
-				usr.visible_message("[usr] adjusts their sensors.", "Your suit will now report your vital lifesigns as well as your coordinate position.")
+			if(SUIT_SENSOR_OFF)
+				user.visible_message("[user] adjusts their sensors.", "You disable your suit's remote sensing equipment.")
+			if(SUIT_SENSOR_BINARY)
+				user.visible_message("[user] adjusts their sensors.", "Your suit will now report whether you are live or dead.")
+			if(SUIT_SENSOR_VITAL)
+				user.visible_message("[user] adjusts their sensors.", "Your suit will now report your vital lifesigns.")
+			if(SUIT_SENSOR_TRACKING)
+				user.visible_message("[user] adjusts their sensors.", "Your suit will now report your vital lifesigns as well as your coordinate position.")
 
-	else if (istype(src.loc, /mob))
-		usr.visible_message("[usr] adjusts [src.loc]'s sensors.", "You adjust [src.loc]'s sensors.")
+	else if (istype(loc, /mob))
+		user.visible_message("[user] adjusts [loc]'s sensors.", "You adjust [loc]'s sensors.")
 
 /obj/item/clothing/under/verb/toggle()
 	set name = "Toggle Suit Sensors"
@@ -193,71 +284,7 @@
 	set src in usr
 	set_sensors(usr)
 
-/obj/item/clothing/under/verb/rollsuit()
-	set name = "Roll Jumpsuit"
-	set category = "Object"
-	set src in usr
-	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
-
-	update_rolldown_status()
-	if(rolled_down == -1)
-		to_chat(usr, "<span class='notice'>You cannot roll down [src]!</span>")
-		return
-	if((rolled_sleeves == 1) && !(rolled_down))
-		rolled_sleeves = 0
-
-	rolled_down = !rolled_down
-	if(rolled_down)
-		body_parts_covered = initial(body_parts_covered)
-		body_parts_covered &= ~(UPPER_TORSO|ARMS)
-		if("[worn_state]_s" in icon_states(rolled_down_icon))
-			icon_override = rolled_down_icon
-			item_state_slots[SLOT_ID_UNIFORM] = "[worn_state]"
-		else
-			item_state_slots[SLOT_ID_UNIFORM] = "[worn_state]_d"
-
-		to_chat(usr, "<span class='notice'>You roll your [src].</span>")
-	else
-		body_parts_covered = initial(body_parts_covered)
-		if(icon_override == rolled_down_icon)
-			icon_override = initial(icon_override)
-		item_state_slots[SLOT_ID_UNIFORM] = "[worn_state]"
-		to_chat(usr, "<span class='notice'>You unroll your [src].</span>")
-	update_worn_icon()
-
-/obj/item/clothing/under/verb/rollsleeves()
-	set name = "Roll Up Sleeves"
-	set category = "Object"
-	set src in usr
-	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
-
-	update_rollsleeves_status()
-	if(rolled_sleeves == -1)
-		to_chat(usr, "<span class='notice'>You cannot roll up your [src]'s sleeves!</span>")
-		return
-	if(rolled_down == 1)
-		to_chat(usr, "<span class='notice'>You must roll up your [src] first!</span>")
-		return
-
-	rolled_sleeves = !rolled_sleeves
-	if(rolled_sleeves)
-		body_parts_covered &= ~(ARMS)
-		if("[worn_state]_s" in icon_states(rolled_down_sleeves_icon))
-			icon_override = rolled_down_sleeves_icon
-			item_state_slots[SLOT_ID_UNIFORM] = "[worn_state]"
-		else
-			item_state_slots[SLOT_ID_UNIFORM] = "[worn_state]_r"
-		to_chat(usr, "<span class='notice'>You roll up your [src]'s sleeves.</span>")
-	else
-		body_parts_covered = initial(body_parts_covered)
-		if(icon_override == rolled_down_sleeves_icon)
-			icon_override = initial(icon_override)
-		item_state_slots[SLOT_ID_UNIFORM] = "[worn_state]"
-		to_chat(usr, "<span class='notice'>You roll down your [src]'s sleeves.</span>")
-	update_worn_icon()
-
+//! Strip Menu
 /obj/item/clothing/under/strip_menu_options(mob/user)
 	. = ..()
 	.["sensors"] = "Set Suit Sensors"
@@ -275,12 +302,12 @@
 				. = strip_menu_sensor_interact(user, M)
 
 /obj/item/clothing/under/proc/strip_menu_sensor_interact(mob/user, mob/wearer = worn_mob())
-	if(has_sensor >= 2)
-		to_chat(user, SPAN_WARNING("\the [src]'s suit sensor controls are locked."))
-		return FALSE
 	add_attack_logs(user, wearer, "Adjusted suit sensor level")
 	set_sensors(user)
 
-/obj/item/clothing/under/rank/Initialize(mapload)
-	. = ..()
-	sensor_mode = pick(0,1,2,3)
+/obj/item/clothing/under/rank
+
+/obj/item/clothing/under/rank/init_sensors(mob/living/carbon/human/H)
+	if(!H)
+		sensor_mode = pick(SUIT_SENSOR_OFF, SUIT_SENSOR_BINARY, SUIT_SENSOR_VITAL, SUIT_SENSOR_TRACKING)	//Select a random setting
+	return ..()

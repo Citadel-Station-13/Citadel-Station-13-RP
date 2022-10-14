@@ -30,11 +30,6 @@ BLIND     // can't see anything
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/eyes.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/eyes.dmi'
-		)
-
 /obj/item/clothing/glasses/attack_self(mob/user)
 	if(toggleable)
 		if(active)
@@ -155,7 +150,7 @@ BLIND     // can't see anything
 	name = "optical meson scanner"
 	desc = "Used for seeing walls, floors, and stuff through anything."
 	icon_state = "meson"
-	item_state_slots = list(slot_r_hand_str = "meson", slot_l_hand_str = "meson")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "meson", SLOT_ID_LEFT_HAND = "meson")
 	action_button_name = "Toggle Goggles"
 	origin_tech = list(TECH_MAGNET = 2, TECH_ENGINEERING = 2)
 	toggleable = 1
@@ -176,7 +171,7 @@ BLIND     // can't see anything
 	name = "engineering aviators"
 	icon_state = "aviator_eng"
 	off_state = "aviator"
-	item_state_slots = list(slot_r_hand_str = "sunglasses", slot_l_hand_str = "sunglasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sunglasses", SLOT_ID_LEFT_HAND = "sunglasses")
 	action_button_name = "Toggle HUD"
 	activation_sound = 'sound/effects/pop.ogg'
 
@@ -203,7 +198,7 @@ BLIND     // can't see anything
 	name = "Science Goggles"
 	desc = "The goggles do nothing!"
 	icon_state = "purple"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
 	body_parts_covered = EYES
@@ -217,7 +212,7 @@ BLIND     // can't see anything
 	name = "goggles"
 	desc = "Just some plain old goggles."
 	icon_state = "plaingoggles"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	body_parts_covered = EYES
 	item_flags = PHORONGUARD
 
@@ -225,7 +220,7 @@ BLIND     // can't see anything
 	name = "night vision goggles"
 	desc = "You can totally see in the dark now!"
 	icon_state = "night"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	origin_tech = list(TECH_MAGNET = 2)
 	darkness_view = 7
 	toggleable = 1
@@ -248,7 +243,7 @@ BLIND     // can't see anything
 	name = "eyepatch"
 	desc = "Yarr."
 	icon_state = "eyepatch"
-	item_state_slots = list(slot_r_hand_str = "blindfold", slot_l_hand_str = "blindfold")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blindfold", SLOT_ID_LEFT_HAND = "blindfold")
 	body_parts_covered = 0
 	var/eye = null
 	drop_sound = 'sound/items/drop/gloves.ogg'
@@ -259,7 +254,7 @@ BLIND     // can't see anything
 	name = "eyepatch"
 	desc = "A simple eyepatch made of a strip of cloth tied around the head."
 	icon_state = "eyepatch_white"
-	item_state_slots = list(slot_r_hand_str = "blindfold", slot_l_hand_str = "blindfold")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blindfold", SLOT_ID_LEFT_HAND = "blindfold")
 	body_parts_covered = 0
 	var/eye = null
 
@@ -295,14 +290,14 @@ BLIND     // can't see anything
 	name = "monocle"
 	desc = "Such a dapper eyepiece!"
 	icon_state = "monocle"
-	item_state_slots = list(slot_r_hand_str = "headset", slot_l_hand_str = "headset")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "headset", SLOT_ID_LEFT_HAND = "headset")
 	body_parts_covered = 0
 
 /obj/item/clothing/glasses/material
 	name = "optical material scanner"
 	desc = "Very confusing glasses."
 	icon_state = "material"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	origin_tech = list(TECH_MAGNET = 3, TECH_ENGINEERING = 3)
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
@@ -322,7 +317,7 @@ BLIND     // can't see anything
 	name = "graviton goggles"
 	desc = "The secrets of space travel are.. not quite yours."
 	icon_state = "grav"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	origin_tech = list(TECH_MAGNET = 2, TECH_BLUESPACE = 1)
 	darkness_view = 5
 	toggleable = 1
@@ -341,7 +336,7 @@ BLIND     // can't see anything
 	name = "prescription glasses"
 	desc = "Made by Nerd. Co."
 	icon_state = "glasses"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	prescription = 1
 	body_parts_covered = 0
 
@@ -359,14 +354,14 @@ BLIND     // can't see anything
 	desc = "A long time ago, people used these glasses to makes images from screens threedimensional."
 	name = "3D glasses"
 	icon_state = "3d"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	body_parts_covered = 0
 
 /obj/item/clothing/glasses/gglasses
 	name = "green glasses"
 	desc = "Forest green glasses, like the kind you'd wear when hatching a nasty scheme."
 	icon_state = "gglasses"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	body_parts_covered = 0
 
 /obj/item/clothing/glasses/regular/rimless
@@ -432,7 +427,7 @@ BLIND     // can't see anything
 	name = "sunglasses"
 	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks many flashes."
 	icon_state = "sun"
-	item_state_slots = list(slot_r_hand_str = "sunglasses", slot_l_hand_str = "sunglasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sunglasses", SLOT_ID_LEFT_HAND = "sunglasses")
 	darkness_view = -1
 	flash_protection = FLASH_PROTECTION_MODERATE
 
@@ -445,7 +440,7 @@ BLIND     // can't see anything
 	name = "welding goggles"
 	desc = "Protects the eyes from welders, approved by the mad scientist association."
 	icon_state = "welding-g"
-	item_state_slots = list(slot_r_hand_str = "welding-g", slot_l_hand_str = "welding-g")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "welding-g", SLOT_ID_LEFT_HAND = "welding-g")
 	action_button_name = "Flip Welding Goggles"
 	matter = list(MAT_STEEL = 1500, MAT_GLASS = 1000)
 	var/up = 0
@@ -495,7 +490,7 @@ BLIND     // can't see anything
 	name = "blindfold"
 	desc = "Covers the eyes, preventing sight."
 	icon_state = "blindfold"
-	item_state_slots = list(slot_r_hand_str = "blindfold", slot_l_hand_str = "blindfold")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blindfold", SLOT_ID_LEFT_HAND = "blindfold")
 	flash_protection = FLASH_PROTECTION_MAJOR
 	tint = BLIND
 	drop_sound = 'sound/items/drop/gloves.ogg'
@@ -506,7 +501,7 @@ BLIND     // can't see anything
 	desc = "It's a robust DIY blindfold!"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "tape_cross"
-	item_state_slots = list(slot_r_hand_str = null, slot_l_hand_str = null)
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = null, SLOT_ID_LEFT_HAND = null)
 	w_class = ITEMSIZE_TINY
 
 /obj/item/clothing/glasses/sunglasses/prescription
@@ -521,7 +516,7 @@ BLIND     // can't see anything
 	name = "stylish sunglasses"
 	desc = "A pair of designer sunglasses. Doesn't seem like it'll block flashes."
 	icon_state = "sun"
-	item_state_slots = list(slot_r_hand_str = "sunglasses", slot_l_hand_str = "sunglasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sunglasses", SLOT_ID_LEFT_HAND = "sunglasses")
 
 /obj/item/clothing/glasses/fakesunglasses/aviator
 	name = "stylish aviators"
@@ -596,7 +591,7 @@ BLIND     // can't see anything
 	name = "optical thermal scanner"
 	desc = "Thermals in the shape of glasses."
 	icon_state = "thermal"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	origin_tech = list(TECH_MAGNET = 3)
 	toggleable = 1
 	action_button_name = "Toggle Goggles"
@@ -626,7 +621,7 @@ BLIND     // can't see anything
 	name = "optical meson scanner"
 	desc = "Used for seeing walls, floors, and stuff through anything."
 	icon_state = "meson"
-	item_state_slots = list(slot_r_hand_str = "meson", slot_l_hand_str = "meson")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "meson", SLOT_ID_LEFT_HAND = "meson")
 	origin_tech = list(TECH_MAGNET = 3, TECH_ILLEGAL = 4)
 
 /obj/item/clothing/glasses/thermal/plain
@@ -638,7 +633,7 @@ BLIND     // can't see anything
 	name = "thermonocle"
 	desc = "A monocle thermal."
 	icon_state = "thermoncle"
-	item_state_slots = list(slot_r_hand_str = "sunglasses", slot_l_hand_str = "sunglasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sunglasses", SLOT_ID_LEFT_HAND = "sunglasses")
 	toggleable = 1
 	action_button_name = "Toggle Monocle"
 	flags = null //doesn't protect eyes because it's a monocle, duh
@@ -649,7 +644,7 @@ BLIND     // can't see anything
 	name = "optical thermal eyepatch"
 	desc = "An eyepatch with built-in thermal optics"
 	icon_state = "eyepatch"
-	item_state_slots = list(slot_r_hand_str = "blindfold", slot_l_hand_str = "blindfold")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blindfold", SLOT_ID_LEFT_HAND = "blindfold")
 	body_parts_covered = 0
 	toggleable = 1
 	action_button_name = "Toggle Eyepatch"
@@ -658,13 +653,13 @@ BLIND     // can't see anything
 	name = "optical thermal implants"
 	desc = "A set of implantable lenses designed to augment your vision."
 	icon_state = "thermalimplants"
-	item_state_slots = list(slot_r_hand_str = "sunglasses", slot_l_hand_str = "sunglasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sunglasses", SLOT_ID_LEFT_HAND = "sunglasses")
 
 /obj/item/clothing/glasses/aerogelgoggles
 	name = "orange goggles"
 	desc = "Teshari designed lightweight goggles."
 	icon_state = "orange-g"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	action_button_name = "Adjust Orange Goggles"
 	flags = PHORONGUARD
 	var/up = 0
@@ -699,7 +694,7 @@ BLIND     // can't see anything
 	name = "jamjar glasses"
 	desc = "A staple of the neo-otaku's wardrobe."
 	icon_state = "jamjar_glasses"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	prescription = 1
 	body_parts_covered = 0
 
@@ -720,20 +715,20 @@ BLIND     // can't see anything
 	name = "red glasses"
 	desc = "A pair of glasses with red lenses that swirl and pulse hypnotically."
 	icon_state = "redglasses"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 
 /obj/item/clothing/glasses/badglasses
 	name = "poorly made glasses"
 	desc = "A pair of glasses that look cheaply made. The lenses are prescription, at least...?"
 	icon_state = "glasses_alt"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	prescription = 1
 
 /obj/item/clothing/glasses/orangeglasses
 	name = "orange glasses"
 	desc = "A pair of orange glasses."
 	icon_state = "orangeglasses"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 
 /obj/item/clothing/glasses/proc/prescribe(var/mob/user)
 	prescription = !prescription
@@ -845,17 +840,10 @@ BLIND     // can't see anything
 	off_state = "tajblind"
 	body_parts_covered = EYES
 
-/obj/item/clothing/glasses
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/eyes.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/eyes.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/eyes.dmi'
-		)
-
 /obj/item/clothing/glasses/welding/laconic
 	name = "laconic goggles"
 	desc = "Welding goggles fashioned out of brass. Brass goggles."
 	icon_state = "laconic-g"
-	item_state_slots = list(slot_r_hand_str = "welding-g", slot_l_hand_str = "welding-g")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "welding-g", SLOT_ID_LEFT_HAND = "welding-g")
 	action_button_name = "Adjust Goggles"
 	matter = list("brass" = 1500, MAT_GLASS = 1000)

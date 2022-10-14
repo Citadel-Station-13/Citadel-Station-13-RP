@@ -5,8 +5,6 @@
 	name = "master oricon uniform"
 	desc = "You shouldn't be seeing this."
 	icon = 'icons/obj/clothing/uniforms_oricon.dmi'
-	rolled_down = 0
-	rolled_sleeves = 0
 	item_icons = list(SLOT_ID_UNIFORM = 'icons/mob/clothing/uniform_oricon.dmi')
 	armor = list(melee = 5, bullet = 0, laser = 5, energy = 5, bomb = 0, bio = 5, rad = 5)
 	siemens_coefficient = 0.8
@@ -16,7 +14,7 @@
 	name = "pt uniform"
 	desc = "Shorts! Shirt! Miami! Sexy!"
 	icon_state = "miami"
-	worn_state = "miami"
+	snowflake_worn_state = "miami"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.9
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
@@ -25,19 +23,19 @@
 	name = "\improper SysGuard pt uniform"
 	desc = "A baggy shirt bearing the seal of the System Defense Force and some dorky looking blue shorts."
 	icon_state = "expeditionpt"
-	worn_state = "expeditionpt"
+	snowflake_worn_state = "expeditionpt"
 
 /obj/item/clothing/under/oricon/pt/fleet
 	name = "fleet pt uniform"
 	desc = "A pair of black shorts and two tank tops, seems impractical. Looks good though."
 	icon_state = "fleetpt"
-	worn_state = "fleetpt"
+	snowflake_worn_state = "fleetpt"
 
 /obj/item/clothing/under/oricon/pt/marine
 	name = "marine pt uniform"
 	desc = "Does NOT leave much to the imagination."
 	icon_state = "marinept"
-	worn_state = "marinept"
+	snowflake_worn_state = "marinept"
 
 
 //Utility
@@ -46,8 +44,7 @@
 	name = "utility uniform"
 	desc = "A comfortable turtleneck and black utility trousers."
 	icon_state = "blackutility"
-	worn_state = "blackutility"
-	rolled_sleeves = 0
+	snowflake_worn_state = "blackutility"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.9
 
@@ -55,20 +52,20 @@
 	name = "utility uniform"
 	desc = "A comfortable blue utility jumpsuit."
 	icon_state = "navyutility"
-	worn_state = "navyutility"
+	snowflake_worn_state = "navyutility"
 
 /obj/item/clothing/under/utility/grey
 	name = "utility uniform"
 	desc = "A comfortable grey utility jumpsuit."
 	icon_state = "greyutility"
-	worn_state = "greyutility"
+	snowflake_worn_state = "greyutility"
 
 //Here's the real ones
 /obj/item/clothing/under/oricon/utility/sysguard
 	name = "\improper SysGuard uniform"
 	desc = "The utility uniform of the System Defense Force, made from biohazard resistant material. This one has silver trim."
 	icon_state = "blackutility_crew"
-	worn_state = "blackutility_crew"
+	snowflake_worn_state = "blackutility_crew"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 10)
 
 /obj/item/clothing/under/oricon/utility/sysguard/command
@@ -96,7 +93,7 @@
 	name = "\improper SysGuard officer's uniform"
 	desc = "The utility uniform of the System Defense Force, made from biohazard resistant material. This one has gold trim."
 	icon_state = "blackutility_com"
-	worn_state = "blackutility_com"
+	snowflake_worn_state = "blackutility_com"
 
 /obj/item/clothing/under/oricon/utility/sysguard/officer/command
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/command)
@@ -123,7 +120,7 @@
 	name = "fleet coveralls"
 	desc = "The utility uniform of the OCG Fleet, made from an insulated material."
 	icon_state = "navyutility"
-	worn_state = "navyutility"
+	snowflake_worn_state = "navyutility"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 10, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
 
@@ -153,7 +150,7 @@
 	name = "marine fatigues"
 	desc = "The utility uniform of the OCG Marine Corps, made from durable material."
 	icon_state = "greyutility"
-	worn_state = "greyutility"
+	snowflake_worn_state = "greyutility"
 	armor = list(melee = 10, bullet = 0, laser = 10,energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/under/oricon/utility/marine/command
@@ -178,13 +175,13 @@
 	name = "green fatigues"
 	desc = "A green version of the OCG marine utility uniform, made from durable material."
 	icon_state = "greenutility"
-	worn_state = "greenutility"
+	snowflake_worn_state = "greenutility"
 
 /obj/item/clothing/under/oricon/utility/marine/tan
 	name = "tan fatigues"
 	desc = "A tan version of the OCG marine utility uniform, made from durable material."
 	icon_state = "tanutility"
-	worn_state = "tanutility"
+	snowflake_worn_state = "tanutility"
 
 //Service
 
@@ -192,7 +189,7 @@
 	name = "service uniform"
 	desc = "A service uniform of some kind."
 	icon_state = "whiteservice"
-	worn_state = "whiteservice"
+	snowflake_worn_state = "whiteservice"
 	armor = list(melee = 5, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 5, rad = 0)
 	siemens_coefficient = 0.9
 
@@ -200,19 +197,19 @@
 	name = "fleet service uniform"
 	desc = "The service uniform of the OCG Fleet, made from immaculate white fabric."
 	icon_state = "whiteservice"
-	worn_state = "whiteservice"
+	snowflake_worn_state = "whiteservice"
 
 /obj/item/clothing/under/oricon/service/marine
 	name = "marine service uniform"
 	desc = "The service uniform of the OCG Marine Corps. Slimming."
 	icon_state = "greenservice"
-	worn_state = "greenservice"
+	snowflake_worn_state = "greenservice"
 
 /obj/item/clothing/under/oricon/service/marine/command
 	name = "marine command service uniform"
 	desc = "The service uniform of the OCG Marine Corps. Slimming and stylish."
 	icon_state = "greenservice_com"
-	worn_state = "greenservice_com"
+	snowflake_worn_state = "greenservice_com"
 
 //Dress
 
@@ -220,7 +217,7 @@
 	name = "dress uniform"
 	desc = "A dress uniform of some kind."
 	icon_state = "greydress"
-	worn_state = "greydress"
+	snowflake_worn_state = "greydress"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.9
 
@@ -256,7 +253,7 @@
 	name = "\improper SysGuard command dress uniform"
 	desc = "The dress uniform of the System Defense Force in gold trim."
 	icon_state = "greydress_com"
-	worn_state = "greydress_com"
+	snowflake_worn_state = "greydress_com"
 
 /obj/item/clothing/under/oricon/mildress/sysguard/officer/command
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/command/service)
@@ -286,19 +283,19 @@
 	name = "marine dress uniform"
 	desc = "The dress uniform of the OCG Marine Corps, class given form."
 	icon_state = "blackdress"
-	worn_state = "blackdress"
+	snowflake_worn_state = "blackdress"
 
 /obj/item/clothing/under/oricon/mildress/marine/command
 	name = "marine command dress uniform"
 	desc = "The dress uniform of the OCG Marine Corps, even classier in gold."
 	icon_state = "blackdress_com"
-	worn_state = "blackdress_com"
+	snowflake_worn_state = "blackdress_com"
 
 /obj/item/clothing/under/oricon/mildress/marine/command/fake
 	name = "command dress uniform"
 	desc = "A dress uniform for command, even classier in gold."
 	icon_state = "blackdress_com"
-	worn_state = "blackdress_com"
+	snowflake_worn_state = "blackdress_com"
 
 
 //Misc
@@ -307,7 +304,7 @@
 	name = "hazard jumpsuit"
 	desc = "A high visibility jumpsuit made from heat and radiation resistant materials."
 	icon_state = "hazard"
-	worn_state = "hazard"
+	snowflake_worn_state = "hazard"
 	siemens_coefficient = 0.8
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 20, bio = 0, rad = 20)
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
@@ -316,7 +313,7 @@
 	name = "sterile jumpsuit"
 	desc = "A sterile white jumpsuit with medical markings. Protects against all manner of biohazards."
 	icon_state = "sterile"
-	worn_state = "sterile"
+	snowflake_worn_state = "sterile"
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 30, rad = 0)
 
@@ -389,7 +386,7 @@
 /obj/item/clothing/under/oricon/service/marine
 	name = "marine service uniform"
 	desc = "The service uniform of the JSDF Marine Corps. Slimming."
-	worn_state = "greenservice"
+	snowflake_worn_state = "greenservice"
 
 /obj/item/clothing/under/oricon/service/marine/command
 	name = "marine command service uniform"

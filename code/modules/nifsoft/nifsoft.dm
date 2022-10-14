@@ -6,6 +6,8 @@
 	var/name = "Prototype"
 	var/desc = "Contact a dev!"
 
+	var/abstract_type = /datum/nifsoft
+
 	/// The NIF that the software is stored in
 	var/obj/item/nif/nif
 	/// List position in the nifsoft list
@@ -202,8 +204,8 @@
 	icon_state = "medical"
 	item_state = "nanomod"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_vr.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_vr.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 		)
 	w_class = ITEMSIZE_SMALL
 	var/datum/nifsoft/stored = null
@@ -253,8 +255,8 @@
 	icon_state = "compliance"
 	item_state = "healthanalyzer"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand.dmi',
 		)
 	stored = /datum/nifsoft/compliance
 	var/laws

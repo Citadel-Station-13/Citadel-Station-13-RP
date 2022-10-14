@@ -354,8 +354,7 @@
 			fruit_gland.fruit_type = selection
 		verbs |= /mob/living/carbon/human/proc/alraune_fruit_pick
 		verbs -= /mob/living/carbon/human/proc/alraune_fruit_select
-		fruit_gland.organ_owner = src
-		fruit_gland.emote_descriptor = list("fruit right off of [fruit_gland.organ_owner]!", "a fruit from [fruit_gland.organ_owner]!")
+		fruit_gland.emote_descriptor = list("fruit right off of [fruit_gland.owner]!", "a fruit from [fruit_gland.owner]!")
 
 	else
 		to_chat(src, SPAN_NOTICE("You lack the organ required to produce fruit."))

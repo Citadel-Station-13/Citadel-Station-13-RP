@@ -2,7 +2,7 @@
 	name = "red pj's"
 	desc = "Sleepwear."
 	icon_state = "red_pyjamas"
-	item_state_slots = list(slot_r_hand_str = "white", slot_l_hand_str = "white")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
 
 /obj/item/clothing/under/pj/red_fem
 	name = "red pj's"
@@ -13,7 +13,7 @@
 	name = "blue pj's"
 	desc = "Sleepwear."
 	icon_state = "blue_pyjamas"
-	item_state_slots = list(slot_r_hand_str = "white", slot_l_hand_str = "white")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
 
 /obj/item/clothing/under/pj/blue_fem
 	name = "blue pj's"
@@ -24,7 +24,7 @@
 	name = "rogue's uniform"
 	desc = "For the man who doesn't care because he's still free."
 	icon_state = "captain_fly"
-	item_state_slots = list(slot_r_hand_str = "red", slot_l_hand_str = "red")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
 
 /obj/item/clothing/under/scratch
 	name = "white suit"
@@ -34,19 +34,17 @@
 /obj/item/clothing/under/scratch/skirt
 	name = "white skirt suit"
 	icon_state = "scratch_skirt"
-	item_state_slots = list(slot_r_hand_str = "scratch", slot_l_hand_str = "scratch")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "scratch", SLOT_ID_LEFT_HAND = "scratch")
 
 /obj/item/clothing/under/sl_suit
 	desc = "It's a very amish looking suit."
 	name = "amish suit"
 	icon_state = "sl_suit"
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/waiter
 	name = "waiter's outfit"
 	desc = "It's a very smart uniform with a special pocket for tips."
 	icon_state = "waiter"
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/waiter_fem
 	name = "waiter's outfit"
@@ -65,22 +63,21 @@
 	name = "mailman's jumpsuit"
 	desc = "<i>'Special delivery!'</i>"
 	icon_state = "mailman"
-	item_state_slots = list(slot_r_hand_str = "blue", slot_l_hand_str = "blue")
-	rolled_sleeves = 0
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blue", SLOT_ID_LEFT_HAND = "blue")
 
 /obj/item/clothing/under/sexyclown
 	name = "sexy-clown suit"
 	desc = "It makes you look HONKable!"
 	icon_state = "sexyclown"
-	item_state_slots = list(slot_r_hand_str = "clown", slot_l_hand_str = "clown")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "clown", SLOT_ID_LEFT_HAND = "clown")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	rolled_sleeves = -1 //Please never
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL //Please never
 
 /obj/item/clothing/under/rank/vice
 	name = "vice officer's jumpsuit"
 	desc = "It's the standard issue pretty-boy outfit, as seen on Holo-Vision."
 	icon_state = "vice"
-	item_state_slots = list(slot_r_hand_str = "grey", slot_l_hand_str = "grey")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "grey", SLOT_ID_LEFT_HAND = "grey")
 
 /obj/item/clothing/under/space
 	name = "\improper NASA jumpsuit"
@@ -92,12 +89,11 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	cold_protection = UPPER_TORSO | LOWER_TORSO | LEGS | ARMS //Needs gloves and shoes with cold protection to be fully protected.
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/acj
 	name = "administrative cybernetic jumpsuit"
 	icon_state = "syndicate"
-	item_state_slots = list(slot_r_hand_str = "black", slot_l_hand_str = "black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black", SLOT_ID_LEFT_HAND = "black")
 	desc = "it's a cybernetically enhanced jumpsuit used for administrative duties."
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
@@ -126,15 +122,14 @@
 	name = "dark undersuit"
 	desc = "A thick, layered grey undersuit lined with power cables. Feels a little like wearing an electrical storm."
 	icon_state = "psysuit"
-	item_state_slots = list(slot_r_hand_str = "black", slot_l_hand_str = "black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black", SLOT_ID_LEFT_HAND = "black")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 
 /obj/item/clothing/under/gentlesuit
 	name = "gentlemans suit"
 	desc = "A silk black shirt with matching gray slacks. Feels proper."
 	icon_state = "gentlesuit"
-	item_state_slots = list(slot_r_hand_str = "grey", slot_l_hand_str = "grey")
-	rolled_sleeves = 0
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "grey", SLOT_ID_LEFT_HAND = "grey")
 	starting_accessories = list(/obj/item/clothing/accessory/tie/white, /obj/item/clothing/accessory/wcoat/gentleman)
 
 /obj/item/clothing/under/gentlesuit/skirt
@@ -146,7 +141,7 @@
 	name = "Facility Director's suit"
 	desc = "A green suit and yellow necktie. Exemplifies authority."
 	icon_state = "green_suit"
-	item_state_slots = list(slot_r_hand_str = "centcom", slot_l_hand_str = "centcom")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "centcom", SLOT_ID_LEFT_HAND = "centcom")
 
 /obj/item/clothing/under/gimmick/rank/captain/suit/skirt
 	name = "Facility Director's skirt suit"
@@ -156,7 +151,7 @@
 	name = "head of personnel's suit"
 	desc = "A teal suit and yellow necktie. An authoritative yet tacky ensemble."
 	icon_state = "teal_suit"
-	item_state_slots = list(slot_r_hand_str = "green", slot_l_hand_str = "green")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "green", SLOT_ID_LEFT_HAND = "green")
 
 /obj/item/clothing/under/gimmick/rank/head_of_personnel/suit/skirt
 	name = "head of personnel's skirt suit"
@@ -166,13 +161,13 @@
 	name = "black suit"
 	desc = "A black suit and red tie. Very formal."
 	icon_state = "black_suit"
-	item_state_slots = list(slot_r_hand_str = "lawyer_black", slot_l_hand_str = "lawyer_black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lawyer_black", SLOT_ID_LEFT_HAND = "lawyer_black")
 
 /obj/item/clothing/under/suit_jacket/really_black
 	name = "executive suit"
 	desc = "A formal black suit and red tie, intended for the station's finest."
 	icon_state = "really_black_suit"
-	item_state_slots = list(slot_r_hand_str = "lawyer_black", slot_l_hand_str = "lawyer_black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lawyer_black", SLOT_ID_LEFT_HAND = "lawyer_black")
 
 /obj/item/clothing/under/suit_jacket/really_black/skirt
 	name = "executive skirt suit"
@@ -183,7 +178,7 @@
 	name = "female executive suit"
 	desc = "A formal trouser suit for women, intended for the station's finest."
 	icon_state = "black_suit_fem"
-	item_state_slots = list(slot_r_hand_str = "lawyer_black", slot_l_hand_str = "lawyer_black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lawyer_black", SLOT_ID_LEFT_HAND = "lawyer_black")
 
 /obj/item/clothing/under/suit_jacket/female/skirt
 	name = "executive skirt"
@@ -200,7 +195,7 @@
 	name = "red suit"
 	desc = "A red suit and blue tie. Somewhat formal."
 	icon_state = "red_suit"
-	item_state_slots = list(slot_r_hand_str = "lawyer_red", slot_l_hand_str = "lawyer_red")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lawyer_red", SLOT_ID_LEFT_HAND = "lawyer_red")
 
 /obj/item/clothing/under/suit_jacket/red/skirt
 	name = "red skirt suit"
@@ -211,41 +206,41 @@
 	name = "frilly blue skirt" //Citadel change REEEFETISHCONTENT
 	desc = "A clean white shirt with a blue collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
 	icon_state = "schoolgirl"
-	item_state_slots = list(slot_r_hand_str = "blue", slot_l_hand_str = "blue")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blue", SLOT_ID_LEFT_HAND = "blue")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/schoolgirl/red
 	name = "frilly red skirt" //Citadel change REEEFETISHCONTENT
 	desc = "A clean white shirt with a red collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
 	icon_state = "schoolgirlred"
-	item_state_slots = list(slot_r_hand_str = "red", slot_l_hand_str = "red")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
 
 /obj/item/clothing/under/schoolgirl/green
 	name = "frilly green skirt" //Citadel change REEEFETISHCONTENT
 	desc = "A clean white shirt with a green collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
 	icon_state = "schoolgirlgreen"
-	item_state_slots = list(slot_r_hand_str = "green", slot_l_hand_str = "green")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "green", SLOT_ID_LEFT_HAND = "green")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/schoolgirl/orange
 	name = "frilly orange skirt" //Citadel change REEEFETISHCONTENT
 	desc = "A clean white shirt with a orange collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
 	icon_state = "schoolgirlorange"
-	item_state_slots = list(slot_r_hand_str = "orange", slot_l_hand_str = "orange")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "orange", SLOT_ID_LEFT_HAND = "orange")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/schoolgirl/pink
 	name = "frilly pink skirt" //Citadel change REEEFETISHCONTENT
 	desc = "A clean white shirt with a pink collar and skirt. Looks like something out of an anime." //Citadel change REEEFETISHCONTENT
 	icon_state = "schoolgirlpink"
-	item_state_slots = list(slot_r_hand_str = "pink", slot_l_hand_str = "pink")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "pink", SLOT_ID_LEFT_HAND = "pink")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/overalls
 	name = "laborer's overalls"
 	desc = "A set of durable overalls for getting the job done."
 	icon_state = "overalls"
-	item_state_slots = list(slot_r_hand_str = "cargo", slot_l_hand_str = "cargo")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cargo", SLOT_ID_LEFT_HAND = "cargo")
 
 /obj/item/clothing/under/overalls_fem
 	name = "laborer's overalls"
@@ -266,61 +261,60 @@
 	name = "pirate outfit"
 	desc = "Yarr."
 	icon_state = "pirate"
-	item_state_slots = list(slot_r_hand_str = "sl_suit", slot_l_hand_str = "sl_suit")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sl_suit", SLOT_ID_LEFT_HAND = "sl_suit")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS
 
 /obj/item/clothing/under/soviet
 	name = "soviet uniform"
 	desc = "For the Motherland!"
 	icon_state = "soviet"
-	item_state_slots = list(slot_r_hand_str = "grey", slot_l_hand_str = "grey")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "grey", SLOT_ID_LEFT_HAND = "grey")
 
 /obj/item/clothing/under/redcoat
 	name = "redcoat uniform"
 	desc = "Looks old."
 	icon_state = "redcoat"
-	item_state_slots = list(slot_r_hand_str = "red", slot_l_hand_str = "red")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
 
 /obj/item/clothing/under/kilt
 	name = "kilt"
 	desc = "Includes shoes and plaid"
 	icon_state = "kilt"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|FEET
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/sexymime
 	name = "sexy mime outfit"
 	desc = "The only time when you DON'T enjoy looking at someone's rack."
 	icon_state = "sexymime"
-	item_state_slots = list(slot_r_hand_str = "mime", slot_l_hand_str = "mime")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "mime", SLOT_ID_LEFT_HAND = "mime")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
-	rolled_sleeves = -1 //Please never
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL //Please never
 
 /obj/item/clothing/under/gladiator
 	name = "gladiator uniform"
 	desc = "Are you not entertained? Is that not why you are here?"
 	icon_state = "gladiator"
-	item_state_slots = list(slot_r_hand_str = "yellow", slot_l_hand_str = "yellow")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "yellow", SLOT_ID_LEFT_HAND = "yellow")
 	body_parts_covered = LOWER_TORSO
 
 /obj/item/clothing/under/gladiator/ashlander
 	name = "ashlander panoply"
 	desc = "Hardy metal plates and firm red sinew comprise this scuffed and marred armor."
-	has_sensor = 0
+	has_sensors = UNIFORM_HAS_NO_SENSORS
 	armor = list(melee = 5, bullet = 0, laser = 5,energy = 5, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/under/moderncoat
 	name = "modern wrapped coat"
 	desc = "The cutting edge of fashion."
 	icon_state = "moderncoat"
-	item_state_slots = list(slot_r_hand_str = "red", slot_l_hand_str = "red")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS
 
 /obj/item/clothing/under/ascetic
 	name = "plain ascetic garb"
 	desc = "Popular with freshly grown vatborn and new age cultists alike."
 	icon_state = "ascetic"
-	item_state_slots = list(slot_r_hand_str = "white", slot_l_hand_str = "white")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "white", SLOT_ID_LEFT_HAND = "white")
 
 /obj/item/clothing/under/ascetic_fem
 	name = "plain ascetic garb"
@@ -372,7 +366,7 @@
 	name = "black tango dress"
 	desc = "Filled with Latin fire."
 	icon_state = "black_tango_alt"
-	item_state_slots = list(slot_r_hand_str = "black_tango", slot_l_hand_str = "black_tango")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black_tango", SLOT_ID_LEFT_HAND = "black_tango")
 
 /obj/item/clothing/under/dress/stripeddress
 	name = "striped dress"
@@ -433,7 +427,7 @@
 	name = "saloon girl dress"
 	desc = "A old western inspired gown for the girl who likes to drink."
 	icon_state = "dress_saloon"
-	item_state_slots = list(slot_r_hand_str = "dress_white", slot_l_hand_str = "dress_white")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "dress_white", SLOT_ID_LEFT_HAND = "dress_white")
 
 /obj/item/clothing/under/dress/dress_cap
 	name = "Facility Director's dress uniform"
@@ -482,12 +476,12 @@
 	name = "red sari"
 	desc = "A colorful traditional dress originating from India."
 	icon_state = "sari_red"
-	item_state_slots = list(slot_r_hand_str = "darkreddress", slot_l_hand_str = "darkreddress")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "darkreddress", SLOT_ID_LEFT_HAND = "darkreddress")
 
 /obj/item/clothing/under/dress/sari/green
 	name = "green sari"
 	icon_state = "sari_green"
-	item_state_slots = list(slot_r_hand_str = "dress_green", slot_l_hand_str = "dress_green")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "dress_green", SLOT_ID_LEFT_HAND = "dress_green")
 
 /obj/item/clothing/under/dress/lilacdress
 	name = "lilac dress"
@@ -553,25 +547,25 @@
 	name = "Facility Director's formal uniform"
 	desc = "A Facility Director's formal-wear, for special occasions."
 	icon_state = "captain_formal"
-	item_state_slots = list(slot_r_hand_str = "lawyer_blue", slot_l_hand_str = "lawyer_blue")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lawyer_blue", SLOT_ID_LEFT_HAND = "lawyer_blue")
 
 /obj/item/clothing/under/hosformalmale
 	name = "head of security's formal uniform"
 	desc = "A male head of security's formal-wear, for special occasions."
 	icon_state = "hos_formal_male"
-	item_state_slots = list(slot_r_hand_str = "lawyer_red", slot_l_hand_str = "lawyer_red")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lawyer_red", SLOT_ID_LEFT_HAND = "lawyer_red")
 
 /obj/item/clothing/under/hosformalfem
 	name = "head of security's formal uniform"
 	desc = "A female head of security's formal-wear, for special occasions."
 	icon_state = "hos_formal_fem"
-	item_state_slots = list(slot_r_hand_str = "lawyer_red", slot_l_hand_str = "lawyer_red")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lawyer_red", SLOT_ID_LEFT_HAND = "lawyer_red")
 
 /obj/item/clothing/under/assistantformal
 	name = "assistant's formal uniform"
 	desc = "An assistant's formal-wear. Why an assistant needs formal-wear is still unknown."
 	icon_state = "assistant_formal"
-	item_state_slots = list(slot_r_hand_str = "lawyer_black", slot_l_hand_str = "lawyer_black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lawyer_black", SLOT_ID_LEFT_HAND = "lawyer_black")
 
 /obj/item/clothing/under/assistantformal_fem
 	name = "assistant's formal uniform"
@@ -582,7 +576,7 @@
 	name = "charcoal suit"
 	desc = "A charcoal suit and red tie. Very professional."
 	icon_state = "charcoal_suit"
-	item_state_slots = list(slot_r_hand_str = "lawyer_black", slot_l_hand_str = "lawyer_black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lawyer_black", SLOT_ID_LEFT_HAND = "lawyer_black")
 	starting_accessories = list(/obj/item/clothing/accessory/tie/navy, /obj/item/clothing/accessory/jacket/charcoal)
 
 /obj/item/clothing/under/suit_jacket/charcoal/skirt
@@ -593,7 +587,7 @@
 	name = "navy suit"
 	desc = "A navy suit and red tie, intended for the station's finest."
 	icon_state = "navy_suit"
-	item_state_slots = list(slot_r_hand_str = "lawyer_blue", slot_l_hand_str = "lawyer_blue")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lawyer_blue", SLOT_ID_LEFT_HAND = "lawyer_blue")
 	starting_accessories = list(/obj/item/clothing/accessory/tie/red, /obj/item/clothing/accessory/jacket/navy)
 
 /obj/item/clothing/under/suit_jacket/navy/skirt
@@ -604,7 +598,7 @@
 	name = "burgundy suit"
 	desc = "A burgundy suit and black tie. Somewhat formal."
 	icon_state = "burgundy_suit"
-	item_state_slots = list(slot_r_hand_str = "lawyer_red", slot_l_hand_str = "lawyer_red")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lawyer_red", SLOT_ID_LEFT_HAND = "lawyer_red")
 	starting_accessories = list(/obj/item/clothing/accessory/tie/black, /obj/item/clothing/accessory/jacket/burgundy)
 
 /obj/item/clothing/under/suit_jacket/burgundy/skirt
@@ -615,7 +609,7 @@
 	name = "checkered suit"
 	desc = "That's a very nice suit you have there. Shame if something were to happen to it, eh?"
 	icon_state = "checkered_suit"
-	item_state_slots = list(slot_r_hand_str = "lawyer_black", slot_l_hand_str = "lawyer_black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lawyer_black", SLOT_ID_LEFT_HAND = "lawyer_black")
 	starting_accessories = list(/obj/item/clothing/accessory/tie/black, /obj/item/clothing/accessory/jacket/checkered)
 
 /obj/item/clothing/under/suit_jacket/checkered/skirt
@@ -626,7 +620,7 @@
 	name = "tan suit"
 	desc = "A tan suit. Smart, but casual."
 	icon_state = "tan_suit"
-	item_state_slots = list(slot_r_hand_str = "tan_suit", slot_l_hand_str = "tan_suit")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "tan_suit", SLOT_ID_LEFT_HAND = "tan_suit")
 	starting_accessories = list(/obj/item/clothing/accessory/tie/yellow, /obj/item/clothing/accessory/jacket)
 
 /obj/item/clothing/under/suit_jacket/tan/skirt
@@ -637,8 +631,7 @@
 	name = "workman outfit"
 	desc = "The very image of a working man. Not that you're probably doing work."
 	icon_state = "mechanic"
-	item_state_slots = list(slot_r_hand_str = "cargo", slot_l_hand_str = "cargo")
-	rolled_sleeves = 0
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cargo", SLOT_ID_LEFT_HAND = "cargo")
 
 /obj/item/clothing/under/cheongsam
 	name = "white cheongsam"
@@ -685,7 +678,7 @@
 	name = "blue blazer"
 	desc = "A bold but yet conservative outfit, red corduroys, navy blazer and a tie."
 	icon_state = "blue_blazer"
-	item_state_slots = list(slot_r_hand_str = "lawyer_blue", slot_l_hand_str = "lawyer_blue")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "lawyer_blue", SLOT_ID_LEFT_HAND = "lawyer_blue")
 
 /obj/item/clothing/under/blazer/skirt
 	name = "ladies blue blazer"
@@ -696,31 +689,31 @@
 	name = "crop top"
 	desc = "A shirt that has had the top cropped. This one is NT sponsored."
 	icon_state = "croptop"
-	item_state_slots = list(slot_r_hand_str = "grey", slot_l_hand_str = "grey")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "grey", SLOT_ID_LEFT_HAND = "grey")
 
 /obj/item/clothing/under/croptop/red
 	name = "red crop top"
 	desc = "A red shirt that has had the top cropped."
 	icon_state = "croptop_red"
-	item_state_slots = list(slot_r_hand_str = "red", slot_l_hand_str = "red")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
 
 /obj/item/clothing/under/croptop/grey
 	name = "grey crop top"
 	desc = "A grey shirt that has had the top cropped."
 	icon_state = "croptop_grey"
-	item_state_slots = list(slot_r_hand_str = "grey", slot_l_hand_str = "grey")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "grey", SLOT_ID_LEFT_HAND = "grey")
 
 /obj/item/clothing/under/cuttop
 	name = "grey cut top"
 	desc = "A grey shirt that has had the top cut low."
 	icon_state = "cuttop"
-	item_state_slots = list(slot_r_hand_str = "grey", slot_l_hand_str = "grey")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "grey", SLOT_ID_LEFT_HAND = "grey")
 
 /obj/item/clothing/under/cuttop/red
 	name = "red cut top"
 	desc = "A red shirt that has had the top cut low."
 	icon_state = "cuttop_red"
-	item_state_slots = list(slot_r_hand_str = "red", slot_l_hand_str = "red")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
 
 /obj/item/clothing/under/harness
 	name = "gear harness"
@@ -861,7 +854,7 @@
 	name = "blue pyjamas"
 	desc = "Slightly old-fashioned sleepwear."
 	icon_state = "blue_pyjamas"
-	item_state_slots = list(slot_r_hand_str = "blue", slot_l_hand_str = "blue")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blue", SLOT_ID_LEFT_HAND = "blue")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 
 /obj/item/clothing/under/bluepyjamas_fem
@@ -873,7 +866,7 @@
 	name = "red pyjamas"
 	desc = "Slightly old-fashioned sleepwear."
 	icon_state = "red_pyjamas"
-	item_state_slots = list(slot_r_hand_str = "red", slot_l_hand_str = "red")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 
 /obj/item/clothing/under/redpyjamas_fem
@@ -889,94 +882,94 @@
 	name = "\improper Aether jumpsuit"
 	desc = "A jumpsuit belonging to Aether Atmospherics and Recycling, a Trans-Stellar that supplies recycling and atmospheric systems to colonies."
 	icon_state = "aether"
-	worn_state = "aether"
+	snowflake_worn_state = "aether"
 
 /obj/item/clothing/under/pcrc
 	name = "\improper PCRC uniform"
 	desc = "A uniform belonging to Proxima Centauri Risk Control, a private security firm."
 	icon_state = "pcrc"
 	item_state = "jensensuit"
-	worn_state = "pcrc"
+	snowflake_worn_state = "pcrc"
 
 /obj/item/clothing/under/pcrc_fem
 	name = "\improper PCRC uniform"
 	desc = "A uniform belonging to Proxima Centauri Risk Control, a private security firm."
 	icon_state = "pcrc_fem"
 	item_state = "jensensuit"
-	worn_state = "pcrc"
+	snowflake_worn_state = "pcrc"
 
 /obj/item/clothing/under/brandjumpsuit/grayson
 	name = "\improper Grayson overalls"
 	desc = "A set of overalls belonging to Grayson Manufactories, a mining Trans-Stellar."
 	icon_state = "mechanic"
-	worn_state = "mechanic"
+	snowflake_worn_state = "mechanic"
 
 /obj/item/clothing/under/brandjumpsuit/wardt
 	name = "\improper Ward-Takahashi jumpsuit"
 	desc = "A jumpsuit belonging to Ward-Takahashi, a Trans-Stellar in the consumer goods market."
 	icon_state = "robotics2"
-	worn_state = "robotics2"
+	snowflake_worn_state = "robotics2"
 
 /obj/item/clothing/under/brandjumpsuit/mbill
 	name = "\improper Major Bill's uniform"
 	desc = "A uniform belonging to Major Bill's Transportation, a shipping megacorporation."
 	icon_state = "mbill"
-	worn_state = "mbill"
+	snowflake_worn_state = "mbill"
 	catalogue_data = list(/datum/category_item/catalogue/information/organization/major_bills)
 
 /obj/item/clothing/under/confederacy
 	name = "\improper Confederacy uniform"
 	desc = "A military uniform belonging to the Confederacy of Man, an independent human government." //Name pending review
 	icon_state = "confed"
-	worn_state = "confed"
+	snowflake_worn_state = "confed"
 
 /obj/item/clothing/under/saare
 	name = "SAARE uniform"
 	desc = "A dress uniform belonging to Stealth Assault Enterprises, a minor private military corporation." //Name pending review
 	icon_state = "saare"
-	worn_state = "saare"
+	snowflake_worn_state = "saare"
 
 /obj/item/clothing/under/saare_fem
 	name = "SAARE uniform"
 	desc = "A dress uniform belonging to Stealth Assault Enterprises, a minor private military corporation."
 	icon_state = "saare_fem"
-	worn_state = "saare_fem"
+	snowflake_worn_state = "saare_fem"
 
 /obj/item/clothing/under/frontier
 	name = "frontier clothes"
 	desc = "A rugged flannel shirt and denim overalls. A popular style among frontier colonists."
 	icon_state = "frontier"
-	worn_state = "frontier"
+	snowflake_worn_state = "frontier"
 
 /obj/item/clothing/under/brandjumpsuit/focal
 	name = "\improper Focal Point jumpsuit"
 	desc = "A jumpsuit belonging to Focal Point Energistics, an engineering megacorporation."
 	icon_state = "focal"
-	worn_state = "focal"
+	snowflake_worn_state = "focal"
 
 /obj/item/clothing/under/brandjumpsuit/hephaestus
 	name = "\improper Hephaestus jumpsuit"
 	desc = "A jumpsuit belonging to Hephaestus Industries, a Trans-Stellar best known for its arms production."
 	icon_state = "heph"
-	worn_state = "heph"
+	snowflake_worn_state = "heph"
 
 /obj/item/clothing/under/brandjumpsuit/hephaestus_fem
 	name = "\improper Hephaestus jumpsuit (female)"
 	desc = "A jumpsuit belonging to Hephaestus Industries, a Trans-Stellar best known for its arms production."
 	icon_state = "heph_fem"
-	worn_state = "heph_fem"
+	snowflake_worn_state = "heph_fem"
 
 /obj/item/clothing/under/rank/psych/turtleneck/sweater
 	desc = "A warm looking sweater and a pair of dark blue slacks."
 	name = "sweater"
 	icon_state = "turtleneck"
-	worn_state = "turtleneck"
+	snowflake_worn_state = "turtleneck"
 
 /obj/item/clothing/under/rank/psych/turtleneck/sweater
 	desc = "A warm looking sweater and a pair of dark blue slacks."
 	name = "sweater"
 	icon_state = "turtleneck_fem"
-	worn_state = "turtleneck_fem"
+	snowflake_worn_state = "turtleneck_fem"
 
 //And this is where the real game begins
 /obj/item/clothing/under/future_fashion
@@ -1013,14 +1006,14 @@
 	name = "medical gown"
 	desc = "A flimsy examination gown, the back ties never close."
 	icon_state = "medicalgown"
-	worn_state = "medicalgown"
+	snowflake_worn_state = "medicalgown"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/bathrobe
 	name = "bathrobe"
 	desc = "A fluffy robe to keep you from showing off to the world."
 	icon_state = "bathrobe"
-	worn_state = "bathrobe"
+	snowflake_worn_state = "bathrobe"
 
 /obj/item/clothing/under/explorer
 	desc = "A green uniform for operating in hazardous environments."
@@ -1036,7 +1029,7 @@
 	name = "black cohesion suit"
 	desc = "A plain black cohesion suit intended to assist Prometheans in maintaining their form and prevent direct skin exposure."
 	icon_state = "cohesionsuit"
-	rolled_sleeves = -1 // defeats the purpose!!!
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL // defeats the purpose!!!
 
 /obj/item/clothing/under/cohesion
 	name = "black cohesion suit (female)"
@@ -1093,8 +1086,6 @@
 	This costume is instead made from genuine cotton fibre and is based on the season three uniform."
 	icon = 'icons/obj/clothing/ranger.dmi'
 	icon_state = "ranger_uniform"
-	rolled_down = 0
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/color/ranger/Initialize(mapload)
 	. = ..()
@@ -1395,7 +1386,7 @@
 	name = "PARA tactical uniform"
 	desc = "A standard grey jumpsuit, emblazoned with the Icon of the PMD. Close inspection of the embroidery reveals a complex web of glyphs written in an unknown language."
 	icon_state = "para_ert_uniform"
-	item_state_slots = list(slot_r_hand_str = "black", slot_l_hand_str = "black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black", SLOT_ID_LEFT_HAND = "black")
 
 /obj/item/clothing/under/blueshortskirt
 	name = "Short Skirt"
@@ -1614,7 +1605,6 @@
 	desc = "A cozy knit turtleneck. It's too baggy and comfortable to be tactical."
 	icon_state = "bb_turtle"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/turtlebaggy/cream_fem
 	name = "baggy turtleneck (cream)(female)"
@@ -1665,8 +1655,7 @@
 	name = "nebula gas outfit"
 	desc = "A hardy and practical uniform distributed to Nebula Gas employees, meant to provide protection and comfort in industrial environments."
 	icon_state = "mechanic"
-	item_state_slots = list(slot_r_hand_str = "cargo", slot_l_hand_str = "cargo")
-	rolled_sleeves = 0
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cargo", SLOT_ID_LEFT_HAND = "cargo")
 
 /obj/item/clothing/under/safari
 	name = "safari uniform"
@@ -1759,7 +1748,7 @@
 	name = "coarse tunic"
 	desc = "A simple, coarse tunic. Smells faintly of ash and charred wood."
 	icon_state = "tribal_tunic"
-	has_sensor = 0
+	has_sensors = UNIFORM_HAS_NO_SENSORS
 
 /obj/item/clothing/under/tribal_tunic_fem
 	name = "simple tunic"
@@ -1770,7 +1759,7 @@
 	name = "coarse tunic"
 	desc = "A simple, coarse tunic. Smells faintly of ash and charred wood."
 	icon_state = "tribal_tunic"
-	has_sensor = 0
+	has_sensors = UNIFORM_HAS_NO_SENSORS
 
 /obj/item/clothing/under/skirt/pleated
 	name = "pleated skirt"
@@ -1787,20 +1776,18 @@
 	body_parts_covered = 0
 	equip_sound = null
 
-	sprite_sheets = list()
-
 	item_state = "golem"  //This is dumb and hacky but was here when I got here.
-	worn_state = "golem"  //It's basically just a coincidentally black iconstate in the file.
+	snowflake_worn_state = "golem"  //It's basically just a coincidentally black iconstate in the file.
 
 /obj/item/clothing/under/bluespace
 	name = "bluespace jumpsuit"
 	icon_state = "lingchameleon"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_uniforms.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_uniforms.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_uniforms.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_uniforms.dmi',
 			)
 	item_state = "lingchameleon"
-	worn_state = "lingchameleon"
+	snowflake_worn_state = "lingchameleon"
 	desc = "Do you feel like warping spacetime today? Because it seems like that's on the agenda, now. \
 			Allows one to resize themselves at will, and conceals their true weight."
 	hides_bulges = TRUE
@@ -1886,7 +1873,7 @@
 	name = "laconic field suit"
 	desc = "A lightweight black turtleneck with padded gray slacks. It seems comfortable, but practical."
 	icon_state = "laconic"
-	item_state_slots = list(slot_r_hand_str = "grey", slot_l_hand_str = "grey")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "grey", SLOT_ID_LEFT_HAND = "grey")
 
 /obj/item/clothing/under/bountyskin
 	name = "bounty hunter skinsuit"
@@ -1920,8 +1907,8 @@
 	desc = "This metallic corset and sturdy cloth bustier provide very little coverage. A dismountable sheer bodystocking integrated into the clothing retains some modesty. It is unknown whether it serveed ceremonial or official purpose."
 	icon_state = "antediluvian"
 	item_state = "antediluvian"
-	rolled_sleeves = -1
-	rolled_down = -1
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	//action_button_name = "Reconfigure Suit"
 
 /*
@@ -1934,10 +1921,10 @@
     if(usr.stat)
         return
     to_chat(usr, "You rearrange the suit's configuration.")
-    if(worn_state == "antediluvian_s")
-        worn_state = "antediluvian_d_s"
-    if(worn_state == "antediluvian_d_s")
-        worn_state = "antediluvian_s"
+    if(snowflake_worn_state == "antediluvian_s")
+        snowflake_worn_state = "antediluvian_d_s"
+    if(snowflake_worn_state == "antediluvian_d_s")
+        snowflake_worn_state = "antediluvian_s"
 */
 
 /obj/item/clothing/under/hasie

@@ -195,7 +195,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	permit.set_name(H.real_name)
 
 	if(H.backbag == 1) //Somewhat misleading, 1 == no bag (not boolean)
-		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/left_hand)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/hand/left)
 	else
 		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/put_in_backpack)
 
