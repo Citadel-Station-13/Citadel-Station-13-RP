@@ -446,6 +446,8 @@
 		visible_message("\The [src] falls from above and slams into \the [hit_atom]!", "You hear something slam into \the [hit_atom].")
 	for(var/atom/movable/A in src.contents)
 		A.fall_impact(hit_atom, damage_min, damage_max, silent = TRUE)
+	for(var/mob/M in buckled_mobs)
+		M.fall_impact(hit_atom, damage_min, damage_max, silent, planetary)
 
 // Take damage from falling and hitting the ground
 /mob/living/fall_impact(var/atom/hit_atom, var/damage_min = 0, var/damage_max = 5, var/silent = FALSE, var/planetary = FALSE)
