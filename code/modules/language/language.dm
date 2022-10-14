@@ -3,8 +3,6 @@
 /*
 	Datum based languages. Easily editable and modular.
 */
-#warn make sure all languages have uids
-
 /**
  * language datums
  *
