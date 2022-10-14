@@ -1145,6 +1145,9 @@
 	if(hud_used)
 		qdel(hud_used) //remove the hud objects
 	hud_used = new /datum/hud(src)
+	// todo: this is awful lol
+	if(plane_holder && client)
+		client.screen |= plane_holder.plane_masters
 
 	// skip the rest
 	if(skip)
