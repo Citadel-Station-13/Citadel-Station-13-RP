@@ -66,6 +66,28 @@
 	C.powernet = src
 	cables +=C
 
+//remove a utility pylon from the current powernet
+/datum/powernet/proc/remove_pylon(var/obj/machinery/utility_pylon/power/pylon)
+	if(pylon)
+		cables -= pylon
+		pylon.powernet = null
+		//pylon.update_power()
+		if(is_empty())
+			qdel(src)
+
+//add a utility pylon to the current powernet
+/datum/powernet/proc/add_utility_pylon(var/obj/machinery/utility_pylon/power/pylon)
+	if(pylon)
+		if(pylon.powernet)
+			if(pylon.powernet == src)
+				return
+			else
+				pylon.powernet.remove_pylon(pylon)
+		pylon.powernet = src
+		pylon.update_for_new_powernet()
+		cables += pylon//we add it to cables because they should function as cables for powernet sake.
+
+
 //remove a power machine from the current powernet
 //if the powernet is then empty, delete it
 //Warning : this proc DON'T check if the machine exists
