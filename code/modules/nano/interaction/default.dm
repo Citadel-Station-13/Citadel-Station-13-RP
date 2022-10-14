@@ -89,5 +89,5 @@
 	. = shared_nano_interaction(src_object)
 	if(. != UI_CLOSE)
 		. = min(., shared_living_nano_distance(src_object))
-		if(. == UI_UPDATE && (TK in mutations))	// If we have telekinesis and remain close enough, allow interaction.
+		if(. == UI_UPDATE && (MUTATION_TELEKINESIS in mutations))	// If we have telekinesis and remain close enough, allow interaction.
 			return UI_INTERACTIVE

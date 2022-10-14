@@ -45,7 +45,7 @@
 /proc/isdeaf(A)
 	if(istype(A, /mob))
 		var/mob/M = A
-		return (M.sdisabilities & DEAF) || M.ear_deaf
+		return (M.sdisabilities & SDISABILITY_DEAF) || M.ear_deaf
 	return 0
 
 /mob/proc/get_ear_protection()
@@ -266,7 +266,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 /proc/is_blind(A)
 	if(istype(A, /mob/living/carbon))
 		var/mob/living/carbon/C = A
-		if(C.sdisabilities & BLIND || C.blinded)
+		if(C.sdisabilities & SDISABILITY_NERVOUS || C.blinded)
 			return 1
 	return 0
 

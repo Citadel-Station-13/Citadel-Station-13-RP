@@ -658,7 +658,7 @@
 			if(E.damage > 0)
 				E.heal_damage_i(5 * removed, can_revive = TRUE)
 			if(E.damage <= 5 && E.organ_tag == O_EYES)
-				H.sdisabilities &= ~BLIND
+				H.sdisabilities &= ~SDISABILITY_NERVOUS
 
 /datum/reagent/peridaxon
 	name = "Peridaxon"
@@ -681,7 +681,7 @@
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
-				H.sdisabilities &= ~BLIND
+				H.sdisabilities &= ~SDISABILITY_NERVOUS
 		if(alien == IS_SLIME)
 			H.add_chemical_effect(CE_PAINKILLER, 20)
 			if(prob(33))
@@ -706,7 +706,7 @@
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
-				H.sdisabilities &= ~BLIND
+				H.sdisabilities &= ~SDISABILITY_NERVOUS
 		if(alien == IS_SLIME)
 			H.add_chemical_effect(CE_PAINKILLER, 20)
 			if(prob(33))
