@@ -369,96 +369,7 @@
 	frequency = text2num(frequency)
 	return frequency * 10
 
-/**
- * This will update a mob's name, real_name, mind.name, data_core records, pda and id.
- * Calling this proc without an oldname will only update the mob and skip updating the pda, id and records. ~Carn
- */
-/mob/proc/fully_replace_character_name(oldname, newname)
-	if(!newname)
-		return 0
-	real_name = newname
-	name = newname
-	if(mind)
-		mind.name = newname
-	if(dna)
-		dna.real_name = real_name
 
-	if(oldname)
-		// Update the datacore records! This is goig to be a bit costly.
-		for(var/list/L in list(data_core.general, data_core.medical, data_core.security, data_core.locked))
-			for(var/datum/data/record/R in L)
-				if(R.fields["name"] == oldname)
-					R.fields["name"] = newname
-					break
-
-		// Update our pda and id if we have them on our person.
-		var/list/searching = GetAllContents()
-		var/search_id = 1
-		var/search_pda = 1
-
-		for(var/A in searching)
-			if(search_id && istype(A,/obj/item/card/id))
-				var/obj/item/card/id/ID = A
-				if(ID.registered_name == oldname)
-					ID.registered_name = newname
-					ID.name = "[newname]'s ID Card ([ID.assignment])"
-					if(!search_pda)
-						break
-					search_id = 0
-
-			else if(search_pda && istype(A,/obj/item/pda))
-				var/obj/item/pda/PDA = A
-				if(PDA.owner == oldname)
-					PDA.owner = newname
-					PDA.name = "PDA-[newname] ([PDA.ownjob])"
-					if(!search_id)
-						break
-					search_pda = 0
-	return 1
-
-
-
-/// Generalised helper proc for letting mobs rename themselves. Used to be clname() and ainame().
-/mob/proc/rename_self(role, allow_numbers = FALSE)
-	spawn(0)
-		var/oldname = real_name
-		// var/time_passed = world.time
-		var/newname
-
-		//we get 3 attempts to pick a suitable name.
-		for(var/i=1,i<=3,i++)
-			// newname = input(src,"You are \a [role]. Would you like to change your name to something else?", "Name change",oldname) as text
-			newname = tgui_input_text(src, "You are \a [role]. Would you like to change your name to something else?", "Name change", oldname, allow_numbers, timeout = 3000)
-
-			// Returns null if the name doesn't meet some basic requirements. Tidies up a few other things like bad-characters.
-			newname = sanitizeName(newname, ,allow_numbers)
-
-			for(var/mob/living/M in player_list)
-				if(M == src)
-					continue
-				if(!newname || M.real_name == newname)
-					newname = null
-					break
-
-			// That's a suitable name!
-			if(newname)
-				break
-			to_chat(src, "Sorry, that [role]-name wasn't appropriate, please try another. It's possibly too long/short, has bad characters or is already taken.")
-
-		// We'll stick with the oldname then.
-		if(!newname)
-			return
-
-		if(cmptext("ai",role))
-			if(isAI(src))
-				var/mob/living/silicon/ai/A = src
-				oldname = null // Don't bother with the records update crap.
-				//to_chat(world, "<b>[newname] is the AI!</b>")
-				//world << sound('sound/AI/newAI.ogg')
-				// Set eyeobj name.
-				A.SetName(newname)
-
-		fully_replace_character_name(oldname,newname)
 
 
 /// Picks a string of symbols to display as the law number for hacked or ion laws.
@@ -1344,42 +1255,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 			return "[round(number / 1e9, 0.1)] G[symbol]" // giga
 		if(1e12 to 1e15-1)
 			return "[round(number / 1e12, 0.1)] T[symbol]" // tera
-
-/**
- * Center's an image.
- * Requires:
- * The Image
- * The x dimension of the icon file used in the image
- * The y dimension of the icon file used in the image
- *  eg: center_image(I, 32,32)
- *  eg2: center_image(I, 96,96)
- */
-/proc/center_image(image/I, x_dimension = 0, y_dimension = 0)
-	if(!I)
-		return
-
-	if(!x_dimension || !y_dimension)
-		return
-
-	if((x_dimension == world.icon_size) && (y_dimension == world.icon_size))
-		return I
-
-	//Offset the image so that it's bottom left corner is shifted this many pixels
-	//This makes it infinitely easier to draw larger inhands/images larger than world.iconsize
-	//but still use them in game
-	var/x_offset = -((x_dimension/world.icon_size)-1)*(world.icon_size*0.5)
-	var/y_offset = -((y_dimension/world.icon_size)-1)*(world.icon_size*0.5)
-
-	//Correct values under world.icon_size
-	if(x_dimension < world.icon_size)
-		x_offset *= -1
-	if(y_dimension < world.icon_size)
-		y_offset *= -1
-
-	I.pixel_x = x_offset
-	I.pixel_y = y_offset
-
-	return I
 
 /// Ultra range (no limitations on distance, faster than range for distances > 8); including areas drastically decreases performance.
 /proc/urange(dist = 0, atom/center = usr, orange = 0, areas = 0)

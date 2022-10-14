@@ -307,6 +307,11 @@
 	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 3, 3, Z_LEVEL_WEST_DEEP, world.maxx - 3, world.maxy - 3)         // Create the mining ore distribution map.
 	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 3, 3, Z_LEVEL_WEST_BASE, world.maxx - 3, world.maxy - 3)         // Create the mining ore distribution map.
 	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 3, 3, Z_LEVEL_UNDERGROUND_FLOOR, world.maxx - 3, world.maxy - 3)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks/rift_nocaves(null, 3, 3, Z_LEVEL_SURFACE_HIGH, world.maxx - 3, world.maxy - 3)
+	new /datum/random_map/automata/cave_system/no_cracks/rift_nocaves(null, 3, 3, Z_LEVEL_SURFACE_MID, world.maxx - 3, world.maxy - 3)
+	new /datum/random_map/automata/cave_system/no_cracks/rift_nocaves(null, 3, 3, Z_LEVEL_SURFACE_LOW, world.maxx - 3, world.maxy - 3)
+	new /datum/random_map/automata/cave_system/no_cracks/rift_nocaves(null, 3, 3, Z_LEVEL_UNDERGROUND, world.maxx - 3, world.maxy - 3)
+	new /datum/random_map/automata/cave_system/no_cracks/rift_nocaves(null, 3, 3, Z_LEVEL_UNDERGROUND_DEEP, world.maxx - 3, world.maxy - 3)
 
 	return 1
 

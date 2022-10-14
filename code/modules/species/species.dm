@@ -20,6 +20,8 @@
 	/// abstract type
 	var/abstract_type = /datum/species
 	/// uid
+	var/uid
+	/// if we're a subspecies, real id
 	var/id
 	// TODO: ref species by id in code, so we can rename as needed
 
@@ -444,8 +446,8 @@
 	var/selects_bodytype = FALSE // Allows the species to choose from body types intead of being forced to be just one.
 
 /datum/species/New()
-	if(isnull(id))
-		id = ckey(name)
+	if(isnull(uid))
+		uid = ckey(name)
 
 	if(hud_type)
 		hud = new hud_type()
@@ -573,7 +575,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	box.calibrate_size()
 
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/right_hand, INV_OP_SILENT | INV_OP_FLUFFLESS)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
 	else
 		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/put_in_backpack, INV_OP_FORCE | INV_OP_SILENT)
 

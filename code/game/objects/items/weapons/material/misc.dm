@@ -127,8 +127,8 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "sawcleaver"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/64x64_lefthand.dmi',
-			slot_r_hand_str = 'icons/mob/items/64x64_righthand.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/64x64_lefthand.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/64x64_righthand.dmi',
 			)
 	item_state = "cleaving_saw"
 	active = 0

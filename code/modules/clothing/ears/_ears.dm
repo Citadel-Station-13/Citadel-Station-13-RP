@@ -4,6 +4,3 @@
 	w_class = ITEMSIZE_TINY
 	throw_force = 2
 	slot_flags = SLOT_EARS
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/ears.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/ears.dmi')

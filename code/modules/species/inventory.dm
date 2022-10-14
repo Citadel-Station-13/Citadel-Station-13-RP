@@ -9,7 +9,7 @@
  * get equip offsets for a given inhand
  *
  * @params
- * - slot - /datum/inventory_slot_meta/abstract/left_hand or right_hand
+ * - slot - /datum/inventory_slot_meta/abstract/hand/left or right_hand
  * - index - index of the held item in held items
  */
 /datum/species/proc/get_inhand_offsets(slot, index)

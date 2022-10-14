@@ -91,6 +91,7 @@
 	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, .proc/signal_hook_handle_turn)
 	RegisterSignal(parent, COMSIG_ATOM_RELAYMOVE_FROM_BUCKLED, .proc/signal_hook_handle_relaymove)
 	RegisterSignal(parent, COMSIG_MOVABLE_PRE_BUCKLE_MOB, .proc/signal_hook_pre_buckle_mob)
+	RegisterSignal(parent, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED, .proc/signal_hook_pixel_offset_changed)
 
 /datum/component/riding_handler/UnregisterFromParent()
 	. = ..()
@@ -127,6 +128,9 @@
 	SIGNAL_HANDLER_DOES_SLEEP
 	if(!check_rider(M, semantic, TRUE, user = user))
 		return COMPONENT_BLOCK_BUCKLE_OPERATION
+
+/datum/component/riding_handler/proc/signal_hook_pixel_offset_changed(atom/movable/source)
+	full_update_riders(null, TRUE)
 
 /datum/component/riding_handler/proc/update_vehicle_on_turn(dir)
 	if(!vehicle_offsets)
@@ -269,14 +273,16 @@
 	forbid_turf_types = typelist(NAMEOF(src, forbid_turf_types), forbid_turf_types)
 	if(!default_turf_checks)
 		return
-	if(has_typelist(NAMEOF(src, allowed_turf_typecache)))
-		allowed_turf_typecache = get_typelist(NAMEOF(src, allowed_turf_typecache))
-	else
-		allowed_turf_typecache = typelist(NAMEOF(src, allowed_turf_typecache), typecacheof(allowed_turf_types))
-	if(has_typelist(NAMEOF(src, forbid_turf_typecache)))
-		forbid_turf_typecache = get_typelist(NAMEOF(src, forbid_turf_typecache))
-	else
-		forbid_turf_typecache = typelist(NAMEOF(src, forbid_turf_typecache), typecacheof(forbid_turf_types))
+	if(LAZYLEN(allowed_turf_types))
+		if(has_typelist(NAMEOF(src, allowed_turf_typecache)))
+			allowed_turf_typecache = get_typelist(NAMEOF(src, allowed_turf_typecache))
+		else
+			allowed_turf_typecache = typelist(NAMEOF(src, allowed_turf_typecache), typecacheof(allowed_turf_types))
+	if(LAZYLEN(forbid_turf_types))
+		if(has_typelist(NAMEOF(src, forbid_turf_typecache)))
+			forbid_turf_typecache = get_typelist(NAMEOF(src, forbid_turf_typecache))
+		else
+			forbid_turf_typecache = typelist(NAMEOF(src, forbid_turf_typecache), typecacheof(forbid_turf_types))
 
 /**
  * checks if we can move onto a turf

@@ -1,0 +1,6 @@
+author: "Zandario"
+delete-after: True
+changes: 
+  - rscadd: "Particles to bonfires"
+  - rscadd: "/obj/effect/abstract/particle_holder"
+  - imageadd: "several particle DMIs"

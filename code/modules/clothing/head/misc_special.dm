@@ -16,7 +16,7 @@
 	name = "welding helmet"
 	desc = "A head-mounted face cover designed to protect the wearer completely from space-arc eye."
 	icon_state = "welding"
-	item_state_slots = list(slot_r_hand_str = "welding", slot_l_hand_str = "welding")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "welding", SLOT_ID_LEFT_HAND = "welding")
 	matter = list(MAT_STEEL = 3000, MAT_GLASS = 1000)
 	var/up = 0
 	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
@@ -71,8 +71,8 @@
 	desc = "A painted welding helmet, this one has a demonic face on it."
 	icon_state = "demonwelding"
 	item_state_slots = list(
-		slot_l_hand_str = "demonwelding",
-		slot_r_hand_str = "demonwelding",
+		SLOT_ID_LEFT_HAND = "demonwelding",
+		SLOT_ID_RIGHT_HAND = "demonwelding",
 		)
 
 /obj/item/clothing/head/welding/knight
@@ -80,8 +80,8 @@
 	desc = "A painted welding helmet, this one looks like a knights helmet."
 	icon_state = "knightwelding"
 	item_state_slots = list(
-		slot_l_hand_str = "knightwelding",
-		slot_r_hand_str = "knightwelding",
+		SLOT_ID_LEFT_HAND = "knightwelding",
+		SLOT_ID_RIGHT_HAND = "knightwelding",
 		)
 
 /obj/item/clothing/head/welding/fancy
@@ -89,8 +89,8 @@
 	desc = "A painted welding helmet, the black and gold make this one look very fancy."
 	icon_state = "fancywelding"
 	item_state_slots = list(
-		slot_l_hand_str = "fancywelding",
-		slot_r_hand_str = "fancywelding",
+		SLOT_ID_LEFT_HAND = "fancywelding",
+		SLOT_ID_RIGHT_HAND = "fancywelding",
 		)
 
 /obj/item/clothing/head/welding/engie
@@ -98,8 +98,8 @@
 	desc = "A painted welding helmet, this one has been painted the engineering colours."
 	icon_state = "engiewelding"
 	item_state_slots = list(
-		slot_l_hand_str = "engiewelding",
-		slot_r_hand_str = "engiewelding",
+		SLOT_ID_LEFT_HAND = "engiewelding",
+		SLOT_ID_RIGHT_HAND = "engiewelding",
 		)
 
 
@@ -185,20 +185,11 @@
 	siemens_coefficient = 1.5
 	item_icons = list()
 
-/obj/item/clothing/head/kitty/update_icon(mob/living/carbon/human/user)
-	if(!istype(user))
-		return
-	var/icon/ears = new/icon("icon" = INV_HEAD_DEF_ICON, "icon_state" = "kitty")
-	ears.Blend(rgb(user.r_hair, user.g_hair, user.b_hair), ICON_ADD)
-
-	var/icon/earbit = new/icon("icon" = INV_HEAD_DEF_ICON, "icon_state" = "kittyinner")
-	ears.Blend(earbit, ICON_OVERLAY)
-
 /obj/item/clothing/head/richard
 	name = "chicken mask"
 	desc = "You can hear the distant sounds of rhythmic electronica."
 	icon_state = "richard"
-	item_state_slots = list(slot_r_hand_str = "chickenhead", slot_l_hand_str = "chickenhead")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "chickenhead", SLOT_ID_LEFT_HAND = "chickenhead")
 	body_parts_covered = HEAD|FACE
 	flags_inv = BLOCKHAIR
 
@@ -206,14 +197,14 @@
 	name = "santa hat"
 	desc = "It's a festive christmas hat, in red!"
 	icon_state = "santahatnorm"
-	item_state_slots = list(slot_r_hand_str = "santahat", slot_l_hand_str = "santahat")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "santahat", SLOT_ID_LEFT_HAND = "santahat")
 	body_parts_covered = 0
 
 /obj/item/clothing/head/santa/green
 	name = "green santa hat"
 	desc = "It's a festive christmas hat, in green!"
 	icon_state = "santahatgreen"
-	item_state_slots = list(slot_r_hand_str = "santahatgreen", slot_l_hand_str = "santahatgreen")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "santahatgreen", SLOT_ID_LEFT_HAND = "santahatgreen")
 	body_parts_covered = 0
 
 /*

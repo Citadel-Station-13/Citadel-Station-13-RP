@@ -195,7 +195,7 @@
 
 /datum/outfit/JSDF/Marine/equip_id(mob/living/carbon/human/H)
 	var/obj/item/card/id/C = ..()
-	C.name = "[H.real_name]'s military ID Card"
+	C.name = "[H?.real_name]'s military ID Card"
 	C.icon_state = "lifetime"
 	C.assignment = "JSDF"
 	C.registered_name = H.real_name

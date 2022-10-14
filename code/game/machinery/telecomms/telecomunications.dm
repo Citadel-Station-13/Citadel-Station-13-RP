@@ -393,8 +393,8 @@
 	. = ..()
 	default_apply_parts()
 
-/obj/machinery/telecomms/relay/forceMove(var/newloc)
-	. = ..(newloc)
+/obj/machinery/telecomms/relay/onTransitZ(old_z, new_z)
+	. = ..()
 	listening_level = z
 
 /obj/machinery/telecomms/relay/receive_information(datum/signal/signal, obj/machinery/telecomms/machine_from)

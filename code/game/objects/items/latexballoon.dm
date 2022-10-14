@@ -3,8 +3,8 @@
 	desc = "A latex glove, usually used as a balloon."
 	icon_state = "latexballon"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_gloves.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_gloves.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_gloves.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_gloves.dmi',
 			)
 	item_state = "lgloves"
 	force = 0

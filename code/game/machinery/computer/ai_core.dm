@@ -172,8 +172,9 @@
 						empty_playable_ai_cores += D
 				else
 					var/mob/living/silicon/ai/A = new /mob/living/silicon/ai ( loc, laws, brain )
-					if(A) //if there's no brain, the mob is deleted and a structure/AIcore is created
-						A.rename_self("ai", 1)
+					// If there's no brain, the mob is deleted and a structure/AIcore is created.
+					if(A)
+						A.rename_self("ai")
 						for(var/datum/language/L in brain.brainmob.languages)
 							A.add_language(L.name)
 				feedback_inc("cyborg_ais_created",1)

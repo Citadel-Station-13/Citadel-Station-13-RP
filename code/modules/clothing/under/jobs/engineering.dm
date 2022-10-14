@@ -4,7 +4,6 @@
 	name = "chief engineer's jumpsuit"
 	icon_state = "chief"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 10)
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/chief_engineer/jeans
 	name = "chief engineer's jumpjeans"
@@ -28,7 +27,6 @@
 	desc = "It's a jumpsuit worn by atmospheric technicians."
 	name = "atmospheric technician's jumpsuit"
 	icon_state = "atmos"
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/atmospheric_technician/jeans
 	name = "atmospheric technician's jumpjeans"
@@ -50,7 +48,6 @@
 	name = "engineer's jumpsuit"
 	icon_state = "engine"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 10)
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/engineer/jeans
 	name = "engineer's jumpjeans"
@@ -74,8 +71,8 @@
 	name = "engineering turtleneck"
 	desc = "It's a stylish turtleneck with minor radiation shielding. Nobody's going to see it behind the voidsuit, though."
 	icon_state = "turtle_eng"
-	rolled_down = -1
-	rolled_sleeves = -1
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/rank/engineer/turtleneck_fem
 	name = "engineering turtleneck"
@@ -86,7 +83,6 @@
 	desc = "It's a slimming black jumpsuit with reinforced seams; great for industrial work."
 	name = "roboticist's jumpsuit"
 	icon_state = "robotics"
-	rolled_sleeves = 0
 
 /obj/item/clothing/under/rank/roboticist/alt
 	desc = "It's a slimming black jumpsuit with reinforced seams and a gold trim; great for industrial work."

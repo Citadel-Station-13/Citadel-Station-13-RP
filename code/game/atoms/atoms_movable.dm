@@ -169,6 +169,8 @@
 		un_opaque.recalc_atom_opacity()
 
 /atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
+	if(mover in buckled_mobs)
+		return TRUE
 	. = ..()
 	if(locs && locs.len >= 2)	// If something is standing on top of us, let them pass.
 		if(mover.loc in locs)

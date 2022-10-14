@@ -2,6 +2,7 @@
 	name = SPECIES_WEREBEAST
 	name_plural = "Werebeasts"
 	primitive_form = SPECIES_MONKEY_VULPKANIN
+	default_bodytype = BODYTYPE_WEREBEAST
 
 	icon_template = 'icons/mob/species/werebeast/template.dmi'
 	icobase       = 'icons/mob/species/werebeast/body.dmi'

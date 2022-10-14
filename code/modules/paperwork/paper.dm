@@ -409,11 +409,6 @@
 
 		update_icon()
 
-/obj/item/paper/get_worn_icon_state(var/slot_id)
-	if(slot_id == SLOT_ID_HEAD)
-		return "paper" //Gross, but required for now.
-	return ..()
-
 /obj/item/paper/attackby(obj/item/P as obj, mob/user as mob)
 	..()
 	var/clown = 0
@@ -532,7 +527,6 @@
 
 /obj/item/paper/flag
 	icon_state = "flag_neutral"
-	item_state = "paper"
 	anchored = 1.0
 
 /obj/item/paper/jobs
@@ -543,7 +537,6 @@
 	name = "photo"
 	icon_state = "photo"
 	var/photo_id = 0.0
-	item_state = "paper"
 
 /obj/item/paper/sop
 	name = "paper- 'Standard Operating Procedure'"
