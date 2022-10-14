@@ -22,3 +22,8 @@
 	var/emissives_allowed = TRUE
 
 #warn full shapeshifter tgui panel after this rework it won't be enough to use menu
+
+
+#warn impl
+
+/datum/sprite_accessory/proc/render_mob_appearance(mob/M, list/colors, )
