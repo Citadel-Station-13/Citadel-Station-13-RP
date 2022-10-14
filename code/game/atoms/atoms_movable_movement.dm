@@ -136,13 +136,22 @@
 					newtonian_move(direct)
 			moving_diagonally = 0
 			return
+	else		// trying to move to the same place
+		if(direct)
+			last_move_dir = direct
+			setDir(direct)
+		return TRUE		// not moving is technically success
 
 	if(!loc || (loc == oldloc && oldloc != newloc))
 		last_move_dir = NONE
 		return
 
+	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
+		return FALSE
+
 	if(.)
 		Moved(oldloc, direct)
+
 	if(. && pulling && pulling == pullee && pulling != moving_from_pull) //we were pulling a thing and didn't lose it during our move.
 		if(pulling.anchored)
 			stop_pulling()
@@ -159,25 +168,27 @@
 					// end
 			check_pulling()
 
-	last_move_dir = direct
-	setDir(direct)
+	if(direct)
+		last_move_dir = direct
+		setDir(direct)
 
 	//glide_size strangely enough can change mid movement animation and update correctly while the animation is playing
 	//This means that if you don't override it late like this, it will just be set back by the movement update that's called when you move turfs.
 	if(glide_size_override)
 		set_glide_size(glide_size_override, FALSE)
 
-	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
-		return FALSE
-
 	move_speed = world.time - l_move_time
 	l_move_time = world.time
 
 //! WARNING WARNING THIS IS SHITCODE
-/atom/movable/proc/handle_buckled_mob_movement(newloc, direct)
+/atom/movable/proc/handle_buckled_mob_movement(newloc, direct, glide_size_override, forcemoving)
 	for(var/mob/M as anything in buckled_mobs)
-		if(!M.forceMove(newloc, direct))
-			loc = M.loc
+		if(!M.Move(newloc, direct, glide_size_override))
+			if(forcemoving)
+				unbuckle_mob(M, BUCKLE_OP_FORCE | BUCKLE_OP_SILENT)
+				continue
+			else
+				forceMove(M.loc)
 			last_move_dir = M.last_move_dir
 			inertia_dir = last_move_dir
 			for(var/mob/resetting as anything in buckled_mobs)
@@ -246,60 +257,86 @@
   * recurse_levels determines how many levels it recurses this call. Don't set it too high or else someone's going to transit 20 conga liners in a single move.
   * Probably needs a better way of handling this in the future.
   */
+/atom/movable/proc/locationTransitForceMove(atom/destination, recurse_levels = 0, allow_buckled = TRUE, allow_pulled = TRUE, allow_grabbed = GRAB_PASSIVE, list/recursed = list())
+	// we need the recursion guard for loop situations.
+	// todo: rework everything about this proc omg
+	if(recursed[src])
+		return
+	recursed[src] = TRUE
 
-/atom/movable/proc/locationTransitForceMove(atom/destination, recurse_levels = 0)
-	// store pulling, buckled
-	var/atom/movable/oldpulling = pulling
-	var/list/mob/oldbuckled = buckled_mobs?.Copy()
+	var/atom/movable/oldpulling
+	if(pulling)
+		oldpulling = pulling
+		stop_pulling()
+
+	var/list/mob/oldbuckled
+	if(buckled_mobs)
+		oldbuckled = buckled_mobs.Copy()
 
 	// move
-	doLocationTransitForceMove(destination)
+	. = doLocationTransitForceMove(destination)
+	if(!.)
+		return
 
-	// buckled
 	if(length(oldbuckled))
 		for(var/mob/M in oldbuckled)
 			if(recurse_levels)
 				M.locationTransitForceMove(destination, recurse_levels - 1)
 			else
 				M.doLocationTransitForceMove(destination)
-			buckle_mob(M, BUCKLE_OP_FORCE | BUCKLE_OP_IGNORE_LOC)
+			if(!(M.buckled == src))
+				buckle_mob(M, BUCKLE_OP_FORCE | BUCKLE_OP_IGNORE_LOC | BUCKLE_OP_SILENT, oldbuckled[M])
 
-	// move pulling, pull
 	if(oldpulling)
 		if(recurse_levels)
 			oldpulling.locationTransitForceMove(destination, recurse_levels - 1)
 		else
 			oldpulling.doLocationTransitForceMove(destination)
-		start_pulling(oldpulling)
+		start_pulling(oldpulling, suppress_message = TRUE)
+
+/mob/locationTransitForceMove(atom/destination, recurse_levels = 0, allow_buckled = TRUE, allow_pulled = TRUE, allow_grabbed = GRAB_PASSIVE, list/recursed = list())
+	var/list/old_grabbed
+	if(allow_grabbed)
+		old_grabbed = list()
+		for(var/mob/M in grabbing())
+			if(check_grab(M) < allow_grabbed)
+				continue
+			old_grabbed += M
+	. = ..()
+	if(!.)
+		return
+	for(var/mob/M in old_grabbed)
+		M.forceMove(loc)
 
 /**
   * Gets the atoms that we'd pull along with a locationTransitForceMove
   */
-/atom/movable/proc/getLocationTransitForceMoveTargets(atom/destination, recurse_levels = 0)
+/atom/movable/proc/getLocationTransitForceMoveTargets(atom/destination, recurse_levels = 0, allow_buckled = TRUE, allow_pulled = TRUE, allow_grabbed = GRAB_PASSIVE, list/recursed = list())
+	if(recursed[src])
+		return list()
+	recursed[src] = TRUE
 	. = list(src)
-	if(buckled_mobs)
+	if(allow_pulled)
+		. |= recurse_levels? pulling.getLocationTransitForceMoveTargets(destination, recurse_levels - 1, allow_buckled, allow_pulled, allow_grabbed, recursed) : pulling
+	if(allow_buckled && buckled_mobs)
 		for(var/mob/M in buckled_mobs)
-			if(recurse_levels)
-				. |= M.getLocationTransitForceMoveTargets(destination, recurse_levels - 1)
-			else
-				. |= M
+			. |= recurse_levels? M.getLocationTransitForceMoveTargets(destination, recurse_levels - 1, allow_buckled, allow_pulled, allow_grabbed, recursed) : M
 
 // until movement rework
-/mob/getLocationTransitForceMoveTargets(atom/destination, recurse_levels = 0)
+/mob/getLocationTransitForceMoveTargets(atom/destination, recurse_levels = 0, allow_buckled = TRUE, allow_pulled = TRUE, allow_grabbed = GRAB_PASSIVE)
 	. = ..()
-	if(pulling)
-		if(recurse_levels)
-			. |= pulling.getLocationTransitForceMoveTargets(destination, recurse_levels - 1)
-		else
-			. |= pulling
+	if(allow_grabbed)
+		var/list/grabbing = grabbing()
+		for(var/mob/M in grabbing)
+			if(check_grab(M) < allow_grabbed)
+				continue
+			. |= recurse_levels? M.getLocationTransitForceMoveTargets(destination, recurse_levels - 1, allow_buckled, allow_pulled, allow_grabbed) : M
 
 /**
   * Wrapper for forceMove when we're called by a recursing locationTransitForceMove().
   */
 /atom/movable/proc/doLocationTransitForceMove(atom/destination)
-	// move buckled mobs first
-	for(var/mob/M in buckled_mobs)
-		M.forceMove(destination)
+	. = TRUE
 	forceMove(destination)
 
 /atom/movable/proc/forceMove(atom/destination)
@@ -315,8 +352,6 @@
 /atom/movable/proc/doMove(atom/destination)
 	. = FALSE
 	if(destination)
-		if(pulledby)
-			pulledby.stop_pulling()
 		var/atom/oldloc = loc
 		var/same_loc = oldloc == destination
 		var/area/old_area = get_area(oldloc)
@@ -346,13 +381,23 @@
 				if(AM == src)
 					continue
 				AM.Crossed(src, oldloc)
-
 		Moved(oldloc, NONE, TRUE)
+		if(pulling)
+			check_pulling()
+		if(pulledby)
+			pulledby.check_pulling()
+		if(buckled_mobs)
+			handle_buckled_mob_movement(destination, dir, glide_size, TRUE)
 		. = TRUE
 
 	//If no destination, move the atom into nullspace (don't do this unless you know what you're doing)
 	else
 		. = TRUE
+		if(buckled_mobs)
+			unbuckle_all_mobs(BUCKLE_OP_FORCE)
+		pulledby?.stop_pulling()
+		if(pulling)
+			stop_pulling()
 		if (loc)
 			var/atom/oldloc = loc
 			var/area/old_area = get_area(oldloc)

@@ -98,7 +98,7 @@
 	desc = "A skirt that is a shiny black."
 	icon_state = "skirt_short_black"
 	body_parts_covered = LOWER_TORSO
-	rolled_sleeves = -1
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
 
 /obj/item/clothing/under/skirt/khaki
 	name = "khaki skirt"
@@ -146,62 +146,62 @@
 	name = "blue plaid skirt"
 	desc = "A preppy blue skirt with a white blouse."
 	icon_state = "plaid_blue"
-	item_state_slots = list(slot_r_hand_str = "blue", slot_l_hand_str = "blue")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blue", SLOT_ID_LEFT_HAND = "blue")
 
 /obj/item/clothing/under/skirt/outfit/plaid_red
 	name = "red plaid skirt"
 	desc = "A preppy red skirt with a white blouse."
 	icon_state = "plaid_red"
-	item_state_slots = list(slot_r_hand_str = "red", slot_l_hand_str = "red")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
 
 /obj/item/clothing/under/skirt/outfit/plaid_purple
 	name = "purple plaid skirt"
 	desc = "A preppy purple skirt with a white blouse."
 	icon_state = "plaid_purple"
-	item_state_slots = list(slot_r_hand_str = "purple", slot_l_hand_str = "purple")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "purple", SLOT_ID_LEFT_HAND = "purple")
 
 /obj/item/clothing/under/skirt/outfit/plaid_green
 	name = "green plaid skirt"
 	desc = "A preppy purple skirt with a white blouse."
 	icon_state = "plaid_green"
-	item_state_slots = list(slot_r_hand_str = "green", slot_l_hand_str = "green")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "green", SLOT_ID_LEFT_HAND = "green")
 
 /obj/item/clothing/under/rank/cargo/skirt
 	name = "quartermaster's jumpskirt"
 	desc = "It's a jumpskirt worn by the quartermaster. It's specially designed to prevent back injuries caused by pushing paper."
 	icon_state = "qmf"
-	item_state_slots = list(slot_r_hand_str = "qm", slot_l_hand_str = "qm")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "qm", SLOT_ID_LEFT_HAND = "qm")
 
 /obj/item/clothing/under/rank/cargotech/skirt
 	name = "cargo technician's jumpskirt"
 	desc = "Skirrrrrts! They're comfy and easy to wear!"
 	icon_state = "cargof"
-	item_state_slots = list(slot_r_hand_str = "cargo", slot_l_hand_str = "cargo")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cargo", SLOT_ID_LEFT_HAND = "cargo")
 
 /obj/item/clothing/under/rank/engineer/skirt
 	desc = "It's an orange high visibility jumpskirt worn by engineers. It has minor radiation shielding."
 	name = "engineer's jumpskirt"
 	icon_state = "enginef"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 10)
-	item_state_slots = list(slot_r_hand_str = "engine", slot_l_hand_str = "engine")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "engine", SLOT_ID_LEFT_HAND = "engine")
 
 /obj/item/clothing/under/rank/chief_engineer/skirt
 	desc = "It's a high visibility jumpskirt given to those engineers insane enough to achieve the rank of \"Chief engineer\". It has minor radiation shielding."
 	name = "chief engineer's jumpskirt"
 	icon_state = "chieff"
-	item_state_slots = list(slot_r_hand_str = "chiefengineer", slot_l_hand_str = "chiefengineer")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "chiefengineer", SLOT_ID_LEFT_HAND = "chiefengineer")
 
 /obj/item/clothing/under/rank/atmospheric_technician/skirt
 	desc = "It's a jumpskirt worn by atmospheric technicians."
 	name = "atmospheric technician's jumpskirt"
 	icon_state = "atmosf"
-	item_state_slots = list(slot_r_hand_str = "atmos", slot_l_hand_str = "atmos")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "atmos", SLOT_ID_LEFT_HAND = "atmos")
 
 /obj/item/clothing/under/rank/roboticist/skirt
 	desc = "It's a slimming black jumpskirt with reinforced seams; great for industrial work."
 	name = "roboticist's jumpskirt"
 	icon_state = "roboticsf"
-	item_state_slots = list(slot_r_hand_str = "robotics", slot_l_hand_str = "robotics")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "robotics", SLOT_ID_LEFT_HAND = "robotics")
 
 /obj/item/clothing/under/rank/scientist/skirt
 	name = "scientist's jumpskirt"

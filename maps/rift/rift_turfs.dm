@@ -19,6 +19,8 @@ LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/gravsnow)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow)
+LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow/noblend)
+LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/snow/noblend/indoors)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/sky/depths)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/sky/depths/west)
 LYTHIOS43C_TURF_CREATE(/turf/simulated/floor/outdoors/safeice)
@@ -42,9 +44,47 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/shuttle/floor/voidcraft)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor)
 LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/mineral/icerock)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/ignore_cavegen)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/floor/ignore_cavegen)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/floor/icerock)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/ignore_cavegen)
+LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
+
+
+/turf/simulated/mineral/icerock/ignore_cavegen/lythios43c
+	baseturfs = /turf/simulated/mineral/icerock/floor/ignore_cavegen/lythios43c
+
+/// Object Generation for snow turfs. It'd prolly be nice to put this down lower on the type path for future use but for now just gonna have this on rift snow
+/*	/// Basically just coppied the code from grass.dm for this, putting it down below for furture reference (and so I dont forget where I got it from -Bloop)
+/turf/simulated/floor/outdoors/grass/sif
+	name = "growth"
+	icon_state = "grass_sif"
+	initial_flooring = /decl/flooring/outdoors/grass/sif
+	grass_chance = 5
+	var/tree_chance = 2
+
+	grass_types = list(
+		/obj/structure/flora/sif/eyes = 1,
+		/obj/structure/flora/sif/tendrils = 10
+		)
+
+	catalogue_data = list(/datum/category_item/catalogue/flora/sif_grass)
+	catalogue_delay = 2 SECONDS
+
+/turf/simulated/floor/outdoors/grass/sif/Initialize(mapload)
+	if(tree_chance && prob(tree_chance) && !check_density())
+		new /obj/structure/flora/tree/sif(src)
+	. = ..()
+*/
 
 /turf/simulated/floor/outdoors/snow/lythios43c
 	baseturfs = /turf/simulated/floor/outdoors/safeice/lythios43c
+	var/object_spawn_chance = 3
+
+/turf/simulated/floor/outdoors/snow/lythios43c/Initialize(mapload)
+	if(object_spawn_chance && prob(object_spawn_chance) && !check_density())
+		new /obj/random/snow_debris(src)	///mapping.dm is where this obj's at
+	. = ..()
 
 /// Indoor Variants (Cause we need em). It bugs me that outdoor varients are the default but what can you do -Bloop
 /turf/simulated/floor/outdoors/safeice/indoors
@@ -56,6 +96,9 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/mineral/icerock)
 
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 	outdoors = FALSE
+
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen	// I hate having to make such a long typepath for this, very annyoing -Bloop
+	ignore_cavegen = TRUE
 
 /turf/simulated/floor/lythios43c/indoors
 	outdoors = FALSE
@@ -252,3 +295,5 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/mineral/icerock)
 	dir = EAST
 /turf/simulated/sky/lythios43c/moving/west
 	dir = WEST
+
+

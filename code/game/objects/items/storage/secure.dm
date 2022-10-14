@@ -143,7 +143,7 @@
 	name = "secure briefcase"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "secure"
-	item_state_slots = list(slot_r_hand_str = "case", slot_l_hand_str = "case")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "case", SLOT_ID_LEFT_HAND = "case")
 	desc = "A large briefcase with a digital locking system."
 	force = 8.0
 	throw_speed = 1
@@ -152,18 +152,18 @@
 	w_class = ITEMSIZE_LARGE
 	max_storage_space = ITEMSIZE_COST_NORMAL * 4
 
-	attack_hand(mob/user as mob)
-		if ((src.loc == user) && (src.locked == 1))
-			to_chat(user, "<span class='warning'>[src] is locked and cannot be opened!</span>")
-		else if ((src.loc == user) && (!src.locked))
-			src.open(usr)
-		else
-			..()
-			for(var/mob/M in range(1))
-				if (M.s_active == src)
-					src.close(M)
-		src.add_fingerprint(user)
-		return
+/obj/item/storage/secure/briefcase/attack_hand(mob/user)
+	if ((src.loc == user) && (src.locked == 1))
+		to_chat(user, "<span class='warning'>[src] is locked and cannot be opened!</span>")
+	else if ((src.loc == user) && (!src.locked))
+		src.open(usr)
+	else
+		..()
+		for(var/mob/M in range(1))
+			if (M.s_active == src)
+				src.close(M)
+	src.add_fingerprint(user)
+	return
 
 //LOADOUT ITEM
 /obj/item/storage/secure/briefcase/portable
@@ -185,7 +185,7 @@
 	slot_flags = SLOT_BACK
 	icon = 'icons/obj/clothing/backpack.dmi'
 	icon_state = "securev"
-	item_state_slots = list(slot_r_hand_str = "securev", slot_l_hand_str = "securev")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "securev", SLOT_ID_LEFT_HAND = "securev")
 	desc = "A large briefcase with a digital locking system and a magnetic attachment system."
 	force = 0
 	throw_speed = 1

@@ -7,8 +7,8 @@
 #define Z_LEVEL_SURFACE_HIGH			7
 
 #define Z_LEVEL_WEST_BASE				8
-#define Z_LEVEL_WEST_CAVERN				9
-#define Z_LEVEL_WEST_DEEP				10
+#define Z_LEVEL_WEST_DEEP				9
+#define Z_LEVEL_WEST_CAVERN				10
 #define Z_LEVEL_WEST_PLAIN				11
 
 #define Z_LEVEL_MISC					12
@@ -172,6 +172,7 @@
 
 	lateload_z_levels = list(
 //		list("Rift - Misc"), // Stock Rift lateload maps || Currently not in use, takes too long to load, breaks shuttles.
+//		list("Western Canyon","Western Deep Caves","Western Caves","Western Plains"),	///Integration Test says these arent valid maps but everything works, will leave in for now but this prolly isnt needed -Bloop
 		list("Debris Field - Z1 Space"), // Debris Field
 		list("Away Mission - Pirate Base"), // Vox Pirate Base & Mining Planet
 		list("ExoPlanet - Z1 Planet"),//Mining planet
@@ -211,13 +212,6 @@
 		/datum/planet/classp,
 		/datum/planet/classm)
 
-/datum/map/rift/perform_map_generation()
-	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_WEST_CAVERN, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_WEST_DEEP, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_WEST_BASE, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 1, 1, Z_LEVEL_UNDERGROUND_FLOOR, world.maxx - 4, world.maxy - 4)         // Create the mining ore distribution map.
-
-	return 1
 
 /*
 // For making the 6-in-1 holomap, we calculate some offsets
@@ -287,11 +281,13 @@
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
 	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
 
+
 /datum/map_z_level/rift/caves
 	z = Z_LEVEL_WEST_CAVERN
 	name = "Western Caves"
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_PLAYER
 	base_turf = /turf/simulated/mineral/floor/icerock/lythios43c/indoors
+
 
 /datum/map_z_level/rift/plains
 	z = Z_LEVEL_WEST_PLAIN
@@ -299,7 +295,29 @@
 	flags = MAP_LEVEL_STATION|MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
 	base_turf = /turf/simulated/floor/outdoors/safeice/lythios43c
 
+
+
+/// Cave Generation
+/datum/map/rift/perform_map_generation()
+	. = ..()
+	seed_submaps(list(Z_LEVEL_WEST_CAVERN), 50, /area/rift/surfacebase/outside/west_caves/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_caves)
+	seed_submaps(list(Z_LEVEL_WEST_DEEP), 50, /area/rift/surfacebase/outside/west_deep/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_deep)
+	seed_submaps(list(Z_LEVEL_WEST_BASE), 50, /area/rift/surfacebase/outside/west_base/submap_seedzone, /datum/map_template/submap/level_specific/rift/west_base)
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 3, 3, Z_LEVEL_WEST_CAVERN, world.maxx - 3, world.maxy - 3)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 3, 3, Z_LEVEL_WEST_DEEP, world.maxx - 3, world.maxy - 3)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 3, 3, Z_LEVEL_WEST_BASE, world.maxx - 3, world.maxy - 3)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks/rift(null, 3, 3, Z_LEVEL_UNDERGROUND_FLOOR, world.maxx - 3, world.maxy - 3)         // Create the mining ore distribution map.
+	new /datum/random_map/automata/cave_system/no_cracks/rift_nocaves(null, 3, 3, Z_LEVEL_SURFACE_HIGH, world.maxx - 3, world.maxy - 3)
+	new /datum/random_map/automata/cave_system/no_cracks/rift_nocaves(null, 3, 3, Z_LEVEL_SURFACE_MID, world.maxx - 3, world.maxy - 3)
+	new /datum/random_map/automata/cave_system/no_cracks/rift_nocaves(null, 3, 3, Z_LEVEL_SURFACE_LOW, world.maxx - 3, world.maxy - 3)
+	new /datum/random_map/automata/cave_system/no_cracks/rift_nocaves(null, 3, 3, Z_LEVEL_UNDERGROUND, world.maxx - 3, world.maxy - 3)
+	new /datum/random_map/automata/cave_system/no_cracks/rift_nocaves(null, 3, 3, Z_LEVEL_UNDERGROUND_DEEP, world.maxx - 3, world.maxy - 3)
+
+	return 1
+
+
 /datum/map_z_level/rift/colony
 	z = Z_LEVEL_MISC
 	name = "Orbital Relay"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
+

@@ -8,11 +8,14 @@
 * Categories *
 *************/
 /datum/category_group/underwear
-	var/sort_order		// Lower sort order is applied as icons first
-	var/display_name	// For displaying in text
+
+	/// Lower sort order is applied as icons first.
+	var/sort_order
+	/// For displaying in text.
+	var/display_name
 	var/gender = NEUTER
 
-datum/category_group/underwear/dd_SortValue()
+/datum/category_group/underwear/dd_SortValue()
 	return sort_order
 
 /datum/category_group/underwear/top
@@ -37,18 +40,23 @@ datum/category_group/underwear/dd_SortValue()
 /datum/category_group/underwear/undershirt
 	name = "Undershirt"
 	display_name = "undershirt"
-	sort_order = 4		// Undershirts currently have the highest sort order because they may cover both underwear and socks.
+	sort_order = 4 // Undershirts currently have the highest sort order because they may cover both underwear and socks.
 	category_item_type = /datum/category_item/underwear/undershirt
 
 /*******************
 * Category entries *
 *******************/
 /datum/category_item/underwear
-	var/always_last = FALSE          // Should this entry be sorte last?
-	var/is_default = FALSE           // Should this entry be considered the default for its type?
-	var/icon = 'icons/mob/human.dmi' // Which icon to get the underwear from
-	var/icon_state                   // And the particular item state
-	var/list/tweaks = list()         // Underwear customizations.
+	/// Should this entry be sorte last?
+	var/always_last = FALSE
+	/// Should this entry be considered the default for its type?
+	var/is_default = FALSE
+	/// Which icon to get the underwear from.
+	var/icon = 'icons/mob/human.dmi'
+	/// And the particular item state.
+	var/icon_state
+	/// Underwear customizations.
+	var/list/tweaks = list()
 	var/has_color = FALSE
 
 /datum/category_item/underwear/New()
@@ -60,10 +68,10 @@ datum/category_group/underwear/dd_SortValue()
 		return "~"+name
 	return name
 
-/datum/category_item/underwear/proc/is_default(var/gender)
+/datum/category_item/underwear/proc/is_default(gender)
 	return is_default
 
-/datum/category_item/underwear/proc/generate_image(var/list/metadata, var/layer = FLOAT_LAYER)
+/datum/category_item/underwear/proc/generate_image(list/metadata, layer = FLOAT_LAYER)
 	if(!icon_state)
 		return
 

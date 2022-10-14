@@ -59,7 +59,7 @@
 
 /datum/job/New()
 	. = ..()
-	department_accounts = department_accounts || departments_managed
+	GLOB.department_accounts = GLOB.department_accounts || departments_managed
 
 /datum/job/proc/equip(var/mob/living/carbon/human/H, var/alt_title)
 	var/datum/outfit/outfit = get_outfit(H, alt_title)

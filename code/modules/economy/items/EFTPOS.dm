@@ -14,11 +14,11 @@
 
 /obj/item/eftpos/Initialize(mapload)
 	. = ..()
-	machine_id = "[station_name()] EFTPOS #[num_financial_terminals++]"
+	machine_id = "[station_name()] EFTPOS #[GLOB.num_financial_terminals++]"
 	access_code = rand(1111,111111)
 	//by default, connect to the station account
 	//the user of the EFTPOS device can change the target account though, and no-one will be the wiser (except whoever's being charged)
-	linked_account = station_account
+	linked_account = GLOB.station_account
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/item/eftpos/LateInitialize()
@@ -141,7 +141,7 @@
 						T.purpose = (transaction_purpose ? transaction_purpose : "None supplied.")
 						T.amount = transaction_amount
 						T.source_terminal = machine_id
-						T.date = current_date_string
+						T.date = GLOB.current_date_string
 						T.time = stationtime2text()
 						linked_account.transaction_log.Add(T)
 					else
@@ -265,7 +265,7 @@
 								else
 									T.amount = "[transaction_amount]"
 								T.source_terminal = machine_id
-								T.date = current_date_string
+								T.date = GLOB.current_date_string
 								T.time = stationtime2text()
 								D.transaction_log.Add(T)
 								//
@@ -274,7 +274,7 @@
 								T.purpose = transaction_purpose
 								T.amount = "[transaction_amount]"
 								T.source_terminal = machine_id
-								T.date = current_date_string
+								T.date = GLOB.current_date_string
 								T.time = stationtime2text()
 								linked_account.transaction_log.Add(T)
 							else

@@ -19,6 +19,12 @@
 "ag" = (
 /turf/simulated/open,
 /area/rift/station/stairs_two)
+"ah" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/rift/asylum/training)
 "ai" = (
 /turf/simulated/shuttle/wall/voidcraft,
 /area/turbolift/runder/level1)
@@ -78,6 +84,9 @@
 /obj/machinery/door/firedoor/glass,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/public_bunker)
@@ -718,7 +727,9 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/structure/closet,
+/obj/structure/closet{
+	name = "closet"
+	},
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /obj/random/maintenance/engineering,
@@ -882,7 +893,9 @@
 /area/maintenance/public_bunker)
 "cc" = (
 /obj/structure/railing,
-/obj/structure/closet,
+/obj/structure/closet{
+	name = "closet"
+	},
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
@@ -1297,7 +1310,9 @@
 /area/maintenance/engineering/upper)
 "cP" = (
 /obj/structure/railing,
-/obj/structure/closet,
+/obj/structure/closet{
+	name = "closet"
+	},
 /obj/random/maintenance/engineering,
 /obj/random/maintenance/clean,
 /obj/random/maintenance/clean,
@@ -1542,6 +1557,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"dj" = (
+/obj/effect/decal/remains/tajaran,
+/turf/simulated/floor/cult,
+/area/rift/asylum/near_death)
 "dk" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloorblack{
@@ -1888,6 +1907,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"dN" = (
+/obj/structure/table/standard,
+/obj/random/toolbox,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
 "dO" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -4017,6 +4041,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
+"hD" = (
+/obj/effect/blocker,
+/turf/simulated/open,
+/area/security/prison)
 "hE" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 9
@@ -5044,6 +5072,9 @@
 /obj/item/material/twohanded/baseballbat/metal,
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
+"jL" = (
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "jM" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -5469,6 +5500,9 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/engine_balcony)
+"kE" = (
+/turf/simulated/wall/dungeon,
+/area/rift/asylum/science)
 "kF" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -5835,6 +5869,11 @@
 /obj/effect/floor_decal/transit/orange,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/engine_balcony)
+"ln" = (
+/obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
+/turf/simulated/floor,
+/area/rift/asylum/command)
 "lo" = (
 /obj/machinery/light{
 	dir = 4
@@ -6465,7 +6504,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
 "mB" = (
-/obj/structure/closet,
+/obj/structure/closet{
+	name = "closet"
+	},
 /obj/random/maintenance/clean,
 /obj/random/maintenance/engineering,
 /obj/random/maintenance/engineering,
@@ -9052,6 +9093,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"qD" = (
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/near_death)
 "qE" = (
 /obj/effect/floor_decal/industrial/danger/corner,
 /turf/simulated/floor/tiled/dark,
@@ -9290,6 +9335,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/rift/station/fighter_bay)
+"rb" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "rc" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/lattice,
@@ -9363,6 +9414,21 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/hangar)
+"rk" = (
+/obj/structure/closet{
+	name = "Contraband: Patient 49"
+	},
+/obj/item/reagent_containers/food/snacks/meat/human,
+/obj/item/reagent_containers/food/snacks/meat/human,
+/obj/item/reagent_containers/food/snacks/meat/human,
+/turf/simulated/floor/brass,
+/area/rift/asylum/science)
+"rn" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/structure/cable/green,
+/turf/simulated/floor/plating,
+/area/rift/trade_shop)
 "rr" = (
 /obj/effect/floor_decal/borderfloorblack/corner,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -9379,6 +9445,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/break_room)
+"rs" = (
+/obj/structure/disposalpipe/segment,
+/turf/simulated/wall/dungeon,
+/area/maintenance/elevator)
 "ru" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
@@ -9787,6 +9857,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
+"se" = (
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/wood,
+/area/rift/asylum/training)
 "sf" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
@@ -9971,12 +10045,21 @@
 /obj/item/storage/firstaid/fire,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"sA" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/rift/asylum/halls)
 "sF" = (
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"sG" = (
+/turf/simulated/open,
+/area/rift/asylum/training)
 "sJ" = (
 /obj/machinery/door/airlock/maintenance/engi,
 /obj/structure/catwalk,
@@ -10013,6 +10096,13 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"sO" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/obj/structure/flora/pottedplant/dead,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/command)
 "sQ" = (
 /turf/simulated/mineral/icerock/lythios43c,
 /area/maintenance/engineering)
@@ -10479,6 +10569,22 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/maintenance)
+"tR" = (
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/paleblue/full,
+/obj/random/medical,
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
+"tU" = (
+/obj/structure/inflatable/door,
+/turf/simulated/floor/plating,
+/area/rift/trade_shop)
+"tV" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/near_death)
 "tX" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/bed/chair/bay{
@@ -10551,6 +10657,9 @@
 /obj/effect/zone_divider,
 /turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"uk" = (
+/turf/simulated/floor/water/blood,
+/area/rift/asylum/near_death)
 "un" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 4
@@ -10580,6 +10689,10 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
+"uw" = (
+/obj/structure/fence/door,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "ux" = (
 /obj/structure/symbol/sa,
 /turf/simulated/wall,
@@ -10628,6 +10741,9 @@
 	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"uK" = (
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/near_death)
 "uL" = (
 /obj/structure/bed/chair/office/dark,
 /obj/machinery/button/remote/blast_door{
@@ -10646,9 +10762,15 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engineering_monitoring)
+"uN" = (
+/obj/structure/boulder,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/halls)
 "uO" = (
 /obj/effect/floor_decal/rust,
-/obj/structure/closet,
+/obj/structure/closet{
+	name = "closet"
+	},
 /obj/item/clothing/suit/tajaran/furs,
 /obj/item/clothing/head/tajaran/scarf,
 /obj/item/pickaxe,
@@ -10672,10 +10794,27 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay/hangar)
+"uQ" = (
+/obj/machinery/button/remote/blast_door{
+	name = "Outsider Wing Lab Locks";
+	id = "asylum_lab";
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/halls)
 "uR" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/engineering)
+"uS" = (
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
+"uT" = (
+/obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
+	on = 1
+	},
+/turf/simulated/floor/plating,
+/area/rift/trade_shop)
 "uV" = (
 /obj/machinery/power/apc{
 	cell_type = /obj/item/cell/super;
@@ -10765,15 +10904,11 @@
 /area/maintenance/engineering)
 "vg" = (
 /obj/machinery/telecomms/server/presets/unused,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "vk" = (
 /obj/machinery/telecomms/processor/preset_three,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "vl" = (
 /obj/structure/railing{
@@ -10792,6 +10927,29 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/rift/station/adherent_maintenance)
+"vr" = (
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
+"vt" = (
+/obj/structure/closet{
+	name = "Contraband: Patient 14"
+	},
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/item/paper{
+	name = "Someday Sunny";
+	info = "This is goodbye, I know you may miss me. Or maybe not after all scary things happened here and I was in the middle of it. Its a scary galaxy indeed and what lie beyond the viel is scarier and these dummies wanted to take a peak. They got their look it seems bite off more then they can chew. Know though that even if there are scary things beyond that door, there are other things on this side of the viel that is different and perhaps one day you will see him to like me. Tik Tok I hope to see you again some day. Exit is hidden behind the Major's desk right next to the shelf where he keeps his musket. He was awlfully fond of that thing."
+	},
+/turf/simulated/floor/brass,
+/area/rift/asylum/science)
+"vu" = (
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/rift/asylum/training)
+"vw" = (
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
 "vy" = (
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 8
@@ -10807,6 +10965,21 @@
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay/hangar)
+"vA" = (
+/obj/structure/table/rack/shelf,
+/obj/item/suit_cooling_unit,
+/obj/item/storage/belt/archaeology,
+/obj/item/clothing/suit/space/anomaly,
+/obj/item/clothing/mask/breath,
+/obj/item/clothing/head/helmet/space/anomaly,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rift/asylum/science)
+"vD" = (
+/obj/structure/window/wooden{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/training)
 "vE" = (
 /obj/item/storage/excavation,
 /obj/structure/table/bench/wooden,
@@ -10819,19 +10992,28 @@
 /area/maintenance/engineering)
 "vH" = (
 /obj/machinery/telecomms/server/presets/science,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "vI" = (
 /turf/simulated/wall/r_wall,
 /area/engineering/engine_balcony)
 "vJ" = (
 /obj/machinery/telecomms/bus/preset_four,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
+"vN" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/training)
+"vO" = (
+/obj/structure/table/standard,
+/obj/random/tool/powermaint,
+/obj/random/tool/powermaint,
+/obj/random/tool/powermaint,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
 "vP" = (
 /obj/item/stack/tile/floor,
 /obj/machinery/light/small{
@@ -10898,6 +11080,16 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
+"wa" = (
+/obj/structure/table/reinforced,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "wd" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/bed/chair/bay{
@@ -10938,6 +11130,10 @@
 /obj/item/storage/fancy/crayons,
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/underground/under1)
+"ws" = (
+/obj/item/reagent_containers/syringe/ld50_syringe/choral,
+/turf/simulated/floor/cult,
+/area/rift/asylum/near_death)
 "wt" = (
 /obj/structure/table/reinforced,
 /obj/item/stack/tile/floor,
@@ -11061,10 +11257,12 @@
 /area/engineering/drone_fabrication)
 "wH" = (
 /obj/machinery/telecomms/relay/preset/rift/base_low,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
+"wJ" = (
+/obj/effect/zone_divider,
+/turf/simulated/wall,
+/area/rift/surfacebase/underground/under1)
 "wL" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -11094,11 +11292,29 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"wP" = (
+/obj/structure/closet{
+	name = "Contraband: Patient 53"
+	},
+/obj/item/gun/projectile/musket/pistol/brass,
+/obj/item/tool/wrench/brass,
+/obj/item/weldingtool/brass,
+/obj/item/tool/screwdriver/brass,
+/obj/item/tool/wirecutters/brass,
+/obj/item/tool/crowbar/brass,
+/obj/item/gun/projectile/shotgun/flare/holy,
+/turf/simulated/floor/brass,
+/area/rift/asylum/science)
+"wQ" = (
+/obj/machinery/light/small/emergency/flicker,
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/near_death)
 "wR" = (
 /obj/machinery/telecomms/hub/preset/rift,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "wU" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -11131,9 +11347,7 @@
 /area/rift/station/fighter_bay/hangar)
 "xc" = (
 /obj/machinery/telecomms/bus/preset_three,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "xh" = (
 /obj/effect/floor_decal/spline/plain,
@@ -11166,6 +11380,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/storage/tech)
+"xm" = (
+/obj/machinery/iv_drip,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "xn" = (
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 6
@@ -11182,9 +11403,7 @@
 /area/maintenance/elevator)
 "xq" = (
 /obj/machinery/telecomms/relay/preset/rift/under_shallow,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "xr" = (
 /obj/item/pickaxe/icepick,
@@ -11214,9 +11433,7 @@
 /area/rift/station/fighter_bay/hangar)
 "xw" = (
 /obj/machinery/telecomms/processor/preset_two,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "xy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -11226,7 +11443,9 @@
 /area/rift/station/adherent_maintenance)
 "xA" = (
 /obj/effect/floor_decal/rust,
-/obj/structure/closet,
+/obj/structure/closet{
+	name = "closet"
+	},
 /obj/item/clothing/suit/tajaran/furs,
 /obj/item/clothing/head/tajaran/scarf,
 /obj/item/pickaxe,
@@ -11289,11 +11508,14 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
+"xM" = (
+/obj/structure/boulder,
+/obj/structure/boulder,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/halls)
 "xO" = (
 /obj/machinery/telecomms/server/presets/common,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "xS" = (
 /obj/machinery/mech_recharger,
@@ -11309,6 +11531,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"xV" = (
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/surgical)
 "xW" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -11345,6 +11571,14 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay/maintenance)
+"ya" = (
+/obj/structure/table/rack/steel,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/flashlight/lantern,
+/obj/item/flashlight/lantern,
+/turf/simulated/floor/plating,
+/area/rift/trade_shop)
 "yb" = (
 /obj/fiftyspawner/wood,
 /obj/structure/table/rack/shelf/steel,
@@ -11353,6 +11587,10 @@
 "yc" = (
 /turf/simulated/wall,
 /area/outpost/research/longtermstorage)
+"yd" = (
+/obj/structure/sandbag,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/training)
 "yf" = (
 /obj/machinery/power/apc{
 	dir = 4;
@@ -11400,12 +11638,21 @@
 /mob/living/simple_mob/animal/passive/woolie,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"yn" = (
+/obj/structure/grille/broken/cult,
+/turf/simulated/floor/cult,
+/area/rift/asylum/near_death)
 "yo" = (
 /obj/machinery/telecomms/broadcaster/preset_right/rift,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
+"yr" = (
+/obj/structure/table/standard,
+/obj/random/maintenance/research,
+/obj/random/maintenance/research,
+/obj/random/cigarettes,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
 "yu" = (
 /obj/effect/map_effect/portal/line/side_a{
 	dir = 4
@@ -11471,6 +11718,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay)
+"yC" = (
+/obj/structure/bed/chair/office/light,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
+"yF" = (
+/obj/structure/salvageable/data,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/near_death)
 "yH" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/structure/cable/green{
@@ -11495,12 +11750,21 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"yO" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/lythios43c,
+/area/rift/surfacebase/underground/under1)
 "yP" = (
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"yT" = (
+/turf/simulated/floor/plating,
+/area/rift/trade_shop)
 "yX" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -11604,6 +11868,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay/hangar)
+"zn" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/command)
 "zo" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -11632,9 +11902,7 @@
 /area/rift/station/fighter_bay)
 "zp" = (
 /obj/machinery/telecomms/server/presets/engineering,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "zr" = (
 /obj/effect/floor_decal/borderfloorblack,
@@ -11701,6 +11969,11 @@
 "zz" = (
 /turf/simulated/wall,
 /area/rift/station/adherent_maintenance)
+"zB" = (
+/obj/structure/ladder/up,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/plating,
+/area/rift/trade_shop)
 "zE" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -11753,6 +12026,19 @@
 	},
 /turf/simulated/floor/wood,
 /area/rift/station/fighter_bay)
+"zQ" = (
+/obj/item/handcuffs/legcuffs,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/near_death)
+"zT" = (
+/turf/simulated/wall/dungeon,
+/area/rift/asylum/surgical)
+"zU" = (
+/obj/structure/salvageable/console_broken_os{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
 "zW" = (
 /turf/simulated/wall/r_wall,
 /area/engineering/engine_core)
@@ -11767,6 +12053,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"Ac" = (
+/turf/simulated/open,
+/area/rift/surfacebase/underground/under1)
 "Af" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/blast/regular{
@@ -11782,6 +12071,17 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/maintenance/engineering)
+"Ah" = (
+/obj/structure/closet/crate/medical/blood,
+/obj/item/reagent_containers/blood/prelabeled/OMinus,
+/obj/item/reagent_containers/blood/prelabeled/OMinus,
+/obj/item/reagent_containers/blood/prelabeled/OMinus,
+/obj/item/reagent_containers/blood/prelabeled/OMinus,
+/obj/item/reagent_containers/blood/prelabeled/OMinus,
+/obj/item/reagent_containers/blood/prelabeled/OMinus,
+/obj/effect/floor_decal/corner/paleblue/full,
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "Al" = (
 /obj/structure/filingcabinet/chestdrawer,
 /obj/effect/floor_decal/borderfloorblack{
@@ -11843,6 +12143,12 @@
 /obj/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/lower/atmos_lockers)
+"Au" = (
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating,
+/area/rift/trade_shop)
 "Av" = (
 /obj/structure/stairs/spawner/south,
 /turf/simulated/floor/tiled/steel,
@@ -11878,6 +12184,12 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"AC" = (
+/obj/machinery/door/firedoor/glass,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/rift/asylum/command)
 "AE" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
@@ -11914,6 +12226,21 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/storage)
+"AJ" = (
+/obj/structure/closet/secure_closet/medical3{
+	name = "surgeon's locker"
+	},
+/obj/item/clothing/under/rank/medical/scrubs,
+/obj/item/clothing/under/rank/medical/scrubs,
+/obj/item/clothing/head/surgery,
+/obj/item/clothing/head/surgery,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/item/storage/belt/medical,
+/obj/effect/floor_decal/corner/paleblue/full{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "AK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -11969,6 +12296,12 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
+"AT" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/cult,
+/area/rift/asylum/near_death)
 "AX" = (
 /obj/effect/overlay/snow/floor/surround_new{
 	dir = 1
@@ -11982,6 +12315,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
+"Bg" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/rift/asylum/training)
 "Bi" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -12025,6 +12364,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/storage/tech)
+"Bo" = (
+/obj/effect/trap/pit/open_space{
+	id = "asylum_hall_fake"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/halls)
 "Bp" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
@@ -12036,6 +12381,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
+"Br" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/structure/salvageable/implant_container_os,
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
+"Bt" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/halls)
 "Bu" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 4;
@@ -12077,6 +12435,24 @@
 "Bx" = (
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/turbolift/rmine/under1)
+"By" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
+"Bz" = (
+/obj/structure/salvageable/bliss,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
+"BD" = (
+/obj/machinery/door/airlock/glass_command{
+	dir = 1;
+	name = "Commander";
+	req_access = list()
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/asylum/command)
 "BE" = (
 /obj/machinery/space_heater,
 /obj/machinery/alarm{
@@ -12089,6 +12465,10 @@
 /obj/item/reagent_containers/food/snacks/monkeycube/wrapped/farwacube,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"BG" = (
+/obj/random/maintenance/research,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
 "BJ" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
@@ -12102,6 +12482,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
+"BK" = (
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/area/rift/asylum/halls)
+"BL" = (
+/obj/effect/trap/launcher/web{
+	pixel_y = 24;
+	id = "asylum_course";
+	fire_delay = 20;
+	initial_fire_delay = 0
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/training)
 "BM" = (
 /obj/structure/table/reinforced,
 /obj/machinery/recharger,
@@ -12113,6 +12505,10 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
+"BO" = (
+/obj/structure/grille/cult,
+/turf/simulated/floor/cult,
+/area/rift/asylum/near_death)
 "BP" = (
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
@@ -12123,6 +12519,10 @@
 /obj/structure/closet/firecloset/full,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/engineering)
+"BR" = (
+/obj/structure/fence/door/locked,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "BS" = (
 /obj/machinery/door/firedoor/multi_tile,
 /obj/machinery/door/airlock/multi_tile/glass{
@@ -12179,6 +12579,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/station/fighter_bay/hangar)
+"Cf" = (
+/obj/machinery/crystal/ice,
+/obj/machinery/crystal/ice,
+/turf/simulated/floor/outdoors/ice{
+	outdoors = 0
+	},
+/area/rift/surfacebase/underground/under1)
 "Ch" = (
 /obj/structure/table/standard,
 /obj/item/storage/dicecup/loaded,
@@ -12199,6 +12606,15 @@
 	},
 /turf/simulated/floor,
 /area/storage/tech)
+"Ck" = (
+/obj/effect/trap/pit/open_space{
+	id = "asylum_hall_midS"
+	},
+/turf/simulated/floor/trap/dark{
+	id = "asylum_hall_midS";
+	name = "dark floor"
+	},
+/area/rift/asylum/halls)
 "Cl" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -12214,6 +12630,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"Cn" = (
+/turf/simulated/open,
+/area/rift/asylum/halls)
 "Cq" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/random/junk,
@@ -12238,6 +12657,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/hallway/secondary/engineering_hallway)
+"Cv" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/paper{
+	name = "NDE Testing Report";
+	info = "Patient 37: FAILURE, Readings nominal throughout session. \[br]\[br]Patient 42: FAILURE, Heart stopped 10 minutes into session, patient deceased. \[br]\[br]Patient 57: FAILURE, Patient did not wake from sleep, currently in coma, recovery not expected. \[br]\[br]Patient 15: FAILURE, Readings nominal throughout session. \[br]\[br]Patient 49: MIXED, Abnormal reading recorded during session. Refer for further testing. \[br]\[br]Patient 55: FAILURE, Readings nominal throughout session. \[br]\[br]Patient 60: INCOMPLETE, Session to begin shortly.\[br]\[br]"
+	},
+/turf/simulated/floor/cult,
+/area/rift/asylum/near_death)
 "Cw" = (
 /obj/random/junk,
 /obj/random/junk,
@@ -12376,6 +12803,18 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
+"Df" = (
+/obj/effect/trap/pit/open_space{
+	id = "asylum_hall_mid"
+	},
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/trap/dark{
+	id = "asylum_hall_mid";
+	name = "dark floor"
+	},
+/area/rift/asylum/halls)
 "Dg" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -12394,6 +12833,14 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"Di" = (
+/obj/structure/closet{
+	name = "Contraband: Patient 60"
+	},
+/obj/item/material/knife/ritual,
+/obj/item/clothing/head/helmet/space/cult,
+/turf/simulated/floor/brass,
+/area/rift/asylum/science)
 "Dk" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -12432,6 +12879,24 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
+"Ds" = (
+/obj/structure/closet{
+	name = "Contraband: Patient 8"
+	},
+/obj/random/tool/alien,
+/obj/random/tool/alien,
+/obj/item/prop/alien/junk,
+/obj/item/prop/alien/junk,
+/obj/random/tool/alien,
+/obj/item/reagent_containers/hypospray/autoinjector/alien,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
+"Du" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/near_death)
 "Dv" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
@@ -12449,6 +12914,22 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/locker_room)
+"Dy" = (
+/obj/structure/bed/chair/bay/comfy/captain{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/command)
+"Dz" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
+"DC" = (
+/obj/structure/filingcabinet/chestdrawer,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/near_death)
 "DD" = (
 /obj/item/paper/crumpled,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -12464,15 +12945,25 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
+"DJ" = (
+/obj/structure/table/standard,
+/obj/structure/salvageable/personal,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
 "DL" = (
 /obj/structure/closet/largecardboard,
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/underground/under1)
+"DM" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/obj/structure/salvageable/implant_container,
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "DP" = (
 /obj/machinery/telecomms/server/presets/command,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "DU" = (
 /turf/simulated/floor/tiled/techmaint,
@@ -12553,6 +13044,15 @@
 /obj/item/clothing/suit/storage/hooded/wintercoat/durathread,
 /turf/simulated/floor/tiled/techmaint,
 /area/rift/station/fighter_bay)
+"El" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "En" = (
 /obj/machinery/door/airlock/maintenance/engi,
 /turf/simulated/floor/plating,
@@ -12590,6 +13090,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"Ez" = (
+/obj/structure/salvageable/implant_container_os,
+/obj/effect/floor_decal/corner/paleblue/full{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "EB" = (
 /obj/structure/railing{
 	dir = 8
@@ -12619,6 +13126,10 @@
 	},
 /turf/simulated/floor/crystal,
 /area/rift/station/adherent_maintenance)
+"EE" = (
+/obj/machinery/crystal/ice,
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "EF" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -12664,6 +13175,27 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
+"EM" = (
+/obj/structure/window/wooden{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/training)
+"EN" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/near_death)
+"EQ" = (
+/obj/structure/closet/medical_wall{
+	name = "defibrillator storage";
+	pixel_y = -32
+	},
+/obj/item/defib_kit/loaded,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "ER" = (
 /obj/structure/flora/bush,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -12740,6 +13272,16 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
+"Fg" = (
+/obj/machinery/optable,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
+"Fl" = (
+/turf/simulated/mineral/icerock/lythios43c,
+/area/rift/asylum/near_death)
 "Fo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/borderfloor{
@@ -12774,6 +13316,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_core)
+"Fq" = (
+/obj/item/handcuffs,
+/turf/simulated/floor/cult,
+/area/rift/asylum/near_death)
 "Fr" = (
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
@@ -12912,11 +13458,32 @@
 /obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos/hallway)
+"FR" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "FT" = (
 /obj/structure/railing,
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"FU" = (
+/obj/structure/table/rack/shelf,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/item/gun/projectile/musket/taj,
+/obj/item/reagent_containers/glass/powder_horn,
+/obj/item/ammo_casing/musket,
+/obj/item/ammo_casing/musket,
+/obj/item/ammo_casing/musket,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/command)
+"FX" = (
+/turf/simulated/floor/cult,
+/area/rift/asylum/near_death)
 "FY" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/machinery/alarm{
@@ -13073,11 +13640,15 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
+"Gw" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/underground/under1)
 "Gx" = (
 /obj/machinery/ntnet_relay,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "Gz" = (
 /obj/structure/table/rack/steel,
@@ -13154,6 +13725,23 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/engineering/drone_fabrication)
+"GK" = (
+/obj/structure/closet{
+	name = "Contraband: Other"
+	},
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/turf/simulated/floor/brass,
+/area/rift/asylum/science)
+"GL" = (
+/obj/structure/closet{
+	name = "Contraband: Patient 67"
+	},
+/obj/random/contraband,
+/obj/random/contraband,
+/turf/simulated/floor/brass,
+/area/rift/asylum/science)
 "GM" = (
 /obj/machinery/door/airlock/maintenance/engi,
 /turf/simulated/floor/plating,
@@ -13196,7 +13784,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
 "GU" = (
-/obj/structure/closet,
+/obj/structure/closet{
+	name = "closet"
+	},
 /obj/random/maintenance/engineering,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
@@ -13210,6 +13800,11 @@
 /obj/structure/ladder/up,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/outpost/research/longtermstorage)
+"GX" = (
+/turf/simulated/floor/outdoors/ice{
+	outdoors = 0
+	},
+/area/rift/surfacebase/underground/under1)
 "GY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -13231,6 +13826,9 @@
 /obj/random/maintenance/engineering,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"Ha" = (
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/command)
 "Hb" = (
 /obj/machinery/space_heater,
 /turf/simulated/floor/tiled/steel_ridged,
@@ -13404,20 +14002,43 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
+"Hy" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rift/asylum/science)
 "Hz" = (
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/structure/closet,
+/obj/structure/closet{
+	name = "closet"
+	},
 /obj/random/maintenance/engineering,
 /obj/random/tool,
 /obj/random/tool,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"HA" = (
+/obj/structure/window/wooden{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/training)
 "HB" = (
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/wood,
 /area/rift/station/fighter_bay)
+"HC" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/obj/effect/trap/launcher/stake{
+	dir = 2;
+	id = "asylum_course";
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/training)
 "HD" = (
 /obj/structure/railing{
 	dir = 1
@@ -13447,6 +14068,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"HJ" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "HN" = (
 /obj/structure/closet/crate/secure/science,
 /turf/simulated/floor/tiled/dark,
@@ -13498,13 +14125,18 @@
 /obj/machinery/camera/network/command{
 	dir = 9
 	},
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "HW" = (
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/maintenance/engineering)
+"HX" = (
+/obj/machinery/door/blast/puzzle{
+	name = "Outsiders Implantation Lab";
+	id = "asylum_lab"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/halls)
 "HY" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -13567,11 +14199,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
+"Ij" = (
+/obj/structure/bed/chair/backed_red,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/command)
 "Ik" = (
 /obj/machinery/telecomms/server/presets/medical,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "Il" = (
 /obj/random/trash_pile,
@@ -13631,6 +14265,12 @@
 	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"Iu" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
 "Iv" = (
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/security/prison)
@@ -13696,6 +14336,21 @@
 	},
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"IK" = (
+/obj/structure/table/rack,
+/obj/item/gun/energy/lasertag/omni,
+/obj/item/gun/energy/lasertag/omni,
+/obj/item/gun/energy/lasertag/omni,
+/obj/item/paper{
+	name = "Escape Note";
+	info = "You know they were trying to make us into soliders? How quaint. Run the course, succeed. Oh and its timed so Tik Tok."
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/training)
+"IN" = (
+/obj/structure/salvageable/implant_container,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/command)
 "IO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/floor_decal/borderfloor{
@@ -13719,6 +14374,17 @@
 /obj/item/reagent_containers/spray/squirt,
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
+"IV" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 9
+	},
+/obj/random/medical,
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "IY" = (
 /obj/structure/table/steel,
 /obj/item/handcuffs/cable,
@@ -13804,6 +14470,9 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"Jl" = (
+/turf/simulated/wall/r_wall,
+/area/rift/trade_shop)
 "Jn" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -13852,6 +14521,14 @@
 "Jy" = (
 /turf/simulated/wall/r_wall,
 /area/security/prison)
+"Jz" = (
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/plating,
+/area/maintenance/elevator)
+"JA" = (
+/obj/structure/salvageable/server_os,
+/turf/simulated/floor/cult,
+/area/rift/asylum/near_death)
 "JB" = (
 /obj/structure/bed/chair/bay{
 	dir = 1
@@ -13872,6 +14549,25 @@
 /obj/effect/overlay/snow/floor/edges_new,
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"JE" = (
+/obj/structure/closet/secure_closet/medical3{
+	name = "surgeon's locker"
+	},
+/obj/item/clothing/under/rank/medical/scrubs,
+/obj/item/clothing/under/rank/medical/scrubs,
+/obj/item/clothing/head/surgery,
+/obj/item/clothing/head/surgery,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
+/obj/item/storage/belt/medical,
+/obj/effect/floor_decal/corner/paleblue/full{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
+"JH" = (
+/obj/structure/salvageable/computer,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
 "JK" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -13888,6 +14584,20 @@
 "JL" = (
 /turf/simulated/floor/reinforced,
 /area/engineering/engine_core)
+"JN" = (
+/turf/simulated/wall{
+	can_open = 1
+	},
+/area/rift/asylum/command)
+"JO" = (
+/obj/structure/table/marble,
+/obj/random/coin,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/asylum/command)
+"JP" = (
+/obj/structure/salvageable/computer_os,
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "JQ" = (
 /obj/machinery/light,
 /turf/simulated/floor/bluegrid{
@@ -13911,6 +14621,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
+"JT" = (
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/paleblue/full{
+	dir = 4
+	},
+/obj/random/medical/pillbottle,
+/obj/random/medical/pillbottle,
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "JW" = (
 /obj/structure/table/rack/steel,
 /obj/item/stock_parts/matter_bin,
@@ -13995,6 +14714,13 @@
 "Kf" = (
 /turf/simulated/floor/water/deep/indoors,
 /area/maintenance/engineering)
+"Kg" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/structure/salvageable/implant_container,
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "Ki" = (
 /obj/structure/table/rack,
 /obj/random/maintenance/engineering,
@@ -14065,6 +14791,12 @@
 /obj/item/towel/random,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"Kz" = (
+/obj/machinery/crystal/ice,
+/turf/simulated/floor/outdoors/ice{
+	outdoors = 0
+	},
+/area/rift/surfacebase/underground/under1)
 "KA" = (
 /obj/effect/floor_decal/industrial/loading{
 	dir = 4
@@ -14119,9 +14851,7 @@
 /area/storage/tech)
 "KI" = (
 /obj/machinery/telecomms/bus/preset_one,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "KJ" = (
 /obj/machinery/autolathe,
@@ -14152,10 +14882,20 @@
 /area/maintenance/elevator)
 "KP" = (
 /obj/machinery/telecomms/relay/preset/rift/base_mid,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
+"KT" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 6
+	},
+/obj/random/medical,
+/obj/random/medical,
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "KU" = (
 /obj/structure/extinguisher_cabinet{
 	dir = 8;
@@ -14172,6 +14912,9 @@
 	},
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"KX" = (
+/turf/unsimulated/mineral/icerock/lythios43c,
+/area/rift/asylum/halls)
 "KY" = (
 /obj/structure/closet/firecloset/full,
 /turf/simulated/floor/plating,
@@ -14234,6 +14977,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"Lb" = (
+/obj/effect/trap/pit/open_space{
+	id = "asylum_hall_fake"
+	},
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/halls)
 "Lc" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -14287,6 +15039,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/storage/tech)
+"Ln" = (
+/obj/machinery/space_heater,
+/turf/simulated/floor/plating,
+/area/rift/trade_shop)
+"Lp" = (
+/obj/machinery/door/airlock/medical{
+	req_one_access = list()
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "Lr" = (
 /obj/structure/railing{
 	dir = 4
@@ -14317,6 +15079,12 @@
 	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"Lx" = (
+/obj/structure/table/marble,
+/obj/item/paper_bin,
+/obj/item/pen,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/asylum/command)
 "LC" = (
 /obj/structure/filingcabinet/medical{
 	desc = "A large cabinet with hard copy medical records.";
@@ -14334,9 +15102,7 @@
 /area/maintenance/engineering)
 "LE" = (
 /obj/machinery/pda_multicaster/prebuilt,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "LF" = (
 /obj/structure/railing{
@@ -14357,9 +15123,7 @@
 /area/hallway/secondary/engineering_hallway)
 "LH" = (
 /obj/machinery/telecomms/server/presets/supply,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "LJ" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -14398,6 +15162,24 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
+"LX" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/rift/trade_shop)
+"LZ" = (
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 6
+	},
+/obj/random/medical,
+/obj/random/medical,
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
+"Mf" = (
+/turf/simulated/floor/wood,
+/area/rift/asylum/training)
 "Mg" = (
 /obj/item/arrow/rod,
 /turf/simulated/floor/plating,
@@ -14449,6 +15231,14 @@
 	can_open = 1
 	},
 /area/maintenance/lower/trash_pit)
+"Mx" = (
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 9
+	},
+/obj/random/medical,
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "My" = (
 /obj/structure/railing,
 /turf/simulated/floor/lythios43c/indoors,
@@ -14480,6 +15270,13 @@
 /obj/effect/zone_divider,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"ME" = (
+/obj/structure/lattice,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/rift/asylum/training)
 "MF" = (
 /obj/effect/floor_decal/borderfloorblack/corner,
 /obj/effect/floor_decal/techfloor/orange/corner,
@@ -14536,6 +15333,12 @@
 	},
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"MN" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/rift/trade_shop)
 "MO" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
@@ -14631,6 +15434,14 @@
 	},
 /turf/simulated/floor/tiled/steel_ridged,
 /area/outpost/research/longtermstorage)
+"MY" = (
+/obj/effect/trap/launcher/stake{
+	dir = 8;
+	id = "asylum_course";
+	pixel_x = 24
+	},
+/turf/simulated/open,
+/area/rift/asylum/training)
 "Na" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -14682,6 +15493,20 @@
 /obj/item/stool,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"Ni" = (
+/obj/effect/trap/pit/open_space{
+	id = "asylum_hall_mid"
+	},
+/turf/simulated/floor/trap/dark{
+	id = "asylum_hall_mid";
+	name = "dark floor"
+	},
+/area/rift/asylum/halls)
+"Nm" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/material/shard,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/near_death)
 "Nn" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -14814,6 +15639,12 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
+"NM" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/near_death)
 "NN" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 1;
@@ -14896,6 +15727,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/storage/tech)
+"NY" = (
+/turf/simulated/wall/dungeon,
+/area/maintenance/elevator)
 "NZ" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -14915,9 +15749,7 @@
 /obj/machinery/exonet_node{
 	anchored = 1
 	},
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "Oh" = (
 /obj/structure/table/rack/steel,
@@ -14948,6 +15780,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/storage/tech)
+"Oi" = (
+/obj/machinery/door/window/westright{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/command)
 "Oj" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
@@ -14973,9 +15811,7 @@
 /area/rift/surfacebase/underground/under1)
 "On" = (
 /obj/machinery/telecomms/relay/preset/rift/base_high,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "Ov" = (
 /obj/structure/lattice,
@@ -15020,6 +15856,16 @@
 /obj/machinery/door/airlock/lift,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/turbolift/rmine/under1)
+"OF" = (
+/obj/structure/table/rack/shelf,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/item/implantcase/sword,
+/obj/item/implantcase/surge,
+/obj/item/implantcase/sprinter,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/command)
 "OG" = (
 /obj/machinery/door/firedoor/glass/hidden,
 /obj/effect/floor_decal/borderfloorblack{
@@ -15030,15 +15876,17 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos/hallway)
+"OH" = (
+/obj/structure/salvageable/autolathe,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
 "OI" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
 "OJ" = (
 /obj/machinery/telecomms/receiver/preset_right/rift,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "OM" = (
 /obj/structure/table/rack/steel,
@@ -15053,6 +15901,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/storage/tech)
+"ON" = (
+/obj/effect/trap/launcher/web{
+	pixel_y = -24;
+	id = "asylum_course";
+	fire_delay = 10;
+	initial_fire_delay = 0;
+	dir = 1
+	},
+/turf/simulated/open,
+/area/rift/asylum/training)
 "OQ" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 6
@@ -15221,10 +16079,26 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
+"Pv" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/near_death)
 "Pw" = (
 /obj/structure/musician/piano/unanchored,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"Px" = (
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/structure/cable/green{
+	icon_state = "16-0"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/plating,
+/area/rift/trade_shop)
 "Py" = (
 /obj/effect/floor_decal/borderfloorblack,
 /obj/effect/floor_decal/corner/orange/border,
@@ -15261,6 +16135,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
+"PB" = (
+/obj/structure/salvageable/machine_os,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
 "PD" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -15279,6 +16157,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
+"PG" = (
+/obj/structure/table/standard,
+/obj/random/tool/powermaint,
+/obj/random/tool/powermaint,
+/obj/random/tool/powermaint,
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
 "PH" = (
 /turf/simulated/floor/crystal,
 /area/rift/station/adherent_maintenance)
@@ -15302,6 +16190,9 @@
 /obj/structure/catwalk/plank,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"PN" = (
+/turf/simulated/wall/cult,
+/area/rift/asylum/near_death)
 "PO" = (
 /obj/structure/table/rack/steel,
 /obj/item/circuitboard/grinder{
@@ -15340,12 +16231,22 @@
 "PR" = (
 /turf/simulated/floor/plating,
 /area/outpost/research/longtermstorage)
+"PT" = (
+/obj/item/material/shard,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/near_death)
 "PV" = (
 /obj/machinery/telecomms/relay/preset/rift/under_deep,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
+"PW" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/surgery,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "PY" = (
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/plating,
@@ -15367,6 +16268,29 @@
 /obj/structure/catwalk/plank,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"Qg" = (
+/obj/structure/window/wooden,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/training)
+"Qj" = (
+/obj/structure/closet{
+	name = "Contraband: Other"
+	},
+/obj/random/cash,
+/obj/random/cash,
+/obj/random/cash,
+/obj/random/cash,
+/obj/random/cash,
+/turf/simulated/floor/brass,
+/area/rift/asylum/science)
+"Qk" = (
+/obj/structure/table/reinforced,
+/obj/random/unidentified_medicine/combat_medicine,
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "Ql" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
@@ -15384,6 +16308,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"Qp" = (
+/turf/simulated/open,
+/area/security/prison)
 "Qr" = (
 /obj/item/stock_parts/manipulator,
 /obj/item/stock_parts/matter_bin,
@@ -15414,6 +16341,9 @@
 	},
 /turf/simulated/floor,
 /area/storage/tech)
+"Qu" = (
+/turf/simulated/wall/dungeon,
+/area/rift/asylum/halls)
 "Qv" = (
 /obj/item/reagent_containers/food/snacks/teshariroast,
 /obj/structure/table/steel,
@@ -15426,6 +16356,10 @@
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"Qy" = (
+/obj/structure/closet/secure_closet/injection,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/near_death)
 "QB" = (
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
@@ -15454,6 +16388,22 @@
 /obj/structure/grille,
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"QF" = (
+/obj/effect/trap/pit/open_space{
+	id = "asylum_hall_midN"
+	},
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/trap/dark{
+	id = "asylum_hall_midN";
+	name = "dark floor"
+	},
+/area/rift/asylum/halls)
+"QH" = (
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/open,
+/area/rift/asylum/training)
 "QJ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -15475,6 +16425,15 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"QQ" = (
+/obj/effect/trap/pit/open_space{
+	id = "asylum_hall_midN"
+	},
+/turf/simulated/floor/trap/dark{
+	id = "asylum_hall_midN";
+	name = "dark floor"
+	},
+/area/rift/asylum/halls)
 "QU" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -15485,6 +16444,9 @@
 	},
 /turf/simulated/floor/wood,
 /area/rift/station/fighter_bay)
+"QV" = (
+/turf/simulated/wall/dungeon,
+/area/rift/asylum/training)
 "QW" = (
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 4
@@ -15594,6 +16556,15 @@
 "Rp" = (
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/longtermstorage)
+"Rq" = (
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/halls)
+"Rr" = (
+/obj/structure/table/standard,
+/obj/random/toolbox,
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
 "Rs" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -15640,6 +16611,9 @@
 	},
 /turf/simulated/floor/plating,
 /area/outpost/research/longtermstorage)
+"Rz" = (
+/turf/simulated/wall/dungeon,
+/area/rift/asylum/command)
 "RA" = (
 /obj/structure/catwalk,
 /obj/structure/cable/yellow{
@@ -15743,10 +16717,16 @@
 /area/rift/station/adherent_maintenance)
 "RR" = (
 /obj/machinery/telecomms/server/presets/security,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
+"RS" = (
+/obj/effect/trap/launcher/stake{
+	dir = 2;
+	id = "asylum_course";
+	pixel_y = 24
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/training)
 "RT" = (
 /obj/machinery/computer/telecomms/server{
 	dir = 8
@@ -15779,6 +16759,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
+"Sb" = (
+/obj/structure/table/marble,
+/obj/item/paper{
+	name = "Your Orders Are Clear";
+	info = "Adhomai expects results Major, not dead patients. I already have Intelligence Services breathing down my neck to continue weapons testing in spite of the shitty condition of the reactor, I am not putting in a request for more 'touched' individuals unless Outsiders Division can give me definitive proof that those imported implants you are stockpiling would not be better used in the body of one our loyal soldiers. If I get one more word that another patient has died because you filled them with chloral hydrate in attempts to activate secret abilities, I will have your entire division relocated. Do not disappoint me."
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/asylum/command)
 "Sc" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/machinery/camera/network/civilian{
@@ -15825,6 +16813,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/underground/under1)
+"So" = (
+/obj/structure/window/wooden{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/rift/asylum/training)
 "Sq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -15904,6 +16898,12 @@
 "SI" = (
 /turf/simulated/wall/r_wall,
 /area/rift/station/fighter_bay)
+"SJ" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "SK" = (
 /obj/effect/floor_decal/borderfloorblack/corner,
 /obj/effect/floor_decal/corner/orange/bordercorner,
@@ -15912,6 +16912,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
+"SL" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/training)
 "SM" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -15942,6 +16948,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos/hallway)
+"SS" = (
+/obj/machinery/door/airlock/science{
+	req_one_access = list();
+	name = "Unique Contraband Storage"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
 "SU" = (
 /obj/item/fluff/injector/monkey,
 /turf/simulated/floor/tiled/dark,
@@ -15960,9 +16973,7 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "SW" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
@@ -15973,6 +16984,9 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/station/fighter_bay/maintenance)
+"Ta" = (
+/turf/unsimulated/mineral/icerock/lythios43c,
+/area/rift/surfacebase/underground/under1)
 "Tb" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/polarized/full{
@@ -16006,6 +17020,16 @@
 /obj/structure/closet/secure_closet/guncabinet/robotics,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay/maintenance)
+"Tk" = (
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/paleblue/full{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
+"Tl" = (
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/training)
 "Tm" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/cable/green{
@@ -16078,6 +17102,17 @@
 /obj/effect/floor_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/outpost/research/longtermstorage)
+"Tx" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/plating,
+/area/rift/trade_shop)
 "Ty" = (
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(10,47)
@@ -16104,6 +17139,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
+"TD" = (
+/obj/effect/floor_decal/corner/paleblue{
+	dir = 10
+	},
+/obj/structure/salvageable/implant_container_os,
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "TE" = (
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 5
@@ -16142,6 +17184,9 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
+"TJ" = (
+/turf/simulated/wall/dungeon,
+/area/rift/asylum/near_death)
 "TK" = (
 /obj/machinery/power/apc{
 	dir = 4;
@@ -16157,6 +17202,9 @@
 /obj/structure/foamedmetal,
 /turf/simulated/wall,
 /area/maintenance/engineering)
+"TP" = (
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/surgical)
 "TS" = (
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 8
@@ -16185,6 +17233,10 @@
 	},
 /turf/simulated/floor,
 /area/storage/tech)
+"TY" = (
+/obj/structure/barricade,
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "TZ" = (
 /obj/effect/zone_divider,
 /turf/unsimulated/wall/planetary/lythios43c{
@@ -16221,6 +17273,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
+"Uk" = (
+/obj/structure/dispenser/oxygen,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/rift/asylum/science)
 "Um" = (
 /obj/structure/grille,
 /obj/structure/catwalk,
@@ -16236,6 +17292,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_core)
+"Uo" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
 "Uq" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/bluegrid{
@@ -16243,6 +17305,22 @@
 	name = "Mainframe Base"
 	},
 /area/tcommsat/chamber)
+"Us" = (
+/obj/effect/trap/pit/open_space{
+	id = "asylum_hall_N"
+	},
+/turf/simulated/floor/trap/dark{
+	id = "asylum_hall_N";
+	name = "dark floor"
+	},
+/area/rift/asylum/halls)
+"Ut" = (
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/paleblue/full{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "Uu" = (
 /turf/unsimulated/mineral/icerock/lythios43c,
 /area/security/prison)
@@ -16278,6 +17356,10 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
+"Uy" = (
+/obj/machinery/light/small/emergency/flicker,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/halls)
 "Uz" = (
 /obj/structure/catwalk,
 /obj/structure/disposalpipe/segment,
@@ -16352,6 +17434,10 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
+"UH" = (
+/obj/structure/bed/chair/bay/comfy/black,
+/turf/simulated/floor/water/blood/deep,
+/area/rift/asylum/near_death)
 "UI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/dark,
@@ -16531,6 +17617,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
+"Vo" = (
+/obj/structure/table/reinforced,
+/obj/effect/floor_decal/corner/paleblue/full{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
 "Vp" = (
 /obj/structure/table/steel,
 /obj/item/reagent_containers/spray/windowsealant,
@@ -16606,6 +17699,28 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"VI" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/surgical)
+"VJ" = (
+/obj/structure/salvageable/machine,
+/obj/effect/floor_decal/corner/paleblue/full{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/rift/asylum/surgical)
+"VK" = (
+/obj/effect/trap/pit/open_space{
+	id = "asylum_hall_S"
+	},
+/turf/simulated/floor/trap/dark{
+	id = "asylum_hall_S";
+	name = "dark floor"
+	},
+/area/rift/asylum/halls)
 "VL" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -16613,6 +17728,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
+"VN" = (
+/obj/structure/salvageable/machine,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
 "VO" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -16644,6 +17763,11 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
+"VX" = (
+/turf/simulated/floor/trap/dark{
+	id = "asylum_course"
+	},
+/area/rift/asylum/training)
 "VY" = (
 /obj/effect/debris/cleanable/blood/gibs/robot/up,
 /turf/simulated/floor/plating,
@@ -16694,6 +17818,12 @@
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled/techmaint,
 /area/outpost/research/longtermstorage)
+"Wi" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/rift/asylum/training)
 "Wj" = (
 /obj/effect/blocker,
 /turf/simulated/open/lythios43c,
@@ -16827,9 +17957,7 @@
 /area/storage/tech)
 "WF" = (
 /obj/machinery/telecomms/processor/preset_one,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "WG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -16837,6 +17965,16 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
+"WI" = (
+/obj/structure/barricade,
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/area/rift/asylum/halls)
+"WL" = (
+/turf/unsimulated/wall/planetary/lythios43c{
+	desc = "Glacial permafrost, compacted harder than stone.";
+	icon_state = "icerock-dark"
+	},
+/area/security/prison)
 "WM" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 9
@@ -16920,6 +18058,9 @@
 /obj/item/multitool/rift_buffered,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
+"Xf" = (
+/turf/simulated/floor/brass,
+/area/rift/asylum/science)
 "Xg" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -16956,9 +18097,18 @@
 /obj/structure/bed/chair/comfy/beige,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"Xm" = (
+/obj/machinery/door/airlock/science{
+	req_one_access = list()
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
 "Xo" = (
 /turf/simulated/floor/tiled/steel_dirty,
 /area/outpost/research/longtermstorage)
+"Xp" = (
+/turf/simulated/open,
+/area/maintenance/elevator)
 "Xq" = (
 /obj/machinery/door/firedoor/glass/hidden,
 /obj/effect/floor_decal/borderfloorblack{
@@ -17011,7 +18161,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Xz" = (
-/obj/structure/closet,
+/obj/structure/closet{
+	name = "closet"
+	},
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
@@ -17022,6 +18174,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"XD" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/near_death)
 "XF" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/machinery/door/firedoor/glass/hidden{
@@ -17029,6 +18187,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
+"XG" = (
+/obj/structure/flora/pottedplant/dead,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/command)
 "XH" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/cable/green{
@@ -17042,6 +18204,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
+"XJ" = (
+/obj/machinery/light/small/emergency/flicker{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/command)
 "XK" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
@@ -17070,6 +18238,35 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/engineering_hallway)
+"XO" = (
+/obj/structure/window/wooden{
+	dir = 4
+	},
+/obj/machinery/light/small/emergency/flicker{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/training)
+"XR" = (
+/obj/structure/filingcabinet/chestdrawer,
+/obj/item/paper{
+	name = "Contraband Analysis: Patient 60";
+	info = "I want to be clear there is no way patient 60 could ahve acquired these materials on his own even with accomplices in the facility. We have no idea what this metal even is only that is refuses to bend or break even under extreme temperatures. We have to hold it with clamps too, it burns to touch without being hot. None of our instruments say there is anything strange about it but its doing things it simply shouldn't. I have no idea what else to tell you."
+	},
+/obj/item/paper{
+	name = "Contraband Analysis: Patient 53";
+	info = "Most of Patient 53's gear is semi mundane and then we got this welding tool. First we tried to take the fuel tank out and couldn't so then we tried to run it out of fuel. We left it on overnight and its still running. The firearm appears completely hand made. The brass tools in general seem to be stronger then steel, we are uncertain if its even brass at this point. How does one even begin to scientifically understand things that break the rules of what we know as science?"
+	},
+/obj/item/paper{
+	name = "Contraband Analysis: Patient 49";
+	info = "Multiple meat samples, from what we can tell its Human, Tajara, Teshari and Rapala. We can't determine exactly who, our dna scanners can't make heads or tails of it genetic material but everything else points it to be authentic human flesh. Also the barbeque sauce you found was completely authentic not even that strange, I was almost tempted to test it with the meat. Not like that meat belongs to anyone, who knows could be delicious."
+	},
+/obj/item/paper{
+	name = "Contraband Analysis: Patient 8";
+	info = "They are tools, at least the parts I can identify. Tools that is that are at least a century beyond even peak Skrellian technology. Made of unknown allow and capable of feats that seem almost magical. I suspect integrated bluespace micro components but I would need to take it apart with more advanced tools to tell, send word to Adhomai immediately and have them get me better tools."
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
 "XU" = (
 /obj/structure/sign/department/telecoms,
 /turf/simulated/wall/r_wall,
@@ -17136,6 +18333,21 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"Yj" = (
+/obj/structure/closet{
+	name = "Contraband: Patient 94"
+	},
+/obj/random/contraband,
+/obj/random/contraband,
+/obj/random/contraband,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
+"Yk" = (
+/obj/machinery/door/blast/puzzle{
+	name = "emergency locks"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/halls)
 "Yl" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -17231,21 +18443,25 @@
 /obj/structure/stairs/spawner/north,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_two)
+"YF" = (
+/obj/effect/trap/pit/open_space{
+	id = "asylum_indrop_N"
+	},
+/turf/simulated/floor/trap/plating/lythios43c{
+	id = "asylum_indrop_N"
+	},
+/area/rift/surfacebase/underground/under1)
 "YG" = (
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/longtermstorage)
 "YI" = (
 /obj/machinery/telecomms/processor/preset_four,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "YO" = (
 /obj/machinery/telecomms/bus/preset_two/rift,
-/turf/simulated/floor/tiled/dark{
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
+/turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "YP" = (
 /obj/effect/floor_decal/rust,
@@ -17255,6 +18471,13 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
+"YQ" = (
+/obj/machinery/door/blast/puzzle{
+	name = "Outsiders Implantation Lab";
+	id = "asylum_lab"
+	},
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/surgical)
 "YR" = (
 /obj/structure/table/steel,
 /obj/item/storage/fancy/crayons,
@@ -17356,6 +18579,10 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
+"Zd" = (
+/obj/structure/salvageable/server,
+/turf/simulated/floor/tiled/dark,
+/area/rift/asylum/science)
 "Ze" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
@@ -17423,6 +18650,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/storage/tech)
+"Zp" = (
+/obj/structure/closet{
+	name = "Contraband: Patient 33"
+	},
+/obj/random/unidentified_medicine/drug_den,
+/obj/random/unidentified_medicine/drug_den,
+/obj/random/unidentified_medicine/drug_den,
+/obj/random/unidentified_medicine/drug_den,
+/turf/simulated/floor/brass,
+/area/rift/asylum/science)
 "Zs" = (
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/techmaint,
@@ -20330,9 +21567,9 @@ td
 td
 td
 OA
-td
-td
-td
+WR
+WR
+WR
 td
 td
 td
@@ -20525,8 +21762,8 @@ aa
 aa
 Jw
 aa
-aa
-aa
+WR
+WR
 es
 es
 td
@@ -20719,8 +21956,8 @@ aa
 aa
 Jw
 aa
-aa
-aa
+jL
+jL
 es
 es
 es
@@ -20913,9 +22150,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+jL
+jL
+jL
 aa
 aa
 aa
@@ -21107,9 +22344,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+jL
+jL
+jL
 aa
 aa
 aa
@@ -21301,9 +22538,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+jL
+jL
+jL
 aa
 aa
 aa
@@ -21496,9 +22733,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+jL
+jL
+jL
 aa
 aa
 aa
@@ -21690,10 +22927,10 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -21885,9 +23122,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+jL
+jL
+jL
 aa
 aa
 aa
@@ -22080,8 +23317,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+jL
+jL
 aa
 aa
 aa
@@ -22274,8 +23511,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+jL
+jL
 aa
 aa
 aa
@@ -22468,6 +23705,9 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
 aa
 aa
 aa
@@ -22517,10 +23757,7 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
+db
 td
 td
 td
@@ -22663,6 +23900,8 @@ aa
 aa
 aa
 aa
+jL
+jL
 aa
 aa
 aa
@@ -22712,9 +23951,7 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+db
 td
 td
 td
@@ -22724,17 +23961,17 @@ td
 td
 td
 td
+WR
 aa
 aa
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -22857,6 +24094,8 @@ aa
 aa
 aa
 aa
+jL
+jL
 aa
 aa
 aa
@@ -22903,13 +24142,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+Gw
+WR
 td
 td
 td
@@ -22918,22 +24155,22 @@ td
 td
 td
 td
-td
+WR
+WR
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+db
 WR
 WR
 WR
@@ -23051,6 +24288,8 @@ aa
 aa
 aa
 aa
+jL
+jL
 aa
 aa
 aa
@@ -23096,38 +24335,36 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
+jL
+BR
+WR
+yO
+tb
+tb
+tb
+tb
+tb
+tb
+yO
+WR
+WR
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-td
-td
-td
-td
-td
-td
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+jL
+jL
+FR
 WR
 WR
 WR
@@ -23245,6 +24482,9 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
 aa
 aa
 aa
@@ -23288,15 +24528,12 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-Jw
+wJ
 Yu
 Yu
 Yu
@@ -23317,11 +24554,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+jL
+uw
 WR
 WR
 WR
@@ -23440,6 +24677,8 @@ aa
 aa
 aa
 aa
+jL
+jL
 aa
 aa
 aa
@@ -23483,9 +24722,7 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
+jL
 aa
 Jw
 Jw
@@ -23512,10 +24749,10 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-WR
+jL
+jL
+jL
+Gw
 WR
 WR
 WR
@@ -23634,6 +24871,8 @@ aa
 aa
 aa
 aa
+jL
+jL
 aa
 aa
 aa
@@ -23676,10 +24915,8 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
+jL
+jL
 aa
 aa
 aa
@@ -23709,7 +24946,7 @@ aa
 aa
 aa
 aa
-WR
+db
 WR
 WR
 WR
@@ -23813,6 +25050,23 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
+jL
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+jL
+jL
 aa
 aa
 aa
@@ -23855,25 +25109,8 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
 aa
 aa
 aa
@@ -24005,6 +25242,26 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+jL
+jL
+jL
 aa
 aa
 aa
@@ -24045,29 +25302,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
 aa
 aa
 aa
@@ -24197,10 +25434,16 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
+jL
 aa
 aa
 aa
 aa
+jL
+jL
 aa
 aa
 aa
@@ -24210,6 +25453,10 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -24249,18 +25496,8 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
 aa
 aa
 aa
@@ -24390,16 +25627,31 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
 aa
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
 aa
 aa
 aa
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -24438,23 +25690,8 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
 aa
 aa
 aa
@@ -24584,6 +25821,9 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
 aa
 aa
 aa
@@ -24591,10 +25831,21 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
+jL
+jL
+jL
+jL
 aa
 aa
+jL
+jL
+jL
 aa
 aa
+jL
 aa
 aa
 aa
@@ -24632,23 +25883,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
 aa
 aa
 aa
@@ -24776,6 +26013,10 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -24790,8 +26031,16 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
+jL
+jL
+jL
 aa
 aa
+jL
+jL
 aa
 aa
 aa
@@ -24828,20 +26077,8 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
 aa
 aa
 aa
@@ -24970,6 +26207,11 @@ aa
 aa
 aa
 aa
+Jl
+Jl
+tU
+Jl
+Jl
 aa
 aa
 aa
@@ -24983,10 +26225,17 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
+jL
 aa
 aa
 aa
 aa
+jL
+jL
+jL
 aa
 aa
 aa
@@ -25020,22 +26269,10 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -25164,6 +26401,11 @@ aa
 aa
 aa
 aa
+Jl
+Ln
+yT
+Ln
+Jl
 aa
 aa
 aa
@@ -25186,6 +26428,9 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
 aa
 aa
 aa
@@ -25216,19 +26461,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -25358,6 +26595,11 @@ aa
 aa
 aa
 aa
+Jl
+uT
+yT
+uT
+Jl
 aa
 aa
 aa
@@ -25381,6 +26623,10 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -25408,20 +26654,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -25552,6 +26789,11 @@ aa
 aa
 aa
 aa
+Jl
+Ln
+yT
+Ln
+Jl
 aa
 aa
 aa
@@ -25577,6 +26819,14 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -25598,23 +26848,10 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -25741,6 +26978,16 @@ aa
 aa
 aa
 aa
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+tU
+Jl
+Jl
 aa
 aa
 aa
@@ -25768,7 +27015,14 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
 aa
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -25787,25 +27041,8 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
 aa
 aa
 aa
@@ -25935,6 +27172,16 @@ aa
 aa
 aa
 aa
+Jl
+Px
+MN
+MN
+MN
+MN
+Au
+yT
+yT
+Jl
 aa
 aa
 aa
@@ -25967,6 +27214,9 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
 aa
 aa
 aa
@@ -25984,21 +27234,8 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
 aa
 aa
 aa
@@ -26129,6 +27366,16 @@ aa
 aa
 aa
 aa
+Jl
+zB
+yT
+yT
+yT
+yT
+LX
+yT
+yT
+Jl
 aa
 aa
 aa
@@ -26162,6 +27409,9 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
 aa
 aa
 aa
@@ -26178,21 +27428,8 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
 aa
 aa
 aa
@@ -26323,6 +27560,16 @@ aa
 aa
 aa
 aa
+Jl
+ya
+yT
+yT
+yT
+yT
+LX
+yT
+yT
+Jl
 aa
 aa
 aa
@@ -26357,6 +27604,9 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
 aa
 aa
 aa
@@ -26371,21 +27621,8 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
 aa
 aa
 aa
@@ -26514,6 +27751,23 @@ aa
 aa
 aa
 aa
+Uu
+Uu
+Uu
+Jl
+Jl
+Jl
+Jl
+Jl
+Jl
+Tx
+rn
+Jl
+Jl
+Uu
+Uu
+Uu
+Uu
 aa
 aa
 aa
@@ -26544,42 +27798,25 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
+jL
 aa
 aa
 aa
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
 aa
 aa
 aa
@@ -26705,6 +27942,34 @@ aa
 aa
 aa
 aa
+Uu
+Uu
+Uu
+Uu
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
 aa
 aa
 aa
@@ -26728,51 +27993,23 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -26893,6 +28130,44 @@ ms
 aa
 aa
 aa
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Uu
+Uu
+Uu
+Uu
+Uu
 aa
 aa
 aa
@@ -26913,60 +28188,22 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -27083,7 +28320,49 @@ aa
 ms
 "}
 (50,1,1) = {"
-ms
+WL
+Uu
+Uu
+Uu
+Uu
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Uu
+Uu
 aa
 aa
 aa
@@ -27113,56 +28392,14 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -27277,7 +28514,56 @@ aa
 ms
 "}
 (51,1,1) = {"
-ms
+WL
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
 aa
 aa
 aa
@@ -27301,70 +28587,21 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
+jL
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -27471,7 +28708,57 @@ aa
 ms
 "}
 (52,1,1) = {"
-ms
+hD
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Qp
+Qp
+Qp
+Zu
+Zu
+Zu
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Uu
+Uu
 aa
 aa
 aa
@@ -27494,73 +28781,23 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -27665,7 +28902,58 @@ aa
 ms
 "}
 (53,1,1) = {"
-ms
+hD
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Uu
+Uu
 aa
 aa
 aa
@@ -27687,6 +28975,8 @@ aa
 aa
 aa
 aa
+jL
+jL
 aa
 aa
 aa
@@ -27700,68 +28990,15 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-WR
-WR
-WR
-WR
-WR
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
+jL
 iF
 AF
 lc
@@ -27859,7 +29096,58 @@ aa
 ms
 "}
 (54,1,1) = {"
-ms
+hD
+Qp
+Qp
+Qp
+Qp
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Uu
 aa
 aa
 aa
@@ -27882,6 +29170,8 @@ aa
 aa
 aa
 aa
+jL
+jL
 aa
 aa
 aa
@@ -27896,62 +29186,9 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-WR
+jL
+jL
+jL
 TU
 UM
 WV
@@ -28053,7 +29290,59 @@ aa
 ms
 "}
 (55,1,1) = {"
-ms
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Uu
+Uu
 aa
 aa
 aa
@@ -28075,6 +29364,9 @@ aa
 aa
 aa
 aa
+jL
+jL
+jL
 aa
 aa
 aa
@@ -28089,63 +29381,8 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-WR
+jL
+jL
 Yh
 yh
 Dk
@@ -28247,7 +29484,60 @@ aa
 ms
 "}
 (56,1,1) = {"
-ms
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Uu
+Uu
 aa
 aa
 aa
@@ -28269,6 +29559,8 @@ aa
 aa
 aa
 aa
+jL
+jL
 aa
 aa
 aa
@@ -28284,62 +29576,7 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-WR
+jL
 MR
 cq
 ve
@@ -28441,7 +29678,62 @@ aa
 ms
 "}
 (57,1,1) = {"
-ms
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Uu
+Uu
+Uu
 aa
 aa
 aa
@@ -28461,6 +29753,8 @@ aa
 aa
 aa
 aa
+jL
+jL
 aa
 aa
 aa
@@ -28476,64 +29770,7 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-WR
+jL
 Yh
 cH
 RD
@@ -28635,7 +29872,64 @@ aa
 ms
 "}
 (58,1,1) = {"
-ms
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Uu
+Uu
+Uu
 aa
 aa
 aa
@@ -28653,6 +29947,8 @@ aa
 aa
 aa
 aa
+jL
+jL
 aa
 aa
 aa
@@ -28668,66 +29964,7 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-WR
+jL
 Cj
 uc
 WV
@@ -28829,7 +30066,69 @@ aa
 ms
 "}
 (59,1,1) = {"
-ms
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
 aa
 aa
 aa
@@ -28842,6 +30141,8 @@ aa
 aa
 aa
 aa
+jL
+jL
 aa
 aa
 aa
@@ -28857,75 +30158,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-WR
-WR
-WR
-WR
-WR
+jL
+jL
+jL
+jL
+jL
 iF
 pE
 lc
@@ -29023,83 +30260,83 @@ aa
 ms
 "}
 (60,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Uu
+Uu
+Uu
+Uu
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+jL
+jL
 aa
 aa
 aa
@@ -29217,83 +30454,83 @@ aa
 ms
 "}
 (61,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Uu
+Uu
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+jL
+jL
 aa
 aa
 aa
@@ -29411,83 +30648,83 @@ aa
 ms
 "}
 (62,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Uu
+Uu
+aa
+aa
+aa
+aa
+aa
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -29605,27 +30842,7 @@ aa
 ms
 "}
 (63,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
 Zu
 Zu
 Zu
@@ -29646,41 +30863,61 @@ Zu
 Zu
 Zu
 Zu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
-Uu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
 Uu
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -29799,27 +31036,7 @@ aa
 ms
 "}
 (64,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
 Zu
 Zu
 Zu
@@ -29866,15 +31083,35 @@ Zu
 Zu
 Zu
 Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
 Uu
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -29993,27 +31230,7 @@ aa
 ms
 "}
 (65,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
 Zu
 Zu
 Zu
@@ -30059,13 +31276,33 @@ Zu
 Zu
 Zu
 Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Qp
+Qp
+Qp
+Qp
+Qp
+Qp
 Zu
 Uu
 aa
 aa
 aa
-aa
-aa
+jL
+jL
 aa
 aa
 aa
@@ -30187,27 +31424,27 @@ aa
 ms
 "}
 (66,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -30258,8 +31495,8 @@ Uu
 aa
 aa
 aa
-aa
-aa
+jL
+jL
 aa
 aa
 aa
@@ -30381,27 +31618,27 @@ aa
 ms
 "}
 (67,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -30451,10 +31688,10 @@ Zu
 Uu
 aa
 aa
-aa
-aa
-aa
-aa
+es
+Gk
+Gk
+es
 aa
 aa
 aa
@@ -30575,27 +31812,27 @@ aa
 ms
 "}
 (68,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -30645,10 +31882,10 @@ Zu
 Uu
 aa
 aa
-aa
-aa
-aa
-aa
+Gk
+YF
+YF
+Gk
 aa
 aa
 aa
@@ -30769,27 +32006,27 @@ aa
 ms
 "}
 (69,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -30839,10 +32076,10 @@ Zu
 Uu
 aa
 aa
-aa
-aa
-aa
-aa
+Gk
+YF
+YF
+Gk
 aa
 aa
 aa
@@ -30963,27 +32200,27 @@ aa
 ms
 "}
 (70,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -31033,10 +32270,10 @@ Zu
 Uu
 aa
 aa
-aa
-aa
-aa
-aa
+es
+Gk
+Gk
+es
 aa
 aa
 aa
@@ -31157,27 +32394,27 @@ aa
 ms
 "}
 (71,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -31351,27 +32588,27 @@ aa
 ms
 "}
 (72,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -31545,27 +32782,27 @@ aa
 ms
 "}
 (73,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -31739,27 +32976,27 @@ aa
 ms
 "}
 (74,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -31933,27 +33170,27 @@ aa
 ms
 "}
 (75,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -32127,27 +33364,27 @@ aa
 ms
 "}
 (76,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -32195,11 +33432,11 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
+Ta
+Ta
+Ta
+Ta
+Ta
 aa
 aa
 aa
@@ -32321,27 +33558,27 @@ aa
 ms
 "}
 (77,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -32389,13 +33626,13 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ta
+Ac
+Ac
+Ac
+Ta
+Ta
+Ta
 aa
 aa
 aa
@@ -32515,27 +33752,27 @@ aa
 ms
 "}
 (78,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -32583,14 +33820,14 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ta
+Ac
+Ac
+Ac
+uS
+uS
+EE
+Ta
 aa
 aa
 aa
@@ -32709,27 +33946,27 @@ aa
 ms
 "}
 (79,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -32777,14 +34014,14 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ta
+Ac
+Ac
+Ac
+uS
+uS
+uS
+Ta
 aa
 aa
 aa
@@ -32903,27 +34140,27 @@ aa
 ms
 "}
 (80,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -32971,14 +34208,14 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ta
+uS
+uS
+uS
+uS
+uS
+uS
+Ta
 aa
 aa
 aa
@@ -33097,27 +34334,27 @@ aa
 ms
 "}
 (81,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -33165,15 +34402,15 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ta
+uS
+uS
+uS
+uS
+uS
+uS
+EE
+Ta
 aa
 aa
 aa
@@ -33291,27 +34528,27 @@ aa
 ms
 "}
 (82,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -33359,15 +34596,15 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ta
+Ta
+EE
+uS
+uS
+uS
+uS
+uS
+Ta
 aa
 aa
 aa
@@ -33485,27 +34722,27 @@ aa
 ms
 "}
 (83,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -33552,16 +34789,16 @@ Zu
 Zu
 Zu
 Zu
-Uu
+Zu
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ta
+Ta
+uS
+uS
+uS
+uS
+uS
+Ta
 aa
 aa
 aa
@@ -33679,27 +34916,27 @@ aa
 ms
 "}
 (84,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -33746,17 +34983,17 @@ Zu
 Zu
 Zu
 Zu
-Uu
+Zu
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ta
+Ta
+EE
+uS
+uS
+uS
+Ta
+Ta
 aa
 aa
 aa
@@ -33873,27 +35110,27 @@ aa
 ms
 "}
 (85,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -33940,17 +35177,17 @@ Zu
 Zu
 Zu
 Zu
-Uu
+Zu
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ta
+Ta
+Ta
+uS
+uS
+uS
+Ta
 aa
 aa
 aa
@@ -34067,27 +35304,27 @@ aa
 ms
 "}
 (86,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -34135,18 +35372,18 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ta
+Ta
+Ta
+Ta
+Ta
+Ta
+Ta
+uS
+uS
+Ta
+Ta
+Ta
 aa
 aa
 aa
@@ -34261,27 +35498,27 @@ aa
 ms
 "}
 (87,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -34329,19 +35566,19 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Kz
+GX
+GX
+GX
+Kz
+GX
+GX
+GX
+GX
+GX
+GX
+Ta
+Ta
 aa
 aa
 aa
@@ -34455,27 +35692,27 @@ aa
 ms
 "}
 (88,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -34523,19 +35760,19 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+Kz
+GX
+GX
+GX
+Ta
 aa
 aa
 aa
@@ -34649,27 +35886,27 @@ aa
 ms
 "}
 (89,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -34717,20 +35954,20 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+GX
+Kz
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+Ta
+Ta
 aa
 aa
 aa
@@ -34843,27 +36080,27 @@ aa
 ms
 "}
 (90,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -34911,20 +36148,20 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+Kz
+Kz
+Kz
+GX
+Kz
+Ta
 aa
 aa
 aa
@@ -35037,27 +36274,27 @@ aa
 ms
 "}
 (91,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -35105,20 +36342,20 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+Kz
+Kz
+Kz
+Kz
+GX
+Kz
+Ta
 aa
 aa
 aa
@@ -35231,27 +36468,27 @@ aa
 ms
 "}
 (92,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -35299,20 +36536,20 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+GX
+GX
+GX
+GX
+GX
+GX
+Kz
+Kz
+Kz
+GX
+GX
+GX
+GX
+Ta
 aa
 aa
 aa
@@ -35425,27 +36662,27 @@ aa
 ms
 "}
 (93,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -35493,20 +36730,20 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+GX
+GX
+GX
+GX
+GX
+GX
+Kz
+Kz
+GX
+GX
+GX
+GX
+GX
+Ta
 aa
 aa
 aa
@@ -35619,27 +36856,27 @@ aa
 ms
 "}
 (94,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -35687,20 +36924,20 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+GX
+GX
+GX
+GX
+GX
+Kz
+Kz
+GX
+GX
+GX
+GX
+Kz
+GX
+Ta
 aa
 aa
 aa
@@ -35813,27 +37050,27 @@ aa
 ms
 "}
 (95,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -35881,20 +37118,20 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+GX
+GX
+GX
+GX
+GX
+Kz
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+Ta
 aa
 aa
 aa
@@ -36007,27 +37244,27 @@ aa
 ms
 "}
 (96,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -36075,20 +37312,20 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+Ta
 aa
 aa
 aa
@@ -36201,27 +37438,27 @@ aa
 ms
 "}
 (97,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -36269,20 +37506,20 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Kz
+Kz
+Kz
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+Ta
 aa
 aa
 aa
@@ -36395,27 +37632,27 @@ aa
 ms
 "}
 (98,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -36463,20 +37700,20 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Kz
+Kz
+Cf
+Kz
+GX
+GX
+GX
+GX
+GX
+GX
+Kz
+GX
+GX
+Ta
 aa
 aa
 aa
@@ -36589,27 +37826,27 @@ aa
 ms
 "}
 (99,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+WL
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
+Zu
 Zu
 Zu
 Zu
@@ -36657,20 +37894,20 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Kz
+Kz
+Cf
+Kz
+Kz
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+Ta
 aa
 aa
 aa
@@ -36783,30 +38020,7 @@ aa
 ms
 "}
 (100,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-Zu
-Zu
-Zu
+WL
 Zu
 Zu
 Zu
@@ -36851,20 +38065,43 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Kz
+Kz
+Kz
+GX
+GX
+GX
+GX
+GX
+Kz
+GX
+GX
+GX
+GX
+Ta
 aa
 aa
 aa
@@ -36977,30 +38214,7 @@ aa
 ms
 "}
 (101,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-Zu
-Zu
-Zu
+WL
 Zu
 Zu
 Zu
@@ -37045,20 +38259,43 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+KX
+Ta
+Ta
+Ta
+Ta
+Ta
+Ta
+Ta
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+Ta
 aa
 aa
 aa
@@ -37171,30 +38408,7 @@ aa
 ms
 "}
 (102,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-Zu
-Zu
-Zu
+WL
 Zu
 Zu
 Zu
@@ -37239,20 +38453,43 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Qu
+Cn
+Cn
+Cn
+Qu
+Cn
+Cn
+Cn
+Cn
+Rq
+Rq
+Rq
+Rq
+uN
+uN
+uN
+uN
+Ta
+Ta
+Ta
+Ta
+EE
+uS
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+Kz
+GX
+GX
+GX
+GX
+Kz
+Ta
 aa
 aa
 aa
@@ -37365,30 +38602,7 @@ aa
 ms
 "}
 (103,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-Zu
-Zu
-Zu
+WL
 Zu
 Zu
 Zu
@@ -37433,20 +38647,43 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Qu
+Cn
+Cn
+Cn
+Qu
+Cn
+Cn
+Cn
+Cn
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+uN
+uN
+Ta
+Ta
+Ta
+uS
+uS
+uS
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+Kz
+GX
+GX
+GX
+GX
+Kz
+Ta
 aa
 aa
 aa
@@ -37559,30 +38796,7 @@ aa
 ms
 "}
 (104,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-Zu
-Zu
-Zu
+WL
 Zu
 Zu
 Zu
@@ -37627,20 +38841,43 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Qu
+Cn
+Cn
+Cn
+Qu
+Cn
+Cn
+Cn
+Cn
+Rq
+Rq
+Rq
+Rq
+Rq
+uN
+uN
+xM
+uN
+Ta
+uS
+uS
+uS
+uS
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+Kz
+GX
+GX
+GX
+GX
+Kz
+Ta
 aa
 aa
 aa
@@ -37753,30 +38990,7 @@ aa
 ms
 "}
 (105,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-Zu
-Zu
-Zu
+WL
 Zu
 Zu
 Zu
@@ -37821,20 +39035,43 @@ Zu
 Zu
 Zu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+BK
+WI
+WI
+Qu
+Qu
+Ta
+Ta
+uS
+uS
+uS
+Ta
+GX
+GX
+GX
+GX
+GX
+Kz
+Kz
+GX
+GX
+GX
+GX
+GX
+GX
+Ta
 aa
 aa
 aa
@@ -37947,30 +39184,7 @@ aa
 ms
 "}
 (106,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-Zu
-Zu
-Zu
+WL
 Zu
 Zu
 Zu
@@ -38015,20 +39229,43 @@ Zu
 Zu
 Zu
 Uu
+Qu
+Cn
+Cn
+Cn
+Qu
 aa
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ta
+Ta
+TY
+TY
+uS
+Ta
+Ta
+Ta
+EE
+uS
+uS
+Ta
+Ta
+Ta
+Ta
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+GX
+Ta
 aa
 aa
 aa
@@ -38141,30 +39378,7 @@ aa
 ms
 "}
 (107,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-Zu
-Zu
-Zu
+WL
 Zu
 Zu
 Zu
@@ -38209,20 +39423,43 @@ Zu
 Zu
 Zu
 Uu
+Qu
+Cn
+Cn
+Cn
+Qu
 aa
 aa
 aa
 aa
 aa
+Ta
+Ta
+uS
+uS
+uS
+Ta
+Ta
+uS
+uS
+uS
+uS
+Ta
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ta
+Kz
+GX
+GX
+GX
+GX
+GX
+Kz
+GX
+GX
+GX
+GX
+Ta
 aa
 aa
 aa
@@ -38335,30 +39572,7 @@ aa
 ms
 "}
 (108,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-Zu
-Zu
-Zu
+WL
 Zu
 Zu
 Zu
@@ -38403,20 +39617,43 @@ Zu
 Zu
 Zu
 Uu
+Qu
+Cn
+Cn
+Cn
+Qu
 aa
 aa
 aa
 aa
 aa
 aa
+Ta
+uS
+uS
+uS
+uS
+uS
+uS
+uS
+uS
+uS
+Ta
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ta
+Ta
+Ta
+Ta
+Ta
+Ta
+Ta
+Ta
+Ta
+Ta
+Ta
+Ta
+Ta
 aa
 aa
 aa
@@ -38529,30 +39766,7 @@ aa
 ms
 "}
 (109,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-Zu
-Zu
-Zu
+WL
 Zu
 Zu
 Zu
@@ -38597,15 +39811,38 @@ Zu
 Zu
 Zu
 Uu
+Qu
+Cn
+Cn
+Cn
+Qu
 aa
 aa
 aa
 aa
 aa
 aa
+Ta
+EE
+uS
+uS
+uS
+uS
+uS
+uS
+uS
+uS
+Ta
 aa
 aa
-aa
+Rz
+Rz
+Rz
+Rz
+Rz
+Rz
+Rz
+Rz
 aa
 aa
 aa
@@ -38723,30 +39960,7 @@ aa
 ms
 "}
 (110,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-Zu
-Zu
-Zu
+WL
 Zu
 Zu
 Zu
@@ -38791,6 +40005,11 @@ Zu
 Zu
 Zu
 Uu
+Qu
+Rq
+Rq
+Rq
+Qu
 aa
 aa
 aa
@@ -38798,9 +40017,27 @@ aa
 aa
 aa
 aa
+Ta
+Ta
+uS
+uS
+uS
+uS
+uS
+EE
+Ta
+Ta
 aa
-aa
-aa
+Rz
+Rz
+Ha
+Ha
+Ha
+XJ
+Ha
+IN
+Rz
+Rz
 aa
 aa
 aa
@@ -38917,30 +40154,7 @@ aa
 ms
 "}
 (111,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-Zu
-Zu
-Zu
+WL
 Zu
 Zu
 Zu
@@ -38985,6 +40199,11 @@ Zu
 Zu
 Zu
 Uu
+Qu
+Rq
+Rq
+Rq
+Qu
 aa
 aa
 aa
@@ -38992,21 +40211,39 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ta
+Ta
+Ta
+uS
+uS
+Ta
+Ta
+Ta
+Ta
+Ta
+Rz
+Rz
+XG
+Ha
+Ha
+Lx
+Ha
+Ha
+XG
+OF
+Rz
+Rz
+NY
+IE
+IE
+IE
+IE
+IE
+IE
+IE
+IE
+IE
+IE
 IE
 IE
 IE
@@ -39111,30 +40348,7 @@ aa
 ms
 "}
 (112,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-Zu
-Zu
-Zu
+WL
 Zu
 Zu
 Zu
@@ -39179,6 +40393,11 @@ Zu
 Zu
 Zu
 Uu
+Qu
+Rq
+Rq
+Uy
+Qu
 aa
 aa
 aa
@@ -39188,23 +40407,41 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ta
+Ta
+Ta
+Ta
+Ta
+Ta
+Ta
+Rz
+Rz
+Ha
+Ha
+Ha
+Ij
+Sb
+Dy
+Ha
+Ha
+Oi
+JN
+ln
+rs
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Jz
+Xp
+NY
 aa
 aa
 aa
@@ -39305,47 +40542,7 @@ aa
 ms
 "}
 (113,1,1) = {"
-ms
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
-Zu
+WL
 Uu
 Uu
 Uu
@@ -39373,32 +40570,72 @@ Uu
 Uu
 Uu
 Uu
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Uu
+Qu
+Rq
+Rq
+Rq
+Qu
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+QV
+Rz
+Rz
+Ha
+Ha
+Ha
+Ha
+Ha
+JO
+Ha
+Ha
+XG
+FU
+Rz
+Rz
+NY
+IE
+IE
+IE
+IE
+IE
+IE
+IE
+IE
+IE
+IE
+IE
+NY
+NY
+NY
 aa
 aa
 aa
@@ -39524,59 +40761,59 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Rq
+Rq
+Rq
+Qu
+IK
+vN
+Tl
+Tl
+QV
+Tl
+vN
+Tl
+yd
+Tl
+Tl
+vN
+Tl
+sG
+sG
+Rz
+sO
+Ha
+Ha
+Ha
+Ha
+Ha
+Ha
+zn
+Ha
+IN
+Rz
+Rz
 aa
 aa
 aa
@@ -39718,58 +40955,58 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Qu
+Cn
+Cn
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Rq
+Rq
+Rq
+Rq
+Tl
+Tl
+Tl
+Tl
+Tl
+VX
+yd
+Tl
+yd
+Tl
+yd
+Tl
+Tl
+sG
+ON
+Rz
+Ha
+Ha
+Ha
+Rz
+Rz
+Rz
+Rz
+Rz
+Rz
+Rz
+Rz
 aa
 aa
 aa
@@ -39912,51 +41149,51 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Qu
+Cn
+Cn
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Rq
+Rq
+Rq
+Qu
+Tl
+Tl
+Tl
+Tl
+QV
+Tl
+yd
+Tl
+Tl
+Tl
+yd
+Tl
+Tl
+sG
+sG
+Rz
+AC
+BD
+AC
+Rz
 aa
 aa
 aa
@@ -40106,51 +41343,51 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Qu
+Rq
+Rq
+Rq
+Us
+Us
+Us
+Bo
+Bo
+Bo
+Bo
+Bo
+Ni
+Ni
+Ni
+Bo
+Bo
+Bo
+VK
+Rq
+Rq
+Rq
+Rq
+Rq
+Qu
+QV
+QV
+QV
+QV
+QV
+yd
+yd
+yd
+yd
+yd
+yd
+Tl
+Tl
+sG
+QH
+Qu
+Rq
+Rq
+Rq
+Qu
 aa
 aa
 aa
@@ -40300,51 +41537,51 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Qu
+Rq
+Rq
+Rq
+Us
+Us
+Us
+Bo
+QQ
+QQ
+QQ
+Bo
+Rq
+Bo
+Bo
+Bo
+Ck
+Bo
+VK
+Rq
+Rq
+Rq
+Rq
+Uy
+Qu
+Tl
+Tl
+vu
+vu
+ME
+vu
+Tl
+sG
+sG
+sG
+sG
+Tl
+Tl
+sG
+sG
+sA
+Rq
+Rq
+Rq
+Qu
 aa
 aa
 aa
@@ -40494,51 +41731,51 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Qu
+Rq
+Bt
+Rq
+Bo
+Lb
+Bo
+Bo
+QQ
+QQ
+QF
+Bo
+Ni
+Ni
+Df
+Bo
+Ck
+Bo
+Lb
+Rq
+Rq
+Rq
+Rq
+Rq
+Qu
+RS
+Tl
+sG
+sG
+sG
+sG
+Tl
+sG
+sG
+sG
+sG
+Tl
+Tl
+sG
+sG
+Qu
+Rq
+Rq
+Uy
+Qu
 aa
 aa
 aa
@@ -40688,51 +41925,51 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+zT
+zT
+zT
+zT
+zT
+zT
+zT
+zT
+zT
+zT
+zT
+HX
+HX
+HX
+Qu
+HC
+Tl
+sG
+sG
+sG
+sG
+Tl
+sG
+sG
+sG
+sG
+Tl
+Tl
+sG
+sG
+Qu
+Rq
+Rq
+Rq
+Qu
 aa
 aa
 aa
@@ -40892,41 +42129,41 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+Ez
+Dz
+El
+xm
+Ah
+zT
+TP
+TP
+TP
+zT
+Rq
+Rq
+Rq
+Qu
+Tl
+Tl
+sG
+sG
+sG
+sG
+Tl
+vu
+vu
+vu
+vu
+Tl
+Tl
+sG
+sG
+sA
+Rq
+Rq
+Rq
+Qu
 aa
 aa
 aa
@@ -41086,41 +42323,41 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+VJ
+HJ
+vr
+vr
+EQ
+zT
+TP
+TP
+TP
+YQ
+Rq
+Rq
+Rq
+Qu
+BL
+Tl
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+Qu
+Rq
+Rq
+Rq
+Qu
 aa
 aa
 aa
@@ -41280,41 +42517,41 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+zT
+Fg
+JP
+vr
+vr
+Lp
+TP
+TP
+xV
+zT
+Rq
+Rq
+Uy
+Qu
+BL
+Tl
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+QH
+Qu
+Rq
+Rq
+Uy
+Qu
 aa
 aa
 aa
@@ -41474,41 +42711,41 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+Ut
+SJ
+vr
+vr
+By
+zT
+TP
+TP
+TP
+zT
+uQ
+Rq
+Rq
+Qu
+BL
+Tl
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+Qu
+Rq
+Rq
+Rq
+Qu
 aa
 aa
 aa
@@ -41668,41 +42905,41 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+Tk
+Qk
+wa
+PW
+Vo
+zT
+TP
+TP
+TP
+zT
+Rq
+Rq
+Rq
+Qu
+BL
+Tl
+sG
+sG
+sG
+sG
+sG
+So
+So
+So
+So
+So
+So
+sG
+sG
+Qu
+Rq
+Rq
+Rq
+Qu
 aa
 aa
 aa
@@ -41862,41 +43099,41 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+zT
+zT
+zT
+zT
+zT
+zT
+TP
+TP
+TP
+zT
+Rq
+Rq
+Rq
+Qu
+Tl
+Tl
+HA
+Tl
+Tl
+Tl
+Qg
+Mf
+Mf
+Mf
+Bg
+Mf
+Mf
+sG
+QH
+Qu
+Rq
+Rq
+Rq
+Qu
 aa
 aa
 aa
@@ -42056,41 +43293,41 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+Ez
+Dz
+El
+xm
+Ah
+zT
+TP
+TP
+TP
+zT
+Rq
+Rq
+Rq
+Qu
+Tl
+Tl
+HA
+Tl
+Tl
+Tl
+Qg
+Mf
+Mf
+Mf
+Mf
+Mf
+Mf
+sG
+sG
+sA
+Rq
+Rq
+Rq
+Qu
 aa
 aa
 aa
@@ -42250,41 +43487,41 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+VJ
+HJ
+vr
+vr
+EQ
+zT
+TP
+TP
+TP
+zT
+Rq
+Rq
+Rq
+Qu
+SL
+Tl
+Tl
+Tl
+Tl
+Tl
+Tl
+EM
+Tl
+EM
+EM
+EM
+EM
+sG
+sG
+sA
+Rq
+Rq
+Uy
+Qu
 aa
 aa
 aa
@@ -42444,41 +43681,41 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+zT
+Fg
+JP
+vr
+vr
+Lp
+TP
+TP
+xV
+zT
+Rq
+Rq
+Rq
+Qu
+Tl
+Tl
+HA
+Tl
+Tl
+Tl
+Tl
+Tl
+Tl
+Tl
+vD
+vD
+vD
+sG
+sG
+sA
+Rq
+Rq
+Rq
+Qu
 aa
 aa
 aa
@@ -42638,41 +43875,41 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+Ut
+SJ
+vr
+vr
+By
+zT
+TP
+TP
+TP
+zT
+Rq
+Rq
+Uy
+Qu
+QV
+QV
+QV
+QV
+XO
+vD
+Tl
+Tl
+Tl
+Qg
+Mf
+Mf
+Mf
+sG
+QH
+Qu
+Rq
+Rq
+Rq
+Qu
 aa
 aa
 aa
@@ -42832,41 +44069,41 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+Tk
+Qk
+wa
+PW
+Vo
+zT
+TP
+TP
+TP
+zT
+Rq
+Rq
+Rq
+Rq
+Tl
+QV
+QV
+Mf
+Mf
+Mf
+HA
+Tl
+Tl
+Tl
+Mf
+Mf
+Mf
+sG
+sG
+sA
+Rq
+Rq
+Rq
+Qu
 aa
 aa
 aa
@@ -43026,41 +44263,41 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+zT
+zT
+zT
+zT
+zT
+zT
+TP
+TP
+TP
+zT
+Rq
+Rq
+Rq
+Rq
+Tl
+Tl
+Tl
+Mf
+Mf
+se
+HA
+Tl
+Tl
+Qg
+Mf
+Mf
+Mf
+sG
+sG
+sA
+Rq
+Rq
+Rq
+Qu
 aa
 aa
 aa
@@ -43221,40 +44458,40 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+JE
+IV
+Mx
+tR
+zT
+TP
+TP
+TP
+zT
+Rq
+Rq
+Rq
+Rq
+Tl
+QV
+QV
+Mf
+Mf
+Mf
+Tl
+Tl
+Tl
+Qg
+Wi
+Mf
+Mf
+sG
+sG
+sA
+Rq
+Rq
+Uy
+Qu
 aa
 aa
 aa
@@ -43415,40 +44652,40 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+rb
+vr
+vr
+vr
+Lp
+TP
+TP
+xV
+zT
+Rq
+Rq
+Uy
+Qu
+QV
+QV
+QV
+Mf
+Mf
+Mf
+HA
+Tl
+Tl
+Qg
+Mf
+Mf
+Mf
+sG
+QH
+Qu
+Rq
+Rq
+Rq
+Qu
 aa
 aa
 aa
@@ -43609,45 +44846,45 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+DM
+vr
+vr
+Kg
+zT
+TP
+TP
+TP
+zT
+Rq
+Rq
+Rq
+Qu
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+sG
+Qu
+Rq
+Rq
+Rq
+kE
+kE
+kE
+kE
+kE
+kE
 aa
 aa
 aa
@@ -43803,45 +45040,45 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+Br
+vr
+vr
+TD
+zT
+TP
+TP
+TP
+zT
+Yk
+Yk
+Yk
+Qu
+sG
+sG
+ah
+sG
+sG
+sG
+sG
+MY
+sG
+sG
+sG
+ah
+sG
+sG
+sG
+Qu
+Rq
+Rq
+Rq
+kE
+Bz
+vw
+vw
+vw
+kE
 aa
 aa
 aa
@@ -43997,45 +45234,45 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+Br
+vr
+vr
+TD
+zT
+TP
+TP
+TP
+zT
+Rq
+Rq
+Rq
+Qu
+Qu
+Qu
+Qu
+sA
+sA
+sA
+Qu
+Qu
+sA
+sA
+sA
+Qu
+Qu
+Qu
+Qu
+Qu
+Rq
+Rq
+Rq
+Xm
+vw
+vw
+BG
+vw
+kE
 aa
 aa
 aa
@@ -44191,45 +45428,45 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+DM
+vr
+vr
+Kg
+zT
+TP
+TP
+TP
+zT
+Rq
+Rq
+Rq
+Rq
+Rq
+Yk
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Uy
+kE
+vw
+vw
+vw
+DJ
+kE
 aa
 aa
 aa
@@ -44385,45 +45622,45 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+rb
+vr
+vr
+vr
+Lp
+TP
+TP
+TP
+YQ
+Rq
+Rq
+Rq
+Rq
+Rq
+Yk
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+Rq
+kE
+VN
+vw
+yC
+Rr
+kE
 aa
 aa
 aa
@@ -44579,45 +45816,45 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+AJ
+KT
+LZ
+JT
+zT
+TP
+VI
+TP
+zT
+Rq
+Rq
+Rq
+Rq
+Rq
+Yk
+Rq
+Rq
+Rq
+Rq
+Rq
+Bt
+Rq
+Rq
+Rq
+Rq
+Bt
+Rq
+Rq
+Rq
+Rq
+Bt
+Rq
+kE
+JH
+vw
+vw
+vO
+kE
 aa
 aa
 aa
@@ -44773,45 +46010,45 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+zT
+zT
+zT
+zT
+zT
+zT
+zT
+zT
+zT
+zT
+Qu
+Rq
+Qu
+Qu
+Qu
+Qu
+Qu
+Rq
+Rq
+Rq
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+kE
+kE
+Xm
+kE
+kE
+kE
+kE
+PB
+vw
+vw
+vw
+kE
 aa
 aa
 aa
@@ -44976,36 +46213,36 @@ aa
 aa
 aa
 aa
+TJ
+uK
+uK
+uK
+TJ
+Fl
+Fl
+TJ
+uK
+uK
+uK
+TJ
 aa
 aa
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+kE
+Uk
+vw
+vw
+vw
+zU
+OH
+Zd
+vw
+vw
+vw
+kE
 aa
 aa
 aa
@@ -45170,36 +46407,36 @@ aa
 aa
 aa
 aa
+TJ
+uK
+uK
+uK
+TJ
+Fl
+Fl
+TJ
+uK
+uK
+uK
+TJ
 aa
 aa
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+kE
+Hy
+vw
+vw
+vw
+vw
+vw
+vw
+vw
+vw
+XR
+kE
 aa
 aa
 aa
@@ -45364,36 +46601,36 @@ aa
 aa
 aa
 aa
+TJ
+uK
+uK
+qD
+TJ
+Fl
+Fl
+TJ
+tV
+uK
+uK
+TJ
 aa
 aa
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+kE
+vA
+vw
+BG
+Uo
+vw
+vw
+vw
+vw
+Uo
+yr
+kE
 aa
 aa
 aa
@@ -45558,36 +46795,36 @@ aa
 aa
 aa
 aa
+TJ
+uK
+uK
+uK
+TJ
+Fl
+Fl
+TJ
+uK
+uK
+uK
+TJ
 aa
 aa
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+kE
+vA
+vw
+dN
+PG
+DJ
+vw
+vw
+DJ
+PG
+dN
+kE
 aa
 aa
 aa
@@ -45752,36 +46989,36 @@ aa
 aa
 aa
 aa
+TJ
+uK
+uK
+uK
+TJ
+Fl
+Fl
+TJ
+uK
+uK
+uK
+TJ
+TJ
 aa
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+kE
+kE
+SS
+kE
+kE
+kE
+kE
+kE
+kE
+kE
+kE
+kE
 aa
 aa
 aa
@@ -45945,30 +47182,30 @@ aa
 aa
 aa
 aa
+TJ
+TJ
+TJ
+uK
+TJ
+TJ
+TJ
+TJ
+TJ
+PN
+uK
+PN
+TJ
+TJ
+TJ
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+kE
+Di
+vw
+rk
+kE
 aa
 aa
 aa
@@ -46138,31 +47375,31 @@ aa
 aa
 aa
 aa
+TJ
+TJ
+uK
+uK
+uK
+Du
+uK
+PN
+PN
+yF
+uK
+FX
+Du
+uK
+TJ
+TJ
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+kE
+GL
+Xf
+Ds
+kE
 aa
 aa
 aa
@@ -46332,31 +47569,31 @@ aa
 aa
 aa
 aa
+TJ
+Qy
+uK
+zQ
+uK
+uK
+uK
+FX
+PN
+JA
+dj
+uK
+NM
+uK
+PN
+TJ
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+kE
+wP
+Xf
+Zp
+kE
 aa
 aa
 aa
@@ -46526,31 +47763,31 @@ aa
 aa
 aa
 aa
+TJ
+uK
+uK
+uK
+uk
+FX
+ws
+FX
+BO
+Nm
+uK
+FX
+dj
+FX
+PN
+TJ
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+kE
+vt
+Xf
+Yj
+kE
 aa
 aa
 aa
@@ -46720,31 +47957,31 @@ aa
 aa
 aa
 aa
+TJ
+tV
+uK
+uk
+UH
+uk
+FX
+FX
+yn
+FX
+FX
+uK
+uK
+wQ
+PN
+TJ
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+kE
+Qj
+Iu
+GK
+kE
 aa
 aa
 aa
@@ -46914,31 +48151,31 @@ aa
 aa
 aa
 aa
+TJ
+uK
+uK
+uK
+uk
+Fq
+FX
+FX
+BO
+EN
+PT
+FX
+FX
+FX
+PN
+TJ
 aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+kE
+kE
+kE
+kE
+kE
 aa
 aa
 aa
@@ -47108,22 +48345,22 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+TJ
+uK
+uK
+uK
+uK
+uK
+uK
+FX
+PN
+Cv
+FX
+uK
+XD
+uK
+TJ
+TJ
 aa
 aa
 aa
@@ -47302,22 +48539,22 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+TJ
+TJ
+uK
+uK
+Pv
+uK
+uK
+PN
+PN
+DC
+uK
+AT
+dj
+FX
+PN
+TJ
 aa
 aa
 aa
@@ -47497,21 +48734,21 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+TJ
+TJ
+TJ
+TJ
+TJ
+TJ
+TJ
+TJ
+TJ
+PN
+PN
+PN
+PN
+PN
+TJ
 aa
 aa
 aa
@@ -47695,17 +48932,17 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+TJ
+TJ
+TJ
+TJ
+TJ
+TJ
+TJ
+TJ
+TJ
+TJ
+TJ
 aa
 aa
 aa

@@ -157,8 +157,9 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-obj/item/pickaxe/tyrmalin/proc/turnOn(mob/user as mob)
-	if(active) return
+/obj/item/pickaxe/tyrmalin/proc/turnOn(mob/user as mob)
+	if(active)
+		return
 
 	to_chat(user, "You start pulling the string on \the [src].")
 	//visible_message("[usr] starts pulling the string on the [src].")

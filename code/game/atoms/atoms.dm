@@ -76,9 +76,6 @@
 	//! ## Chemistry
 	var/datum/reagents/reagents = null
 
-	//? replaced by OPENCONTAINER flags and atom/proc/is_open_container()
-	//var/chem_is_open_container = 0
-
 	//! ## Detective Work
 	/// Used for the duplicate data points kept in the scanners.
 	var/list/original_atom
@@ -797,7 +794,7 @@
 
 	var/list/hearing_mobs = hear["mobs"]
 	var/list/hearing_objs = hear["objs"]
-	var/list/heard_to_floating_message
+	var/list/heard_to_floating_message = list()
 	for(var/obj in hearing_objs)
 		var/obj/O = obj
 		O.show_message(message, 2, deaf_message, 1)
@@ -806,7 +803,7 @@
 		var/mob/M = mob
 		var/msg = message
 		M.show_message(msg, 2, deaf_message, 1)
-		M += heard_to_floating_message
+		heard_to_floating_message += M
 	INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, (message ? message : deaf_message), null, FALSE, heard_to_floating_message, 30)
 
 
@@ -1099,7 +1096,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_x_offset(dir, atom/aligning)
-	return base_pixel_x + (icon_dimension_x - PIXELS) / 2
+	return base_pixel_x + (icon_dimension_x - WORLD_ICON_SIZE) / 2
 
 /**
  * get the pixel_y needed to adjust an atom on our turf **to the position of our visual center**
@@ -1108,7 +1105,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_y_offset(dir, atom/aligning)
-	return base_pixel_y + (icon_dimension_y - PIXELS) / 2
+	return base_pixel_y + (icon_dimension_y - WORLD_ICON_SIZE) / 2
 
 /// Setter for the `base_pixel_x` variable to append behavior related to its changing.
 /atom/proc/set_base_pixel_x(new_value)

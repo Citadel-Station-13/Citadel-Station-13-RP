@@ -6,7 +6,8 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 
 /datum/species/moth
 	name = SPECIES_MOTH
-	id   = SPECIES_ID_MOTH
+	uid = SPECIES_ID_MOTH
+	id = SPECIES_ID_MOTH
 	abstract_type = /datum/species/moth
 	name_plural   = "Dnin-Nepids"
 	examine_name  = "Dnin-Nepid"
@@ -156,7 +157,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 
 /datum/species/moth/dark
 	name = SPECIES_MOTH_DARK
-	id = SPECIES_ID_MOTH_DARK
+	uid = SPECIES_ID_MOTH_DARK
 	spawn_flags = SPECIES_CAN_JOIN
 
 	// darksight, but weak to light
@@ -166,7 +167,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 
 /datum/species/moth/light
 	name = SPECIES_MOTH_LIGHT
-	id = SPECIES_ID_MOTH_LIGHT
+	uid = SPECIES_ID_MOTH_LIGHT
 	spawn_flags = SPECIES_CAN_JOIN
 
 	// hardy, but no darksight

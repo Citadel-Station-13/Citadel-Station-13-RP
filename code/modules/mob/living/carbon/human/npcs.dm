@@ -2,7 +2,7 @@
 	name = "fancy uniform"
 	desc = "It looks like it was tailored for a monkey."
 	icon_state = "punpun"
-	worn_state = "punpun"
+	snowflake_worn_state = "punpun"
 	species_restricted = list(SPECIES_MONKEY)
 
 /mob/living/carbon/human/monkey/punpun/Initialize(mapload)

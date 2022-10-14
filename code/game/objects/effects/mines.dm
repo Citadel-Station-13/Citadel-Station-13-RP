@@ -101,6 +101,18 @@
 		qdel(s)
 		qdel(src)
 
+/obj/effect/mine/chlorine
+	mineitemtype = /obj/item/mine/chlorine
+
+/obj/effect/mine/chlorine/explode(var/mob/living/M)
+	triggered = 1
+	for (var/turf/simulated/floor/target in range(1,src))
+		if(!target.blocks_air)
+			target.assume_gas(/datum/gas/chlorine, 30)
+	visible_message("\The [src.name] detonates!")
+	spawn(0)
+		qdel(src)
+
 /obj/effect/mine/n2o
 	mineitemtype = /obj/item/mine/n2o
 
@@ -247,6 +259,11 @@
 	name = "kick mine"
 	desc = "Concentrated war crimes. Handle with care."
 	minetype = /obj/effect/mine/kick
+
+/obj/item/mine/chlorine
+	name = "chlorine gas mine"
+	desc = "A small explosive mine with a skull and crossbones on the side."
+	minetype = /obj/effect/mine/chlorine
 
 /obj/item/mine/n2o
 	name = "nitrous oxide mine"

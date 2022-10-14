@@ -64,3 +64,5 @@
 /// From base of atom/movable/Process_Spacemove(): (movement_dir)
 ////#define COMSIG_MOVABLE_SPACEMOVE "spacemove"
 	////#define COMSIG_MOVABLE_STOP_SPACEMOVE (1<<0)
+/// called when we have a drastic pixel x/y change and things should update
+#define COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED "pixel_offset_changed"

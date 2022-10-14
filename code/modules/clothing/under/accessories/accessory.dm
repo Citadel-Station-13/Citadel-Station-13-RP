@@ -16,8 +16,8 @@
 	var/mob/living/carbon/human/wearer = null 	// To check if the wearer changes, so species spritesheets change properly.
 	var/list/on_rolled = list()					// Used when jumpsuit sleevels are rolled ("rolled" entry) or it's rolled down ("down"). Set to "none" to hide in those states.
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/ties.dmi', //Teshari can into webbing, too!
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/ties.dmi')
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/ties.dmi', //Teshari can into webbing, too!
+		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/ties.dmi')
 	drop_sound = 'sound/items/drop/accessory.ogg'
 	pickup_sound = 'sound/items/pickup/accessory.ogg'
 
@@ -29,6 +29,7 @@
 /obj/item/clothing/accessory/worn_mob()
 	return has_suit? has_suit.worn_mob() : ..()
 
+// todo: refactor entirely, we shouldn't have /obj/item/clothing/accessory
 /obj/item/clothing/accessory/proc/get_inv_overlay()
 	if(!inv_overlay)
 		var/tmp_icon_state = "[overlay_state? "[overlay_state]" : "[icon_state]"]"
@@ -54,16 +55,16 @@
 
 	if(istype(loc,/obj/item/clothing/under))
 		var/obj/item/clothing/under/C = loc
-		if(on_rolled["down"] && C.rolled_down > 0)
+		if(on_rolled["down"] && C.worn_rolled_down == UNIFORM_ROLL_TRUE)
 			tmp_icon_state = on_rolled["down"]
-		else if(on_rolled["rolled"] && C.rolled_sleeves > 0)
+		else if(on_rolled["rolled"] && C.worn_rolled_sleeves == UNIFORM_ROLL_TRUE)
 			tmp_icon_state = on_rolled["rolled"]
 
 	if(icon_override)
 		if("[tmp_icon_state]_mob" in icon_states(icon_override))
 			tmp_icon_state = "[tmp_icon_state]_mob"
 		mob_overlay = image("icon" = icon_override, "icon_state" = "[tmp_icon_state]")
-	else if(wearer && sprite_sheets[wearer.species.get_worn_legacy_bodytype(wearer)]) //Teshari can finally into webbing, too!
+	else if(wearer && sprite_sheets[bodytype_to_string(wearer.species.get_effective_bodytype(src, has_suit.worn_slot))]) //Teshari can finally into webbing, too!
 		mob_overlay = image("icon" = sprite_sheets[wearer.species.get_worn_legacy_bodytype(wearer)], "icon_state" = "[tmp_icon_state]")
 	else
 		mob_overlay = image("icon" = INV_ACCESSORIES_DEF_ICON, "icon_state" = "[tmp_icon_state]")

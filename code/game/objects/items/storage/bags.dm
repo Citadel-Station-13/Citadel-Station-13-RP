@@ -59,7 +59,7 @@
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "trashbag"
-	item_state_slots = list(slot_r_hand_str = "trashbag", slot_l_hand_str = "trashbag")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "trashbag", SLOT_ID_LEFT_HAND = "trashbag")
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
 

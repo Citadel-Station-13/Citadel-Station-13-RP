@@ -120,16 +120,16 @@
 	desc = "Because you really needed another excuse to punch your crewmates."
 	icon_state = "boxing"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_gloves.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_gloves.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_gloves.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_gloves.dmi',
 			)
 	item_state = "boxing"
 	special_attack_type = /datum/unarmed_attack/holopugilism
 
-datum/unarmed_attack/holopugilism
+/datum/unarmed_attack/holopugilism
 	sparring_variant_type = /datum/unarmed_attack/holopugilism
 
-datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/zone)
+/datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/user,var/mob/living/carbon/human/target,var/zone)
 	user.do_attack_animation(src)
 	var/damage = rand(0, 9)
 	if(!damage)
@@ -268,8 +268,8 @@ datum/unarmed_attack/holopugilism/unarmed_override(var/mob/living/carbon/human/u
 	var/lcolor
 	var/rainbow = FALSE
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 	force = 3.0
 	throw_speed = 1

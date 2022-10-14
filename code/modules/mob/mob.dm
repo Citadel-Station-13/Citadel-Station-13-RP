@@ -817,8 +817,9 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/get_true_species_name()
 	return ""
 
-/mob/proc/get_species_id()
-	return
+// todo: species vs subspecies
+// /mob/proc/get_species_id()
+// 	return
 
 /mob/proc/flash_weak_pain()
 	flick("weak_pain",pain)
@@ -1171,6 +1172,14 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/get_managed_pixel_y()
 	return ..() + shift_pixel_y + get_buckled_pixel_y_offset()
 
+/mob/get_centering_pixel_x_offset(dir, atom/aligning)
+	. = ..()
+	. += shift_pixel_x
+
+/mob/get_centering_pixel_y_offset(dir, atom/aligning)
+	. = ..()
+	. += shift_pixel_y
+
 /mob/proc/reset_pixel_shifting()
 	if(!shifted_pixels)
 		return
@@ -1179,26 +1188,39 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	pixel_y -= shift_pixel_y
 	shift_pixel_x = 0
 	shift_pixel_y = 0
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /mob/proc/set_pixel_shift_x(val)
+	if(!val)
+		return
 	shifted_pixels = TRUE
 	pixel_x += (val - shift_pixel_x)
 	shift_pixel_x = val
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /mob/proc/set_pixel_shift_y(val)
+	if(!val)
+		return
 	shifted_pixels = TRUE
 	pixel_y += (val - shift_pixel_y)
 	shift_pixel_y = val
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /mob/proc/adjust_pixel_shift_x(val)
+	if(!val)
+		return
 	shifted_pixels = TRUE
 	shift_pixel_x += val
 	pixel_x += val
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 /mob/proc/adjust_pixel_shift_y(val)
+	if(!val)
+		return
 	shifted_pixels = TRUE
 	shift_pixel_y += val
 	pixel_y += val
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
 
 //! Reachability
 /mob/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)

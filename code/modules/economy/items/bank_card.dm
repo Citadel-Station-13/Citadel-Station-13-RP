@@ -43,7 +43,7 @@
 	var/list/details = predicate.query_transaction_details(data)
 	T.target_name = details[CHARGE_DETAIL_RECIPIENT]
 	T.source_terminal = details[CHARGE_DETAIL_DEVICE]
-	T.date = current_date_string
+	T.date = GLOB.current_date_string
 	T.time = stationtime2text()
 	T.purpose = details[CHARGE_DETAIL_REASON]
 	customer_account.transaction_log.Add(T)

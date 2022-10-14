@@ -117,7 +117,7 @@
 	if(!A.anchored)
 		var/turf/T = get_step(A, dir)
 		if(isturf(T))
-			A.Move(T)	//bump things away when hit
+			A.Move(T, dir)	//bump things away when hit
 
 	if(istype(A, /mob/living))
 		var/mob/living/M = A
@@ -218,7 +218,7 @@
 	if(!A.anchored)
 		var/turf/T = get_step(A, dir)
 		if(isturf(T))
-			A.Move(T)	//bump things away when hit
+			A.Move(T, dir)	//bump things away when hit
 
 	if(istype(A, /mob/living))
 		var/mob/living/M = A
