@@ -52,3 +52,9 @@
 	if(!S)
 		return ..()
 	return S.get_default_faction_id()
+
+/datum/preferences/proc/lore_faction_id()
+	return get_character_data(CHARACTER_DATA_FACTION)
+
+/datum/preferences/proc/lore_faction_datum()
+	return SScharacters.resolve_faction(lore_faction_id())

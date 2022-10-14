@@ -52,3 +52,9 @@
 	if(!S)
 		return ..()
 	return S.get_default_religion_id()
+
+/datum/preferences/proc/lore_religion_id()
+	return get_character_data(CHARACTER_DATA_RELIGION)
+
+/datum/preferences/proc/lore_religion_datum()
+	return SScharacters.resolve_faction(lore_religion_id())

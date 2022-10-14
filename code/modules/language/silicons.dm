@@ -1,4 +1,5 @@
 /datum/language/binary
+	id = LANGAUGE_ID_SILICON_BINARY
 	name = "Robot Talk"
 	desc = "Most human stations support free-use communications protocols and routing hubs for synthetic use."
 	colour = "say_quote"
@@ -58,6 +59,7 @@
 		R.cell_use_power(C.active_usage)
 
 /datum/language/binary/drone
+	id = LANGUAGE_ID_DRONE_BINARY
 	name = "Drone Talk"
 	desc = "A heavily encoded damage control coordination stream."
 	speech_verb = "transmits"

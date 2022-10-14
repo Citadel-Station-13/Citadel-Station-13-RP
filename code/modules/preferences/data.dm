@@ -25,22 +25,49 @@
 /**
  * flush character data to disk
  */
-/datum/preferences/proc/write_character_data()
+/datum/preferences/proc/write_character_data(savefile/S)
+	var/old_cd = S.cd
+	S.cd = "/"
+	var/list/transformed = list()
+	#warn filtering
+	S["slot_[slot]"] << character
+	S.cd = old_cd
 
 /**
  * flush global data to disk
  */
-/datum/preferences/proc/write_global_data()
+/datum/preferences/proc/write_global_data(savefile/S)
+	var/old_cd = S.cd
+	S.cd = "/"
+	var/list/transformed = list()
+	#warn filtering
+	S["global"] << options
+	S.cd = old_cd
 
 /**
  * load character data from disk
  */
-/datum/preferences/proc/read_character_data()
+/datum/preferences/proc/read_character_data(savefile/S, list/errors)
+	var/old_cd = S.cd
+	S.cd = "/"
+	var/list/transformed = list()
+	#warn filtering
+	S["slot_[slot]"] >> transformed
+
+	S.cd = old_cd
 
 /**
  * load global data from disk
  */
-/datum/preferences/proc/read_global_data()
+/datum/preferences/proc/read_global_data(savefile/S, list/errors)
+	var/old_cd = S.cd
+	S.cd = "/"
+	var/list/transformed = list()
+	#warn filtering
+	S["global"] >> transformed
+
+
+	S.cd = old_cd
 
 #warn impl all
 #warn hook up de/serialization somehow
@@ -80,11 +107,23 @@
 /**
  * resanitize everything
  */
-/datum/preferences/proc/sanitize_everything()
+/datum/preferences/proc/sanitize_everything(list/errors)
+	for(var/datum/category_group/player_setup_category/category in player_setup.categories)
+		category.sanitize_data(src, errors)
 
-/datum/preferences/proc/sanitize_character()
+/datum/preferences/proc/sanitize_character(list/errors)
+	for(var/key in preference_by_key)
+		var/datum/category_item/player_setup_item/I = preference_by_key[key]
+		if(I.is_global)
+			continue
+		I.sanitize_data(src, errors)
 
-/datum/preferences/proc/sanitize_global()
+/datum/preferences/proc/sanitize_global(list/errors)
+	for(var/key in preference_by_key)
+		var/datum/category_item/player_setup_item/I = preference_by_key[key]
+		if(!I.is_global)
+			continue
+		I.sanitize_data(src, errors)
 
 #warn impl
 

@@ -1,4 +1,5 @@
 /datum/language/species/moth
+	id = LANGUAGE_ID_LUINIMMA
 	name = LANGUAGE_LUINIMMA
 	desc = "The language of the Dnin-Nepids, Luinimma sounds like a quick, tonal series of chitters, chirps, and clicks to \
 	non-speakers."

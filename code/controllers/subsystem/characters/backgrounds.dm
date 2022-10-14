@@ -45,6 +45,8 @@
 
 /datum/controller/subsystem/characters/proc/available_origins(species_id)
 
+#warn impl
+
 /datum/controller/subsystem/characters/proc/resolve_citizenship(id)
 	RETURN_TYPE(/datum/lore/character_background/citizenship)
 	if(ispath(id))

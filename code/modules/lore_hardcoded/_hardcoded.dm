@@ -23,3 +23,6 @@
 
 /datum/lore/character_background/proc/check_species_id(id)
 	#warn impl
+
+/datum/lore/character_background/proc/get_default_language_ids()
+	#warn impl

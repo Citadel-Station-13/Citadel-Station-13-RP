@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 /datum/tgui_species_picker/ui_static_data(mob/user)
 	. = ..()
 	.["whitelisted"] = whitelisted
-	.["species"] = SScharacters.species_cache
+	.["species"] = SScharacters.character_species_cache
 	.["default"] = default
 
 /datum/tgui_species_picker/ui_close(mob/user)

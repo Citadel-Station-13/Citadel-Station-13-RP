@@ -52,3 +52,9 @@
 	if(!S)
 		return ..()
 	return S.get_default_origin_id()
+
+/datum/preferences/proc/lore_origin_id()
+	return get_character_data(CHARACTER_DATA_ORIGIN)
+
+/datum/preferences/proc/lore_origin_datum()
+	return SScharacters.resolve_faction(lore_origin_id())

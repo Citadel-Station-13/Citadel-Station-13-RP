@@ -1,4 +1,4 @@
-//! ## LANGUAGES
+//! language names - stop using these, use id lookup
 #define LANGUAGE_ADHERENT "Vibrant"
 #define LANGUAGE_AKHANI "Akhani"
 #define LANGUAGE_AKULA "Olelo Mano"
@@ -11,7 +11,6 @@
 #define LANGUAGE_CULT "Cult"
 #define LANGUAGE_DAEMON "Daemon"
 #define LANGUAGE_EAL "Encoded Audio Language"
-#define LANGUAGE_ECUREUILIAN "Ecureuilian"
 #define LANGUAGE_ENOCHIAN "Enochian"
 #define LANGUAGE_EVENT1 "Occursus"
 #define LANGUAGE_FARWA "Farwanese"

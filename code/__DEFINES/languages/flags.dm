@@ -19,3 +19,16 @@
 #define NO_STUTTER   (1<<8)
 /// Language is not based on vision or sound. //Todo: Add this into the say code and use it for the rootspeak languages.
 #define ALT_TRANSMIT (1<<9)
+
+DEFINE_BITFIELD(language_flags, list(
+	BITFIELD(WHITELISTED),
+	BITFIELD(RESTRICTED),
+	BITFIELD(NONVERBAL),
+	BITFIELD(SIGNLANG),
+	BITFIELD(HIVEMIND),
+	BITFIELD(NONGLOBAL),
+	BITFIELD(INNATE),
+	BITFIELD(NO_TALK_MSG),
+	BITFIELD(NO_STUTTER),
+	BITFIELD(ALT_TRANSMIT),
+))

@@ -30,3 +30,7 @@
 /datum/preferences/proc/innate_languages(include_common = TRUE, include_species = TRUE, include_background = TRUE)
 
 	#warn resolve backgrounds + species + defaults + collate
+
+/datum/preferences/proc/extraneous_languages()
+
+	#warn anything that isn't innate

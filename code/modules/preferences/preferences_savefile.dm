@@ -27,6 +27,8 @@
 			save_character()
 			return 0
 
+	read_global_data()
+	#warn preload global data somehow so migrations can affect it? or just |= a list?
 	player_setup.load_preferences(S)
 	return 1
 
@@ -42,6 +44,7 @@
 	S.cd = "/"
 
 	S["version"] << savefile_version
+	write_global_data()
 	player_setup.save_preferences(S)
 	return 1
 
@@ -72,6 +75,8 @@
 		player_setup.load_character(S)
 		S.cd = "/character[default_slot]"
 
+	#warn handle migrations somehow??
+	read_character_data()
 	player_setup.load_character(S)
 	clear_character_previews() // Recalculate them on next show
 	return 1
@@ -87,6 +92,7 @@
 	if(!S)					return 0
 	S.cd = "/character[default_slot]"
 
+	write_character_data()
 	player_setup.save_character(S)
 	return 1
 

@@ -37,8 +37,6 @@
 /datum/category_item/player_setup_item/proc/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
 	return TRUE
 
-#warn hook spawn_checks in spawning
-
 /**
  * called to sanitize our value.
  *
@@ -79,13 +77,13 @@
  * write data, sanitizing in the process
  */
 /datum/category_item/player_setup_item/proc/write(datum/preferences/prefs, data)
-	#warn impl
+	prefs.set_character_data(save_key, filter(prefs, data))
 
 /**
  * read data; does not auto-sanitize
  */
 /datum/category_item/player_setup_item/proc/read(datum/preferences/prefs)
-	#warn impl
+	return prefs.get_character_data(save_key)
 
 /**
  * get default value

@@ -1,4 +1,5 @@
 /datum/language/human/monkey
+	id = LANGUAGE_ID_CHIMPANZEE
 	name = "Chimpanzee"
 	desc = "Ook ook ook."
 	speech_verb = "chimpers"
@@ -10,6 +11,7 @@
 	machine_understands = 0
 
 /datum/language/skrell/monkey
+	id = LANGUAGE_ID_NEAERA
 	name = SPECIES_MONKEY_SKRELL
 	desc = "Squik squik squik."
 	key = "8"
@@ -18,6 +20,7 @@
 	machine_understands = 0
 
 /datum/language/unathi/monkey
+	id = LANGUAGE_ID_STOK
 	name = SPECIES_MONKEY_UNATHI
 	desc = "Hiss hiss hiss."
 	key = "7"
@@ -26,6 +29,7 @@
 	machine_understands = 0
 
 /datum/language/tajaran/monkey
+	id = LANGUAGE_ID_FARWA
 	name = SPECIES_MONKEY_TAJ
 	desc = "Meow meow meow."
 	key = "9"
@@ -33,50 +37,3 @@
 	flags = RESTRICTED
 	machine_understands = 0
 
-/datum/language/corgi
-	name = "Dog"
-	desc = "Woof woof woof."
-	speech_verb = "barks"
-	ask_verb = "woofs"
-	exclaim_verb = "howls"
-	key = "n"
-	flags = RESTRICTED
-	machine_understands = 0
-	space_chance = 100
-	syllables = list("bark", "woof", "bowwow", "yap", "arf")
-
-/datum/language/cat
-	name = "Cat"
-	desc = "Meow meow meow."
-	speech_verb = "meows"
-	ask_verb = "mrowls"
-	exclaim_verb = "yowls"
-	key = "c"
-	flags = RESTRICTED
-	machine_understands = 0
-	space_chance = 100
-	syllables = list("meow", "mrowl", "purr", "meow", "meow", "meow")
-
-/datum/language/mouse
-	name = "Mouse"
-	desc = "Squeak squeak. *Nibbles on cheese*"
-	speech_verb = "squeaks"
-	ask_verb = "squeaks"
-	exclaim_verb = "squeaks"
-	key = "m"
-	flags = RESTRICTED
-	machine_understands = 0
-	space_chance = 100
-	syllables = list("squeak")	// , "gripes", "oi", "meow")
-
-/datum/language/bird
-	name = "Bird"
-	desc = "Chirp chirp, give me food"
-	speech_verb = "chirps"
-	ask_verb = "tweets"
-	exclaim_verb = "squawks"
-	key = "m"
-	flags = RESTRICTED
-	machine_understands = 0
-	space_chance = 100
-	syllables = list("chirp", "squawk", "tweet")

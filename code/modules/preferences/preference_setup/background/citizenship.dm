@@ -52,3 +52,9 @@
 	if(!S)
 		return ..()
 	return S.get_default_citizenship_id()
+
+/datum/preferences/proc/lore_citizenship_id()
+	return get_character_data(CHARACTER_DATA_CITIZENSHIP)
+
+/datum/preferences/proc/lore_citizenship_datum()
+	return SScharacters.resolve_faction(lore_citizenship_id())
