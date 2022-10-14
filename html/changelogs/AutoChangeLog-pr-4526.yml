@@ -1,4 +1,0 @@
-author: "Zandario"
-delete-after: True
-changes: 
-  - bugfix: "Alarune and apidaen \"cannot read null.nutrition\" runtimes."
