@@ -167,8 +167,8 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	flags = OPENCONTAINER
 	var/list/owner_flavor_text = list()
 
-	var/owner_species = owner.dna.species
-	var/owner_base_species = owner.dna.base_species
+	var/owner_species
+	var/owner_base_species
 
 /obj/item/organ/internal/brain/slime/is_open_container()
 	return TRUE
@@ -176,15 +176,21 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 /obj/item/organ/internal/brain/slime/Initialize(mapload)
 	. = ..()
 	create_reagents(50)
+	set_owner_vars()
 	addtimer(CALLBACK(src, .proc/sync_color), 10 SECONDS)
 
+/obj/item/organ/internal/brain/slime/proc/set_owner_vars()
+	if(!ishuman(owner))
+		return
+	owner_species = owner.dna.species
+	owner_base_species = owner.dna.base_species
 
 /obj/item/organ/internal/brain/slime/proc/sync_color()
 	if(ishuman(owner))
 		var/mob/living/carbon/human/H = owner
 		color = rgb(min(H.r_skin + 40, 255), min(H.g_skin + 40, 255), min(H.b_skin + 40, 255))
 
-/obj/item/organ/internal/brain/slime/removed(var/mob/living/user)
+/obj/item/organ/internal/brain/slime/removed(mob/living/user)
 	if(istype(owner))
 		owner_flavor_text = owner.flavor_texts.Copy()
 	..()
@@ -199,8 +205,8 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	R.languages = brainmob.languages
 	R.flavor    = list()
 	//! Dumb hack to make sure the slime core knows what species to revive the body as.
-	R.dna.base_species = owner_species
-	R.dna.species      = owner_base_species
+	R.dna.base_species = owner_base_species
+	R.dna.species      = owner_species
 	if(islist(owner_flavor_text))
 		R.flavor = owner_flavor_text.Copy()
 	for(var/datum/modifier/mod in brainmob.modifiers)
