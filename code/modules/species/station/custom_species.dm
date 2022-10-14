@@ -46,8 +46,8 @@
 		/mob/living/carbon/human/proc/tie_hair,
 	)
 
-/datum/species/custom/get_effective_bodytype(obj/item/I, slot_id)
-	return name_static_species_meta(base_species).get_effective_bodytype(I, slot_id)
+/datum/species/custom/get_effective_bodytype(mob/living/carbon/human/H, obj/item/I, slot_id)
+	return name_static_species_meta(base_species).get_effective_bodytype(H, I, slot_id)
 
 /datum/species/custom/get_bodytype_legacy()
 	return base_species
