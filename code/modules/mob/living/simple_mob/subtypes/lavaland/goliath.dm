@@ -19,7 +19,7 @@
 
 	response_harm = "harmlessly punches"
 	melee_damage_lower = 18
-	melee_damage_upper = 18
+	melee_damage_upper = 22
 
 	attacktext = list ("pulverizes", "batters", "hammers")
 	attack_sound = 'sound/weapons/punch1.ogg'
@@ -35,34 +35,38 @@
 	hide_amount = 5
 	exotic_amount = 5
 
+	faction = "lavaland"
 	speak_emote = list("bellows")
-	ai_holder_type = /datum/ai_holder/simple_mob/destructive
 	say_list_type = /datum/say_list/goliath
+	ai_holder_type = /datum/ai_holder/simple_mob/melee/goliath
 
 	var/pre_attack = 0
 	var/tentacle_warning = 0.5 SECONDS
+	var/pre_attack_icon = "goliath2"
 
-	//var/pre_attack_icon = "Goliath_preattack"
+/datum/ai_holder/simple_mob/melee/goliath
+	hostile = TRUE
+	retaliate = TRUE
+	mauling = TRUE
 
 /datum/say_list/goliath
 	emote_hear = list("flashes briefly.", "wails!", "shudders.", "trills.")
 	emote_see = list ("glows faintly.", "rumbles.", "tenses up.")
 
-/mob/living/simple_mob/animal/goliath/should_special_attack(atom/A)
+/mob/living/simple_mob/animal/goliath/should_special_attack()
 	. = ..()
 	if(special_attack_cooldown <= world.time + special_attack_cooldown*0.25 && !pre_attack)
 		pre_attack++
 	if(!pre_attack || stat)
 		return
 
-/mob/living/simple_mob/animal/goliath/do_special_attack(atom/A, var/mob/living/L)
-	. = ..()
-	var/tturf = get_turf(L)
+/mob/living/simple_mob/animal/goliath/do_special_attack(atom/target)
+	var/tturf = get_turf(target)
 	if(!isturf(tturf))
 		return
-	if(get_dist(src, L) <= 7)//Screen range check, so you can't get tentacle'd offscreen
-		visible_message("<span class='warning'>[src] digs its tentacles under [L]!</span>")
-		new /obj/effect/temporary_effect/goliath_tentacle/original(tturf, src)
+	if(get_dist(src, target) <= 7)//Screen range check, so you can't get tentacle'd offscreen
+		visible_message("<span class='warning'>[src] digs its tentacles under [target]</span>")
+		new /obj/effect/temporary_effect/goliath_tentacle/core(tturf, src)
 		pre_attack = 0
 
 //Lavaland Goliath
@@ -88,9 +92,8 @@
 	icon = 'icons/mob/lavaland/lavaland_mobs.dmi'
 	icon_state = "goliath_tentacle_spawn"
 	time_to_die = 7 SECONDS
-	var/mob/living/spawner
 
-/obj/effect/temporary_effect/goliath_tentacle/Initialize(mapload, mob/living/new_spawner)
+/obj/effect/temporary_effect/goliath_tentacle/Initialize(mapload)
 	. = ..()
 	for(var/obj/effect/temporary_effect/goliath_tentacle/T in loc)
 		if(T != src)
@@ -100,30 +103,34 @@
 		var/turf/simulated/mineral/M = loc
 		M.GetDrilled()
 
-/obj/effect/temporary_effect/goliath_tentacle/original/Initialize(mapload, new_spawner)
+/obj/effect/temporary_effect/goliath_tentacle/core/Initialize(mapload)
 	. = ..()
 	var/list/directions = list(1,2,4,6,8)
 	for(var/i in 1 to 3)
 		var/spawndir = pick_n_take(directions)
 		var/turf/T = get_step(src, spawndir)
-		if(T)
-			new /obj/effect/temporary_effect/goliath_tentacle(T, spawner)
+		if(T && !density)
+			new /obj/effect/temporary_effect/goliath_tentacle(T)
 
-/obj/effect/temporary_effect/goliath_tentacle/proc/tripanim()
-	icon_state = "Goliath_tentacle_wiggle"
-	var/timerid = addtimer(CALLBACK(src, .proc/trip), 3, TIMER_STOPPABLE)
-	deltimer(timerid)
+/obj/effect/temporary_effect/goliath_tentacle/Crossed(atom/movable/AM as mob|obj)
+	. = ..()
+	if(AM.is_incorporeal())
+		return
+	else
+		trip(AM)
 
 /obj/effect/temporary_effect/goliath_tentacle/proc/trip()
 	var/latched = FALSE
 	var/timerid = addtimer(CALLBACK(src, .proc/retract), 10, TIMER_STOPPABLE)
-	for(var/mob/living/L in loc)
-		if((!QDELETED(spawner)) || L.stat == DEAD)
+	for(var/mob/living/carbon/C in loc)
+		if(C.stat == DEAD)
 			continue
-		visible_message("<span class='danger'>[src] grabs hold of [L]!</span>")
+		visible_message("<span class='danger'>[src] grabs hold of [C]!</span>")
+		tripanim()
 		//var/mob/living/L
-		L.Stun(75)
-		L.adjustBruteLoss(rand(15,20)) // Less stun more harm
+		C.slip()
+		C.Stun(2)
+		C.adjustBruteLoss(rand(15,20)) // Less stun more harm
 		latched = TRUE
 	for(var/obj/mecha/M in loc)
 		M.take_damage(20, BRUTE, null, null, null, 25)
@@ -132,7 +139,12 @@
 	else
 		deltimer(timerid)
 
+/obj/effect/temporary_effect/goliath_tentacle/proc/tripanim()
+	icon_state = "goliath_tentacle_wiggle"
+	var/timerid = addtimer(CALLBACK(src, .proc/trip), 3, TIMER_STOPPABLE)
+	deltimer(timerid)
+
 /obj/effect/temporary_effect/goliath_tentacle/proc/retract()
-	icon_state = "Goliath_tentacle_retract"
+	icon_state = "goliath_tentacle_retract"
 	var/timerid = QDEL_IN(src, 7)
 	deltimer(timerid)
