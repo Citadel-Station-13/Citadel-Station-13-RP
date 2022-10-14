@@ -37,8 +37,8 @@
 	var/base_block_chance = 50
 	preserve_item = 1
 	item_icons = list(
-				slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-				slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+				SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+				SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 				)
 
 /obj/item/shield/handle_shield(mob/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
@@ -262,8 +262,8 @@
 	slot_flags = SLOT_BACK
 	matter = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 
 /obj/item/shield/riot/buckler
@@ -274,8 +274,8 @@
 	slot_flags = SLOT_BACK | SLOT_BELT
 	matter = list(MAT_WOOD = 7500, MAT_STEEL = 1000)
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 
 /*
@@ -302,8 +302,8 @@
 	attack_verb = list("shoved", "bashed")
 	var/active = 0
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 
 /obj/item/shield/energy/handle_shield(mob/user)
@@ -434,7 +434,7 @@
 	desc = "It's really easy to mispronounce the name of this shield if you've only read it in books."
 	icon = 'icons/obj/weapons_vr.dmi'
 	icon_state = "eshield0" // eshield1 for expanded
-	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi')
+	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi')
 
 /obj/item/shield/fluff/wolfgirlshield
 	name = "Autumn Shield"
@@ -446,7 +446,7 @@
 	throw_force = 5.0
 	throw_speed = 2
 	throw_range = 6
-	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi', SLOT_ID_BACK = 'icons/vore/custom_items_vr.dmi', SLOT_ID_SUIT = 'icons/vore/custom_items_vr.dmi')
+	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi', SLOT_ID_BACK = 'icons/vore/custom_items_vr.dmi', SLOT_ID_SUIT = 'icons/vore/custom_items_vr.dmi')
 	attack_verb = list("shoved", "bashed")
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 	allowed = list(/obj/item/melee/fluffstuff/wolfgirlsword)
@@ -458,8 +458,8 @@
 	icon_state = "roman_shield"
 	slot_flags = SLOT_BACK
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 	force = 5.0
 	throw_force = 5.0
@@ -480,6 +480,6 @@
 	throw_range = 6
 	matter = list(MAT_PLASTIC = 7500, "foam" = 1000)
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)

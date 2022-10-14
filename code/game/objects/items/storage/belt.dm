@@ -11,10 +11,6 @@
 	equip_sound = 'sound/items/toolbelt_equip.ogg'
 	drop_sound = 'sound/items/drop/toolbelt.ogg'
 	pickup_sound = 'sound/items/pickup/toolbelt.ogg'
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/belt.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/belt.dmi'
-		)
 	var/show_above_suit = 0
 
 /obj/item/storage/belt/verb/toggle_layer()
@@ -27,15 +23,19 @@
 	show_above_suit = !show_above_suit
 	update_icon()
 
-//Some belts have sprites to show icons
-/obj/item/storage/belt/make_worn_icon(body_type, slot_id, inhands, default_icon, default_layer, icon/clip_mask = null)
-	var/image/standing = ..()
-	if(!inhands && contents.len)
-		for(var/obj/item/i in contents)
-			var/i_state = i.item_state
-			if(!i_state) i_state = i.icon_state
-			standing.add_overlay(image(icon = INV_BELT_DEF_ICON, icon_state = i_state))
-	return standing
+// todo: this bad lol
+/obj/item/storage/belt/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+	. = ..()
+	var/static/icon/funny_belt_icon = 'icons/mob/clothing/belt.dmi'
+	for(var/obj/item/I in contents)
+		var/state = resolve_belt_state(I, funny_belt_icon)
+		if(!state)
+			continue
+		MA.add_overlay(image(icon = funny_belt_icon, icon_state = state))
+
+// todo: this bad lol x2
+/obj/item/storage/belt/proc/resolve_belt_state(obj/item/I, icon/ifile)
+	return I.belt_state || I.item_state || I.icon_state
 
 /obj/item/storage/update_icon()
 	. = ..()

@@ -6,12 +6,12 @@
 	icon_state = "inducer-engi"
 	item_state = "inducer-engi"
 	item_icons = list(
-		slot_l_hand_str = 'icons/obj/item/inducer.dmi',
-		slot_r_hand_str = 'icons/obj/item/inducer.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/obj/item/inducer.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/obj/item/inducer.dmi',
 	)
 	item_state_slots = list(
-		slot_l_hand_str = "inducer_lefthand",
-		slot_r_hand_str = "inducer_righthand"
+		SLOT_ID_LEFT_HAND = "inducer_lefthand",
+		SLOT_ID_RIGHT_HAND = "inducer_righthand"
 	)
 	force = 7
 	/// transfer amount per second

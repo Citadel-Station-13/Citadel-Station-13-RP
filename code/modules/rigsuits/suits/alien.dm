@@ -67,9 +67,6 @@
 /obj/item/clothing/shoes/magboots/rig/vox
 	name = "talons"
 	species_restricted = list(SPECIES_VOX)
-	sprite_sheets = list(
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/shoes.dmi'
-		)
 
 /obj/item/clothing/suit/space/rig/vox
 	species_restricted = list(SPECIES_VOX)
@@ -77,9 +74,6 @@
 /obj/item/clothing/gloves/gauntlets/rig/vox
 	siemens_coefficient = 0
 	species_restricted = list(SPECIES_VOX)
-	sprite_sheets = list(
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/gloves.dmi'
-		)
 
 /obj/item/rig/vox/carapace
 	name = "dense alien control module"

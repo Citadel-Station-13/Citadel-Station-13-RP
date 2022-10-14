@@ -3,8 +3,8 @@
 	name = "shoes"
 	icon = 'icons/obj/clothing/shoes.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_shoes.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_shoes.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_shoes.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_shoes.dmi',
 		)
 	desc = "Comfortable-looking shoes."
 	gender = PLURAL //Carn: for grammarically correct text-parsing
@@ -29,11 +29,6 @@
 	force = 2
 	var/overshoes = 0
 	species_restricted = list("exclude",SPECIES_TESHARI, SPECIES_VOX)
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/shoes.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/shoes.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/feet.dmi'
-		)
 	drop_sound = 'sound/items/drop/shoes.ogg'
 // todo: this is an awful way to do it but it works
 	unequip_sound = 'sound/items/drop/shoes.ogg'
@@ -122,7 +117,7 @@
 	set category = "Object"
 
 	if(shoes_under_pants == -1)
-		to_chat(usr, "<span class='notice'>\The [src] cannot be worn above your suit!</span>")
+		to_chat(usr, SPAN_NOTICE("\The [src] cannot be worn under your pants"))
 		return
 	shoes_under_pants = !shoes_under_pants
 	update_icon()
