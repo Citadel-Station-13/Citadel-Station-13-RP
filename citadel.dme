@@ -3950,6 +3950,7 @@
 #include "code\modules\variable_settings\variable_setting_entry.dm"
 #include "code\modules\vehicles\_bike.dm"
 #include "code\modules\vehicles\_quad.dm"
+#include "code\modules\vehicles\_rock.dm"
 #include "code\modules\vehicles\_rover.dm"
 #include "code\modules\vehicles\_vehicle.dm"
 #include "code\modules\vehicles\actions.dm"
