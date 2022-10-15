@@ -3867,6 +3867,7 @@
 #include "code\modules\starmap\starmap.dm"
 #include "code\modules\starmap\storage.dm"
 #include "code\modules\starmap\ui.dm"
+#include "code\modules\starmap\view.dm"
 #include "code\modules\starmap\maps\loremap.dm"
 #include "code\modules\stockmarket\articles.dm"
 #include "code\modules\stockmarket\computer.dm"

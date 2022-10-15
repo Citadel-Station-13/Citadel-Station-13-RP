@@ -36,6 +36,9 @@
 	/// max distance to furthest entity; computed based on entities
 	var/overall_edge_dist = 0
 
+	//! ui
+	/// active views
+	var/list/datum/starmap_views/views
 
 /datum/starmap/proc/Initialize()
 	assert_storage()
