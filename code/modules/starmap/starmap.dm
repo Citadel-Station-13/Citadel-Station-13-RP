@@ -38,4 +38,5 @@
 
 
 /datum/starmap/proc/Initialize()
+	assert_storage()
 	rebuild_assets()

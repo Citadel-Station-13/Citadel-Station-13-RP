@@ -1,3 +1,5 @@
+/datum/starmap/proc/assert_storage()
+
 /datum/starmap/proc/load_file()
 
 /datum/starmap/proc/save_file()
