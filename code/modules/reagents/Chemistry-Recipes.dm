@@ -422,7 +422,7 @@
 	result_amount = 2
 
 /datum/chemical_reaction/immunosuprizine
-	//Very toxic substance that prevents Organ rejection after transplanation, not sure why we still need this
+	//Very toxic substance that prevents Organ rejection after transplanation, not sure why we still need this //Adopted for CRS(Cyberpsychosis) meds.
 	name = "Immunosuprizine"
 	id = "immunosuprizine"
 	result = "immunosuprizine"
@@ -597,4 +597,11 @@
 	id = "unsorbitol"
 	result = "unsorbitol"
 	required_reagents = list("mutagen" = 3, "lipozine" = 2)
+	result_amount = 5
+
+/datum/chemical_reaction/neuratrextate
+	name = "Neuratrextate"
+	id = "neuratrextate"
+	result = "neuratrextate"
+	required_reagents = list("immunosuprizine" = 3, "synaptizine" = 2)
 	result_amount = 5
