@@ -14,10 +14,8 @@
 	/// key for saves
 	var/save_key
 
-	//! caching
-	/// entities; only populated when needed
-	var/list/datum/starmap_entity/entities
-	/// if entities aren't populated, this is used
+	//! assets
+	/// when not editing, this is used for ui data so we don't have to send data with slow byondisms
 	var/entities_pack_name
 
 	//! editing
@@ -25,8 +23,10 @@
 	var/dirty = FALSE
 	/// editing mode
 	var/volatile = FALSE
-	/// while is_saved is FALSE, we are assumed to be editing; associate entites to ID
+	/// only stored while editing; associate ID to entities
 	var/list/entity_by_id
+	/// only stored while editing; associates ID to groups
+	var/list/group_by_id
 
 	//! data packing
 	/// center x; computed based on entities

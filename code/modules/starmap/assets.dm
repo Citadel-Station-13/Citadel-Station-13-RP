@@ -1,4 +1,12 @@
-/datum/starmap/proc/rebuild_assets()
+/**
+ * builds & stores the asset entry used when not editing
+ * while not editing, we send data using asset cache system
+ */
+/datum/starmap/proc/build_assets()
+	ASSERT(!volatile)
+
+	#warn load json, register
+
 
 /**
  *
@@ -28,6 +36,16 @@
 	SHOULD_CALL_PARENT(FALSE)
 	CRASH("generate() not implemented for [type]!")
 
-#undef ASSET_CROSS_ROUND_CACHE_DIRECTORY
-
  */
+
+
+/**
+ * clears the asset entry to lock for editing
+ * while editing, we send data using ui data
+ */
+/datum/starmap/proc/clear_assets()
+	ASSERT(volatile)
+	if(!entity_pack_name)
+		return
+	SSassets.delete_dynamic_asset(entity_pack_name)
+	entity_pack_name = null

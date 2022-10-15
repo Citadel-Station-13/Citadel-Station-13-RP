@@ -20,18 +20,31 @@ SUBSYSTEM_DEF(assets)
 		transport = newtransport
 	transport.Load()
 
-
-
 /datum/controller/subsystem/assets/Initialize(timeofday)
 	for(var/type in typesof(/datum/asset))
 		var/datum/asset/A = type
 		if (type != initial(A._abstract))
 			get_asset_datum(type)
-
 	transport.Initialize(cache)
-
 	..()
 
 /datum/controller/subsystem/assets/Recover()
 	cache = SSassets.cache
 	preload = SSassets.preload
+
+/**
+ * registers a dynamic asset
+ */
+/datum/controller/subsystem/assets/proc/register_dynamic_asset(name, pack)
+
+/**
+ * deletes a dynamic asset
+ */
+/datum/controller/subsystem/assets/proc/delete_dynamic_asset(name)
+
+/**
+ * gets a dynamic asset's URL
+ */
+/datum/controller/subsystem/assets/proc/url_dynamic_asset(name)
+
+#warn impl

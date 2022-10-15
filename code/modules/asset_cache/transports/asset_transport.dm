@@ -24,7 +24,6 @@
 	for(var/client/C in GLOB.clients)
 		addtimer(CALLBACK(src, .proc/send_assets_slow, C, preload), 1 SECONDS)
 
-
 /// Register a browser asset with the asset cache system
 /// asset_name - the identifier of the asset
 /// asset - the actual asset file (or an asset_cache_item datum)
@@ -53,6 +52,10 @@
 	SSassets.cache[asset_name] = ACI
 	return ACI
 
+/// forgets an asset
+/// asset_name - the identifier of the asset
+/datum/asset_transport/proc/delete_asset(asset_name, asset)
+	#warn impl
 
 /// Returns a url for a given asset.
 /// asset_name - Name of the asset.
