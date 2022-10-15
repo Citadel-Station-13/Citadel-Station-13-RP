@@ -12,6 +12,8 @@
 	var/group
 	var/desc
 
+#warn build in flags for species homeworld/similar options
+
 /datum/starmap_entity/New(id, x, y, name, group, desc)
 	src.id = id
 	src.x = x

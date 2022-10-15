@@ -7,6 +7,8 @@
 	var/color
 	var/desc
 
+#warn group flags
+
 /datum/starmap_group/New(id, color, name, desc)
 	src.id = id
 	src.color = color
