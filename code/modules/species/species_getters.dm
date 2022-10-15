@@ -13,7 +13,7 @@
 /**
  * get effective bodytype
  */
-/datum/species/proc/get_effective_bodytype(obj/item/I, slot_id)
+/datum/species/proc/get_effective_bodytype(mob/living/carbon/human/H, obj/item/I, slot_id)
 	return default_bodytype
 
 /datum/species/proc/get_valid_shapeshifter_forms(mob/living/carbon/human/H)

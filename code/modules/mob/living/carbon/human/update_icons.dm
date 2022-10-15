@@ -227,6 +227,12 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 				robolimb_count++
 				if((part.robotic == ORGAN_ROBOT || part.robotic == ORGAN_LIFELIKE) && (part.organ_tag == BP_HEAD || part.organ_tag == BP_TORSO || part.organ_tag == BP_GROIN))
 					robobody_count ++
+				if(species.is_cyberpsycho) //This check should hopefully automatically update the capacity of CRS patients if cybernetics are installed.
+					var/datum/component/cyberpsychosis/C
+					C.capacity = 100
+					C.cybernetics_count = 0
+					C.counted = 0
+					C.adjusted = 0
 			else if(part.status & ORGAN_DEAD)
 				icon_key += "3"
 			else
@@ -581,7 +587,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		var/obj/item/clothing/suit/S = wear_suit
 		if((wear_suit?.flags_inv & HIDETAIL) || (istype(S) && S.taurized)) // Reasons to not mask: 1. If you're wearing a suit that hides the tail or if you're wearing a taurized suit.
 			c_mask = null
-	var/list/MA_or_list = w_uniform.render_mob_appearance(src, SLOT_ID_UNIFORM, species.get_effective_bodytype())
+	var/list/MA_or_list = w_uniform.render_mob_appearance(src, SLOT_ID_UNIFORM, species.get_effective_bodytype(src, w_uniform, SLOT_ID_UNIFORM))
 
 	if(c_mask)
 		if(islist(MA_or_list))
@@ -607,7 +613,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(w_uniform && istype(w_uniform, /obj/item/clothing/under))
 		var/obj/item/clothing/under/U = w_uniform
 		if(U.displays_id)
-			overlays_standing[ID_LAYER] = wear_id.render_mob_appearance(src, SLOT_ID_WORN_ID, species.get_effective_bodytype())
+			overlays_standing[ID_LAYER] = wear_id.render_mob_appearance(src, SLOT_ID_WORN_ID, species.get_effective_bodytype(src, wear_id, SLOT_ID_WORN_ID))
 
 	apply_layer(ID_LAYER)
 
@@ -620,7 +626,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!gloves)
 		return //No gloves, no reason to be here.
 
-	overlays_standing[GLOVES_LAYER]	= gloves.render_mob_appearance(src, SLOT_ID_GLOVES, species.get_effective_bodytype())
+	overlays_standing[GLOVES_LAYER]	= gloves.render_mob_appearance(src, SLOT_ID_GLOVES, species.get_effective_bodytype(src, gloves, SLOT_ID_GLOVES))
 
 	apply_layer(GLOVES_LAYER)
 
@@ -633,7 +639,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!glasses)
 		return //Not wearing glasses, no need to update anything.
 
-	overlays_standing[GLASSES_LAYER] = glasses.render_mob_appearance(src, SLOT_ID_GLASSES, species.get_effective_bodytype())
+	overlays_standing[GLASSES_LAYER] = glasses.render_mob_appearance(src, SLOT_ID_GLASSES, species.get_effective_bodytype(src, glasses, SLOT_ID_GLASSES))
 
 	apply_layer(GLASSES_LAYER)
 
@@ -652,9 +658,9 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	// Blank image upon which to layer left & right overlays.
 	var/list/mutable_appearance/both = list()
 	if(l_ear)
-		both += l_ear.render_mob_appearance(src, SLOT_ID_LEFT_EAR, species.get_effective_bodytype())
+		both += l_ear.render_mob_appearance(src, SLOT_ID_LEFT_EAR, species.get_effective_bodytype(src, l_ear, SLOT_ID_LEFT_EAR))
 	if(r_ear)
-		both += r_ear.render_mob_appearance(src, SLOT_ID_RIGHT_EAR, species.get_effective_bodytype())
+		both += r_ear.render_mob_appearance(src, SLOT_ID_RIGHT_EAR, species.get_effective_bodytype(src, r_ear, SLOT_ID_RIGHT_EAR))
 
 	overlays_standing[EARS_LAYER] = both
 	apply_layer(EARS_LAYER)
@@ -682,7 +688,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			shoe_layer = SHOES_LAYER_ALT
 
 	//NB: the use of a var for the layer on this one
-	overlays_standing[shoe_layer] = shoes.render_mob_appearance(src, SLOT_ID_SHOES, species.get_effective_bodytype())
+	overlays_standing[shoe_layer] = shoes.render_mob_appearance(src, SLOT_ID_SHOES, species.get_effective_bodytype(src, shoes, SLOT_ID_SHOES))
 
 	apply_layer(SHOES_LAYER)
 	apply_layer(SHOES_LAYER_ALT)
@@ -714,7 +720,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!head)
 		return //No head item, why bother.
 
-	overlays_standing[HEAD_LAYER] = head.render_mob_appearance(src, SLOT_ID_HEAD, species.get_effective_bodytype())
+	overlays_standing[HEAD_LAYER] = head.render_mob_appearance(src, SLOT_ID_HEAD, species.get_effective_bodytype(src, head, SLOT_ID_HEAD))
 
 	apply_layer(HEAD_LAYER)
 
@@ -736,7 +742,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			belt_layer = BELT_LAYER_ALT
 
 	//NB: this uses a var from above
-	overlays_standing[belt_layer] = belt.render_mob_appearance(src, SLOT_ID_BELT, species.get_effective_bodytype())
+	overlays_standing[belt_layer] = belt.render_mob_appearance(src, SLOT_ID_BELT, species.get_effective_bodytype(src, belt, SLOT_ID_BELT))
 
 	apply_layer(belt_layer)
 
@@ -764,7 +770,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	var/obj/item/clothing/suit/S = wear_suit
 	if(tail_is_rendered && valid_clip_mask && !(istype(S) && S.taurized)) //Clip the lower half of the suit off using the tail's clip mask for taurs since taur bodies aren't hidden.
 		c_mask = valid_clip_mask
-	var/list/MA_or_list = wear_suit.render_mob_appearance(src, SLOT_ID_SUIT, species.get_effective_bodytype())
+	var/list/MA_or_list = wear_suit.render_mob_appearance(src, SLOT_ID_SUIT, species.get_effective_bodytype(src, wear_suit, SLOT_ID_SUIT))
 	if(c_mask)
 		if(islist(MA_or_list))
 			for(var/mutable_appearance/MA2 as anything in MA_or_list)
@@ -785,7 +791,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!wear_mask || (head && head.flags_inv & HIDEMASK))
 		return //Why bother, nothing in mask slot.
 
-	overlays_standing[FACEMASK_LAYER] = wear_mask.render_mob_appearance(src, SLOT_ID_MASK, species.get_effective_bodytype())
+	overlays_standing[FACEMASK_LAYER] = wear_mask.render_mob_appearance(src, SLOT_ID_MASK, species.get_effective_bodytype(src, wear_mask, SLOT_ID_MASK))
 
 	apply_layer(FACEMASK_LAYER)
 
@@ -798,7 +804,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!back)
 		return //Why do anything
 
-	overlays_standing[BACK_LAYER] = back.render_mob_appearance(src, SLOT_ID_BACK, species.get_effective_bodytype())
+	overlays_standing[BACK_LAYER] = back.render_mob_appearance(src, SLOT_ID_BACK, species.get_effective_bodytype(src, back, SLOT_ID_BACK))
 
 	apply_layer(BACK_LAYER)
 
@@ -831,7 +837,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!handcuffed)
 		return //Not cuffed, why bother
 
-	overlays_standing[HANDCUFF_LAYER] = handcuffed.render_mob_appearance(src, SLOT_ID_HANDCUFFED, species.get_effective_bodytype())
+	overlays_standing[HANDCUFF_LAYER] = handcuffed.render_mob_appearance(src, SLOT_ID_HANDCUFFED, species.get_effective_bodytype(src, handcuffed, SLOT_ID_HANDCUFFED))
 
 	apply_layer(HANDCUFF_LAYER)
 
@@ -844,7 +850,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!legcuffed)
 		return //Not legcuffed, why bother.
 
-	overlays_standing[LEGCUFF_LAYER] = legcuffed.render_mob_appearance(src, SLOT_ID_LEGCUFFED, species.get_effective_bodytype())
+	overlays_standing[LEGCUFF_LAYER] = legcuffed.render_mob_appearance(src, SLOT_ID_LEGCUFFED, species.get_effective_bodytype(src, legcuffed, SLOT_ID_LEGCUFFED))
 
 	apply_layer(LEGCUFF_LAYER)
 
@@ -857,7 +863,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!r_hand)
 		return //No hand, no bother.
 
-	overlays_standing[R_HAND_LAYER] = r_hand.render_mob_appearance(src, 2, species.get_effective_bodytype())
+	overlays_standing[R_HAND_LAYER] = r_hand.render_mob_appearance(src, 2, BODYTYPE_DEFAULT)
 
 	apply_layer(R_HAND_LAYER)
 
@@ -870,7 +876,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!l_hand)
 		return //No hand, no bother.
 
-	overlays_standing[L_HAND_LAYER] = l_hand.render_mob_appearance(src, 1, species.get_effective_bodytype())
+	overlays_standing[L_HAND_LAYER] = l_hand.render_mob_appearance(src, 1, BODYTYPE_DEFAULT)
 
 	apply_layer(L_HAND_LAYER)
 
