@@ -91,6 +91,7 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_SHUTTLES			3
 #define INIT_ORDER_DEFAULT			0
 #define INIT_ORDER_LIGHTING			0
+#define INIT_ORDER_STARMAPS			0
 #define INIT_ORDER_AIR				-1
 #define INIT_ORDER_PLANETS			-2
 #define INIT_ORDER_ASSETS			-4

@@ -16,7 +16,7 @@
 
 	//! assets
 	/// when not editing, this is used for ui data so we don't have to send data with slow byondisms
-	var/entities_pack_name
+	var/entity_pack_name
 
 	//! editing
 	/// dirty? we will pack and flush next store if so
@@ -38,7 +38,7 @@
 
 	//! ui
 	/// active views
-	var/list/datum/starmap_views/views
+	var/list/datum/starmap_view/views
 
 /datum/starmap/proc/Initialize()
 	assert_storage()

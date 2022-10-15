@@ -1,4 +1,4 @@
-SUBSSYSTEM_DEF(starmaps)
+SUBSYSTEM_DEF(starmaps)
 	name = "Starmaps"
 	subsystem_flags = SS_NO_FIRE
 	init_order = INIT_ORDER_STARMAPS
