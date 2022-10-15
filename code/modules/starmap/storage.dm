@@ -4,11 +4,9 @@
 
 /datum/starmap/proc/save_file()
 
-/datum/starmap/proc/send_resources()
-
 /datum/starmap/proc/serialize_data()
 
-/datum/starmap/proc/deserialize_data()
+/datum/starmap/proc/deserialize_data(list/data)
 
 /datum/starmap/proc/entity_from_data(list/data)
 	var/datum/starmap_entity/E = new
