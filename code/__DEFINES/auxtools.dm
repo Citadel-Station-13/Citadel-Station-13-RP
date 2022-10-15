@@ -23,11 +23,10 @@ GLOBAL_LIST_EMPTY(auxtools_initialized)
 		GLOB.auxtools_initialized[LIB] = FALSE;\
 	}\
 
-#warn ok we need a linux .so
-#define AUXTOOLS_YAML (world.system_type == MS_WINDOWS? "auxyaml.dll" : null)
+// #define AUXTOOLS_YAML (world.system_type == MS_WINDOWS? "auxyaml.dll" : null)
 
-/proc/yaml_encode(content)
-	CRASH("auxtools didn't hook this")
+// /proc/yaml_encode(content)
+// 	CRASH("auxtools didn't hook this")
 
-/proc/yaml_decode(content)
-	CRASH("auxtools didn't hook this")
+// /proc/yaml_decode(content)
+// 	CRASH("auxtools didn't hook this")
