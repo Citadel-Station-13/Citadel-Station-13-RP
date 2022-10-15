@@ -70,6 +70,9 @@
     desc = "This is an empty utility Pylon. Pretty useless at the moment"
     var/datum/pylon_handler/column = null
 
+    icon = 'icons/obj/structures/multiz.dmi'
+    icon_state = "utility_power"
+
 /obj/machinery/utility_pylon/Initialize()
     . = ..()
     built_column()
@@ -97,7 +100,6 @@
         src.column.add_pylon(friend_above)//even if either of them are null we are good, add_pylon is nullsafe
         src.column.add_pylon(friend_below)//With blackjack and hookers!
 
-/obj/machinery/utility_pylon/process()
 
 
 /obj/machinery/utility_pylon/proc/add_to_handler(var/datum/pylon_handler/handler)
@@ -158,11 +160,48 @@
 
     var/datum/powernet/powernet = null
 
+/obj/machinery/utility_pylon/power/Initialize(mapload)
+    . = ..()
+    START_MACHINE_PROCESSING(src)
+
+/obj/machinery/utility_pylon/power/Destroy()
+    STOP_MACHINE_PROCESSING(src)
+    . = ..()
+    
+
+/obj/machinery/utility_pylon/power/process()
+    if(!powernet)
+        connect_to_network()
+    
+
 /obj/machinery/utility_pylon/power/proc/update_for_new_powernet()
     var/list/friends = column.get_pylons()
     for(var/obj/machinery/utility_pylon/power/pp in friends)
-        powernet.add_utility_pylon(pp)
+        if(pp.powernet)//if they have one, we merge them
+            merge_powernets(src.powernet, pp.powernet)
+        else//if not, we add them
+            powernet.add_utility_pylon(pp)
 
 /*/obj/machinery/utility_pylon/power/proc/update_leaving_powernet()
     var/list/friends = column.get_pylons()
     for(var/obj/machinery/utility_pylon/power/pp in friends)*/
+
+
+/obj/machinery/utility_pylon/power/proc/connect_to_network()
+    var/turf/T = src.loc
+    if(!T || !istype(T))
+        return 0
+
+    var/obj/structure/cable/C = T.get_cable_node() //check if we have a node cable on the machine turf, the first found is picked
+    if(!C || !C.powernet)
+        return 0
+
+    C.powernet.add_utility_pylon(src)
+    return 1
+
+/obj/machinery/utility_pylon/power/proc/disconnect_from_network()
+    if(!powernet)
+        return 0
+    powernet.remove_pylon(src)
+    return 1
+
