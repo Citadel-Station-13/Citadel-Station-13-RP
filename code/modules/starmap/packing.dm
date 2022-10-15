@@ -9,7 +9,8 @@
 	var/max_x = -INFINITY
 	var/max_y = -INFINITY
 
-	for(var/datum/starmap_entity/E in entities)
+	for(var/id in entity_by_id)
+		var/datum/starmap_entity/E = entity_by_id[id]
 		max_x = max(max_x, E.x)
 		max_y = max(max_y, E.y)
 		min_x = min(min_x, E.x)

@@ -19,8 +19,8 @@
 /datum/starmap_group/proc/sanitize()
 	if(!istext(name))
 		name = null
-	if(!istext(group))
-		group = null
+	if(!istext(desc))
+		desc = null
 	color = sanitize_hexcolor(color, 6, TRUE, rgb(255, 255, 255))
 
 /datum/starmap_group/proc/serialize_data()

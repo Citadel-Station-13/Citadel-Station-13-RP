@@ -38,4 +38,7 @@
 	return map.data(user, ui, state)
 
 /datum/starmap_view/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
 	return map.act(action, params, ui, state)

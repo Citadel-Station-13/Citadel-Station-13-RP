@@ -41,5 +41,6 @@
 	var/list/datum/starmap_view/views
 
 /datum/starmap/proc/Initialize()
-	assert_storage()
-	rebuild_assets()
+	#warn assert, load
+
+	build_assets()

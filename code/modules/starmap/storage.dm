@@ -54,7 +54,7 @@
 	if(!G.verify())
 		SSstarmaps.subsystem_log("error during group insert for map [src.id] entity [G.id]; discarding.")
 		return FALSE
-	return register_group(E)
+	return register_group(G)
 
 /datum/starmap/proc/group_to_data(datum/starmap_group/G)
 	return G.serialize_data()
