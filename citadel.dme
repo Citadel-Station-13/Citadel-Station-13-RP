@@ -2493,7 +2493,6 @@
 #include "code\modules\language\language.dm"
 #include "code\modules\language\monkey.dm"
 #include "code\modules\language\silicons.dm"
-#include "code\modules\language\station.dm"
 #include "code\modules\language\antagonist\borer.dm"
 #include "code\modules\language\antagonist\changeling.dm"
 #include "code\modules\language\antagonist\cult.dm"

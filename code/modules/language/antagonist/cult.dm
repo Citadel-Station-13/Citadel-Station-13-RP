@@ -19,7 +19,7 @@
 		"d'rekkathnor", "khari'd", "gual'te", "nikka", "nikt'o", "barada", "kla'atu", "barhah", "hra" ,"zar'garis", "spiri", "malum")
 
 /datum/language/cult
-	id = LANGUAGE_ID_CULT_HIVEMIND
+	id = LANGUAGE_ID_CULT_COMMUNE
 	name = LANGUAGE_OCCULT
 	desc = "The initiated can share their thoughts by means defying all reason."
 	speech_verb = "intones"

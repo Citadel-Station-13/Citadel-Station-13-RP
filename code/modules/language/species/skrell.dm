@@ -1,5 +1,5 @@
 /datum/language/skrell
-	id = LANGAUGE_ID_SKRELL
+	id = LANGUAGE_ID_SKRELL
 	name = LANGUAGE_SKRELLIAN
 	desc = "A set of warbles and hums, the language itself a complex mesh of both melodic and rhythmic components, exceptionally capable of conveying intent and emotion of the speaker."
 	speech_verb = "warbles"

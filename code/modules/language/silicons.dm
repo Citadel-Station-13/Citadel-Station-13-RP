@@ -1,5 +1,5 @@
 /datum/language/binary
-	id = LANGAUGE_ID_SILICON_BINARY
+	id = LANGUAGE_ID_SILI
 	name = "Robot Talk"
 	desc = "Most human stations support free-use communications protocols and routing hubs for synthetic use."
 	colour = "say_quote"

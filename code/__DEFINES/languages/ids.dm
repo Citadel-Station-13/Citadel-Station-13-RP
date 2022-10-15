@@ -51,13 +51,13 @@
 /// tajaran
 #define LANGUAGE_ID_TAJARAN "tajaran"
 /// tajaran but better (?)
-#define LANGAUGE_ID_TAJARAN_ALT "tajaran_alt"
+#define LANGUAGE_ID_TAJARAN_ALT "tajaran_alt"
 /// tajaran but sign
 #define LANGUAGE_ID_TAJARAN_SIGN "tajaran_sign"
 /// zorren
 #define LANGUAGE_ID_TERMINUS "terminus"
 /// teshari
-#define LANGAUGE_ID_TESHARI "teshari"
+#define LANGUAGE_ID_TESHARI "teshari"
 /// unathi
 #define LANGUAGE_ID_UNATHI "unathi"
 /// alraune
