@@ -5,14 +5,13 @@
 	if(machine && !CanMouseDrop(machine, src))
 		machine = null
 
+	handle_regular_hud_updates()
 	handle_vision()
 	handle_light()
 
 	if(handle_regular_UI_updates()) // Status & health update, are we dead or alive etc.
 		handle_disabilities() // eye, ear, brain damages
 		handle_statuses() //all special effects, stunned, weakened, jitteryness, hallucination, sleeping, etc
-
-	handle_regular_hud_updates()
 
 	handle_actions()
 	update_canmove()
