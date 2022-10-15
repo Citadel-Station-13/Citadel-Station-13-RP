@@ -290,21 +290,23 @@
 /obj/item/clothing/ears/circuitry
 	name = "electronic earwear"
 	desc = "A wearable case for electronics, bulkier than your average headset."
-	icon = 'icons/obj/clothing/ears.dmi'
+	EA_Installed = TRUE
+
+	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_ONE_FOR_ALL
+	icon = 'icons/modules/clothing/ears/circuitry.dmi'
 	icon_state = "circuitry"
 	item_state = "circuitry"
-	EA_Installed = 1
 
 /obj/item/clothing/ears/circuitry/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/electronic_assembly/clothing/small))
 		if(EA_Installed < 1)
 			if(!user.attempt_insert_item_for_installation(I, src))
 				return
-			src.EA_Installed = 1
+			src.EA_Installed = TRUE
 			EA = I
 			EA.clothing = src
 			src.icon_state = "circuitry"
-			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, 1)
+			playsound(get_turf(src), 'sound/items/Deconstruct.ogg', 50, TRUE)
 			to_chat(user, SPAN_NOTICE("You install the circuitry into \the [src]."))
 			ui_interact(user)
 			return

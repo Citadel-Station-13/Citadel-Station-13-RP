@@ -2,7 +2,8 @@
 /obj/item/clothing/ears/earring
 	name = "earring"
 	desc = "An earring of some kind."
-	icon = 'icons/obj/clothing/ears.dmi'
+	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_ONE_FOR_ALL
+	icon = 'icons/modules/clothing/ears/earrings.dmi'
 
 /obj/item/clothing/ears/earring/stud
 	name = "pearl stud earrings"

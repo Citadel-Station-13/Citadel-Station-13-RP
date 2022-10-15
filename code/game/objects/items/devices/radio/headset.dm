@@ -3,10 +3,10 @@
 	desc = "An updated, modular intercom that fits over the head. Takes encryption keys"
 	var/radio_desc = ""
 	icon_state = "headset"
-	item_state = null	// To remove the radio's state
+	item_state = null // To remove the radio's state
 	matter = list(MAT_STEEL = 75)
 	subspace_transmission = 1
-	canhear_range = 0	// Can't hear headsets from very far away
+	canhear_range = 0 // Can't hear headsets from very far away
 	slot_flags = SLOT_EARS
 
 	var/translate_binary = 0
