@@ -52,7 +52,9 @@
 	if(zlevel && zlevel >= 1)
 		zlevels = GLOB.using_map.get_map_levels(zlevel, TRUE)
 	else if(zlevel && zlevel == -1)//If we get a -1 just announce it to every z, safes us some loops else where
-		zlevels = GLOB.using_map.zlevels
+		zlevels = list()
+		for(var/z in 1 to world.maxz)
+			zlevels += z
 
 	Message(message, message_title, zlevels)
 	if(do_newscast)

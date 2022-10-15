@@ -387,9 +387,9 @@
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
-		if(H.species.get_effective_bodytype() == BODYTYPE_TESHARI)
+		if(H.species.get_effective_bodytype(H, src, SLOT_ID_SUIT) == BODYTYPE_TESHARI)
 			icon_override = 'icons/mob/clothing/species/teshari/ties.dmi'
-		else if(H.species.get_effective_bodytype() == BODYTYPE_VOX)
+		else if(H.species.get_effective_bodytype(H, src, SLOT_ID_SUIT) == BODYTYPE_VOX)
 			icon_override = 'icons/mob/clothing/species/vox/ties.dmi'
 		else
 			icon_override = 'icons/mob/clothing/ties.dmi'

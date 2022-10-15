@@ -121,7 +121,7 @@
 	var/detected_bodytype = BODYTYPE_DEFAULT
 	var/mob/living/carbon/human/H = worn_mob()
 	if(istype(H))
-		detected_bodytype = H.species.get_effective_bodytype(src, worn_slot)
+		detected_bodytype = H.species.get_effective_bodytype(H, src, worn_slot)
 	switch(worn_has_rolldown)
 		if(UNIFORM_HAS_ROLL)
 			has_roll = (worn_rolldown_bodytypes & detected_bodytype)
@@ -145,7 +145,7 @@
 	var/detected_bodytype = BODYTYPE_DEFAULT
 	var/mob/living/carbon/human/H = worn_mob()
 	if(istype(H))
-		detected_bodytype = H.species.get_effective_bodytype(src, worn_slot)
+		detected_bodytype = H.species.get_effective_bodytype(H, src, worn_slot)
 	switch(worn_has_rollsleeve)
 		if(UNIFORM_HAS_ROLL)
 			has_sleeves = (worn_rollsleeve_bodytypes & detected_bodytype)

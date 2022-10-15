@@ -163,13 +163,18 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	if(saved_nif)
 		saved_nif.quick_implant(H)
 
-/datum/species/protean/get_bodytype_legacy(var/mob/living/carbon/human/H)
+/datum/species/protean/get_effective_bodytype(mob/living/carbon/human/H, obj/item/I, slot_id)
 	if(H)
 		return H.impersonate_bodytype || ..()
 	return ..()
 
+/datum/species/protean/get_bodytype_legacy(var/mob/living/carbon/human/H)
+	if(H)
+		return H.impersonate_bodytype_legacy || ..()
+	return ..()
+
 /datum/species/protean/get_worn_legacy_bodytype(mob/living/carbon/human/H)
-	return H?.impersonate_bodytype || ..()
+	return H?.impersonate_bodytype_legacy || ..()
 
 /datum/species/protean/create_organs(mob/living/carbon/human/H)
 	H.synth_color = TRUE

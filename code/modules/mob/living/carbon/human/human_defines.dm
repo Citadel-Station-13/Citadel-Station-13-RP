@@ -102,7 +102,10 @@
 	var/spread = 0
 	///What's my status?
 	var/vantag_pref = VANTAG_NONE
+	// todo: REOMVE THIS FOR SPECIES VAR CHANGES
 	///For impersonating a bodytype
+	var/impersonate_bodytype_legacy
+	/// for impersonating a bodytype but actually
 	var/impersonate_bodytype
 	///Shadekin abilities/potentially other species-based?
 	var/ability_flags = 0

@@ -41,6 +41,7 @@
 	hood_up = FALSE
 	REMOVE_TRAIT(hood, TRAIT_NODROP, CLOTHING_TRAIT)
 	hood.forceMove(src)
+	update_worn_icon()
 
 /obj/item/clothing/suit/storage/hooded/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
@@ -67,7 +68,7 @@
 				hood_up = TRUE
 				ADD_TRAIT(hood, TRAIT_NODROP, CLOTHING_TRAIT)
 				icon_state = "[toggleicon]_t"
-				H.update_inv_wear_suit()
+				update_worn_icon()
 	else
 		RemoveHood()
 

@@ -956,17 +956,18 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	else
 		to_chat(usr, "You are now facing [dir2text(facing_dir)].")
 
-/mob/proc/set_face_dir(var/newdir)
-	if(newdir == facing_dir)
-		facing_dir = null
-	else if(newdir)
-		setDir(newdir)
-		facing_dir = newdir
-	else if(facing_dir)
-		facing_dir = null
+/mob/proc/set_face_dir(newdir)
+	if(newdir)
+		if(newdir == facing_dir)
+			facing_dir = null
+		else
+			facing_dir = newdir
+			setDir(newdir)
 	else
-		setDir(dir)
-		facing_dir = dir
+		if(facing_dir)
+			facing_dir = null
+		else
+			facing_dir = dir
 
 /mob/setDir()
 	if(facing_dir)
