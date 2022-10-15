@@ -318,7 +318,7 @@
 							to_chat(C, "<span class='warning'>You don't have an internals tank.</span>")
 							return
 		if("act_intent")
-			usr.a_intent_change("right")
+			usr.a_intent_change(INTENT_HOTKEY_RIGHT)
 		if(INTENT_HELP)
 			usr.a_intent = INTENT_HELP
 			usr.hud_used.action_intent.icon_state = "intent_help"
