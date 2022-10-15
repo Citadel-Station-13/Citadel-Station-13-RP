@@ -29,6 +29,11 @@
 /// use proc
 #define SLOT_EQUIP_CHECK_USE_PROC			(1<<1)
 
+DEFINE_BITFIELD(slot_equip_checks, list(
+	BITFIELD(SLOT_EQIUP_CHECK_USE_FLAGS),
+	BITFIELD(SLOT_EQUIP_CHECK_USE_PROC),
+))
+
 //! slot meta inventory_slot_flags flags
 /// render on mob
 #define INV_SLOT_IS_RENDERED				(1<<0)
@@ -48,6 +53,18 @@
 #define INV_SLOT_STRIP_SIMPLE_LINK			(1<<7)
 /// do not show on strip panel unless it's occupied by an item
 #define INV_SLOT_STRIP_ONLY_REMOVES			(1<<8)
+
+DEFINE_BITFIELD(inventory_slot_flags, list(
+	BITFIELD(INV_SLOT_IS_RENDERED),
+	BITFIELD(INV_SLOT_CONSIDERED_WORN),
+	BITFIELD(INV_SLOT_ALLOW_RANDOM_ID),
+	BITFIELD(INV_SLOT_IS_INVENTORY),
+	BITFIELD(INV_SLOT_HUD_REQUIRES_EXPAND),
+	BITFIELD(INV_SLOT_IS_ABSTRACT),
+	BITFIELD(INV_SLOT_IS_STRIPPABLE),
+	BITFIELD(INV_SLOT_STRIP_SIMPLE_LINK),
+	BITFIELD(INV_SLOT_STRIP_ONLY_REMOVES),
+))
 
 //! slot flags
 // Item inventory slot bitmasks.
@@ -72,6 +89,29 @@
 /// items with this can fit in holster no matter what
 // todo: this shouldn't be a slot flag wtf
 #define SLOT_HOLSTER	(1<<15)
+
+#define SLOT_FLAG_BITFIELDS list(
+	BITFIELD(SLOT_OCLOTHING),
+	BITFIELD(SLOT_ICLOTHING),
+	BITFIELD(SLOT_GLOVES),
+	BITFIELD(SLOT_EYES),
+	BITFIELD(SLOT_EARS),
+	BITFIELD(SLOT_MASK),
+	BITFIELD(SLOT_HEAD),
+	BITFIELD(SLOT_FEET),
+	BITFIELD(SLOT_ID),
+	BITFIELD(SLOT_BELT),
+	BITFIELD(SLOT_BACK),
+	BITFIELD(SLOT_POCKET),
+	BITFIELD(SLOT_DENYPOCKET),
+	BITFIELD(SLOT_TWOEARS),
+	BITFIELD(SLOT_TIE),
+	BITFIELD(SLOT_HOLSTER),
+)
+
+DEFINE_BITFIELD(slot_flags, SLOT_FLAG_BITFIELDS)
+DEFINE_BITFIELD(slot_flags_required, SLOT_FLAG_BITFIELDS)
+DEFINE_BITFIELD(slot_flags_forbidden, SLOT_FLAG_BITFIELDS)
 
 //! legacy
 /// Takes 40ds = 4s to strip someone.
