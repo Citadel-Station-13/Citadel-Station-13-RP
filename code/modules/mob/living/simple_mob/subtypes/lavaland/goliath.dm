@@ -47,7 +47,7 @@
 	var/pre_attack_icon = "goliath2"
 	var/breedable = 0
 	var/pregnant = 0
-	var/list/child_type = list(/mob/living/simple_mob/animal/goliath/calf)
+	var/child_type = /mob/living/simple_mob/animal/goliath/calf
 
 /datum/ai_holder/simple_mob/melee/goliath
 	hostile = TRUE
@@ -75,6 +75,8 @@
 	var/tturf = get_turf(target)
 	if(!isturf(tturf))
 		return
+	if(buckled)
+		return
 	if(get_dist(src, target) <= 7)//Screen range check, so you can't get tentacle'd offscreen
 		visible_message("<span class='warning'>[src] digs its tentacles under [target]</span>")
 		new /obj/effect/temporary_effect/goliath_tentacle/core(tturf, src)
@@ -82,37 +84,49 @@
 
 /mob/living/simple_mob/animal/goliath/Initialize(mapload)
 	. = ..()
+	START_PROCESSING(SSobj, src)
 	if(prob(1))
 		new /mob/living/simple_mob/animal/goliath/ancient(loc)
 		return INITIALIZE_HINT_QDEL
 
 /mob/living/simple_mob/animal/goliath/attackby(obj/item/O, mob/user)
 	. = ..()
-	if(istype(O, /obj/item/seeds/ashlander/bentars))
+	if(istype(O, /obj/item/seeds/ashlander/bentars) && !breedable)
 		to_chat(user, "<span class='danger'>You feed the [src] bentar seeds! Its tendrils begin to thrash softly!</span>")
 		breedable = 1
+		qdel(O)
 	else
 		return ..()
 
-/mob/living/simple_mob/animal/goliath/proc/reproduce(var/mob/living/simple_mob/animal/goliath/G, atom/target)
-	if(!istype(target, /mob/living/simple_mob/animal/goliath))
-		return
-	else if(get_dist(src, target) <= 1)//They should be next to each other for this.
-		visible_message("<span class='warning'>The [src] intertwines its tendrils with the [target].</span>")
-		pregnant = 1
-		breedable = 0
+/mob/living/simple_mob/animal/goliath/proc/find_mate(var/mob/living/simple_mob/animal/goliath/G)
+	for(var/mob/living/L in view(4,src))
+		if(istype(L, /mob/living/simple_mob/animal/goliath))
+			visible_message("<span class='warning'>The [src] seems to be performing some kind of dance using its tendrils.</span>")
+			mate()
+		else
+			return
+
+/mob/living/simple_mob/animal/goliath/proc/mate()
+	visible_message("<span class='warning'>The [src] intertwines its tendrils with the goliath!</span>")
+	pregnant = 1
+	breedable = 0
 
 /mob/living/simple_mob/animal/goliath/process(delta_time)
-	reproduce()
-
-	if(pregnant >= 0)
+	if(breedable)
+		find_mate()
+	if(pregnant >= 1)
 		pregnant += rand(0,2)
 	if(pregnant >= 100)
 		calve()
 
 /mob/living/simple_mob/animal/goliath/proc/calve()
+	visible_message("<span class='warning'>The [src] disgorges a small calf from a large fissure in its back!</span>")
 	pregnant = 0
-	new child_type
+	new child_type(get_turf(src))
+
+/mob/living/simple_mob/animal/goliath/death()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 //tentacles
 /obj/effect/temporary_effect/goliath_tentacle
