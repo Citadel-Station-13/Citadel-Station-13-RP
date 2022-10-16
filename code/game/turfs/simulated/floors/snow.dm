@@ -1,12 +1,11 @@
 /turf/simulated/floor/outdoors/snow
 	name = "snow"
 	icon_state = "snow"
-	edge_blending_priority = 6
+	edge_blending_priority = 1
 	movement_cost = 2
 	initial_flooring = /decl/flooring/snow
 	baseturfs = /turf/simulated/floor/outdoors/dirt
 	var/list/crossed_dirs = list()
-
 
 /turf/simulated/floor/outdoors/snow/Entered(atom/A)
 	if(isliving(A))
@@ -41,6 +40,12 @@
 		user.put_in_hands_or_drop(new /obj/item/stack/material/snow)
 		visible_message("[user] scoops up a pile of snow.", "You scoop up a pile of snow.")
 	return
+
+/turf/simulated/floor/outdoors/snow/noblend
+	edge_blending_priority = 0
+
+/turf/simulated/floor/outdoors/snow/noblend/indoors
+	outdoors = FALSE
 
 /turf/simulated/floor/outdoors/ice
 	name = "ice"

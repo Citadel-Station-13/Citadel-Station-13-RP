@@ -63,6 +63,8 @@
 		starting_illegal_nifsoft = list()
 		for(var/P in (subtypesof(/datum/nifsoft) - typesof(/datum/nifsoft/package)))
 			var/datum/nifsoft/NS = P
+			if(initial(NS.abstract_type) == P)
+				continue
 			if(initial(NS.vended))
 				switch(initial(NS.illegal))
 					if(TRUE)
@@ -160,7 +162,7 @@
 				return
 			else
 				currently_vending = R
-				if(!vendor_account || vendor_account.suspended)
+				if(!GLOB.vendor_account || GLOB.vendor_account.suspended)
 					status_message = "This machine is currently unable to process payments due to problems with the associated account."
 					status_error = 1
 				else

@@ -507,7 +507,7 @@
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "khlifebox"
 	desc = "This case can only hold the VM-LC91-1 and a manual."
-	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
 	storage_slots = 2
 	can_hold = list(/obj/item/clothing/accessory/collar/vmcrystal)
 	max_storage_space = ITEMSIZE_COST_SMALL * 2
@@ -523,8 +523,8 @@
 	desc = "A cane used by a true gentlemen. Or a clown."
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "browncane"
-	item_icons = list (slot_r_hand_str = 'icons/vore/custom_items_vr.dmi', slot_l_hand_str = 'icons/vore/custom_items_vr.dmi')
-	item_state_slots = list(slot_r_hand_str = "browncanemob_r", slot_l_hand_str = "browncanemob_l")
+	item_icons = list (SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_vr.dmi', SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_vr.dmi')
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "browncanemob_r", SLOT_ID_LEFT_HAND = "browncanemob_l")
 	force = 5.0
 	throw_force = 7.0
 	w_class = ITEMSIZE_SMALL
@@ -542,8 +542,8 @@
     desc = "A really old looking wand with floating parts and cyan crystals, wich seem to radiate a cyan glow. The wand has a golden plaque on the side that would say Corncobble, but it is covered by a sSSticker saying Bloise."
     icon = 'icons/vore/custom_items_vr.dmi'
     icon_state = "alexiswand"
-    item_icons = list (slot_r_hand_str = 'icons/vore/custom_items_vr.dmi', slot_l_hand_str = 'icons/vore/custom_items_vr.dmi')
-    item_state_slots = list(slot_r_hand_str = "alexiswandmob_r", slot_l_hand_str = "alexiswandmob_l")
+    item_icons = list (SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_vr.dmi', SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_vr.dmi')
+    item_state_slots = list(SLOT_ID_RIGHT_HAND = "alexiswandmob_r", SLOT_ID_LEFT_HAND = "alexiswandmob_l")
     force = 1.0
     throw_force = 2.0
     w_class = ITEMSIZE_SMALL
@@ -1144,11 +1144,12 @@
 	icon_state = "dragor_dot"
 	w_class = ITEMSIZE_SMALL
 
-	attack_self(mob/user as mob)
-		if(user.ckey == "pontifexminimus")
-			user.verbs |= /mob/living/carbon/human/proc/shapeshifter_select_gender
-		else
-			return
+/obj/item/fluff/dragor_dot/attack_self(mob/user)
+	if(user.ckey == "pontifexminimus")
+		user.verbs |= /mob/living/carbon/human/proc/shapeshifter_select_gender
+	else
+		return
+
 //LuminescentRing: Briana Moore
 /obj/item/storage/backpack/messenger/black/fluff/briana
 	name = "2561 graduation bag"
@@ -1203,7 +1204,7 @@
 	name = "Aesthetic Science Goggles"
 	desc = "The goggles really do nothing this time!"
 	icon_state = "purple"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	clothing_flags = ALLOWINTERNALS
 
 //General use, Verk felt like sharing.
@@ -1214,7 +1215,7 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "spiffygogs"
 	slot_flags = SLOT_EYES | SLOT_EARS
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	toggleable = 1
 	off_state = "spiffygogsup"
 
@@ -1247,7 +1248,7 @@
 	desc = "Seems absurd, doesn't it? Yet, here we are. Generally considered dangerous contraband unless the user has permission from Central Command."
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "hand_tele"
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 7)
 
@@ -1537,7 +1538,7 @@
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "motion2"
 	w_class = ITEMSIZE_TINY
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 
 	var/tele_name
 	var/obj/item/perfect_tele/tele_hand
@@ -1713,8 +1714,8 @@
 	desc = "This object is so fluffy. Just from the sight of it, you know that either something went wrong or someone spawned the incorrect item."
 	icon = 'icons/vore/custom_items_vr.dmi'
 	item_icons = list(
-				slot_l_hand_str = 'icons/vore/custom_items_left_hand_vr.dmi',
-				slot_r_hand_str = 'icons/vore/custom_items_right_hand_vr.dmi',
+				SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_left_hand_vr.dmi',
+				SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_right_hand_vr.dmi',
 				)
 
 /obj/item/material/twohanded/fluff/Initialize(mapload, material_key)
@@ -1816,7 +1817,7 @@
 	name = "Electrostaff"
 	desc = "Six-foot long staff from dull, rugged metal, with two thin spikes protruding from each end. Small etching near to the middle of it reads 'Children Of Nyx Facilities: Product No. 12'."
 	icon = 'icons/vore/custom_items_vr.dmi'
-	item_icons = list(slot_l_hand_str = 'icons/vore/custom_items_left_hand_vr.dmi', slot_r_hand_str = 'icons/vore/custom_items_right_hand_vr.dmi')
+	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_left_hand_vr.dmi', SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_right_hand_vr.dmi')
 	icon_state = "stunstaff00"
 	var/base_icon = "stunstaff"
 	force = 5
@@ -1894,7 +1895,7 @@
 	icon_state = "holster_stunstaff"
 	desc = "A sturdy synthetic leather sheath with matching belt and rubberized interior."
 	slot_flags = SLOT_BACK
-	item_icons = list(SLOT_ID_BACK = 'icons/vore/custom_onmob_vr.dmi', slot_l_hand_str = 'icons/vore/custom_items_left_hand_vr.dmi', slot_r_hand_str = 'icons/vore/custom_items_right_hand_vr.dmi')
+	item_icons = list(SLOT_ID_BACK = 'icons/vore/custom_onmob_vr.dmi', SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_left_hand_vr.dmi', SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_right_hand_vr.dmi')
 
 	can_hold = list(/obj/item/melee/baton/fluff/stunstaff)
 
@@ -1983,7 +1984,7 @@
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
-	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi', SLOT_ID_BACK = 'icons/vore/custom_items_vr.dmi', SLOT_ID_SUIT = 'icons/vore/custom_items_vr.dmi')
+	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi', SLOT_ID_BACK = 'icons/vore/custom_items_vr.dmi', SLOT_ID_SUIT = 'icons/vore/custom_items_vr.dmi')
 	var/active_state = "wolfgirlsword"
 	allowed = list(/obj/item/shield/fluff/wolfgirlshield)
 	damtype = HALLOSS

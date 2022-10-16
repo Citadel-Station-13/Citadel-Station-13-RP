@@ -48,7 +48,7 @@
 	/// Set this variable if the item protects its wearer against low pressures above a lower bound. Keep at null to disable protection. 0 represents protection against hard vacuum.
 	var/min_pressure_protection
 
-
+	//? todo: more advanced handling, multi actions, etc
 	var/datum/action/item_action/action = null
 	/// It is also the text which gets displayed on the action button. If not set it defaults to 'Use [name]'. If it's not set, there'll be no button.
 	var/action_button_name
@@ -85,7 +85,7 @@
 	/// Icon overlay for ADD highlights when applicable.
 	var/addblends
 
-	//* Pickup/Drop/Equip/Throw Sounds
+	//! Sounds!
 	/// Used when thrown into a mob.
 	var/mob_throw_hit_sound
 	/// Sound used when equipping the item into a valid slot from hands or ground
@@ -99,6 +99,11 @@
 
 	/// Whether or not we are heavy. Used for some species to determine if they can two-hand it.
 	var/heavy = FALSE
+
+	/// If true, a 'cleaving' attack will occur.
+	var/can_cleave = FALSE
+	/// Used to avoid infinite cleaving.
+	var/cleaving = FALSE
 
 /obj/item/Initialize(mapload)
 	. = ..()
@@ -676,15 +681,19 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 /obj/item/proc/is_hot()
 	return FALSE
 
-// These procs are for RPEDs and part ratings. The concept for this was borrowed from /vg/station.
-// Gets the rating of the item, used in stuff like machine construction.
+/// These procs are for RPEDs and part ratings. The concept for this was borrowed from /vg/station.
+/// Gets the rating of the item, used in stuff like machine construction.
 /obj/item/proc/get_rating()
 	return FALSE
 
-// Like the above, but used for RPED sorting of parts.
+/// These procs are for RPEDs and part ratings, but used for RPED sorting of parts.
 /obj/item/proc/rped_rating()
 	return get_rating()
 
 /obj/item/interact(mob/user)
 	add_fingerprint(user)
 	ui_interact(user)
+
+// /obj/item/update_filters()
+// 	. = ..()
+// 	update_action_buttons()

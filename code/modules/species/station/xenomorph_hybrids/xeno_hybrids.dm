@@ -1,6 +1,7 @@
 /datum/species/xenohybrid
 	name = SPECIES_XENOHYBRID
 	name_plural = "Xenomorph Hybrids"
+	default_bodytype = BODYTYPE_XENOHYBRID
 
 	icobase = 'icons/mob/species/xenohybrid/body.dmi'
 	deform  = 'icons/mob/species/xenohybrid/deformed_body.dmi'
@@ -43,6 +44,7 @@
 		)
 	inherent_verbs = list(
 		/mob/living/proc/shred_limb,
+		/mob/living/proc/toggle_pass_table,
 		/mob/living/carbon/human/proc/tie_hair,
 		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/psychic_whisper,

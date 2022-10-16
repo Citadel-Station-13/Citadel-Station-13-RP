@@ -51,7 +51,7 @@
 	description = "A chemical element with a characteristic odour."
 	taste_description = "pool water"
 	reagent_state = REAGENT_GAS
-	color = "#808080"
+	color = "#d1db77"
 
 /datum/reagent/chlorine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.take_organ_damage(1*REM, 0)

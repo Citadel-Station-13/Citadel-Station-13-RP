@@ -59,7 +59,7 @@
 		var/datum/robolimb/M = GLOB.chargen_robolimbs[company]
 		if(!(choice in M.parts))
 			continue
-		if(impersonate_bodytype in M.species_cannot_use)
+		if(impersonate_bodytype_legacy in M.species_cannot_use)
 			continue
 		if(M.whitelisted_to && !(ckey in M.whitelisted_to))
 			continue
@@ -112,7 +112,7 @@
 			var/datum/robolimb/M = GLOB.chargen_robolimbs[company]
 			if(!(BP_TORSO in M.parts))
 				continue
-			if(impersonate_bodytype in M.species_cannot_use)
+			if(impersonate_bodytype_legacy in M.species_cannot_use)
 				continue
 			if(M.whitelisted_to && !(ckey in M.whitelisted_to))
 				continue
@@ -289,9 +289,11 @@
 		to_chat(src,"<span class='warning'>You must be awake and standing to perform this action!</span>")
 		return
 
-	var/new_species = input("Please select a species to emulate.", "Shapeshifter Body") as null|anything in GLOB.playable_species
+	var/new_species_name = input("Please select a species to emulate.", "Shapeshifter Body") as null|anything in GLOB.playable_species
+	var/datum/species/new_species = name_static_species_meta(new_species_name)
 	if(new_species)
-		impersonate_bodytype = new_species
+		impersonate_bodytype_legacy = new_species
+		impersonate_bodytype = new_species.default_bodytype
 		regenerate_icons() //Expensive, but we need to recrunch all the icons we're wearing
 
 ////

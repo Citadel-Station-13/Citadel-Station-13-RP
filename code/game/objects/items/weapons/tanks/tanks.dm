@@ -10,9 +10,6 @@ var/list/global/tank_gauge_cache = list()
 /obj/item/tank
 	name = "tank"
 	icon = 'icons/obj/tank.dmi'
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/back.dmi'
-		)
 	drop_sound = 'sound/items/drop/gascan.ogg'
 	pickup_sound = 'sound/items/pickup/gascan.ogg'
 
@@ -30,8 +27,8 @@ var/list/global/tank_gauge_cache = list()
 
 	var/datum/gas_mixture/air_contents = null
 	var/distribute_pressure = ONE_ATMOSPHERE
-	var/integrity = 20
-	var/max_integrity = 20
+	integrity = 20
+	max_integrity = 20
 	var/valve_welded = 0
 	var/obj/item/tankassemblyproxy/proxyassembly
 

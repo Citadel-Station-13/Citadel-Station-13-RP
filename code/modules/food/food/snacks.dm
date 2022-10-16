@@ -108,15 +108,15 @@
 				if(blocked)
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
-				user.visible_message(SPAN_DANGER("[user] attempts to feed [M] [src]."))
-				user.setClickCooldown(user.get_attack_speed(src))
-				if(!do_mob(user, M, 3 SECONDS))
-					return
-				//Do we really care about this
-				// yes we do you idiot
-				add_attack_logs(user,M,"Fed with [src.name] containing [reagentlist(src)]", admin_notify = FALSE)
-				user.visible_message("<span class='danger'>[user] feeds [M] [src].</span>")
+					
+			user.visible_message(SPAN_DANGER("[user] attempts to feed [M] [src]."))
+			user.setClickCooldown(user.get_attack_speed(src))
+			if(!do_mob(user, M, 3 SECONDS))
 				return
+			//Do we really care about this
+			// yes we do you idiot
+			add_attack_logs(user,M,"Fed with [src.name] containing [reagentlist(src)]", admin_notify = FALSE)
+			user.visible_message("<span class='danger'>[user] feeds [M] [src].</span>")
 
 		if(reagents)								//Handle ingestion of the reagent.
 			playsound(M.loc,'sound/items/eatfood.ogg', rand(10,50), 1)
@@ -400,19 +400,7 @@
 	nutriment_amt = 5
 	nutriment_desc = list("sugar" = 3, "protein" = 2)
 	slot_flags = SLOT_MASK
-	sprite_sheets = list(
-		SPECIES_AKULA       = 'icons/mob/clothing/species/akula/mask.dmi',
-		SPECIES_NEVREAN     = 'icons/mob/clothing/species/nevrean/mask.dmi',
-		SPECIES_SERGAL      = 'icons/mob/clothing/species/sergal/mask.dmi',
-		SPECIES_TAJ         = 'icons/mob/clothing/species/tajaran/mask.dmi',
-		SPECIES_TESHARI     = 'icons/mob/clothing/species/teshari/masks.dmi',
-		SPECIES_UNATHI      = 'icons/mob/clothing/species/unathi/mask.dmi',
-		SPECIES_VOX         = 'icons/mob/clothing/species/vox/masks.dmi',
-		SPECIES_VULPKANIN   = 'icons/mob/clothing/species/vulpkanin/mask.dmi',
-		SPECIES_XENOCHIMERA = 'icons/mob/clothing/species/tajaran/mask.dmi',
-		SPECIES_ZORREN_FLAT = 'icons/mob/clothing/species/fennec/mask.dmi',
-		SPECIES_ZORREN_HIGH = 'icons/mob/clothing/species/fox/mask.dmi',
-		)
+
 /obj/item/reagent_containers/food/snacks/dtreat/Initialize(mapload)
 	. = ..()
 	bitesize = 1
@@ -6643,7 +6631,7 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("protein", 7)
 	bitesize = 2
-	
+
 /obj/item/reagent_containers/food/snacks/brainsnax
 	name = "Brainsnax"
 	desc = "A green can, filled to the brim with vatgrown brain matter, in all its juicy glory. Rich in lymbic system!"
@@ -6655,4 +6643,4 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/bugsnacks/Initialize(mapload)
 	. = ..()
 	bitesize = 2
-	
+

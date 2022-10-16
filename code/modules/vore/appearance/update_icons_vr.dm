@@ -21,6 +21,27 @@ var/global/list/wing_icon_cache = list()
 		return ears_s
 	return null
 
+/mob/living/carbon/human/proc/get_horns_overlay()
+	if(horn_style && !(head && (head.flags_inv & BLOCKHEADHAIR)))
+		var/icon/horn_s = new/icon("icon" = horn_style.icon, "icon_state" = horn_style.icon_state)
+		if(horn_style.do_colouration)
+			horn_s.Blend(rgb(src.r_horn, src.g_horn, src.b_horn), horn_style.color_blend_mode)
+
+		if(horn_style.extra_overlay)
+			var/icon/overlay = new/icon("icon" = horn_style.icon, "icon_state" = horn_style.extra_overlay)
+			overlay.Blend(rgb(src.r_horn2, src.g_horn2, src.b_horn2), horn_style.color_blend_mode)
+			horn_s.Blend(overlay, ICON_OVERLAY)
+			qdel(overlay)
+
+		if(horn_style.extra_overlay2)
+			var/icon/overlay = new/icon("icon" = horn_style.icon, "icon_state" = horn_style.extra_overlay2)
+			overlay.Blend(rgb(src.r_horn3, src.g_horn3, src.b_horn3), horn_style.color_blend_mode)
+			horn_s.Blend(overlay, ICON_OVERLAY)
+			qdel(overlay)
+
+		return horn_s
+	return null
+
 /mob/living/carbon/human/proc/get_tail_image()
 	//If you are FBP with tail style and didn't set a custom one
 	var/datum/robolimb/model = isSynthetic()
@@ -59,10 +80,6 @@ var/global/list/wing_icon_cache = list()
 				qdel(overlay)
 
 		if(isTaurTail(tail_style))
-			var/datum/sprite_accessory/tail/taur/taurtype = tail_style
-			if(taurtype.can_ride && !riding_datum)
-				riding_datum = new /datum/riding/taur(src)
-				verbs |= /mob/living/carbon/human/proc/taur_mount
 			return image(tail_s, "pixel_x" = -16)
 		else
 			return image(tail_s)

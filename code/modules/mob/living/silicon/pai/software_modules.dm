@@ -12,14 +12,14 @@
 	// Whether pAIs should automatically receive this module at no cost
 	var/default = 0
 
-	proc/on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
-		return
+/datum/pai_software/proc/on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
+	return
 
-	proc/toggle(mob/living/silicon/pai/user)
-		return
+/datum/pai_software/proc/toggle(mob/living/silicon/pai/user)
+	return
 
-	proc/is_active(mob/living/silicon/pai/user)
-		return 0
+/datum/pai_software/proc/is_active(mob/living/silicon/pai/user)
+	return 0
 
 /datum/pai_software/directives
 	name = "Directives"
@@ -28,55 +28,56 @@
 	toggle = 0
 	default = 1
 
-	on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
-		var/data[0]
+/datum/pai_software/directives/on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
+	var/data[0]
 
-		data["master"] = user.master
-		data["dna"] = user.master_dna
-		data["prime"] = user.pai_law0
-		data["supplemental"] = user.pai_laws
+	data["master"] = user.master
+	data["dna"] = user.master_dna
+	data["prime"] = user.pai_law0
+	data["supplemental"] = user.pai_laws
 
-		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
-		if(!ui)
-			// Don't copy-paste this unless you're making a pAI software module!
-			ui = new(user, user, id, "pai_directives.tmpl", "pAI Directives", 450, 600)
-			ui.set_initial_data(data)
-			ui.open()
-			ui.set_auto_update(1)
+	ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
+	if(!ui)
+		// Don't copy-paste this unless you're making a pAI software module!
+		ui = new(user, user, id, "pai_directives.tmpl", "pAI Directives", 450, 600)
+		ui.set_initial_data(data)
+		ui.open()
+		ui.set_auto_update(1)
 
-	Topic(href, href_list)
-		var/mob/living/silicon/pai/P = usr
-		if(!istype(P)) return
+/datum/pai_software/directives/Topic(href, href_list)
+	var/mob/living/silicon/pai/P = usr
+	if(!istype(P))
+		return
 
-		if(href_list["getdna"])
-			var/mob/living/M = P.loc
-			var/count = 0
+	if(href_list["getdna"])
+		var/mob/living/M = P.loc
+		var/count = 0
 
-			// Find the carrier
-			while(!istype(M, /mob/living))
-				if(!M || !M.loc || count > 6)
-					//For a runtime where M ends up in nullspace (similar to bluespace but less colourful)
-					to_chat(src, "You are not being carried by anyone!")
-					return 0
-				M = M.loc
-				count++
+		// Find the carrier
+		while(!istype(M, /mob/living))
+			if(!M || !M.loc || count > 6)
+				//For a runtime where M ends up in nullspace (similar to bluespace but less colourful)
+				to_chat(src, "You are not being carried by anyone!")
+				return 0
+			M = M.loc
+			count++
 
-			// Check the carrier
-			var/datum/gender/TM = gender_datums[M.get_visible_gender()]
-			var/answer = input(M, "[P] is requesting a DNA sample from you. Will you allow it to confirm your identity?", "[P] Check DNA", "No") in list("Yes", "No")
-			if(answer == "Yes")
-				var/turf/T = get_turf_or_move(P.loc)
-				for (var/mob/v in viewers(T))
-					v.show_message("<span class='notice'>[M] presses [TM.his] thumb against [P].</span>", 3, "<span class='notice'>[P] makes a sharp clicking sound as it extracts DNA material from [M].</span>", 2)
-				var/datum/dna/dna = M.dna
-				to_chat(P, "<font color = red><h3>[M]'s UE string : [dna.unique_enzymes]</h3></font>")
-				if(dna.unique_enzymes == P.master_dna)
-					to_chat(P, "<b>DNA is a match to stored Master DNA.</b>")
-				else
-					to_chat(P, "<b>DNA does not match stored Master DNA.</b>")
+		// Check the carrier
+		var/datum/gender/TM = GLOB.gender_datums[M.get_visible_gender()]
+		var/answer = input(M, "[P] is requesting a DNA sample from you. Will you allow it to confirm your identity?", "[P] Check DNA", "No") in list("Yes", "No")
+		if(answer == "Yes")
+			var/turf/T = get_turf_or_move(P.loc)
+			for (var/mob/v in viewers(T))
+				v.show_message("<span class='notice'>[M] presses [TM.his] thumb against [P].</span>", 3, "<span class='notice'>[P] makes a sharp clicking sound as it extracts DNA material from [M].</span>", 2)
+			var/datum/dna/dna = M.dna
+			to_chat(P, "<font color = red><h3>[M]'s UE string : [dna.unique_enzymes]</h3></font>")
+			if(dna.unique_enzymes == P.master_dna)
+				to_chat(P, "<b>DNA is a match to stored Master DNA.</b>")
 			else
-				to_chat(P, "[M] does not seem like [TM.he] is going to provide a DNA sample willingly.")
-			return 1
+				to_chat(P, "<b>DNA does not match stored Master DNA.</b>")
+		else
+			to_chat(P, "[M] does not seem like [TM.he] is going to provide a DNA sample willingly.")
+		return 1
 
 /datum/pai_software/radio_config
 	name = "Radio Configuration"
@@ -85,35 +86,36 @@
 	toggle = 0
 	default = 1
 
-	on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui = null, force_open = 1)
-		var/data[0]
+/datum/pai_software/radio_config/on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui = null, force_open = 1)
+	var/data[0]
 
-		data["listening"] = user.radio.broadcasting
-		data["frequency"] = format_frequency(user.radio.frequency)
+	data["listening"] = user.radio.broadcasting
+	data["frequency"] = format_frequency(user.radio.frequency)
 
-		var/channels[0]
-		for(var/ch_name in user.radio.channels)
-			var/ch_stat = user.radio.channels[ch_name]
-			var/ch_dat[0]
-			ch_dat["name"] = ch_name
-			// FREQ_LISTENING is const in /obj/item/radio
-			ch_dat["listening"] = !!(ch_stat & user.radio.FREQ_LISTENING)
-			channels[++channels.len] = ch_dat
+	var/channels[0]
+	for(var/ch_name in user.radio.channels)
+		var/ch_stat = user.radio.channels[ch_name]
+		var/ch_dat[0]
+		ch_dat["name"] = ch_name
+		// FREQ_LISTENING is const in /obj/item/radio
+		ch_dat["listening"] = !!(ch_stat & user.radio.FREQ_LISTENING)
+		channels[++channels.len] = ch_dat
 
-		data["channels"] = channels
+	data["channels"] = channels
 
-		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
-		if(!ui)
-			ui = new(user, user, id, "pai_radio.tmpl", "Radio Configuration", 300, 150)
-			ui.set_initial_data(data)
-			ui.open()
+	ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
+	if(!ui)
+		ui = new(user, user, id, "pai_radio.tmpl", "Radio Configuration", 300, 150)
+		ui.set_initial_data(data)
+		ui.open()
 
-	Topic(href, href_list)
-		var/mob/living/silicon/pai/P = usr
-		if(!istype(P)) return
+/datum/pai_software/radio_config/Topic(href, href_list)
+	var/mob/living/silicon/pai/P = usr
+	if(!istype(P))
+		return
 
-		P.radio.Topic(href, href_list)
-		return 1
+	P.radio.Topic(href, href_list)
+	return 1
 
 /datum/pai_software/crew_manifest
 	name = "Crew Manifest"
@@ -121,20 +123,20 @@
 	id = "manifest"
 	toggle = 0
 
-	on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
-		data_core.get_manifest_list()
+/datum/pai_software/crew_manifest/on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
+	data_core.get_manifest_list()
 
-		var/data[0]
-		// This is dumb, but NanoUI breaks if it has no data to send
-		data["manifest"] = GLOB.PDA_Manifest
+	var/data[0]
+	// This is dumb, but NanoUI breaks if it has no data to send
+	data["manifest"] = GLOB.PDA_Manifest
 
-		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
-		if(!ui)
-			// Don't copy-paste this unless you're making a pAI software module!
-			ui = new(user, user, id, "crew_manifest.tmpl", "Crew Manifest", 450, 600)
-			ui.set_initial_data(data)
-			ui.open()
-			ui.set_auto_update(1)
+	ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
+	if(!ui)
+		// Don't copy-paste this unless you're making a pAI software module!
+		ui = new(user, user, id, "crew_manifest.tmpl", "Crew Manifest", 450, 600)
+		ui.set_initial_data(data)
+		ui.open()
+		ui.set_auto_update(1)
 
 /datum/pai_software/messenger
 	name = "Digital Messenger"
@@ -142,75 +144,75 @@
 	id = "messenger"
 	toggle = 0
 
-	on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
-		var/data[0]
+/datum/pai_software/messenger/on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
+	var/data[0]
 
-		data["receiver_off"] = user.pda.toff
-		data["ringer_off"] = user.pda.message_silent
-		data["current_ref"] = null
-		data["current_name"] = user.current_pda_messaging
+	data["receiver_off"] = user.pda.toff
+	data["ringer_off"] = user.pda.message_silent
+	data["current_ref"] = null
+	data["current_name"] = user.current_pda_messaging
 
-		var/pdas[0]
-		if(!user.pda.toff)
-			for(var/obj/item/pda/P in GLOB.PDAs)
-				if(!P.owner || P.toff || P == user.pda || P.hidden) continue
-				var/pda[0]
-				pda["name"] = "[P]"
-				pda["owner"] = "[P.owner]"
-				pda["ref"] = "\ref[P]"
-				if(P.owner == user.current_pda_messaging)
-					data["current_ref"] = "\ref[P]"
-				pdas[++pdas.len] = pda
+	var/pdas[0]
+	if(!user.pda.toff)
+		for(var/obj/item/pda/P in GLOB.PDAs)
+			if(!P.owner || P.toff || P == user.pda || P.hidden) continue
+			var/pda[0]
+			pda["name"] = "[P]"
+			pda["owner"] = "[P.owner]"
+			pda["ref"] = "\ref[P]"
+			if(P.owner == user.current_pda_messaging)
+				data["current_ref"] = "\ref[P]"
+			pdas[++pdas.len] = pda
 
-		data["pdas"] = pdas
+	data["pdas"] = pdas
 
-		var/messages[0]
-		if(user.current_pda_messaging)
-			for(var/index in user.pda.tnote)
-				if(index["owner"] != user.current_pda_messaging)
-					continue
-				var/msg[0]
-				var/sent = index["sent"]
-				msg["sent"] = sent ? 1 : 0
-				msg["target"] = index["owner"]
-				msg["message"] = index["message"]
-				messages[++messages.len] = msg
+	var/messages[0]
+	if(user.current_pda_messaging)
+		for(var/index in user.pda.tnote)
+			if(index["owner"] != user.current_pda_messaging)
+				continue
+			var/msg[0]
+			var/sent = index["sent"]
+			msg["sent"] = sent ? 1 : 0
+			msg["target"] = index["owner"]
+			msg["message"] = index["message"]
+			messages[++messages.len] = msg
 
-		data["messages"] = messages
+	data["messages"] = messages
 
-		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
-		if(!ui)
-			// Don't copy-paste this unless you're making a pAI software module!
-			ui = new(user, user, id, "pai_messenger.tmpl", "Digital Messenger", 450, 600)
-			ui.set_initial_data(data)
-			ui.open()
-			ui.set_auto_update(1)
+	ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
+	if(!ui)
+		// Don't copy-paste this unless you're making a pAI software module!
+		ui = new(user, user, id, "pai_messenger.tmpl", "Digital Messenger", 450, 600)
+		ui.set_initial_data(data)
+		ui.open()
+		ui.set_auto_update(1)
 
-	Topic(href, href_list)
-		var/mob/living/silicon/pai/P = usr
-		if(!istype(P)) return
+/datum/pai_software/messenger/Topic(href, href_list)
+	var/mob/living/silicon/pai/P = usr
+	if(!istype(P)) return
 
-		if(!isnull(P.pda))
-			if(href_list["toggler"])
-				P.pda.toff = href_list["toggler"] != "1"
-				return 1
-			else if(href_list["ringer"])
-				P.pda.message_silent = href_list["ringer"] != "1"
-				return 1
-			else if(href_list["select"])
-				var/s = href_list["select"]
-				if(s == "*NONE*")
-					P.current_pda_messaging = null
-				else
-					P.current_pda_messaging = s
-				return 1
-			else if(href_list["target"])
-				if(P.silence_time)
-					return alert("Communications circuits remain uninitialized.")
+	if(!isnull(P.pda))
+		if(href_list["toggler"])
+			P.pda.toff = href_list["toggler"] != "1"
+			return 1
+		else if(href_list["ringer"])
+			P.pda.message_silent = href_list["ringer"] != "1"
+			return 1
+		else if(href_list["select"])
+			var/s = href_list["select"]
+			if(s == "*NONE*")
+				P.current_pda_messaging = null
+			else
+				P.current_pda_messaging = s
+			return 1
+		else if(href_list["target"])
+			if(P.silence_time)
+				return alert("Communications circuits remain uninitialized.")
 
-				var/target = locate(href_list["target"])
-				P.pda.create_message(P, target, 1)
-				return 1
+			var/target = locate(href_list["target"])
+			P.pda.create_message(P, target, 1)
+			return 1
 
 /datum/pai_software/med_records
 	name = "Medical Records"
@@ -218,53 +220,53 @@
 	id = "med_records"
 	toggle = 0
 
-	on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
-		var/data[0]
+/datum/pai_software/med_records/on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
+	var/data[0]
 
-		var/records[0]
-		for(var/datum/data/record/general in sortRecord(data_core.general))
-			var/record[0]
-			record["name"] = general.fields["name"]
-			record["ref"] = "\ref[general]"
-			records[++records.len] = record
+	var/records[0]
+	for(var/datum/data/record/general in sortRecord(data_core.general))
+		var/record[0]
+		record["name"] = general.fields["name"]
+		record["ref"] = "\ref[general]"
+		records[++records.len] = record
 
-		data["records"] = records
+	data["records"] = records
 
-		var/datum/data/record/G = user.medicalActive1
-		var/datum/data/record/M = user.medicalActive2
-		data["general"] = G ? G.fields : null
-		data["medical"] = M ? M.fields : null
-		data["could_not_find"] = user.medical_cannotfind
+	var/datum/data/record/G = user.medicalActive1
+	var/datum/data/record/M = user.medicalActive2
+	data["general"] = G ? G.fields : null
+	data["medical"] = M ? M.fields : null
+	data["could_not_find"] = user.medical_cannotfind
 
-		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
-		if(!ui)
-			// Don't copy-paste this unless you're making a pAI software module!
-			ui = new(user, user, id, "pai_medrecords.tmpl", "Medical Records", 450, 600)
-			ui.set_initial_data(data)
-			ui.open()
-			ui.set_auto_update(1)
+	ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
+	if(!ui)
+		// Don't copy-paste this unless you're making a pAI software module!
+		ui = new(user, user, id, "pai_medrecords.tmpl", "Medical Records", 450, 600)
+		ui.set_initial_data(data)
+		ui.open()
+		ui.set_auto_update(1)
 
-	Topic(href, href_list)
-		var/mob/living/silicon/pai/P = usr
-		if(!istype(P)) return
+/datum/pai_software/med_records/Topic(href, href_list)
+	var/mob/living/silicon/pai/P = usr
+	if(!istype(P)) return
 
-		if(href_list["select"])
-			var/datum/data/record/record = locate(href_list["select"])
-			if(record)
-				var/datum/data/record/R = record
-				var/datum/data/record/M = null
-				if (!( data_core.general.Find(R) ))
-					P.medical_cannotfind = 1
-				else
-					P.medical_cannotfind = 0
-					for(var/datum/data/record/E in data_core.medical)
-						if ((E.fields["name"] == R.fields["name"] || E.fields["id"] == R.fields["id"]))
-							M = E
-					P.medicalActive1 = R
-					P.medicalActive2 = M
-			else
+	if(href_list["select"])
+		var/datum/data/record/record = locate(href_list["select"])
+		if(record)
+			var/datum/data/record/R = record
+			var/datum/data/record/M = null
+			if (!( data_core.general.Find(R) ))
 				P.medical_cannotfind = 1
-			return 1
+			else
+				P.medical_cannotfind = 0
+				for(var/datum/data/record/E in data_core.medical)
+					if ((E.fields["name"] == R.fields["name"] || E.fields["id"] == R.fields["id"]))
+						M = E
+				P.medicalActive1 = R
+				P.medicalActive2 = M
+		else
+			P.medical_cannotfind = 1
+		return 1
 
 /datum/pai_software/sec_records
 	name = "Security Records"
@@ -272,57 +274,58 @@
 	id = "sec_records"
 	toggle = 0
 
-	on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
-		var/data[0]
+/datum/pai_software/sec_records/on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
+	var/data[0]
 
-		var/records[0]
-		for(var/datum/data/record/general in sortRecord(data_core.general))
-			var/record[0]
-			record["name"] = general.fields["name"]
-			record["ref"] = "\ref[general]"
-			records[++records.len] = record
+	var/records[0]
+	for(var/datum/data/record/general in sortRecord(data_core.general))
+		var/record[0]
+		record["name"] = general.fields["name"]
+		record["ref"] = "\ref[general]"
+		records[++records.len] = record
 
-		data["records"] = records
+	data["records"] = records
 
-		var/datum/data/record/G = user.securityActive1
-		var/datum/data/record/S = user.securityActive2
-		data["general"] = G ? G.fields : null
-		data["security"] = S ? S.fields : null
-		data["could_not_find"] = user.security_cannotfind
+	var/datum/data/record/G = user.securityActive1
+	var/datum/data/record/S = user.securityActive2
+	data["general"] = G ? G.fields : null
+	data["security"] = S ? S.fields : null
+	data["could_not_find"] = user.security_cannotfind
 
-		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
-		if(!ui)
-			// Don't copy-paste this unless you're making a pAI software module!
-			ui = new(user, user, id, "pai_secrecords.tmpl", "Security Records", 450, 600)
-			ui.set_initial_data(data)
-			ui.open()
-			ui.set_auto_update(1)
+	ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
+	if(!ui)
+		// Don't copy-paste this unless you're making a pAI software module!
+		ui = new(user, user, id, "pai_secrecords.tmpl", "Security Records", 450, 600)
+		ui.set_initial_data(data)
+		ui.open()
+		ui.set_auto_update(1)
 
-	Topic(href, href_list)
-		var/mob/living/silicon/pai/P = usr
-		if(!istype(P)) return
+/datum/pai_software/sec_records/Topic(href, href_list)
+	var/mob/living/silicon/pai/P = usr
+	if(!istype(P))
+		return
 
-		if(href_list["select"])
-			var/datum/data/record/record = locate(href_list["select"])
-			if(record)
-				var/datum/data/record/R = record
-				var/datum/data/record/S = null
-				if (!( data_core.general.Find(R) ))
-					P.securityActive1 = null
-					P.securityActive2 = null
-					P.security_cannotfind = 1
-				else
-					P.security_cannotfind = 0
-					for(var/datum/data/record/E in data_core.security)
-						if ((E.fields["name"] == R.fields["name"] || E.fields["id"] == R.fields["id"]))
-							S = E
-					P.securityActive1 = R
-					P.securityActive2 = S
-			else
+	if(href_list["select"])
+		var/datum/data/record/record = locate(href_list["select"])
+		if(record)
+			var/datum/data/record/R = record
+			var/datum/data/record/S = null
+			if (!( data_core.general.Find(R) ))
 				P.securityActive1 = null
 				P.securityActive2 = null
 				P.security_cannotfind = 1
-			return 1
+			else
+				P.security_cannotfind = 0
+				for(var/datum/data/record/E in data_core.security)
+					if ((E.fields["name"] == R.fields["name"] || E.fields["id"] == R.fields["id"]))
+						S = E
+				P.securityActive1 = R
+				P.securityActive2 = S
+		else
+			P.securityActive1 = null
+			P.securityActive2 = null
+			P.security_cannotfind = 1
+		return 1
 
 /datum/pai_software/door_jack
 	name = "Door Jack"
@@ -330,44 +333,45 @@
 	id = "door_jack"
 	toggle = 0
 
-	on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
-		var/data[0]
+/datum/pai_software/door_jack/on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
+	var/data[0]
 
-		data["cable"] = user.cable != null
-		data["machine"] = user.cable && (user.cable.machine != null)
-		data["inprogress"] = user.hackdoor != null
-		data["progress_a"] = round(user.hackprogress / 10)
-		data["progress_b"] = user.hackprogress % 10
-		data["aborted"] = user.hack_aborted
+	data["cable"] = user.cable != null
+	data["machine"] = user.cable && (user.cable.machine != null)
+	data["inprogress"] = user.hackdoor != null
+	data["progress_a"] = round(user.hackprogress / 10)
+	data["progress_b"] = user.hackprogress % 10
+	data["aborted"] = user.hack_aborted
 
-		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
-		if(!ui)
-			// Don't copy-paste this unless you're making a pAI software module!
-			ui = new(user, user, id, "pai_doorjack.tmpl", "Door Jack", 300, 150)
-			ui.set_initial_data(data)
-			ui.open()
-			ui.set_auto_update(1)
+	ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
+	if(!ui)
+		// Don't copy-paste this unless you're making a pAI software module!
+		ui = new(user, user, id, "pai_doorjack.tmpl", "Door Jack", 300, 150)
+		ui.set_initial_data(data)
+		ui.open()
+		ui.set_auto_update(1)
 
-	Topic(href, href_list)
-		var/mob/living/silicon/pai/P = usr
-		if(!istype(P)) return
+/datum/pai_software/door_jack/Topic(href, href_list)
+	var/mob/living/silicon/pai/P = usr
+	if(!istype(P))
+		return
 
-		if(href_list["jack"])
-			if(P.cable && P.cable.machine)
-				P.hackdoor = P.cable.machine
-				P.hackloop()
-			return 1
-		else if(href_list["cancel"])
-			P.hackdoor = null
-			return 1
-		else if(href_list["cable"])
-			var/turf/T = get_turf_or_move(P.loc)
-			P.hack_aborted = 0
-			P.cable = new /obj/item/pai_cable(T)
-			for(var/mob/M in viewers(T))
-				M.show_message("<span class='warning'>A port on [P] opens to reveal [P.cable], which promptly falls to the floor.</span>", 3,
-				               "<span class='warning'>You hear the soft click of something light and hard falling to the ground.</span>", 2)
-			return 1
+	if(href_list["jack"])
+		if(P.cable && P.cable.machine)
+			P.hackdoor = P.cable.machine
+			P.hackloop()
+		return 1
+	else if(href_list["cancel"])
+		P.hackdoor = null
+		return 1
+	else if(href_list["cable"])
+		var/turf/T = get_turf_or_move(P.loc)
+		P.hack_aborted = 0
+		P.cable = new /obj/item/pai_cable(T)
+		for(var/mob/M in viewers(T))
+			M.show_message("<span class='warning'>A port on [P] opens to reveal [P.cable], which promptly falls to the floor.</span>", 3,
+							"<span class='warning'>You hear the soft click of something light and hard falling to the ground.</span>", 2)
+		return 1
 
 /mob/living/silicon/pai/proc/hackloop()
 	var/turf/T = get_turf_or_move(src.loc)
@@ -404,94 +408,94 @@
 	id = "atmos_sense"
 	toggle = 0
 
-	on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
-		var/data[0]
+/datum/pai_software/atmosphere_sensor/on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
+	var/data[0]
 
-		var/turf/T = get_turf_or_move(user.loc)
-		if(!T)
-			data["reading"] = 0
-			data["pressure"] = 0
-			data["temperature"] = 0
-			data["temperatureC"] = 0
-			data["gas"] = list()
-		else
-			var/datum/gas_mixture/env = T.return_air()
-			data["reading"] = 1
-			var/pres = env.return_pressure() * 10
-			data["pressure"] = "[round(pres/10)].[pres%10]"
-			data["temperature"] = round(env.temperature)
-			data["temperatureC"] = round(env.temperature-T0C)
+	var/turf/T = get_turf_or_move(user.loc)
+	if(!T)
+		data["reading"] = 0
+		data["pressure"] = 0
+		data["temperature"] = 0
+		data["temperatureC"] = 0
+		data["gas"] = list()
+	else
+		var/datum/gas_mixture/env = T.return_air()
+		data["reading"] = 1
+		var/pres = env.return_pressure() * 10
+		data["pressure"] = "[round(pres/10)].[pres%10]"
+		data["temperature"] = round(env.temperature)
+		data["temperatureC"] = round(env.temperature-T0C)
 
-			var/t_moles = env.total_moles
-			var/gases[0]
-			for(var/g in env.gas)
-				var/gas[0]
-				gas["name"] = GLOB.meta_gas_names[g]
-				gas["percent"] = round((env.gas[g] / t_moles) * 100)
-				gases[++gases.len] = gas
-			data["gas"] = gases
+		var/t_moles = env.total_moles
+		var/gases[0]
+		for(var/g in env.gas)
+			var/gas[0]
+			gas["name"] = GLOB.meta_gas_names[g]
+			gas["percent"] = round((env.gas[g] / t_moles) * 100)
+			gases[++gases.len] = gas
+		data["gas"] = gases
 
-		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
-		if(!ui)
-			// Don't copy-paste this unless you're making a pAI software module!
-			ui = new(user, user, id, "pai_atmosphere.tmpl", "Atmosphere Sensor", 350, 300)
-			ui.set_initial_data(data)
-			ui.open()
+	ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
+	if(!ui)
+		// Don't copy-paste this unless you're making a pAI software module!
+		ui = new(user, user, id, "pai_atmosphere.tmpl", "Atmosphere Sensor", 350, 300)
+		ui.set_initial_data(data)
+		ui.open()
 
 /datum/pai_software/sec_hud
 	name = "Security HUD"
 	ram_cost = 20
 	id = "sec_hud"
 
-	toggle(mob/living/silicon/pai/user)
-		user.secHUD = !user.secHUD
-		if(user.secHUD)
-			get_atom_hud(DATA_HUD_SECURITY_ADVANCED).add_hud_to(user)
-		else
-			get_atom_hud(DATA_HUD_SECURITY_ADVANCED).remove_hud_from(user)
+/datum/pai_software/sec_hud/toggle(mob/living/silicon/pai/user)
+	user.secHUD = !user.secHUD
+	if(user.secHUD)
+		get_atom_hud(DATA_HUD_SECURITY_ADVANCED).add_hud_to(user)
+	else
+		get_atom_hud(DATA_HUD_SECURITY_ADVANCED).remove_hud_from(user)
 
-	is_active(mob/living/silicon/pai/user)
-		return user.secHUD
+/datum/pai_software/sec_hud/is_active(mob/living/silicon/pai/user)
+	return user.secHUD
 
 /datum/pai_software/med_hud
 	name = "Medical HUD"
 	ram_cost = 20
 	id = "med_hud"
 
-	toggle(mob/living/silicon/pai/user)
-		if((user.medHUD = !user.medHUD))
-			get_atom_hud(DATA_HUD_MEDICAL).add_hud_to(user)
-		else
-			get_atom_hud(DATA_HUD_MEDICAL).remove_hud_from(user)
+/datum/pai_software/med_hud/toggle(mob/living/silicon/pai/user)
+	if((user.medHUD = !user.medHUD))
+		get_atom_hud(DATA_HUD_MEDICAL).add_hud_to(user)
+	else
+		get_atom_hud(DATA_HUD_MEDICAL).remove_hud_from(user)
 
-	is_active(mob/living/silicon/pai/user)
-		return user.medHUD
+/datum/pai_software/med_hud/is_active(mob/living/silicon/pai/user)
+	return user.medHUD
 
 /datum/pai_software/translator
 	name = "Universal Translator"
 	ram_cost = 35
 	id = "translator"
 
-	toggle(mob/living/silicon/pai/user)
-		// 	Sol Common, Tradeband, Terminus and Gutter are added with New() and are therefore the current default, always active languages
-		user.translator_on = !user.translator_on
-		if(user.translator_on)
-			user.add_language(LANGUAGE_UNATHI)
-			user.add_language(LANGUAGE_SIIK)
-			user.add_language(LANGUAGE_AKHANI)
-			user.add_language(LANGUAGE_SKRELLIAN)
-			user.add_language(LANGUAGE_ZADDAT)
-			user.add_language(LANGUAGE_SCHECHI)
-		else
-			user.remove_language(LANGUAGE_UNATHI)
-			user.remove_language(LANGUAGE_SIIK)
-			user.remove_language(LANGUAGE_AKHANI)
-			user.remove_language(LANGUAGE_SKRELLIAN)
-			user.remove_language(LANGUAGE_ZADDAT)
-			user.remove_language(LANGUAGE_SCHECHI)
+/datum/pai_software/translator/toggle(mob/living/silicon/pai/user)
+	// 	Sol Common, Tradeband, Terminus and Gutter are added with New() and are therefore the current default, always active languages
+	user.translator_on = !user.translator_on
+	if(user.translator_on)
+		user.add_language(LANGUAGE_UNATHI)
+		user.add_language(LANGUAGE_SIIK)
+		user.add_language(LANGUAGE_AKHANI)
+		user.add_language(LANGUAGE_SKRELLIAN)
+		user.add_language(LANGUAGE_ZADDAT)
+		user.add_language(LANGUAGE_SCHECHI)
+	else
+		user.remove_language(LANGUAGE_UNATHI)
+		user.remove_language(LANGUAGE_SIIK)
+		user.remove_language(LANGUAGE_AKHANI)
+		user.remove_language(LANGUAGE_SKRELLIAN)
+		user.remove_language(LANGUAGE_ZADDAT)
+		user.remove_language(LANGUAGE_SCHECHI)
 
-	is_active(mob/living/silicon/pai/user)
-		return user.translator_on
+/datum/pai_software/translator/is_active(mob/living/silicon/pai/user)
+	return user.translator_on
 
 /datum/pai_software/signaller
 	name = "Remote Signaller"
@@ -499,39 +503,40 @@
 	id = "signaller"
 	toggle = 0
 
-	on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
-		var/data[0]
+/datum/pai_software/signaller/on_nano_ui_interact(mob/living/silicon/pai/user, datum/nanoui/ui=null, force_open=1)
+	var/data[0]
 
-		data["frequency"] = format_frequency(user.sradio.frequency)
-		data["code"] = user.sradio.code
+	data["frequency"] = format_frequency(user.sradio.frequency)
+	data["code"] = user.sradio.code
 
-		ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
-		if(!ui)
-			// Don't copy-paste this unless you're making a pAI software module!
-			ui = new(user, user, id, "pai_signaller.tmpl", "Signaller", 320, 150)
-			ui.set_initial_data(data)
-			ui.open()
+	ui = SSnanoui.try_update_ui(user, user, id, ui, data, force_open)
+	if(!ui)
+		// Don't copy-paste this unless you're making a pAI software module!
+		ui = new(user, user, id, "pai_signaller.tmpl", "Signaller", 320, 150)
+		ui.set_initial_data(data)
+		ui.open()
 
-	Topic(href, href_list)
-		var/mob/living/silicon/pai/P = usr
-		if(!istype(P)) return
+/datum/pai_software/signaller/Topic(href, href_list)
+	var/mob/living/silicon/pai/P = usr
+	if(!istype(P))
+		return
 
-		if(href_list["send"])
-			P.sradio.send_signal("ACTIVATE")
-			for(var/mob/O in hearers(1, P.loc))
-				to_chat(O, "[icon2html(thing = src, target = O)] *beep beep*")
-			return 1
+	if(href_list["send"])
+		P.sradio.send_signal("ACTIVATE")
+		for(var/mob/O in hearers(1, P.loc))
+			to_chat(O, "[icon2html(thing = src, target = O)] *beep beep*")
+		return 1
 
-		else if(href_list["freq"])
-			var/new_frequency = (P.sradio.frequency + text2num(href_list["freq"]))
-			if(new_frequency < PUBLIC_LOW_FREQ || new_frequency > PUBLIC_HIGH_FREQ)
-				new_frequency = sanitize_frequency(new_frequency)
-			P.sradio.set_frequency(new_frequency)
-			return 1
+	else if(href_list["freq"])
+		var/new_frequency = (P.sradio.frequency + text2num(href_list["freq"]))
+		if(new_frequency < PUBLIC_LOW_FREQ || new_frequency > PUBLIC_HIGH_FREQ)
+			new_frequency = sanitize_frequency(new_frequency)
+		P.sradio.set_frequency(new_frequency)
+		return 1
 
-		else if(href_list["code"])
-			P.sradio.code += text2num(href_list["code"])
-			P.sradio.code = round(P.sradio.code)
-			P.sradio.code = min(100, P.sradio.code)
-			P.sradio.code = max(1, P.sradio.code)
-			return 1
+	else if(href_list["code"])
+		P.sradio.code += text2num(href_list["code"])
+		P.sradio.code = round(P.sradio.code)
+		P.sradio.code = min(100, P.sradio.code)
+		P.sradio.code = max(1, P.sradio.code)
+		return 1

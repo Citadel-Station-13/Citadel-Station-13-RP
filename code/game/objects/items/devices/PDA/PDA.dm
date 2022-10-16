@@ -11,7 +11,6 @@ GLOBAL_LIST_EMPTY(PDAs)
 	item_state = "electronic"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_ID | SLOT_BELT
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/id.dmi')
 
 	//Main variables
 	var/pdachoice = 1
@@ -1529,20 +1528,22 @@ GLOBAL_LIST_EMPTY(PDAs)
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "pdabox"
 
-	New()
-		..()
-		new /obj/item/pda(src)
-		new /obj/item/pda(src)
-		new /obj/item/pda(src)
-		new /obj/item/pda(src)
-		new /obj/item/cartridge/head(src)
+/obj/item/storage/box/PDAs/New()
+	..()
+	new /obj/item/pda(src)
+	new /obj/item/pda(src)
+	new /obj/item/pda(src)
+	new /obj/item/pda(src)
+	new /obj/item/cartridge/head(src)
 
-		var/newcart = pick(	/obj/item/cartridge/engineering,
-							/obj/item/cartridge/security,
-							/obj/item/cartridge/medical,
-							/obj/item/cartridge/signal/science,
-							/obj/item/cartridge/quartermaster)
-		new newcart(src)
+	var/newcart = pick(
+		/obj/item/cartridge/engineering,
+		/obj/item/cartridge/medical,
+		/obj/item/cartridge/quartermaster,
+		/obj/item/cartridge/security,
+		/obj/item/cartridge/signal/science,
+	)
+	new newcart(src)
 
 // Pass along the pulse to atoms in contents, largely added so pAIs are vulnerable to EMP
 /obj/item/pda/emp_act(severity)

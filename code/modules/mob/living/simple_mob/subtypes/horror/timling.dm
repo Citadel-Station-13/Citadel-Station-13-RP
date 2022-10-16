@@ -40,6 +40,10 @@
 	hide_amount = 5
 	exotic_amount = 1
 
+/mob/living/simple_mob/horror/TinyTim/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura)
+
 /mob/living/simple_mob/horror/TinyTim/death()
 	playsound(src, 'sound/h_sounds/shitty_tim.ogg', 50, 1)
 	..()

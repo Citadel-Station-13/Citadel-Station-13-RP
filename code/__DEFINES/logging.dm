@@ -2,6 +2,7 @@
 /// sets up a simple log. only use this for dumber logs that don't need any special logic.
 #define SIMPLE_LOG_BOILERPLATE(gvar, name)				\
 /world/_setup_logs_boilerplate(){						\
+	. = ..();											\
 	GLOB.##gvar = "[GLOB.log_directory]/[#name].log";	\
 	start_log(GLOB.##gvar);								\
 }														\

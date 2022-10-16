@@ -1,6 +1,6 @@
-/atom/movable/spawner/window
+/obj/spawner/window
 	icon = 'icons/mapping/spawners/windows.dmi'
-	icon_state = "glass_grille_pane"
+	icon_state = "window_grille_pane"
 	late = TRUE
 
 	/// spawn full windows or panes on grille?
@@ -14,18 +14,18 @@
 	/// found dirs
 	var/found_dirs = NONE
 
-/atom/movable/spawner/window/Initialize(mapload)
+/obj/spawner/window/Initialize(mapload)
 	if(!full_window)
 		find_dirs()
 	return ..()
 
-/atom/movable/spawner/window/proc/find_dirs()
+/obj/spawner/window/proc/find_dirs()
 	for(var/d in GLOB.cardinal)
-		var/atom/movable/spawner/window/WS = locate() in get_step(src, d)
+		var/obj/spawner/window/WS = locate() in get_step(src, d)
 		if(WS)
 			found_dirs |= d
 
-/atom/movable/spawner/window/Spawn()
+/obj/spawner/window/Spawn()
 	if(spawn_grille)
 		new /obj/structure/grille(loc)
 	if(!full_window)
@@ -39,33 +39,33 @@
 			W = new window_pane_path(loc)
 			W.setDir(d)
 
-/atom/movable/spawner/window/full
+/obj/spawner/window/full
 	full_window = TRUE
-	icon_state = "glass_grille_full"
+	icon_state = "window_grille_full"
 
-/atom/movable/spawner/window/reinforced
-	icon_state = "rglass_grille_pane"
+/obj/spawner/window/reinforced
+	icon_state = "rwindow_grille_pane"
 	window_pane_path = /obj/structure/window/reinforced
 	window_full_path = /obj/structure/window/reinforced/full
 
-/atom/movable/spawner/window/reinforced/full
-	icon_state = "rglass_grille_full"
+/obj/spawner/window/reinforced/full
+	icon_state = "rwindow_grille_full"
 	full_window = TRUE
 
-/atom/movable/spawner/window/borosillicate
+/obj/spawner/window/borosillicate
 	icon_state = "phoron_grille_pane"
 	window_pane_path = /obj/structure/window/phoronbasic
 	window_full_path = /obj/structure/window/phoronbasic/full
 
-/atom/movable/spawner/window/borosillicate/full
+/obj/spawner/window/borosillicate/full
 	icon_state = "phoron_grille_full"
 	full_window = TRUE
 
-/atom/movable/spawner/window/borosillicate/reinforced
+/obj/spawner/window/borosillicate/reinforced
 	icon_state = "rphoron_grille_pane"
 	window_pane_path = /obj/structure/window/phoronreinforced
 	window_full_path = /obj/structure/window/phoronreinforced/full
 
-/atom/movable/spawner/window/borosillicate/reinforced/full
+/obj/spawner/window/borosillicate/reinforced/full
 	icon_state = "rphoron_grille_full"
 	full_window = TRUE

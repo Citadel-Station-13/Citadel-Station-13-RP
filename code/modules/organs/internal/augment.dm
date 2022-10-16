@@ -172,7 +172,7 @@
 
 	enable_augments(usr)
 
-/mob/living/carbon/human/proc/enable_augments(var/mob/living/user)
+/mob/living/carbon/human/proc/enable_augments(mob/living/L)
 	var/list/options = list()
 
 	var/list/present_augs = list()
@@ -190,11 +190,11 @@
 		for(var/key in options)
 			choice = key
 	else
-		choice = show_radial_menu(user, src, options)
+		choice = show_radial_menu(L, src, options)
 
 	if(!isnull(choice) && options[choice])
 		var/obj/item/organ/internal/augment/A = present_augs[choice]
-		A.augment_action(user)
+		A.augment_action(L)
 
 /* equip_augment_item
  * Used to equip an organ's augment items when possible.
@@ -214,11 +214,11 @@
 
 	if(buckled)
 		var/obj/Ob = buckled
-		if(Ob.buckle_lying)
+		if(Ob.buckle_lying(src))
 			to_chat(M, SPAN_NOTICE("You cannot use your augments when restrained."))
 			return FALSE
 
-	if((slot == /datum/inventory_slot_meta/abstract/left_hand && l_hand) || (slot == /datum/inventory_slot_meta/abstract/right_hand && r_hand))
+	if((slot == /datum/inventory_slot_meta/abstract/hand/left && l_hand) || (slot == /datum/inventory_slot_meta/abstract/hand/right && r_hand))
 		to_chat(M, SPAN_WARNING("Your hand is full.  Drop something first."))
 		return FALSE
 

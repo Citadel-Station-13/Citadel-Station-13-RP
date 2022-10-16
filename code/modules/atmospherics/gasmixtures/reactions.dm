@@ -101,7 +101,7 @@
 
 		return firelevel
 
-datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
+/datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 	. = 0
 	for(var/g in gas)
 		if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER && gas[g] >= 0.1)

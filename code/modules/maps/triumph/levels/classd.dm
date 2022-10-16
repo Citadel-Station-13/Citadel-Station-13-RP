@@ -114,7 +114,7 @@ CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 		/mob/living/simple_mob/animal/giant_spider/webslinger = 2
 	)
 
-	obj/tether_away_spawner/classd/crater
+/obj/tether_away_spawner/classd/crater
 	name = "Class D Crater Spawner"
 	faction = "crater"
 	atmos_comp = TRUE

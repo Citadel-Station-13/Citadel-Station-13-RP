@@ -206,13 +206,14 @@
 
 // Used in mapping to avoid
 /obj/structure/grille/broken
-	destroyed = 1
+	destroyed = TRUE
+	density = FALSE
 	icon_state = "grille-b"
-	density = 0
-	New()
-		..()
-		health = rand(-5, -1) //In the destroyed but not utterly threshold.
-		healthcheck() //Send this to healthcheck just in case we want to do something else with it.
+
+/obj/structure/grille/broken/New()
+	..()
+	health = rand(-5, -1) //In the destroyed but not utterly threshold.
+	healthcheck() //Send this to healthcheck just in case we want to do something else with it.
 
 /obj/structure/grille/cult
 	name = "cult grille"

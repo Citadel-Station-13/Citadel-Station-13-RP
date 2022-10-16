@@ -72,3 +72,17 @@
   - bugfix: Corrects inheritance of color changing var.
   - rscadd: Adds an open space turf.
   - rscadd: Adds a faction to launchers.
+2022-09-28:
+  Captain277:
+  - bugfix: Enables turf checking for skyfall.
+  - tweak: Adjusts charge cost.
+  - rscadd: Adds the Runner Jacket
+  - rscadd: Adds Grit, an exotic shotgun.
+  TheLordME:
+  - tweak: tweaked the mining refinery machines to work a little faster
+2022-09-30:
+  Captain277:
+  - tweak: Tweaks how the horror aura is assigned to mobs.
+  - tweak: Changes cost of Tyrmalin mining crate.
+  - bugfix: Fixes issues in chainsaw proc.
+  - rscadd: Adds new voidsuit.

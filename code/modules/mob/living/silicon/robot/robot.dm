@@ -43,6 +43,9 @@
 	health = 200
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/robot/cyborg)
 
+	buckle_allowed = TRUE
+	buckle_flags = BUCKLING_NO_USER_BUCKLE_OTHER_TO_SELF
+
 	mob_bump_flag = ROBOT
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY //trundle trundle
@@ -199,6 +202,8 @@
 		cell_component.installed = 1
 
 	add_robot_verbs()
+
+	AddComponent(/datum/component/riding_filter/mob/robot)
 
 /mob/living/silicon/robot/proc/init()
 	aiCamera = new/obj/item/camera/siliconcam/robot_camera(src)
@@ -762,6 +767,9 @@
 	updatename("Default")
 
 /mob/living/silicon/robot/attack_hand(mob/user)
+	. = ..()
+	if(. & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
 
 	add_fingerprint(user)
 
@@ -1238,7 +1246,7 @@
 			laws = new /datum/ai_laws/syndicate_override
 			var/time = time2text(world.realtime,"hh:mm:ss")
 			lawchanges.Add("[time] <B>:</B> [user.name]([user.key]) emagged [name]([key])")
-			var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+			var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 			set_zeroth_law("Only [user.real_name] and people [TU.he] designate[TU.s] as being such are operatives.")
 			. = 1
 			spawn()

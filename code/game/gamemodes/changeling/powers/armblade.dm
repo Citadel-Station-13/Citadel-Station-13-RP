@@ -88,7 +88,7 @@
 	return ..()
 
 /obj/item/melee/changeling/suicide_act(mob/user)
-	var/datum/gender/T = gender_datums[user.get_visible_gender()]
+	var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message("<span class='danger'>[user] is impaling [T.himself] with the [src.name]! It looks like [T.he] [T.is] trying to commit suicide.</span>")
 	return(BRUTELOSS)
 

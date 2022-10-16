@@ -20,8 +20,8 @@
 	var/obj/item/cell/bcell = null
 	var/cell_type = /obj/item/cell/device
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 
 /obj/item/melee/energy/proc/activate(mob/living/user)
@@ -81,7 +81,7 @@
 			to_chat(user, "<span class='notice'>\The [src] does not seem to have power.</span>")
 			return
 
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	if (active)
 		if ((CLUMSY in user.mutations) && prob(50))
 			user.visible_message("<span class='danger'>\The [user] accidentally cuts [TU.himself] with \the [src].</span>",\
@@ -100,7 +100,7 @@
 	return
 
 /obj/item/melee/energy/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	if(active)
 		user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] stomach open with \the [src]! It looks like [TU.he] [TU.is] trying to commit seppuku.</span>",\
 			"<span class='danger'>\The [user] is falling on \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"))
@@ -216,7 +216,7 @@
 	to_chat(user, "<span class='notice'>\The [src] is de-energised. It's just a regular axe now.</span>")
 
 /obj/item/melee/energy/axe/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	visible_message("<span class='warning'>\The [user] swings \the [src] towards [TU.his] head! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
 	return (BRUTELOSS|FIRELOSS)
 
@@ -736,7 +736,7 @@
 	desc = "A broad, short energy blade.  You'll be glad to have this in a fight."
 	icon_state = "sword0"
 	icon = 'icons/obj/weapons_vr.dmi'
-	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi')
+	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi')
 
 /obj/item/melee/energy/sword/imperial/activate(mob/living/user)
 	..()

@@ -722,9 +722,14 @@
 	gender = MALE
 	flags = HAIR_VERY_SHORT
 
-/datum/sprite_accessory/hair/twintail
+/datum/sprite_accessory/hair/twintai1
 	name = "Twintail"
 	icon_state = "hair_twintail"
+	flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/twintail2
+	name = "Twintail Short"
+	icon_state = "hair_twintailshort"
 	flags = HAIR_TIEABLE
 
 /datum/sprite_accessory/hair/undercut1

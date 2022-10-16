@@ -126,7 +126,7 @@
 /turf/simulated/floor/classp,
 /area/class_p/facility)
 "dd" = (
-/obj/vehicle/train/rover/engine/dunebuggy,
+/obj/vehicle_old/train/rover/engine/dunebuggy,
 /turf/simulated/floor/old_tile/blue/classp{
 	color = "#8ba7ad";
 	icon = 'icons/turf/flooring/tiles_vr.dmi';
@@ -207,13 +207,9 @@
 /area/class_p/facility)
 "gk" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/old_tile/blue/classp{
@@ -290,8 +286,6 @@
 /area/class_p/facility)
 "kz" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/old_tile/blue/classp{
@@ -323,18 +317,12 @@
 /area/class_p/unexplored)
 "lC" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/old_tile/blue/classp{
@@ -431,7 +419,6 @@
 "rk" = (
 /obj/machinery/power/port_gen/pacman,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/classp,
@@ -480,8 +467,6 @@
 /area/class_p/facility)
 "sA" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -557,13 +542,9 @@
 /area/class_p/facility)
 "wk" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/old_tile/blue/classp{
@@ -659,7 +640,6 @@
 /area/class_p/facility)
 "BE" = (
 /obj/structure/cable{
-	d2 = 2;
 	icon_state = "0-2"
 	},
 /obj/machinery/power/smes/buildable/point_of_interest,
@@ -705,7 +685,6 @@
 /area/class_p/facility)
 "Df" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/terminal,
@@ -766,8 +745,6 @@
 /area/class_p/unexplored)
 "Gw" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/old_tile/blue/classp{
@@ -837,8 +814,6 @@
 /area/class_p/facility)
 "IP" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/classp,
@@ -937,8 +912,6 @@
 /area/class_p/unexplored)
 "OT" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/old_tile/blue/classp{
@@ -1069,7 +1042,6 @@
 "Vc" = (
 /obj/machinery/power/port_gen/pacman,
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/old_tile/blue/classp{

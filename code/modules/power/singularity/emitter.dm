@@ -27,7 +27,7 @@
 	var/burst_delay = 2
 	var/initial_fire_delay = 100
 
-	var/integrity = 80
+	integrity = 80
 
 
 /obj/machinery/power/emitter/verb/rotate_clockwise()

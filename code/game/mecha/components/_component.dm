@@ -15,9 +15,9 @@
 
 	var/list/required_type = null	// List, if it exists. Exosuits meant to use the component (Unique var changes / effects)
 
-	var/integrity
+	integrity = 100
 	var/integrity_danger_mod = 0.5	// Multiplier for comparison to max_integrity before problems start.
-	var/max_integrity = 100
+	max_integrity = 100
 
 	var/step_delay = 0
 

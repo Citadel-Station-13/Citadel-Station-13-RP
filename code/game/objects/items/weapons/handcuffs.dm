@@ -19,13 +19,6 @@
 	var/cuff_sound = 'sound/weapons/handcuffs.ogg'
 	var/cuff_type = "handcuffs"
 	var/use_time = 30
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/handcuffs.dmi')
-
-/obj/item/handcuffs/get_worn_icon_state(var/slot_id)
-	if(slot_id == SLOT_ID_HANDCUFFED)
-		return "handcuff1" //Simple
-
-	return ..()
 
 /obj/item/handcuffs/attack(var/mob/living/carbon/C, var/mob/living/user)
 
@@ -123,7 +116,7 @@ var/last_chew = 0
 	var/obj/item/organ/external/O = H.organs_by_name[(H.hand ? BP_L_HAND : BP_R_HAND)]
 	if (!O) return
 
-	var/datum/gender/T = gender_datums[H.get_visible_gender()]
+	var/datum/gender/T = GLOB.gender_datums[H.get_visible_gender()]
 
 	var/s = "<span class='warning'>[H.name] chews on [T.his] [O.name]!</span>"
 	H.visible_message(s, "<span class='warning'>You chew on your [O.name]!</span>")
@@ -210,12 +203,6 @@ var/last_chew = 0
 	icon_state = "disruptorcuff"
 	desc = "These cutting edge handcuffs were originally designed by the PMD. Commonly deployed to restrain anomalous lifeforms, disruptor cuffs employ a form of acausal logic engine disruption, in tandem with morphogenic resonance, to neutralize the abilities of technological and biological threats."
 
-/obj/item/handcuffs/disruptor/get_worn_icon_state(var/slot_id)
-	if(slot_id == SLOT_ID_HANDCUFFED)
-		return "disruptorcuff1" //Simple
-
-	return ..()
-
 /obj/item/handcuffs/disruptor/equipped(var/mob/living/user,var/slot)
 	. = ..()
 	if(slot == SLOT_ID_HANDCUFFED)
@@ -233,15 +220,8 @@ var/last_chew = 0
 	origin_tech = list(TECH_MATERIAL = 1)
 	breakouttime = 300	//Deciseconds = 30s = 0.5 minute
 	cuff_type = "legcuffs"
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/handcuffs.dmi')
 	elastic = 0
 	cuff_sound = 'sound/weapons/handcuffs.ogg' //This shold work for now.
-
-/obj/item/handcuffs/legcuffs/get_worn_icon_state(var/slot_id)
-	if(slot_id == SLOT_ID_LEGCUFFED)
-		return "legcuff1"
-
-	return ..()
 
 /obj/item/handcuffs/legcuffs/attack(var/mob/living/carbon/C, var/mob/living/user)
 	if(!user.IsAdvancedToolUser())

@@ -175,7 +175,6 @@ var/global/list/limb_icon_cache = list()
 				mob_icon = new /icon('icons/mob/cyberlimbs/robotic.dmi', "[icon_name][s_base ? "[s_base]" : ""][gender ? "_[gender]" : ""]")
 			else
 				mob_icon = new /icon(species.get_icobase(owner, (status & ORGAN_MUTATED)), "[icon_name][s_base ? "_[s_base]" : ""][gender ? "_[gender]" : ""]")
-				log_qdel("generated a [species] specific [src] with [icon_name] and _[s_base]")
 			apply_colouration(mob_icon)
 
 			//Body markings, actually does not include head this time. Done separately above.

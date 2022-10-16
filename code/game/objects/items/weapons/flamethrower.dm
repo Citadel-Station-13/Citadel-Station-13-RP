@@ -4,8 +4,8 @@
 	icon = 'icons/obj/flamethrower.dmi'
 	icon_state = "flamethrowerbase"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_guns.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_guns.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
 			)
 	item_state = "flamethrower_0"
 	force = 3.0

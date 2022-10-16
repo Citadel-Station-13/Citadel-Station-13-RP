@@ -13,13 +13,32 @@
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
 
-//Use this template to update the Western Z when POIs are created for it.
-/datum/map_template/rift_lateload/lavaland/on_map_loaded(z)
-	. = ..()
-	seed_submaps(list(Z_LEVEL_LAVALAND), 40, /area/lavaland/central/unexplored, /datum/map_template/submap/level_specific/lavaland)
-	new /datum/random_map/noise/ore/lavaland(null, 1, 1, Z_LEVEL_LAVALAND, 64, 64)         // Create the mining ore distribution map.
-	new /datum/random_map/automata/cave_system/no_cracks(null, 1, 1, Z_LEVEL_LAVALAND, world.maxx - 4, world.maxy - 4) // Create the lavaland Z-level.
 */
+
+
+/datum/map_template/rift_lateload
+	allow_duplicates = FALSE
+	var/associated_map_datum
+
+/datum/map_template/rift_lateload/on_map_loaded(z)
+	if(!associated_map_datum || !ispath(associated_map_datum))
+		log_game("Extra z-level [src] has no associated map datum")
+		return
+
+	new associated_map_datum(GLOB.using_map, z)
+
+/datum/map_z_level/rift_lateload
+	z = 0
+	flags = MAP_LEVEL_SEALED
+
+/datum/map_z_level/rift_lateload/New(var/datum/map/map, mapZ)
+	if(mapZ && !z)
+		z = mapZ
+	return ..(map)
+
+
+
+
 //////////////////////////////////////////////////////////////////////////////
 /// Away Missions
 
@@ -230,8 +249,38 @@
 	z = Z_LEVEL_TRADEPORT
 	base_turf = /turf/space
 
+
+//////////////////////////////////////////////////////////////////////////////
+//Rogue Mines Stuff
+
+/datum/map_template/rift_lateload/tether_roguemines1
+	name = "Asteroid Belt 1"
+	desc = "Mining, but rogue. Zone 1"
+	mappath = "_maps/map_levels/140x140/roguemining/rogue_mine1.dmm"
+	associated_map_datum = /datum/map_z_level/rift_lateload/roguemines1
+
+/datum/map_z_level/rift_lateload/roguemines1
+	name = "Belt 1"
+	z = Z_LEVEL_ROGUEMINE_1
+	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
+
+/datum/map_template/rift_lateload/tether_roguemines2
+	name = "Asteroid Belt 2"
+	desc = "Mining, but rogue. Zone 2"
+	mappath = "_maps/map_levels/140x140/roguemining/rogue_mine2.dmm"
+
+	associated_map_datum = /datum/map_z_level/rift_lateload/roguemines2
+
+/datum/map_z_level/rift_lateload/roguemines2
+	name = "Belt 2"
+	z = Z_LEVEL_ROGUEMINE_2
+	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
+
+//////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 // Code Shenanigans for rift lateload maps
+
+/*	// Move to  the top for organzation sake
 /datum/map_template/rift_lateload
 	allow_duplicates = FALSE
 	var/associated_map_datum
@@ -251,6 +300,7 @@
 	if(mapZ && !z)
 		z = mapZ
 	return ..(map)
+*/
 
 /turf/unsimulated/wall/seperator //to block vision between transit zones
 	name = ""

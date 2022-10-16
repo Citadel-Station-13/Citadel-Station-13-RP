@@ -104,12 +104,13 @@
 
 	O.add_ai_verbs()
 
-	O.rename_self("ai",1)
-	spawn(0)	// Mobs still instantly del themselves, thus we need to spawn or O will never be returned
+	O.rename_self("ai")
+	// Mobs still instantly del themselves, thus we need to spawn or O will never be returned.
+	spawn(0)
 		qdel(src)
 	return O
 
-//human -> robot
+/// Human -> Robot
 /mob/living/carbon/human/proc/Robotize()
 	if (transforming)
 		return
@@ -296,6 +297,3 @@
 
 	//Not in here? Must be untested!
 	return 0
-
-
-

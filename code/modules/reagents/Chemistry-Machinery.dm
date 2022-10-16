@@ -153,6 +153,11 @@
 		return
 	replace_beaker(user)
 
+/obj/machinery/reagentgrinder/Exited(atom/movable/AM, atom/newLoc)
+	. = ..()
+	if(AM in holdingitems)
+		holdingitems -= AM
+
 /obj/machinery/reagentgrinder/attack_hand(mob/user as mob)
 	interact(user)
 
@@ -258,7 +263,7 @@
 	if(!user)
 		return FALSE
 	if(beaker)
-		if(!user.incapacitated() && Adjacent(user))
+		if(!user.incapacitated() && Adjacent(user) && !isrobot(user))
 			user.put_in_hands(beaker)
 		else
 			beaker.forceMove(drop_location())

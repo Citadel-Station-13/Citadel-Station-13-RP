@@ -713,14 +713,12 @@
 "cz" = (
 /obj/machinery/power/port_gen/pacman/super,
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating/external,
 /area/awaymission/snow_outpost/dark)
 "cA" = (
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating/external,
@@ -1961,8 +1959,7 @@
 /area/awaymission/snow_outpost/outside)
 "gD" = (
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/machinery/porta_turret/alien/destroyed,
 /turf/simulated/shuttle/floor/alienplating,
@@ -1981,10 +1978,7 @@
 /area/awaymission/snow_outpost/dark)
 "gF" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/snow_outpost/dark)
@@ -2003,24 +1997,18 @@
 /area/awaymission/snow_outpost/dark)
 "gH" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/snow_outpost/dark)
 "gI" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/snow_outpost/dark)
 "gJ" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/prop/alien/power,
@@ -2590,7 +2578,7 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "iL" = (
-/obj/vehicle/bike,
+/obj/vehicle_old/bike,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/outside/nospawn)
 "iM" = (

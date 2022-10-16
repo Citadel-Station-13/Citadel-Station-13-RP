@@ -714,12 +714,9 @@
 /mob/living/carbon/human/get_true_species_name()
 	return species.get_true_name()
 
-/mob/living/carbon/human/get_species_id()
-	return species.id
-
 /mob/living/carbon/human/proc/play_xylophone()
 	if(!src.xylophone)
-		var/datum/gender/T = gender_datums[get_visible_gender()]
+		var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
 		visible_message("<font color='red'>\The [src] begins playing [T.his] ribcage like a xylophone. It's quite spooky.</font>","<font color=#4F49AF>You begin to play a spooky refrain on your ribcage.</font>","<font color='red'>You hear a spooky xylophone melody.</font>")
 		var/song = pick('sound/effects/xylophone1.ogg','sound/effects/xylophone2.ogg','sound/effects/xylophone3.ogg')
 		playsound(loc, song, 50, 1, -1)
@@ -805,7 +802,7 @@
 			gender = NEUTER
 	regenerate_icons()
 	check_dna()
-	var/datum/gender/T = gender_datums[get_visible_gender()]
+	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
 	visible_message("<font color=#4F49AF>\The [src] morphs and changes [T.his] appearance!</font>", "<font color=#4F49AF>You change your appearance!</font>", "<font color='red'>Oh, god!  What the hell was that?  It sounded like flesh getting squished and bone ground into a different shape!</font>")
 
 /mob/living/carbon/human/proc/remotesay()
@@ -1057,8 +1054,8 @@
 
 	if(usr.stat || usr.restrained() || !isliving(usr)) return
 
-	var/datum/gender/TU = gender_datums[usr.get_visible_gender()]
-	var/datum/gender/T = gender_datums[get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[usr.get_visible_gender()]
+	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
 
 	if(usr == src)
 		self = 1
@@ -1148,6 +1145,9 @@
 	if(hud_used)
 		qdel(hud_used) //remove the hud objects
 	hud_used = new /datum/hud(src)
+	// todo: this is awful lol
+	if(plane_holder && client)
+		client.screen |= plane_holder.plane_masters
 
 	// skip the rest
 	if(skip)
@@ -1519,23 +1519,24 @@
 		else
 			set_base_layer(HIDING_LAYER)
 
+/**
+ * Shows species in tooltips and examine.
+ *
+ * Get custom species name if set, otherwise use the species name
+ * Beepboops get extra special text based on gender if obviously beepboop
+ * Else species name
+ */
 /mob/living/carbon/human/proc/get_display_species()
-	//Shows species in tooltip
-	if(src.custom_species)
-		return custom_species
-	//Beepboops get special text if obviously beepboop
-	if(looksSynthetic())
-		if(gender == MALE)
-			return "Android"
-		else if(gender == FEMALE)
-			return "Gynoid"
+	var/species_name = src.custom_species ? custom_species : species.get_examine_name()
+	switch(gender) //Not identifying_gender as this is relating to physical traits.
+		if(MALE)
+			return "[looksSynthetic() ? "[species_name] Android" : species_name]"
+		if(FEMALE)
+			return "[looksSynthetic() ? "[species_name] Gynoid" : species_name]"
+		if(NEUTER, PLURAL)
+			return "[looksSynthetic() ? "Synthetic [species_name]" : species_name]"
 		else
-			return "Synthetic"
-	//Else species name
-	if(species)
-		return species.get_examine_name()
-	//Else CRITICAL FAILURE!
-	return ""
+			return SPAN_WARNING("Unknown")
 
 /mob/living/carbon/human/get_nametag_name(mob/user)
 	return name //Could do fancy stuff here?
@@ -1634,3 +1635,12 @@
 			LAZYOR(., SLOT_ICLOTHING)
 		if(wear_suit.flags_inv & HIDESHOES)
 			LAZYOR(., SLOT_FEET)
+
+//! Pixel Offsets
+/mob/living/carbon/human/get_centering_pixel_x_offset(dir, atom/aligning)
+	. = ..()
+	// uh oh stinky
+	if(!isTaurTail(tail_style) || !(dir & (EAST|WEST)))
+		return
+	// groan
+	. += ((size_multiplier * icon_scale_x) - 1) * ((dir & EAST)? -16 : 16)

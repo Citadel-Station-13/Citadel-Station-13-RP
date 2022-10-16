@@ -18,7 +18,7 @@
 	pickup_sound = 'sound/items/pickup/weldingtool.ogg'
 
 /obj/item/surgical/attack(mob/M, mob/user)
-	if(user.a_intent == INTENT_HELP)	//A tad messy, but this should stop people from smacking their patients in surgery
+	if(user.a_intent == INTENT_HELP) //A tad messy, but this should stop people from smacking their patients in surgery
 		return 0
 	..()
 
@@ -69,10 +69,12 @@
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	attack_verb = list("drilled")
 
-	suicide_act(mob/user)
-		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-		user.visible_message(pick("<span class='danger'>\The [user] is pressing \the [src] to [TU.his] temple and activating it! It looks like [TU.hes] trying to commit suicide.</span>",
-		                       "<span class='danger'>\The [user] is pressing \the [src] to [TU.his] chest and activating it! It looks like [TU.hes] trying to commit suicide.</span>"))
+/obj/item/surgical/surgicaldrill/suicide_act(mob/user)
+		var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
+		user.visible_message(pick(
+			SPAN_DANGER("\The [user] is pressing \the [src] to [TU.his] temple and activating it! It looks like [TU.hes] trying to commit suicide."),
+			SPAN_DANGER("\The [user] is pressing \the [src] to [TU.his] chest and activating it! It looks like [TU.hes] trying to commit suicide."),
+		))
 		return (BRUTELOSS)
 
 /*
@@ -95,7 +97,7 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /obj/item/surgical/scalpel/suicide_act(mob/user)
-		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+		var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 		user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
 		                      "<span class='danger'>\The [user] is slitting [TU.his] throat with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
 		                      "<span class='danger'>\The [user] is slitting [TU.his] stomach open with the [src.name]! It looks like [TU.hes] trying to commit seppuku.</span>"))
@@ -323,7 +325,7 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /obj/item/surgical/scalpel_primitive/suicide_act(mob/user)
-		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+		var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 		user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
 		                      "<span class='danger'>\The [user] is slitting [TU.his] throat with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
 		                      "<span class='danger'>\The [user] is slitting [TU.his] stomach open with the [src.name]! It looks like [TU.hes] trying to commit seppuku.</span>"))

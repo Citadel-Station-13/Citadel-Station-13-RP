@@ -1,5 +1,3 @@
-
-
 /obj/item/reagent_containers/food/drinks/drinkingglass
 	name = "glass"
 	desc = "Your standard drinking glass."
@@ -12,47 +10,47 @@
 	pickup_sound =  'sound/items/pickup/drinkglass.ogg'
 	matter = list(MAT_GLASS = 500)
 
-	on_reagent_change()
-		/*if(reagents.reagent_list.len > 1 )
-			icon_state = "glass_brown"
-			name = "Glass of Hooch"
-			desc = "Two or more drinks, mixed together."*/
-		/*else if(reagents.reagent_list.len == 1)
-			for(var/datum/reagent/R in reagents.reagent_list)
-				switch(R.id)*/
-		if (reagents.reagent_list.len > 0)
-			var/datum/reagent/R = reagents.get_master_reagent()
+/obj/item/reagent_containers/food/drinks/drinkingglass/on_reagent_change()
+	/*if(reagents.reagent_list.len > 1 )
+		icon_state = "glass_brown"
+		name = "Glass of Hooch"
+		desc = "Two or more drinks, mixed together."*/
+	/*else if(reagents.reagent_list.len == 1)
+		for(var/datum/reagent/R in reagents.reagent_list)
+			switch(R.id)*/
+	if (reagents.reagent_list.len > 0)
+		var/datum/reagent/R = reagents.get_master_reagent()
 
-			if(R.glass_icon_state)
-				icon_state = R.glass_icon_state
-			else
-				icon_state = "glass_brown"
-
-			if(R.glass_name)
-				name = R.glass_name
-			else
-				name = "Glass of.. what?"
-
-			if(R.glass_desc)
-				desc = R.glass_desc
-			else
-				desc = "You can't really tell what this is."
-
-			if(R.glass_center_of_mass)
-				center_of_mass = R.glass_center_of_mass
-			else
-				center_of_mass = list("x"=16, "y"=10)
-
-			if(R.price_tag)
-				price_tag = R.price_tag
-			else
-				price_tag = null
+		if(R.glass_icon_state)
+			icon_state = R.glass_icon_state
 		else
-			icon_state = "glass_empty"
-			name = "glass"
-			desc = "Your standard drinking glass."
+			icon_state = "glass_brown"
+
+		if(R.glass_name)
+			name = R.glass_name
+		else
+			name = "Glass of.. what?"
+
+		if(R.glass_desc)
+			desc = R.glass_desc
+		else
+			desc = "You can't really tell what this is."
+
+		if(R.glass_center_of_mass)
+			center_of_mass = R.glass_center_of_mass
+		else
 			center_of_mass = list("x"=16, "y"=10)
-			return
+
+		if(R.price_tag)
+			price_tag = R.price_tag
+		else
+			price_tag = null
+	else
+		icon_state = "glass_empty"
+		name = "glass"
+		desc = "Your standard drinking glass."
+		center_of_mass = list("x"=16, "y"=10)
+		return
 
 /obj/item/reagent_containers/food/drinks/cup
 	name = "coffee cup"
@@ -62,41 +60,41 @@
 	volume = 30
 	center_of_mass = list("x"=16, "y"=16)
 
-	on_reagent_change()
-		if (reagents.reagent_list.len > 0)
-			var/datum/reagent/R = reagents.get_master_reagent()
+/obj/item/reagent_containers/food/drinks/cup/on_reagent_change()
+	if (reagents.reagent_list.len > 0)
+		var/datum/reagent/R = reagents.get_master_reagent()
 
-			if(R.cup_icon_state)
-				icon_state = R.cup_icon_state
-			else
-				icon_state = "cup_brown"
-
-			if(R.cup_name)
-				name = R.cup_name
-			else
-				name = "Cup of.. what?"
-
-			if(R.cup_desc)
-				desc = R.cup_desc
-			else
-				desc = "You can't really tell what this is."
-
-			if(R.cup_center_of_mass)
-				center_of_mass = R.cup_center_of_mass
-			else
-				center_of_mass = list("x"=16, "y"=16)
-
-			if(R.price_tag)
-				price_tag = R.price_tag
-			else
-				price_tag = null
-
+		if(R.cup_icon_state)
+			icon_state = R.cup_icon_state
 		else
-			icon_state = "cup_empty"
-			name = "coffee cup"
-			desc = "The container of oriental luxuries."
+			icon_state = "cup_brown"
+
+		if(R.cup_name)
+			name = R.cup_name
+		else
+			name = "Cup of.. what?"
+
+		if(R.cup_desc)
+			desc = R.cup_desc
+		else
+			desc = "You can't really tell what this is."
+
+		if(R.cup_center_of_mass)
+			center_of_mass = R.cup_center_of_mass
+		else
 			center_of_mass = list("x"=16, "y"=16)
-			return
+
+		if(R.price_tag)
+			price_tag = R.price_tag
+		else
+			price_tag = null
+
+	else
+		icon_state = "cup_empty"
+		name = "coffee cup"
+		desc = "The container of oriental luxuries."
+		center_of_mass = list("x"=16, "y"=16)
+		return
 
 // for /obj/machinery/vending/sovietsoda
 /obj/item/reagent_containers/food/drinks/drinkingglass/soda/Initialize(mapload)

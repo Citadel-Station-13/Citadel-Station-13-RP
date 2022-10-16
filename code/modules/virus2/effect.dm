@@ -51,9 +51,9 @@
 	var/badness = 1
 	var/data = null // For semi-procedural effects; this should be generated in generate() if used
 
-	proc/activate(var/mob/living/carbon/mob,var/multiplier)
-	proc/deactivate(var/mob/living/carbon/mob)
-	proc/generate(copy_data) // copy_data will be non-null if this is a copy; it should be used to initialise the data for this effect if present
+/datum/disease2/effect/proc/activate(mob/living/carbon/mob, multiplier)
+/datum/disease2/effect/proc/deactivate(mob/living/carbon/mob)
+/datum/disease2/effect/proc/generate(copy_data) // copy_data will be non-null if this is a copy; it should be used to initialise the data for this effect if present
 
 /datum/disease2/effect/invisible
 	name = "Waiting Syndrome"
@@ -140,7 +140,7 @@
 	badness = 3
 
 /datum/disease2/effect/suicide/activate(var/mob/living/carbon/mob,var/multiplier)
-	var/datum/gender/TM = gender_datums[mob.get_visible_gender()]
+	var/datum/gender/TM = GLOB.gender_datums[mob.get_visible_gender()]
 	if(prob(25))
 		mob.visible_message("<font color='red'><b>[mob.name] is holding [TM.his] breath. It looks like [TM.his] ability to breath [TM.is] constricted!</b></font>")
 		mob.apply_damage(15, OXY)

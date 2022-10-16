@@ -6,7 +6,7 @@
 			log_admin("[key_name(usr)] has left build mode.")
 			M.client.buildmode = 0
 			M.client.show_popup_menus = 1
-			for(var/obj/effect/bmode/buildholder/H)
+			for(var/obj/effect/bmode/buildholder/H in GLOB.buildholders)
 				if(H.cl == M.client)
 					qdel(H)
 		else
@@ -52,102 +52,106 @@
 /obj/effect/bmode/builddir
 	icon_state = "build"
 	screen_loc = "NORTH,WEST"
-	Click()
-		switch(dir)
-			if(NORTH)
-				setDir(EAST)
-			if(EAST)
-				setDir(SOUTH)
-			if(SOUTH)
-				setDir(WEST)
-			if(WEST)
-				setDir(NORTHWEST)
-			if(NORTHWEST)
-				setDir(NORTH)
-		return 1
+
+/obj/effect/bmode/builddir/Click()
+	switch(dir)
+		if(NORTH)
+			setDir(EAST)
+		if(EAST)
+			setDir(SOUTH)
+		if(SOUTH)
+			setDir(WEST)
+		if(WEST)
+			setDir(NORTHWEST)
+		if(NORTHWEST)
+			setDir(NORTH)
+	return 1
 
 /obj/effect/bmode/buildhelp
 	icon = 'icons/misc/buildmode.dmi'
 	icon_state = "buildhelp"
 	screen_loc = "NORTH,WEST+1"
-	Click()
-		switch(master.cl.buildmode)
-			if(1) // Basic Build
-				to_chat(usr, "<span class='notice'>***********************************************************</span>")
-				to_chat(usr, "<span class='notice'>Left Mouse Button        = Construct / Upgrade</span>")
-				to_chat(usr, "<span class='notice'>Right Mouse Button       = Deconstruct / Delete / Downgrade</span>")
-				to_chat(usr, "<span class='notice'>Left Mouse Button + ctrl = R-Window</span>")
-				to_chat(usr, "<span class='notice'>Left Mouse Button + alt  = Airlock</span>")
-				to_chat(usr, "")
-				to_chat(usr, "<span class='notice'>Use the button in the upper left corner to</span>")
-				to_chat(usr, "<span class='notice'>change the direction of built objects.</span>")
-				to_chat(usr, "<span class='notice'>***********************************************************</span>")
-			if(2) // Adv. Build
-				to_chat(usr, "<span class='notice'>***********************************************************</span>")
-				to_chat(usr, "<span class='notice'>Right Mouse Button on buildmode button = Set object type</span>")
-				to_chat(usr, "<span class='notice'>Middle Mouse Button on buildmode button= On/Off object type saying</span>")
-				to_chat(usr, "<span class='notice'>Middle Mouse Button on turf/obj        = Capture object type</span>")
-				to_chat(usr, "<span class='notice'>Left Mouse Button on turf/obj          = Place objects</span>")
-				to_chat(usr, "<span class='notice'>Right Mouse Button                     = Delete objects</span>")
-				to_chat(usr, "<span class='notice'>Mouse Button + ctrl                    = Copy object type</span>")
-				to_chat(usr, "")
-				to_chat(usr, "<span class='notice'>Use the button in the upper left corner to</span>")
-				to_chat(usr, "<span class='notice'>change the direction of built objects.</span>")
-				to_chat(usr, "<span class='notice'>***********************************************************</span>")
-			if(3) // Edit
-				to_chat(usr, "<span class='notice'>***********************************************************</span>")
-				to_chat(usr, "<span class='notice'>Right Mouse Button on buildmode button = Select var(type) & value</span>")
-				to_chat(usr, "<span class='notice'>Left Mouse Button on turf/obj/mob      = Set var(type) & value</span>")
-				to_chat(usr, "<span class='notice'>Right Mouse Button on turf/obj/mob     = Reset var's value</span>")
-				to_chat(usr, "<span class='notice'>***********************************************************</span>")
-			if(4) // Throw
-				to_chat(usr, "<span class='notice'>***********************************************************</span>")
-				to_chat(usr, "<span class='notice'>Left Mouse Button on turf/obj/mob      = Select</span>")
-				to_chat(usr, "<span class='notice'>Right Mouse Button on turf/obj/mob     = Throw</span>")
-				to_chat(usr, "<span class='notice'>***********************************************************</span>")
-			if(5) // Room Build
-				to_chat(usr, "<span class='notice'>***********************************************************</span>")
-				to_chat(usr, "<span class='notice'>Left Mouse Button on turf              = Select as point A</span>")
-				to_chat(usr, "<span class='notice'>Right Mouse Button on turf             = Select as point B</span>")
-				to_chat(usr, "<span class='notice'>Right Mouse Button on buildmode button = Change floor/wall type</span>")
-				to_chat(usr, "<span class='notice'>***********************************************************</span>")
-			if(6) // Make Ladders
-				to_chat(usr, "<span class='notice'>***********************************************************</span>")
-				to_chat(usr, "<span class='notice'>Left Mouse Button on turf              = Set as upper ladder loc</span>")
-				to_chat(usr, "<span class='notice'>Right Mouse Button on turf             = Set as lower ladder loc</span>")
-				to_chat(usr, "<span class='notice'>***********************************************************</span>")
-			if(7) // Move Into Contents
-				to_chat(usr, "<span class='notice'>***********************************************************</span>")
-				to_chat(usr, "<span class='notice'>Left Mouse Button on turf/obj/mob      = Select</span>")
-				to_chat(usr, "<span class='notice'>Right Mouse Button on turf/obj/mob     = Move into selection</span>")
-				to_chat(usr, "<span class='notice'>***********************************************************</span>")
-			if(8) // Make Lights
-				to_chat(usr, "<span class='notice'>***********************************************************</span>")
-				to_chat(usr, "<span class='notice'>Left Mouse Button on turf/obj/mob      = Make it glow</span>")
-				to_chat(usr, "<span class='notice'>Right Mouse Button on turf/obj/mob     = Reset glowing</span>")
-				to_chat(usr, "<span class='notice'>Right Mouse Button on buildmode button = Change glow properties</span>")
-				to_chat(usr, "<span class='notice'>***********************************************************</span>")
-			if(9) // Control mobs with ai_holders.
-				to_chat(usr, "<span class='notice'>***********************************************************</span>")
-				to_chat(usr, "<span class='notice'>Left Mouse Button on AI mob            = Select/Deselect mob</span>")
-				to_chat(usr, "<span class='notice'>Left Mouse Button + alt on AI mob      = Toggle hostility on mob</span>")
-				to_chat(usr, "<span class='notice'>Left Mouse Button + ctrl on AI mob     = Reset target/following/movement</span>")
-				to_chat(usr, "<span class='notice'>Right Mouse Button on enemy mob        = Command selected mobs to attack mob</span>")
-				to_chat(usr, "<span class='notice'>Right Mouse Button on allied mob       = Command selected mobs to follow mob</span>")
-				to_chat(usr, "<span class='notice'>Right Mouse Button + shift on any mob  = Command selected mobs to follow mob regardless of faction</span>")
-				to_chat(usr, "<span class='notice'>Right Mouse Button on tile             = Command selected mobs to move to tile (will cancel if enemies are seen)</span>")
-				to_chat(usr, "<span class='notice'>Right Mouse Button + shift on tile     = Command selected mobs to reposition to tile (will not be inturrupted by enemies)</span>")
-				to_chat(usr, "<span class='notice'>Right Mouse Button + alt on obj/turfs  = Command selected mobs to attack obj/turf</span>")
-				to_chat(usr, "<span class='notice'>***********************************************************</span>")
-		return 1
+
+/obj/effect/bmode/buildhelp/Click()
+	switch(master.cl.buildmode)
+		if(1) // Basic Build
+			to_chat(usr, "<span class='notice'>***********************************************************</span>")
+			to_chat(usr, "<span class='notice'>Left Mouse Button        = Construct / Upgrade</span>")
+			to_chat(usr, "<span class='notice'>Right Mouse Button       = Deconstruct / Delete / Downgrade</span>")
+			to_chat(usr, "<span class='notice'>Left Mouse Button + ctrl = R-Window</span>")
+			to_chat(usr, "<span class='notice'>Left Mouse Button + alt  = Airlock</span>")
+			to_chat(usr, "")
+			to_chat(usr, "<span class='notice'>Use the button in the upper left corner to</span>")
+			to_chat(usr, "<span class='notice'>change the direction of built objects.</span>")
+			to_chat(usr, "<span class='notice'>***********************************************************</span>")
+		if(2) // Adv. Build
+			to_chat(usr, "<span class='notice'>***********************************************************</span>")
+			to_chat(usr, "<span class='notice'>Right Mouse Button on buildmode button = Set object type</span>")
+			to_chat(usr, "<span class='notice'>Middle Mouse Button on buildmode button= On/Off object type saying</span>")
+			to_chat(usr, "<span class='notice'>Middle Mouse Button on turf/obj        = Capture object type</span>")
+			to_chat(usr, "<span class='notice'>Left Mouse Button on turf/obj          = Place objects</span>")
+			to_chat(usr, "<span class='notice'>Right Mouse Button                     = Delete objects</span>")
+			to_chat(usr, "<span class='notice'>Mouse Button + ctrl                    = Copy object type</span>")
+			to_chat(usr, "")
+			to_chat(usr, "<span class='notice'>Use the button in the upper left corner to</span>")
+			to_chat(usr, "<span class='notice'>change the direction of built objects.</span>")
+			to_chat(usr, "<span class='notice'>***********************************************************</span>")
+		if(3) // Edit
+			to_chat(usr, "<span class='notice'>***********************************************************</span>")
+			to_chat(usr, "<span class='notice'>Right Mouse Button on buildmode button = Select var(type) & value</span>")
+			to_chat(usr, "<span class='notice'>Left Mouse Button on turf/obj/mob      = Set var(type) & value</span>")
+			to_chat(usr, "<span class='notice'>Right Mouse Button on turf/obj/mob     = Reset var's value</span>")
+			to_chat(usr, "<span class='notice'>***********************************************************</span>")
+		if(4) // Throw
+			to_chat(usr, "<span class='notice'>***********************************************************</span>")
+			to_chat(usr, "<span class='notice'>Left Mouse Button on turf/obj/mob      = Select</span>")
+			to_chat(usr, "<span class='notice'>Right Mouse Button on turf/obj/mob     = Throw</span>")
+			to_chat(usr, "<span class='notice'>***********************************************************</span>")
+		if(5) // Room Build
+			to_chat(usr, "<span class='notice'>***********************************************************</span>")
+			to_chat(usr, "<span class='notice'>Left Mouse Button on turf              = Select as point A</span>")
+			to_chat(usr, "<span class='notice'>Right Mouse Button on turf             = Select as point B</span>")
+			to_chat(usr, "<span class='notice'>Right Mouse Button on buildmode button = Change floor/wall type</span>")
+			to_chat(usr, "<span class='notice'>***********************************************************</span>")
+		if(6) // Make Ladders
+			to_chat(usr, "<span class='notice'>***********************************************************</span>")
+			to_chat(usr, "<span class='notice'>Left Mouse Button on turf              = Set as upper ladder loc</span>")
+			to_chat(usr, "<span class='notice'>Right Mouse Button on turf             = Set as lower ladder loc</span>")
+			to_chat(usr, "<span class='notice'>***********************************************************</span>")
+		if(7) // Move Into Contents
+			to_chat(usr, "<span class='notice'>***********************************************************</span>")
+			to_chat(usr, "<span class='notice'>Left Mouse Button on turf/obj/mob      = Select</span>")
+			to_chat(usr, "<span class='notice'>Right Mouse Button on turf/obj/mob     = Move into selection</span>")
+			to_chat(usr, "<span class='notice'>***********************************************************</span>")
+		if(8) // Make Lights
+			to_chat(usr, "<span class='notice'>***********************************************************</span>")
+			to_chat(usr, "<span class='notice'>Left Mouse Button on turf/obj/mob      = Make it glow</span>")
+			to_chat(usr, "<span class='notice'>Right Mouse Button on turf/obj/mob     = Reset glowing</span>")
+			to_chat(usr, "<span class='notice'>Right Mouse Button on buildmode button = Change glow properties</span>")
+			to_chat(usr, "<span class='notice'>***********************************************************</span>")
+		if(9) // Control mobs with ai_holders.
+			to_chat(usr, "<span class='notice'>***********************************************************</span>")
+			to_chat(usr, "<span class='notice'>Left Mouse Button on AI mob            = Select/Deselect mob</span>")
+			to_chat(usr, "<span class='notice'>Left Mouse Button + alt on AI mob      = Toggle hostility on mob</span>")
+			to_chat(usr, "<span class='notice'>Left Mouse Button + ctrl on AI mob     = Reset target/following/movement</span>")
+			to_chat(usr, "<span class='notice'>Right Mouse Button on enemy mob        = Command selected mobs to attack mob</span>")
+			to_chat(usr, "<span class='notice'>Right Mouse Button on allied mob       = Command selected mobs to follow mob</span>")
+			to_chat(usr, "<span class='notice'>Right Mouse Button + shift on any mob  = Command selected mobs to follow mob regardless of faction</span>")
+			to_chat(usr, "<span class='notice'>Right Mouse Button on tile             = Command selected mobs to move to tile (will cancel if enemies are seen)</span>")
+			to_chat(usr, "<span class='notice'>Right Mouse Button + shift on tile     = Command selected mobs to reposition to tile (will not be inturrupted by enemies)</span>")
+			to_chat(usr, "<span class='notice'>Right Mouse Button + alt on obj/turfs  = Command selected mobs to attack obj/turf</span>")
+			to_chat(usr, "<span class='notice'>***********************************************************</span>")
+	return 1
 
 /obj/effect/bmode/buildquit
 	icon_state = "buildquit"
 	screen_loc = "NORTH,WEST+3"
 
-	Click()
-		togglebuildmode(master.cl.mob)
-		return 1
+/obj/effect/bmode/buildquit/Click()
+	togglebuildmode(master.cl.mob)
+	return 1
+
+GLOBAL_LIST_EMPTY(buildholders)
 
 /obj/effect/bmode/buildholder
 	density = 0
@@ -160,7 +164,12 @@
 	var/atom/movable/throw_atom = null
 	var/list/selected_mobs = list()
 
+/obj/effect/bmode/buildholder/New()
+	GLOB.buildholders += src
+	return ..()
+
 /obj/effect/bmode/buildholder/Destroy()
+	GLOB.buildholders -= src
 	qdel(builddir)
 	builddir = null
 	qdel(buildhelp)
@@ -183,7 +192,6 @@
 /obj/effect/bmode/buildholder/proc/deselect_AI_mob(client/C, mob/living/unit)
 	selected_mobs -= unit
 	C.images -= unit.selected_image
-
 
 /obj/effect/bmode/buildmode
 	icon_state = "buildmode1"
@@ -293,7 +301,7 @@
 
 /proc/build_click(var/mob/user, buildmode, params, var/obj/object)
 	var/obj/effect/bmode/buildholder/holder = null
-	for(var/obj/effect/bmode/buildholder/H)
+	for(var/obj/effect/bmode/buildholder/H in GLOB.buildholders)
 		if(H.cl == user.client)
 			holder = H
 			break

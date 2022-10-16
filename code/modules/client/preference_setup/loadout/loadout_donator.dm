@@ -264,7 +264,7 @@
 
 /datum/gear/suit/pariah
 	name = "springtime pariah moto jacket"
-	path = /obj/item/clothing/suit/storage/toggle/pariah
+	path = /obj/item/clothing/suit/storage/hooded/pariah
 	ckeywhitelist = list("rezbit")
 
 /datum/gear/suit/mindelectric

@@ -274,7 +274,7 @@
 /datum/supply_pack/misc/skatepack1
 	name = "Beginner Skateboard Pack"
 	contains = list(
-			/obj/vehicle/skateboard/beginner = 3,
+			/obj/vehicle_old/skateboard/beginner = 3,
 			/obj/item/clothing/head/helmet/bike_helmet/random = 3
 			)
 	cost = 100
@@ -284,7 +284,7 @@
 /datum/supply_pack/misc/skatepack2
 	name = "Professional Skateboard Pack"
 	contains = list(
-			/obj/vehicle/skateboard/pro = 2,
+			/obj/vehicle_old/skateboard/pro = 2,
 			/obj/item/clothing/head/helmet/bike_helmet/random = 2
 			)
 	cost = 200
@@ -294,7 +294,7 @@
 /datum/supply_pack/misc/skatepack3
 	name = "Hoverboard Pack"
 	contains = list(
-			/obj/vehicle/skateboard/hoverboard = 2,
+			/obj/vehicle_old/skateboard/hoverboard = 2,
 			/obj/item/clothing/head/helmet/bike_helmet/random = 2
 			)
 	cost = 300

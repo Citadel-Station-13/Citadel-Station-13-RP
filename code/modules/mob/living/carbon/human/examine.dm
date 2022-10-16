@@ -79,18 +79,18 @@
 
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
 
-	var/datum/gender/T = gender_datums[get_visible_gender()]
+	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
 
 	if((skip_gear & EXAMINE_SKIPJUMPSUIT) && (skip_body & EXAMINE_SKIPFACE)) //big suits/masks/helmets make it hard to tell their gender
-		T = gender_datums[PLURAL]
+		T = GLOB.gender_datums[PLURAL]
 
 	else if(species && species.ambiguous_genders)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(H.species && !istype(species, H.species))
-				T = gender_datums[PLURAL]// Species with ambiguous_genders will not show their true gender upon examine if the examiner is not also the same species.
+				T = GLOB.gender_datums[PLURAL]// Species with ambiguous_genders will not show their true gender upon examine if the examiner is not also the same species.
 		if(!(issilicon(user) || isobserver(user))) // Ghosts and borgs are all knowing
-			T = gender_datums[PLURAL]
+			T = GLOB.gender_datums[PLURAL]
 
 	//! Just in case someone VVs the gender to something strange.
 	//! It'll runtime anyway when it hits usages, better to CRASH() now with a helpful message.
@@ -98,20 +98,18 @@
 		CRASH("Gender datum was null; key was '[((skip_gear & EXAMINE_SKIPJUMPSUIT) && (skip_body & EXAMINE_SKIPFACE)) ? PLURAL : gender]'")
 
 	var/speciesblurb
+	var/skip_species = FALSE
+
 	if(skipface || get_visible_name() == "Unknown")
-		speciesblurb = SPAN_WARNING("You can't make out what species they are.")
+		skip_species = TRUE
+
 	else if(looks_synth)
-		var/synth_gender = "a synthetic"
-		if(gender == MALE)
-			synth_gender = "an android"
-		else if(gender == FEMALE)
-			synth_gender = "a gynoid"
-		speciesblurb += "a <font color='#555555'>[synth_gender]!</font>"
+		speciesblurb += "a <font color='#555555'>[get_display_species()]</font>"
 	else
-		speciesblurb += "a <font color='[species.get_flesh_colour(src)]'>[dna.custom_species ? dna.custom_species : species.get_examine_name()]</font>"
+		speciesblurb += "a <font color='[species.get_flesh_colour(src)]'>[get_display_species()]</font>"
 
 	// The first line of the examine block.
-	. += SPAN_INFO("[icon2html(src, user)] This is <EM>[src.name]</EM>, [T.he] [T.is] [speciesblurb]!")
+	. += SPAN_INFO("[icon2html(src, user)] This is <EM>[src.name]</EM>[skip_species? ". [SPAN_WARNING("You can't make out what species they are.")]" : ", [T.he] [T.is] [speciesblurb]!"]")
 
 	var/extra_species_text = species.get_additional_examine_text(src)
 	if(extra_species_text)

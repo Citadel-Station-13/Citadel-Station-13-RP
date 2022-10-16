@@ -16,7 +16,7 @@
 /datum/design/item/boh/dufflebag_holding
 	name = "DuffleBag of Holding"
 	desc = "A minaturized prototype of the popular Bag of Holding, the Dufflebag of Holding is, functionally, identical to the bag of holding, but comes in a more stylish and compact form."
-	id = "dufflebag_holding"
+	id = "duffle-holding"
 	req_tech = list(TECH_BLUESPACE = 4, TECH_MATERIAL = 6)
 	materials = list(MAT_GOLD = 3000, MAT_DIAMOND = 1500, MAT_URANIUM = 250)
 	build_path = /obj/item/storage/backpack/holding/duffle

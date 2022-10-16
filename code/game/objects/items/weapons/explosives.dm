@@ -5,7 +5,7 @@
 	icon = 'icons/obj/assemblies.dmi'
 	icon_state = "plastic-explosive0"
 	item_state = "plasticx"
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_ILLEGAL = 2)
 	var/datum/wires/explosive/c4/wires = null

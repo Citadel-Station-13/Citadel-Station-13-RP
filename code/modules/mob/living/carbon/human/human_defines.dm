@@ -10,6 +10,10 @@
 		ANTAG_HUD
 	)
 
+	//! Buckling - For riding.dm
+	buckle_allowed = TRUE
+	buckle_flags = BUCKLING_NO_DEFAULT_BUCKLE // custom procs handle that
+
 //! ## Hair colour and style
 	var/r_hair = 0
 	var/g_hair = 0
@@ -42,7 +46,7 @@
 	/// Skin flag
 	var/skin_state = SKIN_NORMAL
 
-//! ## ears, tails, wings and custom species.
+//! ## ears, horns, tails, wings and custom species.
 	var/datum/sprite_accessory/ears/ear_style = null
 	var/r_ears = 30
 	var/g_ears = 30
@@ -53,6 +57,17 @@
 	var/r_ears3 = 30 //Trust me, we could always use more colour. No japes.
 	var/g_ears3 = 30
 	var/b_ears3 = 30
+
+	var/datum/sprite_accessory/ears/horn_style = null
+	var/r_horn = 30
+	var/g_horn = 30
+	var/b_horn = 30
+	var/r_horn2 = 30
+	var/g_horn2 = 30
+	var/b_horn2 = 30
+	var/r_horn3 = 30
+	var/g_horn3 = 30
+	var/b_horn3 = 30
 
 	var/datum/sprite_accessory/tail/tail_style = null
 	var/r_tail = 30
@@ -86,7 +101,10 @@
 	var/spread = 0
 	///What's my status?
 	var/vantag_pref = VANTAG_NONE
+	// todo: REOMVE THIS FOR SPECIES VAR CHANGES
 	///For impersonating a bodytype
+	var/impersonate_bodytype_legacy
+	/// for impersonating a bodytype but actually
 	var/impersonate_bodytype
 	///Shadekin abilities/potentially other species-based?
 	var/ability_flags = 0

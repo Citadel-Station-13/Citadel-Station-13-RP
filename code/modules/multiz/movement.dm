@@ -243,7 +243,10 @@
 		// or normal movement so other move behavior can continue.
 		var/mob/M = src
 		var/is_client_moving = (ismob(M) && M.client && M.client.moving)
+		var/curr = loc
 		spawn(0)
+			if(loc != curr)
+				return
 			if(is_client_moving) M.client.moving = 1
 			handle_fall(below)
 			if(is_client_moving) M.client.moving = 0
@@ -253,6 +256,8 @@
 /atom/movable/proc/can_fall()
 	if(anchored)
 		return FALSE
+	// if(throwing)
+		// return FALSE
 	return TRUE
 
 /obj/effect/can_fall()
@@ -278,6 +283,11 @@
 	var/turf/below = GetBelow(src)
 	if((locate(/obj/structure/disposalpipe/up) in below) || (locate(/obj/machinery/atmospherics/pipe/zpipe/up) in below))
 		return FALSE
+
+/mob/can_fall()
+	if(buckled)
+		return FALSE	// buckled falls instead
+	return ..()
 
 /mob/living/can_fall()
 	if(is_incorporeal())
@@ -312,7 +322,7 @@
 	return falling_atom.fall_impact(src)
 
 // Actually process the falling movement and impacts.
-/atom/movable/proc/handle_fall(var/turf/landing)
+/atom/movable/proc/handle_fall(turf/landing)
 	var/turf/oldloc = loc
 
 	// Check if there is anything in our turf we are standing on to prevent falling.
@@ -328,7 +338,6 @@
 	// this is shitcode lmao
 	var/obj/structure/stairs = locate() in landing
 	if(!stairs)
-
 		// Now lets move there!
 		if(!Move(landing))
 			return 1
@@ -437,6 +446,8 @@
 		visible_message("\The [src] falls from above and slams into \the [hit_atom]!", "You hear something slam into \the [hit_atom].")
 	for(var/atom/movable/A in src.contents)
 		A.fall_impact(hit_atom, damage_min, damage_max, silent = TRUE)
+	for(var/mob/M in buckled_mobs)
+		M.fall_impact(hit_atom, damage_min, damage_max, silent, planetary)
 
 // Take damage from falling and hitting the ground
 /mob/living/fall_impact(var/atom/hit_atom, var/damage_min = 0, var/damage_max = 5, var/silent = FALSE, var/planetary = FALSE)

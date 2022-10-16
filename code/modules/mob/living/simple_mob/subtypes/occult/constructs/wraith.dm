@@ -44,6 +44,10 @@
 
 //	environment_smash = 1	// Whatever this gets renamed to, Wraiths need to break things
 
+/mob/living/simple_mob/construct/wraith/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura)
+
 /mob/living/simple_mob/construct/wraith/apply_melee_effects(var/atom/A)
 	if(isliving(A))
 		var/mob/living/L = A

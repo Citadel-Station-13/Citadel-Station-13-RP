@@ -2,8 +2,7 @@
 	name = "wheelchair"
 	desc = "You sit in this. Either by will or force."
 	icon_state = "wheelchair"
-	anchored = 0
-	buckle_movable = 1
+	anchored = FALSE
 
 	var/last_active_move = 0
 	var/driving = 0
@@ -30,10 +29,9 @@
 	..()
 
 /obj/structure/bed/chair/wheelchair/relaymove(mob/user, direction)
-	// Redundant check?
-
 	if(world.time < last_active_move + move_delay)
 		return
+	last_active_move = world.time
 
 	if(user.stat || user.stunned || user.weakened || user.paralysis || user.lying || user.restrained())
 		if(user==pulling_along)
@@ -63,8 +61,6 @@
 		if(has_buckled_mobs() && (user in buckled_mobs))
 			to_chat(user, "<span class='warning'>You cannot drive while being pushed.</span>")
 			return
-
- 	last_active_move = world.time
 
 	// Let's roll
 	driving = 1
@@ -100,41 +96,10 @@
 		create_track()
 	driving = 0
 
-/obj/structure/bed/chair/wheelchair/Move()
-	..()
-	if(world.time < last_active_move + move_delay)
-		return
-	if(has_buckled_mobs())
-		for(var/A in buckled_mobs)
-			var/mob/living/occupant = A
-			if(!driving)
-				occupant.buckled = null
-				occupant.Move(src.loc)
-				occupant.buckled = src
-				if (occupant && (src.loc != occupant.loc))
-					if (propelled)
-						for (var/mob/O in src.loc)
-							if (O != occupant)
-								Bump(O)
-					else
-						unbuckle_mob()
-				if (pulling_along && (get_dist(src, pulling_along) > 1))
-					pulling_along.pulledby = null
-					to_chat(pulling_along, "<span class='warning'>You lost your grip!</span>")
-					pulling_along = null
-			else
-				if (occupant && (src.loc != occupant.loc))
-					src.forceMove(occupant.loc) // Failsafe to make sure the wheelchair stays beneath the occupant after driving
-		last_active_move = world.time
-
 /obj/structure/bed/chair/wheelchair/attack_hand(mob/living/user as mob)
 	if (pulling_along)
 		MouseDrop(usr)
-	else
-		if(has_buckled_mobs())
-			for(var/A in buckled_mobs)
-				user_unbuckle_mob(A, user)
-	return
+	return ..()
 
 /obj/structure/bed/chair/wheelchair/CtrlClick(var/mob/user)
 	if(in_range(src, user))
@@ -206,13 +171,17 @@
 		B.setDir(newdir)
 	bloodiness--
 
-/obj/structure/bed/chair/wheelchair/buckle_mob(mob/living/M, forced = FALSE, check_loc = TRUE)
-	if(issilicon(M))	// No abusing wheelchairs.
-		return
+/obj/structure/bed/chair/wheelchair/can_buckle_mob(mob/M, flags, mob/user, semantic)
+	if(issilicon(M))
+		return FALSE
+	return ..()
+
+/obj/structure/bed/chair/wheelchair/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
 	if(M == pulling_along)
 		pulling_along = null
-		usr.pulledby = null
-	return ..()
+		if(M.pulledby == src)
+			M.pulledby = null
 
 /obj/item/wheelchair
 	name = "wheelchair"
