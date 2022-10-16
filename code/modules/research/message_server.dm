@@ -343,7 +343,7 @@ var/obj/machinery/blackbox_recorder/blackbox
 	var/round_id
 
 	var/datum/db_query/query = SSdbcore.RunQuery(
-		"SELECT MAX(ronud_id) AS round_id FROM [format_table_name("feedback")]",
+		"SELECT MAX(round_id) AS round_id FROM [format_table_name("feedback")]",
 		list()
 	)
 
