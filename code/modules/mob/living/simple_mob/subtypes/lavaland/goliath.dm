@@ -30,10 +30,6 @@
 	attacktext = list ("pulverizes", "batters", "hammers")
 	attack_sound = 'sound/weapons/punch1.ogg'
 
-	move_force = MOVE_FORCE_VERY_STRONG
-	move_resist = MOVE_FORCE_VERY_STRONG
-	pull_force = MOVE_FORCE_VERY_STRONG
-
 	hide_type = /obj/item/stack/animalhide/goliath_hide
 	exotic_type = /obj/item/stack/sinew
 	meat_amount = 5
@@ -49,11 +45,20 @@
 	var/pre_attack = 0
 	var/tentacle_warning = 0.5 SECONDS
 	var/pre_attack_icon = "goliath2"
+	var/breedable = 0
+	var/pregnant = 0
+	var/list/child_type = list(/mob/living/simple_mob/animal/goliath/calf)
 
 /datum/ai_holder/simple_mob/melee/goliath
 	hostile = TRUE
 	retaliate = TRUE
 	mauling = TRUE
+
+/datum/ai_holder/simple_mob/melee/goliath/calf
+	hostile = TRUE
+	retaliate = TRUE
+	mauling = FALSE
+	can_flee = TRUE
 
 /datum/say_list/goliath
 	emote_hear = list("flashes briefly.", "wails!", "shudders.", "trills.")
@@ -75,22 +80,39 @@
 		new /obj/effect/temporary_effect/goliath_tentacle/core(tturf, src)
 		pre_attack = 0
 
-//Lavaland Goliath
-
 /mob/living/simple_mob/animal/goliath/Initialize(mapload)
 	. = ..()
 	if(prob(1))
 		new /mob/living/simple_mob/animal/goliath/ancient(loc)
 		return INITIALIZE_HINT_QDEL
 
-/mob/living/simple_mob/animal/goliath/ancient
-	name = "ancient goliath"
-	desc = "Goliaths are biologically immortal, and rare specimens have survived for centuries. This one is clearly ancient, and its tentacles constantly churn the earth around it."
-	maxHealth = 400
-	health = 400
-	var/list/cached_tentacle_turfs
-	var/turf/last_location
-	var/tentacle_recheck_cooldown = 100
+/mob/living/simple_mob/animal/goliath/attackby(obj/item/O, mob/user)
+	. = ..()
+	if(istype(O, /obj/item/seeds/ashlander/bentars))
+		to_chat(user, "<span class='danger'>You feed the [src] bentar seeds! Its tendrils begin to thrash softly!</span>")
+		breedable = 1
+	else
+		return ..()
+
+/mob/living/simple_mob/animal/goliath/proc/reproduce(var/mob/living/simple_mob/animal/goliath/G, atom/target)
+	if(!istype(target, /mob/living/simple_mob/animal/goliath))
+		return
+	else if(get_dist(src, target) <= 1)//They should be next to each other for this.
+		visible_message("<span class='warning'>The [src] intertwines its tendrils with the [target].</span>")
+		pregnant = 1
+		breedable = 0
+
+/mob/living/simple_mob/animal/goliath/process(delta_time)
+	reproduce()
+
+	if(pregnant >= 0)
+		pregnant += rand(0,2)
+	if(pregnant >= 100)
+		calve()
+
+/mob/living/simple_mob/animal/goliath/proc/calve()
+	pregnant = 0
+	new child_type
 
 //tentacles
 /obj/effect/temporary_effect/goliath_tentacle
@@ -113,6 +135,15 @@
 	. = ..()
 	var/list/directions = list(1,2,4,6,8)
 	for(var/i in 1 to 3)
+		var/spawndir = pick_n_take(directions)
+		var/turf/T = get_step(src, spawndir)
+		if(T && !density)
+			new /obj/effect/temporary_effect/goliath_tentacle(T)
+
+/obj/effect/temporary_effect/goliath_tentacle/core_weak/Initialize(mapload)
+	. = ..()
+	var/list/directions = list(1,2,4,6,8)
+	for(var/i in 1 to 2)
 		var/spawndir = pick_n_take(directions)
 		var/turf/T = get_step(src, spawndir)
 		if(T && !density)
@@ -154,3 +185,58 @@
 	icon_state = "goliath_tentacle_retract"
 	var/timerid = QDEL_IN(src, 7)
 	deltimer(timerid)
+
+//Ancients
+/mob/living/simple_mob/animal/goliath/ancient
+	name = "ancient goliath"
+	desc = "Goliaths are biologically immortal, and rare specimens have survived for centuries. This one is clearly ancient, and its tentacles constantly churn the earth around it."
+	maxHealth = 400
+	health = 400
+
+//Calves
+/mob/living/simple_mob/animal/goliath/calf
+	name = "goliath calf"
+	desc = "Goliaths may be naturally immortal, but they are still vulnerable. Calves are a rare sight on the surface, although they are becoming more common as Ashlander farms appear more frequently."
+	icon_state = "goliath_baby"
+	maxHealth = 150
+	health = 150
+
+	movement_cooldown = 7
+	special_attack_min_range = 1
+	special_attack_max_range = 4
+	special_attack_cooldown = 15 SECONDS
+
+	response_harm = "kicks"
+	melee_damage_lower = 8
+	melee_damage_upper = 15
+
+	meat_amount = 1
+	bone_amount = 2
+	hide_amount = 2
+	exotic_amount = 2
+
+	ai_holder_type = /datum/ai_holder/simple_mob/melee/goliath/calf
+
+	var/amount_grown = 1
+	var/spawn_delay = 300
+	var/list/grow_as = list(/mob/living/simple_mob/animal/goliath)
+
+/mob/living/simple_mob/animal/goliath/calf/do_special_attack(atom/target)
+	var/tturf = get_turf(target)
+	if(!isturf(tturf))
+		return
+	if(get_dist(src, target) <= 7)//Screen range check, so you can't get tentacle'd offscreen
+		visible_message("<span class='warning'>[src] digs its tentacles under [target]</span>")
+		new /obj/effect/temporary_effect/goliath_tentacle/core_weak(tturf, src)
+		pre_attack = 0
+
+/mob/living/simple_mob/animal/goliath/calf/process(delta_time)
+	if(amount_grown >= 0)
+		amount_grown += rand(0,2)
+	if(amount_grown >= 100)
+		mature()
+
+/mob/living/simple_mob/animal/goliath/calf/proc/mature()
+	var/spawn_type = pick(grow_as)
+	new spawn_type(src.loc, src)
+	qdel(src)

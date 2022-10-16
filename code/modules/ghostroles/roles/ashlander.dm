@@ -54,6 +54,8 @@
 
 /datum/ghostrole_instantiator/human/random/species/ashlander/GetOutfit(client/C, mob/M, list/params)
 	var/datum/outfit/outfit = ..()
+	//var/mob/M = /mob/living/carbon/human/H
+	M.faction = "lavaland"
 	switch(params["fluff"])
 		if("nomad")
 			outfit.uniform = /obj/item/clothing/under/tribal_tunic/ashlander
