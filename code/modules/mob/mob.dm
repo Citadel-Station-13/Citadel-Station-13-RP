@@ -724,7 +724,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		//var/list/L = list()
 		stat("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
 		//L += SSmapping.stat_map_name
-		//L += "Round ID: [GLOB.round_id || "NULL"]"
+		stat("Round ID", "[GLOB.round_id || "ERROR"]")
 		// VIRGO START
 		stat("Station Time", stationtime2text())
 		stat("Station Date", stationdate2text())
