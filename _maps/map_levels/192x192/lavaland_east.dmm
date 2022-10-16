@@ -396,12 +396,9 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "jg" = (
-/obj/machinery/power/solar,
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
-/area/lavaland/east/colony)
+/obj/structure/mob_spawner/scanner/goliath,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/east/unexplored)
 "jr" = (
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow{
@@ -1178,6 +1175,10 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
+"zx" = (
+/obj/structure/mob_spawner/scanner/goliath,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/east/explored)
 "Aj" = (
 /obj/effect/floor_decal/steeldecal/steel_decals4{
 	dir = 6
@@ -8144,7 +8145,7 @@ Qh
 Qh
 Qh
 kx
-ix
+zx
 ix
 ix
 ix
@@ -8872,7 +8873,7 @@ ww
 wP
 wP
 wP
-wP
+jg
 Qh
 Qh
 Qh
@@ -13539,7 +13540,7 @@ wP
 wP
 Am
 Am
-wP
+jg
 wP
 wP
 wP
@@ -14496,7 +14497,7 @@ wP
 wP
 wP
 wP
-wP
+jg
 Am
 Am
 wP
@@ -32229,7 +32230,7 @@ rS
 aP
 Gt
 jr
-jg
+jr
 To
 Zg
 WQ
