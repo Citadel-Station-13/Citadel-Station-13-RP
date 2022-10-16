@@ -9,6 +9,12 @@
 
 	maxHealth = 300
 	health = 300
+	min_oxy = 0
+	min_co2 = 5
+	max_co2 = 0
+	minbodytemp = 0
+	maxbodytemp = 700
+	heat_resist = 1
 
 	mob_class = MOB_CLASS_ANIMAL
 	movement_cooldown = 10
