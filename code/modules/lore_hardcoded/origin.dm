@@ -4,7 +4,7 @@
 /datum/lore/character_background/origin/venusian
 	name = "Venus"
 	id = "venus"
-	desc = "Unlike almost anyone who would call a planet their home, you've never been to your own planet's surface. Instead, you are from one of the myriad orbital complexes from venusian space, used to seeing it's white cloudtops shimmer in the distance amid the pitch blackness of space."
+	desc = "Unlike almost anyone else who would call a planet their home, you've never been to your own planet's surface. Instead, you are from one of the myriad orbital complexes floating in venusian space, used to seeing it's white cloudtops shimmer in the distance amid the pitch blackness of space."
 	innate_languages = list(
 		LANGUAGE_ID_HUMAN
 		)
@@ -12,7 +12,7 @@
 /datum/lore/character_background/origin/terran
 	name = "Terra"
 	id = "terra"
-	desc = "You are from Humanity's storied homeworld of Terra. Whether you are from the arcologies spanning much of the planet's surface, or it's many orbital habitats, you are likely to have been taught much about humanity's long history upon Earth."
+	desc = "You are from Humanity's storied homeworld of Terra. Whether you are from the arcologies spanning much of the planet's verdant surface, or it's many orbital habitats, you are likely to have been taught much about humanity's long history upon Earth."
 	innate_languages = list(
 		LANGUAGE_ID_HUMAN
 		)
@@ -20,7 +20,7 @@
 /datum/lore/character_background/origin/lunarian
 	name = "Luna"
 	id = "luna"
-	desc = "You hail directly from Sol's Capital body, the terran moon of Luna. It's intricately built and unimaginably busy underground metropolises are the beating heart of modern human culture, and one you know very well at that."
+	desc = "You hail directly from Sol's capital body, the terran moon of Luna. It's intricately built and unimaginably busy underground metropolises are the beating heart of modern human culture, and one you know very well at that."
 	innate_languages = list(
 		LANGUAGE_ID_HUMAN
 		)
@@ -61,7 +61,7 @@
 /datum/lore/character_background/origin/europan
 	name = "Europa"
 	id = "europa"
-	desc = "Buried safely under the ice, you have once called the jovian moon of Europa your home. Though most only rarely visit it's irradiated surface, you have certainly seen the spacious arcologies sprawling beneath it down to the moon's frighteningly deep inner ocean."
+	desc = "Buried safely under the ice, you have once called the jovian moon of Europa your home. Though most only rarely visit it's irradiated surface, anyone there has seen the spacious arcologies which tunnel beneath it, winding all the way down to the moon's frighteningly deep inner ocean."
 	innate_languages = list(
 		LANGUAGE_ID_HUMAN
 		)
@@ -77,7 +77,7 @@
 /datum/lore/character_background/origin/callistoan
 	name = "Callisto"
 	id = "callisto"
-	desc = "You are from the very cornerstone of the Jovian system itself, the land of it's first settlement, Callisto. You are used to seeing the other moons circle around Jupiter from a safe distance under the windows of biodomes dotting the large ring-shaped cities of Vallhalla and Asgard."
+	desc = "You are from the very cornerstone of the Jovian system itself, the land of it's first settlement, Callisto. You are used to seeing the other moons circle around Jupiter from a safe distance under the windows of biodomes dotting the large ring-shaped cities of Valhalla and Asgard."
 	innate_languages = list(
 		LANGUAGE_ID_HUMAN
 		)
@@ -85,7 +85,7 @@
 /datum/lore/character_background/origin/saturnian
 	name = "Saturn"
 	id = "saturn"
-	desc = "Whether from a minor moon's settlement or a habitat in orbit of the Sol System's crown jewel, you come from saturnian space. Somehow, the view of it's rings really does never get old."
+	desc = "Whether from a minor moon's settlement or a habitat in orbit of the Sol System's crown jewel, you come from saturnian space. Somehow, the view of it's rings really doesn't ever get old."
 	innate_languages = list(
 		LANGUAGE_ID_HUMAN
 		)
@@ -141,7 +141,7 @@
 /datum/lore/character_background/origin/plutocharonian
 	name = "Pluto-Charon"
 	id = "plutocharon"
-	desc = "Two parts of the same whole, as every pluto-charonian knows, the twin ice-worlds of the Kuiper Belt were once your home. Whichever half you happened to live on, you have seen the tether which looms above, linking both dwarf-planets together, glowing city lights sprawling away from it's connection points on each."
+	desc = "Two parts of the same whole, as every pluto-charonian knows, the twin ice-worlds of the Kuiper Belt were once your home. Whichever half you happened to live on, you have seen the tether which looms above, linking both dwarf-planets together as glowing city lights sprawl away from it's connection points into each."
 	innate_languages = list(
 		LANGUAGE_ID_HUMAN
 		)
