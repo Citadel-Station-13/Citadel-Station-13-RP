@@ -211,6 +211,8 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	total_spawns = 6
 	destructible = 0
 	anchored = 1
+	destructible = 1
+	health = 500
 	spawn_types = list(
 	/mob/living/simple_mob/animal/goliath = 100
 	)
