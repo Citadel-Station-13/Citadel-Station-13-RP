@@ -8,4 +8,4 @@
 	colour = "changeling"
 	key = "m"
 	machine_understands = FALSE
-	flags = WHITELISTED | HIVEMIND
+	language_flags = WHITELISTED | HIVEMIND

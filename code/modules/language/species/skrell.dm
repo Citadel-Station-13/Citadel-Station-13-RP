@@ -23,7 +23,7 @@
 	colour = "skrellfar"
 	key = "p"
 	space_chance = 30
-	flags = WHITELISTED
+	language_flags = WHITELISTED
 	syllables = list("qr","qrr","xuq","qil","quum","xuqm","vol","xrim","zaoo","qu-uu","qix","qoo","zix", "...", "oo", "q", "nq", "x", "xq", "ll", "...", "...", "...") //should sound like there's holes in it
 
 /datum/language/skrell/get_random_name(var/gender)

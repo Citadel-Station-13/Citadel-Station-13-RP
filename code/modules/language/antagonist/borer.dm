@@ -8,7 +8,7 @@
 	colour = "alien"
 	key = "" //!! THIS DOES NOT HAVE A LANGUAGE KEY IF YOU SOMEHOW MIRACULOUSLY GET ANTAGS WORKING ON RP BEFORE WE TRANSITION TO SS14 IN LIKE 2025 PUT ONE IN.
 	machine_understands = 0
-	flags = RESTRICTED | HIVEMIND
+	language_flags = RESTRICTED | HIVEMIND
 
 /datum/language/corticalborer/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
 

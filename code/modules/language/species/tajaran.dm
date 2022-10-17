@@ -29,7 +29,7 @@
 	exclaim_verb = "wails"
 	colour = "akhani"
 	key = "h"
-	flags = WHITELISTED
+	language_flags = WHITELISTED
 	syllables = list("mrr","rr","marr","tar","ahk","ket","hal","kah","dra","nal","kra","vah","dar","hrar", "eh",
 	"ara","ka","zar","mah","ner","zir","mur","hai","raz","ni","ri","nar","njar","jir","ri","ahn","kha","sir",
 	"kar","yar","kzar","rha","hrar","err","fer","rir","rar","yarr","arr","ii'r","jar","kur","ran","rii","ii",
@@ -43,7 +43,7 @@
 	signlang_verb = list("gestures with their hands", "gestures with their ears and tail", "gestures with their ears, tail and hands")
 	colour = "tajaran"
 	key = "l"
-	flags = WHITELISTED | SIGNLANG | NO_STUTTER | NONVERBAL
+	language_flags = WHITELISTED | SIGNLANG | NO_STUTTER | NONVERBAL
 
 /datum/language/tajsign/can_speak_special(var/mob/speaker)	// TODO: If ever we make external organs assist languages, convert this over to the new format
 	var/list/allowed_species = list(SPECIES_TAJ, SPECIES_TESHARI)	// Need a tail and ears and such to use this.

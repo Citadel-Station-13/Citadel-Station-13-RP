@@ -8,7 +8,7 @@
 	colour = "soghun"
 	key = "q"
 	machine_understands = 0
-	flags = RESTRICTED
+	language_flags = RESTRICTED
 	syllables = list("hs","zt","kr","st","sh")
 
 /datum/language/diona_local/get_random_name()
@@ -22,4 +22,4 @@
 	desc = "A complex language known instinctively by Dionaea, 'spoken' by emitting modulated radio waves. This version uses low frequency waves for slow communication at long ranges."
 	key = "w"
 	machine_understands = 0
-	flags = RESTRICTED | HIVEMIND
+	language_flags = RESTRICTED | HIVEMIND

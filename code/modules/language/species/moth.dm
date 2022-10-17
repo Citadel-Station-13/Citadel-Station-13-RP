@@ -11,7 +11,7 @@
 	colour = "luinimma"
 	key = "e"
 	native = TRUE
-	flags = NONE
+	language_flags = NONE
 	syllables = list(
 		"at", "az", "ak", "afz",
 		"bv", "bz",

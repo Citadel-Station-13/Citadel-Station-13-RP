@@ -6,7 +6,7 @@
 	colour = "changeling"
 	key = "g"
 	machine_understands = 0
-	flags = RESTRICTED | HIVEMIND
+	language_flags = RESTRICTED | HIVEMIND
 
 /datum/language/ling/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
 
