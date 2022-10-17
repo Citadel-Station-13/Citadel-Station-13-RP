@@ -33,8 +33,7 @@
 	/// Character used to speak in language eg. :o for Unathi.
 	var/key = "x"
 	/// Various language language_flags.
-	#warn language_flags
-	var/flags = NONE
+	var/language_flags = NONE
 	/// If set, non-native speakers will have trouble speaking.
 	var/native
 	/// Used when scrambling text for a non-speaker.
