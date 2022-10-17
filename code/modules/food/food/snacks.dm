@@ -108,7 +108,7 @@
 				if(blocked)
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
-					
+
 			user.visible_message(SPAN_DANGER("[user] attempts to feed [M] [src]."))
 			user.setClickCooldown(user.get_attack_speed(src))
 			if(!do_mob(user, M, 3 SECONDS))
@@ -327,6 +327,22 @@
 	reagents.add_reagent("coconutmilk", 4)
 	reagents.add_reagent("protein", 1)
 	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/natkat
+	name = "NatKat bar"
+	desc = "A chocolate coated honey wafer infused with hints of blueberry and copper."
+	icon_state = "natkat"
+	trash = /obj/item/trash/candy
+	filling_color = "#b9855b"
+	nutriment_amt = 3
+	nutriment_desc = list("chocolate" = 1, "honey" = 2, "blueberry" = 1, "pennies" = 1)
+
+/obj/item/reagent_containers/food/snacks/natkat/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("sugar", 4)
+	reagents.add_reagent("honey", 3)
+	reagents.add_reagent("iron", 1)
+	bitesize = 4
 
 /obj/item/reagent_containers/food/snacks/candy/proteinbar // Buff 17 >> 21
 	name = "protein bar"
@@ -5655,7 +5671,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/my_new_food
 	name = "cheesemeaties"
 	desc = "The cheese adds a good flavor. Not great. Just good"
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "cheesemeaties"
 	trash = /obj/item/trash/plate //What I leave behind when eaten (waffles instead of plate = bigsquareplate)
 	center_of_mass = list("x"=16, "y"=16) //If your thing is too huge and you don't want it in the center.
@@ -5671,7 +5686,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sliceable/sushi // Buff 25 >> 35
 	name = "sushi roll (fish)"
 	desc = "A whole sushi roll! Slice it up and enjoy with some soy sauce and wasabi."
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "sushi"
 	slice_path = /obj/item/reagent_containers/food/snacks/slice/sushi/filled
 	slices_num = 5
@@ -5686,7 +5700,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/slice/sushi/filled
 	name = "piece of sushi (fish)"
 	desc = "A slice of a larger sushi roll, ready to devour."
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "sushi_s"
 	bitesize = 5
 	whole_path = /obj/item/reagent_containers/food/snacks/sliceable/sushi
@@ -5697,7 +5710,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sliceable/sushi/crab
 	name = "sushi roll (crab)"
 	desc = "A whole sushi roll! Slice it up and enjoy with some soy sauce and wasabi. This one is filled with rare, savory meat!"
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "sushi"
 	slice_path = /obj/item/reagent_containers/food/snacks/slice/sushi/crab/filled
 	slices_num = 5
@@ -5712,7 +5724,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/slice/sushi/crab/filled
 	name = "piece of sushi (crab)"
 	desc = "A slice of a larger sushi roll, ready to devour."
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "sushi_s"
 	bitesize = 5
 	whole_path = /obj/item/reagent_containers/food/snacks/sliceable/sushi/crab
@@ -5723,7 +5734,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sliceable/sushi/horse
 	name = "sushi roll (horse)"
 	desc = "A whole sushi roll! Slice it up and enjoy with some soy sauce and wasabi. This one is filled with rare, lean meat!"
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "sushi"
 	slice_path = /obj/item/reagent_containers/food/snacks/slice/sushi/horse/filled
 	slices_num = 5
@@ -5738,7 +5748,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/slice/sushi/horse/filled
 	name = "piece of sushi (horse)"
 	desc = "A slice of a larger sushi roll, ready to devour."
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "sushi_s"
 	bitesize = 5
 	whole_path = /obj/item/reagent_containers/food/snacks/sliceable/sushi/horse
@@ -5749,7 +5758,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/sliceable/sushi/mystery
 	name = "sushi roll (???)"
 	desc = "A whole sushi roll! Slice it up and enjoy with some soy sauce and wasabi. It's hard to tell where this meat came from."
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "sushi"
 	slice_path = /obj/item/reagent_containers/food/snacks/slice/sushi/mystery/filled
 	slices_num = 5
@@ -5764,7 +5772,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/slice/sushi/mystery/filled
 	name = "piece of sushi (???)"
 	desc = "A slice of a larger sushi roll, ready to devour."
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "sushi_s"
 	bitesize = 5
 	whole_path = /obj/item/reagent_containers/food/snacks/sliceable/sushi/mystery
@@ -5775,7 +5782,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/lasagna
 	name = "lasagna"
 	desc = "Meaty, tomato-y, and ready to eat-y. Favorite of cats."
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "lasagna"
 	nutriment_amt = 5
 	nutriment_desc = list("tomato" = 4, "meat" = 2)
@@ -5788,7 +5794,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/goulash
 	name = "goulash"
 	desc = "Paprika put to good use, finally, in a soup of meat and vegetables."
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "goulash"
 	trash = /obj/item/trash/snack_bowl
 	nutriment_amt = 6
@@ -5803,7 +5808,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/donerkebab
 	name = "doner kebab"
 	desc = "A delicious sandwich-like food from ancient Earth. The meat is typically cooked on a vertical rotisserie."
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "doner_kebab"
 	nutriment_amt = 5
 	nutriment_desc = list("vegetables" = 2, "seasoned meat" = 5)
@@ -5816,7 +5820,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/roastbeef
 	name = "roast beef"
 	desc = "It's beef. It's roasted. It's been a staple of dining tradition for centuries."
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "roastbeef"
 	trash = /obj/item/trash/waffles
 	nutriment_amt = 8
@@ -5831,7 +5834,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/reishicup
 	name = "reishi's cup"
 	desc = "A chocolate treat with an odd flavor."
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "reishiscup"
 	nutriment_amt = 3
 	nutriment_desc = list("chocolate" = 4, "colors" = 2)
@@ -5844,7 +5846,6 @@ END CITADEL CHANGE */
 /obj/item/storage/box/wings //This is kinda like the donut box.
 	name = "wing basket"
 	desc = "A basket of chicken wings! Get some before they're all gone! Or maybe you're too late..."
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "wings5"
 	var/startswith = 5
 	max_storage_space = ITEMSIZE_COST_SMALL * 5
@@ -5867,7 +5868,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/chickenwing
 	name = "chicken wing"
 	desc = "What flavor even is this? Buffalo? Barbeque? Or something more exotic?"
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "wing"
 	nutriment_amt = 2
 	nutriment_desc = list("chicken" = 2, "unplacable flavor sauce" = 4)
@@ -5881,7 +5881,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/hotandsoursoup
 	name = "hot & sour soup"
 	desc = "A soup both spicy and sour from ancient Earth cooking traditions. This one is made with tofu."
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "hotandsoursoup"
 	trash = /obj/item/trash/snack_bowl
 	nutriment_amt = 6
@@ -5891,11 +5890,9 @@ END CITADEL CHANGE */
 	. = ..()
 	bitesize = 2
 
-
 /obj/item/reagent_containers/food/snacks/kitsuneudon
 	name = "kitsune udon"
 	desc = "A purported favorite of kitsunes in ancient japanese myth: udon noodles, fried egg, and tofu."
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "kitsuneudon"
 	trash = /obj/item/trash/snack_bowl
 	nutriment_amt = 6
@@ -5908,7 +5905,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/generalschicken
 	name = "general's chicken"
 	desc = "Sweet, spicy, and fried. General's Chicken has been around for more than five-hundred years now, and still tastes good."
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "generaltso"
 	trash = /obj/item/trash/plate
 	nutriment_amt = 6
@@ -5922,7 +5918,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/meat/grubmeat
 	name = "grubmeat"
 	desc = "A slab of grub meat, it gives a gentle shock if you touch it"
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "grubmeat"
 	center_of_mass = list("x"=16, "y"=10)
 
@@ -5935,7 +5930,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/bugball
 	name = "bugball"
 	desc = "A hard chitin, dont chip a tooth!"
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "pillbugball"
 	slice_path = /obj/item/reagent_containers/food/snacks/pillbug
 	slices_num = 1
@@ -5952,7 +5946,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/pillbug
 	name = "pillbug"
 	desc = "A delicacy discovered and popularized by a famous restaurant called Mudca's Meat Hut."
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "pillbug"
 	trash = /obj/item/reagent_containers/food/snacks/pillbugempty
 	nutriment_amt = 3
@@ -5967,7 +5960,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/pillbugempty
 	name = "pillbug shell"
 	desc = "Waste not, want not."
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "pillbugempty"
 	nutriment_amt = 1
 	nutriment_desc = list("crunchy shell bits" = 5)
@@ -5981,7 +5973,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/mammi
 	name = "mämmi"
 	desc = "Traditional finnish desert, some like it, others don't. It's drifting in some milk, add sugar!"
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "mammi"
 	trash = /obj/item/trash/plate
 	nutriment_amt = 3
@@ -5994,7 +5985,6 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/makaroni
 	name = "makaronilaatikko"
 	desc = "A special kind of macaroni, it's a big dish, and this one has special meat in it."
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "makaroni"
 	trash = /obj/item/trash/plate
 	nutriment_amt = 15
@@ -6008,8 +5998,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/lobster
 	name = "raw lobster"
-	desc = "a shifty lobster. You can try eating it, but its shell is extremely tough."
-	icon = 'icons/obj/food_vr.dmi'
+	desc = "A shifty lobster. You can try eating it, but its shell is extremely tough."
 	icon_state = "lobster_raw"
 	nutriment_amt = 5
 
@@ -6018,9 +6007,8 @@ END CITADEL CHANGE */
 	bitesize = 0.1
 
 /obj/item/reagent_containers/food/snacks/lobstercooked
-	name = "cooked lobster"
-	desc = "a luxurious plate of cooked lobster, its taste accentuated by lemon juice. Reinvigorating!"
-	icon = 'icons/obj/food_vr.dmi'
+	name = "steamed lobster"
+	desc = "A luxurious plate of cooked lobster, its taste accentuated by lemon juice. Reinvigorating!"
 	icon_state = "lobster_cooked"
 	trash = /obj/item/trash/plate
 	nutriment_amt = 20
@@ -6035,8 +6023,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/cuttlefish
 	name = "raw cuttlefish"
-	desc = "it's an adorable squid! you can't possible be thinking about eating this right?"
-	icon = 'icons/obj/food_vr.dmi'
+	desc = "It's an adorable squid! you can't possible be thinking about eating this right?"
 	icon_state = "cuttlefish_raw"
 	nutriment_amt = 5
 
@@ -6046,8 +6033,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/cuttlefishcooked
 	name = "cooked cuttlefish"
-	desc = "it's a roasted cuttlefish. rubbery, squishy, an acquired taste."
-	icon = 'icons/obj/food_vr.dmi'
+	desc = "It's a roasted cuttlefish. rubbery, squishy, an acquired taste."
 	icon_state = "cuttlefish_cooked"
 	nutriment_amt = 20
 	nutriment_desc = list("cuttlefish" = 5, "rubber" = 5, "grease" = 1)
@@ -6059,7 +6045,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/sliceable/monkfish
 	name = "extra large monkfish"
-	desc = "it's a huge monkfish. better clean it first, you can't possibly eat it like this."
+	desc = "It's a huge monkfish. better clean it first, you can't possibly eat it like this."
 	icon = 'icons/obj/food48x48_vr.dmi'
 	icon_state = "monkfish_raw"
 	nutriment_amt = 30
@@ -6074,8 +6060,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/monkfishfillet
 	name = "monkfish fillet"
-	desc = "it's a fillet sliced from a monkfish."
-	icon = 'icons/obj/food_vr.dmi'
+	desc = "It's a fillet sliced from a monkfish."
 	icon_state = "monkfish_fillet"
 	nutriment_amt = 5
 
@@ -6086,8 +6071,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/monkfishcooked
 	name = "seasoned monkfish"
-	desc = "a delicious slice of monkfish prepared with sweet chili and spring onion."
-	icon = 'icons/obj/food_vr.dmi'
+	desc = "A delicious slice of monkfish prepared with sweet chili and spring onion."
 	icon_state = "monkfish_cooked"
 	nutriment_amt = 10
 	nutriment_desc = list("fish" = 3, "oil" = 1, "sweet chili" = 3, "spring onion" = 2)
@@ -6100,7 +6084,6 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/sliceable/monkfishremains
 	name = "monkfish remains"
-	icon = 'icons/obj/food_vr.dmi'
 	icon_state = "monkfish_remains"
 	desc = "the work of a madman."
 	w_class = ITEMSIZE_LARGE
@@ -6112,6 +6095,56 @@ END CITADEL CHANGE */
 	. = ..()
 	bitesize = 0.01 //impossible to eat
 	reagents.add_reagent("carbon", 5)
+
+/obj/item/reagent_containers/food/snacks/shrimp
+	name = "raw shrimp"
+	desc = "An old-Earth sea creature. Formerly a luxury item, shrimp are commonly farmed as an easy source of protein."
+	icon_state = "shrimp_raw"
+	nutriment_amt = 5
+
+/obj/item/reagent_containers/food/snacks/shrimp/Initialize(mapload)
+	. = ..()
+	bitesize = 1
+
+/obj/item/reagent_containers/food/snacks/shrimpcooked
+	name = "steamed shrimp"
+	desc = "Shrimp are most commonly steamed. The meat is firm, but succulent. It's still a favorite filling for a variety of dishes."
+	icon_state = "shrimp_cooked"
+	nutriment_amt = 5
+	nutriment_desc = list("brine" = 2, "shrimp" = 5, "salt" = 2)
+
+/obj/item/reagent_containers/food/snacks/shrimpcooked/Initialize(mapload)
+	. = ..()
+	bitesize = 2
+	reagents.add_reagent("protein", 5)
+
+/obj/item/reagent_containers/food/snacks/shrimptempura
+	name = "tempura shrimp"
+	desc = "The delicate flavor of shrimp is enhanced by this delicate yet oily fried batter."
+	icon_state = "shrimp_tempura"
+	nutriment_amt = 8
+	nutriment_desc = list("batter" = 2, "shrimp" = 5, "oil" = 2)
+
+/obj/item/reagent_containers/food/snacks/shrimptempura/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 5)
+	reagents.add_reagent("batter", 2)
+	reagents.add_reagent("cooking_oil", 1)
+	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/shrimpcocktail
+	name = "shrimp cocktail"
+	desc = "Ground tomatoes, lemon, and peppers come together to form a zesty and hot sauce perfect for punching up some fresh shrimp."
+	icon_state = "shrimp_cocktail"
+	trash = /obj/item/reagent_containers/food/drinks/glass2/cocktail
+	nutriment_amt = 10
+	nutriment_desc = list("tomato" = 2, "shrimp" = 5, "zest" = 2)
+
+/obj/item/reagent_containers/food/snacks/shrimptempura/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("protein", 2)
+	reagents.add_reagent("capsaicin", 2)
+	bitesize = 1
 
 /obj/item/reagent_containers/food/snacks/monkeycube/sobakacube
 	name = "sobaka cube"
@@ -6643,4 +6676,3 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/bugsnacks/Initialize(mapload)
 	. = ..()
 	bitesize = 2
-
