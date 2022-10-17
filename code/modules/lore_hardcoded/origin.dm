@@ -45,7 +45,7 @@
 /datum/lore/character_background/origin/cererian
 	name = "Ceres"
 	id = "ceres"
-	desc = "Though you've no doubt been around Sol's Main Belt at least a couple times, everyone always lands back at the Belt's Oasis eventually, or so they say. You have seen both the no-nonsense work of asteroid mining operations and the luxurious halls of the big casinos back home in Ceres."
+	desc = "Though you've no doubt been around Sol's Main Belt at least a couple times, everyone always lands back at the Ceres eventually, or so they say. You have seen both the no-nonsense work of asteroid mining operations and the luxurious halls of the big casinos back home in Ceres."
 	innate_languages = list(
 		LANGUAGE_ID_HUMAN
 		)
@@ -66,10 +66,90 @@
 		LANGUAGE_ID_HUMAN
 		)
 
-/datum/lore/character_background/origin/custom
-	name = ""
-	id = ""
-	desc = ""
+/datum/lore/character_background/origin/ganymedean
+	name = "Ganymede"
+	id = "ganymede"
+	desc = "The largest moon of the Sol System, Ganymede was once your home. The sight of glowing auroras likely remind you of your time there... and of all the radiation there would've been outside, beneath them."
+	innate_languages = list(
+		LANGUAGE_ID_HUMAN
+		)
+
+/datum/lore/character_background/origin/callistoan
+	name = "Callisto"
+	id = "callisto"
+	desc = "You are from the very cornerstone of the Jovian system itself, the land of it's first settlement, Callisto. You are used to seeing the other moons circle around Jupiter from a safe distance under the windows of biodomes dotting the large ring-shaped cities of Vallhalla and Asgard."
+	innate_languages = list(
+		LANGUAGE_ID_HUMAN
+		)
+
+/datum/lore/character_background/origin/saturnian
+	name = "Saturn"
+	id = "saturn"
+	desc = "Whether from a minor moon's settlement or a habitat in orbit of the Sol System's crown jewel, you come from saturnian space. Somehow, the view of it's rings really does never get old."
+	innate_languages = list(
+		LANGUAGE_ID_HUMAN
+		)
+
+/datum/lore/character_background/origin/titanean
+	name = "Titan"
+	id = "titan"
+	desc = "Moon or not, Titan hardly feels like one on the rainy surface. Whether a synthetic or brave organic once living among it's seas of cryogenically cold methane, you come from the highly-flammable world of Titan."
+	innate_languages = list(
+		LANGUAGE_ID_HUMAN
+		)
+
+/datum/lore/character_background/origin/enceladean
+	name = "Enceladus"
+	id = "enceladus"
+	desc = "White as pristine snow, the world of Enceladus is where you're from. You're well-acquainted with the underwater environment of it's subsurface ocean and have likely seen the fractures along the surface blanketing the dark sky in plumes of snow with your own eyes."
+	innate_languages = list(
+		LANGUAGE_ID_HUMAN
+		)
+
+/datum/lore/character_background/origin/uranian
+	name = "Uranus"
+	id = "uranus"
+	desc = "The exception of Sol's gas giants in many ways, you are from one of the many large space stations orbiting Uranus. Most people you have known from home worked for one of the gas harvesting and refining companies in some way. Perhaps Phoron is not so different after all?"
+	innate_languages = list(
+		LANGUAGE_ID_HUMAN
+		)
+
+/datum/lore/character_background/origin/titanian
+	name = "Titania"
+	id = "titania"
+	desc = "A quiet corner of Sol by most standards, Titania is your home. However, you are no stranger to having to travel away from it, as one would not have found a settlement larger than a small hydroponics-farming town back in Titania."
+	innate_languages = list(
+		LANGUAGE_ID_HUMAN
+		)
+
+/datum/lore/character_background/origin/neptunian
+	name = "Neptune"
+	id = "neptune"
+	desc = "You come from one of the many space habitats orbiting low over the azure skies of Neptune. The furthest planet from Sol, you know the star best as a dim dot, casting it's cold light towards you from far in the distance."
+	innate_languages = list(
+		LANGUAGE_ID_HUMAN
+		)
+
+/datum/lore/character_background/origin/tritonian
+	name = "Triton"
+	id = "triton"
+	desc = "Orbiting retrograde around Neptune, the frigid world of Triton was once your home. As it is too, home of scientists and businessmen, more often than not related to the trident planet's fuel export industry."
+	innate_languages = list(
+		LANGUAGE_ID_HUMAN
+		)
+
+/datum/lore/character_background/origin/plutocharonian
+	name = "Pluto-Charon"
+	id = "plutocharon"
+	desc = "Two parts of the same whole, as every pluto-charonian knows, the twin ice-worlds of the Kuiper Belt were once your home. Whichever half you happened to live on, you have seen the tether which looms above, linking both dwarf-planets together, glowing city lights sprawling away from it's connection points on each."
+	innate_languages = list(
+		LANGUAGE_ID_HUMAN
+		)
+
+/datum/lore/character_background/origin/eridian
+	name = "Eris"
+	id = "eris"
+	desc = "You are from one of the outermost colonies of the Sol System, the dwarf-planet Eris. Every city you have known there was compact, and buried under kilometers of frozen nitrogen and water ice, with immense freight elevators as the primary way out to the spaceports on it's desolate surface."
 	innate_languages = list(
 		LANGUAGE_ID_HUMAN
 		)
