@@ -309,14 +309,14 @@
 
 			if (E.damage >= E.min_broken_damage)
 				to_chat(user, "<span class='danger'>You go blind!</span>")
-				user.sdisabilities |= BLIND
+				user.sdisabilities |= SDISABILITY_NERVOUS
 			else if (E.damage >= E.min_bruised_damage)
 				to_chat(user, "<span class='danger'>You go blind!</span>")
 				user.Blind(5)
 				user.eye_blurry = 5
-				user.disabilities |= NEARSIGHTED
+				user.disabilities |= DISABILITY_NEARSIGHTED
 				spawn(100)
-					user.disabilities &= ~NEARSIGHTED
+					user.disabilities &= ~DISABILITY_NEARSIGHTED
 	return
 
 /obj/item/weldingtool/is_hot()

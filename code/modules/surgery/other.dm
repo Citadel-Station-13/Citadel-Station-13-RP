@@ -244,7 +244,7 @@
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
 	if (!affected || (affected.robotic >= ORGAN_ROBOT))
 		return 0
-	return target_zone == BP_TORSO && (HUSK in target.mutations)
+	return target_zone == BP_TORSO && (MUTATION_HUSK in target.mutations)
 
 /datum/surgery_step/dehusk/structinitial
 	allowed_tools = list(
@@ -331,7 +331,7 @@
 	user.visible_message("<span class='notice'>[user] finishes recreating the missing biological structures and filling in gaps in [target]'s flesh with \the [tool].</span>", \
 	"<span class='notice'>You finish recreating the missing biological structures and filling in gaps in [target]'s flesh with \the [tool].</span>")
 	target.op_stage.dehusk = 0
-	target.mutations.Remove(HUSK)
+	target.mutations.Remove(MUTATION_HUSK)
 	target.status_flags &= ~DISFIGURED
 	target.update_icons_body()
 	..()

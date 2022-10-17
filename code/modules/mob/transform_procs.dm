@@ -28,8 +28,8 @@
 		return
 
 	set_species(species_type_by_name(species.primitive_form))
-	dna.SetSEState(MONKEYBLOCK,1)
-	dna.SetSEValueRange(MONKEYBLOCK,0xDAC, 0xFFF)
+	dna.SetSEState(DNABLOCK_MONKEY,1)
+	dna.SetSEValueRange(DNABLOCK_MONKEY,0xDAC, 0xFFF)
 
 	to_chat(src, "<B>You are now [species.name]. </B>")
 	qdel(animation)
