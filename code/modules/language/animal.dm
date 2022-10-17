@@ -6,7 +6,7 @@
 	ask_verb = "woofs"
 	exclaim_verb = "howls"
 	key = "n"
-	flags = RESTRICTED
+	language_flags = RESTRICTED
 	machine_understands = 0
 	space_chance = 100
 	syllables = list("bark", "woof", "bowwow", "yap", "arf")
@@ -19,7 +19,7 @@
 	ask_verb = "mrowls"
 	exclaim_verb = "yowls"
 	key = "c"
-	flags = RESTRICTED
+	language_flags = RESTRICTED
 	machine_understands = 0
 	space_chance = 100
 	syllables = list("meow", "mrowl", "purr", "meow", "meow", "meow")
@@ -32,7 +32,7 @@
 	ask_verb = "squeaks"
 	exclaim_verb = "squeaks"
 	key = "m"
-	flags = RESTRICTED
+	language_flags = RESTRICTED
 	machine_understands = 0
 	space_chance = 100
 	syllables = list("squeak")	// , "gripes", "oi", "meow")
@@ -45,7 +45,7 @@
 	ask_verb = "tweets"
 	exclaim_verb = "squawks"
 	key = "m"
-	flags = RESTRICTED
+	language_flags = RESTRICTED
 	machine_understands = 0
 	space_chance = 100
 	syllables = list("chirp", "squawk", "tweet")

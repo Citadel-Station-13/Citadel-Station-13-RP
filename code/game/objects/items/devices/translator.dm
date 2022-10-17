@@ -17,7 +17,7 @@
 	if(!listening) //Turning ON
 		langset = input(user,"Translate to which of your languages?","Language Selection") as null|anything in user.languages
 		if(langset)
-			if(langset && ((langset.flags & NONVERBAL) || (langset.flags & HIVEMIND) || (!langset.machine_understands)))
+			if(langset && ((langset.language_flags & NONVERBAL) || (langset.language_flags & HIVEMIND) || (!langset.machine_understands)))
 				//Nonverbal means no spoken words to translate, so I didn't see the need to remove it.
 				to_chat(user, "<span class='warning'>\The [src] cannot output that language.</span>")
 				return
@@ -51,7 +51,7 @@
 	if(!language)
 		return //Borgs were causing runtimes when passing language=null
 
-	if (language && (language.flags & NONVERBAL))
+	if (language && (language.language_flags & NONVERBAL))
 		return //Not gonna translate sign language
 
 	if (!language.machine_understands && !omni) // cit change - omni check

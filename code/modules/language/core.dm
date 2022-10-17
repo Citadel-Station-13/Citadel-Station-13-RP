@@ -7,7 +7,7 @@
 	exclaim_verb = list("exclaims","shouts","yells")
 	whisper_verb = "whispers"
 	key = "0"
-	flags = RESTRICTED
+	language_flags = RESTRICTED
 	syllables = list(
 "vol", "zum", "coo","zoo","bi","do","ooz","ite","og","re","si","ite","ish",
 "ar","at","on","ee","east","ma","da", "rim")
@@ -22,7 +22,7 @@
 	exclaim_verb = "whistles loudly"
 	colour = "changeling"
 	key = "6"
-	flags = NO_STUTTER
+	language_flags = NO_STUTTER
 	syllables = list("beep","beep","beep","beep","beep","boop","boop","boop","bop","bop","dee","dee","doo","doo","hiss","hss","buzz","buzz","bzz","ksssh","keey","wurr","wahh","tzzz","shh","shk")
 	space_chance = 10
 
@@ -39,7 +39,7 @@
 	signlang_verb = list("gestures")
 	colour = "say_quote"
 	key = "s"
-	flags = SIGNLANG|NO_STUTTER|NONVERBAL
+	language_flags = SIGNLANG|NO_STUTTER|NONVERBAL
 
 /datum/language/sign/can_speak_special(var/mob/speaker)	// TODO: If ever we make external organs assist languages, convert this over to the new format
 	var/obj/item/organ/external/hand/hands = locate() in speaker //you can't sign without hands

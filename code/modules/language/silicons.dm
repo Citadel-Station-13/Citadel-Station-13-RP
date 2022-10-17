@@ -1,5 +1,5 @@
 /datum/language/binary
-	id = LANGUAGE_ID_SILI
+	id = LANGUAGE_ID_SILICON_BINARY
 	name = "Robot Talk"
 	desc = "Most human stations support free-use communications protocols and routing hubs for synthetic use."
 	colour = "say_quote"
@@ -8,7 +8,7 @@
 	exclaim_verb = "declares"
 	key = "b"
 	machine_understands = 0
-	flags = RESTRICTED | HIVEMIND
+	language_flags = RESTRICTED | HIVEMIND
 	var/drone_only
 
 /datum/language/binary/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
@@ -68,5 +68,5 @@
 	colour = "say_quote"
 	key = "d"
 	machine_understands = 0
-	flags = RESTRICTED | HIVEMIND
+	language_flags = RESTRICTED | HIVEMIND
 	drone_only = 1

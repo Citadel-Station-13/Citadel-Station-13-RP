@@ -26,15 +26,15 @@
 	var/exclaim_verb = "exclaims"
 	/// Optional. When not specified speech_verb + quietly/softly is used instead.
 	var/whisper_verb
-	/// list of emotes that might be displayed if this language has NONVERBAL or SIGNLANG flags
+	/// list of emotes that might be displayed if this language has NONVERBAL or SIGNLANG language_flags
 	var/signlang_verb = list("signs", "gestures")
 	/// CSS style to use for strings in this language.
 	var/colour = "body"
 	/// Character used to speak in language eg. :o for Unathi.
 	var/key = "x"
-	/// Various language flags.
+	/// Various language language_flags.
 	#warn language_flags
-	var/flags = 0
+	var/flags = NONE
 	/// If set, non-native speakers will have trouble speaking.
 	var/native
 	/// Used when scrambling text for a non-speaker.
@@ -191,7 +191,7 @@
 	if(name != "Noise")	// Audible Emotes
 		if(ishuman(speaker))
 			var/mob/living/carbon/human/H = speaker
-			if(H.species.has_organ[O_VOICE] && !(flags & SIGNLANG) && !(flags & NONVERBAL)) // Does the species need a voicebox? Is the language even spoken?
+			if(H.species.has_organ[O_VOICE] && !(language_flags & SIGNLANG) && !(language_flags & NONVERBAL)) // Does the species need a voicebox? Is the language even spoken?
 				var/obj/item/organ/internal/voicebox/vocal = H.internal_organs_by_name[O_VOICE]
 				if(!vocal || vocal.is_broken() || vocal.mute)
 					return FALSE
@@ -241,7 +241,7 @@
 	if(speaking.can_speak_special(src))
 		if(universal_speak)
 			return 1
-		if(speaking && (speaking.flags & INNATE))
+		if(speaking && (speaking.language_flags & INNATE))
 			return 1
 		if(speaking in src.languages)
 			return 1
@@ -268,7 +268,7 @@
 	var/dat = "<b><font size = 5>Known Languages</font></b><br/><br/>"
 
 	for(var/datum/language/L in languages)
-		if(!(L.flags & NONGLOBAL))
+		if(!(L.language_flags & NONGLOBAL))
 			dat += "<b>[L.name] ([get_language_prefix()][L.key])</b><br/>[L.desc]<br/><br/>"
 
 	src << browse(dat, "window=checklanguage")
@@ -281,7 +281,7 @@
 		dat += "Current default language: [default_language] - <a href='byond://?src=\ref[src];default_lang=reset'>reset</a><br/><br/>"
 
 	for(var/datum/language/L in languages)
-		if(!(L.flags & NONGLOBAL))
+		if(!(L.language_flags & NONGLOBAL))
 			if(L == default_language)
 				dat += "<b>[L.name] ([get_language_prefix()][L.key])</b> - default - <a href='byond://?src=\ref[src];default_lang=reset'>reset</a><br/>[L.desc]<br/><br/>"
 			else if (can_speak(L))
@@ -309,7 +309,7 @@
 
 /proc/transfer_languages(var/mob/source, var/mob/target, var/except_flags)
 	for(var/datum/language/L in source.languages)
-		if(L.flags & except_flags)
+		if(L.language_flags & except_flags)
 			continue
 		target.add_language(L.name)
 

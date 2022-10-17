@@ -221,7 +221,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 
 	for (var/language_name in GLOB.all_languages)
 		var/datum/language/L = GLOB.all_languages[language_name]
-		if(!(L.flags & NONGLOBAL))
+		if(!(L.language_flags & NONGLOBAL))
 			GLOB.language_keys[L.key] = L
 
 	#warn species lookup on Sscharacters?

@@ -53,7 +53,7 @@
 			var/list/available_languages = S.secondary_langs.Copy()
 			for(var/L in GLOB.all_languages)
 				var/datum/language/lang = GLOB.all_languages[L]
-				if(!(lang.flags & RESTRICTED) && (is_lang_whitelisted(user, lang)))
+				if(!(lang.language_flags & RESTRICTED) && (is_lang_whitelisted(user, lang)))
 					available_languages |= L
 
 			// make sure we don't let them waste slots on the default languages

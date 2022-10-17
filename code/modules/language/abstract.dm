@@ -4,7 +4,7 @@
 	name = "Noise"
 	desc = "Noises"
 	key = ""
-	flags = RESTRICTED|NONGLOBAL|INNATE|NO_TALK_MSG|NO_STUTTER
+	language_flags = RESTRICTED|NONGLOBAL|INNATE|NO_TALK_MSG|NO_STUTTER
 
 /datum/language/noise/format_message(message, verb)
 	return "<span class='message'><span class='[colour]'>[message]</span></span>"
@@ -33,7 +33,7 @@
 	exclaim_verb = "shrieks"
 	colour = "attack"
 	key = "r"	// Radda radda radda
-	flags = RESTRICTED|NONGLOBAL
+	language_flags = RESTRICTED|NONGLOBAL
 	machine_understands = 0
 	syllables = list (
 			"radda", "fea","vea","vei","veh","vee","feh","fa","soa","su","sua","sou","se","seh","twa","twe","twi",
