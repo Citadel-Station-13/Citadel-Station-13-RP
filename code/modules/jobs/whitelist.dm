@@ -61,7 +61,7 @@ var/list/whitelist = list()
 		return 0
 
 	//The language isn't even whitelisted
-	if(!(language.flags & WHITELISTED))
+	if(!(language.language_flags & WHITELISTED))
 		return 1
 
 	//If we have a loaded file, search it
