@@ -126,9 +126,9 @@
 		else
 			return capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
 
-	var/datum/language/species_language = GLOB.all_languages[name_language]
+	var/datum/language/species_language = SScharacters.resolve_language_name(name_language)
 	if(!species_language)
-		species_language = GLOB.all_languages[default_language]
+		species_language = SScharacters.resolve_language_name(default_language)
 	if(!species_language)
 		return "unknown"
 	return species_language.get_random_name(gender)

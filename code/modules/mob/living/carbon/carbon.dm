@@ -6,7 +6,7 @@
 	touching = new/datum/reagents/metabolism/touch(500, src)
 	reagents = bloodstr
 	if (!default_language && species_language)
-		default_language = GLOB.all_languages[species_language]
+		default_language = SScharacters.resolve_language_name(species_language)
 
 /mob/living/carbon/BiologicalLife(seconds, times_fired)
 	if((. = ..()))
@@ -278,7 +278,7 @@
 		if(can_speak(default_language))
 			return default_language
 		else
-			return GLOB.all_languages[LANGUAGE_GIBBERISH]
+			return SScharacters.resolve_language_name(LANGUAGE_GIBBERISH)
 
 	if(!species)
 		return null

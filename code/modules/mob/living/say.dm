@@ -191,7 +191,7 @@ var/list/channel_to_radio_key = new
 		speaking = get_default_language()
 
 	if(!can_speak(speaking))
-		speaking = GLOB.all_languages[LANGUAGE_GIBBERISH]
+		speaking = SScharacters.resolve_language_name(LANGUAGE_GIBBERISH)
 		var/babble_key = ",r"
 		message = babble_key + message
 

@@ -154,7 +154,7 @@
 		else
 			var/alert_result = alert(src, "You dont know the LANGUAGE you are about to speak, instead you will speak Babel. Do you want to?", "Unknown Language Alert","No","Yes")
 			if(alert_result == "Yes")
-				return GLOB.all_languages[LANGUAGE_GIBBERISH]
+				return SScharacters.resolve_language_name(LANGUAGE_GIBBERISH)
 			else
 				if(isliving(src))
 					var/mob/living/caller = src

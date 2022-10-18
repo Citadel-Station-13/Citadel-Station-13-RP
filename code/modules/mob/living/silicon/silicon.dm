@@ -52,7 +52,7 @@
 	silicon_mob_list |= src
 	. = ..()
 	add_language(LANGUAGE_GALCOM)
-	set_default_language(GLOB.all_languages[LANGUAGE_GALCOM])
+	set_default_language(SScharacters.resolve_language_name(LANGUAGE_GALCOM))
 	init_id()
 	init_subsystems()
 
@@ -205,7 +205,7 @@
 		return 1
 
 /mob/living/silicon/remove_language(var/rem_language)
-	var/datum/language/removed_language = GLOB.all_languages[rem_language]
+	var/datum/language/removed_language = SScharacters.resolve_language_name(rem_language)
 	if(!removed_language)
 		return
 

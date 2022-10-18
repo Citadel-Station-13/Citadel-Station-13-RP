@@ -64,7 +64,7 @@
 /mob/living/simple_mob/spiderbot/Initialize(mapload)
 	. = ..()
 	add_language(LANGUAGE_GALCOM)
-	default_language = GLOB.all_languages[LANGUAGE_GALCOM]
+	default_language = SScharacters.resolve_language_name(LANGUAGE_GALCOM)
 	verbs |= /mob/living/proc/ventcrawl
 	verbs |= /mob/living/proc/hide
 

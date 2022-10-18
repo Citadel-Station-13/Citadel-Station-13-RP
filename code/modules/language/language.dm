@@ -214,12 +214,12 @@
 	return 1
 
 /mob/proc/remove_language(var/rem_language)
-	var/datum/language/L = GLOB.all_languages[rem_language]
+	var/datum/language/L = SScharacters.resolve_language_name(rem_language)
 	. = (L in languages)
 	languages.Remove(L)
 
 /mob/living/remove_language(rem_language)
-	var/datum/language/L = GLOB.all_languages[rem_language]
+	var/datum/language/L = SScharacters.resolve_language_name(rem_language)
 	if(default_language == L)
 		default_language = null
 	return ..()
@@ -234,7 +234,7 @@
 	if(speaking == SScharacters.resolve_language_name("Noise"))
 		return 1
 
-	if (only_species_language && speaking != GLOB.all_languages[species_language])
+	if (only_species_language && speaking != SScharacters.resolve_language_name(species_language))
 		return 0
 
 	if(speaking.can_speak_special(src))
@@ -294,7 +294,7 @@
 	if(href_list["default_lang"])
 		if(href_list["default_lang"] == "reset")
 			if (species_language)
-				set_default_language(GLOB.all_languages[species_language])
+				set_default_language(SScharacters.resolve_language_name(species_language))
 			else
 				set_default_language(null)
 		else
