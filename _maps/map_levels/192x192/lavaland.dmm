@@ -1849,7 +1849,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Lc" = (
-/obj/structure/mob_spawner/scanner/goliath,
+/obj/structure/mob_spawner/goliath,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/explored)
 "Lg" = (
@@ -2054,7 +2054,7 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/lavaland/central/base/common)
 "PP" = (
-/obj/structure/mob_spawner/scanner/goliath,
+/obj/structure/mob_spawner/goliath,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/unexplored)
 "PZ" = (

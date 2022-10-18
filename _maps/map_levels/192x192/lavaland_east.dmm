@@ -396,7 +396,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "jg" = (
-/obj/structure/mob_spawner/scanner/goliath,
+/obj/structure/mob_spawner/goliath,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/unexplored)
 "jr" = (
@@ -1176,7 +1176,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "zx" = (
-/obj/structure/mob_spawner/scanner/goliath,
+/obj/structure/mob_spawner/goliath,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/explored)
 "Aj" = (
