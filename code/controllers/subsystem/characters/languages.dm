@@ -49,6 +49,7 @@
 // todo: deprecated
 /datum/controller/subsystem/characters/proc/resolve_language_path(path)
 	RETURN_TYPE(/datum/language)
+	ASSERT(ispath(path, /datum/language))
 	return language_paths[path]
 
 /**

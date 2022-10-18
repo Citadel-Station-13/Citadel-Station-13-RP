@@ -21,8 +21,27 @@
 
 	#warn consider allowing typepaths as well as ids for species/language
 
+/datum/lore/character_background/New()
+	// resolve typepaths
+	for(var/thing in allow_species)
+		if(ispath(thing))
+			allow_species += SScharacters.resolve_species_path(thing)
+			allow_species -= thing
+	for(var/thing in forbid_species)
+		if(ispath(thing))
+			forbid_species += SScharacters.resolve_species_path(thing)
+			forbid_species -= thing
+	for(var/thing in innate_languages)
+		if(ispath(thing))
+			innate_languages += SScharacters.resolve_language_path(thing)
+			innate_languages -= thing
+
 /datum/lore/character_background/proc/check_species_id(id)
-	#warn impl
+	if(allow_species)
+		return id in allow_species
+	else if(forbid_species)
+		return !(id in forbid_species)
+	return TRUE
 
 /datum/lore/character_background/proc/get_default_language_ids()
-	#warn impl
+	return innate_languages.Copy()
