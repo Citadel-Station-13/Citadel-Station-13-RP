@@ -6,6 +6,10 @@
 	template.desc = blurb
 	template.whitelisted = !!(spawn_flags & SPECIES_IS_WHITELISTED)
 	template.real_species_type = type
+	template.default_origin = default_origin
+	template.default_citizenship = default_citizenship
+	template.default_faction = default_faction
+	template.default_religion = default_religion
 
 /**
  * since we're a server of snowflakes, we have this to embody character species
@@ -43,21 +47,23 @@
 	/// set species bodytype to this
 	var/our_bodytype = BODYTYPE_DEFAULT
 
-	//! Defaults to set for background
+	//! Defaults to set for background - typepaths allowed
 	/// default origin
-	var/default_origin = "custom"
+	var/default_origin = /datum/lore/character_background/origin/custom
 	/// default citizenship
-	var/default_citizenship = "custom"
+	var/default_citizenship = /datum/lore/character_background/citizenship/custom
 	/// default faction
-	var/default_faction = "nanotrasen"
+	var/default_faction = /datum/lore/character_background/faction/nanotrasen
 	/// default religion
-	var/default_religion = "custom"
+	var/default_religion = /datum/lore/character_background/religion/custom
 
 	//! Languages
 	/// has galactic common? you better not disable this unless you know what you're doing
 	var/language_galactic_common = FALSE
 	/// additional languages we always have, regardless of background
 	var/list/language_species = list()
+	/// name language is from for randomgen - id
+	var/name_language
 
 	#warn impl in general
 
@@ -67,17 +73,19 @@
 	S.default_bodytype = our_bodytype
 
 /datum/character_species/proc/get_default_origin_id()
+	return SScharacters.resolve_origin(default_origin).id
 
 /datum/character_species/proc/get_default_citizenship_id()
+	return SScharacters.resolve_citizenship(default_citizenship).id
 
 /datum/character_species/proc/get_default_faction_id()
+	return SScharacters.resolve_faction(default_faction).id
 
 /datum/character_species/proc/get_default_religion_id()
+	return SScharacters.default_religion(default_religion).id
 
 /datum/character_species/proc/get_default_language_ids()
 	#warn impl
-
-#warn impl
 
 //! LORE PEOPLE, SHOVE YOUR SNOWFLAKE HERE
 

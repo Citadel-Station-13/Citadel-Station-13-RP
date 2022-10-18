@@ -156,10 +156,21 @@
 	var/num_alternate_languages = 0
 	/// The language to use when determining names for this species, or null to use the first name/last name generator.
 	var/name_language = LANGUAGE_GALCOM
+	#warn overhaul languages?
 
 	/// The languages the species can't speak without an assisted organ.
 	/// This list is a guess at things that no one other than the parent species should be able to speak
 	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
+
+	//! Defaults to set for background - typepaths
+	/// default origin
+	var/default_origin = /datum/lore/character_background/origin/custom
+	/// default citizenship
+	var/default_citizenship = /datum/lore/character_background/citizenship/custom
+	/// default faction
+	var/default_faction = /datum/lore/character_background/faction/nanotrasen
+	/// default religion
+	var/default_religion = /datum/lore/character_background/religion/custom
 
 //! ## Soundy emotey things.
 	var/scream_verb = "screams"
