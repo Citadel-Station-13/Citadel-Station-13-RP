@@ -125,7 +125,7 @@
 
 	if(H.isSynthetic())
 		H.visible_message(SPAN_DANGER("\The [H] collapses into parts, revealing a solitary diona nymph at the core."))
-		H.set_species(get_static_species_meta(/datum/species/human), skip = TRUE, force = TRUE)
+		H.set_species(SScharacters.resolve_species_path(/datum/species/human), skip = TRUE, force = TRUE)
 
 		for(var/obj/item/organ/internal/diona/Org in H.internal_organs) // Remove Nymph organs.
 			qdel(Org)

@@ -1,5 +1,5 @@
 /mob/living/carbon/alien/diona/confirm_evolution()
-	if(!is_alien_whitelisted(src, get_static_species_meta(/datum/species/diona)))
+	if(!is_alien_whitelisted(src, SScharacters.resolve_species_path(/datum/species/diona)))
 		alert(src, "You are currently not whitelisted to play as a full diona.", "Evolution Error")
 		return
 

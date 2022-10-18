@@ -29,7 +29,7 @@
 
 	if(iscarbon(holder))
 		var/mob/living/carbon/C = holder
-		species = get_static_species_meta(/datum/species/human)
+		species = SScharacters.resolve_species_path(/datum/species/human)
 		if(holder.dna)
 			dna = C.dna.Clone()
 			species = C.species //For custom species
@@ -48,7 +48,7 @@
 					blood_DNA = list()
 				blood_DNA[dna.unique_enzymes] = dna.b_type
 	else
-		species = get_static_species_meta(/datum/species/human)
+		species = SScharacters.resolve_species_path(/datum/species/human)
 
 	if(owner)
 		if(!meat_type)

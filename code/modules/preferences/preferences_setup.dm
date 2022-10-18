@@ -1,7 +1,7 @@
 /datum/preferences
 	//The mob should have a gender you want before running this proc. Will run fine without H
 /datum/preferences/proc/randomize_appearance_and_body_for(var/mob/living/carbon/human/H)
-	var/datum/species/current_species = SScharacters.resolve_species_name(species) || get_static_species_meta(/datum/species/human)
+	var/datum/species/current_species = SScharacters.resolve_species_name(species) || SScharacters.resolve_species_path(/datum/species/human)
 	set_biological_gender(pick(current_species.genders))
 
 	h_style = random_hair_style(biological_gender, species)

@@ -191,8 +191,7 @@ var/global/floorIsLava = 0
 	// language toggles
 	body += "<br><br><b>Languages:</b><br>"
 	var/f = 1
-	for(var/k in GLOB.all_languages)
-		var/datum/language/L = SScharacters.resolve_language_name(k)
+	for(var/datum/language/L as anything in SScharacters.all_languages())
 		if(!(L.language_flags & INNATE))
 			if(!f) body += " | "
 			else f = 0

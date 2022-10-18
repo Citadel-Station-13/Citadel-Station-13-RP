@@ -640,7 +640,7 @@
 	if(chosen_species && use_species_name)
 		// Have to recheck admin due to no usr at roundstart. Latejoins are fine though.
 		if(is_alien_whitelisted(chosen_species))
-			new_character = new(T, species_type_by_name(use_species_name))
+			new_character = new(T, use_species_name)
 
 	if(!new_character)
 		new_character = new(T)

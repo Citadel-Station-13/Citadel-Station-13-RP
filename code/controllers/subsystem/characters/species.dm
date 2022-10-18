@@ -10,8 +10,6 @@
 	/// whitelisted species - names
 	var/list/playable_species
 
-#warn species cache by type, uid, etc
-
 /datum/controller/subsystem/characters/proc/rebuild_species()
 	species_lookup = list()
 	species_paths = list()
@@ -79,6 +77,10 @@
 	return new static_copy.type
 
 // todo: deprecated
+/**
+ * returns all static species datums
+ * DO NOT EVER MODIFY THESE.
+ */
 /datum/controller/subsystem/characters/proc/all_static_species_meta()
 	RETURN_TYPE(/list)
 	. = list()

@@ -17,7 +17,7 @@
  * check if we can play a species
  */
 /datum/preferences/proc/check_species_id(uid)
-	var/datum/species/S = get_static_species_meta(uid)
+	var/datum/species/S = SScharacters.resolve_species_path(uid)
 	#warn impl
 
 /datum/preferences/proc/route_species_pick(uid)

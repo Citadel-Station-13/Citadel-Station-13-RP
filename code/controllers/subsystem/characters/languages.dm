@@ -23,7 +23,7 @@
 		if(language_lookup[L.id])
 			stack_trace("duped language id [L.id] on [path] skipped")
 			continue
-		if(language_by_name[L.name])
+		if(language_names[L.name])
 			stack_trace("duped language name [L.name] on [path] skipped")
 			continue
 		language_lookup[L.id] = L
@@ -45,3 +45,25 @@
 /datum/controller/subsystem/characters/proc/resolve_language_path(path)
 	RETURN_TYPE(/datum/language)
 	return language_paths[path]
+
+/**
+ * returns all language datums
+ * do NOT modify these unless you know what you are doing!
+ */
+/datum/controller/subsystem/characters/proc/all_languages()
+	RETURN_TYPE(/list)
+	. = list()
+	for(var/path in language_paths)
+		. += language_paths[path]
+
+/**
+ * returns all language names
+ */
+/datum/controller/subsystem/characters/proc/all_language_names()
+	RETURN_TYPE(/list)
+	. = list()
+	for(var/name in language_names)
+		. += name
+
+/datum/controller/subsystem/characters/proc/resolve_language_key(key)
+	return language_keys[key]

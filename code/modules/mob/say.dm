@@ -148,7 +148,7 @@
 
 	if(length_char(message) >= 2 && is_language_prefix(prefix))
 		var/language_prefix = copytext_char(message, 2 ,3)
-		var/datum/language/L = GLOB.language_keys[language_prefix]
+		var/datum/language/L = SScharacters.resolve_language_key(language_prefix)
 		if (can_speak(L))
 			return L
 		else
@@ -158,5 +158,5 @@
 			else
 				if(isliving(src))
 					var/mob/living/caller = src
-					return GLOB.all_languages[caller.default_language]
+					return SScharacters.resolve_language_name(caller.default_language)
 	return null

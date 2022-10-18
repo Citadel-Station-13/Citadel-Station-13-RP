@@ -25,7 +25,7 @@
 			else
 				O.species = SScharacters.resolve_species_name(prosfab.species)
 		else
-			O.species = get_static_species_meta(/datum/species/human)
+			O.species = SScharacters.resolve_species_path(/datum/species/human)
 		O.robotize(prosfab.manufacturer)
 		O.dna = new/datum/dna() //Uuughhhh... why do I have to do this?
 		O.dna.ResetUI()
