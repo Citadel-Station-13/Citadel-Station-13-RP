@@ -14,6 +14,8 @@
 	. += current? current.desc : "<center>error; citizenship load failed</center>"
 	. += "</div>"
 
+#warn scroll selector
+
 /datum/category_item/player_setup_item/background/citizenship/act(datum/preferences/prefs, mob/user, action, list/params)
 	switch(action)
 		if("pick")

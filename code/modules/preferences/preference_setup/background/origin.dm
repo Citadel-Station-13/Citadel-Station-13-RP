@@ -14,6 +14,9 @@
 	. += current? current.desc : "<center>error; origin load failed</center>"
 	. += "</div>"
 
+#warn scroll selector
+#warn category select
+
 /datum/category_item/player_setup_item/background/origin/act(datum/preferences/prefs, mob/user, action, list/params)
 	switch(action)
 		if("pick")
