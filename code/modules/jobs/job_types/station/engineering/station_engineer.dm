@@ -20,7 +20,7 @@
 		"Electrician" = /datum/alt_title/electrician,
 		"Apprentice Engineer" = /datum/alt_title/apprentice_engineer,
 		"Construction Engineer" = /datum/alt_title/construction_engi,
-		"Senior Engineer" - /datum/alt_title/senior_engi
+		"Senior Engineer" = /datum/alt_title/senior_engi
 		)
 
 	minimal_player_age = 3
