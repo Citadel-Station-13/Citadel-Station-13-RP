@@ -171,7 +171,7 @@
 			temp = "ERROR: Record missing."
 
 	else if(href_list["view_stock_brec"])
-		var/datum/species/S = name_static_species_meta(href_list["view_stock_brec"])
+		var/datum/species/S = SScharacters.resolve_species_name(href_list["view_stock_brec"])
 		if(S && (S.spawn_flags & (SPECIES_IS_WHITELISTED|SPECIES_CAN_JOIN)) == SPECIES_CAN_JOIN)
 			// Generate body record from species!
 			mannequin = new(null, S.name)

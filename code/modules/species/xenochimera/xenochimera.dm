@@ -428,7 +428,7 @@
 	return base_species
 
 /datum/species/shapeshifter/xenochimera/get_race_key(mob/living/carbon/human/H)
-	var/datum/species/real = name_static_species_meta(base_species)
+	var/datum/species/real = SScharacters.resolve_species_name(base_species)
 	return real.real_race_key(H)
 
 /datum/species/shapeshifter/xenochimera/proc/update_xenochimera_hud(var/mob/living/carbon/human/H, var/danger, var/feral)

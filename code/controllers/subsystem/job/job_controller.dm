@@ -397,7 +397,7 @@ var/global/datum/controller/occupations/job_master
 					permitted = 1
 
 				// Check if they're whitelisted for this gear (in alien whitelist? seriously?)
-				if(G.whitelisted && !is_alien_whitelisted(H, name_static_species_meta(G.whitelisted)))
+				if(G.whitelisted && !is_alien_whitelisted(H, SScharacters.resolve_species_name(G.whitelisted)))
 					permitted = 0
 
 				// If they aren't, tell them

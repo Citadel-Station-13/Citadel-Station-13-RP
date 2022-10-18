@@ -261,7 +261,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 	for(var/species_name in GLOB.playable_species)
 		if(species_name in blacklisted_icons)
 			continue
-		var/datum/species/S = name_static_species_meta(species_name)
+		var/datum/species/S = SScharacters.resolve_species_name(species_name)
 		if(S.spawn_flags & SPECIES_IS_WHITELISTED)
 			continue
 		GLOB.custom_species_bases += species_name

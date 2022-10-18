@@ -195,7 +195,7 @@
 	return universal_speak || (speaking in src.speech_synthesizer_langs) || (speaking.name == "Noise")	//need speech synthesizer support to vocalize a language
 
 /mob/living/silicon/add_language(var/language, var/can_speak=1)
-	var/datum/language/added_language = GLOB.all_languages[language]
+	var/datum/language/added_language = SScharacters.resolve_language_name(language)
 	if(!added_language)
 		return
 

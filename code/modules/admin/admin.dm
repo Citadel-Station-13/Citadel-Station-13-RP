@@ -192,7 +192,7 @@ var/global/floorIsLava = 0
 	body += "<br><br><b>Languages:</b><br>"
 	var/f = 1
 	for(var/k in GLOB.all_languages)
-		var/datum/language/L = GLOB.all_languages[k]
+		var/datum/language/L = SScharacters.resolve_language_name(k)
 		if(!(L.language_flags & INNATE))
 			if(!f) body += " | "
 			else f = 0

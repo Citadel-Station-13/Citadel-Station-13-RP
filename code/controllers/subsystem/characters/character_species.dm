@@ -24,8 +24,8 @@
 /datum/controller/subsystem/characters/proc/rebuild_character_species()
 	// make species lookup
 	character_species_lookup = list()
-	for(var/path in GLOB.species_meta)
-		var/datum/species/S = GLOB.species_meta[path]
+	for(var/path in species_paths)
+		var/datum/species/S = species_paths[path]
 		if(!(S.spawn_flags & SPECIES_CAN_JOIN))		// don't bother lmao
 			continue
 		if(character_species_lookup[S.uid])

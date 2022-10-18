@@ -203,7 +203,7 @@ var/list/channel_to_radio_key = new
 	while(speaking && is_language_prefix(copytext_char(message, 1, 2)))
 		message = copytext_char(message,2+length_char(speaking.key))
 
-	if(speaking && speaking == GLOB.all_languages["Noise"])
+	if(speaking && speaking == SScharacters.resolve_language_name("Noise"))
 		message = copytext_char(message,2)
 
 	//HIVEMIND languages always send to all people with that language

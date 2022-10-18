@@ -21,9 +21,9 @@
 				manf = manf.species_alternates[prosfab.species]
 
 			if(!prosfab.species || (prosfab.species in manf.species_cannot_use))	// Fabricator ensures the manufacturer can make parts for the species we're set to.
-				O.species = name_static_species_meta(manf.suggested_species)
+				O.species = SScharacters.resolve_species_name(manf.suggested_species)
 			else
-				O.species = name_static_species_meta(prosfab.species)
+				O.species = SScharacters.resolve_species_name(prosfab.species)
 		else
 			O.species = get_static_species_meta(/datum/species/human)
 		O.robotize(prosfab.manufacturer)
@@ -62,7 +62,7 @@
 				EO.remove_rejuv()
 
 		for(var/obj/item/organ/external/O in H.organs)
-			O.species = name_static_species_meta(newspecies)
+			O.species = SScharacters.resolve_species_name(newspecies)
 
 			if(!(O.organ_tag in manf.parts))	// Make sure we're using an actually present icon.
 				manf = GLOB.all_robolimbs["Unbranded"]

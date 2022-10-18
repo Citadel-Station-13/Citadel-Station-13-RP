@@ -860,7 +860,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	if(ispath(to_copy))
 		to_copy = get_static_species_meta(to_copy)
 	if(istext(to_copy))
-		to_copy = name_static_species_meta(to_copy)
+		to_copy = SScharacters.resolve_species_name(to_copy)
 
 	//Initials so it works with a simple path passed, or an instance
 	base_species = to_copy.name

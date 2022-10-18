@@ -634,7 +634,7 @@
 	var/use_species_name
 	var/datum/species/chosen_species
 	if(client.prefs.species)
-		chosen_species = name_static_species_meta(client.prefs.species)
+		chosen_species = SScharacters.resolve_species_name(client.prefs.species)
 		use_species_name = chosen_species.get_station_variant()	// Only used by pariahs atm.
 
 	if(chosen_species && use_species_name)
@@ -688,7 +688,7 @@
 			E.post_implant(new_character)
 
 	for(var/lang in client.prefs.alternate_languages)
-		var/datum/language/chosen_language = GLOB.all_languages[lang]
+		var/datum/language/chosen_language = SScharacters.resolve_language_name(lang)
 		if(chosen_language)
 			if(is_lang_whitelisted(src,chosen_language) || (new_character.species && (chosen_language.name in new_character.species.secondary_langs)))
 				new_character.add_language(lang)
@@ -728,7 +728,7 @@
 /mob/new_player/get_species_name()
 	var/datum/species/chosen_species
 	if(client.prefs.species)
-		chosen_species = name_static_species_meta(client.prefs.species)
+		chosen_species = SScharacters.resolve_species_name(client.prefs.species)
 
 	if(!chosen_species)
 		return SPECIES_HUMAN

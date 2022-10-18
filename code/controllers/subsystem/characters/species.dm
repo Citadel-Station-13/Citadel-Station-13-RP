@@ -79,7 +79,7 @@
 	return new static_copy.type
 
 // todo: deprecated
-/datum/controller/subsystme/characters/proc/all_static_species_meta()
+/datum/controller/subsystem/characters/proc/all_static_species_meta()
 	RETURN_TYPE(/list)
 	. = list()
 	for(var/path in species_paths)

@@ -52,7 +52,7 @@
 		else
 			var/list/available_languages = S.secondary_langs.Copy()
 			for(var/L in GLOB.all_languages)
-				var/datum/language/lang = GLOB.all_languages[L]
+				var/datum/language/lang = SScharacters.resolve_language_name(L)
 				if(!(lang.language_flags & RESTRICTED) && (is_lang_whitelisted(user, lang)))
 					available_languages |= L
 

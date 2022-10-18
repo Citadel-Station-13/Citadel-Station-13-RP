@@ -205,7 +205,7 @@
 // Language handling.
 /mob/proc/add_language(var/language)
 
-	var/datum/language/new_language = GLOB.all_languages[language]
+	var/datum/language/new_language = SScharacters.resolve_language_name(language)
 
 	if(!istype(new_language) || (new_language in languages))
 		return 0
@@ -231,7 +231,7 @@
 		log_debug("[src] attempted to speak a null language.")
 		return 0
 
-	if(speaking == GLOB.all_languages["Noise"])
+	if(speaking == SScharacters.resolve_language_name("Noise"))
 		return 1
 
 	if (only_species_language && speaking != GLOB.all_languages[species_language])

@@ -3780,7 +3780,6 @@
 #include "code\modules\shuttles\shuttles_vr.dm"
 #include "code\modules\shuttles\shuttles_web.dm"
 #include "code\modules\shuttles\web_datums.dm"
-#include "code\modules\species\lookup.dm"
 #include "code\modules\species\minor_species.dm"
 #include "code\modules\species\species.dm"
 #include "code\modules\species\species_attack.dm"

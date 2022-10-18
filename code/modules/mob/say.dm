@@ -144,7 +144,7 @@
 	var/prefix = copytext_char(message,1,2)
 	// This is for audible emotes
 	if(length_char(message) >= 1 && prefix == "!")
-		return GLOB.all_languages["Noise"]
+		return SScharacters.resolve_language_name("Noise")
 
 	if(length_char(message) >= 2 && is_language_prefix(prefix))
 		var/language_prefix = copytext_char(message, 2 ,3)

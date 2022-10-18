@@ -484,7 +484,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	return 1
 
 /datum/preferences/proc/character_static_species_meta()
-	return name_static_species_meta(species) || get_static_species_meta(/datum/species/human)
+	return SScharacters.resolve_species_name(species) || get_static_species_meta(/datum/species/human)
 
 /datum/preferences/proc/open_load_dialog(mob/user)
 	var/dat = "<body>"

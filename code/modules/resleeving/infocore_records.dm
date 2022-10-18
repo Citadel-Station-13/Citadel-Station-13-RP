@@ -109,7 +109,7 @@
 	locked = ckeylock
 
 	//Prevent people from printing restricted and whitelisted species
-	var/datum/species/S = name_static_species_meta(M.dna.species)
+	var/datum/species/S = SScharacters.resolve_species_name(M.dna.species)
 	if(S)
 		toocomplex = (S.spawn_flags & SPECIES_IS_WHITELISTED) || (S.spawn_flags & SPECIES_IS_RESTRICTED)
 
