@@ -105,7 +105,7 @@
 
 /obj/item/trash/lollipop_stick
 	name = "used lollipop stick"
-	icon = 'icons/obj/food.dmi'
+	icon = 'icons/obj/food/food.dmi'
 	icon_state = "lollipop_stick"
 
 /obj/item/trash/attack(mob/M as mob, mob/living/user as mob)
@@ -197,7 +197,7 @@
 /obj/item/trash/bugsnacks
 	name = "Bugsnacks"
 	icon_state = "bugsnacks"
-	
+
 /obj/item/trash/brainsnaxtrash
 	name = "\improper BrainSnax can"
 	icon_state = "brainsnaxtrash"

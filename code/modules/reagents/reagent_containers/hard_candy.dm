@@ -1,7 +1,7 @@
 /obj/item/reagent_containers/hard_candy
 	name = "hard candy"
 	desc = "You shouldn't be seeing this. Contact an Admin or Maintainer!"
-	icon = 'icons/obj/food.dmi'
+	icon = 'icons/obj/food/food.dmi'
 	icon_state = "lollipop_stick"
 	item_state = "lollipop_stick"
 	slot_flags = SLOT_MASK | SLOT_EARS
@@ -96,7 +96,7 @@
 				if(blocked)
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
-					
+
 			user.visible_message(SPAN_DANGER("[user] attempts to feed [M] [src]."))
 			user.setClickCooldown(user.get_attack_speed(src))
 			if(!do_mob(user, M, 3 SECONDS))
@@ -167,7 +167,7 @@
 /obj/item/reagent_containers/hard_candy/lollipop
 	name = "lollipop"
 	desc = "A delicious lollipop."
-	icon = 'icons/obj/food.dmi'
+	icon = 'icons/obj/food/food.dmi'
 	icon_state = "lollipop_stick"
 	item_state = "lollipop_stick"
 	trash = /obj/item/trash/lollipop_stick
@@ -176,7 +176,7 @@
 	. = ..()
 	reagents.add_reagent("sugar", 4)
 	reagents.add_reagent("nutriment", 1)
-	head = mutable_appearance('icons/obj/food.dmi', "lollipop_head")
+	head = mutable_appearance('icons/obj/food/food.dmi', "lollipop_head")
 	change_head_color(rgb(rand(0, 255), rand(0, 255), rand(0, 255)))
 
 //Pre-Made Medicated lollipops.

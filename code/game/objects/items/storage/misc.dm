@@ -3,7 +3,7 @@
  */
 
 /obj/item/storage/box/donut
-	icon = 'icons/obj/food.dmi'
+	icon = 'icons/obj/food/food.dmi'
 	icon_state = "donutbox"
 	name = "donut box"
 	max_storage_space = ITEMSIZE_COST_SMALL * 6
@@ -19,14 +19,14 @@
 	overlays.Cut()
 	var/i = 0
 	for(var/obj/item/reagent_containers/food/snacks/donut/D in contents)
-		overlays += image('icons/obj/food.dmi', "[i][D.overlay_state]")
+		overlays += image('icons/obj/food/food.dmi', "[i][D.overlay_state]")
 		i++
 
 /obj/item/storage/box/donut/empty
 	empty = TRUE
 
 /obj/item/storage/box/wormcan
-	icon = 'icons/obj/food.dmi'
+	icon = 'icons/obj/food/food.dmi'
 	icon_state = "wormcan"
 	name = "can of worms"
 	desc = "You probably do want to open this can of worms."

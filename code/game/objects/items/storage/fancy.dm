@@ -15,7 +15,7 @@
  */
 
 /obj/item/storage/fancy
-	icon = 'icons/obj/food.dmi'
+	icon = 'icons/obj/food/food.dmi'
 	icon_state = "donutbox6"
 	name = "donut box"
 	var/icon_type = "donut"
@@ -42,7 +42,7 @@
  */
 
 /obj/item/storage/fancy/egg_box
-	icon = 'icons/obj/food.dmi'
+	icon = 'icons/obj/food/food.dmi'
 	icon_state = "eggbox"
 	icon_type = "egg"
 	name = "egg box"
@@ -216,7 +216,7 @@
 
 /obj/item/storage/fancy/crackers
 	name = "\improper Getmore Crackers"
-	icon = 'icons/obj/food.dmi'
+	icon = 'icons/obj/food/food.dmi'
 	icon_state = "crackerbox"
 	icon_type = "cracker"
 	max_storage_space = ITEMSIZE_COST_TINY * 6

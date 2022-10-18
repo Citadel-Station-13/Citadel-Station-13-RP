@@ -1,5 +1,5 @@
 /particles/bonfire
-	icon = 'icons/effects/particles/bonfire.dmi'
+	icon = 'icons/particles/bonfire.dmi'
 	icon_state = "bonfire"
 	width = 100
 	height = 100

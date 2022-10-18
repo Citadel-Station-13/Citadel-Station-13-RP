@@ -1,7 +1,7 @@
 //Define all tape types in policetape.dm
 /obj/item/barrier_tape_roll
 	name = "tape roll"
-	icon = 'icons/policetape.dmi'
+	icon = 'icons/obj/item/policetape.dmi'
 	icon_state = "tape"
 	w_class = ITEMSIZE_SMALL
 
@@ -31,7 +31,7 @@ var/list/tape_roll_applications = list()
 
 /obj/item/barrier_tape_segment
 	name = "tape"
-	icon = 'icons/policetape.dmi'
+	icon = 'icons/obj/item/policetape.dmi'
 	anchored = 1
 	layer = WINDOW_LAYER
 	var/lifted = 0

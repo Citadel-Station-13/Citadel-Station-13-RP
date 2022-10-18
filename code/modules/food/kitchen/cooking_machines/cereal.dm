@@ -29,7 +29,7 @@
 	product.name = "box of [CI.object.name] cereal"
 
 /obj/machinery/appliance/cereal/change_product_appearance(var/obj/item/reagent_containers/food/snacks/product, var/datum/cooking_item/CI)
-	product.icon = 'icons/obj/food.dmi'
+	product.icon = 'icons/obj/food/food.dmi'
 	product.icon_state = "cereal_box"
 	product.filling_color = CI.object.color
 

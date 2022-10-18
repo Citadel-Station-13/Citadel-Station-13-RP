@@ -51,7 +51,7 @@
 	desc = "Tastes like... well, you know."
 
 /obj/item/reagent_containers/food/snacks/meat/chicken
-	icon = 'icons/obj/food.dmi'
+	icon = 'icons/obj/food/food.dmi'
 	icon_state = "chickenbreast"
 	cooked_icon = "chickenbreast_cooked"
 	filling_color = "#BBBBAA"
@@ -64,7 +64,7 @@
 /obj/item/reagent_containers/food/snacks/meat/chicken/penguin
 	name = "meat"
 	desc = "Tastes like chicken? Or fish? Fishy chicken? Strange."
-	icon = 'icons/obj/food.dmi'
+	icon = 'icons/obj/food/food.dmi'
 	icon_state = "penguinmeat"
 	cooked_icon = "chickenbreast_cooked"
 	filling_color = "#BBBBAA"
@@ -76,7 +76,7 @@
 /obj/item/reagent_containers/food/snacks/meat/vox
 	name = "Vox meat"
 	desc = "Tough and sinewy. Don't eat it raw."
-	icon = 'icons/obj/food.dmi'
+	icon = 'icons/obj/food/food.dmi'
 	icon_state = "voxmeat"
 	cooked_icon = "voxmeat_cooked"
 

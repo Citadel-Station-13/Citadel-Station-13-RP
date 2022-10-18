@@ -286,7 +286,7 @@
 /obj/random/drinkbottle
 	name = "random drink"
 	desc = "This is a random drink."
-	icon = 'icons/obj/drinks.dmi'
+	icon = 'icons/obj/food/drinks.dmi'
 	icon_state = "whiskeybottle"
 
 /obj/random/drinkbottle/item_to_spawn()
@@ -304,7 +304,7 @@
 /obj/random/meat
 	name = "random meat"
 	desc = "This is a random slab of meat."
-	icon = 'icons/obj/food.dmi'
+	icon = 'icons/obj/food/food.dmi'
 	icon_state = "meat"
 
 /obj/random/meat/item_to_spawn()
@@ -535,7 +535,7 @@
 /obj/random/alcohol //cit change starts
 	name = "random booze"
 	desc = "This is a random booze object."
-	icon = 'icons/obj/drinks.dmi'
+	icon = 'icons/obj/food/drinks.dmi'
 	icon_state = "shaker"
 
 /obj/random/alcohol/item_to_spawn()
@@ -586,7 +586,7 @@
 /obj/random/mre
 	name = "random MRE"
 	desc = "This is a random single MRE."
-	icon = 'icons/obj/food.dmi'
+	icon = 'icons/obj/food/food.dmi'
 	icon_state = "mre"
 	drop_get_turf = FALSE
 

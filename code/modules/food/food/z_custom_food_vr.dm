@@ -6,7 +6,7 @@ var/global/recursiveFood = 0
 var/global/ingredientLimit = 20
 
 /obj/item/reagent_containers/food/snacks/customizable
-	icon = 'icons/obj/food_custom.dmi'
+	icon = 'icons/obj/food/food_custom.dmi'
 	trash = /obj/item/trash/plate
 	bitesize = 2
 
@@ -264,7 +264,7 @@ var/global/ingredientLimit = 20
 /obj/item/trash/bowl
 	name = "bowl"
 	desc = "An empty bowl. Put some food in it to start making a soup."
-	icon = 'icons/obj/food_custom.dmi'
+	icon = 'icons/obj/food/food_custom.dmi'
 	icon_state = "soup"
 
 /obj/item/trash/bowl/attackby(obj/item/I, mob/user)

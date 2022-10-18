@@ -8,7 +8,7 @@
 	description_info = "This lets you create a new overmap shuttle from scratch. \
 			The shuttle must already be constructed and have an area defined (use the blueprints). \
 			Only a single area is supported (for now).  Build a shuttle console and hit it with the bottle."
-	icon = 'icons/obj/drinks.dmi'
+	icon = 'icons/obj/food/drinks.dmi'
 	icon_state = "champagne"
 	attack_verb = list("attacked", "bonked", "hit")
 	var/min_name_len = 4		// Refuse if shuttle tag is shorter than this.

@@ -14,7 +14,7 @@
 	var/party = null
 	level = null
 	name = "Unknown"
-	icon = 'icons/turf/areas.dmi'
+	icon = 'icons/area/areas.dmi'
 	icon_state = "unknown"
 	plane = ABOVE_LIGHTING_PLANE //In case we color them
 	mouse_opacity = 0

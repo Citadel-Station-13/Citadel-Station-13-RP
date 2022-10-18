@@ -159,7 +159,7 @@
 	icon_state = "dk_yellow"
 
 /area/rift/surfacebase
-	icon = 'icons/turf/areas_vr.dmi'
+	icon = 'icons/area/areas_vr.dmi'
 /area/rift/surfacebase/underground
 	name = "Outside - Underground"
 /area/rift/surfacebase/underground/under3
@@ -874,6 +874,3 @@ Do this eventually. */
 
 /area/rift/exterior/mineshaft
 	name = "\improper Abandoned Mineshaft"
-
-
-

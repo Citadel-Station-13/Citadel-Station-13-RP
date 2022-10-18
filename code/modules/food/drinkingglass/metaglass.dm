@@ -7,7 +7,7 @@
 	unacidable = 1 //glass
 	center_of_mass = list("x"=16, "y"=10)
 	matter = list(MAT_GLASS = 500)
-	icon = 'icons/obj/drinks.dmi'
+	icon = 'icons/obj/food/drinks.dmi'
 
 /obj/item/reagent_containers/food/drinks/metaglass/on_reagent_change()
 	if (reagents.reagent_list.len > 0)

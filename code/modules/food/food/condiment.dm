@@ -8,7 +8,7 @@
 /obj/item/reagent_containers/food/condiment
 	name = "Condiment Container"
 	desc = "Just your average condiment container."
-	icon = 'icons/obj/food.dmi'
+	icon = 'icons/obj/food/food.dmi'
 	icon_state = "emptycondiment"
 	flags = OPENCONTAINER
 	possible_transfer_amounts = list(1,5,10)
@@ -101,13 +101,13 @@
 			if("spacespice") //BEGIN CITADEL CHANGE - AURORA KITCHEN PORT
 				name = "bottle of space spice"
 				desc = "An exotic blend of spices for cooking. Definitely not worms."
-				icon = 'icons/obj/food.dmi'
+				icon = 'icons/obj/food/food.dmi'
 				icon_state = "spacespicebottle"
 				center_of_mass = list("x"=16, "y"=6)
 			if("barbecue")
 				name = "barbecue sauce"
 				desc = "Barbecue sauce, it's labeled 'sweet and spicy'."
-				icon = 'icons/obj/food.dmi'
+				icon = 'icons/obj/food/food.dmi'
 				icon_state = "barbecue"
 				center_of_mass = list("x"=16, "y"=6) // END CITADEL CHANGE - AURORA KITCHEN PORT
 			else
@@ -405,7 +405,7 @@
 /obj/item/reagent_containers/food/condiment/flour
 	name = "flour sack"
 	desc = "A big bag of flour. Good for baking!"
-	icon = 'icons/obj/food.dmi'
+	icon = 'icons/obj/food/food.dmi'
 	icon_state = "flour"
 	volume = 220
 
@@ -421,7 +421,7 @@
 /obj/item/reagent_containers/food/condiment/spacespice
 	name = "space spices"
 	desc = "An exotic blend of spices for cooking. Definitely not worms."
-	icon = 'icons/obj/food.dmi'
+	icon = 'icons/obj/food/food.dmi'
 	icon_state = "spacespicebottle"
 	possible_transfer_amounts = list(1,40) //for clown turning the lid off
 	amount_per_transfer_from_this = 1
