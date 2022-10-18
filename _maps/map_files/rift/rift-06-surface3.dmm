@@ -9413,6 +9413,10 @@
 	dir = 8;
 	pixel_x = -24
 	},
+/mob/living/simple_mob/animal/passive/dog/corgi/Lisa{
+	desc = "It's Lisa, the exploration teams trusty Corgi."
+	},
+/obj/structure/dogbed,
 /turf/simulated/floor/tiled/steel_grid,
 /area/bridge/bunker)
 "rL" = (
@@ -10832,8 +10836,9 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/office)
 "uB" = (
-/obj/structure/undies_wardrobe,
 /obj/effect/floor_decal/spline/plain,
+/obj/structure/dogbed,
+/mob/living/simple_mob/animal/passive/fox/renault,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "uC" = (
@@ -15585,15 +15590,13 @@
 /area/security/nuke_storage)
 "DK" = (
 /obj/structure/dogbed,
-/mob/living/simple_mob/animal/passive/dog/corgi/Lisa{
-	desc = "It's Lisa, the exploration teams trusty Corgi."
-	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
 	},
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 10
 	},
+/mob/living/simple_mob/animal/space/alien/domestic,
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
 "DL" = (

@@ -247,3 +247,63 @@
 	..()
 	visible_message("[src] lets out a waning guttural screech, green blood bubbling from its maw...")
 	playsound(src, 'sound/voice/hiss6.ogg', 100, 1)
+
+//I know I probably shouldn't be doing this. Or at least not doing it here. But I dunno. I can't help myself.
+/datum/category_item/catalogue/fauna/domestic_alien
+	name = "Domestic Xenomorph - Roudny"
+	desc = "Rowdy Roudny, as she's come to be known, was captured \
+	by an NT-PF exploratory wing in the Cygnus arm. Considered to be something, \
+	of an anomaly, Roudny is not only passive, but also domesticated. Paired with \
+	her striking red coloring, it is the current theory that Roudny is a failed \
+	Xenomorph Hybrid. She was presented to the Exploration Department of the \
+	NBS Atlas as a parting gift by one of the sector's senior Pathfinders."
+	value = CATALOGUER_REWARD_TRIVIAL
+
+/mob/living/simple_mob/animal/space/alien/domestic
+	name = "Roudny"
+	desc = "This domesticated Xenomorph seems strangely friendly. Its atypical red coloration and agile form make it rather distinct."
+	icon = 'icons/mob/64x64.dmi'
+	icon_state = "runner_running"
+	icon_living = "runner_running"
+	icon_dead = "runner_dead"
+	icon_rest = "runner_sleep"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/domestic_alien)
+
+	faction = "neutral"
+
+	response_help = "pets"
+
+	randomized = FALSE
+	size_multiplier = 0.8
+	base_pixel_x = -16
+	base_pixel_y = 3	//For some reason the pixel offset is -3 by default. Couldn't isolate why. Band-aid.
+
+	meat_amount = 3
+	hide_amount = 0
+
+/mob/living/simple_mob/animal/space/alien/domestic/Initialize(mapload)
+	. = ..()
+	if(prob(10))
+		new /mob/living/simple_mob/animal/space/alien/domestic/rouny(loc)
+		return INITIALIZE_HINT_QDEL
+
+/datum/category_item/catalogue/fauna/domestic_alien/rouny
+	name = "Domestic Xenomorph - Rouny"
+	desc = "Rouny is truly an anomaly, even among Xenomorph offshoots. \
+	Almost certainly a failed XenoHybrid experiment, there is much debate over, \
+	how this curious creature is even able to survive. Captured during an exploratory \
+	mission on Herrarra V, Rouny is still shockingly fast and agile, in spite of its \
+	morphological disadvantages. It's no less friendly either."
+	value = CATALOGUER_REWARD_TRIVIAL
+
+/mob/living/simple_mob/animal/space/alien/domestic/rouny
+	name = "Rouny"
+	desc = "This domesticated Xenomorph seems strangely friendly. Its atypical red coloration and wonky form make it incredibly distinct."
+	icon = 'icons/mob/64x64.dmi'
+	icon_state = "rouny_running"
+	icon_living = "rouny_running"
+	icon_dead = "rouny_dead"
+	icon_rest = "rouny_sleep"
+	catalogue_data = list(/datum/category_item/catalogue/fauna/domestic_alien/rouny)
+
+	size_multiplier = 0.8
