@@ -53,7 +53,7 @@
 			var/list/available_languages = S.secondary_langs.Copy()
 			for(var/datum/language/lang as anything in SScharacters.all_languages())
 				if(!(lang.language_flags & RESTRICTED) && (is_lang_whitelisted(user, lang)))
-					available_languages |= L
+					available_languages |= lang.name
 
 			// make sure we don't let them waste slots on the default languages
 			available_languages -= S.language
