@@ -138,8 +138,8 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	name = "Deep Warrens Rift"
 	desc = "This hole leads deep underground. Although possibly large enough for you to enter, something seems to compel you not to. Occasionally, a deep, choral rumbling can be heard far below."
 	icon_state = "tunnel_hole"
-	spawn_delay = 15 MINUTES
-	simultaneous_spawns = 2
+	spawn_delay = 20 MINUTES
+	simultaneous_spawns = 1
 	mob_faction = "lavaland"
 	total_spawns = 6
 	anchored = 1

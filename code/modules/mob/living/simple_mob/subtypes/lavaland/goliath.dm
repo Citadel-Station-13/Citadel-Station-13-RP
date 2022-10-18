@@ -178,9 +178,8 @@
 			continue
 		visible_message("<span class='danger'>[src] grabs hold of [C]!</span>")
 		tripanim()
-		//var/mob/living/L
 		//C.slip()
-		C.Stun(3)
+		C.Stun(2)
 		C.adjustBruteLoss(rand(5,10)) // Less stun more harm
 		latched = TRUE
 	for(var/obj/mecha/M in loc)
