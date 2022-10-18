@@ -12,6 +12,7 @@ We enforce a rigid-ish structure for organization.
 Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'll work on this, we promise. Anyone can propose changes to the hierarchy, just know what you're doing!
 
 /icons
+	/_legacy - TEMP - lots of old DMIs that are widely used but planned to be removed.
 	/area - used to store area sprites, seen (hopefully) only by mappers
 	/mapping - used for sprites for in-map-editor objects that are invisible in game world
 		/helpers - mapping helpers like autopipe/autocable/baseturf replacers go here
