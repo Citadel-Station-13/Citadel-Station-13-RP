@@ -82,7 +82,7 @@
 	return SScharacters.resolve_faction(default_faction).id
 
 /datum/character_species/proc/get_default_religion_id()
-	return SScharacters.default_religion(default_religion).id
+	return SScharacters.resolve_religion(default_religion).id
 
 /datum/character_species/proc/get_default_language_ids()
 	#warn impl
