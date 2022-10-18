@@ -13,7 +13,6 @@
 	status = "ERROR: Default status"
 	visibility = TRUE
 	fps = 20
-#warn Remove temp git-ignore @Zandario
 #ifdef FIND_REF_NO_CHECK_TICK
 	loop_checks = FALSE
 #endif
