@@ -6146,6 +6146,18 @@ END CITADEL CHANGE */
 	reagents.add_reagent("capsaicin", 2)
 	bitesize = 1
 
+/obj/item/reagent_containers/food/snacks/shrimpfriedrice
+	name = "shrimp fried rice"
+	desc = "Seasoned rice tossed with shrimp and mixed vegetables, and then fried in a pan. The chef worked very hard on this."
+	icon_state = "shrimp_fried_rice"
+	trash = /obj/item/trash/snack_bowl
+	nutriment_amt = 15
+	nutriment_desc = list("rice" = 2, "shrimp" = 2, "vegetables" = 2, "hard work" = 2)
+
+/obj/item/reagent_containers/food/snacks/shrimpfriedrice/Initialize(mapload)
+	. = ..()
+	bitesize = 2
+
 /obj/item/reagent_containers/food/snacks/monkeycube/sobakacube
 	name = "sobaka cube"
 	monkey_type = SPECIES_MONKEY_AKULA
