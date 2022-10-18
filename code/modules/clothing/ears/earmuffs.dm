@@ -12,7 +12,6 @@
 
 	icon = 'icons/clothing/ears/earmuffs.dmi'
 	icon_state   = "earmuffs"
-	inhand_state = "earmuffs"
 
 /**
  * Headphones
@@ -28,11 +27,9 @@
 	worn_bodytypes = BODYTYPE_TESHARI
 
 	icon = 'icons/clothing/ears/headphones.dmi'
-	icon_state   = "headphones-off"
-	inhand_state = "headphones-off"
+	icon_state = "headphones-off"
 
 	base_icon_state = "headphones"
-	base_item_state = "headphones"
 
 /obj/item/clothing/ears/earmuffs/headphones/verb/togglemusic()
 	set name = "Toggle Headphone Music"
@@ -46,8 +43,7 @@
 
 	headphones_on = !headphones_on
 
-	icon_state   = "[base_icon_state]-[headphones_on ? "on" : "off"]"
-	inhand_state = "[base_item_state]-[headphones_on ? "on" : "off"]"
+	icon_state = "[base_icon_state]-[headphones_on ? "on" : "off"]"
 
 	to_chat(usr, SPAN_NOTICE("[headphones_on ? "You turn the music on." : "You turn the music off."]"))
 	update_worn_icon()
