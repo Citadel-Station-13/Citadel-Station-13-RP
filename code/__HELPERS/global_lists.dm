@@ -205,32 +205,6 @@ GLOBAL_LIST_EMPTY(mannequins)
 		var/datum/job/J = new T
 		joblist[J.title] = J
 
-	if(!length(GLOB.species_meta))	// yeah i hate it too but hey
-		initialize_static_species_cache()
-	// SScharacters handling static caches and body markings and sprit eaccessories when?? this is all awful
-
-	//Languages and species.
-	#warn subsystem for this
-	paths = subtypesof(/datum/language)
-	for(var/T in paths)
-		var/datum/language/L = T
-		if(initial(L.abstract_type) == T)
-			continue
-		L = new T
-		GLOB.all_languages[L.name] = L
-
-	for (var/language_name in GLOB.all_languages)
-		var/datum/language/L = GLOB.all_languages[language_name]
-		if(!(L.language_flags & NONGLOBAL))
-			GLOB.language_keys[L.key] = L
-
-	#warn species lookup on Sscharacters?
-	for(var/datum/species/S as anything in all_static_species_meta())
-		if(!(S.spawn_flags & SPECIES_IS_RESTRICTED))
-			GLOB.playable_species += S.name
-		if(S.spawn_flags & SPECIES_IS_WHITELISTED)
-			GLOB.whitelisted_species += S.name
-
 	//Posters
 	paths = typesof(/datum/poster) - /datum/poster
 	paths -= typesof(/datum/poster/nanotrasen)
