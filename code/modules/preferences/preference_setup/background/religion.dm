@@ -14,8 +14,6 @@
 	. += current? current.desc : "<center>error; religion load failed</center>"
 	. += "</div>"
 
-#warn scroll selector
-
 /datum/category_item/player_setup_item/background/religion/act(datum/preferences/prefs, mob/user, action, list/params)
 	switch(action)
 		if("pick")
@@ -27,7 +25,7 @@
 				to_chat(user, SPAN_WARNING("[prefs.character_species_name()] cannot pick this religion."))
 				return PREFERENCES_NOACTION
 			write(prefs, id)
-			return PREFERENCES_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH
 	return ..()
 
 /datum/category_item/player_setup_item/background/religion/filter(datum/preferences/prefs, data, list/errors)

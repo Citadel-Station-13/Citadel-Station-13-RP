@@ -5,17 +5,19 @@
 /datum/category_item/player_setup_item/background/origin/content(datum/preferences/prefs, mob/user, data)
 	. = list()
 	var/list/datum/lore/character_background/origin/available = SScharacters.available_origins(prefs.character_species_id())
+	var/list/categories = list()
+	for(var/datum/lore/character_background/origin/O as anything in available)
+		LAZYADD(categories[O.category], O)
 	var/datum/lore/character_background/origin/current = SScharacters.resolve_origin(data)
+	for(var/category in categories)
+		. += (category == current.category)? "<span class='linkOn'>[category]</span> " : href_simple(prefs, "category", "[category] ", category)
 	. += "<center>"
-	for(var/datum/lore/character_background/origin/O in available)
+	for(var/datum/lore/character_background/origin/O in categories[current.category])
 		. += href_simple(prefs, "pick", "[O.name] ", O.id)
 	. += "</center>"
 	. += "<div>"
 	. += current? current.desc : "<center>error; origin load failed</center>"
 	. += "</div>"
-
-#warn scroll selector
-#warn category select
 
 /datum/category_item/player_setup_item/background/origin/act(datum/preferences/prefs, mob/user, action, list/params)
 	switch(action)
@@ -28,7 +30,15 @@
 				to_chat(user, SPAN_WARNING("[prefs.character_species_name()] cannot pick this origin."))
 				return PREFERENCES_NOACTION
 			write(prefs, id)
-			return PREFERENCES_REFRESH_UPDATE_PREVIEW
+			return PREFERENCES_REFRESH
+		if("category")
+			var/cat = params["category"]
+			var/list/datum/lore/character_background/origin/origins = SScharacters.resolve_origin(prefs.character_species_id(), cat)
+			if(!length(origins))
+				to_chat(user, SPAN_WARNING("No origins in that category have been found; this might be an error."))
+				return PREFERENCES_NOACTION
+			write(prefs, origins[1])
+			return PREFERENCES_REFRESH
 	return ..()
 
 /datum/category_item/player_setup_item/background/origin/filter(datum/preferences/prefs, data, list/errors)
