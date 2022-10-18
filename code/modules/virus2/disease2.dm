@@ -49,7 +49,7 @@
 	var/list/meat = list()
 	var/list/res = list()
 
-	var/list/species_cache = all_static_species_meta()
+	var/list/species_cache = SScharacters.all_static_species_meta()
 	for(var/datum/species/S in species_cache)
 		if(S.get_virus_immune())
 			continue

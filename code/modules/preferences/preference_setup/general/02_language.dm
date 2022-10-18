@@ -51,8 +51,7 @@
 			alert(user, "You have already selected the maximum number of alternate languages for this species!")
 		else
 			var/list/available_languages = S.secondary_langs.Copy()
-			for(var/L in GLOB.all_languages)
-				var/datum/language/lang = SScharacters.resolve_language_name(L)
+			for(var/datum/language/lang as anything in SScharacters.all_languages())
 				if(!(lang.language_flags & RESTRICTED) && (is_lang_whitelisted(user, lang)))
 					available_languages |= L
 

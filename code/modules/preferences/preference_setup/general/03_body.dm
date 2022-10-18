@@ -423,7 +423,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	else if(href_list["set_species"])
 		user << browse(null, "window=species")
-		if(!pref.species_preview || !(pref.species_preview in all_species_names()))
+		if(!pref.species_preview || !(pref.species_preview in SScharacters.all_species_names()))
 			return PREFERENCES_NOACTION
 
 		var/datum/species/setting_species
@@ -937,7 +937,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		pref.real_name      = random_name(pref.identifying_gender, pref.species)
 
 /datum/category_item/player_setup_item/general/body/proc/SetSpecies(mob/user)
-	if(!pref.species_preview || !(pref.species_preview in all_species_names()))
+	if(!pref.species_preview || !(pref.species_preview in SScharacters.all_species_names()))
 		pref.species_preview = SPECIES_HUMAN
 	var/datum/species/current_species = SScharacters.resolve_species_name(pref.species_preview)
 	var/dat = "<body>"

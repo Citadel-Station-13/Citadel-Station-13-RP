@@ -10,7 +10,7 @@
 	if(species == new_species)
 		return
 
-	if(!(new_species in all_species_names()))
+	if(!(new_species in SScharacters.all_species_names()))
 		return
 
 	set_species(new_species)

@@ -250,7 +250,7 @@
 	//log_debug("designer.update_preview_mob([H]) active_br = \ref[active_br]")
 	//Get the DNA and generate a new mob
 	var/datum/dna2/record/R = active_br.mydna
-	H.set_species(species_type_by_name(R.dna.species)) // This needs to happen before anything else becuase it sets some variables.
+	H.set_species(R.dna.species) // This needs to happen before anything else becuase it sets some variables.
 
 	// Update the external organs
 	for(var/part in active_br.limb_data)

@@ -1096,7 +1096,7 @@
  * - example - dumbshit argument used for vore transformations to copy necessary data, why tf is this not done in the vore module? //TODO: REMOVE.
  */
 /mob/living/carbon/human/proc/set_species(datum/species/specieslike, regen_icons = TRUE, force = FALSE, skip, mob/living/carbon/human/example)
-	ASSERT(spcieslike)
+	ASSERT(specieslike)
 	// resolve id
 	var/resolved_id
 	var/datum/species/resolving
@@ -1115,6 +1115,8 @@
 	// (and hope to god the provider isn't stupid and didn't quantum entangle a datum)
 	// if not provided, make a new one
 	if(istype(specieslike))
+		if(SScharacters.species_paths[specieslike.type] == specieslike)
+			CRASH("attempted to set species to static datum")
 		S = specieslike
 	else
 		S = SScharacters.construct_species_path(resolving.type)
