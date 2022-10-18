@@ -20,7 +20,7 @@
 	do_scan(M, user)
 
 /obj/item/robotanalyzer/proc/do_scan(mob/living/M as mob, mob/living/user as mob)
-	if((CLUMSY in user.mutations) && prob(50))
+	if((MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<font color='red'>You try to analyze the floor's vitals!</font>")
 		for(var/mob/O in viewers(M, null))
 			O.show_message(text("<font color='red'>[user] has analyzed the floor's vitals!</font>"), 1)

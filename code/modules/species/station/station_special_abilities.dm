@@ -112,7 +112,7 @@
 
 	//I did have special snowflake code, but this is easier.
 	revive()
-	mutations.Remove(HUSK)
+	mutations.Remove(MUTATION_HUSK)
 	nutrition = old_nutrition
 	setBrainLoss(braindamage)
 

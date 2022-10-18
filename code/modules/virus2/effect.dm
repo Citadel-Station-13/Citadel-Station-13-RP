@@ -345,7 +345,7 @@
 	stage = 3
 
 /datum/disease2/effect/telepathic/activate(var/mob/living/carbon/mob,var/multiplier)
-		mob.dna.SetSEState(REMOTETALKBLOCK,1)
+		mob.dna.SetSEState(DNABLOCK_REMOTETALK,1)
 		domutcheck(mob, null, MUTCHK_FORCED)
 
 /datum/disease2/effect/mind

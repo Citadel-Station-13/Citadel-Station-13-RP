@@ -126,9 +126,9 @@ default behaviour is:
 /mob/living/proc/burn_skin(burn_amount)
 	if(istype(src, /mob/living/carbon/human))
 		//to_chat(world, "DEBUG: burn_skin(), mutations=[mutations]")
-		if(mShock in src.mutations) //shockproof
+		if(MUTATION_NOSHOCK in src.mutations) //shockproof
 			return 0
-		if (COLD_RESISTANCE in src.mutations) //fireproof
+		if (MUTATION_COLD_RESIST in src.mutations) //fireproof
 			return 0
 		var/mob/living/carbon/human/H = src	//make this damage method divide the damage to be done among all the body parts, then burn each body part for that much damage. will have better effect then just randomly picking a body part
 		var/divided_damage = (burn_amount)/(H.organs.len)
@@ -761,7 +761,7 @@ default behaviour is:
 
 //called when the mob receives a bright flash
 /mob/living/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
-	if(override_blindness_check || !(disabilities & BLIND))
+	if(override_blindness_check || !(disabilities & SDISABILITY_NERVOUS))
 		overlay_fullscreen("flash", type)
 		spawn(25)
 			if(src)
@@ -1054,7 +1054,7 @@ default behaviour is:
 		return ..()
 
 /mob/living/proc/has_vision()
-	return !(eye_blind || (disabilities & BLIND) || stat || blinded)
+	return !(eye_blind || (disabilities & SDISABILITY_NERVOUS) || stat || blinded)
 
 /mob/living/proc/dirties_floor()	// If we ever decide to add fancy conditionals for making dirty floors (floating, etc), here's the proc.
 	return makes_dirt

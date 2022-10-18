@@ -1848,6 +1848,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
+"Lc" = (
+/obj/structure/mob_spawner/scanner/goliath,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/central/explored)
 "Lg" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -2049,6 +2053,10 @@
 	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/lavaland/central/base/common)
+"PP" = (
+/obj/structure/mob_spawner/scanner/goliath,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/central/unexplored)
 "PZ" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -9437,7 +9445,7 @@ MX
 gy
 gy
 gy
-gy
+Lc
 MX
 MX
 MX
@@ -19439,7 +19447,7 @@ RX
 RL
 MX
 MX
-gy
+Lc
 MX
 MX
 gy
@@ -24731,7 +24739,7 @@ RX
 RX
 MX
 MX
-gy
+Lc
 gy
 gy
 gy
@@ -24961,7 +24969,7 @@ gy
 gy
 gy
 gy
-gy
+Lc
 MX
 RX
 RX
@@ -35607,7 +35615,7 @@ xd
 xd
 RL
 RL
-gy
+Lc
 gy
 RL
 RL
@@ -38417,7 +38425,7 @@ xd
 xd
 RX
 RX
-ax
+PP
 RX
 RX
 RX

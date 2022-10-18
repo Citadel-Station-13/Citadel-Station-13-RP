@@ -677,7 +677,7 @@
 /obj/item/slime_extract/oil
 	name = "oil slime extract"
 	icon_state = "oil slime extract"
-	description_info = "This extract cause a moderately sized delayed explosion if injected with phoron.  The delay is five seconds.  Extract enhancers will \
+	description_info = "This extract cause a moderately sized delayed explosion if injected with blood.  The delay is five seconds.  Extract enhancers will \
 	increase the power of the explosion instead of allowing for multiple explosions."
 
 

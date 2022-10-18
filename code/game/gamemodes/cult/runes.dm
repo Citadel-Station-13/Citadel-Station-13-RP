@@ -279,7 +279,7 @@ var/list/sacrificed = list()
 				if(I.damage > 0)
 					I.damage = max(I.damage - 5, 0)		//Heals 5 damage per organ per use
 				if(I.damage <= 5 && I.organ_tag == O_EYES)
-					H.sdisabilities &= ~BLIND
+					H.sdisabilities &= ~SDISABILITY_NERVOUS
 			for(var/obj/item/organ/E in H.bad_external_organs)
 				var/obj/item/organ/external/affected = E
 				if((affected.damage < affected.min_broken_damage * config_legacy.organ_health_multiplier) && (affected.status & ORGAN_BROKEN))
@@ -908,7 +908,7 @@ var/list/sacrificed = list()
 			C.show_message("<span class='warning'>The world around you suddenly becomes quiet.</span>", 3)
 			affected += C
 			if(prob(1))
-				C.sdisabilities |= DEAF
+				C.sdisabilities |= SDISABILITY_DEAF
 		if(affected.len)
 			usr.say("Sti[pick("'","`")] kaliedir!")
 			to_chat(usr, "<span class='warning'>The world becomes quiet as the deafening rune dissipates into fine dust.</span>")
@@ -950,9 +950,9 @@ var/list/sacrificed = list()
 			C.eye_blurry += 50
 			C.Blind(20)
 			if(prob(5))
-				C.disabilities |= NEARSIGHTED
+				C.disabilities |= DISABILITY_NEARSIGHTED
 				if(prob(10))
-					C.sdisabilities |= BLIND
+					C.sdisabilities |= SDISABILITY_NERVOUS
 			C.show_message("<span class='warning'>Suddenly you see a red flash that blinds you.</span>", 3)
 			affected += C
 		if(affected.len)
@@ -1058,7 +1058,7 @@ var/list/sacrificed = list()
 			if(iscarbon(L))
 				var/mob/living/carbon/C = L
 				C.flash_eyes()
-				if(C.stuttering < 1 && (!(HULK in C.mutations)))
+				if(C.stuttering < 1 && (!(MUTATION_HULK in C.mutations)))
 					C.stuttering = 1
 				C.Weaken(1)
 				C.Stun(1)
@@ -1087,7 +1087,7 @@ var/list/sacrificed = list()
 			else if(iscarbon(T))
 				var/mob/living/carbon/C = T
 				C.flash_eyes()
-				if (!(HULK in C.mutations))
+				if (!(MUTATION_HULK in C.mutations))
 					C.silent += 15
 				C.Weaken(25)
 				C.Stun(25)

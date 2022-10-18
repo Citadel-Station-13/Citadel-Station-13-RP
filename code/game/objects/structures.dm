@@ -14,7 +14,7 @@
 
 /obj/structure/attack_hand(mob/user)
 	if(breakable)
-		if(HULK in user.mutations)
+		if(MUTATION_HULK in user.mutations)
 			user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 			attack_generic(user,1,"smashes")
 		else if(istype(user,/mob/living/carbon/human))
@@ -99,7 +99,7 @@
 	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
 	climbers |= user
 
-	if(!do_after(user,(issmall(user) ? climb_delay * 0.6 : climb_delay)))
+	if(!do_after(user, issmall(user) ? climb_delay * 0.6 : climb_delay, src, incapacitation_flags = INCAPACITATION_ALL))
 		climbers -= user
 		return
 

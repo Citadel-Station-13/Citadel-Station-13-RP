@@ -70,11 +70,11 @@
 
 	var/sql = "INSERT INTO [format_table_name("ban")] \
 	(`id`,`bantime`,`serverip`,`bantype`,`reason`,`job`,`duration`,`rounds`,`expiration_time`,`ckey`,`computerid`,`ip`,`a_ckey`,`a_computerid`,`a_ip`,`who`,`adminwho`,`edits`,`unbanned`,`unbanned_datetime`,`unbanned_ckey`,`unbanned_computerid`,`unbanned_ip`) \
-	VALUES (null, Now(), :ip, :type, :reason, :job, :duration, :rounds, Now() + INTERVAL :duration MINUTE, :ckey, :cid, :ip, :a_ckey, :a_cid, :a_ip, :who, :adminwho, '', null, null, null, null, null)"
+	VALUES (null, Now(), :serverip, :type, :reason, :job, :duration, :rounds, Now() + INTERVAL :duration MINUTE, :ckey, :cid, :ip, :a_ckey, :a_cid, :a_ip, :who, :adminwho, '', null, null, null, null, null)"
 	SSdbcore.RunQuery(
 		sql,
 		list(
-			"ip" = serverip,
+			"serverip" = serverip,
 			"type" = bantype_str,
 			"reason" = reason,
 			"job" = job,
@@ -405,25 +405,34 @@
 			var/ipsearch = ""
 			var/cidsearch = ""
 			var/bantypesearch = ""
-
+			
+			var/list/search_params = list()
 			if(!match)
 				if(adminckey)
 					adminsearch = "AND a_ckey = :a_ckey "
+					search_params["a_ckey"] = "[adminckey]"
 				if(playerckey)
 					playersearch = "AND ckey = :ckey "
+					search_params["ckey"] = "[playerckey]"
 				if(playerip)
 					ipsearch  = "AND ip = :ip "
+					search_params["ip"] = "[playerip]"
 				if(playercid)
 					cidsearch  = "AND computerid = :cid "
+					search_params["cid"] = "[playercid]"
 			else
 				if(adminckey && length(adminckey) >= 3)
-					adminsearch = "AND a_ckey LIKE ':a_ckey%' "
+					adminsearch = "AND a_ckey LIKE :a_ckey "
+					search_params["a_ckey"] = "[adminckey]%"
 				if(playerckey && length(playerckey) >= 3)
-					playersearch = "AND ckey LIKE ':ckey%' "
+					playersearch = "AND ckey LIKE :ckey "
+					search_params["ckey"] = "[playerckey]%"
 				if(playerip && length(playerip) >= 3)
-					ipsearch  = "AND ip LIKE ':ip%' "
+					ipsearch  = "AND ip LIKE :ip "
+					search_params["ip"] = "[playerip]%"
 				if(playercid && length(playercid) >= 7)
-					cidsearch  = "AND computerid LIKE ':cid%' "
+					cidsearch  = "AND computerid LIKE :cid "
+					search_params["cid"] = "[playercid]%"
 
 			if(dbbantype)
 				bantypesearch = "AND bantype = "
@@ -442,12 +451,7 @@
 				"SELECT id, bantime, bantype, reason, job, duration, expiration_time, ckey, a_ckey, unbanned, unbanned_ckey, unbanned_datetime, edits, ip, computerid \
 				FROM [format_table_name("ban")] \
 				WHERE 1 [playersearch] [adminsearch] [ipsearch] [cidsearch] [bantypesearch] ORDER BY bantime DESC LIMIT 100",
-				list(
-					"a_ckey" = adminckey,
-					"ckey" = playerckey,
-					"ip" = playerip,
-					"cid" = playercid
-				)
+				search_params
 			)
 
 			var/now = time2text(world.realtime, "YYYY-MM-DD hh:mm:ss") // MUST BE the same format as SQL gives us the dates in, and MUST be least to most specific (i.e. year, month, day not day, month, year)

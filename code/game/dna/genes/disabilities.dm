@@ -1,11 +1,12 @@
-/////////////////////
-// DISABILITY GENES
-//
-// These activate either a mutation, disability, or sdisability.
-//
-// Gene is always activated.
-/////////////////////
-//TODO: Rewrite this crap from scratch, this is horrible. -Zandario
+/**
+ * DISABILITY GENES
+ *
+ * These activate either a mutation, disability, or sdisability.
+ *
+ * Gene is always activated.
+ *
+ * TODO: Rewrite this crap from scratch, this is horrible. -Zandario
+ */
 /datum/gene/disability
 	name = "DISABILITY"
 
@@ -49,77 +50,77 @@
 
 // Note: Doesn't seem to do squat, at the moment. // For at LEAST 4 years. -Zandario
 /datum/gene/disability/hallucinate
-	name="Hallucinate"
-	activation_message="Your mind says 'Hello'."
-	mutation=mHallucination
+	name = "Hallucinate"
+	activation_message = "Your mind says 'Hello'."
+	mutation = MUTATION_HALLUCINATION
 
 /datum/gene/disability/hallucinate/New()
-	block=HALLUCINATIONBLOCK
+	block = DNABLOCK_HALLUCINATION
 
 /datum/gene/disability/epilepsy
-	name="Epilepsy"
-	activation_message="You get a headache."
-	disability=EPILEPSY
+	name = "Epilepsy"
+	activation_message = "You get a headache."
+	disability = DISABILITY_EPILEPSY
 
 /datum/gene/disability/epilepsy/New()
-	block=HEADACHEBLOCK
+	block = DNABLOCK_HEADACHE
 
 /datum/gene/disability/cough
-	name="Coughing"
-	activation_message="You start coughing."
-	disability=COUGHING
+	name = "Coughing"
+	activation_message = "You start coughing."
+	disability = DISABILITY_COUGHING
 
 /datum/gene/disability/cough/New()
-	block=COUGHBLOCK
+	block = DNABLOCK_COUGH
 
 /datum/gene/disability/clumsy
-	name="Clumsiness"
-	activation_message="You feel lightheaded."
-	mutation=CLUMSY
+	name = "Clumsiness"
+	activation_message = "You feel lightheaded."
+	mutation = MUTATION_CLUMSY
 
 /datum/gene/disability/clumsy/New()
-	block=CLUMSYBLOCK
+	block = DNABLOCK_CLUMSY
 
 /datum/gene/disability/tourettes
-	name="Tourettes"
-	activation_message="You twitch."
-	disability=TOURETTES
+	name = "Tourettes"
+	activation_message = "You twitch."
+	disability = DISABILITY_TOURETTES
 
 /datum/gene/disability/tourettes/New()
-	block=TWITCHBLOCK
+	block = DNABLOCK_TWITCH
 
 /datum/gene/disability/nervousness
-	name="Nervousness"
-	activation_message="You feel nervous."
-	disability=NERVOUS
+	name = "Nervousness"
+	activation_message = "You feel nervous."
+	disability = DISABILITY_NERVOUS
 
 /datum/gene/disability/nervousness/New()
-	block=NERVOUSBLOCK
+	block = DNABLOCK_NERVOUS
 
 /datum/gene/disability/blindness
-	name="Blindness"
-	activation_message="You can't seem to see anything."
-	sdisability=BLIND
+	name = "Blindness"
+	activation_message = "You can't seem to see anything."
+	sdisability = SDISABILITY_NERVOUS
 
 /datum/gene/disability/blindness/New()
-	block=BLINDBLOCK
+	block = DNABLOCK_BLIND
 
 /datum/gene/disability/deaf
-	name="Deafness"
-	activation_message="It's kinda quiet."
-	sdisability=DEAF
+	name = "Deafness"
+	activation_message = "It's kinda quiet."
+	sdisability = SDISABILITY_DEAF
 
 /datum/gene/disability/deaf/New()
-	block=DEAFBLOCK
+	block = DNABLOCK_DEAF
 
 /datum/gene/disability/deaf/activate(mob/M, connected, flags)
 	..(M,connected,flags)
 	M.ear_deaf = 1
 
 /datum/gene/disability/nearsighted
-	name="Nearsightedness"
-	activation_message="Your eyes feel weird..."
-	disability=NEARSIGHTED
+	name = "Nearsightedness"
+	activation_message = "Your eyes feel weird..."
+	disability = DISABILITY_NEARSIGHTED
 
 /datum/gene/disability/nearsighted/New()
-	block=GLASSESBLOCK
+	block = DNABLOCK_GLASSES

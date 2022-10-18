@@ -70,7 +70,7 @@
 		L.apply_effect(rand(5,20), IRRADIATE, check_protection = 0)
 		L.apply_damage(max(2,L.getCloneLoss()), CLONE)
 
-	if (!(NOCLONE in M.mutations)) // prevents drained people from having their DNA changed
+	if (!(MUTATION_NOCLONE in M.mutations)) // prevents drained people from having their DNA changed
 		if (buf.types & DNA2_BUF_UI)
 			if (!block) //isolated block?
 				M.UpdateAppearance(buf.dna.UI.Copy())
@@ -127,7 +127,7 @@
 
 	// Used by admin log.
 	var/injected_with_monkey = ""
-	if((buf.types & DNA2_BUF_SE) && (block ? (GetState() && block == MONKEYBLOCK) : GetState(MONKEYBLOCK)))
+	if((buf.types & DNA2_BUF_SE) && (block ? (GetState() && block == DNABLOCK_MONKEY) : GetState(DNABLOCK_MONKEY)))
 		injected_with_monkey = " <span class='danger'>(MONKEY)</span>"
 
 	add_attack_logs(user,M,"[injected_with_monkey] used the [name] on")
@@ -144,7 +144,7 @@
 	//block = 2
 
 /obj/item/dnainjector/hulkmut/New()
-	block = HULKBLOCK
+	block = DNABLOCK_HULK
 	..()
 
 /obj/item/dnainjector/antihulk
@@ -155,7 +155,7 @@
 	//block = 2
 
 /obj/item/dnainjector/antihulk/New()
-	block = HULKBLOCK
+	block = DNABLOCK_HULK
 	..()
 
 /obj/item/dnainjector/xraymut
@@ -166,7 +166,7 @@
 	//block = 8
 
 /obj/item/dnainjector/xraymut/New()
-	block = XRAYBLOCK
+	block = DNABLOCK_XRAY
 	..()
 
 /obj/item/dnainjector/antixray
@@ -177,7 +177,7 @@
 	//block = 8
 
 /obj/item/dnainjector/antixray/New()
-	block = XRAYBLOCK
+	block = DNABLOCK_XRAY
 	..()
 
 /obj/item/dnainjector/firemut
@@ -188,7 +188,7 @@
 	//block = 10
 
 /obj/item/dnainjector/firemut/New()
-	block = FIREBLOCK
+	block = DNABLOCK_FIRE
 	..()
 
 /obj/item/dnainjector/antifire
@@ -199,7 +199,7 @@
 	//block = 10
 
 /obj/item/dnainjector/antifire/New()
-	block = FIREBLOCK
+	block = DNABLOCK_FIRE
 	..()
 
 /obj/item/dnainjector/telemut
@@ -210,7 +210,7 @@
 	//block = 12
 
 /obj/item/dnainjector/telemut/New()
-	block = TELEBLOCK
+	block = DNABLOCK_TELE
 	..()
 
 /obj/item/dnainjector/antitele
@@ -221,7 +221,7 @@
 	//block = 12
 
 /obj/item/dnainjector/antitele/New()
-	block = TELEBLOCK
+	block = DNABLOCK_TELE
 	..()
 
 /obj/item/dnainjector/nobreath
@@ -232,7 +232,7 @@
 	//block = 2
 
 /obj/item/dnainjector/nobreath/New()
-	block = NOBREATHBLOCK
+	block = DNABLOCK_NOBREATH
 	..()
 
 /obj/item/dnainjector/antinobreath
@@ -243,7 +243,7 @@
 	//block = 2
 
 /obj/item/dnainjector/antinobreath/New()
-	block = NOBREATHBLOCK
+	block = DNABLOCK_NOBREATH
 	..()
 
 /obj/item/dnainjector/remoteview
@@ -254,7 +254,7 @@
 	//block = 2
 
 /obj/item/dnainjector/remoteview/New()
-	block = REMOTEVIEWBLOCK
+	block = DNABLOCK_REMOTEVIEW
 	..()
 
 /obj/item/dnainjector/antiremoteview
@@ -265,7 +265,7 @@
 	//block = 2
 
 /obj/item/dnainjector/antiremoteview/New()
-	block = REMOTEVIEWBLOCK
+	block = DNABLOCK_REMOTEVIEW
 	..()
 
 /obj/item/dnainjector/regenerate
@@ -276,7 +276,7 @@
 	//block = 2
 
 /obj/item/dnainjector/regenerate/New()
-	block = REGENERATEBLOCK
+	block = DNABLOCK_REGENERATE
 	..()
 
 /obj/item/dnainjector/antiregenerate
@@ -287,7 +287,7 @@
 	//block = 2
 
 /obj/item/dnainjector/antiregenerate/New()
-	block = REGENERATEBLOCK
+	block = DNABLOCK_REGENERATE
 	..()
 
 /obj/item/dnainjector/runfast
@@ -298,7 +298,7 @@
 	//block = 2
 
 /obj/item/dnainjector/runfast/New()
-	block = INCREASERUNBLOCK
+	block = DNABLOCK_INCREASERUN
 	..()
 
 /obj/item/dnainjector/antirunfast
@@ -309,7 +309,7 @@
 	//block = 2
 
 /obj/item/dnainjector/antirunfast/New()
-	block = INCREASERUNBLOCK
+	block = DNABLOCK_INCREASERUN
 	..()
 
 /obj/item/dnainjector/morph
@@ -320,7 +320,7 @@
 	//block = 2
 
 /obj/item/dnainjector/morph/New()
-	block = MORPHBLOCK
+	block = DNABLOCK_MORPH
 	..()
 
 /obj/item/dnainjector/antimorph
@@ -331,7 +331,7 @@
 	//block = 2
 
 /obj/item/dnainjector/antimorph/New()
-	block = MORPHBLOCK
+	block = DNABLOCK_MORPH
 	..()
 
 /* No COLDBLOCK on bay
@@ -366,7 +366,7 @@
 	//block = 2
 
 /obj/item/dnainjector/noprints/New()
-	block = NOPRINTSBLOCK
+	block = DNABLOCK_NOPRINTS
 	..()
 
 /obj/item/dnainjector/antinoprints
@@ -377,7 +377,7 @@
 	//block = 2
 
 /obj/item/dnainjector/antinoprints/New()
-	block = NOPRINTSBLOCK
+	block = DNABLOCK_NOPRINTS
 	..()
 
 /obj/item/dnainjector/insulation
@@ -388,7 +388,7 @@
 	//block = 2
 
 /obj/item/dnainjector/insulation/New()
-		block = SHOCKIMMUNITYBLOCK
+		block = DNABLOCK_NOSHOCK
 		..()
 
 /obj/item/dnainjector/antiinsulation
@@ -399,7 +399,7 @@
 	//block = 2
 
 /obj/item/dnainjector/antiinsulation/New()
-	block = SHOCKIMMUNITYBLOCK
+	block = DNABLOCK_NOSHOCK
 	..()
 
 /obj/item/dnainjector/drarfism
@@ -410,7 +410,7 @@
 	//block = 2
 
 /obj/item/dnainjector/drarfism/New()
-		block = SMALLSIZEBLOCK
+		block = DNABLOCK_DWARFISM
 		..()
 
 /obj/item/dnainjector/antidrarfism
@@ -421,7 +421,7 @@
 	//block = 2
 
 /obj/item/dnainjector/antidrarfism/New()
-	block = SMALLSIZEBLOCK
+	block = DNABLOCK_DWARFISM
 	..()
 
 /////////////////////////////////////
@@ -433,7 +433,7 @@
 	//block = 1
 
 /obj/item/dnainjector/antiglasses/New()
-	block = GLASSESBLOCK
+	block = DNABLOCK_GLASSES
 	..()
 
 /obj/item/dnainjector/glassesmut
@@ -444,7 +444,7 @@
 	//block = 1
 
 /obj/item/dnainjector/glassesmut/New()
-	block = GLASSESBLOCK
+	block = DNABLOCK_GLASSES
 	..()
 
 /obj/item/dnainjector/epimut
@@ -455,7 +455,7 @@
 	//block = 3
 
 /obj/item/dnainjector/epimut/New()
-	block = HEADACHEBLOCK
+	block = DNABLOCK_HEADACHE
 	..()
 
 /obj/item/dnainjector/antiepi
@@ -466,7 +466,7 @@
 	//block = 3
 
 /obj/item/dnainjector/antiepi/New()
-	block = HEADACHEBLOCK
+	block = DNABLOCK_HEADACHE
 	..()
 
 /obj/item/dnainjector/anticough
@@ -477,7 +477,7 @@
 	//block = 5
 
 /obj/item/dnainjector/anticough/New()
-	block = COUGHBLOCK
+	block = DNABLOCK_COUGH
 	..()
 
 /obj/item/dnainjector/coughmut
@@ -488,7 +488,7 @@
 	//block = 5
 
 /obj/item/dnainjector/coughmut/New()
-	block = COUGHBLOCK
+	block = DNABLOCK_COUGH
 	..()
 
 /obj/item/dnainjector/clumsymut
@@ -499,7 +499,7 @@
 	//block = 6
 
 /obj/item/dnainjector/clumsymut/New()
-	block = CLUMSYBLOCK
+	block = DNABLOCK_CLUMSY
 	..()
 
 /obj/item/dnainjector/anticlumsy
@@ -510,7 +510,7 @@
 	//block = 6
 
 /obj/item/dnainjector/anticlumsy/New()
-	block = CLUMSYBLOCK
+	block = DNABLOCK_CLUMSY
 	..()
 
 /obj/item/dnainjector/antitour
@@ -521,7 +521,7 @@
 	//block = 7
 
 /obj/item/dnainjector/antitour/New()
-	block = TWITCHBLOCK
+	block = DNABLOCK_TWITCH
 	..()
 
 /obj/item/dnainjector/tourmut
@@ -532,7 +532,7 @@
 	//block = 7
 
 /obj/item/dnainjector/tourmut/New()
-	block = TWITCHBLOCK
+	block = DNABLOCK_TWITCH
 	..()
 
 /obj/item/dnainjector/stuttmut
@@ -543,7 +543,7 @@
 	//block = 9
 
 /obj/item/dnainjector/stuttmut/New()
-	block = NERVOUSBLOCK
+	block = DNABLOCK_NERVOUS
 	..()
 
 /obj/item/dnainjector/antistutt
@@ -554,7 +554,7 @@
 	//block = 9
 
 /obj/item/dnainjector/antistutt/New()
-	block = NERVOUSBLOCK
+	block = DNABLOCK_NERVOUS
 	..()
 
 /obj/item/dnainjector/blindmut
@@ -565,7 +565,7 @@
 	//block = 11
 
 /obj/item/dnainjector/blindmut/New()
-	block = BLINDBLOCK
+	block = DNABLOCK_BLIND
 	..()
 
 /obj/item/dnainjector/antiblind
@@ -576,7 +576,7 @@
 	//block = 11
 
 /obj/item/dnainjector/antiblind/New()
-	block = BLINDBLOCK
+	block = DNABLOCK_BLIND
 	..()
 
 /obj/item/dnainjector/deafmut
@@ -587,7 +587,7 @@
 	//block = 13
 
 /obj/item/dnainjector/deafmut/New()
-	block = DEAFBLOCK
+	block = DNABLOCK_DEAF
 	..()
 
 /obj/item/dnainjector/antideaf
@@ -598,7 +598,7 @@
 	//block = 13
 
 /obj/item/dnainjector/antideaf/New()
-	block = DEAFBLOCK
+	block = DNABLOCK_DEAF
 	..()
 
 /obj/item/dnainjector/hallucination
@@ -609,7 +609,7 @@
 	//block = 2
 
 /obj/item/dnainjector/hallucination/New()
-	block = HALLUCINATIONBLOCK
+	block = DNABLOCK_HALLUCINATION
 	..()
 
 /obj/item/dnainjector/antihallucination
@@ -620,7 +620,7 @@
 	//block = 2
 
 /obj/item/dnainjector/antihallucination/New()
-	block = HALLUCINATIONBLOCK
+	block = DNABLOCK_HALLUCINATION
 	..()
 
 /obj/item/dnainjector/h2m
@@ -631,7 +631,7 @@
 	//block = 14
 
 /obj/item/dnainjector/h2m/New()
-	block = MONKEYBLOCK
+	block = DNABLOCK_MONKEY
 	..()
 
 /obj/item/dnainjector/m2h
@@ -642,5 +642,5 @@
 	//block = 14
 
 /obj/item/dnainjector/m2h/New()
-	block = MONKEYBLOCK
+	block = DNABLOCK_MONKEY
 	..()
