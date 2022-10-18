@@ -32,6 +32,11 @@
 		if(!(L.language_flags & NONGLOBAL))
 			language_keys[L.key] = L
 
+/datum/controller/subsystem/characters/proc/resolve_language(id_path_name)
+	if(ispath(id_path_name))
+		return resolve_language_path(id_path_name)
+	return resolve_language_id(id_path_name) || resolve_language_name(id_path_name)
+
 // todo: deprecated
 /datum/controller/subsystem/characters/proc/resolve_language_name(name)
 	RETURN_TYPE(/datum/language)

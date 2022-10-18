@@ -108,7 +108,7 @@
 				if(blocked)
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
-					
+
 			user.visible_message(SPAN_DANGER("[user] attempts to feed [M] [src]."))
 			user.setClickCooldown(user.get_attack_speed(src))
 			if(!do_mob(user, M, 3 SECONDS))
@@ -1816,7 +1816,7 @@
 /obj/item/reagent_containers/food/snacks/monkeycube/proc/Expand()
 	src.visible_message("<span class='notice'>\The [src] expands!</span>")
 	var/mob/living/carbon/human/H = new(get_turf(src))
-	H.set_species(species_type_by_name(monkey_type))
+	H.set_species(monkey_type)
 	H.real_name = H.species.get_random_name()
 	H.name = H.real_name
 	qdel(src)
@@ -6643,7 +6643,7 @@ END CITADEL CHANGE */
 	. = ..()
 	reagents.add_reagent("protein", 7)
 	bitesize = 2
-	
+
 /obj/item/reagent_containers/food/snacks/brainsnax
 	name = "Brainsnax"
 	desc = "A green can, filled to the brim with vatgrown brain matter, in all its juicy glory. Rich in lymbic system!"
@@ -6655,4 +6655,4 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/bugsnacks/Initialize(mapload)
 	. = ..()
 	bitesize = 2
-	
+

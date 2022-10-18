@@ -810,5 +810,5 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	suggested_species = SPECIES_ADHERENT
 
 /datum/robolimb/adherent/New()
-	species_cannot_use = all_species_names() - SPECIES_ADHERENT
+	species_cannot_use = SScharacters.all_species_names() - SPECIES_ADHERENT
 	..()

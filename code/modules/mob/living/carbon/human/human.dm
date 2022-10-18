@@ -19,13 +19,18 @@
 	var/active_regen_delay = 300
 	var/spam_flag = FALSE	//throws byond:tm: errors if placed in human/emote, but not here
 
+/**
+ * constructor; pass in a specieslike resolver as second argument to set
+ *
+ * specieslike resolver = species datum, id, path, or name.
+ */
 /mob/living/carbon/human/Initialize(mapload, datum/species/specieslike)
 	if(!dna)
 		dna = new /datum/dna(null)
 		// Species name is handled by set_species()
 
 	if(specieslike)
-		set_species(new_species_or_path, force = TRUE, regen_icons = FALSE)
+		set_species(specieslike, force = TRUE, regen_icons = FALSE)
 	else
 		reset_species(force = TRUE)
 
@@ -1091,15 +1096,14 @@
  * - example - dumbshit argument used for vore transformations to copy necessary data, why tf is this not done in the vore module? //TODO: REMOVE.
  */
 /mob/living/carbon/human/proc/set_species(datum/species/specieslike, regen_icons = TRUE, force = FALSE, skip, mob/living/carbon/human/example)
+	ASSERT(spcieslike)
 	// resolve id
 	var/resolved_id
 	var/datum/species/resolving
 	if(istype(specieslike))
 		resolving = specieslike
-	else if(ispath(specieslike))
-		resolving = SScharacters.resolve_species_path(specieslike)
 	else
-		resolving = SScharacters.resolve_species_id(specieslike) || SScharacters.resolve_species_name(specieslike)
+		resolving = SScharacters.resolve_species(specieslike)
 	ASSERT(istype(resolving))
 	resolved_id = resolving.uid
 	if(!force && (species?.uid == resolved_id))
