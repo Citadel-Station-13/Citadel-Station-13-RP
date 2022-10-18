@@ -2,7 +2,7 @@
 /obj/machinery/doorbell_chime
 	name = "doorbell chime"
 	desc = "Small wall-mounted chime triggered by a doorbell"
-	icon = 'icons/obj/machines/doorbell_vr.dmi'
+	icon = 'icons/machinery/doorbell_vr.dmi'
 	icon_state = "dbchime-standby"
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
@@ -69,7 +69,7 @@
 	frame_size = 3
 	frame_style = "wall"
 	circuit = /obj/item/circuitboard/doorbell_chime
-	icon_override = 'icons/obj/machines/doorbell_vr.dmi'
+	icon_override = 'icons/machinery/doorbell_vr.dmi'
 	x_offset = 32
 	y_offset = 32
 
@@ -87,7 +87,7 @@
 /obj/machinery/button/doorbell
 	name = "doorbell switch"
 	desc = "A doorbell, press to chime."
-	icon = 'icons/obj/machines/doorbell_vr.dmi'
+	icon = 'icons/machinery/doorbell_vr.dmi'
 	icon_state = "doorbell-standby"
 	use_power = USE_POWER_OFF
 
@@ -149,7 +149,7 @@
 /obj/item/frame/doorbell
 	name = "doorbell switch frame"
 	desc = "Used for building doorbell switches."
-	icon = 'icons/obj/machines/doorbell_vr.dmi'
+	icon = 'icons/machinery/doorbell_vr.dmi'
 	icon_state = "doorbell-off"
 	refund_amt = 4
 	refund_type = /obj/item/stack/material/wood

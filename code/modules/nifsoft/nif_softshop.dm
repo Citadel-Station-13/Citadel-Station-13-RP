@@ -4,7 +4,7 @@
 	desc = "For all your mindware and mindware accessories."
 	product_ads = "Let us get into your head!;Looking for an upgrade?;Surpass Humanity!;Why be normal when you can be SUPERnormal?;Jack in with NIFSoft!"
 
-	icon = 'icons/obj/machines/ar_elements.dmi'
+	icon = 'icons/machinery/ar_elements.dmi'
 	icon_state = "proj"
 	icon_vend = "beacon_yes"
 	icon_deny = "beacon_no"

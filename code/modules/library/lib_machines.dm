@@ -516,7 +516,7 @@
  */
 /obj/machinery/bookbinder
 	name = "Book Binder"
-	icon = 'icons/obj/machines/fabricators/book.dmi'
+	icon = 'icons/machinery/fabricators/book.dmi'
 	icon_state = "binder"
 	base_icon_state = "binder"
 	anchored = TRUE

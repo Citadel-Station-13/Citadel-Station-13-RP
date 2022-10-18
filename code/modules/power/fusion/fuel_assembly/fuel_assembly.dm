@@ -1,6 +1,6 @@
 /obj/item/fuel_assembly
 	name = "fuel rod assembly"
-	icon = 'icons/obj/machines/power/fusion.dmi'
+	icon = 'icons/machinery/power/fusion.dmi'
 	icon_state = "fuel_assembly"
 
 	var/material_name

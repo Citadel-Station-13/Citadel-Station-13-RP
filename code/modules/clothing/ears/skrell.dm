@@ -8,7 +8,7 @@
 	slot_flags = SLOT_EARS
 	worn_render_flags = WORN_RENDER_INHAND_ALLOW_DEFAULT | WORN_RENDER_SLOT_ONE_FOR_ALL
 	inhand_default_type = INHAND_DEFAULT_ICON_GENERAL
-	icon = 'icons/modules/clothing/ears/skrell.dmi'
+	icon = 'icons/clothing/ears/skrell.dmi'
 
 /obj/item/clothing/ears/skrell/chain
 	name = "Gold headtail chains"

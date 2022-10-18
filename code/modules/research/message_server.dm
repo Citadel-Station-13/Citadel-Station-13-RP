@@ -48,7 +48,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 				priority = "Undetermined"
 
 /obj/machinery/message_server
-	icon = 'icons/obj/machines/research.dmi'
+	icon = 'icons/machinery/research.dmi'
 	icon_state = "server"
 	name = "Messaging Server"
 	density = 1

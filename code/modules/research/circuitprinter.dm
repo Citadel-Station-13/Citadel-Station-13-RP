@@ -6,7 +6,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 
 /obj/machinery/r_n_d/circuit_imprinter
 	name = "Circuit Imprinter"
-	icon = 'icons/obj/machines/fabricators/imprinter.dmi'
+	icon = 'icons/machinery/fabricators/imprinter.dmi'
 	icon_state = "imprinter"
 	base_icon_state = "imprinter"
 	flags = OPENCONTAINER

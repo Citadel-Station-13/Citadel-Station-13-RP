@@ -26,7 +26,7 @@
 	name = "staff sleeper"
 	desc = "A sleeper designed for long-term stasis between guest visits."
 	role_type = /datum/ghostrole/space_hotel
-	icon = 'icons/obj/machines/sleeper.dmi'
+	icon = 'icons/machinery/sleeper.dmi'
 	icon_state = "sleeper_s"
 
 /obj/structure/ghost_role_spawner/space_hotel/Destroy()

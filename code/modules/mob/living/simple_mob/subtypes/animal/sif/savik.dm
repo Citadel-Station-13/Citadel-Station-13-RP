@@ -26,7 +26,7 @@
 	icon_state = "savik"
 	icon_living = "savik"
 	icon_dead = "savik_dead"
-	icon = 'icons/jungle.dmi'
+	icon = 'icons/_legacy/jungle.dmi'
 
 	maxHealth = 125
 	health = 125

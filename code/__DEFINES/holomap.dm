@@ -3,7 +3,7 @@
 //
 
 /// Icon file to start with when drawing holomaps (to get a 480x480 canvas).
-#define HOLOMAP_ICON 'icons/480x480.dmi'
+#define HOLOMAP_ICON 'icons/effects/480x480.dmi'
 /// Pixel width & height of the holomap icon.  Used for auto-centering etc.
 #define HOLOMAP_ICON_SIZE 480
 /// Screen location of the holomap "hud"

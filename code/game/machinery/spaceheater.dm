@@ -185,7 +185,7 @@
 /obj/machinery/power/thermoregulator
 	name = "thermal regulator"
 	desc = "A massive machine that can either add or remove thermal energy from the surrounding environment. Must be secured onto a powered wire node to function."
-	icon = 'icons/obj/machines/thermoregulator_vr.dmi'
+	icon = 'icons/machinery/thermoregulator_vr.dmi'
 	icon_state = "lasergen"
 	density = 1
 	anchored = 0

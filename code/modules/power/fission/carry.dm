@@ -1,5 +1,5 @@
 /obj/item/storage/briefcase/fission
-	icon = 'icons/obj/machines/power/fission.dmi'
+	icon = 'icons/machinery/power/fission.dmi'
 	name = "lead lined carrying case"
 	desc = "It's made of AUTHENTIC sealed lead and has a trifoil tag attached. Should probably handle this one with care."
 	icon_state = "carrycase"

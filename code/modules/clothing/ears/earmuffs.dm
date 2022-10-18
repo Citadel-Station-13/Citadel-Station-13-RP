@@ -10,7 +10,7 @@
 	worn_render_flags = NONE
 	worn_bodytypes = BODYTYPE_TESHARI
 
-	icon = 'icons/modules/clothing/ears/earmuffs.dmi'
+	icon = 'icons/clothing/ears/earmuffs.dmi'
 	icon_state   = "earmuffs"
 	inhand_state = "earmuffs"
 
@@ -27,7 +27,7 @@
 	worn_render_flags = NONE
 	worn_bodytypes = BODYTYPE_TESHARI
 
-	icon = 'icons/modules/clothing/ears/headphones.dmi'
+	icon = 'icons/clothing/ears/headphones.dmi'
 	icon_state   = "headphones-off"
 	inhand_state = "headphones-off"
 

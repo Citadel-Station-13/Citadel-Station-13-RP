@@ -1,6 +1,6 @@
 /obj/machinery/computer/fusion_fuel_control
 	name = "fuel injection control computer"
-	icon = 'icons/obj/machines/power/fusion.dmi'
+	icon = 'icons/machinery/power/fusion.dmi'
 	icon_state = "fuel"
 	circuit = /obj/item/circuitboard/fusion_fuel_control
 

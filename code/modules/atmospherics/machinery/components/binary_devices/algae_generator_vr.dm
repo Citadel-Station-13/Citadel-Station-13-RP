@@ -4,7 +4,7 @@
 /obj/machinery/atmospherics/component/binary/algae_farm
 	name = "algae oxygen generator"
 	desc = "An oxygen generator using algae to convert carbon dioxide to oxygen."
-	icon = 'icons/obj/machines/algae_vr.dmi'
+	icon = 'icons/machinery/algae_vr.dmi'
 	icon_state = "algae-off"
 	circuit = /obj/item/circuitboard/algae_farm
 	anchored = 1

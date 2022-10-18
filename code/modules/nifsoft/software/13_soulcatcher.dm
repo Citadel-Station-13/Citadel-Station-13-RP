@@ -509,7 +509,7 @@
 //A projected AR soul thing
 /mob/observer/eye/ar_soul
 	plane = PLANE_AUGMENTED
-	icon = 'icons/obj/machines/ar_elements.dmi'
+	icon = 'icons/machinery/ar_elements.dmi'
 	icon_state = "beacon"
 	var/mob/living/carbon/human/parent_human
 

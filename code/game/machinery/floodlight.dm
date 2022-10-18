@@ -1,6 +1,6 @@
 /obj/machinery/floodlight
 	name = "Emergency Floodlight"
-	icon = 'icons/obj/machines/floodlight.dmi'
+	icon = 'icons/machinery/floodlight.dmi'
 	icon_state = "flood00"
 	density = TRUE
 	var/on = FALSE

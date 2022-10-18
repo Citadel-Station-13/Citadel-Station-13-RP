@@ -4954,14 +4954,14 @@
 /area/awaymission/zoo)
 "nm" = (
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "nn" = (
 /obj/structure/flora/ausbushes,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -5069,14 +5069,14 @@
 "nE" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "nF" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -5275,7 +5275,7 @@
 "oe" = (
 /obj/structure/flora/ausbushes/leafybush,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -5284,7 +5284,7 @@
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -5357,21 +5357,21 @@
 "oq" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "or" = (
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "os" = (
 /obj/structure/flora/ausbushes/genericbush,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -5436,14 +5436,14 @@
 "oC" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "oD" = (
 /obj/structure/flora/ausbushes/palebush,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -5713,7 +5713,7 @@
 "pp" = (
 /obj/structure/flora/ausbushes/grassybush,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -5775,7 +5775,7 @@
 "pz" = (
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -6329,7 +6329,7 @@
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -8016,21 +8016,21 @@
 "uS" = (
 /obj/structure/flora/ausbushes/fernybush,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "uT" = (
 /obj/effect/overlay/palmtree_r,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "uU" = (
 /obj/effect/overlay/palmtree_l,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -8091,14 +8091,14 @@
 "vb" = (
 /obj/effect/overlay/coconut,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "vc" = (
 /obj/structure/flora/ausbushes/sunnybush,
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
@@ -8121,7 +8121,7 @@
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/grass{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)

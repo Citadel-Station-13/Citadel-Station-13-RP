@@ -16,7 +16,7 @@
 	var/min_heat_setting = TCMB
 	var/max_heat_setting = 99999999
 
-	icon = 'icons/obj/machines/massive_pumps.dmi'
+	icon = 'icons/machinery/massive_pumps.dmi'
 	icon_state = "pump"
 	pipe_flags = PIPING_DEFAULT_LAYER_ONLY|PIPING_ONE_PER_TURF
 	anchored = 1

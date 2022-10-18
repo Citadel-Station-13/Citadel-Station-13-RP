@@ -6,7 +6,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 /obj/effect/fusion_em_field
 	name = "electromagnetic field"
 	desc = "A coruscating, barely visible field of energy. It is shaped like a slightly flattened torus."
-	icon = 'icons/obj/machines/power/fusion.dmi'
+	icon = 'icons/machinery/power/fusion.dmi'
 	icon_state = "emfield_s1"
 	alpha = 1
 	plane = MOB_PLANE
@@ -352,7 +352,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 			)
 
 	if( ((newsize-1)%2==0) && (newsize<=13) )
-		icon = 'icons/obj/machines/power/fusion.dmi'
+		icon = 'icons/machinery/power/fusion.dmi'
 		if(newsize>1)
 			icon = size_to_icon["[newsize]"]
 		icon_state = "emfield_s[newsize]"

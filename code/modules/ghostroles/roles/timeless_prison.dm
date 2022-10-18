@@ -31,7 +31,7 @@
 /obj/structure/ghost_role_spawner/exile
 	name = "timeless prison"
 	desc = "Although this stasis pod looks medicinal, it seems as though it's meant to preserve something for a very long time."
-	icon = 'icons/obj/machines/sleeper.dmi'
+	icon = 'icons/machinery/sleeper.dmi'
 	icon_state = "sleeper"
 	role_type = /datum/ghostrole/timeless_prison
 

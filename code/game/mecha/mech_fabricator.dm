@@ -1,5 +1,5 @@
 /obj/machinery/mecha_part_fabricator
-	icon = 'icons/obj/machines/fabricators/robotics.dmi'
+	icon = 'icons/machinery/fabricators/robotics.dmi'
 	icon_state = "mechfab"
 	base_icon_state = "mechfab"
 	name = "Exosuit Fabricator"

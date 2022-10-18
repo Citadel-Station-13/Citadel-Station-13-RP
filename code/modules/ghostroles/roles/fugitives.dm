@@ -46,7 +46,7 @@
 	desc = "A small sleeper typically used to put people to sleep for briefing on the mission."
 	backstory = "space cop"
 	outfit = "spacepol"
-	icon = 'icons/obj/machines/sleeper.dmi'
+	icon = 'icons/machinery/sleeper.dmi'
 	icon_state = "sleeper"
 
 /obj/structure/ghost_role_spawner/fugitive_hunter/russian
@@ -54,7 +54,7 @@
 	desc = "A small sleeper typically used to make long distance travel a bit more bearable."
 	backstory = "russian"
 	outfit = "russian"
-	icon = 'icons/obj/machines/sleeper.dmi'
+	icon = 'icons/machinery/sleeper.dmi'
 	icon_state = "sleeper"
 
 /obj/structure/ghost_role_spawner/fugitive_hunter/bounty
@@ -62,7 +62,7 @@
 	desc = "A small sleeper typically used to make long distance travel a bit more bearable."
 	backstory = "bounty hunters"
 	outfit = "bountyaromr"
-	icon = 'icons/obj/machines/sleeper.dmi'
+	icon = 'icons/machinery/sleeper.dmi'
 	icon_state = "sleeper"
 
 /obj/structure/ghost_role_spawner/fugitive_hunter/bounty/Destroy()

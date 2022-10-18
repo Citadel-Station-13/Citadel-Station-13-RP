@@ -23,7 +23,7 @@
 /obj/structure/ghost_role_spawner/prisoner_transport
 	name = "prisoner containment sleeper"
 	desc = "A sleeper designed to put its occupant into a deep coma, unbreakable until the sleeper turns off. This one's glass is cracked and you can see a pale, sleeping face staring out."
-	icon = 'icons/obj/machines/sleeper.dmi'
+	icon = 'icons/machinery/sleeper.dmi'
 	icon_state = "sleeper_s"
 	role_type = /datum/ghostrole/lavaland_prisoner
 

@@ -1,7 +1,7 @@
 /obj/machinery/shield_gen
 	name = "bubble shield generator"
 	desc = "A machine that generates a field of energy optimized for blocking meteorites when activated."
-	icon = 'icons/obj/machines/shielding.dmi'
+	icon = 'icons/machinery/shielding.dmi'
 	icon_state = "generator0"
 	var/active = 0
 	var/field_radius = 3

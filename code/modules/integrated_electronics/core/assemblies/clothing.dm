@@ -293,7 +293,7 @@
 	EA_Installed = TRUE
 
 	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_ONE_FOR_ALL
-	icon = 'icons/modules/clothing/ears/circuitry.dmi'
+	icon = 'icons/clothing/ears/circuitry.dmi'
 	icon_state = "circuitry"
 	item_state = "circuitry"
 

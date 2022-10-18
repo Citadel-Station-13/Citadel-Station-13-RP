@@ -3,7 +3,7 @@
 /obj/machinery/mineral/equipment_vendor
 	name = "mining equipment vendor"
 	desc = "An equipment vendor for miners, points collected at an ore redemption machine can be spent here."
-	icon = 'icons/obj/machines/mining_machines.dmi'
+	icon = 'icons/machinery/mining_machines.dmi'
 	icon_state = "mining"
 	density = TRUE
 	anchored = TRUE

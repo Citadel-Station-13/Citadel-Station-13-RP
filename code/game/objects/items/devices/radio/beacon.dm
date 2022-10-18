@@ -1,7 +1,7 @@
 /obj/item/radio/beacon
 	name = "tracking beacon"
 	desc = "A beacon used by a teleporter."
-	icon = 'icons/obj/machines/teleporter.dmi'
+	icon = 'icons/machinery/teleporter.dmi'
 	icon_state = "beacon"
 	item_state = "beacon"
 	base_icon_state = "beacon"

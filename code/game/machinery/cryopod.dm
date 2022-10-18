@@ -280,7 +280,7 @@
 /obj/machinery/cryopod/robot/door/gateway
 	name = "Gateway"
 	desc = "The gateway you might've came in from.  You could leave the colony easily using this."
-	icon = 'icons/obj/machines/gateway.dmi'
+	icon = 'icons/machinery/gateway.dmi'
 	icon_state = "offcenter"
 	base_icon_state = "offcenter"
 	occupied_icon_state = "oncenter"
@@ -696,7 +696,7 @@
 /obj/machinery/cryopod/robot/door/gateway
 	name = "public teleporter"
 	desc = "The short-range teleporter you might've came in from. You could leave easily using this."
-	icon = 'icons/obj/machines/teleporter.dmi'
+	icon = 'icons/machinery/teleporter.dmi'
 	icon_state = "pad_idle"
 	base_icon_state = "pad"
 	occupied_icon_state = "pad_active"

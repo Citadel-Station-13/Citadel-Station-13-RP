@@ -2,7 +2,7 @@
 // Vent Pipe - Unpowered vent
 //
 /obj/machinery/atmospherics/pipe/vent
-	icon = 'icons/obj/atmospherics/pipe_vent.dmi'
+	icon = 'icons/machinery/atmospherics/pipe_vent.dmi'
 	icon_state = "intact"
 
 	name = "Vent"

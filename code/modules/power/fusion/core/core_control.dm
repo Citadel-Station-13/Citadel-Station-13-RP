@@ -1,6 +1,6 @@
 /obj/machinery/computer/fusion_core_control
 	name = "\improper R-UST Mk. 8 core control"
-	icon = 'icons/obj/machines/power/fusion.dmi'
+	icon = 'icons/machinery/power/fusion.dmi'
 	icon_state = "core_control"
 	light_color = COLOR_ORANGE
 	circuit = /obj/item/circuitboard/fusion_core_control

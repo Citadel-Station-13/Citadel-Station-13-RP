@@ -34,7 +34,7 @@
 /obj/structure/ghost_role_spawner/pirate
 	name = "space pirate sleeper"
 	desc = "A cryo sleeper smelling faintly of rum. The sleeper looks unstable. <i>Perhaps the pirate within can be killed with the right tools...</i>"
-	icon = 'icons/obj/machines/sleeper.dmi'
+	icon = 'icons/machinery/sleeper.dmi'
 	icon_state = "sleeper"
 	role_type = /datum/ghostrole/pirate
 	role_params = list(

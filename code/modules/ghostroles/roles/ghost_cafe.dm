@@ -9,7 +9,7 @@
 
 /obj/structure/ghost_role_spawner/ghost_cafe
 	name = "Ghost Cafe Sleeper"
-	icon = 'icons/obj/machines/sleeper.dmi'
+	icon = 'icons/machinery/sleeper.dmi'
 	icon_state = "sleeper"
 	role_type = /datum/ghostrole/ghost_cafe
 	role_spawns = INFINITY

@@ -44,7 +44,7 @@
 
 /obj/structure/ghost_role_spawner/syndicate
 	name = "Syndicate Operative"
-	icon = 'icons/obj/machines/sleeper.dmi'
+	icon = 'icons/machinery/sleeper.dmi'
 	icon_state = "sleeper_s"
 	qdel_on_deplete = TRUE
 	role_type = null

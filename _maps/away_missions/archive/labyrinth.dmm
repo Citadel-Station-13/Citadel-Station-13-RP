@@ -334,7 +334,7 @@
 /area/awaymission/labyrinth/arrival)
 "bp" = (
 /turf/unsimulated/floor{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2";
 	name = "jungle grass"
 	},
@@ -356,7 +356,7 @@
 /area/awaymission/labyrinth/arrival)
 "bq" = (
 /turf/unsimulated/floor{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2";
 	name = "jungle grass"
 	},
@@ -373,7 +373,7 @@
 /area/awaymission/labyrinth/arrival)
 "br" = (
 /turf/unsimulated/floor{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2";
 	name = "jungle grass"
 	},
@@ -390,7 +390,7 @@
 /area/awaymission/labyrinth/arrival)
 "bs" = (
 /turf/unsimulated/floor{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2";
 	name = "jungle grass"
 	},
@@ -402,7 +402,7 @@
 /area/awaymission/labyrinth/arrival)
 "bt" = (
 /turf/unsimulated/floor{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2";
 	name = "jungle grass"
 	},
@@ -414,14 +414,14 @@
 /area/awaymission/labyrinth/arrival)
 "bu" = (
 /turf/unsimulated/floor{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2";
 	name = "jungle grass"
 	},
 /area/awaymission/labyrinth/arrival)
 "bv" = (
 /turf/unsimulated/floor{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2";
 	name = "jungle grass"
 	},
@@ -705,7 +705,7 @@
 /area/awaymission/labyrinth/arrival)
 "cl" = (
 /turf/unsimulated/floor{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2";
 	name = "jungle grass"
 	},
@@ -755,7 +755,7 @@
 /area/awaymission/labyrinth/arrival)
 "cs" = (
 /turf/unsimulated/floor{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2";
 	name = "jungle grass"
 	},
@@ -828,7 +828,7 @@
 /area/awaymission/labyrinth/arrival)
 "cA" = (
 /turf/unsimulated/floor{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2";
 	name = "jungle grass"
 	},
@@ -977,7 +977,7 @@
 /area/awaymission/labyrinth/temple/entry)
 "cU" = (
 /turf/unsimulated/floor{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2";
 	name = "jungle grass"
 	},
@@ -1007,7 +1007,7 @@
 /area/awaymission/labyrinth/arrival)
 "cX" = (
 /turf/unsimulated/floor{
-	icon = 'icons/jungle.dmi';
+	icon = 'icons/_legacy/jungle.dmi';
 	icon_state = "grass2";
 	name = "jungle grass"
 	},

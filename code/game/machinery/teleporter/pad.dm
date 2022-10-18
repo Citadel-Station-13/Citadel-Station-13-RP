@@ -1,7 +1,7 @@
 /obj/machinery/tele_pad
 	name = "teleporter pad"
 	desc = "The teleporter pad handles all of the impossibly complex busywork required in instant matter transmission."
-	icon = 'icons/obj/machines/teleporter.dmi'
+	icon = 'icons/machinery/teleporter.dmi'
 	icon_state = "pad"
 	density = TRUE
 	anchored = TRUE

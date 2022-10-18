@@ -2,7 +2,7 @@
 	name = "portable shield diffuser"
 	desc = "A small handheld device designed to disrupt energy barriers."
 	description_info = "This device disrupts shields on directly adjacent tiles (in a + shaped pattern), in a similar way the floor mounted variant does. It is, however, portable and run by an internal battery. Can be recharged with a regular recharger."
-	icon = 'icons/obj/machines/shielding.dmi'
+	icon = 'icons/machinery/shielding.dmi'
 	icon_state = "hdiffuser_off"
 	origin_tech = list(TECH_MAGNET = 5, TECH_POWER = 5, TECH_ILLEGAL = 2)
 	w_class = ITEMSIZE_SMALL

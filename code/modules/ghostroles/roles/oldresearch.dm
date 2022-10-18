@@ -24,7 +24,7 @@
 	role_type = /datum/ghostrole/old_research
 	name = "old cryogenics pod"
 	desc = "A humming cryo pod. You can barely recognise a security uniform underneath the built up ice. The machine is attempting to wake up its occupant."
-	icon = 'icons/obj/machines/sleeper.dmi'
+	icon = 'icons/machinery/sleeper.dmi'
 	icon_state = "sleeper"
 
 /obj/structure/ghost_role_spawner/old_research/Destroy()

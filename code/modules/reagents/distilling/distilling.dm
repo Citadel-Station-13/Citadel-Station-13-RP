@@ -8,7 +8,7 @@
 	desc = "A complex machine utilizing state-of-the-art components to mix chemicals at different temperatures."
 	use_power = USE_POWER_IDLE
 
-	icon = 'icons/obj/machines/reagent.dmi'
+	icon = 'icons/machinery/reagent.dmi'
 	icon_state = "distiller"
 	var/base_state	// The string var used in update icon for overlays, either set manually or initialized.
 

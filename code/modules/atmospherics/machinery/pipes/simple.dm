@@ -295,7 +295,7 @@
 	color = PIPE_COLOR_PURPLE
 
 /obj/machinery/atmospherics/pipe/simple/insulated
-	icon = 'icons/obj/atmospherics/red_pipe.dmi'
+	icon = 'icons/machinery/atmospherics/red_pipe.dmi'
 	icon_state = "intact"
 
 	construction_type = /obj/item/pipe/binary/bendable

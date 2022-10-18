@@ -4,7 +4,7 @@
 #define REACTOR_RADS_TO_MJ 10000
 
 /obj/machinery/power/fission
-	icon = 'icons/obj/machines/power/fission.dmi'
+	icon = 'icons/machinery/power/fission.dmi'
 	density = 1
 	anchored = 0
 	name = "fission core"

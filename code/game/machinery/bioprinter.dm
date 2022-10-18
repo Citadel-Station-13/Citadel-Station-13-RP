@@ -4,7 +4,7 @@
 /obj/machinery/organ_printer
 	name = "organ printer"
 	desc = "It's a machine that prints organs."
-	icon = 'icons/obj/machines/fabricators/bioprinter.dmi'
+	icon = 'icons/machinery/fabricators/bioprinter.dmi'
 	icon_state = "bioprinter"
 	base_icon_state = "bioprinter"
 

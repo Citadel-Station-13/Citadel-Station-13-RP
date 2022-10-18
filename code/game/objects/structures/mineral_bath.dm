@@ -1,7 +1,7 @@
 /obj/structure/adherent_bath
 	name = "mineral bath"
 	desc = "A deep, narrow basin filled with a swirling, semi-opaque liquid."
-	icon = 'icons/obj/machines/adherent.dmi'
+	icon = 'icons/machinery/adherent.dmi'
 	icon_state = "bath"
 	anchored = TRUE
 	density = TRUE
@@ -180,5 +180,3 @@ if(prob(50))//The mineral rich bath soaked into you to dissolve the implanted ob
 		E.status |= ORGAN_BRITTLE
 
 */
-
-

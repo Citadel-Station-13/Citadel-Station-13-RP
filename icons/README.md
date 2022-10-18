@@ -12,11 +12,12 @@ We enforce a rigid-ish structure for organization.
 Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'll work on this, we promise. Anyone can propose changes to the hierarchy, just know what you're doing!
 
 /icons
-	/area - used to store area sprites, seen (hopefully) only by mappers.
+	/area - used to store area sprites, seen (hopefully) only by mappers
 	/mapping - used for sprites for in-map-editor objects that are invisible in game world
 		/helpers - mapping helpers like autopipe/autocable/baseturf replacers go here
 		/landmarks - landmark icons
 		/spawners - things like window spawners
+	/particles - contains all the icons used for /particles/
 	/runtime - follow similar structure inside this, treat it as a sub-copy. icons in this are copied over for use during runtime
 		- **Warning** - everything not in this folder cannot be accessed by "filename" and must be compiled in with 'filename'.
 	/screen - all screen objects, like hud icons, buttons, inventory interface, parallax, etc

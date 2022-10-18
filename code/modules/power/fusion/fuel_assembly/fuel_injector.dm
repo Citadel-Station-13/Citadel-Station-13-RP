@@ -2,7 +2,7 @@ var/list/fuel_injectors = list()
 
 /obj/machinery/fusion_fuel_injector
 	name = "fuel injector"
-	icon = 'icons/obj/machines/power/fusion.dmi'
+	icon = 'icons/machinery/power/fusion.dmi'
 	icon_state = "injector0"
 	density = 1
 	anchored = 0

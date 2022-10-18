@@ -1,6 +1,6 @@
 /obj/machinery/fusion_fuel_compressor
 	name = "fuel compressor"
-	icon = 'icons/obj/machines/power/fusion.dmi'
+	icon = 'icons/machinery/power/fusion.dmi'
 	icon_state = "fuel_compressor1"
 	density = 1
 	anchored = 1

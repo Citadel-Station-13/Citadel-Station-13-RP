@@ -92,7 +92,7 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 /obj/structure/old_roboprinter
 	name = "old drone fabricator"
 	desc = "Built like a tank, still working after so many years."
-	icon = 'icons/obj/machines/drone_fab.dmi'
+	icon = 'icons/machinery/drone_fab.dmi'
 	icon_state = "drone_fab_idle"
 	anchored = TRUE
 	density = TRUE

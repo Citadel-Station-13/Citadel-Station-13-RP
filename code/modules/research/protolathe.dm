@@ -1,6 +1,6 @@
 /obj/machinery/r_n_d/protolathe
 	name = "Protolathe"
-	icon = 'icons/obj/machines/fabricators/protolathe.dmi'
+	icon = 'icons/machinery/fabricators/protolathe.dmi'
 	icon_state = "protolathe"
 	base_icon_state = "protolathe"
 	flags = OPENCONTAINER

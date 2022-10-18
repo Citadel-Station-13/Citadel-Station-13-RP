@@ -1,7 +1,7 @@
 /obj/structure/adherent_pylon
 	name = "electron reservoir"
 	desc = "A tall, crystalline pylon that pulses with electricity."
-	icon = 'icons/obj/machines/adherent.dmi'
+	icon = 'icons/machinery/adherent.dmi'
 	icon_state = "pedestal"
 	anchored = TRUE
 	density = TRUE
@@ -54,4 +54,3 @@
 	icon = 'icons/turf/flooring/crystal.dmi'
 	icon_state = ""
 	initial_flooring = /decl/flooring/crystal
-

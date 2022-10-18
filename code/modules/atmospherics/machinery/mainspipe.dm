@@ -33,7 +33,7 @@
 	parent_pipe.burst()
 
 /obj/machinery/atmospherics/mains_pipe
-	icon = 'icons/obj/atmospherics/mainspipe.dmi'
+	icon = 'icons/machinery/atmospherics/mainspipe.dmi'
 	layer = PIPES_LAYER
 	plane = PLATING_PLANE
 

@@ -5,7 +5,7 @@
 /obj/item/fuelrod
 	name = "Fuel Rod"
 	desc = "A nuclear rod."
-	icon = 'icons/obj/machines/power/fission.dmi'
+	icon = 'icons/machinery/power/fission.dmi'
 	icon_state = "rod"
 	var/gasefficiency = 0.05
 	var/insertion = 0

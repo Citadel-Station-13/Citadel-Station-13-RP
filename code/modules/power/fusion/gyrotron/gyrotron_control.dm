@@ -1,6 +1,6 @@
 /obj/machinery/computer/gyrotron_control
 	name = "gyrotron control console"
-	icon = 'icons/obj/machines/power/fusion.dmi'
+	icon = 'icons/machinery/power/fusion.dmi'
 	icon_state = "engine"
 	light_color = COLOR_BLUE
 	circuit = /obj/item/circuitboard/gyrotron_control

@@ -1,7 +1,7 @@
 /obj/machinery/atmospherics/component/unary/heat_exchanger
 	name = "Heat Exchanger"
 	desc = "Exchanges heat between two input gases. Setup for fast heat transfer"
-	icon = 'icons/obj/atmospherics/heat_exchanger.dmi'
+	icon = 'icons/machinery/atmospherics/heat_exchanger.dmi'
 	icon_state = "intact"
 	pipe_state = "heunary"
 	density = FALSE

@@ -11,7 +11,7 @@
 /obj/effect/energy_field
 	name = "energy shield field"
 	desc = "Impenetrable field of energy, capable of blocking anything as long as it's active."
-	icon = 'icons/obj/machines/shielding.dmi'
+	icon = 'icons/machinery/shielding.dmi'
 	icon_state = "shield"
 	alpha = 100
 	anchored = TRUE

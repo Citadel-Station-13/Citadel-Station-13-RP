@@ -1,7 +1,7 @@
 /obj/machinery/mineral/equipment_vendor/survey
 	name = "exploration equipment vendor"
 	desc = "An equipment vendor for explorers, points collected with a survey scanner can be spent here."
-	icon = 'icons/obj/machines/mining_machines_vr.dmi'
+	icon = 'icons/machinery/mining_machines_vr.dmi'
 	icon_state = "exploration"
 	density = TRUE
 	anchored = TRUE

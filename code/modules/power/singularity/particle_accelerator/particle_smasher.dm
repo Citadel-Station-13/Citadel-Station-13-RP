@@ -5,7 +5,7 @@
 /obj/machinery/particle_smasher
 	name = "Particle Focus"
 	desc = "A strange device used to create exotic matter."
-	icon = 'icons/obj/machines/particle_smasher.dmi'
+	icon = 'icons/machinery/particle_smasher.dmi'
 	icon_state = "smasher"
 	anchored = 0
 	density = 1

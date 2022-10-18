@@ -167,7 +167,7 @@
 // 	var/y
 // 	var/z
 // 	var/filter
-// 	var/icon = 'icons/holomap_markers.dmi'
+// 	var/icon = 'icons/effects/holomap_markers.dmi'
 // 	var/icon_state
 
 #undef IS_ROCK

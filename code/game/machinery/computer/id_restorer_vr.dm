@@ -6,7 +6,7 @@
 	light_color = "#11cc00"
 	layer = ABOVE_WINDOW_LAYER
 	icon_keyboard = null
-	icon = 'icons/obj/machines/id_restorer_vr.dmi'
+	icon = 'icons/machinery/id_restorer_vr.dmi'
 	density = FALSE
 	clicksound = null
 	circuit = /obj/item/circuitboard/id_restorer
@@ -93,7 +93,7 @@
 	frame_style = FRAME_STYLE_WALL
 	x_offset = 30
 	y_offset = 30
-	icon_override = 'icons/obj/machines/id_restorer_vr.dmi'
+	icon_override = 'icons/machinery/id_restorer_vr.dmi'
 
 /datum/frame/frame_types/id_restorer/get_icon_state(var/state)
 	return "restorer_b[state]"

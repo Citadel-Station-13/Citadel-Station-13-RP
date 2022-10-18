@@ -25,7 +25,7 @@ var/intercom_range_display_status = 0
 GLOBAL_LIST_BOILERPLATE(all_debugging_effects, /obj/effect/debugging)
 
 /obj/effect/debugging/camera_range
-	icon = 'icons/480x480.dmi'
+	icon = 'icons/effects/480x480.dmi'
 	icon_state = "25percent"
 
 /obj/effect/debugging/camera_range/New()

@@ -4,7 +4,7 @@
 /obj/machinery/station_map
 	name = "station holomap"
 	desc = "A virtual map of the surrounding station."
-	icon = 'icons/obj/machines/stationmap.dmi'
+	icon = 'icons/machinery/stationmap.dmi'
 	icon_state = "station_map"
 	anchored = 1
 	density = 0
@@ -62,7 +62,7 @@
 	// small_station_map.plane = LIGHTING_PLANE // Not until we do planes ~Leshana
 	// small_station_map.layer = LIGHTING_LAYER+1 // Weird things will happen!
 
-	floor_markings = image('icons/obj/machines/stationmap.dmi', "decal_station_map")
+	floor_markings = image('icons/machinery/stationmap.dmi', "decal_station_map")
 	floor_markings.dir = src.dir
 	// floor_markings.plane = ABOVE_TURF_PLANE // Not until we do planes ~Leshana
 	// floor_markings.layer = DECAL_LAYER
@@ -223,7 +223,7 @@
 	x_offset = WORLD_ICON_SIZE
 	y_offset = WORLD_ICON_SIZE
 	circuit = /obj/item/circuitboard/station_map
-	icon_override = 'icons/obj/machines/stationmap.dmi'
+	icon_override = 'icons/machinery/stationmap.dmi'
 
 /datum/frame/frame_types/station_map/get_icon_state(var/state)
 	return "station_map_frame_[state]"

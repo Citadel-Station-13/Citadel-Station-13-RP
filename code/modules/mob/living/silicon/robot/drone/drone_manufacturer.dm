@@ -7,7 +7,7 @@
 /obj/machinery/drone_fabricator
 	name = "drone fabricator"
 	desc = "A large automated factory for producing maintenance drones."
-	icon = 'icons/obj/machines/fabricators/industrial_fab.dmi'
+	icon = 'icons/machinery/fabricators/industrial_fab.dmi'
 	icon_state = "industrial"
 	base_icon_state = "industrial"
 
