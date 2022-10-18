@@ -5,7 +5,7 @@
 /datum/category_item/player_setup_item/background/citizenship/content(datum/preferences/prefs, mob/user, data)
 	. = list()
 	var/list/datum/lore/character_background/citizenship/available = SScharacters.available_citizenships(prefs.character_species_id())
-	var/datum/lore/character_background/citizenship/current = SScharacters.character_citizenships[data]
+	var/datum/lore/character_background/citizenship/current = SScharacters.resolve_citizenship(data)
 	. += "<center>"
 	for(var/datum/lore/character_background/citizenship/O in available)
 		. += href_simple(prefs, "pick", "[O.name] ", O.id)

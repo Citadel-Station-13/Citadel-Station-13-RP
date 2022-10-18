@@ -5,7 +5,7 @@
 /datum/category_item/player_setup_item/background/faction/content(datum/preferences/prefs, mob/user, data)
 	. = list()
 	var/list/datum/lore/character_background/faction/available = SScharacters.available_factions(prefs.character_species_id())
-	var/datum/lore/character_background/faction/current = SScharacters.character_factions[data]
+	var/datum/lore/character_background/faction/current = SScharacters.resolve_faction(data)
 	. += "<center>"
 	for(var/datum/lore/character_background/faction/O in available)
 		. += href_simple(prefs, "pick", "[O.name] ", O.id)

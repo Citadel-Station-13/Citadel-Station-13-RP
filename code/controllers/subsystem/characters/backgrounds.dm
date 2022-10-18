@@ -38,14 +38,34 @@
 			character_factions[L.id] = L
 
 /datum/controller/subsystem/characters/proc/available_citizenships(species_id)
+	. = list()
+	for(var/id in character_citizenships)
+		var/datum/lore/character_background/citizenship/L = character_citizenships[id]
+		if(L.check_species_id(species_id))
+			. += L
 
 /datum/controller/subsystem/characters/proc/available_religions(species_id)
+	. = list()
+	for(var/id in character_religions)
+		var/datum/lore/character_background/religion/L = character_religions[id]
+		if(L.check_species_id(species_id))
+			. += L
 
 /datum/controller/subsystem/characters/proc/available_factions(species_id)
+	. = list()
+	for(var/id in character_factions)
+		var/datum/lore/character_background/faction/L = character_factions[id]
+		if(L.check_species_id(species_id))
+			. += L
 
-/datum/controller/subsystem/characters/proc/available_origins(species_id)
-
-#warn impl
+/datum/controller/subsystem/characters/proc/available_origins(species_id, category)
+	. = list()
+	for(var/id in character_origins)
+		var/datum/lore/character_background/origin/L = character_origins[id]
+		if(category && (L.category != category))
+			continue
+		if(L.check_species_id(species_id))
+			. += L
 
 /datum/controller/subsystem/characters/proc/resolve_citizenship(id)
 	RETURN_TYPE(/datum/lore/character_background/citizenship)
@@ -78,5 +98,3 @@
 /datum/controller/subsystem/characters/proc/job_locks_for_faction(id)
 	var/datum/lore/character_background/faction/F = resolve_faction(id)
 	return F.job_whitelist
-
-#warn impl

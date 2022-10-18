@@ -5,7 +5,7 @@
 /datum/category_item/player_setup_item/background/origin/content(datum/preferences/prefs, mob/user, data)
 	. = list()
 	var/list/datum/lore/character_background/origin/available = SScharacters.available_origins(prefs.character_species_id())
-	var/datum/lore/character_background/origin/current = SScharacters.character_origins[data]
+	var/datum/lore/character_background/origin/current = SScharacters.resolve_origin(data)
 	. += "<center>"
 	for(var/datum/lore/character_background/origin/O in available)
 		. += href_simple(prefs, "pick", "[O.name] ", O.id)

@@ -5,7 +5,7 @@
 /datum/category_item/player_setup_item/background/religion/content(datum/preferences/prefs, mob/user, data)
 	. = list()
 	var/list/datum/lore/character_background/religion/available = SScharacters.available_religions(prefs.character_species_id())
-	var/datum/lore/character_background/religion/current = SScharacters.character_religions[data]
+	var/datum/lore/character_background/religion/current = SScharacters.resolve_religion(data)
 	. += "<center>"
 	for(var/datum/lore/character_background/religion/O in available)
 		. += href_simple(prefs, "pick", "[O.name] ", O.id)
