@@ -10832,8 +10832,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/office)
 "uB" = (
-/obj/structure/undies_wardrobe,
 /obj/effect/floor_decal/spline/plain,
+/obj/structure/dogbed{
+	name = "pet bed"
+	},
+/mob/living/simple_mob/animal/passive/fox/renault,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "uC" = (
