@@ -360,6 +360,10 @@
 /obj/structure/plasticflaps/mining,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
+"ik" = (
+/obj/structure/mob_spawner/gutshank,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/east/explored)
 "il" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 1
@@ -396,7 +400,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "jg" = (
-/obj/structure/mob_spawner/scanner/goliath,
+/obj/structure/mob_spawner/goliath,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/unexplored)
 "jr" = (
@@ -615,9 +619,9 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "oC" = (
-/mob/living/simple_mob/animal/space/bats/surt,
+/obj/structure/mob_spawner/gutshank,
 /turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/east/explored)
+/area/lavaland/east/unexplored)
 "oI" = (
 /obj/machinery/door/airlock{
 	density = 0;
@@ -1176,7 +1180,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "zx" = (
-/obj/structure/mob_spawner/scanner/goliath,
+/obj/structure/mob_spawner/goliath,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/explored)
 "Aj" = (
@@ -5055,7 +5059,7 @@ kx
 ix
 ix
 ix
-oC
+ix
 ix
 ix
 ix
@@ -6220,7 +6224,7 @@ ix
 ix
 ix
 ix
-ix
+ik
 kx
 kx
 kx
@@ -10811,7 +10815,7 @@ wP
 wP
 wP
 wP
-cs
+wP
 wP
 wP
 wP
@@ -12410,7 +12414,7 @@ ix
 ix
 ix
 ix
-oC
+ix
 ix
 ix
 ix
@@ -13946,7 +13950,7 @@ Qh
 Qh
 kx
 kx
-ix
+ik
 ix
 ix
 ix
@@ -14126,7 +14130,7 @@ wP
 wP
 wP
 wP
-cs
+wP
 wP
 Qh
 Qh
@@ -14731,7 +14735,7 @@ ix
 ix
 ix
 ix
-oC
+ix
 ix
 ix
 ix
@@ -15489,7 +15493,7 @@ wP
 wP
 wP
 wP
-cs
+wP
 wP
 wP
 wP
@@ -15901,16 +15905,16 @@ MG
 ix
 ix
 wP
-cs
-wP
-Am
-Am
-Am
-Am
-Am
 wP
 wP
+Am
+Am
+Am
+Am
+Am
 wP
+wP
+oC
 Qh
 Qh
 Qh
@@ -16224,7 +16228,7 @@ wP
 wP
 wP
 wP
-cs
+wP
 ww
 ww
 ww
@@ -16251,7 +16255,7 @@ wP
 wP
 wP
 wP
-cs
+wP
 wP
 wP
 wP
@@ -16650,7 +16654,7 @@ wP
 wP
 wP
 wP
-wP
+oC
 Am
 Am
 Am
@@ -17834,7 +17838,7 @@ ww
 kx
 kx
 ix
-oC
+ix
 ix
 ix
 wP
@@ -21844,7 +21848,7 @@ wP
 wP
 wP
 wP
-cs
+wP
 wP
 wP
 wP
@@ -22613,7 +22617,7 @@ Qh
 wP
 wP
 wP
-wP
+oC
 Am
 Am
 wP
@@ -23611,7 +23615,7 @@ wP
 wP
 wP
 wP
-cs
+wP
 wP
 wP
 ww

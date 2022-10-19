@@ -132,6 +132,39 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 //////////////
 // Spawners //
 /////////////
+
+//Non-Scanners
+/obj/structure/mob_spawner/goliath
+	name = "Deep Warrens Rift"
+	desc = "This hole leads deep underground. Although possibly large enough for you to enter, something seems to compel you not to. Occasionally, a deep, choral rumbling can be heard far below."
+	icon_state = "tunnel_hole"
+	spawn_delay = 20 MINUTES
+	simultaneous_spawns = 1
+	mob_faction = "lavaland"
+	total_spawns = 6
+	anchored = 1
+	destructible = 1
+	health = 500
+	spawn_types = list(
+	/mob/living/simple_mob/animal/goliath = 100
+	)
+
+/obj/structure/mob_spawner/gutshank
+	name = "Gutshank Hive"
+	desc = "This telltale pile of debris and hardened sand marks this as the entrance to a Gutshank hive."
+	icon_state = "eggy_tunnel"
+	spawn_delay = 10 MINUTES
+	simultaneous_spawns = 3
+	mob_faction = "lavaland"
+	total_spawns = 12
+	anchored = 1
+	destructible = 1
+	health = 400
+	spawn_types = list(
+	/mob/living/simple_mob/animal/gutshank = 100
+	)
+
+//Scanners
 /obj/structure/mob_spawner/scanner/corgi
 	name = "Corgi Lazy Spawner"
 	desc = "This is a proof of concept, not sure why you would use this one"
@@ -198,23 +231,6 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	icon_state = "alien_egg"
 	spawn_types = list(
 	/mob/living/simple_mob/animal/space/alien/queen = 5
-	)
-
-/obj/structure/mob_spawner/scanner/goliath
-	name = "Deep Warrens Rift"
-	desc = "This hole leads deep underground. Although possibly large enough for you to enter, something seems to compel you not to. Occasionally, a deep, choral rumbling can be heard far below."
-	icon_state = "tunnel_hole"
-	spawn_delay = 15 MINUTES
-	range = 10
-	simultaneous_spawns = 3
-	mob_faction = "lavaland"
-	total_spawns = 6
-	destructible = 0
-	anchored = 1
-	destructible = 1
-	health = 500
-	spawn_types = list(
-	/mob/living/simple_mob/animal/goliath = 100
 	)
 
 ////////////////////////////////////
