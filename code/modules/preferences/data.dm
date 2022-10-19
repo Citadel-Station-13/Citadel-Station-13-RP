@@ -23,6 +23,46 @@
 	return options[key]
 
 /**
+ * checked read of a global options key;
+ * use when accessing from an outside datum to that key
+ */
+/datum/preferences/proc/checked_get_global_data(key)
+	var/datum/category_item/player_setup_item/I = preference_by_key[key]
+	if(!I.is_global)
+		CRASH("tried to get character key")
+	return options[key]
+
+/**
+ * checked write of a global options key;
+ * use when accessing from an outside datum to that key
+ */
+/datum/preferences/proc/checked_set_global_data(key, value)
+	var/datum/category_item/player_setup_item/I = preference_by_key[key]
+	if(!I.is_global)
+		CRASH("tried to set character key")
+	options[key] = I.filter(src, value)
+
+/**
+ * checked read of a character key;
+ * use when accessing from an outside datum to that key
+ */
+/datum/preferences/proc/checked_get_character_data(key)
+	var/datum/category_item/player_setup_item/I = preference_by_key[key]
+	if(!I.is_global)
+		CRASH("tried to get global key")
+	return character[key]
+
+/**
+ * checked write of a character key;
+ * use when accessing from an outside datum to that key
+ */
+/datum/preferences/proc/checked_set_character_data(key, value)
+	var/datum/category_item/player_setup_item/I = preference_by_key[key]
+	if(I.is_global)
+		CRASH("tried to set global key")
+	character[key] = I.filter(src, value)
+
+/**
  * flush character data to disk
  */
 /datum/preferences/proc/write_character_data(savefile/S, slot, list/errors)

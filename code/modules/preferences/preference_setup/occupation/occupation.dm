@@ -4,6 +4,21 @@
 	category_item_type = /datum/category_item/player_setup_item/occupation
 	auto_split = FALSE
 
+/datum/category_item/player_setup_item/occupation/jobs
+	name = "Job Preferences"
+
+/**
+ * display is done by jobs; this datum only handles data filtering
+ */
+/datum/category_item/player_setup_item/occupation/alt_titles
+	name = "Alt Titles"
+
+/**
+ * display is done by jobs; this datum only handles data filtering
+ */
+/datum/category_item/player_setup_item/occupation/overflow_mode
+	name = "Overflow Mode"
+
 /datum/category_item/player_setup_item/occupation
 	name = "Occupation"
 	sort_order = 1

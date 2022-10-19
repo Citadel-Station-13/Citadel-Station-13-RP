@@ -165,6 +165,7 @@
 
 	#warn above 2 content calls need to put in data
 	#warn implement auto_rule
+	#warn if something returns nothing don't fucking include it
 
 /**********************
 * Category Item Setup *
