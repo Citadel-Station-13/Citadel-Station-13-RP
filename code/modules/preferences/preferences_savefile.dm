@@ -75,7 +75,7 @@
 		player_setup.load_character(S)
 		S.cd = "/character[default_slot]"
 
-	#warn handle migrations somehow??
+	#warn handle migrations somehow?? for new system
 	read_character_data()
 	player_setup.load_character(S)
 	clear_character_previews() // Recalculate them on next show

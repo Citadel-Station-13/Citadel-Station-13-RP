@@ -25,54 +25,68 @@
 /**
  * flush character data to disk
  */
-/datum/preferences/proc/write_character_data(savefile/S)
+/datum/preferences/proc/write_character_data(savefile/S, slot, list/errors)
 	var/old_cd = S.cd
 	S.cd = "/"
 	var/list/transformed = list()
-	#warn filtering
-	S["slot_[slot]"] << character
+	for(var/key in character)
+		var/datum/category_item/player_setup_item/I = preference_by_save_key(key)
+		if(I.is_global)
+			continue
+		transformed[key] = I.serialize_data(src, I.filter(src, character[key], errors), errors)
+	S["slot_[slot]"] << transformed
 	S.cd = old_cd
 
 /**
  * flush global data to disk
  */
-/datum/preferences/proc/write_global_data(savefile/S)
+/datum/preferences/proc/write_global_data(savefile/S, list/errors)
 	var/old_cd = S.cd
 	S.cd = "/"
 	var/list/transformed = list()
-	#warn filtering
-	S["global"] << options
+	for(var/key in options)
+		var/datum/category_item/player_setup_item/I = preference_by_save_key(key)
+		if(!I.is_global)
+			continue
+		transformed[key] = I.serialize_data(src, I.filter(src, character[key], errors), errors)
+	S["global"] << transformed
 	S.cd = old_cd
 
 /**
  * load character data from disk
  */
-/datum/preferences/proc/read_character_data(savefile/S, list/errors)
+/datum/preferences/proc/read_character_data(savefile/S, slot, list/errors)
+	character = list()
 	var/old_cd = S.cd
 	S.cd = "/"
-	var/list/transformed = list()
-	#warn filtering
+	var/list/transformed
 	S["slot_[slot]"] >> transformed
-
+	if(!islist(transformed))
+		transformed = list()
+	for(var/key in transformed)
+		var/datum/category_item/player_setup_item/I = preference_by_save_key(key)
+		if(I.is_global)
+			continue
+		character[key] = I.filter(src, I.deserialize_data(src, transformed[key], errors), errors)
 	S.cd = old_cd
 
 /**
  * load global data from disk
  */
 /datum/preferences/proc/read_global_data(savefile/S, list/errors)
+	options = list()
 	var/old_cd = S.cd
 	S.cd = "/"
-	var/list/transformed = list()
-	#warn filtering
+	var/list/transformed
 	S["global"] >> transformed
-
-
+	if(!islist(transformed))
+		transformed = list()
+	for(var/key in transformed)
+		var/datum/category_item/player_setup_item/I = preference_by_save_key(key)
+		if(!I.is_global)
+			continue
+		options[key] = I.filter(src, I.deserialize_data(src, transformed[key], errors), errors)
 	S.cd = old_cd
-
-#warn impl all
-#warn hook up de/serialization somehow
-#warn the actual read-from-desk needs to filter()
-#warn global migrations must run before to transition data properly
 
 /**
  * checked set preference data
