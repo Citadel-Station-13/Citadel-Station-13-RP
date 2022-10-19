@@ -146,7 +146,22 @@ It also makes it so a ghost wont know where all the goodies/mobs are.
 	destructible = 1
 	health = 500
 	spawn_types = list(
-	/mob/living/simple_mob/animal/goliath = 6
+	/mob/living/simple_mob/animal/goliath = 100
+	)
+
+/obj/structure/mob_spawner/gutshank
+	name = "Gutshank Hive"
+	desc = "This telltale pile of debris and hardened sand marks this as the entrance to a Gutshank hive."
+	icon_state = "eggy_tunnel"
+	spawn_delay = 10 MINUTES
+	simultaneous_spawns = 3
+	mob_faction = "lavaland"
+	total_spawns = 12
+	anchored = 1
+	destructible = 1
+	health = 400
+	spawn_types = list(
+	/mob/living/simple_mob/animal/gutshank = 100
 	)
 
 //Scanners
