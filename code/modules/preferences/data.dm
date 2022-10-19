@@ -30,7 +30,7 @@
 	S.cd = "/"
 	var/list/transformed = list()
 	for(var/key in character)
-		var/datum/category_item/player_setup_item/I = preference_by_key(key)
+		var/datum/category_item/player_setup_item/I = preference_by_key[key]
 		if(I.is_global)
 			continue
 		transformed[key] = I.serialize_data(src, I.filter(src, character[key], errors), errors)
@@ -45,7 +45,7 @@
 	S.cd = "/"
 	var/list/transformed = list()
 	for(var/key in options)
-		var/datum/category_item/player_setup_item/I = preference_by_key(key)
+		var/datum/category_item/player_setup_item/I = preference_by_key[key]
 		if(!I.is_global)
 			continue
 		transformed[key] = I.serialize_data(src, I.filter(src, character[key], errors), errors)

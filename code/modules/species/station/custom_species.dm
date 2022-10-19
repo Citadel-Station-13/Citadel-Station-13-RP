@@ -48,7 +48,7 @@
 	)
 
 /datum/species/custom/get_effective_bodytype(mob/living/carbon/human/H, obj/item/I, slot_id)
-	return name_static_species_meta(base_species).get_effective_bodytype(H, I, slot_id)
+	return SScharacters.resolve_species_name(base_species).get_effective_bodytype(H, I, slot_id)
 
 /datum/species/custom/get_bodytype_legacy()
 	return base_species

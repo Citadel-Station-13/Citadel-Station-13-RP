@@ -460,12 +460,6 @@
 	var/selects_bodytype = FALSE // Allows the species to choose from body types intead of being forced to be just one.
 
 /datum/species/New()
-<<<<<<< HEAD
-=======
-	if(isnull(uid))
-		uid = ckey(name)
-
->>>>>>> citrp/master
 	if(hud_type)
 		hud = new hud_type()
 	else
