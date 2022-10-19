@@ -78,7 +78,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/goliath
 
 	var/pre_attack = 0
-	var/tentacle_warning = 1 SECOND
+	var/tentacle_warning = 3 SECONDS
 	var/pre_attack_icon = "goliath2"
 	var/breedable = 0
 	var/pregnant = 0
@@ -260,6 +260,7 @@
 	desc = "Goliaths are biologically immortal, and rare specimens have survived for centuries. This one is clearly ancient, and its tentacles constantly churn the earth around it."
 	maxHealth = 400
 	health = 400
+	tentacle_warning = 1 SECOND
 
 //Calves
 /datum/category_item/catalogue/fauna/goliath/calf

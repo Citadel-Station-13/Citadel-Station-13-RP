@@ -49,10 +49,6 @@
 /obj/machinery/portable_atmospherics/hydroponics/soil,
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
-"Y" = (
-/obj/structure/sink/puddle,
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
 
 (1,1,1) = {"
 a
@@ -98,7 +94,7 @@ a
 a
 m
 v
-Y
+v
 a
 a
 "}
