@@ -1183,7 +1183,7 @@
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "vu" = (
-/mob/living/simple_mob/animal/space/bats/surt,
+/obj/structure/mob_spawner/gutshank,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/explored)
 "vz" = (
@@ -8378,7 +8378,7 @@ DG
 DG
 DG
 MX
-gy
+vu
 MX
 MX
 MX
@@ -12152,7 +12152,7 @@ MX
 MX
 MX
 MX
-gy
+vu
 gy
 gy
 gy
@@ -16532,7 +16532,7 @@ RX
 RX
 MX
 MX
-gy
+Lc
 gy
 gy
 MX
@@ -19075,7 +19075,7 @@ MX
 MX
 MX
 MX
-gy
+vu
 MX
 MX
 MX
@@ -19447,7 +19447,7 @@ RX
 RL
 MX
 MX
-Lc
+gy
 MX
 MX
 gy
@@ -29411,7 +29411,7 @@ MX
 MX
 MX
 gy
-vu
+gy
 gy
 gy
 gy
@@ -29997,7 +29997,7 @@ MX
 gy
 gy
 gy
-gy
+vu
 MX
 MX
 RL
