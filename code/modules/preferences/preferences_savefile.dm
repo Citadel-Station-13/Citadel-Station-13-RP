@@ -64,7 +64,7 @@
 	if(!S)
 		return 0
 	S.cd = "/"
-	if(!slot
+	if(!slot)
 		slot = default_slot
 	if(slot != SAVE_RESET) // SAVE_RESET will reset the slot as though it does not exist, but keep the current slot for saving purposes.
 		slot = sanitize_integer(slot, 1, config_legacy.character_slots, initial(default_slot))
@@ -112,7 +112,7 @@
 	var/savefile/S = new /savefile(path)
 	if(!S)
 		return 0
-	if(!slot
+	if(!slot)
 		slot = default_slot
 	if(slot != SAVE_RESET)
 		slot = sanitize_integer(slot, 1, config_legacy.character_slots, initial(default_slot))
