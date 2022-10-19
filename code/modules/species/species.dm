@@ -453,7 +453,6 @@
 	//var/vore_numbing = 0
 	var/is_vampire = FALSE // If this is set to true, the person can't get nutrition from food.
 	var/is_cyberpsycho = FALSE // If you turn this to true, the person's capacity stat decreases. (aka - Their symptoms worsen)
-	var/capacity = 100 //Tied into the above. This is the 'health' for cyberpsychosis.
 	var/metabolism = 0.0015
 	var/lightweight = FALSE //Oof! Nonhelpful bump stumbles.
 	var/trashcan = FALSE //It's always sunny in the wrestling ring.
@@ -461,6 +460,12 @@
 	var/selects_bodytype = FALSE // Allows the species to choose from body types intead of being forced to be just one.
 
 /datum/species/New()
+<<<<<<< HEAD
+=======
+	if(isnull(uid))
+		uid = ckey(name)
+
+>>>>>>> citrp/master
 	if(hud_type)
 		hud = new hud_type()
 	else
@@ -587,7 +592,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	box.calibrate_size()
 
 	if(H.backbag == 1)
-		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/right_hand, INV_OP_SILENT | INV_OP_FLUFFLESS)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
 	else
 		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/put_in_backpack, INV_OP_FORCE | INV_OP_SILENT)
 

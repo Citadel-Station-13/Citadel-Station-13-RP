@@ -165,13 +165,18 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	if(saved_nif)
 		saved_nif.quick_implant(H)
 
-/datum/species/protean/get_bodytype_legacy(var/mob/living/carbon/human/H)
+/datum/species/protean/get_effective_bodytype(mob/living/carbon/human/H, obj/item/I, slot_id)
 	if(H)
 		return H.impersonate_bodytype || ..()
 	return ..()
 
+/datum/species/protean/get_bodytype_legacy(var/mob/living/carbon/human/H)
+	if(H)
+		return H.impersonate_bodytype_legacy || ..()
+	return ..()
+
 /datum/species/protean/get_worn_legacy_bodytype(mob/living/carbon/human/H)
-	return H?.impersonate_bodytype || ..()
+	return H?.impersonate_bodytype_legacy || ..()
 
 /datum/species/protean/create_organs(mob/living/carbon/human/H)
 	H.synth_color = TRUE
@@ -197,7 +202,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	permit.set_name(H.real_name)
 
 	if(H.backbag == 1) //Somewhat misleading, 1 == no bag (not boolean)
-		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/left_hand)
+		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/hand/left)
 	else
 		H.equip_to_slot_or_del(box, /datum/inventory_slot_meta/abstract/put_in_backpack)
 

@@ -110,7 +110,7 @@
 			to_send += "</blockquote>"
 			to_chat(src, to_send)
 
-			if((SKELETON in H.mutations) && (!H.w_uniform) && (!H.wear_suit))
+			if((MUTATION_SKELETON in H.mutations) && (!H.w_uniform) && (!H.wear_suit))
 				H.play_xylophone()
 		else if (on_fire)
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)

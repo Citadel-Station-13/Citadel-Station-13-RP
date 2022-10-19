@@ -25,8 +25,13 @@
 		return
 
 	//non-verbal languages are garbled if you can't see the speaker. Yes, this includes if they are inside a closet.
+<<<<<<< HEAD
 	if (language && (language.language_flags & NONVERBAL))
 		if (!speaker || (src.sdisabilities & BLIND || src.blinded) || !(speaker in view(src)))
+=======
+	if (language && (language.flags & NONVERBAL))
+		if (!speaker || (src.sdisabilities & SDISABILITY_NERVOUS || src.blinded) || !(speaker in view(src)))
+>>>>>>> citrp/master
 			message = stars(message)
 
 	if(!(language && (language.language_flags & INNATE))) // skip understanding checks for INNATE languages
@@ -154,7 +159,7 @@
 
 	//non-verbal languages are garbled if you can't see the speaker. Yes, this includes if they are inside a closet.
 	if (language && (language.language_flags & NONVERBAL))
-		if (!speaker || (src.sdisabilities & BLIND || src.blinded) || !(speaker in view(src)))
+		if (!speaker || (src.sdisabilities & SDISABILITY_NERVOUS || src.blinded) || !(speaker in view(src)))
 			message = stars(message)
 
 	if(!(language && (language.language_flags & INNATE))) // skip understanding checks for INNATE languages
@@ -244,7 +249,7 @@
 		formatted = "[verb], <span class=\"body\">\"[message]\"</span>[part_c]"
 
 
-	if((sdisabilities & DEAF) || ear_deaf)
+	if((sdisabilities & SDISABILITY_DEAF) || ear_deaf)
 		if(prob(20))
 			to_chat(src, "<span class='warning'>You feel your headset vibrate but can hear nothing from it!</span>")
 	else

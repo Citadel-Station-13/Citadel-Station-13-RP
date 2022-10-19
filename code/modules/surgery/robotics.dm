@@ -280,7 +280,7 @@
 				"<span class='notice'>You repair [target]'s [I.name] with [tool].</span>" )
 				I.revive(TRUE)
 				if(I.organ_tag == O_EYES)
-					target.sdisabilities &= ~BLIND
+					target.sdisabilities &= ~SDISABILITY_NERVOUS
 
 /datum/surgery_step/robotics/fix_organ_robotic/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))

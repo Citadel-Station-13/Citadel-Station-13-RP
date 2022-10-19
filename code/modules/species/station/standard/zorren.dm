@@ -4,6 +4,7 @@
 	name = SPECIES_ZORREN_HIGH
 	name_plural = "Zorren"
 	//primitive_form = "" //We don't have fox-monkey sprites.
+	default_bodytype = BODYTYPE_ZORREN_HIGH
 
 	icobase = 'icons/mob/species/zorren_hi/body_greyscale.dmi'
 	deform  = 'icons/mob/species/zorren_hi/deformed_body.dmi'
@@ -66,6 +67,7 @@
 	name = SPECIES_ZORREN_FLAT
 	name_plural = "Zorren"
 	//primitive_form = "" //We don't have fennec-monkey sprites.
+	default_bodytype = BODYTYPE_ZORREN_FLAT
 
 	icobase = 'icons/mob/species/zorren_fl/body_greyscale.dmi'
 	deform  = 'icons/mob/species/zorren_fl/deformed_body.dmi'

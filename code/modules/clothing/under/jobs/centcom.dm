@@ -71,14 +71,13 @@
 	name = "ERT tactical uniform"
 	desc = "A short-sleeved black uniform, paired with grey digital-camo cargo pants. It looks very tactical."
 	icon_state = "ert_uniform"
-	item_state_slots = list(slot_r_hand_str = "black", slot_l_hand_str = "black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "black", SLOT_ID_LEFT_HAND = "black")
 
 /obj/item/clothing/under/gov
 	desc = "A neat proper uniform of someone on offical business. The collar is <i>immaculately</i> starched."
 	name = "Green formal uniform"
 	icon_state = "greensuit"
-	item_state_slots = list(slot_r_hand_str = "centcom", slot_l_hand_str = "centcom")
-	rolled_sleeves = 0
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "centcom", SLOT_ID_LEFT_HAND = "centcom")
 	starting_accessories = list(/obj/item/clothing/accessory/tie/darkgreen)
 
 /obj/item/clothing/under/gov/skirt

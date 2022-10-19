@@ -4,6 +4,7 @@
 	category = "Unathi"
 	name_plural = SPECIES_UNATHI
 	primitive_form = SPECIES_MONKEY_UNATHI
+	default_bodytype = BODYTYPE_UNATHI
 
 	// icon_template = 'icons/mob/species/template_tall.dmi' //TODO: Tall Unathi :D
 	icobase       = 'icons/mob/species/unathi/body_greyscale.dmi'

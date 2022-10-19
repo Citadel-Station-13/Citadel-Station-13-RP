@@ -3,6 +3,7 @@
 	name = SPECIES_VULPKANIN
 	name_plural = SPECIES_VULPKANIN
 	primitive_form = SPECIES_MONKEY_VULPKANIN
+	default_bodytype = BODYTYPE_VULPKANIN
 
 	icobase      = 'icons/mob/species/vulpkanin/body.dmi'
 	deform       = 'icons/mob/species/vulpkanin/body.dmi' // They don't have a proper one for some reason...

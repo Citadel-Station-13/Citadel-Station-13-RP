@@ -19,12 +19,7 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 
-/obj/item/clothing/suit/straight_jacket/web_bindings/get_worn_icon_file(body_type, slot_id, default_icon, inhands)
-	if(body_type == SPECIES_TESHARI)
-		if(!inhands)
-			return 'icons/mob/clothing/species/teshari/suits.dmi'
-	else
-		return ..()
+// todo: convert to new icon system ; tesh will be broken until then, too bad!
 
 /* //Commenting all this out, as people keep abusing it. Sorry!
 /mob/proc/weaveWeb()

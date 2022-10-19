@@ -104,7 +104,7 @@ var/list/channel_to_radio_key = new
 		message_data[1] = ""
 		return
 
-	if((HULK in mutations) && health >= 25 && length_char(message))
+	if((MUTATION_HULK in mutations) && health >= 25 && length_char(message))
 		message = "[uppertext(message)]!!!"
 		verb = pick("yells","roars","hollers")
 		whispering = 0

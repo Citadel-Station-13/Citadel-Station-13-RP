@@ -1,5 +1,0 @@
-author: "TheLordME"
-delete-after: True
-changes: 
-  - balance: "rebalanced gas cooler and gas heater magic factor"
-  - admin: "the cheat factor of gas coolers and gas heaters can be adjusted by admins"

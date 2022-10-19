@@ -6,8 +6,8 @@
 	desc = "It's a blue ballcap in Orion Confederation Government colors."
 	icon_state = "orionsoft"
 	item_state_slots = list(
-		slot_l_hand_str = "lightbluesoft",
-		slot_r_hand_str = "lightbluesoft",
+		SLOT_ID_LEFT_HAND = "lightbluesoft",
+		SLOT_ID_RIGHT_HAND = "lightbluesoft",
 		)
 
 /obj/item/clothing/head/soft/orion/expedition
@@ -15,8 +15,8 @@
 	desc = "It's a black ballcap bearing a Sif Defense Force crest."
 	icon_state = "expeditionsoft"
 	item_state_slots = list(
-		slot_l_hand_str = "blacksoft",
-		slot_r_hand_str = "blacksoft",
+		SLOT_ID_LEFT_HAND = "blacksoft",
+		SLOT_ID_RIGHT_HAND = "blacksoft",
 		)
 
 /obj/item/clothing/head/soft/orion/fleet
@@ -24,8 +24,8 @@
 	desc = "It's a navy blue ballcap with a CNA Fleet crest."
 	icon_state = "fleetsoft"
 	item_state_slots = list(
-		slot_l_hand_str = "darkbluesoft",
-		slot_r_hand_str = "darkbluesoft",
+		SLOT_ID_LEFT_HAND = "darkbluesoft",
+		SLOT_ID_RIGHT_HAND = "darkbluesoft",
 		)
 
 /obj/item/clothing/head/utility
@@ -33,8 +33,8 @@
 	desc = "An eight-point utility cover."
 	icon_state = "greyutility"
 	item_state_slots = list(
-		slot_l_hand_str = "helmet",
-		slot_r_hand_str = "helmet",
+		SLOT_ID_LEFT_HAND = "helmet",
+		SLOT_ID_RIGHT_HAND = "helmet",
 		)
 	siemens_coefficient = 0.9
 	body_parts_covered = 0
@@ -69,8 +69,8 @@
 	desc = "A service uniform cover."
 	icon_state = "greenwheelcap"
 	item_state_slots = list(
-		slot_l_hand_str = "helmet",
-		slot_r_hand_str = "helmet",
+		SLOT_ID_LEFT_HAND = "helmet",
+		SLOT_ID_RIGHT_HAND = "helmet",
 		)
 	siemens_coefficient = 0.9
 	body_parts_covered = 0
@@ -107,8 +107,8 @@
 	desc = "A dress uniform cover."
 	icon_state = "greenwheelcap"
 	item_state_slots = list(
-		slot_l_hand_str = "helmet",
-		slot_r_hand_str = "helmet",
+		SLOT_ID_LEFT_HAND = "helmet",
+		SLOT_ID_RIGHT_HAND = "helmet",
 		)
 	siemens_coefficient = 0.9
 	body_parts_covered = 0

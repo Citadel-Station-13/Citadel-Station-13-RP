@@ -33,8 +33,8 @@
 	desc = "Its a gun. It's pretty terrible, though."
 	icon = 'icons/obj/gun/ballistic.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_guns.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_guns.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
 		)
 	icon_state = "detective"
 	item_state = "gun"
@@ -164,11 +164,11 @@
 		var/mob/living/M = loc
 		if(istype(M))
 			if(M.can_wield_item(src) && src.is_held_twohanded(M))
-				item_state_slots[slot_l_hand_str] = wielded_item_state
-				item_state_slots[slot_r_hand_str] = wielded_item_state
+				item_state_slots[SLOT_ID_LEFT_HAND] = wielded_item_state
+				item_state_slots[SLOT_ID_RIGHT_HAND] = wielded_item_state
 			else
-				item_state_slots[slot_l_hand_str] = initial(item_state)
-				item_state_slots[slot_r_hand_str] = initial(item_state)
+				item_state_slots[SLOT_ID_LEFT_HAND] = initial(item_state)
+				item_state_slots[SLOT_ID_RIGHT_HAND] = initial(item_state)
 	..()
 
 
@@ -204,10 +204,10 @@
 						sleep(1)
 						qdel(src)
 					return 0
-	if(HULK in M.mutations)
+	if(MUTATION_HULK in M.mutations)
 		to_chat(M, "<span class='danger'>Your fingers are much too large for the trigger guard!</span>")
 		return 0
-	if((CLUMSY in M.mutations) && prob(40)) //Clumsy handling
+	if((MUTATION_CLUMSY in M.mutations) && prob(40)) //Clumsy handling
 		var/obj/P = consume_next_projectile()
 		if(P)
 			if(process_projectile(P, user, user, pick("l_foot", "r_foot")))

@@ -3,10 +3,9 @@
 	desc = "A card used to provide ID and determine access across the station."
 	icon_state = "generic-nt"
 	item_state = "card-id"
-
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/id.dmi'
-		)
+	item_state_slots = list(
+		SLOT_ID_WORN_ID = "id"
+	)
 
 	/// Access levels held by this card.
 	var/list/access = list()
@@ -122,13 +121,6 @@
 	to_chat(usr, "The blood type on the card is [blood_type].")
 	to_chat(usr, "The DNA hash on the card is [dna_hash].")
 	to_chat(usr, "The fingerprint hash on the card is [fingerprint_hash].")
-	return
-
-/obj/item/card/id/get_worn_icon_state(var/slot_id)
-	if(slot_id == SLOT_ID_WORN_ID)
-		return "id" //Legacy, just how it is. There's only one sprite.
-
-	return ..()
 
 /obj/item/card/id/Initialize(mapload)
 	. = ..()
@@ -489,7 +481,6 @@
 /obj/item/card/id/medical/sar
 	assignment = "Field Medic"
 	rank = "Field Medic"
-	icon_state = "cyan"
 	primary_color = rgb(47,189,189)
 	secondary_color = rgb(127,223,223)
 	job_access_type = /datum/job/station/field_medic
@@ -497,7 +488,6 @@
 /obj/item/card/id/explorer
 	name = "identification card"
 	desc = "A card issued to station exploration staff."
-	icon_state = "cyan"
 	primary_color = rgb(47,189,189)
 	secondary_color = rgb(127,223,223)
 
@@ -514,7 +504,6 @@
 /obj/item/card/id/explorer/head
 	name = "identification card"
 	desc = "A card which represents discovery of the unknown."
-	icon_state = "cyanGold"
 	primary_color = rgb(47,189,189)
 	secondary_color = rgb(127,223,223)
 

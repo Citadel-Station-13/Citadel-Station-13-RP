@@ -153,6 +153,11 @@
 		return
 	replace_beaker(user)
 
+/obj/machinery/reagentgrinder/Exited(atom/movable/AM, atom/newLoc)
+	. = ..()
+	if(AM in holdingitems)
+		holdingitems -= AM
+
 /obj/machinery/reagentgrinder/attack_hand(mob/user as mob)
 	interact(user)
 

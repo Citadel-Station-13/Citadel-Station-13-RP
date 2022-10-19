@@ -76,9 +76,6 @@
 	//! ## Chemistry
 	var/datum/reagents/reagents = null
 
-	//? replaced by OPENCONTAINER flags and atom/proc/is_open_container()
-	//var/chem_is_open_container = 0
-
 	//! ## Detective Work
 	/// Used for the duplicate data points kept in the scanners.
 	var/list/original_atom
@@ -600,7 +597,7 @@
 		add_fibers(M)
 
 		//He has no prints!
-		if (mFingerprints in M.mutations)
+		if (MUTATION_NOPRINTS in M.mutations)
 			if(fingerprintslast != M.key)
 				fingerprintshidden += "[time_stamp()]: [key_name(M)] (No fingerprints mutation)"
 				fingerprintslast = M.key
@@ -1099,7 +1096,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_x_offset(dir, atom/aligning)
-	return base_pixel_x + (icon_dimension_x - PIXELS) / 2
+	return base_pixel_x + (icon_dimension_x - WORLD_ICON_SIZE) / 2
 
 /**
  * get the pixel_y needed to adjust an atom on our turf **to the position of our visual center**
@@ -1108,7 +1105,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_y_offset(dir, atom/aligning)
-	return base_pixel_y + (icon_dimension_y - PIXELS) / 2
+	return base_pixel_y + (icon_dimension_y - WORLD_ICON_SIZE) / 2
 
 /// Setter for the `base_pixel_x` variable to append behavior related to its changing.
 /atom/proc/set_base_pixel_x(new_value)

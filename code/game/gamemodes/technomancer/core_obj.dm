@@ -12,9 +12,6 @@
 		TECH_MATERIAL = 8, TECH_ENGINEERING = 8, TECH_POWER = 8, TECH_BLUESPACE = 10,
 		TECH_COMBAT = 7, TECH_MAGNET = 9, TECH_DATA = 5
 		)
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/back.dmi'
-		)
 	var/energy = 10000
 	var/max_energy = 10000
 	var/regen_rate = 50				// 200 seconds to full
