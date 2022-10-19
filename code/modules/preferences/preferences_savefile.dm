@@ -33,14 +33,16 @@
 	return 1
 
 /datum/preferences/proc/save_preferences()
-	if(!path)				return 0
+	if(!path)
+		return 0
 	if(world.time < saveprefcooldown)
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to save your preferences a little too fast. Wait half a second, then try again.</span>")
 		return 0
 	saveprefcooldown = world.time + PREF_SAVELOAD_COOLDOWN
 	var/savefile/S = new /savefile(path)
-	if(!S)					return 0
+	if(!S)
+		return 0
 	S.cd = "/"
 
 	S["version"] << savefile_version
@@ -49,17 +51,21 @@
 	return 1
 
 /datum/preferences/proc/load_character(slot)
-	if(!path)				return 0
+	if(!path)
+		return 0
 	if(world.time < loadcharcooldown)
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to load your character a little too fast. Wait half a second, then try again.</span>")
 		return 0
 	loadcharcooldown = world.time + PREF_SAVELOAD_COOLDOWN
-	if(!fexists(path))		return 0
+	if(!fexists(path))
+		return 0
 	var/savefile/S = new /savefile(path)
-	if(!S)					return 0
+	if(!S)
+		return 0
 	S.cd = "/"
-	if(!slot)	slot = default_slot
+	if(!slot
+		slot = default_slot
 	if(slot != SAVE_RESET) // SAVE_RESET will reset the slot as though it does not exist, but keep the current slot for saving purposes.
 		slot = sanitize_integer(slot, 1, config_legacy.character_slots, initial(default_slot))
 		if(slot != default_slot)
@@ -82,14 +88,16 @@
 	return 1
 
 /datum/preferences/proc/save_character()
-	if(!path)				return 0
+	if(!path)
+		return 0
 	if(world.time < savecharcooldown)
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to save your character a little too fast. Wait half a second, then try again.</span>")
 		return 0
 	savecharcooldown = world.time + PREF_SAVELOAD_COOLDOWN
 	var/savefile/S = new /savefile(path)
-	if(!S)					return 0
+	if(!S)
+		return 0
 	S.cd = "/character[default_slot]"
 
 	write_character_data()
@@ -97,11 +105,15 @@
 	return 1
 
 /datum/preferences/proc/overwrite_character(slot)
-	if(!path)				return 0
-	if(!fexists(path))		return 0
+	if(!path)
+		return 0
+	if(!fexists(path))
+		return 0
 	var/savefile/S = new /savefile(path)
-	if(!S)					return 0
-	if(!slot)	slot = default_slot
+	if(!S)
+		return 0
+	if(!slot
+		slot = default_slot
 	if(slot != SAVE_RESET)
 		slot = sanitize_integer(slot, 1, config_legacy.character_slots, initial(default_slot))
 		if(slot != default_slot)

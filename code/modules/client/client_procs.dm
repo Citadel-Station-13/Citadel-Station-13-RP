@@ -228,6 +228,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		prefs = new /datum/preferences(src)
 		GLOB.preferences_datums[ckey] = prefs
 
+	prefs.client = src
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
 	//fps = prefs.clientfps //(prefs.clientfps < 0) ? RECOMMENDED_FPS : prefs.clientfps
@@ -404,6 +405,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			log_and_message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([account_age] days).")
 
 	initialized = TRUE
+	prefs.auto_flush_errors()
 
 	//////////////
 	//DISCONNECT//
@@ -421,6 +423,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.ahelp_tickets.ClientLogout(src)
 	persistent = null
 	database = null
+	prefs.client = null
 	prefs = null
 	SSserver_maint.UpdateHubStatus()
 	if(holder)

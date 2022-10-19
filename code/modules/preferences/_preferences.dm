@@ -7,6 +7,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// did we load yet?
 	var/initialized = FALSE
 
+	//! Error Handling
+	/// queued error messages to display
+	var/list/io_error_queue
+
 //! ## Doohickeys For Savefiles
 	var/path
 	/// Holder so it doesn't default to slot 1, rather the last one used.
