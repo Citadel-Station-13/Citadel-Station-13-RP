@@ -25,13 +25,8 @@
 		return
 
 	//non-verbal languages are garbled if you can't see the speaker. Yes, this includes if they are inside a closet.
-<<<<<<< HEAD
-	if (language && (language.language_flags & NONVERBAL))
-		if (!speaker || (src.sdisabilities & BLIND || src.blinded) || !(speaker in view(src)))
-=======
 	if (language && (language.language_flags & NONVERBAL))
 		if (!speaker || (src.sdisabilities & SDISABILITY_NERVOUS || src.blinded) || !(speaker in view(src)))
->>>>>>> citrp/master
 			message = stars(message)
 
 	if(!(language && (language.language_flags & INNATE))) // skip understanding checks for INNATE languages
