@@ -29,7 +29,7 @@
 	if (language && (language.language_flags & NONVERBAL))
 		if (!speaker || (src.sdisabilities & BLIND || src.blinded) || !(speaker in view(src)))
 =======
-	if (language && (language.flags & NONVERBAL))
+	if (language && (language.language_flags & NONVERBAL))
 		if (!speaker || (src.sdisabilities & SDISABILITY_NERVOUS || src.blinded) || !(speaker in view(src)))
 >>>>>>> citrp/master
 			message = stars(message)
