@@ -6115,7 +6115,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/shrimpcooked/Initialize(mapload)
 	. = ..()
-	bitesize = 2
+	bitesize = 5
 	reagents.add_reagent("protein", 5)
 
 /obj/item/reagent_containers/food/snacks/shrimptempura
@@ -6130,7 +6130,7 @@ END CITADEL CHANGE */
 	reagents.add_reagent("protein", 5)
 	reagents.add_reagent("batter", 2)
 	reagents.add_reagent("cooking_oil", 1)
-	bitesize = 2
+	bitesize = 8
 
 /obj/item/reagent_containers/food/snacks/shrimpcocktail
 	name = "shrimp cocktail"
