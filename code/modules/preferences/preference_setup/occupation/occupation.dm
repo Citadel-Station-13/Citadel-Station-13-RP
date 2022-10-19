@@ -15,14 +15,14 @@
  * display is done by jobs; this datum only handles data filtering
  */
 /datum/category_item/player_setup_item/occupation/alt_titles
-	name = "Alt Titles"
+	name = "(Virtual) Alt Titles"
 	save_key = CHARACTER_DATA_ALT_TITLES
 
 /**
  * display is done by jobs; this datum only handles data filtering
  */
 /datum/category_item/player_setup_item/occupation/overflow_mode
-	name = "Overflow Mode"
+	name = "(Virtual) Overflow Mode"
 	save_key = CHARACTER_DATA_OVERFLOW_MODE
 
 /datum/category_item/player_setup_item/occupation
@@ -395,3 +395,11 @@
 				if(3)
 					return job_engsec_low
 	return 0
+
+/datum/preferences/proc/get_job_priority(datum/job/J)
+	#warn impl
+
+/datum/preferences/proc/get_job_title(datum/job/J)
+	RETURN_TYPE(/datum/alt_title)
+	#warn impl
+

@@ -46,5 +46,14 @@
 		S["job_talon_med"]		>> job_talon_med
 		S["job_talon_high"]		>> job_talon_high
 		S["player_alt_titles"]	>> player_alt_titles
+		var/list/assembled = list()
+		for(var/datum/job/J as anything in SSjob.occupations)
+			switch(J.department)
+				if(CIVILIAN)
+
+				if(MEDSCI)
+
+				if(ENGSEC)
+
 
 
