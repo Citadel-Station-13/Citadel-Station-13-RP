@@ -5,6 +5,9 @@
 	auto_split = FALSE
 	auto_rule = TRUE
 
+/datum/category_item/player_setup_item/background
+	is_global = FALSE
+
 /datum/preferences/proc/sanitize_background_lore()
 	#warn impl
 	#warn sanitize for species

@@ -7,3 +7,8 @@
 #define CHARACTER_DATA_FACTION "lore_faction"
 #define CHARACTER_DATA_SPECIES "species"
 #define CHARACTER_DATA_LANGUAGES "languages"
+
+//? Occupations
+#define CHARACTER_DATA_JOBS "jobs"
+#define CHARACTER_DATA_ALT_TITLES "alt_titles"
+#define CHARACTER_DATA_OVERFLOW_MODE "overflow_mode"
