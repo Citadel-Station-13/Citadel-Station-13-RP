@@ -15608,7 +15608,6 @@
 "DM" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/folder/blue_captain,
-/obj/item/folder/blue_captain,
 /obj/item/stamp/captain,
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/captain)
