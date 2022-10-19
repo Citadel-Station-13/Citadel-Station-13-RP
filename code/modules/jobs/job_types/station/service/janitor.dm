@@ -32,6 +32,7 @@
 
 /datum/alt_title/janitor/maid
 	title = "Maid"
+	title_outfit = /datum/outfit/job/station/janitor/maid
 
 /datum/outfit/job/station/janitor
 	name = OUTFIT_JOB_NAME("Janitor")
@@ -39,3 +40,8 @@
 	id_type = /obj/item/card/id/civilian/janitor
 	pda_type = /obj/item/pda/janitor
 	l_ear = /obj/item/radio/headset/headset_service
+
+/datum/outfit/job/station/janitor/maid
+	name = OUTFIT_JOB_NAME("Maid")
+	uniform = /obj/item/clothing/under/dress/maid
+	head = /obj/item/clothing/head/headband/maid
