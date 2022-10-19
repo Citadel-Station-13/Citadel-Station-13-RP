@@ -19,8 +19,6 @@
 	/// languages that someone gets by picking this; typepaths are allowed
 	var/list/innate_languages
 
-	#warn consider allowing typepaths as well as ids for species/language
-
 /datum/lore/character_background/New()
 	// resolve typepaths
 	for(var/thing in allow_species)

@@ -30,7 +30,7 @@
 	S.cd = "/"
 	var/list/transformed = list()
 	for(var/key in character)
-		var/datum/category_item/player_setup_item/I = preference_by_save_key(key)
+		var/datum/category_item/player_setup_item/I = preference_by_key(key)
 		if(I.is_global)
 			continue
 		transformed[key] = I.serialize_data(src, I.filter(src, character[key], errors), errors)
@@ -45,7 +45,7 @@
 	S.cd = "/"
 	var/list/transformed = list()
 	for(var/key in options)
-		var/datum/category_item/player_setup_item/I = preference_by_save_key(key)
+		var/datum/category_item/player_setup_item/I = preference_by_key(key)
 		if(!I.is_global)
 			continue
 		transformed[key] = I.serialize_data(src, I.filter(src, character[key], errors), errors)
@@ -139,13 +139,15 @@
 			continue
 		I.sanitize_data(src, errors)
 
-#warn impl
-
 /**
  * json export
  */
-/datum/preferences/proc/json_export_character()
-	return json_encode(character)
+/datum/preferences/proc/json_export_character(list/errors)
+	var/list/transformed = list()
+	for(var/key in character)
+		var/datum/category_item/player_setup_item/I = preference_by_key[key]
+		transformed[key] = I.serialize_data(src, I.filter(src, character[key], errors), errors)
+	return json_encode(transformed)
 
 /**
  * json import
@@ -155,5 +157,10 @@
 		json = safe_json_decode(json)
 	if(!islist(json))
 		return FALSE
-	#warn impl
+	for(var/key in json)
+		var/datum/category_item/player_setup_item/I = preference_by_key[key]
+		if(!I)
+			errors += SPAN_WARNING("Skipping key [key] - no datum found")
+			continue
+		character[key] = I.filter(src, I.deserialize_data(src, json[key], errors), errors)
 	return TRUE
