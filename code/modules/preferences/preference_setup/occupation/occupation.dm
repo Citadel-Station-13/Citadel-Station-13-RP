@@ -7,12 +7,17 @@
 /datum/category_item/player_setup_item/occupation
 	is_global = FALSE
 
+/**
+ * save format: list(job id = priority)
+ */
 /datum/category_item/player_setup_item/occupation/jobs
 	name = "Job Preferences"
 	save_key = CHARACTER_DATA_JOBS
 
 /**
  * display is done by jobs; this datum only handles data filtering
+ *
+ * save format: list(job id = title NAME)
  */
 /datum/category_item/player_setup_item/occupation/alt_titles
 	name = "(Virtual) Alt Titles"
@@ -20,6 +25,8 @@
 
 /**
  * display is done by jobs; this datum only handles data filtering
+ *
+ * save format: overflow mode as enum define
  */
 /datum/category_item/player_setup_item/occupation/overflow_mode
 	name = "(Virtual) Overflow Mode"

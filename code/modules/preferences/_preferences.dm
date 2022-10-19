@@ -181,27 +181,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"BG" = "character_preview_map:1,1 to 3,8"
 	)
 
-//! ## Job Preferences
-//? ## Uses bitflags.
-	var/job_civilian_high = 0
-	var/job_civilian_med = 0
-	var/job_civilian_low = 0
-
-	var/job_medsci_high = 0
-	var/job_medsci_med = 0
-	var/job_medsci_low = 0
-
-	var/job_engsec_high = 0
-	var/job_engsec_med = 0
-	var/job_engsec_low = 0
-
-	var/job_talon_high = 0
-	var/job_talon_med = 0
-	var/job_talon_low = 0
-
-	/// Keeps track of preferrence for not getting any wanted jobs.
-	var/alternate_option = 1
-
 //! ## Skills Preferences - Depricated.
 	var/used_skillpoints = 0
 	var/skill_specialization = null
@@ -215,8 +194,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/rlimb_data = list()
 	/// Set to 1 when altering limb states. fix for prosthetic > normal changes not working on preview.
 	var/regen_limbs = 0
-	/// The default name of a job like "Medical Doctor".
-	var/list/player_alt_titles = new()
 
 	var/list/body_markings = list() //? "name" = "#rgbcolor"
 

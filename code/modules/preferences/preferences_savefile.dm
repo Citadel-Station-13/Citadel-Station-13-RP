@@ -19,6 +19,7 @@
 	S.cd = "/"
 
 	S["version"] >> savefile_version
+
 	//Conversion
 	if(!savefile_version || !isnum(savefile_version) || savefile_version < SAVEFILE_VERSION_MIN || savefile_version > SAVEFILE_VERSION_MAX)
 		if(!savefile_update())  //handles updates
