@@ -5,7 +5,8 @@
 GLOBAL_LIST_INIT(generic_fishing_rare_list, list(
 		/mob/living/simple_mob/animal/passive/fish/solarfish = 0, // was 1, sif meat
 		/mob/living/simple_mob/animal/passive/fish/icebass = 0, // was 5, sif meat
-		/mob/living/simple_mob/animal/passive/fish/koi = 3
+		/mob/living/simple_mob/animal/passive/fish/koi = 3,
+		/obj/item/reagent_containers/food/snacks/lobster = 2
 		))
 
 GLOBAL_LIST_INIT(generic_fishing_uncommon_list, list(
@@ -19,6 +20,7 @@ GLOBAL_LIST_INIT(generic_fishing_common_list, list(
 		/mob/living/simple_mob/animal/passive/fish/bass = 10,
 		/mob/living/simple_mob/animal/passive/fish/trout = 8,
 		/mob/living/simple_mob/animal/passive/fish/perch = 6,
+		/obj/item/reagent_containers/food/snacks/shrimp = 5,
 		/mob/living/simple_mob/animal/passive/fish/murkin = 0, // was 8, sif meat
 		/mob/living/simple_mob/animal/passive/fish/rockfish = 0, //was 5, contains sif meat which cannot be used to cook
 		/mob/living/simple_mob/animal/passive/crab = 1

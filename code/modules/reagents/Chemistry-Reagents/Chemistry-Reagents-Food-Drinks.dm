@@ -2059,6 +2059,17 @@ End Citadel Change */
 	glass_desc = "A fruity punch!"
 	glass_special = list(DRINK_FIZZ)
 
+/datum/reagent/drink/sugarrush
+	name = "Sweet Rush"
+	id = "sugarrush"
+	description = "A favorite drink amongst poor bartenders living in Neo Detroit."
+	taste_description = "sweet bubblegum fizz."
+	color = "#d3785d"
+
+	glass_name = "Sweet Rush"
+	glass_desc = "This looks like it might rot your teeth out."
+	glass_special = list(DRINK_FIZZ)
+
 /datum/reagent/drink/berrycordial
 	name = "Berry Cordial"
 	id = "berrycordial"
@@ -4541,17 +4552,6 @@ End Citadel Change */
 		M.make_dizzy(24) // Intentionally higher than normal to compensate for it's previous effects.
 	if(dose * strength >= strength * 2.5) // Slurring takes longer. Again, intentional.
 		M.slurring = max(M.slurring, 30)
-
-/datum/reagent/ethanol/sugarrush
-	name = "Sweet Rush"
-	id = "sugarrush"
-	description = "A favorite drink amongst poor bartenders living in Neo Detroit."
-	taste_description = "sweet bubblegum vodka."
-	strength = 30
-	color = "#d3785d"
-
-	glass_name = "Sweet Rush"
-	glass_desc = "This looks like it might rot your teeth out."
 
 /datum/reagent/ethanol/lotus
 	name = "Lotus"
