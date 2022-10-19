@@ -1,4 +1,5 @@
 /datum/category_item/player_setup_item/background/faction
+	name = "Faction"
 	save_key = CHARACTER_DATA_FACTION
 	sort_order = 5
 

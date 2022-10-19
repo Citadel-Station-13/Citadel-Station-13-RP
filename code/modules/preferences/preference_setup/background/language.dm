@@ -1,4 +1,5 @@
 /datum/category_item/player_setup_item/background/language
+	name = "Language"
 	sort_order = 4
 	save_key = CHARACTER_DATA_LANGUAGES
 

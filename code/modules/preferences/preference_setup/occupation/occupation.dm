@@ -54,11 +54,9 @@
 		if(alt_title && !(alt_title in job.alt_titles))
 			pref.player_alt_titles -= job.title
 
-#warn take faction into account
+#warn take faction into account by blocking spawn/view but not wiping
 
 /datum/category_item/player_setup_item/occupation/content(mob/user, limit = 25, list/splitJobs = list())
-	if(!job_master)
-		return
 
 	. = list()
 	. += "<tt><center>"
@@ -403,3 +401,6 @@
 	RETURN_TYPE(/datum/alt_title)
 	#warn impl
 
+/datum/preferences/proc/effective_job_priorities()
+	RETURN_TYPE(/list)
+	#warn impl - factions

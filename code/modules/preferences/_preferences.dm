@@ -355,6 +355,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(!user || !user.client)
 		return
 
+	if(!initialized)
+		to_chat(user, SPAN_WARNING("Preferences not initialized; please wait!"))
+		return
+
 	if(!get_mob_by_key(client_ckey))
 		to_chat(user, "<span class='danger'>No mob exists for the given client!</span>")
 		close_load_dialog(user)

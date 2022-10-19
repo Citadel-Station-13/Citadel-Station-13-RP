@@ -1,4 +1,5 @@
 /datum/category_item/player_setup_item/background/species
+	name = "(Virtual) Species"
 	sort_order = 1
 	save_key = CHARACTER_DATA_SPECIES
 	// todo: proper view-only section support
@@ -12,6 +13,8 @@
 	. += "<div>"
 	. += "[S.desc]"
 	. += "</div>"
+
+#warn we DO use this to filter
 
 #warn main species selector has to use save key
 

@@ -18,6 +18,7 @@
  */
 /datum/preferences/proc/perform_character_migrations(savefile/S, current_version, list/errors, list/character)
 	if(savefile_version < 1)
+		// MIGRATE JOBS
 		var/alternative_option
 		var/job_civilian_high
 		var/job_civilian_med
@@ -54,6 +55,10 @@
 				if(MEDSCI)
 
 				if(ENGSEC)
+		// BACKGROUNDS: NOT MIGRATED
+		// MIGRATE SPECIES
 
+		#warn impl all
+		// MIGRATE LANGUAGES
 
 
