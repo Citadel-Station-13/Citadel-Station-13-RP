@@ -1615,7 +1615,7 @@ I said no!
 	result = /obj/item/reagent_containers/food/snacks/shrimpcocktail
 
 /datum/recipe/shrimpfriedrice
-	fruit = list("corn" = 1, "carrot" = 1)
+	fruit = list("corn" = 1, "carrot" = 1, "peas" = 1)
 	reagents = list("water" = 5, "sodiumchloride" = 5)
 	items = list(
 		/obj/item/reagent_containers/food/snacks/shrimp,
