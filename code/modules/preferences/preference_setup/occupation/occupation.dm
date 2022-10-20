@@ -32,14 +32,18 @@
 	name = "(Virtual) Overflow Mode"
 	save_key = CHARACTER_DATA_OVERFLOW_MODE
 
-/datum/category_item/player_setup_item/occupation
-	name = "Occupation"
-	sort_order = 1
+/datum/category_item/player_setup_item/occupation/overflow_mode/default_value(randomizing)
+	return JOB_ALTERNATIVE_BE_ASSISTANT
 
-#warn rework to not use flags this is fucking asinine and against god and nature
+/datum/category_item/player_setup_item/occupation/overflow_mode/filter(datum/preferences/prefs, data, list/errors)
+	var/static/list/static_list = list(
+		JOB_ALTERNATIVE_BE_ASSISTANT,
+		JOB_ALTERNATIVE_GET_RANDOM,
+		JOB_ALTERNATIVE_RETURN_LOBBY
+	)
+	return sanitize_inlist(data, static_list, JOB_ALTERNATIVE_BE_ASSISTANT)
 
-
-
+#warn parse
 /datum/category_item/player_setup_item/occupation/sanitize_character()
 	pref.alternate_option	= sanitize_integer(pref.alternate_option, 0, 2, initial(pref.alternate_option))
 	pref.job_civilian_high	= sanitize_integer(pref.job_civilian_high, 0, 65535, initial(pref.job_civilian_high))

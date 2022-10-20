@@ -48,8 +48,8 @@
 		if(!(key in client_preference_keys))
 			pref.preferences_disabled -= key
 
-	pref.lastchangelog	= sanitize_text(pref.lastchangelog, initial(pref.lastchangelog))
-	pref.lastnews		= sanitize_text(pref.lastnews, initial(pref.lastnews))
+	pref.lastchangelog	= sanitize_istext(pref.lastchangelog, initial(pref.lastchangelog))
+	pref.lastnews		= sanitize_istext(pref.lastnews, initial(pref.lastnews))
 	pref.default_slot	= sanitize_integer(pref.default_slot, 1, config_legacy.character_slots, initial(pref.default_slot))
 
 /datum/category_item/player_setup_item/player_global/settings/content(datum/preferences/prefs, mob/user, data)
