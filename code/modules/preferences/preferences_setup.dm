@@ -199,23 +199,7 @@
 	if(!equip_preview_mob)
 		return
 
-	var/datum/job/previewJob
-	// Determine what job is marked as 'High' priority, and dress them up as such.
-	if(job_civilian_low & ASSISTANT)
-		previewJob = SSjob.get_job(USELESS_JOB)
-	else
-		for(var/datum/job/job in SSjob.occupations)
-			var/job_flag
-			switch(job.department_flag)
-				if(CIVILIAN)
-					job_flag = job_civilian_high
-				if(MEDSCI)
-					job_flag = job_medsci_high
-				if(ENGSEC)
-					job_flag = job_engsec_high
-			if(job.flag == job_flag)
-				previewJob = job
-				break
+	var/datum/job/previewJob = SSjob.job_by_id(preview_job())
 
 	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/job/station/ai || previewJob.type == /datum/job/station/cyborg)))
 		var/list/equipped_slots = list()

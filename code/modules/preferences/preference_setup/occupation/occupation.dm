@@ -306,7 +306,7 @@
 	return ..()
 
 /datum/preferences/proc/get_job_priority(datum/job/J)
-	var/list/jobs = get_character_data[CHARACTER_DATA_JOBS]
+	var/list/jobs = get_character_data(CHARACTER_DATA_JOBS)
 	return jobs[J.id]
 
 /datum/preferences/proc/get_job_alt_title_name(datum/job/J)
@@ -314,9 +314,19 @@
 	var/list/titles = get_character_data(CHARACTER_DATA_ALT_TITLES)
 	return titles[J.id] || J.title
 
+/datum/preferences/proc/preview_job_id()
+	var/list/jobs = get_character_data(CHARACTER_DATA_JOBS)
+	if(jobs[JOB_ID_ASSISTANT])
+		return JOB_ID_ASSISTANT
+	for(var/id in jobs)
+		if(jobs[id] == JOB_PRIORITY_HIGH)
+			return id
+
 /datum/preferences/proc/effective_job_priorities()
 	RETURN_TYPE(/list)
 	#warn impl - factions
+
+#warn: FOR THIS WHOLE FILE, ASSISTANT SHOULD BE TREATED AS YES/NO.
 
 /**
  * resets job prefs
