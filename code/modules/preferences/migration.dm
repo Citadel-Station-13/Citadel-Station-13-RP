@@ -33,7 +33,7 @@
 		var/job_engsec_med
 		var/job_engsec_low
 		var/list/player_alt_titles
-		S["alternate_option"]	>> alternate_option
+		S["alternate_option"]	>> alternative_option
 		S["job_civilian_high"]	>> job_civilian_high
 		S["job_civilian_med"]	>> job_civilian_med
 		S["job_civilian_low"]	>> job_civilian_low
@@ -52,7 +52,7 @@
 		if(!islist(player_alt_titles))
 			player_alt_titles = list()
 		for(var/datum/job/J as anything in SSjob.occupations)
-			switch(J.department)
+			switch(J.department_flag)
 				if(CIVILIAN)
 					if(job_civilian_high & J.flag)
 						assembled[J.id] = JOB_PRIORITY_HIGH
@@ -77,7 +77,7 @@
 				if(player_alt_titles[J.title])
 					assembled_titles[J.id] = player_alt_titles[J.title]
 		var/overflow
-		switch(alternate_option)
+		switch(alternative_option)
 			if(0)
 				overflow = JOB_ALTERNATIVE_GET_RANDOM
 			if(1)
@@ -86,7 +86,7 @@
 				overflow = JOB_ALTERNATIVE_RETURN_LOBBY
 		character[CHARACTER_DATA_JOBS] = assembled
 		character[CHARACTER_DATA_OVERFLOW_MODE] = overflow
-		character[CHARACTER_DATA_ALT_TITLES] = assembleD_titles
+		character[CHARACTER_DATA_ALT_TITLES] = assembled_titles
 		// BACKGROUNDS: NOT MIGRATED
 		// MIGRATE SPECIES
 

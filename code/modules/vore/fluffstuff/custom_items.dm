@@ -1176,11 +1176,7 @@
 	if(configured == 1)
 		return ..()
 
-	var/title
-	if(user.client.prefs.player_alt_titles[user.job])
-		title = user.client.prefs.player_alt_titles[user.job]
-	else
-		title = user.job
+	var/title = user.client.prefs.get_job_alt_title_name(SSjob.name_occupations[user.job]) || user.job
 	assignment = title
 	user.set_id_info(src)
 	if(user.mind && user.mind.initial_account)
