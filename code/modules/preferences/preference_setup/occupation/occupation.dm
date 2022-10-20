@@ -14,6 +14,40 @@
 	name = "Job Preferences"
 	save_key = CHARACTER_DATA_JOBS
 
+/datum/category_item/player_setup_item/occupation/jobs/filter(datum/preferences/prefs, data, list/errors)
+	var/list/jobs = sanitize_islist(data)
+	var/highest
+	for(var/id in jobs)
+		var/datum/job/J = SSjob.job_by_id(id)
+		if(!J)
+			jobs -= id
+			continue
+		if(jobs[id] == JOB_PRIORITY_HIGH)
+			if(highest)
+				jobs[id] = JOB_PRIORITY_MEDIUM
+			else
+				highest = jobs[id]
+	return jobs
+
+/datum/category_item/player_setup_item/occupation/jobs/content(mob/user, limit, list/splitJobs)
+	. = list()
+	#warn impl above/below
+
+/datum/category_item/player_setup_item/occupation/jobs/act(datum/preferences/prefs, mob/user, action, list/params)
+	switch(action)
+		if("job")
+
+		if("title")
+
+		if("help")
+
+		if("overflow")
+
+	return ..()
+
+/datum/category_item/player_setup_item/occupation/jobs/default_value(randomizing)
+	return list()
+
 /**
  * display is done by jobs; this datum only handles data filtering
  *
@@ -22,6 +56,22 @@
 /datum/category_item/player_setup_item/occupation/alt_titles
 	name = "(Virtual) Alt Titles"
 	save_key = CHARACTER_DATA_ALT_TITLES
+
+/datum/category_item/player_setup_item/occupation/alt_titles/filter(datum/preferences/prefs, data, list/errors)
+	var/list/jobs = sanitize_islist(data)
+	for(var/id in jobs)
+		var/datum/job/J in SSjob.job_by_id(id)
+		if(!J)
+			jobs -= id
+			continue
+		var/title = jobs[id]
+		if(!J.alt_titles[title])
+			jobs -= id
+			continue
+	return jobs
+
+/datum/category_item/player_setup_item/occupation/alt_titles/default_value(randomizing)
+	return list()
 
 /**
  * display is done by jobs; this datum only handles data filtering
@@ -42,28 +92,6 @@
 		JOB_ALTERNATIVE_RETURN_LOBBY
 	)
 	return sanitize_inlist(data, static_list, JOB_ALTERNATIVE_BE_ASSISTANT)
-
-#warn parse
-/datum/category_item/player_setup_item/occupation/sanitize_character()
-	pref.alternate_option	= sanitize_integer(pref.alternate_option, 0, 2, initial(pref.alternate_option))
-	pref.job_civilian_high	= sanitize_integer(pref.job_civilian_high, 0, 65535, initial(pref.job_civilian_high))
-	pref.job_civilian_med	= sanitize_integer(pref.job_civilian_med, 0, 65535, initial(pref.job_civilian_med))
-	pref.job_civilian_low	= sanitize_integer(pref.job_civilian_low, 0, 65535, initial(pref.job_civilian_low))
-	pref.job_medsci_high	= sanitize_integer(pref.job_medsci_high, 0, 65535, initial(pref.job_medsci_high))
-	pref.job_medsci_med		= sanitize_integer(pref.job_medsci_med, 0, 65535, initial(pref.job_medsci_med))
-	pref.job_medsci_low		= sanitize_integer(pref.job_medsci_low, 0, 65535, initial(pref.job_medsci_low))
-	pref.job_engsec_high	= sanitize_integer(pref.job_engsec_high, 0, 65535, initial(pref.job_engsec_high))
-	pref.job_engsec_med 	= sanitize_integer(pref.job_engsec_med, 0, 65535, initial(pref.job_engsec_med))
-	pref.job_engsec_low 	= sanitize_integer(pref.job_engsec_low, 0, 65535, initial(pref.job_engsec_low))
-	pref.job_talon_high		= sanitize_integer(pref.job_talon_high, 0, 65535, initial(pref.job_talon_high))
-	pref.job_talon_med 		= sanitize_integer(pref.job_talon_med, 0, 65535, initial(pref.job_talon_med))
-	pref.job_talon_low 		= sanitize_integer(pref.job_talon_low, 0, 65535, initial(pref.job_talon_low))
-	if(!(pref.player_alt_titles)) pref.player_alt_titles = new()
-
-	for(var/datum/job/job in job_master.occupations)
-		var/alt_title = pref.player_alt_titles[job.title]
-		if(alt_title && !(alt_title in job.alt_titles))
-			pref.player_alt_titles -= job.title
 
 #warn take faction into account by blocking spawn/view but not wiping
 
@@ -277,141 +305,33 @@
 
 	return ..()
 
-/datum/category_item/player_setup_item/occupation/proc/SetPlayerAltTitle(datum/job/job, new_title)
-	// remove existing entry
-	pref.player_alt_titles -= job.title
-	// add one if it's not default
-	if(job.title != new_title)
-		pref.player_alt_titles[job.title] = new_title
-
-/datum/category_item/player_setup_item/occupation/proc/SetJob(mob/user, role, level)
-	var/datum/job/job = job_master.GetJob(role)
-	if(!job)
-		return 0
-
-	if(job.type == /datum/job/station/assistant)
-		if(pref.job_civilian_low & job.flag)
-			pref.job_civilian_low &= ~job.flag
-		else
-			pref.job_civilian_low |= job.flag
-		return 1
-
-	SetJobDepartment(job, level)
-	return 1
-
-/datum/category_item/player_setup_item/occupation/proc/reset_jobhigh()
-	pref.job_civilian_med |= pref.job_civilian_high
-	pref.job_medsci_med |= pref.job_medsci_high
-	pref.job_engsec_med |= pref.job_engsec_high
-	pref.job_talon_med |= pref.job_talon_high
-	pref.job_civilian_high = 0
-	pref.job_medsci_high = 0
-	pref.job_engsec_high = 0
-	pref.job_talon_high = 0
-
-// Level is equal to the desired new level of the job. So for a value of 4, we want to disable the job.
-/datum/category_item/player_setup_item/occupation/proc/SetJobDepartment(var/datum/job/job, var/level)
-	if(!job || !level)
-		return 0
-
-	switch(job.department_flag)
-		if(CIVILIAN)
-			pref.job_civilian_low &= ~job.flag
-			pref.job_civilian_med &= ~job.flag
-			pref.job_civilian_high &= ~job.flag
-			switch(level)
-				if(1)
-					reset_jobhigh()
-					pref.job_civilian_high = job.flag
-				if(2)
-					pref.job_civilian_med |= job.flag
-				if(3)
-					pref.job_civilian_low |= job.flag
-		if(MEDSCI)
-			pref.job_medsci_low &= ~job.flag
-			pref.job_medsci_med &= ~job.flag
-			pref.job_medsci_high &= ~job.flag
-			switch(level)
-				if(1)
-					reset_jobhigh()
-					pref.job_medsci_high = job.flag
-				if(2)
-					pref.job_medsci_med |= job.flag
-				if(3)
-					pref.job_medsci_low |= job.flag
-		if(ENGSEC)
-			pref.job_engsec_low &= ~job.flag
-			pref.job_engsec_med &= ~job.flag
-			pref.job_engsec_high &= ~job.flag
-			switch(level)
-				if(1)
-					reset_jobhigh()
-					pref.job_engsec_high = job.flag
-				if(2)
-					pref.job_engsec_med |= job.flag
-				if(3)
-					pref.job_engsec_low |= job.flag
-
-	return 1
-
-/datum/category_item/player_setup_item/occupation/proc/ResetJobs()
-	pref.job_civilian_high = 0
-	pref.job_civilian_med = 0
-	pref.job_civilian_low = 0
-
-	pref.job_medsci_high = 0
-	pref.job_medsci_med = 0
-	pref.job_medsci_low = 0
-
-	pref.job_engsec_high = 0
-	pref.job_engsec_med = 0
-	pref.job_engsec_low = 0
-
-	pref.job_talon_high = 0
-	pref.job_talon_med = 0
-	pref.job_talon_low = 0
-
-	pref.player_alt_titles.Cut()
-
-/datum/preferences/proc/GetPlayerAltTitle(datum/job/job)
-	return (job.title in player_alt_titles) ? player_alt_titles[job.title] : job.title
-
-/datum/preferences/proc/GetJobDepartment(var/datum/job/job, var/level)
-	if(!job || !level)	return 0
-	switch(job.department_flag)
-		if(CIVILIAN)
-			switch(level)
-				if(1)
-					return job_civilian_high
-				if(2)
-					return job_civilian_med
-				if(3)
-					return job_civilian_low
-		if(MEDSCI)
-			switch(level)
-				if(1)
-					return job_medsci_high
-				if(2)
-					return job_medsci_med
-				if(3)
-					return job_medsci_low
-		if(ENGSEC)
-			switch(level)
-				if(1)
-					return job_engsec_high
-				if(2)
-					return job_engsec_med
-				if(3)
-					return job_engsec_low
-	return 0
-
 /datum/preferences/proc/get_job_priority(datum/job/J)
-	#warn impl
+	var/list/jobs = get_character_data[CHARACTER_DATA_JOBS]
+	return jobs[J.id]
 
-/datum/preferences/proc/get_job_title(datum/job/J)
+/datum/preferences/proc/get_job_alt_title_name(datum/job/J)
 	RETURN_TYPE(/datum/alt_title)
-	#warn impl
+	var/list/titles = get_character_data(CHARACTER_DATA_ALT_TITLES)
+	return titles[J.id] || J.title
 
 /datum/preferences/proc/effective_job_priorities()
 	RETURN_TYPE(/list)
 	#warn impl - factions
+
+/**
+ * resets job prefs
+ */
+/datum/preferences/proc/reset_jobs()
+	set_character_data(CHARACTER_DATA_JOBS, list())
+	set_character_data(CHARACTER_DATA_ALT_TITLES, list())
+	set_character_data(CHARACTER_DATA_OVERFLOW_MODE, JOB_ALTERNATIVE_BE_ASSISTANT)
+
+/**
+ * resets any jobs set to high to medium
+ */
+/datum/preferences/proc/demote_high_priority_jobs()
+	var/list/jobs = get_character_data(CHARACTER_DATA_JOBS)
+	for(var/id in jobs)
+		if(jobs[id] == JOB_PRIORITY_HIGH)
+			jobs[id] = JOB_PRIORITY_MEDIUM
+	set_character_data(CHARACTER_DATA_JOBS, jobs)

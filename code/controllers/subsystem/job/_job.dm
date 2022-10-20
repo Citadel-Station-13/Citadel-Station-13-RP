@@ -3,9 +3,11 @@ SUBSYSTEM_DEF(job)
 	init_order = INIT_ORDER_JOBS
 	subsystem_flags = SS_NO_FIRE
 
-	var/list/occupations = list()		//List of all jobs
-	var/list/datum/job/name_occupations = list()	//Dict of all jobs, keys are titles
-	var/list/type_occupations = list()	//Dict of all jobs, keys are types
+	var/list/occupations 		//List of all jobs
+	var/list/datum/job/name_occupations	//Dict of all jobs, keys are titles
+	var/list/type_occupations	//Dict of all jobs, keys are types
+	/// jobs by id
+	var/list/job_lookup
 
 	var/list/department_datums = list()
 	var/debug_messages = FALSE
@@ -20,9 +22,13 @@ SUBSYSTEM_DEF(job)
 
 /datum/controller/subsystem/job/Recover()
 	ReconstructSpawnpoints()
+	return ..()
 
 /datum/controller/subsystem/job/proc/setup_occupations()
 	occupations = list()
+	job_lookup = list()
+	name_occupations = list()
+	type_occupations = list()
 	var/list/all_jobs = subtypesof(/datum/job)
 	if(!all_jobs.len)
 		to_chat(world, SPAN_WARNING( "Error setting up jobs, no job datums found"))
@@ -36,6 +42,7 @@ SUBSYSTEM_DEF(job)
 		occupations += job
 		name_occupations[job.title] = job
 		type_occupations[J] = job
+		job_lookup[job.id] = job
 		if(LAZYLEN(job.departments))
 			add_to_departments(job)
 
@@ -88,6 +95,9 @@ SUBSYSTEM_DEF(job)
 	if(!occupations.len)
 		setup_occupations()
 	return type_occupations[jobtype]
+
+/datum/controller/subsystem/job/proc/job_by_id(id)
+	return job_lookup[id]
 
 // Determines if a job title is inside of a specific department.
 // Useful to replace the old `if(job_title in command_positions)` code.
