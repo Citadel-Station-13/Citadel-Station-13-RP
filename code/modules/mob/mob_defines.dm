@@ -201,7 +201,6 @@
 	var/stunned = 0
 	var/weakened = 0
 	var/losebreath = 0 //?Carbon
-	var/_intent = null //?Living
 	var/shakecamera = 0
 	var/a_intent = INTENT_HELP //?Living
 	var/m_int = null //?Living
