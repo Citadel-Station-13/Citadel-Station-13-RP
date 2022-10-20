@@ -35,7 +35,7 @@
 	item_slowdown_mod = 1.5 // They're not as fit as them, though, slowed down more by heavy gear.
 
 	total_health = 75   // Fragile
-	brute_mod    = 1 // Originally 1.25, lowered to 1 in an attempt to make bone breaking less likely. Change raises damage needed for bones to break from 18 to 22.5
+	brute_mod    = 1 // Originally 1.25, lowered to 1 because lower HP and increased damage is a bit heavy.
 	burn_mod     = 1.25 // Furry
 
 	blood_volume  = 500 // Slightly less blood than human baseline.
