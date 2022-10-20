@@ -97,14 +97,17 @@
 * Category Category Setup *
 **************************/
 /datum/category_group/player_setup_category
-	/// primary data key for intrinsic data (NOT OF OUR ITEMS.)
-	// todo: unit test for this to exist
-	var/save_key
+	var/datum/preferences/prefs
 	var/sort_order = 0
 	/// automatically split into 2 horizontally
 	var/auto_split = TRUE
 	/// automatic <hr>
 	var/auto_rule = FALSE
+
+/datum/category_group/player_setup_category/New()
+	. = ..()
+	var/datum/category_collection/player_setup_collection/C = collection
+	prefs = C.preferences
 
 /datum/category_group/player_setup_category/compare_to(datum/D)
 	if(istype(D, /datum/category_group/player_setup_category))
@@ -151,21 +154,33 @@
 		var/current = 0
 		var/halfway = items.len / 2
 		for(var/datum/category_item/player_setup_item/PI in items)
-			var/list/c = PI.content(PI.pref, null, user)
+			var/data
+			if(PI.save_key)
+				data = PI.is_global? prefs.get_global_data(PI.save_key) : prefs.get_character_data(PI.save_key)
+			var/list/c = PI.content(PI.pref, data, user)
+			if(!length(c))
+				continue
+			if(current && auto_rule)
+				. += "<br>"
 			if(halfway && current++ >= halfway)
 				halfway = 0
 				. += "</td><td></td><td style='width:50%'>"
 			. += "[islist(c)? c.Join("") : c]<br>"
 		. += "</td></tr></table>"
 	else
+		var/current = 0
 		for(var/datum/category_item/player_setup_item/PI in items)
-			var/list/content = PI.content(PI.pref, null, user)
+			var/data
+			if(PI.save_key)
+				data = PI.is_global? prefs.get_global_data(PI.save_key) : prefs.get_character_data(PI.save_key)
+			var/list/content = PI.content(PI.pref, data, user)
+			if(!length(content))
+				continue
+			if(current && auto_rule)
+				. += "<hr>"
+			current++
 			. += islist(content)? content.Join("") : content
 			. += "<br>"
-
-	#warn above 2 content calls need to put in data
-	#warn implement auto_rule
-	#warn if something returns nothing don't fucking include it
 
 /**********************
 * Category Item Setup *

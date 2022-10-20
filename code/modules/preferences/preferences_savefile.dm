@@ -84,7 +84,7 @@
 	// prep savefile
 	S.cd = "/"
 
-
+	// BEGIN SLOT HANDLING
 	if(!slot)
 		slot = default_slot
 	if(slot != SAVE_RESET) // SAVE_RESET will reset the slot as though it does not exist, but keep the current slot for saving purposes.
@@ -94,15 +94,12 @@
 			S["default_slot"] << slot
 	else
 		S["default_slot"] << default_slot
-
 	if(slot != SAVE_RESET)
 		S.cd = "/character[slot]"
-		player_setup.load_character(S)
 	else
-		player_setup.load_character(S)
 		S.cd = "/character[default_slot]"
+	// END SLOT HANDLING
 
-	#warn above slot stuff
 	// load character data
 	read_character_data()
 	// perform migrations
