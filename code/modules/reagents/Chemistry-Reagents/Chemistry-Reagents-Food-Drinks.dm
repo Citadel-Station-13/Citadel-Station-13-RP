@@ -1197,16 +1197,16 @@ End Citadel Change */
 /datum/reagent/drink/tea/icetea/milktea/mochabubbletea
 	name = "Mocha Bubble Tea"
 	id = "mochabubbletea"
-	description = "Super sweet mix of milk, tea, coffee, and chocolate, topped off with a generaous helping of whipped cream."
+	description = "Super sweet mix of milk, tea, coffee, and chocolate, topped off with a generous helping of whipped cream."
 	taste_description = "barista's ire and sugarmilk overload"
 	color = "#5c2c0c"
 
 	glass_name = "Mocha Bubble Tea"
-	glass_desc = "Super sweet mix of milk, tea, coffee, and chocolate, topped off with a generaous helping of whipped cream. That seems like a lot of sugar. You're going to put that in you?"
+	glass_desc = "Super sweet mix of milk, tea, coffee, and chocolate, topped off with a generous helping of whipped cream. That seems like a lot of sugar. You're going to put that in you?"
 
 	cup_icon_state = "cup_tea"
 	cup_name = "Cup of Mocha Bubble Tea"
-	cup_desc = "Super sweet mix of milk, tea, coffee, and chocolate, topped off with a generaous helping of whipped cream. That seems like a lot of sugar. You're going to put that in you?"
+	cup_desc = "Super sweet mix of milk, tea, coffee, and chocolate, topped off with a generous helping of whipped cream. That seems like a lot of sugar. You're going to put that in you?"
 
 /datum/reagent/drink/coconutwater
 	name = "Coconut Water"
@@ -2760,55 +2760,6 @@ End Citadel Change */
 	glass_name = "Cuba Libre"
 	glass_desc = "A classic mix of rum and cola."
 
-/datum/reagent/ethanol/demonsblood
-	name = "Demons Blood"
-	id = "demonsblood"
-	description = "This thing makes the hair on the back of your neck stand up."
-	taste_description = "sweet tasting iron"
-	taste_mult = 1.5
-	color = "#820000"
-	strength = 15
-	blood_content = 0.2
-
-	glass_name = "Demons' Blood"
-	glass_desc = "Just looking at this thing makes the hair on the back of your neck stand up."
-
-/datum/reagent/ethanol/devilskiss
-	name = "Devils Kiss"
-	id = "devilskiss"
-	description = "Creepy time!"
-	taste_description = "bitter iron"
-	color = "#A68310"
-	strength = 15
-	blood_content = 0.3
-
-	glass_name = "Devil's Kiss"
-	glass_desc = "Creepy time!"
-
-/datum/reagent/ethanol/narsour //wanted to keep these near the other blood cocktails - Doom
-	name = "Nar'Sour"
-	id = "narsour"
-	description = "When the tang of blood and citrus hits, your tongue just might finally be able to pronounce some of the scrawls seen in the tunnels..."
-	taste_description = "bitter iron and citrus"
-	color = "#7D1717"
-	strength = 50
-	blood_content = 0.3
-
-	glass_name = "Nar'Sour"
-	glass_desc = "When the tang of blood and citrus hits, your tongue just might finally be able to pronounce some of the scrawls seen in the tunnels..."
-
-/datum/reagent/ethanol/narsian
-	name = "Nars'Ian"
-	id = "narsian"
-	description = "NanoTrasen's 2518 Pet of The Year has been swept up in the Geometer's brilliant crimson tide! Yap!"
-	taste_description = "bloody orange creamsicle with a bite (and a bark!)"
-	color = "#7D1717"
-	strength = 50
-	blood_content = 0.3
-
-	glass_name = "Nar'Sian"
-	glass_desc = "NanoTrasen's 2518 Pet of The Year has been swept up in the Geometer's brilliant crimson tide! Yap!"
-
 /datum/reagent/ethanol/driestmartini
 	name = "Driest Martini"
 	id = "driestmartini"
@@ -4217,6 +4168,116 @@ End Citadel Change */
 		M.dizziness = max(0, M.dizziness - 15)
 	if(M.confused)
 		M.Confuse(-5)
+
+//Blood-based Cocktails
+
+/datum/reagent/ethanol/demonsblood
+	name = "Demons Blood"
+	id = "demonsblood"
+	description = "This thing makes the hair on the back of your neck stand up."
+	taste_description = "sweet tasting iron"
+	taste_mult = 1.5
+	color = "#820000"
+	strength = 15
+	blood_content = 1
+
+	glass_name = "Demons' Blood"
+	glass_desc = "Just looking at this thing makes the hair on the back of your neck stand up."
+
+/datum/reagent/ethanol/devilskiss
+	name = "Devils Kiss"
+	id = "devilskiss"
+	description = "Creepy time!"
+	taste_description = "bitter iron"
+	color = "#A68310"
+	strength = 15
+	blood_content = 1
+
+	glass_name = "Devil's Kiss"
+	glass_desc = "Creepy time!"
+
+/datum/reagent/ethanol/narsour
+	name = "Nar'Sour"
+	id = "narsour"
+	description = "When the tang of blood and citrus hits, your tongue just might finally be able to pronounce some of the scrawls seen in the tunnels..."
+	taste_description = "bitter iron and citrus"
+	color = "#7D1717"
+	strength = 50
+	blood_content = 1
+
+	glass_name = "Nar'Sour"
+	glass_desc = "When the tang of blood and citrus hits, your tongue just might finally be able to pronounce some of the scrawls seen in the tunnels..."
+
+/datum/reagent/ethanol/narsian
+	name = "Nars'Ian"
+	id = "narsian"
+	description = "NanoTrasen's 2518 Pet of The Year has been swept up in the Geometer's brilliant crimson tide! Yap!"
+	taste_description = "bloody orange creamsicle with a bite (and a bark!)"
+	color = "#7D1717"
+	strength = 50
+	blood_content = 1
+
+	glass_name = "Nar'Sian"
+	glass_desc = "NanoTrasen's 2518 Pet of The Year has been swept up in the Geometer's brilliant crimson tide! Yap!"
+/datum/reagent/ethanol/nightsdelight
+	name = "Night's Delight"
+	id = "nightsdelight"
+	description = "A nighttime vigilante and a bloodsucking parasite could bond over a drink like this."
+	taste_description = "iron, a dash of whiskey, and a hint of molasses"
+	color = "#990033"
+	strength = 20
+	blood_content = 2
+
+	glass_name = "Night's Delight"
+	glass_desc = "A nighttime vigilante and a bloodsucking parasite could bond over a drink like this."
+
+/datum/reagent/ethanol/bludsfizz
+	name = "Blud's Fizz"
+	id = "bludsfizz"
+	description = "A delectable cocktail for a classy vampire."
+	taste_description = "metallic, citrusy fizz"
+	color = "#CC0000"
+	strength = 20
+	blood_content = 1
+
+	glass_name = "Blud's Fizz"
+	glass_desc = "A delectable cocktail for a classy vampire. Comes with a snazzy sugar rim."
+/datum/reagent/ethanol/wronghat
+	name = "Wrong Hat"
+	id = "wronghat"
+	description = "The chaplain might've put on the wrong hat this morning..."
+	taste_description = "some really sinful grapes"
+	color = "#660000"
+	strength = 20
+	blood_content = 1
+
+	glass_name = "Wrong Hat"
+	glass_desc = "The chaplain might've put on the wrong hat this morning..."
+
+/datum/reagent/ethanol/braindrain
+	name = "Brain Drain"
+	id = "braindrain"
+	description = "It's like someone took a straw to your brain and just went wild."
+	taste_description = "grey matter"
+	color = "#575e49"
+	strength = 20
+	blood_content = 1
+
+	glass_name = "Brain Drain"
+	glass_desc = "It's like someone took a straw to your brain and just went wild."
+
+//Holy Water Cocktails
+
+/datum/reagent/ethanol/holygrail
+	name = "Holy Grail"
+	id = "holygrail"
+	description = "The secret reason a bishop's hat is so tall."
+	taste_description = "some really pious grapes"
+	color = "#330033"
+	strength = 20
+
+	glass_name = "Holy Grail"
+	glass_desc = "The secret reason a bishop's hat is so tall."
 
 ///////////////////////////////////////////////
 //// End of list for drinks for bartenders ////
