@@ -6158,6 +6158,19 @@ END CITADEL CHANGE */
 	. = ..()
 	bitesize = 2
 
+/obj/item/reagent_containers/food/snacks/bowl_peas
+	name = "Big Bowl of Peas"
+	desc = "It's just a lot of peas in a bowl, seasoned with butter. Taste the peaness."
+	icon_state = "bowl_peas"
+	trash = /obj/item/trash/bowl
+	filling_color = "#168116"
+	nutriment_amt = 5
+	nutriment_desc = list("butter" = 2, "peas" = 3)
+
+/obj/item/reagent_containers/food/snacks/bowl_peas/Initialize(mapload)
+	. = ..()
+	bitesize = 3
+
 /obj/item/reagent_containers/food/snacks/monkeycube/sobakacube
 	name = "sobaka cube"
 	monkey_type = SPECIES_MONKEY_AKULA
