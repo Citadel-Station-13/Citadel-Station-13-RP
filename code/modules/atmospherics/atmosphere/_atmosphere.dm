@@ -1,3 +1,9 @@
+/**
+ * atmospheres:
+ *
+ * atmospheres provide a way to make pregenerated random gases for things like planets
+ * and to generally act as a preprocessing layer.
+ */
 /datum/atmosphere
 	/// Don't initialize abstract datums
 	var/abstract_type = /datum/atmosphere

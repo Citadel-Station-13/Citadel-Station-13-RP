@@ -68,8 +68,9 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 		_register_gas(G)
 
 /datum/gas_data/proc/build_hardcoded()
-
-#warn impl
+	for(var/path in subtypesof(/datum/gas))
+		var/datum/gas/G = new path
+		register_gas(G)
 
 /datum/gas_data/proc/register_gas(datum/gas/G)
 	ASSERT(G.id)
