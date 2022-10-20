@@ -3965,6 +3965,7 @@
 #include "code\modules\vehicles\_quad.dm"
 #include "code\modules\vehicles\_rock.dm"
 #include "code\modules\vehicles\_rover.dm"
+#include "code\modules\vehicles\_three_wheel_carts.dm"
 #include "code\modules\vehicles\_vehicle.dm"
 #include "code\modules\vehicles\actions.dm"
 #include "code\modules\vehicles\boat.dm"
