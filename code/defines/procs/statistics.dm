@@ -35,8 +35,8 @@
 	var/sqlspecial = sanitizeSQL(H.mind.special_role)
 	var/sqljob = sanitizeSQL(H.mind.assigned_role)
 
-	var/laname
-	var/lakey
+	var/laname = ""
+	var/lakey = ""
 	if(H.lastattacker)
 		laname = sanitizeSQL(H.lastattacker:real_name)
 		lakey = sanitizeSQL(H.lastattacker:key)

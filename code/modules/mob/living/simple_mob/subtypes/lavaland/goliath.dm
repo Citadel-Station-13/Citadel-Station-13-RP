@@ -1,3 +1,38 @@
+/datum/category_item/catalogue/fauna/goliath/goliaths
+	name = "Goliaths"
+	desc = "The Goliath is native to KT-943, known commonly as Surt. Powerful and long-lived, early \
+	NanoTrasen mining operations struggled to contend with these hardy beasts. Due to overhunting and \
+	a presumed ecological disaster resulting from off-world exposure to contaminants, Goliaths were \
+	classified as extinct. Recent seismic activity has since opened up fissures in the surface of \
+	KT-943 which have provided fresh insights into the Goliath life cycle. Archaeological records \
+	suggest the Goliath's form has not changed for millenia, implying that it is a 'perfect' lifeform\
+	for its environment, akin to sharks and alligators on Old Earth."
+	value = CATALOGUER_REWARD_TRIVIAL
+	unlocked_by_any = list(/datum/category_item/catalogue/fauna/goliath)
+
+/datum/category_item/catalogue/fauna/all_goliaths
+	name = "Collection - Goliaths"
+	desc = "You have scanned Goliaths at different parts of their life cycle, \
+	and therefore you have been granted a large sum of points, through this \
+	entry."
+	value = CATALOGUER_REWARD_HARD
+	unlocked_by_all = list(
+		/datum/category_item/catalogue/fauna/goliath,
+		/datum/category_item/catalogue/fauna/goliath/calf,
+		/datum/category_item/catalogue/fauna/goliath/ancient,
+		/datum/category_item/catalogue/fauna/goliath/goliaths
+		)
+
+/datum/category_item/catalogue/fauna/goliath
+	name = "Goliath"
+	desc = "The common Goliath is easily recognizable. As KT-943's only known apex predator, it has left a \
+	lasting impression on NanoTrasen miners and engineers. Goliaths are bulky quadrupeds with thick, leathery \
+	hides which protect them from KT-943's volcanic atmosphere. At some point they evolved ambulatory tendrils \
+	which are used primarly for hunting and mating. These tendrils are able to regenerate if severed, although \
+	this process takes some time. Due to the way they employ their tendrils as weapons, it is difficult to \
+	retain live specimens in captivity."
+	value = CATALOGUER_REWARD_MEDIUM
+
 /mob/living/simple_mob/animal/goliath
 	name = "goliath"
 	desc = "A massive beast that uses long tentacles to ensnare its prey, threatening them is not advised under any conditions."
@@ -43,7 +78,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/goliath
 
 	var/pre_attack = 0
-	var/tentacle_warning = 0.5 SECONDS
+	var/tentacle_warning = 3 SECONDS
 	var/pre_attack_icon = "goliath2"
 	var/breedable = 0
 	var/pregnant = 0
@@ -79,8 +114,19 @@
 		return
 	if(get_dist(src, target) <= 7)//Screen range check, so you can't get tentacle'd offscreen
 		visible_message("<span class='warning'>[src] digs its tentacles under [target]</span>")
+		update_icon()
+		sleep(tentacle_warning)
+
 		new /obj/effect/temporary_effect/goliath_tentacle/core(tturf, src)
 		pre_attack = 0
+		update_icon()
+
+/mob/living/simple_mob/animal/goliath/update_icon()
+	. = ..()
+	if(!pre_attack)
+		icon_state = initial(icon_state)
+	else if(pre_attack)
+		icon_state = pre_attack_icon
 
 /mob/living/simple_mob/animal/goliath/Initialize(mapload)
 	. = ..()
@@ -201,13 +247,31 @@
 	deltimer(timerid)
 
 //Ancients
+/datum/category_item/catalogue/fauna/goliath/ancient
+	name = "Ancient Goliath"
+	desc = "Goliaths are immortal, and the dating of several notable specimens confirms that some Goliaths \
+	have been around for centuries. These truly ancient beasts possess a sharpened instinct. As Goliaths \
+	age, their mineral intake passes into their hide, increasing its strength without sacrificing flexibility. \
+	Due to this phenomena, Ancient Goliaths are considerably more resilient than their younger kin."
+	value = CATALOGUER_REWARD_MEDIUM
+
 /mob/living/simple_mob/animal/goliath/ancient
 	name = "ancient goliath"
 	desc = "Goliaths are biologically immortal, and rare specimens have survived for centuries. This one is clearly ancient, and its tentacles constantly churn the earth around it."
 	maxHealth = 400
 	health = 400
+	tentacle_warning = 1 SECOND
 
 //Calves
+/datum/category_item/catalogue/fauna/goliath/calf
+	name = "Goliath Calf"
+	desc = "Until recently, the nature by which Goliaths reproduced was unknown. Observation of Ashlander \
+	farmers, however, has confirmed that Goliaths reproduce sexually, and give birth to calves. These young \
+	beasts come out of the womb fully capable of movement and some limited level of self defense. Although \
+	they possess an innate control over their tendrils, calves lack the muscle development to utilize all of them, \
+	or to use them as effectively as mature specimens can. This does not make them less of a threat."
+	value = CATALOGUER_REWARD_MEDIUM
+
 /mob/living/simple_mob/animal/goliath/calf
 	name = "goliath calf"
 	desc = "Goliaths may be naturally immortal, but they are still vulnerable. Calves are a rare sight on the surface, although they are becoming more common as Ashlander farms appear more frequently."

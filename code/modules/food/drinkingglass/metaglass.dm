@@ -395,10 +395,6 @@ Drinks Data
 	glass_icon_state = "morningafter"
 	glass_center_of_mass = list("x"=16, "y"=7)
 
-/datum/reagent/ethanol/sugarrush
-	glass_icon_state = "sugarrushglass"
-	glass_center_of_mass = list("x"=16, "y"=8)
-
 /datum/reagent/ethanol/lotus
 	glass_icon_state = "lotusglass"
 	glass_center_of_mass = list("x"=16, "y"=8)
@@ -920,6 +916,10 @@ Drinks Data
 
 /datum/reagent/drink/virginsexonthebeach
 	glass_icon_state = "virginsexonthebeachglass"
+
+/datum/reagent/drink/sugarrush
+	glass_icon_state = "sugarrushglass"
+	glass_center_of_mass = list("x"=16, "y"=8)
 
 /datum/reagent/ethanol/phobos
 	glass_icon_state = "phobos"
