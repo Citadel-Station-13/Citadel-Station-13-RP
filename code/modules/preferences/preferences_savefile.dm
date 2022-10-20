@@ -4,67 +4,87 @@
 	savefile_version = SAVEFILE_VERSION_MAX
 
 /datum/preferences/proc/load_preferences()
+	// todo: storage handler datums...
 	if(!path)
-		return 0
+		return FALSE
+	// check DOS guard
 	if(world.time < loadprefcooldown) //This is done before checking if the file exists to ensure that the server can't hang on read attempts
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to load your preferences a little too fast. Wait half a second, then try again.</span>")
-		return 0
+		return FALSE
 	loadprefcooldown = world.time + PREF_SAVELOAD_COOLDOWN
+	// get savefile
 	if(!fexists(path))
-		return 0
+		return FALSE
 	var/savefile/S = new /savefile(path)
 	if(!S)
-		return 0
+		return FALSE
+	// prep savefile
 	S.cd = "/"
-
+	// load savefile version
 	S["version"] >> savefile_version
-
-	//Conversion
-	if(!savefile_version || !isnum(savefile_version) || savefile_version < SAVEFILE_VERSION_MIN || savefile_version > SAVEFILE_VERSION_MAX)
-		if(!savefile_update())  //handles updates
-			savefile_version = SAVEFILE_VERSION_MAX
-			save_preferences()
-			save_character()
-			return 0
-
+	// load global data so we can access it during migrations
 	read_global_data()
-	#warn preload global data somehow so migrations can affect it? or just |= a list?
+	// perform migrations
+	var/list/io_errors = list()
+	if(savefile_version < SAVEFILE_VERSION_MIN)
+		io_errors += SPAN_DANGER("Your savefile version was [savefile_version], below minimum [SAVEFILE_VERSION_MIN]; your savefile will now be deleted and recreated.")
+		// todo: wipe
+		savefile_version = SAVEFILE_VERSION_MAX
+	else if(savefile_version < SAVEFILE_VERSION_MAX)
+		perform_global_migrations(S, savefile_version, io_errors, options)
+		savefile_version = SAVEFILE_VERSION_MAX
+		// don't flush immediately incase they want to cancel/ahelp about something breaking
+		// save_preferences()
+	queue_errors(io_errors, "error while migrating global data:")
+	// load legacy data
 	player_setup.load_preferences(S)
-	return 1
+	return TRUE
 
 /datum/preferences/proc/save_preferences()
+	// todo: storage handler datums...
 	if(!path)
-		return 0
+		return FALSE
+	// check DOS guard
 	if(world.time < saveprefcooldown)
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to save your preferences a little too fast. Wait half a second, then try again.</span>")
-		return 0
+		return FALSE
 	saveprefcooldown = world.time + PREF_SAVELOAD_COOLDOWN
+	// get saveflie
 	var/savefile/S = new /savefile(path)
 	if(!S)
-		return 0
+		return FALSE
+	// prep saveflie
 	S.cd = "/"
-
+	// save savefile version
 	S["version"] << savefile_version
+	// write global data
 	write_global_data()
+	// write legacy data
 	player_setup.save_preferences(S)
-	return 1
+	return TRUE
 
 /datum/preferences/proc/load_character(slot)
+	// todo: storage handler datums...
 	if(!path)
-		return 0
+		return FALSE
+	// check DOS guard
 	if(world.time < loadcharcooldown)
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to load your character a little too fast. Wait half a second, then try again.</span>")
-		return 0
+		return FALSE
 	loadcharcooldown = world.time + PREF_SAVELOAD_COOLDOWN
+	// get savefile
 	if(!fexists(path))
-		return 0
+		return FALSE
 	var/savefile/S = new /savefile(path)
 	if(!S)
-		return 0
+		return FALSE
+	// prep savefile
 	S.cd = "/"
+
+
 	if(!slot)
 		slot = default_slot
 	if(slot != SAVE_RESET) // SAVE_RESET will reset the slot as though it does not exist, but keep the current slot for saving purposes.
@@ -82,28 +102,49 @@
 		player_setup.load_character(S)
 		S.cd = "/character[default_slot]"
 
-	#warn handle migrations somehow?? for new system
+	#warn above slot stuff
+	// load character data
 	read_character_data()
+	// perform migrations
+	var/current_version = character[CHARACTER_DATA_VERSION]
+	var/list/io_errors = list()
+	if(!isnum(current_version))
+		current_version = CHARACTER_VERSION_LEGACY
+	if(current_version < CHARACTER_VERSION_MIN)
+		io_errors += SPAN_DANGER("Your character version was [savefile_version], below minimum [CHARACTER_VERSION_MIN]; your slot will now be reset.")
+		// todo: wipe slot
+		savefile_version = CHARACTER_VERSION_MAX
+	else if(current_version < CHARACTER_VERSION_MAX)
+		perform_character_migrations(S, current_version, io_errors, character)
+		savefile_version = CHARACTER_VERSION_MAX
+	queue_errors(io_errors, "error while migrating slot [slot]:")
+	// load legacy data
 	player_setup.load_character(S)
+	// rebuild previews
 	clear_character_previews() // Recalculate them on next show
-	return 1
+	return TRUE
 
 /datum/preferences/proc/save_character()
+	// todo: storage handler datums...
 	if(!path)
-		return 0
+		return FALSE
+	// check DOS guard
 	if(world.time < savecharcooldown)
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to save your character a little too fast. Wait half a second, then try again.</span>")
-		return 0
+		return FALSE
 	savecharcooldown = world.time + PREF_SAVELOAD_COOLDOWN
+	// get saveflie
 	var/savefile/S = new /savefile(path)
 	if(!S)
-		return 0
+		return FALSE
+	// prep saveflie
 	S.cd = "/character[default_slot]"
-
+	// write character data
 	write_character_data()
+	// write legacy data
 	player_setup.save_character(S)
-	return 1
+	return TRUE
 
 /datum/preferences/proc/overwrite_character(slot)
 	if(!path)

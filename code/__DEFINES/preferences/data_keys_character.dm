@@ -1,4 +1,6 @@
 //! Holds data list keys for character preferences.
+//? ABSTRACT
+#define CHARACTER_DATA_VERSION "_VERSION_"
 
 //? Backgrounds
 #define CHARACTER_DATA_ORIGIN "lore_origin"

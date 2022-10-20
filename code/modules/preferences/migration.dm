@@ -6,7 +6,7 @@
  * - options - the loaded global options list
  */
 /datum/preferences/proc/perform_global_migrations(savefile/S, current_version, list/errors, list/options)
-	if(savefile_version < 13)
+	if(current_version < 13)
 		addtimer(CALLBACK(src, .proc/force_reset_keybindings), 5 SECONDS)
 
 /**
@@ -17,7 +17,7 @@
  * - options - the loaded character options list
  */
 /datum/preferences/proc/perform_character_migrations(savefile/S, current_version, list/errors, list/character)
-	if(savefile_version < 1)
+	if(current_version < 1)
 		// MIGRATE JOBS
 		var/alternative_option
 		var/job_civilian_high
