@@ -6162,7 +6162,7 @@ END CITADEL CHANGE */
 	name = "Big Bowl of Peas"
 	desc = "It's just a lot of peas in a bowl, seasoned with butter. Taste the peaness."
 	icon_state = "bowl_peas"
-	trash = /obj/item/trash/bowl
+	trash = /obj/item/trash/snack_bowl
 	filling_color = "#168116"
 	nutriment_amt = 5
 	nutriment_desc = list("butter" = 2, "peas" = 3)
