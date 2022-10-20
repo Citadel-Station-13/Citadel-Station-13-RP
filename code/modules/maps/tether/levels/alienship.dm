@@ -165,7 +165,7 @@
 					continue
 				L.drop_item_to_ground(I, INV_OP_FORCE)
 			// second pass - NO HIDING, M*CROS
-			for(var/obj/item/holder/H in L.GetAllContents())
+			for(var/obj/item/holder/H in L.get_all_contents())
 				H.forceMove(get_turf(L))
 				abduct(H)
 		L.Paralyse(10)

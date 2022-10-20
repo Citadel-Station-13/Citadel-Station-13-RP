@@ -8,7 +8,7 @@
 	var/list/items = list()
 	for(var/datum/uplink_category/category as anything in subtypesof(/datum/uplink_category))
 		categories += category
-	categories = sortTim(categories, .proc/cmp_uplink_category_desc)
+	categories = tim_sort(categories, .proc/cmp_uplink_category_desc)
 
 	var/list/new_categories = list()
 	for(var/datum/uplink_category/category as anything in categories)

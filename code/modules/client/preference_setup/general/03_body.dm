@@ -643,18 +643,18 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		var/M = href_list["marking_up"]
 		var/start = pref.body_markings.Find(M)
 		if(start != 1) //If we're not the beginning of the list, swap with the previous element.
-			moveElement(pref.body_markings, start, start-1)
+			move_element(pref.body_markings, start, start-1)
 		else //But if we ARE, become the final element -ahead- of everything else.
-			moveElement(pref.body_markings, start, pref.body_markings.len+1)
+			move_element(pref.body_markings, start, pref.body_markings.len+1)
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["marking_down"])
 		var/M = href_list["marking_down"]
 		var/start = pref.body_markings.Find(M)
 		if(start != pref.body_markings.len) //If we're not the end of the list, swap with the next element.
-			moveElement(pref.body_markings, start, start+2)
+			move_element(pref.body_markings, start, start+2)
 		else //But if we ARE, become the first element -behind- everything else.
-			moveElement(pref.body_markings, start, 1)
+			move_element(pref.body_markings, start, 1)
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["marking_move"])
@@ -667,7 +667,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		var/inject_after = input(user, "Move [M] ahead of...", "Character Preference") as null|anything in move_locs //Move ahead of any marking that isn't the current or previous one.
 		var/newpos = pref.body_markings.Find(inject_after)
 		if(newpos)
-			moveElement(pref.body_markings, start, newpos+1)
+			move_element(pref.body_markings, start, newpos+1)
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["marking_remove"])

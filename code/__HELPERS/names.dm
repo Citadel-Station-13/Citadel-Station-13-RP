@@ -246,7 +246,7 @@ var/syndicate_code_response//Code response for traitors.
 					break
 
 		// Update our pda and id if we have them on our person.
-		var/list/searching = GetAllContents()
+		var/list/searching = get_all_contents()
 		var/search_id = 1
 		var/search_pda = 1
 

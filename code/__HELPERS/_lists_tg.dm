@@ -62,20 +62,20 @@ This actually tests if they have the same entries and values.
 
 //for sorting clients or mobs by ckey
 /proc/sortKey(list/L, order=1)
-	return sortTim(L, order >= 0 ? /proc/cmp_ckey_asc : /proc/cmp_ckey_dsc)
+	return tim_sort(L, order >= 0 ? /proc/cmp_ckey_asc : /proc/cmp_ckey_dsc)
 
 //Specifically for record datums in a list.
 /proc/sortRecord(list/L, field = "name", order = 1)
 	GLOB.cmp_field = field
-	return sortTim(L, order >= 0 ? /proc/cmp_records_asc : /proc/cmp_records_dsc)
+	return tim_sort(L, order >= 0 ? /proc/cmp_records_asc : /proc/cmp_records_dsc)
 
 //any value in a list
 /proc/sortList(list/L, cmp=/proc/cmp_text_asc)
-	return sortTim(L.Copy(), cmp)
+	return tim_sort(L.Copy(), cmp)
 
 //uses sortList() but uses the var's name specifically. This should probably be using mergeAtom() instead
 /proc/sortNames(list/L, order=1)
-	return sortTim(L, order >= 0 ? /proc/cmp_name_asc : /proc/cmp_name_dsc)
+	return tim_sort(L, order >= 0 ? /proc/cmp_name_asc : /proc/cmp_name_dsc)
 
 
 
@@ -86,13 +86,15 @@ This actually tests if they have the same entries and values.
 			i++
 	return i
 
-//Move a single element from position fromIndex within a list, to position toIndex
-//All elements in the range [1,toIndex) before the move will be before the pivot afterwards
-//All elements in the range [toIndex, L.len+1) before the move will be after the pivot afterwards
-//In other words, it's as if the range [fromIndex,toIndex) have been rotated using a <<< operation common to other languages.
-//fromIndex and toIndex must be in the range [1,L.len+1]
-//This will preserve associations ~Carnie
-/proc/moveElement(list/L, fromIndex, toIndex)
+/**
+ * Move a single element from position fromIndex within a list, to position toIndex
+ * All elements in the range [1,toIndex) before the move will be before the pivot afterwards
+ * All elements in the range [toIndex, L.len+1) before the move will be after the pivot afterwards
+ * In other words, it's as if the range [fromIndex,toIndex) have been rotated using a <<< operation common to other languages.
+ * fromIndex and toIndex must be in the range [1,L.len+1]
+ * This will preserve associations ~Carnie
+ */
+/proc/move_element(list/L, fromIndex, toIndex)
 	if(fromIndex == toIndex || fromIndex+1 == toIndex)	//no need to move
 		return
 	if(fromIndex > toIndex)
@@ -102,11 +104,12 @@ This actually tests if they have the same entries and values.
 	L.Swap(fromIndex, toIndex)
 	L.Cut(fromIndex, fromIndex+1)
 
-
-//Move elements [fromIndex,fromIndex+len) to [toIndex-len, toIndex)
-//Same as moveElement but for ranges of elements
-//This will preserve associations ~Carnie
-/proc/moveRange(list/L, fromIndex, toIndex, len=1)
+/**
+ * Move elements [fromIndex,fromIndex+len) to [toIndex-len, toIndex)
+ * Same as move_element but for ranges of elements
+ * This will preserve associations ~Carnie
+ */
+/proc/move_range(list/L, fromIndex, toIndex, len=1)
 	var/distance = abs(toIndex - fromIndex)
 	if(len >= distance)	//there are more elements to be moved than the distance to be moved. Therefore the same result can be achieved (with fewer operations) by moving elements between where we are and where we are going. The result being, our range we are moving is shifted left or right by dist elements
 		if(fromIndex <= toIndex)

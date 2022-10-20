@@ -192,7 +192,7 @@
 	if(cached_character_icons[cachekey])
 		. = cached_character_icons[cachekey]
 	else
-		. = getCompoundIcon(desired)
+		. = get_compound_icon(desired)
 		cached_character_icons[cachekey] = .
 
 /// Gets the client of the mob, allowing for mocking of the client.

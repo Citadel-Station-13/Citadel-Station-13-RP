@@ -43,13 +43,17 @@ GLOBAL_VAR_INIT(fileaccess_timer, 0)
 
 	return path
 
-#define FTPDELAY 50 // 50 tick delay to discourage spam
-#define ADMIN_FTPDELAY_MODIFIER 0.5 //Admins get to spam files faster since we ~trust~ them!
-/* This proc is a failsafe to prevent spamming of file requests.
-	It is just a timer that only permits a download every [FTPDELAY] ticks.
-	This can be changed by modifying FTPDELAY's value above.
-
-	PLEASE USE RESPONSIBLY, Some log files can reach sizes of 4MB! */
+// 50 tick delay to discourage spam
+#define FTPDELAY 50
+// Admins get to spam files faster since we "trust" them!
+#define ADMIN_FTPDELAY_MODIFIER 0.5
+/**
+ * This proc is a failsafe to prevent spamming of file requests.
+ * It is just a timer that only permits a download every [FTPDELAY] ticks.
+ * This can be changed by modifying FTPDELAY's value above.
+ *
+ *! PLEASE USE RESPONSIBLY, Some log files can reach sizes of 4MB!
+ */
 /client/proc/file_spam_check()
 	var/time_to_wait = GLOB.fileaccess_timer - world.time
 	if(time_to_wait > 0)
@@ -71,7 +75,7 @@ GLOBAL_VAR_INIT(fileaccess_timer, 0)
 		var/current_dir = pop(jobs)
 		var/list/new_filenames = flist(current_dir)
 		for(var/new_filename in new_filenames)
-			// if filename ends in / it is a directory, append to currdir
+			// If filename ends in / it is a directory, append to currdir.
 			if(findtext(new_filename, "/", -1))
 				jobs += current_dir + new_filename
 			else
@@ -81,15 +85,19 @@ GLOBAL_VAR_INIT(fileaccess_timer, 0)
 /proc/pathflatten(path)
 	return replacetext(path, "/", "_")
 
-/// Returns the md5 of a file at a given path.
+/**
+ * Returns the md5 of a file at a given path.
+ */
 /proc/md5filepath(path)
 	. = md5(file(path))
 
-/// Save file as an external file then md5 it.
-/// Used because md5ing files stored in the rsc sometimes gives incorrect md5 results.
+/**
+ * Save file as an external file then md5 it.
+ * Used because md5ing files stored in the rsc sometimes gives incorrect md5 results.
+ */
 /proc/md5asfile(file)
 	var/static/notch = 0
-	// its importaint this code can handle md5filepath sleeping instead of hard blocking, if it's converted to use rust_g.
+	// It's importaint this code can handle md5filepath sleeping instead of hard blocking, if it's converted to use rust_g.
 	var/filename = "tmp/md5asfile.[world.realtime].[world.timeofday].[world.time].[world.tick_usage].[notch]"
 	notch = WRAP(notch+1, 0, 2**15)
 	fcopy(file, filename)
@@ -109,9 +117,11 @@ GLOBAL_VAR_INIT(fileaccess_timer, 0)
  */
 /proc/sanitize_filepath(path)
 	. = ""
-	var/delimiter = "/" //Very much intentionally hardcoded
+	// Very much intentionally hardcoded.
+	var/delimiter = "/"
 	var/list/all_nodes = splittext(path, delimiter)
 	for(var/node in all_nodes)
 		if(.)
-			. += delimiter // Add the delimiter before each successive node.
+			// Add the delimiter before each successive node.
+			. += delimiter
 		. += SANITIZE_FILENAME(node)
