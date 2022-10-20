@@ -1,6 +1,6 @@
 
 GLOBAL_LIST_INIT(meta_gas_visibility, meta_gas_visibility_list())
-GLOBAL_LIST_INIT(meta_gas_overlays, meta_gas_overlay_list())
+GLOBAL_LIST_INIT(meta_visual_overlays, meta_visual_overlay_list())
 /// Typecache of gases with no overlays
 GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_list())
 
@@ -10,15 +10,15 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 		var/datum/gas/gas = gas_path
 		.[gas_path] = initial(gas.moles_visible)
 
-/proc/meta_gas_overlay_list()
+/proc/meta_visual_overlay_list()
 	. = subtypesof(/datum/gas)
 	for(var/gas_path in .)
 		var/datum/gas/gas = gas_path
-		.[gas_path] = 0 //gotta make sure if(GLOB.meta_gas_overlays[gaspath]) doesn't break
+		.[gas_path] = 0 //gotta make sure if(GLOB.meta_visual_overlays[gaspath]) doesn't break
 		if(initial(gas.moles_visible) != null)
 			.[gas_path] = new /list(FACTOR_GAS_VISIBLE_MAX)
 			for(var/i in 1 to FACTOR_GAS_VISIBLE_MAX)
-				var/image/I = image('icons/effects/atmospherics.dmi', icon_state = initial(gas.gas_overlay), layer = FLOAT_LAYER + i)
+				var/image/I = image('icons/effects/atmospherics.dmi', icon_state = initial(gas.visual_overlay), layer = FLOAT_LAYER + i)
 				I.plane = FLOAT_PLANE
 				I.alpha = i * 255 / FACTOR_GAS_VISIBLE_MAX
 				I.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -29,7 +29,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	. = list()
 	for(var/gastype in subtypesof(/datum/gas))
 		var/datum/gas/gasvar = gastype
-		if (!initial(gasvar.gas_overlay))
+		if (!initial(gasvar.visual_overlay))
 			.[gastype] = TRUE
 
 
@@ -73,20 +73,14 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	var/gas_reagent_moles = 0.1
 
 	//! visuals
-	/// icon_state in icons/modules/atmospherics/gas.dmi
-	var/gas_overlay = ""
-	/// How many moles is required to make this gas visible
-	var/moles_visible
-	/// moles visibility factor -
-	#warn visual overhaul
-
-// Gas moles
-/// Moles in a tile after which gases are visible.
-#define MOLES_GAS_VISIBLE					0.25
-/// moles_visible * FACTOR_GAS_VISIBLE_MAX = Moles after which gas is at maximum visibility.
-#define FACTOR_GAS_VISIBLE_MAX				20
-/// Mole step for alpha updates. This means alpha can update at 0.25, 0.5, 0.75, and so on.
-#define MOLES_GAS_VISIBLE_STEP				0.25
+	/// icon_state in icons/modules/atmospherics/gas.dmi; invisible if null
+	var/visual_overlay
+	/// color var of the overlay; no recoloring if null
+	var/visual_color
+	/// minimum moles to see gas
+	var/visual_threshold = 0.25
+	/// alpha per mole (up until 255 obviously)
+	var/visual_factor = 12.75
 
 	//! reactions
 	/// Fusion is not yet implemented : How much the gas accelerates a fusion reaction
@@ -125,7 +119,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	//and following a N/Z ratio of 1.5, the molar mass of a monatomic gas is:
 	molar_mass = 0.405	// kg/mol
 
-	gas_overlay = "phoron"
+	visual_overlay = "phoron"
 
 	moles_visible = 0.7
 
@@ -145,7 +139,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	specific_heat = 40
 	molar_mass = 0.044
 
-	gas_overlay = "nitrous_oxide"
+	visual_overlay = "nitrous_oxide"
 	moles_visible = 1
 
 	gas_flags = GAS_FLAG_OXIDIZER
@@ -271,7 +265,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	id = GAS_ID_CHLORINE
 	name = "Chlorine"
 	//color = "#c5f72d"
-	//gas_overlay_limit = 0.5
+	//visual_overlay_limit = 0.5
 	specific_heat = 5
 	molar_mass = 0.017
 	gas_flags = GAS_FLAG_CONTAMINANT
@@ -282,7 +276,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	heating_point = null
 	heating_products = null
 	toxicity = 15*/
-	gas_overlay = "chlorine"
+	visual_overlay = "chlorine"
 	moles_visible = 1
 
 	gas_reagent_id = "sacid"
@@ -358,5 +352,5 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	specific_heat = 500	// J/(mol*K) //250% the heat capacity of phoron
 	molar_mass = 0.054 // Standard Mass of xenon
 
-	gas_overlay = "vimur"
+	visual_overlay = "vimur"
 	moles_visible = 0.1
