@@ -58,7 +58,6 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	/// Molar mass in kg/mol
 	var/molar_mass = 0
 
-	#warn unit test for reagent sanity
 	//! reagents
 	/// reagent id to apply
 	var/gas_reagent_id
@@ -78,6 +77,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	var/gas_overlay = ""
 	/// How many moles is required to make this gas visible
 	var/moles_visible
+	#warn visual overhaul
 
 	//! reactions
 	/// Fusion is not yet implemented : How much the gas accelerates a fusion reaction

@@ -32,6 +32,7 @@
 /// Intended to be used in the manner of `TEST_FOCUS(/datum/unit_test/math)`
 #define TEST_FOCUS(test_path) ##test_path { focus = TRUE; }
 
+#include "atmospherics/_atmospherics.dm"
 #include "core/_core.dm"
 #include "human/_human.dm"
 #include "mob/_mob.dm"
