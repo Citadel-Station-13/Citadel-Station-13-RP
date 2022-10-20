@@ -146,14 +146,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/synth_markings = 1
 
 //! ## Background Preferences
-	///System of birth.
-	var/home_system = "Unset"
-	///Current home system.
-	var/citizenship = "None"
-	///General associated faction.
-	var/faction = "None"
-	///Religious association.
-	var/religion = "None"
 	///Antag associated faction.
 	var/antag_faction = "None"
 	///How visible antag association is to others.
