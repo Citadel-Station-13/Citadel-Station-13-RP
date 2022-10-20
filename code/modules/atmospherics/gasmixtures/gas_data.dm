@@ -83,15 +83,13 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 	names[G.id] = G.name
 	if(flags[G.id])
 		var/old_flags = flags[G.id]
-		if(gas_by_flag)
-			for(var/bit in bitfield2list(old_flags))
-				LAZYREMOVE(gas_by_flag["[bit]"], G.id)
+		for(var/bit in bitfield2list(old_flags))
+			LAZYREMOVE(gas_by_flag["[bit]"], G.id)
 	flags[G.id] = G.gas_flags
 	if(groups[G.id])
 		var/old_group = groups[G.id]
-		if(gas_by_group)
-			LAZYREMOVE(gas_by_group[old_group], G.id)
-	groups[G.id] = G.gas_groups
+		LAZYREMOVE(gas_by_group[old_group], G.id)
+	groups[G.id] = G.gas_group
 	//? physics
 	specific_heats[G.id] = G.specific_heat
 	molar_masses[G.id] = G.molar_mass
@@ -116,5 +114,5 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 	LAZYOR(gas_by_group[G.gas_group], G.id)
 	//* gas flags
 	for(var/bit in bitfield2list(G.gas_flags))
-		LAZYINITLIST(gas_by_flag, "[bit]")
-		LAZYOR(gas_flags["[bit]"], G.id)
+		LAZYINITLIST(gas_by_flag["[bit]"])
+		LAZYOR(gas_by_flag["[bit]"], G.id)
