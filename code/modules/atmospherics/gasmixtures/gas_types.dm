@@ -73,11 +73,20 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	var/gas_reagent_moles = 0.1
 
 	//! visuals
-	/// icon_state in icons/effects/atmospherics.dmi
+	/// icon_state in icons/modules/atmospherics/gas.dmi
 	var/gas_overlay = ""
 	/// How many moles is required to make this gas visible
 	var/moles_visible
+	/// moles visibility factor -
 	#warn visual overhaul
+
+// Gas moles
+/// Moles in a tile after which gases are visible.
+#define MOLES_GAS_VISIBLE					0.25
+/// moles_visible * FACTOR_GAS_VISIBLE_MAX = Moles after which gas is at maximum visibility.
+#define FACTOR_GAS_VISIBLE_MAX				20
+/// Mole step for alpha updates. This means alpha can update at 0.25, 0.5, 0.75, and so on.
+#define MOLES_GAS_VISIBLE_STEP				0.25
 
 	//! reactions
 	/// Fusion is not yet implemented : How much the gas accelerates a fusion reaction
