@@ -573,13 +573,18 @@
 	for(var/gasname in breath.gas)
 		if(gasname == breath_type)
 			continue
-		if(!GLOB.meta_gas_reagent_id[gasname])
+		var/list/reagent_gas_data = GLOB.gas_data.reagents[gasname]
+		if(!reagent_gas_data)
 			continue
+		if(breath.gas[gasname] < reagent_gas_data[GAS_REAGENT_LIST_THRESHOLD])
+			return
 		// Little bit of sanity so we aren't trying to add 0.0000000001 units of CO2, and so we don't end up with 99999 units of CO2.
-		var/reagent_amount = breath.gas[gasname] * 10 * gas_to_process_ratio * GLOB.meta_gas_reagent_amount[gasname] //10 is for the u per gas mol, ratio is defined further up where we have the lungs for checks
+		var/reanget_id = reagent_gas_data[GAS_REANGET_LIST_ID]
+		var/reagent_amount = (breath.gas[gasname] * reagent_gas_data[GAS_REAGENT_LIST_FACTOR] + reagent_gas_data[GAS_REAGENT_LIST_AMOUNT]) * gas_to_process_ratio
+		reagent_amount = min(reagent_amount, reagent_gas_data[GAS_REAGENT_LIST_MAX] - reagents.get_reagent_amount(reagent_id))
 		if(reagent_amount < 0.05)
 			continue
-		reagents.add_reagent(GLOB.meta_gas_reagent_id[gasname], reagent_amount)
+		reagents.add_reagent(reagent_id, reagent_amount)
 		breath.adjust_gas(gasname, -breath.gas[gasname], update = 0) //update after
 
 	// Were we able to breathe?

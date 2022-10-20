@@ -1,3 +1,4 @@
+//! groups
 #warn enforce core gases having flag via linter
 /// core gases - not shown as group as interfaces
 #define GAS_GROUP_CORE "core"

@@ -41,9 +41,31 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 	var/static/next_procedural_gas_id = 0
 
 /datum/gas_data/New()
-	#warn register hardcoded gas datums
+	build_hardcoded()
 
 /datum/gas_data/proc/rebuild_caches()
+	names = list()
+	flags = list()
+	groups = list()
+	specific_heats = list()
+	molar_masses = list()
+	reagents = list()
+	#warn visuals
+	rarities = list()
+	gas_by_flag = list()
+	gas_by_group = list()
+	if(!islist(gases))
+		gases = list()
+	for(var/i in 1 to length(gases))
+		var/id = gases[i]
+		var/datum/gas/G = gases[id]
+		if(!G)
+			gases -= id
+			continue
+		if(id != G.id)
+			gases[i] = G.id
+			gases[G.id] = G
+		_register_gas(G)
 
 /datum/gas_data/proc/build_hardcoded()
 
@@ -58,7 +80,16 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 	//? intrinsics
 	gases[G.id] = G
 	names[G.id] = G.name
+	if(flags[G.id])
+		var/old_flags = flags[G.id]
+		if(gas_by_flag)
+			for(var/bit in bitfield2list(old_flags))
+				LAZYREMOVE(gas_by_flag["[bit]"], G.id)
 	flags[G.id] = G.gas_flags
+	if(groups[G.id])
+		var/old_group = groups[G.id]
+		if(gas_by_group)
+			LAZYREMOVE(gas_by_group[old_group], G.id)
 	groups[G.id] = G.gas_groups
 	//? physics
 	specific_heats[G.id] = G.specific_heat
@@ -68,13 +99,14 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 		reagents[G.id] = list(
 			G.gas_reagent_id,
 			G.gas_reagent_amount,
-			G.gas_reagent_threshold
+			G.gas_reagent_threshold,
 			G.gas_reagent_factor,
 			G.gas_reagent_max
 		)
 	else
 		reagents -= G.id
 	//? visuals
+	#warn visuals
 	//? reactions
 	rarities[G.id] = G.rarity
 	//? rebuild cheap cache lists

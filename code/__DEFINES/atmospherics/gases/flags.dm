@@ -1,3 +1,4 @@
+//! flags
 // /datum/gas/gas_flags flags
 /// Is this gas a viable combustion fuel? Ported from XGM variable oxidizer-oxidant combustion system.
 #define GAS_FLAG_FUEL				(1<<0)
@@ -16,6 +17,3 @@
 /// gas is highly dangerous, mostly used to know when to *loudly* log as opposed to just log
 #define GAS_FLAG_DANGEROUS			(1<<7)
 
-// /turf/var/air_flags flags
-/// If this is there, the turf will apply graphics even if air status isn't AIR_STATUS_NORMAL. Otherwise, the turf will have no gas graphics, ever.
-#define AIR_FLAG_FORCE_VISUAL			(1<<0)

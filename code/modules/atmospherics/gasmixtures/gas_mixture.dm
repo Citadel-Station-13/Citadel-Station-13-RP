@@ -512,7 +512,7 @@
 		gas -= "TEMP"
 	gases.Cut()
 	for(var/id in gas)
-		gases[pathid] = text2num(gas[id])
+		gases[id] = text2num(gas[id])
 	//archive()
 	update_values()
 	return TRUE

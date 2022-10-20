@@ -1,4 +1,18 @@
 /**
+ * !! THESE PREFIXES ARE RESERVED. !!
+ * !! No touchies.                 !!
+ * !! They're used for randomgen   !!
+ * !! and we don't want collisions.!!
+ * ?? These can be changed a will, ??
+ * ?? as they will probably never  ??
+ * ?? be directly mapped in.       ??
+ */
+/// prefix reserved for dynamic chemgas later
+#define GAS_ID_PREFIX_REAGENTS "r_"
+/// random generated gas
+#define GAS_ID_PREFIX_PROCGEN "x_"
+
+/**
  * !! Hardcoded Gas IDs !!
  * ?? Naming convention:                 ??
  * ?? Use chemical formula if based off  ??
@@ -33,17 +47,3 @@
 #define GAS_ID_TRITIUM "tritium"
 #define GAS_ID_DEUTERIUM "deuterium"
 #define GAS_ID_VIMUR "vimur"
-
-/**
- * !! THESE PREFIXES ARE RESERVED. !!
- * !! No touchies.                 !!
- * !! They're used for randomgen   !!
- * !! and we don't want collisions.!!
- * ?? These can be changed a will, ??
- * ?? as they will probably never  ??
- * ?? be directly mapped in.       ??
- */
-/// prefix reserved for dynamic chemgas later
-#define GAS_ID_PREFIX_REAGENTS "r_"
-/// random generated gas
-#define GAS_ID_PREFIX_PROCGEN "x_"

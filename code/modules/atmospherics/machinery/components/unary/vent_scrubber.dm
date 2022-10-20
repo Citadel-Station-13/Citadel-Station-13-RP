@@ -41,7 +41,7 @@
 	for(var/id in scrubbing_gas)
 		if(!gas_data.gases[id])
 			scrubbing_gas -= id
-			stack_trace("Invalid gas id [i]")
+			stack_trace("Invalid gas id [id]")
 
 	icon = null
 	initial_loc = get_area(loc)

@@ -50,7 +50,7 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	/// Gas flags. See [code/__DEFINES/atmospherics/flags.dm]
 	var/gas_flags = GAS_FLAG_KNOWN
 	/// gas group - list support can be added later
-	var/gas_group = GAS_GROUP_UNKONWN
+	var/gas_group = GAS_GROUP_UNKNOWN
 
 	//! physics
 	/// Specific heat in J/(mol*K)
