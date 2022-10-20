@@ -658,7 +658,7 @@
 			if(E.damage > 0)
 				E.heal_damage_i(5 * removed, can_revive = TRUE)
 			if(E.damage <= 5 && E.organ_tag == O_EYES)
-				H.sdisabilities &= ~BLIND
+				H.sdisabilities &= ~SDISABILITY_NERVOUS
 
 /datum/reagent/peridaxon
 	name = "Peridaxon"
@@ -681,7 +681,7 @@
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
-				H.sdisabilities &= ~BLIND
+				H.sdisabilities &= ~SDISABILITY_NERVOUS
 		if(alien == IS_SLIME)
 			H.add_chemical_effect(CE_PAINKILLER, 20)
 			if(prob(33))
@@ -706,7 +706,7 @@
 				H.Confuse(5)
 			if(I.damage <= 5 && I.organ_tag == O_EYES)
 				H.eye_blurry = min(M.eye_blurry + 10, 100) //Eyes need to reset, or something
-				H.sdisabilities &= ~BLIND
+				H.sdisabilities &= ~SDISABILITY_NERVOUS
 		if(alien == IS_SLIME)
 			H.add_chemical_effect(CE_PAINKILLER, 20)
 			if(prob(33))
@@ -1598,3 +1598,28 @@
 
 	M.adjust_fire_stacks(-reac_volume)
 	M.ExtinguishMob()
+
+//CRS (Cyberpsychosis) Medication
+/datum/reagent/neuratrextate
+	name = "Neuratrextate"
+	id = "neuratrextate"
+	description = "This military grade chemical compound functions as both a powerful immunosuppressant and a potent antipsychotic. Its trademark lime green coloration makes it easy to identify."
+	taste_description = "sour metal"
+	taste_mult = 2
+	reagent_state = REAGENT_LIQUID
+	metabolism = REM * 0.016
+	mrate_static = TRUE
+	color = "#52ca22"
+	scannable = 1
+	overdose = 16
+
+/datum/reagent/neuratrextate/affect_ingest(mob/living/carbon/M)
+	remove_self(30)
+	to_chat(M, "<span class='warning'>It feels like there's a pile of knives in your stomach!</span>")
+	M.druggy += 10
+	M.vomit()
+
+/datum/reagent/neuratrextate/overdose(var/mob/living/carbon/M)
+	..()
+	M.druggy += 30
+	M.hallucination += 20

@@ -17,7 +17,7 @@
 	if(!target)
 		return
 	touched = list()
-	QDEL_IN(src, 10)
+	QDEL_IN(src, step_count * delay + 10)
 	for(var/i = 1 to step_count)
 		if(!loc)
 			return

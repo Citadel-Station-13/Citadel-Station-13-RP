@@ -1477,7 +1477,7 @@
 	name = "Sweet Rush"
 	id = "sugarrush"
 	result = "sugarrush"
-	required_reagents = list("sugar" = 1, "sodawater" = 1, "vodka" =1)
+	required_reagents = list("sugar" = 1, "sodawater" = 1, "grenadine" =1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/sbagliato

@@ -65,7 +65,7 @@
 #undef RESIST_ATTACK_BITE
 
 /mob/living/carbon/human/proc/can_break_straight_jacket()
-	if((HULK in mutations) || species.can_shred(src,1))
+	if((MUTATION_HULK in mutations) || species.can_shred(src,1))
 		return TRUE
 	return FALSE
 

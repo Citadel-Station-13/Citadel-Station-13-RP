@@ -33,7 +33,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 //  update_bloodied()	//Handles adding/clearing the blood overlays for hands & feet.  Call when bloodied or cleaned.
 //  update_underwear()	//Handles updating the sprite for underwear.
 //  update_hair()		//Handles updating your hair and eyes overlay
-//  update_mutations()	//Handles updating your appearance for certain mutations.  e.g TK head-glows
+//  update_mutations()	//Handles updating your appearance for certain mutations.  e.g MUTATION_TELEKINESIS head-glows
 //  update_fire()		//Handles overlay from being on fire.
 //  update_water()		//Handles overlay from being submerged.
 //  update_surgery()	//Handles overlays from open external organs.
@@ -163,10 +163,10 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	var/husk_color_mod = rgb(96,88,80)
 	var/hulk_color_mod = rgb(48,224,40)
 
-	var/husk = (HUSK in src.mutations)
-	var/fat = (FAT in src.mutations)
-	var/hulk = (HULK in src.mutations)
-	var/skeleton = (SKELETON in src.mutations)
+	var/husk = (MUTATION_HUSK in src.mutations)
+	var/fat = (MUTATION_FAT in src.mutations)
+	var/hulk = (MUTATION_HULK in src.mutations)
+	var/skeleton = (MUTATION_SKELETON in src.mutations)
 
 	robolimb_count = 0 //TODO, here, really tho?
 	robobody_count = 0
@@ -227,6 +227,12 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 				robolimb_count++
 				if((part.robotic == ORGAN_ROBOT || part.robotic == ORGAN_LIFELIKE) && (part.organ_tag == BP_HEAD || part.organ_tag == BP_TORSO || part.organ_tag == BP_GROIN))
 					robobody_count ++
+				if(species.is_cyberpsycho) //This check should hopefully automatically update the capacity of CRS patients if cybernetics are installed.
+					var/datum/component/cyberpsychosis/C
+					C.capacity = 100
+					C.cybernetics_count = 0
+					C.counted = 0
+					C.adjusted = 0
 			else if(part.status & ORGAN_DEAD)
 				icon_key += "3"
 			else
@@ -498,7 +504,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	//TODO: THIS PROC???
 	var/fat
-	if(FAT in mutations)
+	if(MUTATION_FAT in mutations)
 		fat = "fat"
 
 	var/image/standing	= image(icon = 'icons/effects/genetics.dmi', layer = BODY_LAYER+MUTATIONS_LAYER)
@@ -513,7 +519,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 				standing.underlays += underlay
 
 	for(var/mut in mutations)
-		if(mut == LASER)
+		if(mut == MUTATION_LASER)
 			standing.overlays += "lasereyes_s" //TODO
 
 	overlays_standing[MUTATIONS_LAYER]	= standing

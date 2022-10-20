@@ -23,7 +23,7 @@
 		if(BRUTE)
 			adjustBruteLoss(damage * blocked)
 		if(BURN)
-			if(COLD_RESISTANCE in mutations)
+			if(MUTATION_COLD_RESIST in mutations)
 				damage = 0
 			adjustFireLoss(damage * blocked)
 		if(SEARING)

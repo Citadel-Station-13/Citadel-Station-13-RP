@@ -607,10 +607,10 @@ BLIND     // can't see anything
 			M.Blind(3)
 			M.eye_blurry = 5
 			// Don't cure being nearsighted
-			if(!(M.disabilities & NEARSIGHTED))
-				M.disabilities |= NEARSIGHTED
+			if(!(M.disabilities & DISABILITY_NEARSIGHTED))
+				M.disabilities |= DISABILITY_NEARSIGHTED
 				spawn(100)
-					M.disabilities &= ~NEARSIGHTED
+					M.disabilities &= ~DISABILITY_NEARSIGHTED
 	..()
 
 /obj/item/clothing/glasses/thermal/Initialize(mapload)

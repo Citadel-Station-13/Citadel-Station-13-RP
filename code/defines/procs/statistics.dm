@@ -35,8 +35,8 @@
 	var/sqlspecial = sanitizeSQL(H.mind.special_role)
 	var/sqljob = sanitizeSQL(H.mind.assigned_role)
 
-	var/laname
-	var/lakey
+	var/laname = ""
+	var/lakey = ""
 	if(H.lastattacker)
 		laname = sanitizeSQL(H.lastattacker:real_name)
 		lakey = sanitizeSQL(H.lastattacker:key)
@@ -49,7 +49,7 @@
 	else
 		var/datum/db_query/query = SSdbcore.NewQuery(
 			"INSERT INTO [format_table_name("death")] (name, byondkey, job, special, pod, tod, laname, lakey, gender, bruteloss, fireloss, brainloss, oxyloss, coord) VALUES \
-			(:name, :key, :job, :special, :pod, :time, :laname, :lakey, :geender, :bruteloss, :fireloss, :brainloss, :oxyloss, :coord)",
+			(:name, :key, :job, :special, :pod, :time, :laname, :lakey, :gender, :bruteloss, :fireloss, :brainloss, :oxyloss, :coord)",
 			list(
 				"name" = sqlname,
 				"key" = sqlkey,

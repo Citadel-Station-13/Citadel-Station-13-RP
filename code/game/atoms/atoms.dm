@@ -597,7 +597,7 @@
 		add_fibers(M)
 
 		//He has no prints!
-		if (mFingerprints in M.mutations)
+		if (MUTATION_NOPRINTS in M.mutations)
 			if(fingerprintslast != M.key)
 				fingerprintshidden += "[time_stamp()]: [key_name(M)] (No fingerprints mutation)"
 				fingerprintslast = M.key

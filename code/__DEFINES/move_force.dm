@@ -6,6 +6,13 @@
 #define THROW_FORCE_DEFAULT 1000
 #define THROW_RESIST_DEFAULT 1000
 
+//etc
+//? stuff that shouldn't have force, almost
+#define MOVE_FORCE_MOUSE 100
+//? stuff that should have less force
+//? stuff that have basically normal force
+//? stuff that should have higher force
+//? stuff that should have overwhelming force
 
 //Factors/modifiers
 #define MOVE_FORCE_PULL_RATIO 0.8				//Same move force to pull objects

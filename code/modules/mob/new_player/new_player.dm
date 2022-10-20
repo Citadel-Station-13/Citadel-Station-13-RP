@@ -670,8 +670,8 @@
 	new_character.sync_organ_dna()
 	if(client.prefs.disabilities)
 		// Set defer to 1 if you add more crap here so it only recalculates struc_enzymes once. - N3X
-		new_character.dna.SetSEState(GLASSESBLOCK,1,0)
-		new_character.disabilities |= NEARSIGHTED
+		new_character.dna.SetSEState(DNABLOCK_GLASSES,1,0)
+		new_character.disabilities |= DISABILITY_NEARSIGHTED
 	if(client.prefs.mirror == TRUE)
 		if((client.prefs.organ_data[O_BRAIN] != null))
 			var/obj/item/implant/mirror/positronic/F = new /obj/item/implant/mirror/positronic(new_character)

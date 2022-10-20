@@ -8,6 +8,9 @@
 	icon_living = "mouse_gray"
 	icon_dead = "mouse_gray_dead"
 	intelligence_level = SA_ANIMAL
+	move_force = MOVE_FORCE_MOUSE
+	pull_force = MOVE_FORCE_MOUSE
+	throw_impulse = MOVE_FORCE_MOUSE
 
 	maxHealth = 5
 	health = 5
