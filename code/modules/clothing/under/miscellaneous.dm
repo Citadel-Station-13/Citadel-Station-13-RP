@@ -277,7 +277,7 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
 
 /obj/item/clothing/under/kilt
-	icon = 'icons/clothing/uniforms/costume/kilt.dmi'
+	icon = 'icons/clothing/uniform/costume/kilt.dmi'
 	name = "kilt"
 	icon_state = "kilt"
 	desc = "Includes shoes and plaid"

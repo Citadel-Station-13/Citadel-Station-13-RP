@@ -13,7 +13,7 @@ Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'l
 
 /icons
 	/clothing - clothing items placed in here
-		/uniforms - uniforms
+		/uniform - uniforms
 			/costumes - vanity costumes like kilts, mime outfits, clown outfits, cueball outfits, etc
 			/formal - formalwear like siuts, dresses, etc
 			/job - basic job uniforms
