@@ -170,7 +170,7 @@
 	. = list()
 	for(var/path in subtypesof(/datum/surgery_step))
 		. += new path
-	sortTim(., cmp = /proc/cmp_surgery_priority_asc)
+	tim_sort(., cmp = /proc/cmp_surgery_priority_asc)
 
 /datum/surgery_status/
 	var/eyes	=	0

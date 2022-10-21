@@ -6,7 +6,7 @@ This manages getting the asset to the client without doing unneeded re-sends, as
 
 There are two frameworks for using this system:
 
-### Asset datum:
+### Asset datum
 
 Make a datum in asset_list_items.dm with your browser assets for your thing.
 
@@ -20,15 +20,13 @@ Call .send(client|usr) on that datum to send the asset to the client. Depending 
 
 Call .get_url_mappings() to get an associated list with the urls your assets can be found at.
 
-### Manual backend:
+### Manual backend
 
 See the documentation for `/datum/asset_transport` for the backend api the asset datums utilize.
 
 The global variable `SSassets.transport` contains the currently configured transport.
 
-
-
-### Notes:
+### Notes
 
 Because byond browse() calls use non-blocking queues, if your code uses output() (which bypasses all of these queues) to invoke javascript functions you will need to first have the javascript announce to the server it has loaded before trying to invoke js functions.
 

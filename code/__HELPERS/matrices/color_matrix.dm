@@ -2,7 +2,7 @@
 // COLOUR MATRICES //
 /////////////////////
 
-/* Documenting a couple of potentially useful color matrices here to inspire ideas
+/* Documenting a couple of potentially useful color matrices here to inspire ideas.
 // Greyscale - indentical to saturation @ 0
 list(LUMA_R,LUMA_R,LUMA_R,0, LUMA_G,LUMA_G,LUMA_G,0, LUMA_B,LUMA_B,LUMA_B,0, 0,0,0,1, 0,0,0,0)
 
@@ -13,17 +13,21 @@ list(-1,0,0,0, 0,-1,0,0, 0,0,-1,0, 0,0,0,1, 1,1,1,0)
 list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0,0,0)
 */
 
-//Does nothing
+/// Does nothing.
 /proc/color_matrix_identity()
 	return list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0,0,0)
 
-//Adds/subtracts overall lightness
-//0 is identity, 1 makes everything white, -1 makes everything black
+/**
+ * Adds/subtracts overall lightness.
+ * 0 is identity, 1 makes everything white, -1 makes everything black.
+ */
 /proc/color_matrix_lightness(power)
 	return list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, power,power,power,0)
 
-//Changes distance hues have from grey while maintaining the overall lightness. Greys are unaffected.
-//1 is identity, 0 is greyscale, >1 oversaturates colors
+/**
+ * Changes distance hues have from grey while maintaining the overall lightness. Greys are unaffected.
+ * 1 is identity, 0 is greyscale, >1 oversaturates colors.
+ */
 /proc/color_matrix_saturation(value)
 	var/inv = 1 - value
 	var/R = round(LUMA_R * inv, 0.001)
@@ -33,7 +37,7 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 	return list(R + value,R,R,0, G,G + value,G,0, B,B,B + value,0, 0,0,0,1, 0,0,0,0)
 
 /**
- * Exxagerates or removes colors
+ * Exxagerates or removes colors.
  */
 /proc/color_matrix_saturation_percent(percent)
 	if(percent == 0)
@@ -50,19 +54,21 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 	return list(R + x,R,R, G,G + x,G, B,B,B + x)
 
 /**
- * greyscale matrix
+ * Greyscale matrix.
  */
 /proc/color_matrix_greyscale()
 	return list(LUMA_R, LUMA_R, LUMA_R, LUMA_G, LUMA_G, LUMA_G, LUMA_B, LUMA_B, LUMA_B)
 
-//Changes distance colors have from rgb(127,127,127) grey
-//1 is identity. 0 makes everything grey >1 blows out colors and greys
+/**
+ * Changes distance colors have from rgb(127,127,127) grey.
+ * 1 is identity. 0 makes everything grey >1 blows out colors and greys.
+ */
 /proc/color_matrix_contrast(value)
 	var/add = (1 - value) / 2
 	return list(value,0,0,0, 0,value,0,0, 0,0,value,0, 0,0,0,1, add,add,add,0)
 
 /**
- * Exxagerates or removes brightness
+ * Exxagerates or removes brightness.
  */
 /proc/color_matrix_contrast_percent(percent)
 	var/static/list/delta_index = list(
@@ -96,22 +102,27 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 	var/add = 0.5 * (127-x) / 255
 	return list(mult,0,0, 0,mult,0, 0,0,mult, add,add,add)
 
-//Moves all colors angle degrees around the color wheel while maintaining intensity of the color and not affecting greys
-//0 is identity, 120 moves reds to greens, 240 moves reds to blues
+/**
+ * Moves all colors angle degrees around the color wheel while maintaining intensity of the color and not affecting greys.
+ * 0 is identity, 120 moves reds to greens, 240 moves reds to blues.
+ */
+//
+//
 /proc/color_matrix_rotate_hue(angle)
 	var/sin = sin(angle)
 	var/cos = cos(angle)
 	var/cos_inv_third = 0.333*(1-cos)
 	var/sqrt3_sin = sqrt(3)*sin
 	return list(
-round(cos+cos_inv_third, 0.001), round(cos_inv_third+sqrt3_sin, 0.001), round(cos_inv_third-sqrt3_sin, 0.001), 0,
-round(cos_inv_third-sqrt3_sin, 0.001), round(cos+cos_inv_third, 0.001), round(cos_inv_third+sqrt3_sin, 0.001), 0,
-round(cos_inv_third+sqrt3_sin, 0.001), round(cos_inv_third-sqrt3_sin, 0.001), round(cos+cos_inv_third, 0.001), 0,
-0,0,0,1,
-0,0,0,0)
+		round(cos+cos_inv_third, 0.001), round(cos_inv_third+sqrt3_sin, 0.001), round(cos_inv_third-sqrt3_sin, 0.001), 0,
+		round(cos_inv_third-sqrt3_sin, 0.001), round(cos+cos_inv_third, 0.001), round(cos_inv_third+sqrt3_sin, 0.001), 0,
+		round(cos_inv_third+sqrt3_sin, 0.001), round(cos_inv_third-sqrt3_sin, 0.001), round(cos+cos_inv_third, 0.001), 0,
+		0,0,0,1,
+		0,0,0,0,
+	)
 
 /**
- * Moves all colors angle degrees around the color wheel while maintaining intensity of the color and not affecting whites
+ * Moves all colors angle degrees around the color wheel while maintaining intensity of the color and not affecting whites.
  * TODO: Need a version that only affects one color (ie shift red to blue but leave greens and blues alone)
  */
 /proc/color_matrix_rotation(angle)
@@ -125,23 +136,28 @@ round(cos_inv_third+sqrt3_sin, 0.001), round(cos_inv_third-sqrt3_sin, 0.001), ro
 	var/constB = 0.140
 	var/constC = -0.283
 	return list(
-	LUMA_R + cos * (1-LUMA_R) + sin * -LUMA_R, LUMA_R + cos * -LUMA_R + sin * constA, LUMA_R + cos * -LUMA_R + sin * -(1-LUMA_R),
-	LUMA_G + cos * -LUMA_G + sin * -LUMA_G, LUMA_G + cos * (1-LUMA_G) + sin * constB, LUMA_G + cos * -LUMA_G + sin * LUMA_G,
-	LUMA_B + cos * -LUMA_B + sin * (1-LUMA_B), LUMA_B + cos * -LUMA_B + sin * constC, LUMA_B + cos * (1-LUMA_B) + sin * LUMA_B
+		LUMA_R + cos * (1-LUMA_R) + sin * -LUMA_R, LUMA_R + cos * -LUMA_R + sin * constA, LUMA_R + cos * -LUMA_R + sin * -(1-LUMA_R),
+		LUMA_G + cos * -LUMA_G + sin * -LUMA_G, LUMA_G + cos * (1-LUMA_G) + sin * constB, LUMA_G + cos * -LUMA_G + sin * LUMA_G,
+		LUMA_B + cos * -LUMA_B + sin * (1-LUMA_B), LUMA_B + cos * -LUMA_B + sin * constC, LUMA_B + cos * (1-LUMA_B) + sin * LUMA_B
 	)
 
-//These next three rotate values about one axis only
-//x is the red axis, y is the green axis, z is the blue axis.
+/**
+ * These next three rotate values about one axis only.
+ * x is the red axis, y is the green axis, z is the blue axis.
+ */
 /proc/color_matrix_rotate_x(angle)
-	var/sinval = round(sin(angle), 0.001); var/cosval = round(cos(angle), 0.001)
+	var/sinval = round(sin(angle), 0.001)
+	var/cosval = round(cos(angle), 0.001)
 	return list(1,0,0,0, 0,cosval,sinval,0, 0,-sinval,cosval,0, 0,0,0,1, 0,0,0,0)
 
 /proc/color_matrix_rotate_y(angle)
-	var/sinval = round(sin(angle), 0.001); var/cosval = round(cos(angle), 0.001)
+	var/sinval = round(sin(angle), 0.001)
+	var/cosval = round(cos(angle), 0.001)
 	return list(cosval,0,-sinval,0, 0,1,0,0, sinval,0,cosval,0, 0,0,0,1, 0,0,0,0)
 
 /proc/color_matrix_rotate_z(angle)
-	var/sinval = round(sin(angle), 0.001); var/cosval = round(cos(angle), 0.001)
+	var/sinval = round(sin(angle), 0.001)
+	var/cosval = round(cos(angle), 0.001)
 	return list(cosval,sinval,0,0, -sinval,cosval,0,0, 0,0,1,0, 0,0,0,1, 0,0,0,0)
 
 /**
@@ -164,7 +180,9 @@ round(cos_inv_third+sqrt3_sin, 0.001), round(cos_inv_third-sqrt3_sin, 0.001), ro
 		0, 0, 0
 	)
 
-//Returns a matrix addition of A with B
+/**
+ * Returns a matrix addition of A with B.
+ */
 /proc/color_matrix_add(list/A, list/B)
 	if(!istype(A) || !istype(B))
 		return color_matrix_identity()
@@ -176,7 +194,9 @@ round(cos_inv_third+sqrt3_sin, 0.001), round(cos_inv_third-sqrt3_sin, 0.001), ro
 		output[value] = A[value] + B[value]
 	return output
 
-//Returns a matrix multiplication of A with B
+/**
+ * Returns a matrix multiplication of A with B.
+ */
 /proc/color_matrix_multiply(list/A, list/B)
 	if(!istype(A) || !istype(B))
 		return color_matrix_identity()
@@ -194,20 +214,20 @@ round(cos_inv_third+sqrt3_sin, 0.001), round(cos_inv_third-sqrt3_sin, 0.001), ro
 	return output
 
 /**
- * Assembles a color matrix, defaulting to identity
+ * Assembles a color matrix, defaulting to identity.
  */
 /proc/rgb_construct_color_matrix(rr = 1, rg, rb, gr, gg = 1, gb, br, bg, bb = 1, cr, cg, cb)
 	return list(rr, rg, rb, gr, gg, gb, br, bg, bb, cr, cg, cb)
 
 /**
- * Assembles a color matrix, defaulting to identity
+ * Assembles a color matrix, defaulting to identity.
  */
 /proc/rgba_construct_color_matrix(rr = 1, rg, rb, ra, gr, gg = 1, gb, ga, br, bg, bb = 1, ba, ar, ag, ab, aa = 1, cr, cg, cb, ca)
 	return list(rr, rg, rb, ra, gr, gg, gb, ga, br, bg, bb, ba, ar, ag, ab, aa, cr, cg, cb, ca)
 
 /**
- * constructs a colored greyscale matrix
- * warning: bad math up ahead
+ * Constructs a colored greyscale matrix.
+ * WARNING: Bad math up ahead.
  */
 /proc/rgba_auto_greyscale_matrix(rgba_string)
 	// process rgb(a)
