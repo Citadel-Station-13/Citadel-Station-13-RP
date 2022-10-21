@@ -1,13 +1,14 @@
 /obj/item/clothing/under/oricon/mildress
 	name = "dress uniform"
 	desc = "A dress uniform of some kind."
-	icon_state = "greydress"
+	icon_state = "grey"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/under/oricon/mildress/sysguard
 	name = "explorer's dress uniform"
 	desc = "The dress uniform of the Society of Universal Cartographers in silver trim."
+	icon_state = "grey"
 
 /obj/item/clothing/under/oricon/mildress/sysguard/command
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/command/service)
@@ -36,8 +37,7 @@
 /obj/item/clothing/under/oricon/mildress/sysguard/officer
 	name = "explorer's command dress uniform"
 	desc = "The dress uniform of the Society of Universal Cartographers in gold trim."
-	icon_state = "greydress_com"
-	snowflake_worn_state = "greydress_com"
+	icon_state = "grey_command"
 
 /obj/item/clothing/under/oricon/mildress/sysguard/officer/command
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/command/service)
@@ -66,16 +66,11 @@
 /obj/item/clothing/under/oricon/mildress/marine
 	name = "marine dress uniform"
 	desc = "The dress uniform of the JSDF Marine Corps, class given form."
-	icon_state = "blackdress"
+	icon_state = "black"
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/mildress/marine/command
 	name = "marine command dress uniform"
 	desc = "The dress uniform of the JSDF Marine Corps, even classier in gold."
-	icon_state = "blackdress_com"
-
-/obj/item/clothing/under/oricon/mildress/marine/command/fake
-	name = "command dress uniform"
-	desc = "A dress uniform for command, even classier in gold."
-	icon_state = "blackdress_com"
-
-#warn parse
+	icon_state = "black_command"
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL

@@ -1,134 +1,179 @@
 /obj/item/clothing/under/oricon/utility/sysguard
 	name = "explorer's uniform"
 	desc = "The utility uniform of the Society of Universal Cartographers, made from biohazard resistant material. This one has silver trim."
-	icon_state = "blackutility_crew"
-	snowflake_worn_state = "blackutility_crew"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 10)
+	icon_state = "black_crew"
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/sysguard/command
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/command)
+	name = "explorer's command uniform"
+	icon_state = "black_command"	// todo: actual state
 
 /obj/item/clothing/under/oricon/utility/sysguard/engineering
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/engineering)
+	name = "explorer's engineering uniform"
+	icon_state = "black_eng"
 
 /obj/item/clothing/under/oricon/utility/sysguard/security
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/security)
+	name = "explorer's security uniform"
+	icon_state = "black_sec"
 
 /obj/item/clothing/under/oricon/utility/sysguard/medical
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/medical)
+	name = "explorer's medical uniform"
+	icon_state = "black_med"
 
 /obj/item/clothing/under/oricon/utility/sysguard/supply
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/supply)
+	name = "explorer's logistics uniform"
+	icon_state = "black_sup"
 
 /obj/item/clothing/under/oricon/utility/sysguard/exploration
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/exploration)
+	name = "explorer's uniform"
+	icon_state = "black"	// todo: actual state
 
 /obj/item/clothing/under/oricon/utility/sysguard/research
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/research)
+	name = "explorer's research uniform"
+	icon_state = "black_sci"
 
 /obj/item/clothing/under/oricon/utility/sysguard/officer
 	name = "explorer's officer uniform"
 	desc = "The utility uniform of the Society of Universal Cartographers, made from biohazard resistant material. This one has gold trim."
-	icon_state = "blackutility_com"
-	snowflake_worn_state = "blackutility_com"
+	icon_state = "black_command"
 
 /obj/item/clothing/under/oricon/utility/sysguard/officer/command
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/command)
+	name = "explorer's command officer uniform"
+	icon_state = "black_command"
 
 /obj/item/clothing/under/oricon/utility/sysguard/officer/engineering
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/engineering)
+	name = "explorer's engineering officer uniform"
+	icon_state = "black_eng_command"
 
 /obj/item/clothing/under/oricon/utility/sysguard/officer/security
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/security)
+	name = "explorer's security officer uniform"
+	icon_state = "black_sec_command"
 
 /obj/item/clothing/under/oricon/utility/sysguard/officer/medical
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/medical)
+	name = "explorer's medical officer uniform"
+	icon_state = "black_med_command"
 
 /obj/item/clothing/under/oricon/utility/sysguard/officer/supply
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/supply)
+	name = "explorer's logistics officer uniform"
+	icon_state = "black_command"	// todo: actual state
 
+// todo: you actual memes why does this exist
 /obj/item/clothing/under/oricon/utility/sysguard/officer/exploration
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/exploration)
+	name = "explorer's expeditionary officer uniform"
+	icon_state = "black_command"	// todo: actual state
 
 /obj/item/clothing/under/oricon/utility/sysguard/officer/research
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/research)
+	name = "explorer's science officer uniform"
+	icon_state = "black_sci_command"
 
 /obj/item/clothing/under/oricon/utility/fleet
 	name = "fleet coveralls"
 	desc = "The utility uniform of the JSDF Fleet, made from an insulated material."
-	icon_state = "navyutility"
-	snowflake_worn_state = "navyutility"
+	icon_state = "navy"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 10, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.7
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/fleet/command
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/command/fleet)
+	name = "fleet command coveralls"
+	icon_state = "navy_command"
 
 /obj/item/clothing/under/oricon/utility/fleet/command/pilot
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/specialty/pilot)
+	name = "fleet pilot coveralls"
+	icon_state = "navy_officer"
 
 /obj/item/clothing/under/oricon/utility/fleet/engineering
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/engineering/fleet)
+	name = "fleet engineer coveralls"
+	icon_state = "navy_engi"
 
 /obj/item/clothing/under/oricon/utility/fleet/security
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/security/fleet)
+	name = "fleet security coveralls"
+	icon_state = "navy_sec"
 
 /obj/item/clothing/under/oricon/utility/fleet/medical
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/medical/fleet)
+	name = "fleet medical coveralls"
+	icon_state = "navy_med"
 
 /obj/item/clothing/under/oricon/utility/fleet/supply
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/supply/fleet)
+	name = "fleet logistics coveralls"
+	icon_state = "navy_sup"
 
 /obj/item/clothing/under/oricon/utility/fleet/exploration
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/exploration/fleet)
+	name = "fleet explorer coveralls"
+	icon_state = "navy_combat"
 
 /obj/item/clothing/under/oricon/utility/marine
 	name = "marine fatigues"
 	desc = "The utility uniform of the JSDF Marine Corps, made from durable material."
-	icon_state = "greyutility"
-	snowflake_worn_state = "greyutility"
+	icon_state = "grey"
 	armor = list(melee = 10, bullet = 0, laser = 10,energy = 0, bomb = 0, bio = 0, rad = 0)
 
 /obj/item/clothing/under/oricon/utility/marine/command
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/command/marine)
+	name = "marine command coveralls"
+	icon_state = "grey_command"
+	worn_has_rolldown = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/marine/engineering
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/engineering/marine)
+	name = "marine engineering coveralls"
+	icon_state = "grey_eng"
 
 /obj/item/clothing/under/oricon/utility/marine/security
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/security/marine)
+	name = "marine security coveralls"
+	icon_state = "grey_sec"
 
 /obj/item/clothing/under/oricon/utility/marine/medical
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/medical/marine)
+	name = "marine medical coveralls"
+	icon_state = "grey_med"
 
 /obj/item/clothing/under/oricon/utility/marine/supply
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/supply/marine)
+	name = "marine logistics coveralls"
+	icon_state = "grey_sup"
 
 /obj/item/clothing/under/oricon/utility/marine/exploration
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/exploration/marine)
+	name = "marine explorer coveralls"
+	icon_state = "terran"
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/marine/green
 	name = "green fatigues"
 	desc = "A green version of the JSDF marine utility uniform, made from durable material."
-	icon_state = "greenutility"
+	icon_state = "green"
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/marine/tan
 	name = "tan fatigues"
 	desc = "A tan version of the JSDF marine utility uniform, made from durable material."
-	icon_state = "tanutility"
-
-#warn parse
-
-/obj/item/clothing/under/oricon/utility/marine/olive
-	name = "olive fatigues"
-	desc = "An olive version of the JSDF marine utility uniform, made from durable material."
-	icon = 'icons/obj/clothing/uniforms.dmi'
-	icon_state = "bdu_olive"
-#warn dela with the sprites for this oh FUCK OFF
-
-/obj/item/clothing/under/oricon/utility/marine/desert
-	name = "desert fatigues"
-	desc = "A desert version of the JSDF marine utility uniform, made from durable material."
-	icon = 'icons/obj/clothing/uniforms.dmi'
-	icon_state = "bdu_olive"
-#warn dela with the sprites for this oh FUCK OFF
+	icon_state = "tan"
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL

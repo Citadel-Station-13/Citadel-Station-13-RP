@@ -1,6 +1,9 @@
 /obj/item/clothing/under/oricon/utility/sysguard/crew
 	name = "crew uniform"
 	desc = "A comfortable turtleneck and black utility trousers, made from biohazard resistant material. This one has silver trim."
+	icon = "black_crew"
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/sysguard/crew/command
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/command/crew)
@@ -53,27 +56,3 @@
 
 /obj/item/clothing/under/oricon/utility/sysguard/officer/crew/research
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/research/crew)
-
-/obj/item/clothing/accessory/oricon/department/command/crew
-	desc = "An insignia denoting assignment to the command department. These fit crew uniforms."
-
-/obj/item/clothing/accessory/oricon/department/engineering/crew
-	desc = "An insignia denoting assignment to the engineering department. These fit crew uniforms."
-
-/obj/item/clothing/accessory/oricon/department/security/crew
-	desc = "An insignia denoting assignment to the security department. These fit crew uniforms."
-
-/obj/item/clothing/accessory/oricon/department/medical/crew
-	desc = "An insignia denoting assignment to the medical department. These fit crew uniforms."
-
-/obj/item/clothing/accessory/oricon/department/supply/crew
-	desc = "An insignia denoting assignment to the supply department. These fit crew uniforms."
-
-/obj/item/clothing/accessory/oricon/department/exploration/crew
-	desc = "An insignia denoting assignment to the exploration department. These fit crew uniforms."
-
-/obj/item/clothing/accessory/oricon/department/research/crew
-	desc = "An insignia denoting assignment to the research department. These fit crew uniforms."
-
-/obj/item/clothing/accessory/oricon/department/service/crew
-	desc = "An insignia denoting assignment to the service department. These fit crew uniforms."

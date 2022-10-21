@@ -11,7 +11,6 @@
 	slot_flags = SLOT_BACK
 	max_w_class = ITEMSIZE_LARGE
 	max_storage_space = INVENTORY_STANDARD_SPACE
-	worn_bodytypes_converted = ~(BODYTYPE_TESHARI)
 	var/flippable = 0
 	var/side = 0 //0 = right, 1 = left
 	drop_sound = 'sound/items/drop/backpack.ogg'
