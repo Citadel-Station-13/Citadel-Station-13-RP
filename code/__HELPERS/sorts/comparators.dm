@@ -171,7 +171,7 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 /proc/cmp_holiday_priority(datum/holiday/A, datum/holiday/B)
 	return A.priority - B.priority
 
-//! PROFILE STUFF
+//! Line Profiling
 
 /proc/cmp_profile_avg_time_dsc(list/A, list/B)
 	return (B[PROFILE_ITEM_TIME]/(B[PROFILE_ITEM_COUNT] || 1)) - (A[PROFILE_ITEM_TIME]/(A[PROFILE_ITEM_COUNT] || 1))
@@ -181,3 +181,7 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 
 /proc/cmp_profile_count_dsc(list/A, list/B)
 	return B[PROFILE_ITEM_COUNT] - A[PROFILE_ITEM_COUNT]
+
+//! Preferences
+/proc/cmp_preference_load_order(datum/category_item/player_setup_item/A, datum/category_item/player_setup_item/B)
+	return A.load_order - B.load_order

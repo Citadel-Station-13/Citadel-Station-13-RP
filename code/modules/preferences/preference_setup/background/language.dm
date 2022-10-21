@@ -2,6 +2,7 @@
 	name = "Language"
 	sort_order = 4
 	save_key = CHARACTER_DATA_LANGUAGES
+	load_order = PREFERENCE_LOAD_ORDER_LANGUAGE
 
 /datum/category_item/player_setup_item/background/language/content(datum/preferences/prefs, mob/user, data)
 	. = list()

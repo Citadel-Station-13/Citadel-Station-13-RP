@@ -103,6 +103,7 @@
 	S["slot_[slot]"] >> transformed
 	if(!islist(transformed))
 		transformed = list()
+	#warn respect load order
 	for(var/key in transformed)
 		var/datum/category_item/player_setup_item/I = preference_by_save_key(key)
 		if(I.is_global)
@@ -121,6 +122,7 @@
 	S["global"] >> transformed
 	if(!islist(transformed))
 		transformed = list()
+	#warn respect load order
 	for(var/key in transformed)
 		var/datum/category_item/player_setup_item/I = preference_by_save_key(key)
 		if(!I.is_global)
@@ -159,6 +161,7 @@
 	else
 		return character[preference.save_key] = preference.filter(character[preference.save_key])
 
+#warn below needs to respect load order
 /**
  * resanitize everything
  */

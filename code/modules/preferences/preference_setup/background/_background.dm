@@ -7,6 +7,7 @@
 
 /datum/category_item/player_setup_item/background
 	is_global = FALSE
+	load_order = PREFERENCE_LOAD_ORDER_LORE
 
 /datum/preferences/proc/sanitize_background_lore()
 	sanitize_preference(/datum/category_item/player_setup_item/background/citizenship)

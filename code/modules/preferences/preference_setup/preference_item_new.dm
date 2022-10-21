@@ -11,6 +11,8 @@
 	var/const/save_key		// genuinely you have zero reason to change this at runtime
 	/// globally saved, or character-slot saved?
 	var/const/is_global		// genuinely you have zero reason to change this at runtime
+	/// load order; sanitization + deserialization goes from lowest to highest
+	var/load_order = PREFERENCE_LOAD_ORDER_DEFAULT
 
 /**
  * called to apply to mob
