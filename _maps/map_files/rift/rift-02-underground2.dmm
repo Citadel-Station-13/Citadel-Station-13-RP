@@ -648,7 +648,8 @@
 /area/maintenance/lower/mining)
 "bz" = (
 /obj/machinery/door/airlock/maintenance/engi{
-	name = "Elevator Shaft Access"
+	name = "Elevator Shaft Access";
+	req_one_access = null
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
@@ -930,13 +931,21 @@
 /turf/simulated/floor/tiled/white,
 /area/rift/asylum/mess)
 "cm" = (
+/obj/machinery/atmospherics/pipe/manifold/visible/red{
+	dir = 8
+	},
+/obj/structure/catwalk,
+/obj/effect/floor_decal/industrial/danger{
+	dir = 4
+	},
 /obj/machinery/alarm{
 	desc = " ";
 	dir = 8;
-	pixel_x = 24
+	pixel_x = 24;
+	pixel_y = 32
 	},
-/turf/simulated/wall/r_wall,
-/area/engineering/engine_core)
+/turf/simulated/floor/plating,
+/area/engineering/engine_room)
 "cn" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/blue{
 	dir = 8
@@ -10176,8 +10185,8 @@
 /turf/simulated/floor,
 /area/rift/asylum/fitness)
 "Aj" = (
-/obj/structure/ladder/snake_eater,
 /obj/structure/railing,
+/obj/structure/ladder,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "Al" = (
@@ -11338,7 +11347,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing,
-/obj/structure/ladder/snake_eater/up,
+/obj/structure/ladder/up,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/mining)
 "GG" = (
@@ -29628,8 +29637,8 @@ bC
 bo
 ar
 lK
+bQ
 cm
-eW
 dn
 eW
 bQ

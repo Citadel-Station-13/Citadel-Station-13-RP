@@ -3700,6 +3700,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "gB" = (
@@ -15255,14 +15258,15 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/checkpoint2)
 "Db" = (
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 1
-	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 2
+	},
 /turf/simulated/floor/tiled/dark,
 /area/bridge/bridge_hallway)
 "Dc" = (
@@ -46835,11 +46839,11 @@ fq
 cH
 fq
 fq
-fq
-YF
+cH
+cH
 YF
 vS
-yK
+aA
 YF
 NJ
 LK
@@ -47028,12 +47032,12 @@ cH
 fq
 fq
 fq
-fq
+cH
+cH
 fq
 YF
 yK
 Ex
-yK
 cp
 aA
 LK
@@ -47223,11 +47227,11 @@ fq
 fq
 fq
 fq
+cH
 fq
 YF
 ek
 aA
-yK
 YF
 aA
 vu
@@ -47417,11 +47421,11 @@ fq
 fq
 fq
 fq
-fq
+cH
+cH
 YF
 eH
 lg
-yK
 YF
 vS
 aA
@@ -47612,7 +47616,7 @@ fq
 fq
 fq
 fq
-YF
+cH
 YF
 YF
 YF
@@ -49387,10 +49391,10 @@ Ch
 Xq
 Ch
 Mf
-Ea
+kE
 fX
 hi
-kE
+Ea
 Ea
 gx
 Os
@@ -49581,10 +49585,10 @@ ox
 CW
 ny
 Ug
-kt
+Db
 mI
 yn
-Db
+yn
 yn
 gA
 du
@@ -49775,10 +49779,10 @@ nJ
 eD
 ze
 uJ
-mb
-mb
-mb
 eY
+mb
+mb
+mb
 Ht
 BA
 JU
