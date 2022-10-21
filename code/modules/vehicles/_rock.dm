@@ -7,6 +7,8 @@
 	max_integrity = 200
 	riding_handler_type = /datum/component/riding_handler/vehicle/rock
 
+/obj/vehicle/ridden/rock/drive_check(mob/user)
+	return !!user.get_held_item_of_type(/obj/item/pizzabox)
 
 /datum/component/riding_handler/vehicle/rock
 	vehicle_move_delay = 1
