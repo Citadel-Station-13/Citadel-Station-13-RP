@@ -44,7 +44,6 @@ SUBSYSTEM_DEF(job)
 		if(!(J.join_types & JOB_ROUNDSTART))
 			continue
 		var/faction = J.faction
-		faction_counts[faction] += 1
 		LAZYINITLIST(job_pref_ui_cache[faction])
 		var/department = LAZYACCESS(J.departments, 1) || "Misc"
 		LAZYADD(job_pref_ui_cache[faction][department], id)

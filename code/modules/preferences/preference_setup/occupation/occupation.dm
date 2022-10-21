@@ -87,7 +87,7 @@
 			// iterate
 			var/count = 0
 			var/limit = max(5, SSjob.job_pref_ui_per)
-			for(var/list/department in ui_date[faction])
+			for(var/list/department in ui_data[faction])
 				var/dep_amt = length(department)
 				// if we'd hit limit, we split first as we're not longer than limit or would waste more than 4 slots.
 				if(count + dep_amt > limit && dep_amt <= limit && limit - count <= 4)
@@ -128,7 +128,7 @@
 	// left side
 	. += "<a href='?src=[REF(src)];prefs=[REF(prefs)];act=help;help=[J.id]'>\[?]</a> "
 	var/rank
-	if((J.title in SSjob.get_job_titles_in_department) || (J.id == JOB_ID_AI))
+	if((J.title in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND)) || (J.id == JOB_ID_AI))
 		rank = "<b>[J.title]</b>"
 	else
 		rank = "[J.title]"
@@ -208,7 +208,7 @@
 			built += "<b>Purpose:</b> [J.desc]"
 			built += "<b>Alternative titles:</b> [english_list(J.alt_titles)]"
 			if(J.supervisors)
-	 			built += "You answer to [J.supervisors], normally."
+				built += "You answer to [J.supervisors], normally."
 			if(J.departments)
 				built += "<b>Departments</b>: [english_list(J.departments)]"
 			if(J.departments_managed)
@@ -246,7 +246,7 @@
 /datum/category_item/player_setup_item/occupation/alt_titles/filter(datum/preferences/prefs, data, list/errors)
 	var/list/jobs = sanitize_islist(data)
 	for(var/id in jobs)
-		var/datum/job/J in SSjob.job_by_id(id)
+		var/datum/job/J = SSjob.job_by_id(id)
 		if(!J)
 			jobs -= id
 			continue
