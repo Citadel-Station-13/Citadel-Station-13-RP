@@ -43,7 +43,7 @@
 	/// minimum moles to see gas
 	var/visual_threshold = 0.25
 	/// index addition per mole for cache list
-	var/visual_factor 1
+	var/visual_factor = 1
 
 	//! reactions
 	/// Fusion is not yet implemented : How much the gas accelerates a fusion reaction
