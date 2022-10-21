@@ -33,7 +33,7 @@ Stands have a lot of procs which mimic mob procs. Rather than inserting hooks fo
 1. `/datum/var/list/datum_components` (private)
     * Lazy associated list of type -> component/list of components.
 1. `/datum/var/list/comp_lookup` (private)
-	* Lazy associated list of signal -> registree/list of registrees
+    * Lazy associated list of signal -> registree/list of registrees
 1. `/datum/var/list/signal_procs` (private)
     * Associated lazy list of signals -> `/datum/callback`s that will be run when the parent datum receives that signal
 1. `/datum/var/signal_enabled` (protected, boolean)

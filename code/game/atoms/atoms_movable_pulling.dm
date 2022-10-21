@@ -4,7 +4,7 @@
 /atom/movable/proc/move_pulled_towards(atom/A)
 	if(!pulling)
 		return
-	if(pulling.anchored || ((pulling.move_resist * MOVE_FORCE_PULL_RATIO) > pull_force) || !pulling.Adjacent(src))
+	if(pulling.anchored || ((pulling.pull_resist * MOVE_FORCE_PULL_RATIO) > pull_force) || !pulling.Adjacent(src))
 		stop_pulling()
 		return
 	if(isliving(pulling))
@@ -77,7 +77,7 @@
 		stack_trace("[src]'s pull on [pullee] wasn't broken despite [pullee] being in [pullee.loc]. Pull stopped manually.")
 		stop_pulling()
 		return
-	if(pulling.anchored || pulling.move_resist > move_force)
+	if(pulling.anchored || (pulling.pull_force * MOVE_FORCE_PULL_RATIO > pull_force))
 		stop_pulling()
 		return
 
@@ -89,7 +89,7 @@
 		return FALSE
 	if(anchored || throwing)
 		return FALSE
-	if(force < (move_resist * MOVE_FORCE_PULL_RATIO))
+	if(force < (pull_resist * MOVE_FORCE_PULL_RATIO))
 		return FALSE
 	return TRUE
 

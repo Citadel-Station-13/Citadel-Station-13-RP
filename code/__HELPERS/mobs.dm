@@ -87,9 +87,9 @@
 
 	if(!current_species || current_species.name_language == null)
 		if(gender==FEMALE)
-			return capitalize(pick(first_names_female)) + " " + capitalize(pick(last_names))
+			return capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
 		else
-			return capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
+			return capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
 	else
 		return current_species.get_random_name(gender)
 
@@ -192,7 +192,7 @@
 	if(cached_character_icons[cachekey])
 		. = cached_character_icons[cachekey]
 	else
-		. = getCompoundIcon(desired)
+		. = get_compound_icon(desired)
 		cached_character_icons[cachekey] = .
 
 /// Gets the client of the mob, allowing for mocking of the client.

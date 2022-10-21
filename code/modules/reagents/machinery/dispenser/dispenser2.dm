@@ -53,7 +53,7 @@
 		to_chat(user, "<span class='notice'>You add \the [C] to \the [src].</span>")
 
 	cartridges[C.label] = C
-	cartridges = sortTim(cartridges, /proc/cmp_text_asc)
+	cartridges = tim_sort(cartridges, /proc/cmp_text_asc)
 	SStgui.update_uis(src)
 
 /obj/machinery/chemical_dispenser/proc/remove_cartridge(label)

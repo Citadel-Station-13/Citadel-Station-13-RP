@@ -168,7 +168,7 @@ SUBSYSTEM_DEF(transcore)
 /datum/controller/subsystem/transcore/proc/add_backup(datum/transhuman/mind_record/MR)
 	ASSERT(MR)
 	backed_up[MR.mindname] = MR
-	backed_up = sortTim(backed_up, /proc/cmp_text_asc, TRUE)
+	backed_up = tim_sort(backed_up, /proc/cmp_text_asc, TRUE)
 	subsystem_log("Added [MR.mindname] to transcore DB.")
 
 // Remove a mind_record from the backup-checking list.  Keeps track of it in has_left // Why do we do that? ~Leshana
@@ -183,7 +183,7 @@ SUBSYSTEM_DEF(transcore)
 /datum/controller/subsystem/transcore/proc/add_body(datum/transhuman/body_record/BR)
 	ASSERT(BR)
 	body_scans[BR.mydna.name] = BR
-	body_scans = sortTim(body_scans, /proc/cmp_text_asc, TRUE)
+	body_scans = tim_sort(body_scans, /proc/cmp_text_asc, TRUE)
 	subsystem_log("Added [BR.mydna.name] to transcore body DB.")
 
 // Remove a body record from the database (Usually done when someone cryos)  // Why? ~Leshana

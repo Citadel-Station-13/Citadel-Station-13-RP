@@ -60,7 +60,7 @@
 	for(var/plushie in subtypesof(/obj/item/toy/plushie/) - /obj/item/toy/plushie/therapy)
 		var/obj/item/toy/plushie/plushie_type = plushie
 		plushies[initial(plushie_type.name)] = plushie_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(plushies, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(plushies, /proc/cmp_text_asc))
 
 /datum/gear/flask
 	name = "Flask"
@@ -91,7 +91,7 @@
 		var/obj/item/storage/toolbox/lunchbox/lunchbox = lunchbox_type
 		if(!initial(lunchbox.filled))
 			lunchboxes[initial(lunchbox.name)] = lunchbox_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(lunchboxes, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(lunchboxes, /proc/cmp_text_asc))
 	gear_tweaks += new/datum/gear_tweak/contents(lunchables_lunches(), lunchables_snacks(), lunchables_drinks())
 
 /datum/gear/towel
@@ -122,7 +122,7 @@
 	for(var/tball in typesof(/obj/item/toy/tennis) - typesof(/obj/item/toy/tennis/rainbow))
 		var/obj/item/toy/tennis/ball_type = tball
 		tennis_balls[initial(ball_type.name)] = ball_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(tennis_balls, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tennis_balls, /proc/cmp_text_asc))
 
 /datum/gear/swimsuitcaps
 	name = "Swimsuit Capsule Selection"
@@ -134,4 +134,4 @@
 	for(var/swimsuit in typesof(/obj/item/storage/box/fluff/swimsuit))
 		var/obj/item/storage/box/fluff/swimsuit/swimsuit_type = swimsuit
 		swimsuits[initial(swimsuit_type.name)] = swimsuit_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(swimsuits, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(swimsuits, /proc/cmp_text_asc))

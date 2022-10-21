@@ -161,20 +161,20 @@ mob
 			// Give it a name for the cache
 			var/iconName = "[ckey(src.name)]_flattened.dmi"
 			// Send the icon to src's local cache
-			src<<browse_rsc(getFlatIcon(src), iconName)
+			src<<browse_rsc(get_flat_icon(src), iconName)
 			// Display the icon in their browser
 			src<<browse("<body bgcolor='#000000'><p><img src='[iconName]'></p></body>")
 
 		Output_Icon()
 			set name = "2. Output Icon"
-			to_chat(src, "Icon is: [icon2base64html(getFlatIcon(src))]")
+			to_chat(src, "Icon is: [icon2base64html(get_flat_icon(src))]")
 
 		Label_Icon()
 			set name = "3. Label Icon"
 			// Give it a name for the cache
 			var/iconName = "[ckey(src.name)]_flattened.dmi"
 			// Copy the file to the rsc manually
-			var/icon/I = fcopy_rsc(getFlatIcon(src))
+			var/icon/I = fcopy_rsc(get_flat_icon(src))
 			// Send the icon to src's local cache
 			src<<browse_rsc(I, iconName)
 			// Update the label to show it
@@ -188,7 +188,7 @@ mob
 			set name = "5. Stress Test"
 			for(var/i = 0 to 1000)
 				// The third parameter forces it to generate a new one, even if it's already cached
-				getFlatIcon(src,0,2)
+				get_flat_icon(src,0,2)
 				if(prob(5))
 					Add_Overlay()
 			Browse_Icon()
@@ -196,7 +196,7 @@ mob
 		Cache_Test()
 			set name = "6. Cache Test"
 			for(var/i = 0 to 1000)
-				getFlatIcon(src)
+				get_flat_icon(src)
 			Browse_Icon()
 
 /obj/effect/overlayTest
@@ -733,7 +733,7 @@ world
 /mob/proc/AddCamoOverlay(atom/A)//A is the atom which we are using as the overlay.
 	var/icon/opacity_icon = new(A.icon, A.icon_state)//Don't really care for overlays/underlays.
 	//Now we need to culculate overlays+underlays and add them together to form an image for a mask.
-	var/icon/alpha_mask = getIconMask(src)//getFlatIcon(src) is accurate but SLOW. Not designed for running each tick. This is also a little slow since it's blending a bunch of icons together but good enough.
+	var/icon/alpha_mask = getIconMask(src)//get_flat_icon(src) is accurate but SLOW. Not designed for running each tick. This is also a little slow since it's blending a bunch of icons together but good enough.
 	opacity_icon.AddAlphaMask(alpha_mask)//Likely the main source of lag for this proc. Probably not designed to run each tick.
 	opacity_icon.ChangeOpacity(0.4)//Front end for MapColors so it's fast. 0.5 means half opacity and looks the best in my opinion.
 	for(var/i=0,i<5,i++)//And now we add it as overlays. It's faster than creating an icon and then merging it.
@@ -878,7 +878,7 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 		for(var/D in showDirs)
 			body.setDir(D)
 			COMPILE_OVERLAYS(body)
-			var/icon/partial = getFlatIcon(body)
+			var/icon/partial = get_flat_icon(body)
 			out_icon.Insert(partial,dir=D)
 
 		humanoid_icon_cache[icon_id] = out_icon
@@ -1038,7 +1038,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 	return "<img class='icon icon-[A.icon_state]' src='data:image/png;base64,[bicon_cache[key]]'>"
 
-/// Costlier version of icon2html() that uses getFlatIcon() to account for overlays, underlays, etc. Use with extreme moderation, ESPECIALLY on mobs.
+/// Costlier version of icon2html() that uses get_flat_icon() to account for overlays, underlays, etc. Use with extreme moderation, ESPECIALLY on mobs.
 /proc/costly_icon2html(thing, target, sourceonly = FALSE)
 	if (!thing)
 		return
@@ -1048,7 +1048,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 	if (isicon(thing))
 		return icon2html(thing, target)
 
-	var/icon/I = getFlatIcon(thing)
+	var/icon/I = get_flat_icon(thing)
 	return icon2html(I, target, sourceonly = sourceonly)
 
 
@@ -1103,7 +1103,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 /**
  * Animate a 'halo' around an object.
  *
- * This proc is not exactly cheap. You'd be well advised to set up many-loops rather than call this super-often. getCompoundIcon is
+ * This proc is not exactly cheap. You'd be well advised to set up many-loops rather than call this super-often. get_compound_icon is
  * mostly to blame for this. If Byond ever implements a way to get something's icon more 'gently' than this, do that instead.
  *
  * * A - This is the atom to put the halo on
@@ -1131,7 +1131,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 	if(simple_icons)
 		hole = icon(A.icon, A.icon_state)
 	else
-		hole = getCompoundIcon(A)
+		hole = get_compound_icon(A)
 
 	hole.MapColors(0,0,0, 0,0,0, 0,0,0, 1,1,1) //White.
 
@@ -1176,7 +1176,7 @@ GLOBAL_LIST_INIT(freon_color_matrix, list("#2E5E69", "#60A2A8", "#A1AFB1", rgb(0
 
 // DEPRICATED SOON
 /proc/downloadImage(atom/A, dir) //this is expensive and dumb
-	var/icon/this_icon = getFlatIcon(A, dir=dir)
+	var/icon/this_icon = get_flat_icon(A, dir=dir)
 	usr << ftp(this_icon,"[A.name].png")
 
 /*
