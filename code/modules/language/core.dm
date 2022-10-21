@@ -30,7 +30,7 @@
 	if(prob(70))
 		return "[pick(list("PBU","HIU","SINA","ARMA","OSI"))]-[rand(100, 999)]"
 	else
-		return pick(ai_names)
+		return pick(GLOB.ai_names)
 
 /datum/language/sign
 	id = LANGUAGE_ID_SIGN

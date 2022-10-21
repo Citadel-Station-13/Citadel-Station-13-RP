@@ -23,7 +23,7 @@ var/global/datum/controller/occupations/job_master
 			continue
 		job = new J
 		occupations += job
-	sortTim(occupations, /proc/cmp_job_datums)
+	tim_sort(occupations, /proc/cmp_job_datums)
 	return TRUE
 
 

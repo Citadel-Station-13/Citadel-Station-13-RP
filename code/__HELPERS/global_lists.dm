@@ -161,7 +161,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 			else
 				hair_styles_male_list += H.name
 				hair_styles_female_list += H.name
-	sortTim(hair_styles_list, /proc/cmp_name_asc, associative = TRUE)
+	tim_sort(hair_styles_list, /proc/cmp_name_asc, associative = TRUE)
 
 	//Facial Hair - Initialise all /datum/sprite_accessory/facial_hair into an list indexed by facialhair-style name
 	paths = typesof(/datum/sprite_accessory/facial_hair) - /datum/sprite_accessory/facial_hair
@@ -181,7 +181,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 			else
 				facial_hair_styles_male_list += H.name
 				facial_hair_styles_female_list += H.name
-	sortTim(facial_hair_styles_list, /proc/cmp_name_asc, associative = TRUE)
+	tim_sort(facial_hair_styles_list, /proc/cmp_name_asc, associative = TRUE)
 
 	//Body markings - Initialise all /datum/sprite_accessory/marking into an list indexed by marking name
 	paths = typesof(/datum/sprite_accessory/marking) - /datum/sprite_accessory/marking
@@ -196,7 +196,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 			continue
 
 		body_marking_styles_list[M.name] = M
-	sortTim(body_marking_styles_list, /proc/cmp_name_asc, associative = TRUE)
+	tim_sort(body_marking_styles_list, /proc/cmp_name_asc, associative = TRUE)
 
 	//List of job. I can't believe this was calculated multiple times per tick!
 	paths = typesof(/datum/job)-/datum/job

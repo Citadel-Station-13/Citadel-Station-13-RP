@@ -63,7 +63,7 @@ SUBSYSTEM_DEF(garbage)
 	var/list/dellog = list()
 
 	//sort by how long it's wasted hard deleting
-	sortTim(items, cmp=/proc/cmp_qdel_item_time, associative = TRUE)
+	tim_sort(items, cmp=/proc/cmp_qdel_item_time, associative = TRUE)
 	for(var/path in items)
 		var/datum/qdel_item/I = items[path]
 		dellog += "Path: [path]"
@@ -337,7 +337,7 @@ SUBSYSTEM_DEF(garbage)
 		++c
 	var/list/built = list("counted [c] datums in [round((world.timeofday - start) * 0.1, 0.01)] seconds")
 	start = world.timeofday
-	sortTim(L, /proc/cmp_numeric_dsc, associative = TRUE)
+	tim_sort(L, /proc/cmp_numeric_dsc, associative = TRUE)
 	built += "sorted [c] datums in [round((world.timeofday - start) * 0.1, 0.01)] seconds"
 	for(var/i in L)
 		built += "[i] - [L[i]]"
@@ -423,7 +423,7 @@ SUBSYSTEM_DEF(garbage)
 	var/list/built = list("counted [c] datums in [round((world.timeofday - start) * 0.1, 0.01)] seconds")
 	start = world.timeofday
 	built += "sorted [c] datums in [round((world.timeofday - start) * 0.1, 0.01)] seconds"
-	sortTim(L, /proc/cmp_numeric_dsc, associative = TRUE)
+	tim_sort(L, /proc/cmp_numeric_dsc, associative = TRUE)
 	for(var/i in L)
 		built += "[i] - [L[i]]"
 	var/datum/browser/B = new(usr, "datum_outgoing_ref_count", "datum outgoing ref count")

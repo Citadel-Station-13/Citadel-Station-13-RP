@@ -34,7 +34,7 @@
 
 	if(show_pilot)
 		if(occupant)
-			pilot_image = getCompoundIcon(occupant)
+			pilot_image = get_compound_icon(occupant)
 
 			if(!istype(occupant, /mob/living/carbon/brain))
 

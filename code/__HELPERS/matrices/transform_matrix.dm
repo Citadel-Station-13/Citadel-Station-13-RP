@@ -28,7 +28,9 @@
 		//doesn't have an object argument because this is "Stacking" with the animate call above
 		//3 billion% intentional
 
-//Dumps the matrix data in format a-f
+/**
+ * Dumps the matrix data in format a-f.
+ */
 /matrix/proc/tolist()
 	. = list()
 	. += a
@@ -38,12 +40,13 @@
 	. += e
 	. += f
 
-//Dumps the matrix data in a matrix-grid format
-/*
-  a d 0
-  b e 0
-  c f 1
-*/
+/**
+ * Dumps the matrix data in a matrix-grid format.
+ *
+ * a d 0
+ * b e 0
+ * c f 1
+ */
 /matrix/proc/togrid()
 	. = list()
 	. += a
@@ -56,11 +59,15 @@
 	. += f
 	. += 1
 
-//The X pixel offset of this matrix
+/**
+ * The X pixel offset of this matrix.
+ */
 /matrix/proc/get_x_shift()
 	. = c
 
-//The Y pixel offset of this matrix
+/**
+ * The Y pixel offset of this matrix.
+ */
 /matrix/proc/get_y_shift()
 	. = f
 
@@ -70,17 +77,19 @@
 /matrix/proc/get_y_skew()
 	. = d
 
-//Skews a matrix in a particular direction
-//Missing arguments are treated as no skew in that direction
-
-//As Rotation is defined as a scale+skew, these procs will break any existing rotation
-//Unless the result is multiplied against the current matrix
+/**
+ * Skews a matrix in a particular direction.
+ * Missing arguments are treated as no skew in that direction.
+ *
+ * As Rotation is defined as a scale+skew, these procs will break any existing rotation.
+ * Unless the result is multiplied against the current matrix.
+ */
 /matrix/proc/set_skew(x = 0, y = 0)
 	b = x
 	d = y
 
 /**
- * constructs a transform matrix, defaulting to identity
+ * Constructs a transform matrix, defaulting to identity.
  */
 /proc/transform_matrix_construct(a = 1, b, c, d = 1, e, f)
 	return matrix(a, b, c, d, e, f)

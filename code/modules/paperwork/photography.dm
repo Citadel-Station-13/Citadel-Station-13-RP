@@ -179,7 +179,7 @@ var/global/photo_count = 0
 	for(var/i; i <= sorted.len; i++)
 		var/atom/A = sorted[i]
 		if(A)
-			var/icon/img = getFlatIcon(A)
+			var/icon/img = get_flat_icon(A)
 
 			// If what we got back is actually a picture, draw it.
 			if(istype(img, /icon))
@@ -200,7 +200,7 @@ var/global/photo_count = 0
 		// Calculate where we are relative to the center of the photo
 		var/xoff = (the_turf.x - center.x) * 32 + center_offset
 		var/yoff = (the_turf.y - center.y) * 32 + center_offset
-		res.Blend(getFlatIcon(the_turf.loc), blendMode2iconMode(the_turf.blend_mode),xoff,yoff)
+		res.Blend(get_flat_icon(the_turf.loc), blendMode2iconMode(the_turf.blend_mode),xoff,yoff)
 	return res
 
 

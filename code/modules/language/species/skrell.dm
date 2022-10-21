@@ -26,7 +26,7 @@
 	language_flags = WHITELISTED
 	syllables = list("qr","qrr","xuq","qil","quum","xuqm","vol","xrim","zaoo","qu-uu","qix","qoo","zix", "...", "oo", "q", "nq", "x", "xq", "ll", "...", "...", "...") //should sound like there's holes in it
 
-/datum/language/skrell/get_random_name(var/gender)
-	var/list/first_names = world.file2list('strings/names/first_name_skrell.txt')
-	var/list/last_names = world.file2list('strings/names/last_name_skrell.txt')
-	return "[pick(first_names)] [pick(last_names)]"
+/datum/language/skrell/get_random_name(gender)
+	var/list/first_name = GLOB.skrell_first_names
+	var/list/last_name = GLOB.skrell_last_names
+	return "[pick(first_name)] [pick(last_name)]"

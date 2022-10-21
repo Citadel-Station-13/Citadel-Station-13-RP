@@ -95,10 +95,10 @@ var/list/gear_datums = list()
 		gear_datums[G.name] = G
 		LC.gear[G.name] = gear_datums[G.name]
 
-	loadout_categories = sortTim(loadout_categories, /proc/cmp_text_asc)
+	loadout_categories = tim_sort(loadout_categories, /proc/cmp_text_asc)
 	for(var/loadout_category in loadout_categories)
 		var/datum/loadout_category/LC = loadout_categories[loadout_category]
-		LC.gear = sortTim(LC.gear, /proc/cmp_text_asc)	// DO NOT ADD A ", TRUE" TO THE END OF THIS FUCKING LINE IT'S WHAT WAS CAUSING ALPHABETIZATION TO BREAK
+		LC.gear = tim_sort(LC.gear, /proc/cmp_text_asc)	// DO NOT ADD A ", TRUE" TO THE END OF THIS FUCKING LINE IT'S WHAT WAS CAUSING ALPHABETIZATION TO BREAK
 	return 1
 
 /datum/category_item/player_setup_item/loadout
