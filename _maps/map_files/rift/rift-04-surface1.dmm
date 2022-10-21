@@ -5752,6 +5752,10 @@
 /obj/machinery/light_construct/small{
 	dir = 4
 	},
+/obj/machinery/light_switch{
+	dir = 8;
+	pixel_x = 26
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/maintenance/maint_bar)
 "dSI" = (
@@ -13845,8 +13849,15 @@
 /area/rnd/hallway)
 "jgE" = (
 /obj/structure/table/steel,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/storage/box/lights/bulbs,
+/obj/item/storage/box/lights/bulbs{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/storage/box/lights/bulbs_neon,
+/obj/item/storage/box/lights/bulbs_colored{
+	pixel_x = 4;
+	pixel_y = -4
+	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/maint_bar)
 "jgH" = (
@@ -18058,6 +18069,7 @@
 	},
 /obj/structure/table,
 /obj/random/junk,
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/maintenance/maint_bar)
 "lQs" = (
@@ -36368,6 +36380,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/item/storage/toolbox/mechanical,
 /turf/simulated/floor/grass,
 /area/medical/psych)
 "wTy" = (
