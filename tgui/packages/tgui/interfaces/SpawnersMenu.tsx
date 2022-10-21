@@ -8,8 +8,9 @@ type SpawnersMenuContext = {
 
 type spawner = {
   name: string;
+  id: string;
   amount_left: number;
-  you_are_text?: string;
+  short_desc?: string;
   flavor_text?: string;
   important_text?: string;
 };
