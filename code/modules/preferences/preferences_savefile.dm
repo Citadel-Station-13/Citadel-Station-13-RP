@@ -165,6 +165,8 @@
 
 /datum/preferences/proc/sanitize_preferences()
 	player_setup.sanitize_setup()
+	// todo: error feedback
+	sanitize_everything()
 	return 1
 
 #undef SAVEFILE_VERSION_MAX

@@ -156,8 +156,6 @@
 	else
 		return character[preference.save_key] = preference.filter(character[preference.save_key])
 
-#warn above should sanitize on sanitize_character and sanitize_global
-
 /**
  * resanitize everything
  */

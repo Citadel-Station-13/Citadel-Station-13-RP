@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(job)
 	/// jobs by id
 	var/list/job_lookup
 	/// job preferences ui cache - cache[faction string][department name] = list(job ids)
-	var/list/job_
+	var/list/job_pref_ui_cache
 
 	var/list/department_datums = list()
 	var/debug_messages = FALSE
@@ -20,6 +20,7 @@ SUBSYSTEM_DEF(job)
 		setup_departments()
 	if(!occupations.len)
 		setup_occupations()
+	reconstruct_job_ui_caches()
 	return ..()
 
 /datum/controller/subsystem/job/Recover()
@@ -34,7 +35,15 @@ SUBSYSTEM_DEF(job)
 	return ..()
 
 /datum/controller/subsystem/job/proc/reconstruct_job_ui_caches()
-	#warn impl
+	job_pref_ui_cache = list()
+	for(var/id in job_lookup)
+		var/datum/job/J = job_lookup[id]
+		if(!(J.join_types & JOB_ROUNDSTART))
+			continue
+		var/faction = J.faction
+		LAZYINITLIST(job_pref_ui_cache[faction])
+		var/department = LAZYACCESS(J.departments, 1) || "Misc"
+		LAZYADD(job_pref_ui_cache[faction][department], id)
 
 /datum/controller/subsystem/job/proc/setup_occupations()
 	occupations = list()

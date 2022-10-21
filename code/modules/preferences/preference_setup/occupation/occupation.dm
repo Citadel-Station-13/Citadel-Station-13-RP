@@ -47,6 +47,16 @@
 	// form table
 
 	// grab job-by-department ui cache
+	var/list/ui_data = SSjob.job_pref_ui_cache
+	// build - one faction
+	if(length(ui_data) == 1)
+		for(var/list/department as anything in ui_data[ui_data[1]])
+
+	// build - multi-faction
+	else
+		for(var/faction in ui_data)
+			var/list/departments = ui_data[faction]
+			for(var/department in departments)
 
 	// close table
 
