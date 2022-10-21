@@ -29,6 +29,9 @@
 				highest = jobs[id]
 	return jobs
 
+#define START_COLUMN . += "<td width='10%' valign='top'><table width='100%' cellpadding='1' cellspacing='0'>"
+#define END_COLUMN . += "</table></td>"
+#define NEW_COLUMN START_COLUMN; END_COLUMN; count = 0;
 /datum/category_item/player_setup_item/occupation/jobs/content(datum/preferences/prefs, mob/user, data)
 	// cast data
 	var/list/current = data
@@ -41,48 +44,135 @@
 	// center
 	. += "<center>"
 	// user intro
-	. += "<b>Choose occupation preferences</b><br>Unavailable occupations are crossed out.<br>"
+	. += "<h3>Choose occupation preferences</h3><br>Unavailable occupations are crossed out.<br>"
 	// script inject for right click
-	#warn script
+	. += "<script type='text/javascript'>function setjob(id,lvl) { window.location.href = '?src=\ref[src];action=job;id=' + encodeURIComponent(lvl) + ';level=' + lvl; return false; }</script>"
 	// grab job-by-department ui cache
 	var/list/ui_data = SSjob.job_pref_ui_cache
 	// build - one faction
 	if(length(ui_data) == 1)
-		var/columns = ui_data[1][1]
 		// form table
-
-		for(var/list/department in ui_data[ui_data[1]])	// filters out first value of number of columns
-
+		. += "<table width='100%' cellpadding='1' cellspacing='0'><tr>"
+		// form column
+		START_COLUMN
+		// iterate
+		var/count = 0
+		var/limit = max(5, SSjob.job_pref_ui_per)
+		for(var/list/department in ui_data[ui_data[1]])
+			var/dep_amt = length(department)
+			// if we'd hit limit, we split first as we're not longer than limit or would waste more than 4 slots.
+			if(count + dep_amt > limit && dep_amt <= limit && limit - count <= 4)
+				NEW_COLUMN
+			for(var/id in department)
+				. += render_job(prefs, SSjob.job_by_id(id), current[id], assistant_selected)
+				++count
+				if(count >= limit)
+					NEW_COLUMN
+		// close column
+		END_COLUMN
 		// close table
-
+		. += "</tr></table>"
+		// linebreak
+		. += "<br>"
 	// build - multi-faction
 	else
+		. += "<br>"
 		for(var/faction in ui_data)
-			var/columns = ui_data[faction][1]
+			// header
+			. += "<b>[faction]</b>"
 			// form table
-
-			var/list/departments = ui_data[faction]
-			for(var/department in departments)	// filters out first value of number of columns
-
+			. += "<table width='100%' cellpadding='1' cellspacing='0'><tr>"
+			// form column
+			START_COLUMN
+			// iterate
+			var/count = 0
+			var/limit = max(5, SSjob.job_pref_ui_per)
+			for(var/list/department in ui_date[faction])
+				var/dep_amt = length(department)
+				// if we'd hit limit, we split first as we're not longer than limit or would waste more than 4 slots.
+				if(count + dep_amt > limit && dep_amt <= limit && limit - count <= 4)
+					NEW_COLUMN
+				for(var/id in department)
+					. += render_job(prefs, SSjob.job_by_id(id), current[id], assistant_selected)
+					++count
+					if(count >= limit)
+						NEW_COLUMN
+			// close column
+			END_COLUMN
 			// close table
-
-	// remove center
-	. += "</center>"
+			. += "</tr></table>"
+			// linebreak
+			. += "<br>"
 	// remove monospace
 	. += "</tt>"
-	#warn impl above/below
+	// add alternative options
+	switch(prefs.get_character_data(CHARACTER_DATA_OVERFLOW_MODE))
+		if(JOB_ALTERNATIVE_GET_RANDOM)
+			. += href_simple(prefs, "overflow", "<u>Get random job if preferences unavailable</u>")
+		if(JOB_ALTERNATIVE_BE_ASSISTANT)
+			. += href_simple(prefs, "overflow", "<u>Be assistant if preference unavailable</u>")
+		if(JOB_ALTERNATIVE_RETURN_LOBBY)
+			. += href_simple(prefs, "overflow", "<u>Return to lobby if preference unavailable</u>")
+	// add reset
+	. += href_simple(prefs, "reset", "\[Reset]")
+	// remove center
+	. += "</center>"
 
-/datum/category_item/player_setup_item/occupation/jobs/proc/encode_job(datum/preferences/prefs, datum/job/J, current_priority, assistant_selected)
+#undef NEW_COLUMN
+#undef END_COLUMN
+#undef START_COLUMN
+
+/datum/category_item/player_setup_item/occupation/jobs/proc/render_job(datum/preferences/prefs, datum/job/J, current_priority, assistant_selected)
+	. = list()
+	. += "<tr bgcolor='[J.selection_color]'><td width='60%' align='right'>"
+	// left side
+	. += "<a href='?src=[REF(src)];prefs=[REF(prefs)];act=help;help=[J.id]'>\[?]</a> "
+	var/rank
+	if((J.title in SSjob.get_job_titles_in_department) || (J.id == JOB_ID_AI))
+		rank = "<b>[J.title]</b>"
+	else
+		rank = "[J.title]"
+	if(length(J.alt_titles))
+		. += "<a href='?src=[REF(src)];prefs=[REF(prefs)];act=title;title=[J.id]'>[rank]</a> "
+	else
+		. += "[rank] "
+	// right side
+	. += "</td><td width='40%' align='right'> "
 	// assistant is treated as yes/no
-	if(J.id == JOB_ID_ASSISTANT)
+	var/fail_reason = check_job(prefs, J, current_priority)
+	if(fail_reason)
+		. += "\[[fail_reason]]"
+	else if(J.id == JOB_ID_ASSISTANT)
+		. += "<a href=?src=[REF(src)];prefs=[REF(prefs)];act=job;job=[J.id];level=[!assistant_selected]' oncontextmenu='javascript:return setjob(\"[J.id]\", [!assistant_selected]);'>[assistant_selected? "Yes" : "No"]</a>"
+	else if(assistant_selected)
+	else
+		var/lower
+		var/higher
+		var/current
+		switch(current_priority)
+			if(JOB_PRIORITY_HIGH)
+				lower = JOB_PRIORITY_MEDIUM
+				higher = JOB_PRIORITY_NEVER
+				current = "<font color='#55cc55'>High</font>"
+			if(JOB_PRIORITY_MEDIUM)
+				lower = JOB_PRIORITY_LOW
+				higher = JOB_PRIORITY_HIGH
+				current = "<font color='#eecc22'>Medium</font>"
+			if(JOB_PRIORITY_LOW)
+				lower = JOB_PRIORITY_NEVER
+				higher = JOB_PRIORITY_MEDIUM
+				current = "<font color='#cc5555'>Low</font>"
+			else
+				lower = JOB_PRIORITY_HIGH
+				higher = JOB_PRIORITY_LOW
+				current = "<font color='#000000'>Never</font>"
+		. += "<a href=?src=[REF(src)];prefs=[REF(prefs)];act=job;job=[J.id];level=[higher]' oncontextmenu='javascript:return setjob(\"[J.id]\", [lower]);'>[current]</a>"
+	. += "</td></tr>"
 
 /**
  * return null if allowed, otherwise return error to display
  */
 /datum/category_item/player_setup_item/occupation/jobs/proc/check_job(datum/preferences/prefs, datum/job/J, current_priority)
-	// always allow assistant
-	if(J.id == JOB_ID_ASSISTANT)
-		return null
 	var/client/C = pref.client
 	if(!C)
 		return null
@@ -100,13 +190,45 @@
 /datum/category_item/player_setup_item/occupation/jobs/act(datum/preferences/prefs, mob/user, action, list/params)
 	switch(action)
 		if("job")
-
+			prefs.set_job_priority(params["id"], text2num(params["level"]))
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 		if("title")
-
+			var/datum/job/J = SSjob.job_by_id(params["id"])
+			if(!J)
+				return PREFERENCES_NOACTION
+			var/title = input(user, "Choose a title for [J.title].", "Choose Title", prefs.get_job_alt_title_name(J)) as null|anything in J.alt_titles
+			if(!title)
+				return PREFERENCES_NOACTION
+			prefs.set_job_title(params["id"], title)
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 		if("help")
-
+			var/datum/job/J = SSjob.job_by_id(params["help"])
+			var/list/built = list("<blockquote class='info'>")
+			built += "<center><b><h3>[J.title]</h3></b></center>"
+			built += "<b>Purpose:</b> [J.desc]"
+			built += "<b>Alternative titles:</b> [english_list(J.alt_titles)]"
+			if(J.supervisors)
+	 			built += "You answer to [J.supervisors], normally."
+			if(J.departments)
+				built += "<b>Departments</b>: [english_list(J.departments)]"
+			if(J.departments_managed)
+				built += "You manage these departments: [english_list(J.departments_managed)]"
+			built += "</blockquote>"
+			to_chat(user, built.Join("<br>"))
+			return PREFERENCES_HANDLED
 		if("overflow")
-
+			var/current = prefs.get_character_data(CHARACTER_DATA_OVERFLOW_MODE)
+			switch(current)
+				if(JOB_ALTERNATIVE_BE_ASSISTANT)
+					prefs.set_character_data(CHARACTER_DATA_OVERFLOW_MODE, JOB_ALTERNATIVE_GET_RANDOM)
+				if(JOB_ALTERNATIVE_GET_RANDOM)
+					prefs.set_character_data(CHARACTER_DATA_OVERFLOW_MODE, JOB_ALTERNATIVE_RETURN_LOBBY)
+				if(JOB_ALTERNATIVE_RETURN_LOBBY)
+					prefs.set_character_data(CHARACTER_DATA_OVERFLOW_MODE, JOB_ALTERNATIVE_BE_ASSISTANT)
+			return PREFERENCES_REFRESH
+		if("reset")
+			prefs.reset_jobs()
+			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 	return ..()
 
 /datum/category_item/player_setup_item/occupation/jobs/default_value(randomizing)
@@ -159,211 +281,6 @@
 
 #warn take faction into account by blocking spawn/view but not wiping
 
-/datum/category_item/player_setup_item/occupation/content(mob/user, limit = 25, list/splitJobs = list())
-	. += "<script type='text/javascript'>function setJobPrefRedirect(level, rank) { window.location.href='?src=\ref[src];level=' + level + ';set_job=' + encodeURIComponent(rank); return false; }</script>"
-	. += "<table width='100%' cellpadding='1' cellspacing='0'><tr><td width='20%' valign='top'>" // Table within a table for alignment, also allows you to easily add more columns.
-	. += "<table width='100%' cellpadding='1' cellspacing='0'>"
-	var/index = -1
-
-	//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
-	var/datum/job/lastJob
-	var/datum/department/last_department = null // Used to avoid repeating the look-ahead check for if a whole department can fit.
-
-	var/list/all_valid_jobs = list()
-	// If the occupation window gets opened before SSJob initializes, then it'll just be blank, with no runtimes.
-	// It will work once init is finished.
-
-	for(var/D in SSjob.department_datums)
-		var/datum/department/department = SSjob.department_datums[D]
-		if(department.centcom_only) // No joining as a centcom role, if any are ever added.
-			continue
-
-		for(var/J in department.primary_jobs)
-			all_valid_jobs += department.jobs[J]
-
-	for(var/datum/job/job in all_valid_jobs)
-		if(job.latejoin_only) continue
-		var/datum/department/current_department = SSjob.get_primary_department_of_job(job)
-
-		// Should we add a new column?
-		var/make_new_column = FALSE
-		if(++index > limit)
-			// Ran out of rows, make a new column.
-			make_new_column = TRUE
-
-		else if(job.title in splitJobs)
-			// Is hardcoded to split at this job title.
-			make_new_column = TRUE
-
-		else if(current_department != last_department)
-			// If the department is bigger than the limit then we have to split.
-			if(limit >= current_department.primary_jobs.len)
-				// Look ahead to see if we would need to split, and if so, avoid it.
-				if(index + current_department.primary_jobs.len > limit)
-					// Looked ahead, and determined that a new column is needed to avoid splitting the department into two.
-					make_new_column = TRUE
-
-
-		if(make_new_column)
-/*******
-			if((index < limit) && (lastJob != null))
-				//If the cells were broken up by a job in the splitJob list then it will fill in the rest of the cells with
-				//the last job's selection color and blank buttons that do nothing. Creating a rather nice effect.
-				for(var/i = 0, i < (limit - index), i++)
-					. += "<tr bgcolor='[lastJob.selection_color]'><td width='60%' align='right'>//>&nbsp</a></td><td><a>&nbsp</a></td></tr>"
-*******/
-			. += "</table></td><td width='20%' valign='top'><table width='100%' cellpadding='1' cellspacing='0'>"
-			index = 0
-		last_department = current_department
-
-		. += "<tr bgcolor='[job.selection_color]'><td width='60%' align='right'>"
-
-		var/rank = job.title
-		lastJob = job
-		. += "<a href='?src=\ref[src];job_info=[rank]'>"
-		if(jobban_isbanned(user, rank))
-			. += "<del>[rank]</del></td></a><td><b> \[BANNED]</b></td></tr>"
-			continue
-		if(!job.player_old_enough(user.client))
-			var/available_in_days = job.available_in_days(user.client)
-			. += "<del>[rank]</del></td></a><td> \[IN [(available_in_days)] DAYS]</td></tr>"
-			continue
-		if(!is_job_whitelisted(user,rank))
-			. += "<del>[rank]</del></td></a><td><b> \[WHITELIST ONLY]</b></td></tr>"
-			continue
-		if(job.minimum_character_age && user.client && (user.client.prefs.age < job.minimum_character_age))
-			. += "<del>[rank]</del></td></a><td> \[MINIMUM CHARACTER AGE: [job.minimum_character_age]]</td></tr>"
-			continue
-		if((pref.job_civilian_low & ASSISTANT) && job.type != /datum/job/station/assistant)
-			. += "<font color=grey>[rank]</font></a></td><td></td></tr>"
-			continue
-		if((rank in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND) ) || (rank == "AI"))//Bold head jobs
-			. += "<b>[rank]</b></a>"
-		else
-			. += "[rank]</a>"
-
-		. += "</td><td width='40%'>"
-
-		var/prefLevelLabel = "ERROR"
-		var/prefLevelColor = "pink"
-		var/prefUpperLevel = -1 // level to assign on left click
-		var/prefLowerLevel = -1 // level to assign on right click
-		if(pref.GetJobDepartment(job, 1) & job.flag)
-			prefLevelLabel = "High"
-			prefLevelColor = "55cc55"
-			prefUpperLevel = 4
-			prefLowerLevel = 2
-		else if(pref.GetJobDepartment(job, 2) & job.flag)
-			prefLevelLabel = "Medium"
-			prefLevelColor = "eecc22"
-			prefUpperLevel = 1
-			prefLowerLevel = 3
-		else if(pref.GetJobDepartment(job, 3) & job.flag)
-			prefLevelLabel = "Low"
-			prefLevelColor = "cc5555"
-			prefUpperLevel = 2
-			prefLowerLevel = 4
-		else
-			prefLevelLabel = "NEVER"
-			prefLevelColor = "black"
-			prefUpperLevel = 3
-			prefLowerLevel = 1
-
-		. += "<a href='?src=\ref[src];set_job=[rank];level=[prefUpperLevel]' oncontextmenu='javascript:return setJobPrefRedirect([prefLowerLevel], \"[rank]\");'>"
-
-		if(job.type == /datum/job/station/assistant)//Assistant is special
-			if(pref.job_civilian_low & ASSISTANT)
-				. += " <font color=55cc55>\[Yes]</font>"
-			else
-				. += " <font color=black>\[No]</font>"
-			if(LAZYLEN(job.alt_titles)) //Blatantly cloned from a few lines down.
-				. += "</a></td></tr><tr bgcolor='[lastJob.selection_color]'><td width='60%' align='center'>&nbsp</td><td><a href='?src=\ref[src];select_alt_title=\ref[job]'>\[[pref.GetPlayerAltTitle(job)]\]</a></td></tr>"
-			. += "</a></td></tr>"
-			continue
-
-		. += " <font color=[prefLevelColor]>\[[prefLevelLabel]]</font>"
-		if(LAZYLEN(job.alt_titles))
-			. += "</a></td></tr><tr bgcolor='[lastJob.selection_color]'><td width='60%' align='center'>&nbsp</td><td><a href='?src=\ref[src];select_alt_title=\ref[job]'>\[[pref.GetPlayerAltTitle(job)]\]</a></td></tr>"
-		. += "</a></td></tr>"
-	. += "</td'></tr></table>"
-	. += "</center></table><center>"
-
-	switch(pref.alternate_option)
-		if(GET_RANDOM_JOB)
-			. += "<u><a href='?src=\ref[src];job_alternative=1'>Get random job if preferences unavailable</a></u>"
-		if(BE_ASSISTANT)
-			. += "<u><a href='?src=\ref[src];job_alternative=1'>Be assistant if preference unavailable</a></u>"
-		if(RETURN_TO_LOBBY)
-			. += "<u><a href='?src=\ref[src];job_alternative=1'>Return to lobby if preference unavailable</a></u>"
-
-	. += "<a href='?src=\ref[src];reset_jobs=1'>\[Reset\]</a></center>"
-	. = jointext(.,null)
-
-/datum/category_item/player_setup_item/occupation/OnTopic(href, href_list, user)
-	if(href_list["reset_jobs"])
-		ResetJobs()
-		return PREFERENCES_REFRESH
-
-	else if(href_list["job_alternative"])
-		if(pref.alternate_option == GET_RANDOM_JOB || pref.alternate_option == BE_ASSISTANT)
-			pref.alternate_option += 1
-		else if(pref.alternate_option == RETURN_TO_LOBBY)
-			pref.alternate_option = 0
-		return PREFERENCES_REFRESH
-
-	else if(href_list["select_alt_title"])
-		var/datum/job/job = locate(href_list["select_alt_title"])
-		if (job)
-			var/choices = list(job.title) + job.alt_titles
-			var/choice = input("Choose a title for [job.title].", "Choose Title", pref.GetPlayerAltTitle(job)) as anything in choices|null
-			if(choice && CanUseTopic(user))
-				SetPlayerAltTitle(job, choice)
-				return (pref.equip_preview_mob ? PREFERENCES_REFRESH_UPDATE_PREVIEW : PREFERENCES_REFRESH)
-
-	else if(href_list["set_job"])
-		if(SetJob(user, href_list["set_job"], text2num(href_list["level"])))
-			return (pref.equip_preview_mob ? PREFERENCES_REFRESH_UPDATE_PREVIEW : PREFERENCES_REFRESH)
-
-	else if(href_list["job_info"])
-		var/rank = href_list["job_info"]
-		var/datum/job/job = job_master.GetJob(rank)
-		var/dat = list()
-
-		dat += "<p style='background-color: [job.selection_color]'><br><br><p>"
-		if(job.alt_titles)
-			dat += "<i><b>Alternate titles:</b> [english_list(job.alt_titles)].</i>"
-		user << browse_rsc(job.get_job_icon(), "job[ckey(rank)].png")
-		dat += "<img src=job[ckey(rank)].png width=96 height=96 style='float:left;'>"
-		if(job.departments)
-			dat += "<b>Departments:</b> [english_list(job.departments)]."
-			if(LAZYLEN(job.departments_managed))
-				dat += "You manage these departments: [english_list(job.departments_managed)]"
-
-		dat += "You answer to <b>[job.supervisors]</b> normally."
-
-		dat += "<hr style='clear:left;'>"
-		if(config_legacy.wikiurl)
-			dat += "<a href='?src=\ref[src];job_wiki=[rank]'>Open wiki page in browser</a>"
-
-		var/alt_title = pref.GetPlayerAltTitle(job)
-		var/list/description = job.get_description_blurb(alt_title)
-		if(LAZYLEN(description))
-			dat += html_encode(description[1])
-			if(description.len > 1)
-				if(!isnull(description[2]))
-					dat += "<br>"
-					dat += html_encode(description[2])
-
-		var/datum/browser/popup = new(user, "Job Info", "[capitalize(rank)]", 430, 520, src)
-		popup.set_content(jointext(dat,"<br>"))
-		popup.open()
-
-	else if(href_list["job_wiki"])
-		var/rank = href_list["job_wiki"]
-		user << link("[config_legacy.wikiurl][rank]")
-
-	return ..()
-
 /datum/preferences/proc/get_job_priority(datum/job/J)
 	var/list/jobs = get_character_data(CHARACTER_DATA_JOBS)
 	return jobs[J.id]
@@ -385,7 +302,10 @@
 	RETURN_TYPE(/list)
 	#warn impl - factions
 
-#warn: FOR THIS WHOLE FILE, ASSISTANT SHOULD BE TREATED AS YES/NO.
+/datum/preferences/proc/effective_job_priority(datum/job/J)
+	var/list/jobs = get_character_data(CHARACTER_DATA_JOBS)
+	return jobs[J.id]
+	#warn check faction
 
 /**
  * resets job prefs
@@ -407,3 +327,23 @@
 
 /datum/preferences/proc/get_job_alternative()
 	return get_character_data(CHARACTER_DATA_OVERFLOW_MODE)
+
+/datum/preferences/proc/set_job_priority(id, priority)
+	var/datum/job/J = SSjob.job_by_id(id)
+	if(!J)
+		return
+	if(priority < JOB_PRIORITY_LOW || priority > JOB_PRIORITY_HIGH)
+		return
+	var/list/current = get_character_data(CHARACTER_DATA_JOBS)
+	current[id] = priority
+	set_character_data(CHARACTER_DATA_JOBS, current)
+
+/datum/preferences/proc/set_job_title(id, title)
+	var/datum/job/J = SSjob.job_by_id(id)
+	if(!J)
+		return
+	if(!J.alt_titles[title])
+		return
+	var/list/current = get_character_data(CHARACTER_DATA_ALT_TITLES)
+	current[id] = title
+	set_character_data(CHARACTER_DATA_ALT_TITLES, current)

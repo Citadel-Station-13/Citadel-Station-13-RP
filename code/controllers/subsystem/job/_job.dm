@@ -10,6 +10,8 @@ SUBSYSTEM_DEF(job)
 	var/list/job_lookup
 	/// job preferences ui cache - cache[faction string][department name] = list(job ids)
 	var/list/job_pref_ui_cache
+	/// jobs per column
+	var/job_pref_ui_per = 15
 
 	var/list/department_datums = list()
 	var/debug_messages = FALSE
@@ -37,7 +39,6 @@ SUBSYSTEM_DEF(job)
 /datum/controller/subsystem/job/proc/reconstruct_job_ui_caches()
 	// todo: this is shit but it works
 	job_pref_ui_cache = list()
-	var/list/faction_counts = list()
 	for(var/id in job_lookup)
 		var/datum/job/J = job_lookup[id]
 		if(!(J.join_types & JOB_ROUNDSTART))
@@ -47,13 +48,6 @@ SUBSYSTEM_DEF(job)
 		LAZYINITLIST(job_pref_ui_cache[faction])
 		var/department = LAZYACCESS(J.departments, 1) || "Misc"
 		LAZYADD(job_pref_ui_cache[faction][department], id)
-	// inject numbers based on 15 jobs per column
-	for(var/faction in faction_counts)
-		var/columns = faction_counts[faction]
-		columns = CEILING(columns / 15, 1)
-		// inject
-		var/list/departments_kinda = job_pref_ui_cache[faction]
-		departments_kinda.Insert(1, columns)
 
 /datum/controller/subsystem/job/proc/setup_occupations()
 	occupations = list()
