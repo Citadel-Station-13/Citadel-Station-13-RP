@@ -360,13 +360,6 @@
 		infect_mob_random_lesser(H)
 		add_attack_logs(user, H, "Infected \the [H] with \the [src], by \the [user].")
 
-/obj/item/reagent_containers/hypospray/autoinjector/biginjector/neuratrextate
-	name = "neuratrextate injector"
-	desc = "A refined version of the standard autoinjector, allowing greater capacity. \
-	The hypospray contains a potent compound of immunosuppressants and antipsychotics \
-	designed to be rapidly delivered to victims of CRS in case of emergency."
-	filled_reagents = list("neuratrextate" = 15)
-
 //Hjorthorn's Drug Injectors
 /obj/item/reagent_containers/hypospray/glukoz
 	name = "Tizzy"
