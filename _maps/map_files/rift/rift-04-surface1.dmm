@@ -1539,6 +1539,13 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/wood/broken,
 /area/maintenance/research/lower)
+"blt" = (
+/obj/random/junk,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood/broken,
+/area/maintenance/maint_bar)
 "blH" = (
 /obj/structure/table/standard,
 /obj/item/folder/blue,
@@ -1771,6 +1778,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/library)
+"bqY" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood,
+/area/maintenance/maint_bar)
 "brd" = (
 /obj/machinery/light{
 	dir = 1
@@ -2726,6 +2739,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
+"ccD" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/wall/r_wall,
+/area/maintenance/security/lower)
 "ccP" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/structure/disposalpipe/segment,
@@ -3558,6 +3577,9 @@
 /area/tether/station/public_meeting_room)
 "cFW" = (
 /obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/security/lower)
 "cGh" = (
@@ -6846,6 +6868,9 @@
 	name = "east bump";
 	pixel_x = 24
 	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
 /turf/simulated/floor/wood,
 /area/maintenance/maint_bar)
 "eEi" = (
@@ -7186,6 +7211,12 @@
 "eSr" = (
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
+"eSY" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/lower)
 "eTH" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -8769,6 +8800,12 @@
 /area/crew_quarters/medbreak)
 "ght" = (
 /turf/simulated/mineral/icerock/lythios43c,
+/area/maintenance/maint_bar)
+"ghD" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood/broken,
 /area/maintenance/maint_bar)
 "ghF" = (
 /obj/machinery/door/airlock/glass_medical{
@@ -11684,6 +11721,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/hallway)
+"hWC" = (
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/lower)
 "hWJ" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/research{
@@ -15731,6 +15774,13 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/security/forensics)
+"ksT" = (
+/obj/random/junk,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/wood,
+/area/maintenance/maint_bar)
 "ktw" = (
 /obj/structure/railing{
 	dir = 1
@@ -16436,6 +16486,14 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_wing)
+"kMr" = (
+/obj/structure/grille,
+/obj/structure/foamedmetal,
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/lower)
 "kMD" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/portable_atmospherics/canister{
@@ -18155,6 +18213,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 2;
 	icon_state = "pipe-c"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/security/lower)
@@ -20676,8 +20737,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/tool_storage)
 "ntn" = (
-/obj/structure/catwalk,
-/obj/structure/disposalpipe/segment,
+/obj/structure/grille,
+/obj/structure/foamedmetal,
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/security/lower)
 "ntO" = (
@@ -22442,6 +22506,14 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
+"omh" = (
+/obj/structure/grille,
+/obj/structure/foamedmetal,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/lower)
 "omm" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/machinery/portable_atmospherics/canister/air/airlock,
@@ -25225,6 +25297,14 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/tankstorage)
+"pSQ" = (
+/obj/structure/grille,
+/obj/structure/foamedmetal,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/lower)
 "pSZ" = (
 /obj/structure/sign/atmos/o2{
 	pixel_x = 32
@@ -27067,6 +27147,9 @@
 /area/security/prison)
 "rkh" = (
 /obj/item/stool/padded,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/wood/broken,
 /area/maintenance/maint_bar)
 "rku" = (
@@ -28052,6 +28135,9 @@
 /area/security/detectives_office)
 "rPR" = (
 /obj/item/stool/padded,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/wood,
 /area/maintenance/maint_bar)
 "rQb" = (
@@ -32844,6 +32930,12 @@
 /obj/effect/zone_divider,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/outside1)
+"uEc" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/wall,
+/area/maintenance/security/lower)
 "uEs" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -35368,6 +35460,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
 	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/security/lower)
@@ -57491,12 +57586,12 @@ iTF
 iTF
 iTF
 iTF
-pZn
-pZn
-pZn
-tdI
-dMX
-dMX
+ntn
+pSQ
+pSQ
+uEc
+eSY
+hWC
 dMX
 mpF
 dMX
@@ -57683,20 +57778,20 @@ fae
 erN
 tXC
 iTF
-pZn
-pZn
-pZn
+ntn
+pSQ
+kMr
 snT
 snT
 snT
 dMX
 cFW
-cFW
+vgW
 lUJ
-ntn
-ntn
-ntn
-ntn
+jAY
+jAY
+jAY
+jAY
 woB
 jAY
 jAY
@@ -57877,7 +57972,7 @@ aVt
 dCR
 acE
 iTF
-pZn
+omh
 snT
 snT
 snT
@@ -58071,7 +58166,7 @@ iTF
 iTF
 iTF
 iTF
-pZn
+omh
 snT
 eoq
 rnG
@@ -58260,12 +58355,12 @@ pZn
 pZn
 pZn
 pZn
-pZn
-pZn
-pZn
-pZn
-pZn
-pZn
+ntn
+pSQ
+pSQ
+pSQ
+pSQ
+kMr
 snT
 ivr
 ipK
@@ -58454,7 +58549,7 @@ kzX
 kzX
 kzX
 kzX
-kzX
+ccD
 kzX
 kzX
 kzX
@@ -59424,7 +59519,7 @@ dkv
 hcE
 mXL
 jhW
-mXL
+ghD
 mXL
 jhW
 dkv
@@ -59618,7 +59713,7 @@ dkv
 rWI
 mXL
 mXL
-sAz
+blt
 jhW
 nHc
 dkv
@@ -59812,7 +59907,7 @@ dkv
 jQE
 pDj
 xLN
-mXL
+ghD
 llz
 iAE
 dkv
@@ -60006,7 +60101,7 @@ dkv
 gvI
 kod
 jQE
-mXL
+ghD
 mXL
 hqO
 dkv
@@ -60200,7 +60295,7 @@ dkv
 xxZ
 wTT
 jxa
-jhW
+bqY
 jhW
 jKI
 dkv
@@ -60394,7 +60489,7 @@ dkv
 itT
 xen
 pDj
-weV
+ksT
 mXL
 kVC
 dkv
@@ -60588,7 +60683,7 @@ dkv
 jQE
 jxa
 xLN
-mXL
+ghD
 llz
 jxa
 dkv
