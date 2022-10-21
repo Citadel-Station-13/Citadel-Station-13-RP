@@ -1,7 +1,7 @@
 /obj/item/clothing/under/oricon/utility/sysguard/crew
 	name = "crew uniform"
 	desc = "A comfortable turtleneck and black utility trousers, made from biohazard resistant material. This one has silver trim."
-	icon = "black_crew"
+	icon_state = "black_crew"
 	worn_has_rolldown = UNIFORM_HAS_ROLL
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
