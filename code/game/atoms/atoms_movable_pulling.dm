@@ -77,7 +77,7 @@
 		stack_trace("[src]'s pull on [pullee] wasn't broken despite [pullee] being in [pullee.loc]. Pull stopped manually.")
 		stop_pulling()
 		return
-	if(pulling.anchored || pulling.pull_force * MOVE_FORCE_PULL_RATIO > move_force)
+	if(pulling.anchored || (pulling.pull_force * MOVE_FORCE_PULL_RATIO > pull_force))
 		stop_pulling()
 		return
 
