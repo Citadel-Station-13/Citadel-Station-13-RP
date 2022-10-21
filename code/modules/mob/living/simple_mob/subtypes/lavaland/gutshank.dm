@@ -15,7 +15,7 @@
 
 /mob/living/simple_mob/animal/gutshank
 	name = "gutshank"
-	desc = "These dog-sized parasites sport thick, chitinous shells which protect them from both the heat and attack."
+	desc = "These dog-sized parasites sport thick, chitinous shells which protect them from both attacks and the heat."
 	icon = 'icons/mob/lavaland/lavaland_mobs.dmi'
 	icon_state = "gutshank"
 	icon_living = "gutshank"
