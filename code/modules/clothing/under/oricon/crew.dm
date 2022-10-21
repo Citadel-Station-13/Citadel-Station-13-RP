@@ -26,8 +26,8 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/security/crew)
 	name = "crew security uniform"
 	icon_state = "black_sec"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/sysguard/crew/medical
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/medical/crew)
@@ -85,8 +85,8 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/security/crew)
 	name = "security officer uniform"
 	icon_state = "black_sec_command"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/sysguard/officer/crew/medical
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/medical/crew)
