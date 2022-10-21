@@ -2,7 +2,6 @@
 	name = "dress uniform"
 	desc = "A dress uniform of some kind."
 	icon_state = "greydress"
-	snowflake_worn_state = "greydress"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.9
 
@@ -68,18 +67,15 @@
 	name = "marine dress uniform"
 	desc = "The dress uniform of the JSDF Marine Corps, class given form."
 	icon_state = "blackdress"
-	snowflake_worn_state = "blackdress"
 
 /obj/item/clothing/under/oricon/mildress/marine/command
 	name = "marine command dress uniform"
 	desc = "The dress uniform of the JSDF Marine Corps, even classier in gold."
 	icon_state = "blackdress_com"
-	snowflake_worn_state = "blackdress_com"
 
 /obj/item/clothing/under/oricon/mildress/marine/command/fake
 	name = "command dress uniform"
 	desc = "A dress uniform for command, even classier in gold."
 	icon_state = "blackdress_com"
-	snowflake_worn_state = "blackdress_com"
 
 #warn parse

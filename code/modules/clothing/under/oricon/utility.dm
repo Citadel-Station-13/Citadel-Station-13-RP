@@ -111,13 +111,11 @@
 	name = "green fatigues"
 	desc = "A green version of the JSDF marine utility uniform, made from durable material."
 	icon_state = "greenutility"
-	snowflake_worn_state = "greenutility"
 
 /obj/item/clothing/under/oricon/utility/marine/tan
 	name = "tan fatigues"
 	desc = "A tan version of the JSDF marine utility uniform, made from durable material."
 	icon_state = "tanutility"
-	snowflake_worn_state = "tanutility"
 
 #warn parse
 
@@ -126,7 +124,6 @@
 	desc = "An olive version of the JSDF marine utility uniform, made from durable material."
 	icon = 'icons/obj/clothing/uniforms.dmi'
 	icon_state = "bdu_olive"
-	item_state = "bdu_olive"
 #warn dela with the sprites for this oh FUCK OFF
 
 /obj/item/clothing/under/oricon/utility/marine/desert
@@ -134,5 +131,4 @@
 	desc = "A desert version of the JSDF marine utility uniform, made from durable material."
 	icon = 'icons/obj/clothing/uniforms.dmi'
 	icon_state = "bdu_olive"
-	item_state = "bdu_olive"
 #warn dela with the sprites for this oh FUCK OFF
