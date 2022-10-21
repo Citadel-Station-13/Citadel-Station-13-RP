@@ -8,6 +8,8 @@ SUBSYSTEM_DEF(job)
 	var/list/type_occupations	//Dict of all jobs, keys are types
 	/// jobs by id
 	var/list/job_lookup
+	/// job preferences ui cache - cache[faction string][department name] = list(job ids)
+	var/list/job_
 
 	var/list/department_datums = list()
 	var/debug_messages = FALSE
@@ -21,8 +23,18 @@ SUBSYSTEM_DEF(job)
 	return ..()
 
 /datum/controller/subsystem/job/Recover()
-	ReconstructSpawnpoints()
+	occupations = SSjob.occupations
+	name_occupations = SSjob.name_occupations
+	job_lookup = SSjob.job_lookup
+	type_occupations = SSjob.type_occupations
+
+	reconstruct_spawnpoints()
+	reconstruct_job_ui_caches()
+
 	return ..()
+
+/datum/controller/subsystem/job/proc/reconstruct_job_ui_caches()
+	#warn impl
 
 /datum/controller/subsystem/job/proc/setup_occupations()
 	occupations = list()

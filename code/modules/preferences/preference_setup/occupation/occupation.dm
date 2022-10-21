@@ -29,9 +29,44 @@
 				highest = jobs[id]
 	return jobs
 
-/datum/category_item/player_setup_item/occupation/jobs/content(mob/user, limit, list/splitJobs)
+/datum/category_item/player_setup_item/occupation/jobs/content(datum/preferences/prefs, mob/user, data)
+	// cast data
+	var/list/current = data
+	// if they have assistant selected all other jobs are irrelevant
+	var/assistant_selected = !!current[JOB_ID_ASSISTANT]
+	// prep list
 	. = list()
+	// monospace
+	. += "<tt>"
+	// center
+	. += "<center>"
+	// user intro
+	. += "<b>Choose occupation preferences</b><br>Unavailable occupations are crossed out.<br>"
+	// script inject for right click
+	#warn script
+	// form table
+
+	// grab job-by-department ui cache
+
+	// close table
+
+	// remove center
+	. += "</center>"
+	// remove monospace
+	. += "</tt>"
 	#warn impl above/below
+
+/datum/category_item/player_setup_item/occupation/jobs/proc/encode_job(datum/job/J, current_priority, assistant_selected)
+	// assistant is treated as yes/no
+	if(J.id == JOB_ID_ASSISTANT)
+
+/**
+ * return null if allowed, otherwise return error to display
+ */
+/datum/category_item/player_setup_item/occupation/jobs/proc/check_job(datum/job/J, current_priority)
+	// always allow assistant
+	if(J.id == JOB_ID_ASSISTANT)
+		return null
 
 /datum/category_item/player_setup_item/occupation/jobs/act(datum/preferences/prefs, mob/user, action, list/params)
 	switch(action)
@@ -98,8 +133,6 @@
 /datum/category_item/player_setup_item/occupation/content(mob/user, limit = 25, list/splitJobs = list())
 
 	. = list()
-	. += "<tt><center>"
-	. += "<b>Choose occupation chances</b><br>Unavailable occupations are crossed out.<br>"
 	. += "<script type='text/javascript'>function setJobPrefRedirect(level, rank) { window.location.href='?src=\ref[src];level=' + level + ';set_job=' + encodeURIComponent(rank); return false; }</script>"
 	. += "<table width='100%' cellpadding='1' cellspacing='0'><tr><td width='20%' valign='top'>" // Table within a table for alignment, also allows you to easily add more columns.
 	. += "<table width='100%' cellpadding='1' cellspacing='0'>"
@@ -237,7 +270,6 @@
 			. += "<u><a href='?src=\ref[src];job_alternative=1'>Return to lobby if preference unavailable</a></u>"
 
 	. += "<a href='?src=\ref[src];reset_jobs=1'>\[Reset\]</a></center>"
-	. += "</tt>"
 	. = jointext(.,null)
 
 /datum/category_item/player_setup_item/occupation/OnTopic(href, href_list, user)

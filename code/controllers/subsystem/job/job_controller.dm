@@ -356,7 +356,7 @@ var/global/datum/controller/occupations/job_master
 	var/list/spawn_in_storage = list()
 
 	if(!joined_late)
-		var/obj/landmark/spawnpoint/S = SSjob.GetRoundstartSpawnpoint(H, H.client, job.type, job.faction)
+		var/obj/landmark/spawnpoint/S = SSjob.get_roundstart_spawnpoint(H, H.client, job.type, job.faction)
 
 		if(istype(S))
 			H.forceMove(S.GetSpawnLoc())
@@ -661,7 +661,7 @@ var/global/datum/controller/occupations/job_master
 	. = list("spawnpoint")
 	if(spawnpos && istype(spawnpos))
 		if(spawnpos.check_job_spawning(rank))
-			S = SSjob.GetLatejoinSpawnpoint(method = preferred_method, job_path = J.type, faction = J.faction)
+			S = SSjob.get_latejoin_spawnpoint(method = preferred_method, job_path = J.type, faction = J.faction)
 			.["spawnpoint"] = S
 			.["channel"] = spawnpos.announce_channel
 		else
@@ -669,6 +669,6 @@ var/global/datum/controller/occupations/job_master
 				to_chat(C, SPAN_WARNING("Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job.  Please correct your spawn point choice."))
 				return
 			to_chat(C, SPAN_WARNING("Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job. Spawning you at the Arrivals shuttle instead."))
-			.["spawnpoint"] = SSjob.GetLatejoinSpawnpoint(J.faction)
+			.["spawnpoint"] = SSjob.get_latejoin_spawnpoint(J.faction)
 	else if(!fail_deadly)
-		.["spawnpoint"] = SSjob.GetLatejoinSpawnpoint(J.faction)
+		.["spawnpoint"] = SSjob.get_latejoin_spawnpoint(J.faction)

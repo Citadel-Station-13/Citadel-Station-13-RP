@@ -161,6 +161,7 @@
 			if(!length(c))
 				continue
 			if(current && auto_rule)
+
 				. += "<br>"
 			if(halfway && current++ >= halfway)
 				halfway = 0

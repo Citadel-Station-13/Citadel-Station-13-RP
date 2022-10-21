@@ -135,7 +135,7 @@
 		mind = body.mind	//we don't transfer the mind but we keep a reference to it.
 
 	if(!T)
-		T = SSjob.GetLatejoinSpawnpoint()
+		T = SSjob.get_latejoin_spawnpoint()
 	forceMove(T)
 
 	for(var/v in GLOB.active_alternate_appearances)

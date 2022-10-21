@@ -25,7 +25,7 @@ var/list/datum/spawnpoint/spawntypes = list()
 	return 1
 
 /datum/spawnpoint/proc/get_spawn_position(faction)
-	return SSjob.GetLatejoinSpawnpoint(faction = faction, method = method)
+	return SSjob.get_latejoin_spawnpoint(faction = faction, method = method)
 
 /datum/spawnpoint/arrivals
 	display_name = "Arrivals Shuttle"
