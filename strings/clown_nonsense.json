@@ -6,9 +6,9 @@
 	"HONK!!!",
 	"HENK",
 	"HOOOOOOONK"
-    ],
+	],
 
-    "rare": [
+	"rare": [
 	"HOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOONK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
 	"damn",
 	":))))))))))))))))))))))))",
@@ -17,9 +17,9 @@
 	"HAHAHAA HEEHEEHEE",
 	" Laugh sound. ",
 	"Extreme Ruckus at the Party"
-    ],
+	],
 
-    "non-honk-clown-words": [
+	"non-honk-clown-words": [
 	"bananas",
 	"chapiteau",
 	"entrée",
@@ -33,6 +33,6 @@
 	"balagan",
 	"pie",
 	"slip"
-    ]
+	]
 
 }

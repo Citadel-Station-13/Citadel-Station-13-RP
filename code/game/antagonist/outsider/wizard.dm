@@ -21,7 +21,7 @@ var/datum/antagonist/wizard/wizards
 	..()
 	wizards = src
 
-/datum/antagonist/wizard/create_objectives(var/datum/mind/wizard)
+/datum/antagonist/wizard/create_objectives(datum/mind/wizard)
 
 	if(!..())
 		return
@@ -64,13 +64,13 @@ var/datum/antagonist/wizard/wizards
 		wizard.objectives |= hijack_objective
 	return
 
-/datum/antagonist/wizard/update_antag_mob(var/datum/mind/wizard)
+/datum/antagonist/wizard/update_antag_mob(datum/mind/wizard)
 	..()
 	wizard.store_memory("<B>Remember:</B> do not forget to prepare your spells.")
-	wizard.current.real_name = "[pick(wizard_first)] [pick(wizard_second)]"
+	wizard.current.real_name = "[pick(GLOB.wizard_first)] [pick(GLOB.wizard_second)]"
 	wizard.current.name = wizard.current.real_name
 
-/datum/antagonist/wizard/equip(var/mob/living/carbon/human/wizard_mob)
+/datum/antagonist/wizard/equip(mob/living/carbon/human/wizard_mob)
 
 	if(!..())
 		return 0
@@ -98,32 +98,40 @@ var/datum/antagonist/wizard/wizards
 		break
 	if(!survivor)
 		feedback_set_details("round_end_result","loss - wizard killed")
-		to_chat(world, "<span class='danger'><font size = 3>The [(current_antagonists.len>1)?"[role_text_plural] have":"[role_text] has"] been killed by the crew!</font></span>")
+		to_chat(world, SPAN_ANNOUNCE("The [(current_antagonists.len>1)?"[role_text_plural] have":"[role_text] has"] been killed by the crew!"))
 
-//To batch-remove wizard spells. Linked to mind.dm.
+/**
+ * To batch-remove wizard spells. Linked to mind.dm.
+ */
 /mob/proc/spellremove()
 	for(var/spell/spell_to_remove in src.spell_list)
 		remove_spell(spell_to_remove)
 
-// Does this clothing slot count as wizard garb? (Combines a few checks)
-/proc/is_wiz_garb(var/obj/item/clothing/C)
-	return C && C.wizard_garb
+/**
+ * Does this clothing slot count as wizard garb? (Combines a few checks)
+ */
+/proc/is_wiz_garb(obj/item/clothing/Clothing)
+	return Clothing && Clothing.wizard_garb
 
-/*Checks if the wizard is wearing the proper attire.
-Made a proc so this is not repeated 14 (or more) times.*/
+/**
+ * Checks if the wizard is wearing the proper attire.
+ * Made a proc so this is not repeated 14 (or more) times.
+ */
 /mob/proc/wearing_wiz_garb()
 	to_chat(src, "Silly creature, you're not a human. Only humans can cast this spell.")
-	return 0
+	return FALSE
 
-// Humans can wear clothes.
+/**
+ * Humans can wear clothes.
+ */
 /mob/living/carbon/human/wearing_wiz_garb()
 	if(!is_wiz_garb(src.wear_suit))
-		to_chat(src, "<span class='warning'>I don't feel strong enough without my robe.</span>")
-		return 0
+		to_chat(src, SPAN_WARNING("I don't feel strong enough without my robe."))
+		return FALSE
 	if(!is_wiz_garb(src.shoes))
-		to_chat(src, "<span class='warning'>I don't feel strong enough without my sandals.</span>")
-		return 0
+		to_chat(src, SPAN_WARNING("I don't feel strong enough without my sandals."))
+		return FALSE
 	if(!is_wiz_garb(src.head))
-		to_chat(src, "<span class='warning'>I don't feel strong enough without my hat.</span>")
-		return 0
-	return 1
+		to_chat(src, SPAN_WARNING("I don't feel strong enough without my hat."))
+		return FALSE
+	return TRUE

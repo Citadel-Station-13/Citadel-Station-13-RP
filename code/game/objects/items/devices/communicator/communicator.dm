@@ -82,7 +82,7 @@ var/global/list/obj/item/communicator/all_communicators = list()
 /obj/item/communicator/Initialize(mapload)
 	. = ..()
 	all_communicators += src
-	sortTim(all_communicators, /proc/cmp_name_asc)
+	tim_sort(all_communicators, /proc/cmp_name_asc)
 	node = get_exonet_node(src)
 	START_PROCESSING(SSobj, src)
 	camera = new(src)

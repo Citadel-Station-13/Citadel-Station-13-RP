@@ -1,6 +1,6 @@
 {
-	
-    "canadian": {
+
+	"canadian": {
 		"toilet": "washroom",
 		"bathroom": "washroom",
 		"restroom": "washroom",
@@ -40,6 +40,6 @@
 		"mile": "kilometre",
 		"pound": "kilogram"
 		}
-	
-	
+
+
 }

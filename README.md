@@ -1,4 +1,4 @@
-## Citadel Station 13 RP
+# Citadel Station 13 RP
 
 [![Build Status](https://github.com/Citadel-Station-13/Citadel-Station-13-RP/workflows/CI%20Suite/badge.svg)](https://github.com/Citadel-Station-13/Citadel-Station-13-RP/actions?query=workflow%3A%22CI+Suite%22)
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/Citadel-Station-13/Citadel-Station-13-RP.svg)](https://isitmaintained.com/project/Citadel-Station-13/Citadel-Station-13-RP "Percentage of issues still open")
@@ -18,9 +18,10 @@ This is the codebase for the CitadelRP flavoured fork of SpaceStation 13.
 Citadel Station 13 RP, also known as CitadelRP was originally a fork of VOREStation, which separated on 01/25/2019.
 
 ## DOWNLOADING
+
 [Downloading](.github/guides/DOWNLOADING.md)
 
-## :exclamation: How to compile :exclamation:
+## :exclamation: How to compile :exclamation
 
 On **May 9, 2022** we have changed the way to compile the codebase.
 
@@ -33,6 +34,7 @@ On **May 9, 2022** we have changed the way to compile the codebase.
 **[How to compile in VSCode and other build options](tools/build/README.md).**
 
 ## Contributors
+
 [Guides for Contributors](.github/CONTRIBUTING.md)
 
 [CitadelRP HACKMD account](https://hackmd.io/@CitadelStation13RP)
