@@ -16,7 +16,7 @@
 
 	minimal_player_age = 14
 
-	minimum_character_age = 30
+	minimum_character_age = 25
 	ideal_character_age = 45
 
 	outfit_type = /datum/outfit/job/station/station_engineer/senior

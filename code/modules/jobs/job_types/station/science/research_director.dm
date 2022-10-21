@@ -23,7 +23,7 @@
 						access_research, access_robotics, access_xenobiology, access_ai_upload, access_tech_storage,
 						access_RC_announce, access_keycard_auth, access_tcomsat, access_gateway, access_xenoarch, access_network)
 
-	minimum_character_age = 25
+	minimum_character_age = 30
 	minimal_player_age = 14
 	ideal_character_age = 50
 

@@ -17,7 +17,7 @@
 
 	minimal_player_age = 14
 
-	minimum_character_age = 30
+	minimum_character_age = 25
 	ideal_character_age = 45
 
 /datum/outfit/job/station/medical_doctor/head_nurse
