@@ -38,6 +38,7 @@
 	var/gas_reagent_moles = 0.1
 
 	//! visuals
+	// todo: visual cache gen should be a proc on /datum/gas so we can do custom colors
 	/// icon_state in icons/modules/atmospherics/gas.dmi; invisible if null
 	var/visual_overlay
 	/// minimum moles to see gas
@@ -84,7 +85,7 @@
 
 	visual_overlay = "phoron"
 
-	moles_visible = 0.7
+	visual_threshold = 0.7
 
 	gas_flags = GAS_FLAG_FUEL | GAS_FLAG_FUSION_FUEL | GAS_FLAG_CONTAMINANT
 
@@ -103,7 +104,7 @@
 	molar_mass = 0.044
 
 	visual_overlay = "nitrous_oxide"
-	moles_visible = 1
+	visual_threshold = 1
 
 	gas_flags = GAS_FLAG_OXIDIZER
 
@@ -240,7 +241,7 @@
 	heating_products = null
 	toxicity = 15*/
 	visual_overlay = "chlorine"
-	moles_visible = 1
+	visual_threshold = 1
 
 	gas_reagent_id = "sacid"
 	gas_reagent_amount = 10
@@ -316,4 +317,4 @@
 	molar_mass = 0.054 // Standard Mass of xenon
 
 	visual_overlay = "vimur"
-	moles_visible = 0.1
+	visual_threshold = 0.1
