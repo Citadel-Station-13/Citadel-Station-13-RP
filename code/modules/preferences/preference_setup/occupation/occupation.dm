@@ -44,21 +44,27 @@
 	. += "<b>Choose occupation preferences</b><br>Unavailable occupations are crossed out.<br>"
 	// script inject for right click
 	#warn script
-	// form table
-
 	// grab job-by-department ui cache
 	var/list/ui_data = SSjob.job_pref_ui_cache
 	// build - one faction
 	if(length(ui_data) == 1)
-		for(var/list/department as anything in ui_data[ui_data[1]])
+		var/columns = ui_data[1][1]
+		// form table
+
+		for(var/list/department in ui_data[ui_data[1]])	// filters out first value of number of columns
+
+		// close table
 
 	// build - multi-faction
 	else
 		for(var/faction in ui_data)
-			var/list/departments = ui_data[faction]
-			for(var/department in departments)
+			var/columns = ui_data[faction][1]
+			// form table
 
-	// close table
+			var/list/departments = ui_data[faction]
+			for(var/department in departments)	// filters out first value of number of columns
+
+			// close table
 
 	// remove center
 	. += "</center>"
@@ -154,8 +160,6 @@
 #warn take faction into account by blocking spawn/view but not wiping
 
 /datum/category_item/player_setup_item/occupation/content(mob/user, limit = 25, list/splitJobs = list())
-
-	. = list()
 	. += "<script type='text/javascript'>function setJobPrefRedirect(level, rank) { window.location.href='?src=\ref[src];level=' + level + ';set_job=' + encodeURIComponent(rank); return false; }</script>"
 	. += "<table width='100%' cellpadding='1' cellspacing='0'><tr><td width='20%' valign='top'>" // Table within a table for alignment, also allows you to easily add more columns.
 	. += "<table width='100%' cellpadding='1' cellspacing='0'>"

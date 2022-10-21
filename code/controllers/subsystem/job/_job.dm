@@ -35,15 +35,25 @@ SUBSYSTEM_DEF(job)
 	return ..()
 
 /datum/controller/subsystem/job/proc/reconstruct_job_ui_caches()
+	// todo: this is shit but it works
 	job_pref_ui_cache = list()
+	var/list/faction_counts = list()
 	for(var/id in job_lookup)
 		var/datum/job/J = job_lookup[id]
 		if(!(J.join_types & JOB_ROUNDSTART))
 			continue
 		var/faction = J.faction
+		faction_counts[faction] += 1
 		LAZYINITLIST(job_pref_ui_cache[faction])
 		var/department = LAZYACCESS(J.departments, 1) || "Misc"
 		LAZYADD(job_pref_ui_cache[faction][department], id)
+	// inject numbers based on 15 jobs per column
+	for(var/faction in faction_counts)
+		var/columns = faction_counts[faction]
+		columns = CEILING(columns / 15, 1)
+		// inject
+		var/list/departments_kinda = job_pref_ui_cache[faction]
+		departments_kinda.Insert(1, columns)
 
 /datum/controller/subsystem/job/proc/setup_occupations()
 	occupations = list()
