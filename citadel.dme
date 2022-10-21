@@ -126,6 +126,7 @@
 #include "code\__DEFINES\atmospherics\gases\groups.dm"
 #include "code\__DEFINES\atmospherics\gases\ids.dm"
 #include "code\__DEFINES\atmospherics\gases\reagents.dm"
+#include "code\__DEFINES\atmospherics\gases\visuals.dm"
 #include "code\__DEFINES\cargo\supply.dm"
 #include "code\__DEFINES\color\color.dm"
 #include "code\__DEFINES\color\colour_priority.dm"

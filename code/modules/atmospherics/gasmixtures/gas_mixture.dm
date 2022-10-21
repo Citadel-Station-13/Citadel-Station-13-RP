@@ -394,14 +394,16 @@
 /datum/gas_mixture/proc/get_turf_graphics()
 	. = list()
 	var/list/gases = src.gas
-	var/list/no_overlay_typecache = GLOB.meta_gas_typecache_no_overlays
+	var/list/visual_cache = gas_data.visuals
+	var/list/overlay_cache = gas_data.visual_images
 	for(var/id in gases)
-		if(no_overlay_typecache[id])
+		if(!visual_cache[id])
 			continue
+		var/list/v = visual_cache[id]
 		var/moles = gases[id]
-		var/list/gas_overlays = GLOB.meta_gas_overlays[id]
-		if(gas_overlays && moles > GLOB.meta_gas_visibility[id])
-			. += gas_overlays[min(FACTOR_GAS_VISIBLE_MAX, CEILING(moles / MOLES_GAS_VISIBLE_STEP, 1))]
+		if(moles < v[GAS_VISUAL_INDEX_THRESHOLD])
+			continue
+		. += overlay_cache[min(round(moles * v[GAS_VISUAL_INDEX_FACTOR]) + 1, GAS_VISUAL_STEP_MAX)]
 	return length(.)? . : null
 
 //Equalizes a list of gas mixtures.  Used for pipe networks.

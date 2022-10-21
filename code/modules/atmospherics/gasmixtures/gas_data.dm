@@ -26,8 +26,10 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 	/// this is a sparse lookup, not all gases are in here.
 	var/list/reagents = list()
 	//? visuals
-	/// visuals: id = (state, threshold, factor, color)
+	/// visuals: id = (state, threshold, factor)
 	var/list/visuals = list()
+	/// visuals cache
+	var/list/visual_images = list()
 	//? reactions
 	var/list/rarities = list()
 
@@ -52,6 +54,7 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 	molar_masses = list()
 	reagents = list()
 	visuals = list()
+	visual_images = list()
 	rarities = list()
 	gas_by_flag = list()
 	gas_by_group = list()
@@ -106,7 +109,23 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 	else
 		reagents -= G.id
 	//? visuals
-	#warn visuals
+	if(!G.visual_overlay)
+		visuals -= G.id
+		visual_images -= G.id
+	else
+		visual[G.id] = list(
+			G.visual_overlay,
+			G.visual_threshold,
+			G.visual_factor
+		)
+		visual_images[G.id] = new /list(GAS_VISUAL_STEP_MAX)
+		for(var/i in 1 to GAS_VISUAL_STEP_MAX)
+			var/image/I = image('icons/modules/atmospherics/gas.dmi', icon_state = G.visual_overlay, layer = FLOAT_LAYER + i)
+			I.plane = FLOAT_PLANE
+			I.alpha = i * (255 / GAS_VISUAL_STEP_MAX)
+			I.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+			I.appearance_flags = RESET_TRANSFORM | RESET_COLOR | RESET_ALPHA | KEEP_APART
+			visual_images[G.id][i] = I
 	//? reactions
 	rarities[G.id] = G.rarity
 	//? rebuild cheap cache lists
@@ -117,12 +136,3 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 	for(var/bit in bitfield2list(G.gas_flags))
 		LAZYINITLIST(gas_by_flag["[bit]"])
 		LAZYOR(gas_by_flag["[bit]"], G.id)
-
-/datum/gas_data/proc/construct_overlay(id)
-	RETURN_TYPE(/image)
-	var/list/data = visuals[id]
-	if(!data)
-		return
-	var/image/I = image('icons/modules/atmospherics/gas.dmi', icon_state = data[GAS_VISUAL_INDEX_STATE], layer = FLOAT_LAYER + 1)
-	I.plane = FLOAT_PLANE
-	#warn needs to be better at caching by far; maybe a minimum + shift system?

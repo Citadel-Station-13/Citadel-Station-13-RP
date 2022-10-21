@@ -1,38 +1,3 @@
-
-GLOBAL_LIST_INIT(meta_gas_visibility, meta_gas_visibility_list())
-GLOBAL_LIST_INIT(meta_visual_overlays, meta_visual_overlay_list())
-/// Typecache of gases with no overlays
-GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_list())
-
-/proc/meta_gas_visibility_list()
-	. = subtypesof(/datum/gas)
-	for(var/gas_path in .)
-		var/datum/gas/gas = gas_path
-		.[gas_path] = initial(gas.moles_visible)
-
-/proc/meta_visual_overlay_list()
-	. = subtypesof(/datum/gas)
-	for(var/gas_path in .)
-		var/datum/gas/gas = gas_path
-		.[gas_path] = 0 //gotta make sure if(GLOB.meta_visual_overlays[gaspath]) doesn't break
-		if(initial(gas.moles_visible) != null)
-			.[gas_path] = new /list(FACTOR_GAS_VISIBLE_MAX)
-			for(var/i in 1 to FACTOR_GAS_VISIBLE_MAX)
-				var/image/I = image('icons/effects/atmospherics.dmi', icon_state = initial(gas.visual_overlay), layer = FLOAT_LAYER + i)
-				I.plane = FLOAT_PLANE
-				I.alpha = i * 255 / FACTOR_GAS_VISIBLE_MAX
-				I.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-				I.appearance_flags = RESET_TRANSFORM | RESET_COLOR | RESET_ALPHA | KEEP_APART
-				.[gas_path][i] = I
-
-/proc/meta_gas_typecache_no_overlays_list()
-	. = list()
-	for(var/gastype in subtypesof(/datum/gas))
-		var/datum/gas/gasvar = gastype
-		if (!initial(gasvar.visual_overlay))
-			.[gastype] = TRUE
-
-
 /*||||||||||||||/----------\||||||||||||||*\
 ||||||||||||||||[GAS DATUMS]||||||||||||||||
 ||||||||||||||||\__________/||||||||||||||||
@@ -75,12 +40,10 @@ GLOBAL_LIST_INIT(meta_gas_typecache_no_overlays, meta_gas_typecache_no_overlays_
 	//! visuals
 	/// icon_state in icons/modules/atmospherics/gas.dmi; invisible if null
 	var/visual_overlay
-	/// color var of the overlay; no recoloring if null
-	var/visual_color
 	/// minimum moles to see gas
 	var/visual_threshold = 0.25
-	/// alpha per mole (up until 255 obviously)
-	var/visual_factor = 12.75
+	/// index addition per mole for cache list
+	var/visual_factor 1
 
 	//! reactions
 	/// Fusion is not yet implemented : How much the gas accelerates a fusion reaction

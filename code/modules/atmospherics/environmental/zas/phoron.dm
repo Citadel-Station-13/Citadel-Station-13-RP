@@ -161,6 +161,6 @@ var/image/contamination_overlay = image('icons/effects/contamination.dmi')
 		if(!env)
 			return
 		for(var/g in env.gas)
-			if(gas_data.flags[g] & GAS_FLAG_CONTAMINANT && env.gas[g] > GLOB.meta_gas_visibility[g] + 1)
+			if(gas_data.flags[g] & GAS_FLAG_CONTAMINANT && env.gas[g] > 1)
 				I.contaminate()
 				break
