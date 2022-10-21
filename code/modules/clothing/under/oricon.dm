@@ -1,22 +1,3 @@
-//Confederation Uniforms
-
-//Master
-
-//PT
-
-
-//Utility
-//These are just colored
-//Here's the real ones
-
-
-
-//Service
-
-
-//Dress
-
-
 
 //Misc
 
