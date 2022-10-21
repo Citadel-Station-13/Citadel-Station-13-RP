@@ -353,7 +353,7 @@
 	//* Now, the actual intended render system.
 	if(!data[WORN_DATA_ICON])
 		// grab icon based on priority
-		if(!inhands && !(bodytype & worn_bodytypes) && (bodytype & worn_bodytypes_fallback) && slot_meta.handle_sprite_fallback(bodytype, data))
+		if(!inhands && !(bodytype & worn_bodytypes) && (bodytype & worn_bodytypes_fallback) && slot_meta.handle_worn_fallback(bodytype, data))
 			// special: if bodytypes isn't in, and species has fallback
 			// .. well don't do anything as handle_sprite_fallback will write to the data list.
 		else if(inhands && inhand_icon)
