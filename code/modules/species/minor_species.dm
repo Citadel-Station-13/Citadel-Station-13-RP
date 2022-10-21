@@ -4,7 +4,7 @@
 	template.uid = uid
 	template.category = category
 	template.desc = blurb
-	template.whitelisted = !!(spawn_flags & SPECIES_IS_WHITELISTED)
+	template.whitelisted = !!(species_spawn_flags & SPECIES_SPAWN_WHITELISTED)
 	template.real_species_type = type
 	template.default_origin = default_origin
 	template.default_citizenship = default_citizenship

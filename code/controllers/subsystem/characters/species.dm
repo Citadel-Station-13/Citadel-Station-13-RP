@@ -31,9 +31,9 @@
 		species_names[S.name] = S
 		species_paths[path] = S
 
-		if(S.spawn_flags & SPECIES_IS_WHITELISTED)
+		if(S.species_spawn_flags & SPECIES_SPAWN_WHITELISTED)
 			whitelisted_species += S.name
-		if(!(S.spawn_flags & SPECIES_IS_RESTRICTED))
+		if(!(S.species_spawn_flags & SPECIES_SPAWN_RESTRICTED))
 			playable_species += S.name
 
 /datum/controller/subsystem/characters/proc/resolve_species(id_path_name)

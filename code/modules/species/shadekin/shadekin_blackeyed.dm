@@ -57,7 +57,7 @@
 
 	// Shadekin biology is still unknown to the universe (unless some bullshit lore says otherwise)
 	flags =  NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE
-	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
+	species_spawn_flags = SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_WHITELIST_SELECTABLE
 
 	reagent_tag = IS_SHADEKIN // for shadekin-unique chem interactions
 

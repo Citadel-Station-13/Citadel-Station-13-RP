@@ -69,7 +69,7 @@
 
 	body_temperature = T20C
 
-	spawn_flags = SPECIES_CAN_JOIN // Species_can_join is the only spawn flag all the races get, so that none of them will be whitelist only if whitelist is enabled.
+	species_spawn_flags = SPECIES_SPAWN_ALLOWED // Species_can_join is the only spawn flag all the races get, so that none of them will be whitelist only if whitelist is enabled.
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	color_mult  = 1

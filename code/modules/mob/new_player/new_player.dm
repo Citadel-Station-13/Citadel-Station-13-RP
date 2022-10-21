@@ -324,7 +324,7 @@
 			return 0
 */
 		var/datum/species/S = client.prefs.character_static_species_meta()
-		if(!(S.spawn_flags & SPECIES_CAN_JOIN))
+		if(!(S.species_spawn_flags & SPECIES_SPAWN_ALLOWED))
 			src << alert("Your current species, [client.prefs.species], is not available for play on the station.")
 			return 0
 

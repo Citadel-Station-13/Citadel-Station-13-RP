@@ -9,7 +9,7 @@
 
 	language = "Sol Common" //todo?
 
-	spawn_flags = SPECIES_IS_RESTRICTED
+	species_spawn_flags = SPECIES_SPAWN_RESTRICTED
 	flags = NO_PAIN | NO_SCAN | NO_POISON | NO_MINOR_CUT
 
 	siemens_coefficient = 0

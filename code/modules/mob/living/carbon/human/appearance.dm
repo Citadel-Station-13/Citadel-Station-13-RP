@@ -188,13 +188,13 @@
 		var/current_species_name = S.name
 
 		if(check_whitelist && config_legacy.usealienwhitelist && !check_rights(R_ADMIN, 0, src)) //If we're using the whitelist, make sure to check it!
-			if(!(S.spawn_flags & SPECIES_CAN_JOIN))
+			if(!(S.species_spawn_flags & SPECIES_SPAWN_ALLOWED))
 				continue
 			if(whitelist.len && !(current_species_name in whitelist))
 				continue
 			if(blacklist.len && (current_species_name in blacklist))
 				continue
-			if((S.spawn_flags & SPECIES_IS_WHITELISTED) && !is_alien_whitelisted(src, S))
+			if((S.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) && !is_alien_whitelisted(src, S))
 				continue
 
 		valid_species += current_species_name

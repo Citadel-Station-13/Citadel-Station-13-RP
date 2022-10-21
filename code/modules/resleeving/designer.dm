@@ -68,7 +68,7 @@
 	if(menu == "3")
 		var/stock_bodyrecords_list_ui[0]
 		for (var/datum/species/S in SScharacters.all_static_species_meta())
-			if((S.spawn_flags & (SPECIES_IS_WHITELISTED|SPECIES_CAN_JOIN)) != SPECIES_CAN_JOIN)
+			if((S.species_spawn_flags & (SPECIES_SPAWN_WHITELISTED|SPECIES_SPAWN_ALLOWED)) != SPECIES_SPAWN_ALLOWED)
 				continue
 			stock_bodyrecords_list_ui += S
 		if(stock_bodyrecords_list_ui.len)
@@ -172,7 +172,7 @@
 
 	else if(href_list["view_stock_brec"])
 		var/datum/species/S = SScharacters.resolve_species_name(href_list["view_stock_brec"])
-		if(S && (S.spawn_flags & (SPECIES_IS_WHITELISTED|SPECIES_CAN_JOIN)) == SPECIES_CAN_JOIN)
+		if(S && (S.species_spawn_flags & (SPECIES_SPAWN_WHITELISTED|SPECIES_SPAWN_ALLOWED)) == SPECIES_SPAWN_ALLOWED)
 			// Generate body record from species!
 			mannequin = new(null, S.name)
 			mannequin.real_name = "Stock [S.name] Body"

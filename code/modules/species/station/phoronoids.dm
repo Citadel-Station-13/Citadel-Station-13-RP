@@ -26,7 +26,7 @@
 	blood_color = "#FC2BC5"
 
 	flags = NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE
-	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
+	species_spawn_flags = SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELIST_SELECTABLE
 	species_appearance_flags = HAS_EYE_COLOR
 
 	show_ssd = "completely motionless"

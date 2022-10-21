@@ -26,7 +26,7 @@
 	character_species_lookup = list()
 	for(var/path in species_paths)
 		var/datum/species/S = species_paths[path]
-		if(!(S.spawn_flags & SPECIES_CAN_JOIN))		// don't bother lmao
+		if(!(S.species_spawn_flags & SPECIES_SPAWN_ALLOWED))		// don't bother lmao
 			continue
 		if(character_species_lookup[S.uid])
 			stack_trace("species uid collision on [S.uid] from [S.type].")

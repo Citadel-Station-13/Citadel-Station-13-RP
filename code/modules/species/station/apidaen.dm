@@ -42,7 +42,7 @@
 	//primitive_form = SPECIES_MONKEY //I dunno. Replace this in the future.
 
 	flags = NO_MINOR_CUT
-	spawn_flags = SPECIES_CAN_JOIN
+	species_spawn_flags = SPECIES_SPAWN_ALLOWED
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	color_mult = 1

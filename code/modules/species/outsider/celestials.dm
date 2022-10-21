@@ -20,7 +20,7 @@
 	language = LANGUAGE_ENOCHIAN
 	num_alternate_languages = 3
 
-	spawn_flags = SPECIES_CAN_JOIN
+	species_spawn_flags = SPECIES_SPAWN_ALLOWED
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult  = 1
@@ -73,7 +73,7 @@
 	language = LANGUAGE_DAEMON
 	num_alternate_languages = 3
 
-	spawn_flags = SPECIES_CAN_JOIN
+	species_spawn_flags = SPECIES_SPAWN_ALLOWED
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult  = 1

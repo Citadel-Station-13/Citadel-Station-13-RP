@@ -18,7 +18,7 @@
  * - A global cache of species by typepath will still be maintained for "static" usages of these datums, like for preferences rendering.
  */
 /datum/species
-//! ## Intrinsics
+	//! Intrinsics
 	/// abstract type
 	var/abstract_type = /datum/species
 	/// uid - **must be unique**
@@ -26,6 +26,18 @@
 	/// if we're a subspecies, real id
 	var/id
 	// TODO: ref species by id in code, so we can rename as needed
+
+	//! Culture/Background - Typepaths
+	/// default origin
+	var/default_origin = /datum/lore/character_background/origin/custom
+	/// default citizenship
+	var/default_citizenship = /datum/lore/character_background/citizenship/custom
+	/// default faction
+	var/default_faction = /datum/lore/character_background/faction/nanotrasen
+	/// default religion
+	var/default_religion = /datum/lore/character_background/religion/custom
+	/// fluff flags
+	var/species_fluff_flags = NONE
 
 //! ## Descriptors and strings.
 	/// Species real name.
@@ -161,16 +173,6 @@
 	/// The languages the species can't speak without an assisted organ.
 	/// This list is a guess at things that no one other than the parent species should be able to speak
 	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
-
-	//! Defaults to set for background - typepaths
-	/// default origin
-	var/default_origin = /datum/lore/character_background/origin/custom
-	/// default citizenship
-	var/default_citizenship = /datum/lore/character_background/citizenship/custom
-	/// default faction
-	var/default_faction = /datum/lore/character_background/faction/nanotrasen
-	/// default religion
-	var/default_religion = /datum/lore/character_background/religion/custom
 
 //! ## Soundy emotey things.
 	var/scream_verb = "screams"
@@ -331,7 +333,7 @@
 	/// Appearance/display related features.
 	var/species_appearance_flags = NONE
 	/// Flags that specify who can spawn as this species
-	var/spawn_flags = NONE
+	var/species_spawn_flags = NONE
 
 	/// What marks are left when walking
 	var/obj/effect/debris/cleanable/blood/tracks/move_trail = /obj/effect/debris/cleanable/blood/tracks/footprints

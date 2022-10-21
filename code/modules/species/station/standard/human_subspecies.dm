@@ -28,7 +28,7 @@
 	hunger_factor = 0.075//50% more hungry
 
 	flags = NO_MINOR_CUT
-	spawn_flags = SPECIES_CAN_JOIN
+	species_spawn_flags = SPECIES_SPAWN_ALLOWED
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult = 1
@@ -74,7 +74,7 @@
 	slowdown = -0.1//Minor speedboost
 	item_slowdown_mod = 1.05 //Minor slowdown
 
-	spawn_flags = SPECIES_CAN_JOIN
+	species_spawn_flags = SPECIES_SPAWN_ALLOWED
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult = 1
@@ -114,7 +114,7 @@
 	total_health = 115
 	hunger_factor = 0.35//less hungry
 
-	spawn_flags = SPECIES_CAN_JOIN
+	species_spawn_flags = SPECIES_SPAWN_ALLOWED
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult = 1

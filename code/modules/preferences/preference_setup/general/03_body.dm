@@ -433,7 +433,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		else
 			return PREFERENCES_NOACTION
 
-		if(((!(setting_species.spawn_flags & SPECIES_CAN_JOIN)) || (!is_alien_whitelisted(preference_mob(),setting_species))) && !check_rights(R_ADMIN, 0) && !(setting_species.spawn_flags & SPECIES_WHITELIST_SELECTABLE))
+		if(((!(setting_species.species_spawn_flags & SPECIES_SPAWN_ALLOWED)) || (!is_alien_whitelisted(preference_mob(),setting_species))) && !check_rights(R_ADMIN, 0) && !(setting_species.species_spawn_flags & SPECIES_SPAWN_WHITELIST_SELECTABLE))
 			return PREFERENCES_NOACTION
 
 		var/prev_species = pref.species
@@ -954,7 +954,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		dat += "<img src='species_preview_[current_species.name].png' width='64px' height='64px'><br/><br/>"
 	dat += "<b>Language:</b> [current_species.species_language]<br/>"
 	dat += "<small>"
-	if(current_species.spawn_flags & SPECIES_CAN_JOIN)
+	if(current_species.species_spawn_flags & SPECIES_SPAWN_ALLOWED)
 		switch(current_species.rarity_value)
 			if(1 to 2)
 				dat += "</br><b>Often present on human stations.</b>"
@@ -964,7 +964,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 				dat += "</br><b>Unheard of on human stations.</b>"
 			else
 				dat += "</br><b>May be present on human stations.</b>"
-	if(current_species.spawn_flags & SPECIES_IS_WHITELISTED)
+	if(current_species.species_spawn_flags & SPECIES_SPAWN_WHITELISTED)
 		dat += "</br><b>Whitelist restricted.</b>"
 	if(!current_species.has_organ[O_HEART])
 		dat += "</br><b>Does not have a circulatory system.</b>"
@@ -994,7 +994,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	var/restricted = 0
 
-	if(!(current_species.spawn_flags & SPECIES_CAN_JOIN))
+	if(!(current_species.species_spawn_flags & SPECIES_SPAWN_ALLOWED))
 		restricted = 2
 	else if(!is_alien_whitelisted(preference_mob(),current_species))
 		restricted = 1
@@ -1004,7 +1004,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			dat += "<font color='red'><b>You cannot play as this species.</br><small>If you wish to be whitelisted, you can make an application post on <a href='?src=\ref[user];preference=open_whitelist_forum'>the forums</a>.</small></b></font></br>"
 		else if(restricted == 2)
 			dat += "<font color='red'><b>You cannot play as this species.</br><small>This species is not available for play as a station race..</small></b></font></br>"
-	if(!restricted || check_rights(R_ADMIN, 0) || current_species.spawn_flags & SPECIES_WHITELIST_SELECTABLE)	//selectability
+	if(!restricted || check_rights(R_ADMIN, 0) || current_species.species_spawn_flags & SPECIES_SPAWN_WHITELIST_SELECTABLE)	//selectability
 		dat += "\[<a href='?src=\ref[src];set_species=[pref.species_preview]'>select</a>\]"
 	dat += "</center></body>"
 

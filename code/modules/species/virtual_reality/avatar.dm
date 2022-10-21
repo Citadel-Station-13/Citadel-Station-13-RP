@@ -13,7 +13,7 @@
 	death_message =    "flickers briefly, their gear falling in a heap on the floor around their motionless body."
 	knockout_message = "has been knocked unconscious!"
 
-	spawn_flags =		SPECIES_IS_RESTRICTED
+	species_spawn_flags =		SPECIES_SPAWN_RESTRICTED
 
 	speech_bubble_appearance = "cyber"
 
