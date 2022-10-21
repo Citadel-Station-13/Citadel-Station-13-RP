@@ -46,8 +46,7 @@ var/global/datum/controller/occupations/job_master
 
 
 /datum/controller/occupations/proc/GetPlayerAltTitle(mob/new_player/player, rank)
-	return player.client.prefs.GetPlayerAltTitle(GetJob(rank))
-
+	return player.client.prefs.get_job_alt_title_name(GetJob(rank))
 
 /datum/controller/occupations/proc/AssignRole(mob/new_player/player, rank, latejoin = 0)
 	Debug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
@@ -106,7 +105,7 @@ var/global/datum/controller/occupations/job_master
 		if(flag && !(player.client.prefs.be_special & flag))
 			Debug("FOC flag failed, Player: [player], Flag: [flag], ")
 			continue
-		if(player.client.prefs.GetJobDepartment(job, level) & job.flag)
+		if(player.client.prefs.get_job_priority(job) == level)
 			Debug("FOC pass, Player: [player], Level:[level]")
 			candidates += player
 	return candidates
@@ -160,7 +159,7 @@ var/global/datum/controller/occupations/job_master
  * ignoring ALL non-head preferences for every level until it locates a head or runs out of levels to check.
  */
 /datum/controller/occupations/proc/FillHeadPosition()
-	for(var/level = 1 to 3)
+	for(var/level in JOB_PRIORITY_LOW to JOB_PRIORITY_HIGH)
 		for(var/command_position in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
 			var/datum/job/job = GetJob(command_position)
 			if(!job)
@@ -252,7 +251,7 @@ var/global/datum/controller/occupations/job_master
 	//People who wants to be assistants, sure, go on.
 	Debug("DO, Running Assistant Check 1")
 	var/datum/job/assist = new DEFAULT_JOB_TYPE ()
-	var/list/assistant_candidates = FindOccupationCandidates(assist, 3)
+	var/list/assistant_candidates = FindOccupationCandidates(assist, JOB_PRIORITY_HIGH)
 	Debug("AC1, Candidates: [assistant_candidates.len]")
 	for(var/mob/new_player/player in assistant_candidates)
 		Debug("AC1 pass, Player: [player]")
@@ -335,13 +334,13 @@ var/global/datum/controller/occupations/job_master
 
 	// For those who wanted to be assistant if their preferences were filled, here you go.
 	for(var/mob/new_player/player in unassigned)
-		if(player.client.prefs.alternate_option == BE_ASSISTANT)
+		if(player.client.prefs.get_job_alternative() == JOB_ALTERNATIVE_BE_ASSISTANT)
 			Debug("AC2 Assistant located, Player: [player]")
 			AssignRole(player, USELESS_JOB)
 
 	//For ones returning to lobby
 	for(var/mob/new_player/player in unassigned)
-		if(player.client.prefs.alternate_option == RETURN_TO_LOBBY)
+		if(player.client.prefs.get_job_alternative() == JOB_ALTERNATIVE_RETURN_LOBBY)
 			player.ready = 0
 			player.new_player_panel_proc()
 			unassigned -= player
@@ -624,13 +623,15 @@ var/global/datum/controller/occupations/job_master
 			if(!job.player_old_enough(player.client))
 				level6++
 				continue
-			if(player.client.prefs.GetJobDepartment(job, 1) & job.flag)
-				level1++
-			else if(player.client.prefs.GetJobDepartment(job, 2) & job.flag)
-				level2++
-			else if(player.client.prefs.GetJobDepartment(job, 3) & job.flag)
-				level3++
-			else level4++ //not selected
+			switch(player.client.prefs.get_job_priority(job))
+				if(JOB_PRIORITY_HIGH)
+					level1++
+				if(JOB_PRIORITY_MEDIUM)
+					level2++
+				if(JOB_PRIORITY_LOW)
+					level3++
+				else
+					level4++
 
 		tmp_str += "HIGH=[level1]|MEDIUM=[level2]|LOW=[level3]|NEVER=[level4]|BANNED=[level5]|YOUNG=[level6]|-"
 		feedback_add_details("job_preferences",tmp_str)

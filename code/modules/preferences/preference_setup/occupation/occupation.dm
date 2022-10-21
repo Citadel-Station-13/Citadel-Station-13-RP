@@ -66,17 +66,30 @@
 	. += "</tt>"
 	#warn impl above/below
 
-/datum/category_item/player_setup_item/occupation/jobs/proc/encode_job(datum/job/J, current_priority, assistant_selected)
+/datum/category_item/player_setup_item/occupation/jobs/proc/encode_job(datum/preferences/prefs, datum/job/J, current_priority, assistant_selected)
 	// assistant is treated as yes/no
 	if(J.id == JOB_ID_ASSISTANT)
 
 /**
  * return null if allowed, otherwise return error to display
  */
-/datum/category_item/player_setup_item/occupation/jobs/proc/check_job(datum/job/J, current_priority)
+/datum/category_item/player_setup_item/occupation/jobs/proc/check_job(datum/preferences/prefs, datum/job/J, current_priority)
 	// always allow assistant
 	if(J.id == JOB_ID_ASSISTANT)
 		return null
+	var/client/C = pref.client
+	if(!C)
+		return null
+	if(jobban_isbanned(C.mob, J.title))
+		return "BANNED"
+	if(!J.player_old_enough(C))
+		var/in_days = J.available_in_days(C)
+		return "IN [in_days] DAYS"
+	if(!is_job_whitelisted(C.mob, J.title))
+		return "WHITELISTED"
+	if(J.minimum_character_age && prefs.age < J.minimum_character_age)
+		return "MINIMUM CHARACTER AGE: [J.minimum_character_age]"
+	return null
 
 /datum/category_item/player_setup_item/occupation/jobs/act(datum/preferences/prefs, mob/user, action, list/params)
 	switch(action)
@@ -387,3 +400,6 @@
 		if(jobs[id] == JOB_PRIORITY_HIGH)
 			jobs[id] = JOB_PRIORITY_MEDIUM
 	set_character_data(CHARACTER_DATA_JOBS, jobs)
+
+/datum/preferences/proc/get_job_alternative()
+	return get_character_data(CHARACTER_DATA_OVERFLOW_MODE)
