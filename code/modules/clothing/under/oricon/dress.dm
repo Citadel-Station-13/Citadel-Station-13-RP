@@ -7,8 +7,8 @@
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/under/oricon/mildress/sysguard
-	name = "\improper SysGuard dress uniform"
-	desc = "The dress uniform of the System Defense Force in silver trim."
+	name = "explorer's dress uniform"
+	desc = "The dress uniform of the Society of Universal Cartographers in silver trim."
 
 /obj/item/clothing/under/oricon/mildress/sysguard/command
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/command/service)
@@ -35,8 +35,8 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/research/service)
 
 /obj/item/clothing/under/oricon/mildress/sysguard/officer
-	name = "\improper SysGuard command dress uniform"
-	desc = "The dress uniform of the System Defense Force in gold trim."
+	name = "explorer's command dress uniform"
+	desc = "The dress uniform of the Society of Universal Cartographers in gold trim."
 	icon_state = "greydress_com"
 	snowflake_worn_state = "greydress_com"
 
@@ -66,13 +66,13 @@
 
 /obj/item/clothing/under/oricon/mildress/marine
 	name = "marine dress uniform"
-	desc = "The dress uniform of the OCG Marine Corps, class given form."
+	desc = "The dress uniform of the JSDF Marine Corps, class given form."
 	icon_state = "blackdress"
 	snowflake_worn_state = "blackdress"
 
 /obj/item/clothing/under/oricon/mildress/marine/command
 	name = "marine command dress uniform"
-	desc = "The dress uniform of the OCG Marine Corps, even classier in gold."
+	desc = "The dress uniform of the JSDF Marine Corps, even classier in gold."
 	icon_state = "blackdress_com"
 	snowflake_worn_state = "blackdress_com"
 

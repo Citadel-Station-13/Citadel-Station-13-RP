@@ -8,8 +8,8 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 /obj/item/clothing/under/oricon/pt/sysguard
-	name = "\improper SysGuard pt uniform"
-	desc = "A baggy shirt bearing the seal of the System Defense Force and some dorky looking blue shorts."
+	name = "explorer's pt uniform"
+	desc = "A baggy shirt bearing the seal of the Society of Universal Cartographers and some dorky looking blue shorts."
 	icon_state = "expeditionpt"
 	snowflake_worn_state = "expeditionpt"
 

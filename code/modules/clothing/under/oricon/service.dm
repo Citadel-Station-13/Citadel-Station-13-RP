@@ -8,19 +8,19 @@
 
 /obj/item/clothing/under/oricon/service/fleet
 	name = "fleet service uniform"
-	desc = "The service uniform of the OCG Fleet, made from immaculate white fabric."
+	desc = "The service uniform of the JSDF Fleet, made from immaculate white fabric."
 	icon_state = "whiteservice"
 	snowflake_worn_state = "whiteservice"
 
 /obj/item/clothing/under/oricon/service/marine
 	name = "marine service uniform"
-	desc = "The service uniform of the OCG Marine Corps. Slimming."
+	desc = "The service uniform of the JSDF Marine Corps. Slimming."
 	icon_state = "greenservice"
 	snowflake_worn_state = "greenservice"
 
 /obj/item/clothing/under/oricon/service/marine/command
 	name = "marine command service uniform"
-	desc = "The service uniform of the OCG Marine Corps. Slimming and stylish."
+	desc = "The service uniform of the JSDF Marine Corps. Slimming and stylish."
 	icon_state = "greenservice_com"
 	snowflake_worn_state = "greenservice_com"
 
