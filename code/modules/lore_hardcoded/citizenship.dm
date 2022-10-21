@@ -1,6 +1,13 @@
 /datum/lore/character_background/citizenship
 	abstract_type = /datum/lore/character_background/citizenship
 
+/datum/lore/character_background/citizenship/check_character_species(datum/character_species/S)
+	if(S.species_fluff_flags & SPECIES_FLUFF_PICKY_CITIZENSHIP)
+		. = (S.uid in allow_species) || (subspecies_included && S.is_subspecies && (S.superspecies_id in allow_species))
+		if(!.)
+			return
+	return ..()
+
 /datum/lore/character_background/citizenship/orionconfederation
 	name = "Orion Confederation"
 	id = "oricon"

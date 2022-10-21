@@ -34,11 +34,17 @@
 			innate_languages += SScharacters.resolve_language_path(thing)
 			innate_languages -= thing
 
+/**
+ * id passed in is for a /datum/character_species, NOT a /datum/speices!
+ */
 /datum/lore/character_background/proc/check_species_id(id)
+	return check_character_species(SScharacters.resolve_character_species(id))
+
+/datum/lore/character_background/proc/check_character_species(datum/character_species/S)
 	if(allow_species)
-		return id in allow_species
+		return (S.uid in allow_species) || (subspecies_included && S.is_subspecies && (S.superspecies_id in allow_species))
 	else if(forbid_species)
-		return !(id in forbid_species)
+		return !((S.uid in forbid_species) || (subspecies_included && S.is_subspecies && (S.superspecies_id in forbid_species)))
 	return TRUE
 
 /datum/lore/character_background/proc/get_default_language_ids()

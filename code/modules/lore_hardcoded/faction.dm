@@ -6,6 +6,13 @@
 	/// where 'desc' is the corporation description, this is what a player should know if they're a contractor
 	var/contractor_info
 
+/datum/lore/character_background/faction/check_character_species(datum/character_species/S)
+	if(S.species_fluff_flags & SPECIES_FLUFF_PICKY_FACTION)
+		. = (S.uid in allow_species) || (subspecies_included && S.is_subspecies && (S.superspecies_id in allow_species))
+		if(!.)
+			return
+	return ..()
+
 /datum/lore/character_background/faction/nanotrasen
 	name = "Nanotrasen"
 	id = "nanotrasen"

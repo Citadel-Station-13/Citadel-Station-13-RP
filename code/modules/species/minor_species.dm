@@ -2,6 +2,9 @@
 	var/datum/character_species/template = new
 	template.name = display_name
 	template.uid = uid
+	if(id != uid)
+		template.is_subspecies = TRUE
+		template.superspecies_id = id
 	template.category = category
 	template.desc = blurb
 	template.whitelisted = !!(species_spawn_flags & SPECIES_SPAWN_WHITELISTED)
@@ -24,6 +27,10 @@
 	var/abstract_type = /datum/character_species
 	/// uid (this must be unique with both species and minor species, don't be outrageous with it, don't be stupid)
 	var/uid
+	/// master species id
+	var/superspecies_id
+	/// is subspecies of master species
+	var/is_subspecies = FALSE
 	/// name (ALSO SETS THE PERSON'S CUSTOM RACE NAME!)
 	var/name
 	/// category
