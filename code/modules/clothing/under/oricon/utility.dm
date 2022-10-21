@@ -1,5 +1,6 @@
 /obj/item/clothing/under/oricon/utility/sysguard
 	name = "explorer's uniform"
+	icon = 'icons/clothing/uniform/rank/utility.dmi'
 	desc = "The utility uniform of the Society of Universal Cartographers, made from biohazard resistant material. This one has silver trim."
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 10)
 	icon_state = "black_crew"

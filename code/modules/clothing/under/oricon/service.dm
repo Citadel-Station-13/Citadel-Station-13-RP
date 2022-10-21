@@ -1,5 +1,6 @@
 /obj/item/clothing/under/oricon/service
 	name = "service uniform"
+	icon = 'icons/clothing/uniform/rank/service.dmi'
 	desc = "A service uniform of some kind."
 	icon_state = "white"
 	armor = list(melee = 5, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 5, rad = 0)
