@@ -2427,7 +2427,7 @@
 "bPE" = (
 /obj/structure/table/woodentable,
 /obj/item/flashlight/lantern,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/snow,
 /area/rift/surfacebase/outside/outside1)
 "bPJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3674,8 +3674,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "cIt" = (
-/obj/machinery/door/airlock/maintenance/common,
-/turf/simulated/wall,
+/obj/random/junk,
+/turf/simulated/floor/plating,
 /area/maintenance/maint_bar)
 "cIz" = (
 /obj/structure/cable/green{
@@ -6751,6 +6751,12 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/medical/virologyisolation)
+"exN" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/maint_bar)
 "eym" = (
 /obj/machinery/door/airlock/medical{
 	name = "Patient Room B";
@@ -14044,7 +14050,7 @@
 /turf/simulated/wall,
 /area/rnd/outpost/xenobiology/outpost_decon)
 "jlF" = (
-/turf/simulated/floor/tiled/steel_dirty,
+/turf/simulated/floor/plating,
 /area/maintenance/maint_bar)
 "jmJ" = (
 /obj/item/radio/intercom{
@@ -22864,6 +22870,9 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
+"owx" = (
+/turf/simulated/floor/snow,
+/area/rift/surfacebase/outside/outside1)
 "owN" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/machinery/meter,
@@ -30633,7 +30642,7 @@
 /area/medical/psych)
 "toc" = (
 /obj/structure/table/bench/wooden,
-/turf/simulated/floor/outdoors/snow/lythios43c,
+/turf/simulated/floor/snow,
 /area/rift/surfacebase/outside/outside1)
 "toy" = (
 /obj/machinery/camera/network/medbay{
@@ -31105,7 +31114,7 @@
 /obj/structure/sign/poster{
 	pixel_y = -32
 	},
-/turf/simulated/floor/tiled/steel_dirty,
+/turf/simulated/floor/plating,
 /area/maintenance/maint_bar)
 "tDU" = (
 /obj/structure/table/hardwoodtable,
@@ -59326,7 +59335,7 @@ xKh
 eGb
 ftg
 rPR
-jhW
+jlF
 aSt
 cBk
 xQZ
@@ -59712,7 +59721,7 @@ hgE
 dkv
 rWI
 mXL
-mXL
+jlF
 blt
 jhW
 nHc
@@ -59907,7 +59916,7 @@ dkv
 jQE
 pDj
 xLN
-ghD
+exN
 llz
 iAE
 dkv
@@ -60105,9 +60114,9 @@ ghD
 mXL
 hqO
 dkv
-iFN
+owx
 xSV
-iFN
+owx
 hgE
 hgE
 hgE
@@ -60296,13 +60305,13 @@ xxZ
 wTT
 jxa
 bqY
-jhW
+jlF
 jKI
 dkv
 toc
-iFN
-iFN
-iFN
+owx
+owx
+owx
 hgE
 hgE
 snT
@@ -60494,9 +60503,9 @@ mXL
 kVC
 dkv
 toc
-iFN
+owx
 wZo
-iFN
+owx
 hgE
 hgE
 snT
@@ -60688,9 +60697,9 @@ llz
 jxa
 dkv
 toc
-iFN
-iFN
-iFN
+owx
+owx
+owx
 hgE
 hgE
 snT
@@ -60875,7 +60884,7 @@ jlF
 hPe
 nKU
 mXL
-jhW
+jlF
 lje
 eDQ
 nyh
@@ -61068,7 +61077,7 @@ lQh
 mFn
 tDQ
 dkv
-cIt
+hhC
 dkv
 dkv
 dkv
@@ -61648,10 +61657,10 @@ hgE
 dkv
 vrL
 une
-weV
+cIt
 mXL
 mXL
-jhW
+mXL
 dkv
 vCn
 qdj
@@ -61844,7 +61853,7 @@ aCk
 wAc
 wXJ
 fRc
-jhW
+jlF
 ajI
 dkv
 cBk
