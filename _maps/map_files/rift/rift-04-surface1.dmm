@@ -3456,6 +3456,12 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
+/obj/machinery/access_button/airlock_interior{
+	dir = 4;
+	master_tag = "central_airlock";
+	pixel_x = 8;
+	pixel_y = -26
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
 "cEL" = (
@@ -11890,6 +11896,12 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
 	},
+/obj/machinery/access_button/airlock_interior{
+	dir = 4;
+	master_tag = "central_airlock_two";
+	pixel_x = 8;
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
 "ijr" = (
@@ -13483,21 +13495,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/tool_storage)
-"jfd" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/grav_surround{
-	dir = 8
-	},
-/obj/machinery/access_button/airlock_exterior{
-	dir = 8;
-	master_tag = "central_airlock_two";
-	pixel_x = 24;
-	pixel_y = 26
-	},
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "jfw" = (
 /obj/machinery/door/airlock/maintenance/engi{
 	name = "RTG Access";
@@ -23500,12 +23497,6 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/machinery/access_button/airlock_interior{
-	dir = 4;
-	master_tag = "central_airlock_two";
-	pixel_x = -24;
-	pixel_y = 26
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva)
 "pfy" = (
@@ -28381,6 +28372,12 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
+/obj/machinery/access_button/airlock_exterior{
+	dir = 8;
+	master_tag = "central_airlock";
+	pixel_x = -8;
+	pixel_y = -26
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
 "srP" = (
@@ -32394,21 +32391,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/xenoarch_storage)
-"uNc" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/grav_surround{
-	dir = 8
-	},
-/obj/machinery/access_button/airlock_exterior{
-	dir = 8;
-	master_tag = "central_airlock";
-	pixel_x = 24;
-	pixel_y = -26
-	},
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "uND" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -33848,12 +33830,6 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
-	},
-/obj/machinery/access_button/airlock_interior{
-	dir = 4;
-	master_tag = "central_airlock";
-	pixel_x = -24;
-	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva)
@@ -35966,6 +35942,12 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
+	},
+/obj/machinery/access_button/airlock_exterior{
+	dir = 8;
+	master_tag = "central_airlock_two";
+	pixel_x = -8;
+	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
@@ -48035,11 +48017,11 @@ hgE
 kxc
 mUL
 nbg
-uNc
+nbg
 cMO
 iFN
 mUL
-jfd
+nbg
 nbg
 cMO
 kxc
