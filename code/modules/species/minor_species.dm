@@ -13,6 +13,7 @@
 	template.default_citizenship = default_citizenship
 	template.default_faction = default_faction
 	template.default_religion = default_religion
+	template.species_fluff_flags = species_fluff_flags
 
 /**
  * since we're a server of snowflakes, we have this to embody character species
@@ -43,6 +44,8 @@
 	var/whitelisted = FALSE
 	/// real species type
 	var/real_species_type = /datum/species/custom
+	/// species fluff flags - read species_flags.dm in __DEFINES
+	var/species_fluff_flags = NONE
 
 	//! Defaults to set for visuals
 	/// default ear path

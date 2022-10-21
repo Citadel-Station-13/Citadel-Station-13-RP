@@ -2569,7 +2569,7 @@
 #include "code\modules\lore_hardcoded\faction.dm"
 #include "code\modules\lore_hardcoded\origin.dm"
 #include "code\modules\lore_hardcoded\religion.dm"
-#include "code\modules\lore_hardcoded\origin\oricon.dm"
+#include "code\modules\lore_hardcoded\origin\oricon\_oricon.dm"
 #include "code\modules\lore_hardcoded\origin\oricon\sol.dm"
 #include "code\modules\mapping\map_config.dm"
 #include "code\modules\mapping\map_orientation_patterns.dm"
