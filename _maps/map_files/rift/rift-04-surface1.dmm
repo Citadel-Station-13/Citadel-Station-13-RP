@@ -5504,10 +5504,8 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/component/binary/passive_gate/on{
-	dir = 8;
-	pressure_resistance = 750;
-	target_pressure = 750
+/obj/machinery/atmospherics/pipe/simple/hidden/universal{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
@@ -7939,8 +7937,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/library)
 "fIm" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/universal{
-	dir = 4
+/obj/machinery/atmospherics/component/binary/passive_gate/on{
+	dir = 8;
+	pressure_resistance = 750;
+	target_pressure = 750
 	},
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
