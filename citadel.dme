@@ -2133,6 +2133,7 @@
 #include "code\modules\clothing\under\jobs\miscellaneous_vr.dm"
 #include "code\modules\clothing\under\jobs\security.dm"
 #include "code\modules\clothing\under\oricon\_oricon.dm"
+#include "code\modules\clothing\under\oricon\crew.dm"
 #include "code\modules\clothing\under\oricon\dress.dm"
 #include "code\modules\clothing\under\oricon\pt.dm"
 #include "code\modules\clothing\under\oricon\service.dm"
