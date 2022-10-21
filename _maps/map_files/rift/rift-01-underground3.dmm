@@ -96,6 +96,11 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/mining_airlock)
+"gu" = (
+/turf/simulated/floor/plating/lythios43c{
+	outdoors = 0
+	},
+/area/rift/surfacebase/underground/under1)
 "gG" = (
 /obj/structure/plasticflaps/mining,
 /obj/machinery/conveyor{
@@ -118,6 +123,16 @@
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/mining_airlock)
+"hP" = (
+/obj/machinery/door/airlock/maintenance/common{
+	name = "SM delam chamber";
+	locked = 1
+	},
+/obj/item/barrier_tape_segment/engineering,
+/turf/simulated/floor/plating/lythios43c{
+	outdoors = 0
+	},
+/area/rift/surfacebase/underground/under1)
 "ig" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -233,6 +248,10 @@
 	name = "glacier wall"
 	},
 /area/rift/surfacebase/underground/under1)
+"pd" = (
+/obj/structure/sign/warning/radioactive,
+/turf/simulated/wall/r_wall,
+/area/rift/surfacebase/underground/under1)
 "pj" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
@@ -299,6 +318,12 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/mining_airlock)
+"tz" = (
+/obj/effect/decal/warning_stripes,
+/turf/simulated/floor/plating/lythios43c{
+	outdoors = 0
+	},
+/area/rift/surfacebase/underground/under1)
 "tB" = (
 /obj/structure/closet/crate,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -323,6 +348,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/mining_airlock)
+"uP" = (
+/obj/structure/barricade,
+/obj/item/barrier_tape_segment/engineering,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "vr" = (
 /turf/simulated/floor/plating,
 /area/quartermaster/mining_airlock)
@@ -401,6 +431,19 @@
 "yV" = (
 /obj/effect/zone_divider,
 /turf/simulated/mineral/icerock/lythios43c,
+/area/rift/surfacebase/underground/under1)
+"zx" = (
+/obj/structure/sign/signnew/memetic{
+	pixel_y = -32;
+	pixel_x = -32
+	},
+/obj/structure/sign/signnew/danger{
+	pixel_y = -32
+	},
+/obj/structure/sign/warning/bomb_range{
+	pixel_x = -32
+	},
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "zF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -578,6 +621,19 @@
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/mining_airlock)
+"NT" = (
+/obj/structure/sign/signnew/explosives{
+	pixel_y = 32
+	},
+/obj/structure/sign/signnew/radiation{
+	pixel_x = -32;
+	pixel_y = 32
+	},
+/obj/structure/sign/warning{
+	pixel_x = -32
+	},
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "Ok" = (
 /obj/machinery/light/flamp/noshade,
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
@@ -11781,13 +11837,13 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+xK
+xK
+xK
+xK
+xK
+xK
+xK
 dq
 dq
 dq
@@ -11966,23 +12022,23 @@ dq
 dq
 dq
 dq
+KS
+KS
+KS
 dq
 dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
 dq
 dq
 dq
@@ -12159,24 +12215,24 @@ dq
 dq
 dq
 dq
+KS
+KS
+KS
+KS
+KS
+KS
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
 dq
 dq
 dq
@@ -12351,26 +12407,26 @@ dq
 dq
 dq
 dq
+KS
+KS
+KS
+KS
+dq
+KS
+KS
+KS
+KS
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
+xK
 dq
 dq
 dq
@@ -12543,27 +12599,27 @@ dq
 dq
 dq
 dq
+KS
+KS
+KS
+KS
+KS
 dq
 dq
 dq
 dq
+KS
+KS
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+xK
+xK
+xK
+tz
+xK
+xK
+xK
 dq
 dq
 dq
@@ -12734,30 +12790,30 @@ dq
 dq
 dq
 dq
+KS
+uP
+KS
+KS
+KS
+KS
 dq
 dq
 dq
 dq
 dq
 dq
+KS
+KS
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+xK
+xK
+xK
+gu
+xK
+xK
+xK
 dq
 dq
 dq
@@ -12925,6 +12981,12 @@ dq
 dq
 dq
 dq
+KS
+KS
+KS
+KS
+uP
+KS
 dq
 dq
 dq
@@ -12934,23 +12996,17 @@ dq
 dq
 dq
 dq
+KS
+KS
 dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+xK
+xK
+hP
+xK
+xK
 dq
 dq
 dq
@@ -13116,6 +13172,12 @@ dq
 dq
 dq
 dq
+KS
+KS
+KS
+KS
+KS
+KS
 dq
 dq
 dq
@@ -13128,22 +13190,16 @@ dq
 dq
 dq
 dq
+KS
+KS
+KS
+KS
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+pd
+KS
+pd
 dq
 dq
 dq
@@ -13309,6 +13365,10 @@ dq
 dq
 dq
 dq
+KS
+KS
+KS
+KS
 dq
 dq
 dq
@@ -13325,19 +13385,15 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+KS
+KS
+KS
+KS
+uP
+KS
+KS
+KS
+KS
 dq
 dq
 dq
@@ -13502,6 +13558,10 @@ dq
 dq
 dq
 dq
+KS
+KS
+KS
+KS
 dq
 dq
 dq
@@ -13521,17 +13581,13 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+KS
+KS
+uP
+KS
+KS
+KS
+KS
 dq
 dq
 dq
@@ -13695,9 +13751,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
+KS
+KS
+KS
 dq
 dq
 dq
@@ -13877,6 +13933,9 @@ dq
 dq
 dq
 dq
+KS
+KS
+KS
 dq
 dq
 dq
@@ -13885,12 +13944,9 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
+KS
+KS
+KS
 dq
 dq
 dq
@@ -14070,20 +14126,20 @@ dq
 dq
 dq
 dq
+KS
+KS
+KS
+KS
+KS
 dq
 dq
 dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+KS
+KS
+KS
 dq
 dq
 dq
@@ -14263,20 +14319,20 @@ dq
 dq
 dq
 dq
+KS
+KS
+KS
+dq
+KS
+KS
+KS
+KS
+KS
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+KS
+KS
 dq
 dq
 dq
@@ -14456,21 +14512,21 @@ dq
 dq
 dq
 dq
+KS
+KS
+KS
 dq
 dq
 dq
 dq
 dq
+KS
+KS
+KS
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+KS
+KS
 dq
 dq
 dq
@@ -14650,6 +14706,8 @@ KS
 dq
 dq
 dq
+uP
+uP
 dq
 dq
 dq
@@ -14657,14 +14715,12 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
-dq
+KS
+KS
+KS
+KS
+KS
+KS
 dq
 dq
 dq
@@ -14844,6 +14900,8 @@ KS
 KS
 KS
 dq
+NT
+zx
 dq
 dq
 dq
@@ -14852,12 +14910,10 @@ dq
 dq
 dq
 dq
-dq
-dq
-dq
-dq
-dq
-dq
+KS
+KS
+KS
+KS
 dq
 dq
 dq
