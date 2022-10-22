@@ -15,7 +15,7 @@
 	economic_modifier = 10
 	pto_type = PTO_ENGINEERING
 
-	minimum_character_age = 30
+	minimum_character_age = 25
 	ideal_character_age = 50
 
 	access = list(access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
