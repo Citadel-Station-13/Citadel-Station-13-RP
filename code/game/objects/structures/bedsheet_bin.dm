@@ -173,6 +173,7 @@ LINEN BINS
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "linenbin-full"
 	anchored = 1
+	var/initial_amount = 20
 	var/amount = 20
 	var/list/sheets = list()
 	var/obj/item/hidden = null
@@ -190,12 +191,14 @@ LINEN BINS
 	. += "There are [amount] bed sheets in the bin."
 
 
-/obj/structure/bedsheetbin/update_icon()
-	switch(amount)
-		if(0)				icon_state = "linenbin-empty"
-		if(1 to amount / 2)	icon_state = "linenbin-half"
-		else				icon_state = "linenbin-full"
-
+/obj/structure/bedsheetbin/update_icon_state()
+	. = ..()
+	if(!amount)
+		icon_state = "linenbin-empty"
+	else if(amount < (initial_amount / 2))
+		icon_state = "linenbin-half"
+	else
+		icon_state = "linenbin-full"
 
 /obj/structure/bedsheetbin/attackby(obj/item/I as obj, mob/user as mob)
 	if(istype(I, /obj/item/bedsheet))
@@ -222,15 +225,15 @@ LINEN BINS
 		else
 			B = new /obj/item/bedsheet(loc)
 
-		B.loc = user.loc
+		B.forceMove(user.drop_location())
 		user.put_in_hands(B)
 		to_chat(user, "<span class='notice'>You take [B] out of [src].</span>")
 
 		if(hidden)
-			hidden.loc = user.loc
+			hidden.forceMove(user.drop_location())
 			to_chat(user, "<span class='notice'>[hidden] falls out of [B]!</span>")
 			hidden = null
-
+		update_icon()
 
 	add_fingerprint(user)
 

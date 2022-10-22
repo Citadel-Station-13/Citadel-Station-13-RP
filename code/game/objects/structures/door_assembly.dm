@@ -228,7 +228,7 @@
 		playsound(src, W.tool_sound, 100, 1)
 		user.visible_message("[user] cuts the wires from the airlock assembly.", "You start to cut the wires from airlock assembly.")
 
-		if(do_after(user, 40 * W.tool_speed))
+		if(do_after(user, 40 * W.tool_speed) && state == 1)
 			if(!src) return
 			to_chat(user, "<span class='notice'>You cut the airlock wires.!</span>")
 			new/obj/item/stack/cable_coil(src.loc, 1)

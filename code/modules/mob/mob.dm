@@ -157,7 +157,7 @@
 			else
 				msg = alt
 				type = alt_type
-				if ((type & 1) && (sdisabilities & BLIND))
+				if ((type & 1) && (sdisabilities & SDISABILITY_NERVOUS))
 					return
 	// Added voice muffling for Issue 41.
 	if(stat == UNCONSCIOUS || sleeping > 0)
@@ -216,10 +216,10 @@
 	return restrained() ? FULLY_BUCKLED : PARTIALLY_BUCKLED
 
 /mob/proc/is_blind()
-	return ((sdisabilities & BLIND) || blinded || incapacitated(INCAPACITATION_KNOCKOUT))
+	return ((sdisabilities & SDISABILITY_NERVOUS) || blinded || incapacitated(INCAPACITATION_KNOCKOUT))
 
 /mob/proc/is_deaf()
-	return ((sdisabilities & DEAF) || ear_deaf || incapacitated(INCAPACITATION_KNOCKOUT))
+	return ((sdisabilities & SDISABILITY_DEAF) || ear_deaf || incapacitated(INCAPACITATION_KNOCKOUT))
 
 /mob/proc/is_physically_disabled()
 	return incapacitated(INCAPACITATION_DISABLED)
@@ -724,7 +724,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		//var/list/L = list()
 		stat("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
 		//L += SSmapping.stat_map_name
-		//L += "Round ID: [GLOB.round_id || "NULL"]"
+		stat("Round ID", "[GLOB.round_id || "ERROR"]")
 		// VIRGO START
 		stat("Station Time", stationtime2text())
 		stat("Station Date", stationdate2text())
@@ -817,8 +817,9 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/get_true_species_name()
 	return ""
 
-/mob/proc/get_species_id()
-	return
+// todo: species vs subspecies
+// /mob/proc/get_species_id()
+// 	return
 
 /mob/proc/flash_weak_pain()
 	flick("weak_pain",pain)
@@ -955,17 +956,18 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	else
 		to_chat(usr, "You are now facing [dir2text(facing_dir)].")
 
-/mob/proc/set_face_dir(var/newdir)
-	if(newdir == facing_dir)
-		facing_dir = null
-	else if(newdir)
-		setDir(newdir)
-		facing_dir = newdir
-	else if(facing_dir)
-		facing_dir = null
+/mob/proc/set_face_dir(newdir)
+	if(newdir)
+		if(newdir == facing_dir)
+			facing_dir = null
+		else
+			facing_dir = newdir
+			setDir(newdir)
 	else
-		setDir(dir)
-		facing_dir = dir
+		if(facing_dir)
+			facing_dir = null
+		else
+			facing_dir = dir
 
 /mob/setDir()
 	if(facing_dir)

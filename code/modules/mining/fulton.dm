@@ -197,7 +197,7 @@ var/global/list/total_extraction_beacons = list()
 		var/mob/living/L = A
 		if(L.stat != DEAD)
 			return 1
-	for(var/thing in A.GetAllContents())
+	for(var/thing in A.get_all_contents())
 		if(isliving(A))
 			var/mob/living/L = A
 			update_icon()

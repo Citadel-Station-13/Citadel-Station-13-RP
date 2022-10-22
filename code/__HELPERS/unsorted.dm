@@ -6,19 +6,6 @@
 /// Checks if all high bits in req_mask are set in bitfield.
 #define BIT_TEST_ALL(bitfield, req_mask) ((~(bitfield) & (req_mask)) == 0)
 
-/// Supposedly the fastest way to do this according to https://gist.github.com/Giacom/be635398926bb463b42a
-#define RANGE_TURFS(RADIUS, CENTER) \
-  block( \
-    locate(max(CENTER.x-(RADIUS),1),          max(CENTER.y-(RADIUS),1),          CENTER.z), \
-    locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
-  )
-
-#define RANGE_TURFS_OR_EMPTY(RADIUS, CENTER) \
-  (CENTER? block( \
-    locate(max(CENTER.x-(RADIUS),1),          max(CENTER.y-(RADIUS),1),          CENTER.z), \
-    locate(min(CENTER.x+(RADIUS),world.maxx), min(CENTER.y+(RADIUS),world.maxy), CENTER.z) \
-  ) : list())
-
 /// Inverts the colour of an HTML string.
 /proc/invertHTML(HTMLstring)
 	if (!(istext(HTMLstring)))
@@ -1255,42 +1242,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 			return "[round(number / 1e9, 0.1)] G[symbol]" // giga
 		if(1e12 to 1e15-1)
 			return "[round(number / 1e12, 0.1)] T[symbol]" // tera
-
-/**
- * Center's an image.
- * Requires:
- * The Image
- * The x dimension of the icon file used in the image
- * The y dimension of the icon file used in the image
- *  eg: center_image(I, 32,32)
- *  eg2: center_image(I, 96,96)
- */
-/proc/center_image(image/I, x_dimension = 0, y_dimension = 0)
-	if(!I)
-		return
-
-	if(!x_dimension || !y_dimension)
-		return
-
-	if((x_dimension == world.icon_size) && (y_dimension == world.icon_size))
-		return I
-
-	//Offset the image so that it's bottom left corner is shifted this many pixels
-	//This makes it infinitely easier to draw larger inhands/images larger than world.iconsize
-	//but still use them in game
-	var/x_offset = -((x_dimension/world.icon_size)-1)*(world.icon_size*0.5)
-	var/y_offset = -((y_dimension/world.icon_size)-1)*(world.icon_size*0.5)
-
-	//Correct values under world.icon_size
-	if(x_dimension < world.icon_size)
-		x_offset *= -1
-	if(y_dimension < world.icon_size)
-		y_offset *= -1
-
-	I.pixel_x = x_offset
-	I.pixel_y = y_offset
-
-	return I
 
 /// Ultra range (no limitations on distance, faster than range for distances > 8); including areas drastically decreases performance.
 /proc/urange(dist = 0, atom/center = usr, orange = 0, areas = 0)

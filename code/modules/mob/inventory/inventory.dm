@@ -15,9 +15,9 @@
 			stack_trace("attempted usage of slot id in abstract insertion converted successfully")
 	. = FALSE
 	switch(slot)
-		if(/datum/inventory_slot_meta/abstract/left_hand)
+		if(/datum/inventory_slot_meta/abstract/hand/left)
 			return put_in_left_hand(I, flags)
-		if(/datum/inventory_slot_meta/abstract/right_hand)
+		if(/datum/inventory_slot_meta/abstract/hand/right)
 			return put_in_right_hand(I, flags)
 		if(/datum/inventory_slot_meta/abstract/put_in_belt)
 			var/obj/item/storage/S = item_by_slot(SLOT_ID_BELT)
@@ -396,9 +396,9 @@
 	if(slot_meta.inventory_slot_flags & INV_SLOT_IS_ABSTRACT)
 		// special handling: make educated guess, defaulting to yes
 		switch(slot_meta.type)
-			if(/datum/inventory_slot_meta/abstract/left_hand)
+			if(/datum/inventory_slot_meta/abstract/hand/left)
 				return (flags & INV_OP_FORCE) || !get_left_held_item()
-			if(/datum/inventory_slot_meta/abstract/right_hand)
+			if(/datum/inventory_slot_meta/abstract/hand/right)
 				return (flags & INV_OP_FORCE) || !get_right_held_item()
 			if(/datum/inventory_slot_meta/abstract/put_in_backpack)
 				var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)

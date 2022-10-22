@@ -55,6 +55,9 @@
 	use_power = USE_POWER_IDLE
 	icon_state = "map_vent_out"
 
+/obj/machinery/atmospherics/component/unary/vent_pump/on/welded
+	welded = 1
+
 /obj/machinery/atmospherics/component/unary/vent_pump/aux
 	icon_state = "map_vent_aux"
 	icon_connect_type = "-aux"

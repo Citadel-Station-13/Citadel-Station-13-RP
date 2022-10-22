@@ -156,14 +156,14 @@
 	name = "carp hood"
 	desc = "A hood attached to a carp costume."
 	icon_state = "carp_casual"
-	item_state_slots = list(slot_r_hand_str = "carp_casual", slot_l_hand_str = "carp_casual") //Does not exist -S2-
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "carp_casual", SLOT_ID_LEFT_HAND = "carp_casual") //Does not exist -S2-
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE	//Space carp like space, so you should too
 
 /obj/item/clothing/head/hood/ian_hood
 	name = "corgi hood"
 	desc = "A hood that looks just like a corgi's head, it won't guarantee dog biscuits."
 	icon_state = "ian"
-	item_state_slots = list(slot_r_hand_str = "ian", slot_l_hand_str = "ian") //Does not exist -S2-
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "ian", SLOT_ID_LEFT_HAND = "ian") //Does not exist -S2-
 
 /obj/item/clothing/head/hood/bee_hood
 	name = "bee hood"

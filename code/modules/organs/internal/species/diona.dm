@@ -77,7 +77,7 @@
 
 /obj/item/organ/internal/brain/cephalon/Initialize(mapload)
 	. = ..()
-	spawn(30 SECONDS)	// FBP Dionaea need some way to be disassembled through surgery, if absolutely necessary.
+	spawn(30 SECONDS) // FBP Dionaea need some way to be disassembled through surgery, if absolutely necessary.
 		if(!owner.isSynthetic())
 			vital = FALSE
 

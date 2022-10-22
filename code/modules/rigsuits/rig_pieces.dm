@@ -11,23 +11,6 @@
 	heat_protection    = HEAD|FACE|EYES
 	cold_protection    = HEAD|FACE|EYES
 	brightness_on = 4
-	sprite_sheets = list(
-		SPECIES_AKULA       = 'icons/mob/clothing/species/akula/helmet.dmi',
-		SPECIES_NEVREAN     = 'icons/mob/clothing/species/nevrean/helmet.dmi',
-		SPECIES_PHORONOID   = 'icons/mob/clothing/species/phoronoid/head.dmi',
-		SPECIES_PROMETHEAN  = 'icons/mob/clothing/species/skrell/helmet.dmi',
-		SPECIES_SERGAL      = 'icons/mob/clothing/species/sergal/helmet.dmi',
-		SPECIES_SKRELL      = 'icons/mob/clothing/species/skrell/helmet.dmi',
-		SPECIES_TAJ         = 'icons/mob/clothing/species/tajaran/helmet.dmi',
-		SPECIES_TESHARI     = 'icons/mob/clothing/species/teshari/head.dmi',
-		SPECIES_UNATHI      = 'icons/mob/clothing/species/unathi/helmet.dmi',
-		SPECIES_VOX         = 'icons/mob/clothing/species/vox/head.dmi',
-		SPECIES_VULPKANIN   = 'icons/mob/clothing/species/vulpkanin/helmet.dmi',
-		SPECIES_XENOHYBRID  = 'icons/mob/clothing/species/unathi/helmet.dmi',
-		SPECIES_ZADDAT      = 'icons/mob/clothing/species/zaddat/head.dmi',
-		SPECIES_ZORREN_FLAT = 'icons/mob/clothing/species/fennec/helmet.dmi',
-		SPECIES_ZORREN_HIGH = 'icons/mob/clothing/species/fox/helmet.dmi',
-		)
 
 	max_pressure_protection = null
 	min_pressure_protection = null
@@ -100,13 +83,6 @@
 	heat_protection    = FEET
 
 	icon_base = null
-	sprite_sheets = list(
-		SPECIES_TESHARI   = 'icons/mob/clothing/species/teshari/shoes.dmi',
-		SPECIES_VOX       = 'icons/mob/clothing/species/vox/shoes.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/feet.dmi',
-		SPECIES_ZADDAT    = 'icons/mob/clothing/species/zaddat/shoes.dmi',
-		) //Zaddat Engi RIG appearance is unique. List inherited from code\modules\clothing\clothing.dm
-
 	force = 5 // if you're kicking someone with something meant to keep you locked on a hunk of metal...
 
 	species_restricted = list(
@@ -158,24 +134,6 @@
 	var/obj/item/material/knife/tacknife
 	max_pressure_protection = null
 	min_pressure_protection = null
-
-	sprite_sheets = list(
-		SPECIES_AKULA       = 'icons/mob/clothing/species/akula/suits.dmi',
-		SPECIES_NEVREAN     = 'icons/mob/clothing/species/nevrean/suits.dmi',
-		SPECIES_PHORONOID   = 'icons/mob/clothing/species/phoronoid/suits.dmi',
-		SPECIES_PROMETHEAN  = 'icons/mob/clothing/species/skrell/suits.dmi',
-		SPECIES_SERGAL      = 'icons/mob/clothing/species/sergal/suits.dmi',
-		SPECIES_SKRELL      = 'icons/mob/clothing/species/skrell/suits.dmi',
-		SPECIES_TAJ         = 'icons/mob/clothing/species/tajaran/suits.dmi',
-		SPECIES_TESHARI     = 'icons/mob/clothing/species/teshari/suits.dmi',
-		SPECIES_UNATHI      = 'icons/mob/clothing/species/unathi/suits.dmi',
-		SPECIES_VOX         = 'icons/mob/clothing/species/vox/suits.dmi',
-		SPECIES_VULPKANIN   = 'icons/mob/clothing/species/vulpkanin/suits.dmi',
-		SPECIES_XENOHYBRID  = 'icons/mob/clothing/species/unathi/suits.dmi',
-		SPECIES_ZADDAT      = 'icons/mob/clothing/species/zaddat/suits.dmi',
-		SPECIES_ZORREN_FLAT = 'icons/mob/clothing/species/fennec/suits.dmi',
-		SPECIES_ZORREN_HIGH = 'icons/mob/clothing/species/fox/suits.dmi',
-		)
 
 	species_restricted = list(
 		SPECIES_AKULA,

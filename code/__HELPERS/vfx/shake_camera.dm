@@ -1,5 +1,5 @@
 /**
- * shakes the camera of any client watching from an atom's perspective
+ * Shakes the camera of any client watching from an atom's perspective.
  */
 /proc/shake_camera(atom/movable/AM, duration, strength = 1)
 	if(!AM || isEye(AM) || isAI(AM))

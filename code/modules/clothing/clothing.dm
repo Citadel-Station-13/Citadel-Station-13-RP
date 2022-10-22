@@ -18,6 +18,7 @@
 	var/list/enables_planes		//Enables these planes in the wearing mob's plane_holder
 	var/list/plane_slots		//But only if it's equipped into this specific slot
 
+	// todo: kill this stupid shit lmao
 	/*
 		Sprites used when the clothing item is refit. This is done by setting icon_override.
 		For best results, if this is set then sprite_sheets should be null and vice versa, but that is by no means necessary.
@@ -135,9 +136,8 @@
 
 	//Set species_restricted list
 	switch(target_species)
-		if(SPECIES_SKRELL)
-			species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_PROMETHEAN) //skrell helmets fit humans too
-
+		if(SPECIES_HUMAN, SPECIES_SKRELL)	//humanoid bodytypes
+			species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_PROMETHEAN, SPECIES_HUMAN_SPACER, SPECIES_HUMAN_GRAV, SPECIES_HUMAN_VATBORN) //skrell/humans can wear each other's suits
 		else
 			species_restricted = list(target_species)
 

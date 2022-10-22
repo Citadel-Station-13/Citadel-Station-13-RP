@@ -273,14 +273,16 @@
 	forbid_turf_types = typelist(NAMEOF(src, forbid_turf_types), forbid_turf_types)
 	if(!default_turf_checks)
 		return
-	if(has_typelist(NAMEOF(src, allowed_turf_typecache)))
-		allowed_turf_typecache = get_typelist(NAMEOF(src, allowed_turf_typecache))
-	else
-		allowed_turf_typecache = typelist(NAMEOF(src, allowed_turf_typecache), typecacheof(allowed_turf_types))
-	if(has_typelist(NAMEOF(src, forbid_turf_typecache)))
-		forbid_turf_typecache = get_typelist(NAMEOF(src, forbid_turf_typecache))
-	else
-		forbid_turf_typecache = typelist(NAMEOF(src, forbid_turf_typecache), typecacheof(forbid_turf_types))
+	if(LAZYLEN(allowed_turf_types))
+		if(has_typelist(NAMEOF(src, allowed_turf_typecache)))
+			allowed_turf_typecache = get_typelist(NAMEOF(src, allowed_turf_typecache))
+		else
+			allowed_turf_typecache = typelist(NAMEOF(src, allowed_turf_typecache), typecacheof(allowed_turf_types))
+	if(LAZYLEN(forbid_turf_types))
+		if(has_typelist(NAMEOF(src, forbid_turf_typecache)))
+			forbid_turf_typecache = get_typelist(NAMEOF(src, forbid_turf_typecache))
+		else
+			forbid_turf_typecache = typelist(NAMEOF(src, forbid_turf_typecache), typecacheof(forbid_turf_types))
 
 /**
  * checks if we can move onto a turf

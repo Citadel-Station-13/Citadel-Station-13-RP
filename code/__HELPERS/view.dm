@@ -1,23 +1,31 @@
-//This is intended to be a full wrapper. DO NOT directly modify its values
-///Container for client viewsize
+/**
+ * This is intended to be a full wrapper. DO NOT directly modify its values.
+ * Container for client viewsize.
+ */
 /datum/view_data
-	/// Width offset to apply to the default view string if we're not supressed for some reason
+	/// Width offset to apply to the default view string if we're not supressed for some reason.
 	var/width = 0
-	/// Height offset to apply to the default view string, see above
+	/// Height offset to apply to the default view string, see above.
 	var/height = 0
-	/// This client's current "default" view, in the format "WidthxHeight"
-	/// We add/remove from this when we want to change their window size
+	/**
+	 * This client's current "default" view, in the format "WidthxHeight".
+	 * We add/remove from this when we want to change their window size.
+	 */
 	var/default = ""
-	/// This client's current zoom level, if it's not being supressed
-	/// If it's 0, we autoscale to the size of the window. Otherwise it's treated as the ratio between
-	/// the pixels on the map and output pixels. Only looks proper nice in increments of whole numbers (iirc)
-	/// Stored here so other parts of the code have a non blocking way of getting a user's functional zoom
+	/**
+	 * This client's current zoom level, if it's not being supressed.
+	 * If it's 0, we autoscale to the size of the window. Otherwise it's treated as the ratio between
+	 * the pixels on the map and output pixels. Only looks proper nice in increments of whole numbers (iirc).
+	 * Stored here so other parts of the code have a non blocking way of getting a user's functional zoom.
+	 */
 	var/zoom = 0
-	/// If the view is currently being supressed by some other "monitor"
-	/// For when you want to own the client's eye without fucking with their viewport
-	/// Doesn't make sense for a binocoler to effect your view in a camera console
+	/**
+	 * If the view is currently being supressed by some other "monitor".
+	 * For when you want to own the client's eye without fucking with their viewport.
+	 * Doesn't make sense for a binocoler to effect your view in a camera console.
+	 */
 	var/is_suppressed = FALSE
-	/// The client that owns this view packet
+	/// The client that owns this view packet.
 	var/client/chief = null
 
 /datum/view_data/New(client/owner, view_string)
@@ -35,11 +43,13 @@
 		return
 	resetFormat()
 
-/datum/view_data/proc/assertFormat() // T-Pose
+/// T-Pose
+/datum/view_data/proc/assertFormat()
 	// winset(chief, "mapwindow.map", "zoom=0")
 	// We're using icon dropdown instead
 
-/datum/view_data/proc/resetFormat()//Cuck
+/// Cuck
+/datum/view_data/proc/resetFormat()
 	// winset(chief, "mapwindow.map", "zoom=[chief.prefs.pixel_size]")
 	// We're using icon dropdown instead
 
@@ -67,9 +77,14 @@
 	apply()
 
 /datum/view_data/proc/setTo(toAdd)
-	var/list/shitcode = getviewsize(toAdd)	// Backward compatability to account
-	width = shitcode[1]						// For a change in how sizes get calculated. we used to include world.view in
-	height = shitcode[2]					// This, but it was jank, so I had to move it
+	/**
+	 * Backward compatability to account.
+	 * For a change in how sizes get calculated. we used to include world.view in
+	 * This, but it was jank, so I had to move it.
+	 */
+	var/list/shitcode = getviewsize(toAdd)
+	width = shitcode[1]
+	height = shitcode[2]
 	apply()
 
 /datum/view_data/proc/setBoth(wid, hei)

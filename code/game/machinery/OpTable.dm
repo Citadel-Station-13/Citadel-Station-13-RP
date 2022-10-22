@@ -46,7 +46,7 @@
 				density = 0
 
 /obj/machinery/optable/attack_hand(mob/user)
-	if(HULK in usr.mutations)
+	if(MUTATION_HULK in usr.mutations)
 		visible_message(SPAN_DANGER("\The [usr] destroys \the [src]!"))
 		density = FALSE
 		qdel(src)

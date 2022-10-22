@@ -1,6 +1,7 @@
 /datum/species/tajaran
 	name = SPECIES_TAJ
 	name_plural = "Tajaran"
+	default_bodytype = BODYTYPE_TAJARAN
 
 	icobase      = 'icons/mob/species/tajaran/body_greyscale.dmi'
 	deform       = 'icons/mob/species/tajaran/deformed_body_greyscale.dmi'
