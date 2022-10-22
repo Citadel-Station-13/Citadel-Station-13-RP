@@ -22,7 +22,7 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/nevrean)
 
-	num_alternate_languages = 3
+	max_additional_languages = 3
 	name_language = LANGUAGE_ID_BIRDSONG
 	secondary_langs = list(LANGUAGE_BIRDSONG)
 

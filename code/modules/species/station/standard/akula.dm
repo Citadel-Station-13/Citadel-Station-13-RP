@@ -27,9 +27,9 @@
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Akula"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/akula)
 
-	num_alternate_languages = 3
+	max_additional_languages = 3
 	name_language   = LANGUAGE_ID_SKRELL
-	secondary_langs = list(LANGUAGE_SKRELLIAN)
+	intrinsic_languages = LANGUAGE_ID_SKRELL
 	assisted_langs  = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
 	// darksight  = 8

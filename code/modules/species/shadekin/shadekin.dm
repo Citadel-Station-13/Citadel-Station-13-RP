@@ -23,7 +23,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
 	rarity_value = 15 //INTERDIMENSIONAL FLUFFERS
 
-	num_alternate_languages = 3
+	max_additional_languages = 3
 	language = LANGUAGE_SHADEKIN
 	name_language = LANGUAGE_ID_SHADEKIN_HIVEMIND
 	species_language = LANGUAGE_SHADEKIN

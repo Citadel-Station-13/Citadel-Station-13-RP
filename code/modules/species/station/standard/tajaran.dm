@@ -12,10 +12,14 @@
 	tail = "tajtail"
 	tail_animation = 'icons/mob/species/tajaran/tail_greyscale.dmi'
 
-	num_alternate_languages = 3
+	max_additional_languages = 3
 	name_language = LANGUAGE_ID_TAJARAN
-	species_language = LANGUAGE_SIIK
-	secondary_langs = list(LANGUAGE_SIIK, LANGUAGE_AKHANI, LANGUAGE_ALAI)
+	intrinsic_languages = LANGUAGE_ID_TAJARAN
+	whitelist_languages = list(
+		LANGUAGE_ID_TAJARAN,
+		LANGUAGE_ID_TAJARAN_ALT,
+		LANGUAGE_ID_TAJARAN_SIGN
+	)
 
 	darksight = 8
 	slowdown  = -0.5

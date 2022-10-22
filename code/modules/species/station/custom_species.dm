@@ -16,7 +16,7 @@
 	name_language = null // Use the first-name last-name generator rather than a language scrambler
 	max_age = 200
 	health_hud_intensity = 2
-	num_alternate_languages = 3
+	max_additional_languages = 3
 	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
 	species_spawn_flags = SPECIES_SPAWN_ALLOWED

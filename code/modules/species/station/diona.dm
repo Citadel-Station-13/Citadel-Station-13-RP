@@ -9,7 +9,7 @@
 	preview_icon = 'icons/mob/species/diona/preview.dmi'
 
 	language = LANGUAGE_ROOTLOCAL
-	num_alternate_languages = 2
+	max_additional_languages = 2
 	name_language = LANGUAGE_ID_DIONA
 	species_language = LANGUAGE_ROOTLOCAL
 	secondary_langs  = list(LANGUAGE_ROOTGLOBAL)

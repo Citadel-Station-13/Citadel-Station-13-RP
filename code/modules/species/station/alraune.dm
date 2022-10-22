@@ -15,7 +15,7 @@
 	They are highly adaptable both mentally and physically, but tend to have a collecting intra-species mindset.
 	"}
 
-	num_alternate_languages = 3
+	max_additional_languages = 3
 	language = LANGUAGE_VERNAL
 	species_language = LANGUAGE_VERNAL
 

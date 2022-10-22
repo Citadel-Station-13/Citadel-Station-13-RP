@@ -24,7 +24,7 @@
 	name_language = LANGUAGE_ID_SHADEKIN_HIVEMIND
 	species_language = LANGUAGE_SHADEKIN
 	secondary_langs  = list(LANGUAGE_SHADEKIN)
-	num_alternate_languages = 3
+	max_additional_languages = 3
 
 	rarity_value = 5 // INTERDIMENSIONAL FLUFFERS
 

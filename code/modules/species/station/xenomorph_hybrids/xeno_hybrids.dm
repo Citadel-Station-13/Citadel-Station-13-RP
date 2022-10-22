@@ -9,7 +9,7 @@
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
-	num_alternate_languages = 2
+	max_additional_languages = 2
 
 	max_age = 150//Xenomorphs probably get pretty old if not shot dead
 
@@ -22,12 +22,9 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenohybrid)
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Neomorphs"
 
-	//primitive_form = "" //None for these guys
-	language = LANGUAGE_XENO
+	intrinsic_languages = LANGUAGE_ID_XENOMORPH
 	name_language = LANGUAGE_ID_XENOMORPH
-	species_language = LANGUAGE_XENO
-	secondary_langs = list(LANGUAGE_XENO)
-	num_alternate_languages = 3
+	max_additional_languages = 3
 
 	flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE//Chitin like VASILISSANs should have the same flags
 	species_spawn_flags = SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_WHITELIST_SELECTABLE

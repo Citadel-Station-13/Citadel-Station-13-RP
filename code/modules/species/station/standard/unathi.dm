@@ -24,10 +24,9 @@
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Unathi"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/unathi)
 
-	num_alternate_languages = 3
+	max_additional_languages = 3
 	name_language    = LANGUAGE_ID_UNATHI
-	species_language = LANGUAGE_UNATHI
-	secondary_langs  = list(LANGUAGE_UNATHI)
+	intrinsic_languages = LANGUAGE_ID_UNATHI
 
 	ambiguous_genders = TRUE
 	gluttonous = 1

@@ -14,8 +14,8 @@
 	brute_mod = 0.8    // 20% brute damage reduction
 	burn_mod  = 1.15   // 15% burn damage increase. They're spiders. Aerosol can+lighter = dead spiders.
 
-	num_alternate_languages = 2
-	secondary_langs = list(LANGUAGE_VESPINAE)
+	max_additional_languages = 2
+	intrinsic_languages = LANGUAGE_ID_VASILISSAN
 
 	is_weaver = TRUE
 	silk_reserve = 500

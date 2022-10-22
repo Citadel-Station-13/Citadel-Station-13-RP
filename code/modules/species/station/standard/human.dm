@@ -15,7 +15,7 @@
 	worlds tumultous at best."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/humans)
 
-	num_alternate_languages = 3
+	max_additional_languages = 3
 	species_language = LANGUAGE_SOL_COMMON
 	secondary_langs  = list(LANGUAGE_SOL_COMMON, LANGUAGE_TERMINUS)
 	name_language    = null // Use the first-name last-name generator rather than a language scrambler

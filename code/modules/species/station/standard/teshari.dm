@@ -25,10 +25,13 @@
 	tail_hair = "feathers"
 	icobase_tail = 1
 
-	num_alternate_languages = 3
+	max_additional_languages = 3
 	name_language    = LANGUAGE_ID_TESHARI
-	species_language = LANGUAGE_SCHECHI
-	secondary_langs  = list(LANGUAGE_SCHECHI, LANGUAGE_SKRELLIAN)
+	intrinsic_languages = LANGUAGE_ID_TESHARI
+	whitelist_languages = list(
+		LANGUAGE_ID_TESHARI,
+		LANGUAGE_ID_SKRELL
+	)
 
 	male_cough_sounds   = list('sound/effects/mob_effects/tesharicougha.ogg', 'sound/effects/mob_effects/tesharicoughb.ogg')
 	female_cough_sounds = list('sound/effects/mob_effects/tesharicougha.ogg', 'sound/effects/mob_effects/tesharicoughb.ogg')

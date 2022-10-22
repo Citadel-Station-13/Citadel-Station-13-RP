@@ -9,7 +9,7 @@
 	primitive_form = SPECIES_MONKEY
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	blurb = "The remnants of some lost or dead race's research. These seem relatively normal."
-	num_alternate_languages = 3
+	max_additional_languages = 3
 	species_language = LANGUAGE_GALCOM
 	secondary_langs = list(LANGUAGE_TERMINUS)
 	assisted_langs = list(LANGUAGE_ROOTGLOBAL)

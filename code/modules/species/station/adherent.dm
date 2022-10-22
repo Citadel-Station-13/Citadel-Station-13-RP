@@ -53,7 +53,7 @@
 
 	language         = LANGUAGE_ADHERENT
 	species_language = LANGUAGE_ADHERENT
-	num_alternate_languages = 2
+	max_additional_languages = 2
 
 	blood_color = "#2de00d"
 	flesh_color = "#90edeb"

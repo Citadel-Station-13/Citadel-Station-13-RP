@@ -8,7 +8,7 @@
 	icobase = 'icons/mob/species/vox/body.dmi'
 	deform  = 'icons/mob/species/vox/deformed_body.dmi'
 
-	num_alternate_languages = 1
+	max_additional_languages = 1
 	language = LANGUAGE_GALCOM
 	default_language = LANGUAGE_VOX
 	species_language = LANGUAGE_VOX

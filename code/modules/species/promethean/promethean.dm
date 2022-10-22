@@ -20,7 +20,7 @@ var/datum/species/shapeshifter/promethean/prometheans
 	wikilink = "N/A"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/promethean)
 
-	num_alternate_languages = 2
+	max_additional_languages = 2
 	species_language = LANGUAGE_SOL_COMMON
 	secondary_langs  = list(LANGUAGE_SOL_COMMON) // For some reason, having this as their species language does not allow it to be chosen.
 	assisted_langs   = list(LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX) // Prometheans are weird, let's just assume they can use basically any language.

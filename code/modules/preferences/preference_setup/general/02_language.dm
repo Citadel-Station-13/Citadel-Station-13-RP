@@ -14,8 +14,8 @@
 	if(!islist(pref.alternate_languages))	pref.alternate_languages = list()
 	if(pref.species)
 		var/datum/species/S = pref.character_static_species_meta()
-		if(S && pref.alternate_languages.len > S.num_alternate_languages)
-			pref.alternate_languages.len = S.num_alternate_languages // Truncate to allowed length
+		if(S && pref.alternate_languages.len > S.max_additional_languages)
+			pref.alternate_languages.len = S.max_additional_languages // Truncate to allowed length
 	if(isnull(pref.language_prefixes) || !pref.language_prefixes.len)
 		pref.language_prefixes = config_legacy.language_prefixes.Copy()
 
@@ -27,14 +27,14 @@
 		. += "- [S.language]<br>"
 	if(S.default_language && S.default_language != S.language)
 		. += "- [S.default_language]<br>"
-	if(S.num_alternate_languages)
+	if(S.max_additional_languages)
 		if(pref.alternate_languages.len)
 			for(var/i = 1 to pref.alternate_languages.len)
 				var/lang = pref.alternate_languages[i]
 				. += "- [lang] - <a href='?src=\ref[src];remove_language=[i]'>remove</a><br>"
 
-		if(pref.alternate_languages.len < S.num_alternate_languages)
-			. += "- <a href='?src=\ref[src];add_language=1'>add</a> ([S.num_alternate_languages - pref.alternate_languages.len] remaining)<br>"
+		if(pref.alternate_languages.len < S.max_additional_languages)
+			. += "- <a href='?src=\ref[src];add_language=1'>add</a> ([S.max_additional_languages - pref.alternate_languages.len] remaining)<br>"
 	else
 		. += "- [pref.species] cannot choose secondary languages.<br>"
 
@@ -48,7 +48,7 @@
 		return PREFERENCES_REFRESH
 	else if(href_list["add_language"])
 		var/datum/species/S = pref.character_static_species_meta()
-		if(pref.alternate_languages.len >= S.num_alternate_languages)
+		if(pref.alternate_languages.len >= S.max_additional_languages)
 			alert(user, "You have already selected the maximum number of alternate languages for this species!")
 		else
 			var/list/available_languages = S.secondary_langs.Copy()
@@ -65,7 +65,7 @@
 				alert(user, "There are no additional languages available to select.")
 			else
 				var/new_lang = input(user, "Select an additional language", "Character Generation", null) as null|anything in available_languages
-				if(new_lang && pref.alternate_languages.len < S.num_alternate_languages)
+				if(new_lang && pref.alternate_languages.len < S.max_additional_languages)
 					pref.alternate_languages |= new_lang
 					return PREFERENCES_REFRESH
 

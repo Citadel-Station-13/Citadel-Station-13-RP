@@ -1,9 +1,3 @@
-///////////////File for all snowflake/special races/////////////////////////////
-/////Anything that is spectacularly special should be put in here///////////////
-////////////////////////////////////////////////////////////////////////////////
-
-
-
 /datum/species/shapeshifter/xenochimera //Scree's race.
 	name = SPECIES_XENOCHIMERA
 	name_plural = "Xenochimeras"
@@ -19,8 +13,7 @@
 	tail = "tail" //Scree's tail. Can be disabled in the Species Customization tab by choosing "hide species specific tail sprite"
 	icobase_tail = 1
 
-	num_alternate_languages = 5
-	secondary_langs = list("Sol Common")
+	max_additional_languages = 5
 
 	darksight     = 8     //critters with instincts to hide in the dark need to see in the dark - about as good as tajara.
 	slowdown      = -0.2  //scuttly, but not as scuttly as a tajara or a teshari.

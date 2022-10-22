@@ -14,7 +14,7 @@
 	brute_mod = 0.8   // 20% brute damage reduction seems fitting to match spiders, due to exoskeletons.
 	burn_mod  = 1.15  // 15% burn damage increase, the same as spiders. For the same reason.
 
-	num_alternate_languages = 2
+	max_additional_languages = 2
 	secondary_langs = list(LANGUAGE_VESPINAE)
 
 	reagent_tag = IS_APIDAEN

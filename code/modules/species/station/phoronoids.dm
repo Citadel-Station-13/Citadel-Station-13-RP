@@ -10,7 +10,7 @@
 
 	language = LANGUAGE_GALCOM
 	species_language = LANGUAGE_BONES
-	num_alternate_languages = 3
+	max_additional_languages = 3
 	name_language = null // name randomisers are fucking weird
 
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch)

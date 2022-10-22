@@ -17,7 +17,7 @@
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
 
 	language = LANGUAGE_ENOCHIAN
-	num_alternate_languages = 3
+	max_additional_languages = 3
 
 	species_spawn_flags = SPECIES_SPAWN_ALLOWED
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
@@ -69,7 +69,7 @@
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
 
 	language = LANGUAGE_DAEMON
-	num_alternate_languages = 3
+	max_additional_languages = 3
 
 	species_spawn_flags = SPECIES_SPAWN_ALLOWED
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR

@@ -9,9 +9,9 @@
 	tail = "tail"
 	icobase_tail = 1
 
-	num_alternate_languages = 3
+	max_additional_languages = 3
 	name_language = null
-	secondary_langs = list(LANGUAGE_BIRDSONG)
+	intrinsic_languages = LANGUAGE_ID_BIRDSONG
 
 	color_mult = 1
 	max_age = 80

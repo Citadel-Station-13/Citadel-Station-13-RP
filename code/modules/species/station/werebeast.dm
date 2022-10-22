@@ -10,8 +10,8 @@
 	preview_icon  = 'icons/mob/species/werebeast/preview.dmi'
 	tail = "tail"
 
-	num_alternate_languages = 3
-	secondary_langs = list(LANGUAGE_CANILUNZT)
+	max_additional_languages = 3
+	intrinsic_languages = LANGUAGE_ID_VULPKANIN
 	name_language = LANGUAGE_ID_VULPKANIN
 
 	total_health = 200

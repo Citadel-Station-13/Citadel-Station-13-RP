@@ -7,7 +7,7 @@
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
-	num_alternate_languages = 3
+	max_additional_languages = 3
 	secondary_langs = list(LANGUAGE_BIRDSONG)
 	name_language = null
 	color_mult = 1

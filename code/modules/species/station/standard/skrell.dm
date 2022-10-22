@@ -19,7 +19,7 @@
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Skrell"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/skrell)
 
-	num_alternate_languages = 3
+	max_additional_languages = 3
 	name_language    = LANGUAGE_ID_SKRELL
 	species_language = LANGUAGE_SKRELLIAN
 	secondary_langs  = list(LANGUAGE_SKRELLIAN, LANGUAGE_SCHECHI)
