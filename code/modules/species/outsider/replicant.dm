@@ -10,8 +10,7 @@
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	blurb = "The remnants of some lost or dead race's research. These seem relatively normal."
 	max_additional_languages = 3
-	species_language = LANGUAGE_GALCOM
-	secondary_langs = list(LANGUAGE_TERMINUS)
+	whitelist_languages = LANGUAGE_ID_TERMINUS
 	assisted_langs = list(LANGUAGE_ROOTGLOBAL)
 	name_language = LANGUAGE_ID_TERMINUS
 
@@ -72,7 +71,8 @@
 
 	blood_color = "#55ff55"
 
-	species_language = LANGUAGE_SIGN
+	intrinsic_languages = LANGUAGE_ID_SIGN
+	whitelist_languages = LANGUAGE_ID_TERMINUS
 	assisted_langs = list(LANGUAGE_ROOTGLOBAL, LANGUAGE_SOL_COMMON, LANGUAGE_SKRELLIANFAR)
 
 	inherent_verbs = list(
@@ -109,8 +109,11 @@
 
 	blood_color = "#C0C0C0"
 
-	species_language = LANGUAGE_SIGN
-	secondary_langs = list(LANGUAGE_TERMINUS, LANGUAGE_ROOTGLOBAL)	// Radio-waves.
+	intrinsic_languages = LNAGUAGE_ID_SIGN
+	whitelist_languages = list(
+		LANGUAGE_ID_TERMINUS,
+		LANGUAGE_ID_DIONA_HIVEMIND
+	)
 
 	has_organ = list(
 		O_HEART     = /obj/item/organ/internal/heart/replicant/rage,

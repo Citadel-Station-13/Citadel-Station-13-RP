@@ -20,10 +20,7 @@
 
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Shadekin"
 
-	language = LANGUAGE_SHADEKIN
 	name_language = LANGUAGE_ID_SHADEKIN_HIVEMIND
-	species_language = LANGUAGE_SHADEKIN
-	secondary_langs  = list(LANGUAGE_SHADEKIN)
 	max_additional_languages = 3
 
 	rarity_value = 5 // INTERDIMENSIONAL FLUFFERS

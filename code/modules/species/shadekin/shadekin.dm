@@ -24,10 +24,8 @@
 	rarity_value = 15 //INTERDIMENSIONAL FLUFFERS
 
 	max_additional_languages = 3
-	language = LANGUAGE_SHADEKIN
+	intrinsic_languages = LANGUAGE_ID_SHADEKIN_HIVEMIND
 	name_language = LANGUAGE_ID_SHADEKIN_HIVEMIND
-	species_language = LANGUAGE_SHADEKIN
-	secondary_langs = list(LANGUAGE_SHADEKIN)
 
 	unarmed_types = list(
 		/datum/unarmed_attack/stomp,

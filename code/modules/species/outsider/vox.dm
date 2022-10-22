@@ -9,9 +9,9 @@
 	deform  = 'icons/mob/species/vox/deformed_body.dmi'
 
 	max_additional_languages = 1
-	language = LANGUAGE_GALCOM
-	default_language = LANGUAGE_VOX
-	species_language = LANGUAGE_VOX
+	intrinsic_languages = LANGUAGE_ID_VOX
+	default_language = LANGUAGE_ID_VOX
+	name_language = LANGUAGE_ID_VOX
 	assisted_langs   = list(LANGUAGE_ROOTGLOBAL)
 
 	blurb = {"

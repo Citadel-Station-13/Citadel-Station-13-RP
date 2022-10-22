@@ -16,7 +16,7 @@
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
 
-	language = LANGUAGE_ENOCHIAN
+	intrinsic_languages = LANGUAGE_ID_DAEDAL_AURIL
 	max_additional_languages = 3
 
 	species_spawn_flags = SPECIES_SPAWN_ALLOWED
@@ -68,7 +68,7 @@
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
 
-	language = LANGUAGE_DAEMON
+	intrinsic_languages = LANGUAGE_ID_DAEDAL_DREMACHIR
 	max_additional_languages = 3
 
 	species_spawn_flags = SPECIES_SPAWN_ALLOWED

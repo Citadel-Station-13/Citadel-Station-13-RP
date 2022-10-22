@@ -1,5 +1,6 @@
 /datum/species/proc/construct_character_species()
 	var/datum/character_species/template = new
+	// copy basics
 	template.name = display_name
 	template.uid = uid
 	if(id != uid)
@@ -9,11 +10,19 @@
 	template.desc = blurb
 	template.whitelisted = !!(species_spawn_flags & SPECIES_SPAWN_WHITELISTED)
 	template.real_species_type = type
+	// copy lore/culture
 	template.default_origin = default_origin
 	template.default_citizenship = default_citizenship
 	template.default_faction = default_faction
 	template.default_religion = default_religion
 	template.species_fluff_flags = species_fluff_flags
+	// copy language
+	template.default_language = default_language
+	template.name_language = name_language
+	template.max_additional_languages = max_additional_languages
+	template.whitelist_languages = islist(whitelist_languages)? whitelist_languages.Copy() : whitelist_languages
+	template.intrinsic_languages = islist(intrinsic_languages)? intrinsic_languages.Copy() : intrinsic_languages
+	template.galactic_language = galactic_language
 
 /**
  * since we're a server of snowflakes, we have this to embody character species
@@ -67,20 +76,23 @@
 	/// default religion
 	var/default_religion = /datum/lore/character_background/religion/custom
 
-	//! Languages
+	//! Languages - IDs only, as typepaths are too expensive to resolve
 	/// has galactic common? you better not disable this unless you know what you're doing
-	var/language_galactic_common = FALSE
-	/// additional languages we always have, regardless of background
-	var/list/language_species = list()
-	/// name language is from for randomgen - id
+	var/galactic_language = TRUE
+	/// additional languages we always have, regardless of background - list or ID
+	var/list/intrinsic_languages
+	/// name language is from for randomgen - id - null to use vanilla ss13 randomgen
 	var/name_language
-
-	#warn impl in general
-
-	#warn impl defaults on species datums and consider #defining or allowing typepaths
+	/// languages we are always allowed to learn, even if restricted (obviously overridden by intrinsic languages) - list or ID
+	var/whitelist_languages
+	/// additional anguages we can learn (ontop of any we get from us, and from culture datums)
+	var/max_additional_languages = 3
+	/// default language when talking; this should probably be part of intrinsics!
+	var/default_language = LANGUAGE_ID_COMMON
 
 /datum/character_species/proc/tweak(datum/species/S)
 	S.default_bodytype = our_bodytype
+	#warn teweak languages
 
 /datum/character_species/proc/get_default_origin_id()
 	return SScharacters.resolve_origin(default_origin).id
@@ -94,8 +106,20 @@
 /datum/character_species/proc/get_default_religion_id()
 	return SScharacters.resolve_religion(default_religion).id
 
-/datum/character_species/proc/get_default_language_ids()
+/datum/character_species/proc/get_intrinsic_language_ids()
 	#warn impl
+
+/datum/character_species/proc/get_name_language_id()
+	return name_language
+
+/datum/character_species/proc/get_max_additional_languages()
+	return max_additional_languages
+
+/datum/character_species/proc/get_whitelisted_language_ids()
+	#warn impl
+
+/datum/character_species/proc/get_default_language_id()
+	return default_language
 
 //! LORE PEOPLE, SHOVE YOUR SNOWFLAKE HERE
 

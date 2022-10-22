@@ -688,6 +688,7 @@
 			E.handle_implant(new_character)
 			E.post_implant(new_character)
 
+	#warn why tf isn't this in language copy to
 	for(var/lang in client.prefs.alternate_languages)
 		var/datum/language/chosen_language = SScharacters.resolve_language_name(lang)
 		if(chosen_language)

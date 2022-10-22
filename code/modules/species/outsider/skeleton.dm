@@ -10,7 +10,7 @@
 
 	icobase = 'icons/mob/species/human/skeleton.dmi'
 
-	language = "Sol Common"
+	intrinsic_languages = LANGUAGE_ID_HUMAN // todo?
 	name_language = null // Use the first-name last-name generator rather than a language scrambler
 
 	max_age = 110
