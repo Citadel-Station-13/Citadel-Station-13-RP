@@ -21,8 +21,12 @@
 
 	max_additional_languages = 3
 	name_language    = LANGUAGE_ID_SKRELL
-	species_language = LANGUAGE_SKRELLIAN
-	secondary_langs  = list(LANGUAGE_SKRELLIAN, LANGUAGE_SCHECHI)
+	intrinsic_languages = LANGUAGE_ID_SKRELL
+	whitelist_languages = list(
+		LANGUAGE_ID_SKRELL,
+		LANGUAGE_ID_SKRELL_ALT,
+		LANGUAGE_ID_TESHARI
+	)
 	assisted_langs   = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
 	color_mult = 1

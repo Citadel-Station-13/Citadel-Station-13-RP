@@ -16,8 +16,7 @@
 	"}
 
 	max_additional_languages = 3
-	language = LANGUAGE_VERNAL
-	species_language = LANGUAGE_VERNAL
+	intrinsic_languages = LANGUAGE_ID_VERNAL
 
 	slowdown = 1 //slow, they're plants. Not as slow as full diona.
 	total_health = 100 //standard

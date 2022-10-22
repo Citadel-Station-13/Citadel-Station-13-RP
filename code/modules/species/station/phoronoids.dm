@@ -8,8 +8,7 @@
 	preview_icon = 'icons/mob/species/phoronoid/preview.dmi'
 	husk_icon    = 'icons/mob/species/phoronoid/husk.dmi'
 
-	language = LANGUAGE_GALCOM
-	species_language = LANGUAGE_BONES
+	intrinsic_languages = LANGUAGE_ID_PHORONOID
 	max_additional_languages = 3
 	name_language = null // name randomisers are fucking weird
 

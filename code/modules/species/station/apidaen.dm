@@ -15,7 +15,7 @@
 	burn_mod  = 1.15  // 15% burn damage increase, the same as spiders. For the same reason.
 
 	max_additional_languages = 2
-	secondary_langs = list(LANGUAGE_VESPINAE)
+	intrinsic_languages = LANGUAGE_ID_VASILISSAN
 
 	reagent_tag = IS_APIDAEN
 

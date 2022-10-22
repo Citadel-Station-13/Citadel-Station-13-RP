@@ -51,8 +51,7 @@
 	species_spawn_flags = SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_NO_FBP_CONSTRUCT | SPECIES_SPAWN_NO_FBP_SETUP | SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELIST_SELECTABLE
 	species_appearance_flags = HAS_EYE_COLOR | HAS_BASE_SKIN_COLOR
 
-	language         = LANGUAGE_ADHERENT
-	species_language = LANGUAGE_ADHERENT
+	intrinsic_languages = LANGUAGE_ID_ADHERENT
 	max_additional_languages = 2
 
 	blood_color = "#2de00d"

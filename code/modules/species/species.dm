@@ -43,7 +43,9 @@
 	/// default language used when speaking
 	#warn check overrides
 	var/default_language = LANGUAGE_ID_COMMON
-	/// intrinsic species languages - THIS USUALLY SHOULD INCLUDE COMMON - list() or singular language (do not null this)
+	/// do we have galactic common? this is so common we just have this as a var
+	var/galactic_language = TRUE
+	/// intrinsic species languages - list() or singular language or null
 	// todo: linter check for language default being in here
 	var/intrinsic_languages = LANGUAGE_ID_COMMON
 	/// language our name is in - used for namegen; null to force stock ss13 namegen instead

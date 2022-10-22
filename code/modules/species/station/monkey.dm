@@ -11,7 +11,6 @@
 	damage_mask     = 'icons/mob/species/monkey/damage_mask.dmi'
 	blood_mask      = 'icons/mob/species/monkey/blood_mask.dmi'
 
-	language = null
 	default_language = LANGUAGE_ID_CHIMPANZEE
 	intrinsic_languages = LANGUAGE_ID_CHIMPANZEE
 	mob_size = MOB_SMALL

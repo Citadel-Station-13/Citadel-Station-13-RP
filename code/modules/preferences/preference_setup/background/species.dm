@@ -50,7 +50,7 @@
 
 /datum/preferences/proc/character_species_datum()
 	RETURN_TYPE(/datum/character_species)
-	return SScharacters.resolve_character_species(get_character_data(CHARACTER_DATA_SPECIES))
+	return SScharacters.resolve_character_species(get_character_data(CHARACTER_DATA_CHAR_SPECIES))
 
 /datum/preferences/proc/character_species_name()
-	return SScharacters.resolve_character_species(get_character_data(CHARACTER_DATA_SPECIES))?.name || "ERROR"
+	return SScharacters.resolve_character_species(get_character_data(CHARACTER_DATA_CHAR_SPECIES))?.name || "ERROR"

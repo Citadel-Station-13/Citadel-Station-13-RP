@@ -7,7 +7,7 @@
 	preview_icon = 'icons/mob/species/golem/preview.dmi'
 	husk_icon    = 'icons/mob/species/golem/husk.dmi'
 
-	language = "Sol Common" //todo?
+	intrinsic_languages = LANGUAGE_ID_HUMAN // todo?
 
 	species_spawn_flags = SPECIES_SPAWN_RESTRICTED
 	flags = NO_PAIN | NO_SCAN | NO_POISON | NO_MINOR_CUT

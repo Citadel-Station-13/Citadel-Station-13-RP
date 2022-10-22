@@ -11,8 +11,10 @@
 	language = LANGUAGE_ROOTLOCAL
 	max_additional_languages = 2
 	name_language = LANGUAGE_ID_DIONA
-	species_language = LANGUAGE_ROOTLOCAL
-	secondary_langs  = list(LANGUAGE_ROOTGLOBAL)
+	intrinsic_languages = list(
+		LANGUAGE_ID_DIONA,
+		LANGUAGE_ID_DIONA_HIVEMIND
+	)
 	assisted_langs   = list(LANGUAGE_VOX)	// Diona are weird, let's just assume they can use basically any language.
 
 	slowdown = 2.5

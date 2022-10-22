@@ -24,7 +24,9 @@
 
 /datum/species/proc/get_intrinsic_language_ids()
 	RETURN_TYPE(/list)
-	return intrinsic_languages? (islist(intrinsic_languages)? intrinsic_languages.Copy() : list(intrinsic_languages)) : list()
+	. = intrinsic_languages? (islist(intrinsic_languages)? intrinsic_languages.Copy() : list(intrinsic_languages)) : list()
+	if(galactic_language)
+		. |= LANGUAGE_ID_COMMON
 
 /datum/species/proc/get_name_language_id()
 	return name_language

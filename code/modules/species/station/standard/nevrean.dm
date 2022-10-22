@@ -24,7 +24,7 @@
 
 	max_additional_languages = 3
 	name_language = LANGUAGE_ID_BIRDSONG
-	secondary_langs = list(LANGUAGE_BIRDSONG)
+	intrinsic_languages = LANGUAGE_ID_BIRDSONG
 
 	//darksight = 8
 	//slowdown = -0.5

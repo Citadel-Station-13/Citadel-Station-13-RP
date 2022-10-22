@@ -18,7 +18,7 @@
 	//gluttonous = 1
 	hunger_factor = 0.1 // By math should be half of the Teshari Nutrition drain
 	max_additional_languages = 3
-	secondary_langs = list(LANGUAGE_SAGARU)
+	intrinsic_languages = LANGUAGE_ID_NARAMADI
 	name_language = LANGUAGE_ID_NARAMADI
 	color_mult = 1
 

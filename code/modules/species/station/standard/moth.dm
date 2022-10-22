@@ -32,9 +32,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	gluttonous = 0
 	max_additional_languages = 3
 	rarity_value = 2
-	species_language = list(
-		LANGUAGE_LUINIMMA,
-	)
+	intrinsic_languages = LANGUAGE_ID_LUINIMMA
 	name_language = LANGUAGE_ID_LUINIMMA
 	// sensitive
 	health_hud_intensity = 1.5

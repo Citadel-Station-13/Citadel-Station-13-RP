@@ -75,7 +75,7 @@
 	icobase_tail = 1
 
 	max_additional_languages = 3
-	secondary_langs = list(LANGUAGE_TERMINUS)
+	intrinsic_languages = LANGUAGE_ID_TERMINUS
 	name_language = LANGUAGE_ID_TERMINUS
 	inherent_verbs = list(/mob/living/carbon/human/proc/lick_wounds)
 
