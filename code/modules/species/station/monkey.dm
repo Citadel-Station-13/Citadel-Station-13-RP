@@ -12,7 +12,8 @@
 	blood_mask      = 'icons/mob/species/monkey/blood_mask.dmi'
 
 	language = null
-	default_language = "Chimpanzee"
+	default_language = LANGUAGE_ID_CHIMPANZEE
+	intrinsic_languages = LANGUAGE_ID_CHIMPANZEE
 	mob_size = MOB_SMALL
 	has_fine_manipulation = 0
 	show_ssd = null
@@ -77,7 +78,8 @@
 	deform  = 'icons/mob/species/monkey/body_farwa.dmi'
 
 	greater_form = SPECIES_TAJ
-	default_language = SPECIES_MONKEY_TAJ
+	default_language = LANGUAGE_ID_FARWA
+	intrinsic_languages = LANGUAGE_ID_FARWA
 	flesh_color = "#AFA59E"
 	base_color  = "#333333"
 	tail = "farwatail"
@@ -90,7 +92,8 @@
 	deform  = 'icons/mob/species/monkey/body_neaera.dmi'
 
 	greater_form = SPECIES_SKRELL
-	default_language = LANGUAGE_NEAERA
+	default_language = LANGUAGE_ID_NEAERA
+	intrinsic_languages = LANGUAGE_ID_NEAERA
 	flesh_color = "#8CD7A3"
 	blood_color = "#1D2CBF"
 	reagent_tag = IS_SKRELL
@@ -105,7 +108,8 @@
 
 	tail = "stoktail"
 	greater_form = SPECIES_UNATHI
-	default_language = LANGUAGE_STOK
+	default_language = LANGUAGE_ID_STOK
+	intrinsic_languages = LANGUAGE_ID_STOK
 	flesh_color = "#34AF10"
 	base_color  = "#066000"
 	reagent_tag = IS_UNATHI
@@ -117,7 +121,8 @@
 	deform  = 'icons/mob/species/monkey/body_sobaka.dmi'
 	tail = null //The tail is part of its body due to tail using the "icons/effects/species.dmi" file. It must be null, or they'll have a chimp tail.
 	greater_form = SPECIES_AKULA
-	default_language = LANGUAGE_SKRELLIAN //Closest we have.
+	default_language = LANGUAGE_ID_SKRELL //Closest we have.
+	intrinsic_languages = LANGUAGE_ID_SKRELL
 
 /datum/species/monkey/sergal
 	name = SPECIES_MONKEY_SERGAL
@@ -125,7 +130,8 @@
 	icobase = 'icons/mob/species/monkey/body_sergaling.dmi'
 	deform  = 'icons/mob/species/monkey/body_sergaling.dmi'
 	tail = null
-	default_language = LANGUAGE_SAGARU
+	default_language = LANGUAGE_ID_NARAMADI
+	intrinsic_languages = LANGUAGE_ID_NARAMADI
 
 /datum/species/monkey/sparra
 	name = SPECIES_MONKEY_NEVREAN
@@ -134,7 +140,8 @@
 	icobase = 'icons/mob/species/monkey/body_sparra.dmi'
 	deform  = 'icons/mob/species/monkey/body_sparra.dmi'
 	tail = null
-	default_language = LANGUAGE_BIRDSONG
+	default_language = LANGUAGE_ID_BIRDSONG
+	intrinsic_languages = LANGUAGE_ID_BIRDSONG
 
 
 /* Example
@@ -160,7 +167,8 @@
 	deform = 'icons/mob/species/monkey/body_wolpin.dmi'
 
 	greater_form = SPECIES_VULPKANIN
-	default_language = LANGUAGE_CANILUNZT
+	default_language = LANGUAGE_ID_VULPKANIN
+	intrinsic_languages = LANGUAGE_ID_VULPKANIN
 	flesh_color = "#966464"
 	base_color  = "#000000"
 	tail = null

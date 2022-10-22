@@ -503,6 +503,7 @@
 /datum/species/proc/on_apply(mob/living/carbon/human/H)
 	ASSERT(istype(H))
 
+#warn all intrinsic languages
 	if(language)
 		H.add_language(language)
 	if(default_language)
@@ -527,6 +528,8 @@
  * called when we are removed from a mob
  */
 /datum/species/proc/on_remove(mob/living/carbon/human/H)
+
+#warn all intrinsic languages
 	if(language)
 		H.remove_language(language)
 	if(default_language)

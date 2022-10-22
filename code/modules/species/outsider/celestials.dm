@@ -16,7 +16,6 @@
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
 
-	default_language = LANGUAGE_GALCOM
 	language = LANGUAGE_ENOCHIAN
 	num_alternate_languages = 3
 
@@ -69,7 +68,6 @@
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
 
-	default_language = LANGUAGE_GALCOM
 	language = LANGUAGE_DAEMON
 	num_alternate_languages = 3
 
