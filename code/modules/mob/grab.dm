@@ -591,7 +591,7 @@
 
 /obj/item/grab/proc/devour(mob/target, mob/user)
 	var/can_eat
-	if((FAT in user.mutations) && ismini(target))
+	if((MUTATION_FAT in user.mutations) && ismini(target))
 		can_eat = 1
 	else
 		var/mob/living/carbon/human/H = user

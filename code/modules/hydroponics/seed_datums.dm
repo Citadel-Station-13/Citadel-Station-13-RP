@@ -1112,6 +1112,26 @@
 	set_trait(TRAIT_WATER_CONSUMPTION, 8)
 	set_trait(TRAIT_STINGS,1)
 
+/datum/seed/peas
+	name = "peas"
+	seed_name = "peas"
+	display_name = "loose peas"
+	kitchen_tag = "peas"
+	chems = list("nutriment" = list(1,10))
+
+/datum/seed/peas/New()
+	..()
+	set_trait(TRAIT_MATURATION,8)
+	set_trait(TRAIT_PRODUCTION,6)
+	set_trait(TRAIT_YIELD,3)
+	set_trait(TRAIT_POTENCY,20)
+	set_trait(TRAIT_PRODUCT_ICON,"berry")
+	set_trait(TRAIT_PRODUCT_COLOUR,"#0e9415")
+	set_trait(TRAIT_PLANT_COLOUR,"#87C969")
+	set_trait(TRAIT_PLANT_ICON,"bush")
+	set_trait(TRAIT_IDEAL_LIGHT, 6)
+	set_trait(TRAIT_WATER_CONSUMPTION, 6)
+
 /datum/seed/durian
 	name = "durian"
 	seed_name = "durian"

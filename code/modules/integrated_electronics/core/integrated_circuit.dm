@@ -398,7 +398,7 @@ a creative player the means to solve many problems.  Circuits are held inside an
 			return FALSE
 	if(!exclude_outside && target.Adjacent(acting_object) && isturf(target.loc))
 		return TRUE
-	if(!exclude_contents && (target in acting_object.GetAllContents()))
+	if(!exclude_contents && (target in acting_object.get_all_contents()))
 		return TRUE
 	if(target in acting_object.loc)
 		return TRUE

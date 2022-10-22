@@ -390,8 +390,8 @@
 
 			occupantData["intOrgan"] = intOrganData
 
-			occupantData["blind"] = (H.sdisabilities & BLIND)
-			occupantData["nearsighted"] = (H.disabilities & NEARSIGHTED)
+			occupantData["blind"] = (H.sdisabilities & SDISABILITY_NERVOUS)
+			occupantData["nearsighted"] = (H.disabilities & DISABILITY_NEARSIGHTED)
 			occupantData = attempt_vr(scanner,"get_occupant_data_vr",list(occupantData,H))
 		data["occupant"] = occupantData
 
@@ -600,9 +600,9 @@
 				dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[infection]:[mech][i_dead]</td><td></td>"
 				dat += "</tr>"
 			dat += "</table>"
-			if(occupant.sdisabilities & BLIND)
+			if(occupant.sdisabilities & SDISABILITY_NERVOUS)
 				dat += "<font color='red'>Cataracts detected.</font><BR>"
-			if(occupant.disabilities & NEARSIGHTED)
+			if(occupant.disabilities & DISABILITY_NEARSIGHTED)
 				dat += "<font color='red'>Retinal misalignment detected.</font><BR>"
 		else
 			dat += "\The [src] is empty."

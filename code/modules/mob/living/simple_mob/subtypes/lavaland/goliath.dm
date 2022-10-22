@@ -1,3 +1,38 @@
+/datum/category_item/catalogue/fauna/goliath/goliaths
+	name = "Goliaths"
+	desc = "The Goliath is native to KT-943, known commonly as Surt. Powerful and long-lived, early \
+	NanoTrasen mining operations struggled to contend with these hardy beasts. Due to overhunting and \
+	a presumed ecological disaster resulting from off-world exposure to contaminants, Goliaths were \
+	classified as extinct. Recent seismic activity has since opened up fissures in the surface of \
+	KT-943 which have provided fresh insights into the Goliath life cycle. Archaeological records \
+	suggest the Goliath's form has not changed for millenia, implying that it is a 'perfect' lifeform\
+	for its environment, akin to sharks and alligators on Old Earth."
+	value = CATALOGUER_REWARD_TRIVIAL
+	unlocked_by_any = list(/datum/category_item/catalogue/fauna/goliath)
+
+/datum/category_item/catalogue/fauna/all_goliaths
+	name = "Collection - Goliaths"
+	desc = "You have scanned Goliaths at different parts of their life cycle, \
+	and therefore you have been granted a large sum of points, through this \
+	entry."
+	value = CATALOGUER_REWARD_HARD
+	unlocked_by_all = list(
+		/datum/category_item/catalogue/fauna/goliath,
+		/datum/category_item/catalogue/fauna/goliath/calf,
+		/datum/category_item/catalogue/fauna/goliath/ancient,
+		/datum/category_item/catalogue/fauna/goliath/goliaths
+		)
+
+/datum/category_item/catalogue/fauna/goliath
+	name = "Goliath"
+	desc = "The common Goliath is easily recognizable. As KT-943's only known apex predator, it has left a \
+	lasting impression on NanoTrasen miners and engineers. Goliaths are bulky quadrupeds with thick, leathery \
+	hides which protect them from KT-943's volcanic atmosphere. At some point they evolved ambulatory tendrils \
+	which are used primarly for hunting and mating. These tendrils are able to regenerate if severed, although \
+	this process takes some time. Due to the way they employ their tendrils as weapons, it is difficult to \
+	retain live specimens in captivity."
+	value = CATALOGUER_REWARD_MEDIUM
+
 /mob/living/simple_mob/animal/goliath
 	name = "goliath"
 	desc = "A massive beast that uses long tentacles to ensnare its prey, threatening them is not advised under any conditions."
@@ -9,6 +44,12 @@
 
 	maxHealth = 300
 	health = 300
+	min_oxy = 0
+	min_co2 = 5
+	max_co2 = 0
+	minbodytemp = 0
+	maxbodytemp = 700
+	heat_resist = 1
 
 	mob_class = MOB_CLASS_ANIMAL
 	movement_cooldown = 10
@@ -24,10 +65,6 @@
 	attacktext = list ("pulverizes", "batters", "hammers")
 	attack_sound = 'sound/weapons/punch1.ogg'
 
-	move_force = MOVE_FORCE_VERY_STRONG
-	move_resist = MOVE_FORCE_VERY_STRONG
-	pull_force = MOVE_FORCE_VERY_STRONG
-
 	hide_type = /obj/item/stack/animalhide/goliath_hide
 	exotic_type = /obj/item/stack/sinew
 	meat_amount = 5
@@ -41,13 +78,22 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/goliath
 
 	var/pre_attack = 0
-	var/tentacle_warning = 0.5 SECONDS
+	var/tentacle_warning = 3 SECONDS
 	var/pre_attack_icon = "goliath2"
+	var/breedable = 0
+	var/pregnant = 0
+	var/child_type = /mob/living/simple_mob/animal/goliath/calf
 
 /datum/ai_holder/simple_mob/melee/goliath
 	hostile = TRUE
 	retaliate = TRUE
 	mauling = TRUE
+
+/datum/ai_holder/simple_mob/melee/goliath/calf
+	hostile = TRUE
+	retaliate = TRUE
+	mauling = FALSE
+	can_flee = TRUE
 
 /datum/say_list/goliath
 	emote_hear = list("flashes briefly.", "wails!", "shudders.", "trills.")
@@ -64,27 +110,69 @@
 	var/tturf = get_turf(target)
 	if(!isturf(tturf))
 		return
+	if(buckled)
+		return
 	if(get_dist(src, target) <= 7)//Screen range check, so you can't get tentacle'd offscreen
 		visible_message("<span class='warning'>[src] digs its tentacles under [target]</span>")
+		update_icon()
+		sleep(tentacle_warning)
+
 		new /obj/effect/temporary_effect/goliath_tentacle/core(tturf, src)
 		pre_attack = 0
+		update_icon()
 
-//Lavaland Goliath
+/mob/living/simple_mob/animal/goliath/update_icon()
+	. = ..()
+	if(!pre_attack)
+		icon_state = initial(icon_state)
+	else if(pre_attack)
+		icon_state = pre_attack_icon
 
 /mob/living/simple_mob/animal/goliath/Initialize(mapload)
 	. = ..()
+	START_PROCESSING(SSobj, src)
 	if(prob(1))
 		new /mob/living/simple_mob/animal/goliath/ancient(loc)
 		return INITIALIZE_HINT_QDEL
 
-/mob/living/simple_mob/animal/goliath/ancient
-	name = "ancient goliath"
-	desc = "Goliaths are biologically immortal, and rare specimens have survived for centuries. This one is clearly ancient, and its tentacles constantly churn the earth around it."
-	maxHealth = 400
-	health = 400
-	var/list/cached_tentacle_turfs
-	var/turf/last_location
-	var/tentacle_recheck_cooldown = 100
+/mob/living/simple_mob/animal/goliath/attackby(obj/item/O, mob/user)
+	. = ..()
+	if(istype(O, /obj/item/seeds/ashlander/bentars) && !breedable)
+		to_chat(user, "<span class='danger'>You feed the [src] bentar seeds! Its tendrils begin to thrash softly!</span>")
+		breedable = 1
+		qdel(O)
+	else
+		return ..()
+
+/mob/living/simple_mob/animal/goliath/proc/find_mate(var/mob/living/simple_mob/animal/goliath/G)
+	for(var/mob/living/L in view(4,src))
+		if(istype(L, /mob/living/simple_mob/animal/goliath))
+			visible_message("<span class='warning'>The [src] seems to be performing some kind of dance using its tendrils.</span>")
+			mate()
+		else
+			return
+
+/mob/living/simple_mob/animal/goliath/proc/mate()
+	visible_message("<span class='warning'>The [src] intertwines its tendrils with the goliath!</span>")
+	pregnant = 1
+	breedable = 0
+
+/mob/living/simple_mob/animal/goliath/process(delta_time)
+	if(breedable)
+		find_mate()
+	if(pregnant >= 1)
+		pregnant += rand(0,2)
+	if(pregnant >= 100)
+		calve()
+
+/mob/living/simple_mob/animal/goliath/proc/calve()
+	visible_message("<span class='warning'>The [src] disgorges a small calf from a large fissure in its back!</span>")
+	pregnant = 0
+	new child_type(get_turf(src))
+
+/mob/living/simple_mob/animal/goliath/death()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
 
 //tentacles
 /obj/effect/temporary_effect/goliath_tentacle
@@ -107,6 +195,15 @@
 	. = ..()
 	var/list/directions = list(1,2,4,6,8)
 	for(var/i in 1 to 3)
+		var/spawndir = pick_n_take(directions)
+		var/turf/T = get_step(src, spawndir)
+		if(T && !density)
+			new /obj/effect/temporary_effect/goliath_tentacle(T)
+
+/obj/effect/temporary_effect/goliath_tentacle/core_weak/Initialize(mapload)
+	. = ..()
+	var/list/directions = list(1,2,4,6,8)
+	for(var/i in 1 to 2)
 		var/spawndir = pick_n_take(directions)
 		var/turf/T = get_step(src, spawndir)
 		if(T && !density)
@@ -148,3 +245,76 @@
 	icon_state = "goliath_tentacle_retract"
 	var/timerid = QDEL_IN(src, 7)
 	deltimer(timerid)
+
+//Ancients
+/datum/category_item/catalogue/fauna/goliath/ancient
+	name = "Ancient Goliath"
+	desc = "Goliaths are immortal, and the dating of several notable specimens confirms that some Goliaths \
+	have been around for centuries. These truly ancient beasts possess a sharpened instinct. As Goliaths \
+	age, their mineral intake passes into their hide, increasing its strength without sacrificing flexibility. \
+	Due to this phenomena, Ancient Goliaths are considerably more resilient than their younger kin."
+	value = CATALOGUER_REWARD_MEDIUM
+
+/mob/living/simple_mob/animal/goliath/ancient
+	name = "ancient goliath"
+	desc = "Goliaths are biologically immortal, and rare specimens have survived for centuries. This one is clearly ancient, and its tentacles constantly churn the earth around it."
+	maxHealth = 400
+	health = 400
+	tentacle_warning = 1 SECOND
+
+//Calves
+/datum/category_item/catalogue/fauna/goliath/calf
+	name = "Goliath Calf"
+	desc = "Until recently, the nature by which Goliaths reproduced was unknown. Observation of Ashlander \
+	farmers, however, has confirmed that Goliaths reproduce sexually, and give birth to calves. These young \
+	beasts come out of the womb fully capable of movement and some limited level of self defense. Although \
+	they possess an innate control over their tendrils, calves lack the muscle development to utilize all of them, \
+	or to use them as effectively as mature specimens can. This does not make them less of a threat."
+	value = CATALOGUER_REWARD_MEDIUM
+
+/mob/living/simple_mob/animal/goliath/calf
+	name = "goliath calf"
+	desc = "Goliaths may be naturally immortal, but they are still vulnerable. Calves are a rare sight on the surface, although they are becoming more common as Ashlander farms appear more frequently."
+	icon_state = "goliath_baby"
+	maxHealth = 150
+	health = 150
+
+	movement_cooldown = 7
+	special_attack_min_range = 1
+	special_attack_max_range = 4
+	special_attack_cooldown = 15 SECONDS
+
+	response_harm = "kicks"
+	melee_damage_lower = 8
+	melee_damage_upper = 15
+
+	meat_amount = 1
+	bone_amount = 2
+	hide_amount = 2
+	exotic_amount = 2
+
+	ai_holder_type = /datum/ai_holder/simple_mob/melee/goliath/calf
+
+	var/amount_grown = 1
+	var/spawn_delay = 300
+	var/list/grow_as = list(/mob/living/simple_mob/animal/goliath)
+
+/mob/living/simple_mob/animal/goliath/calf/do_special_attack(atom/target)
+	var/tturf = get_turf(target)
+	if(!isturf(tturf))
+		return
+	if(get_dist(src, target) <= 7)//Screen range check, so you can't get tentacle'd offscreen
+		visible_message("<span class='warning'>[src] digs its tentacles under [target]</span>")
+		new /obj/effect/temporary_effect/goliath_tentacle/core_weak(tturf, src)
+		pre_attack = 0
+
+/mob/living/simple_mob/animal/goliath/calf/process(delta_time)
+	if(amount_grown >= 0)
+		amount_grown += rand(0,2)
+	if(amount_grown >= 100)
+		mature()
+
+/mob/living/simple_mob/animal/goliath/calf/proc/mature()
+	var/spawn_type = pick(grow_as)
+	new spawn_type(src.loc, src)
+	qdel(src)

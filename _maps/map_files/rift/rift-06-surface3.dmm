@@ -10832,8 +10832,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge/office)
 "uB" = (
-/obj/structure/undies_wardrobe,
 /obj/effect/floor_decal/spline/plain,
+/obj/structure/dogbed{
+	name = "pet bed"
+	},
+/mob/living/simple_mob/animal/passive/fox/renault,
 /turf/simulated/floor/wood,
 /area/crew_quarters/captain)
 "uC" = (
@@ -14446,6 +14449,9 @@
 	name = "AI Bunker Lockdown";
 	pixel_x = -26;
 	pixel_y = -6
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)
@@ -20748,9 +20754,6 @@
 	name = "AI Chamber turret control";
 	pixel_x = 30;
 	pixel_y = 17
-	},
-/obj/machinery/light{
-	dir = 4
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai)

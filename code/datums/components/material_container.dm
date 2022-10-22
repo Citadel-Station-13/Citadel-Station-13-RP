@@ -82,7 +82,7 @@
 /datum/component/material_container/proc/user_insert(obj/item/I, mob/living/user)
 	set waitfor = FALSE
 	var/requested_amount
-	var/active_held = user.get_active_held_item()  // differs from I when using TK
+	var/active_held = user.get_active_held_item()  // differs from I when using MUTATION_TELEKINESIS
 	if(istype(I, /obj/item/stack) && precise_insertion)
 		var/atom/current_parent = parent
 		var/obj/item/stack/S = I
