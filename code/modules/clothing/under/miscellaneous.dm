@@ -277,9 +277,15 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "red", SLOT_ID_LEFT_HAND = "red")
 
 /obj/item/clothing/under/kilt
+	icon = 'icons/clothing/uniform/costume/kilt.dmi'
 	name = "kilt"
-	desc = "Includes shoes and plaid"
 	icon_state = "kilt"
+	desc = "Includes shoes and plaid"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_rolldown_bodytypes = BODYTYPE_DEFAULT | BODYTYPE_TESHARI
+	worn_bodytypes = BODYTYPE_DEFAULT | BODYTYPE_VOX | BODYTYPE_TESHARI
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|FEET
 
 /obj/item/clothing/under/sexymime

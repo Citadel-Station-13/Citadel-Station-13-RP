@@ -12,6 +12,13 @@ We enforce a rigid-ish structure for organization.
 Yes, this currently includes all turfs, mobs, objs, and misc things. Sorry. We'll work on this, we promise. Anyone can propose changes to the hierarchy, just know what you're doing!
 
 - /icons
+  - /clothing - clothing items placed in here
+    - /uniform - uniforms
+    - /costumes - vanity costumes like kilts, mime outfits, clown outfits, cueball outfits, etc
+    - /formal - formalwear like siuts, dresses, etc
+    - /job - basic job uniforms
+    - /misc - unsorted things
+    - /rank - "formal" "rank"-wear like flight suits, military/naval, etc
   - /mapping - used for sprites for in-map-editor objects that are   invisible in game world
     - /helpers - mapping helpers like autopipe/autocable/baseturf replacers   go here
     - /landmarks - landmark icons
