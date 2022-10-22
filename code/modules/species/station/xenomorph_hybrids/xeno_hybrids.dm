@@ -24,7 +24,7 @@
 
 	//primitive_form = "" //None for these guys
 	language = LANGUAGE_XENO
-	name_language = LANGUAGE_XENO
+	name_language = LANGUAGE_ID_XENOMORPH
 	species_language = LANGUAGE_XENO
 	secondary_langs = list(LANGUAGE_XENO)
 	num_alternate_languages = 3

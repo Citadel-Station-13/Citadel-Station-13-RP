@@ -205,7 +205,7 @@
 // Language handling.
 /mob/proc/add_language(var/language)
 
-	var/datum/language/new_language = SScharacters.resolve_language_name(language)
+	var/datum/language/new_language = SScharacters.resolve_language(language)
 
 	if(!istype(new_language) || (new_language in languages))
 		return 0
@@ -214,12 +214,12 @@
 	return 1
 
 /mob/proc/remove_language(var/rem_language)
-	var/datum/language/L = SScharacters.resolve_language_name(rem_language)
+	var/datum/language/L = SScharacters.resolve_language(rem_language)
 	. = (L in languages)
 	languages.Remove(L)
 
 /mob/living/remove_language(rem_language)
-	var/datum/language/L = SScharacters.resolve_language_name(rem_language)
+	var/datum/language/L = SScharacters.resolve_language(rem_language)
 	if(default_language == L)
 		default_language = null
 	return ..()

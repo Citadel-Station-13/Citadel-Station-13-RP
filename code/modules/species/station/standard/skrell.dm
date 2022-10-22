@@ -20,7 +20,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/skrell)
 
 	num_alternate_languages = 3
-	name_language    = LANGUAGE_SKRELLIAN
+	name_language    = LANGUAGE_ID_SKRELL
 	species_language = LANGUAGE_SKRELLIAN
 	secondary_langs  = list(LANGUAGE_SKRELLIAN, LANGUAGE_SCHECHI)
 	assisted_langs   = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)

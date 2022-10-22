@@ -14,7 +14,7 @@
 	tail_animation = 'icons/mob/clothing/species/vulpkanin/tail.dmi' // probably need more than just one of each, but w/e
 
 	num_alternate_languages = 3
-	name_language   = LANGUAGE_CANILUNZT
+	name_language   = LANGUAGE_ID_VULPKANIN
 	secondary_langs = list(LANGUAGE_CANILUNZT)
 
 	darksight = 5 //worse than cats, but better than lizards. -- Poojawa

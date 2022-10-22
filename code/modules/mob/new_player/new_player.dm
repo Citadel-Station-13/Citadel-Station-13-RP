@@ -595,6 +595,7 @@
 				dat += "<font color='red'>The station is currently undergoing crew transfer procedures.</font><br>"
 
 	dat += "Choose from the following open/valid positions:<br>"
+
 	dat += "<a href='byond://?src=\ref[src];hidden_jobs=1'>[show_hidden_jobs ? "Hide":"Show"] Hidden Jobs.</a><br>"
 	for(var/datum/job/job in job_master.occupations)
 		if(job && IsJobAvailable(job.title))

@@ -13,7 +13,7 @@
 	species_language = LANGUAGE_GALCOM
 	secondary_langs = list(LANGUAGE_TERMINUS)
 	assisted_langs = list(LANGUAGE_ROOTGLOBAL)
-	name_language = LANGUAGE_TERMINUS
+	name_language = LANGUAGE_ID_TERMINUS
 
 	blood_color = "#aaaadd"
 

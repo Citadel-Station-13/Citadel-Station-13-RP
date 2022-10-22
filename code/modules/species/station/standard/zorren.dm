@@ -13,7 +13,7 @@
 
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_TERMINUS)
-	name_language = LANGUAGE_TERMINUS
+	name_language = LANGUAGE_ID_TERMINUS
 	inherent_verbs = list(/mob/living/carbon/human/proc/lick_wounds)
 
 	max_age = 80
@@ -76,7 +76,7 @@
 
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_TERMINUS)
-	name_language = LANGUAGE_TERMINUS
+	name_language = LANGUAGE_ID_TERMINUS
 	inherent_verbs = list(/mob/living/carbon/human/proc/lick_wounds)
 
 	max_age = 80

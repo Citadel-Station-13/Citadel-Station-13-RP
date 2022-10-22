@@ -19,7 +19,7 @@
 	hunger_factor = 0.1 // By math should be half of the Teshari Nutrition drain
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_SAGARU)
-	name_language = LANGUAGE_SAGARU
+	name_language = LANGUAGE_ID_NARAMADI
 	color_mult = 1
 
 	max_age = 120

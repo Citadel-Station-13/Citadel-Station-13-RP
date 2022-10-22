@@ -25,7 +25,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/unathi)
 
 	num_alternate_languages = 3
-	name_language    = LANGUAGE_UNATHI
+	name_language    = LANGUAGE_ID_UNATHI
 	species_language = LANGUAGE_UNATHI
 	secondary_langs  = list(LANGUAGE_UNATHI)
 

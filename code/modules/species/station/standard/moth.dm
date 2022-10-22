@@ -35,7 +35,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	species_language = list(
 		LANGUAGE_LUINIMMA,
 	)
-	name_language = LANGUAGE_LUINIMMA
+	name_language = LANGUAGE_ID_LUINIMMA
 	// sensitive
 	health_hud_intensity = 1.5
 

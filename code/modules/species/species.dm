@@ -39,6 +39,27 @@
 	/// fluff flags
 	var/species_fluff_flags = NONE
 
+	//! Language - IDs
+	/// default language used when speaking
+	#warn check overrides
+	var/default_language = LANGUAGE_ID_COMMON
+	/// intrinsic species languages - THIS USUALLY SHOULD INCLUDE COMMON - list() or singular language (do not null this)
+	// todo: linter check for language default being in here
+	var/intrinsic_languages = LANGUAGE_ID_COMMON
+	/// language our name is in - used for namegen; null to force stock ss13 namegen instead
+	// todo: language for namegen is questionaable
+	#warn check overrides
+	var/name_language = LANGUAGE_ID_COMMON
+	/// languages we are always allowed to learn (overridden by intrinsic languages) even if restricted - list() or singular language
+	var/whitelist_languages
+	/// additional languages we can learn (ONTOP OF INTRINSIC AND CULTURE)
+	var/max_additional_languages = 3
+
+//! ## Languages (old)
+	/// The languages the species can't speak without an assisted organ.
+	/// This list is a guess at things that no one other than the parent species should be able to speak
+	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
+
 //! ## Descriptors and strings.
 	/// Species real name.
 	// TODO: STOP USING THIS. This is being phased out for species IDs.
@@ -151,28 +172,11 @@
 	/// The maximum age a species is allowed to be played as. This is generally determined by lifespan.
 	var/max_age = 70
 
-//! ## Language/culture vars.
-	/// Default language is used when 'say' is used without modifiers.
-	var/default_language = LANGUAGE_GALCOM
-	/// Default racial language, if any.
-	var/language = LANGUAGE_GALCOM
-	/// Used on the Character Setup screen
-	var/list/species_language = list(LANGUAGE_GALCOM)
-	/// The names of secondary languages that are available to this species.
-	var/list/secondary_langs = list()
+//! ## Speech Sounds
 	/// A list of sounds to potentially play when speaking.
 	var/list/speech_sounds = list()
 	/// The likelihood of a speech sound playing.
 	var/list/speech_chance = list()
-	/// How many secondary languages are available to select at character creation.
-	var/num_alternate_languages = 0
-	/// The language to use when determining names for this species, or null to use the first name/last name generator.
-	var/name_language = LANGUAGE_GALCOM
-	#warn overhaul languages?
-
-	/// The languages the species can't speak without an assisted organ.
-	/// This list is a guess at things that no one other than the parent species should be able to speak
-	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
 //! ## Soundy emotey things.
 	var/scream_verb = "screams"

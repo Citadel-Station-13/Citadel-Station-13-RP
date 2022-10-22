@@ -25,7 +25,7 @@
 
 	num_alternate_languages = 3
 	language = LANGUAGE_SHADEKIN
-	name_language = LANGUAGE_SHADEKIN
+	name_language = LANGUAGE_ID_SHADEKIN_HIVEMIND
 	species_language = LANGUAGE_SHADEKIN
 	secondary_langs = list(LANGUAGE_SHADEKIN)
 

@@ -13,7 +13,7 @@
 	tail_animation = 'icons/mob/species/tajaran/tail_greyscale.dmi'
 
 	num_alternate_languages = 3
-	name_language = LANGUAGE_SIIK
+	name_language = LANGUAGE_ID_TAJARAN
 	species_language = LANGUAGE_SIIK
 	secondary_langs = list(LANGUAGE_SIIK, LANGUAGE_AKHANI, LANGUAGE_ALAI)
 

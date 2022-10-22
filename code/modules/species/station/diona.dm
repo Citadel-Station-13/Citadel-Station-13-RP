@@ -10,7 +10,7 @@
 
 	language = LANGUAGE_ROOTLOCAL
 	num_alternate_languages = 2
-	name_language = LANGUAGE_ROOTLOCAL
+	name_language = LANGUAGE_ID_DIONA
 	species_language = LANGUAGE_ROOTLOCAL
 	secondary_langs  = list(LANGUAGE_ROOTGLOBAL)
 	assisted_langs   = list(LANGUAGE_VOX)	// Diona are weird, let's just assume they can use basically any language.

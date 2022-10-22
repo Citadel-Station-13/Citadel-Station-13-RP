@@ -12,7 +12,7 @@
 
 	num_alternate_languages = 3
 	secondary_langs = list(LANGUAGE_CANILUNZT)
-	name_language = LANGUAGE_CANILUNZT
+	name_language = LANGUAGE_ID_VULPKANIN
 
 	total_health = 200
 	brute_mod = 0.85

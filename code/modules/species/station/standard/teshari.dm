@@ -26,7 +26,7 @@
 	icobase_tail = 1
 
 	num_alternate_languages = 3
-	name_language    = LANGUAGE_SCHECHI
+	name_language    = LANGUAGE_ID_TESHARI
 	species_language = LANGUAGE_SCHECHI
 	secondary_langs  = list(LANGUAGE_SCHECHI, LANGUAGE_SKRELLIAN)
 

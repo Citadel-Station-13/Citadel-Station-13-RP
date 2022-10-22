@@ -28,7 +28,7 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/akula)
 
 	num_alternate_languages = 3
-	name_language   = LANGUAGE_SKRELLIAN
+	name_language   = LANGUAGE_ID_SKRELL
 	secondary_langs = list(LANGUAGE_SKRELLIAN)
 	assisted_langs  = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
