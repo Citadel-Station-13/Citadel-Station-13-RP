@@ -1,8 +1,8 @@
 /obj/vehicle/ridden/cart
-	name = "Security Cart"
-	desc = "A ridable electric car designed for personal transport."
+	name = "The essence of a cart"
+	desc = "Yell a mapper if you see this."
 	icon = 'icons/obj/vehicles.dmi'
-	icon_state = "paddywagon"
+	icon_state = "changeme"
 	integrity = 200
 	max_integrity = 200
 	riding_handler_type = /datum/component/riding_handler/vehicle/ridden/cart
@@ -28,7 +28,11 @@
 		)
 	)
 	rider_offset_format = CF_RIDING_OFFSETS_ENUMERATED
-
+	rider_check_flags = list(CF_RIDING_CHECK_ARMS,
+	CF_RIDING_CHECK_RESTRAINED,
+	CF_RIDING_CHECK_UNCONSCIOUS,
+	CF_RIDING_CHECK_INCAPACITATED
+	)
 
 /obj/vehicle/ridden/cart/security
 	name = "Security Cart"
