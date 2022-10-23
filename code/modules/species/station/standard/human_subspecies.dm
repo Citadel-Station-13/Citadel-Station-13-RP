@@ -31,6 +31,7 @@
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult = 1
+	color_force_greyscale = TRUE
 	base_color = "#EECEB3"
 
 	has_limbs = list(
@@ -76,6 +77,7 @@
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult = 1
+	color_force_greyscale = TRUE
 	base_color = "#EECEB3"
 
 	has_limbs = list(
@@ -115,6 +117,7 @@
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult = 1
+	color_force_greyscale = TRUE
 	base_color = "#EECEB3"
 
 	has_organ = list(
