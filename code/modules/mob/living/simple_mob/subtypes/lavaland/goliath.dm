@@ -123,9 +123,9 @@
 
 /mob/living/simple_mob/animal/goliath/update_icon()
 	. = ..()
-	if(!pre_attack)
+	if(!pre_attack && !stat)
 		icon_state = initial(icon_state)
-	else if(pre_attack)
+	else if(pre_attack && !stat)
 		icon_state = pre_attack_icon
 
 /mob/living/simple_mob/animal/goliath/Initialize(mapload)
