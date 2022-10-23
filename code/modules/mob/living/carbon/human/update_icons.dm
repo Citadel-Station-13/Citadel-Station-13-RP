@@ -905,6 +905,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(length(tail_images))
 		overlays_standing[used_tail_layer] = tail_images
 		apply_layer(used_tail_layer)
+		return
 
 	var/species_tail = species.get_tail(src) // Species tail icon_state prefix.
 
