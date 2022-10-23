@@ -88,6 +88,11 @@
 	icon_state = "Chief Engineer"
 	job_path = /datum/job/station/chief_engineer
 
+/obj/landmark/spawnpoint/job/senior_engineer
+	name = "Senior Engineer"
+	icon_state = "Chief Engineer"
+	job_path = /datum/job/station/senior_engineer
+
 /obj/landmark/spawnpoint/job/head_of_personnel
 	name = "Head of Personnel"
 	icon_state = "Head of Personnel"
