@@ -189,7 +189,7 @@
 
 			rig = W
 
-			var/icon/test = getFlatIcon(W)
+			var/icon/test = get_flat_icon(W)
 			test.Shift(NORTH,1)
 			test.Shift(EAST,6)
 			overlays += test

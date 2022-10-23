@@ -14,14 +14,14 @@ jobs:
     name: Run Linters
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Setup cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: $HOME/SpacemanDMM
           key: ${{ runner.os }}-spacemandmm
       - name: Restore Yarn cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: $HOME/tgui/.yarn/cache
           key: ${{ runner.os }}-yarn-${{ hashFiles('tgui/yarn.lock') }}
@@ -55,9 +55,9 @@ jobs:
     name: Compile Maps
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Setup cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: $HOME/BYOND
           key: ${{ runner.os }}-byond
@@ -80,9 +80,9 @@ jobs:
           - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Restore BYOND cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: $HOME/BYOND
           key: ${{ runner.os }}-byond
@@ -114,9 +114,9 @@ jobs:
     name: Windows Build
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Restore Yarn cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: $HOME/tgui/.yarn/cache
           key: ${{ runner.os }}-yarn-${{ hashFiles('tgui/yarn.lock') }}
@@ -132,7 +132,7 @@ jobs:
           md deploy
           bash tools/deploy.sh ./deploy
       - name: Deploy artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: deploy
           path: deploy

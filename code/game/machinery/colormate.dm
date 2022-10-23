@@ -162,7 +162,7 @@
 	if(inserted)
 		.["item"] = list()
 		.["item"]["name"] = inserted.name
-		.["item"]["sprite"] = icon2base64(getFlatIcon(inserted,dir=SOUTH,no_anim=TRUE))
+		.["item"]["sprite"] = icon2base64(get_flat_icon(inserted,dir=SOUTH,no_anim=TRUE))
 		.["item"]["preview"] = icon2base64(build_preview())
 	else
 		.["item"] = null
@@ -260,22 +260,22 @@
 					text2num(color_matrix_last[12]),
 				)
 				if(!check_valid_color(cm, usr))
-					return getFlatIcon(inserted, dir=SOUTH, no_anim=TRUE)
+					return get_flat_icon(inserted, dir=SOUTH, no_anim=TRUE)
 
 			if(COLORMATE_TINT)
 				if(!check_valid_color(activecolor, usr))
-					return getFlatIcon(inserted, dir=SOUTH, no_anim=TRUE)
+					return get_flat_icon(inserted, dir=SOUTH, no_anim=TRUE)
 
 			if(COLORMATE_HSV)
 				cm = color_matrix_hsv(build_hue, build_sat, build_val)
 				color_matrix_last = cm
 				if(!check_valid_color(cm, usr))
-					return getFlatIcon(inserted, dir=SOUTH, no_anim=TRUE)
+					return get_flat_icon(inserted, dir=SOUTH, no_anim=TRUE)
 
 		var/cur_color = inserted.color
 		inserted.color = null
 		inserted.color = (active_mode == COLORMATE_TINT ? activecolor : cm)
-		var/icon/preview = getFlatIcon(inserted, dir=SOUTH, no_anim=TRUE)
+		var/icon/preview = get_flat_icon(inserted, dir=SOUTH, no_anim=TRUE)
 		inserted.color = cur_color
 		temp = ""
 

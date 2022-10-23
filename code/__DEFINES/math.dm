@@ -54,8 +54,6 @@
 // Least Common Multiple
 #define LCM(a, b) (abs(a) / GCD(a, b) * abs(b))
 
-#define IS_CARDINAL(x) ((x & (x - 1)) == 0)
-
 #define INVERSE(x) ( 1/(x) )
 
 // Used for calculating the radioactive strength falloff

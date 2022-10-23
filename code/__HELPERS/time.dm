@@ -71,11 +71,15 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
 /proc/station_time_timestamp(format = "hh:mm:ss", time=world.time)
 	return time2text(station_time(time, TRUE), format)
 
-/// Returns 1 if it is the selected month and day.
+/**
+ * Returns 1 if it is the selected month and day.
+ */
 /proc/isDay(var/month, var/day)
-	if(isnum(month) && isnum(day))
-		var/MM = text2num(time2text(world.timeofday, "MM")) // Get the current month.
-		var/DD = text2num(time2text(world.timeofday, "DD")) // Get the current day.
+	if(isnum(month) && isnum(day))\
+		/// Get the current month.
+		var/MM = text2num(time2text(world.timeofday, "MM"))
+		/// Get the current day.
+		var/DD = text2num(time2text(world.timeofday, "DD"))
 		if(month == MM && day == DD)
 			return TRUE
 
@@ -92,8 +96,10 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
 	if(last_round_duration && world.time < next_duration_update)
 		return last_round_duration
 
-	var/mills = round_duration_in_ds // 1/10 of a second, not real milliseconds but whatever
-	//var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence.. or something
+	/// 1/10 of a second, not real milliseconds but whatever.
+	var/mills = round_duration_in_ds
+	/// Not really needed, but I'll leave it here for refrence.. or something.
+	//var/secs = ((mills % 36000) % 600) / 10
 	var/mins = round((mills % 36000) / 600)
 	var/hours = round(mills / 36000)
 
@@ -113,7 +119,8 @@ GLOBAL_VAR_INIT(roundstart_hour, pick(2,7,12,17))
 	return midnight_rollovers
 
 /proc/weekdayofthemonth()
-	var/DD = text2num(time2text(world.timeofday, "DD")) // get the current day
+	/// Get the current day.
+	var/DD = text2num(time2text(world.timeofday, "DD"))
 	switch(DD)
 		if(8 to 13)
 			return 2

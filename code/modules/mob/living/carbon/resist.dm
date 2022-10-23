@@ -78,5 +78,5 @@
 		drop_item_to_ground(I, INV_OP_FORCE)
 
 /mob/living/carbon/proc/can_break_cuffs()
-	if(HULK in mutations)
+	if(MUTATION_HULK in mutations)
 		return TRUE

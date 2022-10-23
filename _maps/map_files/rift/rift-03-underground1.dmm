@@ -2568,7 +2568,8 @@
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/underground/under1)
 "iv" = (
-/obj/structure/ladder/up,
+/obj/effect/floor_decal/industrial/outline/blue,
+/obj/structure/stasis_cage,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/outpost/research/longtermstorage)
 "iy" = (
@@ -2774,7 +2775,6 @@
 /area/maintenance/engineering/pumpstation)
 "jK" = (
 /obj/structure/table/steel,
-/obj/item/material/twohanded/baseballbat/metal,
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
 "jL" = (
@@ -4811,6 +4811,7 @@
 /area/maintenance/elevator)
 "we" = (
 /obj/machinery/space_heater,
+/obj/effect/floor_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/outpost/research/longtermstorage)
 "wh" = (
@@ -5939,6 +5940,7 @@
 /obj/item/clothing/suit/storage/hooded/wintercoat/science,
 /obj/structure/table/rack/shelf,
 /obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/outpost/research/longtermstorage)
 "Ao" = (
@@ -6393,12 +6395,12 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "Ci" = (
-/obj/structure/ladder/snake_eater/updown,
 /obj/effect/floor_decal/techfloor{
 	dir = 5
 	},
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing,
+/obj/structure/ladder/updown,
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/surfacebase/underground/under1)
 "Cj" = (
@@ -6895,6 +6897,7 @@
 "Ep" = (
 /obj/structure/table/rack/shelf,
 /obj/item/extinguisher,
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/outpost/research/longtermstorage)
 "Eq" = (
@@ -7049,8 +7052,9 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "ES" = (
-/obj/structure/bonfire/permanent,
-/obj/structure/catwalk,
+/obj/machinery/appliance/cooker/grill{
+	pixel_y = 4
+	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/security/prison)
 "ET" = (
@@ -7219,6 +7223,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/outpost/research/longtermstorage)
 "FA" = (
@@ -7613,6 +7618,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/outpost/research/longtermstorage)
 "GU" = (
@@ -8213,6 +8219,11 @@
 	},
 /turf/simulated/floor/wood,
 /area/rift/station/fighter_bay)
+"Jf" = (
+/obj/structure/ladder/up,
+/obj/effect/floor_decal/industrial/outline/yellow,
+/turf/simulated/floor/tiled/steel_ridged,
+/area/outpost/research/longtermstorage)
 "Jh" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -11318,6 +11329,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
+/obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/outpost/research/longtermstorage)
 "Vk" = (
@@ -20030,7 +20042,7 @@ Oy
 Xr
 Fx
 zV
-MX
+Jf
 Qw
 ri
 Bd

@@ -138,11 +138,11 @@ var/list/ai_verbs_default = list(
 	announcement.announcement_type = "A.I. Announcement"
 	announcement.newscast = 1
 
-	var/list/possibleNames = ai_names
+	var/list/possibleNames = GLOB.ai_names
 
 	var/pickedName = null
 	while(!pickedName)
-		pickedName = pick(ai_names)
+		pickedName = pick(GLOB.ai_names)
 		for (var/mob/living/silicon/ai/A in GLOB.mob_list)
 			if (A.real_name == pickedName && possibleNames.len > 1) //fixing the theoretically possible infinite loop
 				possibleNames -= pickedName
@@ -554,7 +554,7 @@ var/list/ai_verbs_default = list(
 		for(var/i in tempnetwork)
 			cameralist[i] = i
 
-	cameralist = sortTim(cameralist, /proc/cmp_text_asc, TRUE)
+	cameralist = tim_sort(cameralist, /proc/cmp_text_asc, TRUE)
 	return cameralist
 
 /mob/living/silicon/ai/proc/ai_network_change(var/network in get_camera_network_list())
@@ -609,7 +609,7 @@ var/list/ai_verbs_default = list(
 				input = input("Select a crew member:") as null|anything in targets //The definition of "crew member" is a little loose...
 				//This is torture, I know. If someone knows a better way...
 				if(!input) return
-				var/new_holo = getHologramIcon(getCompoundIcon(targets[input]))
+				var/new_holo = getHologramIcon(get_compound_icon(targets[input]))
 				qdel(holo_icon)
 				holo_icon = new_holo
 
@@ -624,7 +624,7 @@ var/list/ai_verbs_default = list(
 			sleep(1 SECOND) //Strange bug in preview code? Without this, certain things won't show up. Yay race conditions?
 			dummy.regenerate_icons()
 
-			var/new_holo = getHologramIcon(getCompoundIcon(dummy))
+			var/new_holo = getHologramIcon(get_compound_icon(dummy))
 			qdel(holo_icon)
 			qdel(dummy)
 			holo_icon = new_holo

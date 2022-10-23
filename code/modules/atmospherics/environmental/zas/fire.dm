@@ -215,7 +215,7 @@ If it gains pressure too slowly, it may leak or just rupture instead of explodin
 /atom/movable/fire/proc/fire_color(var/env_temperature)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
 	var/temperature = max(4000*sqrt(firelevel/firelevel_multiplier), env_temperature)
-	return heat2color(temperature)
+	return heat2colour(temperature)
 
 /turf/simulated
 	var/fire_protection = 0 //Protects newly extinguished tiles from being overrun again.

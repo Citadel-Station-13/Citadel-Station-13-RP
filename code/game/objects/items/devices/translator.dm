@@ -57,10 +57,10 @@
 	if (!language.machine_understands && !omni) // cit change - omni check
 		return //Any other languages that it can't translate.
 
-	if (visual && ((L.sdisabilities & BLIND) || L.eye_blind))
+	if (visual && ((L.sdisabilities & SDISABILITY_NERVOUS) || L.eye_blind))
 		return //Can't see the screen, don't get the message
 
-	if (audio && ((L.sdisabilities & DEAF) || L.ear_deaf))
+	if (audio && ((L.sdisabilities & SDISABILITY_DEAF) || L.ear_deaf))
 		return //Can't hear the translation, don't get the message
 
 	//Only translate if they can't understand, otherwise pointlessly spammy

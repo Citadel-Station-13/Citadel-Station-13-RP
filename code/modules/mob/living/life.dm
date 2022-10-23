@@ -5,13 +5,14 @@
 	if(machine && !CanMouseDrop(machine, src))
 		machine = null
 
-	handle_regular_hud_updates()
-	handle_vision()
-	handle_light()
-
 	if(handle_regular_UI_updates()) // Status & health update, are we dead or alive etc.
 		handle_disabilities() // eye, ear, brain damages
 		handle_statuses() //all special effects, stunned, weakened, jitteryness, hallucination, sleeping, etc
+
+	handle_regular_hud_updates()
+
+	handle_vision()
+	handle_light()
 
 	handle_actions()
 	update_canmove()
@@ -146,7 +147,7 @@
 
 /mob/living/proc/handle_disabilities()
 	//Eyes
-	if(sdisabilities & BLIND || stat || HAS_TRAIT(src, TRAIT_BLIND))	//blindness from disability or unconsciousness doesn't get better on its own
+	if(sdisabilities & SDISABILITY_NERVOUS || stat || HAS_TRAIT(src, TRAIT_BLIND))	//blindness from disability or unconsciousness doesn't get better on its own
 		SetBlinded(1)
 	else if(eye_blind)			//blindness, heals slowly over time
 		AdjustBlinded(-1)
@@ -154,7 +155,7 @@
 		eye_blurry = max(eye_blurry-1, 0)
 
 	//Ears
-	if(sdisabilities & DEAF)		//disabled-deaf, doesn't get better on its own
+	if(sdisabilities & SDISABILITY_DEAF)		//disabled-deaf, doesn't get better on its own
 		setEarDamage(-1, max(ear_deaf, 1))
 	else
 		// deafness heals slowly over time, unless ear_damage is over 100

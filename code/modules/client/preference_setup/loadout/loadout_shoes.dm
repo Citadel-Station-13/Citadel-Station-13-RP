@@ -59,7 +59,7 @@
 	for(var/lace in typesof(/obj/item/clothing/shoes/laceup))
 		var/obj/item/clothing/shoes/laceup/lace_type = lace
 		laces[initial(lace_type.name)] = lace_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(laces, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(laces, /proc/cmp_text_asc))
 
 /datum/gear/shoes/green
 	name = "Shoes - Green"
@@ -99,7 +99,7 @@
 	for(var/hitop in typesof(/obj/item/clothing/shoes/hitops))
 		var/obj/item/clothing/shoes/hitops/hitop_type = hitop
 		hitops[initial(hitop_type.name)] = hitop_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(hitops, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(hitops, /proc/cmp_text_asc))
 
 /datum/gear/shoes/flipflops
 	name = "Flip Flops"
