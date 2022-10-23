@@ -603,59 +603,95 @@
 
 /obj/structure/closet/crate/aether
 	desc = "A crate painted in the colours of Aether Atmospherics and Recycling."
+	icon_opened = "aetheropen"
+	icon_closed = "aether"
 
 /obj/structure/closet/crate/centauri
 	desc = "A crate decorated with the logo of Centauri Provisions."
+	icon_opened = "centauriopen"
+	icon_closed = "centauri"
 
 /obj/structure/closet/crate/einstein
-	desc = "A crate labelled with an Einstein Engines sticker."
+	desc = "A crate labelled with an Einstein Engines sticker, the company has since been bought out by Hephaestus Industries."
+	icon_opened = "eeopen"
+	icon_closed = "ee"
 
 /obj/structure/closet/crate/focalpoint
-	desc = "A crate marked with the decal of Focal Point Energistics."
+	desc = "A crate marked with the decal of Focal Point Energistics, now a subsidiary of Aether Atmospherics and Recycling."
+	icon_opened = "fpopen"
+	icon_closed = "fp"
 
 /obj/structure/closet/crate/gilthari
 	desc = "A crate embossed with the logo of Gilthari Exports."
+	icon_opened = "gilthariopen"
+	icon_closed = "gilthari"
 
 /obj/structure/closet/crate/grayson
-	desc = "A bare metal crate spraypainted with Grayson Manufactories decals."
+	desc = "A bare metal crate spraypainted with the decals of Grayson Manufactories an NT subsidiary. The purchase of Grayson by NT helped them secure their phoron monoply."
+	icon_opened = "graysonopen"
+	icon_closed = "grayson"
 
 /obj/structure/closet/crate/heph
 	desc = "A sturdy crate marked with the logo of Hephaestus Industries."
+	icon_opened = "hephopen"
+	icon_closed = "heph"
 
 /obj/structure/closet/crate/morpheus
-	desc = "A crate crudely imprinted with 'MORPHEUS CYBERKINETICS'."
+	desc = "A crate crudely imprinted with 'MORPHEUS CYBERKINETICS' 'primier' off brand prosthetics manufactuer."
+	icon_opened = "morpheusopen"
+	icon_closed = "morpheus"
 
 /obj/structure/closet/crate/nanotrasen
 	desc = "A crate emblazoned with the standard NanoTrasen livery."
+	icon_opened = "ntopen"
+	icon_closed = "nt"
 
 /obj/structure/closet/crate/nanothreads
 	desc = "A crate emblazoned with the NanoThreads Garments livery, a subsidary of the NanoTrasen Corporation."
+	icon_opened = "ntopen"
+	icon_closed = "nt"
 
 /obj/structure/closet/crate/nanomed
 	desc = "A crate emblazoned with the NanoMed Medical livery, a subsidary of the NanoTrasen Corporation."
+	icon_opened = "ntmedopen"
+	icon_closed = "ntmed"
 
 /obj/structure/closet/crate/oculum
 	desc = "A crate minimally decorated with the logo of media giant Oculum Broadcast."
+	icon_opened = "oculumopen"
+	icon_closed = "oculum"
 
 /obj/structure/closet/crate/veymed
 	desc = "A sterile crate extensively detailed in Veymed colours."
+	icon_opened = "vmedopen"
+	icon_closed = "vmed"
 
 /obj/structure/closet/crate/ward
 	desc = "A crate decaled with the logo of Ward-Takahashi."
+	icon_opened = "wtopen"
+	icon_closed = "wt"
 
 /obj/structure/closet/crate/xion
-	desc = "A crate painted in Xion Manufacturing Group orange."
+	desc = "A crate painted in the orange of the former Xion Manufacturing Group, now a subsidiary of Aether Atmospherics and Recycling."
+	icon_opened = "xionopen"
+	icon_closed = "xion"
 
 /obj/structure/closet/crate/zenghu
 	desc = "A sterile crate marked with the logo of Zeng-Hu Pharmaceuticals."
+	icon_opened = "zhopen"
+	icon_closed = "zh"
 
 // Brands/subsidiaries
 
 /obj/structure/closet/crate/allico
 	desc = "A crate painted in the distinctive cheerful colours of AlliCo. Ltd."
+	icon_opened = "allicoopen"
+	icon_closed = "allico"
 
 /obj/structure/closet/crate/carp
-	desc = "A crate painted with the garish livery of Consolidated Agricultural Resources Plc."
+	desc = "A crate painted with the garish livery of Consolidated Agricultural Resources Plc. Centauri Provisions (in)famous space carp ranching subsidairy."
+	icon_opened = "carpopen"
+	icon_closed = "carp"
 
 /obj/structure/closet/crate/hedberg
 	name = "weapons crate"
@@ -663,37 +699,57 @@
 
 /obj/structure/closet/crate/galaksi
 	desc = "A crate printed with the markings of Ward-Takahashi's Galaksi Appliance branding."
+	icon_opened = "wtopen"
+	icon_closed = "wt"
 
 /obj/structure/closet/crate/thinktronic
 	desc = "A crate printed with the markings of Thinktronic Systems."
+	icon_opened = "wtopen"
+	icon_closed = "wt"
 
 /obj/structure/closet/crate/ummarcar
 	desc = "A flimsy crate marked labelled 'UmMarcar Office Supply'."
 
 /obj/structure/closet/crate/unathi
 	name = "import crate"
-	desc = "A crate painted with the markings of Moghes Imported Sissalik Jerky."
+	desc = "A crate painted with the markings of Moghes Imported Sissalik Jerky, currently distributed by the Naramadi megacorporation Onkhera Synthetic Solutions."
+	icon_opened = "ossopen"
+	icon_closed = "oss"
+
+//Secure crates
 
 /obj/structure/closet/crate/secure/aether
 	desc = "A secure crate painted in the colours of Aether Atmospherics and Recycling."
+	icon_opened = "aethersecureopen"
+	icon_closed = "aethersecure"
 
 /obj/structure/closet/crate/secure/bishop
-	desc = "A secure crate finely decorated with the emblem of Bishop Cybernetics."
+	desc = "A secure crate finely decorated with the emblem of Bishop Cybernetics, former Vey-Med rival now Vey-Med subsidiary."
+	icon_opened = "bishopsecureopen"
+	icon_closed = "bishopsecure"
 
 /obj/structure/closet/crate/secure/cybersolutions
 	desc = "An unadorned secure metal crate labelled 'Cyber Solutions'."
 
 /obj/structure/closet/crate/secure/einstein
-	desc = "A secure crate labelled with an Einstein Engines sticker."
+	desc = "A secure crate labelled with an Einstein Engines sticker, the company has since been bought out by Hephaestus Industries."
+	icon_opened = "eesecureopen"
+	icon_closed = "eesecure"
 
 /obj/structure/closet/crate/secure/focalpoint
-	desc = "A secure crate marked with the decal of Focal Point Energistics."
+	desc = "A secure crate marked with the decal of Focal Point Energistics, now a subsidiary of Aether Atmospherics and Recycling."
+	icon_opened = "fpsecureopen"
+	icon_closed = "fpsecure"
 
 /obj/structure/closet/crate/secure/gilthari
 	desc = "A secure crate embossed with the logo of Gilthari Exports."
+	icon_opened = "giltharisecureopen"
+	icon_closed = "giltharisecure"
 
 /obj/structure/closet/crate/secure/grayson
-	desc = "A secure bare metal crate spraypainted with Grayson Manufactories decals."
+	desc = "A secure bare metal crate spraypainted with decals of Grayson Manufactories an NT subsidiary. The purchase of Grayson by NT helped them secure their phoron monoply."
+	icon_opened = "graysonsecureopen"
+	icon_closed = "graysonsecure"
 
 /obj/structure/closet/crate/secure/hedberg
 	name = "weapons crate"
@@ -702,36 +758,57 @@
 /obj/structure/closet/crate/secure/heph
 	name = "weapons crate"
 	desc = "A secure weapons crate marked with the logo of Hephaestus Industries."
+	icon_opened = "hephsecureopen"
+	icon_closed = "hephsecure"
 
 /obj/structure/closet/crate/secure/lawson
 	name = "weapons crate"
 	desc = "A secure weapons crate marked with the logo of Lawson Arms."
 
 /obj/structure/closet/crate/secure/morpheus
-	desc = "A secure crate crudely imprinted with 'MORPHEUS CYBERKINETICS'."
+	desc = "A secure crate crudely imprinted with 'MORPHEUS CYBERKINETICS', 'primier' off brand prosthetics manufactuer."
+	icon_opened = "morpheussecureopen"
+	icon_closed = "morpheussecure"
+
 
 /obj/structure/closet/crate/secure/nanotrasen
 	desc = "A secure crate emblazoned with the standard NanoTrasen livery."
+	icon_opened = "ntsecureopen"
+	icon_closed = "ntsecure"
 
 /obj/structure/closet/crate/secure/nanomed
 	desc = "A secure crate emblazoned with the NanoMed Medical livery, a subsidary of the NanoTrasen Corporation."
+	icon_opened = "ntmedsecureopen"
+	icon_closed = "ntmedsecure"
 
-/obj/structure/closet/crate/secure/scg
+/obj/structure/closet/crate/secure/oricon
 	name = "weapons crate"
-	desc = "A secure crate in the official colours of the Solar Confederate Government."
+	desc = "A secure crate in the official colours of the Orion Confederation."
+	icon_opened = "oriconsecureopen"
+	icon_closed = "oriconsecure"
 
 /obj/structure/closet/crate/secure/saare
-	name = "weapons crate"
-	desc = "A secure weapons crate plainly stamped with the logo of Stealth Assault Enterprises."
+	desc = "A secure weapons crate plainly stamped with the logo of Stealth Assault Enterprises. A Blackstar Legion susidiary that is one of the few groups that still transport \
+	hard currency."
+	icon_opened = "saaresecureopen"
+	icon_closed = "saaresecure"
 
 /obj/structure/closet/crate/secure/veymed
 	desc = "A secure sterile crate extensively detailed in Veymed colours."
+	icon_opened = "vmedsecureopen"
+	icon_closed = "vmedsecure"
 
 /obj/structure/closet/crate/secure/ward
 	desc = "A secure crate decaled with the logo of Ward-Takahashi."
+	icon_opened = "wtsecureopen"
+	icon_closed = "wtsecure"
 
 /obj/structure/closet/crate/secure/xion
-	desc = "A secure crate painted in Xion Manufacturing Group orange."
+	desc = "A secure crate painted in the orange of the former Xion Manufacturing Group, now a subsidiary of Aether Atmospherics and Recycling."
+	icon_opened = "xionsecureopen"
+	icon_closed = "xion"
 
 /obj/structure/closet/crate/secure/zenghu
 	desc = "A secure sterile crate marked with the logo of Zeng-Hu Pharmaceuticals."
+	icon_opened = "zhsecureopen"
+	icon_closed = "zhsecure"
