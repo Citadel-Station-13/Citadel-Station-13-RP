@@ -50,11 +50,11 @@ var/global/list/wing_icon_cache = list()
 		tail_s.Blend(rgb(src.r_skin, src.g_skin, src.b_skin), species.color_mult ? ICON_MULTIPLY : ICON_ADD)
 		return image(tail_s)
 
-	var/base_state = wagging && tail_style.ani_state ? tail_style.ani_state : tail_style.icon_state
-	if(tail_style.front_behind_system)
-		base_state += front? "_FRONT" : "_BEHIND"
 	//If you have a custom tail selected
 	if(tail_style && !(wear_suit && wear_suit.flags_inv & HIDETAIL && !isTaurTail(tail_style)))
+		var/base_state = wagging && tail_style.ani_state ? tail_style.ani_state : tail_style.icon_state
+		if(tail_style.front_behind_system)
+			base_state += front? "_FRONT" : "_BEHIND"
 		var/icon/tail_s = new/icon("icon" = tail_style.icon, "icon_state" = base_state)
 		if(tail_style.do_colouration)
 			tail_s.Blend(rgb(src.r_tail, src.g_tail, src.b_tail), tail_style.color_blend_mode)
