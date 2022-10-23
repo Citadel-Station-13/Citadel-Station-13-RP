@@ -3829,12 +3829,6 @@
 /obj/machinery/door/airlock/multi_tile/metal/mait,
 /turf/simulated/floor,
 /area/tether/outpost/solars_shed)
-"sM" = (
-/obj/structure/fence{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
-/area/rift/exterior/checkpoint/south)
 "sN" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -31089,7 +31083,7 @@ dQ
 dQ
 dQ
 dQ
-sM
+Ak
 hj
 hj
 hj

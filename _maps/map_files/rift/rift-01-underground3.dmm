@@ -135,7 +135,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/turbolift/rmine/under3)
 "jq" = (
-/obj/structure/ladder/snake_eater/up,
+/obj/structure/ladder/up,
 /turf/simulated/floor/plating,
 /area/quartermaster/mining_airlock)
 "jJ" = (
