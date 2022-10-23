@@ -292,7 +292,7 @@
 	var/new_species_name = input("Please select a species to emulate.", "Shapeshifter Body") as null|anything in GLOB.playable_species
 	var/datum/species/new_species = name_static_species_meta(new_species_name)
 	if(new_species)
-		impersonate_bodytype_legacy = new_species
+		impersonate_bodytype_legacy = new_species.get_bodytype_legacy()
 		impersonate_bodytype = new_species.default_bodytype
 		regenerate_icons() //Expensive, but we need to recrunch all the icons we're wearing
 
