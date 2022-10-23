@@ -861,8 +861,6 @@
 	var/spr_state // State when spreading wings w/o anim
 	var/extra_overlay_w // Flapping state for extra overlay
 	var/extra_overlay2_w
-	/// use front/behind, citadel snowflake for now
-	var/front_behind_system = FALSE
 
 /datum/sprite_accessory/wing/bat_black
 	name = "bat wings, black"
@@ -1526,6 +1524,7 @@
 	ani_state = "catbig_wag"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
+	use_front_behind_system = TRUE
 
 /datum/sprite_accessory/tail/chameleon
 	name = "Chameleon, colorable"
