@@ -103,6 +103,7 @@
 	. = ..()
 	if(special_attack_cooldown <= world.time + special_attack_cooldown*0.25 && !pre_attack)
 		pre_attack++
+		update_icon()
 	if(!pre_attack || stat)
 		return
 
@@ -114,9 +115,6 @@
 		return
 	if(get_dist(src, target) <= 7)//Screen range check, so you can't get tentacle'd offscreen
 		visible_message("<span class='warning'>[src] digs its tentacles under [target]</span>")
-		update_icon()
-		sleep(tentacle_warning)
-
 		new /obj/effect/temporary_effect/goliath_tentacle/core(tturf, src)
 		pre_attack = 0
 		update_icon()
@@ -175,6 +173,12 @@
 	return ..()
 
 //tentacles
+/obj/effect/temporary_effect/goliath_tentacle_pre
+	name = "goliath tentacle"
+	icon = 'icons/mob/lavaland/lavaland_mobs.dmi'
+	icon_state = "goliath_tentacle_pre"
+	time_to_die = 2 SECONDS
+
 /obj/effect/temporary_effect/goliath_tentacle
 	name = "goliath tentacle"
 	icon = 'icons/mob/lavaland/lavaland_mobs.dmi'
@@ -198,7 +202,7 @@
 		var/spawndir = pick_n_take(directions)
 		var/turf/T = get_step(src, spawndir)
 		if(T && !density)
-			new /obj/effect/temporary_effect/goliath_tentacle(T)
+			new /obj/effect/temporary_effect/goliath_tentacle_pre(T)
 
 /obj/effect/temporary_effect/goliath_tentacle/core_weak/Initialize(mapload)
 	. = ..()
@@ -207,7 +211,14 @@
 		var/spawndir = pick_n_take(directions)
 		var/turf/T = get_step(src, spawndir)
 		if(T && !density)
-			new /obj/effect/temporary_effect/goliath_tentacle(T)
+			new /obj/effect/temporary_effect/goliath_tentacle_pre(T)
+
+/obj/effect/temporary_effect/goliath_tentacle_pre/Initialize(mapload)
+	. = ..()
+	var/turf/T = get_turf(src)
+	spawn(time_to_die) //I originally had this as spawn(rand(1,time_to_die)), which resulted in some interesting behavior. Maybe investigate this as a special thingy later?
+		qdel(src)
+		new /obj/effect/temporary_effect/goliath_tentacle(T)
 
 /obj/effect/temporary_effect/goliath_tentacle/Crossed(atom/movable/AM as mob|obj)
 	. = ..()
