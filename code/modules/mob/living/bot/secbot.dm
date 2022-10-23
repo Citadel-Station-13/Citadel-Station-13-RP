@@ -379,10 +379,14 @@
 			busy = TRUE
 			if(do_mob(src, H, 60))
 				if(!H.handcuffed)
+					var/type
 					if(istype(H.back, /obj/item/rig) && istype(H.gloves,/obj/item/clothing/gloves/gauntlets/rig))
-						H.handcuffed = new /obj/item/handcuffs/cable(H) // Better to be cable cuffed than stun-locked
+						type = /obj/item/handcuffs/cable // Better to be cable cuffed than stun-locked
 					else
-						H.handcuffed = new /obj/item/handcuffs(H)
+						type = /obj/item/handcuffs
+					var/obj/item/handcuffs/hc = new type(H)
+					// force equip because no mercy
+					H.force_equip_to_slot_or_del(hc, SLOT_ID_HANDCUFFED)
 					H.update_handcuffed()
 			busy = FALSE
 	else if(istype(M, /mob/living))
