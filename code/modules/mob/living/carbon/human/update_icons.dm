@@ -902,7 +902,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		rendering.layer = BODY_LAYER - used_tail_layer
 		tail_images += rendering
 
-	if(length(rendering))
+	if(length(tail_images))
 		overlays_standing[used_tail_layer] = tail_images
 		apply_layer(used_tail_layer)
 
