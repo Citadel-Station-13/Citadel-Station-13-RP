@@ -387,7 +387,6 @@
 					var/obj/item/handcuffs/hc = new type(H)
 					// force equip because no mercy
 					H.force_equip_to_slot_or_del(hc, SLOT_ID_HANDCUFFED, user = src)
-					H.update_handcuffed()
 			busy = FALSE
 	else if(istype(M, /mob/living))
 		var/mob/living/L = M
