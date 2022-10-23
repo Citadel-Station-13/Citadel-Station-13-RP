@@ -29,7 +29,7 @@ var/list/wrapped_species_by_ref = list()
 	return "[..()]-[wrapped_species_by_ref["\ref[H]"]]"
 
 /datum/species/shapeshifter/get_effective_bodytype(mob/living/carbon/human/H, obj/item/I, slot_id)
-	if(!H) return ..(null, get_deform)
+	if(!H) return ..(H, I, slot_id)
 	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
 	return S.get_effective_bodytype(H, I, slot_id)
 
