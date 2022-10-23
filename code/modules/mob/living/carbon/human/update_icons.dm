@@ -897,7 +897,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		rendering.layer = BODY_LAYER + used_tail_layer
 		tail_images += rendering
 
-	if(tail_style?.use_front_behind_system)
+	if(tail_style?.front_behind_system)
 		rendering = get_tail_image(FALSE)
 		rendering.layer = BODY_LAYER - used_tail_layer
 		tail_images += rendering
