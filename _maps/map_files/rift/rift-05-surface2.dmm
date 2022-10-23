@@ -16522,6 +16522,7 @@
 /obj/random/maintenance/security,
 /obj/random/maintenance/security,
 /obj/random/maintenance/clean,
+/obj/item/clothing/accessory/holster/hip,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "mDt" = (
@@ -25815,6 +25816,7 @@
 	pixel_y = 24
 	},
 /obj/random/maintenance/research,
+/obj/item/clothing/accessory/holster/armpit,
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "ugf" = (
