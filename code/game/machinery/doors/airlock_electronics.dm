@@ -4,7 +4,7 @@
 	icon_state = "door_electronics"
 	w_class = ITEMSIZE_SMALL //It should be tiny! -Agouri
 
-	matter = list(DEFAULT_WALL_MATERIAL = 50,"glass" = 50)
+	matter = list(MAT_STEEL = 50, MAT_GLASS = 50)
 
 	var/secure = 0 //if set, then wires will be randomized and bolts will drop if the door is broken
 	var/list/conf_access = null
@@ -49,7 +49,7 @@
 	..()
 	if (usr.stat || usr.restrained() || (!ishuman(usr) && !istype(usr,/mob/living/silicon)))
 		return
-	
+
 	if (href_list["close"])
 		usr << browse(null, "window=airlock")
 		return

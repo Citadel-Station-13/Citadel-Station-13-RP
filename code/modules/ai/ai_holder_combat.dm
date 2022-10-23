@@ -141,7 +141,7 @@
 
 	// If they're right next to us then lets just say yes. check_trajectory() tends to spaz out otherwise.
 	if(holder.Adjacent(AM))
-		ai_log("test_projectile_safety() : Adjacent to target. Exiting with TRUE.", AI_LOG_TRACE)
+		ai_log("test_projectile_check_safety() : Adjacent to target. Exiting with TRUE.", AI_LOG_TRACE)
 		return TRUE
 
 	// This will hold a list of all mobs in a line, even those behind the target, and possibly the wall.
@@ -153,25 +153,25 @@
 	var/would_hit_primary_target = FALSE
 	if(AM in hit_things)
 		would_hit_primary_target = TRUE
-	ai_log("test_projectile_safety() : Test projectile did[!would_hit_primary_target ? " NOT " : " "]hit \the [AM]", AI_LOG_DEBUG)
+	ai_log("test_projectile_check_safety() : Test projectile did[!would_hit_primary_target ? " NOT " : " "]hit \the [AM]", AI_LOG_DEBUG)
 
 	// Make sure we don't have a chance to shoot our friends.
 	for(var/a in hit_things)
 		var/atom/A = a
-		ai_log("test_projectile_safety() : Evaluating \the [A] ([A.type]).", AI_LOG_TRACE)
+		ai_log("test_projectile_check_safety() : Evaluating \the [A] ([A.type]).", AI_LOG_TRACE)
 		if(isliving(A)) // Don't shoot at our friends, even if they're behind the target, as RNG can make them get hit.
 			var/mob/living/L = A
 			if(holder.IIsAlly(L))
-				ai_log("test_projectile_safety() : Would threaten ally, exiting with FALSE.", AI_LOG_DEBUG)
+				ai_log("test_projectile_check_safety() : Would threaten ally, exiting with FALSE.", AI_LOG_DEBUG)
 				return FALSE
 
 	// Don't fire if we cannot hit the primary target, and we wish to be conservative with our projectiles.
 	// We make an exception for turf targets because manual commanded AIs targeting the floor are generally intending to fire blindly.
 	if(!would_hit_primary_target && !isturf(AM) && conserve_ammo)
-		ai_log("test_projectile_safety() : conserve_ammo is set, and test projectile failed to hit primary target. Exiting with FALSE.", AI_LOG_DEBUG)
+		ai_log("test_projectile_check_safety() : conserve_ammo is set, and test projectile failed to hit primary target. Exiting with FALSE.", AI_LOG_DEBUG)
 		return FALSE
 
-	ai_log("test_projectile_safety() : Passed other tests, exiting with TRUE.", AI_LOG_TRACE)
+	ai_log("test_projectile_check_safety() : Passed other tests, exiting with TRUE.", AI_LOG_TRACE)
 	return TRUE
 
 // Test if we are within range to attempt an attack, melee or ranged.
@@ -314,6 +314,12 @@
 			if(shield.density) // Don't attack shields that are already down.
 				ai_log("destroy_surroundings() : Attacking hull shield.", AI_LOG_INFO)
 				return holder.IAttack(shield)
+
+		// Kill energy shields in the way.
+		for(var/obj/effect/shield/S in problem_turf)
+			if(S.density) // Don't attack shields that are already down.
+				ai_log("destroy_surroundings() : Attacking energy shield.", AI_LOG_INFO)
+				return melee_attack(S)
 
 		// Kill common obstacle in the way like tables.
 		var/obj/structure/obstacle = locate(/obj/structure, problem_turf)

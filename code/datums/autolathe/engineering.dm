@@ -106,7 +106,7 @@
 	name = "rapid piping device"
 	path =/obj/item/pipe_dispenser
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 
 /datum/category_item/autolathe/engineering/timeclock
 	name = "timeclock electronics"

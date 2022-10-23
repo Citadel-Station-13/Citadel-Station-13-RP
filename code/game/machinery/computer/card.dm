@@ -1,4 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
 
 /obj/machinery/computer/card
 	name = "\improper ID card modification console"
@@ -42,13 +41,13 @@
 	if(scan)
 		to_chat(usr, "You remove \the [scan] from \the [src].")
 		scan.forceMove(get_turf(src))
-		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
+		if(!usr.get_active_held_item() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(scan)
 		scan = null
 	else if(modify)
 		to_chat(usr, "You remove \the [modify] from \the [src].")
 		modify.forceMove(get_turf(src))
-		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
+		if(!usr.get_active_held_item() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(modify)
 		modify = null
 	else
@@ -59,13 +58,13 @@
 	if(!istype(id_card))
 		return ..()
 
-	if(!scan && (access_change_ids in id_card.access) && (user.unEquip(id_card) || (id_card.loc == user && istype(user,/mob/living/silicon/robot)))) //Grippers. Again. ~Mechoid
-		user.drop_item()
-		id_card.forceMove(src)
+	if(!scan && (access_change_ids in id_card.access))
+		if(!user.attempt_insert_item_for_installation(id_card, src))
+			return
 		scan = id_card
 	else if(!modify)
-		user.drop_item()
-		id_card.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(id_card, src))
+			return
 		modify = id_card
 
 	SStgui.update_uis(src)
@@ -77,7 +76,7 @@
 /obj/machinery/computer/card/attack_hand(mob/user as mob)
 	if(..())
 		return
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	ui_interact(user)
 
@@ -164,16 +163,17 @@
 				modify.name = "[modify.registered_name]'s ID Card ([modify.assignment])"
 				if(ishuman(usr))
 					modify.forceMove(get_turf(src))
-					if(!usr.get_active_hand())
+					if(!usr.get_active_held_item())
 						usr.put_in_hands(modify)
 					modify = null
 				else
 					modify.forceMove(get_turf(src))
 					modify = null
 			else
-				var/obj/item/I = usr.get_active_hand()
-				if(istype(I, /obj/item/card/id) && usr.unEquip(I))
-					I.forceMove(src)
+				var/obj/item/I = usr.get_active_held_item()
+				if(istype(I, /obj/item/card/id))
+					if(!usr.attempt_insert_item_for_installation(I, src))
+						return
 					modify = I
 			. = TRUE
 
@@ -181,17 +181,17 @@
 			if(scan)
 				if(ishuman(usr))
 					scan.forceMove(get_turf(src))
-					if(!usr.get_active_hand())
+					if(!usr.get_active_held_item())
 						usr.put_in_hands(scan)
 					scan = null
 				else
 					scan.forceMove(get_turf(src))
 					scan = null
 			else
-				var/obj/item/I = usr.get_active_hand()
+				var/obj/item/I = usr.get_active_held_item()
 				if(istype(I, /obj/item/card/id))
-					usr.drop_item()
-					I.forceMove(src)
+					if(!usr.attempt_insert_item_for_installation(I, src))
+						return
 					scan = I
 			. = TRUE
 
@@ -203,7 +203,7 @@
 					modify.access -= access_type
 					if(!access_allowed)
 						modify.access += access_type
-				modify.lost_access = list()	//VOREStation addition: reset the lost access upon any modifications
+				modify.lost_access = list()
 			. = TRUE
 
 		if("assign")
@@ -228,7 +228,7 @@
 					modify.access = access
 					modify.assignment = t1
 					modify.rank = t1
-					modify.lost_access = list()	//VOREStation addition: reset the lost access upon any modifications
+					modify.lost_access = list()
 
 				callHook("reassign_employee", list(modify))
 			. = TRUE
@@ -284,9 +284,9 @@
 
 		if("terminate")
 			if(is_authenticated())
-				modify.assignment = "Dismissed"	//VOREStation Edit: setting adjustment
+				modify.assignment = "Dismissed"
 				modify.access = list()
-				modify.lost_access = list()	//VOREStation addition: reset the lost access upon any modifications
+				modify.lost_access = list() // Reset the lost access upon any modifications
 
 				callHook("terminate_employee", list(modify))
 

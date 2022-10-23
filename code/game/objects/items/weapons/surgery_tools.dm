@@ -18,7 +18,7 @@
 	pickup_sound = 'sound/items/pickup/weldingtool.ogg'
 
 /obj/item/surgical/attack(mob/M, mob/user)
-	if(user.a_intent == INTENT_HELP)	//A tad messy, but this should stop people from smacking their patients in surgery
+	if(user.a_intent == INTENT_HELP) //A tad messy, but this should stop people from smacking their patients in surgery
 		return 0
 	..()
 
@@ -30,7 +30,7 @@
 	name = "retractor"
 	desc = "Retracts stuff."
 	icon_state = "retractor"
-	matter = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 5000)
+	matter = list(MAT_STEEL = 10000, MAT_GLASS = 5000)
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 
 /*
@@ -40,7 +40,7 @@
 	name = "hemostat"
 	desc = "You think you have seen this before."
 	icon_state = "hemostat"
-	matter = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 2500)
+	matter = list(MAT_STEEL = 5000, MAT_GLASS = 2500)
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	attack_verb = list("attacked", "pinched")
 
@@ -51,7 +51,7 @@
 	name = "cautery"
 	desc = "This stops bleeding."
 	icon_state = "cautery"
-	matter = list(DEFAULT_WALL_MATERIAL = 5000, "glass" = 2500)
+	matter = list(MAT_STEEL = 5000, MAT_GLASS = 2500)
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	attack_verb = list("burnt")
 
@@ -63,16 +63,18 @@
 	desc = "You can drill using this item. You dig?"
 	icon_state = "drill"
 	hitsound = 'sound/weapons/circsawhit.ogg'
-	matter = list(DEFAULT_WALL_MATERIAL = 15000, "glass" = 10000)
+	matter = list(MAT_STEEL = 15000, MAT_GLASS = 10000)
 	force = 15.0
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
 	attack_verb = list("drilled")
 
-	suicide_act(mob/user)
-		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
-		user.visible_message(pick("<span class='danger'>\The [user] is pressing \the [src] to [TU.his] temple and activating it! It looks like [TU.hes] trying to commit suicide.</span>",
-		                       "<span class='danger'>\The [user] is pressing \the [src] to [TU.his] chest and activating it! It looks like [TU.hes] trying to commit suicide.</span>"))
+/obj/item/surgical/surgicaldrill/suicide_act(mob/user)
+		var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
+		user.visible_message(pick(
+			SPAN_DANGER("\The [user] is pressing \the [src] to [TU.his] temple and activating it! It looks like [TU.hes] trying to commit suicide."),
+			SPAN_DANGER("\The [user] is pressing \the [src] to [TU.his] chest and activating it! It looks like [TU.hes] trying to commit suicide."),
+		))
 		return (BRUTELOSS)
 
 /*
@@ -87,15 +89,15 @@
 	edge = 1
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_speed = 3
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 5000)
+	matter = list(MAT_STEEL = 10000, MAT_GLASS = 5000)
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /obj/item/surgical/scalpel/suicide_act(mob/user)
-		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+		var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 		user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
 		                      "<span class='danger'>\The [user] is slitting [TU.his] throat with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
 		                      "<span class='danger'>\The [user] is slitting [TU.his] stomach open with the [src.name]! It looks like [TU.hes] trying to commit seppuku.</span>"))
@@ -136,7 +138,7 @@
 	icon_state = "organ_ripper"
 	item_state = "bone_setter"
 	force = 15.0
-	toolspeed = 0.75
+	tool_speed = 0.75
 	origin_tech = list(TECH_MATERIAL = 5, TECH_BIO = 3, TECH_ILLEGAL = 2)
 
 /*
@@ -149,11 +151,11 @@
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	force = 15.0
 	w_class = ITEMSIZE_NORMAL
-	throwforce = 9.0
+	throw_force = 9.0
 	throw_speed = 3
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 20000,"glass" = 10000)
+	matter = list(MAT_STEEL = 20000, MAT_GLASS = 10000)
 	attack_verb = list("attacked", "slashed", "sawed", "cut")
 	sharp = 1
 	edge = 1
@@ -167,9 +169,9 @@
 	damtype = SEARING
 	w_class = ITEMSIZE_LARGE
 	origin_tech = list(TECH_BIO = 4, TECH_MATERIAL = 6, TECH_MAGNET = 6)
-	matter = list(DEFAULT_WALL_MATERIAL = 12500)
+	matter = list(MAT_STEEL = 12500)
 	attack_verb = list("attacked", "slashed", "seared", "cut")
-	toolspeed = 0.75
+	tool_speed = 0.75
 
 //misc, formerly from code/defines/weapons.dm
 /obj/item/surgical/bonegel
@@ -177,14 +179,14 @@
 	desc = "For fixing bones."
 	icon_state = "bone-gel"
 	force = 0
-	throwforce = 1.0
+	throw_force = 1.0
 
 /obj/item/surgical/FixOVein
 	name = "FixOVein"
 	desc = "Like bone gel. For veins."
 	icon_state = "fixovein"
 	force = 0
-	throwforce = 1.0
+	throw_force = 1.0
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 3)
 	var/usage_amount = 10
 
@@ -193,7 +195,7 @@
 	desc = "Put them in their place."
 	icon_state = "bone_setter"
 	force = 8.0
-	throwforce = 9.0
+	throw_force = 9.0
 	throw_speed = 3
 	throw_range = 5
 	attack_verb = list("attacked", "hit", "bludgeoned")
@@ -203,7 +205,7 @@
 	desc = "The best way to get a bone fixed fast."
 	icon_state = "bone_clamp"
 	force = 8
-	throwforce = 9
+	throw_force = 9
 	throw_speed = 3
 	throw_range = 5
 	attack_verb = list("attacked", "hit", "bludgeoned")
@@ -220,65 +222,65 @@
 // Cyborg Tools
 
 /obj/item/surgical/retractor/cyborg
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/surgical/hemostat/cyborg
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/surgical/cautery/cyborg
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/surgical/surgicaldrill/cyborg
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/surgical/scalpel/cyborg
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/surgical/circular_saw/cyborg
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/surgical/bonegel/cyborg
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/surgical/FixOVein/cyborg
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 /obj/item/surgical/bonesetter/cyborg
-	toolspeed = 0.5
+	tool_speed = 0.5
 
 
 // Alien Tools
 /obj/item/surgical/retractor/alien
 	icon = 'icons/obj/abductor.dmi'
-	toolspeed = 0.25
+	tool_speed = 0.25
 
 /obj/item/surgical/hemostat/alien
 	icon = 'icons/obj/abductor.dmi'
-	toolspeed = 0.25
+	tool_speed = 0.25
 
 /obj/item/surgical/cautery/alien
 	icon = 'icons/obj/abductor.dmi'
-	toolspeed = 0.25
+	tool_speed = 0.25
 
 /obj/item/surgical/surgicaldrill/alien
 	icon = 'icons/obj/abductor.dmi'
-	toolspeed = 0.25
+	tool_speed = 0.25
 
 /obj/item/surgical/scalpel/alien
 	icon = 'icons/obj/abductor.dmi'
-	toolspeed = 0.25
+	tool_speed = 0.25
 
 /obj/item/surgical/circular_saw/alien
 	icon = 'icons/obj/abductor.dmi'
-	toolspeed = 0.25
+	tool_speed = 0.25
 
 /obj/item/surgical/FixOVein/alien
 	icon = 'icons/obj/abductor.dmi'
-	toolspeed = 0.25
+	tool_speed = 0.25
 
 /obj/item/surgical/bone_clamp/alien
 	icon = 'icons/obj/abductor.dmi'
-	toolspeed = 0.75
+	tool_speed = 0.75
 
 // Primitive Items
 
@@ -315,15 +317,15 @@
 	edge = 1
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_speed = 3
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
-	matter = list("bone" = 5000, "glass" = 2500)
+	matter = list("bone" = 5000, MAT_GLASS = 2500)
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /obj/item/surgical/scalpel_primitive/suicide_act(mob/user)
-		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+		var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 		user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
 		                      "<span class='danger'>\The [user] is slitting [TU.his] throat with the [src.name]! It looks like [TU.hes] trying to commit suicide.</span>", \
 		                      "<span class='danger'>\The [user] is slitting [TU.his] stomach open with the [src.name]! It looks like [TU.hes] trying to commit seppuku.</span>"))
@@ -335,11 +337,11 @@
 	icon_state = "saw_bone"
 	force = 15.0
 	w_class = ITEMSIZE_NORMAL
-	throwforce = 9.0
+	throw_force = 9.0
 	throw_speed = 3
 	throw_range = 5
 	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
-	matter = list("bone" = 6000, "glass" = 4000)
+	matter = list("bone" = 6000, MAT_GLASS = 4000)
 	attack_verb = list("attacked", "slashed", "sawed", "cut")
 	sharp = 1
 	edge = 1

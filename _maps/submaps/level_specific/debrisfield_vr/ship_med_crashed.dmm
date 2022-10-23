@@ -21,11 +21,11 @@
 /turf/simulated/shuttle/plating/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "g" = (
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/mineral/floor/vacuum,
 /area/submap/debrisfield_vr/misc_debris)
 "h" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/salvageable/personal,
 /turf/simulated/shuttle/plating/airless,
 /area/submap/debrisfield_vr/misc_debris)
@@ -54,8 +54,8 @@
 /turf/simulated/mineral/floor/vacuum,
 /area/submap/debrisfield_vr/misc_debris)
 "n" = (
-/obj/effect/decal/cleanable/dirt,
-/mob/living/bot/medbot{
+/obj/effect/debris/cleanable/dirt,
+/mob/living/bot/medibot{
 	name = "Dr. Crusty"
 	},
 /turf/simulated/shuttle/plating/airless,
@@ -72,12 +72,12 @@
 /turf/simulated/mineral/floor/vacuum,
 /area/submap/debrisfield_vr/misc_debris)
 "q" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/shuttle/plating/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "r" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/random/firstaid,
 /turf/simulated/shuttle/plating/airless,
 /area/submap/debrisfield_vr/misc_debris)
@@ -100,24 +100,24 @@
 /turf/simulated/mineral/floor/vacuum,
 /area/submap/debrisfield_vr/misc_debris)
 "v" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/molten_item,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/molten_item,
 /turf/simulated/shuttle/plating/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "w" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/shuttle/wall,
 /area/submap/debrisfield_vr/misc_debris)
 "x" = (
 /turf/simulated/shuttle/wall/hard_corner,
 /area/submap/debrisfield_vr/misc_debris)
 "y" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/shuttle/plating/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "z" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/effect/decal/remains/posi,
 /turf/simulated/shuttle/plating/airless,
 /area/submap/debrisfield_vr/misc_debris)
@@ -126,17 +126,17 @@
 /turf/simulated/shuttle/floor/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "B" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/stack/material/steel,
 /turf/simulated/shuttle/plating/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "C" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/storage/firstaid/adv,
 /turf/simulated/shuttle/plating/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "D" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/stack/rods,
 /turf/simulated/shuttle/plating/airless,
 /area/submap/debrisfield_vr/misc_debris)
@@ -152,12 +152,12 @@
 /turf/simulated/mineral/floor/vacuum,
 /area/submap/debrisfield_vr/misc_debris)
 "H" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/material/shard/shrapnel,
 /turf/simulated/shuttle/plating/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "I" = (
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/shuttle/floor/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "J" = (
@@ -171,7 +171,7 @@
 /turf/simulated/shuttle/floor/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "L" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/shuttle/floor/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "M" = (

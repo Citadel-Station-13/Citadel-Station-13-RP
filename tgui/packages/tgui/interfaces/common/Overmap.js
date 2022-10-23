@@ -1,7 +1,6 @@
-import { round } from 'common/math';
 import { Fragment } from 'inferno';
-import { useBackend, useLocalState } from "../../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Table } from "../../components";
+import { useBackend } from "../../backend";
+import { Box, Button, LabeledList } from "../../components";
 
 export const OvermapFlightData = (props, context) => {
   const { act, data } = useBackend(context);
@@ -19,8 +18,8 @@ export const OvermapFlightData = (props, context) => {
     accellimit,
   } = data;
 
-  // While, yes, this is a strange choice to use fieldset over Section
-  // just look at how pretty the legend is, sticking partially through the border ;///;
+  // While, yes, this is a strange choice to use fieldset over Section just
+  // look at how pretty the legend is, sticking partially through the border
   return (
     <LabeledList>
       <LabeledList.Item label="ETA To Next Grid">

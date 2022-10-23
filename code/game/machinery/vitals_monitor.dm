@@ -21,7 +21,7 @@
 	var/mob/living/carbon/human/victim
 	var/beep = TRUE
 
-/obj/machinery/vitals_monitor/Initialize()
+/obj/machinery/vitals_monitor/Initialize(mapload)
 	. = ..()
 	default_apply_parts()
 
@@ -32,7 +32,7 @@
 /obj/machinery/vitals_monitor/examine(mob/user)
 	. = ..()
 	if(victim)
-		if(stat & NOPOWER)
+		if(machine_stat & NOPOWER)
 			. += "<span class='notice'>It's unpowered.</span>"
 			return
 		. += "<span class='notice'>Vitals of [victim]:</span>"
@@ -78,7 +78,7 @@
 	if(beep && victim && victim.pulse)
 		playsound(src, 'sound/machines/quiet_beep.ogg')
 
-/obj/machinery/vitals_monitor/MouseDrop(over_object, src_location, over_location)
+/obj/machinery/vitals_monitor/OnMouseDropLegacy(over_object, src_location, over_location)
 	if(!CanMouseDrop(over_object))
 		return
 	if(victim)
@@ -91,7 +91,7 @@
 
 /obj/machinery/vitals_monitor/update_icon()
 	cut_overlays()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		return
 	add_overlay("screen")
 

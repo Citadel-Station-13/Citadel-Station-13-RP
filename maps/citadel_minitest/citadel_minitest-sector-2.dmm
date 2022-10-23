@@ -16,7 +16,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/space)
 "af" = (
-/obj/effect/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen,
@@ -34,9 +34,7 @@
 /area/awaymission)
 "aj" = (
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/power/smes/buildable,
@@ -54,8 +52,7 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/awaymission)
@@ -63,7 +60,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/power/port_gen/pacman,
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
@@ -255,7 +251,7 @@
 /area/awaymission)
 "aP" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/landmark/loot_spawn,
+/obj/landmark/loot_spawn,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission)
 "aQ" = (
@@ -333,7 +329,7 @@
 "be" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/landmark/costume,
+/obj/landmark/costume/random,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission)
 "bf" = (
@@ -482,7 +478,7 @@
 /area/awaymission)
 "bB" = (
 /obj/structure/dispenser/oxygen,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/awaymission)
@@ -598,7 +594,7 @@
 /turf/simulated/floor/tiled,
 /area/awaymission)
 "bR" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1375;
 	id_tag = "carp_pump"
@@ -621,7 +617,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission)
 "bS" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1375;
 	id_tag = "carp_pump"

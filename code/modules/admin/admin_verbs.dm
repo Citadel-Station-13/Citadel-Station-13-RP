@@ -83,15 +83,15 @@ var/list/admin_verbs_admin = list(
 	/client/proc/cmd_admin_rejuvenate,
 	/client/proc/toggleghostwriters,
 	/client/proc/toggledrones,
-	/datum/admins/proc/show_skills,
+//	/datum/admins/proc/show_skills,
 	/client/proc/check_customitem_activity,
 	/client/proc/man_up,
 	/client/proc/global_man_up,
-	/client/proc/response_team, // Response Teams admin verb,
-//	/client/proc/trader_ship, // Trader ship admin verb,  // I've commented this one out for now, in conjunction with Nebula Gas being disabled.
+	/client/proc/response_team, // Response Teams admin verb
+	/client/proc/trader_ship, // Trader ship admin verb
 	/client/proc/toggle_antagHUD_use,
 	/client/proc/toggle_antagHUD_restrictions,
-	/client/proc/allow_character_respawn,    // Allows a ghost to respawn ,
+	/client/proc/allow_character_respawn, // Allows a ghost to respawn ,
 	/client/proc/event_manager_panel,
 	/client/proc/empty_ai_core_toggle_latejoin,
 	/client/proc/empty_ai_core_toggle_latejoin,
@@ -105,7 +105,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/toggle_attack_logs,
 	/datum/admins/proc/paralyze_mob,
 	/client/proc/fixatmos,
-	/datum/admins/proc/quick_nif, //VOREStation Add,
+	/datum/admins/proc/quick_nif,
 	/datum/admins/proc/sendFax,
 	/client/proc/despawn_player,
 	/client/proc/addbunkerbypass,
@@ -144,7 +144,7 @@ var/list/admin_verbs_fun = list(
 	/client/proc/roll_dices,
 	/datum/admins/proc/call_supply_drop,
 	/datum/admins/proc/call_drop_pod,
-	/client/proc/smite_vr, //VOREStation Add,
+	/client/proc/smite_vr,
 	/client/proc/smite,
 	/client/proc/admin_lightning_strike
 	)
@@ -154,9 +154,9 @@ var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_custom_item,
 	/datum/admins/proc/check_custom_items,
 	/datum/admins/proc/spawn_plant,
-	/datum/admins/proc/spawn_atom,		//allows us to spawn instances,
+	/datum/admins/proc/spawn_atom, // Allows us to spawn instances,
 	/client/proc/respawn_character,
-	/client/proc/spawn_character_mob,  //VOREStation Add,
+	/client/proc/spawn_character_mob,
 	/client/proc/virus2_editor,
 	/client/proc/spawn_chemdisp_cartridge,
 	/client/proc/map_template_load,
@@ -176,7 +176,7 @@ var/list/admin_verbs_server = list(
 	/client/proc/cmd_mod_say,
 	/client/proc/everyone_random,
 	/datum/admins/proc/toggleAI,
-	/client/proc/cmd_admin_delete,		//delete an instance/object/mob/etc,
+	/client/proc/cmd_admin_delete, // Delete an instance/object/mob/etc,
 	/client/proc/cmd_debug_del_all,
 	/client/proc/cmd_admin_clear_mobs,
 	/datum/admins/proc/adrev,
@@ -191,7 +191,8 @@ var/list/admin_verbs_server = list(
 	/client/proc/recipe_dump,
 	/client/proc/panicbunker,
 	/client/proc/ip_reputation,
-	/client/proc/paranoia_logging
+	/client/proc/paranoia_logging,
+	/client/proc/reestablish_db_connection
 	)
 
 var/list/admin_verbs_debug = list(
@@ -228,6 +229,9 @@ var/list/admin_verbs_debug = list(
 	/client/proc/SDQL2_query,
 	/client/proc/Jump,
 	/client/proc/debug_rogueminer,
+	/client/proc/start_line_profiling,
+	/client/proc/stop_line_profiling,
+	/client/proc/show_line_profiling,
 	/client/proc/jumptomob,
 	/client/proc/jumptocoord,
 	/client/proc/dsay,
@@ -347,7 +351,7 @@ var/list/admin_verbs_mod = list(
 	/datum/admins/proc/show_player_info,
 	/client/proc/player_panel,
 	/client/proc/dsay,
-	/datum/admins/proc/show_skills,
+//	/datum/admins/proc/show_skills,
 	/datum/admins/proc/show_player_panel,
 	/client/proc/check_antagonists,
 	/client/proc/aooc,
@@ -738,7 +742,7 @@ var/list/admin_verbs_event_manager = list(
 	if(istype(T,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = T
 		if (H.species)
-			D.affected_species = list(H.species.get_bodytype())
+			D.affected_species = list(H.species.get_bodytype_legacy())
 			if(H.species.primitive_form)
 				D.affected_species |= H.species.primitive_form
 			if(H.species.greater_form)
@@ -753,7 +757,7 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Debug"
 	set name = "Give Modifier"
 	set desc = "Makes a mob weaker or stronger by adding a specific modifier to them."
-	set popup_menu = FALSE //VOREStation Edit - Declutter.
+	set popup_menu = FALSE
 
 	if(!L)
 		to_chat(usr, "<span class='warning'>Looks like you didn't select a mob.</span>")
@@ -905,7 +909,7 @@ var/list/admin_verbs_event_manager = list(
 	if(!H.client)
 		to_chat(usr, "Only mobs with clients can alter their own appearance.")
 		return
-	var/datum/gender/T = gender_datums[H.get_visible_gender()]
+	var/datum/gender/T = GLOB.gender_datums[H.get_visible_gender()]
 	switch(alert("Do you wish for [H] to be allowed to select non-whitelisted races?","Alter Mob Appearance","Yes","No","Cancel"))
 		if("Yes")
 			log_and_message_admins("has allowed [H] to change [T.his] appearance, without whitelisting of races.")
@@ -1061,7 +1065,7 @@ var/list/admin_verbs_event_manager = list(
 	set category = "Fun"
 	set name = "Man Up"
 	set desc = "Tells mob to man up and deal with it."
-	set popup_menu = FALSE //VOREStation Edit - Declutter.
+	set popup_menu = FALSE
 
 	if(alert("Are you sure you want to tell them to man up?","Confirmation","Deal with it","No")=="No") return
 

@@ -75,7 +75,7 @@
 	voice_mobs.Add(new_voice)
 	listening_objects |= src
 
-	var/obj/screen/blackness = new() 	//Makes a black screen, so the candidate can't see what's going on before actually 'connecting' to the communicator.
+	var/atom/movable/screen/blackness = new() 	//Makes a black screen, so the candidate can't see what's going on before actually 'connecting' to the communicator.
 	blackness.screen_loc = ui_entire_screen
 	blackness.icon = 'icons/effects/effects.dmi'
 	blackness.icon_state = "1"
@@ -207,7 +207,7 @@
 	for(var/obj/item/communicator/comm in communicating)
 		var/turf/T = get_turf(comm)
 		if(!T) return
-		//VOREStation Edit Start for commlinks
+		// Commlinks
 		var/list/mobs_to_relay
 		if(istype(comm,/obj/item/communicator/commlink))
 			var/obj/item/communicator/commlink/CL = comm
@@ -215,7 +215,6 @@
 		else
 			var/list/in_range = get_mobs_and_objs_in_view_fast(T,world.view,0) //Range of 3 since it's a tiny video display
 			mobs_to_relay = in_range["mobs"]
-		//VOREStation Edit End
 
 		for(var/mob/mob in mobs_to_relay) //We can't use visible_message(), or else we will get an infinite loop if two communicators hear each other.
 			var/dst = get_dist(get_turf(mob),get_turf(comm))
@@ -236,7 +235,7 @@
 		var/turf/T = get_turf(comm)
 		if(!T)
 			return
-		//VOREStation Edit Start for commlinks
+		// Commlinks
 		var/list/mobs_to_relay
 		if(istype(comm,/obj/item/communicator/commlink))
 			var/obj/item/communicator/commlink/CL = comm
@@ -244,7 +243,6 @@
 		else
 			var/list/in_range = get_mobs_and_objs_in_view_fast(T,world.view,0) //Range of 3 since it's a tiny video display
 			mobs_to_relay = in_range["mobs"]
-		//VOREStation Edit End
 
 		var/mob/living/L = (isliving(M) && M) || null
 		var/message = text
@@ -367,4 +365,3 @@
 
 	visible_message(.)
 	update_icon()
-

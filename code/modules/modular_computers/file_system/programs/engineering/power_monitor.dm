@@ -91,7 +91,7 @@
 		return
 	if(T)
 		levels += GLOB.using_map.get_map_levels(T.z, FALSE)
-	for(var/obj/machinery/power/sensor/S in machines)
+	for(var/obj/machinery/power/sensor/S in GLOB.machines)
 		if(T && (S.loc.z == T.z) || (S.loc.z in levels) || (S.long_range)) // Consoles have range on their Z-Level. Sensors with long_range var will work between Z levels.
 			if(S.name_tag == "#UNKN#") // Default name. Shouldn't happen!
 				warning("Powernet sensor with unset ID Tag! [S.x]X [S.y]Y [S.z]Z")
@@ -101,13 +101,13 @@
 // Allows us to process UI clicks, which are relayed in form of hrefs.
 /datum/nano_module/power_monitor/Topic(href, href_list)
 	if(..())
-		return 1
-	if( href_list["clear"] )
+		return TRUE
+	if(href_list["clear"] )
 		active_sensor = null
-		. = 1
-	if( href_list["refresh"] )
+		. = TRUE
+	if(href_list["refresh"] )
 		refresh_sensors()
-		. = 1
-	else if( href_list["setsensor"] )
+		. = TRUE
+	else if(href_list["setsensor"] )
 		active_sensor = href_list["setsensor"]
-		. = 1
+		. = TRUE

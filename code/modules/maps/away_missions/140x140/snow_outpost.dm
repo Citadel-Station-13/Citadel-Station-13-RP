@@ -13,9 +13,7 @@
 	icon_state = "blank"
 	mobcountmax = 0
 	floracountmax = 0
-	base_turf = /turf/snow/snow2
 	ambience = list('sound/music/main.ogg', 'sound/ambience/maintenance/maintenance4.ogg', 'sound/ambience/sif/sif1.ogg', 'sound/ambience/ruins/ruins1.ogg')
-	base_turf = /turf/simulated/floor/snow/snow2
 
 /area/awaymission/snow_outpost/outside
 	icon_state = "away1"

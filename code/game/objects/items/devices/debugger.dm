@@ -11,12 +11,12 @@
 	icon_state = "hacktool-g"
 	force = 5.0
 	w_class = ITEMSIZE_SMALL
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_range = 15
 	throw_speed = 3
 	desc = "You can use this on airlocks or APCs to try to hack them without cutting wires."
 
-	matter = list(DEFAULT_WALL_MATERIAL = 50,"glass" = 20)
+	matter = list(MAT_STEEL = 50, MAT_GLASS = 20)
 
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
 	var/obj/machinery/telecomms/buffer // simple machine buffer for device linkage

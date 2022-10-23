@@ -1,6 +1,6 @@
 var/list/ventcrawl_machinery = list(
-	/obj/machinery/atmospherics/unary/vent_pump,
-	/obj/machinery/atmospherics/unary/vent_scrubber
+	/obj/machinery/atmospherics/component/unary/vent_pump,
+	/obj/machinery/atmospherics/component/unary/vent_scrubber
 	)
 
 // Vent crawling whitelisted items, whoo
@@ -10,11 +10,8 @@ var/list/ventcrawl_machinery = list(
 	/obj/item/holder,
 	/obj/machinery/camera,
 	/obj/belly,
-	/obj/screen
+	/atom/movable/screen
 	)
-	//VOREStation Edit : added /obj/belly, to this list, travis is complaining about this in his indentation check
-	//mob/living/simple_mob/borer, //VORESTATION AI TEMPORARY REMOVAL REPLACE BACK IN LIST WHEN RESOLVED //VOREStation Edit
-
 /mob/living/var/list/icon/pipes_shown = list()
 /mob/living/var/last_played_vent
 /mob/living/var/is_ventcrawling = 0
@@ -38,6 +35,7 @@ var/list/ventcrawl_machinery = list(
 	if(is_ventcrawling && istype(loc, /obj/machinery/atmospherics)) //attach us back into the pipes
 		remove_ventcrawl()
 		add_ventcrawl(loc)
+		update_perspective()
 		client.screen += GLOB.global_hud.centermarker
 
 /mob/living/simple_mob/slime/xenobio/can_ventcrawl()
@@ -59,7 +57,7 @@ var/list/ventcrawl_machinery = list(
 			break
 
 	//Only allow it if it's "IN" the mob, not equipped on/being held
-	if(listed && !get_inventory_slot(carried_item))
+	if((listed && !is_holding(carried_item)) || !is_in_inventory(carried_item))
 		return 1
 
 /mob/living/carbon/is_allowed_vent_crawl_item(var/obj/item/carried_item)
@@ -88,7 +86,7 @@ var/list/ventcrawl_machinery = list(
 /mob/proc/start_ventcrawl()
 	var/atom/pipe
 	var/list/pipes = list()
-	for(var/obj/machinery/atmospherics/unary/U in range(1))
+	for(var/obj/machinery/atmospherics/component/unary/U in range(1))
 		if(is_type_in_list(U,ventcrawl_machinery) && Adjacent(U) && !U.welded)
 			pipes |= U
 	if(!pipes || !pipes.len)
@@ -110,7 +108,7 @@ var/list/ventcrawl_machinery = list(
 	if(!can_ventcrawl() || prepping_to_ventcrawl)
 		return
 
-	var/obj/machinery/atmospherics/unary/vent_found
+	var/obj/machinery/atmospherics/component/unary/vent_found
 	if(clicked_on && Adjacent(clicked_on))
 		vent_found = clicked_on
 		if(!istype(vent_found) || !vent_found.can_crawl_through())
@@ -166,6 +164,7 @@ var/list/ventcrawl_machinery = list(
 
 			forceMove(vent_found)
 			add_ventcrawl(vent_found)
+			update_perspective()
 
 		else
 			to_chat(src, "This vent is not connected to anything.")
@@ -183,7 +182,7 @@ var/list/ventcrawl_machinery = list(
 		for(var/obj/machinery/atmospherics/A in (pipeline.members || pipeline.edges))
 			if(!A.pipe_image)
 				A.pipe_image = image(A, A.loc, dir = A.dir)
-				A.pipe_image.plane = PLANE_LIGHTING_ABOVE
+				A.pipe_image.plane = ABOVE_LIGHTING_PLANE
 			pipes_shown += A.pipe_image
 			client.images += A.pipe_image
 	if(client)
@@ -196,6 +195,4 @@ var/list/ventcrawl_machinery = list(
 		for(var/image/current_image in pipes_shown)
 			client.images -= current_image
 		client.screen -= GLOB.global_hud.centermarker
-		client.eye = src
-
 	pipes_shown.len = 0

@@ -202,3 +202,50 @@
 /obj/item/reagent_containers/food/drinks/cans/dumbjuice/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("dumbjuice", 30)
+
+/obj/item/reagent_containers/food/drinks/cans/gondola_energy
+	name = "Gondola Energy"
+	desc = "Gets you going!"
+	icon_state = "gondola_energy"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/gondola_energy/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("battery", 20)
+	reagents.add_reagent("rewriter", 10)
+
+/obj/item/reagent_containers/food/drinks/cans/geometer
+	name = "Geometer Energy"
+	desc = "This popular energy drink was banned by NanoTrasen shortly after the Galactic Awakening, although no statement has ever been issued to explain why."
+	icon_state = "geometer"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/geometer/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("battery", 20)
+	reagents.add_reagent("blood", 10)
+
+/obj/item/reagent_containers/food/drinks/cans/coconutwater
+	name = "Coconut Water"
+	desc = "A bottle of NutClarity brand coconut water."
+	icon_state = "tallwaterbottle"
+	center_of_mass = list("x"=16, "y"=10)
+	drop_sound = 'sound/items/drop/disk.ogg'
+	pickup_sound = 'sound/items/pickup/disk.ogg'
+
+/obj/item/reagent_containers/food/drinks/cans/coconutwater/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("coconutwater", 30)
+
+
+//Alraune Drink Import
+/obj/item/reagent_containers/food/drinks/cans/alraune
+	name = "Loam Nutri-Juice"
+	desc = "A mixture of springwater, natural fertilizers, and minerals. Enjoyed by Diona and Alraune. Hated by everyone else."
+	icon_state = "alraunedrink"
+	center_of_mass = list("x"=16, "y"=10)
+
+/obj/item/reagent_containers/food/drinks/cans/alraune/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("ammonia", 20)
+	reagents.add_reagent("water", 10)

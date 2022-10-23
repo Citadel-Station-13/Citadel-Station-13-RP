@@ -59,13 +59,14 @@ GLOBAL_LIST_INIT(robot_modules, list(
 			channels = R.mainframe.aiRadio.channels
 		R.radio.recalculateChannels()
 
-	vr_add_sprites() //Vorestation Edit: For vorestation only sprites
+	vr_add_sprites() //TODO: Add into the normal lists.
 
 	R.set_module_sprites(sprites)
-	R.choose_icon(R.module_sprites.len + 1, R.module_sprites)
+	// TODO: REFACTOR CYBORGS THEY ARE ALL SHITCODE
+	INVOKE_ASYNC(R, /mob/living/silicon/robot/proc/choose_icon, R.module_sprites.len + 1, R.module_sprites)
 
 	for(var/obj/item/I in modules)
-		I.canremove = 0
+		ADD_TRAIT(I, TRAIT_NODROP, CYBORG_MODULE_TRAIT)
 
 /obj/item/robot_module/proc/Reset(var/mob/living/silicon/robot/R)
 	remove_camera_networks(R)
@@ -167,4 +168,4 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	src.modules += new /obj/item/tool/crowbar/cyborg(src)
 	src.modules += new /obj/item/extinguisher(src)
 	src.modules += new /obj/item/gps/robot(src)
-	vr_new() // Vorestation Edit: For modules in robot_modules_vr.dm
+	vr_new() // For modules in robot_modules_vr.dm //TODO: Integrate

@@ -4,43 +4,43 @@
 /area/template_noop)
 "b" = (
 /turf/template_noop,
-/area/poi_d/explored)
+/area/class_d/explored)
 "d" = (
 /obj/structure/girder/displaced,
 /turf/template_noop,
-/area/poi_d/explored)
+/area/class_d/explored)
 "e" = (
 /turf/simulated/wall/titanium,
-/area/poi_d/explored)
+/area/class_d/explored)
 "f" = (
-/turf/simulated/floor/class_d,
-/area/poi_d/explored)
+/turf/simulated/floor/classd,
+/area/class_d/explored)
 "g" = (
 /obj/structure/loot_pile/maint/junk,
-/turf/simulated/floor/class_d,
-/area/poi_d/explored)
+/turf/simulated/floor/classd,
+/area/class_d/explored)
 "h" = (
 /obj/item/flashlight,
-/turf/simulated/floor/class_d,
-/area/poi_d/explored)
+/turf/simulated/floor/classd,
+/area/class_d/explored)
 "i" = (
 /obj/structure/loot_pile/maint/technical,
 /obj/item/cell/device/weapon/empty,
 /obj/item/cell/device/weapon/empty,
-/turf/simulated/floor/class_d,
-/area/poi_d/explored)
+/turf/simulated/floor/classd,
+/area/class_d/explored)
 "j" = (
 /obj/structure/loot_pile/maint/technical,
-/turf/simulated/floor/class_d,
-/area/poi_d/explored)
+/turf/simulated/floor/classd,
+/area/class_d/explored)
 "k" = (
 /obj/structure/girder,
 /turf/template_noop,
-/area/poi_d/explored)
+/area/class_d/explored)
 "m" = (
 /obj/structure/loot_pile/maint/trash,
-/turf/simulated/floor/class_d,
-/area/poi_d/explored)
+/turf/simulated/floor/classd,
+/area/class_d/explored)
 
 (1,1,1) = {"
 a

@@ -9,13 +9,19 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 	name = "navigation beacon"
 	desc = "A beacon used for bot navigation."
 	plane = PLATING_PLANE
-	anchored = 1
-	var/open = 0		// true if cover is open
-	var/locked = 1		// true if controls are locked
-	var/freq = null		// DEPRECATED we don't use radios anymore!
-	var/location = ""	// location response text
-	var/codes_txt		// DEPRECATED codes as set on map: "tag1;tag2" or "tag1=value;tag2=value"
-	var/list/codes = list()	// assoc. list of transponder codes
+	anchored = TRUE
+	/// TRUE if cover is open.
+	var/open = FALSE
+	/// TRUE if controls are locked.
+	var/locked = TRUE
+	/// DEPRECATED we don't use radios anymore! //TODO: Remove
+	var/freq = null
+	/// Location response text.
+	var/location = ""
+	/// DEPRECATED codes as set on map: "tag1;tag2" or "tag1=value;tag2=value" //TODO: Remove
+	var/codes_txt
+	/// assoc. list of transponder codes.
+	var/list/codes = list()
 	req_access = list(access_engine)
 
 /obj/machinery/navbeacon/Initialize(mapload)
@@ -67,14 +73,14 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 	else
 		icon_state = "[state]"
 
-/obj/machinery/navbeacon/attackby(var/obj/item/I, var/mob/user)
+/obj/machinery/navbeacon/attackby(obj/item/I, mob/user)
 	var/turf/T = loc
 	if(!T.is_plating())
 		return		// prevent intraction when T-scanner revealed
 
 	if(I.is_screwdriver())
 		open = !open
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		user.visible_message("[user] [open ? "opens" : "closes"] the beacon's cover.", "You [open ? "open" : "close"] the beacon's cover.")
 
 		updateicon()
@@ -85,7 +91,7 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 				locked = !locked
 				to_chat(user, "Controls are now [locked ? "locked." : "unlocked."]")
 			else
-				to_chat(user, "<span class='warning'>Access denied.</span>")
+				to_chat(user, SPAN_WARNING("Access denied."))
 			updateDialog()
 		else
 			to_chat(user, "You must open the cover first!")
@@ -97,11 +103,11 @@ var/global/list/navbeacons = list()	// no I don't like putting this in, but it w
 /obj/machinery/navbeacon/attack_hand(var/mob/user)
 
 	if(!user.IsAdvancedToolUser())
-		return 0
+		return FALSE
 
-	interact(user, 0)
+	interact(user, FALSE)
 
-/obj/machinery/navbeacon/interact(var/mob/user, var/ai = 0)
+/obj/machinery/navbeacon/interact(mob/user, ai = FALSE)
 	var/turf/T = loc
 	if(!T.is_plating())
 		return		// prevent intraction when T-scanner revealed

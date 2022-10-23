@@ -1,6 +1,6 @@
 /obj/machinery/gateway
 	name = "gateway"
-	desc = "A mysterious gateway built by unknown hands.  It allows for faster than light travel to far-flung locations and even alternate realities."  //VOREStation Edit
+	desc = "A mysterious gateway built by unknown hands.  It allows for faster than light travel to far-flung locations and even alternate realities."
 	icon = 'icons/obj/machines/gateway.dmi'
 	icon_state = "off"
 	density = 1
@@ -39,7 +39,7 @@
 	wait = world.time + config_legacy.gateway_delay	//+ thirty minutes default
 	awaygate = locate(/obj/machinery/gateway/centeraway)
 	. = ..()
-	density = 1 //VOREStation Add
+	density = TRUE
 
 /obj/machinery/gateway/centerstation/update_icon()
 	if(active)
@@ -48,7 +48,7 @@
 	icon_state = "offcenter"
 
 /obj/machinery/gateway/centerstation/process(delta_time)
-	if(stat & (NOPOWER))
+	if(machine_stat & (NOPOWER))
 		if(active) toggleoff()
 		return
 
@@ -86,8 +86,8 @@
 	if(world.time < wait)
 		to_chat(user, "<span class='notice'>Error: Warpspace triangulation in progress. Estimated time to completion: [round(((wait - world.time) / 10) / 60)] minutes.</span>")
 		return
-	if(!awaygate.calibrated && !LAZYLEN(awaydestinations)) //VOREStation Edit
-		to_chat(user, "<span class='notice'>Error: Destination gate uncalibrated. Gateway unsafe to use without far-end calibration update.</span>")
+	if(!awaygate.calibrated && !LAZYLEN(awaydestinations))
+		to_chat(user, SPAN_NOTICE("Error: Destination gate uncalibrated. Gateway unsafe to use without far-end calibration update."))
 		return
 
 	for(var/obj/machinery/gateway/G in linked)
@@ -129,7 +129,7 @@
 		M.setDir(SOUTH)
 		return
 	else
-		var/obj/effect/landmark/dest = pick(awaydestinations)
+		var/obj/landmark/dest = pick(awaydestinations)
 		if(dest)
 			M.forceMove(dest.loc)
 			M.setDir(SOUTH)
@@ -164,7 +164,7 @@
 	update_icon()
 	stationgate = locate(/obj/machinery/gateway/centerstation)
 	. = ..()
-	density = 1 //VOREStation Add
+	density = 1
 
 
 /obj/machinery/gateway/centeraway/update_icon()
@@ -196,8 +196,8 @@
 /obj/machinery/gateway/centeraway/proc/toggleon(mob/user as mob)
 	if(!ready)			return
 	if(linked.len != 8)	return
-	if(!stationgate || !calibrated) // Vorestation edit. Not like Polaris ever touches this anyway.
-		to_chat(user, "<span class='notice'>Error: No destination found. Please calibrate gateway.</span>")
+	if(!stationgate || !calibrated)
+		to_chat(user, SPAN_NOTICE("Error: No destination found. Please calibrate gateway."))
 		return
 
 	for(var/obj/machinery/gateway/G in linked)
@@ -245,12 +245,10 @@
 			to_chat(user, "<font color='black'>The gate is already calibrated, there is no work for you to do here.</font>")
 			return
 		else
-			// VOREStation Add
 			stationgate = locate(/obj/machinery/gateway/centerstation)
 			if(!stationgate)
 				to_chat(user, "<span class='notice'>Error: Recalibration failed. No destination found... That can't be good.</span>")
 				return
-			// VOREStation Add End
 			else
 				to_chat(user, "<font color=#4F49AF><b>Recalibration successful!</b>:</font><font color='black'> This gate's systems have been fine tuned. Travel to this gate will now be on target.</font>")
 				calibrated = 1

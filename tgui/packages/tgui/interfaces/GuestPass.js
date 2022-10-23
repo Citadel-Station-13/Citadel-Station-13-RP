@@ -39,7 +39,8 @@ export const GuestPass = (props, context) => {
             <Section level={2} title="Logs">
               {/* These are internally generated only. */}
               {log.length
-                && log.map(l => <div key={l} dangerouslySetInnerHTML={{ __html: l }} />)
+                && log.map(l => (<div key={l}
+                  dangerouslySetInnerHTML={{ __html: l }} />))
                 || <Box>No logs.</Box>}
             </Section>
           </Section>

@@ -112,7 +112,7 @@
 	// Splatter anything under us that survived the explosion.
 	if(value != SD_EMPTY_TILE && T.contents.len)
 		for(var/atom/movable/AM in T)
-			if(AM.simulated && !istype(AM, /mob/observer))
+			if(!(AM.flags & ATOM_ABSTRACT) && !istype(AM, /mob/observer))
 				qdel(AM)
 
 	// Also spawn doors and loot.

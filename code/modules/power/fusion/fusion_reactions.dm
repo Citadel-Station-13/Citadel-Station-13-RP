@@ -14,7 +14,7 @@ var/list/fusion_reactions
 /decl/fusion_reaction/proc/handle_reaction_special(var/obj/effect/fusion_em_field/holder)
 	return 0
 
-proc/get_fusion_reaction(var/p_react, var/s_react, var/m_energy)
+/proc/get_fusion_reaction(p_react, s_react, m_energy)
 	if(!fusion_reactions)
 		fusion_reactions = list()
 		for(var/rtype in typesof(/decl/fusion_reaction) - /decl/fusion_reaction)
@@ -86,7 +86,7 @@ proc/get_fusion_reaction(var/p_react, var/s_react, var/m_energy)
 /decl/fusion_reaction/iron_iron
 	p_react = "iron"
 	s_react = "iron"
-	products = list("silver" = 1, "gold" = 1, "platinum" = 1) // Not realistic but w/e
+	products = list(MAT_SILVER = 1, MAT_GOLD = 1, MAT_PLATINUM = 1) // Not realistic but w/e
 	energy_consumption = 10
 	energy_production = 0
 	instability = 2

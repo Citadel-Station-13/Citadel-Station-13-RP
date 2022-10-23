@@ -18,7 +18,7 @@
 			var/x = (M.x - world.view) < 1 ? 1 : M.x - world.view
 			target = locate(x, M.y, M.z)
 	if(target)
-		M.throw_at(target, world.view, 1)
+		M.throw_at_old(target, world.view, 1)
 
 /obj/machinery/computer/shuttle_control/multi/admin
 	name = "centcom shuttle control console"

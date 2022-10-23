@@ -1,8 +1,8 @@
-datum/preferences
+/datum/preferences
 	var/biological_gender = MALE
 	var/identifying_gender = MALE
 
-datum/preferences/proc/set_biological_gender(var/gender)
+/datum/preferences/proc/set_biological_gender(gender)
 	biological_gender = gender
 	identifying_gender = gender
 
@@ -47,9 +47,9 @@ datum/preferences/proc/set_biological_gender(var/gender)
 		var/firstspace = findtext(pref.real_name, " ")
 		var/name_length = length(pref.real_name)
 		if(!firstspace)	//we need a surname
-			pref.real_name += " [pick(last_names)]"
+			pref.real_name += " [pick(GLOB.last_names)]"
 		else if(firstspace == name_length)
-			pref.real_name += "[pick(last_names)]"
+			pref.real_name += "[pick(GLOB.last_names)]"
 
 	character.real_name = pref.real_name
 	character.name = character.real_name
@@ -140,7 +140,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 		return TOPIC_REFRESH
 
 	else if(href_list["metadata"])
-		var/new_metadata = sanitize(input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , html_decode(pref.metadata)) as message, extra = 0) //VOREStation Edit
+		var/new_metadata = sanitize(input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , html_decode(pref.metadata)) as message, extra = 0)
 		if(new_metadata && CanUseTopic(user))
 			pref.metadata = new_metadata
 			return TOPIC_REFRESH
@@ -148,11 +148,7 @@ datum/preferences/proc/set_biological_gender(var/gender)
 	return ..()
 
 /datum/category_item/player_setup_item/general/basic/proc/get_genders()
-	var/datum/species/S
-	if(pref.species)
-		S = GLOB.all_species[pref.species]
-	else
-		S = GLOB.all_species[SPECIES_HUMAN]
+	var/datum/species/S = pref.character_static_species_meta()
 	var/list/possible_genders = S.genders
 	if(!pref.organ_data || pref.organ_data[BP_TORSO] != "cyborg")
 		return possible_genders

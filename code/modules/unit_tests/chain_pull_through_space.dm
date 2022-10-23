@@ -1,5 +1,5 @@
 /datum/unit_test/chain_pull_through_space
-	var/turf/open/space/space_tile
+	var/turf/space/space_tile
 	var/turf/claimed_tile
 	var/mob/living/carbon/human/alice
 	var/mob/living/carbon/human/bob

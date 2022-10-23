@@ -24,6 +24,9 @@ GLOBAL_PROTECT(round_id)
 /// Config loading error/config validation errors
 GLOBAL_VAR(config_error_log)
 GLOBAL_PROTECT(config_error_log)
+/// logs sql events
+GLOBAL_VAR(sql_error_log)
+GLOBAL_PROTECT(sql_error_log)
 /// Map error logging
 GLOBAL_VAR(world_map_error_log)
 GLOBAL_PROTECT(world_map_error_log)
@@ -32,12 +35,19 @@ GLOBAL_VAR(subsystem_log)
 GLOBAL_PROTECT(subsystem_log)
 GLOBAL_VAR(tgui_log)
 GLOBAL_PROTECT(tgui_log)
-/////Picture logging
+
+SIMPLE_LOG_BOILERPLATE(inventory_log, inventory)
+SIMPLE_LOG_BOILERPLATE(click_log, click)
+
+/// Picture logging
 GLOBAL_VAR(picture_log_directory)
 GLOBAL_PROTECT(picture_log_directory)
-
 GLOBAL_VAR_INIT(picture_logging_id, 1)
 GLOBAL_PROTECT(picture_logging_id)
 GLOBAL_VAR(picture_logging_prefix)
 GLOBAL_PROTECT(picture_logging_prefix)
-/////
+/// Log associated with [/proc/log_suspicious_login()]
+/// Intended to hold all logins that failed due to suspicious circumstances such as ban detection, CID randomisation etc.
+GLOBAL_VAR(world_suspicious_login_log)
+GLOBAL_PROTECT(world_suspicious_login_log)
+

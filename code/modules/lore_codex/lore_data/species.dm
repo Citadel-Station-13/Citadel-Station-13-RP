@@ -15,7 +15,7 @@
 		)
 
 /datum/lore/codex/page/human/add_content()
-	name = "Human"
+	name = SPECIES_HUMAN
 	keywords += list("Humanity")
 	data = "Humans are a race of 'ape'-like creatures from the continental planet Earth in the Sol system. They are the primary driving \
 	force for rapid space expansion, owing to their strong, expansionist central government and opportunistic [quick_link("TSC","Trans-Stellar Corporations")]. \
@@ -27,7 +27,7 @@
 	of other species."
 
 /datum/lore/codex/page/skrell
-	name = "Skrell"
+	name = SPECIES_SKRELL
 	keywords = list("Skrellian")
 	data = "The Skrell are a species of amphibious humanoids, distinguished by their gelatinous appearance and head tentacles. \
 	Skrell come from the world of Sirisai (called Qerr'balak by Skrell), a humid planet with plenty of swamps and jungles. Currently more technologically advanced \
@@ -39,7 +39,7 @@
 	outpaced by the humans. For humans, they were their first contact sentient species, and are their longest, and closest, ally in space."
 
 /datum/lore/codex/page/unathi
-	name = "Unathi"
+	name = SPECIES_UNATHI
 	data = "The Unathi are a race of tall, reptilian humanoids that possess a blend of serpentine features reminiscent of crocodiles. \
 	They are a proud, religious species that favors honor and strength, and originate from the desert planet of Moghes. \
 	The Unathi follow a religious code known as the Unity, and they carry this with them on their travels. \
@@ -57,11 +57,11 @@
 	Among these bonds, Humans stand out as valued trade partners and maybe even a friend."
 
 /datum/lore/codex/page/diona/add_content()
-	name = "Diona"
+	name = SPECIES_DIONA
 	keywords += list("Dionaea")
 	data = "The Dionaea are a group of omnivorous, slow-metabolism plantlike organisms that are in fact clusters of individual, smaller organisms. \
 	They exhibit a high degree of structural flexibility, and come in a wide variety of shapes and colors to reflect the intelligence of each individual \
-	creature. They were discovered by the [quick_link("Skrell")] in 2294CE, not on a planet, but in open space between three stars, a figurative hell that made it \
+	creature. They were discovered by the [quick_link(SPECIES_SKRELL)] in 2294CE, not on a planet, but in open space between three stars, a figurative hell that made it \
 	difficult to discover, much less contact them.\
 	<br><br>\
 	Dionaea spread by seeds and are asexual, no gender. When grown into their small 'nymph' state, they are known to eat large amounts of dead plant \
@@ -73,8 +73,8 @@
 
 // Bird lore
 /datum/lore/codex/category/teshari/add_content()
-	name = "Teshari"
-	data = "The Teshari are reptilian pack predators from the [quick_link("Skrell")] homeworld, Sirisai (Qerr'balak). While they evolved alongside the Skrell, their interactions with them \
+	name = SPECIES_TESHARI
+	data = "The Teshari are reptilian pack predators from the [quick_link(SPECIES_SKRELL)] homeworld, Sirisai (Qerr'balak). While they evolved alongside the Skrell, their interactions with them \
 	tended to be confused and violent, and until peaceful contact was made they largely stayed in their territories on and around the poles, in tundral \
 	terrain far too desolate and cold to be of interest to the Skrell. In more enlightened times, the Teshari are a minority culture on many Skrell worlds, \
 	maintaining their own settlements and cultures, but often finding themselves standing on the shoulders of their more technologically advanced neighbors \
@@ -93,7 +93,7 @@
 	<br><br>\
 	<b>Eshi</b><br>\
 	A large, old, politically neutral pack heavily involved in efforts to get Teshari into space. Probably the most \
-	common pack to see outside of a [quick_link("Skrell")] colony, and probably the most numerous Teshari pack outside of Sirisai and associated colonies.\
+	common pack to see outside of a [quick_link(SPECIES_SKRELL)] colony, and probably the most numerous Teshari pack outside of Sirisai and associated colonies.\
 	<br><br>\
 	<b>Nasemari</b><br>\
 	A very small pack. Generally focused around supporting and providing for packs on the homeworlds, they have devoted \
@@ -118,7 +118,7 @@
 	name = "Physiology of Teshari"
 	data = "The Teshari are, relative to other species, smaller than average, rarely reaching more than 2-3'/1m in height, and weigh less than \
 	90lbs/40kg. They have rapid metabolisms and very efficient digestive systems, and thanks to sharing in \
-	the medical technology of the [quick_link("Skrell")], they tend to have robust and effective immune systems. They evolved \
+	the medical technology of the [quick_link(SPECIES_SKRELL)], they tend to have robust and effective immune systems. They evolved \
 	for very cold and very barren areas, generally the polar regions. Because of this, their skin is a fine \
 	insulator and many of their internal processes are not particularly energy-efficient; they cannot cope \
 	well at all with high temperatures.\
@@ -129,20 +129,20 @@
 
 // Promethean Lore
 /datum/lore/codex/page/promethean/add_content()
-	name = "Promethean"
+	name = SPECIES_PROMETHEAN
 	keywords += list("slime", "promethean")
 	data = "Prometheans are an artificial species created by the Humans sometime in the 2540s, aboard the NRS Prometheus, while experimenting with \
-	the Aetolian giant slime, or ‘Macrolimus vulgaris’. They themselves are considered sapient beings and given protection under prior Human legislation, \
-	though often only appear to serve as aides or inferior positions when kept as staff. Aetolus, the official ‘Home world’ of the Prometheans and giant slime, \
-	is an obnoxiously warm, humid planet requiring structures to be built within large, atmospherically-filtered ‘tent-like’ domes. \
-	Prometheans take on vague visual and vocal features of the species they cohabitate with, sharing their predecessors’ tendency to mimic nearby entities, \
+	the Aetolian giant slime, or ï¿½Macrolimus vulgarisï¿½. They themselves are considered sapient beings and given protection under prior Human legislation, \
+	though often only appear to serve as aides or inferior positions when kept as staff. Aetolus, the official ï¿½Home worldï¿½ of the Prometheans and giant slime, \
+	is an obnoxiously warm, humid planet requiring structures to be built within large, atmospherically-filtered ï¿½tent-likeï¿½ domes. \
+	Prometheans take on vague visual and vocal features of the species they cohabitate with, sharing their predecessorsï¿½ tendency to mimic nearby entities, \
 	though in physical form additionally; this is seemingly more important in their own development, as well. Despite their taken appearances, \
-	there is no known existence of a divergence between a biologically ‘male’ or ‘female’ form of the species, leading most to believe they are in fact asexual, \
+	there is no known existence of a divergence between a biologically ï¿½maleï¿½ or ï¿½femaleï¿½ form of the species, leading most to believe they are in fact asexual, \
 	as their predecessors are."
 
 // Vatborn Lore
 /datum/lore/codex/page/vatborn/add_content()
-	name = "Vatborn"
+	name = SPECIES_HUMAN_VATBORN
 	keywords += list("vatborn")
 	data = "A genetically modified type of human, Vatborn humans are cloned from a template and grown in special tubes. They look like pale \
 	but otherwise normal humans, but their bodies have a few internal changes. For one, they lack an appendix. On top of that, they are frequently \
@@ -155,7 +155,7 @@
 	data = "A Positronic being, is an individual with a positronic brain, manufactured \
 	and fostered amongst organic life. Positronic brains enjoy the same legal status as a human in [quick_link("SolGov")] space, although discrimination is \
 	still prevalent, and are considered sapient on all accounts. They can be considered the \"synthetic species\". Half-developed and \
-	half-discovered in the 2280’s by a human black lab studying alien artifacts, the first positronic brain was an inch-wide cube \
+	half-discovered in the 2280ï¿½s by a human black lab studying alien artifacts, the first positronic brain was an inch-wide cube \
 	of an palladium-iridium alloy, nano-etched with billions upon billions of conduits and connections. Upon activation, \
 	hard-booted with an emitter laser, the brain issued a single sentence before the neural pathways collapsed and \
 	it became an inert lump of platinum: \"What is my purpose?\"."
@@ -218,7 +218,7 @@
 	keywords = list("fork")
 	data = "A \"codeline\" is a single type of drone. A codeline represents a significant degree of effort from sapient programmers to realize, as well as \
 	a substantial amount of regulatory fees levied by the government. Each copy of a codeline is called a \"fork\", whether the fork is created from the \
-	codeline’s initial state or from a fully realized individual of that codeline. The degree of similarity between forks of the same codeline varies \
+	codelineï¿½s initial state or from a fully realized individual of that codeline. The degree of similarity between forks of the same codeline varies \
 	on the intelligence of the codeline, with low-level forks being virtually identical to high-level forks being no more similar than family members."
 
 /datum/lore/codex/page/emergence
@@ -234,8 +234,8 @@
 	keywords = list("SG-EIO", "SG EIO", "EIO", "Intelligence Oversight")
 	data = "SG-EIO, usually just called EIO, is the organization charged with monitoring existing AI for any threat of dangerous emergence. Their perception in the \
 	public eye is generally positive, with all but the hardest-line Mercurial humans in favor of protection from the dangers of Seed AI. Some positronic rights \
-	groups bristle at the EIO’s human-centric viewpoint, but most are glad to have a different boogeyman in the form of drone intelligences. The tiny population \
-	of A-class drones are generally frightened of the EIO’s total power over them."
+	groups bristle at the EIOï¿½s human-centric viewpoint, but most are glad to have a different boogeyman in the form of drone intelligences. The tiny population \
+	of A-class drones are generally frightened of the EIOï¿½s total power over them."
 
 /datum/lore/codex/category/drone_classes
 	name = "Drone Classifications"
@@ -293,7 +293,7 @@
 	name = "A Class"
 	keywords += list("AGI")
 	data = "A-class drones are also referred to as AGI. A-class drones are capable of performing in many contexts and can learn to solve problems from \
-	first principles, with an incredible potential for growth and emergent behavior. However, some abilities fall short of humans’, usually those relating \
+	first principles, with an incredible potential for growth and emergent behavior. However, some abilities fall short of humansï¿½, usually those relating \
 	to socialization, and they often act in ways that are strange or distressing. There is a small but growing lobby of support for the personhood of A-class \
 	drones. The cost of initializing an A-class drone is absolutely massive, as they will be monitored by [quick_link("EIO")] forever. The auditing cost of an A-class drone \
 	codeline is even more staggering, making development and deployment of AGI limited to research, highly difficult and high-throughput operations like habitat \
@@ -305,7 +305,7 @@
 	data = "AA-class drones <b>do not yet exist</b>. Hypothetically, they are equal to living in every respect, with psychology that would not be abnormal in a baseline \
 	human. The type of AA-class drone most frequently discussed is a hypothetical digitized consciousness of a human, a human brain that is somehow translated into \
 	software. Some argue that a small fraction of the A-class drones would more properly be considered AA, but as of yet no action has been taken. Some Mercurials \
-	will jokingly refer to themselves or other organics and positronics as AA’s. Research into brain uploading is heavily regulated and generally illegal."
+	will jokingly refer to themselves or other organics and positronics as AAï¿½s. Research into brain uploading is heavily regulated and generally illegal."
 
 /datum/lore/codex/page/class_aaa
 	name = "AAA Class"

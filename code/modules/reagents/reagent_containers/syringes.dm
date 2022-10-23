@@ -1,9 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 /// Syringes.
 ////////////////////////////////////////////////////////////////////////////////
-#define SYRINGE_DRAW 0
-#define SYRINGE_INJECT 1
-#define SYRINGE_BROKEN 2
 
 /obj/item/reagent_containers/syringe
 	name = "syringe"
@@ -11,7 +8,7 @@
 	icon = 'icons/obj/syringe.dmi'
 	item_state = "syringe_0"
 	icon_state = "0"
-	matter = list("glass" = 150)
+	matter = list(MAT_GLASS = 150)
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = null
 	volume = 15
@@ -30,12 +27,12 @@
 /obj/item/reagent_containers/syringe/on_reagent_change()
 	update_icon()
 
-/obj/item/reagent_containers/syringe/pickup(mob/user)
-	..()
+/obj/item/reagent_containers/syringe/pickup(mob/user, flags, atom/oldLoc)
+	. = ..()
 	update_icon()
 
-/obj/item/reagent_containers/syringe/dropped(mob/user)
-	..()
+/obj/item/reagent_containers/syringe/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_containers/syringe/attack_self(mob/user as mob)
@@ -64,7 +61,7 @@
 		return
 
 	if(user.a_intent == INTENT_HARM && ismob(target))
-		if((CLUMSY in user.mutations) && prob(50))
+		if((MUTATION_CLUMSY in user.mutations) && prob(50))
 			target = user
 		syringestab(target, user)
 		return
@@ -88,7 +85,7 @@
 					if(!T.dna)
 						to_chat(user, "<span class='warning'>You are unable to locate any blood. (To be specific, your target seems to be missing their DNA datum).</span>")
 						return
-					if(NOCLONE in T.mutations) //target done been et, no more blood in him
+					if(MUTATION_NOCLONE in T.mutations) //target done been et, no more blood in him
 						to_chat(user, "<span class='warning'>You are unable to locate any blood.</span>")
 						return
 
@@ -163,9 +160,9 @@
 				return
 
 			var/mob/living/carbon/human/H = target
-			var/obj/item/organ/external/affected //VOREStation Edit - Moved this outside this if
+			var/obj/item/organ/external/affected
 			if(istype(H))
-				affected = H.get_organ(user.zone_sel.selecting) //VOREStation Edit - See above comment.
+				affected = H.get_organ(user.zone_sel.selecting)
 				if(!affected)
 					to_chat(user, "<span class='danger'>\The [H] is missing that limb!</span>")
 					return
@@ -229,34 +226,7 @@
 			dirty(target,affected) //Reactivated this feature per feedback and constant requests from players. If this proves to be utter crap we'll adjust the numbers before removing outright
 
 	return
-/* VOREStation Edit - See syringes_vr.dm
-/obj/item/reagent_containers/syringe/update_icon()
-	overlays.Cut()
 
-	if(mode == SYRINGE_BROKEN)
-		icon_state = "broken"
-		return
-
-	var/rounded_vol = round(reagents.total_volume, round(reagents.maximum_volume / 3))
-	if(ismob(loc))
-		var/injoverlay
-		switch(mode)
-			if (SYRINGE_DRAW)
-				injoverlay = "draw"
-			if (SYRINGE_INJECT)
-				injoverlay = "inject"
-		overlays += injoverlay
-	icon_state = "[rounded_vol]"
-	item_state = "syringe_[rounded_vol]"
-
-	if(reagents.total_volume)
-		filling = image('icons/obj/reagentfillings.dmi', src, "syringe10")
-
-		filling.icon_state = "syringe[rounded_vol]"
-
-		filling.color = reagents.get_color()
-		overlays += filling
-*/
 /obj/item/reagent_containers/syringe/proc/syringestab(mob/living/carbon/target as mob, mob/living/carbon/user as mob)
 	if(istype(target, /mob/living/carbon/human))
 
@@ -277,11 +247,8 @@
 		if (target != user && H.getarmor(target_zone, "melee") > 5 && prob(50))
 			for(var/mob/O in viewers(world.view, user))
 				O.show_message(text("<font color='red'><B>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</B></font>"), 1)
-			user.remove_from_mob(src)
 			qdel(src)
-
 			add_attack_logs(user,target,"Syringe harmclick")
-
 			return
 
 		user.visible_message("<span class='danger'>[user] stabs [target] in \the [hit_area] with [src.name]!</span>")
@@ -292,8 +259,6 @@
 	else
 		user.visible_message("<span class='danger'>[user] stabs [target] with [src.name]!</span>")
 		target.take_organ_damage(3)// 7 is the same as crowbar punch
-
-
 
 	var/syringestab_amount_transferred = rand(0, (reagents.total_volume - 5)) //nerfed by popular demand
 	var/contained = reagents.get_reagents()
@@ -338,8 +303,6 @@
 /obj/item/reagent_containers/syringe/inaprovaline/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("inaprovaline", 15)
-	//mode = SYRINGE_INJECT //VOREStation Edit - Starts capped
-	//update_icon()
 
 /obj/item/reagent_containers/syringe/antitoxin
 	name = "Syringe (anti-toxin)"
@@ -348,8 +311,6 @@
 /obj/item/reagent_containers/syringe/antitoxin/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("anti_toxin", 15)
-	//mode = SYRINGE_INJECT //VOREStation Edit - Starts capped
-	//update_icon()
 
 /obj/item/reagent_containers/syringe/antiviral
 	name = "Syringe (spaceacillin)"
@@ -358,8 +319,6 @@
 /obj/item/reagent_containers/syringe/antiviral/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("spaceacillin", 15)
-	//mode = SYRINGE_INJECT //VOREStation Edit - Starts capped
-	//update_icon()
 
 /obj/item/reagent_containers/syringe/drugs
 	name = "Syringe (drugs)"
@@ -370,8 +329,6 @@
 	reagents.add_reagent("space_drugs",  5)
 	reagents.add_reagent("mindbreaker",  5)
 	reagents.add_reagent("cryptobiolin", 5)
-	//mode = SYRINGE_INJECT //VOREStation Edit - Starts capped
-	//update_icon()
 
 /obj/item/reagent_containers/syringe/ld50_syringe/choral/Initialize(mapload)
 	. = ..()
@@ -385,5 +342,4 @@
 
 /obj/item/reagent_containers/syringe/steroid/Initialize(mapload)
 	. = ..()
-	//reagents.add_reagent("adrenaline",5) //VOREStation Edit - No thanks.
 	reagents.add_reagent("hyperzine",10)

@@ -32,7 +32,7 @@
 	var/msg_line2 = ""
 	var/centcomm_message_cooldown = 0
 	var/announcment_cooldown = 0
-	var/datum/announcement/priority/crew_announcement = new
+	var/datum/legacy_announcement/priority/crew_announcement = new
 	var/current_viewing_message_id = 0
 	var/current_viewing_message = null
 
@@ -291,11 +291,11 @@ var/list/comm_message_listeners = list() //We first have to initialize list then
 var/datum/comm_message_listener/global_message_listener = new //May be used by admins
 var/last_message_id = 0
 
-proc/get_comm_message_id()
+/proc/get_comm_message_id()
 	last_message_id = last_message_id + 1
 	return last_message_id
 
-proc/post_comm_message(var/message_title, var/message_text)
+/proc/post_comm_message(var/message_title, var/message_text)
 	var/list/message = list()
 	message["id"] = get_comm_message_id()
 	message["title"] = message_title
@@ -305,8 +305,8 @@ proc/post_comm_message(var/message_title, var/message_text)
 		l.Add(message)
 
 	//Old console support
-	for (var/obj/machinery/computer/communications/comm in machines)
-		if (!(comm.stat & (BROKEN | NOPOWER)) && comm.prints_intercept)
+	for (var/obj/machinery/computer/communications/comm in GLOB.machines)
+		if (!(comm.machine_stat & (BROKEN | NOPOWER)) && comm.prints_intercept)
 			var/obj/item/paper/intercept = new /obj/item/paper( comm.loc )
 			intercept.name = message_title
 			intercept.info = message_text

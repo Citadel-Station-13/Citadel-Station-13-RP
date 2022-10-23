@@ -71,7 +71,7 @@
 
 					if(prob(H.ear_damage - 5))
 						to_chat(H, "<span class='danger'>You can't hear anything!</span>")
-						H.sdisabilities |= DEAF
+						H.sdisabilities |= SDISABILITY_DEAF
 				else if(H.ear_damage >= 5)
 					to_chat(H, "<span class='danger'>Your ears start to ring!</span>")
 			if(istype(L, /mob/living/silicon/robot))

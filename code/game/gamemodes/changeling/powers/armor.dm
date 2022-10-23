@@ -35,11 +35,10 @@
 	name = "flesh mass"
 	icon_state = "lingspacesuit"
 	desc = "A huge, bulky mass of pressure and temperature-resistant organic tissue, evolved to facilitate space travel."
-	flags = 0	//Not THICKMATERIAL because it's organic tissue, so if somebody tries to inject something into it,
-				//it still ends up in your blood. (also balance but muh fluff)
+	clothing_flags = NONE
+	item_flags = ITEM_DROPDEL
 	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/tank/oxygen)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0) //No armor at all.
-	canremove = 0
 
 /obj/item/clothing/suit/space/changeling/Initialize(mapload)
 	. = ..()
@@ -48,52 +47,42 @@
 		"<span class='warning'>We inflate our flesh, creating a spaceproof suit!</span>",
 		"<span class='italics'>You hear organic matter ripping and tearing!</span>")
 
-/obj/item/clothing/suit/space/changeling/dropped()
-	. = ..()
-	qdel(src)
-
 /obj/item/clothing/head/helmet/space/changeling
 	name = "flesh mass"
 	icon_state = "lingspacehelmet"
 	desc = "A covering of pressure and temperature-resistant organic tissue with a glass-like chitin front."
-	flags = BLOCKHAIR //Again, no THICKMATERIAL.
+	clothing_flags = NONE
+	flags_inv = BLOCKHAIR
+	item_flags = ITEM_DROPDEL
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	body_parts_covered = HEAD|FACE|EYES
-	canremove = 0
-
-/obj/item/clothing/head/helmet/space/changeling/dropped()
-	. = ..()
-	qdel(src)
 
 /obj/item/clothing/shoes/magboots/changeling
 	desc = "A suction cupped mass of flesh, shaped like a foot."
 	name = "fleshy grippers"
 	icon_state = "lingspacesuit"
 	action_button_name = "Toggle Grippers"
-	canremove = 0
+	clothing_flags = NONE
+	item_flags = ITEM_DROPDEL
 
 /obj/item/clothing/shoes/magboots/changeling/set_slowdown()
-	slowdown = shoes? max(SHOES_SLOWDOWN, shoes.slowdown): SHOES_SLOWDOWN	//So you can't put on magboots to make you walk faster.
+	slowdown = worn_over? max(SHOES_SLOWDOWN, worn_over.slowdown): SHOES_SLOWDOWN	//So you can't put on magboots to make you walk faster.
 	if (magpulse)
 		slowdown += 1		//It's already tied to a slowdown suit, 6 slowdown is huge.
 
 /obj/item/clothing/shoes/magboots/changeling/attack_self(mob/user)
 	if(magpulse)
-		item_flags &= ~NOSLIP
+		clothing_flags &= ~NOSLIP
 		magpulse = 0
 		set_slowdown()
 		force = 3
 		to_chat(user, "We release our grip on the floor.")
 	else
-		item_flags |= NOSLIP
+		clothing_flags |= NOSLIP
 		magpulse = 1
 		set_slowdown()
 		force = 5
 		to_chat(user, "We cling to the terrain below us.")
-
-/obj/item/clothing/shoes/magboots/changeling/dropped()
-	..()
-	qdel(src)
 
 //Armor
 

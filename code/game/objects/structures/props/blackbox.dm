@@ -130,7 +130,7 @@
 		<B>A repeating ping, before silence.</B><BR>
 		<B>End of second log.</B>
 	"}
-//VOREStation additions below this line - Killian's wrecks
+
 /obj/structure/prop/blackbox/mackerel_wreck
 	catalogue_data = list(/datum/category_item/catalogue/information/blackbox/mackerel_wreck)
 

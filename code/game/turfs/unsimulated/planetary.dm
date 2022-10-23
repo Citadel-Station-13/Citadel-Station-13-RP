@@ -14,10 +14,10 @@
 
 /turf/unsimulated/wall/planetary/Initialize(mapload)
 	. = ..()
-	SSplanets.addTurf(src)
+	SSplanets.addWall(src)
 
 /turf/unsimulated/wall/planetary/Destroy()
-	SSplanets.removeTurf(src)
+	SSplanets.removeWall(src)
 	return ..()
 
 /turf/unsimulated/wall/planetary/proc/set_temperature(var/new_temperature)
@@ -27,7 +27,7 @@
 	// Force ZAS to reconsider our connections because our temperature has changed
 	if(connections)
 		connections.erase_all()
-	air_master.mark_for_update(src)
+	queue_zone_update()
 
 // Normal station/earth air.
 /turf/unsimulated/wall/planetary/normal
@@ -72,3 +72,9 @@
 	desc = "An eight-meter tall carbyne wall. For when the wildlife on your planet is mostly militant megacorps."
 	alpha = 0xFF
 	TRIUMPH_SET_ATMOS
+
+/turf/unsimulated/wall/planetary/lythios43c
+	name = "facility wall"
+	desc = "An eight-meter tall carbyne wall. For when the wildlife on your planet is mostly militant megacorps."
+	alpha = 0xFF
+	initial_gas_mix = ATMOSPHERE_ID_LYTHIOS43C

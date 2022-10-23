@@ -44,18 +44,31 @@ research holder datum.
 **	Includes all the helper procs and basic tech processing.  **
 ***************************************************************/
 
-/datum/research								//Holder for all the existing, archived, and known tech. Individual to console.
-	var/list/known_tech = list()			//List of locally known tech. Datum/tech go here.
-	var/list/possible_designs = list()		//List of all designs.
-	var/list/known_designs = list()			//List of available designs.
+///Holder for all the existing, archived, and known tech. Individual to console.
+/datum/research
+	///List of locally known tech. Datum/tech go here.
+	var/list/known_tech = list()
+	///List of all designs.
+	var/list/possible_designs = list()
+	///List of available designs.
+	var/list/known_designs = list()
+	/// TODO: REWORK. FABRICATORS. DESIGNS. AND. SCIENCE - tracks unique design IDs
+	var/list/known_design_ids = list()
 
-/datum/research/New()		//Insert techs into possible_tech here. Known_tech automatically updated.
+/datum/research/New() //Insert techs into possible_tech here. Known_tech automatically updated.
 	for(var/T in typesof(/datum/tech) - /datum/tech)
 		known_tech += new T(src)
 	for(var/D in typesof(/datum/design) - /datum/design)
 		possible_designs += new D(src)
 //	generate_integrated_circuit_designs()
 	RefreshResearch()
+
+/datum/research/Destroy()
+	possible_designs = null
+	known_designs = null
+	known_design_ids = null
+	known_tech = null
+	return ..()
 
 /datum/research/techonly
 
@@ -64,25 +77,23 @@ research holder datum.
 		known_tech += new T(src)
 	RefreshResearch()
 
-//Checks to see if design has all the required pre-reqs.
-//Input: datum/design; Output: 0/1 (false/true)
+///Checks to see if design has all the required pre-reqs.
+///Input: datum/design; Output: 0/1 (false/true)
 /datum/research/proc/DesignHasReqs(var/datum/design/D)
-	if(D.req_tech.len == 0)
-		return 1
+	if(!LAZYLEN(D.req_tech))
+		return TRUE
 
 	var/list/k_tech = list()
-
 	for(var/datum/tech/known in known_tech)
 		k_tech[known.id] = known.level
 
 	for(var/req in D.req_tech)
 		if(isnull(k_tech[req]) || k_tech[req] < D.req_tech[req])
-			return 0
+			return FALSE
+	return TRUE
 
-	return 1
-
-//Adds a tech to known_tech list. Checks to make sure there aren't duplicates and updates existing tech's levels if needed.
-//Input: datum/tech; Output: Null
+///Adds a tech to known_tech list. Checks to make sure there aren't duplicates and updates existing tech's levels if needed.
+///Input: datum/tech; Output: Null
 /datum/research/proc/AddTech2Known(var/datum/tech/T)
 	for(var/datum/tech/known in known_tech)
 		if(T.id == known.id)
@@ -92,38 +103,30 @@ research holder datum.
 	return
 
 /datum/research/proc/AddDesign2Known(var/datum/design/D)
-	if(!known_designs.len) // Special case
-		known_designs.Add(D)
+	if(known_design_ids[D.id])
 		return
-	for(var/i = 1 to known_designs.len)
-		var/datum/design/A = known_designs[i]
-		if(A.id == D.id) // We are guaranteed to reach this if the ids are the same, because sort_string will also be the same
-			return
-		if(A.sort_string > D.sort_string)
-			known_designs.Insert(i, D)
-			return
-	known_designs.Add(D)
-	return
+	known_design_ids[D.id] = D
+	known_designs += D
 
-//Refreshes known_tech and known_designs list
-//Input/Output: n/a
+///Refreshes known_tech and known_designs list
+///Input/Output: n/a
 /datum/research/proc/RefreshResearch()
 	for(var/datum/design/PD in possible_designs)
 		if(DesignHasReqs(PD))
 			AddDesign2Known(PD)
 	for(var/datum/tech/T in known_tech)
-		T = between(0, T.level, 20)
+		T.level = clamp( T.level, 0,  20)
 	return
 
-//Refreshes the levels of a given tech.
-//Input: Tech's ID and Level; Output: null
+///Refreshes the levels of a given tech.
+///Input: Tech's ID and Level; Output: null
 /datum/research/proc/UpdateTech(var/ID, var/level)
 	for(var/datum/tech/KT in known_tech)
 		if(KT.id == ID && KT.level <= level)
 			KT.level = max(KT.level + 1, level - 1)
 	return
 
-// A simple helper proc to find the name of a tech with a given ID.
+///A simple helper proc to find the name of a tech with a given ID.
 /proc/CallTechName(var/ID)
 	for(var/T in subtypesof(/datum/tech))
 		var/datum/tech/check_tech = T
@@ -150,11 +153,16 @@ research holder datum.
 **	Includes all the various technoliges and what they make.  **
 ***************************************************************/
 
-/datum/tech //Datum of individual technologies.
-	var/name = "name"					//Name of the technology.
-	var/desc = "description"			//General description of what it does and what it makes.
-	var/id = "id"						//An easily referenced ID. Must be alphanumeric, lower-case, and no symbols.
-	var/level = 1						//A simple number scale of the research level. Level 0 = Secret tech.
+///Datum of individual technologies.
+/datum/tech
+	///Name of the technology.
+	var/name = "name"
+	///General description of what it does and what it makes.
+	var/desc = "description"
+	///An easily referenced ID. Must be alphanumeric, lower-case, and no symbols.
+	var/id = "id"
+	///A simple number scale of the research level. Level 0 = Secret tech.
+	var/level = 1
 
 /datum/tech/materials
 	name = "Materials Research"
@@ -226,7 +234,7 @@ research holder datum.
 	icon_state = "datadisk2"
 	item_state = "card-id"
 	w_class = ITEMSIZE_SMALL
-	matter = list(DEFAULT_WALL_MATERIAL = 30, "glass" = 10)
+	matter = list(MAT_STEEL = 30, MAT_GLASS = 10)
 	var/datum/tech/stored
 
 /obj/item/disk/tech_disk/Initialize(mapload)
@@ -241,7 +249,7 @@ research holder datum.
 	icon_state = "datadisk2"
 	item_state = "card-id"
 	w_class = ITEMSIZE_SMALL
-	matter = list(DEFAULT_WALL_MATERIAL = 30, "glass" = 10)
+	matter = list(MAT_STEEL = 30, MAT_GLASS = 10)
 	var/datum/design/blueprint
 
 /obj/item/disk/design_disk/Initialize(mapload)

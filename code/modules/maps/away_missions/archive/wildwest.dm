@@ -46,14 +46,14 @@
 			if("Power")
 				to_chat(user, "<B>Your wish is granted, but at a terrible cost...</B>")
 				to_chat(user, "The Wish Granter punishes you for your selfishness, claiming your soul and warping your body to match the darkness in your heart.")
-				if (!(LASER in user.mutations))
-					user.mutations.Add(LASER)
+				if (!(MUTATION_LASER in user.mutations))
+					user.mutations.Add(MUTATION_LASER)
 					to_chat(user, "<span class='notice'>You feel pressure building behind your eyes.</span>")
-				if (!(COLD_RESISTANCE in user.mutations))
-					user.mutations.Add(COLD_RESISTANCE)
+				if (!(MUTATION_COLD_RESIST in user.mutations))
+					user.mutations.Add(MUTATION_COLD_RESIST)
 					to_chat(user, "<span class='notice'>Your body feels warm.</span>")
-				if (!(XRAY in user.mutations))
-					user.mutations.Add(XRAY)
+				if (!(MUTATION_XRAY in user.mutations))
+					user.mutations.Add(MUTATION_XRAY)
 					user.sight |= (SEE_MOBS|SEE_OBJS|SEE_TURFS)
 					user.see_in_dark = 8
 					user.see_invisible = SEE_INVISIBLE_LEVEL_TWO
@@ -92,7 +92,7 @@
 				to_chat(user, "You feel as if you just narrowly avoided a terrible fate...")
 				for(var/mob/living/simple_mob/faithless/F in living_mob_list)
 					F.health = -10
-					F.stat = 2
+					F.set_stat(DEAD)
 					F.icon_state = "faithless_dead"
 
 
@@ -156,7 +156,7 @@
 		if(C.stat == DEAD)
 			dead_mob_list -= C
 			living_mob_list += C
-		C.stat = CONSCIOUS
+		C.set_stat(CONSCIOUS)
 		C.tod = null
 		C.setToxLoss(0)
 		C.setOxyLoss(0)

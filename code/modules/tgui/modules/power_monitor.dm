@@ -1,5 +1,5 @@
 /datum/tgui_module/power_monitor
-	name = "Power monitor"
+	name = "Power Monitor"
 	tgui_id = "PowerMonitor"
 	var/list/grid_sensors
 	var/active_sensor = null	//name_tag of the currently selected sensor
@@ -69,7 +69,7 @@
 		return
 	if(T)
 		levels += GLOB.using_map.get_map_levels(T.z, FALSE)
-	for(var/obj/machinery/power/sensor/S in machines)
+	for(var/obj/machinery/power/sensor/S in GLOB.machines)
 		if(T && (S.loc.z == T.z) || (S.loc.z in levels) || (S.long_range)) // Consoles have range on their Z-Level. Sensors with long_range var will work between Z levels.
 			if(S.name_tag == "#UNKN#") // Default name. Shouldn't happen!
 				warning("Powernet sensor with unset ID Tag! [S.x]X [S.y]Y [S.z]Z")
@@ -82,4 +82,4 @@
 // Subtype for self_state
 /datum/tgui_module/power_monitor/robot
 /datum/tgui_module/power_monitor/robot/ui_state(mob/user)
-	return GLOB.tgui_self_state
+	return GLOB.self_state

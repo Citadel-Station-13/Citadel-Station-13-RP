@@ -143,7 +143,7 @@
 
 	if(istype(the_target, /obj/machinery/porta_turret))
 		var/obj/machinery/porta_turret/P = the_target
-		if(P.stat & BROKEN)
+		if(P.machine_stat & BROKEN)
 			return FALSE // Already dead.
 		if(P.faction == holder.faction)
 			return FALSE // Don't shoot allied turrets.
@@ -270,3 +270,6 @@
 /datum/ai_holder/proc/lose_taunt()
 	ai_log("lose_taunt() : Resetting preferred_target.", AI_LOG_INFO)
 	preferred_target = null
+
+/datum/ai_holder/proc/check_attacker(var/atom/movable/A)
+	return (A in attackers)

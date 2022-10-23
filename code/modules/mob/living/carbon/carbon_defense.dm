@@ -51,6 +51,47 @@
 						return 1
 	return 0
 
+/mob/living/carbon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null, var/stun = 1)
+	if(status_flags & GODMODE)
+		return 0	//godmode
+	if(def_zone == "l_hand" || def_zone == "r_hand") //Diona (And any other potential plant people) hands don't get shocked.
+		if(species.flags & IS_PLANT)
+			return 0
+	shock_damage *= siemens_coeff
+	if (shock_damage<1)
+		return 0
+
+	src.apply_damage(shock_damage, BURN, def_zone, used_weapon="Electrocution")
+	playsound(loc, "sparks", 50, 1, -1)
+	if (shock_damage > 15)
+		src.visible_message(
+			"<span class='warning'>[src] was electrocuted[source ? " by the [source]" : ""]!</span>", \
+			"<span class='danger'>You feel a powerful shock course through your body!</span>", \
+			"<span class='warning'>You hear a heavy electrical crack.</span>" \
+		)
+	else
+		src.visible_message(
+			"<span class='warning'>[src] was shocked[source ? " by the [source]" : ""].</span>", \
+			"<span class='warning'>You feel a shock course through your body.</span>", \
+			"<span class='warning'>You hear a zapping sound.</span>" \
+		)
+
+	if(stun)
+		switch(shock_damage)
+			if(16 to 20)
+				Stun(2)
+			if(21 to 25)
+				Weaken(2)
+			if(26 to 30)
+				Weaken(5)
+			if(31 to INFINITY)
+				Weaken(10) //This should work for now, more is really silly and makes you lay there forever
+
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+	s.set_up(5, 1, loc)
+	s.start()
+
+	return shock_damage
 
 // Knifing
 /mob/living/carbon/proc/attack_throat(obj/item/W, obj/item/grab/G, mob/user)
@@ -68,7 +109,7 @@
 
 	var/damage_mod = 1
 	//presumably, if they are wearing a helmet that stops pressure effects, then it probably covers the throat as well
-	var/obj/item/clothing/head/helmet = get_equipped_item(slot_head)
+	var/obj/item/clothing/head/helmet = item_by_slot(SLOT_ID_HEAD)
 	if(istype(helmet) && (helmet.body_parts_covered & HEAD) && (helmet.min_pressure_protection != null)) // Both min- and max_pressure_protection must be set for it to function at all, so we can just check that one is set.
 		//we don't do an armor_check here because this is not an impact effect like a weapon swung with momentum, that either penetrates or glances off.
 		damage_mod = 1.0 - (helmet.armor["melee"]/100)
@@ -129,18 +170,18 @@
 	var/worn_suit_armor
 	var/worn_under_armor
 
-	//if(slot_wear_suit)
-	if(get_equipped_item(slot_wear_suit))
-		worn_suit = get_equipped_item(slot_wear_suit)
-		//worn_suit = get_equipped_item(slot_wear_suit)
+	//if(SLOT_ID_SUIT)
+	if(item_by_slot(SLOT_ID_SUIT))
+		worn_suit = item_by_slot(SLOT_ID_SUIT)
+		//worn_suit = item_by_slot(SLOT_ID_SUIT)
 		worn_suit_armor = worn_suit.armor["melee"]
 	else
 		worn_suit_armor = 0
 
-	//if(slot_w_uniform)
-	if(get_equipped_item(slot_w_uniform))
-		worn_under = get_equipped_item(slot_w_uniform)
-		//worn_under_armor = slot_w_uniform.armor["melee"]
+	//if(SLOT_ID_UNIFORM)
+	if(item_by_slot(SLOT_ID_UNIFORM))
+		worn_under = item_by_slot(SLOT_ID_UNIFORM)
+		//worn_under_armor = SLOT_ID_UNIFORM.armor["melee"]
 		worn_under_armor = worn_under.armor["melee"]
 	else
 		worn_under_armor = 0

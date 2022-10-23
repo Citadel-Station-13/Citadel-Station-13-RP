@@ -1,24 +1,51 @@
-GLOBAL_VAR_INIT(total_runtimes, GLOB.total_runtimes || 0)
+// Why? Because when you screw up too early in init, total runtimes won't be initialized. You can see why this can be a problem, right?
+GLOBAL_REAL_VAR(total_runtimes) = 0
+GLOBAL_VAR_INIT(total_runtimes_seen, 0)
 GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
+// to detect when someone fucks up royally and breaks error handling with preinit runtimes
+GLOBAL_REAL_VAR(runtime_skip_once) = FALSE
+GLOBAL_REAL_VAR(runtime_trap_triggered) = FALSE
 
 #ifdef USE_CUSTOM_ERROR_HANDLER
+
 #define ERROR_USEFUL_LEN 2
 /world/Error(exception/E, datum/e_src)
-	GLOB.total_runtimes++
+
+#ifdef UNIT_TESTS
+	if(runtime_skip_once)
+		runtime_skip_once = FALSE
+		runtime_trap_triggered = TRUE
+		return
+#endif
+
+	++global.total_runtimes
+
+	var/static/list/error_last_seen = list()
+	var/static/list/error_cooldown = list() /* Error_cooldown items will either be positive(cooldown time) or negative(silenced error)
+												If negative, starts at -1, and goes down by 1 each time that error gets skipped*/
+
+	if(!GLOB || !error_last_seen)
+		log_world("early runtime caught;")
+		return ..()
+
+	++GLOB.total_runtimes_seen
 
 	if(!istype(E)) //Something threw an unusual exception
 		log_world("uncaught runtime error: [E]")
 		return ..()
 
 	//this is snowflake because of a byond bug (ID:2306577), do not attempt to call non-builtin procs in this if
-	if(copytext(E.name,1,32) == "Maximum recursion level reached")
-		//log to world while intentionally triggering the byond bug.
-		log_world("runtime error: [E.name]\n[E.desc]")
-		//if we got to here without silently ending, the byond bug has been fixed.
+	if(copytext(E.name, 1, 32) == "Maximum recursion level reached")
+		// log world without another call
+		SEND_TEXT(world.log, "runtime error: [E.name]\n[E.desc]")
+		// intentionally trigger the byond bug.
+		pass()
+		// if we got to here without silently ending, the byond bug has been fixed.
 		log_world("The bug with recursion runtimes has been fixed. Please remove the snowflake check from world/Error in [__FILE__]:[__LINE__]")
-		return //this will never happen.
+		// this will never happen.
+		return
 
-	else if(copytext(E.name,1,18) == "Out of resources!")
+	else if(copytext(E.name, 1, 18) == "Out of resources!")
 		log_world("BYOND out of memory. Restarting")
 		log_game("BYOND out of memory. Restarting")
 		TgsEndProcess()
@@ -29,13 +56,6 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 		for (var/line in splittext(E.desc, "\n"))
 			if (text2ascii(line) != 32)
 				stack_trace_storage += line
-
-	var/static/list/error_last_seen = list()
-	var/static/list/error_cooldown = list() /* Error_cooldown items will either be positive(cooldown time) or negative(silenced error)
-												If negative, starts at -1, and goes down by 1 each time that error gets skipped*/
-
-	if(!error_last_seen) // A runtime is occurring too early in start-up initialization
-		return ..()
 
 	var/erroruid = "[E.file][E.line]"
 	var/last_seen = error_last_seen[erroruid]
@@ -49,6 +69,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 		error_cooldown[erroruid]-- //Used to keep track of skip count for this error
 		GLOB.total_runtimes_skipped++
 		return //Error is currently silenced, skip handling it
+
 	//Handle cooldowns and silencing spammy errors
 	var/silencing = FALSE
 
@@ -68,11 +89,11 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 		configured_error_silence_time = CONFIG_GET(number/error_silence_time)
 	else
 		var/datum/config_entry/CE = /datum/config_entry/number/error_cooldown
-		configured_error_cooldown = initial(CE.config_entry_value)
+		configured_error_cooldown = initial(CE.default)
 		CE = /datum/config_entry/number/error_limit
-		configured_error_limit = initial(CE.config_entry_value)
+		configured_error_limit = initial(CE.default)
 		CE = /datum/config_entry/number/error_silence_time
-		configured_error_silence_time = initial(CE.config_entry_value)
+		configured_error_silence_time = initial(CE.default)
 */
 
 	//Each occurence of a unique error adds to its cooldown time...
@@ -121,8 +142,7 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 		desclines.Add(usrinfo)
 	if(silencing)
 		desclines += "  (This error will now be silenced for [DisplayTimeText(configured_error_silence_time)])"
-	if(GLOB.error_cache)
-		GLOB.error_cache.log_error(E, desclines)
+	GLOB.error_cache?.log_error(E, desclines)
 
 	var/main_line = "\[[time_stamp()]] Runtime in [E.file],[E.line]: [E]"
 	SEND_TEXT(world.log, main_line)
@@ -130,12 +150,11 @@ GLOBAL_VAR_INIT(total_runtimes_skipped, 0)
 		SEND_TEXT(world.log, line)
 
 #ifdef UNIT_TESTS
-	if(GLOB.current_test)
-		//good day, sir
-		GLOB.current_test.Fail("[main_line]\n[desclines.Join("\n")]")
+	//good day, sir
+	GLOB.current_test?.Fail("[main_line]\n[desclines.Join("\n")]")
 #endif
-
 
 	// This writes the regular format (unwrapping newlines and inserting timestamps as needed).
 	log_runtime("runtime error: [E.name]\n[E.desc]")
+
 #endif

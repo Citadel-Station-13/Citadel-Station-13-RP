@@ -16,7 +16,7 @@ var/datum/antagonist/rogue_ai/malf
 	hard_cap_round = 1
 	initial_spawn_req = 1
 	initial_spawn_target = 1
-	antaghud_indicator = "hudmalai"
+	antaghud_indicator = "malf"
 
 /datum/antagonist/rogue_ai/New()
 	..()

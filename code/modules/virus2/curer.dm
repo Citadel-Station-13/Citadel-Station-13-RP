@@ -10,11 +10,11 @@
 
 /obj/machinery/computer/curer/attackby(var/obj/I as obj, var/mob/user as mob)
 	if(istype(I,/obj/item/reagent_containers))
-		var/mob/living/carbon/C = user
+		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!container)
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			container = I
-			C.drop_item()
-			I.loc = src
 		return
 	if(istype(I,/obj/item/virusdish))
 		if(virusing)
@@ -30,9 +30,8 @@
 		spawn(1200) virusing = 0
 
 		state("The [src.name] Buzzes", "blue")
-		return
-	..()
-	return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
+	return ..()
 
 /obj/machinery/computer/curer/attack_ai(var/mob/user as mob)
 	return src.attack_hand(user)
@@ -67,7 +66,7 @@
 /obj/machinery/computer/curer/process(delta_time)
 	..()
 
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	use_power(500)
 
@@ -89,7 +88,6 @@
 		container.loc = src.loc
 		container = null
 
-	src.add_fingerprint(usr)
 	src.updateUsrDialog()
 
 

@@ -8,7 +8,7 @@
 	hardware_flag = PROGRAM_TABLET
 	max_hardware_size = 1
 	w_class = ITEMSIZE_SMALL
-	light_strength = 2					// Same as PDAs
+	light_strength = 2 // Same as PDAs
 
 /obj/item/modular_computer/tablet/lease
 	desc = "A small portable microcomputer. This one has a gold and blue stripe, and a serial number stamped into the case."

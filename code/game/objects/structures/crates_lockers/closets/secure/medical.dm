@@ -140,7 +140,8 @@
 		/obj/item/extinguisher/mini,
 		/obj/item/storage/box/freezer,
 		/obj/item/clothing/accessory/storage/white_vest,
-		/obj/item/barrier_tape_roll/medical)
+		/obj/item/barrier_tape_roll/medical,
+		/obj/item/storage/lockbox/limb_plate/emt)
 
 /obj/structure/closet/secure_closet/paramedic/Initialize(mapload)
 	starts_with += /obj/item/gps/medical
@@ -178,7 +179,7 @@
 		/obj/item/clothing/head/bio_hood/cmo,
 		/obj/item/gps/medical/cmo,
 		/obj/item/clothing/shoes/white,
-		/obj/item/reagent_containers/glass/beaker/vial, //VOREStation Add
+		/obj/item/reagent_containers/glass/beaker/vial,
 		/obj/item/clothing/under/rank/chief_medical_officer/turtleneck)
 
 /obj/structure/closet/secure_closet/CMO/Initialize(mapload)
@@ -235,7 +236,7 @@
 		/obj/item/reagent_containers/dropper = 2,
 		/obj/item/reagent_containers/glass/bottle/inaprovaline = 2,
 		/obj/item/reagent_containers/glass/bottle/antitoxin = 2,
-		/obj/item/storage/fancy/vials) //VOREStation Add
+		/obj/item/storage/fancy/vials)
 
 
 /obj/structure/closet/secure_closet/psych

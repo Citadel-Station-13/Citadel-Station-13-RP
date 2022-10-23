@@ -114,7 +114,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "ax" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1379;
 	id_tag = "sec_fore_pump"
@@ -291,7 +291,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "bc" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/machinery/atmospherics/component/unary/vent_scrubber{
 	dir = 8
 	},
 /obj/structure/ore_box,
@@ -362,7 +362,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/outside/nospawn)
 "bo" = (
-/obj/machinery/atmospherics/unary/vent_scrubber,
+/obj/machinery/atmospherics/component/unary/vent_scrubber,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "bp" = (
@@ -412,11 +412,11 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/powered)
 "by" = (
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "bz" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/machinery/atmospherics/component/unary/vent_scrubber{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -446,7 +446,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "bD" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	use_power = 0
 	},
@@ -504,7 +504,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "bL" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	external_pressure_bound = 140;
 	external_pressure_bound_default = 140;
@@ -521,7 +521,7 @@
 	name = "east bump";
 	pixel_x = 24
 	},
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/machinery/atmospherics/component/unary/vent_scrubber{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -536,13 +536,13 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "bO" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/machinery/atmospherics/component/unary/vent_scrubber{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "bP" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	external_pressure_bound = 0;
 	external_pressure_bound_default = 0;
@@ -558,7 +558,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "bQ" = (
-/obj/machinery/atmospherics/unary/vent_scrubber{
+/obj/machinery/atmospherics/component/unary/vent_scrubber{
 	icon_state = "map_scrubber_off";
 	dir = 1
 	},
@@ -713,14 +713,12 @@
 "cz" = (
 /obj/machinery/power/port_gen/pacman/super,
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating/external,
 /area/awaymission/snow_outpost/dark)
 "cA" = (
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating/external,
@@ -1018,7 +1016,7 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/snow_outpost/dark)
 "dG" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/outside)
 "dH" = (
@@ -1209,7 +1207,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "ej" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "ek" = (
@@ -1270,7 +1268,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "et" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "eu" = (
@@ -1894,7 +1892,7 @@
 	},
 /area/awaymission/snow_outpost/dark)
 "gs" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -1912,7 +1910,7 @@
 	},
 /area/awaymission/snow_outpost/dark)
 "gv" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -1924,7 +1922,7 @@
 	},
 /area/awaymission/snow_outpost/dark)
 "gx" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /mob/living/simple_mob/animal/giant_spider/lurker,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
@@ -1961,8 +1959,7 @@
 /area/awaymission/snow_outpost/outside)
 "gD" = (
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/machinery/porta_turret/alien/destroyed,
 /turf/simulated/shuttle/floor/alienplating,
@@ -1981,10 +1978,7 @@
 /area/awaymission/snow_outpost/dark)
 "gF" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/snow_outpost/dark)
@@ -2003,24 +1997,18 @@
 /area/awaymission/snow_outpost/dark)
 "gH" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/snow_outpost/dark)
 "gI" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/shuttle/floor/alienplating,
 /area/awaymission/snow_outpost/dark)
 "gJ" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/structure/prop/alien/power,
@@ -2421,7 +2409,7 @@
 	pixel_y = 0
 	},
 /obj/item/clothing/shoes/brown,
-/obj/item/clothing/under/mbill,
+/obj/item/clothing/under/brandjumpsuit/mbill,
 /obj/item/clothing/head/soft/mbill,
 /turf/simulated/floor/water,
 /area/awaymission/snow_outpost/outside)
@@ -2533,7 +2521,7 @@
 	dir = 8
 	},
 /obj/effect/decal/remains,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/ammo_casing/spent,
 /obj/item/clothing/under/suit_jacket/really_black,
 /obj/item/clothing/shoes/dress,
@@ -2590,7 +2578,7 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "iL" = (
-/obj/vehicle/bike,
+/obj/vehicle_old/bike,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/outside/nospawn)
 "iM" = (
@@ -2601,7 +2589,7 @@
 /turf/simulated/floor/water/deep,
 /area/awaymission/snow_outpost/dark)
 "iR" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	external_pressure_bound = 140;
 	external_pressure_bound_default = 140;

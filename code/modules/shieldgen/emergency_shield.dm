@@ -7,7 +7,7 @@
 	opacity = 0
 	anchored = 1
 	unacidable = 1
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/const/max_health = 200
 	var/health = max_health //The shield can only take so much beating (prevents perma-prisons)
 	var/shield_generate_power = 7500	//how much power we use when regenerating
@@ -91,7 +91,8 @@
 				qdel(src)
 
 
-/obj/machinery/shield/hitby(AM as mob|obj)
+/obj/machinery/shield/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	//Let everyone know we've been hit!
 	visible_message("<span class='notice'><B>\[src] was hit by [AM].</B></span>")
 
@@ -100,7 +101,7 @@
 	if(ismob(AM))
 		tforce = 40
 	else
-		tforce = AM:throwforce
+		tforce = AM.throw_force
 
 	src.health -= tforce
 
@@ -111,10 +112,10 @@
 
 	//The shield becomes dense to absorb the blow.. purely asthetic.
 	set_opacity(1)
-	spawn(20) if(!QDELETED(src)) set_opacity(0)
+	spawn(20)
+		if(!QDELETED(src))
+			set_opacity(0)
 
-	..()
-	return
 /obj/machinery/shieldgen
 	name = "Emergency shield projector"
 	desc = "Used to seal minor hull breaches."
@@ -183,14 +184,14 @@
 /obj/machinery/shieldgen/power_change()
 	..()
 	if(!active) return
-	if (stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		collapse_shields()
 	else
 		create_shields()
 	update_icon()
 
 /obj/machinery/shieldgen/process(delta_time)
-	if (!active || (stat & NOPOWER))
+	if(!active || (machine_stat & NOPOWER))
 		return
 
 	if(malfunction)
@@ -280,7 +281,7 @@
 
 /obj/machinery/shieldgen/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_screwdriver())
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		if(is_open)
 			to_chat(user, "<font color=#4F49AF>You close the panel.</font>")
 			is_open = 0
@@ -304,7 +305,7 @@
 			to_chat(user, "The bolts are covered, unlocking this would retract the covers.")
 			return
 		if(anchored)
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 			to_chat(user, "<font color=#4F49AF>You unsecure the [src] from the floor!</font>")
 			if(active)
 				to_chat(user, "<font color=#4F49AF>The [src] shuts off!</font>")
@@ -312,7 +313,7 @@
 			anchored = 0
 		else
 			if(istype(get_turf(src), /turf/space)) return //No wrenching these in space!
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 			to_chat(user, "<font color=#4F49AF>You secure the [src] to the floor!</font>")
 			anchored = 1
 
@@ -329,7 +330,7 @@
 
 
 /obj/machinery/shieldgen/update_icon()
-	if(active && !(stat & NOPOWER))
+	if(active && !(machine_stat & NOPOWER))
 		src.icon_state = malfunction ? "shieldonbr":"shieldon"
 	else
 		src.icon_state = malfunction ? "shieldoffbr":"shieldoff"

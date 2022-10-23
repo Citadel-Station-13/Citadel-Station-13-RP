@@ -5,10 +5,10 @@
 	icon = 'icons/obj/spells.dmi'
 	icon_state = "generic"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_spells.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_spells.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_magic.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_magic.dmi',
 		)
-	throwforce = 0
+	throw_force = 0
 	force = 0
 	show_examine = FALSE
 //	var/mob/living/carbon/human/owner = null
@@ -284,7 +284,7 @@
 // Proc: dropped()
 // Parameters: 0
 // Description: Deletes the spell object immediately.
-/obj/item/spell/dropped()
+/obj/item/spell/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	qdel(src)
 

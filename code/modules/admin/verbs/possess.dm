@@ -19,10 +19,10 @@
 	if(!usr.control_object) //If you're not already possessing something...
 		usr.name_archive = usr.real_name
 
-	usr.loc = O
+	usr.forceMove(O)
 	usr.real_name = O.name
 	usr.name = O.name
-	usr.client.eye = O
+	usr.update_perspective()
 	usr.control_object = O
 	feedback_add_details("admin_verb","PO") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -38,8 +38,8 @@
 			var/mob/living/carbon/human/H = usr
 			H.name = H.get_visible_name()
 
-	usr.loc = O.loc // Appear where the object you were controlling is -- TLE
-	usr.client.eye = usr
+	usr.forceMove(O.loc)
+	usr.update_perspective()
 	usr.control_object = null
 	feedback_add_details("admin_verb","RO") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

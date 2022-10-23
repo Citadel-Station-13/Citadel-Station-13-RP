@@ -26,7 +26,7 @@
 		/mob/living/simple_mob/animal/space/bear,
 		/mob/living/simple_mob/creature,
 		/mob/living/simple_mob/slime/xenobio,
-		/mob/living/simple_mob/animal/space/carp)// Vorestation edit
+		/mob/living/simple_mob/animal/space/carp)
 	else
 		spawn_type = pick(\
 		/mob/living/simple_mob/animal/passive/cat,

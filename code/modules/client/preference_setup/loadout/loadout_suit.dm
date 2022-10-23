@@ -2,7 +2,7 @@
 /datum/gear/suit
 	name = "Apron - Blue"
 	path = /obj/item/clothing/suit/storage/apron
-	slot = slot_wear_suit
+	slot = SLOT_ID_SUIT
 	sort_category = "Suits and Overwear"
 
 /datum/gear/suit/apron_white
@@ -91,7 +91,7 @@
 	for(var/military_style in typesof(/obj/item/clothing/suit/storage/miljacket))
 		var/obj/item/clothing/suit/storage/miljacket/miljacket = military_style
 		mil_jackets[initial(miljacket.name)] = miljacket
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(mil_jackets, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(mil_jackets, /proc/cmp_text_asc))
 
 /datum/gear/suit/greyjacket
 	name = "Jacket - Grey"
@@ -105,7 +105,7 @@
 	name = "Trenchcoat - Grey"
 	path = /obj/item/clothing/suit/storage/trench/grey
 
-datum/gear/suit/duster
+/datum/gear/suit/duster
 	name = "Cowboy Duster"
 	path = /obj/item/clothing/suit/storage/duster
 
@@ -123,7 +123,7 @@ datum/gear/suit/duster
 	for(var/hazard_style in typesof(/obj/item/clothing/suit/storage/hazardvest))
 		var/obj/item/clothing/suit/storage/hazardvest/hazardvest = hazard_style
 		hazards[initial(hazardvest.name)] = hazardvest
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(hazards, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(hazards, /proc/cmp_text_asc))
 
 /datum/gear/suit/hoodie
 	name = "Hoodie - Selection"
@@ -135,43 +135,15 @@ datum/gear/suit/duster
 	for(var/hoodie_style in typesof(/obj/item/clothing/suit/storage/toggle/hoodie))
 		var/obj/item/clothing/suit/storage/toggle/hoodie/hoodie = hoodie_style
 		hoodies[initial(hoodie.name)] = hoodie
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(hoodies, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(hoodies, /proc/cmp_text_asc))
 
 /datum/gear/suit/labcoat
 	name = "Labcoat"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat
 
-/datum/gear/suit/labcoat/blue
-	name = "Labcoat - Blue"
-	path = /obj/item/clothing/suit/storage/toggle/labcoat/blue
-
-/datum/gear/suit/labcoat/blue_edge
-	name = "Labcoat - Blue-Edged"
-	path = /obj/item/clothing/suit/storage/toggle/labcoat/blue_edge
-
 /datum/gear/suit/labcoat/green
 	name = "Labcoat - Green"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/green
-
-/datum/gear/suit/labcoat/orange
-	name = "Labcoat - Orange"
-	path = /obj/item/clothing/suit/storage/toggle/labcoat/orange
-
-/datum/gear/suit/labcoat/purple
-	name = "Labcoat - Purple"
-	path = /obj/item/clothing/suit/storage/toggle/labcoat/purple
-
-/datum/gear/suit/labcoat/pink
-	name = "Labcoat - Pink"
-	path = /obj/item/clothing/suit/storage/toggle/labcoat/pink
-
-/datum/gear/suit/labcoat/red
-	name = "Labcoat - Red"
-	path = /obj/item/clothing/suit/storage/toggle/labcoat/red
-
-/datum/gear/suit/labcoat/yellow
-	name = "Labcoat - Yellow"
-	path = /obj/item/clothing/suit/storage/toggle/labcoat/yellow
 
 /datum/gear/suit/overalls
 	name = "Overalls"
@@ -187,7 +159,7 @@ datum/gear/suit/duster
 	for(var/poncho_style in (typesof(/obj/item/clothing/accessory/poncho) - typesof(/obj/item/clothing/accessory/poncho/roles)))
 		var/obj/item/clothing/accessory/poncho/poncho = poncho_style
 		ponchos[initial(poncho.name)] = poncho
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(ponchos, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(ponchos, /proc/cmp_text_asc))
 
 // A colorable cloak
 /datum/gear/suit/roles/poncho/cloak
@@ -203,6 +175,18 @@ datum/gear/suit/duster
 	path = /obj/item/clothing/accessory/poncho/roles/cloak/custom
 
 /datum/gear/suit/roles/poncho/cloak/colorable/New()
+	..()
+	gear_tweaks += gear_tweak_free_color_choice
+
+/datum/gear/suit/halfcloak
+	name = "Rough Half Cloak (Tan)"
+	path = /obj/item/clothing/accessory/poncho/rough_cloak/tan
+
+/datum/gear/suit/halfcloak/colorable
+	name = "Rough Half Cloak (Colorable)"
+	path = /obj/item/clothing/accessory/poncho/rough_cloak
+
+/datum/gear/suit/halfcloak/colorable/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
 
@@ -256,7 +240,7 @@ datum/gear/suit/duster
 	for(var/varsity_style in typesof(/obj/item/clothing/suit/varsity))
 		var/obj/item/clothing/suit/varsity/varsity = varsity_style
 		varsities[initial(varsity.name)] = varsity
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(varsities, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(varsities, /proc/cmp_text_asc))
 
 /datum/gear/suit/track
 	name = "Track Jacket - Selection"
@@ -268,7 +252,7 @@ datum/gear/suit/duster
 	for(var/track_style in typesof(/obj/item/clothing/suit/storage/toggle/track))
 		var/obj/item/clothing/suit/storage/toggle/track/track = track_style
 		tracks[initial(track.name)] = track
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(tracks, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tracks, /proc/cmp_text_asc))
 
 /datum/gear/suit/flannel
 	name = "Flannel - Grey"
@@ -358,6 +342,18 @@ datum/gear/suit/duster
 	name = "Ronin Coat"
 	path = /obj/item/clothing/suit/storage/hooded/ronincoat
 
+/datum/gear/suit/runnerjacket
+	name = "Runner Jacket"
+	path = /obj/item/clothing/suit/storage/hooded/runner
+
+/datum/gear/suit/halfpintjacket
+	name = "Half-Pint Jacket"
+	path = /obj/item/clothing/suit/storage/hooded/runner/half_pint
+
+/datum/gear/suit/halfmoon
+	name = "Half Moon Jacket"
+	path = /obj/item/clothing/suit/storage/runner/half_moon
+
 /datum/gear/suit/labcoat_colorable
 	name = "Labcoat - Colorable"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat
@@ -376,7 +372,7 @@ datum/gear/suit/duster
 	for(var/the_jacket in typesof(/obj/item/clothing/suit/storage/fluff/jacket))
 		var/obj/item/clothing/suit/jacket_type = the_jacket
 		the_jackets[initial(jacket_type.name)] = jacket_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(the_jackets, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(the_jackets, /proc/cmp_text_asc))
 
 /datum/gear/suit/gntop
 	name = "GN Crop Jacket"
@@ -421,3 +417,39 @@ datum/gear/suit/duster
 /datum/gear/suit/jacket_darkfur
 	name = "Vexatious Coat w/ Dark Fur Lining"
 	path = /obj/item/clothing/suit/darkfur
+
+/datum/gear/suit/vainglorious
+	name = "Vainglorious Hoodie"
+	path = /obj/item/clothing/suit/storage/hooded/vainglorious
+
+/datum/gear/suit/raincoat
+	name = "Raincoat"
+	path = /obj/item/clothing/suit/storage/hooded/raincoat
+
+/datum/gear/suit/pullover
+	name = "Pullover Hoodie - Selection"
+	path = /obj/item/clothing/suit/storage/pullover
+
+/datum/gear/suit/pullover/New()
+	..()
+	var/list/pullovers = list()
+	for(var/pullover_style in typesof(/obj/item/clothing/suit/storage/pullover))
+		var/obj/item/clothing/suit/storage/pullover/pullover = pullover_style
+		pullovers[initial(pullover.name)] = pullover
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(pullovers, /proc/cmp_text_asc))
+
+/datum/gear/suit/antediluvian
+	name = "Antediluvian Cloak"
+	path = /obj/item/clothing/accessory/poncho/antediluvian
+
+/datum/gear/suit/rainponcho
+	name = "Plastic Raincoat"
+	path = /obj/item/clothing/suit/storage/hooded/rainponcho
+
+/datum/gear/suit/mekkyaku
+	name = "Mekkyaku Hoodie"
+	path = /obj/item/clothing/suit/storage/mekkyaku
+
+/datum/gear/suit/utility_fur_coat
+	name = "Utility Fur Coat"
+	path = /obj/item/clothing/suit/storage/utility_fur_coat

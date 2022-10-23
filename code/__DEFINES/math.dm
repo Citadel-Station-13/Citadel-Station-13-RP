@@ -7,8 +7,8 @@
 #define SQRT_2 1.414214
 
 #define M_PI						(3.14159265)
-#define INFINITY				(1.#INF)	//closer then enough
-
+///closer then enough
+#define INFINITY				(1.#INF)
 #define SHORT_REAL_LIMIT 16777216
 
 //"fancy" math for calculating time in ms from tick_usage percentage and the length of ticks
@@ -53,8 +53,6 @@
 
 // Least Common Multiple
 #define LCM(a, b) (abs(a) / GCD(a, b) * abs(b))
-
-#define IS_CARDINAL(x) ((x & (x - 1)) == 0)
 
 #define INVERSE(x) ( 1/(x) )
 

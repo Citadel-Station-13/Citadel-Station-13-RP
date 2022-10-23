@@ -44,12 +44,12 @@
 	base_name = name
 	base_desc = desc
 
-/obj/item/reagent_containers/organic/pickup(mob/user)
-	..()
+/obj/item/reagent_containers/organic/pickup(mob/user, flags, atom/oldLoc)
+	. = ..()
 	update_icon()
 
-/obj/item/reagent_containers/organic/dropped()
-	..()
+/obj/item/reagent_containers/organic/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_containers/organic/attack_hand()
@@ -61,9 +61,8 @@
 	..()
 	if(is_open_container())
 		to_chat(usr, "<span class = 'notice'>You crush \the [src] in your hands.</span>")
-		user.drop_item(src)
 		playsound(loc, 'sound/effects/slime_squish.ogg', 50, 1)
-		qdel()
+		qdel(src)
 		var/crushed_organic_container = /obj/item/stack/material/wax
 		new crushed_organic_container(get_turf(user))
 	else
@@ -80,7 +79,7 @@
 		overlays += lid
 
 /obj/item/reagent_containers/organic/attack(mob/M as mob, mob/user as mob, def_zone)
-	if(force && !(flags & NOBLUDGEON) && user.a_intent == INTENT_HARM)
+	if(force && !(item_flags & ITEM_NOBLUDGEON) && user.a_intent == INTENT_HARM)
 		return	..()
 
 	if(standard_feed_mob(user, M))

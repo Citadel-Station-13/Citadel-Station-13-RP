@@ -1,10 +1,10 @@
 /**
-  * Simple object persistence elements
-  * For now, it just attachs and detaches and all objects with it are recorded to disk based on map and stuff at round end
-  * Can expand later for more functionality
-  *
-  * WARNING: All atoms recorded are stored to turf! This does not yet support things like loading into inventories. This is mostly for on-floor objects.
-  */
+ * Simple object persistence elements
+ * For now, it just attachs and detaches and all objects with it are recorded to disk based on map and stuff at round end
+ * Can expand later for more functionality
+ *
+ * WARNING: All atoms recorded are stored to turf! This does not yet support things like loading into inventories. This is mostly for on-floor objects.
+ */
 /datum/element/persistence
 	element_flags = ELEMENT_DETACH
 
@@ -12,9 +12,9 @@
 	var/list/atom/objects = list()
 
 /**
-  * Serializes all objects into a list for json encode or anything else needed.
-  * Includes data the datum includes in serialize_list(), the GUID of the datum's entry, and its turf location.
-  */
+ * Serializes all objects into a list for json encode or anything else needed.
+ * Includes data the datum includes in serialize_list(), the GUID of the datum's entry, and its turf location.
+ */
 /datum/element/persistence/proc/SerializeAll()
 	. = list()
 	var/atom/A
@@ -31,8 +31,8 @@
 		. += list(list(datalist, guid, list(location.x, location.y, location.z), "[A.type]"))
 
 /**
-  * Instantiates all objects from a data list and attaches to them.
-  */
+ * Instantiates all objects from a data list and attaches to them.
+ */
 /datum/element/persistence/proc/DeserializeAndInstantiateAll(list/data)
 	for(var/i in data)
 		var/list/L = i

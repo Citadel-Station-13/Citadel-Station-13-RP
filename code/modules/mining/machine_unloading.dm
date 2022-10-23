@@ -2,7 +2,7 @@
 
 /obj/machinery/mineral/unloading_machine
 	name = "unloading machine"
-	icon = 'icons/obj/machines/mining_machines_vr.dmi' // VOREStation Edit
+	icon = 'icons/obj/machines/mining_machines_vr.dmi'
 	icon_state = "unloader"
 	density = 1
 	anchored = 1.0
@@ -31,11 +31,11 @@
 			return
 		var/obj/structure/ore_box/O = locate() in input.loc
 		if(O)
-			for(var/i in 1 to 10)
+			for(var/i in 1 to 50)
 				if(!O.deposit(output.loc))
 					break
 		var/obj/item/I
-		for(var/i in 1 to 10)
+		for(var/i in 1 to 50)
 			I = locate() in input.loc
 			if(!I)
 				break

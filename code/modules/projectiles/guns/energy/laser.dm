@@ -10,8 +10,9 @@
 	w_class = ITEMSIZE_LARGE
 	force = 10
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	matter = list(MAT_STEEL = 2000)
 	projectile_type = /obj/item/projectile/beam/midlaser
+	heavy = TRUE
 	one_handed_penalty = 30
 
 	firemodes = list(
@@ -27,7 +28,6 @@
 /obj/item/gun/energy/laser/mounted/augment
 	use_external_power = FALSE
 	use_organic_power = TRUE
-	canremove = FALSE
 
 /obj/item/gun/energy/laser/practice
 	name = "practice laser carbine"
@@ -60,6 +60,10 @@
 	icon_state = "retro"
 	cell_type = null
 
+/obj/item/gun/energy/retro/apidean
+	name = "apidean retro laser"
+	icon_state = "apilaser"
+	desc = "An older model of the basic lasergun. This version's casing has been painted yellow. Originating from, and carried by, Apidean combatants, it's unclear where they obtained them."
 
 /datum/category_item/catalogue/anomalous/precursor_a/alien_pistol
 	name = "Precursor Alpha Weapon - Appendageheld Laser"
@@ -131,6 +135,7 @@
 	battery_lock = 1
 	fire_delay = 20
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	one_handed_penalty = 90 // The thing's heavy and huge.
 	accuracy = 75
 	charge_cost = 600
@@ -151,6 +156,7 @@
 	desc = "A high-power laser gun capable of expelling concentrated xray blasts, which are able to penetrate matter easier than \
 	standard photonic beams, resulting in an effective 'anti-armor' energy weapon."
 	icon_state = "xray"
+	heavy = TRUE
 	item_state = "xray"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 3, TECH_MAGNET = 2)
 	projectile_type = /obj/item/projectile/beam/xray
@@ -162,14 +168,14 @@
 	ionized beams, this is a weapon to kill from a distance."
 	icon_state = "sniper"
 	item_state = "sniper"
-	item_state_slots = list(slot_r_hand_str = "z8carbine", slot_l_hand_str = "z8carbine") //placeholder
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "z8carbine", SLOT_ID_LEFT_HAND = "z8carbine") //placeholder
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 5, TECH_POWER = 4)
 	projectile_type = /obj/item/projectile/beam/sniper
 	slot_flags = SLOT_BACK
-	battery_lock = 1
 	charge_cost = 600
 	fire_delay = 35
 	force = 10
+	heavy = TRUE
 	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
 	accuracy = 25 //shooting at the hip
 	scoped_accuracy = 80
@@ -189,6 +195,7 @@
 	pin = /obj/item/firing_pin/explorer
 	cell_type = /obj/item/cell/device/weapon/recharge/sniper
 	accuracy = 45 //Modifications include slightly better hip-firing furniture.
+	battery_lock = 1 //With the change that the normal DMR can now change the weapon cell, we need to add this here so people can't take out the self-recharging special cell.
 	scoped_accuracy = 100
 	charge_cost = 600
 
@@ -204,6 +211,7 @@
 	charge_cost = 1300
 	fire_delay = 20
 	force = 8
+	heavy = TRUE
 	w_class = ITEMSIZE_LARGE
 	accuracy = 70
 	scoped_accuracy = 95
@@ -234,7 +242,7 @@
 	item_state = "laser"
 	desc = "Standard issue weapon of the Imperial Guard"
 	origin_tech = list(TECH_COMBAT = 1, TECH_MAGNET = 2)
-	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	matter = list(MAT_STEEL = 2000)
 	projectile_type = /obj/item/projectile/beam/lasertag/blue
 	cell_type = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1
@@ -262,7 +270,7 @@
 	icon_state = "scatter"
 	desc = "A strange Almachi weapon, utilizing a refracting prism to turn a single laser blast into a diverging cluster."
 	origin_tech = list(TECH_COMBAT = 3, TECH_MAGNET = 1, TECH_MATERIAL = 4)
-
+	heavy = TRUE
 	projectile_type = /obj/item/projectile/scatter/laser
 
 // Other laser guns.
@@ -273,6 +281,7 @@
 	icon_state = "tommylas"
 	item_state = "tommylas"
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	slot_flags = SLOT_BACK
 	charge_cost = 60 // 40 shots, lay down the firepower
 	projectile_type = /obj/item/projectile/beam/weaklaser
@@ -295,4 +304,3 @@
 	charge_cost = 1500 //You got 1 shot...
 	projectile_type = /obj/item/projectile/beam/heavylaser //But it hurts a lot
 	cell_type = /obj/item/cell/device/weapon
-

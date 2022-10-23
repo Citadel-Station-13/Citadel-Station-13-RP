@@ -14,7 +14,7 @@
 	var/datum/changeling/changeling = changeling_power(0,0,100)
 	if(!changeling)	return
 
-	var/obj/item/grab/G = src.get_active_hand()
+	var/obj/item/grab/G = src.get_active_held_item()
 	if(!istype(G))
 		to_chat(src, "<span class='warning'>We must be grabbing a creature in our active hand to absorb them.</span>")
 		return
@@ -28,7 +28,7 @@
 		to_chat(src, "<span class='warning'>We do not know how to parse this creature's DNA!</span>")
 		return
 
-	if(HUSK in T.mutations) //Lings can always absorb other lings, unless someone beat them to it first.
+	if(MUTATION_HUSK in T.mutations) //Lings can always absorb other lings, unless someone beat them to it first.
 		if(!T.mind.changeling || T.mind.changeling && T.mind.changeling.geneticpoints < 0)
 			to_chat(src, "<span class='warning'>This creature's DNA is ruined beyond useability!</span>")
 			return

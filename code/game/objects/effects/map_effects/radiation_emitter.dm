@@ -17,3 +17,8 @@
 
 /obj/effect/map_effect/radiation_emitter/strong
 	radiation_power = 100
+
+/obj/effect/map_effect/radiation_emitter/chernobyl // I need this.
+	radiation_power = 500
+
+

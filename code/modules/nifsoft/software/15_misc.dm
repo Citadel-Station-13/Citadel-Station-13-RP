@@ -9,37 +9,40 @@
 	var/obj/machinery/power/apc/apc
 	other_flags = (NIF_O_APCCHARGE)
 
-	activate()
-		if((. = ..()))
-			var/mob/living/carbon/human/H = nif.human
-			apc = locate(/obj/machinery/power/apc) in get_step(H,H.dir)
-			if(!apc)
-				apc = locate(/obj/machinery/power/apc) in get_step(H,0)
-			if(!apc)
-				nif.notify("You must be facing an APC to connect to.",TRUE)
-				spawn(0)
-					deactivate()
-				return FALSE
-
-			H.visible_message("<span class='warning'>Thin snakelike tendrils grow from [H] and connect to \the [apc].</span>","<span class='notice'>Thin snakelike tendrils grow from you and connect to \the [apc].</span>")
-
-	deactivate(force = FALSE)
-		. = ..()
-		if(.)
-			apc = null
-
-	life()
-		if((. = ..()))
-			var/mob/living/carbon/human/H = nif.human
-			if(apc && (get_dist(H,apc) <= 1) && H.nutrition < 440) // 440 vs 450, life() happens before we get here so it'll never be EXACTLY 450
-				H.nutrition = min(H.nutrition+10, 450)
-				apc.drain_power(7000/450*10) //This is from the large rechargers. No idea what the math is.
-				return TRUE
-			else
-				nif.notify("APC charging has ended.")
-				H.visible_message("<span class='warning'>[H]'s snakelike tendrils whip back into their body from \the [apc].</span>","<span class='notice'>The APC connector tendrils return to your body.</span>")
+/datum/nifsoft/apc_recharge/activate()
+	if((. = ..()))
+		var/mob/living/carbon/human/H = nif.human
+		apc = locate(/obj/machinery/power/apc) in get_step(H,H.dir)
+		if(!apc)
+			apc = locate(/obj/machinery/power/apc) in get_step(H,0)
+		if(!apc)
+			nif.notify("You must be facing an APC to connect to.",TRUE)
+			spawn(0)
 				deactivate()
-				return FALSE
+			return FALSE
+
+		H.visible_message(SPAN_WARNING("Thin snakelike tendrils grow from [H] and connect to \the [apc]."), \
+			SPAN_NOTICE("Thin snakelike tendrils grow from you and connect to \the [apc]."))
+
+/datum/nifsoft/apc_recharge/deactivate(var/force = FALSE)
+	if((. = ..()))
+		apc = null
+
+/datum/nifsoft/apc_recharge/on_life(seconds, times_fired)
+	if((. = ..()))
+		var/mob/living/carbon/human/H = nif.human
+		if((apc?.cell?.percent() > 1) && (get_dist(H,apc) <= 1) && H.nutrition < (H.species.max_nutrition - 1)) // 440 vs 450, life() happens before we get here so it'll never be EXACTLY 450
+			var/needed = clamp(H.species.max_nutrition - H.nutrition, 0, 10)
+			var/in_kj = SYNTHETIC_NUTRITION_KJ_PER_UNIT * needed
+			var/got = apc.drain_energy(src, in_kj)
+			H.adjust_nutrition(got / SYNTHETIC_NUTRITION_KJ_PER_UNIT)
+			return TRUE
+		else
+			nif.notify("APC charging has ended.")
+			H.visible_message(SPAN_WARNING("[H]'s snakelike tendrils whip back into their body from \the [apc]."), \
+				SPAN_NOTICE("The APC connector tendrils return to your body."))
+			deactivate()
+			return FALSE
 
 /datum/nifsoft/pressure
 	name = "Pressure Seals"
@@ -63,31 +66,31 @@
 	applies_to = NIF_SYNTHETIC
 	other_flags = (NIF_O_HEATSINKS)
 
-	activate()
-		if((. = ..()))
-			if(used >= 1500)
-				nif.notify("Heat sinks not safe to operate again yet! Max 75% on activation.",TRUE)
-				spawn(0)
-					deactivate()
-				return FALSE
-
-	stat_text()
-		return "[active ? "Active" : "Disabled"] (Stored Heat: [FLOOR((used/20), 1)]%)"
-
-	life()
-		if((. = ..()))
-			//Not being used, all clean.
-			if(!active && !used)
-				return TRUE
-
-			//Being used, and running out.
-			else if(active && ++used == 2000)
-				nif.notify("Heat sinks overloaded! Shutting down!",TRUE)
+/datum/nifsoft/heatsinks/activate()
+	if((. = ..()))
+		if(used >= 1500)
+			nif.notify("Heat sinks not safe to operate again yet! Max 75% on activation.",TRUE)
+			spawn(0)
 				deactivate()
+			return FALSE
 
-			//Being cleaned, and finishing empty.
-			else if(!active && --used == 0)
-				nif.notify("Heat sinks re-chilled.")
+/datum/nifsoft/heatsinks/stat_text()
+	return "[active ? "Active" : "Disabled"] (Stored Heat: [FLOOR((used/20), 1)]%)"
+
+/datum/nifsoft/heatsinks/on_life()
+	if((. = ..()))
+		//Not being used, all clean.
+		if(!active && !used)
+			return TRUE
+
+		//Being used, and running out.
+		else if(active && ++used == 2000)
+			nif.notify("Heat sinks overloaded! Shutting down!",TRUE)
+			deactivate()
+
+		//Being cleaned, and finishing empty.
+		else if(!active && --used == 0)
+			nif.notify("Heat sinks re-chilled.")
 
 /datum/nifsoft/compliance
 	name = "Compliance Module"
@@ -100,29 +103,30 @@
 	access = 999 //Prevents anyone from buying it without an emag.
 	var/laws = "Be nice to people!"
 
-	New(var/newloc,var/newlaws)
-		laws = newlaws //Sanitize before this (the disk does)
-		..(newloc)
+/datum/nifsoft/compliance/New(var/newloc,var/newlaws)
+	laws = newlaws //Sanitize before this (the disk does)
+	..(newloc)
 
-	activate()
-		if((. = ..()))
-			to_chat(nif.human,"<span class='danger'>You feel a strong compulsion towards these directives: </span><br><span class='notify'>[laws]</span>\
-			<br><span class='danger'>While the disk has a considerable hold on your mind, you feel like you would be able to resist the control if you were pushed to do something you would consider utterly unacceptable.\
-			<br>\[OOC NOTE: Compliance laws are only a scene tool, and not something that is effective in actual gameplay, hence the above. For example, if you are compelled to do something that would affect the round or other players (kill a crewmember, steal an item, give the disker elevated access), you should not do so.\]</span>")
+/datum/nifsoft/compliance/activate()
+	if((. = ..()))
+		to_chat(nif.human,"<span class='danger'>You feel a strong compulsion towards these directives: </span><br><span class='notify'>[laws]</span>\
+		<br><span class='danger'>While the disk has a considerable hold on your mind, you feel like you would be able to resist the control if you were pushed to do something you would consider utterly unacceptable.\
+		<br>\[OOC NOTE: Compliance laws are only a scene tool, and not something that is effective in actual gameplay, hence the above. For example, if you are compelled to do something that would affect the round or other players (kill a crewmember, steal an item, give the disker elevated access), you should not do so.\]</span>")
 
-	install()
-		if((. = ..()))
-			log_game("[nif.human? nif.human : "ERROR: NO HUMAN ON NIF"] was compliance disked with [laws]")
-			to_chat(nif.human,"<span class='danger'>You feel a strong compulsion towards these directives: </span><br><span class='notify'>[laws]</span>\
-			<br><span class='danger'>While the disk has a considerable hold on your mind, you feel like you would be able to resist the control if you were pushed to do something you would consider utterly unacceptable.\
-			<br>\[OOC NOTE: Compliance laws are only a scene tool, and not something that is effective in actual gameplay, hence the above. For example, if you are compelled to do something that would affect the round or other players (kill a crewmember, steal an item, give the disker elevated access), you should not do so.\]</span>")
 
-	uninstall()
-		nif.notify("ERROR! Unable to comply!",TRUE)
-		return FALSE //NOPE.
+/datum/nifsoft/compliance/install()
+	if((. = ..()))
+		log_game("[nif.human? nif.human : "ERROR: NO HUMAN ON NIF"] was compliance disked with [laws]")
+		to_chat(nif.human,"<span class='danger'>You feel a strong compulsion towards these directives: </span><br><span class='notify'>[laws]</span>\
+		<br><span class='danger'>While the disk has a considerable hold on your mind, you feel like you would be able to resist the control if you were pushed to do something you would consider utterly unacceptable.\
+		<br>\[OOC NOTE: Compliance laws are only a scene tool, and not something that is effective in actual gameplay, hence the above. For example, if you are compelled to do something that would affect the round or other players (kill a crewmember, steal an item, give the disker elevated access), you should not do so.\]</span>")
 
-	stat_text()
-		return "Show Laws"
+/datum/nifsoft/compliance/uninstall()
+	nif.notify("ERROR! Unable to comply!",TRUE)
+	return FALSE //NOPE.
+
+/datum/nifsoft/compliance/stat_text()
+	return "Show Laws"
 
 /datum/nifsoft/sizechange
 	name = "Mass Alteration"
@@ -131,32 +135,32 @@
 	cost = 375
 	wear = 6
 
-	activate()
-		if((. = ..()))
-			var/new_size = input("Put the desired size (25-200%)", "Set Size", 200) as num
+/datum/nifsoft/sizechange/activate()
+	if((. = ..()))
+		var/new_size = input("Put the desired size (25-200%)", "Set Size", 200) as num
 
-			if (!ISINRANGE(new_size,25,200))
-				to_chat(nif.human,"<span class='notice'>The safety features of the NIF Program prevent you from choosing this size.</span>")
-				return
-			else
-				nif.human.resize(new_size/100, TRUE)
-				to_chat(nif.human,"<span class='notice'>You set the size to [new_size]%</span>")
+		if (!ISINRANGE(new_size,25,200))
+			to_chat(nif.human, SPAN_NOTICE("The safety features of the NIF Program prevent you from choosing this size."))
+			return
+		else
+			nif.human.resize(new_size/100)
+			to_chat(nif.human, SPAN_NOTICE("You set the size to [new_size]%"))
 
-			nif.human.visible_message("<span class='warning'>Swirling grey mist envelops [nif.human] as they change size!</span>","<span class='notice'>Swirling streams of nanites wrap around you as you change size!</span>")
-			nif.human.update_icons() //Apply matrix transform asap
-			log_game("[key_name(nif.human)] was resized to [new_size / 100] scale via nifsoft.")
+		nif.human.visible_message(SPAN_WARNING("Swirling grey mist envelops [nif.human] as they change size!"), SPAN_NOTICE("Swirling streams of nanites wrap around you as you change size!"))
+		nif.human.update_icons() //Apply matrix transform asap
+		log_game("[key_name(nif.human)] was resized to [new_size / 100] scale via nifsoft.")
 
-			if (new_size < 75)
-				to_chat(nif.human,"<span class='warning'>You get dizzy as the floor rushes up to you!</span>")
-			else if(new_size > 125)
-				to_chat(nif.human,"<span class='warning'>You feel disoriented as the floor falls away from you!</span>")
-			else
-				to_chat(nif.human,"<span class='warning'>You feel sick as your mass is rearranged!</span>")
-
+		if (new_size < 75)
+			to_chat(nif.human, SPAN_WARNING("You get dizzy as the floor rushes up to you!"))
+		else if(new_size > 125)
+			to_chat(nif.human, SPAN_WARNING("You feel disoriented as the floor falls away from you!"))
+		else
+			to_chat(nif.human, SPAN_WARNING("You feel sick as your mass is rearranged!"))
+		spawn(0)
 			deactivate()
 
-	stat_text()
-		return "Change Size"
+/datum/nifsoft/sizechange/stat_text()
+	return "Change Size"
 
 /datum/nifsoft/worldbend
 	name = "World Bender"
@@ -165,22 +169,17 @@
 	cost = 100
 	a_drain = 0.01
 
-	activate()
+/datum/nifsoft/worldbend/activate()
+	if((. = ..()))
 		if((. = ..()))
-			var/list/justme = list(nif.human)
-			for(var/human in human_mob_list)
-				if(human == nif.human)
-					continue
-				var/mob/living/carbon/human/H = human
-				H.display_alt_appearance("animals", justme)
-				alt_farmanimals += nif.human
+			var/mob/living/carbon/human/H = nif.human
+			var/datum/atom_hud/world_bender/animals/A = GLOB.huds[WORLD_BENDER_HUD_ANIMALS]
+			if(A && H)
+				A.add_hud_to(H)
 
-	deactivate(force = FALSE)
-		if((. = ..()))
-			var/list/justme = list(nif.human)
-			for(var/human in human_mob_list)
-				if(human == nif.human)
-					continue
-				var/mob/living/carbon/human/H = human
-				H.hide_alt_appearance("animals", justme)
-				alt_farmanimals -= nif.human
+/datum/nifsoft/worldbend/deactivate(var/force = FALSE)
+	if((. = ..()))
+		var/mob/living/carbon/human/H = nif.human
+		var/datum/atom_hud/world_bender/animals/A = GLOB.huds[WORLD_BENDER_HUD_ANIMALS]
+		if(A && H)
+			A.remove_hud_from(H)

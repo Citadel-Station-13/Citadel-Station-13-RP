@@ -150,7 +150,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	if(!lst)
 		return
 
-	if(!A || !IsValidSrc(A))
+	if(!A || !is_valid_src(A))
 		to_chat(usr, "<span class='warning'>Error: callproc_datum(): owner of proc no longer exists.</span>")
 		return
 	log_admin("[key_name(src)] called [A]'s [procname]() with [lst.len ? "the arguments [list2params(lst)]":"no arguments"].")
@@ -204,6 +204,11 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 		else
 			. = "[procname] returned an empty list"
 		. += "</font>"
-
+	else if(istype(returnval, /icon))
+		var/icon/I = returnval
+		. += "<font color=#4F49AF>[procname] returned an icon: <a href='?_src_=vars;[HrefToken()];Vars=[REF(returnval)]'>[REF(returnval)]</a> - [icon2html(I, src)] [I] ([I.type])</font>"
+	else if(istype(returnval, /datum))
+		var/datum/D = returnval
+		. += "<font color=#4F49AF>[procname] returned a datum: <a href='?_src_=vars;[HrefToken()];Vars=[REF(returnval)]'>[REF(returnval)]</a> - [D] ([D.type])</font>"
 	else
 		. = "<font color=#4F49AF>[procname] returned: [!isnull(returnval) ? returnval : "null"]</font>"

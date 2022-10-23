@@ -4,9 +4,10 @@
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "cleaner"
 	item_state = "cleaner"
-	flags = OPENCONTAINER|NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
+	flags = OPENCONTAINER
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
-	throwforce = 3
+	throw_force = 3
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 10
@@ -164,7 +165,7 @@
 	icon = 'icons/obj/gun/launcher.dmi'
 	icon_state = "chemsprayer"
 	item_state = "chemsprayer"
-	throwforce = 3
+	throw_force = 3
 	w_class = ITEMSIZE_NORMAL
 	possible_transfer_amounts = null
 	volume = 600
@@ -185,6 +186,7 @@
 			D.create_reagents(amount_per_transfer_from_this)
 			if(!src)
 				return
+			playsound(src.loc, 'sound/effects/spray2.ogg', 50, 1, -6)
 			reagents.trans_to_obj(D, amount_per_transfer_from_this)
 			D.set_color()
 			D.set_up(my_target, rand(6, 8), 2)

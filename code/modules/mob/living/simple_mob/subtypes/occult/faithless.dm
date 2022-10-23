@@ -48,6 +48,11 @@
 	max_n2 = 0
 	minbodytemp = 0
 
+/mob/living/simple_mob/faithless/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/horror_aura/weak)
+
+
 /mob/living/simple_mob/faithless/Process_Spacemove(var/check_drift = 0)
 	return 1
 

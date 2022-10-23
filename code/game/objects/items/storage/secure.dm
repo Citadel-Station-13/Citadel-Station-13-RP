@@ -41,9 +41,9 @@
 			playsound(src.loc, "sparks", 50, 1)
 			return
 		if (W.is_screwdriver())
-			if (do_after(user, 20 * W.toolspeed))
+			if (do_after(user, 20 * W.tool_speed))
 				src.open =! src.open
-				playsound(src, W.usesound, 50, 1)
+				playsound(src, W.tool_sound, 50, 1)
 				user.show_message(text("<span class='notice'>You [] the service panel.</span>", (src.open ? "open" : "close")))
 			return
 		if (istype(W, /obj/item/multitool) && (src.open == 1)&& (!src.l_hacking))
@@ -70,7 +70,7 @@
 	..()
 
 
-/obj/item/storage/secure/MouseDrop(over_object, src_location, over_location)
+/obj/item/storage/secure/OnMouseDropLegacy(over_object, src_location, over_location)
 	if (locked)
 		src.add_fingerprint(usr)
 		return
@@ -119,7 +119,6 @@
 				src.code += text("[]", href_list["type"])
 				if (length(src.code) > 5)
 					src.code = "ERROR"
-		src.add_fingerprint(usr)
 		for(var/mob/M in viewers(1, src.loc))
 			if ((M.client && M.machine == src))
 				src.attack_self(M)
@@ -144,7 +143,7 @@
 	name = "secure briefcase"
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "secure"
-	item_state_slots = list(slot_r_hand_str = "case", slot_l_hand_str = "case")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "case", SLOT_ID_LEFT_HAND = "case")
 	desc = "A large briefcase with a digital locking system."
 	force = 8.0
 	throw_speed = 1
@@ -153,30 +152,18 @@
 	w_class = ITEMSIZE_LARGE
 	max_storage_space = ITEMSIZE_COST_NORMAL * 4
 
-	attack_hand(mob/user as mob)
-		if ((src.loc == user) && (src.locked == 1))
-			to_chat(user, "<span class='warning'>[src] is locked and cannot be opened!</span>")
-		else if ((src.loc == user) && (!src.locked))
-			src.open(usr)
-		else
-			..()
-			for(var/mob/M in range(1))
-				if (M.s_active == src)
-					src.close(M)
-		src.add_fingerprint(user)
-		return
-
-/obj/item/storage/secure/briefcase/MouseDrop(mob/user as mob)
-	if(ismob(src.loc))
-		if ((src.loc == user) && (src.locked == 1))
-			return
-		if(!CanMouseDrop(src))
-			return
-		var/mob/M = src.loc
-		if(!M.unEquip(src))
-			return
-		src.add_fingerprint(usr)
-		M.put_in_active_hand(src)
+/obj/item/storage/secure/briefcase/attack_hand(mob/user)
+	if ((src.loc == user) && (src.locked == 1))
+		to_chat(user, "<span class='warning'>[src] is locked and cannot be opened!</span>")
+	else if ((src.loc == user) && (!src.locked))
+		src.open(usr)
+	else
+		..()
+		for(var/mob/M in range(1))
+			if (M.s_active == src)
+				src.close(M)
+	src.add_fingerprint(user)
+	return
 
 //LOADOUT ITEM
 /obj/item/storage/secure/briefcase/portable
@@ -198,7 +185,7 @@
 	slot_flags = SLOT_BACK
 	icon = 'icons/obj/clothing/backpack.dmi'
 	icon_state = "securev"
-	item_state_slots = list(slot_r_hand_str = "securev", slot_l_hand_str = "securev")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "securev", SLOT_ID_LEFT_HAND = "securev")
 	desc = "A large briefcase with a digital locking system and a magnetic attachment system."
 	force = 0
 	throw_speed = 1

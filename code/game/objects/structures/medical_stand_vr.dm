@@ -76,25 +76,21 @@
 	if(breather)
 		breather.internal = null
 		breather.internals?.icon_state = "internal0"
-	if(tank)
-		qdel(tank)
-	if(breather)
-		breather.remove_from_mob(contained)
-		src.visible_message("<span class='notice'>The mask rapidly retracts just before /the [src] is destroyed!</span>")
-	qdel(contained)
-	contained = null
-	breather = null
-
+		breather = null
 	attached = null
-	qdel(beaker)
-	beaker = null
+	if(tank)
+		QDEL_NULL(tank)
+	if(contained)
+		QDEL_NULL(contained)
+	if(beaker)
+		QDEL_NULL(beaker)
 	return ..()
 
 /obj/structure/medical_stand/attack_robot(var/mob/user)
 	if(Adjacent(user))
 		attack_hand(user)
 
-/obj/structure/medical_stand/MouseDrop(var/mob/living/carbon/human/target, src_location, over_location)
+/obj/structure/medical_stand/OnMouseDropLegacy(var/mob/living/carbon/human/target, src_location, over_location)
 	..()
 	if(istype(target))
 		if(usr.stat == DEAD || !CanMouseDrop(target))
@@ -123,7 +119,7 @@
 					if(tank)
 						tank.forceMove(src)
 					if (breather.wear_mask == contained)
-						breather.remove_from_mob(contained)
+						breather.transfer_item_to_loc(contained, src, INV_OP_FORCE)
 						contained.forceMove(src)
 					else
 						qdel(contained)
@@ -246,7 +242,7 @@
 
 /obj/structure/medical_stand/proc/attach_mask(var/mob/living/carbon/C)
 	if(C && istype(C))
-		if(C.equip_to_slot_if_possible(contained, slot_wear_mask))
+		if(C.equip_to_slot_if_possible(contained, SLOT_ID_MASK, INV_OP_SUPPRESS_WARNING))
 			if(tank)
 				tank.forceMove(C)
 			breather = C
@@ -316,8 +312,8 @@
 		else if(!is_loosen)
 			to_chat(user, "<span class='warning'>Loosen the nut with a wrench first.</span>")
 		else
-			user.drop_item()
-			W.forceMove(src)
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			tank = W
 			user.visible_message("<span class='notice'>\The [user] attaches \the [tank] to \the [src].</span>", "<span class='notice'>You attach \the [tank] to \the [src].</span>")
 			src.add_fingerprint(user)
@@ -327,8 +323,8 @@
 		if(!isnull(src.beaker))
 			to_chat(user, "There is already a reagent container loaded!")
 			return
-		user.drop_item()
-		W.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		beaker = W
 		to_chat(user, "You attach \the [W] to \the [src].")
 		update_icon()
@@ -368,7 +364,7 @@
 			if(tank)
 				tank.forceMove(src)
 			if (breather.wear_mask == contained)
-				breather.remove_from_mob(contained)
+				breather.transfer_item_to_loc(contained, src, INV_OP_FORCE)
 				contained.forceMove(src)
 			else
 				qdel(contained)
@@ -384,8 +380,9 @@
 		else
 			breather.internals?.icon_state = "internal0"
 			breather.internal = null
+
 	else if (valve_opened)
-		var/datum/gas_mixture/removed = tank.remove_air(0.01)
+		var/datum/gas_mixture/removed = tank.remove_moles(0.01)
 		var/datum/gas_mixture/environment = loc.return_air()
 		environment.merge(removed)
 
@@ -415,7 +412,7 @@
 				return
 			if(!H.dna)
 				return
-			if(NOCLONE in H.mutations)
+			if(MUTATION_NOCLONE in H.mutations)
 				return
 			if(H.species.flags & NO_BLOOD)
 				return
@@ -423,7 +420,7 @@
 				return
 
 			// If the human is losing too much blood, beep.
-			if(H.vessel.get_reagent_amount("blood") < BLOOD_VOLUME_SAFE)
+			if(H.vessel.get_reagent_amount("blood") < H.species.blood_volume*H.species.blood_level_safe)
 				visible_message("\The [src] beeps loudly.")
 
 			var/datum/reagent/B = H.take_blood(beaker,amount)
@@ -441,4 +438,3 @@
 	spawn_type = /obj/item/tank/anesthetic
 	mask_type = /obj/item/clothing/mask/breath/medical
 	is_loosen = FALSE
-

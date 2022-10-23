@@ -4,12 +4,12 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "stamp-qm"
 	item_state = "stamp"
-	throwforce = 0
+	throw_force = 0
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_HOLSTER
 	throw_speed = 7
 	throw_range = 15
-	matter = list(DEFAULT_WALL_MATERIAL = 60)
+	matter = list(MAT_STEEL = 60)
 	pressure_resistance = 2
 	attack_verb = list("stamped")
 

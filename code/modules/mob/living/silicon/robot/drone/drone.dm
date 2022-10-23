@@ -1,23 +1,3 @@
-var/list/mob_hat_cache = list()
-/proc/get_hat_icon(var/obj/item/hat, var/offset_x = 0, var/offset_y = 0)
-	var/t_state = hat.icon_state
-	if(hat.item_state_slots && hat.item_state_slots[slot_head_str])
-		t_state = hat.item_state_slots[slot_head_str]
-	else if(hat.item_state)
-		t_state = hat.item_state
-	var/key = "[t_state]_[offset_x]_[offset_y]"
-	if(!mob_hat_cache[key])            // Not ideal as there's no guarantee all hat icon_states
-		var/t_icon = INV_HEAD_DEF_ICON // are unique across multiple dmis, but whatever.
-		if(hat.icon_override)
-			t_icon = hat.icon_override
-		else if(hat.item_icons && (slot_head_str in hat.item_icons))
-			t_icon = hat.item_icons[slot_head_str]
-		var/image/I = image(icon = t_icon, icon_state = t_state)
-		I.pixel_x = offset_x
-		I.pixel_y = offset_y
-		mob_hat_cache[key] = I
-	return mob_hat_cache[key]
-
 /mob/living/silicon/robot/drone
 	name = "maintenance drone"
 	real_name = "drone"
@@ -29,7 +9,7 @@ var/list/mob_hat_cache = list()
 	universal_speak = 0
 	universal_understand = 1
 	gender = NEUTER
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	braintype = "Drone"
 	lawupdate = 0
 	density = 1
@@ -47,7 +27,7 @@ var/list/mob_hat_cache = list()
 	mob_push_flags = SIMPLE_ANIMAL
 	mob_always_swap = 1
 
-	mob_size = MOB_LARGE // Small mobs can't open doors, it's a huge pain for drones.
+	mob_size = MOB_SMALL // pulled here from a _vr file
 
 	//Used for self-mailing.
 	var/mail_destination = ""
@@ -70,6 +50,11 @@ var/list/mob_hat_cache = list()
 	if(hat)
 		hat.loc = get_turf(src)
 	..()
+
+/mob/living/silicon/robot/drone/ghost()
+	. = ..()
+	if (!ckey)
+		death()
 
 /mob/living/silicon/robot/drone/is_sentient()
 	return FALSE
@@ -148,7 +133,10 @@ var/list/mob_hat_cache = list()
 	else
 		overlays -= "eyes"
 	if(hat) // Let the drones wear hats.
-		overlays |= get_hat_icon(hat, hat_x_offset, hat_y_offset)
+		var/mutable_appearance/MA = hat.render_mob_appearance(src, SLOT_ID_HEAD)
+		MA.pixel_x = hat_x_offset
+		MA.pixel_y = hat_y_offset
+		overlays |= MA
 
 /mob/living/silicon/robot/drone/choose_icon()
 	return
@@ -170,7 +158,8 @@ var/list/mob_hat_cache = list()
 		if(hat)
 			to_chat(user, "<span class='warning'>\The [src] is already wearing \the [hat].</span>")
 			return
-		user.unEquip(W)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		wear_hat(W)
 		user.visible_message("<span class='notice'>\The [user] puts \the [W] on \the [src].</span>")
 		return
@@ -183,7 +172,7 @@ var/list/mob_hat_cache = list()
 		return
 
 	else if (istype(W, /obj/item/card/id)||istype(W, /obj/item/pda))
-		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+		var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 		if(stat == 2)
 
 			if(!config_legacy.allow_drone_spawn || emagged || health < -35) //It's dead, Dave.
@@ -241,7 +230,7 @@ var/list/mob_hat_cache = list()
 	clear_supplied_laws()
 	clear_inherent_laws()
 	laws = new /datum/ai_laws/syndicate_override
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	set_zeroth_law("Only [user.real_name] and people [TU.he] designate[TU.s] as being such are operatives.")
 
 	to_chat(src, "<b>Obey these laws:</b>")
@@ -255,7 +244,7 @@ var/list/mob_hat_cache = list()
 /mob/living/silicon/robot/drone/updatehealth()
 	if(status_flags & GODMODE)
 		health = maxHealth
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 		return
 	health = maxHealth - (getBruteLoss() + getFireLoss())
 	return

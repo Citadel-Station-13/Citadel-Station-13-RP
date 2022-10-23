@@ -1,0 +1,83 @@
+2022-01-05:
+  FreeStylaLT:
+  - rscadd: 'Xenochimera gets 5 alternate languages now. tweak: Xenochimera max age
+      set to 200.'
+2022-01-06:
+  FreeStylaLT:
+  - bugfix: Large bins can now be wrenched
+  - rscadd: a portable version of the secure briefcase, replacing the current one
+      in loadout.
+  zeroisthebiggay:
+  - rscadd: amongus
+  - rscdel: unamongus
+  - soundadd: two ported synthetic sounds
+2022-01-07:
+  TheLordME:
+  - bugfix: Turf HE-pipe interactions now work properly
+2022-01-09:
+  TheLordME:
+  - rscadd: Added catwalk construction on lava
+  silicons:
+  - bugfix: masquarade clothing now works with chameleon kits.
+2022-01-13:
+  FreeStylaLT:
+  - rscadd: 2 more extra languages to Proteans
+2022-01-16:
+  ktoma36:
+  - rscdel: 'Hooligan crab spawners (fishing loot spawners) tweak: Nerfs station drone
+      variant, gives them a new name'
+  - bugfix: Wires
+2022-01-19:
+  TheLordME:
+  - rscadd: 'Adds larger Suit Storage units that can hold up to 10 (ten) suits at
+      once tweak: Suit storages have tgui now'
+  - bugfix: Fixes the issue of suitstorages not haveing tgui
+  - code_imp: Prefilled suitstorages to make mapping them in easier
+  - refactor: Suit cyclers and suit storage are now in their own files
+  lolman360:
+  - rscadd: Disho! Cool new plant! Varieties with topical healing chemicals.
+  - rscadd: catalog support for growns
+2022-01-24:
+  TheLordME:
+  - bugfix: 'fixed #2708'
+2022-01-26:
+  MediHound:
+  - rscadd: Boop module can now scan tanks
+  - rscadd: Boop module can now boop people and simplemobs
+2022-01-27:
+  Funkeronipasta:
+  - rscadd: '*flip emote'
+  - rscadd: '*dwoop emote'
+  - rscadd: A random space in the dm that literally does nothing.
+  MediHound:
+  - rscadd: Enables Borgs to install NIFs and Implants
+  - rscadd: Enables Borgs to pick up Implants with the Medical Gripper
+  TheLordME:
+  - rscadd: Added a new Xenohybrid dome
+  - bugfix: Fixes Integration failures
+  - code_imp: Macro list access to prevent invalid index access in reader.dm
+  - rscadd: Added a varaity of gases
+2022-01-29:
+  CharlesWedge:
+  - rscadd: R-CON Substations for Sec, Bridge, and Cargo.
+  - rscadd: 'a minor maint room on deck 1 near the Starboard Nacelle, just for additional
+      flavor. tweak: Security Maint, Cargo Maint, Bridge Maint to Accomodate the new
+      R-CONs. tweak: Some of Sec Maint''s various drone closets have been given flavor,
+      a secret room is not accessible by hidden wall. tweak: Psyche has been made
+      less depressingly dull. Now features more toys, a greater selection of books,
+      furniture and vendors so patients actually have something to eat.'
+  - bugfix: Sec Maint Now has proper Emergency Shutters and Air Alarms. (Before it
+      was possible to open doors into vented rooms due ot the lack of air alarm.)
+  - bugfix: Shield Diffusers are gone, from the Garden. They also now use proper pond
+      turfs which will yield fish when someone actually fixes the fishing list for
+      them.
+  - bugfix: thanks to the power of passive vents, the trash pit will no longer over
+      pressurize.
+  - bugfix: Power now properly transfers between decks at shift start.
+  TheLordME:
+  - bugfix: Fixes neomorphs being no longer lore compliant
+  - config: Neomorphs are named back to xenomorph hybrids
+  - admin: Breaks Xenohybrid whitelist
+2022-01-30:
+  Captain277:
+  - bugfix: Fixes gendered icobase enforcement.

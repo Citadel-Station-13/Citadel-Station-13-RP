@@ -1,7 +1,5 @@
-import { round } from 'common/math';
-import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Collapsible } from "../components";
+import { Button, Flex, LabeledList, Section, Collapsible } from "../components";
 import { Window } from "../layouts";
 import { toTitleCase } from 'common/string';
 import { sortBy } from 'common/collections';
@@ -47,12 +45,13 @@ export const SeedStorage = (props, context) => {
                 </Button>
               </Flex.Item>
               <Flex.Item grow={1}>
-                <Button
+                <Button.Confirm
+                  confirm
                   fluid
                   icon="trash"
                   onClick={() => act("purge", { id: seed.id })}>
                   Purge
-                </Button>
+                </Button.Confirm>
               </Flex.Item>
             </Flex>
           ))}

@@ -13,7 +13,7 @@
 
 	var/datum/tgui_module/camera/camera
 
-/obj/machinery/computer/security/Initialize()
+/obj/machinery/computer/security/Initialize(mapload)
 	. = ..()
 	if(!LAZYLEN(network))
 		network = get_default_networks()
@@ -31,7 +31,7 @@
 
 /obj/machinery/computer/security/attack_hand(mob/user)
 	add_fingerprint(user)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)
 
@@ -77,7 +77,7 @@
 	circuit = /obj/item/circuitboard/security/telescreen/entertainment
 	var/obj/item/radio/radio = null
 
-/obj/machinery/computer/security/telescreen/entertainment/Initialize()
+/obj/machinery/computer/security/telescreen/entertainment/Initialize(mapload)
 	. = ..()
 	radio = new(src)
 	radio.listening = TRUE
@@ -89,7 +89,7 @@
 /obj/machinery/computer/security/telescreen/entertainment/power_change()
 	..()
 	if(radio)
-		if(stat & NOPOWER)
+		if(machine_stat & NOPOWER)
 			radio.on = FALSE
 		else
 			radio.on = TRUE

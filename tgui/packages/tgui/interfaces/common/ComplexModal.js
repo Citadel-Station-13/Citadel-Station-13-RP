@@ -103,7 +103,8 @@ export const ComplexModal = (props, context) => {
         placeholder="ENTER to submit"
         width="100%"
         my="0.5rem"
-        autofocus
+        autoFocus
+        autoSelect
         onChange={(_e, val) => {
           setCurValue(val);
         }}
@@ -189,7 +190,7 @@ export const ComplexModal = (props, context) => {
       maxHeight={props.maxHeight || (window.innerHeight / 2 + "px")}
       onEnter={modalOnEnter}
       mx="auto">
-      <Box display="inline">
+      <Box inline>
         {text}
       </Box>
       {modalBody}

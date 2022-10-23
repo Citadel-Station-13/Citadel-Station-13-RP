@@ -11,6 +11,7 @@ import { ChatPanel, ChatTabs } from './chat';
 import { useGame } from './game';
 import { Notifications } from './Notifications';
 import { PingIndicator } from './ping';
+import { ReconnectButton } from './reconnect';
 import { SettingsPanel, useSettings } from './settings';
 
 export const Panel = (props, context) => {
@@ -50,7 +51,7 @@ export const Panel = (props, context) => {
                   selected={audio.visible}
                   icon="music"
                   tooltip="Music player"
-                  tooltipPosition="bottom-left"
+                  tooltipPosition="bottom-start"
                   onClick={() => audio.toggle()} />
               </Stack.Item>
               <Stack.Item>
@@ -60,7 +61,7 @@ export const Panel = (props, context) => {
                   tooltip={settings.visible
                     ? 'Close settings'
                     : 'Open settings'}
-                  tooltipPosition="bottom-left"
+                  tooltipPosition="bottom-start"
                   onClick={() => settings.toggle()} />
               </Stack.Item>
             </Stack>
@@ -86,13 +87,7 @@ export const Panel = (props, context) => {
             <Notifications>
               {game.connectionLostAt && (
                 <Notifications.Item
-                  rightSlot={(
-                    <Button
-                      color="white"
-                      onClick={() => Byond.command('.reconnect')}>
-                      Reconnect
-                    </Button>
-                  )}>
+                  rightSlot={<ReconnectButton />}>
                   You are either AFK, experiencing lag or the connection
                   has closed.
                 </Notifications.Item>

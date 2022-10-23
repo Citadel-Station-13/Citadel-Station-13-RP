@@ -80,7 +80,7 @@
 	var/success = 0
 	while(tempL.len)
 		attempt = pick(tempL)
-		success = user.Move(attempt)
+		success = user.forceMove(attempt)
 		if(!success)
 			tempL.Remove(attempt)
 		else

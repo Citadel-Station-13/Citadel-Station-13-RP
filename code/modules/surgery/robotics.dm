@@ -18,7 +18,7 @@
 		return 0
 	if (affected.status & ORGAN_DESTROYED)
 		return 0
-	if (!(affected.robotic == ORGAN_ROBOT || affected.robotic == ORGAN_LIFELIKE)) //VOREStation Edit - No good on ORGAN_NANOFORM
+	if (!(affected.robotic == ORGAN_ROBOT || affected.robotic == ORGAN_LIFELIKE))
 		return 0
 	return 1
 
@@ -278,9 +278,9 @@
 			if(I.robotic >= ORGAN_ROBOT)
 				user.visible_message("<span class='notice'>[user] repairs [target]'s [I.name] with [tool].</span>", \
 				"<span class='notice'>You repair [target]'s [I.name] with [tool].</span>" )
-				I.damage = 0
+				I.revive(TRUE)
 				if(I.organ_tag == O_EYES)
-					target.sdisabilities &= ~BLIND
+					target.sdisabilities &= ~SDISABILITY_NERVOUS
 
 /datum/surgery_step/robotics/fix_organ_robotic/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	if (!hasorgans(target))
@@ -426,12 +426,6 @@
 	if(!istype(M))
 		return 0
 
-	/* VOREStation Edit - Don't worry about it. We can put these in regardless, because resleeving might make it useful after.
-	if(!M.brainmob || !M.brainmob.client || !M.brainmob.ckey || M.brainmob.stat >= DEAD)
-		to_chat(user, "<span class='danger'>That brain is not usable.</span>")
-		return SURGERY_FAILURE
-	*/
-
 	if(!(affected.robotic >= ORGAN_ROBOT))
 		to_chat(user, "<span class='danger'>You cannot install a computer brain into a meat skull.</span>")
 		return SURGERY_FAILURE
@@ -460,8 +454,7 @@
 	var/obj/item/mmi/M = tool
 	var/obj/item/organ/internal/mmi_holder/holder = new(target, 1)
 	target.internal_organs_by_name["brain"] = holder
-	user.drop_from_inventory(tool)
-	tool.loc = holder
+	user.transfer_item_to_loc(tool, src, INV_OP_FORCE)
 	holder.stored_mmi = tool
 	holder.update_from_mmi()
 
@@ -549,7 +542,7 @@
 	var/obj/item/organ/internal/brain/cephalon/cephalon = new(target, 1)
 	target.internal_organs_by_name["brain"] = cephalon
 	var/mob/living/carbon/alien/diona/D = N.held_mob
-	user.drop_from_inventory(tool)
+	user.drop_item_to_ground(tool, INV_OP_FORCE)
 
 	if(D && D.mind)
 		D.mind.transfer_to(target)
@@ -557,7 +550,7 @@
 
 	qdel(D)
 
-	target.species = GLOB.all_species[SPECIES_DIONA]
+	target.set_species(/datum/species/diona)
 
 	target.verbs |= /mob/living/carbon/human/proc/diona_split_nymph
 	target.verbs |= /mob/living/carbon/human/proc/regenerate

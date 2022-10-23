@@ -9,6 +9,7 @@
 	projectile_type = /obj/item/projectile/bullet/magnetic/slug
 	power_cost = 300
 	w_class = ITEMSIZE_HUGE
+	heavy = TRUE
 	slot_flags = SLOT_BELT
 	loaded = /obj/item/rcd_ammo/large
 	slowdown = 1	// Slowdown equals slowdown_worn, until we decide to import the system to differentiate between held and worn items

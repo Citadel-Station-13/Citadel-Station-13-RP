@@ -27,7 +27,7 @@
 	var/door_on_mode
 	var/teleport_on_mode
 
-/obj/away_mission_init/alienship/Initialize()
+/obj/away_mission_init/alienship/Initialize(mapload)
 	. = ..()
 
 	if(!mission_mode) //WE ARE NUMBER ONE
@@ -107,13 +107,12 @@
 
 /area/shuttle/excursion/away_alienship
 	name = "\improper Excursion Shuttle - Alien Ship"
-	base_turf = /turf/simulated/shuttle/floor/alienplating
 	var/did_entry = FALSE
 	var/list/teleport_to
 	var/area/dump_area
 	var/obj/shuttle_connector/shuttle_friend
 
-/area/shuttle/excursion/away_alienship/Initialize()
+/area/shuttle/excursion/away_alienship/Initialize(mapload)
 	. = ..()
 	dump_area = locate(/area/tether_away/alienship/equip_dump)
 
@@ -157,15 +156,18 @@
 
 		L.forceMove(pick(get_area_turfs(dump_area)))
 		if(!issilicon(L)) //Don't drop borg modules...
-			for(var/obj/item/I in L)
-				if(istype(I,/obj/item/implant) || istype(I,/obj/item/nif))
-					continue
+			for(var/obj/item/I in L.get_equipped_items(TRUE, TRUE))
 				if(istype(I,/obj/item/holder))
 					var/obj/item/holder/H = I
 					var/mob/living/M = H.held_mob
-					M.forceMove(get_turf(H))
+					H.forceMove(get_turf(L))
 					abduct(M)
-				L.drop_from_inventory(I, loc)
+					continue
+				L.drop_item_to_ground(I, INV_OP_FORCE)
+			// second pass - NO HIDING, M*CROS
+			for(var/obj/item/holder/H in L.get_all_contents())
+				H.forceMove(get_turf(L))
+				abduct(H)
 		L.Paralyse(10)
 		L.forceMove(get_turf(pick(teleport_to)))
 		L << 'sound/effects/bamf.ogg'
@@ -174,7 +176,6 @@
 /area/tether_away/alienship
 	name = "\improper Away Mission - Unknown Vessel"
 	icon_state = "away"
-	base_turf = /turf/space
 	requires_power = FALSE
 
 /area/tether_away/alienship/equip_dump

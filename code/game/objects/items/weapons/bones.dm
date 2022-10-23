@@ -5,7 +5,7 @@
 	icon = 'icons/obj/bones.dmi'
 	icon_state = "bone"
 	force = 5
-	throwforce = 6
+	throw_force = 6
 	item_state = "bone"
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked", "bonked", "boned")
@@ -14,12 +14,11 @@
 	name = "skull"
 	desc = "A skull. Judging by the shape and size, you'd guess that it might be human."
 	icon_state = "skull"
-	throwforce = 7
+	throw_force = 7
 
 /obj/item/bone/skull/attackby(var/obj/item/material/knife/D, mob/user as mob)
 	to_chat(user, "<span class='notice'>You hack chunks out of \the [src] with \the [D].  It might fit on top of your head.</span>")
 	user.put_in_hands(new /obj/item/clothing/head/skull)
-	user.drop_from_inventory(src)
 	qdel(src)
 	return ..()
 

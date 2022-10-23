@@ -1,7 +1,6 @@
-import { round } from 'common/math';
 import { Fragment } from 'inferno';
-import { useBackend, useLocalState } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Table } from "../components";
+import { useBackend } from "../backend";
+import { Box, Button, Flex, LabeledList, Section, Table } from "../components";
 import { Window } from "../layouts";
 import { OvermapFlightData, OvermapPanControls } from './common/Overmap';
 
@@ -37,8 +36,8 @@ export const OvermapHelmContent = (props, context) => {
 export const OvermapFlightDataWrap = (props, context) => {
   const { act, data } = useBackend(context);
 
-  // While, yes, this is a strange choice to use fieldset over Section
-  // just look at how pretty the legend is, sticking partially through the border ;///;
+  // While, yes, this is a strange choice to use fieldset over Section just
+  // look at how pretty the legend is, sticking partially through the border
   return (
     <fieldset style={{ height: "100%", border: "1px solid #4972a1", margin: 'none' }} className="Section">
       <legend>Flight Data</legend>

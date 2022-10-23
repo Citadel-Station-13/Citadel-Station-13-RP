@@ -7,7 +7,7 @@
 /obj/item/storage/quickdraw
 	name = "quickdraw"
 	desc = "This object should not appear"
-	icon = 'icons/obj/storage.dmi' // VOREStation Edit
+	icon = 'icons/obj/storage.dmi'
 
 	//Quickmode
 	//When set to 0, this storage will operate as a regular storage, and clicking on it while equipped will open it as a storage
@@ -20,14 +20,14 @@
 			var/mob/living/carbon/human/H = user
 			if(quickmode)
 				var/first_item = contents[1]
-				if(first_item && !H.get_active_hand()) //Do we have anything to give you?
+				if(first_item && !H.get_active_held_item()) //Do we have anything to give you?
 					H.put_in_hands(first_item)
 					return
 
-			if(H.l_store == src && !H.get_active_hand()) //overrides
+			if(H.l_store == src && !H.get_active_held_item()) //overrides
 				src.open(user)
 				return
-			if(H.r_store == src && !H.get_active_hand())
+			if(H.r_store == src && !H.get_active_held_item())
 				src.open(user)
 				return
 	..() //Nothing special happened, go call the other proc

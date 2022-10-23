@@ -2,7 +2,7 @@
 
 // Might be best to make this a /mob/living proc and override.
 /mob/living/simple_mob/slime/xenobio/proc/adjust_nutrition(input, var/heal = 1)
-	nutrition = between(0, nutrition + input, get_max_nutrition())
+	nutrition = clamp( nutrition + input, 0,  get_max_nutrition())
 
 	if(input > 0)
 		// Gain around one level per 50 nutrition.
@@ -45,7 +45,7 @@
 
 	else if(nutrition >= get_grow_nutrition() && amount_grown < 10)
 		adjust_nutrition(-20)
-		amount_grown = between(0, amount_grown + 1, 10)
+		amount_grown = clamp( amount_grown + 1, 0,  10)
 
 // Called if above proc happens while below a nutrition threshold.
 /mob/living/simple_mob/slime/xenobio/proc/handle_starvation()
@@ -56,7 +56,7 @@
 	if(victim && !stat)
 		if(istype(victim) && consume(victim, 20))
 			if(prob(25))
-				to_chat(src, span("notice", "You continue absorbing \the [victim]."))
+				to_chat(src, SPAN_NOTICE("You continue absorbing \the [victim]."))
 
 		else
 			var/list/feedback = list(
@@ -68,7 +68,7 @@
 				"I do not feel nourished",
 				"This subject is not food"
 				)
-			to_chat(src, span("warning", "[pick(feedback)]..."))
+			to_chat(src, SPAN_WARNING( "[pick(feedback)]..."))
 			stop_consumption()
 
 		if(victim)
@@ -87,22 +87,22 @@
 	if(loc != L.loc)
 		return
 
-	if(L.buckle_mob(src, forced = TRUE))
+	if(L.buckle_mob(src, BUCKLE_OP_FORCE))
 		victim = L
 		update_icon()
 		set_AI_busy(TRUE) // Don't want the AI to interfere with eatting.
 		victim.visible_message(
-			span("danger", "\The [src] latches onto \the [victim]!"),
-			span("critical", "\The [src] latches onto you!")
+			SPAN_DANGER("\The [src] latches onto \the [victim]!"),
+			SPAN_CRITICAL("\The [src] latches onto you!")
 			)
 
 /mob/living/simple_mob/slime/xenobio/proc/stop_consumption(mob/living/L)
 	if(!victim)
 		return
-	victim.unbuckle_mob()
+	victim.unbuckle_mob(src, BUCKLE_OP_FORCE)
 	victim.visible_message(
-		span("notice", "\The [src] slides off of [victim]!"),
-		span("notice", "\The [src] slides off of you!")
+		SPAN_NOTICE("\The [src] slides off of [victim]!"),
+		SPAN_NOTICE("\The [src] slides off of you!")
 		)
 	victim = null
 	update_icon()
@@ -130,13 +130,11 @@
 	if(L.getCloneLoss() >= L.getMaxHealth() * 1.5)
 		to_chat(src, "This subject does not have an edible life energy...")
 		return FALSE
-	//VOREStation Addition start
 	if(istype(L, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = L
 		if(H.species.flags & NO_SCAN)
 			to_chat(src, "This subject's life energy is beyond my reach...")
 			return FALSE
-	//VOREStation Addition end
 	if(L.has_buckled_mobs())
 		for(var/A in L.buckled_mobs)
 			if(istype(A, /mob/living/simple_mob/slime/xenobio))
@@ -161,7 +159,7 @@
 			victim.adjustToxLoss(damage_done * 0.4)
 			adjust_nutrition(damage_done * 5)
 			Beam(victim, icon_state = "slime_consume", time = 8)
-			to_chat(src, span("notice", "You absorb some biomaterial from \the [victim]."))
-			to_chat(victim, span("danger", "\The [src] consumes some of your flesh!"))
+			to_chat(src, SPAN_NOTICE("You absorb some biomaterial from \the [victim]."))
+			to_chat(victim, SPAN_DANGER("\The [src] consumes some of your flesh!"))
 			return TRUE
 	return FALSE

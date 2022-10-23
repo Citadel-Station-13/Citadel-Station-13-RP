@@ -155,7 +155,7 @@
 /datum/map_template/submap/level_specific/mountains/normal/crashedcontainmentshuttle
 	name = "Crashed Cargo Shuttle"
 	desc = "A severely damaged military shuttle, its cargo seems to remain intact."
-	suffix = "crashedcontainmentshuttle_vr.dmm"	//VOREStation Edit
+	suffix = "crashedcontainmentshuttle_vr.dmm"
 	cost = 30
 
 /datum/map_template/submap/level_specific/mountains/normal/deadspy
@@ -200,47 +200,39 @@
  * Deep Caves *
  **************/
 
-/* Vorestation Removal
-/datum/map_template/submap/level_specific/mountains/deep/lost_explorer
-	name = "Lost Explorer, Deep"
-	desc = "The remains of an explorer who rotted away ages ago, and their equipment. Again."
-	suffix = "lost_explorer.dmm"
-	cost = 5
-	allow_duplicates = TRUE */
-
-/datum/map_template/submap/level_specific/mountains/normal/crashed_ufo //VOREStation Edit
+/datum/map_template/submap/level_specific/mountains/normal/crashed_ufo
 	name = "Crashed UFO"
 	desc = "A (formerly) flying saucer that is now embedded into the mountain, yet it still seems to be running..."
 	suffix = "crashed_ufo.dmm"
 	cost = 40
 	discard_prob = 50
 
-/datum/map_template/submap/level_specific/mountains/normal/crashed_ufo_frigate //VOREStation Edit
+/datum/map_template/submap/level_specific/mountains/normal/crashed_ufo_frigate
 	name = "Crashed UFO Frigate"
 	desc = "A (formerly) flying saucer that is now embedded into the mountain, yet its combat protocols still seem to be running..."
 	suffix = "crashed_ufo.dmm"
 	cost = 60
 	discard_prob = 50
 
-/datum/map_template/submap/level_specific/mountains/normal/Scave1 //VOREStation Edit
+/datum/map_template/submap/level_specific/mountains/normal/Scave1
 	name = "Spider Cave 1"
 	desc = "A minning tunnel home to an aggressive collection of spiders."
 	suffix = "Scave1.dmm"
 	cost = 20
 
-/datum/map_template/submap/level_specific/mountains/normal/CaveTrench //VOREStation Edit
+/datum/map_template/submap/level_specific/mountains/normal/CaveTrench
 	name = "Cave River"
 	desc = "A strange underground river."
 	suffix = "CaveTrench.dmm"
 	cost = 20
 
-/datum/map_template/submap/level_specific/mountains/normal/Cavelake //VOREStation Edit
+/datum/map_template/submap/level_specific/mountains/normal/Cavelake
 	name = "Cave Lake"
 	desc = "A large underground lake."
 	suffix = "Cavelake.dmm"
 	cost = 20
 
-/datum/map_template/submap/level_specific/mountains/normal/vault1 //VOREStation Edit
+/datum/map_template/submap/level_specific/mountains/normal/vault1
 	name = "Mine Vault 1"
 	desc = "A small vault with potential loot."
 	suffix = "vault1.dmm"
@@ -248,7 +240,7 @@
 	allow_duplicates = TRUE
 	template_group = "Buried Vaults"
 
-/datum/map_template/submap/level_specific/mountains/normal/vault2 //VOREStation Edit
+/datum/map_template/submap/level_specific/mountains/normal/vault2
 	name = "Mine Vault 2"
 	desc = "A small vault with potential loot."
 	suffix = "vault2.dmm"
@@ -256,51 +248,51 @@
 	allow_duplicates = TRUE
 	template_group = "Buried Vaults"
 
-/datum/map_template/submap/level_specific/mountains/normal/vault3 //VOREStation Edit
+/datum/map_template/submap/level_specific/mountains/normal/vault3
 	name = "Mine Vault 3"
 	desc = "A small vault with potential loot. Also a horrible suprise."
 	suffix = "vault3.dmm"
 	cost = 15
 	template_group = "Buried Vaults"
 
-/datum/map_template/submap/level_specific/mountains/normal/vault4 //VOREStation Edit
+/datum/map_template/submap/level_specific/mountains/normal/vault4
 	name = "Mine Vault 4"
 	desc = "A small xeno vault with potential loot. Also horrible suprises."
 	suffix = "vault4.dmm"
 	cost = 20
 	template_group = "Buried Vaults"
 
-/datum/map_template/submap/level_specific/mountains/normal/vault5 //VOREStation Edit
+/datum/map_template/submap/level_specific/mountains/normal/vault5
 	name = "Mine Vault 5"
 	desc = "A small xeno vault with potential loot. Also major horrible suprises."
 	suffix = "vault5.dmm"
 	cost = 25
 	template_group = "Buried Vaults"
 
-/datum/map_template/submap/level_specific/mountains/normal/vault6 //VOREStation Edit
+/datum/map_template/submap/level_specific/mountains/normal/vault6
 	name = "Mine Vault 6"
 	desc = "A small mercenary tower with potential loot."
 	suffix = "vault6.dmm"
 	cost = 25
 	template_group = "Buried Vaults"
 
-/datum/map_template/submap/level_specific/mountains/normal/BlastMine1 //VOREStation Edit
+/datum/map_template/submap/level_specific/mountains/normal/BlastMine1
 	name = "Blast Mine 1"
 	desc = "An abandoned blast mining site, seems that local wildlife has moved in."
 	suffix = "BlastMine1.dmm"
 	cost = 20
 
-/datum/map_template/submap/level_specific/mountains/normal/lava_trench //VOREStation Edit
+/datum/map_template/submap/level_specific/mountains/normal/lava_trench
 	name = "lava trench"
 	desc = "A long stretch of lava underground, almost river-like, with a small crystal research outpost on the side."
 	suffix = "lava_trench.dmm"
 	cost = 20
 	fixed_orientation = TRUE
 
-/datum/map_template/submap/level_specific/mountains/normal/crashedmedshuttle //VOREStation Edit
+/datum/map_template/submap/level_specific/mountains/normal/crashedmedshuttle
 	name = "Crashed Med Shuttle"
 	desc = "A medical response shuttle that went missing some time ago. So this is where they went."
-	suffix = "CrashedMedShuttle1_vr.dmm"	//VOREStation Edit
+	suffix = "CrashedMedShuttle1_vr.dmm"
 	cost = 20
 	fixed_orientation = TRUE
 

@@ -1,6 +1,6 @@
 #define FONT_SIZE "5pt"
 #define FONT_COLOR "#09f"
-#define FONT_STYLE "Arial Black"
+#define FONT_STYLE "Small Fonts"
 #define SCROLL_SPEED 2
 
 // Status display
@@ -15,8 +15,8 @@
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	name = "status display"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	circuit = /obj/item/circuitboard/status_display
@@ -40,6 +40,7 @@
 
 	maptext_height = 26
 	maptext_width = 32
+	maptext_y = -1
 
 	var/const/CHARS_PER_LINE = 5
 	var/const/STATUS_DISPLAY_BLANK = 0
@@ -71,13 +72,13 @@
 
 // Timed process
 /obj/machinery/status_display/process(delta_time)
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		remove_display()
 		return
 	update()
 
 /obj/machinery/status_display/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
 	set_picture("ai_bsod")
@@ -167,7 +168,7 @@
 		message2 = ""
 		index2 = 0
 
-/obj/machinery/status_display/proc/display_alert(var/newlevel)
+/obj/machinery/status_display/proc/display_alert(newlevel)
 	remove_display()
 	if(seclevel != newlevel)
 		seclevel = newlevel
@@ -189,6 +190,8 @@
 	overlays |= picture
 
 /obj/machinery/status_display/proc/update_display(line1, line2)
+	line1 = uppertext(line1)
+	line2 = uppertext(line2)
 	var/new_text = {"<div style="font-size:[FONT_SIZE];color:[FONT_COLOR];font:'[FONT_STYLE]';text-align:center;" valign="top">[line1]<br>[line2]</div>"}
 	if(maptext != new_text)
 		maptext = new_text

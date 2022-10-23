@@ -1,3 +1,5 @@
+// This file has been UNTICKED on purpose, as it is not in use.
+
 /datum/category_item/player_setup_item/skills
 	name = "Skills"
 	sort_order = 1

@@ -56,7 +56,8 @@ var/list/department_radio_keys = list(
 
 
 var/list/channel_to_radio_key = new
-proc/get_radio_key_from_channel(var/channel)
+
+/proc/get_radio_key_from_channel(channel)
 	var/key = channel_to_radio_key[channel]
 	if(!key)
 		for(var/radio_key in department_radio_keys)
@@ -98,7 +99,12 @@ proc/get_radio_key_from_channel(var/channel)
 	var/whispering = message_data[3]
 	. = 0
 
-	if((HULK in mutations) && health >= 25 && length_char(message))
+	if(HAS_TRAIT(src, silent) || silent)
+		. = TRUE
+		message_data[1] = ""
+		return
+
+	if((MUTATION_HULK in mutations) && health >= 25 && length_char(message))
 		message = "[uppertext(message)]!!!"
 		verb = pick("yells","roars","hollers")
 		whispering = 0
@@ -111,12 +117,10 @@ proc/get_radio_key_from_channel(var/channel)
 		message = stutter(message)
 		verb = pick("stammers","stutters")
 		. = 1
-	//VOREStation Edit Start
 	if(muffled)
 		verb = pick("muffles")
 		whispering = 1
 		. = 1
-	//VOREStation Edit End
 
 	message_data[1] = message
 	message_data[2] = verb
@@ -147,7 +151,7 @@ proc/get_radio_key_from_channel(var/channel)
 	if(client)
 		if(message)
 			client.handle_spam_prevention(MUTE_IC)
-			if((client.prefs.muted & MUTE_IC) || say_disabled)
+			if((client.prefs.muted & MUTE_IC))
 				to_chat(src, "<span class='warning'>You cannot speak in IC (Muted).</span>")
 				return
 
@@ -284,7 +288,7 @@ proc/get_radio_key_from_channel(var/channel)
 		var/msg
 		if(!speaking || !(speaking.flags & NO_TALK_MSG))
 			msg = "<span class='notice'>\The [src] talks into \the [used_radios[1]]</span>"
-		for(var/mob/living/M in hearers(5, src))
+		for(var/mob/living/M in hearers(7, src))
 			if((M != src) && msg)
 				M.show_message(msg)
 			if (speech_sound)
@@ -296,8 +300,8 @@ proc/get_radio_key_from_channel(var/channel)
 		message_range = 1
 		sound_vol *= 0.5
 
-	//VOREStation edit - allows for custom say verbs, overriding all other say-verb types- e.g. "says loudly" instead of "shouts"
-	//You'll still stammer if injured or slur if drunk, but it won't have those specific words
+	/// Allows for custom say verbs, overriding all other say-verb types- e.g. "says loudly" instead of "shouts"
+	/// You'll still stammer if injured or slur if drunk, but it won't have those specific words
 	var/ending = copytext_char(message, length_char(message))
 
 	if(custom_whisper && whispering)
@@ -308,7 +312,6 @@ proc/get_radio_key_from_channel(var/channel)
 		verb = "[custom_ask]"
 	else if(custom_say)
 		verb = "[custom_say]"
-	//VOREStation edit ends
 
 	//Handle nonverbal and sign languages here
 	if (speaking)
@@ -350,9 +353,8 @@ proc/get_radio_key_from_channel(var/channel)
 
 	//The 'post-say' static speech bubble
 	var/speech_bubble_test = say_test(message)
-	//var/image/speech_bubble = image('icons/mob/talk_vr.dmi',src,"h[speech_bubble_test]") //VOREStation Edit. Commented this out in case we need to reenable.
 	var/speech_type = speech_bubble_appearance()
-	var/image/speech_bubble = image('icons/mob/talk_vr.dmi',src,"[speech_type][speech_bubble_test]") //VOREStation Edit - talk_vr.dmi instead of talk.dmi for right-side icons
+	var/image/speech_bubble = image('icons/mob/talk_vr.dmi',src,"[speech_type][speech_bubble_test]")
 	var/sb_alpha = 255
 	var/atom/loc_before_turf = src
 	if(isbelly(loc))
@@ -372,13 +374,17 @@ proc/get_radio_key_from_channel(var/channel)
 		var/turf/ST = get_turf(above)
 		if(ST)
 			var/list/results = get_mobs_and_objs_in_view_fast(ST, world.view)
-			var/image/z_speech_bubble = image('icons/mob/talk_vr.dmi', above, "h[speech_bubble_test]") //VOREStation Edit - talk_vr.dmi instead of talk.dmi for right-side icons
+			var/image/z_speech_bubble = image('icons/mob/talk_vr.dmi', above, "h[speech_bubble_test]")
 			images_to_clients[z_speech_bubble] = list()
 			for(var/item in results["mobs"])
 				if(item != above && !(item in listening))
 					listening[item] = z_speech_bubble
 			listening_obj |= results["objs"]
 		above = above.shadow
+	var/atom/emitter = src
+	if(!isobserver(emitter) || !IsAdminGhost(emitter))
+		emitter.say_overhead(say_emphasis_strip(message), whispering, message_range, speaking)
+
 
 	//Main 'say' and 'whisper' message delivery
 	for(var/mob/M in listening)
@@ -394,12 +400,14 @@ proc/get_radio_key_from_channel(var/channel)
 						SEND_IMAGE(M, I1)
 					M.hear_say(message, verb, speaking, alt_name, italics, src, speech_sound, sound_vol)
 				if(whispering) //Don't even bother with these unless whispering
+
 					if(dst > message_range && dst <= w_scramble_range) //Inside whisper scramble range
 						if(M.client)
 							var/image/I2 = listening[M] || speech_bubble
 							images_to_clients[I2] |= M.client
 							SEND_IMAGE(M, I2)
 						M.hear_say(stars(message), verb, speaking, alt_name, italics, src, speech_sound, sound_vol*0.2)
+
 					if(dst > w_scramble_range && dst <= world.view) //Inside whisper 'visible' range
 						M.show_message("<span class='game say'><span class='name'>[src.name]</span> [w_not_heard].</span>", 2)
 

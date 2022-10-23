@@ -2,8 +2,8 @@
 	name = "Washing Machine"
 	icon = 'icons/obj/machines/washing_machine.dmi'
 	icon_state = "wm_10"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
 	circuit = /obj/item/circuitboard/washing
 	var/state = 1
 	//1 = empty, open door
@@ -27,11 +27,7 @@
 
 /obj/machinery/washing_machine/Initialize(mapload, newdir)
 	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/motor(src)
-	component_parts += new /obj/item/stock_parts/gear(src)
-	component_parts += new /obj/item/stock_parts/gear(src)
-	RefreshParts()
+	default_apply_parts()
 
 /obj/machinery/washing_machine/verb/start()
 	set name = "Start Washing"
@@ -91,9 +87,9 @@
 	if(istype(W,/obj/item/pen/crayon) || istype(W,/obj/item/stamp))
 		if(state in list(	1, 3, 6))
 			if(!crayon)
-				user.drop_item()
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				crayon = W
-				crayon.loc = src
 			else
 				..()
 		else
@@ -115,8 +111,8 @@
 	else if(istype(W, /obj/item/clothing) || istype(W, /obj/item/bedsheet))
 		if(washing.len < 5)
 			if(state in list(1, 3))
-				user.drop_item()
-				W.loc = src
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				washing += W
 				state = 3
 			else

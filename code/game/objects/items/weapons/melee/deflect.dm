@@ -24,7 +24,7 @@
 	if(user.incapacitated() || !istype(damage_source, /obj/item/projectile))
 		return 0
 
-	var/bad_arc = reverse_direction(user.dir)
+	var/bad_arc = REVERSE_DIR(user.dir)
 	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
 		return 0
 

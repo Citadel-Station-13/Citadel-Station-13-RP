@@ -95,10 +95,10 @@ var/list/gear_datums = list()
 		gear_datums[G.name] = G
 		LC.gear[G.name] = gear_datums[G.name]
 
-	loadout_categories = sortTim(loadout_categories, /proc/cmp_text_asc)
+	loadout_categories = tim_sort(loadout_categories, /proc/cmp_text_asc)
 	for(var/loadout_category in loadout_categories)
 		var/datum/loadout_category/LC = loadout_categories[loadout_category]
-		LC.gear = sortTim(LC.gear, /proc/cmp_text_asc)	// DO NOT ADD A ", TRUE" TO THE END OF THIS FUCKING LINE IT'S WHAT WAS CAUSING ALPHABETIZATION TO BREAK
+		LC.gear = tim_sort(LC.gear, /proc/cmp_text_asc)	// DO NOT ADD A ", TRUE" TO THE END OF THIS FUCKING LINE IT'S WHAT WAS CAUSING ALPHABETIZATION TO BREAK
 	return 1
 
 /datum/category_item/player_setup_item/loadout
@@ -123,10 +123,17 @@ var/list/gear_datums = list()
 /datum/category_item/player_setup_item/loadout/proc/valid_gear_choices(var/max_cost)
 	. = list()
 	var/mob/preference_mob = preference_mob()
+	var/list/whitelist_cache = list()
 	for(var/gear_name in gear_datums)
 		var/datum/gear/G = gear_datums[gear_name]
+		if(G.whitelisted)
+			var/spec = G.whitelisted
+			if(whitelist_cache[spec] == null)
+				whitelist_cache[spec] = is_alien_whitelisted(preference_mob, name_static_species_meta(spec))
+			if(!whitelist_cache[spec])
+				continue
 
-		if(G.whitelisted && !is_alien_whitelisted(preference_mob, GLOB.all_species[G.whitelisted]))
+		if(G.whitelisted && !is_alien_whitelisted(preference_mob, name_static_species_meta(G.whitelisted)))
 			continue
 		if(max_cost && G.cost > max_cost)
 			continue
@@ -150,16 +157,16 @@ var/list/gear_datums = list()
 	var/total_cost = 0
 	for(var/gear_name in pref.gear)
 		if(!gear_datums[gear_name])
-			to_chat(preference_mob, "<span class='warning'>You cannot have more than one of the \the [gear_name]</span>")
+			to_chat(preference_mob, SPAN_WARNING("You cannot have more than one of the \the [gear_name]"))
 			pref.gear -= gear_name
 		else if(!(gear_name in valid_gear_choices()))
-			to_chat(preference_mob, "<span class='warning'>You cannot take \the [gear_name] as you are not whitelisted for the species or item.</span>")		//Vorestation Edit
+			to_chat(preference_mob, SPAN_WARNING("You cannot take \the [gear_name] as you are not whitelisted for the species or item."))
 			pref.gear -= gear_name
 		else
 			var/datum/gear/G = gear_datums[gear_name]
 			if(total_cost + G.cost > max_gear_points())
 				pref.gear -= gear_name
-				to_chat(preference_mob, "<span class='warning'>You cannot afford to take \the [gear_name]</span>")
+				to_chat(preference_mob, SPAN_WARNING("You cannot afford to take \the [gear_name]"))
 			else
 				total_cost += G.cost
 
@@ -211,13 +218,11 @@ var/list/gear_datums = list()
 	. += "<tr><td colspan=3><hr></td></tr>"
 	for(var/gear_name in LC.gear)
 		var/datum/gear/G = LC.gear[gear_name]
-		//VOREStation Edit Start
 		if(preference_mob && preference_mob.client)
 			if(G.ckeywhitelist && !(preference_mob.ckey in G.ckeywhitelist))
 				continue
 			if(G.character_name && !(preference_mob.client.prefs.real_name in G.character_name))
 				continue
-		//VOREStation Edit End
 		var/ticked = (G.name in pref.gear)
 		. += "<tr style='vertical-align:top;'><td width=25%><a style='white-space:normal;' [ticked ? "class='linkOn' " : ""]href='?src=\ref[src];toggle_gear=[html_encode(G.name)]'>[G.display_name]</a></td>"
 		. += "<td width = 10% style='vertical-align:top'>[G.cost]</td>"

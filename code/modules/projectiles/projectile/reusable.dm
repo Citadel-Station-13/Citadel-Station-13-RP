@@ -97,3 +97,20 @@
 		H.equip_to_slot_if_possible(P, SLOT_MASK)
 	else
 		handle_drop()
+
+//Foam Darts
+/obj/item/projectile/bullet/reusable/foam
+	name = "foam dart"
+	desc = "A soft projectile made out of orange foam with a blue plastic tip."
+	damage = 0
+	ammo_type = /obj/item/ammo_casing/foam
+	drop_sound = 'sound/items/drop/accessory.ogg'
+	pickup_sound = 'sound/items/pickup/accessory.ogg'
+	embed_chance = 0 // nope
+
+/obj/item/projectile/bullet/reusable/foam/riot
+	name = "riot dart"
+	desc = "A flexible projectile made out of hardened orange foam with a red plastic tip."
+	damage = 10
+	damage_type = HALLOSS
+	ammo_type = /obj/item/ammo_casing/foam/riot

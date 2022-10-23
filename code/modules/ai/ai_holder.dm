@@ -12,7 +12,8 @@
 	return ..()
 
 /mob/living/Destroy()
-	QDEL_NULL(ai_holder)
+	if(ai_holder)
+		QDEL_NULL(ai_holder)
 	return ..()
 
 /datum/ai_holder
@@ -21,7 +22,7 @@
 	var/intelligence_level = AI_NORMAL	// Adjust to make the AI be intentionally dumber, or make it more robust (e.g. dodging grenades).
 	var/autopilot = FALSE				// If true, the AI won't be deactivated if a client gets attached to the AI's mob.
 	var/busy = FALSE					// If true, the SSticker will skip processing this mob until this is false. Good for if you need the
-										// mob to stay still (e.g. delayed attacking). If you need the mob to be inactive for an extended period of time,
+										// mob to stay still (e.g. delayed attacwking). If you need the mob to be inactive for an extended period of time,
 										// consider sleeping the AI instead.
 
 
@@ -166,7 +167,7 @@
 			var/obj/structure/closet/C = holder.loc
 			ai_log("handle_stance_tactical() : Inside a closet. Going to attempt escape.", AI_LOG_TRACE)
 			if(C.sealed)
-				holder.resist()
+				INVOKE_ASYNC(holder, /mob/living/verb/resist)
 			else
 				C.open()
 

@@ -37,3 +37,16 @@
 	desc = "The words flicker as if they mean nothing."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "holosign"
+
+/obj/structure/holosign/barrier/combifan
+	name = "holo combifan"
+	desc = "A holographic barrier resembling a blue-accented tiny fan. Though it does not prevent solid objects from passing through, gas and temperature changes are kept out."
+	icon_state = "holo_combifan"
+	anchored = TRUE
+	density = FALSE
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
+	layer = ABOVE_TURF_LAYER
+	alpha = 150
+
+
+

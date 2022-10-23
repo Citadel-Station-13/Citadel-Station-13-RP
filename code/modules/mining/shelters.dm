@@ -9,7 +9,8 @@
 /datum/map_template/shelter/New()
 	. = ..()
 	blacklisted_turfs = typecacheof(list(/turf/unsimulated, /turf/simulated/floor))
-	banned_areas = typecacheof(/area/shuttle)
+	// todo: if you have to modify this list again ping silicons and yell at them to code AREA_IMMUTABLE, AREA_FORBID_MAPLOADING_ITEMS, wnd maybe, just maybe, subareas.
+	banned_areas = typecacheof(/area/shuttle, /area/rift/surfacebase/shuttle)
 	banned_objects = list()
 
 /datum/map_template/shelter/proc/check_deploy(turf/deploy_location)
@@ -32,7 +33,7 @@
 /datum/map_template/shelter/proc/add_roof(turf/deploy_location)
 	var/affected = get_affected_turfs(deploy_location, centered=TRUE)
 	for(var/turf/T in affected)
-		if(isopenspace(T))
+		if(isopenturf(T))
 			T.ChangeTurf(/turf/simulated/shuttle/floor/voidcraft)
 
 /datum/map_template/shelter/proc/annihilate_plants(turf/deploy_location)

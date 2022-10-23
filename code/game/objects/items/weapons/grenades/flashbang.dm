@@ -22,8 +22,8 @@
 			damage *= B.overmind.blob_type.burn_multiplier
 		B.adjust_integrity(-damage)
 
-	new/obj/effect/sparks(src.loc)
-	new/obj/effect/smoke/illumination(src.loc, 5, 30, 30, "#FFFFFF")
+	new/obj/effect/particle_effect/sparks(src.loc)
+	new/obj/effect/particle_effect/smoke/illumination(src.loc, 5, 30, 30, "#FFFFFF")
 
 	qdel(src)
 
@@ -89,7 +89,7 @@
 		if(!banglet && !(istype(src , /obj/item/grenade/flashbang/clusterbang)))
 			if (prob(M.ear_damage - 10 + 5))
 				to_chat(M, "<span class='danger'>You can't hear anything!</span>")
-				M.sdisabilities |= DEAF
+				M.sdisabilities |= SDISABILITY_DEAF
 	else if(M.ear_damage >= 5)
 		to_chat(M, "<span class='danger'>Your ears start to ring!</span>")
 

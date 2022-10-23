@@ -1,71 +1,60 @@
-import { round } from 'common/math';
-import { Fragment } from 'inferno';
-import { useBackend } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section } from "../components";
-import { Window } from "../layouts";
+import { useBackend } from '../backend';
+import { Button, Section } from '../components';
+import { Window } from '../layouts';
 
 export const Holodeck = (props, context) => {
   const { act, data } = useBackend(context);
-
   const {
-    supportedPrograms,
-    restrictedPrograms,
-    currentProgram,
-    isSilicon,
-    safetyDisabled,
+    can_toggle_safety,
     emagged,
-    gravity,
+    program,
   } = data;
-
-  let programsToShow = supportedPrograms;
-
-  if (safetyDisabled) {
-    programsToShow = programsToShow.concat(restrictedPrograms);
-  }
-
+  const default_programs = data.default_programs || [];
+  const emag_programs = data.emag_programs || [];
   return (
-    <Window width={400} height={610} resizable>
+    <Window
+      width={400}
+      height={500}>
       <Window.Content scrollable>
-        <Section title="Programs">
-          {programsToShow.map(prog => (
+        <Section
+          title="Default Programs"
+          buttons={(
             <Button
-              key={prog}
-              color={restrictedPrograms.indexOf(prog) !== -1 ? "bad" : null}
-              icon="eye"
-              content={prog}
-              selected={currentProgram === prog}
+              icon={emagged ? "unlock" : "lock"}
+              content="Safeties"
+              color="bad"
+              disabled={!can_toggle_safety}
+              selected={!emagged}
+              onClick={() => act('safety')} />
+          )}>
+          {default_programs.map(def_program => (
+            <Button
               fluid
-              onClick={() => act("program", { program: prog })} />
+              key={def_program.id}
+              content={def_program.name.substring(11)}
+              textAlign="center"
+              selected={def_program.id === program}
+              onClick={() => act('load_program', {
+                id: def_program.id,
+              })} />
           ))}
         </Section>
-        {!!isSilicon && (
-          <Section title="Override">
-            <Button
-              icon="exclamation-triangle"
-              fluid
-              disabled={emagged}
-              color={safetyDisabled ? "good" : "bad"}
-              onClick={() => act("AIoverride")}>
-              {!!emagged && "Error, unable to control. "}
-              {safetyDisabled ? "Enable Safeties" : "Disable Safeties"}
-            </Button>
+        {!!emagged && (
+          <Section title="Dangerous Programs">
+            {emag_programs.map(emag_program => (
+              <Button
+                fluid
+                key={emag_program.id}
+                content={emag_program.name.substring(11)}
+                color="bad"
+                textAlign="center"
+                selected={emag_program.id === program}
+                onClick={() => act('load_program', {
+                  id: emag_program.id,
+                })} />
+            ))}
           </Section>
         )}
-        <Section title="Controls">
-          <LabeledList>
-            <LabeledList.Item label="Safeties">
-              {safetyDisabled ? <Box color="bad">DISABLED</Box> : <Box color="good">ENABLED</Box>}
-            </LabeledList.Item>
-            <LabeledList.Item label="Gravity">
-              <Button
-                icon="user-astronaut"
-                selected={gravity}
-                onClick={() => act("gravity")}>
-                {gravity ? "Enabled" : "Disabled"}
-              </Button>
-            </LabeledList.Item>
-          </LabeledList>
-        </Section>
       </Window.Content>
     </Window>
   );

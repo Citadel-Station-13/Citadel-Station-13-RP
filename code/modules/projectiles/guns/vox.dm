@@ -37,7 +37,8 @@
 	. = ..()
 	. += "It has [spikes] spike\s remaining."
 
-/obj/item/gun/launcher/spikethrower/update_icon()
+/obj/item/gun/launcher/spikethrower/update_icon_state()
+	. = ..()
 	icon_state = "spikethrower[spikes]"
 
 /obj/item/gun/launcher/spikethrower/update_release_force()
@@ -57,6 +58,7 @@
 	icon_state = "darkcannon"
 	item_state = "darkcannon"
 	w_class = ITEMSIZE_HUGE
+	heavy = TRUE
 	charge_cost = 300
 	projectile_type = /obj/item/projectile/beam/stun/darkmatter
 	cell_type = /obj/item/cell/device/weapon/recharge
@@ -120,6 +122,7 @@
 	icon_state = "noise"
 	item_state = "noise"
 	w_class = ITEMSIZE_HUGE
+	heavy = TRUE
 	cell_type = /obj/item/cell/device/weapon/recharge
 	battery_lock = 1
 	charge_cost = 400
@@ -151,5 +154,5 @@
 /obj/item/projectile/sonic/strong/on_hit(var/atom/movable/target, var/blocked = 0)
 	if(ismob(target))
 		var/throwdir = get_dir(firer,target)
-		target.throw_at(get_edge_target_turf(target, throwdir), rand(1,6), 10)
+		target.throw_at_old(get_edge_target_turf(target, throwdir), rand(1,6), 10)
 		return 1

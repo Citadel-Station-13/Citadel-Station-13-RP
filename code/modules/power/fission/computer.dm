@@ -39,7 +39,7 @@
 
 /obj/machinery/computer/fission_monitor/attack_hand(mob/user)
 	add_fingerprint(user)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	nano_ui_interact(user)
 
@@ -72,11 +72,11 @@
 		var/obj/item/fuelrod/rod = locate(href_list["rod_insertion"])
 		if(istype(rod) && rod.loc == linked)
 			var/new_insersion = input(usr,"Enter new insertion (0-100)%","Insertion control",rod.insertion * 100) as num
-			rod.insertion = between(0, new_insersion / 100, 1)
+			rod.insertion = clamp( new_insersion / 100, 0,  1)
 
 	if(href_list["cutoff_point"])
 		var/new_cutoff = input(usr,"Enter new cutoff point in Kelvin","Cutoff point",linked.cutoff_temp) as num
-		linked.cutoff_temp = between(0, new_cutoff, linked.max_temp)
+		linked.cutoff_temp = clamp( new_cutoff, 0,  linked.max_temp)
 		if (linked.cutoff_temp == 0)
 			message_admins("[key_name(usr)] switched off auto shutdown on [linked]",0,1)
 			log_game("[linked] auto shutdown was switched off by [key_name(usr)]")

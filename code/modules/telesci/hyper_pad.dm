@@ -146,7 +146,7 @@
 							continue
 					else
 						continue
-				if(!((istype(ROI,/obj/mecha)) || istype(ROI,/obj/vehicle)))
+				if(!((istype(ROI,/obj/mecha)) || istype(ROI,/obj/vehicle_old)))
 					continue //TP things that move that are "anchored"
 			if(isobserver(ROI))
 				continue

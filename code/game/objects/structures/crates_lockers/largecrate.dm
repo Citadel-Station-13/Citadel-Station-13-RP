@@ -5,17 +5,61 @@
 	icon_state = "densecrate"
 	density = 1
 	var/list/starts_with
+	var/storage_capacity = 2 * MOB_LARGE //This is so that someone can't pack hundreds of items in a locker/crate
+							  //then open it in a populated area to crash clients.
 
+
+
+/obj/structure/largecrate/Initialize(mapload)	//Shamelessly copied from closets.dm since the old Initializer didnt seem to function properly - Bloop
+	. = ..()
+	if(mapload)
+		addtimer(CALLBACK(src, .proc/take_contents), 0)
+	PopulateContents()
+	// Closets need to come later because of spawners potentially creating objects during init.
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/largecrate/LateInitialize()
+	. = ..()
+	if(starts_with)
+		create_objects_in_loc(src, starts_with)
+		starts_with = null
+	update_icon()
+
+/obj/structure/largecrate/proc/take_contents()
+	// if(istype(loc, /mob/living))
+	//	return // No collecting mob organs if spawned inside mob
+	// I'll leave this out, if someone dies to this from voring someone who made a closet go yell at a coder to
+	// fix the fact you can build closets inside living people, not try to make it work you numbskulls.
+	var/obj/item/I
+	for(I in src.loc)
+		if(I.density || I.anchored || I == src) continue
+		I.forceMove(src)
+	// adjust locker size to hold all items with 5 units of free store room
+	var/content_size = 0
+	for(I in src.contents)
+		content_size += CEILING(I.w_class/2, 1)
+	if(content_size > storage_capacity-5)
+		storage_capacity = content_size + 5
+
+/**
+ * The proc that fills the closet with its initial contents.
+ */
+/obj/structure/largecrate/proc/PopulateContents()
+	return
+
+/*	/// Doesnt work but im gonna leave this here commented out in case I broke something with the shameless copy pasta from above -Bloop
 /obj/structure/largecrate/Initialize(mapload)
 	. = ..()
 	if(starts_with)
 		create_objects_in_loc(src, starts_with)
 		starts_with = null
 	for(var/obj/I in src.loc)
-		if(I.density || I.anchored || I == src || !I.simulated)
+		if(I.density || I.anchored || I == src || (I.flags & ATOM_ABSTRACT))
 			continue
 		I.forceMove(src)
 	update_icon()
+
+*/
 
 /obj/structure/largecrate/attack_hand(mob/user as mob)
 	to_chat(user, "<span class='notice'>You need a crowbar to pry this open!</span>")
@@ -29,7 +73,7 @@
 		new /obj/item/stack/material/wood(src)
 
 		for(var/atom/movable/AM in contents)
-			if(AM.simulated)
+			if(!(AM.flags & ATOM_ABSTRACT))
 				AM.forceMove(T)
 
 		user.visible_message("<span class='notice'>[user] pries \the [src] open.</span>", \
@@ -82,11 +126,11 @@
 	starts_with = list(/obj/structure/vehiclecage/quadtrailer)
 
 /obj/structure/largecrate/animal
-	icon_state = "lisacrate"	//VOREStation Edit
+	icon_state = "lisacrate"
 
 /obj/structure/largecrate/animal/mulebot
 	name = "Mulebot crate"
-	icon_state = "mulecrate"	//VOREStation Edit
+	icon_state = "mulecrate"
 	starts_with = list(/mob/living/bot/mulebot)
 
 /obj/structure/largecrate/animal/corgi
@@ -120,7 +164,7 @@
 	name = "spider crate"
 	starts_with = list(/mob/living/simple_mob/animal/giant_spider= 3)
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 /obj/structure/largecrate/birds //This is an awful hack, but it's the only way to get multiple mobs spawned in one crate.
 	name = "Bird crate"
 	desc = "You hear chirping and cawing inside the crate. It sounds like there are a lot of birds in there..."
@@ -151,7 +195,8 @@
 		new /mob/living/simple_mob/animal/passive/bird/parrot/pink_cockatoo(src)
 		var/turf/T = get_turf(src)
 		for(var/atom/movable/AM in contents)
-			if(AM.simulated) AM.forceMove(T)
+			if(!(AM.flags & ATOM_ABSTRACT))
+				AM.forceMove(T)
 		user.visible_message("<span class='notice'>[user] pries \the [src] open.</span>", \
 							 "<span class='notice'>You pry open \the [src].</span>", \
 							 "<span class='notice'>You hear splitting wood.</span>")
@@ -192,50 +237,8 @@
 						/mob/living/simple_mob/animal/space/alien/drone,
 						/mob/living/simple_mob/animal/space/alien/sentinel,
 						/mob/living/simple_mob/animal/space/alien/queen,
-//						/mob/living/simple_mob/otie/feral,
-//						/mob/living/simple_mob/otie/red,
 						/mob/living/simple_mob/vore/aggressive/corrupthound))
 	return ..()
-/*
-/obj/structure/largecrate/animal/guardbeast
-	name = "VARMAcorp autoNOMous security solution"
-	desc = "The VARMAcorp bioengineering division flagship product on trained optimal snowflake guard dogs."
-	icon = 'icons/obj/storage_vr.dmi'
-	icon_state = "sotiecrate"
-	starts_with = list(/mob/living/simple_mob/otie/security)
-
-/obj/structure/largecrate/animal/guardmutant
-	name = "VARMAcorp autoNOMous security solution for hostile environments."
-	desc = "The VARMAcorp bioengineering division flagship product on trained optimal snowflake guard dogs. This one can survive hostile atmosphere."
-	icon = 'icons/obj/storage_vr.dmi'
-	icon_state = "sotiecrate"
-	starts_with = list(/mob/living/simple_mob/otie/security/phoron)
-
-/obj/structure/largecrate/animal/otie
-	name = "VARMAcorp adoptable reject (Dangerous!)"
-	desc = "A warning on the side says the creature inside was returned to the supplier after injuring or devouring several unlucky members of the previous adoption family. It was given a second chance with the next customer. Godspeed and good luck with your new pet!"
-	icon = 'icons/obj/storage_vr.dmi'
-	icon_state = "otiecrate2"
-	starts_with = list(/mob/living/simple_mob/otie/cotie)
-	var/taped = 1
-
-/obj/structure/largecrate/animal/otie/phoron
-	name = "VARMAcorp adaptive beta subject (Experimental)"
-	desc = "VARMAcorp experimental hostile environment adaptive breeding development kit. WARNING, DO NOT RELEASE IN WILD!"
-	starts_with = list(/mob/living/simple_mob/otie/cotie/phoron)
-
-/obj/structure/largecrate/animal/otie/phoron/Initialize(mapload)
-	starts_with = list(pick(/mob/living/simple_mob/otie/cotie/phoron;2,
-						/mob/living/simple_mob/otie/red/friendly;0.5))
-	return ..()
-
-/obj/structure/largecrate/animal/otie/attack_hand(mob/living/carbon/human/M as mob)//I just couldn't decide between the icons lmao
-	if(taped == 1)
-		playsound(src, 'sound/items/poster_ripped.ogg', 50, 1)
-		icon_state = "otiecrate"
-		taped = 0
-	..()
-*/ //VORESTATION AI REMOVAL, Oties are still fucking broken.
 
 /obj/structure/largecrate/animal/wolfgirl
 	name = "Wolfgirl Crate"

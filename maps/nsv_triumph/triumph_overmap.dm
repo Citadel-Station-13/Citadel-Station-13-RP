@@ -8,7 +8,7 @@
 [b]Notice[/b]: NanoTrasen Vessel, authorized personnel only"}
 
 	icon_state = "ship"
-	vessel_mass = 100000
+	vessel_mass = 25000
 	burn_delay = 2 SECONDS
 	fore_dir = EAST	// Which direction the ship/z-level is facing.  It will move dust particles from that direction when moving.
 	base = TRUE		// Honestly unsure what this does but it seems the main sector or "Map" we're at has this so here it stays
@@ -204,7 +204,7 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	known = FALSE
 	color = "#33BB33"
 
-/obj/effect/overmap/visitable/sector/frozen_planet
+/obj/effect/overmap/visitable/sector/class_p
 	name = "Frozen Planet"
 	desc = "A world shrouded in cold and snow that seems to never let up."
 	scanner_desc = @{"[i]Information[/i]: A planet with a very cold atmosphere. Possible life signs detected."}

@@ -51,7 +51,7 @@
 	var/image/line = image(icon = 'icons/effects/effects.dmi', loc = A, icon_state = "stripes", dir = line_dir)
 	line.pixel_x = line_pixel_x
 	line.pixel_y = line_pixel_y
-	line.plane = PLANE_FULLSCREEN // It's technically a HUD element but it doesn't need to show above item slots.
+	line.plane = FULLSCREEN_PLANE // It's technically a HUD element but it doesn't need to show above item slots.
 	line.appearance_flags = RESET_TRANSFORM|RESET_COLOR|RESET_ALPHA|NO_CLIENT_COLOR|TILE_BOUND
 	line.alpha = 125
 	C.images += line

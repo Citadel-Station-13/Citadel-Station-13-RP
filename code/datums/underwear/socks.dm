@@ -70,3 +70,43 @@
 /datum/category_item/underwear/socks/pantyhose_rip
 	name = "Ripped Pantyhose"
 	icon_state = "pantyhose_ripped"
+
+//Stirrup Variants
+/datum/category_item/underwear/socks/pantyhose_stirrup
+	name = "Pantyhose (Stirrup)"
+	icon_state = "pantyhose-stir"
+
+/datum/category_item/underwear/socks/striped_knee_stirrup
+	name = "Knee, striped (Stirrup)"
+	icon_state = "striped_knee-stir"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/striped_thigh_stirrup
+	name = "Thigh, striped (Stirrup)"
+	icon_state = "striped_thigh-stir"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/rainbow_knee_stirrup
+	name = "Knee, rainbow (Stirrup)"
+	icon_state = "rainbow_knee-stir"
+
+/datum/category_item/underwear/socks/rainbow_thigh_stirrup
+	name = "Thigh, rainbow (Stirrup)"
+	icon_state = "rainbow_thigh-stir"
+
+/datum/category_item/underwear/socks/knee_stirrup
+	name = "Knee (Stirrup)"
+	icon_state = "socks_knee-stir"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/thigh_stirrup
+	name = "Thigh (Stirrup)"
+	icon_state = "socks_thigh-stir"
+	has_color = TRUE
+
+/datum/category_item/underwear/socks/leggings_stirrup
+	name = "Leggings (Stirrup)"
+	icon_state = "leggings-stir"
+/datum/category_item/underwear/socks/pantyhose_rip_stirrup
+	name = "Ripped Pantyhose (Stirrup)"
+	icon_state = "pantyhose_ripped-stir"

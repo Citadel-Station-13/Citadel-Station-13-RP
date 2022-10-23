@@ -45,6 +45,13 @@
 			usr.client.admin_delete(target)
 			if (isturf(src))	// show the turf that took its place
 				usr.client.debug_variables(src)
+				return
+	if(href_list[VV_HK_VIEW_APPEARANCE])
+		var/appearance/A = locate(href_list[VV_HK_VIEW_APPEARANCE])
+		if(!A || !IS_APPEARANCE(A))
+			to_chat(usr, SPAN_WARNING("Invalid ref: [href_list[VV_HK_VIEW_APPEARANCE]]"))
+			return
+		usr.client.debug_variables(A)
 	if(href_list[VV_HK_MARK])
 		usr.client.mark_datum(target)
 	if(href_list[VV_HK_ADDCOMPONENT])

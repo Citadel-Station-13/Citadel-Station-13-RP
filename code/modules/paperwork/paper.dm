@@ -9,7 +9,7 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "paper"
 	item_state = "paper"
-	throwforce = 0
+	throw_force = 0
 	w_class = ITEMSIZE_TINY
 	throw_range = 1
 	throw_speed = 1
@@ -37,74 +37,13 @@
 	var/const/deffont = "Verdana"
 	var/const/signfont = "Times New Roman"
 	var/const/crayonfont = "Comic Sans MS"
+	var/auto_desc = TRUE
 
 	var/list/stamp_sounds = list(
 		'sound/items/stamp1.ogg',
 		'sound/items/stamp2.ogg',
 		'sound/items/stamp3.ogg'
 		)
-
-/obj/item/paper/card
-	name = "blank card"
-	desc = "A gift card with space to write on the cover."
-	icon_state = "greetingcard"
-	slot_flags = null //no fun allowed!!!!
-
-/obj/item/paper/card/AltClick() //No fun allowed
-	return
-
-/obj/item/paper/card/update_icon()
-	return
-
-/obj/item/paper/card/smile
-	name = "happy card"
-	desc = "A gift card with a smiley face on the cover."
-	icon_state = "greetingcard_smile"
-
-/obj/item/paper/card/cat
-	name = "cat card"
-	desc = "A gift card with a cat on the cover."
-	icon_state = "greetingcard_cat"
-
-/obj/item/paper/card/flower
-	name = "flower card"
-	desc = "A gift card with a flower on the cover."
-	icon_state = "greetingcard_flower"
-
-/obj/item/paper/card/heart
-	name = "heart card"
-	desc = "A gift card with a heart on the cover."
-	icon_state = "greetingcard_heart"
-
-/obj/item/paper/card/Initialize(mapload)
-	. = ..()
-	pixel_y = rand(-8, 8)
-	pixel_x = rand(-9, 9)
-	stamps = null
-
-	if(info != initial(info))
-		info = html_encode(info)
-		info = replacetext(info, "\n", "<BR>")
-		info = parsepencode(info)
-		return
-
-/obj/item/paper/alien
-	name = "alien tablet"
-	desc = "It looks highly advanced"
-	icon = 'icons/obj/abductor.dmi'
-	icon_state = "alienpaper"
-
-/obj/item/paper/alien/update_icon()
-	if(info)
-		icon_state = "alienpaper_words"
-	else
-		icon_state = "alienpaper"
-
-/obj/item/paper/alien/burnpaper()
-	return
-
-/obj/item/paper/alien/AltClick() // No airplanes for me.
-	return
 
 //lipstick wiping is in code/game/objects/items/weapons/cosmetics.dm!
 
@@ -114,19 +53,19 @@
 	pixel_x = rand(-9, 9)
 	stamps = ""
 
-	if(name != "paper")
+	if((name != "paper") && auto_desc)
 		desc = "This is a paper titled '" + name + "'."
 
 	if(info != initial(info))
 		info = html_encode(info)
 		info = replacetext(info, "\n", "<BR>")
-		info = parsepencode(info)
-
-	spawn(2)
-		update_icon()
-		update_space(info)
-		updateinfolinks()
-		return
+		INVOKE_ASYNC(src, .proc/init_parsepencode, info)
+	else
+		// TODO: REFACTOR PAPER
+		spawn(0)
+			update_icon()
+			update_space(info)
+			updateinfolinks()
 
 /obj/item/paper/update_icon()
 	if(icon_state == "paper_talisman")
@@ -163,7 +102,7 @@
 	set category = "Object"
 	set src in usr
 
-	if((CLUMSY in usr.mutations) && prob(50))
+	if((MUTATION_CLUMSY in usr.mutations) && prob(50))
 		to_chat(usr, "<span class='warning'>You cut yourself on the paper.</span>")
 		return
 	var/n_name = sanitizeSafe(input(usr, "What would you like to label the paper?", "Paper Labelling", null)  as text, MAX_NAME_LEN)
@@ -291,6 +230,12 @@
 		return P.get_signature(user)
 	return (user && user.real_name) ? user.real_name : "Anonymous"
 
+/obj/item/paper/proc/init_parsepencode(t, P, user, iscrayon)
+	info = parsepencode(t, P, user, iscrayon)
+	update_icon()
+	update_space(info)
+	updateinfolinks()
+
 /obj/item/paper/proc/parsepencode(var/t, var/obj/item/pen/P, mob/user as mob, var/iscrayon = 0)
 //	t = copytext(sanitize(t),1,MAX_MESSAGE_LEN)
 
@@ -368,7 +313,7 @@
 
 /obj/item/paper/proc/burnpaper(obj/item/flame/P, mob/user)
 	var/class = "warning"
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 
 	if(P.lit && !user.restrained())
 		if(istype(P, /obj/item/flame/lighter/zippo))
@@ -378,14 +323,11 @@
 		"<span class='[class]'>You hold \the [P] up to \the [src], burning it slowly.</span>")
 
 		spawn(20)
-			if(get_dist(src, user) < 2 && user.get_active_hand() == P && P.lit)
+			if(get_dist(src, user) < 2 && user.get_active_held_item() == P && P.lit)
 				user.visible_message("<span class='[class]'>[user] burns right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>", \
 				"<span class='[class]'>You burn right through \the [src], turning it to ash. It flutters through the air before settling on the floor in a heap.</span>")
-
-				if(user.get_inactive_hand() == src)
-					user.drop_from_inventory(src)
-
-				new /obj/effect/decal/cleanable/ash(src.loc)
+				forceMove(drop_location())
+				new /obj/effect/debris/cleanable/ash(src.loc)
 				qdel(src)
 
 			else
@@ -410,14 +352,14 @@
 		if(!t)
 			return
 
-		var/obj/item/i = usr.get_active_hand() // Check to see if he still got that darn pen, also check if he's using a crayon or pen.
+		var/obj/item/i = usr.get_active_held_item() // Check to see if he still got that darn pen, also check if he's using a crayon or pen.
 		var/iscrayon = 0
 		if(!istype(i, /obj/item/pen))
 			var/mob/living/M = usr
 			if(istype(M) && M.back && istype(M.back,/obj/item/rig))
 				var/obj/item/rig/r = M.back
 				var/obj/item/rig_module/device/pen/m = locate(/obj/item/rig_module/device/pen) in r.installed_modules
-				if(!r.offline && m)
+				if(r.is_online() && m)
 					i = m.device
 				else
 					return
@@ -467,14 +409,6 @@
 
 		update_icon()
 
-/obj/item/paper/get_worn_icon_state(var/slot_name)
-	if(slot_name == slot_head_str)
-		return "paper" //Gross, but required for now.
-	return ..()
-
-/obj/item/paper/attackby(obj/item/P as obj, mob/user as mob)
-	. = ..()
-
 /obj/item/paper/attackby(obj/item/P as obj, mob/user as mob)
 	..()
 	var/clown = 0
@@ -493,42 +427,20 @@
 				to_chat(user, "<span class='notice'>Take off the carbon copy first.</span>")
 				add_fingerprint(user)
 				return
-		var/obj/item/paper_bundle/B = new(src.loc)
+		var/old_slot = worn_slot
+		if(!user.attempt_void_item_for_installation(P))
+			return
+		var/obj/item/paper_bundle/B = new(loc)
 		if (name != "paper")
 			B.name = name
 		else if (P.name != "paper" && P.name != "photo")
 			B.name = P.name
-		user.drop_from_inventory(P)
-		if (istype(user, /mob/living/carbon/human))
-			var/mob/living/carbon/human/h_user = user
-			if (h_user.r_hand == src)
-				h_user.drop_from_inventory(src)
-				h_user.put_in_r_hand(B)
-			else if (h_user.l_hand == src)
-				h_user.drop_from_inventory(src)
-				h_user.put_in_l_hand(B)
-			else if (h_user.l_store == src)
-				h_user.drop_from_inventory(src)
-				B.loc = h_user
-				B.hud_layerise()
-				h_user.l_store = B
-				//h_user.update_inv_pockets() //Doesn't do anything
-			else if (h_user.r_store == src)
-				h_user.drop_from_inventory(src)
-				B.loc = h_user
-				B.hud_layerise()
-				h_user.r_store = B
-				//h_user.update_inv_pockets() //Doesn't do anything
-			else if (h_user.head == src)
-				h_user.u_equip(src)
-				h_user.put_in_hands(B)
-			else if (!istype(src.loc, /turf))
-				src.loc = get_turf(h_user)
-				if(h_user.client)	h_user.client.screen -= src
-				h_user.put_in_hands(B)
+		if(!(old_slot? (user.equip_to_slot_if_possible(B, old_slot)) : (user.put_in_hands(B))))
+			B.forceMove(get_turf(src))
+
 		to_chat(user, "<span class='notice'>You clip the [P.name] to [(src.name == "paper") ? "the paper" : src.name].</span>")
-		src.loc = B
-		P.loc = B
+		forceMove(B)
+		P.forceMove(B)
 
 		B.pages.Add(src)
 		B.pages.Add(P)
@@ -547,7 +459,7 @@
 		return
 
 	else if(istype(P, /obj/item/stamp) || istype(P, /obj/item/clothing/gloves/ring/seal))
-		if((!in_range(src, usr) && loc != user && !( istype(loc, /obj/item/clipboard) ) && loc.loc != user && user.get_active_hand() != P))
+		if((!in_range(src, usr) && loc != user && !( istype(loc, /obj/item/clipboard) ) && loc.loc != user && user.get_active_held_item() != P))
 			return
 		playsound(P, pick(stamp_sounds), 30, 1, -1)
 
@@ -615,7 +527,6 @@
 
 /obj/item/paper/flag
 	icon_state = "flag_neutral"
-	item_state = "paper"
 	anchored = 1.0
 
 /obj/item/paper/jobs
@@ -626,13 +537,12 @@
 	name = "photo"
 	icon_state = "photo"
 	var/photo_id = 0.0
-	item_state = "paper"
 
 /obj/item/paper/sop
 	name = "paper- 'Standard Operating Procedure'"
 	info = "Alert Levels:<BR>\nBlue- Emergency<BR>\n\t1. Caused by fire<BR>\n\t2. Caused by manual interaction<BR>\n\tAction:<BR>\n\t\tClose all fire doors. These can only be opened by reseting the alarm<BR>\nRed- Ejection/Self Destruct<BR>\n\t1. Caused by module operating computer.<BR>\n\tAction:<BR>\n\t\tAfter the specified time the module will eject completely.<BR>\n<BR>\nEngine Maintenance Instructions:<BR>\n\tShut off ignition systems:<BR>\n\tActivate internal power<BR>\n\tActivate orbital balance matrix<BR>\n\tRemove volatile liquids from area<BR>\n\tWear a fire suit<BR>\n<BR>\n\tAfter<BR>\n\t\tDecontaminate<BR>\n\t\tVisit medical examiner<BR>\n<BR>\nToxin Laboratory Procedure:<BR>\n\tWear a gas mask regardless<BR>\n\tGet an oxygen tank.<BR>\n\tActivate internal atmosphere<BR>\n<BR>\n\tAfter<BR>\n\t\tDecontaminate<BR>\n\t\tVisit medical examiner<BR>\n<BR>\nDisaster Procedure:<BR>\n\tFire:<BR>\n\t\tActivate sector fire alarm.<BR>\n\t\tMove to a safe area.<BR>\n\t\tGet a fire suit<BR>\n\t\tAfter:<BR>\n\t\t\tAssess Damage<BR>\n\t\t\tRepair damages<BR>\n\t\t\tIf needed, Evacuate<BR>\n\tMeteor Shower:<BR>\n\t\tActivate fire alarm<BR>\n\t\tMove to the back of ship<BR>\n\t\tAfter<BR>\n\t\t\tRepair damage<BR>\n\t\t\tIf needed, Evacuate<BR>\n\tAccidental Reentry:<BR>\n\t\tActivate fire alarms in front of ship.<BR>\n\t\tMove volatile matter to a fire proof area!<BR>\n\t\tGet a fire suit.<BR>\n\t\tStay secure until an emergency ship arrives.<BR>\n<BR>\n\t\tIf ship does not arrive-<BR>\n\t\t\tEvacuate to a nearby safe area!"
 
-/obj/item/paper/natural/Initialize()
+/obj/item/paper/natural/Initialize(mapload)
 	. = ..()
 	color = "#FFF5ED"
 
@@ -719,3 +629,54 @@
 	name = "weathered note"
 	info = "<I>Jason stayed behind at the shelter, so I know he'll be okay. We've been bunkered down for days now. The seismic activity is getting worse, but the barricades are holding. They're adapting, we think. Someone says they saw a cat, probably from the colony. Sick bastards. We're talking about trying to move out for the shuttles at first light. Jason, if you're reading this, meet me there. I love you. -A</I>"
 */
+
+/obj/item/paper/card
+	name = "blank card"
+	desc = "A gift card with space to write on the cover."
+	icon_state = "greetingcard"
+	slot_flags = null //no fun allowed!!!!
+
+/obj/item/paper/card/AltClick() //No fun allowed
+	return
+
+/obj/item/paper/card/update_icon()
+	return
+
+/obj/item/paper/card/smile
+	name = "happy card"
+	desc = "A gift card with a smiley face on the cover."
+	icon_state = "greetingcard_smile"
+
+/obj/item/paper/card/cat
+	name = "cat card"
+	desc = "A gift card with a cat on the cover."
+	icon_state = "greetingcard_cat"
+
+/obj/item/paper/card/flower
+	name = "flower card"
+	desc = "A gift card with a flower on the cover."
+	icon_state = "greetingcard_flower"
+
+/obj/item/paper/card/heart
+	name = "heart card"
+	desc = "A gift card with a heart on the cover."
+	icon_state = "greetingcard_heart"
+	auto_desc = FALSE
+
+/obj/item/paper/alien
+	name = "alien tablet"
+	desc = "It looks highly advanced"
+	icon = 'icons/obj/abductor.dmi'
+	icon_state = "alienpaper"
+
+/obj/item/paper/alien/update_icon()
+	if(info)
+		icon_state = "alienpaper_words"
+	else
+		icon_state = "alienpaper"
+
+/obj/item/paper/alien/burnpaper()
+	return
+
+/obj/item/paper/alien/AltClick() // No airplanes for me.
+	return

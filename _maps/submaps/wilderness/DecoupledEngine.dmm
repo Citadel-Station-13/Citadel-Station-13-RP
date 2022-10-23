@@ -59,7 +59,7 @@
 /area/submap/DecoupledEngine)
 "ap" = (
 /obj/effect/floor_decal/rust,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "aq" = (
@@ -124,7 +124,7 @@
 	dir = 4
 	},
 /obj/effect/floor_decal/rust,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
@@ -160,7 +160,7 @@
 "aG" = (
 /obj/machinery/fusion_fuel_compressor,
 /obj/effect/floor_decal/rust,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "aH" = (
@@ -169,7 +169,7 @@
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "aI" = (
-/obj/effect/decal/cleanable/blood/oil/streak{
+/obj/effect/debris/cleanable/blood/oil/streak{
 	amount = 0
 	},
 /obj/effect/floor_decal/rust,
@@ -387,7 +387,7 @@
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "bj" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
 /obj/effect/floor_decal/rust,
@@ -427,13 +427,13 @@
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "bo" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "bp" = (
 /obj/effect/floor_decal/rust,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/rcd,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)

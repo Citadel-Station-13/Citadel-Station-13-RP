@@ -63,7 +63,7 @@
 	faction = "roaches"
 
 	mob_size = MOB_SMALL
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 //	can_pull_size = ITEMSIZE_TINY
 //	can_pull_mobs = MOB_PULL_NONE
 	layer = MOB_LAYER
@@ -119,7 +119,7 @@
 	taser_kill = 0
 
 //Unrandom the pet...?
-/mob/living/simple_mob/animal/roach/Greta/Initialize()
+/mob/living/simple_mob/animal/roach/Greta/Initialize(mapload)
     . = ..()
     size_multiplier = 1
     maxHealth = maxHealth
@@ -527,7 +527,7 @@
 		if(isliving(A))
 			var/mob/living/L = A
 			L.Weaken(stealthed_weaken_amount)
-			to_chat(L, span("danger", "\The [src] ambushes you!"))
+			to_chat(L, SPAN_DANGER("\The [src] ambushes you!"))
 			playsound(L, 'sound/weapons/spiderlunge.ogg', 75, 1)
 	unstealth()
 	..() // For the poison.

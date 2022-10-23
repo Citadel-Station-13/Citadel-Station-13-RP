@@ -69,10 +69,11 @@ const SelectedArticle = (props, context) => {
       </Fragment>
     }>
       {!!cover && <img src={resolveAsset(cover)} />}
-      {/* News articles are written in premade .html files and cannot be edited by players, so it should be
-        * safe enough to use dangerouslySetInnerHTML here.
+      {/* News articles are written in premade .html files and cannot be
+        * edited by players, so it should be safe enough to use
+        * dangerouslySetInnerHTML here.
         */}
-      <div dangerouslySetInnerHTML={{ __html: content }} /> 
+      <div dangerouslySetInnerHTML={{ __html: content }} />
     </Section>
   );
 };

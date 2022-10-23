@@ -15,6 +15,7 @@ import { createLogger } from './logging';
 const logger = createLogger('store');
 
 export const configureStore = (options = {}) => {
+  const { sideEffects = true } = options;
   const reducer = flow([
     combineReducers({
       debug: debugReducer,
@@ -22,17 +23,21 @@ export const configureStore = (options = {}) => {
     }),
     options.reducer,
   ]);
-  const middleware = [
+  const middleware = !sideEffects ? [] : [
     ...(options.middleware?.pre || []),
     assetMiddleware,
     backendMiddleware,
     ...(options.middleware?.post || []),
   ];
   if (process.env.NODE_ENV !== 'production') {
-    middleware.unshift(
-      loggingMiddleware,
-      debugMiddleware,
-      relayMiddleware);
+    // We are using two if statements because Webpack is capable of
+    // removing this specific block as dead code.
+    if (sideEffects) {
+      middleware.unshift(
+        loggingMiddleware,
+        debugMiddleware,
+        relayMiddleware);
+    }
   }
   const enhancer = applyMiddleware(...middleware);
   const store = createStore(reducer, enhancer);
@@ -44,11 +49,12 @@ export const configureStore = (options = {}) => {
 
 const loggingMiddleware = store => next => action => {
   const { type, payload } = action;
-  if (type === 'update' || type === 'backend/update') {
+  if (type === 'update' || type === 'backend/update' || type === 'data' || type === 'backend/data') {
     logger.debug('action', { type });
   }
   else {
     logger.debug('action', action);
+
   }
   return next(action);
 };

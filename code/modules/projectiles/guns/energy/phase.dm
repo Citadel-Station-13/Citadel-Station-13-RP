@@ -32,7 +32,7 @@
 	charge_cost = 400
 	recharge_time = 7
 
-obj/item/gun/energy/phasegun/rifle
+/obj/item/gun/energy/phasegun/rifle
 	name = "phase rifle"
 	desc = "The NT EW31 Orion is a specialist energy weapon, intended for use against hostile wildlife."
 	icon_state = "phaserifle"
@@ -52,6 +52,7 @@ obj/item/gun/energy/phasegun/rifle
 	wielded_item_state = "phasecannon-wielded"	//TODO: New Sprites
 	w_class = ITEMSIZE_HUGE		// This thing is big.
 	slot_flags = SLOT_BACK
+	heavy = TRUE
 	charge_cost = 100
 	projectile_type = /obj/item/projectile/energy/phase/heavy/cannon
 	accuracy = 70

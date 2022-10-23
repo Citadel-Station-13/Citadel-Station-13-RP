@@ -1,7 +1,3 @@
-#define HOLD_CASINGS	0 //do not do anything after firing. Manual action, like pump shotguns, or guns that want to define custom behaviour
-#define EJECT_CASINGS	1 //drop spent casings on the ground after firing
-#define CYCLE_CASINGS 	2 //experimental: cycle casings, like a revolver. Also works for multibarrelled guns
-
 /obj/item/gun/projectile
 	name = "gun"
 	desc = "A gun that fires bullets."
@@ -9,7 +5,7 @@
 	icon_state = "revolver"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	w_class = ITEMSIZE_NORMAL
-	matter = list(DEFAULT_WALL_MATERIAL = 1000)
+	matter = list(MAT_STEEL = 1000)
 	recoil = 0
 	projectile_type = /obj/item/projectile/bullet/pistol/strong	//Only used for chameleon guns
 
@@ -21,6 +17,7 @@
 	var/max_shells = 0			//the number of casings that will fit inside
 	var/ammo_type = null		//the type of ammo that the gun comes preloaded with
 	var/list/loaded = list()	//stored ammo
+	var/load_sound = 'sound/weapons/guns/interaction/bullet_insert.ogg'
 
 	//For MAGAZINE guns
 	var/magazine_type = null	//the type of magazine that the gun comes preloaded with
@@ -28,6 +25,9 @@
 	var/allowed_magazines		//determines list of which magazines will fit in the gun
 	var/auto_eject = 0			//if the magazine should automatically eject itself when empty.
 	var/auto_eject_sound = null
+	var/mag_insert_sound = 'sound/weapons/guns/interaction/pistol_magin.ogg'
+	var/mag_remove_sound = 'sound/weapons/guns/interaction/pistol_magout.ogg'
+	var/can_special_reload = TRUE //Whether or not we can perform tactical/speed reloads on this gun
 	//TODO generalize ammo icon states for guns
 	//var/magazine_states = 0
 	//var/list/icon_keys = list()		//keys
@@ -99,25 +99,56 @@
 	if(handle_casings != HOLD_CASINGS)
 		chambered = null
 
-
+///time it takes to tac reload a gun
+#define TACTICAL_RELOAD_SPEED 1 SECOND
+///time it takes to speed reload a gun
+#define SPEED_RELOAD_SPEED    0.5 SECONDS
 //Attempts to load A into src, depending on the type of thing being loaded and the load_method
 //Maybe this should be broken up into separate procs for each load method?
-/obj/item/gun/projectile/proc/load_ammo(var/obj/item/A, mob/user)
+/obj/item/gun/projectile/proc/load_ammo(obj/item/A, mob/user)
 	if(istype(A, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = A
 		if(!(load_method & AM.mag_type) || caliber != AM.caliber || allowed_magazines && !is_type_in_list(A, allowed_magazines))
-			to_chat(user, "<span class='warning'>[AM] won't load into [src]!</span>")
+			to_chat(user, SPAN_WARNING("[AM] won't load into [src]!"))
 			return
 		switch(AM.mag_type)
 			if(MAGAZINE)
 				if(ammo_magazine)
-					to_chat(user, "<span class='warning'>[src] already has a magazine loaded.</span>") //already a magazine here
+					if(user.a_intent == INTENT_HELP || user.a_intent == INTENT_DISARM)
+						to_chat(user, SPAN_WARNING("[src] already has a magazine loaded."))//already a magazine here
+						return
+					else
+						if(user.a_intent == INTENT_GRAB) //Tactical reloading
+							if(!can_special_reload)
+								to_chat(user, SPAN_WARNING("You can't tactically reload this gun!"))
+								return
+							if(do_after(user, TACTICAL_RELOAD_SPEED, src))
+								if(!user.attempt_insert_item_for_installation(AM, src))
+									return
+								ammo_magazine.update_icon()
+								user.put_in_hands(ammo_magazine)
+								user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
+													 SPAN_WARNING("You tactically reload \the [src] with \the [AM]!"))
+						else //Speed reloading
+							if(!can_special_reload)
+								to_chat(user, SPAN_WARNING("You can't speed reload this gun!"))
+								return
+							if(do_after(user, SPEED_RELOAD_SPEED, src))
+								if(!user.attempt_insert_item_for_installation(AM, src))
+									return
+								ammo_magazine.update_icon()
+								ammo_magazine.dropInto(user.loc)
+								user.visible_message(SPAN_WARNING("\The [user] reloads \the [src] with \the [AM]!"),
+													 SPAN_WARNING("You speed reload \the [src] with \the [AM]!"))
+					ammo_magazine = AM
+					playsound(loc, mag_insert_sound, 75, 1)
+					update_icon()
+					AM.update_icon()
+				if(!user.attempt_insert_item_for_installation(AM, src))
 					return
-				user.remove_from_mob(AM)
-				AM.loc = src
 				ammo_magazine = AM
 				user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
-				playsound(src.loc, 'sound/weapons/flipblade.ogg', 50, 1)
+				playsound(src.loc, mag_insert_sound, 50, 1)
 			if(SPEEDLOADER)
 				if(loaded.len >= max_shells)
 					to_chat(user, "<span class='warning'>[src] is full!</span>")
@@ -133,7 +164,7 @@
 						count++
 				if(count)
 					user.visible_message("[user] reloads [src].", "<span class='notice'>You load [count] round\s into [src].</span>")
-					playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
+					playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1) //Kind of the opposite of empty but the "click" sound fits a speedloader nicely.
 		AM.update_icon()
 	else if(istype(A, /obj/item/ammo_casing))
 		var/obj/item/ammo_casing/C = A
@@ -142,12 +173,11 @@
 		if(loaded.len >= max_shells)
 			to_chat(user, "<span class='warning'>[src] is full.</span>")
 			return
-
-		user.remove_from_mob(C)
-		C.loc = src
+		if(!user.attempt_insert_item_for_installation(C, src))
+			return
 		loaded.Insert(1, C) //add to the head of the list
 		user.visible_message("[user] inserts \a [C] into [src].", "<span class='notice'>You insert \a [C] into [src].</span>")
-		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
+		playsound(src.loc, load_sound, 50, 1)
 
 	else if(istype(A, /obj/item/storage))
 		var/obj/item/storage/storage = A
@@ -169,12 +199,15 @@
 
 	update_icon()
 
+#undef TACTICAL_RELOAD_SPEED
+#undef SPEED_RELOAD_SPEED
+
 //attempts to unload src. If allow_dump is set to 0, the speedloader unloading method will be disabled
 /obj/item/gun/projectile/proc/unload_ammo(mob/user, var/allow_dump=1)
 	if(ammo_magazine)
 		user.put_in_hands(ammo_magazine)
 		user.visible_message("[user] removes [ammo_magazine] from [src].", "<span class='notice'>You remove [ammo_magazine] from [src].</span>")
-		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
+		playsound(src.loc, mag_remove_sound, 50, 1)
 		ammo_magazine.update_icon()
 		ammo_magazine = null
 	else if(loaded.len)
@@ -210,7 +243,7 @@
 		unload_ammo(user)
 
 /obj/item/gun/projectile/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		unload_ammo(user, allow_dump=0)
 	else
 		return ..()

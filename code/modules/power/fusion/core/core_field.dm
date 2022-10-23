@@ -1,6 +1,6 @@
-#define FUSION_ENERGY_PER_K 20
-#define PLASMA_TEMP_RADIATION_DIVISIOR 20 //radiation divisior. plasma temp / divisor = radiation.
-
+#define FUSION_ENERGY_KW_PER_K 0.02
+///radiation divisior. plasma temp / divisor = radiation.
+#define PLASMA_TEMP_RADIATION_DIVISIOR 20
 GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 
 /obj/effect/fusion_em_field
@@ -43,7 +43,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	ignore_types = typecacheof(list(
 		/obj/effect,
 		/obj/item/projectile,
-		/obj/fire,
+		/atom/movable/fire,
 		/obj/structure/cable,
 		/obj/machinery/atmospherics,
 		/obj/machinery/air_sensor,
@@ -145,7 +145,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	React()
 
 	// Dump power to our powernet.
-	owned_core.add_avail(FUSION_ENERGY_PER_K * plasma_temperature)
+	owned_core.add_avail(FUSION_ENERGY_KW_PER_K * plasma_temperature)
 
 	// Energy decay.
 	if(plasma_temperature >= 1)
@@ -329,7 +329,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 		var/empsev = max(1, min(3, CEILING(size/2, 1)))
 		for(var/atom/movable/AM in range(max(1,FLOOR(size/2, 1)), loc))
 
-			if(AM == src || AM == owned_core || !AM.simulated)
+			if(AM == src || AM == owned_core || (AM.flags & ATOM_ABSTRACT))
 				continue
 			if(ignore_types[AM.type])
 				continue
@@ -518,7 +518,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	if(owned_core && owned_core.loc)
 		var/datum/gas_mixture/environment = owned_core.loc.return_air()
 		if(environment && environment.temperature < (GLOB.max_fusion_air_heat))
-			environment.add_thermal_energy(plasma_temperature*5000)
+			environment.adjust_thermal_energy(plasma_temperature*5000)
 			check_instability()
 
 //Temperature changes depending on color. Now, the visibility of the field increases with temperature, along with the glow.

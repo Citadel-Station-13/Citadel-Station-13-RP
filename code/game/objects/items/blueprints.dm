@@ -55,7 +55,7 @@
 
 /obj/item/blueprints/Topic(href, href_list)
 	..()
-	if ((usr.restrained() || usr.stat || usr.get_active_hand() != src))
+	if ((usr.restrained() || usr.stat || usr.get_active_held_item() != src))
 		return
 	if (!href_list["action"])
 		return
@@ -225,9 +225,9 @@
 		M.name = replacetext(M.name,oldtitle,title)
 	for(var/obj/machinery/power/apc/M in A)
 		M.name = replacetext(M.name,oldtitle,title)
-	for(var/obj/machinery/atmospherics/unary/vent_scrubber/M in A)
+	for(var/obj/machinery/atmospherics/component/unary/vent_scrubber/M in A)
 		M.name = replacetext(M.name,oldtitle,title)
-	for(var/obj/machinery/atmospherics/unary/vent_pump/M in A)
+	for(var/obj/machinery/atmospherics/component/unary/vent_pump/M in A)
 		M.name = replacetext(M.name,oldtitle,title)
 	for(var/obj/machinery/door/M in A)
 		M.name = replacetext(M.name,oldtitle,title)
@@ -258,9 +258,9 @@
 			if (!isturf(NT) || (NT in found) || (NT in pending))
 				continue
 			// We ask ZAS to determine if its airtight.  Thats what matters anyway right?
-			if(air_master.air_blocked(T, NT))
+			if(T.CheckAirBlock(NT) == ATMOS_PASS_AIR_BLOCKED)
 				// Okay thats the edge of the room
-				if(get_area_type(NT.loc) == AREA_SPACE && air_master.air_blocked(NT, NT))
+				if(get_area_type(NT.loc) == AREA_SPACE && (NT.CheckAirBlock(NT) == ATMOS_PASS_AIR_BLOCKED))
 					found += NT // So we include walls/doors not already in any area
 				continue
 			if (istype(NT, /turf/space))
@@ -337,7 +337,7 @@
 				usr.client.images.Remove(i)
 
 // Make sure to turn off the colors when we drop the blueprints.
-/obj/item/blueprints/dropped(mob/user as mob)
+/obj/item/blueprints/dropped(mob/user, flags, atom/newLoc)
 	if(areaColor_turfs.len)
 		seeAreaColors_remove()
 	return ..()

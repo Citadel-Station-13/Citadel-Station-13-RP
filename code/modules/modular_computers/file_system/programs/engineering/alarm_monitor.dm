@@ -46,11 +46,11 @@
 
 /datum/nano_module/alarm_monitor/engineering/New()
 	..()
-	alarm_handlers = list(SSalarms.atmosphere_alarm, SSalarms.fire_alarm, SSalarms.power_alarm)
+	alarm_handlers = list(atmosphere_alarm, fire_alarm, power_alarm)
 
 /datum/nano_module/alarm_monitor/security/New()
 	..()
-	alarm_handlers = list(SSalarms.camera_alarm, SSalarms.motion_alarm)
+	alarm_handlers = list(camera_alarm, motion_alarm)
 
 /datum/nano_module/alarm_monitor/proc/register_alarm(var/object, var/procName)
 	for(var/datum/alarm_handler/AH in alarm_handlers)
@@ -93,7 +93,7 @@
 	if(..())
 		return 1
 	if(href_list["switchTo"])
-		var/obj/machinery/camera/C = locate(href_list["switchTo"]) in cameranet.cameras
+		var/obj/machinery/camera/C = locate(href_list["switchTo"]) in GLOB.cameranet.cameras
 		if(!C)
 			return
 
@@ -112,7 +112,7 @@
 
 			if(isAI(user))
 				for(var/obj/machinery/camera/C in A.cameras())
-					cameras[++cameras.len] = C.nano_structure()
+					cameras[++cameras.len] = C.ui_structure()
 			for(var/datum/alarm_source/AS in A.sources)
 				if(!AS.source)
 					lost_sources[++lost_sources.len] = AS.source_name

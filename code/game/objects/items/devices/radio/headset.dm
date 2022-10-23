@@ -4,14 +4,10 @@
 	var/radio_desc = ""
 	icon_state = "headset"
 	item_state = null	// To remove the radio's state
-	matter = list(DEFAULT_WALL_MATERIAL = 75)
+	matter = list(MAT_STEEL = 75)
 	subspace_transmission = 1
 	canhear_range = 0	// Can't hear headsets from very far away
 	slot_flags = SLOT_EARS
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/ears.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/ears.dmi'
-		)
 
 	var/translate_binary = 0
 	var/translate_hive = 0
@@ -72,16 +68,8 @@
 			return ..(freq, level)
 	return -1
 
-/obj/item/radio/headset/get_worn_icon_state(var/slot_name)
-	var/append = ""
-	if(icon_override)
-		switch(slot_name)
-			if(slot_l_ear_str)
-				append = "_l"
-			if(slot_r_ear_str)
-				append = "_r"
-
-	return "[..()][append]"
+/obj/item/radio/headset/ui_state(mob/user)
+	return GLOB.inventory_state
 
 /obj/item/radio/headset/syndicate
 	origin_tech = list(TECH_ILLEGAL = 3)
@@ -388,7 +376,7 @@
 
 			recalculateChannels()
 			to_chat(user, "You pop out the encryption keys in the headset!")
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 
 		else
 			to_chat(user, "This headset doesn't have any encryption keys!  How useless...")
@@ -397,24 +385,16 @@
 		if(keyslot1 && keyslot2)
 			to_chat(user, "The headset can't hold another key!")
 			return
-
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		if(!keyslot1)
-			user.drop_item()
-			W.loc = src
 			keyslot1 = W
-
 		else
-			user.drop_item()
-			W.loc = src
 			keyslot2 = W
-
 
 		recalculateChannels()
 
-	return
-
-
-/obj/item/radio/headset/proc/recalculateChannels(var/setDescription = 0)
+/obj/item/radio/headset/recalculateChannels(var/setDescription = 0)
 	src.channels = list()
 	src.translate_binary = 0
 	src.translate_hive = 0
@@ -490,11 +470,6 @@
 	icon_state = "nt_headset"
 	centComm = 1
 	ks2type = /obj/item/encryptionkey/ert
-
-/obj/item/radio/headset
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/species/teshari/ears.dmi',
-						SPECIES_WEREBEAST = 'icons/mob/species/werebeast/ears.dmi',
-						SPECIES_VOX = 'icons/mob/species/vox/ears.dmi')
 
 /obj/item/radio/headset/mob_headset	//Adminbus headset for simplemob shenanigans.
 	name = "nonhuman radio implant"

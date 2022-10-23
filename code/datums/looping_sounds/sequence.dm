@@ -56,10 +56,11 @@
 
 	timerid = addtimer(CALLBACK(src, .proc/sound_loop, world.time), next_iteration_delay, TIMER_STOPPABLE)
 
-#define MORSE_DOT	"*" // Yes this is an asterisk but its easier to see on a computer compared to a period.
+/// Yes this is an asterisk but its easier to see on a computer compared to a period.
+#define MORSE_DOT	"*"
 #define MORSE_DASH	"-"
-#define MORSE_BASE_DELAY 1 // If you change this you will also need to change [dot|dash]_soundfile variables.
-
+/// If you change this you will also need to change [dot|dash]_soundfile variables.
+#define MORSE_BASE_DELAY 1
 // This implements an automatic conversion of text (the sequence) into audible morse code.
 // This can be useful for flavor purposes. For 'real' usage its suggested to also display the sequence in text form, for the benefit of those without sound.
 /datum/looping_sound/sequence/morse

@@ -12,8 +12,8 @@
 	sharp = 0
 	edge = 0
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_material.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 			)
 
 	var/applies_material_colour = 1
@@ -24,11 +24,11 @@
 	var/force_divisor = 0.3
 	var/thrown_force_divisor = 0.3
 	var/dulled_divisor = 0.1	//Just drops the damage to a tenth
-	var/default_material = DEFAULT_WALL_MATERIAL
+	var/default_material = MAT_STEEL
 	var/datum/material/material
 	var/drops_debris = 1
 
-/obj/item/material/Initialize(var/newloc, var/material_key)
+/obj/item/material/Initialize(mapload, material_key)
 	. = ..()
 	if(!material_key)
 		material_key = default_material
@@ -57,15 +57,15 @@
 	force = round(force*force_divisor)
 	if(dulled)
 		force = round(force*dulled_divisor)
-	throwforce = round(material.get_blunt_damage()*thrown_force_divisor)
+	throw_force = round(material.get_blunt_damage()*thrown_force_divisor)
 	if(material.name == "supermatter")
 		damtype = BURN //its hot
 		force = 150 //double the force of a durasteel claymore.
 		armor_penetration = 100 //regardless of armor
-		throwforce = 150
+		throw_force = 150
 
 	//spawn(1)
-	//	to_chat(world, "[src] has force [force] and throwforce [throwforce] when made from default material [material.name]")
+	//	to_chat(world, "[src] has force [force] and throw_force [throw_force] when made from default material [material.name]")
 
 /obj/item/material/proc/set_material(var/new_material)
 	material = get_material_by_name(new_material)
@@ -111,12 +111,10 @@
 
 /obj/item/material/proc/shatter(var/consumed)
 	var/turf/T = get_turf(src)
-	T.visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
-	if(istype(loc, /mob/living))
-		var/mob/living/M = loc
-		M.drop_from_inventory(src)
+	visible_message("<span class='danger'>\The [src] [material.destruction_desc]!</span>")
 	playsound(src, "shatter", 70, 1)
-	if(!consumed && drops_debris) material.place_shard(T)
+	if(!consumed && drops_debris)
+		material.place_shard(T)
 	qdel(src)
 
 /obj/item/material/proc/dull()

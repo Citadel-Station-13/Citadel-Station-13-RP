@@ -3,14 +3,17 @@
 	unacidable = 1
 	var/i_attached//Added for possible image attachments to objects. For hallucinations and the like.
 
-/obj/effect/overlay/beam//Not actually a projectile, just an effect.
+/// Not actually a projectile, just an effect.
+/obj/effect/overlay/beam
 	name="beam"
 	icon='icons/effects/beam.dmi'
 	icon_state="b_beam"
 	var/tmp/atom/BeamSource
-	New()
-		..()
-		spawn(10) qdel(src)
+
+/obj/effect/overlay/beam/New()
+	..()
+	spawn(10)
+		qdel(src)
 
 /obj/effect/overlay/palmtree_r
 	name = "Palm tree"
@@ -37,7 +40,7 @@
 
 /obj/effect/overlay/bluespacify
 	name = "Bluespace"
-	icon = 'icons/turf/space_vr.dmi' //VOREStation Edit
+	icon = 'icons/turf/space.dmi'
 	icon_state = "bluespacify"
 	plane = ABOVE_PLANE
 
@@ -78,10 +81,28 @@
 	mouse_opacity = 0 //Don't block underlying tile interactions
 
 /obj/effect/overlay/snow/floor/edges
+	icon = 'icons/turf/snow.dmi'
 	icon_state = "snow_edges"
 
 /obj/effect/overlay/snow/floor/surround
+	icon = 'icons/turf/snow.dmi'
 	icon_state = "snow_surround"
+
+/obj/effect/overlay/snow/floor/edges_new
+	icon = 'icons/turf/snow_new.dmi'
+	icon_state = "snow_edges"
+
+/obj/effect/overlay/snow/floor/surround_new
+	icon = 'icons/turf/snow_new.dmi'
+	icon_state = "snow_surround"
+
+/obj/effect/overlay/snow/floor/grav_edges
+	icon = 'icons/turf/snow_new.dmi'
+	icon_state = "gravsnow_edges"
+
+/obj/effect/overlay/snow/floor/grav_surround
+	icon = 'icons/turf/snow_new.dmi'
+	icon_state = "gravsnow_surround"
 
 /obj/effect/overlay/snow/airlock
 	icon_state = "snowairlock"
@@ -106,7 +127,7 @@
 	desc = "An energy ball."
 	icon = 'icons/obj/tesla_engine/energy_ball.dmi'
 	icon_state = "energy_ball"
-	plane = PLANE_LIGHTING_ABOVE
+	plane = ABOVE_LIGHTING_PLANE
 	pixel_x = -32
 	pixel_y = -32
 

@@ -89,16 +89,16 @@
 
 		else if(istype(W, /obj/item/clothing/accessory/badge))
 			if(corptag)
+				if(!user.attempt_void_item_for_installation(W))
+					return
 				var/old_tag = corptag
 				corptag.forceMove(get_turf(src))
 				corptag = W
-				user.unEquip(corptag)
-				corptag.loc = null
 				to_chat(user, "<span class='notice'>You swap \the [old_tag] for \the [corptag].</span>")
 			else
+				if(!user.attempt_void_item_for_installation(W))
+					return
 				corptag = W
-				user.unEquip(corptag)
-				corptag.loc = null
 				to_chat(user, "<span class='notice'>You attach \the [corptag] to \the [src].</span>")
 			update_icon()
 

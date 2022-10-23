@@ -1,6 +1,7 @@
 /obj/item/sample
 	name = "forensic sample"
 	icon = 'icons/obj/forensics.dmi'
+	flags = NOPRINT
 	w_class = ITEMSIZE_TINY
 	var/list/evidence = list()
 
@@ -42,10 +43,9 @@
 
 /obj/item/sample/attackby(var/obj/O, var/mob/user)
 	if(O.type == src.type)
-		user.unEquip(O)
 		if(merge_evidence(O, user))
 			qdel(O)
-		return 1
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 	return ..()
 
 /obj/item/sample/fibers
@@ -120,6 +120,9 @@
 		for(var/print in supplied.fingerprints)
 			evidence[print] = supplied.fingerprints[print]
 		supplied.fingerprints.Cut()
+
+/obj/item/forensics
+	flags = NOPRINT
 
 /obj/item/forensics/sample_kit
 	name = "fiber collection kit"

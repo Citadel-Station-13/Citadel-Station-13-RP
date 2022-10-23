@@ -34,7 +34,7 @@
 
 /obj/machinery/computer/roguezones/attack_hand(mob/user as mob)
 	add_fingerprint(user)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	user.set_machine(src)
 	nano_ui_interact(user)

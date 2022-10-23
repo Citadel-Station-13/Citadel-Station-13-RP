@@ -5,6 +5,7 @@
 	icon = 'icons/mob/dogborg_vr.dmi'
 	icon_state = "sleeper"
 	w_class = ITEMSIZE_TINY
+	item_flags = ITEM_NOBLUDGEON
 	var/mob/living/carbon/patient = null
 	var/mob/living/silicon/robot/hound = null
 	var/inject_amount = 10
@@ -40,7 +41,6 @@
 
 /obj/item/dogborg/sleeper/Initialize(mapload)
 	. = ..()
-	flags |= NOBLUDGEON //No more attack messages
 	files = new /datum/research/techonly(src)
 
 /obj/item/dogborg/sleeper/Destroy()
@@ -93,7 +93,7 @@
 			user.visible_message("<span class='warning'>[hound.name] is ingesting [trashmouse] into their [src.name].</span>", "<span class='notice'>You start ingesting [trashmouse] into your [src.name]...</span>")
 			if(do_after(user, 30, trashmouse) && length(contents) < max_item_count)
 				trashmouse.forceMove(src)
-				trashmouse.reset_view(src)
+				trashmouse.update_perspective(src)
 				user.visible_message("<span class='warning'>[hound.name]'s [src.name] groans lightly as [trashmouse] slips inside.</span>", "<span class='notice'>Your [src.name] groans lightly as [trashmouse] slips inside.</span>")
 				playsound(hound, gulpsound, vol = 60, vary = 1, falloff = 0.1, preference = /datum/client_preference/eating_noises)
 				if(delivery)
@@ -113,7 +113,7 @@
 			user.visible_message("<span class='warning'>[hound.name] is ingesting [trashman] into their [src.name].</span>", "<span class='notice'>You start ingesting [trashman] into your [src.name]...</span>")
 			if(do_after(user, 30, trashman) && !patient && !trashman.buckled && length(contents) < max_item_count)
 				trashman.forceMove(src)
-				trashman.reset_view(src)
+				trashman.update_perspective()
 				START_PROCESSING(SSobj, src)
 				user.visible_message("<span class='warning'>[hound.name]'s [src.name] groans lightly as [trashman] slips inside.</span>", "<span class='notice'>Your [src.name] groans lightly as [trashman] slips inside.</span>")
 				message_admins("[key_name(hound)] has eaten [key_name(patient)] as a dogborg. ([hound ? "<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[hound.x];Y=[hound.y];Z=[hound.z]'>JMP</a>" : "null"])")
@@ -143,7 +143,7 @@
 				return //If you try to eat two people at once, you can only eat one.
 			else //If you don't have someone in you, proceed.
 				H.forceMove(src)
-				H.reset_view(src)
+				H.update_perspective(src)
 				update_patient()
 				START_PROCESSING(SSobj, src)
 				user.visible_message("<span class='warning'>[hound.name]'s [src.name] lights up as [H.name] slips inside.</span>", "<span class='notice'>Your [src] lights up as [H] slips inside. Life support functions engaged.</span>")
@@ -162,10 +162,10 @@
 			if(ishuman(C))
 				var/mob/living/carbon/human/person = C
 				person.forceMove(get_turf(src))
-				person.reset_view()
+				person.update_perspective()
 			else
 				var/obj/T = C
-				T.loc = hound.loc
+				T.forceMove(hound.loc)
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 		update_patient()
 	else //You clicked eject with nothing in you, let's just reset stuff to be sure.
@@ -346,10 +346,10 @@
 				if(ishuman(C))
 					var/mob/living/carbon/human/person = C
 					person.forceMove(get_turf(src))
-					person.reset_view()
+					person.update_perspective()
 				else
 					var/obj/T = C
-					T.loc = hound.loc
+					T.forceMove(hound.loc)
 			playsound(loc, 'sound/effects/splat.ogg', 50, 1)
 			update_patient()
 			var/list/tagged = deliverylists[delivery_tag]
@@ -359,7 +359,7 @@
 	if(href_list["sync"])
 		synced = TRUE
 		var/success = 0
-		for(var/obj/machinery/r_n_d/server/S in machines)
+		for(var/obj/machinery/r_n_d/server/S in GLOB.machines)
 			for(var/datum/tech/T in files.known_tech) //Uploading
 				S.files.AddTech2Known(T)
 			for(var/datum/tech/T in S.files.known_tech) //Downloading
@@ -559,11 +559,10 @@
 							var/obj/item/organ/internal/mmi_holder/MMI = I
 							var/atom/movable/brain = MMI.removed()
 							if(brain)
-								hound.remove_from_mob(brain,src)
 								brain.forceMove(src)
 								items_preserved |= brain
 						else
-							T.drop_from_inventory(I, src)
+							T.transfer_item_to_loc(I, src, INV_OP_FORCE)
 					if(ishuman(T))
 						var/mob/living/carbon/human/Prey = T
 						volume = (Prey.bloodstr.total_volume + Prey.ingested.total_volume + Prey.touching.total_volume + Prey.weight) * Prey.size_multiplier
@@ -603,7 +602,7 @@
 							if(istype(T,/obj/item/stack))
 								var/obj/item/stack/stack = T
 								total_material *= stack.get_amount()
-							if(material == DEFAULT_WALL_MATERIAL)
+							if(material == MAT_STEEL)
 								metal.add_charge(total_material)
 							if(material == "glass")
 								glass.add_charge(total_material)

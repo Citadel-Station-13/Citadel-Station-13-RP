@@ -1,5 +1,5 @@
-#define NEWSFILE "data/news.sav"	//where the memos are saved
-
+///where the memos are saved
+#define NEWSFILE "data/news.sav"
 /client/
 	//var/last_news_hash = null // Stores a hash of the last news window it saw, which gets compared to the current one to see if it is different.
 

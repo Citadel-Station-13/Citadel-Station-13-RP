@@ -22,7 +22,7 @@
 	item_state = "kineticgun"
 	// ammo_type = list(/obj/item/ammo_casing/energy/kinetic)
 	cell_type = /obj/item/cell/device/weapon/empproof
-	item_flags = NONE
+	clothing_flags = NONE
 	charge_meter = FALSE
 	// obj_flags = UNIQUE_RENAME
 	// weapon_weight = WEAPON_LIGHT
@@ -87,7 +87,7 @@
 	if(istype(I, /obj/item/tool/crowbar))
 		if(modkits.len)
 			to_chat(user, "<span class='notice'>You pry the modifications out.</span>")
-			playsound(loc, I.usesound, 100, 1)
+			playsound(loc, I.tool_sound, 100, 1)
 			for(var/obj/item/borg/upgrade/modkit/M in modkits)
 				M.uninstall(src)
 		else
@@ -140,18 +140,18 @@
 	holds_charge = TRUE
 	unique_frequency = TRUE
 
-/obj/item/gun/energy/kinetic_accelerator/Initialize()
+/obj/item/gun/energy/kinetic_accelerator/Initialize(mapload)
 	. = ..()
 	if(!holds_charge)
 		empty()
 	AddElement(/datum/element/conflict_checking, CONFLICT_ELEMENT_KA)
 
-/obj/item/gun/energy/kinetic_accelerator/equipped(mob/user)
+/obj/item/gun/energy/kinetic_accelerator/equipped(mob/user, slot, flags)
 	. = ..()
 	if(power_supply.charge < charge_cost)
 		attempt_reload()
 
-/obj/item/gun/energy/kinetic_accelerator/dropped(mob/user)
+/obj/item/gun/energy/kinetic_accelerator/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(!QDELING(src) && !holds_charge)
 		// Put it on a delay because moving item from slot to hand
@@ -195,10 +195,10 @@
 	overheat = FALSE
 	update_icon()
 
-/obj/item/gun/energy/kinetic_accelerator/update_icon()
-	cut_overlays()
+/obj/item/gun/energy/kinetic_accelerator/update_overlays()
+	. = ..()
 	if(overheat || (power_supply.charge == 0))
-		add_overlay(emptystate)
+		. += emptystate
 
 //Projectiles
 /obj/item/projectile/kinetic
@@ -326,9 +326,11 @@
 				break
 	if(KA.get_remaining_mod_capacity() >= cost)
 		if(.)
-			user.drop_from_inventory(src, KA)
-			// if(!user.transferItemToLoc(src, KA))
-				// return FALSE
+			if(user.is_in_inventory(src))
+				if(!user.attempt_insert_item_for_installation(src, KA))
+					return FALSE
+			else
+				forceMove(KA)
 			to_chat(user, "<span class='notice'>You install the modkit.</span>")
 			playsound(loc, 'sound/items/screwdriver.ogg', 100, 1)
 			KA.modkits += src

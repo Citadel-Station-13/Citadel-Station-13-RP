@@ -71,7 +71,7 @@ Add those other swinging traps you mentioned above!
 	var/id = "trap_debug_controller"
 	var/broken = FALSE
 
-/obj/effect/trap/Initialize()
+/obj/effect/trap/Initialize(mapload)
 	. = ..()
 	RegisterSimpleNetwork(id)
 
@@ -94,6 +94,7 @@ Add those other swinging traps you mentioned above!
 	deploy_location.ChangeTurf(trap_floor_type)
 
 /obj/effect/trap/proc/Break()
+	desc += " Whatever nefarious purpose this one once had, it's broken now."
 	update_icon()
 	broken = TRUE
 
@@ -125,7 +126,6 @@ Add those other swinging traps you mentioned above!
 			var/turf/T = get_turf(src)
 			new /obj/structure/catwalk/plank(T)
 			to_chat(user, "<span class='notice'>You carefully lay the planks over the trap, creating a bridge.</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need three planks of wood to construct a bridge.</span>")
@@ -140,7 +140,6 @@ Add those other swinging traps you mentioned above!
 			tripped = 0
 			update_icon()
 			to_chat(user, "<span class='notice'>You patch over the hole, rearming the trap.</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need two tiles to rearm the trap.</span>")
@@ -153,6 +152,9 @@ Add those other swinging traps you mentioned above!
 
 /obj/effect/trap/pit/blood/deep
 	trap_floor_type = /turf/simulated/floor/water/blood/deep
+
+/obj/effect/trap/pit/open_space
+	trap_floor_type = /turf/simulated/open
 
 //Punji Spear Traps
 /obj/effect/trap/pit/punji
@@ -188,7 +190,6 @@ Add those other swinging traps you mentioned above!
 			tripped = 0
 			update_icon()
 			to_chat(user, "<span class='notice'>You conceal the pit, rearming the trap.</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need two tiles to rearm the trap.</span>")
@@ -235,8 +236,6 @@ Add those other swinging traps you mentioned above!
 			tripped = 0
 			update_icon()
 			to_chat(user, "<span class='notice'>You conceal the pit, rearming the trap.</span>")
-			user.drop_from_inventory(src)
-			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need two tiles to rearm the trap.</span>")
 
@@ -282,8 +281,6 @@ Add those other swinging traps you mentioned above!
 			tripped = 0
 			update_icon()
 			to_chat(user, "<span class='notice'>You conceal the pit, rearming the trap.</span>")
-			user.drop_from_inventory(src)
-			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need two tiles to rearm the trap.</span>")
 
@@ -314,7 +311,7 @@ Add those other swinging traps you mentioned above!
 
 	//This needs to check dirs, projectiles, accuracy, reload/recharge. It's kinda gonna suck. Consult Turret code.
 
-/obj/effect/trap/launcher/Initialize()
+/obj/effect/trap/launcher/Initialize(mapload)
 	. = ..()
 	RegisterSimpleNetwork(id)
 	START_PROCESSING(SSobj, src)
@@ -342,7 +339,7 @@ Add those other swinging traps you mentioned above!
 		playsound(src.loc, projectile_sound, 25, 1)
 
 		var/obj/item/projectile/bullet/shotgun/stake/P = get_projectile()
-		P.firer = src
+		//P.firer = src
 		P.fire(dir2angle(dir))
 
 /obj/effect/trap/launcher/proc/get_initial_fire_delay()
@@ -364,7 +361,6 @@ Add those other swinging traps you mentioned above!
 			M.use(5)
 			Break()
 			to_chat(user, "<span class='notice'>You slip the rods into the firing mechanism, jamming it.</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need five rods to jam the mechanism.</span>")
@@ -438,8 +434,22 @@ Add those other swinging traps you mentioned above!
 	return
 
 /obj/effect/trap/pop_up/attackby(var/obj/item/W, var/mob/user)
+	if(istype(W, /obj/item/weldingtool))
+		var/obj/item/weldingtool/WT = W
+
+		if(WT.remove_fuel(0, user))
+			if(health < maxhealth)
+				to_chat(user, SPAN_NOTICE("You begin repairing \the [src.name] with \the [WT].>"))
+			if(do_after(user, 20, src))
+				health = maxhealth
+				broken = FALSE
+			playsound(src.loc, 'sound/items/Welder.ogg', 100, TRUE)
+
+	if(broken)
+		return
 	if((health <= 0))
 		Break()
+		src.visible_message(SPAN_DANGER("\The [src] breaks! It was a trap!"))
 		return
 	if(W.attack_verb.len)
 		src.visible_message("<span class='danger'>\The [src] has been [pick(W.attack_verb)] with \the [W][(user ? " by [user]." : ".")]</span>")
@@ -447,15 +457,7 @@ Add those other swinging traps you mentioned above!
 		src.visible_message("<span class='danger'>\The [src] has been attacked with \the [W][(user ? " by [user]." : ".")]</span>")
 	var/damage = W.force / 4.0
 
-	if(istype(W, /obj/item/weldingtool))
-		var/obj/item/weldingtool/WT = W
 
-		if(WT.remove_fuel(0, user))
-			if(health < maxhealth)
-				to_chat(user, "<span class='notice'>You begin repairing \the [src.name] with \the [WT].</span>")
-			if(do_after(user, 20, src))
-				health = maxhealth
-			playsound(src.loc, 'sound/items/Welder.ogg', 100, 1)
 
 	src.health -= damage
 	healthcheck()
@@ -463,6 +465,7 @@ Add those other swinging traps you mentioned above!
 /obj/effect/trap/pop_up/proc/healthcheck()
 	if((health <= 0))
 		Break()
+		src.visible_message(SPAN_DANGER("\The [src] breaks! It was a trap!"))
 
 /obj/effect/trap/pop_up/update_icon()
 	if(!tripped)
@@ -504,6 +507,8 @@ Add those other swinging traps you mentioned above!
 //Spinning Blade Column
 
 /obj/effect/trap/pop_up/pillar
+	name = "loose tile"
+	desc = "The edges of this tile are bent strangely."
 	icon_state = "popup_pillar"
 	min_damage = 10
 	max_damage = 30
@@ -552,6 +557,8 @@ if (istype(AM, /mob/living))
 
 /obj/effect/trap/pop_up/buzzsaw
 	icon_state = "popup_saw"
+	name = "loose tile"
+	desc = "This tile has straight slits running along it."
 	min_damage = 25
 	max_damage = 45
 
@@ -580,6 +587,8 @@ if (istype(AM, /mob/living))
 //Flame Trap
 
 /obj/effect/trap/pop_up/flame
+	name = "loose tile"
+	desc = "The edges of this tile shine strangely."
 	icon_state = "popup_flame"
 	min_damage = 5
 	max_damage = 15
@@ -635,7 +644,7 @@ if (istype(AM, /mob/living))
 		var/mob/living/M = AM
 		var/list/throw_dirs = list(1, 2, 4, 8, 5, 6, 9, 10)
 		var/turf/T2 = get_step(AM, pick(throw_dirs))
-		M.throw_at(T2, 1, 1, src)
+		M.throw_at_old(T2, 1, 1, src)
 		var/head_slot = SLOT_HEAD
 		if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 			M.setBrainLoss(2,5)
@@ -652,7 +661,6 @@ if (istype(AM, /mob/living))
 			M.use(3)
 			Break()
 			to_chat(user, "<span class='notice'>You slip the rods between the plate and its base, jamming it.</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 		else
 			to_chat(user, "<span class='warning'>You need three rods to jam the mechanism.</span>")
@@ -699,7 +707,6 @@ if (istype(AM, /mob/living))
 			M.use(5)
 			Reset()
 			to_chat(user, "<span class='notice'>You use the coils to raise the [src] back up, resetting it.</span>")
-			user.drop_from_inventory(src)
 			qdel(src)
 
 	if(istype(W,/obj/item/tool/wirecutters))
@@ -747,7 +754,7 @@ if (istype(AM, /mob/living))
 		var/turf/T2 = get_step(AM, pick(throw_dirs))
 		var/damage = rand(min_damage, max_damage)
 		M.apply_damage(damage, BRUTE)
-		M.throw_at(T2, 1, 1, src)
+		M.throw_at_old(T2, 1, 1, src)
 		var/head_slot = SLOT_HEAD
 		if(!head_slot || !(istype(head_slot,/obj/item/clothing/head/helmet) || istype(head_slot,/obj/item/clothing/head/hardhat)))
 			M.setBrainLoss(2,5)

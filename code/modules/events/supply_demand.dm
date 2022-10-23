@@ -74,7 +74,7 @@
 		// Success!
 		SSsupply.points += 100 * severity
 		var/msg = "Great work! With those items you delivered our inventory levels all match up. "
-		msg += "[capitalize(pick(first_names_female))] from accounting will have nothing to complain about. "
+		msg += "[capitalize(pick(GLOB.first_names_female))] from accounting will have nothing to complain about. "
 		msg += "I think you'll find a little something in your supply account."
 		command_announcement.Announce(msg, my_department)
 	else
@@ -84,7 +84,7 @@
 		var/message = "The delivery deadline was reached with the following needs outstanding:<hr>"
 		for (var/datum/supply_demand_order/req in required_items)
 			message += req.describe() + "<br>"
-		for (var/obj/machinery/computer/communications/C in machines)
+		for (var/obj/machinery/computer/communications/C in GLOB.machines)
 			if(C.operable())
 				var/obj/item/paper/P = new /obj/item/paper( C.loc )
 				P.name = "'[my_department] Mission Summary'"

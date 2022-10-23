@@ -85,18 +85,19 @@
 		var/obj/item/light/L = W
 		if(L.status == 0) // LIGHT OKAY
 			if(uses < max_uses)
+				if(!user.attempt_consume_item_for_construction(L))
+					return
 				add_uses(1)
 				to_chat(user, "You insert \the [L.name] into \the [src.name]. You have [uses] light\s remaining.")
-				user.drop_item()
-				qdel(L)
 				return
 		else if(L.status == 2)
 			if(uses >= max_uses)
 				to_chat(user, "<span class='warning'>[src.name] is full.</span>")
 				return
+			if(!user.attempt_consume_item_for_construction(W))
+				return
 			AddShards(1, user)
 			to_chat(user, "<span class='notice'>You insert a shard of glass into the [src.name]. You have [uses] light\s remaining.</span>")
-			qdel(W)
 			return
 /*		else
 			to_chat(user, "You need a working light.")

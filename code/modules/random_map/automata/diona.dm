@@ -6,7 +6,7 @@
 		if(can_open == WALL_OPENING)
 			return
 		can_open = WALL_CAN_OPEN
-		user.visible_message("<span class='alium'>\The [user] strokes its feelers against \the [src] and the biomass [density ? "moves aside" : "closes up"].</span>")
+		user.visible_message("<span class='green'>\The [user] strokes its feelers against \the [src] and the biomass [density ? "moves aside" : "closes up"].</span>")
 		toggle_open(user)
 		sleep(15)
 		if(can_open == WALL_CAN_OPEN) can_open = 0
@@ -155,7 +155,7 @@
 		for(var/thing in T)
 			if(istype(thing, /atom))
 				var/atom/A = thing
-				if(A.simulated)
+				if(!(A.flags & ATOM_ABSTRACT))
 					continue
 			qdel(thing)
 

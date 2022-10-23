@@ -1,7 +1,7 @@
 /* eslint react/no-danger: "off" */
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Button, Box, Section, Table, LabeledList, Input, Tabs, TextArea, Flex, AnimatedNumber, ProgressBar } from '../components';
+import { Button, Box, Section, Table, LabeledList, Input, Tabs, Flex, AnimatedNumber, ProgressBar } from '../components';
 import { NtosWindow } from '../layouts';
 import { round } from 'common/math';
 
@@ -58,7 +58,8 @@ const NtosEmailClientDownloading = (props, context) => {
             color="good"
             value={down_progress}
             maxValue={down_size}>
-            {down_progress}/{down_size} ({round(down_progress / down_size * 100, 1)}%)
+            {down_progress}/{down_size}
+            ({round(down_progress / down_size * 100, 1)}%)
           </ProgressBar>
         </LabeledList.Item>
       </LabeledList>
@@ -183,9 +184,10 @@ const NtosEmailClientInbox = (props, context) => {
 export const NtosEmailClientViewMessage = (props, context) => {
   const { act, data } = useBackend(context);
 
-  // This is used to let NtosEmailAdministration use the same code for spying on emails
-  // Administrators don't have access to attachments or the message UID, so we need to avoid
-  // using those data attributes, as well as a slightly different act() model.
+  // This is used to let NtosEmailAdministration use the same code for spying
+  // on emails.  Administrators don't have access to attachments or the message
+  // UID, so we need to avoid using those data attributes, as well as a slightly
+  // different act() model.
   const {
     administrator,
   } = props;
@@ -252,7 +254,8 @@ export const NtosEmailClientViewMessage = (props, context) => {
         ) || null}
         <LabeledList.Item label="Message" verticalAlign="top">
           <Section>
-            {/* This dangerouslySetInnerHTML is only ever passed data that has passed through pencode2html
+            {/* This dangerouslySetInnerHTML is only ever passed data that
+              * has passed through pencode2html.
               * It should be safe enough to support pencode in this way.
               */}
             <div dangerouslySetInnerHTML={{ __html: cur_body }} />

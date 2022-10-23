@@ -95,7 +95,7 @@
 	var/hits = 4
 	var/hitpwr = 2 //Level of ex_act to be called on hit.
 	var/dest
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	var/heavy = 0
 	var/z_original
 
@@ -110,6 +110,7 @@
 /obj/effect/meteor/Initialize(mapload)
 	. = ..()
 	z_original = z
+	GLOB.meteor_list += src
 
 /obj/effect/meteor/Move()
 	if(z != z_original || loc == dest)
@@ -129,6 +130,7 @@
 
 /obj/effect/meteor/Destroy()
 	walk(src,0) //this cancels the walk_towards() proc
+	GLOB.meteor_list -= src
 	return ..()
 
 /obj/effect/meteor/Initialize(mapload)
@@ -136,7 +138,7 @@
 	SpinAnimation()
 
 /obj/effect/meteor/Bump(atom/A)
-	if(attempt_vr(src,"Bump_vr",list(A))) return //VOREStation Edit - allows meteors to be deflected by baseball bats
+	if(attempt_vr(src,"Bump_vr",list(A))) return // Allows meteors to be deflected by baseball bats
 	if(A)
 		if(A.handle_meteor_impact(src)) // Used for special behaviour when getting hit specifically by a meteor, like a shield.
 			ram_turf(get_turf(A))
@@ -162,6 +164,8 @@
 			var/turf/simulated/wall/W = T
 			W.take_damage(wall_power) // Stronger walls can halt asteroids.
 
+/obj/effect/meteor/proc/get_shield_damage()
+	return max(((max(hits, 2)) * (heavy + 1) * rand(6, 12)) / hitpwr , 0)
 
 //process getting 'hit' by colliding with a dense object
 //or randomly when ramming turfs
@@ -187,7 +191,7 @@
 /obj/effect/meteor/proc/make_debris()
 	for(var/throws = dropamt, throws > 0, throws--)
 		var/obj/item/O = new meteordrop(get_turf(src))
-		O.throw_at(dest, 5, 10)
+		O.throw_at_old(dest, 5, 10)
 
 /obj/effect/meteor/proc/shake_players()
 	for(var/mob/M in player_list)
@@ -210,7 +214,7 @@
 /obj/effect/meteor/dust
 	name = "space dust"
 	icon_state = "dust"
-	pass_flags = PASSTABLE | PASSGRILLE
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GRILLE
 	hits = 1
 	hitpwr = 3
 	meteordrop = /obj/item/ore/glass
@@ -267,7 +271,7 @@
 	..()
 	if(explode)
 		explosion(src.loc, devastation_range = 0, heavy_impact_range = 0, light_impact_range = 4, flash_range = 6, adminlog = 0)
-	new /obj/effect/decal/cleanable/greenglow(get_turf(src))
+	new /obj/effect/debris/cleanable/greenglow(get_turf(src))
 	SSradiation.radiate(src, 50)
 
 // This meteor fries toasters.
@@ -284,6 +288,9 @@
 	// Best case scenario: Comparable to a low-yield EMP grenade.
 	// Worst case scenario: Comparable to a standard yield EMP grenade.
 	empulse(src, rand(1, 3), rand(2, 4), rand(3, 7), rand(5, 10))
+
+/obj/effect/meteor/emp/get_shield_damage()
+	return ..() * rand(2,4)
 
 //Station buster Tunguska
 /obj/effect/meteor/tunguska

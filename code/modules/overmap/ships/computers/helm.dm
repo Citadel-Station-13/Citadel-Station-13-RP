@@ -24,11 +24,21 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	var/autopilot = 0
 	var/autopilot_disabled = TRUE
 	var/list/known_sectors = list()
-	var/dx		//desitnation
-	var/dy		//coordinates
-	var/speedlimit = 1/(20 SECONDS) //top speed for autopilot, 5
-	var/accellimit = 0.001 //manual limiter for acceleration
-	req_one_access = list(access_pilot) //VOREStation Edit
+	var/dx //desitnation
+	var/dy //coordinates
+
+	/// Top speed for autopilot, 5
+	var/speedlimit = 1/(20 SECONDS)
+	/// Manual limiter for acceleration.
+	var/accellimit = 0.001
+	req_one_access = list(access_pilot)
+
+// fancy sprite
+/obj/machinery/computer/ship/helm/adv
+	icon_keyboard = null
+	icon_state = "adv_helm"
+	icon_screen = "adv_helm_screen"
+	light_color = "#70ffa0"
 
 /obj/machinery/computer/ship/helm/Initialize(mapload)
 	. = ..()
@@ -75,13 +85,6 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 				linked.accelerate(direction, accellimit)
 		linked.operator_skill = null	// If this is on you can't dodge meteors
 		return
-
-/obj/machinery/computer/ship/helm/relaymove(var/mob/user, direction)
-	if(viewing_overmap(user) && linked)
-		if(prob(user.skill_fail_chance(/datum/skill/pilot, 50, linked.skill_needed, factor = 1)))
-			direction = turn(direction,pick(90,-90))
-		linked.relaymove(user, direction, accellimit)
-		return 1
 
 /obj/machinery/computer/ship/helm/ui_interact(mob/user, datum/tgui/ui)
 	if(!linked)
@@ -252,7 +255,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 
 	add_fingerprint(usr)
 	if(. && !issilicon(usr))
-		playsound(src, "terminal_type", 50, 1)
+		playsound(src, SFX_ALIAS_TERMINAL, 50, 1)
 
 
 /obj/machinery/computer/ship/navigation
@@ -262,7 +265,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	circuit = /obj/item/circuitboard/nav
 	var/datum/tgui_module/ship/nav/nav_tgui
 
-/obj/machinery/computer/ship/navigation/Initialize()
+/obj/machinery/computer/ship/navigation/Initialize(mapload)
 	. = ..()
 	nav_tgui = new(src)
 
@@ -285,7 +288,7 @@ GLOBAL_LIST_EMPTY(all_waypoints)
 	density = 0
 
 /obj/machinery/computer/ship/navigation/telescreen/update_icon()
-	if(stat & NOPOWER || stat & BROKEN)
+	if(machine_stat & NOPOWER || machine_stat & BROKEN)
 		icon_state = "tele_off"
 		set_light(0)
 	else

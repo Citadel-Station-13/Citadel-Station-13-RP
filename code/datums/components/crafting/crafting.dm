@@ -3,16 +3,16 @@
 		RegisterSignal(parent, COMSIG_MOB_CLIENT_LOGIN, .proc/create_mob_button)
 
 /datum/component/personal_crafting/proc/create_mob_button(mob/user, client/CL)
+	// SIGNAL_HANDLER
+
 	var/datum/hud/H = user.hud_used
-	for(var/huds in H.static_inventory)
-		if(istype(huds, /obj/screen/craft))
-			return
-	//We don't want to be stacking multiple crafting huds on relogs
-	var/obj/screen/craft/C = new()
+	var/atom/movable/screen/craft/C = new()
 	C.icon = H.ui_style
-	H.static_inventory += C
+	C.color = H.ui_color
+	C.alpha = H.ui_alpha
+	LAZYADD(H.other_important, C)
 	CL.screen += C
-	//RegisterSignal(C, COMSIG_CLICK, .proc/component_ui_interact)
+	RegisterSignal(C, COMSIG_CLICK, .proc/component_ui_interact)
 
 /datum/component/personal_crafting
 	var/busy
@@ -320,12 +320,14 @@
 		Deletion.Cut(Deletion.len)
 		qdel(DL)
 
-/datum/component/personal_crafting/proc/component_ui_interact(obj/screen/craft/image, location, control, params, user)
+/datum/component/personal_crafting/proc/component_ui_interact(source, location, control, params, user)
+	// SIGNAL_HANDLER
+
 	if(user == parent)
-		ui_interact(user)
+		INVOKE_ASYNC(src, .proc/ui_interact, user)
 
 /datum/component/personal_crafting/ui_state(mob/user)
-	return GLOB.not_incapacitated_state
+	return GLOB.not_incapacitated_turf_state
 
 //For the UI related things we're going to assume the user is a mob rather than typesetting it to an atom as the UI isn't generated if the parent is an atom
 /datum/component/personal_crafting/ui_interact(mob/user, datum/tgui/ui = null)

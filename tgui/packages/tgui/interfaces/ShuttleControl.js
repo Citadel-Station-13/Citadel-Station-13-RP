@@ -1,7 +1,7 @@
 import { toTitleCase } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, AnimatedNumber } from "../components";
+import { Box, Button, Flex, LabeledList, ProgressBar, Section } from "../components";
 import { Window } from "../layouts";
 
 /* Helpers */
@@ -257,7 +257,8 @@ const ShuttleControlConsoleWeb = (props, context) => {
             This vessel will start and stop automatically.
             Ensure that all non-cycling capable hatches and doors are closed,
             as the automated system may not be able to control them.
-            Docking and flight controls are locked. To unlock, disable the automated flight system.
+            Docking and flight controls are locked.
+            To unlock, disable the automated flight system.
           </Box>
         </Section>
       ) || null}
@@ -312,7 +313,9 @@ const ShuttleControlConsoleWeb = (props, context) => {
                     </Button>
                   </Fragment>
                 }>
-                  <Box bold inline>{getDockingStatus(docking_status, docking_override)}</Box>
+                  <Box bold inline>
+                    {getDockingStatus(docking_status, docking_override)}
+                  </Box>
                 </LabeledList.Item>
               ) || null}
               {can_cloak && (

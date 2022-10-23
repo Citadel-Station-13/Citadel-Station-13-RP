@@ -14,7 +14,7 @@
 	icon = 'icons/obj/assemblies.dmi'
 	icon_state = "mmi_empty"
 	w_class = ITEMSIZE_NORMAL
-	can_speak = 1
+	can_speak = TRUE
 	origin_tech = list(TECH_BIO = 3)
 	catalogue_data = list(/datum/category_item/catalogue/fauna/brain/assisted)
 
@@ -22,11 +22,15 @@
 
 	//Revised. Brainmob is now contained directly within object of transfer. MMI in this case.
 
-	var/locked = 0
-	var/mob/living/carbon/brain/brainmob = null//The current occupant.
-	var/obj/item/organ/internal/brain/brainobj = null	//The current brain organ.
-	var/obj/mecha = null//This does not appear to be used outside of reference in mecha.dm.
-	var/obj/item/radio/headset/mmi_radio/radio = null//Let's give it a radio.
+	var/locked = FALSE
+	/// The current occupant.
+	var/mob/living/carbon/brain/brainmob = null
+	/// The current brain organ.
+	var/obj/item/organ/internal/brain/brainobj = null
+	/// This does not appear to be used outside of reference in mecha.dm.
+	var/obj/mecha = null
+	/// Let's give it a radio.
+	var/obj/item/radio/headset/mmi_radio/radio = null
 
 /obj/item/mmi/Initialize(mapload)
 	. = ..()
@@ -57,35 +61,36 @@
 
 		var/obj/item/organ/internal/brain/B = O
 		if(B.health <= 0)
-			to_chat(user, "<span class='warning'>That brain is well and truly dead.</span>")
+			to_chat(user, SPAN_WARNING("That brain is well and truly dead."))
 			return
 		else if(!B.brainmob)
-			to_chat(user, "<span class='warning'>You aren't sure where this brain came from, but you're pretty sure it's useless.</span>")
+			to_chat(user, SPAN_WARNING("You aren't sure where this brain came from, but you're pretty sure it's useless."))
 			return
 
 		for(var/modifier_type in B.brainmob.modifiers)	//Can't be shoved in an MMI.
 			if(istype(modifier_type, /datum/modifier/no_borg))
-				to_chat(user, "<span class='warning'>\The [src] appears to reject this brain.  It is incompatable.</span>")
+				to_chat(user, SPAN_WARNING("\The [src] appears to reject this brain.  It is incompatable."))
 				return
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 
-		user.visible_message("<span class='notice'>\The [user] sticks \a [O] into \the [src].</span>")
+		user.visible_message(SPAN_NOTICE("\The [user] sticks \a [O] into \the [src]."))
+		B.preserve(MMI_TRAIT)
 
 		brainmob = B.brainmob
 		B.brainmob = null
 		brainmob.loc = src
 		brainmob.container = src
-		brainmob.stat = 0
+		brainmob.set_stat(CONSCIOUS)
 		dead_mob_list -= brainmob//Update dem lists
 		living_mob_list += brainmob
 
-		user.drop_item()
 		brainobj = O
-		brainobj.loc = src
 
 		name = "man-machine interface ([brainmob.real_name])"
 		icon_state = "mmi_full"
 
-		locked = 1
+		locked = TRUE
 
 		feedback_inc("cyborg_mmis_filled",1)
 
@@ -118,6 +123,7 @@
 			brainobj = null
 		else	//Or make a new one if empty.
 			brain = new(user.loc)
+		brain.unpreserve(MMI_TRAIT)
 		brainmob.container = null//Reset brainmob mmi var.
 		brainmob.loc = brain//Throw mob into brain.
 		living_mob_list -= brainmob//Get outta here
@@ -190,57 +196,52 @@
 
 /obj/item/mmi/digital/Initialize(mapload)
 	. = ..()
-	src.brainmob = new(src)
-//	src.brainmob.add_language("Robot Talk")//No binary without a binary communication device
-	src.brainmob.add_language(LANGUAGE_GALCOM)
-	src.brainmob.add_language(LANGUAGE_EAL)
-	src.brainmob.loc = src
-	src.brainmob.container = src
-	src.brainmob.stat = 0
-	src.brainmob.silent = 0
+	brainmob = new(src)
+//	brainmob.add_language("Robot Talk")//No binary without a binary communication device
+	brainmob.add_language(LANGUAGE_GALCOM)
+	brainmob.add_language(LANGUAGE_EAL)
+	brainmob.loc = src
+	brainmob.container = src
+	brainmob.set_stat(CONSCIOUS)
+	brainmob.silent = FALSE
 	radio = new(src)
-	dead_mob_list -= src.brainmob
+	dead_mob_list -= brainmob
 
-/obj/item/mmi/digital/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	return	//Doesn't do anything right now because none of the things that can be done to a regular MMI make any sense for these
+/obj/item/mmi/digital/attackby(obj/item/O as obj, mob/user as mob)
+	return //Doesn't do anything right now because none of the things that can be done to a regular MMI make any sense for these
 
 /obj/item/mmi/digital/examine(mob/user)
 	. = ..()
-
-	var/msg = "<span class='info'>*---------*</span>\nThis is [icon2html(thing = src, target = user)] \a <EM>[src]</EM>!\n[desc]\n"
-	msg += "<span class='warning'>"
-
-	if(src.brainmob && src.brainmob.key)
-		switch(src.brainmob.stat)
-			if(CONSCIOUS)
-				if(!src.brainmob.client)	msg += "It appears to be in stand-by mode.\n" //afk
-			if(UNCONSCIOUS)		msg += "<span class='warning'>It doesn't seem to be responsive.</span>\n"
-			if(DEAD)			msg += "<span class='deadsay'>It appears to be completely inactive.</span>\n"
-	else
-		msg += "<span class='deadsay'>It appears to be completely inactive.</span>\n"
-	msg += "</span><span class='info'>*---------*</span>"
-	. += msg
-	return
+	if(radio)
+		. += SPAN_NOTICE("There is a switch to toggle the radio system [radio.radio_enabled ? "off" : "on"].[brainobj ? " It is currently being covered by [brainobj]." : null]")
+	if(brainmob)
+		var/mob/living/carbon/brain/B = brainmob
+		if(!B.key || !B.mind || B.stat == DEAD)
+			. += SPAN_WARNING("\The [src] indicates that the brain is completely unresponsive.")
+		else if(!B.client)
+			. += SPAN_WARNING("\The [src] indicates that the brain is currently inactive; it might change.")
+		else
+			. += SPAN_NOTICE("\The [src] indicates that the brain is active.")
 
 /obj/item/mmi/digital/emp_act(severity)
-	if(!src.brainmob)
+	if(!brainmob)
 		return
 	else
 		switch(severity)
 			if(1)
-				src.brainmob.emp_damage += rand(20,30)
+				brainmob.emp_damage += rand(20,30)
 			if(2)
-				src.brainmob.emp_damage += rand(10,20)
+				brainmob.emp_damage += rand(10,20)
 			if(3)
-				src.brainmob.emp_damage += rand(5,10)
+				brainmob.emp_damage += rand(5,10)
 			if(4)
-				src.brainmob.emp_damage += rand(0,5)
+				brainmob.emp_damage += rand(0,5)
 	..()
 
 /obj/item/mmi/digital/transfer_identity(var/mob/living/carbon/H)
 	brainmob.dna = H.dna
 	brainmob.timeofhostdeath = H.timeofdeath
-	brainmob.stat = 0
+	brainmob.set_stat(CONSCIOUS)
 	if(H.mind)
 		H.mind.transfer_to(brainmob)
 	return
@@ -265,7 +266,7 @@
 		reset_search()
 
 /obj/item/mmi/digital/proc/reset_search() //We give the players sixty seconds to decide, then reset the timer.
-	if(src.brainmob && src.brainmob.key)
+	if(brainmob && brainmob.key)
 		return
 
 	src.searching = 0
@@ -278,15 +279,15 @@
 	announce_ghost_joinleave(candidate, 0, "They are occupying a synthetic brain now.")
 	src.searching = 0
 	if(candidate.mind)
-		src.brainmob.mind = candidate.mind
-		src.brainmob.mind.reset()
-	src.brainmob.ckey = candidate.ckey
-	src.name = "[name] ([src.brainmob.name])"
-	to_chat(src.brainmob, "<b>You are [src.name], brought into existence on [station_name()].</b>")
-	to_chat(src.brainmob, "<b>As a synthetic intelligence, you are designed with organic values in mind.</b>")
-	to_chat(src.brainmob, "<b>However, unless placed in a lawed chassis, you are not obligated to obey any individual crew member.</b>") //it's not like they can hurt anyone
-//	to_chat(src.brainmob, "<b>Use say #b to speak to other artificial intelligences.</b>")
-	src.brainmob.mind.assigned_role = "Synthetic Brain"
+		brainmob.mind = candidate.mind
+		brainmob.mind.reset()
+	brainmob.ckey = candidate.ckey
+	src.name = "[name] ([brainmob.name])"
+	to_chat(brainmob, "<b>You are [src.name], brought into existence on [station_name()].</b>")
+	to_chat(brainmob, "<b>As a synthetic intelligence, you are designed with organic values in mind.</b>")
+	to_chat(brainmob, "<b>However, unless placed in a lawed chassis, you are not obligated to obey any individual crew member.</b>") //it's not like they can hurt anyone
+//	to_chat(brainmob, "<b>Use say #b to speak to other artificial intelligences.</b>")
+	brainmob.mind.assigned_role = "Synthetic Brain"
 
 	var/turf/T = get_turf_or_move(src.loc)
 	for (var/mob/M in viewers(T))
@@ -304,8 +305,8 @@
 
 /obj/item/mmi/digital/robot/Initialize(mapload)
 	. = ..()
-	src.brainmob.name = "[pick(list("ADA","DOS","GNU","MAC","WIN","NJS","SKS","DRD","IOS","CRM","IBM","TEX","LVM","BSD",))]-[rand(1000, 9999)]"
-	src.brainmob.real_name = src.brainmob.name
+	brainmob.name = "[pick(list("ADA","DOS","GNU","MAC","WIN","NJS","SKS","DRD","IOS","CRM","IBM","TEX","LVM","BSD",))]-[rand(1000, 9999)]"
+	brainmob.real_name = brainmob.name
 
 /obj/item/mmi/digital/robot/transfer_identity(var/mob/living/carbon/H)
 	..()
@@ -357,8 +358,8 @@
 
 /obj/item/mmi/digital/posibrain/Initialize(mapload)
 	. = ..()
-	src.brainmob.name = "[pick(list("PBU","HIU","SINA","ARMA","OSI"))]-[rand(100, 999)]"
-	src.brainmob.real_name = src.brainmob.name
+	brainmob.name = "[pick(list("PBU","HIU","SINA","ARMA","OSI"))]-[rand(100, 999)]"
+	brainmob.real_name = brainmob.name
 
 // This type shouldn't care about brainmobs.
 /obj/item/mmi/inert

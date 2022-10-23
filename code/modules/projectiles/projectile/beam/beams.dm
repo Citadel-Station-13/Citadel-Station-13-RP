@@ -2,7 +2,7 @@
 	name = "laser"
 	icon_state = "laser"
 	fire_sound = 'sound/weapons/weaponsounds_laserstrong.ogg'
-	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	damage = 40
 	damage_type = BURN
 	check_armour = "laser"
@@ -13,6 +13,7 @@
 	light_range = 2
 	light_power = 0.5
 	light_color = "#FF0D00"
+	impact_sounds = list(BULLET_IMPACT_MEAT = SOUNDS_LASER_MEAT, BULLET_IMPACT_METAL = SOUNDS_LASER_METAL)
 
 	muzzle_type = /obj/effect/projectile/muzzle/laser
 	tracer_type = /obj/effect/projectile/tracer/laser
@@ -25,6 +26,7 @@
 	damage_type = BURN
 	check_armour = "laser"
 	eyeblur = 2
+	impact_sounds = null
 
 /obj/item/projectile/beam/weaklaser
 	name = "weak laser"
@@ -218,6 +220,7 @@
 	agony = 40
 	damage_type = HALLOSS
 	light_color = "#FFFFFF"
+	impact_sounds = null
 
 	combustion = FALSE
 
@@ -251,6 +254,7 @@
 	muzzle_type = /obj/effect/projectile/muzzle/lightning
 	tracer_type = /obj/effect/projectile/tracer/lightning
 	impact_type = /obj/effect/projectile/impact/lightning
+	impact_sounds = null
 
 /obj/item/projectile/beam/disabler/weak
 	name = "weak disabler beam"
@@ -278,7 +282,8 @@
 	if(. && istype(target, /mob/living/silicon/robot) && prob(agony))
 		var/mob/living/silicon/robot/R = target
 		var/drainamt = agony * (rand(5, 15) / 10)
-		R.drain_power(0, 0, drainamt)
+		// 100 to 300 drain
+		R.drain_energy(DYNAMIC_CELL_UNITS_TO_KJ(drainamt * 10))
 		if(istype(firer, /mob/living/silicon/robot)) // Mischevious sappers, the swarm drones are.
 			var/mob/living/silicon/robot/A = firer
 			if(A.cell)

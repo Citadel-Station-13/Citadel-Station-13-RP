@@ -8,7 +8,7 @@
 	item_state = "bolt"
 	drop_sound = 'sound/items/drop/sword.ogg'
 	pickup_sound = 'sound/items/pickup/sword.ogg'
-	throwforce = 8
+	throw_force = 8
 	w_class = ITEMSIZE_NORMAL
 	sharp = 1
 	edge = 0
@@ -21,7 +21,7 @@
 	desc = "It's about a foot of weird silver metal with a wicked point."
 	sharp = 1
 	edge = 0
-	throwforce = 5
+	throw_force = 5
 	w_class = ITEMSIZE_SMALL
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "metal-rod"
@@ -35,7 +35,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "quill"
 	item_state = "quill"
-	throwforce = 5
+	throw_force = 5
 
 /obj/item/arrow/rod
 	name = "metal rod"
@@ -43,7 +43,7 @@
 	icon_state = "metal-rod"
 
 /obj/item/arrow/rod/removed(mob/user)
-	if(throwforce == 15) // The rod has been superheated - we don't want it to be useable when removed from the bow.
+	if(throw_force == 15) // The rod has been superheated - we don't want it to be useable when removed from the bow.
 		to_chat(user, "[src] shatters into a scattering of overstressed metal shards as it leaves the crossbow.")
 		var/obj/item/material/shard/shrapnel/S = new()
 		S.loc = get_turf(src)
@@ -59,6 +59,7 @@
 	fire_sound_text = "a solid thunk"
 	fire_delay = 25
 	slot_flags = SLOT_BACK
+	safety_state = GUN_NO_SAFETY
 	one_handed_penalty = 10
 
 	var/obj/item/bolt
@@ -141,7 +142,8 @@
 /obj/item/gun/launcher/crossbow/attackby(obj/item/W as obj, mob/user as mob)
 	if(!bolt)
 		if (istype(W,/obj/item/arrow))
-			user.drop_from_inventory(W, src)
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			bolt = W
 			user.visible_message("[user] slides [bolt] into [src].","You slide [bolt] into [src].")
 			update_icon()
@@ -159,9 +161,9 @@
 
 	if(istype(W, /obj/item/cell))
 		if(!cell)
-			user.drop_item()
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			cell = W
-			cell.loc = src
 			to_chat(user, "<span class='notice'>You jam [cell] into [src] and wire it to the firing coil.</span>")
 			superheat_rod(user)
 		else
@@ -172,7 +174,7 @@
 			var/obj/item/C = cell
 			C.loc = get_turf(user)
 			to_chat(user, "<span class='notice'>You jimmy [cell] out of [src] with [W].</span>")
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			cell = null
 		else
 			to_chat(user, "<span class='notice'>[src] doesn't have a cell installed.</span>")
@@ -183,22 +185,22 @@
 /obj/item/gun/launcher/crossbow/proc/superheat_rod(var/mob/user)
 	if(!user || !cell || !bolt) return
 	if(cell.charge < 500) return
-	if(bolt.throwforce >= 15) return
+	if(bolt.throw_force >= 15) return
 	if(!istype(bolt,/obj/item/arrow/rod)) return
 
 	to_chat(user, "<span class='notice'>[bolt] plinks and crackles as it begins to glow red-hot.</span>")
-	bolt.throwforce = 15
+	bolt.throw_force = 15
 	bolt.icon_state = "metal-rod-superheated"
 	cell.use(500)
 
-/obj/item/gun/launcher/crossbow/update_icon()
+/obj/item/gun/launcher/crossbow/update_icon_state()
+	. = ..()
 	if(tension > 1)
 		icon_state = "crossbow-drawn"
 	else if(bolt)
 		icon_state = "crossbow-nocked"
 	else
 		icon_state = "crossbow"
-
 
 // Crossbow construction.
 /obj/item/crossbowframe
@@ -243,7 +245,7 @@
 			var/obj/item/weldingtool/T = W
 			if(T.remove_fuel(0,user))
 				if(!src || !T.isOn()) return
-				playsound(src, W.usesound, 50, 1)
+				playsound(src, W.tool_sound, 50, 1)
 				to_chat(user, "<span class='notice'>You weld the rods into place.</span>")
 			buildstate++
 			update_icon()
@@ -279,7 +281,7 @@
 	else if(W.is_screwdriver())
 		if(buildstate == 5)
 			to_chat(user, "<span class='notice'>You secure the crossbow's various parts.</span>")
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			new /obj/item/gun/launcher/crossbow(get_turf(src))
 			qdel(src)
 		return

@@ -12,7 +12,8 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/m5mmcaseless)
 	one_handed_penalty = 15
 
-/obj/item/gun/projectile/caseless/prototype/update_icon()
+/obj/item/gun/projectile/caseless/prototype/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = initial(icon_state)
 	else

@@ -13,8 +13,9 @@
 	. = ..()
 
 /obj/structure/adherent_bath/return_air()
-	var/datum/gas_mixture/venus = new(CELL_VOLUME, 500 - 10)
-	venus.adjust_multi( MOLES_N2STANDARD, /datum/gas/phoron, MOLES_O2STANDARD)
+	var/datum/gas_mixture/venus = new(CELL_VOLUME)
+	venus.adjust_multi(/datum/gas/nitrogen, MOLES_N2STANDARD, /datum/gas/oxygen, MOLES_O2STANDARD)
+	venus.temperature = 490
 	return venus
 
 /obj/structure/adherent_bath/attackby(var/obj/item/thing, var/mob/user)
@@ -69,18 +70,16 @@
 	eject_occupant()
 
 /obj/structure/adherent_bath/proc/eject_occupant()
-	if(occupant)
-		occupant.dropInto(loc)
-		playsound(loc, 'sound/effects/slosh.ogg', 50, 1)
-		if(occupant.loc != src)
-			if(occupant.client)
-				occupant.client.eye = occupant.client.mob
-				occupant.client.perspective = MOB_PERSPECTIVE
-			occupant.regenerate_icons()
-			occupant = null
-			STOP_PROCESSING(SSobj, src)
+	if(!occupant)
+		return
+	occupant.dropInto(loc)
+	occupant.update_perspective()
+	playsound(src, 'sound/effects/slosh.ogg', 50, 1)
+	occupant.regenerate_icons()
+	occupant = null
+	STOP_PROCESSING(SSobj, src)
 
-/obj/structure/adherent_bath/MouseDrop_T(var/atom/movable/O, var/mob/user)
+/obj/structure/adherent_bath/MouseDroppedOnLegacy(var/atom/movable/O, var/mob/user)
 	enter_bath(O, user)
 
 /obj/structure/adherent_bath/relaymove(var/mob/user)
@@ -133,7 +132,7 @@
 	for(var/thing in patient.internal_organs)
 		var/obj/item/organ/internal/I = thing
 		if(BP_IS_CRYSTAL(I) && I.damage)
-			I.heal_damage_a(rand(3,5))
+			I.heal_damage_i(rand(3,5))
 			to_chat(patient, "<span class='notice'>The mineral-rich bath mends your [I.name].</span>")
 			return TRUE
 

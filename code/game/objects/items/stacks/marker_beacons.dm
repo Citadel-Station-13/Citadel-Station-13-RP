@@ -87,7 +87,7 @@ var/list/marker_beacon_colors = list(
 	var/remove_speed = 15
 	var/picked_color
 
-/obj/structure/marker_beacon/Initialize(newloc, set_color)
+/obj/structure/marker_beacon/Initialize(mapload, set_color)
 	. = ..()
 	picked_color = set_color
 	update_icon()
@@ -109,7 +109,7 @@ var/list/marker_beacon_colors = list(
 		M.picked_color = picked_color
 		M.update_icon()
 		transfer_fingerprints_to(M)
-		if(user.put_in_hands(M, TRUE)) //delete the beacon if it fails
+		if(user.put_in_hands(M, INV_OP_FORCE)) //delete the beacon if it fails
 			playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
 			qdel(src) //otherwise delete us
 
@@ -137,3 +137,30 @@ var/list/marker_beacon_colors = list(
 	if(input_color)
 		picked_color = input_color
 		update_icon()
+
+/obj/structure/marker_beacon/red
+	picked_color = "Burgundy"
+
+/obj/structure/marker_beacon/red/update_icon()
+	while(!picked_color || !marker_beacon_colors[picked_color])
+		picked_color = "Burgundy"
+	icon_state = "[initial(icon_state)][lowertext(picked_color)]-on"
+	set_light(light_range, light_power, marker_beacon_colors[picked_color])
+
+/obj/structure/marker_beacon/yellow
+	picked_color = "Yellow"
+
+/obj/structure/marker_beacon/yellow/update_icon()
+	while(!picked_color || !marker_beacon_colors[picked_color])
+		picked_color = "Yellow"
+	icon_state = "[initial(icon_state)][lowertext(picked_color)]-on"
+	set_light(light_range, light_power, marker_beacon_colors[picked_color])
+
+/obj/structure/marker_beacon/green
+	picked_color = "Green"
+
+/obj/structure/marker_beacon/green/update_icon()
+	while(!picked_color || !marker_beacon_colors[picked_color])
+		picked_color = "Green"
+	icon_state = "[initial(icon_state)][lowertext(picked_color)]-on"
+	set_light(light_range, light_power, marker_beacon_colors[picked_color])

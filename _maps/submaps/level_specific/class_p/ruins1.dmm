@@ -1,0 +1,227 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/outdoors/snow/classp,
+/area/class_p/ruins)
+"k" = (
+/turf/simulated/floor/classp/outdoors,
+/area/class_p/ruins)
+"C" = (
+/turf/simulated/floor/old_tile/green/classp{
+	color = "#63A83A";
+	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon_state = "tile_full"
+	},
+/area/class_p/ruins)
+"E" = (
+/turf/simulated/wall/snowbrick/classp,
+/area/class_p/ruins)
+"H" = (
+/obj/random/mob/robotic/hivebot{
+	mob_faction = "frozen"
+	},
+/turf/simulated/floor/classp,
+/area/class_p/ruins)
+"N" = (
+/obj/structure/closet/crate/secure/loot,
+/turf/simulated/floor/old_tile/green/classp{
+	color = "#63A83A";
+	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon_state = "tile_full"
+	},
+/area/class_p/ruins)
+"Q" = (
+/obj/structure/table/survival_pod,
+/obj/random/triumph/uncertain,
+/turf/simulated/floor/classp/outdoors,
+/area/class_p/ruins)
+"R" = (
+/obj/structure/table,
+/obj/random/triumph/uncertain,
+/turf/simulated/floor/classp/outdoors,
+/area/class_p/ruins)
+"S" = (
+/obj/structure/table,
+/turf/simulated/floor/old_tile/green/classp{
+	color = "#63A83A";
+	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon_state = "tile_full"
+	},
+/area/class_p/ruins)
+"T" = (
+/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/area/class_p/ruins)
+"W" = (
+/obj/random/mob/robotic/hivebot{
+	mob_faction = "frozen"
+	},
+/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/area/class_p/ruins)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+E
+T
+T
+T
+E
+T
+E
+E
+E
+a
+"}
+(3,1,1) = {"
+a
+a
+T
+T
+T
+T
+T
+T
+k
+Q
+E
+a
+"}
+(4,1,1) = {"
+a
+a
+T
+H
+T
+T
+T
+C
+C
+k
+E
+a
+"}
+(5,1,1) = {"
+a
+T
+T
+T
+T
+T
+T
+T
+k
+T
+E
+a
+"}
+(6,1,1) = {"
+a
+E
+T
+T
+T
+k
+k
+T
+T
+T
+T
+a
+"}
+(7,1,1) = {"
+a
+T
+T
+T
+T
+k
+k
+k
+T
+T
+T
+a
+"}
+(8,1,1) = {"
+a
+E
+k
+S
+R
+T
+k
+k
+T
+T
+E
+a
+"}
+(9,1,1) = {"
+a
+E
+N
+C
+k
+T
+T
+T
+W
+a
+E
+a
+"}
+(10,1,1) = {"
+a
+T
+k
+k
+C
+T
+T
+T
+T
+a
+a
+a
+"}
+(11,1,1) = {"
+a
+E
+E
+E
+E
+E
+E
+E
+E
+a
+a
+a
+"}
+(12,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}

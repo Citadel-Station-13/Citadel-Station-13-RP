@@ -1,0 +1,216 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/outdoors/snow/classp,
+/area/class_p/ruins)
+"e" = (
+/obj/random/triumph/uncertain,
+/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/area/class_p/ruins)
+"m" = (
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/classp/outdoors,
+/area/class_p/ruins)
+"n" = (
+/obj/random/mob/sif/hostile{
+	mob_faction = "frozen"
+	},
+/turf/simulated/floor/classp/outdoors,
+/area/class_p/ruins)
+"s" = (
+/obj/effect/spider/cocoon,
+/obj/random/triumph/uncertain,
+/turf/simulated/floor/classp/outdoors,
+/area/class_p/ruins)
+"t" = (
+/obj/effect/spider/stickyweb,
+/obj/structure/closet/crate/secure/loot,
+/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/area/class_p/ruins)
+"w" = (
+/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/area/class_p/ruins)
+"B" = (
+/turf/simulated/wall/classp,
+/area/class_p/ruins)
+"F" = (
+/turf/simulated/floor/classp/outdoors,
+/area/class_p/ruins)
+"I" = (
+/obj/random/mob/sif/hostile{
+	mob_faction = "frozen"
+	},
+/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/area/class_p/ruins)
+"S" = (
+/obj/effect/spider/stickyweb,
+/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/area/class_p/ruins)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+w
+w
+w
+w
+w
+w
+w
+w
+w
+a
+"}
+(3,1,1) = {"
+a
+w
+w
+a
+B
+S
+I
+B
+w
+w
+a
+a
+"}
+(4,1,1) = {"
+a
+w
+w
+w
+B
+w
+m
+B
+w
+w
+w
+a
+"}
+(5,1,1) = {"
+a
+w
+B
+B
+B
+m
+w
+B
+B
+B
+w
+a
+"}
+(6,1,1) = {"
+a
+w
+w
+S
+n
+s
+w
+F
+n
+S
+w
+a
+"}
+(7,1,1) = {"
+a
+w
+S
+w
+F
+F
+n
+m
+S
+S
+w
+a
+"}
+(8,1,1) = {"
+a
+w
+B
+B
+B
+e
+s
+B
+B
+B
+w
+a
+"}
+(9,1,1) = {"
+a
+w
+w
+w
+B
+t
+w
+B
+w
+w
+w
+a
+"}
+(10,1,1) = {"
+a
+w
+w
+a
+B
+w
+S
+B
+w
+w
+a
+a
+"}
+(11,1,1) = {"
+a
+w
+w
+w
+w
+w
+w
+w
+w
+w
+w
+a
+"}
+(12,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}

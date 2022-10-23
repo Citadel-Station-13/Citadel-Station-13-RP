@@ -40,7 +40,7 @@
 	else
 		icon_state = "blob_damaged"
 
-/obj/effect/blob/take_damage(var/damage)	// VOREStation Edit
+/obj/effect/blob/take_damage(damage)
 	health -= damage
 	if(health < 0)
 		playsound(loc, 'sound/effects/splat.ogg', 50, 1)
@@ -88,7 +88,7 @@
 		I.deflate(1)
 		return
 
-	var/obj/vehicle/V = locate() in T
+	var/obj/vehicle_old/V = locate() in T
 	if(V)
 		V.ex_act(2)
 		return
@@ -142,7 +142,7 @@
 		if("fire")
 			damage = (W.force / fire_resist)
 			if(istype(W, /obj/item/weldingtool))
-				playsound(src, W.usesound, 100, 1)
+				playsound(src, W.tool_sound, 100, 1)
 		if("brute")
 			damage = (W.force / brute_resist)
 

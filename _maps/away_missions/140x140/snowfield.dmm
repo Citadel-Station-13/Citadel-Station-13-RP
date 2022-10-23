@@ -24,7 +24,7 @@
 	},
 /area/awaymission/snowfield)
 "af" = (
-/obj/effect/landmark/gateway_scatter,
+/obj/landmark/gateway_scatter,
 /turf/simulated/floor/outdoors/snow{
 	temperature = 243.15
 	},
@@ -53,7 +53,6 @@
 /area/awaymission/snowfield/base)
 "al" = (
 /obj/structure/cable/yellow{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /obj/effect/floor_decal/industrial/warning/full,
@@ -71,8 +70,6 @@
 	dir = 1
 	},
 /obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
@@ -82,22 +79,20 @@
 	dir = 4
 	},
 /obj/structure/cable/yellow{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/snowfield/base)
 "ao" = (
 /obj/machinery/power/smes/buildable{
-	charge = 2.5e+006;
+	charge = 2500;
 	input_attempt = 1;
-	input_level = 250000;
+	input_level = 250;
 	inputting = 1;
-	output_level = 250000
+	output_level = 250
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/machinery/light/small{
 	dir = 1
@@ -109,8 +104,6 @@
 /area/awaymission/snowfield/base)
 "aq" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
@@ -124,23 +117,18 @@
 	pixel_x = -24
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/snowfield/base)
 "as" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/snowfield/base)
 "at" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
@@ -294,7 +282,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/snowfield/base)
 "aQ" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8;
 	name = "Isolation to Waste"
 	},
@@ -331,7 +319,7 @@
 /area/awaymission/snowfield/base)
 "aV" = (
 /obj/effect/floor_decal/corner/green/full,
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8;
 	name = "Port to Isolation"
 	},
@@ -414,7 +402,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snowfield/base)
 "bi" = (
-/obj/machinery/atmospherics/unary/freezer{
+/obj/machinery/atmospherics/component/unary/freezer{
 	dir = 2;
 	icon_state = "freezer"
 	},
@@ -424,7 +412,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snowfield/base)
 "bj" = (
-/obj/machinery/atmospherics/unary/heater{
+/obj/machinery/atmospherics/component/unary/heater{
 	dir = 2;
 	icon_state = "heater"
 	},

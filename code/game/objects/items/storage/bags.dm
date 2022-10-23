@@ -26,6 +26,31 @@
 	drop_sound = 'sound/items/drop/backpack.ogg'
 	pickup_sound = 'sound/items/pickup/backpack.ogg'
 
+/obj/item/storage/bag/handle_item_insertion(obj/item/W as obj, prevent_warning = 0)
+	. = ..()
+	if(.) update_w_class()
+
+/obj/item/storage/bag/remove_from_storage(obj/item/W as obj, atom/new_location)
+	. = ..()
+	if(.) update_w_class()
+
+/obj/item/storage/bag/can_be_inserted(obj/item/W, stop_messages = 0)
+	var/mob/living/carbon/human/H = usr // if we're human, then we need to check if bag in a pocket
+	if(istype(src.loc, /obj/item/storage) || ishuman(H) && (H.l_store == src || H.r_store == src))
+		if(!stop_messages)
+			to_chat(usr, SPAN_NOTICE("Take \the [src] out of [istype(src.loc, /obj) ? "\the [src.loc]" : "the pocket"] first."))
+		return 0 //causes problems if the bag expands and becomes larger than src.loc can hold, so disallow it
+	. = ..()
+
+/obj/item/storage/bag/proc/update_w_class()
+	w_class = initial(w_class)
+	for(var/obj/item/I in contents)
+		w_class = max(w_class, I.w_class)
+
+	var/cur_storage_space = storage_space_used()
+	while((max_storage_space / 5 * (w_class-1)) < cur_storage_space)
+		w_class++
+
 // -----------------------------
 //          Trash bag
 // -----------------------------
@@ -33,26 +58,39 @@
 	name = "trash bag"
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!"
 	icon = 'icons/obj/janitor.dmi'
-	icon_state = "trashbag0"
-	item_state_slots = list(slot_r_hand_str = "trashbag", slot_l_hand_str = "trashbag")
+	icon_state = "trashbag"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "trashbag", SLOT_ID_LEFT_HAND = "trashbag")
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
 
-	w_class = ITEMSIZE_LARGE
-	max_w_class = ITEMSIZE_SMALL
+	w_class = ITEMSIZE_SMALL
+	max_w_class = ITEMSIZE_NORMAL
 	max_storage_space = ITEMSIZE_SMALL * 21
 	can_hold = list() // any
 	cant_hold = list(/obj/item/disk/nuclear)
 
-/obj/item/storage/bag/trash/update_icon()
-	if(contents.len == 0)
-		icon_state = "trashbag0"
-	else if(contents.len < 9)
-		icon_state = "trashbag1"
-	else if(contents.len < 18)
-		icon_state = "trashbag2"
-	else icon_state = "trashbag3"
+/obj/item/storage/bag/trash/update_w_class()
+	..()
+	update_icon()
+	switch(w_class)
+		if(2) icon_state = "[initial(icon_state)]"
+		if(3) icon_state = "[initial(icon_state)]1"
+		if(4) icon_state = "[initial(icon_state)]2"
+		if(5 to INFINITY) icon_state = "[initial(icon_state)]3"
 
+/obj/item/storage/bag/trash/bluespace
+	name = "trash bag of holding"
+	max_w_class = ITEMSIZE_HUGE
+	max_storage_space = ITEMSIZE_SMALL * 56
+	desc = "The latest and greatest in custodial convenience, a trashbag that is capable of holding vast quantities of garbage."
+	icon_state = "bluetrashbag"
+
+/obj/item/storage/bag/trash/bluespace/attackby(obj/item/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/storage/backpack/holding) || istype(W, /obj/item/storage/bag/trash/bluespace))
+		to_chat(user, "<span class='warning'>The Bluespace interfaces of the two devices conflict and malfunction.</span>")
+		qdel(W)
+		return 1
+	return ..()
 
 // -----------------------------
 //        Plastic Bag
@@ -91,23 +129,8 @@
 	var/stored_ore = list()
 	var/last_update = 0
 
-/obj/item/storage/bag/ore/remove_from_storage(obj/item/W as obj, atom/new_location)
-	if(!istype(W)) return 0
-
-	if(new_location)
-		if(ismob(loc))
-			W.dropped(usr)
-		if(ismob(new_location))
-			W.hud_layerise()
-		else
-			W.reset_plane_and_layer()
-		W.forceMove(new_location)
-	else
-		W.forceMove(get_turf(src))
-
-	W.on_exit_storage(src)
-	update_icon()
-	return 1
+/obj/item/storage/bag/ore/update_w_class()
+	return
 
 /obj/item/storage/bag/ore/gather_all(turf/T as turf, mob/user as mob, var/silent = 0)
 	var/success = 0
@@ -133,11 +156,11 @@
 		var/obj/structure/ore_box/O = user.pulling
 		O.attackby(src, user)
 
-/obj/item/storage/bag/ore/equipped(mob/user)
+/obj/item/storage/bag/ore/equipped(mob/user, slot, flags)
 	. = ..()
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/autoload, override = TRUE)
 
-/obj/item/storage/bag/ore/dropped(mob/user)
+/obj/item/storage/bag/ore/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 
@@ -255,15 +278,10 @@
 			break
 
 	if(!inserted || !S.amount)
-		usr.remove_from_mob(S)
-		usr.update_icons()	//update our overlays
-		if (usr.client && usr.s_active != src)
-			usr.client.screen -= S
-		S.dropped(usr)
 		if(!S.amount)
 			qdel(S)
 		else
-			S.loc = src
+			S.forceMove(src)
 
 	orient2hud(usr)
 	if(usr.s_active)

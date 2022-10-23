@@ -11,9 +11,9 @@
 	var/obj/structure/ladder/target_up
 	var/obj/structure/ladder/target_down
 
-	var/const/climb_time = 2 SECONDS
+	var/climb_time = 2 SECONDS
 
-/obj/structure/ladder/Initialize()
+/obj/structure/ladder/Initialize(mapload)
 	. = ..()
 	// the upper will connect to the lower
 	if(allowed_directions & DOWN) //we only want to do the top one, as it will initialize the ones before it.
@@ -51,13 +51,13 @@
 	climbLadder(M, target_ladder)
 
 /obj/structure/ladder/attack_ghost(var/mob/M)
+	. = ..()
 	var/target_ladder = getTargetLadder(M)
 	if(target_ladder)
-		M.forceMove(get_turf(target_ladder))
+		M.locationTransitForceMove(get_turf(target_ladder), 1, allow_buckled = TRUE, allow_pulled = FALSE, allow_grabbed = TRUE)
 
 /obj/structure/ladder/attack_robot(var/mob/M)
 	attack_hand(M)
-	return
 
 /obj/structure/ladder/proc/getTargetLadder(var/mob/M)
 	if((!target_up && !target_down) || (target_up && !istype(target_up.loc, /turf) || (target_down && !istype(target_down.loc,/turf))))
@@ -106,7 +106,7 @@
 			if(!A.CanPass(M, M.loc, 1.5, 0))
 				to_chat(M, "<span class='notice'>\The [A] is blocking \the [src].</span>")
 				return FALSE
-		return M.forceMove(T) //VOREStation Edit - Fixes adminspawned ladders
+		return M.forceMove(T)
 
 /obj/structure/ladder/CanPass(obj/mover, turf/source, height, airflow)
 	. = ..()
@@ -120,5 +120,21 @@
 	icon_state = "ladder10"
 
 /obj/structure/ladder/updown
+	allowed_directions = UP|DOWN
+	icon_state = "ladder11"
+
+
+// Meme Variants, Snake Eater. Used on Rift for that 3 meter difference between the base z level and the one above it -Bloop
+
+/obj/structure/ladder/snake_eater
+	name = "long ladder"
+	desc = "A ladder. You can climb it up and down. This one looks really long, what a thrill..."
+	climb_time = 120 SECONDS
+
+/obj/structure/ladder/snake_eater/up
+	allowed_directions = UP
+	icon_state = "ladder10"
+
+/obj/structure/ladder/snake_eater/updown
 	allowed_directions = UP|DOWN
 	icon_state = "ladder11"

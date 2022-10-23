@@ -2,14 +2,12 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "gsensor1"
 	name = "Gas Sensor"
+	anchored = TRUE
 
-	anchored = 1
 	var/state = 0
-
 	var/id_tag
 	var/frequency = 1439
-
-	var/on = 1
+	var/on = TRUE
 	var/output = 3
 	//Flags:
 	// 1 for pressure
@@ -28,7 +26,7 @@
 /obj/machinery/air_sensor/process(delta_time)
 	if(on)
 		var/datum/signal/signal = new
-		signal.transmission_method = 1 //radio signal
+		signal.transmission_method = TRANSMISSION_RADIO //radio signal
 		signal.data["tag"] = id_tag
 		signal.data["timestamp"] = world.time
 
@@ -68,7 +66,7 @@
 	if(frequency)
 		set_frequency(frequency)
 
-obj/machinery/air_sensor/Destroy()
+/obj/machinery/air_sensor/Destroy()
 	if(radio_controller)
 		radio_controller.remove_object(src,frequency)
 	. = ..()
@@ -83,7 +81,7 @@ obj/machinery/air_sensor/Destroy()
 	var/datum/radio_frequency/radio_connection
 	circuit = /obj/item/circuitboard/air_management
 
-obj/machinery/computer/general_air_control/Destroy()
+/obj/machinery/computer/general_air_control/Destroy()
 	if(radio_controller)
 		radio_controller.remove_object(src, frequency)
 	..()
@@ -92,19 +90,25 @@ obj/machinery/computer/general_air_control/Destroy()
 	if(..(user))
 		return
 
-	nano_ui_interact(user)
+	ui_interact(user)
 
 /obj/machinery/computer/general_air_control/receive_signal(datum/signal/signal)
-	if(!signal || signal.encryption) return
+	if(!signal || signal.encryption)
+		return
 
 	var/id_tag = signal.data["tag"]
-	if(!id_tag || !sensors.Find(id_tag)) return
+	if(!id_tag || !sensors.Find(id_tag))
+		return
 
 	sensor_information[id_tag] = signal.data
 
-/obj/machinery/computer/general_air_control/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	user.set_machine(src)
+/obj/machinery/computer/general_air_control/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "GeneralAtmoControl", name)
+		ui.open()
 
+/obj/machinery/computer/general_air_control/ui_data(mob/user)
 	var/list/data = list()
 	var/sensors_ui[0]
 	if(sensors.len)
@@ -117,12 +121,7 @@ obj/machinery/computer/general_air_control/Destroy()
 
 	data["sensors"] = sensors_ui
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if(!ui)
-		ui = new(user, src, ui_key, "atmo_control.tmpl", name, 525, 600)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(5)
+	return data
 
 /obj/machinery/computer/general_air_control/proc/set_frequency(new_frequency)
 	radio_controller.remove_object(src, frequency)
@@ -145,20 +144,9 @@ obj/machinery/computer/general_air_control/Destroy()
 	var/pressure_setting = ONE_ATMOSPHERE * 45
 	circuit = /obj/item/circuitboard/air_management/tank_control
 
-/obj/machinery/computer/general_air_control/large_tank_control/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	user.set_machine(src)
+/obj/machinery/computer/general_air_control/large_tank_control/ui_data(mob/user)
+	var/list/data = ..()
 
-	var/list/data = list()
-	var/sensors_ui[0]
-	if(sensors.len)
-		for(var/id_tag in sensors)
-			var/long_name = sensors[id_tag]
-			var/list/sensor_data = sensor_information[id_tag]
-			sensors_ui[++sensors_ui.len] = list("long_name" = long_name, "sensor_data" = sensor_data)
-	else
-		sensors_ui = null
-
-	data["sensors"] = sensors_ui
 	data["tanks"] = 1
 
 	if(input_info)
@@ -173,13 +161,10 @@ obj/machinery/computer/general_air_control/Destroy()
 
 	data["input_flow_setting"] = round(input_flow_setting, 0.1)
 	data["pressure_setting"] = pressure_setting
+	data["max_pressure"] = 50*ONE_ATMOSPHERE
+	data["max_flowrate"] = ATMOS_DEFAULT_VOLUME_PUMP + 500
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if(!ui)
-		ui = new(user, src, ui_key, "atmo_control.tmpl", name, 660, 500)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(5)
+	return data
 
 /obj/machinery/computer/general_air_control/large_tank_control/receive_signal(datum/signal/signal)
 	if(!signal || signal.encryption) return
@@ -193,54 +178,56 @@ obj/machinery/computer/general_air_control/Destroy()
 	else
 		..(signal)
 
-/obj/machinery/computer/general_air_control/large_tank_control/Topic(href, href_list)
+/obj/machinery/computer/general_air_control/large_tank_control/ui_act(action, params)
 	if(..())
-		return 1
+		return TRUE
 
-	if(href_list["adj_pressure"])
-		var/change = text2num(href_list["adj_pressure"])
-		pressure_setting = between(0, pressure_setting + change, 50*ONE_ATMOSPHERE)
-		return 1
+	switch(action)
+		if("adj_pressure")
+			var/new_pressure = text2num(params["adj_pressure"])
+			pressure_setting = clamp( new_pressure, 0,  50*ONE_ATMOSPHERE)
+			return TRUE
 
-	if(href_list["adj_input_flow_rate"])
-		var/change = text2num(href_list["adj_input_flow_rate"])
-		input_flow_setting = between(0, input_flow_setting + change, ATMOS_DEFAULT_VOLUME_PUMP + 500) //default flow rate limit for air injectors
-		return 1
+		if("adj_input_flow_rate")
+			var/new_flow = text2num(params["adj_input_flow_rate"])
+			input_flow_setting = clamp( new_flow, 0,  ATMOS_DEFAULT_VOLUME_PUMP + 500) //default flow rate limit for air injectors
+			return TRUE
 
 	if(!radio_connection)
-		return 0
+		return FALSE
 	var/datum/signal/signal = new
-	signal.transmission_method = 1 //radio signal
+	signal.transmission_method = TRANSMISSION_RADIO //radio signal
 	signal.source = src
-	if(href_list["in_refresh_status"])
-		input_info = null
-		signal.data = list ("tag" = input_tag, "status" = 1)
-		. = 1
+	switch(action)
+		if("in_refresh_status")
+			input_info = null
+			signal.data = list ("tag" = input_tag, "status" = 1)
+			. = TRUE
 
-	if(href_list["in_toggle_injector"])
-		input_info = null
-		signal.data = list ("tag" = input_tag, "power_toggle" = 1)
-		. = 1
+		if("in_toggle_injector")
+			input_info = null
+			signal.data = list ("tag" = input_tag, "power_toggle" = 1)
+			. = TRUE
 
-	if(href_list["in_set_flowrate"])
-		input_info = null
-		signal.data = list ("tag" = input_tag, "set_volume_rate" = "[input_flow_setting]")
-		. = 1
+		if("in_set_flowrate")
+			input_info = null
+			signal.data = list ("tag" = input_tag, "set_volume_rate" = "[input_flow_setting]")
+			. = TRUE
 
-	if(href_list["out_refresh_status"])
-		output_info = null
-		signal.data = list ("tag" = output_tag, "status" = 1)
-		. = 1
+		if("out_refresh_status")
+			output_info = null
+			signal.data = list ("tag" = output_tag, "status" = 1)
+			. = TRUE
 
-	if(href_list["out_toggle_power"])
-		output_info = null
-		signal.data = list ("tag" = output_tag, "power_toggle" = 1)
-		. = 1
+		if("out_toggle_power")
+			output_info = null
+			signal.data = list ("tag" = output_tag, "power_toggle" = 1)
+			. = TRUE
 
-	if(href_list["out_set_pressure"])
-		output_info = null
-		signal.data = list ("tag" = output_tag, "set_internal_pressure" = "[pressure_setting]")
-		. = 1
+		if("out_set_pressure")
+			output_info = null
+			signal.data = list ("tag" = output_tag, "set_internal_pressure" = "[pressure_setting]")
+			. = TRUE
 
 	signal.data["sigtype"]="command"
 	radio_connection.post_signal(src, signal, radio_filter = RADIO_ATMOSIA)
@@ -256,40 +243,29 @@ obj/machinery/computer/general_air_control/Destroy()
 	var/pressure_setting = 100
 	circuit = /obj/item/circuitboard/air_management/supermatter_core
 
-/obj/machinery/computer/general_air_control/supermatter_core/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	user.set_machine(src)
-
-	var/list/data = list()
-	var/sensors_ui[0]
-	if(sensors.len)
-		for(var/id_tag in sensors)
-			var/long_name = sensors[id_tag]
-			var/list/sensor_data = sensor_information[id_tag]
-			sensors_ui[++sensors_ui.len] = list("long_name" = long_name, "sensor_data" = sensor_data)
-	else
-		sensors_ui = null
-
-	data["sensors"] = sensors_ui
+/obj/machinery/computer/general_air_control/supermatter_core/ui_data(mob/user)
+	var/list/data = ..()
 	data["core"] = 1
 
 	if(input_info)
 		data["input_info"] = list("power" = input_info["power"], "volume_rate" = round(input_info["volume_rate"], 0.1))
 	else
 		data["input_info"] = null
+
 	if(output_info)
-		data["output_info"] = list("power" = output_info["power"], "pressure_limit" = output_info["external"])
+		// Yes, TECHNICALLY this is not output pressure, it's a pressure LIMIT. HOWEVER. The fact that the UI uses "output_pressure"
+		// in EXACTLY THE SAME WAY as "pressure_limit" means this should just pass it as the other fucking data argument because holy shit what the
+		// fuck
+		data["output_info"] = list("power" = output_info["power"], "output_pressure" = output_info["external"])
 	else
 		data["output_info"] = null
 
 	data["input_flow_setting"] = round(input_flow_setting, 0.1)
 	data["pressure_setting"] = pressure_setting
+	data["max_pressure"] = 10*ONE_ATMOSPHERE
+	data["max_flowrate"] = ATMOS_DEFAULT_VOLUME_PUMP + 500
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if(!ui)
-		ui = new(user, src, ui_key, "atmo_control.tmpl", name, 650, 500)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(5)
+	return data
 
 /obj/machinery/computer/general_air_control/supermatter_core/receive_signal(datum/signal/signal)
 	if(!signal || signal.encryption) return
@@ -303,54 +279,56 @@ obj/machinery/computer/general_air_control/Destroy()
 	else
 		..(signal)
 
-/obj/machinery/computer/general_air_control/supermatter_core/Topic(href, href_list)
+/obj/machinery/computer/general_air_control/supermatter_core/ui_act(action, params)
 	if(..())
-		return 1
+		return TRUE
 
-	if(href_list["adj_pressure"])
-		var/change = text2num(href_list["adj_pressure"])
-		pressure_setting = between(0, pressure_setting + change, 10*ONE_ATMOSPHERE)
-		return 1
+	switch(action)
+		if("adj_pressure")
+			var/new_pressure = text2num(params["adj_pressure"])
+			pressure_setting = clamp( new_pressure, 0,  10*ONE_ATMOSPHERE)
+			return TRUE
 
-	if(href_list["adj_input_flow_rate"])
-		var/change = text2num(href_list["adj_input_flow_rate"])
-		input_flow_setting = between(0, input_flow_setting + change, ATMOS_DEFAULT_VOLUME_PUMP + 500) //default flow rate limit for air injectors
-		return 1
+		if("adj_input_flow_rate")
+			var/new_flow = text2num(params["adj_input_flow_rate"])
+			input_flow_setting = clamp( new_flow, 0,  ATMOS_DEFAULT_VOLUME_PUMP + 500) //default flow rate limit for air injectors
+			return TRUE
 
 	if(!radio_connection)
-		return 0
+		return FALSE
 	var/datum/signal/signal = new
 	signal.transmission_method = 1 //radio signal
 	signal.source = src
-	if(href_list["in_refresh_status"])
-		input_info = null
-		signal.data = list ("tag" = input_tag, "status" = 1)
-		. = 1
+	switch(action)
+		if("in_refresh_status")
+			input_info = null
+			signal.data = list ("tag" = input_tag, "status" = 1)
+			. = TRUE
 
-	if(href_list["in_toggle_injector"])
-		input_info = null
-		signal.data = list ("tag" = input_tag, "power_toggle" = 1)
-		. = 1
+		if("in_toggle_injector")
+			input_info = null
+			signal.data = list ("tag" = input_tag, "power_toggle" = 1)
+			. = TRUE
 
-	if(href_list["in_set_flowrate"])
-		input_info = null
-		signal.data = list ("tag" = input_tag, "set_volume_rate" = "[input_flow_setting]")
-		. = 1
+		if("in_set_flowrate")
+			input_info = null
+			signal.data = list ("tag" = input_tag, "set_volume_rate" = "[input_flow_setting]")
+			. = TRUE
 
-	if(href_list["out_refresh_status"])
-		output_info = null
-		signal.data = list ("tag" = output_tag, "status" = 1)
-		. = 1
+		if("out_refresh_status")
+			output_info = null
+			signal.data = list ("tag" = output_tag, "status" = 1)
+			. = TRUE
 
-	if(href_list["out_toggle_power"])
-		output_info = null
-		signal.data = list ("tag" = output_tag, "power_toggle" = 1)
-		. = 1
+		if("out_toggle_power")
+			output_info = null
+			signal.data = list ("tag" = output_tag, "power_toggle" = 1)
+			. = TRUE
 
-	if(href_list["out_set_pressure"])
-		output_info = null
-		signal.data = list ("tag" = output_tag, "set_external_pressure" = "[pressure_setting]", "checks" = 1)
-		. = 1
+		if("out_set_pressure")
+			output_info = null
+			signal.data = list ("tag" = output_tag, "set_external_pressure" = "[pressure_setting]", "checks" = 1)
+			. = TRUE
 
 	signal.data["sigtype"]="command"
 	radio_connection.post_signal(src, signal, radio_filter = RADIO_ATMOSIA)
@@ -368,7 +346,7 @@ obj/machinery/computer/general_air_control/Destroy()
 /obj/machinery/computer/general_air_control/fuel_injection/process(delta_time)
 	if(automation)
 		if(!radio_connection)
-			return 0
+			return FALSE
 
 		var/injecting = 0
 		for(var/id_tag in sensor_information)
@@ -381,7 +359,7 @@ obj/machinery/computer/general_air_control/Destroy()
 					injecting = 1
 
 		var/datum/signal/signal = new
-		signal.transmission_method = 1 //radio signal
+		signal.transmission_method = TRANSMISSION_RADIO //radio signal
 		signal.source = src
 
 		signal.data = list(
@@ -394,20 +372,8 @@ obj/machinery/computer/general_air_control/Destroy()
 
 	..()
 
-/obj/machinery/computer/general_air_control/fuel_injection/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	user.set_machine(src)
-
-	var/list/data = list()
-	var/sensors_ui[0]
-	if(sensors.len)
-		for(var/id_tag in sensors)
-			var/long_name = sensors[id_tag]
-			var/list/sensor_data = sensor_information[id_tag]
-			sensors_ui[++sensors_ui.len] = list("long_name" = long_name, "sensor_data" = sensor_data)
-	else
-		sensors_ui = null
-
-	data["sensors"] = sensors_ui
+/obj/machinery/computer/general_air_control/fuel_injection/ui_data(mob/user)
+	var/list/data = ..()
 	data["fuel"] = 1
 	data["automation"] = automation
 
@@ -416,12 +382,7 @@ obj/machinery/computer/general_air_control/Destroy()
 	else
 		data["device_info"] = null
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if(!ui)
-		ui = new(user, src, ui_key, "atmo_control.tmpl", name, 650, 500)
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(5)
+	return data
 
 /obj/machinery/computer/general_air_control/fuel_injection/receive_signal(datum/signal/signal)
 	if(!signal || signal.encryption) return
@@ -433,55 +394,60 @@ obj/machinery/computer/general_air_control/Destroy()
 	else
 		..(signal)
 
-/obj/machinery/computer/general_air_control/fuel_injection/Topic(href, href_list)
+/obj/machinery/computer/general_air_control/fuel_injection/ui_act(action, params)
 	if(..())
-		return
+		return TRUE
 
-	if(href_list["refresh_status"])
-		device_info = null
-		if(!radio_connection)
-			return 0
+	switch(action)
+		if("refresh_status")
+			device_info = null
+			if(!radio_connection)
+				return FALSE
 
-		var/datum/signal/signal = new
-		signal.transmission_method = 1 //radio signal
-		signal.source = src
-		signal.data = list(
-			"tag" = device_tag,
-			"status" = 1,
-			"sigtype"="command"
-		)
-		radio_connection.post_signal(src, signal, radio_filter = RADIO_ATMOSIA)
+			var/datum/signal/signal = new
+			signal.transmission_method = TRANSMISSION_RADIO //radio signal
+			signal.source = src
+			signal.data = list(
+				"tag" = device_tag,
+				"status" = 1,
+				"sigtype"="command"
+			)
+			radio_connection.post_signal(src, signal, radio_filter = RADIO_ATMOSIA)
+			. = TRUE
 
-	if(href_list["toggle_automation"])
-		automation = !automation
+		if("toggle_automation")
+			automation = !automation
+			. = TRUE
 
-	if(href_list["toggle_injector"])
-		device_info = null
-		if(!radio_connection)
-			return 0
+		if("toggle_injector")
+			device_info = null
+			if(!radio_connection)
+				return FALSE
 
-		var/datum/signal/signal = new
-		signal.transmission_method = 1 //radio signal
-		signal.source = src
-		signal.data = list(
-			"tag" = device_tag,
-			"power_toggle" = 1,
-			"sigtype"="command"
-		)
+			var/datum/signal/signal = new
+			signal.transmission_method = TRANSMISSION_RADIO //radio signal
+			signal.source = src
+			signal.data = list(
+				"tag" = device_tag,
+				"power_toggle" = 1,
+				"sigtype"="command"
+			)
 
-		radio_connection.post_signal(src, signal, radio_filter = RADIO_ATMOSIA)
+			radio_connection.post_signal(src, signal, radio_filter = RADIO_ATMOSIA)
+			. = TRUE
 
-	if(href_list["injection"])
-		if(!radio_connection)
-			return 0
+		if("injection")
+			if(!radio_connection)
+				return FALSE
 
-		var/datum/signal/signal = new
-		signal.transmission_method = 1 //radio signal
-		signal.source = src
-		signal.data = list(
-			"tag" = device_tag,
-			"inject" = 1,
-			"sigtype"="command"
-		)
+			var/datum/signal/signal = new
+			signal.transmission_method = TRANSMISSION_RADIO //radio signal
+			signal.source = src
+			signal.data = list(
+				"tag" = device_tag,
+				"inject" = 1,
+				"sigtype"="command"
+			)
 
-		radio_connection.post_signal(src, signal, radio_filter = RADIO_ATMOSIA)
+			radio_connection.post_signal(src, signal, radio_filter = RADIO_ATMOSIA)
+			. = TRUE

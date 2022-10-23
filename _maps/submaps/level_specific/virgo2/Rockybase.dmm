@@ -1,8 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /mob/living/simple_mob/mechanical/viscerator{
-	maxbodytemp = 900;
-	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive/returnhome
+	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive/returnhome;
+	maxbodytemp = 900
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/template_noop)
@@ -22,10 +22,10 @@
 /area/submap/virgo2/Rockybase)
 "af" = (
 /mob/living/simple_mob/mechanical/combat_drone{
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/threatening/returnhome;
 	desc = "An automated combat drone with an aged apperance.";
 	faction = "syndicate";
-	maxbodytemp = 900;
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/threatening/returnhome
+	maxbodytemp = 900
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/Rockybase)
@@ -37,7 +37,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "ai" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "aj" = (
@@ -47,9 +47,7 @@
 "ak" = (
 /obj/machinery/shower{
 	dir = 4;
-	icon_state = "shower";
-	pixel_x = 5;
-	pixel_y = 0
+	pixel_x = 5
 	},
 /obj/structure/curtain/open/shower,
 /obj/machinery/light/small{
@@ -73,9 +71,7 @@
 "ap" = (
 /obj/machinery/shower{
 	dir = 8;
-	icon_state = "shower";
-	pixel_x = -5;
-	pixel_y = 0
+	pixel_x = -5
 	},
 /obj/structure/curtain/open/shower,
 /obj/item/soap,
@@ -177,9 +173,7 @@
 "aJ" = (
 /obj/machinery/shower{
 	dir = 4;
-	icon_state = "shower";
-	pixel_x = 5;
-	pixel_y = 0
+	pixel_x = 5
 	},
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -187,9 +181,7 @@
 "aK" = (
 /obj/machinery/shower{
 	dir = 8;
-	icon_state = "shower";
-	pixel_x = -5;
-	pixel_y = 0
+	pixel_x = -5
 	},
 /obj/structure/curtain/open/shower,
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -204,7 +196,6 @@
 /obj/item/grenade/chem_grenade/cleaner,
 /obj/item/grenade/chem_grenade/cleaner,
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -246,23 +237,18 @@
 "aS" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "aT" = (
 /obj/machinery/shower{
 	dir = 8;
-	icon_state = "shower";
-	pixel_x = -5;
-	pixel_y = 0
+	pixel_x = -5
 	},
 /obj/structure/curtain/open/shower,
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
@@ -335,7 +321,6 @@
 "bh" = (
 /obj/machinery/portable_atmospherics/hydroponics,
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -354,15 +339,15 @@
 /area/submap/virgo2/Rockybase)
 "bl" = (
 /mob/living/simple_mob/mechanical/combat_drone{
+	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/threatening/returnhome;
 	desc = "An automated combat drone with an aged apperance.";
 	faction = "syndicate";
-	maxbodytemp = 900;
-	ai_holder_type = /datum/ai_holder/simple_mob/ranged/kiting/threatening/returnhome
+	maxbodytemp = 900
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "bm" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "bn" = (
@@ -396,7 +381,7 @@
 /area/submap/virgo2/Rockybase)
 "bt" = (
 /obj/structure/table/standard,
-/obj/item/kit/paint/gygax/darkgygax,
+/obj/item/kit/paint/gygax,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "bu" = (
@@ -508,18 +493,18 @@
 "bM" = (
 /obj/structure/table/standard,
 /obj/structure/table/standard,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/reagent_containers/hypospray/autoinjector/biginjector/burn,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "bN" = (
 /obj/structure/table/standard,
 /obj/item/clothing/mask/breath/medical,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "bO" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "bP" = (
@@ -542,21 +527,21 @@
 /area/submap/virgo2/Rockybase)
 "bS" = (
 /obj/item/stack/rods,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "bT" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/girder,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "bU" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "bV" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/table,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
@@ -570,8 +555,7 @@
 /area/submap/virgo2/Rockybase)
 "bY" = (
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
@@ -596,24 +580,18 @@
 /area/submap/virgo2/Rockybase)
 "cd" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "ce" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "cf" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/smes/buildable/point_of_interest,
@@ -624,25 +602,25 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "ch" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "ci" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "cj" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/material/shard,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "ck" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "cl" = (
@@ -662,15 +640,13 @@
 "cp" = (
 /obj/machinery/vending/robotics,
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "cq" = (
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /obj/machinery/light{
 	dir = 8
@@ -685,40 +661,31 @@
 /area/submap/virgo2/Rockybase)
 "cr" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "cs" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 4
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/smes/buildable/point_of_interest,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "ct" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/Rockybase)
 "cu" = (
@@ -728,9 +695,7 @@
 "cv" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/item/mecha_parts/part/gygax_left_arm,
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -741,8 +706,6 @@
 /area/submap/virgo2/Rockybase)
 "cx" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating/virgo2,
@@ -793,7 +756,7 @@
 /area/submap/virgo2/Rockybase)
 "cI" = (
 /obj/item/surgical/surgicaldrill,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "cJ" = (
@@ -802,12 +765,12 @@
 /area/submap/virgo2/Rockybase)
 "cK" = (
 /obj/item/clothing/suit/space/void/medical,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "cL" = (
-/obj/effect/decal/cleanable/dirt,
-/mob/living/bot/medbot,
+/obj/effect/debris/cleanable/dirt,
+/mob/living/bot/medibot,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/Rockybase)
 "cM" = (

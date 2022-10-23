@@ -149,7 +149,7 @@
 /turf/simulated/floor/cult,
 /area/awaymission/wwvault)
 "aK" = (
-/obj/effect/landmark/corpse/miner/rig,
+/obj/spawner/corpse/miner/rig,
 /turf/simulated/floor/cult,
 /area/awaymission/wwvault)
 "aL" = (
@@ -177,14 +177,14 @@
 /turf/simulated/floor/plating,
 /area/awaymission/wwmines)
 "aU" = (
-/obj/effect/landmark/corpse/syndicatecommando,
+/obj/spawner/corpse/syndicatecommando,
 /turf/simulated/floor/cult,
 /area/awaymission/wwvault)
 "aV" = (
 /turf/simulated/mineral,
 /area/awaymission/wwrefine)
 "aY" = (
-/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/debris/cleanable/blood/gibs/body,
 /turf/simulated/floor/plating,
 /area/awaymission/wwmines)
 "aZ" = (
@@ -192,7 +192,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/wwmines)
 "bb" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/plating,
 /area/awaymission/wwrefine)
 "bc" = (
@@ -207,7 +207,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/wwrefine)
 "bi" = (
-/obj/effect/landmark/corpse/miner/rig,
+/obj/spawner/corpse/miner/rig,
 /obj/effect/mine/dnascramble,
 /turf/simulated/floor/plating,
 /area/awaymission/wwmines)
@@ -215,11 +215,11 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "bk" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "bl" = (
-/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/debris/cleanable/blood/gibs/body,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "bm" = (
@@ -231,7 +231,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/wwrefine)
 "bq" = (
-/obj/effect/landmark/corpse/miner/rig,
+/obj/spawner/corpse/miner/rig,
 /turf/simulated/floor/plating,
 /area/awaymission/wwrefine)
 "br" = (
@@ -240,7 +240,7 @@
 /area)
 "bt" = (
 /obj/structure/closet/crate,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/plating,
 /area/awaymission/wwrefine)
 "bv" = (
@@ -424,7 +424,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "cd" = (
-/obj/effect/landmark/corpse/chef{
+/obj/spawner/corpse/chef{
 	mobname = "Chef"
 	},
 /turf/simulated/floor{
@@ -509,7 +509,7 @@
 /turf/space,
 /area)
 "cv" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
 "cw" = (
@@ -523,7 +523,7 @@
 /turf/simulated/floor,
 /area/awaymission/wwgov)
 "cA" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "cB" = (
@@ -550,7 +550,7 @@
 /turf/simulated/floor,
 /area/awaymission/wwgov)
 "cH" = (
-/obj/effect/landmark/corpse/chef{
+/obj/spawner/corpse/chef{
 	mobname = "Chef"
 	},
 /turf/simulated/floor,
@@ -560,7 +560,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "cM" = (
-/obj/effect/landmark/corpse/miner/rig,
+/obj/spawner/corpse/miner/rig,
 /turf/simulated/floor/wood,
 /area/awaymission/wwgov)
 "cN" = (
@@ -637,7 +637,7 @@
 /turf/simulated/floor,
 /area/awaymission/wwgov)
 "dh" = (
-/obj/effect/landmark/corpse/syndicatecommando{
+/obj/spawner/corpse/syndicatecommando{
 	mobname = "Syndicate Commando"
 	},
 /turf/simulated/floor/carpet,
@@ -662,7 +662,7 @@
 /turf/simulated/mineral,
 /area/awaymission/wwmines)
 "dn" = (
-/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/debris/cleanable/blood/tracks,
 /turf/simulated/floor/plating,
 /area/awaymission/wwmines)
 "dp" = (
@@ -688,7 +688,7 @@
 /turf/simulated/floor,
 /area/awaymission/wwgov)
 "du" = (
-/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/debris/cleanable/blood/tracks,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "dv" = (
@@ -696,11 +696,11 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "dw" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/plating,
 /area/awaymission/wwmines)
 "dy" = (
-/obj/effect/landmark/corpse/miner/rig,
+/obj/spawner/corpse/miner/rig,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "dB" = (
@@ -723,7 +723,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "dI" = (
-/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/debris/cleanable/blood/gibs/body,
 /turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
 "dJ" = (
@@ -867,7 +867,7 @@
 /turf/space,
 /area)
 "ej" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/awaymission/wwmines)
 "ek" = (
@@ -877,7 +877,7 @@
 	},
 /area/awaymission/wwmines)
 "el" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/machinery/washing_machine,
 /turf/simulated/floor{
 	dir = 5
@@ -914,7 +914,7 @@
 /turf/simulated/floor,
 /area/awaymission/wwrefine)
 "ev" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor{
 	dir = 5
 	},
@@ -941,7 +941,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "eF" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/bedsheet/blue,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
@@ -962,12 +962,12 @@
 /turf/simulated/floor/plating,
 /area/awaymission/wwmines)
 "eL" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/landmark/corpse/miner/rig,
+/obj/effect/debris/cleanable/blood/splatter,
+/obj/spawner/corpse/miner/rig,
 /turf/simulated/floor/carpet,
 /area/awaymission/wwmines)
 "eM" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/mineral,
 /area/awaymission/wwmines)
 "eO" = (
@@ -1045,7 +1045,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "fh" = (
-/obj/effect/landmark/corpse/doctor{
+/obj/spawner/corpse/doctor{
 	mobname = "Doctor Mugabee"
 	},
 /turf/simulated/floor/plating,
@@ -1080,7 +1080,7 @@
 /turf/simulated/mineral{
 	icon_state = "sandstone0";
 	mineral = "sandstone";
-	
+
 	},
 /area/awaymission/wwmines)
 "fo" = (
@@ -1106,11 +1106,11 @@
 /turf/simulated/floor/plating,
 /area/awaymission/wwmines)
 "fs" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/mineral,
 /area/awaymission/wwmines)
 "ft" = (
-/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/debris/cleanable/blood/gibs/body,
 /turf/simulated/mineral,
 /area/awaymission/wwmines)
 "fw" = (
@@ -1190,12 +1190,12 @@
 /obj/effect/decal/mecha_wreckage/ripley/deathripley{
 	anchored = 1
 	},
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/awaymission/wwmines)
 "fR" = (
 /obj/effect/mine/dnascramble,
-/obj/effect/landmark/corpse/miner/rig,
+/obj/spawner/corpse/miner/rig,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "fS" = (
@@ -1233,8 +1233,8 @@
 /turf/simulated/floor,
 /area/awaymission/wwrefine)
 "fY" = (
-/obj/effect/decal/cleanable/cobweb,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/cobweb,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "fZ" = (
@@ -1265,11 +1265,11 @@
 /turf/simulated/floor,
 /area)
 "ge" = (
-/obj/effect/landmark/corpse/miner/rig,
+/obj/spawner/corpse/miner/rig,
 /turf/simulated/floor,
 /area/awaymission/wwrefine)
 "gf" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "gg" = (
@@ -1282,7 +1282,7 @@
 /turf/simulated/floor/grass,
 /area/awaymission/wwgov)
 "gj" = (
-/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/effect/debris/cleanable/blood/gibs/core,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "gk" = (
@@ -1302,7 +1302,7 @@
 /turf/simulated/floor/grass,
 /area/awaymission/wwgov)
 "gp" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/effect/forcefield{
 	desc = "You can't get in. Heh.";
 	layer = 1;
@@ -1311,11 +1311,11 @@
 /turf/simulated/mineral,
 /area/awaymission/wwmines)
 "gq" = (
-/obj/effect/decal/cleanable/blood/gibs/up,
+/obj/effect/debris/cleanable/blood/gibs/up,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "gr" = (
-/obj/effect/decal/cleanable/blood/gibs/down,
+/obj/effect/debris/cleanable/blood/gibs/down,
 /turf/simulated/floor/wood,
 /area/awaymission/wwmines)
 "gt" = (
@@ -1335,7 +1335,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/wwmines)
 "gy" = (
-/obj/effect/landmark/corpse/syndicatecommando{
+/obj/spawner/corpse/syndicatecommando{
 	mobname = "Syndicate Commando"
 	},
 /turf/simulated/floor/grass,
@@ -1402,7 +1402,7 @@
 /turf/simulated/floor,
 /area/awaymission/wwrefine)
 "gH" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/effect/forcefield{
 	desc = "You can't get in. Heh.";
 	layer = 1;
@@ -1448,7 +1448,7 @@
 	},
 /area/awaymission/wwrefine)
 "gV" = (
-/obj/effect/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/plating,

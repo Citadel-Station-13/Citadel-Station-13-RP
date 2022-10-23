@@ -15,7 +15,7 @@
 		/obj/effect/portal,
 		/obj/effect/abstract,
 		/obj/effect/hotspot,
-		/obj/effect/landmark,
+		/obj/landmark,
 		/obj/effect/temp_visual,
 		/obj/effect/light_emitter/tendril,
 		/obj/effect/collapse,
@@ -140,4 +140,4 @@
 			AM.alpha = oldalpha
 			AM.color = oldcolor
 			AM.transform = oldtransform
-			AM.throw_at(get_edge_target_turf(parent,pick(GLOB.alldirs)),rand(1, 10),rand(1, 10))
+			AM.throw_at_old(get_edge_target_turf(parent,pick(GLOB.alldirs)),rand(1, 10),rand(1, 10))

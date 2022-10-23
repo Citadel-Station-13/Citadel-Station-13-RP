@@ -172,7 +172,7 @@
 			. = TRUE
 		if("terminate")
 			if(computer && program.can_run(usr, 1))
-				id_card.assignment = "Dismissed"	//VOREStation Edit: setting adjustment
+				id_card.assignment = "Dismissed"
 				id_card.access = list()
 				callHook("terminate_employee", list(id_card))
 			. = TRUE
@@ -232,4 +232,3 @@
 
 	if(id_card)
 		id_card.name = text("[id_card.registered_name]'s ID Card ([id_card.assignment])")
-

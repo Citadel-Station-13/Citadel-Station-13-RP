@@ -61,7 +61,7 @@
 	. = ..()
 	if (dirty)
 		. += image('icons/obj/kitchen.dmi', "grbloody")
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if (!occupant)
 		. += image('icons/obj/kitchen.dmi', "grjam")
@@ -75,7 +75,7 @@
 	return
 
 /obj/machinery/gibber/attack_hand(mob/user as mob)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if(operating)
 		to_chat(user, "<span class='danger'>The gibber is locked and running, wait for it to finish.</span>")
@@ -108,7 +108,7 @@
 	move_into_gibber(user,G.affecting)
 	// Grab() process should clean up the grab item, no need to del it.
 
-/obj/machinery/gibber/MouseDrop_T(mob/target, mob/user)
+/obj/machinery/gibber/MouseDroppedOnLegacy(mob/target, mob/user)
 	if(user.stat || user.restrained())
 		return
 	move_into_gibber(user,target)
@@ -131,8 +131,7 @@
 		to_chat(user, "<span class='danger'>The gibber safety guard is engaged!</span>")
 		return
 
-
-	if(victim.abiotic(1))
+	if(victim.abiotic(TRUE))
 		to_chat(user, "<span class='danger'>Subject may not have abiotic items on.</span>")
 		return
 
@@ -140,11 +139,9 @@
 	src.add_fingerprint(user)
 	if(do_after(user, 30) && victim.Adjacent(src) && user.Adjacent(src) && victim.Adjacent(user) && !occupant)
 		user.visible_message("<span class='danger'>[user] stuffs [victim] into the gibber!</span>")
-		if(victim.client)
-			victim.client.perspective = EYE_PERSPECTIVE
-			victim.client.eye = src
-		victim.loc = src
-		src.occupant = victim
+		victim.forceMove(src)
+		victim.update_perspective()
+		occupant = victim
 		update_icon()
 
 /obj/machinery/gibber/verb/eject()
@@ -162,15 +159,12 @@
 	if(operating || !src.occupant)
 		return
 	for(var/obj/O in src)
-		O.loc = src.loc
-	if (src.occupant.client)
-		src.occupant.client.eye = src.occupant.client.mob
-		src.occupant.client.perspective = MOB_PERSPECTIVE
-	src.occupant.loc = src.loc
-	src.occupant = null
+		O.forceMove(loc)
+	occupant.forceMove(loc)
+	occupant.update_perspective()
+	occupant = null
 	update_icon()
 	return
-
 
 /obj/machinery/gibber/proc/startgibbing(mob/user as mob)
 	if(src.operating)
@@ -232,6 +226,6 @@
 				qdel(thing)
 				continue
 			thing.forceMove(get_turf(thing)) // Drop it onto the turf for throwing.
-			thing.throw_at(get_edge_target_turf(src,gib_throw_dir),rand(0,3),emagged ? 100 : 50) // Being pelted with bits of meat and bone would hurt.
+			thing.throw_at_old(get_edge_target_turf(src,gib_throw_dir),rand(0,3),emagged ? 100 : 50) // Being pelted with bits of meat and bone would hurt.
 
 		update_icon()

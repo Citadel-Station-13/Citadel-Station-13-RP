@@ -158,4 +158,3 @@
 	name = "Combat organ kit"
 	item_cost = 120
 	path = /obj/item/storage/firstaid/insiderepair
-

@@ -11,11 +11,11 @@
 	density = 1
 
 	var/list/obj/item/clothing/suit/space/suits = list()
-	var/suit_stored_TYPE = /obj/item/clothing/suit/space
+	var/suit_stored_TYPE = /obj/item/clothing/suit/space/void
 	var/suit_amount
 
 	var/list/obj/item/clothing/head/helmet/space/helmets = list()
-	var/helmet_stored_TYPE = /obj/item/clothing/head/helmet/space
+	var/helmet_stored_TYPE = /obj/item/clothing/head/helmet/space/void
 	var/helmet_amount
 
 	var/list/obj/item/clothing/mask/masks = list()
@@ -48,7 +48,7 @@
 
 /obj/machinery/suit_storage_closet/power_change()
 	..()
-	if(!(stat & NOPOWER))
+	if(!(machine_stat & NOPOWER))
 		ispowered = 1
 	else
 		ispowered = 0
@@ -68,28 +68,69 @@
 /obj/machinery/suit_storage_closet/attack_hand(mob/user as mob)
 	if(..())
 		return
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		return
 	if(!user.IsAdvancedToolUser())
 		return 0
-	ui_interact(user)
+	removal_menu(user)
 
-/obj/machinery/suit_storage_closet/ui_state(mob/user)
-	return GLOB.notcontained_state
+/obj/machinery/suit_storage_closet/proc/removal_menu(var/mob/user)
+	if (can_remove_items(user))
+		var/list/menuoptions = list()
+		if(helmet_amount > 0)
+			menuoptions += "Helmet"
+		if(suit_amount > 0)
+			menuoptions += "Suit"
+		if(boots_amount > 0)
+			menuoptions += "Boots"
+		if(mask_amount > 0)
+			menuoptions += "Mask"
+		var/selection = input(user, "Which type would you like to remove?", "Remove Contents") as null|anything in menuoptions
+		switch(selection)
+			if("Helmet")
+				if(helmet_amount <= 0)
+					to_chat(user, "<span class='warning'>There are no helmets stored in this storage unit</span>")
+				var/obj/item/clothing/head/helmet/space/helmet_selection = input(user, "Which Helmet would you like to remove?", "Remove Contents") as null|anything in helmets
+				if(istype(helmet_selection))
+					helmet_selection.loc = src.loc
+					LAZYREMOVE(helmets, helmet_selection)
+					update_amounts()
+			if("Suit")
+				if(suit_amount <= 0)
+					to_chat(user, "<span class='warning'>There are no suits stored in this storage unit</span>")
+				var/obj/item/clothing/suit/space/suit_selection = input(user, "Which Suit would you like to remove?", "Remove Contents") as null|anything in suits
+				if(istype(suit_selection))
+					suit_selection.loc = src.loc
+					LAZYREMOVE(suits, suit_selection)
+					update_amounts()
+			if("Boots")
+				if(boots_amount <= 0)
+					to_chat(user, "<span class='warning'>There are no suits stored in this storage unit</span>")
+				var/obj/item/clothing/shoes/boot_selection = input(user, "Which Boots would you like to remove?", "Remove Contents") as null|anything in boots
+				if(istype(boot_selection))
+					boot_selection.loc = src.loc
+					LAZYREMOVE(boots, boot_selection)
+					update_amounts()
+			if("Mask")
+				if(mask_amount <= 0)
+					to_chat(user, "<span class='warning'>There are no masks stored in this storage unit</span>")
+				var/obj/item/clothing/mask/mask_selection = input(user, "Which Mask would you like to remove?", "Remove Contents") as null|anything in masks
+				if(istype(mask_selection))
+					mask_selection.loc = src.loc
+					LAZYREMOVE(masks, mask_selection)
+					update_amounts()
+		return 1
+	return 0
 
-/obj/machinery/suit_storage_closet/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "SuitStorageUnit", name)
-		ui.open()
+/obj/machinery/suit_storage_closet/proc/can_remove_items(var/mob/user)
+	if (!Adjacent(user))
+		return 0
 
+	if (isanimal(user))
+		return 0
 
-/obj/machinery/suit_storage_closet/ui_data()
-	return ..()
-
-/obj/machinery/suit_storage_closet/ui_act(action, params)
-	return ..()
-
+	return 1
+/*
 /obj/machinery/suit_storage_closet/proc/dispense_helmet(mob/user as mob, var/list_index)
 	if(helmet_amount <= 0)
 		return
@@ -124,7 +165,7 @@
 		var/obj/item/clothing/shoes/boots/boot_dispense = LAZYACCESS(boots, list_index)
 		LAZYREMOVE(boots,boot_dispense)
 		boot_dispense.loc = src.loc
-		return
+		return*/
 
 /obj/machinery/suit_storage_closet/proc/dump_everything()
 	helmet_amount = 0
@@ -159,7 +200,7 @@
 		return
 	/*if(I.is_screwdriver())
 		panelopen = !panelopen
-		playsound(src, I.usesound, 100, 1)
+		playsound(src, I.tool_sound, 100, 1)
 		to_chat(user, "<font color=#4F49AF>You [panelopen ? "open up" : "close"] the unit's maintenance panel.</font>")
 		updateUsrDialog()
 		return*/
@@ -200,48 +241,43 @@
 		if(suit_amount >= max_amount)
 			to_chat(user, "<font color=#4F49AF>[src] is already at capacity. [S] won't fit!</font>")
 			return
+		if(!user.attempt_insert_item_for_installation(S, src))
+			return
 		to_chat(user, "You load the [S.name] into [src].")
-		user.drop_item()
-		S.loc = src
 		LAZYADD(suits, S)
 		update_amounts()
-		updateUsrDialog()
 		return
 	if(istype(I,/obj/item/clothing/head/helmet))
 		var/obj/item/clothing/head/helmet/H = I
 		if(helmet_amount >= max_amount)
 			to_chat(user, "<font color=#4F49AF>[src] is already at capacity. [H] won't fit!</font>")
 			return
+		if(!user.attempt_insert_item_for_installation(H, src))
+			return
 		to_chat(user, "You load the [H.name] into [src].")
-		user.drop_item()
-		H.loc = src
 		LAZYADD(helmets, H)
 		update_amounts()
-		updateUsrDialog()
 		return
 	if(istype(I,/obj/item/clothing/mask))
 		var/obj/item/clothing/mask/M = I
 		if(mask_amount >= max_amount)
 			to_chat(user, "<font color=#4F49AF>[src] is already at capacity. [M] won't fit!</font>")
 			return
+		if(!user.attempt_insert_item_for_installation(M, src))
+			return
 		to_chat(user, "You load the [M.name] into [src].")
-		user.drop_item()
-		M.loc = src
 		LAZYADD(masks, M)
 		update_amounts()
-		updateUsrDialog()
 		return
 	if(istype(I,/obj/item/clothing/shoes))
 		var/obj/item/clothing/shoes/B = I
 		if(mask_amount >= max_amount)
 			to_chat(user, "<font color=#4F49AF>[src] is already at capacity. [B] won't fit!</font>")
 			return
+		if(!user.attempt_insert_item_for_installation(B, src))
+			return
 		to_chat(user, "You load the [B.name] into [src].")
-		user.drop_item()
-		B.loc = src
 		LAZYADD(boots, B)
 		update_amounts()
-		updateUsrDialog()
 		return
-	updateUsrDialog()
-	return
+	return ..()

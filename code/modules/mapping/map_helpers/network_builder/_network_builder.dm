@@ -1,41 +1,57 @@
-//Builds networks like power cables/atmos lines/etc
-//Just a holder parent type for now..
-/obj/effect/map_helper/network_builder
-	/// set var to true to not del on lateload
-	var/custom_spawned = FALSE
-
-	icon = 'icons/map/mapping_helpers.dmi'
-
+// Builds networks like power cables/atmos lines/etc
+// Just a holder parent type for now..
+/obj/map_helper/network_builder
+	icon = 'icons/mapping/helpers/mapping_helpers.dmi'
 	late = TRUE
-	/// what directions we know connections are in
-	var/list/network_directions = list()
+	invisibility = INVISIBILITY_MAXIMUM
+	/// what directions we know connections are in. flag. uses X_BIT defines!
+	var/network_directions
+	/// adminspawned
+	var/adminspawned = FALSE
+	/// our base type
+	var/base_type
 
-/obj/effect/map_helper/network_builder/Initialize(mapload)
+/obj/map_helper/network_builder/Initialize(mapload)
 	. = ..()
-	var/conflict = check_duplicates()
-	if(conflict)
-		stack_trace("WARNING: [type] network building helper found check_duplicates() conflict [conflict] in its location.!")
-		return INITIALIZE_HINT_QDEL
 	if(!mapload)
-		if(GLOB.Debug2)
-			custom_spawned = TRUE
-			return INITIALIZE_HINT_NORMAL
-		else
-			return INITIALIZE_HINT_QDEL
+		/// if it isn't adminspawned i am going to come find you
+		/// don't anyone dare use this in non mapping contexts
+		/// "teardown and rebuild" behavior is garbage, don't use it.
+		adminspawned = TRUE
+		rebuild()
+		return INITIALIZE_HINT_NORMAL
+	var/conflict = length(duplicates())
+	if(conflict)
+		stack_trace("WARNING: [type] network building helper found check_duplicates() conflicts [english_list(conflict)] in its location.!")
+		return INITIALIZE_HINT_QDEL
+	network_directions = scan()
 	return INITIALIZE_HINT_LATELOAD
 
 /// How this works: On LateInitialize, detect all directions that this should be applicable to, and do what it needs to do, and then inform all network builders in said directions that it's been around since it won't be around afterwards.
-/obj/effect/map_helper/network_builder/LateInitialize()
-	scan_directions()
-	build_network()
-	if(!custom_spawned)
-		qdel(src)
+/obj/map_helper/network_builder/LateInitialize()
+	build()
+	qdel(src)
 
-/obj/effect/map_helper/network_builder/proc/check_duplicates()
+/obj/map_helper/network_builder/proc/duplicates()
 	CRASH("Base abstract network builder tried to check duplicates.")
 
-/obj/effect/map_helper/network_builder/proc/scan_directions()
+/obj/map_helper/network_builder/proc/scan()
 	CRASH("Base abstract network builder tried to scan directions.")
 
-/obj/effect/map_helper/network_builder/proc/build_network()
+/obj/map_helper/network_builder/proc/build()
 	CRASH("Base abstract network builder tried to build network.")
+
+/obj/map_helper/network_builder/proc/teardown()
+	for(var/atom/movable/AM as anything in duplicates())
+		ASSERT(istype(AM))
+		qdel(AM)
+
+/obj/map_helper/network_builder/proc/rebuild(propagate = TRUE)
+	teardown()
+	if(propagate)
+		for(var/d in GLOB.cardinal)
+			var/obj/map_helper/network_builder/NB = locate(base_type) in get_step(src, d)
+			if(NB)
+				NB.rebuild(FALSE)
+	network_directions = scan()
+	build()

@@ -6,7 +6,7 @@
 	icon_state = "map_example"
 	icon_living = "map_example"
 	faction = "shadekin"
-	ui_icons = 'icons/mob/shadekin_hud.dmi'
+	ui_icons = 'icons/screen/hud/common/shadekin.dmi'
 	mob_class = MOB_CLASS_HUMANOID
 	mob_bump_flag = HUMAN
 
@@ -72,12 +72,12 @@
 	var/energy_adminbuse = FALSE //For adminbuse infinite energy
 	var/dark_gains = 0 //Last tick's change in energy
 	var/ability_flags = 0 //Flags for active abilities
-	var/obj/screen/darkhud //Holder to update this icon
-	var/obj/screen/energyhud //Holder to update this icon
+	var/atom/movable/screen/darkhud //Holder to update this icon
+	var/atom/movable/screen/energyhud //Holder to update this icon
 
 	var/list/shadekin_abilities
 
-/mob/living/simple_mob/shadekin/Initialize()
+/mob/living/simple_mob/shadekin/Initialize(mapload)
 	//You spawned the prototype, and want a totally random one.
 	if(type == /mob/living/simple_mob/shadekin)
 
@@ -188,10 +188,16 @@
 		"The chaos of being digested fades as you're snuffed out by a harsh clench! You're steadily broken down into a thick paste, processed and absorbed by the predator!"
 		)
 
-/mob/living/simple_mob/shadekin/Life()
-	. = ..()
+/mob/living/simple_mob/shadekin/Life(seconds, times_fired)
+	if((. = ..()))
+		return
+
 	if(ability_flags & AB_PHASE_SHIFTED)
 		density = FALSE
+
+/mob/living/simple_mob/shadekin/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	//Convert spare nutrition into energy at a certain ratio
 	if(. && nutrition > initial(nutrition) && energy < 100)
@@ -228,19 +234,8 @@
 
 	. = ..(FALSE, deathmessage)
 
-/* //VOREStation AI Temporary Removal
-//Blue-eyes want to nom people to heal them
-/mob/living/simple_mob/shadekin/Found(var/atom/A)
-	if(specific_targets && isliving(A)) //Healing!
-		var/mob/living/L = A
-		var/health_percent = (L.health/L.maxHealth)*100
-		if(health_percent <= 50 && will_eat(A))
-			return A
-	. = ..()
-*/
-
 //They reach nutritional equilibrium (important for blue-eyes healbelly)
-/mob/living/simple_mob/shadekin/Life()
+/mob/living/simple_mob/shadekin/Life(seconds, times_fired)
 	if((. = ..()))
 		handle_shade()
 
@@ -333,63 +328,6 @@
 			if(0 to 20)
 				energyhud.icon_state = "energy4"
 
-/* //VOREStation AI Removal
-//Friendly ones wander towards people, maybe shy-ly if they are set to shy
-/mob/living/simple_mob/shadekin/handle_wander_movement()
-	if(isturf(src.loc) && !resting && !buckled && canmove)
-		lifes_since_move++
-		if(lifes_since_move >= turns_per_move)
-			if(!(stop_when_pulled && pulledby))
-				var/moving_to
-
-				if(stalker)
-					//Sniff sniff.
-					var/list/humans = human_mobs(world.view)
-
-					//Can we see the last person we were following?
-					if(henlo_human && !(henlo_human in humans))
-						henlo_human = null
-
-					//Can we find a new person to follow?
-					if(!henlo_human)
-						while(!henlo_human && humans.len)
-							henlo_human = pick(humans)
-							if(!isturf(henlo_human.loc))
-								humans -= henlo_human
-								henlo_human = null
-
-					//Boopable hunam?
-					if(henlo_human)
-						moving_to = get_dir(src,henlo_human)
-
-						if((get_dist(src,henlo_human) <= 1))
-							dir = moving_to
-							if(prob(speak_chance))
-								visible_message("<span class='notice'>\The [src] [pick(friendly)] \the [henlo_human].</span>")
-								shy_approach = FALSE //ACCLIMATED
-							lifes_since_move = 0
-							return //No need to move
-
-						if(shy_approach)
-							var/them_to_us = turn(moving_to,180)
-							if(abs(dir2angle(henlo_human.dir) - dir2angle(them_to_us)) <= 90)
-								dir = them_to_us
-								return //AAA!
-
-						dir = moving_to
-
-				//Random walk
-				if(!moving_to)
-					moving_to = pick(GLOB.cardinal)
-					dir = moving_to
-
-				var/turf/T = get_step(src,moving_to)
-				if(avoid_turf(T))
-					return
-				Move(T)
-				lifes_since_move = 0
-*/
-
 /mob/living/simple_mob/shadekin/speech_bubble_appearance()
 	return "ghost"
 
@@ -418,7 +356,7 @@
 //Special hud elements for darkness and energy gains
 /mob/living/simple_mob/shadekin/extra_huds(var/datum/hud/hud,var/icon/ui_style,var/list/hud_elements)
 	//Darkness hud
-	darkhud = new /obj/screen()
+	darkhud = new /atom/movable/screen()
 	darkhud.icon = ui_style
 	darkhud.icon_state = "dark"
 	darkhud.name = "darkness"
@@ -427,7 +365,7 @@
 	hud_elements |= darkhud
 
 	//Energy hud
-	energyhud = new /obj/screen()
+	energyhud = new /atom/movable/screen()
 	energyhud.icon = ui_style
 	energyhud.icon_state = "energy0"
 	energyhud.name = "energy"

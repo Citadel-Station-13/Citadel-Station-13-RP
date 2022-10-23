@@ -14,16 +14,11 @@
 	var/capacitors_amount = 0
 	var/global/list/br_cache = null
 
+// TODO: maybe actually use the cell power??
+
 /obj/machinery/power/smes/batteryrack/Initialize(mapload, newdir)
 	. = ..()
 	RefreshParts()
-
-//Maybe this should be moved up to obj/machinery
-/obj/machinery/power/smes/batteryrack/proc/add_parts()
-	component_parts = list()
-	component_parts += new /obj/item/cell/high
-	component_parts += new /obj/item/cell/high
-	component_parts += new /obj/item/cell/high
 
 /obj/machinery/power/smes/batteryrack/RefreshParts()
 	capacitors_amount = 0
@@ -32,45 +27,27 @@
 	for(var/obj/item/stock_parts/capacitor/CP in component_parts)
 		max_level += CP.rating
 		capacitors_amount++
-	input_level_max = 50000 + max_level * 20000
-	output_level_max = 50000 + max_level * 20000
+	input_level_max = 50 + max_level * 20
+	output_level_max = 20 + max_level * 20
 
 	var/C = 0
 	for(var/obj/item/cell/PC in component_parts)
 		C += PC.maxcharge
 		cells_amount++
-	capacity = C * 40   //Basic cells are such crap. Hyper cells needed to get on normal SMES levels.
+	capacity = KJ_TO_KWM(DYNAMIC_CELL_UNITS_TO_KJ(C))
 
-
-/obj/machinery/power/smes/batteryrack/update_icon()
-	overlays.Cut()
-	if(stat & BROKEN)	return
-
-	if(!br_cache)
-		br_cache = list()
-		br_cache.len = 7
-		br_cache[1] = image('icons/obj/power.dmi', "gsmes_outputting")
-		br_cache[2] = image('icons/obj/power.dmi', "gsmes_charging")
-		br_cache[3] = image('icons/obj/power.dmi', "gsmes_overcharge")
-		br_cache[4] = image('icons/obj/power.dmi', "gsmes_og1")
-		br_cache[5] = image('icons/obj/power.dmi', "gsmes_og2")
-		br_cache[6] = image('icons/obj/power.dmi', "gsmes_og3")
-		br_cache[7] = image('icons/obj/power.dmi', "gsmes_og4")
-
-	if (output_attempt)
-		overlays += br_cache[1]
+/obj/machinery/power/smes/batteryrack/update_overlays()
+	. = ..()
+	if(output_attempt)
+		. += "gsmes_outputting"
 	if(inputting)
-		overlays += br_cache[2]
-
+		. += "gsmes_charging"
 	var/clevel = chargedisplay()
-	if(clevel>0)
-		overlays += br_cache[3+clevel]
-	return
-
+	if(clevel > 0)
+		. += "gsmes_og[clevel]"
 
 /obj/machinery/power/smes/batteryrack/chargedisplay()
 	return round(4 * charge/(capacity ? capacity : 5e6))
-
 
 /obj/machinery/power/smes/batteryrack/attackby(var/obj/item/W as obj, var/mob/user as mob) //these can only be moved by being reconstructed, solves having to remake the powernet.
 	..() //SMES attackby for now handles screwdriver, cable coils and wirecutters, no need to repeat that here
@@ -78,13 +55,13 @@
 		if(W.is_crowbar())
 			if (charge < (capacity / 100))
 				if (!output_attempt && !input_attempt)
-					playsound(src, W.usesound, 50, 1)
-					var/obj/structure/frame/M = new /obj/structure/frame(src.loc)
+					playsound(src, W.tool_sound, 50, 1)
+					var/obj/structure/frame/M = new /obj/structure/frame(drop_location())
 					M.frame_type = "machine"
 					M.state = 2
 					M.icon_state = "machine_1"
 					for(var/obj/I in component_parts)
-						I.loc = src.loc
+						I.forceMove(drop_location())
 					qdel(src)
 					return 1
 				else
@@ -94,9 +71,9 @@
 		else if ((istype(W, /obj/item/stock_parts/capacitor) && (capacitors_amount < 5)) || (istype(W, /obj/item/cell) && (cells_amount < 5)))
 			if (charge < (capacity / 100))
 				if (!output_attempt && !input_attempt)
-					user.drop_item()
+					if(!user.attempt_insert_item_for_installation(W, src))
+						return
 					component_parts += W
-					W.loc = src
 					RefreshParts()
 					to_chat(user, "<span class='notice'>You upgrade the [src] with [W.name].</span>")
 				else
@@ -107,8 +84,6 @@
 			user.set_machine(src)
 			interact(user)
 			return 1
-	return
-
 
 //The shitty one that will blow up.
 /obj/machinery/power/smes/batteryrack/makeshift
@@ -117,30 +92,21 @@
 	circuit = /obj/item/circuitboard/ghettosmes
 	var/overcharge_percent = 0
 
+/obj/machinery/power/smes/batteryrack/makeshift/update_overlays()
+	. = ..()
+	if(machine_stat & BROKEN)
+		return
 
-/obj/machinery/power/smes/batteryrack/makeshift/add_parts()
-	component_parts = list()
-	component_parts += new /obj/item/cell/high
-	component_parts += new /obj/item/cell/high
-	component_parts += new /obj/item/cell/high
-	return
-
-
-/obj/machinery/power/smes/batteryrack/makeshift/update_icon()
-	overlays.Cut()
-	if(stat & BROKEN)	return
-
-	if (output_attempt)
-		overlays += br_cache[1]
+	if(output_attempt)
+		. += "gsmes_outputting"
 	if(inputting)
-		overlays += br_cache[2]
-	if (overcharge_percent > 100)
-		overlays += br_cache[3]
+		. += "gsmes_charging"
+	if(overcharge_percent > 100)
+		. += "gsmes_overcharge"
 	else
 		var/clevel = chargedisplay()
-		if(clevel>0)
-			overlays += br_cache[3+clevel]
-	return
+		if(clevel > 0)
+			. += "gsmes_og[clevel]"
 
 //This mess of if-elses and magic numbers handles what happens if the engies don't pay attention and let it eat too much charge
 //What happens depends on how much capacity has the ghetto smes and how much it is overcharged.
@@ -190,10 +156,13 @@
 		else //how the hell was this proc called for negative charge
 			charge = 0
 
-
-#define SMESRATE 0.05			// rate of internal charge to external power
+// TODO: overcharging doesn't work
+// TODO: maybe don't have it require rewriting a proc, holy hell.
+/*
 /obj/machinery/power/smes/batteryrack/makeshift/process(delta_time)
-	if(stat & BROKEN)	return
+	if(machine_stat & BROKEN)
+		return
+	#warn FUCK YOU
 
 	//store machine state to see if we need to update the icon overlays
 	var/last_disp = chargedisplay()
@@ -203,9 +172,9 @@
 
 	if(terminal)
 		if(input_attempt)
-			var/target_load = min((capacity-charge)/SMESRATE, input_level)		// charge at set rate, limited to spare capacity
+			var/target_load = min(KWM_TO_KW(capacity - charge, 1), input_level)		// charge at set rate, limited to spare capacity
 			var/actual_load = draw_power(target_load)		// add the load to the terminal side network
-			charge += actual_load * SMESRATE	// increase the charge
+			charge += KW_TO_KWM(actual_load, 1)
 
 			if (actual_load >= target_load) // did the powernet have enough power available for us?
 				inputting = 1
@@ -213,6 +182,7 @@
 				inputting = 0
 
 	if(output_attempt)		// if outputting
+
 		output_used = min( charge/SMESRATE, output_level)		//limit output to that stored
 		charge -= output_used*SMESRATE		// reduce the storage (may be recovered in /restore() if excessive)
 		add_avail(output_used)				// add output to powernet (smes side)
@@ -228,4 +198,4 @@
 		update_icon()
 	return
 
-#undef SMESRATE
+*/

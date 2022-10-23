@@ -38,7 +38,7 @@ export const AICard = (props, context) => {
     else if (integrity >= 25) { integrityColor = 'yellow'; }
     else { integrityColor = 'red'; }
 
-    let powerColor = null; 
+    let powerColor = null;
     if (backup_capacitor >= 75) { powerColor = 'green'; }
     if (backup_capacitor >= 25) { powerColor = 'yellow'; }
     else { powerColor = 'red'; }

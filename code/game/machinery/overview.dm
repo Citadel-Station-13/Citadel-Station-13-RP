@@ -8,7 +8,7 @@
 	log_game("[usr]([usr.key]) used station map L[z] in [src.loc.loc]")
 	drawmap(usr)
 
-/obj/machinery/computer/security/proc/drawmap(var/mob/user as mob)
+/obj/machinery/computer/security/proc/drawmap(mob/user)
 
 	var/icx = round(world.maxx/16) + 1
 	var/icy = round(world.maxy/16) + 1
@@ -149,7 +149,7 @@
 	user.mapobjs = list()
 
 	for(var/i=0; i<icount;i++)
-		var/obj/screen/H = new /obj/screen()
+		var/atom/movable/screen/H = new /atom/movable/screen()
 
 		H.screen_loc = "[5 + i%icx],[6+ round(i/icx)]"
 
@@ -275,7 +275,7 @@
 	user.mapobjs = list()
 
 	for(var/i=0; i<icount;i++)
-		var/obj/screen/H = new /obj/screen()
+		var/atom/movable/screen/H = new /atom/movable/screen()
 
 		H.screen_loc = "[5 + i%icx],[6+ round(i/icx)]"
 
@@ -317,18 +317,18 @@
 
 		return
 
-proc/getr(col)
+/proc/getr(col)
 	return hex2num(copytext(col, 2,4))
 
-proc/getg(col)
+/proc/getg(col)
 	return hex2num(copytext(col, 4,6))
 
-proc/getb(col)
+/proc/getb(col)
 	return hex2num(copytext(col, 6))
 
 /mob/proc/clearmap()
 	src.client.screen -= src.mapobjs
-	for(var/obj/screen/O in mapobjs)
+	for(var/atom/movable/screen/O in mapobjs)
 		qdel(O)
 
 	mapobjs = null

@@ -34,15 +34,14 @@ var/global/list/changeling_fabricated_clothing = list(
 	name = "malformed flesh"
 	icon_state = "lingchameleon"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_uniforms.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_uniforms.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_uniforms.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_uniforms.dmi',
 			)
 	item_state = "lingchameleon"
-	worn_state = "lingchameleon"
+	snowflake_worn_state = "lingchameleon"
 	desc = "The flesh all around us has grown a new layer of cells that can shift appearance and create a biological fabric that cannot be distinguished from \
 	ordinary cloth, allowing us to make ourselves appear to wear almost anything."
 	origin_tech = list() //The base chameleon items have origin technology, which we will inherit if we don't null out this variable.
-	canremove = 0 //Since this is essentially flesh impersonating clothes, tearing someone's skin off as if it were clothing isn't possible.
 
 /obj/item/clothing/under/chameleon/changeling/emp_act(severity) //As these are purely organic, EMP does nothing to them.
 	return
@@ -63,7 +62,6 @@ var/global/list/changeling_fabricated_clothing = list(
 	desc = "Our head is swelled with a large quanity of rapidly shifting skin cells.  We can reform our head to resemble various hats and \
 	helmets that biologicals are so fond of wearing."
 	origin_tech = list()
-	canremove = 0
 
 /obj/item/clothing/head/chameleon/changeling/emp_act(severity)
 	return
@@ -82,13 +80,12 @@ var/global/list/changeling_fabricated_clothing = list(
 	name = "chitinous chest"
 	icon_state = "lingchameleon"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_suits.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_suits.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_suits.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_suits.dmi',
 			)
 	item_state = "armor"
 	desc = "The cells in our chest are rapidly shifting, ready to reform into material that can resemble most pieces of clothing."
 	origin_tech = list()
-	canremove = 0
 
 /obj/item/clothing/suit/chameleon/changeling/emp_act(severity)
 	return
@@ -107,13 +104,12 @@ var/global/list/changeling_fabricated_clothing = list(
 	name = "malformed feet"
 	icon_state = "lingchameleon"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_shoes.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_shoes.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_shoes.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_shoes.dmi',
 			)
 	item_state = "black"
 	desc = "Our feet are overlayed with another layer of flesh and bone on top.  We can reform our feet to resemble various boots and shoes."
 	origin_tech = list()
-	canremove = 0
 
 /obj/item/clothing/shoes/chameleon/changeling/emp_act()
 	return
@@ -132,13 +128,12 @@ var/global/list/changeling_fabricated_clothing = list(
 	name = "backpack"
 	icon_state = "backpack"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_storage.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_storage.dmi',
 			)
 	item_state = "backpack"
 	desc = "A large pouch imbedded in our back, it can shift form to resemble many common backpacks that other biologicals are fond of using."
 	origin_tech = list()
-	canremove = 0
 
 /obj/item/storage/backpack/chameleon/changeling/emp_act()
 	return
@@ -159,14 +154,13 @@ var/global/list/changeling_fabricated_clothing = list(
 	name = "malformed hands"
 	icon_state = "lingchameleon"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_gloves.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_gloves.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_gloves.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_gloves.dmi',
 			)
 	item_state = "lingchameleon"
 	desc = "Our hands have a second layer of flesh on top.  We can reform our hands to resemble a large variety of fabrics and materials that biologicals \
 	tend to wear on their hands.  Remember that these won't protect your hands from harm."
 	origin_tech = list()
-	canremove = 0
 
 /obj/item/clothing/gloves/chameleon/changeling/emp_act()
 	return
@@ -185,14 +179,13 @@ var/global/list/changeling_fabricated_clothing = list(
 	name = "chitin visor"
 	icon_state = "lingchameleon"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_masks.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_masks.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_masks.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_masks.dmi',
 			)
 	item_state = "gas_alt"
 	desc = "A transparent visor of brittle chitin covers our face.  We can reform it to resemble various masks that biologicals use.  It can also utilize internal \
 	tanks.."
 	origin_tech = list()
-	canremove = 0
 
 /obj/item/clothing/mask/chameleon/changeling/emp_act()
 	return
@@ -213,7 +206,6 @@ var/global/list/changeling_fabricated_clothing = list(
 	item_state = "glasses"
 	desc = "A transparent piece of eyewear made out of brittle chitin.  We can reform it to resemble various glasses and goggles."
 	origin_tech = list()
-	canremove = 0
 
 /obj/item/clothing/glasses/chameleon/changeling/emp_act()
 	return
@@ -233,12 +225,11 @@ var/global/list/changeling_fabricated_clothing = list(
 	desc = "We can store objects in this, as well as shift it's appearance, so that it resembles various common belts."
 	icon_state = "lingchameleon"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_storage.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_storage.dmi',
 			)
 	item_state = "utility"
 	origin_tech = list()
-	canremove = 0
 
 /obj/item/storage/belt/chameleon/changeling/emp_act()
 	return
@@ -262,7 +253,6 @@ var/global/list/changeling_fabricated_clothing = list(
 	electronic_warfare = 1 //The lack of RFID stuff makes it hard for AIs to track, I guess. *handwaves*
 	registered_user = null
 	access = null
-	canremove = 0
 
 /obj/item/card/id/syndicate/changeling/Initialize(mapload)
 	. = ..()

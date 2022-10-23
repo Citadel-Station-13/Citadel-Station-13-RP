@@ -5,7 +5,7 @@
 	name = "body design console"
 	catalogue_data = list(///datum/category_item/catalogue/information/organization/vey_med,
 						/datum/category_item/catalogue/technology/resleeving)
-	icon = 'icons/obj/computer_vr.dmi'
+	icon = 'icons/obj/computer.dmi'
 	icon_keyboard = "med_key"
 	icon_screen = "explosive"
 	light_color = "#315ab4"
@@ -34,14 +34,13 @@
 
 /obj/machinery/computer/transhuman/designer/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/disk/body_record))
-		user.unEquip(W)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		disk = W
-		disk.forceMove(src)
 		to_chat(user, "<span class='notice'>You insert \the [W] into \the [src].</span>")
 		updateUsrDialog()
 	else
 		..()
-	return
 
 /obj/machinery/computer/transhuman/designer/attack_ai(mob/user as mob)
 	return attack_hand(user)
@@ -68,10 +67,10 @@
 
 	if(menu == "3")
 		var/stock_bodyrecords_list_ui[0]
-		for (var/N in GLOB.all_species)
-			var/datum/species/S = GLOB.all_species[N]
-			if((S.spawn_flags & (SPECIES_IS_WHITELISTED|SPECIES_CAN_JOIN)) != SPECIES_CAN_JOIN) continue
-			stock_bodyrecords_list_ui += N
+		for (var/datum/species/S in all_static_species_meta())
+			if((S.spawn_flags & (SPECIES_IS_WHITELISTED|SPECIES_CAN_JOIN)) != SPECIES_CAN_JOIN)
+				continue
+			stock_bodyrecords_list_ui += S
 		if(stock_bodyrecords_list_ui.len)
 			data["stock_bodyrecords"] = stock_bodyrecords_list_ui
 
@@ -117,21 +116,21 @@
 		styles["Wing"] = temp
 
 		temp = list("styleHref" = "hair_style", "style" = mannequin.h_style)
-		if(mannequin.species && (mannequin.species.appearance_flags & HAS_HAIR_COLOR))
+		if(mannequin.species && (mannequin.species.species_appearance_flags & HAS_HAIR_COLOR))
 			temp["color"] = MOB_HEX_COLOR(mannequin, hair)
 			temp["colorHref"] = "hair_color"
 		styles["Hair"] = temp
 
 		temp = list("styleHref" = "facial_style", "style" = mannequin.f_style)
-		if(mannequin.species && (mannequin.species.appearance_flags & HAS_HAIR_COLOR))
+		if(mannequin.species && (mannequin.species.species_appearance_flags & HAS_HAIR_COLOR))
 			temp["color"] = MOB_HEX_COLOR(mannequin, facial)
 			temp["colorHref"] = "facial_color"
 		styles["Facial"] = temp
 
-		if(mannequin.species && (mannequin.species.appearance_flags & HAS_EYE_COLOR))
+		if(mannequin.species && (mannequin.species.species_appearance_flags & HAS_EYE_COLOR))
 			styles["Eyes"] = list("colorHref" = "eye_color", "color" = MOB_HEX_COLOR(mannequin, eyes))
 
-		if(mannequin.species && (mannequin.species.appearance_flags & HAS_SKIN_COLOR))
+		if(mannequin.species && (mannequin.species.species_appearance_flags & HAS_SKIN_COLOR))
 			styles["Body Color"] = list("colorHref" = "skin_color", "color" = MOB_HEX_COLOR(mannequin, skin))
 
 		var/datum/preferences/designer/P = new()
@@ -172,7 +171,7 @@
 			temp = "ERROR: Record missing."
 
 	else if(href_list["view_stock_brec"])
-		var/datum/species/S = GLOB.all_species[href_list["view_stock_brec"]]
+		var/datum/species/S = name_static_species_meta(href_list["view_stock_brec"])
 		if(S && (S.spawn_flags & (SPECIES_IS_WHITELISTED|SPECIES_CAN_JOIN)) == SPECIES_CAN_JOIN)
 			// Generate body record from species!
 			mannequin = new(null, S.name)
@@ -231,15 +230,15 @@
 	preview_icon.Scale(48+32, 16+32)
 
 	mannequin.dir = NORTH
-	var/icon/stamp = getFlatIcon(mannequin)
+	var/icon/stamp = get_flat_icon(mannequin)
 	preview_icon.Blend(stamp, ICON_OVERLAY, 25, 17)
 
 	mannequin.dir = WEST
-	stamp = getFlatIcon(mannequin)
+	stamp = get_flat_icon(mannequin)
 	preview_icon.Blend(stamp, ICON_OVERLAY, 1, 9)
 
 	mannequin.dir = SOUTH
-	stamp = getFlatIcon(mannequin)
+	stamp = get_flat_icon(mannequin)
 	preview_icon.Blend(stamp, ICON_OVERLAY, 49, 1)
 
 	preview_icon.Scale(preview_icon.Width() * 2, preview_icon.Height() * 2) // Scaling here to prevent blurring in the browser.
@@ -251,7 +250,7 @@
 	//log_debug("designer.update_preview_mob([H]) active_br = \ref[active_br]")
 	//Get the DNA and generate a new mob
 	var/datum/dna2/record/R = active_br.mydna
-	H.set_species(R.dna.species) // This needs to happen before anything else becuase it sets some variables.
+	H.set_species(species_type_by_name(R.dna.species)) // This needs to happen before anything else becuase it sets some variables.
 
 	// Update the external organs
 	for(var/part in active_br.limb_data)

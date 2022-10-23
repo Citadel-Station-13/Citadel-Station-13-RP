@@ -9,7 +9,7 @@ var/datum/antagonist/ninja/ninjas
 	landmark_id = "ninjastart"
 	welcome_text = "<span class='info'>You are an elite mercenary assassin of the Spider Clan. You have a variety of abilities at your disposal, thanks to your nano-enhanced cyber armor.</span>"
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_CLEAR_EQUIPMENT | ANTAG_CHOOSE_NAME | ANTAG_RANDSPAWN | ANTAG_VOTABLE | ANTAG_SET_APPEARANCE
-	antaghud_indicator = "hudninja"
+	antaghud_indicator = "ninja"
 
 	initial_spawn_req = 1
 	initial_spawn_target = 1
@@ -25,7 +25,7 @@ var/datum/antagonist/ninja/ninjas
 /datum/antagonist/ninja/attempt_random_spawn()
 	if(config_legacy.ninjas_allowed) ..()
 
-/datum/antagonist/ninja/create_objectives(var/datum/mind/ninja)
+/datum/antagonist/ninja/create_objectives(datum/mind/ninja)
 
 	if(!..())
 		return
@@ -80,7 +80,7 @@ var/datum/antagonist/ninja/ninjas
 	ninja_objective.owner = ninja
 	ninja.objectives += ninja_objective
 
-/datum/antagonist/ninja/greet(var/datum/mind/player)
+/datum/antagonist/ninja/greet(datum/mind/player)
 
 	if(!..())
 		return 0
@@ -88,31 +88,31 @@ var/datum/antagonist/ninja/ninjas
 	player.store_memory("<B>Directive:</B> <span class='danger'>[directive]</span><br>")
 	to_chat(player, "<b>Remember your directive:</b> [directive].")
 
-/datum/antagonist/ninja/update_antag_mob(var/datum/mind/player)
+/datum/antagonist/ninja/update_antag_mob(datum/mind/player)
 	..()
-	var/ninja_title = pick(ninja_titles)
-	var/ninja_name = pick(ninja_names)
+	var/ninja_title = pick(GLOB.ninja_titles)
+	var/ninja_name = pick(GLOB.ninja_names)
 	var/mob/living/carbon/human/H = player.current
 	if(istype(H))
 		H.real_name = "[ninja_title] [ninja_name]"
 		H.name = H.real_name
 	player.name = H.name
 
-/datum/antagonist/ninja/equip(var/mob/living/carbon/human/player)
+/datum/antagonist/ninja/equip(mob/living/carbon/human/player)
 
 	if(!..())
 		return 0
 
 	var/obj/item/radio/R = new /obj/item/radio/headset(player)
-	player.equip_to_slot_or_del(R, slot_l_ear)
-	player.equip_to_slot_or_del(new /obj/item/clothing/under/color/black(player), slot_w_uniform)
-	player.equip_to_slot_or_del(new /obj/item/flashlight(player), slot_belt)
+	player.equip_to_slot_or_del(R, SLOT_ID_LEFT_EAR)
+	player.equip_to_slot_or_del(new /obj/item/clothing/under/color/black(player), SLOT_ID_UNIFORM)
+	player.equip_to_slot_or_del(new /obj/item/flashlight(player), SLOT_ID_BELT)
 	create_id("Infiltrator", player)
 
 	var/obj/item/rig/light/ninja/ninjasuit = new(get_turf(player))
 	ninjasuit.seal_delay = 0
 	player.put_in_hands(ninjasuit)
-	player.equip_to_slot_or_del(ninjasuit,slot_back)
+	player.equip_to_slot_or_del(ninjasuit,SLOT_ID_BACK)
 	if(ninjasuit)
 		ninjasuit.toggle_seals(src,1)
 		ninjasuit.seal_delay = initial(ninjasuit.seal_delay)

@@ -1,0 +1,102 @@
+2021-02-01:
+  buffyuwu:
+  - bugfix: fixes FBP/synths temperature values
+  - rscadd: adds local narrate verb
+2021-02-04:
+  drofoljaelisglis:
+  - tweak: Changed a small amount of tracks, some are new lobby tracks, others have
+      been retired from the lobby, others have been shifted to the emag-only tracklist
+      on the jukebox (very few). Changed a handful of genres around.
+  - soundadd: Added over 100 new songs to the jukebox. Adds three new genres to the
+      jukebox.
+2021-02-07:
+  Jaybirdnerd:
+  - rscadd: Added 35+ new songs to the jukebox.
+2021-02-08:
+  buffyuwu:
+  - rscadd: adds autocorrect
+2021-02-11:
+  silicons:
+  - rscdel: oxygen damage removed from neckgrabs, now only strangling does it
+  - bugfix: dice no longer double rolls on throw
+2021-02-12:
+  TheLordME:
+  - bugfix: Vendor Phoron Bores only need phoron and a powercell.
+2021-02-13:
+  lolman360:
+  - balance: you can no longer kick robots in the nuts
+2021-02-16:
+  Ghostcoffeee:
+  - rscadd: Added Protean unarmed verbs
+  - rscadd: Added Protean blob resistances/weaknesses
+  - tweak: Made Proteans not need to blob to reform single limbs
+  - balance: Made Proteans not die instantly to ions, and not blob instantly to lasers
+  - tweak: Other tweaks, that in my mind make sense for the hyper-advanced nanoblobs
+2021-02-17:
+  lolman360:
+  - soundadd: tgui console sounds
+  - code_imp: tgui + tguichat
+  - refactor: examining
+2021-02-18:
+  Ghostcoffeee:
+  - bugfix: Fixes the weird looking misplacement for a few hairs
+  TheLordME:
+  - imageadd: Added sprite for Vox wearing the CE hardsuit
+  silicons:
+  - rscadd: wooden circlets and flower crowns have been added to the loadout
+  - tweak: protean hunger rates fixed
+  - bugfix: toxin_mod --> toxins_mod
+  zeroisthebiggay:
+  - rscadd: tritail kitsune tail ported straight from vore station
+2021-02-20:
+  Ghostcoffeee:
+  - rscadd: Added Protean unarmed verbs
+  - rscadd: Added Protean blob resistances/weaknesses
+  - tweak: Made Proteans not need to blob to reform single limbs
+  - balance: Made Proteans not die instantly to ions, and not blob instantly to lasers
+  - tweak: Other tweaks, that in my mind make sense for the hyper-advanced nanoblobs
+  TheLordME:
+  - rscadd: Added Bicarilaze, Kelotalaze, Tricoralaze, Inaprovalaze, Sterilaze and
+      Cleansalaze.
+  - rscadd: Added Neurolaze, a potent painkiller that doesnt slowdown the patient,
+      but makes them Jitter
+  - rscdel: Removed old touch chems
+  lolman360:
+  - bugfix: dark mode radio channels are a bit easier to see
+  - bugfix: emotes are no longer in tguichat  unsorted tab
+  - bugfix: materials on examine are no longer caps always
+  - bugfix: crew monitor console map view
+  - bugfix: human examine spacing (hopefully)
+  - tweak: kpas now pressure dependent, 60 kpa
+2021-02-21:
+  Enzo-Leon:
+  - rscadd: tiny-fans for pools
+  - tweak: Adjustments to Bar, Cafe, and Pool
+  silicons:
+  - rscadd: event prefs
+2021-02-23:
+  Delams-The-SM:
+  - rscadd: Added 2 new horns to ear Species Customization
+  TheLordME:
+  - bugfix: Tablets now spawn with their proper Battery modules.
+  - code_imp: Removed code that was no longer needed/Breaking stuff
+  lolman360:
+  - bugfix: emote slanting
+  - bugfix: protean blobs climbing up onto people while they're nto adjacent
+2021-02-25:
+  silicons:
+  - rscadd: matrix recolors are now possible in loadout
+2021-02-26:
+  rpilcrow:
+  - bugfix: Masks no longer block your ability to use swab kits on hands.
+  - tweak: Slightly altered swab kit text
+2021-02-27:
+  nik707:
+  - rscadd: cool looking shells
+  - rscadd: bad humor
+  rpilcrow:
+  - bugfix: Drink glasses no longer fill chem/condimasters when being put into them.
+2021-02-28:
+  nik707:
+  - bugfix: fixes ar hud glasses to be simultaneously prescription glasses
+  - bugfix: fixed missing mapmerge

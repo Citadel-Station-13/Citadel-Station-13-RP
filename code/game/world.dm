@@ -18,17 +18,20 @@ GLOBAL_LIST(topic_status_cache)
 //This happens after the Master subsystem new(s) (it's a global datum)
 //So subsystems globals exist, but are not initialised
 /world/New()
-	// enable_debugger()
+	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	if (debug_server)
+		call(debug_server, "auxtools_init")()
+		enable_debugging()
 
 	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set
-	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_runtime_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
+	// citadel edit: world runtime log removed due to world.log shunt doing that for us
+	GLOB.config_error_log = GLOB.world_href_log = GLOB.world_map_error_log = GLOB.world_attack_log = GLOB.world_game_log = tempfile
 
 	world.Profile(PROFILE_START)
 	make_datum_reference_lists()	//initialises global lists for referencing frequently used datums (so that we only ever do it once)
 	setupgenetics()
-
 
 	GLOB.revdata = new
 
@@ -36,14 +39,21 @@ GLOBAL_LIST(topic_status_cache)
 
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
+	//SetupLogs depends on the RoundID, so lets check
+	//DB schema and set RoundID if we can
+	SSdbcore.CheckSchemaVersion()
+	SSdbcore.SetRoundID()
 	SetupLogs()
 
-#ifndef USE_CUSTOM_ERROR_HANDLER
-	world.log = file("[GLOB.log_directory]/dd.log")
-#else
-	if (TgsAvailable())
-		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
-#endif
+// #ifndef USE_CUSTOM_ERROR_HANDLER
+// 	world.log = file("[GLOB.log_directory]/dd.log")
+// #else
+// 	if (TgsAvailable())
+// 		world.log = file("[GLOB.log_directory]/dd.log") //not all runtimes trigger world/Error, so this is the only way to ensure we can see all of them.
+// #endif
+
+	// shunt redirected world log from Master's init back into world log proper, now that logging has been set up.
+	shunt_redirected_log()
 
 	config_legacy.post_load()
 
@@ -55,7 +65,7 @@ GLOBAL_LIST(topic_status_cache)
 	// if(config && config_legacy.log_runtime)
 	// 	log = file("data/logs/runtime/[time2text(world.realtime,"YYYY-MM-DD-(hh-mm-ss)")]-runtime.log")
 
-	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
+	GLOB.timezoneOffset = get_timezone_offset()
 
 	callHook("startup")
 	//Emergency Fix
@@ -65,9 +75,6 @@ GLOBAL_LIST(topic_status_cache)
 	src.update_status()
 
 	. = ..()
-
-	// Set up roundstart seed list.
-	plant_controller = new
 
 	// *sighs*
 	job_master = new
@@ -142,6 +149,7 @@ GLOBAL_LIST(topic_status_cache)
 	GLOB.world_attack_log = "[GLOB.log_directory]/attack.log"
 	GLOB.world_href_log = "[GLOB.log_directory]/hrefs.log"
 	GLOB.world_qdel_log = "[GLOB.log_directory]/qdel.log"
+	GLOB.sql_error_log = "[GLOB.log_directory]/sql.log"
 	GLOB.world_map_error_log = "[GLOB.log_directory]/map_errors.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
 	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
@@ -151,16 +159,19 @@ GLOBAL_LIST(topic_status_cache)
 	GLOB.test_log = file("[GLOB.log_directory]/tests.log")
 	start_log(GLOB.test_log)
 #endif
+	_setup_logs_boilerplate()
 	start_log(GLOB.world_game_log)
 	start_log(GLOB.world_attack_log)
 	start_log(GLOB.world_href_log)
+	start_log(GLOB.sql_error_log)
 	start_log(GLOB.world_qdel_log)
 	start_log(GLOB.world_map_error_log)
 	start_log(GLOB.world_runtime_log)
 	start_log(GLOB.tgui_log)
 	start_log(GLOB.subsystem_log)
 
-	GLOB.changelog_hash = md5('html/changelog.html') //for telling if the changelog has changed recently
+	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
+	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
 	if(fexists(GLOB.config_error_log))
 		fcopy(GLOB.config_error_log, "[GLOB.log_directory]/config_error.log")
 		fdel(GLOB.config_error_log)
@@ -172,6 +183,8 @@ GLOBAL_LIST(topic_status_cache)
 	// but those are both private, so let's put the commit info in the runtime
 	// log which is ultimately public.
 	log_runtime(GLOB.revdata.get_log_message())
+
+/world/proc/_setup_logs_boilerplate()
 
 /world/Topic(T, addr, master, key)
 	TGS_TOPIC	//redirect to server tools if necessary
@@ -206,8 +219,8 @@ GLOBAL_LIST(topic_status_cache)
 	set waitfor = FALSE
 	var/list/fail_reasons
 	if(GLOB)
-		if(GLOB.total_runtimes != 0)
-			fail_reasons = list("Total runtimes: [GLOB.total_runtimes]")
+		if(global.total_runtimes != 0)
+			fail_reasons = list("Total runtimes: [global.total_runtimes] - if you don't see any runtimes above, launch locally with `dreamseeker -trusted -verbose citadel.dmb` after compile and check Options and Messages. Inform a maintainer too, if this happens..")
 #ifdef UNIT_TESTS
 		if(GLOB.failed_any_test)
 			LAZYADD(fail_reasons, "Unit Tests failed!")
@@ -231,11 +244,9 @@ GLOBAL_LIST(topic_status_cache)
 		to_chat(world, "<span class='boldannounce'>Rebooting World immediately due to host request</span>")
 	else
 		to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
-		//POLARIS START
 		if(blackbox)
 			blackbox.save_all_data_to_sql()
-		//END
-		Master.Shutdown()	//run SS shutdowns
+		Master.Shutdown() //run SS shutdowns
 
 	TgsReboot()
 
@@ -269,6 +280,14 @@ GLOBAL_LIST(topic_status_cache)
 
 	log_world("World rebooted at [time_stamp()]")
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
+	// hmmm let's sleep for one (1) second incase rust_g threads are running for whatever reason
+	sleep(1 SECONDS)
+	..()
+
+/world/Del()
+	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	if (debug_server)
+		call(debug_server, "auxtools_shutdown")()
 	..()
 
 /hook/startup/proc/loadMode()
@@ -280,7 +299,7 @@ GLOBAL_LIST(topic_status_cache)
 		return
 
 
-	var/list/Lines = file2list("data/mode.txt")
+	var/list/Lines = world.file2list("data/mode.txt")
 	if(Lines.len)
 		if(Lines[1])
 			master_mode = Lines[1]
@@ -300,7 +319,7 @@ GLOBAL_LIST(topic_status_cache)
 	if(config_legacy.admin_legacy_system)
 		var/text = file2text("config/moderators.txt")
 		if (!text)
-			log_world("Failed to load config/mods.txt")
+			log_world("Failed to load config/moderators.txt")
 		else
 			var/list/lines = splittext(text, "\n")
 			for(var/line in lines)
@@ -338,155 +357,41 @@ GLOBAL_LIST(topic_status_cache)
 				D.associate(GLOB.directory[ckey])
 
 /world/proc/update_status()
-	var/s = ""
+	. = ""
+	if(!config)
+		status = "<b>SERVER LOADING OR BROKEN.</b> (18+)"
+		return
 
-	if (config_legacy?.server_name)
-		s += "<b>[config_legacy.server_name]</b> &#8212; "
+	// ---Hub title---
+	var/servername = config_legacy?.server_name
+	var/stationname = station_name()
+	var/defaultstation = GLOB.using_map ? GLOB.using_map.station_name : stationname
+	if(servername || stationname != defaultstation)
+		. += (servername ? "<b>[servername]" : "<b>")
+		. += (stationname != defaultstation ? "[servername ? " - " : ""][stationname]</b>\] " : "</b>\] ")
 
-	s += "<b>[station_name()]</b>";
-	s += " ("
-	s += "<a href=\"http://\">" //Change this to wherever you want the hub to link to.
-//	s += "[game_version]"
-	s += "Citadel"  //Replace this with something else. Or ever better, delete it and uncomment the game version.	CITADEL CHANGE - modifies hub entry to match main
-	s += "</a>"
-	s += ")\]" //CITADEL CHANGE - encloses the server title in brackets to make the hub entry fancier
-	s += CONFIG_GET(string/tagline)
+	var/communityname = CONFIG_GET(string/community_shortname)
+	var/communitylink = CONFIG_GET(string/community_link)
+	if(communityname)
+		. += (communitylink ? "(<a href=\"[communitylink]\">[communityname]</a>) " : "([communityname]) ")
 
-	s += ")"
+	. += "(18+)<br>" //This is obligatory for obvious reasons.
 
-	var/list/features = list()
+	// ---Hub body---
+	var/tagline = (CONFIG_GET(flag/usetaglinestrings) ? pick(GLOB.server_taglines) : CONFIG_GET(string/tagline))
+	if(tagline)
+		. += "[tagline]<br>"
 
-	if(SSticker)
-		if(master_mode)
-			features += master_mode
-	else
-		features += "<b>STARTING</b>"
+	// ---Hub footer---
+	. += "\["
+	if(GLOB.using_map)
+		. += "[GLOB.using_map.station_short], "
 
-	/*if (!config_legacy.enter_allowed)	CITADEL CHANGE - removes useless info from hub entry
-		features += "closed"
+	. += "[get_security_level()] alert, "
 
-	features += config_legacy.abandon_allowed ? "respawn" : "no respawn"
+	. += "[GLOB.clients.len] players"
 
-	if (config && config_legacy.allow_vote_mode)
-		features += "vote"
-
-	if (config && config_legacy.allow_ai)
-		features += "AI allowed"*/
-
-	var/n = 0
-	for (var/mob/M in player_list)
-		if (M.client)
-			n++
-
-	if (n > 1)
-		features += "~[n] players"
-	else if (n > 0)
-		features += "~[n] player"
-
-
-	if (config && config_legacy.hostedby)
-		features += "hosted by <b>[config_legacy.hostedby]</b>"
-
-	if (features)
-		s += "\[[jointext(features, ", ")]"	//CITADEL CHANGE - replaces colon with left bracket to make the hub entry a little fancier
-
-	/* does this help? I do not know */
-	if (src.status != s)
-		src.status = s
-
-#define FAILED_DB_CONNECTION_CUTOFF 5
-var/failed_db_connections = 0
-var/failed_old_db_connections = 0
-
-/hook/startup/proc/connectDB()
-	if(!config_legacy.sql_enabled)
-		log_world("SQL connection disabled in config_legacy.")
-	else if(!setup_database_connection())
-		log_world("Your server failed to establish a connection with the feedback database.")
-	else
-		log_world("Feedback database connection established.")
-	return 1
-
-proc/setup_database_connection()
-
-	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
-		return 0
-
-	if(!dbcon)
-		dbcon = new()
-
-	var/user = sqlfdbklogin
-	var/pass = sqlfdbkpass
-	var/db = sqlfdbkdb
-	var/address = sqladdress
-	var/port = sqlport
-
-	dbcon.Connect("dbi:mysql:[db]:[address]:[port]","[user]","[pass]")
-	. = dbcon.IsConnected()
-	if ( . )
-		failed_db_connections = 0	//If this connection succeeded, reset the failed connections counter.
-	else
-		failed_db_connections++		//If it failed, increase the failed connections counter.
-		world.log << dbcon.ErrorMsg()
-
-	return .
-
-//This proc ensures that the connection to the feedback database (global variable dbcon) is established
-proc/establish_db_connection()
-	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)
-		return 0
-
-	if(!dbcon || !dbcon.IsConnected())
-		return setup_database_connection()
-	else
-		return 1
-
-
-/hook/startup/proc/connectOldDB()
-	if(!config_legacy.sql_enabled)
-		log_world("SQL connection disabled in config_legacy.")
-	else if(!setup_old_database_connection())
-		log_world("Your server failed to establish a connection with the SQL database.")
-	else
-		log_world("SQL database connection established.")
-	return 1
-
-//These two procs are for the old database, while it's being phased out. See the tgstation.sql file in the SQL folder for more information.
-proc/setup_old_database_connection()
-
-	if(failed_old_db_connections > FAILED_DB_CONNECTION_CUTOFF)	//If it failed to establish a connection more than 5 times in a row, don't bother attempting to conenct anymore.
-		return 0
-
-	if(!dbcon_old)
-		dbcon_old = new()
-
-	var/user = sqllogin
-	var/pass = sqlpass
-	var/db = sqldb
-	var/address = sqladdress
-	var/port = sqlport
-
-	dbcon_old.Connect("dbi:mysql:[db]:[address]:[port]","[user]","[pass]")
-	. = dbcon_old.IsConnected()
-	if ( . )
-		failed_old_db_connections = 0	//If this connection succeeded, reset the failed connections counter.
-	else
-		failed_old_db_connections++		//If it failed, increase the failed connections counter.
-		world.log << dbcon.ErrorMsg()
-
-	return .
-
-//This proc ensures that the connection to the feedback database (global variable dbcon) is established
-proc/establish_old_db_connection()
-	if(failed_old_db_connections > FAILED_DB_CONNECTION_CUTOFF)
-		return 0
-
-	if(!dbcon_old || !dbcon_old.IsConnected())
-		return setup_old_database_connection()
-	else
-		return 1
-
-#undef FAILED_DB_CONNECTION_CUTOFF
+	status = .
 
 /world/proc/update_hub_visibility(new_value)					//CITADEL PROC: TG's method of changing visibility
 	if(new_value)				//I'm lazy so this is how I wrap it to a bool number
@@ -504,13 +409,58 @@ proc/establish_old_db_connection()
 
 // Things to do when a new z-level was just made.
 /world/proc/max_z_changed()
-	if(!istype(GLOB.players_by_zlevel, /list))
-		GLOB.players_by_zlevel = new /list(world.maxz, 0)
+	assert_players_by_zlevel_list()
+
+/proc/assert_players_by_zlevel_list()
+	if(!islist(GLOB.players_by_zlevel))
+		GLOB.players_by_zlevel = list()
 	while(GLOB.players_by_zlevel.len < world.maxz)
-		GLOB.players_by_zlevel.len++
-		GLOB.players_by_zlevel[GLOB.players_by_zlevel.len] = list()
+		GLOB.players_by_zlevel[++GLOB.players_by_zlevel.len] = list()
 
 // Call this to make a new blank z-level, don't modify maxz directly.
 /world/proc/increment_max_z()
-	maxz++
+	. = ++maxz
 	max_z_changed()
+
+//! LOG SHUNTER STUFF, LEAVE THIS ALONE
+/**
+ * so it turns out that if GLOB init or something before world.log redirect runtimes we have no way of catching it in CI
+ * which is really bad?? because we kind of need it??
+ * therefore
+ */
+/world/proc/ensure_logging_active()
+// if we're unit testing do not ever redirect world.log or the test won't show output.
+#ifndef UNIT_TESTS
+	// we already know, we don't care
+	if(global.world_log_redirected)
+		return
+	global.world_log_redirected = TRUE
+	if(fexists("data/logs/world_init_temporary.log"))
+		fdel("data/logs/world_init_temporary.log")
+	world.log = file("data/logs/world_init_temporary.log")
+	SEND_TEXT(world.log, "Shunting preinit logs as following...")
+#endif
+
+/**
+ * world/New is running, shunt all of the output back.
+ */
+/world/proc/shunt_redirected_log()
+// if we're unit testing do not ever redirect world.log or the test won't show output.
+#ifndef UNIT_TESTS
+	if(!(OVERRIDE_LOG_DIRECTORY_PARAMETER in params))
+		world.log = file("[GLOB.log_directory]/dd.log")
+	if(!world_log_redirected)
+		log_world("World log shunt never happened. Something has gone wrong!")
+		return
+	else if(!fexists("data/logs/world_init_temporary.log"))
+		log_world("No preinit logs detected, shunt skipped. Something has gone wrong!")
+		return
+	for(var/line in world.file2list("data/logs/world_init_temporary.log"))
+		line = trim(line)
+		if(!length(line))
+			continue
+		log_world(line)
+	fdel("data/logs/world_init_temporary.log")
+#endif
+//! END
+

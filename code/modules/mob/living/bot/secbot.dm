@@ -1,7 +1,9 @@
-#define SECBOT_WAIT_TIME	3		//Around number*2 real seconds to surrender.
-#define SECBOT_THREAT_ARREST 4		//threat level at which we decide to arrest someone
-#define SECBOT_THREAT_ATTACK 8		//threat level at which was assume immediate danger and attack right away
-
+///Around number*2 real seconds to surrender.
+#define SECBOT_WAIT_TIME	3
+///threat level at which we decide to arrest someone
+#define SECBOT_THREAT_ARREST 4
+///threat level at which was assume immediate danger and attack right away
+#define SECBOT_THREAT_ATTACK 8
 /datum/category_item/catalogue/technology/bot/secbot
 	name = "Bot - Securitron"
 	desc = "The Securitron is a proprietary support bot designed by NanoTrasen. \
@@ -47,9 +49,10 @@
 	var/list/threat_found_sounds = list('sound/voice/bcriminal.ogg', 'sound/voice/bjustice.ogg', 'sound/voice/bfreeze.ogg')
 	var/list/preparing_arrest_sounds = list('sound/voice/bgod.ogg', 'sound/voice/biamthelaw.ogg', 'sound/voice/bsecureday.ogg', 'sound/voice/bradio.ogg', 'sound/voice/bcreep.ogg')
 	var/list/fighting_sounds = list('sound/voice/biamthelaw.ogg', 'sound/voice/bradio.ogg', 'sound/voice/bjustice.ogg')
-//VOREStation Add - They don't like being pulled. This is going to fuck with slimesky, but meh.	//Screw you. Just screw you and your 'meh'
-/mob/living/bot/secbot/Life()
-	..()
+// They don't like being pulled. This is going to fuck with slimesky, but meh.	//Screw you. Just screw you and your 'meh'
+/mob/living/bot/secbot/Life(seconds, times_fired)
+	if((. = ..()))
+		return
 	if(health > 0 && on && pulledby)
 		if(isliving(pulledby))
 			var/pull_allowed = FALSE
@@ -61,7 +64,6 @@
 				UnarmedAttack(L)
 				say("Do not interfere with active law enforcement routines!")
 				GLOB.global_announcer.autosay("[src] was interfered with in <b>[get_area(src)]</b>, activating defense routines.", "[src]", "Security")
-//VOREStation Add End
 
 /datum/category_item/catalogue/technology/bot/secbot/beepsky
 	name = "Bot - Officer Beepsky"
@@ -129,65 +131,93 @@
 	else
 		set_light(0)
 
-/mob/living/bot/secbot/attack_hand(var/mob/user)
-	user.set_machine(src)
-	var/list/dat = list()
-	dat += "<TT><B>Automatic Security Unit</B></TT><BR><BR>"
-	dat += "Status: <A href='?src=\ref[src];power=1'>[on ? "On" : "Off"]</A><BR>"
-	dat += "Behaviour controls are [locked ? "locked" : "unlocked"]<BR>"
-	dat += "Maintenance panel is [open ? "opened" : "closed"]"
+/mob/living/bot/secbot/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Secbot", name)
+		ui.open()
+
+/mob/living/bot/secbot/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
+	var/list/data = ..()
+
+	data["on"] = on
+	data["open"] = open
+	data["locked"] = locked
+
+	data["idcheck"] = null
+	data["check_records"] = null
+	data["check_arrest"] = null
+	data["arrest_type"] = null
+	data["declare_arrests"] = null
+	data["will_patrol"] = null
+
 	if(!locked || issilicon(user))
-		dat += "<BR>Check for Weapon Authorization: <A href='?src=\ref[src];operation=idcheck'>[idcheck ? "Yes" : "No"]</A><BR>"
-		dat += "Check Security Records: <A href='?src=\ref[src];operation=ignorerec'>[check_records ? "Yes" : "No"]</A><BR>"
-		dat += "Check Arrest Status: <A href='?src=\ref[src];operation=ignorearr'>[check_arrest ? "Yes" : "No"]</A><BR>"
-		dat += "Operating Mode: <A href='?src=\ref[src];operation=switchmode'>[arrest_type ? "Detain" : "Arrest"]</A><BR>"
-		dat += "Report Arrests: <A href='?src=\ref[src];operation=declarearrests'>[declare_arrests ? "Yes" : "No"]</A><BR>"
+		data["idcheck"] = idcheck
+		data["check_records"] = check_records
+		data["check_arrest"] = check_arrest
+		data["arrest_type"] = arrest_type
+		data["declare_arrests"] = declare_arrests
 		if(GLOB.using_map.bot_patrolling)
-			dat += "Auto Patrol: <A href='?src=\ref[src];operation=patrol'>[will_patrol ? "On" : "Off"]</A>"
-	var/datum/browser/popup = new(user, "autosec", "Securitron controls")
-	popup.set_content(jointext(dat,null))
-	popup.open()
+			data["will_patrol"] = will_patrol
 
-/mob/living/bot/secbot/Topic(href, href_list)
+	return data
+
+/mob/living/bot/secbot/attack_hand(var/mob/user)
+	ui_interact(user)
+
+/mob/living/bot/secbot/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if(..())
-		return
+		return TRUE
 
-	usr.set_machine(src)
-	add_fingerprint(usr)
+	switch(action)
+		if("power")
+			if(!access_scanner.allowed(usr))
+				return FALSE
+			if(on)
+				turn_off()
+			else
+				turn_on()
+			. = TRUE
 
-	if((href_list["power"]) && (access_scanner.allowed(usr)))
-		if(on)
-			turn_off()
-		else
-			turn_on()
-		return
+	if(locked && !issilicon(usr))
+		return TRUE
 
-	switch(href_list["operation"])
+	switch(action)
 		if("idcheck")
 			idcheck = !idcheck
+			. = TRUE
+
 		if("ignorerec")
 			check_records = !check_records
+			. = TRUE
+
 		if("ignorearr")
 			check_arrest = !check_arrest
+			. = TRUE
+
 		if("switchmode")
 			arrest_type = !arrest_type
+			. = TRUE
+
 		if("patrol")
 			will_patrol = !will_patrol
+			. = TRUE
+
 		if("declarearrests")
 			declare_arrests = !declare_arrests
-	attack_hand(usr)
+			. = TRUE
 
 /mob/living/bot/secbot/emag_act(var/remaining_uses, var/mob/user)
 	. = ..()
 	if(!emagged)
 		if(user)
-			to_chat(user, "<span class='notice'>\The [src] buzzes and beeps.</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] buzzes and beeps."))
 		emagged = TRUE
 		patrol_speed = 3
 		target_speed = 4
 		return TRUE
 	else
-		to_chat(user, "<span class='notice'>\The [src] is already corrupt.</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] is already corrupt."))
 
 /mob/living/bot/secbot/attackby(var/obj/item/O, var/mob/user)
 	var/curhealth = health
@@ -236,7 +266,8 @@
 
 /mob/living/bot/secbot/resetTarget()
 	..()
-	UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
+	if(target)
+		UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
 	awaiting_surrender = 0
 	attacked = FALSE
 	walk_to(src, 0)
@@ -352,7 +383,7 @@
 						H.handcuffed = new /obj/item/handcuffs/cable(H) // Better to be cable cuffed than stun-locked
 					else
 						H.handcuffed = new /obj/item/handcuffs(H)
-					H.update_inv_handcuffed()
+					H.update_handcuffed()
 			busy = FALSE
 	else if(istype(M, /mob/living))
 		var/mob/living/L = M
@@ -391,7 +422,7 @@
 	s.set_up(3, 1, src)
 	s.start()
 
-	new /obj/effect/decal/cleanable/blood/oil(Tsec)
+	new /obj/effect/debris/cleanable/blood/oil(Tsec)
 	qdel(src)
 
 /mob/living/bot/secbot/proc/target_name(mob/living/T)
@@ -426,9 +457,8 @@
 	if(S.secured)
 		qdel(S)
 		var/obj/item/secbot_assembly/A = new /obj/item/secbot_assembly
-		user.put_in_hands(A)
+		user.put_in_hands_or_drop(A)
 		to_chat(user, "You add the signaler to the helmet.")
-		user.drop_from_inventory(src)
 		qdel(src)
 	else
 		return
@@ -439,8 +469,8 @@
 	icon = 'icons/obj/aibots.dmi'
 	icon_state = "helmet_signaler"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_hats.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_hats.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_hats.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_hats.dmi',
 			)
 	item_state = "helmet"
 	var/build_step = 0
@@ -456,23 +486,24 @@
 			to_chat(user, "You weld a hole in \the [src].")
 
 	else if(isprox(W) && (build_step == 1))
-		user.drop_item()
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		build_step = 2
 		to_chat(user, "You add \the [W] to [src].")
 		overlays += image('icons/obj/aibots.dmi', "hs_eye")
 		name = "helmet/signaler/prox sensor assembly"
-		qdel(W)
 
 	else if((istype(W, /obj/item/robot_parts/l_arm) || istype(W, /obj/item/robot_parts/r_arm) || (istype(W, /obj/item/organ/external/arm) && ((W.name == "robotic right arm") || (W.name == "robotic left arm")))) && build_step == 2)
-		user.drop_item()
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		build_step = 3
 		to_chat(user, "You add \the [W] to [src].")
 		name = "helmet/signaler/prox sensor/robot arm assembly"
 		overlays += image('icons/obj/aibots.dmi', "hs_arm")
-		qdel(W)
 
 	else if(istype(W, /obj/item/melee/baton) && build_step == 3)
-		user.drop_item()
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		to_chat(user, "You complete the Securitron! Beep boop.")
 		if(istype(W, /obj/item/melee/baton/slime))
 			var/mob/living/bot/secbot/slime/S = new /mob/living/bot/secbot/slime(get_turf(src))
@@ -480,7 +511,6 @@
 		else
 			var/mob/living/bot/secbot/S = new /mob/living/bot/secbot(get_turf(src))
 			S.name = created_name
-		qdel(W)
 		qdel(src)
 
 	else if(istype(W, /obj/item/pen))

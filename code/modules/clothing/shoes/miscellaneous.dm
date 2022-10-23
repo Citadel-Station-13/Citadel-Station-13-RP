@@ -3,7 +3,7 @@
 	name = "brown shoes"
 	icon_state = "brown"
 	permeability_coefficient = 0.05
-	item_flags = NOSLIP
+	clothing_flags = NOSLIP
 	origin_tech = list(TECH_ILLEGAL = 3)
 	var/list/clothing_choices = list()
 	siemens_coefficient = 0.8
@@ -23,7 +23,7 @@
 	icon_state = "galoshes"
 	permeability_coefficient = 0.05
 	siemens_coefficient = 0 //They're thick rubber boots! Of course they won't conduct electricity!
-	item_flags = NOSLIP
+	clothing_flags = NOSLIP
 	slowdown = SHOES_SLOWDOWN+1
 	species_restricted = null
 	drop_sound = 'sound/items/drop/rubber.ogg'
@@ -49,7 +49,7 @@
 
 	wizard_garb = 1
 
-obj/item/clothing/shoes/sandal/clogs
+/obj/item/clothing/shoes/sandal/clogs
 	name = "plastic clogs"
 	desc = "A pair of plastic clog shoes."
 	icon_state = "clogs"
@@ -84,7 +84,7 @@ obj/item/clothing/shoes/sandal/clogs
 	name = "boots"
 	desc = "A pair of boots worn by the followers of Nar-Sie."
 	icon_state = "cult"
-	item_state_slots = list(slot_r_hand_str = "cult", slot_l_hand_str = "cult")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "cult", SLOT_ID_LEFT_HAND = "cult")
 	force = 2
 	siemens_coefficient = 0.7
 	origin_tech = list(TECH_ARCANE = 2)
@@ -115,7 +115,7 @@ obj/item/clothing/shoes/sandal/clogs
 	name = "worn bunny slippers"
 	desc = "Fluffy..."
 	icon_state = "slippers_worn"
-	item_state_slots = list(slot_r_hand_str = "slippers", slot_l_hand_str = "slippers")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "slippers", SLOT_ID_LEFT_HAND = "slippers")
 	force = 0
 	w_class = ITEMSIZE_SMALL
 
@@ -135,8 +135,8 @@ obj/item/clothing/shoes/sandal/clogs
 	desc = "Help you swim good."
 	name = "swimming fins"
 	icon_state = "flippers"
-	item_state_slots = list(slot_r_hand_str = "galoshes", slot_l_hand_str = "galoshes")
-	item_flags = NOSLIP
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "galoshes", SLOT_ID_LEFT_HAND = "galoshes")
+	clothing_flags = NOSLIP
 	slowdown = SHOES_SLOWDOWN+1
 	species_restricted = null
 
@@ -151,14 +151,14 @@ obj/item/clothing/shoes/sandal/clogs
 	desc = "A pair of sleek atheletic shoes. Made by and for the sporty types."
 	icon_state = "sportshoe"
 	addblends = "sportshoe_a"
-	item_state_slots = list(slot_r_hand_str = "sportheld", slot_l_hand_str = "sportheld")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sportheld", SLOT_ID_LEFT_HAND = "sportheld")
 
 /obj/item/clothing/shoes/skater
 	name = "skater shoes"
 	desc = "A pair of wide shoes with thick soles.  Designed for skating."
 	icon_state = "skatershoe"
 	addblends = "skatershoe_a"
-	item_state_slots = list(slot_r_hand_str = "skaterheld", slot_l_hand_str = "skaterheld")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "skaterheld", SLOT_ID_LEFT_HAND = "skaterheld")
 
 /obj/item/clothing/shoes/heels
 	name = "high heels"
@@ -214,6 +214,11 @@ obj/item/clothing/shoes/sandal/clogs
 	desc = "Hardy leather sandles capable of holding up for many miles."
 	icon_state = "roman"
 
+/obj/item/clothing/shoes/ashwalker
+	name = "ashen sandals"
+	desc = "Hardy leather sandles capable of withstanding harsh conditions."
+	icon_state = "roman"
+
 /obj/item/clothing/shoes/boots/bsing
 	name = "blue performer's boots"
 	desc = "Dancing in these makes you feel lighter than air."
@@ -243,3 +248,20 @@ obj/item/clothing/shoes/sandal/clogs
 	name = "bounty hunter skinsuit (heels)"
 	desc = "The original skinsuit featured agility-boosting heels. These replicas grant no assistance, but look just as stylish."
 	icon_state = "bountyskin"
+
+/obj/item/clothing/shoes/antediluvian
+	name = "Antediluvian legwraps"
+	desc = "These thigh-high legwraps are designed to cling tightly to the body. Secured to the feet by stirrups, it is unknown whether shoes were meant to be worn over these."
+	icon_state = "antediluvian"
+
+// The things folks do for fashion...
+/obj/item/clothing/shoes/galoshes/black
+	name = "black galoshes"
+	desc = "A black rubber boots."
+	icon_state = "galoshes_black"
+
+/obj/item/clothing/shoes/galoshes/starcon
+	name = "dark-purple semi-galoshes"
+	desc = "A dark-purple rubber boots. They obviously don't smell like a cotton candy, roses and fresh roasted peanuts."
+	icon_state = "galoshes_sc"
+	slowdown = SHOES_SLOWDOWN

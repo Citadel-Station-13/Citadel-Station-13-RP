@@ -1,6 +1,9 @@
 /obj
+
 	layer = OBJ_LAYER
 	plane = OBJ_PLANE
+	pass_flags_self = ATOM_PASS_OVERHEAD_THROW
+	animate_movement = SLIDE_STEPS
 
 	var/obj_flags = CAN_BE_HIT
 	var/set_obj_flags // ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "EMAGGED;!CAN_BE_HIT" to set EMAGGED and clear CAN_BE_HIT.
@@ -9,9 +12,6 @@
 	var/list/matter
 	var/w_class // Size of the object.
 	var/unacidable = 0 //universal "unacidabliness" var, here so you can use it in any obj.
-	animate_movement = 2
-	var/throwforce = 1
-	var/catchable = 1	// can it be caught on throws/flying?
 	var/sharp = 0		// whether this object cuts
 	var/edge = 0		// whether this object is more likely to dismember
 	var/pry = 0			//Used in attackby() to open doors
@@ -24,6 +24,10 @@
 
 	var/show_examine = TRUE	// Does this pop up on a mob when the mob is examined?
 	var/register_as_dangerous_object = FALSE // Should this tell its turf that it is dangerous automatically?
+
+	// Access levels, used in modules\jobs\access.dm
+	var/list/req_access
+	var/list/req_one_access
 
 /obj/Initialize(mapload)
 	if(register_as_dangerous_object)
@@ -55,58 +59,7 @@
 			old_turf.unregister_dangerous_object(src)
 			new_turf.register_dangerous_object(src)
 
-/obj/Topic(href, href_list, var/datum/topic_state/state = default_state)
-	if(usr && ..())
-		return 1
-
-	// In the far future no checks are made in an overriding Topic() beyond if(..()) return
-	// Instead any such checks are made in CanUseTopic()
-	if(CanUseTopic(usr, state, href_list) == UI_INTERACTIVE)
-		CouldUseTopic(usr)
-		return 0
-
-	CouldNotUseTopic(usr)
-	return 1
-
-/obj/CanUseTopic(var/mob/user, var/datum/topic_state/state = default_state)
-	if(user.CanUseObjTopic(src))
-		return ..()
-	to_chat(user, "<span class='danger'>[icon2html(thing = src, target = user)] Access Denied!</span>")
-	return UI_CLOSE
-
-/mob/living/silicon/CanUseObjTopic(var/obj/O)
-	var/id = src.GetIdCard()
-	return O.check_access(id)
-
-/mob/proc/CanUseObjTopic()
-	return 1
-
-/obj/proc/CouldUseTopic(var/mob/user)
-	var/atom/host = nano_host()
-	host.add_hiddenprint(user)
-
-/obj/proc/CouldNotUseTopic(var/mob/user)
-	// Nada
-
 /obj/item/proc/is_used_on(obj/O, mob/user)
-
-/obj/assume_air(datum/gas_mixture/giver)
-	if(loc)
-		return loc.assume_air(giver)
-	else
-		return null
-
-/obj/remove_air(amount)
-	if(loc)
-		return loc.remove_air(amount)
-	else
-		return null
-
-/obj/return_air()
-	if(loc)
-		return loc.return_air()
-	else
-		return null
 
 /obj/proc/updateUsrDialog()
 	if(in_use)
@@ -122,11 +75,11 @@
 					is_in_use = 1
 					src.attack_ai(usr)
 
-		// check for TK users
+		// check for MUTATION_TELEKINESIS users
 
 		if (istype(usr, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = usr
-			if(H.get_type_in_hands(/obj/item/tk_grab))
+			if(H.get_held_item_of_type(/obj/item/tk_grab))
 				if(!(H in nearby))
 					if(H.client && H.machine==src)
 						is_in_use = 1
@@ -152,7 +105,7 @@
 	..()
 
 /mob/proc/unset_machine()
-	src.machine = null
+	machine = null
 
 /mob/proc/set_machine(var/obj/O)
 	if(src.machine)
@@ -171,6 +124,24 @@
 
 /obj/proc/hides_under_flooring()
 	return 0
+
+	/**
+ * This proc is used for telling whether something can pass by this object in a given direction, for use by the pathfinding system.
+ *
+ * Trying to generate one long path across the station will call this proc on every single object on every single tile that we're seeing if we can move through, likely
+ * multiple times per tile since we're likely checking if we can access said tile from multiple directions, so keep these as lightweight as possible.
+ *
+ * Arguments:
+ * * ID- An ID card representing what access we have (and thus if we can open things like airlocks or windows to pass through them). The ID card's physical location does not matter, just the reference
+ * * to_dir- What direction we're trying to move in, relevant for things like directional windows that only block movement in certain directions
+ * * caller- The movable we're checking pass flags for, if we're making any such checks
+ **/
+/obj/proc/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
+	if(ismovable(caller))
+		var/atom/movable/AM = caller
+		if(AM.pass_flags & pass_flags_self)
+			return TRUE
+	. = !density
 
 /obj/proc/hear_talk(mob/M as mob, text, verb, datum/language/speaking)
 	if(talking_atom)
@@ -223,4 +194,12 @@
 	return
 
 /obj/proc/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
+	return
+
+/obj/attack_hand(mob/living/user)
+	if(Adjacent(user))
+		add_fingerprint(user)
+	..()
+
+/obj/proc/container_resist(var/mob/living)
 	return

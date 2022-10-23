@@ -81,7 +81,7 @@ var/global/list/total_extraction_beacons = list()
 			*/
 			uses_left--
 			if(uses_left <= 0)
-				user.drop_from_inventory(src, A)
+				user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 			var/mutable_appearance/balloon
 			var/mutable_appearance/balloon2
 			var/mutable_appearance/balloon3
@@ -197,7 +197,7 @@ var/global/list/total_extraction_beacons = list()
 		var/mob/living/L = A
 		if(L.stat != DEAD)
 			return 1
-	for(var/thing in A.GetAllContents())
+	for(var/thing in A.get_all_contents())
 		if(isliving(A))
 			var/mob/living/L = A
 			update_icon()

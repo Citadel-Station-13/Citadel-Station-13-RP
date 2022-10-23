@@ -32,6 +32,7 @@
 	slot_flags = SLOT_BELT
 	force = 8 //looks heavier than a pistol
 	w_class = ITEMSIZE_LARGE	//bigger than a pistol, too.
+	heavy = TRUE
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 5, TECH_POWER = 3, TECH_MAGNET = 3)
 	fire_delay = 6	//This one's not a handgun, it should have the same fire delay as everything else
 	self_recharge = 1
@@ -58,6 +59,7 @@
 	accuracy = 70
 	charge_cost = 400 // 6 shots
 	self_recharge = 1
+	heavy = TRUE
 	charge_delay = 15 //won't start charging until it's ready to fire again
 	recharge_time = 8 //40 ticks after that to refill the whole thing.
 
@@ -136,9 +138,9 @@
 		if(safetycatch)
 			to_chat(user, "<span class='notice'>\The [src] already has a [attached_safety].</span>")
 			return
+		if(!user.attempt_insert_item_for_installation(A, src))
+			return
 		to_chat(user, "<span class='notice'>You insert \the [A] into \the [src].</span>")
-		user.drop_item()
-		A.loc = src
 		attached_safety = A
 		safetycatch = 1
 		return
@@ -148,7 +150,7 @@
 			to_chat(user, "<span class='notice'>You begin removing \the [attached_safety] from \the [src].</span>")
 			if(do_after(user, 25))
 				to_chat(user, "<span class='notice'>You remove \the [attached_safety] from \the [src].</span>")
-				user.put_in_hands(attached_safety)
+				user.put_in_hands_or_drop(attached_safety)
 				safetycatch = 0
 				attached_safety = null
 			return

@@ -15,7 +15,7 @@
 		to_chat(src, "<span class='warning'>This verb may only be used by living mobs, sorry.</span>")
 	return
 
-/mob/living/proc/stop_aiming(var/obj/item/thing, var/no_message = 0)
+/mob/living/proc/stop_aiming(obj/item/thing, no_message = FALSE)
 	if(!aiming)
 		aiming = new(src)
 	if(thing && aiming.aiming_with != thing)
@@ -37,12 +37,11 @@
 
 /mob/living/Destroy()
 	if(aiming)
-		qdel(aiming)
-		aiming = null
+		QDEL_NULL(aiming)
 	aimed.Cut()
 	return ..()
 
-/turf/Enter(var/mob/living/mover)
+/turf/Enter(mob/living/mover)
 	. = ..()
 	if(istype(mover))
 		if(mover.aiming && mover.aiming.aiming_at)
@@ -50,14 +49,14 @@
 		if(mover.aimed.len)
 			mover.trigger_aiming(TARGET_CAN_MOVE)
 
-/mob/living/forceMove(var/atom/destination)
+/mob/living/forceMove(atom/destination)
 	. = ..()
 	if(aiming && aiming.aiming_at)
 		aiming.update_aiming()
 	if(aimed.len)
 		trigger_aiming(TARGET_CAN_MOVE)
 
-/mob/living/proc/set_m_intent(var/intent)
+/mob/living/proc/set_m_intent(intent)
 	if (intent != "walk" && intent != "run")
 		return 0
 	m_intent = intent

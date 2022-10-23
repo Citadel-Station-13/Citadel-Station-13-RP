@@ -4,12 +4,12 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "syndbeacon"
 	use_power = USE_POWER_OFF
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	var/charges = 1
 	var/insisting = 0
 
-/obj/machinery/wish_granter/attack_hand(var/mob/user as mob)
+/obj/machinery/wish_granter/attack_hand(mob/user)
 	usr.set_machine(src)
 
 	if(charges <= 0)
@@ -34,26 +34,25 @@
 		charges--
 		insisting = 0
 
-		if(!(HULK in user.mutations))
-			user.mutations.Add(HULK)
+		if(!(MUTATION_HULK in user.mutations))
+			user.mutations.Add(MUTATION_HULK)
 
-		if(!(LASER in user.mutations))
-			user.mutations.Add(LASER)
+		if(!(MUTATION_LASER in user.mutations))
+			user.mutations.Add(MUTATION_LASER)
 
-		if(!(XRAY in user.mutations))
-			user.mutations.Add(XRAY)
-			user.sight |= (SEE_MOBS|SEE_OBJS|SEE_TURFS)
-			user.see_in_dark = 8
-			user.see_invisible = SEE_INVISIBLE_LEVEL_TWO
+		if(!(MUTATION_XRAY in user.mutations))
+			user.mutations.Add(MUTATION_XRAY)
+			user.ensure_self_perspective()
+			user.handle_regular_hud_updates()
 
-		if(!(COLD_RESISTANCE in user.mutations))
-			user.mutations.Add(COLD_RESISTANCE)
+		if(!(MUTATION_COLD_RESIST in user.mutations))
+			user.mutations.Add(MUTATION_COLD_RESIST)
 
-		if(!(TK in user.mutations))
-			user.mutations.Add(TK)
+		if(!(MUTATION_TELEKINESIS in user.mutations))
+			user.mutations.Add(MUTATION_TELEKINESIS)
 
-		if(!(HEAL in user.mutations))
-			user.mutations.Add(HEAL)
+		if(!(MUTATION_HEAL in user.mutations))
+			user.mutations.Add(MUTATION_HEAL)
 
 		user.update_mutations()
 		user.mind.special_role = "Avatar of the Wish Granter"

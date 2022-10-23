@@ -1,7 +1,7 @@
 /datum/unit_test/auto_teleporter_linking/Run()
 	// Put down the teleporter machinery
-	var/obj/machinery/teleport/hub/hub = allocate(/obj/machinery/teleport/hub)
-	var/obj/machinery/teleport/station/station = allocate(/obj/machinery/teleport/station, locate(run_loc_bottom_left.x + 1, run_loc_bottom_left.y, run_loc_bottom_left.z))
+	var/obj/machinery/tele_pad/hub = allocate(/obj/machinery/tele_pad)
+	var/obj/machinery/tele_projector/station = allocate(/obj/machinery/tele_projector, locate(run_loc_bottom_left.x + 1, run_loc_bottom_left.y, run_loc_bottom_left.z))
 	var/obj/machinery/computer/teleporter/computer = allocate(/obj/machinery/computer/teleporter, locate(run_loc_bottom_left.x + 2, run_loc_bottom_left.y, run_loc_bottom_left.z))
 
 	TEST_ASSERT_EQUAL(hub.power_station, station, "Hub didn't link to the station")

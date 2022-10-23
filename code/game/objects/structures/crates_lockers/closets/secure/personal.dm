@@ -47,9 +47,8 @@
 	if (src.opened)
 		if (istype(W, /obj/item/grab))
 			var/obj/item/grab/G = W
-			src.MouseDrop_T(G.affecting, user)      //act like they were dragged onto the closet
-		user.drop_item()
-		if (W) W.forceMove(src.loc)
+			src.MouseDroppedOn(G.affecting, user)      //act like they were dragged onto the closet
+		user.transfer_item_to_loc(W, loc)
 	else if(W.GetID())
 		var/obj/item/card/id/I = W.GetID()
 

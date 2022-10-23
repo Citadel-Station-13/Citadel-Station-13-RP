@@ -144,7 +144,7 @@
 
 	starting_equipment = null
 
-/obj/mecha/combat/marauder/old/Initialize()
+/obj/mecha/combat/marauder/old/Initialize(mapload)
 	. = ..()
 	health = 25
 	maxhealth = 300	//Just slightly worse.

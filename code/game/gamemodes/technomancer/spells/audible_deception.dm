@@ -18,8 +18,8 @@
 	var/list/available_sounds = list(
 		"Blade Slice"			=	'sound/weapons/bladeslice.ogg',
 		"Energy Blade Slice"	=	'sound/weapons/blade1.ogg',
-		"Explosions"			=	"explosion",
-		"Distant Explosion"		=	'sound/effects/explosionfar.ogg',
+		"Explosions"			=	SFX_ALIAS_EXPLOSION,
+		"Distant Explosion"		=	'sound/soundbytes/effects/explosion/explosionfar.ogg',
 		"Sparks"				=	"sparks",
 		"Punches"				=	"punch",
 		"Glass Shattering"		=	"shatter",

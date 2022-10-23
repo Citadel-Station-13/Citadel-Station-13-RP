@@ -44,7 +44,7 @@
 	return bounds
 
 /datum/map_template/proc/initTemplateBounds(var/list/bounds)
-	if (SSatoms.subsystem_initialized == INITIALIZATION_INSSATOMS)
+	if (SSatoms.initialized == INITIALIZATION_INSSATOMS)
 		return	// Let proper initialisation handle it later
 
 	var/prev_shuttle_queue_state = SSshuttle.block_init_queue
@@ -127,7 +127,7 @@
 		return
 
 //	if(!SSmapping.loading_ruins)	// Will be done manually during mapping ss init
-	if(SSmapping.subsystem_initialized)
+	if(SSmapping.initialized)
 		repopulate_sorted_areas()
 
 	// Initialize things that are normally initialized after map load

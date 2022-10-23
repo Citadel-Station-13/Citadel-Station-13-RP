@@ -32,9 +32,13 @@
 /// Intended to be used in the manner of `TEST_FOCUS(/datum/unit_test/math)`
 #define TEST_FOCUS(test_path) ##test_path { focus = TRUE; }
 
+#include "core/_core.dm"
+#include "human/_human.dm"
+#include "mob/_mob.dm"
+#include "reagents/_reagents.dm"
+
 // #include "anchored_mobs.dm"
 #include "bespoke_id.dm"
-#include "binary_insert.dm"
 // #include "card_mismatch.dm"
 // #include "chain_pull_through_space.dm"
 // #include "combat.dm"
@@ -58,6 +62,7 @@
 // #include "reagent_mod_expose.dm"
 // #include "reagent_mod_procs.dm"
 // #include "reagent_recipe_collisions.dm"
+#include "research_tests.dm"
 #include "resist.dm"
 // #include "say.dm"
 // #include "serving_tray.dm"

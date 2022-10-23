@@ -106,10 +106,11 @@
 	chambered = null
 	return ..()
 
-/obj/item/gun/projectile/cell_loaded/update_icon()
+/obj/item/gun/projectile/cell_loaded/update_overlays()
+	. = ..()
+
 	update_charge()
 
-	cut_overlays()
 	if(!chambered)
 		return
 
@@ -119,13 +120,13 @@
 	//Mode bar
 	var/image/mode_bar = image(icon, icon_state = "[initial(icon_state)]_type")
 	mode_bar.color = batt_color
-	add_overlay(mode_bar)
+	. += mode_bar
 
 	//Barrel color
 	var/image/barrel_color = image(icon, icon_state = "[initial(icon_state)]_barrel")
 	barrel_color.alpha = 150
 	barrel_color.color = batt_color
-	add_overlay(barrel_color)
+	. += barrel_color
 
 	//Charge bar
 	var/ratio = CEILING(((charge_left / max_charge) * charge_sections), 1)
@@ -133,8 +134,7 @@
 		var/image/charge_bar = image(icon, icon_state = "[initial(icon_state)]_charge")
 		charge_bar.pixel_x = i
 		charge_bar.color = batt_color
-		add_overlay(charge_bar)
-
+		. += charge_bar
 
 // The Magazine //
 /obj/item/ammo_magazine/cell_mag
@@ -163,8 +163,8 @@
 		if(stored_ammo.len >= max_ammo)
 			to_chat(user, "<span class='warning'>[src] is full!</span>")
 			return
-		user.remove_from_mob(B)
-		B.loc = src
+		if(!user.attempt_insert_item_for_installation(B, src))
+			return
 		stored_ammo.Add(B)
 		update_icon()
 	playsound(user.loc, 'sound/weapons/flipblade.ogg', 50, 1)
@@ -208,7 +208,7 @@
 	icon = 'icons/obj/ammo_vr.dmi'
 	icon_state = "nsfw_batt"
 	slot_flags = SLOT_BELT | SLOT_EARS
-	throwforce = 1
+	throw_force = 1
 	w_class = ITEMSIZE_TINY
 	var/shots_left = 4
 

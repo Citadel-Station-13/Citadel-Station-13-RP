@@ -22,7 +22,7 @@
 		if(!chosen_target)
 			return 0
 
-		var/obj/item/I = user.get_inactive_hand()
+		var/obj/item/I = user.get_inactive_held_item()
 		if(I && pay_energy(200))
 			var/prox = user.Adjacent(chosen_target)
 			if(prox) // Needed or else they can attack with melee from afar.

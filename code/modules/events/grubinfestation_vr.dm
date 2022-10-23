@@ -11,7 +11,7 @@
 
 	spawncount = rand(2 * severity, 6 * severity)
 
-	for(var/obj/machinery/atmospherics/unary/vent_pump/temp_vent in machines)
+	for(var/obj/machinery/atmospherics/component/unary/vent_pump/temp_vent in GLOB.machines)
 		if(istype(get_area(temp_vent), /area/crew_quarters/sleep))
 			continue
 		if(!temp_vent.welded && temp_vent.network && (temp_vent.loc.z in GLOB.using_map.station_levels))

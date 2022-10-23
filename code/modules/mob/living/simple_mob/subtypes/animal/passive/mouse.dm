@@ -22,7 +22,7 @@
 	randomized = TRUE
 
 	mob_size = MOB_MINISCULE
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	can_pull_size = ITEMSIZE_TINY
 	can_pull_mobs = MOB_PULL_NONE
 	layer = MOB_LAYER
@@ -94,7 +94,7 @@
 
 /mob/living/simple_mob/animal/passive/mouse/proc/splat()
 	src.health = 0
-	src.stat = DEAD
+	src.set_stat(DEAD)
 	src.icon_dead = "mouse_[body_color]_splat"
 	src.icon_state = "mouse_[body_color]_splat"
 	layer = MOB_LAYER

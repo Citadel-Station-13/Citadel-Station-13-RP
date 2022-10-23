@@ -44,7 +44,7 @@
 /obj/machinery/appliance/mixer/cereal/update_icon()
 	. = ..()
 
-	if(!stat)
+	if(!machine_stat)
 		icon_state = on_icon
 		if(cerealmaker_loop)
 			cerealmaker_loop.start(src)

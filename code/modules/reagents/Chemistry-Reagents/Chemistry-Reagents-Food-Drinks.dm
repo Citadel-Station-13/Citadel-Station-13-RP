@@ -9,6 +9,7 @@
 	metabolism = REM * 4
 	ingest_met = REM * 4
 	var/nutriment_factor = 30 // Per unit
+	var/hydration_factor = 0 //Per unit
 	var/injectable = 0
 	color = "#664330"
 
@@ -33,21 +34,27 @@
 			if(data[taste]/totalFlavor < 0.1)
 				data -= taste
 
-/datum/reagent/nutriment/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	if(!injectable && alien != IS_SLIME && alien != IS_CHIMERA) //VOREStation Edit
+/datum/reagent/nutriment/affect_blood(mob/living/carbon/M, alien, removed)
+	if(!injectable && alien != IS_SLIME && alien != IS_CHIMERA)
 		M.adjustToxLoss(0.1 * removed)
 		return
 	affect_ingest(M, alien, removed)
 
-/datum/reagent/nutriment/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/nutriment/affect_ingest(mob/living/carbon/M, alien, removed)
+	var/hyd_removed
 	switch(alien)
-		if(IS_DIONA) return
-		if(IS_UNATHI) removed *= 0.5
-		if(IS_CHIMERA) removed *= 0.25 //VOREStation Edit
-	if(issmall(M)) removed *= 2 // Small bodymass, more effect from lower volume.
+		if(IS_DIONA)
+			return
+		if(IS_UNATHI)
+			removed *= 0.5
+		if(IS_CHIMERA)
+			removed *= 0.25
+			if(issmall(M))
+				removed *= 2 // Small bodymass, more effect from lower volume.
 	M.heal_organ_damage(0.5 * removed, 0)
-	if(M.species.gets_food_nutrition) //VOREStation edit. If this is set to 0, they don't get nutrition from food.
+	if(!M.species.is_vampire) // If this is set to 0, they don't get nutrition from food.
 		M.nutrition += nutriment_factor * removed // For hunger and fatness
+	M.adjust_hydration(hydration_factor * hyd_removed)
 	M.add_chemical_effect(CE_BLOODRESTORE, 4 * removed)
 
 /datum/reagent/nutriment/glucose
@@ -72,10 +79,8 @@
 			..(M, alien, removed*1.2) // Teshari get a bit more nutrition from meat.
 		if(IS_UNATHI)
 			..(M, alien, removed*2.25) //Unathi get most of their nutrition from meat.
-		//VOREStation Edit Start
 		if(IS_CHIMERA)
 			..(M, alien, removed*4) //Xenochimera are obligate carnivores.
-		//VOREStation Edit End
 		else
 			..()
 
@@ -145,7 +150,7 @@
 
 /datum/reagent/nutriment/flour/touch_turf(var/turf/simulated/T)
 	if(!istype(T, /turf/space))
-		new /obj/effect/decal/cleanable/flour(T)
+		new /obj/effect/debris/cleanable/flour(T)
 
 /datum/reagent/nutriment/flour/vitapaste
 	name = "NutriFlour"
@@ -276,7 +281,7 @@
 	if(!istype(T))
 		return
 
-	var/hotspot = (locate(/obj/fire) in T)
+	var/hotspot = (locate(/atom/movable/fire) in T)
 	if(hotspot && !istype(T, /turf/space))
 		var/datum/gas_mixture/lowertemp = T.remove_air(T:air:total_moles)
 		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 0)
@@ -302,9 +307,9 @@ End Citadel Change */
 	if(!istype(T))
 		return
 
-	var/hotspot = (locate(/obj/fire) in T)
+	var/hotspot = (locate(/atom/movable/fire) in T)
 	if(hotspot && !istype(T, /turf/space))
-		var/datum/gas_mixture/lowertemp = T.remove_air(T:air:total_moles)
+		var/datum/gas_mixture/lowertemp = T.remove_cell_volume()
 		lowertemp.temperature = max(min(lowertemp.temperature-2000, lowertemp.temperature / 2), 0)
 		lowertemp.react()
 		T.assume_air(lowertemp)
@@ -354,7 +359,7 @@ End Citadel Change */
 
 /datum/reagent/nutriment/durian/touch_turf(var/turf/T, var/amount)
 	if(istype(T))
-		var/obj/effect/decal/cleanable/chemcoating/C = new /obj/effect/decal/cleanable/chemcoating(T)
+		var/obj/effect/debris/cleanable/chemcoating/C = new /obj/effect/debris/cleanable/chemcoating(T)
 		C.reagents.add_reagent(id, amount)
 	return ..()
 
@@ -383,6 +388,24 @@ End Citadel Change */
 	taste_description = "mint"
 	reagent_state = REAGENT_LIQUID
 	color = "#CF3600"
+
+/datum/reagent/nutriment/taropowder
+	name = "Taro Powder"
+	id = "taropowder"
+	description = "A sweet starchy powder made by grinding taro root."
+	taste_description = "sweet purpo"
+	taste_mult = 1.3
+	nutriment_factor = 1
+	color = "#a17d92"
+
+/datum/reagent/nutriment/matchapowder
+	name = "Matcha Powder"
+	id = "matchapowder"
+	description = "An aromatic green tea powder."
+	taste_description = "grassy green"
+	taste_mult = 1.3
+	nutriment_factor = 1
+	color = "#05703e"
 
 /datum/reagent/lipozine // The anti-nutriment.
 	name = "Lipozine"
@@ -486,7 +509,7 @@ End Citadel Change */
 		return
 	if(alien == IS_ALRAUNE) //cit change: it wouldn't affect plants that much.
 		if(prob(5))
-			to_chat(M, span("rose","You feel a pleasant sensation in your mouth."))
+			to_chat(M, SPAN_ROSE("You feel a pleasant sensation in your mouth."))
 		M.bodytemperature += rand(10, 25)
 		return
 	if(ishuman(M))
@@ -548,14 +571,14 @@ End Citadel Change */
 			if(H.head.body_parts_covered & EYES)
 				eyes_covered = 1
 				safe_thing = H.head
-			if((H.head.body_parts_covered & FACE) && !(H.head.item_flags & FLEXIBLEMATERIAL))
+			if((H.head.body_parts_covered & FACE) && !(H.head.clothing_flags & FLEXIBLEMATERIAL))
 				mouth_covered = 1
 				safe_thing = H.head
 		if(H.wear_mask)
 			if(!eyes_covered && H.wear_mask.body_parts_covered & EYES)
 				eyes_covered = 1
 				safe_thing = H.wear_mask
-			if(!mouth_covered && (H.wear_mask.body_parts_covered & FACE) && !(H.wear_mask.item_flags & FLEXIBLEMATERIAL))
+			if(!mouth_covered && (H.wear_mask.body_parts_covered & FACE) && !(H.wear_mask.clothing_flags & FLEXIBLEMATERIAL))
 				mouth_covered = 1
 				safe_thing = H.wear_mask
 		if(H.glasses && H.glasses.body_parts_covered & EYES)
@@ -564,7 +587,7 @@ End Citadel Change */
 				if(!safe_thing)
 					safe_thing = H.glasses
 		if(alien == IS_SLIME)
-			for(var/obj/item/clothing/C in H.worn_clothing)
+			for(var/obj/item/clothing/C in H.get_equipped_items())
 				if(C.body_parts_covered & HEAD)
 					head_covered = 1
 				if(C.body_parts_covered & UPPER_TORSO)
@@ -659,6 +682,7 @@ End Citadel Change */
 	reagent_state = REAGENT_LIQUID
 	color = "#E78108"
 	var/nutrition = 0 // Per unit
+	var/hydration = 6 //Per unit
 	var/adj_dizzy = 0 // Per tick
 	var/adj_drowsy = 0
 	var/adj_sleepy = 0
@@ -673,7 +697,8 @@ End Citadel Change */
 	return
 
 /datum/reagent/drink/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
-	M.nutrition += nutrition * removed
+	M.adjust_nutrition(nutrition * removed)
+	M.adjust_hydration(hydration * removed)
 	M.dizziness = max(0, M.dizziness + adj_dizzy)
 	M.drowsyness = max(0, M.drowsyness + adj_drowsy)
 	M.AdjustSleeping(adj_sleepy)
@@ -682,10 +707,9 @@ End Citadel Change */
 		M.bodytemperature = min(310, M.bodytemperature + (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
 	if(adj_temp < 0 && M.bodytemperature > 310)
 		M.bodytemperature = min(310, M.bodytemperature - (adj_temp * TEMPERATURE_DAMAGE_COEFFICIENT))
-	/* VOREStation Removal
-	if(alien == IS_SLIME && water_based)
-		M.adjustToxLoss(removed * 2)
-	*/ //VOREStation Removal End
+	var/is_vampire = M.species.is_vampire
+	if(is_vampire)
+		handle_vampire(M, alien, removed, is_vampire)
 
 /datum/reagent/drink/overdose(var/mob/living/carbon/M, var/alien) //Add special interactions here in the future if desired.
 	..()
@@ -816,7 +840,7 @@ End Citadel Change */
 	glass_name = "orange juice"
 	glass_desc = "Vitamins! Yay!"
 
-/datum/reagent/drink/orangejuice/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/drink/juice/orange/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -955,6 +979,20 @@ End Citadel Change */
 	cup_name = "Cup of Milk"
 	cup_desc = "White and nutritious goodness!"
 
+/datum/reagent/drink/milk/coconutmilk
+	name = "Coconut Milk"
+	id = "coconutmilk"
+	description = "An opaque white liquid made from the white inner flesh of a coconut."
+	taste_description = "creamy coconut"
+	color = "#cecece"
+
+	glass_name = "Coconut Milk"
+	glass_desc = "An opaque white liquid made from the white inner flesh of a coconut."
+
+	cup_icon_state = "cup_cream"
+	cup_name = "Cup of Milk"
+	cup_desc = "An opaque white liquid made from the white inner flesh of a coconut."
+
 /datum/reagent/drink/tea
 	name = "Tea"
 	id = "tea"
@@ -1002,7 +1040,6 @@ End Citadel Change */
 			M.bodytemperature -= 0.5
 		if(M.bodytemperature < T0C)
 			M.bodytemperature += 0.5
-		//M.adjustToxLoss(5 * removed) //VOREStation Removal
 
 /datum/reagent/drink/tea/icetea/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -1011,7 +1048,6 @@ End Citadel Change */
 			M.bodytemperature -= 0.5
 		if(M.bodytemperature < T0C)
 			M.bodytemperature += 0.5
-		//M.adjustToxLoss(5 * removed) //VOREStation Removal
 
 /datum/reagent/drink/tea/minttea
 	name = "Mint Tea"
@@ -1078,6 +1114,110 @@ End Citadel Change */
 	cup_name = "Cup of Berry Tea"
 	cup_desc = "A tasty mixture of berries and tea. It's apparently good for you!"
 
+/datum/reagent/drink/tea/icetea/milktea
+	name = "Milk Tea"
+	id = "milktea"
+	description = "Sweet iced tea cut with milk."
+	taste_description = "sweet, silky smooth tea"
+	color = "#ffffff"
+
+	glass_name = "Milk Tea"
+	glass_desc = "Sweet iced tea cut with milk."
+
+	cup_icon_state = "cup_tea"
+	cup_name = "Cup of Milk Tea"
+	cup_desc = "Sweet iced tea cut with milk."
+
+/datum/reagent/drink/tea/icetea/milktea/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)	//Milk tea and its variants inherit the properties of both iced tea and milk.
+	..()
+	if(alien == IS_DIONA)
+		return
+	if(alien == IS_ALRAUNE) //cit change: milk good for plant.
+		to_chat(M, "<span class='vox'>You feel nourished by the milk tea.</span>")
+		M.nutrition += removed * 3
+	M.heal_organ_damage(0.5 * removed, 0)
+	holder.remove_reagent("capsaicin", 10 * removed)
+
+/datum/reagent/drink/tea/icetea/milktea/honeybubbletea
+	name = "Honey Bubble Tea"
+	id = "honeybubbletea"
+	description = "Chilled milk tea with chewy tapioca pearls and a spoonful of honey."
+	taste_description = "sweet, silky smooth tea and notes of honey"
+	color = "#ffffff"
+
+	glass_name = "Honey Bubble Tea"
+	glass_desc = "Chilled milk tea with chewy tapioca pearls and a spoonful of honey."
+
+	cup_icon_state = "cup_tea"
+	cup_name = "Cup of Honey Bubble Tea"
+	cup_desc = "Chilled milk tea with chewy tapioca pearls and a spoonful of honey."
+
+/datum/reagent/drink/tea/icetea/milktea/matchabubbletea
+	name = "Matcha Bubble Tea"
+	id = "matchabubbletea"
+	description = "Chilled milk and green tea with chewy tapioca pearls."
+	taste_description = "sweet, silky smooth green tea"
+	color = "#1db883"
+
+	glass_name = "Matcha Bubble Tea"
+	glass_desc = "Chilled milk and green tea with chewy tapioca pearls. It's GREEN!"
+
+	cup_icon_state = "cup_tea"
+	cup_name = "Cup of Matcha Bubble Tea"
+	cup_desc = "Chilled milk and green tea with chewy tapioca pearls. It's GREEN!"
+
+/datum/reagent/drink/tea/icetea/milktea/tarobubbletea
+	name = "Taro Bubble Tea"
+	id = "tarobubbletea"
+	description = "Chilled milk tea with chewy tapioca pearls and taro."
+	taste_description = "incredibly sweet, silky smooth tea"
+	color = "#b87098"
+
+	glass_name = "Taro Bubble Tea"
+	glass_desc = "Chilled milk tea with chewy tapioca pearls and taro. It's PURPLE!"
+
+	cup_icon_state = "cup_tea"
+	cup_name = "Cup of Taro Bubble Tea"
+	cup_desc = "Chilled milk tea with chewy tapioca pearls and taro. It's PURPLE!"
+
+/datum/reagent/drink/tea/icetea/milktea/cocoabubbletea
+	name = "Chocolate Bubble Tea"
+	id = "cocoabubbletea"
+	description = "Chilled milk tea with chewy tapioca pearls and a spoonful of chocolate mixed in."
+	taste_description = "sweet, silky smooth tea and notes of chocolate"
+	color = "#754a2e"
+
+	glass_name = "Chocolate Bubble Tea"
+	glass_desc = "Chilled milk tea with chewy tapioca pearls and a spoonful of chocolate mixed in."
+
+	cup_icon_state = "cup_tea"
+	cup_name = "Cup of Chocolate Bubble Tea"
+	cup_desc = "Chilled milk tea with chewy tapioca pearls and a spoonful of chocolate mixed in."
+
+/datum/reagent/drink/tea/icetea/milktea/mochabubbletea
+	name = "Mocha Bubble Tea"
+	id = "mochabubbletea"
+	description = "Super sweet mix of milk, tea, coffee, and chocolate, topped off with a generous helping of whipped cream."
+	taste_description = "barista's ire and sugarmilk overload"
+	color = "#5c2c0c"
+
+	glass_name = "Mocha Bubble Tea"
+	glass_desc = "Super sweet mix of milk, tea, coffee, and chocolate, topped off with a generous helping of whipped cream. That seems like a lot of sugar. You're going to put that in you?"
+
+	cup_icon_state = "cup_tea"
+	cup_name = "Cup of Mocha Bubble Tea"
+	cup_desc = "Super sweet mix of milk, tea, coffee, and chocolate, topped off with a generous helping of whipped cream. That seems like a lot of sugar. You're going to put that in you?"
+
+/datum/reagent/drink/coconutwater
+	name = "Coconut Water"
+	id = "coconutwater"
+	description = "A fresh clear liquid found within coconuts."
+	taste_description = "tropical, somewhat buttery water"
+	color = "#fafafa70"
+
+	glass_name = "Coconut Water"
+	glass_desc = "A fresh clear liquid found within coconuts."
+
 /datum/reagent/drink/coffee
 	name = "Coffee"
 	id = "coffee"
@@ -1103,25 +1243,15 @@ End Citadel Change */
 	if(alien == IS_DIONA)
 		return
 	..()
-	//if(alien == IS_TAJARA) //VOREStation Edit Begin
-		//M.adjustToxLoss(0.5 * removed)
-		//M.make_jittery(4) //extra sensitive to caffine
 	if(adj_temp > 0)
 		holder.remove_reagent("frostoil", 10 * removed)
 
 /datum/reagent/drink/coffee/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
-	//if(alien == IS_TAJARA)
-		//M.adjustToxLoss(2 * removed)
-		//M.make_jittery(4)
-		//return
 
 /datum/reagent/drink/coffee/overdose(var/mob/living/carbon/M, var/alien)
 	if(alien == IS_DIONA)
 		return
-	//if(alien == IS_TAJARA)
-		//M.adjustToxLoss(4 * REM)
-		//M.apply_effect(3, STUTTER) //VOREStation Edit end
 	M.make_jittery(5)
 
 /datum/reagent/drink/coffee/icecoffee
@@ -1142,7 +1272,6 @@ End Citadel Change */
 			M.bodytemperature -= 0.5
 		if(M.bodytemperature < T0C)
 			M.bodytemperature += 0.5
-		//M.adjustToxLoss(5 * removed) //VOREStation Removal
 
 /datum/reagent/drink/coffee/icecoffee/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -1151,7 +1280,6 @@ End Citadel Change */
 			M.bodytemperature -= 0.5
 		if(M.bodytemperature < T0C)
 			M.bodytemperature += 0.5
-		//M.adjustToxLoss(5 * removed) //VOREStation Removal
 
 /datum/reagent/drink/coffee/soy_latte
 	name = "Soy Latte"
@@ -1361,7 +1489,7 @@ End Citadel Change */
 	glass_name = "Milkshake"
 	glass_desc = "Glorious brainfreezing mixture."
 
-/datum/reagent/milkshake/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/drink/milkshake/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 
 	var/effective_dose = dose/2
@@ -1485,7 +1613,7 @@ End Citadel Change */
 	glass_name = "Grenadine Syrup"
 	glass_desc = "Sweet and tangy, a bar syrup used to add color and flavor to drinks."
 
-/datum/reagent/drink/soda/space_cola
+/datum/reagent/drink/soda
 	name = "Space Cola"
 	id = "cola"
 	description = "A refreshing beverage."
@@ -1684,6 +1812,9 @@ End Citadel Change */
 	nutrition = 1
 	color = "#302000"
 
+	glass_name = "Dry Ramen"
+	glass_desc = "A glass of dry noodles. Wait, why did you put this into a glass?"
+
 /datum/reagent/drink/hot_ramen
 	name = "Hot Ramen"
 	id = "hot_ramen"
@@ -1694,6 +1825,9 @@ End Citadel Change */
 	nutrition = 5
 	adj_temp = 5
 
+	glass_name = "Hot Ramen"
+	glass_desc = "A glass of spicy noodles. Wait, why did you put this into a glass?"
+
 /datum/reagent/drink/hell_ramen
 	name = "Hell Ramen"
 	id = "hell_ramen"
@@ -1703,6 +1837,9 @@ End Citadel Change */
 	reagent_state = REAGENT_LIQUID
 	color = "#302000"
 	nutrition = 5
+
+	glass_name = "Hell Ramen"
+	glass_desc = "A glass of extremely spicy noodles. Wait, why did you put this into a glass?"
 
 /datum/reagent/drink/hell_ramen/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -1741,7 +1878,6 @@ End Citadel Change */
 			M.bodytemperature -= rand(1,3)
 		if(M.bodytemperature < T0C)
 			M.bodytemperature += rand(1,3)
-		//M.adjustToxLoss(5 * removed) //VOREStation Removal
 
 /datum/reagent/drink/ice/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
@@ -1750,7 +1886,6 @@ End Citadel Change */
 			M.bodytemperature -= rand(1,3)
 		if(M.bodytemperature < T0C)
 			M.bodytemperature += rand(1,3)
-		//M.adjustToxLoss(5 * removed) //VOREStation Removal
 
 /datum/reagent/drink/nothing
 	name = "Nothing"
@@ -1903,7 +2038,7 @@ End Citadel Change */
 	glass_desc = "Mint, bubbly water, and citrus, made for sailing."
 	glass_special = list(DRINK_FIZZ)
 
-/datum/reagent/drink/sexonthebeach
+/datum/reagent/drink/virginsexonthebeach
 	name = "Virgin Sex On The Beach"
 	id = "virginsexonthebeach"
 	description = "A secret combination of orange juice and pomegranate."
@@ -1924,6 +2059,17 @@ End Citadel Change */
 	glass_desc = "A fruity punch!"
 	glass_special = list(DRINK_FIZZ)
 
+/datum/reagent/drink/sugarrush
+	name = "Sweet Rush"
+	id = "sugarrush"
+	description = "A favorite drink amongst poor bartenders living in Neo Detroit."
+	taste_description = "sweet bubblegum fizz."
+	color = "#d3785d"
+
+	glass_name = "Sweet Rush"
+	glass_desc = "This looks like it might rot your teeth out."
+	glass_special = list(DRINK_FIZZ)
+
 /datum/reagent/drink/berrycordial
 	name = "Berry Cordial"
 	id = "berrycordial"
@@ -1933,6 +2079,30 @@ End Citadel Change */
 
 	glass_name = "Berry Cordial"
 	glass_desc = "How <font face='comic sans ms'>berry cordial</font> of you."
+	glass_icon = DRINK_ICON_NOISY
+
+/datum/reagent/drink/blud
+	name = "Blud"
+	id = "blud"
+	description = "A sweet mix of blood-like additives. Vampiric."
+	taste_description = "an odd blend of metals and sugar"
+	color = "#993c49"
+	blood_content = 1
+
+	glass_name = "Blud"
+	glass_desc = "A sweet mix of blood-like additives. Vampiric."
+	glass_icon = DRINK_ICON_NOISY
+
+/datum/reagent/drink/blud/bludlight
+	name = "Blud Light"
+	id = "bludlight"
+	description = "An artificially sweetened mix of blood-like additives. Vampiric and low in calories!"
+	taste_description = "an awful blend of metals and artificial sweeteners"
+	color = "#793c44"
+	blood_content = 1
+
+	glass_name = "Blud Light"
+	glass_desc = "An artificially sweetened mix of blood-like additives. Vampiric and low in calories!"
 	glass_icon = DRINK_ICON_NOISY
 
 /datum/reagent/drink/tropicalfizz
@@ -2116,7 +2286,9 @@ End Citadel Change */
 	glass_desc = "An oily grain alcohol brewed on Adhomai. Notably weaker than regular gin."
 
 //Base type for alchoholic drinks containing coffee
+// i hate you, whoever made this, go make reagent traits you utter AAAAA
 /datum/reagent/ethanol/coffee
+	id = "coffee_alcohol"
 	overdose = 45
 
 /datum/reagent/ethanol/coffee/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
@@ -2128,23 +2300,10 @@ End Citadel Change */
 	M.AdjustSleeping(-2)
 	if(M.bodytemperature > 310)
 		M.bodytemperature = max(310, M.bodytemperature - (5 * TEMPERATURE_DAMAGE_COEFFICIENT))
-	//if(alien == IS_TAJARA)
-		//M.adjustToxLoss(0.5 * removed)
-		//M.make_jittery(4) //extra sensitive to caffine
-
-/datum/reagent/ethanol/coffee/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	//if(alien == IS_TAJARA)
-		//M.adjustToxLoss(2 * removed)
-		//M.make_jittery(4)
-		//return
-	..()
 
 /datum/reagent/ethanol/coffee/overdose(var/mob/living/carbon/M, var/alien)
 	if(alien == IS_DIONA)
 		return
-	//if(alien == IS_TAJARA)
-		//M.adjustToxLoss(4 * REM)
-		//M.apply_effect(3, STUTTER) //VOREStation Edit end
 	M.make_jittery(5)
 
 /datum/reagent/ethanol/coffee/kahlua
@@ -2195,6 +2354,18 @@ End Citadel Change */
 	glass_name = "Rum"
 	glass_desc = "Makes you want to buy a ship and just go pillaging."
 
+/datum/reagent/ethanol/whiterum
+	name = "White Rum"
+	id = "whiterum"
+	description = "Now in all-new coconut!"
+	taste_description = "milky coconut"
+	taste_mult = 1.1
+	color = "#e0e0e0"
+	strength = 20
+
+	glass_name = "White Rum"
+	glass_desc = "Makes you want to buy a ship and just go pillaging."
+
 /datum/reagent/ethanol/sake
 	name = "Sake"
 	id = "sake"
@@ -2216,17 +2387,6 @@ End Citadel Change */
 
 	glass_name = "Sex on the Beach"
 	glass_desc = "A concoction of vodka and a secret combination of orange juice and pomegranate."
-
-/datum/reagent/ethanol/tequila
-	name = "Tequila"
-	id = "tequilla"
-	description = "A strong and mildly flavored, Mexican produced spirit. Feeling thirsty hombre?"
-	taste_description = "paint thinner"
-	color = "#FFFF91"
-	strength = 25
-
-	glass_name = "Tequilla"
-	glass_desc = "Now all that's missing is the weird colored shades!"
 
 /datum/reagent/ethanol/thirteenloko
 	name = "Thirteen Loko"
@@ -2316,6 +2476,9 @@ End Citadel Change */
 	taste_description = "minty"
 	strength = 90
 
+	glass_name = "Peppermint Schnapps"
+	glass_desc = "A flavoured grain liqueur with a fresh, minty taste."
+
 /datum/reagent/ethanol/peachschnapps
 	name = "Peach Schnapps"
 	id = "schnapps_pea"
@@ -2323,12 +2486,18 @@ End Citadel Change */
 	taste_description = "peachy"
 	strength = 90
 
+	glass_name = "Peach Schnapps"
+	glass_desc = "A flavoured grain liqueur with a fresh, peachy taste."
+
 /datum/reagent/ethanol/lemonadeschnapps
 	name = "Lemonade Schnapps"
 	id = "schnapps_lem"
 	description = "A flavoured grain liqueur with a fresh, lemony taste."
 	taste_description = "lemony"
 	strength = 90
+
+	glass_name = "Lemonade Schnapps"
+	glass_desc = "A flavoured grain liqueur with a fresh, lemony taste."
 
 /datum/reagent/ethanol/wine/champagne
 	name = "Champagne"
@@ -2339,7 +2508,6 @@ End Citadel Change */
 
 	glass_name = "Champagne"
 	glass_desc = "An even classier looking drink."
-
 
 /datum/reagent/ethanol/cider
 	name = "Cider"
@@ -2557,7 +2725,7 @@ End Citadel Change */
 	strength = 15
 
 	glass_name = "Brave Bull"
-	glass_desc = "Tequilla and coffee liquor, brought together in a mouthwatering mixture. Drink up."
+	glass_desc = "Tequila and coffee liquor, brought together in a mouthwatering mixture. Drink up."
 
 /datum/reagent/ethanol/changelingsting
 	name = "Changeling Sting"
@@ -2591,29 +2759,6 @@ End Citadel Change */
 
 	glass_name = "Cuba Libre"
 	glass_desc = "A classic mix of rum and cola."
-
-/datum/reagent/ethanol/demonsblood
-	name = "Demons Blood"
-	id = "demonsblood"
-	description = "This thing makes the hair on the back of your neck stand up."
-	taste_description = "sweet tasting iron"
-	taste_mult = 1.5
-	color = "#820000"
-	strength = 15
-
-	glass_name = "Demons' Blood"
-	glass_desc = "Just looking at this thing makes the hair on the back of your neck stand up."
-
-/datum/reagent/ethanol/devilskiss
-	name = "Devils Kiss"
-	id = "devilskiss"
-	description = "Creepy time!"
-	taste_description = "bitter iron"
-	color = "#A68310"
-	strength = 15
-
-	glass_name = "Devil's Kiss"
-	glass_desc = "Creepy time!"
 
 /datum/reagent/ethanol/driestmartini
 	name = "Driest Martini"
@@ -2937,6 +3082,7 @@ End Citadel Change */
 	taste_description = "sweet and salty alcohol"
 	color = "#C73C00"
 	strength = 30
+	blood_content = 0.5
 
 	glass_name = "Red Mead"
 	glass_desc = "A true Viking's beverage, though its color is strange."
@@ -3022,15 +3168,26 @@ End Citadel Change */
 	glass_name = "Syndicate Bomb"
 	glass_desc = "Tastes like terrorism!"
 
-/datum/reagent/ethanol/tequilla_sunrise
+/datum/reagent/ethanol/tequila
+	name = "Tequila"
+	id = "tequila"
+	description = "A drink made for fighting."
+	taste_description = "paint thinner"
+	color = "#cccac5"
+	strength = 25
+
+	glass_name = "Tequila"
+	glass_desc = "Is that guy making fun of you? You should show him what's what."
+
+/datum/reagent/ethanol/tequila_sunrise
 	name = "Tequila Sunrise"
-	id = "tequillasunrise"
+	id = "tequilasunrise"
 	description = "Tequila and orange juice. Much like a Screwdriver, only Mexican~."
 	taste_description = "oranges"
 	color = "#FFE48C"
 	strength = 25
 
-	glass_name = "Tequilla Sunrise"
+	glass_name = "Tequila Sunrise"
 	glass_desc = "Oh great, now you feel nostalgic about sunrises back on Earth..."
 
 /datum/reagent/ethanol/threemileisland
@@ -3343,7 +3500,7 @@ End Citadel Change */
 	glass_name = "Soemmer Fire"
 	glass_desc = "A painfully hot mixed drink, for when you absolutely need to hurt right now."
 
-/datum/reagent/drink/soemmerfire/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/ethanol/soemmerfire/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -3404,7 +3561,7 @@ End Citadel Change */
 	glass_name = "Vox's Delight"
 	glass_desc = "Not recommended if you enjoy having organs."
 
-/datum/reagent/drink/voxdelight/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/ethanol/voxdelight/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -3469,7 +3626,7 @@ End Citadel Change */
 	glass_name = "Named Bullet"
 	glass_desc = "A thick slime jelly shot. You can feel your death approaching."
 
-/datum/reagent/drink/slimeshot/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/ethanol/slimeshot/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 	if(alien == IS_DIONA)
 		return
@@ -3705,6 +3862,9 @@ End Citadel Change */
 	taste_description = "mint infused whiskey"
 	strength = 80
 
+	glass_name = "Mint Julep"
+	glass_desc = "Really not just watery whiskey.. I think."
+
 /datum/reagent/ethanol/planterspunch
 	name = "Planters Punch"
 	id = "planterspunch"
@@ -3723,12 +3883,18 @@ End Citadel Change */
 	taste_description = "stronge coffee infused booze"
 	strength = 35
 
+	glass_name = "Olympus Mons"
+	glass_desc = "For those that need the extra kick."
+
 /datum/reagent/ethanol/sazerac
 	name = "Sazerac"
 	id = "sazerac"
 	description = "When a regular whiskey cocktail isn't enough."
 	taste_description = "a strong bite of flavor"
 	strength = 20
+
+	glass_name = "Sazerac"
+	glass_desc = "When a regular whiskey cocktail isn't enough."
 
 /datum/reagent/ethanol/junglejuice
 	name = "Jungle Juice"
@@ -3737,12 +3903,18 @@ End Citadel Change */
 	taste_description = "fruits and bad decisions"
 	strength = 55
 
+	glass_name = "Jungle Juice"
+	glass_desc = "An overload of sweetness and sugary goodness."
+
 /datum/reagent/ethanol/gimlet
 	name = "Gimlet"
 	id = "gimlet"
 	description = "For those who want to look fancy with their gin."
 	taste_description = "lime infused tree"
 	strength = 20
+
+	glass_name = "Gimlet"
+	glass_desc = "For those who want to look fancy with their gin."
 
 /datum/reagent/ethanol/firepunch
 	name = "Fire Punch"
@@ -3751,6 +3923,9 @@ End Citadel Change */
 	taste_description = "rum and sugar"
 	strength = 70
 	targ_temp = 300
+
+	glass_name = "Fire Punch"
+	glass_desc = "A spicy take on a summer classic."
 
 /datum/reagent/ethanol/alcsassafras
 	name = "CC's Hard Rootbeer"
@@ -3835,6 +4010,7 @@ End Citadel Change */
 	description = "The perfect drink for when you want to dance and fiddle all night. Does it work? You be The Judge."
 	taste_description = "lingering regret, gunpowder, and blood"
 	strength = 50
+	blood_content = 0.4
 
 	glass_name = "Blood Meridian"
 	glass_desc = "The perfect drink for when you want to dance and fiddle all night. Does it work? You be The Judge."
@@ -3923,6 +4099,186 @@ End Citadel Change */
 	glass_name = "Green Stuff"
 	glass_desc = "Tyrmalin grog aggressively blended with unfiltered absinthe."
 
+/datum/reagent/ethanol/goliathspit
+	name = "Goliath Spit"
+	id = "goliathspit"
+	description = "This warm, thick drink has a subtle, tangy sweetness to it. Although visually reminiscent of lava, it's actually very hydrating!"
+	taste_description = "faint, tangy sweetness"
+	color = "#CCCC99"
+	strength = 50
+	adj_temp = -5
+
+	glass_name = "Goliath Spit"
+	glass_desc = "This warm, thick drink has a subtle, tangy sweetness to it. Although visually reminiscent of lava, it's actually very hydrating!"
+
+/datum/reagent/ethanol/maryonacross
+	name = "Mary On a Cross"
+	id = "maryonacross"
+	description = "Not just another Bloody Mary. Mary on a cross."
+	taste_description = "copper, tomatoes, and heretical sweetness"
+	color = "#B40000"
+	strength = 30
+	blood_content = 0.2
+
+	glass_name = "Mary On a Cross"
+	glass_desc = "Not just another Bloody Mary. Mary on a cross."
+
+/datum/reagent/ethanol/royaljelly
+	name = "Royal Jelly"
+	id = "royaljelly"
+	description = "A drink usually enjoyed by only the highest castes of Apinae society. Incredibly sweet, it is said to have enormous health benefits."
+	taste_description = "honey and royalty"
+	color = "#f0d76b"
+	strength = 20
+
+	glass_name = "Royal Jelly"
+	glass_desc = "A drink usually enjoyed by only the highest castes of Apinae society. Incredibly sweet, it is said to have enormous health benefits."
+
+/datum/reagent/ethanol/coquito
+	name = "Coquito"
+	id = "coquito"
+	description = "A holiday beverage akin to eggnog, made with coconut milk."
+	taste_description = "creamy spiced coconut"
+	color = "#ffffff"
+	strength = 20
+
+	glass_name = "Coquito"
+	glass_desc = "It's a little coconut!"
+
+/datum/reagent/ethanol/pinacolada
+	name = "Pina Colada"
+	id = "pinacolada"
+	description = "Rum, pineapple, and coconut plended up with ice."
+	taste_description = "coconuts and pineapple soaked in rum"
+	color = "#fdf49e"
+	strength = 20
+
+	glass_name = "Piña Colada"
+	glass_desc = "For those not into yoga."
+
+//This functions the same as Doctor's Delight, except it gets you drunk too.
+/datum/reagent/ethanol/royaljelly/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	..()
+	if(alien == IS_DIONA)
+		return
+	M.adjustOxyLoss(-4 * removed)
+	M.heal_organ_damage(2 * removed, 2 * removed)
+	M.adjustToxLoss(-2 * removed)
+	if(M.dizziness)
+		M.dizziness = max(0, M.dizziness - 15)
+	if(M.confused)
+		M.Confuse(-5)
+
+//Blood-based Cocktails
+
+/datum/reagent/ethanol/demonsblood
+	name = "Demons Blood"
+	id = "demonsblood"
+	description = "This thing makes the hair on the back of your neck stand up."
+	taste_description = "sweet tasting iron"
+	taste_mult = 1.5
+	color = "#820000"
+	strength = 15
+	blood_content = 1
+
+	glass_name = "Demons' Blood"
+	glass_desc = "Just looking at this thing makes the hair on the back of your neck stand up."
+
+/datum/reagent/ethanol/devilskiss
+	name = "Devils Kiss"
+	id = "devilskiss"
+	description = "Creepy time!"
+	taste_description = "bitter iron"
+	color = "#A68310"
+	strength = 15
+	blood_content = 1
+
+	glass_name = "Devil's Kiss"
+	glass_desc = "Creepy time!"
+
+/datum/reagent/ethanol/narsour
+	name = "Nar'Sour"
+	id = "narsour"
+	description = "When the tang of blood and citrus hits, your tongue just might finally be able to pronounce some of the scrawls seen in the tunnels..."
+	taste_description = "bitter iron and citrus"
+	color = "#7D1717"
+	strength = 50
+	blood_content = 1
+
+	glass_name = "Nar'Sour"
+	glass_desc = "When the tang of blood and citrus hits, your tongue just might finally be able to pronounce some of the scrawls seen in the tunnels..."
+
+/datum/reagent/ethanol/narsian
+	name = "Nars'Ian"
+	id = "narsian"
+	description = "NanoTrasen's 2518 Pet of The Year has been swept up in the Geometer's brilliant crimson tide! Yap!"
+	taste_description = "bloody orange creamsicle with a bite (and a bark!)"
+	color = "#7D1717"
+	strength = 50
+	blood_content = 1
+
+	glass_name = "Nar'Sian"
+	glass_desc = "NanoTrasen's 2518 Pet of The Year has been swept up in the Geometer's brilliant crimson tide! Yap!"
+/datum/reagent/ethanol/nightsdelight
+	name = "Night's Delight"
+	id = "nightsdelight"
+	description = "A nighttime vigilante and a bloodsucking parasite could bond over a drink like this."
+	taste_description = "iron, a dash of whiskey, and a hint of molasses"
+	color = "#990033"
+	strength = 20
+	blood_content = 2
+
+	glass_name = "Night's Delight"
+	glass_desc = "A nighttime vigilante and a bloodsucking parasite could bond over a drink like this."
+
+/datum/reagent/ethanol/bludsfizz
+	name = "Blud's Fizz"
+	id = "bludsfizz"
+	description = "A delectable cocktail for a classy vampire."
+	taste_description = "metallic, citrusy fizz"
+	color = "#CC0000"
+	strength = 20
+	blood_content = 1
+
+	glass_name = "Blud's Fizz"
+	glass_desc = "A delectable cocktail for a classy vampire. Comes with a snazzy sugar rim."
+/datum/reagent/ethanol/wronghat
+	name = "Wrong Hat"
+	id = "wronghat"
+	description = "The chaplain might've put on the wrong hat this morning..."
+	taste_description = "some really sinful grapes"
+	color = "#660000"
+	strength = 20
+	blood_content = 1
+
+	glass_name = "Wrong Hat"
+	glass_desc = "The chaplain might've put on the wrong hat this morning..."
+
+/datum/reagent/ethanol/braindrain
+	name = "Brain Drain"
+	id = "braindrain"
+	description = "It's like someone took a straw to your brain and just went wild."
+	taste_description = "grey matter"
+	color = "#575e49"
+	strength = 20
+	blood_content = 1
+
+	glass_name = "Brain Drain"
+	glass_desc = "It's like someone took a straw to your brain and just went wild."
+
+//Holy Water Cocktails
+
+/datum/reagent/ethanol/holygrail
+	name = "Holy Grail"
+	id = "holygrail"
+	description = "The secret reason a bishop's hat is so tall."
+	taste_description = "some really pious grapes"
+	color = "#330033"
+	strength = 20
+
+	glass_name = "Holy Grail"
+	glass_desc = "The secret reason a bishop's hat is so tall."
+
 ///////////////////////////////////////////////
 //// End of list for drinks for bartenders ////
 ///////////////////////////////////////////////
@@ -3933,6 +4289,8 @@ End Citadel Change */
 	Generally coatings are intended for deep frying foods
 */
 /datum/reagent/nutriment/coating
+	name = "coating"
+	id = "coating"
 	nutriment_factor = 6 //Less dense than the food itself, but coatings still add extra calories
 	var/messaged = 0
 	var/icon_raw
@@ -4015,8 +4373,9 @@ End Citadel Change */
 
 /datum/reagent/nutriment/triglyceride/oil
 	//Having this base class incase we want to add more variants of oil
-	name = "Oil"
-	id = "oil"
+	name = "Cooking Oil"
+	id = "cooking_oil"	// gamer, cooking oil is not fucking oil.
+						// go ahead, go coat your corndog with raw, fuel oil if you wanna be a clown
 	description = "Oils are liquid fats."
 	reagent_state = REAGENT_LIQUID
 	color = "#c79705"
@@ -4057,7 +4416,7 @@ End Citadel Change */
 //Calculates a scaling factor for scalding damage, based on the temperature of the oil and creature's heat resistance
 /datum/reagent/nutriment/triglyceride/oil/proc/heatdamage(var/mob/living/carbon/M)
 	var/threshold = 360//Human heatdamage threshold
-	var/datum/species/S = M.get_species(1)
+	var/datum/species/S = M.species
 	if (S && istype(S))
 		threshold = S.heat_level_1
 
@@ -4080,7 +4439,7 @@ End Citadel Change */
 		M.take_organ_damage(0, removed * 1.5 * dfactor)
 		data["temperature"] -= (6 * removed) / (1 + volume*0.1)//Cools off as it burns you
 		if (lastburnmessage+100 < world.time	)
-			to_chat(M, span("danger", "Searing hot oil burns you, wash it off quick!"))
+			to_chat(M, SPAN_DANGER("Searing hot oil burns you, wash it off quick!"))
 			lastburnmessage = world.time
 
 /datum/reagent/nutriment/triglyceride/oil/corn
@@ -4092,6 +4451,14 @@ End Citadel Change */
 	name = "Tallow"
 	id = "tallow"
 	description = "An liquidized form of animal fat, useful for adding that extra heart stopping potential to any of your deep fried food products."
+
+//Brine, for treating certain meats and food product fermentation.
+
+/datum/reagent/brine
+	name = "Brine"
+	id = "brine"
+	color = "#a1d1e7"
+	description = "A mixture of water, enzymes, sugar, and salt used to trigger fermentation in certain food products."
 
 //Protein! Get your mind out of the gutter.
 /datum/reagent/nutriment/protein // Bad for Skrell!
@@ -4151,14 +4518,6 @@ End Citadel Change */
 	glass_desc = "An even classier looking drink, with floating bubbles."
 
 //Following was merged infrom _vr variant of this file
-/datum/reagent/nutriment
-	nutriment_factor = 10
-
-/datum/reagent/lipozine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.nutrition = max(M.nutrition - 20 * removed, 0)
-	M.overeatduration = 0
-	if(M.nutrition < 0)
-		M.nutrition = 0
 
 /datum/reagent/ethanol/deathbell
 	name = "Deathbell"
@@ -4199,7 +4558,7 @@ End Citadel Change */
 /datum/reagent/ethanol/monstertamer/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	..()
 
-	if(M.species.gets_food_nutrition) //it's still food!
+	if(!M.species.is_vampire) //it's still food!
 		switch(alien)
 			if(IS_DIONA) //Diona don't get any nutrition from nutriment or protein.
 			if(IS_SKRELL)
@@ -4225,7 +4584,7 @@ End Citadel Change */
 	..()
 	if(alien == IS_SKRELL)
 		M.adjustToxLoss(removed)  //Equivalent to half as much protein, since it's half protein.
-	if(M.species.gets_food_nutrition)
+	if(!M.species.is_vampire)
 		if(alien == IS_SLIME || alien == IS_CHIMERA) //slimes and chimera can get nutrition from injected nutriment and protein
 			M.nutrition += (alt_nutriment_factor * removed)
 
@@ -4254,17 +4613,6 @@ End Citadel Change */
 		M.make_dizzy(24) // Intentionally higher than normal to compensate for it's previous effects.
 	if(dose * strength >= strength * 2.5) // Slurring takes longer. Again, intentional.
 		M.slurring = max(M.slurring, 30)
-
-/datum/reagent/ethanol/sugarrush
-	name = "Sweet Rush"
-	id = "sugarrush"
-	description = "A favorite drink amongst poor bartenders living in Neo Detroit."
-	taste_description = "sweet bubblegum vodka."
-	strength = 30
-	color = "#d3785d"
-
-	glass_name = "Sweet Rush"
-	glass_desc = "This looks like it might rot your teeth out."
 
 /datum/reagent/ethanol/lotus
 	name = "Lotus"
@@ -4667,3 +5015,12 @@ End Citadel Change */
 	glass_name = "Crystal Dr. Gibb"
 	glass_desc = "Tastes just like Dr. Gibb, but it's translucent. How?!?"
 
+/datum/reagent/drink/crystalgibb
+	name = "Crystal Dr. Gibb"
+	id = "crystalgibb"
+	description = "Tastes just like Dr. Gibb, but it's translucent. How?!?"
+	taste_description = "clear cherry soda"
+	color = "#0000"
+
+	glass_name = "Crystal Dr. Gibb"
+	glass_desc = "Tastes just like Dr. Gibb, but it's translucent. How?!?"

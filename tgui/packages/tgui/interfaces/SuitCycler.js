@@ -161,7 +161,7 @@ const SuitCyclerUV = (props, context) => {
 
 const SuitCyclerLocked = (props, context) => {
   const { act, data } = useBackend(context);
-  
+
   const {
     model_text,
     userHasAccess,

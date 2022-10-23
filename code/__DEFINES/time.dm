@@ -1,6 +1,7 @@
-#define DS2TICKS(DS) ((DS)/world.tick_lag)	// Convert deciseconds to ticks
-#define TICKS2DS(T) ((T) TICKS) 				// Convert ticks to deciseconds
-
+/// Convert deciseconds to ticks
+#define DS2TICKS(DS) ((DS)/world.tick_lag)
+/// Convert ticks to deciseconds
+#define TICKS2DS(T) ((T) TICKS)
 #define SECOND *10
 #define SECONDS *10
 
@@ -35,3 +36,8 @@
 #define OCTOBER		10
 #define NOVEMBER	11
 #define DECEMBER	12
+
+/// use for rapid actions that make messages to throttle messages
+#define CHATSPAM_THROTTLE_DEFAULT		(!(world.time % 5))
+/// ditto
+#define CHATSPAM_THROTTLE(every)			(!(world.time % every))

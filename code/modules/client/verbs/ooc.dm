@@ -5,9 +5,38 @@
 
 	var/motd = config.motd
 	if(motd)
-		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
+		to_chat(src, "<blockquote class=\"motd\">[motd]</blockquote>", handle_whitespace=FALSE)
 	else
 		to_chat(src, "<span class='notice'>The Message of the Day has not been set.</span>")
+	to_chat(src, getAlertDesc())
+
+/client/proc/getAlertDesc()
+	var/color
+	var/desc
+	//borrow the same colors from the fire alarms
+	switch(get_security_level())
+		if("green")
+			color = "#00ff00"
+			desc = "" //no special description if nothing special is going on
+		if("yellow")
+			color = "#ffff00"
+			desc = CONFIG_GET(string/alert_desc_yellow_upto)
+		if("violet")
+			color = "#9933ff"
+			desc = CONFIG_GET(string/alert_desc_violet_upto)
+		if("orange")
+			color = "#ff9900"
+			desc = CONFIG_GET(string/alert_desc_orange_upto)
+		if("blue")
+			color = "#1024A9"
+			desc = CONFIG_GET(string/alert_desc_blue_upto)
+		if("red")
+			color = "#ff0000"
+			desc = CONFIG_GET(string/alert_desc_red_upto)
+		if("delta")
+			color = "#FF6633"
+			desc = CONFIG_GET(string/alert_desc_delta)
+	. = SPAN_NOTICE("<br>The alert level on \the [station_name()] is currently: <font color=[color]>Code [capitalize(get_security_level())]</font>. [desc]")
 
 /client/proc/ooc_wrapper()
 	var/message = input("","ooc (text)") as text|null
@@ -17,10 +46,6 @@
 /client/verb/ooc(msg as text)
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC"
-
-	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
-		return
 
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use OOC.")
@@ -102,7 +127,7 @@
 						display_name = "[holder.fakekey]/([src.key])"
 					else
 						display_name = holder.fakekey
-			if(holder && !holder.fakekey && (holder.rights & R_ADMIN) && config_legacy.allow_admin_ooccolor) // keeping this for the badmins
+			if(holder && !holder.fakekey && (holder.rights & R_ADMIN) && CONFIG_GET(flag/allow_admin_ooccolor)) // keeping this for the badmins
 				to_chat(target, "<span class='prefix [ooc_style]'><span class='ooc'><font color='[prefs.ooccolor]'>" + "OOC: " + "<EM>[display_name]: </EM><span class='linkify'>[msg]</span></span></span></font>")
 			else
 				to_chat(target, "<span class='ooc'><span class='[ooc_style]'><span class='message'>OOC: <EM>[display_name]: </EM><span class='linkify'>[msg]</span></span></span></span>")
@@ -116,10 +141,6 @@
 	set name = "LOOC"
 	set desc = "Local OOC, seen only by those in view."
 	set category = "OOC"
-
-	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(src, "<span class='danger'>Speech is currently admin-disabled.</span>")
-		return
 
 	if(!mob)
 		return
@@ -171,12 +192,11 @@
 		display_name = holder.fakekey
 	if(mob.stat != DEAD)
 		display_name = mob.name
-	//VOREStation Add - Resleeving shenanigan prevention
+	// Resleeving shenanigan prevention.
 	if(ishuman(mob))
 		var/mob/living/carbon/human/H = mob
 		if(H.original_player && H.original_player != H.ckey) //In a body not their own
 			display_name = "[H.mind.name] (as [H.name])"
-	//VOREStation Add End
 
 	// Everyone in normal viewing range of the LOOC
 	for(var/mob/viewer in m_viewers)

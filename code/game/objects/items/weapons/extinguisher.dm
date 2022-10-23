@@ -5,12 +5,12 @@
 	icon_state = "fire_extinguisher0"
 	item_state = "fire_extinguisher"
 	hitsound = 'sound/weapons/smash.ogg'
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_NORMAL
 	throw_speed = 2
 	throw_range = 10
 	force = 10
-	matter = list(DEFAULT_WALL_MATERIAL = 90)
+	matter = list(MAT_STEEL = 90)
 	attack_verb = list("slammed", "whacked", "bashed", "thunked", "battered", "bludgeoned", "thrashed")
 	drop_sound = 'sound/items/drop/gascan.ogg'
 	pickup_sound = 'sound/items/pickup/gascan.ogg'
@@ -28,7 +28,7 @@
 	icon_state = "miniFE0"
 	item_state = "miniFE"
 	hitsound = null	//it is much lighter, after all.
-	throwforce = 2
+	throw_force = 2
 	w_class = ITEMSIZE_SMALL
 	force = 3.0
 	max_water = 150

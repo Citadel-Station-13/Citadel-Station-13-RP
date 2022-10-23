@@ -141,7 +141,7 @@
 	if(prob(40))
 		starts_with += /obj/item/clothing/head/hardhat
 	if(prob(30))
-		starts_with += /obj/item/reagent_containers/spray/windowsealant //VOREStation Add
+		starts_with += /obj/item/reagent_containers/spray/windowsealant
 	return ..()
 
 /*

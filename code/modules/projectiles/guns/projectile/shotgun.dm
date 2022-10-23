@@ -5,6 +5,7 @@
 	item_state = "shotgun"
 	max_shells = 4
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	force = 10
 	slot_flags = SLOT_BACK
 	caliber = "12g"
@@ -16,6 +17,7 @@
 	one_handed_penalty = 15
 	var/recentpump = 0 // to prevent spammage
 	var/action_sound = 'sound/weapons/shotgunpump.ogg'
+	load_sound = 'sound/weapons/guns/interaction/shotgun_insert.ogg'
 	var/animated_pump = 0 //This is for cyling animations.
 	var/empty_sprite = 0 //This is just a dirty var so it doesn't fudge up.
 
@@ -46,8 +48,8 @@
 
 	update_icon()
 
-/obj/item/gun/projectile/shotgun/pump/update_icon()//This adds empty sprite capability for shotguns.
-	..()
+/obj/item/gun/projectile/shotgun/pump/update_icon_state()
+	. = ..()
 	if(!empty_sprite)//Just a dirty check
 		return
 	if((loaded.len) || (chambered))
@@ -72,11 +74,11 @@
 	name = "warden's shotgun"
 	desc = "A heavily modified Hephaestus Industries KS-40. This version bears multiple after-market mods, including a laser sight to help compensate for its shortened stock. 'Property of the Warden' has been etched into the side of the reciever. Uses 12g rounds."
 	icon_state = "shotgun_w"
-	slot_flags = SLOT_BELT|SLOT_HOLSTER
+	slot_flags = SLOT_BELT|SLOT_HOLSTER|SLOT_BACK
 	w_class = ITEMSIZE_NORMAL
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
 
-obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
+/obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 	set name = "Name Gun"
 	set category = "Object"
 	set desc = "Rename your gun. If you're the Warden."
@@ -114,6 +116,32 @@ obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 		update_icon()
 		return 1
 
+//Don't you wish you had bigger arms?
+/obj/item/gun/projectile/shotgun/pump/combat/grit
+	name = "Grit"
+	desc = "This exotic ten gauge shotgun sports a custom paint job and a cylinder choke. At close ranges, it packs quite the punch."
+	icon_state = "grit"
+	item_state = "grit"
+	caliber = "10g"
+	ammo_type = /obj/item/ammo_casing/a10g/pellet/grit
+	fire_sound = 'sound/weapons/gunshot/musket.ogg'
+	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
+	one_handed_penalty = 5
+	recoil = 10
+	accuracy = 40
+
+/*
+//This is being stubborn. Might need more input. / In fact, I'm gonna save this work for some larger kind of "Recoil Size Check" system later.
+/obj/item/gun/projectile/shotgun/pump/combat/grit/Fire(atom/target, mob/living/user)
+	. = ..()
+	if(user.mob_size < MOB_MEDIUM)
+		var/mob/living/L = target
+		var/throwdir = get_dir(user,L)
+		var/destination = turn(throwdir, 180)
+		user.forceMove(destination)
+		user.emote("flip")
+*/
+
 /obj/item/gun/projectile/shotgun/doublebarrel
 	name = "double-barreled shotgun"
 	desc = "A truely classic weapon. No need to change what works. Uses 12g rounds."
@@ -125,6 +153,7 @@ obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 	handle_casings = CYCLE_CASINGS
 	max_shells = 2
 	w_class = ITEMSIZE_LARGE
+	heavy = TRUE
 	force = 10
 	slot_flags = SLOT_BACK
 	caliber = "12g"
@@ -199,7 +228,7 @@ obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 	ammo_type = /obj/item/ammo_casing/a12g/silver
 	holy = TRUE
 
-obj/item/gun/projectile/shotgun/doublebarrel/quad
+/obj/item/gun/projectile/shotgun/doublebarrel/quad
 	name = "quad-barreled shotgun"
 	desc = "A shotgun pattern designed to make the most out of the limited machining capability of the frontier. 4 Whole barrels of death, loads using 12 gauge rounds."
 	icon_state = "shotgun_q"
@@ -228,11 +257,13 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	desc = "Rip and tear, until it is done."
 	icon_state = "supershotgun"
 	item_state = "supershotgun"
+	caliber = "10g"
 	recoil = 0
 	accuracy = 80
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	ammo_type = /obj/item/ammo_casing/a12g/pellet
+	ammo_type = /obj/item/ammo_casing/a10g/silver
 	w_class = ITEMSIZE_NORMAL
+	safety_state = GUN_SAFETY_OFF
 	force = 15
 
 //Flaregun Code that may work?
@@ -287,3 +318,54 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	sharp = 1
 	edge = 1
 	holy = TRUE
+
+/obj/item/gun/projectile/shotgun/underslung
+	name = "underslung shotgun"
+	desc = "A compact shotgun designed to be mounted underneath a proper weapon, this secondary unit usually has a limited capacity."
+	icon_state = null
+	item_state = null
+	load_method = SINGLE_CASING
+	handle_casings = CYCLE_CASINGS
+	max_shells = 1
+	w_class = ITEMSIZE_TINY
+	caliber = "12g"
+	ammo_type = /obj/item/ammo_casing/a12g
+	one_handed_penalty = 0
+	safety_state = GUN_SAFETY_OFF
+
+//Foam Shotguns
+/obj/item/gun/projectile/shotgun/pump/foam
+	name = "toy shotgun"
+	desc = "A relatively faithful recreation of a pump action shotgun, this one only accepts foam darts."
+	icon = 'icons/obj/toy.dmi'
+	icon_state = "toy_shotgun"
+	max_shells = 8
+	force = 5
+	caliber = "foamdart"
+	ammo_type = /obj/item/ammo_casing/foam
+	projectile_type = /obj/item/projectile/bullet/reusable/foam
+	one_handed_penalty = 5
+	fire_sound = 'sound/items/syringeproj.ogg'
+
+/obj/item/gun/projectile/shotgun/pump/foam/handle_suicide(mob/living/user)
+	user.show_message("<span class = 'warning'>You feel rather silly, trying to commit suicide with a toy.</span>")
+	mouthshoot = 0
+	return
+
+/obj/item/gun/projectile/shotgun/pump/foam/pump(mob/M as mob)
+	playsound(M, action_sound, 60, 1)
+
+	if(chambered)//We have a shell in the chamber
+		chambered = null
+
+	if(loaded.len)
+		var/obj/item/ammo_casing/AC = loaded[1] //load next casing.
+		loaded -= AC //Remove casing from loaded list.
+		chambered = AC
+
+	if(animated_pump)//This affects all bolt action and shotguns.
+		flick("[icon_state]-cycling", src)//This plays any pumping
+
+	update_icon()
+/obj/item/gun/projectile/shotgun/pump/foam/blue
+	icon_state = "toy_shotgun_blue"

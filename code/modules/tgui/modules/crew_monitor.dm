@@ -12,11 +12,11 @@
 		return TRUE
 
 	if(action && !issilicon(usr))
-		playsound(ui_host(), "terminal_type", 50, 1)
+		playsound(ui_host(), SFX_ALIAS_TERMINAL, 50, 1)
 
 	var/turf/T = get_turf(usr)
 	if(!T || !(T.z in GLOB.using_map.player_levels))
-		to_chat(usr, "<span class='warning'><b>Unable to establish a connection</b>: You're too far away from the station!</span>")
+		to_chat(usr, SPAN_WARNING("<b>Unable to establish a connection</b>: You're too far away from the station!"))
 		return FALSE
 
 	switch(action)
@@ -36,7 +36,7 @@
 	var/list/map_levels = GLOB.using_map.get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE)
 
 	if(!map_levels.len)
-		to_chat(user, "<span class='warning'>The crew monitor doesn't seem like it'll work here.</span>")
+		to_chat(user, SPAN_WARNING("The crew monitor doesn't seem like it'll work here."))
 		if(ui)
 			ui.close()
 		return null
@@ -75,7 +75,7 @@
 // Subtype for glasses_state
 /datum/tgui_module/crew_monitor/glasses
 /datum/tgui_module/crew_monitor/glasses/ui_state(mob/user)
-	return GLOB.tgui_glasses_state
+	return GLOB.glasses_state
 
 // Subtype for self_state
 /datum/tgui_module/crew_monitor/robot
@@ -85,4 +85,4 @@
 // Subtype for nif_state
 /datum/tgui_module/crew_monitor/nif
 /datum/tgui_module/crew_monitor/nif/ui_state(mob/user)
-	return GLOB.tgui_nif_state
+	return GLOB.nif_state

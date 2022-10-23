@@ -62,20 +62,20 @@ This actually tests if they have the same entries and values.
 
 //for sorting clients or mobs by ckey
 /proc/sortKey(list/L, order=1)
-	return sortTim(L, order >= 0 ? /proc/cmp_ckey_asc : /proc/cmp_ckey_dsc)
+	return tim_sort(L, order >= 0 ? /proc/cmp_ckey_asc : /proc/cmp_ckey_dsc)
 
 //Specifically for record datums in a list.
 /proc/sortRecord(list/L, field = "name", order = 1)
 	GLOB.cmp_field = field
-	return sortTim(L, order >= 0 ? /proc/cmp_records_asc : /proc/cmp_records_dsc)
+	return tim_sort(L, order >= 0 ? /proc/cmp_records_asc : /proc/cmp_records_dsc)
 
 //any value in a list
 /proc/sortList(list/L, cmp=/proc/cmp_text_asc)
-	return sortTim(L.Copy(), cmp)
+	return tim_sort(L.Copy(), cmp)
 
 //uses sortList() but uses the var's name specifically. This should probably be using mergeAtom() instead
 /proc/sortNames(list/L, order=1)
-	return sortTim(L, order >= 0 ? /proc/cmp_name_asc : /proc/cmp_name_dsc)
+	return tim_sort(L, order >= 0 ? /proc/cmp_name_asc : /proc/cmp_name_dsc)
 
 
 
@@ -86,13 +86,15 @@ This actually tests if they have the same entries and values.
 			i++
 	return i
 
-//Move a single element from position fromIndex within a list, to position toIndex
-//All elements in the range [1,toIndex) before the move will be before the pivot afterwards
-//All elements in the range [toIndex, L.len+1) before the move will be after the pivot afterwards
-//In other words, it's as if the range [fromIndex,toIndex) have been rotated using a <<< operation common to other languages.
-//fromIndex and toIndex must be in the range [1,L.len+1]
-//This will preserve associations ~Carnie
-/proc/moveElement(list/L, fromIndex, toIndex)
+/**
+ * Move a single element from position fromIndex within a list, to position toIndex
+ * All elements in the range [1,toIndex) before the move will be before the pivot afterwards
+ * All elements in the range [toIndex, L.len+1) before the move will be after the pivot afterwards
+ * In other words, it's as if the range [fromIndex,toIndex) have been rotated using a <<< operation common to other languages.
+ * fromIndex and toIndex must be in the range [1,L.len+1]
+ * This will preserve associations ~Carnie
+ */
+/proc/move_element(list/L, fromIndex, toIndex)
 	if(fromIndex == toIndex || fromIndex+1 == toIndex)	//no need to move
 		return
 	if(fromIndex > toIndex)
@@ -102,11 +104,12 @@ This actually tests if they have the same entries and values.
 	L.Swap(fromIndex, toIndex)
 	L.Cut(fromIndex, fromIndex+1)
 
-
-//Move elements [fromIndex,fromIndex+len) to [toIndex-len, toIndex)
-//Same as moveElement but for ranges of elements
-//This will preserve associations ~Carnie
-/proc/moveRange(list/L, fromIndex, toIndex, len=1)
+/**
+ * Move elements [fromIndex,fromIndex+len) to [toIndex-len, toIndex)
+ * Same as move_element but for ranges of elements
+ * This will preserve associations ~Carnie
+ */
+/proc/move_range(list/L, fromIndex, toIndex, len=1)
 	var/distance = abs(toIndex - fromIndex)
 	if(len >= distance)	//there are more elements to be moved than the distance to be moved. Therefore the same result can be achieved (with fewer operations) by moving elements between where we are and where we are going. The result being, our range we are moving is shifted left or right by dist elements
 		if(fromIndex <= toIndex)
@@ -184,7 +187,7 @@ This actually tests if they have the same entries and values.
 	return L
 
 
-//VR FILE MERGE
+//! ## VR FILE MERGE ## !//
 /proc/dd_sortedObjectList(var/list/L, var/cache=list())
 	if(L.len < 2)
 		return L
@@ -355,10 +358,6 @@ proc/dd_sortedObjectList(list/incoming)
 	return sorted_text
 
 
-/proc/dd_sortedTextList(list/incoming)
-	var/case_sensitive = 1
-	return dd_sortedtextlist(incoming, case_sensitive)
-
 
 /datum/proc/dd_SortValue()
 	return "[src]"
@@ -412,17 +411,3 @@ proc/dd_sortedObjectList(list/incoming)
 	if(Li <= L.len)
 		return (result + L.Copy(Li, 0))
 	return (result + R.Copy(Ri, 0))
-
-//generates a list used to randomize transit animations so they aren't in lockstep
-/proc/get_cross_shift_list(var/size)
-	var/list/result = list()
-
-	result += rand(0, 14)
-	for(var/i in 2 to size)
-		var/shifts = list(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14)
-		shifts -= result[i - 1] //consecutive shifts should not be equal
-		if(i == size)
-			shifts -= result[1] //because shift list is a ring buffer
-		result += pick(shifts)
-
-	return result

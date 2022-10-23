@@ -15,16 +15,73 @@
 		return FALSE // should stop you from dragging through windows
 	return TRUE
 
-/atom/MouseDrop(atom/over)
-	if(!usr || !over) return
-	if(!Adjacent(usr) || !over.Adjacent(usr)) return // should stop you from dragging through windows
+/atom/MouseDrop(atom/over_object, src_location, over_location, src_control, over_control, params)
+	SHOULD_NOT_OVERRIDE(TRUE)
+	// cache incase thsi somehow gets lost
+	var/user = usr
+	if(!user || !over_object)
+		return
 
-	spawn(0)
-		over.MouseDrop_T(src,usr)
-	return
+	// first check legacy behaviors - this one always runs
+	// if it doesn't call parent skip everything else
+	if(OnMouseDropLegacy(over_object, src_location, over_location, src_control, over_control, params) != -1)
+		return
 
-// recieve a mousedrop
-/atom/proc/MouseDrop_T(atom/dropping, mob/user)
+	// shit proximity check, refactor later
+	var/proximity = Adjacent(usr) && over_object.Adjacent(usr)
+	if(proximity)
+		// this one only runs if the above pass. legacy behavior.
+		over_object.MouseDroppedOnLegacy(src, user, params)
+
+	if(SEND_SIGNAL(src, COMSIG_MOUSEDROP_ONTO, over_object, user, proximity, params) & COMPONENT_NO_MOUSEDROP)
+		return
+	if(OnMouseDrop(over_object, user, proximity, params) & CLICKCHAIN_DO_NOT_PROPAGATE)
+		return
+	if(SEND_SIGNAL(over_object, COMSIG_MOUSEDROPPED_ONTO, src, user, proximity, params) & COMPONENT_NO_MOUSEDROP)
+		return
+	over_object.MouseDroppedOn(src, user, params)
+
+// todo: less shit naming convenions for these
+
+/**
+ * user dropped us onto an atom mouse-drag-drop
+ *
+ * @params
+ * - over - the atom that is being dropped onto us
+ * - user - the person dropping it
+ * - proximity - can we reach the thing?
+ * - params - click params
+ */
+/atom/proc/OnMouseDrop(atom/over, mob/user, proximity, params)
+	return NONE
+
+/**
+ * we were dropped onto over object
+ * do not continue overriding this proc, use OnMouseDrop
+ * base proc returns -1 to signal we should continue onto new procs
+ * this is awful but whatever
+ */
+/atom/proc/OnMouseDropLegacy(atom/over_object, src_location, over_location, src_control, over_control, params)
+	return -1
+
+/**
+ * user dropped an atom on us with mouse-drag-drop
+ *
+ * @params
+ * - dropping - the atom that is being dropped onto us
+ * - user - the person dropping it
+ * - proximity - can we reach the thing?
+ * - params - click params
+ */
+/atom/proc/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
+	return NONE
+
+/**
+ * user dropped an atom on us with mouse-drag-drop
+ * legacy because this doesn't have checks for proximity param
+ * do not continue overriding this
+ */
+/atom/proc/MouseDroppedOnLegacy(atom/dropping, mob/user, params)
 	return
 
 /client
@@ -68,14 +125,14 @@
 /mob/living/carbon/CanMobAutoclick(atom/object, location, params)
 	if(!object.IsAutoclickable())
 		return
-	var/obj/item/h = get_active_hand()
+	var/obj/item/h = get_active_held_item()
 	if(h)
 		. = h.CanItemAutoclick(object, location, params)
 
 /mob/proc/canMobMousedown(atom/object, location, params)
 
 /mob/living/carbon/canMobMousedown(atom/object, location, params)
-	var/obj/item/H = get_active_hand()
+	var/obj/item/H = get_active_held_item()
 	if(H)
 		. = H.canItemMouseDown(object, location, params)
 
@@ -103,10 +160,10 @@
 /atom/proc/IsAutoclickable()
 	. = 1
 
-/obj/screen/IsAutoclickable()
+/atom/movable/screen/IsAutoclickable()
 	. = 0
 
-/obj/screen/click_catcher/IsAutoclickable()
+/atom/movable/screen/click_catcher/IsAutoclickable()
 	. = 1
 
 //Please don't roast me too hard

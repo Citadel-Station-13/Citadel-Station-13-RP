@@ -70,7 +70,7 @@
 	},
 /area/submap/CaveS)
 "p" = (
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -88,7 +88,7 @@
 	},
 /area/submap/CaveS)
 "s" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
 	},
@@ -100,7 +100,7 @@
 	},
 /area/submap/CaveS)
 "u" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /mob/living/simple_mob/animal/giant_spider/lurker,
 /turf/simulated/floor/outdoors/dirt{
 	outdoors = 0
@@ -149,8 +149,7 @@
 "E" = (
 /obj/machinery/power/port_gen/pacman,
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /turf/simulated/floor,
 /area/submap/CaveS)
@@ -171,10 +170,7 @@
 /area/submap/CaveS)
 "H" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor,
 /area/submap/CaveS)
@@ -200,25 +196,19 @@
 /area/submap/CaveS)
 "K" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor,
 /area/submap/CaveS)
 "L" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/submap/CaveS)
 "M" = (
 /obj/machinery/computer/communications,
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,

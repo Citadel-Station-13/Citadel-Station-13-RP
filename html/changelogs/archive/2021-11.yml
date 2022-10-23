@@ -1,0 +1,28 @@
+2021-11-07:
+  TheLordME:
+  - rscadd: Added Spritechanger as admin spawn
+  - imageadd: Added TGMC Xenomorphsprites
+2021-11-09:
+  zeroisthebiggay:
+  - rscadd: h*ir
+2021-11-10:
+  Captain277:
+  - rscadd: Adds V3b Wood and Sifwood variants.
+  KillianKirilenko:
+  - rscadd: Added atmospheric retention field generators, which can be built after
+      science has done some research.
+  TheLordME:
+  - rscadd: Adds the stripper gun, same effect as the cell, just as a normal gun
+  - refactor: Sizegun and stripper gun file moved to the other gun files
+  yourdoom9898:
+  - bugfix: Roaches no longer come back from the dead by becoming swole
+2021-11-19:
+  Jaybirdnerd:
+  - rscadd: Added five more drinks to the Robust Softdrink vendor.
+  - bugfix: Alphabetized Robust Softdrinks vendor.
+  - soundadd: A total of one sound for a specific drink included in this.
+  - imageadd: Five icons for the new drinks added.
+2021-11-26:
+  Quiteanything:
+  - bugfix: Moths no longer look like they're missing their antennae with facing in
+      a certain direction.

@@ -1,5 +1,5 @@
-#define UPDATE_BUFFER 25 // 2.5 seconds
-
+/// 2.5 seconds
+#define UPDATE_BUFFER 25
 // CHUNK
 //
 // A 16x16 grid of the map with a list of turfs that can be seen, are visible and are dimmed.
@@ -103,7 +103,7 @@
 			LAZYINITLIST(t.obfuscations)
 			if(!t.obfuscations[obfuscation.type])
 				var/image/ob_image = image(obfuscation.icon, t, obfuscation.icon_state, OBFUSCATION_LAYER)
-				ob_image.plane = PLANE_FULLSCREEN
+				ob_image.plane = FULLSCREEN_PLANE
 				t.obfuscations[obfuscation.type] = ob_image
 
 			obscured += t.obfuscations[obfuscation.type]
@@ -145,7 +145,7 @@
 		LAZYINITLIST(t.obfuscations)
 		if(!t.obfuscations[obfuscation.type])
 			var/image/ob_image = image(obfuscation.icon, t, obfuscation.icon_state, OBFUSCATION_LAYER)
-			ob_image.plane = PLANE_FULLSCREEN
+			ob_image.plane = FULLSCREEN_PLANE
 			t.obfuscations[obfuscation.type] = ob_image
 		obscured += t.obfuscations[obfuscation.type]
 

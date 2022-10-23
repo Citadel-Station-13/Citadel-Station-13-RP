@@ -240,13 +240,12 @@ var/list/infomorph_emotions = list(
 					affecting.implants -= card
 					H.visible_message("<span class='danger'>\The [src] explodes out of \the [H]'s [affecting.name] in shower of gore!</span>")
 					break
-		holder.drop_from_inventory(card)
 	/*
 	if(src.client)
 		src.client.perspective = EYE_PERSPECTIVE
 		src.client.eye = src
 	*/
-	src.forceMove(get_turf(card))
+	forceMove(get_turf(card))
 	card.forceMove(src)
 	card.screen_loc = null
 
@@ -289,17 +288,12 @@ var/list/infomorph_emotions = list(
 	// If we are being held, handle removing our holder from their inv.
 	var/obj/item/holder/H = loc
 	if(istype(H))
-		var/mob/living/M = H.loc
-		if(istype(M))
-			M.drop_from_inventory(H)
-		H.loc = get_turf(src)
-		src.loc = get_turf(H)
+		H.forceMove(get_turf(src))
+		forceMove(H.loc)
 
 	// Move us into the card and move the card to the ground.
-	src.loc = card
-	card.loc = get_turf(card)
-	src.forceMove(card)
-	card.forceMove(card.loc)
+	card.forceMove(get_turf(src))
+	forceMove(card)
 	canmove = 1
 	resting = 0
 	icon_state = "[chassis]"
@@ -556,7 +550,6 @@ var/global/list/default_infomorph_software = list()
 			. += "\n<span class='warning'>It doesn't seem to be responding.</span>"
 		if(DEAD)
 			. += "\n<span class='deadsay'>It looks completely unsalvageable.</span>"
-	. += "\n*---------*"
 
 	if(print_flavor_text())
 		. += "\n[print_flavor_text()]\n"
@@ -564,19 +557,20 @@ var/global/list/default_infomorph_software = list()
 	if (pose)
 		. += "\nIt is [pose]"
 
-
-
-/mob/living/silicon/infomorph/Life()
-	//We're dead or EMP'd or something.
-	if (src.stat == 2)
-		return
-
+/mob/living/silicon/infomorph/Life(seconds, times_fired)
 	//Person was sleeved or otherwise moved away from us, become inert card.
 	if(!ckey || !key)
-		death(0)
+		death()
+		return TRUE
+
+	if((. = ..()))
 		return
 
-	//Clean up the cable if it leaves.
+	//Wipe all the huds, then readd them (of course...)
+	handle_regular_hud_updates()
+	handle_statuses()
+
+	// clean up cable if it leaves
 	if(src.cable)
 		if(get_dist(src, src.cable) > 1)
 			var/turf/T = get_turf(src)
@@ -584,16 +578,11 @@ var/global/list/default_infomorph_software = list()
 			qdel(src.cable)
 			cable = null
 
-	//Wipe all the huds, then readd them (of course...)
-	handle_regular_hud_updates()
-
 	//In response to EMPs, we can be silenced
 	if(silence_time)
 		if(world.timeofday >= silence_time)
 			silence_time = null
 			to_chat(src, "<font color=green>Communication circuit reinitialized. Speech and messaging functionality restored.</font>")
-
-	handle_statuses()
 
 	//Only every so often
 	if(air_master.current_cycle%30 == 1)
@@ -605,6 +594,6 @@ var/global/list/default_infomorph_software = list()
 /mob/living/silicon/infomorph/updatehealth()
 	if(status_flags & GODMODE)
 		health = 100
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 	else
 		health = 100 - getBruteLoss() - getFireLoss()

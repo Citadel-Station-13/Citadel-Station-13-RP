@@ -10,8 +10,7 @@
 	idle_power_usage = 5
 	active_power_usage = 100
 	flags = NOREACT
-	var/max_n_of_items = 999 // Sorry but the BYOND infinite loop detector doesn't look things over 1000. //VOREStation Edit - Non-global
-	//var/global/max_n_of_items = 999 // Sorry but the BYOND infinite loop detector doesn't look things over 1000.
+	var/max_n_of_items = 999 // Sorry but the BYOND infinite loop detector doesn't look things over 1000.
 	var/icon_on = "smartfridge"
 	var/icon_off = "smartfridge-off"
 	var/icon_panel = "smartfridge-panel"
@@ -157,7 +156,7 @@
 
 /obj/machinery/smartfridge/drying_rack/process(delta_time)
 	..()
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(contents.len)
 		dry()
@@ -165,7 +164,7 @@
 
 /obj/machinery/smartfridge/drying_rack/update_icon()
 	overlays.Cut()
-	var/not_working = stat & (BROKEN|NOPOWER)
+	var/not_working = machine_stat & (BROKEN|NOPOWER)
 	if(not_working)
 		icon_state = icon_off
 	else
@@ -188,7 +187,8 @@
 			to_chat("<span class='notice'>The rack can only fit one sheet at a time!</span>")
 			return 1
 		else
-			user.remove_from_mob(WL)
+			if(!user.attempt_insert_item_for_installation(WL, src))
+				return
 			stock(WL)
 			user.visible_message("<span class='notice'>[user] has added \the [WL] to \the [src].</span>", "<span class='notice'>You add \the [WL] to \the [src].</span>")
 
@@ -215,7 +215,7 @@
 		return
 
 /obj/machinery/smartfridge/process(delta_time)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	if(src.seconds_electrified > 0)
 		src.seconds_electrified--
@@ -223,13 +223,13 @@
 		src.throw_item()
 
 /obj/machinery/smartfridge/power_change()
-	var/old_stat = stat
+	var/old_stat = machine_stat
 	..()
-	if(old_stat != stat)
+	if(old_stat != machine_stat)
 		update_icon()
 
 /obj/machinery/smartfridge/update_icon()
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		icon_state = icon_off
 	else
 		icon_state = icon_on
@@ -242,7 +242,7 @@
 	if(O.is_screwdriver())
 		panel_open = !panel_open
 		user.visible_message("[user] [panel_open ? "opens" : "closes"] the maintenance panel of \the [src].", "You [panel_open ? "open" : "close"] the maintenance panel of \the [src].")
-		playsound(src, O.usesound, 50, 1)
+		playsound(src, O.tool_sound, 50, 1)
 		overlays.Cut()
 		if(panel_open)
 			overlays += image(icon, icon_panel)
@@ -257,12 +257,13 @@
 			attack_hand(user)
 		return
 
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		to_chat(user, "<span class='notice'>\The [src] is unpowered and useless.</span>")
 		return
 
 	if(accept_check(O))
-		user.remove_from_mob(O)
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 		stock(O)
 		user.visible_message("<span class='notice'>[user] has added \the [O] to \the [src].</span>", "<span class='notice'>You add \the [O] to \the [src].</span>")
 
@@ -282,12 +283,13 @@
 
 	else if(istype(O, /obj/item/gripper)) // Grippers. ~Mechoid.
 		var/obj/item/gripper/B = O	//B, for Borg.
-		if(!B.wrapped)
+		if(!B.get_item())
 			to_chat(user, "\The [B] is not holding anything.")
 			return
 		else
-			var/B_held = B.wrapped
+			var/B_held = B.get_item()
 			to_chat(user, "You use \the [B] to put \the [B_held] into \the [src].")
+			attackby(B_held, user)
 		return
 
 	else
@@ -322,7 +324,7 @@
 	attack_hand(user)
 
 /obj/machinery/smartfridge/attack_hand(mob/user as mob)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	wires.Interact(user)
 	nano_ui_interact(user)
@@ -401,7 +403,7 @@
 	if(!throw_item)
 		return 0
 	spawn(0)
-		throw_item.throw_at(target,16,3,src)
+		throw_item.throw_at_old(target,16,3,src)
 	src.visible_message("<span class='warning'>[src] launches [throw_item.name] at [target.name]!</span>")
 	return 1
 
@@ -410,7 +412,7 @@
 *************************/
 
 /obj/machinery/smartfridge/secure/Topic(href, href_list)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return 0
 	if(usr.contents.Find(src) || (in_range(src, usr) && istype(loc, /turf)))
 		if(!allowed(usr) && !emagged && locked != -1 && href_list["vend"])

@@ -1,75 +1,75 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "e" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/unexplored)
+/area/class_h/unexplored)
 "g" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/explored)
+/area/class_h/explored)
 "j" = (
 /turf/simulated/mineral/classh,
-/area/poi_h/explored)
+/area/class_h/explored)
 "l" = (
 /obj/effect/overmap/visitable/sector/class_h,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/explored)
+/area/class_h/explored)
 "o" = (
 /turf/simulated/floor/water/shoreline/corner/classh,
-/area/poi_h/explored)
+/area/class_h/explored)
 "s" = (
 /turf/simulated/floor/water/shoreline/corner/classh{
 	dir = 1
 	},
-/area/poi_h/explored)
+/area/class_h/explored)
 "t" = (
 /turf/simulated/floor/water/shoreline/classh{
 	dir = 9
 	},
-/area/poi_h/explored)
+/area/class_h/explored)
 "u" = (
 /turf/simulated/floor/water/shoreline/corner/classh{
 	dir = 8
 	},
-/area/poi_h/explored)
+/area/class_h/explored)
 "w" = (
 /turf/simulated/floor/water/shoreline/corner/classh{
 	dir = 4
 	},
-/area/poi_h/explored)
+/area/class_h/explored)
 "x" = (
 /turf/simulated/floor/water/shoreline/classh,
-/area/poi_h/explored)
+/area/class_h/explored)
 "z" = (
 /obj/effect/shuttle_landmark/automatic,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/poi_h/explored)
+/area/class_h/explored)
 "H" = (
 /turf/simulated/floor/water/shoreline/classh{
 	dir = 5
 	},
-/area/poi_h/explored)
+/area/class_h/explored)
 "J" = (
 /turf/simulated/floor/water/shoreline/classh{
 	dir = 4
 	},
-/area/poi_h/explored)
+/area/class_h/explored)
 "M" = (
 /turf/simulated/floor/water/shoreline/classh{
 	dir = 6
 	},
-/area/poi_h/explored)
+/area/class_h/explored)
 "N" = (
 /turf/simulated/floor/water/shoreline/classh{
 	dir = 1
 	},
-/area/poi_h/explored)
+/area/class_h/explored)
 "O" = (
 /turf/simulated/floor/water/shoreline/classh{
 	dir = 8
 	},
-/area/poi_h/explored)
+/area/class_h/explored)
 "P" = (
 /turf/simulated/floor/water/classh,
-/area/poi_h/explored)
+/area/class_h/explored)
 
 (1,1,1) = {"
 g

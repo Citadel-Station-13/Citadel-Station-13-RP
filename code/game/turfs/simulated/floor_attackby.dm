@@ -33,7 +33,7 @@
 
 				if(R.use(1)) // Cost of roofing tiles is 1:1 with cost to place lattice and plating
 					T.ReplaceWithLattice()
-					T.ChangeTurf(/turf/simulated/floor, preserve_outdoors = TRUE)
+					T.ChangeTurf(/turf/simulated/floor, flags = CHANGETURF_INHERIT_AIR | CHANGETURF_PRESERVE_OUTDOORS)
 					playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 					user.visible_message("<span class='notice'>[user] patches a hole in the ceiling.</span>", "<span class='notice'>You patch a hole in the ceiling.</span>")
 					expended_tile = TRUE
@@ -42,7 +42,7 @@
 				return
 
 		// Create a ceiling to shield from the weather
-		if(src.outdoors)
+		if(outdoors)
 			for(var/dir in GLOB.cardinal)
 				var/turf/A = get_step(src, dir)
 				if(A && !A.outdoors)
@@ -107,7 +107,7 @@
 				if(broken || burnt)
 					if(welder.remove_fuel(0,user))
 						to_chat(user, "<span class='notice'>You fix some dents on the broken plating.</span>")
-						playsound(src, welder.usesound, 80, 1)
+						playsound(src, welder.tool_sound, 80, 1)
 						icon_state = "plating"
 						burnt = null
 						broken = null
@@ -127,19 +127,19 @@
 			make_plating(1)
 		else
 			return 0
-		playsound(src, W.usesound, 80, 1)
+		playsound(src, W.tool_sound, 80, 1)
 		return 1
 	else if(W.is_screwdriver() && (flooring.flags & TURF_REMOVE_SCREWDRIVER))
 		if(broken || burnt)
 			return 0
 		to_chat(user, "<span class='notice'>You unscrew and remove the [flooring.descriptor].</span>")
 		make_plating(1)
-		playsound(src, W.usesound, 80, 1)
+		playsound(src, W.tool_sound, 80, 1)
 		return 1
 	else if(W.is_wrench() && (flooring.flags & TURF_REMOVE_WRENCH))
 		to_chat(user, "<span class='notice'>You unwrench and remove the [flooring.descriptor].</span>")
 		make_plating(1)
-		playsound(src, W.usesound, 80, 1)
+		playsound(src, W.tool_sound, 80, 1)
 		return 1
 	else if(istype(W, /obj/item/shovel) && (flooring.flags & TURF_REMOVE_SHOVEL))
 		to_chat(user, "<span class='notice'>You shovel off the [flooring.descriptor].</span>")
@@ -151,7 +151,7 @@
 /turf/simulated/floor/proc/try_replace_tile(obj/item/stack/tile/T as obj, mob/user as mob)
 	if(T.type == flooring.build_type)
 		return
-	var/obj/item/W = user.is_holding_item_of_type(/obj/item)
+	var/obj/item/W = user.get_inactive_held_item()
 	if(!try_deconstruct_tile(W, user))
 		return
 	if(flooring)

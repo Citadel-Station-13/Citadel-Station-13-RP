@@ -122,7 +122,7 @@
 // Some more complicated stuff
 /////////////
 /obj/item/mmi/digital/posibrain/digest_act(var/atom/movable/item_storage = null)
-	//Replace this with a VORE setting so all types of posibrains can/can't be digested on a whim
+	//Replace this with a pref setting so all types of posibrains can/can't be digested on a whim
 	return FALSE
 
 // Gradual damage measurement

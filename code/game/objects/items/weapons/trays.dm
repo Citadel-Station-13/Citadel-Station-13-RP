@@ -6,12 +6,12 @@
 	icon = 'icons/obj/food.dmi'
 	icon_state = "tray"
 	desc = "A metal tray to lay food on."
-	throwforce = 12.0
-	throwforce = 10.0
+	throw_force = 12.0
+	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
-	matter = list(DEFAULT_WALL_MATERIAL = 3000)
+	matter = list(MAT_STEEL = 3000)
 	var/list/carrying = list() // List of things on the tray. - Doohl
 	var/max_carry = 10
 
@@ -30,7 +30,7 @@
 						sleep(rand(2,4))
 
 
-	if((CLUMSY in user.mutations) && prob(50))              //What if he's a clown?
+	if((MUTATION_CLUMSY in user.mutations) && prob(50))              //What if he's a clown?
 		to_chat(M, "<span class='warning'>You accidentally slam yourself with the [src]!</span>")
 		M.Weaken(1)
 		user.take_organ_damage(2)
@@ -71,8 +71,8 @@
 
 
 	var/protected = 0
-	for(var/slot in list(slot_head, slot_wear_mask, slot_glasses))
-		var/obj/item/protection = M.get_equipped_item(slot)
+	for(var/slot in list(SLOT_ID_HEAD, SLOT_ID_MASK, SLOT_ID_GLASSES))
+		var/obj/item/protection = M.item_by_slot(slot)
 		if(istype(protection) && (protection.body_parts_covered & FACE))
 			protected = 1
 			break
@@ -166,7 +166,7 @@
 
 	return val
 
-/obj/item/tray/pickup(mob/user)
+/obj/item/tray/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
 
 	if(!isturf(loc))
@@ -195,7 +195,7 @@
 					Img.color = O.color
 			overlays += Img
 
-/obj/item/tray/dropped(mob/user)
+/obj/item/tray/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	var/noTable = null
 

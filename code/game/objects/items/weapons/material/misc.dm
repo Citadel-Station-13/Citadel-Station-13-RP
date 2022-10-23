@@ -53,7 +53,7 @@
 /obj/item/material/knife/machete/hatchet/unathiknife/attack(mob/M as mob, mob/user as mob)
 	if(hits > 0)
 		return
-	var/obj/item/I = user.get_inactive_hand()
+	var/obj/item/I = user.get_inactive_held_item()
 	if(istype(I, /obj/item/material/knife/machete/hatchet/unathiknife))
 		hits ++
 		var/obj/item/W = I
@@ -81,6 +81,12 @@
 
 /obj/item/material/minihoe/durasteel
 	default_material = "durasteel"
+
+/obj/item/material/minihoe/bone
+	name = "primitive mini hoe"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "cultivator_bone"
+	default_material = "bone"
 
 /obj/item/material/snow/snowball
 	name = "loose packed snowball"
@@ -111,7 +117,7 @@
 /obj/item/material/snow/snowball/reinforced
 	name = "snowball"
 	desc = "A well-formed and fun snowball. It looks kind of dangerous."
-	//icon_state = "reinf-snowball"
+	//icon_state = "considered_reinforced-snowball"
 	force_divisor = 0.20
 	thrown_force_divisor = 0.25
 
@@ -121,8 +127,8 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "sawcleaver"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/64x64_lefthand.dmi',
-			slot_r_hand_str = 'icons/mob/items/64x64_righthand.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/64x64_lefthand.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/64x64_righthand.dmi',
 			)
 	item_state = "cleaving_saw"
 	active = 0

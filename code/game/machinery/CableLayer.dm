@@ -2,11 +2,11 @@
 	name = "automatic cable layer"
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "pipe_d"
-	density = 1
+	density = TRUE
 	var/obj/structure/cable/last_piece
 	var/obj/item/stack/cable_coil/cable
 	var/max_cable = 100
-	var/on = 0
+	var/on = FALSE
 
 /obj/machinery/cablelayer/Initialize(mapload, newdir)
 	. = ..()
@@ -17,22 +17,22 @@
 	. = ..()
 	layCable(new_turf,M_Dir)
 
-/obj/machinery/cablelayer/attack_hand(mob/user as mob)
+/obj/machinery/cablelayer/attack_hand(mob/user)
 	if(!cable&&!on)
-		to_chat(user, "<span class='warning'>\The [src] doesn't have any cable loaded.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have any cable loaded."))
 		return
 	on=!on
 	user.visible_message("\The [user] [!on?"dea":"a"]ctivates \the [src].", "You switch [src] [on? "on" : "off"]")
 	return
 
-/obj/machinery/cablelayer/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/cablelayer/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/stack/cable_coil))
 
 		var/result = load_cable(O)
 		if(!result)
-			to_chat(user, "<span class='warning'>\The [src]'s cable reel is full.</span>")
+			to_chat(user, SPAN_WARNING("\The [src]'s cable reel is full."))
 		else
-			to_chat(user, "You load [result] lengths of cable into [src].")
+			to_chat(user, SPAN_NOTICE("You load [result] lengths of cable into [src]."))
 		return
 
 	if(O.is_wirecutter())
@@ -41,21 +41,21 @@
 			m = min(m, cable.amount)
 			m = min(m, 30)
 			if(m)
-				playsound(src.loc, O.usesound, 50, 1)
+				playsound(src.loc, O.tool_sound, 50, 1)
 				use_cable(m)
 				var/obj/item/stack/cable_coil/CC = new (get_turf(src))
 				CC.amount = m
 		else
-			to_chat(usr, "<span class='warning'>There's no more cable on the reel.</span>")
+			to_chat(usr, SPAN_WARNING("There's no more cable on the reel."))
 
 /obj/machinery/cablelayer/examine(mob/user)
 	. = ..()
-	. +="<span class = 'notice'>The [src]'s cable reel has [cable.amount] lengths left.</span>"
+	. += SPAN_NOTICE("\The [src]'s cable reel has [cable.amount] lengths left.")
 
 /obj/machinery/cablelayer/proc/load_cable(var/obj/item/stack/cable_coil/CC)
 	if(istype(CC) && CC.amount)
 		var/cur_amount = cable? cable.amount : 0
-		var/to_load = max(max_cable - cur_amount,0)
+		var/to_load = max(max_cable - cur_amount, 0)
 		if(to_load)
 			to_load = min(CC.amount, to_load)
 			if(!cable)
@@ -65,7 +65,7 @@
 			CC.use(to_load)
 			return to_load
 		else
-			return 0
+			return FALSE
 	return
 
 /obj/machinery/cablelayer/proc/use_cable(amount)
@@ -75,7 +75,7 @@
 	cable.use(amount)
 	if(QDELETED(cable))
 		cable = null
-	return 1
+	return TRUE
 
 /obj/machinery/cablelayer/proc/reset()
 	last_piece = null
@@ -95,7 +95,7 @@
 	if(!istype(new_turf) || !dismantleFloor(new_turf))
 		return reset()
 	var/fdirn = turn(M_Dir,180)
-	for(var/obj/structure/cable/LC in new_turf)		// check to make sure there's not a cable there already
+	for(var/obj/structure/cable/LC in new_turf) // Check to make sure there's not a cable there already.
 		if(LC.d1 == fdirn || LC.d2 == fdirn)
 			return reset()
 	if(!use_cable(1))
@@ -120,4 +120,4 @@
 
 	//NC.mergeConnectedNetworksOnTurf()
 	last_piece = NC
-	return 1
+	return TRUE

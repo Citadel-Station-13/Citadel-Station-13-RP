@@ -5,5 +5,5 @@
 	plane_holder.set_vis(VIS_FULLBRIGHT, !seedarkness)
 	plane_holder.set_vis(VIS_CLOAKED, TRUE)
 	plane_holder.set_vis(VIS_AI_EYE, TRUE)
-	plane_holder.set_vis(VIS_AUGMENTED, TRUE) //VOREStation Add - GHOST VISION IS AUGMENTED
+	plane_holder.set_vis(VIS_AUGMENTED, TRUE) // GHOST VISION IS AUGMENTED
 	plane = PLANE_GHOSTS

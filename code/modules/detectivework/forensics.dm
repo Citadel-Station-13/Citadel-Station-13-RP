@@ -5,12 +5,12 @@
 //This is the output of the stringpercent(print) proc, and means about 80% of
 //the print must be there for it to be complete.  (Prints are 32 digits)
 var/const/FINGERPRINT_COMPLETE = 6
-proc/is_complete_print(var/print)
+/proc/is_complete_print(var/print)
 	return stringpercent(print) <= FINGERPRINT_COMPLETE
 
-atom/var/list/suit_fibers
+/atom/var/list/suit_fibers
 
-atom/proc/add_fibers(mob/living/carbon/human/M)
+/atom/proc/add_fibers(mob/living/carbon/human/M)
 	if(M.gloves && istype(M.gloves,/obj/item/clothing/gloves))
 		var/obj/item/clothing/gloves/G = M.gloves
 		if(G.transfer_blood) //bloodied gloves transfer blood to touched objects
@@ -24,21 +24,24 @@ atom/proc/add_fibers(mob/living/carbon/human/M)
 	var/fibertext
 	var/item_multiplier = istype(src,/obj/item)?1.2:1
 	var/suit_coverage = 0
-	if(M.wear_suit)
-		fibertext = "Material from \a [M.wear_suit]."
-		if(prob(10*item_multiplier) && !(fibertext in suit_fibers))
-			suit_fibers += fibertext
-		suit_coverage = M.wear_suit.body_parts_covered
+	if(istype(M.wear_suit, /obj/item/clothing))
+		var/obj/item/clothing/C = M.wear_suit
+		fibertext = C.get_fibers()
+		if(fibertext && prob(10*item_multiplier))
+			suit_fibers |= fibertext
+		suit_coverage = C.body_parts_covered
 
-	if(M.w_uniform && (M.w_uniform.body_parts_covered & ~suit_coverage))
-		fibertext = "Fibers from \a [M.w_uniform]."
-		if(prob(15*item_multiplier) && !(fibertext in suit_fibers))
-			suit_fibers += fibertext
+	if(istype(M.w_uniform, /obj/item/clothing) && (M.w_uniform.body_parts_covered & ~suit_coverage))
+		var/obj/item/clothing/C = M.w_uniform
+		fibertext = C.get_fibers()
+		if(fibertext && prob(15*item_multiplier))
+			suit_fibers |= fibertext
 
-	if(M.gloves && (M.gloves.body_parts_covered & ~suit_coverage))
-		fibertext = "Material from a pair of [M.gloves.name]."
-		if(prob(20*item_multiplier) && !(fibertext in suit_fibers))
-			suit_fibers += "Material from a pair of [M.gloves.name]."
+	if(istype(M.gloves, /obj/item/clothing) && (M.gloves.body_parts_covered & ~suit_coverage))
+		var/obj/item/clothing/C = M.gloves
+		fibertext = C.get_fibers()
+		if(fibertext && prob(20*item_multiplier))
+			suit_fibers |= fibertext
 
 /datum/data/record/forensic
 	name = "forensic data"

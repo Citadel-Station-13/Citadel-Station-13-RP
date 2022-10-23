@@ -1,9 +1,7 @@
 import { toTitleCase } from 'common/string';
-import { Fragment } from 'inferno';
-import { useBackend, useLocalState } from "../backend";
-import { Box, Button, Collapsible, Dropdown, Flex, Input, NoticeBox, Section, LabeledList, AnimatedNumber, NumberInput } from '../components';
+import { useBackend } from "../backend";
+import { Button, Section, LabeledList, AnimatedNumber, NumberInput } from '../components';
 import { Window } from "../layouts";
-import { sortBy } from 'common/collections';
 
 export const MiningStackingConsole = (props, context) => {
   const { act, data } = useBackend(context);
@@ -29,13 +27,14 @@ export const MiningStackingConsole = (props, context) => {
             </LabeledList.Item>
             <LabeledList.Divider />
             {stacktypes.length && stacktypes.sort().map(stack => (
-              <LabeledList.Item key={stack.type} label={toTitleCase(stack.type)} buttons={
-                <Button
-                  icon="eject"
-                  onClick={() => act("release_stack", { stack: stack.type })}>
-                  Eject
-                </Button>
-              }>
+              <LabeledList.Item key={stack.type}
+                label={toTitleCase(stack.type)} buttons={
+                  <Button
+                    icon="eject"
+                    onClick={() => act("release_stack", { stack: stack.type })}>
+                    Eject
+                  </Button>
+                }>
                 <AnimatedNumber value={stack.amt} />
               </LabeledList.Item>
             )) || (

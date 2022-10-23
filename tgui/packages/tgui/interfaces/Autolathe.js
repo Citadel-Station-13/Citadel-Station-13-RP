@@ -1,14 +1,12 @@
-import { round } from 'common/math';
 import { flow } from 'common/fp';
 import { filter, sortBy } from 'common/collections';
-import { Fragment } from 'inferno';
-import { useBackend, useSharedState } from "../backend";
-import { Box, Button, Flex, Icon, Input, LabeledList, ProgressBar, Section, Dropdown } from "../components";
+import { useBackend, useLocalState } from "../backend";
+import { Box, Button, Flex, Input, Section, Dropdown } from "../components";
 import { Window } from "../layouts";
 import { Materials } from "./ExosuitFabricator";
 import { createSearch, toTitleCase } from 'common/string';
 
-const canBeMade = (recipe, materials) => {
+const canBeMade = (recipe, materials, mult = 1) => {
   if (recipe.requirements === null) {
     return true;
   }
@@ -20,7 +18,7 @@ const canBeMade = (recipe, materials) => {
     if (!material) {
       continue; // yes, if we cannot find the material, we just ignore it :V
     }
-    if (material.amount < recipe.requirements[mat_id]) {
+    if (material.amount < (recipe.requirements[mat_id] * mult)) {
       return false;
     }
   }
@@ -36,13 +34,13 @@ export const Autolathe = (props, context) => {
     materials,
     categories,
   } = data;
-  
-  const [category, setCategory] = useSharedState(context, "category", 0);
+
+  const [category, setCategory] = useLocalState(context, "category", 0);
 
   const [
     searchText,
     setSearchText,
-  ] = useSharedState(context, "search_text", "");
+  ] = useLocalState(context, "search_text", "");
 
   const testSearch = createSearch(searchText, recipe => recipe.name);
 
@@ -77,10 +75,26 @@ export const Autolathe = (props, context) => {
                   color={recipe.hidden && "red" || null}
                   icon="hammer"
                   iconSpin={busy === recipe.name}
-                  disabled={!canBeMade(recipe, materials)}
+                  disabled={!canBeMade(recipe, materials, 1)}
                   onClick={() => act("make", { make: recipe.ref })}>
                   {toTitleCase(recipe.name)}
                 </Button>
+                {!recipe.is_stack && (
+                  <Box as="span">
+                    <Button
+                      color={recipe.hidden && "red" || null}
+                      disabled={!canBeMade(recipe, materials, 5)}
+                      onClick={() => act("make", { make: recipe.ref, multiplier: 5 })}>
+                      x5
+                    </Button>
+                    <Button
+                      color={recipe.hidden && "red" || null}
+                      disabled={!canBeMade(recipe, materials, 10)}
+                      onClick={() => act("make", { make: recipe.ref, multiplier: 10 })}>
+                      x10
+                    </Button>
+                  </Box>
+                ) || null}
               </Flex.Item>
               <Flex.Item>
                 {recipe.requirements && (

@@ -67,30 +67,28 @@ note dizziness decrements automatically in the mob's Life() proc.
 //		pixel_y = amplitude * cos(0.008 * jitteriness * world.time)
 
 		var/amplitude = min(4, jitteriness / 100)
-		pixel_x = old_x + rand(-amplitude, amplitude)
-		pixel_y = old_y + rand(-amplitude/3, amplitude/3)
+		pixel_x = get_managed_pixel_x() + rand(-amplitude, amplitude)
+		pixel_y = get_managed_pixel_y()  + rand(-amplitude/3, amplitude/3)
 
 		sleep(1)
 	//endwhile - reset the pixel offsets to zero
 	is_jittery = 0
-	pixel_x = old_x
-	pixel_y = old_y
-
+	reset_pixel_offsets()
 
 //handles up-down floaty effect in space and zero-gravity
 /mob/var/is_floating = 0
 /mob/var/floatiness = 0
 
-/mob/proc/update_floating(var/dense_object=0)
+/mob/proc/update_floating(dense_object=0)
 
 	if(anchored||buckled)
 		make_floating(0)
 		return
-	if(ishuman(src)) //VOREStation Edit Start. Floating code.
+	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		if(H.flying)
 			make_floating(1)
-			return //VOREStation Edit End
+			return
 	var/turf/turf = get_turf(src)
 	if(!istype(turf,/turf/space))
 		var/area/A = turf.loc
@@ -130,17 +128,17 @@ note dizziness decrements automatically in the mob's Life() proc.
 	var/amplitude = 2 //maximum displacement from original position
 	var/period = 36 //time taken for the mob to go up >> down >> original position, in deciseconds. Should be multiple of 4
 
-	var/top = old_y + amplitude
-	var/bottom = old_y - amplitude
+	var/top = get_standard_pixel_y_offset() + amplitude
+	var/bottom = get_standard_pixel_y_offset() - amplitude
 	var/half_period = period / 2
 	var/quarter_period = period / 4
 
 	animate(src, pixel_y = top, time = quarter_period, easing = SINE_EASING | EASE_OUT, loop = -1)		//up
 	animate(pixel_y = bottom, time = half_period, easing = SINE_EASING, loop = -1)						//down
-	animate(pixel_y = old_y, time = quarter_period, easing = SINE_EASING | EASE_IN, loop = -1)			//back
+	animate(pixel_y = get_standard_pixel_y_offset(), time = quarter_period, easing = SINE_EASING | EASE_IN, loop = -1)			//back
 
 /mob/proc/stop_floating()
-	animate(src, pixel_y = old_y, time = 5, easing = SINE_EASING | EASE_IN) //halt animation
+	animate(src, pixel_y = get_standard_pixel_y_offset(), time = 5, easing = SINE_EASING | EASE_IN) //halt animation
 	//reset the pixel offsets to zero
 	is_floating = 0
 
@@ -164,20 +162,20 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(!direction) // On top of?
 		pixel_z_diff = -8
 
-	var/default_pixel_x = initial(pixel_x)
-	var/default_pixel_y = initial(pixel_y)
-	var/default_pixel_z = initial(pixel_z)
+	var/base_pixel_x = initial(pixel_x)
+	var/base_pixel_y = initial(pixel_y)
+	var/base_pixel_z = initial(pixel_z)
 	var/initial_alpha = alpha
 	var/mob/mob = src
 	if(istype(mob))
-		default_pixel_x = mob.default_pixel_x
-		default_pixel_y = mob.default_pixel_y
+		base_pixel_x = mob.base_pixel_x
+		base_pixel_y = mob.base_pixel_y
 
 	animate(src, alpha = 0, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, pixel_z = pixel_z + pixel_z_diff, time = time)
 	sleep(time+1) //So you can wait on this proc to finish if you want to time your next steps
-	pixel_x = default_pixel_x
-	pixel_y = default_pixel_y
-	pixel_z = default_pixel_z
+	pixel_x = base_pixel_x
+	pixel_y = base_pixel_y
+	pixel_z = base_pixel_z
 	alpha = initial_alpha
 
 // Similar to attack animations, but in reverse and is longer to act as a telegraph.
@@ -195,15 +193,15 @@ note dizziness decrements automatically in the mob's Life() proc.
 	else if(direction & WEST)
 		pixel_x_diff = 8
 
-	var/default_pixel_x = initial(pixel_x)
-	var/default_pixel_y = initial(pixel_y)
+	var/base_pixel_x = initial(pixel_x)
+	var/base_pixel_y = initial(pixel_y)
 	var/mob/mob = src
 	if(istype(mob))
-		default_pixel_x = mob.default_pixel_x
-		default_pixel_y = mob.default_pixel_y
+		base_pixel_x = mob.base_pixel_x
+		base_pixel_y = mob.base_pixel_y
 
 	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, time = windup_time - 2)
-	animate(pixel_x = default_pixel_x, pixel_y = default_pixel_y, time = 2)
+	animate(pixel_x = base_pixel_x, pixel_y = base_pixel_y, time = 2)
 
 
 /atom/movable/proc/do_attack_animation(atom/A)
@@ -220,15 +218,15 @@ note dizziness decrements automatically in the mob's Life() proc.
 	else if(direction & WEST)
 		pixel_x_diff = -8
 
-	var/default_pixel_x = initial(pixel_x)
-	var/default_pixel_y = initial(pixel_y)
+	var/base_pixel_x = initial(pixel_x)
+	var/base_pixel_y = initial(pixel_y)
 	var/mob/mob = src
 	if(istype(mob))
-		default_pixel_x = mob.default_pixel_x
-		default_pixel_y = mob.default_pixel_y
+		base_pixel_x = mob.base_pixel_x
+		base_pixel_y = mob.base_pixel_y
 
 	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, time = 2)
-	animate(pixel_x = default_pixel_x, pixel_y = default_pixel_y, time = 2)
+	animate(pixel_x = base_pixel_x, pixel_y = base_pixel_y, time = 2)
 
 /mob/living/do_attack_animation(atom/A, no_attack_icons = FALSE)
 	..()

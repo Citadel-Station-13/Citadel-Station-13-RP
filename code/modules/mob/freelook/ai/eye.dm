@@ -9,7 +9,7 @@
 
 /mob/observer/eye/aiEye/Initialize(mapload)
 	. = ..()
-	visualnet = cameranet
+	visualnet = GLOB.cameranet
 
 /mob/observer/eye/aiEye/setLoc(var/T, var/cancel_tracking = 1)
 	if(..())
@@ -27,11 +27,11 @@
 
 // The AI's "eye". Described on the top of the page.
 
-/mob/living/silicon/ai
-	var/obj/machinery/hologram/holopad/holo = null
+/mob/living/silicon/ai/var/obj/machinery/hologram/holopad/holo = null
 
 /mob/living/silicon/ai/proc/destroy_eyeobj(var/atom/new_eye)
-	if(!eyeobj) return
+	if(!eyeobj)
+		return
 	if(!new_eye)
 		new_eye = src
 	eyeobj.owner = null
@@ -44,12 +44,11 @@
 	if(eyeobj)
 		destroy_eyeobj()
 	if(!newloc)
-		newloc = src.loc
+		newloc = loc
 	eyeobj = new /mob/observer/eye/aiEye(newloc)
 	eyeobj.owner = src
 	eyeobj.name = "[src.name] (AI Eye)" // Give it a name
-	if(client)
-		client.eye = eyeobj
+	reset_perspective(eyeobj)
 	SetName(src.name)
 
 // Intiliaze the eye by assigning it's "ai" variable to us. Then set it's loc to us.
@@ -82,11 +81,10 @@
 	if(!src.eyeobj)
 		return
 
-	if(client && client.eye)
-		client.eye = src
 	for(var/datum/chunk/c in eyeobj.visibleChunks)
 		c.remove(eyeobj)
-	src.eyeobj.setLoc(src)
+
+	eyeobj.setLoc(src)
 
 /mob/living/silicon/ai/proc/toggle_acceleration()
 	set category = "AI Settings"

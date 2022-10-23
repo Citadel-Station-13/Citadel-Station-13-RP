@@ -34,7 +34,7 @@
 	var/kit_icon
 	var/additional_data //for modular modkits, item path; for mech modkits, allowed mechs; for voidsuit modkits, light overlays
 
-/datum/custom_item/proc/spawn_item(var/newloc)
+/datum/custom_item/proc/spawn_item(newloc)
 	var/obj/item/citem = new item_path(newloc)
 	apply_to_item(citem)
 	return citem
@@ -65,8 +65,8 @@
 
 		var/obj/item/clothing/under/U = item
 		if(istype(U))
-			U.worn_state = U.icon_state
-			U.update_rolldown_status()
+			U.snowflake_worn_state = U.icon_state
+			U.update_rolldown()
 
 	// Kits are dumb so this is going to have to be hardcoded/snowflake.
 	if(istype(item, /obj/item/kit))
@@ -84,11 +84,11 @@
 	//Then use icon_override to make every other slot use the custom sprites by default.
 	//This has to be done before we touch any of item's vars
 	if(!("[item_icon]_l" in available_states))
-		new_item_state_slots[slot_l_hand_str] = get_state(item, slot_l_hand_str, "_l")
-		new_item_icons[slot_l_hand_str] = get_icon(item, slot_l_hand_str, 'icons/mob/items/lefthand.dmi')
+		new_item_state_slots[SLOT_ID_LEFT_HAND] = get_state(item, SLOT_ID_LEFT_HAND, "_l")
+		new_item_icons[SLOT_ID_LEFT_HAND] = get_icon(item, SLOT_ID_LEFT_HAND, 'icons/mob/items/lefthand.dmi')
 	if(!("[item_icon]_r" in available_states))
-		new_item_state_slots[slot_r_hand_str] = get_state(item, slot_r_hand_str, "_r")
-		new_item_icons[slot_r_hand_str] = get_icon(item, slot_r_hand_str, 'icons/mob/items/righthand.dmi')
+		new_item_state_slots[SLOT_ID_RIGHT_HAND] = get_state(item, SLOT_ID_RIGHT_HAND, "_r")
+		new_item_icons[SLOT_ID_RIGHT_HAND] = get_icon(item, SLOT_ID_RIGHT_HAND, 'icons/mob/items/righthand.dmi')
 
 	item.item_state_slots = new_item_state_slots
 	item.item_icons = new_item_icons
@@ -224,15 +224,16 @@
 
 // Places the item on the target mob.
 /proc/place_custom_item(mob/living/carbon/human/M, var/datum/custom_item/citem)
+	if(!citem)
+		return
 
-	if(!citem) return
-	var/obj/item/newitem = citem.spawn_item()
+	var/obj/item/newitem = citem.spawn_item(M)
 
-	if(M.equip_to_appropriate_slot(newitem))
+	if(M.equip_to_appropriate_slot(newitem, INV_OP_SILENT))
 		return newitem
 
-	if(M.equip_to_storage(newitem))
+	if(M.equip_to_slot_if_possible(newitem, /datum/inventory_slot_meta/abstract/put_in_storage, INV_OP_SILENT))
 		return newitem
 
-	newitem.loc = get_turf(M.loc)
+	newitem.forceMove(M.drop_location())
 	return newitem

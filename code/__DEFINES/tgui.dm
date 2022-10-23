@@ -1,3 +1,4 @@
+// ui_status
 /// Green eye; fully interactive
 #define UI_INTERACTIVE 2
 /// Orange eye; updates but is not interactive
@@ -7,6 +8,14 @@
 /// UI Should close
 #define UI_CLOSE -1
 
+// refreshing var
+/// no refresh queued
+#define UI_NOT_REFRESHING 0
+/// soft refreshing - can show a status, won't block viewport
+#define UI_SOFT_REFRESHING 1
+/// hard refreshing - completely block the ui while it is queued
+#define UI_HARD_REFRESHING 2
+
 /// Maximum number of windows that can be suspended/reused
 #define TGUI_WINDOW_SOFT_LIMIT 5
 /// Maximum number of open windows
@@ -14,6 +23,8 @@
 
 /// Maximum ping timeout allowed to detect zombie windows
 #define TGUI_PING_TIMEOUT 4 SECONDS
+/// Used for rate-limiting to prevent DoS by excessively refreshing a TGUI window
+#define TGUI_REFRESH_FULL_UPDATE_COOLDOWN 2 SECONDS
 
 /// Window does not exist
 #define TGUI_WINDOW_CLOSED 0
@@ -28,17 +39,19 @@
 #define TGUI_WINDOW_INDEX(window_id) text2num(copytext(window_id, 13))
 
 /// Creates a message packet for sending via output()
+// This is {"type":type,"payload":payload}, but pre-encoded. This is much faster
+// than doing it the normal way.
+// To ensure this is correct, this is unit tested in tgui_create_message.
 #define TGUI_CREATE_MESSAGE(type, payload) ( \
-	url_encode(json_encode(list( \
-		"type" = type, \
-		"payload" = payload, \
-	))))
+	"%7b%22type%22%3a%22[type]%22%2c%22payload%22%3a[url_encode(json_encode(payload))]%7d" \
+)
+
 
 /// Max length for Modal Input
 #define UI_MODAL_INPUT_MAX_LENGTH 1024
 /// Max length for Modal Input for names
-#define UI_MODAL_INPUT_MAX_LENGTH_NAME 64 // Names for generally anything don't go past 32, let alone 64.
-
+/// Names for generally anything don't go past 32, let alone 64.
+#define UI_MODAL_INPUT_MAX_LENGTH_NAME 64
 #define UI_MODAL_OPEN 1
 #define UI_MODAL_DELEGATE 2
 #define UI_MODAL_ANSWER 3

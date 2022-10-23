@@ -1,10 +1,7 @@
-import { round } from 'common/math';
-import { Fragment } from 'inferno';
 import { useBackend, useSharedState } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, Divider, Tabs } from "../components";
+import { Button, Flex, LabeledList, ProgressBar, Section, Tabs, Stack } from "../components";
 import { Window } from "../layouts";
 import { sortBy, filter } from 'common/collections';
-import { logger } from '../logging';
 
 export const ICPrinter = (props, context) => {
   const { act, data } = useBackend(context);
@@ -16,12 +13,12 @@ export const ICPrinter = (props, context) => {
     debug,
     upgraded,
     can_clone,
-    assembly_to_clone,
+    program,
     categories,
   } = data;
 
   return (
-    <Window width={500} height={630}>
+    <Window width={800} height={630}>
       <Window.Content scrollable>
         <Section title="Status">
           <LabeledList>
@@ -39,12 +36,9 @@ export const ICPrinter = (props, context) => {
               {can_clone ? "Available" : "Unavailable"}
             </LabeledList.Item>
           </LabeledList>
-          <Box mt={1}>
-            Note: A red component name means that the printer must be upgraded to create that component.
-          </Box>
         </Section>
+        <ICCloningSection />
         <ICPrinterCategories />
-        
       </Window.Content>
     </Window>
   );
@@ -72,42 +66,86 @@ const ICPrinterCategories = (props, context) => {
 
   const [categoryTarget, setcategoryTarget] = useSharedState(context, "categoryTarget", null);
 
-  const selectedCategory = filter(cat => cat.name === categoryTarget)(categories)[0];
+  const selectedCategory
+  = filter(cat => cat.name === categoryTarget)(categories)[0];
 
   return (
     <Section title="Circuits">
-      <Tabs>
-        {sortBy(cat => cat.name)(categories).map(cat => (
-          <Tabs.Tab
-            selected={categoryTarget === cat.name}
-            onClick={() => setcategoryTarget(cat.name)}
-            key={cat.name}>
-            {cat.name}
-          </Tabs.Tab>
-        ))}
-      </Tabs>
-      {selectedCategory && (
-        <Section title={selectedCategory.name} level={2}>
-          <LabeledList>
-            {sortBy(item => item.name)(selectedCategory.items).map(item => (
-              <LabeledList.Item
-                key={item.name}
-                label={item.name}
-                labelColor={item.can_build ? "good" : "bad"}
-                buttons={
-                  <Button
-                    disabled={!canBuild(item, data)}
-                    icon="print"
-                    onClick={() => act("build", { build: item.path })}>
-                    Print
-                  </Button>
-                }>
-                {item.desc}
-              </LabeledList.Item>
+      <Stack fill>
+        <Stack.Item mr={2}>
+          <Tabs vertical>
+            {sortBy(cat => cat.name)(categories).map(cat => (
+              <Tabs.Tab
+                selected={categoryTarget === cat.name}
+                onClick={() => setcategoryTarget(cat.name)}
+                key={cat.name}>
+                {cat.name}
+              </Tabs.Tab>
             ))}
-          </LabeledList>
-        </Section>
-      ) || "No category selected."}
+          </Tabs>
+        </Stack.Item>
+        <Stack.Item>
+          {selectedCategory && (
+            <Section>
+              <LabeledList>
+                {(selectedCategory.items).map(item => (
+                  <LabeledList.Item
+                    key={item.name}
+                    label={item.name}
+                    labelColor={item.can_build ? "good" : "bad"}
+                    buttons={
+                      <Button
+                        disabled={!canBuild(item, data)}
+                        icon="print"
+                        onClick={() => act("build", { build: item.path, cost: item.cost })}>
+                        Print
+                      </Button>
+                    }>
+                    {item.desc}
+                  </LabeledList.Item>
+                ))}
+              </LabeledList>
+            </Section>
+          ) || "No category selected."}
+        </Stack.Item>
+      </Stack>
+    </Section>
+  );
+};
+const ICCloningSection = (props, context) => {
+  const { act, data } = useBackend(context);
+  const {
+    can_clone,
+    program,
+  } = data;
+
+  if (!can_clone) {
+    return false;
+  }
+  return (
+    <Section title="Cloning" >
+      <Flex>
+        <Flex.Item basis={"50%"}>
+          <Button
+            p={1}
+            fluid
+            icon="home"
+            iconSize={2}
+            tooltip="Load a program to print."
+            textAlign="center"
+            onClick={() => act("load_blueprint", { build: item.path })} />
+        </Flex.Item>
+        <Flex.Item basis={"50%"}>
+          <Button
+            p={1}
+            fluid
+            icon="print"
+            color={program ? "good" : "bad"}
+            iconSize={2}
+            textAlign="center"
+            onClick={() => act("clone", { build: item.path })} />
+        </Flex.Item>
+      </Flex>
     </Section>
   );
 };

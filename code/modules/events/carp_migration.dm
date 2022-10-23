@@ -51,7 +51,10 @@ GLOBAL_LIST_INIT(carp_count,list())// a list of Z levels (string), associated wi
 
 	var/n = rand(severity, severity*2)
 	var/I = 0
+	var/safety = 0
 	while(I < n)
+		if(++safety == 1000)
+			CRASH("could not get turfs for carp migration")
 		var/turf/T = get_random_edge_turf(dir,TRANSITIONEDGE + 2, Z)
 		if(istype(T,/turf/space))
 			var/mob/living/simple_mob/animal/space/M
@@ -63,7 +66,7 @@ GLOBAL_LIST_INIT(carp_count,list())// a list of Z levels (string), associated wi
 				I += 3
 			LAZYADD(GLOB.carp_count["[Z]"], M)
 			spawned_carp ++
-			M.throw_at(get_random_edge_turf(GLOB.reverse_dir[dir],TRANSITIONEDGE + 2, Z), 5, speed)//, callback = CALLBACK(src,/datum/event/carp_migration/proc/check_gib,M))
+			M.throw_at_old(get_random_edge_turf(GLOB.reverse_dir[dir],TRANSITIONEDGE + 2, Z), 5, speed)//, callback = CALLBACK(src,/datum/event/carp_migration/proc/check_gib,M))
 		if(no_show)
 			break
 

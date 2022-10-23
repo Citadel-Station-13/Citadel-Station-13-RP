@@ -5,71 +5,12 @@
 /turf/simulated/floor/diona/attackby()
 	return
 
-// Shuttle Floors
-/obj/landed_holder
-	name = "landed turf holder"
-	desc = "holds all the info about the turf this turf 'landed on'"
-	var/turf/turf_type
-	var/turf/simulated/shuttle/my_turf
-	var/image/turf_image
-	var/list/decals
-
-	New(var/location = null, var/turf/simulated/shuttle/turf)
-		..(null)
-		my_turf = turf
-
-/obj/landed_holder/proc/land_on(var/turf/T)
-	// Gather destination information
-	var/obj/landed_holder/new_holder = new(null)
-	new_holder.turf_type = T.type
-	new_holder.dir = T.dir
-	new_holder.icon = T.icon
-	new_holder.icon_state =  T.icon_state
-	new_holder.copy_overlays(T, TRUE)
-	new_holder.underlays = T.underlays.Copy()
-	new_holder.decals = T.decals ? T.decals.Copy() : null
-
-	// Set the destination to be like us
-	T.Destroy()
-	var/turf/simulated/shuttle/new_dest = T.ChangeTurf(my_turf.type,,1)
-	new_dest.setDir(my_turf.dir)
-	new_dest.icon_state = my_turf.icon_state
-	new_dest.icon = my_turf.icon
-	new_dest.copy_overlays(my_turf, TRUE)
-	new_dest.underlays = my_turf.underlays
-	new_dest.decals = my_turf.decals
-	// Shuttle specific stuff
-	new_dest.interior_corner = my_turf.interior_corner
-	new_dest.takes_underlays = my_turf.takes_underlays
-	new_dest.under_turf = my_turf.under_turf
-	new_dest.join_flags = my_turf.join_flags
-	new_dest.join_group = my_turf.join_group
-
-	// Associate the holder with the new turf.
-	new_holder.my_turf = new_dest
-	new_dest.landed_holder = new_holder
-
-	// Update underlays if necessary (interior corners won't have changed).
-	if(new_dest.takes_underlays && !new_dest.interior_corner)
-		new_dest.underlay_update()
-
-	return new_dest
-
-/obj/landed_holder/proc/leave_turf(var/turf/base_turf = null)
-	var/turf/new_source
-	// Change our source to whatever it was before
-	if(turf_type)
-		new_source = my_turf.ChangeTurf(turf_type,,1)
-		new_source.setDir(dir)
-		new_source.icon_state = icon_state
-		new_source.icon = icon
-		new_source.copy_overlays(src, TRUE)
-		new_source.underlays = underlays
-		new_source.decals = decals
-	else
-		new_source = my_turf.ChangeTurf(base_turf ? base_turf : get_base_turf_by_area(my_turf),,1)
-
-	return new_source
+/turf/simulated/shuttle_ceiling
+	name = "shuttle ceiling"
+	icon = 'icons/turf/shuttle_white.dmi'
+	icon_state = "light"
+	desc = "An extremely thick segment of hull used by spacefaring vessels. Doesn't look like you'll be able to break it."
+	baseturfs = /turf/simulated/shuttle_ceiling
 
 /turf/simulated/shuttle
 	name = "shuttle"
@@ -77,9 +18,8 @@
 	thermal_conductivity = 0.05
 	heat_capacity = 0
 
-	var/obj/landed_holder/landed_holder
 	var/interior_corner = 0
-	var/takes_underlays = 0
+	var/takes_underlays = TRUE
 	var/turf/under_turf	// Underlay override turf path.
 	var/join_flags = 0	// Bitstring to represent adjacency of joining walls
 	var/join_group = "shuttle"	// A tag for what other walls to join with. Null if you don't want them to.
@@ -91,12 +31,8 @@
 		antilight_cache = list()
 		for(var/diag in GLOB.cornerdirs)
 			var/image/I = image(LIGHTING_ICON, null, icon_state = "diagonals", layer = 10, dir = diag)
-			I.plane = PLANE_LIGHTING
+			I.plane = LIGHTING_PLANE
 			antilight_cache["[diag]"] = I
-
-/turf/simulated/shuttle/Destroy()
-	landed_holder = null
-	..()
 
 // For joined corners touching static lighting turfs, add an overlay to cancel out that part of our lighting overlay.
 /turf/simulated/shuttle/proc/update_breaklights()
@@ -121,23 +57,6 @@
 	if(under_turf)
 		under = under_turf
 
-	// Well if this isn't our first rodeo, we know EXACTLY what we landed on, and it looks like this.
-	if(landed_holder && !interior_corner)
-		// Space gets special treatment
-		if(ispath(landed_holder.turf_type, /turf/space))
-			var/image/spaceimage = image(landed_holder.icon, landed_holder.icon_state)
-			spaceimage.plane = SPACE_PLANE
-			underlays = list(spaceimage)
-		else
-			var/mutable_appearance/landed_on = new(landed_holder)
-			landed_on.layer = FLOAT_LAYER	// Not turf
-			landed_on.plane = FLOAT_PLANE	// Not turf
-			us.underlays = list(landed_on)
-			appearance = us
-
-		spawn update_breaklights()	// So that we update the breaklight overlays only after turfs are connected
-		return
-
 	if(!under)
 		var/turf/T1
 		var/turf/T2
@@ -151,10 +70,10 @@
 			under = T1
 		else if(isfloor(T2) && T2.type == T3.type)
 			under = T2
-		else if(isfloor(T3) || istype(T3,/turf/space/transit))
+		else if(isfloor(T3) || istype(T3, /turf/space))
 			under = T3
 		else
-			under = get_base_turf_by_area(src)
+			under = (baseturfs && (islist(baseturfs)? baseturfs[1] : baseturfs)) || /turf/space
 
 	if(istype(under,/turf/simulated/shuttle))
 		interior_corner = 1	// Prevents us from 'landing on grass' and having interior corners update.

@@ -5,14 +5,11 @@
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "sleevemate" //Give this a fancier sprite later.
 	item_state = "healthanalyzer"
+	item_flags = ITEM_NOBLUDGEON
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
-	matter = list(DEFAULT_WALL_MATERIAL = 200)
+	matter = list(MAT_STEEL = 200)
 	origin_tech = list(TECH_MAGNET = 2, TECH_BIO = 2, TECH_ILLEGAL = 1)
-
-/obj/item/bodysnatcher/Initialize(mapload)
-	. = ..()
-	flags |= NOBLUDGEON //So borgs don't spark.
 
 /obj/item/bodysnatcher/attack(mob/living/M, mob/living/user)
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
@@ -30,7 +27,7 @@
 			return
 
 		var/choice = alert(usr,"This will swap your mind with the target's mind. This will result in them controlling your body, and you controlling their body. Continue?","Confirmation","Continue","Cancel")
-		if(choice == "Continue" && usr.get_active_hand() == src && usr.Adjacent(M))
+		if(choice == "Continue" && usr.get_active_held_item() == src && usr.Adjacent(M))
 
 			usr.visible_message("<span class='warning'>[usr] pushes the device up their forehead and [M]'s head, the device beginning to let out a series of light beeps!</span>","<span class='notice'>You begin swap minds with [M]!</span>")
 			if(do_after(usr,35 SECONDS,M))

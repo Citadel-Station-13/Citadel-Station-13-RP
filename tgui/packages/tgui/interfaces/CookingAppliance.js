@@ -1,7 +1,5 @@
-import { round } from 'common/math';
-import { Fragment } from 'inferno';
 import { useBackend } from "../backend";
-import { Box, Button, Flex, Icon, LabeledList, ProgressBar, Section, AnimatedNumber } from "../components";
+import { Button, Flex, LabeledList, ProgressBar, Section, AnimatedNumber } from "../components";
 import { Window } from "../layouts";
 
 export const CookingAppliance = (props, context) => {
@@ -26,7 +24,8 @@ export const CookingAppliance = (props, context) => {
                 color={temperatureEnough ? "good" : "blue"}
                 value={temperature}
                 maxValue={optimalTemp}>
-                <AnimatedNumber value={temperature} />&deg;C / {optimalTemp}&deg;C
+                <AnimatedNumber
+                  value={temperature} />&deg;C / {optimalTemp}&deg;C
               </ProgressBar>
             </LabeledList.Item>
             <LabeledList.Item label="Efficiency">

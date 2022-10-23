@@ -9,7 +9,7 @@
 //ahuhuhuhu
 //-Antsnap
 
-obj/item/clothing/suit/web_bindings
+/obj/item/clothing/suit/web_bindings
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	name = "web bindings"
@@ -19,17 +19,10 @@ obj/item/clothing/suit/web_bindings
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
 
-//yw edit start - Teshari Sprite
-/obj/item/clothing/suit/straight_jacket/web_bindings/get_worn_icon_file(var/body_type,var/slot_name,var/default_icon,var/inhands)
-	if(body_type == SPECIES_TESHARI)
-		if(!inhands)
-			return 'icons/mob/species/teshari/suit.dmi'
-	else
-		return ..()
-//yw edit end
+// todo: convert to new icon system ; tesh will be broken until then, too bad!
 
 /* //Commenting all this out, as people keep abusing it. Sorry!
-mob/proc/weaveWeb()
+/mob/proc/weaveWeb()
 	set name = "Weave Web"
 	set category = "Species Powers"
 	if(nutrition >= 500) //People decided to abuse it. Sorry. It was asked to be made so it couldn't be spammed, and what do ya know, people are spamming it everywhere.
@@ -41,7 +34,7 @@ mob/proc/weaveWeb()
 		to_chat(src, "You do not have enough nutrition to create webbing!")
 */
 
-mob/proc/weaveWebBindings()
+/mob/proc/weaveWebBindings()
 	set name = "Weave Web Bindings"
 	set category = "Species Powers"
 	if(nutrition >= 30) //This isn't a huge problem. This is so you can bind people up.

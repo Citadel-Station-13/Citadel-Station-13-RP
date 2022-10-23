@@ -41,10 +41,10 @@
 		playsound(user, 'sound/weapons/wave.ogg', 60, 1)
 		return
 	var/turf/T = get_turf(A)
-	if(!T || T.check_density())
+	if(!T || T.check_density(ignore_border = TRUE))
 		to_chat(user,"<span class = 'warning'>That's a little too solid to harpoon into!</span>")
 		return
-	if(get_area(A).flags & BLUE_SHIELDED)
+	if(get_area(A).area_flags & AREA_BLUE_SHIELDED)
 		to_chat(user, "<span class='warning'>The target area protected by bluespace shielding!</span>")
 		return
 
@@ -63,18 +63,13 @@
 	var/turf/FromTurf = mode ? get_turf(user) : get_turf(A)
 	var/turf/ToTurf = mode ? get_turf(A) : get_turf(user)
 
-	for(var/obj/O in FromTurf)
-		if(O.anchored) continue
-		if(prob(failchance))
-			O.forceMove(pick(trange(failrange,user)))
-		else
-			O.forceMove(ToTurf)
-
-	for(var/mob/living/M in FromTurf)
-		if(prob(failchance))
-			M.forceMove(pick(trange(failrange,user)))
-		else
-			M.forceMove(ToTurf)
+	for(var/atom/movable/AM in FromTurf)
+		if(!isobj(AM) && !isliving(AM))
+			continue
+		if(AM.anchored)
+			continue
+		var/turf/real_target = prob(failchance)? pick(trange(failrange, user)) : ToTurf
+		AM.locationTransitForceMove(real_target, allow_pulled = FALSE, allow_grabbed = GRAB_AGGRESSIVE)
 
 /obj/item/bluespace_harpoon/attack_self(mob/living/user as mob)
 	return chande_fire_mode(user)

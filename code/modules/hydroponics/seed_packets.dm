@@ -7,6 +7,7 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 	name = "packet of seeds"
 	icon = 'icons/obj/seeds.dmi'
 	icon_state = "blank"
+	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_NO_RENDER
 	w_class = ITEMSIZE_SMALL
 
 	var/seed_type
@@ -19,13 +20,15 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 
 //Grabs the appropriate seed datum from the global list.
 /obj/item/seeds/proc/update_seed()
-	if(!seed && seed_type && !isnull(plant_controller.seeds) && plant_controller.seeds[seed_type])
-		seed = plant_controller.seeds[seed_type]
+	if(!seed && seed_type && !isnull(SSplants.seeds) && SSplants.seeds[seed_type])
+		seed = SSplants.seeds[seed_type]
 	update_appearance()
 
 //Updates strings and icon appropriately based on seed datum.
-/obj/item/seeds/proc/update_appearance()
-	if(!seed) return
+/obj/item/seeds/update_appearance()
+	. = ..()
+	if(!seed)
+		return
 
 	// Update icon.
 	overlays.Cut()
@@ -76,7 +79,7 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 	seed_type = null
 
 /obj/item/seeds/random/Initialize(mapload)
-	seed = plant_controller.create_random_seed()
+	seed = SSplants.create_random_seed()
 	seed_type = seed.name
 	. = ..()
 
@@ -157,6 +160,12 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 
 /obj/item/seeds/carrotseed
 	seed_type = "carrot"
+
+/obj/item/seeds/taroseed
+	seed_type = "taro"
+
+/obj/item/seeds/coconutseed
+	seed_type = "coconut"
 
 /obj/item/seeds/reishimycelium
 	seed_type = "reishi"
@@ -325,3 +334,16 @@ GLOBAL_LIST_BOILERPLATE(all_seed_packs, /obj/item/seeds)
 
 /obj/item/seeds/rose/blood
 	seed_type = "bloodrose"
+
+/obj/item/seeds/peaseed
+	seed_type = "peas"
+
+//Ashlander Plants
+/obj/item/seeds/ashlander
+	seed_type = "pyrrhlea"
+
+/obj/item/seeds/ashlander/bentars
+	seed_type = "bentars"
+
+/obj/item/seeds/ashlander/juhtak
+	seed_type = "juhtak"

@@ -10,7 +10,7 @@ import './styles/themes/light.scss';
 
 import { perf } from 'common/perf';
 import { combineReducers } from 'common/redux';
-import { setupHotReloading } from 'tgui-dev-server/link/client';
+import { setupHotReloading } from 'tgui-dev-server/link/client.cjs';
 import { setupGlobalEvents } from 'tgui/events';
 import { captureExternalLinks } from 'tgui/links';
 import { createRenderer } from 'tgui/renderer';
@@ -68,20 +68,11 @@ const setupApp = () => {
   setupPanelFocusHacks();
   captureExternalLinks();
 
-  // Subscribe for Redux state updates
+  // Re-render UI on store updates
   store.subscribe(renderApp);
 
-  // Subscribe for bankend updates
-  window.update = msg => store.dispatch(Byond.parseJson(msg));
-
-  // Process the early update queue
-  while (true) {
-    const msg = window.__updateQueue__.shift();
-    if (!msg) {
-      break;
-    }
-    window.update(msg);
-  }
+  // Dispatch incoming messages as store actions
+  Byond.subscribe((type, payload) => store.dispatch({ type, payload }));
 
   // Unhide the panel
   Byond.winset('output', {
@@ -93,8 +84,13 @@ const setupApp = () => {
     'pos': '0x0',
     'size': '0x0',
   });
-  // Absolutely shit workaround for chatbox visiblity.
-  based_winset();
+
+  // Resize the panel to match the non-browser output
+  Byond.winget('output').then(output => {
+    Byond.winset('browseroutput', {
+      'size': output.size,
+    });
+  });
 
   // Enable hot module reloading
   if (module.hot) {
@@ -112,14 +108,6 @@ const setupApp = () => {
       renderApp();
     });
   }
-};
-
-const based_winset = async (based_on_what = 'output') => {
-  // shitty workaround because winget is async.
-  const winget_output = await Byond.winget(based_on_what);
-  Byond.winset('browseroutput', {
-    'size': winget_output["size"],
-  });
 };
 
 setupApp();

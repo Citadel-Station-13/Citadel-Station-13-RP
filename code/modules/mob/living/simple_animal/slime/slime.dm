@@ -5,14 +5,10 @@
 	icon = 'icons/mob/slime2.dmi'
 	icon_state = "grey baby slime"
 	intelligence_level = SA_ANIMAL
-	pass_flags = PASSTABLE
-	var/shiny = FALSE // If true, will add a 'shiny' overlay.
-	var/glows = FALSE // If true, will glow in the same color as the color var.
-	var/icon_state_override = null // Used for special slime appearances like the rainbow slime.
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 
+	pass_flags = ATOM_PASS_TABLE
 	makes_dirt = FALSE	// Goop
-
 	speak_emote = list("chirps")
 
 	maxHealth = 150
@@ -41,62 +37,91 @@
 
 	speak = list(
 		"Blorp...",
-		"Blop..."
-
+		"Blop...",
 		)
 	emote_hear = list(
-
 		)
 	emote_see = list(
 		"bounces",
 		"jiggles",
-		"sways"
+		"sways",
 		)
 
-	hostile = 1
-	retaliate = 1
-	attack_same = 1
-	cooperative = 1
+	hostile = TRUE
+	retaliate = TRUE
+	attack_same = TRUE
+	cooperative = TRUE
 	faction = "slime" // Slimes will help other slimes, provided they share the same color.
 
 	color = "#CACACA"
-	var/is_adult = FALSE
-	var/cores = 1 // How many cores you get when placed in a Processor.
-	var/power_charge = 0 // 0-10 controls how much electricity they are generating.  High numbers encourage the slime to stun someone with electricity.
-	var/amount_grown = 0 // controls how long the slime has been overfed, if 10, grows or reproduces
-	var/number = 0 // This is used to make the slime semi-unique for indentification.
 
-	var/mob/living/victim = null // the person the slime is currently feeding on
-	var/rabid = FALSE	// If true, will attack anyone and everyone.
-	var/docile = FALSE	// Basically the opposite of above.  If true, will never harm anything and won't get hungry.
-	var/discipline = 0	// Beating slimes makes them less likely to lash out.  In theory.
-	var/resentment = 0	// 'Unjustified' beatings make this go up, and makes it more likely for abused slimes to go berserk.
-	var/obedience = 0	// Conversely, 'justified' beatings make this go up, and makes discipline decay slowly, potentially making it not decay at all.
-	var/unity = FALSE	// If true, slimes will consider other colors as their own.  Other slimes will see this slime as the same color as well.  A rainbow slime is required to get this.
-	var/optimal_combat = FALSE // Used to dumb down the combat AI somewhat.  If true, the slime tends to be really dangerous to fight alone due to stunlocking.
-	var/mood = ":3" // Icon to use to display 'mood'.
-	var/obj/item/clothing/head/hat = null // The hat the slime may be wearing.
+	can_enter_vent_with = list(
+	/obj/item/clothing/head,
+	)
+
+	/// If true, will add a 'shiny' overlay.
+	var/shiny = FALSE
+	/// If true, will glow in the same color as the color var.
+	var/glows = FALSE
+	/// Used for special slime appearances like the rainbow slime.
+	var/icon_state_override = null
+
+	/// If true, we're leg- we're an adult.
+	var/is_adult = FALSE
+	/// How many cores you get when placed in a Processor.
+	var/cores = 1
+	/// 0-10 controls how much electricity they are generating.  High numbers encourage the slime to stun someone with electricity.
+	var/power_charge = 0
+	/// controls how long the slime has been overfed, if 10, grows or reproduces.
+	var/amount_grown = 0
+	/// This is used to make the slime semi-unique for indentification.
+	var/number = 0
+
+	/// The person the slime is currently feeding on.
+	var/mob/living/victim = null
+
+	/// If true, will attack anyone and everyone.
+	var/rabid = FALSE
+	/// Basically the opposite of above.
+	///  If true, will never harm anything and won't get hungry.
+	var/docile = FALSE
+	/// Beating slimes makes them less likely to lash out...  In theory.
+	var/discipline = 0
+	/// 'Unjustified' beatings make this go up, and makes it more likely for abused slimes to go berserk.
+	var/resentment = 0
+	/// Conversely, 'justified' beatings make this go up, and makes discipline decay slowly, potentially making it not decay at all.
+	var/obedience = 0
+	/// If true, slimes will consider other colors as their own.
+	/// Other slimes will see this slime as the same color as well.
+	/// A rainbow slime is required to get this.
+	var/unity = FALSE
+	/// Used to dumb down the combat AI somewhat.  If true, the slime tends to be really dangerous to fight alone due to stunlocking.
+	var/optimal_combat = FALSE
+	/// Icon to use to display 'mood'.
+	var/mood = ":3"
+	/// The hat the slime may be wearing.
+	var/obj/item/clothing/head/hat = null
 
 	var/slime_color = "grey"
-	var/mutation_chance = 25 // Odds of spawning as a new color when reproducing.  Can be modified by certain xenobio products.  Carried across generations of slimes.
+	/// Odds of spawning as a new color when reproducing.  Can be modified by certain xenobio products.  Carried across generations of slimes.
+	var/mutation_chance = 25
 	var/coretype = /obj/item/slime_extract/grey
-	// List of potential slime color mutations. This must have exactly four types.
+	/// List of potential slime color mutations. This must have exactly four types.
 	var/list/slime_mutation = list(
 		/mob/living/simple_animal/slime/orange,
 		/mob/living/simple_animal/slime/metal,
 		/mob/living/simple_animal/slime/blue,
 		/mob/living/simple_animal/slime/purple
 	)
-	var/type_on_death = null // Set this if you want dying slimes to split into a specific type and not their type.
-	var/rainbow_core_candidate = TRUE // If false, rainbow cores cannot make this type randomly.
+	/// Set this if you want dying slimes to split into a specific type and not their type.
+	var/type_on_death = null
+	/// If false, rainbow cores cannot make this type randomly.
+	var/rainbow_core_candidate = TRUE
+	/// Some slimes inject reagents on attack.  This tells the game what reagent to use.
+	var/reagent_injected = null
+	/// This determines how much.
+	var/injection_amount = 5
 
-	var/reagent_injected = null // Some slimes inject reagents on attack.  This tells the game what reagent to use.
-	var/injection_amount = 5 // This determines how much.
-
-
-	can_enter_vent_with = list(
-	/obj/item/clothing/head,
-	)
 
 /mob/living/simple_animal/slime/Initialize(mapload, start_as_adult = FALSE)
 	. = ..()
@@ -214,7 +239,7 @@
 	attack_same = FALSE
 
 /mob/living/simple_animal/slime/examine(mob/user)
-	. = ..()
+	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!")
 	if(hat)
 		. += "It is wearing \a [hat]." //slime hat. slat? hlime?
 
@@ -230,6 +255,7 @@
 		. += "It has been subjugated by force, at least for now."
 	else if(docile)
 		. += "It appears to have been pacified."
+	. += "</span>"
 
 /mob/living/simple_animal/slime/water_act(amount) // This is called if a slime enters a water tile.
 	adjustBruteLoss(40 * amount)
@@ -254,7 +280,7 @@
 					say(pick("Evil...", "Kill...", "Tyrant..."))
 				resentment++ // Done after check so first time will never enrage.
 
-	discipline = between(0, discipline + amount, 10)
+	discipline = clamp( discipline + amount, 0,  10)
 
 /mob/living/simple_animal/slime/movement_delay()
 	if(bodytemperature >= 330.23) // 135 F or 57.08 C

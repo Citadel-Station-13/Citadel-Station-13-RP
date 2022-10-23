@@ -1,20 +1,45 @@
-/mob/living/Life()
-	..()
-
-	if (transforming)
-		return
-	handle_modifiers() //VOREStation Edit - Needs to be done even if in nullspace.
-	if(!loc)
+/mob/living/Life(seconds, times_fired)
+	if((. = ..()))
 		return
 
 	if(machine && !CanMouseDrop(machine, src))
 		machine = null
 
-	var/datum/gas_mixture/environment = loc.return_air()
+	if(handle_regular_UI_updates()) // Status & health update, are we dead or alive etc.
+		handle_disabilities() // eye, ear, brain damages
+		handle_statuses() //all special effects, stunned, weakened, jitteryness, hallucination, sleeping, etc
 
-	//handle_modifiers() // Do this early since it might affect other things later. //VOREStation Edit
+	handle_regular_hud_updates()
 
+	handle_vision()
 	handle_light()
+
+	handle_actions()
+	update_canmove()
+
+/mob/living/PhysicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	handle_instability()
+
+	var/datum/gas_mixture/environment = loc?.return_air()
+	//Handle temperature/pressure differences between body and environment
+	if(environment)
+		handle_environment(environment)
+
+	//Check if we're on fire
+	handle_fire()
+	update_gravity(mob_has_gravity())
+	update_pulling()
+
+	for(var/obj/item/grab/G in src)
+		G.process(2)
+
+
+/mob/living/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	if(stat != DEAD)
 		//Breathing, if applicable
@@ -23,47 +48,14 @@
 		//Mutations and radiation
 		handle_mutations_and_radiation()
 
-
-
 		//Blood
 		handle_blood()
 
 		//Random events (vomiting etc)
 		handle_random_events()
 
-		. = 1
-
 	//Chemicals in the body, this is moved over here so that blood can be added after death
 	handle_chemicals_in_body()
-
-	//Handle temperature/pressure differences between body and environment
-	if(environment)
-		handle_environment(environment)
-
-	//Check if we're on fire
-	handle_fire()
-
-	//stuff in the stomach
-	//handle_stomach() //VOREStation Code
-
-	update_gravity(mob_has_gravity())
-
-	update_pulling()
-
-	for(var/obj/item/grab/G in src)
-		G.process(2)
-
-	if(handle_regular_UI_updates()) // Status & health update, are we dead or alive etc.
-		handle_disabilities() // eye, ear, brain damages
-		handle_statuses() //all special effects, stunned, weakened, jitteryness, hallucination, sleeping, etc
-
-	handle_actions()
-
-	update_canmove()
-
-	handle_regular_hud_updates()
-
-	handle_vision()
 
 /mob/living/proc/handle_breathing()
 	return
@@ -96,11 +88,11 @@
 	updatehealth()
 	if(stat != DEAD)
 		if(paralysis)
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 		else if (status_flags & FAKEDEATH)
-			stat = UNCONSCIOUS
+			set_stat(UNCONSCIOUS)
 		else
-			stat = CONSCIOUS
+			set_stat(CONSCIOUS)
 		return 1
 
 /mob/living/proc/handle_statuses()
@@ -155,7 +147,7 @@
 
 /mob/living/proc/handle_disabilities()
 	//Eyes
-	if(sdisabilities & BLIND || stat)	//blindness from disability or unconsciousness doesn't get better on its own
+	if(sdisabilities & SDISABILITY_NERVOUS || stat || HAS_TRAIT(src, TRAIT_BLIND))	//blindness from disability or unconsciousness doesn't get better on its own
 		SetBlinded(1)
 	else if(eye_blind)			//blindness, heals slowly over time
 		AdjustBlinded(-1)
@@ -163,30 +155,49 @@
 		eye_blurry = max(eye_blurry-1, 0)
 
 	//Ears
-	if(sdisabilities & DEAF)		//disabled-deaf, doesn't get better on its own
+	if(sdisabilities & SDISABILITY_DEAF)		//disabled-deaf, doesn't get better on its own
 		setEarDamage(-1, max(ear_deaf, 1))
 	else
 		// deafness heals slowly over time, unless ear_damage is over 100
 		if(ear_damage < 100)
 			adjustEarDamage(-0.05,-1)
 
-//this handles hud updates. Calls update_vision() and handle_hud_icons()
+	// WARNING WARNING SHITCODE AHEAD
+	// THIS IS A SHIT WAY TO DO THIS BUT WE HAVE NO CHOICE SO HERE WE GO
+	// REFACTOR LATER
+	// deaf trait shim for now
+	if(HAS_TRAIT(src, TRAIT_DEAF))
+		ear_deaf = max(ear_deaf, 1)
+	// mute trait shim for now
+	if(HAS_TRAIT(src, TRAIT_MUTE))
+		silent = max(silent, 1)
+	// blind trait shim for now
+	if(HAS_TRAIT(src, TRAIT_BLIND))
+		eye_blind = max(eye_blind, 1)
+
 /mob/living/handle_regular_hud_updates()
 	if(!client)
-		return 0
+		return FALSE
 	..()
 
-	handle_vision()
 	handle_darksight()
 	handle_hud_icons()
 
-	return 1
+	return TRUE
 
 /mob/living/proc/update_sight()
+	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_SIGHT)
 	if(!seedarkness)
-		see_invisible = SEE_INVISIBLE_NOLIGHTING
+		SetSeeInvisibleSelf(SEE_INVISIBLE_NOLIGHTING)
 	else
-		see_invisible = initial(see_invisible)
+		SetSeeInvisibleSelf(initial(see_invisible))
+
+	sight = initial(sight)
+
+	for(var/datum/modifier/M in modifiers)
+		if(!isnull(M.vision_flags))
+			AddSightSelf(M.vision_flags)
+
 	return
 
 /mob/living/proc/handle_hud_icons()
@@ -211,6 +222,10 @@
 		set_light(glow_range, glow_intensity, glow_color)
 
 	else
+		if(istype(src, /mob/living/carbon))
+			var/mob/living/carbon/C = src
+			if(C.species?.species_appearance_flags & RADIATION_GLOWS)
+				return FALSE//When we glow with rads this is handled in handle_mutations_and_radiation()
 		set_light(0)
 		return FALSE
 

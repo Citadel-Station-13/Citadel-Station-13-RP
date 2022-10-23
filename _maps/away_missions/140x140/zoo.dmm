@@ -299,7 +299,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/effect/landmark/loot_spawn{
+/obj/landmark/loot_spawn{
 	live_cargo = 0
 	},
 /turf/simulated/floor/plating,
@@ -384,7 +384,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
 	},
-/obj/effect/landmark/loot_spawn{
+/obj/landmark/loot_spawn{
 	live_cargo = 0
 	},
 /turf/simulated/floor/plating,
@@ -396,7 +396,7 @@
 /area/awaymission/zoo/pirateship)
 "bl" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/effect/landmark/loot_spawn{
+/obj/landmark/loot_spawn{
 	live_cargo = 0
 	},
 /turf/simulated/floor/plating,
@@ -530,7 +530,7 @@
 /area/awaymission/zoo/pirateship)
 "bE" = (
 /obj/structure/table/reinforced,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /obj/effect/floor_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
@@ -756,7 +756,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo/pirateship)
 "cs" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo/pirateship)
 "ct" = (
@@ -1250,7 +1250,7 @@
 "dK" = (
 /obj/machinery/power/fractal_reactor/fluff/converter{
 	mapped_in = 1;
-	power_generation_rate = 10000
+	power_generation_rate = 10
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
@@ -1336,16 +1336,16 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/zoo/pirateship)
 "dW" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "dX" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "dY" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/reagent_containers/food/snacks/xenomeat,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
@@ -1404,7 +1404,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "eg" = (
-/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "eh" = (
@@ -1557,7 +1557,7 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "eA" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -3861,7 +3861,7 @@
 /area/awaymission/zoo)
 "km" = (
 /obj/structure/table/rack,
-/obj/effect/landmark/costume,
+/obj/landmark/costume/random,
 /turf/simulated/floor/holofloor/carpet,
 /area/awaymission/zoo)
 "kn" = (
@@ -4173,7 +4173,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/zoo)
 "ln" = (
-/obj/effect/landmark/away,
+/obj/landmark/away,
 /turf/simulated/floor/wood,
 /area/awaymission/zoo)
 "lo" = (
@@ -4269,7 +4269,7 @@
 /obj/structure/toilet{
 	dir = 8
 	},
-/obj/effect/landmark/away,
+/obj/landmark/away,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo)
 "lC" = (
@@ -5748,7 +5748,7 @@
 	},
 /area/awaymission/zoo)
 "pv" = (
-/obj/effect/landmark/away,
+/obj/landmark/away,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass4"
 	},
@@ -6234,7 +6234,7 @@
 /area/awaymission/zoo)
 "qI" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "qJ" = (
@@ -6273,7 +6273,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "qQ" = (
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "qR" = (
@@ -6283,7 +6283,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "qS" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "qT" = (
@@ -6349,8 +6349,6 @@
 /area/awaymission/zoo)
 "re" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/disposalpipe/segment{
@@ -7117,7 +7115,7 @@
 	},
 /area/awaymission/zoo)
 "sG" = (
-/obj/effect/landmark/away,
+/obj/landmark/away,
 /turf/simulated/floor/tiled/neutral,
 /area/awaymission/zoo)
 "sH" = (
@@ -7142,7 +7140,7 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "sK" = (
-/obj/effect/landmark/away,
+/obj/landmark/away,
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "sL" = (
@@ -7542,7 +7540,7 @@
 /area/awaymission/zoo)
 "tL" = (
 /obj/effect/floor_decal/asteroid,
-/obj/effect/decal/cleanable/greenglow,
+/obj/effect/debris/cleanable/greenglow,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "tM" = (
@@ -7561,7 +7559,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "tP" = (
-/obj/effect/decal/cleanable/greenglow,
+/obj/effect/debris/cleanable/greenglow,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "tQ" = (
@@ -7781,7 +7779,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "um" = (
-/obj/effect/landmark/away,
+/obj/landmark/away,
 /mob/living/simple_mob/animal/space/goose{
 	faction = "zoo"
 	},
@@ -8156,7 +8154,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "vi" = (
-/obj/effect/landmark/away,
+/obj/landmark/away,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "vj" = (
@@ -8272,7 +8270,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "vw" = (
-/obj/effect/landmark/loot_spawn,
+/obj/landmark/loot_spawn,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "vx" = (
@@ -8298,7 +8296,7 @@
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "vA" = (
-/obj/effect/landmark/away,
+/obj/landmark/away,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "vB" = (
@@ -8505,7 +8503,7 @@
 /area/awaymission/zoo)
 "we" = (
 /obj/machinery/shieldgen,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/awaymission/zoo)
@@ -8515,7 +8513,7 @@
 /area/awaymission/zoo)
 "wg" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/landmark/loot_spawn,
+/obj/landmark/loot_spawn,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "wh" = (
@@ -8656,7 +8654,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "wC" = (
-/obj/effect/landmark/away,
+/obj/landmark/away,
 /turf/simulated/floor/tiled/red,
 /area/awaymission/zoo)
 "wD" = (
@@ -8670,7 +8668,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "wF" = (
-/obj/effect/landmark/away,
+/obj/landmark/away,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "wG" = (
@@ -8715,13 +8713,13 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo)
 "wN" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/floodlight,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/awaymission/zoo)
 "wO" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/power/emitter,
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor,
@@ -8750,7 +8748,7 @@
 /area/awaymission/zoo)
 "wT" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/landmark/loot_spawn,
+/obj/landmark/loot_spawn,
 /obj/structure/symbol/da{
 	pixel_x = -32
 	},
@@ -8876,24 +8874,20 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "xj" = (
-/obj/effect/landmark/loot_spawn{
+/obj/landmark/loot_spawn{
 	live_cargo = 0
 	},
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "xk" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/zoo/solars)
 "xl" = (
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
+	icon_state = "0-2"
 	},
 /obj/machinery/power/solar/fake,
 /turf/simulated/floor/airless{
@@ -8902,120 +8896,78 @@
 /area/awaymission/zoo/solars)
 "xm" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/zoo/solars)
 "xn" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/zoo/solars)
 "xo" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/zoo/solars)
 "xp" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/zoo/solars)
 "xq" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/zoo/solars)
 "xr" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/zoo/solars)
 "xs" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/airless,
@@ -9029,42 +8981,28 @@
 /area/awaymission/zoo/solars)
 "xu" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/zoo/solars)
 "xv" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/zoo/solars)
 "xw" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/zoo/solars)

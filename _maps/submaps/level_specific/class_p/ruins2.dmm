@@ -1,0 +1,208 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/simulated/floor/outdoors/snow/classp,
+/area/class_p/ruins)
+"f" = (
+/obj/random/triumph/uncertain,
+/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/area/class_p/ruins)
+"m" = (
+/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/area/class_p/ruins)
+"r" = (
+/obj/structure/closet/crate/secure/loot,
+/turf/simulated/floor/outdoors/snow/classp/no_tree,
+/area/class_p/ruins)
+"v" = (
+/turf/simulated/floor/old_tile/green/classp{
+	color = "#63A83A";
+	icon = 'icons/turf/flooring/tiles_vr.dmi';
+	icon_state = "tile_full"
+	},
+/area/class_p/ruins)
+"x" = (
+/turf/simulated/wall/classp,
+/area/class_p/ruins)
+"E" = (
+/turf/simulated/floor/classp/outdoors,
+/area/class_p/ruins)
+"G" = (
+/obj/item/reagent_containers/food/snacks/sliceable/pizza/margherita,
+/obj/structure/table,
+/turf/simulated/floor/classp/outdoors,
+/area/class_p/ruins)
+"K" = (
+/obj/random/mob/robotic/hivebot{
+	mob_faction = "frozen"
+	},
+/turf/simulated/floor/classp/outdoors,
+/area/class_p/ruins)
+
+(1,1,1) = {"
+a
+a
+a
+a
+m
+m
+m
+m
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+m
+m
+m
+E
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+x
+E
+v
+m
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+a
+a
+a
+E
+f
+m
+E
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+a
+a
+a
+a
+m
+v
+m
+x
+a
+a
+a
+a
+"}
+(6,1,1) = {"
+a
+a
+a
+a
+E
+m
+v
+m
+a
+a
+a
+a
+"}
+(7,1,1) = {"
+a
+a
+a
+a
+m
+m
+E
+a
+a
+a
+a
+a
+"}
+(8,1,1) = {"
+a
+a
+a
+a
+m
+G
+E
+x
+a
+a
+a
+a
+"}
+(9,1,1) = {"
+a
+a
+a
+a
+E
+r
+m
+K
+a
+a
+a
+a
+"}
+(10,1,1) = {"
+a
+a
+a
+a
+x
+E
+m
+m
+a
+a
+a
+a
+"}
+(11,1,1) = {"
+a
+a
+a
+a
+E
+m
+E
+m
+a
+a
+a
+a
+"}
+(12,1,1) = {"
+a
+a
+a
+a
+m
+m
+m
+m
+a
+a
+a
+a
+"}

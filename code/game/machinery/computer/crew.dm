@@ -1,4 +1,5 @@
 /obj/machinery/computer/crew
+
 	name = "crew monitoring computer"
 	desc = "Used to monitor active health sensors built into most of the crew's uniforms."
 	icon_keyboard = "med_key"
@@ -23,8 +24,8 @@
 	attack_hand(user)
 
 /obj/machinery/computer/crew/attack_hand(mob/user)
-	add_fingerprint(user)
-	if(stat & (BROKEN|NOPOWER))
+	..()
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	ui_interact(user)
 

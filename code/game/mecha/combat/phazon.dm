@@ -39,7 +39,7 @@
 	phasing_possible = TRUE
 	switch_dmg_type_possible = TRUE
 
-/obj/mecha/combat/phazon/equipped/Initialize()
+/obj/mecha/combat/phazon/equipped/Initialize(mapload)
 	. = ..()
 	starting_equipment = list(
 		/obj/item/mecha_parts/mecha_equipment/tool/rcd,

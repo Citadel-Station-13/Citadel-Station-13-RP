@@ -26,7 +26,7 @@
 	},
 /area/jungle/temple_six)
 "ag" = (
-/obj/effect/landmark/loot_spawn,
+/obj/landmark/loot_spawn,
 /turf/simulated/floor/tiled/white,
 /area/jungle/temple_six)
 "ah" = (
@@ -53,14 +53,14 @@
 	},
 /area/jungle/temple_two)
 "an" = (
-/obj/effect/landmark/loot_spawn/low,
+/obj/landmark/loot_spawn/low,
 /turf/simulated/floor/tiled/white,
 /area/jungle/temple_two)
 "ao" = (
 /turf/simulated/floor/tiled/white,
 /area/jungle/temple_two)
 "ap" = (
-/obj/effect/landmark/loot_spawn,
+/obj/landmark/loot_spawn,
 /turf/simulated/floor/tiled/white,
 /area/jungle/temple_two)
 "aq" = (
@@ -84,11 +84,11 @@
 	},
 /area/jungle/temple_four)
 "aw" = (
-/obj/effect/landmark/loot_spawn/low,
+/obj/landmark/loot_spawn/low,
 /turf/simulated/floor/tiled/white,
 /area/jungle/temple_four)
 "ax" = (
-/obj/effect/landmark/loot_spawn,
+/obj/landmark/loot_spawn,
 /turf/simulated/floor/tiled/white,
 /area/jungle/temple_four)
 "ay" = (
@@ -100,7 +100,7 @@
 	},
 /area/jungle/temple_six)
 "aC" = (
-/obj/effect/landmark/loot_spawn/low,
+/obj/landmark/loot_spawn/low,
 /turf/simulated/floor/tiled/white,
 /area/jungle/temple_six)
 "aE" = (
@@ -269,7 +269,7 @@
 	},
 /area/jungle/temple_one)
 "bv" = (
-/obj/effect/landmark/loot_spawn,
+/obj/landmark/loot_spawn,
 /turf/simulated/floor/tiled/white,
 /area/jungle/temple_one)
 "bw" = (
@@ -291,7 +291,7 @@
 	},
 /area/jungle/temple_three)
 "bB" = (
-/obj/effect/landmark/loot_spawn/low,
+/obj/landmark/loot_spawn/low,
 /turf/simulated/floor/tiled/white,
 /area/jungle/temple_one)
 "bC" = (
@@ -300,14 +300,14 @@
 	},
 /area/jungle/temple_three)
 "bD" = (
-/obj/effect/landmark/loot_spawn/low,
+/obj/landmark/loot_spawn/low,
 /turf/simulated/floor/tiled/white,
 /area/jungle/temple_three)
 "bF" = (
 /turf/simulated/floor/tiled/white,
 /area/jungle/temple_three)
 "bG" = (
-/obj/effect/landmark/loot_spawn,
+/obj/landmark/loot_spawn,
 /turf/simulated/floor/tiled/white,
 /area/jungle/temple_three)
 "bJ" = (
@@ -336,7 +336,7 @@
 	},
 /area/jungle/temple_five)
 "bO" = (
-/obj/effect/landmark/loot_spawn,
+/obj/landmark/loot_spawn,
 /turf/simulated/floor/tiled/white,
 /area/jungle/temple_five)
 "bP" = (
@@ -388,7 +388,7 @@
 	},
 /area/jungle/temple_three)
 "cb" = (
-/obj/effect/landmark/loot_spawn/low,
+/obj/landmark/loot_spawn/low,
 /turf/simulated/floor/tiled/white,
 /area/jungle/temple_five)
 "cd" = (
@@ -533,7 +533,7 @@
 /turf/simulated/floor/outdoors/grass,
 /area/jungle)
 "cT" = (
-/obj/item/firstaid_arm_assembly,
+/obj/item/bot_assembly/medibot,
 /turf/simulated/floor/outdoors/grass,
 /area/jungle)
 "cU" = (
@@ -657,7 +657,7 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/jungle/crash_ship_source)
 "dy" = (
-/obj/effect/landmark/loot_spawn/low,
+/obj/landmark/loot_spawn/low,
 /turf/simulated/floor/outdoors/dirt,
 /area/jungle/crash_ship_source)
 "dA" = (
@@ -698,7 +698,7 @@
 /turf/simulated/shuttle/wall,
 /area/jungle/crash_ship_source)
 "dH" = (
-/obj/effect/landmark/loot_spawn/low,
+/obj/landmark/loot_spawn/low,
 /turf/simulated/floor/tiled/white,
 /area/jungle/crash_ship_source)
 "dI" = (

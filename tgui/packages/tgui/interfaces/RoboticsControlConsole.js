@@ -1,47 +1,58 @@
-import { Fragment } from 'inferno';
 import { useBackend, useSharedState } from '../backend';
-import { Box, Button, LabeledList, ProgressBar, NoticeBox, Section, Tabs } from '../components';
+import { Box, Button, LabeledList, NoticeBox, Section, Tabs } from '../components';
 import { Window } from '../layouts';
 
 export const RoboticsControlConsole = (props, context) => {
   const { act, data } = useBackend(context);
+  const [tab, setTab] = useSharedState(context, 'tab', 1);
   const {
     can_hack,
-    safety,
-    show_detonate_all,
+    can_detonate,
     cyborgs = [],
+    drones = [],
   } = data;
   return (
-    <Window width={500} height={460} resizable>
+    <Window
+      width={500}
+      height={460}>
       <Window.Content scrollable>
-        {!!show_detonate_all && (
-          <Section title="Emergency Self Destruct">
-            <Button
-              icon={safety ? 'lock' : 'unlock'}
-              content={safety ? 'Disable Safety' : 'Enable Safety'}
-              selected={safety}
-              onClick={() => act('arm', {})} />
-            <Button
-              icon="bomb"
-              disabled={safety}
-              content="Destroy ALL Cyborgs"
-              color="bad"
-              onClick={() => act('nuke', {})} />
-          </Section>
+        <Tabs>
+          <Tabs.Tab
+            icon="list"
+            lineHeight="23px"
+            selected={tab === 1}
+            onClick={() => setTab(1)}>
+            Cyborgs ({cyborgs.length})
+          </Tabs.Tab>
+          <Tabs.Tab
+            icon="list"
+            lineHeight="23px"
+            selected={tab === 2}
+            onClick={() => setTab(2)}>
+            Drones ({drones.length})
+          </Tabs.Tab>
+        </Tabs>
+        {tab === 1 && (
+          <Cyborgs
+            cyborgs={cyborgs}
+            can_hack={can_hack}
+            can_detonate={can_detonate} />
         )}
-        <Cyborgs cyborgs={cyborgs} can_hack={can_hack} />
+        {tab === 2 && (
+          <Drones drones={drones} />
+        )}
       </Window.Content>
     </Window>
   );
 };
 
 const Cyborgs = (props, context) => {
-  const { cyborgs, can_hack } = props;
+  const { cyborgs, can_hack, can_detonate } = props;
   const { act, data } = useBackend(context);
   if (!cyborgs.length) {
     return (
       <NoticeBox>
-        No cyborg units detected within access parameters.
+        No cyborg units detected within access parameters
       </NoticeBox>
     );
   }
@@ -51,13 +62,13 @@ const Cyborgs = (props, context) => {
         key={cyborg.ref}
         title={cyborg.name}
         buttons={(
-          <Fragment>
-            {!!cyborg.hackable && !cyborg.emagged && (
+          <>
+            {!!can_hack && !cyborg.emagged && (
               <Button
                 icon="terminal"
                 content="Hack"
                 color="bad"
-                onClick={() => act('hackbot', {
+                onClick={() => act('magbot', {
                   ref: cyborg.ref,
                 })} />
             )}
@@ -65,19 +76,19 @@ const Cyborgs = (props, context) => {
               icon={cyborg.locked_down ? 'unlock' : 'lock'}
               color={cyborg.locked_down ? 'good' : 'default'}
               content={cyborg.locked_down ? "Release" : "Lockdown"}
-              disabled={!data.auth}
               onClick={() => act('stopbot', {
                 ref: cyborg.ref,
               })} />
-            <Button.Confirm
-              icon="bomb"
-              content="Detonate"
-              disabled={!data.auth}
-              color="bad"
-              onClick={() => act('killbot', {
-                ref: cyborg.ref,
-              })} />
-          </Fragment>
+            {!!can_detonate && (
+              <Button.Confirm
+                icon="bomb"
+                content="Detonate"
+                color="bad"
+                onClick={() => act('killbot', {
+                  ref: cyborg.ref,
+                })} />
+            )}
+          </>
         )}>
         <LabeledList>
           <LabeledList.Item label="Status">
@@ -93,47 +104,65 @@ const Cyborgs = (props, context) => {
                   : "Nominal"}
             </Box>
           </LabeledList.Item>
-          <LabeledList.Item label="Location">
-            <Box>
-              {cyborg.locstring}
+          <LabeledList.Item label="Charge">
+            <Box color={cyborg.charge <= 30
+              ? 'bad'
+              : cyborg.charge <= 70
+                ? 'average'
+                : 'good'}>
+              {typeof cyborg.charge === 'number'
+                ? cyborg.charge + "%"
+                : "Not Found"}
             </Box>
           </LabeledList.Item>
-          <LabeledList.Item label="Integrity">
-            <ProgressBar
-              color={cyborg.health > 50 ? "good" : "bad"}
-              value={cyborg.health / 100} />
-          </LabeledList.Item>
-          {(typeof cyborg.charge === 'number') && (
-            <Fragment>
-              <LabeledList.Item label="Cell Charge">
-                <ProgressBar
-                  color={cyborg.charge > 30 ? "good" : "bad"}
-                  value={cyborg.charge / 100} />
-              </LabeledList.Item>
-              <LabeledList.Item label="Cell Capacity">
-                <Box color={cyborg.cell_capacity < 30000 ? "average" : "good"}>
-                  {cyborg.cell_capacity}
-                </Box>
-              </LabeledList.Item>
-            </Fragment>
-          ) || (
-            <LabeledList.Item label="Cell">
-              <Box color="bad">
-                No Power Cell
-              </Box>
-            </LabeledList.Item>
-          )}
-          {!!cyborg.is_hacked && (
-            <LabeledList.Item label="Safeties">
-              <Box color="bad">DISABLED</Box>
-            </LabeledList.Item>
-          )}
-          <LabeledList.Item label="Module">
+          <LabeledList.Item label="Model">
             {cyborg.module}
           </LabeledList.Item>
           <LabeledList.Item label="Master AI">
             <Box color={cyborg.synchronization ? 'default' : 'average'}>
               {cyborg.synchronization || "None"}
+            </Box>
+          </LabeledList.Item>
+        </LabeledList>
+      </Section>
+    );
+  });
+};
+
+const Drones = (props, context) => {
+  const { drones } = props;
+  const { act } = useBackend(context);
+
+  if (!drones.length) {
+    return (
+      <NoticeBox>
+        No drone units detected within access parameters
+      </NoticeBox>
+    );
+  }
+
+  return drones.map(drone => {
+    return (
+      <Section
+        key={drone.ref}
+        title={drone.name}
+        buttons={(
+          <Button.Confirm
+            icon="bomb"
+            content="Detonate"
+            color="bad"
+            onClick={() => act('killdrone', {
+              ref: drone.ref,
+            })} />
+        )}>
+        <LabeledList>
+          <LabeledList.Item label="Status">
+            <Box color={drone.status
+              ? 'bad'
+              : 'good'}>
+              {drone.status
+                ? "Not Responding"
+                : 'Nominal'}
             </Box>
           </LabeledList.Item>
         </LabeledList>

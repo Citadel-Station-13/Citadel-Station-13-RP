@@ -27,7 +27,7 @@ var/global/list/grub_machine_overlays = list()
 
 
 	mob_size = MOB_MINISCULE
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	can_pull_size = ITEMSIZE_TINY
 	can_pull_mobs = MOB_PULL_NONE
 	density = 0
@@ -35,7 +35,7 @@ var/global/list/grub_machine_overlays = list()
 	//stop_when_pulled = 0
 
 	var/static/list/ignored_machine_types = list(
-		/obj/machinery/atmospherics/unary/vent_scrubber,
+		/obj/machinery/atmospherics/component/unary/vent_scrubber,
 		/obj/machinery/door/firedoor,
 		/obj/machinery/button/windowtint
 		)
@@ -78,29 +78,31 @@ var/global/list/grub_machine_overlays = list()
 		QDEL_NULL(machine_effect)
 	return ..()
 
-/mob/living/simple_mob/animal/solargrub_larva/Life()
-	. = ..()
+/mob/living/simple_mob/animal/solargrub_larva/Life(seconds, times_fired)
+	if((. = ..()))
+		return
 
 	if(machine_effect && !istype(loc, /obj/machinery))
 		QDEL_NULL(machine_effect)
 
-	if(!.)	// || ai_inactive
-		return
-
 	if(power_drained >= 7 MEGAWATTS && prob(5))
 		expand_grub()
+		return TRUE
+
+/mob/living/simple_mob/animal/solargrub_larva/PhysicalLife()
+	if((. = ..()))
 		return
 
 	if(istype(loc, /obj/machinery))
-		if(machine_effect && air_master.current_cycle%30)
+		// to anyone who sees me on git blame, i'm not responsible for this shit code ~silicons
+		if(machine_effect && (air_master.current_cycle % 30))
 			for(var/mob/M in player_list)
 				SEND_IMAGE(M, machine_effect)
 		if(prob(10))
 			sparks.start()
-		return
 
 /mob/living/simple_mob/animal/solargrub_larva/attack_target(atom/A)
-	if(istype(A, /obj/machinery) && !istype(A, /obj/machinery/atmospherics/unary/vent_pump))
+	if(istype(A, /obj/machinery) && !istype(A, /obj/machinery/atmospherics/component/unary/vent_pump))
 		var/obj/machinery/M = A
 		if(is_type_in_list(M, ignored_machine_types))
 			return
@@ -111,8 +113,8 @@ var/global/list/grub_machine_overlays = list()
 		enter_machine(M)
 		return TRUE
 
-	if(istype(A, /obj/machinery/atmospherics/unary/vent_pump))
-		var/obj/machinery/atmospherics/unary/vent_pump/V = A
+	if(istype(A, /obj/machinery/atmospherics/component/unary/vent_pump))
+		var/obj/machinery/atmospherics/component/unary/vent_pump/V = A
 		if(V.welded)
 			return
 		do_ventcrawl(V)
@@ -156,10 +158,10 @@ var/global/list/grub_machine_overlays = list()
 	spawn(30)
 		set_AI_busy(FALSE)
 
-/mob/living/simple_mob/animal/solargrub_larva/proc/do_ventcrawl(var/obj/machinery/atmospherics/unary/vent_pump/vent)
+/mob/living/simple_mob/animal/solargrub_larva/proc/do_ventcrawl(var/obj/machinery/atmospherics/component/unary/vent_pump/vent)
 	if(!vent)
 		return
-	var/obj/machinery/atmospherics/unary/vent_pump/end_vent = get_safe_ventcrawl_target(vent)
+	var/obj/machinery/atmospherics/component/unary/vent_pump/end_vent = get_safe_ventcrawl_target(vent)
 	if(!end_vent)
 		return
 	forceMove(vent)
@@ -206,7 +208,7 @@ var/global/list/grub_machine_overlays = list()
 /datum/ai_holder/simple_mob/solargrub_larva
 	//var/fleeing
 	var/static/list/ignored_machine_types = list(
-		/obj/machinery/atmospherics/unary/vent_scrubber,
+		/obj/machinery/atmospherics/component/unary/vent_scrubber,
 		/obj/machinery/door/firedoor,
 		/obj/machinery/button/windowtint
 		)
@@ -218,8 +220,8 @@ var/global/list/grub_machine_overlays = list()
 
 	for(var/AT in typecache_filter_list(range(vision_range, holder), potential_targets))
 		var/obj/machinery/M = AT
-		if(istype(M, /obj/machinery/atmospherics/unary/vent_pump))
-			var/obj/machinery/atmospherics/unary/vent_pump/V = M
+		if(istype(M, /obj/machinery/atmospherics/component/unary/vent_pump))
+			var/obj/machinery/atmospherics/component/unary/vent_pump/V = M
 			if(!V.welded && prob(50))
 				actual_targets += M
 			continue
@@ -250,7 +252,7 @@ var/global/list/grub_machine_overlays = list()
 	return
 
 /datum/ai_holder/simple_mob/solargrub_larva/post_melee_attack(atom/A)
-	if(istype(A, /obj/machinery) && !istype(A, /obj/machinery/atmospherics/unary/vent_pump))
+	if(istype(A, /obj/machinery) && !istype(A, /obj/machinery/atmospherics/component/unary/vent_pump))
 		if(ignored_targets.len > 3)
 			ignored_targets.Cut(1,1)
 		ignored_targets += A

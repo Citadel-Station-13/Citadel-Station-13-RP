@@ -48,7 +48,7 @@
 	desc = "A simple, comfortable poncho."
 	icon_state = "classicponcho"
 	item_state = "classicponcho"
-	icon_override = 'icons/mob/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
 	var/fire_resist = T0C+100
 	allowed = list(/obj/item/tank/emergency/oxygen)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
@@ -58,21 +58,17 @@
 	w_class = ITEMSIZE_NORMAL
 	slot = ACCESSORY_SLOT_OVER
 
-	sprite_sheets = list(
-		"Teshari" = 'icons/mob/species/teshari/suit.dmi'
-		)
-
-/obj/item/clothing/accessory/poncho/equipped() //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
+/obj/item/clothing/accessory/poncho/equipped(mob/user, slot, flags) //Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
-		if(H.species.name == "Teshari")
-			icon_override = 'icons/mob/species/teshari/suit.dmi'
-		else if(H.species.name == "Vox")
-			icon_override = 'icons/mob/species/vox/ties.dmi'
+		if(H.species.name == SPECIES_TESHARI)
+			icon_override = 'icons/mob/clothing/species/teshari/suits.dmi'
+		else if(H.species.name == SPECIES_VOX)
+			icon_override = 'icons/mob/clothing/species/vox/ties.dmi'
 		else
-			icon_override = 'icons/mob/ties.dmi'
-		update_clothing_icon()
+			icon_override = 'icons/mob/clothing/ties.dmi'
+		update_worn_icon()
 
 /obj/item/clothing/accessory/poncho/green
 	name = "green poncho"
@@ -127,6 +123,34 @@
 	desc = "A simple, comfortable cloak without sleeves. This one is tan and grey, the colors of Cargo."
 	icon_state = "cargoponcho"
 	item_state = "cargoponcho"
+
+//Rough Cloaks
+/obj/item/clothing/accessory/poncho/rough_cloak
+	name = "rough half cloak"
+	desc = "The latest fashion innovations by the Nanotrasen Uniform & Fashion Department have provided the brilliant invention of slicing a regular cloak in half! All the ponce, half the cost!"
+	icon_state = "roughcloak"
+	item_state = "roughcloak"
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
+	/obj/item/gun/projectile, /obj/item/ammo_magazine, /obj/item/melee/baton)
+	action_button_name = "Adjust Cloak"
+
+/obj/item/clothing/accessory/poncho/rough_cloak/attack_self(mob/user as mob)
+	if(src.icon_state == initial(icon_state))
+		src.icon_state = "[icon_state]_open"
+		src.item_state = "[item_state]_open"
+		flags_inv = HIDETIE|HIDEHOLSTER
+		to_chat(user, "You flip the cloak over your shoulder.")
+	else
+		src.icon_state = initial(icon_state)
+		src.item_state = initial(item_state)
+		flags_inv = HIDEHOLSTER
+		to_chat(user, "You pull the cloak over your shoulder.")
+	update_worn_icon()	//so our mob-overlays update
+
+/obj/item/clothing/accessory/poncho/rough_cloak/tan
+	icon_state = "roughcloak_tan"
+	item_state = "roughcloak_tan"
 
 /*
  * Cloak
@@ -268,15 +292,15 @@
 	. = ..()
 	if(prob(50))
 		icon_state = "hawaii2"
-	color = color_rotation(rand(-11,12)*15)
+	color = color_matrix_rotate_hue(rand(-11,12)*15)
 
 /obj/item/clothing/accessory/wcoat
 	name = "waistcoat"
 	desc = "For some classy, murderous fun."
 	icon_state = "vest"
 	item_state = "vest"
-	icon_override = 'icons/mob/ties.dmi'
-	item_state_slots = list(slot_r_hand_str = "wcoat", slot_l_hand_str = "wcoat")
+	icon_override = 'icons/mob/clothing/ties.dmi'
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "wcoat", SLOT_ID_LEFT_HAND = "wcoat")
 	allowed = list(/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
@@ -327,8 +351,8 @@
 	desc = "The standard dress shirt. Simple, versatile, clean."
 	icon_state = "button_tucked"
 	item_state = "button_tucked"
-	icon_override = 'icons/mob/ties.dmi'
-	item_state_slots = list(slot_r_hand_str = "labcoat", slot_l_hand_str = "labcoat")
+	icon_override = 'icons/mob/clothing/ties.dmi'
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "labcoat", SLOT_ID_LEFT_HAND = "labcoat")
 	allowed = list(/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask)
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
@@ -347,7 +371,7 @@
 /obj/item/clothing/accessory/sweater
 	name = "sweater"
 	desc = "A warm knit sweater."
-	icon_override = 'icons/mob/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
 	icon_state = "sweater"
 	slot_flags = SLOT_OCLOTHING | SLOT_TIE
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
@@ -356,20 +380,20 @@
 	slot = ACCESSORY_SLOT_OVER
 
 	sprite_sheets = list(
-		"Teshari" = 'icons/mob/species/teshari/ties.dmi'
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/ties.dmi'
 		)
 
-/obj/item/clothing/accessory/sweater/equipped() // Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
+/obj/item/clothing/accessory/sweater/equipped(mob/user, slot, flags) // Solution for race-specific sprites for an accessory which is also a suit. Suit icons break if you don't use icon override which then also overrides race-specific sprites.
 	..()
 	var/mob/living/carbon/human/H = loc
 	if(istype(H) && H.wear_suit == src)
-		if(H.species.name == "Teshari")
-			icon_override = 'icons/mob/species/teshari/ties.dmi'
-		else if(H.species.name == "Vox")
-			icon_override = 'icons/mob/species/vox/ties.dmi'
+		if(H.species.get_effective_bodytype(H, src, SLOT_ID_SUIT) == BODYTYPE_TESHARI)
+			icon_override = 'icons/mob/clothing/species/teshari/ties.dmi'
+		else if(H.species.get_effective_bodytype(H, src, SLOT_ID_SUIT) == BODYTYPE_VOX)
+			icon_override = 'icons/mob/clothing/species/vox/ties.dmi'
 		else
-			icon_override = 'icons/mob/ties.dmi'
-		update_clothing_icon()
+			icon_override = 'icons/mob/clothing/ties.dmi'
+		update_worn_icon()
 
 /obj/item/clothing/accessory/sweater/pink
 	name = "pink sweater"
@@ -484,3 +508,43 @@
 	name = "green asymmetrical jacket"
 	desc = "Insultingly avant-garde in aqua."
 	icon_state = "asym_green"
+
+//Antediluvian
+
+/obj/item/clothing/accessory/poncho/antediluvian
+	name = "Antediluvian cloak"
+	desc = "An off white cloak with a golden lining, held on by a golden clasp. The back of the cloak bears an unfamiliar device, which seems to have served as a significator of social status."
+	icon_state = "antediluvian_cloak"
+	item_state = "antediluvian_cloak"
+
+/obj/item/clothing/accessory/antediluvian
+	name = "Antediluvian loincloth"
+	desc = "A narrow black loincloth. Based on its cut and the multitude of connection points, it seems this cloth served a decorative purpose, rather than providing utility."
+	icon_state = "antediluvian_loin"
+	slot = ACCESSORY_SLOT_DECOR
+
+/obj/item/clothing/accessory/antediluvian_gloves
+	name = "Antediluvian bracers"
+	desc = "Short metallic bracers worked out of a dark metal and inlaid with gold. They appear to have been ceremonial, as all surviving models offer negligible protection."
+	icon_state = "antediluvian"
+	//body_parts_covered = HANDS|ARMS
+
+/obj/item/clothing/accessory/mekkyaku
+	name = "Mekkyaku turtleneck"
+	desc = "A sleek black turtleneck sweater with a bright red stripe knit into the fabric."
+	icon_state = "mekkyaku"
+
+/obj/item/clothing/accessory/armsocks
+	name = "Stirrup Sleeves"
+	desc = "A pair of fingerless, full arm sleeves. Perfect for winter."
+	icon_state = "armsock"
+
+/obj/item/clothing/accessory/armsock_left
+	name = "Stirrup Sleeve"
+	desc = "A single of fingerless, full arm sleeves. Perfect for winter. This one is for the left arm."
+	icon_state = "armsock_left"
+
+/obj/item/clothing/accessory/armsock_right
+	name = "Stirrup Sleeve"
+	desc = "A single of fingerless, full arm sleeves. Perfect for winter. This one is for the right arm."
+	icon_state = "armsock_right"

@@ -112,13 +112,11 @@
 	 icon_state = "comfychair_teal";
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 2;
 	on = 1
 	},
-/obj/effect/landmark/start{
-	name = "Captain"
-	},
+/obj/landmark/spawnpoint/job/captain,
 /turf/simulated/floor{
 	 icon_state = "gcircuitoff";
 	dir = 2
@@ -225,8 +223,7 @@
 	name = "Communications APC"
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/machinery/light_switch{
 	pixel_x = 28
@@ -246,8 +243,7 @@
 	name = "Bridge APC"
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/machinery/atmospherics/pipe/simple{
 	dir = 2;
@@ -324,11 +320,9 @@
 "aD" = (
 /obj/machinery/door/window/westleft,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2;
@@ -342,10 +336,7 @@
 "aE" = (
 /obj/machinery/door/airlock/hatch,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple{
 	 icon_state = "intact";
@@ -362,13 +353,9 @@
 	 icon_state = "2-8"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden,
@@ -385,10 +372,7 @@
 	level = 1
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor{
 	 icon_state = "neutralfull";
@@ -410,7 +394,7 @@
 	},
 /area/ship/scrap/command/captain)
 "aI" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	level = 1;
 	on = 1
@@ -463,8 +447,6 @@
 	icon_state = "tube1"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple{
@@ -511,7 +493,6 @@
 "aP" = (
 /obj/structure/table/woodentable,
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
@@ -525,8 +506,6 @@
 /area/ship/scrap/command/captain)
 "aQ" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple{
@@ -550,8 +529,6 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor,
@@ -600,7 +577,7 @@
 	 icon_state = "tube1";
 	dir = 1
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2;
@@ -617,13 +594,9 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor{
@@ -644,7 +617,6 @@
 	initialize_directions = 10
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
@@ -700,7 +672,7 @@
 	},
 /area/ship/scrap/dock)
 "bi" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
 	dir = 6
@@ -721,8 +693,6 @@
 /area/ship/scrap/dock)
 "bl" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor{
@@ -782,9 +752,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/effect/landmark{
-	name = "JoinLate"
-	},
+/obj/landmark/spawnpoint/latejoin/station,
 /turf/simulated/floor{
 	 icon_state = "neutralfull";
 	dir = 4
@@ -837,11 +805,9 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor{
 	 icon_state = "neutralfull";
 	dir = 4
@@ -913,14 +879,14 @@
 	dir = 6;
 	level = 2
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
 	dir = 6
 	},
 /area/ship/scrap/dock)
 "bG" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	level = 2;
 	on = 1
@@ -945,8 +911,6 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -956,7 +920,7 @@
 /turf/simulated/floor,
 /area/ship/scrap/dock)
 "bI" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2;
@@ -1059,8 +1023,6 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor{
@@ -1145,8 +1107,6 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor{
@@ -1199,8 +1159,6 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -1290,10 +1248,8 @@
 	dir = 8;
 	icon_state = "twindow"
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start{
-	name = "Cargo Technician"
-	},
+/obj/effect/debris/cleanable/dirt,
+/obj/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor{
 	 icon_state = "hydrofloor";
 	dir = 6
@@ -1372,8 +1328,7 @@
 	name = "Crew Areas APC"
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
@@ -1388,13 +1343,9 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor{
@@ -1492,15 +1443,13 @@
 	},
 /area/ship/scrap/crew/toilets)
 "cA" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2;
 	on = 1
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor{
@@ -1515,10 +1464,7 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Hatch";
@@ -1537,10 +1483,7 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
@@ -1549,10 +1492,7 @@
 /area/ship/scrap/crew)
 "cD" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Hatch";
@@ -1565,10 +1505,7 @@
 /area/ship/scrap/crew/saloon)
 "cE" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor{
 	 icon_state = "orange";
@@ -1578,10 +1515,7 @@
 "cF" = (
 /obj/structure/stool,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
@@ -1596,21 +1530,13 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/landmark{
-	name = "Observer-Start"
-	},
+/obj/landmark/observer_spawn,
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/item/ashtray/glass,
@@ -1621,25 +1547,19 @@
 /area/ship/scrap/crew/saloon)
 "cH" = (
 /obj/structure/stool,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	level = 2;
 	on = 1
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/ship/scrap/crew/saloon)
 "cI" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor{
 	 icon_state = "orange";
@@ -1653,10 +1573,7 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
@@ -1670,10 +1587,7 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Hatch";
@@ -1691,8 +1605,6 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor{
@@ -1702,7 +1614,7 @@
 /area/ship/scrap/crew/dorms)
 "cM" = (
 /obj/structure/stool/bed,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	level = 2;
 	on = 1
@@ -1746,10 +1658,8 @@
 	dir = 8;
 	icon_state = "twindow"
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start{
-	name = "Assistant"
-	},
+/obj/effect/debris/cleanable/dirt,
+/obj/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor{
 	 icon_state = "hydrofloor";
 	dir = 6
@@ -1769,7 +1679,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced/tinted,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/cable,
 /obj/machinery/power/apc{
 	dir = 4;
@@ -1793,7 +1703,7 @@
 	dir = 2;
 	level = 2
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
 	 icon_state = "conpipe-c";
 	dir = 4
@@ -1810,7 +1720,7 @@
 /turf/simulated/wall,
 /area/ship/scrap/crew/saloon)
 "cT" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -1837,8 +1747,6 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment{
@@ -1885,20 +1793,18 @@
 	dir = 2;
 	level = 2
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
 	dir = 6
 	},
 /area/ship/scrap/crew)
 "cZ" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/radio/intercom{
 	pixel_x = -32
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor,
@@ -1940,8 +1846,6 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -1962,7 +1866,7 @@
 /turf/simulated/floor,
 /area/ship/scrap/crew)
 "dh" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/cable,
 /obj/machinery/power/apc{
 	name = "Dorms APC"
@@ -2028,9 +1932,7 @@
 	name = "Crew Deck APC"
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	pixel_y = 1;
-	d2 = 2
+	icon_state = "0-2"
 	},
 /turf/simulated/floor,
 /area/ship/scrap/crew)
@@ -2056,8 +1958,6 @@
 /area/ship/scrap/cargo)
 "dq" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple{
@@ -2071,17 +1971,15 @@
 	},
 /area/ship/scrap/cargo)
 "dr" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor{
 	 icon_state = "bot";
 	dir = 2
 	},
 /area/ship/scrap/cargo)
 "ds" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start{
-	name = "Cargo Technician"
-	},
+/obj/effect/debris/cleanable/dirt,
+/obj/landmark/spawnpoint/job/cargo_technician,
 /turf/simulated/floor{
 	 icon_state = "bot";
 	dir = 2
@@ -2142,9 +2040,7 @@
 	},
 /area/ship/scrap/crew/kitchen)
 "dA" = (
-/obj/effect/landmark/start{
-	name = "Chef"
-	},
+/obj/landmark/spawnpoint/job/chef,
 /obj/structure/stool,
 /turf/simulated/floor{
 	 icon_state = "bar";
@@ -2153,9 +2049,7 @@
 /area/ship/scrap/crew/kitchen)
 "dB" = (
 /obj/structure/cable{
-	icon_state = "0-2";
-	pixel_y = 1;
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
 	dir = 4;
@@ -2178,10 +2072,7 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
@@ -2189,7 +2080,7 @@
 	},
 /area/ship/scrap/crew)
 "dD" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/alarm{
 	dir = 4;
 	icon_state = "alarm0";
@@ -2207,10 +2098,8 @@
 	},
 /area/ship/scrap/cargo)
 "dF" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple{
@@ -2221,7 +2110,7 @@
 /turf/simulated/floor,
 /area/ship/scrap/cargo)
 "dG" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/light/small{
 	 icon_state = "bulb1";
 	dir = 4
@@ -2303,14 +2192,14 @@
 	},
 /area/ship/scrap/crew/kitchen)
 "dO" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor{
 	 icon_state = "bar";
 	dir = 6
 	},
 /area/ship/scrap/crew/kitchen)
 "dP" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	layer = 2.4;
 	level = 2;
@@ -2321,8 +2210,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor{
@@ -2340,10 +2227,7 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Hatch";
@@ -2360,24 +2244,16 @@
 	},
 /obj/structure/disposalpipe/junction,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor,
 /area/ship/scrap/crew)
 "dS" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Hatch";
@@ -2387,10 +2263,7 @@
 /area/ship/scrap/cargo)
 "dT" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
@@ -2399,17 +2272,12 @@
 /area/ship/scrap/cargo)
 "dU" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/ship/scrap/cargo)
 "dV" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple{
@@ -2417,28 +2285,19 @@
 	dir = 2;
 	level = 2
 	},
-/obj/effect/landmark/start{
-	name = "Quartermaster"
-	},
+/obj/landmark/spawnpoint/job/quartermaster,
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor,
 /area/ship/scrap/cargo)
 "dW" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
@@ -2447,14 +2306,9 @@
 /area/ship/scrap/cargo)
 "dX" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor,
@@ -2466,10 +2320,7 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/ship/scrap/crew)
@@ -2480,10 +2331,7 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Hatch";
@@ -2498,8 +2346,6 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor{
@@ -2507,15 +2353,13 @@
 	},
 /area/ship/scrap/crew/medbay)
 "eb" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	level = 2;
 	on = 1
 	},
 /obj/structure/stool,
-/obj/effect/landmark/start{
-	name = "Medical Doctor"
-	},
+/obj/landmark/spawnpoint/job/medical_doctor,
 /turf/simulated/floor{
 	icon_state = "white"
 	},
@@ -2646,7 +2490,7 @@
 	},
 /area/ship/scrap/cargo)
 "eo" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/cable,
 /obj/machinery/power/apc{
 	dir = 4;
@@ -2749,8 +2593,6 @@
 /area/ship/scrap/cargo)
 "eA" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple{
@@ -2761,7 +2603,7 @@
 /turf/simulated/floor,
 /area/ship/scrap/cargo)
 "eB" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/light/small,
 /turf/simulated/floor{
 	 icon_state = "bot";
@@ -2774,8 +2616,8 @@
 	dir = 2;
 	level = 2
 	},
-/obj/effect/decal/cleanable/cobweb,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/plating,
 /area/ship/scrap/crew)
 "eD" = (
@@ -2845,8 +2687,7 @@
 	name = "Washroom APC"
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /turf/simulated/floor{
 	dir = 8;
@@ -2863,10 +2704,7 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Hatch";
@@ -2887,8 +2725,6 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/disposalpipe/junction,
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor{
@@ -2906,8 +2742,6 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -2922,8 +2756,8 @@
 	dir = 2;
 	level = 2
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor{
 	 icon_state = "wall_thermite";
 	dir = 2
@@ -2949,7 +2783,7 @@
 	},
 /area/ship/scrap/unused2)
 "eU" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor/plating,
 /turf/simulated/floor{
 	 icon_state = "platingdmg2";
@@ -2961,7 +2795,7 @@
 /area)
 "eW" = (
 /obj/structure/shuttle/engine/heater,
-/obj/effect/decal/cleanable/greenglow,
+/obj/effect/debris/cleanable/greenglow,
 /turf/simulated/floor/plating/airless,
 /area/ship/scrap/maintenance/engine)
 "eX" = (
@@ -3018,7 +2852,7 @@
 	},
 /area/ship/scrap/crew/wash)
 "fc" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	on = 1;
 	pressure_checks = 0
@@ -3054,8 +2888,6 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor{
@@ -3101,8 +2933,6 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor{
@@ -3147,14 +2977,14 @@
 	dir = 2;
 	level = 2
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor{
 	 icon_state = "stage_stairs";
 	dir = 6
 	},
 /area/ship/scrap/crew)
 "fl" = (
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /obj/item/flashlight,
 /turf/simulated/floor/plating,
 /area/ship/scrap/unused2)
@@ -3214,8 +3044,6 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor{
@@ -3254,14 +3082,12 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor,
 /area/ship/scrap/maintenance/storage)
 "fw" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 8;
 	level = 2;
 	on = 1
@@ -3301,7 +3127,7 @@
 	dir = 2;
 	level = 2
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/ship/scrap/crew)
 "fz" = (
@@ -3324,13 +3150,9 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor{
@@ -3340,10 +3162,7 @@
 /area/ship/scrap/crew)
 "fD" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Hatch";
@@ -3356,15 +3175,10 @@
 /area/ship/scrap/maintenance/storage)
 "fE" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor{
 	 icon_state = "orange";
@@ -3372,10 +3186,8 @@
 	},
 /area/ship/scrap/maintenance/storage)
 "fF" = (
-/obj/effect/landmark/start{
-	name = "Station Engineer"
-	},
-/obj/effect/decal/cleanable/dirt,
+/obj/landmark/spawnpoint/job/station_engineer,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/door/window/westleft{
 	base_state = "right";
 	dir = 4;
@@ -3383,23 +3195,18 @@
 	name = "Interior Door";
 	req_access_txt = "0"
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	on = 1;
 	pressure_checks = 0
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/ship/scrap/maintenance/storage)
 "fG" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold{
@@ -3409,8 +3216,6 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor{
@@ -3419,9 +3224,7 @@
 	},
 /area/ship/scrap/maintenance/storage)
 "fH" = (
-/obj/effect/landmark/start{
-	name = "Station Engineer"
-	},
+/obj/landmark/spawnpoint/job/station_engineer,
 /obj/machinery/door/window/westleft,
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
@@ -3461,7 +3264,7 @@
 /area/ship/scrap/unused3)
 "fN" = (
 /obj/structure/closet/firecloset/full,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
 	dir = 6
@@ -3483,7 +3286,7 @@
 "fP" = (
 /obj/structure/closet/walllocker/emerglocker/east,
 /obj/structure/reagent_dispensers,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
 	dir = 6
@@ -3497,10 +3300,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Hatch";
@@ -3542,8 +3342,6 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor{
@@ -3556,7 +3354,7 @@
 	dir = 8
 	},
 /obj/machinery/light/small,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/dispenser/oxygen,
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
@@ -3619,11 +3417,9 @@
 /area/ship/scrap/unused1)
 "gb" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4;
 	layer = 2.4;
 	on = 1
@@ -3635,8 +3431,6 @@
 /area/ship/scrap/unused1)
 "gc" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple{
@@ -3651,8 +3445,6 @@
 /area/ship/scrap/unused1)
 "gd" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple{
@@ -3670,11 +3462,9 @@
 	},
 /area/ship/scrap/unused1)
 "ge" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold{
@@ -3694,7 +3484,7 @@
 	dir = 2;
 	level = 2
 	},
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/plating,
 /area/ship/scrap/maintenance)
 "gg" = (
@@ -3765,7 +3555,7 @@
 	icon_state = "intact";
 	level = 2
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
 	dir = 6
@@ -3784,8 +3574,6 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/light/small{
@@ -3839,8 +3627,6 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -3891,8 +3677,7 @@
 	name = "Maintenance APC"
 	},
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/computer/engines,
@@ -3907,10 +3692,7 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/alarm{
 	pixel_y = 32
@@ -3922,16 +3704,13 @@
 	},
 /area/ship/scrap/maintenance)
 "gF" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/radio/intercom{
 	pixel_y = 32
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/closet/toolcloset,
 /turf/simulated/floor{
@@ -3946,13 +3725,9 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor{
@@ -3961,7 +3736,7 @@
 	},
 /area/ship/scrap/maintenance)
 "gH" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/light_switch{
 	pixel_y = 25
 	},
@@ -3974,9 +3749,7 @@
 /area/ship/scrap/maintenance)
 "gI" = (
 /obj/structure/stool/bed/chair/comfy/brown,
-/obj/effect/landmark/start{
-	name = "Chief Engineer"
-	},
+/obj/landmark/spawnpoint/job/chief_engineer,
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
 	dir = 6
@@ -3997,9 +3770,7 @@
 "gK" = (
 /obj/machinery/power/port_gen/pacman/super,
 /obj/structure/cable{
-	icon_state = "0-2";
-	pixel_y = 1;
-	d2 = 2
+	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
 	dir = 1;
@@ -4022,8 +3793,7 @@
 "gM" = (
 /obj/structure/closet/crate,
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	icon_state = "0-4"
 	},
 /obj/item/stack/sheet/mineral/uranium{
 	amount = 50
@@ -4065,18 +3835,14 @@
 	icon_state = "manifold";
 	level = 2
 	},
-/obj/effect/landmark/start{
-	name = "Atmospheric Technician"
-	},
+/obj/landmark/spawnpoint/job/atmospheric_technician,
 /turf/simulated/floor/plating,
 /area/ship/scrap/maintenance/atmos)
 "gQ" = (
-/obj/machinery/atmospherics/binary/pump{
+/obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/plating,
@@ -4088,10 +3854,7 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Hatch";
@@ -4110,10 +3873,7 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor{
 	 icon_state = "bot";
@@ -4127,10 +3887,7 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor{
 	 icon_state = "bot";
@@ -4138,17 +3895,14 @@
 	},
 /area/ship/scrap/maintenance)
 "gU" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple{
 	dir = 4;
 	icon_state = "intact";
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/simulated/floor{
 	 icon_state = "bot";
@@ -4160,11 +3914,9 @@
 	 icon_state = "1-10"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/stool,
 /obj/machinery/atmospherics/pipe/simple{
 	 icon_state = "intact";
@@ -4172,15 +3924,10 @@
 	level = 2
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
@@ -4189,12 +3936,9 @@
 /area/ship/scrap/maintenance)
 "gW" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor{
 	 icon_state = "floorgrime";
 	dir = 6
@@ -4202,10 +3946,7 @@
 /area/ship/scrap/maintenance)
 "gX" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor{
@@ -4215,10 +3956,7 @@
 /area/ship/scrap/maintenance)
 "gY" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Hatch";
@@ -4231,28 +3969,18 @@
 /area/ship/scrap/maintenance/power)
 "gZ" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
 /area/ship/scrap/maintenance/power)
 "ha" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0
+	icon_state = "4-8"
 	},
-/obj/effect/landmark/start{
-	name = "Station Engineer"
-	},
+/obj/landmark/spawnpoint/job/station_engineer,
 /turf/simulated/floor/plating,
 /area/ship/scrap/maintenance/power)
 "hb" = (
@@ -4331,7 +4059,7 @@
 /obj/structure/cable{
 	 icon_state = "5-8"
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -4343,7 +4071,7 @@
 /area/ship/scrap/maintenance)
 "hj" = (
 /obj/machinery/light/small,
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	icon_state = "off";
 	layer = 2.4;
@@ -4399,7 +4127,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
@@ -4407,8 +4134,7 @@
 "hp" = (
 /obj/machinery/power/smes,
 /obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/plating,
 /area/ship/scrap/maintenance/power)
@@ -4452,7 +4178,6 @@
 	name = "Engine APC"
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
@@ -4477,7 +4202,7 @@
 /turf/simulated/floor/plating,
 /area/ship/scrap/maintenance/engine)
 "hz" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /obj/machinery/alarm{
 	dir = 8;
 	icon_state = "alarm0";
@@ -4519,7 +4244,7 @@
 /turf/simulated/floor/plating,
 /area/ship/scrap/maintenance/engine)
 "hE" = (
-/obj/machinery/atmospherics/unary/heat_reservoir/heater{
+/obj/machinery/atmospherics/component/unary/heat_reservoir/heater{
 	 icon_state = "freezer_0";
 	dir = 4
 	},
@@ -4595,7 +4320,7 @@
 	},
 /area/ship/scrap/maintenance/engine)
 "hN" = (
-/obj/machinery/atmospherics/unary/engine{
+/obj/machinery/atmospherics/component/unary/engine{
 	 icon_state = "nozzle";
 	dir = 1
 	},

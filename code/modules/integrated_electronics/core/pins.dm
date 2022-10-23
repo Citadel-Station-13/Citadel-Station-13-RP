@@ -20,28 +20,35 @@ D [1]/  ||
 */
 /datum/integrated_io
 	var/name = "input/output"
-	var/obj/item/integrated_circuit/holder = null
-	var/datum/weakref/data = null // This is a weakref, to reduce typecasts.  Note that oftentimes numbers and text may also occupy this.
+	var/obj/item/integrated_circuit/holder
+	var/datum/weakref/data  // This is a weakref, to reduce typecasts.  Note that oftentimes numbers and text may also occupy this.
 	var/list/linked = list()
 	var/io_type = DATA_CHANNEL
+	var/pin_type			// IC_INPUT, IC_OUTPUT, IC_ACTIVATOR - used in saving assembly wiring
+	var/ord
 
-/datum/integrated_io/New(var/newloc, var/name, var/new_data)
-	..()
-	src.name = name
-	if(!isnull(new_data))
-		src.data = new_data
-	holder = newloc
+/datum/integrated_io/New(loc, _name, _data, _pin_type,_ord)
+	name = _name
+	if(_data)
+		data = _data
+	if(_pin_type)
+		pin_type = _pin_type
+	if(_ord)
+		ord = _ord
+
+	holder = loc
+
 	if(!istype(holder))
-		message_admins("ERROR: An integrated_io ([src.name]) spawned without a valid holder!  This is a bug.")
+		message_admins("ERROR: An integrated_io ([name]) spawned without a valid holder!  This is a bug.")
 
 /datum/integrated_io/Destroy()
-	disconnect()
+	disconnect_all()
 	data = null
 	holder = null
-	. = ..()
+	return ..()
 
-/datum/integrated_io/nano_host()
-	return holder.nano_host()
+/datum/integrated_io/ui_host()
+	return holder.ui_host()
 
 
 /datum/integrated_io/proc/data_as_type(var/as_type)
@@ -84,8 +91,7 @@ list[](
 	if(isweakref(input))
 		var/datum/weakref/w = input
 		var/atom/A = w.resolve()
-		//return A ? "([A.name] \[Ref\])" : "(null)" // For refs, we want just the name displayed.
-		return A ? "(\ref[A] \[Ref\])" : "(null)"
+		return A ? "([A.name] \[Ref\])" : "(null)" // For refs, we want just the name displayed.
 
 	return "([input])" // Nothing special needed for numbers or other stuff.
 
@@ -110,30 +116,67 @@ list[](
 /datum/integrated_io/activate/scramble()
 	push_data()
 
-/datum/integrated_io/proc/write_data_to_pin(var/new_data)
+/* TBI Screw multitools, they're all over the place.
+/datum/integrated_io/proc/handle_wire(datum/integrated_io/linked_pin, obj/item/tool, action, mob/living/user)
+	if(tool.tool_behaviour == TOOL_MULTITOOL)
+		switch(action)
+			if("wire")
+				tool.wire(src, user)
+				return TRUE
+			if("unwire")
+				if(linked_pin)
+					tool.unwire(src, linked_pin, user)
+					return TRUE
+			if("data")
+				ask_for_pin_data(user)
+				return TRUE
+
+	else if(istype(tool, /obj/item/integrated_electronics/wirer))
+		var/obj/item/integrated_electronics/wirer/wirer = tool
+		if(linked_pin)
+			wirer.wire(linked_pin, user)
+		else
+			wirer.wire(src, user)
+
+	else if(istype(tool, /obj/item/integrated_electronics/debugger))
+		var/obj/item/integrated_electronics/debugger/debugger = tool
+		debugger.write_data(src, user)
+		return TRUE
+
+	return FALSE
+*/
+
+/datum/integrated_io/proc/write_data_to_pin(new_data)
 	if(isnull(new_data) || isnum(new_data) || istext(new_data) || isweakref(new_data)) // Anything else is a type we don't want.
 		if(istext(new_data))
 			new_data = sanitizeSafe(new_data, MAX_MESSAGE_LEN, 0, 0)
 		data = new_data
 		holder.on_data_written()
+	else if(islist(new_data))
+		var/list/new_list = new_data
+		data = new_list.Copy(max(1,new_list.len - IC_MAX_LIST_LENGTH+1),0)
+		holder.on_data_written()
 
 /datum/integrated_io/proc/push_data()
-	for(var/datum/integrated_io/io in linked)
+	for(var/k in 1 to linked.len)
+		var/datum/integrated_io/io = linked[k]
 		io.write_data_to_pin(data)
 
 /datum/integrated_io/activate/push_data()
-	for(var/datum/integrated_io/io in linked)
-		io.holder.check_then_do_work()
+	for(var/k in 1 to linked.len)
+		var/datum/integrated_io/io = linked[k]
+		io.holder.check_then_do_work(io.ord)
 
-/datum/integrated_io/proc/pull_data()
-	for(var/datum/integrated_io/io in linked)
-		write_data_to_pin(io.data)
+/datum/integrated_io/proc/pull_data() //! Bad! Why would you ever use this? Don't do it!!
+	for(var/k in 1 to linked.len)
+		var/datum/integrated_io/io = linked[k]
+		write_data_to_pin(io.data) //! Pulls input from any linked pins on pulse, overwriting input you probably want.
 
 /datum/integrated_io/proc/get_linked_to_desc()
 	if(linked.len)
 		return "the [english_list(linked)]"
 	return "nothing"
-
+/*
 /datum/integrated_io/proc/disconnect()
 	//First we iterate over everything we are linked to.
 	for(var/datum/integrated_io/their_io in linked)
@@ -145,21 +188,34 @@ list[](
 				continue
 		//Now that we're removed from them, we gotta remove them from us.
 		src.linked.Remove(their_io)
+*/
+/datum/integrated_io/proc/connect_pin(datum/integrated_io/pin)
+	pin.linked |= src
+	linked |= pin
+
+// Iterates over every linked pin and disconnects them.
+/datum/integrated_io/proc/disconnect_all()
+	for(var/pin in linked)
+		disconnect_pin(pin)
+
+/datum/integrated_io/proc/disconnect_pin(datum/integrated_io/pin)
+	pin.linked.Remove(src)
+	linked.Remove(pin)
 
 /datum/integrated_io/proc/ask_for_data_type(mob/user, var/default, var/list/allowed_data_types = list("string","number","null"))
-	var/type_to_use = input("Please choose a type to use.","[src] type setting") as null|anything in allowed_data_types
+	var/type_to_use = tgui_input_list(usr, "Please choose a type to use.","[src] type setting", allowed_data_types)
 	if(!holder.check_interactivity(user))
 		return
 
 	var/new_data = null
 	switch(type_to_use)
 		if("string")
-			new_data = input("Now type in a string.","[src] string writing", istext(default) ? default : null) as null|text
+			new_data = input(usr, "Now type in a string.","[src] string writing", istext(default) ? default : null) as null|text
 			if(istext(new_data) && holder.check_interactivity(user) )
 				to_chat(user, "<span class='notice'>You input [new_data] into the pin.</span>")
 				return new_data
 		if("number")
-			new_data = input("Now type in a number.","[src] number writing", isnum(default) ? default : null) as null|num
+			new_data = input(usr, "Now type in a number.","[src] number writing", isnum(default) ? default : null) as null|num
 			if(isnum(new_data) && holder.check_interactivity(user) )
 				to_chat(user, "<span class='notice'>You input [new_data] into the pin.</span>")
 				return new_data
@@ -173,12 +229,13 @@ list[](
 	return !isnull(data)
 
 // This proc asks for the data to write, then writes it.
-/datum/integrated_io/proc/ask_for_pin_data(mob/user, obj/item/I)
+/datum/integrated_io/proc/ask_for_pin_data(mob/user)
 	var/new_data = ask_for_data_type(user)
 	write_data_to_pin(new_data)
 
 /datum/integrated_io/activate/ask_for_pin_data(mob/user) // This just pulses the pin.
-	holder.check_then_do_work(ignore_power = TRUE)
+	holder.investigate_log(" was manually pulsed by [key_name(user)].", INVESTIGATE_CIRCUIT)
+	holder.check_then_do_work(ord, ignore_power = TRUE)
 	to_chat(user, "<span class='notice'>You pulse \the [holder]'s [src] pin.</span>")
 
 /datum/integrated_io/activate

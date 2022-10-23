@@ -14,7 +14,7 @@ export const TelecommsLogBrowser = (props, context) => {
     servers,
     selectedServer,
   } = data;
-  
+
   return (
     <Window
       width={575}
@@ -133,7 +133,7 @@ const TelecommsSelectedServer = (props, context) => {
       }>
       <LabeledList>
         <LabeledList.Item label="Total Recorded Traffic">
-          {server.totalTraffic >= 1024 
+          {server.totalTraffic >= 1024
             ? round(server.totalTraffic / 1024) + " Terrabytes"
             : server.totalTraffic + " Gigabytes"}
         </LabeledList.Item>

@@ -1,85 +1,45 @@
-/* eslint react/no-danger: "off" */
-import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Button, Box, Section, Table } from '../components';
+import { Button, Section, Table } from '../components';
 import { NtosWindow } from '../layouts';
-import { decodeHtmlEntities } from 'common/string';
 
 export const NtosFileManager = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     PC_device_theme,
     usbconnected,
-    filename,
-    filedata,
-    error,
     files = [],
     usbfiles = [],
   } = data;
   return (
-    <NtosWindow resizable theme={PC_device_theme}>
+    <NtosWindow theme={PC_device_theme}>
       <NtosWindow.Content scrollable>
-        {(filename || error) && (
-          <Section title={"Viewing File " + filename} buttons={
-            <Fragment>
-              <Button
-                icon="pen"
-                content="Edit"
-                onClick={() => act('PRG_edit')} />
-              <Button
-                icon="print"
-                content="Print"
-                onClick={() => act('PRG_printfile')} />
-              <Button
-                icon="times"
-                content="Close"
-                onClick={() => act('PRG_closefile')} />
-            </Fragment>
-          }>
-            {error || null}
-            {/* This dangerouslySetInnerHTML is only ever passed data that has passed through pencode2html
-              * It should be safe enough to support pencode in this way.
-              */}
-            {filedata && <div dangerouslySetInnerHTML={{ __html: filedata }} />}
+        <Section>
+          <FileTable
+            files={files}
+            usbconnected={usbconnected}
+            onUpload={file => act('PRG_copytousb', { name: file })}
+            onDelete={file => act('PRG_deletefile', { name: file })}
+            onRename={(file, newName) => act('PRG_renamefile', {
+              name: file,
+              new_name: newName,
+            })}
+            onDuplicate={file => act('PRG_clone', { file: file })}
+            onToggleSilence={file => act('PRG_togglesilence', { name: file })} />
+        </Section>
+        {usbconnected && (
+          <Section title="Data Disk">
+            <FileTable
+              usbmode
+              files={usbfiles}
+              usbconnected={usbconnected}
+              onUpload={file => act('PRG_copyfromusb', { name: file })}
+              onDelete={file => act('PRG_usbdeletefile', { name: file })}
+              onRename={(file, newName) => act('PRG_usbrenamefile', {
+                name: file,
+                new_name: newName,
+              })}
+              onDuplicate={file => act('PRG_clone', { file: file })} />
           </Section>
-        ) || (
-          <Fragment>
-            <Section>
-              <FileTable
-                files={files}
-                usbconnected={usbconnected}
-                onUpload={file => act('PRG_copytousb', { name: file })}
-                onDelete={file => act('PRG_deletefile', { name: file })}
-                onOpen={file => act('PRG_openfile', { name: file })}
-                onRename={(file, newName) => act('PRG_rename', {
-                  name: file,
-                  new_name: newName,
-                })}
-                onDuplicate={file => act('PRG_clone', { file: file })} />
-            </Section>
-            {usbconnected && (
-              <Section title="Data Disk">
-                <FileTable
-                  usbmode
-                  files={usbfiles}
-                  usbconnected={usbconnected}
-                  onUpload={file => act('PRG_copyfromusb', { name: file })}
-                  onDelete={file => act('PRG_deletefile', { name: file })}
-                  onRename={(file, newName) => act('PRG_rename', {
-                    name: file,
-                    new_name: newName,
-                  })}
-                  onDuplicate={file => act('PRG_clone', { file: file })} />
-              </Section>
-            ) || null}
-            <Section>
-              <Button
-                icon="plus"
-                onClick={() => act("PRG_newtextfile")}>
-                New Text File
-              </Button>
-            </Section>
-          </Fragment>
         )}
       </NtosWindow.Content>
     </NtosWindow>
@@ -94,7 +54,7 @@ const FileTable = props => {
     onUpload,
     onDelete,
     onRename,
-    onOpen,
+    onToggleSilence,
   } = props;
   return (
     <Table>
@@ -113,17 +73,12 @@ const FileTable = props => {
         <Table.Row key={file.name} className="candystripe">
           <Table.Cell>
             {!file.undeletable ? (
-              <Fragment>
-                <Button.Input
-                  width="80%"
-                  content={file.name}
-                  currentValue={file.name}
-                  tooltip="Rename"
-                  onCommit={(e, value) => onRename(file.name, value)} />
-                <Button
-                  content="Open"
-                  onClick={() => onOpen(file.name)} />
-              </Fragment>
+              <Button.Input
+                fluid
+                content={file.name}
+                currentValue={file.name}
+                tooltip="Rename"
+                onCommit={(e, value) => onRename(file.name, value)} />
             ) : (
               file.name
             )}
@@ -135,8 +90,15 @@ const FileTable = props => {
             {file.size}
           </Table.Cell>
           <Table.Cell collapsing>
+            {!!file.alert_able && (
+              <Button
+                icon={file.alert_silenced ? 'bell-slash' : 'bell'}
+                color={file.alert_silenced ? 'red' : 'default'}
+                tooltip={file.alert_silenced ? 'Unmute Alerts' : 'Mute Alerts'}
+                onClick={() => onToggleSilence(file.name)} />
+            )}
             {!file.undeletable && (
-              <Fragment>
+              <>
                 <Button.Confirm
                   icon="trash"
                   confirmIcon="times"
@@ -156,7 +118,7 @@ const FileTable = props => {
                       onClick={() => onUpload(file.name)} />
                   )
                 )}
-              </Fragment>
+              </>
             )}
           </Table.Cell>
         </Table.Row>

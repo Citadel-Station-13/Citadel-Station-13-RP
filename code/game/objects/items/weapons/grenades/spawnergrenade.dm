@@ -17,7 +17,7 @@
 		var/turf/T = get_turf(src)
 		playsound(T, 'sound/effects/phasein.ogg', 100, 1)
 		for(var/mob/living/carbon/human/M in viewers(T, null))
-			if(M:eyecheck() <= 0)
+			if(M.eyecheck() <= 0)
 				M.flash_eyes()
 
 		// Spawn some hostile syndicate critters
@@ -46,6 +46,12 @@
 	deliveryamt = 3
 	spawner_type = /mob/living/simple_mob/mechanical/viscerator/station
 	origin_tech = list(TECH_MATERIAL = 3, TECH_MAGNET = 3, TECH_ILLEGAL = 1)
+
+/obj/item/grenade/spawnergrenade/manhacks/apidean
+	name = "\improper Apidean drone grenade"
+	desc = "Contains hibernating eggs of fast growing, organic kill-drones, used by Apidaen Enforcers to sweep ships and tunnels of deviants and intruders."
+	icon_state = "beenade"
+	spawner_type = /mob/living/simple_mob/mechanical/viscerator/apidean
 
 /obj/item/grenade/spawnergrenade/ward
 	name = "sentry delivery grenade"

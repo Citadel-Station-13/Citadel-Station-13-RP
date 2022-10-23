@@ -9,10 +9,6 @@
 	name = "ultra rare hat"
 	desc = "an ultra rare hat. It commands a certain respect."
 	icon_state = "petehat"
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/head.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/head.dmi'
-		)
 
 /obj/item/clothing/head/collectable/slime
 	name = "collectable slime cap!"
@@ -24,7 +20,7 @@
 	name = "collectable xenomorph helmet!"
 	desc = "Hiss hiss hiss!"
 	icon_state = "xenom"
-	item_state_slots = list(slot_r_hand_str = "xenos_helm", slot_l_hand_str = "xenos_helm")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "xenos_helm", SLOT_ID_LEFT_HAND = "xenos_helm")
 	body_parts_covered = HEAD|FACE|EYES
 
 /obj/item/clothing/head/collectable/chef
@@ -75,13 +71,13 @@
 	name = "collectable slime hat"
 	desc = "Just like a real Brain Slug!"
 	icon_state = "headslime"
-	item_state_slots = list(slot_r_hand_str = "greenbandana", slot_l_hand_str = "greenbandana")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "greenbandana", SLOT_ID_LEFT_HAND = "greenbandana")
 
 /obj/item/clothing/head/collectable/flatcap
 	name = "collectable flat cap"
 	desc = "A Collectible farmer's Flat Cap!"
 	icon_state = "flat_cap"
-	item_state_slots = list(slot_r_hand_str = "detective", slot_l_hand_str = "detective")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "detective", SLOT_ID_LEFT_HAND = "detective")
 
 /obj/item/clothing/head/collectable/pirate
 	name = "collectable pirate hat"

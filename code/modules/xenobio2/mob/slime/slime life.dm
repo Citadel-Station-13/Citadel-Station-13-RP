@@ -3,7 +3,7 @@ Slime specific life events go here.
 */
 #define HAPPYLEVEL 200
 #define ANGRYLEVEL 10
-/mob/living/simple_mob/xeno/slime/Life()
+/mob/living/simple_mob/xeno/slime/Life(seconds, times_fired)
 	. = ..()
 	if(..())
 		if(health)

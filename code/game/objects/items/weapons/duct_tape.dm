@@ -8,7 +8,7 @@
 	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
 	var/amount = 20
 
-	toolspeed = 2 //It is now used in surgery as a not awful, but probably dangerous option, due to speed.
+	tool_speed = 2 //It is now used in surgery as a not awful, but probably dangerous option, due to speed.
 
 /obj/item/duct_tape_roll/attack(var/mob/living/carbon/human/H, var/mob/user)
 	if(istype(H))
@@ -61,7 +61,7 @@
 					return
 
 				user.visible_message("<span class='danger'>\The [user] has taped up \the [H]'s eyes!</span>")
-				H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/blindfold/tape(H), slot_glasses)
+				H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/blindfold/tape(H), SLOT_ID_GLASSES)
 				H.update_inv_glasses()
 				playsound(src, 'sound/effects/tape.ogg',25)
 
@@ -100,7 +100,7 @@
 
 				user.visible_message("<span class='danger'>\The [user] has taped up \the [H]'s mouth!</span>")
 
-				H.equip_to_slot_or_del(new /obj/item/clothing/mask/muzzle/tape(H), slot_wear_mask)
+				H.equip_to_slot_or_del(new /obj/item/clothing/mask/muzzle/tape(H), SLOT_ID_MASK)
 				H.update_inv_wear_mask()
 				playsound(src, 'sound/effects/tape.ogg',25)
 
@@ -121,7 +121,6 @@
 				playsound(src, 'sound/effects/tape.ogg',25)
 
 				if(!T.place_handcuffs(H, user))
-					user.unEquip(T)
 					qdel(T)
 			else
 				return ..()
@@ -136,15 +135,15 @@
 /obj/item/duct_tape_roll/proc/use(var/used)
 	amount -= used
 	if (amount <= 0)
-		if(usr)
-			usr.remove_from_mob(src, null)
 		qdel(src) //should be safe to qdel immediately since if someone is still using this stack it will persist for a little while longer
 	return 1
 
 /obj/item/duct_tape_roll/proc/stick(var/obj/item/W, mob/user)
 	if(!istype(W, /obj/item/paper))
 		return
-	user.drop_from_inventory(W)
+	if(W.loc == user)
+		if(!user.attempt_void_item_for_installation(W))
+			return
 	var/obj/item/duct_tape_piece/tape = new(get_turf(src))
 	tape.attach(W)
 	user.put_in_hands(tape)
@@ -157,13 +156,10 @@
 	icon_state = "tape"
 	w_class = ITEMSIZE_TINY
 	plane = MOB_PLANE
+	item_flags = ITEM_NOBLUDGEON
 	anchored = FALSE
 
 	var/obj/item/stuck = null
-
-/obj/item/duct_tape_piece/Initialize(mapload)
-	. = ..()
-	flags |= NOBLUDGEON
 
 /obj/item/duct_tape_piece/examine(mob/user)
 	if(stuck)
@@ -183,10 +179,9 @@
 		return
 
 	to_chat(user, "You remove \the [initial(name)] from [stuck].")
-
-	user.drop_from_inventory(src)
-	stuck.forceMove(get_turf(src))
-	user.put_in_hands(stuck)
+	user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
+	if(!user.put_in_hands(stuck))
+		stuck.forceMove(user.drop_location())
 	stuck = null
 	overlays = null
 	qdel(src)
@@ -195,8 +190,6 @@
 	if(!(istype(src, /obj/item/handcuffs/cable/tape) || istype(src, /obj/item/clothing/mask/muzzle/tape)))
 		return ..()
 	else
-		user.drop_from_inventory(I)
-		I.loc = src
 		qdel(I)
 		to_chat(user, "<span-class='notice'>You place \the [I] back into \the [src].</span>")
 
@@ -205,7 +198,6 @@
 	return ..() // Pick it up now that it's unanchored.
 
 /obj/item/duct_tape_piece/afterattack(var/A, mob/user, flag, params)
-
 	if(!in_range(user, A) || istype(A, /obj/machinery/door) || !stuck)
 		return
 
@@ -219,9 +211,9 @@
 			to_chat(user, "You cannot reach that from here.")		// can only place stuck papers in cardinal directions, to
 			return											// reduce papers around corners issue.
 
-	user.drop_from_inventory(src)
+	if(!user.attempt_insert_item_for_installation(src, source_turf))
+		return
 	playsound(src, 'sound/effects/tape.ogg',25)
-	forceMove(source_turf)
 	anchored = TRUE
 
 	if(params)

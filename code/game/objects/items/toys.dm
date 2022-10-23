@@ -22,7 +22,7 @@
 
 
 /obj/item/toy
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
 	force = 0
@@ -91,7 +91,7 @@
 /obj/item/toy/syndicateballoon
 	name = "criminal balloon"
 	desc = "There is a tag on the back that reads \"FUK NT!11!\"."
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
 	force = 0
@@ -102,7 +102,7 @@
 /obj/item/toy/nanotrasenballoon
 	name = "criminal balloon"
 	desc = "Across the balloon the following is printed: \"Man, I love NanoTrasen soooo much. I use only NT products. You have NO idea.\""
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
 	force = 0
@@ -116,9 +116,13 @@
 /obj/item/toy/blink
 	name = "electronic blink toy game"
 	desc = "Blink.  Blink.  Blink. Ages 8 and up."
-	icon = 'icons/obj/radio.dmi'
+	icon = 'icons/obj/machines/teleporter.dmi'
 	icon_state = "beacon"
 	item_state = "signaler"
+
+/obj/item/toy/blink/Initialize(mapload)
+	. = ..()
+	add_overlay("[initial(icon_state)]_on")
 
 /*
  * Fake singularity
@@ -147,89 +151,88 @@
 	attack_verb = list("attacked", "struck", "hit")
 	var/bullets = 5
 
-	examine(mob/user)
-		if(..(user, 2) && bullets)
-			to_chat(user, "<span class='notice'>It is loaded with [bullets] foam darts!</span>")
+/obj/item/toy/crossbow/examine(mob/user)
+	if(..(user, 2) && bullets)
+		to_chat(user, "<span class='notice'>It is loaded with [bullets] foam darts!</span>")
 
-	attackby(obj/item/I as obj, mob/user as mob)
-		if(istype(I, /obj/item/toy/ammo/crossbow))
-			if(bullets <= 4)
-				user.drop_item()
-				qdel(I)
-				bullets++
-				to_chat(user, "<span class='notice'>You load the foam dart into the crossbow.</span>")
-			else
-				to_chat(usr, "<span class='warning'>It's already fully loaded.</span>")
+/obj/item/toy/crossbow/attackby(obj/item/I as obj, mob/user as mob)
+	if(istype(I, /obj/item/toy/ammo/crossbow))
+		if(bullets <= 4)
+			if(!user.attempt_consume_item_for_construction(I))
+				return
+			bullets++
+			to_chat(user, "<span class='notice'>You load the foam dart into the crossbow.</span>")
+		else
+			to_chat(user, "<span class='warning'>It's already fully loaded.</span>")
 
+/obj/item/toy/crossbow/afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
+	if(!isturf(target.loc) || target == user) return
+	if(flag) return
 
-	afterattack(atom/target as mob|obj|turf|area, mob/user as mob, flag)
-		if(!isturf(target.loc) || target == user) return
-		if(flag) return
+	if (locate (/obj/structure/table, src.loc))
+		return
+	else if (bullets)
+		var/turf/trg = get_turf(target)
+		var/obj/effect/foam_dart_dummy/D = new/obj/effect/foam_dart_dummy(get_turf(src))
+		bullets--
+		D.icon_state = "foamdart"
+		D.name = "foam dart"
+		playsound(user.loc, 'sound/items/syringeproj.ogg', 50, 1)
 
-		if (locate (/obj/structure/table, src.loc))
-			return
-		else if (bullets)
-			var/turf/trg = get_turf(target)
-			var/obj/effect/foam_dart_dummy/D = new/obj/effect/foam_dart_dummy(get_turf(src))
-			bullets--
-			D.icon_state = "foamdart"
-			D.name = "foam dart"
-			playsound(user.loc, 'sound/items/syringeproj.ogg', 50, 1)
+		for(var/i=0, i<6, i++)
+			if (D)
+				if(D.loc == trg) break
+				step_towards(D,trg)
 
-			for(var/i=0, i<6, i++)
-				if (D)
-					if(D.loc == trg) break
-					step_towards(D,trg)
-
-					for(var/mob/living/M in D.loc)
-						if(!istype(M,/mob/living)) continue
-						if(M == user) continue
-						for(var/mob/O in viewers(world.view, D))
-							O.show_message(text("<span class='warning'>\The [] was hit by the foam dart!</span>", M), 1)
-						new /obj/item/toy/ammo/crossbow(M.loc)
-						qdel(D)
-						return
-
-					for(var/atom/A in D.loc)
-						if(A == user) continue
-						if(A.density)
-							new /obj/item/toy/ammo/crossbow(A.loc)
-							qdel(D)
-
-				sleep(1)
-
-			spawn(10)
-				if(D)
-					new /obj/item/toy/ammo/crossbow(D.loc)
+				for(var/mob/living/M in D.loc)
+					if(!istype(M,/mob/living)) continue
+					if(M == user) continue
+					for(var/mob/O in viewers(world.view, D))
+						O.show_message(text("<span class='warning'>\The [] was hit by the foam dart!</span>", M), 1)
+					new /obj/item/toy/ammo/crossbow(M.loc)
 					qdel(D)
+					return
 
-			return
-		else if (bullets == 0)
-			user.Weaken(5)
-			for(var/mob/O in viewers(world.view, user))
-				O.show_message(text("<span class='warning'>\The [] realized they were out of ammo and starting scrounging for some!</span>", user), 1)
+				for(var/atom/A in D.loc)
+					if(A == user) continue
+					if(A.density)
+						new /obj/item/toy/ammo/crossbow(A.loc)
+						qdel(D)
+
+			sleep(1)
+
+		spawn(10)
+			if(D)
+				new /obj/item/toy/ammo/crossbow(D.loc)
+				qdel(D)
+
+		return
+	else if (bullets == 0)
+		user.Weaken(5)
+		for(var/mob/O in viewers(world.view, user))
+			O.show_message(text("<span class='warning'>\The [] realized they were out of ammo and starting scrounging for some!</span>", user), 1)
 
 
-	attack(mob/M as mob, mob/user as mob)
-		src.add_fingerprint(user)
+/obj/item/toy/crossbow/attack(mob/M as mob, mob/user as mob)
+	src.add_fingerprint(user)
 
 // ******* Check
 
-		if (src.bullets > 0 && M.lying)
+	if (src.bullets > 0 && M.lying)
 
-			for(var/mob/O in viewers(M, null))
-				if(O.client)
-					O.show_message(text("<span class='danger'>\The [] casually lines up a shot with []'s head and pulls the trigger!</span>", user, M), 1, "<span class='warning'>You hear the sound of foam against skull</span>", 2)
-					O.show_message(text("<span class='warning'>\The [] was hit in the head by the foam dart!</span>", M), 1)
+		for(var/mob/O in viewers(M, null))
+			if(O.client)
+				O.show_message(text("<span class='danger'>\The [] casually lines up a shot with []'s head and pulls the trigger!</span>", user, M), 1, "<span class='warning'>You hear the sound of foam against skull</span>", 2)
+				O.show_message(text("<span class='warning'>\The [] was hit in the head by the foam dart!</span>", M), 1)
 
-			playsound(user.loc, 'sound/items/syringeproj.ogg', 50, 1)
-			new /obj/item/toy/ammo/crossbow(M.loc)
-			src.bullets--
-		else if (M.lying && src.bullets == 0)
-			for(var/mob/O in viewers(M, null))
-				if (O.client)	O.show_message(text("<span class='danger'>\The [] casually lines up a shot with []'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</span>", user, M), 1, "<span class='warning'>You hear someone fall</span>", 2)
-			user.Weaken(5)
-		return
+		playsound(user.loc, 'sound/items/syringeproj.ogg', 50, 1)
+		new /obj/item/toy/ammo/crossbow(M.loc)
+		src.bullets--
+	else if (M.lying && src.bullets == 0)
+		for(var/mob/O in viewers(M, null))
+			if (O.client)
+				O.show_message(text("<span class='danger'>\The [] casually lines up a shot with []'s head, pulls the trigger, then realizes they are out of ammo and drops to the floor in search of some!</span>", user, M), 1, "<span class='warning'>You hear someone fall</span>", 2)
+		user.Weaken(5)
 
 /obj/item/toy/ammo/crossbow
 	name = "foam dart"
@@ -256,33 +259,33 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "sword0"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 		)
 	var/active = 0.0
 	w_class = ITEMSIZE_SMALL
 	attack_verb = list("attacked", "struck", "hit")
 
-	attack_self(mob/user as mob)
-		src.active = !( src.active )
-		if (src.active)
-			to_chat(user, "<span class='notice'>You extend the plastic blade with a quick flick of your wrist.</span>")
-			playsound(user, 'sound/weapons/saberon.ogg', 50, 1)
-			src.icon_state = "swordblue"
-			src.w_class = ITEMSIZE_LARGE
-		else
-			to_chat(user, "<span class='notice'>You push the plastic blade back down into the handle.</span>")
-			playsound(user, 'sound/weapons/saberoff.ogg', 50, 1)
-			src.icon_state = "sword0"
-			src.w_class = ITEMSIZE_SMALL
+/obj/item/toy/sword/attack_self(mob/user)
+	src.active = !( src.active )
+	if (src.active)
+		to_chat(user, SPAN_NOTICE("You extend the plastic blade with a quick flick of your wrist."))
+		playsound(user, 'sound/weapons/saberon.ogg', 50, TRUE)
+		src.icon_state = "swordblue"
+		src.w_class = ITEMSIZE_LARGE
+	else
+		to_chat(user, SPAN_NOTICE("You push the plastic blade back down into the handle."))
+		playsound(user, 'sound/weapons/saberoff.ogg', 50, TRUE)
+		src.icon_state = "sword0"
+		src.w_class = ITEMSIZE_SMALL
 
-		if(istype(user,/mob/living/carbon/human))
-			var/mob/living/carbon/human/H = user
-			H.update_inv_l_hand()
-			H.update_inv_r_hand()
+	if(istype(user,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = user
+		H.update_inv_l_hand()
+		H.update_inv_r_hand()
 
-		src.add_fingerprint(user)
-		return
+	src.add_fingerprint(user)
+	return
 
 /obj/item/toy/katana
 	name = "replica katana"
@@ -291,12 +294,12 @@
 	icon_state = "katana"
 	item_state = "katana"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_material.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 		)
 	slot_flags = SLOT_BELT | SLOT_BACK
 	force = 5
-	throwforce = 5
+	throw_force = 5
 	w_class = ITEMSIZE_NORMAL
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced")
 
@@ -310,15 +313,19 @@
 	icon_state = "snappop"
 	w_class = ITEMSIZE_TINY
 
-	throw_impact(atom/hit_atom)
-		..()
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(3, 1, src)
-		s.start()
-		new /obj/effect/decal/cleanable/ash(src.loc)
-		src.visible_message("<span class='warning'>The [src.name] explodes!</span>","<span class='warning'>You hear a snap!</span>")
-		playsound(src, 'sound/effects/snap.ogg', 50, 1)
-		qdel(src)
+/obj/item/toy/snappop/throw_impact(atom/hit_atom)
+	..()
+	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+	s.set_up(3, 1, src)
+	s.start()
+	new /obj/effect/debris/cleanable/ash(src.loc)
+	src.visible_message(
+		SPAN_WARNING("The [src.name] explodes!"),
+		SPAN_WARNING("You hear a snap!"),
+		SPAN_HEAR("You hear a snap!"),
+	)
+	playsound(src, 'sound/effects/snap.ogg', 50, TRUE)
+	qdel(src)
 
 /obj/item/toy/snappop/Crossed(atom/movable/H as mob|obj)
 	. = ..()
@@ -332,7 +339,7 @@
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(2, 0, src)
 			s.start()
-			new /obj/effect/decal/cleanable/ash(src.loc)
+			new /obj/effect/debris/cleanable/ash(src.loc)
 			src.visible_message("<span class='warning'>The [src.name] explodes!</span>","<span class='warning'>You hear a snap!</span>")
 			playsound(src, 'sound/effects/snap.ogg', 50, 1)
 			qdel(src)
@@ -1287,6 +1294,11 @@
 	icon_state = "bear_space"
 	pokephrase = "Mission is Grrrreen!"
 
+/obj/item/toy/plushie/doll
+	name = "Black and white doll"
+	icon_state = "doll"
+	pokephrase = ""
+
 //Toy cult sword
 /obj/item/toy/cultsword
 	name = "foam sword"
@@ -1294,8 +1306,8 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "cultblade"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 		)
 	w_class = ITEMSIZE_LARGE
 	attack_verb = list("attacked", "slashed", "stabbed", "poked")
@@ -1518,7 +1530,7 @@
 	icon_state = "tinyxmastree"
 	w_class = ITEMSIZE_TINY
 	force = 1
-	throwforce = 1
+	throw_force = 1
 
 //Dakimakuras, ported from Main.
 
@@ -1570,69 +1582,69 @@
 
 /obj/item/chess
 	name = "Chess Piece"
-	icon = 'icons/obj/cardboard_cutout.dmi'
-	icon_state = "cutout_basic"
+	icon = 'icons/obj/chess.dmi'
+	icon_state = "w-queen"
 	desc = "Some sort of novelty chess piece."
 
 /obj/item/chess/wpawn
 	name = "White Pawn"
 	desc = "A Novelty chess piece in the image of an assistant representing a white pawn."
-	icon_state = "cutout_greytide"
+	icon_state = "w-pawn"
 
 /obj/item/chess/bpawn
 	name = "Black Pawn"
 	desc = "A Novelty chess piece in the image of a filthy unionizing employee, representing a black pawn."
-	icon_state = "cutout_viva"
+	icon_state = "b-pawn"
 
 /obj/item/chess/bknight
 	name = "Black Knight"
 	desc = "A Novelty chess piece in the image of a corporate traitor representing a black knight."
-	icon_state = "cutout_traitor"
+	icon_state = "b-knight"
 
 /obj/item/chess/wknight
-	icon_state = "cutout_clown"
+	icon_state = "w-knight"
 	name = "White Knight"
 	desc = "A Novelty chess piece in the image of a brave clown representing a white knight."
 
 /obj/item/chess/brook
 	name = "Black Rook"
 	desc = "A Novelty chess piece in the image of a mercenary commando representing a black rook."
-	icon_state = "cutout_fluke"
+	icon_state = "b-rook"
 
 /obj/item/chess/wrook
 	name = "White Rook"
 	desc = "A Novelty chess piece in the image of a loyal security officer representing a white rook."
-	icon_state = "cutout_ntsec"
+	icon_state = "w-rook"
 
 /obj/item/chess/bbishop
 	name = "Black Bishop"
 	desc = "A Novelty chess piece in the image of a vile mercenary swordsman representing a black bishop."
-	icon_state = "cutout_stabfluke"
+	icon_state = "b-bishop"
 
 /obj/item/chess/wbishop
 	name = "White Bishop"
 	desc = "A Novelty chess piece in the image of a noble mime representing a white bishop."
-	icon_state = "cutout_mime"
+	icon_state = "w-bishop"
 
 /obj/item/chess/bqueen
 	name = "Black Queen"
 	desc = "A Novelty chess piece in the image of a super elite mercenary raider representing a black queen."
-	icon_state = "cutout_supfluke"
+	icon_state = "b-queen"
 
 /obj/item/chess/wqueen
 	name = "White Queen"
 	desc = "A Novelty chess piece in the image of a heoric member of asset protection representing a white queen."
-	icon_state = "cutout_deathsquad"
+	icon_state = "w-queen"
 
 /obj/item/chess/bking
 	name = "Black King"
 	desc = "A Novelty chess piece in the image of a strange and vile creature representing a black king."
-	icon_state = "cutout_gondola"
+	icon_state = "b-king"
 
 /obj/item/chess/wking
 	name = "White King"
 	desc = "A Novelty chess piece in the image of the most important asset on the station representing a white king."
-	icon_state = "cutout_ian"
+	icon_state = "w-king"
 
 /obj/item/checker
 	name = "Checker Piece"

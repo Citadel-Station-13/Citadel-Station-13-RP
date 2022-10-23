@@ -88,7 +88,7 @@ FLOOR SAFES
 	var/mob/living/carbon/human/user = usr
 
 	var/canhear = 0
-	if(user.get_type_in_hands(/obj/item/clothing/accessory/stethoscope))
+	if(user.get_held_item_of_type(/obj/item/clothing/accessory/stethoscope))
 		canhear = 1
 
 	if(href_list["open"])
@@ -146,9 +146,9 @@ FLOOR SAFES
 /obj/structure/safe/attackby(obj/item/I as obj, mob/user as mob)
 	if(open)
 		if(I.w_class + space <= maxspace)
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			space += I.w_class
-			user.drop_item()
-			I.loc = src
 			to_chat(user, "<span class='notice'>You put [I] in \the [src].</span>")
 			updateUsrDialog()
 			return
@@ -161,7 +161,7 @@ FLOOR SAFES
 			return
 
 
-obj/structure/safe/ex_act(severity)
+/obj/structure/safe/ex_act(severity)
 	return
 
 //FLOOR SAFES

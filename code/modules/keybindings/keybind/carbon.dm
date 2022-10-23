@@ -17,6 +17,18 @@
 	C.toggle_throw_mode()
 	return TRUE
 
+/datum/keybinding/carbon/overhand_throw_mode
+	hotkey_keys = list("CtrlR", "CtrlSouthwest")
+	name = "overhand_throw_mode"
+	full_name = "Throw item overhand"
+	description = "Toggle throwing the current item overhand or not"
+	category = CATEGORY_CARBON
+
+/datum/keybinding/carbon/overhand_throw_mode/down(client/user)
+	var/mob/living/carbon/C = user.mob
+	C.toggle_throw_mode(TRUE)
+	return TRUE
+
 /datum/keybinding/carbon/select_help_intent
 	hotkey_keys = list("1")
 	name = "select_help_intent"

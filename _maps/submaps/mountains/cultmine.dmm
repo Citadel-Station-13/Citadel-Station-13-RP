@@ -14,7 +14,7 @@
 /area/submap/cave/cultmine)
 "ae" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/cave/cultmine)
 "af" = (
@@ -41,7 +41,7 @@
 "ah" = (
 /obj/structure/bed/chair/office/light,
 /obj/effect/decal/remains/human,
-/obj/effect/decal/cleanable/mucus,
+/obj/effect/debris/cleanable/mucus,
 /mob/living/simple_mob/humanoid/merc/melee,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/cave/cultmine)
@@ -53,16 +53,16 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/cave/cultmine)
 "ak" = (
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /obj/structure/closet/toolcloset,
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/cave/cultmine)
 "al" = (
 /obj/structure/fans/tiny,
 /obj/effect/decal/remains/human,
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/blood,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/generic,
 /obj/random/projectile,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
@@ -72,37 +72,37 @@
 	dir = 1
 	},
 /obj/item/clothing/glasses/meson,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/cave/cultmine)
 "an" = (
 /obj/structure/door_assembly/door_assembly_highsecurity{
 	anchored = 1
 	},
-/obj/effect/decal/cleanable/blood/oil,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/blood/oil,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "ao" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "ap" = (
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "aq" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/cobweb,
 /obj/effect/mine/training,
 /turf/simulated/floor/plating,
 /area/submap/cave/cultmine)
 "ar" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/plating,
 /area/submap/cave/cultmine)
 "as" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/boulder,
 /turf/simulated/floor/plating,
 /area/submap/cave/cultmine)
@@ -118,7 +118,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "aw" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/cave/cultmine)
 "ax" = (
@@ -128,19 +128,19 @@
 /area/submap/cave/cultmine)
 "ay" = (
 /obj/item/mecha_parts/mecha_equipment/tool/hydraulic_clamp,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/cave/cultmine)
 "az" = (
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /obj/structure/closet/radiation,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/greenglow,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/greenglow,
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/cave/cultmine)
 "aA" = (
 /obj/structure/ore_box,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/cave/cultmine)
 "aB" = (
@@ -149,7 +149,7 @@
 /area/submap/cave/cultmine)
 "aC" = (
 /obj/item/storage/toolbox/syndicate,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "aD" = (
@@ -167,7 +167,7 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/cave/cultmine)
 "aG" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/lino,
 /area/submap/cave/cultmine)
 "aH" = (
@@ -194,7 +194,7 @@
 "aM" = (
 /obj/structure/table/steel,
 /obj/machinery/microwave,
-/obj/effect/decal/cleanable/cobweb,
+/obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "aN" = (
@@ -216,7 +216,7 @@
 /area/submap/cave/cultmine)
 "aQ" = (
 /obj/structure/door_assembly/door_assembly_hatch,
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/plating,
 /area/submap/cave/cultmine)
 "aR" = (
@@ -239,24 +239,24 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/cave/cultmine)
 "aV" = (
-/obj/effect/decal/cleanable/generic,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/generic,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "aW" = (
 /obj/structure/bed/chair,
-/obj/effect/decal/cleanable/vomit,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/vomit,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "aX" = (
 /obj/structure/bed/chair,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "aY" = (
 /obj/structure/bed/chair,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /mob/living/simple_mob/humanoid/merc/ranged/space,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
@@ -276,8 +276,8 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/cultmine)
 "bc" = (
-/obj/effect/decal/cleanable/liquid_fuel,
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/cultmine)
 "bd" = (
@@ -291,7 +291,7 @@
 	dir = 10;
 	icon_state = "destroyed_target_prism"
 	},
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/cultmine)
 "bf" = (
@@ -301,7 +301,7 @@
 "bg" = (
 /obj/structure/table/steel,
 /obj/item/reagent_containers/food/snacks/syndicake,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "bh" = (
@@ -323,11 +323,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "bk" = (
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/cultmine)
 "bl" = (
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /mob/living/simple_mob/vore/aggressive/deathclaw,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/cultmine)
@@ -340,12 +340,12 @@
 /area/submap/cave/cultmine)
 "bo" = (
 /obj/effect/decal/mecha_wreckage/ripley/deathripley,
-/obj/effect/decal/cleanable/liquid_fuel,
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/cultmine)
 "bp" = (
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "bq" = (
@@ -362,16 +362,16 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/cave/cultmine)
 "bt" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/white,
 /area/submap/cave/cultmine)
 "bu" = (
-/obj/effect/decal/cleanable/greenglow,
+/obj/effect/debris/cleanable/greenglow,
 /obj/structure/closet/coffin,
 /turf/simulated/floor/tiled/white,
 /area/submap/cave/cultmine)
 "bv" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/cultmine)
 "bw" = (
@@ -380,7 +380,7 @@
 /area/submap/cave/cultmine)
 "bx" = (
 /obj/effect/decal/remains/human,
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/cultmine)
 "by" = (
@@ -405,7 +405,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "bC" = (
-/obj/effect/decal/cleanable/mucus,
+/obj/effect/debris/cleanable/mucus,
 /turf/simulated/floor/tiled/white,
 /area/submap/cave/cultmine)
 "bD" = (
@@ -422,13 +422,13 @@
 	pixel_x = 2;
 	pixel_y = 7
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "bG" = (
 /obj/structure/table/steel,
 /obj/item/reagent_containers/food/snacks/liquidfood,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "bH" = (
@@ -441,25 +441,25 @@
 /turf/simulated/wall,
 /area/submap/cave/cultmine)
 "bJ" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/vomit,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/blood,
+/obj/effect/debris/cleanable/vomit,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/white,
 /area/submap/cave/cultmine)
 "bK" = (
-/obj/effect/decal/cleanable/blood/writing,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/blood/writing,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/organ/internal/brain,
 /turf/simulated/floor/tiled/white,
 /area/submap/cave/cultmine)
 "bL" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/blood,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/white,
 /area/submap/cave/cultmine)
 "bM" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/debris/cleanable/blood,
+/obj/effect/debris/cleanable/vomit,
 /obj/item/organ/internal/brain/pariah_brain,
 /turf/simulated/floor/tiled/white,
 /area/submap/cave/cultmine)
@@ -467,14 +467,14 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /mob/living/simple_mob/humanoid/merc/ranged/space,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "bO" = (
 /obj/machinery/optable,
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/blood,
+/obj/effect/debris/cleanable/dirt,
 /obj/effect/decal/remains/mummy1,
 /turf/simulated/floor/tiled/white,
 /area/submap/cave/cultmine)
@@ -486,19 +486,19 @@
 "bQ" = (
 /obj/structure/table/standard,
 /obj/item/storage/toolbox/mechanical,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/white,
 /area/submap/cave/cultmine)
 "bR" = (
 /obj/machinery/optable,
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/mucus,
+/obj/effect/debris/cleanable/blood,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/mucus,
 /turf/simulated/floor/tiled/white,
 /area/submap/cave/cultmine)
 "bS" = (
 /obj/structure/bed/roller,
-/obj/effect/decal/cleanable/vomit,
+/obj/effect/debris/cleanable/vomit,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "bT" = (
@@ -508,7 +508,7 @@
 /area/submap/cave/cultmine)
 "bU" = (
 /obj/structure/bed/roller,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "bV" = (
@@ -537,18 +537,18 @@
 /area/submap/cave/cultmine)
 "ca" = (
 /obj/structure/closet/coffin,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/greenglow,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/greenglow,
 /turf/simulated/floor/tiled/freezer,
 /area/submap/cave/cultmine)
 "cb" = (
 /obj/structure/boulder,
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "cc" = (
-/obj/effect/decal/cleanable/ash,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/ash,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/lino,
 /area/submap/cave/cultmine)
 "cd" = (
@@ -564,14 +564,14 @@
 /area/submap/cave/cultmine)
 "cg" = (
 /obj/item/storage/fancy/candle_box,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/liquid_fuel,
 /mob/living/simple_mob/faithless,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "ch" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/generic,
 /mob/living/simple_mob/faithless,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
@@ -592,7 +592,7 @@
 /area/submap/cave/cultmine)
 "cl" = (
 /obj/structure/table/steel,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "cm" = (
@@ -609,7 +609,7 @@
 "co" = (
 /obj/structure/grille/broken,
 /obj/structure/lattice,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/cultmine)
 "cp" = (
@@ -692,7 +692,7 @@
 /area/submap/cave/cultmine)
 "cH" = (
 /obj/effect/decal/remains/human,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/cultmine)
 "cI" = (
@@ -730,7 +730,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/submap/cave/cultmine)
 "cP" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/lino,
 /area/submap/cave/cultmine)
@@ -781,21 +781,21 @@
 /area/submap/cave/cultmine)
 "cV" = (
 /obj/machinery/light_construct/small,
-/obj/effect/decal/cleanable/ash,
+/obj/effect/debris/cleanable/ash,
 /mob/living/simple_mob/vore/aggressive/mimic,
 /turf/simulated/floor/tiled/freezer,
 /area/submap/cave/cultmine)
 "cW" = (
 /obj/structure/bed/roller,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /obj/item/storage/quickdraw/syringe_case,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "cX" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ash,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/ash,
 /obj/structure/boulder,
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/greengrid,
 /area/submap/cave/cultmine)
 "cY" = (
@@ -805,15 +805,15 @@
 /area/submap/cave/cultmine)
 "cZ" = (
 /obj/structure/fans/tiny,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/freezer,
 /area/submap/cave/cultmine)
 "da" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/freezer,
 /area/submap/cave/cultmine)
 "db" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /mob/living/simple_mob/construct/shade,
 /turf/simulated/floor/tiled/freezer,
 /area/submap/cave/cultmine)
@@ -821,7 +821,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/machinery/light/small{
 	dir = 4
 	},
@@ -829,7 +829,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "dd" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/item/storage/bible/booze,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
@@ -839,43 +839,43 @@
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "df" = (
-/obj/effect/decal/cleanable/ash,
+/obj/effect/debris/cleanable/ash,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "dg" = (
-/obj/effect/decal/cleanable/liquid_fuel,
-/obj/effect/decal/cleanable/ash,
+/obj/effect/debris/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/ash,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/cultmine)
 "dh" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/blood,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/boulder,
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/greengrid,
 /area/submap/cave/cultmine)
 "di" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/cult,
 /area/submap/cave/cultmine)
 "dj" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "dk" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/blood/drip,
 /obj/structure/boulder,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "dl" = (
-/obj/effect/decal/cleanable/blood/writing,
+/obj/effect/debris/cleanable/blood/writing,
 /mob/living/simple_mob/faithless/strong,
 /turf/simulated/floor/cult,
 /area/submap/cave/cultmine)
 "dm" = (
-/obj/effect/decal/cleanable/blood/writing,
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood/writing,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/cult,
 /area/submap/cave/cultmine)
 "dn" = (
@@ -888,34 +888,34 @@
 /area/submap/cave/cultmine)
 "dp" = (
 /obj/item/clothing/glasses/night,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "dq" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/cave/cultmine)
 "dr" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/effect/decal/remains/robot,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/cave/cultmine)
 "ds" = (
 /obj/effect/decal/remains/robot,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "dt" = (
 /obj/effect/decal/mecha_wreckage/gorilla,
-/obj/effect/decal/cleanable/blood/oil,
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/blood/oil,
+/obj/effect/debris/cleanable/generic,
 /obj/effect/decal/remains/robot,
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "du" = (
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/tiled/white,
 /area/submap/cave/cultmine)
 "dv" = (
@@ -925,7 +925,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "dw" = (
-/obj/effect/decal/cleanable/generic,
+/obj/effect/debris/cleanable/generic,
 /mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
@@ -946,8 +946,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "dA" = (
-/obj/effect/decal/cleanable/generic,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/generic,
+/obj/effect/debris/cleanable/dirt,
 /obj/random/junk,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
@@ -965,19 +965,19 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/cultmine)
 "dE" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/blood/oil,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "dF" = (
-/obj/effect/decal/cleanable/ash,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/ash,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "dG" = (
 /obj/structure/table/steel,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/floor/tiled/dark,
 /area/submap/cave/cultmine)
 "dH" = (

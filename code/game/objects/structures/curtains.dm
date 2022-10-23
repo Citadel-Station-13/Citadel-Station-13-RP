@@ -38,7 +38,7 @@
 
 /obj/structure/curtain/attackby(obj/item/P, mob/user)
 	if(P.is_wirecutter())
-		playsound(src, P.usesound, 50, 1)
+		playsound(src, P.tool_sound, 50, 1)
 		to_chat(user, "<span class='notice'>You start to cut the shower curtains.</span>")
 		if(do_after(user, 10))
 			to_chat(user, "<span class='notice'>You cut the shower curtains.</span>")

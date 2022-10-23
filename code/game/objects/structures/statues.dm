@@ -6,7 +6,6 @@
 	icon_state = ""
 	density = 1
 	anchored = 0
-	can_atmos_pass = ATMOS_PASS_DENSITY
 	var/hardness = 1
 	var/oreAmount = 7
 	var/materialType = "steel"
@@ -23,7 +22,7 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
 			user.visible_message("[user] is loosening the [name]'s bolts.", \
 								 "<span class='notice'>You are loosening the [name]'s bolts...</span>")
-			if(do_after(user,40/W.toolspeed, target = src))
+			if(do_after(user,40/W.tool_speed, target = src))
 				if(!src.loc || !anchored)
 					return
 				user.visible_message("[user] loosened the [name]'s bolts!", \
@@ -36,7 +35,7 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
 			user.visible_message("[user] is securing the [name]'s bolts...", \
 								 "<span class='notice'>You are securing the [name]'s bolts...</span>")
-			if(do_after(user, 40/W.toolspeed, target = src))
+			if(do_after(user, 40/W.tool_speed, target = src))
 				if(!src.loc || anchored)
 					return
 				user.visible_message("[user] has secured the [name]'s bolts.", \
@@ -70,7 +69,7 @@
 		playsound(loc, 'sound/items/Welder.ogg', 40, 1)
 		user.visible_message("[user] is slicing apart the [name].", \
 							 "<span class='notice'>You are slicing apart the [name]...</span>")
-		if(do_after(user, 40/W.toolspeed, target = src))
+		if(do_after(user, 40/W.tool_speed, target = src))
 			if(!src.loc)
 				return
 			playsound(loc, 'sound/items/Welder2.ogg', 50, 1)
@@ -336,3 +335,15 @@
 	name = "eroded skull statue"
 	desc = "An eroded pillar depicting the skull of some forgotten beast."
 	icon_state = "skull-half"
+
+//////////////////Memorial/////////////////
+/obj/structure/memorial
+	name = "Memorial Wall"
+	desc = "An obsidian memorial wall listing the names of NanoTrasen employees who have fallen in the pursuit of the Company's goals - both scientific and political."
+	icon = 'icons/obj/structures_64x.dmi'
+	icon_state = "memorial"
+
+	density = TRUE
+	anchored = TRUE
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_OVERHEAD_THROW
+	climbable = TRUE

@@ -6,7 +6,7 @@
 
 /obj/item/integrated_electronics/wirer
 	name = "circuit wirer"
-	desc = "It's a small wiring tool, with a wire roll, electric soldering iron, wire cutter, and more in one package. \
+	desc = "It's a small wiring tool, with a wire roll, electric soldering iron, wire cutter, and more in one package.  \
 	The wires used are generally useful for small electronics, such as circuitboards and breadboards, as opposed to larger wires \
 	used for power or data transmission."
 	icon = 'icons/obj/integrated_electronics/electronic_tools.dmi'
@@ -23,67 +23,59 @@
 	if(!io.holder.assembly)
 		to_chat(user, "<span class='warning'>\The [io.holder] needs to be secured inside an assembly first.</span>")
 		return
-	if(mode == WIRE)
-		selected_io = io
-		to_chat(user, "<span class='notice'>You attach a data wire to \the [selected_io.holder]'s [selected_io.name] data channel.</span>")
-		mode = WIRING
-		update_icon()
-	else if(mode == WIRING)
-		if(!selected_io)
+	switch(mode)
+		if(WIRE)
+			selected_io = io
+			to_chat(user, "<span class='notice'>You attach a data wire to \the [selected_io.holder]'s [selected_io.name] data channel.</span>")
+			mode = WIRING
+			update_icon()
+		if(WIRING)
+			if(io == selected_io)
+				to_chat(user, "<span class='warning'>Wiring \the [selected_io.holder]'s [selected_io.name] into itself is rather pointless.</span>")
+				return
+			if(io.io_type != selected_io.io_type)
+				to_chat(user, "<span class='warning'>Those two types of channels are incompatible.  The first is a [selected_io.io_type], \
+				while the second is a [io.io_type].</span>")
+				return
+			if(io.holder.assembly && io.holder.assembly != selected_io.holder.assembly)
+				to_chat(user, "<span class='warning'>Both \the [io.holder] and \the [selected_io.holder] need to be inside the same assembly.</span>")
+				return
+			selected_io.connect_pin(io)
+
+			to_chat(user, "<span class='notice'>You connect \the [selected_io.holder]'s [selected_io.name] to \the [io.holder]'s [io.name].</span>")
 			mode = WIRE
-			.()
-		if(io == selected_io)
-			to_chat(user, "<span class='warning'>Wiring \the [selected_io.holder]'s [selected_io.name] into itself is rather pointless.</span>")
-			return
-		if(io.io_type != selected_io.io_type)
-			to_chat(user, "<span class='warning'>Those two types of channels are incompatable.  The first is a [selected_io.io_type], \
-			while the second is a [io.io_type].</span>")
-			return
-		if(io.holder.assembly && io.holder.assembly != selected_io.holder.assembly)
-			to_chat(user, "<span class='warning'>Both \the [io.holder] and \the [selected_io.holder] need to be inside the same assembly.</span>")
-			return
-		selected_io.linked |= io
-		io.linked |= selected_io
-
-		to_chat(user, "<span class='notice'>You connect \the [selected_io.holder]'s [selected_io.name] to \the [io.holder]'s [io.name].</span>")
-		mode = WIRE
-		update_icon()
-		selected_io.holder.interact(user) // This is to update the UI.
-		selected_io = null
-
-	else if(mode == UNWIRE)
-		selected_io = io
-		if(!io.linked.len)
-			to_chat(user, "<span class='warning'>There is nothing connected to \the [selected_io] data channel.</span>")
-			selected_io = null
-			return
-		to_chat(user, "<span class='notice'>You prepare to detach a data wire from \the [selected_io.holder]'s [selected_io.name] data channel.</span>")
-		mode = UNWIRING
-		update_icon()
-		return
-
-	else if(mode == UNWIRING)
-		if(!selected_io)
-			mode = UNWIRE
-			.()
-		if(io == selected_io)
-			to_chat(user, "<span class='warning'>You can't wire a pin into each other, so unwiring \the [selected_io.holder] from \
-			the same pin is rather moot.</span>")
-			return
-		if(selected_io in io.linked)
-			io.linked.Remove(selected_io)
-			selected_io.linked.Remove(io)
-			to_chat(user, "<span class='notice'>You disconnect \the [selected_io.holder]'s [selected_io.name] from \
-			\the [io.holder]'s [io.name].</span>")
+			update_icon()
 			selected_io.holder.interact(user) // This is to update the UI.
 			selected_io = null
-			mode = UNWIRE
+
+		if(UNWIRE)
+			selected_io = io
+			if(!io.linked.len)
+				to_chat(user, "<span class='warning'>There is nothing connected to \the [selected_io] data channel.</span>")
+				selected_io = null
+				return
+			to_chat(user, "<span class='notice'>You prepare to detach a data wire from \the [selected_io.holder]'s [selected_io.name] data channel.</span>")
+			mode = UNWIRING
 			update_icon()
-		else
-			to_chat(user, "<span class='warning'>\The [selected_io.holder]'s [selected_io.name] and \the [io.holder]'s \
-			[io.name] are not connected.</span>")
 			return
-	return
+
+		if(UNWIRING)
+			if(io == selected_io)
+				to_chat(user, "<span class='warning'>You can't wire a pin into each other, so unwiring \the [selected_io.holder] from \
+				the same pin is rather moot.</span>")
+				return
+			if(selected_io in io.linked)
+				selected_io.disconnect_pin(io)
+				to_chat(user, "<span class='notice'>You disconnect \the [selected_io.holder]'s [selected_io.name] from \
+				\the [io.holder]'s [io.name].</span>")
+				selected_io.holder.interact(user) // This is to update the UI.
+				selected_io = null
+				mode = UNWIRE
+				update_icon()
+			else
+				to_chat(user, "<span class='warning'>\The [selected_io.holder]'s [selected_io.name] and \the [io.holder]'s \
+				[io.name] are not connected.</span>")
+				return
 
 /obj/item/integrated_electronics/wirer/attack_self(mob/user)
 	switch(mode)
@@ -115,36 +107,47 @@
 	settings to specific circuits, or for debugging purposes.  It can also pulse activation pins."
 	icon = 'icons/obj/integrated_electronics/electronic_tools.dmi'
 	icon_state = "debugger"
-	w_class = 2
+	w_class = ITEMSIZE_SMALL
 	var/data_to_write = null
-	var/accepting_refs = 0
+	var/accepting_refs = FALSE
+	var/copy_values = FALSE
 
 /obj/item/integrated_electronics/debugger/attack_self(mob/user)
-	var/type_to_use = input("Please choose a type to use.","[src] type setting") as null|anything in list("string","number","ref", "null")
-	if(!CanInteract(user, physical_state))
+	var/type_to_use = tgui_input_list(usr, "Please choose a type to use.","[src] type setting", list("string","number","ref", "copy", "list", "null"))
+	if(!CanInteract(user, GLOB.physical_state))
 		return
 
 	var/new_data = null
 	switch(type_to_use)
 		if("string")
-			accepting_refs = 0
-			new_data = input("Now type in a string.","[src] string writing") as null|text
+			accepting_refs = FALSE
+			copy_values = FALSE
+			new_data = input(usr, "Now type in a string.","[src] string writing") as null|text
 			new_data = sanitizeSafe(new_data, MAX_MESSAGE_LEN, 0, 0)
-			if(istext(new_data) && CanInteract(user, physical_state))
+			if(istext(new_data) && CanInteract(user, GLOB.physical_state))
 				data_to_write = new_data
 				to_chat(user, "<span class='notice'>You set \the [src]'s memory to \"[new_data]\".</span>")
 		if("number")
-			accepting_refs = 0
-			new_data = input("Now type in a number.","[src] number writing") as null|num
-			if(isnum(new_data) && CanInteract(user, physical_state))
+			accepting_refs = FALSE
+			copy_values = FALSE
+			new_data = input(usr, "Now type in a number.","[src] number writing") as null|num
+			if(isnum(new_data) && CanInteract(user, GLOB.physical_state))
 				data_to_write = new_data
 				to_chat(user, "<span class='notice'>You set \the [src]'s memory to [new_data].</span>")
 		if("ref")
-			accepting_refs = 1
+			accepting_refs = TRUE
+			copy_values = FALSE
 			to_chat(user, "<span class='notice'>You turn \the [src]'s ref scanner on.  Slide it across \
 			an object for a ref of that object to save it in memory.</span>")
+		if("copy")
+			accepting_refs = FALSE
+			copy_values = TRUE
+			to_chat(user, "<span class='notice'>You turn \the [src]'s value copier on.  Use it on a pin \
+			to save its current value in memory.</span>")
 		if("null")
 			data_to_write = null
+			accepting_refs = FALSE
+			copy_values = FALSE
 			to_chat(user, "<span class='notice'>You set \the [src]'s memory to absolutely nothing.</span>")
 
 /obj/item/integrated_electronics/debugger/afterattack(atom/target, mob/living/user, proximity)
@@ -153,25 +156,41 @@
 		visible_message("<span class='notice'>[user] slides \a [src]'s over \the [target].</span>")
 		to_chat(user, "<span class='notice'>You set \the [src]'s memory to a reference to [target.name] \[Ref\].  The ref scanner is \
 		now off.</span>")
-		accepting_refs = 0
+		accepting_refs = FALSE
 
 /obj/item/integrated_electronics/debugger/proc/write_data(var/datum/integrated_io/io, mob/user)
+	//If the pin can take data:
 	if(io.io_type == DATA_CHANNEL)
+		//If the debugger is set to copy, copy the data in the pin onto it
+		if(copy_values)
+			data_to_write = io.data
+			to_chat(user, "<span class='notice'>You let the debugger copy the data.</span>")
+			copy_values = FALSE
+			return
+
+		//Else, write the data to the pin
 		io.write_data_to_pin(data_to_write)
 		var/data_to_show = data_to_write
+		//This is only to convert a weakref into a name for better output
 		if(isweakref(data_to_write))
 			var/datum/weakref/w = data_to_write
 			var/atom/A = w.resolve()
 			data_to_show = A.name
 		to_chat(user, "<span class='notice'>You write '[data_to_write ? data_to_show : "NULL"]' to the '[io]' pin of \the [io.holder].</span>")
+
+	//If the pin can only be pulsed
 	else if(io.io_type == PULSE_CHANNEL)
-		io.holder.check_then_do_work(ignore_power = TRUE)
+		io.holder.check_then_do_work(io.ord, ignore_power = TRUE)
 		to_chat(user, "<span class='notice'>You pulse \the [io.holder]'s [io].</span>")
 
 	io.holder.interact(user) // This is to update the UI.
 
-
-
+/obj/item/integrated_electronics/analyzer
+	name = "circuit analyzer"
+	desc = "This tool can scan an assembly and generate code necessary to recreate it in a circuit printer."
+	icon = 'icons/obj/integrated_electronics/electronic_tools.dmi'
+	icon_state = "analyzer"
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/multitool
 	var/accepting_refs
@@ -278,6 +297,7 @@
 		/obj/item/integrated_electronics,
 		/obj/item/tool/crowbar,
 		/obj/item/tool/screwdriver,
+		/obj/item/tool/wrench,
 		/obj/item/multitool
 		)
 	cant_hold = list(/obj/item/tool/screwdriver/power)
@@ -301,6 +321,7 @@
 	new /obj/item/multitool(src)
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wrench(src)
 	make_exact_fit()
 
 /obj/item/storage/bag/circuits/all/PopulateContents()

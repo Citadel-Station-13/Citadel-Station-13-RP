@@ -6,83 +6,66 @@
 GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 
 /datum/hud
-	var/obj/screen/grab_intent
-	var/obj/screen/hurt_intent
-	var/obj/screen/disarm_intent
-	var/obj/screen/help_intent
+	var/atom/movable/screen/grab_intent
+	var/atom/movable/screen/hurt_intent
+	var/atom/movable/screen/disarm_intent
+	var/atom/movable/screen/help_intent
 
 /datum/global_hud
-	var/obj/screen/druggy
-	var/obj/screen/blurry
-	var/obj/screen/whitense
-	var/list/vimpaired
+	var/atom/movable/screen/whitense
 	var/list/darkMask
-	var/obj/screen/centermarker
-	var/obj/screen/darksight
-	var/obj/screen/nvg
-	var/obj/screen/thermal
-	var/obj/screen/meson
-	var/obj/screen/science
-	var/obj/screen/material
-	var/obj/screen/yellow
-	var/obj/screen/blue
-	var/obj/screen/pink
-	var/obj/screen/beige
-	var/obj/screen/orange
-	var/obj/screen/holomap
+	var/atom/movable/screen/centermarker
+	var/atom/movable/screen/darksight
+	var/atom/movable/screen/nvg
+	var/atom/movable/screen/thermal
+	var/atom/movable/screen/meson
+	var/atom/movable/screen/science
+	var/atom/movable/screen/material
+	var/atom/movable/screen/yellow
+	var/atom/movable/screen/blue
+	var/atom/movable/screen/pink
+	var/atom/movable/screen/beige
+	var/atom/movable/screen/orange
+	var/atom/movable/screen/holomap
 
-/datum/global_hud/proc/setup_overlay(var/icon_state, color)
-	var/obj/screen/screen = new /obj/screen()
+/datum/global_hud/proc/setup_overlay(var/icon_state)
+	var/atom/movable/screen/screen = new /atom/movable/screen()
 	screen.screen_loc = "CENTER-7,CENTER-7"
 	screen.icon = 'icons/obj/hud_full.dmi'
 	screen.icon_state = icon_state
 	screen.layer = SCREEN_LAYER
-	screen.plane = PLANE_FULLSCREEN
+	screen.plane = FULLSCREEN_PLANE
 	screen.mouse_opacity = 0
 	screen.alpha = 125
 	screen.color = color
 	screen.blend_mode = BLEND_MULTIPLY
 	return screen
 
-
-/obj/screen/global_screen
-	screen_loc = "CENTER,CENTER"
-	plane = PLANE_FULLSCREEN
+/atom/movable/screen/global_screen
+	screen_loc = ui_entire_screen
+	plane = FULLSCREEN_PLANE
 	mouse_opacity = 0
 
-/datum/global_hud/New(client/C)
-
-	var/matrix/M = matrix()
-	if(C)
-		M.Scale(ceil(C.last_view_x_dim/7),ceil(C.last_view_y_dim/7)) // probably doesn't work.
-
-	//420erryday psychedellic colours screen overlay for when you are high
-	druggy = new /obj/screen/global_screen()
-	druggy.icon_state = "druggy"
-	druggy.transform = M
-	//that white blurry effect you get when you eyes are damaged
-	blurry = new /obj/screen/global_screen()
-	blurry.icon_state = "blurry"
-	blurry.transform = M
+/datum/global_hud/New()
 	//static overlay effect for cameras and the like
-	whitense = new /obj/screen/global_screen()
+	whitense = new /atom/movable/screen/global_screen()
 	whitense.icon = 'icons/effects/static.dmi'
 	whitense.icon_state = "1 light"
 	whitense.transform = M
 	//darksight 'hanger' for attached icons
-	darksight = new /obj/screen()
+	darksight = new /atom/movable/screen()
 	darksight.icon = null
 	darksight.screen_loc = "CENTER-7,CENTER-7"
-	darksight.plane = PLANE_LIGHTING
+	darksight.plane = LIGHTING_PLANE
 
 	//Marks the center of the screen, for things like ventcrawl
-	centermarker = new /obj/screen()
+	centermarker = new /atom/movable/screen()
 	centermarker.icon = 'icons/mob/screen1.dmi'
 	centermarker.icon_state = "centermarker"
 	centermarker.screen_loc = "CENTER,CENTER"
 
 	//Marks the center of the screen, for things like ventcrawl
-	centermarker = new /obj/screen()
+	centermarker = new /atom/movable/screen()
 	centermarker.icon = 'icons/mob/screen1.dmi'
 	centermarker.icon_state = "centermarker"
 	centermarker.screen_loc = "CENTER,CENTER"
@@ -101,30 +84,17 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	// Why do they work this way? I don't know really, that is how /vg designed them, but since they DO
 	// work this way, we can take advantage of their immutability by making them part of
 	// the global_hud (something we have and /vg doesn't) instead of an instance per mob.
-	holomap = new /obj/screen()
+	holomap = new /atom/movable/screen()
 	holomap.name = "holomap"
 	holomap.icon = null
 	holomap.screen_loc = ui_holomap
 	holomap.mouse_opacity = 0
 
-	var/obj/screen/O
-	//that nasty looking dither you  get when you're short-sighted
-	vimpaired = newlist(/obj/screen,/obj/screen,/obj/screen,/obj/screen)
-	O = vimpaired[1]
-	O.screen_loc = "1,1 to 5,15"
-	O.plane = PLANE_FULLSCREEN
-	O = vimpaired[2]
-	O.screen_loc = "5,1 to 10,5"
-	O.plane = PLANE_FULLSCREEN
-	O = vimpaired[3]
-	O.screen_loc = "6,11 to 10,15"
-	O.plane = PLANE_FULLSCREEN
-	O = vimpaired[4]
-	O.screen_loc = "11,1 to 15,15"
-	O.plane = PLANE_FULLSCREEN
+	var/atom/movable/screen/O
+	var/i
 
 	//welding mask overlay black/dither
-/* 	darkMask = newlist(/obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen, /obj/screen) // We must fix this.
+	darkMask = newlist(/atom/movable/screen, /atom/movable/screen, /atom/movable/screen, /atom/movable/screen, /atom/movable/screen, /atom/movable/screen, /atom/movable/screen, /atom/movable/screen)
 	O = darkMask[1]
 	O.screen_loc = "WEST+2,SOUTH+2 to WEST+4,NORTH-2"
 	O = darkMask[2]
@@ -143,21 +113,16 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	O.screen_loc = "WEST+2,NORTH-1 to EAST-2,NORTH"
 
 	for(i = 1, i <= 4, i++)
-		O = vimpaired[i]
-		O.icon_state = "dither50"
-		O.plane = PLANE_FULLSCREEN
-		O.mouse_opacity = 0
-
 		O = darkMask[i]
 		O.icon_state = "dither50"
-		O.plane = PLANE_FULLSCREEN
+		O.plane = FULLSCREEN_PLANE
 		O.mouse_opacity = 0
 
 	for(i = 5, i <= 8, i++)
 		O = darkMask[i]
 		O.icon_state = "black"
-		O.plane = PLANE_FULLSCREEN
-		O.mouse_opacity = 2 */
+		O.plane = FULLSCREEN_PLANE
+		O.mouse_opacity = 2
 
 /*
 	The hud datum
@@ -173,26 +138,32 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	var/show_intent_icons = 0
 	var/hotkey_ui_hidden = 0	//This is to hide the buttons that can be used via hotkeys. (hotkeybuttons list of buttons)
 
-	var/obj/screen/lingchemdisplay
-	var/obj/screen/wiz_instability_display
-	var/obj/screen/wiz_energy_display
-	var/obj/screen/blobpwrdisplay
-	var/obj/screen/blobhealthdisplay
-	var/obj/screen/r_hand_hud_object
-	var/obj/screen/l_hand_hud_object
-	var/obj/screen/action_intent
-	var/obj/screen/move_intent
+	var/atom/movable/screen/lingchemdisplay
+	var/atom/movable/screen/wiz_instability_display
+	var/atom/movable/screen/wiz_energy_display
+	var/atom/movable/screen/blobpwrdisplay
+	var/atom/movable/screen/blobhealthdisplay
+	var/atom/movable/screen/r_hand_hud_object
+	var/atom/movable/screen/l_hand_hud_object
+	var/atom/movable/screen/action_intent
+	var/atom/movable/screen/move_intent
 
 	var/list/static_inventory = list() //the screen objects which are static
 
 	var/list/adding
+	///Misc hud elements that are hidden when the hud is minimized
 	var/list/other
+	///Misc hud elements that are always shown even when the hud is minimized
+	var/list/other_important
 	var/list/miniobjs
-	var/list/obj/screen/hotkeybuttons
+	var/list/atom/movable/screen/hotkeybuttons
 
-	var/obj/screen/movable/action_button/hide_toggle/hide_actions_toggle
+	var/atom/movable/screen/movable/action_button/hide_toggle/hide_actions_toggle
 	var/action_buttons_hidden = 0
-	var/list/slot_info
+	/// screen_loc's of slots, by slot id. hands are not slots.
+	var/list/slot_info = list()
+	/// screen_loc's of hands, by index - index is associative NUMBER AS TEXT.
+	var/list/hand_info = list()
 
 	// pending hardsync
 	var/icon/ui_style
@@ -223,6 +194,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	move_intent = null
 	adding = null
 	other = null
+	other_important = null
 	hotkeybuttons = null
 //	item_action_list = null // ?
 	mymob = null
@@ -238,43 +210,43 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 			var/list/hud_data = H.species.hud.gear[gear_slot]
 			if(inventory_shown && hud_shown)
 				switch(hud_data["slot"])
-					if(slot_head)
+					if(SLOT_ID_HEAD)
 						if(H.head)      H.head.screen_loc =      hud_data["loc"]
-					if(slot_shoes)
+					if(SLOT_ID_SHOES)
 						if(H.shoes)     H.shoes.screen_loc =     hud_data["loc"]
-					if(slot_l_ear)
+					if(SLOT_ID_LEFT_EAR)
 						if(H.l_ear)     H.l_ear.screen_loc =     hud_data["loc"]
-					if(slot_r_ear)
+					if(SLOT_ID_RIGHT_EAR)
 						if(H.r_ear)     H.r_ear.screen_loc =     hud_data["loc"]
-					if(slot_gloves)
+					if(SLOT_ID_GLOVES)
 						if(H.gloves)    H.gloves.screen_loc =    hud_data["loc"]
-					if(slot_glasses)
+					if(SLOT_ID_GLASSES)
 						if(H.glasses)   H.glasses.screen_loc =   hud_data["loc"]
-					if(slot_w_uniform)
+					if(SLOT_ID_UNIFORM)
 						if(H.w_uniform) H.w_uniform.screen_loc = hud_data["loc"]
-					if(slot_wear_suit)
+					if(SLOT_ID_SUIT)
 						if(H.wear_suit) H.wear_suit.screen_loc = hud_data["loc"]
-					if(slot_wear_mask)
+					if(SLOT_ID_MASK)
 						if(H.wear_mask) H.wear_mask.screen_loc = hud_data["loc"]
 			else
 				switch(hud_data["slot"])
-					if(slot_head)
+					if(SLOT_ID_HEAD)
 						if(H.head)      H.head.screen_loc =      null
-					if(slot_shoes)
+					if(SLOT_ID_SHOES)
 						if(H.shoes)     H.shoes.screen_loc =     null
-					if(slot_l_ear)
+					if(SLOT_ID_LEFT_EAR)
 						if(H.l_ear)     H.l_ear.screen_loc =     null
-					if(slot_r_ear)
+					if(SLOT_ID_RIGHT_EAR)
 						if(H.r_ear)     H.r_ear.screen_loc =     null
-					if(slot_gloves)
+					if(SLOT_ID_GLOVES)
 						if(H.gloves)    H.gloves.screen_loc =    null
-					if(slot_glasses)
+					if(SLOT_ID_GLASSES)
 						if(H.glasses)   H.glasses.screen_loc =   null
-					if(slot_w_uniform)
+					if(SLOT_ID_UNIFORM)
 						if(H.w_uniform) H.w_uniform.screen_loc = null
-					if(slot_wear_suit)
+					if(SLOT_ID_SUIT)
 						if(H.wear_suit) H.wear_suit.screen_loc = null
-					if(slot_wear_mask)
+					if(SLOT_ID_MASK)
 						if(H.wear_mask) H.wear_mask.screen_loc = null
 
 
@@ -288,31 +260,31 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 			var/list/hud_data = H.species.hud.gear[gear_slot]
 			if(hud_shown)
 				switch(hud_data["slot"])
-					if(slot_s_store)
+					if(SLOT_ID_SUIT_STORAGE)
 						if(H.s_store) H.s_store.screen_loc = hud_data["loc"]
-					if(slot_wear_id)
+					if(SLOT_ID_WORN_ID)
 						if(H.wear_id) H.wear_id.screen_loc = hud_data["loc"]
-					if(slot_belt)
+					if(SLOT_ID_BELT)
 						if(H.belt)    H.belt.screen_loc =    hud_data["loc"]
-					if(slot_back)
+					if(SLOT_ID_BACK)
 						if(H.back)    H.back.screen_loc =    hud_data["loc"]
-					if(slot_l_store)
+					if(SLOT_ID_LEFT_POCKET)
 						if(H.l_store) H.l_store.screen_loc = hud_data["loc"]
-					if(slot_r_store)
+					if(SLOT_ID_RIGHT_POCKET)
 						if(H.r_store) H.r_store.screen_loc = hud_data["loc"]
 			else
 				switch(hud_data["slot"])
-					if(slot_s_store)
+					if(SLOT_ID_SUIT_STORAGE)
 						if(H.s_store) H.s_store.screen_loc = null
-					if(slot_wear_id)
+					if(SLOT_ID_WORN_ID)
 						if(H.wear_id) H.wear_id.screen_loc = null
-					if(slot_belt)
+					if(SLOT_ID_BELT)
 						if(H.belt)    H.belt.screen_loc =    null
-					if(slot_back)
+					if(SLOT_ID_BACK)
 						if(H.back)    H.back.screen_loc =    null
-					if(slot_l_store)
+					if(SLOT_ID_LEFT_POCKET)
 						if(H.l_store) H.l_store.screen_loc = null
-					if(slot_r_store)
+					if(SLOT_ID_RIGHT_POCKET)
 						if(H.r_store) H.r_store.screen_loc = null
 
 
@@ -442,6 +414,8 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 			src.client.screen -= src.hud_used.other
 		if(src.hud_used.hotkeybuttons)
 			src.client.screen -= src.hud_used.hotkeybuttons
+		if(src.hud_used.other_important)
+			src.client.screen -= src.hud_used.other_important
 		src.client.screen -= src.internals
 		src.client.screen += src.hud_used.action_intent		//we want the intent swticher visible
 	else
@@ -450,6 +424,8 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 			src.client.screen += src.hud_used.adding
 		if(src.hud_used.other && src.hud_used.inventory_shown)
 			src.client.screen += src.hud_used.other
+		if(src.hud_used.other_important)
+			src.client.screen += src.hud_used.other_important
 		if(src.hud_used.hotkeybuttons && !src.hud_used.hotkey_ui_hidden)
 			src.client.screen += src.hud_used.hotkeybuttons
 		if(src.internals)
@@ -459,9 +435,3 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	hud_used.hidden_inventory_update()
 	hud_used.persistant_inventory_update()
 	update_action_buttons()
-
-/mob/proc/add_click_catcher()
-	client.screen += client.void
-
-/mob/new_player/add_click_catcher()
-	return

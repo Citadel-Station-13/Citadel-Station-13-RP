@@ -5,7 +5,7 @@
 /obj/item/clothing/accessory/armor
 	name = "armor accessory"
 	desc = "You should never see this description. Ahelp this, please."
-	icon_override = 'icons/mob/modular_armor.dmi'
+	icon_override = 'icons/mob/clothing/modular_armor.dmi'
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "pouches"
 	w_class = ITEMSIZE_NORMAL
@@ -34,7 +34,7 @@
 /obj/item/clothing/accessory/storage/pouches
 	name = "storage pouches"
 	desc = "A collection of black pouches that can be attached to a plate carrier. Carries up to two items."
-	icon_override = 'icons/mob/modular_armor.dmi'
+	icon_override = 'icons/mob/clothing/modular_armor.dmi'
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "pouches"
 	w_class = ITEMSIZE_NORMAL
@@ -91,6 +91,9 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	armor = list(melee = 30, bullet = 15, laser = 40, energy = 10, bomb = 25, bio = 0, rad = 0)
 	slot = ACCESSORY_SLOT_ARMOR_C
+
+/obj/item/clothing/accessory/armorplate/get_fibers()
+	return null	//Plates do not shed
 
 /obj/item/clothing/accessory/armor/armorplate/stab
 	name = "mesh armor plate"
@@ -173,7 +176,7 @@
 /obj/item/clothing/accessory/armor/armguards
 	name = "arm guards"
 	desc = "A pair of black arm pads reinforced with armor plating. Attaches to a plate carrier."
-//	accessory_icons = list(slot_tie_str = 'icons/mob/modular_armor.dmi', slot_wear_suit_str = 'icons/mob/modular_armor.dmi')
+//	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', SLOT_ID_SUIT = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "armguards"
 	gender = PLURAL
 	body_parts_covered = ARMS
@@ -206,7 +209,7 @@
 	name = "ablative arm guards"
 	desc = "These arm guards will protect your arms from energy weapons."
 	icon_state = "armguards_ablative"
-	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.4 //This is worse than the other ablative pieces, to avoid this from becoming the poor warden's insulated gloves.
 	armor = list(melee = 10, bullet = 10, laser = 80, energy = 50, bomb = 0, bio = 0, rad = 0)
 
@@ -214,7 +217,7 @@
 	name = "bullet resistant arm guards"
 	desc = "These arm guards will protect your arms from ballistic weapons."
 	icon_state = "armguards_ballistic"
-	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.7
 	armor = list(melee = 10, bullet = 80, laser = 10, energy = 50, bomb = 0, bio = 0, rad = 0)
 
@@ -222,7 +225,7 @@
 	name = "riot arm guards"
 	desc = "These arm guards will protect your arms from close combat weapons."
 	icon_state = "armguards_riot"
-	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.5
 	armor = list(melee = 80, bullet = 10, laser = 10, energy = 50, bomb = 0, bio = 0, rad = 0)
 
@@ -232,7 +235,7 @@
 /obj/item/clothing/accessory/armor/legguards
 	name = "leg guards"
 	desc = "A pair of armored leg pads in black. Attaches to a plate carrier."
-//	accessory_icons = list(slot_tie_str = 'icons/mob/modular_armor.dmi', slot_wear_suit_str = 'icons/mob/modular_armor.dmi')
+//	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', SLOT_ID_SUIT = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "legguards"
 	gender = PLURAL
 	body_parts_covered = LEGS
@@ -265,7 +268,7 @@
 	name = "ablative leg guards"
 	desc = "These will protect your legs from energy weapons."
 	icon_state = "legguards_ablative"
-	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.1
 	armor = list(melee = 10, bullet = 10, laser = 80, energy = 50, bomb = 0, bio = 0, rad = 0)
 
@@ -273,7 +276,7 @@
 	name = "bullet resistant leg guards"
 	desc = "These will protect your legs from ballistic weapons."
 	icon_state = "legguards_ballistic"
-	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.7
 	armor = list(melee = 10, bullet = 80, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
 
@@ -281,7 +284,7 @@
 	name = "riot leg guards"
 	desc = "These will protect your legs from close combat weapons."
 	icon_state = "legguards_riot"
-	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	siemens_coefficient = 0.5
 	armor = list(melee = 80, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0)
 
@@ -291,7 +294,7 @@
 /obj/item/clothing/accessory/armor/tag
 	name = "\improper SCG Flag"
 	desc = "An emblem depicting the Solar Confederate Government's flag."
-//	accessory_icons = list(slot_tie_str = 'icons/mob/modular_armor.dmi', slot_wear_suit_str = 'icons/mob/modular_armor.dmi')
+//	accessory_icons = list(slot_tie_str = 'icons/mob/clothing/modular_armor.dmi', SLOT_ID_SUIt = 'icons/mob/clothing/modular_armor.dmi')
 	icon_state = "solflag"
 	slot = ACCESSORY_SLOT_ARMOR_M
 	w_class = ITEMSIZE_SMALL
@@ -375,10 +378,10 @@
 // Helmet Covers
 /////////////////
 
-obj/item/clothing/accessory/armor/helmcover
+/obj/item/clothing/accessory/armor/helmcover
 	name = "helmet cover"
 	desc = "A fabric cover for armored helmets."
-	icon_override = 'icons/mob/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
 	icon = 'icons/obj/clothing/modular_armor.dmi'
 	icon_state = "helmcover_blue"
 	slot = ACCESSORY_SLOT_HELM_C
@@ -417,3 +420,59 @@ obj/item/clothing/accessory/armor/helmcover
 	name = "\improper SAARE helmet cover"
 	desc = "A fabric cover for armored helmets. This one has SAARE's colors."
 	icon_state = "helmcover_saare"
+
+//Lightweight Limb Plating - These are incompatible with plate carriers.
+
+//Debug variant
+/obj/item/clothing/accessory/armor/limb_plate
+	name = "armurr plating"
+	desc = "You shouldn't be seeing this. Contact a Maintainer."
+	icon = 'icons/obj/clothing/ties.dmi'
+	icon_override = 'icons/mob/clothing/ties.dmi'
+	icon_state = "bronze"
+	armor = list(melee = 5, bullet = 0, laser = 0, energy = 0, bomb = 5, bio = 5, rad = 0)
+
+/obj/item/clothing/accessory/armor/limb_plate/arm_l
+	name = "left shoulder plate"
+	desc = "A sturdy, unadorned armor plate. Attaches to a plate harness."
+	icon_state = "arm_plate_l"
+	slot = ACCESSORY_SLOT_ARMOR_C
+
+/obj/item/clothing/accessory/armor/limb_plate/arm_r
+	name = "right shoulder plate"
+	desc = "A sturdy, unadorned armor plate. Attaches to a plate harness."
+	icon_state = "arm_plate_r"
+	slot = ACCESSORY_SLOT_ARMOR_A
+
+/obj/item/clothing/accessory/armor/limb_plate/leg_l
+	name = "left thigh plate"
+	desc = "A sturdy, unadorned armor plate. Attaches to a plate harness."
+	icon_state = "leg_plate_l"
+	slot = ACCESSORY_SLOT_ARMOR_L
+
+/obj/item/clothing/accessory/armor/limb_plate/leg_r
+	name = "right thigh plate"
+	desc = "A sturdy, unadorned armor plate. Attaches to a plate harness."
+	icon_state = "leg_plate_r"
+	slot = ACCESSORY_SLOT_ARMOR_M
+
+//EMT Subtypes
+/obj/item/clothing/accessory/armor/limb_plate/arm_l/emt
+	name = "left shoulder plate (Paramedic)"
+	desc = "A sturdy, armor plate marked with medical insignia. Attaches to a plate harness."
+	icon_state = "arm_paramed_l"
+
+/obj/item/clothing/accessory/armor/limb_plate/arm_r/emt
+	name = "right shoulder plate (Paramedic)"
+	desc = "A sturdy, armor plate marked with medical insignia. Attaches to a plate harness."
+	icon_state = "arm_paramed_r"
+
+/obj/item/clothing/accessory/armor/limb_plate/leg_l/emt
+	name = "left thigh plate (Paramedic)"
+	desc = "A sturdy, armor plate marked with medical insignia. Attaches to a plate harness."
+	icon_state = "leg_paramed_l"
+
+/obj/item/clothing/accessory/armor/limb_plate/leg_r/emt
+	name = "right thigh plate (Paramedic)"
+	desc = "A sturdy, armor plate marked with medical insignia. Attaches to a plate harness."
+	icon_state = "leg_paramed_r"

@@ -40,22 +40,22 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "ak" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/steel{
 	 icon_state = "burned1"
 	},
 /area/submap/BoomBase)
 "al" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/ash,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/ash,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "am" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "an" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/effect/spider,
 /obj/item/material/shard,
 /turf/simulated/floor/tiled/steel,
@@ -92,11 +92,11 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/BoomBase)
 "av" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/submap/BoomBase)
 "aw" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/random/mob/spider/mutant,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
@@ -127,28 +127,28 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/BoomBase)
 "aD" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/BoomBase)
 "aE" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "aF" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/steel{
 	 icon_state = "broken1"
 	},
 /area/submap/BoomBase)
 "aG" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/steel{
 	 icon_state = "burned2"
 	},
 /area/submap/BoomBase)
 "aH" = (
-/obj/effect/decal/cleanable/ash,
+/obj/effect/debris/cleanable/ash,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/BoomBase)
 "aI" = (
@@ -160,7 +160,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "aK" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /mob/living/simple_mob/animal/giant_spider/phorogenic,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
@@ -173,7 +173,7 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/BoomBase)
 "aN" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
 /obj/structure/table/standard,
 /obj/item/tank/phoron,
 /obj/item/fuel_assembly/phoron,
@@ -181,7 +181,7 @@
 /area/submap/BoomBase)
 "aO" = (
 /obj/effect/decal/remains/human,
-/obj/effect/decal/cleanable/ash,
+/obj/effect/debris/cleanable/ash,
 /turf/simulated/floor/tiled/steel{
 	 icon_state = "steel_dirty"
 	},
@@ -201,11 +201,11 @@
 /turf/template_noop,
 /area/submap/BoomBase)
 "aS" = (
-/obj/effect/decal/cleanable/ash,
+/obj/effect/debris/cleanable/ash,
 /turf/simulated/floor/plating,
 /area/submap/BoomBase)
 "aT" = (
-/obj/effect/decal/cleanable/ash,
+/obj/effect/debris/cleanable/ash,
 /turf/simulated/floor/tiled/steel,
 /area/submap/BoomBase)
 "aU" = (
@@ -220,14 +220,14 @@
 /area/submap/BoomBase)
 "aW" = (
 /obj/effect/spider/stickyweb,
-/obj/effect/decal/cleanable/ash,
+/obj/effect/debris/cleanable/ash,
 /turf/simulated/floor/tiled/steel{
 	 icon_state = "burned1"
 	},
 /area/submap/BoomBase)
 "aX" = (
 /obj/effect/decal/remains/human,
-/obj/effect/decal/cleanable/ash,
+/obj/effect/debris/cleanable/ash,
 /turf/template_noop,
 /area/submap/BoomBase)
 "aY" = (

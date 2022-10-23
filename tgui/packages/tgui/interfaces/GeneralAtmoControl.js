@@ -95,7 +95,7 @@ const AtmoSensor = (props, context) => {
       <LabeledList.Item label="Pressure">{pressure} kPa</LabeledList.Item>
     ));
   }
-  
+
   if (temperature) {
     labeledListContents.push((
       <LabeledList.Item label="Temperature">{temperature} K</LabeledList.Item>
@@ -108,8 +108,8 @@ const AtmoSensor = (props, context) => {
         <Flex justify="space-around">
           {oxygen ? <Flex.Item>({oxygen}% O²)</Flex.Item> : null}
           {nitrogen ? <Flex.Item>({nitrogen}% N²)</Flex.Item> : null}
-          {carbon_dioxide 
-            ? <Flex.Item>({carbon_dioxide}% CO²)</Flex.Item> 
+          {carbon_dioxide
+            ? <Flex.Item>({carbon_dioxide}% CO²)</Flex.Item>
             : null}
           {phoron ? <Flex.Item>({phoron}% TX)</Flex.Item> : null}
         </Flex>

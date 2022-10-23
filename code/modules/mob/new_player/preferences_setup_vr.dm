@@ -4,7 +4,7 @@
 		mannequin.dna = new /datum/dna(null)
 	mannequin.delete_inventory(TRUE)
 	if(regen_limbs)
-		var/datum/species/current_species = GLOB.all_species[species]
+		var/datum/species/current_species = name_static_species_meta(species)
 		current_species.create_organs(mannequin)
 		regen_limbs = 0
 	dress_preview_mob(mannequin)

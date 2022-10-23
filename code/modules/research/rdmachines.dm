@@ -4,11 +4,11 @@
 
 /obj/machinery/r_n_d
 	name = "R&D Device"
-	icon = 'icons/obj/machines/research_vr.dmi' //VOREStation Edit - Replaced with Eris sprites
-	density = 1
-	anchored = 1
+	icon = 'icons/obj/machines/research.dmi'
+	density = TRUE
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
-	var/busy = 0
+	var/busy = FALSE
 	var/obj/machinery/computer/rdconsole/linked_console
 
 	var/list/materials = list()		// Materials this machine can accept.

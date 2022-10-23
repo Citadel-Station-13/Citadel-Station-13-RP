@@ -1,6 +1,6 @@
 /**
- * NOTICE: The usage of these for new interfaces, unless porting from vorestation or another codebase, is banned.
- * Modals should be directly handled in tgui, potentially as as new component, rather than in DM.
+ *! NOTICE: The usage of these for new interfaces, unless porting from vorestation or another codebase, is banned.
+ *! Modals should be directly handled in tgui, potentially as as new component, rather than in DM.
  */
 #define UID_MAX SHORT_REAL_LIMIT
 

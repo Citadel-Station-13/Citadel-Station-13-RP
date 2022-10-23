@@ -53,7 +53,7 @@
 /obj/machinery/ion_engine/Initialize(mapload)
 	. = ..()
 	controller = new(src)
-	if(SSshuttle.subsystem_initialized)
+	if(SSshuttle.initialized)
 		link_to_ship()
 
 /obj/machinery/ion_engine/proc/link_to_ship()

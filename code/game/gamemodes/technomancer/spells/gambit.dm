@@ -40,13 +40,13 @@
 		qdel(src)
 
 /obj/item/spell/gambit/proc/give_new_spell(var/spell_type)
-	owner.drop_from_inventory(src, null)
+	owner.drop_item_to_ground(src, INV_OP_FORCE)
 	owner.place_spell_in_hand(spell_type)
 
 // Gives a random spell.
 /obj/item/spell/gambit/proc/random_spell()
 	var/list/potential_spells = all_technomancer_gambit_spells.Copy()
-	var/rare_spell_chance = between(0, calculate_spell_power(100) - 100, 100) // Having 120% spellpower means a 20% chance to get to roll for rare spells.
+	var/rare_spell_chance = clamp( calculate_spell_power(100) - 100, 0,  100) // Having 120% spellpower means a 20% chance to get to roll for rare spells.
 	if(prob(rare_spell_chance))
 		potential_spells += rare_spells.Copy()
 		to_chat(owner, "<span class='notice'>You feel a bit luckier...</span>")
@@ -55,7 +55,7 @@
 // Gives a "random" spell.
 /obj/item/spell/gambit/proc/biased_random_spell()
 	var/list/potential_spells = list()
-	var/rare_spell_chance = between(0, calculate_spell_power(100) - 100, 100)
+	var/rare_spell_chance = clamp( calculate_spell_power(100) - 100, 0,  100)
 	var/give_rare_spells = FALSE
 	if(prob(rare_spell_chance))
 		give_rare_spells = TRUE

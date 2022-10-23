@@ -50,7 +50,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		location.hotspot_expose(700, 5)
 		return
 
-/obj/item/flame/match/dropped(mob/user as mob)
+/obj/item/flame/match/dropped(mob/user, flags, atom/newLoc)
 	//If dropped, put ourselves out
 	//not before lighting up the turf we land on, though.
 	if(lit)
@@ -194,13 +194,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			var/mob/living/M = loc
 			if (!nomessage)
 				to_chat(M, "<span class='notice'>Your [name] goes out.</span>")
-			M.remove_from_mob(src) //un-equip it so the overlays can update
-			M.update_inv_wear_mask(0)
-			M.update_inv_l_hand(0)
-			M.update_inv_r_hand(1)
 		qdel(src)
 	else
-		new /obj/effect/decal/cleanable/ash(T)
+		new /obj/effect/debris/cleanable/ash(T)
 		if(ismob(loc))
 			var/mob/living/M = loc
 			if (!nomessage)
@@ -270,6 +266,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	throw_speed = 0.5
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS | SLOT_MASK
+	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_ALLOW_DEFAULT
 	attack_verb = list("burnt", "singed")
 	type_butt = /obj/item/cigbutt
 	chem_volume = 15
@@ -320,6 +317,21 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			user.visible_message("<span class='notice'>[user] puts out \the [src].</span>")
 			quench()
 	return ..()
+
+/obj/item/clothing/mask/smokable/cigarette/import
+	name = "cigarette"
+	desc = "A roll of tobacco and blended herbs."
+	icon_state = "cigimp"
+	item_state = "cigimp"
+	throw_speed = 0.5
+	w_class = ITEMSIZE_TINY
+	slot_flags = SLOT_EARS | SLOT_MASK
+	attack_verb = list("burnt", "singed")
+	type_butt = /obj/item/cigbutt/imp
+	chem_volume = 15
+	max_smoketime = 300
+	smoketime = 300
+	nicotine_amt = 2
 
 ////////////
 // CIGARS //
@@ -384,7 +396,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cigbutt"
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
-	throwforce = 1
+	throw_force = 1
 
 /obj/item/cigbutt/Initialize(mapload)
 	. = ..()
@@ -403,6 +415,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	user.update_inv_wear_mask(0)
 	user.update_inv_l_hand(0)
 	user.update_inv_r_hand(1)
+
+/obj/item/cigbutt/imp
+	name = "cigarette butt"
+	desc = "A manky old cigarette butt."
+	icon_state = "cigimpbutt"
 
 /////////////////
 //SMOKING PIPES//
@@ -492,10 +509,19 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	smoketime = 500
 	nicotine_amt = 0
 
+/obj/item/clothing/mask/smokable/cigarette/blunt
+	name = "blunt"
+	desc = "This probably shouldn't ever show up."
+	icon_state = "blunt"
+	max_smoketime = 750
+	smoketime = 750
+	nicotine_amt = 0
+
 /obj/item/rollingpaper
 	name = "rolling paper"
 	desc = "A small, thin piece of easily flammable paper, commonly used for rolling and smoking various dried plants."
 	icon = 'icons/obj/cigarettes.dmi'
+	w_class = ITEMSIZE_TINY
 	icon_state = "cig paper"
 
 /obj/item/rollingpaper/attackby(obj/item/W as obj, mob/user as mob)
@@ -514,6 +540,30 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		qdel(G)
 		qdel(src)
 
+/obj/item/rollingblunt
+	name = "blunt paper"
+	desc = "A small, thin piece of tobacco-based paper, commonly used for rolling and smoking various dried plants."
+	icon = 'icons/obj/cigarettes.dmi'
+	w_class = ITEMSIZE_TINY
+	icon_state = "blunt paper"
+
+/obj/item/rollingblunt/attackby(obj/item/W as obj, mob/user as mob)
+	if (istype(W, /obj/item/reagent_containers/food/snacks))
+		var/obj/item/reagent_containers/food/snacks/grown/G = W
+		if (!G.dry)
+			to_chat(user, "<span class='notice'>[G] must be dried before you roll it into [src].</span>")
+			return
+		var/obj/item/clothing/mask/smokable/cigarette/blunt/B = new /obj/item/clothing/mask/smokable/cigarette/blunt(user.loc)
+		to_chat(usr,"<span class='notice'>You roll the [G.name] into a blunt!</span>")
+		B.add_fingerprint(user)
+		if(G.reagents)
+			G.reagents.trans_to_obj(B, G.reagents.total_volume)
+		B.name = "[G.name] blunt"
+		B.desc = "A blunt lovingly rolled and filled with [G.name]. Blaze it."
+		qdel(G)
+		qdel(src)
+
+
 /////////
 //ZIPPO//
 /////////
@@ -524,7 +574,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "lighter-g"
 	item_state = "lighter-g"
 	w_class = ITEMSIZE_TINY
-	throwforce = 4
+	throw_force = 4
 	slot_flags = SLOT_BELT
 	attack_verb = list("burnt", "singed")
 	var/base_state
@@ -557,7 +607,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src].</span>")
 			else
 				to_chat(user, "<span class='warning'>You burn yourself while lighting the lighter.</span>")
-				if (user.get_left_hand() == src)
+				if (user.get_held_item_of_index(1) == src)
 					user.apply_damage(2,BURN,"l_hand")
 				else
 					user.apply_damage(2,BURN,"r_hand")

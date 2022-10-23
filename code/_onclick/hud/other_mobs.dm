@@ -4,13 +4,13 @@
 
 /datum/hud/proc/blob_hud(ui_style = 'icons/mob/screen1_Midnight.dmi')
 
-	blobpwrdisplay = new /obj/screen()
+	blobpwrdisplay = new /atom/movable/screen()
 	blobpwrdisplay.name = "blob power"
 	blobpwrdisplay.icon_state = "block"
 	blobpwrdisplay.screen_loc = ui_health
 	blobpwrdisplay.layer = HUD_LAYER
 
-	blobhealthdisplay = new /obj/screen()
+	blobhealthdisplay = new /atom/movable/screen()
 	blobhealthdisplay.name = "blob health"
 	blobhealthdisplay.icon_state = "block"
 	blobhealthdisplay.screen_loc = ui_internal
@@ -19,15 +19,17 @@
 	mymob.client.screen = list()
 
 	mymob.client.screen += list(blobpwrdisplay, blobhealthdisplay)
-	mymob.client.screen += mymob.client.void
+
+	mymob.reload_rendering()
+
 /*
 /datum/hud/proc/slime_hud(ui_style = 'icons/mob/screen1_Midnight.dmi')
 
 	src.adding = list()
 
-	var/obj/screen/using
+	var/atom/movable/screen/using
 
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = "act_intent"
 	using.setDir(SOUTHWEST)
 	using.icon = ui_style
@@ -43,7 +45,7 @@
 	ico = new(ui_style, "black")
 	ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 	ico.DrawBox(rgb(255,255,255,1),1,ico.Height()/2,ico.Width()/2,ico.Height())
-	using = new /obj/screen( src )
+	using = new /atom/movable/screen( src )
 	using.name = "help"
 	using.icon = ico
 	using.screen_loc = ui_zonesel
@@ -54,7 +56,7 @@
 	ico = new(ui_style, "black")
 	ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 	ico.DrawBox(rgb(255,255,255,1),ico.Width()/2,ico.Height()/2,ico.Width(),ico.Height())
-	using = new /obj/screen( src )
+	using = new /atom/movable/screen( src )
 	using.name = "disarm"
 	using.icon = ico
 	using.screen_loc = ui_zonesel
@@ -65,7 +67,7 @@
 	ico = new(ui_style, "black")
 	ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 	ico.DrawBox(rgb(255,255,255,1),ico.Width()/2,1,ico.Width(),ico.Height()/2)
-	using = new /obj/screen( src )
+	using = new /atom/movable/screen( src )
 	using.name = "grab"
 	using.icon = ico
 	using.screen_loc = ui_zonesel
@@ -76,7 +78,7 @@
 	ico = new(ui_style, "black")
 	ico.MapColors(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, -1,-1,-1,-1)
 	ico.DrawBox(rgb(255,255,255,1),1,1,ico.Width()/2,ico.Height()/2)
-	using = new /obj/screen( src )
+	using = new /atom/movable/screen( src )
 	using.name = INTENT_HARM
 	using.icon = ico
 	using.screen_loc = ui_zonesel

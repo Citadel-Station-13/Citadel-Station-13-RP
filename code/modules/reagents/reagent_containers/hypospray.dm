@@ -46,14 +46,13 @@
 			to_chat(user, "<span class='danger'>You cannot inject a robotic limb.</span>")
 			return
 
-		//VOREStation Add Start - Adds Prototype Hypo functionality
+		// Prototype Hypo functionality
 		if(H != user && prototype)
 			to_chat(user, "<span class='notice'>You begin injecting [H] with \the [src].</span>")
 			to_chat(H, "<span class='danger'> [user] is trying to inject you with \the [src]!</span>")
 			if(!do_after(user, 30, H))
 				return
-		//VOREstation Add End
-		else if(!H.stat && !prototype) //VOREStation Edit
+		else if(!H.stat && !prototype)
 			if(H != user)
 				if(H.a_intent != INTENT_HELP)
 					to_chat(user, "<span class='notice'>[H] is resisting your attempt to inject them with \the [src].</span>")
@@ -70,8 +69,8 @@
 		return FALSE
 
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
-	to_chat(user, span("notice", "You inject \the [H] with \the [src]."))
-	to_chat(H, span("warning", "You feel a tiny prick!"))
+	to_chat(user, SPAN_NOTICE("You inject \the [H] with \the [src]."))
+	to_chat(H, SPAN_WARNING( "You feel a tiny prick!"))
 
 	if(hyposound)
 		playsound(src, hyposound, 25)
@@ -80,7 +79,7 @@
 		var/contained = reagentlist()
 		var/trans = reagents.trans_to_mob(H, amount_per_transfer_from_this, CHEM_BLOOD)
 		add_attack_logs(user,H,"Injected with [src.name] containing [contained], trasferred [trans] units")
-		to_chat(user, span("notice", "[trans] units injected. [reagents.total_volume] units remaining in \the [src]."))
+		to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in \the [src]."))
 		return TRUE
 	return FALSE
 
@@ -98,7 +97,7 @@
 	reagents.maximum_volume = loaded_vial.reagents.maximum_volume
 
 /obj/item/reagent_containers/hypospray/vial/attack_hand(mob/user as mob)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		if(loaded_vial)
 			reagents.trans_to_holder(loaded_vial.reagents,volume)
 			reagents.maximum_volume = 0
@@ -119,11 +118,11 @@
 			user.visible_message("<span class='notice'>[user] begins loading [W] into \the [src].</span>","<span class='notice'>You start loading [W] into \the [src].</span>")
 			if(!do_after(user,30) || loaded_vial || !(W in user))
 				return 0
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			if(W.is_open_container())
 				W.flags ^= OPENCONTAINER
 				W.update_icon()
-			user.drop_item()
-			W.loc = src
 			loaded_vial = W
 			reagents.maximum_volume = loaded_vial.reagents.maximum_volume
 			loaded_vial.reagents.trans_to_holder(reagents,volume)
@@ -360,6 +359,13 @@
 	if(.) // Will occur if successfully injected.
 		infect_mob_random_lesser(H)
 		add_attack_logs(user, H, "Infected \the [H] with \the [src], by \the [user].")
+
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/neuratrextate
+	name = "neuratrextate injector"
+	desc = "A refined version of the standard autoinjector, allowing greater capacity. \
+	The hypospray contains a potent compound of immunosuppressants and antipsychotics \
+	designed to be rapidly delivered to victims of CRS in case of emergency."
+	filled_reagents = list("neuratrextate" = 15)
 
 //Hjorthorn's Drug Injectors
 /obj/item/reagent_containers/hypospray/glukoz

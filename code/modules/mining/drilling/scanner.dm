@@ -5,7 +5,7 @@
 	icon_state = "forensic0-old" //GET A BETTER SPRITE.
 	item_state = "electronic"
 	origin_tech = list(TECH_MAGNET = 1, TECH_ENGINEERING = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 150)
+	matter = list(MAT_STEEL = 150)
 	var/scanrange = 2
 	var/maxscanrange = 2
 	var/scan_time = 3 SECONDS
@@ -68,20 +68,23 @@
 
 	to_chat(user, "[icon2html(thing = src, target = user)] <span class='notice'>The scanner beeps and displays a readout.</span>")
 	var/list/results = list()
-	for(var/ore_type in metals)
-		var/result = "no sign"
-
-		if(exact_amount)
-			result = "- [metals[ore_type]] of [ore_type]"
-		else
-			switch(metals[ore_type])
-				if(1 to 25)
-					result = "trace amounts of [ore_type]"
-				if(26 to 75)
-					result = "significant amounts of [ore_type]"
-				if(76 to INFINITY)
-					result = "huge quantities of [ore_type]"
-		results += result
+	if(length(metals))
+		for(var/ore_type in metals)
+			var/result = "no sign"
+	
+			if(exact_amount)
+				result = "- [metals[ore_type]] of [ore_type]"
+			else
+				switch(metals[ore_type])
+					if(1 to 25)
+						result = "trace amounts of [ore_type]"
+					if(26 to 75)
+						result = "significant amounts of [ore_type]"
+					if(76 to INFINITY)
+						result = "huge quantities of [ore_type]"
+			results += result
+	else
+		results += "No underground ores detected in specified scan range."
 	to_chat(user, results.Join("<br>"))
 
 
@@ -91,7 +94,7 @@
 	icon_state = "mining-scanner" //thank you eris spriters
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 4, TECH_ENGINEERING = 4)
-	matter = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 1000)
+	matter = list(MAT_STEEL = 2000, MAT_GLASS = 1000)
 	scanrange = 5
 	maxscanrange = 5
 	scan_time = 1 SECONDS

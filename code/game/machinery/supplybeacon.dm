@@ -17,7 +17,6 @@
 		return
 	var/obj/S = new deploy_path(get_turf(user))
 	user.visible_message("<span class='notice'>\The [user] deploys \the [S].</span>")
-	user.unEquip(src)
 	qdel(src)
 
 /obj/machinery/power/supply_beacon
@@ -26,10 +25,9 @@
 	icon = 'icons/obj/supplybeacon.dmi'
 	icon_state = "beacon"
 
-	anchored = 0
-	density = 1
+	anchored = FALSE
+	density = TRUE
 	layer = MOB_LAYER - 0.1
-	stat = 0
 
 	var/target_drop_time
 	var/drop_delay = 450
@@ -45,18 +43,18 @@
 	name = "supermatter supply beacon"
 	drop_type = "supermatter"
 
-/obj/machinery/power/supply_beacon/attackby(var/obj/item/W, var/mob/user)
+/obj/machinery/power/supply_beacon/attackby(obj/item/W, mob/user)
 	if(!use_power && W.is_wrench())
 		if(!anchored && !connect_to_network())
 			to_chat(user, "<span class='warning'>This device must be placed over an exposed cable.</span>")
 			return
 		anchored = !anchored
 		user.visible_message("<span class='notice'>\The [user] [anchored ? "secures" : "unsecures"] \the [src].</span>")
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		return
 	return ..()
 
-/obj/machinery/power/supply_beacon/attack_hand(var/mob/user)
+/obj/machinery/power/supply_beacon/attack_hand(mob/user)
 
 	if(expended)
 		update_use_power(USE_POWER_OFF)
@@ -69,14 +67,15 @@
 		to_chat(user, "<span class='warning'>You need to secure the beacon with a wrench first!</span>")
 		return
 
-/obj/machinery/power/supply_beacon/attack_ai(var/mob/user)
+/obj/machinery/power/supply_beacon/attack_ai(mob/user)
 	if(user.Adjacent(src))
 		attack_hand(user)
 
-/obj/machinery/power/supply_beacon/proc/activate(var/mob/user)
+/obj/machinery/power/supply_beacon/proc/activate(mob/user)
 	if(expended)
 		return
-	if(surplus() < 500)
+	// 0.5 kw
+	if(surplus() < 0.5)
 		if(user) to_chat(user, "<span class='notice'>The connected wire doesn't have enough current.</span>")
 		return
 	set_light(3, 3, "#00CCAA")
@@ -84,7 +83,7 @@
 	use_power = USE_POWER_IDLE
 	if(user) to_chat(user, "<span class='notice'>You activate the beacon. The supply drop will be dispatched soon.</span>")
 
-/obj/machinery/power/supply_beacon/proc/deactivate(var/mob/user, var/permanent)
+/obj/machinery/power/supply_beacon/proc/deactivate(mob/user, permanent)
 	if(permanent)
 		expended = 1
 		icon_state = "beacon_depleted"
@@ -105,7 +104,7 @@
 		return PROCESS_KILL
 	if(!use_power)
 		return
-	if(draw_power(500) < 500)
+	if(draw_power(0.5) < 0.5)
 		deactivate()
 		return
 	if(!target_drop_time)

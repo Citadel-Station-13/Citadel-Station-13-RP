@@ -36,7 +36,7 @@
 		icon_state = "meterX"
 		return 0
 
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		icon_state = "meter0"
 		return 0
 
@@ -81,7 +81,7 @@
 	if(get_dist(user, src) > 3 && !(istype(user, /mob/living/silicon/ai) || istype(user, /mob/observer/dead)))
 		. += "<span class='warning'>You are too far away to read it.</span>"
 
-	else if(stat & (NOPOWER|BROKEN))
+	else if(machine_stat & (NOPOWER|BROKEN))
 		. += "<span class='warning'>The display is off.</span>"
 
 	else if(src.target)
@@ -93,13 +93,11 @@
 	else
 		. += "The connect error light is blinking."
 
-
-
 /obj/machinery/meter/attackby(var/obj/item/W, var/mob/user)
 	if(W.is_wrench())
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
-		if(do_after(user, 40 * W.toolspeed))
+		if(do_after(user, 40 * W.tool_speed))
 			user.visible_message( \
 				"<span class='notice'>\The [user] unfastens \the [src].</span>", \
 				"<span class='notice'>You have unfastened \the [src].</span>", \

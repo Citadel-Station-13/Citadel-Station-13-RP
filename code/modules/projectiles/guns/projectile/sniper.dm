@@ -4,9 +4,10 @@
 	name = "anti-materiel rifle"
 	desc = "A portable anti-armour rifle fitted with a scope, the HI PTR-7 Rifle was originally designed to used against armoured exosuits. It is capable of punching through windows and non-reinforced walls with ease. Fires armor piercing 14.5mm shells."
 	icon_state = "heavysniper"
-	item_state_slots = list(slot_r_hand_str = "l6closed-empty", slot_l_hand_str = "l6closed-empty") // placeholder
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "l6closed-empty", SLOT_ID_LEFT_HAND = "l6closed-empty") // placeholder
 	w_class = ITEMSIZE_HUGE // So it can't fit in a backpack.
 	force = 10
+	heavy = TRUE
 	slot_flags = SLOT_BACK
 	origin_tech = list(TECH_COMBAT = 8, TECH_MATERIAL = 2, TECH_ILLEGAL = 8)
 	caliber = "14.5mm"
@@ -16,6 +17,7 @@
 	max_shells = 1
 	ammo_type = /obj/item/ammo_casing/a145
 	projectile_type = /obj/item/projectile/bullet/rifle/a145
+	load_sound = 'sound/weapons/guns/interaction/rifle_load.ogg'
 	accuracy = -45
 	scoped_accuracy = 95
 	one_handed_penalty = 90
@@ -38,8 +40,10 @@
 			chambered = null
 		else
 			to_chat(user, "<span class='notice'>You work the bolt open.</span>")
+		playsound(src.loc, 'sound/weapons/guns/interaction/rifle_boltback.ogg', 50, 1)
 	else
 		to_chat(user, "<span class='notice'>You work the bolt closed.</span>")
+		playsound(src.loc, 'sound/weapons/guns/interaction/rifle_boltforward.ogg', 50, 1)
 		bolt_open = 0
 	add_fingerprint(user)
 	update_icon()
@@ -82,14 +86,15 @@
 	load_method = MAGAZINE
 	accuracy = -45 //shooting at the hip
 	scoped_accuracy = 95
+	heavy = TRUE
 //	requires_two_hands = 1
 	one_handed_penalty = 60 // The weapon itself is heavy, and the long barrel makes it hard to hold steady with just one hand.
 	fire_sound = 'sound/weapons/Gunshot_SVD.ogg' // Has a very unique sound.
 	magazine_type = /obj/item/ammo_magazine/m762svd
 	allowed_magazines = list(/obj/item/ammo_magazine/m762svd)
 
-/obj/item/gun/projectile/SVD/update_icon()
-	..()
+/obj/item/gun/projectile/SVD/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "SVD"
 	else
@@ -110,8 +115,8 @@
 	wielded_item_state = "svd-taj-wielded"
 
 
-/obj/item/gun/projectile/SVD/taj/update_icon()
-	..()
+/obj/item/gun/projectile/SVD/taj/update_icon_state()
+	. = ..()
 	if(ammo_magazine)
 		icon_state = "SVD-taj"
 	else

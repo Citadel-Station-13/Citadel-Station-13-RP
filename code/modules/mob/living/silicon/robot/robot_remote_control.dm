@@ -63,20 +63,16 @@ GLOBAL_LIST_EMPTY(available_ai_shells)
 
 	// Give button to leave.
 	verbs += /mob/living/silicon/robot/proc/undeploy_act
-	to_chat(AI, span("notice", "You have connected to an AI Shell remotely, and are now in control of it.<br>\
+	to_chat(AI, SPAN_NOTICE("You have connected to an AI Shell remotely, and are now in control of it.<br>\
 	To return to your core, use the <b>Release Control</b> verb."))
 
 	// Languages and comms.
 	languages = AI.languages.Copy()
 	speech_synthesizer_langs = AI.speech_synthesizer_langs.Copy()
-	//VOREStation Edit Start
 	if(radio && AI.aiRadio && module) //AI keeps all channels, including Syndie if it is an Infiltrator.
-//		if(AI.radio.syndie)
-//			radio.make_syndie()
 		radio.subspace_transmission = TRUE
 		module.channels = AI.aiRadio.channels
 		radio.recalculateChannels()
-	//VOREStation Edit End
 
 // Called after the AI transfers over.
 /mob/living/silicon/robot/proc/post_deploy()
@@ -86,24 +82,19 @@ GLOBAL_LIST_EMPTY(available_ai_shells)
 /mob/living/silicon/robot/proc/undeploy(message)
 	if(!deployed || !mind || !mainframe)
 		return
-//	mainframe.redeploy_action.Grant(mainframe)
-//	mainframe.redeploy_action.last_used_shell = src
 	if(message)
-		to_chat(src, span("notice", message))
+		to_chat(src, SPAN_NOTICE(message))
 	mind.transfer_to(mainframe)
 	deployed = FALSE
 	updateicon()
 	mainframe.teleop = null
 	mainframe.deployed_shell = null
 	SetName("[modtype] AI Shell [num2text(ident)]")
-//	undeployment_action.Remove(src)
-	if(radio && module) //Return radio to normal	//VOREStation Edit
-		module.channels = initial(module.channels)	//VOREStation Edit
+	if(radio && module) //Return radio to normal
+		module.channels = initial(module.channels)
 		radio.recalculateChannels()
 	if(!QDELETED(camera))
-		camera.c_tag = real_name	//update the camera name too
-//	diag_hud_set_aishell()
-//	mainframe.diag_hud_set_deployed()
+		camera.c_tag = real_name //update the camera name too
 	if(mainframe.laws)
 		mainframe.laws.show_laws(mainframe) //Always remind the AI when switching
 	mainframe = null
@@ -125,13 +116,14 @@ GLOBAL_LIST_EMPTY(available_ai_shells)
 // Place this on your map to mark where a free AI shell will be.
 // This can be turned off in the config (and is off by default).
 // Note that mapping in more than one of these will result in multiple shells.
-/obj/effect/landmark/free_ai_shell
+// TODO :USE A SPAWNER OBJECT DAMNIT
+/obj/landmark/free_ai_shell
 	name = "free ai shell spawner"
 	icon = 'icons/mob/screen1.dmi'
 	icon_state = "x3"
-	delete_me = TRUE
+	delete_on_roundstart = TRUE
 
-/obj/effect/landmark/free_ai_shell/Initialize(mapload)
+/obj/landmark/free_ai_shell/Initialize(mapload)
 	if(config_legacy.allow_ai_shells && config_legacy.give_free_ai_shell)
 		new /mob/living/silicon/robot/ai_shell(get_turf(src))
 	return ..()

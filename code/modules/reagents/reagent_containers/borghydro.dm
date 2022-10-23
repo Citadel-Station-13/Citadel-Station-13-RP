@@ -165,7 +165,7 @@
 		"specialwhiskey",
 		"sugar",
 		"tea",
-		"tequilla",
+		"tequila",
 		"tomatojuice",
 		"tonic",
 		"vermouth",

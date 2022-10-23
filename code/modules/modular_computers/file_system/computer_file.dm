@@ -1,13 +1,20 @@
 var/global/file_uid = 0
 
-/datum/computer_file/
-	var/filename = "NewFile" 								// Placeholder. No spacebars
-	var/filetype = "XXX" 									// File full names are [filename].[filetype] so like NewFile.XXX in this case
-	var/size = 1											// File size in GQ. Integers only!
-	var/obj/item/computer_hardware/hard_drive/holder	// Holder that contains this file.
-	var/unsendable = 0										// Whether the file may be sent to someone via NTNet transfer or other means.
-	var/undeletable = 0										// Whether the file may be deleted. Setting to 1 prevents deletion/renaming/etc.
-	var/uid													// UID of this file
+/datum/computer_file
+	/// Placeholder. No spacebars
+	var/filename = "NewFile"
+	/// File full names are [filename].[filetype] so like NewFile.XXX in this case.
+	var/filetype = "XXX"
+	/// File size in GQ. Integers only!
+	var/size = 1
+	/// Holder that contains this file.
+	var/obj/item/computer_hardware/hard_drive/holder
+	/// Whether the file may be sent to someone via NTNet transfer or other means.
+	var/unsendable = FALSE
+	/// Whether the file may be deleted. Setting to 1 prevents deletion/renaming/etc.
+	var/undeletable = FALSE
+	/// UID of this file.
+	var/uid
 
 /datum/computer_file/New()
 	..()
@@ -25,7 +32,7 @@ var/global/file_uid = 0
 	holder = null
 	..()
 
-// Returns independent copy of this file.
+/// Returns independent copy of this file.
 /datum/computer_file/proc/clone(var/rename = 0)
 	var/datum/computer_file/temp = new type
 	temp.unsendable = unsendable
@@ -36,4 +43,4 @@ var/global/file_uid = 0
 	else
 		temp.filename = filename
 	temp.filetype = filetype
-	return temp 
+	return temp

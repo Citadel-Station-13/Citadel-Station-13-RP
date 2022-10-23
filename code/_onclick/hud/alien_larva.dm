@@ -3,9 +3,9 @@
 	src.adding = list()
 	src.other = list()
 
-	var/obj/screen/using
+	var/atom/movable/screen/using
 
-	using = new /obj/screen()
+	using = new /atom/movable/screen()
 	using.name = "mov_intent"
 	using.setDir(SOUTHWEST)
 	using.icon = 'icons/mob/screen1_alien.dmi'
@@ -15,13 +15,13 @@
 	src.adding += using
 	move_intent = using
 
-	mymob.healths = new /obj/screen()
+	mymob.healths = new /atom/movable/screen()
 	mymob.healths.icon = 'icons/mob/screen1_alien.dmi'
 	mymob.healths.icon_state = "health0"
 	mymob.healths.name = "health"
 	mymob.healths.screen_loc = ui_alien_health
 
-	mymob.fire = new /obj/screen()
+	mymob.fire = new /atom/movable/screen()
 	mymob.fire.icon = 'icons/mob/screen1_alien.dmi'
 	mymob.fire.icon_state = "fire0"
 	mymob.fire.name = "fire"
@@ -30,4 +30,5 @@
 	mymob.client.screen = list()
 	mymob.client.screen += list( mymob.healths, mymob.fire) //, mymob.rest, mymob.sleep, mymob.mach )
 	mymob.client.screen += src.adding + src.other
-	mymob.client.screen += mymob.client.void
+
+	mymob.reload_rendering()

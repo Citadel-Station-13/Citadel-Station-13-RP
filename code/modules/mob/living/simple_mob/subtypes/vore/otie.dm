@@ -28,17 +28,7 @@
 	attacktext = list("mauled")
 	friendly = list("nuzzles", "slobberlicks", "noses softly at", "noseboops", "headbumps against", "leans on", "nibbles affectionately on")
 	meat_amount = 6
-	old_x = -16
-	old_y = 0
-	default_pixel_x = -16
-	pixel_x = -16
-	pixel_y = 0
-
-	max_buckled_mobs = 1 //Yeehaw
-	can_buckle = TRUE
-	buckle_movable = TRUE
-	buckle_lying = FALSE
-	mount_offset_y = 10
+	base_pixel_x = -16
 
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/evasive/otie
 	say_list_type = /datum/say_list/otie
@@ -269,11 +259,13 @@
 
 /mob/living/simple_mob/otie/Login()
 	. = ..()
-	if(!riding_datum)
-		riding_datum = new /datum/riding/simple_mob(src)
-	verbs |= /mob/living/simple_mob/proc/animal_mount
+	AddComponent(/datum/component/riding_filter/mob/animal)
 
-/mob/living/simple_mob/otie/MouseDrop_T(mob/living/M, mob/living/user)
+/mob/living/simple_mob/otie/Logout()
+	. = ..()
+	DelComponent(/datum/component/riding_filter/mob/animal)
+
+/mob/living/simple_mob/otie/MouseDroppedOnLegacy(mob/living/M, mob/living/user)
 	return
 
 /datum/say_list/otie

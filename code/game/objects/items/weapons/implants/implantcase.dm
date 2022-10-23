@@ -22,7 +22,7 @@
 	..()
 	if (istype(I, /obj/item/pen))
 		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
-		if (user.get_active_hand() != I)
+		if (user.get_active_held_item() != I)
 			return
 		if((!in_range(src, usr) && src.loc != user))
 			return
@@ -257,5 +257,15 @@
 	icon_state = "implantcase-r"
 
 /obj/item/implantcase/vrlanguage/Initialize(mapload)
-	imp = new /obj/item/implant/vrlanguage( src )
+	imp = new /obj/item/implant/uni_translator( src )
 	return ..()
+
+/obj/item/implantcase/restrainingbolt
+	name = "glass case - 'Restraining Bolt'"
+	desc = "A case containing a restraining bolt."
+	icon_state = "implantcase-b"
+
+/obj/item/implantcase/restrainingbolt/New()
+	src.imp = new /obj/item/implant/restrainingbolt( src )
+	..()
+	return

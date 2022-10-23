@@ -1,7 +1,7 @@
 //Here you find the wonderfull code for suitcyclers
 //I did not write this, I just copied it to this page to take it from suit_storage_unit.dm
 
-
+// TODO: UNIFY WITH SUIT STORAGE UNITS WHY ARE THESE SEPARATE
 /obj/machinery/suit_cycler
 
 	name = "suit cycler"
@@ -26,7 +26,7 @@
 	//Departments that the cycler can paint suits to look like.
 	var/list/departments = list("Engineering","Mining","Medical","Security","Atmos","HAZMAT","Construction","Biohazard","Emergency Medical Response","Crowd Control","Director","Head of Security", "No Change")
 	//Species that the suits can be configured to fit.
-	var/list/species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX, SPECIES_AURIL, SPECIES_DREMACHIR, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_APIDAEN)
+	var/list/species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX, SPECIES_AURIL, SPECIES_DREMACHIR, SPECIES_APIDAEN)
 
 	var/target_department
 	var/target_species
@@ -134,7 +134,7 @@
 	model_text = "Vintage Master"
 	departments = list("Vintage Crew","Vintage Engineering","Vintage Pilot (Bubble Helm)","Vintage Pilot (Closed Helm)","Vintage Medical (Bubble Helm)","Vintage Medical (Closed Helm)","Vintage Research (Bubble Helm)","Vintage Research (Closed Helm)","Vintage Marine","Vintage Officer","Vintage Mercenary","No Change")
 
-/obj/machinery/suit_cycler/vintage/Initialize()
+/obj/machinery/suit_cycler/vintage/Initialize(mapload)
 	species -= SPECIES_TESHARI
 	return ..()
 
@@ -170,12 +170,11 @@
 		visible_message("<span class='notice'>[user] starts putting [G.affecting.name] into the suit cycler.</span>", 3)
 
 		if(do_after(user, 20))
-			if(!G || !G.affecting) return
+			if(!G || !G.affecting)
+				return
 			var/mob/M = G.affecting
-			if(M.client)
-				M.client.perspective = EYE_PERSPECTIVE
-				M.client.eye = src
-			M.loc = src
+			M.forceMove(src)
+			M.update_perspective()
 			occupant = M
 
 			add_fingerprint(user)
@@ -187,7 +186,7 @@
 	else if(I.is_screwdriver())
 
 		panel_open = !panel_open
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 		to_chat(user, "You [panel_open ?  "open" : "close"] the maintenance panel.")
 		updateUsrDialog()
 		return
@@ -206,9 +205,9 @@
 			to_chat(user, "You cannot refit a customised voidsuit.")
 			return
 
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		to_chat(user, "You fit \the [I] into the suit cycler.")
-		user.drop_item()
-		I.loc = src
 		helmet = I
 
 		update_icon()
@@ -229,9 +228,9 @@
 			to_chat(user, "You cannot refit a customised voidsuit.")
 			return
 
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		to_chat(user, "You fit \the [I] into the suit cycler.")
-		user.drop_item()
-		I.loc = src
 		suit = I
 
 		update_icon()
@@ -248,7 +247,7 @@
 	//Clear the access reqs, disable the safeties, and open up all paintjobs.
 	to_chat(user, "<span class='danger'>You run the sequencer across the interface, corrupting the operating protocols.</span>")
 	departments = list("Engineering","Mining","Medical","Security","Atmos","HAZMAT","Construction","Biohazard","Crowd Control","Emergency Medical Response","^%###^%$", "Charring", "No Change")
-	species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX, SPECIES_AURIL, SPECIES_DREMACHIR, SPECIES_VETALA_PALE, SPECIES_VETALA_RUDDY, SPECIES_APIDAEN)
+	species = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_TESHARI, SPECIES_AKULA, SPECIES_ALRAUNE, SPECIES_NEVREAN, SPECIES_RAPALA, SPECIES_SERGAL, SPECIES_VASILISSAN, SPECIES_VULPKANIN, SPECIES_XENOCHIMERA, SPECIES_XENOHYBRID, SPECIES_ZORREN_FLAT, SPECIES_ZORREN_HIGH, SPECIES_VOX, SPECIES_AURIL, SPECIES_DREMACHIR, SPECIES_APIDAEN)
 
 	emagged = 1
 	safeties = 0
@@ -260,7 +259,7 @@
 
 	add_fingerprint(user)
 
-	if(..() || stat & (BROKEN|NOPOWER))
+	if(..() || machine_stat & (BROKEN|NOPOWER))
 		return
 
 	if(!user.IsAdvancedToolUser())
@@ -389,7 +388,7 @@
 	if(!active)
 		return
 
-	if(active && stat & (BROKEN|NOPOWER))
+	if(active && machine_stat & (BROKEN|NOPOWER))
 		active = 0
 		irradiating = 0
 		electrified = 0
@@ -446,11 +445,8 @@
 	if(!occupant)
 		return
 
-	if(occupant.client)
-		occupant.client.eye = occupant.client.mob
-		occupant.client.perspective = MOB_PERSPECTIVE
-
-	occupant.loc = get_turf(occupant)
+	occupant.forceMove(loc)
+	occupant.update_perspective()
 	occupant = null
 
 	add_fingerprint(usr)
@@ -555,8 +551,6 @@
 		if("Head of Security")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/headofsecurity
 			parent_suit = /obj/item/clothing/suit/space/void/headofsecurity
-		//BEGIN: Space for additional downstream variants
-		//VOREStation Addition Start
 		if("Manager")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/captain
 			parent_suit = /obj/item/clothing/suit/space/void/captain
@@ -596,8 +590,6 @@
 		if("Talon Mercenary")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/refurb/mercenary/talon
 			parent_suit = /obj/item/clothing/suit/space/void/refurb/mercenary/talon
-		//VOREStation Addition End
-		//END: downstream variant space
 	if(target_species)
 		//Only run these checks if they have a sprite sheet defined, otherwise they use human's anyways, and there is almost definitely a sprite.
 		if((helmet!=null&&(target_species in helmet.sprite_sheets_obj))||(suit!=null&&(target_species in suit.sprite_sheets_obj)))

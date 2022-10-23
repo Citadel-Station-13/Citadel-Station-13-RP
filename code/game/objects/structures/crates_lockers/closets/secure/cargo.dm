@@ -22,6 +22,7 @@
 		/obj/item/clothing/gloves/black,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/cargo,
 		/obj/item/clothing/gloves/fingerless,
+		/obj/item/stamp/cargo,
 		/obj/item/clothing/head/soft)
 
 /obj/structure/closet/secure_closet/cargotech/Initialize(mapload)
@@ -94,9 +95,11 @@
 		/obj/item/shovel,
 		/obj/item/pickaxe,
 		/obj/item/gps/mining,
+		/obj/item/survivalcapsule,
 		/obj/item/clothing/glasses/material,
 		/obj/item/clothing/suit/storage/hooded/wintercoat/miner,
 		/obj/item/clothing/shoes/boots/winter/mining,
+		/obj/item/reagent_containers/portable_fuelcan/miniature,
 		/obj/item/stack/marker_beacon/thirty)
 
 /obj/structure/closet/secure_closet/miner/Initialize(mapload)

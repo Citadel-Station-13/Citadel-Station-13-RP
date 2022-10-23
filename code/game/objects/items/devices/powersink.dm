@@ -6,18 +6,23 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "powersink0"
 	w_class = ITEMSIZE_LARGE
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 1
 	throw_range = 2
 
-	matter = list(DEFAULT_WALL_MATERIAL = 750)
+	matter = list(MAT_STEEL = 750)
 
 	origin_tech = list(TECH_POWER = 3, TECH_ILLEGAL = 5)
-	var/drain_rate = 1500000		// amount of power to drain per tick
-	var/apc_drain_rate = 5000 		// Max. amount drained from single APC. In Watts.
-	var/dissipation_rate = 20000	// Passive dissipation of drained power. In Watts.
-	var/power_drained = 0 			// Amount of power drained.
-	var/max_power = 1e9				// Detonation point.
+	/// amount of power to drain per tick in kw
+	var/drain_rate = 10000
+	/// kw to drain from apc
+	var/apc_drain_rate = 5
+	/// dissipationg of stored power in kw
+	var/dissipation_rate = 1000
+	/// power drained in kwh
+	var/power_drained = 0
+	/// detonation point in kwh
+	var/max_power = 5000
 	var/mode = 0					// 0 = off, 1=clamped (off), 2=operating
 	var/drained_this_tick = 0		// This is unfortunately necessary to ensure we process powersinks BEFORE other machinery such as APCs.
 
@@ -42,7 +47,7 @@
 					anchored = 1
 					mode = 1
 					src.visible_message("<span class='notice'>[user] attaches [src] to the cable!</span>")
-					playsound(src, I.usesound, 50, 1)
+					playsound(src, I.tool_sound, 50, 1)
 					return
 			else
 				to_chat(user, "Device must be placed over an exposed cable to attach to it.")
@@ -55,7 +60,7 @@
 			mode = 0
 			src.visible_message("<span class='notice'>[user] detaches [src] from the cable!</span>")
 			set_light(0)
-			playsound(src, I.usesound, 50, 1)
+			playsound(src, I.tool_sound, 50, 1)
 			icon_state = "powersink0"
 
 			return
@@ -111,17 +116,16 @@
 			if(istype(T.master, /obj/machinery/power/apc))
 				var/obj/machinery/power/apc/A = T.master
 				if(A.operating && A.cell)
-					var/cur_charge = A.cell.charge / CELLRATE
+					var/cur_charge = DYNAMIC_CELL_UNITS_TO_KW(A.cell.charge, 1)
 					var/drain_val = min(apc_drain_rate, cur_charge)
-					A.cell.use(drain_val * CELLRATE)
+					A.cell.use(DYNAMIC_KW_TO_CELL_UNITS(drain_val, 1))
 					drained += drain_val
-	power_drained += drained
+	power_drained += KJ_TO_KWH(drained)
 	return 1
-
 
 /obj/item/powersink/process(delta_time)
 	drained_this_tick = 0
-	power_drained -= min(dissipation_rate, power_drained)
+	power_drained -= min(KJ_TO_KWH(dissipation_rate), power_drained)
 	if(power_drained > max_power * 0.95)
 		playsound(src, 'sound/effects/screech.ogg', 100, 1, 1)
 	if(power_drained >= max_power)

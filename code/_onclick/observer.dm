@@ -43,13 +43,15 @@
 	A.attack_ghost(src)
 
 // Oh by the way this didn't work with old click code which is why clicking shit didn't spam you
-/atom/proc/attack_ghost(mob/observer/dead/user as mob)
+/atom/proc/attack_ghost(mob/observer/dead/user)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_GHOST, user)
+	// TODO: main ai interact bay code fucking disgusts me wtf
 	if(IsAdminGhost(user))		// admin AI interact
 		AdminAIInteract(user)
 		return
 	if(user.client && user.client.inquisitive_ghost)
 		user.examinate(src)
-	return
 
 // defaults to just attack_ai
 /atom/proc/AdminAIInteract(mob/user)
@@ -58,26 +60,29 @@
 // ---------------------------------------
 // And here are some good things for free:
 // Now you can click through portals, wormholes, gateways, and teleporters while observing. -Sayu
-
-/obj/machinery/teleport/hub/attack_ghost(mob/user as mob)
+/*
+/obj/machinery/tele_pad/attack_ghost(mob/user as mob)
 	var/atom/l = loc
 	var/obj/machinery/computer/teleporter/com = locate(/obj/machinery/computer/teleporter, locate(l.x - 2, l.y, l.z))
-	if(com.locked)
+	 if(com.locked)
 		user.loc = get_turf(com.locked)
-
-/obj/effect/portal/attack_ghost(mob/user as mob)
+*/
+/obj/effect/portal/attack_ghost(mob/user)
+	. = ..()
 	if(target)
-		user.loc = get_turf(target)
+		user.forceMove(get_turf(target))
 
-/obj/machinery/gateway/centerstation/attack_ghost(mob/user as mob)
+/obj/machinery/gateway/centerstation/attack_ghost(mob/user)
+	. = ..()
 	if(awaygate)
-		user.loc = awaygate.loc
+		user.forceMove(awaygate.loc)
 	else
 		to_chat(user, "[src] has no destination.")
 
-/obj/machinery/gateway/centeraway/attack_ghost(mob/user as mob)
+/obj/machinery/gateway/centeraway/attack_ghost(mob/user)
+	. = ..()
 	if(stationgate)
-		user.loc = stationgate.loc
+		user.forceMove(stationgate.loc)
 	else
 		to_chat(user, "[src] has no destination.")
 
@@ -94,8 +99,9 @@
 
 */
 
-//VR FILE MERGE
-/obj/item/paicard/attack_ghost(mob/user as mob)
+//! ## VR FILE MERGE ## !//
+/obj/item/paicard/attack_ghost(mob/user)
+	. = ..()
 	if(src.pai != null) //Have a person in them already?
 		user.examinate(src)
 		return

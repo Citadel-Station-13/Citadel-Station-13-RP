@@ -52,6 +52,9 @@
 	return 0
 
 /mob/observer/eye/examine(mob/user)
+	return list(
+		"An eye object belonging to [owner || "no one in particular."]"
+	)
 
 // Use this when setting the eye's location.
 // It will also stream the chunk that the new loc is in.
@@ -59,16 +62,9 @@
 	if(owner)
 		T = get_turf(T)
 		if(T != loc)
+			var/old = loc
 			loc = T
-
-			if(owner.client)
-				owner.client.eye = src
-
-			if(owner_follows_eye)
-				visualnet.updateVisibility(owner, 0)
-				owner.loc = loc
-				visualnet.updateVisibility(owner, 0)
-
+			SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, old, NONE, TRUE)
 			visualnet.visibility(src)
 			return 1
 	return 0
@@ -78,6 +74,12 @@
 		if(!isturf(owner.loc) || !owner.client)
 			return
 		return loc
+
+/mob/observer/eye/make_perspective()
+	var/datum/perspective/P = ..()
+	// we see everything by default
+	P.SetSight(SEE_TURFS | SEE_MOBS | SEE_OBJS)
+
 /mob
 	var/mob/observer/eye/eyeobj
 

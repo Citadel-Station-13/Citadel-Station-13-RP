@@ -31,9 +31,7 @@
 
 /obj/item/implant/backup/post_implant(var/mob/living/carbon/human/H)
 	if(istype(H))
-		BITSET(H.hud_updateflag, BACKUP_HUD)
 		SStranscore.implants |= src
-
 		return 1
 
 //New, modern implanter instead of old style implanter.
@@ -48,7 +46,7 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
-	matter = list(DEFAULT_WALL_MATERIAL = 2000, "glass" = 2000)
+	matter = list(MAT_STEEL = 2000, MAT_GLASS = 2000)
 	var/list/obj/item/implant/backup/imps = list()
 	var/max_implants = 4 //Iconstates need to exist due to the update proc!
 
@@ -73,7 +71,7 @@
 		var/obj/item/implant/backup/imp = imps[imps.len]
 		imp.forceMove(get_turf(user))
 		imps -= imp
-		user.put_in_any_hand_if_possible(imp)
+		user.put_in_hands(imp)
 		update()
 	else
 		to_chat(user, "<span class='warning'>\The [src] is empty.</span>")
@@ -83,10 +81,10 @@
 /obj/item/backup_implanter/attackby(obj/W, mob/user)
 	if(istype(W,/obj/item/implant/backup))
 		if(imps.len < max_implants)
-			user.unEquip(W)
+			if(!user.attempt_insert_item_for_installation(W, src))
+				return
 			imps |= W
 			W.germ_level = 0
-			W.forceMove(src)
 			update()
 			to_chat(user, "<span class='notice'>You load \the [W] into \the [src].</span>")
 		else
@@ -129,7 +127,7 @@
 	name = "backup implant kit"
 	desc = "Box of stuff used to implant backup implants."
 	icon_state = "implant"
-	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
 
 /obj/item/storage/box/backup_kit/PopulateContents()
 	for(var/i = 1 to 7)

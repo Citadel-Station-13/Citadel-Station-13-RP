@@ -38,7 +38,7 @@
 /obj/item/material/shard{
 	icon_state = "medium"
 	},
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /obj/structure/lattice,
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
@@ -70,7 +70,7 @@
 /area/submap/CrashedMedShuttle)
 "an" = (
 /obj/structure/window/reinforced,
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /obj/structure/loot_pile/surface/bones,
 /obj/structure/lattice,
 /turf/simulated/floor/outdoors/rocks,
@@ -85,7 +85,7 @@
 /turf/simulated/shuttle/plating,
 /area/submap/CrashedMedShuttle)
 "aq" = (
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /mob/living/simple_mob/animal/giant_spider/webslinger,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
@@ -119,18 +119,18 @@
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "ax" = (
-/obj/effect/decal/cleanable/blood/drip,
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/blood/drip,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "ay" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/blood,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "az" = (
-/obj/effect/decal/cleanable/blood/gibs/robot,
-/obj/item/firstaid_arm_assembly,
+/obj/effect/debris/cleanable/blood/gibs/robot,
+/obj/item/bot_assembly/medibot,
 /mob/living/simple_mob/animal/giant_spider/frost,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
@@ -144,8 +144,8 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "aC" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/item/firstaid_arm_assembly,
+/obj/effect/debris/cleanable/blood/oil,
+/obj/item/bot_assembly/medibot,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "aD" = (
@@ -153,21 +153,21 @@
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "aE" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "aF" = (
 /obj/structure/reagent_dispensers/fueltank,
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "aG" = (
 /obj/structure/reagent_dispensers/watertank,
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "aH" = (
-/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/debris/cleanable/liquid_fuel,
 /obj/structure/ghost_pod/manual/lost_drone/dogborg,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
@@ -203,7 +203,7 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "aN" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "aO" = (
@@ -215,7 +215,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "aP" = (
-/obj/effect/decal/cleanable/blood/gibs/robot,
+/obj/effect/debris/cleanable/blood/gibs/robot,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "aQ" = (
@@ -226,7 +226,7 @@
 /turf/simulated/shuttle/wall/no_join,
 /area/submap/CrashedMedShuttle)
 "aS" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /obj/structure/loot_pile/surface/bones,
 /obj/structure/lattice,
 /turf/simulated/floor/outdoors/rocks,
@@ -250,7 +250,7 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "aW" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "aX" = (
@@ -304,9 +304,9 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bg" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/structure/loot_pile/surface/bones,
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /obj/structure/lattice,
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
@@ -319,7 +319,7 @@
 /area/submap/CrashedMedShuttle)
 "bi" = (
 /obj/effect/decal/mecha_wreckage/odysseus,
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/CrashedMedShuttle)
 "bj" = (
@@ -334,7 +334,7 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bk" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /obj/structure/lattice,
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
@@ -370,13 +370,13 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bs" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /obj/effect/spider/stickyweb,
 /mob/living/simple_mob/animal/giant_spider/webslinger,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/CrashedMedShuttle)
 "bt" = (
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/debris/cleanable/blood/drip,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/CrashedMedShuttle)
 "bu" = (
@@ -385,7 +385,7 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
 "bv" = (
-/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/debris/cleanable/blood/oil,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/CrashedMedShuttle)
@@ -484,7 +484,7 @@
 /turf/simulated/shuttle/floor/purple,
 /area/submap/CrashedMedShuttle)
 "bN" = (
-/obj/effect/decal/cleanable/blood/gibs/robot,
+/obj/effect/debris/cleanable/blood/gibs/robot,
 /obj/effect/spider/cocoon,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
@@ -514,7 +514,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)
 "bR" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/structure/loot_pile/surface/bones,
 /obj/item/surgical/surgicaldrill,
 /turf/simulated/shuttle/floor/white,
@@ -581,7 +581,7 @@
 /area/submap/CrashedMedShuttle)
 "cd" = (
 /obj/machinery/optable,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/structure/loot_pile/surface/bones,
 /turf/simulated/shuttle/floor/white,
 /area/submap/CrashedMedShuttle)

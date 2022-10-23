@@ -35,20 +35,8 @@
 
 /obj/item/book/codex/lore/news
 	name = "Daedalus Pocket Newscaster"
-	desc = "A regularly-updating compendium of articles on current events. Essential for new arrivals in the Vir system and anyone interested in politics."
+	desc = "A occasionally-updated compendium of articles on current events. Useful for keeping on the news in the vastness of the the Sigmar Concord."
 	icon_state = "newscodex"
 	w_class = ITEMSIZE_SMALL
 	root_type = /datum/lore/codex/category/main_news
 	libcategory = "Reference"
-
-/* //VORESTATION REMOVAL
-// Combines SOP/Regs/Law
-/obj/item/book/codex/corp_regs
-	name = "NanoTrasen Regulatory Compendium"
-	desc = "Contains large amounts of information on Standard Operating Procedure, Corporate Regulations, and important regional laws.  The best friend of \
-	Internal Affairs."
-	icon_state = "corp_regs"
-	root_type = /datum/lore/codex/category/main_corp_regs
-	throwforce = 5 // Throw the book at 'em.
-	libcategory = "Reference"
-*/

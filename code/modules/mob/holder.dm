@@ -7,16 +7,19 @@
 	show_messages = 1
 
 	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/head.dmi',
-		SPECIES_VOX = 'icons/mob/species/vox/head.dmi'
+		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/head.dmi',
+		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/head.dmi'
 		)
 
 	origin_tech = null
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_holder.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_holder.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_holder.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_holder.dmi',
 		)
 	pixel_y = 8
+	throw_range = 14
+	throw_force = 10
+	throw_speed = 3
 	var/static/list/holder_mob_icon_cache = list()
 	var/mob/living/held_mob
 
@@ -32,10 +35,13 @@
 	update_state()
 	drop_items()
 
-/obj/item/holder/dropped()
-	..()
-	spawn(1)
+/obj/item/holder/dropped(mob/user, flags, atom/newLoc)
+	. = ..()
+	if(!(flags & INV_OP_DELETING))
 		update_state()
+
+/obj/item/holder/examine(mob/user)
+	return held_mob?.examine(user) || list("WARNING WARNING: No held_mob on examine. REPORT THIS TO A CODER.")
 
 /obj/item/holder/proc/update_state()
 	if(!(contents.len))
@@ -70,21 +76,50 @@
 	return I ? I.GetAccess() : ..()
 
 /obj/item/holder/proc/sync(var/mob/living/M)
-	dir = 2
-	overlays.Cut()
-	icon = M.icon
-	icon_state = M.icon_state
-	item_state = M.item_state
-	color = M.color
+	dir = SOUTH
+	overlays.len = 0
+	// appearance clone their ass
+	var/mutable_appearance/MA = new
+	MA.appearance = M
+	MA.plane = plane
+	MA.dir = SOUTH
+	overlays += MA
 	name = M.name
 	desc = M.desc
-	overlays |= M.overlays
-	var/mob/living/carbon/human/H = loc
-	if(istype(H))
-		if(H.l_hand == src)
-			H.update_inv_l_hand()
-		else if(H.r_hand == src)
-			H.update_inv_r_hand()
+	update_worn_icon()
+
+/obj/item/holder/container_resist(mob/living/held)
+	var/mob/M = loc
+	if(istype(M))
+		M.drop_item_to_ground(src, INV_OP_FORCE)
+		to_chat(M, SPAN_WARNING("\The [held] wriggles out of your grip!"))
+		to_chat(held, SPAN_WARNING("You wiggle out of [M]'s grip!"))
+	else if(istype(loc, /obj/item/clothing/accessory/holster))
+		var/obj/item/clothing/accessory/holster/holster = loc
+		if(holster.holstered == src)
+			holster.clear_holster()
+		to_chat(held, SPAN_WARNING("You extricate yourself from [holster]."))
+		held.forceMove(get_turf(held))
+	else if(isitem(loc))
+		to_chat(held, SPAN_WARNING("You struggle free of [loc]."))
+		held.forceMove(get_turf(held))
+
+/obj/item/holder/can_equip(mob/M, slot, mob/user, flags)
+	if(M == held_mob)
+		return FALSE
+	return ..()
+
+//? throws completely pass to the mob
+/obj/item/holder/throw_resolve_actual(mob/user)
+	return held_mob
+
+/obj/item/holder/throw_resolve_override(atom/movable/resolved, mob/user)
+	held_mob.forceMove(user.drop_location())
+	held_mob = null
+	return TRUE
+
+/obj/item/holder/throw_resolve_finalize(atom/movable/resolved, mob/user)
+	qdel(src)
 
 //Mob specific holders.
 /obj/item/holder/diona
@@ -150,9 +185,9 @@
 //Mob procs and vars for scooping up
 /mob/living/var/holder_type
 
-/mob/living/MouseDrop(var/atom/over_object)
+/mob/living/OnMouseDropLegacy(var/atom/over_object)
 	var/mob/living/carbon/human/H = over_object
-	if((usr == over_object || usr == src) && holder_type && issmall(src) && istype(H) && !H.lying && Adjacent(H) && (src.a_intent == INTENT_HELP && H.a_intent == INTENT_HELP)) //VOREStation Edit
+	if((usr == over_object || usr == src) && holder_type && issmall(src) && istype(H) && !H.lying && Adjacent(H) && (src.a_intent == INTENT_HELP && H.a_intent == INTENT_HELP))
 		if(!issmall(H) || !istype(src, /mob/living/carbon/human))
 			get_scooped(H, (usr == src))
 		return
@@ -176,7 +211,7 @@
 	if(self_grab)
 		to_chat(grabber, "<span class='notice'>\The [src] clambers onto you!</span>")
 		to_chat(src, "<span class='notice'>You climb up onto \the [grabber]!</span>")
-		grabber.equip_to_slot_if_possible(H, slot_back, 0, 1)
+		grabber.equip_to_slot_if_possible(H, SLOT_ID_BACK, INV_OP_SILENT)
 	else
 		to_chat(grabber, "<span class='notice'>You scoop up \the [src]!</span>")
 		to_chat(src, "<span class='notice'>\The [grabber] scoops you up!</span>")
@@ -186,11 +221,11 @@
 
 /obj/item/holder/human
 	icon = 'icons/mob/holder_complex.dmi'
-	var/list/generate_for_slots = list(slot_l_hand_str, slot_r_hand_str, slot_back_str)
+	var/list/generate_for_slots = list(SLOT_ID_LEFT_HAND, SLOT_ID_RIGHT_HAND, SLOT_ID_BACK)
+	var/list/holder_slot_icons = list()
 	slot_flags = SLOT_BACK
 
 /obj/item/holder/human/sync(var/mob/living/M)
-
 	// Generate appropriate on-mob icons.
 	var/mob/living/carbon/human/owner = M
 	if(istype(owner) && owner.species)
@@ -198,18 +233,19 @@
 		var/skin_colour = rgb(owner.r_skin, owner.g_skin, owner.b_skin)
 		var/hair_colour = rgb(owner.r_hair, owner.g_hair, owner.b_hair)
 		var/eye_colour =  rgb(owner.r_eyes, owner.g_eyes, owner.b_eyes)
-		var/species_name = lowertext(owner.species.get_bodytype(owner))
+		var/species_name = bodytype_to_string(owner.species.default_bodytype)
 
 		for(var/cache_entry in generate_for_slots)
 			var/cache_key = "[owner.species]-[cache_entry]-[skin_colour]-[hair_colour]"
 			if(!holder_mob_icon_cache[cache_key])
+				var/render_key = resolve_inventory_slot_render_key(cache_entry)
 
 				// Generate individual icons.
-				var/icon/mob_icon = icon(icon, "[species_name]_holder_[cache_entry]_base")
+				var/icon/mob_icon = icon(icon, "[species_name]_holder_[render_key]_base")
 				mob_icon.Blend(skin_colour, ICON_ADD)
-				var/icon/hair_icon = icon(icon, "[species_name]_holder_[cache_entry]_hair")
+				var/icon/hair_icon = icon(icon, "[species_name]_holder_[render_key]_hair")
 				hair_icon.Blend(hair_colour, ICON_ADD)
-				var/icon/eyes_icon = icon(icon, "[species_name]_holder_[cache_entry]_eyes")
+				var/icon/eyes_icon = icon(icon, "[species_name]_holder_[render_key]_eyes")
 				eyes_icon.Blend(eye_colour, ICON_ADD)
 
 				// Blend them together.
@@ -218,7 +254,14 @@
 
 				// Add to the cache.
 				holder_mob_icon_cache[cache_key] = mob_icon
-			item_icons[cache_entry] = holder_mob_icon_cache[cache_key]
+			holder_slot_icons[cache_entry] = holder_mob_icon_cache[cache_key]
+	return ..()
 
-	// Handle the rest of sync().
-	..(M)
+/obj/item/holder/human/resolve_worn_assets(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)
+	var/list/generated = list()
+	generated.len = WORN_DATA_LIST_SIZE
+	generated[WORN_DATA_ICON] = holder_slot_icons[slot_meta.id]
+	generated[WORN_DATA_LAYER] = slot_meta.resolve_default_layer(bodytype, M, src)
+	generated[WORN_DATA_SIZE_X] = generated[WORN_DATA_SIZE_Y] = 32
+	generated[WORN_DATA_STATE] = "" 	// automatically gen'd
+	return generated

@@ -4,6 +4,12 @@
 	var/list/ore_turfs = list()
 	var/make_cracked_turfs = TRUE
 
+/datum/random_map/automata/cave_system/generate_map()
+	. = ..()
+	for(var/i in 1 to map.len)
+		if(map[i] == WALL_CHAR)
+			ore_turfs += i
+
 /datum/random_map/automata/cave_system/no_cracks
 	make_cracked_turfs = FALSE
 
@@ -18,21 +24,12 @@
 			return "X"
 	return ..(value)
 
-/datum/random_map/automata/cave_system/revive_cell(var/target_cell, var/list/use_next_map, var/final_iter)
-	..()
-	if(final_iter)
-		ore_turfs |= target_cell
-
-/datum/random_map/automata/cave_system/kill_cell(var/target_cell, var/list/use_next_map, var/final_iter)
-	..()
-	if(final_iter)
-		ore_turfs -= target_cell
-
 // Create ore turfs.
 /datum/random_map/automata/cave_system/cleanup()
 	var/ore_count = round(map.len/20)
 	while((ore_count>0) && (ore_turfs.len>0))
-		if(!priority_process) sleep(-1)
+		if(!priority_process)
+			CHECK_TICK
 		var/check_cell = pick(ore_turfs)
 		ore_turfs -= check_cell
 		if(prob(75))
@@ -47,16 +44,9 @@
 	if(!current_cell)
 		return 0
 	var/turf/simulated/mineral/T = locate((origin_x-1)+x,(origin_y-1)+y,origin_z)
-	if(istype(T) && !T.ignore_mapgen && !T.ignore_cavegen)	//VOREStation Edit: ignore cavegen
+	if(istype(T) && !T.ignore_mapgen && !T.ignore_cavegen)
 		if(map[current_cell] == FLOOR_CHAR)
-			if(origin_z == 20) // lavaland specific Z level
-				T.make_floor_lavaland()
-			else
-				T.make_floor() //VOREStation Edit - Don't make cracked sand on surface map, jerk.
-			//if(prob(90))
-				//T.make_floor()
-			//else
-				//T.ChangeTurf(/turf/space/cracked_asteroid)
+			T.make_floor()
 		else
 			T.make_wall()
 			if(map[current_cell] == DOOR_CHAR)

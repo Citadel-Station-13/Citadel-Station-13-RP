@@ -1,0 +1,150 @@
+2021-07-01:
+  TheLordME:
+  - bugfix: Off-duty command no longer starts with command headsets.
+  nik707:
+  - rscdel: no more stunsword in sec armory
+  - rscdel: 'Removed nutrition based examine texts tweak: Tweaked max nutrition, and
+      drain to compensate'
+2021-07-03:
+  Captain277:
+  - rscadd: Adds Vulkan Brassworks Incorporated, a civilian-level Clock Cult subsidiary
+      that produces clockwork limbs.
+  - imageadd: Adds a recolored .dmi based on Eggnerd prosthetics as the basis for
+      the Vulkan limbs. May be retouched later.
+  - balance: Rebalanced one-handed firing penalties for rifles, post Baymiss nerf.
+  MitztheKat:
+  - rscadd: Added orange ale. A slightly cursed but overwhelmingly fizzy combination
+      of orange juice and ginger ale.
+  - spellcheck: A local service cyborg blasted some typos from existence.
+  - bugfix: you can now make peanut butter milkshakes again.
+  - bugfix: you now correctly taste shirley temples.
+  TheLordME:
+  - bugfix: Diona are no longer killed by plant-b-gone
+  - bugfix: '*chuckle no longer plays the laugh emote'
+2021-07-06:
+  Kraseo:
+  - bugfix: Synthetics no longer carry over every single character save.
+2021-07-07:
+  drofoljaelisglis:
+  - rscadd: Added "80s (Alternative)" Hairstyle
+2021-07-13:
+  MonaraMir:
+  - bugfix: Fixed the missing oxygen and phoron pressure tanks on the fuel depot.
+  - rscadd: Added a vault to store loot, and use randomly generated loot for trading.
+  - rscadd: 'Added inducers to engineering and weapon storage, a few super power cells
+      and materials to the workroom, some more weapons and power cells to weapon storage,
+      and a spyglass to the captain''s quarters. tweak: Shuffled stuff around in the
+      Talon''s bar and captain''s quarters.'
+  - bugfix: Fixed oversights with Talon's vendor access, Talon's vendors being invisible,
+      and missing magboots/shortrange radios from Talon crew's lockers.
+  TheLordME:
+  - bugfix: Species that shouldnt slip, no longer, infact slip
+  - bugfix: Diona cant get flashed, like they should.
+  - bugfix: You shouldnt drop through catwalks anymore
+  - rscadd: Off-Duty Command
+  - code_imp: Allow_jobhup is no longer double negated
+  buffyuwu:
+  - bugfix: fixes gas analyzers duplicating output
+  - bugfix: fixes sushi being ruined when using sif meat
+  nevimer:
+  - bugfix: tether builds
+2021-07-18:
+  nik707:
+  - bugfix: 'synthetics now spawn with mirrors as intended tweak: Mirrors can now
+      properly be removed through surgery without bricking the mobs respawning tweak:
+      it is now impossible to install a mirror into a body with no attached client.
+      Use the resleeving console.'
+  - rscadd: 'Added a new SMES subtype for the rust tweak: Moved engine smes to their
+      related submaps'
+  - balance: rebalanced the engine SMES to standard levels
+  silicons:
+  - balance: diagonal moves now take sqrt(2) instead of x2 time to do
+  - balance: R&D console is no longer hard access locked other than for the lock toggle
+      itself and syncing.
+  - balance: cyborg chargers charge synths/FBPs 2x fast (cyborgs unchanged)
+  - balance: protean healing has been normalized
+  - bugfix: protean blobs now have the same resistances as their human form
+  - balance: proteans take the same amount of emp damage as all other synths, but
+      their blobforms are no longer invulnerable to emp. they gain a slight resistance
+      in that state, though.
+  - balance: synthetic emp to sev 3 emps reduced by avg ~20%
+2021-07-19:
+  Linzolle:
+  - bugfix: fishing indoors should work again
+  nik707:
+  - rscdel: A few wrong/inappropriate alt titles
+  silicons:
+  - bugfix: Singularity shouldn't break containment anymore
+  - rscadd: BoHs now detonate on being thrown into a singularity.
+2021-07-22:
+  Linzolle:
+  - bugfix: sensor console no longer prints out blank paper
+  - bugfix: mining drills unload into boxes properly now
+2021-07-23:
+  Captain277:
+  - rscdel: Reassigns technology applied to KHI.
+  - rscadd: Adds spawn points to Talon ship.
+  - rscdel: Removed Nebula Gas spawn option.
+  Zandario:
+  - rscadd: Teshari no longer go into pancake death (aka they can glide and survive
+      in normal conditions)
+  - rscadd: Teshari now generate a first and last name by default, which makes sense
+      for a insanely social species
+  - imageadd: Teshari Medal Sprites
+2021-07-24:
+  Captain277:
+  - rscdel: 'Removes vestigial departments. tweak: Multiple layout changes to several
+      mapped areas, as described in detail above.'
+2021-07-25:
+  Linzolle:
+  - bugfix: 'day/night cycle and weather effects now work again tweak: virgo 3b''s
+      day/night cycle now takes 6 hours instead of 3 hours tweak: open turfs are now
+      affected by lighting'
+2021-07-26:
+  CharlesWedge:
+  - bugfix: UD Secondary entrance, in solars region.
+2021-07-27:
+  Captain277:
+  - rscadd: Added the Roomba cleanbot variant and the Maid Roomba cleanbot variant.
+  - imageadd: Added the icons for the relevant bots from /vg/station.
+  CharlesWedge:
+  - bugfix: lever actions now accept proper ".357" and ".44" rather then nonexistent
+      "357" and "44"
+  Zandario:
+  - rscadd: Smell System from upstream
+  - bugfix: Some of the formatting of the VORE Panel has been adjusted for consistency
+  zydras:
+  - rscadd: Added waiting seats, storage space and food vendors to the exploration
+      hangar
+  - rscadd: Added a micro-medical bay to the Exploration shuttle
+  - rscadd: 'Moved Noodle from its old religious home to the Pilot''s Office tweak:
+      Entirely remodelled the Exploration shuttle to improve the layout tweak: Moved
+      the Pilot''s Office around and expanded it to improve its look'
+  - balance: Added one additional engine to the Exploration shuttle
+  - balance: Added a storage section to the hangar to hold surplus canisters and crates
+2021-07-28:
+  Captain277:
+  - rscadd: 'Data Knife and Vox plushie tweak: Surgical tables are now constructible.'
+  Zandario:
+  - rscadd: Xenobotanist Job
+  - rscadd: Lots of other Job Names
+  - rscdel: Xenobotanist alt_title for Xenobio
+  - bugfix: Moreso readding values we SHOULD'VE had but were missed in someone's port
+      or something
+2021-07-29:
+  faaaay:
+  - rscadd: AR-V goggles, eyewear given to the Pathfinder (and available for survey
+      points) with a built-in health scanner and zoom function.
+  - code_imp: Added the wornslot var to zoom(), allowing for worn items to have zoom
+      functionality.
+2021-07-31:
+  Captain277:
+  - rscadd: Restores Acid and Blood turfs.
+  MalricB:
+  - rscadd: lion tail in sprites_accessories_vr.dm
+  - imageadd: added liontail, liontail_markings, liontail_w, liontail_markings_w to  icons/mob/human_races/sprite_accessories/tails.dmi
+      and  code/modules/vore/appearance/sprite_accessories_vr.dm
+  Zandario:
+  - rscadd: Fit-Viewport
+  - rscadd: Other View stuff for future projects
+  - code_imp: Changed some code... Obviously.

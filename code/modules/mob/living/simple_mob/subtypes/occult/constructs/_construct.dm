@@ -6,7 +6,7 @@
 	name = "Constructs"
 	desc = "Although much of the information behind these occult constructs \
 	is presumably still classified, NanoTrasen's general briefings have confirmed \
-	several key facts. Constructs are animate obsidian statues imbuted with strong \
+	several key facts. Constructs are animate obsidian statues imbued with strong \
 	paracausal energies. They are considered extremely dangerous, and evidence of \
 	constructs necessitates immediate notification of the PMD."
 	value = CATALOGUER_REWARD_TRIVIAL
@@ -163,7 +163,7 @@
 
 /mob/living/simple_mob/construct/examine(mob/user)
 	..(user)
-	var/msg = "<span cass='info'>*---------*\nThis is [icon2html(thing = src, target = user)] \a <EM>[src]</EM>!\n"
+	var/msg = "<span cass='info'>This is [icon2html(thing = src, target = user)] \a <EM>[src]</EM>!\n"
 	if (src.health < src.getMaxHealth())
 		msg += "<span class='warning'>"
 		if (src.health >= src.getMaxHealth()/2)
@@ -171,7 +171,6 @@
 		else
 			msg += "<B>It looks severely dented!</B>\n"
 		msg += "</span>"
-	msg += "*---------*</span>"
 
 	to_chat(user, msg)
 
@@ -183,7 +182,7 @@
 //Glowing Procs
 /mob/living/simple_mob/construct/proc/add_glow()
 	var/image/eye_glow = image(icon,"glow-[icon_state]")
-	eye_glow.plane = PLANE_LIGHTING_ABOVE
+	eye_glow.plane = ABOVE_LIGHTING_PLANE
 	overlays += eye_glow
 	set_light(2, -2, l_color = "#FFFFFF")
 

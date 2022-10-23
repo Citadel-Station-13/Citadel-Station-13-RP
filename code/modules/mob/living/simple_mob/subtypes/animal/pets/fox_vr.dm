@@ -93,7 +93,7 @@
 	else
 		..()
 
-/mob/living/simple_mob/animal/passive/fox/MouseDrop(atom/over_object)
+/mob/living/simple_mob/animal/passive/fox/OnMouseDropLegacy(atom/over_object)
 	var/mob/living/carbon/H = over_object
 	if(!istype(H) || !Adjacent(H)) return ..()
 
@@ -129,15 +129,15 @@
 
 	if(friend)
 		if(friend == usr)
-			to_chat(L, span("notice", "\The [src] is already your friend!"))
+			to_chat(L, SPAN_NOTICE("\The [src] is already your friend!"))
 			return
 		else
-			to_chat(L, span("warning", "\The [src] ignores you."))
+			to_chat(L, SPAN_WARNING( "\The [src] ignores you."))
 			return
 
 	friend = L
 	face_atom(L)
-	to_chat(L, span("notice", "\The [src] is now your friend!"))
+	to_chat(L, SPAN_NOTICE("\The [src] is now your friend!"))
 	visible_emote(pick("nips [friend].", "brushes against [friend].", "tugs on [friend].", "chrrrrs."))
 
 	if(has_AI())
@@ -150,7 +150,7 @@
 	var/mob/living/carbon/human/friend
 	var/befriend_job = null
 
-/mob/living/simple_mob/animal/passive/fox/fluff/Life()
+/mob/living/simple_mob/animal/passive/fox/fluff/Life(seconds, times_fired)
 	. = ..()
 	if(!. || !friend) return
 

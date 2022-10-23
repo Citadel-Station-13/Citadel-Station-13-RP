@@ -292,3 +292,7 @@ var/list/datum/ai_icon/ai_icons
 	name = "Stern"
 	alive_icon = "ai-stern"
 //End of Drof's Ports
+
+/datum/ai_icon/honeycomb
+	name = "HIVE Queen"
+	alive_icon = "ai-honeycomb"

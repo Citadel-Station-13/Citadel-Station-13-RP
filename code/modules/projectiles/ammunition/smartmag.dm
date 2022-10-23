@@ -80,8 +80,8 @@
 		else
 			to_chat(user, "You begin inserting \the [I] into \the [src].")
 			if(do_after(user, 25))
-				user.drop_item()
-				I.forceMove(src)
+				if(!user.attempt_insert_item_for_installation(I, src))
+					return
 				attached_cell = I
 				user.visible_message("[user] installs a cell in \the [src].", "You install \the [I] into \the [src].")
 				update_icon()
@@ -92,7 +92,7 @@
 			to_chat(user, "You begin removing \the [attached_cell] from \the [src].")
 			if(do_after(user, 10))	// Faster than doing it by hand
 				attached_cell.update_icon()
-				attached_cell.forceMove(get_turf(src.loc))
+				user.put_in_hands_or_drop(attached_cell)
 				attached_cell = null
 				user.visible_message("[user] removes a cell from \the [src].", "You remove \the [attached_cell] from \the [src].")
 				update_icon()
@@ -110,7 +110,7 @@
 
 // You can remove the power cell from the magazine by hand, but it's way slower than using a screwdriver
 /obj/item/ammo_magazine/smart/attack_hand(mob/user)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		if(attached_cell)
 			to_chat(user, "You struggle to remove \the [attached_cell] from \the [src].")
 			if(do_after(user, 40))

@@ -1,8 +1,8 @@
-/*!
+/**
  * External tgui definitions, such as src_object APIs.
  *
- * Copyright (c) 2020 Aleksej Komarov
- * SPDX-License-Identifier: MIT
+ *! Copyright (c) 2020 Aleksej Komarov
+ *! SPDX-License-Identifier: MIT
  */
 
 /**
@@ -13,8 +13,11 @@
  *
  * required user mob The mob who opened/is using the UI.
  * optional ui datum/tgui The UI to be updated, if it exists.
+ *
+ *! ## To-Be-Deprecated.
+ * optional parent_ui datum/tgui A parent UI that, when closed, closes this UI as well.
  */
-/datum/proc/ui_interact(mob/user, datum/tgui/ui)
+/datum/proc/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	return FALSE // Not implemented.
 
 /**
@@ -27,7 +30,7 @@
  *
  * return list Data to be sent to the UI.
  */
-/datum/proc/ui_data(mob/user)
+/datum/proc/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	return list() // Not implemented.
 
 /**
@@ -53,14 +56,35 @@
  * Forces an update on static data. Should be done manually whenever something
  * happens to change static data.
  *
- * required user the mob currently interacting with the ui
- * optional ui ui to be updated
+ * If no user is provided, every user will be updated.
+ *
+ * optional user the mob currently interacting with the ui
+ * optional ui tgui to be updated
+ * optional hard_refreshion use if you need to block the ui from showing if the refresh queues
  */
-/datum/proc/update_static_data(mob/user, datum/tgui/ui)
+/datum/proc/update_static_data(mob/user, datum/tgui/ui, hard_refresh)
+	if(!user)
+		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
+			window.send_full_update(hard_refresh = hard_refresh)
+		return
 	if(!ui)
 		ui = SStgui.get_open_ui(user, src)
 	if(ui)
-		ui.send_full_update()
+		ui.send_full_update(hard_refresh = hard_refresh)
+
+/**
+ * immediately shunts this data to either an user, an ui, or all users.
+ */
+/datum/proc/send_tgui_data_immediate(mob/user, datum/tgui/ui, list/data)
+	ASSERT(data)
+	if(!user)
+		for (var/datum/tgui/window as anything in SStgui.open_uis_by_src[REF(src)])
+			window.send_custom_update(data)
+		return
+	if(!ui)
+		ui = SStgui.get_open_ui(user, src)
+	if(ui)
+		ui.send_custom_update(data)
 
 /**
  * public
@@ -74,7 +98,8 @@
  * return bool If the user's input has been handled and the UI should update.
  */
 /datum/proc/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
-	// SHOULD_CALL_PARENT(TRUE)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_UI_ACT, usr, action)
 	// If UI is not interactive or usr calling Topic is not the UI user, bail.
 	if(!ui || ui.status != UI_INTERACTIVE)
 		return TRUE
@@ -145,6 +170,7 @@
  * client/verb/uiclose(), which closes the ui window
  */
 /datum/proc/ui_close(mob/user)
+	SIGNAL_HANDLER
 
 /**
  * verb

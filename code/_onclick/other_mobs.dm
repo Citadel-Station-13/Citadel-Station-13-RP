@@ -2,6 +2,8 @@
 /atom/proc/attack_generic(mob/user as mob)
 	return 0
 
+/atom/proc/attack_alien(mob/user)
+
 /atom/proc/take_damage(var/damage)
 	return 0
 
@@ -52,7 +54,7 @@
 
 /atom/ui_status(mob/user)
 	. = ..()
-	if(!can_interact(user))
+	if(!can_interact(user) && !IsAdminGhost(user))
 		. = min(., UI_UPDATE)
 
 /atom/movable/can_interact(mob/user)
@@ -84,13 +86,13 @@
 	if(!gloves && !mutations.len && !spitting)
 		return
 	var/obj/item/clothing/gloves/G = gloves
-	if((LASER in mutations) && a_intent == INTENT_HARM)
+	if((MUTATION_LASER in mutations) && a_intent == INTENT_HARM)
 		LaserEyes(A) // moved into a proc below
 
 	else if(istype(G) && G.Touch(A,0)) // for magic gloves
 		return
 
-	else if(TK in mutations)
+	else if(MUTATION_TELEKINESIS in mutations)
 		A.attack_tk(src)
 
 	else if(spitting) //Only used by xenos right now, can be expanded.

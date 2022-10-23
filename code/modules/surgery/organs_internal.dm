@@ -116,10 +116,9 @@
 			if(!(I.robotic >= ORGAN_ROBOT))
 				user.visible_message("<span class='notice'>[user] treats damage to [target]'s [I.name] with [tool_name].</span>", \
 				"<span class='notice'>You treat damage to [target]'s [I.name] with [tool_name].</span>" )
-				I.damage = 0
-				I.status = 0
+				I.revive(TRUE)
 				if(I.organ_tag == O_EYES)
-					target.sdisabilities &= ~BLIND
+					target.sdisabilities &= ~SDISABILITY_NERVOUS
 				if(I.organ_tag == O_LUNGS)
 					target.SetLosebreath(0)
 
@@ -334,7 +333,7 @@
 	"<span class='notice'>You have transplanted \the [tool] into [target]'s [affected.name].</span>")
 	var/obj/item/organ/O = tool
 	if(istype(O))
-		user.remove_from_mob(O)
+		user.temporarily_remove_from_inventory(O, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 		O.replaced(target,affected)
 
 /datum/surgery_step/internal/replace_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)

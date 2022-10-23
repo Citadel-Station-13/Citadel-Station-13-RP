@@ -230,7 +230,7 @@
 		H.visible_message("<span class = 'warning'> <b>[H] looks ready to burst!</b></span>")
 		to_chat(H,"<span class = 'notice'><b>We are ready.</b></span>")
 		var/spell/targeted/chimera/hatch_pop/S = new /spell/targeted/chimera/hatch_pop(H)
-		var/master_type = /obj/screen/movable/spell_master/chimera
+		var/master_type = /atom/movable/screen/movable/spell_master/chimera
 		H.add_spell(S, "cult", master_type)
 
 
@@ -257,13 +257,12 @@
 	var/braindamage = (H.brainloss * 0.6) //Can only heal half brain damage.
 
 	H.revive()
-	LAZYREMOVE(H.mutations, HUSK)
+	LAZYREMOVE(H.mutations, MUTATION_HUSK)
 	H.nutrition = 50		//Hungy, also guarantees ferality without any other tweaking
 	H.setBrainLoss(braindamage)
 
 	//Drop everything
-	for(var/obj/item/W in H)
-		H.drop_from_inventory(W)
+	H.drop_inventory(TRUE, TRUE)
 	H.visible_message("<span class = 'warning'>[H] emerges from a cloud of viscera!</b>")
 	H.SetParalysis(0)
 	//Unfreeze some things

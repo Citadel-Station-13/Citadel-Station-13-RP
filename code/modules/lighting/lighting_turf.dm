@@ -60,7 +60,7 @@
 #undef OPERATE
 
 // Used to get a scaled lumcount.
-/turf/proc/get_lumcount(var/minlum = 0, var/maxlum = 1)
+/turf/proc/get_lumcount(minlum = 0, maxlum = 1)
 	if(!lighting_object)
 		return 1
 
@@ -102,7 +102,7 @@
 		reconsider_lights()
 
 /turf/proc/change_area(var/area/old_area, var/area/new_area)
-	if(SSlighting.subsystem_initialized)
+	if(SSlighting.initialized)
 		if (new_area.dynamic_lighting != old_area.dynamic_lighting)
 			if (new_area.dynamic_lighting)
 				lighting_build_overlay()

@@ -65,13 +65,12 @@ emp_act
 
 			if(c_hand && (stun_amount || agony_amount > 10))
 				msg_admin_attack("[key_name(src)] was disarmed by a stun effect")
-
-				drop_from_inventory(c_hand)
+				drop_active_held_item()
 				if (affected.robotic >= ORGAN_ROBOT)
-					emote("me", 1, "drops what they were holding, their [affected.name] malfunctioning!")
+					INVOKE_ASYNC(src, /mob/proc/custom_emote, 1, "drops what they were holding, their [affected.name] malfunctioning!")
 				else
 					var/emote_scream = pick("screams in pain and ", "lets out a sharp cry and ", "cries out and ")
-					emote("me", 1, "[affected.organ_can_feel_pain() ? "" : emote_scream] drops what they were holding in their [affected.name]!")
+					INVOKE_ASYNC(src, /mob/proc/custom_emote, 1, "[affected.organ_can_feel_pain() ? "" : emote_scream] drops what they were holding in their [affected.name]!")
 
 	..(stun_amount, agony_amount, def_zone)
 
@@ -153,7 +152,7 @@ emp_act
 
 // Returns a number between 0 to 1, with 1 being total protection.
 /mob/living/carbon/human/get_shock_protection()
-	return between(0, 1-get_siemens_coefficient_average(), 1)
+	return clamp( 1-get_siemens_coefficient_average(), 0,  1)
 
 // Returns a list of clothing that is currently covering def_zone.
 /mob/living/carbon/human/proc/get_clothing_list_organ(var/obj/item/organ/external/def_zone, var/type)
@@ -196,7 +195,7 @@ emp_act
 	var/obj/item/organ/external/H = organs_by_name[BP_HEAD]
 	var/list/protective_gear = H.get_covering_clothing(FACE)
 	for(var/obj/item/gear in protective_gear)
-		if(istype(gear) && (gear.body_parts_covered & FACE) && !(gear.item_flags & FLEXIBLEMATERIAL))
+		if(istype(gear) && (gear.body_parts_covered & FACE) && !(gear.clothing_flags & FLEXIBLEMATERIAL))
 			return gear
 	return null
 
@@ -204,7 +203,7 @@ emp_act
 	var/obj/item/organ/external/H = organs_by_name[BP_HEAD]
 	var/list/protective_gear = H.get_covering_clothing(FACE)
 	for(var/obj/item/gear in protective_gear)
-		if(istype(gear) && (gear.body_parts_covered & FACE) && !(gear.item_flags & FLEXIBLEMATERIAL) && !(gear.item_flags & ALLOW_SURVIVALFOOD))
+		if(istype(gear) && (gear.body_parts_covered & FACE) && !(gear.clothing_flags & FLEXIBLEMATERIAL) && !(gear.clothing_flags & ALLOW_SURVIVALFOOD))
 			return gear
 	return null
 
@@ -298,7 +297,7 @@ emp_act
 				location.add_blood(src)
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
-				if(get_dist(H, src) <= 1) //people with TK won't get smeared with blood
+				if(get_dist(H, src) <= 1) //people with MUTATION_TELEKINESIS won't get smeared with blood
 					H.bloody_body(src)
 					H.bloody_hands(src)
 
@@ -358,14 +357,14 @@ emp_act
 	return 1
 
 //this proc handles being hit by a thrown atom
-/mob/living/carbon/human/hitby(atom/movable/AM as mob|obj,var/speed = THROWFORCE_SPEED_DIVISOR)
+/mob/living/carbon/human/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 //	if(buckled && buckled == AM)
 //		return // Don't get hit by the thing we're buckled to.
 
-	if(istype(AM,/obj/))
+	if(istype(AM, /obj))
 		var/obj/O = AM
 
-		if(in_throw_mode && speed <= THROWFORCE_SPEED_DIVISOR)	//empty active hand and we're in throw mode
+		if(in_throw_mode && TT.speed <= THROW_SPEED_CATCHABLE)	//empty active hand and we're in throw mode
 			if(canmove && !restrained())
 				if(isturf(O.loc))
 					if(can_catch(O))
@@ -375,24 +374,22 @@ emp_act
 						return
 
 		var/dtype = O.damtype
-		var/throw_damage = O.throwforce*(speed/THROWFORCE_SPEED_DIVISOR)
+		var/throw_damage = O.throw_force * TT.get_damage_multiplier()
 
 		var/zone
-		if (istype(O.thrower, /mob/living))
-			var/mob/living/L = O.thrower
-			zone = check_zone(L.zone_sel.selecting)
+		if (istype(TT.thrower, /mob/living))
+			zone = check_zone(TT.target_zone)
 		else
 			zone = ran_zone(BP_TORSO,75)	//Hits a random part of the body, geared towards the chest
 
 		//check if we hit
 		var/miss_chance = 15
-		if (O.throw_source)
-			var/distance = get_dist(O.throw_source, loc)
-			miss_chance = max(15*(distance-2), 0)
+		var/distance = get_dist(TT.initial_turf, loc)
+		miss_chance = max(5 * (distance - 2), 0)
 		zone = get_zone_with_miss_chance(zone, src, miss_chance, ranged_attack=1)
 
-		if(zone && O.thrower != src)
-			var/shield_check = check_shields(throw_damage, O, thrower, zone, "[O]")
+		if(zone && TT.thrower != src)
+			var/shield_check = check_shields(throw_damage, O, TT.thrower, zone, "[O]")
 			if(shield_check == PROJECTILE_FORCE_MISS)
 				zone = null
 			else if(shield_check)
@@ -400,17 +397,15 @@ emp_act
 
 		if(!zone)
 			visible_message("<span class='notice'>\The [O] misses [src] narrowly!</span>")
-			return
-
-		O.throwing = 0		//it hit, so stop moving
+			return COMPONENT_THROW_HIT_NEVERMIND | COMPONENT_THROW_HIT_PIERCE
 
 		var/obj/item/organ/external/affecting = get_organ(zone)
 		var/hit_area = affecting.name
 
 		src.visible_message("<font color='red'>[src] has been hit in the [hit_area] by [O].</font>")
 
-		if(ismob(O.thrower))
-			add_attack_logs(O.thrower,src,"Hit with thrown [O.name]")
+		if(ismob(TT.thrower))
+			add_attack_logs(TT.thrower,src,"Hit with thrown [O.name]")
 
 		//If the armor absorbs all of the damage, skip the rest of the calculations
 		var/soaked = get_armor_soak(affecting, "melee", O.armor_penetration)
@@ -448,36 +443,37 @@ emp_act
 		if(istype(O, /obj/item))
 			var/obj/item/I = O
 			mass = I.w_class/THROWNOBJ_KNOCKBACK_DIVISOR
-		var/momentum = speed*mass
+		var/momentum = TT.speed*mass
 
-		if(O.throw_source && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
-			var/dir = get_dir(O.throw_source, src)
+		if(TT.initial_turf && momentum >= THROWNOBJ_KNOCKBACK_SPEED)
+			var/dir = get_dir(TT.initial_turf, src)
 
 			visible_message("<font color='red'>[src] staggers under the impact!</font>","<font color='red'>You stagger under the impact!</font>")
-			src.throw_at(get_edge_target_turf(src,dir),1,momentum)
+			src.throw_at_old(get_edge_target_turf(src,dir),1,momentum)
 
 			if(!O || !src) return
 
 			if(O.loc == src && O.sharp) //Projectile is embedded and suitable for pinning.
 				var/turf/T = near_wall(dir,2)
-
 				if(T)
-					src.loc = T
+					forceMove(T)
 					visible_message("<span class='warning'>[src] is pinned to the wall by [O]!</span>","<span class='warning'>You are pinned to the wall by [O]!</span>")
-					src.anchored = 1
-					src.pinned += O
+					anchored = TRUE
+					pinned += O
 
 // This does a prob check to catch the thing flying at you, with a minimum of 1%
 /mob/living/carbon/human/proc/can_catch(var/obj/O)
-	if(!get_active_hand())	// If active hand is empty
+	if(!get_active_held_item())	// If active hand is empty
 		var/obj/item/organ/external/temp = organs_by_name["r_hand"]
 		if (hand)
 			temp = organs_by_name["l_hand"]
 		if(temp && !temp.is_usable())
 			return FALSE	// The hand isn't working in the first place
 
-	if(!O.catchable)
-		return FALSE
+	if(isitem(O))
+		var/obj/item/I = O
+		if(I.item_flags & ITEM_THROW_UNCATCHABLE)
+			return FALSE
 
 	// Alright, our hand works? Time to try the catching.
 	var/catch_chance = 90	// Default 90% catch rate
@@ -487,7 +483,7 @@ emp_act
 
 	catch_chance -= get_accuracy_penalty()	// Same issues with shooting a gun, or swinging a weapon
 
-	catch_chance = between(1, catch_chance, 100)
+	catch_chance = clamp( catch_chance, 1,  100)
 
 	if(prob(catch_chance))
 		return TRUE
@@ -605,12 +601,17 @@ emp_act
 	if(!(G && G.assailant == user && G.affecting == src)) //check that we still have a grab
 		return 0
 
-	user.visible_message("<span class='danger'>\The [user] twists \the [W] around inside [src]'s [chest]!</span>")
-
-	if(prob(organ_chance))
-		var/obj/item/organ/internal/selected_organ = pick(chest.internal_organs)
-		selected_organ.damage = max(selected_organ.damage, damage * 0.5)
+	user.visible_message("<span class='danger'>\The x[user] twists \the [W] around inside [src]'s [chest]!</span>")
+	var/obj/item/organ/internal/selected_organ = pick(chest.internal_organs)
+	if(istype(W,/obj/item/material/knife/stiletto))
+		selected_organ.take_damage(damage * 5)
 		G.last_action = world.time
 		flick(G.hud.icon_state, G.hud)
-
+		add_attack_logs(user,src,"stiletto stabbed")
+	else
+		if(prob(organ_chance))
+			selected_organ.take_damage(damage * 0.5)
+			G.last_action = world.time
+			flick(G.hud.icon_state, G.hud)
+			add_attack_logs(user,src,"shanked")
 	return 1

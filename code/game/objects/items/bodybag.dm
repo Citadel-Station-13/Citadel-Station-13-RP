@@ -7,25 +7,26 @@
 	icon_state = "bodybag_folded"
 	w_class = ITEMSIZE_SMALL
 
-	attack_self(mob/user)
-		var/obj/structure/closet/body_bag/R = new /obj/structure/closet/body_bag(user.loc)
-		R.add_fingerprint(user)
-		qdel(src)
+/obj/item/bodybag/attack_self(mob/user)
+	var/obj/structure/closet/body_bag/R = new /obj/structure/closet/body_bag(user.loc)
+	R.add_fingerprint(user)
+	qdel(src)
 
 
 /obj/item/storage/box/bodybags
 	name = "body bags"
 	desc = "This box contains body bags."
 	icon_state = "bodybags"
-	New()
-		..()
-		new /obj/item/bodybag(src)
-		new /obj/item/bodybag(src)
-		new /obj/item/bodybag(src)
-		new /obj/item/bodybag(src)
-		new /obj/item/bodybag(src)
-		new /obj/item/bodybag(src)
-		new /obj/item/bodybag(src)
+
+/obj/item/storage/box/bodybags/New()
+	..()
+	new /obj/item/bodybag(src)
+	new /obj/item/bodybag(src)
+	new /obj/item/bodybag(src)
+	new /obj/item/bodybag(src)
+	new /obj/item/bodybag(src)
+	new /obj/item/bodybag(src)
+	new /obj/item/bodybag(src)
 
 
 /obj/structure/closet/body_bag
@@ -45,7 +46,7 @@
 /obj/structure/closet/body_bag/attackby(var/obj/item/W as obj, mob/user as mob)
 	if (istype(W, /obj/item/pen))
 		var/t = input(user, "What would you like the label to be?", text("[]", src.name), null)  as text
-		if (user.get_active_hand() != W)
+		if (user.get_active_held_item() != W)
 			return
 		if (!in_range(src, user) && src.loc != user)
 			return
@@ -74,7 +75,7 @@
 		return 1
 	return 0
 
-/obj/structure/closet/body_bag/MouseDrop(over_object, src_location, over_location)
+/obj/structure/closet/body_bag/OnMouseDropLegacy(over_object, src_location, over_location)
 	..()
 	if((over_object == usr && (in_range(src, usr) || usr.contents.Find(src))))
 		if(!ishuman(usr))	return 0
@@ -154,6 +155,14 @@
 	QDEL_NULL(tank)
 	return ..()
 
+/obj/structure/closet/body_bag/cryobag/attack_hand(mob/living/user)
+	if(used)
+		var/confirm = tgui_alert(user, "Are you sure you want to open \the [src]? \The [src] will expire upon opening it.", "Confirm Opening", list("No", "Yes"))
+		if(confirm == "Yes")
+			..() // Will call `toggle()` and open the bag.
+	else
+		..()
+
 /obj/structure/closet/body_bag/cryobag/open()
 	. = ..()
 	if(used)
@@ -164,7 +173,7 @@
 		O.desc = "Pretty useless now..."
 		qdel(src)
 
-/obj/structure/closet/body_bag/cryobag/MouseDrop(over_object, src_location, over_location)
+/obj/structure/closet/body_bag/cryobag/OnMouseDropLegacy(over_object, src_location, over_location)
 	. = ..()
 	if(. && syringe)
 		var/obj/item/bodybag/cryobag/folded = .
@@ -180,9 +189,7 @@
 
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.preserved = 1
-		for(var/obj/item/organ/organ in O)
-			organ.preserved = 1
+		O.preserve(STASIS_BAG_TRAIT)
 	..()
 
 /obj/structure/closet/body_bag/cryobag/Exited(atom/movable/AM)
@@ -192,9 +199,7 @@
 
 	if(istype(AM, /obj/item/organ))
 		var/obj/item/organ/O = AM
-		O.preserved = 0
-		for(var/obj/item/organ/organ in O)
-			organ.preserved = 0
+		O.unpreserve(STASIS_BAG_TRAIT)
 	..()
 
 /obj/structure/closet/body_bag/cryobag/return_air() //Used to make stasis bags protect from vacuum.
@@ -232,9 +237,10 @@
 				to_chat(user,"<span class='warning'>\The [src] already has an injector! Remove it first.</span>")
 			else
 				var/obj/item/reagent_containers/syringe/syringe = W
+				if(!user.attempt_insert_item_for_installation(syringe, src))
+					return
 				to_chat(user,"<span class='info'>You insert \the [syringe] into \the [src], and it locks into place.</span>")
-				user.unEquip(syringe)
-				src.syringe = syringe
+				syringe = syringe
 				syringe.loc = null
 				for(var/mob/living/carbon/human/H in contents)
 					inject_occupant(H)

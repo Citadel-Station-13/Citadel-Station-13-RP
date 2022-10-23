@@ -5,7 +5,7 @@
 	icon_state = "tape"
 	w_class = ITEMSIZE_SMALL
 
-	toolspeed = 3 //You can use it in surgery. It's stupid, but you can.
+	tool_speed = 3 //You can use it in surgery. It's stupid, but you can.
 
 	var/turf/start
 	var/turf/end
@@ -125,11 +125,11 @@ var/list/tape_roll_applications = list()
 		overlays += overlay
 
 
-/obj/item/barrier_tape_roll/dropped(mob/user)
+/obj/item/barrier_tape_roll/dropped(mob/user, flags, atom/newLoc)
 	update_icon()
 	return ..()
 
-/obj/item/barrier_tape_roll/pickup(mob/user)
+/obj/item/barrier_tape_roll/pickup(mob/user, flags, atom/oldLoc)
 	update_icon()
 	return ..()
 
@@ -323,7 +323,7 @@ var/list/tape_roll_applications = list()
 		var/mob/living/M = AM //so that ghosts don't get spammed
 		add_fingerprint(M)
 		if(!allowed(M))	//only select few learn art of not crumpling the tape
-			to_chat(M, span("warning", "You are not supposed to go past \the [src]..."))
+			to_chat(M, SPAN_WARNING( "You are not supposed to go past \the [src]..."))
 			if(M.a_intent == INTENT_HELP && !(istype(M, /mob/living/simple_mob)))
 				return FALSE
 			crumple()

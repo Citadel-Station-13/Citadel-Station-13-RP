@@ -21,9 +21,9 @@
 	base_turf_by_z = list("1" = /turf/space)
 
 	use_overmap = TRUE
-	/var/overmap_size = 20			// Dimensions of overmap zlevel if overmap is used.
-	/var/overmap_z = 0				// If 0 will generate overmap zlevel on init. Otherwise will populate the zlevel provided.
-	/var/overmap_event_areas = 15	// How many event "clouds" will be generated
+	var/overmap_size = 20			// Dimensions of overmap zlevel if overmap is used.
+	var/overmap_z = 0				// If 0 will generate overmap zlevel on init. Otherwise will populate the zlevel provided.
+	var/overmap_event_areas = 15	// How many event "clouds" will be generated
 
 	station_name	= "NSS Citadel Testing Facility"
 	station_short	= "NSS-CTF"

@@ -1,13 +1,14 @@
 /obj/item/modular_computer/process(delta_time)
 	if(!enabled) // The computer is turned off
 		last_power_usage = 0
-		return 0
+		return FALSE
 
 	if(damage > broken_damage)
 		shutdown_computer()
-		return 0
+		return FALSE
 
-	if(active_program && active_program.requires_ntnet && !get_ntnet_status(active_program.requires_ntnet_feature)) // Active program requires NTNet to run but we've just lost connection. Crash.
+	// Active program requires NTNet to run but we've just lost connection. Crash.
+	if(active_program && active_program.requires_ntnet && !get_ntnet_status(active_program.requires_ntnet_feature))
 		active_program.event_networkfailure(0)
 
 	for(var/datum/computer_file/program/P in idle_threads)
@@ -33,13 +34,13 @@
 	handle_power() // Handles all computer power interaction
 	check_update_ui_need()
 
-// Used to perform preset-specific hardware changes.
+/// Used to perform preset-specific hardware changes.
 /obj/item/modular_computer/proc/install_default_hardware()
-	return 1
+	return TRUE
 
-// Used to install preset-specific programs
+/// Used to install preset-specific programs
 /obj/item/modular_computer/proc/install_default_programs()
-	return 1
+	return TRUE
 
 /obj/item/modular_computer/Initialize(mapload)
 	. = ..()
@@ -63,9 +64,9 @@
 		to_chat(user, "\The [src] was already emagged.")
 		return //NO_EMAG_ACT
 	else
-		computer_emagged = 1
+		computer_emagged = TRUE
 		to_chat(user, "You emag \the [src]. It's screen briefly shows a \"OVERRIDE ACCEPTED: New software downloads available.\" message.")
-		return 1
+		return TRUE
 
 /obj/item/modular_computer/update_icon()
 	icon_state = icon_state_unpowered
@@ -87,11 +88,11 @@
 	else
 		overlays.Add(icon_state_menu)
 
-/obj/item/modular_computer/proc/turn_on(var/mob/user)
+/obj/item/modular_computer/proc/turn_on(mob/user)
 	if(bsod)
 		return
 	if(tesla_link)
-		tesla_link.enabled = 1
+		tesla_link.enabled = TRUE
 	var/issynth = issilicon(user) // Robots and AIs get different activation messages.
 	if(damage > broken_damage)
 		if(issynth)
@@ -112,8 +113,8 @@
 		else
 			to_chat(user, "You press the power button but \the [src] does not respond")
 
-// Relays kill program request to currently active program. Use this to quit current program.
-/obj/item/modular_computer/proc/kill_program(var/forced = 0)
+/// Relays kill program request to currently active program. Use this to quit current program.
+/obj/item/modular_computer/proc/kill_program(forced = FALSE)
 	if(active_program)
 		active_program.kill_program(forced)
 		active_program = null
@@ -123,28 +124,28 @@
 	update_icon()
 
 // Returns 0 for No Signal, 1 for Low Signal and 2 for Good Signal. 3 is for wired connection (always-on)
-/obj/item/modular_computer/proc/get_ntnet_status(var/specific_action = 0)
+/obj/item/modular_computer/proc/get_ntnet_status(specific_action = 0)
 	if(network_card)
 		return network_card.get_signal(specific_action)
 	else
-		return 0
+		return FALSE
 
-/obj/item/modular_computer/proc/add_log(var/text)
+/obj/item/modular_computer/proc/add_log(text)
 	if(!get_ntnet_status())
-		return 0
+		return FALSE
 	return ntnet_global.add_log(text, network_card)
 
-/obj/item/modular_computer/proc/shutdown_computer(var/loud = 1)
+/obj/item/modular_computer/proc/shutdown_computer(loud = TRUE)
 	kill_program(1)
 	for(var/datum/computer_file/program/P in idle_threads)
 		P.kill_program(1)
 		idle_threads.Remove(P)
 	if(loud)
 		visible_message("\The [src] shuts down.")
-	enabled = 0
+	enabled = FALSE
 	update_icon()
 
-/obj/item/modular_computer/proc/enable_computer(var/mob/user = null)
+/obj/item/modular_computer/proc/enable_computer(mob/user = null)
 	enabled = 1
 	update_icon()
 
@@ -169,7 +170,6 @@
 	if(istype(user))
 		nano_ui_interact(user) // Re-open the UI on this computer. It should show the main screen now.
 
-
 /obj/item/modular_computer/proc/run_program(prog)
 	var/datum/computer_file/program/P = null
 	var/mob/user = usr
@@ -177,7 +177,7 @@
 		P = hard_drive.find_file_by_name(prog)
 
 	if(!P || !istype(P)) // Program not found or it's not executable program.
-		to_chat(user, "<span class='danger'>\The [src]'s screen shows \"I/O ERROR - Unable to run [prog]\" warning.</span>")
+		to_chat(user, SPAN_DANGER("\The [src]'s screen shows \"I/O ERROR - Unable to run [prog]\" warning."))
 		return
 
 	P.computer = src
@@ -192,11 +192,11 @@
 		return
 
 	if(idle_threads.len >= processor_unit.max_idle_programs+1)
-		to_chat(user, "<span class='notice'>\The [src] displays a \"Maximal CPU load reached. Unable to run another program.\" error</span>")
+		to_chat(user, SPAN_NOTICE("\The [src] displays a \"Maximal CPU load reached. Unable to run another program.\" error"))
 		return
 
 	if(P.requires_ntnet && !get_ntnet_status(P.requires_ntnet_feature)) // The program requires NTNet connection, but we are not connected to NTNet.
-		to_chat(user, "<span class='danger'>\The [src]'s screen shows \"NETWORK ERROR - Unable to connect to NTNet. Please retry. If problem persists contact your system administrator.\" warning.</span>")
+		to_chat(user, SPAN_DANGER("\The [src]'s screen shows \"NETWORK ERROR - Unable to connect to NTNet. Please retry. If problem persists contact your system administrator.\" warning."))
 		return
 
 	if(active_program)
@@ -204,7 +204,7 @@
 
 	if(P.run_program(user))
 		update_icon()
-	return 1
+	return TRUE
 
 /obj/item/modular_computer/proc/update_uis()
 	if(active_program) //Should we update program ui or computer ui?
@@ -215,16 +215,16 @@
 		SSnanoui.update_uis(src)
 
 /obj/item/modular_computer/proc/check_update_ui_need()
-	var/ui_update_needed = 0
+	var/ui_update_needed = FALSE
 	if(battery_module)
 		var/batery_percent = battery_module.battery.percent()
 		if(last_battery_percent != batery_percent) //Let's update UI on percent change
-			ui_update_needed = 1
+			ui_update_needed = TRUE
 			last_battery_percent = batery_percent
 
 	if(stationtime2text() != last_world_time)
 		last_world_time = stationtime2text()
-		ui_update_needed = 1
+		ui_update_needed = TRUE
 
 	if(idle_threads.len)
 		var/list/current_header_icons = list()
@@ -237,19 +237,19 @@
 
 		else if(!(last_header_icons ~= current_header_icons))
 			last_header_icons = current_header_icons
-			ui_update_needed = 1
+			ui_update_needed = TRUE
 		else
 			for(var/x in last_header_icons|current_header_icons)
 				if(last_header_icons[x]!=current_header_icons[x])
 					last_header_icons = current_header_icons
-					ui_update_needed = 1
+					ui_update_needed = TRUE
 					break
 
 	if(ui_update_needed)
 		update_uis()
 
 // Used by camera monitor program
-/obj/item/modular_computer/check_eye(var/mob/user)
+/obj/item/modular_computer/check_eye(mob/user)
 	if(active_program)
 		return active_program.check_eye(user)
 	else

@@ -53,7 +53,7 @@
 	if(O.is_screwdriver())
 		to_chat(user, "<span class='notice'>You [assembled ? "disassemble" : "assemble"] the gun.</span>")
 		assembled = !assembled
-		playsound(src, O.usesound, 50, 1)
+		playsound(src, O.tool_sound, 50, 1)
 		return
 	if(O.is_crowbar())
 		if(assembled == 1)
@@ -61,7 +61,7 @@
 			return
 		for(var/obj/item/I in guncomponents)
 			to_chat(user, "<span class='notice'>You remove the gun's components.</span>")
-			playsound(src, O.usesound, 50, 1)
+			playsound(src, O.tool_sound, 50, 1)
 			I.forceMove(get_turf(src))
 			guncomponents.Remove(I)
 			CheckParts()
@@ -168,6 +168,7 @@
 	icon_state = "mod_cannon"
 	max_components = 14
 	desc = "Say hello, to my little friend!"
+	heavy = TRUE
 	one_handed_penalty = 4 //dual wielding = no.
 	cell_type = /obj/item/cell //We're bigger. We can use much larger power cells.
 	origin_tech = list(TECH_COMBAT = 6, TECH_MAGNET = 6, TECH_MATERIAL = 5, TECH_BLUESPACE = 4) //its a damn cannon capable of holding a huge amount of parts.

@@ -7,7 +7,7 @@ MRE Stuff
 	desc = "A vacuum-sealed bag containing a day's worth of nutrients for an adult in strenuous situations. There is no visible expiration date on the package. This one is menu 1, meat pizza."
 	icon = 'icons/obj/food.dmi'
 	icon_state = "mre"
-	max_storage_space = ITEMSIZE_COST_SMALL * 6
+	max_storage_space = ITEMSIZE_COST_SMALL * 7
 	max_w_class = ITEMSIZE_SMALL
 	var/opened = FALSE
 	starts_with = list(
@@ -18,6 +18,7 @@ MRE Stuff
 	/obj/random/mre/spread,
 	/obj/random/mre/drink,
 	/obj/random/mre/sauce,
+	/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 	/obj/item/material/kitchen/utensil/spoon/plastic
 	)
 
@@ -46,6 +47,7 @@ MRE Stuff
 	/obj/random/mre/spread,
 	/obj/random/mre/drink,
 	/obj/random/mre/sauce,
+	/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 	/obj/item/material/kitchen/utensil/spoon/plastic
 	)
 
@@ -59,6 +61,7 @@ MRE Stuff
 	/obj/random/mre/spread,
 	/obj/random/mre/drink,
 	/obj/random/mre/sauce,
+	/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 	/obj/item/material/kitchen/utensil/spoon/plastic
 	)
 
@@ -72,6 +75,7 @@ MRE Stuff
 	/obj/random/mre/spread,
 	/obj/random/mre/drink,
 	/obj/random/mre/sauce,
+	/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 	/obj/item/material/kitchen/utensil/spoon/plastic
 	)
 
@@ -85,6 +89,7 @@ MRE Stuff
 	/obj/random/mre/spread,
 	/obj/random/mre/drink,
 	/obj/random/mre/sauce,
+	/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 	/obj/item/material/kitchen/utensil/spoon/plastic
 	)
 
@@ -98,6 +103,7 @@ MRE Stuff
 	/obj/random/mre/spread,
 	/obj/random/mre/drink,
 	/obj/random/mre/sauce,
+	/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 	/obj/item/material/kitchen/utensil/spoon/plastic
 	)
 
@@ -111,6 +117,7 @@ MRE Stuff
 	/obj/random/mre/spread,
 	/obj/random/mre/drink,
 	/obj/random/mre/sauce,
+	/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 	/obj/item/material/kitchen/utensil/spoon/plastic
 	)
 
@@ -124,6 +131,7 @@ MRE Stuff
 	/obj/random/mre/spread,
 	/obj/random/mre/drink,
 	/obj/random/mre/sauce,
+	/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 	/obj/item/material/kitchen/utensil/spoon/plastic
 	)
 
@@ -139,6 +147,7 @@ MRE Stuff
 	/obj/random/mre/spread/vegan,
 	/obj/random/mre/drink,
 	/obj/random/mre/sauce/vegan,
+	/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 	/obj/item/material/kitchen/utensil/spoon/plastic
 	)
 
@@ -152,6 +161,7 @@ MRE Stuff
 	/obj/item/reagent_containers/food/snacks/candy/proteinbar,
 	/obj/item/reagent_containers/food/condiment/small/packet/protein,
 	/obj/random/mre/sauce/sugarfree,
+	/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 	/obj/item/material/kitchen/utensil/spoon/plastic
 	)
 
@@ -166,6 +176,7 @@ MRE Stuff
 	/obj/item/reagent_containers/food/snacks/liquidfood,
 	/obj/item/reagent_containers/food/snacks/liquidprotein,
 	/obj/item/reagent_containers/food/snacks/liquidprotein,
+	/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 	)
 
 /obj/item/storage/mre/menu12
@@ -191,6 +202,7 @@ MRE Stuff
 	/obj/item/reagent_containers/food/snacks/liquidprotein,
 	/obj/random/mre/drink,
 	/obj/item/storage/mrebag/dessert,
+	/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 	/obj/item/material/kitchen/utensil/spoon/plastic
 	)
 
@@ -204,9 +216,11 @@ MRE Stuff
 	/obj/random/mre/spread,
 	/obj/random/mre/drink,
 	/obj/random/mre/sauce,
+	/obj/item/reagent_containers/food/drinks/cans/waterbottle,
 	/obj/item/material/kitchen/utensil/spoon/plastic
 	)
 
+//Subtypes
 /obj/item/storage/mrebag
 	name = "main course"
 	desc = "A vacuum-sealed bag containing the MRE's main course. Self-heats when opened."

@@ -4,7 +4,6 @@
 	name = "micro"
 	desc = "Another crewmember, small enough to fit in your hand."
 	icon_state = "micro"
-	icon_override = 'icons/mob/head_vr.dmi'
 	slot_flags = SLOT_FEET | SLOT_HEAD | SLOT_ID
 	w_class = ITEMSIZE_SMALL
 	item_icons = list() // No in-hand sprites (for now, anyway, we could totally add some)
@@ -14,14 +13,14 @@
 	for(var/mob/living/M in contents)
 		M.examine(user)
 
-/obj/item/holder/MouseDrop(mob/M as mob)
+/obj/item/holder/OnMouseDropLegacy(mob/M as mob)
 	..()
 	if(M != usr) return
 	if(usr == src) return
 	if(!Adjacent(usr)) return
 	if(istype(M,/mob/living/silicon/ai)) return
 	for(var/mob/living/carbon/human/O in contents)
-		O.show_inv(usr)
+		O.request_strip_menu(usr)
 
 /obj/item/holder/micro/attack_self(var/mob/living/user)
 	for(var/mob/living/carbon/human/M in contents)

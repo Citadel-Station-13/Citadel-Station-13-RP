@@ -1,5 +1,5 @@
 /obj/item/clothing/under/vox
-	has_sensor = 0
+	has_sensors = UNIFORM_HAS_NO_SENSORS
 	species_restricted = list(SPECIES_VOX)
 	starting_accessories = list(/obj/item/clothing/accessory/storage/vox)	// Dont' start with a backback, so free webbing
 	flags = PHORONGUARD
@@ -44,7 +44,7 @@
 	name = "vox pressure suit"
 	desc = "A lightly-plated jumpsuit, fitted to an alien frame. Now in classic grey!"
 	icon = 'icons/obj/clothing/uniforms.dmi'
-	icon_override = 'icons/mob/species/vox/uniform.dmi'
+	icon_override = 'icons/mob/clothing/species/vox/uniform.dmi'
 	flags_inv = HIDEGLOVES|HIDESHOES
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	flags = PHORONGUARD
@@ -114,4 +114,3 @@
 	desc = "A lightly-plated jumpsuit, fitted to an alien frame."
 	icon_state = "vox-civ-ce"
 	item_state = "vox-civ-ce"
-

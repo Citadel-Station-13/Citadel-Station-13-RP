@@ -1,7 +1,7 @@
 /obj/structure/stasis_cage
 	name = "stasis cage"
 	desc = "A high-tech animal cage, designed to keep contained fauna docile and safe."
-	icon = 'icons/obj/storage.dmi' //VOREStation Edit
+	icon = 'icons/obj/storage.dmi'
 	icon_state = "critteropen"
 	density = 1
 
@@ -51,11 +51,11 @@
 
 	return ..()
 
-/mob/living/simple_mob/MouseDrop(var/obj/structure/stasis_cage/over_object)
+/mob/living/simple_mob/OnMouseDropLegacy(var/obj/structure/stasis_cage/over_object)
 	if(istype(over_object) && Adjacent(over_object) && CanMouseDrop(over_object, usr))
 
-		if(!src.buckled || !istype(src.buckled, /obj/effect/energy_net))
-			to_chat(usr, "It's going to be difficult to convince \the [src] to move into \the [over_object] without capturing it in a net.")
+		if(!can_be_involuntarily_caged(over_object, usr))
+			to_chat(usr, "It's going to be difficult to convince \the [src] to move into \the [over_object] without capturing it in a net or otherwise restraining it.")
 			return
 
 		usr.visible_message("[usr] begins stuffing \the [src] into \the [over_object].", "You begin stuffing \the [src] into \the [over_object].")
@@ -65,3 +65,13 @@
 			over_object.contain(src)
 	else
 		return ..()
+
+/mob/living/simple_mob/proc/can_be_involuntarily_caged(obj/structure/stasis_cage/over_object, mob/living/user)
+	if(istype(buckled, /obj/effect/energy_net))
+		return TRUE
+	
+	var/obj/item/grab/G = user.get_active_held_item()
+	if(istype(G) && G.affecting == src && G.state >= GRAB_AGGRESSIVE)
+		return TRUE
+	
+	return FALSE

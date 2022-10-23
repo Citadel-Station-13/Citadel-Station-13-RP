@@ -7,7 +7,7 @@
 	density = 0
 	opacity = 0
 	plane = ABOVE_PLANE
-	simulated = 0
+	flags = ATOM_ABSTRACT
 	mouse_opacity = 0
 
 	var/mob/living/aiming_at   // Who are we currently targeting, if anyone?
@@ -92,7 +92,7 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-obj/aiming_overlay/proc/update_aiming_deferred()
+/obj/aiming_overlay/proc/update_aiming_deferred()
 	set waitfor = 0
 	sleep(0)
 	update_aiming()
@@ -116,7 +116,7 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 	var/cancel_aim = 1
 
 	var/mob/living/carbon/human/H = owner
-	if(!(aiming_with in owner) || (istype(H) && !H.item_is_in_hands(aiming_with)))
+	if(!(aiming_with in owner) || (istype(H) && !H.is_holding(aiming_with)))
 		to_chat(owner, "<span class='warning'>You must keep hold of your weapon!</span>")
 	else if(owner.eye_blind)
 		to_chat(owner, "<span class='warning'>You are blind and cannot see your target!</span>")
@@ -224,4 +224,3 @@ obj/aiming_overlay/proc/update_aiming_deferred()
 	aiming_at = null
 	moveToNullspace()
 	STOP_PROCESSING(SSobj, src)
-

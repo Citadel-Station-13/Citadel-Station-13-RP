@@ -9,11 +9,11 @@
 	initial_generic_waypoints = list("poid_main")
 */
 
-/obj/effect/landmark/lavaland_entry
+/obj/landmark/lavaland_entry
 	name = "lavaland_entry"
 
 
-/obj/effect/landmark/lavaland_exit
+/obj/landmark/lavaland_exit
 	name = "lavaland_exit"
 
 
@@ -97,8 +97,12 @@
 	icon_state = "asteroid"
 	outdoors = 1
 	base_icon_state = "asteroid"
-	turf_layers = list(/turf/simulated/mineral/floor/lavaland)
+	edge_blending_priority = 0
+	baseturfs = /turf/simulated/mineral/floor/lavaland
 	initial_flooring = /decl/flooring/outdoors/lavaland
+
+/turf/simulated/floor/outdoors/lavaland/indoors //I know this path is confusing. Basically this is a way to simulate interior caverns that don't use mapgen for specific POIs.
+	outdoors = 0
 
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior
 	outdoors = 1

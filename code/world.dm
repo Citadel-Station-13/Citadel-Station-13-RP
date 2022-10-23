@@ -3,13 +3,13 @@
 //Try looking in game/world.dm
 /world
 	mob = /mob/new_player
-	turf = /turf/space
+	turf = /turf/space/basic
 	area = /area/space
 	view = "15x15"
 	cache_lifespan = 7
 	hub = "Exadv1.spacestation13"
 	hub_password = "kMZy3U5jJHSiBQjr"
-	name = "Citadel Station 13 - HRP"
+	name = "Citadel Station 13 - Roleplay"
 	status = "ERROR: Default status"
 	visibility = TRUE
 	fps = 20

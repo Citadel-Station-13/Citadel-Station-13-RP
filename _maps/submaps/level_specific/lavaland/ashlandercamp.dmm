@@ -1,0 +1,116 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"b" = (
+/obj/structure/outcrop,
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"c" = (
+/obj/structure/ghost_role_spawner/ashlander,
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"m" = (
+/obj/item/reagent_containers/glass/bucket/wood,
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"v" = (
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"x" = (
+/obj/effect/floor_decal/asteroid,
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"y" = (
+/obj/structure/table/hardwoodtable,
+/obj/fiftyspawner/wood,
+/obj/fiftyspawner/wood,
+/obj/fiftyspawner/bone,
+/obj/item/shovel/spade/bone{
+	pixel_x = -2
+	},
+/obj/item/pickaxe/bone,
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"Q" = (
+/obj/structure/table/hardwoodtable,
+/obj/item/seeds/ashlander/bentars,
+/obj/item/seeds/ashlander/juhtak,
+/obj/item/seeds/ashlander,
+/obj/item/tool/wirecutters/clippers/bone,
+/obj/item/material/minihoe/bone,
+/obj/item/material/knife/machete/hatchet/bone{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"R" = (
+/obj/machinery/portable_atmospherics/hydroponics/soil,
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+v
+R
+a
+"}
+(3,1,1) = {"
+a
+b
+c
+v
+R
+a
+"}
+(4,1,1) = {"
+a
+y
+v
+x
+R
+a
+"}
+(5,1,1) = {"
+a
+Q
+v
+v
+R
+a
+"}
+(6,1,1) = {"
+a
+m
+v
+v
+a
+a
+"}
+(7,1,1) = {"
+a
+v
+v
+v
+v
+a
+"}
+(8,1,1) = {"
+a
+a
+a
+a
+a
+a
+"}

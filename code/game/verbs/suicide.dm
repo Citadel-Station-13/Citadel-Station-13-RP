@@ -28,7 +28,7 @@
 			return
 		suiciding = 15
 		does_not_breathe = 0			//Prevents ling-suicide zombies, or something
-		var/obj/item/held_item = get_active_hand()
+		var/obj/item/held_item = get_active_held_item()
 		if(held_item)
 			var/damagetype = held_item.suicide_act(src)
 			if(damagetype)
@@ -74,7 +74,7 @@
 
 		log_and_message_admins("[key_name(src)] commited suicide")
 
-		var/datum/gender/T = gender_datums[get_visible_gender()]
+		var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
 
 		var/suicidemsg
 		suicidemsg = pick("<span class='danger'>[src] is attempting to bite [T.his] tongue off! It looks like [T.he] [T.is] trying to commit suicide.</span>", \

@@ -2,7 +2,7 @@
 	name = "door"
 	density = 1
 	anchored = 1
-	can_atmos_pass = ATMOS_PASS_DENSITY
+	CanAtmosPass = ATMOS_PASS_DENSITY
 
 	icon = 'icons/obj/doors/material_doors.dmi'
 	icon_state = "metal"
@@ -23,7 +23,7 @@
 /obj/structure/simple_door/Initialize(mapload, material_name)
 	. = ..(mapload)
 	if(!material_name)
-		material_name = DEFAULT_WALL_MATERIAL
+		material_name = MAT_STEEL
 	material = get_material_by_name(material_name)
 	if(!material)
 		qdel(src)

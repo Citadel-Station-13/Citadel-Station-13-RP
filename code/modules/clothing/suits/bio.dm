@@ -9,7 +9,7 @@
 	body_parts_covered = HEAD|FACE|EYES
 	siemens_coefficient = 0.9
 	flags = PHORONGUARD
-	item_flags = THICKMATERIAL | ALLOW_SURVIVALFOOD
+	clothing_flags = THICKMATERIAL | ALLOW_SURVIVALFOOD
 
 /obj/item/clothing/suit/bio_suit
 	name = "bio suit"
@@ -25,17 +25,17 @@
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.9
 	flags = PHORONGUARD
-	item_flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL
 
 //Standard biosuit, orange stripe
 /obj/item/clothing/head/bio_hood/general
 	icon_state = "bio_general"
-	item_state_slots = list(slot_r_hand_str = "bio", slot_l_hand_str = "bio")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bio", SLOT_ID_LEFT_HAND = "bio")
 	body_parts_covered = HEAD|FACE|EYES
 
 /obj/item/clothing/suit/bio_suit/general
 	icon_state = "bio_general"
-	item_state_slots = list(slot_r_hand_str = "bio", slot_l_hand_str = "bio")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bio", SLOT_ID_LEFT_HAND = "bio")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	flags_inv = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 
@@ -89,7 +89,7 @@
 	name = "Plague doctor suit"
 	desc = "It protected doctors from the Black Death, back then. You bet your arse it's gonna help you against viruses."
 	icon_state = "plaguedoctor"
-	item_state_slots = list(slot_r_hand_str = "bio", slot_l_hand_str = "bio")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "bio", SLOT_ID_LEFT_HAND = "bio")
 	flags_inv = HIDEGLOVES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 
 //Beekeeping Suit seems like it would belong here.
@@ -103,7 +103,7 @@
 	body_parts_covered = HEAD|FACE|EYES
 	siemens_coefficient = 0.9
 	flags = PHORONGUARD
-	item_flags = THICKMATERIAL | ALLOW_SURVIVALFOOD
+	clothing_flags = THICKMATERIAL | ALLOW_SURVIVALFOOD
 
 /obj/item/clothing/suit/beekeeper
 	name = "beekeeping suit"
@@ -119,4 +119,4 @@
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 	siemens_coefficient = 0.9
 	flags = PHORONGUARD
-	item_flags = THICKMATERIAL
+	clothing_flags = THICKMATERIAL

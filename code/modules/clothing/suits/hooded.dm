@@ -8,6 +8,8 @@
 	var/hood_up = FALSE
 	var/toggleicon
 	action_button_name = "Toggle Hood"
+	allowed =  list (/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches,
+	/obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
 
 /obj/item/clothing/suit/storage/hooded/Initialize(mapload)
 	. = ..()
@@ -29,22 +31,19 @@
 /obj/item/clothing/suit/storage/hooded/ui_action_click()
 	ToggleHood()
 
-/obj/item/clothing/suit/storage/hooded/equipped(mob/user, slot)
-	if(slot != slot_wear_suit)
+/obj/item/clothing/suit/storage/hooded/equipped(mob/user, slot, flags)
+	if(slot != SLOT_ID_SUIT)
 		RemoveHood()
 	..()
 
 /obj/item/clothing/suit/storage/hooded/proc/RemoveHood()
 	icon_state = toggleicon
 	hood_up = FALSE
-	hood.canremove = TRUE // This shouldn't matter anyways but just incase.
-	if(ishuman(hood.loc))
-		var/mob/living/carbon/H = hood.loc
-		H.unEquip(hood, 1)
-		H.update_inv_wear_suit()
+	REMOVE_TRAIT(hood, TRAIT_NODROP, CLOTHING_TRAIT)
 	hood.forceMove(src)
+	update_worn_icon()
 
-/obj/item/clothing/suit/storage/hooded/dropped()
+/obj/item/clothing/suit/storage/hooded/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	RemoveHood()
 
@@ -63,13 +62,13 @@
 					hood.flags |= PHORONGUARD
 				else
 					hood.flags &= ~PHORONGUARD
-				H.equip_to_slot_if_possible(hood,slot_head,0,0,1)
+				H.equip_to_slot_if_possible(hood, SLOT_ID_HEAD)
 				if(armor)
 					hood.armor = armor.Copy()
 				hood_up = TRUE
-				hood.canremove = FALSE
+				ADD_TRAIT(hood, TRAIT_NODROP, CLOTHING_TRAIT)
 				icon_state = "[toggleicon]_t"
-				H.update_inv_wear_suit()
+				update_worn_icon()
 	else
 		RemoveHood()
 
@@ -77,7 +76,7 @@
 	name = "carp costume"
 	desc = "A costume made from 'synthetic' carp scales, it smells."
 	icon_state = "carp_casual"
-	item_state_slots = list(slot_r_hand_str = "carp_casual", slot_l_hand_str = "carp_casual") //Does not exist -S2-
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "carp_casual", SLOT_ID_LEFT_HAND = "carp_casual") //Does not exist -S2-
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
@@ -89,7 +88,7 @@
 	name = "corgi costume"
 	desc = "A costume that looks like someone made a human-like corgi, it won't guarantee belly rubs."
 	icon_state = "ian"
-	item_state_slots = list(slot_r_hand_str = "ian", slot_l_hand_str = "ian") //Does not exist -S2-
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "ian", SLOT_ID_LEFT_HAND = "ian") //Does not exist -S2-
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
 	action_button_name = "Toggle Ian Hood"
@@ -120,14 +119,14 @@
 	action_button_name = "Toggle Priest Hood"
 	body_parts_covered = LOWER_TORSO|UPPER_TORSO|ARMS|LEGS|FEET
 	flags_inv = HIDEJUMPSUIT|HIDETIE|HIDEHOLSTER
-	item_state_slots = list(slot_r_hand_str = "techpriest", slot_l_hand_str = "techpriest")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "techpriest", SLOT_ID_LEFT_HAND = "techpriest")
 	hoodtype = /obj/item/clothing/head/hood/techpriest
 
 /obj/item/clothing/suit/storage/hooded/wintercoat
 	name = "winter coat"
 	desc = "A heavy jacket made from 'synthetic' animal furs."
 	icon_state = "coatwinter"
-	item_state_slots = list(slot_r_hand_str = "coatwinter", slot_l_hand_str = "coatwinter")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatwinter", SLOT_ID_LEFT_HAND = "coatwinter")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	flags = PHORONGUARD
 	flags_inv = HIDEHOLSTER
@@ -154,7 +153,7 @@
 	name = "Facility Director's winter coat"
 	desc = "A heavy jacket made from the most expensive animal furs on the market, hand skinned by the finest of hunters, sewed with the finest of jewels, truly a coat befitting the Director."
 	icon_state = "coatcaptain"
-	item_state_slots = list(slot_r_hand_str = "coatcaptain", slot_l_hand_str = "coatcaptain")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatcaptain", SLOT_ID_LEFT_HAND = "coatcaptain")
 	armor = list(melee = 20, bullet = 15, laser = 20, energy = 10, bomb = 15, bio = 0, rad = 0)
 	hoodtype = /obj/item/clothing/head/hood/winter/captain
 	allowed =  list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
@@ -173,7 +172,7 @@
 	name = "security winter coat"
 	desc = "A heavy jacket made from greyshirt hide, there seems to be a sewed in holster, as well as a thin weave of protection against most damage.'"
 	icon_state = "coatsecurity"
-	item_state_slots = list(slot_r_hand_str = "coatsecurity", slot_l_hand_str = "coatsecurity")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatsecurity", SLOT_ID_LEFT_HAND = "coatsecurity")
 	armor = list(melee = 25, bullet = 20, laser = 20, energy = 15, bomb = 20, bio = 0, rad = 0)
 	hoodtype = /obj/item/clothing/head/hood/winter/security
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
@@ -185,14 +184,14 @@
 	name = "head of security's winter coat"
 	desc = "A comfortable winter coat with a robust Kevlar underlayer and a built-in holster. The red and gold insignia on the sleeves denote the wearer's position as Head of Security."
 	icon_state = "coathos"
-	item_state_slots = list(slot_r_hand_str = "coathos", slot_l_hand_str = "coathos")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coathos", SLOT_ID_LEFT_HAND = "coathos")
 	hoodtype = /obj/item/clothing/head/hood/winter/hos
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/medical
 	name = "medical winter coat"
 	desc = "A heavy jacket made from 'synthetic' animal furs, there's a thick weave of sterile material, good for virus outbreaks!"
 	icon_state = "coatmedical"
-	item_state_slots = list(slot_r_hand_str = "coatmedical", slot_l_hand_str = "coatmedical")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatmedical", SLOT_ID_LEFT_HAND = "coatmedical")
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 50, rad = 0)
 	hoodtype = /obj/item/clothing/head/hood/winter/medical
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
@@ -235,7 +234,7 @@
 	name = "science winter coat"
 	desc = "A heavy jacket made from 'synthetic' animal furs, a small tag says 'Bomb Proof! (not fully bomb proof)'."
 	icon_state = "coatscience"
-	item_state_slots = list(slot_r_hand_str = "coatscience", slot_l_hand_str = "coatscience")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatscience", SLOT_ID_LEFT_HAND = "coatscience")
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 10, bio = 0, rad = 0)
 	hoodtype = /obj/item/clothing/head/hood/winter/science
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
@@ -261,7 +260,7 @@
 	name = "engineering winter coat"
 	desc = "A heavy jacket made from 'synthetic' animal furs, there seems to be a thin weave of lead on the inside."
 	icon_state = "coatengineer"
-	item_state_slots = list(slot_r_hand_str = "coatengineer", slot_l_hand_str = "coatengineer")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatengineer", SLOT_ID_LEFT_HAND = "coatengineer")
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 20)
 	hoodtype = /obj/item/clothing/head/hood/winter/engineering
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
@@ -274,7 +273,7 @@
 	name = "atmospherics winter coat"
 	desc = "A heavy jacket made from 'synthetic' animal furs, seems to have burn makes on the inside from a phoron fire."
 	icon_state = "coatatmos"
-	item_state_slots = list(slot_r_hand_str = "coatatmos", slot_l_hand_str = "coatatmos")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatatmos", SLOT_ID_LEFT_HAND = "coatatmos")
 	hoodtype = /obj/item/clothing/head/hood/winter/engineering/atmos
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/engineering/ce
@@ -288,7 +287,7 @@
 	name = "hydroponics winter coat"
 	desc = "A heavy jacket made from synthetic animal furs, there's a small tag that says 'Made in China, Vegan Friendly'."
 	icon_state = "coathydro"
-	item_state_slots = list(slot_r_hand_str = "coathydro", slot_l_hand_str = "coathydro")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coathydro", SLOT_ID_LEFT_HAND = "coathydro")
 	hoodtype = /obj/item/clothing/head/hood/winter/hydro
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/reagent_containers/spray/plantbgone,
@@ -298,14 +297,14 @@
 	name = "cargo winter coat"
 	desc = "A heavy jacket made from 'synthetic' animal furs, it seems to be rather rugged, from backbreaking work of pushing crates."
 	icon_state = "coatcargo"
-	item_state_slots = list(slot_r_hand_str = "coatcargo", slot_l_hand_str = "coatcargo")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatcargo", SLOT_ID_LEFT_HAND = "coatcargo")
 	hoodtype = /obj/item/clothing/head/hood/winter/cargo
 
 /obj/item/clothing/suit/storage/hooded/wintercoat/miner
 	name = "mining winter coat"
 	icon_state = "coatminer"
 	desc = "A heavy jacket made from real animal furs, the miner who made this must have been through the Underdark."
-	item_state_slots = list(slot_r_hand_str = "coatminer", slot_l_hand_str = "coatminer")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatminer", SLOT_ID_LEFT_HAND = "coatminer")
 	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 	hoodtype = /obj/item/clothing/head/hood/winter/miner
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight, /obj/item/storage/fancy/cigarettes, /obj/item/storage/box/matches,
@@ -428,7 +427,8 @@
 	desc = "An armoured suit for exploring harsh environments."
 	icon_state = "explorer"
 	item_state = "explorer"
-	flags = THICKMATERIAL | PHORONGUARD
+	flags = PHORONGUARD
+	clothing_flags = THICKMATERIAL
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
@@ -447,11 +447,12 @@
 		/obj/item/gun/projectile/sec/flash
 		)
 
+//The Chippin' In Set -Cap
 /obj/item/clothing/suit/storage/hooded/ronincoat
 	name = "ronin coat"
 	desc = "Outfitted with integrated heating coils, this fashionable coat is a favorite of gangsters and mercenaries alike."
 	icon_state = "ronin_coat"
-	item_state_slots = list(slot_r_hand_str = "brown_jacket", slot_l_hand_str = "brown_jacket")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
 	flags_inv = HIDEHOLSTER
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
@@ -462,13 +463,34 @@
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
 	/obj/item/gun/projectile, /obj/item/ammo_magazine, /obj/item/melee/baton)
 
+/obj/item/clothing/suit/storage/hooded/runner
+	name = "Runner Jacket"
+	desc = "A sturdy high-vis jacket patterned after a lost society's first responders. It has been marked with unfamiliar graffiti on the back."
+	icon_state = "runner_jacket"
+	flags_inv = HIDEHOLSTER
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	hoodtype = /obj/item/clothing/head/hood/runner
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
+	/obj/item/gun/projectile, /obj/item/ammo_magazine, /obj/item/melee/baton)
+
+/obj/item/clothing/suit/storage/hooded/runner/half_pint
+	name = "Half-Pint Jacket"
+	desc = "This reinforced jacket bears many curious modifications. Marketed towards mercenaries who'd like a touch of flair, the commercial variant comes with built-in decorative lighting and multiple internal pockets meant to accept armor panels."
+	icon_state = "half_pint"
+	hoodtype = /obj/item/clothing/head/hood/runner/half_pint
+
 // Eldritch suit
 /obj/item/clothing/suit/storage/hooded/eldritch
 	name = "eldritch garment"
 	desc = "A billowing garment that seeps a thick, waxy substance. Upon closer inspection this outfit is crafted out of tanned skin, the ritual icons and spells drawn onto it having been tattooed before removal."
 	icon_state = "eldritch_armor"
-	flags = HIDEHOLSTER|THICKMATERIAL
-	item_state_slots = list(slot_r_hand_str = "brown_jacket", slot_l_hand_str = "brown_jacket")
+	clothing_flags = THICKMATERIAL
+	flags_inv = HIDEHOLSTER
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
 	action_button_name = "Toggle Eldritch Hood"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	hoodtype = /obj/item/clothing/head/hood/eldritch
@@ -481,7 +503,7 @@
 	name = "goliath cloak"
 	desc = "A staunch, practical cape made out of numerous monster materials, it is coveted amongst exiles & hermits."
 	icon_state = "goliath_cloak"
-	item_state_slots = list(slot_r_hand_str = "brown_jacket", slot_l_hand_str = "brown_jacket")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "brown_jacket", SLOT_ID_LEFT_HAND = "brown_jacket")
 	allowed = list(/obj/item/flashlight, /obj/item/tank/emergency/oxygen, /obj/item/pickaxe, /obj/item/material/twohanded/spear, /obj/item/material/twohanded/spear/bone, /obj/item/material/knife/tacknife/combatknife/bone, /obj/item/material/knife/tacknife/survival/bone)
 	armor = list("melee" = 35, "bullet" = 10, "laser" = 25, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 60) //a fair alternative to bone armor, requiring alternative materials and gaining a suit slot
 	hoodtype = /obj/item/clothing/head/hood/goliath
@@ -498,3 +520,49 @@
 	heat_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = FIRESUIT_MAX_HEAT_PROTECTION_TEMPERATURE
+
+//Vainglorious
+
+/obj/item/clothing/suit/storage/hooded/vainglorious
+	name = "Vainglorious hoodie"
+	desc = "A sleeveless hoodie produced by AFW. Lightweight and sporty, it doesn't seem to offer much protection from the elements, but it's undeniably stylish."
+	icon_state = "vainglorious"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatwinter", SLOT_ID_LEFT_HAND = "coatwinter")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	flags_inv = HIDEHOLSTER
+	hoodtype = /obj/item/clothing/head/hood/vainglorious
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit)
+
+/obj/item/clothing/suit/storage/hooded/raincoat
+	name = "raincoat"
+	desc = "A thin, opaque coat meant to protect you from all sorts of rain. Preferred by outdoorsmen and janitors alike across the rift. Of course, the only type of fluids you'd like to protect yourself from around this place don't rain down from the sky. Usually. Comes with a hood!"
+	icon_state = "raincoat"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "wcoat", SLOT_ID_LEFT_HAND = "wcoat")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	flags_inv = HIDEHOLSTER
+	hoodtype = /obj/item/clothing/head/hood/raincoat
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/melee/umbrella)
+
+/obj/item/clothing/suit/storage/hooded/rainponcho
+	name = "plastic raincoat"
+	desc = "A thin plastic poncho meant to protect you from rain. It's cheap, and it won't keep you dry for long."
+	icon_state = "rainponcho"
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "wcoat", SLOT_ID_LEFT_HAND = "wcoat")
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	hoodtype = /obj/item/clothing/head/hood/rainponcho
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/melee/umbrella)
+
+//Donator jacket.
+/obj/item/clothing/suit/storage/hooded/pariah
+	name = "Springtime Pariah Moto Jacket"
+	desc = "A leather jacket commonly associated with hoverbike riders. Stitched over pockets in the shoulder and chest panels suggest it could take armor inserts at some point in its past. The custom embroidery and cut implies this was made for someone special. There are no manufacturers marks, beyond a small tag bearing a stylized letter 'K'."
+	icon_state = "pariah"
+	flags_inv = HIDEHOLSTER
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	hoodtype = /obj/item/clothing/head/hood/pariah
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)

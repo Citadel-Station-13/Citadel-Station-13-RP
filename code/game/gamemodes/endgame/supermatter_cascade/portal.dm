@@ -10,7 +10,7 @@
 	announce=0
 	cause_hell=0
 
-	plane = PLANE_LIGHTING_ABOVE // ITS SO BRIGHT
+	plane = ABOVE_LIGHTING_PLANE // ITS SO BRIGHT
 
 	consume_range = 6
 
@@ -38,14 +38,12 @@
 		var/mob/living/L = A
 		if(L.buckled && istype(L.buckled,/obj/structure/bed/))
 			var/turf/O = L.buckled
-			do_teleport(O, pick(endgame_safespawns), local = FALSE) //VOREStation Edit
+			do_teleport(O, pick(endgame_safespawns), local = FALSE)
 			L.loc = O.loc
 		else
-			do_teleport(L, pick(endgame_safespawns), local = FALSE) //dead-on precision //VOREStation Edit
-
+			do_teleport(L, pick(endgame_safespawns), local = FALSE) //dead-on precision
 	else if (istype(A, /obj/mecha/))
-		do_teleport(A, pick(endgame_safespawns), local = FALSE) //dead-on precision //VOREStation Edit
-
+		do_teleport(A, pick(endgame_safespawns), local = FALSE) //dead-on precision
 	else if (isturf(A))
 		var/turf/T = A
 		var/dist = get_dist(T, src)
@@ -80,7 +78,7 @@
 	if((R.z == T_mob.z) && (get_dist(R,T_mob) <= (R.consume_range+10)) && !(R in view(T_mob)))
 		if(!riftimage)
 			riftimage = image('icons/obj/rift.dmi',T_mob,"rift",1,1)
-			riftimage.plane = PLANE_LIGHTING_ABOVE
+			riftimage.plane = ABOVE_LIGHTING_PLANE
 			riftimage.mouse_opacity = 0
 
 		var/new_x = 32 * (R.x - T_mob.x) + R.pixel_x

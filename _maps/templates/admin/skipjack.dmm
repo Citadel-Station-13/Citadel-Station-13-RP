@@ -20,7 +20,7 @@
 	},
 /area/skipjack_station)
 "ae" = (
-/obj/effect/decal/cleanable/cobweb2{
+/obj/effect/debris/cleanable/cobweb2{
 	icon_state = "cobweb1"
 	},
 /turf/unsimulated/floor{
@@ -94,7 +94,7 @@
 	},
 /area/skipjack_station)
 "ap" = (
-/obj/effect/decal/cleanable/cobweb2{
+/obj/effect/debris/cleanable/cobweb2{
 	icon_state = "spiderling";
 	name = "dead spider"
 	},
@@ -269,7 +269,7 @@
 	},
 /area/skipjack_station)
 "aJ" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/unsimulated/floor{
 	icon_state = "freezerfloor"
 	},
@@ -331,7 +331,7 @@
 /area/skipjack_station)
 "aR" = (
 /obj/structure/table/standard,
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/unsimulated/floor{
 	icon_state = "wood"
 	},
@@ -436,7 +436,7 @@
 	},
 /area/skipjack_station)
 "be" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/unsimulated/floor{
 	icon_state = "white"
 	},
@@ -623,7 +623,7 @@
 	},
 /area/skipjack_station)
 "bE" = (
-/obj/effect/decal/cleanable/cobweb2,
+/obj/effect/debris/cleanable/cobweb2,
 /turf/unsimulated/floor{
 	icon_state = "cult";
 	name = "plating"
@@ -638,7 +638,7 @@
 	},
 /area/skipjack_station)
 "bG" = (
-/obj/effect/decal/cleanable/cobweb2{
+/obj/effect/debris/cleanable/cobweb2{
 	icon_state = "spiderling";
 	name = "dead spider"
 	},
@@ -823,7 +823,7 @@
 /turf/simulated/wall/skipjack,
 /area/shuttle/skipjack)
 "cf" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1331;
 	id_tag = "vox_west_vent"
 	},
@@ -898,7 +898,7 @@
 /turf/simulated/shuttle/plating,
 /area/shuttle/skipjack)
 "cl" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1331;
 	id_tag = "vox_east_vent"
 	},
@@ -922,7 +922,7 @@
 	tag_exterior_door = "vox_northwest_lock";
 	tag_interior_door = "vox_southwest_lock"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1331;
 	id_tag = "vox_west_vent"
@@ -958,7 +958,7 @@
 	tag_exterior_door = "vox_northeast_lock";
 	tag_interior_door = "vox_southeast_lock"
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1331;
 	id_tag = "vox_east_vent"

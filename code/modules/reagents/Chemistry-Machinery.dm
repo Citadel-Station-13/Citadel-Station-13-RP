@@ -6,14 +6,14 @@
 	desc = "Grinds stuff into itty bitty bits."
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "juicer1"
-	density = 0
-	anchored = 0
+	density = FALSE
+	anchored = FALSE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 5
 	active_power_usage = 100
 	circuit = /obj/item/circuitboard/grinder
 	var/inuse = 0
-	var/obj/item/reagent_containers/beaker = null
+	var/obj/item/reagent_containers/beaker
 	var/limit = 10
 	var/list/holdingitems = list()
 	var/list/sheet_reagents = list( //have a number of reageents divisible by REAGENTS_PER_SHEET (default 20) unless you like decimals,
@@ -39,10 +39,7 @@
 /obj/machinery/reagentgrinder/Initialize(mapload, newdir)
 	. = ..()
 	beaker = new /obj/item/reagent_containers/glass/beaker/large(src)
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/motor(src)
-	component_parts += new /obj/item/stock_parts/gear(src)
-	RefreshParts()
+	default_apply_parts()
 
 /obj/machinery/reagentgrinder/examine(mob/user)
 	. = ..()
@@ -62,7 +59,7 @@
 			var/obj/item/O = i
 			. += "<span class='notice'>- \A [O.name].</span>"
 
-	if(!(stat & (NOPOWER|BROKEN)))
+	if(!(machine_stat & (NOPOWER|BROKEN)))
 		. += "<span class='notice'>The status display reads:</span>\n"
 		if(beaker)
 			for(var/datum/reagent/R in beaker.reagents.reagent_list)
@@ -79,11 +76,9 @@
 		if(default_deconstruction_crowbar(user, O))
 			return
 
-	//vorestation edit start - for solargrubs
-	if (istype(O, /obj/item/multitool))
+	// For solargrubs
+	if(istype(O, /obj/item/multitool))
 		return ..()
-	//vorestation edit end
-
 
 	if (istype(O,/obj/item/reagent_containers/glass) || \
 		istype(O,/obj/item/reagent_containers/food/drinks/glass2) || \
@@ -92,11 +87,11 @@
 		if (beaker)
 			return 1
 		else
-			src.beaker =  O
-			user.drop_item()
-			O.loc = src
+			if(!user.attempt_insert_item_for_installation(O, src))
+				return
+			beaker = O
 			update_icon()
-			src.updateUsrDialog()
+			updateUsrDialog()
 			return 0
 
 	if(holdingitems && holdingitems.len >= limit)
@@ -132,21 +127,22 @@
 
 	if(istype(O,/obj/item/gripper))
 		var/obj/item/gripper/B = O	//B, for Borg.
-		if(!B.wrapped)
+		if(!B.get_item())
 			to_chat(user, "\The [B] is not holding anything.")
 			return 0
 		else
-			var/B_held = B.wrapped
+			var/B_held = B.get_item()
 			to_chat(user, "You use \the [B] to load \the [src] with \the [B_held].")
+			attackby(B_held, user)
 
 		return 0
 
 	if(!sheet_reagents[O.type] && (!O.reagents || !O.reagents.total_volume))
 		to_chat(user, "\The [O] is not suitable for blending.")
 		return 1
+	if(!user.attempt_insert_item_for_installation(O, src))
+		return
 
-	user.remove_from_mob(O)
-	O.loc = src
 	holdingitems += O
 	src.updateUsrDialog()
 	return 0
@@ -156,6 +152,11 @@
 	if(user.incapacitated() || !Adjacent(user))
 		return
 	replace_beaker(user)
+
+/obj/machinery/reagentgrinder/Exited(atom/movable/AM, atom/newLoc)
+	. = ..()
+	if(AM in holdingitems)
+		holdingitems -= AM
 
 /obj/machinery/reagentgrinder/attack_hand(mob/user as mob)
 	interact(user)
@@ -170,7 +171,7 @@
 		options["eject"] = radial_eject
 
 	if(isAI(user))
-		if(stat & NOPOWER)
+		if(machine_stat & NOPOWER)
 			return
 		options["examine"] = radial_examine
 
@@ -188,7 +189,7 @@
 		choice = show_radial_menu(user, src, options, require_near = !issilicon(user))
 
 	// post choice verification
-	if(inuse || (isAI(user) && stat & NOPOWER) || user.incapacitated())
+	if(inuse || (isAI(user) && machine_stat & NOPOWER) || user.incapacitated())
 		return
 
 	switch(choice)
@@ -212,7 +213,7 @@
 /obj/machinery/reagentgrinder/proc/grind()
 
 	power_change()
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		return
 
 	// Sanity check.
@@ -262,7 +263,7 @@
 	if(!user)
 		return FALSE
 	if(beaker)
-		if(!user.incapacitated() && Adjacent(user))
+		if(!user.incapacitated() && Adjacent(user) && !isrobot(user))
 			user.put_in_hands(beaker)
 		else
 			beaker.forceMove(drop_location())
@@ -307,10 +308,10 @@
 	if(istype(I,/obj/item/reagent_containers))
 		analyzing = TRUE
 		update_icon()
-		to_chat(user, span("notice", "Analyzing \the [I], please stand by..."))
+		to_chat(user, SPAN_NOTICE("Analyzing \the [I], please stand by..."))
 
 		if(!do_after(user, 2 SECONDS, src))
-			to_chat(user, span("warning", "Sample moved outside of scan range, please try again and remain still."))
+			to_chat(user, SPAN_WARNING( "Sample moved outside of scan range, please try again and remain still."))
 			analyzing = FALSE
 			update_icon()
 			return
@@ -327,14 +328,14 @@
 			for(var/datum/reagent/R in I.reagents.reagent_list)
 				if(!R.name)
 					continue
-				to_chat(user, span("notice", "Contains [R.volume]u of <b>[R.name]</b>.<br>[R.description]<br>"))
+				to_chat(user, SPAN_NOTICE("Contains [R.volume]u of <b>[R.name]</b>.<br>[R.description]<br>"))
 
 		// Last, unseal it if it's an autoinjector.
 		if(istype(I,/obj/item/reagent_containers/hypospray/autoinjector/biginjector) && !(I.flags & OPENCONTAINER))
 			I.flags |= OPENCONTAINER
-			to_chat(user, span("notice", "Sample container unsealed.<br>"))
+			to_chat(user, SPAN_NOTICE("Sample container unsealed.<br>"))
 
-		to_chat(user, span("notice", "Scanning of \the [I] complete."))
+		to_chat(user, SPAN_NOTICE("Scanning of \the [I] complete."))
 		analyzing = FALSE
 		update_icon()
 		return

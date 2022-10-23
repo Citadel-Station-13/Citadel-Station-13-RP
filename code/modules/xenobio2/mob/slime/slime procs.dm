@@ -3,8 +3,8 @@ Slime specific procs go here.
 */
 #define SHINYOVERLAY 0
 #define LIGHTOVERLAY 1
-#define MAXOVERLAY 2	//Should be 1 + last overlay, to give the chance for matte slimes
-
+///Should be 1 + last overlay, to give the chance for matte slimes
+#define MAXOVERLAY 2
 /mob/living/simple_mob/xeno/slime/RandomizeTraits()
 	traitdat.traits[TRAIT_XENO_COLDRES] = rand(30,270)
 	traitdat.traits[TRAIT_XENO_HEATRES] = rand(30,270)

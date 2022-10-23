@@ -291,7 +291,7 @@
 						objectOrMob = null
 						break
 
-					if(D && (D.stat & BROKEN|NOPOWER))
+					if(D && (D.machine_stat & BROKEN|NOPOWER))
 						D.open(TRUE)
 						break
 

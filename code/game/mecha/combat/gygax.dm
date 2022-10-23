@@ -117,7 +117,7 @@
 
 	var/obj/item/clothing/glasses/hud/health/mech/hud
 
-/obj/mecha/combat/gygax/serenity/Initialize()
+/obj/mecha/combat/gygax/serenity/Initialize(mapload)
 	. = ..()
 	hud = new /obj/item/clothing/glasses/hud/health/mech(src)
 

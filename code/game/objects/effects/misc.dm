@@ -56,7 +56,7 @@
 	The humor in this description is just so <i>electrifying</i>."
 	icon = 'icons/effects/96x256.dmi'
 	icon_state = "lightning_strike"
-	plane = PLANE_LIGHTING_ABOVE
+	plane = ABOVE_LIGHTING_PLANE
 	time_to_die = 1 SECOND
 	pixel_x = -32
 
@@ -70,7 +70,7 @@
 /obj/effect/fullbright
 	icon = 'icons/effects/alphacolors.dmi'
 	icon_state = "white"
-	plane = PLANE_LIGHTING
+	plane = LIGHTING_PLANE
 	layer = LIGHTING_LAYER
 	blend_mode = BLEND_ADD
 
@@ -95,3 +95,47 @@
 	. = ..()
 	if(!ismob(loc))
 		return INITIALIZE_HINT_QDEL
+
+/obj/effect/mark
+	var/mark = ""
+	icon = 'icons/misc/mark.dmi'
+	icon_state = "blank"
+	anchored = 1
+	layer = 99
+	mouse_opacity = 0
+	unacidable = 1//Just to be sure.
+
+/obj/effect/beam
+	name = "beam"
+	density = FALSE
+	var/def_zone
+	pass_flags = ATOM_PASS_TABLE
+
+/obj/effect/begin
+	name = "begin"
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "begin"
+	anchored = TRUE
+
+/obj/effect/list_container
+	name = "list container"
+
+/obj/effect/list_container/mobl
+	name = "mobl"
+	var/master = null
+
+	var/list/container = list(  )
+
+/obj/effect/stop
+	icon_state = "empty"
+	name = "Geas"
+	desc = "You can't resist."
+	var/atom/movable/victim
+
+/obj/effect/stop/Uncross(atom/movable/AM)
+	. = ..()
+	if(AM == victim)
+		return FALSE
+
+/obj/effect/spawner
+	name = "object spawner"

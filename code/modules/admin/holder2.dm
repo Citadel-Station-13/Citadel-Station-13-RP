@@ -18,6 +18,8 @@ GLOBAL_PROTECT(href_token)
 
 	var/href_token
 
+	var/datum/filter_editor/filteriffic
+
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey)
 	if(!ckey)
 		log_world("Admin datum created without a ckey argument. Datum has been deleted")
@@ -87,6 +89,11 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 	else
 		return TRUE
 
+/datum/admins/proc/check_for_rights(rights_required)
+	if(rights_required && !(rights_required & rights))
+		return FALSE
+	return TRUE
+
 //probably a bit iffy - will hopefully figure out a better solution
 /proc/check_if_greater_rights_than(client/other)
 	if(usr && usr.client)
@@ -99,7 +106,11 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 		to_chat(usr, "<font color='red'>Error: Cannot proceed. They have more or equal rights to us.</font>")
 	return 0
 
-
+//This proc checks whether subject has at least ONE of the rights specified in rights_required.
+/proc/check_rights_for(client/subject, rights_required)
+	if(subject?.holder)
+		return subject.holder.check_for_rights(rights_required)
+	return FALSE
 
 /client/proc/deadmin()
 	if(holder)
@@ -148,7 +159,8 @@ NOTE: It checks usr by default. Supply the "user" argument if you wish to check 
 /datum/admins/vv_edit_var(var_name, var_value)
 #ifdef TESTING
 	return ..()
-#endif
+#else
 	if(var_name == NAMEOF(src, rank) || var_name == NAMEOF(src, rights))
 		return FALSE
 	return ..()
+#endif

@@ -46,12 +46,13 @@
 	udder = new(50)
 	udder.my_atom = src
 
-/mob/living/simple_mob/animal/goat/Life()
-	. = ..()
-	if(.)
-		if(stat == CONSCIOUS)
-			if(udder && prob(5))
-				udder.add_reagent("milk", rand(5, 10))
+/mob/living/simple_mob/animal/goat/BiologicalLife(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	if(stat != DEAD)
+		if(udder && prob(5))
+			udder.add_reagent("milk", rand(5, 10))
 
 		if(locate(/obj/effect/plant) in loc)
 			var/obj/effect/plant/SV = locate() in loc

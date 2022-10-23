@@ -17,8 +17,7 @@
 /obj/item/kit/proc/use(var/amt, var/mob/user)
 	uses -= amt
 	playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
-	if(uses<1)
-		user.drop_item()
+	if(uses < 1)
 		qdel(src)
 
 /obj/item/kit/proc/can_customize(var/obj/item/I)
@@ -44,8 +43,8 @@
 			I.icon_state = new_icon
 		var/obj/item/clothing/under/U = I
 		if(istype(U))
-			U.worn_state = I.icon_state
-			U.update_rolldown_status()
+			U.snowflake_worn_state = I.icon_state
+			U.update_rolldown()
 		use(1, user)
 
 // Generic use
@@ -91,7 +90,7 @@
 			to_chat(user, "You set about modifying the helmet into [helmet].")
 			var/mob/living/carbon/human/H = user
 			if(istype(H))
-				helmet.species_restricted = list(H.species.get_bodytype(H))
+				helmet.species_restricted = list(H.species.get_bodytype_legacy(H))
 		else if(istype(I, /obj/item/clothing/suit/storage/hooded))
 			var/obj/item/clothing/suit/storage/hooded/suit = I
 			suit.name = "[new_name] suit"
@@ -111,7 +110,7 @@
 			to_chat(user, "You set about modifying the suit into [suit].")
 //			var/mob/living/carbon/human/H = user
 //			if(istype(H))
-//				suit.species_restricted = list(H.species.get_bodytype(H)) Does not quite make sense for something usually very pliable.
+//				suit.species_restricted = list(H.species.get_bodytype_legacy(H)) Does not quite make sense for something usually very pliable.
 		else
 			var/obj/item/clothing/suit/space/void/suit = I
 			suit.name = "[new_name] voidsuit"
@@ -125,7 +124,7 @@
 			to_chat(user, "You set about modifying the suit into [suit].")
 			var/mob/living/carbon/human/H = user
 			if(istype(H))
-				suit.species_restricted = list(H.species.get_bodytype(H))
+				suit.species_restricted = list(H.species.get_bodytype_legacy(H))
 		use(1,user)
 
 /obj/item/clothing/head/helmet/space/void/attackby(var/obj/item/O, var/mob/user)
@@ -171,17 +170,17 @@
 		piece.desc = "It seems to be part of a [RIG.name]."
 		piece.icon_state = "[RIG.suit_state]"
 		if(istype(piece, /obj/item/clothing/shoes))
-			piece.icon = 'icons/mob/custom_items_rig_boots.dmi'
-			piece.icon_override = 'icons/mob/custom_items_rig_boots.dmi'
+			piece.icon = 'icons/mob/clothing/custom_items_rig_boots.dmi'
+			piece.icon_override = 'icons/mob/clothing/custom_items_rig_boots.dmi'
 		if(istype(piece, /obj/item/clothing/suit))
-			piece.icon = 'icons/mob/custom_items_rig_suit.dmi'
-			piece.icon_override = 'icons/mob/custom_items_rig_suit.dmi'
+			piece.icon = 'icons/mob/clothing/custom_items_rig_suits.dmi'
+			piece.icon_override = 'icons/mob/clothing/custom_items_rig_suits.dmi'
 		if(istype(piece, /obj/item/clothing/head))
-			piece.icon = 'icons/mob/custom_items_rig_helmet.dmi'
-			piece.icon_override = 'icons/mob/custom_items_rig_helmet.dmi'
+			piece.icon = 'icons/mob/clothing/custom_items_rig_helmet.dmi'
+			piece.icon_override = 'icons/mob/clothing/custom_items_rig_helmet.dmi'
 		if(istype(piece, /obj/item/clothing/gloves))
-			piece.icon = 'icons/mob/custom_items_rig_gloves.dmi'
-			piece.icon_override = 'icons/mob/custom_items_rig_gloves.dmi'
+			piece.icon = 'icons/mob/clothing/custom_items_rig_gloves.dmi'
+			piece.icon_override = 'icons/mob/clothing/custom_items_rig_gloves.dmi'
 	if(RIG.helmet && istype(RIG.helmet, /obj/item/clothing/head/helmet) && new_light_overlay)
 		var/obj/item/clothing/head/helmet/H = RIG.helmet
 		H.light_overlay = new_light_overlay
@@ -197,7 +196,8 @@
 		return
 	return ..()
 
-/obj/item/kit/suit/rig/debug/Initialize()
+/obj/item/kit/suit/rig/debug/Initialize(mapload)
+	. = ..()
 	set_info("debug suit", "This is a test", "debug", CUSTOM_ITEM_OBJ, CUSTOM_ITEM_MOB)
 
 /obj/item/kit/paint
@@ -279,42 +279,122 @@
 	new_desc = "A standard APLU exosuit with stylish blue flame decals."
 	new_icon = "ripley_flames_blue"
 
+/obj/item/kit/paint/ripley/pirate
+	name = "\"Brigand\" APLU customisation kit"
+	new_name = "APLU \"Brigand\""
+	new_desc = "An up-armored power loader design often favored by pirates."
+	new_icon = "pirate"
+
+/obj/item/kit/paint/ripley/junker
+	name = "\"Scrapper\" APLU customisation kit"
+	new_name = "APLU \"Scrapper\""
+	new_desc = "Even the simple power loader is considered a luxury on the Frontier. Some colonies have maintained one single model for decades."
+	new_icon = "ripley_junker"
+
+/obj/item/kit/paint/ripley/battered
+	name = "\"Battle Damaged\" APLU customisation kit"
+	new_name = "APLU \"Battle Damaged\""
+	new_desc = "Overconfident Roboticists and pilots will often rush into combat with a power loader. It is a testament to the design that some can still operate in this condition."
+	new_icon = "ripley_battered"
+
+/obj/item/kit/paint/ripley/medical
+	name = "\"Caduceus\" APLU customisation kit"
+	new_name = "APLU \"Caduceus\""
+	new_desc = "Power loaders are slow and bulky, making them poor fits for medical work. Sometimes, however, they may be all that's available."
+	new_icon = "ripley_med"
+
+/obj/item/kit/paint/ripley/sovjet
+	name = "\"Old Red\" APLU customisation kit"
+	new_name = "APLU \"Old Red\""
+	new_desc = "Gorlex branded power loaders often bore the scars of the Indo-Russian Diaspora. Some of these antiques are still in circulation."
+	new_icon = "soviet"
+
+/obj/item/kit/paint/ripley/arnold
+	name = "\"Arnold\" APLU customisation kit"
+	new_name = "APLU \"Arnold\""
+	new_desc = "Power loaders are loud, and clunky. Poorly suited for jungle operations of any kind, this camo paint job is likely only cosmetic."
+	new_icon = "ripley_camo"
+
+/obj/item/kit/paint/ripley/clown
+	name = "\"CR3AM-P13\" APLU customisation kit"
+	new_name = "APLU \"CR3AM-P13\""
+	new_desc = "Before the cessation of open trade led to the development of the H.O.N.K., NanoTrasen frequently sold Columbina old power loaders to serve as supplemental security units."
+	new_icon = "clowny"
+
+/obj/item/kit/paint/ripley/dreadnought
+	name = "\"SAR-C0PH\" APLU customisation kit"
+	new_name = "APLU \"SAR-C0PH\""
+	new_desc = "In conjunction with Vey-Med, NanoTrasen briefly experimented with permanently interring paralyzed or critically wounded operatives in mecha. The program was allegedly disbanded following public outcry."
+	new_icon = "dreadnought"
+
+// Gygax kits.
+/obj/item/kit/paint/gygax
+	name = "\"Silhouette\" Gygax customisation kit"
+	new_name = "Gygax \"Silhouette\""
+	new_desc = "An ominous Gygax exosuit modelled after the fictional corporate 'death squads' that were popular in pulp action-thrillers back in 2554."
+	new_icon = "darkgygax"
+	allowed_types = list("gygax")
+
+/obj/item/kit/paint/gygax/blue
+	name = "\"Ocean Blue\" Gygax customisation kit"
+	new_name = "Gygax \"Ocean Blue\""
+	new_desc = "A bulky Gygax with a soothing blue paint job, reminiscent of the sea at midday, or a calm sky."
+	new_icon = "gygax_blue"
+
+/obj/item/kit/paint/gygax/green
+	name = "\"Forest Green\" Gygax customisation kit"
+	new_name = "Gygax \"Forest Green\""
+	new_desc = "A bulky Gygax with a verdant green paint job, reminiscent of waving branches, or wild grass."
+	new_icon = "gygax_green"
+
+/obj/item/kit/paint/gygax/turtle
+	name = "\"Furtive Tortoise\" Gygax customisation kit"
+	new_name = "Gygax \"Furtive Tortoise\""
+	new_desc = "This cartoonish paint job is based off of a long forgotten Spider Clan propaganda series. Furtive was the no-nonsense leader."
+	new_icon = "gygax_turtle"
+
+/obj/item/kit/paint/gygax/mad_jack
+	name = "\"Mad Jack\" Gygax customisation kit"
+	new_name = "Gygax \"Mad Jack\""
+	new_desc = "This Gygax has been refit with hardwood plating. There is something menacing about the way the cyclopean eye on the chest stares at you."
+	new_icon = "gygax_rs"
+
+/obj/item/kit/paint/gygax/osbourne
+	name = "\"Osbourne\" Gygax customisation kit"
+	new_name = "Gygax \"Osbourne\""
+	new_desc = "This Gygax has been refit with hardwood plating. The green eye and orange texturing are reminiscent of volatile pumpkins, for some reason."
+	new_icon = "gygax_gg"
+
+/obj/item/kit/paint/gygax/carp
+	name = "\"Ishmael\" Gygax customisation kit"
+	new_name = "Gygax \"Ishmael\""
+	new_desc = "Gygax mech units are sometimes deployed in EVA settings by ace pilots. These mecha often bear unique, menacing paint jobs. This one resembles the fierce Space Carp."
+	new_icon = "gygax_carp"
+
 // Durand kits.
 /obj/item/kit/paint/durand
 	name = "\"Classic\" Durand customisation kit"
 	new_name = "Durand \"Classic\""
 	new_desc = "An older model of Durand combat exosuit. This model was retired for rotating a pilot's torso 180 degrees."
-	new_icon = "old_durand"
+	new_icon = "durand_old"
 	allowed_types = list("durand")
 
-/obj/item/kit/paint/durand/seraph
-	name = "\"Cherubim\" Durand customisation kit"
-	new_name = "Durand \"Cherubim\""
-	new_desc = "A Durand combat exosuit modelled after ancient Earth entertainment. Your heart goes doki-doki just looking at it."
-	new_icon = "old_durand"
+/obj/item/kit/paint/durand/paladin
+	name = "\"Crusader\" Durand customisation kit"
+	new_name = "Durand \"Crusader\""
+	new_desc = "This Durand's gleaming white plating and golden highlights radiate holiness and justice. Use it to smite evil wheresoever you find it."
+	new_icon = "paladin"
 
-/obj/item/kit/paint/durand/phazon
-	name = "\"Sypher\" Durand customisation kit"
-	new_name = "Durand \"Sypher\""
-	new_desc = "A Durand combat exosuit with some very stylish neons and decals. Seems to blur slightly at the edges; probably an optical illusion."
-	new_icon = "phazon"
+/obj/item/kit/paint/durand/turtle
+	name = "\"Sneaky Tortoise\" Durand customisation kit"
+	new_name = "Durand \"Sneaky Tortoise\""
+	new_desc = "This cartoonish paint job is based off of a long forgotten Spider Clan propaganda series. Sneaky was a real party dude."
+	new_icon = "durand_turtle"
 
-// Gygax kits.
-/obj/item/kit/paint/gygax
-	name = "\"Jester\" Gygax customisation kit"
-	new_name = "Gygax \"Jester\""
-	new_desc = "A Gygax exosuit modelled after the infamous combat-troubadors of Earth's distant past. Terrifying to behold."
-	new_icon = "honker"
-	allowed_types = list("gygax")
-
-/obj/item/kit/paint/gygax/darkgygax
-	name = "\"Silhouette\" Gygax customisation kit"
-	new_name = "Gygax \"Silhouette\""
-	new_desc = "An ominous Gygax exosuit modelled after the fictional corporate 'death squads' that were popular in pulp action-thrillers back in 2554."
-	new_icon = "darkgygax"
-
-/obj/item/kit/paint/gygax/recitence
-	name = "\"Gaoler\" Gygax customisation kit"
-	new_name = "Durand \"Gaoler\""
-	new_desc = "A bulky silver Gygax exosuit. The extra armour appears to be painted on, but it's very shiny."
-	new_icon = "recitence"
+//H.O.N.K. kits.
+/obj/item/kit/paint/honker
+	name = "\"'Hot' Rod\" H.O.N.K. customisation kit"
+	new_name = "H.O.N.K. \"'Hot' Rod\""
+	new_desc = "The sweet flames painted onto this H.O.N.K. chassis are distressingly realistic, and impart even more hilarity than usual."
+	new_icon = "honker_flaming"
+	allowed_types = list("honker")

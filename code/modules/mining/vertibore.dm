@@ -31,9 +31,9 @@
 		if(cell)
 			to_chat(user, "<span class='warning'>\The [src] already has \a [cell] installed.</span>")
 			return
+		if(!user.attempt_insert_item_for_installation(cell, src))
+			return
 		cell = thing
-		user.drop_from_inventory(cell)
-		cell.forceMove(src)
 		playsound(loc, 'sound/machines/click.ogg', 10, 1)
 		user.visible_message("<span class='notice'>\The [user] slots \the [cell] into \the [src].</span>")
 		update_icon()

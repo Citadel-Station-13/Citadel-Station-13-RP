@@ -26,7 +26,7 @@
 	var/mob/living/simple_mob/my_mob
 	var/depleted = FALSE
 
-/obj/tether_away_spawner/Initialize()
+/obj/tether_away_spawner/Initialize(mapload)
 	. = ..()
 
 	if(!LAZYLEN(mobs_to_pick_from))
@@ -62,26 +62,21 @@
 
 				var/list/gaslist = env.gas
 				if(my_mob.min_oxy)
-					my_mob.min_oxy = gaslist["oxygen"] * 0.8
+					my_mob.min_oxy = gaslist[/datum/gas/oxygen] * 0.8
 				if(my_mob.min_tox)
-					my_mob.min_tox = gaslist["phoron"] * 0.8
+					my_mob.min_tox = gaslist[/datum/gas/phoron] * 0.8
 				if(my_mob.min_n2)
-					my_mob.min_n2 = gaslist["nitrogen"] * 0.8
+					my_mob.min_n2 = gaslist[/datum/gas/nitrogen] * 0.8
 				if(my_mob.min_co2)
-					my_mob.min_co2 = gaslist["carbon_dioxide"] * 0.8
+					my_mob.min_co2 = gaslist[/datum/gas/carbon_dioxide] * 0.8
 				if(my_mob.max_oxy)
-					my_mob.max_oxy = gaslist["oxygen"] * 1.2
+					my_mob.max_oxy = gaslist[/datum/gas/oxygen] * 1.2
 				if(my_mob.max_tox)
-					my_mob.max_tox = gaslist["phoron"] * 1.2
+					my_mob.max_tox = gaslist[/datum/gas/phoron] * 1.2
 				if(my_mob.max_n2)
-					my_mob.max_n2 = gaslist["nitrogen"] * 1.2
+					my_mob.max_n2 = gaslist[/datum/gas/nitrogen] * 1.2
 				if(my_mob.max_co2)
-					my_mob.max_co2 = gaslist["carbon_dioxide"] * 1.2
-/* //VORESTATION AI TEMPORARY REMOVAL
-		if(guard)
-			my_mob.returns_home = TRUE
-			my_mob.wander_distance = guard
-*/
+					my_mob.max_co2 = gaslist[/datum/gas/carbon_dioxide] * 1.2
 		return
 	else
 		STOP_PROCESSING(SSobj, src)

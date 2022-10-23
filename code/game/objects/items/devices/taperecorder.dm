@@ -6,7 +6,7 @@
 	icon = 'icons/obj/device.dmi'
 	w_class = ITEMSIZE_SMALL
 
-	matter = list(DEFAULT_WALL_MATERIAL = 60,"glass" = 30)
+	matter = list(MAT_STEEL = 60, MAT_GLASS = 30)
 
 	var/emagged = 0.0
 	var/recording = 0.0
@@ -15,7 +15,7 @@
 	var/obj/item/cassette_tape/mytape = /obj/item/cassette_tape/random
 	var/canprint = 1
 	slot_flags = SLOT_BELT
-	throwforce = 2
+	throw_force = 2
 	throw_speed = 4
 	throw_range = 20
 
@@ -42,9 +42,8 @@
 		if(mytape)
 			to_chat(user, "<span class='notice'>There's already a tape inside.</span>")
 			return
-		if(!user.unEquip(I))
+		if(!user.attempt_insert_item_for_installation(I, src))
 			return
-		I.forceMove(src)
 		mytape = I
 		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
 		update_icon()
@@ -59,7 +58,7 @@
 
 
 /obj/item/tape_recorder/attack_hand(mob/user)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		if(mytape)
 			eject()
 			return
@@ -368,9 +367,9 @@
 	icon_state = "tape_white"
 	item_state = "analyzer"
 	w_class = ITEMSIZE_TINY
-	matter = list(DEFAULT_WALL_MATERIAL=20, "glass"=5)
+	matter = list(MAT_STEEL=20, "glass"=5)
 	force = 1
-	throwforce = 0
+	throw_force = 0
 	var/max_capacity = 1800
 	var/used_capacity = 0
 	var/list/storedinfo = new/list()
@@ -417,8 +416,8 @@
 /obj/item/cassette_tape/attackby(obj/item/I, mob/user, params)
 	if(ruined && I.is_screwdriver())
 		to_chat(user, "<span class='notice'>You start winding the tape back in...</span>")
-		playsound(src, I.usesound, 50, 1)
-		if(do_after(user, 120 * I.toolspeed, target = src))
+		playsound(src, I.tool_sound, 50, 1)
+		if(do_after(user, 120 * I.tool_speed, target = src))
 			to_chat(user, "<span class='notice'>You wound the tape back in.</span>")
 			fix()
 		return

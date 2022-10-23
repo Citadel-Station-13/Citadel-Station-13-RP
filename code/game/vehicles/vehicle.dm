@@ -186,3 +186,6 @@
 				mecha.cell.charge -= min(20,mecha.cell.charge)
 				mecha.cell.maxcharge -= min(20,mecha.cell.maxcharge)
 		return
+
+/obj/vehicle/get_cell()
+	return cell

@@ -1,0 +1,3948 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ap" = (
+/obj/machinery/artifact_harvester,
+/obj/machinery/light,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"aq" = (
+/obj/random/trash,
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"ar" = (
+/obj/structure/sign/warning/secure_area/armory,
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
+"ay" = (
+/mob/living/simple_mob/humanoid/merc/ranged/ionrifle,
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"aA" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
+	},
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
+"aE" = (
+/obj/machinery/power/solar_control,
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"aM" = (
+/obj/structure/fence/corner{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"aP" = (
+/mob/living/simple_mob/humanoid/merc/ranged/garand,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"aY" = (
+/obj/machinery/power/solar,
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/classp/outdoors,
+/area/template_noop)
+"ba" = (
+/obj/machinery/deployable/barrier,
+/obj/machinery/deployable/barrier,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"bF" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"bX" = (
+/obj/structure/sign/department/rnd,
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
+"cb" = (
+/obj/effect/debris/cleanable/blood,
+/mob/living/simple_mob/humanoid/merc/ranged/smg,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"cp" = (
+/obj/structure/sign/atmos/phoron,
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
+"cs" = (
+/obj/machinery/door/airlock/external/glass/bolted,
+/obj/effect/debris/cleanable/blood,
+/obj/structure/fans/tiny,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"cI" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/table/steel_reinforced,
+/turf/simulated/shuttle/floor/yellow/classp,
+/area/submap/HeadscientistHQ)
+"cN" = (
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"dB" = (
+/obj/machinery/r_n_d/destructive_analyzer,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"dP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"en" = (
+/obj/structure/table/rack/shelf,
+/obj/item/stack/material/verdantium,
+/obj/item/stack/material/verdantium,
+/obj/item/stack/material/verdantium,
+/obj/item/stack/material/verdantium,
+/obj/item/stack/material/verdantium,
+/obj/item/stack/material/verdantium,
+/obj/item/stack/material/verdantium,
+/obj/item/stack/material/verdantium,
+/obj/item/stack/material/verdantium,
+/obj/fiftyspawner/mhydrogen,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"ep" = (
+/obj/structure/girder,
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/shuttle/plating,
+/area/submap/HeadscientistHQ)
+"fd" = (
+/obj/structure/fence/corner{
+	dir = 5
+	},
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"fJ" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/table/steel_reinforced,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"fV" = (
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"gk" = (
+/obj/machinery/computer/ship/helm,
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/shuttle/floor/yellow/classp,
+/area/submap/HeadscientistHQ)
+"gQ" = (
+/obj/structure/fence,
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"gV" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"hf" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/shuttle/floor/yellow/classp,
+/area/submap/HeadscientistHQ)
+"hn" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"hD" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/structure/fuel_port{
+	dir = 4;
+	pixel_y = 32
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"hY" = (
+/obj/effect/floor_decal/borderfloorblack/corner{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"im" = (
+/obj/effect/wingrille_spawn/reinforced,
+/turf/simulated/shuttle/floor/yellow,
+/area/submap/HeadscientistHQ)
+"ix" = (
+/obj/machinery/autolathe,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"iz" = (
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"jq" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/random/trash,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"jt" = (
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"jB" = (
+/obj/machinery/atmospherics/portables_connector,
+/turf/simulated/shuttle/floor/black/classp,
+/area/submap/HeadscientistHQ)
+"jF" = (
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"jG" = (
+/obj/machinery/r_n_d/protolathe,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"kh" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"kr" = (
+/obj/structure/sandbag,
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"kD" = (
+/obj/machinery/papershredder,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"kI" = (
+/obj/structure/anomaly_container,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"kL" = (
+/obj/machinery/mech_recharger,
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"kW" = (
+/obj/random/trash_pile,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"la" = (
+/obj/machinery/light,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"ld" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/light,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"lu" = (
+/obj/structure/cryofeed{
+	dir = 2
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"ly" = (
+/obj/machinery/power/solar,
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/classp/outdoors,
+/area/template_noop)
+"lL" = (
+/obj/machinery/door/blast/regular,
+/obj/effect/wingrille_spawn/reinforced,
+/turf/simulated/shuttle/floor/yellow/classp,
+/area/submap/HeadscientistHQ)
+"lP" = (
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/medigun,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"mb" = (
+/obj/item/inducer/sci,
+/turf/simulated/floor/classp/outdoors,
+/area/template_noop)
+"ml" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
+"mX" = (
+/obj/machinery/cryopod{
+	dir = 2
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"nd" = (
+/obj/effect/floor_decal/borderfloorblack,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"nA" = (
+/obj/structure/bed/chair/comfy/teal{
+	dir = 8
+	},
+/obj/effect/debris/cleanable/blood,
+/mob/living/simple_mob/humanoid/merc/ranged/space/suppressor,
+/turf/simulated/shuttle/floor/yellow/classp,
+/area/submap/HeadscientistHQ)
+"nZ" = (
+/obj/structure/fence/corner,
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"on" = (
+/obj/structure/table/rack/shelf,
+/obj/item/gun/energy/lasercannon,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"oy" = (
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/classp/outdoors,
+/area/template_noop)
+"oL" = (
+/obj/effect/decal/remains,
+/turf/template_noop,
+/area/template_noop)
+"oU" = (
+/obj/machinery/light,
+/turf/simulated/shuttle/floor/yellow/classp,
+/area/submap/HeadscientistHQ)
+"pb" = (
+/obj/structure/stasis_cage,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"pX" = (
+/turf/simulated/floor/classp/outdoors,
+/area/template_noop)
+"qB" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"rm" = (
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/classp/outdoors,
+/area/template_noop)
+"rY" = (
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/classp/outdoors,
+/area/template_noop)
+"sc" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"sr" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"sz" = (
+/obj/structure/fence/corner{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"sV" = (
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
+"tC" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"tD" = (
+/obj/effect/debris/cleanable/dirt,
+/mob/living/simple_mob/mechanical/cyber_horror/plasma_cyber_horror,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"tN" = (
+/obj/effect/debris/cleanable/blood/oil,
+/mob/living/simple_mob/humanoid/merc/melee/sword,
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"tU" = (
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/classp/outdoors,
+/area/template_noop)
+"un" = (
+/obj/random/trash_pile,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"uq" = (
+/obj/item/grenade/spawnergrenade/manhacks/mercenary,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"uz" = (
+/obj/machinery/giga_drill,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"uA" = (
+/obj/structure/table/rack/shelf,
+/obj/item/gun/energy/sniperrifle/locked,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"uG" = (
+/obj/effect/decal/remains/robot,
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"va" = (
+/obj/effect/debris/cleanable/blood/oil,
+/mob/living/simple_mob/humanoid/merc/ranged/space/shotgun,
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"ve" = (
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"vh" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/random/trash,
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/shuttle/floor/yellow/classp,
+/area/submap/HeadscientistHQ)
+"vk" = (
+/obj/effect/debris/cleanable/blood,
+/mob/living/simple_mob/humanoid/merc/ranged/grenadier/poi,
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"vn" = (
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"ws" = (
+/obj/machinery/computer/ship/engines,
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/shuttle/floor/yellow/classp,
+/area/submap/HeadscientistHQ)
+"wz" = (
+/obj/machinery/r_n_d/server,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"wS" = (
+/obj/random/trash_pile,
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"xA" = (
+/obj/item/mecha_parts/mecha_equipment/repair_droid,
+/turf/template_noop,
+/area/template_noop)
+"xT" = (
+/obj/machinery/door/airlock/glass_science,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"yf" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"yo" = (
+/turf/simulated/shuttle/floor/yellow/classp,
+/area/submap/HeadscientistHQ)
+"yt" = (
+/obj/machinery/door/airlock/glass_science,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"yP" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/bed/chair/shuttle,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"yR" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden{
+	dir = 8
+	},
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
+"zD" = (
+/obj/effect/debris/cleanable/blood,
+/mob/living/simple_mob/humanoid/merc/ranged/space,
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"zG" = (
+/obj/effect/debris/cleanable/dirt,
+/mob/living/simple_mob/humanoid/merc/ranged/garand,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"zK" = (
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/classp/outdoors,
+/area/template_noop)
+"zZ" = (
+/obj/structure/bed/chair/shuttle,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Aj" = (
+/obj/machinery/light,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"An" = (
+/obj/machinery/optable,
+/obj/effect/decal/warning_stripes,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"At" = (
+/obj/effect/debris/cleanable/dirt,
+/mob/living/simple_mob/humanoid/merc/ranged,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Az" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/light,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"AW" = (
+/obj/structure/cable/green,
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/turf/simulated/shuttle/floor/black/classp,
+/area/submap/HeadscientistHQ)
+"Bs" = (
+/obj/machinery/mech_recharger,
+/obj/machinery/power/terminal,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"Bw" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"By" = (
+/obj/effect/debris/cleanable/dirt,
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"Bz" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"BD" = (
+/obj/structure/stasis_cage,
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"Cg" = (
+/obj/machinery/shipsensors,
+/turf/simulated/floor/classp/outdoors,
+/area/submap/HeadscientistHQ)
+"CM" = (
+/obj/machinery/computer/cryopod/travel,
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
+"Di" = (
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/classp/outdoors,
+/area/template_noop)
+"Dj" = (
+/obj/machinery/artifact_scanpad,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"Dm" = (
+/obj/machinery/partslathe,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"Dn" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 6
+	},
+/obj/machinery/light,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Ds" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"DW" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Ek" = (
+/obj/machinery/mecha_part_fabricator,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"EF" = (
+/obj/machinery/blackbox_recorder,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"EO" = (
+/obj/random/trash,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Fh" = (
+/obj/machinery/atmospherics/pipe/tank/phoron,
+/turf/simulated/shuttle/floor/black/classp,
+/area/submap/HeadscientistHQ)
+"Fi" = (
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/shuttle/floor/yellow/classp,
+/area/submap/HeadscientistHQ)
+"Fm" = (
+/obj/structure/cryofeed{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Fs" = (
+/obj/machinery/door/airlock/glass_command,
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/shuttle/floor/yellow,
+/area/submap/HeadscientistHQ)
+"Fv" = (
+/obj/structure/anomaly_container,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"FA" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
+"FF" = (
+/obj/machinery/cryopod{
+	dir = 1
+	},
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"FK" = (
+/obj/structure/sign/warning/secure_area,
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
+"FP" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/floor_decal/borderfloorblack,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"FT" = (
+/obj/machinery/artifact_analyser,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"FW" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"Ga" = (
+/obj/machinery/door/airlock/glass_security,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"Gr" = (
+/obj/machinery/media/jukebox,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"Gs" = (
+/obj/effect/debris/cleanable/dirt,
+/mob/living/simple_mob/humanoid/merc/ranged/space,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"Gt" = (
+/obj/machinery/power/port_gen/pacman,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"GZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Hb" = (
+/turf/simulated/mineral/cave/classp,
+/area/template_noop)
+"Hl" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"Hz" = (
+/obj/machinery/computer/rdconsole,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"IH" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 5
+	},
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
+"IL" = (
+/obj/structure/fence{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"IS" = (
+/obj/structure/bed/chair/shuttle,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"JO" = (
+/obj/machinery/power/smes/buildable/point_of_interest,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/turf/simulated/shuttle/floor/black/classp,
+/area/submap/HeadscientistHQ)
+"JX" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"Ki" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 5
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/item/stack/material/phoron,
+/obj/structure/closet/crate/secure/phoron,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Kl" = (
+/obj/machinery/cryopod{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Kp" = (
+/obj/machinery/recharger/wallcharger{
+	pixel_y = -28
+	},
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"KK" = (
+/obj/effect/floor_decal/borderfloorblack/corner,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Ln" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/yellow/classp,
+/area/submap/HeadscientistHQ)
+"Lo" = (
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Lu" = (
+/obj/effect/decal/remains/robot,
+/turf/template_noop,
+/area/template_noop)
+"LC" = (
+/obj/effect/decal/mecha_wreckage/durand,
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"LF" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"LV" = (
+/obj/machinery/ion_engine{
+	dir = 8
+	},
+/turf/simulated/floor/classp/outdoors,
+/area/template_noop)
+"LY" = (
+/mob/living/simple_mob/humanoid/merc/ranged,
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"Nb" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
+"ND" = (
+/obj/machinery/computer/shuttle_control,
+/turf/simulated/shuttle/floor/yellow/classp,
+/area/submap/HeadscientistHQ)
+"NX" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"OL" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"OR" = (
+/obj/structure/table/rack/shelf,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"OX" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/bed/chair/shuttle{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Pd" = (
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/turf/template_noop,
+/area/template_noop)
+"Pe" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/shuttle/floor/yellow/classp,
+/area/submap/HeadscientistHQ)
+"PM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Qz" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"QT" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Rn" = (
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"RC" = (
+/obj/machinery/door/airlock/glass,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"RG" = (
+/obj/machinery/r_n_d/circuit_imprinter,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"RN" = (
+/obj/effect/debris/cleanable/dirt,
+/mob/living/simple_mob/humanoid/merc/ranged,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"Sm" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/recharger,
+/obj/structure/reagent_dispensers/acid{
+	pixel_y = 28
+	},
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"Tj" = (
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Tv" = (
+/obj/structure/table/steel_reinforced,
+/obj/item/reagent_containers/glass/beaker,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"Tw" = (
+/obj/machinery/door/airlock/glass_security,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"Ty" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/recharger/wallcharger{
+	pixel_y = -28
+	},
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"Ui" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Ux" = (
+/obj/machinery/computer/ship/sensors,
+/turf/simulated/shuttle/floor/yellow/classp,
+/area/submap/HeadscientistHQ)
+"UI" = (
+/obj/structure/table/steel_reinforced,
+/obj/machinery/cell_charger,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"UP" = (
+/mob/living/simple_mob/humanoid/merc/ranged/deagle,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"UV" = (
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"Vq" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 6
+	},
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"Vz" = (
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot,
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"VI" = (
+/obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/power/apc/alarms_hidden{
+	dir = 4;
+	pixel_y = -32;
+	req_access = null;
+	start_charge = 0
+	},
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"VJ" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_y = -28
+	},
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"VN" = (
+/obj/structure/girder,
+/turf/simulated/shuttle/plating,
+/area/submap/HeadscientistHQ)
+"VZ" = (
+/obj/machinery/door/airlock/external/glass/bolted,
+/obj/structure/fans/tiny,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Wb" = (
+/obj/structure/fence/door/opened,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"Wq" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"WE" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"WI" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"WP" = (
+/turf/template_noop,
+/area/template_noop)
+"Xa" = (
+/mob/living/simple_mob/mechanical/viscerator/mercenary,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"Xc" = (
+/obj/structure/bed/chair/shuttle,
+/obj/effect/debris/cleanable/dirt,
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Xf" = (
+/obj/effect/debris/cleanable/dirt,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+"Xl" = (
+/obj/machinery/flasher/portable,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"Xv" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/structure/table/steel_reinforced,
+/turf/simulated/shuttle/floor/yellow/classp,
+/area/submap/HeadscientistHQ)
+"Yi" = (
+/turf/simulated/floor/outdoors/dirt/classp,
+/area/template_noop)
+"YH" = (
+/turf/simulated/shuttle/wall/voidcraft/red,
+/area/submap/HeadscientistHQ)
+"YW" = (
+/obj/effect/debris/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"Zc" = (
+/obj/effect/floor_decal/borderfloorblack{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"Zh" = (
+/obj/machinery/deployable/barrier,
+/turf/simulated/shuttle/floor/red/classp,
+/area/submap/HeadscientistHQ)
+"Zw" = (
+/obj/machinery/light,
+/mob/living/simple_mob/humanoid/merc/ranged,
+/turf/simulated/shuttle/floor/classp,
+/area/submap/HeadscientistHQ)
+"ZT" = (
+/obj/structure/table/steel_reinforced,
+/turf/simulated/shuttle/floor/purple/classp,
+/area/submap/HeadscientistHQ)
+
+(1,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(2,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+Hb
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(3,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+Hb
+WP
+Hb
+WP
+WP
+WP
+Yi
+Yi
+Yi
+WP
+WP
+WP
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+Hb
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(4,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+Hb
+Hb
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(5,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+Hb
+Hb
+Hb
+Hb
+WP
+WP
+WP
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(6,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+Hb
+Hb
+WP
+WP
+WP
+WP
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+kr
+kr
+kr
+kr
+kr
+kr
+kr
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(7,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+YH
+lL
+lL
+lL
+lL
+lL
+YH
+Yi
+Yi
+Yi
+kr
+Yi
+Yi
+Yi
+Yi
+Yi
+kr
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(8,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+YH
+Pe
+ws
+ND
+Ux
+Xv
+YH
+Yi
+wS
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(9,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+YH
+Pe
+Fi
+nA
+vh
+cI
+YH
+Yi
+wS
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(10,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Yi
+YH
+Pe
+hf
+gk
+hf
+cI
+YH
+Yi
+Yi
+Yi
+Yi
+LY
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(11,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Yi
+YH
+Ln
+yo
+Fi
+Fi
+oU
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(12,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+uG
+Yi
+Yi
+Yi
+YH
+YH
+YH
+im
+Fs
+im
+YH
+YH
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+tN
+Yi
+WP
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(13,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Rn
+Yi
+YH
+Fm
+mX
+Tj
+Tj
+Tj
+Kl
+lu
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+oL
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(14,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+wS
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+YH
+YH
+DW
+ve
+Tj
+jq
+Zw
+YH
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+aq
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(15,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+YH
+Fm
+mX
+ve
+Tj
+ve
+Kl
+lu
+YH
+Yi
+Yi
+Yi
+Yi
+Rn
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(16,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+YH
+YH
+Tj
+Tj
+Tj
+ve
+ve
+YH
+YH
+Yi
+Rn
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(17,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Rn
+Yi
+Yi
+YH
+YH
+Fm
+mX
+Tj
+Tj
+ve
+FF
+lu
+YH
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(18,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+YH
+YH
+YH
+CM
+DW
+Tj
+ve
+Tj
+Az
+sV
+YH
+YH
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(19,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Yi
+Yi
+Yi
+YH
+YH
+wz
+YH
+WI
+ve
+cb
+Tj
+Tj
+aP
+WI
+YH
+jt
+YH
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Pd
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(20,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+uG
+Yi
+Yi
+Yi
+Yi
+YH
+EF
+Xf
+YH
+WI
+Tj
+Tj
+Tj
+Tj
+Tj
+WI
+YH
+jt
+jt
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+WP
+WP
+WP
+"}
+(21,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Yi
+Yi
+Yi
+YH
+UV
+Xf
+YH
+YH
+YH
+YH
+RC
+VN
+VN
+YH
+YH
+jt
+jt
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+WP
+WP
+"}
+(22,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Yi
+Yi
+YH
+YH
+UV
+UV
+YH
+IS
+ve
+Tj
+Tj
+Tj
+Tj
+bF
+YH
+en
+jt
+YH
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+WP
+WP
+"}
+(23,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+Hb
+WP
+WP
+Yi
+Rn
+Yi
+YH
+YH
+ix
+UV
+Gt
+YH
+IS
+fJ
+ve
+Tj
+Tj
+WI
+bF
+YH
+on
+jt
+jt
+YH
+YH
+LC
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+WP
+"}
+(24,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+WP
+Yi
+Yi
+Yi
+YH
+Dm
+UV
+UV
+Gt
+YH
+IS
+WI
+yf
+yf
+At
+WI
+bF
+YH
+uA
+Xa
+jt
+Xl
+YH
+Yi
+Yi
+Yi
+wS
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+Hb
+WP
+"}
+(25,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+WP
+Yi
+Yi
+Yi
+YH
+Ek
+UV
+Xf
+OR
+YH
+Xc
+WI
+ve
+jq
+ve
+WI
+FP
+YH
+uq
+cN
+By
+Xl
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+Yi
+WP
+WP
+WP
+WP
+oL
+WP
+Hb
+Hb
+Hb
+Hb
+Hb
+"}
+(26,1,1) = {"
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+Yi
+Yi
+Yi
+YH
+Ek
+UV
+Xf
+OR
+YH
+IS
+Tj
+ve
+ve
+ve
+Tj
+bF
+YH
+jt
+RN
+cN
+ba
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+oL
+WP
+Hb
+Hb
+Hb
+Hb
+WP
+"}
+(27,1,1) = {"
+WP
+WP
+WP
+WP
+Hb
+Hb
+WP
+WP
+Yi
+Yi
+Yi
+YH
+Hz
+UV
+Wq
+OR
+YH
+hn
+Tj
+yf
+ve
+ve
+Tj
+ld
+YH
+jt
+By
+cN
+Zh
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+WP
+"}
+(28,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Yi
+YH
+dB
+UV
+tD
+la
+YH
+Bz
+ve
+gV
+sV
+yP
+Tj
+nd
+YH
+Gr
+cN
+jt
+Aj
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+kr
+kr
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+WP
+WP
+"}
+(29,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Yi
+YH
+RG
+UV
+UV
+Xf
+ep
+Bz
+ve
+OX
+sV
+yP
+ve
+nd
+YH
+kD
+cN
+Xa
+jt
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Rn
+vk
+Yi
+kr
+WP
+WP
+WP
+WP
+WP
+Hb
+WP
+WP
+WP
+"}
+(30,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+Hb
+WP
+WP
+Yi
+Yi
+Yi
+YH
+jG
+UV
+An
+Xf
+bX
+Bz
+ve
+OX
+sV
+yP
+ve
+nd
+ar
+cN
+Hl
+Hl
+lP
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+kr
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(31,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+Hb
+WP
+WP
+Yi
+Yi
+Yi
+YH
+Sm
+UV
+UV
+UV
+xT
+Bz
+Tj
+Lo
+sV
+yP
+jq
+nd
+Tw
+cN
+By
+cN
+cN
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+kr
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(32,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+WP
+Yi
+Yi
+Yi
+YH
+Tv
+Xf
+Vq
+dP
+yt
+Zc
+GZ
+Lo
+sV
+yP
+QT
+Ui
+Ga
+YW
+qB
+Vz
+VJ
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+kr
+kr
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(33,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Yi
+YH
+UI
+Xf
+zG
+uz
+YH
+Bz
+PM
+OX
+YH
+zZ
+PM
+nd
+YH
+BD
+Gs
+cN
+Ty
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(34,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Yi
+YH
+ZT
+Xf
+NX
+Dj
+YH
+Bz
+PM
+ve
+EO
+ve
+PM
+VI
+YH
+pb
+sr
+By
+Kp
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(35,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Yi
+YH
+kL
+UV
+tC
+FT
+YH
+hD
+PM
+Tj
+Tj
+Tj
+PM
+Ds
+YH
+jt
+kh
+jt
+Bs
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+oL
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(36,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Yi
+YH
+Qz
+UV
+tC
+ap
+cp
+Ki
+hY
+OL
+OL
+OL
+KK
+Dn
+YH
+sc
+kh
+jt
+Aj
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(37,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Rn
+Yi
+Yi
+YH
+kW
+UV
+tC
+YH
+YH
+jB
+WE
+Tj
+Tj
+Tj
+nd
+JO
+YH
+YH
+kh
+jt
+un
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+Rn
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(38,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+va
+Yi
+Yi
+YH
+kI
+kI
+Fv
+YH
+YH
+Fh
+LF
+Tj
+UP
+jF
+Bw
+AW
+YH
+YH
+vn
+jt
+un
+YH
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+Hb
+WP
+WP
+WP
+WP
+WP
+oL
+WP
+WP
+"}
+(39,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Yi
+Yi
+Yi
+YH
+YH
+YH
+ml
+YH
+YH
+YH
+FK
+VZ
+VZ
+cs
+FK
+YH
+YH
+YH
+ml
+YH
+YH
+YH
+Yi
+Yi
+Yi
+ay
+Yi
+WP
+WP
+WP
+WP
+xA
+Hb
+Hb
+Hb
+Hb
+Hb
+WP
+WP
+WP
+WP
+"}
+(40,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Yi
+Yi
+Yi
+YH
+FA
+yR
+Nb
+YH
+Cg
+Yi
+Yi
+Yi
+Yi
+JX
+Yi
+Yi
+Yi
+YH
+aA
+yR
+IH
+YH
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+Hb
+Hb
+WP
+WP
+WP
+WP
+"}
+(41,1,1) = {"
+WP
+WP
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+LV
+LV
+LV
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+JX
+Yi
+Yi
+Yi
+Yi
+LV
+LV
+LV
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+"}
+(42,1,1) = {"
+WP
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+JX
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(43,1,1) = {"
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Rn
+Yi
+JX
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(44,1,1) = {"
+Yi
+aM
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+sz
+Yi
+Yi
+Yi
+Yi
+Rn
+Yi
+Yi
+Yi
+JX
+Yi
+Yi
+ay
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(45,1,1) = {"
+Yi
+IL
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+IL
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+zD
+JX
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(46,1,1) = {"
+Yi
+IL
+pX
+ly
+ly
+ly
+ly
+ly
+ly
+ly
+ly
+pX
+IL
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+JX
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(47,1,1) = {"
+Yi
+IL
+pX
+oy
+rY
+rY
+rY
+rY
+rY
+rY
+rY
+zK
+IL
+aE
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+JX
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(48,1,1) = {"
+Yi
+IL
+pX
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+oy
+Wb
+fV
+FW
+FW
+FW
+FW
+FW
+FW
+FW
+iz
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(49,1,1) = {"
+Yi
+IL
+pX
+rm
+tU
+tU
+tU
+tU
+tU
+tU
+tU
+Di
+IL
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(50,1,1) = {"
+Yi
+IL
+pX
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+aY
+pX
+IL
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+Hb
+WP
+WP
+Lu
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(51,1,1) = {"
+Yi
+IL
+mb
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+pX
+IL
+wS
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+WP
+WP
+WP
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(52,1,1) = {"
+Yi
+fd
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+gQ
+nZ
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+Hb
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(53,1,1) = {"
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+wS
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+Hb
+Hb
+Hb
+Hb
+Hb
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(54,1,1) = {"
+WP
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Hb
+WP
+Hb
+WP
+WP
+Hb
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}
+(55,1,1) = {"
+WP
+WP
+WP
+WP
+WP
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+Yi
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+WP
+"}

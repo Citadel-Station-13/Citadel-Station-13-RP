@@ -38,9 +38,9 @@
 
 /datum/reagent/carbon/touch_turf(var/turf/T)
 	if(!istype(T, /turf/space))
-		var/obj/effect/decal/cleanable/dirt/dirtoverlay = locate(/obj/effect/decal/cleanable/dirt, T)
+		var/obj/effect/debris/cleanable/dirt/dirtoverlay = locate(/obj/effect/debris/cleanable/dirt, T)
 		if (!dirtoverlay)
-			dirtoverlay = new/obj/effect/decal/cleanable/dirt(T)
+			dirtoverlay = new/obj/effect/debris/cleanable/dirt(T)
 			dirtoverlay.alpha = volume * 30
 		else
 			dirtoverlay.alpha = min(dirtoverlay.alpha + volume * 30, 255)
@@ -51,7 +51,7 @@
 	description = "A chemical element with a characteristic odour."
 	taste_description = "pool water"
 	reagent_state = REAGENT_GAS
-	color = "#808080"
+	color = "#d1db77"
 
 /datum/reagent/chlorine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	M.take_organ_damage(1*REM, 0)
@@ -77,6 +77,7 @@
 	ingest_met = REM * 2
 
 	var/nutriment_factor = 0
+	var/hydration_factor = 0
 	var/strength = 10 // This is, essentially, units between stages - the lower, the stronger. Less fine tuning, more clarity.
 	var/toxicity = 1
 
@@ -104,7 +105,7 @@
 	if(alien == IS_DIONA)
 		strength_mod = 0
 	if(alien == IS_SLIME)
-		strength_mod *= 2 // VOREStation Edit - M.adjustToxLoss(removed)
+		strength_mod *= 2
 	if(alien == IS_ALRAUNE)
 		if(prob(5))
 			to_chat(M, "<span class='danger'>You feel your leaves start to wilt.</span>")
@@ -142,7 +143,8 @@
 
 /datum/reagent/ethanol/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(issmall(M)) removed *= 2
-	M.nutrition += nutriment_factor * removed
+	M.adjust_nutrition(nutriment_factor * removed)
+	M.adjust_hydration(hydration_factor * removed)
 	var/strength_mod = 1
 	if(alien == IS_SKRELL)
 		strength_mod *= 5
@@ -153,7 +155,10 @@
 	if(alien == IS_DIONA)
 		strength_mod = 0
 	if(alien == IS_SLIME)
-		strength_mod *= 2 // VOREStation Edit - M.adjustToxLoss(removed * 2)
+		strength_mod *= 2
+	var/is_vampire = M.species.is_vampire
+	if(is_vampire)
+		handle_vampire(M, alien, removed, is_vampire)
 
 	M.add_chemical_effect(CE_ALCOHOL, 1)
 
@@ -336,9 +341,9 @@
 /datum/reagent/radium/touch_turf(var/turf/T)
 	if(volume >= 3)
 		if(!istype(T, /turf/space))
-			var/obj/effect/decal/cleanable/greenglow/glow = locate(/obj/effect/decal/cleanable/greenglow, T)
+			var/obj/effect/debris/cleanable/greenglow/glow = locate(/obj/effect/debris/cleanable/greenglow, T)
 			if(!glow)
-				new /obj/effect/decal/cleanable/greenglow(T)
+				new /obj/effect/debris/cleanable/greenglow(T)
 			return
 
 /datum/reagent/acid
@@ -421,7 +426,7 @@
 	if(O.unacidable)
 		return
 	if((istype(O, /obj/item) || istype(O, /obj/effect/plant)) && (volume > meltdose))
-		var/obj/effect/decal/cleanable/molten_item/I = new/obj/effect/decal/cleanable/molten_item(O.loc)
+		var/obj/effect/debris/cleanable/molten_item/I = new/obj/effect/debris/cleanable/molten_item(O.loc)
 		I.desc = "Looks like this was \an [O] some time ago."
 		for(var/mob/M in viewers(5, O))
 			to_chat(M, "<span class='warning'>\The [O] melts.</span>")

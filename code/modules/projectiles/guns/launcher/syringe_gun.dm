@@ -4,9 +4,9 @@
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = "syringe-cartridge"
 	var/icon_flight = "syringe-cartridge-flight" //so it doesn't look so weird when shot
-	matter = list(DEFAULT_WALL_MATERIAL = 125, "glass" = 375)
+	matter = list(MAT_STEEL = 125, MAT_GLASS = 375)
 	slot_flags = SLOT_BELT | SLOT_EARS
-	throwforce = 3
+	throw_force = 3
 	force = 3
 	w_class = ITEMSIZE_TINY
 	var/obj/item/reagent_containers/syringe/syringe
@@ -19,10 +19,10 @@
 
 /obj/item/syringe_cartridge/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/reagent_containers/syringe))
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		syringe = I
 		to_chat(user, "<span class='notice'>You carefully insert [syringe] into [src].</span>")
-		user.remove_from_mob(syringe)
-		syringe.loc = src
 		sharp = 1
 		name = "syringe dart"
 		update_icon()
@@ -30,8 +30,8 @@
 /obj/item/syringe_cartridge/attack_self(mob/user)
 	if(syringe)
 		to_chat(user, "<span class='notice'>You remove [syringe] from [src].</span>")
-		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
-		user.put_in_hands(syringe)
+		playsound(src, 'sound/weapons/empty.ogg', 50, 1)
+		user.grab_item_from_interacted_with(syringe, src)
 		syringe = null
 		sharp = initial(sharp)
 		name = initial(name)
@@ -42,20 +42,20 @@
 	icon_state = icon_flight
 	underlays.Cut()
 
-/obj/item/syringe_cartridge/throw_impact(atom/hit_atom, var/speed)
-	..() //handles embedding for us. Should have a decent chance if thrown fast enough
+/obj/item/syringe_cartridge/throw_impact(atom/A, datum/thrownthing/TT)
+	. = ..()
 	if(syringe)
 		//check speed to see if we hit hard enough to trigger the rapid injection
 		//incidentally, this means syringe_cartridges can be used with the pneumatic launcher
-		if(speed >= 10 && isliving(hit_atom))
-			var/mob/living/L = hit_atom
+		if(TT.speed >= 10 && isliving(A))
+			var/mob/living/L = A
 			//unfortuately we don't know where the dart will actually hit, since that's done by the parent.
 			if(L.can_inject() && syringe.reagents)
 				var/contained = syringe.reagents.get_reagents()
 				var/trans = syringe.reagents.trans_to_mob(L, 15, CHEM_BLOOD)
-				add_attack_logs(thrower,L,"Shot with [src.name] containing [contained], trasferred [trans] units")
+				add_attack_logs(TT.thrower,L,"Shot with [src.name] containing [contained], trasferred [trans] units")
 
-		syringe.break_syringe(iscarbon(hit_atom)? hit_atom : null)
+		syringe.break_syringe(iscarbon(A)? A : null)
 		syringe.update_icon()
 
 	icon_state = initial(icon_state) //reset icon state
@@ -68,7 +68,7 @@
 	item_state = "syringegun"
 	w_class = ITEMSIZE_NORMAL
 	force = 7
-	matter = list(DEFAULT_WALL_MATERIAL = 2000)
+	matter = list(MAT_STEEL = 2000)
 	slot_flags = SLOT_BELT
 
 	fire_sound = 'sound/weapons/empty.ogg'
@@ -103,7 +103,7 @@
 	add_fingerprint(user)
 
 /obj/item/gun/launcher/syringe/attack_hand(mob/living/user as mob)
-	if(user.get_inactive_hand() == src)
+	if(user.get_inactive_held_item() == src)
 		if(!darts.len)
 			to_chat(user, "<span class='warning'>[src] is empty.</span>")
 			return
@@ -124,8 +124,8 @@
 		if(darts.len >= max_darts)
 			to_chat(user, "<span class='warning'>[src] is full!</span>")
 			return
-		user.remove_from_mob(C)
-		C.loc = src
+		if(!user.attempt_insert_item_for_installation(C, src))
+			return
 		darts += C //add to the end
 		user.visible_message("[user] inserts \a [C] into [src].", "<span class='notice'>You insert \a [C] into [src].</span>")
 	else

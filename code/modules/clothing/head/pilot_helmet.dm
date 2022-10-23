@@ -4,11 +4,8 @@
 	name = "pilot helmet"
 	desc = "Standard pilot gear. Protects the head from impacts."
 	icon_state = "pilot_helmet1"
-	item_icons = list(slot_head_str = 'icons/mob/pilot_helmet.dmi')
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/pilot_helmet.dmi'
-		)
-	flags = THICKMATERIAL
+	item_icons = list(SLOT_ID_HEAD = 'icons/mob/clothing/pilot_helmet.dmi')
+	clothing_flags = THICKMATERIAL
 	armor = list(melee = 20, bullet = 10, laser = 10, energy = 5, bomb = 10, bio = 0, rad = 0)
 	flags_inv = HIDEEARS
 	cold_protection = HEAD
@@ -18,7 +15,7 @@
 	w_class = ITEMSIZE_NORMAL
 
 	var/obj/machinery/computer/shuttle_control/shuttle_comp
-	var/obj/screen/pilot_hud
+	var/atom/movable/screen/pilot_hud
 	var/list/images
 	var/list/raw_images
 	var/last_status
@@ -34,7 +31,7 @@
 	pilot_hud.icon = 'icons/obj/piloting_overlay.dmi'
 	pilot_hud.icon_state = "dimmer"
 	pilot_hud.layer = SCREEN_LAYER
-	pilot_hud.plane = PLANE_FULLSCREEN
+	pilot_hud.plane = FULLSCREEN_PLANE
 	pilot_hud.mouse_opacity = 0
 	pilot_hud.alpha = 0
 
@@ -175,11 +172,11 @@
 
 /obj/item/clothing/head/pilot/equipped(var/mob/user,var/slot)
 	. = ..()
-	if(slot == slot_head && user.client)
+	if(slot == SLOT_ID_HEAD && user.client)
 		user.client.screen |= pilot_hud
 		user.client.images |= raw_images
 
-/obj/item/clothing/head/pilot/dropped(var/mob/user)
+/obj/item/clothing/head/pilot/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	if(user.client)
 		user.client.screen -= pilot_hud
@@ -198,4 +195,4 @@
 	else
 		src.icon_state = initial(icon_state)
 		to_chat(user, "You lower the visor on the pilot helmet.")
-	update_clothing_icon() //so our mob-overlays update
+	update_worn_icon() //so our mob-overlays update

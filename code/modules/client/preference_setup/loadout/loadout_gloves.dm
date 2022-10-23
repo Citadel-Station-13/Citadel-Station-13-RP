@@ -2,7 +2,7 @@
 /datum/gear/gloves
 	name = "Gloves - Black"
 	path = /obj/item/clothing/gloves/black
-	slot = slot_gloves
+	slot = SLOT_ID_GLOVES
 	sort_category = "Gloves and Handwear"
 
 /datum/gear/gloves/blue
@@ -140,3 +140,11 @@
 /datum/gear/gloves/bountyskin
 	name = "Bounty Hunter's Gloves"
 	path = /obj/item/clothing/gloves/bountyskin
+
+/datum/gear/gloves/hasie
+	name = "Hasie Fingerless Gloves"
+	path = /obj/item/clothing/gloves/hasie
+
+/datum/gear/gloves/utility_fur_gloves
+	name = "Utility Fur Gloves"
+	path = /obj/item/clothing/gloves/utility_fur_gloves

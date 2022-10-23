@@ -15,9 +15,9 @@
 /obj/item/storage/briefcase/clutch
 	name = "clutch purse"
 	desc = "A fashionable handheld bag typically used by women."
-	icon = 'icons/obj/clothing/backpack.dmi' //VOREStation Edit - Wrong sprite location
+	icon = 'icons/obj/clothing/backpack.dmi'
 	icon_state = "clutch"
-	item_state_slots = list(slot_r_hand_str = "smpurse", slot_l_hand_str = "smpurse")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "smpurse", SLOT_ID_LEFT_HAND = "smpurse")
 	force = 0
 	w_class = ITEMSIZE_NORMAL
 	max_w_class = ITEMSIZE_SMALL

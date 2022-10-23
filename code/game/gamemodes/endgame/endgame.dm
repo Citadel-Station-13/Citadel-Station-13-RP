@@ -56,10 +56,6 @@
 /datum/universal_state/proc/OnEnter()
  	// Does nothing by default
 
-// Apply changes to a new turf.
-/datum/universal_state/proc/OnTurfChange(var/turf/NT)
- 	return
-
 /datum/universal_state/proc/OverlayAndAmbientSet()
 	return
 

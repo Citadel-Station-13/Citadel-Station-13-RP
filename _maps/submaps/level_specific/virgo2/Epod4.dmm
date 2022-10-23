@@ -48,7 +48,7 @@
 	pixel_y = 0
 	},
 /obj/item/clothing/shoes/brown,
-/obj/item/clothing/under/mbill,
+/obj/item/clothing/under/brandjumpsuit/mbill,
 /obj/item/clothing/head/soft/mbill,
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/Epod4)

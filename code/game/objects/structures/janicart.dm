@@ -29,9 +29,9 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 
 /obj/structure/janitorialcart/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/storage/bag/trash) && !mybag)
-		user.drop_item()
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		mybag = I
-		I.loc = src
 		update_icon()
 		updateUsrDialog()
 		to_chat(user, "<span class='notice'>You put [I] into [src].</span>")
@@ -46,33 +46,33 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 				playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 				return
 		if(!mymop)
-			user.drop_item()
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			mymop = I
-			I.loc = src
 			update_icon()
 			updateUsrDialog()
 			to_chat(user, "<span class='notice'>You put [I] into [src].</span>")
 
 	else if(istype(I, /obj/item/reagent_containers/spray) && !myspray)
-		user.drop_item()
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		myspray = I
-		I.loc = src
 		update_icon()
 		updateUsrDialog()
 		to_chat(user, "<span class='notice'>You put [I] into [src].</span>")
 
 	else if(istype(I, /obj/item/lightreplacer) && !myreplacer)
-		user.drop_item()
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		myreplacer = I
-		I.loc = src
 		update_icon()
 		updateUsrDialog()
 		to_chat(user, "<span class='notice'>You put [I] into [src].</span>")
 
 	else if(istype(I, /obj/item/caution))
 		if(signs < 4)
-			user.drop_item()
-			I.loc = src
+			if(!user.attempt_insert_item_for_installation(I, src))
+				return
 			signs++
 			update_icon()
 			updateUsrDialog()
@@ -200,30 +200,27 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	else if(istype(I, /obj/item/key))
 		to_chat(user, "Hold [I] in one of your hands while you drive this [callme].")
 	else if(istype(I, /obj/item/storage/bag/trash))
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		to_chat(user, "<span class='notice'>You hook the trashbag onto the [callme].</span>")
-		user.drop_item()
-		I.loc = src
 		mybag = I
-
 
 /obj/structure/bed/chair/janicart/attack_hand(mob/user)
 	if(mybag)
-		mybag.loc = get_turf(user)
-		user.put_in_hands(mybag)
+		if(!user.put_in_hands(mybag))
+			mybag.forceMove(user.drop_location())
 		mybag = null
 	else
 		..()
 
-
 /obj/structure/bed/chair/janicart/relaymove(mob/living/user, direction)
 	if(user.stat || user.stunned || user.weakened || user.paralysis)
 		unbuckle_mob()
-	if(user.get_type_in_hands(/obj/item/key))
+	if(user.get_held_item_of_type(/obj/item/key))
 		step(src, direction)
 		update_mob()
 	else
 		to_chat(user, "<span class='notice'>You'll need the keys in one of your hands to drive this [callme].</span>")
-
 
 /obj/structure/bed/chair/janicart/Move()
 	..()
@@ -233,26 +230,20 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 			if(L.buckled == src)
 				L.loc = loc
 
-
-/obj/structure/bed/chair/janicart/post_buckle_mob(mob/living/M)
+/obj/structure/bed/chair/janicart/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
 	update_mob()
-	return ..()
 
+/obj/structure/bed/chair/janicart/mob_unbuckled(mob/M, flags, mob/user, semantic)
+	. = ..()
+	M.pixel_x = 0
+	M.pixel_y = 0
 
 /obj/structure/bed/chair/janicart/update_layer()
 	if(dir == SOUTH)
 		layer = FLY_LAYER
 	else
 		layer = OBJ_LAYER
-
-
-/obj/structure/bed/chair/janicart/unbuckle_mob()
-	var/mob/living/M = ..()
-	if(M)
-		M.pixel_x = 0
-		M.pixel_y = 0
-	return M
-
 
 /obj/structure/bed/chair/janicart/setDir()
 	..()
@@ -263,9 +254,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 			if(L.loc != loc)
 				L.buckled = null //Temporary, so Move() succeeds.
 				L.buckled = src //Restoring
-
 	update_mob()
-
 
 /obj/structure/bed/chair/janicart/proc/update_mob()
 	if(has_buckled_mobs())
@@ -285,7 +274,6 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 				if(EAST)
 					L.pixel_x = -13
 					L.pixel_y = 7
-
 
 /obj/structure/bed/chair/janicart/bullet_act(var/obj/item/projectile/Proj)
 	if(has_buckled_mobs())

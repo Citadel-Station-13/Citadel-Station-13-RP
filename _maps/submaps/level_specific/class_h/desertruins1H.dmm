@@ -1,29 +1,29 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "c" = (
 /turf/simulated/wall/sandstone/classh,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "l" = (
 /obj/structure/loot_pile/surface/bones,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "n" = (
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "s" = (
 /obj/item/bone,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "G" = (
 /obj/structure/loot_pile/surface/bones,
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "W" = (
 /obj/item/bone,
 /turf/simulated/floor/outdoors/beach/sand/dirtlight,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 "X" = (
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
-/area/tether_away/beach/desert/explored)
+/area/class_h/explored)
 
 (1,1,1) = {"
 X

@@ -2,11 +2,11 @@
 	name = "gas mask"
 	desc = "A face-covering mask that can be connected to an air supply. Filters harmful gases from the air."
 	icon_state = "gas_alt"
-	item_flags = BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS | ALLOW_SURVIVALFOOD
+	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS | ALLOW_SURVIVALFOOD
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE
 	body_parts_covered = FACE|EYES
 	w_class = ITEMSIZE_NORMAL
-	item_state_slots = list(slot_r_hand_str = "gas_alt", slot_l_hand_str = "gas_alt")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "gas_alt", SLOT_ID_LEFT_HAND = "gas_alt")
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	siemens_coefficient = 0.9
@@ -58,7 +58,7 @@
 			gas_transfer_coefficient = 1
 			gas_filter_strength = 0
 			body_parts_covered = body_parts_covered & ~FACE
-			item_flags = item_flags & ~BLOCK_GAS_SMOKE_EFFECT & ~ALLOWINTERNALS
+			clothing_flags &= ~(BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS)
 			flags_inv = 0
 			armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
 			icon_state = "halfgas_up"
@@ -67,12 +67,12 @@
 			gas_transfer_coefficient = initial(gas_transfer_coefficient)
 			gas_filter_strength = initial(gas_filter_strength)
 			body_parts_covered = initial(body_parts_covered)
-			item_flags = initial(item_flags)
+			clothing_flags = initial(clothing_flags)
 			flags_inv = initial(flags_inv)
 			armor = initial(armor)
 			icon_state = initial(icon_state)
 			to_chat(usr, "You pull the mask up to cover your face.")
-		update_clothing_icon()
+		update_worn_icon()
 
 /obj/item/clothing/mask/gas/half/verb/toggle()
 	set category = "Object"
@@ -88,7 +88,7 @@
 	name = "plague doctor mask"
 	desc = "A modernised version of the classic design, this mask will not only filter out phoron but it can also be connected to an air supply."
 	icon_state = "plaguedoctor"
-	item_state_slots = list(slot_r_hand_str = "gas", slot_l_hand_str = "gas")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "gas", SLOT_ID_LEFT_HAND = "gas")
 	armor = list(melee = 0, bullet = 0, laser = 2,energy = 2, bomb = 0, bio = 90, rad = 0)
 	body_parts_covered = HEAD|FACE|EYES
 
@@ -104,7 +104,7 @@
 	name = "\improper alien mask"
 	desc = "Clearly not designed for a human face."
 	flags = PHORONGUARD
-	item_flags = BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS
+	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS
 	species_restricted = list(SPECIES_VOX)
 	filtered_gases = list(/datum/gas/oxygen, /datum/gas/nitrous_oxide)
 	var/mask_open = FALSE	// Controls if the Vox can eat through this mask
@@ -145,14 +145,14 @@
 	name = "explorer gas mask"
 	desc = "A military-grade gas mask that can be connected to an air supply."
 	icon_state = "explorer"
-	item_state_slots = list(slot_r_hand_str = "gas", slot_l_hand_str = "gas")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "gas", SLOT_ID_LEFT_HAND = "gas")
 	armor = list(melee = 10, bullet = 5, laser = 5,energy = 5, bomb = 0, bio = 50, rad = 0)
 	siemens_coefficient = 0.9
 
 /obj/item/clothing/mask/gas/commando
 	name = "commando mask"
 	icon_state = "fullgas"
-	item_state_slots = list(slot_r_hand_str = "swat", slot_l_hand_str = "swat")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "swat", SLOT_ID_LEFT_HAND = "swat")
 	siemens_coefficient = 0.2
 
 /obj/item/clothing/mask/gas/cyborg
@@ -173,32 +173,32 @@
 	name = "clown wig and mask"
 	desc = "A true prankster's facial attire. A clown is incomplete without their wig and mask."
 	icon_state = "clown"
-	item_state_slots = list(slot_r_hand_str = "clown_hat", slot_l_hand_str = "clown_hat")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "clown_hat", SLOT_ID_LEFT_HAND = "clown_hat")
 
 /obj/item/clothing/mask/gas/sexyclown
 	name = "sexy-clown wig and mask"
 	desc = "A feminine clown mask for the dabbling crossdressers or female entertainers."
 	icon_state = "sexyclown"
-	item_state_slots = list(slot_r_hand_str = "clown_hat", slot_l_hand_str = "clown_hat")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "clown_hat", SLOT_ID_LEFT_HAND = "clown_hat")
 
 /obj/item/clothing/mask/gas/mime
 	name = "mime mask"
 	desc = "The traditional mime's mask. It has an eerie facial posture."
 	icon_state = "mime"
-	item_state_slots = list(slot_r_hand_str = "mime", slot_l_hand_str = "mime")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "mime", SLOT_ID_LEFT_HAND = "mime")
 
 /obj/item/clothing/mask/gas/sexymime
 	name = "sexy mime mask"
 	desc = "A traditional female mime's mask."
 	icon_state = "sexymime"
-	item_state_slots = list(slot_r_hand_str = "mime", slot_l_hand_str = "mime")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "mime", SLOT_ID_LEFT_HAND = "mime")
 
 /obj/item/clothing/mask/gas/guy
 	name = "guy fawkes mask"
 	desc = "A mask stylised to depict Guy Fawkes."
 	icon_state = "guyfawkes"
 	flags_inv = HIDEEARS|HIDEFACE
-	item_state_slots = list(slot_r_hand_str = "mime", slot_l_hand_str = "mime")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "mime", SLOT_ID_LEFT_HAND = "mime")
 
 /obj/item/clothing/mask/gas/goblin
 	name = "goblin mask"
@@ -333,7 +333,7 @@
 	desc = "A porcelain mask with black eyes and no mouth."
 	icon_state = "iacc_w"
 	flags_inv = HIDEEARS|HIDEFACE
-	item_state_slots = list(slot_r_hand_str = "iacc", slot_l_hand_str = "iacc")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "iacc", SLOT_ID_LEFT_HAND = "iacc")
 	var/design = 1
 
 /obj/item/clothing/mask/gas/orchid/proc/change_mask()
@@ -348,7 +348,7 @@
 		if(2)
 			icon_state = "iacc_b"
 			design = 0
-	update_clothing_icon()
+	update_worn_icon()
 
 /obj/item/clothing/mask/gas/orchid/verb/toggle_design()
 

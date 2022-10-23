@@ -1,13 +1,11 @@
-var/datum/category_collection/autolathe/autolathe_recipes
-
 /datum/category_item/autolathe/New()
 	..()
 	var/obj/item/I = new path()
 	if(I.matter && !resources)
 		resources = list()
 		for(var/material in I.matter)
-			var/coeff = (no_scale ? 1 : 1.25) //most objects are more expensive to produce than to recycle
-			resources[material] = I.matter[material]*coeff // but if it's a sheet or RCD cartridge, it's 1:1
+			var/coeff = (no_scale ? 1 : 1.25) //Most objects are more expensive to produce than to recycle
+			resources[material] = I.matter[material]*coeff //But if it's a sheet or RCD cartridge, it's 1:1
 	if(is_stack)
 		if(istype(I, /obj/item/stack))
 			var/obj/item/stack/IS = I
@@ -71,6 +69,7 @@ var/datum/category_collection/autolathe/autolathe_recipes
 	var/is_stack // Creates multiple of an item if applied to non-stack items
 	var/max_stack
 	var/no_scale
+	var/man_rating = 0
 
 /datum/category_item/autolathe/dd_SortValue()
 	return name

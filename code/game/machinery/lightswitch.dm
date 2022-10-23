@@ -4,13 +4,13 @@
 /obj/machinery/light_switch
 	name = "light switch"
 	desc = "It turns lights on and off. What are you, simple?"
-	icon = 'icons/obj/power_vr.dmi' // VOREStation Edit
+	icon = 'icons/obj/power_vr.dmi'
 	icon_state = "light1"
-	anchored = 1.0
+	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	power_channel = LIGHT
-	var/on = 1
+	var/on = TRUE
 	var/area/area = null
 	var/otherarea = null
 	var/image/overlay
@@ -35,10 +35,10 @@
 /obj/machinery/light_switch/proc/updateicon()
 	if(!overlay)
 		overlay = image(icon, "light1-overlay")
-		overlay.plane = PLANE_LIGHTING_ABOVE
+		overlay.plane = ABOVE_LIGHTING_PLANE
 
 	overlays.Cut()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		icon_state = "light-p"
 		set_light(0)
 	else
@@ -48,7 +48,7 @@
 		set_light(2, 0.1, on ? "#82FF4C" : "#F86060")
 
 /obj/machinery/light_switch/examine(mob/user)
-	. += "<span class = 'notice'>A light switch. It is [on? "on" : "off"].</span>"
+	. += SPAN_NOTICE("A light switch. It is [on? "on" : "off"].")
 
 /obj/machinery/light_switch/attack_hand(mob/user)
 
@@ -56,7 +56,7 @@
 
 	area.lightswitch = on
 	area.updateicon()
-	playsound(src, 'sound/machines/button.ogg', 100, 1, 0) // VOREStation Edit
+	playsound(src, 'sound/machines/button.ogg', 100, TRUE, 0)
 
 	for(var/obj/machinery/light_switch/L in area)
 		L.on = on
@@ -65,17 +65,16 @@
 	area.power_change()
 
 /obj/machinery/light_switch/power_change()
-
 	if(!otherarea)
 		if(powered(LIGHT))
-			stat &= ~NOPOWER
+			machine_stat &= ~NOPOWER
 		else
-			stat |= NOPOWER
+			machine_stat |= NOPOWER
 
 		updateicon()
 
 /obj/machinery/light_switch/emp_act(severity)
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		..(severity)
 		return
 	power_change()

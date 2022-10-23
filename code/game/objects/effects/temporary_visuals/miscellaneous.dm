@@ -24,7 +24,7 @@
 	icon_state = "smoke"
 	duration = 50
 
-// VOREStation Add - Used by Kinetic Accelerator
+// Used by Kinetic Accelerator
 /obj/effect/temp_visual/kinetic_blast
 	name = "kinetic explosion"
 	icon = 'icons/obj/projectiles.dmi'
@@ -43,15 +43,14 @@
 /obj/effect/temp_visual/explosion/fast
 	icon_state = "explosionfast"
 	duration = 4
-// VOREStation Add End
 
-//VOREStation edit: medigun
+// Medigun
 /obj/effect/temp_visual/heal
 	name = "healing glow"
 	icon_state = "heal"
 	duration = 15
 
 /obj/effect/temp_visual/heal/Initialize(mapload)
+	. = ..()
 	pixel_x = rand(-12, 12)
 	pixel_y = rand(-9, 0)
-//VOREStation edit ends

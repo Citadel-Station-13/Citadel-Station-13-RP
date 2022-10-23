@@ -74,24 +74,22 @@
 			P.name = "[initial(P.name)] #[pods.len]"
 			to_chat(user, "<span class='notice'>You connect [P] to [src].</span>")
 	else if(istype(W, /obj/item/disk/transcore) && SStranscore && !SStranscore.core_dumped)
-		user.unEquip(W)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		disk = W
-		disk.forceMove(src)
 		to_chat(user, "<span class='notice'>You insert \the [W] into \the [src].</span>")
 	if(istype(W, /obj/item/disk/body_record))
 		var/obj/item/disk/body_record/brDisk = W
 		if(!brDisk.stored)
 			to_chat(user, "<span class='warning'>\The [W] does not contain a stored body record.</span>")
 			return
-		user.unEquip(W)
-		W.forceMove(get_turf(src)) // Drop on top of us
 		active_br = new /datum/transhuman/body_record(brDisk.stored) // Loads a COPY!
 		menu = 4
 		to_chat(user, "<span class='notice'>\The [src] loads the body record from \the [W] before ejecting it.</span>")
 		attack_hand(user)
 	if(istype(W, /obj/item/implant/mirror))
-		user.drop_item()
-		W.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		hasmirror = W
 		user.visible_message("[user] inserts the [W] into the [src].", "You insert the [W] into the [src].")
 	if(istype(W, /obj/item/mirrortool))
@@ -138,7 +136,7 @@
 	user.set_machine(src)
 	add_fingerprint(user)
 
-	if(stat & (BROKEN|NOPOWER))
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 
 	updatemodules()
@@ -166,7 +164,7 @@
 
 	var/spods_list_ui[0]
 	for(var/obj/machinery/transhuman/synthprinter/spod in spods)
-		spods_list_ui[++spods_list_ui.len] = list("spod" = spod, "steel" = spod.stored_material[DEFAULT_WALL_MATERIAL], "glass" = spod.stored_material["glass"])
+		spods_list_ui[++spods_list_ui.len] = list("spod" = spod, MAT_STEEL = spod.stored_material[MAT_STEEL], MAT_GLASS = spod.stored_material["glass"])
 
 	var/sleevers_list_ui[0]
 	for(var/obj/machinery/transhuman/resleever/resleever in sleevers)
@@ -308,8 +306,8 @@
 						temp = "Error: SynthFab is currently busy."
 
 					//Not enough steel or glass
-					else if(spod.stored_material[DEFAULT_WALL_MATERIAL] < spod.body_cost)
-						temp = "Error: Not enough [DEFAULT_WALL_MATERIAL] in SynthFab."
+					else if(spod.stored_material[MAT_STEEL] < spod.body_cost)
+						temp = "Error: Not enough [MAT_STEEL] in SynthFab."
 					else if(spod.stored_material["glass"] < spod.body_cost)
 						temp = "Error: Not enough glass in SynthFab."
 
@@ -433,9 +431,9 @@
 /obj/item/cmo_disk_holder/attack_self(var/mob/attacker)
 	playsound(src, 'sound/items/poster_ripped.ogg', 50)
 	to_chat(attacker, "<span class='warning'>You tear open \the [name].</span>")
-	attacker.unEquip(src)
+	attacker.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 	var/obj/item/disk/transcore/newdisk = new(get_turf(src))
-	attacker.put_in_any_hand_if_possible(newdisk)
+	attacker.put_in_hands(newdisk)
 	qdel(src)
 
 /obj/item/disk/transcore

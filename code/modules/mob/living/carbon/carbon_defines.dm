@@ -1,6 +1,11 @@
-/mob/living/carbon/
+/mob/living/carbon
 	gender = MALE
-	var/datum/species/species //Contains icon generation and language information, set during New().
+	throw_force = 10
+
+//! ## Basics
+	/// species - datumized handling of racial intrinsics like health, environmental, breathing, etc. set using set_species() **only**
+	var/datum/species/species
+
 	var/list/stomach_contents = list()
 	var/list/datum/disease2/disease/virus2 = list()
 	var/list/antibodies = list()
@@ -10,8 +15,11 @@
 
 	// total amount of wounds on mob, used to spread out healing and the like over all wounds
 	var/number_wounds = 0
+
+	// inventory
 	var/obj/item/handcuffed = null //Whether or not the mob is handcuffed
 	var/obj/item/legcuffed = null  //Same as handcuffs but for legs. Bear traps use this.
+
 	//Surgery info
 	var/datum/surgery_status/op_stage = new/datum/surgery_status
 	//Active emote/pose

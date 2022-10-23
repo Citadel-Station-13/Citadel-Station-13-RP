@@ -6,7 +6,7 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
-	matter = list(DEFAULT_WALL_MATERIAL = 1000, "glass" = 1000)
+	matter = list(MAT_STEEL = 1000, MAT_GLASS = 1000)
 	var/obj/item/implant/imp = null
 	var/active = 1
 
@@ -61,9 +61,7 @@
 
 						if(ishuman(M))
 							var/mob/living/carbon/human/H = M
-							BITSET(H.hud_updateflag, IMPLOYAL_HUD)
-							BITSET(H.hud_updateflag, BACKUP_HUD) //VOREStation Add - Backup HUD updates
-
+							H.update_hud_sec_implants()
 					src.imp = null
 					update()
 	else
@@ -118,37 +116,38 @@
 		return
 	..()
 
-/obj/item/implanter/compressed/afterattack(atom/A, mob/user as mob, proximity)
+/obj/item/implanter/compressed/afterattack(obj/item/I, mob/user as mob, proximity)
 	if(!proximity)
 		return
 	if(!active)
 		to_chat(user, "<span class='warning'>Activate \the [src.name] first.</span>")
 		return
-	if(istype(A,/obj/item) && imp)
+	if(istype(I, /obj/item) && istype(imp, /obj/item/implant/compressed))
 		var/obj/item/implant/compressed/c = imp
 		if (c.scanned)
 			to_chat(user, "<span class='warning'>Something is already scanned inside the implant!</span>")
 			return
-		c.scanned = A
-		if(istype(A, /obj/item/storage))
-			to_chat(user, "<span class='warning'>You can't store \the [A.name] in this!</span>")
-			c.scanned = null
+		if(istype(I, /obj/item/storage))
+			to_chat(user, "<span class='warning'>You can't store [I] in this!</span>")
 			return
-		if(istype(A.loc,/mob/living/carbon/human))
-			var/mob/living/carbon/human/H = A.loc
-			H.remove_from_mob(A)
-		else if(istype(A.loc,/obj/item/storage))
-			var/obj/item/storage/S = A.loc
-			S.remove_from_storage(A)
-		A.loc.contents.Remove(A)
+		c.scanned = I
+		I.forceMove(src)
 		update()
 
-//Vorestation universal translator implant.
-
-/obj/item/implanter/vrlanguage
+/// Universal translator implant.
+/obj/item/implanter/uni_translator
 	name = "implanter-language"
 
-/obj/item/implanter/vrlanguage/Initialize(mapload)
+/obj/item/implanter/uni_translator/Initialize(mapload)
 	. = ..()
-	imp = new /obj/item/implant/vrlanguage( src )
+	imp = new /obj/item/implant/uni_translator( src )
 	update()
+
+/obj/item/implanter/restrainingbolt
+	name = "implanter (bolt)"
+
+/obj/item/implanter/restrainingbolt/New()
+	src.imp = new /obj/item/implant/restrainingbolt( src )
+	..()
+	update()
+	return

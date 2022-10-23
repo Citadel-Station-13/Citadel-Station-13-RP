@@ -1,21 +1,121 @@
-/mob/Destroy()//This makes sure that mobs withGLOB.clients/keys are not just deleted from the game.
+
+/**
+ * Intialize a mob
+ *
+ * Adds to global lists
+ * * GLOB.mob_list
+ * * dead_mob_list - if mob is dead
+ * * living_mob_list - if the mob is alive
+ *
+ * Other stuff:
+ * * Sets the mob focus to itself
+ * * Generates huds
+ * * If there are any global alternate apperances apply them to this mob
+ * * Intialize the transform of the mob
+ */
+/mob/Initialize(mapload)
+	GLOB.mob_list += src
+	set_focus(src)
+	if(stat == DEAD)
+		dead_mob_list += src
+	else
+		living_mob_list += src
+	prepare_huds()
+	for(var/v in GLOB.active_alternate_appearances)
+		if(!v)
+			continue
+		var/datum/atom_hud/alternate_appearance/AA = v
+		AA.onNewMob(src)
+	init_rendering()
+	hook_vr("mob_new",list(src))
+	// resize
+	update_transform()
+	// offset
+	reset_pixel_offsets()
+	. = ..()
+	update_config_movespeed()
+	update_movespeed(TRUE)
+	initialize_actionspeed()
+
+/**
+ * Delete a mob
+ *
+ * Removes mob from the following global lists
+ * * GLOB.mob_list
+ * * dead_mob_list
+ * * living_mob_list
+ *
+ * Unsets the focus var
+ *
+ * Clears alerts for this mob
+ *
+ * Resets all the observers perspectives to the tile this mob is on
+ *
+ * qdels any client colours in place on this mob
+ *
+ * Ghostizes the client attached to this mob
+ *
+ * Parent call
+ *
+ * Returns QDEL_HINT_HARDDEL (don't change this)
+ */
+/mob/Destroy()//This makes sure that mobs with GLOB.clients/keys are not just deleted from the game.
 	GLOB.mob_list -= src
 	dead_mob_list -= src
 	living_mob_list -= src
 	unset_machine()
-	qdel(hud_used)
-	clear_fullscreen()
+	movespeed_modification = null
+	actionspeed_modification = null
+	for(var/alert in alerts)
+		clear_alert(alert)
 	if(client)
-		for(var/obj/screen/movable/spell_master/spell_master in spell_masters)
+		for(var/atom/movable/screen/movable/spell_master/spell_master in spell_masters)
 			qdel(spell_master)
 		remove_screen_obj_references()
 		client.screen = list()
 	if(mind && mind.current == src)
 		spellremove(src)
+	// this kicks out client
 	ghostize()
-	QDEL_NULL(plane_holder)
+	if(hud_used)
+		QDEL_NULL(hud_used)
+	dispose_rendering()
+	if(plane_holder)
+		QDEL_NULL(plane_holder)
+	// with no client, we can safely remove perspective this way snow-flakily
+	if(using_perspective)
+		using_perspective.RemoveMob(src)
+		using_perspective = null
 	..()
 	return QDEL_HINT_HARDDEL
+
+/**
+ * Generate the tag for this mob
+ *
+ * This is simply "mob_"+ a global incrementing counter that goes up for every mob
+ */
+/mob/GenerateTag()
+	tag = "mob_[++next_mob_id]"
+
+/**
+ * Prepare the huds for this atom
+ *
+ * Goes through hud_possible list and adds the images to the hud_list variable (if not already
+ * cached)
+ */
+/atom/proc/prepare_huds()
+	hud_list = list()
+	for(var/hud in hud_possible)
+		var/hint = hud_possible[hud]
+		switch(hint)
+			if(HUD_LIST_LIST)
+				hud_list[hud] = list()
+			else
+				var/image/I = image(GLOB.hud_icon_files[hud] || 'icons/screen/atom_hud/misc.dmi', src, "")
+				I.plane = FLOAT_PLANE
+				I.layer = FLOAT_LAYER + 100 + (GLOB.hud_icon_layers[hud] || 0)
+				I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
+				hud_list[hud] = I
 
 /mob/proc/remove_screen_obj_references()
 	hands = null
@@ -38,20 +138,9 @@
 	gun_setting_icon = null
 	spell_masters = null
 	zone_sel = null
-	crafting = null
 
-/mob/Initialize(mapload)
-	GLOB.mob_list += src
-	set_focus(src)
-	if(stat == DEAD)
-		dead_mob_list += src
-	else
-		living_mob_list += src
-	hook_vr("mob_new",list(src)) //VOREStation Code
-	update_transform() // Some mobs may start bigger or smaller than normal.
-	return ..()
-
-/mob/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
+/// Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
+/mob/proc/show_message(msg, type, alt, alt_type)
 
 	if(!client && !teleop)	return
 
@@ -68,7 +157,7 @@
 			else
 				msg = alt
 				type = alt_type
-				if ((type & 1) && (sdisabilities & BLIND))
+				if ((type & 1) && (sdisabilities & SDISABILITY_NERVOUS))
 					return
 	// Added voice muffling for Issue 41.
 	if(stat == UNCONSCIOUS || sleeping > 0)
@@ -80,55 +169,16 @@
 	return
 
 /**
-  * Reset the attached clients perspective (viewpoint)
-  *
-  * reset_perspective() set eye to common default : mob on turf, loc otherwise
-  * reset_perspective(thing) set the eye to the thing (if it's equal to current default reset to mob perspective)
-  */
-/mob/proc/reset_perspective(atom/A)
-	if(client)
-		if(A)
-			if(ismovable(A))
-				//Set the the thing unless it's us
-				if(A != src)
-					client.perspective = EYE_PERSPECTIVE
-					client.eye = A
-				else
-					client.eye = client.mob
-					client.perspective = MOB_PERSPECTIVE
-			else if(isturf(A))
-				//Set to the turf unless it's our current turf
-				if(A != loc)
-					client.perspective = EYE_PERSPECTIVE
-					client.eye = A
-				else
-					client.eye = client.mob
-					client.perspective = MOB_PERSPECTIVE
-			else
-				//Do nothing
-		else
-			//Reset to common defaults: mob if on turf, otherwise current loc
-			if(isturf(loc))
-				client.eye = client.mob
-				client.perspective = MOB_PERSPECTIVE
-			else
-				client.perspective = EYE_PERSPECTIVE
-				client.eye = loc
-		return 1
-
-// Returns an amount of power drawn from the object (-1 if it's not viable).
-// If drain_check is set it will not actually drain power, just return a value.
-// If surge is set, it will destroy/damage the recipient and not return any power.
-// Not sure where to define this, so it can sit here for the rest of time.
-/atom/proc/drain_power(var/drain_check,var/surge, var/amount = 0)
-	return -1
-
-// Show a message to all mobs and objects in earshot of this one
-// This would be for audible actions by the src mob
-// message is the message output to anyone who can hear.
-// self_message (optional) is what the src mob hears.
-// deaf_message (optional) is what deaf people will see.
-// hearing_distance (optional) is the range, how many tiles away the message can be heard.
+ * Show a message to all mobs in earshot of this one
+ *
+ * This would be for audible actions by the src mob
+ *
+ * vars:
+ * * message is the message output to anyone who can hear.
+ * * self_message (optional) is what the src mob hears.
+ * * deaf_message (optional) is what deaf people will see.
+ * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
+ */
 /mob/audible_message(var/message, var/deaf_message, var/hearing_distance, var/self_message)
 
 	var/range = hearing_distance || world.view
@@ -154,15 +204,11 @@
 			return M
 	return 0
 
-/mob/proc/Life()
-//	if(organStructure)
-//		organStructure.ProcessOrgans()
-	return
-
 #define UNBUCKLED 0
 #define PARTIALLY_BUCKLED 1
 #define FULLY_BUCKLED 2
-/mob/proc/buckled()
+
+/mob/proc/is_buckled()
 	// Preliminary work for a future buckle rewrite,
 	// where one might be fully restrained (like an elecrical chair), or merely secured (shuttle chair, keeping you safe but not otherwise restrained from acting)
 	if(!buckled)
@@ -170,10 +216,10 @@
 	return restrained() ? FULLY_BUCKLED : PARTIALLY_BUCKLED
 
 /mob/proc/is_blind()
-	return ((sdisabilities & BLIND) || blinded || incapacitated(INCAPACITATION_KNOCKOUT))
+	return ((sdisabilities & SDISABILITY_NERVOUS) || blinded || incapacitated(INCAPACITATION_KNOCKOUT))
 
 /mob/proc/is_deaf()
-	return ((sdisabilities & DEAF) || ear_deaf || incapacitated(INCAPACITATION_KNOCKOUT))
+	return ((sdisabilities & SDISABILITY_DEAF) || ear_deaf || incapacitated(INCAPACITATION_KNOCKOUT))
 
 /mob/proc/is_physically_disabled()
 	return incapacitated(INCAPACITATION_DISABLED)
@@ -207,28 +253,17 @@
 #undef PARTIALLY_BUCKLED
 #undef FULLY_BUCKLED
 
+///Is the mob restrained
 /mob/proc/restrained()
 	return
 
-/mob/proc/reset_view(atom/A)
-	if (client)
-		if (istype(A, /atom/movable))
-			client.perspective = EYE_PERSPECTIVE
-			client.eye = A
-		else
-			if (isturf(loc))
-				client.eye = client.mob
-				client.perspective = MOB_PERSPECTIVE
-			else
-				client.perspective = EYE_PERSPECTIVE
-				client.eye = loc
-	return
-
-
-/mob/proc/show_inv(mob/user as mob)
-	return
-
-//mob verbs are faster than object verbs. See http://www.byond.com/forum/?post=1326139&page=2#comment8198716 for why this isn't atom/verb/examine()
+/**
+ * Examine a mob
+ *
+ * mob verbs are faster than object verbs. See
+ * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
+ * for why this isn't atom/verb/examine()
+ */
 /mob/verb/examinate(atom/A as mob|obj|turf in view(get_turf(src))) //It used to be oview(12), but I can't really say why
 	set name = "Examine"
 	set category = "IC"
@@ -238,28 +273,42 @@
 		return
 
 	if(is_blind()) //blind people see things differently (through touch)
+		to_chat(src, SPAN_WARNING("Something is there but you can't see it!"))
 		return
 
 	face_atom(A)
-	if(!isobserver(src) && !isturf(A) && A != src)
-		if(A.loc != src)
-			for(var/mob/M in viewers(4, src))
-				if(M == src || M.is_blind())
-					continue
-				if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
-					to_chat(M, "<span class='tinynotice'><b>\The [src]</b> looks at \the [A].</span>")
+	if(!isobserver(src) && !isturf(A) && (get_top_level_atom(A) != src) && get_turf(A))
+		for(var/mob/M in viewers(4, src))
+			if(M == src || M.is_blind())
+				continue
+			if(M.client && M.client.is_preference_enabled(/datum/client_preference/examine_look))
+				to_chat(M, SPAN_TINYNOTICE("<b>\The [src]</b> looks at \the [A]."))
 
 	var/list/result
 	if(client)
 		result = A.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
 
-	to_chat(src, result.Join("\n"))
+	to_chat(src, "<blockquote class='info'>[result.Join("\n")]</blockquote>")
+	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
 
+/**
+ * Point at an atom
+ *
+ * mob verbs are faster than object verbs. See
+ * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
+ * for why this isn't atom/verb/pointed()
+ *
+ * note: ghosts can point, this is intended
+ *
+ * visible_message will handle invisibility properly
+ *
+ * overridden here and in /mob/dead/observer for different point span classes and sanity checks
+ */
 /mob/verb/pointed(atom/A as mob|obj|turf in view())
 	set name = "Point To"
 	set category = "Object"
 
-	if(!src || !isturf(src.loc) || !(A in view(src.loc)))
+	if(!src || !isturf(src.loc) || !(A in view(14, src)))
 		return 0
 	if(istype(A, /obj/effect/decal/point))
 		return 0
@@ -272,16 +321,58 @@
 	P.invisibility = invisibility
 	P.plane = ABOVE_PLANE
 	P.layer = FLY_LAYER
-	P.pixel_x = A.pixel_x
-	P.pixel_y = A.pixel_y
+	P.pixel_x = A.pixel_x + world.icon_size * (x - A.x)
+	P.pixel_y = A.pixel_y + world.icon_size * (y - A.y)
+	animate(P, pixel_x = A.pixel_x, pixel_y = A.pixel_y, time = 0.5 SECONDS, easing = QUAD_EASING)
 	QDEL_IN(P, 2 SECONDS)
 	face_atom(A)
+	log_emote("POINTED --> at [A] ([COORD(A)]).", src)
 	return 1
 
+/mob/verb/set_self_relative_layer()
+	set name = "Set relative layer"
+	set desc = "Set your relative layer to other mobs on the same layer as yourself"
+	set src = usr
+	set category = "IC"
+
+	var/new_layer = input(src, "What do you want to shift your layer to? (-100 to 100)", "Set Relative Layer", clamp(relative_layer, -100, 100))
+	new_layer = clamp(new_layer, -100, 100)
+	set_relative_layer(new_layer)
+
+/mob/verb/shift_relative_behind(mob/M as mob in get_relative_shift_targets())
+	set name = "Move Behind"
+	set desc = "Move behind of a mob with the same base layer as yourself"
+	set src = usr
+	set category = "IC"
+
+	set_relative_layer(M.relative_layer - 1)
+
+/mob/verb/shift_relative_infront(mob/M as mob in get_relative_shift_targets())
+	set name = "Move Infront"
+	set desc = "Move infront of a mob with the same base layer as yourself"
+	set src = usr
+	set category = "IC"
+
+	set_relative_layer(M.relative_layer + 1)
+
+/mob/proc/get_relative_shift_targets()
+	. = list()
+	var/us = isnull(base_layer)? layer : base_layer
+	for(var/mob/M in range(1, src))
+		if(M.plane != plane)
+			continue
+		if(us == (isnull(M.base_layer)? M.layer : M.base_layer))
+			. += M
+	. -= src
 
 /mob/proc/ret_grab(obj/effect/list_container/mobl/L as obj, flag)
 	return
 
+/**
+ * Verb to activate the object in your held hand
+ *
+ * Calls attack self on the item and updates the inventory hud for hands
+ */
 /mob/verb/mode()
 	set name = "Activate Held Object"
 	set category = "Object"
@@ -289,17 +380,11 @@
 
 	return
 
-/*
-/mob/verb/dump_source()
-
-	var/master = "<PRE>"
-	for(var/t in typesof(/area))
-		master += text("[]\n", t)
-		//Foreach goto(26)
-	src << browse(master)
-	return
-*/
-
+/**
+ * Get the notes of this mob
+ *
+ * This actually gets the mind datums notes
+ */
 /mob/verb/memory()
 	set name = "Notes"
 	set category = "IC"
@@ -308,6 +393,9 @@
 	else
 		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
 
+/**
+ * Add a note to the mind datum
+ */
 /mob/verb/add_memory(msg as message)
 	set name = "Add Note"
 	set category = "IC"
@@ -340,7 +428,7 @@
 	set src in usr
 	if(usr != src)
 		to_chat(usr, "No.")
-	var/msg = sanitize(input(usr,"Set the flavor text in your 'examine' verb.","Flavor Text",html_decode(flavor_text)) as message|null, extra = 0)	//VOREStation Edit: separating out OOC notes
+	var/msg = sanitize(input(usr,"Set the flavor text in your 'examine' verb.","Flavor Text",html_decode(flavor_text)) as message|null, extra = 0)
 
 	if(msg != null)
 		flavor_text = msg
@@ -399,20 +487,20 @@
 	else
 		return 	// Don't set it, no need
 
-/// Alias for respawn
-/mob/verb/return_to_menu()
-	set name = "Return to Menu"
-	set category = "OOC"
-	set desc = "Return to the lobby."
-	return abandon_mob()
-
+/**
+ * Allows you to respawn, abandoning your current mob
+ *
+ * This sends you back to the lobby creating a new dead mob
+ *
+ * Only works if flag/norespawn is allowed in config
+ */
 /mob/verb/abandon_mob()
 	set name = "Respawn"
 	set category = "OOC"
 	set desc = "Return to the lobby."
 
 	if(stat != DEAD)
-		to_chat(usr, "<span class='notice'><B>You must be dead to use this!</B></span>")
+		to_chat(usr, SPAN_BOLDNOTICE("You must be dead to use this!"))
 		return
 
 	// Final chance to abort "respawning"
@@ -428,7 +516,7 @@
 		log_game("[usr.key] AM failed due to disconnect.")
 		return
 	client.screen.Cut()
-	client.screen += client.void
+	client.mob.reload_rendering()
 	if(!client)
 		log_game("[usr.key] AM failed due to disconnect.")
 		return
@@ -446,50 +534,28 @@
 		M.mind.reset()
 	return
 
-/client/verb/changes()
-	set name = "Changelog"
+/**
+ * Allows you to respawn, abandoning your current mob
+ *
+ * This sends you back to the lobby creating a new dead mob
+ *
+ * Doesn't require the config to be set.
+ */
+/mob/verb/return_to_menu()
+	set name = "Return to Menu"
 	set category = "OOC"
-	getFiles(
-		'html/88x31.png',
-		'html/bug-minus.png',
-		'html/cross-circle.png',
-		'html/hard-hat-exclamation.png',
-		'html/image-minus.png',
-		'html/image-plus.png',
-		'html/map-pencil.png',
-		'html/music-minus.png',
-		'html/music-plus.png',
-		'html/tick-circle.png',
-		'html/wrench-screwdriver.png',
-		'html/spell-check.png',
-		'html/burn-exclamation.png',
-		'html/chevron.png',
-		'html/chevron-expand.png',
-		'html/changelog.css',
-		'html/changelog.js',
-		'html/changelog.html'
-		)
-	src << browse('html/changelog.html', "window=changes;size=675x650")
-	if(prefs.lastchangelog != GLOB.changelog_hash)
-		prefs.lastchangelog = GLOB.changelog_hash
-		SScharacter_setup.queue_preferences_save(prefs)
-		prefs.save_preferences()
-		winset(src, "infowindow.changelog", "background-color=none;font-style=;")
+	set desc = "Return to the lobby."
+	return abandon_mob()
 
 /mob/verb/observe()
 	set name = "Observe"
 	set category = "OOC"
-	var/is_admin = 0
 
-	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified)) return
-	if(client.holder && (client.holder.rights & R_ADMIN))
-		is_admin = 1
+	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified))
+		return
 	else if(stat != DEAD || istype(src, /mob/new_player))
 		to_chat(usr, "<font color=#4F49AF>You must be observing to use this!</font>")
 		return
-
-	if(is_admin && stat == DEAD)
-		is_admin = 0
 
 	var/list/names = list()
 	var/list/namecounts = list()
@@ -518,6 +584,7 @@
 				namecounts[name] = 1
 			creatures[name] = O
 	*/
+
 	for(var/mob/M in sortList(GLOB.mob_list))
 		var/name = M.name
 		if (names.Find(name))
@@ -530,30 +597,16 @@
 		creatures[name] = M
 
 
-	client.perspective = EYE_PERSPECTIVE
-
 	var/eye_name = null
 
-	var/ok = "[is_admin ? "Admin Observe" : "Observe"]"
-	eye_name = input("Please, select a player!", ok, null, null) as null|anything in creatures
+	eye_name = input("Please, select a player!", "Observe", null, null) as null | anything in creatures
 
 	if (!eye_name)
 		return
 
 	var/mob/mob_eye = creatures[eye_name]
 
-	if(client && mob_eye)
-		client.eye = mob_eye
-		if (is_admin)
-			client.adminobs = 1
-			if(mob_eye == client.mob || client.eye == client.mob)
-				client.adminobs = 0
-
-/mob/verb/cancel_camera()
-	set name = "Cancel Camera View"
-	set category = "OOC"
-	unset_machine()
-	reset_view(null)
+	reset_perspective(mob_eye.get_perspective())
 
 GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
@@ -566,6 +619,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		var/msg = "[key_name_admin(src)]([ADMIN_KICK(src)]) attempted to use the .click macro!"
 		log_admin(msg)
 		message_admins(msg)
+		log_click("DROPPED: .click macro from [ckey] at [argu], [sec], [number1]. [number2]")
 		GLOB.exploit_warn_spam_prevention = world.time + 10
 
 /mob/verb/DisDblClick(argu = null as anything, sec = "" as text, number1 = 0 as num  , number2 = 0 as num)
@@ -576,10 +630,21 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		var/msg = "[key_name_admin(src)]([ADMIN_KICK(src)]) attempted to use the .dblclick macro!"
 		log_admin(msg)
 		message_admins(msg)
+		log_click("DROPPED: .dblclick macro from [ckey] at [argu], [sec], [number1]. [number2]")
 		GLOB.exploit_warn_spam_prevention = world.time + 10
 
-
+/**
+ * Topic call back for any mob
+ *
+ * * Unset machines if "mach_close" sent
+ * * refresh the inventory of machines in range if "refresh" sent
+ * * handles the strip panel equip and unequip as well if "item" sent
+ */
 /mob/Topic(href, href_list)
+	if(href_list["strip"])
+		var/op = href_list["strip"]
+		handle_strip_topic(usr, href_list, op)
+		return
 	if(href_list["mach_close"])
 		var/t1 = text("window=[href_list["mach_close"]]")
 		unset_machine()
@@ -605,14 +670,11 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 						return 1
 	return 0
 
-/mob/MouseDrop(mob/M as mob)
-	..()
-	if(M != usr) return
-	if(usr == src) return
-	if(!Adjacent(usr)) return
-	if(usr.incapacitated(INCAPACITATION_STUNNED | INCAPACITATION_FORCELYING | INCAPACITATION_KNOCKOUT | INCAPACITATION_RESTRAINED)) return //Incapacitated.
-	if(istype(M,/mob/living/silicon/ai)) return
-	show_inv(usr)
+/mob/OnMouseDrop(atom/over, mob/user, proximity, params)
+	. = ..()
+	if(over != user)
+		return
+	. |= mouse_drop_strip_interaction(user)
 
 /mob/proc/can_use_hands()
 	return
@@ -626,7 +688,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/is_mechanical()
 	if(mind && (mind.assigned_role == "Cyborg" || mind.assigned_role == "AI"))
 		return 1
-	return istype(src, /mob/living/silicon) || get_species() == "Machine"
+	return istype(src, /mob/living/silicon) || get_species_name() == "Machine"
 
 /mob/proc/is_ready()
 	return client && !!mind
@@ -647,6 +709,12 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	for(var/mob/M in viewers())
 		M.see(message)
 
+/**
+ * Output an update to the stat panel for the client
+ *
+ * calculates client ping, round id, server time, time dilation and other data about the round
+ * and puts it in the mob status panel on a regular loop
+ */
 /mob/Stat()
 	..()
 
@@ -656,7 +724,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 		//var/list/L = list()
 		stat("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
 		//L += SSmapping.stat_map_name
-		//L += "Round ID: [GLOB.round_id || "NULL"]"
+		stat("Round ID", "[GLOB.round_id || "ERROR"]")
 		// VIRGO START
 		stat("Station Time", stationtime2text())
 		stat("Station Date", stationdate2text())
@@ -711,7 +779,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 				stat(null)
 				for(var/datum/controller/subsystem/SS in Master.subsystems)
 					SS.stat_entry()
-			//GLOB.cameranet.stat_entry()
+			//GLOB.GLOB.cameranet.stat_entry()
 		if(statpanel("Tickets"))
 			GLOB.ahelp_tickets.stat_entry()
 		if(length(GLOB.sdql2_queries))
@@ -722,124 +790,15 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 					Q.generate_stat()
 
 
-// Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
+/// Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
 /mob/proc/can_stand_overridden()
 	return 0
 
-//Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
-/mob/proc/update_canmove()
-	return canmove
-
-//This might need a rename but it should replace the can this mob use things check
+/// This might need a rename but it should replace the can this mob use things check
 /mob/proc/IsAdvancedToolUser()
 	return 0
 
-/mob/proc/Stun(amount)
-	if(status_flags & CANSTUN)
-		facing_dir = null
-		stunned = max(max(stunned,amount),0) //can't go below 0, getting a low amount of stun doesn't lower your current stun
-		update_canmove()	//updates lying, canmove and icons
-	return
 
-/mob/proc/SetStunned(amount) //if you REALLY need to set stun to a set amount without the whole "can't go below current stunned"
-	if(status_flags & CANSTUN)
-		stunned = max(amount,0)
-		update_canmove()	//updates lying, canmove and icons
-	return
-
-/mob/proc/AdjustStunned(amount)
-	if(status_flags & CANSTUN)
-		stunned = max(stunned + amount,0)
-		update_canmove()	//updates lying, canmove and icons
-	return
-
-/mob/proc/Weaken(amount)
-	if(status_flags & CANWEAKEN)
-		facing_dir = null
-		weakened = max(max(weakened,amount),0)
-		update_canmove()	//updates lying, canmove and icons
-	return
-
-/mob/proc/SetWeakened(amount)
-	if(status_flags & CANWEAKEN)
-		weakened = max(amount,0)
-		update_canmove()	//can you guess what this does yet?
-	return
-
-/mob/proc/AdjustWeakened(amount)
-	if(status_flags & CANWEAKEN)
-		weakened = max(weakened + amount,0)
-		update_canmove()	//updates lying, canmove and icons
-	return
-
-/mob/proc/Paralyse(amount)
-	if(status_flags & CANPARALYSE)
-		facing_dir = null
-		paralysis = max(max(paralysis,amount),0)
-	return
-
-/mob/proc/SetParalysis(amount)
-	if(status_flags & CANPARALYSE)
-		paralysis = max(amount,0)
-	return
-
-/mob/proc/AdjustParalysis(amount)
-	if(status_flags & CANPARALYSE)
-		paralysis = max(paralysis + amount,0)
-	return
-
-/mob/proc/Sleeping(amount)
-	facing_dir = null
-	sleeping = max(max(sleeping,amount),0)
-	return
-
-/mob/proc/SetSleeping(amount)
-	sleeping = max(amount,0)
-	return
-
-/mob/proc/AdjustSleeping(amount)
-	sleeping = max(sleeping + amount,0)
-	return
-
-/mob/proc/Confuse(amount)
-	confused = max(max(confused,amount),0)
-	return
-
-/mob/proc/SetConfused(amount)
-	confused = max(amount,0)
-	return
-
-/mob/proc/AdjustConfused(amount)
-	confused = max(confused + amount,0)
-	return
-
-/mob/proc/Blind(amount)
-	eye_blind = max(max(eye_blind,amount),0)
-	return
-
-/mob/proc/SetBlinded(amount)
-	eye_blind = max(amount,0)
-	return
-
-/mob/proc/AdjustBlinded(amount)
-	eye_blind = max(eye_blind + amount,0)
-	return
-
-/mob/proc/Resting(amount)
-	facing_dir = null
-	resting = max(max(resting,amount),0)
-	update_canmove()
-	return
-
-/mob/proc/SetResting(amount)
-	resting = max(amount,0)
-	update_canmove()
-	return
-
-/mob/proc/AdjustResting(amount)
-	resting = max(resting + amount,0)
-	update_canmove()
-	return
 
 /mob/proc/AdjustLosebreath(amount)
 	losebreath = clamp(0, losebreath + amount, 25)
@@ -847,8 +806,20 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/SetLosebreath(amount)
 	losebreath = clamp(0, amount, 25)
 
-/mob/proc/get_species()
+/mob/proc/get_species_name()
 	return ""
+
+/**
+ * DO NOT USE THIS
+ *
+ * this should be phased out for get_species_id().
+ */
+/mob/proc/get_true_species_name()
+	return ""
+
+// todo: species vs subspecies
+// /mob/proc/get_species_id()
+// 	return
 
 /mob/proc/flash_weak_pain()
 	flick("weak_pain",pain)
@@ -863,7 +834,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/embedded_needs_process()
 	return (embedded.len > 0)
 
-mob/proc/yank_out_object()
+/mob/proc/yank_out_object()
 	set category = "Object"
 	set name = "Yank out object"
 	set desc = "Remove an embedded item at the cost of bleeding and pain."
@@ -955,7 +926,7 @@ mob/proc/yank_out_object()
 			anchored = 0
 	return 1
 
-//Check for brain worms in head.
+/// Check for brain worms in head.
 /mob/proc/has_brain_worms()
 
 	for(var/I in contents)
@@ -967,7 +938,7 @@ mob/proc/yank_out_object()
 /mob/proc/updateicon()
 	return
 
-// Please always use this proc, never just set the var directly.
+/// Please always use this proc, never just set the var directly.
 /mob/proc/set_stat(var/new_stat)
 	. = (stat != new_stat)
 	stat = new_stat
@@ -985,17 +956,18 @@ mob/proc/yank_out_object()
 	else
 		to_chat(usr, "You are now facing [dir2text(facing_dir)].")
 
-/mob/proc/set_face_dir(var/newdir)
-	if(newdir == facing_dir)
-		facing_dir = null
-	else if(newdir)
-		setDir(newdir)
-		facing_dir = newdir
-	else if(facing_dir)
-		facing_dir = null
+/mob/proc/set_face_dir(newdir)
+	if(newdir)
+		if(newdir == facing_dir)
+			facing_dir = null
+		else
+			facing_dir = newdir
+			setDir(newdir)
 	else
-		setDir(dir)
-		facing_dir = dir
+		if(facing_dir)
+			facing_dir = null
+		else
+			facing_dir = dir
 
 /mob/setDir()
 	if(facing_dir)
@@ -1022,68 +994,11 @@ mob/proc/yank_out_object()
 	set hidden = 1
 	set_face_dir(client.client_dir(WEST))
 
-/mob/verb/eastshift()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	if(pixel_x <= 16)
-		pixel_x++
-		is_shifted = TRUE
-
-/mob/verb/westshift()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	if(pixel_x >= -16)
-		pixel_x--
-		is_shifted = TRUE
-
-/mob/verb/northshift()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	if(pixel_y <= 16)
-		pixel_y++
-		is_shifted = TRUE
-
-/mob/verb/southshift()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	if(pixel_y >= -16)
-		pixel_y--
-		is_shifted = TRUE
-
 /mob/proc/adjustEarDamage()
 	return
 
 /mob/proc/setEarDamage()
 	return
-
-// Set client view distance (size of client's screen). Returns TRUE if anything changed.
-/mob/proc/set_viewsize(var/new_view = world.view)
-	if (client && new_view != client.view)
-		client.view = new_view
-		return TRUE
-	return FALSE
-
-//Throwing stuff
-
-/mob/proc/toggle_throw_mode()
-	if (src.in_throw_mode)
-		throw_mode_off()
-	else
-		throw_mode_on()
-
-/mob/proc/throw_mode_off()
-	src.in_throw_mode = 0
-	if(src.throw_icon) //in case we don't have the HUD and we use the hotkey
-		src.throw_icon.icon_state = "act_throw_off"
-
-/mob/proc/throw_mode_on()
-	src.in_throw_mode = 1
-	if(src.throw_icon)
-		src.throw_icon.icon_state = "act_throw_on"
 
 /mob/proc/isSynthetic()
 	return 0
@@ -1100,7 +1015,7 @@ mob/proc/yank_out_object()
 		exploit_record += exploitmsg
 
 /client/proc/check_has_body_select()
-	return mob && mob.hud_used && istype(mob.zone_sel, /obj/screen/zone_sel)
+	return mob && mob.hud_used && istype(mob.zone_sel, /atom/movable/screen/zone_sel)
 
 /client/verb/body_toggle_head()
 	set name = "body-toggle-head"
@@ -1140,7 +1055,7 @@ mob/proc/yank_out_object()
 /client/proc/toggle_zone_sel(list/zones)
 	if(!check_has_body_select())
 		return
-	var/obj/screen/zone_sel/selector = mob.zone_sel
+	var/atom/movable/screen/zone_sel/selector = mob.zone_sel
 	selector.set_selected_zone(next_list_item(mob.zone_sel.selecting,zones))
 
 // This handles setting the client's color variable, which makes everything look a specific color.
@@ -1152,10 +1067,6 @@ mob/proc/yank_out_object()
 	return
 
 /mob/proc/swap_hand()
-	return
-
-//Throwing stuff
-/mob/proc/throw_item(atom/target)
 	return
 
 /mob/proc/will_show_tooltip()
@@ -1222,7 +1133,7 @@ mob/proc/yank_out_object()
 	if(!magic && !holy)
 		return
 	var/list/protection_sources = list()
-	if(SEND_SIGNAL(src, COMSIG_MOB_RECEIVE_MAGIC, src, magic, holy, chargecost, self, protection_sources) & COMPONENT_BLOCK_MAGIC)
+	if(SEND_SIGNAL(src, COMSIG_MOB_RECEIVE_MAGIC, src, magic, holy, chargecost, self, protection_sources) & COMPONENT_MAGIC_BLOCKED)
 		if(protection_sources.len)
 			return pick(protection_sources)
 		else
@@ -1240,3 +1151,81 @@ mob/proc/yank_out_object()
  */
 /mob/proc/allow_examine(atom/A)
 	return client && (client.eye == src)
+
+/// Checks for slots that are currently obscured by other garments.
+/mob/proc/check_obscured_slots()
+	return
+
+//! Pixel Offsets
+/mob/proc/get_buckled_pixel_x_offset()
+	if(!buckled)
+		return 0
+	return buckled.get_centering_pixel_x_offset(NONE, src) - get_centering_pixel_x_offset() + buckled.buckle_pixel_x
+
+/mob/proc/get_buckled_pixel_y_offset()
+	if(!buckled)
+		return 0
+	return buckled.get_centering_pixel_y_offset(NONE, src) - get_centering_pixel_y_offset() + buckled.buckle_pixel_y
+
+/mob/get_managed_pixel_x()
+	return ..() + shift_pixel_x + get_buckled_pixel_x_offset()
+
+/mob/get_managed_pixel_y()
+	return ..() + shift_pixel_y + get_buckled_pixel_y_offset()
+
+/mob/get_centering_pixel_x_offset(dir, atom/aligning)
+	. = ..()
+	. += shift_pixel_x
+
+/mob/get_centering_pixel_y_offset(dir, atom/aligning)
+	. = ..()
+	. += shift_pixel_y
+
+/mob/proc/reset_pixel_shifting()
+	if(!shifted_pixels)
+		return
+	shifted_pixels = FALSE
+	pixel_x -= shift_pixel_x
+	pixel_y -= shift_pixel_y
+	shift_pixel_x = 0
+	shift_pixel_y = 0
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
+
+/mob/proc/set_pixel_shift_x(val)
+	if(!val)
+		return
+	shifted_pixels = TRUE
+	pixel_x += (val - shift_pixel_x)
+	shift_pixel_x = val
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
+
+/mob/proc/set_pixel_shift_y(val)
+	if(!val)
+		return
+	shifted_pixels = TRUE
+	pixel_y += (val - shift_pixel_y)
+	shift_pixel_y = val
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
+
+/mob/proc/adjust_pixel_shift_x(val)
+	if(!val)
+		return
+	shifted_pixels = TRUE
+	shift_pixel_x += val
+	pixel_x += val
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
+
+/mob/proc/adjust_pixel_shift_y(val)
+	if(!val)
+		return
+	shifted_pixels = TRUE
+	shift_pixel_y += val
+	pixel_y += val
+	SEND_SIGNAL(src, COMSIG_MOVABLE_PIXEL_OFFSET_CHANGED)
+
+//! Reachability
+/mob/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return FALSE
+
+/mob/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return FALSE

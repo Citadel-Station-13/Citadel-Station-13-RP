@@ -32,7 +32,7 @@
 	health = 15
 	movement_cooldown = 0
 
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	mob_swap_flags = 0
 	mob_push_flags = 0
 
@@ -70,7 +70,6 @@
 	icon_state = "viscerator_b_attack"
 	icon_living = "viscerator_b_attack"
 
-	faction = "station"
 	maxHealth = 20
 	health = 20
 
@@ -84,5 +83,18 @@
 		if(isrobot(L)) // They ignore synths.
 			return TRUE
 		if(istype(L, /mob/living/simple_mob/mechanical/ward/monitor/crew))	// Also ignore friendly monitor wards
+			return TRUE
+		return L.assess_perp(src, FALSE, FALSE, TRUE, FALSE) <= 3
+
+/mob/living/simple_mob/mechanical/viscerator/apidean
+	name = "\improper Apidean hunter drone"
+	desc = "This organic creature bears striking similarities to mechanical Viscerator drones. In spite of that resemblance, it appears to be a biological organism."
+	icon_state = "viscerator_api_attack"
+	icon_living = "viscerator_api_attack"
+
+/mob/living/simple_mob/mechanical/viscerator/apidean/IIsAlly(mob/living/L)
+	. = ..()
+	if(!.)
+		if(istype(L, /mob/living/carbon/human/apidaen))
 			return TRUE
 		return L.assess_perp(src, FALSE, FALSE, TRUE, FALSE) <= 3

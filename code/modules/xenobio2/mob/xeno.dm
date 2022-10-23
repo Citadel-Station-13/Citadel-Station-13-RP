@@ -46,7 +46,7 @@ Also includes Life and New
 
 
 //Life additions
-/mob/living/simple_mob/xeno/Life()
+/mob/living/simple_mob/xeno/Life(seconds, times_fired)
 	if(stasis)
 		stasis--
 		if(stasis < 0)
@@ -90,7 +90,7 @@ Also includes Life and New
 	traitdat.source = name
 
 	if(!health)
-		stat = DEAD
+		set_stat(DEAD)
 
 /mob/living/simple_mob/xeno/bullet_act(var/obj/item/projectile/Proj)
 	if(istype(Proj, /obj/item/projectile/beam/stun/xeno))

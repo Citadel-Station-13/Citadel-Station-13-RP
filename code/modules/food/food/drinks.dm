@@ -2,7 +2,7 @@
 /// Drinks.
 ////////////////////////////////////////////////////////////////////////////////
 //custom_open_sound is for a sound path to use instead of the default opening
-//example: custom_open_sound = 'sound/effects/Explosion1.ogg'
+//example: custom_open_sound = 'sound/soundbytes/effects/explosion/explosion1.ogg'
 /obj/item/reagent_containers/food/drinks
 	name = "drink"
 	desc = "yummy"
@@ -12,6 +12,7 @@
 	icon_state = null
 	flags = OPENCONTAINER
 	amount_per_transfer_from_this = 5
+	possible_transfer_amounts = list(5,10,15,25,30)
 	volume = 50
 	var/custom_open_sound
 
@@ -37,7 +38,7 @@
 	flags |= OPENCONTAINER
 
 /obj/item/reagent_containers/food/drinks/attack(mob/M as mob, mob/user as mob, def_zone)
-	if(force && !(flags & NOBLUDGEON) && user.a_intent == INTENT_HARM)
+	if(force && !(item_flags & ITEM_NOBLUDGEON) && user.a_intent == INTENT_HARM)
 		return ..()
 
 	if(standard_feed_mob(user, M))
@@ -105,7 +106,7 @@
 	item_state = "" //nope :(
 	w_class = ITEMSIZE_LARGE
 	force = 14
-	throwforce = 10
+	throw_force = 10
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = null
 	volume = 150
@@ -226,6 +227,58 @@
 	. = ..()
 	reagents.add_reagent("dry_ramen", 30)
 
+/obj/item/reagent_containers/food/drinks/bludboxmax
+	name = "Bludbox MAX carton"
+	desc = "A vampire's best friend! This Bludbox contains only the most delicious of organic, free-range O-Negatives. For all your dietry needs!"
+	volume = 30
+	icon_state = "bludboxmax"
+	center_of_mass = list("x"=16, "y"=9)
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+
+/obj/item/reagent_containers/food/drinks/bludboxmax/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("blood", 30)
+
+/obj/item/reagent_containers/food/drinks/bludboxmaxlight
+	name = "Bludbox MAX Light carton"
+	desc = "A bloodsucking vegan's hipster alternative to drinking the red stuff. Bludbox light is just the same as drinking straight from the source! Comes in O- flavour."
+	volume = 30
+	icon_state = "bludboxmaxlight"
+	center_of_mass = list("x"=16, "y"=9)
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+
+/obj/item/reagent_containers/food/drinks/bludboxmaxlight/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("synthblood", 30)
+
+/obj/item/reagent_containers/food/drinks/bludbox
+	name = "Bludbox carton"
+	desc = "The pop alternative to drinking real, human blood! Comes in blood flavour and contains all the dietry requirements for your undead friends."
+	volume = 30
+	icon_state = "bludbox"
+	center_of_mass = list("x"=16, "y"=9)
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+
+/obj/item/reagent_containers/food/drinks/bludbox/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("blud", 30)
+
+/obj/item/reagent_containers/food/drinks/bludboxlight
+	name = "Bludbox Light carton"
+	desc = "The pop alternative to drinking real, human blood! Comes in blood flavour and contains all the dietry requirements for your undead friends. This one has less sweeteners, gross!"
+	volume = 30
+	icon_state = "bludboxlight"
+	center_of_mass = list("x"=16, "y"=9)
+	drop_sound = 'sound/items/drop/cardboardbox.ogg'
+	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+
+/obj/item/reagent_containers/food/drinks/bludboxlight/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("bludlight", 30)
+
 /obj/item/reagent_containers/food/drinks/sillycup
 	name = "paper cup"
 	desc = "A paper water cup."
@@ -241,7 +294,7 @@
 	else
 		icon_state = "water_cup_e"
 
-/obj/item/reagent_containers/food/drinks/sillycup/MouseDrop(obj/over_object as obj)
+/obj/item/reagent_containers/food/drinks/sillycup/OnMouseDropLegacy(obj/over_object as obj)
 	if(!reagents.total_volume && istype(over_object, /obj/structure/reagent_dispensers/water_cooler))
 		if(over_object.Adjacent(usr))
 			var/obj/structure/reagent_dispensers/water_cooler/W = over_object

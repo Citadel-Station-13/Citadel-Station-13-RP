@@ -4,17 +4,17 @@
 	icon = 'icons/obj/flamethrower.dmi'
 	icon_state = "flamethrowerbase"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_guns.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_guns.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
 			)
 	item_state = "flamethrower_0"
 	force = 3.0
-	throwforce = 10.0
+	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_COMBAT = 1, TECH_PHORON = 1)
-	matter = list(DEFAULT_WALL_MATERIAL = 500)
+	matter = list(MAT_STEEL = 500)
 	var/status = 0
 	var/throw_amount = 100
 	var/lit = 0	//on or off
@@ -38,12 +38,10 @@
 	var/turf/location = loc
 	if(istype(location, /mob/))
 		var/mob/living/M = location
-		if(M.item_is_in_hands(src))
+		if(M.is_holding(src))
 			location = M.loc
 	if(isturf(location)) //start a fire if possible
 		location.hotspot_expose(700, 2)
-	return
-
 
 /obj/item/flamethrower/update_icon()
 	overlays.Cut()
@@ -61,7 +59,7 @@
 /obj/item/flamethrower/afterattack(atom/target, mob/user, proximity)
 	if(!proximity) return
 	// Make sure our user is still holding us
-	if(user && user.get_active_hand() == src)
+	if(user && user.get_active_held_item() == src)
 		var/turf/target_turf = get_turf(target)
 		if(target_turf)
 			var/turflist = getline(user, target_turf)
@@ -92,10 +90,12 @@
 
 	if(isigniter(W))
 		var/obj/item/assembly/igniter/I = W
-		if(I.secured)	return
-		if(igniter)		return
-		user.drop_item()
-		I.loc = src
+		if(I.secured)
+			return
+		if(igniter)
+			return
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 		igniter = I
 		update_icon()
 		return
@@ -104,9 +104,9 @@
 		if(ptank)
 			to_chat(user, "<span class='notice'>There appears to already be a phoron tank loaded in [src]!</span>")
 			return
-		user.drop_item()
+		if(!user.attempt_insert_item_for_installation(W, src))
+			return
 		ptank = W
-		W.loc = src
 		update_icon()
 		return
 
@@ -188,7 +188,7 @@
 	//Transfer 5% of current tank air contents to turf
 	var/datum/gas_mixture/air_transfer = ptank.air_contents.remove_ratio(0.02*(throw_amount/100))
 	//air_transfer.toxins = air_transfer.toxins * 5 // This is me not comprehending the air system. I realize this is stupid and I could probably make it work without fucking it up like this, but there you have it. -- TLE
-	new/obj/effect/decal/cleanable/liquid_fuel/flamethrower_fuel(target,air_transfer.gas[/datum/gas/phoron],get_dir(loc,target))
+	new/obj/effect/debris/cleanable/liquid_fuel/flamethrower_fuel(target,air_transfer.gas[/datum/gas/phoron],get_dir(loc,target))
 	air_transfer.gas[/datum/gas/phoron] = 0
 	target.assume_air(air_transfer)
 	//Burn it based on transfered gas

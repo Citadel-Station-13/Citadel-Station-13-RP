@@ -67,7 +67,7 @@
 /obj/structure/portal_gateway/Bumped(mob/M as mob|obj)
 	if(istype(M,/mob) && !(istype(M,/mob/living)))
 		return	//do not send ghosts, zshadows, ai eyes, etc
-	var/obj/effect/landmark/dest = pick(eventdestinations)
+	var/obj/landmark/dest = pick(eventdestinations)
 	if(dest)
 		SEND_SOUND(M, sound('sound/effects/phasein.ogg'))
 		playsound(src, 'sound/effects/phasein.ogg', 100, 1)

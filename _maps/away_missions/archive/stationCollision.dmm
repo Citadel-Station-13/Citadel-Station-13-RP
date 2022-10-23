@@ -95,12 +95,12 @@
 /area/awaymission/northblock)
 "ay" = (
 /obj/structure/window/reinforced/tinted,
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "az" = (
 /obj/structure/window/reinforced/tinted,
-/obj/machinery/atmospherics/unary/vent_pump/on,
+/obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "aA" = (
@@ -275,7 +275,7 @@
 /turf/simulated/wall/r_wall,
 /area/awaymission/research)
 "bA" = (
-/mob/living/bot/medbot/mysterious{
+/mob/living/bot/medibot/mysterious{
 	desc = "A dark little medical robot. She looks somewhat underwhelmed.";
 	name = "Nightingale"
 	},
@@ -732,8 +732,6 @@
 /area/awaymission/northblock)
 "dp" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/airless,
@@ -743,16 +741,12 @@
 	name = "Security Airlock"
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "dr" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
@@ -765,16 +759,12 @@
 	name = "Windoor"
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "dt" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/airless,
@@ -804,8 +794,6 @@
 /area/awaymission/northblock)
 "dB" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/airless,
@@ -968,11 +956,11 @@
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "eo" = (
-/obj/machinery/atmospherics/unary/freezer,
+/obj/machinery/atmospherics/component/unary/freezer,
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "ep" = (
-/obj/machinery/atmospherics/unary/vent_pump,
+/obj/machinery/atmospherics/component/unary/vent_pump,
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "er" = (
@@ -991,8 +979,6 @@
 /area/awaymission/northblock)
 "eu" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor,
@@ -1000,37 +986,27 @@
 "ev" = (
 /obj/machinery/door/airlock/command,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/awaymission/northblock)
 "ew" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "ex" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/awaymission/northblock)
 "eC" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/airless,
@@ -1160,7 +1136,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "eW" = (
-/obj/machinery/atmospherics/unary/vent_pump{
+/obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 1;
 	external_pressure_bound = 120;
 	icon_state = "in";
@@ -1345,7 +1321,7 @@
 	name = "Syndicate agent remains"
 	},
 /obj/item/clothing/shoes/syndigaloshes,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/gun/projectile/silenced,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
@@ -1357,16 +1333,12 @@
 /area/awaymission/midblock)
 "fI" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/midblock)
 "fK" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/airless,
@@ -1455,8 +1427,6 @@
 /area/awaymission/northblock)
 "fW" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/airless,
@@ -1502,7 +1472,7 @@
 /obj/item/bedsheet/captain,
 /obj/item/clothing/under/rank/captain,
 /obj/effect/decal/remains/human,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/gun/energy/retro,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
@@ -1648,7 +1618,6 @@
 	pixel_x = -28
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor,
@@ -1658,8 +1627,6 @@
 /obj/item/ammo_casing/a12g/pellet,
 /obj/item/ammo_casing/a12g/pellet,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor,
@@ -1669,19 +1636,15 @@
 /obj/effect/decal/remains/human,
 /obj/item/clothing/under/rank/bartender,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/gun/projectile/shotgun/pump,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "gJ" = (
 /obj/structure/table/standard,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor,
@@ -1689,8 +1652,6 @@
 "gK" = (
 /obj/item/stool/padded,
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor,
@@ -1841,8 +1802,6 @@
 "hm" = (
 /obj/item/stool/padded,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor,
@@ -1946,8 +1905,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/airless,
@@ -1975,8 +1932,6 @@
 /area/awaymission/midblock)
 "hH" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor,
@@ -2031,11 +1986,9 @@
 /area/awaymission/midblock)
 "hS" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "hT" = (
@@ -2043,11 +1996,11 @@
 /obj/item/material/knife/butch,
 /obj/item/material/knife,
 /obj/item/clothing/head/chefhat,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "hU" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "hW" = (
@@ -2083,7 +2036,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/arrivalblock)
 "ia" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/ammo_casing/a10mm,
 /obj/item/ammo_casing/a10mm,
 /turf/simulated/floor,
@@ -2096,15 +2049,12 @@
 	pixel_x = -28
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "ic" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor,
@@ -2112,8 +2062,6 @@
 "ie" = (
 /obj/effect/decal/remains/human,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
@@ -2123,29 +2071,21 @@
 	name = "Glass Airlock"
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/arrivalblock)
 "ig" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/midblock)
 "ih" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/airless,
@@ -2166,7 +2106,7 @@
 "ik" = (
 /obj/item/ammo_casing/a10mm,
 /obj/item/ammo_casing/a10mm,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "il" = (
@@ -2177,8 +2117,6 @@
 /obj/item/ammo_casing/a10mm,
 /obj/item/clothing/under/syndicate,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/item/gun/projectile/automatic/c20r,
@@ -2189,7 +2127,7 @@
 	dir = 4
 	},
 /obj/item/ammo_casing/a10mm,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "in" = (
@@ -2247,18 +2185,16 @@
 /obj/item/ammo_casing/a10mm,
 /obj/item/ammo_casing/a10mm,
 /obj/item/clothing/under/syndicate,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/gun/projectile/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "iC" = (
 /obj/item/ammo_casing/a10mm,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/midblock)
 "iD" = (
@@ -2268,7 +2204,7 @@
 	},
 /obj/item/ammo_casing/a10mm,
 /obj/item/clothing/under/syndicate,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/gun/projectile/automatic/c20r,
 /turf/simulated/floor,
 /area/awaymission/midblock)
@@ -2329,8 +2265,6 @@
 "iM" = (
 /obj/machinery/door/airlock/glass,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor,
@@ -2354,7 +2288,7 @@
 /area/awaymission/arrivalblock)
 "iQ" = (
 /obj/effect/decal/remains/human,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "iR" = (
@@ -2371,8 +2305,6 @@
 /area/awaymission/southblock)
 "iW" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/airless,
@@ -2439,16 +2371,12 @@
 /area/awaymission/arrivalblock)
 "jl" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "jm" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
@@ -2458,21 +2386,15 @@
 	pixel_y = 4
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "jo" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/airless,
@@ -2482,29 +2404,21 @@
 	pixel_y = -32
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "jq" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "jr" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/airless,
@@ -2526,8 +2440,6 @@
 	name = "Airlock"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor,
@@ -2546,8 +2458,6 @@
 "jy" = (
 /obj/machinery/door/airlock/glass,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor,
@@ -2590,7 +2500,7 @@
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "jE" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "jF" = (
@@ -2619,8 +2529,6 @@
 /area/awaymission/southblock)
 "jJ" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor,
@@ -2710,7 +2618,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/arrivalblock)
 "kb" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /obj/item/ammo_casing/a10mm,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
@@ -2727,7 +2635,7 @@
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "ke" = (
-/obj/machinery/atmospherics/unary/vent_scrubber/on,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor,
 /area/awaymission/southblock)
 "kf" = (
@@ -2767,8 +2675,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor,
@@ -2781,9 +2687,7 @@
 /area/awaymission/gateroom)
 "ko" = (
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 1
+	icon_state = "0-2"
 	},
 /obj/machinery/gateway/centeraway{
 	calibrated = 0
@@ -2843,8 +2747,6 @@
 /area/awaymission/gateroom)
 "ky" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/gateway,
@@ -2951,18 +2853,16 @@
 	},
 /area/awaymission/gateroom)
 "kT" = (
-/obj/effect/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/gateroom)
 "kU" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/airless,
@@ -2996,18 +2896,16 @@
 /turf/simulated/floor/airless,
 /area/awaymission/gateroom)
 "lf" = (
-/obj/effect/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,
 /area/awaymission/gateroom)
 "lg" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor,
@@ -3060,7 +2958,7 @@
 /obj/item/clothing/shoes/brown,
 /obj/item/clothing/under/rank/hydroponics,
 /obj/effect/decal/remains/human,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "lr" = (
@@ -3134,8 +3032,8 @@
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "lF" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor,
 /area/awaymission/arrivalblock)
 "lG" = (
@@ -3168,16 +3066,12 @@
 "lK" = (
 /obj/effect/decal/remains/human,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor,
 /area/awaymission/southblock)
 "lL" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/highsecurity{
@@ -3190,15 +3084,12 @@
 /area/awaymission/gateroom)
 "lN" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /turf/simulated/floor,
 /area/awaymission/gateroom)
 "lO" = (
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/power/smes/magical{
@@ -3248,37 +3139,27 @@
 /area/awaymission/southblock)
 "lW" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor,
 /area/awaymission/southblock)
 "lX" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/awaymission/southblock)
 "lZ" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/southblock)
 "mb" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/engineering,
@@ -3286,26 +3167,18 @@
 /area/awaymission/gateroom)
 "mc" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/awaymission/gateroom)
 "md" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor,
@@ -3315,7 +3188,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
@@ -3352,8 +3224,6 @@
 /area/awaymission/southblock)
 "mn" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /obj/machinery/light/small,
@@ -3366,7 +3236,6 @@
 	pixel_x = 28
 	},
 /obj/structure/cable{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor,
@@ -3374,8 +3243,6 @@
 "zB" = (
 /obj/machinery/door/airlock/command,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/airless,

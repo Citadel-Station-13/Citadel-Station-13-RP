@@ -185,6 +185,16 @@
 			playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 0)
 			m_type = 1
 
+		if("spin")
+			message = "spins!"
+			m_type = 1
+			if(has_buckled_mobs())
+				for(var/mob/living/L in buckled_mobs)
+					L.visible_message(SPAN_BOLDWARNING("[L] is hurled off of [src]!"))
+					unbuckle_mob(L, BUCKLE_OP_FORCE)
+					L.throw_at(get_edge_target_turf(get_turf(src), dir), 7, 1, THROW_AT_IS_GENTLE, src)
+			spin(15, 1)
+
 		if("yes", "ye")
 			var/M = null
 			if(param)
@@ -199,7 +209,7 @@
 				message = "emits an affirmative blip at [param]."
 			else
 				message = "emits an affirmative blip."
-			playsound(src.loc, 'sound/machines/synth_yes.ogg', 50, 0)
+			playsound(src, 'sound/machines/synth_yes.ogg', 50, 0)
 			m_type = 1
 
 		if("no")
@@ -253,6 +263,74 @@
 			playsound(src.loc, 'sound/machines/dwoop.ogg', 50, 0)
 			m_type = 1
 
+		if("startup")
+			var/M = null
+			if(param)
+				for (var/mob/A in view(null, null))
+					if(param == A.name)
+						M = A
+						break
+			if(!M)
+				param = null
+
+			if (param)
+				message = "chimes to life."
+			else
+				message = "chimes to life."
+			playsound(src.loc, 'sound/machines/synth_startup.ogg')
+			m_type = 1
+
+		if("shutdown")
+			var/M = null
+			if(param)
+				for (var/mob/A in view(null, null))
+					if(param == A.name)
+						M = A
+						break
+			if(!M)
+				param = null
+
+			if(param)
+				message = "emits a nostalgic tone as they fall silent."
+			else
+				message = "emits a nostalgic tone as they fall silent."
+			playsound(src.loc, 'sound/machines/synth_shutdown.ogg')
+			m_type = 1
+
+		if("error")
+			var/M = null
+			if(param)
+				for (var/mob/A in view(null, null))
+					if(param == A.name)
+						M = A
+						break
+			if(!M)
+				param = null
+
+			if(param)
+				message = "experiences a system error."
+			else
+				message = "experiences a system error."
+			playsound(src.loc, 'sound/machines/synth_error.ogg')
+			m_type = 1
+
+		if("die")
+			var/M = null
+			if(param)
+				for (var/mob/A in view(null, null))
+					if(param == A.name)
+						M = A
+						break
+			if(!M)
+				param = null
+
+			if(param)
+				message = "crumples, their chassis colder and more lifeless than usual."
+			else
+				message = "crumples, their chassis colder and more lifeless than usual."
+			playsound(src.loc, 'sound/machines/synth_gameover.ogg')
+			m_type = 1
+
 		if("flip")
 			if(src.sleeping || src.resting || src.buckled || src.weakened || src.restrained())
 				to_chat(src, "<span class='warning'>You can't *flip in your current state!</span>")
@@ -261,7 +339,7 @@
 				m_type = 1
 
 		if("law")
-			if (istype(module,/obj/item/robot_module/robot/security) || istype(module,/obj/item/robot_module/robot/knine)) //VOREStation Add - K9
+			if (istype(module,/obj/item/robot_module/robot/security) || istype(module,/obj/item/robot_module/robot/knine))
 				message = "shows its legal authorization barcode."
 
 				playsound(src.loc, 'sound/voice/biamthelaw.ogg', 50, 0)
@@ -270,7 +348,7 @@
 				to_chat(src, "You are not THE LAW, pal.")
 
 		if("halt")
-			if (istype(module,/obj/item/robot_module/robot/security) || istype(module,/obj/item/robot_module/robot/knine)) //VOREStation Add - K9
+			if (istype(module,/obj/item/robot_module/robot/security) || istype(module,/obj/item/robot_module/robot/knine))
 				message = "<B>'s</B> speakers skreech, \"Halt! Security!\"."
 
 				playsound(src.loc, 'sound/voice/halt.ogg', 50, 0)

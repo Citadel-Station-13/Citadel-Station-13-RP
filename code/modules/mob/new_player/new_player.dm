@@ -11,12 +11,13 @@
 	invisibility = 101
 
 	density = 0
-	stat = 2
+	stat = DEAD
 	canmove = 0
 
 	anchored = 1	// Don't get pushed around
 
 /mob/new_player/Initialize(mapload)
+	SHOULD_CALL_PARENT(FALSE)	// "yes i know what I'm doing"
 	GLOB.mob_list += src
 	flags |= INITIALIZED
 	return INITIALIZE_HINT_NORMAL
@@ -45,18 +46,19 @@
 	output += "<p><a href='byond://?src=\ref[src];observe=1'>Observe</A></p>"
 
 	if(!IsGuestKey(src.key))
-		establish_db_connection()
-
-		if(dbcon.IsConnected())
+		if(SSdbcore.Connect())
 			var/isadmin = 0
 			if(src.client && src.client.holder)
 				isadmin = 1
-			var/DBQuery/query = dbcon.NewQuery("SELECT id FROM erro_poll_question WHERE [(isadmin ? "" : "adminonly = false AND")] Now() BETWEEN starttime AND endtime AND id NOT IN (SELECT pollid FROM erro_poll_vote WHERE ckey = \"[ckey]\") AND id NOT IN (SELECT pollid FROM erro_poll_textreply WHERE ckey = \"[ckey]\")")
-			query.Execute()
+			var/datum/db_query/query = SSdbcore.ExecuteQuery(
+				"SELECT id FROM [format_table_name("poll_question")] WHERE [isadmin? "" : "adminonly = false AND"] Now() BETWEEN starttime AND endtime AND id NOT IN (SELECT pollid FROM [format_table_name("poll_vote")] WHERE ckey = :ckey) AND id NOT IN (SELECT pollid FROM [format_table_name("poll_textreply")] WHERE ckey = :ckey)",
+				list("ckey" = ckey)
+			)
 			var/newpoll = 0
 			while(query.NextRow())
 				newpoll = 1
 				break
+			qdel(query)
 
 			if(newpoll)
 				output += "<p><b><a href='byond://?src=\ref[src];showpoll=1'>Show Player Polls</A> (NEW!)</b></p>"
@@ -84,7 +86,6 @@
 
 	dat += "<form action='?src=[REF(src)]'>"
 	dat += "<input type='hidden' name='src' value='[REF(src)]'>"
-	dat += HrefTokenFormField()
 	dat += "<select name = 'Month'>"
 	var/monthList = list("January" = 1, "February" = 2, "March" = 3, "April" = 4, "May" = 5, "June" = 6, "July" = 7, "August" = 8, "September" = 9, "October" = 10, "November" = 11, "December" = 12)
 	for(var/month in monthList)
@@ -256,12 +257,12 @@
 
 			observer.started_as_observer = 1
 			close_spawn_windows()
-			var/obj/O = locate("landmark*Observer-Start")
-			if(istype(O))
-				to_chat(src,"<span class='notice'>Now teleporting.</span>")
-				observer.forceMove(O.loc)
+			var/obj/landmark/L = pick_landmark_by_key(/obj/landmark/observer_spawn)
+			if(L)
+				to_chat(src, SPAN_NOTICE("Now teleporting."))
+				observer.forceMove(L.loc)
 			else
-				to_chat(src,"<span class='danger'>Could not locate an observer spawn point. Use the Teleport verb to jump to the station map.</span>")
+				to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verb to jump to the station map."))
 
 			announce_ghost_joinleave(src)
 
@@ -291,7 +292,7 @@
 			to_chat(usr, "<span class='warning'>You can't respawn yet! You need to wait another [round(time_till_respawn/10/60, 0.1)] minutes.</span>")
 			return
 /*
-		if(client.prefs.species != "Human" && !check_rights(R_ADMIN, 0))
+		if(client.prefs.species != SPECIES_HUMAN && !check_rights(R_ADMIN, 0))
 			if (config_legacy.usealienwhitelist)
 				if(!is_alien_whitelisted(src, client.prefs.species))
 					src << alert("You are currently not whitelisted to Play [client.prefs.species].")
@@ -318,11 +319,11 @@
 			to_chat(usr, "<span class='danger'>The station is currently exploding. Joining would go poorly.</span>")
 			return
 /*
-		if(!is_alien_whitelisted(src, GLOB.all_species[client.prefs.species]))
+		if(!is_alien_whitelisted(src, GLOB.species_meta[client.prefs.species]))
 			src << alert("You are currently not whitelisted to play [client.prefs.species].")
 			return 0
 */
-		var/datum/species/S = GLOB.all_species[client.prefs.species]
+		var/datum/species/S = client.prefs.character_static_species_meta()
 		if(!(S.spawn_flags & SPECIES_CAN_JOIN))
 			src << alert("Your current species, [client.prefs.species], is not available for play on the station.")
 			return 0
@@ -331,17 +332,20 @@
 		return
 
 	if(href_list["privacy_poll"])
-		establish_db_connection()
-		if(!dbcon.IsConnected())
+		if(!SSdbcore.Connect())
 			return
 		var/voted = 0
 
 		//First check if the person has not voted yet.
-		var/DBQuery/query = dbcon.NewQuery("SELECT * FROM erro_privacy WHERE ckey='[src.ckey]'")
+		var/datum/db_query/query = SSdbcore.NewQuery(
+			"SELECT * FROM [format_table_name("privacy")] WHERE ckey = :ckey",
+			list("ckey" = ckey)
+		)
 		query.Execute()
 		while(query.NextRow())
 			voted = 1
 			break
+		qdel(query)
 
 		//This is a safety switch, so only valid options pass through
 		var/option = "UNKNOWN"
@@ -362,9 +366,13 @@
 			return
 
 		if(!voted)
-			var/sql = "INSERT INTO erro_privacy VALUES (null, Now(), '[src.ckey]', '[option]')"
-			var/DBQuery/query_insert = dbcon.NewQuery(sql)
-			query_insert.Execute()
+			SSdbcore.RunQuery(
+				"INSERT INTO [format_table_name("privacy")] VALUES (null, NOW(), :ckey, :option)",
+				list(
+					"ckey" = ckey,
+					"option" = option
+				)
+			)
 			to_chat(usr, "<b>Thank you for your vote!</b>")
 			usr << browse(null,"window=privacypoll")
 
@@ -504,11 +512,10 @@
 
 	//Find our spawning point.
 	var/list/join_props = job_master.LateSpawn(client, rank)
-	var/turf/T = join_props["turf"]
-	var/join_message = join_props["msg"]
+	var/obj/landmark/spawnpoint/SP = pick(join_props["spawnpoint"])
 	var/announce_channel = join_props["channel"] || "Common"
 
-	if(!T || !join_message)
+	if(!SP)
 		return 0
 
 	spawning = 1
@@ -516,10 +523,11 @@
 
 	job_master.AssignRole(src, rank, 1)
 
-	var/mob/living/character = create_character(T)		// Creates the human and transfers vars and mind
+	var/mob/living/character = create_character(SP.GetSpawnLoc())		// Creates the human and transfers vars and mind
+	SP.OnSpawn(character)
 	//Announces Cyborgs early, because that is the only way it works
 	if(character.mind.assigned_role == "Cyborg")
-		AnnounceCyborg(character, rank, join_message, announce_channel, character.z)
+		AnnounceCyborg(character, rank, SP.RenderAnnounceMessage(character, name = character.name, job_name = character.mind.role_alt_title || rank), announce_channel, character.z)
 	character = job_master.EquipRank(character, rank, 1)	// Equips the human
 	UpdateFactionList(character)
 
@@ -559,8 +567,7 @@
 
 		//Grab some data from the character prefs for use in random news procs.
 
-		AnnounceArrival(character, rank, join_message)
-
+		AnnounceArrival(character, rank, SP.RenderAnnounceMessage(character, name = character.mind.name, job_name = (character.mind.role_alt_title || rank)))
 
 	qdel(src)
 
@@ -569,7 +576,7 @@
 		if(character.mind.role_alt_title)
 			rank = character.mind.role_alt_title
 		// can't use their name here, since cyborg namepicking is done post-spawn, so we'll just say "A new Cyborg has arrived"/"A new Android has arrived"/etc.
-		GLOB.global_announcer.autosay("A new[rank ? " [rank]" : " visitor" ] [join_message ? join_message : "has arrived on the station"].", "Arrivals Announcement Computer")
+		GLOB.global_announcer.autosay("A new [rank] has arrived on the station.", "Arrivals Announcement Computer")
 
 /mob/new_player/proc/LateChoices()
 	var/name = client.prefs.be_random_name ? "friend" : client.prefs.real_name
@@ -622,13 +629,13 @@
 	var/use_species_name
 	var/datum/species/chosen_species
 	if(client.prefs.species)
-		chosen_species = GLOB.all_species[client.prefs.species]
+		chosen_species = name_static_species_meta(client.prefs.species)
 		use_species_name = chosen_species.get_station_variant()	// Only used by pariahs atm.
 
 	if(chosen_species && use_species_name)
 		// Have to recheck admin due to no usr at roundstart. Latejoins are fine though.
 		if(is_alien_whitelisted(chosen_species))
-			new_character = new(T, use_species_name)
+			new_character = new(T, species_type_by_name(use_species_name))
 
 	if(!new_character)
 		new_character = new(T)
@@ -649,7 +656,7 @@
 		mind.active = 0					// We wish to transfer the key manually
 		// Edited to disable the destructive forced renaming for our responsible whitelist clowns.
 		//if(mind.assigned_role == "Clown")				// Give them a clownname if they are a clown
-		//	new_character.real_name = pick(clown_names)	// I hate this being here of all places but unfortunately dna is based on real_name!
+		//	new_character.real_name = pick(GLOB.clown_names)	// I hate this being here of all places but unfortunately dna is based on real_name!
 		//	new_character.rename_self("clown")
 		mind.original = new_character
 		mind.loaded_from_ckey = client.ckey
@@ -663,8 +670,8 @@
 	new_character.sync_organ_dna()
 	if(client.prefs.disabilities)
 		// Set defer to 1 if you add more crap here so it only recalculates struc_enzymes once. - N3X
-		new_character.dna.SetSEState(GLASSESBLOCK,1,0)
-		new_character.disabilities |= NEARSIGHTED
+		new_character.dna.SetSEState(DNABLOCK_GLASSES,1,0)
+		new_character.disabilities |= DISABILITY_NEARSIGHTED
 	if(client.prefs.mirror == TRUE)
 		if((client.prefs.organ_data[O_BRAIN] != null))
 			var/obj/item/implant/mirror/positronic/F = new /obj/item/implant/mirror/positronic(new_character)
@@ -713,10 +720,10 @@
 /mob/new_player/proc/has_admin_rights()
 	return check_rights(R_ADMIN, 0, src)
 
-/mob/new_player/get_species()
+/mob/new_player/get_species_name()
 	var/datum/species/chosen_species
 	if(client.prefs.species)
-		chosen_species = GLOB.all_species[client.prefs.species]
+		chosen_species = name_static_species_meta(client.prefs.species)
 
 	if(!chosen_species)
 		return SPECIES_HUMAN
@@ -768,20 +775,20 @@
 	//Do they have their scale properly setup?
 	if(!client.prefs.size_multiplier)
 		pass = FALSE
-		to_chat(src,"<span class='warning'>You have not set your scale yet. Do this on the VORE tab in character setup.</span>")
+		to_chat(src, SPAN_WARNING("You have not set your scale yet.  Do this on the Species Customization tab in character setup."))
 
 	//Can they play?
-	if(!is_alien_whitelisted(src,GLOB.all_species[client.prefs.species]) && !check_rights(R_ADMIN, 0))
+	if(!is_alien_whitelisted(src, client.prefs.character_static_species_meta()) && !check_rights(R_ADMIN, 0))
 		pass = FALSE
 		to_chat(src,"<span class='warning'>You are not allowed to spawn in as this species.</span>")
 
 	//Custom species checks
-	if (client && client.prefs && client.prefs.species == "Custom Species")
+	if (client && client.prefs && client.prefs.species == SPECIES_CUSTOM)
 
 		//Didn't name it
 		if(!client.prefs.custom_species)
 			pass = FALSE
-			to_chat(src,"<span class='warning'>You have to name your custom species. Do this on the VORE tab in character setup.</span>")
+			to_chat(src, SPAN_WARNING("You have to name your custom species.  Do this on the Species Customization tab in character setup."))
 
 		//Check traits/costs
 		var/list/megalist = client.prefs.pos_traits + client.prefs.neu_traits + client.prefs.neg_traits
@@ -804,10 +811,14 @@
 		//Went into negatives
 		if(points_left < 0 || traits_left < 0)
 			pass = FALSE
-			to_chat(src,"<span class='warning'>Your custom species is not playable. Reconfigure your traits on the VORE tab.</span>")
+			to_chat(src, SPAN_WARNING("Your custom species is not playable.  Reconfigure your traits on the Species Customization tab."))
 
 	//Final popup notice
 	if (!pass)
 		spawn()
 			alert(src,"There were problems with spawning your character. Check your message log for details.","Error","OK")
 	return pass
+
+/mob/new_player/make_perspective()
+	. = ..()
+	self_perspective.AddScreen(GLOB.lobby_image)

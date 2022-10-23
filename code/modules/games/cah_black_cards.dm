@@ -35,8 +35,7 @@
 	"The robots are not disposal bins for your _____.",
 	"You can never have too many _____ on shift.",
 
-	//Here down are non-spess cards. -VOREStation Add for these.
-	//Coming in behind VORE to remove contemporary references to try and make these at least a *little* more consistent in the setting.
+//! ## Here down are non-spess cards
 	"_____: kid tested mother approved.",
 	"_____: good to the last drop.",
 	"_____? There's an app for that.",
@@ -172,27 +171,27 @@
 	"Why do I hurt all over?",
 	"In the seventh circle of Hell, sinners must endure _____ for all eternity.",
 	"A successful job interview begins with a firm handshake and ends with _____.",
-	"Lovin’ you is easy ’cause you’re _____.",
+	"Lovinï¿½ you is easy ï¿½cause youï¿½re _____.",
 	"My life is ruled by a vicious cycle of _____ and _____.",
 	"The blind date was going horribly until we discovered our shared interest in _____.",
 	"_____. Awesome in theory, kind of a mess in practice.",
-	"I’m not like the rest of you. I’m too rich and busy for _____.",
+	"Iï¿½m not like the rest of you. Iï¿½m too rich and busy for _____.",
 	"(Pick 2) _____: Hours of fun. Easy to use. Perfect for _____!",
 	"What left this stain on my couch?",
 	"Call the law offices of Goldstein & Goldstein, because no one should have to tolerate _____ in the workplace.",
 	"(Pick 2) When you get right down to it, _____ is just _____.",
 	"Turns out that _____ Man was neither the hero we needed nor wanted.",
 	"As part of his daily regimen, the Clown sets aside 15 minutes for _____.",
-	"Money can’t buy me love, but it can buy me _____.",
+	"Money canï¿½t buy me love, but it can buy me _____.",
 	"(Pick 2) With enough time and pressure, _____ will turn into _____.",
 	"And what did you bring for show and tell?",
 	"During high school I never really fit in until I found _____ club.",
-	"Hey baby, come back to my place and I’ll show you _____.",
-	"(Pick 2) After months of practice with _____, I think I’m finally ready for _____.",
+	"Hey baby, come back to my place and Iï¿½ll show you _____.",
+	"(Pick 2) After months of practice with _____, I think Iï¿½m finally ready for _____.",
 	"To prepare for his upcoming role, the Mime immersed herself in the world of _____.",
 	"Finally! A service that delivers _____ right to your door.",
 	"My gym teacher got fired for adding _____ to the obstacle course.",
 	"(Pick 2) Having problems with _____? Try _____!",
-	"As part of his contract, Ty Cobbington won’t perform without _____ in his dressing room.",
-	"(Pick 2) Listen, son. If you want to get involved with _____, I won’t stop you. Just steer clear of _____."
+	"As part of his contract, Ty Cobbington wonï¿½t perform without _____ in his dressing room.",
+	"(Pick 2) Listen, son. If you want to get involved with _____, I wonï¿½t stop you. Just steer clear of _____."
 	)

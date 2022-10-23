@@ -11,10 +11,6 @@
 	equip_sound = 'sound/items/toolbelt_equip.ogg'
 	drop_sound = 'sound/items/drop/toolbelt.ogg'
 	pickup_sound = 'sound/items/pickup/toolbelt.ogg'
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/species/teshari/belt.dmi',
-		SPECIES_WEREBEAST = 'icons/mob/species/werebeast/belt.dmi'
-		)
 	var/show_above_suit = 0
 
 /obj/item/storage/belt/verb/toggle_layer()
@@ -22,22 +18,27 @@
 	set category = "Object"
 
 	if(show_above_suit == -1)
-		to_chat(usr, "<span class='notice'>\The [src] cannot be worn above your suit!</span>")
+		to_chat(usr, SPAN_NOTICE("\The [src] cannot be worn above your suit!"))
 		return
 	show_above_suit = !show_above_suit
 	update_icon()
 
-//Some belts have sprites to show icons
-/obj/item/storage/belt/make_worn_icon(var/body_type,var/slot_name,var/inhands,var/default_icon,var/default_layer,var/icon/clip_mask = null)
-	var/image/standing = ..()
-	if(!inhands && contents.len)
-		for(var/obj/item/i in contents)
-			var/i_state = i.item_state
-			if(!i_state) i_state = i.icon_state
-			standing.add_overlay(image(icon = INV_BELT_DEF_ICON, icon_state = i_state))
-	return standing
+// todo: this bad lol
+/obj/item/storage/belt/render_apply_overlays(mutable_appearance/MA, bodytype, inhands, datum/inventory_slot_meta/slot_meta)
+	. = ..()
+	var/static/icon/funny_belt_icon = 'icons/mob/clothing/belt.dmi'
+	for(var/obj/item/I in contents)
+		var/state = resolve_belt_state(I, funny_belt_icon)
+		if(!state)
+			continue
+		MA.add_overlay(image(icon = funny_belt_icon, icon_state = state))
+
+// todo: this bad lol x2
+/obj/item/storage/belt/proc/resolve_belt_state(obj/item/I, icon/ifile)
+	return I.belt_state || I.item_state || I.icon_state
 
 /obj/item/storage/update_icon()
+	. = ..()
 	if (ismob(src.loc))
 		var/mob/M = src.loc
 		M.update_inv_belt()
@@ -46,6 +47,7 @@
 	name = "tool-belt" //Carn: utility belt is nicer, but it bamboozles the text parsing.
 	desc = "Can hold various tools."
 	icon_state = "utility"
+	item_state = "utility"
 	can_hold = list(
 		///obj/item/combitool,
 		/obj/item/tool/crowbar,
@@ -73,7 +75,7 @@
 		/obj/item/duct_tape_roll,
 		/obj/item/switchtool,
 		/obj/item/integrated_electronics/wirer,
-		/obj/item/integrated_electronics/debugger, //Vorestation edit adding debugger to toolbelt can hold list
+		/obj/item/integrated_electronics/debugger,
 		)
 
 /obj/item/storage/belt/utility/full
@@ -124,7 +126,7 @@
 		/obj/item/reagent_containers/glass/bottle,
 		/obj/item/reagent_containers/pill,
 		/obj/item/reagent_containers/syringe,
-		/obj/item/storage/quickdraw/syringe_case, //VOREStation Addition - Adds syringe cases,
+		/obj/item/storage/quickdraw/syringe_case,
 		/obj/item/flame/lighter/zippo,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/storage/pill_bottle,
@@ -162,6 +164,7 @@
 		/obj/item/handcuffs,
 		/obj/item/flash,
 		/obj/item/clothing/glasses,
+		/obj/item/ammo_casing/a10g,
 		/obj/item/ammo_casing/a12g,
 		/obj/item/ammo_magazine,
 		/obj/item/cell/device,
@@ -555,7 +558,7 @@
 		/obj/item/gun/energy/lasertag,
 		/obj/item/gun/energy/netgun,
 		/obj/item/gun/energy/phasegun/pistol,
-		/obj/item/gun/energy/pulse_rifle/M1911,
+		/obj/item/gun/energy/pulse_pistol,
 		/obj/item/gun/energy/retro,
 		/obj/item/gun/energy/service,
 		/obj/item/gun/energy/stunrevolver,
@@ -588,4 +591,30 @@
 	max_w_class = ITEMSIZE_NORMAL
 	can_hold = list(
 		/obj/item/ammo_casing/arrow
+		)
+
+/obj/item/storage/belt/quiver/full
+	name = "leather quiver"
+	desc = "A quiver made from the hide of some animal. Used to hold arrows."
+	icon_state = "quiver"
+	storage_slots = 15
+	max_w_class = ITEMSIZE_NORMAL
+	can_hold = list(
+		/obj/item/ammo_casing/arrow
+		)
+	starts_with = list(
+		/obj/item/ammo_casing/arrow = 15
+		)
+
+/obj/item/storage/belt/quiver/full/ash
+	name = "leather quiver"
+	desc = "A quiver made from the hide of some animal. Used to hold arrows."
+	icon_state = "quiver"
+	storage_slots = 15
+	max_w_class = ITEMSIZE_NORMAL
+	can_hold = list(
+		/obj/item/ammo_casing/arrow
+		)
+	starts_with = list(
+		/obj/item/ammo_casing/arrow/ash = 15
 		)

@@ -30,7 +30,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	has_gravity = 0
 	power_equip = 0
 	power_environ = 0
-	base_turf = /turf/space
 	ambience = AMBIENCE_SPACE
 
 /area/space/atmosalert()
@@ -69,9 +68,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/shuttle
 	requires_power = 0
-	flags = RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
-	base_turf = /turf/space
 
 /area/shuttle/arrival
 	name = "\improper Arrival Shuttle"
@@ -125,7 +123,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Mining Elevator"
 	music = "music/escape.ogg"
 	dynamic_lighting = 0
-	base_turf = /turf/simulated/mineral/floor/ignore_mapgen
 
 /area/shuttle/transport1/centcom
 	icon_state = "shuttle"
@@ -202,7 +199,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Research Elevator"
 	music = "music/escape.ogg"
 	dynamic_lighting = 0
-	base_turf = /turf/simulated/mineral/floor/ignore_mapgen
 
 /area/shuttle/awaymission/home
 	name = "NSB Adephagia (AM)"
@@ -227,12 +223,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/cruiser/cruiser
 	name = "Small Cruiser Shuttle - Cruiser"
 	icon_state = "blue2"
-	base_turf = /turf/simulated/floor/tiled/techfloor
 
 /area/shuttle/tether/surface
 	name = "Tether Shuttle Landed"
 	icon_state = "shuttle"
-	base_turf = /turf/simulated/floor/reinforced
 
 /area/shuttle/tether/station
 	name = "Tether Shuttle Dock"
@@ -312,7 +306,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/trade_ship
 	requires_power = 1
 	icon_state = "shuttle2"
-	flags = RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 
 /area/shuttle/trade_ship/general
 	name = "\improper Beruang Trade Shuttle"
@@ -404,7 +398,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/cruiser/cruiser
 	name = "Small Cruiser Shuttle - Cruiser"
 	icon_state = "blue2"
-	base_turf = /turf/simulated/floor/tiled/techfloor
 /area/shuttle/cruiser/station
 	name = "Small Cruiser Shuttle - Station"
 	icon_state = "blue2"
@@ -413,14 +406,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/specialops/centcom
 	name = "Special Operations Shuttle - Centcom"
 	icon_state = "shuttlered"
-	base_turf = /turf/unsimulated/floor/shuttle_ceiling
 /area/shuttle/specialops/tether
 	name = "Special Operations Shuttle - Tether"
 	icon_state = "shuttlered"
 /area/shuttle/specialops/transit
 	name = "transit"
 	icon_state = "shuttlered"
-	base_turf = /turf/space/transit/east
 
 // Tether Map has this shuttle
 /area/shuttle/tether
@@ -544,6 +535,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	var/asteroid_spawns = list()
 	var/mob_spawns = list()
 	var/shuttle_area //It would be neat if this were more dynamic, but eh.
+	ambience = AMBIENCE_SPACE
+//	has_gravity = FALSE
 
 /area/asteroid/rogue/zone1
 	name = "Asteroid Belt Zone 1"
@@ -596,8 +589,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Independent Station"
 	icon_state = "yellow"
 	requires_power = 0
-	flags = RAD_SHIELDED
-	base_turf = /turf/space
+	area_flags = AREA_RAD_SHIELDED
 	ambience = AMBIENCE_HIGHSEC
 
 /area/syndicate_station/start
@@ -659,7 +651,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Skipjack"
 	icon_state = "yellow"
 	requires_power = 0
-	base_turf = /turf/space
 	ambience = AMBIENCE_HIGHSEC
 
 /area/skipjack_station/start
@@ -784,7 +775,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 //Maintenance
 
 /area/maintenance
-	flags = RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = new /datum/turf_initializer/maintenance()
 	ambience = AMBIENCE_MAINTENANCE
@@ -1176,23 +1167,19 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/hallway/secondary/entry/D1
 	name = "\improper Shuttle Dock Hallway - Dock One"
 	icon_state = "entry_D1"
-	base_turf = /turf/space
 
 /area/hallway/secondary/entry/D2
 	name = "\improper Shuttle Dock Hallway - Dock Two"
 	icon_state = "entry_D2"
-	base_turf = /turf/space
 
 /area/hallway/secondary/entry/D2/arrivals
 	name = "\improper Shuttle Dock Hallway - Dock Two"
 	icon_state = "entry_D2"
-	base_turf = /turf/space
 	requires_power = 0
 
 /area/hallway/secondary/entry/D3
 	name = "\improper Shuttle Dock Hallway - Dock Three"
 	icon_state = "entry_D3"
-	base_turf = /turf/space
 
 /area/hallway/secondary/entry/D4
 	name = "\improper Shuttle Dock Hallway - Dock Four"
@@ -1366,7 +1353,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/crew_quarters
 	name = "Dormitories"
 	icon_state = "crew_quarters"
-	flags = RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	ambience = AMBIENCE_GENERIC
 
 /area/crew_quarters/toilet
@@ -1642,7 +1629,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "fitness"
 
 /area/crew_quarters/longue_area
-	name = "\improper Lounge" //VOREStation Edit - Muh speeling.
+	name = "\improper Lounge"
 	icon_state = "recreation_area"
 
 /area/crew_quarters/recreation_area
@@ -1764,7 +1751,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "holodeck_control"
 
 /area/vacant
-	flags = RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 
 /area/vacant/vacant_shop
 	name = "\improper Vacant Shop"
@@ -2030,38 +2017,47 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "engineering"
 	sound_env = SMALL_ENCLOSED
 
+//FTL and Shunt
+/area/engineering/ftl
+	name = "\improper FTL Drive"
+	icon_state = "engineering"
+
+/area/engineering/shunt
+	name = "\improper Shunt Drive"
+	icon_state = "engineering"
 
 //Solars
 
-/area/solar
+/area/solar/
 	requires_power = 1
 	always_unpowered = 1
 	dynamic_lighting = 0
 	ambience = AMBIENCE_SPACE
 
-	auxport
-		name = "\improper Fore Port Solar Array"
-		icon_state = "panelsA"
+/area/solar/auxport
+	name = "\improper Fore Port Solar Array"
+	icon_state = "panelsA"
 
-	auxstarboard
-		name = "\improper Fore Starboard Solar Array"
-		icon_state = "panelsA"
+/area/solar/auxstarboard
+	name = "\improper Fore Starboard Solar Array"
+	icon_state = "panelsA"
 
-	fore
-		name = "\improper Fore Solar Array"
-		icon_state = "yellow"
+/area/solar/fore
+	name = "\improper Fore Solar Array"
+	icon_state = "yellow"
 
-	aft
-		name = "\improper Aft Solar Array"
-		icon_state = "aft"
+/area/solar/aft
+	name = "\improper Aft Solar Array"
+	icon_state = "aft"
 
-	starboard
-		name = "\improper Aft Starboard Solar Array"
-		icon_state = "panelsS"
+/area/solar/starboard
+	name = "\improper Aft Starboard Solar Array"
+	icon_state = "panelsS"
 
-	port
-		name = "\improper Aft Port Solar Array"
-		icon_state = "panelsP"
+/area/solar/port
+	name = "\improper Aft Port Solar Array"
+	icon_state = "panelsP"
+
 
 /area/maintenance/auxsolarport
 	name = "Solar Maintenance - Fore Port"
@@ -2254,6 +2250,22 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Virology Isolation"
 	icon_state = "virology"
 
+/area/medical/virologypurge
+	name = "\improper Virology Purge"
+	icon_state = "virology"
+
+/area/medical/virologytransitwest
+	name = "\improper Virology Transit Hub - West"
+	icon_state = "virology"
+
+/area/medical/virologytransiteast
+	name = "\improper Virology Transit Hub - East"
+	icon_state = "virology"
+
+/area/medical/virologymaint
+	name = "\improper Virology Maintenance Shaft"
+	icon_state = "virology"
+
 /area/medical/recoveryrestroom
 	name = "\improper Recovery Room Restroom"
 	icon_state = "virology"
@@ -2346,7 +2358,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 		temp_closet.locked = 0
 		temp_closet.icon_state = temp_closet.icon_closed
 	for(var/obj/machinery/door_timer/temp_timer in src)
-		temp_timer.releasetime = 1
+		temp_timer.timer_duration = 1
 	..()
 
 /area/security/prison
@@ -2358,7 +2370,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 		temp_closet.locked = 0
 		temp_closet.icon_state = temp_closet.icon_closed
 	for(var/obj/machinery/door_timer/temp_timer in src)
-		temp_timer.releasetime = 1
+		temp_timer.timer_duration = 1
 	..()
 
 /area/security/warden
@@ -2369,7 +2381,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Security - Armory"
 	icon_state = "armory"
 	ambience = AMBIENCE_HIGHSEC
-	flags = BLUE_SHIELDED
+	area_flags = AREA_BLUE_SHIELDED
 
 /area/security/briefing_room
 	name = "\improper Security - Briefing Room"
@@ -2429,7 +2441,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Security - Tactical Equipment"
 	icon_state = "Tactical"
 	ambience = AMBIENCE_HIGHSEC
-	flags = BLUE_SHIELDED
+	area_flags = AREA_BLUE_SHIELDED
 
 /area/security/hallway
 	name = "\improper Security Hallway"
@@ -2509,7 +2521,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Vault"
 	icon_state = "nuke_storage"
 	ambience = AMBIENCE_HIGHSEC
-	flags = BLUE_SHIELDED
+	area_flags = AREA_BLUE_SHIELDED
 
 /area/security/checkpoint
 	name = "\improper Security Checkpoint"
@@ -2595,6 +2607,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Cargo Mining Dock"
 	icon_state = "mining"
 
+/area/quartermaster/mining_airlock
+	name = "\improper Mining Airlock"
+	icon_state = "mining"
 /area/quartermaster/belterdock
 	name = "\improper Cargo Belter Access"
 	icon_state = "mining"
@@ -3026,7 +3041,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Construction Site Shuttle"
 	icon_state = "yellow"
 	dynamic_lighting = 0
-	base_turf = /turf/simulated/mineral/floor/ignore_mapgen
 
 /area/shuttle/constructionsite/station
 	name = "\improper Construction Site Shuttle"
@@ -3230,7 +3244,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/alien
 	name = "\improper Alien base"
 	icon_state = "yellow"
-	flags = RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	requires_power = 0
 
 /area/alien/unknown
@@ -3280,9 +3294,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/bigship
 	name = "Bigship"
 	requires_power = 0
-	flags = RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
-	base_turf = /turf/space
 	icon_state = "red2"
 
 /area/bigship/teleporter
@@ -3291,8 +3304,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/houseboat
 	name = "Small Cruiser"
 	requires_power = 0
-	flags = RAD_SHIELDED
-	base_turf = /turf/space
+	area_flags = AREA_RAD_SHIELDED
 	icon_state = "red2"
 	lightswitch = TRUE
 
@@ -3410,7 +3422,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 // Used for creating the exchange areas.
 /area/turbolift
 	name = "Turbolift"
-	base_turf = /turf/simulated/open
 	requires_power = 0
 	sound_env = SMALL_ENCLOSED
 
@@ -3429,7 +3440,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	lift_floor_label = "Deck 1"
 	lift_floor_name = "Engineering, Reactor, Telecomms, Trash Pit, Atmospherics"
 	lift_announce_str = "Arriving at Deck 1."
-	base_turf = /turf/simulated/floor/plating
 
 
 /area/turbolift/t_ship/level2

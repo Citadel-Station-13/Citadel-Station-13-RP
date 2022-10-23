@@ -1,347 +1,754 @@
-import { Fragment } from 'inferno';
-import { useBackend } from '../backend';
-import { Button, LabeledList, Box, Section } from '../components';
-import { Window } from '../layouts';
+import { sortBy } from "common/collections";
+import { capitalize } from "common/string";
+import { useBackend, useLocalState } from "../backend";
+import { Blink, Box, Button, Dimmer, Flex, Icon, Input, Modal, Section, TextArea } from "../components";
+import { Window } from "../layouts";
+import { sanitizeText } from "../sanitize";
 
-export const CommunicationsConsole = (props, context) => {
+const STATE_BUYING_SHUTTLE = "buying_shuttle";
+const STATE_CHANGING_STATUS = "changing_status";
+const STATE_MAIN = "main";
+const STATE_MESSAGES = "messages";
+
+// Used for whether or not you need to swipe to confirm an alert level change
+const SWIPE_NEEDED = "SWIPE_NEEDED";
+
+const EMAG_SHUTTLE_NOTICE
+  = "This shuttle is deemed significantly dangerous to the crew, and is only supplied by the Syndicate.";
+
+const sortShuttles = sortBy(
+  shuttle => !shuttle.emagOnly,
+  shuttle => shuttle.creditCost
+);
+
+const AlertButton = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { alertLevelTick, canSetAlertLevel } = data;
+  const { alertLevel, setShowAlertLevelConfirm } = props;
+
+  const thisIsCurrent = data.alertLevel === alertLevel;
+
   return (
-    <Window width={400} height={600} resizable>
-      <Window.Content scrollable>
-        <CommunicationsConsoleContent />
-      </Window.Content>
-    </Window>
+    <Button
+      icon="exclamation-triangle"
+      color={thisIsCurrent && "good"}
+      content={capitalize(alertLevel)}
+      onClick={() => {
+        if (thisIsCurrent) {
+          return;
+        }
+
+        if (canSetAlertLevel === SWIPE_NEEDED) {
+          setShowAlertLevelConfirm([alertLevel, alertLevelTick]);
+        } else {
+          act("changeSecurityLevel", {
+            newSecurityLevel: alertLevel,
+          });
+        }
+      }}
+    />
   );
 };
 
-export const CommunicationsConsoleContent = (props, context) => {
+const MessageModal = (props, context) => {
+  const { data } = useBackend(context);
+  const { maxMessageLength } = data;
+
+  const [input, setInput] = useLocalState(context, props.label, "");
+
+  const longEnough = props.minLength === undefined
+    || input.length >= props.minLength;
+
+  return (
+    <Modal>
+      <Flex direction="column">
+        <Flex.Item fontSize="16px" maxWidth="90vw" mb={1}>
+          {props.label}:
+        </Flex.Item>
+
+        <Flex.Item mr={2} mb={1}>
+          <TextArea
+            fluid
+            height="20vh"
+            width="80vw"
+            backgroundColor="black"
+            textColor="white"
+            onInput={(_, value) => {
+              setInput(value.substring(0, maxMessageLength));
+            }}
+            value={input}
+          />
+        </Flex.Item>
+
+        <Flex.Item>
+          <Button
+            icon={props.icon}
+            content={props.buttonText}
+            color="good"
+            disabled={!longEnough}
+            tooltip={!longEnough ? "You need a longer reason." : ""}
+            tooltipPosition="right"
+            onClick={() => {
+              if (longEnough) {
+                setInput("");
+                props.onSubmit(input);
+              }
+            }}
+          />
+
+          <Button
+            icon="times"
+            content="Cancel"
+            color="bad"
+            onClick={props.onBack}
+          />
+        </Flex.Item>
+
+        {!!props.notice && (
+          <Flex.Item maxWidth="90vw">{props.notice}</Flex.Item>
+        )}
+      </Flex>
+    </Modal>
+  );
+};
+
+const NoConnectionModal = () => {
+  return (
+    <Dimmer>
+      <Flex direction="column" textAlign="center" width="300px">
+        <Flex.Item>
+          <Icon
+            color="red"
+            name="wifi"
+            size={10}
+          />
+
+          <Blink>
+            <div
+              style={{
+                background: "#db2828",
+                bottom: "60%",
+                left: "25%",
+                height: "10px",
+                position: "relative",
+                transform: "rotate(45deg)",
+                width: "150px",
+              }}
+            />
+          </Blink>
+        </Flex.Item>
+
+        <Flex.Item fontSize="16px">
+          A connection to the station cannot be established.
+        </Flex.Item>
+      </Flex>
+    </Dimmer>
+  );
+};
+
+const PageBuyingShuttle = (props, context) => {
   const { act, data } = useBackend(context);
 
-  const {
-    menu_state,
-  } = data;
+  return (
+    <Box>
+      <Section>
+        <Button
+          icon="chevron-left"
+          content="Back"
+          onClick={() => act("setState", { state: STATE_MAIN })}
+        />
+      </Section>
 
-  let mainTemplate = (
-    <Box color="bad">
-      ERRROR. Unknown menu_state: {menu_state}
-      Please report this to NT Technical Support.
+      <Section>
+        Budget: <b>{data.budget.toLocaleString()}</b> credits
+      </Section>
+
+      {sortShuttles(data.shuttles).map(shuttle => (
+        <Section
+          title={(
+            <span
+              style={{
+                display: "inline-block",
+                width: "70%",
+              }}>
+              {shuttle.name}
+            </span>
+          )}
+          key={shuttle.ref}
+          buttons={(
+            <Button
+              content={`${shuttle.creditCost.toLocaleString()} credits`}
+              color={shuttle.emagOnly ? "red" : "default"}
+              disabled={data.budget < shuttle.creditCost}
+              onClick={() => act("purchaseShuttle", {
+                shuttle: shuttle.ref,
+              })}
+              tooltip={
+                data.budget < shuttle.creditCost
+                  ? `You need ${shuttle.creditCost - data.budget} more credits.`
+                  : (shuttle.emagOnly ? EMAG_SHUTTLE_NOTICE : undefined)
+              }
+              tooltipPosition="left"
+            />
+          )}>
+          <Box>{shuttle.description}</Box>
+          {
+            shuttle.prerequisites
+              ? <b>Prerequisites: {shuttle.prerequisites}</b>
+              : null
+          }
+        </Section>
+      ))}
     </Box>
   );
+};
 
-  // 1 = main screen
-  if (menu_state === 1) {
-    mainTemplate = <CommunicationsConsoleMain />;
-  } else if (menu_state === 2) { 
-    // 2 = status screen
-    mainTemplate = <CommunicationsConsoleStatusDisplay />;
-  } else if (menu_state === 3) {
-    // 3 = messages screen
-    mainTemplate = <CommunicationsConsoleMessage />;
-  }
+const PageChangingStatus = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { maxStatusLineLength } = data;
+
+  const [lineOne, setLineOne] = useLocalState(context, "lineOne", data.lineOne);
+  const [lineTwo, setLineTwo] = useLocalState(context, "lineTwo", data.lineTwo);
 
   return (
-    <Fragment>
-      <CommunicationsConsoleAuth />
-      {mainTemplate}
-    </Fragment>
+    <Box>
+      <Section>
+        <Button
+          icon="chevron-left"
+          content="Back"
+          onClick={() => act("setState", { state: STATE_MAIN })}
+        />
+      </Section>
+
+      <Section>
+        <Flex direction="column">
+          <Flex.Item>
+            <Button
+              icon="times"
+              content="Clear Alert"
+              color="bad"
+              onClick={() => act("setStatusPicture", { picture: "blank" })}
+            />
+          </Flex.Item>
+
+          <Flex.Item mt={1}>
+            <Button
+              icon="check-square-o"
+              content="Default"
+              onClick={() => act("setStatusPicture", { picture: "default" })}
+            />
+
+            <Button
+              icon="bell-o"
+              content="Red Alert"
+              onClick={() => act("setStatusPicture", { picture: "redalert" })}
+            />
+
+            <Button
+              icon="exclamation-triangle"
+              content="Lockdown"
+              onClick={() => act("setStatusPicture", { picture: "lockdown" })}
+            />
+
+            <Button
+              icon="exclamation-circle"
+              content="Biohazard"
+              onClick={() => act("setStatusPicture", { picture: "biohazard" })}
+            />
+
+            <Button
+              icon="space-shuttle"
+              content="Shuttle ETA"
+              onClick={() => act("setStatusPicture", { picture: "shuttle" })}
+            />
+          </Flex.Item>
+        </Flex>
+      </Section>
+
+      <Section title="Message">
+        <Flex direction="column">
+          <Flex.Item mb={1}>
+            <Input
+              maxLength={maxStatusLineLength}
+              value={lineOne}
+              width="200px"
+              onChange={(_, value) => setLineOne(value)}
+            />
+          </Flex.Item>
+
+          <Flex.Item mb={1}>
+            <Input
+              maxLength={maxStatusLineLength}
+              value={lineTwo}
+              width="200px"
+              onChange={(_, value) => setLineTwo(value)}
+            />
+          </Flex.Item>
+
+          <Flex.Item>
+            <Button
+              icon="comment-o"
+              content="Message"
+              onClick={() => act("setStatusMessage", {
+                lineOne,
+                lineTwo,
+              })}
+            />
+          </Flex.Item>
+        </Flex>
+      </Section>
+    </Box>
   );
 };
 
-const CommunicationsConsoleMain = (props, context) => {
+const PageMain = (props, context) => {
   const { act, data } = useBackend(context);
-
   const {
-    messages,
-    msg_cooldown,
+    alertLevel,
+    alertLevelTick,
+    aprilFools,
+    callShuttleReasonMinLength,
+    canBuyShuttles,
+    canMakeAnnouncement,
+    canMessageAssociates,
+    canRecallShuttles,
+    canRequestNuke,
+    canSendToSectors,
+    canSetAlertLevel,
+    canToggleEmergencyAccess,
     emagged,
-    cc_cooldown,
-    str_security_level,
-    levels,
-    authmax,
-    security_level,
-    security_level_color,
-    authenticated,
-    atcsquelch,
-    boss_short,
+    syndicate,
+    emergencyAccess,
+    importantActionReady,
+    sectors,
+    shuttleCalled,
+    shuttleCalledPreviously,
+    shuttleCanEvacOrFailReason,
+    shuttleLastCalled,
+    shuttleRecallable,
   } = data;
 
-  let reportText = "View (" + messages.length + ")";
-  let announceText = "Make Priority Announcement";
-  if (msg_cooldown > 0) {
-    announceText += " (" + msg_cooldown + "s)";
-  }
-  let ccMessageText = emagged ? "Message [UNKNOWN]" : "Message " + boss_short;
-  if (cc_cooldown > 0) {
-    ccMessageText += " (" + cc_cooldown + "s)";
-  }
+  const [callingShuttle, setCallingShuttle] = useLocalState(
+    context, "calling_shuttle", false);
+  const [messagingAssociates, setMessagingAssociates] = useLocalState(
+    context, "messaging_associates", false);
+  const [messagingSector, setMessagingSector] = useLocalState(
+    context, "messaing_sector", null);
+  const [requestingNukeCodes, setRequestingNukeCodes] = useLocalState(
+    context, "requesting_nuke_codes", false);
 
-  let alertLevelText = str_security_level;
-  let alertLevelButtons = levels.map(slevel => {
-    return (
+  const [
+    [showAlertLevelConfirm, confirmingAlertLevelTick],
+    setShowAlertLevelConfirm,
+  ] = useLocalState(context, "showConfirmPrompt", [null, null]);
+
+  return (
+    <Box>
+      {!syndicate && (
+        <Section title="Emergency Shuttle">
+          {!!shuttleCalled && (
+            <Button.Confirm
+              icon="space-shuttle"
+              content="Recall Emergency Shuttle"
+              color="bad"
+              disabled={!canRecallShuttles || !shuttleRecallable}
+              tooltip={(
+                canRecallShuttles && (
+                  !shuttleRecallable && "It's too late for the emergency shuttle to be recalled."
+                ) || (
+                  "You do not have permission to recall the emergency shuttle."
+                )
+              )}
+              tooltipPosition="bottom-end"
+              onClick={() => act("recallShuttle")}
+            />
+          ) || (
+            <Button
+              icon="space-shuttle"
+              content="Call Emergency Shuttle"
+              disabled={shuttleCanEvacOrFailReason !== 1}
+              tooltip={
+                shuttleCanEvacOrFailReason !== 1
+                  ? shuttleCanEvacOrFailReason
+                  : undefined
+              }
+              tooltipPosition="bottom-end"
+              onClick={() => setCallingShuttle(true)}
+            />
+          )}
+          {!!shuttleCalledPreviously && (
+            shuttleLastCalled && (
+              <Box>
+                Most recent shuttle call/recall traced to:
+                {" "}<b>{shuttleLastCalled}</b>
+              </Box>
+            ) || (
+              <Box>Unable to trace most recent shuttle/recall signal.</Box>
+            )
+          )}
+        </Section>
+      )}
+
+      {!!canSetAlertLevel && (
+        <Section title="Alert Level">
+          <Flex justify="space-between">
+            <Flex.Item>
+              <Box>
+                Currently on <b>{capitalize(alertLevel)}</b> Alert
+              </Box>
+            </Flex.Item>
+
+            <Flex.Item>
+              <AlertButton
+                alertLevel="green"
+                showAlertLevelConfirm={showAlertLevelConfirm}
+                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
+              />
+
+              <AlertButton
+                alertLevel="blue"
+                showAlertLevelConfirm={showAlertLevelConfirm}
+                setShowAlertLevelConfirm={setShowAlertLevelConfirm}
+              />
+            </Flex.Item>
+          </Flex>
+        </Section>
+      )}
+
+      <Section title="Functions">
+        <Flex
+          direction="column">
+          {!!canMakeAnnouncement && <Button
+            icon="bullhorn"
+            content="Make Priority Announcement"
+            onClick={() => act("makePriorityAnnouncement")}
+          />}
+
+          {!!aprilFools && !!canMakeAnnouncement && <Button
+            icon="bullhorn"
+            content="Call Emergency Meeting"
+            onClick={() => act("emergency_meeting")}
+          />}
+
+          {!!canToggleEmergencyAccess && <Button.Confirm
+            icon="id-card-o"
+            content={`${emergencyAccess ? "Disable" : "Enable"} Emergency Maintenance Access`}
+            color={emergencyAccess ? "bad" : undefined}
+            onClick={() => act("toggleEmergencyAccess")}
+          />}
+
+          {!syndicate && (
+            <Button
+              icon="desktop"
+              content="Set Status Display"
+              onClick={() => act("setState", { state: STATE_CHANGING_STATUS })}
+            />
+          )}
+
+          <Button
+            icon="envelope-o"
+            content="Message List"
+            onClick={() => act("setState", { state: STATE_MESSAGES })}
+          />
+
+          {(canBuyShuttles !== 0) && <Button
+            icon="shopping-cart"
+            content="Purchase Shuttle"
+            disabled={canBuyShuttles !== 1}
+            // canBuyShuttles is a string detailing the fail reason
+            // if one can be given
+            tooltip={canBuyShuttles !== 1 ? canBuyShuttles : undefined}
+            tooltipPosition="right"
+            onClick={() => act("setState", { state: STATE_BUYING_SHUTTLE })}
+          />}
+
+          {!!canMessageAssociates && <Button
+            icon="comment-o"
+            content={`Send message to ${emagged ? "[UNKNOWN]" : "CentCom"}`}
+            disabled={!importantActionReady}
+            onClick={() => setMessagingAssociates(true)}
+          />}
+
+          {!!canRequestNuke && <Button
+            icon="radiation"
+            content="Request Nuclear Authentication Codes"
+            disabled={!importantActionReady}
+            onClick={() => setRequestingNukeCodes(true)}
+          />}
+
+          {(!!emagged && !syndicate) && <Button
+            icon="undo"
+            content="Restore Backup Routing Data"
+            onClick={() => act("restoreBackupRoutingData")}
+          />}
+        </Flex>
+      </Section>
+
+      {!!canMessageAssociates && messagingAssociates && <MessageModal
+        label={`Message to transmit to ${emagged ? "[ABNORMAL ROUTING COORDINATES]" : "CentCom"} via quantum entanglement`}
+        notice="Please be aware that this process is very expensive, and abuse will lead to...termination. Transmission does not guarantee a response."
+        icon="bullhorn"
+        buttonText="Send"
+        onBack={() => setMessagingAssociates(false)}
+        onSubmit={message => {
+          setMessagingAssociates(false);
+          act("messageAssociates", {
+            message,
+          });
+        }}
+      />}
+
+      {!!canRequestNuke && requestingNukeCodes && <MessageModal
+        label="Reason for requesting nuclear self-destruct codes"
+        notice="Misuse of the nuclear request system will not be tolerated under any circumstances. Transmission does not guarantee a response."
+        icon="bomb"
+        buttonText="Request Codes"
+        onBack={() => setRequestingNukeCodes(false)}
+        onSubmit={reason => {
+          setRequestingNukeCodes(false);
+          act("requestNukeCodes", {
+            reason,
+          });
+        }}
+      />}
+
+      {!!callingShuttle && <MessageModal
+        label="Nature of emergency"
+        icon="space-shuttle"
+        buttonText="Call Shuttle"
+        minLength={callShuttleReasonMinLength}
+        onBack={() => setCallingShuttle(false)}
+        onSubmit={reason => {
+          setCallingShuttle(false);
+          act("callShuttle", {
+            reason,
+          });
+        }}
+      />}
+
+      {
+        !!canSetAlertLevel
+        && showAlertLevelConfirm
+        && confirmingAlertLevelTick === alertLevelTick
+        && (
+          <Modal>
+            <Flex
+              direction="column"
+              textAlign="center"
+              width="300px">
+              <Flex.Item fontSize="16px" mb={2}>
+                Swipe ID to confirm change
+              </Flex.Item>
+
+              <Flex.Item mr={2} mb={1}>
+                <Button
+                  icon="id-card-o"
+                  content="Swipe ID"
+                  color="good"
+                  fontSize="16px"
+                  onClick={() => act("changeSecurityLevel", {
+                    newSecurityLevel: showAlertLevelConfirm,
+                  })}
+                />
+
+                <Button
+                  icon="times"
+                  content="Cancel"
+                  color="bad"
+                  fontSize="16px"
+                  onClick={() => setShowAlertLevelConfirm(false)}
+                />
+              </Flex.Item>
+            </Flex>
+          </Modal>
+        )
+      }
+
+      {
+        !!canSendToSectors
+        && sectors.length > 0
+        && (
+          <Section title="Allied Sectors">
+            <Flex
+              direction="column">
+              {
+                sectors.map(sectorName => (
+                  <Flex.Item key={sectorName}>
+                    <Button
+                      content={
+                        `Send a message to station in ${sectorName} sector`
+                      }
+                      disabled={!importantActionReady}
+                      onClick={() => setMessagingSector(sectorName)}
+                    />
+                  </Flex.Item>
+                ))
+              }
+
+              {sectors.length > 2 && (
+                <Flex.Item>
+                  <Button
+                    content="Send a message to all allied stations"
+                    disabled={!importantActionReady}
+                    onClick={() => setMessagingSector("all")}
+                  />
+                </Flex.Item>
+              )}
+            </Flex>
+          </Section>
+        )
+      }
+
+      {
+        !!canSendToSectors
+        && sectors.length > 0
+        && messagingSector
+        && <MessageModal
+          label="Message to send to allied station"
+          notice="Please be aware that this process is very expensive, and abuse will lead to...termination."
+          icon="bullhorn"
+          buttonText="Send"
+          onBack={() => setMessagingSector(null)}
+          onSubmit={message => {
+            act("sendToOtherSector", {
+              destination: messagingSector,
+              message,
+            });
+
+            setMessagingSector(null);
+          }}
+        />
+      }
+    </Box>
+  );
+};
+
+const PageMessages = (props, context) => {
+  const { act, data } = useBackend(context);
+  const messages = data.messages || [];
+
+  const children = [];
+
+  children.push((
+    <Section>
       <Button
-        key={slevel.name}
-        icon={slevel.icon}
-        content={slevel.name}
-        disabled={!authenticated}
-        selected={slevel.id === security_level}
-        onClick={() => act('newalertlevel', { level: slevel.id })} />
-    );
-  });
+        icon="chevron-left"
+        content="Back"
+        onClick={() => act("setState", { state: STATE_MAIN })}
+      />
+    </Section>
+  ));
 
-  return (
-    <Fragment>
-      <Section title="Site Manager-Only Actions">
-        <LabeledList>
-          <LabeledList.Item label="Announcement">
+  const messageElements = [];
+
+  for (const [messageIndex, message] of Object.entries(messages)) {
+    let answers = null;
+
+    if (message.possibleAnswers.length > 0) {
+      answers = (
+        <Box mt={1}>
+          {message.possibleAnswers.map((answer, answerIndex) => (
             <Button
-              icon="bullhorn"
-              content={announceText}
-              disabled={!authmax || msg_cooldown > 0}
-              onClick={() => act('announce')} />
-          </LabeledList.Item>
-          {!!emagged && (
-            <LabeledList.Item label="Transmit">
-              <Button
-                icon="broadcast-tower"
-                color="red"
-                content={ccMessageText}
-                disabled={!authmax || cc_cooldown > 0}
-                onClick={() => act('MessageSyndicate')} />
-              <Button
-                icon="sync-alt"
-                content="Reset Relays"
-                disabled={!authmax}
-                onClick={() => act('RestoreBackup')} />
-            </LabeledList.Item>
-          ) || (
-            <LabeledList.Item label="Transmit">
-              <Button
-                icon="broadcast-tower"
-                content={ccMessageText}
-                disabled={!authmax || cc_cooldown > 0}
-                onClick={() => act('MessageCentCom')} />
-            </LabeledList.Item>
-          )}
-        </LabeledList>
-      </Section>
-      <Section title="Command Staff Actions">
-        <LabeledList>
-          <LabeledList.Item label="Current Alert"
-            color={security_level_color}>
-            {alertLevelText}
-          </LabeledList.Item>
-          <LabeledList.Item label="Change Alert">
-            {alertLevelButtons}
-          </LabeledList.Item>
-          <LabeledList.Item label="Displays">
-            <Button
-              icon="tv"
-              content="Change Status Displays"
-              disabled={!authenticated}
-              onClick={() => act('status')} />
-          </LabeledList.Item>
-          <LabeledList.Item label="Incoming Messages">
-            <Button
-              icon="folder-open"
-              content={reportText}
-              disabled={!authenticated}
-              onClick={() => act('messagelist')} />
-          </LabeledList.Item>
-          <LabeledList.Item label="Misc">
-            <Button
-              icon="microphone"
-              content={!atcsquelch ? "ATC Relay Enabled" : "ATC Relay Disabled"}
-              disabled={!authenticated}
-              selected={atcsquelch}
-              onClick={() => act('toggleatc')} />
-          </LabeledList.Item>
-        </LabeledList>
-      </Section>
-    </Fragment>
-  );
-};
-
-const CommunicationsConsoleAuth = (props, context) => {
-  const { act, data } = useBackend(context);
-
-  const {
-    authenticated,
-    is_ai,
-    esc_status,
-    esc_callable,
-    esc_recallable,
-  } = data;
-
-  let authReadable;
-  if (!authenticated) {
-    authReadable = "Not Logged In";
-  } else if (is_ai) {
-    authReadable = "AI";
-  } else if (authenticated === 1) {
-    authReadable = "Command";
-  } else if (authenticated === 2) {
-    authReadable = "Site Director";
-  } else {
-    authReadable = "ERROR: Report This Bug!";
-  }
-
-  return (
-    <Fragment>
-      <Section title="Authentication">
-        <LabeledList>
-          {is_ai && (
-            <LabeledList.Item label="Access Level">
-              AI
-            </LabeledList.Item>
-          ) || (
-            <LabeledList.Item label="Actions">
-              <Button
-                icon={authenticated ? 'sign-out-alt' : 'id-card'}
-                selected={authenticated}
-                content={authenticated
-                  ? "Log Out (" + authReadable + ")"
-                  : 'Log In'}
-                onClick={() => act("auth")} />
-            </LabeledList.Item>
-          )}
-        </LabeledList>
-      </Section>
-      <Section title="Escape Shuttle">
-        <LabeledList>
-          {!!esc_status && (
-            <LabeledList.Item label="Status">
-              {esc_status}
-            </LabeledList.Item>
-          )}
-          {!!esc_callable && (
-            <LabeledList.Item label="Options">
-              <Button
-                icon="rocket"
-                content="Call Shuttle"
-                disabled={!authenticated}
-                onClick={() => act('callshuttle')} />
-            </LabeledList.Item>
-          )}
-          {!!esc_recallable && (
-            <LabeledList.Item label="Options">
-              <Button
-                icon="times"
-                content="Recall Shuttle"
-                disabled={!authenticated || is_ai}
-                onClick={() => act('cancelshuttle')} />
-            </LabeledList.Item>
-          )}
-        </LabeledList>
-      </Section>
-    </Fragment>
-  );
-};
-
-const CommunicationsConsoleMessage = (props, context) => {
-  const { act, data } = useBackend(context);
-
-  const {
-    message_current,
-    message_deletion_allowed,
-    authenticated,
-    messages,
-  } = data;
-
-  if (message_current) {
-    return (
-      <Section title={message_current.title} buttons={
-        <Button
-          icon="times"
-          content="Return To Message List"
-          disabled={!authenticated}
-          onClick={() => act('messagelist')} />
-      }>
-        <Box>
-          {message_current.contents}
+              content={answer}
+              color={message.answered === answerIndex + 1 ? "good" : undefined}
+              key={answerIndex}
+              onClick={message.answered ? undefined : () => act("answerMessage", {
+                message: parseInt(messageIndex, 10) + 1,
+                answer: answerIndex + 1,
+              })}
+            />
+          ))}
         </Box>
+      );
+    }
+
+    const textHtml = {
+      __html: sanitizeText(message.content),
+    };
+
+    messageElements.push((
+      <Section
+        title={message.title}
+        key={messageIndex}
+        buttons={(
+          <Button.Confirm
+            icon="trash"
+            content="Delete"
+            color="red"
+            onClick={() => act("deleteMessage", {
+              message: messageIndex + 1,
+            })}
+          />
+        )}>
+        <Box
+          dangerouslySetInnerHTML={textHtml} />
+
+        {answers}
       </Section>
-    );
+    ));
   }
 
-  let messageRows = messages.map(m => {
-    return (
-      <LabeledList.Item key={m.id} label={m.title}>
-        <Button
-          icon="eye"
-          content="View"
-          disabled={!authenticated
-            || message_current && (message_current.title === m.title)}
-          onClick={() => act('messagelist', { msgid: m.id })} />
-        <Button
-          icon="times"
-          content="Delete"
-          disabled={!authenticated || !message_deletion_allowed}
-          onClick={() => act('delmessage', { msgid: m.id })} />
-      </LabeledList.Item>
-    );
-  });
+  children.push(messageElements.reverse());
 
-  return (
-    <Section title="Messages Received" buttons={
-      <Button
-        icon="arrow-circle-left"
-        content="Back To Main Menu"
-        onClick={() => act('main')} />
-    }>
-      <LabeledList>
-        {messages.length && messageRows || (
-          <LabeledList.Item label="404" color="bad">
-            No messages.
-          </LabeledList.Item>
-        )}
-      </LabeledList>
-    </Section>
-  );
+  return children;
 };
 
-const CommunicationsConsoleStatusDisplay = (props, context) => {
+export const CommunicationsConsole = (props, context) => {
   const { act, data } = useBackend(context);
-
   const {
-    stat_display,
     authenticated,
+    authorizeName,
+    canLogOut,
+    emagged,
+    hasConnection,
+    page,
+    canRequestSafeCode,
+    safeCodeDeliveryWait,
+    safeCodeDeliveryArea,
   } = data;
 
-  let presetButtons = stat_display["presets"].map(pb => {
-    return (
-      <Button
-        key={pb.name}
-        content={pb.label}
-        selected={pb.name === stat_display.type}
-        disabled={!authenticated}
-        onClick={() => act('setstat', { statdisp: pb.name })} />
-    );
-  });
   return (
-    <Section title="Modify Status Screens" buttons={
-      <Button
-        icon="arrow-circle-left"
-        content="Back To Main Menu"
-        onClick={() => act('main')} />
-    }>
-      <LabeledList>
-        <LabeledList.Item label="Presets">
-          {presetButtons}
-        </LabeledList.Item>
-        <LabeledList.Item label="Message Line 1">
-          <Button
-            icon="pencil-alt"
-            content={stat_display.line_1}
-            disabled={!authenticated}
-            onClick={() => act('setmsg1')} />
-        </LabeledList.Item>
-        <LabeledList.Item label="Message Line 2">
-          <Button
-            icon="pencil-alt"
-            content={stat_display.line_2}
-            disabled={!authenticated}
-            onClick={() => act('setmsg2')} />
-        </LabeledList.Item>
-      </LabeledList>
-    </Section>
+    <Window
+      width={400}
+      height={650}
+      theme={emagged ? "syndicate" : undefined}>
+      <Window.Content scrollable>
+        {!hasConnection && <NoConnectionModal />}
+
+        {(canLogOut || !authenticated) && (
+          <Section title="Authentication">
+            <Button
+              icon={authenticated ? "sign-out-alt" : "sign-in-alt"}
+              content={authenticated ? `Log Out${authorizeName ? ` (${authorizeName})` : ""}` : "Log In"}
+              color={authenticated ? "bad" : "good"}
+              onClick={() => act("toggleAuthentication")}
+            />
+          </Section>
+        )}
+
+        {(!!canRequestSafeCode && (
+          <Section title="Emergency Safe Code">
+            <Button
+              icon="key"
+              content="Request Safe Code"
+              color="good"
+              onClick={() => act("requestSafeCodes")} />
+          </Section>
+        )) || (!!safeCodeDeliveryWait && (
+          <Section title="Emergency Safe Code Delivery">
+            {`Drop pod to ${safeCodeDeliveryArea} in \
+            ${Math.round(safeCodeDeliveryWait/10)}s`}
+          </Section>
+        ))}
+
+        {!!authenticated && (
+          page === STATE_BUYING_SHUTTLE && <PageBuyingShuttle />
+          || page === STATE_CHANGING_STATUS && <PageChangingStatus />
+          || page === STATE_MAIN && <PageMain />
+          || page === STATE_MESSAGES && <PageMessages />
+          || <Box>Page not implemented: {page}</Box>
+        )}
+      </Window.Content>
+    </Window>
   );
 };

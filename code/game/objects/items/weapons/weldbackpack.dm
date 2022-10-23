@@ -22,14 +22,13 @@
 	nozzle_attached = 1
 
 /obj/item/weldpack/Destroy()
-	qdel(nozzle)
-	nozzle = null
+	if(nozzle)
+		QDEL_NULL(nozzle)
 	return ..()
 
-/obj/item/weldpack/dropped(mob/user)
+/obj/item/weldpack/dropped(mob/user, flags, atom/newLoc)
 	..()
 	if(nozzle)
-		user.remove_from_mob(nozzle)
 		return_nozzle()
 		to_chat(user, "<span class='notice'>\The [nozzle] retracts to its fueltank.</span>")
 
@@ -39,7 +38,7 @@
 
 	var/mob/living/carbon/human/H = user
 
-	if(H.hands_are_full()) //Make sure our hands aren't full.
+	if(H.hands_full()) //Make sure our hands aren't full.
 		to_chat(H, "<span class='warning'>Your hands are full.  Drop something first.</span>")
 		return 0
 
@@ -73,10 +72,9 @@
 			return
 	else if(nozzle)
 		if(nozzle == W)
-			if(!user.unEquip(W))
-				to_chat(user,"<span class='notice'>\The [W] seems to be stuck to your hand.</span>")
-				return
 			if(!nozzle_attached)
+				if(!user.attempt_insert_item_for_installation(W, src))
+					return
 				return_nozzle()
 				to_chat(user,"<span class='notice'>You attach \the [W] to the [src].</span>")
 				return
@@ -106,48 +104,13 @@
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume < max_fuel)
 		O.reagents.trans_to_obj(src, max_fuel)
 		to_chat(user,"<span class='notice'>You crack the cap off the top of the pack and fill it back up again from the tank.</span>")
-		playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
-		return
+		playsound(src, 'sound/effects/refill.ogg', 50, 1, -6)
 	else if (istype(O, /obj/structure/reagent_dispensers/fueltank) && src.reagents.total_volume == max_fuel)
 		to_chat(user,"<span class='warning'>The pack is already full!</span>")
-		return
-
-/obj/item/weldpack/MouseDrop(obj/over_object as obj) //This is terrifying.
-	if(!canremove)
-		return
-
-	if (ishuman(usr) || issmall(usr)) //so monkeys can take off their backpacks -- Urist
-
-		if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech. why?
-			return
-
-		if (!( istype(over_object, /obj/screen) ))
-			return ..()
-
-		//makes sure that the thing is equipped, so that we can't drag it into our hand from miles away.
-		//there's got to be a better way of doing this.
-		if (!(src.loc == usr) || (src.loc && src.loc.loc == usr))
-			return
-
-		if (( usr.restrained() ) || ( usr.stat ))
-			return
-
-		if ((src.loc == usr) && !(istype(over_object, /obj/screen)) && !usr.unEquip(src))
-			return
-
-		switch(over_object.name)
-			if("r_hand")
-				usr.u_equip(src)
-				usr.put_in_r_hand(src)
-			if("l_hand")
-				usr.u_equip(src)
-				usr.put_in_l_hand(src)
-		src.add_fingerprint(usr)
 
 /obj/item/weldpack/examine(mob/user)
 	. = ..()
 	. += "[icon2html(thing = src, target = world)] [src] has [src.reagents.total_volume] units of fuel left!"
-	return
 
 /obj/item/weldpack/survival
 	name = "emergency welding kit"

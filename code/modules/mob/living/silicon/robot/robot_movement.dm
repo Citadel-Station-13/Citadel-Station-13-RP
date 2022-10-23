@@ -12,15 +12,16 @@
 	return ..()
 
 /mob/living/silicon/robot/movement_delay()
-	. = ..()
-	var/tally = 0 //Incase I need to add stuff other than "speed" later
-
-	tally = speed
-
+	. = speed
 	if(module_active && istype(module_active,/obj/item/borg/combat/mobility))
-		tally-=2 // VOREStation Edit
+		. -= 2
 
-	return . + tally + config_legacy.robot_delay
+	if(get_restraining_bolt())	// Borgs with Restraining Bolts move slower.
+		. += 1
+
+	. += config_legacy.robot_delay
+
+	. = ..()
 
 // NEW: Use power while moving.
 /mob/living/silicon/robot/SelfMove(turf/n, direct)

@@ -1,36 +1,36 @@
 /datum/preferences
 	//The mob should have a gender you want before running this proc. Will run fine without H
 /datum/preferences/proc/randomize_appearance_and_body_for(var/mob/living/carbon/human/H)
-	var/datum/species/current_species = GLOB.all_species[species ? species : "Human"]
+	var/datum/species/current_species = name_static_species_meta(species) || get_static_species_meta(/datum/species/human)
 	set_biological_gender(pick(current_species.genders))
 
 	h_style = random_hair_style(biological_gender, species)
 	f_style = random_facial_hair_style(biological_gender, species)
 	if(current_species)
-		if(current_species.appearance_flags & HAS_SKIN_TONE)
+		if(current_species.species_appearance_flags & HAS_SKIN_TONE)
 			s_tone = random_skin_tone()
-		if(current_species.appearance_flags & HAS_SKIN_COLOR)
+		if(current_species.species_appearance_flags & HAS_SKIN_COLOR)
 			r_skin = rand (0,255)
 			g_skin = rand (0,255)
 			b_skin = rand (0,255)
-		if(current_species.appearance_flags & HAS_EYE_COLOR)
+		if(current_species.species_appearance_flags & HAS_EYE_COLOR)
 			randomize_eyes_color()
-		if(current_species.appearance_flags & HAS_HAIR_COLOR)
+		if(current_species.species_appearance_flags & HAS_HAIR_COLOR)
 			randomize_hair_color("hair")
 			randomize_hair_color("facial")
-		if(current_species.appearance_flags & HAS_SKIN_COLOR)
+		if(current_species.species_appearance_flags & HAS_SKIN_COLOR)
 			r_skin = rand (0,255)
 			g_skin = rand (0,255)
 			b_skin = rand (0,255)
-	if(current_species.appearance_flags & HAS_UNDERWEAR)
+	if(current_species.species_appearance_flags & HAS_UNDERWEAR)
 		all_underwear.Cut()
 		for(var/datum/category_group/underwear/WRC in GLOB.global_underwear.categories)
 			var/datum/category_item/underwear/WRI = pick(WRC.items)
 			all_underwear[WRC.name] = WRI.name
 
 
-	backbag = rand(1,5)
-	pdachoice = rand(1,6)
+	backbag = rand(1, 7)
+	pdachoice = rand(1, 7)
 	age = rand(current_species.min_age, current_species.max_age)
 	b_type = RANDOM_BLOOD_TYPE
 	if(H)
@@ -217,7 +217,7 @@
 				previewJob = job
 				break
 
-	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/job/ai || previewJob.type == /datum/job/cyborg)))
+	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/job/station/ai || previewJob.type == /datum/job/station/cyborg)))
 		var/list/equipped_slots = list()
 		for(var/thing in gear)
 			var/datum/gear/G = gear_datums[thing]
@@ -240,8 +240,11 @@
 
 				if(G.slot && !(G.slot in equipped_slots))
 					var/metadata = gear[G.display_name]
-					if(mannequin.equip_to_slot_or_del(G.spawn_item(mannequin, metadata), G.slot))
-						if(G.slot != slot_tie)
+					if(G.slot == "implant")
+						// todo: remove fucking snowflake
+						continue
+					if(mannequin.force_equip_to_slot_or_del(G.spawn_item(mannequin, metadata), G.slot, INV_OP_SILENT))
+						if(G.slot != /datum/inventory_slot_meta/abstract/attach_as_accessory)
 							equipped_slots += G.slot
 
 	if((equip_preview_mob & EQUIP_PREVIEW_JOB) && previewJob)
@@ -252,7 +255,7 @@
 	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin(client_ckey)
 	mannequin.delete_inventory(TRUE)
 	if(regen_limbs)
-		var/datum/species/current_species = GLOB.all_species[species]
+		var/datum/species/current_species = character_static_species_meta()
 		current_species.create_organs(mannequin)
 		regen_limbs = 0
 	dress_preview_mob(mannequin)
@@ -269,7 +272,7 @@
 	var/list/valid_hairstyles = list()
 	for(var/hairstyle in hair_styles_list)
 		var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
-		if(!(species in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
+		if(S.apply_restrictions && !(species in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
 			continue
 
 		valid_hairstyles[hairstyle] = hair_styles_list[hairstyle]
@@ -284,7 +287,7 @@
 			continue
 		if(biological_gender == FEMALE && S.gender == MALE)
 			continue
-		if(!(species in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
+		if(S.apply_restrictions && !(species in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
 			continue
 
 		valid_facialhairstyles[facialhairstyle] = facial_hair_styles_list[facialhairstyle]

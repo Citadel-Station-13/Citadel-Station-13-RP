@@ -1,5 +1,5 @@
 //Returns the firelevel
-/datum/gas_mixture/proc/zburn(zone/zone, force_burn, no_check = 0)
+/datum/gas_mixture/proc/zburn(datum/zas_zone/zone, force_burn, no_check = 0)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/firelevel_multiplier, firelevel_multiplier)
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/fuel_energy_release, fuel_energy_release)
 
@@ -28,7 +28,7 @@
 		//Liquid Fuel
 		var/fuel_area = 0
 		if(zone)
-			for(var/obj/effect/decal/cleanable/liquid_fuel/fuel in zone.fuel_objs)
+			for(var/obj/effect/debris/cleanable/liquid_fuel/fuel in zone.fuel_objs)
 				liquid_fuel += fuel.amount*LIQUIDFUEL_AMOUNT_TO_MOL
 				fuel_area++
 
@@ -101,7 +101,7 @@
 
 		return firelevel
 
-datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
+/datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 	. = 0
 	for(var/g in gas)
 		if(GLOB.meta_gas_flags[g] & GAS_FLAG_OXIDIZER && gas[g] >= 0.1)
@@ -120,7 +120,7 @@ datum/gas_mixture/proc/check_recombustability(list/fuel_objs)
 			. = 1
 			break
 
-/datum/gas_mixture/proc/check_combustability(obj/effect/decal/cleanable/liquid_fuel/liquid=null)
+/datum/gas_mixture/proc/check_combustability(obj/effect/debris/cleanable/liquid_fuel/liquid=null)
 	. = 0
 	CACHE_VSC_PROP(atmos_vsc, /atmos/fire/consumption_rate, fire_consumption_rate)
 	for(var/g in gas)

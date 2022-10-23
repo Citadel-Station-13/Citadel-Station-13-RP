@@ -32,7 +32,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/start)
 "al" = (
-/obj/effect/landmark{
+/obj/landmark{
 	name = "awaystart"
 	},
 /turf/simulated/floor/airless,
@@ -68,7 +68,7 @@
 /area/awaymission/challenge/start)
 "aw" = (
 /obj/item/stack/rods,
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/start)
 "ax" = (
@@ -76,7 +76,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/challenge/start)
 "ay" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/start)
 "az" = (
@@ -119,7 +119,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/main)
 "aK" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/main)
 "aM" = (
@@ -210,7 +210,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/challenge/main)
 "bc" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/plating,
 /area/awaymission/challenge/main)
 "bd" = (
@@ -590,7 +590,7 @@
 "cf" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Airlock";
-	
+
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/end)
@@ -678,7 +678,7 @@
 "cx" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Security";
-	
+
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/challenge/end)
@@ -703,7 +703,7 @@
 "cB" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Administrator";
-	
+
 	},
 /turf/simulated/floor/wood,
 /area/awaymission/challenge/end)
@@ -899,9 +899,7 @@
 "da" = (
 /obj/machinery/gateway,
 /obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 1
+	icon_state = "0-2"
 	},
 /turf/simulated/floor{
 	dir = 8
@@ -925,8 +923,6 @@
 /area/awaymission/challenge/end)
 "dd" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/voidcraft/vertical{
@@ -965,8 +961,6 @@
 /area/awaymission/challenge/end)
 "di" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/airless,
@@ -1002,7 +996,7 @@
 "dm" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Gateway Access";
-	
+
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/end)
@@ -1021,21 +1015,15 @@
 /area/awaymission/challenge/end)
 "do" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/end)
 "dp" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/airless,
@@ -1076,7 +1064,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/challenge/main)
 "fm" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/plating,
 /area/awaymission/challenge/main)
 "kp" = (

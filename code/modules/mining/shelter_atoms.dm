@@ -166,7 +166,7 @@
 	icon_state = "table"
 
 /obj/structure/table/survival_pod/Initialize(mapload)
-	material = get_material_by_name(DEFAULT_WALL_MATERIAL)
+	material = get_material_by_name(MAT_STEEL)
 	verbs -= /obj/structure/table/verb/do_flip
 	verbs -= /obj/structure/table/proc/do_put
 	return ..()
@@ -219,7 +219,7 @@
 	icon_state = "bed"
 
 /obj/structure/bed/pod/Initialize(mapload)
-	return ..(mapload, DEFAULT_WALL_MATERIAL, "cotton")
+	return ..(mapload, MAT_STEEL, "cotton")
 
 //Survival Storage Unit
 /obj/machinery/smartfridge/survival_pod
@@ -256,13 +256,13 @@
 	desc = "A large machine releasing a constant gust of air."
 	anchored = TRUE
 	density = TRUE
-	can_atmos_pass = ATMOS_PASS_NO
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/buildstacktype = /obj/item/stack/material/steel
 	var/buildstackamount = 5
 
-/obj/structure/fans/proc/deconstruct()
-	new buildstacktype(loc,buildstackamount)
-	qdel(src)
+/obj/structure/fans/drop_products(method)
+	. = ..()
+	new buildstacktype(drop_location(), buildstackamount)
 
 /obj/structure/fans/attackby(obj/item/I, mob/living/user)
 	if(I.is_wrench())

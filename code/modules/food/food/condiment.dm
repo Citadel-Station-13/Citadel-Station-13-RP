@@ -352,6 +352,22 @@
 	. = ..()
 	reagents.add_reagent("protein", 10)
 
+/obj/item/reagent_containers/food/condiment/small/packet/matchapowder
+	name = "matcha powder packet"
+	desc = "Contains 5u of green tea powder. Mix with 25u of water and heat."
+
+/obj/item/reagent_containers/food/condiment/small/packet/matchapowder/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("matchapowder", 5)
+
+/obj/item/reagent_containers/food/condiment/small/packet/taropowder
+	name = "taro powder packet"
+	desc = "Contains 5u of taro powder."
+
+/obj/item/reagent_containers/food/condiment/small/packet/taropowder/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("taropowder", 5)
+
 /obj/item/reagent_containers/food/condiment/small/packet/crayon
 	name = "crayon powder packet"
 	desc = "Contains 10u of powdered crayon. Mix with 30u of water."

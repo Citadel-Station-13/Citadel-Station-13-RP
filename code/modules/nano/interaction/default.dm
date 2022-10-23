@@ -50,7 +50,7 @@
 	// If we're installed in a chassi, rather than transfered to an inteliCard or other container, then check if we have camera view
 	if(is_in_chassis())
 		//stop AIs from leaving windows open and using then after they lose vision
-		if(cameranet && !cameranet.checkTurfVis(get_turf(src_object)))
+		if(GLOB.cameranet && !GLOB.cameranet.checkTurfVis(get_turf(src_object)))
 			return UI_CLOSE
 		return UI_INTERACTIVE
 	else if(get_dist(src_object, src) <= client.view)	// View does not return what one would expect while installed in an inteliCard
@@ -89,5 +89,5 @@
 	. = shared_nano_interaction(src_object)
 	if(. != UI_CLOSE)
 		. = min(., shared_living_nano_distance(src_object))
-		if(. == UI_UPDATE && (TK in mutations))	// If we have telekinesis and remain close enough, allow interaction.
+		if(. == UI_UPDATE && (MUTATION_TELEKINESIS in mutations))	// If we have telekinesis and remain close enough, allow interaction.
 			return UI_INTERACTIVE

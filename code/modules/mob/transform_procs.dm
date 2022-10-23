@@ -1,10 +1,7 @@
 /mob/living/carbon/human/proc/monkeyize()
 	if (transforming)
 		return
-	for(var/obj/item/W in src)
-		if (W==w_uniform) // will be torn
-			continue
-		drop_from_inventory(W)
+	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
 	transforming = 1
 	canmove = 0
@@ -30,11 +27,9 @@
 		gib()
 		return
 
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
-	set_species(species.primitive_form)
-	dna.SetSEState(MONKEYBLOCK,1)
-	dna.SetSEValueRange(MONKEYBLOCK,0xDAC, 0xFFF)
+	set_species(species_type_by_name(species.primitive_form))
+	dna.SetSEState(DNABLOCK_MONKEY,1)
+	dna.SetSEValueRange(DNABLOCK_MONKEY,0xDAC, 0xFFF)
 
 	to_chat(src, "<B>You are now [species.name]. </B>")
 	qdel(animation)
@@ -56,8 +51,7 @@
 /mob/living/carbon/AIize()
 	if (transforming)
 		return
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	drop_inventory(TRUE, TRUE, TRUE)
 	transforming = 1
 	canmove = 0
 	icon = null
@@ -102,42 +96,25 @@
 			O.add_language(LANGUAGE_ROOTLOCAL, 1)
 
 	if(move)
-		var/obj/loc_landmark
-		for(var/obj/effect/landmark/start/sloc in GLOB.landmarks_list)
-			if (sloc.name != "AI")
-				continue
-			if ((locate(/mob/living) in sloc.loc) || (locate(/obj/structure/AIcore) in sloc.loc))
-				continue
-			loc_landmark = sloc
-		if (!loc_landmark)
-			for(var/obj/effect/landmark/tripai in GLOB.landmarks_list)
-				if (tripai.name == "tripai")
-					if((locate(/mob/living) in tripai.loc) || (locate(/obj/structure/AIcore) in tripai.loc))
-						continue
-					loc_landmark = tripai
-		if (!loc_landmark)
-			to_chat(O, "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone.")
-			for(var/obj/effect/landmark/start/sloc in GLOB.landmarks_list)
-				if (sloc.name == "AI")
-					loc_landmark = sloc
-
-		O.loc = loc_landmark.loc
+		var/obj/landmark/spawnpoint/S = SSjob.GetLatejoinSpawnpoint(job_path = /datum/job/station/ai)
+		O.forceMove(S.GetSpawnLoc())
+		S.OnSpawn(O)
 
 	O.on_mob_init()
 
 	O.add_ai_verbs()
 
-	O.rename_self("ai",1)
-	spawn(0)	// Mobs still instantly del themselves, thus we need to spawn or O will never be returned
+	O.rename_self("ai")
+	// Mobs still instantly del themselves, thus we need to spawn or O will never be returned.
+	spawn(0)
 		qdel(src)
 	return O
 
-//human -> robot
+/// Human -> Robot
 /mob/living/carbon/human/proc/Robotize()
 	if (transforming)
 		return
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
 	transforming = 1
 	canmove = 0
@@ -193,8 +170,7 @@
 /mob/living/carbon/human/proc/Alienize()
 	if (transforming)
 		return
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
 	transforming = 1
 	canmove = 0
@@ -217,8 +193,7 @@
 /mob/living/carbon/human/proc/corgize()
 	if (transforming)
 		return
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+	drop_inventory(TRUE, TRUE, TRUE)
 	regenerate_icons()
 	transforming = 1
 	canmove = 0
@@ -246,8 +221,8 @@
 
 	if(transforming)
 		return
-	for(var/obj/item/W in src)
-		drop_from_inventory(W)
+
+	drop_inventory(TRUE, TRUE, TRUE)
 
 	regenerate_icons()
 	transforming = 1
@@ -322,6 +297,3 @@
 
 	//Not in here? Must be untested!
 	return 0
-
-
-

@@ -11,7 +11,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 
 */
 
-mob/living/carbon/var
+/mob/living/carbon/var
 	image/halimage
 	image/halbody
 	obj/halitem
@@ -19,7 +19,7 @@ mob/living/carbon/var
 	handling_hal = 0
 	hal_crit = 0
 
-mob/living/carbon/proc/handle_hallucinations()
+/mob/living/carbon/proc/handle_hallucinations()
 	if(handling_hal) return
 	handling_hal = 1
 	while(client && hallucination > 20)
@@ -114,9 +114,9 @@ mob/living/carbon/proc/handle_hallucinations()
 				switch(rand(1,12))
 					if(1) SEND_SOUND(src, sound('sound/machines/airlock.ogg'))
 					if(2)
-						if(prob(50))SEND_SOUND(src, sound('sound/effects/Explosion1.ogg'))
-						else SEND_SOUND(src, sound('sound/effects/Explosion2.ogg'))
-					if(3) SEND_SOUND(src, sound('sound/effects/explosionfar.ogg'))
+						if(prob(50))SEND_SOUND(src, sound('sound/soundbytes/effects/explosion/explosion1.ogg'))
+						else SEND_SOUND(src, sound('sound/soundbytes/effects/explosion/explosion2.ogg'))
+					if(3) SEND_SOUND(src, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 					if(4) SEND_SOUND(src, sound('sound/effects/Glassbr1.ogg'))
 					if(5) SEND_SOUND(src, sound('sound/effects/Glassbr2.ogg'))
 					if(6) SEND_SOUND(src, sound('sound/effects/Glassbr3.ogg'))

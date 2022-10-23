@@ -36,23 +36,21 @@
 	if (hungry >= 70)
 		tally += hungry/50
 
-	//VOREstation start
 	if (feral >= 10) //crazy feral animals give less and less of a shit about pain and hunger as they get crazier
 		tally = max(species.slowdown, species.slowdown+((tally-species.slowdown)/(feral/10))) // As feral scales to damage, this amounts to an effective +1 slowdown cap
 		if(shock_stage >= 10) tally -= 1.5 //this gets a +3 later, feral critters take reduced penalty
 	if(reagents.has_reagent("numbenzyme"))
 		tally += 1.5 //A tad bit of slowdown.
-	if(riding_datum) //Bit of slowdown for taur rides if rider is bigger or fatter than mount.
-		var/datum/riding/R = riding_datum
-		var/mob/living/L = R.ridden
-		for(var/mob/living/M in L.buckled_mobs)
-			if(ishuman(M))
-				var/mob/living/carbon/human/H = M
-				if(H.size_multiplier > L.size_multiplier)
-					tally += 1
-				if(H.weight > L.weight)
-					tally += 1
-	//VOREstation end
+	// if(riding_datum) //Bit of slowdown for taur rides if rider is bigger or fatter than mount.
+	// 	var/datum/riding/R = riding_datum
+	// 	var/mob/living/L = R.ridden
+	// 	for(var/mob/living/M in L.buckled_mobs)
+	// 		if(ishuman(M))
+	// 			var/mob/living/carbon/human/H = M
+	// 			if(H.size_multiplier > L.size_multiplier)
+	// 				tally += 1
+	// 			if(H.weight > L.weight)
+	// 				tally += 1
 
 	if(istype(buckled, /obj/structure/bed/chair/wheelchair))
 		for(var/organ_name in list(BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM))
@@ -77,7 +75,7 @@
 
 	if(aiming && aiming.aiming_at) tally += 5 // Iron sights make you slower, it's a well-known fact.
 
-	if(FAT in src.mutations)
+	if(MUTATION_FAT in src.mutations)
 		tally += 1.5
 
 	if (bodytemperature < species.cold_level_1)
@@ -85,7 +83,7 @@
 
 	tally += max(2 * stance_damage, 0) //damaged/missing feet or legs is slow
 
-	if(mRun in mutations)
+	if(MUTATION_INCREASE_RUN in mutations)
 		tally = 0
 
 	// Turf related slowdown
@@ -211,7 +209,7 @@
 		prob_slip = 0 // Changing this to zero to make it line up with the comment, and also, make more sense.
 
 	//Do we have magboots or such on if so no slip
-	if(istype(shoes, /obj/item/clothing/shoes/magboots) && (shoes.item_flags & NOSLIP))
+	if(istype(shoes, /obj/item/clothing/shoes/magboots) && (shoes.clothing_flags & NOSLIP))
 		prob_slip = 0
 
 	//Check hands and mod slip
@@ -224,7 +222,7 @@
 	return(prob_slip)
 
 // Handle footstep sounds
-/mob/living/carbon/human/handle_footstep(var/turf/T)
+/mob/living/carbon/human/handle_footstep(turf/T)
 	if(is_incorporeal())
 		return
 	if(!config_legacy.footstep_volume || !T.footstep_sounds || !T.footstep_sounds.len)
@@ -265,4 +263,11 @@
 		return // Far less likely to make noise in no gravity
 
 	playsound(T, S, volume, FALSE)
-	return
+
+/mob/living/carbon/human/can_stumble_into(obj/O)
+	//? nah this was fun for no one.
+	/*
+	if(flying && species.id != SPECIES_ADHERENT)
+		return TRUE
+	*/
+	return ..()

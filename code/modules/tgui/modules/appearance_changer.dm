@@ -16,10 +16,10 @@
 
 	// Stuff needed to render the map
 	var/map_name
-	var/obj/screen/map_view/cam_screen
+	var/atom/movable/screen/map_view/cam_screen
 	var/list/cam_plane_masters
-	var/obj/screen/background/cam_background
-	var/obj/screen/skybox/local_skybox
+	var/atom/movable/screen/background/cam_background
+	var/atom/movable/screen/skybox/local_skybox
 	// Stuff for moving cameras
 	var/turf/last_camera_turf
 
@@ -46,7 +46,7 @@
 	cam_plane_masters = get_tgui_plane_masters()
 
 	for(var/plane in cam_plane_masters)
-		var/obj/screen/instance = plane
+		var/atom/movable/screen/instance = plane
 		instance.assigned_map = map_name
 		instance.del_on_map_removal = FALSE
 		instance.screen_loc = "[map_name]:CENTER"
@@ -171,7 +171,6 @@
 						update_dna()
 						changed_hook(APPEARANCECHANGER_CHANGED_EYES)
 						return 1
-		// VOREStation Add - Ears/Tails/Wings
 		if("ear")
 			if(can_change(APPEARANCE_ALL_HAIR))
 				var/datum/sprite_accessory/ears/instance = locate(params["ref"])
@@ -274,7 +273,6 @@
 					owner.update_wing_showing()
 					changed_hook(APPEARANCECHANGER_CHANGED_HAIRCOLOR)
 					return 1
-		// VOREStation Add End
 	return FALSE
 
 /datum/tgui_module/appearance_changer/ui_interact(mob/user, datum/tgui/ui = null, datum/tgui/parent_ui = null, datum/ui_state/custom_state)
@@ -317,11 +315,9 @@
 		for(var/hair_style in valid_hairstyles)
 			hair_styles[++hair_styles.len] = list("hairstyle" = hair_style)
 		data["hair_styles"] = hair_styles
-		// VOREStation Add - Ears/Tails/Wings
 		data["ear_styles"] = valid_earstyles
 		data["tail_styles"] = valid_tailstyles
 		data["wing_styles"] = valid_wingstyles
-		// VOREStation Add End
 
 	if(can_change(APPEARANCE_FACIAL_HAIR))
 		var/facial_hair_styles[0]
@@ -362,12 +358,9 @@
 	data["change_hair"] = can_change(APPEARANCE_HAIR)
 	if(data["change_hair"])
 		data["hair_style"] = target.h_style
-
-		// VOREStation Add - Ears/Tails/Wings
 		data["ear_style"] = target.ear_style
 		data["tail_style"] = target.tail_style
 		data["wing_style"] = target.wing_style
-		// VOREStation Add End
 
 	data["change_facial_hair"] = can_change(APPEARANCE_FACIAL_HAIR)
 	if(data["change_facial_hair"])
@@ -385,14 +378,12 @@
 	data["change_hair_color"] = can_change(APPEARANCE_HAIR_COLOR)
 	if(data["change_hair_color"])
 		data["hair_color"] = rgb(target.r_hair, target.g_hair, target.b_hair)
-		// VOREStation Add - Ears/Tails/Wings
 		data["ears_color"] = rgb(target.r_ears, target.g_ears, target.b_ears)
 		data["ears2_color"] = rgb(target.r_ears2, target.g_ears2, target.b_ears2)
 		data["tail_color"] = rgb(target.r_tail, target.g_tail, target.b_tail)
 		data["tail2_color"] = rgb(target.r_tail2, target.g_tail2, target.b_tail2)
 		data["wing_color"] = rgb(target.r_wing, target.g_wing, target.b_wing)
 		data["wing2_color"] = rgb(target.r_wing2, target.g_wing2, target.b_wing2)
-		// VOREStation Add End
 
 	data["change_facial_hair_color"] = can_change(APPEARANCE_FACIAL_HAIR_COLOR)
 	if(data["change_facial_hair_color"])
@@ -450,7 +441,7 @@
 			return TRUE
 		target = usr
 
-	return target && (flags & APPEARANCE_SKIN) && target.species.appearance_flags & HAS_SKIN_TONE
+	return target && (flags & APPEARANCE_SKIN) && target.species.species_appearance_flags & HAS_SKIN_TONE
 
 /datum/tgui_module/appearance_changer/proc/can_change_skin_color()
 	var/mob/living/carbon/human/target = owner
@@ -459,17 +450,15 @@
 			return TRUE
 		target = usr
 
-	return target && (flags & APPEARANCE_SKIN) && target.species.appearance_flags & HAS_SKIN_COLOR
+	return target && (flags & APPEARANCE_SKIN) && target.species.species_appearance_flags & HAS_SKIN_COLOR
 
 /datum/tgui_module/appearance_changer/proc/cut_data()
 	// Making the assumption that the available species remain constant
 	valid_hairstyles.Cut()
 	valid_facial_hairstyles.Cut()
-	// VOREStation Add - Ears/Tails/Wings
 	valid_earstyles.Cut()
 	valid_tailstyles.Cut()
 	valid_wingstyles.Cut()
-	// VOREStation Add End
 
 /datum/tgui_module/appearance_changer/proc/generate_data(mob/user)
 	var/mob/living/carbon/human/target = owner
@@ -487,7 +476,6 @@
 		valid_hairstyles = target.generate_valid_hairstyles(check_gender = 0)
 		valid_facial_hairstyles = target.generate_valid_facial_hairstyles()
 
-	// VOREStation Add - Ears/Tails/Wings
 	if(!LAZYLEN(valid_earstyles))
 		for(var/path in ear_styles_list)
 			var/datum/sprite_accessory/ears/instance = ear_styles_list[path]
@@ -520,7 +508,6 @@
 					"color" = !!instance.do_colouration,
 					"second_color" = !!instance.extra_overlay,
 				)))
-	// VOREStation Add End
 
 /datum/tgui_module/appearance_changer/proc/get_genders()
 	var/mob/living/carbon/human/target = owner
@@ -540,7 +527,6 @@
 /datum/tgui_module/appearance_changer/proc/changed_hook(flag)
 	return
 
-// VOREStation Add - Ears/Tails/Wings
 /datum/tgui_module/appearance_changer/proc/can_use_sprite(datum/sprite_accessory/X, mob/living/carbon/human/target, mob/user)
 	if(X.apply_restrictions && !(target.species.name in X.species_allowed))
 		return FALSE
@@ -549,7 +535,6 @@
 		return FALSE
 
 	return TRUE
-// VOREStation Add End
 
 /datum/tgui_module/appearance_changer/mirror
 	name = "SalonPro Nano-Mirror&trade;"

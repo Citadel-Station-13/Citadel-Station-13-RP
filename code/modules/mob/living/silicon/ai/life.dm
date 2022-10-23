@@ -1,4 +1,9 @@
-/mob/living/silicon/ai/Life()
+/mob/living/silicon/ai/Life(seconds, times_fired)
+	if((. = ..()))
+		return
+
+	// i'm not converting thhis life proc, christ ~silicons
+
 	if (src.stat == DEAD)
 		return
 	else //I'm not removing that shitton of tabs, unneeded as they are. -- Urist
@@ -6,8 +11,8 @@
 		var/turf/T = get_turf(src)
 
 		if (src.stat != CONSCIOUS)
-			src.cameraFollow = null
-			src.reset_view(null)
+			cameraFollow = null
+			reset_perspective()
 			disconnect_shell("Disconnecting from remote shell due to local system failure.")
 
 		src.updatehealth()
@@ -48,11 +53,6 @@
 					blind = 1
 
 		if (!blind)
-			src.sight |= SEE_TURFS
-			src.sight |= SEE_MOBS
-			src.sight |= SEE_OBJS
-			src.see_in_dark = 8
-			src.see_invisible = SEE_INVISIBLE_LIVING
 
 			if (aiRestorePowerRoutine==2)
 				to_chat(src, "Alert cancelled. Power has been restored without our assistance.")
@@ -80,12 +80,7 @@
 
 					//Blind the AI
 					updateicon()
-					overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
-					src.sight = src.sight&~SEE_TURFS
-					src.sight = src.sight&~SEE_MOBS
-					src.sight = src.sight&~SEE_OBJS
-					src.see_in_dark = 0
-					src.see_invisible = SEE_INVISIBLE_LIVING
+					overlay_fullscreen("blind", /atom/movable/screen/fullscreen/scaled/blind)
 
 					//Now to tell the AI why they're blind and dying slowly.
 
@@ -116,14 +111,14 @@
 						var/PRP
 						for (PRP=1, PRP<=4, PRP++)
 							for (var/obj/machinery/power/apc/APC in current_area)
-								if (!(APC.stat & BROKEN))
+								if (!(APC.machine_stat & BROKEN))
 									theAPC = APC
 									break
 							if (!theAPC)
 								switch(PRP)
-									if (1) 
+									if (1)
 										to_chat(src, "Unable to locate APC!")
-									else 
+									else
 										to_chat(src, "Lost connection with the APC!")
 								src:aiRestorePowerRoutine = 2
 								return
@@ -134,11 +129,11 @@
 									clear_fullscreen("blind") //This, too, is a fix to issue 603
 									return
 							switch(PRP)
-								if (1) 
+								if (1)
 									to_chat(src, "APC located. Optimizing route to APC to avoid needless power waste.")
-								if (2) 
+								if (2)
 									to_chat(src, "Best route identified. Hacking offline APC power port.")
-								if (3) 
+								if (3)
 									to_chat(src, "Power port upload access confirmed. Loading control program into APC power port software.")
 								if (4)
 									to_chat(src, "Transfer complete. Forcing APC to execute program.")
@@ -169,7 +164,7 @@
 /mob/living/silicon/ai/updatehealth()
 	if(status_flags & GODMODE)
 		health = 100
-		stat = CONSCIOUS
+		set_stat(CONSCIOUS)
 		setOxyLoss(0)
 	else
 		health = 100 - getFireLoss() - getBruteLoss() // Oxyloss is not part of health as it represents AIs backup power. AI is immune against ToxLoss as it is machine.
@@ -177,4 +172,3 @@
 /mob/living/silicon/ai/rejuvenate()
 	..()
 	add_ai_verbs(src)
-

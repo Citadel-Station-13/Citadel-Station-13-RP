@@ -68,8 +68,8 @@
 
 	// Do the actual leap.
 	status_flags |= LEAPING // Lets us pass over everything.
-	visible_message(span("danger","\The [src] leaps at \the [A]!"))
-	throw_at(get_step(get_turf(A), get_turf(src)), special_attack_max_range+1, 1, src)
+	visible_message(SPAN_DANGER("\The [src] leaps at \the [A]!"))
+	throw_at_old(get_step(get_turf(A), get_turf(src)), special_attack_max_range+1, 1, src)
 	playsound(src, leap_sound, 75, 1)
 
 	sleep(5) // For the throw to complete. It won't hold up the AI SSticker due to waitfor being false.
@@ -97,8 +97,8 @@
 
 	if(victim)
 		victim.Weaken(2)
-		victim.visible_message(span("danger","\The [src] knocks down \the [victim]!"))
-		to_chat(victim, span("critical", "\The [src] jumps on you!"))
+		victim.visible_message(SPAN_DANGER("\The [src] knocks down \the [victim]!"))
+		to_chat(victim, SPAN_CRITICAL("\The [src] jumps on you!"))
 		. = TRUE
 
 	set_AI_busy(FALSE)
@@ -139,7 +139,7 @@
 		to_chat(world, "Failed to pull.")
 		return FALSE
 
-	holder.visible_message(span("danger","\The [holder] starts to drag \the [L] away!"))
+	holder.visible_message(SPAN_DANGER("\The [holder] starts to drag \the [L] away!"))
 
 	var/list/allies = list()
 	var/list/enemies = list()

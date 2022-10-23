@@ -26,7 +26,7 @@
 	return
 
 /obj/machinery/keycard_auth/attackby(obj/item/W as obj, mob/user as mob)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
 		return
 	if(istype(W,/obj/item/card/id))
@@ -43,8 +43,8 @@
 
 	if(W.is_screwdriver())
 		to_chat(user, "You begin removing the faceplate from the [src]")
-		playsound(src, W.usesound, 50, 1)
-		if(do_after(user, 10 * W.toolspeed))
+		playsound(src, W.tool_sound, 50, 1)
+		if(do_after(user, 10 * W.tool_speed))
 			to_chat(user, "You remove the faceplate from the [src]")
 			var/obj/structure/frame/A = new /obj/structure/frame(loc)
 			var/obj/item/circuitboard/M = new circuit(A)
@@ -59,17 +59,17 @@
 				C.forceMove(loc)
 			A.state = 3
 			A.update_icon()
-			M.deconstruct(src)
+			M.after_deconstruct(src)
 			qdel(src)
 			return
 
 /obj/machinery/keycard_auth/power_change()
 	..()
-	if(stat &NOPOWER)
+	if(machine_stat & NOPOWER)
 		icon_state = "auth_off"
 
 /obj/machinery/keycard_auth/attack_hand(mob/user as mob)
-	if(user.stat || stat & (NOPOWER|BROKEN))
+	if(user.stat || machine_stat & (NOPOWER|BROKEN))
 		to_chat(user, "This device is not powered.")
 		return
 	if(!user.IsAdvancedToolUser())
@@ -107,7 +107,7 @@
 	if(busy)
 		to_chat(usr, "This device is busy.")
 		return
-	if(usr.stat || stat & (BROKEN|NOPOWER))
+	if(usr.stat || machine_stat & (BROKEN|NOPOWER))
 		to_chat(usr, "This device is without power.")
 		return
 	if(href_list["triggerevent"])
@@ -117,7 +117,6 @@
 		reset()
 
 	updateUsrDialog()
-	add_fingerprint(usr)
 	return
 
 /obj/machinery/keycard_auth/proc/reset()
@@ -132,7 +131,7 @@
 
 /obj/machinery/keycard_auth/proc/broadcast_request()
 	icon_state = "auth_on"
-	for(var/obj/machinery/keycard_auth/KA in machines)
+	for(var/obj/machinery/keycard_auth/KA in GLOB.machines)
 		if(KA == src) continue
 		KA.reset()
 		spawn()
@@ -146,8 +145,8 @@
 		message_admins("[key_name(event_triggered_by)] triggered and [key_name(event_confirmed_by)] confirmed event [event]", 1)
 	reset()
 
-/obj/machinery/keycard_auth/proc/receive_request(var/obj/machinery/keycard_auth/source)
-	if(stat & (BROKEN|NOPOWER))
+/obj/machinery/keycard_auth/proc/receive_request(obj/machinery/keycard_auth/source)
+	if(machine_stat & (BROKEN|NOPOWER))
 		return
 	event_source = source
 	busy = 1

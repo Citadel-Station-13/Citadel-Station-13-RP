@@ -17,7 +17,7 @@
 	//Handle some post-spawn var stuff.
 	if(planttype)
 		plantname = planttype
-		var/datum/seed/S = plant_controller.seeds[plantname]
+		var/datum/seed/S = SSplants.seeds[plantname]
 		if(!S || !S.chems)
 			return
 
@@ -37,7 +37,7 @@
 	icon_state = "corncob"
 	flags = NOCONDUCT
 	w_class = ITEMSIZE_SMALL
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 4
 	throw_range = 20
 
@@ -56,6 +56,6 @@
 	icon_state = "banana_peel"
 	flags = NOCONDUCT
 	w_class = ITEMSIZE_SMALL
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 4
 	throw_range = 20

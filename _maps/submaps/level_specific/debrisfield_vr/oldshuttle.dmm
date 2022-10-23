@@ -186,7 +186,7 @@
 	icon_state = "warning";
 	dir = 9
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
 	id_tag = "expshuttle_docker_pump_out_internal"
@@ -204,7 +204,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 5
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
 	id_tag = "expshuttle_vent"
@@ -229,7 +229,7 @@
 	icon_state = "warning";
 	dir = 8
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
 	id_tag = "expshuttle_docker_pump_out_internal"
@@ -241,7 +241,7 @@
 	icon_state = "warning";
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
 	id_tag = "expshuttle_vent"
@@ -272,7 +272,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 10
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8;
 	frequency = 1380;
 	id_tag = "expshuttle_docker_pump_out_internal"
@@ -291,7 +291,7 @@
 	icon_state = "tube1";
 	dir = 4
 	},
-/obj/machinery/atmospherics/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 4;
 	frequency = 1380;
 	id_tag = "expshuttle_vent"
@@ -348,7 +348,7 @@
 /turf/simulated/shuttle/floor/black/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "bb" = (
-/obj/machinery/atmospherics/unary/vent_pump/high_volume/wall_mounted{
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume/wall_mounted{
 	dir = 1;
 	frequency = 1380;
 	id_tag = "expshuttle_docker_pump_out_external";

@@ -125,7 +125,7 @@
 
 			C.images += holder
 */
-/obj/mecha/medical/odysseus/loaded/Initialize()
+/obj/mecha/medical/odysseus/loaded/Initialize(mapload)
 	. = ..()
 	var/obj/item/mecha_parts/mecha_equipment/ME = new /obj/item/mecha_parts/mecha_equipment/tool/sleeper
 	ME.attach(src)
@@ -138,7 +138,7 @@
 /obj/mecha/medical/odysseus/old
 	desc = "An aging combat exosuit utilized by many corporations. Originally developed to combat hostile alien lifeforms. This one is particularly worn looking and likely isn't as sturdy."
 
-/obj/mecha/medical/odysseus/old/Initialize()
+/obj/mecha/medical/odysseus/old/Initialize(mapload)
 	. = ..()
 	health = 25
 	maxhealth = 50	//Just slightly worse.

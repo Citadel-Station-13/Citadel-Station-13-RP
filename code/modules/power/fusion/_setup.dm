@@ -1,11 +1,14 @@
 // temperature of the core of the sun
 #define FUSION_HEAT_CAP 1.57e7
 
-#define SETUP_OK 1			// All good
-#define SETUP_WARNING 2		// Something that shouldn't happen happened, but it's not critical so we will continue
-#define SETUP_ERROR 3		// Something bad happened, and it's important so we won't continue setup.
-#define SETUP_DELAYED 4		// Wait for other things first.
-
+/// All good
+#define SETUP_OK 1
+/// Something that shouldn't happen happened, but it's not critical so we will continue
+#define SETUP_WARNING 2
+/// Something bad happened, and it's important so we won't continue setup.
+#define SETUP_ERROR 3
+/// Wait for other things first.
+#define SETUP_DELAYED 4
 /datum/admins/proc/setup_fusion()
 	set category = "Debug"
 	set name = "Setup Fusion Core"
@@ -17,7 +20,7 @@
 		to_chat(usr, "Error: you are not an admin!")
 		return
 
-	if(!(locate(/obj/machinery/power/fusion_core/mapped) in machines))
+	if(!(locate(/obj/machinery/power/fusion_core/mapped) in GLOB.machines))
 		to_chat(usr, "This map is not appropriate for this verb.")
 		return
 
@@ -31,16 +34,16 @@
 
 	log_and_message_admins("## FUSION CORE SETUP - Setup initiated by [usr].")
 
-	for(var/obj/machinery/fusion_fuel_injector/mapped/injector in machines)
+	for(var/obj/machinery/fusion_fuel_injector/mapped/injector in GLOB.machines)
 		injector.cur_assembly = new /obj/item/fuel_assembly/deuterium(injector)
 		injector.BeginInjecting()
 
-	var/obj/machinery/power/fusion_core/mapped/core = locate() in machines
+	var/obj/machinery/power/fusion_core/mapped/core = locate() in GLOB.machines
 	if(core.jumpstart(15000))
 		var/list/delayed_objects = list()
 
 		// SETUP PHASE
-		for(var/obj/effect/engine_setup/S in machines)
+		for(var/obj/effect/engine_setup/S in GLOB.machines)
 			var/result = S.activate(0)
 			switch(result)
 				if(SETUP_OK)

@@ -6,7 +6,7 @@
 	icon_state = "paperplane"
 	throw_range = 7
 	throw_speed = 1
-	throwforce = 0
+	throw_force = 0
 	w_class = ITEMSIZE_TINY
 
 	var/obj/item/paper/internalPaper
@@ -64,17 +64,17 @@
 		update_icon()
 
 	else if(is_hot(P))
-		if(user.disabilities & CLUMSY && prob(10))
+		if(user.disabilities & MUTATION_CLUMSY && prob(10))
 			user.visible_message("<span class='warning'>[user] accidentally ignites themselves!</span>", \
 				"<span class='userdanger'>You miss the [src] and accidentally light yourself on fire!</span>")
-			user.unEquip(P)
+			user.drop_item_to_ground(P)
 			user.adjust_fire_stacks(1)
 			user.IgniteMob()
 			return
 
 		if(!(in_range(user, src))) //to prevent issues as a result of telepathically lighting a paper
 			return
-		user.unEquip(src)
+		user.drop_item_to_ground(src)
 		user.visible_message("<span class='danger'>[user] lights [src] ablaze with [P]!</span>", "<span class='danger'>You light [src] on fire!</span>")
 		fire_act()
 
@@ -91,7 +91,7 @@
 		H.eye_blurry += 10
 		var/obj/item/organ/internal/eyes/E = H.internal_organs_by_name[O_EYES]
 		if(E)
-			E.damage += 2.5
+			E.take_damage(2.5)
 		H.emote("scream")
 
 /obj/item/paper/AltClick(mob/living/carbon/user, obj/item/I)
@@ -99,7 +99,7 @@
 		if( (!in_range(src, user)) || user.stat || user.restrained() )
 			return
 		to_chat(user, "<span class='notice'>You fold [src] into the shape of a plane!</span>")
-		user.unEquip(src)
+		user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 		I = new /obj/item/paperplane(user, src)
 		user.put_in_hands(I)
 	else

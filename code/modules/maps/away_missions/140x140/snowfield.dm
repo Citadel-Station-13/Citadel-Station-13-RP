@@ -12,9 +12,7 @@
 /area/awaymission/snowfield
 	icon_state = "blank"
 //	requires_power = 0
-	base_turf = /turf/snow/snow2
 	ambience = list('sound/ambience/ambispace.ogg','sound/music/title2.ogg','sound/music/space.ogg','sound/music/main.ogg','sound/music/traitor.ogg')
-	base_turf = /turf/simulated/floor/snow/snow2
 
 /area/awaymission/snowfield/outside
 	icon_state = "green"
@@ -68,8 +66,6 @@
 	maxHealth = 80
 	health = 80 // Polar bear will fuck you up.
 
-	//stop_when_pulled = 0 //VORESTATION AI TEMPORARY REMOVAL
-	//turns_per_move = 5 //VORESTATION AI TEMPORARY REMOVAL
 	see_in_dark = 6
 
 	response_help  = "pets"
@@ -81,7 +77,6 @@
 
 	minbodytemp = 0
 
-	//speak_chance = 1 //VORESTATION AI TEMPORARY REMOVAL
 	meat_type = /obj/item/reagent_containers/food/snacks/bearmeat
 /datum/say_list/polar_bear
 	speak = list("RAWR!","Rawr!","GRR!","Growl!")
@@ -111,7 +106,7 @@
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. The controls are locked."
 	icon_state = "smes"
 
-/obj/effect/landmark/away
+/obj/landmark/away
 	name = "awaystart"
 
 /obj/effect/floor_decal/derelict/d1

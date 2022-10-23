@@ -5,7 +5,6 @@ var/global/foodNesting = 0
 var/global/recursiveFood = 0
 var/global/ingredientLimit = 20
 
-
 /obj/item/reagent_containers/food/snacks/customizable
 	icon = 'icons/obj/food_custom.dmi'
 	trash = /obj/item/trash/plate
@@ -19,13 +18,12 @@ var/global/ingredientLimit = 20
 	var/image/topping
 	var/image/filling
 
-/obj/item/reagent_containers/food/snacks/customizable/Initialize(loc,ingredient)
+/obj/item/reagent_containers/food/snacks/customizable/Initialize(mapload, ingredient)
 	. = ..()
 	topping = image(icon,,"[initial(icon_state)]_top")
 	filling = image(icon,,"[initial(icon_state)]_filling")
 	src.reagents.add_reagent("nutriment",3)
 	src.updateName()
-	return
 
 /obj/item/reagent_containers/food/snacks/customizable/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/reagent_containers/food/snacks))
@@ -46,8 +44,8 @@ var/global/ingredientLimit = 20
 		/*if(!user.drop_item())
 			to_chat(user, "<span class='warning'>\The [I] is stuck to your hands!</span>")
 			return*/
-		user.drop_item()
-		I.forceMove(src)
+		if(!user.attempt_insert_item_for_installation(I, src))
+			return
 
 		if(S.reagents)
 			S.reagents.trans_to(src,S.reagents.total_volume)
@@ -58,7 +56,7 @@ var/global/ingredientLimit = 20
 			overlays -= topping //thank you Comic
 		if(!fullyCustom && !stackIngredients && overlays.len)
 			overlays -= filling //we can't directly modify the overlay, so we have to remove it and then add it again
-			var/newcolor = S.filling_color != "#FFFFFF" ? S.filling_color : AverageColor(getFlatIcon(S, S.dir, 0), 1, 1)
+			var/newcolor = S.filling_color != "#FFFFFF" ? S.filling_color : AverageColor(get_flat_icon(S, S.dir, 0), 1, 1)
 			filling.color = BlendRGB(filling.color, newcolor, 1/ingredients.len)
 			overlays += filling
 		else
@@ -75,7 +73,7 @@ var/global/ingredientLimit = 20
 /obj/item/reagent_containers/food/snacks/customizable/proc/generateFilling(var/obj/item/reagent_containers/food/snacks/S, params)
 	var/image/I
 	if(fullyCustom)
-		var/icon/C = getFlatIcon(S, S.dir, 0)
+		var/icon/C = get_flat_icon(S, S.dir, 0)
 		I = image(C)
 		I.pixel_y = 12 * empty_Y_space(C)
 	else
@@ -83,7 +81,7 @@ var/global/ingredientLimit = 20
 		if(istype(S) && S.filling_color != "#FFFFFF")
 			I.color = S.filling_color
 		else
-			I.color = AverageColor(getFlatIcon(S, S.dir, 0), 1, 1)
+			I.color = AverageColor(get_flat_icon(S, S.dir, 0), 1, 1)
 		if(src.stackIngredients)
 			I.pixel_y = src.ingredients.len * 2
 		else

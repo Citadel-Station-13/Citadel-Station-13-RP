@@ -137,6 +137,7 @@
 	. = ..()
 
 /obj/structure/lift/panel/attack_ghost(var/mob/user)
+	. = ..()
 	return interact(user)
 
 /obj/structure/lift/panel/interact(var/mob/user)
@@ -164,7 +165,7 @@
 	dat += "<hr></body></html>"
 
 	user.set_machine(src)
-	var/datum/browser/popup = new(user, "turbolift_panel", "Lift Panel", 350, 320) //VOREStation Edit - Wider!
+	var/datum/browser/popup = new(user, "turbolift_panel", "Lift Panel", 350, 320)
 	popup.set_content(jointext(dat, null))
 	popup.open()
 	return

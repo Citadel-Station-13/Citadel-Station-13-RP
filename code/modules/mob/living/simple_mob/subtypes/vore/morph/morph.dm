@@ -11,7 +11,7 @@
 	icon_dead = "morph_dead"
 	movement_cooldown = 1
 	status_flags = CANPUSH
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	mob_bump_flag = SLIME
 
 	min_oxy = 0
@@ -50,7 +50,7 @@
 	var/morph_time = 0
 	var/our_size_multiplier = 1
 	var/static/list/blacklist_typecache = typecacheof(list(
-	/obj/screen,
+	/atom/movable/screen,
 	/obj/singularity,
 	/mob/living/simple_mob/vore/hostile/morph,
 	/obj/effect))

@@ -6,10 +6,10 @@
 
 #define MODE_NONE			0
 #define MODE_SERVER			1
-#define MODE_CLIENT			2	//The one who initiated the docking, and who can initiate the undocking. The server cannot initiate undocking, and is the one responsible for deciding to accept a docking request and signals when docking and undocking is complete. (Think server == station, client == shuttle)
-
-#define MESSAGE_RESEND_TIME 5	//how long (in seconds) do we wait before resending a message
-
+///The one who initiated the docking, and who can initiate the undocking. The server cannot initiate undocking, and is the one responsible for deciding to accept a docking request and signals when docking and undocking is complete. (Think server == station, client == shuttle)
+#define MODE_CLIENT			2
+///how long (in seconds) do we wait before resending a message
+#define MESSAGE_RESEND_TIME 5
 /*
 	*** STATE TABLE ***
 

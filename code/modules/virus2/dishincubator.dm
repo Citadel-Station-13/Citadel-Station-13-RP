@@ -19,38 +19,35 @@
 		return
 
 	if(istype(O, /obj/item/reagent_containers/glass) || istype(O,/obj/item/reagent_containers/syringe))
-
 		if(beaker)
 			to_chat(user, "\The [src] is already loaded.")
 			return
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 
 		beaker = O
-		user.drop_item()
-		O.loc = src
 
 		user.visible_message("[user] adds \a [O] to \the [src]!", "You add \a [O] to \the [src]!")
 		SSnanoui.update_uis(src)
 
 		src.attack_hand(user)
 		return
-
 	if(istype(O, /obj/item/virusdish))
-
 		if(dish)
 			to_chat(user, "The dish tray is aleady full!")
 			return
-
+		if(!user.attempt_insert_item_for_installation(O, src))
+			return
 		dish = O
-		user.drop_item()
-		O.loc = src
 
 		user.visible_message("[user] adds \a [O] to \the [src]!", "You add \a [O] to \the [src]!")
 		SSnanoui.update_uis(src)
 
 		src.attack_hand(user)
 
-/obj/machinery/disease2/incubator/attack_hand(mob/user as mob)
-	if(stat & (NOPOWER|BROKEN)) return
+/obj/machinery/disease2/incubator/attack_hand(mob/user)
+	if(machine_stat & (NOPOWER|BROKEN))
+		return
 	nano_ui_interact(user)
 
 /obj/machinery/disease2/incubator/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
@@ -146,12 +143,11 @@
 			SSnanoui.update_uis(src)
 
 /obj/machinery/disease2/incubator/Topic(href, href_list)
-	if (..()) return 1
+	if (..())
+		return TRUE
 
 	var/mob/user = usr
 	var/datum/nanoui/ui = SSnanoui.get_open_ui(user, src, "main")
-
-	src.add_fingerprint(user)
 
 	if (href_list["close"])
 		user.unset_machine()

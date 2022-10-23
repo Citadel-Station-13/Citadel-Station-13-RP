@@ -42,10 +42,10 @@
 /mob/living/carbon/human/isMonkey()
 	return istype(species, /datum/species/monkey)
 
-proc/isdeaf(A)
+/proc/isdeaf(A)
 	if(istype(A, /mob))
 		var/mob/M = A
-		return (M.sdisabilities & DEAF) || M.ear_deaf
+		return (M.sdisabilities & SDISABILITY_DEAF) || M.ear_deaf
 	return 0
 
 /mob/proc/get_ear_protection()
@@ -57,24 +57,24 @@ proc/isdeaf(A)
 /mob/proc/is_cloaked()
 	return FALSE
 
-proc/hasorgans(A) // Fucking really??
+/proc/hasorgans(A) // Fucking really??
 	return ishuman(A)
 
-proc/iscuffed(A)
+/proc/iscuffed(A)
 	if(istype(A, /mob/living/carbon))
 		var/mob/living/carbon/C = A
 		if(C.handcuffed)
 			return 1
 	return 0
 
-proc/hassensorlevel(A, var/level)
+/proc/hassensorlevel(A, var/level)
 	var/mob/living/carbon/human/H = A
 	if(istype(H) && istype(H.w_uniform, /obj/item/clothing/under))
 		var/obj/item/clothing/under/U = H.w_uniform
 		return U.sensor_mode >= level
 	return 0
 
-proc/getsensorlevel(A)
+/proc/getsensorlevel(A)
 	var/mob/living/carbon/human/H = A
 	if(istype(H) && istype(H.w_uniform, /obj/item/clothing/under))
 		var/obj/item/clothing/under/U = H.w_uniform
@@ -87,8 +87,9 @@ proc/getsensorlevel(A)
 
 /**
  * Returns true if the user should have admin AI level access
+ *! TO-BE-DEPRICATED
  */
-/proc/IsAdminGhost(var/mob/user)
+/proc/IsAdminGhost(mob/user)
 	if(!user)		//Are they a mob? Auto interface updates call this with a null src
 		return
 	if(!user.client) // Do they have a client?
@@ -96,6 +97,26 @@ proc/getsensorlevel(A)
 	if(!isobserver(user)) // Are they a ghost?
 		return
 	if(!check_rights(R_ADMIN, 0, user)) // Are they allowed?
+		return
+	if(!user.client.AI_Interact) // Do they have it enabled?
+		return
+	return TRUE
+
+/// Is the passed in mob a ghost with admin powers, doesn't check for AI interact like isAdminGhost() used to
+/proc/isAdminObserver(mob/user)
+	if(!user) //Are they a mob? Auto interface updates call this with a null src
+		return
+	if(!user.client) // Do they have a client?
+		return
+	if(!isobserver(user)) // Are they a ghost?
+		return
+	if(!check_rights_for(user.client, R_ADMIN)) // Are they allowed?
+		return
+	return TRUE
+
+/// Is the passed in mob an admin ghost WITH AI INTERACT enabled
+/proc/isAdminGhostAI(mob/user)
+	if(!isAdminObserver(user))
 		return
 	if(!user.client.AI_Interact) // Do they have it enabled?
 		return
@@ -176,55 +197,41 @@ proc/getsensorlevel(A)
 		return pick(base_miss_chance)
 	return zone
 
-/proc/shake_camera(mob/M, duration, strength=1)
-	if(!M || !M.client || M.shakecamera || M.stat || isEye(M) || isAI(M))
-		return
-	M.shakecamera = 1
-	spawn(1)
-		if(!M.client)
-			return
-
-		var/atom/oldeye=M.client.eye
-		var/aiEyeFlag = 0
-		if(istype(oldeye, /mob/observer/eye/aiEye))
-			aiEyeFlag = 1
-
-		var/x
-		for(x=0; x<duration, x++)
-			if(aiEyeFlag)
-				M.client.eye = locate(clamp(oldeye.loc.x+rand(-strength,strength), 1, world.maxx), clamp(oldeye.loc.y+rand(-strength,strength), 1, world.maxy), oldeye.loc.z)
-			else
-				M.client.eye = locate(clamp(M.loc.x+rand(-strength,strength), 1, world.maxx), clamp(M.loc.y+rand(-strength,strength), 1, world.maxy), M.loc.z)
-			sleep(1)
-		M.client.eye=oldeye
-		M.shakecamera = 0
-
-
 /proc/findname(msg)
 	for(var/mob/M in GLOB.mob_list)
 		if (M.real_name == text("[msg]"))
 			return 1
 	return 0
 
+/mob/proc/abiotic(full_body)
+	return FALSE
 
-/mob/proc/abiotic(var/full_body = 0)
-	return 0
+/mob/proc/item_considered_abiotic(obj/item/I)
+	return I && (I.item_flags & ITEM_ABSTRACT)
 
 //converts intent-strings into numbers and back
 var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 /proc/intent_numeric(argument)
 	if(istext(argument))
 		switch(argument)
-			if(INTENT_HELP)		return 0
-			if(INTENT_DISARM)	return 1
-			if(INTENT_GRAB)		return 2
-			else			return 3
+			if(INTENT_HELP)
+				return 0
+			if(INTENT_DISARM)
+				return 1
+			if(INTENT_GRAB)
+				return 2
+			else
+				return 3
 	else
 		switch(argument)
-			if(0)			return INTENT_HELP
-			if(1)			return INTENT_DISARM
-			if(2)			return INTENT_GRAB
-			else			return INTENT_HARM
+			if(0)
+				return INTENT_HELP
+			if(1)
+				return INTENT_DISARM
+			if(2)
+				return INTENT_GRAB
+			else
+				return INTENT_HARM
 
 //change a mob's act-intent. Input the intent as a string such as "help" or use "right"/"left
 /mob/verb/a_intent_change(input as text)
@@ -256,10 +263,10 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 			else
 				hud_used.action_intent.icon_state = INTENT_HELP
 
-proc/is_blind(A)
+/proc/is_blind(A)
 	if(istype(A, /mob/living/carbon))
 		var/mob/living/carbon/C = A
-		if(C.sdisabilities & BLIND || C.blinded)
+		if(C.sdisabilities & SDISABILITY_NERVOUS || C.blinded)
 			return 1
 	return 0
 
@@ -374,6 +381,38 @@ proc/is_blind(A)
 			say_dead_direct("The ghost of <span class='name'>[name]</span> now [pick("skulks","lurks","prowls","creeps","stalks")] among [pick("the dead","the spirits","the graveyard","the deceased","us")]. [message]")
 		else
 			say_dead_direct("<span class='name'>[name]</span> no longer [pick("skulks","lurks","prowls","creeps","stalks")] in the realm of the dead. [message]")
+
+/**
+ * WARNING: Proc direct ported from main
+ *
+ * ignore_key, ignore_dnr_observers will NOT work!
+ */
+/proc/notify_ghosts(message, ghost_sound, enter_link, atom/source, mutable_appearance/alert_overlay, action = NOTIFY_JUMP, flashwindow = TRUE, ignore_mapload = TRUE, ignore_key, ignore_dnr_observers = FALSE, header) //Easy notification of ghosts.
+	if(ignore_mapload && SSatoms.initialized != INITIALIZATION_INNEW_REGULAR)	//don't notify for objects created during a map load
+		return
+	for(var/mob/observer/dead/O in player_list)
+		if(!O.client)
+			continue
+		to_chat(O, "<span class='ghostalert'>[message][(enter_link) ? " [enter_link]" : ""]</span>")
+		if(ghost_sound)
+			SEND_SOUND(O, sound(ghost_sound))
+		if(flashwindow)
+			window_flash(O.client)
+		if(source)
+			var/atom/movable/screen/alert/notify_action/A = O.throw_alert("[REF(source)]_notify_action", /atom/movable/screen/alert/notify_action)
+			if(A)
+				if(O.client.prefs && O.client.prefs.UI_style)
+					A.icon = ui_style2icon(O.client.prefs.UI_style)
+				if (header)
+					A.name = header
+				A.desc = message
+				A.action = action
+				A.target = source
+				if(!alert_overlay)
+					alert_overlay = new(source)
+				alert_overlay.layer = FLOAT_LAYER
+				alert_overlay.plane = FLOAT_PLANE
+				A.add_overlay(alert_overlay)
 
 /mob/proc/switch_to_camera(var/obj/machinery/camera/C)
 	if (!C.can_use() || stat || (get_dist(C, src) > 1 || machine != src || blinded || !canmove))
@@ -495,38 +534,38 @@ proc/is_blind(A)
 
 //TODO: Integrate defence zones and targeting body parts with the actual organ system, move these into organ definitions.
 
-//The base miss chance for the different defence zones
+///The base miss chance for the different defence zones
 var/list/global/base_miss_chance = list(
-	"head" = 40,
-	"chest" = 10,
-	"groin" = 20,
-	"l_leg" = 20,
-	"r_leg" = 20,
-	"l_arm" = 20,
-	"r_arm" = 20,
-	"l_hand" = 50,
-	"r_hand" = 50,
-	"l_foot" = 50,
-	"r_foot" = 50,
+	BP_HEAD = 40,
+	BP_CHEST = 10,
+	BP_GROIN = 20,
+	BP_L_LEG = 30,
+	BP_R_LEG = 30,
+	BP_L_ARM = 30,
+	BP_R_ARM = 30,
+	BP_L_HAND = 50,
+	BP_R_HAND = 50,
+	BP_L_FOOT = 50,
+	BP_R_FOOT = 50,
 )
 
-//Used to weight organs when an organ is hit randomly (i.e. not a directed, aimed attack).
-//Also used to weight the protection value that armour provides for covering that body part when calculating protection from full-body effects.
+///Used to weight organs when an organ is hit randomly (i.e. not a directed, aimed attack).
+///Also used to weight the protection value that armour provides for covering that body part when calculating protection from full-body effects.
 var/list/global/organ_rel_size = list(
-	"head" = 25,
-	"chest" = 70,
-	"groin" = 30,
-	"l_leg" = 25,
-	"r_leg" = 25,
-	"l_arm" = 25,
-	"r_arm" = 25,
-	"l_hand" = 10,
-	"r_hand" = 10,
-	"l_foot" = 10,
-	"r_foot" = 10,
+	BP_HEAD = 25,
+	BP_CHEST = 70,
+	BP_GROIN = 30,
+	BP_L_LEG = 25,
+	BP_R_LEG = 25,
+	BP_L_ARM = 25,
+	BP_R_ARM = 25,
+	BP_L_HAND = 10,
+	BP_R_HAND = 10,
+	BP_L_FOOT = 10,
+	BP_R_FOOT = 10,
 )
 
-/mob/proc/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /obj/screen/fullscreen/flash)
+/mob/proc/flash_eyes(intensity = FLASH_PROTECTION_MODERATE, override_blindness_check = FALSE, affect_silicon = FALSE, visual = FALSE, type = /atom/movable/screen/fullscreen/tiled/flash)
 	return
 
 //Recalculates what planes this mob can see using their plane_holder, for humans this is checking slots, for others, could be whatever.
@@ -541,18 +580,6 @@ var/list/global/organ_rel_size = list(
 /mob/proc/handle_vision()
 	return
 
-//Icon is used to occlude things like huds from the faulty byond context menu.
-//   http://www.byond.com/forum/?post=2336679
-var/global/image/backplane
-/hook/startup/proc/generate_backplane()
-	backplane = image('icons/misc/win32.dmi')
-	backplane.alpha = 0
-	backplane.plane = -100
-	backplane.layer = MOB_LAYER-0.1
-	backplane.mouse_opacity = 0
-
-	return TRUE
-
 /mob/proc/get_sound_env(var/pressure_factor)
 	if (pressure_factor < 0.5)
 		return SPACE
@@ -561,20 +588,21 @@ var/global/image/backplane
 		return A.sound_env
 
 /mob/proc/position_hud_item(var/obj/item/item, var/slot)
+	var/held = is_holding(item)
 	if(!istype(hud_used) || !slot || !LAZYLEN(hud_used.slot_info))
 		return
 
 	//They may have hidden their entire hud but the hands
-	if(!hud_used.hud_shown && slot > slot_r_hand)
+	if(!hud_used.hud_shown && held)
 		item.screen_loc = null
 		return
 
 	//They may have hidden the icons in the bottom left with the hide button
-	if(!hud_used.inventory_shown && slot > slot_r_store)
+	if(!hud_used.inventory_shown && !held && (resolve_inventory_slot_meta(slot)?.inventory_slot_flags & INV_SLOT_HUD_REQUIRES_EXPAND))
 		item.screen_loc = null
 		return
 
-	var/screen_place = hud_used.slot_info["[slot]"]
+	var/screen_place = held? hud_used.hand_info["[get_held_index(item)]"] : hud_used.slot_info["[slot]"]
 	if(!screen_place)
 		item.screen_loc = null
 		return
@@ -583,3 +611,17 @@ var/global/image/backplane
 
 /mob/proc/can_see_reagents()
 	return stat == DEAD || issilicon(src) //Dead guys and silicons can always see reagents
+
+//Ingnores the possibility of breaking tags.
+/proc/stars_no_html(text, pr, re_encode)
+	text = html_decode(text) //We don't want to screw up escaped characters
+	. = list()
+	for(var/i = 1, i <= length_char(text), i++)
+		var/char = copytext_char(text, i, i+1)
+		if(char == " " || prob(pr))
+			. += char
+		else
+			. += "*"
+	. = JOINTEXT(.)
+	if(re_encode)
+		. = html_encode(.)

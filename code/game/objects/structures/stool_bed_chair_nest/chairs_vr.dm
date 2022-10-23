@@ -1,12 +1,13 @@
 /obj/structure/bed/chair/modern_chair
 	name = "modern chair"
 	desc = "It's like sitting in an egg."
+	icon = 'icons/obj/furniture_vr.dmi'
 	icon_state = "modern_chair"
 	color = null
 	base_icon = "modern_chair"
 	applies_material_colour = 0
 
-/obj/structure/bed/chair/modern_chair/Initialize()
+/obj/structure/bed/chair/modern_chair/Initialize(mapload)
 	. = ..()
 	var/image/I = image(icon, "[base_icon]_over")
 	I.layer = ABOVE_MOB_LAYER
@@ -16,14 +17,15 @@
 /obj/structure/bed/chair/bar_stool
 	name = "bar stool"
 	desc = "How vibrant!"
-	icon_state = "modern_stool"
+	icon_state = "bar"
+	base_icon = "bar"
 	color = null
-	base_icon = "modern_stool"
 	applies_material_colour = 0
 
 /obj/structure/bed/chair/backed_grey
 	name = "grey chair"
 	desc = "Also available in red."
+	icon = 'icons/obj/furniture_vr.dmi'
 	icon_state = "onestar_chair_grey"
 	color = null
 	base_icon = "onestar_chair_grey"
@@ -32,6 +34,7 @@
 /obj/structure/bed/chair/backed_red
 	name = "red chair"
 	desc = "Also available in grey."
+	icon = 'icons/obj/furniture_vr.dmi'
 	icon_state = "onestar_chair_red"
 	color = null
 	base_icon = "onestar_chair_red"
@@ -115,12 +118,14 @@
 				stool_cache[cache_key] = I
 			add_overlay(stool_cache[cache_key])
 
+/obj/structure/bed/chair/bay
+	icon = 'icons/obj/furniture_vr.dmi'
+
 /obj/structure/bed/chair/bay/chair
 	name = "mounted chair"
 	desc = "Like a normal chair, but more stationary."
 	icon_state = "bay_chair_preview"
 	base_icon = "bay_chair"
-	buckle_movable = 1
 
 /obj/structure/bed/chair/bay/chair/padded/red/Initialize(mapload, new_material, new_padding_material)
 	return ..(mapload, new_material, "carpet")
@@ -202,27 +207,26 @@
 	add_overlay(I)
 
 /obj/structure/bed/chair/bay/comfy/captain/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, DEFAULT_WALL_MATERIAL, "blue")
+	return ..(mapload, MAT_STEEL, "blue")
 
 /obj/structure/bed/chair/bay/shuttle
 	name = "shuttle seat"
 	desc = "A comfortable, secure seat. It has a sturdy-looking buckling system for smoother flights."
 	base_icon = "shuttle_chair"
 	icon_state = "shuttle_chair_preview"
-	buckle_movable = 0
 	var/buckling_sound = 'sound/effects/metal_close.ogg'
 	var/padding = "blue"
 
 /obj/structure/bed/chair/bay/shuttle/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, DEFAULT_WALL_MATERIAL, padding)
+	return ..(mapload, MAT_STEEL, padding)
 
-/obj/structure/bed/chair/bay/shuttle/post_buckle_mob()
+/obj/structure/bed/chair/bay/shuttle/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
 	playsound(src,buckling_sound,75,1)
 	if(has_buckled_mobs())
 		base_icon = "shuttle_chair-b"
 	else
 		base_icon = "shuttle_chair"
-	..()
 
 /obj/structure/bed/chair/bay/shuttle/update_icon()
 	..()

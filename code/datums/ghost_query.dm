@@ -64,7 +64,7 @@
 
 // Normal things.
 /datum/ghost_query/promethean
-	role_name = "Promethean"
+	role_name = SPECIES_PROMETHEAN
 	question = "Someone is requesting a soul for a promethean.  Would you like to play as one?"
 	query_sound = 'sound/effects/slime_squish.ogg'
 	be_special_flag = BE_ALIEN
@@ -125,7 +125,6 @@
 /datum/ghost_query/lost_drone
 	role_name = "Lost Drone"
 	question = "A lost drone onboard has been discovered by a crewmember and they are attempting to reactivate it.  Would you like to play as the drone?"
-	//be_special_flag = BE_AI	//VOREStation Removal: Positronic role is never used because intended purpose is unfitting, so remove the check
 	check_bans = list("AI", "Cyborg")
 	cutoff_number = 1
 

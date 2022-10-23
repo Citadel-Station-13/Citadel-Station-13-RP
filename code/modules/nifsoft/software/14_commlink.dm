@@ -21,7 +21,7 @@
 /datum/nifsoft/commlink/activate()
 	if((. = ..()))
 		nif.comm.initialize_exonet(nif.human)
-		nif.comm.ui_interact(nif.human, custom_state = GLOB.tgui_commlink_state)
+		nif.comm.ui_interact(nif.human, custom_state = GLOB.ui_commlink_state)
 		spawn(0)
 			deactivate()
 
