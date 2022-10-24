@@ -257,30 +257,36 @@
 
 /obj/structure/closet/crate/large/aether
 	desc = "A hefty metal crate, painted in Aether Atmospherics and Recycling colours."
+	icon_state = "aetherlarge"
 	icon_opened = "aetherlargeopen"
 	icon_closed = "aetherlarge"
 
 /obj/structure/closet/crate/large/einstein
 	desc = "A hefty metal crate, with an Einstien Engines sticker, the company has since been bought out by Hephaestus Industries."
+	icon_state = "eelarge"
 	icon_opened = "eelargeopen"
 	icon_closed = "eelarge"
 
 /obj/structure/closet/crate/large/nanotrasen
 	desc = "A hefty metal crate, painted in standard NanoTrasen livery."
+	icon_state = "ntlarge"
 	icon_opened = "ntlargeopen"
 	icon_closed = "ntlarge"
 
 /obj/structure/closet/crate/large/xion
 	desc = "A hefty metal crate, painted in the orange of the former Xion Manufacturing Group, now a subsidiary of Aether Atmospherics and Recycling."
+	icon_state = "xionlarge"
 	icon_opened = "xionlargeopen"
 	icon_closed = "xionlarge"
 
 /obj/structure/closet/crate/large/secure/heph
 	desc = "A hefty metal crate with an electronic locking system, marked with Hephaestus Industries colours."
+	icon_state = "hephlarge"
 	icon_opened = "hephlargeopen"
 	icon_closed = "hephlarge"
 
 /obj/structure/closet/crate/large/secure/xion
 	desc = "A hefty metal crate with an electronic locking system, painted in the orange of the former Xion Manufacturing Group, now a subsidiary of Aether Atmospherics and Recycling."
+	icon_state = "xionlargesecure"
 	icon_opened = "xionlargesecureopen"
 	icon_closed = "xionlargesecure"
