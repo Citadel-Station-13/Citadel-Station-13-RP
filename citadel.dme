@@ -2580,6 +2580,8 @@
 #include "code\modules\lore_hardcoded\faction.dm"
 #include "code\modules\lore_hardcoded\origin.dm"
 #include "code\modules\lore_hardcoded\religion.dm"
+#include "code\modules\lore_hardcoded\origin\hegemony\_hegemony.dm"
+#include "code\modules\lore_hardcoded\origin\hegemony\SHOVE_THINGS_HERE.dm"
 #include "code\modules\lore_hardcoded\origin\oricon\_oricon.dm"
 #include "code\modules\lore_hardcoded\origin\oricon\sol.dm"
 #include "code\modules\mapping\map_config.dm"
