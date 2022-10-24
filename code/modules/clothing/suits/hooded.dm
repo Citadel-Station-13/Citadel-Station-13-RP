@@ -451,7 +451,7 @@
 /obj/item/clothing/suit/storage/hooded/miner
 	name = "mining suit"
 	desc = "An armoured suit for mining in harsh environments."
-	icon_state = "minerer"
+	icon_state = "miner"
 	item_state = "explorer"
 	flags = PHORONGUARD
 	clothing_flags = THICKMATERIAL
