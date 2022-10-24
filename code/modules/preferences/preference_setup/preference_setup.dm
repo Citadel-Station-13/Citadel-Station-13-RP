@@ -61,10 +61,6 @@
 	for(var/datum/category_group/player_setup_category/PS in categories)
 		PS.save_preferences(S)
 
-/datum/category_collection/player_setup_collection/proc/copy_to_mob(var/mob/living/carbon/human/C, flags)
-	for(var/datum/category_group/player_setup_category/PS in categories)
-		PS.copy_to_mob(C, flags)
-
 /datum/category_collection/player_setup_collection/proc/header()
 	var/dat = ""
 	for(var/datum/category_group/player_setup_category/PS in categories)
@@ -144,10 +140,6 @@
 		PI.sanitize_preferences()
 	for(var/datum/category_item/player_setup_item/PI in items)
 		PI.save_preferences(S)
-
-/datum/category_group/player_setup_category/proc/copy_to_mob(mob/living/carbon/human/C, flags)
-	for(var/datum/category_item/player_setup_item/PI in items)
-		PI.copy_to_mob(C, flags)
 
 /datum/category_group/player_setup_category/proc/content(var/mob/user)
 	. = "<table style='width:100%'><tr style='vertical-align:top'><td style='width:50%'>"

@@ -4,7 +4,8 @@
 		if(!category.spawn_checks(src, flags, errors))
 			. = FALSE
 
-/datum/preferences/proc/copy_to(mob/living/carbon/human/character, flags, icon_updates = TRUE)
+// todo: at some point we should support nonhuman copy to's better.
+/datum/preferences/proc/copy_to(mob/living/carbon/human/character, flags)
 	// Sanitizing rather than saving as someone might still be editing when copy_to occurs.
 	player_setup.sanitize_setup()
 
@@ -16,6 +17,8 @@
 
 	// Ask the preferences datums to apply their own settings to the new mob
 	player_setup.copy_to_mob(character, flags)
+	#warn this needs to prioritize entries based on load order!!
+	#warn how do we carry character data through for other init like record injection?
 
 	// Sync up all their organs and species one final time
 	character.force_update_organs()

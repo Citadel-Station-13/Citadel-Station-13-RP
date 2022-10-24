@@ -29,8 +29,13 @@ var/XENOMORPH_EGG 	= SPECIES_XENO
 	var/valid_vore_egg_types = global_vore_egg_types
 	pref.vore_egg_type	 = sanitize_inlist(pref.vore_egg_type, valid_vore_egg_types, initial(pref.vore_egg_type))
 
-/datum/category_item/player_setup_item/vore/egg/copy_to_mob(var/mob/living/carbon/human/character)
+/datum/category_item/player_setup_item/vore/egg/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
+	// todo: this is just a shim
+	if(!ishuman(M))
+		return TRUE
+	var/mob/living/carbon/human/character = M
 	character.vore_egg_type	= pref.vore_egg_type
+	return TRUE
 
 /datum/category_item/player_setup_item/vore/egg/content(datum/preferences/prefs, mob/user, data)
 	. += "<br>"

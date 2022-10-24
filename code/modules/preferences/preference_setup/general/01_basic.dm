@@ -42,7 +42,11 @@
 	pref.be_random_name     = sanitize_integer(pref.be_random_name, 0, 1, initial(pref.be_random_name))
 
 // Moved from /datum/preferences/proc/copy_to()
-/datum/category_item/player_setup_item/general/basic/copy_to_mob(var/mob/living/carbon/human/character)
+/datum/category_item/player_setup_item/general/basic/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
+	// todo: this is just a shim
+	if(!ishuman(M))
+		return TRUE
+	var/mob/living/carbon/human/character = M
 	if(config_legacy.humans_need_surnames)
 		var/firstspace = findtext(pref.real_name, " ")
 		var/name_length = length(pref.real_name)
@@ -61,6 +65,7 @@
 	character.gender = pref.biological_gender
 	character.identifying_gender = pref.identifying_gender
 	character.age = pref.age
+	return TRUE
 
 /datum/category_item/player_setup_item/general/basic/content(datum/preferences/prefs, mob/user, data)
 	. = list()

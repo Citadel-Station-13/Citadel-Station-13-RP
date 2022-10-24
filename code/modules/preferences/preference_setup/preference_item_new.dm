@@ -22,10 +22,10 @@
  * @params
  * - M - the mob in question
  * - data - our save data
- * - flags - PREF_COPY_TO_ flags
+ * - flags - PREF_COPY_TO_FOR_ flags
  */
-/datum/category_item/player_setup_item/proc/copy_to_mob(mob/M, data, flags)
-	return
+/datum/category_item/player_setup_item/proc/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
+	return TRUE
 
 // todo: apply to global/client
 // todo: update to global/client
@@ -89,12 +89,16 @@
 
 /**
  * get default value
+ *
+ * todo: randomizing is awful, we need multi stage randomizing + templates for this
  */
 /datum/category_item/player_setup_item/proc/default_value(randomizing)
 	return null
 
 /**
  * get default value assuming pref
+ *
+ * todo: randomizing is awful, we need multi stage randomizing + templates for this
  */
 /datum/category_item/player_setup_item/proc/informed_default_value(datum/preferences/prefs, randomizing)
 	return default_value(randomizing)

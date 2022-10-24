@@ -89,8 +89,19 @@
 		character[CHARACTER_DATA_ALT_TITLES] = assembled_titles
 		// BACKGROUNDS: NOT MIGRATED
 		// MIGRATE SPECIES
-
-		#warn impl all
+		var/name_species
+		S["species"] >> name_species
+		var/datum/species/S = SScharacters.resolve_species_name(name_species)
+		if(!S)
+			errors += SPAN_WARNING("Species reset to human - no species found of old species name")
+			S = SScharacters.resolve_species_path(/datum/species/human)
+			// todo: default species?
+		if(S)
+			character[CHARACTER_DATA_REAL_SPECIES] = S.id
+			character[CHARACTER_DATA_CHAR_SPECIES] = S.id
+		else
+			errors += SPAN_DANGER("Species migration failed - no species datum. Report this to a coder.")
 		// MIGRATE LANGUAGES
+		#warn impl
 
 

@@ -37,7 +37,11 @@
 	return
 
 // Moved from /datum/preferences/proc/copy_to()
-/datum/category_item/player_setup_item/general/flavor/copy_to_mob(var/mob/living/carbon/human/character)
+/datum/category_item/player_setup_item/general/flavor/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
+	// todo: this is just a shim
+	if(!ishuman(M))
+		return TRUE
+	var/mob/living/carbon/human/character = M
 	character.flavor_texts["general"]	= pref.flavor_texts["general"]
 	character.flavor_texts["head"]		= pref.flavor_texts["head"]
 	character.flavor_texts["face"]		= pref.flavor_texts["face"]
@@ -48,6 +52,7 @@
 	character.flavor_texts["legs"]		= pref.flavor_texts["legs"]
 	character.flavor_texts["feet"]		= pref.flavor_texts["feet"]
 	character.ooc_notes 				= pref.metadata
+	return TRUE
 
 /datum/category_item/player_setup_item/general/flavor/content(datum/preferences/prefs, mob/user, data)
 	. += "<b>Flavor:</b><br>"

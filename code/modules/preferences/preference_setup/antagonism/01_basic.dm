@@ -22,10 +22,15 @@ var/global/list/uplink_locations = list("PDA", "Headset", "None")
 	if(!pref.antag_vis) pref.antag_vis = "Hidden"
 
 // Moved from /datum/preferences/proc/copy_to()
-/datum/category_item/player_setup_item/antagonism/basic/copy_to_mob(var/mob/living/carbon/human/character)
+/datum/category_item/player_setup_item/antagonism/basic/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
+	// todo: this is just a shim
+	if(!ishuman(M))
+		return TRUE
+	var/mob/living/carbon/human/character = M
 	character.exploit_record = pref.exploit_record
 	character.antag_faction = pref.antag_faction
 	character.antag_vis = pref.antag_vis
+	return TRUE
 
 /datum/category_item/player_setup_item/antagonism/basic/content(datum/preferences/prefs, mob/user, data)
 	. += "Faction: <a href='?src=\ref[src];antagfaction=1'>[pref.antag_faction]</a><br/>"

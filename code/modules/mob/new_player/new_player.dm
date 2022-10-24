@@ -624,7 +624,7 @@
 	if(!spawn_checks_vr())
 		return FALSE
 	var/list/errors = list()
-	if(!client.prefs.spawn_checks(PREF_COPY_TO_IS_SPAWNING | PREF_COPY_TO_ROUNDSTART, errors))
+	if(!client.prefs.spawn_checks(PREF_COPY_TO_IS_SPAWNING | PREF_COPY_TO_FOR_ROUNDSTART, errors))
 		to_chat(src, SPAN_WARNING("An error has occured while trying to spawn you in:<br>[errors.Join("<br>")]"))
 		return FALSE
 	spawning = 1

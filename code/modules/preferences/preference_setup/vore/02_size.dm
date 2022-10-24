@@ -40,12 +40,17 @@
 	if(pref.size_multiplier == null || pref.size_multiplier < RESIZE_TINY || pref.size_multiplier > RESIZE_HUGE)
 		pref.size_multiplier = initial(pref.size_multiplier)
 
-/datum/category_item/player_setup_item/vore/size/copy_to_mob(var/mob/living/carbon/human/character)
+/datum/category_item/player_setup_item/vore/size/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
+	// todo: this is just a shim
+	if(!ishuman(M))
+		return TRUE
+	var/mob/living/carbon/human/character = M
 	character.weight			= pref.weight_vr
 	character.weight_gain		= pref.weight_gain
 	character.weight_loss		= pref.weight_loss
 	character.fuzzy				= pref.fuzzy
 	character.resize(pref.size_multiplier, animate = FALSE)
+	return TRUE
 
 /datum/category_item/player_setup_item/vore/size/content(datum/preferences/prefs, mob/user, data)
 	. += "<br>"

@@ -21,9 +21,14 @@
 	pref.autohiss = sanitize_integer(pref.autohiss, AUTOHISS_OFF, AUTOHISS_NUM, AUTOHISS_OFF)
 	pref.autohiss_type = sanitize_integer(pref.autohiss_type, AUTOHISS_TYPE_NONE, AUTOHISS_TYPE_NUM, AUTOHISS_TYPE_NONE)
 
-/datum/category_item/player_setup_item/vore/autohiss/copy_to_mob(var/mob/living/carbon/human/character)
+/datum/category_item/player_setup_item/vore/autohiss/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
+	// todo: this is just a shim
+	if(!ishuman(M))
+		return TRUE
+	var/mob/living/carbon/human/character = M
 	character.autohiss_mode = pref.autohiss
 	character.autohiss_type = pref.autohiss_type
+	return TRUE
 
 /datum/category_item/player_setup_item/vore/autohiss/content(datum/preferences/prefs, mob/user, data)
 	. += "<br>"

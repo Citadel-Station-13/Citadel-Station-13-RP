@@ -255,19 +255,6 @@ GLOBAL_LIST_EMPTY(mannequins)
 			if(0.1 to INFINITY)
 				positive_traits[path] = instance
 
-	// Custom species icon bases
-	var/list/blacklisted_icons = list(SPECIES_CUSTOM, SPECIES_PROMETHEAN)
-	var/list/whitelisted_icons = list(SPECIES_VULPKANIN, SPECIES_XENOHYBRID)
-	for(var/species_name in GLOB.playable_species)
-		if(species_name in blacklisted_icons)
-			continue
-		var/datum/species/S = SScharacters.resolve_species_name(species_name)
-		if(S.species_spawn_flags & SPECIES_SPAWN_WHITELISTED)
-			continue
-		GLOB.custom_species_bases += species_name
-	for(var/species_name in whitelisted_icons)
-		GLOB.custom_species_bases += species_name
-
 	return 1 // Hooks must return 1
 
 /* // Uncomment to debug chemical reaction list.
@@ -283,9 +270,6 @@ GLOBAL_LIST_EMPTY(mannequins)
 */
 ///Hexidecimal numbers
 var/global/list/hexNums = list("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")
-
-//* Custom Species Lists *//
-GLOBAL_LIST_EMPTY(custom_species_bases)
 
 //! ## Traits
 /// Negative custom species traits, indexed by path.

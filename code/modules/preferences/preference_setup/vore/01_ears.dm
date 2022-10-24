@@ -207,7 +207,11 @@
 		if(temp_wing_style.apply_restrictions && (!(pref.species in temp_wing_style.species_allowed)))
 			pref.wing_style = initial(pref.wing_style)
 
-/datum/category_item/player_setup_item/vore/ears/copy_to_mob(var/mob/living/carbon/human/character)
+/datum/category_item/player_setup_item/vore/ears/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
+	// todo: this is just a shim
+	if(!ishuman(M))
+		return TRUE
+	var/mob/living/carbon/human/character = M
 	character.ear_style			= ear_styles_list[pref.ear_style]
 	character.r_ears			= pref.r_ears
 	character.b_ears			= pref.b_ears
@@ -251,8 +255,7 @@
 	character.r_gradwing		= pref.r_gradwing
 	character.g_gradwing		= pref.g_gradwing
 	character.b_gradwing		= pref.b_gradwing
-
-
+	return TRUE
 
 /datum/category_item/player_setup_item/vore/ears/content(datum/preferences/prefs, mob/user, data)
 	. += "<h2>Appearance and Custom Species Settings</h2>"

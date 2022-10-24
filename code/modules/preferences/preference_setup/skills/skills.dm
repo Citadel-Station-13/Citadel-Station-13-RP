@@ -21,9 +21,14 @@
 	if(pref.used_skillpoints < 0)	pref.used_skillpoints = 0
 
 // Moved from /datum/preferences/proc/copy_to()
-/datum/category_item/player_setup_item/skills/copy_to_mob(var/mob/living/carbon/human/character)
+/datum/category_item/player_setup_item/skills/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
+	// todo: this is just a shim
+	if(!ishuman(M))
+		return TRUE
+	var/mob/living/carbon/human/character = M
 	character.skills			= pref.skills
 	character.used_skillpoints	= pref.used_skillpoints
+	return TRUE
 
 /datum/category_item/player_setup_item/skills/content(datum/preferences/prefs, mob/user, data)
 	. = list()

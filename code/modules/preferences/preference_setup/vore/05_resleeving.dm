@@ -21,7 +21,11 @@
 	pref.resleeve_lock		= sanitize_integer(pref.resleeve_lock, 0, 1, initial(pref.resleeve_lock))
 	pref.resleeve_scan		= sanitize_integer(pref.resleeve_scan, 0, 1, initial(pref.resleeve_scan))
 
-/datum/category_item/player_setup_item/vore/resleeve/copy_to_mob(var/mob/living/carbon/human/character)
+/datum/category_item/player_setup_item/vore/resleeve/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
+	// todo: this is just a shim
+	if(!ishuman(M))
+		return TRUE
+	var/mob/living/carbon/human/character = M
 	if(character && !istype(character,/mob/living/carbon/human/dummy))
 		spawn(50)
 			if(QDELETED(character) || QDELETED(pref))
@@ -32,6 +36,7 @@
 			if(pref.resleeve_lock)
 				character.resleeve_lock = character.ckey
 			character.original_player = character.ckey
+	return TRUE
 
 /datum/category_item/player_setup_item/vore/resleeve/content(datum/preferences/prefs, mob/user, data)
 	. += "<br>"

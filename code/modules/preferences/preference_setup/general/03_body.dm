@@ -11,7 +11,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	sort_order = 3
 
 /datum/category_item/player_setup_item/general/body/load_character(var/savefile/S)
-	S["species"]			>> pref.species
 	S["hair_red"]			>> pref.r_hair
 	S["hair_green"]			>> pref.g_hair
 	S["hair_blue"]			>> pref.b_hair
@@ -49,7 +48,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["s_base"]				>> pref.s_base
 
 /datum/category_item/player_setup_item/general/body/save_character(var/savefile/S)
-	S["species"]			<< pref.species
 	S["hair_red"]			<< pref.r_hair
 	S["hair_green"]			<< pref.g_hair
 	S["hair_blue"]			<< pref.b_hair
@@ -86,8 +84,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["s_base"]				<< pref.s_base
 
 /datum/category_item/player_setup_item/general/body/sanitize_character(var/savefile/S)
-	if(!pref.species || !(pref.species in GLOB.playable_species))
-		pref.species = SPECIES_HUMAN
 	pref.r_hair			= sanitize_integer(pref.r_hair, 0, 255, initial(pref.r_hair))
 	pref.g_hair			= sanitize_integer(pref.g_hair, 0, 255, initial(pref.g_hair))
 	pref.b_hair			= sanitize_integer(pref.b_hair, 0, 255, initial(pref.b_hair))
@@ -121,7 +117,11 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		pref.bgstate = "000"
 
 // Moved from /datum/preferences/proc/copy_to()
-/datum/category_item/player_setup_item/general/body/copy_to_mob(var/mob/living/carbon/human/character)
+/datum/category_item/player_setup_item/general/body/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
+	// todo: this is just a shim
+	if(!ishuman(M))
+		return TRUE
+	var/mob/living/carbon/human/character = M
 	// Copy basic values
 	character.r_eyes			= pref.r_eyes
 	character.g_eyes			= pref.g_eyes
@@ -216,7 +216,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 				else
 					pref.body_descriptors[entry] = clamp(last_descriptors[entry], 1, LAZYLEN(descriptor.standalone_value_descriptors))
 
-	return
+	return TRUE
 
 /datum/category_item/player_setup_item/general/body/content(datum/preferences/prefs, mob/user, data)
 	. = list()
@@ -414,7 +414,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	else if(href_list["show_species"])
 		// Actual whitelist checks are handled elsewhere, this is just for accessing the preview window.
-		var/choice = input("Which species would you like to look at?") as null|anything in GLOB.playable_species
+		var/choice = input("Which species would you like to look at?") as null|anything in SScharacters.playable_species
 		if(!choice) return
 		pref.species_preview = choice
 		SetSpecies(preference_mob())
@@ -937,6 +937,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		pref.real_name      = random_name(pref.identifying_gender, pref.species)
 
 /datum/category_item/player_setup_item/general/body/proc/SetSpecies(mob/user)
+	#warn what the fuck
 	if(!pref.species_preview || !(pref.species_preview in SScharacters.all_species_names()))
 		pref.species_preview = SPECIES_HUMAN
 	var/datum/species/current_species = SScharacters.resolve_species_name(pref.species_preview)

@@ -34,22 +34,16 @@
 	if(!islist(pref.nif_savedata))
 		pref.nif_savedata = list()
 
-/datum/category_item/player_setup_item/vore/nif/copy_to_mob(var/mob/living/carbon/human/character)
+/datum/category_item/player_setup_item/vore/nif/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
+	// todo: this is just a shim
+	if(!ishuman(M))
+		return TRUE
+	var/mob/living/carbon/human/character = M
 	//If you had a NIF...
 	if((character.type == /mob/living/carbon/human) && pref.nif_id && pref.nif_durability)
 		var/nif_path = GLOB.nif_id_lookup[pref.nif_id]
 		new nif_path(character,pref.nif_durability,pref.nif_savedata)
-/*
-		//And now here's the trick. We wipe these so that if they die, they lose the NIF.
-		//Backup implants will start saving this again periodically, and so will cryo'ing out.
-		pref.nif_id = null
-		pref.nif_durability = null
-		pref.nif_savedata = null
-		var/savefile/S = new /savefile(pref.path)
-		if(!S)
-			WARNING ("Couldn't load NIF save savefile? [pref.real_name]")
-		S.cd = "/character[pref.default_slot]"
-		save_character(S)
-*/
+	return TRUE
+
 /datum/category_item/player_setup_item/vore/nif/content(datum/preferences/prefs, mob/user, data)
 	. += "<b>NIF:</b> [pref.nif_id ? "Present" : "None"]"

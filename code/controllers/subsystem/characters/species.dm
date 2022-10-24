@@ -5,10 +5,17 @@
 	var/list/species_paths
 	/// species by name
 	var/list/species_names
+	// todo: ids
 	/// playable species - names
 	var/list/whitelisted_species
+	// todo: ids
 	/// whitelisted species - names
 	var/list/playable_species
+	// todo: ids
+	/// custom species icon bases - names
+	var/list/custom_species_bases
+	/// default species path
+	var/default_species_path = /datum/species/human
 
 /datum/controller/subsystem/characters/proc/rebuild_species()
 	species_lookup = list()
@@ -16,6 +23,9 @@
 	species_names = list()
 	playable_species = list()
 	whitelisted_species = list()
+	custom_species_bases = list()
+	var/static/list/blacklisted_icon_ids = list(SPECIES_ID_CUSTOM, SPECIES_ID_PROMETHEAN)
+	var/static/list/whitelisted_icon_ids = list(SPECIES_ID_VULPKANIN, SPECIES_ID_XENOMORPH_HUNTER)
 	for(var/path in subtypesof(/datum/species))
 		var/datum/species/S = path
 		if(initial(S.abstract_type) == path)
@@ -35,6 +45,8 @@
 			whitelisted_species += S.name
 		if(!(S.species_spawn_flags & SPECIES_SPAWN_RESTRICTED))
 			playable_species += S.name
+		if((!(S.species_spawn_flags & (SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_RESTRICTED)) && !(S.id in blacklisted_icon_ids)) || (S.id in whitelisted_icon_ids))
+			custom_species_bases += S.name
 
 /datum/controller/subsystem/characters/proc/resolve_species(id_path_name)
 	RETURN_TYPE(/datum/species)
@@ -92,3 +104,10 @@
 	. = list()
 	for(var/name in species_names)
 		. += name
+
+/**
+ * default species id for when someone's species is removed/no longer playable
+ */
+/datum/controller/subsystem/characters/proc/default_species_id()
+	var/datum/species/S = resolve_species_path(ispath(default_species_path, /datum/species)? default_species_path : /datum/species/human)
+	return S.id

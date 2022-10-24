@@ -91,7 +91,7 @@
 	var/datum/species/selected_species = pref.character_static_species_meta()
 	if(selected_species.selects_bodytype)
 		// Allowed!
-	else if(!pref.custom_base || !(pref.custom_base in GLOB.custom_species_bases))
+	else if(!pref.custom_base || !(pref.custom_base in SScharacters.custom_species_bases))
 		pref.custom_base = SPECIES_HUMAN
 
 	pref.custom_say = lowertext(trim(pref.custom_say))
@@ -101,6 +101,10 @@
 
 
 /datum/category_item/player_setup_item/vore/traits/copy_to_mob(mob/living/carbon/human/character)
+	// todo: this is just a shim
+	if(!ishuman(M))
+		return TRUE
+	var/mob/living/carbon/human/character = M
 	character.custom_species = pref.custom_species
 	character.custom_say     = lowertext(trim(pref.custom_say))
 	character.custom_ask     = lowertext(trim(pref.custom_ask))
@@ -118,7 +122,7 @@
 		//Statistics for this would be nice
 		var/english_traits = english_list(S.traits, and_text = ";", comma_text = ";")
 		log_game("TRAITS [pref.client_ckey]/([character]) with: [english_traits]") //Terrible 'fake' key_name()... but they aren't in the same entity yet
-
+	return TRUE
 
 /datum/category_item/player_setup_item/vore/traits/content(datum/preferences/prefs, mob/user, data)
 	. += "<b>Custom Species Name:</b> "
@@ -194,7 +198,7 @@
 		return PREFERENCES_REFRESH
 
 	else if(href_list["custom_base"])
-		var/list/choices = GLOB.custom_species_bases
+		var/list/choices = SScharacters.custom_species_bases
 		if(pref.species != SPECIES_CUSTOM)
 			choices = (choices | pref.species)
 		var/text_choice = input("Pick an icon set for your species:","Icon Base") in choices

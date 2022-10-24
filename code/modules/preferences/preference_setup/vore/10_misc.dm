@@ -19,10 +19,15 @@
 	S["sensorpref"]				<< pref.sensorpref	//TFF 5/8/19 - add sensor pref setting to be saveable
 
 //TFF 5/8/19 - add new datum category to allow for setting multiple settings when this is selected in the loadout.
-/datum/category_item/player_setup_item/vore/misc/copy_to_mob(var/mob/living/carbon/human/character)
+/datum/category_item/player_setup_item/vore/misc/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
+	// todo: this is just a shim
+	if(!ishuman(M))
+		return TRUE
+	var/mob/living/carbon/human/character = M
 	if(pref.sensorpref > 5 || pref.sensorpref < 1)
 		pref.sensorpref = 5
 	character.sensorpref = pref.sensorpref
+	return TRUE
 
 /datum/category_item/player_setup_item/vore/misc/sanitize_character()
 	pref.show_in_directory		= sanitize_integer(pref.show_in_directory, 0, 1, initial(pref.show_in_directory))

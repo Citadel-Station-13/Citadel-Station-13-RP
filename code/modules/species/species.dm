@@ -47,13 +47,13 @@
 	var/galactic_language = TRUE
 	/// intrinsic species languages - list() or singular language or null
 	// todo: linter check for language default being in here
-	var/intrinsic_languages = LANGUAGE_ID_COMMON
+	var/list/intrinsic_languages = LANGUAGE_ID_COMMON
 	/// language our name is in - used for namegen; null to force stock ss13 namegen instead
 	// todo: language for namegen is questionaable
 	#warn check overrides
 	var/name_language = LANGUAGE_ID_COMMON
 	/// languages we are always allowed to learn (overridden by intrinsic languages) even if restricted - list() or singular language
-	var/whitelist_languages
+	var/list/whitelist_languages
 	/// additional languages we can learn (ONTOP OF INTRINSIC AND CULTURE)
 	var/max_additional_languages = 3
 

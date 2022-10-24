@@ -118,10 +118,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/g_eyes = 0
 	/// Eye color.
 	var/b_eyes = 0
-	/// Species datum to use.
-	var/species = SPECIES_HUMAN
-	/// Used for the species selection window.
-	var/species_preview
 	/// Secondary language(s)
 	var/list/alternate_languages = list()
 	/// Language prefix keys.

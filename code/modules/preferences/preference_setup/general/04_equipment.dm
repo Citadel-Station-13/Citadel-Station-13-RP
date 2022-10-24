@@ -23,7 +23,11 @@
 	S["ringtone"]	<< pref.ringtone
 
 // Moved from /datum/preferences/proc/copy_to()
-/datum/category_item/player_setup_item/general/equipment/copy_to_mob(var/mob/living/carbon/human/character)
+/datum/category_item/player_setup_item/general/equipment/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
+	// todo: this is just a shim
+	if(!ishuman(M))
+		return TRUE
+	var/mob/living/carbon/human/character = M
 	character.all_underwear.Cut()
 	character.all_underwear_metadata.Cut()
 
@@ -45,6 +49,7 @@
 	if(pref.pdachoice > 7 || pref.pdachoice < 1)
 		pref.pdachoice = 1
 	character.pdachoice = pref.pdachoice
+	return TRUE
 
 /datum/category_item/player_setup_item/general/equipment/sanitize_character()
 	if(!islist(pref.gear)) pref.gear = list()

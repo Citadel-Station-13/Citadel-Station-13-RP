@@ -48,7 +48,7 @@
 		return SScharacters.resolve_religion(/datum/lore/character_background/origin/custom).id
 	return data
 
-/datum/category_item/player_setup_item/background/origin/copy_to_mob(mob/M, data, flags)
+/datum/category_item/player_setup_item/background/origin/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
 	#warn impl
 
 /datum/category_item/player_setup_item/background/origin/spawn_checks(datum/preferences/prefs, data, flags, list/errors)

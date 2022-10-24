@@ -35,7 +35,7 @@
 		return SScharacters.resolve_citizenship(/datum/lore/character_background/citizenship/custom).id
 	return data
 
-/datum/category_item/player_setup_item/background/citizenship/copy_to_mob(mob/M, data, flags)
+/datum/category_item/player_setup_item/background/citizenship/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
 	#warn impl
 
 /datum/category_item/player_setup_item/background/citizenship/spawn_checks(datum/preferences/prefs, data, flags, list/errors)

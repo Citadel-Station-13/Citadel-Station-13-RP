@@ -20,7 +20,7 @@
 	var/list/languages = data
 	// for now, everyone requires galcommon
 
-/datum/category_item/player_setup_item/background/language/copy_to_mob(mob/M, data, flags)
+/datum/category_item/player_setup_item/background/language/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
 
 /datum/category_item/player_setup_item/background/language/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
 
