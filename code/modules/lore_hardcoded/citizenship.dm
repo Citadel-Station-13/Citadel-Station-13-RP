@@ -27,7 +27,7 @@
     An isolationist empire, the Ascendancy sits on a pocket of rich mineral veins that have proven to be a both a boon and a curse for a people that wanted \
     to live their lives in peace. \
     While most Naramadi technology resembles that of the outside world, some of it is strange and too complex \
-    for the likes of the Orion Confederation to copy. Their culture of "training over technology" and praise of individual strength \
+    for the likes of the Orion Confederation to copy. Their culture of 'training over technology' and praise of individual strength \
     makes it difficult for other empires to relate to them, spare the Unathi and Zaddat. \
     While the Ascendancy might be one of the three founding fathers of the Hegemony, they have always put a high emphasis on self-governance - \
     keeping the same rules for their current allies as they do for everyone else."
