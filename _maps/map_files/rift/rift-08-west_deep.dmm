@@ -786,6 +786,9 @@
 "sW" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
+/obj/item/binoculars{
+	pixel_y = 6
+	},
 /obj/item/binoculars,
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/belterdock)
