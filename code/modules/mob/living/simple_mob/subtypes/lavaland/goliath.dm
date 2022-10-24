@@ -206,7 +206,7 @@
 /obj/effect/temporary_effect/tentacle_warning/core/Initialize(mapload)
 	. = ..()
 	var/list/directions = list(1,2,4,6,8)
-	for(var/i in 1 to 2)
+	for(var/i in 1 to 3)
 		var/spawndir = pick_n_take(directions)
 		var/turf/T = get_step(src, spawndir)
 		if(T && !density)
