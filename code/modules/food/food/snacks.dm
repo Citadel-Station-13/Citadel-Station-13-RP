@@ -6202,6 +6202,7 @@ END CITADEL CHANGE */
 
 /obj/item/reagent_containers/food/snacks/puddi/angry/Initialize(mapload)
 	. = ..()
+	reagents.add_reagent("capsaicin", 3)
 	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/monkeycube/sobakacube
