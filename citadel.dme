@@ -271,6 +271,7 @@
 #include "code\__HELPERS\lists\shuffle.dm"
 #include "code\__HELPERS\lists\sorts.dm"
 #include "code\__HELPERS\lists\string.dm"
+#include "code\__HELPERS\lists\string_assoc_lists.dm"
 #include "code\__HELPERS\lists\string_lists.dm"
 #include "code\__HELPERS\lists\traverse.dm"
 #include "code\__HELPERS\lists\types_typecaches.dm"

@@ -6,6 +6,10 @@
  */
 /atom
 	layer = TURF_LAYER
+	appearance_flags = TILE_BOUND
+
+
+	//TODO: Remove this, it's legacy code that we don't need.
 	var/level = 2
 
 	/// Used for changing icon states for different base sprites.
