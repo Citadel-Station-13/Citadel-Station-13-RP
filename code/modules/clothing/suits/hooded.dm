@@ -452,7 +452,6 @@
 	name = "mining suit"
 	desc = "An armoured suit for mining in harsh environments."
 	icon_state = "miner"
-	item_state = "explorer"
 	flags = PHORONGUARD
 	clothing_flags = THICKMATERIAL
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
