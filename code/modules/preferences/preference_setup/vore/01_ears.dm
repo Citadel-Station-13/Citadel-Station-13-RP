@@ -187,7 +187,7 @@
 	pref.b_gradwing = sanitize_integer(pref.b_gradwing, 0, 255, initial(pref.b_gradwing))
 
 	var/datum/species/S = pref.real_species_datum()
-	species_name = S.name
+	var/species_name = S.name
 
 	if(pref.ear_style)
 		pref.ear_style	= sanitize_inlist(pref.ear_style, ear_styles_list, initial(pref.ear_style))
@@ -341,7 +341,7 @@
 
 /datum/category_item/player_setup_item/vore/ears/OnTopic(var/href,var/list/href_list, var/mob/user)
 	var/datum/species/S = pref.real_species_datum()
-	species_name = S.name
+	var/species_name = S.name
 
 	if(!CanUseTopic(user))
 		return PREFERENCES_NOACTION
