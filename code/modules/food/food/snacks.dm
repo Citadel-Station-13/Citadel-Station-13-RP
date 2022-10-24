@@ -6171,6 +6171,39 @@ END CITADEL CHANGE */
 	. = ..()
 	bitesize = 3
 
+/obj/item/reagent_containers/food/snacks/puddi
+	name = "giga puddi"
+	desc = "This pudding has some heft! Look at that jiggle! Purin purin! Sugoi!"
+	icon_state = "gigapuddi"
+	trash = /obj/item/trash/plate
+	filling_color = "#e0cd61"
+	nutriment_amt = 5
+	nutriment_desc = list("sugar" = 3, "sweet milk" = 1, "vanilla" = 1)
+
+/obj/item/reagent_containers/food/snacks/puddi/Initialize(mapload)
+	. = ..()
+	bitesize = 3
+
+/obj/item/reagent_containers/food/snacks/puddi/happy
+	name = "happy puddi"
+	desc = "Look at this little guy! He's so happy to be here! Purin purin! Kawaii!"
+	icon_state = "happypuddi"
+	nutriment_desc = list("sugar" = 3, "joy" = 2, "vanilla" = 1)
+
+/obj/item/reagent_containers/food/snacks/puddi/happy/Initialize(mapload)
+	. = ..()
+	bitesize = 3
+
+/obj/item/reagent_containers/food/snacks/puddi/angry
+	name = "angy puddi"
+	desc = "What a killer expression! Perhaps you said something to anger him? Purin purin! Kowai!"
+	icon_state = "angerpuddi"
+	nutriment_desc = list("sugar" = 3, "rage" = 2, "vanilla" = 1)
+
+/obj/item/reagent_containers/food/snacks/puddi/angry/Initialize(mapload)
+	. = ..()
+	bitesize = 3
+
 /obj/item/reagent_containers/food/snacks/monkeycube/sobakacube
 	name = "sobaka cube"
 	monkey_type = SPECIES_MONKEY_AKULA
