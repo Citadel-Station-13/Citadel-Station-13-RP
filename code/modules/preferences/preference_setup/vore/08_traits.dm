@@ -70,7 +70,7 @@
 		pref.starting_trait_points = STARTING_SPECIES_POINTS
 		pref.max_traits = MAX_SPECIES_TRAITS
 
-	if(pref.species != SPECIES_CUSTOM)
+	if(pref.real_species_id() != SPECIES_ID_CUSTOM)
 		pref.pos_traits.Cut()
 		pref.neg_traits.Cut()
 	// Clean up positive traits
@@ -81,14 +81,14 @@
 	for(var/path in pref.neu_traits)
 		if(!(path in neutral_traits))
 			pref.neu_traits -= path
-		if(!(pref.species == SPECIES_CUSTOM) && !(path in everyone_traits))
+		if(!(pref.real_species_id() != SPECIES_ID_CUSTOM) && !(path in everyone_traits))
 			pref.neu_traits -= path
 	//Negative traits
 	for(var/path in pref.neg_traits)
 		if(!(path in negative_traits))
 			pref.neg_traits -= path
 
-	var/datum/species/selected_species = pref.character_static_species_meta()
+	var/datum/species/selected_species = pref.real_species_datum()
 	if(selected_species.selects_bodytype)
 		// Allowed!
 	else if(!pref.custom_base || !(pref.custom_base in SScharacters.custom_species_bases))
@@ -100,7 +100,7 @@
 	pref.custom_exclaim = lowertext(trim(pref.custom_exclaim))
 
 
-/datum/category_item/player_setup_item/vore/traits/copy_to_mob(mob/living/carbon/human/character)
+/datum/category_item/player_setup_item/vore/traits/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
 	// todo: this is just a shim
 	if(!ishuman(M))
 		return TRUE
@@ -112,13 +112,13 @@
 	character.custom_exclaim = lowertext(trim(pref.custom_exclaim))
 
 	var/datum/species/S = character.species
-	var/SB = S.selects_bodytype ? pref.custom_base : pref.character_static_species_meta()
+	var/SB = S.selects_bodytype ? pref.custom_base : pref.real_species_datum()
 	S.copy_from(SB, pref.pos_traits + pref.neu_traits + pref.neg_traits, character)
 
 	//Any additional non-trait settings can be applied here
 	S.blood_color = pref.blood_color
 
-	if(pref.species == SPECIES_CUSTOM)
+	if(pref.real_species_id() != SPECIES_ID_CUSTOM)
 		//Statistics for this would be nice
 		var/english_traits = english_list(S.traits, and_text = ";", comma_text = ";")
 		log_game("TRAITS [pref.client_ckey]/([character]) with: [english_traits]") //Terrible 'fake' key_name()... but they aren't in the same entity yet
@@ -128,14 +128,14 @@
 	. += "<b>Custom Species Name:</b> "
 	. += "<a href='?src=\ref[src];custom_species=1'>[pref.custom_species ? pref.custom_species : "-Input Name-"]</a><br>"
 
-	var/datum/species/selected_species = pref.character_static_species_meta()
+	var/datum/species/selected_species = pref.real_species_datum()
 	if(selected_species.selects_bodytype)
 		. += "<b>Icon Base: </b> "
 		. += "<a href='?src=\ref[src];custom_base=1'>[pref.custom_base ? pref.custom_base : SPECIES_HUMAN]</a><br>"
 
 	var/traits_left = pref.max_traits
 	. += "<b>Traits Left:</b> [traits_left]<br>"
-	if(pref.species == SPECIES_CUSTOM)
+	if(pref.real_species_id() != SPECIES_ID_CUSTOM)
 		var/points_left = pref.starting_trait_points
 		for(var/T in pref.pos_traits + pref.neg_traits)
 			points_left -= traits_costs[T]
@@ -272,7 +272,7 @@
 				picklist = positive_traits.Copy() - pref.pos_traits
 				mylist = pref.pos_traits
 			if(NEUTRAL_MODE)
-				if(pref.species == SPECIES_CUSTOM)
+				if(pref.real_species_id() != SPECIES_ID_CUSTOM)
 					picklist = neutral_traits.Copy() - pref.neu_traits
 					mylist = pref.neu_traits
 				else

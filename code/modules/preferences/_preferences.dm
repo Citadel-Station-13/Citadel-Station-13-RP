@@ -456,9 +456,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	ShowChoices(usr)
 	return 1
 
-/datum/preferences/proc/character_static_species_meta()
-	return SScharacters.resolve_species_name(species) || SScharacters.resolve_species_path(/datum/species/human)
-
 /datum/preferences/proc/open_load_dialog(mob/user)
 	var/dat = "<body>"
 	dat += "<tt><center>"

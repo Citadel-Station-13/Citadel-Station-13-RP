@@ -13,7 +13,7 @@
 /datum/category_item/player_setup_item/general/language/sanitize_character()
 	if(!islist(pref.alternate_languages))	pref.alternate_languages = list()
 	if(pref.species)
-		var/datum/species/S = pref.character_static_species_meta()
+		var/datum/species/S = pref.real_species_datum()
 		if(S && pref.alternate_languages.len > S.max_additional_languages)
 			pref.alternate_languages.len = S.max_additional_languages // Truncate to allowed length
 	if(isnull(pref.language_prefixes) || !pref.language_prefixes.len)
@@ -22,7 +22,7 @@
 #warn deal with these they access language vars
 /datum/category_item/player_setup_item/general/language/content(datum/preferences/prefs, mob/user, data)
 	. += "<b>Languages</b><br>"
-	var/datum/species/S = pref.character_static_species_meta()
+	var/datum/species/S = pref.real_species_datum()
 	if(S.language)
 		. += "- [S.language]<br>"
 	if(S.default_language && S.default_language != S.language)
@@ -47,7 +47,7 @@
 		pref.alternate_languages.Cut(index, index+1)
 		return PREFERENCES_REFRESH
 	else if(href_list["add_language"])
-		var/datum/species/S = pref.character_static_species_meta()
+		var/datum/species/S = pref.real_species_datum()
 		if(pref.alternate_languages.len >= S.max_additional_languages)
 			alert(user, "You have already selected the maximum number of alternate languages for this species!")
 		else

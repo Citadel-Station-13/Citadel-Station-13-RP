@@ -153,7 +153,7 @@
 	return ..()
 
 /datum/category_item/player_setup_item/general/basic/proc/get_genders()
-	var/datum/species/S = pref.character_static_species_meta()
+	var/datum/species/S = pref.real_species_datum()
 	var/list/possible_genders = S.genders
 	if(!pref.organ_data || pref.organ_data[BP_TORSO] != "cyborg")
 		return possible_genders

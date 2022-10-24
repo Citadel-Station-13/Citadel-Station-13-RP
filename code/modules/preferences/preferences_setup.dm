@@ -239,7 +239,7 @@
 	var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin(client_ckey)
 	mannequin.delete_inventory(TRUE)
 	if(regen_limbs)
-		var/datum/species/current_species = character_static_species_meta()
+		var/datum/species/current_species = real_species_datum()
 		current_species.create_organs(mannequin)
 		regen_limbs = 0
 	dress_preview_mob(mannequin)

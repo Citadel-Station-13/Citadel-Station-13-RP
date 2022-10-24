@@ -284,7 +284,7 @@
 	return FALSE //Something went wrong!
 
 /datum/category_item/player_setup_item/proc/get_min_age() // Minimum limit is 18
-	var/datum/species/S = pref.character_static_species_meta()
+	var/datum/species/S = pref.real_species_datum()
 	if(S.min_age > 18)
 		return S.min_age
 	else if(!is_FBP())
@@ -292,7 +292,7 @@
 	return S.min_age
 
 /datum/category_item/player_setup_item/proc/get_max_age()
-	var/datum/species/S = pref.character_static_species_meta()
+	var/datum/species/S = pref.real_species_datum()
 	if(!is_FBP())
 		return S.max_age // If they're not a robot, we can just use the species var.
 	var/FBP_type = get_FBP_type()

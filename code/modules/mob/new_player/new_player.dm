@@ -323,7 +323,7 @@
 			src << alert("You are currently not whitelisted to play [client.prefs.species].")
 			return 0
 */
-		var/datum/species/S = client.prefs.character_static_species_meta()
+		var/datum/species/S = client.prefs.real_species_datum()
 		if(!(S.species_spawn_flags & SPECIES_SPAWN_ALLOWED))
 			src << alert("Your current species, [client.prefs.species], is not available for play on the station.")
 			return 0
@@ -785,7 +785,7 @@
 		to_chat(src, SPAN_WARNING("You have not set your scale yet.  Do this on the Species Customization tab in character setup."))
 
 	//Can they play?
-	if(!is_alien_whitelisted(src, client.prefs.character_static_species_meta()) && !check_rights(R_ADMIN, 0))
+	if(!is_alien_whitelisted(src, client.prefs.real_species_datum()) && !check_rights(R_ADMIN, 0))
 		pass = FALSE
 		to_chat(src,"<span class='warning'>You are not allowed to spawn in as this species.</span>")
 

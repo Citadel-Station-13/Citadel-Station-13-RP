@@ -1,6 +1,12 @@
 // Little define makes it cleaner to read the tripple color values out of mobs.
 #define MOB_HEX_COLOR(M, V) "#[num2hex(M.r_##V, 2)][num2hex(M.g_##V, 2)][num2hex(M.b_##V, 2)]"
 
+// todo: this entire file is no longer maintained and probably doesn't work
+// it's a shame but frankly all of this is shitcode and therefore there's no point
+// in maintaining it ~silicons
+
+// if you want in game bodymodding, please, talk with us so we can make a new system together.
+
 /obj/machinery/computer/transhuman/designer
 	name = "body design console"
 	catalogue_data = list(///datum/category_item/catalogue/information/organization/vey_med,
@@ -320,7 +326,7 @@
 	var/datum/preferences/designer/P = new()
 
 	// We did DNA to mob, now mob to prefs!
-	P.species = mannequin.species.name
+	P.set_character_data(CHARACTER_DATA_REAL_SPECIES, mannequin.species.id)
 	apply_coloration_to_prefs(mannequin, P)
 	apply_organs_to_prefs(mannequin, P)
 	apply_markings_to_prefs(mannequin, P)

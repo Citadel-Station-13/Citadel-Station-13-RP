@@ -62,6 +62,7 @@
 	. = ..()
 
 #warn finish including auto-revert to real species if unavailable
+#warn if real species mismatches, we swap to real species.
 
 /datum/category_item/player_setup_item/background/char_species/default_value(randomizing)
 	return SScharacters.default_species_id()
@@ -85,3 +86,7 @@
 
 /datum/preferences/proc/character_species_name()
 	return SScharacters.resolve_character_species(get_character_data(CHARACTER_DATA_CHAR_SPECIES))?.name || "ERROR"
+
+/datum/preferences/proc/real_species_datum()
+	RETURN_TYPE(/datum/species)
+	return SScharacters.resolve_species_id(get_character_data(CHARACTER_DATA_REAL_SPECIES))

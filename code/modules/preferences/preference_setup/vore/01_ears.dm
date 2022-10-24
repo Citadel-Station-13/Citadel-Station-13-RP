@@ -186,25 +186,28 @@
 	pref.g_gradwing = sanitize_integer(pref.g_gradwing, 0, 255, initial(pref.g_gradwing))
 	pref.b_gradwing = sanitize_integer(pref.b_gradwing, 0, 255, initial(pref.b_gradwing))
 
+	var/datum/species/S = pref.real_species_datum()
+	species_name = S.name
+
 	if(pref.ear_style)
 		pref.ear_style	= sanitize_inlist(pref.ear_style, ear_styles_list, initial(pref.ear_style))
 		var/datum/sprite_accessory/temp_ear_style = ear_styles_list[pref.ear_style]
-		if(temp_ear_style.apply_restrictions && (!(pref.species in temp_ear_style.species_allowed)))
+		if(temp_ear_style.apply_restrictions && (!(species_name in temp_ear_style.species_allowed)))
 			pref.ear_style = initial(pref.ear_style)
 	if(pref.horn_style)
 		pref.horn_style	= sanitize_inlist(pref.horn_style, horn_styles_list, initial(pref.horn_style))
 		var/datum/sprite_accessory/temp_horn_style = horn_styles_list[pref.horn_style]
-		if(temp_horn_style.apply_restrictions && (!(pref.species in temp_horn_style.species_allowed)))
+		if(temp_horn_style.apply_restrictions && (!(species_name in temp_horn_style.species_allowed)))
 			pref.horn_style = initial(pref.horn_style)
 	if(pref.tail_style)
 		pref.tail_style	= sanitize_inlist(pref.tail_style, tail_styles_list, initial(pref.tail_style))
 		var/datum/sprite_accessory/temp_tail_style = tail_styles_list[pref.tail_style]
-		if(temp_tail_style.apply_restrictions && (!(pref.species in temp_tail_style.species_allowed)))
+		if(temp_tail_style.apply_restrictions && (!(species_name in temp_tail_style.species_allowed)))
 			pref.tail_style = initial(pref.tail_style)
 	if(pref.wing_style)
 		pref.wing_style	= sanitize_inlist(pref.wing_style, wing_styles_list, initial(pref.wing_style))
 		var/datum/sprite_accessory/temp_wing_style = wing_styles_list[pref.wing_style]
-		if(temp_wing_style.apply_restrictions && (!(pref.species in temp_wing_style.species_allowed)))
+		if(temp_wing_style.apply_restrictions && (!(species_name in temp_wing_style.species_allowed)))
 			pref.wing_style = initial(pref.wing_style)
 
 /datum/category_item/player_setup_item/vore/ears/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
@@ -337,6 +340,9 @@
 
 
 /datum/category_item/player_setup_item/vore/ears/OnTopic(var/href,var/list/href_list, var/mob/user)
+	var/datum/species/S = pref.real_species_datum()
+	species_name = S.name
+
 	if(!CanUseTopic(user))
 		return PREFERENCES_NOACTION
 
@@ -345,7 +351,7 @@
 		var/list/pretty_ear_styles = list("Normal" = null)
 		for(var/path in ear_styles_list)
 			var/datum/sprite_accessory/ears/instance = ear_styles_list[path]
-			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (pref.species in instance.species_allowed)))
+			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_ear_styles[instance.name] = path
 
 		// Present choice to user
@@ -387,7 +393,7 @@
 		var/list/pretty_horn_styles = list("Normal" = null)
 		for(var/path in horn_styles_list)
 			var/datum/sprite_accessory/ears/instance = horn_styles_list[path]
-			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (pref.species in instance.species_allowed)))
+			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_horn_styles[instance.name] = path
 
 		// Present choice to user
@@ -429,7 +435,7 @@
 		var/list/pretty_tail_styles = list("Normal" = null)
 		for(var/path in tail_styles_list)
 			var/datum/sprite_accessory/tail/instance = tail_styles_list[path]
-			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (pref.species in instance.species_allowed)))
+			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_tail_styles[instance.name] = path
 
 		// Present choice to user
@@ -471,7 +477,7 @@
 		var/list/pretty_wing_styles = list("Normal" = null)
 		for(var/path in wing_styles_list)
 			var/datum/sprite_accessory/wing/instance = wing_styles_list[path]
-			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (pref.species in instance.species_allowed)))
+			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_wing_styles[instance.name] = path
 
 		// Present choice to user
