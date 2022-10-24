@@ -6,6 +6,7 @@
 #define JOB_ID_SHAFT_MINER "shaft_miner"
 
 #define JOB_ID_RESEARCH_DIRECTOR "research_director"
+#define JOB_ID_SENIOR_RESEARCHER "senior_researcher"
 #define JOB_ID_SCIENTIST "scientist"
 #define JOB_ID_ROBOTICIST "roboticist"
 
@@ -14,10 +15,12 @@
 #define JOB_ID_FIELD_MEDIC "field_medic"
 
 #define JOB_ID_CHIEF_ENGINEER "chief_engineer"
+#define JOB_ID_SENIOR_ENGINEER "senior_engineer"
 #define JOB_ID_STATION_ENGINEER "station_engineer"
 #define JOB_ID_ATMOSPHERIC_TECHNICIAN "atmospheric_technician"
 
 #define JOB_ID_CHIEF_MEDICAL_OFFICER "chief_medical_officer"
+#define JOB_ID_HEAD_NURSE "head_nurse"
 #define JOB_ID_MEDICAL_DOCTOR "medical_doctor"
 #define JOB_ID_PARAMEDIC "paramedic"
 #define JOB_ID_CHEMIST "chemist"
