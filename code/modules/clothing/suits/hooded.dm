@@ -447,6 +447,7 @@
 		/obj/item/gun/projectile/sec/flash
 		)
 
+//The Chippin' In Set -Cap
 /obj/item/clothing/suit/storage/hooded/ronincoat
 	name = "ronin coat"
 	desc = "Outfitted with integrated heating coils, this fashionable coat is a favorite of gangsters and mercenaries alike."
@@ -461,6 +462,26 @@
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
 	/obj/item/gun/projectile, /obj/item/ammo_magazine, /obj/item/melee/baton)
+
+/obj/item/clothing/suit/storage/hooded/runner
+	name = "Runner Jacket"
+	desc = "A sturdy high-vis jacket patterned after a lost society's first responders. It has been marked with unfamiliar graffiti on the back."
+	icon_state = "runner_jacket"
+	flags_inv = HIDEHOLSTER
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	hoodtype = /obj/item/clothing/head/hood/runner
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
+	/obj/item/gun/projectile, /obj/item/ammo_magazine, /obj/item/melee/baton)
+
+/obj/item/clothing/suit/storage/hooded/runner/half_pint
+	name = "Half-Pint Jacket"
+	desc = "This reinforced jacket bears many curious modifications. Marketed towards mercenaries who'd like a touch of flair, the commercial variant comes with built-in decorative lighting and multiple internal pockets meant to accept armor panels."
+	icon_state = "half_pint"
+	hoodtype = /obj/item/clothing/head/hood/runner/half_pint
 
 // Eldritch suit
 /obj/item/clothing/suit/storage/hooded/eldritch

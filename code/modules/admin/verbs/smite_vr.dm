@@ -8,7 +8,7 @@
 	if(!istype(target))
 		return
 
-	var/list/smite_types = list(SMITE_SHADEKIN_ATTACK,SMITE_SHADEKIN_NOMF,SMITE_REDSPACE_ABDUCT,SMITE_AUTOSAVE,SMITE_AUTOSAVE_WIDE)
+	var/list/smite_types = list(SMITE_SHADEKIN_ATTACK,SMITE_SHADEKIN_NOMF,SMITE_DARKSPACE_ABDUCT,SMITE_AUTOSAVE,SMITE_AUTOSAVE_WIDE)
 
 	var/smite_choice = input("Select the type of SMITE for [target]","SMITE Type Choice") as null|anything in smite_types
 	if(!smite_choice)
@@ -119,8 +119,8 @@
 				qdel(shadekin)
 
 
-		if(SMITE_REDSPACE_ABDUCT)
-			redspace_abduction(target, src)
+		if(SMITE_DARKSPACE_ABDUCT)
+			darkspace_abduction(target, src)
 
 		if(SMITE_AUTOSAVE)
 			fake_autosave(target, src)
@@ -131,22 +131,22 @@
 		else
 			return //Injection? Don't print any messages.
 
-var/redspace_abduction_z
+var/darkspace_abduction_z
 
-/area/redspace_abduction
+/area/darkspace_abduction
 	name = "Another Time And Place"
 	requires_power = FALSE
 	dynamic_lighting = FALSE
 
-/proc/redspace_abduction(mob/living/target, user)
-	if(redspace_abduction_z < 0)
+/proc/darkspace_abduction(mob/living/target, user)
+	if(darkspace_abduction_z < 0)
 		to_chat(user,"<span class='warning'>The abduction z-level is already being created. Please wait.</span>")
 		return
-	if(!redspace_abduction_z)
-		redspace_abduction_z = -1
+	if(!darkspace_abduction_z)
+		darkspace_abduction_z = -1
 		to_chat(user,"<span class='warning'>This is the first use of the verb this shift, it will take a minute to configure the abduction z-level. It will be z[world.maxz+1].</span>")
 		var/z = world.increment_max_z()
-		var/area/areaInstance = new /area/redspace_abduction(null)
+		var/area/areaInstance = new /area/darkspace_abduction(null)
 		areaInstance.addSorted()
 		for(var/x = 1 to world.maxx)
 			for(var/y = 1 to world.maxy)
@@ -155,7 +155,7 @@ var/redspace_abduction_z
 				T.plane = -100
 				areaInstance.contents.Add(T)
 				CHECK_TICK
-		redspace_abduction_z = z
+		darkspace_abduction_z = z
 
 	if(!target || !user)
 		return
@@ -174,7 +174,7 @@ var/redspace_abduction_z
 	for(var/x = llc_x to llc_x+size_of_square)
 		for(var/y = llc_y to llc_y+size_of_square)
 			var/turf/T_src = locate(x,y,target.z)
-			var/turf/T_dest = locate(x,y,redspace_abduction_z)
+			var/turf/T_dest = locate(x,y,darkspace_abduction_z)
 			T_dest.vis_contents.Cut()
 			T_dest.vis_contents += T_src
 			T_dest.density = T_src.density
@@ -185,7 +185,7 @@ var/redspace_abduction_z
 	for(var/x = llc_x to llc_x+1) //Left
 		for(var/y = llc_y to llc_y+size_of_square)
 			if(prob(50))
-				var/turf/T = locate(x,y,redspace_abduction_z)
+				var/turf/T = locate(x,y,darkspace_abduction_z)
 				T.density = FALSE
 				T.opacity = FALSE
 				T.vis_contents.Cut()
@@ -193,7 +193,7 @@ var/redspace_abduction_z
 	for(var/x = llc_x+size_of_square-1 to llc_x+size_of_square) //Right
 		for(var/y = llc_y to llc_y+size_of_square)
 			if(prob(50))
-				var/turf/T = locate(x,y,redspace_abduction_z)
+				var/turf/T = locate(x,y,darkspace_abduction_z)
 				T.density = FALSE
 				T.opacity = FALSE
 				T.vis_contents.Cut()
@@ -201,7 +201,7 @@ var/redspace_abduction_z
 	for(var/x = llc_x to llc_x+size_of_square) //Top
 		for(var/y = llc_y+size_of_square-1 to llc_y+size_of_square)
 			if(prob(50))
-				var/turf/T = locate(x,y,redspace_abduction_z)
+				var/turf/T = locate(x,y,darkspace_abduction_z)
 				T.density = FALSE
 				T.opacity = FALSE
 				T.vis_contents.Cut()
@@ -209,12 +209,12 @@ var/redspace_abduction_z
 	for(var/x = llc_x to llc_x+size_of_square) //Bottom
 		for(var/y = llc_y to llc_y+1)
 			if(prob(50))
-				var/turf/T = locate(x,y,redspace_abduction_z)
+				var/turf/T = locate(x,y,darkspace_abduction_z)
 				T.density = FALSE
 				T.opacity = FALSE
 				T.vis_contents.Cut()
 
-	target.forceMove(locate(target.x,target.y,redspace_abduction_z))
+	target.forceMove(locate(target.x,target.y,darkspace_abduction_z))
 	to_chat(target,"<span class='danger'>The tug relaxes, but everything around you looks... slightly off.</span>")
 	to_chat(user,"<span class='notice'>The mob has been moved. ([admin_jump_link(target,usr.client.holder)])</span>")
 

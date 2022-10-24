@@ -3997,7 +3997,7 @@ END CITADEL CHANGE */
 	//var/icon/I = new /icon(icon, icon_state)
 
 	if (!flat_icon)
-		flat_icon = getFlatIcon(src)
+		flat_icon = get_flat_icon(src)
 	var/icon/I = flat_icon
 	color = "#FFFFFF" //Some fruits use the color var. Reset this so it doesnt tint the batter
 	I.Blend(new /icon('icons/obj/food_custom.dmi', rgb(255,255,255)),ICON_ADD)
@@ -4029,7 +4029,7 @@ END CITADEL CHANGE */
 		//Carefully removing the old raw-batter overlay
 
 		if (!flat_icon)
-			flat_icon = getFlatIcon(src)
+			flat_icon = get_flat_icon(src)
 		var/icon/I = flat_icon
 		color = "#FFFFFF" //Some fruits use the color var
 		I.Blend(new /icon('icons/obj/food_custom.dmi', rgb(255,255,255)),ICON_ADD)
@@ -6157,6 +6157,19 @@ END CITADEL CHANGE */
 /obj/item/reagent_containers/food/snacks/shrimpfriedrice/Initialize(mapload)
 	. = ..()
 	bitesize = 2
+
+/obj/item/reagent_containers/food/snacks/bowl_peas
+	name = "Big Bowl of Peas"
+	desc = "It's just a lot of peas in a bowl, seasoned with butter. Taste the peaness."
+	icon_state = "bowl_peas"
+	trash = /obj/item/trash/snack_bowl
+	filling_color = "#168116"
+	nutriment_amt = 5
+	nutriment_desc = list("butter" = 2, "peas" = 3)
+
+/obj/item/reagent_containers/food/snacks/bowl_peas/Initialize(mapload)
+	. = ..()
+	bitesize = 3
 
 /obj/item/reagent_containers/food/snacks/monkeycube/sobakacube
 	name = "sobaka cube"

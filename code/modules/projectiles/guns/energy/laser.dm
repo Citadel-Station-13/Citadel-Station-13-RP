@@ -172,7 +172,6 @@
 	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 5, TECH_POWER = 4)
 	projectile_type = /obj/item/projectile/beam/sniper
 	slot_flags = SLOT_BACK
-	battery_lock = 1
 	charge_cost = 600
 	fire_delay = 35
 	force = 10
@@ -196,6 +195,7 @@
 	pin = /obj/item/firing_pin/explorer
 	cell_type = /obj/item/cell/device/weapon/recharge/sniper
 	accuracy = 45 //Modifications include slightly better hip-firing furniture.
+	battery_lock = 1 //With the change that the normal DMR can now change the weapon cell, we need to add this here so people can't take out the self-recharging special cell.
 	scoped_accuracy = 100
 	charge_cost = 600
 

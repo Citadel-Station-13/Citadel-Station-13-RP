@@ -227,12 +227,6 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 				robolimb_count++
 				if((part.robotic == ORGAN_ROBOT || part.robotic == ORGAN_LIFELIKE) && (part.organ_tag == BP_HEAD || part.organ_tag == BP_TORSO || part.organ_tag == BP_GROIN))
 					robobody_count ++
-				if(species.is_cyberpsycho) //This check should hopefully automatically update the capacity of CRS patients if cybernetics are installed.
-					var/datum/component/cyberpsychosis/C
-					C.capacity = 100
-					C.cybernetics_count = 0
-					C.counted = 0
-					C.adjusted = 0
 			else if(part.status & ORGAN_DEAD)
 				icon_key += "3"
 			else
@@ -889,13 +883,23 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
 
-	var/image/vr_tail_image = get_tail_image()
-	if(vr_tail_image)
-		vr_tail_image.layer = BODY_LAYER+used_tail_layer
-		overlays_standing[used_tail_layer] = vr_tail_image
+	var/list/image/tail_images = list()
+
+	var/image/rendering
+	rendering = get_tail_image(TRUE)
+	if(rendering)
+		rendering.layer = BODY_LAYER + used_tail_layer
+		tail_images += rendering
+
+	if(tail_style?.front_behind_system)
+		rendering = get_tail_image(FALSE)
+		rendering.layer = BODY_LAYER - used_tail_layer
+		tail_images += rendering
+
+	if(length(tail_images))
+		overlays_standing[used_tail_layer] = tail_images
 		apply_layer(used_tail_layer)
 		return
-
 
 	var/species_tail = species.get_tail(src) // Species tail icon_state prefix.
 
@@ -928,16 +932,24 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 /mob/living/carbon/human/proc/set_tail_state(var/t_state)
 	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
-	var/image/tail_overlay = overlays_standing[used_tail_layer]
+	var/list/image/tail_overlays = overlays_standing[used_tail_layer]
 
 	remove_layer(TAIL_LAYER)
 	remove_layer(TAIL_LAYER_ALT)
 
-	if(tail_overlay)
-		overlays_standing[used_tail_layer] = tail_overlay
+	if(!tail_overlays)
+		return
+	if(islist(tail_overlays))
+		for(var/image/tail_overlay as anything in tail_overlays)
+			if(species.get_tail_animation(src))
+				tail_overlay.icon_state = t_state
+		overlays_standing[used_tail_layer] = tail_overlays
+	else
+		var/image/tail_overlay = tail_overlays
 		if(species.get_tail_animation(src))
 			tail_overlay.icon_state = t_state
 			. = tail_overlay
+		overlays_standing[used_tail_layer] = tail_overlay
 
 	apply_layer(used_tail_layer)
 

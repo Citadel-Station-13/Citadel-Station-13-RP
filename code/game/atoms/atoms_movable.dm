@@ -86,6 +86,8 @@
 	var/move_force = MOVE_FORCE_DEFAULT
 	/// our pulling force
 	var/pull_force = PULL_FORCE_DEFAULT
+	/// pull force to resist
+	var/pull_resist = PULL_FORCE_DEFAULT
 
 	var/move_speed = 10
 	var/l_move_time = 1

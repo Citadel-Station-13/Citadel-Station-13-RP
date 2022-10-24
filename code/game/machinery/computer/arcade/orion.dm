@@ -272,7 +272,7 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 			if(!spaceport_raided && food >= 10 && fuel >= 10)
 				if(params["odd"])
 					//find some silly crewmember name
-					add_crewmember(pick(ai_names + ninja_names + commando_names + clown_names))
+					add_crewmember(pick(GLOB.ai_names + GLOB.ninja_names + GLOB.commando_names + GLOB.clown_names))
 				else
 					add_crewmember()
 				fuel -= ORION_BUY_CREW_PRICE
@@ -377,9 +377,9 @@ GLOBAL_LIST_INIT(orion_events, generate_orion_events())
 		newcrew = specific
 	else
 		if(prob(50))
-			newcrew = pick(first_names_male)
+			newcrew = pick(GLOB.first_names_male)
 		else
-			newcrew = pick(first_names_female)
+			newcrew = pick(GLOB.first_names_female)
 	if(newcrew)
 		settlers += newcrew
 		alive++

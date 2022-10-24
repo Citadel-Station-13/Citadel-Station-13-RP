@@ -648,7 +648,8 @@
 /area/maintenance/lower/mining)
 "bz" = (
 /obj/machinery/door/airlock/maintenance/engi{
-	name = "Elevator Shaft Access"
+	name = "Elevator Shaft Access";
+	req_one_access = null
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
@@ -10176,8 +10177,8 @@
 /turf/simulated/floor,
 /area/rift/asylum/fitness)
 "Aj" = (
-/obj/structure/ladder/snake_eater,
 /obj/structure/railing,
+/obj/structure/ladder,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "Al" = (
@@ -11338,7 +11339,7 @@
 	},
 /obj/effect/floor_decal/industrial/warning,
 /obj/structure/railing,
-/obj/structure/ladder/snake_eater/up,
+/obj/structure/ladder/up,
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/lower/mining)
 "GG" = (

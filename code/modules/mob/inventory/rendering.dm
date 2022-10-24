@@ -198,12 +198,15 @@
 	//? general handling directives
 	/**
 	 * bodytypes that *can* get trampled to default if the default icon is not found on species
-	 * this only works for default sprites, if you're using single-icon/the new rendering system
-	 * this does nothing.
+	 *
+	 * for slot defaults, this means using the default icon state.
+	 * for new rendering, this means using the fallback state on the slot for a bodytype.
 	 */
-	var/worn_bodytypes_converted = ALL
-	/// bodytypes that are implemented. Anything not in here is converted to default.
-	var/worn_bodytypes = NONE
+	var/worn_bodytypes_fallback = ALL
+	/// bodytypes that are implemented. Anything not in here is converted to default, if slot fallback state is unavailable.
+	var/worn_bodytypes = BODYTYPE_DEFAULT
+	/// bodytypes that just skip rendering (i hate teshari)
+	var/worn_bodytypes_invisible = NONE
 	/// worn rendering flags
 	var/worn_render_flags = WORN_RENDER_INHAND_ALLOW_DEFAULT | WORN_RENDER_SLOT_ALLOW_DEFAULT
 	//? support for adminbus
@@ -236,7 +239,7 @@
 	var/list/additional = render_additional(icon_used, state_used, layer_used, dim_x, dim_y, bodytype, inhands, slot_meta)
 	// todo: signal with (args, add)
 	// todo: args' indices should be defines
-	var/no_render = inhands? (worn_render_flags & WORN_RENDER_INHAND_NO_RENDER) : (worn_render_flags & WORN_RENDER_SLOT_NO_RENDER)
+	var/no_render = inhands? (worn_render_flags & WORN_RENDER_INHAND_NO_RENDER) : ((worn_render_flags & WORN_RENDER_SLOT_NO_RENDER) || (worn_bodytypes_invisible & bodytype))
 	var/mutable_appearance/MA
 	// worn_state_guard makes us not render if we'd render the same as in-inventory icon.
 	if(no_render)		// don't bother
@@ -339,9 +342,11 @@
 	//* inventory slot defaults
 	else if(inhands? (worn_render_flags & WORN_RENDER_INHAND_ALLOW_DEFAULT) : (worn_render_flags & WORN_RENDER_SLOT_ALLOW_DEFAULT))
 		var/list/resolved = slot_meta.resolve_default_assets(bodytype, data[WORN_DATA_STATE], M, src, inhand_default_type)
-		if(!resolved && (bodytype != BODYTYPE_DEFAULT) && (bodytype & worn_bodytypes_converted))
-			// attempt 2 - convert to default if specified to convert
-			resolved = slot_meta.resolve_default_assets(BODYTYPE_DEFAULT, data[WORN_DATA_STATE], M, src, inhand_default_type)
+		if(!resolved && (bodytype != BODYTYPE_DEFAULT) && (bodytype & worn_bodytypes_fallback))
+			// attempt 2 - use fallback if available
+			if(!(slot_meta.handle_worn_fallback(bodytype, data)))
+				// attempt 3 - convert to default if specified to convert
+				resolved = slot_meta.resolve_default_assets(BODYTYPE_DEFAULT, data[WORN_DATA_STATE], M, src, inhand_default_type)
 		if(resolved)
 			data[WORN_DATA_ICON] = resolved[1]
 			data[WORN_DATA_SIZE_X] = resolved[2]
@@ -350,19 +355,24 @@
 	//* Now, the actual intended render system.
 	if(!data[WORN_DATA_ICON])
 		// grab icon based on priority
-		if(inhands && inhand_icon)
+		if(!inhands && !(bodytype & worn_bodytypes) && (bodytype & worn_bodytypes_fallback) && slot_meta.handle_worn_fallback(bodytype, data))
+			// special: if bodytypes isn't in, and species has fallback
+			// .. well don't do anything as handle_sprite_fallback will write to the data list.
+		else if(inhands && inhand_icon)
 			data[WORN_DATA_ICON] = inhand_icon
 			data[WORN_DATA_SIZE_X] = inhand_x_dimension
 			data[WORN_DATA_SIZE_Y] = inhand_y_dimension
+			data[WORN_DATA_STATE] = resolve_worn_state(inhands, slot_meta.render_key, bodytype)
 		else if(!inhands && worn_icon)
 			data[WORN_DATA_ICON] = worn_icon
 			data[WORN_DATA_SIZE_X] = worn_x_dimension
 			data[WORN_DATA_SIZE_Y] = worn_y_dimension
+			data[WORN_DATA_STATE] = resolve_worn_state(inhands, slot_meta.render_key, bodytype)
 		else
 			data[WORN_DATA_ICON] = icon
 			data[WORN_DATA_SIZE_X] = icon_dimension_x
 			data[WORN_DATA_SIZE_Y] = icon_dimension_y
-		data[WORN_DATA_STATE] = resolve_worn_state(inhands, slot_meta.render_key, bodytype)
+			data[WORN_DATA_STATE] = resolve_worn_state(inhands, slot_meta.render_key, bodytype)
 
 	//? layer ; worn_layer --> slot defaults for the item in question
 	data[WORN_DATA_LAYER] = worn_layer_override || slot_meta.resolve_default_layer(bodytype, M, src)
@@ -370,6 +380,9 @@
 	//* Handle overrides
 	if(LAZYACCESS(worn_icon_override, slot_meta.id))
 		data[WORN_DATA_ICON] = worn_icon_override[slot_meta.id]
+		// if you fuck this up, Skill Issue. We have to align somehow.
+		data[WORN_DATA_SIZE_X] = icon_dimension_x
+		data[WORN_DATA_SIZE_Y] = icon_dimension_y
 	if(LAZYACCESS(worn_state_override, slot_meta.id))
 		data[WORN_DATA_STATE] = worn_state_override[slot_meta.id]
 

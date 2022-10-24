@@ -251,26 +251,28 @@
 /obj/item/clothing/under/rank/pilot1
 	name = "\improper NanoTrasen flight suit"
 	desc = "A blue and grey NanoTrasen flight suit. Warm and practical, it feels cozy."
-	icon_state = "pilot1"
-	snowflake_worn_state = "pilot1"
-	item_icons = list(SLOT_ID_UNIFORM = 'icons/map_assets/southern_cross/mob/sc_under.dmi')
-	icon = 'icons/map_assets/southern_cross/obj/sc_uniforms.dmi'
-	sprite_sheets = list(
-			BODYTYPE_STRING_TESHARI = 'icons/map_assets/southern_cross/mob/species/teshari/sc_uniform.dmi'
-			)
+	icon_state = "flight1"
+	icon = 'icons/clothing/uniform/rank/flight.dmi'
 	starting_accessories = list(/obj/item/clothing/accessory/storage/webbing/pilot1)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_NO_RENDER
+	worn_rolldown_bodytypes = BODYTYPE_DEFAULT
+	worn_rollsleeve_bodytypes = BODYTYPE_DEFAULT
+	worn_bodytypes = BODYTYPE_DEFAULT | BODYTYPE_TESHARI
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/rank/pilot2
 	name = "\improper NanoTrasen flight suit"
 	desc = "A dark blue NanoTrasen flight suit. Warm and practical, several patches are scattered across it."
-	icon_state = "pilot2"
-	snowflake_worn_state = "pilot2"
-	item_icons = list(SLOT_ID_UNIFORM = 'icons/map_assets/southern_cross/mob/sc_under.dmi')
-	icon = 'icons/map_assets/southern_cross/obj/sc_uniforms.dmi'
-	sprite_sheets = list(
-			BODYTYPE_STRING_TESHARI = 'icons/map_assets/southern_cross/mob/species/teshari/sc_uniform.dmi'
-			)
+	icon_state = "flight2"
+	icon = 'icons/clothing/uniform/rank/flight.dmi'
 	starting_accessories = list(/obj/item/clothing/accessory/storage/webbing/pilot2)
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_NO_RENDER
+	worn_rolldown_bodytypes = BODYTYPE_DEFAULT
+	worn_rollsleeve_bodytypes = BODYTYPE_DEFAULT
+	worn_bodytypes = BODYTYPE_DEFAULT | BODYTYPE_TESHARI
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 // The things folks do for fashion...
 /obj/item/clothing/under/rank/janitor/starcon

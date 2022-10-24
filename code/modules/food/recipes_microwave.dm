@@ -1623,3 +1623,11 @@ I said no!
 		/obj/item/reagent_containers/food/snacks/boiledrice
 	)
 	result = /obj/item/reagent_containers/food/snacks/shrimpfriedrice
+
+/datum/recipe/bowl_peas
+	fruit = list("peas" = 4)
+	reagents = list("water" = 5, "sodiumchloride" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/spreads/butter
+	)
+	result = /obj/item/reagent_containers/food/snacks/bowl_peas

@@ -1651,7 +1651,7 @@
 
 /datum/seed/flower/pyrrhlea/New()
 	..()
-	set_trait(TRAIT_HARVEST_REPEAT,1)
+	set_trait(TRAIT_HARVEST_REPEAT,2)
 	set_trait(TRAIT_MATURATION,10)
 	set_trait(TRAIT_PRODUCTION,3)
 	set_trait(TRAIT_YIELD,5)
@@ -1672,7 +1672,7 @@
 
 /datum/seed/bentars/New()
 	..()
-	set_trait(TRAIT_HARVEST_REPEAT,1)
+	set_trait(TRAIT_HARVEST_REPEAT,2)
 	set_trait(TRAIT_MATURATION,10)
 	set_trait(TRAIT_PRODUCTION,3)
 	set_trait(TRAIT_YIELD,4)
@@ -1697,7 +1697,7 @@
 	set_trait(TRAIT_HARVEST_REPEAT,2)
 	set_trait(TRAIT_MATURATION,15)
 	set_trait(TRAIT_PRODUCTION,5)
-	set_trait(TRAIT_YIELD,2)
+	set_trait(TRAIT_YIELD,4)
 	set_trait(TRAIT_POTENCY,6)
 	set_trait(TRAIT_PRODUCT_ICON,"vine")
 	set_trait(TRAIT_PRODUCT_COLOUR,"#7c260c")
