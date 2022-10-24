@@ -38,7 +38,7 @@
 /area/survivalpod)
 "h" = (
 /obj/machinery/vending/boozeomat{
-	req_access = newlist()
+	req_access = null
 	},
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/survivalpod)

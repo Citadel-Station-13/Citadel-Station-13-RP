@@ -175,8 +175,8 @@
 /area/survivalpod)
 "n" = (
 /obj/structure/window/reinforced/survival_pod{
-	icon_state = "pwindow";
-	dir = 1
+	dir = 1;
+	icon_state = "pwindow"
 	},
 /obj/structure/bed/padded,
 /obj/item/bedsheet/hop,
@@ -195,8 +195,8 @@
 	pixel_y = 6
 	},
 /obj/structure/sink/kitchen{
-	icon_state = "sink_alt";
 	dir = 4;
+	icon_state = "sink_alt";
 	pixel_x = -13
 	},
 /turf/simulated/shuttle/floor/voidcraft,
@@ -216,31 +216,28 @@
 /area/survivalpod)
 "s" = (
 /obj/structure/window/reinforced/survival_pod{
-	icon_state = "pwindow";
-	dir = 1
+	dir = 1;
+	icon_state = "pwindow"
 	},
 /obj/structure/bed/chair/comfy/black,
 /turf/simulated/floor/carpet/sblucarpet,
 /area/survivalpod)
 "t" = (
 /obj/machinery/door/window/survival_pod{
-	icon_state = "windoor";
-	dir = 1
+	dir = 1;
+	icon_state = "windoor"
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/survivalpod)
 "u" = (
 /obj/structure/window/reinforced/survival_pod{
-	icon_state = "pwindow";
-	dir = 1
+	dir = 1;
+	icon_state = "pwindow"
 	},
-/turf/simulated/floor/carpet/sblucarpet,
-/area/survivalpod)
-"v" = (
 /obj/structure/window/reinforced/survival_pod{
 	density = 0;
-	dir = 9;
-	icon_state = "pwindow"
+	dir = 5;
+	pixel_x = 8
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/survivalpod)
@@ -330,7 +327,7 @@ a
 i
 c
 o
-v
+z
 A
 a
 "}
