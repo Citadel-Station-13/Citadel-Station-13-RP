@@ -61,6 +61,8 @@
 /datum/category_item/player_setup_item/background/char_species/filter(datum/preferences/prefs, data, list/errors)
 	. = ..()
 
+#warn finish including auto-revert to real species if unavailable
+
 /datum/category_item/player_setup_item/background/char_species/default_value(randomizing)
 	return SScharacters.default_species_id()
 
