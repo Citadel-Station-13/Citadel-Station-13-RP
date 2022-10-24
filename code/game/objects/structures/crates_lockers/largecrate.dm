@@ -119,7 +119,8 @@
 
 /obj/structure/largecrate/vehicle/quadbike
 	name = "\improper ATV crate"
-	starts_with = list(/obj/structure/vehiclecage/quadbike)
+	starts_with = list(/obj/vehicle/ridden/quadbike/random,
+		/obj/item/key/quadbike)
 
 /obj/structure/largecrate/vehicle/quadtrailer
 	name = "\improper ATV trailer crate"

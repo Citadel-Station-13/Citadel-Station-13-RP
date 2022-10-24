@@ -208,26 +208,6 @@
 	container_name = "Restraining bolt crate"
 	access = access_robotics
 
-/datum/supply_pack/robotics/bike
-	name = "Spacebike Crate"
-	contains = list()
-	cost = 200
-	container_type = /obj/structure/largecrate/vehicle/bike
-	container_name = "Spacebike Crate"
-
-/datum/supply_pack/robotics/quadbike
-	name = "ATV Crate"
-	contains = list()
-	cost = 300
-	container_type = /obj/structure/largecrate/vehicle/quadbike
-	container_name = "ATV Crate"
-
-/datum/supply_pack/robotics/quadtrailer
-	name = "ATV Trailer Crate"
-	contains = list()
-	cost = 50
-	container_type = /obj/structure/largecrate/vehicle/quadtrailer
-	container_name = "ATV Trailer Crate"
 
 /datum/supply_pack/robotics/mecha_gopher
 	name = "Circuit Crate (\"Gopher\" APLU)"

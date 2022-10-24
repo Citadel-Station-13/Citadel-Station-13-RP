@@ -43,6 +43,8 @@
 
 	var/color_blend_mode = ICON_MULTIPLY	// If checked.
 
+	/// use front/behind, citadel snowflake for now; only usable on wings/tails
+	var/front_behind_system = FALSE
 
 //skin styles - WIP
 //going to have to re-integrate this with surgery
