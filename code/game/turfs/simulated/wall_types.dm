@@ -1,5 +1,14 @@
 /turf/simulated/wall/r_wall
-	icon_state = "rgeneric"
+	name = "reinforced wall"
+	desc = "A huge chunk of reinforced metal used to separate rooms."
+	icon = 'icons/turf/walls/reinforced_wall.dmi'
+	icon_state = "reinforced_wall-0"
+	base_icon_state = "reinforced_wall"
+	opacity = TRUE
+	density = TRUE
+	heat_capacity = 312500 //a little over 5 cm thick , 312500 for 1 m by 2.5 m by 0.25 m plasteel wall. also indicates the temperature at wich the wall will melt (currently only able to melt with H/E pipes)
+
+
 /turf/simulated/wall/r_wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
 	return ..(mapload, "plasteel","plasteel") //3strong
 

@@ -84,6 +84,10 @@
  * Turf Initialize
  *
  * Doesn't call parent, see [/atom/proc/Initialize]
+ *
+ * Please note, space tiles do not run this code.
+ * This is done because it's called so often that any extra code just slows things down too much.
+ * If you add something relevant here add it there too.
  */
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
@@ -91,19 +95,29 @@
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	flags |= INITIALIZED
 
-	// by default, vis_contents is inherited from the turf that was here before
-	vis_contents.len = 0
+	// By default, vis_contents is inherited from the turf that was here before.
+	vis_contents.Cut()
 
 	assemble_baseturfs()
+
+	levelupdate()
+
+	if(length(smoothing_groups))
+		// In case it's not properly ordered, let's avoid duplicate entries with the same values.
+		tim_sort(smoothing_groups)
+		SET_BITFLAG_LIST(smoothing_groups)
+	if(length(canSmoothWith))
+		tim_sort(canSmoothWith)
+		// If the last element is higher than the maximum turf-only value, then it must scan turf contents for smoothing targets.
+		if(canSmoothWith[length(canSmoothWith)] > MAX_S_TURF)
+			smoothing_flags |= SMOOTH_OBJ
+		SET_BITFLAG_LIST(canSmoothWith)
+	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		QUEUE_SMOOTH(src)
 
 	//atom color stuff
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
-
-/*
-	if (canSmoothWith)
-		canSmoothWith = typelist("canSmoothWith", canSmoothWith)
-*/
 
 	for(var/atom/movable/AM in src)
 		Entered(AM)
@@ -151,18 +165,21 @@
 	// requires_activation = FALSE
 	..()
 
+	vis_contents.Cut()
+
+
 /turf/ex_act(severity)
-	return 0
+	return FALSE
 
 /turf/proc/is_space()
-	return 0
+	return FALSE
 
 /turf/proc/is_intact()
-	return 0
+	return FALSE
 
-// Used by shuttle code to check if this turf is empty enough to not crush want it lands on.
+/// Used by shuttle code to check if this turf is empty enough to not crush want it lands on.
 /turf/proc/is_solid_structure()
-	return 1
+	return TRUE
 
 /turf/attack_hand(mob/user)
 	. = ..()
@@ -178,11 +195,11 @@
 			return TRUE
 
 	if(!(user.canmove) || user.restrained() || !(user.pulling))
-		return 0
+		return FALSE
 	if(user.pulling.anchored || !isturf(user.pulling.loc))
-		return 0
+		return FALSE
 	if(user.pulling.loc != user.loc && get_dist(user, user.pulling) > 1)
-		return 0
+		return FALSE
 	if(ismob(user.pulling))
 		var/mob/M = user.pulling
 		var/atom/movable/t = M.pulling
@@ -191,7 +208,7 @@
 		M.start_pulling(t)
 	else
 		step(user.pulling, get_dir(user.pulling.loc, src))
-	return 1
+	return TRUE
 
 /turf/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/storage))
@@ -224,8 +241,8 @@
 	user.do_attack_animation(src, no_attack_icons = TRUE)
 
 	if(!success)	// Nothing got hit.
-		user.visible_message("<span class='warning'>\The [user] swipes \the [W] over \the [src].</span>")
-		playsound(src, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
+		user.visible_message(SPAN_WARNING("\The [user] swipes \the [W] over \the [src]."))
+		playsound(src, 'sound/weapons/punchmiss.ogg', 25, TRUE, -1)
 	return success
 
 /turf/MouseDroppedOnLegacy(atom/movable/O as mob|obj, mob/user as mob)
@@ -259,13 +276,13 @@
 	return
 
 /turf/proc/is_plating()
-	return 0
+	return FALSE
 
 /turf/proc/levelupdate()
 	for(var/obj/O in src)
 		O.hide(O.hides_under_flooring() && !is_plating())
 
-/turf/proc/AdjacentTurfs(var/check_blockage = TRUE)
+/turf/proc/AdjacentTurfs(check_blockage = TRUE)
 	. = list()
 	for(var/t in (trange(1,src) - src))
 		var/turf/T = t
@@ -276,7 +293,7 @@
 		else
 			. += t
 
-/turf/proc/CardinalTurfs(var/check_blockage = TRUE)
+/turf/proc/CardinalTurfs(check_blockage = TRUE)
 	. = list()
 	for(var/ad in AdjacentTurfs(check_blockage))
 		var/turf/T = ad
@@ -307,7 +324,7 @@
 			return 1
 	return 0
 
-// Expects an atom containing the reagents used to clean the turf
+/// Expects an atom containing the reagents used to clean the turf.
 /turf/proc/clean(atom/source, mob/user)
 	if(source.reagents.has_reagent("water", 1) || source.reagents.has_reagent("cleaner", 1))
 		clean_blood()
@@ -318,13 +335,13 @@
 			if(istype(O,/obj/effect/rune) || istype(O,/obj/effect/debris/cleanable) || istype(O,/obj/effect/overlay))
 				qdel(O)
 	else
-		to_chat(user, "<span class='warning'>\The [source] is too dry to wash that.</span>")
-	source.reagents.trans_to_turf(src, 1, 10)	// 10 is the multiplier for the reaction effect. probably needed to wet the floor properly.
+		to_chat(user, SPAN_WARNING("\The [source] is too dry to wash that."))
+	source.reagents.trans_to_turf(src, 1, 10) // 10 is the multiplier for the reaction effect. probably needed to wet the floor properly.
 
 /turf/proc/update_blood_overlays()
 	return
 
-// Called when turf is hit by a thrown object
+/// Called when turf is hit by a thrown object.
 /turf/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
 	if(src.density)
@@ -337,7 +354,7 @@
 /turf/AllowDrop()
 	return TRUE
 
-// Returns false if stepping into a tile would cause harm (e.g. open space while unable to fly, water tile while a slime, lava, etc).
+/// Returns false if stepping into a tile would cause harm (e.g. open space while unable to fly, water tile while a slime, lava, etc).
 /turf/proc/is_safe_to_enter(mob/living/L)
 	if(LAZYLEN(dangerous_objects))
 		for(var/obj/O in dangerous_objects)
@@ -345,15 +362,17 @@
 				return FALSE
 	return TRUE
 
-// Tells the turf that it currently contains something that automated movement should consider if planning to enter the tile.
-// This uses lazy list macros to reduce memory footprint, since for 99% of turfs the list would've been empty anyways.
+/**
+ * Tells the turf that it currently contains something that automated movement should consider if planning to enter the tile.
+ * This uses lazy list macros to reduce memory footprint, since for 99% of turfs the list would've been empty anyways.
+ */
 /turf/proc/register_dangerous_object(obj/O)
 	if(!istype(O))
 		return FALSE
 	LAZYADD(dangerous_objects, O)
 //	color = "#FF0000"
 
-// Similar to above, for when the dangerous object stops being dangerous/gets deleted/moved/etc.
+/// Similar to above, for when the dangerous object stops being dangerous/gets deleted/moved/etc.
 /turf/proc/unregister_dangerous_object(obj/O)
 	if(!istype(O))
 		return FALSE
@@ -361,9 +380,11 @@
 	UNSETEMPTY(dangerous_objects)	// This nulls the list var if it's empty.
 //	color = "#00FF00"
 
-// This is all the way up here since its the common ancestor for things that need to get replaced with a floor when an RCD is used on them.
-// More specialized turfs like walls should instead override this.
-// The code for applying lattices/floor tiles onto lattices could also utilize something similar in the future.
+/**
+ * This is all the way up here since its the common ancestor for things that need to get replaced with a floor when an RCD is used on them.
+ * More specialized turfs like walls should instead override this.
+ * The code for applying lattices/floor tiles onto lattices could also utilize something similar in the future.
+ */
 /turf/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	if(density || !can_build_into_floor)
 		return FALSE
@@ -386,17 +407,20 @@
 		return TRUE
 	return FALSE
 
-// We're about to be the A-side in a turf translation
-/turf/proc/pre_translate_A(var/turf/B)
+/// We're about to be the A-side in a turf translation
+/turf/proc/pre_translate_A(turf/B)
 	return
-// We're about to be the B-side in a turf translation
-/turf/proc/pre_translate_B(var/turf/A)
+
+/// We're about to be the B-side in a turf translation
+/turf/proc/pre_translate_B(turf/A)
 	return
-// We were the the A-side in a turf translation
-/turf/proc/post_translate_A(var/turf/B)
+
+/// We were the the A-side in a turf translation
+/turf/proc/post_translate_A(turf/B)
 	return
-// We were the the B-side in a turf translation
-/turf/proc/post_translate_B(var/turf/A)
+
+/// We were the the B-side in a turf translation
+/turf/proc/post_translate_B(turf/A)
 	return
 
 /turf/has_gravity()

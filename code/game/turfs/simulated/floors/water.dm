@@ -10,8 +10,6 @@
 	movement_cost = 4
 	outdoors = TRUE
 
-	layer = WATER_FLOOR_LAYER
-
 	can_dirty = FALSE	// It's water
 
 	var/depth = 1 // Higher numbers indicates deeper water.
@@ -29,7 +27,7 @@
 	..() // To get the edges.
 
 	icon_state = under_state // This isn't set at compile time in order for it to show as water in the map editor.
-	var/image/water_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = water_state, layer = WATER_LAYER)
+	var/image/water_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = water_state, layer = BELOW_OBJ_LAYER)
 	add_overlay(water_sprite)
 
 /turf/simulated/floor/water/attackby(obj/item/O as obj, mob/user as mob)
@@ -175,9 +173,9 @@ var/list/shoreline_icon_cache = list()
 	else // If not, make one, but only once.
 		var/icon/shoreline_water = icon(src.icon, "shoreline_water", src.dir)
 		var/icon/shoreline_subtract = icon(src.icon, "[initial(icon_state)]_subtract", src.dir)
-		shoreline_water.Blend(shoreline_subtract,ICON_SUBTRACT)
+		shoreline_water.Blend(shoreline_subtract, ICON_SUBTRACT)
 		var/image/final = image(shoreline_water)
-		final.layer = WATER_LAYER
+		final.layer = BELOW_OBJ_LAYER
 
 		shoreline_icon_cache[cache_string] = final
 		add_overlay(shoreline_icon_cache[cache_string])
@@ -212,13 +210,12 @@ var/list/shoreline_icon_cache = list()
 	under_state = "rock"
 	movement_cost = 4
 	depth = 4
-	layer = WATER_FLOOR_LAYER
 
 /turf/simulated/floor/water/acid/update_icon()
 	..() // To get the edges.
 
 	icon_state = under_state // This isn't set at compile time in order for it to show as water in the map editor.
-	var/image/acid_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = acid_state, layer = WATER_LAYER)
+	var/image/acid_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = acid_state, layer = BELOW_OBJ_LAYER)
 	add_overlay(acid_sprite)
 
 /turf/simulated/floor/water/acid/return_air_for_internal_lifeform(var/mob/living/L)
@@ -322,13 +319,12 @@ var/list/shoreline_icon_cache = list()
 	var/blood_state = "acidb_shallow"
 	under_state = "rock"
 	movement_cost = 4
-	layer = WATER_FLOOR_LAYER
 	depth = 6
 
 /turf/simulated/floor/water/blood/update_icon()
 	..()
 	icon_state = under_state // This isn't set at compile time in order for it to show as water in the map editor.
-	var/image/blood_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = blood_state, layer = WATER_LAYER)
+	var/image/blood_sprite = image(icon = 'icons/turf/outdoors.dmi', icon_state = blood_state, layer = BELOW_OBJ_LAYER)
 	add_overlay(blood_sprite)
 
 /turf/simulated/floor/water/blood/return_air_for_internal_lifeform(var/mob/living/L)

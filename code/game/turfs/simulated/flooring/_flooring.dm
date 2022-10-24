@@ -112,10 +112,10 @@ var/list/flooring_types
 	var/list/movable_atom_whitelist = list()
 	var/list/movable_atom_blacklist = list()
 
-/decl/flooring/proc/get_plating_type(var/turf/T)
+/decl/flooring/proc/get_plating_type(turf/T)
 	return plating_type
 
-/decl/flooring/proc/get_flooring_overlay(var/cache_key, var/icon_base, var/icon_dir = 0, var/layer = BUILTIN_DECAL_LAYER)
+/decl/flooring/proc/get_flooring_overlay(cache_key, icon_base, icon_dir = 0, layer = TURF_PLATING_DECAL_LAYER)
 	if(!flooring_cache[cache_key])
 		var/image/I = image(icon = icon, icon_state = icon_base, dir = icon_dir)
 		I.layer = layer

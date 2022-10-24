@@ -1,14 +1,16 @@
 /// /turf_flags var on /turf
 /// This is used in literally one place, turf.dm, to block ethwereal jaunt.
-#define NO_JAUNT					(1<<0)
+#define NO_JAUNT                 (1<<0)
 /// Unused reservation turf
-#define UNUSED_RESERVATION_TURF		(1<<2)
+#define UNUSED_RESERVATION_TURF  (1<<2)
 /// queued for planet turf addition
-#define TURF_PLANET_QUEUED			(1<<3)
+#define TURF_PLANET_QUEUED       (1<<3)
 /// registered to a planet
-#define TURF_PLANET_REGISTERED		(1<<4)
+#define TURF_PLANET_REGISTERED   (1<<4)
 /// queued for ZAS rebuild
-#define TURF_ZONE_REBUILD_QUEUED	(1<<5)
+#define TURF_ZONE_REBUILD_QUEUED (1<<5)
+/// Is this turf is "solid". Space and lava aren't for instance
+#define TURF_IS_SOLID            (1<<6)
 
 
 ///CITMAIN TURF FLAGS - Completely unused

@@ -65,11 +65,11 @@
 #define PIPING_LAYER_AUX		5
 
 // We offset the layer values of the different pipe types to ensure they look nice
-#define PIPES_FUEL_LAYER		(PIPES_LAYER - 0.04)
-#define PIPES_SUPPLY_LAYER		(PIPES_LAYER - 0.03)
-#define PIPES_SCRUBBER_LAYER	(PIPES_LAYER - 0.02)
-#define PIPES_AUX_LAYER			(PIPES_LAYER - 0.01)
-#define PIPES_HE_LAYER			(PIPES_LAYER + 0.01)
+#define PIPES_FUEL_LAYER		(GAS_PIPE_HIDDEN_LAYER - 0.04)
+#define PIPES_SUPPLY_LAYER		(GAS_PIPE_HIDDEN_LAYER - 0.03)
+#define PIPES_SCRUBBER_LAYER	(GAS_PIPE_HIDDEN_LAYER - 0.02)
+#define PIPES_AUX_LAYER			(GAS_PIPE_HIDDEN_LAYER - 0.01)
+#define PIPES_HE_LAYER			(GAS_PIPE_HIDDEN_LAYER + 0.01)
 
 //MULTIPIPES //Ignore warning below until we update pipes
 //IF YOU EVER CHANGE THESE CHANGE SPRITES TO MATCH.

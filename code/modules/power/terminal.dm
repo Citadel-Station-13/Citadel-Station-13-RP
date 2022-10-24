@@ -11,7 +11,7 @@
 	var/obj/machinery/power/master = null
 	anchored = 1
 	plane = PLATING_PLANE
-	layer = WIRES_LAYER+0.01
+	layer = WIRE_LAYER+0.01
 
 
 /obj/machinery/power/terminal/Initialize(mapload, newdir)

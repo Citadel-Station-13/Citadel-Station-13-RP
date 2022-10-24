@@ -32,6 +32,7 @@
 	update_icon()
 
 /turf/simulated/wall/update_overlays()
+	..()
 	// materrialless walls don't use this system.
 	if(!material)
 		return ..()

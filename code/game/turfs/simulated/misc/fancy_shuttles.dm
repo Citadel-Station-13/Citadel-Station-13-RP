@@ -50,7 +50,6 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 /turf/simulated/wall/fancy_shuttle
 	icon = 'icons/turf/fancy_shuttles/_fancy_helpers.dmi'
 	icon_state = "hull"
-	wall_masks = 'icons/turf/fancy_shuttles/_fancy_helpers.dmi'
 	var/mutable_appearance/under_MA
 	var/mutable_appearance/under_EM
 	var/fancy_shuttle_tag
@@ -153,7 +152,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 /obj/effect/floor_decal/fancy_shuttle
 	icon = 'icons/turf/fancy_shuttles/_fancy_helpers.dmi'
 	icon_state = "fancy_shuttle"
-	layer = MAPPER_DECAL_LAYER-1
+	layer = TURF_DECAL_LAYER-0.01
 	var/icon_file
 	var/fancy_shuttle_tag
 
@@ -168,7 +167,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 	return ..()
 
 /obj/effect/floor_decal/fancy_shuttle/make_decal_image()
-	return image(icon = icon, icon_state = icon_state, layer = BUILTIN_DECAL_LAYER)
+	return image(icon = icon, icon_state = icon_state, layer = TURF_PLATING_DECAL_LAYER)
 
 /obj/effect/floor_decal/fancy_shuttle/get_cache_key(var/turf/T)
 	return "[alpha]-[color]-[dir]-[icon_state]-[T.layer]-[icon_file]"
