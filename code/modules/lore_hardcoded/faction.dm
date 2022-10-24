@@ -5,6 +5,13 @@
 	var/list/job_whitelist = list()
 	/// where 'desc' is the corporation description, this is what a player should know if they're a contractor
 	var/contractor_info
+	/// list of origins that can select this
+	/// if null, all can select
+	var/list/origin_whitelist
+	/// list of citizenships that can select this
+	/// if null, all can select
+	var/list/citizenship_whitelist
+	#warn impl whitelists for origin/citizenship
 
 /datum/lore/character_background/faction/check_character_species(datum/character_species/S)
 	if(S.species_fluff_flags & SPECIES_FLUFF_PICKY_FACTION)
