@@ -27,6 +27,8 @@
 
 #define Z_LEVEL_ROGUEMINE_1				23
 #define Z_LEVEL_ROGUEMINE_2				24
+#define Z_LEVEL_ROGUEMINE_3				25
+#define Z_LEVEL_ROGUEMINE_4				26
 
 /datum/map/rift
 	name = "Rift"

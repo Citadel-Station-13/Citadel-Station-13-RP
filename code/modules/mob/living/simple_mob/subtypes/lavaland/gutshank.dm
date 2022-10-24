@@ -8,9 +8,14 @@
 	potable drinking water."
 	value = CATALOGUER_REWARD_EASY
 
+//Notes for later development. ~Cap
+//Gutshanks are actually the immature stage of the Shank. Larger Shanks are able to be mounted and ridden by Ashlanders.
+//Gutshanks parasitize until they reach maturity and molt. Then they feed on UNDECIDED.
+//Shanks mature even further into something like Silt Striders, which can be used as pack animals and safe transit over lava floes.
+
 /mob/living/simple_mob/animal/gutshank
 	name = "gutshank"
-	desc = "These chitinous parasites sport thick, chitinous shells which protect them from the heat and assaults."
+	desc = "These dog-sized parasites sport thick, chitinous shells which protect them from both attacks and the heat."
 	icon = 'icons/mob/lavaland/lavaland_mobs.dmi'
 	icon_state = "gutshank"
 	icon_living = "gutshank"
@@ -29,9 +34,9 @@
 	mob_class = MOB_CLASS_ANIMAL
 	movement_cooldown = 6
 	movement_sound = 'sound/effects/spider_loop.ogg'
-	melee_damage_lower = 10
-	melee_damage_upper = 15
-	attacktext = list ("bites", "pierces", "mauls")
+	melee_damage_lower = 5
+	melee_damage_upper = 10
+	attacktext = list ("bitten", "pierced", "mauled")
 	attack_sound = 'sound/weapons/bite.ogg'
 
 	exotic_type = /obj/item/stack/material/chitin
@@ -72,3 +77,19 @@
 	if(stat != DEAD)
 		if(shank_gland && prob(5))
 			shank_gland.add_reagent("water", rand(5, 10))
+
+//It would make more sense for this creature to inject a soporific and then drain blood after it detects the user is unconscious.
+//However, this would be very brutal for solo miners to contend with, so it just draws blood instead.
+/mob/living/simple_mob/animal/gutshank/apply_melee_effects(atom/A)
+	. = ..()
+	if(isliving(A))
+		var/mob/living/L = A
+		if(L.reagents)
+			var/target_zone = pick(BP_TORSO,BP_TORSO,BP_TORSO,BP_L_LEG,BP_R_LEG,BP_L_ARM,BP_R_ARM,BP_HEAD)
+			if(L.can_inject(src, null, target_zone))
+				blood_drink(L, target_zone)
+
+/mob/living/simple_mob/animal/gutshank/proc/blood_drink(var/mob/living/carbon/human/M)
+	if(istype(M))
+		to_chat(M, "<span class='warning'>The [src] pierces your flesh! You feel a sickening suction!</span>")
+		M.vessel.remove_reagent("blood",rand(10,20))

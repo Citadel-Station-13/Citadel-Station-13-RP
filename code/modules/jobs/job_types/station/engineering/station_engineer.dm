@@ -20,8 +20,7 @@
 		"Engine Technician" = /datum/alt_title/engine_tech,
 		"Electrician" = /datum/alt_title/electrician,
 		"Apprentice Engineer" = /datum/alt_title/apprentice_engineer,
-		"Construction Engineer" = /datum/alt_title/construction_engi,
-		"Senior Engineer" = /datum/alt_title/senior_engi
+		"Construction Engineer" = /datum/alt_title/construction_engi
 		)
 
 	minimal_player_age = 3
@@ -51,11 +50,6 @@
 	title = "Construction Engineer"
 	title_blurb = "A Construction Engineer fulfills similar duties to other engineers, but usually occupies spare time with construction of extra facilities in dedicated areas or \
 					as additions to station layout."
-					
-/datum/alt_title/senior_engi
-	title = "Senior Engineer"
-	title_blurb = "A Senior Engineer fulfills similar duties to other engineers, but usually occupies spare time with with training of other, newer Engineers \
-					and making sure the Chief's orders are followed to the letter. You are not in command of the Engineering departement."
 
 /datum/outfit/job/station/station_engineer
 	name = OUTFIT_JOB_NAME("Engineer")

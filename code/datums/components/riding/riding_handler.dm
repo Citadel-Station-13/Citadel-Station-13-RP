@@ -317,6 +317,8 @@
  * called when a mob wants to drive us
  */
 /datum/component/riding_handler/proc/attempt_drive(mob/M, dir)
+	if(!(riding_handler_flags & CF_RIDING_HANDLER_IS_CONTROLLABLE))
+		return FALSE
 	var/atom/movable/AM = parent
 	if(!AM.loc)
 		return FALSE

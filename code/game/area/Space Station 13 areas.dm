@@ -535,6 +535,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	var/asteroid_spawns = list()
 	var/mob_spawns = list()
 	var/shuttle_area //It would be neat if this were more dynamic, but eh.
+	ambience = AMBIENCE_SPACE
+//	has_gravity = FALSE
 
 /area/asteroid/rogue/zone1
 	name = "Asteroid Belt Zone 1"
