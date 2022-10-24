@@ -271,35 +271,6 @@
 	container_name = "advanced voidsuit crate"
 	access = access_ce
 
-/datum/supply_pack/misc/skatepack1
-	name = "Beginner Skateboard Pack"
-	contains = list(
-			/obj/vehicle_old/skateboard/beginner = 3,
-			/obj/item/clothing/head/helmet/bike_helmet/random = 3
-			)
-	cost = 100
-	container_type = /obj/structure/closet/crate
-	container_name = "Skateboard Crate - Beginner"
-
-/datum/supply_pack/misc/skatepack2
-	name = "Professional Skateboard Pack"
-	contains = list(
-			/obj/vehicle_old/skateboard/pro = 2,
-			/obj/item/clothing/head/helmet/bike_helmet/random = 2
-			)
-	cost = 200
-	container_type = /obj/structure/closet/crate
-	container_name = "Skateboard Crate - Professional"
-
-/datum/supply_pack/misc/skatepack3
-	name = "Hoverboard Pack"
-	contains = list(
-			/obj/vehicle_old/skateboard/hoverboard = 2,
-			/obj/item/clothing/head/helmet/bike_helmet/random = 2
-			)
-	cost = 300
-	container_type = /obj/structure/closet/crate
-	container_name = "Hoverboard Crate"
 
 /datum/supply_pack/misc/colored_lights
 	name = "Colored Lights Bundle"

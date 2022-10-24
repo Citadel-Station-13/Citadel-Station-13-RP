@@ -33,7 +33,6 @@
 	health_hud_intensity = 1.5
 
 	species_spawn_flags = SPECIES_SPAWN_ALLOWED
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	has_organ = list(
 		O_HEART     = /obj/item/organ/internal/heart,

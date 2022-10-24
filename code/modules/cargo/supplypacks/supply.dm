@@ -125,19 +125,6 @@
 	container_name = "Mulebot Crate"
 */
 
-/datum/supply_pack/supply/cargotrain
-	name = "Cargo Train Tug"
-	contains = list(/obj/vehicle_old/train/engine)
-	cost = 35
-	container_type = /obj/structure/largecrate
-	container_name = "Cargo Train Tug Crate"
-
-/datum/supply_pack/supply/cargotrailer
-	name = "Cargo Train Trolley"
-	contains = list(/obj/vehicle_old/train/trolley)
-	cost = 15
-	container_type = /obj/structure/largecrate
-	container_name = "Cargo Train Trolley Crate"
 
 //Culture Update
 /datum/supply_pack/misc/mining_tyrmalin

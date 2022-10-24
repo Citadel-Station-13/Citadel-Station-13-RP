@@ -4,6 +4,7 @@
 // Mappers: you can use "Generate Instances from Icon-states"
 //  to get the different pieces.
 /obj/structure/transit_tube
+	name = "transit tube"
 	icon = 'icons/obj/pipes/transit_tube.dmi'
 	icon_state = "E-W"
 	density = 1
@@ -29,6 +30,7 @@
 // Mappers: use "Generate Instances from Directions" for this
 //  one.
 /obj/structure/transit_tube/station
+	name = "Transit Tube Station"
 	icon = 'icons/obj/pipes/transit_tube_station.dmi'
 	icon_state = "closed"
 	exit_delay = 2
@@ -595,3 +597,20 @@
 			return "SW"
 		else
 	return
+
+
+
+/// Z level transit tubes. I dont know how to get these to work why is all the movement based off the fucking pod itself
+/*
+/obj/structure/transit_tube/ender
+	//Will look like a regular transit tube
+	unacidable = 1
+	var/id = null
+
+/obj/structure/transit_tube/ender/init_dirs_automatic()
+	. = ..()
+	if(id)
+		for(var/obj/structure/transit_tube/ender/target in world)	//Having this check in world is prolly the wrong way of doing this @ktoma36
+			if(target.id == id)
+				. |= target
+*/

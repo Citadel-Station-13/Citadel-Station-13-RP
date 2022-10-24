@@ -29,9 +29,10 @@
 
 	flags = NO_MINOR_CUT
 	species_spawn_flags = SPECIES_SPAWN_ALLOWED
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult = 1
+	color_force_greyscale = TRUE
 	base_color = "#EECEB3"
 
 	has_limbs = list(
@@ -75,9 +76,10 @@
 	item_slowdown_mod = 1.05 //Minor slowdown
 
 	species_spawn_flags = SPECIES_SPAWN_ALLOWED
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult = 1
+	color_force_greyscale = TRUE
 	base_color = "#EECEB3"
 
 	has_limbs = list(
@@ -115,9 +117,10 @@
 	hunger_factor = 0.35//less hungry
 
 	species_spawn_flags = SPECIES_SPAWN_ALLOWED
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult = 1
+	color_force_greyscale = TRUE
 	base_color = "#EECEB3"
 
 	has_organ = list(
