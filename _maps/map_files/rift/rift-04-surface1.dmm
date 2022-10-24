@@ -24632,7 +24632,7 @@
 /area/maintenance/research/lower)
 "pmJ" = (
 /obj/structure/table/hardwoodtable,
-/obj/item/gun/projectile/derringer,
+/obj/item/stamp/denied,
 /turf/simulated/floor/carpet/bcarpet,
 /area/maintenance/maint_bar)
 "pmT" = (
