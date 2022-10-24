@@ -343,8 +343,10 @@
 	else if(inhands? (worn_render_flags & WORN_RENDER_INHAND_ALLOW_DEFAULT) : (worn_render_flags & WORN_RENDER_SLOT_ALLOW_DEFAULT))
 		var/list/resolved = slot_meta.resolve_default_assets(bodytype, data[WORN_DATA_STATE], M, src, inhand_default_type)
 		if(!resolved && (bodytype != BODYTYPE_DEFAULT) && (bodytype & worn_bodytypes_fallback))
-			// attempt 2 - convert to default if specified to convert
-			resolved = slot_meta.resolve_default_assets(BODYTYPE_DEFAULT, data[WORN_DATA_STATE], M, src, inhand_default_type)
+			// attempt 2 - use fallback if available
+			if(!(slot_meta.handle_worn_fallback(bodytype, data)))
+				// attempt 3 - convert to default if specified to convert
+				resolved = slot_meta.resolve_default_assets(BODYTYPE_DEFAULT, data[WORN_DATA_STATE], M, src, inhand_default_type)
 		if(resolved)
 			data[WORN_DATA_ICON] = resolved[1]
 			data[WORN_DATA_SIZE_X] = resolved[2]
