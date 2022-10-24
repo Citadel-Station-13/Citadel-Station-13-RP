@@ -7,7 +7,7 @@
 	CanAtmosPass = ATMOS_PASS_PROC
 	w_class = ITEMSIZE_NORMAL
 
-	layer = WINDOW_LAYER
+	layer = ABOVE_OBJ_LAYER
 	pressure_resistance = 4*ONE_ATMOSPHERE
 	anchored = TRUE
 	flags = ON_BORDER
@@ -21,6 +21,7 @@
 	/// i'm so sorry we have to do this - set to dir for allowthrough purposes
 	var/moving_right_now
 
+	var/mutable_appearance/crack_overlay
 	var/maxhealth = 14.0
 	var/maximal_heat = T0C + 100 // Maximal heat before this window begins taking damage from fire
 	var/damage_per_fire_tick = 2.0 // Amount of damage per fire tick. Regular windows are not fireproof so they might as well break quickly.
@@ -31,7 +32,15 @@
 	var/glasstype = null // Set this in subtypes. Null is assumed strange or otherwise impossible to dismantle, such as for shuttle glass.
 	var/silicate = 0 // number of units of silicate
 
-/obj/structure/window/Initialize(mapload)
+/obj/structure/window/Initialize(mapload, direct)
+	. = ..()
+	if(direct)
+		setDir(direct)
+
+	update_nearby_tiles()
+
+	if(fulltile)
+		setDir()
 	/// COMPATIBILITY PATCH - Replace this crap with a better solution (maybe copy /tg/'s ASAP!!)
 	// unfortunately no longer a compatibility patch ish due to clickcode...
 	check_fullwindow()
@@ -309,7 +318,9 @@
 				var/obj/structure/window/reinforced/polarized/P = new(loc, dir)
 				if(is_fulltile())
 					P.fulltile = TRUE
-					P.icon_state = "fwindow"
+					P.icon = 'icons/obj/smooth_structures/tinted_window.dmi'
+					P.icon_state = "tinted_window-0"
+					P.base_icon_state = "tinted_window"
 				P.maxhealth = maxhealth
 				P.health = health
 				P.construction_state = construction_state
@@ -423,11 +434,39 @@
 /obj/structure/window/proc/is_fulltile()
 	return fulltile
 
-//This proc is used to update the icons of nearby windows. It should not be confused with update_nearby_tiles(), which is an atmos proc!
+/**
+ * This proc is used to update the icons of nearby windows.
+ * It should not be confused with update_nearby_tiles(), which is an atmos proc!
+ */
 /obj/structure/window/proc/update_nearby_icons()
-	update_icon()
-	for(var/obj/structure/window/W in orange(src, 1))
-		W.update_icon()
+	update_appearance()
+	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		QUEUE_SMOOTH_NEIGHBORS(src)
+
+/// Merges adjacent full-tile windows into one.
+/obj/structure/window/update_overlays(updates=ALL)
+	. = ..()
+	if(QDELETED(src) || !fulltile)
+		return
+
+	if((updates & UPDATE_SMOOTHING) && (smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK)))
+		QUEUE_SMOOTH(src)
+
+	var/ratio = health / maxhealth
+	ratio = CEILING(ratio*4, 1) * 25
+	cut_overlay(crack_overlay)
+	if(ratio > 75)
+		return
+	crack_overlay = mutable_appearance('icons/obj/structures.dmi', "damage[ratio]", -(layer+0.1), appearance_flags = RESET_COLOR)
+	. += crack_overlay
+
+	// var/ratio = atom_integrity / max_integrity
+	// ratio = CEILING(ratio*4, 1) * 25
+	// cut_overlay(crack_overlay)
+	// if(ratio > 75)
+	// 	return
+	// crack_overlay = mutable_appearance('icons/obj/structures.dmi', "damage[ratio]", -(layer+0.1), appearance_flags = RESET_COLOR)
+	// . += crack_overlay
 
 //Updates the availabiliy of the rotation verbs
 /obj/structure/window/proc/update_verbs()
@@ -437,38 +476,6 @@
 	else if(!is_fulltile())
 		verbs += /obj/structure/window/verb/rotate_counterclockwise
 		verbs += /obj/structure/window/verb/rotate_clockwise
-
-//merges adjacent full-tile windows into one (blatant ripoff from game/smoothwall.dm)
-/obj/structure/window/update_icon()
-	//A little cludge here, since I don't know how it will work with slim windows. Most likely VERY wrong.
-	//this way it will only update full-tile ones
-	overlays.Cut()
-	if(!is_fulltile())
-		icon_state = "[basestate]"
-		return
-	var/list/dirs = list()
-	if(anchored)
-		for(var/obj/structure/window/W in orange(src,1))
-			if(W.anchored && W.density && W.glasstype == src.glasstype && W.is_fulltile()) //Only counts anchored, not-destroyed fill-tile windows.
-				dirs += get_dir(src, W)
-
-	var/list/connections = dirs_to_corner_states(dirs)
-
-	icon_state = ""
-	for(var/i = 1 to 4)
-		var/image/I = image(icon, "[basestate][connections[i]]", dir = 1<<(i-1))
-		overlays += I
-
-	// Damage overlays.
-	var/ratio = health / maxhealth
-	ratio = CEILING(ratio * 4, 1) * 25
-
-	if(ratio > 75)
-		return
-	var/image/I = image(icon, "damage[ratio]", layer = layer + 0.1)
-	overlays += I
-
-	return
 
 /obj/structure/window/fire_act(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature > maximal_heat)
@@ -581,9 +588,15 @@
 	force_threshold = 3
 
 /obj/structure/window/basic/full
-	icon_state = "window-full"
+	icon = 'icons/obj/smooth_structures/window.dmi'
+	icon_state = "window-0"
+	base_icon_state = "window"
+	color = "#AFD3E6"
 	maxhealth = 24
 	fulltile = TRUE
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_AIRLOCK, SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 
 /obj/structure/window/phoronbasic
 	name = "phoron window"
@@ -598,9 +611,14 @@
 	force_threshold = 5
 
 /obj/structure/window/phoronbasic/full
-	icon_state = "phoronwindow-full"
+	icon = 'icons/obj/smooth_structures/plasma_window.dmi'
+	icon_state = "plasma_window-0"
+	base_icon_state = "plasma_window"
 	maxhealth = 80
 	fulltile = TRUE
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_AIRLOCK, SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 
 /obj/structure/window/phoronreinforced
 	name = "reinforced borosilicate window"
@@ -616,9 +634,14 @@
 	force_threshold = 10
 
 /obj/structure/window/phoronreinforced/full
-	icon_state = "phoronrwindow-full"
+	icon = 'icons/obj/smooth_structures/rplasma_window.dmi'
+	icon_state = "rplasma_window-0"
+	base_icon_state = "rplasma_window"
 	maxhealth = 160
 	fulltile = TRUE
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_AIRLOCK, SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 
 /obj/structure/window/reinforced
 	name = "reinforced window"
@@ -633,9 +656,14 @@
 	force_threshold = 6
 
 /obj/structure/window/reinforced/full
-	icon_state = "rwindow-full"
+	icon = 'icons/obj/smooth_structures/reinforced_window.dmi'
+	icon_state = "reinforced_window-0"
+	base_icon_state = "reinforced_window"
 	maxhealth = 80
 	fulltile = TRUE
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_AIRLOCK, SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 
 /obj/structure/window/reinforced/tinted
 	name = "tinted window"
@@ -670,9 +698,14 @@
 	var/id
 
 /obj/structure/window/reinforced/polarized/full
-	icon_state = "rwindow-full"
+	icon = 'icons/obj/smooth_structures/tinted_window.dmi'
+	icon_state = "tinted_window-0"
+	base_icon_state = "tinted_window"
 	maxhealth = 80
 	fulltile = TRUE
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = list(SMOOTH_GROUP_WINDOW_FULLTILE, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_AIRLOCK, SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 
 /obj/structure/window/reinforced/polarized/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/multitool) && !anchored) // Only allow programming if unanchored!

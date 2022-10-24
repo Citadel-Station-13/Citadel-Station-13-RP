@@ -4,7 +4,7 @@
 	opacity = 0
 	density = 0
 	plane = OBJ_PLANE
-	layer = ABOVE_JUNK_LAYER
+	layer = ABOVE_TURF_LAYER
 	w_class = ITEMSIZE_NORMAL
 
 /obj/structure/sign/ex_act(severity)

@@ -46,8 +46,18 @@
 
 /obj/structure/Initialize(mapload)
 	. = ..()
+	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
+		if(smoothing_flags & SMOOTH_CORNERS)
+			icon_state = ""
 	if(climbable)
 		verbs += /obj/structure/proc/climb_on
+
+/obj/structure/Destroy()
+	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		QUEUE_SMOOTH_NEIGHBORS(src)
+	return ..()
 
 /obj/structure/proc/climb_on()
 

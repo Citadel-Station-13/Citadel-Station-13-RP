@@ -122,18 +122,6 @@
 
 
 
-
-
-/////////////////////////////////////////////////////////////////
-
-// I dont know why this was in triumph's stuff, its already defined in window.dm . Gonna keep this here just in case though commented out - Bloop
-/*
-/obj/structure/window/reinforced/polarized/full
-	dir = SOUTHWEST
-	icon_state = "fwindow"
-	maxhealth = 80
-*/
-
 //////////////////////////////////////////////////////////////////////
 //
 // ### Wall Machines On Full Windows ###

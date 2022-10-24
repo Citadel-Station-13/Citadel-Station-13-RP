@@ -33,7 +33,7 @@ var/list/tape_roll_applications = list()
 	name = "tape"
 	icon = 'icons/policetape.dmi'
 	anchored = 1
-	layer = WINDOW_LAYER
+	layer = ABOVE_OBJ_LAYER
 	var/lifted = 0
 	var/crumpled = 0
 	var/tape_dir = 0
@@ -291,7 +291,7 @@ var/list/tape_roll_applications = list()
 		else
 			var/obj/item/barrier_tape_segment/P = new tape_type(T)
 			P.update_icon()
-			P.layer = WINDOW_LAYER
+			P.layer = ABOVE_OBJ_LAYER
 			to_chat(user, "<span class='notice'>You finish placing \the [src].</span>")
 
 	if (istype(A, /turf/simulated/floor) ||istype(A, /turf/unsimulated/floor))

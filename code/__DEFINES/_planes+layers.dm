@@ -90,11 +90,21 @@
 #define BULLET_HOLE_LAYER        2.06
 #define DISPOSAL_PIPE_LAYER      2.30
 #define GAS_PIPE_HIDDEN_LAYER    2.35  //layer = initial(layer) + piping_layer / 1000 in atmospherics/update_icon() to determine order of pipe overlap
-#define WIRE_LAYER 2.4
+#define WIRE_LAYER               2.4
+#define WIRE_TERMINAL_LAYER      2.45
+#define GAS_SCRUBBER_LAYER       2.46
+#define GAS_PIPE_VISIBLE_LAYER   2.47 //layer = initial(layer) + piping_layer / 1000 in atmospherics/update_icon() to determine order of pipe overlap
+#define GAS_FILTER_LAYER         2.48
+#define GAS_PUMP_LAYER           2.49
+#define DEBRIS_LAYER             2.45  // cleanable debris.
 #define UNDERWATER_LAYER         2.5   // Anything on this layer will render under the water layer.
+#define TABLE_LAYER              2.8   // Just under stuff that wants to be slightly below common objects.
 #define BELOW_OBJ_LAYER          2.9
 //! Turf/Obj layer boundary
-#define ABOVE_TURF_LAYER         3.10 // Snow and wallmounted/floormounted equipment.
+#define ABOVE_TURF_LAYER         3.10  // Snow and wallmounted/floormounted equipment.
+#define CLOSED_DOOR_LAYER        3.11
+#define CLOSED_FIREDOOR_LAYER    3.12
+#define ABOVE_OBJ_LAYER          3.20
 
 // todo: kill all these useless goddamn arbitrary planes and unify things to 3-5 of turf, floor, obj, mob, there is no excuse for this utter charade.
 //! DECALS
@@ -108,17 +118,11 @@
 //! OBJS
 #define OBJ_PLANE -35
 
-#define DEBRIS_LAYER       2.4 // cleanable debris.
 #define STAIRS_LAYER       2.5 // Layer for stairs.
 #define HIDING_LAYER       2.6 // Layer at which mobs hide to be under things like tables.
 #define DOOR_OPEN_LAYER    2.7 // Under all objects if opened. 2.7 due to tables being at 2.6.
-#define TABLE_LAYER        2.8 // Just under stuff that wants to be slightly below common objects.
 #define PROJECTILE_HIT_THRESHOLD_LAYER 2.8
-#define UNDER_JUNK_LAYER   2.9 // Things that want to be slightly below common objects.
 //! Turf/Obj layer boundary
-#define ABOVE_JUNK_LAYER   3.1 // Things that want to be slightly above common objects.
-#define DOOR_CLOSED_LAYER  3.1 // Doors when closed.
-#define WINDOW_LAYER       3.2 // Windows.
 #define ON_WINDOW_LAYER    3.3 // Ontop of a window.
 #define ABOVE_WINDOW_LAYER 3.4 // Above full tile windows so wall items are clickable.
 #define MID_LANDMARK_LAYER 3.5

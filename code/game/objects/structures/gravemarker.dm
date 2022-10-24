@@ -8,7 +8,7 @@
 	climbable = TRUE
 	anchored = TRUE
 
-	layer = ABOVE_JUNK_LAYER
+	layer = ABOVE_TURF_LAYER
 
 	//Maybe make these calculate based on material?
 	var/health = 100

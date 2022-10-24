@@ -1,8 +1,3 @@
-/obj/structure/window/reinforced/polarized/full
-	dir = SOUTHWEST
-	icon_state = "fwindow"
-	maxhealth = 80
-
 //Meme shit for the map
 
 /obj/item/reagent_containers/food/condiment/cursed
@@ -521,4 +516,3 @@
 		/mob/living/simple_mob/animal/passive/woolie = 3,
 		/mob/living/simple_mob/animal/passive/furnacegrub
 	)
-

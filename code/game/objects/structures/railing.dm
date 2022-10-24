@@ -6,7 +6,7 @@
 	density = TRUE
 	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_CLICK | ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW | ATOM_PASS_CLICK
 	climbable = TRUE
-	layer = WINDOW_LAYER
+	layer = ABOVE_OBJ_LAYER
 	anchored = TRUE
 	flags = ON_BORDER
 	icon_state = "railing0"

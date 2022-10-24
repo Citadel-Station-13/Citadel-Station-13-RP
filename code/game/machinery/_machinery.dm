@@ -101,7 +101,7 @@
 	name = "machinery"
 	icon = 'icons/obj/stationobjs.dmi'
 	w_class = ITEMSIZE_NO_CONTAINER
-	layer = UNDER_JUNK_LAYER
+	layer = BELOW_OBJ_LAYER
 
 	var/machine_stat = 0
 	var/emagged = FALSE

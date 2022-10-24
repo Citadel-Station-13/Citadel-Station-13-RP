@@ -6,7 +6,7 @@
 	icon_state = "pod_preview"
 	density = TRUE
 	anchored = TRUE
-	layer = UNDER_JUNK_LAYER
+	layer = BELOW_OBJ_LAYER
 	interact_offline = TRUE
 
 	var/on = FALSE

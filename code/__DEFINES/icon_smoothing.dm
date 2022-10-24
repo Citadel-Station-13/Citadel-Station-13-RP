@@ -199,6 +199,7 @@ DEFINE_BITFIELD(smoothing_junction, list(
 #define SMOOTH_GROUP_CATWALK  S_OBJ(31) ///obj/structure/lattice/catwalk
 
 #define SMOOTH_GROUP_AIRLOCK S_OBJ(40) ///obj/machinery/door/airlock
+#define SMOOTH_GROUP_SHUTTERS_BLASTDOORS S_OBJ(41) ///obj/machinery/door/poddoor
 
 #define SMOOTH_GROUP_TABLES S_OBJ(50) ///obj/structure/table
 // #define SMOOTH_GROUP_WOOD_TABLES S_OBJ(51) ///obj/structure/table/wood

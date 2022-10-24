@@ -106,7 +106,7 @@
 
 /obj/effect/overlay/snow/airlock
 	icon_state = "snowairlock"
-	layer = DOOR_CLOSED_LAYER+0.01
+	layer = CLOSED_DOOR_LAYER+0.01
 
 /obj/effect/overlay/snow/floor/pointy
 	icon_state = "snowfloorpointy"
