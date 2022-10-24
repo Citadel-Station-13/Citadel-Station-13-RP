@@ -249,6 +249,11 @@
 
 	var/list/gamemode_cache = list()
 
+	var/lock_client_view_x
+	var/lock_client_view_y
+	var/max_client_view_x
+	var/max_client_view_y
+
 
 /datum/configuration_legacy/New()
 	var/list/L = subtypesof(/datum/game_mode)

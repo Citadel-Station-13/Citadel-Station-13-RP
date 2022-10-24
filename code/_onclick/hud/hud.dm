@@ -36,9 +36,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	screen.layer = SCREEN_LAYER
 	screen.plane = FULLSCREEN_PLANE
 	screen.mouse_opacity = 0
-	screen.alpha = 125
-	screen.color = color
-	screen.blend_mode = BLEND_MULTIPLY
+
 	return screen
 
 /atom/movable/screen/global_screen
@@ -51,7 +49,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	whitense = new /atom/movable/screen/global_screen()
 	whitense.icon = 'icons/effects/static.dmi'
 	whitense.icon_state = "1 light"
-	whitense.transform = M
+
 	//darksight 'hanger' for attached icons
 	darksight = new /atom/movable/screen()
 	darksight.icon = null
@@ -69,15 +67,18 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	centermarker.icon = 'icons/mob/screen1.dmi'
 	centermarker.icon_state = "centermarker"
 	centermarker.screen_loc = "CENTER,CENTER"
-	// These probably don't work and need a refactor.
-	nvg = setup_overlay("scanline", "#06ff00")
-	thermal = setup_overlay("scanline", "#ff0000")
-	meson = setup_overlay("scanline", "#9fd800")
-	science = setup_overlay("scanline", "#d600d6")
-	nvg.transform = M
-	thermal.transform = M
-	meson.transform = M
-	science.transform = M
+
+	nvg = setup_overlay("nvg_hud")
+	thermal = setup_overlay("thermal_hud")
+	meson = setup_overlay("meson_hud")
+	science = setup_overlay("science_hud")
+	material = setup_overlay("material_hud")
+	yellow = setup_overlay("yellow_hud")
+	blue = setup_overlay("blue_hud")
+	pink = setup_overlay("pink_hud")
+	beige = setup_overlay("beige_hud")
+	orange = setup_overlay("orange_hud")
+
 	// The holomap screen object is actually totally invisible.
 	// Station maps work by setting it as an images location before sending to client, not
 	// actually changing the icon or icon state of the screen object itself!
