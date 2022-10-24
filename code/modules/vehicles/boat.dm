@@ -83,6 +83,8 @@
 		list(1, 2),
 		list(1, 2)
 	)
+	riding_handler_flags = list(CF_RIDING_HANDLER_ALLOW_BORDER,
+	CF_RIDING_HANDLER_IS_CONTROLLABLE)
 
 /datum/component/riding_handler/vehicle/boat/small
 	rider_offsets = list(

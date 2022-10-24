@@ -33,6 +33,8 @@
 	CF_RIDING_CHECK_UNCONSCIOUS,
 	CF_RIDING_CHECK_INCAPACITATED
 	)
+	riding_handler_flags = list(CF_RIDING_HANDLER_ALLOW_BORDER,
+	CF_RIDING_HANDLER_IS_CONTROLLABLE)
 
 /obj/vehicle/ridden/cart/security
 	name = "Security Cart"

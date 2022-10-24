@@ -34,7 +34,8 @@
 		)
 	)
 	rider_offset_format = CF_RIDING_OFFSETS_ENUMERATED
-
+	riding_handler_flags = list(CF_RIDING_HANDLER_ALLOW_BORDER,
+	CF_RIDING_HANDLER_IS_CONTROLLABLE)
 
 //	load_item_visible = 1
 //	mob_offset_y = 5

@@ -16,7 +16,8 @@
 		/turf/simulated,
 		/turf/unsimulated
 	)
-
+	riding_handler_flags = list(CF_RIDING_HANDLER_ALLOW_BORDER,
+	CF_RIDING_HANDLER_IS_CONTROLLABLE)
 
 
 /datum/component/riding_handler/vehicle/rock

@@ -49,6 +49,8 @@
 		)
 	)
 	rider_offset_format = CF_RIDING_OFFSETS_ENUMERATED
+	riding_handler_flags = list(CF_RIDING_HANDLER_ALLOW_BORDER,
+	CF_RIDING_HANDLER_IS_CONTROLLABLE)
 
 		// Overlay shenanagens, WIP @ktoma36
 /obj/vehicle/ridden/quadbike/random/Initialize(mapload)
