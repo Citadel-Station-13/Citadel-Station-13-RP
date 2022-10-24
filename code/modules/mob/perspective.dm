@@ -169,5 +169,8 @@
 /mob/proc/set_viewsize(var/new_view = world.view)
 	if (client && new_view != client.view)
 		client.view = new_view
+		client.update_clickcatcher()
+		if(world.view == client.view)
+			INVOKE_ASYNC(client, /client.verb/OnResize)
 		return TRUE
 	return FALSE
