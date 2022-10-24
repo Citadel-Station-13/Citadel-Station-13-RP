@@ -46,6 +46,8 @@
 
 //! todo: layers still need to be linear regardless of plane. stuff like projectiles DO CARE.
 
+#warn Finish cleaning up planes and layers. This is a mess. @Zandario
+
 /**
  *! ## SUB-TURF PLANES
  */
