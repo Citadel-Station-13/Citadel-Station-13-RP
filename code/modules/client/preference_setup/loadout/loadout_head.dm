@@ -377,3 +377,7 @@
 /datum/gear/head/samurai/New()
 	..()
 	gear_tweaks += gear_tweak_free_color_choice
+
+/datum/gear/head/half_pint
+	name = "Half-Pint Headband"
+	path = /obj/item/clothing/head/half_pint
