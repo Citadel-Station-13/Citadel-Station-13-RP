@@ -8,7 +8,6 @@
 	deform       = 'icons/mob/species/diona/deformed_body.dmi'
 	preview_icon = 'icons/mob/species/diona/preview.dmi'
 
-	language = LANGUAGE_ROOTLOCAL
 	max_additional_languages = 2
 	name_language = LANGUAGE_ID_DIONA
 	intrinsic_languages = list(

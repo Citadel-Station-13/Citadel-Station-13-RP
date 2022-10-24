@@ -8,16 +8,25 @@
 /datum/preferences/proc/copy_to(mob/living/carbon/human/character, flags)
 	// Sanitizing rather than saving as someone might still be editing when copy_to occurs.
 	player_setup.sanitize_setup()
+	sanitize_everything()
 
-	// This needs to happen before anything else becuase it sets some variables.
-	character.set_species(species)
+	// snowflake begin
 	// Special Case: This references variables owned by two different datums, so do it here.
 	if(be_random_name)
 		real_name = random_name(identifying_gender,species)
+	// snowflake end
 
-	// Ask the preferences datums to apply their own settings to the new mob
-	player_setup.copy_to_mob(character, flags)
-	#warn this needs to prioritize entries based on load order!!
+	// Copy start
+	// Gather
+	// todo: cache items by load order
+	var/list/datum/category_item/player_setup_item/items = list()
+	for(var/datum/category_group/player_setup_category/C as anything in player_setup.categories)
+		for(var/datum/category_item/player_setup_item/I as anything in C.items)
+			BINARY_INSERT(I, items, /datum/category_item/player_setup_item, I, load_order, COMPARE_KEY)
+	// copy to
+	for(var/datum/category_item/player_setup_item/I as anything in items)
+		I.copy_to_mob(src, character, I.is_global? get_global_data(I.save_key) : get_character_data(I.save_key), flags)
+
 	#warn how do we carry character data through for other init like record injection?
 
 	// Sync up all their organs and species one final time
