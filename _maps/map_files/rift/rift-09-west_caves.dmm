@@ -9,6 +9,18 @@
 	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
+"aq" = (
+/obj/structure/bed/chair/bay{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/workroom)
 "aK" = (
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Mining Outpost Airlock"
@@ -29,6 +41,22 @@
 "aQ" = (
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/interior/medical)
+"aV" = (
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound1)
+"ba" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor/orange,
+/obj/machinery/power/apc/alarms_hidden{
+	cell_type = null;
+	chargelevel = 0;
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/command)
 "bc" = (
 /obj/structure/catwalk,
 /obj/machinery/light/small,
@@ -57,6 +85,12 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
+"bu" = (
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound1)
 "bP" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -171,14 +205,26 @@
 /obj/random/medical/pillbottle,
 /obj/random/firstaid,
 /obj/random/firstaid,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/medical)
 "dQ" = (
 /obj/random/outcrop,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/exterior/mineshaft)
 "dS" = (
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/medical)
 "dU" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
@@ -190,7 +236,13 @@
 /obj/machinery/door/window/southright{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/command)
 "ey" = (
 /turf/simulated/floor/tiled/steel_dirty,
@@ -211,6 +263,16 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/outpost/mining_main/outpost)
+"eC" = (
+/obj/random/trash,
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/medical)
 "eF" = (
 /obj/machinery/shower{
 	pixel_y = 18
@@ -241,7 +303,10 @@
 /obj/item/reagent_containers/food/drinks/bottle/messa_mead,
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/spline/fancy/wood/cee{
+	dir = 1
+	},
+/turf/simulated/floor/wood/lythios43c,
 /area/rift/facility/interior/command)
 "fa" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -280,6 +345,12 @@
 "fn" = (
 /obj/item/poi/brokenoldreactor,
 /obj/effect/map_effect/radiation_emitter/strong,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "fz" = (
@@ -292,6 +363,19 @@
 /obj/structure/lattice,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
+"fP" = (
+/obj/effect/floor_decal/techfloor/orange/corner,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound1)
+"fT" = (
+/obj/structure/table/reinforced,
+/obj/random/tech_supply/component/nofail,
+/obj/random/tech_supply/component/nofail,
+/obj/random/tech_supply/component/nofail,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/beige/border,
+/turf/simulated/floor/tiled/steel/lythios43c,
+/area/rift/facility/interior/workroom)
 "fU" = (
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/outpost)
@@ -299,7 +383,13 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/command)
 "fX" = (
 /obj/machinery/door/airlock/glass_external/public{
@@ -355,11 +445,11 @@
 /obj/structure/sink{
 	pixel_y = -18
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/bathrooms)
 "gP" = (
 /obj/random/trash,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/bathrooms)
 "gR" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -379,6 +469,11 @@
 	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
+"hn" = (
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/paleblue/border,
+/turf/simulated/floor/tiled/steel/lythios43c,
+/area/rift/facility/interior/medical)
 "hv" = (
 /obj/structure/lattice,
 /turf/simulated/open/lythios43c,
@@ -434,7 +529,7 @@
 	pixel_y = -18
 	},
 /obj/random/trash,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/bathrooms)
 "im" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
@@ -489,7 +584,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/bathrooms)
 "jf" = (
 /obj/effect/overlay/snow/floor/edges_new{
@@ -507,6 +602,19 @@
 "jj" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
+"jm" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/workroom)
+"ju" = (
+/obj/random/trash,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound1)
 "jw" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -534,9 +642,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
+"jZ" = (
+/turf/simulated/floor/tiled/steel/lythios43c,
+/area/rift/facility/interior/workroom)
 "kd" = (
 /obj/structure/table/marble,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/turf/simulated/floor/wood/lythios43c,
 /area/rift/facility/interior/command)
 "km" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -550,6 +667,8 @@
 /area/rift/surfacebase/outside/west_caves)
 "kz" = (
 /obj/random/trash,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/medical)
 "kK" = (
@@ -575,7 +694,7 @@
 /obj/machinery/door/airlock{
 	name = "Unit 3"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/bathrooms)
 "lf" = (
 /obj/structure/mirror/long/broke{
@@ -584,11 +703,17 @@
 /obj/structure/sink{
 	pixel_y = -18
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/bathrooms)
 "lg" = (
 /obj/structure/table/reinforced,
 /obj/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -597,13 +722,19 @@
 /obj/structure/loot_pile/surface/medicine_cabinet{
 	pixel_y = -32
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/bathrooms)
 "lw" = (
 /obj/structure/table/rack/shelf,
 /obj/random/maintenance/engineering,
 /obj/random/maintenance/engineering,
 /obj/random/maintenance/engineering,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "lx" = (
@@ -617,6 +748,15 @@
 /obj/item/towel/random,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
+"lH" = (
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/workroom)
 "lR" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -626,12 +766,21 @@
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
+"ma" = (
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound1)
 "mi" = (
 /obj/structure/railing{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
+"mp" = (
+/turf/simulated/wall/r_wall,
+/area/rift/surfacebase/outside/west_caves/submap_seedzone)
 "mA" = (
 /obj/structure/railing{
 	dir = 8
@@ -654,7 +803,7 @@
 /area/outpost/mining_main/outpost/substation)
 "mS" = (
 /obj/random/trash,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/undergound1)
 "mY" = (
 /obj/structure/railing{
@@ -682,7 +831,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/bathrooms)
 "nG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -700,6 +849,12 @@
 /area/outpost/mining_main/outpost)
 "nL" = (
 /obj/structure/salvageable/autolathe,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "nN" = (
@@ -707,7 +862,7 @@
 /obj/structure/loot_pile/surface/medicine_cabinet{
 	pixel_y = -32
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/bathrooms)
 "nU" = (
 /obj/structure/transit_tube/high_velocity{
@@ -718,15 +873,27 @@
 	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
+"nY" = (
+/turf/unsimulated/wall/planetary/lythios43c{
+	desc = "Glacial permafrost, compacted harder than stone.";
+	icon_state = "icerock-dark";
+	name = "glacier wall"
+	},
+/area/rift/surfacebase/outside/west_caves/submap_seedzone)
 "oe" = (
 /obj/structure/table/marble,
 /obj/random/coin,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/command)
 "of" = (
 /obj/structure/table/rack/shelf,
 /obj/random/medical/pillbottle,
 /obj/random/medical/pillbottle,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/medical)
 "ok" = (
@@ -791,7 +958,7 @@
 /obj/structure/table/marble,
 /obj/item/paper_bin,
 /obj/item/pen,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/command)
 "pA" = (
 /obj/structure/catwalk/plank,
@@ -814,8 +981,15 @@
 /obj/machinery/door/airlock{
 	name = "Toilet"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/bathrooms)
+"pP" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/command)
 "pV" = (
 /obj/effect/overlay/snow/floor/edges_new{
 	dir = 8
@@ -826,6 +1000,12 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "qf" = (
@@ -834,6 +1014,13 @@
 	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
+"qp" = (
+/obj/random/trash,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/workroom)
 "qy" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -854,12 +1041,25 @@
 /obj/machinery/door/airlock/glass,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
+"qC" = (
+/obj/structure/salvageable/autolathe,
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/workroom)
 "qF" = (
 /obj/random/obstruction,
 /obj/machinery/power/apc/alarms_hidden{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound1)
 "qK" = (
 /obj/structure/catwalk,
@@ -879,6 +1079,12 @@
 /obj/item/reagent_containers/blood/OMinus,
 /obj/item/reagent_containers/blood/OMinus,
 /obj/effect/map_effect/radiation_emitter,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/medical)
 "qM" = (
@@ -893,7 +1099,11 @@
 	chargelevel = 0;
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/command)
 "re" = (
 /obj/structure/catwalk,
@@ -906,10 +1116,18 @@
 /area/rift/surfacebase/outside/west_caves)
 "rg" = (
 /obj/structure/medical_stand/anesthetic,
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/medical)
 "rl" = (
 /obj/machinery/light/small,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/medical)
 "ro" = (
@@ -928,6 +1146,12 @@
 /obj/structure/table/reinforced,
 /obj/item/poi/brokenoldreactor,
 /obj/effect/map_effect/radiation_emitter/strong,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "ru" = (
@@ -937,7 +1161,7 @@
 /area/rift/surfacebase/outside/west_caves)
 "rA" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/undergound1)
 "rC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1009,7 +1233,13 @@
 /obj/machinery/door/window/southleft{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/command)
 "sk" = (
 /obj/machinery/conveyor{
@@ -1051,6 +1281,18 @@
 /obj/structure/transit_tube/high_velocity,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
+"tw" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 10
+	},
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/command)
 "tB" = (
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled/steel_grid,
@@ -1142,6 +1384,10 @@
 	name = "glacier wall"
 	},
 /area/rift/surfacebase/outside/west_caves)
+"vy" = (
+/obj/structure/bed/chair/bay,
+/turf/simulated/floor/tiled/steel/lythios43c,
+/area/rift/facility/interior/workroom)
 "vz" = (
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
@@ -1163,6 +1409,15 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost)
+"wb" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel/lythios43c,
+/area/rift/facility/interior/workroom)
 "wd" = (
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "S-NE"
@@ -1204,6 +1459,12 @@
 /obj/random/junk,
 /obj/random/junk,
 /obj/random/junk,
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/medical)
 "wn" = (
@@ -1216,6 +1477,12 @@
 /obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
+"wo" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/monotile/lythios43c,
+/area/rift/facility/interior/command)
 "wt" = (
 /obj/machinery/light,
 /obj/effect/floor_decal/borderfloor/corner,
@@ -1235,9 +1502,24 @@
 	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
+"wD" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/command)
 "wG" = (
 /obj/structure/salvageable/server,
 /obj/effect/map_effect/radiation_emitter,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "wH" = (
@@ -1247,8 +1529,20 @@
 "wI" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/medical)
+"wL" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/workroom)
 "wO" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -1256,6 +1550,24 @@
 	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
+"wQ" = (
+/obj/random/obstruction,
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/workroom)
+"wR" = (
+/obj/structure/bed,
+/obj/item/bedsheet/medical,
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel/lythios43c,
+/area/rift/facility/interior/medical)
 "wS" = (
 /turf/simulated/wall/r_wall,
 /area/rift/surfacebase/outside/west_caves)
@@ -1273,6 +1585,15 @@
 /obj/structure/lattice,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
+"xc" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 6
+	},
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/command)
 "xd" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -1303,6 +1624,16 @@
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
+"xE" = (
+/obj/structure/salvageable/data,
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/workroom)
 "xP" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
@@ -1316,16 +1647,32 @@
 /obj/structure/bed/chair/bay{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "yv" = (
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/exterior/mineshaft)
+"yz" = (
+/obj/effect/floor_decal/techfloor/orange/corner,
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/command)
 "yE" = (
 /obj/structure/bed/chair/bay/comfy/black{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/command)
 "yH" = (
 /obj/structure/transit_tube/high_velocity{
@@ -1337,7 +1684,13 @@
 "yN" = (
 /obj/structure/table/rack/shelf,
 /obj/random/firstaid,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/medical)
 "yU" = (
 /turf/simulated/floor/lythios43c,
@@ -1365,7 +1718,7 @@
 /obj/machinery/door/airlock{
 	name = "Unit 1"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/bathrooms)
 "zD" = (
 /obj/structure/railing{
@@ -1392,6 +1745,16 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/outpost)
+"zP" = (
+/obj/structure/bed/chair/bay,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/workroom)
 "zW" = (
 /obj/structure/girder,
 /obj/effect/overlay/snow/floor,
@@ -1429,6 +1792,12 @@
 	chargelevel = 0;
 	dir = 1
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/medical)
 "Ay" = (
@@ -1437,6 +1806,13 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
+"AF" = (
+/obj/random/obstruction,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound1)
 "AG" = (
 /obj/effect/floor_decal/borderfloor/cee{
 	dir = 4
@@ -1481,11 +1857,20 @@
 /area/outpost/mining_main/outpost)
 "Ba" = (
 /obj/structure/bed/chair/bay,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "Bb" = (
 /turf/simulated/open,
 /area/rift/facility/interior/undergound1)
+"BC" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/monotile/lythios43c,
+/area/rift/facility/interior/command)
 "BI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -1518,7 +1903,10 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound1)
 "Ce" = (
 /obj/structure/railing,
@@ -1550,7 +1938,10 @@
 /obj/structure/bed/chair/backed_red{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/command)
 "Cv" = (
 /obj/machinery/alarm{
@@ -1565,8 +1956,15 @@
 /area/rift/surfacebase/outside/west_caves)
 "CG" = (
 /obj/random/obstruction,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound1)
+"CI" = (
+/obj/effect/floor_decal/spline/plain{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/monotile/lythios43c,
+/area/rift/facility/interior/command)
 "CK" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -1608,6 +2006,16 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
+"De" = (
+/obj/structure/salvageable/data,
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/workroom)
 "Di" = (
 /obj/structure/railing,
 /turf/simulated/floor/tiled/steel_dirty,
@@ -1630,7 +2038,7 @@
 	chargelevel = 0;
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/bathrooms)
 "Dt" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -1641,7 +2049,13 @@
 "Du" = (
 /obj/structure/table/reinforced,
 /obj/structure/salvageable/machine_os,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/workroom)
 "Dz" = (
 /obj/structure/catwalk/plank,
@@ -1649,7 +2063,10 @@
 /area/rift/surfacebase/outside/west_caves)
 "DJ" = (
 /obj/structure/salvageable/data,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "DM" = (
 /obj/structure/railing,
@@ -1666,6 +2083,12 @@
 "DQ" = (
 /obj/structure/salvageable/console_broken_os{
 	dir = 1
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
@@ -1731,6 +2154,16 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/outpost)
+"EO" = (
+/obj/random/trash_pile,
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/medical)
 "ET" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -1755,6 +2188,12 @@
 "FJ" = (
 /obj/structure/table/reinforced,
 /obj/structure/salvageable/machine,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "FO" = (
@@ -1762,7 +2201,10 @@
 /obj/random/tech_supply/component/nofail,
 /obj/random/tech_supply/component/nofail,
 /obj/random/tech_supply/component/nofail,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "FP" = (
 /obj/structure/railing{
@@ -1817,6 +2259,9 @@
 	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
+"GQ" = (
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves/submap_seedzone)
 "GR" = (
 /obj/random/trash,
 /obj/effect/map_effect/radiation_emitter,
@@ -1869,11 +2314,22 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
+"HL" = (
+/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/command)
 "HR" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 9
+	},
+/obj/effect/floor_decal/techfloor/orange/corner,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/command)
 "HT" = (
 /obj/structure/cable/green,
@@ -2000,7 +2456,8 @@
 	info = "\[center]Check the vault, they couldn't get it out without the Commonwealth finding out. Careful they booby trapped the lower levels. \[br]\[i]- Colonel Lii'jar. \[/i]\[/center]";
 	name = "fancy note"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/spline/plain,
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/command)
 "KR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2008,9 +2465,20 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
+"KS" = (
+/obj/random/trash,
+/turf/simulated/floor/tiled/steel/lythios43c,
+/area/rift/facility/interior/workroom)
 "KU" = (
 /obj/structure/lattice,
 /turf/simulated/open/lythios43c,
+/area/rift/facility/interior/workroom)
+"KZ" = (
+/obj/random/obstruction,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "Li" = (
 /obj/structure/catwalk,
@@ -2047,6 +2515,15 @@
 "LT" = (
 /turf/simulated/floor/lythios43c/indoors,
 /area/outpost/mining_main/outpost)
+"LV" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel/lythios43c,
+/area/rift/facility/interior/workroom)
 "LW" = (
 /obj/machinery/light{
 	dir = 8
@@ -2060,6 +2537,15 @@
 	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/outpost/mining_main/outpost/substation)
+"Mb" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/workroom)
 "Md" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -2117,7 +2603,8 @@
 /obj/structure/table/marble,
 /obj/item/flame/lighter/zippo/taj,
 /obj/item/storage/fancy/cigar/taj/premium,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/spline/fancy/wood/cee,
+/turf/simulated/floor/wood/lythios43c,
 /area/rift/facility/interior/command)
 "Nr" = (
 /obj/item/barrier_tape_segment/engineering,
@@ -2150,11 +2637,26 @@
 /obj/random/toolbox,
 /obj/random/tool/powermaint,
 /obj/random/tool/powermaint,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "NX" = (
 /obj/random/obstruction,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/workroom)
+"Ob" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "Og" = (
 /obj/structure/catwalk,
@@ -2225,7 +2727,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/undergound1)
 "PB" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -2327,7 +2829,13 @@
 /obj/structure/bed/chair/bay{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/workroom)
 "QK" = (
 /obj/structure/catwalk,
@@ -2360,6 +2868,12 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "QZ" = (
@@ -2376,7 +2890,10 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "Rj" = (
 /obj/item/barrier_tape_segment/engineering,
@@ -2408,6 +2925,12 @@
 	chargelevel = 0;
 	dir = 1
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 9
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "RI" = (
@@ -2422,15 +2945,22 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/outpost/mining_main/outpost/substation)
 "RS" = (
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/spline/plain{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/command)
 "Sk" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor/orange,
 /obj/machinery/door/airlock/glass_command{
 	dir = 1;
 	name = "Commander";
 	req_access = list()
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/command)
 "Sl" = (
 /turf/simulated/floor/tiled/techfloor,
@@ -2446,6 +2976,15 @@
 "Sv" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
+"Sw" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 5
+	},
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/command)
 "SN" = (
 /obj/structure/railing,
 /obj/structure/closet,
@@ -2460,7 +2999,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
 "SP" = (
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/bathrooms)
 "SQ" = (
 /obj/structure/toilet{
@@ -2471,6 +3010,18 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/outpost)
+"ST" = (
+/turf/simulated/floor/tiled/steel/lythios43c,
+/area/rift/facility/interior/medical)
+"SV" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel/lythios43c,
+/area/rift/facility/interior/workroom)
 "SZ" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -2501,6 +3052,12 @@
 /obj/random/medical,
 /obj/random/medical,
 /obj/random/medical,
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 6
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/medical)
 "TG" = (
@@ -2577,7 +3134,7 @@
 /obj/machinery/door/airlock{
 	name = "Unit 2"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/bathrooms)
 "UQ" = (
 /obj/effect/overlay/snow/floor,
@@ -2598,13 +3155,28 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/bathrooms)
 "Vg" = (
 /obj/structure/table/reinforced,
 /obj/structure/salvageable/personal,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
+"Vj" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel/lythios43c,
+/area/rift/facility/interior/medical)
 "Vp" = (
 /obj/structure/railing{
 	dir = 4
@@ -2706,7 +3278,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/bathrooms)
 "WQ" = (
 /obj/structure/cable/green{
@@ -2720,6 +3292,12 @@
 /area/outpost/mining_main/outpost)
 "WU" = (
 /obj/structure/salvageable/data_os,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "WW" = (
@@ -2738,8 +3316,21 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
+"WY" = (
+/obj/random/trash,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/workroom)
 "Xa" = (
 /obj/structure/salvageable/implant_container_os,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "Xl" = (
@@ -2747,6 +3338,16 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
+"Xx" = (
+/obj/random/trash_pile,
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/medical)
 "Xz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -2798,7 +3399,13 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/medical)
 "XX" = (
 /obj/machinery/button/remote/airlock{
@@ -3127,23 +3734,23 @@ be
 be
 be
 be
-be
-be
-be
-be
-be
-be
-be
-be
-be
-be
-be
-be
-be
-be
-be
-be
-be
+vv
+vv
+vv
+vv
+vv
+vv
+wS
+wS
+wS
+wS
+wS
+wS
+vv
+vv
+vv
+vv
+vv
 be
 be
 be
@@ -3321,23 +3928,23 @@ be
 be
 be
 be
-be
-be
-be
-be
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
-JD
+vv
+vv
+vv
+vv
+vv
+vv
+wS
+Ts
+Ts
+Ts
+Ts
+wS
+vv
+vv
+vv
+vv
+vv
 JD
 JD
 JD
@@ -3515,23 +4122,23 @@ be
 be
 be
 be
-be
-be
-be
-be
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
+vv
+vv
+vv
+vv
+nY
+nY
+mp
+GQ
+GQ
+GQ
+GQ
+mp
+nY
+nY
+nY
+nY
+nY
 Sn
 Sn
 Sn
@@ -3709,23 +4316,23 @@ be
 be
 be
 be
-be
-be
-be
-be
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
+vv
+vv
+vv
+vv
+nY
+nY
+mp
+GQ
+GQ
+GQ
+GQ
+mp
+nY
+nY
+nY
+nY
+nY
 Sn
 Sn
 Sn
@@ -3903,23 +4510,23 @@ be
 be
 be
 be
-be
-be
-be
-be
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
+vv
+vv
+vv
+vv
+nY
+nY
+mp
+GQ
+GQ
+GQ
+GQ
+mp
+nY
+nY
+nY
+nY
+nY
 Sn
 Sn
 Sn
@@ -4098,21 +4705,21 @@ be
 be
 be
 be
-be
-be
-be
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
+vv
+vv
+vv
+nY
+nY
+mp
+mp
+mp
+mp
+mp
+mp
+nY
+nY
+nY
+nY
 Sn
 Sn
 Sn
@@ -4292,21 +4899,21 @@ be
 be
 be
 be
-be
-be
-be
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
+vv
+vv
+vv
+nY
+nY
+nY
+nY
+nY
+nY
+nY
+nY
+nY
+nY
+nY
+nY
 Sn
 Sn
 Sn
@@ -4486,21 +5093,21 @@ be
 be
 be
 be
-be
-be
-be
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
+vv
+vv
+vv
+nY
+nY
+nY
+nY
+nY
+nY
+nY
+nY
+nY
+nY
+nY
+nY
 Sn
 Sn
 Sn
@@ -4681,19 +5288,19 @@ be
 be
 be
 be
-be
-be
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
+vv
+vv
+nY
+nY
+nY
+nY
+nY
+nY
+nY
+nY
+nY
+nY
+nY
 Sn
 Sn
 Sn
@@ -4875,18 +5482,18 @@ be
 be
 be
 be
-be
-be
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
+vv
+vv
+nY
+nY
+nY
+nY
+nY
+nY
+nY
+nY
+nY
+nY
 Sn
 Sn
 Sn
@@ -5072,14 +5679,14 @@ be
 be
 be
 Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
-Sn
+nY
+nY
+nY
+nY
+nY
+nY
+nY
+nY
 Sn
 Sn
 Sn
@@ -6419,7 +7026,7 @@ HR
 eo
 fV
 sa
-HR
+tw
 vI
 be
 be
@@ -6600,7 +7207,7 @@ iF
 iF
 Hh
 BX
-mS
+ju
 Cm
 vh
 Fx
@@ -6609,11 +7216,11 @@ Fx
 Ds
 ik
 vI
-RS
-RS
+pP
+CI
 yE
 RS
-RS
+HL
 vI
 be
 be
@@ -6793,8 +7400,8 @@ iF
 Eh
 Eh
 Nr
-Cm
-Cm
+ma
+fP
 Cm
 vh
 Fx
@@ -6807,7 +7414,7 @@ qS
 oe
 oX
 KI
-RS
+HL
 vI
 be
 be
@@ -6987,8 +7594,8 @@ iF
 Eh
 Eh
 Nr
-Cm
-Cm
+bu
+aV
 Pu
 Pu
 Fx
@@ -6997,11 +7604,11 @@ Fx
 ny
 gK
 vI
-RS
-RS
+ba
+BC
 Ct
-RS
-RS
+wo
+HL
 vI
 be
 be
@@ -7181,8 +7788,8 @@ Hh
 iF
 iF
 Hh
-CG
-Cm
+AF
+aV
 mS
 rA
 Fx
@@ -7191,11 +7798,11 @@ kR
 SP
 nN
 vI
-RS
-RS
-RS
-RS
-RS
+Sw
+wD
+yz
+wD
+xc
 vI
 be
 be
@@ -7569,24 +8176,24 @@ be
 be
 be
 mB
-NX
-NX
-jj
-jj
+KZ
+wQ
+wL
+wL
 Rd
-jj
-jj
-jj
-jj
+wL
+wL
+wL
+wL
 Rd
-XG
-jj
-jj
-jj
-jj
+WY
+wL
+lH
+wL
+wL
 Rd
-jj
-jj
+wL
+wL
 DJ
 mB
 be
@@ -7764,22 +8371,22 @@ be
 be
 mB
 NX
-jj
-jj
-jj
-XG
-jj
-jj
-jj
-jj
-jj
-jj
-jj
+Ob
+Ob
+Ob
+qp
+Ob
+Ob
+Ob
+Ob
+Ob
+Ob
+Ob
 xZ
 xZ
 xZ
-jj
-XG
+Ob
+qp
 Ba
 FO
 mB
@@ -7958,24 +8565,24 @@ be
 be
 mB
 RG
-QH
+aq
 DQ
 rq
 Vg
-QH
-Ba
+aq
+zP
 FJ
 rq
 Du
 QH
-jj
+Mb
 WU
 wG
 Xa
-jj
+Mb
 fn
-jj
-DJ
+LV
+xE
 mB
 be
 be
@@ -8151,25 +8758,25 @@ be
 be
 be
 mB
+SV
+KS
 jj
-XG
+jZ
+jZ
 jj
+KS
 jj
-jj
-jj
-XG
-jj
-jj
-jj
-jj
-jj
+jZ
+jZ
+jZ
+jZ
 XG
 Fk
 Fk
 Fk
 jj
-Ba
-FO
+vy
+fT
 mB
 be
 be
@@ -8345,25 +8952,25 @@ be
 be
 be
 mB
-nL
+qC
 QY
 NP
 nL
-jj
-jj
+jm
+wb
 qa
 lw
 lw
 lw
-jj
-jj
+wb
+jm
 Fk
 Fk
 KU
 Fk
 Fk
-jj
-DJ
+wb
+De
 mB
 be
 be
@@ -8751,7 +9358,7 @@ ie
 ie
 hv
 XB
-oT
+EO
 Te
 be
 be
@@ -9915,7 +10522,7 @@ ie
 ie
 hv
 XB
-dS
+hn
 Te
 be
 be
@@ -10109,7 +10716,7 @@ ie
 dc
 hv
 fg
-oT
+Xx
 Te
 be
 be
@@ -10496,7 +11103,7 @@ ie
 hv
 hv
 XB
-dS
+Vj
 yN
 Te
 be
@@ -10681,7 +11288,7 @@ be
 be
 Te
 As
-dS
+ST
 kz
 UQ
 XB
@@ -10876,12 +11483,12 @@ be
 Te
 wI
 lg
-wI
+wR
 Te
 wl
 XS
 dM
-kz
+eC
 Te
 rg
 XS

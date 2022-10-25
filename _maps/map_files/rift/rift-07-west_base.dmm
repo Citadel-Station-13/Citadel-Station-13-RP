@@ -11,7 +11,7 @@
 /obj/item/ammo_magazine/clip/c762,
 /obj/item/ammo_magazine/clip/c762,
 /obj/item/ammo_magazine/clip/c762,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/steel_ridged,
 /area/rift/facility/interior/vault)
 "aV" = (
 /obj/structure/table/rack/shelf,
@@ -19,18 +19,72 @@
 /obj/item/gun/projectile/colt/taj,
 /obj/item/ammo_magazine/m45,
 /obj/item/ammo_magazine/m45,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/steel_ridged,
 /area/rift/facility/interior/vault)
+"aY" = (
+/obj/random/obstruction,
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
 "bd" = (
 /obj/random/obstruction,
 /obj/random/obstruction,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
-"bD" = (
-/obj/effect/trap/pop_up/flame{
-	id = "LF_V"
+"be" = (
+/obj/structure/bed,
+/obj/item/bedsheet,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/barracks)
+"bh" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
+"bk" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel/lythios43c,
+/area/rift/facility/interior/barracks)
+"bC" = (
+/turf/simulated/wall/r_wall,
+/area/rift/surfacebase/outside/west_base/submap_seedzone)
+"bD" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rift/facility/interior/vault)
+"bP" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/barracks)
+"bW" = (
+/obj/machinery/light/small,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/rift/facility/interior/vault)
 "bX" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
@@ -41,7 +95,16 @@
 	chargelevel = 0;
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
+"cH" = (
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "cY" = (
 /obj/structure/table/rack/shelf,
@@ -51,12 +114,17 @@
 /obj/random/cash,
 /obj/random/cash,
 /obj/random/cash,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/steel_ridged,
 /area/rift/facility/interior/vault)
 "dj" = (
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
+"dk" = (
+/obj/effect/floor_decal/techfloor/orange,
+/obj/random/trash,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
 "dm" = (
 /obj/structure/table/rack/shelf,
 /obj/random/tech_supply/component/nofail,
@@ -65,8 +133,17 @@
 /obj/random/tech_supply/component/nofail,
 /obj/random/tech_supply/component/nofail,
 /obj/random/tech_supply/component/nofail,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/steel_ridged,
 /area/rift/facility/interior/vault)
+"dJ" = (
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_base)
 "dU" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -76,11 +153,29 @@
 /area/turbolift/rwest_mining/base)
 "em" = (
 /obj/structure/closet/crate/freezer/rations,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/steel_ridged,
 /area/rift/facility/interior/vault)
+"eM" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_base)
 "fd" = (
 /turf/simulated/mineral/icerock/lythios43c/rich,
 /area/rift/surfacebase/outside/west_base/submap_seedzone)
+"fr" = (
+/turf/simulated/mineral/icerock/ignore_cavegen/lythios43c,
+/area/rift/surfacebase/outside/west_base/submap_seedzone)
+"fR" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rift/facility/interior/vault)
 "gJ" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 8
@@ -88,6 +183,28 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
+"hg" = (
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
+"hl" = (
+/obj/random/trash,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
+"hQ" = (
+/obj/effect/trap/pop_up/flame{
+	id = "LF_V"
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rift/facility/interior/vault)
 "hS" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
@@ -96,8 +213,21 @@
 /obj/random/contraband,
 /obj/random/contraband,
 /obj/random/contraband,
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
+"ig" = (
+/obj/random/obstruction,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
 "iu" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 1
@@ -108,6 +238,10 @@
 "iB" = (
 /turf/simulated/mineral/icerock/ignore_cavegen/lythios43c,
 /area/rift/surfacebase/outside/west_base)
+"jp" = (
+/obj/structure/girder/reinforced,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
 "jJ" = (
 /obj/effect/overlay/snow/floor/edges,
 /obj/effect/overlay/snow/floor,
@@ -116,26 +250,54 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
+"kC" = (
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
 "kG" = (
 /obj/machinery/door/airlock/vault/bolted,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/vault)
 "kH" = (
 /obj/structure/girder/reinforced,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "kN" = (
 /obj/structure/girder/reinforced,
 /obj/effect/map_effect/radiation_emitter/strong,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/core)
 "kQ" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
 /obj/item/clothing/head/tajaran/scarf,
 /obj/item/flame/lighter/random,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
+"lv" = (
+/obj/random/obstruction,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/core)
 "lL" = (
 /obj/structure/sign/warning/falling,
 /turf/simulated/wall,
@@ -148,6 +310,25 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
+"my" = (
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 1
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_base)
+"mz" = (
+/obj/structure/closet,
+/obj/item/clothing/suit/tajaran/furs,
+/obj/item/clothing/head/tajaran/scarf,
+/obj/item/storage/mre/random,
+/obj/effect/floor_decal/borderfloor{
+	dir = 9
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel/lythios43c,
+/area/rift/facility/interior/barracks)
 "mA" = (
 /obj/effect/overlay/snow/floor/edges,
 /obj/effect/overlay/snow/floor,
@@ -158,6 +339,8 @@
 /obj/item/clothing/suit/tajaran/furs,
 /obj/item/clothing/head/tajaran/scarf,
 /obj/random/alcohol,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/beige/border,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
 "nk" = (
@@ -175,6 +358,12 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
+"nO" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
 "nQ" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 9
@@ -182,44 +371,91 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
+"ok" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/obj/random/trash,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
+"oo" = (
+/obj/structure/girder/reinforced,
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
 "oA" = (
 /obj/structure/table/rack/shelf,
 /obj/item/gun/energy/frontier/taj,
 /obj/item/gun/energy/frontier/taj,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/steel_ridged,
 /area/rift/facility/interior/vault)
 "oG" = (
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/techfloor,
 /area/rift/facility/interior/vault)
 "py" = (
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
+"pJ" = (
+/obj/effect/floor_decal/techfloor/orange/corner,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
 "pS" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
 /obj/item/clothing/head/tajaran/scarf,
 /obj/item/storage/mre/random,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/beige/border,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
 "qd" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/obj/random/trash,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
+"qK" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/barracks)
 "qS" = (
 /obj/effect/map_effect/radiation_emitter,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
+"rn" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
+"rp" = (
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "rq" = (
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "rB" = (
 /obj/effect/map_effect/radiation_emitter/strong,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "rM" = (
 /obj/machinery/light/small{
@@ -228,11 +464,14 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "sk" = (
 /obj/effect/map_effect/radiation_emitter/chernobyl,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "sR" = (
 /obj/structure/stairs/spawner/west,
@@ -249,11 +488,11 @@
 /turf/simulated/wall/dungeon,
 /area/rift/facility/interior/vault)
 "tZ" = (
-/obj/effect/trap/pop_up/flame{
-	id = "LF_V"
-	},
 /obj/machinery/light/small,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/rift/facility/interior/vault)
 "ut" = (
 /obj/effect/overlay/snow/floor/edges{
@@ -269,15 +508,57 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
+"uQ" = (
+/obj/structure/closet,
+/obj/item/clothing/suit/tajaran/furs,
+/obj/item/clothing/head/tajaran/scarf,
+/obj/item/storage/mre/random,
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/barracks)
 "vc" = (
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/interior/core)
+"vh" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/barracks)
+"wc" = (
+/obj/effect/map_effect/portal/master/side_b{
+	dir = 1;
+	name = "Fake Cave to Reactor";
+	portal_id = "reactor_poi_cave"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_base)
+"wf" = (
+/turf/unsimulated/wall/planetary/lythios43c{
+	desc = "Glacial permafrost, compacted harder than stone.";
+	icon_state = "icerock-dark";
+	name = "glacier wall"
+	},
+/area/rift/surfacebase/outside/west_base/submap_seedzone)
 "wq" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/beige/border,
+/turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/barracks)
 "ws" = (
 /obj/effect/blocker,
@@ -287,12 +568,40 @@
 /obj/turbolift_map_holder/rift_west_base,
 /turf/simulated/shuttle/floor/voidcraft/lythios43c,
 /area/turbolift/rwest_mining/base)
+"xf" = (
+/obj/random/obstruction,
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_base)
+"xU" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
+"xY" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
+"yE" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel/lythios43c,
+/area/rift/facility/interior/barracks)
 "yJ" = (
 /turf/simulated/shuttle/wall/voidcraft,
 /area/rift/facility/interior/elevator)
+"yP" = (
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_base/submap_seedzone)
 "yR" = (
 /obj/random/landmine,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "yY" = (
 /obj/effect/overlay/snow/floor/edges{
@@ -306,10 +615,27 @@
 /area/rift/facility/interior/core)
 "zh" = (
 /obj/machinery/door/airlock/vault/bolted,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
+"zo" = (
+/obj/structure/fence,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "zF" = (
 /obj/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/effect/floor_decal/corner/beige/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -330,6 +656,44 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/interior/core)
+"Cb" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
+"Cc" = (
+/obj/structure/bed,
+/obj/item/bedsheet,
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/barracks)
+"Cf" = (
+/obj/effect/floor_decal/industrial/halfstair{
+	dir = 1
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_base)
+"CB" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rift/facility/interior/vault)
+"CC" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_base)
 "CO" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 8
@@ -352,8 +716,38 @@
 /area/rift/surfacebase/outside/west_base)
 "Eb" = (
 /obj/random/obstruction,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/core)
+"Ei" = (
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_base)
+"Ex" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/barracks)
+"EM" = (
+/obj/structure/closet,
+/obj/item/clothing/suit/tajaran/furs,
+/obj/item/clothing/head/tajaran/scarf,
+/obj/item/flame/lighter/random,
+/obj/effect/floor_decal/borderfloor{
+	dir = 5
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/barracks)
 "EP" = (
 /obj/effect/map_effect/radiation_emitter/chernobyl,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -361,14 +755,22 @@
 "ET" = (
 /turf/simulated/wall/dungeon,
 /area/rift/facility/interior/undergound3)
+"EZ" = (
+/obj/structure/girder/reinforced,
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_base)
 "Fo" = (
 /turf/simulated/wall,
 /area/rift/surfacebase/outside/west_base)
 "FI" = (
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 8
+	},
+/obj/effect/floor_decal/techfloor/orange/corner,
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "FZ" = (
 /obj/effect/trap/pop_up/flame{
@@ -379,16 +781,54 @@
 	chargelevel = 0;
 	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/steel_ridged,
 /area/rift/facility/interior/vault)
 "Gb" = (
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
+"Gx" = (
+/obj/effect/floor_decal/techfloor/orange/corner,
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rift/facility/interior/vault)
+"Hl" = (
+/obj/effect/floor_decal/borderfloor/corner,
+/obj/effect/floor_decal/corner/beige/bordercorner,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/barracks)
+"HA" = (
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_base)
+"Id" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 9
+	},
+/obj/random/trash,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
 "It" = (
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
+"IF" = (
+/obj/structure/bed,
+/obj/item/bedsheet,
+/obj/effect/floor_decal/borderfloor,
+/obj/effect/floor_decal/corner/beige/border,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/barracks)
+"Jq" = (
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "Jt" = (
 /obj/structure/bed,
@@ -398,15 +838,25 @@
 	chargelevel = 0;
 	dir = 1
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
 "JZ" = (
 /obj/machinery/light/small,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "Kh" = (
 /turf/simulated/shuttle/floor/voidcraft/lythios43c,
 /area/turbolift/rwest_mining/base)
+"KC" = (
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
 "Lh" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/rift/facility/interior/elevator)
@@ -417,13 +867,17 @@
 /obj/structure/closet/crate/radiation,
 /obj/fiftyspawner/deuterium,
 /obj/fiftyspawner/uranium,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/steel_ridged,
 /area/rift/facility/interior/vault)
 "LA" = (
 /obj/item/barrier_tape_segment/engineering,
 /obj/random/obstruction,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/elevator)
+"LE" = (
+/obj/structure/fence,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
 "LZ" = (
 /obj/structure/girder,
 /turf/simulated/floor/lythios43c/indoors,
@@ -437,8 +891,21 @@
 	info = "There is going to be another accident I can feel it. Colonel Lii'jar seems certain of it and now these latest tests will push the ractors to its limits. I can only hope it holds, at least after last time we know what to do when it fails.";
 	name = "torn diary page"
 	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
+"Mo" = (
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
+"MP" = (
+/obj/random/obstruction,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
 "Nf" = (
 /obj/effect/overlay/snow/floor,
 /obj/machinery/light/small{
@@ -450,8 +917,23 @@
 /obj/effect/trap/pit/deep{
 	id = "LF_VE"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
+"NF" = (
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_base/submap_seedzone)
+"NI" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rift/facility/interior/vault)
 "NS" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
@@ -462,6 +944,23 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
+"Om" = (
+/obj/structure/bed,
+/obj/item/bedsheet,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/barracks)
+"OB" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_base)
 "Pb" = (
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/elevator)
@@ -477,6 +976,10 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/interior/core)
+"PM" = (
+/obj/machinery/door/airlock/lift,
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_base)
 "PN" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
@@ -485,13 +988,39 @@
 /obj/random/contraband,
 /obj/random/contraband,
 /obj/random/contraband,
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
 "QC" = (
 /obj/machinery/door/airlock/vault/bolted,
 /obj/effect/overlay/snow/airlock,
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/core)
+"QO" = (
+/obj/random/trash,
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
+"Rw" = (
+/obj/effect/floor_decal/techfloor/orange/corner,
+/obj/effect/floor_decal/techfloor/orange/corner{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
 "RD" = (
 /obj/item/bone/leg,
 /obj/item/bone/leg,
@@ -502,6 +1031,18 @@
 /obj/effect/debris/cleanable/blood,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/elevator)
+"RE" = (
+/turf/simulated/wall,
+/area/rift/surfacebase/outside/west_base/submap_seedzone)
+"RJ" = (
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/bordercorner{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel/lythios43c,
+/area/rift/facility/interior/barracks)
 "Sk" = (
 /obj/effect/overlay/snow/floor,
 /obj/machinery/power/apc/alarms_hidden{
@@ -513,7 +1054,8 @@
 /area/rift/facility/interior/core)
 "So" = (
 /obj/structure/fence,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/techfloor/orange,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "Su" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -524,18 +1066,41 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
+"SE" = (
+/turf/simulated/floor/tiled/steel/lythios43c,
+/area/rift/facility/interior/barracks)
 "SW" = (
 /turf/simulated/wall,
 /area/rift/facility/interior/barracks)
 "SZ" = (
 /turf/simulated/wall/dungeon,
 /area/rift/facility/interior/core)
+"Te" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
 "TM" = (
 /obj/effect/map_effect/portal/line/side_b{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
+"TT" = (
+/obj/structure/bed,
+/obj/item/bedsheet,
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/barracks)
 "Um" = (
 /obj/structure/ladder/snake_eater/up,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -544,6 +1109,22 @@
 /obj/machinery/fusion_fuel_injector/mapped,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/interior/core)
+"UC" = (
+/obj/structure/girder/reinforced,
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
+"UL" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
+"VI" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
 "VN" = (
 /obj/structure/table/rack/shelf,
 /obj/random/tool/power,
@@ -552,8 +1133,11 @@
 /obj/random/tool/power,
 /obj/random/tool/power,
 /obj/random/tool/power,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/steel_ridged,
 /area/rift/facility/interior/vault)
+"VR" = (
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_base)
 "Wi" = (
 /obj/effect/overlay/snow/floor/grav_surround{
 	dir = 1
@@ -566,7 +1150,7 @@
 /obj/item/fuelrod/uranium,
 /obj/item/fuelrod/plutonium,
 /obj/item/fuelrod/plutonium,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/steel_ridged,
 /area/rift/facility/interior/vault)
 "Xw" = (
 /obj/machinery/power/fusion_core/mapped,
@@ -574,13 +1158,25 @@
 /area/rift/facility/interior/core)
 "XG" = (
 /obj/structure/reagent_dispensers/watertank/high,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/steel_ridged,
 /area/rift/facility/interior/vault)
+"XH" = (
+/obj/effect/floor_decal/techfloor/orange{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
+/area/rift/facility/interior/undergound3)
 "XU" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/barracks)
 "XY" = (
 /obj/effect/overlay/snow/floor/edges{
@@ -589,9 +1185,20 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
+"Yy" = (
+/obj/structure/bed,
+/obj/item/bedsheet,
+/obj/effect/floor_decal/borderfloor{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/beige/border{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/facility/interior/barracks)
 "Zb" = (
 /obj/random/obstruction,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "Zd" = (
 /obj/effect/overlay/snow/floor,
@@ -607,7 +1214,7 @@
 "ZP" = (
 /obj/random/obstruction,
 /obj/effect/map_effect/radiation_emitter/strong,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 
 (1,1,1) = {"
@@ -834,27 +1441,27 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-Ad
-Ad
-Ad
-Ad
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+aw
+aw
+aw
+aw
+aw
+aw
+DE
+DE
+DE
 Ad
 Ad
 Ad
@@ -1028,27 +1635,27 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+aw
+VR
+VR
+VR
+VR
+bC
+wf
+wf
+wf
 fd
 fd
 fd
@@ -1225,24 +1832,24 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+aw
+VR
+VR
+VR
+VR
+bC
+wf
+wf
+wf
 fd
 fd
 fd
@@ -1419,24 +2026,24 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+aw
+VR
+VR
+VR
+VR
+bC
+wf
+wf
+wf
 fd
 fd
 fd
@@ -1614,24 +2221,24 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+aw
+VR
+VR
+VR
+VR
+bC
+wf
+wf
+wf
+NF
 fd
 fd
 fd
@@ -1808,30 +2415,30 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+aw
+aw
+PM
+PM
+aw
+bC
+RE
+RE
+RE
+NF
+NF
+NF
+NF
+NF
+NF
+NF
 fd
 fd
 fd
@@ -2003,29 +2610,29 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+Fo
+HA
+HA
+HA
+HA
+yP
+yP
+yP
+yP
+yP
+yP
+yP
+yP
+yP
+yP
+yP
 fd
 fd
 fd
@@ -2198,31 +2805,31 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+Fo
+HA
+HA
+HA
+HA
+yP
+yP
+yP
+yP
+yP
+yP
+yP
+yP
+yP
+yP
+yP
+yP
+yP
+yP
 fd
 fd
 fd
@@ -2392,29 +2999,29 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+Fo
+Fo
+Fo
+Fo
+Fo
+RE
+RE
+RE
+RE
+NF
+NF
+NF
+NF
+NF
+NF
+NF
+NF
 fd
 fd
 fd
@@ -2587,28 +3194,28 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+wf
+wf
+NF
+NF
+NF
+NF
+NF
+NF
+NF
+NF
+NF
+NF
 fd
 fd
 fd
@@ -2781,21 +3388,21 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -2975,21 +3582,21 @@ Ad
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -3157,11 +3764,11 @@ Ad
 Ad
 Ad
 SW
-pS
-XU
-wq
+mz
+Ex
+Yy
 SW
-wq
+be
 XU
 hS
 SW
@@ -3171,19 +3778,19 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -3351,13 +3958,13 @@ Ad
 Ad
 Ad
 SW
-wq
+Om
 Lw
 pS
 SW
 Me
-Lw
-wq
+SE
+IF
 SW
 Ad
 iB
@@ -3365,19 +3972,19 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -3546,10 +4153,10 @@ Ad
 Ad
 SW
 kQ
-Lw
-Lw
-Lw
-Lw
+SE
+RJ
+bk
+bP
 Lw
 nh
 SW
@@ -3559,19 +4166,19 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -3741,9 +4348,9 @@ AH
 SW
 Jt
 Lw
-Lw
+Hl
 zF
-Lw
+qK
 Lw
 wq
 SW
@@ -3753,19 +4360,19 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -3934,10 +4541,10 @@ sR
 sR
 SW
 PN
-Lw
-wq
+SE
+IF
 SW
-wq
+Om
 Lw
 pS
 SW
@@ -3947,19 +4554,19 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -4127,15 +4734,15 @@ AH
 Su
 Su
 SW
-wq
-Lw
-pS
+Cc
+yE
+uQ
 SW
-kQ
-Lw
-wq
+EM
+vh
+TT
 SW
-Ad
+nm
 iB
 iB
 iB
@@ -4145,15 +4752,15 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -4318,8 +4925,8 @@ AH
 AH
 AH
 AH
-Su
-Su
+Id
+xU
 SW
 SW
 Pt
@@ -4329,7 +4936,7 @@ SW
 Pt
 SW
 SW
-Ad
+nm
 iB
 iB
 iB
@@ -4339,15 +4946,15 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -4506,24 +5113,25 @@ yJ
 LZ
 Pb
 LA
-Su
+XH
 qd
-Su
+XH
 rq
-Su
+XH
 qS
-Su
-Su
+cH
+Jq
 rM
-Su
-Su
-Su
-Su
-Su
-Su
-Su
+XH
+XH
+XH
+XH
+XH
+XH
+xU
 AH
-Ad
+nm
+nm
 iB
 iB
 iB
@@ -4532,17 +5140,16 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+wf
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -4700,24 +5307,25 @@ yJ
 RD
 LZ
 LA
-Su
-Su
-Su
-rq
-Su
-Su
-Su
-Su
-rq
-Su
-Su
-Su
-uB
-Su
+nO
+ok
+nO
+Te
+kC
+Mo
+pJ
+nO
+Te
+nO
+nO
+nO
+Cb
+QO
 ZP
-kH
+oo
 AH
-Ad
+nm
+nm
 iB
 iB
 iB
@@ -4725,18 +5333,17 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+wf
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -4898,8 +5505,8 @@ AH
 AH
 AH
 AH
-So
-So
+zo
+LE
 So
 AH
 AH
@@ -4908,29 +5515,29 @@ AH
 AH
 AH
 Zb
-Zb
-kH
-AH
-Ad
+MP
+oo
+UC
+nm
+nm
+nm
 iB
 iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+wf
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -5092,9 +5699,9 @@ Ad
 Ad
 Ad
 AH
-Su
-Su
-Su
+rn
+Mo
+rp
 AH
 iB
 iB
@@ -5102,29 +5709,29 @@ iB
 iB
 AH
 kH
+MP
 Zb
-Zb
-AH
-Ad
+UC
+nm
+nm
+nm
+nm
 iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+wf
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -5286,9 +5893,9 @@ Ad
 Ad
 Ad
 AH
-Su
-Su
-Su
+rn
+hl
+rp
 AH
 iB
 iB
@@ -5297,28 +5904,28 @@ iB
 AH
 kH
 Zb
-Zb
-AH
-Ad
+aY
+UC
+nm
+nm
+nm
+nm
+nm
+nm
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+wf
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -5481,7 +6088,7 @@ Ad
 Ad
 AH
 cE
-Su
+Mo
 JZ
 AH
 iB
@@ -5490,29 +6097,29 @@ iB
 iB
 AH
 kH
-Su
+KC
 bd
-AH
-Ad
+UC
+nm
+nm
+nm
+nm
+nm
+nm
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+wf
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -5674,9 +6281,9 @@ Ad
 Ad
 Ad
 AH
-Su
-Su
-Su
+rn
+Mo
+rp
 AH
 iB
 iB
@@ -5685,28 +6292,28 @@ iB
 AH
 Zb
 yR
-kH
+oo
 AH
-Ad
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
-fd
+nm
+nm
+nm
+nm
+nm
+nm
+nm
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+wf
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -5868,9 +6475,9 @@ Ad
 Ad
 Ad
 AH
-Su
+rn
 rB
-Su
+rp
 AH
 iB
 iB
@@ -5878,27 +6485,27 @@ iB
 iB
 AH
 kH
-Zb
-kH
+MP
+oo
 AH
-Ad
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
+nm
+nm
+nm
+nm
+nm
+nm
+nm
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -6063,36 +6670,36 @@ Ad
 Ad
 AH
 It
-Su
-Su
+Mo
+dk
 AH
 iB
 iB
 iB
 iB
 AH
-Zb
-Zb
+ig
+MP
 Zb
 AH
-Ad
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
+nm
+nm
+nm
+Fo
+xf
+xf
+EZ
+Fo
+Fo
+Fo
+Fo
+Fo
+DE
+DE
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -6256,37 +6863,37 @@ Ad
 Ad
 Ad
 AH
-Su
-Su
-Su
+rn
+Mo
+rp
 AH
 iB
 SZ
 SZ
 SZ
 SZ
-Eb
+lv
 kN
 Eb
 SZ
 Ad
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
+nm
+Fo
+HA
+HA
+HA
+CC
+Cf
+Cf
+wc
+Fo
+DE
+DE
+wf
+wf
+wf
+fr
 fd
 fd
 fd
@@ -6451,8 +7058,8 @@ Ad
 Ad
 AH
 kH
-kH
-kH
+jp
+oo
 AH
 SZ
 SZ
@@ -6466,21 +7073,21 @@ SZ
 SZ
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
+Fo
+HA
+HA
+Ei
+HA
+Cf
+Cf
+my
+Fo
+DE
+DE
+wf
+wf
+wf
+fr
 fd
 fd
 fd
@@ -6645,8 +7252,8 @@ tI
 tI
 AH
 uB
-Su
-uB
+Rw
+bh
 SZ
 SZ
 dj
@@ -6660,21 +7267,21 @@ Nf
 SZ
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
+Fo
+HA
+HA
+HA
+OB
+eM
+eM
+dJ
+Fo
+DE
+DE
+wf
+wf
+wf
+fr
 fd
 fd
 fd
@@ -6854,20 +7461,20 @@ dj
 SZ
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
+Fo
+HA
+HA
+HA
+Fo
+Fo
+Fo
+Fo
+Fo
+DE
+DE
+wf
+wf
+wf
 fd
 fd
 fd
@@ -7025,16 +7632,16 @@ iB
 iB
 tI
 aV
-bD
-bD
-bD
-bD
-bD
+fR
+CB
+CB
+CB
+CB
 tZ
 tI
-Su
-Su
-Su
+UL
+hg
+xU
 SZ
 Zd
 sY
@@ -7048,21 +7655,21 @@ iu
 SZ
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
+Fo
+HA
+HA
+HA
+CC
+HA
+HA
+Ei
+Fo
+DE
+DE
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -7219,12 +7826,12 @@ iB
 iB
 tI
 aJ
-bD
-bD
+NI
 oG
-bD
-bD
-bD
+oG
+oG
+oG
+Gx
 kG
 Nr
 sk
@@ -7242,21 +7849,21 @@ iu
 SZ
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
+Fo
+HA
+HA
+Ei
+HA
+Ei
+Ei
+HA
+Fo
+DE
+DE
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -7413,16 +8020,16 @@ iB
 iB
 tI
 oA
+hQ
 bD
 bD
 bD
 bD
-bD
-tZ
+bW
 tI
-Su
-uB
-Su
+VI
+Cb
+xY
 SZ
 jJ
 vc
@@ -7436,21 +8043,21 @@ iu
 SZ
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
+Fo
+xf
+xf
+EZ
+EZ
+Fo
+Fo
+Fo
+Fo
+DE
+DE
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -7630,21 +8237,21 @@ dj
 SZ
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
+nm
+nm
+nm
+nm
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -7823,22 +8430,22 @@ dj
 SZ
 SZ
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
+nm
+nm
+nm
+nm
+nm
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -8017,21 +8624,21 @@ SZ
 SZ
 Ad
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
+nm
+nm
+nm
+nm
+nm
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+wf
+wf
+fr
 fd
 fd
 fd
@@ -8211,21 +8818,21 @@ SZ
 Ad
 Ad
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
+nm
+nm
+nm
+nm
+nm
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+wf
+wf
+wf
 fd
 fd
 fd
@@ -8405,21 +9012,21 @@ iB
 iB
 iB
 iB
+nm
+nm
+nm
+nm
+nm
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+wf
+wf
+wf
 fd
 fd
 fd
@@ -8599,21 +9206,21 @@ iB
 iB
 iB
 iB
+nm
+nm
 iB
 iB
 iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
+DE
+DE
+DE
+DE
+wf
+wf
+wf
 fd
 fd
 fd
@@ -8802,12 +9409,12 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-fd
-fd
-fd
+DE
+DE
+DE
+wf
+wf
+wf
 fd
 fd
 fd
@@ -8997,11 +9604,11 @@ iB
 iB
 iB
 iB
-iB
-iB
-fd
-fd
-fd
+DE
+DE
+wf
+wf
+wf
 fd
 fd
 fd
@@ -9191,11 +9798,11 @@ iB
 iB
 iB
 iB
-iB
-iB
-fd
-fd
-fd
+DE
+DE
+wf
+wf
+wf
 fd
 fd
 fd
@@ -9385,11 +9992,11 @@ iB
 iB
 iB
 iB
-iB
-iB
-fd
-fd
-fd
+DE
+DE
+wf
+wf
+wf
 fd
 fd
 fd
@@ -9579,13 +10186,13 @@ iB
 iB
 iB
 iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -9773,13 +10380,13 @@ iB
 iB
 iB
 iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -9967,13 +10574,13 @@ iB
 iB
 iB
 iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -10161,13 +10768,13 @@ iB
 iB
 iB
 iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -10312,6 +10919,21 @@ DE
 "}
 (51,1,1) = {"
 DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
 iB
 iB
 iB
@@ -10340,28 +10962,13 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -10506,6 +11113,36 @@ DE
 "}
 (52,1,1) = {"
 DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
 iB
 iB
 iB
@@ -10518,42 +11155,12 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
+DE
+DE
+DE
+wf
+wf
+wf
 fd
 fd
 fd
@@ -10700,6 +11307,40 @@ DE
 "}
 (53,1,1) = {"
 DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
+DE
 iB
 iB
 iB
@@ -10708,46 +11349,12 @@ iB
 iB
 iB
 iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-iB
-fd
-fd
-fd
+DE
+DE
+DE
+wf
+wf
+wf
 fd
 fd
 fd
@@ -10894,54 +11501,54 @@ DE
 "}
 (54,1,1) = {"
 DE
-Ad
-Ad
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -11088,54 +11695,54 @@ DE
 "}
 (55,1,1) = {"
 DE
-Ad
-Ad
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -11282,54 +11889,54 @@ DE
 "}
 (56,1,1) = {"
 DE
-Ad
-Ad
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -11476,54 +12083,54 @@ DE
 "}
 (57,1,1) = {"
 DE
-Ad
-Ad
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -11670,53 +12277,53 @@ DE
 "}
 (58,1,1) = {"
 DE
-Ad
-Ad
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -11864,53 +12471,53 @@ DE
 "}
 (59,1,1) = {"
 DE
-Ad
-Ad
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -12058,53 +12665,53 @@ DE
 "}
 (60,1,1) = {"
 DE
-Ad
-Ad
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
+DE
+DE
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -12252,8 +12859,11 @@ DE
 "}
 (61,1,1) = {"
 DE
-Ad
-Ad
+DE
+DE
+wf
+wf
+wf
 fd
 fd
 fd
@@ -12268,37 +12878,34 @@ fd
 fd
 fd
 fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -12470,26 +13077,26 @@ fd
 fd
 fd
 fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd
@@ -12670,18 +13277,18 @@ fd
 fd
 fd
 fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
-fd
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
+wf
 fd
 fd
 fd

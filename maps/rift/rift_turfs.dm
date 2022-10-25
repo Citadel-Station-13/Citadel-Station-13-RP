@@ -91,6 +91,9 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	outdoors = FALSE /* So that we don't get weather effects for the ice used indoors. Convuluted, I know, but this
 	means I don't need another, almost identical turf to be created. */
 
+/turf/simulated/open/lythios43c/indoors
+	outdoors = FALSE
+
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors
 	outdoors = FALSE
 
@@ -126,6 +129,9 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	outdoors = FALSE
 
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors
+	outdoors = FALSE
+
+/turf/simulated/floor/tiled/techfloor/lythios43c/indoors
 	outdoors = FALSE
 
 /turf/simulated/mineral/icerock
