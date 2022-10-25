@@ -13,7 +13,7 @@
 			prefixes -= c
 	if(!length(prefixes))
 		return default_value()
-	return prefixes()
+	return prefixes
 
 /datum/category_item/player_setup_item/player_global/language_prefix/content(datum/preferences/prefs, mob/user, data)
 	var/list/prefixes = data
@@ -25,4 +25,15 @@
 	. = ..()
 
 /datum/category_item/player_setup_item/player_global/language_prefix/default_value(randomizing)
-	return SScharacters.language_keys.Copy()
+	return config_legacy.language_prefixes.Copy()
+
+/datum/preferences/proc/get_language_prefixes()
+	var/list/L = get_global_data(GLOBAL_DATA_LANGUAGE_PREFIX)
+	return L.Copy()
+
+/datum/preferences/proc/get_primary_language_prefix()
+	var/list/L = get_global_data(GLOBAL_DATA_LANGUAGE_PREFIX)
+	return L[1]
+
+/datum/preferences/proc/is_language_prefix(c)
+	return c in get_global_data(GLOBAL_DATA_LANGUAGE_PREFIX)

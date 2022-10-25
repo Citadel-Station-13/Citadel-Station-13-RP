@@ -199,8 +199,8 @@
 
 	else if(href_list["custom_base"])
 		var/list/choices = SScharacters.custom_species_bases
-		if(pref.species != SPECIES_CUSTOM)
-			choices = (choices | pref.species)
+		if(pref.real_species_id() != SPECIES_CUSTOM)
+			choices = (choices | pref.real_species_name())
 		var/text_choice = input("Pick an icon set for your species:","Icon Base") in choices
 		if(text_choice in choices)
 			pref.custom_base = text_choice
@@ -327,7 +327,7 @@
 			// 	tgui_alert_async(usr, "The trait you've selected cannot be taken by the species you've chosen!", "Error")
 			// 	return PREFERENCES_REFRESH
 
-			if( LAZYLEN(instance.allowed_species) && !(pref.species in instance.allowed_species))
+			if( LAZYLEN(instance.allowed_species) && !(pref.real_species_name() in instance.allowed_species))
 				tgui_alert_async(usr, "The trait you've selected cannot be taken by the species you've chosen!", "Error")
 				return PREFERENCES_REFRESH
 			if(trait_choice in pref.pos_traits + pref.neu_traits + pref.neg_traits)

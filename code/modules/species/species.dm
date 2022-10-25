@@ -41,7 +41,6 @@
 
 	//! Language - IDs
 	/// default language used when speaking
-	#warn check overrides
 	var/default_language = LANGUAGE_ID_COMMON
 	/// do we have galactic common? this is so common we just have this as a var
 	var/galactic_language = TRUE
@@ -50,7 +49,6 @@
 	var/list/intrinsic_languages = LANGUAGE_ID_COMMON
 	/// language our name is in - used for namegen; null to force stock ss13 namegen instead
 	// todo: language for namegen is questionaable
-	#warn check overrides
 	var/name_language = LANGUAGE_ID_COMMON
 	/// languages we are always allowed to learn (overridden by intrinsic languages) even if restricted - list() or singular language
 	var/list/whitelist_languages

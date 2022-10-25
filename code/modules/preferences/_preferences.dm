@@ -234,9 +234,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 /datum/preferences/proc/Initialize()
 	// todo: refactor
 	player_setup = new(src)
+	// set defaults before load
+	default_everything()
 
 	set_biological_gender(pick(MALE, FEMALE))
-	real_name = random_name(identifying_gender,species)
+	real_name = random_name(identifying_gender, real_species_name())
 	b_type = RANDOM_BLOOD_TYPE
 
 	gear = list()

@@ -33,7 +33,7 @@
 	character.force_update_organs()
 //	character.s_base = s_base //doesn't work, fuck me
 
-	if(!(flags & PREF_COPY_TO_NO_RENDER))
+	if(!(flags & PREF_COPY_TO_DO_NOT_RENDER))
 		character.force_update_limbs()
 		character.update_icons_body()
 		character.update_mutations()

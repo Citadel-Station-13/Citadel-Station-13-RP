@@ -118,7 +118,10 @@
 	return SScharacters.resolve_religion(default_religion).id
 
 /datum/character_species/proc/get_intrinsic_language_ids()
-	#warn impl
+	RETURN_TYPE(/list)
+	. = intrinsic_languages? (islist(intrinsic_languages)? intrinsic_languages.Copy() : list(intrinsic_languages)) : list()
+	if(galactic_language)
+		. |= LANGUAGE_ID_COMMON
 
 /datum/character_species/proc/get_name_language_id()
 	return name_language
@@ -127,7 +130,8 @@
 	return max_additional_languages
 
 /datum/character_species/proc/get_whitelisted_language_ids()
-	#warn impl
+	RETURN_TYPE(/list)
+	return whitelist_languages? (islist(whitelist_languages)? whitelist_languages.Copy() : list(whitelist_languages)) : list()
 
 /datum/character_species/proc/get_default_language_id()
 	return default_language

@@ -184,6 +184,12 @@
 		I.sanitize_data(src, errors)
 
 /**
+ * default everything that has save keys
+ */
+/datum/preferences/proc/default_everything()
+	#warn impl because load orders are a bitch
+
+/**
  * json export
  */
 /datum/preferences/proc/json_export_character(list/errors)

@@ -109,11 +109,11 @@
 		if(!islist(alternate_languages))
 			alternate_languages = list()
 		if(!islist(language_prefixes))
-			language_prefixes = Copy()
+			language_prefixes = list()
 		options[GLOBAL_DATA_LANGUAGE_PREFIX] = alternate_languages.Copy()
 		var/list/translated_languages = list()
 		options[CHARACTER_DATA_LANGUAGES] = translated_languages
-		var/list/inante = innate_language_ids()
+		var/list/innate = innate_language_ids()
 		for(var/name in alternate_languages)
 			var/datum/language/L = SScharacters.resolve_language_name(name)
 			if(L.id in innate)
