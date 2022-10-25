@@ -1,11 +1,11 @@
 /datum/preferences
 	//The mob should have a gender you want before running this proc. Will run fine without H
 /datum/preferences/proc/randomize_appearance_and_body_for(var/mob/living/carbon/human/H)
-	var/datum/species/current_species = SScharacters.resolve_species_name(species) || SScharacters.resolve_species_path(/datum/species/human)
+	var/datum/species/current_species = real_species_datum()
 	set_biological_gender(pick(current_species.genders))
 
-	h_style = random_hair_style(biological_gender, species)
-	f_style = random_facial_hair_style(biological_gender, species)
+	h_style = random_hair_style(biological_gender, current_species.name)
+	f_style = random_facial_hair_style(biological_gender, current_species.name)
 	if(current_species)
 		if(current_species.species_appearance_flags & HAS_SKIN_TONE)
 			s_tone = random_skin_tone()
@@ -265,13 +265,14 @@
 
 /datum/preferences/proc/get_valid_facialhairstyles()
 	var/list/valid_facialhairstyles = list()
+	var/datum/species/S = real_species_datum()
 	for(var/facialhairstyle in facial_hair_styles_list)
 		var/datum/sprite_accessory/S = facial_hair_styles_list[facialhairstyle]
 		if(biological_gender == MALE && S.gender == FEMALE)
 			continue
 		if(biological_gender == FEMALE && S.gender == MALE)
 			continue
-		if(S.apply_restrictions && !(species in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
+		if(S.apply_restrictions && !(S.name in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
 			continue
 
 		valid_facialhairstyles[facialhairstyle] = facial_hair_styles_list[facialhairstyle]
@@ -284,7 +285,7 @@
 		mannequin.dna = new /datum/dna(null)
 	mannequin.delete_inventory(TRUE)
 	if(regen_limbs)
-		var/datum/species/current_species = SScharacters.resolve_species_name(species)
+		var/datum/species/current_species = real_species_datum()
 		current_species.create_organs(mannequin)
 		regen_limbs = 0
 	dress_preview_mob(mannequin)

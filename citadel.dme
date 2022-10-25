@@ -2518,6 +2518,7 @@
 #include "code\modules\language\core.dm"
 #include "code\modules\language\event.dm"
 #include "code\modules\language\galactic.dm"
+#include "code\modules\language\holder.dm"
 #include "code\modules\language\language.dm"
 #include "code\modules\language\monkey.dm"
 #include "code\modules\language\silicons.dm"

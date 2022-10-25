@@ -505,13 +505,9 @@
  * handle_post_spawn() and create_organs() should be called manually if you are applying a species to a human being instantiated!
  */
 /datum/species/proc/on_apply(mob/living/carbon/human/H)
-	ASSERT(istype(H))
-
-#warn all intrinsic languages
-	if(language)
-		H.add_language(language)
-	if(default_language)
-		H.add_language(default_language)
+	// todo: language sources and holder
+	for(var/id in intrinsic_languages)
+		H.add_language(id)
 
 	if(holder_type)
 		H.holder_type = holder_type
@@ -532,14 +528,9 @@
  * called when we are removed from a mob
  */
 /datum/species/proc/on_remove(mob/living/carbon/human/H)
-
-#warn all intrinsic languages
-	if(language)
-		H.remove_language(language)
-	if(default_language)
-		H.remove_language(default_language)
-	for(var/datum/language/L in assisted_langs)
-		H.remove_language(L)
+	// todo: language sources and holder
+	for(var/id in intrinsic_languages)
+		H.remove_language(id)
 	remove_inherent_spells(H)
 	remove_inherent_verbs(H)
 	H.holder_type = null

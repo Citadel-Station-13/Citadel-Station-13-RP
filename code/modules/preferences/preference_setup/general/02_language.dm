@@ -11,7 +11,8 @@
 	S["language_prefixes"]	<< pref.language_prefixes
 
 /datum/category_item/player_setup_item/general/language/sanitize_character()
-	if(!islist(pref.alternate_languages))	pref.alternate_languages = list()
+	if(!islist(pref.alternate_languages))
+		pref.alternate_languages = list()
 	if(pref.species)
 		var/datum/species/S = pref.real_species_datum()
 		if(S && pref.alternate_languages.len > S.max_additional_languages)

@@ -144,7 +144,7 @@
 /**
  * checked get preference data
  */
-/datum/preferences/proc/get_preferenc(pref)
+/datum/preferences/proc/get_preference(pref)
 	var/datum/category_item/player_setup_item/preference = preference_by_key[path]
 	if(preference.is_global)
 		return options[preference.save_key]

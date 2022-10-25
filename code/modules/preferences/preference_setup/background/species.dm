@@ -1,6 +1,6 @@
 /datum/category_item/player_setup_item/background/char_species
-	name = "(Virtual) Character Species"
-	sort_order = 2
+	name = "Character Species"
+	sort_order = 1
 	save_key = CHARACTER_DATA_CHAR_SPECIES
 	load_order = PREFERENCE_LOAD_ORDER_CHAR_SPECIES
 	// todo: proper view-only section support
@@ -9,29 +9,55 @@
 	. = list()
 	var/datum/character_species/S = prefs.character_species_datum()
 	. += "<center>"
-	. += "Selected species: [S.name]"
+	. += "Selected species: [S.name] - \[[href_simple(prefs, "change", "CHANGE")]]"
 	. += "</center>"
 	. += "<div>"
 	. += "[S.desc]"
 	. += "</div>"
 
-/datum/category_item/player_setup_item/background/char_species/filter(datum/preferences/prefs, data, list/errors)
+/datum/category_item/player_setup_item/background/char_species/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
 	. = ..()
+	#warn whitelist check
+
+/datum/category_item/player_setup_item/background/char_species/filter(datum/preferences/prefs, data, list/errors)
+	// resolve
+	var/datum/character_species/CS = SScharacters.resolve_character_species(data)
+	if(CS)
+		// cool we found it
+		// but also, make sure we don't, for some reason, mismatch real species
+		var/real_id = prefs.get_character_data(CHARACTER_DATA_REAL_SPECIES)
+		var/datum/species/check_type = CS.real_species_type
+		if(!check_type || (real_id != initial(check_type.uid)))
+			// oh no :(
+			// default to real species type if possible, don't if not
+			return check_type? initial(check_type.uid) : informed_default_value(prefs)
+		return data
+	return informed_default_value(prefs)
 
 /datum/category_item/player_setup_item/background/char_species/informed_default_value(datum/preferences/prefs, randomizing)
-	. = ..()
+	// do they have a valid real species we can use?
+	var/real_id = prefs.get_character_data(CHARACTER_DATA_REAL_SPECIES)
+	CS = SScharacters.resolve_character_species(real_id)
+	if(CS)
+		return prefs.get_character_data(real_id)
+	// no :(
+	return default_value()
 
 /datum/category_item/player_setup_item/background/char_species/default_value(randomizing)
-	. = ..()
+	return SScharacters.default_species_id
 
-#warn we DO use this to filter
-#warn need another key for character species
 #warn main species selector has to use save key
+/datum/category_item/player_setup_item/background/char_species/act(datum/preferences/prefs, mob/user, action, list/params)
+	switch(action)
+		if("change")
+			prefs.species_pick(user)
+			return PREFERENCES_HANDLED
+	return ..()
 
 // todo: proper view-only section support
 /datum/category_item/player_setup_item/background/real_species
 	name = "(Virtual) Real Species"
-	sort_order = 1
+	sort_order = 2
 	save_key = CHARACTER_DATA_REAL_SPECIES
 	load_order = PREFERENCE_LOAD_ORDER_REAL_SPECIES
 
@@ -50,29 +76,8 @@
 	if(!ishuman(M))
 		return TRUE
 	var/mob/living/carbon/human/H = M
+	// we construct character species
 	H.set_species(SScharacters.construct_character_species(prefs.get_character_data(CHARACTER_DATA_CHAR_SPECIES)))
-
-/datum/category_item/player_setup_item/background/char_species
-	name = "Character Species"
-	sort_order = 1
-	save_key = CHARACTER_DATA_REAL_SPECIES
-	load_order = PREFERENCE_LOAD_ORDER_CHAR_SPECIES
-
-/datum/category_item/player_setup_item/background/char_species/filter(datum/preferences/prefs, data, list/errors)
-	. = ..()
-
-#warn finish including auto-revert to real species if unavailable
-#warn if real species mismatches, we swap to real species.
-
-/datum/category_item/player_setup_item/background/char_species/default_value(randomizing)
-	return SScharacters.default_species_id()
-
-/datum/category_item/player_setup_item/background/char_species/content(datum/preferences/prefs, mob/user, data)
-	. = ..()
-
-/datum/category_item/player_setup_item/background/char_species/act(datum/preferences/prefs, mob/user, action, list/params)
-	. = ..()
-
 
 /datum/preferences/proc/real_species_id()
 	return get_character_data(CHARACTER_DATA_REAL_SPECIES)
@@ -90,3 +95,6 @@
 /datum/preferences/proc/real_species_datum()
 	RETURN_TYPE(/datum/species)
 	return SScharacters.resolve_species_id(get_character_data(CHARACTER_DATA_REAL_SPECIES))
+
+/datum/preferences/proc/real_species_name()
+	return SScharacters.resolve_species_id(get_character_data(CHARACTER_DATA_REAL_SPECIES)).name

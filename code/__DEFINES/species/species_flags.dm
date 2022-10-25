@@ -50,7 +50,7 @@ DEFINE_BITFIELD(species_fluff_flags, list(
 #define SPECIES_SPAWN_WHITELISTED (1<<0)
 /// Is not a core/normally playable species. (castes, mutantraces)
 #define SPECIES_SPAWN_RESTRICTED (1<<1)
-/// Species is selectable in chargen.
+/// Species is selectable in chargen. - **this must be on a species to be roundstart/latejoin playable!!*
 #define SPECIES_SPAWN_ALLOWED (1<<2)
 /// FBP of this species can't be made in-game.
 #define SPECIES_SPAWN_NO_FBP_CONSTRUCT (1<<3)

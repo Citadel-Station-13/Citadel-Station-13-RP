@@ -31,12 +31,13 @@
 	S["OOC_Notes"]				<< pref.metadata
 
 /datum/category_item/player_setup_item/general/basic/sanitize_character()
+	var/species_name = pref.real_species_name()
 	pref.age                = sanitize_integer(pref.age, get_min_age(), get_max_age(), initial(pref.age))
 	pref.biological_gender  = sanitize_inlist(pref.biological_gender, get_genders(), pick(get_genders()))
 	pref.identifying_gender = (pref.identifying_gender in all_genders_define_list) ? pref.identifying_gender : pref.biological_gender
-	pref.real_name		= sanitize_name(pref.real_name, pref.species, is_FBP())
+	pref.real_name		= sanitize_name(pref.real_name, species_name, is_FBP())
 	if(!pref.real_name)
-		pref.real_name      = random_name(pref.identifying_gender, pref.species)
+		pref.real_name      = random_name(pref.identifying_gender, species_name)
 	pref.nickname		= sanitize_name(pref.nickname)
 	pref.spawnpoint         = sanitize_inlist(pref.spawnpoint, spawntypes, initial(pref.spawnpoint))
 	pref.be_random_name     = sanitize_integer(pref.be_random_name, 0, 1, initial(pref.be_random_name))

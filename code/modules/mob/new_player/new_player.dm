@@ -506,9 +506,12 @@
 	if(!IsJobAvailable(rank))
 		src << alert("[rank] is not available. Please try another.")
 		return 0
-	if(!attempt_vr(src,"spawn_checks_vr",list())) return 0
-	if(!client)
-		return 0
+	if(!spawn_checks_vr())
+		return FALSE
+	var/list/errors = list()
+	if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_LATEJOIN, errors))
+		to_chat(src, SPAN_WARNING("An error has occured while trying to spawn you in:<br>[errors.Join("<br>")]"))
+		return FALSE
 
 	//Find our spawning point.
 	var/list/join_props = job_master.LateSpawn(client, rank)
@@ -624,7 +627,7 @@
 	if(!spawn_checks_vr())
 		return FALSE
 	var/list/errors = list()
-	if(!client.prefs.spawn_checks(PREF_COPY_TO_IS_SPAWNING | PREF_COPY_TO_FOR_ROUNDSTART, errors))
+	if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_ROUNDSTART, errors))
 		to_chat(src, SPAN_WARNING("An error has occured while trying to spawn you in:<br>[errors.Join("<br>")]"))
 		return FALSE
 	spawning = 1

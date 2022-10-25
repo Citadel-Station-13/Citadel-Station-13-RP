@@ -91,8 +91,19 @@
 	var/default_language = LANGUAGE_ID_COMMON
 
 /datum/character_species/proc/tweak(datum/species/S)
+	// we need this
 	S.default_bodytype = our_bodytype
-	#warn teweak languages
+	// while we technically don't *need* this, we want this incase someone starts reading from these fields mid game
+	// for non customization purposes later.
+	S.galactic_language = galactic_language
+	if(intrinsic_languages)
+		S.intrinsic_languages = intrinsic_languages.Copy()
+	if(name_language)
+		S.name_language = name_language.Copy()
+	if(whitelist_languages)
+		S.whitelist_languages = whitelist_languages.Copy()
+	S.max_additional_languages = max_additional_languages
+	S.default_language = default_language
 
 /datum/character_species/proc/get_default_origin_id()
 	return SScharacters.resolve_origin(default_origin).id
