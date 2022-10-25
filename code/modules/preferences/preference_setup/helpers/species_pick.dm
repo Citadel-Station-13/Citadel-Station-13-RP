@@ -22,6 +22,10 @@
 
 /datum/preferences/proc/route_species_pick(uid)
 #warn besure to pick real species using this as fallback for char species removals
+#warn besure to refresh
+
+/datum/preferences/proc/species_pick_finalize(uid)
+
 
 GLOBAL_LIST_EMPTY(species_picker_active)
 /datum/tgui_species_picker

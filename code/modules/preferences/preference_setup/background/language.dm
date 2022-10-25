@@ -60,7 +60,7 @@
  * returns max amounts we can have. doesn't take into account what we do have.
  */
 /datum/preferences/proc/extraneous_language_ids_max()
-	return character_species_datum().max_additional_languages
+	return max(character_species_datum().max_additional_languages, 0)
 
 /**
  * returns ids of languages that aren't innate to our species/background
