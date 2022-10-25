@@ -18,9 +18,26 @@
 	difficult situations related to patient care."
 
 	minimal_player_age = 14
-
 	minimum_character_age = 25
 	ideal_character_age = 45
+
+	alt_titles = list (
+		"Medical Specialist" = /datum/alt_title/medical_specialist,
+		"Consultant Physician" = /datum/alt_title/consultant_physician,
+	)
+
+/datum/alt_title/medical_specialist
+	title = "Medical Specialist"
+	title_blurb = "A Medical Specialist is a senior medical professional with extensive knowledge within a particular field of medicine which \
+	operate within their field and may be called upon to aid other medical professionals in the treatment of patients related to said field."
+	title_outfit = /datum/outfit/job/station/medical_doctor
+
+/datum/alt_title/consultant_physician
+	title = "Consultant Physician"
+	title_blurb = "A Consultant Physician is a senior medical professional with extensive training in general medical practice which are expected to both perform the \
+	standard duties of a medical doctor, as well as offer training, guidance and oversight to both resident and attending physicians, especially when presented with difficult \
+	situations related to patient care."
+	title_outfit = /datum/outfit/job/station/medical_doctor
 
 /datum/outfit/job/station/medical_doctor/head_nurse
 	name = OUTFIT_JOB_NAME("Medical Doctor")
