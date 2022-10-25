@@ -75,13 +75,14 @@
 	src.emag = new /obj/item/gun/energy/lasercannon/mounted(src)
 
 /obj/item/robot_module/robot/knine
-	name = "k9 robot module"
+	name = "SecuriBeast module"
 	sprites = list(
 					"K9 hound" = "k9",
 					"K9 Alternative" = "k92",
 					"Secborg model V-2" = "secborg",
 					"Borgi" = "borgi-sec",
-					"Otieborg" = "oties"
+					"Otieborg" = "oties",
+					"F3-LINE" = "FELI-Security"
 					)
 	channels = list("Security" = 1)
 	networks = list(NETWORK_SECURITY)
@@ -149,6 +150,50 @@
 	/*var/obj/item/melee/baton/robot/B = locate() in src.modules //Borg baton uses borg cell.
 	if(B && B.bcell)
 		B.bcell.give(amount)*/
+
+/obj/item/robot_module/robot/beast_combat
+	name = "combat beast module"
+	hide_on_manifest = 1
+	sprites = list(
+					"Haruka" = "marinaCB",
+					"Cabeiri" = "eyebot-combat",
+					"Combat Android" = "droid-combat",
+					"Insekt" = "insekt-Combat",
+					"F3-LINE" = "FELI-Combat"
+					)
+
+/obj/item/robot_module/robot/beast_combat/Initialize(mapload)
+	. = ..()
+	var/mob/living/silicon/robot/R = loc
+	src.modules += new /obj/item/flash(src)
+	//src.modules += new /obj/item/borg/sight/thermal(src)
+	src.modules += new /obj/item/gun/energy/laser/mounted(src)
+	src.modules += new /obj/item/pickaxe/plasmacutter(src)
+	src.modules += new /obj/item/borg/combat/shield(src)
+	src.modules += new /obj/item/borg/combat/mobility(src)
+	src.emag = new /obj/item/gun/energy/lasercannon/mounted(src)
+	src.modules += new /obj/item/dogborg/jaws/big(src) //In case there's some kind of hostile mob.
+
+	var/datum/matter_synth/water = new /datum/matter_synth(500) //Starts full and has a max of 500
+	water.name = "Water reserves"
+	water.recharge_rate = 0
+	R.water_res = water
+	synths += water
+
+	var/obj/item/dogborg/tongue/T = new /obj/item/dogborg/tongue(src)
+	T.water = water
+	src.modules += T
+
+	R.icon 		 = 'icons/mob/widerobot_vr.dmi'
+	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'
+	R.ui_style_vr = TRUE
+	R.set_base_pixel_x(-16)
+	R.dogborg = TRUE
+	R.wideborg = TRUE
+	R.icon_dimension_x = 64
+	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
+	R.verbs |= /mob/living/proc/shred_limb
+	R.verbs |= /mob/living/silicon/robot/proc/rest_style
 
 /obj/item/robot_module/robot/ert
 	name = "Emergency Responce module"

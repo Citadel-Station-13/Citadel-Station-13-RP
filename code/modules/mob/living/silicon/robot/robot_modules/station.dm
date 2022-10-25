@@ -10,13 +10,15 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	"Engineering"	= /obj/item/robot_module/robot/engineering/general,
 //	"Construction"	= /obj/item/robot_module/robot/engineering/construction,
 	"Janitor" 		= /obj/item/robot_module/robot/janitor,
-	"Medihound"		= /obj/item/robot_module/robot/medihound,
-	"K9"		= /obj/item/robot_module/robot/knine,
-	"ERT"		= /obj/item/robot_module/robot/ert,
-	"Janihound"		= /obj/item/robot_module/robot/scrubpup,
-	"Sci-Hound"		= /obj/item/robot_module/robot/science,
-	"Pupdozer"		= /obj/item/robot_module/robot/engiedog,
-	"Service-Hound"		= /obj/item/robot_module/robot/clerical/brodog
+	"Beast"			= /obj/item/robot_module/robot/basic_beast,
+	"MediBeast"		= /obj/item/robot_module/robot/medihound,
+	"SecuriBeast"	= /obj/item/robot_module/robot/knine,
+	"JaniBeast"		= /obj/item/robot_module/robot/scrubpup,
+	"SciBeast"		= /obj/item/robot_module/robot/science,
+	"EngiBeast"		= /obj/item/robot_module/robot/engiedog,
+	"Mining Beast"	= /obj/item/robot_module/robot/beast_miner,
+	"Service Beast"	= /obj/item/robot_module/robot/clerical/brodog,
+	"ERT"			= /obj/item/robot_module/robot/ert
 	))
 
 /obj/item/robot_module

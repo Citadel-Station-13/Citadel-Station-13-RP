@@ -155,12 +155,13 @@
 		B.reagents.add_reagent("beer2", 2 * amount)
 
 /obj/item/robot_module/robot/scrubpup
-	name = "Custodial Hound module"
+	name = "JaniBeast module"
 	sprites = list(
 					"Custodial Hound" = "scrubpup",
 					"Borgi" = "borgi-jani",
 					"Otieborg" = "otiej",
-					"Janihound, J9" = "J9"
+					"Janihound, J9" = "J9",
+					"F3-LINE" = "FELI-Janitor"
 					)
 	channels = list("Service" = 1)
 	can_be_pushed = 0
@@ -239,12 +240,13 @@
 
 // Uses modified K9 sprites.
 /obj/item/robot_module/robot/clerical/brodog
-	name = "service-hound module"
+	name = "Service Beast module"
 	sprites = list(
 					"Blackhound" = "k50",
 					"Pinkhound" = "k69",
 					"ServicehoundV2" = "serve2",
 					"ServicehoundV2 Darkmode" = "servedark",
+					"F3-LINE" = "FELI-Service"
 					)
 	channels = list("Service" = 1)
 	can_be_pushed = 0

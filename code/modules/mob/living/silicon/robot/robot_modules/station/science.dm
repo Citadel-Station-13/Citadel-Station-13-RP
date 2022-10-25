@@ -69,10 +69,11 @@
 	..()
 
 /obj/item/robot_module/robot/science
-	name = "Research Hound Module"
+	name = "SciBeast Module"
 	sprites = list(
 					"Research Hound" = "science",
-					"Borgi" = "borgi-sci"
+					"Borgi" = "borgi-sci",
+					"F3-LINE" = "FELI-Research"
 					)
 	channels = list("Science" = 1)
 	can_be_pushed = 0

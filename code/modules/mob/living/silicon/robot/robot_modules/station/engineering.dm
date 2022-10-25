@@ -164,11 +164,12 @@
 
 
 /obj/item/robot_module/robot/engiedog
-	name = "Construction Hound module"
+	name = "EngiBeast module"
 	sprites = list(
 					"Pupdozer" = "pupdozer",
 					"V2 Engidog" = "thottbot",
-					"Borgi" = "borgi-eng"
+					"Borgi" = "borgi-eng",
+					"F3-LINE" = "FELI-Engineer"
 					)
 	channels = list("Engineering" = 1)
 	networks = list(NETWORK_ENGINEERING)

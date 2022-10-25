@@ -95,7 +95,7 @@
 //Crisis module removed - 5/2/2021
 
 /obj/item/robot_module/robot/medihound
-	name = "MediHound module"
+	name = "MediBeast module"
 	channels = list("Medical" = 1)
 	networks = list(NETWORK_MEDICAL)
 	subsystems = list(/mob/living/silicon/proc/subsystem_crew_monitor)
@@ -104,7 +104,8 @@
 					"Medical Hound" = "medihound",
 					"Dark Medical Hound" = "medihounddark",
 					"Mediborg model V-2" = "vale",
-					"Borgi" = "borgi-medi"
+					"Borgi" = "borgi-medi",
+					"F3-LINE" = "FELI-Medical"
 					)
 
 /obj/item/robot_module/robot/medihound/Initialize(mapload)
