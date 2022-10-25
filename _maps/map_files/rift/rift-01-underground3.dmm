@@ -97,10 +97,11 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/mining_airlock)
 "gu" = (
+/obj/machinery/camera/network/engine,
 /turf/simulated/floor/plating/lythios43c{
 	outdoors = 0
 	},
-/area/rift/surfacebase/underground/under1)
+/area/engineering/engine_room)
 "gG" = (
 /obj/structure/plasticflaps/mining,
 /obj/machinery/conveyor{
@@ -132,7 +133,7 @@
 /turf/simulated/floor/plating/lythios43c{
 	outdoors = 0
 	},
-/area/rift/surfacebase/underground/under1)
+/area/engineering/engine_room)
 "ig" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -323,7 +324,7 @@
 /turf/simulated/floor/plating/lythios43c{
 	outdoors = 0
 	},
-/area/rift/surfacebase/underground/under1)
+/area/engineering/engine_room)
 "tB" = (
 /obj/structure/closet/crate,
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -397,6 +398,9 @@
 /obj/effect/zone_divider,
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"xo" = (
+/turf/simulated/wall/r_wall,
+/area/engineering/engine_room)
 "xs" = (
 /obj/effect/floor_decal/industrial/hatch/yellow,
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -12421,9 +12425,9 @@ dq
 xK
 xK
 xK
-xK
-xK
-xK
+xo
+xo
+xo
 xK
 xK
 xK
@@ -12615,9 +12619,9 @@ dq
 dq
 xK
 xK
-xK
+xo
 tz
-xK
+xo
 xK
 xK
 dq
@@ -12809,9 +12813,9 @@ dq
 dq
 xK
 xK
-xK
+xo
 gu
-xK
+xo
 xK
 xK
 dq
@@ -13003,9 +13007,9 @@ dq
 dq
 dq
 xK
-xK
+xo
 hP
-xK
+xo
 xK
 dq
 dq
