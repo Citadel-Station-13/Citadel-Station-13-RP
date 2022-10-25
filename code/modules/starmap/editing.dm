@@ -7,8 +7,8 @@
 /datum/starmap/proc/lock_for_editing()
 	if(volatile)
 		return
-	clear_assets()
 	volatile = TRUE
+	clear_assets()
 	entity_by_id = list()
 	load_file()
 
