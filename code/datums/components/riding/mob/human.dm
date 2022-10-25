@@ -8,6 +8,11 @@
 	/// offhands required on the rider for piggybacking
 	var/rider_offhands_needed_piggyback = 1
 
+/datum/component/riding_filter/mob/human/check_mount_attempt(mob/M, buckle_flags, mob/user, semantic)
+	if(!ishuman(M))
+		return FALSE		// nah
+	return ..()
+
 /datum/component/riding_filter/mob/human/rider_offhands_needed(mob/rider, semantic)
 	return semantic == BUCKLE_SEMANTIC_HUMAN_FIREMAN? 0 : rider_offhands_needed_piggyback
 

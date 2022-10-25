@@ -10,9 +10,6 @@ var/list/global/tank_gauge_cache = list()
 /obj/item/tank
 	name = "tank"
 	icon = 'icons/obj/tank.dmi'
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/back.dmi'
-		)
 	drop_sound = 'sound/items/drop/gascan.ogg'
 	pickup_sound = 'sound/items/pickup/gascan.ogg'
 
@@ -365,7 +362,7 @@ var/list/global/tank_gauge_cache = list()
 	if(src.wired)
 		src.overlays += "bomb_assembly"
 		if(src.proxyassembly.assembly)
-			var/icon/test = getFlatIcon(src.proxyassembly.assembly)
+			var/icon/test = get_flat_icon(src.proxyassembly.assembly)
 			test.Shift(SOUTH,1)
 			test.Shift(WEST,3)
 			overlays += test

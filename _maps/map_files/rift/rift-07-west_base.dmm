@@ -3,9 +3,6 @@
 /turf/simulated/wall/r_wall,
 /area/rift/surfacebase/outside/west_base)
 "az" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 1
-	},
 /turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
 "aJ" = (
@@ -29,12 +26,6 @@
 /obj/random/obstruction,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
-"br" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_base)
 "bD" = (
 /obj/effect/trap/pop_up/flame{
 	id = "LF_V"
@@ -62,12 +53,6 @@
 /obj/random/cash,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/vault)
-"dd" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/west_base)
 "dj" = (
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -96,12 +81,6 @@
 "fd" = (
 /turf/simulated/mineral/icerock/lythios43c/rich,
 /area/rift/surfacebase/outside/west_base/submap_seedzone)
-"ff" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/west_base)
 "gJ" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 8
@@ -109,10 +88,6 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
-"hQ" = (
-/obj/effect/overlay/snow/floor/edges_new,
-/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
-/area/rift/surfacebase/outside/west_base)
 "hS" = (
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
@@ -141,12 +116,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
-"kE" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 5
-	},
-/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
-/area/rift/surfacebase/outside/west_base)
 "kG" = (
 /obj/machinery/door/airlock/vault/bolted,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -178,12 +147,6 @@
 	portal_id = "westbasestep"
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/west_base)
-"ml" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
 "mA" = (
 /obj/effect/overlay/snow/floor/edges,
@@ -320,13 +283,6 @@
 /obj/effect/blocker,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
-"ww" = (
-/obj/machinery/light/flamp/noshade,
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 9
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/west_base)
 "wP" = (
 /obj/turbolift_map_holder/rift_west_base,
 /turf/simulated/shuttle/floor/voidcraft/lythios43c,
@@ -358,15 +314,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
-"zL" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/west_base)
 "Ad" = (
 /turf/simulated/mineral/icerock/lythios43c/rich,
 /area/rift/surfacebase/outside/west_base)
@@ -407,12 +354,6 @@
 /obj/random/obstruction,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
-"EJ" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_base)
 "EP" = (
 /obj/effect/map_effect/radiation_emitter/chernobyl,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -423,22 +364,12 @@
 "Fo" = (
 /turf/simulated/wall,
 /area/rift/surfacebase/outside/west_base)
-"Fy" = (
-/obj/effect/overlay/snow/floor/edges_new,
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/surfacebase/outside/west_base)
 "FI" = (
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
-"FU" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/west_base)
 "FZ" = (
 /obj/effect/trap/pop_up/flame{
 	id = "LF_V"
@@ -452,12 +383,6 @@
 /area/rift/facility/interior/vault)
 "Gb" = (
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_base)
-"HQ" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 4
-	},
-/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_base)
 "It" = (
 /obj/machinery/light/small{
@@ -482,25 +407,9 @@
 "Kh" = (
 /turf/simulated/shuttle/floor/voidcraft/lythios43c,
 /area/turbolift/rwest_mining/base)
-"KI" = (
-/obj/effect/overlay/snow/floor/grav_edges,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/west_base)
-"KU" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 6
-	},
-/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
-/area/rift/surfacebase/outside/west_base)
 "Lh" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/rift/facility/interior/elevator)
-"Lm" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/west_base)
 "Lw" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
@@ -553,16 +462,6 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
-"NW" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 1
-	},
-/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
-/area/rift/surfacebase/outside/west_base)
-"OG" = (
-/obj/effect/overlay/snow/floor/grav_edges,
-/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_base)
 "Pb" = (
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/elevator)
@@ -593,12 +492,6 @@
 /obj/effect/overlay/snow/airlock,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/core)
-"Rx" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 6
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/west_base)
 "RD" = (
 /obj/item/bone/leg,
 /obj/item/bone/leg,
@@ -643,13 +536,6 @@
 	},
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
-"TN" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/grav_edges,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/west_base)
 "Um" = (
 /obj/structure/ladder/snake_eater/up,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -658,13 +544,6 @@
 /obj/machinery/fusion_fuel_injector/mapped,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/interior/core)
-"VI" = (
-/obj/effect/overlay/snow/floor/edges_new{
-	dir = 4
-	},
-/obj/structure/sign/warning/falling,
-/turf/simulated/wall,
-/area/rift/surfacebase/outside/west_base)
 "VN" = (
 /obj/structure/table/rack/shelf,
 /obj/random/tool/power,
@@ -675,12 +554,6 @@
 /obj/random/tool/power,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/vault)
-"VZ" = (
-/obj/effect/overlay/snow/floor/grav_edges{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_base)
 "Wi" = (
 /obj/effect/overlay/snow/floor/grav_surround{
 	dir = 1
@@ -728,7 +601,6 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
 "ZF" = (
-/obj/effect/overlay/snow/floor/grav_edges,
 /obj/machinery/light/flamp/noshade,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
@@ -31256,9 +31128,9 @@ Fo
 Sx
 Um
 Fo
-HQ
-HQ
-HQ
+nm
+nm
+nm
 nm
 DE
 DE
@@ -31444,16 +31316,16 @@ DE
 DE
 DE
 nm
-HQ
-HQ
-VI
-EJ
-EJ
+nm
+nm
+lL
+NS
+NS
 lL
 Gb
 Gb
 Gb
-NW
+nm
 nm
 DE
 DE
@@ -31637,17 +31509,17 @@ iB
 DE
 DE
 nm
-hQ
-Gb
-Gb
-Gb
-br
+nm
 Gb
 Gb
 Gb
 Gb
 Gb
-kE
+Gb
+Gb
+Gb
+Gb
+nm
 nm
 nm
 DE
@@ -31830,19 +31702,19 @@ iB
 DE
 DE
 DE
-HQ
-KU
+nm
+nm
 Gb
 Gb
 Gb
 az
-ml
 Gb
 Gb
 Gb
 Gb
 Gb
-kE
+Gb
+nm
 nm
 DE
 DE
@@ -32029,7 +31901,6 @@ Gb
 Gb
 Gb
 Gb
-VZ
 Gb
 Gb
 Gb
@@ -32037,7 +31908,8 @@ Gb
 Gb
 Gb
 Gb
-kE
+Gb
+nm
 DE
 DE
 DE
@@ -32224,7 +32096,7 @@ Gb
 Gb
 Gb
 Gb
-br
+Gb
 Gb
 Gb
 Gb
@@ -32417,8 +32289,8 @@ Gb
 py
 py
 py
-Rx
-Fy
+py
+DD
 py
 py
 py
@@ -32609,21 +32481,21 @@ Gb
 Gb
 Gb
 py
-dd
-Rx
+py
+py
 DD
 Wi
-dd
-dd
-dd
-dd
-dd
-dd
-dd
-dd
-dd
-dd
-dd
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
 NS
 NS
 dY
@@ -32802,10 +32674,10 @@ DE
 Gb
 Gb
 Gb
-OG
+Gb
 DD
 DD
-ff
+DD
 DD
 DD
 DD
@@ -32996,10 +32868,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-ff
+DD
 DD
 DD
 DD
@@ -33190,22 +33062,22 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-ww
-Lm
-Lm
-Lm
-Lm
-Lm
-Lm
-Lm
-Lm
-Lm
-Lm
-Lm
-Lm
+ZF
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
+py
 NS
 NS
 dY
@@ -33384,10 +33256,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -33578,10 +33450,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -33772,10 +33644,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -33966,10 +33838,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -34160,10 +34032,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -34354,10 +34226,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -34548,10 +34420,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -34742,10 +34614,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -34936,10 +34808,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -35130,10 +35002,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -35327,7 +35199,7 @@ py
 ZF
 DD
 DD
-FU
+py
 py
 py
 py
@@ -35518,10 +35390,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -35712,10 +35584,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -35906,10 +35778,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -36100,10 +35972,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -36294,10 +36166,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -36488,10 +36360,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -36682,10 +36554,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -36876,10 +36748,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -37070,10 +36942,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -37264,10 +37136,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -37458,10 +37330,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -37652,10 +37524,10 @@ py
 py
 py
 py
-KI
+py
 DD
 DD
-FU
+py
 py
 py
 py
@@ -37846,10 +37718,10 @@ ns
 ns
 ns
 ns
-TN
+ns
 TM
 TM
-zL
+ns
 ns
 ns
 ns

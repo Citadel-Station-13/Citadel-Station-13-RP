@@ -62,7 +62,8 @@
 		return
 
 	if(network && air_contents.total_moles && air_contents.temperature < set_temperature)
-		var/limit = clamp(air_contents.heat_capacity() * (set_temperature - air_contents.temperature), 0, power_rating * THERMOMACHINE_CHEAT_FACTOR)
+		CACHE_VSC_PROP(atmos_vsc, /atmos/thermomachine_cheat_factor, cheat_factor)
+		var/limit = clamp(air_contents.heat_capacity() * (set_temperature - air_contents.temperature), 0, power_rating * cheat_factor)
 		air_contents.adjust_thermal_energy(limit)
 		use_power(power_rating)
 

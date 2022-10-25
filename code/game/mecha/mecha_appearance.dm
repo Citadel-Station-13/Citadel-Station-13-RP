@@ -34,7 +34,7 @@
 
 	if(show_pilot)
 		if(occupant)
-			pilot_image = getCompoundIcon(occupant)
+			pilot_image = get_compound_icon(occupant)
 
 			if(!istype(occupant, /mob/living/carbon/brain))
 
@@ -61,5 +61,5 @@
 		add_overlay(face_overlay)
 
 	for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
+
 		ME.add_equip_overlay(src)
-	return

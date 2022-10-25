@@ -656,7 +656,7 @@
 		mind.active = 0					// We wish to transfer the key manually
 		// Edited to disable the destructive forced renaming for our responsible whitelist clowns.
 		//if(mind.assigned_role == "Clown")				// Give them a clownname if they are a clown
-		//	new_character.real_name = pick(clown_names)	// I hate this being here of all places but unfortunately dna is based on real_name!
+		//	new_character.real_name = pick(GLOB.clown_names)	// I hate this being here of all places but unfortunately dna is based on real_name!
 		//	new_character.rename_self("clown")
 		mind.original = new_character
 		mind.loaded_from_ckey = client.ckey
@@ -670,8 +670,8 @@
 	new_character.sync_organ_dna()
 	if(client.prefs.disabilities)
 		// Set defer to 1 if you add more crap here so it only recalculates struc_enzymes once. - N3X
-		new_character.dna.SetSEState(GLASSESBLOCK,1,0)
-		new_character.disabilities |= NEARSIGHTED
+		new_character.dna.SetSEState(DNABLOCK_GLASSES,1,0)
+		new_character.disabilities |= DISABILITY_NEARSIGHTED
 	if(client.prefs.mirror == TRUE)
 		if((client.prefs.organ_data[O_BRAIN] != null))
 			var/obj/item/implant/mirror/positronic/F = new /obj/item/implant/mirror/positronic(new_character)

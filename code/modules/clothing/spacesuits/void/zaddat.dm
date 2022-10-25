@@ -2,7 +2,7 @@
 	name = "\improper Hegemony Shroud helmet"
 	desc = "A Hegemony-designed utilitarian environment suit helmet, still common among the Spacer Zaddat."
 	icon_state = "zaddat_hegemony"
-	item_state_slots = list(slot_r_hand_str = "syndicate", slot_l_hand_str = "syndicate")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate", SLOT_ID_LEFT_HAND = "syndicate")
 	heat_protection = HEAD
 	body_parts_covered = HEAD|FACE|EYES
 	slowdown = 0.5

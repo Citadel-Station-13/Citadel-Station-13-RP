@@ -23,7 +23,7 @@ var/global/datum/controller/occupations/job_master
 			continue
 		job = new J
 		occupations += job
-	sortTim(occupations, /proc/cmp_job_datums)
+	tim_sort(occupations, /proc/cmp_job_datums)
 	return TRUE
 
 
@@ -559,7 +559,7 @@ var/global/datum/controller/occupations/job_master
 	// END EMAIL GENERATION
 
 	//Gives glasses to the vision impaired
-	if(H.disabilities & NEARSIGHTED)
+	if(H.disabilities & DISABILITY_NEARSIGHTED)
 		var/equipped = H.equip_to_slot_or_del(new /obj/item/clothing/glasses/regular(H), SLOT_ID_GLASSES)
 		if(equipped != 1)
 			var/obj/item/clothing/glasses/G = H.glasses

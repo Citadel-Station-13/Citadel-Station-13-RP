@@ -1,7 +1,7 @@
 //! file contains wrappers and hooks
 /mob/living/carbon/human/drag_drop_buckle_interaction(atom/A, mob/user)
-	if(!ismob(A))
-		// first of all, if it's not a mob, kick it down
+	if(!ismob(A) || (A == src))
+		// first of all, if it's not a mob or if it's literally ourselves, kick it down
 		return ..()
 	// we're going to do a snowflaked Funny:
 	// if we don't have a human riding filter, assume an admin is bussing(tm) and we should stop caring
@@ -26,7 +26,7 @@
 	else if(user == src)
 		// prechecks
 		if((buckling.get_effective_size() - get_effective_size()) >= 0.5)
-			to_chat(user, SPAN_WARNING("How do you intend on carrying [src] when you are that small?"))
+			to_chat(user, SPAN_WARNING("How do you intend on carrying [buckling] when you are that small?"))
 			return FALSE
 		if(a_intent != INTENT_GRAB)
 			return FALSE

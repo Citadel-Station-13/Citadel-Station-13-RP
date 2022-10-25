@@ -6,8 +6,8 @@
 //	resistance_flags = FLAMMABLE
 	icon = 'icons/obj/musician.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/inhands/equipment/instruments_lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/inhands/equipment/instruments_righthand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/mob/inhands/equipment/instruments_lefthand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/equipment/instruments_righthand.dmi'
 		)
 	var/datum/song/handheld/song
 	var/list/allowed_instrument_ids
@@ -259,8 +259,8 @@
 	icon_state = "bike_horn"
 	item_state = "bike_horn"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/inhands/equipment/horns_lefthand.dmi',
-		slot_r_hand_str = 'icons/mob/inhands/equipment/horns_righthand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/mob/inhands/equipment/horns_lefthand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/equipment/horns_righthand.dmi'
 		)
 	attack_verb = list("beautifully honks")
 	allowed_instrument_ids = list("honk", "bikehorn")

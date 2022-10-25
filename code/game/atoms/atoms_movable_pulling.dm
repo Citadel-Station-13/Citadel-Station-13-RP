@@ -4,7 +4,7 @@
 /atom/movable/proc/move_pulled_towards(atom/A)
 	if(!pulling)
 		return
-	if(pulling.anchored || ((pulling.move_resist * MOVE_FORCE_PULL_RATIO) > pull_force) || !pulling.Adjacent(src))
+	if(pulling.anchored || ((pulling.pull_resist * MOVE_FORCE_PULL_RATIO) > pull_force) || !pulling.Adjacent(src))
 		stop_pulling()
 		return
 	if(isliving(pulling))
@@ -64,21 +64,22 @@
   * Checks if a pull is valid. If it ain't, stop pulling.
   */
 /atom/movable/proc/check_pulling()
-	if(pulling)
-		var/atom/movable/pullee = pulling
-		if(pullee && get_dist(src, pullee) > 1)
-			stop_pulling()
-			return
-		if(!isturf(loc))
-			stop_pulling()
-			return
-		if(pullee && !isturf(pullee.loc) && pullee.loc != loc) //to be removed once all code that changes an object's loc uses forceMove().
-			stack_trace("[src]'s pull on [pullee] wasn't broken despite [pullee] being in [pullee.loc]. Pull stopped manually.")
-			stop_pulling()
-			return
-		if(pulling.anchored || pulling.move_resist > move_force)
-			stop_pulling()
-			return
+	if(!pulling)
+		return
+	var/atom/movable/pullee = pulling
+	if(pullee && get_dist(src, pullee) > 1)
+		stop_pulling()
+		return
+	if(!isturf(loc))
+		stop_pulling()
+		return
+	if(pullee && !isturf(pullee.loc) && pullee.loc != loc) //to be removed once all code that changes an object's loc uses forceMove().
+		stack_trace("[src]'s pull on [pullee] wasn't broken despite [pullee] being in [pullee.loc]. Pull stopped manually.")
+		stop_pulling()
+		return
+	if(pulling.anchored || (pulling.pull_force * MOVE_FORCE_PULL_RATIO > pull_force))
+		stop_pulling()
+		return
 
 /**
   * Checks if we can be pulled by something/someone.
@@ -88,7 +89,7 @@
 		return FALSE
 	if(anchored || throwing)
 		return FALSE
-	if(force < (move_resist * MOVE_FORCE_PULL_RATIO))
+	if(force < (pull_resist * MOVE_FORCE_PULL_RATIO))
 		return FALSE
 	return TRUE
 

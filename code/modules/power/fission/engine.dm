@@ -460,7 +460,7 @@
 								E.damage += root_distance * 100
 								if(E.damage >= E.min_broken_damage)
 									to_chat(H, "<span class='danger'>You are blinded by the flash!</span>")
-									H.sdisabilities |= BLIND
+									H.sdisabilities |= SDISABILITY_NERVOUS
 								else if(E.damage >= E.min_bruised_damage)
 									to_chat(H, "<span class='danger'>You are blinded by the flash!</span>")
 									H.eye_blind = 5

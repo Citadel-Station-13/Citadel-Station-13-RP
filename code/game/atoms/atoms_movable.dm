@@ -86,6 +86,8 @@
 	var/move_force = MOVE_FORCE_DEFAULT
 	/// our pulling force
 	var/pull_force = PULL_FORCE_DEFAULT
+	/// pull force to resist
+	var/pull_resist = PULL_FORCE_DEFAULT
 
 	var/move_speed = 10
 	var/l_move_time = 1
@@ -149,6 +151,8 @@
 		un_opaque.recalc_atom_opacity()
 
 /atom/movable/CanAllowThrough(atom/movable/mover, turf/target)
+	if(mover in buckled_mobs)
+		return TRUE
 	. = ..()
 	if(locs && locs.len >= 2)	// If something is standing on top of us, let them pass.
 		if(mover.loc in locs)

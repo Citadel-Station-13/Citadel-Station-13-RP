@@ -56,7 +56,9 @@
 /proc/sanitize_filename(t)
 	return sanitize_simple_tg(t, list("\n"="", "\t"="", "/"="", "\\"="", "?"="", "%"="", "*"="", ":"="", "|"="", "\""="", "<"="", ">"=""))
 
-/// Removes a few problematic characters. Renamed because namespace.
+/**
+ * Removes a few problematic characters. Renamed because namespace.
+ */
 /proc/sanitize_simple_tg(t, list/repl_chars = list("\n"="#","\t"="#"))
 	for(var/char in repl_chars)
 		var/index = findtext(t, char)
@@ -74,7 +76,9 @@
 /proc/sanitizeSafe(input, max_length = MAX_MESSAGE_LEN, encode = TRUE, trim = TRUE, extra = TRUE)
 	return sanitize(replace_characters(input, list(">"=" ","<"=" ", "\""="'")), max_length, encode, trim, extra)
 
-/// Filters out undesirable characters from names.
+/**
+ * Filters out undesirable characters from names.
+ */
 /proc/sanitizeName(input, max_length = MAX_NAME_LEN)
 	if(!input || length(input) > max_length)
 		return //Rejects the input if it is null or if it is longer then the max length allowed
@@ -144,7 +148,9 @@
 
 	return output
 
-/// Returns null if there is any bad text in the string.
+/**
+ * Returns null if there is any bad text in the string.
+ */
 /proc/reject_bad_text(text, max_length = 512, ascii_only = TRUE)
 	var/char_count = 0
 	var/non_whitespace = FALSE
@@ -181,7 +187,9 @@
 	else
 		return trim(html_encode(name), max_length) //trim is "outside" because html_encode can expand single symbols into multiple symbols (such as turning < into &lt;)
 
-/// Used to get a properly sanitized multiline input, of max_length
+/**
+ * Used to get a properly sanitized multiline input, of max_length.
+ */
 /proc/stripped_multiline_input(mob/user, message = "", title = "", default = "", max_length = MAX_MESSAGE_LEN, no_trim = FALSE)
 	var/name = input(user, message, title, default) as message|null
 	if(isnull(name)) // Return null if canceled.
@@ -191,7 +199,9 @@
 	else
 		return trim(html_encode(name), max_length)
 
-/// Old variant. Haven't dared to replace in some places.
+/**
+ * Old variant. Haven't dared to replace in some places.
+ */
 /proc/sanitize_old(var/t,var/list/repl_chars = list("\n"="#","\t"="#"))
 	return html_encode(replace_characters(t,repl_chars))
 
@@ -244,77 +254,93 @@
 		t = replacetext(t, char, repl_chars[char])
 	return t
 
-/// Adds 'u' number of zeros ahead of the text 't'.
+/**
+ * Adds 'u' number of zeros ahead of the text 't'.
+ */
 /proc/add_zero(t, u)
 	while (length(t) < u)
 		t = "0[t]"
 	return t
 
-/// Adds 'u' number of spaces ahead of the text 't'.
+/**
+ * Adds 'u' number of spaces ahead of the text 't'.
+ */
 /proc/add_lspace(t, u)
 	while(length(t) < u)
 		t = " [t]"
 	return t
 
-/// Adds 'u' number of spaces behind the text 't'.
+/**
+ * Adds 'u' number of spaces behind the text 't'.
+ */
 /proc/add_tspace(t, u)
 	while(length(t) < u)
 		t = "[t] "
 	return t
 
-/// Returns a string with reserved characters and spaces before the first letter removed.
+/**
+ * Returns a string with reserved characters and spaces before the first letter removed.
+ */
 /proc/trim_left(text)
 	for (var/i = 1 to length(text))
 		if (text2ascii(text, i) > 32)
 			return copytext(text, i)
 	return ""
 
-/// Returns a string with reserved characters and spaces after the last letter removed.
+/**
+ * Returns a string with reserved characters and spaces after the last letter removed.
+ */
 /proc/trim_right(text)
 	for (var/i = length(text), i > 0, i--)
 		if (text2ascii(text, i) > 32)
 			return copytext(text, 1, i + 1)
 	return ""
 
-/// Returns a string with reserved characters and spaces before the first word and after the last word removed.
+/**
+ * Returns a string with reserved characters and spaces before the first word and after the last word removed.
+ */
 /proc/trim(text)
 	return trim_left(trim_right(text))
 
-/// Returns a string with the first element of the string capitalized.
+/**
+ * Returns a string with the first element of the string capitalized.
+ */
 /proc/capitalize(t as text)
 	return uppertext(copytext(t, 1, 2)) + copytext(t, 2)
 
-/// syntax is "stringtoreplace"="stringtoreplacewith".
+/**
+ * Syntax is "stringtoreplace"="stringtoreplacewith".
+ */
 /proc/autocorrect(input as text)
 	return input = replace_characters(input, list(
-		" i "=" I ",
-		"i'm"="I'm",
-		"s's"="s'",
-		"isnt"="isn't",
-		"dont"="don't",
-		"shouldnt"="shouldn't",
-		" ive "=" I've ",
-		"whove"="who've",
-		"whod"="who’d",
-		"whats"="what’s",
-		"whatd"="what’d",
-		"thats"="that’s",
-		"thatll"="that’ll",
-		"thatd"="that’d",
-		" nows "=" now’s ",
-		"isnt"="isn’t",
-		" arent "=" aren’t ",
-		"wasnt"="wasn’t",
-		"werent"="weren’t",
-		"havent"="haven’t",
-		"hasnt"="hasn’t",
-		"hadnt"="hadn’t",
-		"doesnt"="doesn’t",
-		"didnt"="didn’t",
-		"couldnt"="couldn’t",
-		"wouldnt"="wouldn’t",
-		"mustnt"="mustn’t",
-		"shouldnt"="shouldn’t",
+		" i "      = " I ",
+		"i'm"      = "I'm",
+		"s's"      = "s'",
+		"isnt"     = "isn't",
+		"dont"     = "don't",
+		"shouldnt" = "shouldn't",
+		" ive "    = " I've ",
+		"whove"    = "who've",
+		"whod"     = "who’d",
+		"whats"    = "what’s",
+		"whatd"    = "what’d",
+		"thats"    = "that’s",
+		"thatll"   = "that’ll",
+		"thatd"    = "that’d",
+		" nows "   = " now’s ",
+		"isnt"     = "isn’t",
+		" arent "  = " aren’t ",
+		"wasnt"    = "wasn’t",
+		"werent"   = "weren’t",
+		"havent"   = "haven’t",
+		"hasnt"    = "hasn’t",
+		"hadnt"    = "hadn’t",
+		"doesnt"   = "doesn’t",
+		"didnt"    = "didn’t",
+		"couldnt"  = "couldn’t",
+		"wouldnt"  = "wouldn’t",
+		"mustnt"   = "mustn’t",
+		"shouldnt" = "shouldn’t",
 	))
 
 /**
@@ -408,7 +434,9 @@
 	else
 		return "[copytext_preserve_html(string, 1, 37)]..."
 
-/// Alternative copytext() for encoded text, doesn't break html entities (&#34; and other)
+/**
+ * Alternative copytext() for encoded text, doesn't break html entities (&#34; and other)
+ */
 /proc/copytext_preserve_html(text, first, last)
 	return html_encode(copytext(html_decode(text), first, last))
 
@@ -489,7 +517,9 @@ GLOBAL_VAR_INIT(text_tag_icons, new /icon('./icons/chattags.dmi'))
 	t = replacetext(t, "\[editorbr\]", "")
 	return t
 
-/// Random password generator. // Could've just flustered a bottom.
+/**
+ * Random password generator. // Could've just flustered a bottom.
+ */
 /proc/GenerateKey()
 	// Feel free to move to Helpers.
 	var/newKey
@@ -498,7 +528,9 @@ GLOBAL_VAR_INIT(text_tag_icons, new /icon('./icons/chattags.dmi'))
 	newKey += pick("1", "2", "3", "4", "5", "6", "7", "8", "9", "0")
 	return newKey
 
-/// Used for applying byonds text macros to strings that are loaded at runtime.
+/**
+ * Used for applying byonds text macros to strings that are loaded at runtime.
+ */
 /proc/apply_text_macros(string)
 	var/next_backslash = findtext(string, "\\")
 	if(!next_backslash)
@@ -577,7 +609,9 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 /proc/random_color()
 	return random_string(6, GLOB.hex_characters)
 
-/// Readds quotes and apostrophes to HTML-encoded strings.
+/**
+ * Readds quotes and apostrophes to HTML-encoded strings.
+ */
 /proc/readd_quotes(t)
 	var/list/repl_chars = list("&#34;" = "\"","&#39;" = "'")
 	for(var/char in repl_chars)
@@ -587,21 +621,27 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 			index = findtext(t, char)
 	return t
 
-/// Adds 'char' ahead of 'text' until there are 'count' characters total.
+/**
+ * Adds 'char' ahead of 'text' until there are 'count' characters total.
+ */
 /proc/add_leading(text, count, char = " ")
 	text = "[text]"
 	var/charcount = count - length_char(text)
 	var/list/chars_to_add[max(charcount + 1, 0)]
 	return jointext(chars_to_add, char) + text
 
-/// Adds 'char' behind 'text' until there are 'count' characters total.
+/**
+ * Adds 'char' behind 'text' until there are 'count' characters total.
+ */
 /proc/add_trailing(text, count, char = " ")
 	text = "[text]"
 	var/charcount = count - length_char(text)
 	var/list/chars_to_add[max(charcount + 1, 0)]
 	return text + jointext(chars_to_add, char)
 
-/// Removes all non-alphanumerics from the text, keep in mind this can lead to id conflicts.
+/**
+ * Removes all non-alphanumerics from the text, keep in mind this can lead to id conflicts.
+ */
 /proc/sanitize_css_class_name(name)
 	var/static/regex/regex = new(@"[^a-zA-Z0-9]","g")
 	return replacetext(name, regex, "")

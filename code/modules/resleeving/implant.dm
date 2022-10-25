@@ -127,7 +127,7 @@
 	name = "backup implant kit"
 	desc = "Box of stuff used to implant backup implants."
 	icon_state = "implant"
-	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
 
 /obj/item/storage/box/backup_kit/PopulateContents()
 	for(var/i = 1 to 7)

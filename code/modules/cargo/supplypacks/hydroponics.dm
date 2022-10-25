@@ -216,6 +216,7 @@
 	name = "Fish supply crate"
 	contains = list(
 			/obj/item/reagent_containers/food/snacks/lobster = 6,
+			/obj/item/reagent_containers/food/snacks/shrimp = 6,
 			/obj/item/reagent_containers/food/snacks/cuttlefish = 8,
 			/obj/item/reagent_containers/food/snacks/sliceable/monkfish = 1
 			)

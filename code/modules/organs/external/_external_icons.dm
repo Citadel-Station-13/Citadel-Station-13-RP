@@ -1,4 +1,4 @@
-var/global/list/limb_icon_cache = list()
+GLOBAL_LIST_EMPTY(limb_icon_cache)
 
 /obj/item/organ/external/proc/compile_icon()
 	cut_overlays()
@@ -175,7 +175,6 @@ var/global/list/limb_icon_cache = list()
 				mob_icon = new /icon('icons/mob/cyberlimbs/robotic.dmi', "[icon_name][s_base ? "[s_base]" : ""][gender ? "_[gender]" : ""]")
 			else
 				mob_icon = new /icon(species.get_icobase(owner, (status & ORGAN_MUTATED)), "[icon_name][s_base ? "_[s_base]" : ""][gender ? "_[gender]" : ""]")
-				log_qdel("generated a [species] specific [src] with [icon_name] and _[s_base]")
 			apply_colouration(mob_icon)
 
 			//Body markings, actually does not include head this time. Done separately above.
@@ -190,11 +189,11 @@ var/global/list/limb_icon_cache = list()
 
 			if(body_hair && islist(h_col) && h_col.len >= 3)
 				var/cache_key = "[body_hair]-[icon_name]-[h_col[1]][h_col[2]][h_col[3]]"
-				if(!limb_icon_cache[cache_key])
+				if(!GLOB.limb_icon_cache[cache_key])
 					var/icon/I = icon(species.get_icobase(owner), "[icon_name]_[body_hair]")
 					I.Blend(rgb(h_col[1],h_col[2],h_col[3]), ICON_MULTIPLY)
-					limb_icon_cache[cache_key] = I
-				mob_icon.Blend(limb_icon_cache[cache_key], ICON_OVERLAY)
+					GLOB.limb_icon_cache[cache_key] = I
+				mob_icon.Blend(GLOB.limb_icon_cache[cache_key], ICON_OVERLAY)
 
 	if(model)
 		icon_cache_key += "_model_[model]"
@@ -210,11 +209,11 @@ var/global/list/limb_icon_cache = list()
 
 		if(body_hair && islist(h_col) && h_col.len >= 3)
 			var/cache_key = "[body_hair]-[icon_name]-[h_col[1]][h_col[2]][h_col[3]]"
-			if(!limb_icon_cache[cache_key])
+			if(!GLOB.limb_icon_cache[cache_key])
 				var/icon/I = icon(species.get_icobase(owner), "[icon_name]_[body_hair]")
 				I.Blend(rgb(h_col[1],h_col[2],h_col[3]), ICON_MULTIPLY)
-				limb_icon_cache[cache_key] = I
-			mob_icon.Blend(limb_icon_cache[cache_key], ICON_OVERLAY)
+				GLOB.limb_icon_cache[cache_key] = I
+			mob_icon.Blend(GLOB.limb_icon_cache[cache_key], ICON_OVERLAY)
 
 	dir = EAST
 	icon = mob_icon
@@ -242,6 +241,9 @@ var/global/list/limb_icon_cache = list()
 		icon_cache_key += "_tone_[s_tone]"
 	else if(s_col && s_col.len >= 3)
 		// Support for species.color_mult
+		if(species.color_force_greyscale)
+			applying.MapColors(arglist(color_matrix_greyscale()))
+			icon_cache_key += "_ags"
 		if(species && species.color_mult)
 			applying.Blend(rgb(s_col[1], s_col[2], s_col[3]), ICON_MULTIPLY)
 			icon_cache_key += "_color_[s_col[1]]_[s_col[2]]_[s_col[3]]_[ICON_MULTIPLY]"
@@ -281,9 +283,9 @@ var/list/robot_hud_colours = list("#CFCFCF","#AFAFAF","#8F8F8F","#6F6F6F","#4F4F
 	// This looks convoluted, but it's this way to avoid icon proc calls.
 	if(!hud_damage_image)
 		var/cache_key = "dambase-[icon_cache_key]"
-		if(!icon_cache_key || !limb_icon_cache[cache_key])
-			limb_icon_cache[cache_key] = icon(get_icon(), null, SOUTH)
-		var/image/temp = image(limb_icon_cache[cache_key])
+		if(!icon_cache_key || !GLOB.limb_icon_cache[cache_key])
+			GLOB.limb_icon_cache[cache_key] = icon(get_icon(), null, SOUTH)
+		var/image/temp = image(GLOB.limb_icon_cache[cache_key])
 		if((robotic < ORGAN_ROBOT) && species)
 			// Calculate the required colour matrix.
 			var/r = 0.30 * species.health_hud_intensity

@@ -99,17 +99,14 @@
 
 	var/speciesblurb
 	var/skip_species = FALSE
+
 	if(skipface || get_visible_name() == "Unknown")
 		skip_species = TRUE
+
 	else if(looks_synth)
-		var/synth_gender = "a synthetic"
-		if(gender == MALE)
-			synth_gender = "an android"
-		else if(gender == FEMALE)
-			synth_gender = "a gynoid"
-		speciesblurb += "a <font color='#555555'>[synth_gender]!</font>"
+		speciesblurb += "a <font color='#555555'>[get_display_species()]</font>"
 	else
-		speciesblurb += "a <font color='[species.get_flesh_colour(src)]'>[dna.custom_species ? dna.custom_species : species.get_examine_name()]</font>"
+		speciesblurb += "a <font color='[species.get_flesh_colour(src)]'>[get_display_species()]</font>"
 
 	// The first line of the examine block.
 	. += SPAN_INFO("[icon2html(src, user)] This is <EM>[src.name]</EM>[skip_species? ". [SPAN_WARNING("You can't make out what species they are.")]" : ", [T.he] [T.is] [speciesblurb]!"]")
@@ -339,7 +336,7 @@
 	if(attempt_vr(src,"examine_chimera",args))
 		. += attempt_vr(src,"examine_chimera",args)
 
-	if(mSmallsize in mutations)
+	if(MUTATION_DWARFISM in mutations)
 		. += SPAN_WARNING("[T.He] [T.is] very short!")
 
 	// Pulse Checking.

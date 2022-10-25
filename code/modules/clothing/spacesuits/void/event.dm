@@ -8,7 +8,7 @@
 	name = "vintage crewman's voidsuit helmet"
 	desc = "A refurbished early contact era voidsuit helmet of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. The visor has a bad habit of fogging up and collecting condensation, but it beats sucking hard vacuum. This one is devoid of any identifying markings or rank indicators."
 	icon_state = "rig0-vintagecrew"
-	item_state_slots = list(slot_r_hand_str = "syndicate-helm-black", slot_l_hand_str = "syndicate-helm-black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-black", SLOT_ID_LEFT_HAND = "syndicate-helm-black")
 	armor = list(melee = 30, bullet = 15, laser = 15,energy = 5, bomb = 20, bio = 100, rad = 50)
 	light_overlay = "helmet_light"
 
@@ -16,7 +16,7 @@
 	name = "vintage crewman's voidsuit"
 	desc = "A refurbished early contact era voidsuit of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. Many old-timer spacers swear by these old things, even if new powered hardsuits have more features and better armor. This one is devoid of any identifying markings or rank indicators."
 	icon_state = "rig-vintagecrew"
-	item_state_slots = list(slot_r_hand_str = "sec_voidsuitTG", slot_l_hand_str = "sec_voidsuitTG")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuitTG", SLOT_ID_LEFT_HAND = "sec_voidsuitTG")
 	slowdown = 0.5
 	armor = list(melee = 30, bullet = 15, laser = 15,energy = 5, bomb = 20, bio = 100, rad = 50)
 	allowed = list(/obj/item/flashlight,
@@ -36,7 +36,7 @@
 	name = "vintage engineering voidsuit helmet"
 	desc = "A refurbished early contact era voidsuit helmet of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. This one in particular seems to be an ode to the Ship of Theseus, but the insulation and radiation proofing are top-notch, and it has several oily stains that seem to be impossible to scrub off."
 	icon_state = "rig0-vintageengi"
-	item_state_slots = list(slot_r_hand_str = "syndicate-helm-black", slot_l_hand_str = "syndicate-helm-black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-black", SLOT_ID_LEFT_HAND = "syndicate-helm-black")
 	armor = list(melee = 40, bullet = 20, laser = 20, energy = 5, bomb = 35, bio = 100, rad = 100)
 	min_pressure_protection = 0  * ONE_ATMOSPHERE
 	max_pressure_protection = 15 * ONE_ATMOSPHERE
@@ -46,7 +46,7 @@
 	name = "vintage engineering voidsuit"
 	desc = "A refurbished early contact era voidsuit of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. This one in particular seems to be an ode to the Ship of Theseus, but the insulation and radiation proofing are top-notch. The chestplate bears the logo of an old shipyard - though you don't recognize the name."
 	icon_state = "rig-vintageengi"
-	item_state_slots = list(slot_r_hand_str = "sec_voidsuitTG", slot_l_hand_str = "sec_voidsuitTG")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuitTG", SLOT_ID_LEFT_HAND = "sec_voidsuitTG")
 	slowdown = 1
 	armor = list(melee = 40, bullet = 20, laser = 20, energy = 5, bomb = 35, bio = 100, rad = 100)
 	min_pressure_protection = 0  * ONE_ATMOSPHERE
@@ -80,7 +80,7 @@
 	name = "vintage medical voidsuit helmet"
 	desc = "A refurbished early contact era voidsuit helmet of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. The visor has a bad habit of fogging up and collecting condensation, but it beats sucking hard vacuum. The green and white markings indicate this as a medic's suit."
 	icon_state = "rig0-vintagemedic"
-	item_state_slots = list(slot_r_hand_str = "syndicate-helm-black", slot_l_hand_str = "syndicate-helm-black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-black", SLOT_ID_LEFT_HAND = "syndicate-helm-black")
 	armor = list(melee = 30, bullet = 15, laser = 15, energy = 5, bomb = 25, bio = 100, rad = 75)
 
 /obj/item/clothing/head/helmet/space/void/refurb/medical/alt
@@ -92,7 +92,7 @@
 	name = "vintage medical voidsuit"
 	desc = "A refurbished early contact era voidsuit of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. Many old-timer spacers swear by these old things, even if new powered hardsuits have more features and better armor. The green and white markings indicate this as a medic's suit."
 	icon_state = "rig-vintagemedic"
-	item_state_slots = list(slot_r_hand_str = "sec_voidsuitTG", slot_l_hand_str = "sec_voidsuitTG")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuitTG", SLOT_ID_LEFT_HAND = "sec_voidsuitTG")
 	slowdown = 0.5
 	armor = list(melee = 30, bullet = 15, laser = 15, energy = 5, bomb = 25, bio = 100, rad = 75)
 	allowed = list(/obj/item/flashlight,
@@ -115,7 +115,7 @@
 	name = "vintage marine's voidsuit helmet"
 	desc = "A refurbished early contact era voidsuit helmet of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. The visor has a bad habit of fogging up and collecting condensation, but it beats sucking hard vacuum. The blue markings indicate this as the marine/guard variant, likely from a merchant ship."
 	icon_state = "rig0-vintagemarine"
-	item_state_slots = list(slot_r_hand_str = "syndicate-helm-black", slot_l_hand_str = "syndicate-helm-black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-black", SLOT_ID_LEFT_HAND = "syndicate-helm-black")
 	armor = list(melee = 40, bullet = 35, laser = 35, energy = 5, bomb = 40, bio = 100, rad = 50)
 	siemens_coefficient = 0.8
 
@@ -123,7 +123,7 @@
 	name = "vintage marine's voidsuit"
 	desc = "A refurbished early contact era voidsuit of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. Many old-timer marines swear by these old things, even if new powered hardsuits have more features and better armor. The blue markings indicate this as the marine/guard variant, likely from a merchant ship."
 	icon_state = "rig-vintagemarine"
-	item_state_slots = list(slot_r_hand_str = "sec_voidsuitTG", slot_l_hand_str = "sec_voidsuitTG")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuitTG", SLOT_ID_LEFT_HAND = "sec_voidsuitTG")
 	slowdown = 1
 	armor = list(melee = 40, bullet = 35, laser = 35, energy = 5, bomb = 40, bio = 100, rad = 50)
 	siemens_coefficient = 0.8
@@ -151,7 +151,7 @@
 	name = "vintage officer's voidsuit helmet"
 	desc = "A refurbished early contact era voidsuit helmet of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. The visor has a bad habit of fogging up and collecting condensation, but it beats sucking hard vacuum. This variant appears to be an officer's, and has the best protection of all the old models."
 	icon_state = "rig0-vintageofficer"
-	item_state_slots = list(slot_r_hand_str = "syndicate-helm-black", slot_l_hand_str = "syndicate-helm-black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-black", SLOT_ID_LEFT_HAND = "syndicate-helm-black")
 	armor = list(melee = 50, bullet = 45, laser = 45, energy = 10, bomb = 30, bio = 100, rad = 60)
 	siemens_coefficient = 0.7
 
@@ -159,7 +159,7 @@
 	name = "vintage officer's voidsuit"
 	desc = "A refurbished early contact era voidsuit of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. Many old-timer spacers swear by these old things, even if new powered hardsuits have more features and better armor. This variant appears to be an officer's, and has the best protection of all the old models."
 	icon_state = "rig-vintageofficer"
-	item_state_slots = list(slot_r_hand_str = "sec_voidsuitTG", slot_l_hand_str = "sec_voidsuitTG")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuitTG", SLOT_ID_LEFT_HAND = "sec_voidsuitTG")
 	slowdown = 1
 	armor = list(melee = 50, bullet = 45, laser = 45, energy = 10, bomb = 30, bio = 100, rad = 60)
 	siemens_coefficient = 0.7
@@ -186,7 +186,7 @@
 	name = "vintage pilot's voidsuit bubble helmet"
 	desc = "A refurbished early contact era voidsuit helmet of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. The standard pilot model has a nice clear bubble helmet that doesn't fog up easily and has much better visibility, at the cost of relatively poor protection."
 	icon_state = "rig0-vintagepilot"
-	item_state_slots = list(slot_r_hand_str = "syndicate-helm-black", slot_l_hand_str = "syndicate-helm-black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-black", SLOT_ID_LEFT_HAND = "syndicate-helm-black")
 	armor = list(melee = 25, bullet = 20, laser = 20, energy = 5, bomb = 20, bio = 100, rad = 50)
 	siemens_coefficient = 0.9
 
@@ -200,7 +200,7 @@
 	name = "vintage pilot's voidsuit"
 	desc = "A refurbished early contact era voidsuit of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. Many old-timer spacers swear by these old things, even if new powered hardsuits have more features and better armor. The royal blue markings indicate this is the pilot's variant; low protection but ultra-lightweight."
 	icon_state = "rig-vintagepilot"
-	item_state_slots = list(slot_r_hand_str = "sec_voidsuitTG", slot_l_hand_str = "sec_voidsuitTG")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuitTG", SLOT_ID_LEFT_HAND = "sec_voidsuitTG")
 	slowdown = 0.25
 	armor = list(melee = 25, bullet = 20, laser = 20, energy = 5, bomb = 20, bio = 100, rad = 50)
 	siemens_coefficient = 0.9
@@ -218,7 +218,7 @@
 	name = "vintage research voidsuit helmet"
 	desc = "A refurbished early contact era voidsuit helmet of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. The visor has a bad habit of fogging up and collecting condensation, but it beats sucking hard vacuum. The purple markings indicate this as a scientist's helmet. Got your crowbar handy?"
 	icon_state = "rig0-vintagescientist"
-	item_state_slots = list(slot_r_hand_str = "syndicate-helm-black", slot_l_hand_str = "syndicate-helm-black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-black", SLOT_ID_LEFT_HAND = "syndicate-helm-black")
 	armor = list(melee = 25, bullet = 10, laser = 10, energy = 50, bomb = 10, bio = 100, rad = 100)
 	siemens_coefficient = 0.8
 
@@ -231,7 +231,7 @@
 	name = "vintage research voidsuit"
 	desc = "A refurbished early contact era voidsuit of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. Many old-timer spacers swear by these old things, even if new powered hardsuits have more features and better armor. The purple markings indicate this as a scientist's suit. Keep your eyes open for ropes."
 	icon_state = "rig-vintagescientist"
-	item_state_slots = list(slot_r_hand_str = "sec_voidsuitTG", slot_l_hand_str = "sec_voidsuitTG")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuitTG", SLOT_ID_LEFT_HAND = "sec_voidsuitTG")
 	slowdown = 0.5
 	armor = list(melee = 25, bullet = 10, laser = 10, energy = 50, bomb = 10, bio = 100, rad = 100)
 	siemens_coefficient = 0.8
@@ -264,7 +264,7 @@
 	name = "vintage mercenary voidsuit helmet"
 	desc = "A refurbished early contact era voidsuit helmet of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. The visor has a bad habit of fogging up and collecting condensation, but it beats sucking hard vacuum. The red markings indicate this as the mercenary variant. The company ID has been scratched off."
 	icon_state = "rig0-vintagemerc"
-	item_state_slots = list(slot_r_hand_str = "syndicate-helm-black", slot_l_hand_str = "syndicate-helm-black")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-black", SLOT_ID_LEFT_HAND = "syndicate-helm-black")
 	armor = list(melee = 55, bullet = 45, laser = 45, energy = 25, bomb = 50, bio = 100, rad = 50)
 	siemens_coefficient = 0.6
 
@@ -272,7 +272,7 @@
 	name = "vintage mercenary voidsuit"
 	desc = "A refurbished early contact era voidsuit of human design. These things aren't especially good against modern weapons but they're sturdy, incredibly easy to come by, and there are lots of spare parts for repairs. Many old-timer mercs swear by these old things, even if new powered hardsuits have more features and better armor. The red markings indicate this as the mercenary variant. The company ID has been scratched off."
 	icon_state = "rig-vintagemerc"
-	item_state_slots = list(slot_r_hand_str = "sec_voidsuitTG", slot_l_hand_str = "sec_voidsuitTG")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sec_voidsuitTG", SLOT_ID_LEFT_HAND = "sec_voidsuitTG")
 	slowdown = 1.5 //the tradeoff for being hot shit almost on par with a crimson suit is that it slows you down even more
 	armor = list(melee = 55, bullet = 45, laser = 45, energy = 25, bomb = 50, bio = 100, rad = 50)
 	siemens_coefficient = 0.6

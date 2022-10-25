@@ -1,6 +1,7 @@
 /datum/species/phoronoid
 	name = SPECIES_PHORONOID
 	name_plural = "Phoronoids"
+	default_bodytype = BODYTYPE_PHORONOID
 
 	icobase      = 'icons/mob/species/phoronoid/body.dmi'
 	deform       = 'icons/mob/species/phoronoid/body.dmi'

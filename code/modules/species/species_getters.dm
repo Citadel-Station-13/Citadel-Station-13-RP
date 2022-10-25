@@ -1,3 +1,21 @@
+/**
+ * get species id; subspecies returns main species
+ */
+/datum/species/proc/get_species_id()
+	return id || uid
+
+/**
+ * get exact species id; subspecies does NOT return main species
+ */
+/datum/species/proc/get_exact_species_id()
+	return uid
+
+/**
+ * get effective bodytype
+ */
+/datum/species/proc/get_effective_bodytype(mob/living/carbon/human/H, obj/item/I, slot_id)
+	return default_bodytype
+
 /datum/species/proc/get_valid_shapeshifter_forms(mob/living/carbon/human/H)
 	return list()
 
@@ -110,9 +128,9 @@
 /datum/species/proc/get_random_name(gender)
 	if(!name_language)
 		if(gender == FEMALE)
-			return capitalize(pick(first_names_female)) + " " + capitalize(pick(last_names))
+			return capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
 		else
-			return capitalize(pick(first_names_male)) + " " + capitalize(pick(last_names))
+			return capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
 
 	var/datum/language/species_language = GLOB.all_languages[name_language]
 	if(!species_language)

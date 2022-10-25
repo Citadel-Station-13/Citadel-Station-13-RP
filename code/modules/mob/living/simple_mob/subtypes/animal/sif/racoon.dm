@@ -147,11 +147,9 @@
 	overlays.Cut()
 	..()
 	if(hat)
-		var/hat_state = hat.item_state ? hat.item_state : hat.icon_state
-		var/image/I = image(INV_HEAD_DEF_ICON, src, hat_state)
-		I.pixel_y = -15 // Sakimm are tiny!
-		I.appearance_flags = RESET_COLOR
-		add_overlay(I)
+		var/mutable_appearance/MA = hat.render_mob_appearance(src, SLOT_ID_HEAD, BODYTYPE_STRING_DEFAULT)
+		MA.appearance_flags = RESET_COLOR
+		add_overlay(MA)
 
 /mob/living/simple_mob/animal/sif/sakimm/Initialize(mapload)
 	. = ..()

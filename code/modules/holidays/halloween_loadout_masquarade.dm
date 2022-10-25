@@ -47,9 +47,11 @@
 
 /obj/item/clothing/under/fake_sneaksuit
 	STD_DEF("cloth uniform")
-	icon_state = "infiltrator_uniform"
-	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	icon_state = "under"
+	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
+	inhand_default_type = INHAND_DEFAULT_ICON_UNIFORMS
+	inhand_state = "black"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
@@ -59,9 +61,11 @@
 
 /obj/item/clothing/suit/storage/fake_sneaksuit
 	STD_DEF("plastic armor")
-	icon_state = "infiltrator_armor"
-	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	icon_state = "armor"
+	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
+	inhand_default_type = INHAND_DEFAULT_ICON_SUITS
+	inhand_state = "armor"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	cold_protection = UPPER_TORSO|LOWER_TORSO
 
@@ -71,9 +75,11 @@
 
 /obj/item/clothing/gloves/fake_sneaksuit
 	STD_DEF("plastic gloves")
-	icon_state = "infiltrator_gloves"
-	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	icon_state = "gloves"
+	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
+	inhand_default_type = INHAND_DEFAULT_ICON_GLOVES
+	inhand_state = "black"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_parts_covered = HANDS
 	cold_protection = HANDS
 
@@ -83,9 +89,11 @@
 
 /obj/item/clothing/head/fake_sneaksuit
 	STD_DEF("plastic helmet")
-	icon_state = "infiltrator_helmet"
-	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	icon_state = "helmet"
+	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
+	inhand_default_type = INHAND_DEFAULT_ICON_HATS
+	inhand_state = "helmet"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
@@ -96,9 +104,11 @@
 
 /obj/item/clothing/shoes/fake_sneaksuit
 	STD_DEF("plastic shoes")
-	icon_state = "infiltrator_boots"
-	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	icon_state = "boots"
+	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
+	inhand_default_type = INHAND_DEFAULT_ICON_SHOES
+	inhand_state = "cult"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_parts_covered = FEET
 	cold_protection = FEET
 
@@ -108,16 +118,14 @@
 
 /obj/item/clothing/mask/fake_sneaksuit
 	STD_DEF_NON_HIDING("plastic mask")
-	icon_state = "infiltrator_mask"
-	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	icon_state = "mask"
+	icon = 'icons/antagonists/syndicate/items/clothing/sneaksuit.dmi'
+	inhand_default_type = INHAND_DEFAULT_ICON_MASKS
+	inhand_state = "gas"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
-	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_masks.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_masks.dmi'
-	)
 
 /datum/gear/seasonal/masquarade/syndicate/contractor_helmet
 	display_name = "Contractor Helmet"
@@ -125,9 +133,11 @@
 
 /obj/item/clothing/head/fake_contractor
 	STD_DEF("plastic helmet")
-	icon_state = "syndicate-contract-helm"
-	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	icon_state = "helm"
+	icon = 'icons/antagonists/syndicate/items/clothing/contractor.dmi'
+	inhand_default_type = INHAND_DEFAULT_ICON_HATS
+	inhand_state = "helmet"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_parts_covered = HEAD|EYES
 	clothing_flags = ALLOWINTERNALS
 	cold_protection = HEAD
@@ -138,9 +148,11 @@
 
 /obj/item/clothing/suit/storage/fake_contractor
 	STD_DEF("plastic suit")
-	icon_state = "syndicate-contract"
-	icon = 'icons/antagonists/syndicate/items/clothing.dmi'
-	default_worn_icon = 'icons/antagonists/syndicate/on_mob/clothing.dmi'
+	icon_state = "suit"
+	icon = 'icons/antagonists/syndicate/items/clothing/contractor.dmi'
+	inhand_default_type = INHAND_DEFAULT_ICON_GLOVES
+	inhand_state = "armor"
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL | WORN_RENDER_INHAND_ALLOW_DEFAULT
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS|HANDS|FEET
 
@@ -224,8 +236,8 @@
 	icon_state = "arm_blade"
 	icon = 'icons/antagonists/changeling/items/weapons.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/changeling/on_mob/left_hand.dmi',
-		slot_r_hand_str = 'icons/antagonists/changeling/on_mob/right_hand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/changeling/on_mob/left_hand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/changeling/on_mob/right_hand.dmi'
 	)
 
 /datum/gear/seasonal/masquarade/changeling/tentacle
@@ -237,8 +249,8 @@
 	icon_state = "tentacle"
 	icon = 'icons/antagonists/changeling/items/weapons.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/changeling/on_mob/left_hand.dmi',
-		slot_r_hand_str = 'icons/antagonists/changeling/on_mob/right_hand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/changeling/on_mob/left_hand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/changeling/on_mob/right_hand.dmi'
 	)
 
 /datum/gear/seasonal/masquarade/changeling/shield
@@ -250,8 +262,8 @@
 	icon_state = "ling_shield"
 	icon = 'icons/antagonists/changeling/items/weapons.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/changeling/on_mob/left_hand.dmi',
-		slot_r_hand_str = 'icons/antagonists/changeling/on_mob/right_hand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/changeling/on_mob/left_hand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/changeling/on_mob/right_hand.dmi'
 	)
 
 /**
@@ -319,8 +331,8 @@
 	icon = 'icons/antagonists/clockcult/items/slab.dmi'
 	icon_state = "clockwork_slab"
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/clockcult/on_mob/left_hand.dmi',
-		slot_r_hand_str = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/clockcult/on_mob/left_hand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
 	)
 
 /datum/gear/seasonal/masquarade/clockcult/spear
@@ -332,8 +344,8 @@
 	icon = 'icons/antagonists/clockcult/items/weapons.dmi'
 	icon_state = "ratvarian_spear"
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/clockcult/on_mob/left_hand.dmi',
-		slot_r_hand_str = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/clockcult/on_mob/left_hand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
 	)
 
 /datum/gear/seasonal/masquarade/clockcult/shield
@@ -345,8 +357,8 @@
 	icon = 'icons/antagonists/clockcult/items/weapons.dmi'
 	icon_state = "ratvarian_shield"
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/clockcult/on_mob/left_hand.dmi',
-		slot_r_hand_str = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/clockcult/on_mob/left_hand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
 	)
 
 /datum/gear/seasonal/masquarade/clockcult/claw
@@ -358,8 +370,8 @@
 	icon = 'icons/antagonists/clockcult/items/weapons.dmi'
 	icon_state = "brass_claw"
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/clockcult/on_mob/left_hand.dmi',
-		slot_r_hand_str = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/clockcult/on_mob/left_hand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/clockcult/on_mob/right_hand.dmi'
 	)
 
 /datum/gear/seasonal/masquarade/clockcult/visor
@@ -398,8 +410,8 @@
 	icon = 'icons/antagonists/cult/items/weapons.dmi'
 	icon_state = "bloodspear0"
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/cult/on_mob/left_hand.dmi',
-		slot_r_hand_str = 'icons/antagonists/cult/on_mob/right_hand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/cult/on_mob/left_hand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/cult/on_mob/right_hand.dmi'
 	)
 
 /datum/gear/seasonal/masquarade/cult/shield
@@ -411,8 +423,8 @@
 	icon = 'icons/antagonists/cult/items/weapons.dmi'
 	icon_state = "mirror_shield"
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/cult/on_mob/left_hand.dmi',
-		slot_r_hand_str = 'icons/antagonists/cult/on_mob/right_hand.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/cult/on_mob/left_hand.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/cult/on_mob/right_hand.dmi'
 	)
 
 /datum/gear/seasonal/masquarade/cult/hardsuit
@@ -580,8 +592,8 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	item_icons = list(
-		slot_l_hand_str = 'icons/antagonists/heretic/on_mob/left_hand_64.dmi',
-		slot_r_hand_str = 'icons/antagonists/heretic/on_mob/right_hand_64.dmi'
+		SLOT_ID_LEFT_HAND = 'icons/antagonists/heretic/on_mob/left_hand_64.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/antagonists/heretic/on_mob/right_hand_64.dmi'
 	)
 
 /obj/item/toy/heretic_blade/ash

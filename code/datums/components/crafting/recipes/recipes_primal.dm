@@ -26,9 +26,8 @@
 	name = "Goliath Cloak"
 	result = /obj/item/clothing/suit/storage/hooded/cloak/goliath
 	time = 50
-	reqs = list(/obj/item/stack/material/leather = 2,
-				/obj/item/stack/sinew = 2,
-				/obj/item/stack/animalhide/goliath_hide = 2) //it takes 4 goliaths to make 1 cloak if the plates are skinned
+	reqs = list(/obj/item/stack/sinew = 2,
+				/obj/item/stack/animalhide/goliath_hide = 4)
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/drakecloak

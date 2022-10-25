@@ -6,8 +6,8 @@
 	icon_override = 'icons/mob/eventclothing.dmi'
 	icon_state = "foxmiko"
 	item_state = "foxmiko"
-	rolled_sleeves = -1 //Don't want to try and roll sleeves like you can with a normal jumpsuit
-	rolled_down = -1
+	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL //Don't want to try and roll sleeves like you can with a normal jumpsuit
+	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
 	var/kimono = 0 //Custom vars for tracking kimono and skirt state
 	var/skirt = 0
 
@@ -59,20 +59,20 @@
 	body_parts_covered = initial(body_parts_covered) //Resets to default coverage for this uniform - upper and lower body
 	if(kimono) //If the kimono is parted
 		if(skirt) //If the skirt is parted too
-			item_state_slots[SLOT_ID_UNIFORM] = "[worn_state]_ks" //Then we want the assosiated mob icon - denoted with _ks
+			item_state_slots[SLOT_ID_UNIFORM] = "[snowflake_worn_state]_ks" //Then we want the assosiated mob icon - denoted with _ks
 			icon_state = "foxmiko_ks" //This is for item icon - NOT WORN ICON
 			body_parts_covered &= ~(UPPER_TORSO|LOWER_TORSO) //If kimono is open and skirt lifted uncover both upper and lower body
 		else //But skirt is not lifted too
-			item_state_slots[SLOT_ID_UNIFORM] = "[worn_state]_k" //We use [worn_state] rather than an explicit declaration because the game appends a _s to icon states
+			item_state_slots[SLOT_ID_UNIFORM] = "[snowflake_worn_state]_k" //We use [snowflake_worn_state] rather than an explicit declaration because the game appends a _s to icon states
 			icon_state = "foxmiko_k"
 			body_parts_covered &= ~(UPPER_TORSO)
 	else //If kimono is not parted
 		if(skirt) //If skirt is lifted
-			item_state_slots[SLOT_ID_UNIFORM] = "[worn_state]_s" //Meaning in the icon sprite files this is foxmiko_s_s
+			item_state_slots[SLOT_ID_UNIFORM] = "[snowflake_worn_state]_s" //Meaning in the icon sprite files this is foxmiko_s_s
 			icon_state = "foxmiko_s"
 			body_parts_covered &= ~(LOWER_TORSO)
 		else //But skirt is not lifted too - default state
-			item_state_slots[SLOT_ID_UNIFORM] = "[worn_state]"
+			item_state_slots[SLOT_ID_UNIFORM] = "[snowflake_worn_state]"
 			icon_state = "foxmiko"
 
 

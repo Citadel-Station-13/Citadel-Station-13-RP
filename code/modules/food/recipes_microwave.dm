@@ -1584,3 +1584,81 @@ I said no!
 		/obj/item/reagent_containers/food/snacks/badrecipe
 	)
 	result = /obj/item/reagent_containers/food/snacks/saplingsdelight
+
+/datum/recipe/lobster
+	fruit = list("lemon" = 1, "cabbage" = 1)
+	reagents = list("water" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/lobster,
+		/obj/item/reagent_containers/food/snacks/spreads/butter
+	)
+	result = /obj/item/reagent_containers/food/snacks/lobstercooked
+
+/datum/recipe/shrimp
+	reagents = list("water" = 2, "sodiumchloride" = 2)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/shrimp,
+		/obj/item/reagent_containers/food/snacks/spreads/butter
+	)
+	result = /obj/item/reagent_containers/food/snacks/shrimpcooked
+
+/datum/recipe/shrimpcocktail
+	fruit = list("tomato" = 2, "chili" = 2, "lemon" = 2)
+	reagents = list("water" = 5, "sodiumchloride" = 5, "pepper" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/shrimp,
+		/obj/item/reagent_containers/food/snacks/shrimp,
+		/obj/item/reagent_containers/food/snacks/shrimp,
+		/obj/item/reagent_containers/food/snacks/shrimp,
+		/obj/item/reagent_containers/food/snacks/shrimp,
+	)
+	result = /obj/item/reagent_containers/food/snacks/shrimpcocktail
+
+/datum/recipe/shrimpfriedrice
+	fruit = list("corn" = 1, "carrot" = 1, "peas" = 1)
+	reagents = list("water" = 5, "sodiumchloride" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/shrimp,
+		/obj/item/reagent_containers/food/snacks/shrimp,
+		/obj/item/reagent_containers/food/snacks/boiledrice
+	)
+	result = /obj/item/reagent_containers/food/snacks/shrimpfriedrice
+
+/datum/recipe/bowl_peas
+	fruit = list("peas" = 4)
+	reagents = list("water" = 5, "sodiumchloride" = 1)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/spreads/butter
+	)
+	result = /obj/item/reagent_containers/food/snacks/bowl_peas
+
+/datum/recipe/puddi
+	reagents = list("milk" = 10, "sugar" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/chocolatebar
+	)
+	result = /obj/item/reagent_containers/food/snacks/puddi
+
+/datum/recipe/puddi_happy
+	reagents = list("milk" = 10, "sugar" = 5, "honey" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/chocolatebar
+	)
+	result = /obj/item/reagent_containers/food/snacks/puddi/happy
+
+/datum/recipe/puddi_angry
+	fruit = list("chili" = 2)
+	reagents = list("milk" = 10, "sugar" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/chocolatebar
+	)
+	result = /obj/item/reagent_containers/food/snacks/puddi/angry

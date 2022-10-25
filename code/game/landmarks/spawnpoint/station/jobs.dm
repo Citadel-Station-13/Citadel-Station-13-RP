@@ -113,6 +113,10 @@
 	icon_state = "Medical Doctor"
 	job_path = /datum/job/station/doctor
 
+/obj/landmark/spawnpoint/job/head_nurse
+	name = "Head Nurse"
+//	icon_state = "Medical Doctor"
+	job_path = /datum/job/station/head_nurse
 /obj/landmark/spawnpoint/job/paramedic
 	name = "Paramedic"
 	icon_state = "Paramedic"
@@ -122,6 +126,11 @@
 	name = "Scientist"
 	icon_state = "Scientist"
 	job_path = /datum/job/station/scientist
+
+/obj/landmark/spawnpoint/job/senior_researcher
+	name = "Senior Researcher"
+//	icon_state = "Scientist"
+	job_path = /datum/job/station/senior_researcher
 
 /obj/landmark/spawnpoint/job/chemist
 	name = "Chemist"

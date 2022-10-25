@@ -31,11 +31,11 @@
 	siemens_coefficient = 0 // Completely shockproof (this is no longer the case on virgo, feel free to change if it needs rebalancing)
 	darksight = 10 // Best darksight around
 
-	slowdown = 0.5 // As slow as unathi
-	item_slowdown_mod = 1.5 // They're not as fit as them, though, slowed down more by heavy gear.
+	slowdown = 0 // Originally 0.5 (As slow as unathi), lowered to 0 to be at human speed.
+	item_slowdown_mod = 2 // Originally 1.5. They're not as physically fits, slowed down more by heavy gear.
 
 	total_health = 75   // Fragile
-	brute_mod    = 1.25 // Frail
+	brute_mod    = 1 // Originally 1.25, lowered to 1 because lower HP and increased damage is a bit heavy.
 	burn_mod     = 1.25 // Furry
 
 	blood_volume  = 500 // Slightly less blood than human baseline.

@@ -20,8 +20,8 @@
 	var/obj/item/cell/bcell = null
 	var/cell_type = /obj/item/cell/device
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 
 /obj/item/melee/energy/proc/activate(mob/living/user)
@@ -83,7 +83,7 @@
 
 	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	if (active)
-		if ((CLUMSY in user.mutations) && prob(50))
+		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 			user.visible_message("<span class='danger'>\The [user] accidentally cuts [TU.himself] with \the [src].</span>",\
 			"<span class='danger'>You accidentally cut yourself with \the [src].</span>")
 			user.take_organ_damage(5,5)
@@ -736,7 +736,7 @@
 	desc = "A broad, short energy blade.  You'll be glad to have this in a fight."
 	icon_state = "sword0"
 	icon = 'icons/obj/weapons_vr.dmi'
-	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi')
+	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi')
 
 /obj/item/melee/energy/sword/imperial/activate(mob/living/user)
 	..()

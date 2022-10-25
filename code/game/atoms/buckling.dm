@@ -22,6 +22,10 @@
 /atom/movable/proc/drag_drop_buckle_interaction(atom/A, mob/user)
 	set waitfor = FALSE
 	. = TRUE
+	if(A == src)
+		return FALSE
+	if(!ismob(A))
+		return FALSE
 	if(!user.Adjacent(src) || !A.Adjacent(src))
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_DRAG_DROP_BUCKLE_INTERACTION, A, user) & COMPONENT_HANDLED_BUCKLE_INTERACTION)
@@ -32,7 +36,7 @@
 	if(user.incapacitated())
 		return TRUE
 	// end
-	if(!ismob(A) || (A in buckled_mobs))
+	if(A in buckled_mobs)
 		to_chat(user, SPAN_WARNING("[A] is already buckled to [src]!"))
 		return TRUE
 	user_buckle_mob(A, BUCKLE_OP_DEFAULT_INTERACTION, user)
