@@ -6,7 +6,7 @@
 	ASSERT(!volatile)
 	var/path = path()
 	var/buffer = fcopy_rsc(path)
-	var/pack_name = "starmap_[id]"
+	var/pack_name = "starmap_[id].json"
 	SSassets.register_dynamic_asset(pack_name, buffer)
 	entity_pack_name = pack_name
 

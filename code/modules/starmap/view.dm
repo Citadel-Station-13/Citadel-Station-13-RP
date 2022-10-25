@@ -43,7 +43,7 @@
 	LAZYREMOVE(map.views, src)
 
 /datum/starmap_view/proc/open(mob/user)
-	ui_interact(mob/user)
+	ui_interact(user)
 
 /datum/starmap_view/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
 	ui = SStgui.try_update_ui(user, src, ui)

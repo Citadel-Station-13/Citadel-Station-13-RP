@@ -55,7 +55,7 @@
 /// forgets an asset
 /// asset_name - the identifier of the asset
 /datum/asset_transport/proc/delete_asset(asset_name, asset)
-	#warn impl
+	SSassets.cache -= asset_name
 
 /// Returns a url for a given asset.
 /// asset_name - Name of the asset.

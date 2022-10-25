@@ -5,6 +5,9 @@ SUBSYSTEM_DEF(assets)
 	var/list/datum/asset_cache_item/cache = list()
 	var/list/preload = list()
 	var/datum/asset_transport/transport = new()
+	/// dynamic assets by name associated to raw asset pack
+	var/static/list/dynamic_assets = list()
+
 
 /datum/controller/subsystem/assets/OnConfigLoad()
 	var/newtransporttype = /datum/asset_transport
@@ -18,6 +21,8 @@ SUBSYSTEM_DEF(assets)
 	var/datum/asset_transport/newtransport = new newtransporttype ()
 	if (newtransport.validate_config())
 		transport = newtransport
+	for(var/name in dynamic_assets)
+		transport.register_asset(name, dynamic_assets[name])
 	transport.Load()
 
 /datum/controller/subsystem/assets/Initialize(timeofday)
@@ -36,15 +41,18 @@ SUBSYSTEM_DEF(assets)
  * registers a dynamic asset
  */
 /datum/controller/subsystem/assets/proc/register_dynamic_asset(name, pack)
+	transport.register_asset(name, pack)
+	dynamic_asset[name] = pack
 
 /**
  * deletes a dynamic asset
  */
 /datum/controller/subsystem/assets/proc/delete_dynamic_asset(name)
+	transport.delete_asset(name)
+	dynamic_assets -= name
 
 /**
  * gets a dynamic asset's URL
  */
 /datum/controller/subsystem/assets/proc/url_dynamic_asset(name)
-
-#warn impl
+	return transport.get_asset_url(name)
