@@ -142,7 +142,9 @@
 /area/crew_quarters/public_bunker)
 "av" = (
 /obj/effect/floor_decal/rust,
-/obj/structure/grille,
+/obj/structure/grille{
+	CanAtmosPass = -1
+	},
 /obj/effect/zone_divider,
 /turf/simulated/floor/plating/lythios43c{
 	outdoors = 0
@@ -1041,10 +1043,10 @@
 /turf/simulated/floor,
 /area/maintenance/substation/engineering)
 "cY" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
-	dir = 4
-	},
 /obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 9
+	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "da" = (
@@ -1106,10 +1108,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "di" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter/m_filter{
-	dir = 1;
-	use_power = 0
-	},
+/obj/machinery/atmospherics/component/quaternary/atmos_filter,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "dk" = (
@@ -1128,13 +1127,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
-"dq" = (
-/obj/machinery/atmospherics/component/trinary/atmos_filter{
-	dir = 1;
-	use_power = 0
-	},
-/turf/simulated/floor,
-/area/engineering/engine_room)
 "dr" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 10
@@ -1305,7 +1297,7 @@
 	},
 /obj/effect/zone_divider,
 /turf/simulated/floor/greengrid/nitrogen,
-/area/engineering/engine_core)
+/area/engineering/engine_room)
 "dT" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/structure/cable{
@@ -1816,7 +1808,9 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "fh" = (
-/obj/machinery/atmospherics/component/binary/circulator,
+/obj/machinery/atmospherics/component/binary/circulator{
+	anchored = 1
+	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "fi" = (
@@ -2202,7 +2196,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/machinery/button/remote/blast_door{
 	desc = "A remote control-switch for the engine control room blast doors.";
-	id = "EngineBlast";
+	id = "sm_monitor_blast";
 	name = "Engine Monitoring Room Blast Doors";
 	pixel_y = -3;
 	req_access = list(10)
@@ -2404,13 +2398,6 @@
 /obj/effect/floor_decal/corner/white/diagonal,
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
-"gY" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/cyan{
-	dir = 4
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor,
-/area/engineering/engine_room)
 "gZ" = (
 /obj/machinery/power/smes/buildable/main,
 /obj/structure/cable{
@@ -2656,6 +2643,7 @@
 	pixel_x = 26;
 	pixel_y = 9
 	},
+/obj/landmark/spawnpoint/job/chief_engineer,
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
 "hN" = (
@@ -2826,12 +2814,6 @@
 	},
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
-	},
-/turf/simulated/floor,
-/area/engineering/engine_room)
-"iz" = (
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 10
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
@@ -3935,13 +3917,6 @@
 "lC" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 10
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor,
-/area/engineering/engine_room)
-"lD" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 6
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor,
@@ -5578,13 +5553,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/cryo/station)
-"pR" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/yellow{
-	dir = 4
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor,
-/area/engineering/engine_room)
 "pV" = (
 /obj/structure/railing{
 	dir = 4
@@ -5718,9 +5686,15 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "qI" = (
-/obj/machinery/atmospherics/pipe/manifold/visible/cyan,
-/turf/simulated/floor,
-/area/engineering/engine_room)
+/obj/effect/floor_decal/rust,
+/obj/effect/zone_divider,
+/obj/structure/grille{
+	CanAtmosPass = -1
+	},
+/turf/simulated/floor/plating/lythios43c{
+	outdoors = 0
+	},
+/area/engineering/engine_core)
 "qN" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green,
 /obj/machinery/light{
@@ -6242,7 +6216,8 @@
 /area/engineering/engine_airlock)
 "sA" = (
 /obj/machinery/door/airlock/maintenance/engi{
-	name = "Substation Access"
+	name = "Substation Access";
+	req_one_access = list(11,24)
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -6682,7 +6657,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/space/basic,
+/turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "ub" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -7849,7 +7824,7 @@
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "SMES Access";
-	req_access = list(11)
+	req_one_access = list(11,24)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -9712,11 +9687,11 @@
 /area/rift/asylum/halls)
 "FP" = (
 /obj/structure/catwalk,
-/obj/machinery/door/airlock/multi_tile/glass{
-	dir = 1
-	},
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/multi_tile/metal{
+	dir = 2
 	},
 /turf/simulated/floor/plating,
 /area/engineering/storage)
@@ -10186,6 +10161,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/power/terminal{
+	dir = 1
+	},
 /turf/simulated/floor,
 /area/maintenance/substation/engineering)
 "HR" = (
@@ -10205,12 +10183,14 @@
 /turf/simulated/floor/tiled,
 /area/engineering/foyer)
 "HS" = (
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 6
+/obj/effect/zone_divider,
+/obj/structure/grille{
+	CanAtmosPass = -1
 	},
-/obj/structure/catwalk,
-/turf/simulated/floor,
-/area/engineering/engine_room)
+/turf/simulated/floor/plating/lythios43c{
+	outdoors = 0
+	},
+/area/engineering/engine_core)
 "HW" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -10332,7 +10312,7 @@
 /obj/machinery/door/window/westleft{
 	dir = 2;
 	name = "Engineering Reception Desk";
-	req_access = list(10)
+	req_one_access = list(11,24)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -10523,7 +10503,7 @@
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Engine Access";
-	req_one_access = list(11)
+	req_one_access = list(11,24)
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_airlock)
@@ -10623,7 +10603,9 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/atmos/locker_room)
 "JB" = (
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	req_one_access = list(11,24)
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/foyer)
 "JC" = (
@@ -12529,8 +12511,8 @@
 /area/engineering/atmos/hallway)
 "Qx" = (
 /obj/structure/catwalk,
-/obj/machinery/door/airlock/multi_tile/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/multi_tile/metal,
 /turf/simulated/floor/plating,
 /area/engineering/storage)
 "Qy" = (
@@ -12725,7 +12707,7 @@
 "Rm" = (
 /obj/machinery/door/airlock/glass_engineering{
 	name = "Engine Monitoring Room";
-	req_access = list(11)
+	req_one_access = list(11,24)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -13438,7 +13420,7 @@
 /obj/machinery/door/window/westleft{
 	dir = 1;
 	name = "Engineering Reception Desk";
-	req_access = list(10)
+	req_one_access = list(11,24)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -26886,7 +26868,7 @@ ah
 ah
 PF
 am
-av
+HS
 lk
 av
 sX
@@ -27080,7 +27062,7 @@ Bd
 Bd
 Bd
 am
-av
+qI
 aw
 av
 am
@@ -27867,11 +27849,11 @@ cQ
 mA
 Md
 cF
-qI
+cQ
 mA
-HS
-oM
-lF
+Fm
+Fm
+Fm
 ar
 zq
 ML
@@ -28061,11 +28043,11 @@ cu
 hY
 cu
 fU
-iz
-PQ
-gY
-lU
-lF
+mA
+mA
+Fm
+Fm
+Fm
 ar
 zq
 ML
@@ -28451,9 +28433,9 @@ jy
 mA
 iM
 mA
-lD
-oM
-lF
+Fm
+Fm
+Fm
 ar
 zq
 ML
@@ -28631,7 +28613,7 @@ Ep
 mA
 mA
 dU
-dq
+di
 dB
 ix
 dW
@@ -28644,10 +28626,10 @@ Bp
 iP
 ja
 cY
-ja
-pR
-lU
-lF
+mA
+Fm
+Fm
+Fm
 ar
 zq
 ML
