@@ -6,22 +6,42 @@
 
 /datum/category_item/player_setup_item/background/language/content(datum/preferences/prefs, mob/user, data)
 	. = list()
-	var/list/language_ids = read(prefs)
-
-
-#warn how are we going to UI this
+	var/list/language_ids = data
+	var/list/innate_names = list()
+	for(var/id in prefs.innate_language_ids())
+		var/datum/language/L = SScharacters.resolve_language_id(id)
+		innate_names += L.name
+	. += "<b>Languages</b><br>"
+	. += "    Intrinsic (Species, Backgrounds, Cultures): [english_list(innate_names)]"
+	. += "    Additional:
+	var/count = 0
+	for(var/id in prefs.extraneous_language_ids())
+		++count
+		var/datum/language/L = SScharacters.resolve_language_id(id)
+		. += "[L.name] [href_simple(prefs, "remove", "Remove", id)] "
+	if(count < prefs.extraneous_language)
+		. += "[href_simple(prefs, "add", "Add")]"
 
 /datum/category_item/player_setup_item/background/language/act(datum/preferences/prefs, mob/user, action, list/params)
-	. = ..()
-	if(.)
-		return
+	switch(action)
+		if("add")
+			prefs.language_pick(user)
+			return PREFERENCES_HANDLED
+		if("remove")
+			var/id = params["remove"]
+			var/list/existing = read(prefs)
+			if(existing.Remove(id))
+				write(prefs, existing)
+				return PREFERENCES_REFRESH
+			return PREFERENCES_NOACTION
+	return ..()
 
 /datum/category_item/player_setup_item/background/language/filter(datum/preferences/prefs, data, list/errors)
 	var/list/languages = sanitize_islist(data)
 	var/list/innate = prefs.innate_language_ids()
 	var/list/extra = languages - innate
 	languages = innate
-	var/extra_max = prefs.extraneous_language_ids_max()
+	var/extra_max = prefs.extraneous_languages_max()
 	if(extra.len > extra_max)
 		var/list/truncated = extra.Copy(extra_max + 1)
 		extra.len = clamp(extra.len, 0, extra_max)
@@ -33,12 +53,12 @@
 	if(!ishuman(M))
 		return TRUE
 	var/mob/living/carbon/human/H = M
-	// todo: sources
+	// todo: sources - this one is extraneous
 	for(var/id in data)
 		H.add_language(id)
 
 /datum/category_item/player_setup_item/background/language/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
-	if(length(data) > prefs.extraneous_language_ids_max())
+	if(length(data) > prefs.extraneous_languages_max())
 		errors?.Add(SPAN_WARNING("You have selected too many extra languages for your species and culture."))
 		return FALSE
 	return TRUE
@@ -52,24 +72,36 @@
 /**
  * returns ids of languages that are innate to our species/background
  */
-/datum/preferences/proc/innate_language_ids(include_common = TRUE, include_species = TRUE, include_background = TRUE)
-
-	#warn resolve backgrounds + species + defaults + collate
+/datum/preferences/proc/innate_language_ids(include_background = TRUE)
+	RETURN_TYPE(/list)
+	var/datum/character_species/S = character_species_datum()
+	. = S.get_intrinsic_language_ids()
+	if(include_background)
+		var/list/datum/lore/character_background/backgrounds = list(
+			lore_citizenship_datum(),
+			lore_origin_datum(),
+			lore_religion_datum(),
+			lore_faction_datum()
+		)
+		for(var/datum/lore/character_background/B in backgrounds)	// eh let's type filter
+			. |= B.innate_languages
 
 /**
  * returns max amounts we can have. doesn't take into account what we do have.
  */
-/datum/preferences/proc/extraneous_language_ids_max()
+/datum/preferences/proc/extraneous_languages_max()
 	return max(character_species_datum().max_additional_languages, 0)
 
 /**
  * returns ids of languages that aren't innate to our species/background
  */
 /datum/preferences/proc/extraneous_language_ids()
+	RETURN_TYPE(/list)
 	return get_character_data(CHARACTER_DATA_LANGUAGES) - innate_language_ids()
 
 /**
  * returns ids of ALL languages
  */
 /datum/preferences/proc/all_language_ids()
+	RETURN_TYPE(/list)
 	return innate_language_ids() + get_character_data(CHARACTER_DATA_LANGUAGES)

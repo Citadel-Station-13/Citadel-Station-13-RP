@@ -49,7 +49,11 @@
 	return data
 
 /datum/category_item/player_setup_item/background/origin/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
-	#warn impl
+	// todo: sources - this one is from culture/bcakground
+	var/datum/lore/character_background/B = SScharacters.resolve_origin(data)
+	for(var/id in B.innate_languages)
+		M.add_language(id)
+	return TRUE
 
 /datum/category_item/player_setup_item/background/origin/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
 	var/datum/lore/character_background/origin/current = SScharacters.resolve_origin(data)

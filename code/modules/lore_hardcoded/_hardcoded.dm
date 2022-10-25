@@ -12,26 +12,26 @@
 	var/desc = "What is this?"
 	/// subspecies are counted as the master species
 	var/subspecies_included = TRUE
-	/// allowed species ids - if is list, only these species can have them; these are species uids, not normal species ids, subspecies do count; typepaths are allowed
+	/// allowed species ids - if is list, only these species can have them; these are character species uids, not normal species ids, subspecies do count; typepaths are allowed
 	var/list/allow_species
-	/// forbidden species ids - overridden by allowed; typepaths are lalowed
+	/// forbidden species ids - overridden by allowed; typepaths are allowed, will be converted to uids
 	var/list/forbid_species
-	/// languages that someone gets by picking this; typepaths are allowed
+	/// languages that someone gets by picking this; typepaths are allowed, will be converted to uids
 	var/list/innate_languages
 
 /datum/lore/character_background/New()
 	// resolve typepaths
 	for(var/thing in allow_species)
 		if(ispath(thing))
-			allow_species += SScharacters.resolve_species_path(thing)
+			allow_species += SScharacters.resolve_character_species(thing).id
 			allow_species -= thing
 	for(var/thing in forbid_species)
 		if(ispath(thing))
-			forbid_species += SScharacters.resolve_species_path(thing)
+			forbid_species += SScharacters.resolve_character_species(thing).id
 			forbid_species -= thing
 	for(var/thing in innate_languages)
 		if(ispath(thing))
-			innate_languages += SScharacters.resolve_language_path(thing)
+			innate_languages += SScharacters.resolve_language_path(thing).id
 			innate_languages -= thing
 
 /**

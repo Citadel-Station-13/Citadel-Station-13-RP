@@ -16,8 +16,9 @@
 	. += "</div>"
 
 /datum/category_item/player_setup_item/background/char_species/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
-	. = ..()
-	#warn whitelist check
+	var/datum/character_species/S = SScharacters.resolve_character_species(data)
+	// if(S.whitelisted && !is_alien_whitelisted(prefs.client.mob, ))
+	#warn whitelist check - impl new whitelist systemics for this shit
 
 /datum/category_item/player_setup_item/background/char_species/filter(datum/preferences/prefs, data, list/errors)
 	// resolve

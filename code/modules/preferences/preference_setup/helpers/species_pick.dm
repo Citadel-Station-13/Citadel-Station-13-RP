@@ -20,11 +20,12 @@
 	var/datum/species/S = SScharacters.resolve_species_path(uid)
 	#warn impl
 
-/datum/preferences/proc/route_species_pick(uid)
+/datum/preferences/proc/route_species_pick(uid, mob/user)
+	// return true to close window
 #warn besure to pick real species using this as fallback for char species removals
 #warn besure to refresh
 
-/datum/preferences/proc/species_pick_finalize(uid)
+/datum/preferences/proc/species_pick_finalize(uid, mob/user)
 
 
 GLOBAL_LIST_EMPTY(species_picker_active)
@@ -84,5 +85,5 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	. = ..()
 	switch(action)
 		if("pick")
-			prefs.route_species_pick(params["id"])
-			qdel(src)
+			if(prefs.route_species_pick(params["id"], usr))
+				qdel(src)

@@ -36,7 +36,11 @@
 	return data
 
 /datum/category_item/player_setup_item/background/citizenship/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
-	#warn impl
+	// todo: sources - this one is from culture/bcakground
+	var/datum/lore/character_background/B = SScharacters.resolve_citizenship(data)
+	for(var/id in B.innate_languages)
+		M.add_language(id)
+	return TRUE
 
 /datum/category_item/player_setup_item/background/citizenship/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
 	var/datum/lore/character_background/citizenship/current = SScharacters.resolve_citizenship(data)
