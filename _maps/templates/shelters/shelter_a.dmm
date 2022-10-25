@@ -11,7 +11,8 @@
 "c" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8;
-	layer = 2.6
+	layer = 2.6;
+	pixel_y = -8
 	},
 /obj/machinery/door/window/survival_pod{
 	dir = 1;
@@ -185,7 +186,7 @@
 "o" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8;
-	icon_state = "pwindow"
+	pixel_y = -8
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/survivalpod)
@@ -233,11 +234,6 @@
 /obj/structure/window/reinforced/survival_pod{
 	dir = 1;
 	icon_state = "pwindow"
-	},
-/obj/structure/window/reinforced/survival_pod{
-	density = 0;
-	dir = 5;
-	pixel_x = 8
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/survivalpod)
