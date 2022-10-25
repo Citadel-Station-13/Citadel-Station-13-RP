@@ -3510,6 +3510,7 @@
 #include "code\modules\preferences\preference_setup\global\03_pai.dm"
 #include "code\modules\preferences\preference_setup\global\04_ooc.dm"
 #include "code\modules\preferences\preference_setup\global\05_media.dm"
+#include "code\modules\preferences\preference_setup\global\language_prefix.dm"
 #include "code\modules\preferences\preference_setup\global\setting_datums.dm"
 #include "code\modules\preferences\preference_setup\helpers\species_pick.dm"
 #include "code\modules\preferences\preference_setup\keybindings\keybindings.dm"

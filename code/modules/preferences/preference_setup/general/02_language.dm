@@ -1,25 +1,3 @@
-/datum/category_item/player_setup_item/general/language
-	name = "Language"
-	sort_order = 2
-
-/datum/category_item/player_setup_item/general/language/load_character(var/savefile/S)
-	S["language"]			>> pref.alternate_languages
-	S["language_prefixes"]	>> pref.language_prefixes
-
-/datum/category_item/player_setup_item/general/language/save_character(var/savefile/S)
-	S["language"]			<< pref.alternate_languages
-	S["language_prefixes"]	<< pref.language_prefixes
-
-/datum/category_item/player_setup_item/general/language/sanitize_character()
-	if(!islist(pref.alternate_languages))
-		pref.alternate_languages = list()
-	if(pref.species)
-		var/datum/species/S = pref.real_species_datum()
-		if(S && pref.alternate_languages.len > S.max_additional_languages)
-			pref.alternate_languages.len = S.max_additional_languages // Truncate to allowed length
-	if(isnull(pref.language_prefixes) || !pref.language_prefixes.len)
-		pref.language_prefixes = config_legacy.language_prefixes.Copy()
-
 #warn deal with these they access language vars
 /datum/category_item/player_setup_item/general/language/content(datum/preferences/prefs, mob/user, data)
 	. += "<b>Languages</b><br>"
