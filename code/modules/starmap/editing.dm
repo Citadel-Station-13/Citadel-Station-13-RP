@@ -11,8 +11,9 @@
 	clear_assets()
 	entity_by_id = list()
 	load_file()
-
-	#warn close all uis for asset reload
+	for(var/datum/starmap_view/V in views)
+		to_chat(V.user, SPAN_WARNING("Reloading starmap [id] for editing."))
+		V.reload()
 
 /datum/starmap/proc/unlock_from_editing()
 	if(!volatile)
@@ -23,5 +24,6 @@
 	entity_by_id = null
 	volatile = FALSE
 	build_assets()
-
-	#warn close all uis for asset reload
+	for(var/datum/starmap_view/V in views)
+		to_chat(V.user, SPAN_WARNING("Reloading starmap [id] for viewing."))
+		V.reload()

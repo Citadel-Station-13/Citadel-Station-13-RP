@@ -21,6 +21,8 @@
 	var/initial_y
 	///
 
+#warn auto close, vars
+
 /datum/starmap_view/New(datum/starmap/S)
 	if(S)
 		bind(S)
@@ -40,6 +42,15 @@
 		return
 	LAZYREMOVE(map.views, src)
 
+/datum/starmap_view/proc/open(mob/user)
+	ui_interact(mob/user)
+
+/datum/starmap_view/ui_interact(mob/user, datum/tgui/ui, datum/tgui/parent_ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Starmap")
+		ui.open()
+
 /datum/starmap_view/ui_host(mob/user)
 	return host
 
@@ -54,3 +65,9 @@
 	if(.)
 		return
 	return map.act(action, params, ui, state)
+
+/datum/starmap_view/proc/reload()
+	var/list/mob/viewing = SStgui.viewing_users(src)
+	SStgui.close_uis(src)
+	for(var/mob/M as anything in viewing)
+		open(M)

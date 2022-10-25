@@ -7,6 +7,8 @@
 /datum/starmap/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 
+#warn impl
+
 /datum/starmap/proc/data(mob/user, datum/tgui/ui, datum/ui_state/state)
 	return ui_data(user, ui, state)
 

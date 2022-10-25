@@ -210,6 +210,21 @@ SUBSYSTEM_DEF(tgui)
 /**
  * public
  *
+ * Get all users viewing an UI on a datum
+ *
+ * return list of mobs
+ */
+/datum/controller/subsystem/tgui/proc/viewing_users(datum/src_object)
+	. = list()
+	var/key = "[REF(src_object)]"
+	if(!islist(open_uis_by_src[key]))
+		return
+	for(var/datum/tgui/ui in open_uis_by_src[key])
+		. |= ui.user
+
+/**
+ * public
+ *
  * Close all UIs attached to src_object.
  *
  * required src_object datum The object/datum which owns the UIs.
