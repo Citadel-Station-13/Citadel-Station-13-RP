@@ -117,7 +117,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// Eye color.
 	var/g_eyes = 0
 	/// Eye color.
-	var/b_eyes =
+	var/b_eyes = 0
 	/// Left in for Legacy reasons, will no longer save.
 	var/list/gear
 	/// Custom/fluff item loadouts.
