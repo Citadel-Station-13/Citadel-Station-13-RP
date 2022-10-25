@@ -1631,3 +1631,34 @@ I said no!
 		/obj/item/reagent_containers/food/snacks/spreads/butter
 	)
 	result = /obj/item/reagent_containers/food/snacks/bowl_peas
+
+/datum/recipe/puddi
+	reagents = list("milk" = 10, "sugar" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/chocolatebar
+	)
+	result = /obj/item/reagent_containers/food/snacks/puddi
+
+/datum/recipe/puddi_happy
+	reagents = list("milk" = 10, "sugar" = 5, "honey" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/chocolatebar
+	)
+	result = /obj/item/reagent_containers/food/snacks/puddi/happy
+
+/datum/recipe/puddi_angry
+	fruit = list("chili" = 2)
+	reagents = list("milk" = 10, "sugar" = 5)
+	items = list(
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/reagent_containers/food/snacks/chocolatebar
+	)
+	result = /obj/item/reagent_containers/food/snacks/puddi/angry
