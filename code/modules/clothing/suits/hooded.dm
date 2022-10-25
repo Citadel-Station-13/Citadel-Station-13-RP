@@ -67,7 +67,7 @@
 					hood.armor = armor.Copy()
 				hood_up = TRUE
 				ADD_TRAIT(hood, TRAIT_NODROP, CLOTHING_TRAIT)
-				icon_state = "[toggleicon]_t"
+				icon_state = "[toggleicon]-t"
 				update_worn_icon()
 	else
 		RemoveHood()
@@ -451,8 +451,10 @@
 /obj/item/clothing/suit/storage/hooded/miner
 	name = "mining suit"
 	desc = "An armoured suit for mining in harsh environments."
+	icon = 'icons/clothing/suit/mining.dmi'
 	icon_state = "miner"
 	flags = PHORONGUARD
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	clothing_flags = THICKMATERIAL
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
