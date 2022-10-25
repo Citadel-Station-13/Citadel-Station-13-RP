@@ -29,13 +29,14 @@
 /datum/alt_title/medical_specialist
 	title = "Medical Specialist"
 	title_blurb = "A Medical Specialist is a senior medical professional with extensive knowledge within a particular field of medicine which \
-	operate within their field and may be called upon to aid other medical professionals in the treatment of patients related to said field."
+	is expected to perform the standard duties of a medical doctor, as well as offer training, guidance and oversight to both resident \
+	and attending physicians in all matters, especially when presented with difficult situations within their field of expertise."
 	title_outfit = /datum/outfit/job/station/medical_doctor
 
 /datum/alt_title/consultant_physician
 	title = "Consultant Physician"
-	title_blurb = "A Consultant Physician is a senior medical professional with extensive training in general medical practice which are expected to both perform the \
-	standard duties of a medical doctor, as well as offer training, guidance and oversight to both resident and attending physicians, especially when presented with difficult \
+	title_blurb = "A Consultant Physician is a senior medical professional with extensive training in general medical practice which is expected to perform the \
+	standard duties of a medical doctor, as well as offer training, guidance and oversight to resident and attending physicians, especially when presented with difficult \
 	situations related to patient care."
 	title_outfit = /datum/outfit/job/station/medical_doctor
 
