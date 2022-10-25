@@ -20,13 +20,19 @@
 		desc = null
 	color = sanitize_hexcolor(color, 6, TRUE, rgb(255, 255, 255))
 
-/datum/starmap_group/serialize_data()
+/datum/starmap_entity/group/map_data()
 	. = ..()
 	.["name"] = name
 	.["desc"] = desc
 	.["color"] = color
 
-/datum/starmap_group/deserialize_data(list/data)
+/datum/starmap_entity/group/serialize_data()
+	. = ..()
+	.["name"] = name
+	.["desc"] = desc
+	.["color"] = color
+
+/datum/starmap_entity/group/deserialize_data(list/data)
 	. = ..()
 	name = data["name"]
 	color = data["color"]
