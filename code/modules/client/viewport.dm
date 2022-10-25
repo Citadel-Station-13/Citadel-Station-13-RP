@@ -8,17 +8,31 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64, 96, 128))
 	var/last_view_x_dim = 7
 	var/last_view_y_dim = 7
 
+/* /client/verb/dynamic_pref_update()
+	if(!winget(src, "menu.reset", "is-checked"))
+		winset(src, "menu.reset", "is-checked=true")
+		prefs.widescreenpref = FALSE
+		change_view(world.view)
+	if(winget(src, "menu.reset", "is-checked"))
+		winset(src, "menu.reset", "is-checked=false")
+		prefs.widescreenpref = TRUE
+		SetWindowIconSize(winget(src, "mapwindow.map", "icon-size") || prefs.icon_size)
+
+	SScharacter_setup.queue_preferences_save(prefs) */
+
 /client/verb/SetWindowIconSize(val as num|text)
 	set hidden = 1
 	winset(src, "mapwindow.map", "icon-size=[val]")
-	if(prefs && val != prefs.icon_size)
+	if(prefs && val != prefs.icon_size )
 		prefs.icon_size = val
 		SScharacter_setup.queue_preferences_save(prefs)
-	OnResize()
+
+	 OnResize()
 
 /client/verb/OnResize()
 	set hidden = 1
-
+	if(!is_preference_enabled(/datum/client_preference/scaling_viewport)) // We shouldn't need this if view datums were fully implemented.
+		return
 	var/divisor = text2num(winget(src, "mapwindow.map", "icon-size")) || world.icon_size
 	if(!isnull(GLOB.lock_client_view_x) && !isnull(GLOB.lock_client_view_y))
 		last_view_x_dim = GLOB.lock_client_view_x
@@ -40,7 +54,8 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64, 96, 128))
 	view = "[last_view_x_dim]x[last_view_y_dim]"
 
 	// Reset eye/perspective
-	var/last_perspective = perspective
+	reset_perspective()
+/* 	var/last_perspective = perspective
 	perspective = MOB_PERSPECTIVE
 	if(perspective != last_perspective)
 		perspective = last_perspective
@@ -49,7 +64,7 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64, 96, 128))
 	if(eye != last_eye)
 		eye = last_eye
 	if(mob)
-		mob.reload_fullscreen()
+		mob.reload_fullscreen() */
 	update_clickcatcher()
 
 /client/verb/force_onresize_view_update()

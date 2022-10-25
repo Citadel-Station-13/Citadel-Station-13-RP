@@ -630,11 +630,8 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 
 	//We checked above if they are a human and returned already if they weren't.
 	var/mob/living/carbon/human/H = user
-
 	if(!zoom && !cannotzoom)
-		if(H.hud_used.hud_shown)
-			H.toggle_zoom_hud()	// If the user has already limited their HUD this avoids them having a HUD when they zoom in
-		H.set_viewsize(viewsize)
+		INVOKE_ASYNC(H.client, /client.proc/change_view, viewsize, TRUE) // Reset to default
 		zoom = 1
 
 		var/tilesize = 32
@@ -659,15 +656,16 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		H.handle_vision()
 
 	else
-		H.set_viewsize()	// Reset to default
-		if(!H.hud_used.hud_shown)
-			H.toggle_zoom_hud()
+
+
 		zoom = 0
 
 		H.client.pixel_x = 0
 		H.client.pixel_y = 0
 		H.looking_elsewhere = FALSE
 		H.handle_vision()
+
+		INVOKE_ASYNC(H.client, H.client.is_preference_enabled(/datum/client_preference/scaling_viewport) ? /client.verb/OnResize : /client.proc/change_view, world.view) // Reset to default
 
 		if(!cannotzoom)
 			user.visible_message("[zoomdevicename ? "[user] looks up from the [src.name]" : "[user] lowers the [src.name]"].")

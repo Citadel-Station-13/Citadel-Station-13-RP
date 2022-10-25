@@ -49,11 +49,9 @@ menu "menu"
 		group = "size"
 		saved-params = "is-checked"
 	elem "reset"
-		name = "Reset to 15x15"
-		command = "src.view \"15x15\""
+		name = "Toggle Retro Viewport"
+		command = "toggle_scaling_viewport"
 		category = "&Size"
-		is-checked = false
-		can-check = false
 		group = "size"
 	elem "icon128"
 		name = "&128x128"

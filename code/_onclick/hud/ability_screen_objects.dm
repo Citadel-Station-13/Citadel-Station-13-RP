@@ -176,7 +176,8 @@
 
 /mob/Login()
 	. = ..()
-	client.SetWindowIconSize(client.prefs.icon_size)
+	client?.is_preference_enabled(/datum/client_preference/scaling_viewport) ? client.SetWindowIconSize(client.prefs.icon_size) : client.change_view(world.view)
+
 	if(ability_master)
 		ability_master.toggle_open(1)
 		client.screen -= ability_master
