@@ -25,16 +25,14 @@
 	var/volatile = FALSE
 	/// only stored while editing; associate ID to entities
 	var/list/entity_by_id
-	/// only stored while editing; associates ID to groups
-	var/list/group_by_id
 
 	//! data packing
 	/// center x; computed based on entities
 	var/overall_center_x = 0
 	/// center y; computed based on entities
 	var/overall_center_y = 0
-	/// max distance to furthest entity; computed based on entities
-	var/overall_edge_dist = 0
+	/// **estimated** max distance to furthest entity; computed based on entities
+	var/overall_edge_dist = 100
 
 	//! ui
 	/// active views

@@ -4,11 +4,6 @@
 /datum/starmap/proc/delete_entity(datum/starmap_entity/E)
 	ASSERT(volatile)
 
-/datum/starmap/proc/register_group(datum/starmap_group/G)
-	ASSERT(volatile)
-
-/datum/starmap/proc/unregister_group(datum/starmap_group/G)
-	ASSERT(volatile)
 
 	#warn will have to clear out the group data from entities with this group too
 
@@ -18,7 +13,6 @@
 	volatile = TRUE
 	clear_assets()
 	entity_by_id = list()
-	group_by_id = list()
 	load_file()
 
 	#warn close all uis for asset reload
@@ -31,7 +25,6 @@
 		repack()
 		save_file()
 	entity_by_id = null
-	group_by_id = null
 	build_assets()
 
 	#warn close all uis for asset reload

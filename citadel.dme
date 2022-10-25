@@ -3863,7 +3863,6 @@
 #include "code\modules\starmap\assets.dm"
 #include "code\modules\starmap\editing.dm"
 #include "code\modules\starmap\entity.dm"
-#include "code\modules\starmap\group.dm"
 #include "code\modules\starmap\packing.dm"
 #include "code\modules\starmap\starmap.dm"
 #include "code\modules\starmap\storage.dm"
