@@ -5739,10 +5739,8 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/component/binary/passive_gate/on{
-	dir = 8;
-	pressure_resistance = 750;
-	target_pressure = 750
+/obj/machinery/atmospherics/pipe/simple/hidden/universal{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
@@ -8348,8 +8346,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/library)
 "fIm" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/universal{
-	dir = 4
+/obj/machinery/atmospherics/component/binary/passive_gate/on{
+	dir = 8;
+	pressure_resistance = 750;
+	target_pressure = 750
 	},
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
@@ -26790,8 +26790,8 @@
 /area/rnd/outpost/xenobiology/outpost_hallway)
 "qEU" = (
 /obj/machinery/door/airlock/multi_tile/metal{
-	req_one_access = list(31);
-	name = "Cargo Garage"
+	name = "Cargo Garage";
+	req_one_access = list(31)
 	},
 /obj/machinery/door/firedoor/multi_tile,
 /obj/effect/floor_decal/techfloor/orange/corner{
@@ -27484,8 +27484,8 @@
 /obj/machinery/button/remote/blast_door{
 	id = "cargo_garage1";
 	name = "Garage Shutter Controls";
-	req_access = list(31);
-	pixel_y = -25
+	pixel_y = -25;
+	req_access = list(31)
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/garage)
