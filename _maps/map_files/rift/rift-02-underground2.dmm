@@ -141,10 +141,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "av" = (
-/obj/effect/zone_divider,
+/obj/effect/floor_decal/rust,
 /obj/structure/grille{
 	CanAtmosPass = -1
 	},
+/obj/effect/zone_divider,
 /turf/simulated/floor/plating/lythios43c{
 	outdoors = 0
 	},
@@ -921,6 +922,24 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_room)
+"cI" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/camera/network/engineering{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/engineering/hallway)
 "cJ" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red,
 /obj/structure/cable/yellow{
@@ -1099,16 +1118,9 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "di" = (
-/obj/machinery/button/remote/blast_door{
-	desc = "A remote control-switch for the engine charging port.";
-	id = "engine_access_hatch";
-	name = "Reactor Blast Doors";
-	pixel_x = 7;
-	pixel_y = 7;
-	req_access = list(10)
-	},
-/turf/simulated/wall/r_wall,
-/area/engineering/engine_core)
+/obj/machinery/atmospherics/component/quaternary/atmos_filter,
+/turf/simulated/floor,
+/area/engineering/engine_room)
 "dk" = (
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engine_room)
@@ -1126,9 +1138,11 @@
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "dq" = (
-/obj/machinery/atmospherics/component/quaternary/atmos_filter,
-/turf/simulated/floor,
-/area/engineering/engine_room)
+/obj/machinery/camera/network/engineering{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/engineering/foyer)
 "dr" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 10
@@ -1261,12 +1275,12 @@
 	pixel_y = 8;
 	state = 2
 	},
+/obj/structure/catwalk,
 /obj/structure/cable/yellow{
 	icon_state = "0-2";
 	dir = 4;
 	d2 = 4
 	},
-/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "dN" = (
@@ -1910,6 +1924,17 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
+"fE" = (
+/obj/machinery/button/remote/blast_door{
+	desc = "A remote control-switch for the engine charging port.";
+	id = "engine_access_hatch";
+	name = "Reactor Blast Doors";
+	pixel_x = 7;
+	pixel_y = 7;
+	req_access = list(10)
+	},
+/turf/simulated/wall/r_wall,
+/area/engineering/engine_core)
 "fF" = (
 /obj/spawner/window/borosillicate/reinforced/full,
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
@@ -2403,11 +2428,12 @@
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
 "gY" = (
-/obj/machinery/camera/network/engineering{
-	dir = 8
+/obj/structure/catwalk,
+/obj/machinery/camera/network/engine{
+	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/engineering/foyer)
+/turf/simulated/floor,
+/area/engineering/engine_room)
 "gZ" = (
 /obj/machinery/power/smes/buildable/main,
 /obj/structure/cable{
@@ -2828,23 +2854,12 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "iz" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+/obj/structure/catwalk,
+/obj/machinery/camera/network/engine{
 	dir = 8
 	},
-/obj/structure/cable/cyan{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/camera/network/engineering{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/engineering/hallway)
+/turf/simulated/floor,
+/area/engineering/engine_gas)
 "iC" = (
 /obj/machinery/atmospherics/pipe/tank/air{
 	dir = 1
@@ -3846,12 +3861,6 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
-"lg" = (
-/obj/machinery/camera/network/engineering{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/crew_quarters/heads/chief)
 "lh" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -3956,11 +3965,16 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "lD" = (
-/obj/machinery/camera/network/engineering{
-	dir = 4
+/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
+	dir = 9
 	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/engineering/foyer)
+/obj/machinery/camera/network/engine{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/noblend/indoors/lythios43c{
+	special_temperature = 233
+	},
+/area/engineering/engine_room)
 "lE" = (
 /obj/landmark/spawnpoint/job/atmospheric_technician,
 /obj/machinery/light{
@@ -5598,13 +5612,21 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/cryo/station)
 "pR" = (
-/obj/machinery/camera/network/engine{
-	dir = 8
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
 	},
-/turf/simulated/floor/outdoors/snow/noblend/indoors/lythios43c{
-	special_temperature = 233
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
 	},
-/area/engineering/engine_room)
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/camera/network/engineering,
+/turf/simulated/floor/tiled/steel_grid,
+/area/engineering/atmos/hallway)
 "pV" = (
 /obj/structure/railing{
 	dir = 4
@@ -5738,15 +5760,11 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "qI" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/zone_divider,
-/obj/structure/grille{
-	CanAtmosPass = -1
+/obj/machinery/camera/network/engineering{
+	dir = 4
 	},
-/turf/simulated/floor/plating/lythios43c{
-	outdoors = 0
-	},
-/area/engineering/engine_core)
+/turf/simulated/floor/tiled,
+/area/crew_quarters/heads/chief)
 "qN" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green,
 /obj/machinery/light{
@@ -5779,13 +5797,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
-"qV" = (
-/obj/structure/catwalk,
-/obj/machinery/camera/network/engine{
-	dir = 1
-	},
-/turf/simulated/floor,
-/area/engineering/engine_room)
 "qW" = (
 /turf/simulated/floor/carpet,
 /area/engineering/foyer)
@@ -6462,6 +6473,15 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/rift/asylum/halls)
+"tk" = (
+/obj/effect/zone_divider,
+/obj/structure/grille{
+	CanAtmosPass = -1
+	},
+/turf/simulated/floor/plating/lythios43c{
+	outdoors = 0
+	},
+/area/engineering/engine_core)
 "to" = (
 /obj/structure/closet/secure_closet/engineering_welding,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -7305,6 +7325,16 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
+"wt" = (
+/obj/effect/floor_decal/rust,
+/obj/effect/zone_divider,
+/obj/structure/grille{
+	CanAtmosPass = -1
+	},
+/turf/simulated/floor/plating/lythios43c{
+	outdoors = 0
+	},
+/area/engineering/engine_core)
 "wv" = (
 /obj/effect/zone_divider,
 /obj/effect/zone_divider,
@@ -8288,13 +8318,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
-"zR" = (
-/obj/structure/catwalk,
-/obj/machinery/camera/network/engine{
-	dir = 8
-	},
-/turf/simulated/floor,
-/area/engineering/engine_gas)
 "zS" = (
 /obj/structure/table/woodentable,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -8972,17 +8995,6 @@
 "CU" = (
 /turf/simulated/floor/outdoors/safeice/indoors,
 /area/rift/asylum/cellblock)
-"CW" = (
-/obj/machinery/atmospherics/pipe/simple/heat_exchanging{
-	dir = 9
-	},
-/obj/machinery/camera/network/engine{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/snow/noblend/indoors/lythios43c{
-	special_temperature = 233
-	},
-/area/engineering/engine_room)
 "CX" = (
 /obj/structure/table/steel,
 /obj/structure/spirit_board/prop,
@@ -10286,15 +10298,13 @@
 /turf/simulated/floor/tiled,
 /area/engineering/foyer)
 "HS" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/grille{
-	CanAtmosPass = -1
+/obj/machinery/camera/network/engine{
+	dir = 8
 	},
-/obj/effect/zone_divider,
-/turf/simulated/floor/plating/lythios43c{
-	outdoors = 0
+/turf/simulated/floor/outdoors/snow/noblend/indoors/lythios43c{
+	special_temperature = 233
 	},
-/area/engineering/engine_core)
+/area/engineering/engine_room)
 "HW" = (
 /obj/machinery/alarm{
 	dir = 4;
@@ -11694,6 +11704,12 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
+"MQ" = (
+/obj/machinery/camera/network/engineering{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/engineering/foyer)
 "MR" = (
 /obj/landmark/spawnpoint/job/chaplain,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -12231,22 +12247,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/asylum/cellblock)
-"OT" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/structure/cable/cyan{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/camera/network/engineering,
-/turf/simulated/floor/tiled/steel_grid,
-/area/engineering/atmos/hallway)
 "OU" = (
 /obj/machinery/space_heater,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -26624,7 +26624,7 @@ ah
 PF
 am
 am
-pR
+HS
 am
 ah
 PF
@@ -27011,9 +27011,9 @@ ah
 ah
 PF
 am
-av
+tk
 lk
-HS
+av
 sX
 Eb
 fb
@@ -27199,21 +27199,21 @@ zt
 ar
 am
 sX
-CW
+lD
 Bd
 Bd
 Bd
 Bd
-pR
-qI
-aw
 HS
+wt
+aw
+av
 am
 am
 am
 am
 am
-pR
+HS
 am
 jc
 bJ
@@ -27996,7 +27996,7 @@ cQ
 mA
 Fm
 Fm
-qV
+gY
 ar
 zq
 ML
@@ -28178,7 +28178,7 @@ bQ
 eL
 is
 oG
-di
+fE
 NY
 mA
 fT
@@ -28562,7 +28562,7 @@ mA
 mA
 mA
 aD
-dq
+di
 dA
 dK
 sN
@@ -28756,7 +28756,7 @@ Ep
 mA
 mA
 dU
-dq
+di
 dB
 ix
 dW
@@ -29512,7 +29512,7 @@ fY
 Fa
 bL
 JD
-lD
+dq
 wp
 fI
 Ii
@@ -30128,7 +30128,7 @@ jD
 PP
 PP
 hr
-zR
+iz
 IT
 IT
 jD
@@ -30514,7 +30514,7 @@ Jl
 hk
 aA
 tt
-lg
+qI
 gH
 TY
 Ao
@@ -31674,7 +31674,7 @@ QQ
 FZ
 Zg
 KY
-OT
+pR
 Qz
 aA
 UZ
@@ -31840,7 +31840,7 @@ fY
 Fa
 bL
 wp
-gY
+MQ
 wp
 fI
 Pj
@@ -32038,7 +32038,7 @@ fI
 fI
 fI
 EG
-iz
+cI
 ce
 DB
 DB
