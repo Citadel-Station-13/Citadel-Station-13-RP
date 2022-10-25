@@ -84,7 +84,7 @@
 	/// name language is from for randomgen - id - null to use vanilla ss13 randomgen
 	var/name_language
 	/// languages we are always allowed to learn, even if restricted (obviously overridden by intrinsic languages) - list or ID
-	var/whitelist_languages
+	var/list/whitelist_languages
 	/// additional anguages we can learn (ontop of any we get from us, and from culture datums)
 	var/max_additional_languages = 3
 	/// default language when talking; this should probably be part of intrinsics!
@@ -99,7 +99,7 @@
 	if(intrinsic_languages)
 		S.intrinsic_languages = intrinsic_languages.Copy()
 	if(name_language)
-		S.name_language = name_language.Copy()
+		S.name_language = name_language
 	if(whitelist_languages)
 		S.whitelist_languages = whitelist_languages.Copy()
 	S.max_additional_languages = max_additional_languages

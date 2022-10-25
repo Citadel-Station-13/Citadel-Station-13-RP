@@ -109,7 +109,7 @@
 
 	blood_color = "#C0C0C0"
 
-	intrinsic_languages = LNAGUAGE_ID_SIGN
+	intrinsic_languages = LANGUAGE_ID_SIGN
 	whitelist_languages = list(
 		LANGUAGE_ID_TERMINUS,
 		LANGUAGE_ID_DIONA_HIVEMIND
