@@ -3502,7 +3502,6 @@
 #include "code\modules\preferences\preference_setup\background\religion.dm"
 #include "code\modules\preferences\preference_setup\background\species.dm"
 #include "code\modules\preferences\preference_setup\general\01_basic.dm"
-#include "code\modules\preferences\preference_setup\general\02_language.dm"
 #include "code\modules\preferences\preference_setup\general\03_body.dm"
 #include "code\modules\preferences\preference_setup\general\04_equipment.dm"
 #include "code\modules\preferences\preference_setup\general\05_background.dm"

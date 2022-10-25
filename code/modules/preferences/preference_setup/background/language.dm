@@ -13,7 +13,7 @@
 		innate_names += L.name
 	. += "<b>Languages</b><br>"
 	. += "    Intrinsic (Species, Backgrounds, Cultures): [english_list(innate_names)]"
-	. += "    Additional:
+	. += "    Additional: "
 	var/count = 0
 	for(var/id in prefs.extraneous_language_ids())
 		++count
