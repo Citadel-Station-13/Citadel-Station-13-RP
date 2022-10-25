@@ -9,6 +9,18 @@
 	/// ui host
 	var/datum/host
 
+	/// view in cartesian mode?
+	var/cartesian = FALSE
+	/// lock view?
+	var/position_locked = FALSE
+	/// lock view?
+	var/zoom_locked = FALSE
+	/// initial view x - defaults to map center
+	var/initial_x
+	/// initial view y - defaults to map center
+	var/initial_y
+	///
+
 /datum/starmap_view/New(datum/starmap/S)
 	if(S)
 		bind(S)

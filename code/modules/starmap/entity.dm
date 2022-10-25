@@ -1,9 +1,12 @@
 /**
- * simple struct to hold entity data
+ * simple struct to hold data
  */
 /datum/starmap_entity
 	//! intrinsics
 	var/id
+	/// entity type
+	var/enum
+
 	var/x
 	var/y
 
