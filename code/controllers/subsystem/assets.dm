@@ -42,7 +42,7 @@ SUBSYSTEM_DEF(assets)
  */
 /datum/controller/subsystem/assets/proc/register_dynamic_asset(name, pack)
 	transport.register_asset(name, pack)
-	dynamic_asset[name] = pack
+	dynamic_assets[name] = pack
 
 /**
  * deletes a dynamic asset
