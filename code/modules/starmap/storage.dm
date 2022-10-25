@@ -1,8 +1,31 @@
 /datum/starmap/proc/assert_storage()
+	var/path = path()
+	if(!fexists(path))
+		// serialize a blank one (if we aren't blank then someone was a dumbass and i don't care)
+		var/list/theoretically_blank = serialize_data()
+		WRITE_FILE(file(path), json_encode(theoretically_blank))
 
 /datum/starmap/proc/load_file()
+	ASSERT(volatile)
+	var/path = path()
+	var/list/decoded
+	if(!fexists(path))
+		decoded = list()
+	else
+		decoded = json_encode(file2text(file(path)))
+	deserialize_data(decoded)
 
 /datum/starmap/proc/save_file()
+	ASSERT(volatile)
+	var/list/serialized = serialize_data()
+	var/path = path()
+	if(fexists(path))
+		fdel(path)
+	var/handle = file(path)
+	WRITE_FILE(handle, json_encode(serialized))
+
+/datum/starmap/proc/path()
+	return "data/starmaps/[save_key].json"
 
 /datum/starmap/proc/serialize_data()
 	var/list/data = list()
@@ -22,9 +45,9 @@
 	var/edge_dist = data["edge_dist"]
 	var/list/entity_lists = data["entities"]
 
-	overall_center_x = isnum(center_x)? center_x : 0
-	overall_center_y = isnum(center_y)? center_y : 0
-	overall_edge_dist = isnum(edge_dist)? edge_dist : 0
+	overall_center_x = isnum(center_x)? center_x : initial(overall_center_x)
+	overall_center_y = isnum(center_y)? center_y : initial(overall_center_y)
+	overall_edge_dist = isnum(edge_dist)? edge_dist : initial(overall_edge_dist)
 
 	for(var/list/L in entity_lists)
 		entity_from_data(L)

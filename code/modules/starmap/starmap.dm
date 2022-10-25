@@ -11,7 +11,7 @@
 	var/name
 	/// map id
 	var/id
-	/// key for saves
+	/// key for saves; if null, we're not on disk and cannot be on disk
 	var/save_key
 
 	//! assets
@@ -39,6 +39,7 @@
 	var/list/datum/starmap_view/views
 
 /datum/starmap/proc/Initialize()
-	#warn assert, load
-
+	if(!save_key)
+		return
+	assert_storage()
 	build_assets()
