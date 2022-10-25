@@ -13,7 +13,7 @@
 	// snowflake begin
 	// Special Case: This references variables owned by two different datums, so do it here.
 	if(be_random_name)
-		real_name = random_name(identifying_gender,species)
+		real_name = random_name(identifying_gender, real_species_name())
 	// snowflake end
 
 	// Copy start

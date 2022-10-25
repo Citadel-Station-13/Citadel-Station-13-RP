@@ -21,7 +21,7 @@
 	var/list/innate = prefs.innate_language_ids()
 	var/list/extra = languages - innate
 	languages = innate
-	var/extra_max = prefs.extraneous_languages_max()
+	var/extra_max = prefs.extraneous_language_ids_max()
 	if(extra.len > extra_max)
 		var/list/truncated = extra.Copy(extra_max + 1)
 		extra.len = clamp(extra.len, 0, extra_max)
@@ -38,7 +38,7 @@
 		H.add_language(id)
 
 /datum/category_item/player_setup_item/background/language/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
-	if(length(data) > prefs.extraneous_languages_max())
+	if(length(data) > prefs.extraneous_language_ids_max())
 		errors?.Add(SPAN_WARNING("You have selected too many extra languages for your species and culture."))
 		return FALSE
 	return TRUE
@@ -59,11 +59,17 @@
 /**
  * returns max amounts we can have. doesn't take into account what we do have.
  */
-/datum/preferences/proc/extraneous_languages_max()
+/datum/preferences/proc/extraneous_language_ids_max()
 	return character_species_datum().max_additional_languages
 
 /**
  * returns ids of languages that aren't innate to our species/background
  */
-/datum/preferences/proc/extraneous_languages()
+/datum/preferences/proc/extraneous_language_ids()
 	return get_character_data(CHARACTER_DATA_LANGUAGES) - innate_language_ids()
+
+/**
+ * returns ids of ALL languages
+ */
+/datum/preferences/proc/all_language_ids()
+	return innate_language_ids() + get_character_data(CHARACTER_DATA_LANGUAGES)

@@ -88,12 +88,10 @@
 	add_language(LANGUAGE_ZADDAT, 0)
 
 	// Lorefolks say it may be so.
-	if(O.client && O.client.prefs)
-		var/datum/preferences/B = O.client.prefs
-		if(LANGUAGE_ROOTGLOBAL in B.alternate_languages)
-			O.add_language(LANGUAGE_ROOTGLOBAL, 1)
-		if(LANGUAGE_ROOTLOCAL in B.alternate_languages)
-			O.add_language(LANGUAGE_ROOTLOCAL, 1)
+	if(LANGUAGE_ROOTGLOBAL in languages)
+		O.add_language(LANGUAGE_ROOTGLOBAL, 1)
+	if(LANGUAGE_ROOTLOCAL in languages)
+		O.add_language(LANGUAGE_ROOTLOCAL, 1)
 
 	if(move)
 		var/obj/landmark/spawnpoint/S = SSjob.get_latejoin_spawnpoint(job_path = /datum/job/station/ai)

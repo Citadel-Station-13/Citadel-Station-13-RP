@@ -31,9 +31,9 @@
 			name = p.real_name
 			real_name = name
 			gender = p.identifying_gender
-
-			for(var/language in p.alternate_languages)
-				add_language(language)
+			// we don't check if they're above max because fuck you
+			for(var/id in p.all_language_ids())
+				add_language(id)
 
 // Proc: Login()
 // Parameters: None

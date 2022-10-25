@@ -37,7 +37,7 @@
 /datum/category_item/player_setup_item/background/char_species/informed_default_value(datum/preferences/prefs, randomizing)
 	// do they have a valid real species we can use?
 	var/real_id = prefs.get_character_data(CHARACTER_DATA_REAL_SPECIES)
-	CS = SScharacters.resolve_character_species(real_id)
+	var/datum/character_species/CS = SScharacters.resolve_character_species(real_id)
 	if(CS)
 		return prefs.get_character_data(real_id)
 	// no :(

@@ -62,6 +62,7 @@ var/global/datum/controller/occupations/job_master
 			return 0
 		if(!is_job_whitelisted(player, rank))
 			return 0
+		#warn we should probably standardize job checks + add faction checks
 
 		var/position_limit = job.total_positions
 		if(!latejoin)
@@ -137,6 +138,8 @@ var/global/datum/controller/occupations/job_master
 		if(!is_job_whitelisted(player, job.title))
 			Debug("GRJ player not whitelisted for this job, Player: [player], Job: [job.title]")
 			continue
+		#warn we should probably standardize job checks + add faction checks
+		#warn WHY IS ASSIGNROLE RETURN VALUE NOT LISTENED TO
 
 		if((job.current_positions < job.spawn_positions) || job.spawn_positions == -1)
 			Debug("GRJ Random job given, Player: [player], Job: [job]")
@@ -275,7 +278,7 @@ var/global/datum/controller/occupations/job_master
 	// Loop through all levels from high to low
 	var/list/shuffledoccupations = shuffle(occupations)
 	// var/list/disabled_jobs = SSticker.mode.disabled_jobs  // So we can use .Find down below without a colon.
-	for(var/level = 1 to 3)
+	for(var/level = JOB_PRIORITY_LOW to JOB_PRIORITY_HIGH)
 		//Check the head jobs first each level
 		CheckHeadPositions(level)
 
@@ -290,14 +293,13 @@ var/global/datum/controller/occupations/job_master
 				if(jobban_isbanned(player, job.title))
 					Debug("DO isbanned failed, Player: [player], Job:[job.title]")
 					continue
-
 				if(!job.player_old_enough(player.client))
 					Debug("DO player not old enough, Player: [player], Job:[job.title]")
 					continue
+				#warn we should probably standardize job checks + add faction checks
 
 				// If the player wants that job on this level, then try give it to him.
-				if(player.client.prefs.GetJobDepartment(job, level) & job.flag)
-
+				if(player.client.prefs.get_job_priority(job) == level)
 					// If the job isn't filled
 					if((job.current_positions < job.spawn_positions) || job.spawn_positions == -1)
 						Debug("DO pass, Player: [player], Level:[level], Job:[job.title]")
@@ -308,7 +310,7 @@ var/global/datum/controller/occupations/job_master
 	// Hand out random jobs to the people who didn't get any in the last check
 	// Also makes sure that they got their preference correct
 	for(var/mob/new_player/player in unassigned)
-		if(player.client.prefs.alternate_option == GET_RANDOM_JOB)
+		if(player.client.prefs.get_job_alternative() == JOB_ALTERNATIVE_GET_RANDOM)
 			GiveRandomJob(player)
 	/*
 	Old job system

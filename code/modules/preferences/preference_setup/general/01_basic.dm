@@ -89,7 +89,7 @@
 	if(href_list["rename"])
 		var/raw_name = input(user, "Choose your character's name:", "Character Name")  as text|null
 		if (!isnull(raw_name) && CanUseTopic(user))
-			var/new_name = sanitize_name(raw_name, pref.species, is_FBP())
+			var/new_name = sanitize_name(raw_name, pref.real_species_name(), is_FBP())
 			if(new_name)
 				pref.real_name = new_name
 				return PREFERENCES_REFRESH
@@ -98,7 +98,7 @@
 				return PREFERENCES_NOACTION
 
 	else if(href_list["random_name"])
-		pref.real_name = random_name(pref.identifying_gender, pref.species)
+		pref.real_name = random_name(pref.identifying_gender, pref.real_species_name())
 		return PREFERENCES_REFRESH
 
 	else if(href_list["always_random_name"])
@@ -108,7 +108,7 @@
 	else if(href_list["nickname"])
 		var/raw_nickname = input(user, "Choose your character's nickname:", "Character Nickname")  as text|null
 		if (!isnull(raw_nickname) && CanUseTopic(user))
-			var/new_nickname = sanitize_name(raw_nickname, pref.species, is_FBP())
+			var/new_nickname = sanitize_name(raw_nickname, pref.real_species_name(), is_FBP())
 			if(new_nickname)
 				pref.nickname = new_nickname
 				return PREFERENCES_REFRESH

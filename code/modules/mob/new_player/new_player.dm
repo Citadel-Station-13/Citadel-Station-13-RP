@@ -328,7 +328,7 @@
 			src << alert("Your current species, [client.prefs.species], is not available for play on the station.")
 			return 0
 
-		AttemptLateSpawn(href_list["SelectedJob"],client.prefs.spawnpoint)
+		AttemptLateSpawn(href_list["SelectedJob"])
 		return
 
 	if(href_list["privacy_poll"])
@@ -493,7 +493,7 @@
 	return 1
 
 
-/mob/new_player/proc/AttemptLateSpawn(rank, spawning_at)
+/mob/new_player/proc/AttemptLateSpawn(rank)
 	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified)) return
 	if (src != usr)
 		return 0
