@@ -148,13 +148,14 @@
 	else
 		O.key = key
 
-	O.loc = loc
+	O.forceMove(loc)
 	O.job = "Cyborg"
+
+	for(var/i in languages)
+		O.add_language(i)
 
 	if(O.client && O.client.prefs)
 		var/datum/preferences/B = O.client.prefs
-		for(var/language in B.alternate_languages)
-			O.add_language(language)
 		O.resize(B.size_multiplier, animate = TRUE)		// Adds size prefs to borgs
 		O.fuzzy = B.fuzzy								// Ditto
 
