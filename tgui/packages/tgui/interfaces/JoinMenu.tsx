@@ -38,7 +38,7 @@ interface JoinMenuData {
     }
   };
   ghostroles: JoinableRoles[];
-  security_level: "green" | "blue" | "red" | "amber" | "delta";
+  security_level: "green" | "blue" | "red" | "violet" | "yellow" | "orange" | "delta";
   evacuated: 0 | 1 | 2;
   duration: string; // timetext
   charname: string;
@@ -65,7 +65,8 @@ export const JoinMenu = (props, context) => {
                   <NoticeBox
                     success={data.security_level === "green"}
                     info={data.security_level === "blue"}
-                    warning={data.security_level === "amber"}
+                    warning={data.security_level === "yellow" || data.security_level === "violet"
+                    || data.security_level === "orange"}
                     danger={data.security_level === "red" || data.security_level === "delta"}>
                     Security Level: {data.security_level.charAt(0).toUpperCase()
                       + data.security_level.slice(1)}

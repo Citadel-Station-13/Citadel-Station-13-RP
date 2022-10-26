@@ -64,6 +64,9 @@
 	. = ..()
 	GLOB.department_accounts = GLOB.department_accounts || departments_managed
 
+/datum/job/proc/slots_remaining()
+	return max(total_positions - current_positions, 0)
+
 /datum/job/proc/equip(var/mob/living/carbon/human/H, var/alt_title)
 	var/datum/outfit/outfit = get_outfit(H, alt_title)
 	if(!outfit)
