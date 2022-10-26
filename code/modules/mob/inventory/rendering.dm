@@ -362,17 +362,17 @@
 			data[WORN_DATA_ICON] = inhand_icon
 			data[WORN_DATA_SIZE_X] = inhand_x_dimension
 			data[WORN_DATA_SIZE_Y] = inhand_y_dimension
-			data[WORN_DATA_STATE] = resolve_worn_state(inhands, (worn_render_flags & WORN_RENDER_SLOT_USE_PLURAL) (slot_meta.render_key_plural || slot_meta.render_key) : slot_meta.render_key, bodytype)
+			data[WORN_DATA_STATE] = resolve_worn_state(inhands, (worn_render_flags & WORN_RENDER_SLOT_USE_PLURAL) ?(slot_meta.render_key_plural || slot_meta.render_key) : slot_meta.render_key, bodytype)
 		else if(!inhands && worn_icon)
 			data[WORN_DATA_ICON] = worn_icon
 			data[WORN_DATA_SIZE_X] = worn_x_dimension
 			data[WORN_DATA_SIZE_Y] = worn_y_dimension
-			data[WORN_DATA_STATE] = resolve_worn_state(inhands, (worn_render_flags & WORN_RENDER_SLOT_USE_PLURAL) (slot_meta.render_key_plural || slot_meta.render_key) : slot_meta.render_key, bodytype)
+			data[WORN_DATA_STATE] = resolve_worn_state(inhands, (worn_render_flags & WORN_RENDER_SLOT_USE_PLURAL)? (slot_meta.render_key_plural || slot_meta.render_key) : slot_meta.render_key, bodytype)
 		else
 			data[WORN_DATA_ICON] = icon
 			data[WORN_DATA_SIZE_X] = icon_dimension_x
 			data[WORN_DATA_SIZE_Y] = icon_dimension_y
-			data[WORN_DATA_STATE] = resolve_worn_state(inhands, (worn_render_flags & WORN_RENDER_SLOT_USE_PLURAL) (slot_meta.render_key_plural || slot_meta.render_key) : slot_meta.render_key, bodytype)
+			data[WORN_DATA_STATE] = resolve_worn_state(inhands, (worn_render_flags & WORN_RENDER_SLOT_USE_PLURAL)? (slot_meta.render_key_plural || slot_meta.render_key) : slot_meta.render_key, bodytype)
 
 	//? layer ; worn_layer --> slot defaults for the item in question
 	data[WORN_DATA_LAYER] = worn_layer_override || slot_meta.resolve_default_layer(bodytype, M, src)
