@@ -461,7 +461,7 @@
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	hoodtype = /obj/item/clothing/head/hood/miner
 	siemens_coefficient = 0.9
-	armor = list(melee = 40, bullet = 5, laser = 10, energy = 0, bomb = 35, bio = 50, rad = 35)
+	armor = list(melee = 50, bullet = 5, laser = 10, energy = 0, bomb = 35, bio = 50, rad = 65)
 	allowed = list(
 		/obj/item/flashlight,
 		/obj/item/material/knife,
