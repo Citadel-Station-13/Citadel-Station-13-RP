@@ -386,6 +386,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "bc" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "bd" = (
@@ -833,7 +836,8 @@
 /turf/simulated/floor/tiled/white,
 /area/rift/asylum/mess)
 "cn" = (
-/turf/simulated/wall/r_wall,
+/obj/structure/stairs/spawner/south,
+/turf/simulated/floor/tiled/steel_grid,
 /area/engineering/break_room)
 "cp" = (
 /obj/machinery/atmospherics/component/binary/pump{
@@ -4199,7 +4203,12 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engineering_monitoring)
 "mo" = (
-/obj/structure/stairs/spawner/south,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 6
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "mp" = (
@@ -5677,8 +5686,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/foyer)
 "qm" = (
-/turf/simulated/mineral/icerock/lythios43c,
-/area/engineering/atmos)
+/turf/simulated/wall,
+/area/rift/surfacebase/underground/under2)
 "qo" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/red{
 	dir = 4
@@ -6997,7 +7006,6 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "uV" = (
-/obj/structure/bed/chair/comfy/beige,
 /obj/machinery/requests_console/preset/engineering{
 	pixel_y = 29
 	},
@@ -8196,9 +8204,6 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/lino,
 /area/chapel/office)
-"zl" = (
-/turf/simulated/wall/r_wall,
-/area/engineering/engine_eva)
 "zm" = (
 /obj/structure/simple_door/wood,
 /turf/simulated/floor/tiled/dark,
@@ -9053,14 +9058,9 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
 "Df" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 6
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/engineering/hallway)
+/obj/structure/bed/chair/comfy/beige,
+/turf/simulated/floor/carpet,
+/area/engineering/break_room)
 "Dg" = (
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
@@ -9746,7 +9746,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/wood,
 /area/engineering/break_room)
 "FH" = (
 /obj/structure/table/reinforced,
@@ -9969,7 +9969,7 @@
 /area/engineering/storage)
 "Gp" = (
 /obj/machinery/light,
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/wood,
 /area/engineering/break_room)
 "Gr" = (
 /obj/machinery/door/airlock/glass_mining{
@@ -14526,7 +14526,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/wood,
 /area/engineering/break_room)
 "Xp" = (
 /obj/machinery/light/small/emergency/flicker,
@@ -15038,7 +15038,7 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/wood,
 /area/engineering/break_room)
 "Zj" = (
 /obj/structure/stairs/spawner/south,
@@ -26089,8 +26089,8 @@ ar
 ar
 ar
 ar
-ML
-ML
+qm
+qm
 aa
 aa
 aa
@@ -26284,7 +26284,7 @@ GQ
 GQ
 ar
 iG
-ML
+qm
 aa
 aa
 aa
@@ -26478,7 +26478,7 @@ hU
 cQ
 ar
 iG
-ML
+qm
 aa
 aa
 aa
@@ -26672,7 +26672,7 @@ mA
 mA
 ar
 iG
-ML
+qm
 aa
 aa
 aa
@@ -26866,7 +26866,7 @@ mA
 GO
 ar
 iG
-ML
+qm
 aa
 aa
 aa
@@ -27060,7 +27060,7 @@ iE
 mB
 ar
 iG
-ML
+qm
 aa
 aa
 aa
@@ -27254,7 +27254,7 @@ GQ
 GQ
 ar
 iG
-ML
+qm
 aa
 aa
 aa
@@ -27447,8 +27447,8 @@ jc
 jc
 ar
 ar
-ML
-ML
+qm
+qm
 aa
 aa
 aa
@@ -27642,7 +27642,7 @@ oM
 lF
 ar
 iG
-ML
+qm
 aa
 aa
 aa
@@ -27836,7 +27836,7 @@ lU
 lF
 ar
 iG
-ML
+qm
 aa
 aa
 aa
@@ -28030,7 +28030,7 @@ Fm
 St
 ar
 iG
-ML
+qm
 aa
 aa
 aa
@@ -28224,7 +28224,7 @@ Fm
 Fm
 ar
 iG
-ML
+qm
 aa
 aa
 aa
@@ -28418,7 +28418,7 @@ Fm
 aC
 ar
 iG
-ML
+qm
 aa
 aa
 aa
@@ -28612,7 +28612,7 @@ Fm
 Fm
 ar
 iG
-ML
+qm
 aa
 aa
 aa
@@ -28806,7 +28806,7 @@ Fm
 Fm
 ar
 iG
-ML
+qm
 aa
 aa
 aa
@@ -29000,7 +29000,7 @@ oM
 lF
 ar
 iG
-ML
+qm
 aa
 aa
 aa
@@ -29194,7 +29194,7 @@ lU
 lF
 ar
 iG
-ML
+qm
 aa
 aa
 aa
@@ -29387,8 +29387,8 @@ mj
 jD
 jD
 jD
-ML
-ML
+qm
+qm
 aa
 aa
 aa
@@ -29581,7 +29581,7 @@ IT
 jC
 jC
 jD
-ML
+qm
 aa
 aa
 aa
@@ -29775,7 +29775,7 @@ IT
 jC
 jC
 jD
-ML
+qm
 aa
 aa
 aa
@@ -29969,7 +29969,7 @@ IT
 cO
 mg
 jD
-ML
+qm
 aa
 aa
 aa
@@ -30163,7 +30163,7 @@ pR
 IT
 IT
 jD
-ML
+qm
 aa
 aa
 aa
@@ -30357,7 +30357,7 @@ aA
 aA
 aA
 aA
-ML
+qm
 aa
 aa
 aa
@@ -30551,7 +30551,7 @@ TY
 Ao
 aA
 aA
-ML
+qm
 aa
 aa
 aa
@@ -32478,7 +32478,7 @@ zQ
 XY
 Hp
 Hp
-zl
+Hp
 Ir
 Ir
 Eq
@@ -32672,12 +32672,12 @@ cA
 RY
 px
 Iv
-zl
+Hp
 Bj
 KH
 Zr
 Qu
-UG
+Ir
 aa
 aa
 aa
@@ -32866,12 +32866,12 @@ YG
 QM
 Mw
 RQ
-zl
+Hp
 Bj
 KH
 Ij
 Fb
-UG
+Ir
 aa
 aa
 aa
@@ -33039,8 +33039,8 @@ uP
 uP
 uP
 pJ
-ym
-Df
+bc
+ce
 DB
 UQ
 KZ
@@ -33060,12 +33060,12 @@ lX
 xx
 Vb
 KE
-zl
-UG
-UG
-UG
-UG
-UG
+Hp
+Ir
+Ir
+Ir
+Ir
+Ir
 aa
 aa
 aa
@@ -33233,11 +33233,11 @@ uP
 uP
 uP
 pJ
-bc
+ym
 mo
 DB
 Zh
-gp
+Ko
 lL
 Pf
 DB
@@ -33255,7 +33255,7 @@ xx
 LB
 eC
 vp
-zl
+Hp
 aa
 aa
 aa
@@ -33427,8 +33427,8 @@ JA
 JA
 tr
 pJ
-DB
-DB
+Tt
+cn
 DB
 Xo
 FG
@@ -33449,7 +33449,7 @@ DW
 qF
 RQ
 RQ
-zl
+Hp
 aa
 aa
 aa
@@ -33622,10 +33622,10 @@ pJ
 pJ
 pJ
 DB
-gp
-fI
+DB
+DB
 kV
-gp
+Ko
 qU
 dp
 yN
@@ -33643,7 +33643,7 @@ uU
 th
 Lw
 va
-zl
+Hp
 aa
 aa
 aa
@@ -33817,27 +33817,27 @@ el
 es
 DB
 uV
-SD
-hE
+fI
+gp
 Gp
-cn
-cn
-cn
-cn
-cn
-cn
-cn
-cn
-cn
-zl
-zl
-zl
-zl
-zl
-zl
-zl
-zl
-zl
+DB
+DB
+DB
+DB
+DB
+DB
+DB
+DB
+DB
+Hp
+Hp
+Hp
+Hp
+Hp
+Hp
+Hp
+Hp
+Hp
 aa
 aa
 aa
@@ -34204,9 +34204,9 @@ Lj
 en
 Lj
 DB
-gp
-MJ
-gp
+Df
+SD
+hE
 DB
 DQ
 sW
@@ -34398,9 +34398,9 @@ op
 eo
 iC
 DB
-DB
-DB
-DB
+gp
+MJ
+gp
 DB
 sW
 wG
@@ -34592,9 +34592,9 @@ eh
 ep
 iJ
 Lj
-qm
-qm
-qm
+DS
+DS
+DS
 DS
 wG
 CG

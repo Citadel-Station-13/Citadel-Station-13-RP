@@ -14372,9 +14372,7 @@
 /turf/simulated/floor/brass,
 /area/rift/asylum/science)
 "Zq" = (
-/turf/simulated/wall/r_wall{
-	can_open = 1
-	},
+/turf/simulated/wall,
 /area/engineering/atmos/hallway)
 "Zr" = (
 /turf/simulated/floor/reinforced/n20,
@@ -28472,11 +28470,11 @@ tA
 OZ
 fa
 Cr
-eT
-eT
+qz
+qz
 zr
-eT
-eT
+qz
+qz
 qz
 sR
 TX
@@ -31782,7 +31780,7 @@ eT
 eT
 eT
 eT
-Hn
+Zq
 GC
 GC
 KY
@@ -31976,12 +31974,12 @@ Hn
 mO
 mO
 mO
-Hn
-Hn
 Zq
-Hn
-Hn
-Hn
+Zq
+Zq
+Zq
+Zq
+Zq
 sR
 my
 sR
@@ -32175,7 +32173,7 @@ IM
 mO
 mO
 mO
-Hn
+Zq
 Gr
 my
 sR
@@ -32360,7 +32358,7 @@ Zx
 Hn
 Hn
 Hn
-Hn
+Zq
 mO
 hX
 mO
@@ -32369,7 +32367,7 @@ mO
 mO
 mO
 mO
-Hn
+Zq
 Gr
 my
 sR
@@ -32554,7 +32552,7 @@ rx
 ol
 Um
 Um
-Hn
+Zq
 mO
 TB
 mO
@@ -32563,7 +32561,7 @@ SG
 Ly
 mO
 mO
-Hn
+Zq
 sR
 my
 my
@@ -32748,7 +32746,7 @@ pG
 ol
 Um
 Um
-Hn
+Zq
 mO
 mO
 mO
@@ -32757,7 +32755,7 @@ IM
 nj
 mO
 mO
-Hn
+Zq
 sR
 my
 sR
@@ -32942,16 +32940,16 @@ ol
 ol
 sa
 sa
-ol
+sa
 mO
 mO
 mO
-Hn
-Hn
-Hn
-Hn
-Hn
-Hn
+Zq
+Zq
+Zq
+Zq
+Zq
+Zq
 sa
 tB
 sa
@@ -33136,11 +33134,11 @@ to
 to
 zj
 zO
-ol
-Hn
-Hn
-Hn
-Hn
+sa
+Zq
+Zq
+Zq
+Zq
 FT
 li
 tm
