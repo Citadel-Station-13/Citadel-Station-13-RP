@@ -154,7 +154,7 @@
 		var/obj/item/reagent_containers/food/drinks/bottle/small/beer/B = src.emag
 		B.reagents.add_reagent("beer2", 2 * amount)
 
-/obj/item/robot_module/robot/scrubpup
+/obj/item/robot_module/robot/quad_jani
 	name = "JaniQuad module"
 	sprites = list(
 					"Custodial Hound" = "scrubpup",
@@ -166,7 +166,7 @@
 	channels = list("Service" = 1)
 	can_be_pushed = 0
 
-/obj/item/robot_module/robot/scrubpup/Initialize(mapload)
+/obj/item/robot_module/robot/quad_jani/Initialize(mapload)
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/dogborg/jaws/small(src)
@@ -239,7 +239,7 @@
 	..()
 
 // Uses modified K9 sprites.
-/obj/item/robot_module/robot/clerical/brodog
+/obj/item/robot_module/robot/clerical/quad_serv
 	name = "Service Quadruped module"
 	sprites = list(
 					"Blackhound" = "k50",
@@ -252,7 +252,7 @@
 	can_be_pushed = 0
 
 // In a nutshell, basicly service/butler robot but in dog form.
-/obj/item/robot_module/robot/clerical/brodog/Initialize(mapload)
+/obj/item/robot_module/robot/clerical/quad_serv/Initialize(mapload)
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/gripper/service(src)

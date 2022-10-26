@@ -68,7 +68,7 @@
 
 	..()
 
-/obj/item/robot_module/robot/science
+/obj/item/robot_module/robot/quad_sci
 	name = "SciQuad Module"
 	sprites = list(
 					"Research Hound" = "science",
@@ -78,7 +78,7 @@
 	channels = list("Science" = 1)
 	can_be_pushed = 0
 
-/obj/item/robot_module/robot/science/Initialize(mapload)
+/obj/item/robot_module/robot/quad_sci/Initialize(mapload)
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/portable_destructive_analyzer(src)

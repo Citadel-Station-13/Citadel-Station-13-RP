@@ -94,7 +94,7 @@
 
 //Crisis module removed - 5/2/2021
 
-/obj/item/robot_module/robot/medihound
+/obj/item/robot_module/robot/quad_medi
 	name = "MediQuad module"
 	channels = list("Medical" = 1)
 	networks = list(NETWORK_MEDICAL)
@@ -108,7 +108,7 @@
 					"F3-LINE" = "FELI-Medical"
 					)
 
-/obj/item/robot_module/robot/medihound/Initialize(mapload)
+/obj/item/robot_module/robot/quad_medi/Initialize(mapload)
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/dogborg/jaws/small(src) //In case a patient is being attacked by carp.

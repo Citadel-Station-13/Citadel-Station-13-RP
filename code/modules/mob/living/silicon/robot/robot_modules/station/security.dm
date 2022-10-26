@@ -74,7 +74,7 @@
 	src.modules += new /obj/item/borg/combat/mobility(src)
 	src.emag = new /obj/item/gun/energy/lasercannon/mounted(src)
 
-/obj/item/robot_module/robot/knine
+/obj/item/robot_module/robot/quad_sec
 	name = "SecuriQuad module"
 	sprites = list(
 					"K9 hound" = "k9",
@@ -88,7 +88,7 @@
 	networks = list(NETWORK_SECURITY)
 	can_be_pushed = 0
 
-/obj/item/robot_module/robot/knine/Initialize(mapload)
+/obj/item/robot_module/robot/quad_sec/Initialize(mapload)
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
 
@@ -133,7 +133,7 @@
 		sprites["Alina"] = "alina-sec"
 		. = ..()
 
-/obj/item/robot_module/robot/knine/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/robot_module/robot/quad_sec/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 	var/obj/item/flash/F = locate() in src.modules
 	if(F.broken)
 		F.broken = 0

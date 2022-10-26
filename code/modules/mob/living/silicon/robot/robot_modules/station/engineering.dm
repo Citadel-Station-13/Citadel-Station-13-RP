@@ -163,7 +163,7 @@
 	src.modules += PL
 
 
-/obj/item/robot_module/robot/engiedog
+/obj/item/robot_module/robot/quad_engi
 	name = "EngiQuad module"
 	sprites = list(
 					"Pupdozer" = "pupdozer",
@@ -176,7 +176,7 @@
 	subsystems = list(/mob/living/silicon/proc/subsystem_power_monitor)
 	can_be_pushed = 0
 
-/obj/item/robot_module/robot/engiedog/Initialize(mapload)
+/obj/item/robot_module/robot/quad_engi/Initialize(mapload)
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/borg/sight/meson(src)
