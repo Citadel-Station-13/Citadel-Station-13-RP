@@ -37,7 +37,7 @@
 	src.emag = new /obj/item/melee/disruptor/borg(src)
 
 /obj/item/robot_module/robot/beast_miner
-	name = "Mining Beast module"
+	name = "Mining Quadruped module"
 	sprites = list(
 					"F3-LINE" = "FELI-Miner"
 					)

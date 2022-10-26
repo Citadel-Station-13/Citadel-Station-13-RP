@@ -32,7 +32,7 @@
 	src.emag = new /obj/item/melee/energy/sword(src)
 
 /obj/item/robot_module/robot/basic_beast
-	name = "Standard Beast module"
+	name = "Standard Quadruped module"
 	sprites = list(
 					"F3-LINE" = "FELI-Standard"
 					)

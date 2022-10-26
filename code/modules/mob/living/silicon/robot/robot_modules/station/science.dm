@@ -69,7 +69,7 @@
 	..()
 
 /obj/item/robot_module/robot/science
-	name = "SciBeast Module"
+	name = "SciQuad Module"
 	sprites = list(
 					"Research Hound" = "science",
 					"Borgi" = "borgi-sci",

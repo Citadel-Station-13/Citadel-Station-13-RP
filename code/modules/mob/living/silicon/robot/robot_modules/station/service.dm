@@ -155,7 +155,7 @@
 		B.reagents.add_reagent("beer2", 2 * amount)
 
 /obj/item/robot_module/robot/scrubpup
-	name = "JaniBeast module"
+	name = "JaniQuad module"
 	sprites = list(
 					"Custodial Hound" = "scrubpup",
 					"Borgi" = "borgi-jani",
@@ -240,7 +240,7 @@
 
 // Uses modified K9 sprites.
 /obj/item/robot_module/robot/clerical/brodog
-	name = "Service Beast module"
+	name = "Service Quadruped module"
 	sprites = list(
 					"Blackhound" = "k50",
 					"Pinkhound" = "k69",

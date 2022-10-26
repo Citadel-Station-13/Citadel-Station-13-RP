@@ -75,7 +75,7 @@
 	src.emag = new /obj/item/gun/energy/lasercannon/mounted(src)
 
 /obj/item/robot_module/robot/knine
-	name = "SecuriBeast module"
+	name = "SecuriQuad module"
 	sprites = list(
 					"K9 hound" = "k9",
 					"K9 Alternative" = "k92",

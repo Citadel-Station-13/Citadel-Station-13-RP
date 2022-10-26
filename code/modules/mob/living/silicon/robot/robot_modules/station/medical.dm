@@ -95,7 +95,7 @@
 //Crisis module removed - 5/2/2021
 
 /obj/item/robot_module/robot/medihound
-	name = "MediBeast module"
+	name = "MediQuad module"
 	channels = list("Medical" = 1)
 	networks = list(NETWORK_MEDICAL)
 	subsystems = list(/mob/living/silicon/proc/subsystem_crew_monitor)

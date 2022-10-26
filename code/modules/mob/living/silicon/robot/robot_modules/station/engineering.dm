@@ -164,7 +164,7 @@
 
 
 /obj/item/robot_module/robot/engiedog
-	name = "EngiBeast module"
+	name = "EngiQuad module"
 	sprites = list(
 					"Pupdozer" = "pupdozer",
 					"V2 Engidog" = "thottbot",
