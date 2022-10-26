@@ -19,7 +19,7 @@
 		++count
 		var/datum/language/L = SScharacters.resolve_language_id(id)
 		. += "[L.name] [href_simple(prefs, "remove", "Remove", id)] "
-	if(count < prefs.extraneous_language)
+	if(count < prefs.extraneous_languages_max())
 		. += "[href_simple(prefs, "add", "Add")]"
 
 /datum/category_item/player_setup_item/background/language/act(datum/preferences/prefs, mob/user, action, list/params)

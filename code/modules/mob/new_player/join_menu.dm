@@ -35,7 +35,8 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 
 	// collect
 	var/list/datum/job/eligible = list()
-	for(var/datum/job/J in SSjob.GetAllJobs())
+	for(var/title in SSjob.name_occupations)
+		var/datum/job/J = SSjob.name_occupations[title]
 		if(!(J.join_types & JOB_LATEJOIN))
 			continue
 		var/reason = N.IsJobUnavailable(J)

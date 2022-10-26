@@ -1,8 +1,4 @@
-var/global/datum/controller/occupations/job_master
-
-/datum/controller/occupations
-		//List of all jobs
-	var/list/occupations = list()
+/datum/controller/subsystem/job
 		//Players who need jobs
 	var/list/unassigned = list()
 		//Debug info
@@ -10,48 +6,19 @@ var/global/datum/controller/occupations/job_master
 		//Cache of icons for job info window
 	var/list/job_icons = list()
 
-/datum/controller/occupations/proc/SetupOccupations()
-	occupations = list()
-	//var/list/all_jobs = typesof(/datum/job)
-	var/list/all_jobs = list(/datum/job/station/assistant) | GLOB.using_map.allowed_jobs
-	if(!all_jobs.len)
-		to_world(SPAN_DEBUGWARNING("Error setting up jobs, no job datums found!"))
-		return FALSE
-	for(var/J in all_jobs)
-		var/datum/job/job = J
-		if(initial(job.abstract_type) == J)
-			continue
-		job = new J
-		occupations += job
-	tim_sort(occupations, /proc/cmp_job_datums)
-	return TRUE
-
-
-/datum/controller/occupations/proc/Debug(text)
+/datum/controller/subsystem/job/proc/Debug(text)
 	if(!GLOB.Debug2)
 		return FALSE
 	job_debug.Add(text)
 	return TRUE
 
+/datum/controller/subsystem/job/proc/GetPlayerAltTitle(mob/new_player/player, rank)
+	return player.client.prefs.get_job_alt_title_name(get_job(rank))
 
-/datum/controller/occupations/proc/GetJob(rank)
-	if(!rank)
-		return null
-	for(var/datum/job/J in occupations)
-		if(!J)
-			continue
-		if(J.title == rank)
-			return J
-	return null
-
-
-/datum/controller/occupations/proc/GetPlayerAltTitle(mob/new_player/player, rank)
-	return player.client.prefs.get_job_alt_title_name(GetJob(rank))
-
-/datum/controller/occupations/proc/AssignRole(mob/new_player/player, rank, latejoin = 0)
+/datum/controller/subsystem/job/proc/AssignRole(mob/new_player/player, rank, latejoin = 0)
 	Debug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
 	if(player && player.mind && rank)
-		var/datum/job/job = GetJob(rank)
+		var/datum/job/job = get_job(rank)
 		if(!job)
 			return 0
 		if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
@@ -79,15 +46,15 @@ var/global/datum/controller/occupations/job_master
 
 
 /// Making additional slot on the fly.
-/datum/controller/occupations/proc/FreeRole(rank)
-	var/datum/job/job = GetJob(rank)
+/datum/controller/subsystem/job/proc/FreeRole(rank)
+	var/datum/job/job = get_job(rank)
 	if(job && job.total_positions != -1)
 		job.total_positions++
 		return 1
 	return 0
 
 
-/datum/controller/occupations/proc/FindOccupationCandidates(datum/job/job, level, flag)
+/datum/controller/subsystem/job/proc/FindOccupationCandidates(datum/job/job, level, flag)
 	Debug("Running FOC, Job: [job], Level: [level], Flag: [flag]")
 	var/list/candidates = list()
 	for(var/mob/new_player/player in unassigned)
@@ -112,7 +79,7 @@ var/global/datum/controller/occupations/job_master
 	return candidates
 
 
-/datum/controller/occupations/proc/GiveRandomJob(mob/new_player/player)
+/datum/controller/subsystem/job/proc/GiveRandomJob(mob/new_player/player)
 	Debug("GRJ Giving random job, Player: [player]")
 	for(var/datum/job/job in shuffle(occupations))
 		if(!job)
@@ -121,7 +88,7 @@ var/global/datum/controller/occupations/job_master
 		if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
 			continue
 
-		if(istype(job, GetJob(USELESS_JOB))) // We don't want to give him visitor, that's boring!
+		if(istype(job, get_job(USELESS_JOB))) // We don't want to give him visitor, that's boring!
 			continue
 
 		if(SSjob.is_job_in_department(job.title, DEPARTMENT_COMMAND)) //If you want a command position, select it!
@@ -148,7 +115,7 @@ var/global/datum/controller/occupations/job_master
 			break
 
 
-/datum/controller/occupations/proc/ResetOccupations()
+/datum/controller/subsystem/job/proc/ResetOccupations()
 	for(var/mob/new_player/player in player_list)
 		if((player) && (player.mind))
 			player.mind.assigned_role = null
@@ -161,10 +128,10 @@ var/global/datum/controller/occupations/job_master
  * This proc is called before the level loop of DivideOccupations() and will try to select a head,
  * ignoring ALL non-head preferences for every level until it locates a head or runs out of levels to check.
  */
-/datum/controller/occupations/proc/FillHeadPosition()
+/datum/controller/subsystem/job/proc/FillHeadPosition()
 	for(var/level in JOB_PRIORITY_LOW to JOB_PRIORITY_HIGH)
 		for(var/command_position in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
-			var/datum/job/job = GetJob(command_position)
+			var/datum/job/job = get_job(command_position)
 			if(!job)
 				continue
 			var/list/candidates = FindOccupationCandidates(job, level)
@@ -208,9 +175,9 @@ var/global/datum/controller/occupations/job_master
  * This proc is called at the start of the level loop of DivideOccupations() and will cause
  * head jobs to be checked before any other jobs of the same level.
  */
-/datum/controller/occupations/proc/CheckHeadPositions(level)
+/datum/controller/subsystem/job/proc/CheckHeadPositions(level)
 	for(var/command_position in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
-		var/datum/job/job = GetJob(command_position)
+		var/datum/job/job = get_job(command_position)
 		if(!job)
 			continue
 		var/list/candidates = FindOccupationCandidates(job, level)
@@ -225,7 +192,7 @@ var/global/datum/controller/occupations/job_master
  *  fills var "assigned_role" for all ready players.
  *  This proc must not have any side effect besides of modifying "assigned_role".
  **/
-/datum/controller/occupations/proc/DivideOccupations()
+/datum/controller/subsystem/job/proc/DivideOccupations()
 	//Setup new player list and get the jobs list
 	Debug("Running DO")
 	SetupOccupations()
@@ -349,11 +316,11 @@ var/global/datum/controller/occupations/job_master
 	return 1
 
 
-/datum/controller/occupations/proc/EquipRank(mob/living/carbon/human/H, rank, joined_late = 0)
+/datum/controller/subsystem/job/proc/EquipRank(mob/living/carbon/human/H, rank, joined_late = 0)
 	if(!H)
 		return null
 
-	var/datum/job/job = GetJob(rank)
+	var/datum/job/job = get_job(rank)
 	var/list/spawn_in_storage = list()
 
 	if(!joined_late)
@@ -571,7 +538,7 @@ var/global/datum/controller/occupations/job_master
 	H.update_hud_antag()
 	return H
 
-/datum/controller/occupations/proc/LoadJobs(jobsfile) //ran during round setup, reads info from jobs.txt -- Urist
+/datum/controller/subsystem/job/proc/LoadJobs(jobsfile) //ran during round setup, reads info from jobs.txt -- Urist
 	if(!config_legacy.load_jobs_from_txt)
 		return 0
 
@@ -596,7 +563,7 @@ var/global/datum/controller/occupations/job_master
 			continue
 
 		if(name && value)
-			var/datum/job/J = GetJob(name)
+			var/datum/job/J = get_job(name)
 			if(!J)	continue
 			J.total_positions = text2num(value)
 			J.spawn_positions = text2num(value)
@@ -606,7 +573,7 @@ var/global/datum/controller/occupations/job_master
 	return 1
 
 
-/datum/controller/occupations/proc/HandleFeedbackGathering()
+/datum/controller/subsystem/job/proc/HandleFeedbackGathering()
 	for(var/datum/job/job in occupations)
 		var/tmp_str = "|[job.title]|"
 
@@ -638,7 +605,7 @@ var/global/datum/controller/occupations/job_master
 		tmp_str += "HIGH=[level1]|MEDIUM=[level2]|LOW=[level3]|NEVER=[level4]|BANNED=[level5]|YOUNG=[level6]|-"
 		feedback_add_details("job_preferences",tmp_str)
 
-/datum/controller/occupations/proc/LateSpawn(client/C, rank)
+/datum/controller/subsystem/job/proc/LateSpawn(client/C, rank)
 
 	var/fail_deadly = FALSE
 

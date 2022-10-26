@@ -514,7 +514,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	//If desired, apply equipment.
 	if(equipment)
 		if(charjob)
-			job_master.EquipRank(new_character, charjob, 1)
+			SSjob.EquipRank(new_character, charjob, 1)
 
 	//If desired, add records.
 	if(records)

@@ -23,11 +23,11 @@
 	// resolve typepaths
 	for(var/thing in allow_species)
 		if(ispath(thing))
-			allow_species += SScharacters.resolve_character_species(thing).id
+			allow_species += SScharacters.resolve_character_species(thing).uid
 			allow_species -= thing
 	for(var/thing in forbid_species)
 		if(ispath(thing))
-			forbid_species += SScharacters.resolve_character_species(thing).id
+			forbid_species += SScharacters.resolve_character_species(thing).uid
 			forbid_species -= thing
 	for(var/thing in innate_languages)
 		if(ispath(thing))
