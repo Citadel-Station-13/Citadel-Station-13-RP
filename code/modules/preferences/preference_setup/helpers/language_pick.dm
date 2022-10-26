@@ -3,7 +3,7 @@
 /datum/preferences/proc/language_pick(mob/user)
 	if(GLOB.language_picker_active[REF(user)])
 		return
-	new /datum/tgui_language_picker(user, resolve_whitelisted_language(), current_language_id, src)
+	new /datum/tgui_language_picker(user, src)
 
 /datum/preferences/proc/route_language_pick(id, mob/user)
 	return language_pick_finalize(id, user)
@@ -30,19 +30,13 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 /datum/tgui_language_picker
 	/// user ref
 	var/user_ref
-	/// whitelisted uids
-	var/list/whitelisted
-	/// default uid
-	var/default
 	/// preferences
 	var/datum/preferences/prefs
 
-/datum/tgui_language_picker/New(mob/user, list/whitelisted_for = list(), default_id, datum/preferences/prefs)
+/datum/tgui_language_picker/New(mob/user, datum/preferences/prefs)
 	if(!istype(user) || !istype(prefs))
 		qdel(src)
 		CRASH("what?")
-	src.whitelisted = whitelisted_for
-	src.default = default_id
 	src.prefs = prefs
 	user_ref = REF(user)
 	GLOB.language_picker_active += user_ref

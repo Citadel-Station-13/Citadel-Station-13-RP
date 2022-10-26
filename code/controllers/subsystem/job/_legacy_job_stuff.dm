@@ -193,7 +193,6 @@
 /datum/controller/subsystem/job/proc/DivideOccupations()
 	//Setup new player list and get the jobs list
 	Debug("Running DO")
-	SetupOccupations()
 
 	//Holder for Triumvirate is stored in the SSticker, this just processes it
 	if(SSticker && SSticker.triai)

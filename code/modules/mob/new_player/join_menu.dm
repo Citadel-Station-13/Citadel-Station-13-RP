@@ -63,7 +63,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 		// finally, add job data
 		var/slots = J.slots_remaining()
 		var/list/data = list(
-			"id" = J.type,
+			"id" = J.id,
 			"name" = EffectiveTitle(J, usr.client),
 			"desc" = EffectiveDesc(J, usr.client),
 			"slots" = slots == INFINITY? -1 : slots,
@@ -91,10 +91,9 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 
 /datum/join_menu/ui_data(mob/user)
 	. = ..()
-	#warn security level
 	// common info goes into ui data
 	var/level = "green"
-	switch(security_level)
+	switch(GLOB.security_level)
 		if(SEC_LEVEL_BLUE)
 			level = "blue";
 		if(SEC_LEVEL_ORANGE)
@@ -111,15 +110,15 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 			level = "delta";
 	.["security_level"] = level
 	.["duration"] = DisplayTimeText(world.time - SSticker.round_start_time)
-	// 0 = not evaccing, 1 = evacuating, 2 = evacuated
+	// 0 = not evaccing, 1 = evacuating, 2 = crew transfer, 3 = evacuated
 	var/evac = 0
-	/*	nah later
-	switch(SSshuttle.emergency?.mode)
-		if(SHUTTLE_ESCAPE)
-			evac = 2
-		if(SHUTTLE_CALL)
+	if(SSemergencyshuttle.going_to_centcom())
+		evac = 3
+	else if(SSemergencyshuttle.online())
+		if(SSemergencyshuttle.evac)
 			evac = 1
-	*/
+		else
+			evac = 2
 	.["evacuated"] = evac
 	.["charname"] = user.client?.prefs?.real_name || "Unknown User"
 	// position in queue, -1 for not queued, null for no queue active, otherwise number
@@ -156,6 +155,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
  * returns effective desc - used for alt titles - JOBS ONLY, not ghostroles
  */
 /datum/join_menu/proc/EffectiveDesc(job_id, client/C)
+	#warn impl
 	return // blank but CAN be null
 
 /datum/join_menu/proc/QueueStatus(mob/new_player/N)
@@ -207,7 +207,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 				return
 			switch(params["type"])
 				if("job")
-					var/datum/job/J = SSjob.GetJobType(id)
+					var/datum/job/J = SSjob.job_by_id(id)
 					if(!J)
 						to_chat(usr, "<span class='warning'>Failed to find job [id].")
 						return
@@ -223,7 +223,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 					var/client/C = N.client
 					var/error = R.AttemptSpawn(C)
 					if(istext(error))
-						to_chat(C, span_danger(error))
+						to_chat(C, SPAN_DANGER(error))
 		if("queue")
 			// AttemptQueue(usr)
 
