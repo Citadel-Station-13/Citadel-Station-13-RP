@@ -151,8 +151,8 @@
 	if(B && B.bcell)
 		B.bcell.give(amount)*/
 
-/obj/item/robot_module/robot/beast_combat
-	name = "combat beast module"
+/obj/item/robot_module/robot/quad_combat
+	name = "combat quadruped module"
 	hide_on_manifest = 1
 	sprites = list(
 					"Haruka" = "marinaCB",
@@ -162,7 +162,7 @@
 					"F3-LINE" = "FELI-Combat"
 					)
 
-/obj/item/robot_module/robot/beast_combat/Initialize(mapload)
+/obj/item/robot_module/robot/quad_combat/Initialize(mapload)
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/flash(src)

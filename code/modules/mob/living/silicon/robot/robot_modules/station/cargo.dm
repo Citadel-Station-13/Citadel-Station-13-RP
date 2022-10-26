@@ -36,7 +36,7 @@
 	src.emag = new /obj/item/pickaxe/diamonddrill(src)
 	src.emag = new /obj/item/melee/disruptor/borg(src)
 
-/obj/item/robot_module/robot/beast_miner
+/obj/item/robot_module/robot/quad_miner
 	name = "Mining Quadruped module"
 	sprites = list(
 					"F3-LINE" = "FELI-Miner"
@@ -45,7 +45,7 @@
 	can_be_pushed = 0
 
 // In a nutshell, basicly service/butler robot but in dog form.
-/obj/item/robot_module/robot/miner/beast/Initialize(mapload)
+/obj/item/robot_module/robot/quad_miner/Initialize(mapload)
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/borg/sight/material(src)

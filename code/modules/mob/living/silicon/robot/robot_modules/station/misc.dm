@@ -31,7 +31,7 @@
 	src.modules += new /obj/item/healthanalyzer(src)
 	src.emag = new /obj/item/melee/energy/sword(src)
 
-/obj/item/robot_module/robot/basic_beast
+/obj/item/robot_module/robot/basic_quad
 	name = "Standard Quadruped module"
 	sprites = list(
 					"F3-LINE" = "FELI-Standard"
@@ -39,7 +39,7 @@
 	can_be_pushed = 0
 
 // In a nutshell, basicly service/butler robot but in dog form.
-/obj/item/robot_module/robot/basic_beast/Initialize(mapload)
+/obj/item/robot_module/robot/basic_quad/Initialize(mapload)
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/melee/baton/loaded(src)

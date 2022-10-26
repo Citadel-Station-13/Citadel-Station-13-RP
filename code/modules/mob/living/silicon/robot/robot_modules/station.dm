@@ -10,13 +10,13 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	"Engineering"	= /obj/item/robot_module/robot/engineering/general,
 //	"Construction"	= /obj/item/robot_module/robot/engineering/construction,
 	"Janitor" 		= /obj/item/robot_module/robot/janitor,
-	"Quadruped"			= /obj/item/robot_module/robot/basic_beast,
+	"Quadruped"			= /obj/item/robot_module/robot/basic_quad,
 	"MediQuad"		= /obj/item/robot_module/robot/medihound,
 	"SecuriQuad"	= /obj/item/robot_module/robot/knine,
 	"JaniQuad"		= /obj/item/robot_module/robot/scrubpup,
 	"SciQuad"		= /obj/item/robot_module/robot/science,
 	"EngiQuad"		= /obj/item/robot_module/robot/engiedog,
-	"Mining Quad"	= /obj/item/robot_module/robot/beast_miner,
+	"Mining Quad"	= /obj/item/robot_module/robot/quad_miner,
 	"Service Quad"	= /obj/item/robot_module/robot/clerical/brodog,
 	"ERT"			= /obj/item/robot_module/robot/ert
 	))
