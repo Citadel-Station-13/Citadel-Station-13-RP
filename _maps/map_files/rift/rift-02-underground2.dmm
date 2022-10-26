@@ -8216,10 +8216,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/chapel/observation)
-"zq" = (
-/obj/structure/foamedmetal,
-/turf/space/basic,
-/area/rift/surfacebase/underground/under2)
 "zr" = (
 /obj/item/flame/candle/candelabra/everburn,
 /turf/simulated/floor/carpet/bcarpet,
@@ -27631,7 +27627,7 @@ Mu
 oM
 lF
 ar
-zq
+iG
 ML
 aa
 aa
@@ -27825,7 +27821,7 @@ cd
 lU
 lF
 ar
-zq
+iG
 ML
 aa
 aa
@@ -28019,7 +28015,7 @@ Fm
 Fm
 St
 ar
-zq
+iG
 ML
 aa
 aa
@@ -28213,7 +28209,7 @@ Fm
 Fm
 Fm
 ar
-zq
+iG
 ML
 aa
 aa
@@ -28407,7 +28403,7 @@ Fm
 Fm
 aC
 ar
-zq
+iG
 ML
 aa
 aa
@@ -28601,7 +28597,7 @@ Fm
 Fm
 Fm
 ar
-zq
+iG
 ML
 aa
 aa
@@ -28795,7 +28791,7 @@ Fm
 Fm
 Fm
 ar
-zq
+iG
 ML
 aa
 aa
@@ -28989,7 +28985,7 @@ gn
 oM
 lF
 ar
-zq
+iG
 ML
 aa
 aa
@@ -29183,7 +29179,7 @@ lC
 lU
 lF
 ar
-zq
+iG
 ML
 aa
 aa
