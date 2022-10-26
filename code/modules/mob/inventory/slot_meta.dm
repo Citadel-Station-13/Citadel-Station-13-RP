@@ -120,7 +120,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	//! Rendering
 	/// rendering slot key
 	var/render_key
-	/// rendering default layer; first is default, rest are alt layers.
+	/// rendering default layer; first is default, rest are alt layers. can be list or just one number.
 	VAR_PROTECTED/list/render_layer
 	/// rendering icon state cache for default icons
 	VAR_PRIVATE/list/render_state_cache
@@ -168,6 +168,10 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_state_cache = list()
 	render_dim_x_cache = list()
 	render_dim_y_cache = list()
+	if(!islist(render_default_icons))		// save the checks later for null
+		render_default_icons = list()
+	if(!islist(render_fallback))			// save the checks later for null
+		render_fallback = list()
 	for(var/bodytype_str in render_default_icons)
 		render_default_icons[bodytype_str] = istype(render_default_icons[bodytype_str], /icon)? render_default_icons[bodytype_str] : icon(render_default_icons[bodytype_str])
 		if(!isicon(render_default_icons[bodytype_str]))
