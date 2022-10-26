@@ -3407,7 +3407,7 @@
 /area/engineering/atmos)
 "lR" = (
 /obj/effect/alien/weeds,
-/obj/effect/alien/egg,
+/obj/structure/barricade/cutout/fukken_xeno,
 /turf/simulated/floor/plating,
 /area/engineering/atmos/hallway)
 "lS" = (
@@ -7532,11 +7532,6 @@
 /obj/machinery/camera/network/engineering,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
-"CN" = (
-/obj/effect/alien/weeds,
-/obj/structure/bed/hybrid_nest,
-/turf/simulated/floor/plating,
-/area/engineering/atmos/hallway)
 "CO" = (
 /obj/structure/railing{
 	dir = 1
@@ -31802,7 +31797,7 @@ gL
 Hn
 mO
 mO
-CN
+mO
 Hn
 Hn
 Zq
@@ -32188,11 +32183,11 @@ Hn
 Hn
 Hn
 Hn
-CN
-mO
-mO
 mO
 hX
+mO
+mO
+mO
 mO
 mO
 mO
@@ -32383,8 +32378,8 @@ Um
 Um
 Hn
 mO
-mO
 lR
+mO
 mO
 SG
 Ly
@@ -32770,9 +32765,9 @@ ol
 sa
 sa
 ol
-CN
 mO
-CN
+mO
+mO
 Hn
 Hn
 Hn
