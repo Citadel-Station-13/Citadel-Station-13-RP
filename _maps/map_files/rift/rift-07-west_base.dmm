@@ -238,6 +238,9 @@
 "iB" = (
 /turf/simulated/mineral/icerock/ignore_cavegen/lythios43c,
 /area/rift/surfacebase/outside/west_base)
+"iJ" = (
+/turf/simulated/wall/dungeon,
+/area/rift/surfacebase/outside/west_base)
 "jp" = (
 /obj/structure/girder/reinforced,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -250,6 +253,11 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
+"jK" = (
+/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor,
+/area/turbolift/rwest_mining/base)
 "kC" = (
 /obj/effect/floor_decal/techfloor/orange/corner{
 	dir = 4
@@ -6689,11 +6697,11 @@ Fo
 xf
 xf
 EZ
-Fo
-Fo
-Fo
-Fo
-Fo
+iJ
+iJ
+iJ
+iJ
+iJ
 DE
 DE
 wf
@@ -6887,7 +6895,7 @@ CC
 Cf
 Cf
 wc
-Fo
+iJ
 DE
 DE
 wf
@@ -7081,7 +7089,7 @@ HA
 Cf
 Cf
 my
-Fo
+iJ
 DE
 DE
 wf
@@ -7275,7 +7283,7 @@ OB
 eM
 eM
 dJ
-Fo
+iJ
 DE
 DE
 wf
@@ -7465,11 +7473,11 @@ Fo
 HA
 HA
 HA
-Fo
-Fo
-Fo
-Fo
-Fo
+iJ
+iJ
+iJ
+iJ
+iJ
 DE
 DE
 wf
@@ -33883,8 +33891,8 @@ NS
 dU
 bX
 dY
-dY
-dY
+jK
+jK
 dY
 bX
 py

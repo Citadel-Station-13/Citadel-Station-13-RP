@@ -12110,6 +12110,12 @@
 "zz" = (
 /turf/simulated/wall,
 /area/rift/station/adherent_maintenance)
+"zA" = (
+/obj/structure/transit_tube/high_velocity{
+	icon_state = "D-NE"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "zB" = (
 /obj/structure/ladder/up,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -16220,6 +16226,12 @@
 /obj/structure/bed/chair/office/dark,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/longtermstorage)
+"NT" = (
+/obj/structure/transit_tube/high_velocity{
+	icon_state = "D-SW"
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "NV" = (
 /obj/machinery/drone_fabricator{
 	fabricator_tag = "Engineering"
@@ -25340,7 +25352,7 @@ db
 OO
 OO
 Wt
-OO
+zA
 jL
 jL
 jL
@@ -25533,9 +25545,9 @@ Yu
 OO
 OO
 OO
-OO
+NT
 uj
-OO
+zA
 OO
 es
 jL
@@ -25728,9 +25740,9 @@ OO
 OO
 OO
 ig
-OO
+NT
 uj
-OO
+zA
 OO
 jL
 aa
@@ -25923,7 +25935,7 @@ Wc
 Uh
 bA
 bA
-OO
+NT
 Ss
 OO
 jL
