@@ -18,8 +18,11 @@
 					"L3P1-D0T" = "Glitterfly-Miner",
 					"Miss M" = "miss-miner",
 					"Carffin" = "coffin-Service",
-					"Coffing" = "coffin-Mining"
-
+					"Coffing" = "coffin-Mining",
+					"Handy" = "handy-miner",
+					"Acheron" = "mechoid-Miner",
+					"Shellguard Noble" = "Noble-DIG",
+					"ZOOM-BA" = "zoomba-miner"
 				)
 
 /obj/item/robot_module/robot/miner/Initialize(mapload)

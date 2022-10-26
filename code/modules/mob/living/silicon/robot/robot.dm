@@ -164,46 +164,6 @@
 	var/ui_style_vr = FALSE //Do we use our hud icons?
 	var/sitting = FALSE
 	var/bellyup = FALSE
-	var/vr_icons = list(
-					   "handy-hydro",
-					   "handy-service",
-					   "handy-clerk",
-					   "handy-janitor",
-					   "handy-miner",
-					   "handy-standard",
-					   "handy-sec",
-					   "mechoid-Standard",
-					   "mechoid-Medical",
-					   "mechoid-Security",
-					   "mechoid-Science",
-					   "mechoid-Engineering",
-					   "mechoid-Miner",
-					   "mechoid-Service",
-					   "mechoid-Janitor",
-					   "mechoid-Combat",
-					   "mechoid-Combat-roll",
-					   "mechoid-Combat-shield",
-					   "Noble-CLN",
-					   "Noble-SRV",
-					   "Noble-DIG",
-					   "Noble-MED",
-					   "Noble-SEC",
-					   "Noble-ENG",
-					   "Noble-STD",
-					   "zoomba-standard",
-					   "zoomba-clerical",
-					   "zoomba-engineering",
-					   "zoomba-janitor",
-					   "zoomba-medical",
-					   "zoomba-crisis",
-					   "zoomba-miner",
-					   "zoomba-research",
-					   "zoomba-security",
-					   "zoomba-service",
-					   "zoomba-combat",
-					   "zoomba-combat-roll",
-					   "zoomba-combat-shield"
-					   )					//List of all used sprites that are in robots_vr.dmi
 
 /mob/living/silicon/robot/Initialize(mapload, unfinished = FALSE)
 	spark_system = new /datum/effect_system/spark_spread()
@@ -906,7 +866,6 @@
 
 /mob/living/silicon/robot/updateicon()
 	cut_overlays()
-	vr_sprite_check()
 	if(stat == CONSCIOUS)
 		if(!shell || deployed) // Shell borgs that are not deployed will have no eyes.
 			add_overlay("eyes-[module_sprites[icontype]]")
@@ -1232,7 +1191,6 @@
 	if(icontype == "Custom")
 		icon = CUSTOM_ITEM_SYNTH
 	else // This is to fix an issue where someone with a custom borg sprite chooses a non-custom sprite and turns invisible.
-		vr_sprite_check()
 		icon_state = module_sprites[icontype]
 	updateicon()
 
@@ -1425,16 +1383,6 @@
 			sitting = TRUE
 		if("Belly up")
 			bellyup = TRUE
-
-/mob/living/silicon/robot/proc/vr_sprite_check()
-	if(wideborg == TRUE)
-		return
-	if((!(original_icon == icon)) && (!(icon == 'icons/mob/robots_vr.dmi')))
-		original_icon = icon
-	if((icon_state in vr_icons) && (icon == 'icons/mob/robots.dmi'))
-		icon = 'icons/mob/robots_vr.dmi'
-	else if(!(icon_state in vr_icons))
-		icon = original_icon
 
 /mob/living/silicon/robot/proc/ex_reserve_refill()
 	set name = "Refill Extinguisher"

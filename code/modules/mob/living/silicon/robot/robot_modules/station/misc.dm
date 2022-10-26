@@ -19,8 +19,11 @@
 					"Convict" = "servitor",
 					"Miss M" = "miss-standard",
 					"Coffin" = "coffin-Standard",
-					"X-88" = "xeightyeight-standard"
-
+					"X-88" = "xeightyeight-standard",
+					"Handy" = "handy-standard",
+					"Acheron" = "mechoid-Standard",
+					"Shellguard Noble" = "Noble-STD",
+					"ZOOM-BA" = "zoomba-standard"
 					)
 
 

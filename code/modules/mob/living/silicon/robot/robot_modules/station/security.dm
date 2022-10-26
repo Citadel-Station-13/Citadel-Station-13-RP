@@ -25,8 +25,11 @@
 					"Misato" = "tall2security",
 					"L3P1-D0T" = "Glitterfly-Security",
 					"Miss M" = "miss-security",
-					"Coffcurity" = "coffin-Combat"
-
+					"Coffcurity" = "coffin-Combat",
+					"Handy" = "handy-sec",
+					"Acheron" = "mechoid-Security",
+					"Shellguard Noble" = "Noble-SEC",
+					"ZOOM-BA" = "zoomba-security"
 					)
 
 /obj/item/robot_module/robot/security/general/Initialize(mapload)
@@ -61,7 +64,9 @@
 					"Haruka" = "marinaCB",
 					"Cabeiri" = "eyebot-combat",
 					"Combat Android" = "droid-combat",
-					"Insekt" = "insekt-Combat"
+					"Insekt" = "insekt-Combat",
+					"Acheron" = "mechoid-Combat",
+					"ZOOM-BA" = "zoomba-combat"
 					)
 
 /obj/item/robot_module/robot/security/combat/Initialize(mapload)

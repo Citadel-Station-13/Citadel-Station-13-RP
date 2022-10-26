@@ -30,10 +30,30 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	var/hide_on_manifest = 0
 	var/channels = list()
 	var/networks = list()
-	var/languages = list(LANGUAGE_SOL_COMMON = 1, LANGUAGE_TRADEBAND = 1, LANGUAGE_UNATHI = 0, LANGUAGE_SIIK = 0, LANGUAGE_AKHANI = 0, LANGUAGE_SKRELLIAN = 0, LANGUAGE_GUTTER = 0, LANGUAGE_SCHECHI = 0, LANGUAGE_SIGN = 0, LANGUAGE_TERMINUS = 1, LANGUAGE_ZADDAT = 0)
 	var/sprites = list()
 	var/can_be_pushed = 1
 	var/no_slip = 0
+
+	var/languages = list(
+		LANGUAGE_AKHANI = 0,
+		LANGUAGE_BIRDSONG = 0,
+		LANGUAGE_CANILUNZT = 0,
+		LANGUAGE_DAEMON = 0,
+		LANGUAGE_ECUREUILIAN = 0,
+		LANGUAGE_ENOCHIAN = 0,
+		LANGUAGE_GUTTER = 0,
+		LANGUAGE_SAGARU = 0,
+		LANGUAGE_SCHECHI = 0,
+		LANGUAGE_SIIK = 0,
+		LANGUAGE_SIGN = 0,
+		LANGUAGE_SKRELLIAN = 0,
+		LANGUAGE_SOL_COMMON = 1,
+		LANGUAGE_TERMINUS = 1,
+		LANGUAGE_TRADEBAND = 1,
+		LANGUAGE_UNATHI = 0,
+		LANGUAGE_ZADDAT = 0
+		)
+
 	var/list/modules = list()
 	var/list/datum/matter_synth/synths = list()
 	var/obj/item/emag = null
@@ -60,8 +80,6 @@ GLOBAL_LIST_INIT(robot_modules, list(
 		if(R.shell)
 			channels = R.mainframe.aiRadio.channels
 		R.radio.recalculateChannels()
-
-	vr_add_sprites() //TODO: Add into the normal lists.
 
 	R.set_module_sprites(sprites)
 	// TODO: REFACTOR CYBORGS THEY ARE ALL SHITCODE
@@ -171,3 +189,15 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	src.modules += new /obj/item/extinguisher(src)
 	src.modules += new /obj/item/gps/robot(src)
 	vr_new() // For modules in robot_modules_vr.dm //TODO: Integrate
+
+//Just add a new proc with the robot_module type if you wish to run some other vore code
+/obj/item/robot_module/proc/vr_new() // Any Global modules, just add them before the return (This will also affect all the borgs in this file)
+	return
+
+// /obj/item/robot_module/robot/medical/surgeon/vr_new() //Surgeon Bot
+// 	src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
+// 	. = ..() //Any Global vore modules will come from here
+
+// /obj/item/robot_module/robot/medical/crisis/vr_new() //Crisis Bot
+// 	src.modules += new /obj/item/sleevemate(src) //Lets them scan people.
+// 	. = ..() //Any Global vore modules will come from here
