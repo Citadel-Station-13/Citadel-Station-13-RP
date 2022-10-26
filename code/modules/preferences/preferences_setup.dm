@@ -254,9 +254,10 @@
 
 /datum/preferences/proc/get_valid_hairstyles()
 	var/list/valid_hairstyles = list()
+	var/species_name = real_species_name()
 	for(var/hairstyle in hair_styles_list)
 		var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
-		if(S.apply_restrictions && !(species in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
+		if(S.apply_restrictions && !(specieS_name in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
 			continue
 
 		valid_hairstyles[hairstyle] = hair_styles_list[hairstyle]

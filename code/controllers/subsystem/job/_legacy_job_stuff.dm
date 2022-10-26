@@ -114,15 +114,13 @@
 			unassigned -= player
 			break
 
-
 /datum/controller/subsystem/job/proc/ResetOccupations()
 	for(var/mob/new_player/player in player_list)
 		if((player) && (player.mind))
 			player.mind.assigned_role = null
 			player.mind.special_role = null
-	SetupOccupations()
+	setup_occupations()
 	unassigned = list()
-	return
 
 /**
  * This proc is called before the level loop of DivideOccupations() and will try to select a head,

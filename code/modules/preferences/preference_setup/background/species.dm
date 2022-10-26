@@ -45,7 +45,7 @@
 	return default_value()
 
 /datum/category_item/player_setup_item/background/char_species/default_value(randomizing)
-	return SScharacters.default_species_id
+	return SScharacters.default_species_id()
 
 #warn main species selector has to use save key
 /datum/category_item/player_setup_item/background/char_species/act(datum/preferences/prefs, mob/user, action, list/params)
