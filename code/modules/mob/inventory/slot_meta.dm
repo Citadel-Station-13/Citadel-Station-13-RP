@@ -120,6 +120,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	//! Rendering
 	/// rendering slot key
 	var/render_key
+	/// rendering plural slot key - only set on base type of plural slots
+	var/render_key_plural
 	/// rendering default layer; first is default, rest are alt layers. can be list or just one number.
 	VAR_PROTECTED/list/render_layer
 	/// rendering icon state cache for default icons
@@ -567,6 +569,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_TESHARI = "_fallback_"
 	)
 	render_layer = EARS_LAYER
+	render_key_plural = "ears"
 
 /datum/inventory_slot_meta/inventory/ears/left
 	name = "left ear"
