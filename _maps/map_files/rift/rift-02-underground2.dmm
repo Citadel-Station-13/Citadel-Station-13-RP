@@ -2463,6 +2463,9 @@
 /area/engineering/hallway)
 "he" = (
 /obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "hf" = (
@@ -5655,6 +5658,7 @@
 /area/engineering/atmos/locker_room)
 "qa" = (
 /obj/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_room)
 "qb" = (
@@ -5704,6 +5708,12 @@
 /obj/machinery/meter,
 /turf/simulated/floor,
 /area/engineering/engine_room)
+"qr" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters/heads/chief)
 "qt" = (
 /obj/machinery/door/airlock/engineering,
 /obj/structure/cable{
@@ -6951,12 +6961,6 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
-"uJ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/crew_quarters/heads/chief)
 "uK" = (
 /obj/structure/railing{
 	dir = 4
@@ -9999,6 +10003,22 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/storage)
+"Gn" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/tiled/steel_grid,
+/area/engineering/hallway)
 "Gp" = (
 /obj/machinery/light,
 /turf/simulated/floor/wood,
@@ -11785,22 +11805,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
-"MS" = (
-/obj/structure/cable/cyan{
-	icon_state = "1-2"
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/tiled/steel_grid,
-/area/engineering/hallway)
 "MT" = (
 /obj/effect/floor_decal/corner/grey/diagonal,
 /obj/effect/debris/cleanable/blood/writing{
@@ -12367,6 +12371,9 @@
 /area/rift/asylum/halls)
 "Pf" = (
 /obj/effect/floor_decal/corner/white/diagonal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/break_room)
 "Pg" = (
@@ -30992,7 +30999,7 @@ PL
 tw
 ID
 As
-MS
+Gn
 Kn
 nx
 Bc
@@ -31199,7 +31206,7 @@ KY
 jb
 Qz
 eW
-uJ
+qr
 ey
 Tq
 UW
