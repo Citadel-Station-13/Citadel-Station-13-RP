@@ -1,34 +1,3 @@
-/mob/living/carbon/human
-	name = "unknown"
-	real_name = "unknown"
-	voice_name = "unknown"
-	icon = 'icons/effects/effects.dmi' //We have an ultra-complex update icons that overlays everything, don't load some stupid random male human
-	icon_state = "nothing"
-
-	/// To check if we've need to roll for damage on movement while an item is imbedded in us.
-	var/embedded_flag
-	/// This is very not good, but it's much much better than calling get_rig() every update_canmove() call.
-	var/obj/item/rig/wearing_rig
-	/// For human_attackhand.dm, keeps track of the last use of disarm.
-	var/last_push_time
-
-	/// Spitting and spitting related things. Any human based ranged attacks, be it innate or added abilities.
-	var/spitting = 0
-	/// Projectile type.
-	var/spit_projectile = null
-	/// String
-	var/spit_name = null
-	/// Timestamp.
-	var/last_spit = 0
-
-	/// Horrible damage (like beheadings) will prevent defibbing organics.
-	var/can_defib = TRUE
-	/// Used for the regenerate proc in human_powers.dm
-	var/active_regen = FALSE
-	var/active_regen_delay = 300
-	/// Throws byond:tm: errors if placed in human/emote, but not here.
-	var/spam_flag = FALSE
-
 /mob/living/carbon/human/Initialize(mapload, datum/species/new_species_or_path)
 	if(!dna)
 		dna = new /datum/dna(null)
