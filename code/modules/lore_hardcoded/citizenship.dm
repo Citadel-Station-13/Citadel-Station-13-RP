@@ -31,7 +31,43 @@
     makes it difficult for other empires to relate to them, spare the Unathi and Zaddat. \
     While the Ascendancy might be one of the three founding fathers of the Hegemony, they have always put a high emphasis on self-governance - \
     keeping the same rules for their current allies as they do for everyone else."
-	
+
+/datum/lore/character_background/citizanship/vikaracombine
+	name = "Vikara Combine"
+	id = "vikaracom"
+	desc = "Formed initially as an alliance between the Skrell and Teshari of the Vikara System, the Vikara Combine is \
+	a long-standing compact which now incorporates not only it's founders, but newer races to the galactic stage such as \
+	the Akula and Vulpkanin, and which has been a reliable ally of the Orion Confederation for over 400 years. Vikaran scientists \
+	were the first to crack the intricacies of superluminal travel, and their engineers the first to devise the FTL drives which are now used \
+	throughout the galaxy. Technologically advanced, yet diplomatically-minded, the combine's many territories span the central region of the \
+	galaxy's Perseus Arm. The Combine's flagship corporation is Vey-Med, one of the largest and most well-known medical megacorporations in the \
+	galaxy, which was founded and is primarily run by the Skrell."
+
+/datum/lore/character_background/citizenship/moghes
+	name = "Moghes Kingdom"
+	id = "mogheskingdom"
+	desc = "One of the various nations and Clans that inhabit the wider Moghes Hegemony. Bound together only by the Pact, these different \
+	peoples are often at odds with each other. Their territories include many planets, some of which humans can only speculate on how to \
+	safely colonize."
+
+/datum/lore/character_background/citizenship/unathiclan
+	name = "Unathi Clan"
+	id = "unathiclan"
+	desc = "One of the distinct cultural groups within Unathi society. A collection of blood-related families that share common property and \
+	history. Often seen as aggressive due to the tendency to 'scout' other cultures with their warriors."
+
+/datum/lore/character_background/citizenship/zaddatguild
+	name = "Zaddat Guild"
+	id = "zaddatguild"
+	desc = "A collection of insular specialists in a given craft. Most well-known are the Engineers, yet there exists a Guild for most technical \
+	skills. Often they have their skills contracted out for a period of time for the better interest of their Colony."
+
+/datum/lore/character_background/citizenship/guwandi
+	name = "Guwandi"
+	id = "guwandi"
+	desc = "Exiles from Unathi Clans. They are unwelcome in Unathi society by and large, and often resort to crime. Those who are not killed \
+	often flee to the Frontier, where they may find opportunities for a new life."
+
 /datum/lore/character_background/citizenship/custom
 	name = "Other"
 	id = "custom"
