@@ -27,7 +27,7 @@
 			return 0
 		if(!job.player_old_enough(player.client))
 			return 0
-		if(!is_job_whitelisted(player, rank))
+		if(job.whitelist_only && !is_job_whitelisted(ckey(rank), player.ckey))
 			return 0
 		#warn we should probably standardize job checks + add faction checks
 
@@ -67,7 +67,7 @@
 		if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
 			Debug("FOC character not old enough, Player: [player]")
 			continue
-		if(!is_job_whitelisted(player, job.title))
+		if(job.whitelist_only && !is_job_whitelisted(ckey(job.title), player.ckey))
 			Debug("FOC is_job_whitelisted failed, Player: [player]")
 			continue
 		if(flag && !(player.client.prefs.be_special & flag))
@@ -102,7 +102,7 @@
 			Debug("GRJ player not old enough, Player: [player]")
 			continue
 
-		if(!is_job_whitelisted(player, job.title))
+		if(job.whitelist_only && !config.check_job_whitelist(ckey(job.title), player.ckey))
 			Debug("GRJ player not whitelisted for this job, Player: [player], Job: [job.title]")
 			continue
 		#warn we should probably standardize job checks + add faction checks

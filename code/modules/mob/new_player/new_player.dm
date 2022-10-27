@@ -488,7 +488,7 @@
 	if(!job.is_position_available()) return 0
 	if(jobban_isbanned(src,rank))	return 0
 	if(!job.player_old_enough(src.client))	return 0
-	if(!is_job_whitelisted(src,rank))	return 0
+	if(!is_job_whitelisted(ckey(rank), ckey))	return 0
 	if(!job.player_has_enough_pto(src.client)) return 0
 	return 1
 
@@ -695,7 +695,7 @@
 	for(var/lang in client.prefs.alternate_languages)
 		var/datum/language/chosen_language = SScharacters.resolve_language_name(lang)
 		if(chosen_language)
-			if(is_lang_whitelisted(src,chosen_language) || (new_character.species && (chosen_language.name in new_character.species.secondary_langs)))
+			if((!(chosen_language.language_flags & WHITELISTED) || is_lang_whitelisted(src, chosen_language)) || (new_character.species && (chosen_language.name in new_character.species.secondary_langs)))
 				new_character.add_language(lang)
 	// And uncomment this, too.
 	//new_character.dna.UpdateSE()
