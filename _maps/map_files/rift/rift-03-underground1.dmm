@@ -3329,10 +3329,10 @@
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "lf" = (
-/obj/structure/window/reinforced/tinted/frosted,
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 8
 	},
+/obj/structure/window/reinforced/tinted/frosted,
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 1
 	},
@@ -4426,8 +4426,8 @@
 	icon_state = "9-10"
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/tinted/frosted,
 /obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced/tinted/frosted,
 /obj/structure/grille,
 /obj/structure/window/reinforced{
 	dir = 1
@@ -11086,10 +11086,10 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "Oe" = (
-/obj/structure/window/reinforced/tinted/frosted,
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 4
 	},
+/obj/structure/window/reinforced/tinted/frosted,
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 1
 	},
