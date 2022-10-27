@@ -10,6 +10,11 @@
 			return
 	return ..()
 
+/datum/lore/character_background/origin/qerrbalak
+	name = "Qerr'Balak"
+	id = "qerrbalak"
+	desc = "Be it from the expansive jungle-wrapped arcologies of the skrellian continents, or the colder teshari territories of the polar tundras, you are from the Vikara Combine's vast capital planet of Qerr'Balak."
+
 /datum/lore/character_background/origin/custom
 	name = "Other"
 	id = "custom"
