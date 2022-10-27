@@ -1066,12 +1066,13 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "dc" = (
-/obj/spawner/window/borosillicate/reinforced/full,
+/obj/structure/window/phoronreinforced/full,
 /obj/machinery/door/blast/regular{
 	dir = 2;
 	id = "sm_monitor_blast";
 	name = "Engineering Engine Monitoring Blast Door"
 	},
+/obj/structure/grille,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "df" = (
@@ -2494,12 +2495,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
-"hi" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/crew_quarters/heads/chief)
 "hk" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/polarized/full,
@@ -2571,13 +2566,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
-"hv" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/wood,
-/area/engineering/break_room)
 "hy" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -5834,6 +5822,22 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
+"qO" = (
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/effect/floor_decal/borderfloor/corner{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/engineering/hallway)
 "qQ" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -7122,24 +7126,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/observation)
-"vn" = (
-/obj/effect/floor_decal/borderfloor{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/structure/cable/cyan{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/engineering/hallway)
 "vo" = (
 /obj/machinery/light/small/emergency/flicker{
 	dir = 4
@@ -7664,6 +7650,21 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/chapel)
+"xo" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/engineering/hallway)
 "xr" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/button/remote/blast_door{
@@ -8315,6 +8316,16 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
+"zu" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/turf/simulated/floor/wood,
+/area/engineering/break_room)
 "zv" = (
 /obj/machinery/light/small/emergency/flicker{
 	dir = 4
@@ -8571,6 +8582,24 @@
 /obj/random/maintenance/cargo,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
+"AD" = (
+/obj/structure/cable/cyan{
+	icon_state = "1-2"
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/junction/flipped{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/engineering/hallway)
 "AF" = (
 /obj/structure/bed/chair/comfy/beige,
 /obj/machinery/alarm{
@@ -8802,6 +8831,13 @@
 /obj/landmark/spawnpoint/job/assistant,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
+"BD" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/floor/wood,
+/area/engineering/break_room)
 "BE" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -10050,12 +10086,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
-"Gq" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/engineering/break_room)
 "Gr" = (
 /obj/machinery/door/airlock/glass_mining{
 	name = "Mining Operations";
@@ -10361,6 +10391,24 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
+"HF" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/structure/cable/cyan{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/engineering/hallway)
 "HH" = (
 /turf/simulated/floor,
 /area/rift/asylum/halls)
@@ -10445,6 +10493,12 @@
 /obj/machinery/camera/network/engineering,
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
+"Ib" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/engineering/break_room)
 "Ie" = (
 /obj/structure/catwalk,
 /obj/machinery/alarm{
@@ -11426,6 +11480,16 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
+"LD" = (
+/obj/machinery/door/blast/regular{
+	dir = 2;
+	id = "sm_monitor_blast";
+	name = "Engineering Engine Monitoring Blast Door"
+	},
+/obj/structure/window/phoronreinforced/full,
+/obj/structure/grille,
+/turf/simulated/floor,
+/area/engineering/engine_room)
 "LE" = (
 /obj/structure/railing,
 /obj/random/trash,
@@ -12409,6 +12473,13 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/rift/asylum/halls)
+"Pc" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/simulated/floor/wood,
+/area/engineering/break_room)
 "Pf" = (
 /obj/effect/floor_decal/corner/white/diagonal,
 /obj/structure/disposalpipe/trunk{
@@ -12964,16 +13035,6 @@
 /obj/structure/table/reinforced,
 /turf/simulated/floor/tiled/white,
 /area/rift/asylum/medical)
-"Rj" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment,
-/turf/simulated/floor/wood,
-/area/engineering/break_room)
 "Rk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -13417,13 +13478,6 @@
 "SU" = (
 /turf/unsimulated/mineral/icerock/lythios43c,
 /area/rift/asylum/cellblock)
-"SX" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/turf/simulated/floor/wood,
-/area/engineering/break_room)
 "SZ" = (
 /obj/structure/flora/tree/dead,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -14189,22 +14243,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/chapel/observation)
-"VO" = (
-/obj/structure/cable/cyan{
-	icon_state = "4-8"
-	},
-/obj/effect/floor_decal/borderfloor/corner{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/engineering/hallway)
 "VQ" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -14779,6 +14817,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
+"XH" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/crew_quarters/heads/chief)
 "XI" = (
 /obj/machinery/door/blast/puzzle{
 	id = "asylum_mess";
@@ -15055,21 +15099,6 @@
 	can_open = 1
 	},
 /area/rift/asylum/cellblock)
-"YD" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/structure/cable/cyan{
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/engineering/hallway)
 "YF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
@@ -15102,24 +15131,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
-"YK" = (
-/obj/structure/cable/cyan{
-	icon_state = "1-2"
-	},
-/obj/effect/floor_decal/borderfloor{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 4
-	},
-/obj/structure/disposalpipe/junction/flipped{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/engineering/hallway)
 "YL" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -29561,9 +29572,9 @@ Pa
 Pa
 dc
 dc
-dc
-dc
-dc
+LD
+LD
+LD
 zJ
 zJ
 Iy
@@ -31094,7 +31105,7 @@ qW
 So
 VE
 bq
-vn
+HF
 NU
 MC
 mF
@@ -31113,7 +31124,7 @@ Kn
 nx
 Bc
 eP
-YK
+AD
 kQ
 kQ
 sV
@@ -31315,7 +31326,7 @@ KY
 jb
 Qz
 eW
-hi
+XH
 ey
 Tq
 UW
@@ -31482,7 +31493,7 @@ qW
 OV
 Fa
 Ii
-VO
+qO
 TG
 ON
 IP
@@ -31676,7 +31687,7 @@ qW
 wp
 JB
 eT
-YD
+xo
 Ud
 MC
 ON
@@ -32646,7 +32657,7 @@ uP
 hb
 YR
 pJ
-vn
+HF
 ce
 DB
 Qj
@@ -32844,7 +32855,7 @@ vy
 HB
 kH
 tq
-hv
+BD
 Ko
 gX
 DB
@@ -33038,7 +33049,7 @@ Pr
 zq
 Tt
 lL
-Gq
+Ib
 Ko
 Ev
 DB
@@ -33426,8 +33437,8 @@ ym
 mo
 DB
 Zh
-SX
-Rj
+Pc
+zu
 Pf
 DB
 Rd
