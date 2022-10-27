@@ -276,7 +276,7 @@
 		JOB_ID_OFFDUTY_ENGINEER,
 		JOB_ID_OFFDUTY_SCIENCE
 		)
-		
+
 /datum/lore/character_background/faction/onkhera_necropolis
 	name = "Onkhera Synthetic Solutions & Necropolis Industries"
 	id = "oss_necro"
@@ -297,5 +297,27 @@
 		JOB_ID_SCIENTIST,
 		JOB_ID_SENIOR_RESEARCHER,
 		JOB_ID_OFFDUTY_MEDBAY,
+		JOB_ID_OFFDUTY_SCIENCE
+		)
+
+/datum/lore/character_background/faction/xam
+	name = "Xsysorr Arms and Materiel"
+	id = "xam"
+	desc = "Xsysorr Arms and Material, also known as XAM. The only true Unathi Megacorporation, and a dealer in heavy equipment. They have cool \
+	relations with other Megacorporations, especially those owned and operated by humans. Their exports are limited to industrial equipment and \
+	mining gear, along with weapons too cumbersome for most to use.
+	contractor_info = ""
+	job_whitelist = list(
+		JOB_ID_QUARTERMASTER,
+		JOB_ID_CARGO_TECHNICIAN,
+		JOB_ID_SHAFT_MINER,
+		JOB_ID_STATION_ENGINEER,
+		JOB_ID_ATMOSPHERIC_TECHNICIAN,
+		JOB_ID_SENIOR_ENGINEER,
+		JOB_ID_ROBOTICIST,
+		JOB_ID_ASSISTANT,
+		JOB_ID_OFFDUTY_CIVILLIAN,
+		JOB_ID_OFFDUTY_CARGO,
+		JOB_ID_OFFDUTY_ENGINEER,
 		JOB_ID_OFFDUTY_SCIENCE
 		)
