@@ -7904,13 +7904,13 @@
 /turf/simulated/floor/plating,
 /area/maintenance/asmaint2)
 "fMy" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
 /obj/item/radio/intercom{
 	dir = 8;
 	name = "Station Intercom (General)";
 	pixel_x = -24
+	},
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
@@ -8328,11 +8328,11 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "gaL" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
 /obj/machinery/status_display{
 	pixel_x = 32
+	},
+/obj/machinery/light{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
@@ -11541,6 +11541,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "1-4"
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_5)
@@ -25863,6 +25866,9 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/showers)
 "tmJ" = (
@@ -31117,7 +31123,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/lockers)
 "xgG" = (
-/obj/machinery/light/small,
 /obj/structure/table/standard,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
