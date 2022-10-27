@@ -7588,6 +7588,14 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"fzI" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/upper)
 "fzK" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -7631,6 +7639,12 @@
 /obj/structure/grille,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
+"fBi" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/pool/changing_room)
 "fBD" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
@@ -12801,6 +12815,12 @@
 	},
 /turf/simulated/floor/tiled/red,
 /area/security/observation)
+"jjT" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rift/surfacebase/outside/outside2)
 "jlp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -26541,6 +26561,13 @@
 	},
 /turf/simulated/floor/carpet,
 /area/security/warden)
+"tHF" = (
+/obj/structure/railing,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/upper)
 "tHP" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -29172,11 +29199,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "vFL" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
+/obj/machinery/light{
+	dir = 1
 	},
-/turf/simulated/floor/tiled/white,
-/area/crew_quarters/pool/changing_room)
+/turf/simulated/mineral/icerock/lythios43c,
+/area/rift/surfacebase/outside/outside2)
 "vFO" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -54889,7 +54916,7 @@ pBj
 pBj
 pBj
 fwK
-oXo
+tHF
 sAv
 vyi
 vyi
@@ -55693,7 +55720,7 @@ rTc
 oGg
 snQ
 xuZ
-vFL
+fBi
 fDk
 neO
 jOw
@@ -56256,7 +56283,7 @@ pBj
 pBj
 fwK
 teH
-bux
+fzI
 lMt
 kBE
 fwK
@@ -59957,7 +59984,7 @@ qyH
 dOd
 aJG
 iQr
-gsd
+jjT
 kyH
 krG
 kyH
@@ -63637,7 +63664,7 @@ pBj
 pBj
 pBj
 pBj
-pBj
+vFL
 pBj
 pBj
 pBj
