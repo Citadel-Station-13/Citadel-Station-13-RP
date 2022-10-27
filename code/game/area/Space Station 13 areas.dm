@@ -1649,6 +1649,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Pool"
 	icon_state = "pool"
 
+/area/crew_quarters/pool/changing_room
+	name = "\improper Pool Changing Room"
+	icon_state = "pool"
+
 /area/crew_quarters/cafeteria
 	name = "\improper Cafeteria"
 	icon_state = "cafeteria"
