@@ -45,5 +45,5 @@ GLOBAL_DATUM_INIT(lobby_image, /obj/effect/lobby_image, new)
 		if(client)
 			handle_privacy_poll()
 			client.playtitlemusic()
-
+			client.is_preference_enabled(/datum/client_preference/scaling_viewport) ? client.OnResize() : client.change_view(world.view)
 	return ..()

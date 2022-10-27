@@ -1,6 +1,6 @@
 GLOBAL_VAR_INIT(lock_client_view_x, null)
 GLOBAL_VAR_INIT(lock_client_view_y, null)
-GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64, 96, 128))
+GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64, 72, 96, 128))
 
 /datum/preferences
     var/icon_size = 64
@@ -20,18 +20,26 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64, 96, 128))
 
 	SScharacter_setup.queue_preferences_save(prefs) */
 
+/client/verb/SetCozyViewInwards(val as num|text)
+	set hidden = 1
+
+	if(prefs && val != prefs.icon_size)
+		prefs.icon_size += val
+		SScharacter_setup.queue_preferences_save(prefs)
+	winset(src, "mapwindow.map", "icon-size=[prefs.icon_size]")
+	OnResize()
+
 /client/verb/SetWindowIconSize(val as num|text)
 	set hidden = 1
 	winset(src, "mapwindow.map", "icon-size=[val]")
 	if(prefs && val != prefs.icon_size )
 		prefs.icon_size = val
 		SScharacter_setup.queue_preferences_save(prefs)
-
-	 OnResize()
+	OnResize()
 
 /client/verb/OnResize()
 	set hidden = 1
-	if(!is_preference_enabled(/datum/client_preference/scaling_viewport)) // We shouldn't need this if view datums were fully implemented.
+	if(!is_preference_enabled(/datum/client_preference/scaling_viewport))
 		return
 	var/divisor = text2num(winget(src, "mapwindow.map", "icon-size")) || world.icon_size
 	if(!isnull(GLOB.lock_client_view_x) && !isnull(GLOB.lock_client_view_y))

@@ -176,7 +176,8 @@
 
 /mob/Login()
 	. = ..()
-	client?.is_preference_enabled(/datum/client_preference/scaling_viewport) ? client.SetWindowIconSize(client.prefs.icon_size) : client.change_view(world.view)
+	if(client?.is_preference_enabled(/datum/client_preference/scaling_viewport))
+		INVOKE_ASYNC(client, /client.verb/OnResize)
 
 	if(ability_master)
 		ability_master.toggle_open(1)

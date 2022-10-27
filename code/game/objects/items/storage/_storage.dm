@@ -179,9 +179,9 @@
 
 //This proc draws out the inventory and places the items on it. It uses the standard position.
 /obj/item/storage/proc/slot_orient_objs(var/rows, var/cols, var/list/obj/item/display_contents)
-	var/cx = 4
-	var/cy = 2+rows
-	src.boxes.screen_loc = "LEFT+4:16,BOTTOM+2:16 to LEFT+[4+cols]:16,BOTTOM+[2+rows]:16"
+	var/cx = 3
+	var/cy = 1 + rows
+	src.boxes.screen_loc = "LEFT+3:16,BOTTOM+1:16 to LEFT+[3+cols]:16,BOTTOM+[1+rows]:16"
 
 	if(display_contents_with_number)
 		for(var/datum/numbered_display/ND in display_contents)
@@ -189,8 +189,8 @@
 			ND.sample_object.maptext = "<font color='white'>[(ND.number > 1)? "[ND.number]" : ""]</font>"
 			ND.sample_object.hud_layerise()
 			cx++
-			if (cx > (4+cols))
-				cx = 4
+			if (cx > (3+cols))
+				cx = 3
 				cy--
 	else
 		for(var/obj/O in contents)
@@ -198,10 +198,10 @@
 			O.maptext = ""
 			O.hud_layerise()
 			cx++
-			if (cx > (4+cols))
-				cx = 4
+			if (cx > (3+cols))
+				cx = 3
 				cy--
-	src.closer.screen_loc = "LEFT+[4+cols+1]:16,BOTTOM+2:16"
+	src.closer.screen_loc = "LEFT+[3+cols+1]:16,BOTTOM+1:16"
 	return
 
 /obj/item/storage/proc/space_orient_objs(var/list/obj/item/display_contents)
@@ -220,9 +220,9 @@
 	M.Scale((storage_width-storage_cap_width*2+3)/32,1)
 	src.storage_continue.transform = M
 
-	src.storage_start.screen_loc = "LEFT+4:16,BOTTOM+2:16"
-	src.storage_continue.screen_loc = "LEFT+4:[storage_cap_width+(storage_width-storage_cap_width*2)/2+2],BOTTOM+2:16"
-	src.storage_end.screen_loc = "LEFT+4:[19+storage_width-storage_cap_width],BOTTOM+2:16"
+	src.storage_start.screen_loc = "LEFT+3:16,BOTTOM+1:16"
+	src.storage_continue.screen_loc = "LEFT+3:[storage_cap_width+(storage_width-storage_cap_width*2)/2+2],BOTTOM+1:16"
+	src.storage_end.screen_loc = "LEFT+3:[19+storage_width-storage_cap_width],BOTTOM+1:16"
 
 	var/startpoint = 0
 	var/endpoint = 1
@@ -245,11 +245,11 @@
 		storage_start.overlays += src.stored_continue
 		storage_start.overlays += src.stored_end
 
-		O.screen_loc = "LEFT+4:[round((startpoint+endpoint)/2)+2],BOTTOM+2:16"
+		O.screen_loc = "LEFT+3:[round((startpoint+endpoint)/2)+2],BOTTOM+1:16"
 		O.maptext = ""
 		O.hud_layerise()
 
-	src.closer.screen_loc = "LEFT+4:[storage_width+19],BOTTOM+2:16"
+	src.closer.screen_loc = "LEFT+3:[storage_width+19],BOTTOM+1:16"
 	return
 
 
