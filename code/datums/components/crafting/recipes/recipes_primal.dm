@@ -225,3 +225,47 @@
             /obj/item/stack/sinew = 3)
 	result = /obj/item/surgical/bonesetter_primitive
 	category = CAT_PRIMAL
+
+/datum/crafting_recipe/bone_crowbar
+	name = "Primitive Crowbar"
+	result = /obj/item/tool/crowbar/bone
+	time = 50
+	reqs = list(/obj/item/stack/material/bone = 8
+				)
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/bone_screwdriver
+	name = "Primitive Screwdriver"
+	result = /obj/item/tool/screwdriver/bone
+	time = 50
+	reqs = list(/obj/item/stack/material/bone = 4,
+				/obj/item/stack/sinew = 2
+				)
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/bone_wrench
+	name = "Primitive Wrench"
+	result = /obj/item/tool/wrench/bone
+	time = 50
+	reqs = list(/obj/item/stack/material/bone = 3,
+				/obj/item/stack/sinew = 1
+				)
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/bone_wirecutters
+	name = "Primitive Wirecutters"
+	result = /obj/item/tool/wirecutters/bone
+	time = 50
+	reqs = list(/obj/item/stack/material/bone = 4,
+				/obj/item/stack/sinew = 2
+				)
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/bone_welder
+	name = "Primitive Welding Tool"
+	result = /obj/item/weldingtool/bone
+	time = 50
+	reqs = list(/obj/item/stack/material/bone = 6,
+				/obj/item/stack/sinew = 4
+				)
+	category = CAT_PRIMAL
