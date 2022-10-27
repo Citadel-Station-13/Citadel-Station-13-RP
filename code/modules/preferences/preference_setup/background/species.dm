@@ -19,6 +19,14 @@
 	var/datum/character_species/S = SScharacters.resolve_character_species(data)
 	// if(S.whitelisted && !is_alien_whitelisted(prefs.client.mob, ))
 	#warn whitelist check - impl new whitelist systemics for this shit
+	/**
+	 *
+	//Can they play?
+	if(!is_alien_whitelisted(src, client.prefs.real_species_datum()) && !check_rights(R_ADMIN, 0))
+		pass = FALSE
+		to_chat(src,"<span class='warning'>You are not allowed to spawn in as this species.</span>")
+
+	 */
 
 /datum/category_item/player_setup_item/background/char_species/filter(datum/preferences/prefs, data, list/errors)
 	// resolve

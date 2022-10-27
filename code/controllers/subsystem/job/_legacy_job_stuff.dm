@@ -27,7 +27,7 @@
 			return 0
 		if(!job.player_old_enough(player.client))
 			return 0
-		if(job.whitelist_only && !is_job_whitelisted(ckey(rank), player.ckey))
+		if(job.whitelist_only && !config.check_job_whitelist(ckey(rank), player.ckey))
 			return 0
 		#warn we should probably standardize job checks + add faction checks
 
@@ -67,8 +67,8 @@
 		if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
 			Debug("FOC character not old enough, Player: [player]")
 			continue
-		if(job.whitelist_only && !is_job_whitelisted(ckey(job.title), player.ckey))
-			Debug("FOC is_job_whitelisted failed, Player: [player]")
+		if(job.whitelist_only && !config.check_job_whitelist(ckey(job.title), player.ckey))
+			Debug("FOC whitelist failed, Player: [player]")
 			continue
 		if(flag && !(player.client.prefs.be_special & flag))
 			Debug("FOC flag failed, Player: [player], Flag: [flag], ")
@@ -362,7 +362,8 @@
 					permitted = 1
 
 				// Check if they're whitelisted for this gear (in alien whitelist? seriously?)
-				if(G.whitelisted && !is_alien_whitelisted(H, SScharacters.resolve_species_name(G.whitelisted)))
+				var/datum/species/S = SScharacters.resolve_species_name(G.whitelisted)
+				if(G.whitelisted && (S.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) && !config.check_alien_whitelist(ckey(S.name), H.ckey))
 					permitted = 0
 
 				// If they aren't, tell them

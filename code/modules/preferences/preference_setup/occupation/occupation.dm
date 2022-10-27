@@ -181,7 +181,7 @@
 	if(!J.player_old_enough(C))
 		var/in_days = J.available_in_days(C)
 		return "IN [in_days] DAYS"
-	if(!is_job_whitelisted(ckey(J.title), prefs.client_ckey))
+	if(!config.check_job_whitelist(ckey(J.title), prefs.client_ckey))
 		return "WHITELISTED"
 	if(J.minimum_character_age && prefs.age < J.minimum_character_age)
 		return "MINIMUM CHARACTER AGE: [J.minimum_character_age]"

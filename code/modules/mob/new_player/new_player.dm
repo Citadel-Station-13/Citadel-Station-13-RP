@@ -488,7 +488,7 @@
 	if(!job.is_position_available()) return 0
 	if(jobban_isbanned(src,rank))	return 0
 	if(!job.player_old_enough(src.client))	return 0
-	if(!is_job_whitelisted(ckey(rank), ckey))	return 0
+	if(!config.check_job_whitelist(ckey(rank), ckey))	return 0
 	if(!job.player_has_enough_pto(src.client)) return 0
 	return 1
 
@@ -643,7 +643,7 @@
 
 	if(chosen_species && use_species_name)
 		// Have to recheck admin due to no usr at roundstart. Latejoins are fine though.
-		if(is_alien_whitelisted(chosen_species))
+		if(!(chosen_species.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) || config.check_alien_whitelist(ckey(chosen_species.name), ckey))
 			new_character = new(T, use_species_name)
 
 	if(!new_character)
@@ -738,7 +738,7 @@
 	if(!chosen_species)
 		return SPECIES_HUMAN
 
-	if(is_alien_whitelisted(chosen_species))
+	if(!(chosen_species.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) || config.check_alien_whitelist(ckey(chosen_species.name), ckey))
 		return chosen_species.name
 
 	return SPECIES_HUMAN
@@ -786,11 +786,6 @@
 	if(!client.prefs.size_multiplier)
 		pass = FALSE
 		to_chat(src, SPAN_WARNING("You have not set your scale yet.  Do this on the Species Customization tab in character setup."))
-
-	//Can they play?
-	if(!is_alien_whitelisted(src, client.prefs.real_species_datum()) && !check_rights(R_ADMIN, 0))
-		pass = FALSE
-		to_chat(src,"<span class='warning'>You are not allowed to spawn in as this species.</span>")
 
 	//Custom species checks
 	if (client && client.prefs && client.prefs.species == SPECIES_CUSTOM)
