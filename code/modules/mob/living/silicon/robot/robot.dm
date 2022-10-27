@@ -161,7 +161,6 @@
 	var/datum/matter_synth/water_res = null
 	var/notransform
 	var/original_icon = 'icons/mob/robots.dmi'
-	var/ui_style_vr = FALSE //Do we use our hud icons?
 	var/sitting = FALSE
 	var/bellyup = FALSE
 

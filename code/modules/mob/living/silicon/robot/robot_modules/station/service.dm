@@ -245,9 +245,7 @@
 	G.recipes += new/datum/stack_recipe("glass sheet", /obj/item/stack/material/glass, 1, 1, 20)
 	src.modules += G
 
-	R.icon 		 = 'icons/mob/widerobot_vr.dmi'
-	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'
-	R.ui_style_vr = TRUE
+	R.icon = 'icons/mob/robots_wide.dmi'
 	R.set_base_pixel_x(-16)
 	R.dogborg = TRUE
 	R.wideborg = TRUE
@@ -320,9 +318,7 @@
 	src.modules += B
 */
 
-	R.icon 		 = 'icons/mob/widerobot_vr.dmi'
-	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'
-	R.ui_style_vr = TRUE
+	R.icon = 'icons/mob/robots_wide.dmi'
 	R.set_base_pixel_x(-16)
 	R.dogborg = TRUE
 	R.wideborg = TRUE
@@ -337,7 +333,6 @@
 	R.icon = initial(R.icon)
 	R.dogborg = FALSE
 	R.wideborg = FALSE
-	R.ui_style_vr = FALSE
 	R.base_pixel_x = initial(pixel_x)
 	R.scrubbing = FALSE
 	R.verbs -= /mob/living/silicon/robot/proc/ex_reserve_refill

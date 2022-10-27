@@ -42,7 +42,7 @@
 /obj/item/robot_module/robot/quad_miner
 	name = "Mining Quadruped module"
 	sprites = list(
-					"F3-LINE" = "FELI-Miner"
+					"F3-LINE" = "FELI-Mining"
 					)
 	channels = list("Supply" = 1)
 	can_be_pushed = 0
@@ -76,9 +76,7 @@
 	T.water = water
 	src.modules += T
 
-	R.icon 		 = 'icons/mob/widerobot_vr.dmi'
-	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'
-	R.ui_style_vr = TRUE
+	R.icon = 'icons/mob/robots_wide.dmi'
 	R.set_base_pixel_x(-16)
 	R.dogborg = TRUE
 	R.wideborg = TRUE

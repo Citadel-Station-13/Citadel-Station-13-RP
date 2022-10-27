@@ -177,9 +177,7 @@
 	src.modules += P
 	// END CITADEL CHANGES
 
-	R.icon = 'icons/mob/widerobot_vr.dmi'
-	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'
-	R.ui_style_vr = TRUE
+	R.icon = 'icons/mob/robots_wide.dmi'
 	R.set_base_pixel_x(-16)
 	R.dogborg = TRUE
 	R.wideborg = TRUE
