@@ -10,6 +10,10 @@
 /obj/structure/ghost_role_spawner/ashlander,
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
+"h" = (
+/obj/machinery/seed_extractor/press,
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
 "m" = (
 /obj/item/reagent_containers/glass/bucket/wood,
 /turf/simulated/floor/outdoors/lavaland/indoors,
@@ -26,27 +30,31 @@
 /obj/fiftyspawner/wood,
 /obj/fiftyspawner/wood,
 /obj/fiftyspawner/bone,
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"Q" = (
+/obj/item/seeds/ashlander/bentars,
+/obj/item/seeds/ashlander/juhtak,
+/obj/item/seeds/ashlander,
+/obj/structure/table/hardwoodtable,
 /obj/item/shovel/spade/bone{
 	pixel_x = -2
 	},
 /obj/item/pickaxe/bone,
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
-"Q" = (
+"R" = (
+/obj/machinery/portable_atmospherics/hydroponics/soil,
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"X" = (
 /obj/structure/table/hardwoodtable,
-/obj/item/seeds/ashlander/bentars,
-/obj/item/seeds/ashlander/juhtak,
-/obj/item/seeds/ashlander,
 /obj/item/tool/wirecutters/clippers/bone,
 /obj/item/material/minihoe/bone,
 /obj/item/material/knife/machete/hatchet/bone{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
-"R" = (
-/obj/machinery/portable_atmospherics/hydroponics/soil,
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
 
@@ -62,8 +70,8 @@ a
 a
 a
 a
-v
-R
+h
+X
 a
 "}
 (3,1,1) = {"
@@ -71,7 +79,7 @@ a
 b
 c
 v
-R
+v
 a
 "}
 (4,1,1) = {"
