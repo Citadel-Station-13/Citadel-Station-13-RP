@@ -143,7 +143,7 @@
 	dir = 4
 	},
 /obj/structure/reagent_dispensers/fueltank,
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "bh" = (
 /turf/simulated/floor/sky/depths/west/lythios43c,
@@ -313,7 +313,7 @@
 /area/quartermaster/belterdock)
 "ds" = (
 /obj/structure/reagent_dispensers/watertank,
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "dy" = (
 /obj/effect/trap/pop_up/thrower{
@@ -432,7 +432,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "eI" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/blue,
@@ -708,7 +708,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "hV" = (
 /obj/structure/table/hardwoodtable,
@@ -775,7 +775,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "iq" = (
 /obj/effect/floor_decal/corner/white{
@@ -973,7 +973,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "jH" = (
 /obj/structure/cable/green{
@@ -1044,7 +1044,7 @@
 /area/shuttle/belter)
 "kf" = (
 /obj/structure/closet/firecloset/full/double,
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "kk" = (
 /obj/machinery/light,
@@ -1060,7 +1060,7 @@
 "kr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "kt" = (
 /turf/simulated/wall/r_wall,
@@ -1407,7 +1407,7 @@
 /area/outpost/mining_main/outpost)
 "mS" = (
 /obj/structure/closet/emcloset,
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "mU" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner{
@@ -1448,7 +1448,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/gateway/prep_room)
 "nm" = (
 /obj/effect/floor_decal/techfloor/orange{
@@ -1628,7 +1628,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "oz" = (
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
@@ -2102,7 +2102,7 @@
 /obj/structure/cable/green{
 	icon_state = "5-8"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "tH" = (
 /obj/effect/floor_decal/industrial/warning,
@@ -2781,7 +2781,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-5"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "AG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2990,7 +2990,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "CB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -3168,7 +3168,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "ED" = (
 /obj/effect/floor_decal/industrial/halfstair{
@@ -3244,7 +3244,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/exterior/bunker/bottom)
 "EY" = (
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "Fg" = (
 /obj/effect/floor_decal/borderfloor{
@@ -3408,7 +3408,7 @@
 /obj/structure/cable/green{
 	icon_state = "8-10"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "Hp" = (
 /obj/structure/sign/warning/falling,
@@ -3776,7 +3776,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "Lb" = (
 /obj/structure/cable/green{
@@ -3815,7 +3815,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "LA" = (
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -4433,7 +4433,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "SH" = (
 /turf/simulated/mineral/floor/ignore_cavegen{
@@ -4689,7 +4689,7 @@
 /obj/machinery/door/airlock/maintenance/rnd,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "Vd" = (
 /obj/machinery/light/small{
@@ -4765,7 +4765,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "VT" = (
 /obj/structure/cable/green{

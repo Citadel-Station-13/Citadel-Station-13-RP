@@ -9,7 +9,7 @@
 /obj/structure/cable{
 	icon_state = "1-5"
 	},
-/turf/simulated/floor/lythios43c/indoors,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "ah" = (
 /obj/effect/floor_decal/rust,
@@ -1481,7 +1481,7 @@
 /obj/structure/cable{
 	icon_state = "4-10"
 	},
-/turf/simulated/floor/lythios43c/indoors,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "hb" = (
 /obj/effect/overlay/snow/floor,
@@ -2442,7 +2442,7 @@
 /obj/structure/cable{
 	icon_state = "1-5"
 	},
-/turf/simulated/floor/lythios43c/indoors,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "lC" = (
 /obj/effect/floor_decal/industrial/danger{
@@ -6675,7 +6675,7 @@
 /obj/structure/cable{
 	icon_state = "8-10"
 	},
-/turf/simulated/floor/lythios43c/indoors,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "FP" = (
 /obj/effect/floor_decal/industrial/halfstair{
@@ -10050,7 +10050,7 @@
 /obj/structure/cable{
 	icon_state = "1-9"
 	},
-/turf/simulated/floor/lythios43c/indoors,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "VX" = (
 /obj/structure/window/reinforced,

@@ -92,7 +92,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "be" = (
 /turf/simulated/mineral/icerock/ignore_cavegen/lythios43c,
@@ -591,6 +591,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
+"gV" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/open/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
 "hd" = (
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "N-S-Pass"
@@ -602,6 +608,12 @@
 /obj/effect/floor_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/medical)
+"ht" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/open/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
 "hv" = (
 /obj/structure/lattice,
 /turf/simulated/open/lythios43c,
@@ -714,6 +726,15 @@
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
+"iB" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
 "iD" = (
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/facility/interior/medical)
@@ -725,7 +746,7 @@
 	dir = 8
 	},
 /obj/structure/cable,
-/turf/simulated/floor/plating,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "iO" = (
 /turf/simulated/floor/tiled,
@@ -847,7 +868,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/medical)
 "kF" = (
-/turf/simulated/floor/plating,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "kJ" = (
 /obj/machinery/washing_machine,
@@ -1027,14 +1048,8 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating,
-/area/outpost/mining_main/outpost/substation)
-"mQ" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
 /turf/simulated/floor,
-/area/rnd/outpost/atmos)
+/area/outpost/mining_main/outpost/substation)
 "mS" = (
 /obj/random/trash,
 /turf/simulated/floor/lythios43c/indoors,
@@ -1530,6 +1545,12 @@
 	},
 /turf/simulated/floor/lythios43c,
 /area/outpost/mining_main/outpost)
+"rK" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/rnd/outpost/atmos)
 "rM" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -1595,7 +1616,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/port_gen/pacman,
-/turf/simulated/floor/plating,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "sq" = (
 /obj/structure/barricade/cutout/fluke,
@@ -2137,7 +2158,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "zu" = (
 /obj/structure/girder,
@@ -2196,12 +2217,6 @@
 /obj/structure/plasticflaps/mining,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
-"Ac" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/simulated/floor,
-/area/rnd/outpost/atmos)
 "Ai" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -2381,7 +2396,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "Cm" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -2806,7 +2821,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "GE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2908,8 +2923,14 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
+"HV" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/rnd/outpost/atmos)
 "HW" = (
 /obj/spawner/window/reinforced/full,
 /turf/simulated/floor/lythios43c/indoors,
@@ -2934,7 +2955,7 @@
 /obj/machinery/camera/network/research_outpost{
 	dir = 4
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "IE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -3187,7 +3208,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "LT" = (
 /obj/structure/ladder,
@@ -3216,7 +3237,7 @@
 /obj/structure/cable{
 	icon_state = "16-0"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "Mb" = (
 /obj/effect/floor_decal/borderfloor{
@@ -3234,7 +3255,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "Me" = (
 /obj/structure/closet/crate,
@@ -3586,7 +3607,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/open/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "QE" = (
 /obj/effect/floor_decal/borderfloor,
@@ -3716,7 +3737,7 @@
 	RCon_tag = "Substation - Mining Outpost";
 	charge = 1000
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "RS" = (
 /obj/effect/floor_decal/spline/plain{
@@ -4351,7 +4372,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "YG" = (
 /obj/effect/floor_decal/borderfloor{
@@ -34197,8 +34218,8 @@ JD
 JD
 JD
 JD
-ez
-OF
+iB
+ht
 dI
 dI
 ux
@@ -34392,7 +34413,7 @@ JD
 JD
 JD
 QA
-ao
+gV
 dI
 dI
 dI
@@ -35244,7 +35265,7 @@ Bt
 VL
 Kx
 CU
-mQ
+HV
 CU
 CU
 Kx
@@ -36020,7 +36041,7 @@ JD
 JD
 Kx
 CU
-Ac
+rK
 CU
 CU
 Kx
