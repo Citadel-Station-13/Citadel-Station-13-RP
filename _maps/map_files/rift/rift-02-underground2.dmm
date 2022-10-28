@@ -3794,7 +3794,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/carpet,
+/turf/simulated/floor/wood,
 /area/engineering/break_room)
 "kW" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
