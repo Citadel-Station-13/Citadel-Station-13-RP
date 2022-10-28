@@ -154,9 +154,11 @@
 				if(zone && S.zone == zone)
 					if(can_safely_remove_from_zone())
 						zone.remove(src)
+						// just keep going
 					else
 						zone.rebuild()
-					return
+						// todo: don't do this, just keep going, zone rebuilds shouldn't need this return
+						return	// handle it next cycle, we're done here
 
 			continue
 
