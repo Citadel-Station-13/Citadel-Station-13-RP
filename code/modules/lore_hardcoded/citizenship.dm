@@ -50,17 +50,12 @@
 	peoples are often at odds with each other. Their territories include many planets, some of which humans can only speculate on how to \
 	safely colonize."
 
-/datum/lore/character_background/citizenship/unathiclan
-	name = "Unathi Clan"
-	id = "unathiclan"
-	desc = "One of the distinct cultural groups within Unathi society. A collection of blood-related families that share common property and \
-	history. Often seen as aggressive due to the tendency to 'scout' other cultures with their warriors."
-
-/datum/lore/character_background/citizenship/zaddatguild
-	name = "Zaddat Guild"
-	id = "zaddatguild"
-	desc = "A collection of insular specialists in a given craft. Most well-known are the Engineers, yet there exists a Guild for most technical \
-	skills. Often they have their skills contracted out for a period of time for the better interest of their Colony."
+/datum/lore/character_background/citizenship/zaddatmigrantfleet
+ 	name = "Zaddat Migrant Fleet"
+ 	id = "zaddatmigrantfleet"
+ 	desc = "One of several Zaddat communities finding common ground, often literally. These fleets include Shoal, Or'e, and Jzull. \
+	The politics within these fleets are intense, meaning the contracts that they take may be for a myriad of reasons. \
+	Overall their goal is to find a new homeworld."
 
 /datum/lore/character_background/citizenship/guwandi
 	name = "Guwandi"
