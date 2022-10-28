@@ -265,7 +265,7 @@
     Artificers, Logistici and Legionnarum"
 	contractor_info = "Your presence here is both a curse and a blessing for the Guild. Being contracted to work for a Human megacorporation presents various opportunities to learn technology unavalible in the Ascendancy."
 	job_whitelist = list(
-		JOB_ID_STATION_ENGINEER
+		JOB_ID_STATION_ENGINEER,
 		JOB_ID_ATMOSPHERIC_TECHNICIAN,
 		JOB_ID_SENIOR_ENGINEER,
 		JOB_ID_CARGO_TECHNICIAN,
