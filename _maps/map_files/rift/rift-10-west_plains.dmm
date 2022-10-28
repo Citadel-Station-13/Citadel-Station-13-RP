@@ -1755,11 +1755,6 @@
 /obj/structure/table,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/surface)
-"io" = (
-/obj/spawner/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor,
-/area/outpost/mining_main/outpost)
 "ip" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -3182,9 +3177,8 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/exterior)
 "pn" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost)
 "pq" = (
@@ -43174,7 +43168,7 @@ WG
 dn
 ga
 mr
-io
+pn
 mr
 Iu
 sv
@@ -44144,7 +44138,7 @@ pn
 pn
 ga
 mr
-io
+pn
 mr
 Iu
 sv
