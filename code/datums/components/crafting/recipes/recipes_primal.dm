@@ -269,3 +269,22 @@
 				/obj/item/stack/sinew = 4
 				)
 	category = CAT_PRIMAL
+
+/datum/crafting_recipe/munition_box
+	name = "Primitive Munitions Box"
+	result = /obj/item/storage/box/munition_box
+	time = 40
+	reqs = list(/obj/item/stack/material/bone = 2,
+				/obj/item/stack/sinew = 2,
+				/obj/item/stack/animalhide/goliath_hide = 1
+				)
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/powder_horn
+	name = "Bone Powder Horn"
+	result = /obj/item/reagent_containers/glass/powder_horn/tribal
+	time = 40
+	reqs = list(/obj/item/stack/material/bone = 3,
+				/obj/item/stack/sinew = 3
+				)
+	category = CAT_PRIMAL
