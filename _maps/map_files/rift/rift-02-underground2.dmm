@@ -53,10 +53,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "ak" = (
-/obj/spawner/window/borosillicate/reinforced/full,
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
 	dir = 4
 	},
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "al" = (
@@ -101,10 +102,11 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/atmos/locker_room)
 "aq" = (
-/obj/spawner/window/borosillicate/reinforced/full,
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 9
 	},
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "ar" = (
@@ -277,10 +279,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
 "aQ" = (
-/obj/spawner/window/borosillicate/reinforced/full,
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 1
 	},
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "aR" = (
@@ -743,8 +746,9 @@
 	},
 /area/engineering/engine_core)
 "bV" = (
-/obj/spawner/window/borosillicate/reinforced/full,
 /obj/machinery/atmospherics/pipe/manifold/visible/green,
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "bX" = (
@@ -1120,8 +1124,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engine_room)
 "dm" = (
-/obj/spawner/window/borosillicate/reinforced/full,
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan,
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "dp" = (
@@ -1291,10 +1296,11 @@
 /turf/simulated/floor,
 /area/engineering/engine_smes)
 "dP" = (
-/obj/spawner/window/borosillicate/reinforced/full,
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 4
 	},
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "dQ" = (
@@ -1306,7 +1312,7 @@
 	},
 /obj/effect/zone_divider,
 /turf/simulated/floor/greengrid/nitrogen,
-/area/engineering/engine_room)
+/area/engineering/engine_core)
 "dT" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/structure/cable{
@@ -1917,10 +1923,11 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
 "fF" = (
-/obj/spawner/window/borosillicate/reinforced/full,
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	dir = 8
 	},
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "fH" = (
@@ -2972,7 +2979,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)
 "jc" = (
-/obj/spawner/window/borosillicate/reinforced/full,
+/obj/structure/grille,
+/obj/structure/window/phoronreinforced/full,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "jd" = (
@@ -8257,13 +8265,6 @@
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/atmos)
-"zi" = (
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 4
-	},
-/obj/spawner/window/borosillicate/reinforced/full,
-/turf/simulated/floor,
-/area/engineering/engine_room)
 "zj" = (
 /obj/machinery/firealarm{
 	layer = 3.3;
@@ -27638,9 +27639,9 @@ ar
 jc
 jc
 bJ
-zi
-jc
-jc
+rB
+mA
+mA
 ar
 ar
 qm
