@@ -2755,6 +2755,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	turf_initializer = new /datum/turf_initializer/maintenance()
 	ambience = AMBIENCE_MAINTENANCE
 
+/area/rnd/outpost/underground
+	name = "\improper Research Outpost Underground"
+
 /area/rnd/outpost/chamber
 	name = "\improper Research Outpost Burn Chamber"
 	icon_state = "engine"
