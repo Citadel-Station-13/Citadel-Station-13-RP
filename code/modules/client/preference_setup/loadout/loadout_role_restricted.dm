@@ -1135,7 +1135,7 @@
 
 /datum/gear/restricted/science/uniform/fatigues
 	name = "Science Uniform - Fatigues"
-	path = /obj/item/clothing/under/oricon/utility/marine/exploration
+	path = /obj/item/clothing/under/oricon/utility/marine/research
 
 /datum/gear/restricted/science/uniform/jeans
 	name = "Science Uniform - Jeans"
