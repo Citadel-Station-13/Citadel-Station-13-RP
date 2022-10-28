@@ -27,7 +27,7 @@
 	total_health = 130
 	hunger_factor = 0.075//50% more hungry
 
-	flags = NO_MINOR_CUT
+	species_flags = NO_MINOR_CUT
 	species_spawn_flags = SPECIES_SPAWN_ALLOWED
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 

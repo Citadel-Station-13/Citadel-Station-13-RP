@@ -26,7 +26,7 @@
 	base_color = "#373652"
 	blood_color = "#3c6d45"
 
-	flags = NO_MINOR_CUT
+	species_flags = NO_MINOR_CUT
 	siemens_coefficient = 1.5
 
 	max_age = 200

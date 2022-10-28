@@ -179,13 +179,13 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 		dat += "</br><b>Does not have a circulatory system.</b>"
 	if(!current_species.has_organ[O_LUNGS])
 		dat += "</br><b>Does not have a respiratory system.</b>"
-	if(current_species.flags & NO_SCAN)
+	if(current_species.species_flags & NO_SCAN)
 		dat += "</br><b>Does not have DNA.</b>"
-	if(current_species.flags & NO_PAIN)
+	if(current_species.species_flags & NO_PAIN)
 		dat += "</br><b>Does not feel pain.</b>"
-	if(current_species.flags & NO_SLIP)
+	if(current_species.species_flags & NO_SLIP)
 		dat += "</br><b>Has excellent traction.</b>"
-	if(current_species.flags & NO_POISON)
+	if(current_species.species_flags & NO_POISON)
 		dat += "</br><b>Immune to most poisons.</b>"
 	if(current_species.species_appearance_flags & HAS_SKIN_TONE)
 		dat += "</br><b>Has a variety of skin tones.</b>"
@@ -195,7 +195,7 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 		dat += "</br><b>Has a variety of skin colours.</b>"
 	if(current_species.species_appearance_flags & HAS_EYE_COLOR)
 		dat += "</br><b>Has a variety of eye colours.</b>"
-	if(current_species.flags & IS_PLANT)
+	if(current_species.species_flags & IS_PLANT)
 		dat += "</br><b>Has a plantlike physiology.</b>"
 	dat += "</small></td>"
 	dat += "</tr>"

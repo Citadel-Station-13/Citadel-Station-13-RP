@@ -29,7 +29,7 @@
 	cold_level_2 = -1
 	cold_level_3 = -1
 
-	flags =  NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_INFECT
+	species_flags =  NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_INFECT
 	species_spawn_flags = SPECIES_SPAWN_RESTRICTED
 
 	reagent_tag = IS_XENOS

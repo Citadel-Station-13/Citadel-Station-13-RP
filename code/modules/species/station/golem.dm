@@ -10,7 +10,7 @@
 	intrinsic_languages = LANGUAGE_ID_HUMAN // todo?
 
 	species_spawn_flags = SPECIES_SPAWN_RESTRICTED
-	flags = NO_PAIN | NO_SCAN | NO_POISON | NO_MINOR_CUT
+	species_flags = NO_PAIN | NO_SCAN | NO_POISON | NO_MINOR_CUT
 
 	siemens_coefficient = 0
 

@@ -11,7 +11,7 @@
 	template.whitelisted = !!(species_spawn_flags & SPECIES_SPAWN_WHITELISTED)
 	template.real_species_type = type
 	// copy mechanics
-	template.species_flags = flags
+	template.species_flags = species_flags
 	// copy appearance
 	template.species_appearance_flags = species_appearance_flags
 	// copy lore/culture

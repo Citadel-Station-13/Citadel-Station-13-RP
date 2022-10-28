@@ -94,7 +94,7 @@
 	body_temperature = T0C + 15		//make the plant people have a bit lower body temperature, why not
 	hunger_factor = 0//Handled in handle_environment_special()
 
-	flags = NO_MINOR_CUT | IS_PLANT | NO_SCAN | NO_PAIN | NO_SLIP | NO_HALLUCINATION | NO_BLOOD | CONTAMINATION_IMMUNE
+	species_flags = NO_MINOR_CUT | IS_PLANT | NO_SCAN | NO_PAIN | NO_SLIP | NO_HALLUCINATION | NO_BLOOD | CONTAMINATION_IMMUNE
 	species_spawn_flags = SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_WHITELIST_SELECTABLE
 
 	blood_color = "#004400"

@@ -340,7 +340,6 @@
 	var/darksight = 2
 
 //! ## Flags
-	// todo: species_flags
 	/// Various specific features.
 	var/species_flags = NONE
 	/// What marks are left when walking

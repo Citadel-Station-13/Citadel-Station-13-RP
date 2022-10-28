@@ -79,7 +79,7 @@
 					visible_message("<span class='danger'>[H]'s [W] goes off due to \the [src]!</span>")
 					return W.afterattack(target,H)
 
-		if(!(H.species.flags & NO_SLIP) && prob(50))
+		if(!(H.species.species_flags & NO_SLIP) && prob(50))
 			var/armor_check = H.run_armor_check(def_zone, "melee")
 			H.apply_effect(3, WEAKEN, armor_check)
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
