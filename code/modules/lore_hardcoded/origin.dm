@@ -13,7 +13,7 @@
 /datum/lore/character_background/origin/qerrbalak
 	name = "Qerr'Balak"
 	id = "qerrbalak"
-	desc = "Be it from the expansive jungle-wrapped arcologies of the skrellian continents, the cold teshari territories of the polar tundras, or somewhere in-between, you are from the Vikara Combine's shared capital planet of Qerr'Balak."
+	desc = "Be it from the jungle-wrapped kingdoms of the skrellian continents, the cold teshari territories of the polar tundras, or somewhere in-between, you hail from the Vikara Combine's capital planet of Qerr'Balak."
 
 /datum/lore/character_background/origin/custom
 	name = "Other"
