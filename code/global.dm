@@ -118,11 +118,14 @@ var/static/list/cached_character_icons = list()
 //! ## VR FILE MERGE ## !//
 
 /hook/startup/proc/modules_vr()
-	robot_module_types += "Medihound"
-	robot_module_types += "K9"
-	robot_module_types += "Janihound"
-	robot_module_types += "Sci-Hound"
-	robot_module_types += "Pupdozer"
+	robot_module_types += "Quadruped"
+	robot_module_types += "MediQuad"
+	robot_module_types += "SecuriQuad"
+	robot_module_types += "JaniQuad"
+	robot_module_types += "SciQuad"
+	robot_module_types += "EngiQuad"
+	robot_module_types += "Mining Quad"
+	robot_module_types += "Service Quad"
 	return 1
 
 var/list/shell_module_types = list(

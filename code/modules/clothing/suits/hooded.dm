@@ -67,7 +67,7 @@
 					hood.armor = armor.Copy()
 				hood_up = TRUE
 				ADD_TRAIT(hood, TRAIT_NODROP, CLOTHING_TRAIT)
-				icon_state = "[toggleicon]_t"
+				icon_state = "[toggleicon]-t"
 				update_worn_icon()
 	else
 		RemoveHood()
@@ -422,6 +422,7 @@
 	armor = list("melee" = 15, "bullet" = 8, "laser" = 25, "energy" = 5, "bomb" = 12, "bio" = 0, "rad" = 0)
 	hoodtype = /obj/item/clothing/head/hood/winter/durathread
 
+//Hazardous Softsuits
 /obj/item/clothing/suit/storage/hooded/explorer
 	name = "explorer suit"
 	desc = "An armoured suit for exploring harsh environments."
@@ -445,6 +446,29 @@
 		/obj/item/radio,
 		/obj/item/pickaxe,
 		/obj/item/gun/projectile/sec/flash
+		)
+
+/obj/item/clothing/suit/storage/hooded/miner
+	name = "mining suit"
+	desc = "An armoured suit for mining in harsh environments."
+	icon = 'icons/clothing/suit/mining.dmi'
+	icon_state = "miner"
+	flags = PHORONGUARD
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	clothing_flags = THICKMATERIAL
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	hoodtype = /obj/item/clothing/head/hood/miner
+	siemens_coefficient = 0.9
+	armor = list(melee = 50, bullet = 5, laser = 10, energy = 0, bomb = 35, bio = 50, rad = 65)
+	allowed = list(
+		/obj/item/flashlight,
+		/obj/item/material/knife,
+		/obj/item/tank,
+		/obj/item/radio,
+		/obj/item/suit_cooling_unit,
+		/obj/item/pickaxe
 		)
 
 //The Chippin' In Set -Cap

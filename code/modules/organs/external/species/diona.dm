@@ -36,7 +36,6 @@
 	vital = TRUE
 	cannot_amputate = TRUE
 	parent_organ = null
-	gendered_icon = FALSE
 
 /obj/item/organ/external/diona/groin
 	name = "fork"
@@ -47,7 +46,6 @@
 	w_class = ITEMSIZE_LARGE
 	body_part = LOWER_TORSO
 	parent_organ = BP_TORSO
-	gendered_icon = FALSE
 
 /obj/item/organ/external/diona/arm
 	name = "left upper tendril"
@@ -145,3 +143,4 @@
 	dislocated = -1
 	vital = FALSE
 	slot_flags = SLOT_BELT
+	gendered_icon = FALSE

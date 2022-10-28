@@ -42,8 +42,6 @@
 			build(D)
 			progress = 0
 			removeFromQueue(1)
-			if(linked_console)
-				linked_console.updateUsrDialog()
 		update_appearance()
 	else
 		if(busy)

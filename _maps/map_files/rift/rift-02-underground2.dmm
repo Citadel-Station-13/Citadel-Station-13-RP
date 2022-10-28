@@ -8511,17 +8511,15 @@
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "Ap" = (
-/obj/item/clothing/suit/space/void/mining,
-/obj/item/clothing/head/helmet/space/void/mining,
 /obj/item/clothing/mask/breath,
 /obj/item/mining_scanner,
-/obj/item/clothing/shoes/magboots,
 /obj/item/tank/oxygen,
-/obj/item/suit_cooling_unit,
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
 /obj/structure/table/rack/shelf,
+/obj/item/clothing/mask/gas,
+/obj/item/storage/bag/ore,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock/gear)
 "As" = (
@@ -11240,14 +11238,12 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)
 "KI" = (
-/obj/item/clothing/suit/space/void/mining,
-/obj/item/clothing/head/helmet/space/void/mining,
 /obj/item/clothing/mask/breath,
 /obj/item/mining_scanner,
-/obj/item/clothing/shoes/magboots,
 /obj/item/tank/oxygen,
-/obj/item/suit_cooling_unit,
 /obj/structure/table/rack/shelf,
+/obj/item/clothing/mask/gas,
+/obj/item/storage/bag/ore,
 /turf/simulated/floor/tiled/techmaint,
 /area/quartermaster/belterdock/gear)
 "KJ" = (
