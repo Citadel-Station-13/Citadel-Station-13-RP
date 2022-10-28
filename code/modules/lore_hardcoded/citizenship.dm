@@ -23,7 +23,7 @@
 /datum/lore/character_background/citizenship/naramadiascendancy
 	name = "Naramadi Ascendancy"
 	id = "narasc"
-  	desc = "What began as a minor galactic power quickly grew to a major player on the galactic scene; the Naramadi Ascendancy. \
+	desc = "What began as a minor galactic power quickly grew to a major player on the galactic scene; the Naramadi Ascendancy. \
     An isolationist empire, the Ascendancy sits on a pocket of rich mineral veins that have proven to be a both a boon and a curse for a people that wanted \
     to live their lives in peace. \
     While most Naramadi technology resembles that of the outside world, some of it is strange and too complex \
