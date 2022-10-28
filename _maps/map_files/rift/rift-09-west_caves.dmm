@@ -1029,6 +1029,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/substation)
+"mQ" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/rnd/outpost/atmos)
 "mS" = (
 /obj/random/trash,
 /turf/simulated/floor/lythios43c/indoors,
@@ -2190,6 +2196,12 @@
 /obj/structure/plasticflaps/mining,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
+"Ac" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/rnd/outpost/atmos)
 "Ai" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -35232,7 +35244,7 @@ Bt
 VL
 Kx
 CU
-CU
+mQ
 CU
 CU
 Kx
@@ -36008,7 +36020,7 @@ JD
 JD
 Kx
 CU
-CU
+Ac
 CU
 CU
 Kx
