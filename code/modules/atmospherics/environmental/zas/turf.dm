@@ -152,13 +152,10 @@
 			if((previously_open & d) && istype(potential, /turf/simulated))
 				var/turf/simulated/S = potential
 				if(zone && S.zone == zone)
-					if(can_safely_remove_from_zone())
-						zone.remove(src)
-						// just keep going
-					else
-						zone.rebuild()
-						// todo: don't do this, just keep going, zone rebuilds shouldn't need this return
-						return	// handle it next cycle, we're done here
+					// todo: safely remove? for now the hueristic doesn't seem to work
+					zone.rebuild()
+					// todo: don't do this, just keep going, zone rebuilds shouldn't need this return
+					return	// handle it next cycle, we're done here
 
 			continue
 
