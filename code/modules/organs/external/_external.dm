@@ -326,61 +326,69 @@
 	var/result = update_icon()
 	return result
 
-//Helper proc used by various tools for repairing robot limbs
-/obj/item/organ/external/proc/robo_repair(var/repair_amount, var/damage_type, var/damage_desc, obj/item/tool, mob/living/user)
+/// Helper proc used by various tools for repairing robot limbs
+/obj/item/organ/external/proc/robo_repair(repair_amount, damage_type, damage_desc, obj/item/tool, mob/living/user)
 	if((src.robotic < ORGAN_ROBOT))
-		return 0
+		return FALSE
 
 	var/damage_amount
 	switch(damage_type)
-		if(BRUTE)   damage_amount = brute_dam
-		if(BURN)    damage_amount = burn_dam
-		if("omni")  damage_amount = max(brute_dam,burn_dam)
-		else return 0
+		if(BRUTE)
+			damage_amount = brute_dam
+		if(BURN)
+			damage_amount = burn_dam
+		if("omni")
+			damage_amount = max(brute_dam,burn_dam)
+		else
+			return FALSE
 
 	if(!damage_amount)
-		to_chat(user, "<span class='notice'>Nothing to fix!</span>")
-		return 0
+		to_chat(user, SPAN_NOTICE("Nothing to fix!"))
+		return FALSE
 
-	if(brute_dam + burn_dam >= min_broken_damage) // Makes robotic limb damage scalable
-		to_chat(user, "<span class='danger'>The damage is far too severe to patch over externally.</span>")
-		return 0
+	// Makes robotic limb damage scalable.
+	if(brute_dam + burn_dam >= min_broken_damage)
+		to_chat(user, SPAN_DANGER("The damage is far too severe to patch over externally."))
+		return FALSE
 
 	if(user == src.owner)
 		var/grasp
 		if(user.l_hand == tool && (src.body_part & (ARM_LEFT|HAND_LEFT)))
-			grasp = "l_hand"
+			grasp = BP_L_HAND
 		else if(user.r_hand == tool && (src.body_part & (ARM_RIGHT|HAND_RIGHT)))
-			grasp = "r_hand"
+			grasp = BP_R_HAND
 
 		if(grasp)
-			to_chat(user, "<span class='warning'>You can't reach your [src.name] while holding [tool] in your [owner.get_bodypart_name(grasp)].</span>")
-			return 0
+			to_chat(user, SPAN_WARNING("You can't reach your [src.name] while holding [tool] in your [owner.get_bodypart_name(grasp)]."))
+			return FALSE
 
 	user.setClickCooldown(user.get_attack_speed(tool))
 	if(!do_mob(user, owner, 10))
-		to_chat(user, "<span class='warning'>You must stand still to do that.</span>")
-		return 0
+		to_chat(user, SPAN_WARNING("You must stand still to do that."))
+		return FALSE
 
 	switch(damage_type)
-		if(BRUTE) src.heal_damage(repair_amount, 0, 0, 1)
-		if(BURN)  src.heal_damage(0, repair_amount, 0, 1)
-		if("omni")src.heal_damage(repair_amount, repair_amount, 0, 1)
+		if(BRUTE)
+			src.heal_damage(repair_amount, 0, 0, 1)
+		if(BURN)
+			src.heal_damage(0, repair_amount, 0, 1)
+		if("omni")
+			src.heal_damage(repair_amount, repair_amount, 0, 1)
 
 	if(damage_desc)
 		if(user == src.owner)
 			var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
-			user.visible_message("<span class='notice'>\The [user] patches [damage_desc] on [T.his] [src.name] with [tool].</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] patches [damage_desc] on [T.his] [src.name] with [tool]."))
 		else
-			user.visible_message("<span class='notice'>\The [user] patches [damage_desc] on [owner]'s [src.name] with [tool].</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] patches [damage_desc] on [owner]'s [src.name] with [tool]."))
 
-	return 1
+	return TRUE
 
 
-/*
-This function completely restores a damaged organ to perfect condition.
-*/
-/obj/item/organ/external/rejuvenate(var/ignore_prosthetic_prefs)
+/**
+ * This function completely restores a damaged organ to perfect condition.
+ */
+/obj/item/organ/external/rejuvenate(ignore_prosthetic_prefs)
 	damage_state = "00"
 	status = 0
 	brute_dam = 0

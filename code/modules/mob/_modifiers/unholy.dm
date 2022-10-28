@@ -125,7 +125,7 @@
 					if(O.damage > 0) // Fix internal damage
 						O.damage = max(O.damage - 2, 0)
 					if(O.damage <= 5 && O.organ_tag == O_EYES) // Fix eyes
-						H.sdisabilities &= ~BLIND
+						H.sdisabilities &= ~SDISABILITY_NERVOUS
 
 				for(var/obj/item/organ/external/O in H.organs) // Fix limbs, no matter if they are Man or Machine.
 					O.heal_damage(rand(1,3), rand(1,3), internal = 1, robo_repair = 1)

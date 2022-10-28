@@ -199,8 +199,8 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 	var/mob/living/carbon/human/H
 	var/datum/sprite_accessory/tail/taur/tail
 	tail = ishuman(src)? ((H = src) && isTaurTail(H.tail_style) && H.tail_style) : null
-	to_chat(micro, tail? STEP_TEXT_PREY_NON_SHITCODE(tail.msg_prey_stepunder, src) : "You run between [src]'s legs.")
-	to_chat(src, tail? STEP_TEXT_OWNER_NON_SHITCODE(tail.msg_owner_stepunder, micro) : "[micro] runs between your legs.")
+	to_chat(micro, tail? STEP_TEXT_OWNER_NON_SHITCODE(tail.msg_prey_stepunder, src) : "You run between [src]'s legs.")
+	to_chat(src, tail? STEP_TEXT_PREY_NON_SHITCODE(tail.msg_owner_stepunder, micro) : "[micro] runs between your legs.")
 
 //! sigh, we can't do this yet
 /*

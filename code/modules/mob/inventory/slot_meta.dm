@@ -18,8 +18,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		.[M.id || M.type] = M
 		if(!(M.inventory_slot_flags & INV_SLOT_ALLOW_RANDOM_ID))
 			GLOB.inventory_slot_type_cache[M.type] = M
-	sortTim(., /proc/cmp_inventory_slot_meta_dsc, TRUE)
-	sortTim(GLOB.inventory_slot_type_cache, /proc/cmp_inventory_slot_meta_dsc, TRUE)
+	tim_sort(., /proc/cmp_inventory_slot_meta_dsc, TRUE)
+	tim_sort(GLOB.inventory_slot_type_cache, /proc/cmp_inventory_slot_meta_dsc, TRUE)
 
 /proc/all_inventory_slot_ids()
 	. = list()
@@ -120,7 +120,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	//! Rendering
 	/// rendering slot key
 	var/render_key
-	/// rendering default layer; first is default, rest are alt layers.
+	/// rendering plural slot key - only set on base type of plural slots
+	var/render_key_plural
+	/// rendering default layer; first is default, rest are alt layers. can be list or just one number.
 	VAR_PROTECTED/list/render_layer
 	/// rendering icon state cache for default icons
 	VAR_PRIVATE/list/render_state_cache
@@ -130,6 +132,8 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	VAR_PRIVATE/list/render_dim_x_cache
 	/// rendering dim y
 	VAR_PRIVATE/list/render_dim_y_cache
+	/// fallback states; if set for a bodytype, that bodytype converts to this if not in worn_bodytypes, rather than defaulted.
+	VAR_PROTECTED/list/render_fallback
 
 /datum/inventory_slot_meta/New()
 	if(!id && (inventory_slot_flags & INV_SLOT_ALLOW_RANDOM_ID))
@@ -166,6 +170,10 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	render_state_cache = list()
 	render_dim_x_cache = list()
 	render_dim_y_cache = list()
+	if(!islist(render_default_icons))		// save the checks later for null
+		render_default_icons = list()
+	if(!islist(render_fallback))			// save the checks later for null
+		render_fallback = list()
 	for(var/bodytype_str in render_default_icons)
 		render_default_icons[bodytype_str] = istype(render_default_icons[bodytype_str], /icon)? render_default_icons[bodytype_str] : icon(render_default_icons[bodytype_str])
 		if(!isicon(render_default_icons[bodytype_str]))
@@ -204,6 +212,16 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		index = (B.show_above_suit == 1)? 2 : 1
 	return render_layer[clamp(index, 1, length(render_layer))]
 
+/datum/inventory_slot_meta/proc/handle_worn_fallback(bodytype, list/worn_data)
+	var/bodytype_str = bodytype_to_string(bodytype)
+	if(!render_fallback[bodytype_str])
+		return FALSE
+	worn_data[WORN_DATA_ICON] = render_default_icons[bodytype_str]
+	worn_data[WORN_DATA_SIZE_X] = render_dim_x_cache[bodytype_str]
+	worn_data[WORN_DATA_SIZE_Y] = render_dim_y_cache[bodytype_str]
+	worn_data[WORN_DATA_STATE] = render_fallback[bodytype_str]
+	return TRUE
+
 /datum/inventory_slot_meta/inventory
 	abstract_type = /datum/inventory_slot_meta/inventory
 	inventory_slot_flags = INV_SLOT_IS_RENDERED | INV_SLOT_IS_INVENTORY | INV_SLOT_IS_STRIPPABLE | INV_SLOT_HUD_REQUIRES_EXPAND | INV_SLOT_CONSIDERED_WORN
@@ -224,6 +242,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/back.dmi',
 		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/back.dmi',
 	)
+	render_fallback = list(
+		BODYTYPE_STRING_TESHARI = "_fallback_"
+	)
 	render_layer = BACK_LAYER
 
 /datum/inventory_slot_meta/inventory/uniform
@@ -242,6 +263,10 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/uniform.dmi',
 		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/uniform.dmi',
 		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/uniform.dmi',
+	)
+	render_fallback = list(
+		BODYTYPE_STRING_TESHARI = "_fallback_",
+		BODYTYPE_STRING_VOX = "_fallback_",
 	)
 	render_layer = UNIFORM_LAYER
 
@@ -436,6 +461,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_DEFAULT = 'icons/mob/mob.dmi',
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/id.dmi',
 	)
+	render_fallback = list(
+		BODYTYPE_STRING_TESHARI = "_fallback_"
+	)
 	render_layer = ID_LAYER
 
 /datum/inventory_slot_meta/inventory/shoes
@@ -456,6 +484,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/feet.dmi',
 		BODYTYPE_STRING_ZADDAT    = 'icons/mob/clothing/species/zaddat/shoes.dmi',
  	)
+	render_fallback = list(
+		BODYTYPE_STRING_TESHARI = "_fallback_"	// this doesn't actually exist, so item becomes invis
+	)
 	render_layer = list(SHOES_LAYER, SHOES_LAYER_ALT)
 
 /datum/inventory_slot_meta/inventory/gloves
@@ -475,6 +506,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/gloves.dmi',
 		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/hands.dmi',
 	)
+	render_fallback = list(
+		BODYTYPE_STRING_TESHARI = "_fallback_"
+	)
 	render_layer = GLOVES_LAYER
 
 /datum/inventory_slot_meta/inventory/glasses
@@ -493,6 +527,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/eyes.dmi',
 		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/eyes.dmi',
 		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/eyes.dmi',
+	)
+	render_fallback = list(
+		BODYTYPE_STRING_TESHARI = "_fallback_"
 	)
 	render_layer = GLASSES_LAYER
 
@@ -528,7 +565,11 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		BODYTYPE_STRING_WEREBEAST = 'icons/mob/clothing/species/werebeast/ears.dmi',
 		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/ears.dmi',
 	)
+	render_fallback = list(
+		BODYTYPE_STRING_TESHARI = "_fallback_"
+	)
 	render_layer = EARS_LAYER
+	render_key_plural = "ears"
 
 /datum/inventory_slot_meta/inventory/ears/left
 	name = "left ear"

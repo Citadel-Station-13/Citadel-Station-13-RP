@@ -138,7 +138,9 @@
 	//turfs += centerturf
 	return atoms
 
-/// Alternative to range (ONLY processes turfs and thus less intensive).
+/**
+ * Alternative to range (ONLY processes turfs and thus less intensive).
+ */
 /proc/trange(rad = 0, turf/centre = null)
 	if(!centre)
 		return
@@ -168,7 +170,10 @@
 			turfs += T
 	return turfs
 
-/proc/circleviewturfs(center = usr, radius = 3) // Is there even a diffrence between this proc and circlerangeturfs()?
+/**
+ * Is there even a diffrence between this proc and circlerangeturfs()?
+ */
+/proc/circleviewturfs(center = usr, radius = 3)
 
 	var/turf/centerturf = get_turf(center)
 	var/list/turfs = new/list()
@@ -218,7 +223,9 @@
 
 	return L
 
-/// Returns a list of mobs and/or objects in range of R from source. Used in radio and say code.
+/**
+ * Returns a list of mobs and/or objects in range of R from source. Used in radio and say code.
+ */
 /proc/get_mobs_or_objects_in_view(R, atom/source, include_mobs = 1, include_objects = 1)
 
 	var/turf/T = get_turf(source)
@@ -295,14 +302,15 @@
 	var/list/hearturfs = list()
 
 	for(var/thing in hear)
-		if(istype(thing, /obj)) //Can't use isobj() because /atom/movable returns true in that, and so lighting overlays would be included
+		// Can't use isobj() because /atom/movable returns true in that, and so lighting overlays would be included.
+		if(istype(thing, /obj))
 			objs += thing
 			hearturfs |= get_turf(thing)
 		if(ismob(thing))
 			mobs += thing
 			hearturfs |= get_turf(thing)
 
-	//A list of every mob with a client
+	// A list of every mob with a client.
 	for(var/mob in player_list)
 		if(!ismob(mob))
 			player_list -= mob
@@ -315,14 +323,16 @@
 		var/mob/M = mob
 		if(M && M.stat == DEAD && remote_ghosts && !M.forbid_seeing_deadchat)
 			switch(type)
-				if(1) //Audio messages use ghost_ears
+				// Audio messages use ghost_ears.
+				if(1)
 					if(M.is_preference_enabled(/datum/client_preference/ghost_ears))
 						mobs |= M
-				if(2) //Visual messages use ghost_sight
+				// Visual messages use ghost_sight.
+				if(2)
 					if(M.is_preference_enabled(/datum/client_preference/ghost_sight))
 						mobs |= M
 
-	//For objects below the top level who still want to hear
+	// For objects below the top level who still want to hear.
 	for(var/obj in listening_objects)
 		if(get_turf(obj) in hearturfs)
 			objs |= obj
@@ -368,7 +378,9 @@
 		for(var/client/C in show_to)
 			C.images -= I
 
-/// Wrapper for flick_overlay, flicks to everyone who can see the target atom.
+/**
+ * Wrapper for flick_overlay, flicks to everyone who can see the target atom.
+ */
 /proc/flick_overlay_view(image/I, atom/target, duration, gc_after)
 	var/list/viewing = list()
 	for(var/m in viewers(target))
@@ -390,12 +402,15 @@
 	else
 		return FALSE
 
-/// Returns the position of a step from start away from finish, in one of the cardinal directions.
+/**
+ * Returns the position of a step from start away from finish, in one of the cardinal directions.
+ */
 /proc/get_cardinal_step_away(atom/start, atom/finish)
-	//returns only NORTH, SOUTH, EAST, or WEST
+	// Returns only NORTH, SOUTH, EAST, or WEST
 	var/dx = finish.x - start.x
 	var/dy = finish.y - start.y
-	if(abs(dy) > abs (dx)) //slope is above 1:1 (move horizontally in a tie)
+	// Slope is above 1:1 (move horizontally in a tie)
+	if(abs(dy) > abs (dx))
 		if(dy > 0)
 			return get_step(start, SOUTH)
 		else
@@ -409,29 +424,37 @@
 /proc/get_mob_by_key(key)
 	return GLOB.directory[ckey(key)]
 
-// Will return a list of active candidates. It increases the buffer 5 times until it finds a candidate which is active within the buffer.
+/**
+ * Will return a list of active candidates.
+ * It increases the buffer 5 times until it finds a candidate which is active within the buffer.
+ */
 /proc/get_active_candidates(buffer = 1)
 
-	var/list/candidates = list() //List of candidate KEYS to assume control of the new larva ~Carn
+	/// List of candidate KEYS to assume control of the new larva ~Carn
+	var/list/candidates = list()
 	var/i = 0
 	while(candidates.len <= 0 && i < 5)
 		for(var/mob/observer/dead/G in player_list)
-			if(((G.client.inactivity/10)/60) <= buffer + i) // the most active players are more likely to become an alien
+			// The most active players are more likely to become an alien.
+			if(((G.client.inactivity/10)/60) <= buffer + i)
 				if(!(G.mind && G.mind.current && G.mind.current.stat != DEAD))
 					candidates += G.key
 		i++
 	return candidates
 
-// Same as above but for alien candidates.
-
+/**
+ * Same as above but for alien candidates.
+ */
 /proc/get_alien_candidates()
 
-	var/list/candidates = list() //List of candidate KEYS to assume control of the new larva ~Carn
+	/// List of candidate KEYS to assume control of the new larva ~Carn
+	var/list/candidates = list()
 	var/i = 0
 	while(candidates.len <= 0 && i < 5)
 		for(var/mob/observer/dead/G in player_list)
 			if(G.client.prefs.be_special & BE_ALIEN)
-				if(((G.client.inactivity/10)/60) <= ALIEN_SELECT_AFK_BUFFER + i) // the most active players are more likely to become an alien
+				// The most active players are more likely to become an alien.
+				if(((G.client.inactivity/10)/60) <= ALIEN_SELECT_AFK_BUFFER + i)
 					if(!(G.mind && G.mind.current && G.mind.current.stat != DEAD))
 						candidates += G.key
 		i++
@@ -545,18 +568,18 @@
 		mixedcolor += weight[i]*color[i]
 	mixedcolor = round(mixedcolor)
 
-	//until someone writes a formal proof for this algorithm, let's keep this in
-//	if(mixedcolor<0x00 || mixedcolor>0xFF)
-//		return 0
-	//that's not the kind of operation we are running here, nerd
+	// Until someone writes a formal proof for this algorithm, let's keep this in.
+	// if(mixedcolor<0x00 || mixedcolor>0xFF)
+	// 	return 0
+	// That's not the kind of operation we are running here, NERD.
 	mixedcolor=min(max(mixedcolor,0),255)
 
 	return mixedcolor
 
 /**
-* Gets the highest and lowest pressures from the tiles in cardinal directions
-* around us, then checks the difference.
-*/
+ * Gets the highest and lowest pressures from the tiles in cardinal directions
+ * around us, then checks the difference.
+ */
 /proc/getOPressureDifferential(turf/loc)
 	var/minp=16777216;
 	var/maxp=0;
@@ -627,7 +650,9 @@
 		return
 	winset(client_or_usr, "mainwindow", "flash=5")
 
-/// Used for the multiz camera console stolen from vorestation.
+/**
+ * Used for the multiz camera console stolen from virgo.
+ */
 /proc/get_bbox_of_atoms(list/atoms)
 	var/list/list_x = list()
 	var/list/list_y = list()
@@ -643,7 +668,7 @@
 
 /proc/recursive_mob_check(atom/O, list/L = list(), recursion_limit = 3, client_check = 1, sight_check = 1, include_radio = 1)
 
-	//GLOB.debug_mob += O.contents.len
+	// GLOB.debug_mob += O.contents.len
 	if(!recursion_limit)
 		return L
 	for(var/atom/A in O.contents)
@@ -656,7 +681,7 @@
 			if(sight_check && !isInSight(A, O))
 				continue
 			L |= M
-			//log_world("[recursion_limit] = [M] - [get_turf(M)] - ([M.x], [M.y], [M.z])")
+			// log_world("[recursion_limit] = [M] - [get_turf(M)] - ([M.x], [M.y], [M.z])")
 
 		else if(include_radio && istype(A, /obj/item/radio))
 			if(sight_check && !isInSight(A, O))
@@ -683,7 +708,7 @@
 			var/mob/M = A
 			if(M.client || include_clientless)
 				hear += M
-			//log_world("Start = [M] - [get_turf(M)] - ([M.x], [M.y], [M.z])")
+			// log_world("Start = [M] - [get_turf(M)] - ([M.x], [M.y], [M.z])")
 		else if(istype(A, /obj/item/radio))
 			hear += A
 

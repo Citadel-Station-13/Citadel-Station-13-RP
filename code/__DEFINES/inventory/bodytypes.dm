@@ -17,7 +17,7 @@
 //?    For bodytype flags, you will need a regex that converts the worn_bodytypes var
 //?    to a list. You might even want to macro it if there's a chance of doing the better system
 //?    later.
-//?    For worn_bodytypes_converted, well, not many people should use it; all bodytypes should
+//?    For worn_bodytypes_fallback, well, not many people should use it; all bodytypes should
 //?    generally convert if no state is available for species defaults. You don't have to worry about
 //?    that.
 //? 3. Once you convert the bodytypes to lists, you're not done yet.

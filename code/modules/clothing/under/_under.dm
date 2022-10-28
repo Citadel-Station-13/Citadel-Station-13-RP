@@ -1,10 +1,7 @@
 //Under clothing
 /obj/item/clothing/under
 	icon = 'icons/obj/clothing/uniforms.dmi'
-	item_icons = list(
-		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_uniforms.dmi',
-		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_uniforms.dmi',
-		)
+	inhand_default_type = INHAND_DEFAULT_ICON_UNIFORMS
 	name = "under"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	permeability_coefficient = 0.90

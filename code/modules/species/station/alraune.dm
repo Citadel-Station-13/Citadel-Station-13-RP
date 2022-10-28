@@ -281,7 +281,7 @@
 
 
 	// Hot air hurts :(
-	if((breath.temperature < breath_cold_level_1 || breath.temperature > breath_heat_level_1) && !(COLD_RESISTANCE in H.mutations))
+	if((breath.temperature < breath_cold_level_1 || breath.temperature > breath_heat_level_1) && !(MUTATION_COLD_RESIST in H.mutations))
 
 		if(breath.temperature <= breath_cold_level_1)
 			if(prob(20))

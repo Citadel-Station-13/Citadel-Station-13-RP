@@ -140,7 +140,7 @@
 	var/armor_block = target.run_armor_check(affecting, "melee")
 	var/armor_soak = target.get_armor_soak(affecting, "melee")
 
-	if(HULK in user.mutations)
+	if(MUTATION_HULK in user.mutations)
 		damage += 5
 
 	playsound(target.loc, "punch", 25, 1, -1)

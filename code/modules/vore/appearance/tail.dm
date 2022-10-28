@@ -326,6 +326,7 @@
 	ani_state = "catbig_wag"
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
+	front_behind_system = TRUE
 
 /datum/sprite_accessory/tail/chameleon
 	name = "Chameleon, colorable"

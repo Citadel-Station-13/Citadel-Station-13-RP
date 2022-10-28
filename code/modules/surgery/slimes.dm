@@ -13,10 +13,10 @@
 
 /datum/surgery_step/slime/cut_flesh
 	allowed_tools = list(
-	/obj/item/surgical/scalpel = 100,		\
-	/obj/item/surgical/scalpel_primitive = 80,	\
-	/obj/item/material/knife = 75,	\
-	/obj/item/material/shard = 50, 		\
+	/obj/item/surgical/scalpel = 100,
+	/obj/item/surgical/scalpel_primitive = 80,
+	/obj/item/material/knife = 75,
+	/obj/item/material/shard = 50,
 	)
 
 	min_duration = 30

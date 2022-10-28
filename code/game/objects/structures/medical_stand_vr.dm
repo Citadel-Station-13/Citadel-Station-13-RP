@@ -412,7 +412,7 @@
 				return
 			if(!H.dna)
 				return
-			if(NOCLONE in H.mutations)
+			if(MUTATION_NOCLONE in H.mutations)
 				return
 			if(H.species.flags & NO_BLOOD)
 				return

@@ -113,7 +113,7 @@
 
 	// standing is poor
 	if(stance_damage >= 4 || (stance_damage >= 2 && prob(5)))
-		if(!(lying || resting) && !isbelly(loc))
+		if(!(lying || resting) && !buckled && !isbelly(loc))
 			if(limb_pain)
 				emote("scream")
 			custom_emote(1, "collapses!")

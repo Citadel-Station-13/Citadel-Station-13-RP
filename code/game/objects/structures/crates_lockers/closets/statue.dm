@@ -20,7 +20,7 @@
 			L.anchored = 0
 		L.forceMove(src)
 		L.update_perspective()
-		L.sdisabilities |= MUTE
+		L.sdisabilities |= SDISABILITY_MUTE
 		health = L.health + 100 //stoning damaged mobs will result in easier to shatter statues
 		intialTox = L.getToxLoss()
 		intialFire = L.getFireLoss()
@@ -64,7 +64,7 @@
 	for(var/mob/living/M in src)
 		M.forceMove(loc)
 		M.update_perspective()
-		M.sdisabilities &= ~MUTE
+		M.sdisabilities &= ~SDISABILITY_MUTE
 		M.take_overall_damage((M.health - health - 100),0) //any new damage the statue incurred is transfered to the mob
 
 /obj/structure/closet/statue/open()

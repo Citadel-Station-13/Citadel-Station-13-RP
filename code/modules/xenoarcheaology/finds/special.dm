@@ -93,7 +93,7 @@
 
 	if(charges >= 0.1)
 		if(prob(5))
-			visible_message("<font color='red'>[icon2html(thing = src, target = world)] [src]'s eyes glow ruby red for a moment!</font>")
+			visible_message(SPAN_WARNING("[icon2html(thing = src, target = world)] [src]'s eyes glow ruby red for a moment!"))
 			charges -= 0.1
 
 	//check on our shadow wights

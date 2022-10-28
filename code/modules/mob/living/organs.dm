@@ -13,7 +13,7 @@
 	if(E)
 		. = E.name
 
-/mob/living/proc/get_organ(var/zone)
+/mob/living/proc/get_organ(zone)
 	if(!zone)
 		zone = BP_TORSO
 	else if (zone in list( O_EYES, O_MOUTH ))
@@ -32,10 +32,11 @@
 
 		for(var/obj/item/organ/I in internal_organs)
 			I.removed()
-			if(isturf(I?.loc)) // Some organs qdel themselves or other things when removed
-				I.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),30)
+			// Some organs qdel themselves or other things when removed.
+			if(isturf(I?.loc))
+				I.throw_at_old(get_edge_target_turf(src, pick(GLOB.alldirs)), rand(1,3), 30)
 
 		for(var/obj/item/organ/external/E in src.organs)
 			if(!ispath(E))
-				E.droplimb(0,DROPLIMB_EDGE,1)
+				E.droplimb(FALSE, DROPLIMB_EDGE, TRUE)
 	..()

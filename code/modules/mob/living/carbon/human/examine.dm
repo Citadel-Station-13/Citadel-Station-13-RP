@@ -336,7 +336,7 @@
 	if(attempt_vr(src,"examine_chimera",args))
 		. += attempt_vr(src,"examine_chimera",args)
 
-	if(mSmallsize in mutations)
+	if(MUTATION_DWARFISM in mutations)
 		. += SPAN_WARNING("[T.He] [T.is] very short!")
 
 	// Pulse Checking.

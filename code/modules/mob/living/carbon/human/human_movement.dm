@@ -75,7 +75,7 @@
 
 	if(aiming && aiming.aiming_at) tally += 5 // Iron sights make you slower, it's a well-known fact.
 
-	if(FAT in src.mutations)
+	if(MUTATION_FAT in src.mutations)
 		tally += 1.5
 
 	if (bodytemperature < species.cold_level_1)
@@ -83,7 +83,7 @@
 
 	tally += max(2 * stance_damage, 0) //damaged/missing feet or legs is slow
 
-	if(mRun in mutations)
+	if(MUTATION_INCREASE_RUN in mutations)
 		tally = 0
 
 	// Turf related slowdown

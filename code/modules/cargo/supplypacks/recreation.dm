@@ -106,14 +106,6 @@
 	container_type = /obj/structure/closet/crate
 	contains = list (/obj/machinery/media/jukebox = 1)
 
-/datum/supply_pack/recreation/rover
-	name = "NT Humvee"
-	contains = list(
-			/obj/vehicle_old/train/rover/engine
-			)
-	container_type = /obj/structure/largecrate
-	container_name = "NT Humvee Crate"
-	cost = 500
 
 /datum/supply_pack/recreation/restraints
 	name = "Recreational Restraints"

@@ -67,7 +67,7 @@
 					hood.armor = armor.Copy()
 				hood_up = TRUE
 				ADD_TRAIT(hood, TRAIT_NODROP, CLOTHING_TRAIT)
-				icon_state = "[toggleicon]_t"
+				icon_state = "[toggleicon]-t"
 				update_worn_icon()
 	else
 		RemoveHood()
@@ -422,6 +422,7 @@
 	armor = list("melee" = 15, "bullet" = 8, "laser" = 25, "energy" = 5, "bomb" = 12, "bio" = 0, "rad" = 0)
 	hoodtype = /obj/item/clothing/head/hood/winter/durathread
 
+//Hazardous Softsuits
 /obj/item/clothing/suit/storage/hooded/explorer
 	name = "explorer suit"
 	desc = "An armoured suit for exploring harsh environments."
@@ -447,6 +448,30 @@
 		/obj/item/gun/projectile/sec/flash
 		)
 
+/obj/item/clothing/suit/storage/hooded/miner
+	name = "mining suit"
+	desc = "An armoured suit for mining in harsh environments."
+	icon = 'icons/clothing/suit/mining.dmi'
+	icon_state = "miner"
+	flags = PHORONGUARD
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	clothing_flags = THICKMATERIAL
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
+	hoodtype = /obj/item/clothing/head/hood/miner
+	siemens_coefficient = 0.9
+	armor = list(melee = 50, bullet = 5, laser = 10, energy = 0, bomb = 35, bio = 50, rad = 65)
+	allowed = list(
+		/obj/item/flashlight,
+		/obj/item/material/knife,
+		/obj/item/tank,
+		/obj/item/radio,
+		/obj/item/suit_cooling_unit,
+		/obj/item/pickaxe
+		)
+
+//The Chippin' In Set -Cap
 /obj/item/clothing/suit/storage/hooded/ronincoat
 	name = "ronin coat"
 	desc = "Outfitted with integrated heating coils, this fashionable coat is a favorite of gangsters and mercenaries alike."
@@ -461,6 +486,26 @@
 	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
 	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
 	/obj/item/gun/projectile, /obj/item/ammo_magazine, /obj/item/melee/baton)
+
+/obj/item/clothing/suit/storage/hooded/runner
+	name = "Runner Jacket"
+	desc = "A sturdy high-vis jacket patterned after a lost society's first responders. It has been marked with unfamiliar graffiti on the back."
+	icon_state = "runner_jacket"
+	flags_inv = HIDEHOLSTER
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	hoodtype = /obj/item/clothing/head/hood/runner
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0)
+	allowed = list (/obj/item/pen, /obj/item/paper, /obj/item/flashlight,/obj/item/tank/emergency/oxygen, /obj/item/storage/fancy/cigarettes,
+	/obj/item/storage/box/matches, /obj/item/reagent_containers/food/drinks/flask, /obj/item/suit_cooling_unit, /obj/item/gun/energy,
+	/obj/item/gun/projectile, /obj/item/ammo_magazine, /obj/item/melee/baton)
+
+/obj/item/clothing/suit/storage/hooded/runner/half_pint
+	name = "Half-Pint Jacket"
+	desc = "This reinforced jacket bears many curious modifications. Marketed towards mercenaries who'd like a touch of flair, the commercial variant comes with built-in decorative lighting and multiple internal pockets meant to accept armor panels."
+	icon_state = "half_pint"
+	hoodtype = /obj/item/clothing/head/hood/runner/half_pint
 
 // Eldritch suit
 /obj/item/clothing/suit/storage/hooded/eldritch

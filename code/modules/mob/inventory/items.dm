@@ -198,7 +198,7 @@
  * checks if we need something to attach to in a certain slot
  */
 /obj/item/proc/equip_check_beltlink(mob/M, slot, mob/user, flags)
-	if(item_flags & EQUIP_IGNORE_BELTLINK)
+	if(clothing_flags & EQUIP_IGNORE_BELTLINK)
 		return TRUE
 
 	if(!ishuman(M))
