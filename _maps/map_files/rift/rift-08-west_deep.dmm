@@ -2482,7 +2482,7 @@
 	dir = 5
 	},
 /obj/machinery/button/remote/blast_door{
-	id = "PubPrepFront";
+	id = "PubPrep";
 	name = "Gateway Shutter";
 	pixel_x = 25;
 	pixel_y = 25;
@@ -5148,7 +5148,7 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	id = "PubPrep";
-	name = "Public Access Shutter";
+	name = "Gateway Shutter";
 	pixel_x = -25;
 	pixel_y = 25;
 	req_access = list(62)
