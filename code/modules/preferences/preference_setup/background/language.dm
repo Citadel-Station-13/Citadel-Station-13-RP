@@ -61,6 +61,7 @@
 	if(length(data) > prefs.extraneous_languages_max())
 		errors?.Add(SPAN_WARNING("You have selected too many extra languages for your species and culture."))
 		return FALSE
+	#warn whitelist check
 	return TRUE
 
 /datum/category_item/player_setup_item/background/language/default_value(randomizing)

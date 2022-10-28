@@ -225,7 +225,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	. += "<table><tr style='vertical-align:top'><td><b>Body</b> "
 	. += "(<a href='?src=\ref[src];random=1'>&reg;</A>)"
 	. += "<br>"
-	. += "Species: <a href='?src=\ref[src];show_species=1'>[pref.species]</a><br>"
+	. += "Species: <a href='?src=\ref[src];show_species=1'>[mob_species.name]</a><br>"
 	. += "Blood Type: <a href='?src=\ref[src];blood_type=1'>[pref.b_type]</a><br>"
 	if(has_flag(mob_species, HAS_SKIN_TONE))
 		. += "Skin Tone: <a href='?src=\ref[src];skin_tone=1'>[-pref.s_tone + 35]/220</a><br>"
@@ -413,68 +413,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			return PREFERENCES_REFRESH
 
 	else if(href_list["show_species"])
-		// Actual whitelist checks are handled elsewhere, this is just for accessing the preview window.
-		var/choice = input("Which species would you like to look at?") as null|anything in SScharacters.playable_species
-		if(!choice) return
-		pref.species_preview = choice
-		SetSpecies(preference_mob())
-		pref.alternate_languages.Cut() // Reset their alternate languages. Todo: attempt to just fix it instead?
+		pref.species_pick(usr)
 		return PREFERENCES_HANDLED
-
-	else if(href_list["set_species"])
-		user << browse(null, "window=species")
-		if(!pref.species_preview || !(pref.species_preview in SScharacters.all_species_names()))
-			return PREFERENCES_NOACTION
-
-		var/datum/species/setting_species
-
-		if(SScharacters.resolve_species_name(href_list["set_species"]))
-			setting_species = SScharacters.resolve_species_name(href_list["set_species"])
-		else
-			return PREFERENCES_NOACTION
-
-		if(((!(setting_species.species_spawn_flags & SPECIES_SPAWN_ALLOWED)) || (!is_alien_whitelisted(preference_mob(),setting_species))) && !check_rights(R_ADMIN, 0) && !(setting_species.species_spawn_flags & SPECIES_SPAWN_WHITELIST_SELECTABLE))
-			return PREFERENCES_NOACTION
-
-		var/prev_species = pref.species
-		pref.species = href_list["set_species"]
-		if(prev_species != pref.species)
-			if(!(pref.biological_gender in mob_species.genders))
-				pref.set_biological_gender(mob_species.genders[1])
-			pref.custom_species = null // This is cleared on species changes
-
-			//grab one of the valid hair styles for the newly chosen species
-			var/list/valid_hairstyles = pref.get_valid_hairstyles()
-
-			if(valid_hairstyles.len)
-				pref.h_style = pick(valid_hairstyles)
-			else
-				//this shouldn't happen
-				pref.h_style = hair_styles_list["Bald"]
-
-			//grab one of the valid facial hair styles for the newly chosen species
-			var/list/valid_facialhairstyles = pref.get_valid_facialhairstyles()
-
-			if(valid_facialhairstyles.len)
-				pref.f_style = pick(valid_facialhairstyles)
-			else
-				//this shouldn't happen
-				pref.f_style = facial_hair_styles_list["Shaved"]
-
-			//reset hair colour and skin colour
-			pref.r_hair = 0//hex2num(copytext(new_hair, 2, 4))
-			pref.g_hair = 0//hex2num(copytext(new_hair, 4, 6))
-			pref.b_hair = 0//hex2num(copytext(new_hair, 6, 8))
-			pref.s_tone = 0
-
-			reset_limbs() // Safety for species with incompatible manufacturers; easier than trying to do it case by case.
-			pref.body_markings.Cut() // Basically same as above.
-
-			var/min_age = get_min_age()
-			var/max_age = get_max_age()
-			pref.age = max(min(pref.age, max_age), min_age)
-
-			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["hair_color"])
 		if(!has_flag(mob_species, HAS_HAIR_COLOR))

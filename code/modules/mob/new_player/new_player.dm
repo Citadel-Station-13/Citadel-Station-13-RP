@@ -569,10 +569,7 @@
 	var/mob/living/carbon/human/new_character
 
 	var/use_species_name
-	var/datum/species/chosen_species
-	if(client.prefs.species)
-		chosen_species = SScharacters.resolve_species_name(client.prefs.species)
-		use_species_name = chosen_species.get_station_variant()	// Only used by pariahs atm.
+	var/datum/species/chosen_species = client.prefs.real_species_datum()
 
 	if(chosen_species && use_species_name)
 		// Have to recheck admin due to no usr at roundstart. Latejoins are fine though.
@@ -624,12 +621,6 @@
 			E.handle_implant(new_character)
 			E.post_implant(new_character)
 
-	#warn why tf isn't this in language copy to
-	for(var/lang in client.prefs.alternate_languages)
-		var/datum/language/chosen_language = SScharacters.resolve_language_name(lang)
-		if(chosen_language)
-			if((!(chosen_language.language_flags & WHITELISTED) || is_lang_whitelisted(src, chosen_language)) || (new_character.species && (chosen_language.name in new_character.species.secondary_langs)))
-				new_character.add_language(lang)
 	// And uncomment this, too.
 	//new_character.dna.UpdateSE()
 
