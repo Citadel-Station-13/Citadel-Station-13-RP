@@ -24,7 +24,7 @@
 	. = TRUE
 	if(A == src)
 		return FALSE
-	if(!ismob(A))
+	if(!isliving(A))	// no ghosts, only entities
 		return FALSE
 	if(!user.Adjacent(src) || !A.Adjacent(src))
 		return FALSE
