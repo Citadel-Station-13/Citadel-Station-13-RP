@@ -95,6 +95,12 @@
 // #define ZAS_ASSERTIONS_EXPENSIVE
 /// uncomment to enable debugging graphics. you probably want to keep this off in live!
 // #define ZAS_DEBUG_GRAPHICS
+/// uncomment to enable some otherwise useless hook points for zas debugging
+#define ZAS_BREAKPOINT_HOOKS
+
+#ifdef ZAS_DEBUG_GRAPHICS
+	#define ZAS_BREAKPOINT_HOOKS
+#endif
 
 //! Overlays
 
