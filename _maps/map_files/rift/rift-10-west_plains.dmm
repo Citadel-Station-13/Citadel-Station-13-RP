@@ -1492,6 +1492,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
+"hf" = (
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 4
+	},
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west)
 "hh" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -3062,6 +3068,14 @@
 /obj/structure/railing,
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
+"oF" = (
+/obj/effect/map_effect/portal/master/side_b{
+	dir = 4;
+	name = "Surface to caves";
+	portal_id = "surface_to_cave1"
+	},
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west)
 "oG" = (
 /obj/structure/bonfire/permanent,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
@@ -3091,6 +3105,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/exterior/mineshaft)
+"oS" = (
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c/indoors,
+/area/rift/exterior/nuketown/interior)
 "oT" = (
 /obj/structure/fireplace{
 	pixel_y = 24
@@ -4315,6 +4333,10 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/tether/outpost/solars_outside)
+"ur" = (
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c,
+/area/rift/exterior/nuketown)
 "us" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
@@ -7166,7 +7188,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/tether/outpost/solars_outside)
 "Iu" = (
-/obj/structure/sign/mining,
+/obj/structure/sign/nanotrasen,
 /turf/simulated/wall/r_wall,
 /area/outpost/mining_main/outpost)
 "Iv" = (
@@ -8803,6 +8825,10 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/elevator)
+"PX" = (
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c,
+/area/rift/exterior/nuketown/interior)
 "Qe" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
@@ -21038,7 +21064,7 @@ In
 IC
 IC
 Jo
-PI
+oS
 OH
 xc
 xc
@@ -21230,9 +21256,9 @@ ed
 ed
 In
 IC
-HK
-HK
-PI
+PX
+PX
+oS
 bv
 ed
 ed
@@ -21618,7 +21644,7 @@ ed
 ed
 OH
 OH
-PI
+oS
 RY
 OH
 OH
@@ -22200,8 +22226,8 @@ xc
 ed
 ed
 RY
-HK
-HK
+PX
+PX
 OH
 sP
 OH
@@ -22394,7 +22420,7 @@ ed
 ed
 ed
 VL
-HK
+PX
 YP
 yy
 GB
@@ -22587,7 +22613,7 @@ ed
 ed
 RY
 RY
-HK
+PX
 HK
 YP
 FA
@@ -22779,8 +22805,8 @@ xc
 ed
 ed
 ed
-HK
-HK
+PX
+PX
 HK
 HK
 jq
@@ -22973,8 +22999,8 @@ xc
 xc
 xc
 xc
-HK
-HK
+PX
+PX
 jq
 YI
 jq
@@ -23544,8 +23570,8 @@ jq
 jq
 jq
 Za
-xc
-xc
+ur
+ur
 xc
 xc
 xc
@@ -23932,7 +23958,7 @@ TD
 OH
 lQ
 IC
-xc
+ur
 xc
 xc
 xc
@@ -24126,7 +24152,7 @@ OR
 OH
 so
 IC
-xc
+ur
 xc
 xc
 xc
@@ -31439,11 +31465,11 @@ sv
 PP
 PP
 PP
-PP
-PP
-PP
-PP
-sv
+HC
+HC
+HC
+HC
+HC
 PP
 PP
 PP
@@ -31633,11 +31659,11 @@ sv
 PP
 PP
 PP
-PP
-PP
-sv
-sv
-sv
+HC
+hf
+hf
+oF
+HC
 PP
 PP
 PP
@@ -31827,11 +31853,11 @@ PP
 PP
 PP
 PP
-PP
-sv
-sv
-sv
-sv
+dP
+dP
+dP
+dP
+dP
 PP
 PP
 PP
@@ -32020,12 +32046,12 @@ sv
 PP
 PP
 PP
-PP
-sv
-sv
-sv
-sv
-sv
+dP
+dP
+dP
+dP
+dP
+dP
 PP
 PP
 PP
@@ -32214,12 +32240,12 @@ PP
 PP
 PP
 PP
-PP
-sv
-sv
-sv
-sv
-sv
+dP
+dP
+dP
+dP
+dP
+dP
 PP
 PP
 PP
@@ -32408,13 +32434,13 @@ PP
 PP
 PP
 PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+dP
+dP
+dP
+dP
+dP
+dP
+dP
 PP
 PP
 PP
@@ -32602,13 +32628,13 @@ PP
 PP
 PP
 PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+dP
+dP
+dP
+dP
+dP
+dP
+dP
 PP
 PP
 PP
@@ -32796,13 +32822,13 @@ PP
 PP
 PP
 PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+dP
+dP
+dP
+dP
+dP
+dP
+dP
 PP
 PP
 PP
@@ -32990,13 +33016,13 @@ PP
 PP
 PP
 PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+dP
+dP
+dP
+dP
+dP
+dP
+PP
 PP
 PP
 PP
@@ -33184,13 +33210,13 @@ PP
 PP
 PP
 PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+dP
+dP
+dP
+dP
+dP
+dP
+PP
 PP
 PP
 PP
@@ -33378,14 +33404,14 @@ PP
 PP
 PP
 PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+dP
+dP
+dP
+dP
+dP
+dP
+PP
+PP
 PP
 PP
 PP
@@ -33572,14 +33598,14 @@ PP
 PP
 PP
 PP
+dP
+dP
+dP
+dP
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
+PP
+PP
 PP
 PP
 PP
@@ -33766,13 +33792,13 @@ PP
 PP
 PP
 PP
+dP
+dP
+dP
+dP
 sv
 sv
-sv
-sv
-sv
-sv
-sv
+PP
 sv
 sv
 sv
@@ -33960,9 +33986,9 @@ PP
 PP
 PP
 PP
-sv
-sv
-sv
+dP
+dP
+dP
 sv
 sv
 sv
@@ -34154,8 +34180,8 @@ PP
 PP
 PP
 PP
-sv
-sv
+dP
+dP
 sv
 sv
 sv
@@ -34349,7 +34375,7 @@ PP
 PP
 PP
 PP
-sv
+dP
 sv
 sv
 sv
@@ -34543,7 +34569,7 @@ PP
 PP
 PP
 PP
-sv
+dP
 sv
 sv
 sv
