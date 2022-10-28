@@ -27,6 +27,14 @@
 	var/id
 	// TODO: ref species by id in code, so we can rename as needed
 
+	//! Appearance
+	/// Appearance/display related features.
+	var/species_appearance_flags = NONE
+
+	//! Spawning
+	/// Flags that specify who can spawn as this species
+	var/species_spawn_flags = NONE
+
 	//! Culture/Background - Typepaths
 	/// default origin
 	var/default_origin = /datum/lore/character_background/origin/custom
@@ -332,13 +340,9 @@
 	var/darksight = 2
 
 //! ## Flags
+	// todo: species_flags
 	/// Various specific features.
-	var/flags = NONE
-	/// Appearance/display related features.
-	var/species_appearance_flags = NONE
-	/// Flags that specify who can spawn as this species
-	var/species_spawn_flags = NONE
-
+	var/species_flags = NONE
 	/// What marks are left when walking
 	var/obj/effect/debris/cleanable/blood/tracks/move_trail = /obj/effect/debris/cleanable/blood/tracks/footprints
 	var/list/skin_overlays = list()

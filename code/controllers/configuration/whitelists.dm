@@ -20,6 +20,17 @@
 	return relevant?.Find(ckey)
 
 /**
+ * get every alien (species | language) someone's whitelisted for
+ * returns *names*, not uids.
+ */
+/datum/controller/configuration/proc/all_alien_whitelists_for(ckey)
+	. = list()
+	for(var/ayy in alien_whitelist)
+		if(!(ckey in alien_whitelist[ayy]))
+			continue
+		. += ayy
+
+/**
  * name, ckey must be CKEY()'d.
  */
 /datum/controller/configuration/proc/check_job_whitelist(name, ckey)
