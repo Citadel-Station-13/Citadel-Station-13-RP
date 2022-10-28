@@ -1478,13 +1478,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
-"do" = (
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/hallway/primary/underone)
 "dp" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/machinery/camera/network/civilian{
@@ -29805,7 +29798,7 @@ ai
 cy
 dP
 ec
-do
+dP
 wj
 dP
 cZ
