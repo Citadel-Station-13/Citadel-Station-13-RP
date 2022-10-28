@@ -806,6 +806,10 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
+"dW" = (
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c,
+/area/rift/exterior/nuketown)
 "dY" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -1164,6 +1168,10 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/rnd/outpost/heating)
+"fG" = (
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c,
+/area/rift/exterior/nuketown/interior)
 "fH" = (
 /obj/machinery/atmospherics/tvalve/digital/mirrored{
 	name = "Filter Bypass"
@@ -1492,12 +1500,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
-"hf" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 4
-	},
-/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
-/area/rift/surfacebase/outside/west)
 "hh" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -1579,6 +1581,12 @@
 "hw" = (
 /turf/simulated/wall/r_wall,
 /area/rnd/outpost/anomaly_lab/analysis)
+"hy" = (
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 4
+	},
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west)
 "hz" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -3068,14 +3076,6 @@
 /obj/structure/railing,
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
-"oF" = (
-/obj/effect/map_effect/portal/master/side_b{
-	dir = 4;
-	name = "Surface to caves";
-	portal_id = "surface_to_cave1"
-	},
-/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
-/area/rift/surfacebase/outside/west)
 "oG" = (
 /obj/structure/bonfire/permanent,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
@@ -3105,10 +3105,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/exterior/mineshaft)
-"oS" = (
-/obj/structure/lattice,
-/turf/simulated/open/lythios43c/indoors,
-/area/rift/exterior/nuketown/interior)
 "oT" = (
 /obj/structure/fireplace{
 	pixel_y = 24
@@ -4333,10 +4329,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/tether/outpost/solars_outside)
-"ur" = (
-/obj/structure/lattice,
-/turf/simulated/open/lythios43c,
-/area/rift/exterior/nuketown)
 "us" = (
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
@@ -4697,6 +4689,9 @@
 "vM" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
+	dir = 4
+	},
+/obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor,
@@ -6968,6 +6963,10 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
+"Hp" = (
+/obj/structure/lattice,
+/turf/simulated/open/lythios43c/indoors,
+/area/rift/exterior/nuketown/interior)
 "Hz" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
@@ -7945,6 +7944,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 5
 	},
+/obj/machinery/light/small,
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "LY" = (
@@ -8343,6 +8343,14 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/exterior/shuttle)
+"NO" = (
+/obj/effect/map_effect/portal/master/side_b{
+	dir = 4;
+	name = "Surface to caves";
+	portal_id = "surface_to_cave1"
+	},
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west)
 "NQ" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 8
@@ -8825,10 +8833,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/elevator)
-"PX" = (
-/obj/structure/lattice,
-/turf/simulated/open/lythios43c,
-/area/rift/exterior/nuketown/interior)
 "Qe" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
@@ -9368,6 +9372,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
+"SL" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/rnd/outpost/atmos)
 "SN" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 5
@@ -21064,7 +21074,7 @@ In
 IC
 IC
 Jo
-oS
+Hp
 OH
 xc
 xc
@@ -21256,9 +21266,9 @@ ed
 ed
 In
 IC
-PX
-PX
-oS
+fG
+fG
+Hp
 bv
 ed
 ed
@@ -21644,7 +21654,7 @@ ed
 ed
 OH
 OH
-oS
+Hp
 RY
 OH
 OH
@@ -22226,8 +22236,8 @@ xc
 ed
 ed
 RY
-PX
-PX
+fG
+fG
 OH
 sP
 OH
@@ -22420,7 +22430,7 @@ ed
 ed
 ed
 VL
-PX
+fG
 YP
 yy
 GB
@@ -22613,7 +22623,7 @@ ed
 ed
 RY
 RY
-PX
+fG
 HK
 YP
 FA
@@ -22805,8 +22815,8 @@ xc
 ed
 ed
 ed
-PX
-PX
+fG
+fG
 HK
 HK
 jq
@@ -22999,8 +23009,8 @@ xc
 xc
 xc
 xc
-PX
-PX
+fG
+fG
 jq
 YI
 jq
@@ -23570,8 +23580,8 @@ jq
 jq
 jq
 Za
-ur
-ur
+dW
+dW
 xc
 xc
 xc
@@ -23958,7 +23968,7 @@ TD
 OH
 lQ
 IC
-ur
+dW
 xc
 xc
 xc
@@ -24152,7 +24162,7 @@ OR
 OH
 so
 IC
-ur
+dW
 xc
 xc
 xc
@@ -31660,9 +31670,9 @@ PP
 PP
 PP
 HC
-hf
-hf
-oF
+hy
+hy
+NO
 HC
 PP
 PP
@@ -42245,7 +42255,7 @@ sv
 PP
 PP
 IL
-XB
+SL
 fm
 XB
 zw
