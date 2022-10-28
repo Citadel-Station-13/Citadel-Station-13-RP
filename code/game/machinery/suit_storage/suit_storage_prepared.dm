@@ -9,6 +9,7 @@
 	suit_stored_TYPE = /obj/item/clothing/suit/space/void/atmos
 	helmet_stored_TYPE = /obj/item/clothing/head/helmet/space/void/atmos
 	mask_stored_TYPE = /obj/item/clothing/mask/breath
+	boots_stored_TYPE = /obj/item/clothing/shoes/magboots
 
 /obj/machinery/suit_storage_unit/engineering
 	suit_stored_TYPE = /obj/item/clothing/suit/space/void/engineering
@@ -43,11 +44,13 @@
 	suit_stored_TYPE = /obj/item/clothing/suit/space/void/medical
 	helmet_stored_TYPE = /obj/item/clothing/head/helmet/space/void/medical
 	mask_stored_TYPE = /obj/item/clothing/mask/breath
+	boots_stored_TYPE = /obj/item/clothing/shoes/magboots
 
 /obj/machinery/suit_storage_unit/mining
 	suit_stored_TYPE = /obj/item/clothing/suit/space/void/mining
 	helmet_stored_TYPE = /obj/item/clothing/head/helmet/space/void/mining
 	mask_stored_TYPE = /obj/item/clothing/mask/breath
+	boots_stored_TYPE = /obj/item/clothing/shoes/magboots
 
 /obj/machinery/suit_storage_unit/pilot
 	suit_stored_TYPE = /obj/item/clothing/suit/space/void/pilot

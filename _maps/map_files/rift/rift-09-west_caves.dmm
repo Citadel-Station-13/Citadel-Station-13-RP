@@ -1158,6 +1158,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
+/obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
 "oM" = (
@@ -2290,11 +2291,15 @@
 /turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/command)
 "Cv" = (
-/obj/machinery/alarm{
-	dir = 1;
-	pixel_y = -25
-	},
-/turf/simulated/floor/tiled/steel_grid,
+/obj/item/clothing/suit/space/void/mining,
+/obj/item/clothing/head/helmet/space/void/mining,
+/obj/item/clothing/mask/breath,
+/obj/item/mining_scanner,
+/obj/item/clothing/shoes/magboots,
+/obj/item/tank/oxygen,
+/obj/item/suit_cooling_unit,
+/obj/structure/table/rack/shelf,
+/turf/simulated/floor/tiled/techmaint,
 /area/outpost/mining_main/outpost)
 "Cy" = (
 /obj/effect/floor_decal/industrial/warning/dust,
@@ -3122,6 +3127,7 @@
 "MR" = (
 /obj/structure/closet/secure_closet/miner,
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
 "Ne" = (
@@ -36721,7 +36727,7 @@ KA
 WJ
 Xl
 Uj
-XL
+Cv
 ga
 Qj
 VG

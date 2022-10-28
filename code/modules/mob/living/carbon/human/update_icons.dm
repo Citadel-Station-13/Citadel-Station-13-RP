@@ -213,6 +213,8 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 				icon_key += "[rgb(part.s_col[1],part.s_col[2],part.s_col[3])]"
 			if(part.body_hair && part.h_col && part.h_col.len >= 3)
 				icon_key += "[rgb(part.h_col[1],part.h_col[2],part.h_col[3])]"
+				if(species.color_force_greyscale)
+					icon_key += "_ags"
 				if(species.color_mult)
 					icon_key += "[ICON_MULTIPLY]"
 				else
@@ -916,14 +918,18 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!tail_icon)
 		//generate a new one
 		var/species_tail_anim = species.get_tail_animation(src)
-		if(!species_tail_anim && species.icobase_tail) species_tail_anim = species.icobase // Allow override of file for non-animated tails
-		if(!species_tail_anim) species_tail_anim = 'icons/effects/species.dmi'
+		if(!species_tail_anim && species.icobase_tail)
+			species_tail_anim = species.icobase // Allow override of file for non-animated tails
+		if(!species_tail_anim)
+			species_tail_anim = 'icons/effects/species.dmi'
 		tail_icon = new/icon(species_tail_anim)
 		tail_icon.Blend(rgb(r_skin, g_skin, b_skin), species.color_mult ? ICON_MULTIPLY : ICON_ADD)
 		// The following will not work with animated tails.
 		var/use_species_tail = species.get_tail_hair(src)
 		if(use_species_tail)
 			var/icon/hair_icon = icon('icons/effects/species.dmi', "[species.get_tail(src)]_[use_species_tail]_s") // Suffix icon state string with '_s' to compensate for diff in .dmi b/w us & Polaris. //TODO: No.
+			if(species.color_force_greyscale)
+				hair_icon.MapColors(arglist(color_matrix_greyscale()))
 			hair_icon.Blend(rgb(r_hair, g_hair, b_hair), species.color_mult ? ICON_MULTIPLY : ICON_ADD) // Check for species color_mult
 			tail_icon.Blend(hair_icon, ICON_OVERLAY)
 		GLOB.tail_icon_cache[icon_key] = tail_icon

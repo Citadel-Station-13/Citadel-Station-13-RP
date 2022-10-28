@@ -58,7 +58,7 @@
 	/// Cached icon for use in mob overlays.
 	var/icon/mob_icon
 	/// Whether or not the icon state appends a gender.
-	var/gendered_icon = 0
+	var/gendered_icon = FALSE
 	/// Skin tone.
 	var/s_tone
 	/// Skin colour
