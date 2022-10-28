@@ -45,7 +45,7 @@
 /datum/lore/character_background/origin/oricon/sol/cererian
 	name = "Ceres"
 	id = "ceres"
-	desc = "Though you've no doubt been around Sol's Main Belt at least a couple times, everyone always lands back at the Ceres eventually, or so they say. You have seen both the no-nonsense work of asteroid mining operations and the luxurious halls of the big casinos back home in Ceres."
+	desc = "Though you've no doubt been around Sol's Main Belt at least a couple times, everyone always lands back at Ceres eventually, or so they say. You have seen both the no-nonsense work of asteroid mining operations and the luxurious halls of the big casinos back home in Ceres."
 	innate_languages = list(
 		LANGUAGE_ID_HUMAN
 		)
