@@ -57,7 +57,7 @@
 	heat_level_2 = 1000
 	heat_level_3 = 1150
 
-	flags =  NO_SCAN | NO_MINOR_CUT | NO_INFECT | CONTAMINATION_IMMUNE
+	species_flags = NO_SCAN | NO_MINOR_CUT | NO_INFECT | CONTAMINATION_IMMUNE
 	species_spawn_flags = SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELIST_SELECTABLE
 
 	reagent_tag = IS_SHADEKIN // for shadekin-unique chem interactions

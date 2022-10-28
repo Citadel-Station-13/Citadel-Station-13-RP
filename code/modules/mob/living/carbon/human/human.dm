@@ -1348,14 +1348,14 @@
 		return ..()
 
 /mob/living/carbon/human/getDNA()
-	if(species.flags & NO_SCAN)
+	if(species.species_flags & NO_SCAN)
 		return null
 	if(isSynthetic())
 		return
 	..()
 
 /mob/living/carbon/human/setDNA()
-	if(species.flags & NO_SCAN)
+	if(species.species_flags & NO_SCAN)
 		return
 	if(isSynthetic())
 		return
@@ -1382,7 +1382,7 @@
 		if(C.body_parts_covered & FEET)
 			footcoverage_check = TRUE
 			break
-	if((species.flags & NO_SLIP && !footcoverage_check) || (shoes && (shoes.clothing_flags & NOSLIP))) //Footwear negates a species' natural traction.
+	if((species.species_flags & NO_SLIP && !footcoverage_check) || (shoes && (shoes.clothing_flags & NOSLIP))) //Footwear negates a species' natural traction.
 		return 0
 	if(..(slipped_on,stun_duration))
 		return 1
@@ -1505,7 +1505,7 @@
 		if(!istype(check_organ))
 			return 0
 		return check_organ.organ_can_feel_pain()
-	return !(species.flags & NO_PAIN)
+	return !(species.species_flags & NO_PAIN)
 
 /mob/living/carbon/human/is_sentient()
 	if(get_FBP_type() == FBP_DRONE)

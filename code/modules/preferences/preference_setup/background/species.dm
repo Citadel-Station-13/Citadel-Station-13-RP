@@ -19,6 +19,14 @@
 	var/datum/character_species/S = SScharacters.resolve_character_species(data)
 	// if(S.whitelisted && !is_alien_whitelisted(prefs.client.mob, ))
 	#warn whitelist check - impl new whitelist systemics for this shit
+	/**
+	 *
+	//Can they play?
+	if(!is_alien_whitelisted(src, client.prefs.real_species_datum()) && !check_rights(R_ADMIN, 0))
+		pass = FALSE
+		to_chat(src,"<span class='warning'>You are not allowed to spawn in as this species.</span>")
+
+	 */
 
 /datum/category_item/player_setup_item/background/char_species/filter(datum/preferences/prefs, data, list/errors)
 	// resolve
@@ -45,7 +53,7 @@
 	return default_value()
 
 /datum/category_item/player_setup_item/background/char_species/default_value(randomizing)
-	return SScharacters.default_species_id
+	return SScharacters.default_species_id()
 
 #warn main species selector has to use save key
 /datum/category_item/player_setup_item/background/char_species/act(datum/preferences/prefs, mob/user, action, list/params)

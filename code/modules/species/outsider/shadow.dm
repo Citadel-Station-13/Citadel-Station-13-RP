@@ -27,7 +27,7 @@
 	remains_type = /obj/effect/debris/cleanable/ash
 	death_message = "dissolves into ash..."
 
-	flags = NO_SCAN | NO_SLIP | NO_POISON | NO_MINOR_CUT
+	species_flags = NO_SCAN | NO_SLIP | NO_POISON | NO_MINOR_CUT
 	species_spawn_flags = SPECIES_SPAWN_RESTRICTED
 
 	genders = list(NEUTER)

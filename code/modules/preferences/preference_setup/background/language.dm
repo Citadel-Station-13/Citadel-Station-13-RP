@@ -19,7 +19,7 @@
 		++count
 		var/datum/language/L = SScharacters.resolve_language_id(id)
 		. += "[L.name] [href_simple(prefs, "remove", "Remove", id)] "
-	if(count < prefs.extraneous_language)
+	if(count < prefs.extraneous_languages_max())
 		. += "[href_simple(prefs, "add", "Add")]"
 
 /datum/category_item/player_setup_item/background/language/act(datum/preferences/prefs, mob/user, action, list/params)
@@ -61,6 +61,7 @@
 	if(length(data) > prefs.extraneous_languages_max())
 		errors?.Add(SPAN_WARNING("You have selected too many extra languages for your species and culture."))
 		return FALSE
+	#warn whitelist check
 	return TRUE
 
 /datum/category_item/player_setup_item/background/language/default_value(randomizing)

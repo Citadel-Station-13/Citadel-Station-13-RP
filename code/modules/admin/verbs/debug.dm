@@ -723,7 +723,7 @@
 		to_chat(usr,"<span class='warning'>Target already has a NIF.</span>")
 		return
 
-	if(H.species.flags & NO_SCAN)
+	if(H.species.species_flags & NO_SCAN)
 		var/obj/item/nif/S = /obj/item/nif/bioadap
 		input_NIF = initial(S.name)
 		new /obj/item/nif/bioadap(H)

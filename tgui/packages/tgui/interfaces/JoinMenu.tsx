@@ -38,8 +38,8 @@ interface JoinMenuData {
     }
   };
   ghostroles: JoinableRoles[];
-  security_level: "green" | "blue" | "red" | "amber" | "delta";
-  evacuated: 0 | 1 | 2;
+  security_level: "green" | "blue" | "red" | "violet" | "yellow" | "orange" | "delta";
+  evacuated: 0 | 1 | 2 | 3;
   duration: string; // timetext
   charname: string;
   queue?: number;
@@ -65,16 +65,17 @@ export const JoinMenu = (props, context) => {
                   <NoticeBox
                     success={data.security_level === "green"}
                     info={data.security_level === "blue"}
-                    warning={data.security_level === "amber"}
+                    warning={data.security_level === "yellow" || data.security_level === "violet"
+                    || data.security_level === "orange"}
                     danger={data.security_level === "red" || data.security_level === "delta"}>
                     Security Level: {data.security_level.charAt(0).toUpperCase()
                       + data.security_level.slice(1)}
                   </NoticeBox>
                   {!!data.evacuated && (
                     <NoticeBox
-                      info={data.evacuated === 1}
-                      warning={data.evacuated === 2}>
-                      The shuttle has {data.evacuated === 1 ? "been called." : "left the station."}
+                      info={data.evacuated === 2}
+                      warning={data.evacuated === 1 || data.evacuated === 3}>
+                      The shuttle has {data.evacuated === 3 ? "left the station." : "been called."}
                     </NoticeBox>
                   )}
                 </Section>

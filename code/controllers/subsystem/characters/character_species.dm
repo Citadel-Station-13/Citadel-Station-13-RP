@@ -51,7 +51,9 @@
 			"id" = S.uid,
 			"whitelisted" = S.whitelisted,
 			"name" = S.name,
-			"desc" = S.desc
+			"desc" = S.desc,
+			"appearance_flags" = S.species_appearance_flags,
+			"flags" = S.species_flags
 		))
 
 /datum/controller/subsystem/characters/proc/resolve_character_species(uid)

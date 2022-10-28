@@ -70,9 +70,6 @@
 /datum/species/proc/get_husk_icon(mob/living/carbon/human/H)
 	return husk_icon
 
-/datum/species/proc/get_station_variant()
-	return name
-
 // used for limb caching
 // todo: rework limbs and get rid of this, numerical static keys are dumb as fuck,
 // limbs should use their own types!

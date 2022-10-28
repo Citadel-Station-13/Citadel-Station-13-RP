@@ -106,7 +106,7 @@
 				var/bloodtrail = 1	//Checks if it's possible to even spill blood
 				if(ishuman(M))
 					var/mob/living/carbon/human/H = M
-					if(H.species.flags & NO_BLOOD)
+					if(H.species.species_flags & NO_BLOOD)
 						bloodtrail = 0
 					else
 						var/blood_volume = H.vessel.get_reagent_amount("blood")
@@ -131,7 +131,7 @@
 						var/bloodtrail = 1	//Checks if it's possible to even spill blood
 						if(ishuman(M))
 							var/mob/living/carbon/human/H = M
-							if(H.species.flags & NO_BLOOD)
+							if(H.species.species_flags & NO_BLOOD)
 								bloodtrail = 0
 							else
 								var/blood_volume = H.vessel.get_reagent_amount("blood")

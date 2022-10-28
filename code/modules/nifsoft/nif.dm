@@ -138,7 +138,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		should_be_in = brain.parent_organ
 
 	if(istype(H) && !H.nif && H.species && (loc == H.get_organ(should_be_in)))
-		if(!bioadap && (H.species.flags & NO_SCAN)) //NO_SCAN is the default 'too complicated' flag
+		if(!bioadap && (H.species.species_flags & NO_SCAN)) //NO_SCAN is the default 'too complicated' flag
 			return FALSE
 
 		human = H

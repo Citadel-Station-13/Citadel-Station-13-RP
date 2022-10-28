@@ -313,7 +313,7 @@
 	if (MUTATION_NOCLONE in subject.mutations)
 		scantemp = "Error: Mental interface failure."
 		return
-	if (subject.species && subject.species.flags & NO_SCAN && !brain_skip)
+	if (subject.species && subject.species.species_flags & NO_SCAN && !brain_skip)
 		scantemp = "Error: Mental interface failure."
 		return
 	for(var/modifier_type in subject.modifiers)	//Can't be cloned, even if they had a previous scan

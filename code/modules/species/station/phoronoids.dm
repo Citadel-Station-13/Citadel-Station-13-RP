@@ -24,7 +24,7 @@
 	rarity_value = 5
 	blood_color = "#FC2BC5"
 
-	flags = NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE
+	species_flags = NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE
 	species_spawn_flags = SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELIST_SELECTABLE
 	species_appearance_flags = HAS_EYE_COLOR
 

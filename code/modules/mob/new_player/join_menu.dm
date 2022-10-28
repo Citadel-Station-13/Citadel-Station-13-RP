@@ -35,11 +35,11 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 
 	// collect
 	var/list/datum/job/eligible = list()
-	for(var/datum/job/J in SSjob.GetAllJobs())
+	for(var/title in SSjob.name_occupations)
+		var/datum/job/J = SSjob.name_occupations[title]
 		if(!(J.join_types & JOB_LATEJOIN))
 			continue
-		var/reason = N.IsJobUnavailable(J)
-		if(reason != JOB_AVAILABLE)
+		if(!IsJobAvailable(J, N))
 			continue
 		eligible += J
 
@@ -53,17 +53,19 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 			faction = jobs[J.faction]
 		// department
 		var/list/department
-		var/department_name = J.GetPrimaryDepartment().name
+		// todo: this is awful
+		var/department_name = LAZYACCESS(J.departments, 1)
+		department_name = capitalize(department_name)
 		if(!jobs[J.faction][department_name])
 			jobs[J.faction][department_name] = department = list()
 		else
 			department = jobs[J.faction][department_name]
 		// finally, add job data
-		var/slots = J.SlotsRemaining()
+		var/slots = J.slots_remaining()
 		var/list/data = list(
-			"id" = J.type,
-			"name" = EffectiveTitle(J, usr.client),
-			"desc" = EffectiveDesc(J, usr.client),
+			"id" = J.id,
+			"name" = EffectiveTitle(J, N),
+			"desc" = EffectiveDesc(J, N),
 			"slots" = slots == INFINITY? -1 : slots,
 			"real_name" = J.title
 		)
@@ -75,7 +77,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 	for(var/id in GLOB.ghostroles)
 		var/datum/ghostrole/R = GLOB.ghostroles[id]
 		// can't afford runtime here
-		if(!istype(R) || !R.AllowSpawn(user.client))
+		if(!istype(R) || !IsGhostroleAvailable(R, N))
 			continue
 		var/slots = R.SpawnsLeft(user.client)
 		var/list/data = list(
@@ -89,29 +91,34 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 
 /datum/join_menu/ui_data(mob/user)
 	. = ..()
-	#warn security level
 	// common info goes into ui data
 	var/level = "green"
 	switch(GLOB.security_level)
-		if(SEC_LEVEL_GREEN)
-			level = "green"
 		if(SEC_LEVEL_BLUE)
-			level = "blue"
-		if(SEC_LEVEL_AMBER)
-			level = "amber"
+			level = "blue";
+		if(SEC_LEVEL_ORANGE)
+			level = "orange";
+		if(SEC_LEVEL_VIOLET)
+			level = "violet";
+		if(SEC_LEVEL_YELLOW)
+			level = "yellow";
+		if(SEC_LEVEL_GREEN)
+			level = "green";
 		if(SEC_LEVEL_RED)
-			level = "red"
-		if(SEC_LEVEL_DELTA)
-			level = "delta"
+			level = "red";
+		else
+			level = "delta";
 	.["security_level"] = level
 	.["duration"] = DisplayTimeText(world.time - SSticker.round_start_time)
-	// 0 = not evaccing, 1 = evacuating, 2 = evacuated
+	// 0 = not evaccing, 1 = evacuating, 2 = crew transfer, 3 = evacuated
 	var/evac = 0
-	switch(SSshuttle.emergency?.mode)
-		if(SHUTTLE_ESCAPE)
-			evac = 2
-		if(SHUTTLE_CALL)
+	if(SSemergencyshuttle.going_to_centcom())
+		evac = 3
+	else if(SSemergencyshuttle.online())
+		if(SSemergencyshuttle.evac)
 			evac = 1
+		else
+			evac = 2
 	.["evacuated"] = evac
 	.["charname"] = user.client?.prefs?.real_name || "Unknown User"
 	// position in queue, -1 for not queued, null for no queue active, otherwise number
@@ -124,30 +131,29 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
  * if not, it shouldn't even show
  * if so, return slots
  */
-/datum/join_menu/proc/IsJobAvailable(job_id, client/C)
-	#warn impl
-	return prob(50)? null : rand(1, 10)
+/datum/join_menu/proc/IsJobAvailable(datum/job/J, mob/new_player/N)
+	return N.IsJobAvailable(J.title)
 
 /**
  * checks if ghostrole is available
  * if not, it shouldn't even show
  * if so, return slots
  */
-/datum/join_menu/proc/IsGhostroleAvailable(ghostrole_id, client/C)
-	#warn impl
-	return prob(50)? null : rand(1, 10)
+/datum/join_menu/proc/IsGhostroleAvailable(datum/ghostrole/G, mob/new_player/N)
+	return G.AllowSpawn(N.client)
 
 /**
  * return effective title - used for alt titles - JOBS ONLY, not ghostroles
  */
-/datum/join_menu/proc/EffectiveTitle(job_id, client/C)
+/datum/join_menu/proc/EffectiveTitle(datum/job/J, mob/new_player/N)
 	#warn this
 	return "Job #[rand(1, 100)]"	// i'm sorry sandpoot but atleast you get the code early..
 
 /**
  * returns effective desc - used for alt titles - JOBS ONLY, not ghostroles
  */
-/datum/join_menu/proc/EffectiveDesc(job_id, client/C)
+/datum/join_menu/proc/EffectiveDesc(datum/job/J, mob/new_player/N)
+	#warn impl
 	return // blank but CAN be null
 
 /datum/join_menu/proc/QueueStatus(mob/new_player/N)
@@ -156,11 +162,21 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 /*
 /datum/join_menu/proc/QueueStatus(mob/new_player/N)
 	QueueActive()? (SSticker.queued_players.Find(N) || -1) : null
+*/
 
+/datum/join_menu/proc/QueueActive()
+	return FALSE
+
+/*
 /datum/join_menu/proc/QueueActive()
 	var/relevant_cap = PopCap()
 	return length(SSticker.queued_players) || (relevant_cap && living_player_count() > relevant_cap)
+*/
 
+/datum/join_menu/proc/PopCap()
+	return INFINITY
+
+/*
 /datum/join_menu/proc/PopCap()
 	. = null
 	var/hpc = CONFIG_GET(number/hard_popcap)
@@ -189,7 +205,10 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 				return
 			switch(params["type"])
 				if("job")
-					var/datum/job/J = SSjob.GetJobType(id)
+					if(!config_legacy.enter_allowed)
+						to_chat(usr, SPAN_NOTICE("There is an administrative lock on entering the game."))
+						return
+					var/datum/job/J = SSjob.job_by_id(id)
 					if(!J)
 						to_chat(usr, "<span class='warning'>Failed to find job [id].")
 						return
@@ -205,15 +224,16 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 					var/client/C = N.client
 					var/error = R.AttemptSpawn(C)
 					if(istext(error))
-						to_chat(C, span_danger(error))
+						to_chat(C, SPAN_DANGER(error))
 		if("queue")
-			AttemptQueue(usr)
+			// AttemptQueue(usr)
 
 /**
  * Return FALSE to block joining.
  */
 /datum/join_menu/proc/AttemptQueue(mob/new_player/N)
 	. = TRUE
+/*
 	if(QueueActive() && !(ckey(N.key) in GLOB.admin_datums))
 		var/queue_position = SSticker.queued_players.Find(usr)
 		if(queue_position == 1)
@@ -230,6 +250,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 				SSticker.queued_players += usr
 				to_chat(usr, "<span class='notice'>You have been added to the queue to join the game. Your position in queue is [SSticker.queued_players.len].</span>")
 				return FALSE
+*/
 
 /mob/new_player/proc/LateChoices()
 	GLOB.join_menu.ui_interact(src)

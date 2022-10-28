@@ -225,7 +225,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	. += "<table><tr style='vertical-align:top'><td><b>Body</b> "
 	. += "(<a href='?src=\ref[src];random=1'>&reg;</A>)"
 	. += "<br>"
-	. += "Species: <a href='?src=\ref[src];show_species=1'>[pref.species]</a><br>"
+	. += "Species: <a href='?src=\ref[src];show_species=1'>[mob_species.name]</a><br>"
 	. += "Blood Type: <a href='?src=\ref[src];blood_type=1'>[pref.b_type]</a><br>"
 	if(has_flag(mob_species, HAS_SKIN_TONE))
 		. += "Skin Tone: <a href='?src=\ref[src];skin_tone=1'>[-pref.s_tone + 35]/220</a><br>"
@@ -413,68 +413,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			return PREFERENCES_REFRESH
 
 	else if(href_list["show_species"])
-		// Actual whitelist checks are handled elsewhere, this is just for accessing the preview window.
-		var/choice = input("Which species would you like to look at?") as null|anything in SScharacters.playable_species
-		if(!choice) return
-		pref.species_preview = choice
-		SetSpecies(preference_mob())
-		pref.alternate_languages.Cut() // Reset their alternate languages. Todo: attempt to just fix it instead?
+		pref.species_pick(usr)
 		return PREFERENCES_HANDLED
-
-	else if(href_list["set_species"])
-		user << browse(null, "window=species")
-		if(!pref.species_preview || !(pref.species_preview in SScharacters.all_species_names()))
-			return PREFERENCES_NOACTION
-
-		var/datum/species/setting_species
-
-		if(SScharacters.resolve_species_name(href_list["set_species"]))
-			setting_species = SScharacters.resolve_species_name(href_list["set_species"])
-		else
-			return PREFERENCES_NOACTION
-
-		if(((!(setting_species.species_spawn_flags & SPECIES_SPAWN_ALLOWED)) || (!is_alien_whitelisted(preference_mob(),setting_species))) && !check_rights(R_ADMIN, 0) && !(setting_species.species_spawn_flags & SPECIES_SPAWN_WHITELIST_SELECTABLE))
-			return PREFERENCES_NOACTION
-
-		var/prev_species = pref.species
-		pref.species = href_list["set_species"]
-		if(prev_species != pref.species)
-			if(!(pref.biological_gender in mob_species.genders))
-				pref.set_biological_gender(mob_species.genders[1])
-			pref.custom_species = null // This is cleared on species changes
-
-			//grab one of the valid hair styles for the newly chosen species
-			var/list/valid_hairstyles = pref.get_valid_hairstyles()
-
-			if(valid_hairstyles.len)
-				pref.h_style = pick(valid_hairstyles)
-			else
-				//this shouldn't happen
-				pref.h_style = hair_styles_list["Bald"]
-
-			//grab one of the valid facial hair styles for the newly chosen species
-			var/list/valid_facialhairstyles = pref.get_valid_facialhairstyles()
-
-			if(valid_facialhairstyles.len)
-				pref.f_style = pick(valid_facialhairstyles)
-			else
-				//this shouldn't happen
-				pref.f_style = facial_hair_styles_list["Shaved"]
-
-			//reset hair colour and skin colour
-			pref.r_hair = 0//hex2num(copytext(new_hair, 2, 4))
-			pref.g_hair = 0//hex2num(copytext(new_hair, 4, 6))
-			pref.b_hair = 0//hex2num(copytext(new_hair, 6, 8))
-			pref.s_tone = 0
-
-			reset_limbs() // Safety for species with incompatible manufacturers; easier than trying to do it case by case.
-			pref.body_markings.Cut() // Basically same as above.
-
-			var/min_age = get_min_age()
-			var/max_age = get_max_age()
-			pref.age = max(min(pref.age, max_age), min_age)
-
-			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["hair_color"])
 		if(!has_flag(mob_species, HAS_HAIR_COLOR))
@@ -935,78 +875,3 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	pref.real_name          = sanitize_name(pref.real_name, pref.species)
 	if(!pref.real_name)
 		pref.real_name      = random_name(pref.identifying_gender, pref.species)
-
-/datum/category_item/player_setup_item/general/body/proc/SetSpecies(mob/user)
-	#warn what the fuck
-	if(!pref.species_preview || !(pref.species_preview in SScharacters.all_species_names()))
-		pref.species_preview = SPECIES_HUMAN
-	var/datum/species/current_species = SScharacters.resolve_species_name(pref.species_preview)
-	var/dat = "<body>"
-	dat += "<center><h2>[current_species.name] \[<a href='?src=\ref[src];show_species=1'>change</a>\]</h2></center><hr/>"
-	dat += "<table padding='8px'>"
-	dat += "<tr>"
-	if(current_species.wikilink)
-		dat += "<td width = 400>[current_species.blurb]<br><br>See <a href=[current_species.wikilink]>the wiki</a> for more details.</td>"
-	else
-		dat += "<td width = 400>[current_species.blurb]</td>"
-	dat += "<td width = 200 align='center'>"
-	if(current_species.preview_icon)
-		usr << browse_rsc(icon(icon = current_species.preview_icon, icon_state = ""), "species_preview_[current_species.name].png")
-		dat += "<img src='species_preview_[current_species.name].png' width='64px' height='64px'><br/><br/>"
-	dat += "<b>Language:</b> [current_species.species_language]<br/>"
-	dat += "<small>"
-	if(current_species.species_spawn_flags & SPECIES_SPAWN_ALLOWED)
-		switch(current_species.rarity_value)
-			if(1 to 2)
-				dat += "</br><b>Often present on human stations.</b>"
-			if(3 to 4)
-				dat += "</br><b>Rarely present on human stations.</b>"
-			if(5)
-				dat += "</br><b>Unheard of on human stations.</b>"
-			else
-				dat += "</br><b>May be present on human stations.</b>"
-	if(current_species.species_spawn_flags & SPECIES_SPAWN_WHITELISTED)
-		dat += "</br><b>Whitelist restricted.</b>"
-	if(!current_species.has_organ[O_HEART])
-		dat += "</br><b>Does not have a circulatory system.</b>"
-	if(!current_species.has_organ[O_LUNGS])
-		dat += "</br><b>Does not have a respiratory system.</b>"
-	if(current_species.flags & NO_SCAN)
-		dat += "</br><b>Does not have DNA.</b>"
-	if(current_species.flags & NO_PAIN)
-		dat += "</br><b>Does not feel pain.</b>"
-	if(current_species.flags & NO_SLIP)
-		dat += "</br><b>Has excellent traction.</b>"
-	if(current_species.flags & NO_POISON)
-		dat += "</br><b>Immune to most poisons.</b>"
-	if(current_species.species_appearance_flags & HAS_SKIN_TONE)
-		dat += "</br><b>Has a variety of skin tones.</b>"
-	if(current_species.species_appearance_flags & HAS_BASE_SKIN_COLOR)
-		dat += "</br><b>Has a small number of base skin colors.</b>"
-	if(current_species.species_appearance_flags & HAS_SKIN_COLOR)
-		dat += "</br><b>Has a variety of skin colours.</b>"
-	if(current_species.species_appearance_flags & HAS_EYE_COLOR)
-		dat += "</br><b>Has a variety of eye colours.</b>"
-	if(current_species.flags & IS_PLANT)
-		dat += "</br><b>Has a plantlike physiology.</b>"
-	dat += "</small></td>"
-	dat += "</tr>"
-	dat += "</table><center><hr/>"
-
-	var/restricted = 0
-
-	if(!(current_species.species_spawn_flags & SPECIES_SPAWN_ALLOWED))
-		restricted = 2
-	else if(!is_alien_whitelisted(preference_mob(),current_species))
-		restricted = 1
-
-	if(restricted)
-		if(restricted == 1)
-			dat += "<font color='red'><b>You cannot play as this species.</br><small>If you wish to be whitelisted, you can make an application post on <a href='?src=\ref[user];preference=open_whitelist_forum'>the forums</a>.</small></b></font></br>"
-		else if(restricted == 2)
-			dat += "<font color='red'><b>You cannot play as this species.</br><small>This species is not available for play as a station race..</small></b></font></br>"
-	if(!restricted || check_rights(R_ADMIN, 0) || current_species.species_spawn_flags & SPECIES_SPAWN_WHITELIST_SELECTABLE)	//selectability
-		dat += "\[<a href='?src=\ref[src];set_species=[pref.species_preview]'>select</a>\]"
-	dat += "</center></body>"
-
-	user << browse(dat, "window=species;size=700x400")

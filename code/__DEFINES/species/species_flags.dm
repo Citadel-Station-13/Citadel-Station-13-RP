@@ -26,7 +26,22 @@
 #define NO_DEFIB (1<<11)
 ///(Phoron) Contamination doesnt affect them.
 #define CONTAMINATION_IMMUNE (1<<12)
-// unused: 0x8000 - higher than this will overflow
+
+DEFINE_BITFIELD(species_flags, list(
+	BITFIELD(NO_MINOR_CUT),
+	BITFIELD(IS_PLANT),
+	BITFIELD(NO_SCAN),
+	BITFIELD(NO_PAIN),
+	BITFIELD(NO_SLIP),
+	BITFIELD(NO_POISON),
+	BITFIELD(NO_EMBED),
+	BITFIELD(NO_HALLUCINATION),
+	BITFIELD(NO_BLOOD),
+	BITFIELD(UNDEAD),
+	BITFIELD(NO_INFECT),
+	BITFIELD(NO_DEFIB),
+	BITFIELD(CONTAMINATION_IMMUNE),
+))
 
 //! species_fluff_flags
 /// deny cultures that don't specifically whitelist us

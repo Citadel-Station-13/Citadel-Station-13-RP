@@ -127,14 +127,24 @@ var/list/gear_datums = list()
 	for(var/gear_name in gear_datums)
 		var/datum/gear/G = gear_datums[gear_name]
 		if(G.whitelisted)
-			var/spec = G.whitelisted
-			if(whitelist_cache[spec] == null)
-				whitelist_cache[spec] = is_alien_whitelisted(preference_mob, SScharacters.resolve_species_name(spec))
-			if(!whitelist_cache[spec])
-				continue
+			// sorry for the pyramid of doom, we'll refactor this shitfest later ~silicons
+			// trust me, it was worse before.
+			if(whitelist_cache[G.whitelisted] != null)
+				// if cached just check cache
+				if(whitelist_cache[G.whitelisted] == FALSE)
+					continue
+			else
+				// else build cache
+				var/spec = G.whitelisted
+				var/datum/species/S = SScharacters.resolve_species_name(spec)
+				if(!S)
+					stack_trace("G.whitelisted was [spec] that couldn't be found; removing.")
+					G.whitelisted = null
+				else
+					whitelist_cache[spec] = config.check_alien_whitelist(ckey(S.name), pref.client_ckey)
+				if(!whitelist_cache[spec])
+					continue
 
-		if(G.whitelisted && !is_alien_whitelisted(preference_mob, SScharacters.resolve_species_name(G.whitelisted)))
-			continue
 		if(max_cost && G.cost > max_cost)
 			continue
 		if(preference_mob && preference_mob.client)

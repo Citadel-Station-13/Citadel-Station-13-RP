@@ -258,11 +258,11 @@
 	name = "Naramadi Guilds"
 	id = "narguild"
 	desc = "Within the Naramadi Ascendancy, every piece of land, equipment and technology is owned by either a House or a person. \
-    To work around issues attached to repairing important infrastructure, and to upkeep the Ascendancy as a whole, a set of guilds \
-    was created right after the unification of Naramadi People. \
-    Offering both education and work, the guilds do not encompass the all possible fields of work; however offering education and experience \
-    in the more practical fields. An example being various Engineering fields. The three Guilds currently operating within the ascendancy are: \
-    Artificers, Logistici and Legionnarum"
+	To work around issues attached to repairing important infrastructure, and to upkeep the Ascendancy as a whole, a set of guilds \
+	was created right after the unification of Naramadi People. \
+	Offering both education and work, the guilds do not encompass the all possible fields of work; however offering education and experience \
+	in the more practical fields. An example being various Engineering fields. The three Guilds currently operating within the ascendancy are: \
+	Artificers, Logistici and Legionnarum"
 	contractor_info = "Your presence here is both a curse and a blessing for the Guild. Being contracted to work for a Human megacorporation presents various opportunities to learn technology unavalible in the Ascendancy."
 	job_whitelist = list(
 		JOB_ID_STATION_ENGINEER,
@@ -281,11 +281,11 @@
 	name = "Onkhera Synthetic Solutions & Necropolis Industries"
 	id = "oss_necro"
 	desc = "Onkhera Synthetic Solutions, and by extension it's subsidiary Necropolis Industries, is one of the few \
-    Megacorporations not originating within the Confederacy; instead being owned by a Naramadi House - House Onkhera. \
-    While the parent company Onkhera Synthetic Solutions focuses on the civilian market, providing high quality prosthetics to non-humans, \
-    - becoming the direct rival of Vey-Med in the process - Necropolis Industries focuses on the Security and Military markets, providing \
-    Security services to anybody willing to pay. The Company exports both biological and synthetic augumentations to various Megacorporations found \
-    across the frontier."
+	Megacorporations not originating within the Confederacy; instead being owned by a Naramadi House - House Onkhera. \
+	While the parent company Onkhera Synthetic Solutions focuses on the civilian market, providing high quality prosthetics to non-humans, \
+	- becoming the direct rival of Vey-Med in the process - Necropolis Industries focuses on the Security and Military markets, providing \
+	Security services to anybody willing to pay. The Company exports both biological and synthetic augumentations to various Megacorporations found \
+	across the frontier."
 	contractor_info = "Neutrality of Onkhera Synthetic Solutions and Necropolis Industries has it's benefits, as You often get contracted with various corporations across the frontier. For you, this is just another assignement."
 	job_whitelist = list(
 		JOB_ID_FIELD_MEDIC,

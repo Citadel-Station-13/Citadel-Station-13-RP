@@ -196,10 +196,10 @@ SUBSYSTEM_DEF(ticker)
 		to_chat(world, "<span class='danger'>Serious error in mode setup!</span> Reverting to pregame lobby.") //Uses setup instead of set up due to computational context.
 		return 0
 
-	job_master.ResetOccupations()
+	SSjob.ResetOccupations()
 	src.mode.create_antagonists()
 	src.mode.pre_setup()
-	job_master.DivideOccupations() // Apparently important for new antagonist system to register specific job antags properly.
+	SSjob.DivideOccupations() // Apparently important for new antagonist system to register specific job antags properly.
 
 	if(!src.mode.can_start())
 		to_chat(world, "<B>Unable to start [mode.name].</B> Not enough players readied, [config_legacy.player_requirements[mode.config_tag]] players needed. Reverting to pregame lobby.")
@@ -207,7 +207,7 @@ SUBSYSTEM_DEF(ticker)
 		Master.SetRunLevel(RUNLEVEL_LOBBY)
 		mode.fail_setup()
 		mode = null
-		job_master.ResetOccupations()
+		SSjob.ResetOccupations()
 		return 0
 
 	if(hide_mode)
@@ -417,7 +417,7 @@ SUBSYSTEM_DEF(ticker)
 			if(player.mind.assigned_role == "Facility Director")
 				captainless=0
 			if(!player_is_antag(player.mind, only_offstation_roles = 1))
-				job_master.EquipRank(player, player.mind.assigned_role, 0)
+				SSjob.EquipRank(player, player.mind.assigned_role, 0)
 				UpdateFactionList(player)
 	if(captainless)
 		for(var/mob/M in player_list)

@@ -167,7 +167,7 @@
 
 /datum/ghostrole_instantiator/human/player_static/proc/LoadSavefile(client/C, mob/living/carbon/human/H)
 	C.prefs.copy_to(H)
-	job_master.EquipRank(H, USELESS_JOB)
+	SSjob.EquipRank(H, USELESS_JOB)
 	// if(equip_loadout)
 	// 	SSjob.EquipLoadout(H, FALSE, null, C.prefs, C.ckey)
 	// if(equip_traits && CONFIG_GET(flag/roundstart_traits))

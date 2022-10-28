@@ -26,7 +26,7 @@
 	name_language = LANGUAGE_ID_XENOMORPH
 	max_additional_languages = 3
 
-	flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE//Chitin like VASILISSANs should have the same flags
+	species_flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE//Chitin like VASILISSANs should have the same flags
 	species_spawn_flags = SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_WHITELIST_SELECTABLE
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
 

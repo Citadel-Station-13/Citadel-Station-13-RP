@@ -64,6 +64,9 @@
 	. = ..()
 	GLOB.department_accounts = GLOB.department_accounts || departments_managed
 
+/datum/job/proc/slots_remaining()
+	return max(total_positions - current_positions, 0)
+
 /datum/job/proc/equip(var/mob/living/carbon/human/H, var/alt_title)
 	var/datum/outfit/outfit = get_outfit(H, alt_title)
 	if(!outfit)
@@ -167,7 +170,7 @@
 	return message
 
 /datum/job/proc/get_job_icon()
-	if(!job_master.job_icons[title])
+	if(!SSjob.job_icons[title])
 		var/mob/living/carbon/human/dummy/mannequin/mannequin = get_mannequin("#job_icon")
 		dress_mannequin(mannequin)
 		mannequin.dir = SOUTH
@@ -175,9 +178,9 @@
 		var/icon/preview_icon = get_flat_icon(mannequin)
 
 		preview_icon.Scale(preview_icon.Width() * 2, preview_icon.Height() * 2)	// Scaling here to prevent blurring in the browser.
-		job_master.job_icons[title] = preview_icon
+		SSjob.job_icons[title] = preview_icon
 
-	return job_master.job_icons[title]
+	return SSjob.job_icons[title]
 
 /datum/job/proc/dress_mannequin(mob/living/carbon/human/dummy/mannequin/mannequin)
 	mannequin.delete_inventory(TRUE)

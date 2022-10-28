@@ -10,6 +10,10 @@
 	template.desc = blurb
 	template.whitelisted = !!(species_spawn_flags & SPECIES_SPAWN_WHITELISTED)
 	template.real_species_type = type
+	// copy mechanics
+	template.species_flags = species_flags
+	// copy appearance
+	template.species_appearance_flags = species_appearance_flags
 	// copy lore/culture
 	template.default_origin = default_origin
 	template.default_citizenship = default_citizenship
@@ -55,6 +59,10 @@
 	var/real_species_type = /datum/species/custom
 	/// species fluff flags - read species_flags.dm in __DEFINES
 	var/species_fluff_flags = NONE
+	/// species appearance flags - read species_flags.dm in __DEFINES
+	var/species_appearance_flags = NONE
+	/// species main flags - read species_flags.dm in __DEFINES
+	var/species_flags = NONE
 
 	//! Defaults to set for visuals
 	/// default ear path
