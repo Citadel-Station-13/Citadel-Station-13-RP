@@ -22,6 +22,7 @@
 
 /obj/spawner/LateInitialize()
 	Spawn()
+	qdel(src)
 
 /obj/spawner/proc/Spawn()
 	return

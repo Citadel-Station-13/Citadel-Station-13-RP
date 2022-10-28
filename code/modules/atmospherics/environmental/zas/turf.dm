@@ -55,6 +55,12 @@
 	var/check_dirs = get_zone_neighbours(src)
 	var/unconnected_dirs = check_dirs
 
+	//? from: kapu1178
+	//src is only connected to the zone by a single direction, this is a safe removal.
+	if (!(. & (. - 1)))
+		return TRUE
+	//? end
+
 	#ifdef MULTIZAS
 	var/to_check = GLOB.cornerdirsz
 	#else
