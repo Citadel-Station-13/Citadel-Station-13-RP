@@ -16,7 +16,8 @@
 	if(GLOB.admins[ckey])
 		// bypass
 		return TRUE
-	return alien_whitelist[name]?.Find(ckey)
+	var/list/relevant = alien_whitelist[name]
+	return relevant?.Find(ckey)
 
 /**
  * name, ckey must be CKEY()'d.
@@ -25,7 +26,8 @@
 	if(GLOB.admins[ckey])
 		// bypass
 		return TRUE
-	return job_whitelist[name]?.Find(ckey)
+	var/list/relevant = job_whitelist[name]
+	return relevant?.Find(ckey)
 
 /datum/controller/configuration/proc/LoadWhitelists()
 	reload_alien_whitelist()

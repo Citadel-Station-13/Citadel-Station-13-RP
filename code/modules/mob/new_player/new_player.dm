@@ -303,34 +303,6 @@
 	if(href_list["manifest"])
 		ViewManifest()
 
-	if(href_list["SelectedJob"])
-/*
-		// Prevents people rejoining as same character.
-		for (var/mob/living/carbon/human/C in GLOB.mob_list)
-			var/char_name = client.prefs.real_name
-			if(char_name == C.real_name)
-				to_chat(usr, "<span class='notice'>There is a character that already exists with the same name - <b>[C.real_name]</b>, please join with a different one, or use Quit the Round with the previous character.</span>")
-				return
-*/
-		if(!config_legacy.enter_allowed)
-			to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
-			return
-		else if(SSticker && SSticker.mode && SSticker.mode.explosion_in_progress)
-			to_chat(usr, "<span class='danger'>The station is currently exploding. Joining would go poorly.</span>")
-			return
-/*
-		if(!is_alien_whitelisted(src, GLOB.species_meta[client.prefs.species]))
-			src << alert("You are currently not whitelisted to play [client.prefs.species].")
-			return 0
-*/
-		var/datum/species/S = client.prefs.real_species_datum()
-		if(!(S.species_spawn_flags & SPECIES_SPAWN_ALLOWED))
-			src << alert("Your current species, [client.prefs.species], is not available for play on the station.")
-			return 0
-
-		AttemptLateSpawn(href_list["SelectedJob"])
-		return
-
 	if(href_list["privacy_poll"])
 		if(!SSdbcore.Connect())
 			return
@@ -581,45 +553,6 @@
 		// can't use their name here, since cyborg namepicking is done post-spawn, so we'll just say "A new Cyborg has arrived"/"A new Android has arrived"/etc.
 		GLOB.global_announcer.autosay("A new [rank] has arrived on the station.", "Arrivals Announcement Computer")
 
-/mob/new_player/proc/LateChoices()
-	var/name = client.prefs.be_random_name ? "friend" : client.prefs.real_name
-
-	var/dat = "<html><body><center>"
-	dat += "<b>Welcome, [name].<br></b>"
-	dat += "Round Duration: [roundduration2text()]<br>"
-
-	if(SSemergencyshuttle) //In case NanoTrasen decides reposess CentCom's shuttles.
-		if(SSemergencyshuttle.going_to_centcom()) //Shuttle is going to CentCom, not recalled
-			dat += "<font color='red'><b>The station has been evacuated.</b></font><br>"
-		if(SSemergencyshuttle.online())
-			if (SSemergencyshuttle.evac)	// Emergency shuttle is past the point of no recall
-				dat += "<font color='red'>The station is currently undergoing evacuation procedures.</font><br>"
-			else						// Crew transfer initiated
-				dat += "<font color='red'>The station is currently undergoing crew transfer procedures.</font><br>"
-
-	dat += "Choose from the following open/valid positions:<br>"
-
-	dat += "<a href='byond://?src=\ref[src];hidden_jobs=1'>[show_hidden_jobs ? "Hide":"Show"] Hidden Jobs.</a><br>"
-	for(var/datum/job/job in SSjob.occupations)
-		if(job && IsJobAvailable(job.title))
-			// Checks for jobs with minimum age requirements
-			if(job.minimum_character_age && (client.prefs.age < job.minimum_character_age))
-				continue
-			// Checks for jobs set to "Never" in preferences	//TODO: Figure out a better way to check for this
-			if(!(client.prefs.GetJobDepartment(job, 1) & job.flag))
-				if(!(client.prefs.GetJobDepartment(job, 2) & job.flag))
-					if(!(client.prefs.GetJobDepartment(job, 3) & job.flag))
-						if(!show_hidden_jobs && job.title != "Assistant")	// Assistant is always an option
-							continue
-			var/active = 0
-			// Only players with the job assigned and AFK for less than 10 minutes count as active
-			for(var/mob/M in player_list) if(M.mind && M.client && M.mind.assigned_role == job.title && M.client.inactivity <= 10 * 60 * 10)
-				active++
-			dat += "<a href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title] ([job.current_positions]) (Active: [active])</a><br>"
-
-	dat += "</center>"
-	src << browse(dat, "window=latechoices;size=300x640;can_close=1")
-
 
 /mob/new_player/proc/create_character(var/turf/T)
 	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified))
@@ -731,9 +664,7 @@
 	return check_rights(R_ADMIN, 0, src)
 
 /mob/new_player/get_species_name()
-	var/datum/species/chosen_species
-	if(client.prefs.species)
-		chosen_species = SScharacters.resolve_species_name(client.prefs.species)
+	var/datum/species/chosen_species = client?.prefs?.real_species_datum()
 
 	if(!chosen_species)
 		return SPECIES_HUMAN
@@ -788,7 +719,7 @@
 		to_chat(src, SPAN_WARNING("You have not set your scale yet.  Do this on the Species Customization tab in character setup."))
 
 	//Custom species checks
-	if (client && client.prefs && client.prefs.species == SPECIES_CUSTOM)
+	if (client && client.prefs && client.prefs.real_species_name() == SPECIES_CUSTOM)
 
 		//Didn't name it
 		if(!client.prefs.custom_species)

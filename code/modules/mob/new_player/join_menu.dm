@@ -39,7 +39,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 		var/datum/job/J = SSjob.name_occupations[title]
 		if(!(J.join_types & JOB_LATEJOIN))
 			continue
-		if(!N.IsJobAvailable(title))
+		if(!IsJobAvailable(J, N))
 			continue
 		eligible += J
 
@@ -64,8 +64,8 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 		var/slots = J.slots_remaining()
 		var/list/data = list(
 			"id" = J.id,
-			"name" = EffectiveTitle(J, usr.client),
-			"desc" = EffectiveDesc(J, usr.client),
+			"name" = EffectiveTitle(J, N),
+			"desc" = EffectiveDesc(J, N),
 			"slots" = slots == INFINITY? -1 : slots,
 			"real_name" = J.title
 		)
@@ -77,7 +77,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 	for(var/id in GLOB.ghostroles)
 		var/datum/ghostrole/R = GLOB.ghostroles[id]
 		// can't afford runtime here
-		if(!istype(R) || !R.AllowSpawn(user.client))
+		if(!istype(R) || !IsGhostroleAvailable(R, N))
 			continue
 		var/slots = R.SpawnsLeft(user.client)
 		var/list/data = list(
@@ -131,30 +131,28 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
  * if not, it shouldn't even show
  * if so, return slots
  */
-/datum/join_menu/proc/IsJobAvailable(job_id, client/C)
-	#warn impl
-	return prob(50)? null : rand(1, 10)
+/datum/join_menu/proc/IsJobAvailable(datum/job/J, mob/new_player/N)
+	return N.IsJobAvailable(J.title)
 
 /**
  * checks if ghostrole is available
  * if not, it shouldn't even show
  * if so, return slots
  */
-/datum/join_menu/proc/IsGhostroleAvailable(ghostrole_id, client/C)
-	#warn impl
-	return prob(50)? null : rand(1, 10)
+/datum/join_menu/proc/IsGhostroleAvailable(datum/ghostrole/G, mob/new_player/N)
+	return G.AllowSpawn(N.client)
 
 /**
  * return effective title - used for alt titles - JOBS ONLY, not ghostroles
  */
-/datum/join_menu/proc/EffectiveTitle(job_id, client/C)
+/datum/join_menu/proc/EffectiveTitle(datum/job/J, mob/new_player/N)
 	#warn this
 	return "Job #[rand(1, 100)]"	// i'm sorry sandpoot but atleast you get the code early..
 
 /**
  * returns effective desc - used for alt titles - JOBS ONLY, not ghostroles
  */
-/datum/join_menu/proc/EffectiveDesc(job_id, client/C)
+/datum/join_menu/proc/EffectiveDesc(datum/job/J, mob/new_player/N)
 	#warn impl
 	return // blank but CAN be null
 
@@ -207,6 +205,9 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 				return
 			switch(params["type"])
 				if("job")
+					if(!config_legacy.enter_allowed)
+						to_chat(usr, SPAN_NOTICE("There is an administrative lock on entering the game."))
+						return
 					var/datum/job/J = SSjob.job_by_id(id)
 					if(!J)
 						to_chat(usr, "<span class='warning'>Failed to find job [id].")
