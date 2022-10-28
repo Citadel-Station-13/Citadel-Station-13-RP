@@ -93,11 +93,6 @@
 /obj/machinery/crystal/lava,
 /turf/simulated/floor/water/deep/indoors,
 /area/rift/surfacebase/outside/west_deep)
-"aD" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/techfloor,
-/area/quartermaster/belterdock)
 "aE" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -203,6 +198,14 @@
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
+"bT" = (
+/obj/structure/plasticflaps/mining,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "miningboxtransfer3"
+	},
+/turf/simulated/floor/plating,
+/area/quartermaster/belterdock)
 "bU" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/firstaid/adv,
@@ -249,6 +252,14 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/janitorial)
+"cA" = (
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "miningboxtransfer3"
+	},
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled,
+/area/quartermaster/belterdock)
 "cG" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 6;
@@ -291,6 +302,15 @@
 	icon_state = "6-9"
 	},
 /turf/simulated/floor/tiled/techfloor,
+/area/quartermaster/belterdock)
+"ds" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/obj/machinery/conveyor_switch{
+	id = "miningboxtransfer3"
+	},
+/turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
 "dy" = (
 /obj/effect/trap/pop_up/thrower{
@@ -412,9 +432,9 @@
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "eH" = (
-/obj/structure/closet/emcloset,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating,
-/area/outpost/mining_main/outpost/maintenance)
+/area/quartermaster/belterdock)
 "eI" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/blue,
 /turf/simulated/floor/plating,
@@ -426,10 +446,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
-"eO" = (
-/obj/random/crystal/ice,
-/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
-/area/rift/surfacebase/outside/west_deep)
+"eS" = (
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/outpost/maintenance)
 "eT" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -487,12 +507,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/universal,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
-"fp" = (
-/obj/machinery/atmospherics/valve/digital/open{
-	dir = 8
-	},
-/turf/simulated/floor,
-/area/quartermaster/belterdock)
 "ft" = (
 /obj/structure/table/reinforced,
 /obj/item/roller,
@@ -523,12 +537,10 @@
 	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
-"fF" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
+"fG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/belterdock)
@@ -568,34 +580,17 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/belterdock)
 "gc" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/belterdock)
-"ge" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
+/obj/structure/bed/chair/office/light{
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/belterdock)
-"go" = (
-/obj/structure/railing{
-	dir = 4
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/outpost/maintenance)
+"ge" = (
+/obj/structure/symbol/sa,
+/turf/simulated/wall{
+	can_open = 1
 	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 3
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/belterdock)
+/area/outpost/mining_main/outpost/maintenance)
 "gq" = (
 /obj/machinery/door/window/brigdoor/northleft,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -632,6 +627,10 @@
 "gI" = (
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/exterior/bunker/bottom)
+"gM" = (
+/obj/structure/closet/emcloset,
+/turf/simulated/floor,
+/area/rnd/outpost/maintenance)
 "gS" = (
 /obj/random/obstruction,
 /turf/simulated/floor/lythios43c/indoors,
@@ -670,11 +669,8 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound2)
 "hG" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/belterdock)
+/turf/simulated/mineral/icerock/ignore_cavegen,
+/area/rift/surfacebase/outside/west_deep)
 "hM" = (
 /obj/structure/table/rack/steel,
 /obj/fiftyspawner/log,
@@ -795,9 +791,6 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
-"ip" = (
-/turf/simulated/floor/lythios43c/indoors,
-/area/outpost/mining_main/outpost/maintenance)
 "iq" = (
 /obj/effect/floor_decal/corner/white{
 	dir = 6
@@ -807,19 +800,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
-"ir" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/obj/machinery/conveyor_switch{
-	id = "miningboxtransfer3"
-	},
-/turf/simulated/floor/tiled,
-/area/quartermaster/belterdock)
-"iz" = (
-/obj/structure/reagent_dispensers/watertank,
-/turf/simulated/floor,
-/area/rnd/outpost/maintenance)
 "iH" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 9
@@ -1019,6 +999,10 @@
 /obj/structure/cable/green{
 	icon_state = "6-9"
 	},
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/outpost/maintenance)
+"jY" = (
+/obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
 "jZ" = (
@@ -1253,9 +1237,11 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound2)
 "lC" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
+	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/belterdock)
@@ -1302,9 +1288,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/gateway)
-"lZ" = (
-/turf/simulated/wall,
-/area/rnd/outpost/underground)
+"mb" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled,
+/area/quartermaster/belterdock)
 "mi" = (
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 2
@@ -1315,7 +1307,9 @@
 /area/rift/facility/interior/prison)
 "mm" = (
 /obj/effect/map_effect/interval/effect_emitter/steam/atmos_blocker,
-/turf/simulated/mineral/floor/ignore_cavegen,
+/turf/simulated/mineral/floor/ignore_cavegen{
+	outdoors = 0
+	},
 /area/rift/surfacebase/outside/west_deep)
 "mp" = (
 /obj/machinery/gateway{
@@ -1329,13 +1323,12 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/undergound2)
 "mw" = (
-/obj/effect/floor_decal/industrial/warning/dust,
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "miningboxtransfer3"
+/obj/machinery/light/small{
+	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/outpost/maintenance)
 "my" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/paper_bin,
@@ -1402,6 +1395,11 @@
 /obj/structure/catwalk,
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost)
+"mS" = (
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
+/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
+/turf/simulated/floor/tiled/monotile,
+/area/quartermaster/belterdock)
 "mU" = (
 /obj/effect/floor_decal/spline/fancy/wood/corner{
 	dir = 1
@@ -1468,12 +1466,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/gateway)
-"nv" = (
-/obj/structure/closet/crate,
-/obj/random/coin,
-/obj/random/contraband,
-/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
-/area/rift/surfacebase/outside/west_deep)
 "nx" = (
 /obj/structure/closet/excavation,
 /obj/item/multitool,
@@ -1493,13 +1485,12 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/belterdock)
 "nA" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/catwalk,
-/turf/simulated/floor,
-/area/quartermaster/belterdock)
+/obj/structure/ore_box,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_deep)
 "nC" = (
 /turf/simulated/wall,
 /area/rift/exterior/bunker/bottom)
@@ -1525,6 +1516,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
+"nJ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/quartermaster/belterdock)
 "nK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -1555,11 +1554,11 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "nV" = (
-/obj/structure/symbol/sa,
-/turf/simulated/wall{
-	can_open = 1
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
 	},
-/area/outpost/mining_main/outpost/maintenance)
+/turf/simulated/floor/tiled/monotile,
+/area/quartermaster/belterdock)
 "nY" = (
 /obj/structure/table/rack/shelf,
 /obj/random/ammo_all,
@@ -1644,6 +1643,14 @@
 	outdoors = 1
 	},
 /area/rift/surfacebase/outside/west_deep)
+"oG" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/stairs/spawner/south,
+/obj/structure/railing,
+/turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_deep)
 "oI" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 1
@@ -1720,11 +1727,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
 "pq" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 10
+/obj/effect/map_effect/portal/line/side_a{
+	dir = 8
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "pr" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -1741,13 +1747,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/gateway)
-"pC" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 1
-	},
-/obj/structure/ore_box,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
 "pE" = (
 /obj/structure/railing{
 	dir = 4
@@ -1859,33 +1858,24 @@
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/outpost)
 "qK" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/universal{
-	dir = 4
-	},
-/obj/structure/catwalk,
+/obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor,
-/area/quartermaster/belterdock)
+/area/rnd/outpost/maintenance)
 "qN" = (
 /obj/effect/floor_decal/corner/white,
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
 "qT" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/belterdock)
 "qU" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 5
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/monotile,
 /area/quartermaster/belterdock)
 "qV" = (
 /obj/effect/floor_decal/industrial/halfstair{
@@ -1907,9 +1897,9 @@
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
 "qY" = (
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
-/turf/simulated/floor/tiled/monotile,
+/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "rb" = (
 /obj/effect/floor_decal/spline/fancy/wood,
@@ -1940,11 +1930,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
-"rk" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/quartermaster/belterdock)
 "rn" = (
 /turf/simulated/wall,
 /area/quartermaster/belterdock)
@@ -1973,19 +1958,17 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
 "rH" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 9
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "miningboxtransfer3"
 	},
-/turf/simulated/floor/tiled/steel/lythios43c,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "rK" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/catwalk,
-/turf/simulated/floor,
-/area/quartermaster/belterdock)
+/obj/structure/inflatable,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_deep)
 "rO" = (
 /obj/structure/fence{
 	dir = 4
@@ -2001,16 +1984,18 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/gateway)
+"rQ" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/quartermaster/belterdock)
 "rS" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
 /area/gateway)
-"rZ" = (
-/obj/structure/table/steel_reinforced,
-/turf/simulated/floor/plating,
-/area/outpost/mining_main/outpost/maintenance)
 "sb" = (
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2041,14 +2026,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
-"sH" = (
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "miningboxtransfer3"
-	},
-/obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/tiled,
-/area/quartermaster/belterdock)
 "sN" = (
 /turf/unsimulated/wall/planetary/lythios43c{
 	desc = "Glacial permafrost, compacted harder than stone.";
@@ -2056,6 +2033,10 @@
 	name = "glacier wall"
 	},
 /area/rift/surfacebase/outside/west_deep)
+"sQ" = (
+/obj/item/stool/padded,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/outpost/maintenance)
 "sW" = (
 /obj/structure/table/standard,
 /obj/machinery/recharger,
@@ -2102,13 +2083,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound2)
-"tr" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 8
-	},
-/obj/effect/catwalk_plated/dark,
-/turf/simulated/floor,
-/area/shuttle/belter)
 "tt" = (
 /obj/structure/stairs/spawner/west,
 /obj/structure/railing{
@@ -2193,16 +2167,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/outpost)
-"up" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 6
-	},
-/obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/belterdock)
 "uq" = (
 /obj/structure/girder,
 /obj/effect/floor_decal/borderfloor{
@@ -2220,9 +2184,11 @@
 /turf/simulated/floor/reinforced,
 /area/gateway)
 "uu" = (
-/obj/structure/closet/emcloset,
+/obj/machinery/atmospherics/valve/digital{
+	dir = 8
+	},
 /turf/simulated/floor,
-/area/rnd/outpost/maintenance)
+/area/quartermaster/belterdock)
 "uI" = (
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Mining Outpost Airlock"
@@ -2261,15 +2227,21 @@
 "uW" = (
 /turf/simulated/shuttle/floor/voidcraft/lythios43c,
 /area/turbolift/rwest_mining/deep)
+"uY" = (
+/obj/effect/catwalk_plated/dark,
+/turf/simulated/floor,
+/area/shuttle/belter)
 "uZ" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/turbolift/rwest_mining/deep)
-"vc" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+"vb" = (
+/obj/effect/map_effect/portal/master/side_a{
+	portal_id = "caves_to_Cavern1";
+	name = "Cavern to caves";
 	dir = 8
 	},
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/belterdock)
+/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
+/area/rift/surfacebase/outside/west_deep)
 "vm" = (
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/lythios43c,
@@ -2333,15 +2305,6 @@
 "vJ" = (
 /turf/simulated/wall,
 /area/rift/facility/interior/janitorial)
-"vP" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
-/obj/effect/floor_decal/industrial/warning{
-	dir = 6
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled,
-/area/quartermaster/belterdock)
 "wb" = (
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/exterior/bunker/bottom)
@@ -2370,6 +2333,16 @@
 "ws" = (
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
+"wt" = (
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled/monotile,
+/area/quartermaster/belterdock)
+"wv" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/quartermaster/belterdock)
 "ww" = (
 /obj/machinery/light{
 	dir = 8
@@ -2421,13 +2394,11 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
 "wW" = (
-/obj/effect/map_effect/portal/master/side_a{
-	portal_id = "caves_to_Cavern1";
-	name = "Cavern to caves";
+/obj/machinery/atmospherics/valve/digital/open{
 	dir = 8
 	},
-/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
-/area/rift/surfacebase/outside/west_deep)
+/turf/simulated/floor,
+/area/quartermaster/belterdock)
 "xa" = (
 /obj/structure/girder,
 /obj/effect/map_effect/radiation_emitter,
@@ -2440,16 +2411,6 @@
 /obj/item/storage/box/lights/mixed,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/janitorial)
-"xd" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 9
-	},
-/obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/belterdock)
 "xf" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -2458,6 +2419,20 @@
 	pixel_y = 22
 	},
 /turf/simulated/floor/tiled/techfloor,
+/area/quartermaster/belterdock)
+"xg" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 3
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/monotile,
 /area/quartermaster/belterdock)
 "xj" = (
 /obj/structure/bed/chair/comfy/black{
@@ -2484,6 +2459,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway/prep_room)
+"xx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 8
+	},
+/obj/effect/catwalk_plated/dark,
+/turf/simulated/floor,
+/area/shuttle/belter)
 "xF" = (
 /obj/machinery/floodlight,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -2493,9 +2475,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/gateway/prep_room)
 "xJ" = (
-/obj/structure/inflatable/door,
-/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
-/area/rift/surfacebase/outside/west_deep)
+/obj/machinery/atmospherics/pipe/simple/hidden/universal{
+	dir = 4
+	},
+/obj/structure/catwalk,
+/turf/simulated/floor,
+/area/quartermaster/belterdock)
 "xK" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 1
@@ -2564,12 +2549,16 @@
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/outpost)
 "yw" = (
-/obj/structure/plasticflaps/mining,
-/obj/machinery/conveyor{
-	dir = 4;
-	id = "miningboxtransfer3"
+/obj/effect/floor_decal/industrial/warning{
+	dir = 5
 	},
-/turf/simulated/floor/plating,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/tiled,
 /area/quartermaster/belterdock)
 "yz" = (
 /obj/structure/grille,
@@ -2683,6 +2672,9 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/shuttle/floor/voidcraft/lythios43c,
 /area/shuttle/belter)
+"zi" = (
+/turf/simulated/wall,
+/area/rnd/outpost/underground)
 "zo" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/paper_bin,
@@ -2703,9 +2695,9 @@
 /turf/simulated/floor/tiled/monotile,
 /area/gateway/prep_room)
 "zO" = (
-/obj/effect/floor_decal/industrial/warning,
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/belterdock)
+/obj/structure/closet/emcloset,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/outpost/maintenance)
 "zU" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
@@ -2725,12 +2717,6 @@
 /area/rift/facility/interior/temple)
 "zY" = (
 /turf/simulated/wall/dungeon,
-/area/rift/surfacebase/outside/west_deep)
-"Ac" = (
-/obj/random/maintenance/cargo,
-/obj/random/maintenance/cargo,
-/obj/structure/closet/crate,
-/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_deep)
 "Ae" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -2836,10 +2822,6 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled/dark,
 /area/gateway/prep_room)
-"AX" = (
-/obj/random/trash_pile,
-/turf/simulated/floor/plating,
-/area/outpost/mining_main/outpost/maintenance)
 "Bb" = (
 /obj/machinery/door/airlock/lift,
 /turf/simulated/shuttle/floor/voidcraft/lythios43c,
@@ -2879,18 +2861,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
 "Bv" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 3
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 10
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/belterdock)
+/obj/random/crystal/ice,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_deep/submap_seedzone)
 "Bw" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -2900,10 +2873,6 @@
 	},
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/undergound2)
-"Bz" = (
-/obj/structure/inflatable,
-/turf/simulated/floor/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
 "BB" = (
 /obj/spawner/window/reinforced/full,
 /turf/simulated/floor,
@@ -2925,6 +2894,12 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/undergound2)
+"BK" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/outpost/maintenance)
 "BO" = (
 /obj/structure/table/bench/standard,
 /turf/simulated/floor/tiled/monotile,
@@ -3089,12 +3064,9 @@
 /turf/simulated/shuttle/floor/voidcraft,
 /area/shuttle/belter)
 "CY" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/belterdock)
+/obj/structure/table/steel_reinforced,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/outpost/maintenance)
 "Da" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 8
@@ -3156,13 +3128,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/gateway)
-"DJ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 8
-	},
-/obj/effect/catwalk_plated/dark,
-/turf/simulated/floor,
-/area/shuttle/belter)
 "DO" = (
 /obj/structure/bed/chair/sofa/black/corner{
 	dir = 8
@@ -3179,6 +3144,12 @@
 /obj/effect/floor_decal/spline/fancy/wood,
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/outpost)
+"Ec" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_deep)
 "Eh" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -3191,6 +3162,12 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound2)
+"El" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/quartermaster/belterdock)
 "Ep" = (
 /obj/structure/fence{
 	dir = 4
@@ -3301,12 +3278,6 @@
 "EY" = (
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
-"Fe" = (
-/obj/effect/map_effect/portal/line/side_a{
-	dir = 8
-	},
-/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
-/area/rift/surfacebase/outside/west_deep)
 "Fg" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -3319,17 +3290,14 @@
 "Fh" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound2)
-"Fj" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/belterdock)
 "Fl" = (
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "Fm" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 4
+	},
 /obj/effect/catwalk_plated/dark,
 /turf/simulated/floor,
 /area/shuttle/belter)
@@ -3342,24 +3310,22 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
 "Fu" = (
-/obj/structure/closet/crate,
-/obj/random/maintenance/cargo,
-/obj/random/maintenance/cargo,
-/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_deep)
 "Fx" = (
 /obj/random/crystal,
-/turf/simulated/mineral/floor/ignore_cavegen,
+/turf/simulated/mineral/floor/ignore_cavegen{
+	outdoors = 0
+	},
 /area/rift/surfacebase/outside/west_deep)
 "FC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
-"FF" = (
-/obj/structure/closet/firecloset/full/double,
-/turf/simulated/floor/plating,
-/area/outpost/mining_main/outpost/maintenance)
 "FI" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 10
@@ -3394,6 +3360,14 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/underground)
+"Gi" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/stairs/spawner/south,
+/obj/structure/railing,
+/turf/simulated/floor/outdoors/gravsnow/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_deep)
 "Gl" = (
 /turf/simulated/wall/solidrock,
 /area/rift/surfacebase/outside/west_deep)
@@ -3419,6 +3393,16 @@
 /obj/item/pen/blue,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/prison)
+"GN" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled/monotile,
+/area/quartermaster/belterdock)
 "GO" = (
 /obj/machinery/door/airlock/security{
 	name = "Evidence Storage";
@@ -3426,6 +3410,15 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/prison)
+"GQ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/quartermaster/belterdock)
 "GR" = (
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -3573,6 +3566,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/gateway)
+"Ir" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/quartermaster/belterdock)
 "Is" = (
 /obj/structure/closet/excavation,
 /obj/item/multitool,
@@ -3593,12 +3595,6 @@
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
-/area/quartermaster/belterdock)
-"IG" = (
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monotile,
 /area/quartermaster/belterdock)
 "IJ" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -3635,8 +3631,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
 "Js" = (
-/obj/item/stool/padded,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/outpost/mining_main/outpost/maintenance)
 "Jt" = (
 /obj/effect/floor_decal/industrial/warning/corner{
@@ -3668,6 +3663,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
+"Jx" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/catwalk,
+/turf/simulated/floor,
+/area/quartermaster/belterdock)
 "Jz" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
@@ -3688,6 +3691,12 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/gateway/prep_room)
+"JL" = (
+/obj/structure/closet/crate,
+/obj/random/coin,
+/obj/random/contraband,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_deep)
 "JM" = (
 /obj/spawner/window/borosillicate/reinforced/full,
 /turf/simulated/floor,
@@ -3719,6 +3728,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
+"Ke" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/quartermaster/belterdock)
 "Kf" = (
 /obj/structure/cable/green{
 	icon_state = "6-8"
@@ -3759,7 +3775,7 @@
 "Km" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/belterdock)
 "Kn" = (
 /obj/machinery/atmospherics/pipe/tank/air,
@@ -3796,7 +3812,10 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
 "KK" = (
-/turf/space/basic,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
 "KL" = (
 /obj/effect/floor_decal/rust,
@@ -3836,10 +3855,6 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/undergound2)
-"Lr" = (
-/obj/spawner/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/quartermaster/belterdock)
 "Ls" = (
 /turf/simulated/shuttle/wall/voidcraft,
 /area/rift/facility/interior/elevator)
@@ -3851,6 +3866,12 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
+"LK" = (
+/obj/random/maintenance/cargo,
+/obj/random/maintenance/cargo,
+/obj/structure/closet/crate,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_deep)
 "LO" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -3920,6 +3941,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
+"Mm" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/effect/catwalk_plated/dark,
+/turf/simulated/floor,
+/area/shuttle/belter)
 "Mn" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
@@ -3938,6 +3966,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/outpost)
+"Mt" = (
+/obj/structure/closet/firecloset/full/double,
+/turf/simulated/floor,
+/area/rnd/outpost/maintenance)
 "MA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
@@ -3990,6 +4022,10 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/outpost)
+"MZ" = (
+/obj/structure/inflatable,
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_deep)
 "Na" = (
 /obj/effect/floor_decal/techfloor/orange,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4048,6 +4084,13 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/underground)
+"ND" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/effect/catwalk_plated/dark,
+/turf/simulated/floor,
+/area/shuttle/belter)
 "NI" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -4110,10 +4153,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/belterdock)
-"Oo" = (
-/obj/random/crystal/ice,
-/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
-/area/rift/surfacebase/outside/west_deep/submap_seedzone)
 "Os" = (
 /obj/effect/floor_decal/techfloor/orange/corner,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -4129,12 +4168,6 @@
 /area/rift/facility/interior/temple)
 "OH" = (
 /obj/machinery/portable_atmospherics/canister/air/airlock,
-/turf/simulated/floor/plating,
-/area/outpost/mining_main/outpost/maintenance)
-"OJ" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
 "OP" = (
@@ -4156,7 +4189,9 @@
 /area/outpost/mining_main/outpost/maintenance)
 "OS" = (
 /obj/machinery/crystal/lava,
-/turf/simulated/mineral/floor/ignore_cavegen,
+/turf/simulated/mineral/floor/ignore_cavegen{
+	outdoors = 0
+	},
 /area/rift/surfacebase/outside/west_deep)
 "OT" = (
 /obj/structure/bed/chair/office/light{
@@ -4210,6 +4245,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/belterdock)
+"Py" = (
+/obj/random/crystal/ice,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_deep)
 "Pz" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -4230,6 +4269,12 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_deep)
+"Qc" = (
+/obj/structure/closet/crate,
+/obj/random/maintenance/cargo,
+/obj/random/maintenance/cargo,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_deep)
 "Qf" = (
@@ -4260,7 +4305,9 @@
 "QR" = (
 /obj/structure/sink/puddle,
 /obj/effect/map_effect/interval/effect_emitter/steam,
-/turf/simulated/mineral/floor/ignore_cavegen,
+/turf/simulated/mineral/floor/ignore_cavegen{
+	outdoors = 0
+	},
 /area/rift/surfacebase/outside/west_deep)
 "QS" = (
 /obj/machinery/porta_turret/stationary{
@@ -4271,6 +4318,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/gateway)
+"QT" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/catwalk,
+/turf/simulated/floor,
+/area/quartermaster/belterdock)
 "QW" = (
 /obj/random/obstruction,
 /obj/effect/floor_decal/borderfloor{
@@ -4288,10 +4343,17 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/prison)
 "QZ" = (
-/obj/machinery/atmospherics/valve/digital{
-	dir = 8
+/obj/structure/railing{
+	dir = 4
 	},
-/turf/simulated/floor,
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 3
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/monotile,
 /area/quartermaster/belterdock)
 "Rb" = (
 /obj/effect/floor_decal/borderfloor{
@@ -4385,14 +4447,6 @@
 /obj/random/landmine,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/undergound2)
-"Sp" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/belterdock)
 "St" = (
 /turf/simulated/wall,
 /area/outpost/mining_main/outpost)
@@ -4432,7 +4486,9 @@
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "SH" = (
-/turf/simulated/mineral/floor/ignore_cavegen,
+/turf/simulated/mineral/floor/ignore_cavegen{
+	outdoors = 0
+	},
 /area/rift/surfacebase/outside/west_deep)
 "SI" = (
 /turf/simulated/shuttle/wall/voidcraft/green,
@@ -4480,6 +4536,11 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/gateway/prep_room)
+"Tk" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/tiled/monotile,
+/area/quartermaster/belterdock)
 "Tl" = (
 /obj/machinery/light,
 /obj/machinery/suit_cycler/mining{
@@ -4506,15 +4567,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
-"Tt" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/quartermaster/belterdock)
 "Tw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -4535,20 +4587,17 @@
 "TF" = (
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
-"TJ" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/obj/structure/table/steel_reinforced,
-/turf/simulated/floor/plating,
-/area/outpost/mining_main/outpost/maintenance)
 "TK" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 1
+/obj/structure/inflatable/door,
+/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
+/area/rift/surfacebase/outside/west_deep)
+"TO" = (
+/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 10
 	},
-/obj/effect/catwalk_plated/dark,
-/turf/simulated/floor,
-/area/shuttle/belter)
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_deep)
 "TR" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -4625,10 +4674,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/outpost)
-"Uu" = (
-/obj/structure/inflatable,
-/turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
-/area/rift/surfacebase/outside/west_deep)
 "Uy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -4953,6 +4998,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
+"Yd" = (
+/obj/structure/closet/firecloset/full/double,
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/outpost/maintenance)
 "Yg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -5054,11 +5103,15 @@
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/outpost)
 "Zi" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
 	},
-/turf/simulated/floor/plating,
-/area/outpost/mining_main/outpost/maintenance)
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/effect/floor_decal/industrial/warning,
+/turf/simulated/floor/tiled/monotile,
+/area/quartermaster/belterdock)
 "Zk" = (
 /obj/structure/table/reinforced,
 /obj/machinery/cell_charger,
@@ -5076,9 +5129,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound2)
-"Zn" = (
-/turf/simulated/mineral/icerock/ignore_cavegen,
-/area/rift/surfacebase/outside/west_deep)
 "Zt" = (
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/wall/r_wall,
@@ -5144,17 +5194,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
-"ZV" = (
-/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
-	dir = 4
-	},
-/obj/effect/catwalk_plated/dark,
-/turf/simulated/floor,
-/area/shuttle/belter)
-"ZX" = (
-/obj/structure/closet/firecloset/full/double,
-/turf/simulated/floor,
-/area/rnd/outpost/maintenance)
 "ZY" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 2
@@ -9571,7 +9610,7 @@ WW
 WW
 WW
 so
-eO
+Py
 ky
 ky
 so
@@ -11418,7 +11457,7 @@ ky
 ky
 ky
 XQ
-KK
+XQ
 sN
 sN
 zY
@@ -11514,7 +11553,7 @@ WW
 WW
 WW
 so
-eO
+Py
 ky
 ky
 so
@@ -13069,7 +13108,7 @@ WW
 WW
 WW
 WW
-eO
+Py
 ky
 ky
 ky
@@ -15025,7 +15064,7 @@ ky
 ky
 ky
 ky
-eO
+Py
 ky
 ky
 WW
@@ -16399,7 +16438,7 @@ ky
 ky
 ky
 ky
-eO
+Py
 WW
 WW
 WW
@@ -16964,7 +17003,7 @@ WW
 WW
 so
 ky
-eO
+Py
 ky
 ky
 ky
@@ -17765,7 +17804,7 @@ WW
 Wv
 Wv
 Wv
-Oo
+Bv
 Wv
 WW
 WW
@@ -19323,7 +19362,7 @@ WW
 WW
 WW
 WW
-Oo
+Bv
 Wv
 WW
 WW
@@ -23497,9 +23536,9 @@ AO
 AO
 AO
 Gl
-Fe
-Fe
-wW
+pq
+pq
+vb
 Gl
 AO
 AO
@@ -32427,10 +32466,10 @@ so
 so
 so
 so
-Zn
-Zn
-Zn
-eO
+hG
+hG
+hG
+Py
 ky
 ky
 so
@@ -32620,10 +32659,10 @@ so
 so
 so
 so
-Zn
-Zn
-Zn
-Zn
+hG
+hG
+hG
+hG
 ky
 ky
 so
@@ -32813,11 +32852,11 @@ so
 so
 so
 so
-Zn
-Zn
-Zn
-Zn
-Zn
+hG
+hG
+hG
+hG
+hG
 ky
 ky
 so
@@ -33006,11 +33045,11 @@ so
 so
 so
 so
-Zn
-Zn
-Zn
-Zn
-Zn
+hG
+hG
+hG
+hG
+hG
 ky
 ky
 ky
@@ -33200,11 +33239,11 @@ so
 so
 so
 so
-Zn
-Zn
-Zn
-Zn
-Zn
+hG
+hG
+hG
+hG
+hG
 ky
 ky
 ky
@@ -33392,13 +33431,13 @@ so
 so
 so
 so
-Zn
-Zn
-Zn
-Zn
-Zn
-Zn
-Zn
+hG
+hG
+hG
+hG
+hG
+hG
+hG
 ky
 ky
 so
@@ -33586,12 +33625,12 @@ so
 so
 so
 so
-Zn
-Zn
-nv
+hG
+hG
+JL
 ky
-Zn
-Zn
+hG
+hG
 ky
 ky
 ky
@@ -33779,13 +33818,13 @@ so
 so
 so
 so
-Zn
-Zn
-Fu
+hG
+hG
+Qc
 ky
 ky
 ky
-Zn
+hG
 ky
 ky
 ky
@@ -33810,13 +33849,13 @@ HS
 uP
 FI
 kt
-lZ
-lZ
-lZ
-lZ
-lZ
-lZ
-lZ
+zi
+zi
+zi
+zi
+zi
+zi
+zi
 XQ
 XQ
 XQ
@@ -33973,9 +34012,9 @@ so
 so
 so
 so
-Zn
-Zn
-Ac
+hG
+hG
+LK
 ky
 ky
 ky
@@ -34010,7 +34049,7 @@ Ne
 KF
 KF
 Lm
-lZ
+zi
 XQ
 XQ
 XQ
@@ -34144,36 +34183,36 @@ ky
 ky
 ky
 ky
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+so
+so
+so
+so
+so
+so
+so
+so
+so
+so
+so
+so
+so
+hG
+hG
+hG
 ky
 ky
-XQ
-XQ
-XQ
-XQ
-XQ
-XQ
-XQ
-XQ
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-Zn
-Zn
-Zn
-ky
-ky
-Zn
-Zn
+hG
+hG
 ky
 ky
 ky
@@ -34204,7 +34243,7 @@ KF
 KF
 KF
 Lm
-lZ
+zi
 XQ
 XQ
 so
@@ -34338,8 +34377,8 @@ ky
 ky
 ky
 ky
-ky
-ky
+XQ
+XQ
 XQ
 XQ
 XQ
@@ -34361,13 +34400,13 @@ XQ
 XQ
 XQ
 XQ
-Zn
-Zn
-Zn
-Zn
-Zn
-Zn
-Zn
+hG
+hG
+hG
+hG
+hG
+hG
+hG
 ky
 ky
 ky
@@ -34533,10 +34572,6 @@ ky
 ky
 ky
 ky
-ky
-ky
-ky
-ky
 XQ
 XQ
 XQ
@@ -34556,12 +34591,16 @@ XQ
 XQ
 XQ
 XQ
-Zn
-Zn
-Zn
-Zn
-Zn
-Zn
+XQ
+XQ
+XQ
+XQ
+hG
+hG
+hG
+hG
+hG
+hG
 ky
 ky
 ky
@@ -34725,17 +34764,17 @@ XQ
 XQ
 ky
 ky
-ky
-ky
-ky
-ky
-ky
-ky
-ky
+Wy
+Wy
 XQ
 XQ
 XQ
 XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 Yr
 Yr
 Yr
@@ -34752,9 +34791,9 @@ Dt
 Dt
 Dt
 Dt
-Zn
-Zn
-Zn
+hG
+hG
+hG
 ky
 ky
 ky
@@ -34906,29 +34945,29 @@ so
 so
 so
 so
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 XQ
 XQ
 XQ
 ky
 ky
-ky
-dV
-dV
-dV
-dV
-dV
-ky
-ky
-ky
+Wy
+Wy
+Wy
+Ec
+oG
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 XQ
 Yr
 ZZ
@@ -34946,12 +34985,12 @@ ee
 wn
 VT
 Dt
-Zn
-Zn
-Zn
-Uu
-xJ
-Uu
+hG
+hG
+hG
+rK
+TK
+rK
 XQ
 XQ
 XQ
@@ -35100,30 +35139,30 @@ so
 so
 so
 so
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 XQ
 XQ
 XQ
 ky
 ky
-dV
-dV
-dV
-dV
-dV
-dV
-dV
-dV
-ky
-ky
+Wy
+Wy
+Wy
+Fu
+Gi
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 Yr
 Si
 Kj
@@ -35140,12 +35179,12 @@ am
 td
 ws
 Dt
-Zn
-Zn
-Zn
-Uu
+hG
+hG
+hG
+rK
 ky
-Uu
+rK
 XQ
 XQ
 XQ
@@ -35294,26 +35333,26 @@ so
 so
 so
 so
-sN
-sN
+XQ
+XQ
 ky
-eO
-ky
-ky
+Py
 ky
 ky
 ky
 ky
 ky
+ky
+ky
 dV
+Wy
+Wy
+Wy
 dV
-dV
-dV
-dV
-dV
-dV
-dV
-dV
+XQ
+XQ
+XQ
+XQ
 dV
 dV
 dV
@@ -35323,7 +35362,7 @@ Yr
 Yr
 Yr
 Yr
-Dt
+eS
 St
 St
 St
@@ -35338,8 +35377,8 @@ Dt
 Dt
 Dt
 Dt
-xJ
-Bz
+TK
+MZ
 XQ
 XQ
 XQ
@@ -35365,9 +35404,9 @@ kt
 KF
 KF
 QM
-iz
+qK
 bg
-ZX
+Mt
 oy
 QM
 so
@@ -35488,8 +35527,8 @@ so
 so
 so
 so
-sN
-sN
+XQ
+XQ
 ky
 ah
 ah
@@ -35501,8 +35540,8 @@ ky
 ky
 dV
 dV
-dV
-dV
+Wy
+Wy
 dV
 dV
 dV
@@ -35533,7 +35572,7 @@ ws
 ws
 Dt
 rr
-Bz
+MZ
 XQ
 XQ
 XQ
@@ -35682,8 +35721,8 @@ so
 so
 so
 so
-sN
-sN
+XQ
+XQ
 ky
 ah
 YA
@@ -35697,7 +35736,7 @@ Wy
 Wy
 Wy
 Wy
-dV
+Wy
 bf
 Nt
 Nt
@@ -35726,7 +35765,7 @@ Sd
 Hy
 Du
 Dt
-nV
+ge
 Dt
 Dt
 Dt
@@ -35755,7 +35794,7 @@ Pk
 bR
 Is
 ad
-uu
+gM
 oy
 QM
 so
@@ -35876,8 +35915,8 @@ so
 so
 so
 so
-sN
-sN
+XQ
+XQ
 ky
 ah
 bf
@@ -35891,7 +35930,7 @@ Wy
 Wy
 dV
 Wy
-dV
+Wy
 bf
 bf
 bf
@@ -35920,10 +35959,10 @@ Dt
 jX
 Da
 Dt
-ip
 Js
-TJ
-Js
+sQ
+mw
+sQ
 ws
 Dt
 ee
@@ -36070,8 +36109,8 @@ so
 so
 so
 so
-sN
-sN
+XQ
+XQ
 ky
 ah
 ah
@@ -36264,8 +36303,8 @@ so
 so
 so
 so
-sN
-sN
+XQ
+XQ
 ky
 ky
 ky
@@ -36313,7 +36352,7 @@ ws
 ws
 Mb
 iZ
-OJ
+BK
 iZ
 iZ
 iZ
@@ -36458,10 +36497,10 @@ so
 so
 so
 so
-sN
-sN
-sN
-eO
+XQ
+XQ
+XQ
+Py
 ky
 dV
 dV
@@ -36483,8 +36522,8 @@ dV
 dV
 dV
 dV
-rH
-pq
+KK
+TO
 dV
 rn
 Pq
@@ -36652,9 +36691,9 @@ so
 so
 so
 so
-sN
-sN
-sN
+XQ
+XQ
+XQ
 ky
 ky
 dV
@@ -36677,8 +36716,8 @@ dV
 dV
 dV
 NK
-pC
-mw
+nA
+rH
 dV
 rn
 xf
@@ -36696,8 +36735,8 @@ BQ
 CB
 Le
 Dt
-Js
-Js
+sQ
+sQ
 Vd
 EU
 ws
@@ -36846,9 +36885,9 @@ so
 so
 so
 so
-sN
-sN
-sN
+XQ
+XQ
+XQ
 PW
 pU
 pU
@@ -36871,9 +36910,9 @@ cK
 cK
 dP
 uZ
-rk
-yw
-Lr
+qY
+bT
+eH
 rn
 Kf
 Cl
@@ -36890,8 +36929,8 @@ Dt
 bL
 KG
 Dt
-rZ
-rZ
+CY
+CY
 Dt
 EU
 ws
@@ -37023,25 +37062,25 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 dV
 dV
 dV
@@ -37065,8 +37104,8 @@ uW
 uW
 uW
 dP
-ir
-sH
+ds
+cA
 Ij
 vI
 Cl
@@ -37084,7 +37123,7 @@ Dt
 Aj
 rj
 Dt
-Zi
+gc
 ws
 Dt
 OQ
@@ -37217,25 +37256,25 @@ so
 so
 so
 so
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 bh
 bh
 bh
@@ -37259,12 +37298,12 @@ uW
 uW
 uW
 dP
-qU
-vP
+yw
+mb
+Tk
 Km
-aD
 bu
-aD
+Km
 gb
 St
 YU
@@ -37282,7 +37321,7 @@ ws
 ws
 Dt
 EU
-AX
+jY
 Dt
 hc
 lj
@@ -37402,27 +37441,27 @@ so
 so
 so
 so
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 bh
 bh
 bh
@@ -37453,7 +37492,7 @@ uW
 uW
 uW
 dP
-gc
+lC
 Ij
 kk
 rn
@@ -37467,8 +37506,8 @@ mZ
 rB
 sq
 St
-FF
-eH
+Yd
+zO
 Aj
 rj
 Dt
@@ -37573,40 +37612,40 @@ sN
 sN
 XQ
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 bh
 bh
 bh
@@ -37647,7 +37686,7 @@ uW
 uW
 uW
 dP
-gc
+lC
 Ij
 Ij
 RO
@@ -37672,7 +37711,7 @@ ws
 EU
 ws
 ws
-AX
+jY
 Dt
 Am
 dQ
@@ -37767,31 +37806,31 @@ sN
 sN
 XQ
 so
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 bh
 bh
 bh
@@ -37841,7 +37880,7 @@ cK
 cK
 dP
 uZ
-gc
+lC
 Ij
 rn
 rn
@@ -37874,7 +37913,7 @@ zU
 mP
 St
 ky
-eO
+Py
 ky
 ky
 ky
@@ -37959,31 +37998,31 @@ sN
 "}
 (170,1,1) = {"
 sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 bh
 bh
 bh
@@ -38028,14 +38067,14 @@ rn
 Qf
 Ij
 Ij
-up
-rK
-nA
-Sp
-Tt
+GN
+QT
+Jx
+nJ
+GQ
 Ij
 Ij
-gc
+lC
 kk
 rn
 bh
@@ -38074,12 +38113,12 @@ ky
 ky
 ky
 ky
-eO
+Py
 ky
 ky
 ky
 ky
-eO
+Py
 ky
 so
 so
@@ -38153,10 +38192,10 @@ sN
 "}
 (171,1,1) = {"
 sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
 bh
 bh
 bh
@@ -38220,17 +38259,17 @@ bh
 bh
 rn
 Ij
-Fj
-lC
-xd
-qK
-qK
 qT
-fF
-Km
-CY
-qY
-Tt
+Ke
+Zi
+xJ
+xJ
+El
+Ir
+Tk
+fG
+mS
+GQ
 rn
 bh
 bh
@@ -38265,7 +38304,7 @@ ky
 ky
 ky
 ky
-eO
+Py
 ky
 ky
 ky
@@ -38414,17 +38453,17 @@ bh
 bh
 jB
 Ij
-ge
-vc
-zO
-QZ
-fp
-qT
+rQ
+wv
+wt
+uu
+wW
+El
 Ij
 Ij
-vc
-ge
-gc
+wv
+rQ
+lC
 jB
 bh
 bh
@@ -38490,20 +38529,20 @@ so
 so
 so
 so
-so
-so
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-so
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 so
 so
 so
@@ -38618,7 +38657,7 @@ an
 an
 SI
 Ij
-gc
+lC
 jB
 bh
 bh
@@ -38645,24 +38684,24 @@ XQ
 ky
 ky
 ky
-eO
+Py
 ky
 ky
-eO
-ky
-ky
-ky
+Py
 ky
 ky
 ky
 ky
 ky
 ky
-eO
-ky
-eO
 ky
 ky
+ky
+Py
+ky
+Py
+ky
+ky
 so
 so
 so
@@ -38684,23 +38723,30 @@ so
 so
 so
 so
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 so
 so
 so
@@ -38711,26 +38757,19 @@ so
 so
 so
 so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-so
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 sN
 "}
 (174,1,1) = {"
@@ -38805,14 +38844,14 @@ Ij
 uN
 mB
 wN
-DJ
-tr
+xx
+ND
 pe
 MO
 lt
 SI
 SI
-gc
+lC
 jB
 bh
 bh
@@ -38874,14 +38913,14 @@ so
 so
 so
 so
-so
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 bh
 bh
 bh
@@ -38890,14 +38929,18 @@ bh
 bh
 bh
 bh
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 so
 so
 so
@@ -38906,25 +38949,21 @@ so
 so
 so
 so
-so
-so
-so
-so
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 sN
 "}
 (175,1,1) = {"
@@ -38999,14 +39038,14 @@ Ij
 uN
 mB
 aN
-DJ
-Fm
-Fm
-Fm
+xx
+uY
+uY
+uY
 Ki
 pO
 zc
-gc
+lC
 jB
 bh
 bh
@@ -39061,18 +39100,18 @@ so
 so
 so
 so
-so
-so
-so
-so
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 bh
 bh
 bh
@@ -39087,30 +39126,30 @@ bh
 bh
 bh
 bh
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-so
-so
-so
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 bh
 bh
 bh
@@ -39193,14 +39232,14 @@ Ij
 uN
 mB
 dY
-ZV
-TK
+Fm
+Mm
 qq
 NZ
 lt
 SI
 SI
-gc
+lC
 jB
 bh
 bh
@@ -39245,25 +39284,25 @@ ky
 ky
 ky
 ky
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 so
 so
 so
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 bh
 bh
 bh
@@ -39284,22 +39323,22 @@ bh
 bh
 bh
 bh
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 bh
 bh
 bh
@@ -39394,7 +39433,7 @@ an
 an
 SI
 Ij
-gc
+lC
 jB
 bh
 bh
@@ -39437,24 +39476,24 @@ bh
 bh
 bh
 ky
-eO
+Py
 ky
 ky
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 bh
 bh
 bh
@@ -39482,12 +39521,12 @@ bh
 bh
 bh
 bh
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 bh
 bh
 bh
@@ -39586,9 +39625,9 @@ Ij
 Ij
 Ij
 Ij
-IG
-hG
-gc
+qU
+nV
+lC
 rn
 bh
 bh
@@ -39638,12 +39677,12 @@ bh
 bh
 bh
 bh
-sN
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 bh
 bh
 bh
@@ -39780,8 +39819,8 @@ kF
 kF
 kF
 kF
-Bv
-go
+QZ
+xg
 es
 rn
 bh
