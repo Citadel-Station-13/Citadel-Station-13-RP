@@ -2733,7 +2733,9 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/open/lythios43c{
+	special_temperature = 233
+	},
 /area/rift/surfacebase/underground/under1)
 "io" = (
 /obj/random/junk,
@@ -3373,7 +3375,9 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/open/lythios43c{
+	special_temperature = 233
+	},
 /area/rift/surfacebase/underground/under1)
 "lr" = (
 /obj/effect/floor_decal/borderfloor,
@@ -3737,7 +3741,9 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/open/lythios43c{
+	special_temperature = 233
+	},
 /area/rift/surfacebase/underground/under1)
 "nE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
@@ -3788,7 +3794,9 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/open/lythios43c{
+	special_temperature = 233
+	},
 /area/rift/surfacebase/underground/under1)
 "nV" = (
 /turf/simulated/floor/reinforced/nitrogen,
@@ -5394,7 +5402,9 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/open/lythios43c{
+	special_temperature = 233
+	},
 /area/rift/surfacebase/underground/under1)
 "vk" = (
 /obj/machinery/telecomms/processor/preset_three,
@@ -9882,7 +9892,9 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/open/lythios43c{
+	special_temperature = 233
+	},
 /area/rift/surfacebase/underground/under1)
 "Kq" = (
 /obj/effect/floor_decal/borderfloor,
@@ -12984,7 +12996,9 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 8
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/open/lythios43c{
+	special_temperature = 233
+	},
 /area/rift/surfacebase/underground/under1)
 "UC" = (
 /obj/structure/cable{
@@ -13598,7 +13612,9 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/open/lythios43c{
+	special_temperature = 233
+	},
 /area/rift/surfacebase/underground/under1)
 "WD" = (
 /obj/item/flashlight{
