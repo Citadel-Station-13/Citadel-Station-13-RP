@@ -7,16 +7,37 @@
 /datum/sprite_accessory_data
 	/// reference to accessory
 	var/datum/sprite_accessory/accessory
-	#warn coloration
-	/// emissive enabled? to enable, set 1 to 100 for percentage.
-	var/emissives = 0
-	/// layer swapped? set to wanted index e.g. 0 1, 2, etc.
-	var/layerswapping = 0
+	/// emissives enabled?
+	var/emissives_enabled = FALSE
+	//! at the moment we don't need full GAGS so we "abstract" around the fact we don't actually use packed color string or colors list
+	/// color 1
+	var/color1 = "#ffffff"
+	/// color 2
+	var/color2 = "#ffffff"
+	/// color 3
+	var/color3 = "#ffffff"
+
+	#warn layers?
 	/// addons
 	var/list/datum/sprite_accessory_addon/addons
 
+/**
+ * returns either one mutable_appearance, or a list of them to apply, with layers
+ * already set.
+ */
 /datum/sprite_accessory_data/proc/render_mob_appearance(mob/M)
+	return accessory?.render_mob_appearance(M, src)
 
-/datum/sprite_accessory_data/proc/render_mob_emissives(mob/M)
-	if(!accessory.emissives_allowed || !emissives)
-		return
+/datum/sprite_accessory_data/proc/get_color_index(i)
+
+/datum/sprite_accessory_data/proc/set_color_index(i, color)
+
+/**
+ * sets colors with a packed coloration string
+ */
+/datum/sprite_accessory_data/proc/set_colors(coloration_string)
+
+/**
+ * returns a packed coloration string
+ */
+/datum/sprite_accessory_data/proc/get_colors()

@@ -13,17 +13,9 @@
 	// Ckey of person allowed to use this, if defined.
 	var/list/ckeys_allowed = null
 	var/apply_restrictions = FALSE		//whether to apply restrictions for specific tails/ears/wings
-	var/center = FALSE
-	var/dimension_x = 32
-	var/dimension_y = 32
 
-	//! emissives
-	/// allow emissives
-	var/emissives_allowed = TRUE
 
 #warn full shapeshifter tgui panel after this rework it won't be enough to use menu
 
 
 #warn impl
-
-/datum/sprite_accessory/proc/render_mob_appearance(mob/M, list/colors, )

@@ -11,15 +11,15 @@
 	/// description
 	var/desc = "An addon."
 	/// category
-	var/category = "Misc"
+	var/category = SPRITE_ADDON_CATEGORY_UNKNOWN
 	/// icon file - must be centered
 	var/icon
 	/// icon state
 	var/icon_state
 	/// icon file x
-	var/icon_dimension_x
+	var/dimension_x
 	/// icon file y
-	var/icon_dimension_y
+	var/dimension_y
 
 /datum/sprite_accessory_addon/proc/render_onto(datum/sprite_accessory_data/D, mutable_appearance/MA)
 
