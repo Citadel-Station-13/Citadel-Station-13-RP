@@ -1755,6 +1755,10 @@
 /obj/structure/table,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/surface)
+"io" = (
+/obj/machinery/crystal/ice,
+/turf/simulated/floor/outdoors/snow/lythios43c/indoors,
+/area/rift/surfacebase/outside/west)
 "ip" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -30976,7 +30980,7 @@ sD
 PP
 PP
 sD
-sD
+io
 sv
 sv
 sv
@@ -31012,7 +31016,7 @@ sv
 sv
 sv
 sD
-sD
+io
 sD
 sD
 sD
@@ -31747,7 +31751,7 @@ PP
 PP
 PP
 PP
-sD
+io
 sD
 sD
 sD
