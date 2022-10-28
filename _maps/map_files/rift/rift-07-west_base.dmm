@@ -238,9 +238,6 @@
 "iB" = (
 /turf/simulated/mineral/icerock/ignore_cavegen/lythios43c,
 /area/rift/surfacebase/outside/west_base)
-"iJ" = (
-/turf/simulated/wall/dungeon,
-/area/rift/surfacebase/outside/west_base)
 "jp" = (
 /obj/structure/girder/reinforced,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -253,11 +250,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
-"jK" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/reinforced/full,
-/turf/simulated/floor,
-/area/turbolift/rwest_mining/base)
 "kC" = (
 /obj/effect/floor_decal/techfloor/orange/corner{
 	dir = 4
@@ -493,7 +485,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
 "tI" = (
-/turf/simulated/wall/dungeon,
+/turf/simulated/wall/r_wall,
 /area/rift/facility/interior/vault)
 "tZ" = (
 /obj/machinery/light/small,
@@ -656,7 +648,7 @@
 /turf/simulated/shuttle/floor/voidcraft/lythios43c,
 /area/turbolift/rwest_mining/base)
 "AH" = (
-/turf/simulated/wall,
+/turf/simulated/wall/r_wall,
 /area/rift/facility/interior/undergound3)
 "AV" = (
 /obj/machinery/fusion_fuel_injector/mapped{
@@ -762,7 +754,7 @@
 /area/rift/facility/interior/core)
 "ET" = (
 /turf/simulated/wall/dungeon,
-/area/rift/facility/interior/undergound3)
+/area/rift/surfacebase/outside/west_base)
 "EZ" = (
 /obj/structure/girder/reinforced,
 /turf/simulated/floor/lythios43c/indoors,
@@ -1022,6 +1014,11 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
+"QU" = (
+/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full,
+/turf/simulated/floor,
+/area/turbolift/rwest_mining/base)
 "Rw" = (
 /obj/effect/floor_decal/techfloor/orange/corner,
 /obj/effect/floor_decal/techfloor/orange/corner{
@@ -1078,10 +1075,10 @@
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/barracks)
 "SW" = (
-/turf/simulated/wall,
+/turf/simulated/wall/r_wall,
 /area/rift/facility/interior/barracks)
 "SZ" = (
-/turf/simulated/wall/dungeon,
+/turf/simulated/wall/r_lead,
 /area/rift/facility/interior/core)
 "Te" = (
 /obj/structure/fence{
@@ -6697,11 +6694,11 @@ Fo
 xf
 xf
 EZ
-iJ
-iJ
-iJ
-iJ
-iJ
+ET
+ET
+ET
+ET
+ET
 DE
 DE
 wf
@@ -6895,7 +6892,7 @@ CC
 Cf
 Cf
 wc
-iJ
+ET
 DE
 DE
 wf
@@ -7089,7 +7086,7 @@ HA
 Cf
 Cf
 my
-iJ
+ET
 DE
 DE
 wf
@@ -7283,7 +7280,7 @@ OB
 eM
 eM
 dJ
-iJ
+ET
 DE
 DE
 wf
@@ -7453,9 +7450,9 @@ XG
 XG
 tI
 tI
-ET
+AH
 zh
-ET
+AH
 SZ
 Sk
 mA
@@ -7473,11 +7470,11 @@ Fo
 HA
 HA
 HA
-iJ
-iJ
-iJ
-iJ
-iJ
+ET
+ET
+ET
+ET
+ET
 DE
 DE
 wf
@@ -8229,9 +8226,9 @@ em
 em
 tI
 tI
-ET
-ET
-ET
+AH
+AH
+AH
 SZ
 mA
 vc
@@ -33891,8 +33888,8 @@ NS
 dU
 bX
 dY
-jK
-jK
+QU
+QU
 dY
 bX
 py

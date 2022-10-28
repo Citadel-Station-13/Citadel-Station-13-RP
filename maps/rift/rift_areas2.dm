@@ -253,6 +253,12 @@
 /area/outpost/mining_main/outpost/substation
 	name = "\improper Outpost Substation"
 
+/area/outpost/mining_main/outpost/maintenance
+	area_flags = AREA_RAD_SHIELDED
+	sound_env = TUNNEL_ENCLOSED
+	turf_initializer = new /datum/turf_initializer/maintenance()
+	ambience = AMBIENCE_MAINTENANCE
+
 // Solars map areas
 /area/tether/outpost/solars_outside
 	name = "\improper Solar Farm"
