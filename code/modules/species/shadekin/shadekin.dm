@@ -1,6 +1,8 @@
 /datum/species/shadekin
 	name = SPECIES_SHADEKIN
 	name_plural = SPECIES_SHADEKIN
+	uid = SPECIES_ID_SHADEKIN
+	id = SPECIES_ID_SHADEKIN
 
 	icobase      = 'icons/mob/species/shadekin/body.dmi'
 	deform       = 'icons/mob/species/shadekin/body.dmi'

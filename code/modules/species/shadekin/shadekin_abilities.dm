@@ -54,8 +54,8 @@
 	if(!(ability_flags & AB_PHASE_SHIFTED))
 		log_debug("[src] attempted to shift with [watcher] visible Carbons with a  cost of [ability_cost] in a darkness level of [darkness]")
 
-	var/datum/species/shadekin/SK = species
-	if(!istype(SK))
+	//var/datum/species/shadekin/SK = species
+	if(species.get_species_id() != SPECIES_ID_SHADEKIN)
 		to_chat(src, SPAN_WARNING("Only a shadekin can use that!"))
 		return FALSE
 	else if(stat)
@@ -194,8 +194,8 @@
 
 	var/ability_cost = 50
 
-	var/datum/species/shadekin/SK = species
-	if(!istype(SK))
+	//var/datum/species/shadekin/SK = species
+	if(species.get_species_id() != SPECIES_ID_SHADEKIN)
 		to_chat(src, "<span class='warning'>Only a shadekin can use that!</span>")
 		return FALSE
 	else if(stat)
@@ -263,8 +263,8 @@
 
 	var/ability_cost = 25
 
-	var/datum/species/shadekin/SK = species
-	if(!istype(SK))
+	//var/datum/species/shadekin/SK = species
+	if(species.get_species_id() != SPECIES_ID_SHADEKIN)
 		to_chat(src, "<span class='warning'>Only a shadekin can use that!</span>")
 		return FALSE
 	else if(stat)

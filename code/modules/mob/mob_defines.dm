@@ -343,6 +343,7 @@
 	var/disconnect_time = null
 
 	var/atom/movable/screen/shadekin/shadekin_display = null
+	var/atom/movable/screen/crew_shadekin/crew_shadekin_display = null
 	var/atom/movable/screen/xenochimera/danger_level/xenochimera_danger_display = null
 
 	//! Typing Indicator

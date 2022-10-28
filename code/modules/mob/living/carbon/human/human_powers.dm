@@ -419,42 +419,96 @@
 
 /mob/living/carbon/human/proc/shadekin_get_energy()
 	var/datum/species/shadekin/SK = species
+	var/datum/species/crew_shadekin/BESK = species
 
 	if(!istype(SK))
-		return FALSE
+		if(!istype(BESK))
+			return FALSE
 
 	return SK.get_energy(src)
 
 /mob/living/carbon/human/proc/shadekin_get_max_energy()
 	var/datum/species/shadekin/SK = species
+	var/datum/species/crew_shadekin/BESK = species
 
 	if(!istype(SK))
-		return FALSE
+		if(!istype(BESK))
+			return FALSE
 
 	return SK.get_max_energy(src)
 
 /mob/living/carbon/human/proc/shadekin_set_energy(new_energy)
 	var/datum/species/shadekin/SK = species
+	var/datum/species/crew_shadekin/BESK = species
 
 	if(!istype(SK))
-		return FALSE
+		if(!istype(BESK))
+			return FALSE
 
 	SK.set_energy(src, new_energy)
 
 /mob/living/carbon/human/proc/shadekin_set_max_energy(new_max_energy)
 	var/datum/species/shadekin/SK = species
+	var/datum/species/crew_shadekin/BESK = species
 
 	if(!istype(SK))
-		return FALSE
+		if(!istype(BESK))
+			return FALSE
 
 	SK.set_max_energy(src, new_max_energy)
 
 /mob/living/carbon/human/proc/shadekin_adjust_energy(amount)
 	var/datum/species/shadekin/SK = species
+	var/datum/species/crew_shadekin/BESK = species
 
 	if(!istype(SK))
-		return FALSE
+		if(!istype(BESK))
+			return FALSE
 
 	if(amount > 0 || !(SK.check_infinite_energy(src)))
 		var/new_amount = SK.get_energy(src) + amount
 		SK.set_energy(src, new_amount)
+
+/*
+/mob/living/carbon/human/proc/crew_shadekin_get_energy()
+	var/datum/species/crew_shadekin/BESK = species
+
+	if(!istype(BESK))
+		return FALSE
+
+	return BESK.get_energy(src)
+
+/mob/living/carbon/human/proc/crew_shadekin_get_max_energy()
+	var/datum/species/crew_shadekin/BESK = species
+
+	if(!istype(BESK))
+		return FALSE
+
+	return BESK.get_max_energy(src)
+
+/mob/living/carbon/human/proc/crew_shadekin_set_energy(new_energy)
+	var/datum/species/crew_shadekin/BESK = species
+
+	if(!istype(BESK))
+		return FALSE
+
+	BESK.set_energy(src, new_energy)
+
+/mob/living/carbon/human/proc/crew_shadekin_set_max_energy(new_max_energy)
+	var/datum/species/crew_shadekin/BESK = species
+
+	if(!istype(BESK))
+		return FALSE
+
+	BESK.set_max_energy(src, new_max_energy)
+
+/mob/living/carbon/human/proc/crew_shadekin_adjust_energy(amount)
+	var/datum/species/crew_shadekin/BESK = species
+
+	if(!istype(BESK))
+		return FALSE
+
+	if(amount > 0 || !(BESK.check_infinite_energy(src)))
+		var/new_amount = BESK.get_energy(src) + amount
+		BESK.set_energy(src, new_amount)
+*/
