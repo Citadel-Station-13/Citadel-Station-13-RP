@@ -1657,7 +1657,7 @@
 	dir = 4
 	},
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
-/area/rift/surfacebase/outside/west)
+/area/rift/surfacebase/outside/west_caves)
 "tr" = (
 /obj/structure/transit_tube/high_velocity,
 /turf/simulated/floor/lythios43c/indoors,
@@ -3835,7 +3835,7 @@
 	portal_id = "caves_to_Cavern1"
 	},
 /turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
-/area/rift/surfacebase/outside/west)
+/area/rift/surfacebase/outside/west_caves)
 "ST" = (
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/medical)
@@ -4461,7 +4461,7 @@
 /area/rift/surfacebase/outside/west_caves)
 "ZT" = (
 /turf/simulated/wall/solidrock,
-/area/rift/surfacebase/outside/west)
+/area/rift/surfacebase/outside/west_caves)
 "ZV" = (
 /obj/structure/railing{
 	dir = 8
