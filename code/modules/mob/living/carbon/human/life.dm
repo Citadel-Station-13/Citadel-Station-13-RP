@@ -371,6 +371,16 @@
 	if(breath && virus2.len > 0 && prob(10))
 		for(var/mob/living/carbon/M in view(1,src))
 			src.spread_disease_to(M)
+/**
+ * Handles masks that warm up/cool down breath, filter gases etc.
+ */
+/mob/living/carbon/human/proc/get_breath_from_mask(volume_needed=BREATH_VOLUME)
+	. = get_breath_from_internal(volume_needed)//first take breath from internals
+	if(!.)//if that fails
+		. = get_breath_from_environment(volume_needed)//get breath from environment
+	if(wear_mask)
+		. = wear_mask.alter_breath(.)
+	return .
 
 
 /mob/living/carbon/human/get_breath_from_internal(volume_needed=BREATH_VOLUME)

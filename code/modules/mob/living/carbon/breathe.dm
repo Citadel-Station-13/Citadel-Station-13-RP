@@ -59,6 +59,9 @@
 				internals.icon_state = "internal0"
 	return null
 
+/mob/living/carbon/proc/get_breath_from_mask(volume_needed=BREATH_VOLUME)
+	return null
+
 /mob/living/carbon/proc/get_breath_from_environment(var/volume_needed=BREATH_VOLUME)
 	var/datum/gas_mixture/breath = null
 
@@ -72,10 +75,11 @@
 
 	if(breath)
 		//handle mask filtering
-		if(istype(wear_mask, /obj/item/clothing/mask) && breath)
+		//now handled in get_breath_from_mask
+		/*if(istype(wear_mask, /obj/item/clothing/mask) && breath)
 			var/obj/item/clothing/mask/M = wear_mask
-			var/datum/gas_mixture/gas_filtered = M.filter_air(breath)
-			loc.assume_air(gas_filtered)
+			var/datum/gas_mixture/gas_filtered = M.alter_breath(breath)
+			loc.assume_air(gas_filtered)*/
 		return breath
 	return null
 
