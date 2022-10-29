@@ -11510,10 +11510,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora)
-"hGB" = (
-/obj/structure/barricade/cutout/swarmer,
-/turf/simulated/floor/plating,
-/area/maintenance/central_heating/surface_one)
 "hGF" = (
 /obj/machinery/light{
 	dir = 4
@@ -24771,7 +24767,8 @@
 /area/rift/surfaceeva/aa/surface_south)
 "prt" = (
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
+/obj/structure/lattice,
+/turf/simulated/open,
 /area/maintenance/central_heating/surface_one)
 "prD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -53577,11 +53574,11 @@ bQA
 eNx
 nyE
 bQA
+prt
 kDP
 kDP
 kDP
-kDP
-kDP
+prt
 bQA
 lsb
 tEx
@@ -55517,11 +55514,11 @@ bQA
 whO
 yeH
 bQA
-hGB
+prt
 kDP
 kDP
 kDP
-kDP
+prt
 bQA
 mIq
 wQz

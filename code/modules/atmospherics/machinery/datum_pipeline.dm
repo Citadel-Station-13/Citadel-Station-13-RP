@@ -157,7 +157,6 @@
 			var/delta_temp = modeled_location.special_temperature - air.temperature//2200C - 20C = 2180K
 			//assuming aluminium with thermal conductivity 235 W * K / m, Copper (400), Silver (430), steel (50), gold (320)
 			var/heat_gain = thermal_conductivity_setting * 100 * delta_temp//assuming 1 cm wall thickness, so delta_temp isnt multiplied
-			heat_gain = clamp(heat_gain, air.get_thermal_energy_change(modeled_location.special_temperature), -air.get_thermal_energy_change(modeled_location.special_temperature))
 			air.adjust_thermal_energy(heat_gain)
 			if(network)
 				network.update = 1
