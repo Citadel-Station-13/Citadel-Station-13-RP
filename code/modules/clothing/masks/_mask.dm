@@ -12,5 +12,5 @@
 	var/list/say_messages
 	var/list/say_verbs
 
-/obj/item/clothing/mask/proc/filter_air(datum/gas_mixture/air)
+/obj/item/clothing/mask/proc/alter_breath(datum/gas_mixture/air)
 	return
