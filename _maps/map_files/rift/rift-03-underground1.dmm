@@ -2297,9 +2297,6 @@
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "fR" = (
@@ -2356,6 +2353,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
@@ -2450,9 +2450,6 @@
 /obj/effect/floor_decal/corner/orange/border{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "gz" = (
@@ -2493,6 +2490,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
@@ -2974,9 +2974,6 @@
 /obj/machinery/camera/network/civilian{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24
@@ -3203,9 +3200,6 @@
 	},
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
@@ -3510,9 +3504,6 @@
 /obj/effect/floor_decal/corner/orange/bordercorner2{
 	dir = 9
 	},
-/obj/structure/cable{
-	icon_state = "1-6"
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
 "mj" = (
@@ -3604,6 +3595,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "mC" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
 "mD" = (
@@ -4423,15 +4417,15 @@
 /area/maintenance/public_bunker)
 "rI" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	icon_state = "9-10"
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced/tinted/frosted,
 /obj/structure/grille,
 /obj/structure/window/reinforced{
 	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/pool)
@@ -8159,11 +8153,12 @@
 /turf/simulated/floor/outdoors/snow,
 /area/rift/surfacebase/underground/under1)
 "EF" = (
+/obj/structure/disposalpipe/segment,
 /obj/structure/cable{
-	icon_state = "5-8"
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/tiled/kafel_full/blue,
-/area/crew_quarters/pool)
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/underone)
 "EG" = (
 /obj/machinery/door/airlock/multi_tile/metal/mait{
 	dir = 1;
@@ -10466,6 +10461,12 @@
 /obj/effect/overlay/snow/floor/edges_new,
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"Mr" = (
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/crew_quarters/pool)
 "Mt" = (
 /obj/effect/floor_decal/borderfloorblack/corner,
 /turf/simulated/floor/tiled/dark,
@@ -11410,7 +11411,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
-	icon_state = "4-8"
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
@@ -28851,7 +28852,7 @@ jv
 kh
 mg
 XQ
-EF
+fF
 zW
 eT
 yU
@@ -29041,11 +29042,11 @@ di
 eP
 Pb
 gR
-NF
+EF
 ga
 mC
 rI
-CN
+Mr
 zW
 eT
 Zv
