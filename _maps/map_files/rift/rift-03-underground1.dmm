@@ -8153,12 +8153,11 @@
 /turf/simulated/floor/outdoors/snow,
 /area/rift/surfacebase/underground/under1)
 "EF" = (
-/obj/structure/disposalpipe/segment,
 /obj/structure/cable{
-	icon_state = "1-2"
+	icon_state = "1-8"
 	},
-/turf/simulated/floor/tiled/monotile,
-/area/hallway/primary/underone)
+/turf/simulated/floor/tiled/kafel_full/blue,
+/area/crew_quarters/pool)
 "EG" = (
 /obj/machinery/door/airlock/multi_tile/metal/mait{
 	dir = 1;
@@ -9464,6 +9463,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
+"IP" = (
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 4
+	},
+/obj/machinery/meter,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "IQ" = (
 /obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 1;
@@ -10461,12 +10467,6 @@
 /obj/effect/overlay/snow/floor/edges_new,
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
-"Mr" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/tiled/kafel_full/blue,
-/area/crew_quarters/pool)
 "Mt" = (
 /obj/effect/floor_decal/borderfloorblack/corner,
 /turf/simulated/floor/tiled/dark,
@@ -11987,6 +11987,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
+/obj/machinery/meter,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "Rj" = (
@@ -12744,6 +12745,13 @@
 	},
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"TF" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/underone)
 "TG" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green,
 /obj/machinery/meter,
@@ -29042,11 +29050,11 @@ di
 eP
 Pb
 gR
-EF
+TF
 ga
 mC
 rI
-Mr
+EF
 zW
 eT
 Zv
@@ -29437,7 +29445,7 @@ XQ
 XQ
 XQ
 eT
-QT
+IP
 VH
 nZ
 ou
