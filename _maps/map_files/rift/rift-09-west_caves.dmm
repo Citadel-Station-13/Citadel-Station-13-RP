@@ -981,12 +981,6 @@
 /obj/item/towel/random,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
-"lD" = (
-/obj/structure/cable/green{
-	icon_state = "4-6"
-	},
-/turf/simulated/floor,
-/area/rnd/outpost/maintenance)
 "lH" = (
 /obj/effect/floor_decal/techfloor/orange/corner{
 	dir = 1
@@ -1678,6 +1672,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/machinery/mineral/equipment_vendor,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
 "tH" = (
@@ -3077,15 +3072,6 @@
 /obj/structure/lattice,
 /turf/simulated/open/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
-"Kg" = (
-/obj/structure/cable/green{
-	icon_state = "16-0"
-	},
-/obj/structure/cable/green{
-	icon_state = "0-9"
-	},
-/turf/simulated/floor,
-/area/rnd/outpost/maintenance)
 "Kh" = (
 /obj/structure/catwalk,
 /obj/effect/overlay/snow/floor/edges_new{
@@ -3172,7 +3158,10 @@
 /area/outpost/mining_main/outpost)
 "Lk" = (
 /obj/structure/cable/green{
-	icon_state = "5-8"
+	icon_state = "16-0"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-5"
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
@@ -34683,7 +34672,7 @@ oO
 be
 oO
 QV
-lD
+VL
 VL
 oO
 JD
@@ -34878,7 +34867,7 @@ be
 oO
 VL
 Lk
-Kg
+VL
 oO
 be
 be

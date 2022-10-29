@@ -135,15 +135,6 @@
 /obj/random/tech_supply/component/nofail,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/rift/facility/interior/vault)
-"dJ" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_base)
 "dU" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -156,9 +147,6 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/rift/facility/interior/vault)
 "eM" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 1
-	},
 /obj/structure/railing{
 	dir = 4
 	},
@@ -320,9 +308,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
 "my" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 1
-	},
+/obj/structure/stairs/spawner/south,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
 "mz" = (
@@ -344,7 +330,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
 "mI" = (
-/turf/simulated/mineral/floor/ignore_cavegen,
+/turf/simulated/mineral/floor/ignore_cavegen/indoors,
 /area/rift/surfacebase/outside/west_base/submap_seedzone)
 "nh" = (
 /obj/structure/closet,
@@ -558,11 +544,10 @@
 /turf/simulated/mineral/rich,
 /area/rift/surfacebase/outside/west_base/submap_seedzone)
 "wc" = (
-/obj/effect/map_effect/portal/master/side_b{
-	dir = 1;
-	name = "Fake Cave to Reactor";
-	portal_id = "reactor_poi_cave"
+/obj/structure/railing{
+	dir = 4
 	},
+/obj/structure/stairs/spawner/south,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
 "wf" = (
@@ -701,12 +686,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
-"Cf" = (
-/obj/effect/floor_decal/industrial/halfstair{
-	dir = 1
-	},
-/turf/simulated/floor/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_base)
 "CB" = (
 /obj/effect/floor_decal/techfloor/orange{
 	dir = 8
@@ -954,7 +933,7 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "NF" = (
-/turf/simulated/mineral/floor/ignore_cavegen,
+/turf/simulated/mineral/floor/ignore_cavegen/indoors,
 /area/rift/surfacebase/outside/west_base)
 "NI" = (
 /obj/effect/floor_decal/techfloor/orange{
@@ -6725,12 +6704,12 @@ Fo
 xf
 xf
 EZ
-ET
-ET
-ET
-ET
-ET
-DE
+Fo
+Fo
+Fo
+Fo
+Fo
+Fo
 DE
 wf
 wf
@@ -6920,11 +6899,11 @@ HA
 HA
 HA
 CC
-Cf
-Cf
-wc
-ET
-DE
+HA
+HA
+HA
+my
+Fo
 DE
 wf
 wf
@@ -7114,11 +7093,11 @@ HA
 HA
 Ei
 HA
-Cf
-Cf
+HA
+HA
+HA
 my
-ET
-DE
+Fo
 DE
 wf
 wf
@@ -7308,11 +7287,11 @@ HA
 HA
 HA
 OB
+HA
 eM
 eM
-dJ
-ET
-DE
+wc
+Fo
 DE
 wf
 wf
@@ -7501,12 +7480,12 @@ Fo
 HA
 HA
 HA
-ET
-ET
-ET
-ET
-ET
-DE
+Fo
+Fo
+Fo
+Fo
+Fo
+Fo
 DE
 wf
 wf

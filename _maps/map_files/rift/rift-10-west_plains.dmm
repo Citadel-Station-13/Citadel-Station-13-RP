@@ -10108,6 +10108,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab/airlock)
+"Wv" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/yellow/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 4
+	},
+/obj/machinery/vending/nifsoft_shop,
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/outpost)
 "Ww" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
@@ -43555,7 +43568,7 @@ Yd
 Yd
 Yd
 pn
-Zg
+Wv
 WG
 OQ
 wA

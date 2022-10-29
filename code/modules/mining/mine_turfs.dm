@@ -21,6 +21,7 @@
 	blocks_air = 1
 	can_dirty = FALSE
 
+
 	var/datum/ore/mineral
 	var/sand_dug
 	var/mined_ore = 0
@@ -36,8 +37,37 @@
 	var/obj/item/last_find
 	var/datum/artifact_find/artifact_find
 	var/ignore_mapgen
-
+	var/ignore_oregen = FALSE
+	var/ignore_cavegen = FALSE
 	has_resources = 1
+
+
+
+// Alternatives that ignore ore_gen and cavegen
+/turf/simulated/mineral/ignore_oregen
+	ignore_oregen = TRUE
+
+/turf/simulated/mineral/floor/ignore_oregen
+	ignore_oregen = TRUE
+
+/turf/simulated/mineral/ignore_cavegen
+	ignore_cavegen = TRUE
+
+/turf/simulated/mineral/floor/ignore_cavegen
+	ignore_cavegen = TRUE
+
+/turf/simulated/mineral/floor/ignore_cavegen/indoors
+	outdoors = FALSE
+
+/turf/simulated/mineral/icerock/ignore_cavegen
+	ignore_cavegen = TRUE
+
+/turf/simulated/mineral/icerock/floor/ignore_cavegen
+	ignore_cavegen = TRUE
+
+/turf/simulated/mineral/icerock/floor/ignore_cavegen/indoors
+	outdoors = FALSE
+
 
 // Alternative rock wall sprites.
 /turf/simulated/mineral/light
@@ -72,6 +102,10 @@
 	opacity = 0
 	blocks_air = 0
 	can_build_into_floor = TRUE
+	outdoors = TRUE // Until I can go through and unfuck what got fucked this is how I am going to have to deal with this
+
+/turf/simulated/mineral/floor/indoors
+	outdoors = FALSE
 
 //Alternative sand floor sprite.
 /turf/simulated/mineral/floor/light

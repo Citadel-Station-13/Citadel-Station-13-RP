@@ -163,11 +163,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
 "bz" = (
-/obj/effect/map_effect/portal/master/side_a{
-	portal_id = "reactor_poi_cave";
-	name = "Fake Cave to Reactor"
-	},
-/turf/simulated/floor/lythios43c/indoors,
+/turf/simulated/open,
 /area/rift/surfacebase/outside/west_deep)
 "bI" = (
 /obj/machinery/light{
@@ -525,12 +521,6 @@
 /obj/item/flame/candle,
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
-"fE" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/floor/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
 "fM" = (
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west_deep)
@@ -1632,10 +1622,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
-"oO" = (
-/obj/effect/map_effect/portal/line/side_a,
-/turf/simulated/floor/lythios43c/indoors,
-/area/rift/surfacebase/outside/west_deep)
 "oZ" = (
 /obj/structure/railing{
 	dir = 4
@@ -2449,6 +2435,12 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
+/obj/machinery/button/remote/blast_door{
+	id = "gateway_windows";
+	name = "Gateway Window Control";
+	pixel_x = 8;
+	pixel_y = 32
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/gateway)
 "xN" = (
@@ -2669,9 +2661,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
-"zY" = (
-/turf/simulated/wall/dungeon,
-/area/rift/surfacebase/outside/west_deep)
 "Ac" = (
 /obj/structure/closet/firecloset/full/double,
 /turf/simulated/floor/plating,
@@ -3431,6 +3420,10 @@
 "HS" = (
 /obj/effect/floor_decal/spline/plain,
 /obj/spawner/window/borosillicate/reinforced/full,
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "gateway_windows"
+	},
 /turf/simulated/floor/plating,
 /area/gateway)
 "HW" = (
@@ -3550,9 +3543,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
-"IY" = (
-/turf/simulated/mineral/icerock/ignore_cavegen,
-/area/rift/surfacebase/outside/west_deep)
 "Jd" = (
 /obj/random/outcrop,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
@@ -3632,6 +3622,10 @@
 /area/rift/surfacebase/outside/west_deep)
 "JM" = (
 /obj/spawner/window/borosillicate/reinforced/full,
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "gateway_windows"
+	},
 /turf/simulated/floor,
 /area/gateway)
 "JO" = (
@@ -4302,11 +4296,10 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/prison)
 "Sa" = (
-/obj/effect/map_effect/portal/line/side_a,
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/simulated/floor/lythios43c/indoors,
+/turf/simulated/open,
 /area/rift/surfacebase/outside/west_deep)
 "Sd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -9797,9 +9790,9 @@ XQ
 XQ
 XQ
 XQ
-sN
-sN
-sN
+XQ
+XQ
+XQ
 ky
 ky
 ky
@@ -9989,11 +9982,11 @@ XQ
 XQ
 XQ
 XQ
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
 ky
 ky
 ky
@@ -10183,11 +10176,11 @@ XQ
 XQ
 XQ
 XQ
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
 ky
 ky
 ky
@@ -10377,11 +10370,11 @@ XQ
 XQ
 XQ
 XQ
-sN
-sN
-sN
-sN
-sN
+XQ
+XQ
+XQ
+XQ
+XQ
 ky
 ky
 so
@@ -10570,12 +10563,12 @@ ky
 XQ
 XQ
 XQ
-sN
-sN
-zY
-zY
-zY
-zY
+XQ
+XQ
+ah
+ah
+ah
+ah
 gS
 gS
 Gr
@@ -10764,11 +10757,11 @@ ky
 ky
 XQ
 XQ
-sN
-sN
-zY
+XQ
+XQ
+ah
 bz
-rr
+bz
 KL
 rr
 rr
@@ -10958,11 +10951,11 @@ ky
 ky
 XQ
 XQ
-sN
-sN
-zY
-oO
-rr
+XQ
+XQ
+ah
+bz
+bz
 Fl
 rr
 rr
@@ -11152,11 +11145,11 @@ ky
 ky
 XQ
 XQ
-sN
-sN
-zY
+XQ
+XQ
+ah
 Sa
-fE
+Sa
 pH
 rr
 Fl
@@ -11346,12 +11339,12 @@ ky
 ky
 XQ
 XQ
-sN
-sN
-zY
-zY
-zY
-zY
+XQ
+XQ
+ah
+ah
+ah
+ah
 rr
 rr
 rr
@@ -32354,9 +32347,9 @@ so
 so
 so
 so
-IY
-IY
-IY
+XQ
+XQ
+XQ
 qT
 ky
 ky
@@ -32547,10 +32540,10 @@ so
 so
 so
 so
-IY
-IY
-IY
-IY
+XQ
+XQ
+XQ
+XQ
 ky
 ky
 so
@@ -32740,11 +32733,11 @@ so
 so
 so
 so
-IY
-IY
-IY
-IY
-IY
+XQ
+XQ
+XQ
+XQ
+XQ
 ky
 ky
 so
@@ -32933,11 +32926,11 @@ so
 so
 so
 so
-IY
-IY
-IY
-IY
-IY
+XQ
+XQ
+XQ
+XQ
+XQ
 ky
 ky
 ky
@@ -33127,11 +33120,11 @@ so
 so
 so
 so
-IY
-IY
-IY
-IY
-IY
+XQ
+XQ
+XQ
+XQ
+XQ
 ky
 ky
 ky
@@ -33319,13 +33312,13 @@ so
 so
 so
 so
-IY
-IY
-IY
-IY
-IY
-IY
-IY
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 ky
 ky
 so
@@ -33513,12 +33506,12 @@ so
 so
 so
 so
-IY
-IY
+XQ
+XQ
 Ga
 ky
-IY
-IY
+XQ
+XQ
 ky
 ky
 ky
@@ -33706,13 +33699,13 @@ so
 so
 so
 so
-IY
-IY
+XQ
+XQ
 ge
 ky
 ky
 ky
-IY
+XQ
 ky
 ky
 ky
@@ -33900,8 +33893,8 @@ so
 so
 so
 so
-IY
-IY
+XQ
+XQ
 Bz
 ky
 ky
@@ -34094,13 +34087,13 @@ so
 so
 so
 so
-IY
-IY
-IY
+XQ
+XQ
+XQ
 ky
 ky
-IY
-IY
+XQ
+XQ
 ky
 ky
 ky
@@ -34288,13 +34281,13 @@ XQ
 XQ
 XQ
 XQ
-IY
-IY
-IY
-IY
-IY
-IY
-IY
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 ky
 ky
 ky
@@ -34483,12 +34476,12 @@ XQ
 XQ
 XQ
 XQ
-IY
-IY
-IY
-IY
-IY
-IY
+XQ
+XQ
+XQ
+XQ
+XQ
+XQ
 ky
 ky
 ky
@@ -34679,9 +34672,9 @@ Dt
 Dt
 Dt
 Dt
-IY
-IY
-IY
+XQ
+XQ
+XQ
 ky
 ky
 ky
@@ -34711,9 +34704,9 @@ NC
 DA
 QM
 im
-Ax
-kr
-Lv
+EY
+EY
+oy
 QM
 XQ
 XQ
@@ -34873,9 +34866,9 @@ bu
 wn
 VT
 Dt
-IY
-IY
-IY
+XQ
+XQ
+XQ
 Qz
 zT
 Qz
@@ -34904,10 +34897,10 @@ JM
 SD
 wS
 QM
-Hh
-EY
-EY
-oy
+im
+Ax
+kr
+Lv
 QM
 so
 so
@@ -35067,9 +35060,9 @@ am
 td
 ws
 Dt
-IY
-IY
-IY
+XQ
+XQ
+XQ
 Qz
 ky
 Qz
@@ -35098,7 +35091,7 @@ kt
 KF
 KF
 QM
-EY
+Hh
 EY
 EY
 oy
