@@ -28,7 +28,7 @@
 /obj/spawner/window/Spawn()
 	if(spawn_grille)
 		new /obj/structure/grille(loc)
-	if(!full_window)
+	if(full_window)
 		new window_full_path(loc)
 	else
 		// spawn in dirs not in found dirs
