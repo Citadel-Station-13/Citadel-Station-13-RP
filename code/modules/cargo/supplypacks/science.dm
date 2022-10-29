@@ -94,14 +94,6 @@
 	container_type = /obj/structure/closet/crate
 	container_name = "Jukebox Circuit Board crate"
 
-/datum/supply_pack/sci/dune_buggy
-	name = "Exploration Dune Buggy"
-	contains = list(
-			/obj/vehicle_old/train/rover/engine/dunebuggy
-			)
-	cost = 100
-	container_type = /obj/structure/largecrate
-	container_name = "Exploration Dune Buggy Crate"
 
 /datum/supply_pack/sci/pred
 	name = "Dangerous Predator crate"

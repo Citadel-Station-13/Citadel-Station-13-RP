@@ -144,11 +144,19 @@
 	set name = "Remove Accessory"
 	set category = "Object"
 	set src in usr
-	if(!istype(usr, /mob/living)) return
-	if(usr.stat) return
+	if(!istype(usr, /mob/living))
+		return
+	if(usr.stat)
+		return
 	var/obj/item/clothing/accessory/A
-	if(LAZYLEN(accessories))
-		A = input("Select an accessory to remove from [src]") as null|anything in accessories
+	if(!LAZYLEN(accessories))
+		return
+	var/list/choices = list()
+	for(var/i in accessories)
+		choices[i] = i
+	A = show_radial_menu(usr, src, choices)
+	if(!usr || usr.stat || !(src in usr))
+		return
 	if(A)
 		remove_accessory(usr,A)
 	if(!LAZYLEN(accessories))

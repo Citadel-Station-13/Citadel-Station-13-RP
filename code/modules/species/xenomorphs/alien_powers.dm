@@ -135,11 +135,11 @@
 
 	if(spitting && incapacitated(INCAPACITATION_DISABLED))
 		to_chat(src, "You cannot spit in your current state.")
-		spitting = 0
+		spitting = FALSE
 		return
 	else if(spitting)
 		if(!check_alien_ability(20,0,O_ACID))
-			spitting = 0
+			spitting = FALSE
 			return
 		visible_message("<span class='warning'>[src] spits [spit_name] at \the [A]!</span>", "<span class='green'>You spit [spit_name] at \the [A].</span>")
 		var/obj/item/projectile/P = new spit_projectile(get_turf(src))
@@ -191,16 +191,16 @@
 
 	if(spitting)
 		to_chat(src, "<span class='green'>You stop preparing to spit.</span>")
-		spitting = 0
+		spitting = FALSE
 		return
 
 	if(!check_alien_ability(40,0,O_ACID))
-		spitting = 0
+		spitting = FALSE
 		return
 
 	else
 		last_spit = world.time
-		spitting = 1
+		spitting = TRUE
 		spit_projectile = /obj/item/projectile/energy/neurotoxin
 		spit_name = "neurotoxin"
 		to_chat(src, "<span class='green'>You prepare to spit neurotoxin.</span>")
@@ -212,21 +212,21 @@
 
 	if(spitting)
 		to_chat(src, "<span class='green'>You stop preparing to spit.</span>")
-		spitting = 0
+		spitting = FALSE
 		return
 
 	if(!check_alien_ability(50,0,O_ACID))
-		spitting = 0
+		spitting = FALSE
 		return
 
 	else
 		last_spit = world.time
-		spitting = 1
+		spitting = TRUE
 		spit_projectile = /obj/item/projectile/energy/acid
 		spit_name = "acid"
 		to_chat(src, "<span class='green'>You prepare to spit acid.</span>")
 
-/mob/living/carbon/human/proc/resin() // -- TLE
+/mob/living/carbon/human/proc/resin()
 	set name = "Secrete Resin (75)"
 	set desc = "Secrete tough malleable resin."
 	set category = "Abilities"

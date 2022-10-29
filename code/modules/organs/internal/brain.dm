@@ -20,6 +20,15 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	var/mob/living/carbon/brain/brainmob = null
 	var/can_assist = TRUE
 
+/obj/item/organ/internal/brain/Initialize(mapload, ...)
+	. = ..()
+	health = config_legacy.default_brain_health
+	addtimer(CALLBACK(src, .proc/clear_brainmob_hud), 15)
+
+/obj/item/organ/internal/brain/Destroy()
+	QDEL_NULL(brainmob)
+	return ..()
+
 /obj/item/organ/internal/brain/proc/can_assist()
 	return can_assist
 
@@ -63,18 +72,9 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 		tmp_owner.internal_organs_by_name[organ_tag] = new replace_path(tmp_owner, 1)
 		tmp_owner = null
 
-/obj/item/organ/internal/brain/Initialize(mapload, ...)
-	. = ..()
-	health = config_legacy.default_brain_health
-	addtimer(CALLBACK(src, .proc/clear_brainmob_hud), 15)
-
 /obj/item/organ/internal/brain/proc/clear_brainmob_hud()
 	if(brainmob && brainmob.client)
 		brainmob.client.screen.len = null //clear the hud
-
-/obj/item/organ/internal/brain/Destroy()
-	QDEL_NULL(brainmob)
-	return ..()
 
 /obj/item/organ/internal/brain/proc/transfer_identity(var/mob/living/carbon/H)
 

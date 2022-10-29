@@ -615,8 +615,8 @@ default behaviour is:
 /mob/living/proc/revive()
 	rejuvenate()
 
-	if(buckled)
-		buckled.unbuckle_mob()
+//	if(buckled)			// Throws an error when you try to rejuvinate someone riding a vehicle @ktoma36
+//		buckled.unbuckle_mob()
 
 	if(iscarbon(src))
 		var/mob/living/carbon/C = src

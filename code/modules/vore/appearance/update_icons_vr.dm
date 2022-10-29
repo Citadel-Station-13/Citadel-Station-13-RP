@@ -42,17 +42,22 @@ var/global/list/wing_icon_cache = list()
 		return horn_s
 	return null
 
-/mob/living/carbon/human/proc/get_tail_image()
+/mob/living/carbon/human/proc/get_tail_image(front)
 	//If you are FBP with tail style and didn't set a custom one
 	var/datum/robolimb/model = isSynthetic()
 	if(istype(model) && model.includes_tail && !tail_style)
 		var/icon/tail_s = new/icon("icon" = synthetic.icon, "icon_state" = "tail")
+		if(species.color_force_greyscale)
+			tail_s.MapColors(arglist(color_matrix_greyscale()))
 		tail_s.Blend(rgb(src.r_skin, src.g_skin, src.b_skin), species.color_mult ? ICON_MULTIPLY : ICON_ADD)
 		return image(tail_s)
 
 	//If you have a custom tail selected
 	if(tail_style && !(wear_suit && wear_suit.flags_inv & HIDETAIL && !isTaurTail(tail_style)))
-		var/icon/tail_s = new/icon("icon" = tail_style.icon, "icon_state" = wagging && tail_style.ani_state ? tail_style.ani_state : tail_style.icon_state)
+		var/base_state = wagging && tail_style.ani_state ? tail_style.ani_state : tail_style.icon_state
+		if(tail_style.front_behind_system)
+			base_state += front? "_FRONT" : "_BEHIND"
+		var/icon/tail_s = new/icon("icon" = tail_style.icon, "icon_state" = base_state)
 		if(tail_style.do_colouration)
 			tail_s.Blend(rgb(src.r_tail, src.g_tail, src.b_tail), tail_style.color_blend_mode)
 		if(tail_style.extra_overlay)

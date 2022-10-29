@@ -164,6 +164,7 @@
 /obj/structure/bed/chair/comfy/beige{
 	dir = 8
 	},
+/obj/landmark/spawnpoint/job/senior_researcher,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "alz" = (
@@ -2064,6 +2065,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 5
 	},
+/obj/landmark/spawnpoint/job/senior_researcher,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
 "bAo" = (
@@ -4922,6 +4924,7 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 9
 	},
+/obj/landmark/spawnpoint/job/senior_researcher,
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
 "dRF" = (
@@ -5053,6 +5056,18 @@
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/breakroom)
+"dUI" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/landmark/spawnpoint/job/head_nurse,
+/turf/simulated/floor/tiled/white,
+/area/medical/sleeper)
 "dUW" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 4
@@ -5537,6 +5552,18 @@
 /obj/structure/closet/l3closet/medical,
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
+"eqI" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/landmark/spawnpoint/job/head_nurse,
+/turf/simulated/floor/tiled/white,
+/area/medical/surgery)
 "esP" = (
 /obj/structure/railing{
 	dir = 4
@@ -5792,6 +5819,22 @@
 "eBE" = (
 /turf/simulated/wall,
 /area/crew_quarters/sleep/Dorm_2)
+"eBG" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/landmark/spawnpoint/job/head_nurse,
+/turf/simulated/floor/tiled/white,
+/area/medical/surgeryprep)
 "eBJ" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/glasses/goggles,
@@ -6431,6 +6474,7 @@
 /obj/structure/bed/chair/sofa/black{
 	dir = 4
 	},
+/obj/landmark/spawnpoint/job/senior_researcher,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "fce" = (
@@ -15086,6 +15130,7 @@
 	dir = 1
 	},
 /obj/structure/bed/chair/sofa/black/left,
+/obj/landmark/spawnpoint/job/senior_researcher,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "lyr" = (
@@ -21083,6 +21128,18 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/dormitory)
+"qey" = (
+/obj/effect/floor_decal/borderfloorwhite{
+	dir = 1
+	},
+/obj/effect/floor_decal/borderfloorwhite,
+/obj/effect/floor_decal/corner/paleblue/border{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/paleblue/border,
+/obj/landmark/spawnpoint/job/head_nurse,
+/turf/simulated/floor/tiled/white,
+/area/medical/surgery2)
 "qeC" = (
 /obj/structure/table/standard,
 /obj/effect/floor_decal/corner/paleblue{
@@ -28605,6 +28662,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
+/obj/landmark/spawnpoint/job/senior_researcher,
 /turf/simulated/floor/wood,
 /area/rnd/breakroom)
 "wjW" = (
@@ -40950,8 +41008,8 @@ uIZ
 uIZ
 uIZ
 uIZ
-uIZ
-uIZ
+tVG
+tVG
 oLJ
 oLJ
 oLJ
@@ -40959,9 +41017,9 @@ oLJ
 oLJ
 oLJ
 oLJ
-uIZ
-uIZ
-uIZ
+tVG
+tVG
+tVG
 uIZ
 uIZ
 uIZ
@@ -41144,7 +41202,7 @@ bBF
 bBF
 bBF
 uIZ
-uIZ
+tVG
 oLJ
 oLJ
 oLJ
@@ -41155,7 +41213,7 @@ pBj
 oLJ
 oLJ
 oLJ
-uIZ
+tVG
 uIZ
 uIZ
 uIZ
@@ -43459,13 +43517,13 @@ sLx
 pdw
 kiP
 sgl
-hNg
+qey
 xoa
 gMe
 lEN
 uFg
 eho
-ehd
+eqI
 fQp
 xcy
 eWC
@@ -45211,7 +45269,7 @@ aiL
 gcL
 tYs
 yjr
-wDr
+eBG
 peR
 uYp
 iML
@@ -45799,7 +45857,7 @@ hyg
 nwr
 xZq
 hzP
-luO
+dUI
 cmk
 xsE
 tuS

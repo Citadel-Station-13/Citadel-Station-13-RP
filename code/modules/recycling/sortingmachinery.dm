@@ -395,6 +395,8 @@
 		if(WEST)
 			if(AM.loc.x != src.loc.x-1) return
 
+//	if(istype(AM, has_buckled_mobs()) return // I dont know what im doing @ktoma36
+
 	if(istype(AM, /obj))
 		var/obj/O = AM
 		O.loc = src

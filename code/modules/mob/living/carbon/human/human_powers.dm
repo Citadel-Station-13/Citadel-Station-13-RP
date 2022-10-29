@@ -1,3 +1,4 @@
+//TODO: Organize these into a "abilities" folder.
 // These should all be procs, you can add them to humans/subspecies by species.dm's inherent_verbs
 
 /mob/living/carbon/human/proc/tie_hair()
@@ -415,3 +416,45 @@
 		to_chat(src, SPAN_NOTICE("You reconfigure the rendering order of your facial display."))
 
 	return TRUE
+
+/mob/living/carbon/human/proc/shadekin_get_energy()
+	var/datum/species/shadekin/SK = species
+
+	if(!istype(SK))
+		return FALSE
+
+	return SK.get_energy(src)
+
+/mob/living/carbon/human/proc/shadekin_get_max_energy()
+	var/datum/species/shadekin/SK = species
+
+	if(!istype(SK))
+		return FALSE
+
+	return SK.get_max_energy(src)
+
+/mob/living/carbon/human/proc/shadekin_set_energy(new_energy)
+	var/datum/species/shadekin/SK = species
+
+	if(!istype(SK))
+		return FALSE
+
+	SK.set_energy(src, new_energy)
+
+/mob/living/carbon/human/proc/shadekin_set_max_energy(new_max_energy)
+	var/datum/species/shadekin/SK = species
+
+	if(!istype(SK))
+		return FALSE
+
+	SK.set_max_energy(src, new_max_energy)
+
+/mob/living/carbon/human/proc/shadekin_adjust_energy(amount)
+	var/datum/species/shadekin/SK = species
+
+	if(!istype(SK))
+		return FALSE
+
+	if(amount > 0 || !(SK.check_infinite_energy(src)))
+		var/new_amount = SK.get_energy(src) + amount
+		SK.set_energy(src, new_amount)

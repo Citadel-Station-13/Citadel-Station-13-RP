@@ -343,8 +343,10 @@
 	else if(inhands? (worn_render_flags & WORN_RENDER_INHAND_ALLOW_DEFAULT) : (worn_render_flags & WORN_RENDER_SLOT_ALLOW_DEFAULT))
 		var/list/resolved = slot_meta.resolve_default_assets(bodytype, data[WORN_DATA_STATE], M, src, inhand_default_type)
 		if(!resolved && (bodytype != BODYTYPE_DEFAULT) && (bodytype & worn_bodytypes_fallback))
-			// attempt 2 - convert to default if specified to convert
-			resolved = slot_meta.resolve_default_assets(BODYTYPE_DEFAULT, data[WORN_DATA_STATE], M, src, inhand_default_type)
+			// attempt 2 - use fallback if available
+			if(!(slot_meta.handle_worn_fallback(bodytype, data)))
+				// attempt 3 - convert to default if specified to convert
+				resolved = slot_meta.resolve_default_assets(BODYTYPE_DEFAULT, data[WORN_DATA_STATE], M, src, inhand_default_type)
 		if(resolved)
 			data[WORN_DATA_ICON] = resolved[1]
 			data[WORN_DATA_SIZE_X] = resolved[2]
@@ -360,17 +362,17 @@
 			data[WORN_DATA_ICON] = inhand_icon
 			data[WORN_DATA_SIZE_X] = inhand_x_dimension
 			data[WORN_DATA_SIZE_Y] = inhand_y_dimension
-			data[WORN_DATA_STATE] = resolve_worn_state(inhands, slot_meta.render_key, bodytype)
+			data[WORN_DATA_STATE] = resolve_worn_state(inhands, (worn_render_flags & WORN_RENDER_SLOT_USE_PLURAL) ?(slot_meta.render_key_plural || slot_meta.render_key) : slot_meta.render_key, bodytype)
 		else if(!inhands && worn_icon)
 			data[WORN_DATA_ICON] = worn_icon
 			data[WORN_DATA_SIZE_X] = worn_x_dimension
 			data[WORN_DATA_SIZE_Y] = worn_y_dimension
-			data[WORN_DATA_STATE] = resolve_worn_state(inhands, slot_meta.render_key, bodytype)
+			data[WORN_DATA_STATE] = resolve_worn_state(inhands, (worn_render_flags & WORN_RENDER_SLOT_USE_PLURAL)? (slot_meta.render_key_plural || slot_meta.render_key) : slot_meta.render_key, bodytype)
 		else
 			data[WORN_DATA_ICON] = icon
 			data[WORN_DATA_SIZE_X] = icon_dimension_x
 			data[WORN_DATA_SIZE_Y] = icon_dimension_y
-			data[WORN_DATA_STATE] = resolve_worn_state(inhands, slot_meta.render_key, bodytype)
+			data[WORN_DATA_STATE] = resolve_worn_state(inhands, (worn_render_flags & WORN_RENDER_SLOT_USE_PLURAL)? (slot_meta.render_key_plural || slot_meta.render_key) : slot_meta.render_key, bodytype)
 
 	//? layer ; worn_layer --> slot defaults for the item in question
 	data[WORN_DATA_LAYER] = worn_layer_override || slot_meta.resolve_default_layer(bodytype, M, src)
@@ -385,6 +387,19 @@
 		data[WORN_DATA_STATE] = worn_state_override[slot_meta.id]
 
 	return data
+
+/obj/item/proc/debug_worn_assets(slot_or_id, mob/M = worn_mob(), bodytype)
+	var/mob/living/carbon/human/H = ishuman(M)? M : null
+	var/datum/inventory_slot_meta/slot_meta
+	if(isnull(slot_or_id))
+		slot_or_id = worn_slot
+	if(isnum(slot_or_id))
+		slot_meta = resolve_inventory_slot_meta((slot_or_id % 2)? /datum/inventory_slot_meta/abstract/hand/left : /datum/inventory_slot_meta/abstract/hand/right)
+	else
+		slot_meta = resolve_inventory_slot_meta(slot_or_id)
+	if(isnull(bodytype) && H)
+		bodytype = H.species.get_effective_bodytype(H, src, slot_meta)
+	return resolve_worn_assets(M, slot_meta, isnum(slot_or_id), bodytype)
 
 // todo: remove, aka get rid of fucking uniform _s state
 /obj/item/proc/resolve_legacy_state(mob/M, datum/inventory_slot_meta/slot_meta, inhands, bodytype)

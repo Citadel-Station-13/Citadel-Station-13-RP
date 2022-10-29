@@ -291,6 +291,8 @@
 		// check for slide
 		if(Adjacent(over) && user.CanSlideItem(src, over) && (istype(over, /obj/structure/table/rack) || istype(over, /obj/structure/table) || istype(over, /turf)))
 			var/turf/old = get_turf(src)
+			if(over == old)	// same tile don't bother
+				return CLICKCHAIN_DO_NOT_PROPAGATE
 			if(!Move(get_turf(over)))
 				return CLICKCHAIN_DO_NOT_PROPAGATE
 			//! todo: i want to strangle the mofo who did planes instead of invisibility, which makes it computationally infeasible to check ghost invisibility in get hearers in view
