@@ -200,6 +200,8 @@
 	dir = 1
 	},
 /obj/structure/lattice,
+/obj/machinery/atmospherics/pipe/zpipe/down/supply,
+/obj/machinery/atmospherics/pipe/zpipe/down/scrubbers,
 /turf/simulated/open,
 /area/rnd/outpost/maintenance)
 "cX" = (
@@ -228,9 +230,6 @@
 /turf/simulated/open/lythios43c,
 /area/rift/facility/interior/medical)
 "dg" = (
-/obj/structure/cable/green{
-	icon_state = "2-4"
-	},
 /obj/structure/cable/green{
 	icon_state = "0-10"
 	},
@@ -460,10 +459,10 @@
 /area/rift/facility/interior/workroom)
 "fx" = (
 /obj/structure/cable/green{
-	icon_state = "2-6"
+	icon_state = "4-5"
 	},
-/obj/machinery/light/small{
-	dir = 1
+/obj/structure/cable/green{
+	icon_state = "1-4"
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
@@ -537,11 +536,9 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/outpost/mining_main/outpost)
 "gw" = (
-/obj/structure/cable/green{
-	icon_state = "2-6"
-	},
-/turf/simulated/floor,
-/area/rnd/outpost/maintenance)
+/obj/machinery/crystal/lava,
+/turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
 "gx" = (
 /obj/structure/girder,
 /turf/simulated/floor/lythios43c/indoors,
@@ -650,9 +647,6 @@
 "hV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
-	},
-/obj/structure/cable/green{
-	icon_state = "8-10"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -1071,17 +1065,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "4-5"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-9"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/structure/cable/green{
-	icon_state = "8-10"
+	icon_state = "6-8"
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor,
@@ -1291,7 +1279,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/catwalk,
-/turf/simulated/wall,
+/turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "pN" = (
 /obj/machinery/door/airlock{
@@ -1308,10 +1296,7 @@
 /area/rift/facility/interior/command)
 "pV" = (
 /obj/structure/cable/green{
-	icon_state = "1-5"
-	},
-/obj/structure/cable/green{
-	icon_state = "5-9"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
@@ -1650,7 +1635,7 @@
 /obj/effect/map_effect/portal/line/side_b{
 	dir = 4
 	},
-/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
+/turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "tr" = (
 /obj/structure/transit_tube/high_velocity,
@@ -1822,12 +1807,6 @@
 "vV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "1-9"
-	},
-/obj/structure/cable/green{
-	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -2317,7 +2296,7 @@
 /area/rift/facility/interior/undergound1)
 "Bd" = (
 /obj/structure/cable/green{
-	icon_state = "1-9"
+	icon_state = "4-9"
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
@@ -2329,7 +2308,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock/maintenance/rnd,
 /obj/structure/catwalk,
-/turf/simulated/floor/tiled,
+/turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "Bt" = (
 /obj/structure/cable/green{
@@ -2837,6 +2816,12 @@
 	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
+"GN" = (
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor,
+/area/rnd/outpost/maintenance)
 "GQ" = (
 /obj/random/crystal/ice,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
@@ -3543,21 +3528,8 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "Qd" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
-	},
-/obj/structure/cable/green{
-	icon_state = "1-4"
-	},
-/obj/structure/cable/green{
-	icon_state = "2-6"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/catwalk,
-/turf/simulated/floor,
-/area/rnd/outpost/maintenance)
+/turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
+/area/rift/surfacebase/outside/west_caves)
 "Qe" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -3823,7 +3795,7 @@
 	name = "Caves to Cavern";
 	portal_id = "caves_to_Cavern1"
 	},
-/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
+/turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "ST" = (
 /turf/simulated/floor/tiled/steel/lythios43c,
@@ -3884,9 +3856,12 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "TH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
-	icon_state = "8-10"
+	icon_state = "9-10"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "TL" = (
@@ -4449,7 +4424,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "ZT" = (
-/turf/simulated/wall/solidrock,
+/turf/unsimulated/mineral/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "ZV" = (
 /obj/structure/railing{
@@ -23172,11 +23147,11 @@ wj
 tP
 tP
 tP
-tP
-Wn
-Wn
-Wn
-tP
+ZT
+Qd
+Qd
+Qd
+ZT
 tP
 tP
 tP
@@ -23366,12 +23341,12 @@ wj
 tP
 tP
 tP
-tP
-Wn
-Wn
-Wn
-tP
-tP
+ZT
+Qd
+Qd
+Qd
+ZT
+ZT
 tP
 tP
 tP
@@ -23560,12 +23535,12 @@ Sn
 tP
 tP
 tP
-tP
-Wn
-Wn
-Wn
-yM
-tP
+ZT
+Qd
+Qd
+Qd
+gw
+ZT
 tP
 tP
 JD
@@ -23754,13 +23729,13 @@ Sn
 JD
 JD
 tP
-tP
-Wn
-Wn
-Wn
-Wn
-tP
-tP
+ZT
+Qd
+Qd
+Qd
+Qd
+Qd
+Qd
 tP
 JD
 JD
@@ -23948,13 +23923,13 @@ Sn
 JD
 JD
 tP
-tP
-tP
-yM
-Wn
-Wn
-Wn
-tP
+ZT
+ZT
+gw
+Qd
+Qd
+Qd
+Qd
 ux
 ux
 ux
@@ -24143,10 +24118,10 @@ JD
 JD
 JD
 tP
-tP
-tP
-Wn
-Wn
+ZT
+Qd
+Qd
+Qd
 ux
 ux
 ux
@@ -24338,9 +24313,9 @@ JD
 JD
 tP
 tP
-tP
-tP
-Wn
+Qd
+Qd
+Qd
 ux
 ux
 ux
@@ -34859,8 +34834,8 @@ JM
 Ni
 Iq
 Iq
-gw
-Qd
+VL
+oj
 Bd
 oO
 be
@@ -35053,7 +35028,7 @@ is
 cp
 mp
 Iq
-fx
+QV
 vV
 pV
 oO
@@ -35249,8 +35224,8 @@ jP
 Iq
 dg
 no
-aG
-aG
+GN
+fx
 aG
 Bt
 VL
@@ -35441,9 +35416,9 @@ Fv
 nf
 mp
 Iq
-TH
+VL
 hV
-Wk
+TH
 Eb
 Wk
 Vl
