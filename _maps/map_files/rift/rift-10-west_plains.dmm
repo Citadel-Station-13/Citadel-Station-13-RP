@@ -1262,6 +1262,9 @@
 	frequency = 1379;
 	scrub_id = "sci_outpost_scrubber"
 	},
+/obj/machinery/light/small{
+	dir = 4
+	},
 /turf/simulated/floor/plating,
 /area/rnd/outpost/airlock)
 "gk" = (
@@ -5037,6 +5040,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
+/obj/structure/sign/department/toxins,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "xo" = (
@@ -5316,6 +5320,9 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
 	frequency = 1379;
 	scrub_id = "sci_outpost_scrubber"
+	},
+/obj/machinery/light/small{
+	dir = 8
 	},
 /turf/simulated/floor/plating,
 /area/rnd/outpost/airlock)
@@ -9665,6 +9672,9 @@
 	frequency = 1379;
 	scrub_id = "sci_outpost_scrubber"
 	},
+/obj/machinery/light/small{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/rnd/outpost/airlock)
 "TV" = (
@@ -10085,6 +10095,9 @@
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
 	frequency = 1379;
 	scrub_id = "sci_outpost_scrubber"
+	},
+/obj/machinery/light/small{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/rnd/outpost/airlock)
@@ -10660,6 +10673,13 @@
 /obj/random/maintenance/medical,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/exterior/shuttle)
+"YS" = (
+/obj/effect/overlay/snow/floor/surround_new{
+	dir = 8
+	},
+/obj/machinery/light/small,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "YT" = (
 /obj/effect/floor_decal/industrial/warning/corner,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -39748,7 +39768,7 @@ sv
 sv
 sv
 sv
-oo
+YS
 BO
 pL
 pL
@@ -40718,7 +40738,7 @@ lb
 lb
 sv
 lb
-lb
+fh
 Rb
 pL
 pL

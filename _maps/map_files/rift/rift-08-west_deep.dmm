@@ -302,7 +302,8 @@
 /area/rift/facility/interior/undergound2)
 "da" = (
 /obj/machinery/camera/network/research_outpost{
-	dir = 4
+	dir = 4;
+	network = list("Research Outpost","Command")
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/gateway)
@@ -632,6 +633,14 @@
 "hc" = (
 /obj/structure/stairs/spawner/north,
 /turf/simulated/floor/plating,
+/area/outpost/mining_main/outpost/near_gateway)
+"hg" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/machinery/camera/network/research_outpost{
+	dir = 4;
+	network = list("Research Outpost","Command")
+	},
+/turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost/near_gateway)
 "hi" = (
 /obj/structure/barricade/cutout/fluke,
@@ -1081,12 +1090,13 @@
 /area/rift/surfacebase/outside/west_deep)
 "kB" = (
 /obj/effect/floor_decal/techfloor/orange,
-/obj/machinery/camera/network/research_outpost{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
+	},
+/obj/machinery/camera/network/research_outpost{
+	dir = 1;
+	network = list("Research Outpost","Command")
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/gateway)
@@ -1206,11 +1216,12 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "lm" = (
-/obj/machinery/camera/network/research_outpost{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	icon_state = "6-9"
+	},
+/obj/machinery/camera/network/research_outpost{
+	dir = 4;
+	network = list("Research Outpost","Command")
 	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
@@ -1331,6 +1342,10 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/gateway)
+"mq" = (
+/obj/structure/sign/warning/secure_area,
+/turf/simulated/wall/r_wall,
+/area/gateway/prep_room)
 "mr" = (
 /obj/effect/overlay/snow/floor,
 /obj/random/obstruction,
@@ -2707,8 +2722,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
 "zr" = (
-/obj/machinery/camera/network/command{
-	dir = 10
+/obj/structure/table/reinforced,
+/obj/machinery/camera/network/research_outpost{
+	dir = 4;
+	network = list("Research Outpost","Command")
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost/near_gateway)
@@ -4675,7 +4692,8 @@
 	dir = 4
 	},
 /obj/machinery/camera/network/research_outpost{
-	dir = 1
+	dir = 1;
+	network = list("Research Outpost","Command")
 	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
@@ -5138,7 +5156,8 @@
 /area/outpost/mining_main/outpost/recreation)
 "Yh" = (
 /obj/machinery/camera/network/research_outpost{
-	dir = 4
+	dir = 4;
+	network = list("Research Outpost","Command")
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/underground)
@@ -35727,7 +35746,7 @@ kt
 kt
 Yo
 Ri
-ad
+mq
 FW
 Nl
 ad
@@ -36104,11 +36123,11 @@ JY
 JY
 gE
 yU
-yU
+zr
 yU
 yU
 OP
-ku
+hg
 ku
 ad
 AW
@@ -36303,7 +36322,7 @@ BO
 qB
 PQ
 PQ
-zr
+VN
 ad
 xt
 TW
@@ -36508,7 +36527,7 @@ TF
 qA
 yK
 YL
-ad
+mq
 im
 La
 QM
@@ -36691,7 +36710,7 @@ BO
 JI
 PQ
 PQ
-nS
+VN
 Wq
 IJ
 At
@@ -36885,7 +36904,7 @@ yU
 yU
 dT
 VN
-VN
+nS
 ad
 yV
 Wt
@@ -36896,7 +36915,7 @@ Ck
 Ym
 Wm
 Ty
-ad
+mq
 EY
 EY
 QM
