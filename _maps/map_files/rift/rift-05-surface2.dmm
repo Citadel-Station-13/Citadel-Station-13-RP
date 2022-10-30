@@ -22196,9 +22196,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
 "qic" = (
-/obj/machinery/station_map,
-/turf/simulated/wall,
-/area/crew_quarters/pool/changing_room)
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/crew_quarters/recreation_area)
 "qiJ" = (
 /obj/structure/grille,
 /obj/structure/foamedmetal,
@@ -29214,12 +29216,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
-"vFL" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
-/area/crew_quarters/recreation_area)
 "vFO" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -56712,7 +56708,7 @@ neO
 xUy
 neO
 xKj
-qic
+neO
 awd
 ljh
 qzW
@@ -59415,12 +59411,12 @@ pBj
 pBj
 iQr
 iQr
-vFL
+qic
 mhd
-vFL
-vFL
+qic
+qic
 iQr
-vFL
+qic
 iQr
 rIr
 wFM
@@ -59615,7 +59611,7 @@ xTw
 wxq
 qCM
 gza
-vFL
+qic
 xdU
 raF
 rEO
