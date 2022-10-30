@@ -6644,13 +6644,13 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay_primary_storage)
 "eWD" = (
-/obj/effect/mist,
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
+/obj/effect/mist,
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/sauna)
 "eWR" = (
@@ -7588,14 +7588,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
-"fzI" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/railing,
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/security/upper)
 "fzK" = (
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 1
@@ -7639,12 +7631,6 @@
 /obj/structure/grille,
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
-"fBi" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/white,
-/area/crew_quarters/pool/changing_room)
 "fBD" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 9
@@ -9295,15 +9281,14 @@
 /area/maintenance/asmaint2)
 "gCx" = (
 /obj/structure/table/bench/wooden,
-/obj/effect/mist,
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
+/obj/machinery/button/windowtint{
+	pixel_y = 30;
+	id = "sauna"
 	},
 /obj/structure/cable/green{
-	dir = 1
+	icon_state = "2-8"
 	},
+/obj/effect/mist,
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/sauna)
 "gCz" = (
@@ -11844,14 +11829,18 @@
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},
-/obj/effect/mist,
-/obj/machinery/button/windowtint{
-	id = "sauna";
-	pixel_x = -22
-	},
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/machinery/power/apc{
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/obj/effect/mist,
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/sauna)
 "iyu" = (
@@ -12815,12 +12804,6 @@
 	},
 /turf/simulated/floor/tiled/red,
 /area/security/observation)
-"jjT" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/rift/surfacebase/outside/outside2)
 "jlp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -22181,6 +22164,12 @@
 /obj/structure/foamedmetal,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
+"qiL" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/pool/changing_room)
 "qiU" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -23902,6 +23891,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
+"rAU" = (
+/obj/structure/railing,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/upper)
 "rBj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -25534,13 +25530,13 @@
 /turf/simulated/floor/wood,
 /area/security/breakroom)
 "sWC" = (
-/obj/effect/mist,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
+/obj/effect/mist,
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/sauna)
 "sXG" = (
@@ -26160,6 +26156,14 @@
 "tui" = (
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
+"tup" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/upper)
 "tuS" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -26185,6 +26189,12 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"twV" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/mineral/icerock/lythios43c,
+/area/rift/surfacebase/outside/outside2)
 "twZ" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
@@ -26561,13 +26571,6 @@
 	},
 /turf/simulated/floor/carpet,
 /area/security/warden)
-"tHF" = (
-/obj/structure/railing,
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/security/upper)
 "tHP" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/steeldecal/steel_decals5{
@@ -29199,10 +29202,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "vFL" = (
-/obj/machinery/light{
-	dir = 1
+/obj/machinery/light/small{
+	dir = 8
 	},
-/turf/simulated/mineral/icerock/lythios43c,
+/turf/simulated/floor/tiled/techfloor,
 /area/rift/surfacebase/outside/outside2)
 "vFO" = (
 /obj/effect/floor_decal/borderfloorwhite,
@@ -54916,7 +54919,7 @@ pBj
 pBj
 pBj
 fwK
-tHF
+rAU
 sAv
 vyi
 vyi
@@ -55720,7 +55723,7 @@ rTc
 oGg
 snQ
 xuZ
-fBi
+qiL
 fDk
 neO
 jOw
@@ -56283,7 +56286,7 @@ pBj
 pBj
 fwK
 teH
-fzI
+tup
 lMt
 kBE
 fwK
@@ -59984,7 +59987,7 @@ qyH
 dOd
 aJG
 iQr
-jjT
+vFL
 kyH
 krG
 kyH
@@ -63664,7 +63667,7 @@ pBj
 pBj
 pBj
 pBj
-vFL
+twV
 pBj
 pBj
 pBj
