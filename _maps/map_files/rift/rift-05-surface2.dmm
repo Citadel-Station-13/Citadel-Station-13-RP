@@ -16854,7 +16854,7 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
-/area/crew_quarters/pool)
+/area/crew_quarters/recreation_area)
 "mhS" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -29215,11 +29215,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "vFL" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/mineral/icerock/lythios43c,
-/area/rift/surfacebase/outside/outside2)
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/crew_quarters/recreation_area)
 "vFO" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -59413,15 +59413,15 @@ pBj
 pBj
 pBj
 pBj
-pVv
-pVv
-xNj
+iQr
+iQr
+vFL
 mhd
-xNj
-xNj
-pVv
-xNj
-pVv
+vFL
+vFL
+iQr
+vFL
+iQr
 rIr
 wFM
 wFM
@@ -59607,7 +59607,7 @@ pBj
 pBj
 pBj
 pBj
-pVv
+pBj
 iQr
 oQY
 lrw
@@ -59615,7 +59615,7 @@ xTw
 wxq
 qCM
 gza
-xNj
+vFL
 xdU
 raF
 rEO
@@ -59809,7 +59809,7 @@ qxp
 gUb
 dOd
 qBv
-pVv
+iQr
 pVv
 pVv
 pVv
@@ -63684,7 +63684,7 @@ pBj
 pBj
 pBj
 pBj
-vFL
+pBj
 pBj
 pBj
 pBj
