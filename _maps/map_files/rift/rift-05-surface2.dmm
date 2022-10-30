@@ -31276,6 +31276,10 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
+/obj/machinery/light_switch{
+	pixel_x = -6;
+	pixel_y = -26
+	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/showers)
 "xgN" = (
