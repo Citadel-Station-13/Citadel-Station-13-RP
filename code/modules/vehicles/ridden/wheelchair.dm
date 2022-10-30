@@ -3,6 +3,7 @@
 	desc = "You sit in this. Either by will or force."
 	icon = 'icons/obj/furniture.dmi'		//Todo, move icon for wheelchair shit into their own folder
 	icon_state = "wheelchair"
+	overlays = list ("w_overlay")
 	integrity = 50
 	max_integrity = 50
 	riding_handler_type = /datum/component/riding_handler/vehicle/ridden/wheelchair
@@ -10,12 +11,14 @@
 /obj/vehicle/ridden/wheelchair/update_icon()
 	..()
 	overlays.Cut()
-	var/image/O = image(icon = 'icons/obj/furniture.dmi', icon_state = "w_overlay", layer = src.layer + 1)
-	overlays += O
+	add_overlay(image(icon = 'icons/obj/furniture.dmi', icon_state = "w_overlay", layer = src.layer + 2))
+//	var/image/O = image(icon = 'icons/obj/furniture.dmi', icon_state = "w_overlay", layer = src.layer + 1)
+//	overlays += O
 	return
 
 
 /datum/component/riding_handler/vehicle/ridden/wheelchair
+	var/movement_inhibited
 	vehicle_move_delay = 2
 	allowed_turf_types = list(
 		/turf/simulated,
@@ -34,11 +37,40 @@
 	)
 	rider_offset_format = CF_RIDING_OFFSETS_ENUMERATED
 	rider_check_flags = list(CF_RIDING_CHECK_RESTRAINED,
-	CF_RIDING_CHECK_INCAPACITATED,
 	CF_RIDING_CHECK_UNCONSCIOUS
 	)
+
 	riding_handler_flags = list(CF_RIDING_HANDLER_ALLOW_BORDER,
 	CF_RIDING_HANDLER_IS_CONTROLLABLE)
+
+/datum/component/riding_handler/vehicle/ridden/wheelchair/ride_check(mob/M)
+	var/atom/movable/AM = parent
+	if(!check_rider(M, AM.buckled_mobs[M]))
+		movement_inhibited = TRUE
+	else
+		movement_inhibited = FALSE
+
+
+/datum/component/riding_handler/vehicle/ridden/wheelchair/update_riders_on_move(atom/old_loc, dir)
+	var/atom/movable/AM = parent
+	// first check ridden mob
+	if(!check_ridden(parent, TRUE))
+		// kick everyone off
+		for(var/mob/M as anything in AM.buckled_mobs)
+		return
+	for(var/mob/M as anything in AM.buckled_mobs)
+		if(!check_rider(M, AM.buckled_mobs[M], TRUE))
+			continue	// don't do rest of logic
+
+
+/datum/component/riding_handler/vehicle/ridden/wheelchair/signal_hook_handle_move(atom/movable/source, atom/old_loc, dir)
+	if(movement_inhibited == TRUE)
+		return
+	else
+		update_riders_on_move(old_loc, dir)
+		SIGNAL_HANDLER
+		last_turf = isturf(old_loc)? old_loc : null
+
 
 
 
@@ -59,7 +91,7 @@
 		R.color = src.color
 		qdel(src)
 
-/obj/vehicle/ridden/wheelchair/OnMouseDropLegacy(over_object, src_location, over_location)
+/obj/vehicle/ridden/wheelchair/OnMouseDrop(over_object, src_location, over_location)
 	..()
 	if((over_object == usr && (in_range(src, usr) || usr.contents.Find(src))))
 		if(!ishuman(usr))	return
