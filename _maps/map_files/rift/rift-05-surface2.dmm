@@ -16,6 +16,11 @@
 	dir = 8;
 	light_range = 12
 	},
+/obj/machinery/light_switch{
+	dir = 8;
+	pixel_x = -24;
+	pixel_y = 6
+	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/pool/changing_room)
 "aaW" = (
@@ -138,6 +143,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/maintenance/locker)
+"ahQ" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rift/surfacebase/outside/outside2)
 "aiL" = (
 /turf/simulated/wall,
 /area/crew_quarters/medbreak/surgery)
@@ -2020,6 +2031,12 @@
 	},
 /turf/simulated/floor/carpet,
 /area/security/warden)
+"bsX" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/white,
+/area/crew_quarters/pool/changing_room)
 "btA" = (
 /obj/structure/flora/pottedplant/stoutbush,
 /obj/effect/floor_decal/borderfloor{
@@ -5325,6 +5342,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/camera/network/civilian{
 	dir = 8
+	},
+/obj/machinery/light_switch{
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
@@ -9283,12 +9303,17 @@
 /obj/structure/table/bench/wooden,
 /obj/machinery/button/windowtint{
 	pixel_y = 30;
-	id = "sauna"
+	id = "sauna";
+	pixel_x = 5
 	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
 /obj/effect/mist,
+/obj/machinery/light_switch{
+	pixel_x = -4;
+	pixel_y = 30
+	},
 /turf/simulated/floor/wood,
 /area/triumph/surfacebase/sauna)
 "gCz" = (
@@ -13909,6 +13934,14 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/resleeving)
+"kcC" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/upper)
 "kcQ" = (
 /obj/structure/table,
 /obj/random/maintenance/clean,
@@ -18593,6 +18626,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/locker)
+"nzK" = (
+/obj/structure/railing,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/security/upper)
 "nzZ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -22164,12 +22204,6 @@
 /obj/structure/foamedmetal,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
-"qiL" = (
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/white,
-/area/crew_quarters/pool/changing_room)
 "qiU" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -23891,13 +23925,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
-"rAU" = (
-/obj/structure/railing,
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/security/upper)
 "rBj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/effect/floor_decal/borderfloorwhite{
@@ -26156,14 +26183,6 @@
 "tui" = (
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
-"tup" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/railing,
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/security/upper)
 "tuS" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
@@ -26189,12 +26208,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
-"twV" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/mineral/icerock/lythios43c,
-/area/rift/surfacebase/outside/outside2)
 "twZ" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 5
@@ -29202,10 +29215,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "vFL" = (
-/obj/machinery/light/small{
-	dir = 8
+/obj/machinery/light{
+	dir = 1
 	},
-/turf/simulated/floor/tiled/techfloor,
+/turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/outside2)
 "vFO" = (
 /obj/effect/floor_decal/borderfloorwhite,
@@ -31555,7 +31568,7 @@
 /area/crew_quarters/sleep/Dorm_5)
 "xtR" = (
 /obj/structure/cable/green{
-	icon_state = "4-8"
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/pool/changing_room)
@@ -54919,7 +54932,7 @@ pBj
 pBj
 pBj
 fwK
-rAU
+nzK
 sAv
 vyi
 vyi
@@ -55723,7 +55736,7 @@ rTc
 oGg
 snQ
 xuZ
-qiL
+xtR
 fDk
 neO
 jOw
@@ -55916,7 +55929,7 @@ bVr
 dGc
 oGg
 snQ
-xtR
+bsX
 jVT
 jVT
 neO
@@ -56110,7 +56123,7 @@ pNJ
 fwK
 oGg
 snQ
-xtR
+bsX
 csj
 nUp
 neO
@@ -56286,7 +56299,7 @@ pBj
 pBj
 fwK
 teH
-tup
+kcC
 lMt
 kBE
 fwK
@@ -59987,7 +60000,7 @@ qyH
 dOd
 aJG
 iQr
-vFL
+ahQ
 kyH
 krG
 kyH
@@ -63667,7 +63680,7 @@ pBj
 pBj
 pBj
 pBj
-twV
+vFL
 pBj
 pBj
 pBj
