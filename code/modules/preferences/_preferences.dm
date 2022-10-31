@@ -234,6 +234,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 /datum/preferences/proc/Initialize()
 	// todo: refactor
 	player_setup = new(src)
+	tim_sort(preference_by_key, /proc/cmp_preference_load_order, TRUE)
+	tim_sort(preference_by_type, /proc/cmp_preference_load_order, TRUE)
 	// set defaults before load
 	default_everything()
 

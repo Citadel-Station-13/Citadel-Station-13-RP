@@ -103,9 +103,9 @@
 	S["slot_[slot]"] >> transformed
 	if(!islist(transformed))
 		transformed = list()
-	#warn respect load order
-	for(var/key in transformed)
-		var/datum/category_item/player_setup_item/I = preference_by_save_key(key)
+	//! warning: missing keys are automatically dropped.
+	for(var/key in preference_by_key)
+		var/datum/category_item/player_setup_item/I = preference_by_key[key]
 		if(I.is_global)
 			continue
 		character[key] = I.filter(src, I.deserialize_data(src, transformed[key], errors), errors)
@@ -122,12 +122,12 @@
 	S["global"] >> transformed
 	if(!islist(transformed))
 		transformed = list()
-	#warn respect load order
-	for(var/key in transformed)
-		var/datum/category_item/player_setup_item/I = preference_by_save_key(key)
+	//! warning: missing keys are automatically dropped.
+	for(var/key in preference_by_key)
+		var/datum/category_item/player_setup_item/I = preference_by_key[key]
 		if(!I.is_global)
 			continue
-		options[key] = I.filter(src, I.deserialize_data(src, transformed[key], errors), errors)
+		character[key] = I.filter(src, I.deserialize_data(src, transformed[key], errors), errors)
 	S.cd = old_cd
 
 /**
@@ -161,13 +161,13 @@
 	else
 		return character[preference.save_key] = preference.filter(character[preference.save_key])
 
-#warn below needs to respect load order
 /**
  * resanitize everything
  */
 /datum/preferences/proc/sanitize_everything(list/errors)
-	for(var/datum/category_group/player_setup_category/category in player_setup.categories)
-		category.sanitize_data(src, errors)
+	for(var/key in preference_by_key)
+		var/datum/category_item/player_setup_item/I = preference_by_key[key]
+		I.sanitize_data(src, errors)
 
 /datum/preferences/proc/sanitize_character(list/errors)
 	for(var/key in preference_by_key)
@@ -186,8 +186,27 @@
 /**
  * default everything that has save keys
  */
-/datum/preferences/proc/default_everything()
-	#warn impl because load orders are a bitch
+/datum/preferences/proc/reset_everything_to_default()
+	for(var/key in preference_by_key)
+		var/datum/category_item/player_setup_item/I = preference_by_key[key]
+		if(I.is_global)
+			set_global_data(key, I.informed_default_value(src))
+		else
+			set_character_data(key, I.informed_default_value(src))
+
+/datum/preferences/proc/reset_character_to_default()
+	for(var/key in preference_by_key)
+		var/datum/category_item/player_setup_item/I = preference_by_key[key]
+		if(I.is_global)
+			continue
+		set_character_data(key, I.informed_default_value(src))
+
+/datum/preferences/proc/reset_options_to_default()
+	for(var/key in preference_by_key)
+		var/datum/category_item/player_setup_item/I = preference_by_key[key]
+		if(!I.is_global)
+			continue
+		set_global_data(key, I.informed_default_value(src))
 
 /**
  * json export
@@ -207,10 +226,19 @@
 		json = safe_json_decode(json)
 	if(!islist(json))
 		return FALSE
-	for(var/key in json)
+	var/list/parsed = list()
+	for(var/key in preference_by_key)
+		if(!json[key])
+			continue
 		var/datum/category_item/player_setup_item/I = preference_by_key[key]
 		if(!I)
-			errors += SPAN_WARNING("Skipping key [key] - no datum found")
+			continue
+		parsed += key
+		if(I.is_global)
+			errors?.Add("Skipping key [key] - was global")
 			continue
 		character[key] = I.filter(src, I.deserialize_data(src, json[key], errors), errors)
+	var/list/skipped = json - parsed
+	for(var/key in skipped)
+		errors?.Add("Skipping key [key] - no datum found.")
 	return TRUE
