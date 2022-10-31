@@ -37,7 +37,7 @@
 
 /obj/structure/inflatable/Initialize(mapload)
 	. = ..()
-	update_nearby_tiles(need_rebuild=1)
+	update_nearby_tiles()
 
 /obj/structure/inflatable/Destroy()
 	update_nearby_tiles()

@@ -4,6 +4,10 @@
 	CanAtmosPassVertical = ATMOS_PASS_PROC
 	/// our air mixture, if any - this refers **just** to ours, not our zone.
 	var/datum/gas_mixture/air
+#ifdef ZAS_BREAKPOINT_HOOKS
+	/// verbosity for zas debugging
+	var/zas_verbose = FALSE
+#endif
 
 /**
  * semantically means "we can pass to them", not "they can pass to us"
