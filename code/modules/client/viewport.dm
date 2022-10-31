@@ -9,17 +9,6 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64, 72, 96, 128))
 	var/last_view_x_dim = 7
 	var/last_view_y_dim = 7
 
-/* /client/verb/dynamic_pref_update()
-	if(!winget(src, "menu.reset", "is-checked"))
-		winset(src, "menu.reset", "is-checked=true")
-		prefs.widescreenpref = FALSE
-		change_view(world.view)
-	if(winget(src, "menu.reset", "is-checked"))
-		winset(src, "menu.reset", "is-checked=false")
-		prefs.widescreenpref = TRUE
-		SetWindowIconSize(winget(src, "mapwindow.map", "icon-size") || prefs.icon_size)
-
-	SScharacter_setup.queue_preferences_save(prefs) */
 
 /client/verb/SetCozyViewInwards(val as num|text)
 	set hidden = 1
