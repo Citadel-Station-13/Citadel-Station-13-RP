@@ -5,8 +5,10 @@
  */
 
 //! ## /x_act Signals.
-/// From the [EX_ACT] wrapper macro: (severity, target)
-////#define COMSIG_ATOM_EX_ACT "atom_ex_act"
+/// from base of atom/ex_act: (power, dir, wave datum)
+#define COMSIG_ATOM_EX_ACT "atom_ex_act"
+/// From the [LEGACY_EX_ACT] wrapper macro: (severity, target)
+////#define COMSIG_ATOM_LEGACY_EX_ACT "atom_legacy_ex_act"
 /// From base of atom/emp_act(): (severity)
 ////#define COMSIG_ATOM_EMP_ACT "atom_emp_act"
 /// From base of atom/fire_act(): (exposed_temperature, exposed_volume)

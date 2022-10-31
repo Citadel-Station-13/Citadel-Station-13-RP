@@ -38,30 +38,10 @@
 		else
 			CRASH("Invalid wave spread [wave_spread].")
 
-/datum/automata/wave/tick()
-	// remove old acting
-	cleanup_turfs_acting()
-	// cache for sanic speed
-	var/list/turf/edges = src.edges
-	var/list/turf/powers = src.powers
-	var/list/turf/last = src.last
-	// current vars - turf, power, dir
-	var/turf/_T
-	var/_P
-	var/_D
-	// next edges, powers
-	var/list/turf/edges_next = list()
-	var/list/turf/powers_next = list()
-	// current vars - returned
-	var/_ret
-	// current vars - expansions
-	var/turf/_expand
-	var/_ND
-	// current vars - track returned per turf too
-	var/list/turf/returned = list()
-
+//! Evil defines here
 // usually i wouldn't bother documenting forbidden defines but
 // just incase someone needs to debug/read later
+//! Shared
 /**
  * base run for current turf
  */
@@ -77,7 +57,8 @@
 	if(_ret < power_considered_dead){			\
 		continue;								\
 	}
-// FOR MINIMAL
+
+//! For spread: minimal
 /**
  * simple expand: really simple, take dir, set next turf in edges next, set power, etc
  *
@@ -87,13 +68,14 @@
  * P - power to set expanded turf to
  */
 #define SIMPLE_EXPAND(T, D, P)	_expand = get_step(T, D); edges_next[_expand] = D; powers_next[_expand] = P;
-// FOR SHADOWCAST
+
+//! For spread: shadowcast
 /**
  * shadowcast helper
  * expands a turf's dirs to edges next
  *
  * params:
- * T, D, P - ditto, thuogh D is direction_BIT and not byond direction defines
+ * T, D, P - ditto, though D is direction_BIT and not byond direction defines
  * CD - dir to check.
  * RD - real byond dir, used for the get_step since we use direction bits now
  */
@@ -113,7 +95,8 @@
 		edges_next[_expand] |= PD;										\
 		powers_next[_expand] = max(powers_next[_expand], P);			\
 	}
-// FOR SHOCKWAVE
+
+//! For spread: shockwave
 /**
  * runs a specific cardinal
  */
@@ -187,14 +170,41 @@
 		SHOCKWAVE_DIAGONAL_MARK_SUBSTEP(T, D, (((ED & NORTH) << 2) | ((ED & SOUTH) << 2) | ((ED & EAST) >> 1) | ((ED & WEST) >> 3)), OP, RP);	\
 		SHOCKWAVE_DIAGONAL_MARK_SUBSTEP(T, D, (((ED & NORTH) << 3) | ((ED & SOUTH) << 1) | ((ED & EAST) >> 2) | ((ED & WEST) >> 2)), OP, RP);	\
 	}
+//! Evil defines end
 
+/datum/automata/wave/tick()
+	// remove old acting
+	cleanup_turfs_acting()
+	// cache for sanic speed
+	var/list/turf/edges = src.edges
+	var/list/turf/powers = src.powers
+	var/list/turf/last = src.last
+	// current vars - turf, power, dir
+	var/turf/_T
+	var/_P
+	var/_D
+	// next edges, powers
+	var/list/turf/edges_next = list()
+	var/list/turf/powers_next = list()
+	// current vars - returned
+	var/_ret
+	// current vars - expansions
+	var/turf/_expand
+	var/_ND
+	// current vars - track returned per turf too
+	var/list/turf/returned = list()
 	switch(wave_spread)
 		if(WAVE_SPREAD_MINIMAL)
 			// minimal - very little simulation, just go
 			// we act on current turf in edges
 			// we don't use dir bits here
 
-			// we so not check last list
+			// propagation:
+			// cardinals propagate in their dir
+			// diagonals propagate in their dir as well as cardinals
+			// corner-clipping can happen, but is minimal
+
+			// we do not check last list
 			// because we ""know"" we're going in a linear circular spread
 
 			// first check first step
@@ -226,9 +236,11 @@
 
 		if(WAVE_SPREAD_SHADOW_LIKE)
 			// preliminary attempt:
-			// propagate cardinals forwards with a cardinal and 45 deg diagonals
-			// propagate diagonals forwards with 45 deg cardinals only
-			// this prevents corner clipping
+
+			// propagation:
+			// cardinals propagate with a cardinal and 45 deg diagonals
+			// diagonals propagate with 45 deg cardinals only
+			// corner-clipping can happen, but is minimal
 
 			// we do not check last here either because we can't bend around
 			// to save some list lookups

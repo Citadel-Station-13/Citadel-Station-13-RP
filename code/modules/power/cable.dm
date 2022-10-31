@@ -273,7 +273,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	return 0
 
 //explosion handling
-/obj/structure/cable/ex_act(severity)
+/obj/structure/cable/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)

@@ -135,7 +135,7 @@
 	return
 
 
-/obj/structure/window/ex_act(severity)
+/obj/structure/window/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)

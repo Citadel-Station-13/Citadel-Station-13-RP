@@ -100,9 +100,9 @@
 				for(var/atom/movable/AM as anything in T.contents)	//bypass type checking since only atom/movable can be contained by turfs anyway
 					if(AM.flags & ATOM_ABSTRACT)
 						continue
-					AM.ex_act(dist)
+					AM.legacy_ex_act(dist)
 
-				T.ex_act(dist)
+				T.legacy_ex_act(dist)
 
 		var/took = (world.timeofday-start)/10
 		//You need to press the DebugGame verb to see these now....they were getting annoying and we've collected a fair bit of data. Just -test- changes  to explosion code using this please so we can compare
@@ -123,4 +123,4 @@
 
 /proc/secondaryexplosion(turf/epicenter, range)
 	for(var/turf/tile in range(range, epicenter))
-		tile.ex_act(2)
+		LEGACY_EX_ACT(tile, 2, null)

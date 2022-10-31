@@ -36,7 +36,7 @@
 			if(X && !istype(X, /mob/living/carbon/human))
 				if(break_windows && istype(X, /obj/structure/window)) //shatter windows
 					var/obj/structure/window/W = X
-					W.ex_act(2.0)
+					W.legacy_ex_act(2.0)
 
 				if(istype(X, /obj))
 					var/obj/O = X

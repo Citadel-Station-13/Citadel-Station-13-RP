@@ -111,7 +111,7 @@
 	if(species)
 		species.Stat(src)
 
-/mob/living/carbon/human/ex_act(severity)
+/mob/living/carbon/human/legacy_ex_act(severity)
 	if(!blinded)
 		flash_eyes()
 

@@ -121,7 +121,7 @@
 	//Some plants eat through plating.
 	if(islist(seed.chems) && !isnull(seed.chems["pacid"]))
 		var/turf/T = get_turf(src)
-		T.ex_act(prob(80) ? 3 : 2)
+		T.legacy_ex_act(prob(80) ? 3 : 2)
 
 /obj/effect/plant/update_icon()
 	//TODO: should really be caching this.
@@ -274,7 +274,7 @@
 		health -= aggression*5
 		check_health()
 
-/obj/effect/plant/ex_act(severity)
+/obj/effect/plant/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			die_off()

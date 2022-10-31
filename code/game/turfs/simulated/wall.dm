@@ -214,7 +214,7 @@
 			O.forceMove(src)
 	ScrapeAway()
 
-/turf/simulated/wall/ex_act(severity)
+/turf/simulated/wall/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			if(girder_material.explosion_resistance >= 25 && prob(girder_material.explosion_resistance))

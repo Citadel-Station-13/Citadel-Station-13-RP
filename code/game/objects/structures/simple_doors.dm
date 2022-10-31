@@ -179,7 +179,7 @@
 	visible_message("<span class='danger'>The [src] is destroyed!</span>")
 	qdel(src)
 
-/obj/structure/simple_door/ex_act(severity = 1)
+/obj/structure/simple_door/legacy_ex_act(severity = 1)
 	switch(severity)
 		if(1)
 			Dismantle(1)

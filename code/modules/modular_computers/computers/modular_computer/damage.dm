@@ -37,7 +37,7 @@
  * Stronger explosions cause serious damage to internal components
  * Minor explosions are mostly mitigitated by casing.
  */
-/obj/item/modular_computer/ex_act(severity)
+/obj/item/modular_computer/legacy_ex_act(severity)
 	take_damage(rand(100,200) / severity, 30 / severity)
 
 /// EMPs are similar to explosions, but don't cause physical damage to the casing. Instead they screw up the components
