@@ -1,5 +1,6 @@
 /datum/lore/character_background/origin/hegemony/unathi
  	abstract_type = /datum/lore/character_background/origin/hegemony/unathi
+
 /datum/lore/character_background/origin/hegemony/unathi/zaddatcolony
 	name = "Zaddat Colony"
 	id = "zaddatcolony"
