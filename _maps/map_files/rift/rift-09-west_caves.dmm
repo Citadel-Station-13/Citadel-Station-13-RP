@@ -1548,6 +1548,9 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "rA" = (
@@ -1572,14 +1575,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/airlock/three)
-"rI" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/cable/green{
-	icon_state = "1-6"
-	},
-/turf/simulated/floor,
-/area/rnd/outpost/maintenance)
 "rK" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -1680,10 +1675,10 @@
 /area/outpost/mining_main/outpost)
 "tb" = (
 /obj/structure/cable/green{
-	icon_state = "4-8"
+	icon_state = "1-4"
 	},
-/turf/simulated/floor/tiled/white,
-/area/outpost/mining_main/outpost/washrooms)
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/outpost)
 "tg" = (
 /obj/effect/map_effect/portal/line/side_b{
 	dir = 4
@@ -2374,15 +2369,8 @@
 "Be" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/airlock/maintenance/rnd{
-	name = "Science Outpost Maintenance";
-	req_one_access = list(10,47)
-	},
 /obj/structure/cable/green{
 	icon_state = "1-6"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
@@ -2692,11 +2680,13 @@
 /turf/simulated/open,
 /area/rift/exterior/mineshaft)
 "Ee" = (
-/obj/structure/cable/green{
-	icon_state = "2-8"
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/light/small{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/white,
-/area/outpost/mining_main/outpost/washrooms)
+/turf/simulated/floor,
+/area/rnd/outpost/maintenance)
 "Eh" = (
 /turf/simulated/open,
 /area/rift/facility/interior/elevator)
@@ -2808,13 +2798,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/outpost/underground)
 "Fw" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/light/small{
-	dir = 4
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
-/turf/simulated/floor,
-/area/rnd/outpost/maintenance)
+/turf/simulated/floor/tiled/white,
+/area/outpost/mining_main/outpost/washrooms)
 "Fx" = (
 /turf/simulated/wall,
 /area/rift/facility/interior/bathrooms)
@@ -2826,10 +2814,10 @@
 /area/rift/surfacebase/outside/west_caves)
 "FC" = (
 /obj/structure/cable/green{
-	icon_state = "1-4"
+	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled,
-/area/outpost/mining_main/outpost)
+/turf/simulated/floor/tiled/white,
+/area/outpost/mining_main/outpost/washrooms)
 "FJ" = (
 /obj/structure/table/reinforced,
 /obj/structure/salvageable/machine,
@@ -34228,9 +34216,9 @@ oO
 kQ
 il
 dv
-Be
+pF
 rv
-rI
+Be
 NO
 WQ
 oO
@@ -35591,7 +35579,7 @@ Iq
 VL
 hV
 Vl
-Fw
+Ee
 Vl
 Vl
 Vl
@@ -36125,7 +36113,7 @@ CM
 sM
 Gm
 SZ
-FC
+tb
 wt
 Qn
 DM
@@ -36908,7 +36896,7 @@ ga
 Rk
 ga
 JV
-tb
+Fw
 ot
 vV
 vV
@@ -37102,7 +37090,7 @@ Qj
 VG
 Ak
 vV
-Ee
+FC
 jw
 uJ
 oM
