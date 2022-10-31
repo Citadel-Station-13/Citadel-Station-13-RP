@@ -23,7 +23,7 @@
 		if(reasons != ROLE_AVAILABLE)
 			Debug("AR failed: player [player], rank [rank], latejoin [latejoin], failed for [reasons]")
 			return FALSE
-		Debug("Player: [player] is now Rank: [rank], JCP:[job.current_positions], JPL:[position_limit]")
+		Debug("Player: [player] is now Rank: [rank], JCP:[job.current_positions]")
 		player.mind.assigned_role = rank
 		player.mind.role_alt_title = GetPlayerAltTitle(player, rank)
 		unassigned -= player
@@ -144,6 +144,7 @@
  *  This proc must not have any side effect besides of modifying "assigned_role".
  **/
 /datum/controller/subsystem/job/proc/DivideOccupations()
+	// todo: optimize this hellproc
 	//Setup new player list and get the jobs list
 	Debug("Running DO")
 
@@ -204,17 +205,12 @@
 
 			// Loop through all jobs
 			for(var/datum/job/job in shuffledoccupations) // SHUFFLE ME BABY
-				if(!job || SSticker.mode.disabled_jobs.Find(job.title) )
+				if(job.title in SSticker.mode.disabled_jobs)
 					continue
-
-				if(jobban_isbanned(player, job.title))
-					Debug("DO isbanned failed, Player: [player], Job:[job.title]")
+				var/reasons = job.check_client_availability_one(player.client)
+				if(reasons != ROLE_AVAILABLE)
+					Debug("DO failed for [reasons] on [job.id] for [player]")
 					continue
-				if(!job.player_old_enough(player.client))
-					Debug("DO player not old enough, Player: [player], Job:[job.title]")
-					continue
-				#warn we should probably standardize job checks + add faction checks
-
 				// If the player wants that job on this level, then try give it to him.
 				if(player.client.prefs.get_job_priority(job) == level)
 					// If the job isn't filled
