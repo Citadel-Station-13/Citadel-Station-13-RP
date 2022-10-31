@@ -28,12 +28,11 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/near_gateway)
 "am" = (
-/obj/structure/catwalk,
 /obj/structure/cable/green{
-	icon_state = "6-9"
+	icon_state = "2-9"
 	},
-/turf/simulated/floor/plating,
-/area/outpost/mining_main/outpost/maintenance/north)
+/turf/simulated/floor/tiled,
+/area/gateway/prep_room)
 "an" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -179,11 +178,13 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
 "bM" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/catwalk,
 /obj/structure/cable/green{
-	icon_state = "5-10"
+	icon_state = "1-10"
 	},
-/turf/simulated/floor/tiled/monotile,
-/area/outpost/mining_main/outpost/airlock/three)
+/turf/simulated/floor/plating,
+/area/outpost/mining_main/outpost/maintenance/north)
 "bR" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/power/apc{
@@ -449,15 +450,11 @@
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/undergound2)
 "fa" = (
-/obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/green{
-	icon_state = "5-10"
+	icon_state = "1-2"
 	},
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	icon_state = "1-10"
-	},
+/obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/north)
 "fb" = (
@@ -557,6 +554,9 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
+	},
+/obj/item/radio/intercom{
+	pixel_y = -24
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/belterdock)
@@ -1001,6 +1001,10 @@
 /obj/structure/cable/green{
 	icon_state = "6-9"
 	},
+/obj/structure/cable/green{
+	icon_state = "5-9"
+	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/north)
 "jZ" = (
@@ -1115,7 +1119,7 @@
 	dir = 6
 	},
 /obj/structure/cable/green{
-	icon_state = "4-10"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/outpost/airlock/three)
@@ -1208,9 +1212,6 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "lm" = (
-/obj/structure/cable/green{
-	icon_state = "6-9"
-	},
 /obj/machinery/camera/network/research_outpost{
 	dir = 4;
 	network = list("Research Outpost","Command")
@@ -1538,6 +1539,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/structure/cable/green{
+	icon_state = "5-8"
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/outpost/airlock/three)
 "nN" = (
@@ -1608,6 +1612,9 @@
 	dir = 4
 	},
 /obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "2-9"
+	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/north)
 "oy" = (
@@ -1850,6 +1857,9 @@
 "qD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-10"
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/outpost/airlock/three)
 "qN" = (
@@ -2070,7 +2080,7 @@
 /area/rift/facility/interior/prison)
 "td" = (
 /obj/structure/cable/green{
-	icon_state = "6-9"
+	icon_state = "4-9"
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -2372,7 +2382,7 @@
 /area/outpost/mining_main/outpost/airlock/three)
 "wn" = (
 /obj/structure/cable/green{
-	icon_state = "5-10"
+	icon_state = "6-8"
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -3099,12 +3109,17 @@
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/belterdock)
 "Da" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/outpost/mining_main/outpost/maintenance/north)
+/obj/structure/cable/green{
+	icon_state = "6-8"
+	},
+/turf/simulated/floor/tiled,
+/area/gateway/prep_room)
 "Db" = (
 /obj/effect/floor_decal/corner/black{
 	dir = 9
@@ -3218,7 +3233,7 @@
 /area/rift/facility/interior/undergound2)
 "Er" = (
 /obj/structure/cable/green{
-	icon_state = "6-9"
+	icon_state = "1-6"
 	},
 /turf/simulated/floor/tiled,
 /area/gateway/prep_room)
@@ -3710,11 +3725,11 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/north)
 "Jt" = (
+/obj/machinery/door/firedoor/multi_tile,
+/obj/structure/catwalk,
 /obj/machinery/door/airlock/multi_tile/metal/mait{
 	name = "Maintenance Access"
 	},
-/obj/machinery/door/firedoor/multi_tile,
-/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/north)
 "Jv" = (
@@ -4086,9 +4101,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/obj/structure/cable/green{
-	icon_state = "5-10"
-	},
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/outpost/airlock/three)
 "Na" = (
@@ -4175,26 +4187,21 @@
 "NR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/item/radio/intercom{
-	dir = 4;
-	pixel_x = 24
-	},
 /obj/machinery/door/airlock/glass_mining{
 	name = "Belter Control Room";
 	req_one_access = list(48,66)
 	},
 /obj/structure/cable/green{
-	icon_state = "1-10"
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/quartermaster/belterdock)
 "NV" = (
+/obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable/green{
-	icon_state = "6-9"
+	icon_state = "1-6"
 	},
-/obj/structure/cable/green{
-	icon_state = "5-9"
-	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/north)
 "NY" = (
@@ -4468,7 +4475,7 @@
 	dir = 8
 	},
 /obj/structure/cable/green{
-	icon_state = "6-8"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/gateway)
@@ -4524,10 +4531,10 @@
 /area/rift/surfacebase/outside/west_deep)
 "Sd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/catwalk,
 /obj/structure/cable/green{
-	icon_state = "6-9"
+	icon_state = "1-2"
 	},
+/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/north)
 "Si" = (
@@ -5068,6 +5075,9 @@
 /area/gateway/prep_room)
 "Xb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
+/obj/structure/cable/green{
+	icon_state = "4-10"
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/outpost/airlock/three)
 "Xe" = (
@@ -5203,11 +5213,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "5-8"
-	},
 /obj/machinery/alarm{
 	pixel_y = 22
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/outpost/airlock/three)
@@ -5304,6 +5314,9 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "2-9"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-5"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/outpost/mining_main/outpost/airlock/three)
@@ -35137,7 +35150,7 @@ Jq
 Jq
 bu
 Ej
-nu
+Ej
 Nw
 XQ
 XQ
@@ -35331,7 +35344,7 @@ nu
 nu
 nu
 td
-nu
+Ej
 Nw
 XQ
 XQ
@@ -35524,8 +35537,8 @@ HH
 HH
 HH
 Nw
+wn
 Ej
-NV
 Nw
 Nw
 Nw
@@ -35718,9 +35731,9 @@ HH
 Jo
 yD
 Nw
-wn
 Ej
-am
+jX
+Ej
 Jt
 Ej
 Ej
@@ -35912,11 +35925,11 @@ aj
 XN
 ZC
 fa
-Hy
+bM
 Hy
 ox
 Sd
-Hy
+NV
 Du
 Nw
 kw
@@ -35941,7 +35954,7 @@ ad
 RH
 jW
 ZQ
-qX
+Da
 lm
 TF
 TF
@@ -36110,8 +36123,8 @@ Nw
 Nw
 Nw
 Nw
-jX
-Da
+nu
+Kk
 Nw
 Hk
 Qc
@@ -36136,7 +36149,7 @@ AW
 RJ
 et
 qX
-TF
+am
 Er
 IS
 IL
@@ -36305,7 +36318,7 @@ Ua
 nu
 Nw
 nu
-Kk
+HE
 Nw
 JY
 JY
@@ -36684,7 +36697,7 @@ Pq
 ww
 Cl
 BB
-bM
+XN
 nK
 Mo
 Nw
