@@ -62,8 +62,10 @@ SUBSYSTEM_DEF(air)
 	// Maps should not have active edges on boot.  If we've got some, log it so it can get fixed.
 	if(active_edges.len)
 		var/list/edge_log = list()
+		var/count = 0
 		for(var/datum/zas_edge/E in active_edges)
-			edge_log += "Active Edge [E] ([E.type])"
+			++count
+			edge_log += "Active Edge  I:[count] [E] ([E.type])"
 			for(var/turf/T in E.connecting_turfs)
 				edge_log += "+--- Connecting Turf [T] ([T.type]) @ [T.x], [T.y], [T.z] ([T.loc])"
 		subsystem_log("Active Edges on ZAS Startup\n" + edge_log.Join("\n"))
