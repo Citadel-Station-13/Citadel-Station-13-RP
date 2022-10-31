@@ -208,9 +208,8 @@
 		to_chat(src, "<span class='warning'>You can't use that while phase shifted!</span>")
 		return FALSE
 
-	var/list/viewed = oview(1)
 	var/list/targets = list()
-	for(var/mob/living/L in viewed)
+	for(var/mob/living/L in view(1))
 		targets += L
 	if(!targets.len)
 		to_chat(src,"<span class='warning'>Nobody nearby to mend!</span>")
