@@ -273,8 +273,6 @@
 	)
 	return sanitize_inlist(data, static_list, JOB_ALTERNATIVE_BE_ASSISTANT)
 
-#warn take faction into account by blocking spawn/view but not wiping
-
 /datum/preferences/proc/get_job_priority(datum/job/J)
 	var/list/jobs = get_character_data(CHARACTER_DATA_JOBS)
 	return jobs[J.id]
@@ -294,12 +292,20 @@
 
 /datum/preferences/proc/effective_job_priorities()
 	RETURN_TYPE(/list)
-	#warn impl - factions
+	. = list()
+	var/datum/lore/character_background/faction/F = lore_faction_datum()
+	var/list/priorities = get_character_data(CHARACTER_DATA_JOBS)
+	for(var/id in priorities)
+		var/datum/job/J = SSjob.job_by_id(id)
+		if(!F.check_job_id(id))
+			continue
+		.[id] = priorities[id]
 
 /datum/preferences/proc/effective_job_priority(datum/job/J)
+	if(!lore_faction_job_check(J))
+		return JOB_PRIORITY_NEVER
 	var/list/jobs = get_character_data(CHARACTER_DATA_JOBS)
 	return jobs[J.id]
-	#warn check faction
 
 /**
  * resets job prefs

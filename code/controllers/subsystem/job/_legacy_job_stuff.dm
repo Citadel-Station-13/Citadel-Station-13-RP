@@ -19,31 +19,18 @@
 	Debug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
 	if(player && player.mind && rank)
 		var/datum/job/job = get_job(rank)
-		if(!job)
-			return 0
-		if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
-			return 0
-		if(jobban_isbanned(player, rank))
-			return 0
-		if(!job.player_old_enough(player.client))
-			return 0
-		if(job.whitelist_only && !config.check_job_whitelist(ckey(rank), player.ckey))
-			return 0
-		#warn we should probably standardize job checks + add faction checks
-
-		var/position_limit = job.total_positions
-		if(!latejoin)
-			position_limit = job.spawn_positions
-		if((job.current_positions < position_limit) || position_limit == -1)
-			Debug("Player: [player] is now Rank: [rank], JCP:[job.current_positions], JPL:[position_limit]")
-			player.mind.assigned_role = rank
-			player.mind.role_alt_title = GetPlayerAltTitle(player, rank)
-			unassigned -= player
-			job.current_positions++
-			return 1
+		var/reasons = job.check_client_availability_one(player.client)
+		if(reasons != ROLE_AVAILABLE)
+			Debug("AR failed: player [player], rank [rank], latejoin [latejoin], failed for [reasons]")
+			return FALSE
+		Debug("Player: [player] is now Rank: [rank], JCP:[job.current_positions], JPL:[position_limit]")
+		player.mind.assigned_role = rank
+		player.mind.role_alt_title = GetPlayerAltTitle(player, rank)
+		unassigned -= player
+		job.current_positions++
+		return 1
 	Debug("AR has failed, Player: [player], Rank: [rank]")
 	return 0
-
 
 /// Making additional slot on the fly.
 /datum/controller/subsystem/job/proc/FreeRole(rank)
@@ -53,25 +40,16 @@
 		return 1
 	return 0
 
-
 /datum/controller/subsystem/job/proc/FindOccupationCandidates(datum/job/job, level)
-	Debug("Running FOC, Job: [job], Level: [level], Flag: [flag]")
+	Debug("Running FOC, Job: [job], Level: [level]")
 	var/list/candidates = list()
 	for(var/mob/new_player/player in unassigned)
-		if(jobban_isbanned(player, job.title))
-			Debug("FOC isbanned failed, Player: [player]")
-			continue
-		if(!job.player_old_enough(player.client))
-			Debug("FOC player not old enough, Player: [player]")
-			continue
-		if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
-			Debug("FOC character not old enough, Player: [player]")
-			continue
-		if(job.whitelist_only && !config.check_job_whitelist(ckey(job.title), player.ckey))
-			Debug("FOC whitelist failed, Player: [player]")
+		var/reasons = job.check_client_availability_one(player.client)
+		if(reasons != ROLE_AVAILABLE)
+			Debug("FOC failed for [reasons], player: [player]")
 			continue
 		if(player.client.prefs.get_job_priority(job) == level)
-			Debug("FOC pass, Player: [player], Level:[level]")
+			Debug("FOC pass, Player: [player]")
 			candidates += player
 	return candidates
 
@@ -79,37 +57,15 @@
 /datum/controller/subsystem/job/proc/GiveRandomJob(mob/new_player/player)
 	Debug("GRJ Giving random job, Player: [player]")
 	for(var/datum/job/job in shuffle(occupations))
-		if(!job)
+		var/reasons = job.check_client_availability_one(player.client)
+		if(reasons != ROLE_AVAILABLE)
+			Debug("GRJ failed for [reasons] on [job.id]")
 			continue
-
-		if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
+		if(!AssignRole(player, job.title))
+			Debug("GRJ on [job.id] for [player] AssignRole failed!!!")
 			continue
-
-		if(istype(job, get_job(USELESS_JOB))) // We don't want to give him visitor, that's boring!
-			continue
-
-		if(SSjob.is_job_in_department(job.title, DEPARTMENT_COMMAND)) //If you want a command position, select it!
-			continue
-
-		if(jobban_isbanned(player, job.title))
-			Debug("GRJ isbanned failed, Player: [player], Job: [job.title]")
-			continue
-
-		if(!job.player_old_enough(player.client))
-			Debug("GRJ player not old enough, Player: [player]")
-			continue
-
-		if(job.whitelist_only && !config.check_job_whitelist(ckey(job.title), player.ckey))
-			Debug("GRJ player not whitelisted for this job, Player: [player], Job: [job.title]")
-			continue
-		#warn we should probably standardize job checks + add faction checks
-		#warn WHY IS ASSIGNROLE RETURN VALUE NOT LISTENED TO
-
-		if((job.current_positions < job.spawn_positions) || job.spawn_positions == -1)
-			Debug("GRJ Random job given, Player: [player], Job: [job]")
-			AssignRole(player, job.title)
-			unassigned -= player
-			break
+		unassigned -= player
+		break
 
 /datum/controller/subsystem/job/proc/ResetOccupations()
 	for(var/mob/new_player/player in player_list)

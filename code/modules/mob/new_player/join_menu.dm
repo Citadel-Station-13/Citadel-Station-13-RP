@@ -61,7 +61,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 		else
 			department = jobs[J.faction][department_name]
 		// finally, add job data
-		var/slots = J.slots_remaining()
+		var/slots = J.slots_remaining(TRUE)
 		var/list/data = list(
 			"id" = J.id,
 			"name" = EffectiveTitle(J, N),
@@ -129,15 +129,13 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 /**
  * checks if job is available
  * if not, it shouldn't even show
- * if so, return slots
  */
 /datum/join_menu/proc/IsJobAvailable(datum/job/J, mob/new_player/N)
-	return J.check_client_availability_one(N.client) == ROLE_AVAILABLE
+	return J.check_client_availability_one(N.client, TRUE, TRUE) == ROLE_AVAILABLE
 
 /**
  * checks if ghostrole is available
  * if not, it shouldn't even show
- * if so, return slots
  */
 /datum/join_menu/proc/IsGhostroleAvailable(datum/ghostrole/G, mob/new_player/N)
 	return G.AllowSpawn(N.client)
@@ -146,15 +144,15 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
  * return effective title - used for alt titles - JOBS ONLY, not ghostroles
  */
 /datum/join_menu/proc/EffectiveTitle(datum/job/J, mob/new_player/N)
-	#warn this
-	return "Job #[rand(1, 100)]"	// i'm sorry sandpoot but atleast you get the code early..
+	return N.client.prefs.get_job_alt_title_name(J) || J.title
 
 /**
  * returns effective desc - used for alt titles - JOBS ONLY, not ghostroles
  */
 /datum/join_menu/proc/EffectiveDesc(datum/job/J, mob/new_player/N)
-	#warn impl
-	return // blank but CAN be null
+	var/title = N.client.prefs.get_job_alt_title_name(J)
+	var/datum/alt_title/T = J.alt_titles[title]
+	return initial(T.title_blurb) || J.desc
 
 /datum/join_menu/proc/QueueStatus(mob/new_player/N)
 	return null

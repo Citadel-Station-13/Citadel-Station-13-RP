@@ -69,7 +69,13 @@
  *
  * @return 0 to number of slots remaining
  */
-/datum/job/proc/slots_remaining()
+/datum/job/proc/slots_remaining(latejoin)
+	if(!latejoin)
+		if(spawn_positions == -1)
+			return INFINITY
+		return max(total_positions - spawn_positions, 0)
+	if(total_positions == -1)
+		return INFINITY
 	return max(total_positions - current_positions, 0)
 
 /**
@@ -81,7 +87,7 @@
  *
  * todo: check ckey proc too?
  */
-/datum/job/proc/check_client_availability(client/C, check_char)
+/datum/job/proc/check_client_availability(client/C, check_char, latejoin)
 	if(whitelist && !config.check_job_whitelist(ckey(title), C.ckey))
 		. |= ROLE_UNAVAILABLE_WHITELIST
 	if(!slots_remaining())
@@ -98,7 +104,7 @@
 			. |= ROLE_UNAVAILABLE_CHAR_AGE
 		if(!P.lore_faction_job_check(src))
 			. |= ROLE_UNAVAILABLE_CHAR_FACTION
-		if(!P.characteR_species_job_check(src))
+		if(!P.character_species_job_check(src))
 			. |= ROLE_UNAVAILABLE_CHAR_SPECIES
 	// todo: JEXP/ROLE-EXP hours system
 
@@ -113,10 +119,10 @@
  *
  * todo: check ckey proc too?
  */
-/datum/job/proc/check_client_availability_one(client/C, check_char)
+/datum/job/proc/check_client_availability_one(client/C, check_char, latejoin)
 	if(whitelist && !config.check_job_whitelist(ckey(title), C.ckey))
 		return ROLE_UNAVAILABLE_WHITELIST
-	else if(!slots_remaining())
+	else if(!slots_remaining(latejoin))
 		return ROLE_UNAVAILABLE_SLOTS_FULL
 	else if(!player_has_enough_pto(C))
 		return ROLE_UNAVAILABLE_PTO

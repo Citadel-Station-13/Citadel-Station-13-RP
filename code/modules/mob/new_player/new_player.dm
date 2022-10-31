@@ -487,7 +487,10 @@
 	spawning = 1
 	close_spawn_windows()
 
-	SSjob.AssignRole(src, rank, 1)
+	if(!SSjob.AssignRole(src, rank, 1))
+		to_chat(src, SPAN_WARNING("SSjob.AssignRole failed; something is seriously wrong. Attempted: [rank]."))
+		. = FALSE
+		CRASH("AssignRole failed; something is seriously wrong!")
 
 	var/mob/living/character = create_character(SP.GetSpawnLoc())		// Creates the human and transfers vars and mind
 	SP.OnSpawn(character)

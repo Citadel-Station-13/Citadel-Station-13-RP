@@ -16,17 +16,11 @@
 	. += "</div>"
 
 /datum/category_item/player_setup_item/background/char_species/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
-	var/datum/character_species/S = SScharacters.resolve_character_species(data)
-	// if(S.whitelisted && !is_alien_whitelisted(prefs.client.mob, ))
-	#warn whitelist check - impl new whitelist systemics for this shit
-	/**
-	 *
-	//Can they play?
-	if(!is_alien_whitelisted(src, client.prefs.real_species_datum()) && !check_rights(R_ADMIN, 0))
-		pass = FALSE
-		to_chat(src,"<span class='warning'>You are not allowed to spawn in as this species.</span>")
-
-	 */
+	var/datum/character_species/CS = SScharacters.resolve_character_species(data)
+	if(CS.whitelisted && !config.check_alien_whitelist(ckey(CS.name), prefs.client_ckey))
+		errors?.Add(SPAN_WARNING("[CS.name] is a whitelisted species!"))
+		return FALSE
+	return TRUE
 
 /datum/category_item/player_setup_item/background/char_species/filter(datum/preferences/prefs, data, list/errors)
 	// resolve
@@ -55,7 +49,6 @@
 /datum/category_item/player_setup_item/background/char_species/default_value(randomizing)
 	return SScharacters.default_species_id()
 
-#warn main species selector has to use save key
 /datum/category_item/player_setup_item/background/char_species/act(datum/preferences/prefs, mob/user, action, list/params)
 	switch(action)
 		if("change")

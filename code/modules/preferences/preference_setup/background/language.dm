@@ -61,7 +61,13 @@
 	if(length(data) > prefs.extraneous_languages_max())
 		errors?.Add(SPAN_WARNING("You have selected too many extra languages for your species and culture."))
 		return FALSE
-	#warn whitelist check
+	var/list/extraneous = data
+	var/datum/character_species/CS = prefs.character_species_datum()
+	for(var/id in extraneous)
+		var/datum/language/L = SScharacters.resolve_language_id(id)
+		if((L.language_flags & WHITELISTED) && (!(L in CS.whitelist_languages)) && !config.check_alien_whitelist(ckey(L.name), prefs.client_ckey))
+			errors?.Add(SPAN_WARNING("[L.id] is a whitelisted language."))
+			return FALSE
 	return TRUE
 
 /datum/category_item/player_setup_item/background/language/default_value(randomizing)

@@ -872,6 +872,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	pref.regen_limbs = 1
 
 	// Sanitize the name so that there aren't any numbers sticking around.
-	pref.real_name          = sanitize_name(pref.real_name, pref.species)
+	var/species_name = pref.real_species_name()
+	pref.real_name          = sanitize_name(pref.real_name, species_name)
 	if(!pref.real_name)
-		pref.real_name      = random_name(pref.identifying_gender, pref.species)
+		pref.real_name      = random_name(pref.identifying_gender, species_name)
