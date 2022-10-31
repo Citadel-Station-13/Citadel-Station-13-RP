@@ -137,8 +137,8 @@
 
 /mob/living/simple_mob/animal/goliath/attackby(obj/item/O, mob/user)
 	. = ..()
-	if(istype(O, /obj/item/seeds/ashlander/bentars) && !breedable)
-		to_chat(user, "<span class='danger'>You feed the [src] bentar seeds! Its tendrils begin to thrash softly!</span>")
+	if(istype(O, /obj/item/seeds) && !breedable)
+		to_chat(user, "<span class='danger'>You feed the [O] to [src]! Its tendrils begin to thrash softly!</span>")
 		breedable = 1
 		qdel(O)
 	else
