@@ -65,7 +65,7 @@
 		if(1.0)
 			for(var/atom/movable/AM in contents)
 				AM.loc = loc
-				LEGACY_EX_ACT(AM, severity + 1)
+				LEGACY_EX_ACT(AM, severity + 1, null)
 
 			qdel(src)
 			return
@@ -73,7 +73,7 @@
 			if(prob(50))
 				for(var/atom/movable/AM in contents)
 					AM.loc = loc
-					LEGACY_EX_ACT(AM, severity + 1)
+					LEGACY_EX_ACT(AM, severity + 1, null)
 
 				qdel(src)
 				return

@@ -183,7 +183,7 @@
 
 /mob/living/simple_mob/slime/promethean/legacy_ex_act(severity)
 	if(humanform)
-		return LEGACY_EX_ACT(humanform, severity, null)
+		LEGACY_EX_ACT(humanform, severity, null)
 	else
 		return ..()
 
