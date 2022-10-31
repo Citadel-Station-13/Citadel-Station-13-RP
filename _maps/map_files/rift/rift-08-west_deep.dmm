@@ -634,14 +634,6 @@
 /obj/structure/stairs/spawner/north,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/near_gateway)
-"hg" = (
-/obj/structure/closet/secure_closet/personal,
-/obj/machinery/camera/network/research_outpost{
-	dir = 4;
-	network = list("Research Outpost","Command")
-	},
-/turf/simulated/floor/tiled,
-/area/outpost/mining_main/outpost/near_gateway)
 "hi" = (
 /obj/structure/barricade/cutout/fluke,
 /turf/simulated/floor/lythios43c/indoors,
@@ -1334,7 +1326,7 @@
 /area/rift/facility/interior/prison)
 "mm" = (
 /obj/effect/map_effect/interval/effect_emitter/steam/atmos_blocker,
-/turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
+/turf/simulated/floor/outdoors/rocks/caves,
 /area/rift/surfacebase/outside/west_deep)
 "mp" = (
 /obj/machinery/gateway{
@@ -1342,10 +1334,6 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/gateway)
-"mq" = (
-/obj/structure/sign/warning/secure_area,
-/turf/simulated/wall/r_wall,
-/area/gateway/prep_room)
 "mr" = (
 /obj/effect/overlay/snow/floor,
 /obj/random/obstruction,
@@ -2722,13 +2710,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
 "zr" = (
-/obj/structure/table/reinforced,
-/obj/machinery/camera/network/research_outpost{
-	dir = 4;
-	network = list("Research Outpost","Command")
-	},
-/turf/simulated/floor/tiled,
-/area/outpost/mining_main/outpost/near_gateway)
+/turf/simulated/floor/outdoors/rocks/caves,
+/area/rift/surfacebase/outside/west_deep)
 "zA" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	name = "Gateway Civilian Prep";
@@ -3037,6 +3020,11 @@
 	},
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/airlock/three)
+"Cz" = (
+/obj/structure/sink/puddle,
+/obj/effect/map_effect/interval/effect_emitter/steam,
+/turf/simulated/floor/outdoors/rocks/caves,
+/area/rift/surfacebase/outside/west_deep)
 "CA" = (
 /obj/structure/cable/green{
 	icon_state = "4-10"
@@ -3372,9 +3360,7 @@
 /area/quartermaster/belterdock)
 "Fx" = (
 /obj/random/crystal,
-/turf/simulated/mineral/floor/ignore_cavegen{
-	outdoors = 0
-	},
+/turf/simulated/mineral/floor/ignore_cavegen/has_air,
 /area/rift/surfacebase/outside/west_deep)
 "FC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -3416,6 +3402,14 @@
 "Gl" = (
 /turf/simulated/wall/solidrock,
 /area/rift/surfacebase/outside/west_deep)
+"Gm" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/machinery/camera/network/research_outpost{
+	dir = 4;
+	network = list("Research Outpost","Command")
+	},
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/outpost/near_gateway)
 "Gq" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -4280,9 +4274,7 @@
 /area/outpost/mining_main/outpost/maintenance/south)
 "OS" = (
 /obj/machinery/crystal/lava,
-/turf/simulated/mineral/floor/ignore_cavegen{
-	outdoors = 0
-	},
+/turf/simulated/mineral/floor/ignore_cavegen/has_air,
 /area/rift/surfacebase/outside/west_deep)
 "OT" = (
 /obj/structure/bed/chair/office/light{
@@ -4546,6 +4538,10 @@
 /obj/random/landmine,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/undergound2)
+"Ss" = (
+/obj/structure/sign/warning/secure_area,
+/turf/simulated/wall/r_wall,
+/area/gateway/prep_room)
 "St" = (
 /turf/simulated/wall,
 /area/outpost/mining_main/outpost/recreation)
@@ -4584,9 +4580,7 @@
 /turf/simulated/floor/plating,
 /area/rnd/outpost/maintenance)
 "SH" = (
-/turf/simulated/mineral/floor/ignore_cavegen{
-	outdoors = 0
-	},
+/turf/simulated/mineral/floor/ignore_cavegen/has_air,
 /area/rift/surfacebase/outside/west_deep)
 "SI" = (
 /turf/simulated/shuttle/wall/voidcraft/green,
@@ -4624,6 +4618,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rift/facility/interior/temple)
+"Tb" = (
+/obj/structure/table/reinforced,
+/obj/machinery/camera/network/research_outpost{
+	dir = 4;
+	network = list("Research Outpost","Command")
+	},
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/outpost/near_gateway)
 "Tc" = (
 /obj/structure/table/reinforced,
 /obj/machinery/recharger,
@@ -21182,7 +21184,7 @@ wV
 Gl
 bc
 bc
-QG
+zr
 lF
 lF
 lF
@@ -21196,7 +21198,7 @@ VP
 VP
 lF
 cf
-QG
+zr
 bc
 wV
 AO
@@ -21375,8 +21377,8 @@ HF
 wV
 Gl
 bc
-QR
-QG
+Cz
+zr
 OS
 SH
 SH
@@ -21390,7 +21392,7 @@ VP
 vs
 VP
 cf
-QR
+Cz
 bc
 wV
 AO
@@ -21568,12 +21570,12 @@ HF
 Rw
 wV
 Gl
-QG
-QG
+zr
+zr
 OS
-QG
-QG
-QG
+zr
+zr
+zr
 SH
 lF
 lF
@@ -21584,7 +21586,7 @@ VP
 VP
 VP
 lF
-QG
+zr
 bc
 wV
 AO
@@ -21762,13 +21764,13 @@ HF
 HF
 HF
 mm
-QG
-QG
-QG
-QG
-QR
-QG
-QG
+zr
+zr
+zr
+zr
+Cz
+zr
+zr
 SH
 lF
 vs
@@ -21956,13 +21958,13 @@ HF
 HF
 HF
 mm
-QG
-QR
+zr
+Cz
 SH
 SH
-QG
-QG
-QG
+zr
+zr
+zr
 SH
 lF
 VP
@@ -22150,14 +22152,14 @@ HF
 HF
 wV
 bc
-QG
-QG
+zr
+zr
 Fx
 Fx
 SH
-QG
-QR
-QG
+zr
+Cz
+zr
 cf
 lF
 lF
@@ -22349,8 +22351,8 @@ Fx
 SH
 SH
 SH
-QG
-QG
+zr
+zr
 OS
 SH
 SH
@@ -22544,7 +22546,7 @@ OS
 SH
 SH
 SH
-QG
+zr
 SH
 SH
 SH
@@ -22738,13 +22740,13 @@ bc
 bc
 bc
 SH
-QR
+Cz
 SH
 Fx
 OS
 SH
-QG
-QG
+zr
+zr
 SH
 OS
 SH
@@ -22937,9 +22939,9 @@ SH
 SH
 SH
 SH
-QG
-QR
-QG
+zr
+Cz
+zr
 SH
 bc
 bc
@@ -35746,7 +35748,7 @@ kt
 kt
 Yo
 Ri
-mq
+Ss
 FW
 Nl
 ad
@@ -36123,11 +36125,11 @@ JY
 JY
 gE
 yU
-zr
+Tb
 yU
 yU
 OP
-hg
+Gm
 ku
 ad
 AW
@@ -36527,7 +36529,7 @@ TF
 qA
 yK
 YL
-mq
+Ss
 im
 La
 QM
@@ -36915,7 +36917,7 @@ Ck
 Ym
 Wm
 Ty
-mq
+Ss
 EY
 EY
 QM

@@ -155,7 +155,6 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/mineral/icerock)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name
-	outdoors = FALSE
 	if(rare_ore)
 		mineral_name = pickweight(list(
 			"marble" = 3,
@@ -189,7 +188,6 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/mineral/icerock)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name
-	outdoors = FALSE
 	if(rare_ore)
 		mineral_name = pickweight(list(
 			"marble" = 7,

@@ -56,8 +56,13 @@
 /turf/simulated/mineral/floor/ignore_cavegen
 	ignore_cavegen = TRUE
 
-/turf/simulated/mineral/floor/ignore_cavegen/indoors
+/turf/simulated/mineral/floor/ignore_cavegen/has_air
+	initial_gas_mix = GAS_STRING_STP
+
+/turf/simulated/mineral/floor/indoors
 	outdoors = FALSE
+	name = "Depreciated, tell a mapper if you see this"
+	icon_state = ""
 
 /turf/simulated/mineral/icerock/ignore_cavegen
 	ignore_cavegen = TRUE
@@ -85,6 +90,8 @@
 	rock_icon_state = "icerock"
 	random_icon = 1
 
+/turf/simulated/mineral/icerock/airmix
+	initial_gas_mix = GAS_STRING_STP
 /turf/unsimulated/mineral/icerock
 	name = "impassable icerock"
 	icon = 'icons/turf/walls.dmi'
@@ -102,10 +109,6 @@
 	opacity = 0
 	blocks_air = 0
 	can_build_into_floor = TRUE
-	outdoors = TRUE // Until I can go through and unfuck what got fucked this is how I am going to have to deal with this
-
-/turf/simulated/mineral/floor/indoors
-	outdoors = FALSE
 
 //Alternative sand floor sprite.
 /turf/simulated/mineral/floor/light
@@ -131,6 +134,9 @@
 	name = "ice"
 	icon_state = "ice"
 	sand_icon_state = "ice"
+
+/turf/simulated/mineral/floor/icerock/airmix
+	initial_gas_mix = GAS_STRING_STP
 
 /turf/simulated/mineral/proc/make_floor()
 	if(!density && !opacity)

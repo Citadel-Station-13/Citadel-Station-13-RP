@@ -153,10 +153,10 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
 "eY" = (
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/airmix,
 /area/rift/surfacebase/outside/west_base/submap_seedzone)
 "fd" = (
-/turf/simulated/mineral/rich,
+/turf/simulated/mineral/cave,
 /area/rift/surfacebase/outside/west_base)
 "fR" = (
 /obj/effect/floor_decal/techfloor/orange{
@@ -327,7 +327,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
 "mI" = (
-/turf/simulated/mineral/floor/ignore_cavegen/indoors,
+/turf/simulated/mineral/floor/ignore_cavegen/has_air,
 /area/rift/surfacebase/outside/west_base/submap_seedzone)
 "nh" = (
 /obj/structure/closet,
@@ -538,7 +538,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
 "vp" = (
-/turf/simulated/mineral/rich,
+/turf/simulated/mineral/cave,
 /area/rift/surfacebase/outside/west_base/submap_seedzone)
 "wc" = (
 /obj/structure/railing{
@@ -927,7 +927,7 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "NF" = (
-/turf/simulated/mineral/floor/ignore_cavegen/indoors,
+/turf/simulated/mineral/floor/ignore_cavegen/has_air,
 /area/rift/surfacebase/outside/west_base)
 "NI" = (
 /obj/effect/floor_decal/techfloor/orange{
@@ -1126,7 +1126,7 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "Vv" = (
-/turf/simulated/mineral/icerock,
+/turf/simulated/mineral/icerock/airmix,
 /area/rift/surfacebase/outside/west_base)
 "VI" = (
 /obj/effect/floor_decal/techfloor/orange{
@@ -3539,7 +3539,7 @@ NF
 yP
 yP
 NF
-fd
+NF
 fd
 fd
 fd
@@ -4119,7 +4119,7 @@ NF
 yP
 yP
 NF
-fd
+NF
 fd
 fd
 fd
