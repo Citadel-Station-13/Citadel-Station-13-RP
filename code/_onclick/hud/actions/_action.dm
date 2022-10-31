@@ -47,7 +47,6 @@
 	owner = T
 	owner.actions.Add(src)
 	owner.update_action_buttons()
-	return
 
 /datum/action/proc/Remove(mob/living/T)
 	if(button)
@@ -57,11 +56,10 @@
 	T.actions.Remove(src)
 	T.update_action_buttons()
 	owner = null
-	return
 
 /datum/action/proc/Trigger()
 	if(!Checks())
-		return
+		return FALSE
 	switch(action_type)
 		if(AB_ITEM)
 			if(target)
@@ -79,7 +77,7 @@
 		if(AB_GENERIC)
 			if(target && procname)
 				call(target,procname)(usr)
-	return
+	return TRUE
 
 /datum/action/proc/Activate()
 	return

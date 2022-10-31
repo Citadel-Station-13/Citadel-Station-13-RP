@@ -150,3 +150,6 @@
 
 	/// If this client has been fully initialized or not
 	var/fully_created = FALSE
+
+	/// datum wrapper for client view
+	var/datum/view_data/view_size

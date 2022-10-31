@@ -66,7 +66,7 @@
 
 	minimum_breath_pressure = 18 // Bigger, means they need more air
 
-	body_temperature = T20C
+	body_temperature = null //mesothermic is basically cold-blooded right?
 
 	species_spawn_flags = SPECIES_SPAWN_ALLOWED // Species_can_join is the only spawn flag all the races get, so that none of them will be whitelist only if whitelist is enabled.
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
@@ -113,14 +113,14 @@
 		/datum/unarmed_attack/bite/sharp,
 	)
 
-	heat_discomfort_level = 295
+	heat_discomfort_level = 343
 	heat_discomfort_strings = list(
 		"You feel soothingly warm.",
 		"You feel the heat sink into your bones.",
 		"You feel warm enough to take a nap.",
 	)
 
-	cold_discomfort_level = 292
+	cold_discomfort_level = 282
 	cold_discomfort_strings = list(
 		"You feel chilly.",
 		"You feel sluggish and cold.",

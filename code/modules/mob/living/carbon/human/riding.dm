@@ -26,7 +26,7 @@
 	else if(user == src)
 		// prechecks
 		if((buckling.get_effective_size() - get_effective_size()) >= 0.5)
-			to_chat(user, SPAN_WARNING("How do you intend on carrying [src] when you are that small?"))
+			to_chat(user, SPAN_WARNING("How do you intend on carrying [buckling] when you are that small?"))
 			return FALSE
 		if(a_intent != INTENT_GRAB)
 			return FALSE

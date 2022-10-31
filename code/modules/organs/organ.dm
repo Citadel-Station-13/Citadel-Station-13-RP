@@ -1,36 +1,35 @@
 /obj/item/organ/Initialize(mapload, internal)
-	. = ..()
-	var/mob/living/holder = loc
+	. = ..(mapload)
 	create_reagents(5)
 
-	if(isliving(holder))
-		src.owner = holder
-		src.w_class = max(src.w_class + mob_size_difference(holder.mob_size, MOB_MEDIUM), 1) //smaller mobs have smaller organs.
+	if(isliving(loc))
+		owner = loc
+		w_class = max(src.w_class + mob_size_difference(owner.mob_size, MOB_MEDIUM), 1) //smaller mobs have smaller organs.
 		if(internal)
-			if(!LAZYLEN(holder.internal_organs))
-				holder.internal_organs = list()
-			if(!LAZYLEN(holder.internal_organs_by_name))
-				holder.internal_organs_by_name = list()
+			if(!LAZYLEN(owner.internal_organs))
+				owner.internal_organs = list()
+			if(!LAZYLEN(owner.internal_organs_by_name))
+				owner.internal_organs_by_name = list()
 
-			holder.internal_organs |= src
-			holder.internal_organs_by_name[organ_tag] = src
+			owner.internal_organs |= src
+			owner.internal_organs_by_name[organ_tag] = src
 
 		else
-			if(!LAZYLEN(holder.organs))
-				holder.organs = list()
-			if(!LAZYLEN(holder.organs_by_name))
-				holder.organs_by_name = list()
+			if(!LAZYLEN(owner.organs))
+				owner.organs = list()
+			if(!LAZYLEN(owner.organs_by_name))
+				owner.organs_by_name = list()
 
-			holder.organs |= src
-			holder.organs_by_name[organ_tag] = src
+			owner.organs |= src
+			owner.organs_by_name[organ_tag] = src
 
 	if(!max_damage)
 		max_damage = min_broken_damage * 2
 
-	if(iscarbon(holder))
-		var/mob/living/carbon/C = holder
+	if(iscarbon(owner))
+		var/mob/living/carbon/C = owner
 		species = SScharacters.resolve_species_path(/datum/species/human)
-		if(holder.dna)
+		if(owner.dna)
 			dna = C.dna.Clone()
 			species = C.species //For custom species
 		else
@@ -86,7 +85,7 @@
 	if(damage >= max_damage)
 		die()
 
-/obj/item/organ/proc/set_dna(var/datum/dna/new_dna)
+/obj/item/organ/proc/set_dna(datum/dna/new_dna)
 	if(new_dna)
 		dna = new_dna.Clone()
 		if(blood_DNA)
@@ -682,4 +681,3 @@
 	damage = clamp(round(damage - amount, DAMAGE_PRECISION), 0, max_damage)
 	if(dead && can_revive)
 		revive()
-
