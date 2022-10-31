@@ -762,3 +762,17 @@
 /obj/item/reagent_containers/food/drinks/bottle/royaljelly/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("mead", 100)
+
+//Unathi Food Imports
+
+/obj/item/reagent_containers/food/drinks/bottle/unathijuice
+	name = "Hrukhza Leaf Extract"
+	desc = "Hrukhza Leaf, a vital component of any Moghes drinks."
+	icon_state = "hrukhzaextract"
+	item_state = "carton"
+	center_of_mass = "x=16;y=8"
+	isGlass = FALSE
+
+/obj/item/reagent_containers/food/drinks/bottle/unathijuice/Initialize()
+	.=..()
+	reagents.add_reagent("unathijuice", 100)

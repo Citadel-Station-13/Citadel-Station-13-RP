@@ -127,9 +127,9 @@ SUBSYSTEM_DEF(air)
 				return
 			else
 				continue
+		T.turf_flags &= ~TURF_ZONE_REBUILD_QUEUED
 		T.update_air_properties()
 		T.post_update_air_properties()
-		T.turf_flags &= ~TURF_ZONE_REBUILD_QUEUED
 		#ifdef ZAS_DEBUG_GRAPHICS
 		T.overlays -= mark
 		#endif
@@ -144,9 +144,9 @@ SUBSYSTEM_DEF(air)
 	while(selfblock_deferred.len)
 		var/turf/T = selfblock_deferred[selfblock_deferred.len]
 		selfblock_deferred.len--
+		T.turf_flags &= ~TURF_ZONE_REBUILD_QUEUED
 		T.update_air_properties()
 		T.post_update_air_properties()
-		T.turf_flags &= ~TURF_ZONE_REBUILD_QUEUED
 		#ifdef ZAS_DEBUG_GRAPHICS
 		T.overlays -= mark
 		#endif
