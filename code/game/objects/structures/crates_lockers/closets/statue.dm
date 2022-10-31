@@ -94,7 +94,7 @@
 
 /obj/structure/closet/statue/legacy_ex_act(severity)
 	for(var/mob/M in src)
-		M.legacy_ex_act(severity)
+		LEGACY_EX_ACT(M, severity, null)
 		health -= 60 / severity
 		check_health()
 

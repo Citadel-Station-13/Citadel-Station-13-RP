@@ -321,7 +321,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 
 /obj/item/paicard/legacy_ex_act(severity)
 	if(pai)
-		pai.legacy_ex_act(severity)
+		LEGACY_EX_ACT(pai, severity, null)
 	else
 		qdel(src)
 

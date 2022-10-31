@@ -95,7 +95,7 @@
 
 /obj/item/sleevecard/legacy_ex_act(severity)
 	if(infomorph)
-		infomorph.legacy_ex_act(severity)
+		LEGACY_EX_ACT(infomorph, severity, null)
 	else
 		qdel(src)
 

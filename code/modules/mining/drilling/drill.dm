@@ -91,7 +91,7 @@
 	//Drill through the flooring, if any.
 	if(istype(get_turf(src), /turf/simulated))
 		var/turf/simulated/T = get_turf(src)
-		T.legacy_ex_act(2.0)
+		LEGACY_EX_ACT(T, 2)
 
 	//Dig out the tasty ores.
 	if(resource_field.len)

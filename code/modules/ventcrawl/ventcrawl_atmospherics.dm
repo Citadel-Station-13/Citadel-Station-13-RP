@@ -15,7 +15,7 @@
 
 /obj/machinery/atmospherics/legacy_ex_act(severity)
 	for(var/atom/movable/A in src) //ventcrawling is serious business
-		A.legacy_ex_act(severity)
+		LEGACY_EX_ACT(A, severity, null)
 	. = ..()
 
 /obj/machinery/atmospherics/Entered(atom/movable/Obj)

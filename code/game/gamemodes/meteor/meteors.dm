@@ -156,7 +156,7 @@
 			continue
 		if(isturf(A)) // Don't hit floors. We'll deal with walls later.
 			continue
-		A.legacy_ex_act(hitpwr)
+		LEGACY_EX_ACT(A, hitpwr, null)
 
 	//then, ram the turf if it still exists
 	if(T)

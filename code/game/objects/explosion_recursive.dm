@@ -52,11 +52,11 @@ var/explosion_in_progress = 0
 		var/x = T.x
 		var/y = T.y
 		var/z = T.z
-		T.legacy_ex_act(severity)
+		LEGACY_EX_ACT(T, severity, null)
 		if(!T)
 			T = locate(x,y,z)
 		for(var/atom/A in T)
-			A.legacy_ex_act(severity)
+			LEGACY_EX_ACT(A, severity, null)
 
 	explosion_in_progress = 0
 

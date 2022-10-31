@@ -19,10 +19,14 @@
 #define LEGACY_EXPLOSION_SEVERE_POWER EXPLOSION_CONSTANT_SEVERE
 #define LEGACY_EXPLOSION_MINOR_POWER EXPLOSION_CONSTANT_MINOR
 
+// why the extra numbers? so if someone does weird math we don't out of bounds
 GLOBAL_REAL_LIST(_legacy_expowers) = list(
 	LEGACY_EXPLOSION_DEVASTATE_POWER,
 	LEGACY_EXPLOSION_SEVERE_POWER,
-	LEGACY_EXPLOSION_MINOR_POWER
+	LEGACY_EXPLOSION_MINOR_POWER,
+	0,
+	0,
+	0
 )
 
 // this works out becuase epxlosions are 1-3 in legacy, so we can just use it as list indices

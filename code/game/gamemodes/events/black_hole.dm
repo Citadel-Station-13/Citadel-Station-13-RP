@@ -75,7 +75,7 @@
 	if( prob(pull_chance) )
 		for(var/obj/O in T.contents)
 			if(O.anchored)
-				O.legacy_ex_act(ex_act_force)
+				LEGACY_EX_ACT(O, ex_act_force, null)
 			else
 				step_towards(O,src)
 		for(var/mob/living/M in T.contents)
