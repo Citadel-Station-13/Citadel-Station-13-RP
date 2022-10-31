@@ -13,12 +13,21 @@
 	var/list/citizenship_whitelist
 	#warn impl whitelists for origin/citizenship
 
+/datum/lore/character_background/faction/New()
+	// job whitelist cache
+	for(var/i in job_whitelist)
+		job_whitelist[i] = TRUE
+	return ..()
+
 /datum/lore/character_background/faction/check_character_species(datum/character_species/S)
 	if(S.species_fluff_flags & SPECIES_FLUFF_PICKY_FACTION)
 		. = (S.uid in allow_species) || (subspecies_included && S.is_subspecies && (S.superspecies_id in allow_species))
 		if(!.)
 			return
 	return ..()
+
+/datum/lore/character_background/faction/proc/check_job_id(id)
+	return job_whitelist? (job_whitelist[id]) : TRUE
 
 /datum/lore/character_background/faction/nanotrasen
 	name = "Nanotrasen"

@@ -54,7 +54,7 @@
 	return 0
 
 
-/datum/controller/subsystem/job/proc/FindOccupationCandidates(datum/job/job, level, flag)
+/datum/controller/subsystem/job/proc/FindOccupationCandidates(datum/job/job, level)
 	Debug("Running FOC, Job: [job], Level: [level], Flag: [flag]")
 	var/list/candidates = list()
 	for(var/mob/new_player/player in unassigned)
@@ -69,9 +69,6 @@
 			continue
 		if(job.whitelist_only && !config.check_job_whitelist(ckey(job.title), player.ckey))
 			Debug("FOC whitelist failed, Player: [player]")
-			continue
-		if(flag && !(player.client.prefs.be_special & flag))
-			Debug("FOC flag failed, Player: [player], Flag: [flag], ")
 			continue
 		if(player.client.prefs.get_job_priority(job) == level)
 			Debug("FOC pass, Player: [player], Level:[level]")

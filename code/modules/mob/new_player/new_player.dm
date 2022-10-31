@@ -454,17 +454,6 @@
 	// Timer still going
 	return timer - world.time
 
-/mob/new_player/proc/IsJobAvailable(rank)
-	var/datum/job/job = SSjob.get_job(rank)
-	if(!job)	return 0
-	if(!job.is_position_available()) return 0
-	if(jobban_isbanned(src,rank))	return 0
-	if(!job.player_old_enough(src.client))	return 0
-	if(!config.check_job_whitelist(ckey(rank), ckey))	return 0
-	if(!job.player_has_enough_pto(src.client)) return 0
-	return 1
-
-
 /mob/new_player/proc/AttemptLateSpawn(rank)
 	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified)) return
 	if (src != usr)
@@ -475,9 +464,11 @@
 	if(!config_legacy.enter_allowed)
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 		return 0
-	if(!IsJobAvailable(rank))
-		src << alert("[rank] is not available. Please try another.")
-		return 0
+	var/datum/job/J = SSjob.name_occupations[rank]
+	var/reason
+	if((reason = J.check_client_availability_one(client)) != ROLE_AVAILABLE)
+		to_chat(src, SPAN_WARNING("[rank] is not available: [J.get_availability_reason(client, reason)]"))
+		return FALSE
 	if(!spawn_checks_vr())
 		return FALSE
 	var/list/errors = list()

@@ -64,8 +64,124 @@
 	. = ..()
 	GLOB.department_accounts = GLOB.department_accounts || departments_managed
 
+/**
+ * checks slots remaining
+ *
+ * @return 0 to number of slots remaining
+ */
 /datum/job/proc/slots_remaining()
 	return max(total_positions - current_positions, 0)
+
+/**
+ * checks if we're available for a given client
+ *
+ * @params
+ * - C - client
+ * - check_char - check the current loaded character for violations
+ *
+ * todo: check ckey proc too?
+ */
+/datum/job/proc/check_client_availability(client/C, check_char)
+	if(whitelist && !config.check_job_whitelist(ckey(title), C.ckey))
+		. |= ROLE_UNAVAILABLE_WHITELIST
+	if(!slots_remaining())
+		. |= ROLE_UNAVAILABLE_SLOTS_FULL
+	if(!player_has_enough_pto(C))
+		. |= ROLE_UNAVAILABLE_PTO
+	if(jobban_isbanned(C.mob))
+		. |= ROLE_UNAVAILABLE_BANNED
+	if(!player_old_enough(C))
+		. |= ROLE_UNAVAILABLE_CONNECT_TIME
+	if(check_char)
+		var/datum/preferences/P = C.prefs
+		if(P.age < minimum_character_age)
+			. |= ROLE_UNAVAILABLE_CHAR_AGE
+		if(!P.lore_faction_job_check(src))
+			. |= ROLE_UNAVAILABLE_CHAR_FACTION
+		if(!P.characteR_species_job_check(src))
+			. |= ROLE_UNAVAILABLE_CHAR_SPECIES
+	// todo: JEXP/ROLE-EXP hours system
+
+/**
+ * checks if we're available for a given client,
+ * but short circuits with the most common checks first
+ * for efficiency
+ *
+ * @params
+ * - C - client
+ * - check_char - check the current loaded character for violations
+ *
+ * todo: check ckey proc too?
+ */
+/datum/job/proc/check_client_availability_one(client/C, check_char)
+	if(whitelist && !config.check_job_whitelist(ckey(title), C.ckey))
+		return ROLE_UNAVAILABLE_WHITELIST
+	else if(!slots_remaining())
+		return ROLE_UNAVAILABLE_SLOTS_FULL
+	else if(!player_has_enough_pto(C))
+		return ROLE_UNAVAILABLE_PTO
+	else if(jobban_isbanned(C.mob))
+		return ROLE_UNAVAILABLE_BANNED
+	else if(!player_old_enough(C))
+		return ROLE_UNAVAILABLE_CONNECT_TIME
+	if(check_char)
+		var/datum/preferences/P = C.prefs
+		if(P.age < minimum_character_age)
+			return ROLE_UNAVAILABLE_CHAR_AGE
+		if(!P.lore_faction_job_check(src))
+			return ROLE_UNAVAILABLE_CHAR_FACTION
+		if(!P.character_species_job_check(src))
+			return ROLE_UNAVAILABLE_CHAR_SPECIES
+
+	// todo: JEXP/ROLE-EXP hours system
+
+/**
+ * get an user-friendly reason of why they can't spawn as us
+ */
+/datum/job/proc/get_availability_reason(client/C, reason)
+	if(reason & ROLE_UNAVAILABLE_BANNED)
+		return "BANNED"
+	if(reason & ROLE_UNAVAILABLE_SLOTS_FULL)
+		return "Slots are currently full; Please refresh the join menu."
+	if(reason & ROLE_UNAVAILABLE_PTO)
+		return "You do not have enough stored PTO."
+	if(reason & ROLE_UNAVAILABLE_ROLE_TIME)
+		return "You do not have enough hours in the relevant department(s)."
+	if(reason & ROLE_UNAVAILABLE_WHITELIST)
+		return "This role is whitelisted."
+	if(reason & ROLE_UNAVAILABLE_CONNECT_TIME)
+		return "Your account is too new; please wait a few days or contact administration if this is in error."
+	if(reason & ROLE_UNAVAILABLE_CHAR_AGE)
+		return "Your character is too young; they must be at least [minimum_character_age] years old."
+	if(reason & ROLE_UNAVAILABLE_CHAR_FACTION)
+		return "Your character is of the wrong faction."
+	if(reason & ROLE_UNAVAILABLE_CHAR_SPECIES)
+		return "This species is not allowed in this job."
+	return "This role is available; seeing this message is a bug. How did you get here?"
+
+/**
+ * get a short abbreviation for why they can't spawn as us; used for preferences
+ */
+/datum/job/proc/get_availability_error(client/C, reason)
+	if(reason & ROLE_UNAVAILABLE_BANNED)
+		return "BANNED"
+	if(reason & ROLE_UNAVAILABLE_SLOTS_FULL)
+		return "SLOTS FULL"
+	if(reason & ROLE_UNAVAILABLE_PTO)
+		return "INSUFFICIENT PTO"
+	if(reason & ROLE_UNAVAILABLE_ROLE_TIME)
+		return "INSUFFICIENT HOURS"
+	if(reason & ROLE_UNAVAILABLE_WHITELIST)
+		return "WHITELISTED"
+	if(reason & ROLE_UNAVAILABLE_CONNECT_TIME)
+		return "IN [available_in_days(C)] DAYS"
+	if(reason & ROLE_UNAVAILABLE_CHAR_AGE)
+		return "MIN AGE: [minimum_character_age]"
+	if(reason & ROLE_UNAVAILABLE_CHAR_FACTION)
+		return "FACTION"
+	if(reason & ROLE_UNAVAILABLE_CHAR_SPECIES)
+		return "SPECIES"
+	return "UNKNOWN (BUG)"
 
 /datum/job/proc/equip(var/mob/living/carbon/human/H, var/alt_title)
 	var/datum/outfit/outfit = get_outfit(H, alt_title)

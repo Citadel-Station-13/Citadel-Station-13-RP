@@ -62,4 +62,7 @@
 	return get_character_data(CHARACTER_DATA_FACTION)
 
 /datum/preferences/proc/lore_faction_datum()
-	return SScharacters.resolve_faction(lore_faction_id())
+	return get_character_data(CHARACTER_DATA_FACTION)
+
+/datum/preferences/proc/lore_faction_job_check(datum/job/J)
+	return SScharacters.resolve_faction(get_character_data(CHARACTER_DATA_FACTION))?.check_job_id(J.id)

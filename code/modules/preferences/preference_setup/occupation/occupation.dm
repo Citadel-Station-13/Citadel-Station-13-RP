@@ -176,15 +176,9 @@
 	var/client/C = pref.client
 	if(!C)
 		return null
-	if(jobban_isbanned(C.mob, J.title))
-		return "BANNED"
-	if(!J.player_old_enough(C))
-		var/in_days = J.available_in_days(C)
-		return "IN [in_days] DAYS"
-	if(!config.check_job_whitelist(ckey(J.title), prefs.client_ckey))
-		return "WHITELISTED"
-	if(J.minimum_character_age && prefs.age < J.minimum_character_age)
-		return "MINIMUM CHARACTER AGE: [J.minimum_character_age]"
+	var/reasons = J.check_client_availability_one(C) & ~(ROLE_UNAVAILABILITY_EPHEMERAL)
+	if(reasons)
+		return J.get_availability_error(C, reasons)
 	return null
 
 /datum/category_item/player_setup_item/occupation/jobs/act(datum/preferences/prefs, mob/user, action, list/params)

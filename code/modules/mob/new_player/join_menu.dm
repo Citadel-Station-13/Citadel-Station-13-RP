@@ -132,7 +132,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
  * if so, return slots
  */
 /datum/join_menu/proc/IsJobAvailable(datum/job/J, mob/new_player/N)
-	return N.IsJobAvailable(J.title)
+	return J.check_client_availability_one(N.client) == ROLE_AVAILABLE
 
 /**
  * checks if ghostrole is available
