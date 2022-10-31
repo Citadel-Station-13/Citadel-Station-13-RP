@@ -3,7 +3,8 @@ GLOBAL_VAR_INIT(lock_client_view_y, null)
 GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64, 72, 96, 128))
 
 /datum/preferences
-    var/icon_size = 64
+	var/icon_size = 64
+
 /client
 	var/last_view_x_dim = 7
 	var/last_view_y_dim = 7
