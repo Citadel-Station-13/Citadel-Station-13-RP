@@ -17,7 +17,7 @@
 		to_chat(user, SPAN_WARNING("You cannot select another language!"))
 		return TRUE
 	var/datum/character_species/CS = character_species_datum()
-	if((L.language_flags & WHITELISTED) && !((L.id in CS.whitelist_languages) || is_lang_whitelisted(user, L)))
+	if((L.language_flags & WHITELISTED) && !((L.id in CS.whitelist_languages) || config.check_alien_whitelist(ckey(L.name), client_ckey)))
 		to_chat(user, SPAN_WARNING("[L.name] is a whitelisted language!"))
 		return FALSE
 	var/list/current = get_character_data(CHARACTER_DATA_LANGUAGES)
