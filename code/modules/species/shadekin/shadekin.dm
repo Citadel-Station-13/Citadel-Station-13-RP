@@ -182,7 +182,7 @@
 
 	var/brightness = T.get_lumcount() //Brightness in 0.0 to 1.0
 	darkness = 1-brightness //Invert
-	var/is_dark = (darkness <= 0.5)
+	var/is_dark = (darkness >= 0.5)
 
 	if(H.ability_flags & AB_PHASE_SHIFTED)
 		dark_gains = 0
