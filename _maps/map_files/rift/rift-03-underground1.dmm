@@ -1127,6 +1127,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "cG" = (
@@ -1690,12 +1691,6 @@
 /obj/structure/curtain/open/privacy,
 /turf/simulated/floor/tiled/kafel_full/white,
 /area/crew_quarters/pool)
-"dJ" = (
-/obj/machinery/atmospherics/valve/digital{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/hallway/primary/underone)
 "dK" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black,
 /obj/machinery/meter,
@@ -1777,14 +1772,6 @@
 	},
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
-/area/engineering/atmos)
-"dZ" = (
-/obj/machinery/air_sensor{
-	frequency = 1441;
-	id_tag = "n2_sensor";
-	name = "Nitrogen Tank Sensor"
-	},
-/turf/simulated/floor/reinforced/nitrogen,
 /area/engineering/atmos)
 "ea" = (
 /obj/effect/floor_decal/borderfloor{
@@ -2484,11 +2471,20 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "gD" = (
-/obj/machinery/air_sensor{
-	frequency = 1441;
-	id_tag = "tox_sensor"
+/obj/machinery/atmospherics/component/binary/pump{
+	dir = 1;
+	name = "Scrubbers to Filter"
 	},
-/turf/simulated/floor/reinforced/phoron,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 10
+	},
+/turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "gH" = (
 /turf/simulated/floor/reinforced,
@@ -2528,6 +2524,13 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
+"gT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/yellow{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "gV" = (
 /obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor/tiled,
@@ -2873,6 +2876,13 @@
 "iF" = (
 /turf/simulated/wall/r_wall,
 /area/storage/tech)
+"iI" = (
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "iO" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4;
@@ -2914,6 +2924,14 @@
 /obj/machinery/meter,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"iW" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "n2_sensor";
+	name = "Nitrogen Tank Sensor"
+	},
+/turf/simulated/floor/reinforced/nitrogen,
+/area/engineering/atmos)
 "iY" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -3067,11 +3085,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/pumpstation)
-"jH" = (
-/obj/machinery/atmospherics/portables_connector,
-/obj/machinery/atmospherics/pipe/simple/hidden/aux,
-/turf/simulated/floor/tiled,
-/area/engineering/atmos)
 "jI" = (
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
@@ -3445,6 +3458,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"ly" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "lC" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -3546,6 +3563,16 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
+"mh" = (
+/obj/machinery/atmospherics/component/unary/outlet_injector{
+	dir = 4;
+	frequency = 1441;
+	id = "o2_in";
+	power_rating = 5000;
+	use_power = 1
+	},
+/turf/simulated/floor/reinforced/oxygen,
+/area/engineering/atmos)
 "mj" = (
 /obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled/steel_grid,
@@ -3651,6 +3678,14 @@
 /obj/item/deck/cards,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"mH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/underone)
 "mL" = (
 /obj/machinery/door/airlock/glass_atmos,
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow,
@@ -3686,14 +3721,13 @@
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/underground/under1)
 "ne" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "mix_sensor";
+	name = "Waste Tank Sensor"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/aux{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/hallway/primary/underone)
+/turf/simulated/floor/reinforced/airless,
+/area/engineering/atmos)
 "ng" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -3747,6 +3781,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/public_bunker)
+"nq" = (
+/obj/machinery/atmospherics/component/binary/heat_pump{
+	use_power = 1
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "ns" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
@@ -3761,14 +3801,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/blue,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos)
-"nu" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/manifold/hidden/aux{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/hallway/primary/underone)
 "nv" = (
 /obj/machinery/pipedispenser,
 /obj/machinery/light,
@@ -4134,14 +4166,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
-"pD" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/red{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/aux,
-/obj/machinery/atmospherics/portables_connector,
-/turf/simulated/floor/tiled,
-/area/engineering/atmos)
 "pE" = (
 /obj/structure/table/steel,
 /obj/item/module/power_control,
@@ -4183,28 +4207,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/public_bunker)
-"pW" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/glass/hidden{
-	dir = 8
-	},
-/obj/effect/floor_decal/steeldecal/steel_decals5{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/aux{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/underone)
-"pX" = (
-/obj/machinery/atmospherics/pipe/simple/visible/yellow{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/aux,
-/turf/simulated/floor/tiled,
-/area/engineering/atmos)
 "qb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
 	dir = 8
@@ -4306,14 +4308,6 @@
 	},
 /turf/simulated/floor/water/pool,
 /area/crew_quarters/pool)
-"qR" = (
-/obj/machinery/air_sensor{
-	frequency = 1443;
-	id_tag = "co2_sensor";
-	output = 7
-	},
-/turf/simulated/floor/reinforced/carbon_dioxide,
-/area/engineering/atmos)
 "qT" = (
 /obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled,
@@ -4378,6 +4372,13 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/hallway/primary/underone)
+"rh" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/red{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "ri" = (
 /obj/structure/railing{
 	dir = 8
@@ -4420,6 +4421,24 @@
 /obj/item/deck/unus,
 /turf/simulated/floor/wood,
 /area/maintenance/engineering)
+"rq" = (
+/obj/machinery/atmospherics/component/unary/vent_pump{
+	dir = 4;
+	external_pressure_bound = 0;
+	external_pressure_bound_default = 0;
+	frequency = 1441;
+	icon_state = "map_vent_in";
+	id_tag = "mix_out";
+	initialize_directions = 1;
+	internal_pressure_bound = 4000;
+	internal_pressure_bound_default = 4000;
+	pressure_checks = 2;
+	pressure_checks_default = 2;
+	pump_direction = 0;
+	use_power = 1
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/engineering/atmos)
 "rs" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/wall/dungeon,
@@ -4894,11 +4913,14 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "tg" = (
-/obj/machinery/atmospherics/portables_connector{
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
-/area/engineering/atmos)
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/underone)
 "th" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -5120,24 +5142,6 @@
 /obj/effect/overlay/snow/floor/edges_new,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
-"tK" = (
-/obj/machinery/atmospherics/component/unary/vent_pump{
-	dir = 4;
-	external_pressure_bound = 0;
-	external_pressure_bound_default = 0;
-	frequency = 1441;
-	icon_state = "map_vent_in";
-	id_tag = "o2_out";
-	initialize_directions = 1;
-	internal_pressure_bound = 4000;
-	internal_pressure_bound_default = 4000;
-	pressure_checks = 2;
-	pressure_checks_default = 2;
-	pump_direction = 0;
-	use_power = 1
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/engineering/atmos)
 "tO" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -5628,6 +5632,16 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"vG" = (
+/obj/machinery/computer/general_air_control/large_tank_control{
+	input_tag = "mix_in";
+	name = "Waste Tank Control";
+	output_tag = "mix_out";
+	sensors = list("mix_sensor"="Tank");
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "vH" = (
 /obj/machinery/telecomms/server/presets/science,
 /turf/simulated/floor/tiled/dark,
@@ -6064,13 +6078,20 @@
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
 "xd" = (
-/obj/machinery/air_sensor{
-	frequency = 1441;
-	id_tag = "o2_sensor";
-	name = "Oxygen Tank Sensor"
+/obj/structure/disposalpipe/segment{
+	dir = 8
 	},
-/turf/simulated/floor/reinforced/oxygen,
-/area/engineering/atmos)
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/underone)
 "xh" = (
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/wood,
@@ -6208,11 +6229,9 @@
 /area/rift/surfacebase/underground/under1)
 "xC" = (
 /obj/effect/floor_decal/industrial/outline/blue,
-/obj/machinery/atmospherics/portables_connector{
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/obj/machinery/atmospherics/portables_connector/aux{
 	dir = 8
-	},
-/obj/machinery/portable_atmospherics/canister/nitrogen{
-	anchored = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
@@ -6230,9 +6249,6 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/aux,
-/obj/machinery/atmospherics/component/binary/pump{
-	name = "Canister into cooling pump"
-	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "xI" = (
@@ -6970,14 +6986,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
-"zY" = (
-/obj/machinery/air_sensor{
-	frequency = 1443;
-	id_tag = "mix_sensor";
-	output = 7
-	},
-/turf/simulated/floor/reinforced/airless,
-/area/engineering/atmos)
 "zZ" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -7185,13 +7193,6 @@
 /obj/item/integrated_circuit_printer,
 /turf/simulated/floor,
 /area/storage/tech)
-"AH" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/yellow{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/aux,
-/turf/simulated/floor/tiled,
-/area/engineering/atmos)
 "AJ" = (
 /obj/structure/closet/secure_closet/medical3{
 	name = "surgeon's locker"
@@ -7253,6 +7254,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"AV" = (
+/obj/machinery/air_sensor{
+	frequency = 1443;
+	id_tag = "air_sensor";
+	output = 7;
+	name = "Air Mix Tank Sensor"
+	},
+/turf/simulated/floor/reinforced/airmix,
+/area/engineering/atmos)
 "AX" = (
 /obj/machinery/light/small,
 /obj/machinery/ai_status_display{
@@ -7260,16 +7270,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/storage/tech)
-"AY" = (
-/obj/machinery/atmospherics/component/unary/outlet_injector{
-	dir = 4;
-	frequency = 1441;
-	id = "o2_in";
-	power_rating = 5000;
-	use_power = 1
-	},
-/turf/simulated/floor/reinforced/oxygen,
-/area/engineering/atmos)
 "AZ" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/sign/mining{
@@ -7578,9 +7578,10 @@
 	},
 /area/rift/surfacebase/underground/under1)
 "Cg" = (
-/obj/machinery/atmospherics/component/binary/pump{
+/obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "Ch" = (
@@ -7747,13 +7748,6 @@
 	use_power = 1
 	},
 /turf/simulated/floor/reinforced/airless,
-/area/engineering/atmos)
-"CF" = (
-/obj/machinery/air_sensor{
-	frequency = 1441;
-	id_tag = "nitrous_sensor"
-	},
-/turf/simulated/floor/reinforced/n20,
 /area/engineering/atmos)
 "CG" = (
 /obj/structure/toilet{
@@ -8372,13 +8366,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
-"EL" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
-/obj/machinery/atmospherics/pipe/simple/hidden/aux,
-/turf/simulated/floor/plating,
-/area/engineering/atmos)
 "EM" = (
 /obj/structure/window/wooden{
 	dir = 8
@@ -8452,22 +8439,6 @@
 /obj/structure/closet/crate/hydroponics,
 /obj/item/stack/material/algae,
 /turf/simulated/floor/plating,
-/area/engineering/atmos)
-"Fa" = (
-/obj/machinery/atmospherics/component/binary/pump{
-	dir = 1;
-	name = "Scrubbers to Filter"
-	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/visible/black{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/aux{
-	dir = 10
-	},
-/turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "Fc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -8548,6 +8519,11 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
+"Fp" = (
+/obj/machinery/atmospherics/portables_connector,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "Fq" = (
 /obj/item/handcuffs,
 /turf/simulated/floor/cult,
@@ -8979,6 +8955,9 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "GF" = (
@@ -9236,7 +9215,9 @@
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/obj/machinery/atmospherics/pipe/manifold/hidden/aux{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "Hs" = (
@@ -9563,6 +9544,14 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"Iy" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "o2_sensor";
+	name = "Oxygen Tank Sensor"
+	},
+/turf/simulated/floor/reinforced/oxygen,
+/area/engineering/atmos)
 "Iz" = (
 /obj/effect/floor_decal/rust,
 /obj/random/junk,
@@ -9809,7 +9798,12 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 5
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "Jr" = (
@@ -9828,6 +9822,13 @@
 	},
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"Jt" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "nitrous_sensor"
+	},
+/turf/simulated/floor/reinforced/n20,
+/area/engineering/atmos)
 "Jw" = (
 /obj/effect/zone_divider,
 /turf/simulated/mineral/icerock/lythios43c,
@@ -9896,15 +9897,6 @@
 /obj/structure/salvageable/computer,
 /turf/simulated/floor/tiled/dark,
 /area/rift/asylum/science)
-"JK" = (
-/obj/machinery/air_sensor{
-	frequency = 1443;
-	id_tag = "air_sensor";
-	output = 7;
-	name = "Air Mix Tank Sensor"
-	},
-/turf/simulated/floor/reinforced/airmix,
-/area/engineering/atmos)
 "JN" = (
 /turf/simulated/wall{
 	can_open = 1
@@ -10044,6 +10036,14 @@
 /obj/structure/salvageable/implant_container,
 /turf/simulated/floor/tiled/white,
 /area/rift/asylum/surgical)
+"Kh" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "co2_sensor";
+	name = "CO2 Tank Sensor"
+	},
+/turf/simulated/floor/reinforced/carbon_dioxide,
+/area/engineering/atmos)
 "Ki" = (
 /obj/structure/table/rack,
 /obj/random/maintenance/engineering,
@@ -10426,16 +10426,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
-"Ll" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/aux{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/hallway/primary/underone)
 "Lm" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -10971,6 +10961,13 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
+"Ne" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "tox_sensor"
+	},
+/turf/simulated/floor/reinforced/phoron,
+/area/engineering/atmos)
 "Nf" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
@@ -11418,10 +11415,6 @@
 /obj/item/barrier_tape_segment/engineering,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
-"Ow" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/aux,
-/turf/simulated/floor/tiled,
-/area/engineering/atmos)
 "Oy" = (
 /obj/structure/table/steel,
 /obj/item/folder/white,
@@ -11895,6 +11888,13 @@
 /obj/machinery/papershredder,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/longtermstorage)
+"PS" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "PT" = (
 /obj/item/material/shard,
 /turf/simulated/floor/tiled/dark,
@@ -12105,6 +12105,16 @@
 /obj/structure/catwalk/plank,
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"QO" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/underone)
 "QP" = (
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
@@ -13268,6 +13278,9 @@
 /area/rift/asylum/near_death)
 "UI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "UL" = (
@@ -13340,16 +13353,6 @@
 	can_open = 1
 	},
 /area/rift/surfacebase/underground/under1)
-"US" = (
-/obj/machinery/computer/general_air_control/large_tank_control{
-	input_tag = "mix_in";
-	name = "Mixing Chamber Control";
-	output_tag = "mix_out";
-	sensors = list("mix_sensor"="Tank");
-	dir = 4
-	},
-/turf/simulated/floor/tiled,
-/area/engineering/atmos)
 "UU" = (
 /obj/structure/bed/chair/bay{
 	dir = 8
@@ -13774,10 +13777,11 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "Wu" = (
-/obj/machinery/atmospherics/portables_connector{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/turf/simulated/floor/plating,
 /area/engineering/atmos)
 "Wv" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -29105,17 +29109,17 @@ XQ
 fF
 zW
 eT
-JK
+AV
 yU
 eT
-dZ
+iW
 nV
 eT
-xd
+Iy
 XT
 eT
 eK
-zY
+ne
 eK
 eT
 NU
@@ -29306,11 +29310,11 @@ Yx
 qp
 eT
 oa
-AY
+mh
 eT
 CE
 eK
-tK
+rq
 eT
 At
 Cs
@@ -29697,7 +29701,7 @@ eW
 VH
 MV
 pl
-US
+vG
 hu
 DI
 lN
@@ -30674,7 +30678,7 @@ xP
 Fk
 yE
 vq
-Wu
+Zx
 Zx
 BE
 qz
@@ -30841,7 +30845,7 @@ cA
 aK
 cA
 dv
-dJ
+dP
 sk
 cG
 ez
@@ -31035,7 +31039,7 @@ bJ
 rU
 aK
 NK
-nu
+mH
 kH
 oj
 HR
@@ -31046,7 +31050,7 @@ qW
 go
 Ur
 zL
-jH
+Fp
 TR
 Hz
 ZO
@@ -31229,7 +31233,7 @@ md
 aR
 aK
 df
-Ll
+QO
 ZH
 cI
 em
@@ -31423,7 +31427,7 @@ bF
 bV
 aK
 dw
-ne
+tg
 sl
 cJ
 eD
@@ -31437,20 +31441,20 @@ on
 VH
 iT
 ye
-Fa
+gD
 kP
-Ow
+ly
 Cp
-Ow
-pX
-Ow
-AH
-EL
-pD
+ly
+iI
+ly
+gT
+Wu
+rh
 xF
 fI
 hc
-tg
+Zx
 Zx
 dn
 qz
@@ -31617,7 +31621,7 @@ bE
 ba
 ci
 dy
-ne
+tg
 EH
 bA
 bA
@@ -31642,9 +31646,9 @@ av
 DI
 qt
 eX
-nO
+nq
 UY
-mo
+PS
 Zx
 Oc
 DI
@@ -31811,7 +31815,7 @@ bU
 cB
 cV
 dB
-ne
+tg
 St
 qK
 Ao
@@ -32005,7 +32009,7 @@ ae
 ae
 ae
 dF
-pW
+xd
 xU
 Kr
 KR
@@ -32199,7 +32203,7 @@ Eh
 aG
 bv
 dh
-ne
+tg
 St
 qK
 BI
@@ -32393,7 +32397,7 @@ Ph
 aG
 bx
 dh
-ne
+tg
 Ic
 oA
 re
@@ -32587,7 +32591,7 @@ Ph
 aG
 bz
 dh
-ne
+tg
 St
 qK
 Gg
@@ -32781,7 +32785,7 @@ Ph
 aG
 aT
 dh
-ne
+tg
 St
 qK
 GM
@@ -32975,7 +32979,7 @@ Ph
 aG
 aG
 dH
-ne
+tg
 St
 qK
 Bs
@@ -32986,13 +32990,13 @@ Mv
 lV
 eT
 Ot
-qR
+Kh
 eT
 Zr
-CF
+Jt
 eT
 Cz
-gD
+Ne
 eT
 eT
 Ar
@@ -33169,7 +33173,7 @@ Ph
 dm
 aG
 dM
-ne
+tg
 St
 au
 au
@@ -33363,7 +33367,7 @@ Ph
 gi
 aG
 dM
-ne
+tg
 dp
 am
 hn
@@ -33557,7 +33561,7 @@ Ph
 gi
 aG
 dM
-ne
+tg
 St
 am
 gk
@@ -33751,7 +33755,7 @@ Ph
 hP
 aG
 dR
-ne
+tg
 fu
 am
 am
