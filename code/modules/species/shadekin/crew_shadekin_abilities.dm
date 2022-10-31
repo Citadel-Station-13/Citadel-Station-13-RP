@@ -11,7 +11,7 @@
 /datum/power/crew_shadekin/crewkin_regenerate_other
 	name = "Regenerate Other (50)"
 	desc = "Spend energy to heal physical wounds in another creature."
-	verbpath = /mob/living/carbon/human/proc/regenerate_other
+	verbpath = /mob/living/carbon/human/proc/crewkin_regenerate_other
 	ability_icon_state = "tech_biomedaura"
 
 /mob/living/carbon/human/proc/crewkin_regenerate_other()
@@ -76,7 +76,7 @@
 /datum/power/crew_shadekin/crewkin_create_shade
 	name = "Create Shade (25)"
 	desc = "Create a field of darkness that follows you."
-	verbpath = /mob/living/carbon/human/proc/create_shade
+	verbpath = /mob/living/carbon/human/proc/crewkin_create_shade
 	ability_icon_state = "tech_dispelold"
 
 /mob/living/carbon/human/proc/crewkin_create_shade()

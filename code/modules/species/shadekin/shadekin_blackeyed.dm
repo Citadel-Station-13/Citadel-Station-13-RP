@@ -110,8 +110,8 @@
 	)
 
 	var/list/crew_shadekin_abilities = list(
-		/datum/power/shadekin/regenerate_other,
-		/datum/power/shadekin/create_shade,
+		/datum/power/crew_shadekin/crewkin_regenerate_other,
+		/datum/power/crew_shadekin/crewkin_create_shade,
 	)
 
 	var/list/crew_shadekin_ability_datums = list()
@@ -129,7 +129,7 @@
 /datum/species/crew_shadekin/New()
 	..()
 	for(var/power in crew_shadekin_abilities)
-		var/datum/power/shadekin/BESKP = new power(src)
+		var/datum/power/crew_shadekin/BESKP = new power(src)
 		crew_shadekin_ability_datums.Add(BESKP)
 
 /datum/species/crew_shadekin/can_breathe_water()
@@ -146,7 +146,7 @@
 	if(!H.ability_master || !istype(H.ability_master, /atom/movable/screen/movable/ability_master/crew_shadekin))
 		H.ability_master = null
 		H.ability_master = new /atom/movable/screen/movable/ability_master/crew_shadekin(H)
-	for(var/datum/power/shadekin/P in crew_shadekin_ability_datums)
+	for(var/datum/power/crew_shadekin/P in crew_shadekin_ability_datums)
 		if(!(P.verbpath in H.verbs))
 			H.verbs += P.verbpath
 			H.ability_master.add_crew_shadekin_ability(
