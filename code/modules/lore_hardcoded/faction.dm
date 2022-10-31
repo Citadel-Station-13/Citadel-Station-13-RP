@@ -314,7 +314,7 @@
 	id = "xam"
 	desc = "Xsysorr Arms and Material, also known as XAM. The only true Unathi Megacorporation, and a dealer in heavy equipment. They have cool \
 	relations with other Megacorporations, especially those owned and operated by humans. Their exports are limited primarily to industrial equipment and \
-	mining gear, along with weapons too cumbersome to use.
+	mining gear, along with weapons too cumbersome to use."
 	contractor_info = "You've been contracted as part of your obligations. Respect your role until you are disrespected."
 	job_whitelist = list(
 		JOB_ID_QUARTERMASTER,
