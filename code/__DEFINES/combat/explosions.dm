@@ -6,9 +6,9 @@
 /// global default "nominal" maxcap power; being hit by this is what causes the most severe effects like turfs completely peeling away, people gibbing, etc.
 #define EXPLOSION_CONSTANT_DEVASTATING 1000
 /// global default "nominal" heavy power; being hit by this is what causes things like turfs exploding, people taking immediately lethal damage/devastating damage, etc.
-#define EXPLOSION_CONSTANT_SEVERE (EXPLOSION_NOMINAL_MAXIMUM * 0.5)
+#define EXPLOSION_CONSTANT_SEVERE (EXPLOSION_CONSTANT_DEVASTATING * 0.5)
 /// global default "nominal" minor power; being hit by this is what causes minor wounds
-#define EXPLOSION_CONSTANT_MINOR  (EXPLOSION_NOMINAL_MAXIMUM * 0.25)
+#define EXPLOSION_CONSTANT_MINOR  (EXPLOSION_CONSTANT_DEVASTATING * 0.25)
 /// below this explosions are considered so trivial we just drop the wave
 #define EXPLOSION_CONSTANT_DROPPED 50
 
