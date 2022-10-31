@@ -203,7 +203,7 @@
 /obj/machinery/atmospherics/pipe/zpipe/down/supply,
 /obj/machinery/atmospherics/pipe/zpipe/down/scrubbers,
 /obj/structure/cable/green{
-	icon_state = "32-10"
+	icon_state = "32-2"
 	},
 /turf/simulated/open,
 /area/rnd/outpost/maintenance)
@@ -311,12 +311,6 @@
 "dU" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
-	},
-/obj/structure/cable/green{
-	icon_state = "9-10"
-	},
-/obj/structure/cable/green{
-	icon_state = "8-9"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
@@ -675,9 +669,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/cable/green{
-	icon_state = "2-9"
-	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "hV" = (
@@ -687,7 +678,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "ic" = (
@@ -833,7 +823,7 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	icon_state = "2-8"
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/outpost/washrooms)
@@ -896,7 +886,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/catwalk,
 /obj/structure/cable/green{
 	icon_state = "6-8"
 	},
@@ -990,7 +979,7 @@
 	},
 /obj/machinery/atmospherics/pipe/zpipe/down,
 /obj/structure/cable/green{
-	icon_state = "32-6"
+	icon_state = "32-2"
 	},
 /turf/simulated/open,
 /area/outpost/mining_main/outpost/maintenance)
@@ -1040,9 +1029,6 @@
 /obj/effect/floor_decal/corner/yellow/bordercorner{
 	dir = 4
 	},
-/obj/structure/cable/green{
-	icon_state = "2-5"
-	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "ma" = (
@@ -1070,9 +1056,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
-	icon_state = "2-9"
+	icon_state = "1-2"
 	},
-/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "mB" = (
@@ -1126,7 +1111,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "ns" = (
@@ -1227,7 +1211,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "4-9"
+	},
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "ok" = (
@@ -1240,7 +1226,7 @@
 	dir = 4
 	},
 /obj/structure/cable/green{
-	icon_state = "1-6"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
@@ -1251,9 +1237,6 @@
 "ot" = (
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 2
-	},
-/obj/structure/cable/green{
-	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/outpost/washrooms)
@@ -1302,7 +1285,6 @@
 /obj/structure/cable/green{
 	icon_state = "5-10"
 	},
-/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "oT" = (
@@ -1340,7 +1322,6 @@
 "pF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/rnd{
 	name = "Science Outpost Maintenance";
 	req_one_access = list(10,47)
@@ -1365,13 +1346,16 @@
 /area/rift/facility/interior/command)
 "pV" = (
 /obj/structure/cable/green{
-	icon_state = "1-6"
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
 "pY" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/underground)
@@ -1564,10 +1548,6 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	icon_state = "1-6"
-	},
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "rA" = (
@@ -1593,6 +1573,8 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/airlock/three)
 "rI" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
 	icon_state = "1-6"
 	},
@@ -1687,6 +1669,9 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "sV" = (
@@ -1695,10 +1680,10 @@
 /area/outpost/mining_main/outpost)
 "tb" = (
 /obj/structure/cable/green{
-	icon_state = "2-5"
+	icon_state = "4-8"
 	},
-/turf/simulated/floor,
-/area/rnd/outpost/maintenance)
+/turf/simulated/floor/tiled/white,
+/area/outpost/mining_main/outpost/washrooms)
 "tg" = (
 /obj/effect/map_effect/portal/line/side_b{
 	dir = 4
@@ -1804,9 +1789,6 @@
 	},
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/yellow/bordercorner,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "ux" = (
@@ -1835,6 +1817,9 @@
 /area/outpost/mining_main/outpost/washrooms)
 "uL" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/underground)
 "uP" = (
@@ -2070,6 +2055,9 @@
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 1
 	},
+/obj/structure/cable/green{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "xl" = (
@@ -2116,9 +2104,6 @@
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "xU" = (
@@ -2359,6 +2344,9 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "Ba" = (
@@ -2378,16 +2366,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/catwalk,
 /obj/structure/cable/green{
-	icon_state = "4-9"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "Be" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/rnd{
 	name = "Science Outpost Maintenance";
 	req_one_access = list(10,47)
@@ -2536,6 +2522,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "CN" = (
@@ -2600,6 +2589,9 @@
 "Dt" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/storage)
@@ -2691,7 +2683,9 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/catwalk,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "Ec" = (
@@ -2699,10 +2693,10 @@
 /area/rift/exterior/mineshaft)
 "Ee" = (
 /obj/structure/cable/green{
-	icon_state = "6-9"
+	icon_state = "2-8"
 	},
-/turf/simulated/floor,
-/area/rnd/outpost/maintenance)
+/turf/simulated/floor/tiled/white,
+/area/outpost/mining_main/outpost/washrooms)
 "Eh" = (
 /turf/simulated/open,
 /area/rift/facility/interior/elevator)
@@ -2720,7 +2714,7 @@
 	dir = 9
 	},
 /obj/structure/cable/green{
-	icon_state = "6-8"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/storage)
@@ -2793,19 +2787,6 @@
 /obj/effect/floor_decal/corner/purple/bordercorner,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/underground)
-"EY" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/catwalk,
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor,
-/area/rnd/outpost/maintenance)
 "Fa" = (
 /obj/structure/railing{
 	dir = 4
@@ -2827,11 +2808,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/outpost/underground)
 "Fw" = (
-/obj/structure/cable/green{
-	icon_state = "6-9"
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/light/small{
+	dir = 4
 	},
-/turf/simulated/floor/tiled,
-/area/rnd/outpost/underground)
+/turf/simulated/floor,
+/area/rnd/outpost/maintenance)
 "Fx" = (
 /turf/simulated/wall,
 /area/rift/facility/interior/bathrooms)
@@ -2842,9 +2825,11 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "FC" = (
-/obj/structure/catwalk,
-/turf/simulated/floor,
-/area/rnd/outpost/maintenance)
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/outpost)
 "FJ" = (
 /obj/structure/table/reinforced,
 /obj/structure/salvageable/machine,
@@ -2901,11 +2886,17 @@
 /area/outpost/mining_main/outpost/airlock/three)
 "Gm" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "Gr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/underground)
@@ -2921,7 +2912,7 @@
 "GE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
-	icon_state = "6-9"
+	icon_state = "1-6"
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/underground)
@@ -2978,9 +2969,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/structure/cable/green{
-	icon_state = "6-9"
-	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "Hk" = (
@@ -3140,7 +3128,10 @@
 	dir = 9
 	},
 /obj/structure/cable/green{
-	icon_state = "4-8"
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
@@ -3177,6 +3168,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
@@ -3371,9 +3365,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "Mt" = (
@@ -3474,7 +3465,6 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "NP" = (
@@ -3531,7 +3521,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/catwalk,
 /obj/machinery/door/airlock/maintenance/rnd{
 	name = "Science Outpost Maintenance";
 	req_one_access = list(10,47)
@@ -3726,7 +3715,7 @@
 	dir = 8
 	},
 /obj/structure/cable/green{
-	icon_state = "4-10"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
@@ -3963,6 +3952,9 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "Td" = (
@@ -3977,9 +3969,7 @@
 /area/rift/facility/interior/medical)
 "Tg" = (
 /obj/machinery/power/apc/direction_bump/south,
-/obj/structure/cable/green{
-	icon_state = "0-5"
-	},
+/obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
 "Ts" = (
@@ -4017,6 +4007,9 @@
 	},
 /obj/effect/floor_decal/corner/yellow/border{
 	dir = 1
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
@@ -4148,7 +4141,6 @@
 "Vl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/catwalk,
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "Vp" = (
@@ -4524,10 +4516,10 @@
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8
 	},
-/obj/structure/cable/green{
-	icon_state = "0-6"
-	},
 /obj/machinery/power/apc/direction_bump/west,
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/outpost/underground)
 "YK" = (
@@ -4558,10 +4550,8 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "YZ" = (
-/obj/structure/cable/green{
-	icon_state = "0-9"
-	},
 /obj/machinery/power/apc/direction_bump/south,
+/obj/structure/cable/green,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/storage)
 "Zb" = (
@@ -33458,7 +33448,7 @@ qM
 pl
 oI
 pY
-Fw
+oI
 oI
 oI
 oI
@@ -34230,9 +34220,9 @@ be
 be
 oO
 QV
-tb
-GN
-rI
+VL
+VL
+VL
 VL
 oO
 kQ
@@ -34240,7 +34230,7 @@ il
 dv
 Be
 rv
-Vl
+rI
 NO
 WQ
 oO
@@ -34424,8 +34414,8 @@ be
 be
 oO
 cD
-Vl
-Vl
+mA
+mA
 Eb
 mA
 pF
@@ -34434,7 +34424,7 @@ DW
 EE
 oO
 ap
-Ee
+VL
 oj
 eS
 oO
@@ -35017,7 +35007,7 @@ Ni
 Iq
 Iq
 VL
-EY
+Bd
 VL
 oO
 be
@@ -35410,7 +35400,7 @@ fx
 GN
 GN
 Bt
-FC
+VL
 Kx
 CU
 HV
@@ -35601,7 +35591,7 @@ Iq
 VL
 hV
 Vl
-Eb
+Fw
 Vl
 Vl
 Vl
@@ -36135,7 +36125,7 @@ CM
 sM
 Gm
 SZ
-iO
+FC
 wt
 Qn
 DM
@@ -36918,7 +36908,7 @@ ga
 Rk
 ga
 JV
-fU
+tb
 ot
 vV
 vV
@@ -37112,7 +37102,7 @@ Qj
 VG
 Ak
 vV
-fU
+Ee
 jw
 uJ
 oM
