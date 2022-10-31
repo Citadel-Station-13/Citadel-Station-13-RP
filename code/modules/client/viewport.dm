@@ -22,7 +22,7 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64, 72, 96, 128))
 /client/verb/SetWindowIconSize(val as num|text)
 	set hidden = 1
 	winset(src, "mapwindow.map", "icon-size=[val]")
-	if(prefs && val != prefs.icon_size )
+	if(prefs && val != prefs.icon_size)
 		prefs.icon_size = val
 		SScharacter_setup.queue_preferences_save(prefs)
 	OnResize()
