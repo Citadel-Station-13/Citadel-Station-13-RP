@@ -30,7 +30,7 @@
 					"X-88" = "xeightyeight-medical",
 					"Acheron" = "mechoid-Medical",
 					"Shellguard Noble" = "Noble-MED",
-					"ZOOM-BA" = "zoomba-medical"
+					"W02M" = "worm-crisis"
 					)
 
 /obj/item/robot_module/robot/medical/surgeon/Initialize(mapload)

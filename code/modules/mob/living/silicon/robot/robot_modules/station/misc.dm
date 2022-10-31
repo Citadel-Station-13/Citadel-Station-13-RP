@@ -23,7 +23,8 @@
 					"Handy" = "handy-standard",
 					"Acheron" = "mechoid-Standard",
 					"Shellguard Noble" = "Noble-STD",
-					"ZOOM-BA" = "zoomba-standard"
+					"ZOOM-BA" = "zoomba-standard",
+					"W02M" = "worm-standard"
 					)
 
 

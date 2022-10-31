@@ -27,7 +27,8 @@
 					"X-88" = "xeightyeight-engineering",
 					"Acheron" = "mechoid-Engineering",
 					"Shellguard Noble" = "Noble-ENG",
-					"ZOOM-BA" = "zoomba-engineering"
+					"ZOOM-BA" = "zoomba-engineering",
+					"W02M" = "worm-engineering"
 					)
 
 /obj/item/robot_module/robot/engineering/construction
