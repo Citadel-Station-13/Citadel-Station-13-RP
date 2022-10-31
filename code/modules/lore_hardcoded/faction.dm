@@ -308,3 +308,58 @@
 		JOB_ID_OFFDUTY_MEDBAY,
 		JOB_ID_OFFDUTY_SCIENCE
 		)
+
+/datum/lore/character_background/faction/xam
+	name = "Xsysorr Arms and Materiel"
+	id = "xam"
+	desc = "Xsysorr Arms and Material, also known as XAM. The only true Unathi Megacorporation, and a dealer in heavy equipment. They have cool \
+	relations with other Megacorporations, especially those owned and operated by humans. Their exports are limited primarily to industrial equipment and \
+	mining gear, along with weapons too cumbersome to use.
+	contractor_info = "You've been contracted as part of your obligations. Respect your role until you are disrespected."
+	job_whitelist = list(
+		JOB_ID_QUARTERMASTER,
+		JOB_ID_CARGO_TECHNICIAN,
+		JOB_ID_SHAFT_MINER,
+		JOB_ID_OFFDUTY_CARGO
+		)
+
+/datum/lore/character_background/faction/zaddatguild
+	name = "Zaddat Guild"
+	id = "zaddatguild"
+	desc = "A collection of insular specialists in a given craft. Most well-known are the Engineers, yet there exists a Guild for most technical \
+	skills. Often they have their skills contracted out for a period of time for the better interest of their Colony."
+	contractor_info = "You are a member from one of the famed Zaddat Guilds, here by agreement of the Colony. Your skill in your field is peerless, and you should not allow anyone to say otherwise. You should not prove otherwise."
+	job_whitelist = list(
+		JOB_ID_QUARTERMASTER
+		JOB_ID_CARGO_TECHNICIAN
+		JOB_ID_SHAFT_MINER
+		JOB_ID_SENIOR_RESEARCHER
+		JOB_ID_SCIENTIST
+		JOB_ID_ROBOTICIST
+		JOB_ID_PATHFINDER
+		JOB_ID_EXPLORER
+		JOB_ID_FIELD_MEDIC
+		JOB_ID_SENIOR_ENGINEER
+		JOB_ID_STATION_ENGINEER
+		JOB_ID_ATMOSPHERIC_TECHNICIAN
+		JOB_ID_HEAD_NURSE
+		JOB_ID_MEDICAL_DOCTOR
+		JOB_ID_PARAMEDIC
+		JOB_ID_CHEMIST
+		JOB_ID_PSYCHIATRIST
+		JOB_ID_PILOT
+		JOB_ID_BARTENDER
+		JOB_ID_BOTANIST
+		JOB_ID_CHEF
+		JOB_ID_JANITOR
+		JOB_ID_ENTERTAINER
+		JOB_ID_CHAPLAIN
+		JOB_ID_LIBRARIAN
+		JOB_ID_ASSISTANT
+		JOB_ID_OFFDUTY_CIVILLIAN
+		JOB_ID_OFFDUTY_EXPLORER
+		JOB_ID_OFFDUTY_MEDBAY
+		JOB_ID_OFFDUTY_CARGO
+		JOB_ID_OFFDUTY_ENGINEER
+		JOB_ID_OFFDUTY_SCIENCE
+		)
