@@ -53,4 +53,4 @@
 	icon_state = "press"
 	density = TRUE
 	anchored = TRUE
-	use_power = 0
+	use_power = USE_POWER_OFF
