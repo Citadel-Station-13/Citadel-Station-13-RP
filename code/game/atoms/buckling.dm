@@ -24,12 +24,12 @@
 	. = TRUE
 	if(A == src)
 		return FALSE
-	if(!ismob(A))
+	if(!isliving(A))	// no ghosts, only entities
 		return FALSE
 	if(!user.Adjacent(src) || !A.Adjacent(src))
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_DRAG_DROP_BUCKLE_INTERACTION, A, user) & COMPONENT_HANDLED_BUCKLE_INTERACTION)
-		return
+		return TRUE
 	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_DEFAULT_BUCKLE))
 		return FALSE
 	// todo: refactor below
@@ -52,11 +52,13 @@
 	. = TRUE
 	if(!has_buckled_mobs())
 		return FALSE
+	if(!isliving(user))
+		return FALSE
 	// todo: refactor below
 	if(user.incapacitated())
 		return TRUE
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_CLICK_UNBUCKLE_INTERACTION, user) & COMPONENT_HANDLED_BUCKLE_INTERACTION)
-		return
+		return TRUE
 	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_DEFAULT_UNBUCKLE))
 		return FALSE
 	// end

@@ -103,7 +103,7 @@
 				if(!check_core_status(C))
 					status = "<span style='color: red'>Unresponsive</span>"
 					can_access = 0
-				else if((C.avail() * 0.001) < C.active_power_usage)
+				else if((C.avail() * 1000) < C.active_power_usage)
 					status = "<span style='color: orange'>Underpowered</span>"
 				else
 					status = "<span style='color: green'>Good</span>"
@@ -175,7 +175,7 @@
 		return
 	if(C.machine_stat & BROKEN)
 		return
-	if(C.idle_power_usage > (C.avail() * 0.001))
+	if(C.idle_power_usage > (C.avail() * 1000))
 		return
 	. = 1
 

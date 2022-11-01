@@ -45,7 +45,7 @@
 			setDir(NORTH)
 	update_state()
 
-	update_nearby_tiles(need_rebuild=1)
+	update_nearby_tiles()
 
 /obj/structure/windoor_assembly/Destroy()
 	density = 0
@@ -280,12 +280,12 @@
 		to_chat(usr,"It is fastened to the floor; therefore, you can't rotate it!")
 		return 0
 	if(src.state != "01")
-		update_nearby_tiles(need_rebuild=1) //Compel updates before
+		update_nearby_tiles() //Compel updates before
 
 	src.setDir(turn(src.dir, 270))
 
 	if(src.state != "01")
-		update_nearby_tiles(need_rebuild=1)
+		update_nearby_tiles()
 
 	update_icon()
 	return

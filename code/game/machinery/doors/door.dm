@@ -70,7 +70,7 @@
 	health = maxhealth
 	update_icon()
 
-	update_nearby_tiles(need_rebuild=1)
+	update_nearby_tiles()
 
 /obj/machinery/door/Destroy()
 	density = FALSE
@@ -477,14 +477,9 @@
 	return ..(M)
 
 /obj/machinery/door/update_nearby_tiles(need_rebuild)
-	if(!air_master)
-		return 0
-
 	for(var/turf/simulated/turf in locs)
 		update_heat_protection(turf)
 		turf.queue_zone_update()
-
-	return 1
 
 /obj/machinery/door/proc/update_heat_protection(var/turf/simulated/source)
 	if(istype(source))
