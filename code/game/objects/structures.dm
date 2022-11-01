@@ -1,5 +1,6 @@
 /obj/structure
 	icon = 'icons/obj/structures.dmi'
+	plane = GAME_PLANE
 	w_class = ITEMSIZE_NO_CONTAINER
 
 	var/climbable
