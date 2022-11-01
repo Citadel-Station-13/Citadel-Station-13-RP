@@ -17,9 +17,8 @@
 /**
  * called to apply to mob
  *
- * prefs are not provided because you shouldn't be filtering at this point!
- *
  * @params
+ * - prefs - the preferences datum. This is OPTIONAL, as we can use prefs items in admin rejuv!!
  * - M - the mob in question
  * - data - our save data
  * - flags - PREF_COPY_TO_FOR_ flags

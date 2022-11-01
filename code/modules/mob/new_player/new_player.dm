@@ -592,10 +592,13 @@
 		//	new_character.real_name = pick(GLOB.clown_names)	// I hate this being here of all places but unfortunately dna is based on real_name!
 		//	new_character.rename_self("clown")
 		mind.original = new_character
+		// todo: kick vore's persist shit into new persistence system...
 		mind.loaded_from_ckey = client.ckey
 		mind.loaded_from_slot = client.prefs.default_slot
 		//mind.traits = client.prefs.traits.Copy()	// Conflict
 		mind.transfer_to(new_character)				// Won't transfer key since the mind is not active
+		//! Preferences shim: transfer stuff over
+		client.prefs.imprint_mind(mind)
 
 	new_character.name = real_name
 	new_character.dna.ready_dna(new_character)

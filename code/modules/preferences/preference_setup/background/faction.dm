@@ -32,7 +32,14 @@
 /datum/category_item/player_setup_item/background/faction/filter(datum/preferences/prefs, data, list/errors)
 	var/datum/lore/character_background/faction/current = SScharacters.resolve_faction(data)
 	if(!current?.check_species_id(prefs.character_species_id()))
-		return SScharacters.resolve_religion(/datum/lore/character_background/faction/nanotrasen).id
+		return SScharacters.resolve_faction(/datum/lore/character_background/faction/nanotrasen).id
+	// thanks papalus
+	var/datum/lore/character_background/origin/origin = prefs.lore_origin_datum()
+	if(current.origin_whitelist && !(origin.id in current.origin_whitelist))
+		return SScharacters.resolve_faction(/datum/lore/character_background/faction/nanotrasen).id
+	var/datum/lore/character_background/citizenship/citizenship = prefs.lore_citizenship_datum()
+	if(current.citizenship_whitelist && !(citizenship.id in current.citizenship_whitelist))
+		return SScharacters.resolve_faction(/datum/lore/character_background/faction/nanotrasen).id
 	return data
 
 /datum/category_item/player_setup_item/background/faction/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
@@ -46,6 +53,15 @@
 	var/datum/lore/character_background/faction/current = SScharacters.resolve_faction(data)
 	if(!current?.check_species_id(prefs.character_species_id()))
 		errors?.Add("Invalid faction for your current species.")
+		return FALSE
+	// thanks papalus
+	var/datum/lore/character_background/origin/origin = prefs.lore_origin_datum()
+	if(current.origin_whitelist && !(origin.id in current.origin_whitelist))
+		errors?.Add("Your current faction is not allowed to be chosen by your origin.")
+		return FALSE
+	var/datum/lore/character_background/citizenship/citizenship = prefs.lore_citizenship_datum()
+	if(current.citizenship_whitelist && !(citizenship.id in current.citizenship_whitelist))
+		errors?.Add("Your current faction is not allowed to be chosen by your citizenship.")
 		return FALSE
 	return TRUE
 

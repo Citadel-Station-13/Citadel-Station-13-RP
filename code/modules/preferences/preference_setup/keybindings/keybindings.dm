@@ -9,7 +9,7 @@
 	var/choice = tgalert(client.mob, "Your basic keybindings need to be reset, emotes will remain as before. Would you prefer 'hotkey' or 'classic' mode?", "Reset keybindings", "Hotkey", "Classic")
 	hotkeys = (choice != "Classic")
 	var/list/oldkeys = key_bindings
-	key_bindings = (hotkeys) ? deepCopyList(GLOB.hotkey_keybinding_list_by_key) : deepCopyList(GLOB.classic_keybinding_list_by_key)
+	key_bindings = (hotkeys) ? deep_copy_list(GLOB.hotkey_keybinding_list_by_key) : deep_copy_list(GLOB.classic_keybinding_list_by_key)
 
 	for(var/key in oldkeys)
 		if(!key_bindings[key])
@@ -182,7 +182,7 @@
 				if(choice == "Cancel")
 					return PREFERENCES_REFRESH
 				pref.hotkeys = (choice == "Hotkey")
-				pref.key_bindings = (pref.hotkeys) ? deepCopyList(GLOB.hotkey_keybinding_list_by_key) : deepCopyList(GLOB.classic_keybinding_list_by_key)
+				pref.key_bindings = (pref.hotkeys) ? deep_copy_list(GLOB.hotkey_keybinding_list_by_key) : deep_copy_list(GLOB.classic_keybinding_list_by_key)
 				user.client.update_movement_keys()
 		return PREFERENCES_REFRESH
 	return ..()

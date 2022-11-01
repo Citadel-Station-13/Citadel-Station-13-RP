@@ -11,7 +11,6 @@
 	/// list of citizenships that can select this
 	/// if null, all can select
 	var/list/citizenship_whitelist
-	#warn impl whitelists for origin/citizenship
 
 /datum/lore/character_background/faction/New()
 	// job whitelist cache

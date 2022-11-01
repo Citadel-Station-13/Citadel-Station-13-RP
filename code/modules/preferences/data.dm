@@ -154,12 +154,12 @@
 /**
  * sanitize prefs data
  */
-/datum/preferences/proc/sanitize_preference(pref)
+/datum/preferences/proc/sanitize_preference(pref, list/errors)
 	var/datum/category_item/player_setup_item/preference = preference_by_key[path]
 	if(preference.is_global)
-		return options[preference.save_key] = preference.filter(options[preference.save_key])
+		return options[preference.save_key] = preference.filter(src, options[preference.save_key], errors)
 	else
-		return character[preference.save_key] = preference.filter(character[preference.save_key])
+		return character[preference.save_key] = preference.filter(src, character[preference.save_key], errors)
 
 /**
  * resanitize everything

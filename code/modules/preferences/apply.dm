@@ -27,8 +27,6 @@
 	for(var/datum/category_item/player_setup_item/I as anything in items)
 		I.copy_to_mob(src, character, I.is_global? get_global_data(I.save_key) : get_character_data(I.save_key), flags)
 
-	#warn how do we carry character data through for other init like record injection?
-
 	// Sync up all their organs and species one final time
 	character.force_update_organs()
 //	character.s_base = s_base //doesn't work, fuck me
@@ -43,3 +41,15 @@
 	if(LAZYLEN(character.descriptors))
 		for(var/entry in body_descriptors)
 			character.descriptors[entry] = body_descriptors[entry]
+
+/**
+ * /datum/mind is usually used to semantically track someone's soul
+ * (this sounds stupid to say in a code comment but whatever)
+ *
+ * therefore if we want to get original state of a player at roundstart,
+ * we're going to want to store prefs data
+ *
+ * pref items are able to copy_to_mob without a prefs datum to support this
+ */
+/datum/preferences/proc/imprint_mind(datum/mind/M)
+	M.original_save_data = deep_copy_list(character)
