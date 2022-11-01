@@ -3,8 +3,9 @@
 	desc = "Unfinished flooring."
 	icon = 'icons/turf/flooring/plating_vr.dmi'
 	icon_state = "plating"
-	smoothing_flags = SMOOTH_CUSTOM
 	base_icon_state = "plating"
+	plane = FLOOR_PLANE
+	smoothing_flags = SMOOTH_CUSTOM
 	thermal_conductivity = 0.040
 	heat_capacity = 10000
 

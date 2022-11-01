@@ -3,23 +3,25 @@
 	name = "impassable rock"
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "rock-dark"
-	density = 1
+	density = TRUE
+	plane = GAME_PLANE
 
 /turf/simulated/mineral //wall piece
 	name = "rock"
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "rock"
+	plane = GAME_PLANE
 	smoothing_flags = SMOOTH_CUSTOM
+	initial_gas_mix = GAS_STRING_VACUUM
+	opacity = TRUE
+	density = TRUE
+	blocks_air = TRUE
+	can_dirty = FALSE
 	var/sand_icon = 'icons/turf/flooring/asteroid.dmi'
 	var/rock_side_icon_state = "rock_side"
 	var/sand_icon_state = "asteroid"
 	var/rock_icon_state = "rock"
 	var/random_icon = 0
-	initial_gas_mix = GAS_STRING_VACUUM
-	opacity = 1
-	density = 1
-	blocks_air = 1
-	can_dirty = FALSE
 
 	var/datum/ore/mineral
 	var/sand_dug
@@ -103,6 +105,7 @@
 		return
 	density = FALSE
 	opacity = FALSE
+	plane = FLOOR_PLANE
 	recalc_atom_opacity()
 	reconsider_lights()
 	blocks_air = FALSE
@@ -117,6 +120,7 @@
 		return
 	density = TRUE
 	opacity = TRUE
+	plane = GAME_PLANE
 	recalc_atom_opacity()
 	reconsider_lights()
 	blocks_air = TRUE

@@ -21,10 +21,6 @@
 
 	plane_masters[VIS_STATUS]		= new /atom/movable/screen/plane_master{plane = PLANE_STATUS}			//Status indicators that show over mob heads.
 
-	plane_masters[VIS_ADMIN1] 		= new /atom/movable/screen/plane_master{plane = PLANE_ADMIN1}			//For admin use
-	plane_masters[VIS_ADMIN2] 		= new /atom/movable/screen/plane_master{plane = PLANE_ADMIN2}			//For admin use
-	plane_masters[VIS_ADMIN3] 		= new /atom/movable/screen/plane_master{plane = PLANE_ADMIN3}			//For admin use
-
 	plane_masters[VIS_MESONS]		= new /atom/movable/screen/plane_master{plane = PLANE_MESONS} 			//Meson-specific things like open ceilings.
 
 	// Real tangible stuff planes

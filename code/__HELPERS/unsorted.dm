@@ -1542,13 +1542,6 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	/// AI Eye!
 	. += new /atom/movable/screen/plane_master{plane = PLANE_AI_EYE}
 
-	/// For admin use
-	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN1}
-	/// For admin use
-	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN2}
-	/// For admin use
-	. += new /atom/movable/screen/plane_master{plane = PLANE_ADMIN3}
-
 	/// Meson-specific things like open ceilings.
 	. += new /atom/movable/screen/plane_master{plane = PLANE_MESONS}
 	/// Things that only show up while in build mode.

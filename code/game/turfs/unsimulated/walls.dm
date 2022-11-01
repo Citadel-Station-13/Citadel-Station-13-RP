@@ -2,6 +2,7 @@
 	name = "wall"
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "riveted"
+	plane = GAME_PLANE
 	opacity = TRUE
 	density = TRUE
 	blocks_air = TRUE
