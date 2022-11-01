@@ -309,11 +309,6 @@
 	mymob.shadekin_display.icon_state = "shadekin"
 	hud_elements |= mymob.shadekin_display
 
-	mymob.crew_shadekin_display = new /atom/movable/screen/crew_shadekin()
-	mymob.crew_shadekin_display.screen_loc = ui_shadekin_display
-	mymob.crew_shadekin_display.icon_state = "shadekin"
-	hud_elements |= mymob.crew_shadekin_display
-
 	mymob.xenochimera_danger_display = new /atom/movable/screen/xenochimera/danger_level()
 	mymob.xenochimera_danger_display.screen_loc = ui_xenochimera_danger_display
 	mymob.xenochimera_danger_display.icon_state = "danger00"

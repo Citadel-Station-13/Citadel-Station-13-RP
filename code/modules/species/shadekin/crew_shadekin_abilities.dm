@@ -21,7 +21,7 @@
 
 	var/ability_cost = 50
 
-	if(species.get_species_id() != SPECIES_ID_SHADEKIN)
+	if(species.get_exact_species_id() != SPECIES_ID_SHADEKIN_BLACK_EYED)
 		to_chat(src, "<span class='warning'>Only a black-eyed shadekin can use that!</span>")
 		return FALSE
 	else if(stat)
@@ -85,7 +85,7 @@
 
 	var/ability_cost = 25
 
-	if(species.get_species_id() != SPECIES_ID_SHADEKIN)
+	if(species.get_exact_species_id() != SPECIES_ID_SHADEKIN_BLACK_EYED)
 		to_chat(src, "<span class='warning'>Only a black-eyed shadekin can use that!</span>")
 		return FALSE
 	else if(stat)

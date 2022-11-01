@@ -227,11 +227,11 @@
 
 /datum/species/crew_shadekin/proc/update_crew_shadekin_hud(mob/living/carbon/human/H)
 	var/turf/T = get_turf(H)
-	if(H.crew_shadekin_display)
+	if(H.shadekin_display)
 		var/l_icon = 0
 		var/e_icon = 0
 
-		H.crew_shadekin_display.invisibility = 0
+		H.shadekin_display.invisibility = 0
 		if(T)
 			var/brightness = T.get_lumcount() //Brightness in 0.0 to 1.0
 			var/darkness = 1-brightness //Invert
@@ -259,5 +259,5 @@
 			if(50 to INFINITY)
 				e_icon = 4
 
-		H.crew_shadekin_display.icon_state = "shadekin-[l_icon]-[e_icon]"
+		H.shadekin_display.icon_state = "shadekin-[l_icon]-[e_icon]"
 	return

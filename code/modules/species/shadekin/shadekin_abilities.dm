@@ -33,6 +33,16 @@
 
 	var/ability_cost = 100
 
+	if(species.get_species_id() != SPECIES_ID_SHADEKIN)
+		to_chat(src, SPAN_WARNING("Only a shadekin can use that!"))
+		return FALSE
+	else if(stat)
+		to_chat(src, SPAN_WARNING("Can't use that ability in your state!"))
+		return FALSE
+	else if(shadekin_get_energy() < ability_cost && !(ability_flags & AB_PHASE_SHIFTED))
+		to_chat(src, SPAN_WARNING("Not enough energy for that ability!"))
+		return FALSE
+
 	var/darkness = 1
 	var/turf/T = get_turf(src)
 	if(!T)
@@ -53,17 +63,6 @@
 		ability_cost = ability_cost + ( 15 * watcher )
 	if(!(ability_flags & AB_PHASE_SHIFTED))
 		log_debug("[src] attempted to shift with [watcher] visible Carbons with a  cost of [ability_cost] in a darkness level of [darkness]")
-
-	//var/datum/species/shadekin/SK = species
-	if(species.get_species_id() != SPECIES_ID_SHADEKIN)
-		to_chat(src, SPAN_WARNING("Only a shadekin can use that!"))
-		return FALSE
-	else if(stat)
-		to_chat(src, SPAN_WARNING("Can't use that ability in your state!"))
-		return FALSE
-	else if(shadekin_get_energy() < ability_cost && !(ability_flags & AB_PHASE_SHIFTED))
-		to_chat(src, SPAN_WARNING("Not enough energy for that ability!"))
-		return FALSE
 
 	if(!(ability_flags & AB_PHASE_SHIFTED))
 		shadekin_adjust_energy(-ability_cost)
