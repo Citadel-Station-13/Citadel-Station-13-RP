@@ -17,7 +17,6 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 	name = "shuttle wall decorator"
 	icon = 'icons/turf/fancy_shuttles/generic_preview.dmi'
 	icon_state = "walls"
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	invisibility = INVISIBILITY_MAXIMUM
 	smoothing_flags = NONE	// don't run default wall/floor behavior

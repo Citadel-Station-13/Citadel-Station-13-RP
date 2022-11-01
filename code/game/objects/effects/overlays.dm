@@ -76,7 +76,6 @@
 
 /obj/effect/overlay/snow/floor
 	icon_state = "snowfloor"
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	mouse_opacity = 0 //Don't block underlying tile interactions
 

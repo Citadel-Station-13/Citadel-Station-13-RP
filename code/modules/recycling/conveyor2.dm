@@ -10,7 +10,6 @@
 	icon_state = "conveyor0"
 	name = "conveyor belt"
 	desc = "A conveyor belt."
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	anchored = 1
 	circuit = /obj/item/circuitboard/conveyor

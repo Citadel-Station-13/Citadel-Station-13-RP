@@ -16,7 +16,6 @@
 	mob_size = MOB_SMALL
 	randomized = TRUE
 	// So fish are actually underwater.
-	plane = TURF_PLANE
 	layer = UNDERWATER_LAYER
 
 	holder_type = /obj/item/holder/fish

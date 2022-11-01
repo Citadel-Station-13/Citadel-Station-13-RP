@@ -448,7 +448,6 @@
 /obj/effect/constructing_effect
 	icon = 'icons/effects/effects_rcd.dmi'
 	icon_state = ""
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

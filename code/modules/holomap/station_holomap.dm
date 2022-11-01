@@ -19,7 +19,7 @@
 	var/light_range_on = 2
 	light_color = "#64C864"
 
-	plane = TURF_PLANE
+	plane = FLOOR_PLANE
 	layer = ABOVE_TURF_LAYER
 
 	var/mob/watching_mob = null

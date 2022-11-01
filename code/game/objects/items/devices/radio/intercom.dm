@@ -3,7 +3,6 @@
 	desc = "Talk through this."
 	icon = 'icons/obj/radio.dmi'
 	icon_state = "intercom"
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	anchored = 1
 	w_class = ITEMSIZE_LARGE

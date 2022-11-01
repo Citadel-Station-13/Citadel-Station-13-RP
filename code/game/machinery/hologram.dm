@@ -35,7 +35,6 @@ var/const/HOLOPAD_MODE = RANGE_BASED
 	icon_state = "holopad0"
 	show_messages = TRUE
 	circuit = /obj/item/circuitboard/holopad
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	var/power_per_hologram = 500 //per usage per hologram
 	idle_power_usage = 5

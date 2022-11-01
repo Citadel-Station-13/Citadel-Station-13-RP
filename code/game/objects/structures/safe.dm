@@ -170,7 +170,6 @@ FLOOR SAFES
 	icon_state = "floorsafe"
 	density = 0
 	level = 1	//underfloor
-	plane = TURF_PLANE
 	layer = ABOVE_UTILITY
 
 /obj/structure/safe/floor/Initialize(mapload)

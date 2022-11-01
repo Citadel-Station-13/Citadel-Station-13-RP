@@ -204,7 +204,6 @@
 	icon_state = "hydrant"
 	icon_closed = "hydrant"
 	icon_opened = "hydrant_open"
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	anchored = 1
 	density = 0

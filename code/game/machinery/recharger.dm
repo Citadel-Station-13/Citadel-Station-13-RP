@@ -230,7 +230,6 @@
 	desc = "A more powerful recharger designed for energy weapons."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "wrecharger0"
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	base_power_draw = 30000
 	allowed_devices = list(/obj/item/gun/energy, /obj/item/gun/magnetic, /obj/item/melee/baton, /obj/item/flashlight, /obj/item/cell/device, /obj/item/ammo_casing/microbattery, /obj/item/ammo_magazine/cell_mag, /obj/item/gun/projectile/cell_loaded)

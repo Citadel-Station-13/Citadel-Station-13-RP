@@ -38,7 +38,6 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	anchored = TRUE
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "req_comp0"
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	circuit = /obj/item/circuitboard/request
 
