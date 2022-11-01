@@ -17,7 +17,7 @@
 			drone_stat = " (Disabled)"
 		else if(matriarch.stat == DEAD)
 			drone_stat = " (Destroyed)"
-		dat += "<b>Matriarch:</b> [matriarch.designation][drone_stat]<hr>"
+		dat += "<b>Matriarch:</b> [matriarch.name][drone_stat]<hr>"
 	else
 		dat += "<b>Matriarch:</b> None<hr>"
 
@@ -32,7 +32,7 @@
 				drone_stat = " (Disabled)"
 			else if(D.stat == DEAD)
 				drone_stat = " (Destroyed)"
-			dat += " - [D.designation][drone_stat]<br>"
+			dat += " - [D.name][drone_stat]<br>"
 
 	dat += "<h2>Upgrades</h2>"
 	if(!length(DM.bought_upgrades))

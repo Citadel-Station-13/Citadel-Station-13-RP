@@ -57,7 +57,7 @@ var/global/list/drone_matrices = list()
 	if(isMatriarchDrone(D))
 		message_drones(MATRIX_DANGER("A cold wave washes over your circuits. The matriarch is dead!"))
 	else
-		message_drones(SPAN_DANGER("Your circuits spark. Drone [D.designation] has died."))
+		//message_drones(SPAN_DANGER("Your circuits spark. Drone [D.designation] has died."))
 
 /datum/drone_matrix/proc/buy_upgrade(var/upgrade_type)
 	LAZYADD(bought_upgrades, upgrade_type)

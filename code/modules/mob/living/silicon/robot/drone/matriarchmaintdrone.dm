@@ -1,4 +1,4 @@
-/datum/ghostspawner/matriarchmaintdrone
+/* /datum/ghostspawner/matriarchmaintdrone
 	short_name = "matriarchmaintdrone"
 	name = "Matriarch Maintenance Drone"
 	show_on_job_select = FALSE
@@ -22,3 +22,4 @@
 		M.set_name("[initial(M.name)] ([drone_name])")
 		M.designation = drone_name
 	return M
+*/

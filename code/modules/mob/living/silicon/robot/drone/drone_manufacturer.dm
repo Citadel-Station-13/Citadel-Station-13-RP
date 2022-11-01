@@ -23,7 +23,7 @@
 	var/drone_progress = 0
 	var/produce_drones = 2
 	var/time_last_drone = 500
-	var/drone_type = /mob/living/silicon/robot/drone/construction/matriarch
+	var/drone_type = /mob/living/silicon/robot/drone
 	var/is_spawn_safe = TRUE
 
 /obj/machinery/drone_fabricator/derelict
@@ -36,6 +36,11 @@
 	name = "mining drone fabricator"
 	fabricator_tag = "Upper Level Mining"
 	drone_type = /mob/living/silicon/robot/drone/mining
+
+/obj/machinery/drone_fabricator/matriarch
+	name = "matriarch drone fabricator"
+	fabricator_tag = "Upper Level Matriarch"
+	drone_type = /mob/living/silicon/robot/drone/construction/matriarch
 
 /obj/machinery/drone_fabricator/update_icon_state()
 	. = ..()

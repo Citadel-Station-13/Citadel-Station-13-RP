@@ -39,6 +39,9 @@
 	var/hat_y_offset = -13
 	var/serial_number = 0
 	var/name_override = 0
+	var/datum/drone_matrix/master_matrix
+	var/upgrade_cooldown = 0
+	var/list/matrix_upgrades
 
 	var/foreign_droid = FALSE
 
@@ -369,13 +372,13 @@
 /mob/living/silicon/robot/drone/construction/matriarch/shut_down()
 	return
 
-/mob/living/silicon/robot/drone/construction/matriarch/assign_player(mob/user)
+/* /mob/living/silicon/robot/drone/construction/matriarch/assign_player(mob/user)
 	. = ..()
 	//SSghostroles.remove_spawn_atom("matriarchmaintdrone", src)
 	assign_drone_to_matrix(src, matrix_tag)
 	master_matrix.message_drones(MATRIX_NOTICE("Energy surges through your circuits. The matriarch has come online."))
 
-/* /mob/living/silicon/robot/drone/construction/matriarch/do_possession(mob/abstract/observer/possessor)
+/mob/living/silicon/robot/drone/construction/matriarch/do_possession(mob/abstract/observer/possessor)
 	. = ..()
 	SSghostroles.remove_spawn_atom("matriarchmaintdrone", src)
 
