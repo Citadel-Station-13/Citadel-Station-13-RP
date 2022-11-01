@@ -381,6 +381,11 @@
 	w_class = ITEMSIZE_TINY
 	volume = 20
 
+/obj/item/reagent_containers/stone
+	name = "stone mortar"
+	desc = "A hand-crafted stone mortar, designed to hold ground up herbs and reagents."
+	icon_state = "stonebeaker"
+
 //Vials
 /obj/item/reagent_containers/glass/beaker/vial/bicaridine
 	name = "vial (bicaridine)"

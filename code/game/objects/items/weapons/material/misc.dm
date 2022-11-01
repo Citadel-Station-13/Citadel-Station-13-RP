@@ -34,6 +34,7 @@
 	name = "primitive hatchet"
 	desc = "A broad, flat piece of bone knapped to a sharp edge. A truly primitive weapon."
 	icon_state = "hatchet_bone"
+	default_material = "bone"
 
 /obj/item/material/knife/machete/hatchet/unathiknife
 	name = "duelling knife"
