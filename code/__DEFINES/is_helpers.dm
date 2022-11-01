@@ -59,11 +59,15 @@
 
 #define iscorgi(A) istype(A, /mob/living/simple_mob/animal/passive/dog/corgi)
 
+#define isDrone(A) istype(A, /mob/living/silicon/robot/drone)
+
 #define isEye(A) istype(A, /mob/observer/eye)
 
 #define ishuman(A) istype(A, /mob/living/carbon/human)
 
 #define isliving(A) istype(A, /mob/living)
+
+#define isMatriarchDrone(A) istype(A, /mob/living/silicon/robot/drone/construction/matriarch)
 
 #define ismouse(A) istype(A, /mob/living/simple_mob/animal/passive/mouse/)
 

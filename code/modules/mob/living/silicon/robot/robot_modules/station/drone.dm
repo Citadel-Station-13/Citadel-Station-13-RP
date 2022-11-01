@@ -115,3 +115,6 @@
 	src.modules += new /obj/item/storage/bag/ore(src)
 	src.modules += new /obj/item/storage/bag/sheetsnatcher/borg(src)
 	src.emag = new /obj/item/pickaxe/diamonddrill(src)
+
+/obj/item/robot_module/drone/construction/matriarch
+	name = "matriarch drone module"

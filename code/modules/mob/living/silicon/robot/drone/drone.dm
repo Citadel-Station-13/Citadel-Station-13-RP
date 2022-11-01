@@ -349,3 +349,52 @@
 /mob/living/silicon/robot/drone/mining/init()
 	..()
 	flavor_text = "It's a bulky mining drone stamped with a Grayson logo."
+
+/mob/living/silicon/robot/drone/construction/matriarch
+	name = "matriarch drone"
+	flavor_text = "It's a small matriarch drone. The casing is stamped with an corporate logo and the subscript: '%MAPNAME% Recursive Repair Systems: Heart Of The Swarm!'<br><br><b>OOC Info:</b><br><br>Matriarch drones are player-controlled synthetics which are lawed to maintain the station and not interact with anyone else, except for other drones. They are in command of all the smaller maintenance drones.<br><br>They hold a wide array of tools to build, repair, maintain, and clean. They function similarly to other synthetics, in that they require recharging regularly, have laws, and are resilient to many hazards, such as fire, radiation, vacuum, and more.<br><br>Ghosts can join the round as a matriarch drone by having a Command whitelist and accessing the 'Ghost Spawner' menu in the 'Ghost' tab.<br><br>An antagonist can use an Electromagnetic Sequencer to corrupt their laws and make them follow their orders."
+	module_type = /obj/item/robot_module/drone/construction/matriarch
+	law_type = /datum/ai_laws/matriarch_drone
+	//can_swipe = FALSE
+	maxHealth = 50
+	health = 50
+
+	var/matrix_tag
+
+/mob/living/silicon/robot/drone/construction/matriarch/Initialize()
+	. = ..()
+	//check_add_to_late_firers()
+	matrix_tag = "Atlas or Something"
+
+/mob/living/silicon/robot/drone/construction/matriarch/shut_down()
+	return
+
+/mob/living/silicon/robot/drone/construction/matriarch/assign_player(mob/user)
+	. = ..()
+	//SSghostroles.remove_spawn_atom("matriarchmaintdrone", src)
+	assign_drone_to_matrix(src, matrix_tag)
+	master_matrix.message_drones(MATRIX_NOTICE("Energy surges through your circuits. The matriarch has come online."))
+
+/* /mob/living/silicon/robot/drone/construction/matriarch/do_possession(mob/abstract/observer/possessor)
+	. = ..()
+	SSghostroles.remove_spawn_atom("matriarchmaintdrone", src)
+
+/mob/living/silicon/robot/drone/construction/matriarch/ghostize(can_reenter_corpse, should_set_timer)
+	. = ..()
+	if(can_reenter_corpse || stat == DEAD)
+		return
+	if(src in mob_list) // needs to exist to reopen spawn atom
+		if(master_matrix)
+			master_matrix.remove_drone(WEAKREF(src))
+			master_matrix.message_drones(MATRIX_NOTICE("Your circuits dull. The matriarch has gone offline."))
+			master_matrix = null
+		set_name(initial(name))
+		designation = null
+		request_player()
+
+/mob/living/silicon/robot/drone/construction/matriarch/Destroy()
+	. = ..()
+	SSghostroles.remove_spawn_atom("matriarchmaintdrone", src)
+
+/mob/living/silicon/robot/drone/construction/matriarch/request_player()
+	SSghostroles.add_spawn_atom("matriarchmaintdrone", src) */
