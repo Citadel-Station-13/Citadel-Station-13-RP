@@ -85,7 +85,8 @@
 		. += "There is enough charge for [get_amount()]."
 
 /obj/item/stack/attack_self(mob/user)
-	safety_check()
+	if(safety_check())
+		return
 	list_recipes(user)
 
 /obj/item/stack/proc/list_recipes(mob/user, recipes_sublist)
@@ -362,7 +363,7 @@
 
 /obj/item/stack/attack_hand(mob/user)
 	if(safety_check())
-		to_chat(usr, "The [name] spills on the [get_area_name(src)]!")
+		return
 	if(user.get_inactive_held_item() == src)
 		change_stack(user, 1)
 	else
