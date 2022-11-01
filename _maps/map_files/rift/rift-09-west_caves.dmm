@@ -1283,7 +1283,7 @@
 	req_one_access = list(10,47)
 	},
 /obj/structure/cable/green{
-	icon_state = "5-10"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
@@ -2055,6 +2055,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
+"xj" = (
+/obj/structure/cable/green{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor,
+/area/rnd/outpost/maintenance)
 "xl" = (
 /obj/structure/catwalk,
 /obj/machinery/light/small{
@@ -2376,7 +2382,7 @@
 /area/rnd/outpost/maintenance)
 "Bt" = (
 /obj/structure/cable/green{
-	icon_state = "1-10"
+	icon_state = "2-4"
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
@@ -3259,9 +3265,7 @@
 /obj/structure/cable/green{
 	icon_state = "16-0"
 	},
-/obj/structure/cable/green{
-	icon_state = "0-5"
-	},
+/obj/structure/cable/green,
 /turf/simulated/floor,
 /area/rnd/outpost/maintenance)
 "Ls" = (
@@ -35000,7 +35004,7 @@ VL
 oO
 be
 oO
-VL
+Bt
 Lk
 VL
 oO
@@ -35387,8 +35391,8 @@ no
 fx
 GN
 GN
-Bt
-VL
+GN
+xj
 Kx
 CU
 HV
