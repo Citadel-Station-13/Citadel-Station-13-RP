@@ -432,8 +432,8 @@
 
 /obj/structure/sign/atmos_plasma
 	icon = 'icons/obj/decals_vr.dmi'
-	name = "Plasma warning sign"
-	desc = "WARNING! Plasma flow tube. Ensure the flow is disengaged before working."
+	name = "Phoron warning sign"
+	desc = "WARNING! Phoron flow tube. Ensure the flow is disengaged before working."
 	icon_state = "atmos_plasma"
 
 /obj/structure/sign/atmos_n2
@@ -589,10 +589,15 @@
 	desc = "Warning: Oxidizing agents in this area, do not start fires!"
 	icon_state = "oxidants"
 
+/obj/structure/sign/signnew/infohazard
+	name = "INFORMATION HAZARD"
+	desc = "Warning: Information hazard. Do not enter without authorization!"
+	icon_state = "infohazard"
+
 /obj/structure/sign/signnew/memetic
-	name = "MEMETIC HAZARD"
-	desc = "Warning: Memetic hazard, wear meson goggles!"
-	icon_state = "memetic"
+	name = "COGNITOHAZARD"
+	desc = "Warning: Cognitohazard! Wear meson goggles!"
+	icon_state = "cognitohazard"
 
 //Eris departments
 
