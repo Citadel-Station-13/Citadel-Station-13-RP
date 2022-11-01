@@ -594,7 +594,7 @@
 	desc = "Warning: Information hazard. Do not enter without authorization!"
 	icon_state = "infohazard"
 
-/obj/structure/sign/signnew/memetic
+/obj/structure/sign/signnew/cognitohazard
 	name = "COGNITOHAZARD"
 	desc = "Warning: Cognitohazard! Wear meson goggles!"
 	icon_state = "cognitohazard"

@@ -2426,7 +2426,7 @@
 	req_access = list(10);
 	specialfunctions = 4
 	},
-/obj/structure/sign/signnew/memetic{
+/obj/structure/sign/signnew/cognitohazard{
 	pixel_x = -32
 	},
 /turf/simulated/floor,
@@ -3167,7 +3167,7 @@
 	pixel_x = -32;
 	pixel_y = 30
 	},
-/obj/structure/sign/signnew/memetic{
+/obj/structure/sign/signnew/cognitohazard{
 	pixel_x = -32
 	},
 /turf/simulated/floor,
