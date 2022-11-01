@@ -30,6 +30,7 @@
 					"X-88" = "xeightyeight-medical",
 					"Acheron" = "mechoid-Medical",
 					"Shellguard Noble" = "Noble-MED",
+					"ZOOM-BA" = "zoomba-medical",
 					"W02M" = "worm-crisis"
 					)
 
