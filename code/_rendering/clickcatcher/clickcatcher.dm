@@ -72,3 +72,4 @@
 	else
 		var/list/view_list = getviewsize(view)
 		click_catcher.UpdateFill(view_list[1], view_list[2])
+	#warn give this shit a pass

@@ -1,3 +1,17 @@
+/datum/config_entry/text/max_viewport_size
+	default = "19x15"
+
+/datum/config_entry/text/max_viewport_size/ValidateAndSet(str_val)
+	. = ..()
+	#warn impl
+
+/datum/config_entry/text/game_viewport_size
+	default = "19x15"
+
+/datum/config_entry/text/max_viewport_size/ValidateAndSet(str_val)
+	. = ..()
+	#warn impl
+
 /datum/config_entry/number/starlight
 	default = 2
 
@@ -51,13 +65,3 @@
 
 /datum/config_entry/flag/emojis
 	default = TRUE
-
-/datum/config_entry/number/max_client_view_x
-	default = 21
-	min_val = 15
-	max_val = 50 // Byond (the) limits
-
-/datum/config_entry/number/max_client_view_y
-	default = 15
-	min_val = 15
-	max_val = 50 // Byond (the) limits

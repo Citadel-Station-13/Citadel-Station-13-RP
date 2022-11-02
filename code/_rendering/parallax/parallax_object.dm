@@ -46,6 +46,7 @@
 		if(offset_y < -240)
 			offset_y += 480
 	screen_loc = "[map_id && "[map_id]:"]CENTER-7:[round(offset_x,1)],CENTER-7:[round(offset_y,1)]"
+	#warn give this shit a pass
 
 /atom/movable/screen/parallax_layer/proc/RelativePosition(x, y, rel_x, rel_y)
 	if(absolute)
@@ -61,6 +62,7 @@
 	if(offset_y < -240)
 		offset_y += 480
 	screen_loc = "[map_id && "[map_id]:"]CENTER-7:[round(offset_x,1)],CENTER-7:[round(offset_y,1)]"
+	#warn give this shit a pass
 
 /atom/movable/screen/parallax_layer/proc/SetView(client_view = world.view, force_update = FALSE)
 	if(view_current == client_view && !force_update)
@@ -94,6 +96,7 @@
 			clone.transform = matrix(1, 0, x * 480, 0, 1, y * 480)
 			new_overlays += clone
 	overlays = new_overlays
+	#warn give this shit a pass
 
 /atom/movable/screen/parallax_layer/proc/ShouldSee(client/C, atom/location)
 	return TRUE

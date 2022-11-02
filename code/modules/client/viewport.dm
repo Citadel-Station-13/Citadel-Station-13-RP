@@ -1,6 +1,33 @@
-GLOBAL_VAR_INIT(lock_client_view_x, null)
-GLOBAL_VAR_INIT(lock_client_view_y, null)
+// these two variables control max dynamic resize for viewport
+GLOBAL_VAR_INIT(max_client_view_x, 19)
+GLOBAL_VAR_INIT(max_client_view_y, 15)
+// these two variables **reflect** (config updates, not this!) effective default viewsize for view(), range(), etc.
+GLOBAL_VAR_INIT(game_view_x, 19)
+GLOBAL_VAR_INIT(game_view_y, 15)
+// these two variables, if set, lock all clients to a certain viewsize no matter what
+GLOBAL_VAR(lock_client_view_x)
+GLOBAL_VAR(lock_client_view_y)
+// valid icon sizes for people to set to
 GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64, 72, 96, 128))
+
+/**
+ * forces world viewsize; use for config VAS
+ */
+/datum/controller/configuration/proc/update_world_viewsize()
+	#warn impl
+
+/**
+ * forces screensize update; use for config VAS
+ */
+/datum/controller/configuration/proc/update_player_viewsize()
+	#warn impl
+
+/client
+	/// what we *think* their current viewport size is
+	var/assumed_viewport_x
+	/// what we *think* their current viewport size is
+	var/assumed_viewport_y
+
 
 /datum/preferences
 	var/icon_size = 64
@@ -29,6 +56,7 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64, 72, 96, 128))
 
 /client/verb/OnResize()
 	set hidden = 1
+	#warn if they don't scale we should do something smart to make it work kinda maybe
 	if(!is_preference_enabled(/datum/client_preference/scaling_viewport))
 		return
 	var/divisor = text2num(winget(src, "mapwindow.map", "icon-size")) || world.icon_size
@@ -66,13 +94,15 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64, 72, 96, 128))
 	update_clickcatcher()
 
 /client/verb/force_onresize_view_update()
-	set name = "Force Client View Update"
+	set name = ".viewport_refit"
+	set hidden = TRUE
 	set src = usr
 	set category = "Debug"
 	OnResize()
 
 /client/verb/show_winset_debug_values()
-	set name = "Show Client View Debug Values"
+	set name = ".viewport_debug"
+	set hidden = TRUE
 	set src = usr
 	set category = "Debug"
 

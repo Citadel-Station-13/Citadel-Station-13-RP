@@ -1,3 +1,8 @@
+## Max distance for clients to view with widescren mode enabled. Maximum: 35 in either dimension.
+MAX_VIEWPORT_SIZE 15x19
+## Effective distance used for world.view, affects stuff like AI target aquisition. Maximum: 35 in either dimension.
+GAME_VIEWPORT_SIZE 15x19
+
 ## Set to 0 to disable holidays (you monster)
 ALLOW_HOLIDAYS
 
@@ -10,7 +15,3 @@ ENGINE_SUBMAP EngineSubmap_RUST 40
 ENGINE_SUBMAP EngineSubmap_Tesla 20
 ## Singulo
 ENGINE_SUBMAP EngineSubmap_Singulo 20
-
-## Max distance for clients to view with widescren mode enabled.
-MAX_CLIENT_VIEW_X 19
-MAX_CLIENT_VIEW_Y 16
