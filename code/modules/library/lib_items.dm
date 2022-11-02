@@ -67,7 +67,7 @@
 				choice.loc = get_turf(src)
 			update_icon()
 
-/obj/structure/bookcase/ex_act(severity)
+/obj/structure/bookcase/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			for(var/obj/item/book/b in contents)

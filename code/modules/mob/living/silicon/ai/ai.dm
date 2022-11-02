@@ -867,7 +867,7 @@ var/list/ai_verbs_default = list(
 	return istype(loc, /turf)
 
 
-/mob/living/silicon/ai/ex_act(var/severity)
+/mob/living/silicon/ai/legacy_ex_act(var/severity)
 	if(severity == 1.0)
 		qdel(src)
 		return

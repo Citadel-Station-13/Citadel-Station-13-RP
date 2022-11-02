@@ -93,9 +93,9 @@
 	for(var/mob/M in src)
 		M.emp_act(severity)
 
-/obj/item/sleevecard/ex_act(severity)
+/obj/item/sleevecard/legacy_ex_act(severity)
 	if(infomorph)
-		infomorph.ex_act(severity)
+		LEGACY_EX_ACT(infomorph, severity, null)
 	else
 		qdel(src)
 

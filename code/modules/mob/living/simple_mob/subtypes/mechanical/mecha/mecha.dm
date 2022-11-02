@@ -134,7 +134,7 @@
 		return
 	..()
 
-/mob/living/simple_mob/mechanical/mecha/ex_act(severity)
+/mob/living/simple_mob/mechanical/mecha/legacy_ex_act(severity)
 	if(prob(deflect_chance))
 		severity++ // This somewhat misleadingly makes it less severe.
 		deflect_sprite()

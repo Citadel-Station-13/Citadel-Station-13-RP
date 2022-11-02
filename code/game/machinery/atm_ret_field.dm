@@ -116,7 +116,7 @@
 		spawn(rand(reboot_delay_min,reboot_delay_max))
 			generate_field()
 
-/obj/machinery/atmospheric_field_generator/ex_act(severity)
+/obj/machinery/atmospheric_field_generator/legacy_ex_act(severity)
 	switch(severity)
 		if(1)
 			disable_field()
@@ -224,7 +224,7 @@
 	else
 		visible_message("You try to touch the retention field, but pass through it like it isn't even there.")
 
-/obj/structure/atmospheric_retention_field/ex_act()
+/obj/structure/atmospheric_retention_field/legacy_ex_act()
 	return
 
 /obj/structure/atmospheric_retention_field/impassable
