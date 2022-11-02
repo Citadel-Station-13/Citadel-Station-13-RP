@@ -10,6 +10,9 @@
 	template.desc = blurb
 	template.whitelisted = !!(species_spawn_flags & SPECIES_SPAWN_WHITELISTED)
 	template.real_species_type = type
+	template.genders = genders.Copy()
+	template.min_age = min_age
+	template.max_age = max_age
 	// copy mechanics
 	template.species_flags = species_flags
 	// copy appearance
@@ -63,6 +66,12 @@
 	var/species_appearance_flags = NONE
 	/// species main flags - read species_flags.dm in __DEFINES
 	var/species_flags = NONE
+	/// allowed genders
+	var/list/genders = list(MALE, FEMALE)
+	/// minimum age
+	var/min_age = 18
+	/// maximum age
+	var/max_age = 90
 
 	//! Defaults to set for visuals
 	/// default ear path
@@ -143,6 +152,10 @@
 
 /datum/character_species/proc/get_default_language_id()
 	return default_language
+
+/datum/character_species/proc/real_species_uid()
+	var/datum/species/S = SScharacters.resolve_species_path(real_species_type)
+	return S.uid
 
 //! LORE PEOPLE, SHOVE YOUR SNOWFLAKE HERE
 

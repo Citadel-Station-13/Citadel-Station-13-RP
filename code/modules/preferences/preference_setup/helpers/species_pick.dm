@@ -3,8 +3,7 @@
 /datum/preferences/proc/species_pick(mob/user)
 	if(GLOB.species_picker_active[REF(user)])
 		return
-	var/current_species_id
-	#warn impl
+	var/current_species_id = character_species_id()
 	new /datum/tgui_species_picker(user, resolve_whitelisted_species(), current_species_id, src)
 
 /**
@@ -21,78 +20,57 @@
 /**
  * check if we can play a species
  */
-/datum/preferences/proc/check_species_id(uid)
-	var/datum/species/S = SScharacters.resolve_species_path(uid)
-	#warn impl
+/datum/preferences/proc/check_character_species(datum/character_species/CS)
+	var/datum/character_species/CS = SScharacters.resolve_species_id(uid)
+	if(CS.whitelisted && !(config.check_alien_whitelist(ckey(CS.name), client_ckey)))
+		return FALSE
+	return TRUE
 
 /datum/preferences/proc/route_species_pick(uid, mob/user)
 	// return true to close window
-#warn besure to pick real species using this as fallback for char species removals
-#warn besure to refresh
+	return species_pick_finalize(uid, user)
 
 /datum/preferences/proc/species_pick_finalize(uid, mob/user)
+	var/datum/character_species/CS = SScharacters.resolve_character_species(uid)
+	if(!CS)
+		to_chat(user, SPAN_WARNING("No species by id [uid] found; this is likely a bug!"))
+		return TRUE // close window; it shouldn't be letting us select null species
+	if(!check_character_species(CS, user))
+		return TRUE	// close window; it shouldn't be letting us select whitelisted speices
+	set_character_species(CS, user)
+	return TRUE	// yay done
 
-/datum/preferences/proc/set_character_species(datum/character_species/S, mob/user)
-
-#warn impl below :/
-/*
-
-	else if(href_list["set_species"])
-		user << browse(null, "window=species")
-		if(!pref.species_preview || !(pref.species_preview in SScharacters.all_species_names()))
-			return PREFERENCES_NOACTION
-
-		var/datum/species/setting_species
-
-		if(SScharacters.resolve_species_name(href_list["set_species"]))
-			setting_species = SScharacters.resolve_species_name(href_list["set_species"])
-		else
-			return PREFERENCES_NOACTION
-
-		if(((!(setting_species.species_spawn_flags & SPECIES_SPAWN_ALLOWED)) || (!is_alien_whitelisted(preference_mob(),setting_species))) && !check_rights(R_ADMIN, 0) && !(setting_species.species_spawn_flags & SPECIES_SPAWN_WHITELIST_SELECTABLE))
-			return PREFERENCES_NOACTION
-
-		var/prev_species = pref.species
-		pref.species = href_list["set_species"]
-		if(prev_species != pref.species)
-			if(!(pref.biological_gender in mob_species.genders))
-				pref.set_biological_gender(mob_species.genders[1])
-			pref.custom_species = null // This is cleared on species changes
-
-			//grab one of the valid hair styles for the newly chosen species
-			var/list/valid_hairstyles = pref.get_valid_hairstyles()
-
-			if(valid_hairstyles.len)
-				pref.h_style = pick(valid_hairstyles)
-			else
-				//this shouldn't happen
-				pref.h_style = hair_styles_list["Bald"]
-
-			//grab one of the valid facial hair styles for the newly chosen species
-			var/list/valid_facialhairstyles = pref.get_valid_facialhairstyles()
-
-			if(valid_facialhairstyles.len)
-				pref.f_style = pick(valid_facialhairstyles)
-			else
-				//this shouldn't happen
-				pref.f_style = facial_hair_styles_list["Shaved"]
-
-			//reset hair colour and skin colour
-			pref.r_hair = 0//hex2num(copytext(new_hair, 2, 4))
-			pref.g_hair = 0//hex2num(copytext(new_hair, 4, 6))
-			pref.b_hair = 0//hex2num(copytext(new_hair, 6, 8))
-			pref.s_tone = 0
-
-			reset_limbs() // Safety for species with incompatible manufacturers; easier than trying to do it case by case.
-			pref.body_markings.Cut() // Basically same as above.
-
-			var/min_age = get_min_age()
-			var/max_age = get_max_age()
-			pref.age = max(min(pref.age, max_age), min_age)
-
-			return PREFERENCES_REFRESH_UPDATE_PREVIEW
-*/
-
+/datum/preferences/proc/set_character_species(datum/character_species/CS, mob/user)
+	// first set their vars
+	set_preference(/datum/category_item/player_setup_item/background/real_species, CS.real_species_uid())
+	set_preference(/datum/category_item/player_setup_item/background/char_species, CS.uid)
+	// then set stuff so if they get reverted to custom species or whatever tehy don't lose their snowflake
+	custom_species = CS.uid
+	//! WARNING: SHITCODE AHEAD / LEGACY SHIMs
+	// so because the guy who made body limbs was too lazy to make sanitization, we have to fully reset it
+	// as well as some other stuff
+	// are you fucking kidding me lol
+	// gender
+	if(!(biological_gender in CS.genders))
+		biological_gender = SAFEACCESS(CS.genders, 1) || MALE
+	// hair/fhair
+	var/list/valid_hair = get_valid_hairstyles()
+	var/list/valid_fhair = get_valid_facialhairstyles()
+	if(!(h_style in valid_hair))
+		var/datum/sprite_accessory/hair/H = /datum/sprite_accessory/hair/bald
+		h_style = initial(H.name)
+	if(!(f_style in valid_hair))
+		var/datum/sprite_accessory/facial_hair/FH = /datum/sprite_accessory/facial_hair/shaved
+		f_style = initial(FH.name)
+	// limbs/markings
+	reset_limbs()
+	body_markings.Cut()
+	// age
+	age = clamp(age, CS.min_age, CS.max_age)
+	//! END
+	// then resanitize literally everything
+	player_setup.sanitize_setup()	// todo: legacy, remove
+	sanitize_everything()
 
 GLOBAL_LIST_EMPTY(species_picker_active)
 /datum/tgui_species_picker
