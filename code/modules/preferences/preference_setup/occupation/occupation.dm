@@ -308,6 +308,32 @@
 	return jobs[J.id]
 
 /**
+ * gets effective job priority of a job for current slot; used for
+ * roundstart procs. returns JOB_PRIORITY_NEVER if we can't be said job.
+ */
+/client/proc/effective_job_priority(datum/job/J)
+	if(J.check_client_availability_one(src) != ROLE_AVAILABLE)
+		return JOB_PRIORITY_NEVER
+	return prefs?.effective_job_priority(J)
+
+/**
+ * gets effective job priority of all jobs for current slot; used for
+ * roundstart procs. if we can't be said job, it isn't included.
+ *
+ * @return list of id = priority
+ */
+/client/proc/effective_job_priorities()
+	RETURN_TYPE(/list)
+	. = list()
+	var/list/priorities = sanitize_islist(prefs.get_character_data(CHARACTER_DATA_JOBS))
+	for(var/datum/job/J as anything in SSjob.all_jobs())
+		if(J.check_client_availability_one(src) != ROLE_AVAILABLE)
+			continue
+		if(!priorities[id])
+			continue
+		.[J.id] = priorities[id]
+
+/**
  * resets job prefs
  */
 /datum/preferences/proc/reset_jobs()

@@ -1,6 +1,6 @@
 /datum/controller/subsystem/job
 		//Players who need jobs
-	var/list/unassigned = list()
+	var/list/divide_unassigned = list()
 		//job_debug info
 	var/list/job_debug = list()
 		//Cache of icons for job info window
@@ -26,7 +26,7 @@
 		job_debug("Player: [player] is now Rank: [rank], JCP:[job.current_positions]")
 		player.mind.assigned_role = rank
 		player.mind.role_alt_title = GetPlayerAltTitle(player, rank)
-		unassigned -= player
+		divide_unassigned -= player
 		job.current_positions++
 		return 1
 	job_debug("AR has failed, Player: [player], Rank: [rank]")
@@ -43,7 +43,7 @@
 /datum/controller/subsystem/job/proc/FindOccupationCandidates(datum/job/job, level)
 	job_debug("Running FOC, Job: [job], Level: [level]")
 	var/list/candidates = list()
-	for(var/mob/new_player/player in unassigned)
+	for(var/mob/new_player/player in divide_unassigned)
 		var/reasons = job.check_client_availability_one(player.client)
 		if(reasons != ROLE_AVAILABLE)
 			job_debug("FOC failed for [reasons], player: [player]")
@@ -64,7 +64,7 @@
 		if(!AssignRole(player, job.title))
 			job_debug("GRJ on [job.id] for [player] AssignRole failed!!!")
 			continue
-		unassigned -= player
+		divide_unassigned -= player
 		break
 
 
@@ -137,6 +137,8 @@
  *  This proc must not have any side effect besides of modifying "assigned_role".
  **/
 /datum/controller/subsystem/job/proc/DivideOccupations()
+	/// gather for speed
+	gather_unassigned()
 	// todo: optimize this hellproc
 	//Setup new player list and get the jobs list
 	job_debug("Running DO")
@@ -148,18 +150,13 @@
 				A.spawn_positions = 3
 				break
 
-	//Get the players who are ready
-	unassigned = list()
-	for(var/mob/new_player/player in GLOB.player_list)
-		if(player.ready && player.mind && !player.mind.assigned_role)
-			unassigned += player
-
-	job_debug("DO, Len: [unassigned.len]")
-	if(unassigned.len == 0)
+	job_debug("DO, Len: [divide_unassigned.len]")
+	if(divide_unassigned.len == 0)
+		dispose_unassigned()
 		return 0
 
 	//Shuffle players and jobs
-	unassigned = shuffle(unassigned)
+	divide_unassigned = shuffle(divide_unassigned)
 
 	HandleFeedbackGathering()
 
@@ -194,8 +191,8 @@
 		//Check the head jobs first each level
 		CheckHeadPositions(level)
 
-		// Loop through all unassigned players
-		for(var/mob/new_player/player in unassigned)
+		// Loop through all divide_unassigned players
+		for(var/mob/new_player/player in divide_unassigned)
 
 			// Loop through all jobs
 			for(var/datum/job/job in shuffledoccupations) // SHUFFLE ME BABY
@@ -211,50 +208,33 @@
 					if((job.current_positions < job.spawn_positions) || job.spawn_positions == -1)
 						job_debug("DO pass, Player: [player], Level:[level], Job:[job.title]")
 						AssignRole(player, job.title)
-						unassigned -= player
+						divide_unassigned -= player
 						break
 
 	// Hand out random jobs to the people who didn't get any in the last check
 	// Also makes sure that they got their preference correct
-	for(var/mob/new_player/player in unassigned)
-		if(player.client.prefs.get_job_alternative() == JOB_ALTERNATIVE_GET_RANDOM)
+	for(var/mob/new_player/player in divide_unassigned)
+		if(divide_unassigned[player] == JOB_ALTERNATIVE_GET_RANDOM)
 			GiveRandomJob(player)
-	/*
-	Old job system
-	for(var/level = 1 to 3)
-		for(var/datum/job/job in occupations)
-			job_debug("Checking job: [job]")
-			if(!job)
-				continue
-			if(!unassigned.len)
-				break
-			if((job.current_positions >= job.spawn_positions) && job.spawn_positions != -1)
-				continue
-			var/list/candidates = FindOccupationCandidates(job, level)
-			while(candidates.len && ((job.current_positions < job.spawn_positions) || job.spawn_positions == -1))
-				var/mob/new_player/candidate = pick(candidates)
-				job_debug("Selcted: [candidate], for: [job.title]")
-				AssignRole(candidate, job.title)
-				candidates -= candidate*/
 
 	job_debug("DO, Standard Check end")
 
 	job_debug("DO, Running AC2")
 
 	// For those who wanted to be assistant if their preferences were filled, here you go.
-	for(var/mob/new_player/player in unassigned)
-		if(player.client.prefs.get_job_alternative() == JOB_ALTERNATIVE_BE_ASSISTANT)
+	for(var/mob/new_player/player in divide_unassigned)
+		if(divide_overflow[player] == JOB_ALTERNATIVE_BE_ASSISTANT)
 			job_debug("AC2 Assistant located, Player: [player]")
 			AssignRole(player, USELESS_JOB)
 
 	//For ones returning to lobby
-	for(var/mob/new_player/player in unassigned)
-		if(player.client.prefs.get_job_alternative() == JOB_ALTERNATIVE_RETURN_LOBBY)
+	for(var/mob/new_player/player in divide_unassigned)
+		if(divide_overflow[player] == JOB_ALTERNATIVE_RETURN_LOBBY)
 			player.ready = 0
 			player.new_player_panel_proc()
-			unassigned -= player
+			divide_unassigned -= player
+	dispose_unassigned()
 	return 1
-
 
 /datum/controller/subsystem/job/proc/EquipRank(mob/living/carbon/human/H, rank, joined_late = 0)
 	if(!H)
