@@ -1,6 +1,6 @@
 //TODO: Flash range does nothing currently
 
-/proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = 1, z_transfer = UP|DOWN, shaped)
+/proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = 1, z_transfer = UP|DOWN, shaped, var/keep_ores = TRUE)
 	var/multi_z_scalar = config_legacy.multi_z_explosion_scalar
 	spawn(0)
 		var/start = world.timeofday
@@ -17,9 +17,9 @@
 
 			if(adj_dev > 0 || adj_heavy > 0)
 				if(HasAbove(epicenter.z) && z_transfer & UP)
-					explosion(GetAbove(epicenter), round(adj_dev), round(adj_heavy), round(adj_light), round(adj_flash), 0, UP, shaped)
+					explosion(GetAbove(epicenter), round(adj_dev), round(adj_heavy), round(adj_light), round(adj_flash), 0, UP, shaped, keep_ores)
 				if(HasBelow(epicenter.z) && z_transfer & DOWN)
-					explosion(GetBelow(epicenter), round(adj_dev), round(adj_heavy), round(adj_light), round(adj_flash), 0, DOWN, shaped)
+					explosion(GetBelow(epicenter), round(adj_dev), round(adj_heavy), round(adj_light), round(adj_flash), 0, DOWN, shaped, keep_ores)
 
 		var/max_range = max(devastation_range, heavy_impact_range, light_impact_range, flash_range)
 
@@ -101,7 +101,11 @@
 					if(AM.flags & ATOM_ABSTRACT)
 						continue
 					AM.ex_act(dist)
-
+				if(!keep_ores)
+					if(istype(T, /turf/simulated))
+						var/turf/simulated/simT = T
+						simT.has_resources = FALSE
+						simT.resources = list()
 				T.ex_act(dist)
 
 		var/took = (world.timeofday-start)/10
