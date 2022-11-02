@@ -313,7 +313,7 @@
 
 	var/pref_path = /datum/client_preference/scaling_viewport
 	toggle_preference(pref_path)
-	SScharacter_setup.queue_preferences_save(prefs)
+	SScharacters.queue_preferences_save(prefs)
 
 	to_chat(src, "You will now [(is_preference_enabled(/datum/client_preference/scaling_viewport)) ? "see" : "not see"] more...")
 	is_preference_enabled(/datum/client_preference/scaling_viewport) ? OnResize() : change_view(world.view)
