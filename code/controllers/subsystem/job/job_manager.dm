@@ -28,7 +28,6 @@
 
 /datum/controller/subsystem/job/proc/all_job_types(faction)
 	RETURN_TYPE(/list)
-	RETURN_TYPE(/list)
 	. = list()
 	if(faction)
 		for(var/datum/job/J as anything in occupations)
@@ -41,7 +40,6 @@
 
 // todo: avoid doing this where possible, id/type is better
 /datum/controller/subsystem/job/proc/all_job_titles(faction)
-	RETURN_TYPE(/list)
 	RETURN_TYPE(/list)
 	. = list()
 	if(faction)
