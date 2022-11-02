@@ -437,15 +437,15 @@
 /turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "zx" = (
-/obj/structure/sign/signnew/memetic{
-	pixel_y = -32;
-	pixel_x = -32
-	},
 /obj/structure/sign/signnew/danger{
 	pixel_y = -32
 	},
 /obj/structure/sign/warning/bomb_range{
 	pixel_x = -32
+	},
+/obj/structure/sign/signnew/cognitohazard{
+	pixel_x = -32;
+	pixel_y = -32
 	},
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
