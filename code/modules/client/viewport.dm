@@ -7,8 +7,8 @@ GLOBAL_VAR_INIT(game_view_y, 15)
 // these two variables, if set, lock all clients to a certain viewsize no matter what
 GLOBAL_VAR(lock_client_view_x)
 GLOBAL_VAR(lock_client_view_y)
-// valid icon sizes for people to set to
-GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64, 72, 96, 128))
+// valid icon sizes for people to set to; set list an entry to string to override default "sizexsize" string.
+GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x72 (Cozy 1080p)", 96, 128 = "128x128 (4K)"))
 
 /**
  * forces world viewsize; use for config VAS
@@ -23,11 +23,44 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64, 72, 96, 128))
 	#warn impl
 
 /client
-	/// what we *think* their current viewport size is
-	var/assumed_viewport_x
-	/// what we *think* their current viewport size is
-	var/assumed_viewport_y
+	/// what we *think* their current viewport size is in pixels
+	var/assumed_viewport_spx
+	/// what we *think* their current viewport size is in pixels
+	var/assumed_viewport_spy
+	/// what we *think* their current viewport zoom is
+	var/assumed_viewport_zoom
+	/// what we *think* their current viewport letterboxing setting is
+	var/assumed_viewport_box
 
+/**
+ * called on client init to manually update viewport vars since the skin macro is only triggered on resize
+ */
+/client/proc/fetch_viewport()
+	// get vars only; they have to manually refit
+
+
+/**
+ * called directly by the skin
+ *
+ * @params
+ * - width - width of viewport in pixels
+ * - height - height of viewport in pixels
+ * - zoom - zoom of viewport
+ * - letterbox - are we letterboxing?
+ */
+/client/verb/on_viewport(width, height, zoom, letterbox)
+	// get vars
+	assumed_viewport_spx = width
+	assumed_viewport_spy = height
+	assumed_viewport_zoom = zoom
+	assumed_viewport_box = letterbox
+	// refit
+	refit_viewport()
+
+/**
+ * called to refit the viewport as necessary
+ */
+/client/proc/refit_viewport()
 
 /datum/preferences
 	var/icon_size = 64
@@ -98,7 +131,7 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64, 72, 96, 128))
 	set hidden = TRUE
 	set src = usr
 	set category = "Debug"
-	OnResize()
+	refit_viewport()
 
 /client/verb/show_winset_debug_values()
 	set name = ".viewport_debug"

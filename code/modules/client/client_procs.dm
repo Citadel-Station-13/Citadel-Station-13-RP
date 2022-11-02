@@ -375,6 +375,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	send_resources()
 
+	//? Startup rendering
+	fetch_viewport()
+	refit_viewport()
 	mob.reload_rendering()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
@@ -394,6 +397,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		if(isnum(account_age) && account_age <= 2)
 			log_and_message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([account_age] days).")
 
+	//? We are done
 	fully_created = TRUE
 
 	//////////////

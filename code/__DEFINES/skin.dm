@@ -1,0 +1,4 @@
+//! SKIN ELEMENT IDS; MAKE SURE TO UPDATE THESE WHEN CHANGING SKIN.DMF.
+
+/// main game viewport
+#define SKIN_CONTROL_ID_VIEWPORT "mapwindow.map"
