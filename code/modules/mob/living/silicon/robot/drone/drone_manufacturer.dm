@@ -4,6 +4,12 @@
 		drones++
 	return drones
 
+/proc/count_matriarchs()
+	var/matriarchs = 0
+	for(var/mob/living/silicon/robot/drone/construction/matriarch/M in player_list)
+		matriarchs++
+	return matriarchs
+
 /obj/machinery/drone_fabricator
 	name = "drone fabricator"
 	desc = "A large automated factory for producing maintenance drones."
@@ -91,6 +97,9 @@
 	if(!produce_drones || !config_legacy.allow_drone_spawn || count_drones() >= config_legacy.max_maint_drones)
 		return
 
+	if((drone_type == /mob/living/silicon/robot/drone/construction/matriarch) && (count_matriarchs() >= 0))
+		return
+
 	if(player && !istype(player.mob,/mob/observer/dead))
 		return
 
@@ -105,6 +114,7 @@
 		announce_ghost_joinleave(player, 0, "They have taken control over a maintenance drone.")
 		if(player.mob && player.mob.mind) player.mob.mind.reset()
 		new_drone.transfer_personality(player)
+		assign_drone_to_matrix(new_drone, "[GLOB.using_map.company_name]")
 
 	return new_drone
 

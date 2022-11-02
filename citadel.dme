@@ -2967,7 +2967,6 @@
 #include "code\modules\mob\living\silicon\robot\drone\drone_items.dm"
 #include "code\modules\mob\living\silicon\robot\drone\drone_manufacturer.dm"
 #include "code\modules\mob\living\silicon\robot\drone\drone_say.dm"
-#include "code\modules\mob\living\silicon\robot\drone\matriarchmaintdrone.dm"
 #include "code\modules\mob\living\silicon\robot\drone\matrix_hive.dm"
 #include "code\modules\mob\living\silicon\robot\drone\matrix_powers.dm"
 #include "code\modules\mob\living\silicon\robot\drone\swarm.dm"
