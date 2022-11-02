@@ -33,11 +33,28 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 	var/assumed_viewport_box
 
 /**
- * called on client init to manually update viewport vars since the skin macro is only triggered on resize
+ * called on client init to do this without blocking client/New
+ */
+/client/proc/init_viewport_blocking()
+	fetch_viewport()
+	refit_viewport()
+
+/**
+ * called to manually update viewport vars since the skin macro is only triggered on resize
  */
 /client/proc/fetch_viewport()
 	// get vars only; they have to manually refit
-
+	var/list/got = list2params(winget(src, SKIN_ID_VIEWPORT, "size;zoom;letterbox"))
+	assumed_viewport_zoom = got["zoom"] || 0
+	assumed_viewport_box = (got["letterbox"] == "true")
+	var/list/split = splittext(got["size"], "x")
+	if(split && split.len == 2)
+		assumed_viewport_spx = text2num(split[1]) || (WORLD_ICON_SIZE * GLOB.game_view_x)
+		assumed_viewport_spy = text2num(split[2]) || (WORLD_ICON_SIZE * GLOB.game_view_y)
+	else
+		stack_trace("fetch_viewport failed to get spx/spy")
+		assumed_viewport_spx = (WORLD_ICON_SIZE * GLOB.game_view_x)
+		assumed_viewport_spy = (WORLD_ICON_SIZE * GLOB.game_view_y)
 
 /**
  * called directly by the skin

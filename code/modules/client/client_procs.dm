@@ -376,8 +376,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	send_resources()
 
 	//? Startup rendering
-	fetch_viewport()
-	refit_viewport()
+	INVOKE_ASYNC(src, .proc/init_viewport_blocking)
 	mob.reload_rendering()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
