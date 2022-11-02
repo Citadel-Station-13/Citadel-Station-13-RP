@@ -10619,11 +10619,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
 "MQ" = (
-/obj/machinery/drone_fabricator{
-	fabricator_tag = "Engineering"
-	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
+	},
+/obj/machinery/drone_fabricator/matriarch{
+	fabricator_tag = "Engineering Matriarch"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/drone_fabrication)
