@@ -10,6 +10,12 @@
 			NP.mind.special_role = null
 	setup_occupations()
 
+// todo: "why did you not just move everything?"
+// because although splitting everything into procs that re-query the prefs every single time
+// to figure out what people want to be, which while readable and workable,
+// is hellishly slow
+// i'm going to figure out if i can speed it up BEFORE rewriting everything.
+
 /*
 /datum/controller/subsystem/job/proc/FindOccupationCandidates(datum/job/job, level, flag)
 	JobDebug("Running FOC, Job: [job], Level: [level], Flag: [flag]")
