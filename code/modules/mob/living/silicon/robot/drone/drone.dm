@@ -70,7 +70,17 @@
 	hat_x_offset = 1
 	hat_y_offset = -12
 	can_pull_mobs = MOB_PULL_SAME
-
+	can_pull_size = ITEMSIZE_HUGE
+	//holder_type = /obj/item/holder/drone/heavy
+/mob/living/silicon/robot/drone/construction/matriarch
+	name = "matriarch drone"
+	module_type = /obj/item/robot_module/drone/construction/matriarch
+	law_type = /datum/ai_laws/matriarch_drone
+	maxHealth = 50
+	health = 50
+	integrated_light_power = 4
+	name_override = 1
+	var/matrix_tag
 /mob/living/silicon/robot/drone/mining
 	icon_state = "miningdrone"
 	item_state = "constructiondrone"
@@ -123,6 +133,11 @@
 
 /mob/living/silicon/robot/drone/updatename()
 	if(name_override)
+/*		var/drone_name = sanitizeSafe(input(user, "Select a first-name suffix for your maintenance drone, for example, 'Bishop' would appear as 'matriach maintenance drone (Bishop)'. (Max length: 16 Characters)", "Name Suffix Selection"), 16)
+		if(!drone_name)
+			drone_name = pick("Ripley", "Tano", "Data")
+		real_name = "[initial(name)] ([drone_name])"
+		name = real_name */
 		return
 
 	real_name = "[initial(name)] ([serial_number])"
@@ -353,21 +368,20 @@
 	..()
 	flavor_text = "It's a bulky mining drone stamped with a Grayson logo."
 
-/mob/living/silicon/robot/drone/construction/matriarch
-	name = "matriarch drone"
-	flavor_text = "It's a small matriarch drone. The casing is stamped with an corporate logo and the subscript: '%MAPNAME% Recursive Repair Systems: Heart Of The Swarm!'<br><br><b>OOC Info:</b><br><br>Matriarch drones are player-controlled synthetics which are lawed to maintain the station and not interact with anyone else, except for other drones. They are in command of all the smaller maintenance drones.<br><br>They hold a wide array of tools to build, repair, maintain, and clean. They function similarly to other synthetics, in that they require recharging regularly, have laws, and are resilient to many hazards, such as fire, radiation, vacuum, and more.<br><br>Ghosts can join the round as a matriarch drone by having a Command whitelist and accessing the 'Ghost Spawner' menu in the 'Ghost' tab.<br><br>An antagonist can use an Electromagnetic Sequencer to corrupt their laws and make them follow their orders."
-	module_type = /obj/item/robot_module/drone/construction/matriarch
-	law_type = /datum/ai_laws/matriarch_drone
-	//can_swipe = FALSE
-	maxHealth = 50
-	health = 50
+/mob/living/silicon/robot/drone/construction/matriarch/init()
+	..()
+	flavor_text = "It's a small matriarch drone. The casing is stamped with an corporate logo and the subscript: '[GLOB.using_map.company_name] Recursive Repair Systems: Heart Of The Swarm!'"
 
-	var/matrix_tag
+/mob/living/silicon/robot/drone/construction/matriarch/welcome_drone()
+	to_chat(src, "<b>You are a matriarch maintenance drone, a tiny-brained robotic repair machine</b>.")
+	to_chat(src, "You have no individual will, no personality, and no drives or urges other than your laws.")
+	to_chat(src, "Remember,  you are <b>lawed against interference with the crew</b>. Also remember, <b>you DO NOT take orders from the AI.</b>")
+	to_chat(src, "Use <b>say ;Hello</b> to talk to other drones and <b>say Hello</b> to speak silently to your nearby fellows.")
 
 /mob/living/silicon/robot/drone/construction/matriarch/Initialize()
 	. = ..()
 	//check_add_to_late_firers()
-	matrix_tag = "Atlas or Something"
+	matrix_tag = "[GLOB.using_map.company_name]"
 
 /mob/living/silicon/robot/drone/construction/matriarch/shut_down()
 	return
