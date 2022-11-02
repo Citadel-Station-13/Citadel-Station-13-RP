@@ -623,7 +623,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["reset_limbs"])
-		reset_limbs()
+		pref.reset_limbs()
 		return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["limbs"])
@@ -857,22 +857,21 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	return ..()
 
-/datum/category_item/player_setup_item/general/body/proc/reset_limbs()
+/datum/preferences/proc/reset_limbs()
+	for(var/organ in organ_data)
+		organ_data[organ] = null
+	while(null in organ_data)
+		organ_data -= null
 
-	for(var/organ in pref.organ_data)
-		pref.organ_data[organ] = null
-	while(null in pref.organ_data)
-		pref.organ_data -= null
+	for(var/organ in rlimb_data)
+		rlimb_data[organ] = null
+	while(null in rlimb_data)
+		rlimb_data -= null
 
-	for(var/organ in pref.rlimb_data)
-		pref.rlimb_data[organ] = null
-	while(null in pref.rlimb_data)
-		pref.rlimb_data -= null
-
-	pref.regen_limbs = 1
+	regen_limbs = 1
 
 	// Sanitize the name so that there aren't any numbers sticking around.
-	var/species_name = pref.real_species_name()
-	pref.real_name          = sanitize_name(pref.real_name, species_name)
-	if(!pref.real_name)
-		pref.real_name      = random_name(pref.identifying_gender, species_name)
+	var/species_name = real_species_name()
+	real_name          = sanitize_name(real_name, species_name)
+	if(!real_name)
+		real_name      = random_name(identifying_gender, species_name)

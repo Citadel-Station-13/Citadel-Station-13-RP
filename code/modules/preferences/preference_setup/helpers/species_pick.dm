@@ -21,7 +21,6 @@
  * check if we can play a species
  */
 /datum/preferences/proc/check_character_species(datum/character_species/CS)
-	var/datum/character_species/CS = SScharacters.resolve_species_id(uid)
 	if(CS.whitelisted && !(config.check_alien_whitelist(ckey(CS.name), client_ckey)))
 		return FALSE
 	return TRUE
