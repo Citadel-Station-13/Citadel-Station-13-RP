@@ -54,13 +54,13 @@
 	if(linked)
 		user.set_machine(src)
 		user.reset_perspective(linked)
-	user.set_viewsize(world.view + extra_view)
+	user.client?.change_view(world.view + extra_view, TRUE, translocate = TRUE)
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/unlook)
 	LAZYDISTINCTADD(viewers, WEAKREF(user))
 
 /datum/tgui_module/ship/proc/unlook(var/mob/user)
 	user.reset_perspective()
-	user.set_viewsize() // reset to default
+	user.client?.change_view(world.view, translocate = FALSE) // reset to default
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 	LAZYREMOVE(viewers, WEAKREF(user))
 

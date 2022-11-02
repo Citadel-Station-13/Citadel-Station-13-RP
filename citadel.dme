@@ -1986,6 +1986,7 @@
 #include "code\modules\client\player_details.dm"
 #include "code\modules\client\spam_prevention.dm"
 #include "code\modules\client\ui_style.dm"
+#include "code\modules\client\viewport.dm"
 #include "code\modules\client\winset_wrappers.dm"
 #include "code\modules\client\verbs\minimap.dm"
 #include "code\modules\client\verbs\ooc.dm"
