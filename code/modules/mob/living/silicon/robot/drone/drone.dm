@@ -71,7 +71,7 @@
 	hat_y_offset = -12
 	can_pull_mobs = MOB_PULL_SAME
 	can_pull_size = ITEMSIZE_HUGE
-	holder_type = /obj/item/holder/drone/heavy
+	//holder_type = /obj/item/holder/drone/heavy
 /mob/living/silicon/robot/drone/construction/matriarch
 	name = "matriarch drone"
 	module_type = /obj/item/robot_module/drone/construction/matriarch
