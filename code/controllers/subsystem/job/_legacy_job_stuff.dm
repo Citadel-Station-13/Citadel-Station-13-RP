@@ -1,35 +1,35 @@
 /datum/controller/subsystem/job
 		//Players who need jobs
 	var/list/unassigned = list()
-		//Debug info
+		//job_debug info
 	var/list/job_debug = list()
 		//Cache of icons for job info window
 	var/list/job_icons = list()
 
-/datum/controller/subsystem/job/proc/Debug(text)
-	if(!GLOB.Debug2)
+/datum/controller/subsystem/job/proc/job_debug(text)
+	if(!verbose_logging)
 		return FALSE
-	job_debug.Add(text)
+	subsystem_log(text)
 	return TRUE
 
 /datum/controller/subsystem/job/proc/GetPlayerAltTitle(mob/new_player/player, rank)
 	return player.client.prefs.get_job_alt_title_name(get_job(rank))
 
 /datum/controller/subsystem/job/proc/AssignRole(mob/new_player/player, rank, latejoin = 0)
-	Debug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
+	job_debug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
 	if(player && player.mind && rank)
 		var/datum/job/job = get_job(rank)
 		var/reasons = job.check_client_availability_one(player.client)
 		if(reasons != ROLE_AVAILABLE)
-			Debug("AR failed: player [player], rank [rank], latejoin [latejoin], failed for [reasons]")
+			job_debug("AR failed: player [player], rank [rank], latejoin [latejoin], failed for [reasons]")
 			return FALSE
-		Debug("Player: [player] is now Rank: [rank], JCP:[job.current_positions]")
+		job_debug("Player: [player] is now Rank: [rank], JCP:[job.current_positions]")
 		player.mind.assigned_role = rank
 		player.mind.role_alt_title = GetPlayerAltTitle(player, rank)
 		unassigned -= player
 		job.current_positions++
 		return 1
-	Debug("AR has failed, Player: [player], Rank: [rank]")
+	job_debug("AR has failed, Player: [player], Rank: [rank]")
 	return 0
 
 /// Making additional slot on the fly.
@@ -41,39 +41,32 @@
 	return 0
 
 /datum/controller/subsystem/job/proc/FindOccupationCandidates(datum/job/job, level)
-	Debug("Running FOC, Job: [job], Level: [level]")
+	job_debug("Running FOC, Job: [job], Level: [level]")
 	var/list/candidates = list()
 	for(var/mob/new_player/player in unassigned)
 		var/reasons = job.check_client_availability_one(player.client)
 		if(reasons != ROLE_AVAILABLE)
-			Debug("FOC failed for [reasons], player: [player]")
+			job_debug("FOC failed for [reasons], player: [player]")
 			continue
 		if(player.client.prefs.get_job_priority(job) == level)
-			Debug("FOC pass, Player: [player]")
+			job_debug("FOC pass, Player: [player]")
 			candidates += player
 	return candidates
 
 
 /datum/controller/subsystem/job/proc/GiveRandomJob(mob/new_player/player)
-	Debug("GRJ Giving random job, Player: [player]")
+	job_debug("GRJ Giving random job, Player: [player]")
 	for(var/datum/job/job in shuffle(occupations))
 		var/reasons = job.check_client_availability_one(player.client)
 		if(reasons != ROLE_AVAILABLE)
-			Debug("GRJ failed for [reasons] on [job.id]")
+			job_debug("GRJ failed for [reasons] on [job.id]")
 			continue
 		if(!AssignRole(player, job.title))
-			Debug("GRJ on [job.id] for [player] AssignRole failed!!!")
+			job_debug("GRJ on [job.id] for [player] AssignRole failed!!!")
 			continue
 		unassigned -= player
 		break
 
-/datum/controller/subsystem/job/proc/ResetOccupations()
-	for(var/mob/new_player/player in player_list)
-		if((player) && (player.mind))
-			player.mind.assigned_role = null
-			player.mind.special_role = null
-	setup_occupations()
-	unassigned = list()
 
 /**
  * This proc is called before the level loop of DivideOccupations() and will try to select a head,
@@ -146,7 +139,7 @@
 /datum/controller/subsystem/job/proc/DivideOccupations()
 	// todo: optimize this hellproc
 	//Setup new player list and get the jobs list
-	Debug("Running DO")
+	job_debug("Running DO")
 
 	//Holder for Triumvirate is stored in the SSticker, this just processes it
 	if(SSticker && SSticker.triai)
@@ -156,11 +149,12 @@
 				break
 
 	//Get the players who are ready
-	for(var/mob/new_player/player in player_list)
+	unassigned = list()
+	for(var/mob/new_player/player in GLOB.player_list)
 		if(player.ready && player.mind && !player.mind.assigned_role)
 			unassigned += player
 
-	Debug("DO, Len: [unassigned.len]")
+	job_debug("DO, Len: [unassigned.len]")
 	if(unassigned.len == 0)
 		return 0
 
@@ -170,23 +164,23 @@
 	HandleFeedbackGathering()
 
 	//People who wants to be assistants, sure, go on.
-	Debug("DO, Running Assistant Check 1")
+	job_debug("DO, Running Assistant Check 1")
 	var/datum/job/assist = new DEFAULT_JOB_TYPE ()
 	var/list/assistant_candidates = FindOccupationCandidates(assist, JOB_PRIORITY_HIGH)
-	Debug("AC1, Candidates: [assistant_candidates.len]")
+	job_debug("AC1, Candidates: [assistant_candidates.len]")
 	for(var/mob/new_player/player in assistant_candidates)
-		Debug("AC1 pass, Player: [player]")
+		job_debug("AC1 pass, Player: [player]")
 		AssignRole(player, USELESS_JOB)
 		assistant_candidates -= player
-	Debug("DO, AC1 end")
+	job_debug("DO, AC1 end")
 
 	//Select one head
-	Debug("DO, Running Head Check")
+	job_debug("DO, Running Head Check")
 	FillHeadPosition()
-	Debug("DO, Head Check end")
+	job_debug("DO, Head Check end")
 
 	//Other jobs are now checked
-	Debug("DO, Running Standard Check")
+	job_debug("DO, Running Standard Check")
 
 
 	// New job giving system by Donkie
@@ -209,13 +203,13 @@
 					continue
 				var/reasons = job.check_client_availability_one(player.client)
 				if(reasons != ROLE_AVAILABLE)
-					Debug("DO failed for [reasons] on [job.id] for [player]")
+					job_debug("DO failed for [reasons] on [job.id] for [player]")
 					continue
 				// If the player wants that job on this level, then try give it to him.
 				if(player.client.prefs.get_job_priority(job) == level)
 					// If the job isn't filled
 					if((job.current_positions < job.spawn_positions) || job.spawn_positions == -1)
-						Debug("DO pass, Player: [player], Level:[level], Job:[job.title]")
+						job_debug("DO pass, Player: [player], Level:[level], Job:[job.title]")
 						AssignRole(player, job.title)
 						unassigned -= player
 						break
@@ -229,7 +223,7 @@
 	Old job system
 	for(var/level = 1 to 3)
 		for(var/datum/job/job in occupations)
-			Debug("Checking job: [job]")
+			job_debug("Checking job: [job]")
 			if(!job)
 				continue
 			if(!unassigned.len)
@@ -239,18 +233,18 @@
 			var/list/candidates = FindOccupationCandidates(job, level)
 			while(candidates.len && ((job.current_positions < job.spawn_positions) || job.spawn_positions == -1))
 				var/mob/new_player/candidate = pick(candidates)
-				Debug("Selcted: [candidate], for: [job.title]")
+				job_debug("Selcted: [candidate], for: [job.title]")
 				AssignRole(candidate, job.title)
 				candidates -= candidate*/
 
-	Debug("DO, Standard Check end")
+	job_debug("DO, Standard Check end")
 
-	Debug("DO, Running AC2")
+	job_debug("DO, Running AC2")
 
 	// For those who wanted to be assistant if their preferences were filled, here you go.
 	for(var/mob/new_player/player in unassigned)
 		if(player.client.prefs.get_job_alternative() == JOB_ALTERNATIVE_BE_ASSISTANT)
-			Debug("AC2 Assistant located, Player: [player]")
+			job_debug("AC2 Assistant located, Player: [player]")
 			AssignRole(player, USELESS_JOB)
 
 	//For ones returning to lobby
@@ -530,7 +524,7 @@
 		var/level4 = 0 //never
 		var/level5 = 0 //banned
 		var/level6 = 0 //account too young
-		for(var/mob/new_player/player in player_list)
+		for(var/mob/new_player/player in GLOB.player_list)
 			if(!(player.ready && player.mind && !player.mind.assigned_role))
 				continue //This player is not ready
 			if(jobban_isbanned(player, job.title))

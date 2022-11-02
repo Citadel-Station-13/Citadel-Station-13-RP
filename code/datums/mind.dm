@@ -41,7 +41,9 @@
 	var/memory
 	var/list/learned_recipes
 
+	// todo: id, not title
 	var/assigned_role
+	// todo: id, not title; also unify /datum/role/(job | antagonist | ghostrole)?
 	var/special_role
 
 	var/role_alt_title

@@ -65,7 +65,7 @@
 		return FALSE
 
 	if(!R.key)
-		for(var/mob/observer/dead/ghost in player_list)
+		for(var/mob/observer/dead/ghost in GLOB.player_list)
 			if(ghost.mind && ghost.mind.current == R)
 				R.key = ghost.key
 

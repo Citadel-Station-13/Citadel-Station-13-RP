@@ -37,7 +37,7 @@
 
 	HTML += "<br>"
 	HTML += "Activity of players;<br>"
-	for(var/mob/player in player_list)
+	for(var/mob/player in GLOB.player_list)
 		HTML += "    [player] ([player.key]) : [metric.assess_player_activity(player)]%<br>"
 
 

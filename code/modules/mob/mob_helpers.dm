@@ -301,7 +301,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 	if(subject && subject.forbid_seeing_deadchat && !subject.client.holder)
 		return // Can't talk in deadchat if you can't see it.
 
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.is_preference_enabled(/datum/client_preference/show_dsay))
 			var/follow
 			var/lname
@@ -332,7 +332,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 			to_chat(M, "<span class='deadsay'>" + "<b>DEAD:</b> "+ "[lname][follow][message]</span>")
 
 /proc/say_dead_object(var/message, var/obj/subject = null)
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M.client && ((!istype(M, /mob/new_player) && M.stat == DEAD) || (M.client.holder && M.client.holder.rights)) && M.is_preference_enabled(/datum/client_preference/show_dsay))
 			var/follow
 			var/lname = "Game Master"
@@ -391,7 +391,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 	// Don't notify for objects created during a mapload.
 	if(ignore_mapload && SSatoms.initialized != INITIALIZATION_INNEW_REGULAR)
 		return
-	for(var/mob/observer/dead/O in player_list)
+	for(var/mob/observer/dead/O in GLOB.player_list)
 		if(!O.client)
 			continue
 		to_chat(O, "<span class='ghostalert'>[message][(enter_link) ? " [enter_link]" : ""]</span>")

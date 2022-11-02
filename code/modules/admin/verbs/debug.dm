@@ -607,7 +607,7 @@
 
 	switch(input("Which list?") in list("Players","Admins","Mobs","Living Mobs","Dead Mobs", "Clients"))
 		if("Players")
-			to_chat(usr, jointext(player_list,","))
+			to_chat(usr, jointext(GLOB.player_list,","))
 		if("Admins")
 			to_chat(usr, jointext(admins,","))
 		if("Mobs")
@@ -706,7 +706,7 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/mob/living/carbon/human/H = input("Pick a mob with a player","Quick NIF") as null|anything in player_list
+	var/mob/living/carbon/human/H = input("Pick a mob with a player","Quick NIF") as null|anything in GLOB.player_list
 
 	if(!H)
 		return

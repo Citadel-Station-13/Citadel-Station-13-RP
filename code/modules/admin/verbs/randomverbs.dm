@@ -125,7 +125,7 @@
 		return
 
 	if(!M)
-		M = input("Direct narrate to whom?", "Active Players") as null|anything in player_list
+		M = input("Direct narrate to whom?", "Active Players") as null|anything in GLOB.player_list
 
 	if(!M)
 		return
@@ -734,7 +734,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	switch(alert("How would you like to ban someone today?", "Manual Ban", "Key List", "Enter Manually", "Cancel"))
 		if("Key List")
 			var/list/keys = list()
-			for(var/mob/M in player_list)
+			for(var/mob/M in GLOB.player_list)
 				keys += M.client
 			var/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in keys
 			if(!selection)
