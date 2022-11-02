@@ -1,3 +1,4 @@
+#warn integrate with perspectives
 /**
  * This is intended to be a full wrapper. DO NOT directly modify its values.
  * Container for client viewsize.
