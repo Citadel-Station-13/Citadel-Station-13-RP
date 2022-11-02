@@ -66,6 +66,8 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
  * - letterbox - are we letterboxing?
  */
 /client/verb/on_viewport(width, height, zoom, letterbox)
+	set name = "on_viewport"
+	set hidden = TRUE
 	// get vars
 	assumed_viewport_spx = width
 	assumed_viewport_spy = height
