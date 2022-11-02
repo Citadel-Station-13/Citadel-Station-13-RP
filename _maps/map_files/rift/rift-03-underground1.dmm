@@ -7988,15 +7988,6 @@
 /obj/random/tool,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
-"Dp" = (
-/obj/structure/grille,
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 4
-	},
-/obj/structure/window/phoronreinforced/full,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/reinforced/carbon_dioxide,
-/area/engineering/atmos)
 "Ds" = (
 /obj/structure/closet{
 	name = "Contraband: Patient 8"
@@ -12497,7 +12488,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/turf/space/basic,
+/turf/simulated/floor/plating,
 /area/engineering/atmos)
 "RY" = (
 /obj/structure/grille,
@@ -32601,7 +32592,7 @@ bG
 mQ
 if
 eT
-Dp
+oi
 RX
 eT
 oi
