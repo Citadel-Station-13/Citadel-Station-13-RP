@@ -1900,16 +1900,10 @@
 /obj/machinery/access_button/airlock_exterior{
 	master_tag = "sci_outpost";
 	pixel_x = 28;
-	pixel_y = 6
+	pixel_y = -25
 	},
-/obj/machinery/door/airlock/glass_external{
-	frequency = 1379;
-	icon_state = "door_locked";
-	id_tag = "sci_outpost_outer";
-	locked = 1
-	},
-/turf/simulated/floor/tiled,
-/area/rnd/outpost/airlock)
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/west)
 "jv" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -4842,6 +4836,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
+/obj/machinery/access_button/airlock_interior{
+	master_tag = "sci_outpost";
+	pixel_x = 28;
+	pixel_y = -25
+	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
 "xo" = (
@@ -4981,6 +4980,11 @@
 "ya" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 10
+	},
+/obj/machinery/access_button/airlock_exterior{
+	master_tag = "sci_outpost";
+	pixel_x = 28;
+	pixel_y = 25
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
@@ -5232,6 +5236,11 @@
 	tag_exterior_door = "anomaly_testing_exterior";
 	tag_interior_door = "anomaly_testing_interior";
 	tag_scrubber = "anomaly_airlock_scrubber"
+	},
+/obj/machinery/access_button{
+	frequency = 1452;
+	master_tag = "anomaly_chamber_airlock";
+	pixel_y = -25
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab/airlock)
@@ -8015,11 +8024,6 @@
 	dir = 4;
 	pixel_x = -23
 	},
-/obj/machinery/access_button{
-	frequency = 1452;
-	master_tag = "anomaly_chamber_airlock";
-	pixel_y = 25
-	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "NW" = (
@@ -8503,11 +8507,6 @@
 /area/rnd/outpost)
 "Qt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/machinery/access_button/airlock_interior{
-	master_tag = "sci_outpost";
-	pixel_x = 24;
-	pixel_y = -6
-	},
 /obj/machinery/door/airlock/glass_external{
 	frequency = 1379;
 	icon_state = "door_locked";
@@ -8628,6 +8627,11 @@
 	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
+	},
+/obj/machinery/access_button/airlock_interior{
+	master_tag = "sci_outpost";
+	pixel_x = 28;
+	pixel_y = 25
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
@@ -39841,8 +39845,8 @@ lb
 lb
 lb
 lb
-bw
 jt
+qK
 ya
 TY
 xm

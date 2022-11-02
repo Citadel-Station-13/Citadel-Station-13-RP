@@ -307,10 +307,6 @@
 	},
 /obj/structure/catwalk,
 /obj/map_helper/airlock/door/int_door,
-/obj/machinery/access_button/airlock_interior{
-	master_tag = "mining_outpost1_airlock";
-	pixel_y = -28
-	},
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost)
 "ga" = (
@@ -1521,6 +1517,14 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/undergound1)
+"BZ" = (
+/obj/machinery/access_button/airlock_exterior{
+	master_tag = "mining_outpost1_airlock";
+	pixel_y = -28;
+	pixel_x = 25
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/outpost/mining_main/outpost)
 "Ce" = (
 /obj/structure/railing,
 /turf/simulated/floor/tiled,
@@ -1626,6 +1630,11 @@
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
+	},
+/obj/machinery/access_button/airlock_exterior{
+	master_tag = "mining_outpost1_airlock";
+	pixel_y = -28;
+	pixel_x = -25
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
@@ -1928,16 +1937,14 @@
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/outpost)
 "IZ" = (
-/obj/structure/catwalk,
-/obj/machinery/door/airlock/glass_external/public{
-	name = "Mining Outpost Airlock"
-	},
-/obj/map_helper/airlock/door/ext_door,
-/obj/machinery/access_button/airlock_exterior{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/access_button/airlock_interior{
 	master_tag = "mining_outpost1_airlock";
-	pixel_y = -28
+	pixel_y = -28;
+	pixel_x = -25
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
 "Jl" = (
 /obj/machinery/mech_recharger,
@@ -2117,6 +2124,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
+/obj/machinery/embedded_controller/radio/airlock/phoron{
+	id_tag = "mining_outpost1_airlock";
+	pixel_y = 28;
+	pixel_x = -26
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
 "Nk" = (
@@ -2268,6 +2280,11 @@
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
+	},
+/obj/machinery/access_button/airlock_interior{
+	master_tag = "mining_outpost1_airlock";
+	pixel_y = -28;
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost)
@@ -2734,10 +2751,6 @@
 	name = "Mining Outpost Airlock"
 	},
 /obj/map_helper/airlock/door/ext_door,
-/obj/machinery/embedded_controller/radio/airlock/phoron{
-	id_tag = "mining_outpost1_airlock";
-	pixel_y = 26
-	},
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost)
 "WX" = (
@@ -33651,7 +33664,7 @@ TR
 QQ
 gq
 gq
-gq
+BZ
 GF
 WX
 WX
@@ -33845,7 +33858,7 @@ ox
 sV
 ga
 WW
-IZ
+WW
 ga
 ga
 Ou
@@ -34815,7 +34828,7 @@ Hi
 cs
 Ph
 fa
-SO
+IZ
 SO
 SO
 QZ

@@ -317,6 +317,11 @@
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 6
 	},
+/obj/machinery/access_button/airlock_interior{
+	master_tag = "mining_underground_airlock";
+	pixel_y = -28;
+	pixel_x = -25
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/mining_airlock)
 "tz" = (
@@ -498,6 +503,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
+/obj/machinery/embedded_controller/radio/airlock/phoron{
+	id_tag = "mining_underground_airlock";
+	pixel_y = 26;
+	pixel_x = -28
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/mining_airlock)
 "CE" = (
@@ -510,16 +520,12 @@
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "DP" = (
-/obj/structure/catwalk,
-/obj/machinery/door/airlock/glass_external/public{
-	name = "Mining Outpost Airlock"
-	},
-/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	master_tag = "mining_underground_airlock";
-	pixel_y = -28
+	pixel_y = -28;
+	pixel_x = 25
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/quartermaster/mining_airlock)
 "Es" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -542,6 +548,11 @@
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
+	},
+/obj/machinery/access_button/airlock_exterior{
+	master_tag = "mining_underground_airlock";
+	pixel_y = -28;
+	pixel_x = -25
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/mining_airlock)
@@ -694,10 +705,6 @@
 	name = "Mining Outpost Airlock"
 	},
 /obj/map_helper/airlock/door/ext_door,
-/obj/machinery/embedded_controller/radio/airlock/phoron{
-	id_tag = "mining_underground_airlock";
-	pixel_y = 26
-	},
 /turf/simulated/floor,
 /area/quartermaster/mining_airlock)
 "RU" = (
@@ -718,6 +725,11 @@
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
+	},
+/obj/machinery/access_button/airlock_interior{
+	master_tag = "mining_underground_airlock";
+	pixel_y = -28;
+	pixel_x = 25
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/mining_airlock)
@@ -760,10 +772,6 @@
 	},
 /obj/structure/catwalk,
 /obj/map_helper/airlock/door/int_door,
-/obj/machinery/access_button/airlock_interior{
-	master_tag = "mining_underground_airlock";
-	pixel_y = -28
-	},
 /turf/simulated/floor,
 /area/quartermaster/mining_airlock)
 "Vu" = (
@@ -18210,7 +18218,7 @@ TC
 ig
 TC
 TC
-TC
+DP
 ig
 KS
 KS
@@ -18404,7 +18412,7 @@ TC
 QE
 jJ
 RE
-DP
+RE
 jJ
 QE
 KS

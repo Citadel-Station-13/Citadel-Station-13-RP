@@ -3787,6 +3787,14 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"nM" = (
+/obj/machinery/access_button/airlock_exterior{
+	master_tag = "public_underground1_airlock";
+	pixel_y = -28;
+	pixel_x = 25
+	},
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "nO" = (
 /obj/machinery/atmospherics/component/binary/heat_pump,
 /turf/simulated/floor/tiled,
@@ -5683,6 +5691,14 @@
 /obj/structure/bed/chair/bay,
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
+"wl" = (
+/obj/machinery/access_button/airlock_interior{
+	master_tag = "public_underground1_airlock";
+	pixel_y = -28;
+	pixel_x = -25
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/underone)
 "wm" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
@@ -7923,6 +7939,11 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
+/obj/machinery/access_button/airlock_interior{
+	master_tag = "public_underground1_airlock";
+	pixel_y = -28;
+	pixel_x = 25
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
 "DL" = (
@@ -8473,11 +8494,11 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden,
-/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/airlock_sensor/phoron{
-	pixel_x = 30;
+	pixel_x = 28;
 	pixel_y = 28
 	},
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
 "FG" = (
@@ -12260,7 +12281,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/turf/space/basic,
+/turf/simulated/floor/reinforced/carbon_dioxide,
 /area/engineering/atmos)
 "RY" = (
 /obj/structure/grille,
@@ -12541,10 +12562,6 @@
 	},
 /obj/structure/catwalk,
 /obj/map_helper/airlock/door/int_door,
-/obj/machinery/access_button/airlock_interior{
-	master_tag = "public_underground1_airlock";
-	pixel_y = -28
-	},
 /turf/simulated/floor,
 /area/hallway/primary/underone)
 "Ta" = (
@@ -12873,18 +12890,6 @@
 /obj/machinery/door/airlock/lift,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/turbolift/rmine/under1)
-"Uh" = (
-/obj/structure/catwalk,
-/obj/machinery/door/airlock/glass_external/public{
-	name = "Mining Outpost Airlock"
-	},
-/obj/map_helper/airlock/door/ext_door,
-/obj/machinery/access_button/airlock_exterior{
-	master_tag = "public_underground1_airlock";
-	pixel_y = -28
-	},
-/turf/simulated/floor,
-/area/hallway/primary/underone)
 "Uk" = (
 /obj/structure/dispenser/oxygen,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -13352,6 +13357,11 @@
 	frequency = 1379
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
+/obj/machinery/embedded_controller/radio/airlock/phoron{
+	id_tag = "public_underground1_airlock";
+	pixel_x = -26;
+	pixel_y = -4
+	},
 /turf/simulated/floor/plating,
 /area/hallway/primary/underone)
 "VN" = (
@@ -13417,10 +13427,6 @@
 	name = "Mining Outpost Airlock"
 	},
 /obj/map_helper/airlock/door/ext_door,
-/obj/machinery/embedded_controller/radio/airlock/phoron{
-	id_tag = "public_underground1_airlock";
-	pixel_y = 26
-	},
 /turf/simulated/floor,
 /area/hallway/primary/underone)
 "Wd" = (
@@ -13533,6 +13539,11 @@
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
+	},
+/obj/machinery/access_button/airlock_exterior{
+	master_tag = "public_underground1_airlock";
+	pixel_y = -28;
+	pixel_x = -25
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
@@ -20686,7 +20697,7 @@ xS
 Yu
 OO
 OO
-OO
+nM
 ig
 OO
 uj
@@ -20880,7 +20891,7 @@ xS
 Yu
 bA
 Wc
-Uh
+Wc
 bA
 bA
 OO
@@ -21850,7 +21861,7 @@ NH
 Yu
 dP
 Se
-dP
+wl
 dP
 dP
 dP

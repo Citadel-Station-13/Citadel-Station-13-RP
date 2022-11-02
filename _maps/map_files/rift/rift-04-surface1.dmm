@@ -3185,6 +3185,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 5
 	},
+/obj/machinery/access_button/airlock_exterior{
+	dir = 8;
+	master_tag = "central_airlock_two";
+	pixel_x = -25;
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
 "cqd" = (
@@ -3625,12 +3631,6 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
-	},
-/obj/machinery/access_button/airlock_interior{
-	dir = 4;
-	master_tag = "central_airlock";
-	pixel_x = 2;
-	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
@@ -4951,12 +4951,6 @@
 	power_rating = 10000
 	},
 /obj/map_helper/airlock/atmos/chamber_pump,
-/obj/machinery/embedded_controller/radio/airlock/phoron{
-	id_tag = "shop_airlock";
-	name = "Frost Lock Controller";
-	pixel_x = -6;
-	pixel_y = 26
-	},
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
 "drN" = (
@@ -10079,6 +10073,17 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
+/obj/machinery/access_button/airlock_exterior{
+	master_tag = "shop_airlock";
+	pixel_x = 26;
+	pixel_y = -25
+	},
+/obj/machinery/embedded_controller/radio/airlock/phoron{
+	id_tag = "shop_airlock";
+	name = "Frost Lock Controller";
+	pixel_x = 38;
+	pixel_y = -28
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/trade_shop)
 "gSB" = (
@@ -10924,6 +10929,11 @@
 "hmr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/effect/floor_decal/corner/red/diagonal,
+/obj/machinery/access_button/airlock_interior{
+	master_tag = "shop_airlock";
+	pixel_x = 26;
+	pixel_y = -25
+	},
 /turf/simulated/floor/tiled/white,
 /area/rift/trade_shop)
 "hmw" = (
@@ -12441,12 +12451,6 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
-	},
-/obj/machinery/access_button/airlock_interior{
-	dir = 4;
-	master_tag = "central_airlock_two";
-	pixel_x = 2;
-	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
@@ -18839,6 +18843,21 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
+"mgs" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor/grav_surround{
+	dir = 8
+	},
+/obj/machinery/access_button/airlock_exterior{
+	dir = 8;
+	master_tag = "central_airlock_two";
+	pixel_x = 25;
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "mgE" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -18882,7 +18901,8 @@
 	dir = 8;
 	id = "main_ext_shutter";
 	name = "External airlock emergency override";
-	pixel_x = 24
+	pixel_x = 24;
+	pixel_y = -3
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
@@ -22736,6 +22756,12 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden,
+/obj/machinery/access_button/airlock_interior{
+	dir = 4;
+	master_tag = "central_airlock_two";
+	pixel_x = 25;
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
 "oiL" = (
@@ -24454,6 +24480,12 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
+/obj/machinery/access_button/airlock_interior{
+	dir = 4;
+	master_tag = "central_airlock_two";
+	pixel_x = -25;
+	pixel_y = 26
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva)
 "pfy" = (
@@ -24866,6 +24898,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
+	},
+/obj/machinery/access_button/airlock_exterior{
+	dir = 8;
+	master_tag = "central_airlock";
+	pixel_x = -25;
+	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
@@ -26178,7 +26216,8 @@
 	dir = 8;
 	id = "main_ext_shutter";
 	name = "External airlock emergency override";
-	pixel_x = 24
+	pixel_x = 24;
+	pixel_y = 4
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	frequency = 1379;
@@ -28759,6 +28798,15 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
+"rUB" = (
+/obj/effect/floor_decal/industrial/halfstair,
+/obj/machinery/access_button/airlock_exterior{
+	master_tag = "shop_airlock";
+	pixel_x = 26;
+	pixel_y = 25
+	},
+/turf/simulated/floor/plating/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "rUD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
 	dir = 4
@@ -29542,12 +29590,6 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 5
-	},
-/obj/machinery/access_button/airlock_exterior{
-	dir = 8;
-	master_tag = "central_airlock";
-	pixel_x = -2;
-	pixel_y = -26
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
@@ -31413,11 +31455,6 @@
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Nebula Trade Shop"
 	},
-/obj/machinery/access_button/airlock_exterior{
-	master_tag = "shop_airlock";
-	pixel_x = 28;
-	pixel_y = -6
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/trade_shop)
 "tAj" = (
@@ -31603,11 +31640,6 @@
 	name = "Nebula Trade Shop"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/access_button/airlock_interior{
-	master_tag = "shop_airlock";
-	pixel_x = 26;
-	pixel_y = 8
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/trade_shop)
 "tEY" = (
@@ -32010,6 +32042,21 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/evahallway)
+"tTs" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 4
+	},
+/obj/effect/overlay/snow/floor/grav_surround{
+	dir = 8
+	},
+/obj/machinery/access_button/airlock_exterior{
+	dir = 8;
+	master_tag = "central_airlock";
+	pixel_x = 25;
+	pixel_y = -26
+	},
+/turf/simulated/floor/tiled/steel_grid/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "tTu" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -33626,6 +33673,11 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
+/obj/machinery/access_button/airlock_interior{
+	master_tag = "shop_airlock";
+	pixel_x = 26;
+	pixel_y = 25
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/trade_shop)
 "uMo" = (
@@ -35110,6 +35162,12 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
+/obj/machinery/access_button/airlock_interior{
+	dir = 4;
+	master_tag = "central_airlock";
+	pixel_x = -25;
+	pixel_y = -26
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva)
 "vOH" = (
@@ -36458,6 +36516,12 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 1
 	},
+/obj/machinery/access_button/airlock_interior{
+	dir = 4;
+	master_tag = "central_airlock";
+	pixel_x = 25;
+	pixel_y = -26
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main)
 "wCG" = (
@@ -37291,12 +37355,6 @@
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 9
-	},
-/obj/machinery/access_button/airlock_exterior{
-	dir = 8;
-	master_tag = "central_airlock_two";
-	pixel_x = -2;
-	pixel_y = 26
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/surfaceeva/airlock/main/secondary)
@@ -47480,7 +47538,7 @@ tEK
 uMj
 gSl
 tzP
-hNW
+rUB
 oFG
 oFG
 hcn
@@ -49491,11 +49549,11 @@ vgL
 hgE
 eDJ
 nbg
-nbg
+tTs
 vNx
 iFN
 jZZ
-nbg
+mgs
 nbg
 cMO
 kxc
