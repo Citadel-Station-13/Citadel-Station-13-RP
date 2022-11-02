@@ -115,14 +115,6 @@ SUBSYSTEM_DEF(job)
 		setup_occupations()
 	return name_occupations[rank]
 
-/datum/controller/subsystem/job/proc/get_job_type(jobtype)
-	if(!occupations.len)
-		setup_occupations()
-	return type_occupations[jobtype]
-
-/datum/controller/subsystem/job/proc/job_by_id(id)
-	return job_lookup[id]
-
 // Determines if a job title is inside of a specific department.
 // Useful to replace the old `if(job_title in command_positions)` code.
 /datum/controller/subsystem/job/proc/is_job_in_department(rank, target_department_name)
@@ -148,7 +140,7 @@ SUBSYSTEM_DEF(job)
 /datum/controller/subsystem/job/proc/get_primary_department_of_job(datum/job/J)
 	if(!istype(J, /datum/job))
 		if(ispath(J))
-			J = get_job_type(J)
+			J = job_by_type(J)
 		else if(istext(J))
 			J = get_job(J)
 

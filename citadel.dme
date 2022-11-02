@@ -460,6 +460,7 @@
 #include "code\controllers\subsystem\dbcore\query.dm"
 #include "code\controllers\subsystem\job\_job.dm"
 #include "code\controllers\subsystem\job\_legacy_job_stuff.dm"
+#include "code\controllers\subsystem\job\job_manager.dm"
 #include "code\controllers\subsystem\job\spawnpoints.dm"
 #include "code\controllers\subsystem\mapping\_mapping.dm"
 #include "code\controllers\subsystem\mapping\misc.dm"
