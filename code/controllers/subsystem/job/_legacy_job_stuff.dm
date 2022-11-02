@@ -223,13 +223,13 @@
 
 	// For those who wanted to be assistant if their preferences were filled, here you go.
 	for(var/mob/new_player/player in divide_unassigned)
-		if(divide_overflow[player] == JOB_ALTERNATIVE_BE_ASSISTANT)
+		if(divide_overflows[player] == JOB_ALTERNATIVE_BE_ASSISTANT)
 			job_debug("AC2 Assistant located, Player: [player]")
 			AssignRole(player, USELESS_JOB)
 
 	//For ones returning to lobby
 	for(var/mob/new_player/player in divide_unassigned)
-		if(divide_overflow[player] == JOB_ALTERNATIVE_RETURN_LOBBY)
+		if(divide_overflows[player] == JOB_ALTERNATIVE_RETURN_LOBBY)
 			player.ready = 0
 			player.new_player_panel_proc()
 			divide_unassigned -= player

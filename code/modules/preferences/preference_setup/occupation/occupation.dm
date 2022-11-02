@@ -329,6 +329,7 @@
 	for(var/datum/job/J as anything in SSjob.all_jobs())
 		if(J.check_client_availability_one(src) != ROLE_AVAILABLE)
 			continue
+		var/id = J.id
 		if(!priorities[id])
 			continue
 		.[J.id] = priorities[id]
