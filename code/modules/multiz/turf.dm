@@ -51,6 +51,8 @@
  * checks for physical obstructions and returns first obstruction;
  * does NOT check if the atom is logically able to move under its own power!
  *
+ * WARNING: If the turf above/below us doesn't exist, this returns null.
+ *
  * @params
  * - mover - atom that needs to move
  * - dir - are they going UP abov eus or DOWN below us?
@@ -65,6 +67,30 @@
 		dest = Below()
 		return dest && (z_pass_out_obstruction(mover, DOWN, dest) || dest.z_pass_in_obstruction(mover, UP, src))
 	CRASH("What?")
+
+/**
+ * simple boolean check to see if something's physically blocked from leaving us via up/down
+ *
+ * @params
+ * - mover - atom that needs to move
+ * - dir - are they going UP abov eus or DOWN below us?
+ */
+/turf/proc/z_exit_check(atom/movable/mover, dir)
+	// we assume dir is up/down because why wouldn't it be
+	var/turf/dest
+	if(dir == UP)
+		dest = Above()
+		return dest && !z_pass_out_obstruction(mover, UP, dest) && 1dest.z_pass_in_obstruction(mover, DOWN, src)
+	else if(dir == DOWN)
+		dest = Below()
+		return dest && !z_pass_out_obstruction(mover, DOWN, dest) && !dest.z_pass_in_obstruction(mover, UP, src)
+	CRASH("What?")
+
+/turf/z_pass_in(atom/movable/AM, dir, turf/old_loc)
+	return !!z_pass_in_obstruction(AM, dir, old_loc)
+
+/turf/z_pass_out(atom/movable/AM, dir, turf/new_loc)
+	return !!z_pass_out_obstruction(AM, dir, new_loc)
 
 /turf/proc/multiz_turf_del(turf/T, dir)
 	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_DEL, T, dir)
