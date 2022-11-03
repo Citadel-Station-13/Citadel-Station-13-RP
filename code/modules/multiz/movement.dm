@@ -171,6 +171,9 @@
 
 //FALLING STUFF
 // todo: refactor
+//! WARNING: Falling code is held together by duct tape, to make the new procs shimmed in.
+// Yes, sometimes you need to make things worse temporarily, to make it better
+// yell at me if shit breaks ~silicons
 //Holds fall checks that should not be overriden by children
 /atom/movable/proc/fall()
 	if(!isturf(loc))
@@ -238,8 +241,8 @@
 				return
 			if(!isturf(loc))	 // wtf
 				return
-			var/turf/T = loc
-			if(!T.z_exit_check(src, DOWN))
+			var/turf/cT = loc
+			if(!cT.z_exit_check(src, DOWN))
 				return	// nah
 			handle_fall(below)
 		// TODO - handle fall on damage!

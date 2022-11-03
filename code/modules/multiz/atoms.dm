@@ -7,6 +7,9 @@
  * old_loc - old turf
  */
 /atom/proc/z_pass_in(atom/movable/AM, dir, turf/old_loc)
+	if(density && !(flags & ON_BORDER))		// dense objects like machinery block by default
+		return FALSE
+	return !AM || Cross(AM)
 
 /**
  * returns if an atom can exit our tile into a multiz move
@@ -17,3 +20,4 @@
  * new_loc - new turf
  */
 /atom/proc/z_pass_out(atom/movable/AM, dir, turf/new_loc)
+	return !AM || Uncross(AM)
