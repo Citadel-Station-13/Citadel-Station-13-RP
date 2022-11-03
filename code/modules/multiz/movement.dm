@@ -300,10 +300,6 @@
 	if(..())
 		return species.can_fall(src)
 
-// Check if this atom prevents things standing on it from falling. Return TRUE to allow the fall.
-/obj/proc/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	return TRUE
-
 // Things that prevent objects standing on them from falling into turf below
 /obj/structure/catwalk/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
 	return FALSE
@@ -385,11 +381,13 @@
 
 // ## THE FALLING PROCS ###
 
+#warn deal with
 // Called on everything that falling_atom might hit. Return TRUE if you're handling it so find_fall_target() will stop checking.
 /atom/proc/CheckFall(var/atom/movable/falling_atom)
 	if(density && !(flags & ON_BORDER))
 		return TRUE
 
+#warn deal with
 // If you are hit: how is it handled.
 // Return TRUE if the generic fall_impact should be called
 // Return FALSE if you handled it yourself or if there's no effect from hitting you
@@ -397,42 +395,7 @@
 	if(density && !(flags & ON_BORDER))
 		return TRUE
 
-// By default all turfs are gonna let you hit them regardless of density.
-/turf/CheckFall(var/atom/movable/falling_atom)
-	return TRUE
-
-/turf/check_impact(var/atom/movable/falling_atom)
-	return TRUE
-
-// Obviously you can't really hit open space.
-/turf/simulated/open/CheckFall(var/atom/movable/falling_atom)
-	return FALSE
-
-/turf/simulated/open/check_impact(var/atom/movable/falling_atom)
-	return FALSE
-
-// Or actual space.
-/turf/space/CheckFall(var/atom/movable/falling_atom)
-	return FALSE
-
-/turf/space/check_impact(var/atom/movable/falling_atom)
-	return FALSE
-
-// We return 1 without calling fall_impact in order to provide a soft landing. So nice.
-// Note this really should never even get this far
-/obj/structure/stairs/CheckFall(var/atom/movable/falling_atom)
-	return TRUE
-
-/obj/structure/stairs/check_impact(var/atom/movable/falling_atom)
-	return FALSE
-
-// Can't fall onto ghosts
-/mob/observer/dead/CheckFall()
-	return FALSE
-
-/mob/observer/dead/check_impact()
-	return FALSE
-
+#warn turfs need to check fall/impact lol
 
 // Called by CheckFall when we actually hit something. Various Vars will be described below
 // hit_atom is the thing we fall on
