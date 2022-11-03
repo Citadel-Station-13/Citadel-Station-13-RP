@@ -25,7 +25,7 @@
 /obj/effect/blob/CanAllowThrough(atom/movable/mover, turf/target)
 	return FALSE
 
-/obj/effect/blob/ex_act(severity)
+/obj/effect/blob/legacy_ex_act(severity)
 	switch(severity)
 		if(1)
 			take_damage(rand(100, 120) / brute_resist)
@@ -73,11 +73,11 @@
 		qdel(GR)
 		return
 	for(var/obj/structure/reagent_dispensers/fueltank/Fuel in T)
-		Fuel.ex_act(2)
+		LEGACY_EX_ACT(Fuel, 2, null)
 		return
 	for(var/obj/machinery/door/D in T) // There can be several - and some of them can be open, locate() is not suitable
 		if(D.density)
-			D.ex_act(2)
+			LEGACY_EX_ACT(D, 2, null)
 			return
 	var/obj/structure/foamedmetal/F = locate() in T
 	if(F)
@@ -90,7 +90,7 @@
 
 	var/obj/vehicle_old/V = locate() in T
 	if(V)
-		V.ex_act(2)
+		LEGACY_EX_ACT(V, 2, null)
 		return
 	var/obj/mecha/M = locate() in T
 	if(M)

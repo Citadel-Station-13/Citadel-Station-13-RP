@@ -197,12 +197,12 @@
 	occupant = null
 	icon_state = "scanner_0"
 
-/obj/machinery/dna_scannernew/ex_act(severity)
+/obj/machinery/dna_scannernew/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/A as mob|obj in src)
 				A.loc = src.loc
-				ex_act(severity)
+				legacy_ex_act(severity)
 				//Foreach goto(35)
 			//SN src = null
 			qdel(src)
@@ -211,7 +211,7 @@
 			if (prob(50))
 				for(var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
-					ex_act(severity)
+					legacy_ex_act(severity)
 					//Foreach goto(108)
 				//SN src = null
 				qdel(src)
@@ -220,7 +220,7 @@
 			if (prob(25))
 				for(var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
-					ex_act(severity)
+					legacy_ex_act(severity)
 					//Foreach goto(181)
 				//SN src = null
 				qdel(src)
@@ -268,7 +268,7 @@
 		..()
 	return
 
-/obj/machinery/computer/scan_consolenew/ex_act(severity)
+/obj/machinery/computer/scan_consolenew/legacy_ex_act(severity)
 
 	switch(severity)
 		if(1.0)

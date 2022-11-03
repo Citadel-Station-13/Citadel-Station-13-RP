@@ -13,5 +13,5 @@
 /turf/simulated/floor/flesh/attackby()
 	return
 
-/turf/simulated/floor/flesh/ex_act(severity)
+/turf/simulated/floor/flesh/legacy_ex_act(severity)
 	return

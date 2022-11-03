@@ -28,7 +28,7 @@
 	if(crushing)
 		for(var/atom/movable/AM in loc)
 			if(AM != src)
-				AM.ex_act(1)
+				LEGACY_EX_ACT(AM, 1, null)
 				explosion(src.loc, 0, 0, 1, 1, 0)
 
 	for(var/mob/living/M in oviewers(3, src))
@@ -45,5 +45,5 @@
 /obj/effect/falling_effect/singularity_pull()
 	return
 
-/obj/effect/falling_effect/ex_act()
+/obj/effect/falling_effect/legacy_ex_act()
 	return

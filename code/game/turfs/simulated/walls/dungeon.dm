@@ -9,7 +9,7 @@
 /turf/simulated/wall/dungeon/attackby()
 	return
 
-/turf/simulated/wall/dungeon/ex_act()
+/turf/simulated/wall/dungeon/legacy_ex_act()
 	return
 
 /turf/simulated/wall/dungeon/take_damage()	//These things are suppose to be unbreakable
@@ -48,7 +48,7 @@
 /turf/simulated/wall/solidrock/attackby()
 	return
 
-/turf/simulated/wall/solidrock/ex_act()
+/turf/simulated/wall/solidrock/legacy_ex_act()
 	return
 
 /turf/simulated/wall/solidrock/take_damage()	//These things are suppose to be unbreakable

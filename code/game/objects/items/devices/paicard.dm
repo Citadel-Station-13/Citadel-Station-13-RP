@@ -319,9 +319,9 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 	for(var/mob/M in src)
 		M.emp_act(severity)
 
-/obj/item/paicard/ex_act(severity)
+/obj/item/paicard/legacy_ex_act(severity)
 	if(pai)
-		pai.ex_act(severity)
+		LEGACY_EX_ACT(pai, severity, null)
 	else
 		qdel(src)
 

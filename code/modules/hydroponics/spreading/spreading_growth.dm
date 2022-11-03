@@ -25,7 +25,7 @@
 
 		if(floor.density)
 			if(!isnull(seed.chems["pacid"]))
-				spawn(rand(5,25)) floor.ex_act(3)
+				spawn(rand(5,25)) LEGACY_EX_ACT(floor, 3, null)
 			continue
 
 		if(!Adjacent(floor) || !floor.Enter(src))

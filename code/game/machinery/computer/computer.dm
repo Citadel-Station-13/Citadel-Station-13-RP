@@ -34,7 +34,7 @@
 	..()
 
 
-/obj/machinery/computer/ex_act(severity)
+/obj/machinery/computer/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -61,7 +61,7 @@
 	..()
 
 /obj/machinery/computer/blob_act()
-	ex_act(2)
+	legacy_ex_act(2)
 
 /obj/machinery/computer/update_icon()
 	cut_overlays()
