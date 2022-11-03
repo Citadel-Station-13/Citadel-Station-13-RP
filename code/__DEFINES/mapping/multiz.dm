@@ -13,3 +13,8 @@
 #define FALL_TERMINATED				(1<<5)
 /// don't make fall feedback
 #define FALL_SILENT					(1<<6)
+/// allow default fall (used by can fall to determine if atom can support itself under its own power)
+#define FALL_ALLOWED				(1<<7)
+
+/// these flags mean a fall should stop
+#define FALL_FLAGS_STOP				(FALL_BLOCKED | FALL_RECOVERED | FALL_TERMINATED)

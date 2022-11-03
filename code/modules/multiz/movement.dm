@@ -374,7 +374,7 @@
 /atom/proc/CheckFall(var/atom/movable/falling_atom)
 	if(density && !(flags & ON_BORDER))
 		return TRUE
-	return prevent_z_fall(falling_atom, 0, NONE) & (FALL_TERMINATED | FALL_BLOCKED)
+	return !(prevent_z_fall(falling_atom, 0, NONE) & (FALL_TERMINATED | FALL_BLOCKED))
 
 // If you are hit: how is it handled.
 // Return TRUE if the generic fall_impact should be called

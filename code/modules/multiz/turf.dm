@@ -92,6 +92,12 @@
 /turf/z_pass_out(atom/movable/AM, dir, turf/new_loc)
 	return !!z_pass_out_obstruction(AM, dir, new_loc)
 
+// todo: redo
+/turf/CheckFall(atom/movable/falling_atom)
+	if(!(z_flags & Z_OPEN_DOWN))
+		return TRUE	// impact!
+	return ..()
+
 /turf/proc/multiz_turf_del(turf/T, dir)
 	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_DEL, T, dir)
 
