@@ -69,7 +69,7 @@
 		name = "[material.display_name] [initial(name)]"
 		desc += " It's made of [material.use_name]."
 
-/obj/structure/bed/ex_act(severity)
+/obj/structure/bed/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)

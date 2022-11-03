@@ -6,7 +6,7 @@
 	var/datum/geosample/geologic_data
 	var/material
 
-/obj/item/ore/ex_act(severity)
+/obj/item/ore/legacy_ex_act(severity)
 	return
 
 /obj/item/ore/uranium

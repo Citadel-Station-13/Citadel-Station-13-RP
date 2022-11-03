@@ -264,7 +264,7 @@ GLOBAL_LIST_EMPTY(mining_overlay_cache)
 
 /* smoothing end */
 
-/turf/simulated/mineral/ex_act(severity)
+/turf/simulated/mineral/legacy_ex_act(severity)
 
 	switch(severity)
 		if(2.0)

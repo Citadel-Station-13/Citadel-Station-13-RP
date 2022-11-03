@@ -157,7 +157,7 @@
 	unload_program()
 	..()
 
-/obj/machinery/computer/looking_glass/ex_act(severity)
+/obj/machinery/computer/looking_glass/legacy_ex_act(severity)
 	unload_program()
 	..()
 

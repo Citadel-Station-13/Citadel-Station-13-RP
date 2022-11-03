@@ -93,7 +93,7 @@
 	density = 1
 	anchored = 1
 	var/hits = 4
-	var/hitpwr = 2 //Level of ex_act to be called on hit.
+	var/hitpwr = 2 //Level of legacy_ex_act to be called on hit.
 	var/dest
 	pass_flags = ATOM_PASS_TABLE
 	var/heavy = 0
@@ -156,7 +156,7 @@
 			continue
 		if(isturf(A)) // Don't hit floors. We'll deal with walls later.
 			continue
-		A.ex_act(hitpwr)
+		LEGACY_EX_ACT(A, hitpwr, null)
 
 	//then, ram the turf if it still exists
 	if(T)
@@ -179,7 +179,7 @@
 	meteor_effect(explode)
 	qdel(src)
 
-/obj/effect/meteor/ex_act()
+/obj/effect/meteor/legacy_ex_act()
 	return
 
 /obj/effect/meteor/attackby(obj/item/W as obj, mob/user as mob, params)

@@ -32,7 +32,7 @@
 /obj/structure/attack_tk()
 	return
 
-/obj/structure/ex_act(severity)
+/obj/structure/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)

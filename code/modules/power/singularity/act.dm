@@ -39,7 +39,7 @@
 /obj/singularity_act()
 	if(flags & ATOM_ABSTRACT)
 		return
-	ex_act(1)
+	legacy_ex_act(1)
 	if(!QDELETED(src))
 		qdel(src)
 	return 2

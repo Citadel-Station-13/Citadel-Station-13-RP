@@ -711,10 +711,10 @@
 			investigate_log("Drilled through [target]")
 		else if(istype(S, /turf/simulated/wall))
 			investigate_log("Drilled through [target]")
-			S.ex_act(2)
+			LEGACY_EX_ACT(S, 2, null)
 	else
 		investigate_log("Drilled through [target]")
-		target.ex_act(2)
+		LEGACY_EX_ACT(target, 2, null)
 	activate_pin(2)
 	return(TRUE)
 

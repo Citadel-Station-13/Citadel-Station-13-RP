@@ -745,34 +745,45 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 		if (NAMEOF(src, key))
 			return FALSE
 		if(NAMEOF(src, view))
-			change_view(var_value)
+			change_view(var_value, TRUE)
 			return TRUE
 	. = ..()
 
-/client/proc/change_view(new_size)
-	if (isnull(new_size))
-		CRASH("change_view called without argument.")
+/client/proc/change_view(new_size, forced, translocate)
+	if(!is_preference_enabled(/datum/client_preference/scaling_viewport))
+		if (isnull(new_size))
+			CRASH("change_view called without argument.")
 
-	if(view == new_size)
-		// unnecessary
-		return
+		if(view == new_size)
+			// unnecessary
+			return
 
-	/*
-	if(prefs && !prefs.widescreenpref && new_size == CONFIG_GET(string/default_view))
-		new_size = CONFIG_GET(string/default_view_square)
-	*/
+		/*
+		if(prefs && !prefs.widescreenpref && new_size == CONFIG_GET(string/default_view))
+			new_size = CONFIG_GET(string/default_view_square)
+		*/
 
-	view = new_size
-	mob.reload_rendering()
-
-	/*
-	mob.reload_fullscreen()
-	if (isliving(mob))
-		var/mob/living/M = mob
-		M.update_damage_hud()
-	if (prefs.auto_fit_viewport)
-		addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
-	*/
+		view = new_size
+		mob.reload_rendering()
+		if(!translocate)
+			reset_perspective()
+	else if(!. || forced)
+		if(!translocate)
+			reset_perspective()
+		mob?.reload_fullscreen()
+		update_clickcatcher()
+		if(forced)
+			view = new_size
+		else
+			INVOKE_ASYNC(src, /client.verb/OnResize)
+		/*
+		mob.reload_fullscreen()
+		if (isliving(mob))
+			var/mob/living/M = mob
+			M.update_damage_hud()
+		if (prefs.auto_fit_viewport)
+			addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
+		*/
 
 /**
  * switch perspective - null will cause us to shunt our eye to nullspace!
