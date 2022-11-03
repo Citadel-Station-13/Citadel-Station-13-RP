@@ -15,7 +15,8 @@
 					"Coffsearch" = "coffin-Research",
 					"X-88" = "xeightyeight-science",
 					"Acheron" = "mechoid-Science",
-					"ZOOM-BA" = "zoomba-research"
+					"ZOOM-BA" = "zoomba-research",
+					"W02M" = "worm-engineering"
 					)
 
 /obj/item/robot_module/robot/research/Initialize(mapload)
