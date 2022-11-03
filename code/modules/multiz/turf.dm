@@ -18,10 +18,10 @@
  * The atom that's blocking. Returns NULL if there's no obstruction.
  */
 /turf/proc/z_pass_in_obstruction(atom/movable/mover, dir, turf/source)
-	if(!(z_flags & (direction == UP? Z_OPEN_UP : Z_OPEN_DOWN)))
+	if(!(z_flags & (dir == UP? Z_OPEN_UP : Z_OPEN_DOWN)))
 		return src
 	for(var/atom/movable/AM as anything in contents)
-		if(!AM.zPassIn(mover, direction, source))
+		if(!AM.z_pass_in(mover, direction, source))
 			return AM
 
 /**
@@ -40,10 +40,10 @@
  * The atom that's blocking. Returns NULL if there's no obstruction.
  */
 /turf/proc/z_pass_out_obstruction(atom/movable/mover, dir, turf/dest)
-	if(!(z_flags & (direction == UP? Z_OPEN_UP : Z_OPEN_DOWN)))
+	if(!(z_flags & (dir == UP? Z_OPEN_UP : Z_OPEN_DOWN)))
 		return src
 	for(var/atom/movable/AM as anything in contents)
-		if(!AM.zPassOut(mover, direction, destination))
+		if(!AM.z_pass_out(mover, direction, destination))
 			return AM
 
 /**
