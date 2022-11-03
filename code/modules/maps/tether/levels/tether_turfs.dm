@@ -67,7 +67,6 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name
-	outdoors = TRUE
 	if(rare_ore)
 		mineral_name = pickweight(list(
 			MAT_MARBLE = 3,
@@ -128,6 +127,11 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 		mineral = GLOB.ore_data[mineral_name]
 		UpdateMineral()
 
+
+
+/turf/simulated/mineral/rich/indoors
+	outdoors = FALSE
+
 //Unsimulated
 /turf/unsimulated/mineral/virgo3b
 	blocks_air = TRUE
@@ -140,6 +144,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name
+	outdoors = FALSE
 	if(rare_ore)
 		mineral_name = pickweight(list(
 			MAT_MARBLE = 7,
