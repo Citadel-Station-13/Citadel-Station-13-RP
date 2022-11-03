@@ -80,6 +80,8 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
  * called to refit the viewport as necessary
  */
 /client/proc/refit_viewport()
+	var/desired_x
+	var/desired_y
 
 /datum/preferences
 	var/icon_size = 64
