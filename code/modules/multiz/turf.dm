@@ -21,7 +21,7 @@
 	if(!(z_flags & (dir == UP? Z_OPEN_UP : Z_OPEN_DOWN)))
 		return src
 	for(var/atom/movable/AM as anything in contents)
-		if(!AM.z_pass_in(mover, direction, source))
+		if(!AM.z_pass_in(mover, dir, source))
 			return AM
 
 /**
@@ -43,7 +43,7 @@
 	if(!(z_flags & (dir == UP? Z_OPEN_UP : Z_OPEN_DOWN)))
 		return src
 	for(var/atom/movable/AM as anything in contents)
-		if(!AM.z_pass_out(mover, direction, destination))
+		if(!AM.z_pass_out(mover, dir, dest))
 			return AM
 
 /**
@@ -80,7 +80,7 @@
 	var/turf/dest
 	if(dir == UP)
 		dest = Above()
-		return dest && !z_pass_out_obstruction(mover, UP, dest) && 1dest.z_pass_in_obstruction(mover, DOWN, src)
+		return dest && !z_pass_out_obstruction(mover, UP, dest) && !dest.z_pass_in_obstruction(mover, DOWN, src)
 	else if(dir == DOWN)
 		dest = Below()
 		return dest && !z_pass_out_obstruction(mover, DOWN, dest) && !dest.z_pass_in_obstruction(mover, UP, src)

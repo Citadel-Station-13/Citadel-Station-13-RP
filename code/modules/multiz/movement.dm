@@ -38,12 +38,9 @@
 		forceMove(destination)
 		return 1
 
-	if(!start.CanZPass(src, direction))
-		to_chat(src, "<span class='warning'>\The [start] is in the way.</span>")
-		return 0
-
-	if(!destination.CanZPass(src, direction))
-		to_chat(src, "<span class='warning'>\The [destination] blocks your way.</span>")
+	var/atom/obstructing = z_exit_obstruction(src, direction)
+	if(obstructing)
+		to_chat(src, "<span class='warning'>\The [obstructing] is in the way.</span>")
 		return 0
 
 	if(direction == UP && has_gravity() && !can_overcome_gravity())
@@ -78,11 +75,6 @@
 				return 0
 		else
 			to_chat(src, "<span class='warning'>Gravity stops you from moving upward.</span>")
-			return 0
-
-	for(var/atom/A in destination)
-		if(!A.CanPass(src, start, 1.5, 0))
-			to_chat(src, "<span class='warning'>\The [A] blocks you.</span>")
 			return 0
 	if(!Move(destination))
 		return 0
@@ -177,10 +169,8 @@
 
 ////////////////////////////
 
-
-
 //FALLING STUFF
-
+// todo: refactor
 //Holds fall checks that should not be overriden by children
 /atom/movable/proc/fall()
 	if(!isturf(loc))
@@ -194,7 +184,7 @@
 		return
 
 	var/turf/T = loc
-	if(!T.CanZPass(src, DOWN) || !below.CanZPass(src, DOWN))
+	if(!T.z_exit_check(src, DOWN))
 		return
 
 	// No gravity in space, apparently.
@@ -321,14 +311,10 @@
 /atom/movable/proc/handle_fall(turf/landing)
 	var/turf/oldloc = loc
 
-	// Check if there is anything in our turf we are standing on to prevent falling.
-	for(var/obj/O in loc)
-		if(!O.CanFallThru(src, landing))
-			return FALSE
-	// See if something in turf below prevents us from falling into it.
-	for(var/atom/A in landing)
-		if(!A.CanPass(src, src.loc, 1, 0))
-			return FALSE
+	// something is blocking us
+	if(oldloc.z_exit_obstruction(src, DOWN))
+		return FALSE
+
 	// TODO - Stairs should operate thru a different mechanism, not falling, to allow side-bumping.
 
 	// this is shitcode lmao
@@ -341,6 +327,11 @@
 		var/atom/A = find_fall_target(oldloc, landing)
 		if(special_fall_handle(A) || !A || !A.check_impact(src))
 			return
+		var/mob/drop_mob = locate(/mob, landing)
+		if(drop_mob && !(drop_mob == src) && ismob(drop_mob) && isliving(drop_mob)) //Shitload of checks. This is because the game finds various ways to screw me over.
+			var/mob/living/drop_living = drop_mob
+			if(drop_living.dropped_onto(src))
+				return
 		fall_impact(A)
 	else
 		locationTransitForceMove(landing)
