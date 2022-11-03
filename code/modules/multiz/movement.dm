@@ -38,7 +38,7 @@
 		forceMove(destination)
 		return 1
 
-	var/atom/obstructing = z_exit_obstruction(src, direction)
+	var/atom/obstructing = start.z_exit_obstruction(src, direction)
 	if(obstructing)
 		to_chat(src, "<span class='warning'>\The [obstructing] is in the way.</span>")
 		return 0
@@ -231,15 +231,17 @@
 		// We spawn here to let the current move operation complete before we start falling. fall() is normally called from
 		// Entered() which is part of Move(), by spawn()ing we let that complete.  But we want to preserve if we were in client movement
 		// or normal movement so other move behavior can continue.
-		var/mob/M = src
-		var/is_client_moving = (ismob(M) && M.client && M.client.moving)
-		var/curr = loc
+		// todo: this is stupid
+		var/checking = loc
 		spawn(0)
-			if(loc != curr)
+			if(loc != checking)	// we moved
 				return
-			if(is_client_moving) M.client.moving = 1
+			if(!isturf(loc))	 // wtf
+				return
+			var/turf/T = loc
+			if(!T.z_exit_check(src, DOWN))
+				return	// nah
 			handle_fall(below)
-			if(is_client_moving) M.client.moving = 0
 		// TODO - handle fall on damage!
 
 //For children to override
@@ -372,21 +374,18 @@
 
 // ## THE FALLING PROCS ###
 
-#warn deal with
 // Called on everything that falling_atom might hit. Return TRUE if you're handling it so find_fall_target() will stop checking.
 /atom/proc/CheckFall(var/atom/movable/falling_atom)
 	if(density && !(flags & ON_BORDER))
 		return TRUE
+	return prevent_z_fall(falling_atom, 0, NONE) & (FALL_TERMINATED | FALL_BLOCKED)
 
-#warn deal with
 // If you are hit: how is it handled.
 // Return TRUE if the generic fall_impact should be called
 // Return FALSE if you handled it yourself or if there's no effect from hitting you
 /atom/proc/check_impact(var/atom/movable/falling_atom)
 	if(density && !(flags & ON_BORDER))
 		return TRUE
-
-#warn turfs need to check fall/impact lol
 
 // Called by CheckFall when we actually hit something. Various Vars will be described below
 // hit_atom is the thing we fall on
