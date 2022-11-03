@@ -40,11 +40,7 @@
 /obj/item/stack/Initialize(mapload, new_amount, merge = TRUE)
 	if(new_amount != null)
 		amount = new_amount
-	var/safety = 51 //badmin safety check :^)
-	if((amount > max_amount) && max_amount)
-		while(--safety && (amount > max_amount))
-			amount -= max_amount
-			new type(loc, max_amount, FALSE)
+	safety_check()
 	if(!stacktype)
 		stacktype = type
 	. = ..()
@@ -53,6 +49,15 @@
 			if(S.stacktype == stacktype)
 				merge(S)
 	update_icon()
+
+/obj/item/stack/proc/safety_check()
+	if(amount > max_amount)
+		to_chat(usr, "The [name] spills on the [get_area_name(src)]!")
+		amount -= max_amount
+		var/obj/item/stack/newstack = new type(get_turf(usr))
+		newstack.amount = max_amount
+		return TRUE
+	return FALSE
 
 /obj/item/stack/Destroy()
 	if (src && usr && usr.machine == src)
@@ -80,6 +85,8 @@
 		. += "There is enough charge for [get_amount()]."
 
 /obj/item/stack/attack_self(mob/user)
+	if(safety_check())
+		return
 	list_recipes(user)
 
 /obj/item/stack/proc/list_recipes(mob/user, recipes_sublist)
@@ -355,6 +362,8 @@
 			break
 
 /obj/item/stack/attack_hand(mob/user)
+	if(safety_check())
+		return
 	if(user.get_inactive_held_item() == src)
 		change_stack(user, 1)
 	else
