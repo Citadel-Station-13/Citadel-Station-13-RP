@@ -838,7 +838,7 @@ var/global/list/light_type_cache = list()
 // explosion effect
 // destroy the whole light fixture or just shatter it
 
-/obj/machinery/light/ex_act(severity)
+/obj/machinery/light/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)

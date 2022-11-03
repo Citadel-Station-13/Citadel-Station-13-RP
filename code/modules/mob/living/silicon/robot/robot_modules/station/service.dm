@@ -21,7 +21,8 @@
 					"Handy" = "handy-janitor",
 					"Acheron" = "mechoid-Janitor",
 					"Shellguard Noble" = "Noble-CLN",
-					"ZOOM-BA" = "zoomba-janitor"
+					"ZOOM-BA" = "zoomba-janitor",
+					"W02M" = "worm-janitor"
 					)
 
 /obj/item/robot_module/robot/janitor/Initialize(mapload)
@@ -93,7 +94,8 @@
 					"Handy - Hydro" = "handy-hydro",
 					"Acheron" = "mechoid-Service",
 					"Shellguard Noble" = "Noble-SRV",
-					"ZOOM-BA" = "zoomba-service"
+					"ZOOM-BA" = "zoomba-service",
+					"W02M" = "worm-service"
 				  	)
 
 /obj/item/robot_module/robot/clerical/butler/Initialize(mapload)
@@ -152,7 +154,8 @@
 					"Handy" = "handy-clerk",
 					"Acheron" = "mechoid-Service",
 					"Shellguard Noble" = "Noble-SRV",
-					"ZOOM-BA" = "zoomba-clerical"
+					"ZOOM-BA" = "zoomba-clerical",
+					"W02M" = "worm-service"
 					)
 
 /obj/item/robot_module/robot/clerical/general/Initialize(mapload)

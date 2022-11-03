@@ -51,7 +51,8 @@
 
 /obj/effect/bmode/builddir
 	icon_state = "build"
-	screen_loc = "NORTH,WEST"
+	screen_loc = "TOP,LEFT"
+
 
 /obj/effect/bmode/builddir/Click()
 	switch(dir)
@@ -70,7 +71,7 @@
 /obj/effect/bmode/buildhelp
 	icon = 'icons/misc/buildmode.dmi'
 	icon_state = "buildhelp"
-	screen_loc = "NORTH,WEST+1"
+	screen_loc = "TOP,LEFT+1"
 
 /obj/effect/bmode/buildhelp/Click()
 	switch(master.cl.buildmode)
@@ -145,7 +146,7 @@
 
 /obj/effect/bmode/buildquit
 	icon_state = "buildquit"
-	screen_loc = "NORTH,WEST+3"
+	screen_loc = "TOP,LEFT+3"
 
 /obj/effect/bmode/buildquit/Click()
 	togglebuildmode(master.cl.mob)
@@ -195,7 +196,7 @@ GLOBAL_LIST_EMPTY(buildholders)
 
 /obj/effect/bmode/buildmode
 	icon_state = "buildmode1"
-	screen_loc = "NORTH,WEST+2"
+	screen_loc = "TOP,LEFT+2"
 	var/varholder = "name"
 	var/valueholder = "derp"
 	var/objholder = /obj/structure/closet

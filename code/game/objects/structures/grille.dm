@@ -13,7 +13,7 @@
 	var/destroyed = 0
 
 
-/obj/structure/grille/ex_act(severity)
+/obj/structure/grille/legacy_ex_act(severity)
 	qdel(src)
 
 /obj/structure/grille/update_icon()

@@ -8,7 +8,7 @@
 	icon_state = "blackbox_off"
 
 // Black boxes are resistant to explosions.
-/obj/structure/prop/blackbox/ex_act(severity)
+/obj/structure/prop/blackbox/legacy_ex_act(severity)
 	..(++severity)
 
 

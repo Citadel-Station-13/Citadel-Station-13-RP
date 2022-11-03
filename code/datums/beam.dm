@@ -141,7 +141,7 @@
 	if(A.is_incorporeal())
 		return
 	..()
-	A.ex_act(1)
+	LEGACY_EX_ACT(A, 1, null)
 
 // 'Reactive' beam parts do something when touched or stood in.
 /obj/effect/ebeam/reactive

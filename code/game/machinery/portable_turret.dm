@@ -701,7 +701,7 @@
 		if(!enabled)
 			enabled = TRUE
 
-/obj/machinery/porta_turret/ex_act(severity)
+/obj/machinery/porta_turret/legacy_ex_act(severity)
 	switch (severity)
 		if(1)
 			qdel(src)

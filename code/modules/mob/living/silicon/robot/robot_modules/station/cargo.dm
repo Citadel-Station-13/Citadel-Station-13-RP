@@ -22,7 +22,8 @@
 					"Handy" = "handy-miner",
 					"Acheron" = "mechoid-Miner",
 					"Shellguard Noble" = "Noble-DIG",
-					"ZOOM-BA" = "zoomba-miner"
+					"ZOOM-BA" = "zoomba-miner",
+					"W02M" = "worm-miner"
 				)
 
 /obj/item/robot_module/robot/miner/Initialize(mapload)
