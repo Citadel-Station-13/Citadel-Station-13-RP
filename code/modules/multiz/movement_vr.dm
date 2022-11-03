@@ -68,15 +68,3 @@
 		pred.updatehealth()
 		prey.updatehealth()
 	return 1
-
-/mob/observer/dead/CheckFall()
-	return
-
-/mob/proc/CanZPass(atom/A, direction)
-	if(z == A.z) //moving FROM this turf
-		return direction == UP //can't go below
-	else
-		if(direction == UP) //on a turf below, trying to enter
-			return 0
-		if(direction == DOWN) //on a turf above, trying to enter
-			return 1

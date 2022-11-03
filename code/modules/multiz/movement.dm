@@ -292,16 +292,9 @@
 	if(..())
 		return species.can_fall(src)
 
-// Things that prevent objects standing on them from falling into turf below
-/obj/structure/catwalk/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	return FALSE
-
 // So you'll slam when falling onto a catwalk
 /obj/structure/catwalk/CheckFall(var/atom/movable/falling_atom)
 	return falling_atom.fall_impact(src)
-
-/obj/structure/lattice/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	return check_standard_flag_pass(mover)
 
 // So you'll slam when falling onto a grille
 /obj/structure/lattice/CheckFall(var/atom/movable/falling_atom)
