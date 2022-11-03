@@ -1406,7 +1406,7 @@
 	},
 /obj/machinery/door/airlock/glass_mining,
 /obj/structure/cable/green{
-	icon_state = "4-10"
+	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost/storage)

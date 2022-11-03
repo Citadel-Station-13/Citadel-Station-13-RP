@@ -4201,7 +4201,6 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/maintenance/common,
-/obj/structure/catwalk,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -4823,7 +4822,6 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance/north)
 "VN" = (
@@ -4955,7 +4953,6 @@
 	name = "Maintenance Access"
 	},
 /obj/machinery/door/firedoor/multi_tile,
-/obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
 "WM" = (
