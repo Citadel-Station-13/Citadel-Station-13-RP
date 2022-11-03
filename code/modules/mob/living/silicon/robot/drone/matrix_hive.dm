@@ -62,7 +62,7 @@ var/global/list/drone_matrices = list()
 /datum/drone_matrix/proc/buy_upgrade(var/upgrade_type)
 	LAZYADD(bought_upgrades, upgrade_type)
 	upgrades_remaining--
-	message_drones(MATRIX_NOTICE("A new matrix upgrade is available: [upgrade_type]"))
+	message_drones(MATRIX_NOTICE("A new matrix upgrade is available, visit a recharging staion to install: [upgrade_type]"))
 
 /datum/drone_matrix/proc/apply_upgrades(mob/living/silicon/robot/drone/D)
 	var/list/applied_upgrades = list()

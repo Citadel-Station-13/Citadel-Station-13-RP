@@ -97,7 +97,7 @@
 	if(!produce_drones || !config_legacy.allow_drone_spawn || count_drones() >= config_legacy.max_maint_drones)
 		return
 
-	if((drone_type == /mob/living/silicon/robot/drone/construction/matriarch) && (count_matriarchs() >= 0))
+	if((drone_type == /mob/living/silicon/robot/drone/construction/matriarch) && (count_matriarchs() > 0))
 		return
 
 	if(player && !istype(player.mob,/mob/observer/dead))

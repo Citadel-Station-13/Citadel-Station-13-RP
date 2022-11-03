@@ -25,6 +25,9 @@
 	src.modules += new /obj/item/floor_painter(src)
 	src.modules += new /obj/item/t_scanner(src)
 	src.modules += new /obj/item/analyzer(src)
+	src.modules += new /obj/item/inflatable_dispenser(src)
+	src.modules += new /obj/item/barrier_tape_roll/engineering(src)
+	src.modules += new /obj/item/pipe_dispenser(src)
 
 	robot.internals = new/obj/item/tank/jetpack/carbondioxide(src)
 	src.modules += robot.internals

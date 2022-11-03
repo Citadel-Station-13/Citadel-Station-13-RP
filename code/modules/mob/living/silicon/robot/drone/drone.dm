@@ -126,6 +126,19 @@
 	playsound(src.loc, 'sound/machines/twobeep.ogg', 50, 0)
 
 //Redefining some robot procs...
+
+/mob/living/silicon/robot/drone/construction/matriarch/Namepick()
+	set category = "Robot Commands"
+	if(custom_name)
+		return 0
+
+	spawn(0)
+		var/drone_name = sanitizeSafe(input(src, "Select a first-name suffix for your maintenance drone, for example, 'Bishop' would appear as 'matriach maintenance drone (Bishop)'. (Max length: 16 Characters)", "Name Suffix Selection"), 16)
+		if(!drone_name)
+			drone_name = pick("Ripley", "Tano", "Data")
+		real_name = "[initial(name)] ([drone_name])"
+		name = real_name
+
 /mob/living/silicon/robot/drone/SetName(pickedName as text)
 	// Would prefer to call the grandparent proc but this isn't possible, so..
 	real_name = pickedName
@@ -133,11 +146,6 @@
 
 /mob/living/silicon/robot/drone/updatename()
 	if(name_override)
-/*		var/drone_name = sanitizeSafe(input(user, "Select a first-name suffix for your maintenance drone, for example, 'Bishop' would appear as 'matriach maintenance drone (Bishop)'. (Max length: 16 Characters)", "Name Suffix Selection"), 16)
-		if(!drone_name)
-			drone_name = pick("Ripley", "Tano", "Data")
-		real_name = "[initial(name)] ([drone_name])"
-		name = real_name */
 		return
 
 	real_name = "[initial(name)] ([serial_number])"
@@ -370,6 +378,7 @@
 
 /mob/living/silicon/robot/drone/construction/matriarch/init()
 	..()
+	verbs += /mob/living/silicon/robot/verb/Namepick
 	flavor_text = "It's a small matriarch drone. The casing is stamped with an corporate logo and the subscript: '[GLOB.using_map.company_name] Recursive Repair Systems: Heart Of The Swarm!'"
 
 /mob/living/silicon/robot/drone/construction/matriarch/welcome_drone()
@@ -380,38 +389,24 @@
 
 /mob/living/silicon/robot/drone/construction/matriarch/Initialize()
 	. = ..()
-	//check_add_to_late_firers()
 	matrix_tag = "[GLOB.using_map.company_name]"
 
 /mob/living/silicon/robot/drone/construction/matriarch/shut_down()
 	return
 
-/* /mob/living/silicon/robot/drone/construction/matriarch/assign_player(mob/user)
+/mob/living/silicon/robot/drone/construction/matriarch/transfer_personality(client/player)
 	. = ..()
-	//SSghostroles.remove_spawn_atom("matriarchmaintdrone", src)
 	assign_drone_to_matrix(src, matrix_tag)
 	master_matrix.message_drones(MATRIX_NOTICE("Energy surges through your circuits. The matriarch has come online."))
-
-/mob/living/silicon/robot/drone/construction/matriarch/do_possession(mob/abstract/observer/possessor)
-	. = ..()
-	SSghostroles.remove_spawn_atom("matriarchmaintdrone", src)
 
 /mob/living/silicon/robot/drone/construction/matriarch/ghostize(can_reenter_corpse, should_set_timer)
 	. = ..()
 	if(can_reenter_corpse || stat == DEAD)
 		return
-	if(src in mob_list) // needs to exist to reopen spawn atom
+	if(src in living_mob_list) // needs to exist to reopen spawn atom
 		if(master_matrix)
 			master_matrix.remove_drone(WEAKREF(src))
 			master_matrix.message_drones(MATRIX_NOTICE("Your circuits dull. The matriarch has gone offline."))
 			master_matrix = null
-		set_name(initial(name))
-		designation = null
+		updatename(initial(name))
 		request_player()
-
-/mob/living/silicon/robot/drone/construction/matriarch/Destroy()
-	. = ..()
-	SSghostroles.remove_spawn_atom("matriarchmaintdrone", src)
-
-/mob/living/silicon/robot/drone/construction/matriarch/request_player()
-	SSghostroles.add_spawn_atom("matriarchmaintdrone", src) */
