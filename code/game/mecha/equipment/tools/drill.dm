@@ -29,10 +29,10 @@
 
 				else if((W.reinf_material && advanced) || do_after_cooldown(target))//R wall with good drill
 					log_message("Drilled through [target]")
-					target.ex_act(3)
+					LEGACY_EX_ACT(target, 3, null)
 				else
 					log_message("Drilled through [target]")
-					target.ex_act(2)
+					LEGACY_EX_ACT(target, 2, null)
 
 			else if(istype(target, /turf/simulated/mineral))
 				if(enable_special)
@@ -54,7 +54,7 @@
 				return 1
 			else if(target.loc == C)
 				log_message("Drilled through [target]")
-				target.ex_act(2)
+				LEGACY_EX_ACT(target, 2, null)
 	return 1
 
 /obj/item/mecha_parts/mecha_equipment/tool/drill/proc/drill_mob(mob/living/target, mob/user)
@@ -114,11 +114,11 @@
 					occupant_message("<span class='warning'>[target] is too durable to bore through.</span>")
 				else
 					log_message("Bored through [target]")
-					target.ex_act(2)
+					LEGACY_EX_ACT(target, 2, null)
 			else if(istype(target, /turf/simulated/mineral))
 				var/turf/simulated/mineral/M = target
 				if(enable_special && !M.density)
-					M.ex_act(2)
+					LEGACY_EX_ACT(M, 2, null)
 					log_message("Bored into [target]")
 				else
 					M.GetDrilled()
@@ -131,5 +131,5 @@
 								ore.forceMove(ore_box)
 			else if(target.loc == C)
 				log_message("Drilled through [target]")
-				target.ex_act(2)
+				LEGACY_EX_ACT(target, 2, null)
 	return 1

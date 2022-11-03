@@ -96,7 +96,7 @@ The access requirements on the Asteroid Shuttles' consoles have now been revoked
 /datum/universal_state/supermatter_cascade/proc/MiscSet()
 	for (var/obj/machinery/firealarm/alm in GLOB.machines)
 		if (!(alm.machine_stat & BROKEN))
-			alm.ex_act(2)
+			LEGACY_EX_ACT(alm, 2, null)
 
 /datum/universal_state/supermatter_cascade/proc/APCSet()
 	for (var/obj/machinery/power/apc/APC in GLOB.apcs)

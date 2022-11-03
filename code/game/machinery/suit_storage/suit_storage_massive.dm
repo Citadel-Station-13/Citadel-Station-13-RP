@@ -54,7 +54,7 @@
 		ispowered = 0
 		//Todo: add lockdown
 
-/obj/machinery/suit_storage_closet/ex_act(severity)
+/obj/machinery/suit_storage_closet/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			if(prob(50))

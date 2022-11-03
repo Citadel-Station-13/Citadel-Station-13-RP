@@ -118,7 +118,7 @@
 	overlays.Cut() // For the Sif tree and other future glowy trees.
 	set_light(0)
 
-/obj/structure/flora/tree/ex_act(var/severity)
+/obj/structure/flora/tree/legacy_ex_act(var/severity)
 	adjust_health(-(max_health / severity), TRUE)
 
 /obj/structure/flora/tree/bullet_act(var/obj/item/projectile/Proj)
