@@ -46,7 +46,7 @@
 	// user intro
 	. += "<h3>Choose occupation preferences</h3>Unavailable occupations are crossed out.<br>"
 	// script inject for right click
-	. += "<script type='text/javascript'>function setjob(id,lvl) { window.location.href = '?src=\ref[src];action=job;job=' + encodeURIComponent(lvl) + ';level=' + lvl; return false; }</script>"
+	. += "<script type='text/javascript'>function setjob(id,lvl) { window.location.href = '?src=\ref[src];action=job;job=' + encodeURIComponent(id) + ';level=' + lvl; return false; }</script>"
 	// grab job-by-department ui cache
 	var/list/ui_data = SSjob.job_pref_ui_cache
 	for(var/faction in ui_data)

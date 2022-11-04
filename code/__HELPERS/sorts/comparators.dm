@@ -139,10 +139,10 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 
 /proc/cmp_department_datums(datum/department/a, datum/department/b)
 	// First, sort by the sorting order vars.
-	. = b.sorting_order - a.sorting_order
+	. = a.sorting_order - b.sorting_order
 	// If they have the same var, then sort by name.
 	if(. == 0)
-		. = sorttext(b.name, a.name)
+		. = sorttext(a.name, b.name)
 
 /**
  * Sorts entries in a performance stats list.
