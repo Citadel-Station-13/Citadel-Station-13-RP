@@ -6,8 +6,9 @@
 	//! intrinsics
 	/// our ckey
 	var/ckey
-	/// loaded
-	var/loaded = FALSE
+	/// available: null if don't know yet, FALSE if no dbcon, TRUE if loaded
+	var/available
+	#warn reestablish dbcon = autoreload?
 	/// loading?
 	var/loading = FALSE
 	/// saving?
@@ -33,7 +34,14 @@
  * async
  */
 /datum/client_dbdata/proc/Load()
-	set waitfor = FALSE
+	if(!SSdbcore.Connect())
+		if(isnull(available))
+			available = FALSE
+		return FALSE
+	INVOKE_ASYNC(src, .proc/Load_Async)
+	return TRUE
+
+/datum/client_dbdata/proc/Load_Async()
 	// allow admin proccalls - there's no args here.
 	var/was_proccall = !!IsAdminAdvancedProcCall()
 	var/old_usr = usr
@@ -104,6 +112,7 @@
 		player_id = insert_id
 		qdel(insert)
 	qdel(lookup)
+	available = TRUE
 
 /**
  * async
@@ -145,13 +154,15 @@
 
 /datum/client_dbdata/proc/UpdateLastSeen()
 	// don't interrupt
-	UNTIL(!loading)
+	if(!block_on_available())
+		return FALSE
 	qdel(SSdbcore.ExecuteQuery(
 		"UPDATE [format_table_name("player")] SET lastseen = Now() WHERE id = :id",
 		list(
 			"id" = player_id
 		)
 	))
+	return TRUE
 
 /**
  * sync
@@ -159,5 +170,20 @@
 /datum/client_dbdata/proc/player_age()
 	UNTIL(!loading)
 	return player_age
+
+/**
+ * block until we know if we're available
+ * then return if we are
+ */
+/datum/client_dbdata/proc/block_on_available()
+	WHILE(isnull(available))
+	return available
+
+/**
+ * returns if we're available
+ * if we don't know yet, return false
+ */
+/datum/client_dbdata/proc/immediately_available()
+	return !!available
 
 #warn when testmerging to live, playerid needs to be added on player_lookup
