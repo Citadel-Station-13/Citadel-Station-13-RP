@@ -1,6 +1,7 @@
 /**
  * Species IDs
  */
+#define SPEICES_ID_ADHERENT "adherent"
 #define SPECIES_ID_AKULA "akula"
 #define SPECIES_ID_AURIL "auril"
 #define SPECIES_ID_CUSTOM "custom"
