@@ -67,7 +67,7 @@
 	to_chat(src, "Location '[loc]' stored")
 
 /mob/living/silicon/ai/proc/sorted_stored_locations()
-	return sortList(stored_locations)
+	return sort_list(stored_locations)
 
 /mob/living/silicon/ai/proc/ai_goto_location(loc in sorted_stored_locations())
 	set category = "AI Commands"
@@ -124,7 +124,7 @@
 		else
 			TB.others[name] = M
 
-	var/list/targets = sortList(TB.humans) + sortList(TB.others)
+	var/list/targets = sort_list(TB.humans) + sort_list(TB.others)
 	src.track = TB
 	return targets
 

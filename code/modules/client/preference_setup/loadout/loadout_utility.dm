@@ -24,7 +24,7 @@
 	for(var/communicator in typesof(/obj/item/communicator) - list(/obj/item/communicator/integrated,/obj/item/communicator/commlink))
 		var/obj/item/communicator_type = communicator
 		communicators[initial(communicator_type.name)] = communicator_type
-	gear_tweaks += new/datum/gear_tweak/path(tim_sort(communicators, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(communicators, GLOBAL_PROC_REF(cmp_text_asc)))
 
 /datum/gear/utility/camera
 	name = "Camera"

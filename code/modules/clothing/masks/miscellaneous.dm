@@ -273,9 +273,9 @@
 			display_names[initial(masktype.name)] = masktype
 			paper_mask_icons += list(initial(masktype.name) = image(icon = initial(masktype.icon), icon_state = initial(masktype.icon_state)))
 
-	paper_mask_icons = sortList(paper_mask_icons)
+	paper_mask_icons = sort_list(paper_mask_icons)
 
-	var/choice = show_radial_menu(L, src , paper_mask_icons, custom_check = CALLBACK(src, .proc/check_menu, L), radius = 42, require_near = TRUE)
+	var/choice = show_radial_menu(L, src , paper_mask_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), L), radius = 42, require_near = TRUE)
 	if(!choice || !check_menu(L))
 		return
 

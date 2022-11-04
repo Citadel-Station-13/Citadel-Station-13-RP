@@ -350,7 +350,7 @@
 			display_names[initial(weapontype.name)] = weapontype
 			service_icons += list(initial(weapontype.name) = image(icon = initial(weapontype.icon), icon_state = initial(weapontype.icon_state)))
 
-	service_icons = sortList(service_icons)
+	service_icons = sort_list(service_icons)
 
 	var/choice = show_radial_menu(L, src, service_icons)
 	if(!choice || !check_menu(L))

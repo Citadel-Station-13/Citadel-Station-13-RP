@@ -23,12 +23,12 @@ SUBSYSTEM_DEF(events)
 	return ..()
 
 /datum/controller/subsystem/events/Initialize()
-	SSticker.OnRoundstart(CALLBACK(src, .proc/HolidayRoundstart))
+	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(HolidayRoundstart)))
 	allEvents = typesof(/datum/event) - /datum/event
 	event_containers = list(
-			EVENT_LEVEL_MUNDANE 	= new/datum/event_container/mundane,
-			EVENT_LEVEL_MODERATE	= new/datum/event_container/moderate,
-			EVENT_LEVEL_MAJOR 		= new/datum/event_container/major
+			EVENT_LEVEL_MUNDANE  = new/datum/event_container/mundane,
+			EVENT_LEVEL_MODERATE = new/datum/event_container/moderate,
+			EVENT_LEVEL_MAJOR    = new/datum/event_container/major
 		)
 	// unfortunately, character setup server startup hooks fire before /Initialize so :/
 	// SScharactersetup but not shit when :)
@@ -146,7 +146,7 @@ SUBSYSTEM_DEF(events)
 		else
 			qdel(holiday)
 
-	tim_sort(holidays, /proc/cmp_holiday_priority)
+	tim_sort(holidays, GLOBAL_PROC_REF(cmp_holiday_priority))
 	// // regenerate station name because holiday prefixes.
 	// set_station_name(new_station_name())
 	// world.update_status()

@@ -185,7 +185,7 @@
 				A.power_light = FALSE
 				A.power_equip = FALSE
 				A.power_environ = FALSE
-			INVOKE_ASYNC(A, .proc/power_change)
+			INVOKE_ASYNC(A, PROC_REF(power_change))
 */
 	STOP_PROCESSING(SSobj, src)
 	return ..()
@@ -621,7 +621,7 @@ var/list/teleportlocs = list()
 		if(station)
 			teleportlocs[AR.name] = AR
 
-	teleportlocs = tim_sort(teleportlocs, /proc/cmp_text_asc, TRUE)
+	teleportlocs = tim_sort(teleportlocs, GLOBAL_PROC_REF(cmp_text_asc), TRUE)
 
 	return 1
 
@@ -638,6 +638,6 @@ var/list/ghostteleportlocs = list()
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 
-	ghostteleportlocs = tim_sort(ghostteleportlocs, /proc/cmp_text_asc, TRUE)
+	ghostteleportlocs = tim_sort(ghostteleportlocs, GLOBAL_PROC_REF(cmp_text_asc), TRUE)
 
 	return 1

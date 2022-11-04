@@ -171,7 +171,7 @@
 		nanoui_data["items"] = items
 	else if(nanoui_menu == 2)
 		var/permanentData[0]
-		for(var/datum/data/record/L in sortRecord(data_core.locked))
+		for(var/datum/data/record/L in sort_record(data_core.locked))
 			permanentData[++permanentData.len] = list(Name = L.fields["name"],"id" = L.fields["id"])
 		nanoui_data["exploit_records"] = permanentData
 	else if(nanoui_menu == 21)

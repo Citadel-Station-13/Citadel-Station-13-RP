@@ -174,7 +174,7 @@
 					if(!length(pref.key_bindings[old_key]))
 						pref.key_bindings -= old_key
 				pref.key_bindings[full_key] += list(kb_name)
-				pref.key_bindings[full_key] = sortList(pref.key_bindings[full_key])
+				pref.key_bindings[full_key] = sort_list(pref.key_bindings[full_key])
 
 				user << browse(null, "window=capturekeypress")
 				user.client.update_movement_keys()

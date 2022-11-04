@@ -422,7 +422,7 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	make_terminal()
 
-	addtimer(CALLBACK(src, .proc/update), 5)
+	addtimer(CALLBACK(src, PROC_REF(update)), 5)
 
 /obj/machinery/power/apc/examine(mob/user)
 	. = ..()

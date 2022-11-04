@@ -419,7 +419,7 @@
 							if(!P.owner || P.toff || P.hidden) continue
 							sendPDAs += P
 						if(GLOB.PDAs && GLOB.PDAs.len > 0)
-							customrecepient = input(usr, "Select a PDA from the list.") as null|anything in sortList(sendPDAs)
+							customrecepient = input(usr, "Select a PDA from the list.") as null|anything in sort_list(sendPDAs)
 						else
 							customrecepient = null
 

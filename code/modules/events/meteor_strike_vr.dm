@@ -26,7 +26,7 @@
 /obj/effect/meteor_falling/Initialize(mapload)
 	. = ..()
 	SpinAnimation()
-	INVOKE_ASYNC(src, .proc/meteor_fall)
+	INVOKE_ASYNC(src, PROC_REF(meteor_fall))
 
 /obj/effect/meteor_falling/proc/meteor_fall()
 	var/turf/current = get_turf(src)

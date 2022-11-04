@@ -117,7 +117,7 @@
 				if(!isnull(data_core.general))
 					var/list/records = list()
 					data["records"] = records
-					for(var/datum/data/record/R in sortRecord(data_core.general))
+					for(var/datum/data/record/R in sort_record(data_core.general))
 						var/color = null
 						var/criminal = "None"
 						for(var/datum/data/record/M in data_core.security)
@@ -336,7 +336,7 @@
 					printing = TRUE
 					// playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, TRUE)
 					SStgui.update_uis(src)
-					addtimer(CALLBACK(src, .proc/print_finish), 5 SECONDS)
+					addtimer(CALLBACK(src, PROC_REF(print_finish)), 5 SECONDS)
 			if("photo_front")
 				var/icon/photo = get_photo(usr)
 				if(photo && active1)

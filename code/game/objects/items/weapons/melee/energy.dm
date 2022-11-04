@@ -348,7 +348,7 @@
 
 /obj/item/melee/energy/sword/dualsaber/pre_attack(mob/target, mob/living/carbon/human/user)
 	if(prob(50))
-		INVOKE_ASYNC(src, .proc/jedi_spin, user)
+		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
 
 /obj/item/melee/energy/sword/dualsaber/proc/jedi_spin(mob/living/user)
 	for(var/i in list(NORTH,SOUTH,EAST,WEST))
@@ -463,7 +463,7 @@
 
 /obj/item/melee/energy/sword/charge/dualsaber/pre_attack(mob/target, mob/living/carbon/human/user)
 	if(prob(50))
-		INVOKE_ASYNC(src, .proc/jedi_spin, user)
+		INVOKE_ASYNC(src, PROC_REF(jedi_spin), user)
 
 /obj/item/melee/energy/sword/charge/dualsaber/proc/jedi_spin(mob/living/user)
 	for(var/i in list(NORTH,SOUTH,EAST,WEST))
@@ -653,7 +653,7 @@
 		to_chat(user, "<span class='warning'> [src] starts vibrating.</span>")
 		playsound(user, 'sound/weapons/hf_machete/hfmachete1.ogg', 40, 0)
 		w_class = WEIGHT_CLASS_BULKY
-		// user.lazy_register_event(/lazy_event/on_moved, src, .proc/mob_moved)
+		// user.lazy_register_event(/lazy_event/on_moved, src, PROC_REF(mob_moved))
 	else
 		force = initial(force)
 		throw_force = initial(throw_force)
@@ -664,7 +664,7 @@
 		to_chat(user, "<span class='notice'> [src] stops vibrating.</span>")
 		playsound(user, 'sound/weapons/hf_machete/hfmachete0.ogg', 40, 0)
 		w_class = WEIGHT_CLASS_NORMAL
-		// user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
+		// user.lazy_unregister_event(/lazy_event/on_moved, src, PROC_REF(mob_moved))
 	update_icon()
 
 /obj/item/melee/energy/hfmachete/afterattack(atom/target, mob/user, proximity)
@@ -678,7 +678,7 @@
 
 /*
 /obj/item/melee/energy/hfmachete/dropped(mob/user, flags, atom/newLoc)
-	user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
+	user.lazy_unregister_event(/lazy_event/on_moved, src, PROC_REF(mob_moved))
 
 /obj/item/melee/energy/hfmachete/throw_at_old(atom/target, range, speed, thrower) // todo: get silicons to interpret this because >sleeps
 	if(!usr)

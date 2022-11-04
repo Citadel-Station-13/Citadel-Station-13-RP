@@ -224,7 +224,7 @@
 	var/data[0]
 
 	var/records[0]
-	for(var/datum/data/record/general in sortRecord(data_core.general))
+	for(var/datum/data/record/general in sort_record(data_core.general))
 		var/record[0]
 		record["name"] = general.fields["name"]
 		record["ref"] = "\ref[general]"
@@ -278,7 +278,7 @@
 	var/data[0]
 
 	var/records[0]
-	for(var/datum/data/record/general in sortRecord(data_core.general))
+	for(var/datum/data/record/general in sort_record(data_core.general))
 		var/record[0]
 		record["name"] = general.fields["name"]
 		record["ref"] = "\ref[general]"

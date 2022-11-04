@@ -585,7 +585,7 @@
 			creatures[name] = O
 	*/
 
-	for(var/mob/M in sortList(GLOB.mob_list))
+	for(var/mob/M in sort_list(GLOB.mob_list))
 		var/name = M.name
 		if (names.Find(name))
 			namecounts[name]++

@@ -280,8 +280,8 @@
 		return
 	render_stats(SSoverlays.stats, src)
 
-// Render stats list for round-end statistics.
-/proc/render_stats(list/stats, user, sort = /proc/cmp_generic_stat_item_time)
+/// Render stats list for round-end statistics.
+/proc/render_stats(list/stats, user, sort = GLOBAL_PROC_REF(cmp_generic_stat_item_time))
 	tim_sort(stats, sort, TRUE)
 
 	var/list/lines = list()
@@ -735,7 +735,7 @@
 			var/obj/item/nif/S = NIF_type
 			NIFs[capitalize(initial(S.name))] = NIF_type
 
-		var/list/show_NIFs = sortList(NIFs) // the list that will be shown to the user to pick from
+		var/list/show_NIFs = sort_list(NIFs) // the list that will be shown to the user to pick from
 
 		input_NIF = input("Pick the NIF type","Quick NIF") in show_NIFs
 		var/chosen_NIF = NIFs[capitalize(input_NIF)]

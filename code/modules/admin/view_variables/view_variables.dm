@@ -105,7 +105,7 @@
 	sleep(1)
 	switch(vtype)
 		if(VVING_A_DATUM)
-			names = sortList(names)
+			names = sort_list(names)
 			for(var/V in names)
 				if(D.can_vv_get(V))
 					variable_html += D.vv_get_var(V)

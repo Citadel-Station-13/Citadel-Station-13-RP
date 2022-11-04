@@ -35,7 +35,7 @@
 /obj/structure/closet/Initialize(mapload)
 	. = ..()
 	if(mapload && !opened)
-		addtimer(CALLBACK(src, .proc/take_contents), 0)
+		addtimer(CALLBACK(src, PROC_REF(take_contents)), 0)
 	PopulateContents()
 	// Closets need to come later because of spawners potentially creating objects during init.
 	return INITIALIZE_HINT_LATELOAD

@@ -18,11 +18,11 @@
 				if(delpath && fexists(delpath))
 					fdel(delpath)
 				break
-		addtimer(CALLBACK(src, .proc/force_reset_keybindings), 3 SECONDS)	//No mob available when this is run, timer allows user choice.
+		addtimer(CALLBACK(src, PROC_REF(force_reset_keybindings)), 3 SECONDS)	//No mob available when this is run, timer allows user choice.
 		return FALSE
 	if(savefile_version < 13)		//TODO : PROPER MIGRATION SYSTEM - kevinz000
 		savefile_version = 13
-		addtimer(CALLBACK(src, .proc/force_reset_keybindings), 3 SECONDS)	//No mob available when this is run, timer allows user choice.
+		addtimer(CALLBACK(src, PROC_REF(force_reset_keybindings)), 3 SECONDS)	//No mob available when this is run, timer allows user choice.
 
 	return TRUE
 

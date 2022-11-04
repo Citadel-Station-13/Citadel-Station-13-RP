@@ -96,7 +96,7 @@
 		if(listening)
 			UnregisterSignal(listening, COMSIG_MOVABLE_MOVED)
 		listening = loc
-		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, .proc/Queue)
+		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, PROC_REF(Queue))
 	if(!isturf(loc) && !isturf(loc.loc))	// only allow nesting 1 deep
 		return
 	// spread
@@ -145,7 +145,7 @@
 	if(listening)
 		UnregisterSignal(listening, COMSIG_MOVABLE_MOVED)
 	if(on && ismovable(loc))
-		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, .proc/Queue)
+		RegisterSignal(loc, COMSIG_MOVABLE_MOVED, PROC_REF(Queue))
 		listening = loc
 
 /obj/item/assembly/infra/proc/trigger_beam()

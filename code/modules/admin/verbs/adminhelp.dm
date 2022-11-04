@@ -510,7 +510,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
 
 	//remove out adminhelp verb temporarily to prevent spamming of admins.
 	src.verbs -= /client/verb/adminhelp
-	adminhelptimerid = addtimer(CALLBACK(src, .proc/giveadminhelpverb), 2 MINUTES, flags = TIMER_STOPPABLE)
+	adminhelptimerid = addtimer(CALLBACK(src, PROC_REF(giveadminhelpverb)), 2 MINUTES, flags = TIMER_STOPPABLE)
 
 	feedback_add_details("admin_verb","Adminhelp") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	if(current_ticket)

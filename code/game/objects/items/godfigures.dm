@@ -24,9 +24,9 @@
 			display_names[initial(figtype.name)] = figtype
 			holy_icons += list(initial(figtype.name) = image(icon = initial(figtype.icon), icon_state = initial(figtype.icon_state)))
 
-	holy_icons = sortList(holy_icons)
+	holy_icons = sort_list(holy_icons)
 
-	var/choice = show_radial_menu(L, src , holy_icons, custom_check = CALLBACK(src, .proc/check_menu, L), radius = 42, require_near = TRUE)
+	var/choice = show_radial_menu(L, src , holy_icons, custom_check = CALLBACK(src, PROC_REF(check_menu), L), radius = 42, require_near = TRUE)
 	if(!choice || !check_menu(L))
 		return
 

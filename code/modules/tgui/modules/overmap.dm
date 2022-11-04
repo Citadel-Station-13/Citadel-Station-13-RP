@@ -55,7 +55,7 @@
 		user.set_machine(src)
 		user.reset_perspective(linked)
 	user.client?.change_view(world.view + extra_view, TRUE, translocate = TRUE)
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/unlook)
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(unlook))
 	LAZYDISTINCTADD(viewers, WEAKREF(user))
 
 /datum/tgui_module/ship/proc/unlook(var/mob/user)

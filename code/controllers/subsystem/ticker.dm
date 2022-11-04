@@ -216,7 +216,7 @@ SUBSYSTEM_DEF(ticker)
 			var/list/tmpmodes = new
 			for (var/datum/game_mode/M in runnable_modes)
 				tmpmodes+=M.name
-			tmpmodes = sortList(tmpmodes)
+			tmpmodes = sort_list(tmpmodes)
 			if(tmpmodes.len)
 				to_chat(world, "<B>Possibilities:</B> [english_list(tmpmodes, and_text= "; ", comma_text = "; ")]")
 	else
@@ -271,7 +271,7 @@ SUBSYSTEM_DEF(ticker)
 
 	if(CONFIG_GET(flag/sql_enabled))
 		//THIS REQUIRES THE INVOKE ASYNC.
-		INVOKE_ASYNC(GLOBAL_PROC, .proc/statistic_cycle) // Polls population totals regularly and stores them in an SQL DB -- TLE
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(statistic_cycle)) // Polls population totals regularly and stores them in an SQL DB -- TLE
 	return TRUE
 
 //These callbacks will fire after roundstart key transfer

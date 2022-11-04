@@ -1,13 +1,14 @@
-
-//Removes any null entries from the list
-//Returns TRUE if the list had nulls, FALSE otherwise
+/**
+ * Removes any null entries from the list
+ * Returns TRUE if the list had nulls, FALSE otherwise
+ */
 /proc/listclearnulls(list/L)
 	var/start_len = L.len
 	var/list/N = new(start_len)
 	L -= N
 	return L.len < start_len
 
-/*
+/**
  * Returns list containing all the entries from first list that are not present in second.
  * If skiprep = 1, repeated elements are treated as one.
  * If either of arguments is not a list, returns null
@@ -24,7 +25,7 @@
 		result = first - second
 	return result
 
-/*
+/**
  * Returns list containing entries that are in either list but not both.
  * If skipref = 1, repeated elements are treated as one.
  * If either of arguments is not a list, returns null
@@ -45,11 +46,11 @@
 		pos--
 	L.Insert(pos+1, thing)
 
-/*
-Two lists may be different (A!=B) even if they have the same elements.
-This actually tests if they have the same entries and values.
-*/
-/proc/same_entries(var/list/first, var/list/second)
+/**
+ * Two lists may be different (A!=B) even if they have the same elements.
+ * This actually tests if they have the same entries and values.
+ */
+/proc/same_entries(list/first, list/second)
 	if(!islist(first) || !islist(second))
 		return 0
 	if(length(first) != length(second))
@@ -58,25 +59,6 @@ This actually tests if they have the same entries and values.
 		if(!(entry in second) || (first[entry] != second[entry]))
 			return 0
 	return 1
-
-
-//for sorting clients or mobs by ckey
-/proc/sortKey(list/L, order=1)
-	return tim_sort(L, order >= 0 ? /proc/cmp_ckey_asc : /proc/cmp_ckey_dsc)
-
-//Specifically for record datums in a list.
-/proc/sortRecord(list/L, field = "name", order = 1)
-	GLOB.cmp_field = field
-	return tim_sort(L, order >= 0 ? /proc/cmp_records_asc : /proc/cmp_records_dsc)
-
-//any value in a list
-/proc/sortList(list/L, cmp=/proc/cmp_text_asc)
-	return tim_sort(L.Copy(), cmp)
-
-//uses sortList() but uses the var's name specifically. This should probably be using mergeAtom() instead
-/proc/sortNames(list/L, order=1)
-	return tim_sort(L, order >= 0 ? /proc/cmp_name_asc : /proc/cmp_name_dsc)
-
 
 
 /proc/count_by_type(list/L, type)
@@ -411,3 +393,13 @@ proc/dd_sortedObjectList(list/incoming)
 	if(Li <= L.len)
 		return (result + L.Copy(Li, 0))
 	return (result + R.Copy(Ri, 0))
+
+/// Runtimes if the passed in list is not sorted
+/proc/assert_sorted(list/list, name, cmp = GLOBAL_PROC_REF(cmp_numeric_asc))
+	var/last_value = list[1]
+
+	for (var/index in 2 to list.len)
+		var/value = list[index]
+		if (call(cmp)(value, last_value) < 0)
+			stack_trace("[name] is not sorted. value at [index] ([value]) is in the wrong place compared to the previous value of [last_value] (when compared to by [cmp])")
+		last_value = value

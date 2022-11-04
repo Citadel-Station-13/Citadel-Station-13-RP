@@ -132,7 +132,7 @@
 				if(!isnull(data_core.general))
 					var/list/records = list()
 					data["records"] = records
-					for(var/datum/data/record/R in sortRecord(data_core.general))
+					for(var/datum/data/record/R in sort_record(data_core.general))
 						records[++records.len] = list("ref" = "\ref[R]", "id" = R.fields["id"], "name" = R.fields["name"])
 			if(MED_DATA_RECORD)
 				var/list/general = list()
@@ -352,7 +352,7 @@
 					printing = TRUE
 					// playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, TRUE)
 					SStgui.update_uis(src)
-					addtimer(CALLBACK(src, .proc/print_finish), 5 SECONDS)
+					addtimer(CALLBACK(src, PROC_REF(print_finish)), 5 SECONDS)
 			else
 				return FALSE
 

@@ -37,7 +37,7 @@
 
 /obj/effect/temporary_effect/destablize/Initialize(mapload)
 	. = ..()
-	INVOKE_ASYNC(src, .proc/radiate_loop)
+	INVOKE_ASYNC(src, PROC_REF(radiate_loop))
 
 /obj/effect/temporary_effect/destablize/proc/radiate_loop()
 	while(pulses_remaining)

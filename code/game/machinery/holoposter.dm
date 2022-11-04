@@ -28,7 +28,7 @@ GLOBAL_LIST_EMPTY(holoposters)
 	. = ..()
 	set_rand_sprite()
 	GLOB.holoposters += src
-	mytimer = addtimer(CALLBACK(src, .proc/set_rand_sprite), 30 MINUTES + rand(0, 5 MINUTES), TIMER_STOPPABLE | TIMER_LOOP)
+	mytimer = addtimer(CALLBACK(src, PROC_REF(set_rand_sprite)), 30 MINUTES + rand(0, 5 MINUTES), TIMER_STOPPABLE | TIMER_LOOP)
 
 /obj/machinery/holoposter/Destroy()
 	GLOB.holoposters -= src
@@ -91,7 +91,7 @@ GLOBAL_LIST_EMPTY(holoposters)
 			machine_stat &= ~BROKEN
 			icon_forced = FALSE
 			if(!mytimer)
-				mytimer = addtimer(CALLBACK(src, .proc/set_rand_sprite), 30 MINUTES + rand(0, 5 MINUTES), TIMER_STOPPABLE | TIMER_LOOP)
+				mytimer = addtimer(CALLBACK(src, PROC_REF(set_rand_sprite)), 30 MINUTES + rand(0, 5 MINUTES), TIMER_STOPPABLE | TIMER_LOOP)
 			set_rand_sprite()
 			return
 		icon_forced = TRUE

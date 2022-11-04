@@ -137,7 +137,7 @@
 						break
 				layers[current] = current_layer
 
-		//tim_sort(layers, /proc/cmp_image_layer_asc)
+		//tim_sort(layers, GLOBAL_PROC_REF(cmp_image_layer_asc))
 
 		var/icon/add // Icon of overlay being added
 
