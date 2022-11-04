@@ -9,7 +9,7 @@
 	. = list()
 	var/datum/character_species/S = prefs.character_species_datum()
 	. += "<center>"
-	. += "Selected species: [S.name] - \[[href_simple(prefs, "change", "CHANGE")]\]"
+	. += "<b>Selected species</b>: [S.name] - \[[href_simple(prefs, "change", "CHANGE")]\]"
 	. += "</center>"
 	. += "<div class='statusDisplay'>"
 	. += "[S.desc]"

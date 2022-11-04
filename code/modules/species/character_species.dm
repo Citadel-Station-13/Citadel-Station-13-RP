@@ -1,7 +1,7 @@
 /datum/species/proc/construct_character_species()
 	var/datum/character_species/template = new
 	// copy basics
-	template.name = display_name
+	template.name = display_name || name
 	template.uid = uid
 	if(id != uid)
 		template.is_subspecies = TRUE

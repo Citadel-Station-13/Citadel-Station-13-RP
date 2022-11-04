@@ -47,7 +47,7 @@
 	job_whitelist = null
 
 /datum/lore/character_background/faction/aether
-	name = "Aether Atmospherics and Recycling"
+	name = "Aether Atmos & Recycling"
 	id = "aether"
 	desc = "Aether Atmospherics and Recycling is the prime maintainer and provider of atmospherics systems to both the many ships that navigate the \
 	vast expanses of space, and the life support on current and future Human colonies. The byproducts from the filtration of atmospheres across the galaxy \
@@ -217,7 +217,7 @@
 		)
 
 /datum/lore/character_background/faction/wardtakahashi
-	name = "Ward-Takahashi GMB"
+	name = "Ward-Takahashi"
 	id = "wardtakashi"
 	desc = "Ward-Takahashi focuses on the sale of small consumer electronics, with its computers, communicators, \
 	and mid-class automobiles a fixture of many households. Less famously, Ward-Takahashi also supplies most \
@@ -286,7 +286,7 @@
 		)
 
 /datum/lore/character_background/faction/onkhera_necropolis
-	name = "Onkhera Synthetic Solutions & Necropolis Industries"
+	name = "Onkhera Synthetics & Necropolis"
 	id = "oss_necro"
 	desc = "Onkhera Synthetic Solutions, and by extension it's subsidiary Necropolis Industries, is one of the few \
 	Megacorporations not originating within the Confederacy; instead being owned by a Naramadi House - House Onkhera. \

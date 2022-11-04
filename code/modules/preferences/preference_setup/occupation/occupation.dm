@@ -44,7 +44,7 @@
 	// center
 	. += "<center>"
 	// user intro
-	. += "<h3>Choose occupation preferences</h3><br>Unavailable occupations are crossed out.<br>"
+	. += "<h3>Choose occupation preferences</h3>Unavailable occupations are crossed out.<br>"
 	// script inject for right click
 	. += "<script type='text/javascript'>function setjob(id,lvl) { window.location.href = '?src=\ref[src];action=job;id=' + encodeURIComponent(lvl) + ';level=' + lvl; return false; }</script>"
 	// grab job-by-department ui cache
@@ -58,7 +58,9 @@
 		// iterate
 		var/count = 0
 		var/limit = max(5, SSjob.job_pref_ui_per)
-		for(var/list/department in ui_data[ui_data[1]])
+		var/list/faction = ui_data[ui_data[1]]
+		for(var/department_name in faction)
+			var/list/department = faction
 			var/dep_amt = length(department)
 			// if we'd hit limit, we split first as we're not longer than limit or would waste more than 4 slots.
 			if(count + dep_amt > limit && dep_amt <= limit && limit - count <= 4)

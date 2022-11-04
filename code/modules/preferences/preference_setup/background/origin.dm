@@ -15,6 +15,7 @@
 	for(var/category in categories)
 		. += (category == current.category)? "<span class='linkOn'>[category]</span> " : href_simple(prefs, "category", "[category]", category)
 		. += " "
+	. += "<br>"
 	for(var/datum/lore/character_background/origin/O in categories[current.category])
 		if(O == current)
 			. += "<span class='linkOn'>[O.name]</span>"
@@ -40,7 +41,7 @@
 			return PREFERENCES_REFRESH
 		if("category")
 			var/cat = params["category"]
-			var/list/datum/lore/character_background/origin/origins = SScharacters.resolve_origin(prefs.character_species_id(), cat)
+			var/list/datum/lore/character_background/origin/origins = SScharacters.available_origins(prefs.character_species_id(), cat)
 			if(!length(origins))
 				to_chat(user, SPAN_WARNING("No origins in that category have been found; this might be an error."))
 				return PREFERENCES_NOACTION
