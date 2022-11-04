@@ -1,6 +1,6 @@
 /datum/category_item/player_setup_item/background/language
 	name = "Language"
-	sort_order = 4
+	sort_order = 10
 	save_key = CHARACTER_DATA_LANGUAGES
 	load_order = PREFERENCE_LOAD_ORDER_LANGUAGE
 
@@ -10,14 +10,15 @@
 	for(var/id in prefs.innate_language_ids())
 		var/datum/language/L = SScharacters.resolve_language_id(id)
 		innate_names += L.name
-	. += "<b>Languages</b><br>"
-	. += "    Intrinsic (Species, Backgrounds, Cultures): [english_list(innate_names)]"
+	. += "<center><b>Languages</b></center><br>"
+	. += "    Intrinsic (Species, Backgrounds, Cultures): [english_list(innate_names)]<br>"
 	. += "    Additional: "
 	var/count = 0
 	for(var/id in prefs.extraneous_language_ids())
 		++count
 		var/datum/language/L = SScharacters.resolve_language_id(id)
-		. += "[L.name] [href_simple(prefs, "remove", "Remove", id)] "
+		. += "[L.name] [href_simple(prefs, "remove", "Remove", id)]"
+		. += " "
 	if(count < prefs.extraneous_languages_max())
 		. += "[href_simple(prefs, "add", "Add")]"
 

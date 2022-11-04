@@ -8,7 +8,6 @@
 	var/ckey
 	/// available: null if don't know yet, FALSE if no dbcon, TRUE if loaded
 	var/available
-	#warn reestablish dbcon = autoreload?
 	/// loading?
 	var/loading = FALSE
 	/// saving?

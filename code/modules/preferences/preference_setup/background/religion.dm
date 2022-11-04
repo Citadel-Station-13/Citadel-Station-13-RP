@@ -8,10 +8,15 @@
 	var/list/datum/lore/character_background/religion/available = SScharacters.available_religions(prefs.character_species_id())
 	var/datum/lore/character_background/religion/current = SScharacters.resolve_religion(data)
 	. += "<center>"
+	. += "<b>Religion</b><br>"
 	for(var/datum/lore/character_background/religion/O in available)
-		. += href_simple(prefs, "pick", "[O.name] ", O.id)
+		if(O == current)
+			. += "<span class='linkOn'>[O.name]</span>"
+		else
+			. += href_simple(prefs, "pick", "[O.name]", O.id)
+		. += " "
 	. += "</center>"
-	. += "<div>"
+	. += "<div class='statusDisplay'>"
 	. += current? current.desc : "<center>error; religion load failed</center>"
 	. += "</div>"
 

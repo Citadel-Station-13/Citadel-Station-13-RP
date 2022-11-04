@@ -239,7 +239,7 @@
 		return 1
 
 	. = OnTopic(href, href_list, usr)
-	var/resolved = href_list["action"]
+	var/resolved = href_list["act"]
 	. |= act(pref, usr, resolved, href_list)
 
 	if(. & PREFERENCES_UPDATE_PREVIEW)

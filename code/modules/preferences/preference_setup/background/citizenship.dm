@@ -8,10 +8,15 @@
 	var/list/datum/lore/character_background/citizenship/available = SScharacters.available_citizenships(prefs.character_species_id())
 	var/datum/lore/character_background/citizenship/current = SScharacters.resolve_citizenship(data)
 	. += "<center>"
+	. += "<b>Citizenship</b><br>"
 	for(var/datum/lore/character_background/citizenship/O in available)
-		. += href_simple(prefs, "pick", "[O.name] ", O.id)
+		if(O == current)
+			. += "<span class='linkOn'>[O.name]</span>"
+		else
+			. += href_simple(prefs, "pick", "[O.name]", O.id)
+		. += " "
 	. += "</center>"
-	. += "<div>"
+	. += "<div class='statusDisplay'>"
 	. += current? current.desc : "<center>error; citizenship load failed</center>"
 	. += "</div>"
 

@@ -10,13 +10,19 @@
 	for(var/datum/lore/character_background/origin/O as anything in available)
 		LAZYADD(categories[O.category], O)
 	var/datum/lore/character_background/origin/current = SScharacters.resolve_origin(data)
-	for(var/category in categories)
-		. += (category == current.category)? "<span class='linkOn'>[category]</span> " : href_simple(prefs, "category", "[category] ", category)
 	. += "<center>"
+	. += "<b>Origin</b><br>"
+	for(var/category in categories)
+		. += (category == current.category)? "<span class='linkOn'>[category]</span> " : href_simple(prefs, "category", "[category]", category)
+		. += " "
 	for(var/datum/lore/character_background/origin/O in categories[current.category])
-		. += href_simple(prefs, "pick", "[O.name] ", O.id)
+		if(O == current)
+			. += "<span class='linkOn'>[O.name]</span>"
+		else
+			. += href_simple(prefs, "pick", "[O.name]", O.id)
+		. += " "
 	. += "</center>"
-	. += "<div>"
+	. += "<div class='statusDisplay'>"
 	. += current? current.desc : "<center>error; origin load failed</center>"
 	. += "</div>"
 

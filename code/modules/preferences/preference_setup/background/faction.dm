@@ -8,10 +8,15 @@
 	var/list/datum/lore/character_background/faction/available = SScharacters.available_factions(prefs.character_species_id())
 	var/datum/lore/character_background/faction/current = SScharacters.resolve_faction(data)
 	. += "<center>"
+	. += "<b>Faction</b><br>"
 	for(var/datum/lore/character_background/faction/O in available)
-		. += href_simple(prefs, "pick", "[O.name] ", O.id)
+		if(O == current)
+			. += "<span class='linkOn'>[O.name]</span>"
+		else
+			. += href_simple(prefs, "pick", "[O.name]", O.id)
+		. += " "
 	. += "</center>"
-	. += "<div>"
+	. += "<div class='statusDisplay'>"
 	. += current? current.desc : "<center>error; faction load failed</center>"
 	. += "</div>"
 
