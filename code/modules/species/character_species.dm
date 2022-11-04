@@ -30,6 +30,7 @@
 	template.whitelist_languages = islist(whitelist_languages)? whitelist_languages.Copy() : whitelist_languages
 	template.intrinsic_languages = islist(intrinsic_languages)? intrinsic_languages.Copy() : intrinsic_languages
 	template.galactic_language = galactic_language
+	return template
 
 /**
  * since we're a server of snowflakes, we have this to embody character species

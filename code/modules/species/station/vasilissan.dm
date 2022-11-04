@@ -1,6 +1,7 @@
 /datum/species/vasilissan //These actually look pretty damn spooky!
 	name = SPECIES_VASILISSAN
 	name_plural = "Vasilissans"
+	uid = SPECIES_ID_VASILISSAN
 
 	icobase = 'icons/mob/species/vasilissan/body.dmi'
 	deform = 'icons/mob/species/vasilissan/deformed_body.dmi'

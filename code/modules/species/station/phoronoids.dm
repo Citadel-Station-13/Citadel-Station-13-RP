@@ -1,5 +1,6 @@
 /datum/species/phoronoid
 	name = SPECIES_PHORONOID
+	uid = SPECIES_ID_PHORONOID
 	name_plural = "Phoronoids"
 	default_bodytype = BODYTYPE_PHORONOID
 

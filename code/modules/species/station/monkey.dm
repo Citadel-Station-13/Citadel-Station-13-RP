@@ -88,7 +88,7 @@
 /datum/species/monkey/skrell
 	name = SPECIES_MONKEY_SKRELL
 	name_plural = SPECIES_MONKEY_SKRELL
-	id = SPECIES_ID_NEAERA
+	uid = SPECIES_ID_NEAERA
 
 	icobase = 'icons/mob/species/monkey/body_neaera.dmi'
 	deform  = 'icons/mob/species/monkey/body_neaera.dmi'

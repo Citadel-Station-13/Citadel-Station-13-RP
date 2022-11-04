@@ -1,5 +1,6 @@
 /datum/species/werebeast
 	name = SPECIES_WEREBEAST
+	uid = SPECIES_ID_WEREBEAST
 	name_plural = "Werebeasts"
 	primitive_form = SPECIES_MONKEY_VULPKANIN
 	default_bodytype = BODYTYPE_WEREBEAST

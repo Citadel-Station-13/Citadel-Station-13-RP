@@ -28,6 +28,9 @@
 		var/datum/species/S = species_paths[path]
 		if(!(S.species_spawn_flags & SPECIES_SPAWN_ALLOWED))		// don't bother lmao
 			continue
+		if(!S.uid)
+			stack_trace("no species ID on [S.type].")
+			continue
 		if(character_species_lookup[S.uid])
 			stack_trace("species uid collision on [S.uid] from [S.type].")
 			continue
