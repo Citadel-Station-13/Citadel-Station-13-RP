@@ -86,6 +86,22 @@
 		return dest && !z_pass_out_obstruction(mover, DOWN, dest) && !dest.z_pass_in_obstruction(mover, UP, src)
 	CRASH("What?")
 
+/**
+ * checks what is going to block something from falling through us
+ */
+/turf/proc/z_fall_obstruction(atom/movable/mover, levels, fall_flags)
+	for(var/atom/movable/AM as anything in contents)
+		if(AM.prevent_z_fall(mover, levels, fall_flags))
+			return AM
+
+/**
+ * simple boolean check to see if something's physically blocked from falling through us
+ */
+/turf/proc/z_fall_check(atom/movable/mover, levels, fall_flags)
+	if(!(z_flags & Z_OPEN_DOWN))
+		return FALSE
+	return !!z_fall_obstruction(mover, levels, fall_flags)
+
 /turf/z_pass_in(atom/movable/AM, dir, turf/old_loc)
 	return !!z_pass_in_obstruction(AM, dir, old_loc)
 

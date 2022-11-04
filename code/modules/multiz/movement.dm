@@ -189,6 +189,8 @@
 	var/turf/T = loc
 	if(!T.z_exit_check(src, DOWN))
 		return
+	if(!T.z_fall_check(src))
+		return
 
 	// No gravity in space, apparently.
 	if(!has_gravity())
@@ -242,7 +244,7 @@
 			if(!isturf(loc))	 // wtf
 				return
 			var/turf/cT = loc
-			if(!cT.z_exit_check(src, DOWN))
+			if(!cT.z_exit_check(src, DOWN) || !cT.z_fall_check(src))
 				return	// nah
 			handle_fall(below)
 		// TODO - handle fall on damage!
@@ -294,16 +296,6 @@
 /mob/living/carbon/human/can_fall()
 	if(..())
 		return species.can_fall(src)
-
-// So you'll slam when falling onto a catwalk
-/obj/structure/catwalk/CheckFall(var/atom/movable/falling_atom)
-	return falling_atom.fall_impact(src)
-
-// So you'll slam when falling onto a grille
-/obj/structure/lattice/CheckFall(var/atom/movable/falling_atom)
-	if(check_standard_flag_pass(falling_atom))
-		return FALSE
-	return falling_atom.fall_impact(src)
 
 // Actually process the falling movement and impacts.
 /atom/movable/proc/handle_fall(turf/landing)

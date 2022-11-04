@@ -115,10 +115,10 @@
 	return fall_flags | FALL_BLOCKED
 
 /obj/structure/catwalk/z_pass_in(atom/movable/AM, dir, turf/old_loc)
-	return FALSE
+	return dir == UP
 
 /obj/structure/catwalk/z_pass_out(atom/movable/AM, dir, turf/new_loc)
-	return FALSE
+	return dir == UP
 
 /obj/effect/catwalk_plated
 	name = "plated catwalk spawner"
