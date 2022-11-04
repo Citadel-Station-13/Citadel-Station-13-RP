@@ -43,7 +43,7 @@
 			return PREFERENCES_REFRESH
 	return ..()
 
-/datum/category_item/player_setup_item/background/origin/filter(datum/preferences/prefs, data, list/errors)
+/datum/category_item/player_setup_item/background/origin/filter_data(datum/preferences/prefs, data, list/errors)
 	var/datum/lore/character_background/origin/current = SScharacters.resolve_origin(data)
 	if(!current?.check_species_id(prefs.character_species_id()))
 		return SScharacters.resolve_religion(/datum/lore/character_background/origin/custom).id

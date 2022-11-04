@@ -8,9 +8,9 @@
 /datum/category_item/player_setup_item
 	/// primary data key
 	// todo: unit test for this to exist
-	var/const/save_key		// genuinely you have zero reason to change this at runtime
+	var/save_key		// genuinely you have zero reason to change this at runtime
 	/// globally saved, or character-slot saved?
-	var/const/is_global		// genuinely you have zero reason to change this at runtime
+	var/is_global		// genuinely you have zero reason to change this at runtime
 	/// load order; sanitization + deserialization goes from lowest to highest
 	var/load_order = PREFERENCE_LOAD_ORDER_DEFAULT
 
@@ -45,7 +45,7 @@
  *
  * put errors into errors for user feedback
  */
-/datum/category_item/player_setup_item/proc/filter(datum/preferences/prefs, data, list/errors)
+/datum/category_item/player_setup_item/proc/filter_data(datum/preferences/prefs, data, list/errors)
 	return data
 
 /**
@@ -54,7 +54,7 @@
  * put errors into errors for user feedback
  */
 /datum/category_item/player_setup_item/proc/sanitize_data(datum/preferences/prefs, list/errors)
-	write(prefs, filter(prefs, read(prefs), errors))
+	write(prefs, filter_data(prefs, read(prefs), errors))
 
 /**
  * called to serialize our value for saving
@@ -78,7 +78,7 @@
  * write data, sanitizing in the process
  */
 /datum/category_item/player_setup_item/proc/write(datum/preferences/prefs, data)
-	prefs.set_character_data(save_key, filter(prefs, data))
+	prefs.set_character_data(save_key, filter_data(prefs, data))
 
 /**
  * read data; does not auto-sanitize
@@ -148,3 +148,11 @@
 //! warning not all content() procs return a list properly for now
 
 // todo: multi stage random character generation
+
+/datum/category_item/player_setup_item/vv_edit_var(var_name, var_value, raw_edit)
+	switch(var_name)
+		if(NAMEOF(src, is_global))
+			return FALSE		// let's not!
+		if(NAMEOF(src, save_key))
+			return FALSE		// let's not!
+	return ..()

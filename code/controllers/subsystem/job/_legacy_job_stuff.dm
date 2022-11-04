@@ -1,6 +1,4 @@
 /datum/controller/subsystem/job
-		//Players who need jobs
-	var/list/divide_unassigned = list()
 		//job_debug info
 	var/list/job_debug = list()
 		//Cache of icons for job info window

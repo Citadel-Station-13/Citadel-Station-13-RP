@@ -6,7 +6,6 @@
 
 /datum/category_item/player_setup_item/background/language/content(datum/preferences/prefs, mob/user, data)
 	. = list()
-	var/list/language_ids = data
 	var/list/innate_names = list()
 	for(var/id in prefs.innate_language_ids())
 		var/datum/language/L = SScharacters.resolve_language_id(id)
@@ -36,7 +35,7 @@
 			return PREFERENCES_NOACTION
 	return ..()
 
-/datum/category_item/player_setup_item/background/language/filter(datum/preferences/prefs, data, list/errors)
+/datum/category_item/player_setup_item/background/language/filter_data(datum/preferences/prefs, data, list/errors)
 	var/list/languages = sanitize_islist(data)
 	var/list/innate = prefs.innate_language_ids()
 	var/list/extra = languages - innate

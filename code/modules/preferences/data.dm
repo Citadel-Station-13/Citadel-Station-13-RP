@@ -40,7 +40,7 @@
 	var/datum/category_item/player_setup_item/I = preference_by_key[key]
 	if(!I.is_global)
 		CRASH("tried to set character key")
-	options[key] = I.filter(src, value)
+	options[key] = I.filter_data(src, value)
 
 /**
  * checked read of a character key;
@@ -60,7 +60,7 @@
 	var/datum/category_item/player_setup_item/I = preference_by_key[key]
 	if(I.is_global)
 		CRASH("tried to set global key")
-	character[key] = I.filter(src, value)
+	character[key] = I.filter_data(src, value)
 
 /**
  * flush character data to disk
@@ -73,7 +73,7 @@
 		var/datum/category_item/player_setup_item/I = preference_by_key[key]
 		if(I.is_global)
 			continue
-		transformed[key] = I.serialize_data(src, I.filter(src, character[key], errors), errors)
+		transformed[key] = I.serialize_data(src, I.filter_data(src, character[key], errors), errors)
 	S["slot_[slot]"] << transformed
 	S.cd = old_cd
 
@@ -88,7 +88,7 @@
 		var/datum/category_item/player_setup_item/I = preference_by_key[key]
 		if(!I.is_global)
 			continue
-		transformed[key] = I.serialize_data(src, I.filter(src, character[key], errors), errors)
+		transformed[key] = I.serialize_data(src, I.filter_data(src, character[key], errors), errors)
 	S["global"] << transformed
 	S.cd = old_cd
 
@@ -108,7 +108,7 @@
 		var/datum/category_item/player_setup_item/I = preference_by_key[key]
 		if(I.is_global)
 			continue
-		character[key] = I.filter(src, I.deserialize_data(src, transformed[key], errors), errors)
+		character[key] = I.filter_data(src, I.deserialize_data(src, transformed[key], errors), errors)
 	S.cd = old_cd
 
 /**
@@ -127,7 +127,7 @@
 		var/datum/category_item/player_setup_item/I = preference_by_key[key]
 		if(!I.is_global)
 			continue
-		character[key] = I.filter(src, I.deserialize_data(src, transformed[key], errors), errors)
+		character[key] = I.filter_data(src, I.deserialize_data(src, transformed[key], errors), errors)
 	S.cd = old_cd
 
 /**
@@ -135,7 +135,7 @@
  */
 /datum/preferences/proc/set_preference(path, value)
 	var/datum/category_item/player_setup_item/preference = preference_by_key[path]
-	value = preference.filter(value)
+	value = preference.filter_data(value)
 	if(preference.is_global)
 		options[preference.save_key] = value
 	else
@@ -157,9 +157,9 @@
 /datum/preferences/proc/sanitize_preference(pref, list/errors)
 	var/datum/category_item/player_setup_item/preference = preference_by_key[path]
 	if(preference.is_global)
-		return options[preference.save_key] = preference.filter(src, options[preference.save_key], errors)
+		return options[preference.save_key] = preference.filter_data(src, options[preference.save_key], errors)
 	else
-		return character[preference.save_key] = preference.filter(src, character[preference.save_key], errors)
+		return character[preference.save_key] = preference.filter_data(src, character[preference.save_key], errors)
 
 /**
  * resanitize everything
@@ -215,7 +215,7 @@
 	var/list/transformed = list()
 	for(var/key in character)
 		var/datum/category_item/player_setup_item/I = preference_by_key[key]
-		transformed[key] = I.serialize_data(src, I.filter(src, character[key], errors), errors)
+		transformed[key] = I.serialize_data(src, I.filter_data(src, character[key], errors), errors)
 	return json_encode(transformed)
 
 /**
@@ -237,7 +237,7 @@
 		if(I.is_global)
 			errors?.Add("Skipping key [key] - was global")
 			continue
-		character[key] = I.filter(src, I.deserialize_data(src, json[key], errors), errors)
+		character[key] = I.filter_data(src, I.deserialize_data(src, json[key], errors), errors)
 	var/list/skipped = json - parsed
 	for(var/key in skipped)
 		errors?.Add("Skipping key [key] - no datum found.")

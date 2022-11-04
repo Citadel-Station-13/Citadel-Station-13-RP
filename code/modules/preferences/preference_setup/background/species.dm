@@ -22,7 +22,7 @@
 		return FALSE
 	return TRUE
 
-/datum/category_item/player_setup_item/background/char_species/filter(datum/preferences/prefs, data, list/errors)
+/datum/category_item/player_setup_item/background/char_species/filter_data(datum/preferences/prefs, data, list/errors)
 	// resolve
 	var/datum/character_species/CS = SScharacters.resolve_character_species(data)
 	if(CS)
@@ -63,7 +63,7 @@
 	save_key = CHARACTER_DATA_REAL_SPECIES
 	load_order = PREFERENCE_LOAD_ORDER_REAL_SPECIES
 
-/datum/category_item/player_setup_item/background/real_species/filter(datum/preferences/prefs, data, list/errors)
+/datum/category_item/player_setup_item/background/real_species/filter_data(datum/preferences/prefs, data, list/errors)
 	var/datum/species/S = SScharacters.resolve_species_id(data)
 	if(!S)
 		return SScharacters.default_species_id()

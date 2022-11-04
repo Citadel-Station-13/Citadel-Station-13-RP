@@ -5,7 +5,7 @@
 /datum/category_item/player_setup_item/player_global/language_prefix/proc/valid_prefix(c)
 	return length(c) == 1 && !(c in list(";", ":", ".", "!", "*", "^")) && !contains_az09(c)
 
-/datum/category_item/player_setup_item/player_global/language_prefix/filter(datum/preferences/prefs, data, list/errors)
+/datum/category_item/player_setup_item/player_global/language_prefix/filter_data(datum/preferences/prefs, data, list/errors)
 	var/list/prefixes = data
 	prefixes = sanitize_islist(prefixes)
 	for(var/c in prefixes)

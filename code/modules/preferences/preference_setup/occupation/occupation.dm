@@ -14,7 +14,7 @@
 	name = "Job Preferences"
 	save_key = CHARACTER_DATA_JOBS
 
-/datum/category_item/player_setup_item/occupation/jobs/filter(datum/preferences/prefs, data, list/errors)
+/datum/category_item/player_setup_item/occupation/jobs/filter_data(datum/preferences/prefs, data, list/errors)
 	var/list/jobs = sanitize_islist(data)
 	var/highest
 	for(var/id in jobs)
@@ -237,7 +237,7 @@
 	name = "(Virtual) Alt Titles"
 	save_key = CHARACTER_DATA_ALT_TITLES
 
-/datum/category_item/player_setup_item/occupation/alt_titles/filter(datum/preferences/prefs, data, list/errors)
+/datum/category_item/player_setup_item/occupation/alt_titles/filter_data(datum/preferences/prefs, data, list/errors)
 	var/list/jobs = sanitize_islist(data)
 	for(var/id in jobs)
 		var/datum/job/J = SSjob.job_by_id(id)
@@ -265,7 +265,7 @@
 /datum/category_item/player_setup_item/occupation/overflow_mode/default_value(randomizing)
 	return JOB_ALTERNATIVE_BE_ASSISTANT
 
-/datum/category_item/player_setup_item/occupation/overflow_mode/filter(datum/preferences/prefs, data, list/errors)
+/datum/category_item/player_setup_item/occupation/overflow_mode/filter_data(datum/preferences/prefs, data, list/errors)
 	var/static/list/static_list = list(
 		JOB_ALTERNATIVE_BE_ASSISTANT,
 		JOB_ALTERNATIVE_GET_RANDOM,
@@ -296,7 +296,6 @@
 	var/datum/lore/character_background/faction/F = lore_faction_datum()
 	var/list/priorities = get_character_data(CHARACTER_DATA_JOBS)
 	for(var/id in priorities)
-		var/datum/job/J = SSjob.job_by_id(id)
 		if(!F.check_job_id(id))
 			continue
 		.[id] = priorities[id]

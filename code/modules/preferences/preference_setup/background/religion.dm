@@ -29,7 +29,7 @@
 			return PREFERENCES_REFRESH
 	return ..()
 
-/datum/category_item/player_setup_item/background/religion/filter(datum/preferences/prefs, data, list/errors)
+/datum/category_item/player_setup_item/background/religion/filter_data(datum/preferences/prefs, data, list/errors)
 	var/datum/lore/character_background/religion/current = SScharacters.resolve_religion(data)
 	if(!current?.check_species_id(prefs.character_species_id()))
 		return SScharacters.resolve_religion(/datum/lore/character_background/religion/custom).id

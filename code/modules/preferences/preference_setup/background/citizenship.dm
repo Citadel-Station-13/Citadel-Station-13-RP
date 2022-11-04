@@ -30,7 +30,7 @@
 			return PREFERENCES_REFRESH
 	return ..()
 
-/datum/category_item/player_setup_item/background/citizenship/filter(datum/preferences/prefs, data, list/errors)
+/datum/category_item/player_setup_item/background/citizenship/filter_data(datum/preferences/prefs, data, list/errors)
 	var/datum/lore/character_background/citizenship/current = SScharacters.resolve_citizenship(data)
 	if(!current?.check_species_id(prefs.character_species_id()))
 		return SScharacters.resolve_citizenship(/datum/lore/character_background/citizenship/custom).id

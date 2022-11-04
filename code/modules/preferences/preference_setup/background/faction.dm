@@ -29,7 +29,7 @@
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 	return ..()
 
-/datum/category_item/player_setup_item/background/faction/filter(datum/preferences/prefs, data, list/errors)
+/datum/category_item/player_setup_item/background/faction/filter_data(datum/preferences/prefs, data, list/errors)
 	var/datum/lore/character_background/faction/current = SScharacters.resolve_faction(data)
 	if(!current?.check_species_id(prefs.character_species_id()))
 		return SScharacters.resolve_faction(/datum/lore/character_background/faction/nanotrasen).id

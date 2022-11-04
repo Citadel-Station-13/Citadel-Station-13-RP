@@ -38,7 +38,7 @@
 	var/was_proccall = !!IsAdminAdvancedProcCall()
 	var/old_usr = usr
 	usr = null
-	_Load_Lock(TRUE)
+	_Load_Lock(was_proccall)
 	usr = old_usr
 
 /datum/client_dbdata/proc/_Load_Lock(was_proccall)
