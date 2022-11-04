@@ -2,7 +2,7 @@
 	uid = SPECIES_ID_SHADEKIN_BLACK
 	name = SPECIES_SHADEKIN_CREW
 	name_plural = SPECIES_SHADEKIN_CREW
-	uid = SPECIES_ID_SHADEKIN_BLACK_EYED
+	uid = SPECIES_ID_SHADEKIN_BLACK
 	id = SPECIES_ID_SHADEKIN
 
 	icobase      = 'icons/mob/species/shadekin/body.dmi'
