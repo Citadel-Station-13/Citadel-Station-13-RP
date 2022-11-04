@@ -74,8 +74,8 @@
 						assembled[J.id] = JOB_PRIORITY_MEDIUM
 					else if(job_engsec_low & J.flag)
 						assembled[J.id] = JOB_PRIORITY_LOW
-				if(player_alt_titles[J.title])
-					assembled_titles[J.id] = player_alt_titles[J.title]
+			if(player_alt_titles[J.title])
+				assembled_titles[J.id] = player_alt_titles[J.title]
 		var/overflow
 		switch(alternative_option)
 			if(0)

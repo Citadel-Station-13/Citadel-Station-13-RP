@@ -19,7 +19,7 @@
 	var/list/prefixes = data
 	. = list()
 	. += "<b>Language Keys</b><br>"
-	. += "  [jointext(prefixes)] [href_simple(prefs, "change", "Change")] [href_simple(prefs, "reset", "Reset")]"
+	. += "  [jointext(prefixes, "")] [href_simple(prefs, "change", "Change")] [href_simple(prefs, "reset", "Reset")]"
 
 /datum/category_item/player_setup_item/player_global/language_prefix/act(datum/preferences/prefs, mob/user, action, list/params)
 	switch(action)

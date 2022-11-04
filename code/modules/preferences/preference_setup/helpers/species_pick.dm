@@ -58,7 +58,7 @@
 	if(!(h_style in valid_hair))
 		var/datum/sprite_accessory/hair/H = /datum/sprite_accessory/hair/bald
 		h_style = initial(H.name)
-	if(!(f_style in valid_hair))
+	if(!(f_style in valid_fhair))
 		var/datum/sprite_accessory/facial_hair/FH = /datum/sprite_accessory/facial_hair/shaved
 		f_style = initial(FH.name)
 	// limbs/markings
