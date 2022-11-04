@@ -45,7 +45,8 @@
 			if(!length(origins))
 				to_chat(user, SPAN_WARNING("No origins in that category have been found; this might be an error."))
 				return PREFERENCES_NOACTION
-			write(prefs, origins[1])
+			var/datum/lore/character_background/origin/first = origins[1]
+			write(prefs, first.id)
 			prefs.sanitize_background_lore()	// update
 			return PREFERENCES_REFRESH
 	return ..()

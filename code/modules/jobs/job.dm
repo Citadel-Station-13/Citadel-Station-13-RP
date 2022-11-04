@@ -48,9 +48,6 @@
 	// Requires a ckey to be whitelisted in jobwhitelist.txt
 	var/whitelist_only = 0
 
-	// Does not display this job on the occupation setup screen
-	var/latejoin_only = 0
-
 	// Every hour playing this role gains this much time off. (Can be negative for off duty jobs!)
 	var/timeoff_factor = 3
 
@@ -120,7 +117,7 @@
  * todo: check ckey proc too?
  */
 /datum/job/proc/check_client_availability_one(client/C, check_char, latejoin)
-	if(whitelist && !config.check_job_whitelist(ckey(title), C.ckey))
+	if(whitelist_only && !config.check_job_whitelist(ckey(title), C.ckey))
 		return ROLE_UNAVAILABLE_WHITELIST
 	else if(!slots_remaining(latejoin))
 		return ROLE_UNAVAILABLE_SLOTS_FULL

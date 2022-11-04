@@ -12,7 +12,7 @@
 	minimal_player_age = 14
 	economic_modifier = 20
 	whitelist_only = 1
-	latejoin_only = 1
+	join_types = JOB_LATEJOIN
 	outfit_type = /datum/outfit/job/station/emergency_responder
 	desc = "Emergency Responders are usually called in to deal with on-station emergencies that the crew require assistance to deal with."
 

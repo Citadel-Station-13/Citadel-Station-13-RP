@@ -60,3 +60,5 @@
 #define JOB_ID_OFFDUTY_ENGINEER "offduty_engineer"
 #define JOB_ID_OFFDUTY_COMMAND "offduty_command"
 #define JOB_ID_OFFDUTY_SCIENCE "offduty_science"
+
+#define JOB_ID_TRADER "trader"

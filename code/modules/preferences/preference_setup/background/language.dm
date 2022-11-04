@@ -10,7 +10,7 @@
 	for(var/id in prefs.innate_language_ids())
 		var/datum/language/L = SScharacters.resolve_language_id(id)
 		innate_names += L.name
-	. += "<center><b>Languages</b></center><br>"
+	. += "<center><b>Languages</b></center>"
 	. += "<div class='statusDisplay'>"
 	. += "&nbsp&nbsp&nbsp&nbspIntrinsic (Species, Backgrounds, Cultures): [english_list(innate_names)]<br>"
 	. += "&nbsp&nbsp&nbsp&nbspAdditional: "

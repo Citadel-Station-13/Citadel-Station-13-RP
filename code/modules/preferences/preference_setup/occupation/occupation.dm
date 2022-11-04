@@ -63,7 +63,7 @@
 			var/list/department = faction[department_name]
 			var/dep_amt = length(department)
 			// if we'd hit limit, we split first as we're not longer than limit or would waste more than 4 slots.
-			if(count + dep_amt > limit && dep_amt <= limit && limit - count <= 4)
+			if((count >= limit) || ((count + dep_amt > limit) && (dep_amt <= limit) && ((limit - count) <= 4)))
 				NEW_COLUMN
 			for(var/id in department)
 				. += render_job(prefs, SSjob.job_by_id(id), current[id], assistant_selected)
@@ -92,7 +92,7 @@
 			for(var/list/department in ui_data[faction])
 				var/dep_amt = length(department)
 				// if we'd hit limit, we split first as we're not longer than limit or would waste more than 4 slots.
-				if(count + dep_amt > limit && dep_amt <= limit && limit - count <= 4)
+				if((count >= limit) || ((count + dep_amt > limit) && (dep_amt <= limit) && ((limit - count) <= 4)))
 					NEW_COLUMN
 				for(var/id in department)
 					. += render_job(prefs, SSjob.job_by_id(id), current[id], assistant_selected)

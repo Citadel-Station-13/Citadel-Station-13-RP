@@ -1,5 +1,5 @@
 /datum/job/station/off_duty
-	latejoin_only = TRUE
+	join_types = JOB_LATEJOIN
 	timeoff_factor = -1
 	total_positions = -1
 	departments = list(DEPARTMENT_OFFDUTY)

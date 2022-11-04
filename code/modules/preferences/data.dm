@@ -155,7 +155,7 @@
  * sanitize prefs data
  */
 /datum/preferences/proc/sanitize_preference(pref, list/errors)
-	var/datum/category_item/player_setup_item/preference = preference_by_key[path]
+	var/datum/category_item/player_setup_item/preference = preference_by_type[path]
 	if(preference.is_global)
 		return options[preference.save_key] = preference.filter_data(src, options[preference.save_key], errors)
 	else

@@ -64,6 +64,18 @@ SUBSYSTEM_DEF(job)
 			continue
 		job = new J
 		occupations += job
+		if(!job.id)
+			stack_trace("no job id for [J]")
+			continue
+		if(!job.title)
+			stack_trace("no job title for [J]")
+			continue
+		if(job_lookup[job.id])
+			stack_trace("job id collision on [job.id] for [J]")
+			continue
+		if(name_occupations[job.title])
+			stack_trace("job title collision on [job.title] for [J]")
+			continue
 		name_occupations[job.title] = job
 		type_occupations[J] = job
 		job_lookup[job.id] = job
