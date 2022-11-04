@@ -1651,7 +1651,7 @@
 
 /datum/seed/flower/pyrrhlea/New()
 	..()
-	set_trait(TRAIT_HARVEST_REPEAT,1)
+	set_trait(TRAIT_HARVEST_REPEAT,2)
 	set_trait(TRAIT_MATURATION,10)
 	set_trait(TRAIT_PRODUCTION,3)
 	set_trait(TRAIT_YIELD,5)
@@ -1672,7 +1672,7 @@
 
 /datum/seed/bentars/New()
 	..()
-	set_trait(TRAIT_HARVEST_REPEAT,1)
+	set_trait(TRAIT_HARVEST_REPEAT,2)
 	set_trait(TRAIT_MATURATION,10)
 	set_trait(TRAIT_PRODUCTION,3)
 	set_trait(TRAIT_YIELD,4)
@@ -1683,7 +1683,7 @@
 	set_trait(TRAIT_PLANT_ICON,"bush5")
 	set_trait(TRAIT_IDEAL_LIGHT, 2)
 	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.1)
-	set_trait(TRAIT_WATER_CONSUMPTION, 0.25)
+	set_trait(TRAIT_WATER_CONSUMPTION, 0.1)
 
 /datum/seed/juhtak
 	name = "juhtak"
@@ -1697,7 +1697,7 @@
 	set_trait(TRAIT_HARVEST_REPEAT,2)
 	set_trait(TRAIT_MATURATION,15)
 	set_trait(TRAIT_PRODUCTION,5)
-	set_trait(TRAIT_YIELD,2)
+	set_trait(TRAIT_YIELD,4)
 	set_trait(TRAIT_POTENCY,6)
 	set_trait(TRAIT_PRODUCT_ICON,"vine")
 	set_trait(TRAIT_PRODUCT_COLOUR,"#7c260c")
@@ -1705,4 +1705,4 @@
 	set_trait(TRAIT_PLANT_ICON,"bush7")
 	set_trait(TRAIT_IDEAL_LIGHT, 2)
 	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.1)
-	set_trait(TRAIT_WATER_CONSUMPTION, 2)
+	set_trait(TRAIT_WATER_CONSUMPTION, 0.1)

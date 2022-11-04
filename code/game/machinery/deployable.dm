@@ -94,7 +94,7 @@ Barricades
 	qdel(src)
 	return
 
-/obj/structure/barricade/ex_act(severity)
+/obj/structure/barricade/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			dismantle()
@@ -192,7 +192,7 @@ Barricades
 	CheckHealth()
 	return
 
-/obj/machinery/deployable/barrier/ex_act(severity)
+/obj/machinery/deployable/barrier/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			explode()

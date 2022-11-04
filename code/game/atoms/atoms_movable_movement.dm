@@ -341,6 +341,7 @@
 
 /atom/movable/proc/forceMove(atom/destination)
 	. = FALSE
+	pulledby?.stop_pulling()
 	if(destination)
 		. = doMove(destination)
 	else

@@ -675,3 +675,9 @@
 	throw_range = 2
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|HANDS|HEAD|FACE
 	flags_inv = HIDEEARS|BLOCKHEADHAIR|HIDEGLOVES|HIDETIE|HIDEHOLSTER
+
+/obj/item/clothing/head/half_pint	//Note, this headband is basically designed to only work on one hairstyle. YMMV
+	name = "Half-Pint Headband"
+	desc = "A simple metal headband with cosmetic lights. It seems like it's meant to accompany an outfit."
+	icon_state = "half_pint"
+	body_parts_covered = 0

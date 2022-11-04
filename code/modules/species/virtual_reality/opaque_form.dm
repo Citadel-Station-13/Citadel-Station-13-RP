@@ -5,7 +5,7 @@
 	name = SPECIES_VR_HUMAN
 	icobase = 'icons/mob/species/human/body.dmi'
 	deform = 'icons/mob/species/human/deformed_body.dmi'
-	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	has_limbs = list(
 		BP_TORSO  = list("path" = /obj/item/organ/external/chest),
 		BP_GROIN  = list("path" = /obj/item/organ/external/groin),

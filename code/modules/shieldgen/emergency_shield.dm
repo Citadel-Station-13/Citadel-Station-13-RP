@@ -31,7 +31,7 @@
 /obj/machinery/shield/Initialize(mapload)
 	. = ..()
 	setDir(pick(1,2,3,4))
-	update_nearby_tiles(need_rebuild=1)
+	update_nearby_tiles()
 
 /obj/machinery/shield/Destroy()
 	opacity = 0
@@ -63,7 +63,7 @@
 	set_opacity(1)
 	spawn(20) if(!QDELETED(src)) set_opacity(0)
 
-/obj/machinery/shield/ex_act(severity)
+/obj/machinery/shield/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			if (prob(75))
@@ -223,7 +223,7 @@
 	update_icon()
 	return
 
-/obj/machinery/shieldgen/ex_act(severity)
+/obj/machinery/shieldgen/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			src.health -= 75

@@ -24,7 +24,7 @@
 	var/atom/movable/proximity_checker/sensor
 	for(var/i in 1 to min(has, needed))
 		sensor = checkers[i]
-		sensor.forceMove(creating[i])
+		sensor.loc = creating[1]
 	if(has < needed)
 		for(var/i in has + 1 to needed)
 			checkers += new /atom/movable/proximity_checker/basic(creating[i], src)
@@ -33,6 +33,14 @@
 		for(var/i in needed + 1 to has)
 			qdel(checkers[i])
 		checkers.Cut(needed + 1)
+
+/datum/proxfield/basic/on_z_transit(datum/source, old_z, new_z)
+	. = ..()
+	Update()
+
+/datum/proxfield/basic/on_move(datum/source, atom/movable/oldLoc, dir, forced)
+	. = ..()
+	Update()
 
 /datum/proxfield/basic/Teardown()
 	QDEL_LIST(checkers)
@@ -61,5 +69,5 @@
 /atom/movable/proximity_checker/basic
 
 /atom/movable/proximity_checker/basic/Crossed(atom/movable/AM)
-	. = ..()
+	SHOULD_CALL_PARENT(FALSE) // we don't care about parent
 	field.Detect(AM)

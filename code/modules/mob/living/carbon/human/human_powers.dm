@@ -1,3 +1,4 @@
+//TODO: Organize these into a "abilities" folder.
 // These should all be procs, you can add them to humans/subspecies by species.dm's inherent_verbs
 
 /mob/living/carbon/human/proc/tie_hair()
@@ -415,3 +416,59 @@
 		to_chat(src, SPAN_NOTICE("You reconfigure the rendering order of your facial display."))
 
 	return TRUE
+
+/mob/living/carbon/human/proc/shadekin_get_energy()
+	var/datum/species/shadekin/sk = species
+	var/datum/species/crew_shadekin/besk = species
+
+	if(istype(sk))
+		return sk.get_energy(src)
+	if(istype(besk))
+		return besk.get_energy(src)
+	return FALSE
+
+/mob/living/carbon/human/proc/shadekin_get_max_energy()
+	var/datum/species/shadekin/sk = species
+	var/datum/species/crew_shadekin/besk = species
+
+	if(istype(sk))
+		return sk.get_max_energy(src)
+	if(istype(besk))
+		return besk.get_max_energy(src)
+	return FALSE
+
+/mob/living/carbon/human/proc/shadekin_set_energy(new_energy)
+	var/datum/species/shadekin/sk = species
+	var/datum/species/crew_shadekin/besk = species
+
+	if(istype(sk))
+		sk.set_energy(src, new_energy)
+	if(istype(besk))
+		sk.set_energy(src, new_energy)
+	return FALSE
+
+/mob/living/carbon/human/proc/shadekin_set_max_energy(new_max_energy)
+	var/datum/species/shadekin/sk = species
+	var/datum/species/crew_shadekin/besk = species
+
+	if(istype(sk))
+		sk.set_max_energy(src, new_max_energy)
+	if(istype(besk))
+		besk.set_max_energy(src, new_max_energy)
+	return FALSE
+
+
+
+/mob/living/carbon/human/proc/shadekin_adjust_energy(amount)
+	var/datum/species/shadekin/sk = species
+	var/datum/species/crew_shadekin/besk = species
+
+	if(istype(sk))
+		if(amount > 0 || !(sk.check_infinite_energy(src)))
+			var/new_amount = sk.get_energy(src) + amount
+			sk.set_energy(src, new_amount)
+	if(istype(besk))
+		if(amount > 0 || !(besk.check_infinite_energy(src)))
+			var/new_amount = besk.get_energy(src) + amount
+			besk.set_energy(src, new_amount)
+	return FALSE

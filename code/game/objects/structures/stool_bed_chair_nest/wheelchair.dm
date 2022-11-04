@@ -183,6 +183,7 @@
 		if(M.pulledby == src)
 			M.pulledby = null
 
+/*
 /obj/item/wheelchair
 	name = "wheelchair"
 	desc = "A folded wheelchair that can be carried around."
@@ -212,6 +213,7 @@
 		spawn(0)
 			qdel(src)
 		return
+*/
 
 //Dolly Below
 

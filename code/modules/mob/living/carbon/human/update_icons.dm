@@ -213,6 +213,8 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 				icon_key += "[rgb(part.s_col[1],part.s_col[2],part.s_col[3])]"
 			if(part.body_hair && part.h_col && part.h_col.len >= 3)
 				icon_key += "[rgb(part.h_col[1],part.h_col[2],part.h_col[3])]"
+				if(species.color_force_greyscale)
+					icon_key += "_ags"
 				if(species.color_mult)
 					icon_key += "[ICON_MULTIPLY]"
 				else
@@ -227,12 +229,6 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 				robolimb_count++
 				if((part.robotic == ORGAN_ROBOT || part.robotic == ORGAN_LIFELIKE) && (part.organ_tag == BP_HEAD || part.organ_tag == BP_TORSO || part.organ_tag == BP_GROIN))
 					robobody_count ++
-				if(species.is_cyberpsycho) //This check should hopefully automatically update the capacity of CRS patients if cybernetics are installed.
-					var/datum/component/cyberpsychosis/C
-					C.capacity = 100
-					C.cybernetics_count = 0
-					C.counted = 0
-					C.adjusted = 0
 			else if(part.status & ORGAN_DEAD)
 				icon_key += "3"
 			else
@@ -889,13 +885,23 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
 
-	var/image/vr_tail_image = get_tail_image()
-	if(vr_tail_image)
-		vr_tail_image.layer = BODY_LAYER+used_tail_layer
-		overlays_standing[used_tail_layer] = vr_tail_image
+	var/list/image/tail_images = list()
+
+	var/image/rendering
+	rendering = get_tail_image(TRUE)
+	if(rendering)
+		rendering.layer = BODY_LAYER + used_tail_layer
+		tail_images += rendering
+
+	if(tail_style?.front_behind_system)
+		rendering = get_tail_image(FALSE)
+		rendering.layer = BODY_LAYER - used_tail_layer
+		tail_images += rendering
+
+	if(length(tail_images))
+		overlays_standing[used_tail_layer] = tail_images
 		apply_layer(used_tail_layer)
 		return
-
 
 	var/species_tail = species.get_tail(src) // Species tail icon_state prefix.
 
@@ -912,14 +918,18 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!tail_icon)
 		//generate a new one
 		var/species_tail_anim = species.get_tail_animation(src)
-		if(!species_tail_anim && species.icobase_tail) species_tail_anim = species.icobase // Allow override of file for non-animated tails
-		if(!species_tail_anim) species_tail_anim = 'icons/effects/species.dmi'
+		if(!species_tail_anim && species.icobase_tail)
+			species_tail_anim = species.icobase // Allow override of file for non-animated tails
+		if(!species_tail_anim)
+			species_tail_anim = 'icons/effects/species.dmi'
 		tail_icon = new/icon(species_tail_anim)
 		tail_icon.Blend(rgb(r_skin, g_skin, b_skin), species.color_mult ? ICON_MULTIPLY : ICON_ADD)
 		// The following will not work with animated tails.
 		var/use_species_tail = species.get_tail_hair(src)
 		if(use_species_tail)
 			var/icon/hair_icon = icon('icons/effects/species.dmi', "[species.get_tail(src)]_[use_species_tail]_s") // Suffix icon state string with '_s' to compensate for diff in .dmi b/w us & Polaris. //TODO: No.
+			if(species.color_force_greyscale)
+				hair_icon.MapColors(arglist(color_matrix_greyscale()))
 			hair_icon.Blend(rgb(r_hair, g_hair, b_hair), species.color_mult ? ICON_MULTIPLY : ICON_ADD) // Check for species color_mult
 			tail_icon.Blend(hair_icon, ICON_OVERLAY)
 		GLOB.tail_icon_cache[icon_key] = tail_icon
@@ -928,16 +938,24 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 /mob/living/carbon/human/proc/set_tail_state(var/t_state)
 	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
-	var/image/tail_overlay = overlays_standing[used_tail_layer]
+	var/list/image/tail_overlays = overlays_standing[used_tail_layer]
 
 	remove_layer(TAIL_LAYER)
 	remove_layer(TAIL_LAYER_ALT)
 
-	if(tail_overlay)
-		overlays_standing[used_tail_layer] = tail_overlay
+	if(!tail_overlays)
+		return
+	if(islist(tail_overlays))
+		for(var/image/tail_overlay as anything in tail_overlays)
+			if(species.get_tail_animation(src))
+				tail_overlay.icon_state = t_state
+		overlays_standing[used_tail_layer] = tail_overlays
+	else
+		var/image/tail_overlay = tail_overlays
 		if(species.get_tail_animation(src))
 			tail_overlay.icon_state = t_state
 			. = tail_overlay
+		overlays_standing[used_tail_layer] = tail_overlay
 
 	apply_layer(used_tail_layer)
 

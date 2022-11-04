@@ -20,8 +20,8 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/engineering)
 	name = "explorer's engineering uniform"
 	icon_state = "black_eng"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/sysguard/security
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/security)
@@ -34,15 +34,15 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/medical)
 	name = "explorer's medical uniform"
 	icon_state = "black_med"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/sysguard/supply
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/supply)
 	name = "explorer's logistics uniform"
 	icon_state = "black_sup"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/sysguard/exploration
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/exploration)
@@ -55,8 +55,8 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/research)
 	name = "explorer's research uniform"
 	icon_state = "black_sci"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/sysguard/officer
 	name = "explorer's officer uniform"
@@ -76,8 +76,8 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/engineering)
 	name = "explorer's engineering officer uniform"
 	icon_state = "black_eng_command"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/sysguard/officer/security
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/security)
@@ -90,8 +90,8 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/medical)
 	name = "explorer's medical officer uniform"
 	icon_state = "black_med_command"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/sysguard/officer/supply
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/supply)
@@ -110,8 +110,8 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/research)
 	name = "explorer's science officer uniform"
 	icon_state = "black_sci_command"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/fleet
 	name = "fleet coveralls"
@@ -190,8 +190,8 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/engineering/marine)
 	name = "marine engineering coveralls"
 	icon_state = "grey_eng"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/marine/security
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/security/marine)
@@ -220,6 +220,12 @@
 	icon_state = "terran"
 	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
+
+/obj/item/clothing/under/oricon/utility/marine/research
+	name = "marine researcher coveralls"
+	icon_state = "grey_sci"
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/marine/green
 	name = "green fatigues"

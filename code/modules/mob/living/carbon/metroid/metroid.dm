@@ -185,7 +185,7 @@
 	powerlevel = 0 // oh no, the power!
 	..()
 
-/mob/living/carbon/slime/ex_act(severity)
+/mob/living/carbon/slime/legacy_ex_act(severity)
 	..()
 
 	var/b_loss = null

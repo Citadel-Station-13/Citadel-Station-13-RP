@@ -132,7 +132,7 @@
 	icon_state = "ronin_hood"
 	flags_inv = NONE
 
-// Explorer gear
+//Hazardous Softsuit Hoods
 /obj/item/clothing/head/hood/explorer
 	name = "explorer hood"
 	desc = "An armoured hood for exploring harsh environments."
@@ -141,6 +141,17 @@
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
 	siemens_coefficient = 0.9
 	armor = list(melee = 30, bullet = 20, laser = 20, energy = 20, bomb = 35, bio = 75, rad = 35)
+
+/obj/item/clothing/head/hood/miner
+	name = "miner hood"
+	desc = "An armoured hood for mining in harsh environments."
+	icon = 'icons/clothing/suit/mining.dmi'
+	icon_state = "minehood"
+	clothing_flags = THICKMATERIAL
+	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
+	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
+	siemens_coefficient = 0.9
+	armor = list(melee = 50, bullet = 5, laser = 10, energy = 0, bomb = 35, bio = 50, rad = 65)
 
 // Eldritch suit
 /obj/item/clothing/head/hood/eldritch
@@ -217,3 +228,12 @@
 	desc = "The internal cooling system of the jacket can be swapped to fire hot air in cold environments."
 	icon_state = "empty_hood"
 	flags_inv = NONE
+
+/obj/item/clothing/head/hood/runner
+	name = "Runner Jacket hood"
+	desc = "The internal cooling system of the jacket can be swapped to fire hot air in cold environments."
+	icon_state = "empty_hood"
+	flags_inv = NONE
+
+/obj/item/clothing/head/hood/runner/half_pint
+	name = "Half-Pint hood"

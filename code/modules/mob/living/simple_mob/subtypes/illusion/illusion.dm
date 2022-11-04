@@ -90,7 +90,7 @@
 	visible_message(SPAN_WARNING( "\The [user]'s [I] goes through \the [src]!"))
 	return FALSE
 
-/mob/living/simple_mob/illusion/ex_act()
+/mob/living/simple_mob/illusion/legacy_ex_act()
 	return
 
 // Try to have the same tooltip, or else it becomes really obvious which one is fake.

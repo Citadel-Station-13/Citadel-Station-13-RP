@@ -78,7 +78,7 @@
 	ai_holder_type = /datum/ai_holder/simple_mob/melee/goliath
 
 	var/pre_attack = 0
-	var/tentacle_warning = 3 SECONDS
+	var/tentacle_warning = 0.5 SECONDS
 	var/pre_attack_icon = "goliath2"
 	var/breedable = 0
 	var/pregnant = 0
@@ -103,6 +103,7 @@
 	. = ..()
 	if(special_attack_cooldown <= world.time + special_attack_cooldown*0.25 && !pre_attack)
 		pre_attack++
+		update_icon()
 	if(!pre_attack || stat)
 		return
 
@@ -114,19 +115,18 @@
 		return
 	if(get_dist(src, target) <= 7)//Screen range check, so you can't get tentacle'd offscreen
 		visible_message("<span class='warning'>[src] digs its tentacles under [target]</span>")
-		update_icon()
 		sleep(tentacle_warning)
-
-		new /obj/effect/temporary_effect/goliath_tentacle/core(tturf, src)
+		new /obj/effect/temporary_effect/tentacle_warning/core(tturf, src)
 		pre_attack = 0
 		update_icon()
 
 /mob/living/simple_mob/animal/goliath/update_icon()
 	. = ..()
-	if(!pre_attack)
+	if(!pre_attack && !stat)
 		icon_state = initial(icon_state)
-	else if(pre_attack)
+	else if(pre_attack && !stat)
 		icon_state = pre_attack_icon
+
 
 /mob/living/simple_mob/animal/goliath/Initialize(mapload)
 	. = ..()
@@ -137,8 +137,8 @@
 
 /mob/living/simple_mob/animal/goliath/attackby(obj/item/O, mob/user)
 	. = ..()
-	if(istype(O, /obj/item/seeds/ashlander/bentars) && !breedable)
-		to_chat(user, "<span class='danger'>You feed the [src] bentar seeds! Its tendrils begin to thrash softly!</span>")
+	if(istype(O, /obj/item/seeds) && !breedable)
+		to_chat(user, "<span class='danger'>You feed the [O] to [src]! Its tendrils begin to thrash softly!</span>")
 		breedable = 1
 		qdel(O)
 	else
@@ -174,7 +174,53 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-//tentacles
+//Tentacles
+//Okay so this shit got really convoluted really fast. Basically after lots of testing and iteration, the system here approximates an inutitive tendril system (on the player side.)
+//It's kinda a nightmare, but basically, there are "Pre Tentacles" and "Tentacles".
+//Pre Tentacles have no cross effect and are used to telegraph the spawn location.
+//Tentacles do what you think they would for Goliaths, naturally.
+//We also have Cores, which determine where Tentacles spawn. I changed this to spawn pre-tentacles, which themselves spawn the actual tentacles.
+//Weak Cores are just nerfed cores for baby Goliaths to use.
+
+/obj/effect/temporary_effect/tentacle_warning
+	name = "disturbed ground"
+	icon = 'icons/mob/lavaland/lavaland_mobs.dmi'
+	icon_state = "goliath_tentacle_pre"
+	time_to_die = 1 SECONDS
+
+/obj/effect/temporary_effect/tentacle_warning/Initialize(mapload)
+	. = ..()
+	for(var/obj/effect/temporary_effect/goliath_tentacle/T in loc)
+		if(T != src)
+			return INITIALIZE_HINT_QDEL
+
+	if(ismineralturf(loc))
+		var/turf/simulated/mineral/M = loc
+		M.GetDrilled()
+
+	var/turf/T = get_turf(src)
+	spawn(time_to_die) //I originally had this as spawn(rand(1,time_to_die)), which resulted in some interesting behavior. Maybe investigate this as a special thingy later?
+		qdel(src)
+		new /obj/effect/temporary_effect/goliath_tentacle(T)
+
+/obj/effect/temporary_effect/tentacle_warning/core/Initialize(mapload)
+	. = ..()
+	var/list/directions = list(1,2,4,6,8)
+	for(var/i in 1 to 3)
+		var/spawndir = pick_n_take(directions)
+		var/turf/T = get_step(src, spawndir)
+		if(T && !density)
+			new /obj/effect/temporary_effect/tentacle_warning(T)
+
+/obj/effect/temporary_effect/tentacle_warning/core/weak/Initialize(mapload)
+	. = ..()
+	var/list/directions = list(1,2,4,6,8)
+	for(var/i in 1 to 2)
+		var/spawndir = pick_n_take(directions)
+		var/turf/T = get_step(src, spawndir)
+		if(T && !density)
+			new /obj/effect/temporary_effect/tentacle_warning(T)
+
 /obj/effect/temporary_effect/goliath_tentacle
 	name = "goliath tentacle"
 	icon = 'icons/mob/lavaland/lavaland_mobs.dmi'
@@ -187,28 +233,6 @@
 		if(T != src)
 			return INITIALIZE_HINT_QDEL
 
-	if(ismineralturf(loc))
-		var/turf/simulated/mineral/M = loc
-		M.GetDrilled()
-
-/obj/effect/temporary_effect/goliath_tentacle/core/Initialize(mapload)
-	. = ..()
-	var/list/directions = list(1,2,4,6,8)
-	for(var/i in 1 to 3)
-		var/spawndir = pick_n_take(directions)
-		var/turf/T = get_step(src, spawndir)
-		if(T && !density)
-			new /obj/effect/temporary_effect/goliath_tentacle(T)
-
-/obj/effect/temporary_effect/goliath_tentacle/core_weak/Initialize(mapload)
-	. = ..()
-	var/list/directions = list(1,2,4,6,8)
-	for(var/i in 1 to 2)
-		var/spawndir = pick_n_take(directions)
-		var/turf/T = get_step(src, spawndir)
-		if(T && !density)
-			new /obj/effect/temporary_effect/goliath_tentacle(T)
-
 /obj/effect/temporary_effect/goliath_tentacle/Crossed(atom/movable/AM as mob|obj)
 	. = ..()
 	if(AM.is_incorporeal())
@@ -218,16 +242,14 @@
 
 /obj/effect/temporary_effect/goliath_tentacle/proc/trip()
 	var/latched = FALSE
-	var/timerid = addtimer(CALLBACK(src, .proc/retract), 10, TIMER_STOPPABLE)
+	var/timerid = addtimer(CALLBACK(src, .proc/retract), 5, TIMER_STOPPABLE)
 	for(var/mob/living/carbon/C in loc)
 		if(C.stat == DEAD)
 			continue
 		visible_message("<span class='danger'>[src] grabs hold of [C]!</span>")
 		tripanim()
-		//var/mob/living/L
-		C.slip()
 		C.Stun(2)
-		C.adjustBruteLoss(rand(15,20)) // Less stun more harm
+		C.adjustBruteLoss(rand(5,10))
 		latched = TRUE
 	for(var/obj/mecha/M in loc)
 		M.take_damage(20, BRUTE, null, null, null, 25)
@@ -305,7 +327,7 @@
 		return
 	if(get_dist(src, target) <= 7)//Screen range check, so you can't get tentacle'd offscreen
 		visible_message("<span class='warning'>[src] digs its tentacles under [target]</span>")
-		new /obj/effect/temporary_effect/goliath_tentacle/core_weak(tturf, src)
+		new /obj/effect/temporary_effect/tentacle_warning/core/weak(tturf, src)
 		pre_attack = 0
 
 /mob/living/simple_mob/animal/goliath/calf/process(delta_time)

@@ -101,7 +101,7 @@
 	src.canmove = 0
 	spawn(2) src.canmove = 1
 
-/obj/effect/dummy/spell_jaunt/ex_act(blah)
+/obj/effect/dummy/spell_jaunt/legacy_ex_act(blah)
 	return
 /obj/effect/dummy/spell_jaunt/bullet_act(blah)
 	return

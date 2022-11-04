@@ -11,6 +11,8 @@
 #define WORN_RENDER_SLOT_NO_RENDER (1<<4)
 /// don't render in inhands; render_additional still used, others aren't
 #define WORN_RENDER_INHAND_NO_RENDER (1<<5)
+/// use plural key when we can; overridden by ONE_FOR_ALL
+#define WORN_RENDER_SLOT_USE_PLURAL (1<<6)
 
 DEFINE_BITFIELD(worn_render_flags, list(
 	BITFIELD(WORN_RENDER_SLOT_ONE_FOR_ALL),
@@ -19,6 +21,7 @@ DEFINE_BITFIELD(worn_render_flags, list(
 	BITFIELD(WORN_RENDER_INHAND_ALLOW_DEFAULT),
 	BITFIELD(WORN_RENDER_SLOT_NO_RENDER),
 	BITFIELD(WORN_RENDER_INHAND_NO_RENDER),
+	BITFIELD(WORN_RENDER_SLOT_USE_PLURAL),
 ))
 
 //! list indices for resolve_worn_assets
