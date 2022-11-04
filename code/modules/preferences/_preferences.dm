@@ -252,6 +252,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			load_path(client.ckey)
 			if(load_preferences())
 				if(load_character())
+					sanitize_everything()
+					player_setup.sanitize_setup()
 					return
 
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys

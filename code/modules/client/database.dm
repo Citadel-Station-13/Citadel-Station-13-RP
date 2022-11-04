@@ -176,7 +176,7 @@
  * then return if we are
  */
 /datum/client_dbdata/proc/block_on_available()
-	WHILE(isnull(available))
+	UNTIL(!isnull(available))
 	return available
 
 /**

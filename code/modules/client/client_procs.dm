@@ -375,8 +375,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		// to_chat(src, get_message_output("memo"))
 		// adminGreet()
 
-	prefs.sanitize_preferences()
-
 	if(custom_event_msg && custom_event_msg != "")
 		to_chat(src, "<h1 class='alert'>Custom Event</h1>")
 		to_chat(src, "<h2 class='alert'>A custom event is taking place. OOC Info:</h2>")
