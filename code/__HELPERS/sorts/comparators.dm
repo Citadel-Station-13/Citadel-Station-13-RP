@@ -15,6 +15,8 @@
  * because the compar procs are going to typecheck, and if it's not of the right type, you'll get unexpected results!
  */
 /proc/cmp_auto_compare(datum/A, datum/B)
+	if(istext(A) || istext(B))
+		return cmp_text_asc("[src]", "[D]")
 	return A.compare_to(B)
 
 /**

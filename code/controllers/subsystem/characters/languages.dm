@@ -32,6 +32,10 @@
 		if(!(L.language_flags & NONGLOBAL))
 			language_keys[L.key] = L
 
+	tim_sort(language_names, /proc/cmp_auto_compare, TRUE)
+	tim_sort(language_keys, /proc/cmp_auto_compare)
+	tim_sort(language_paths, /proc/cmp_auto_compare, TRUE)
+
 /datum/controller/subsystem/characters/proc/resolve_language(id_path_name)
 	if(ispath(id_path_name))
 		return resolve_language_path(id_path_name)

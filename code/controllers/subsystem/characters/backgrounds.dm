@@ -37,6 +37,11 @@
 				continue
 			character_factions[L.id] = L
 
+	tim_sort(character_origins, /proc/cmp_auto_compare, TRUE)
+	tim_sort(character_citizenships, /proc/cmp_auto_compare, TRUE)
+	tim_sort(character_religions, /proc/cmp_auto_compare, TRUE)
+	tim_sort(character_factions, /proc/cmp_auto_compare, TRUE)
+
 /datum/controller/subsystem/characters/proc/available_citizenships(species_id)
 	. = list()
 	for(var/id in character_citizenships)
