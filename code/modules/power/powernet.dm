@@ -82,8 +82,7 @@
 			if(pylon.powernet == src)
 				return
 			else
-				merge_powernets(src, pylon.powernet)
-				//pylon.powernet.remove_pylon(pylon)
+				pylon.powernet.remove_pylon(pylon)
 		pylon.powernet = src
 		cables += pylon//we add it to cables because they should function as cables for powernet sake.
 
