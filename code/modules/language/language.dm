@@ -18,6 +18,9 @@
 	var/name = "an unknown language"
 	/// Short description for 'Check Languages'.
 	var/desc = "A language."
+	// todo: sort languages into categories
+	/// category in UI
+	var/category = "General"
 	/// 'says', 'hisses', 'farts'.
 	var/speech_verb = "says"
 	/// Used when sentence ends in a ?
