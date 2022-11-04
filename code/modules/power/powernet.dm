@@ -67,7 +67,7 @@
 	cables +=C
 
 //remove a utility pylon from the current powernet
-/datum/powernet/proc/remove_pylon(var/obj/machinery/utility_pylon/power/pylon)
+/datum/powernet/proc/remove_pylon(var/obj/machinery/power/utility_pylon/pylon)
 	if(pylon)
 		cables -= pylon
 		pylon.powernet = null
@@ -76,15 +76,15 @@
 			qdel(src)
 
 //add a utility pylon to the current powernet
-/datum/powernet/proc/add_utility_pylon(var/obj/machinery/utility_pylon/power/pylon)
+/datum/powernet/proc/add_utility_pylon(var/obj/machinery/power/utility_pylon/pylon)
 	if(pylon)
 		if(pylon.powernet)
 			if(pylon.powernet == src)
 				return
 			else
-				pylon.powernet.remove_pylon(pylon)
+				merge_powernets(src, pylon.powernet)
+				//pylon.powernet.remove_pylon(pylon)
 		pylon.powernet = src
-		pylon.update_for_new_powernet()
 		cables += pylon//we add it to cables because they should function as cables for powernet sake.
 
 
