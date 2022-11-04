@@ -254,10 +254,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(load_character())
 					sanitize_everything()
 					player_setup.sanitize_setup()
+					initialized = TRUE
 					return
 
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	client?.update_movement_keys(src)
+	initialized = TRUE
 
 /datum/preferences/proc/block_until_initialized()
 	UNTIL(initialized)

@@ -4,6 +4,8 @@
  * specieslike resolver = species datum, id, path, or name.
  */
 /mob/living/carbon/human/Initialize(mapload, datum/species/specieslike)
+	. = ..()
+
 	if(!dna)
 		dna = new /datum/dna(null)
 		// Species name is handled by set_species()
@@ -29,9 +31,6 @@
 	AddComponent(/datum/component/personal_crafting)
 
 	human_mob_list |= src
-
-	. = ..()
-
 	hide_underwear.Cut()
 	for(var/category in GLOB.global_underwear.categories_by_name)
 		hide_underwear[category] = FALSE

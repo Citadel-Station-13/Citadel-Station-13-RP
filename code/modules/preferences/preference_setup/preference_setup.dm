@@ -150,7 +150,7 @@
 			var/data
 			if(PI.save_key)
 				data = PI.is_global? prefs.get_global_data(PI.save_key) : prefs.get_character_data(PI.save_key)
-			var/list/c = PI.content(PI.pref, data, user)
+			var/list/c = PI.content(PI.pref, user, data)
 			if(!length(c))
 				continue
 			if(current && auto_rule)
@@ -166,7 +166,7 @@
 			var/data
 			if(PI.save_key)
 				data = PI.is_global? prefs.get_global_data(PI.save_key) : prefs.get_character_data(PI.save_key)
-			var/list/content = PI.content(PI.pref, data, user)
+			var/list/content = PI.content(PI.pref, user, data)
 			if(!length(content))
 				continue
 			if(current && auto_rule)
