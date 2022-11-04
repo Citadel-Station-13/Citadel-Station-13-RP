@@ -105,7 +105,7 @@
 	if(A == firer)
 		return
 
-	A.ex_act(2)
+	LEGACY_EX_ACT(A, 2, null)
 	playsound(src.loc, 'sound/effects/meteorimpact.ogg', 40, 1)
 
 	for(var/mob/M in range(10, src))

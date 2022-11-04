@@ -29,7 +29,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 
 	pixel_y = 16
 
-/obj/machinery/gravity_generator/ex_act(severity, target)
+/obj/machinery/gravity_generator/legacy_ex_act(severity, target)
 	if(severity == 1) // Very sturdy.
 		set_broken()
 

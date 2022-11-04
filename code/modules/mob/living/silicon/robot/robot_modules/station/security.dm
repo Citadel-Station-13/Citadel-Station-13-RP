@@ -29,7 +29,8 @@
 					"Handy" = "handy-sec",
 					"Acheron" = "mechoid-Security",
 					"Shellguard Noble" = "Noble-SEC",
-					"ZOOM-BA" = "zoomba-security"
+					"ZOOM-BA" = "zoomba-security",
+					"W02M" = "worm-security"
 					)
 
 /obj/item/robot_module/robot/security/general/Initialize(mapload)

@@ -12,7 +12,7 @@
 	var/ignore_afk = TRUE				// If true, AFK people (5 minutes) won't satisfy it as well.
 	var/retry_delay = 3 SECONDS			// How long until we check for players again.
 
-/obj/effect/map_effect/ex_act()
+/obj/effect/map_effect/legacy_ex_act()
 	return
 
 /obj/effect/map_effect/singularity_pull()

@@ -51,7 +51,7 @@
 	var/health = 300
 	/// Maxhealth is maxhealth.
 	var/maxhealth = 300
-	/// Chance to deflect the incoming projectiles, hits, or lesser the effect of ex_act.
+	/// Chance to deflect the incoming projectiles, hits, or lesser the effect of legacy_ex_act.
 	var/deflect_chance = 10
 	/// The values in this list show how much damage will pass through, not how much will be absorbed.
 	var/list/damage_absorption = list(
@@ -1231,7 +1231,7 @@
 	return
 
 //This refer to whenever you are caught in an explosion.
-/obj/mecha/ex_act(severity)
+/obj/mecha/legacy_ex_act(severity)
 	var/obj/item/mecha_parts/component/armor/ArmC = internal_components[MECH_ARMOR]
 
 	var/temp_deflect_chance = deflect_chance

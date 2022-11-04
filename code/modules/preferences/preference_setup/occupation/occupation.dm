@@ -31,7 +31,7 @@
 
 #define START_COLUMN . += "<td width='10%' valign='top'><table width='100%' cellpadding='1' cellspacing='0'>"
 #define END_COLUMN . += "</table></td>"
-#define NEW_COLUMN START_COLUMN; END_COLUMN; count = 0;
+#define NEW_COLUMN END_COLUMN; START_COLUMN; count = 0;
 /datum/category_item/player_setup_item/occupation/jobs/content(datum/preferences/prefs, mob/user, data)
 	// cast data
 	var/list/current = data
@@ -89,7 +89,7 @@
 		if(JOB_ALTERNATIVE_RETURN_LOBBY)
 			. += href_simple(prefs, "overflow", "<u>Return to lobby if preference unavailable</u>")
 	// add reset
-	. += href_simple(prefs, "reset", "\[Reset]")
+	. += href_simple(prefs, "reset", "\[Reset\]")
 	// remove center
 	. += "</center>"
 
@@ -101,7 +101,7 @@
 	. = list()
 	. += "<tr bgcolor='[J.selection_color]'><td width='60%' align='right'>"
 	// left side
-	. += "<a href='?src=[REF(src)];prefs=[REF(prefs)];act=help;help=[J.id]'>\[?]</a> "
+	. += "<a href='?src=[REF(src)];prefs=[REF(prefs)];act=help;help=[J.id]'>\[?\]</a> "
 	var/rank
 	if((J.title in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND)) || (J.id == JOB_ID_AI))
 		rank = "<b>[J.title]</b>"
@@ -116,7 +116,7 @@
 	// assistant is treated as yes/no
 	var/fail_reason = check_job(prefs, J, current_priority)
 	if(fail_reason)
-		. += "\[[fail_reason]]"
+		. += "\[[fail_reason]\]"
 	else if(J.id == JOB_ID_ASSISTANT)
 		. += "<a href=?src=[REF(src)];prefs=[REF(prefs)];act=job;job=[J.id];level=[!assistant_selected]' oncontextmenu='javascript:return setjob(\"[J.id]\", [!assistant_selected]);'>[assistant_selected? "Yes" : "No"]</a>"
 	else if(assistant_selected)

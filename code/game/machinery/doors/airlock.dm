@@ -1244,7 +1244,7 @@ About the new airlock wires panel:
 	for(var/turf/turf in locs)
 		var/obj/structure/window/killthis = (locate(/obj/structure/window) in turf)
 		if(killthis)
-			killthis.ex_act(2)//Smashin windows
+			LEGACY_EX_ACT(killthis, 2, null)//Smashin windows
 	return ..()
 
 /obj/machinery/door/airlock/can_open(var/forced=0)

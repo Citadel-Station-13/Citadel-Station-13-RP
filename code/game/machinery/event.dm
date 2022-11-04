@@ -46,7 +46,7 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 
 	RefreshParts()
 
-/obj/machinery/magma_pump/ex_act(severity)
+/obj/machinery/magma_pump/legacy_ex_act(severity)
 	switch(severity)
 		if(1)
 			//SN src = null
@@ -192,7 +192,7 @@ The goal here is to create esoteric or niche, specialized machines that follow t
 
 	RefreshParts()
 
-/obj/machinery/magma_reservoir/ex_act(severity)
+/obj/machinery/magma_reservoir/legacy_ex_act(severity)
 	switch(severity)
 		if(1)
 			//SN src = null

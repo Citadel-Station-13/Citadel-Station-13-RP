@@ -33,6 +33,16 @@
 
 	var/ability_cost = 100
 
+	if(species.get_species_id() != SPECIES_ID_SHADEKIN)
+		to_chat(src, SPAN_WARNING("Only a shadekin can use that!"))
+		return FALSE
+	else if(stat)
+		to_chat(src, SPAN_WARNING("Can't use that ability in your state!"))
+		return FALSE
+	else if(shadekin_get_energy() < ability_cost && !(ability_flags & AB_PHASE_SHIFTED))
+		to_chat(src, SPAN_WARNING("Not enough energy for that ability!"))
+		return FALSE
+
 	var/darkness = 1
 	var/turf/T = get_turf(src)
 	if(!T)
@@ -54,16 +64,9 @@
 	if(!(ability_flags & AB_PHASE_SHIFTED))
 		log_debug("[src] attempted to shift with [watcher] visible Carbons with a  cost of [ability_cost] in a darkness level of [darkness]")
 
-	var/datum/species/shadekin/SK = species
-	if(!istype(SK))
-		to_chat(src, SPAN_WARNING("Only a shadekin can use that!"))
-		return FALSE
-	else if(stat)
-		to_chat(src, SPAN_WARNING("Can't use that ability in your state!"))
-		return FALSE
-	else if(shadekin_get_energy() < ability_cost && !(ability_flags & AB_PHASE_SHIFTED))
-		to_chat(src, SPAN_WARNING("Not enough energy for that ability!"))
-		return FALSE
+	if(!(ability_flags & AB_PHASE_SHIFTED))
+		shadekin_adjust_energy(-ability_cost)
+	playsound(src, 'sound/effects/stealthoff.ogg', 75, TRUE)
 
 	if(!T.CanPass(src,T) || loc != T)
 		to_chat(src, SPAN_WARNING("You can't use that here!"))
@@ -194,8 +197,8 @@
 
 	var/ability_cost = 50
 
-	var/datum/species/shadekin/SK = species
-	if(!istype(SK))
+	//var/datum/species/shadekin/SK = species
+	if(species.get_species_id() != SPECIES_ID_SHADEKIN)
 		to_chat(src, "<span class='warning'>Only a shadekin can use that!</span>")
 		return FALSE
 	else if(stat)
@@ -208,9 +211,8 @@
 		to_chat(src, "<span class='warning'>You can't use that while phase shifted!</span>")
 		return FALSE
 
-	var/list/viewed = oview(1)
 	var/list/targets = list()
-	for(var/mob/living/L in viewed)
+	for(var/mob/living/L in view(1))
 		targets += L
 	if(!targets.len)
 		to_chat(src,"<span class='warning'>Nobody nearby to mend!</span>")
@@ -263,8 +265,8 @@
 
 	var/ability_cost = 25
 
-	var/datum/species/shadekin/SK = species
-	if(!istype(SK))
+	//var/datum/species/shadekin/SK = species
+	if(species.get_species_id() != SPECIES_ID_SHADEKIN)
 		to_chat(src, "<span class='warning'>Only a shadekin can use that!</span>")
 		return FALSE
 	else if(stat)

@@ -269,7 +269,7 @@ var/global/list/narsie_list = list()
 			var/turf/T2 = A
 			T2.ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
 
-/obj/singularity/narsie/ex_act(severity) //No throwing bombs at it either. --NEO
+/obj/singularity/narsie/legacy_ex_act(severity) //No throwing bombs at it either. --NEO
 	return
 
 /obj/singularity/narsie/proc/pickcultist() //Narsie rewards his cultists with being devoured first, then picks a ghost to follow. --NEO
