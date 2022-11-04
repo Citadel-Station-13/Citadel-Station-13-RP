@@ -98,6 +98,9 @@
 		return TRUE	// impact!
 	return ..()
 
+/turf/check_impact(atom/movable/falling_atom)
+	return TRUE
+
 /turf/proc/multiz_turf_del(turf/T, dir)
 	SEND_SIGNAL(src, COMSIG_TURF_MULTIZ_DEL, T, dir)
 
