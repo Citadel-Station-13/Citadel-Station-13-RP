@@ -49,8 +49,10 @@
 	. += "<script type='text/javascript'>function setjob(id,lvl) { window.location.href = '?src=\ref[src];action=job;id=' + encodeURIComponent(lvl) + ';level=' + lvl; return false; }</script>"
 	// grab job-by-department ui cache
 	var/list/ui_data = SSjob.job_pref_ui_cache
-	// build - one faction
-	if(length(ui_data) == 1)
+	for(var/faction in ui_data)
+		// header
+		if(length(ui_data) != 1)
+			. += "<b>[faction]</b>"
 		// form table
 		. += "<table width='100%' cellpadding='1' cellspacing='0'><tr>"
 		// form column
@@ -58,9 +60,7 @@
 		// iterate
 		var/count = 0
 		var/limit = max(5, SSjob.job_pref_ui_per)
-		var/list/faction = ui_data[ui_data[1]]
-		for(var/department_name in faction)
-			var/list/department = faction[department_name]
+		for(var/list/department in ui_data[faction])
 			var/dep_amt = length(department)
 			// if we'd hit limit, we split first as we're not longer than limit or would waste more than 4 slots.
 			if((count >= limit) || ((count + dep_amt > limit) && (dep_amt <= limit) && ((limit - count) <= 4)))
@@ -76,35 +76,6 @@
 		. += "</tr></table>"
 		// linebreak
 		. += "<br>"
-	// build - multi-faction
-	else
-		. += "<br>"
-		for(var/faction in ui_data)
-			// header
-			. += "<b>[faction]</b>"
-			// form table
-			. += "<table width='100%' cellpadding='1' cellspacing='0'><tr>"
-			// form column
-			START_COLUMN
-			// iterate
-			var/count = 0
-			var/limit = max(5, SSjob.job_pref_ui_per)
-			for(var/list/department in ui_data[faction])
-				var/dep_amt = length(department)
-				// if we'd hit limit, we split first as we're not longer than limit or would waste more than 4 slots.
-				if((count >= limit) || ((count + dep_amt > limit) && (dep_amt <= limit) && ((limit - count) <= 4)))
-					NEW_COLUMN
-				for(var/id in department)
-					. += render_job(prefs, SSjob.job_by_id(id), current[id], assistant_selected)
-					++count
-					if(count >= limit)
-						NEW_COLUMN
-			// close column
-			END_COLUMN
-			// close table
-			. += "</tr></table>"
-			// linebreak
-			. += "<br>"
 	// remove monospace
 	. += "</tt>"
 	// add alternative options

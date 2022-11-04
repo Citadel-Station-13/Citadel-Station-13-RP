@@ -13,7 +13,7 @@
 	if(!config_legacy.usealienwhitelist)
 		// ignore
 		return TRUE
-	if(GLOB.admins[ckey])
+	if(admin_datums[ckey])
 		// bypass
 		return TRUE
 	var/list/relevant = alien_whitelist[name]
@@ -34,7 +34,7 @@
  * name, ckey must be CKEY()'d.
  */
 /datum/controller/configuration/proc/check_job_whitelist(name, ckey)
-	if(GLOB.admins[ckey])
+	if(admin_datums[ckey])
 		// bypass
 		return TRUE
 	var/list/relevant = job_whitelist[name]

@@ -134,7 +134,7 @@
  * checked set preference data
  */
 /datum/preferences/proc/set_preference(path, value)
-	var/datum/category_item/player_setup_item/preference = preference_by_key[path]
+	var/datum/category_item/player_setup_item/preference = preference_by_key[pref]
 	value = preference.filter_data(value)
 	if(preference.is_global)
 		options[preference.save_key] = value
@@ -145,7 +145,7 @@
  * checked get preference data
  */
 /datum/preferences/proc/get_preference(pref)
-	var/datum/category_item/player_setup_item/preference = preference_by_key[path]
+	var/datum/category_item/player_setup_item/preference = preference_by_key[pref]
 	if(preference.is_global)
 		return options[preference.save_key]
 	else
@@ -155,7 +155,7 @@
  * sanitize prefs data
  */
 /datum/preferences/proc/sanitize_preference(pref, list/errors)
-	var/datum/category_item/player_setup_item/preference = preference_by_type[path]
+	var/datum/category_item/player_setup_item/preference = preference_by_type[pref]
 	if(preference.is_global)
 		return options[preference.save_key] = preference.filter_data(src, options[preference.save_key], errors)
 	else
