@@ -1,5 +1,6 @@
 /mob/CheckFall(var/atom/movable/falling_atom)
 	return falling_atom.fall_impact(src)
+
 /* //Leaving this here to show my previous iterations which failed.
 /mob/living/fall_impact(var/atom/hit_atom) //This is called even when a humanoid falls. Dunno why, it just does.
 	if(isliving(hit_atom)) //THIS WEAKENS THE PERSON FALLING & NOMS THE PERSON FALLEN ONTO. SRC is person fallen onto.  hit_atom is the person falling. Confusing.
