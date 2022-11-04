@@ -34,12 +34,17 @@
 
 #endif //ifdef REFERENCE_TRACKING
 
+// If this is uncommented, we do a single run though of the game setup and tear down process with unit tests in between
+// #define UNIT_TESTS
+
+// If this is uncommented, will attempt to load and initialize prof.dll/libprof.so.
+// We do not ship byond-tracy. Build it yourself here: https://github.com/mafemergency/byond-tracy/
+// #define USE_BYOND_TRACY
+
 ///Highlights atmos active turfs in green
 //#define VISUALIZE_ACTIVE_TURFS
 #endif //ifdef TESTING
 
-///Enables unit tests via TEST_RUN_PARAMETER
-//#define UNIT_TESTS
 #ifndef PRELOAD_RSC				//set to:
 ///	0 to allow using external resources or on-demand behaviour;
 #define PRELOAD_RSC	2
