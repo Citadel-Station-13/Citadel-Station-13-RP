@@ -372,8 +372,7 @@
 // Return TRUE if the generic fall_impact should be called
 // Return FALSE if you handled it yourself or if there's no effect from hitting you
 /atom/proc/check_impact(var/atom/movable/falling_atom)
-	if(density && !(flags & ON_BORDER))
-		return TRUE
+	return TRUE
 
 // Called by CheckFall when we actually hit something. Various Vars will be described below
 // hit_atom is the thing we fall on
