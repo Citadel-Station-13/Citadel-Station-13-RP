@@ -16,7 +16,7 @@
  */
 /proc/cmp_auto_compare(datum/A, datum/B)
 	if(istext(A) || istext(B))
-		return cmp_text_asc("[src]", "[D]")
+		return cmp_text_asc("[A]", "[B]")
 	return A.compare_to(B)
 
 /**

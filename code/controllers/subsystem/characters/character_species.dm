@@ -59,6 +59,8 @@
 			"flags" = S.species_flags
 		))
 
+	tim_sort(character_species_lookup, /proc/cmp_auto_compare, TRUE)
+
 /datum/controller/subsystem/characters/proc/resolve_character_species(uid)
 	RETURN_TYPE(/datum/character_species)
 	return character_species_lookup[uid]

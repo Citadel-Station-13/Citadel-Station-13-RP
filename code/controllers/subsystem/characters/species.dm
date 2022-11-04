@@ -51,9 +51,9 @@
 	tim_sort(species_lookup, /proc/cmp_auto_compare, TRUE)
 	tim_sort(species_names, /proc/cmp_auto_compare, TRUE)
 	tim_sort(species_lookup, /proc/cmp_auto_compare, TRUE)
-	tim_sort(whitelisted_species, /proc/cmp_auto_compare, TRUE)
-	tim_sort(playable_species, /proc/cmp_auto_compare, TRUE)
-	tim_sort(custom_species_bases, /proc/cmp_auto_compare, TRUE)
+	tim_sort(whitelisted_species, /proc/cmp_auto_compare)
+	tim_sort(playable_species, /proc/cmp_auto_compare)
+	tim_sort(custom_species_bases, /proc/cmp_auto_compare)
 
 /datum/controller/subsystem/characters/proc/resolve_species(id_path_name)
 	RETURN_TYPE(/datum/species)

@@ -60,12 +60,14 @@
 		// iterate
 		var/count = 0
 		var/limit = max(5, SSjob.job_pref_ui_per)
-		for(var/list/department in ui_data[faction])
+		var/list/departments = ui_data[faction]
+		for(var/department in departments)
+			var/list/ids = departments[department]
 			var/dep_amt = length(department)
 			// if we'd hit limit, we split first as we're not longer than limit or would waste more than 4 slots.
 			if((count >= limit) || ((count + dep_amt > limit) && (dep_amt <= limit) && ((limit - count) <= 4)))
 				NEW_COLUMN
-			for(var/id in department)
+			for(var/id in ids)
 				. += render_job(prefs, SSjob.job_by_id(id), current[id], assistant_selected)
 				++count
 				if(count >= limit)

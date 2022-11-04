@@ -173,7 +173,6 @@
 				. += "<hr>"
 			current++
 			. += islist(content)? content.Join("") : content
-			. += "<br>"
 
 /**********************
 * Category Item Setup *
