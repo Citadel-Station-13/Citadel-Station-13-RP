@@ -316,7 +316,7 @@
 	// TODO - Stairs should operate thru a different mechanism, not falling, to allow side-bumping.
 
 	// this is shitcode lmao
-	var/obj/structure/stairs = locate() in landing
+	var/obj/structure/stairs/stairs = locate() in landing
 	if(!stairs)
 		// Now lets move there!
 		if(!Move(landing))
