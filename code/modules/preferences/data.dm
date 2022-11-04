@@ -187,6 +187,8 @@
  * default everything that has save keys
  */
 /datum/preferences/proc/reset_everything_to_default()
+	character = list()
+	options = list()
 	for(var/key in preference_by_key)
 		var/datum/category_item/player_setup_item/I = preference_by_key[key]
 		if(I.is_global)
@@ -195,6 +197,7 @@
 			set_character_data(key, I.informed_default_value(src))
 
 /datum/preferences/proc/reset_character_to_default()
+	character = list()
 	for(var/key in preference_by_key)
 		var/datum/category_item/player_setup_item/I = preference_by_key[key]
 		if(I.is_global)
@@ -202,6 +205,7 @@
 		set_character_data(key, I.informed_default_value(src))
 
 /datum/preferences/proc/reset_options_to_default()
+	options = list()
 	for(var/key in preference_by_key)
 		var/datum/category_item/player_setup_item/I = preference_by_key[key]
 		if(!I.is_global)

@@ -42,7 +42,7 @@
 	var/real_id = prefs.get_character_data(CHARACTER_DATA_REAL_SPECIES)
 	var/datum/character_species/CS = SScharacters.resolve_character_species(real_id)
 	if(CS)
-		return prefs.get_character_data(real_id)
+		return real_id
 	// no :(
 	return default_value()
 

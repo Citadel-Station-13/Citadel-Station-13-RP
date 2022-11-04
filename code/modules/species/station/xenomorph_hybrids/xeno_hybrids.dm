@@ -1,7 +1,7 @@
 /datum/species/xenohybrid
 	name = SPECIES_XENOHYBRID
 	name_plural = "Xenomorph Hybrids"
-	uid = SPECIES_ID_XENOMORPH_HYBRID
+	uid = SPECIES_ID_XENOHYBRID
 	default_bodytype = BODYTYPE_XENOHYBRID
 
 	icobase = 'icons/mob/species/xenohybrid/body.dmi'
