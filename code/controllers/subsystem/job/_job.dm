@@ -18,9 +18,9 @@ SUBSYSTEM_DEF(job)
 
 
 /datum/controller/subsystem/job/Initialize(timeofday)
-	if(!department_datums.len)
+	if(!length(department_datums))
 		setup_departments()
-	if(!occupations.len)
+	if(!length(occupations))
 		setup_occupations()
 	reconstruct_job_ui_caches()
 	return ..()
