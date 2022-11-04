@@ -60,7 +60,7 @@
 		var/limit = max(5, SSjob.job_pref_ui_per)
 		var/list/faction = ui_data[ui_data[1]]
 		for(var/department_name in faction)
-			var/list/department = faction
+			var/list/department = faction[department_name]
 			var/dep_amt = length(department)
 			// if we'd hit limit, we split first as we're not longer than limit or would waste more than 4 slots.
 			if(count + dep_amt > limit && dep_amt <= limit && limit - count <= 4)
