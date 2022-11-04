@@ -100,13 +100,13 @@
 /turf/proc/z_fall_check(atom/movable/mover, levels, fall_flags)
 	if(!(z_flags & Z_OPEN_DOWN))
 		return FALSE
-	return !!z_fall_obstruction(mover, levels, fall_flags)
+	return isnull(z_fall_obstruction(mover, levels, fall_flags))
 
 /turf/z_pass_in(atom/movable/AM, dir, turf/old_loc)
-	return !!z_pass_in_obstruction(AM, dir, old_loc)
+	return isnull(z_pass_in_obstruction(AM, dir, old_loc))
 
 /turf/z_pass_out(atom/movable/AM, dir, turf/new_loc)
-	return !!z_pass_out_obstruction(AM, dir, new_loc)
+	return isnull(z_pass_out_obstruction(AM, dir, new_loc))
 
 // todo: redo
 /turf/CheckFall(atom/movable/falling_atom)
