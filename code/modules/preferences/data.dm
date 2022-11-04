@@ -133,7 +133,7 @@
 /**
  * checked set preference data
  */
-/datum/preferences/proc/set_preference(path, value)
+/datum/preferences/proc/set_preference(pref, value)
 	var/datum/category_item/player_setup_item/preference = preference_by_key[pref]
 	value = preference.filter_data(value)
 	if(preference.is_global)
