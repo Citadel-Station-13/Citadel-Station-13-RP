@@ -47,6 +47,15 @@ SUBSYSTEM_DEF(job)
 		LAZYINITLIST(job_pref_ui_cache[faction])
 		var/department = LAZYACCESS(J.departments, 1) || "Misc"
 		LAZYADD(job_pref_ui_cache[faction][department], id)
+	// todo: why
+	for(var/list/faction in job_pref_ui_cache)
+		var/list/asinine_sort = list()
+		for(var/depname in department_datums)
+			if(faction[depname])
+				asinine_sort[depname] = faction[depname]
+		faction -= asinine_sort
+		faction.Insert(asinine_sort, 1)
+
 
 /datum/controller/subsystem/job/proc/setup_occupations()
 	occupations = list()

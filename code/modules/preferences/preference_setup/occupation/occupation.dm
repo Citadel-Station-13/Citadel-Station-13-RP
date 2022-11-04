@@ -46,7 +46,7 @@
 	// user intro
 	. += "<h3>Choose occupation preferences</h3>Unavailable occupations are crossed out.<br>"
 	// script inject for right click
-	. += "<script type='text/javascript'>function setjob(id,lvl) { window.location.href = '?src=\ref[src];action=job;id=' + encodeURIComponent(lvl) + ';level=' + lvl; return false; }</script>"
+	. += "<script type='text/javascript'>function setjob(id,lvl) { window.location.href = '?src=\ref[src];action=job;job=' + encodeURIComponent(lvl) + ';level=' + lvl; return false; }</script>"
 	// grab job-by-department ui cache
 	var/list/ui_data = SSjob.job_pref_ui_cache
 	for(var/faction in ui_data)
@@ -159,16 +159,16 @@
 /datum/category_item/player_setup_item/occupation/jobs/act(datum/preferences/prefs, mob/user, action, list/params)
 	switch(action)
 		if("job")
-			prefs.set_job_priority(params["id"], text2num(params["level"]))
+			prefs.set_job_priority(params["job"], text2num(params["level"]))
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 		if("title")
-			var/datum/job/J = SSjob.job_by_id(params["id"])
+			var/datum/job/J = SSjob.job_by_id(params["job"])
 			if(!J)
 				return PREFERENCES_NOACTION
 			var/title = input(user, "Choose a title for [J.title].", "Choose Title", prefs.get_job_alt_title_name(J)) as null|anything in J.alt_titles
 			if(!title)
 				return PREFERENCES_NOACTION
-			prefs.set_job_title(params["id"], title)
+			prefs.set_job_title(params["job"], title)
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 		if("help")
 			var/datum/job/J = SSjob.job_by_id(params["help"])
