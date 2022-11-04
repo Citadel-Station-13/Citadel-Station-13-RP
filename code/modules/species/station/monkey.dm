@@ -1,5 +1,6 @@
 /datum/species/monkey
 	name = SPECIES_MONKEY
+	uid = SPECIES_ID_MONKEY
 	name_plural = "Monkeys"
 	greater_form = SPECIES_HUMAN
 
@@ -72,6 +73,7 @@
 /datum/species/monkey/tajaran
 	name = SPECIES_MONKEY_TAJ
 	name_plural = SPECIES_MONKEY_TAJ
+	uid = SPECIES_ID_FARWA
 
 	icobase = 'icons/mob/species/monkey/body_farwa.dmi'
 	deform  = 'icons/mob/species/monkey/body_farwa.dmi'
@@ -86,6 +88,7 @@
 /datum/species/monkey/skrell
 	name = SPECIES_MONKEY_SKRELL
 	name_plural = SPECIES_MONKEY_SKRELL
+	id = SPECIES_ID_NEAERA
 
 	icobase = 'icons/mob/species/monkey/body_neaera.dmi'
 	deform  = 'icons/mob/species/monkey/body_neaera.dmi'
@@ -101,6 +104,7 @@
 /datum/species/monkey/unathi
 	name = SPECIES_MONKEY_UNATHI
 	name_plural = SPECIES_MONKEY_UNATHI
+	uid = SPECIES_ID_STOK
 
 	icobase = 'icons/mob/species/monkey/body_stok.dmi'
 	deform  = 'icons/mob/species/monkey/body_stok.dmi'
@@ -116,6 +120,8 @@
 /datum/species/monkey/shark
 	name = SPECIES_MONKEY_AKULA
 	name_plural = SPECIES_MONKEY_AKULA
+	uid = SPECIES_ID_SOBAKA
+
 	icobase = 'icons/mob/species/monkey/body_sobaka.dmi'
 	deform  = 'icons/mob/species/monkey/body_sobaka.dmi'
 	tail = null //The tail is part of its body due to tail using the "icons/effects/species.dmi" file. It must be null, or they'll have a chimp tail.
@@ -126,6 +132,8 @@
 /datum/species/monkey/sergal
 	name = SPECIES_MONKEY_SERGAL
 	greater_form = SPECIES_SERGAL
+	uid = SPECIES_ID_SERGLING
+
 	icobase = 'icons/mob/species/monkey/body_sergaling.dmi'
 	deform  = 'icons/mob/species/monkey/body_sergaling.dmi'
 	tail = null
@@ -135,6 +143,7 @@
 /datum/species/monkey/sparra
 	name = SPECIES_MONKEY_NEVREAN
 	name_plural = SPECIES_MONKEY_NEVREAN
+	uid = SPECIES_ID_SPARRA
 	greater_form = SPECIES_NEVREAN
 	icobase = 'icons/mob/species/monkey/body_sparra.dmi'
 	deform  = 'icons/mob/species/monkey/body_sparra.dmi'
@@ -161,6 +170,7 @@
 /datum/species/monkey/vulpkanin
 	name = SPECIES_MONKEY_VULPKANIN
 	name_plural = SPECIES_MONKEY_VULPKANIN
+	uid = SPECIES_ID_WOLPIN
 
 	icobase = 'icons/mob/species/monkey/body_wolpin.dmi'
 	deform = 'icons/mob/species/monkey/body_wolpin.dmi'

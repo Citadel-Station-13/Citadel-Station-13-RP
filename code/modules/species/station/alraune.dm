@@ -1,5 +1,6 @@
 /datum/species/alraune
 	name = SPECIES_ALRAUNE
+	uid = SPECIES_ID_ALRAUNE
 	name_plural = "Alraunes"
 
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
