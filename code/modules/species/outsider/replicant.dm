@@ -67,6 +67,7 @@
 
 /datum/species/shapeshifter/replicant/alpha
 	name = SPECIES_REPLICANT_ALPHA
+	uid = SPECIES_ID_REPLICANT_ALPHA
 	blurb = "The remnants of some lost or dead race's research. These seem caustic."
 
 	blood_color = "#55ff55"
@@ -105,6 +106,7 @@
 
 /datum/species/shapeshifter/replicant/beta
 	name = SPECIES_REPLICANT_BETA
+	uid = SPECIES_ID_REPLICANT_BETA
 	blurb = "The remnants of some lost or dead race's research. These seem elastic."
 
 	blood_color = "#C0C0C0"

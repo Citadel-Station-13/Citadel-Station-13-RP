@@ -18,6 +18,8 @@
 #define SPECIES_ID_PROMETHEAN "promethean"
 #define SPECIES_ID_PROTEAN "protean"
 #define SPECIES_ID_REPLICANT "replicant"
+	#define SPECIES_ID_REPLICANT_ALPHA "replicant_alpha"
+	#define SPECIES_ID_REPLICANT_BETA "replicant_beta"
 #define SPECIES_ID_SCORI "scori"
 #define SPECIES_ID_SHADEKIN "shadekin"
 #define SPECIES_ID_SHADEKIN_BLACK "shadekin_black"
