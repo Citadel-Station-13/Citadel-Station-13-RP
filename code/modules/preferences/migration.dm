@@ -33,20 +33,20 @@
 		var/job_engsec_med
 		var/job_engsec_low
 		var/list/player_alt_titles
-		S["alternate_option"]	>> alternative_option
-		S["job_civilian_high"]	>> job_civilian_high
-		S["job_civilian_med"]	>> job_civilian_med
-		S["job_civilian_low"]	>> job_civilian_low
-		S["job_medsci_high"]	>> job_medsci_high
-		S["job_medsci_med"]		>> job_medsci_med
-		S["job_medsci_low"]		>> job_medsci_low
-		S["job_engsec_high"]	>> job_engsec_high
-		S["job_engsec_med"]		>> job_engsec_med
-		S["job_engsec_low"]		>> job_engsec_low
-		S["job_talon_low"]		>> job_talon_low
-		S["job_talon_med"]		>> job_talon_med
-		S["job_talon_high"]		>> job_talon_high
-		S["player_alt_titles"]	>> player_alt_titles
+		READ_FILE(S["alternate_option"],  alternative_option)
+		READ_FILE(S["job_civilian_high"], job_civilian_high)
+		READ_FILE(S["job_civilian_med"],  job_civilian_med)
+		READ_FILE(S["job_civilian_low"],  job_civilian_low)
+		READ_FILE(S["job_medsci_high"],   job_medsci_high)
+		READ_FILE(S["job_medsci_med"],    job_medsci_med)
+		READ_FILE(S["job_medsci_low"],    job_medsci_low)
+		READ_FILE(S["job_engsec_high"],   job_engsec_high)
+		READ_FILE(S["job_engsec_med"],    job_engsec_med)
+		READ_FILE(S["job_engsec_low"],    job_engsec_low)
+		READ_FILE(S["job_talon_low"],     job_talon_low)
+		READ_FILE(S["job_talon_med"],     job_talon_med)
+		READ_FILE(S["job_talon_high"],    job_talon_high)
+		READ_FILE(S["player_alt_titles"], player_alt_titles)
 		var/list/assembled = list()
 		var/list/assembled_titles = list()
 		if(!islist(player_alt_titles))
