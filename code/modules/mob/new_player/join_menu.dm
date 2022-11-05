@@ -190,7 +190,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 	. = ..()
 	var/mob/new_player/N = usr
 	if(!istype(N))
-		to_chat(usr, "<span class='danger'>You are not in the lobby.</span>")
+		to_chat(usr, SPAN_DANGER("You are not in the lobby."))
 		return
 	switch(action)
 		if("join")
