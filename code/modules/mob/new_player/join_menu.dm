@@ -223,7 +223,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 					var/client/C = N.client
 					var/error = R.AttemptSpawn(C)
 					if(istext(error))
-						to_chat(C, SPAN_DANGER(error))
+						to_chat(C, SPAN_DANGER("[error]"))
 		if("queue")
 			return
 			// AttemptQueue(usr)
