@@ -94,6 +94,12 @@
 	/// Shows up under a UV light.
 	var/fluorescent
 
+	//! Radiation
+	/// radiation flags
+	var/rad_flags = NONE
+	/// radiation insulation
+	var/rad_insulation = RAD_INSULATION_NONE
+
 	//! ## Overlays
 	/// a very temporary list of overlays to remove
 	var/list/remove_overlays
@@ -896,6 +902,13 @@
 
 /atom/proc/speech_bubble(bubble_state = "", bubble_loc = src, list/bubble_recipients = list())
 	return
+
+//! Radiation
+/**
+ * called when we're hit by a radiation wave
+ */
+/atom/proc/rad_act(strength, datum/radiation_wave/wave)
+	SEND_SIGNAL(src, COMSIG_ATOM_RAD_ACT, strength)
 
 //! ## Atom Colour Priority System
 /**

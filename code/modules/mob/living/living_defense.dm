@@ -99,6 +99,8 @@
 		if(ai_holder) // Using disarm, grab, or harm intent is considered a hostile action to the mob's AI.
 			ai_holder.react_to_attack(L)
 
+#warn rad_act
+
 /mob/living/bullet_act(var/obj/item/projectile/P, var/def_zone)
 
 	//Being hit while using a deadman switch
