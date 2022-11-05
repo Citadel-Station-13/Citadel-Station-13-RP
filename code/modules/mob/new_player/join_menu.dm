@@ -209,7 +209,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 						return
 					var/datum/job/J = SSjob.job_by_id(id)
 					if(!J)
-						to_chat(usr, "<span class='warning'>Failed to find job [id].")
+						to_chat(usr, SPAN_WARNING("Failed to find job [id]."))
 						return
 					to_chat(usr, "<span class='notice'>Attempting to latespawn as [id] ([J.title]).</span>")
 					N.AttemptLateSpawn(J)
