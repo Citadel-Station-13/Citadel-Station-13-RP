@@ -70,7 +70,7 @@
 	if(!latejoin)
 		if(spawn_positions == -1)
 			return INFINITY
-		return max(total_positions - spawn_positions, 0)
+		return max(spawn_positions, 0)
 	if(total_positions == -1)
 		return INFINITY
 	return max(total_positions - current_positions, 0)
@@ -119,7 +119,7 @@
 /datum/job/proc/check_client_availability_one(client/C, check_char, latejoin)
 	if(whitelist_only && !config.check_job_whitelist(ckey(title), C.ckey))
 		return ROLE_UNAVAILABLE_WHITELIST
-	else if(!slots_remaining(latejoin))
+	else if(latejoin && !slots_remaining(TRUE))
 		return ROLE_UNAVAILABLE_SLOTS_FULL
 	else if(!player_has_enough_pto(C))
 		return ROLE_UNAVAILABLE_PTO
