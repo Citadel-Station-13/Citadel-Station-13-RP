@@ -42,17 +42,31 @@
 	/// sight var
 	var/sight = SEE_SELF
 	/// active clients - this is not the same as mobs because a client can be looking somewhere that isn't their mob
-	var/list/client/clients = list()
+	var/list/client/clients
 	/// mobs that are using this - required for clean gcs
 	var/list/mob/mobs = list()
-	/// view size
-	var/view_size
 	/// when a client logs out of a mob, and it's using us, the mob should reset to its self_perspective
 	var/reset_on_logout = TRUE
 	/// see in dark
 	var/see_in_dark = 2
 	/// see_invisible
 	var/see_invisible = SEE_INVISIBLE_LIVING
+
+	//! view size
+	/// default view; if null, world.view
+	var/default_view_size
+	/// view size increase x
+	var/augment_view_width = 0
+	/// view size increase y
+	var/augment_view_height = 0
+	/// suppression sources
+	var/list/view_suppression
+	/// cached view x
+	var/cached_view_width
+	/// cached view y
+	var/cached_view_height
+	/// view cache needs recompute
+	var/view_dirty = TRUE
 
 /datum/perspective/Destroy()
 	KickAll()
@@ -73,7 +87,7 @@
 		return
 	if(C.using_perspective)
 		CRASH("client already had perspective")
-	clients += C
+	LAZYADD(clients, C)
 	C.using_perspective = src
 	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_CLIENT_REGISTER, C)
 	Apply(C)
@@ -85,7 +99,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 	if(!(C in clients))
 		return
-	clients -= C
+	LAZYREMOVE(clients, C)
 	Remove(C)
 	// if we're not doing this as part of a switch have them immediately switch to the mob
 	// oh and make sure they unregister
@@ -100,7 +114,7 @@
  * gets all clients viewing us
  */
 /datum/perspective/proc/GetClients()
-	return clients.Copy()
+	return isnull(clients)? list() : clients.Copy()
 
 /**
  * kicks all clients off us
@@ -187,8 +201,7 @@
 	C.mob.sight = sight
 	C.mob.see_in_dark = see_in_dark
 	C.mob.see_invisible = see_invisible
-	if(view_size)
-		C.change_view(view_size, TRUE)
+	update_view_size(C)
 
 /**
  * update all viewers
@@ -294,6 +307,25 @@
 		for(var/client/C as anything in clients)
 			C.mob.see_invisible = see_invisible
 
+//! view size
+/datum/perspective/proc/set_default_view(size)
+
+
+/datum/perspective/proc/set_augmented_view(width, height)
+
+/datum/perspective/proc/update_view_size(client/C)
+
+/datum/perspective/proc/recompute_view_size()
+	view_dirty = FALSE
+
+/datum/perspective/proc/suppress_view(source)
+
+/datum/perspective/proc/unsuppress_view(source)
+
+/datum/perspective/proc/ensure_view_cached()
+	if(view_dirty)
+		recompute_view_size()
+
 /datum/perspective/proc/SetViewSize(new_size)
 	var/change = view_size == new_size
 	view_size = new_size
@@ -301,6 +333,8 @@
 		for(var/client/C as anything in clients)
 			C.change_view(new_size, TRUE)
 
+
+//! remotes
 /datum/perspective/proc/considered_remote(mob/M)
 	return eye == M
 

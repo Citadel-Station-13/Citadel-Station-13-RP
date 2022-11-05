@@ -89,7 +89,24 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
  * called to refit the viewport as necessary
  */
 /client/proc/refit_viewport()
-	// if they're stretching to fit
+	var/stretch_to_fit = assumed_viewport_zoom == 0
+	using_perspective.ensure_view_cached()
+	var/max_width = using_perspective.cached_view_width
+	var/max_height = using_perspective.cached_view_height
+	if(stretch_to_fit)
+		// option 1: they're stretching to fit
+		if(assumed_viewport_box)
+			// fit everything
+			view = "[max_width]x[max_height]"
+			return
+		// option 2: they're stretching to fit the longest side
+		else
+			// in which case..
+			// they're going to truncate the smaller size anyways
+			view = min(max_width, max_height)
+			return
+
+
 
 	var/desired_x
 	var/desired_y
