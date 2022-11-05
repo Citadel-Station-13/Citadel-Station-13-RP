@@ -216,7 +216,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 				if("ghostrole")
 					var/datum/ghostrole/R = get_ghostrole_datum(id)
 					if(!R)
-						to_chat(usr, "<span class='warning'>Failed to find ghostrole [R]</span>")
+						to_chat(usr, SPAN_WARNING("Failed to find ghostrole [R]"))
 						return
 					to_chat(usr, SPAN_WARNING("Attempting to join as ghostrole [id] ([R.name])."))
 					N.close_spawn_windows()
