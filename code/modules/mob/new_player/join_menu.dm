@@ -195,7 +195,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 	switch(action)
 		if("join")
 			if(!SSticker || !SSticker.IsRoundInProgress())
-				to_chat(usr, "<span class='danger'>The round is either not ready, or has already finished...</span>")
+				to_chat(usr, SPAN_DANGER("The round is either not ready, or has already finished..."))
 				return
 			if(!AttemptQueue(usr))
 				return
