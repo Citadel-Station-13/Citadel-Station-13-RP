@@ -90,7 +90,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 
 
 /datum/join_menu/ui_data(mob/user)
-	. = ..()
+	var/list/data = ..()
 	// common info goes into ui data
 	var/level = "green"
 	switch(GLOB.security_level)
@@ -108,8 +108,8 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 			level = "red";
 		else
 			level = "delta";
-	.["security_level"] = level
-	.["duration"] = DisplayTimeText(world.time - SSticker.round_start_time)
+	data["security_level"] = level
+	data["duration"] = DisplayTimeText(world.time - SSticker.round_start_time)
 	// 0 = not evaccing, 1 = evacuating, 2 = crew transfer, 3 = evacuated
 	var/evac = 0
 	if(SSemergencyshuttle.going_to_centcom())
@@ -119,13 +119,14 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 			evac = 1
 		else
 			evac = 2
-	.["evacuated"] = evac
-	.["charname"] = user.client?.prefs?.real_name || "Unknown User"
+	data["evacuated"] = evac
+	data["charname"] = user.client?.prefs?.real_name || "Unknown User"
 	// position in queue, -1 for not queued, null for no queue active, otherwise number
 	// if -1, ui should present option to queue
 	// if null, ui shouldn't show queue at all or say "there is no queue" etc etc
-	.["queue"] = QueueStatus(user)
-
+	data["queue"] = QueueStatus(user)
+	
+	return data
 /**
  * checks if job is available
  * if not, it shouldn't even show
