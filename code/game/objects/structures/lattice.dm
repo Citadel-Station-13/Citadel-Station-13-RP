@@ -99,4 +99,4 @@
 /obj/structure/lattice/prevent_z_fall(atom/movable/victim, levels = 0, fall_flags)
 	if(check_standard_flag_pass(victim))
 		return ..()
-	return fall_flags & FALL_BLOCKED
+	return fall_flags | FALL_BLOCKED
