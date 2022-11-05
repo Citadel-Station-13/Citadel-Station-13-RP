@@ -3,7 +3,7 @@
 	name = DEPARTMENT_TRADE
 	short_name = "Beruang"
 	color = "#afccb8"
-	sorting_order = -3
+	sorting_order = 50
 	assignable = FALSE
 	visible = FALSE
 
