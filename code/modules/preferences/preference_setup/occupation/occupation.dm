@@ -151,7 +151,7 @@
 	var/client/C = pref.client
 	if(!C)
 		return null
-	var/reasons = J.check_client_availability_one(C) & ~(ROLE_UNAVAILABILITY_EPHEMERAL)
+	var/reasons = J.check_client_availability_one(C, TRUE, FALSE) & ~(ROLE_UNAVAILABILITY_EPHEMERAL)
 	if(reasons)
 		return J.get_availability_error(C, reasons)
 	return null

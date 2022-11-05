@@ -100,11 +100,11 @@
 		S.cd = "/character[default_slot]"
 	// END SLOT HANDLING
 
+	var/list/io_errors = list()
 	// load character data
-	read_character_data()
+	read_character_data(S, slot, io_errors)
 	// perform migrations
 	var/current_version = character[CHARACTER_DATA_VERSION]
-	var/list/io_errors = list()
 	if(!isnum(current_version))
 		current_version = CHARACTER_VERSION_LEGACY
 	if(current_version < CHARACTER_VERSION_MIN)
@@ -138,7 +138,7 @@
 	// prep saveflie
 	S.cd = "/character[default_slot]"
 	// write character data
-	write_character_data()
+	write_character_data(S, default_slot)
 	// write legacy data
 	player_setup.save_character(S)
 	return TRUE
