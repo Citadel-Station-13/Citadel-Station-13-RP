@@ -11,7 +11,7 @@ SUBSYSTEM_DEF(job)
 	/// job preferences ui cache - cache[faction string][department name] = list(job ids)
 	var/list/job_pref_ui_cache
 	/// jobs per column
-	var/job_pref_ui_per = 15
+	var/job_pref_ui_per = 25
 
 	var/list/department_datums = list()
 	var/debug_messages = FALSE
