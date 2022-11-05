@@ -190,7 +190,7 @@
 						accesses.Add(A)
 					else
 						to_chat(usr, "<span class='warning'>Invalid selection, please consult technical support if there are any issues.</span>")
-						log_debug("[key_name_admin(usr)] tried selecting an invalid guest pass terminal option.")
+						log_debug(SPAN_DEBUG("[key_name_admin(usr)] tried selecting an invalid guest pass terminal option."))
 	if (href_list["action"])
 		switch(href_list["action"])
 			if ("id")

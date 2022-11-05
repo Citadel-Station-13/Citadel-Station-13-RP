@@ -346,7 +346,7 @@
 				if(length(input) < COMM_CCMSGLEN_MINIMUM)
 					to_chat(usr, SPAN_WARNING("Message '[input]' is too short. [COMM_CCMSGLEN_MINIMUM] character minimum."))
 					return
-				CentCom_announce(input, usr)
+				message_centcom(input, usr)
 				to_chat(usr, SPAN_NOTICE("Message transmitted."))
 				log_game("[key_name(usr)] has made an IA [using_map.boss_short] announcement: [input]")
 				centcomm_message_cooldown = world.time + 300 // 30 seconds

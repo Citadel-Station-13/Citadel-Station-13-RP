@@ -70,6 +70,7 @@
 #define SPAN_INFO(str) ("<span class='info'>[str]</span>")
 #define SPAN_INFOPLAIN(str) ("<span class='infoplain'>[str]</span>")
 #define SPAN_INTERFACE(str) ("<span class='interface'>[str]</span>")
+#define SPAN_LINKIFY(str) ("<span class='linkify'>[str]</span>")
 #define SPAN_LOOC(str) ("<span class='looc'>[str]</span>")
 #define SPAN_MEDAL(str) ("<span class='medal'>[str]</span>")
 #define SPAN_MEDRADIO(str) ("<span class='medradio'>[str]</span>")
@@ -132,4 +133,10 @@
  * Spans that use embedded tgui components:
  * Sorted alphabetically
  */
-#define SPAN_TOOLTIP(tip, main_text) ("<span data-component=\"Tooltip\" data-content=\"[tip]\" class=\"tooltip\">[main_text]</span>")
+#define SPAN_TOOLTIP(tip, str) ("<span data-component=\"Tooltip\" data-content=\"[tip]\" class=\"tooltip\">[str]</span>")
+
+/**
+ * Special Macros
+ * These aren't really spans but we'll call them such just to make shit easier
+ */
+#define SPAN_BLOCKQUOTE(str, span_type) ("<blockquote class=[(isnull(span_type) ? "" : span_type)]>[str]</blockquote>")

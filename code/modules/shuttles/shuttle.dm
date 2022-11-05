@@ -66,7 +66,7 @@
 	else
 		current_location = SSshuttle.get_landmark(current_location)
 	if(!istype(current_location))
-		log_debug("UM whoops, no initial? [src]")
+		log_debug(SPAN_DEBUGERROR("UM whoops, no initial? [src]"))
 		CRASH("Shuttle '[name]' could not find its starting location landmark [current_location].")
 
 	if(src.name in SSshuttle.shuttles)

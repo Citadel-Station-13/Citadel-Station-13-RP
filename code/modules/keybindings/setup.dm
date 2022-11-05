@@ -26,7 +26,7 @@
 	if(!SSinput.initialized)
 		to_chat(src, "<span class='warning'>Input hasn't been initialized yet. Wait a while.</span>")
 		return
-	log_debug("[src] reset their keybindings.")
+	log_debug(SPAN_DEBUG("[src] reset their keybindings."))
 	to_chat(src, "<span class='danger'>Force-reasserting all macros.</span>")
 	set_macros(prefs)
 

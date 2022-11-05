@@ -176,17 +176,14 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
 	//Admin Authorisation
 	holder = admin_datums[ckey]
-	var/debug_tools_allowed = FALSE			//CITADEL EDIT
+	var/debug_tools_allowed = FALSE
 	if(holder)
 		GLOB.admins |= src
-		admins |= src // i hate this.
 		holder.owner = src
 		connecting_admin = TRUE
-		//CITADEL EDIT
 		//if(check_rights_for(src, R_DEBUG))
 		if(R_DEBUG & holder?.rights) //same wiht this, check_rights when?
 			debug_tools_allowed = TRUE
-		//END CITADEL EDIT
 	/*
 	else if(GLOB.deadmins[ckey])
 		verbs += /client/proc/readmin
@@ -413,8 +410,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	SSserver_maint.UpdateHubStatus()
 	if(holder)
 		holder.owner = null
-		admins -= src
-		GLOB.admins -= src //delete them on the managed one too
+		GLOB.admins -= src
 	if(using_perspective)
 		set_perspective(null)
 
