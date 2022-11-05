@@ -97,8 +97,8 @@
 			RS = SScharacters.resolve_species_path(/datum/species/human)
 			// todo: default species?
 		if(RS)
-			character[CHARACTER_DATA_REAL_SPECIES] = RS.id
-			character[CHARACTER_DATA_CHAR_SPECIES] = RS.id
+			character[CHARACTER_DATA_REAL_SPECIES] = RS.uid
+			character[CHARACTER_DATA_CHAR_SPECIES] = RS.uid
 		else
 			errors?.Add(SPAN_DANGER("Species migration failed - no species datum. Report this to a coder."))
 		// MIGRATE LANGUAGES
@@ -110,12 +110,13 @@
 			alternate_languages = list()
 		if(!islist(language_prefixes))
 			language_prefixes = list()
-		options[GLOBAL_DATA_LANGUAGE_PREFIX] = alternate_languages.Copy()
+		options[GLOBAL_DATA_LANGUAGE_PREFIX] = language_prefixes.Copy()
 		var/list/translated_languages = list()
-		options[CHARACTER_DATA_LANGUAGES] = translated_languages
+		character[CHARACTER_DATA_LANGUAGES] = translated_languages
 		var/list/innate = innate_language_ids()
 		for(var/name in alternate_languages)
 			var/datum/language/L = SScharacters.resolve_language_name(name)
 			if(L.id in innate)
 				continue
 			translated_languages += L.id
+		translated_languages.len = clamp(translated_languages.len, 0, extraneous_languages_max())

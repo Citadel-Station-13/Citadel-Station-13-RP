@@ -32,7 +32,7 @@
 			continue
 		S = new path
 		if(species_lookup[S.uid])
-			stack_trace("species id collision on [S.id] on [path]")
+			stack_trace("species id collision on [S.uid] on [path]")
 			continue
 		if(species_names[S.name])
 			stack_trace("species name collision on [S.name] on [path]")
@@ -45,7 +45,7 @@
 			whitelisted_species += S.name
 		if(!(S.species_spawn_flags & SPECIES_SPAWN_RESTRICTED))
 			playable_species += S.name
-		if((!(S.species_spawn_flags & (SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_RESTRICTED)) && !(S.id in blacklisted_icon_ids)) || (S.id in whitelisted_icon_ids))
+		if((!(S.species_spawn_flags & (SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_RESTRICTED)) && !(S.get_species_id() in blacklisted_icon_ids)) || (S.get_species_id() in whitelisted_icon_ids))
 			custom_species_bases += S.name
 
 	tim_sort(species_lookup, /proc/cmp_auto_compare, TRUE)
