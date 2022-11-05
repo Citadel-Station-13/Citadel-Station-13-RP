@@ -2,17 +2,17 @@
 	name = "Background"
 	sort_order = 5
 
-/datum/category_item/player_setup_item/general/background/load_character(var/savefile/S)
-	S["med_record"]				>> pref.med_record
-	S["sec_record"]				>> pref.sec_record
-	S["gen_record"]				>> pref.gen_record
-	S["economic_status"]		>> pref.economic_status
+/datum/category_item/player_setup_item/general/background/load_character(savefile/S)
+	FROM_FILE(S["med_record"],      pref.med_record)
+	FROM_FILE(S["sec_record"],      pref.sec_record)
+	FROM_FILE(S["gen_record"],      pref.gen_record)
+	FROM_FILE(S["economic_status"], pref.economic_status)
 
-/datum/category_item/player_setup_item/general/background/save_character(var/savefile/S)
-	S["med_record"]				<< pref.med_record
-	S["sec_record"]				<< pref.sec_record
-	S["gen_record"]				<< pref.gen_record
-	S["economic_status"]		<< pref.economic_status
+/datum/category_item/player_setup_item/general/background/save_character(savefile/S)
+	TO_FILE(S["med_record"],      pref.med_record)
+	TO_FILE(S["sec_record"],      pref.sec_record)
+	TO_FILE(S["gen_record"],      pref.gen_record)
+	TO_FILE(S["economic_status"], pref.economic_status)
 
 /datum/category_item/player_setup_item/general/background/sanitize_character()
 	pref.economic_status = sanitize_inlist(pref.economic_status, ECONOMIC_CLASS, initial(pref.economic_status))
