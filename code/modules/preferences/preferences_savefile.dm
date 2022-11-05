@@ -24,9 +24,9 @@
 	// load savefile version
 	S["version"] >> savefile_version
 	// load global data so we can access it during migrations
-	read_global_data()
-	// perform migrations
 	var/list/io_errors = list()
+	read_global_data(S, io_errors)
+	// perform migrations
 	if(savefile_version < SAVEFILE_VERSION_MIN)
 		io_errors += SPAN_DANGER("Your savefile version was [savefile_version], below minimum [SAVEFILE_VERSION_MIN]; your savefile will now be deleted and recreated.")
 		// todo: wipe
@@ -60,7 +60,7 @@
 	// save savefile version
 	S["version"] << savefile_version
 	// write global data
-	write_global_data()
+	write_global_data(S)
 	// write legacy data
 	player_setup.save_preferences(S)
 	return TRUE
