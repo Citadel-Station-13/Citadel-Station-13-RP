@@ -239,16 +239,16 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 		if(queue_position == 1)
 			if(living_player_count() < CONFIG_GET(number/hard_popcap))
 				return TRUE
-			to_chat(usr, "<span class='notice'>You are next in line to join the game. You will be notified when a slot opens up.</span>")
+			to_chat(usr, SPAN_NOTICE("You are next in line to join the game. You will be notified when a slot opens up."))
 			return FALSE
 		else
-			to_chat(usr, "<span class='danger'>[CONFIG_GET(string/hard_popcap_message)]</span>")
+			to_chat(usr, SPAN_DANGER("[CONFIG_GET(string/hard_popcap_message)]"))
 			if(queue_position)
-				to_chat(usr, "<span class='notice'>There are [queue_position-1] players in front of you in the queue to join the game.</span>")
+				to_chat(usr, SPAN_NOTICE("There are [queue_position-1] players in front of you in the queue to join the game."))
 				return FALSE
 			else
 				SSticker.queued_players += usr
-				to_chat(usr, "<span class='notice'>You have been added to the queue to join the game. Your position in queue is [SSticker.queued_players.len].</span>")
+				to_chat(usr, SPAN_NOTICE("You have been added to the queue to join the game. Your position in queue is [SSticker.queued_players.len]."))
 				return FALSE
 */
 
