@@ -25,7 +25,6 @@
 		new /datum/data/mining_equipment("Umbrella",					    /obj/item/melee/umbrella/random,								20),
 		new /datum/data/mining_equipment("100 Thaler",					    /obj/item/spacecash/c100,									    4),
 		new /datum/data/mining_equipment("1000 Thaler",					    /obj/item/spacecash/c1000,									    40),
-		new /datum/data/mining_equipment("10000 Thaler",					    /obj/item/spacecash/c10000,									    400),
 		new /datum/data/mining_equipment("Hardsuit - Control Module",       /obj/item/rig/industrial,									    50),
 		new /datum/data/mining_equipment("Hardsuit - Plasma Cutter",	    /obj/item/rig_module/device/plasmacutter,						10),
 		new /datum/data/mining_equipment("Hardsuit - Maneuvering Jets",	    /obj/item/rig_module/maneuvering_jets,							12),
