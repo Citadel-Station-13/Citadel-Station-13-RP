@@ -114,12 +114,9 @@
 	// while we technically don't *need* this, we want this incase someone starts reading from these fields mid game
 	// for non customization purposes later.
 	S.galactic_language = galactic_language
-	if(intrinsic_languages)
-		S.intrinsic_languages = intrinsic_languages.Copy()
-	if(name_language)
-		S.name_language = name_language
-	if(whitelist_languages)
-		S.whitelist_languages = whitelist_languages.Copy()
+	S.intrinsic_languages = get_intrinsic_language_ids()	// forces it to be a list
+	S.name_language = name_language
+	S.whitelist_languages = get_whitelisted_language_ids()	// forces it to a list
 	S.max_additional_languages = max_additional_languages
 	S.default_language = default_language
 
