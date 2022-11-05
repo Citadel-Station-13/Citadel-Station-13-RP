@@ -211,7 +211,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 					if(!J)
 						to_chat(usr, SPAN_WARNING("Failed to find job [id]."))
 						return
-					to_chat(usr, "<span class='notice'>Attempting to latespawn as [id] ([J.title]).</span>")
+					to_chat(usr, SPAN_NOTICE("Attempting to latespawn as [id] ([J.title])."))
 					N.AttemptLateSpawn(J)
 				if("ghostrole")
 					var/datum/ghostrole/R = get_ghostrole_datum(id)
