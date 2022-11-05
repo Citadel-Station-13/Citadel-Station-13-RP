@@ -1,3 +1,4 @@
+//! This file is WIP and currently unused.
 /**
  * yaml prototype loader, now with blackjack and hookers
  *
@@ -37,7 +38,6 @@ SUBSYSTEM_DEF(prototypes)
 	var/yaml = file2text(file(fname))
 	var/list/L = yaml_decode(yaml)
 	subsystem_log("loading [fname]")
-	to_chat(world, json_encode(L))
 
 /datum/controller/subsystem/prototypes/proc/Type(t)
 	switch(t)
