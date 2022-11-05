@@ -25,8 +25,12 @@
 					"Misato" = "tall2security",
 					"L3P1-D0T" = "Glitterfly-Security",
 					"Miss M" = "miss-security",
-					"Coffcurity" = "coffin-Combat"
-
+					"Coffcurity" = "coffin-Combat",
+					"Handy" = "handy-sec",
+					"Acheron" = "mechoid-Security",
+					"Shellguard Noble" = "Noble-SEC",
+					"ZOOM-BA" = "zoomba-security",
+					"W02M" = "worm-security"
 					)
 
 /obj/item/robot_module/robot/security/general/Initialize(mapload)
@@ -61,7 +65,9 @@
 					"Haruka" = "marinaCB",
 					"Cabeiri" = "eyebot-combat",
 					"Combat Android" = "droid-combat",
-					"Insekt" = "insekt-Combat"
+					"Insekt" = "insekt-Combat",
+					"Acheron" = "mechoid-Combat",
+					"ZOOM-BA" = "zoomba-combat"
 					)
 
 /obj/item/robot_module/robot/security/combat/Initialize(mapload)
@@ -74,20 +80,21 @@
 	src.modules += new /obj/item/borg/combat/mobility(src)
 	src.emag = new /obj/item/gun/energy/lasercannon/mounted(src)
 
-/obj/item/robot_module/robot/knine
-	name = "k9 robot module"
+/obj/item/robot_module/robot/quad_sec
+	name = "SecuriQuad module"
 	sprites = list(
 					"K9 hound" = "k9",
 					"K9 Alternative" = "k92",
 					"Secborg model V-2" = "secborg",
 					"Borgi" = "borgi-sec",
-					"Otieborg" = "oties"
+					"Otieborg" = "oties",
+					"F3-LINE" = "FELI-Security"
 					)
 	channels = list("Security" = 1)
 	networks = list(NETWORK_SECURITY)
 	can_be_pushed = 0
 
-/obj/item/robot_module/robot/knine/Initialize(mapload)
+/obj/item/robot_module/robot/quad_sec/Initialize(mapload)
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
 
@@ -116,9 +123,7 @@
 	B.water = water
 	src.modules += B
 
-	R.icon 		 = 'icons/mob/widerobot_vr.dmi'
-	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'
-	R.ui_style_vr = TRUE
+	R.icon = 'icons/mob/robots_wide.dmi'
 	R.set_base_pixel_x(-16)
 	R.dogborg = TRUE
 	R.wideborg = TRUE
@@ -132,7 +137,7 @@
 		sprites["Alina"] = "alina-sec"
 		. = ..()
 
-/obj/item/robot_module/robot/knine/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
+/obj/item/robot_module/robot/quad_sec/respawn_consumable(var/mob/living/silicon/robot/R, var/amount)
 	var/obj/item/flash/F = locate() in src.modules
 	if(F.broken)
 		F.broken = 0
@@ -157,7 +162,8 @@
 	can_be_pushed = 0
 	sprites = list(
 					"Standard" = "ert",
-					"Borgi" = "borgi"
+					"Borgi" = "borgi",
+					"F3-LINE" = "FELI-Combat"
 					)
 
 /obj/item/robot_module/robot/ert/Initialize(mapload)
@@ -185,9 +191,7 @@
 	B.water = water
 	src.modules += B
 
-	R.icon 		 = 'icons/mob/64x64robot_vr.dmi'
-	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'
-	R.ui_style_vr = TRUE
+	R.icon = 'icons/mob/64x64robot_vr.dmi'
 	R.set_base_pixel_x(-16)
 	R.dogborg = TRUE
 	R.wideborg = TRUE

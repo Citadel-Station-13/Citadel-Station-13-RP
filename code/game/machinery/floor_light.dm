@@ -143,7 +143,7 @@ var/list/floor_light_cache = list()
 /obj/machinery/floor_light/proc/broken()
 	return (machine_stat & (BROKEN|NOPOWER))
 
-/obj/machinery/floor_light/ex_act(severity)
+/obj/machinery/floor_light/legacy_ex_act(severity)
 	switch(severity)
 		if(1)
 			qdel(src)

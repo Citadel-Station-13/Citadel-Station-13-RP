@@ -357,7 +357,7 @@ var/bomb_set
 	return
 
 
-/obj/machinery/nuclearbomb/ex_act(severity)
+/obj/machinery/nuclearbomb/legacy_ex_act(severity)
 	return
 
 

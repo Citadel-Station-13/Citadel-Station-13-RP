@@ -358,14 +358,15 @@
 	if(usr!=src.occupant)
 		return
 	if(src.occupant.client)
+		var/client/myclient = src.occupant.client
 		src.zoom = !src.zoom
 		src.log_message("Toggled zoom mode.")
 		src.occupant_message("<font color='[src.zoom?"blue":"red"]'>Zoom mode [zoom?"en":"dis"]abled.</font>")
 		if(zoom)
-			src.occupant.set_viewsize(12)
+			myclient.change_view(12, TRUE)
 			src.occupant << sound('sound/mecha/imag_enh.ogg',volume=50)
 		else
-			src.occupant.set_viewsize() // Reset to default
+			myclient.change_view("[myclient.last_view_x_dim*2]x[myclient.last_view_y_dim*2]", TRUE) // Reset to default
 	return
 
 

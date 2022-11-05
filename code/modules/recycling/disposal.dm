@@ -846,7 +846,7 @@
 
 
 // pipe affected by explosion
-/obj/structure/disposalpipe/ex_act(severity)
+/obj/structure/disposalpipe/legacy_ex_act(severity)
 
 	switch(severity)
 		if(1.0)

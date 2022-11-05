@@ -242,7 +242,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/auto_fit_viewport = TRUE
 
 	/// Should we be in the widescreen mode set by the config?
-	var/widescreenpref = FALSE	// Doesn't exist... Yet.
+	var/widescreenpref = TRUE	// Exists now...
 
 /datum/preferences/New(client/C)
 	player_setup = new(src)

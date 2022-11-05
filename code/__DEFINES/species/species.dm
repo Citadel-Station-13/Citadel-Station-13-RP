@@ -7,6 +7,8 @@
 #define SPECIES_ID_PROMETHEAN "promethean"
 #define SPECIES_ID_TESHARI "teshari"
 #define SPECIES_ID_VOX "vox"
+#define SPECIES_ID_SHADEKIN "shadekin"
+#define SPECIES_ID_SHADEKIN_BLACK_EYED "shadekin_black_eyed"
 
 //
 
