@@ -14,6 +14,8 @@
 
 	reload_fullscreen()
 	client.update_clickcatcher()
+	INVOKE_ASYNC(client, /client/proc/init_viewport_blocking)
+
 /**
  * destroys screen rendering. call on mob del
  */

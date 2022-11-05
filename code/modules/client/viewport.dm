@@ -40,11 +40,20 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 	refit_viewport()
 
 /**
+ * called by verbs that change viewport
+ */
+/client/verb/re_viewport()
+	set name = ".re_viewport"
+	set hidden = TRUE
+	fetch_viewport()
+	refit_viewport()
+
+/**
  * called to manually update viewport vars since the skin macro is only triggered on resize
  */
 /client/proc/fetch_viewport()
 	// get vars only; they have to manually refit
-	var/list/got = list2params(winget(src, SKIN_ID_VIEWPORT, "size;zoom;letterbox"))
+	var/list/got = list2params(winget(src, SKIN_MAP_ID_VIEWPORT, "size;zoom;letterbox"))
 	assumed_viewport_zoom = got["zoom"] || 0
 	assumed_viewport_box = (got["letterbox"] == "true")
 	var/list/split = splittext(got["size"], "x")
@@ -66,7 +75,7 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
  * - letterbox - are we letterboxing?
  */
 /client/verb/on_viewport(width, height, zoom, letterbox)
-	set name = "on_viewport"
+	set name = ".on_viewport"
 	set hidden = TRUE
 	// get vars
 	assumed_viewport_spx = width
@@ -80,33 +89,10 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
  * called to refit the viewport as necessary
  */
 /client/proc/refit_viewport()
+	// if they're stretching to fit
+
 	var/desired_x
 	var/desired_y
-
-/datum/preferences
-	var/icon_size = 64
-
-/client
-	var/last_view_x_dim = 7
-	var/last_view_y_dim = 7
-
-
-/client/verb/SetCozyViewInwards(val as num|text)
-	set hidden = 1
-
-	if(prefs && val != prefs.icon_size)
-		prefs.icon_size += val
-		SScharacter_setup.queue_preferences_save(prefs)
-	winset(src, "mapwindow.map", "icon-size=[prefs.icon_size]")
-	OnResize()
-
-/client/verb/SetWindowIconSize(val as num|text)
-	set hidden = 1
-	winset(src, "mapwindow.map", "icon-size=[val]")
-	if(prefs && val != prefs.icon_size)
-		prefs.icon_size = val
-		SScharacter_setup.queue_preferences_save(prefs)
-	OnResize()
 
 /client/verb/OnResize()
 	set hidden = 1
@@ -146,6 +132,53 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 	if(mob)
 		mob.reload_fullscreen() */
 	update_clickcatcher()
+
+/client/verb/fit_viewport()
+	set name = "Fit Viewport"
+	set category = "OOC"
+	set desc = "Fit the width of the map window to match the viewport"
+
+	// Fetch the client's aspect ratio
+	var/view_size = getviewsize(view)
+	var/aspect_ratio = view_size[1] / view_size[2]
+
+	// Calculate desired pixel width using window size and aspect ratio
+	var/sizes = params2list(winget(src, "mainwindow.split;mapwindow", "size"))
+	var/map_size = splittext(sizes["mapwindow.size"], "x")
+	var/height = text2num(map_size[2])
+	var/desired_width = round(height * aspect_ratio)
+	if (text2num(map_size[1]) == desired_width)
+		return	// You're already good fam.
+
+	var/split_size = splittext(sizes["mainwindow.split.size"], "x")
+	var/split_width = text2num(split_size[1])
+
+	// Calculate and apply our best estimate
+	// +4 pixels are for the eidth of the splitter's handle
+	var/pct = 100 * (desired_width + 4) / split_width
+	winset(src, "mainwindow.split", "splitter=[pct]")
+
+	// Apply an ever-lowering offset until we finish or fail
+	var/delta
+	for(var/safety in 1 to 10)
+		var/after_size = winget(src, "mapwindow", "size")
+		map_size = splittext(after_size, "x")
+		var/got_width = text2num(map_size[1])
+
+		if (got_width == desired_width)
+			return	// Success!
+
+		// Calculate a probable delta value based on the diff
+		else if (isnull(delta))
+			delta = 100 * (desired_width - got_width) / split_width
+
+		// If we overshot, halve the delta and reverse direction
+		else if ((delta > 0 && got_width > desired_width) || (delta < 0 && got_width < desired_width))
+			delta = -delta/2
+
+		pct += delta
+		winset(src, "mainwindow.split", "splitter=[pct]")
+
 
 /client/verb/force_onresize_view_update()
 	set name = ".viewport_refit"
