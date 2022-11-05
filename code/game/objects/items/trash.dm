@@ -21,6 +21,10 @@
 	name = "protein bar"
 	icon_state = "proteinbar"
 
+/obj/item/trash/candy/flamincheezyhonkers
+	name = "flamin' hot cheezie honker"
+	icon_state = "flamin_cheesie_honkers"
+
 /obj/item/trash/cheesie
 	name = "\improper Cheesie Honkers"
 	icon_state = "cheesie_honkers"
@@ -197,7 +201,7 @@
 /obj/item/trash/bugsnacks
 	name = "Bugsnacks"
 	icon_state = "bugsnacks"
-	
+
 /obj/item/trash/brainsnaxtrash
 	name = "\improper BrainSnax can"
 	icon_state = "brainsnaxtrash"
