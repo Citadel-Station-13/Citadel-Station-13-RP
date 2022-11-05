@@ -58,7 +58,7 @@
 			isactive[name] = active ? "Active" : "Inactive"
 		else
 			isactive[name] = t.fields["p_stat"]
-			//to_world("[name]: [rank]")
+			//TO_WORLD("[name]: [rank]")
 			//cael - to prevent multiple appearances of a player/job combination, add a continue after each line
 		var/department = 0
 		if(SSjob.is_job_in_department(real_rank, DEPARTMENT_COMMAND))

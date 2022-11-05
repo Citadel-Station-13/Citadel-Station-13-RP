@@ -844,9 +844,9 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 	var/http[] = world.Export(request)
 
 	/* Debug
-	to_world_log("Requested this: [request]")
+	TO_WORLD_log("Requested this: [request]")
 	for(var/entry in http)
-		to_world_log("[entry] : [http[entry]]")
+		TO_WORLD_log("[entry] : [http[entry]]")
 	*/
 
 	if(!http || !islist(http)) //If we couldn't check, the service might be down, fail-safe.
