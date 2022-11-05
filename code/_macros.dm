@@ -9,8 +9,6 @@
 #define RANDOM_BLOOD_TYPE pick(4;"O-", 36;"O+", 3;"A-", 28;"A+", 1;"B-", 20;"B+", 1;"AB-", 5;"AB+")
 
 #define TO_WORLD(message) to_chat(world, message)
-#define TO_FILE(file_entry, source_var) file_entry << source_var
-#define FROM_FILE(file_entry, target_var) file_entry >> target_var
 
 #define show_browser(target, browser_content, browser_name) target << browse(browser_content, browser_name)
 #define close_browser(target, browser_name)                 target << browse(null, browser_name)
