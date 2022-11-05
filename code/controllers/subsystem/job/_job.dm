@@ -56,6 +56,8 @@ SUBSYSTEM_DEF(job)
 				asinine_sort[depname] = faction[depname]
 				faction -= depname
 		faction.Insert(1, asinine_sort)
+		for(var/depname in asinine_sort)
+			faction[depname] = asinine_sort[depname]
 
 /datum/controller/subsystem/job/proc/setup_occupations()
 	occupations = list()
