@@ -80,13 +80,13 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 		if(!istype(R) || !IsGhostroleAvailable(R, N))
 			continue
 		var/slots = R.SpawnsLeft(user.client)
-		var/list/data = list(
+		var/list/ghostrole_data = list(
 			"id" = id,
 			"name" = R.name,
 			"desc" = R.desc,
 			"slots" = slots == INFINITY? -1 : slots
 		)
-		ghostroles += list(data)	// wrap list
+		ghostroles += list(ghostrole_data)	// wrap list
 
 
 /datum/join_menu/ui_data(mob/user)
