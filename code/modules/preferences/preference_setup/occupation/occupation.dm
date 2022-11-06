@@ -108,7 +108,7 @@
 	else
 		rank = "[J.title]"
 	if(length(J.alt_titles))
-		. += "<a href='?src=[REF(src)];prefs=[REF(prefs)];act=title;title=[J.id]'>[rank]</a> "
+		. += "<a href='?src=[REF(src)];prefs=[REF(prefs)];act=title;title=[J.id]'>[prefs.get_job_alt_title_name(J)]</a> "
 	else
 		. += "[rank] "
 	// right side
