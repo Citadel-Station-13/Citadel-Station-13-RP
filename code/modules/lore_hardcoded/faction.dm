@@ -284,6 +284,10 @@
 		JOB_ID_OFFDUTY_ENGINEER,
 		JOB_ID_OFFDUTY_SCIENCE
 		)
+	origin_whitelist = list(
+		naramadihouses,
+		nameless
+	)
 
 /datum/lore/character_background/faction/onkhera_necropolis
 	name = "Onkhera Synthetics & Necropolis"
