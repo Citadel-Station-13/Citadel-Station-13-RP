@@ -138,6 +138,7 @@
 		)
 	)
 	available = TRUE
+	// todo: lookup DATEDIFF so player age is set for the first connect after migrating a ckey.
 
 /**
  * async
