@@ -1,4 +1,5 @@
 /datum/category_item/player_setup_item/player_global/language_prefix
+	name = "Language Prefix"
 	is_global = TRUE
 	save_key = GLOBAL_DATA_LANGUAGE_PREFIX
 
