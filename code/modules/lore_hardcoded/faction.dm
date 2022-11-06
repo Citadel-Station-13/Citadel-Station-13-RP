@@ -285,8 +285,8 @@
 		JOB_ID_OFFDUTY_SCIENCE
 		)
 	origin_whitelist = list(
-		naramadihouses,
-		nameless
+		"naramadihouses",
+		"nameless"
 	)
 
 /datum/lore/character_background/faction/onkhera_necropolis
