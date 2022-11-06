@@ -110,11 +110,12 @@
 	if(current_version < CHARACTER_VERSION_MIN)
 		io_errors += SPAN_DANGER("Your character version was [savefile_version], below minimum [CHARACTER_VERSION_MIN]; your slot will now be reset.")
 		// todo: wipe slot
-		savefile_version = CHARACTER_VERSION_MAX
+		current_version = CHARACTER_VERSION_MAX
 	else if(current_version < CHARACTER_VERSION_MAX)
 		perform_character_migrations(S, current_version, io_errors, character)
-		savefile_version = CHARACTER_VERSION_MAX
+		current_version = CHARACTER_VERSION_MAX
 	queue_errors(io_errors, "error while migrating slot [slot]:")
+	character[CHARACTER_DATA_VERSION] = current_version
 	// load legacy data
 	player_setup.load_character(S)
 	// rebuild previews
