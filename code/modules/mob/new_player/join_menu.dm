@@ -87,7 +87,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 			"slots" = slots == INFINITY? -1 : slots
 		)
 		ghostroles += list(ghostrole_data)	// wrap list
-
+	return data
 
 /datum/join_menu/ui_data(mob/user)
 	var/list/data = ..()
@@ -127,6 +127,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 	data["queue"] = QueueStatus(user)
 
 	return data
+
 /**
  * checks if job is available
  * if not, it shouldn't even show
