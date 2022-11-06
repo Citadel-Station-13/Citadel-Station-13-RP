@@ -254,6 +254,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(load_character())
 					sanitize_everything()
 					player_setup.sanitize_setup()
+					client.update_movement_keys()
 					initialized = TRUE
 					return
 

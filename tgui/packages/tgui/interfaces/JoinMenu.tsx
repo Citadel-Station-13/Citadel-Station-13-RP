@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-max-depth */
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
-import { Box, Button, Section, Flex, Icon, NoticeBox, Collapsible } from '../components';
+import { Box, Button, Section, Flex, Icon, NoticeBox, Collapsible, Stack } from '../components';
 import { COLORS } from '../constants';
 import { Window } from '../layouts';
 
@@ -50,6 +50,19 @@ export const JoinMenu = (props, context) => {
   return (
     <Window width={400} height={800}>
       <Window.Content>
+        <Stack vertical fill>
+          <Stack.Item>
+            <Section>
+              Welcome!
+            </Section>
+          </Stack.Item>
+          <Stack.Item>
+            Station Roles
+          </Stack.Item>
+          <Stack.Item>
+            Ghost Roles
+          </Stack.Item>
+        </Stack>
         <Flex fill direction="column">
           {/* Top bar */}
           <Flex.Item mb={1}>

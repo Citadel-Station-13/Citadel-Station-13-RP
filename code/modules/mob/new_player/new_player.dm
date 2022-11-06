@@ -596,9 +596,9 @@
 		mind.loaded_from_ckey = client.ckey
 		mind.loaded_from_slot = client.prefs.default_slot
 		//mind.traits = client.prefs.traits.Copy()	// Conflict
-		mind.transfer_to(new_character)				// Won't transfer key since the mind is not active
 		//! Preferences shim: transfer stuff over
 		client.prefs.imprint_mind(mind)
+		mind.transfer_to(new_character)				// Won't transfer key since the mind is not active
 
 	new_character.name = real_name
 	new_character.dna.ready_dna(new_character)
