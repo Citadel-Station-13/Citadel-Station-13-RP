@@ -39,6 +39,8 @@
 	queue_errors(io_errors, "error while migrating global data:")
 	// load legacy data
 	player_setup.load_preferences(S)
+	if(initialized)
+		auto_flush_errors()
 	return TRUE
 
 /datum/preferences/proc/save_preferences()
@@ -63,6 +65,8 @@
 	write_global_data(S)
 	// write legacy data
 	player_setup.save_preferences(S)
+	if(initialized)
+		auto_flush_errors()
 	return TRUE
 
 /datum/preferences/proc/load_character(slot)
@@ -108,7 +112,7 @@
 	if(!isnum(current_version))
 		current_version = CHARACTER_VERSION_LEGACY
 	if(current_version < CHARACTER_VERSION_MIN)
-		io_errors += SPAN_DANGER("Your character version was [savefile_version], below minimum [CHARACTER_VERSION_MIN]; your slot will now be reset.")
+		io_errors += SPAN_DANGER("Your character version was [current_version], below minimum [CHARACTER_VERSION_MIN]; your slot will now be reset.")
 		// todo: wipe slot
 		current_version = CHARACTER_VERSION_MAX
 	else if(current_version < CHARACTER_VERSION_MAX)
@@ -120,6 +124,8 @@
 	player_setup.load_character(S)
 	// rebuild previews
 	clear_character_previews() // Recalculate them on next show
+	if(initialized)
+		auto_flush_errors()
 	return TRUE
 
 /datum/preferences/proc/save_character()
@@ -142,6 +148,8 @@
 	write_character_data(S, default_slot)
 	// write legacy data
 	player_setup.save_character(S)
+	if(initialized)
+		auto_flush_errors()
 	return TRUE
 
 /datum/preferences/proc/overwrite_character(slot)
@@ -161,13 +169,18 @@
 			S["default_slot"] << slot
 	else
 		S["default_slot"] << default_slot
-
+	if(initialized)
+		auto_flush_errors()
 	return 1
 
 /datum/preferences/proc/sanitize_preferences()
 	player_setup.sanitize_setup()
 	// todo: error feedback
-	sanitize_everything()
+	var/list/io_errors = list()
+	sanitize_everything(io_errors)
+	queue_errors(io_errors, "error during sanitize_preferences(); unknown call stack.")
+	if(initialized)
+		auto_flush_errors()
 	return 1
 
 #undef SAVEFILE_VERSION_MAX
