@@ -535,7 +535,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(src.holder)
 		admin_rank = src.holder.rank
 
-	var/sql_ip = sql_sanitize_text(src.address)
+	var/sql_ip = sql_sanitize_text(src.address) || "0.0.0.0"
 	var/sql_computerid = sql_sanitize_text(src.computer_id)
 	var/sql_admin_rank = sql_sanitize_text(admin_rank)
 
