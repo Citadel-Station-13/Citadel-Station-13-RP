@@ -1,4 +1,6 @@
-/datum/preferences/proc/refresh(mob/user)
+/datum/preferences/proc/refresh(mob/user, update_previews)
+	if(update_previews)
+		update_preview_icon()
 	ShowChoices(user)
 
 /datum/preferences/proc/show(mob/user)

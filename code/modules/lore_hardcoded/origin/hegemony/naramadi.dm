@@ -18,10 +18,6 @@
 	desc = "While the Houses are the most well known part of the Naramadi Society, and the only ones considered true citizens, \
 	the so-called Nameless form a majority of the Ascendancy. While lacking certain rights within the Naramadi Ascendancy, \
 	such as the right to vote and freedom of movement, they are encouraged to 'ascend' and attempt to join a House through rites appropriate to said House."
-	allow_species = list(
-		SPECIES_ID_UNATHI,
-		SPECIES_ID_ZADDAT
-	)
 	innate_languages = list(
 		LANGUAGE_ID_NARAMADI,
 		LANGUAGE_ID_UNATHI

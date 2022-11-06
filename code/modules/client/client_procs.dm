@@ -421,8 +421,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.ahelp_tickets.ClientLogout(src)
 	persistent = null
 	database = null
-	prefs.client = null
-	prefs = null
+	if(prefs)
+		prefs.client = null
+		prefs = null
 	SSserver_maint.UpdateHubStatus()
 	if(holder)
 		holder.owner = null

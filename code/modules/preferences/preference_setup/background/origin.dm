@@ -84,4 +84,4 @@
 	return get_character_data(CHARACTER_DATA_ORIGIN)
 
 /datum/preferences/proc/lore_origin_datum()
-	return SScharacters.resolve_faction(lore_origin_id())
+	return SScharacters.resolve_origin(lore_origin_id())

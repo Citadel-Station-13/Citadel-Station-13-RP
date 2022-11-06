@@ -71,6 +71,8 @@
 	var/list/transformed = list()
 	for(var/key in character)
 		var/datum/category_item/player_setup_item/I = preference_by_key[key]
+		if(!I)
+			continue
 		if(I.is_global)
 			continue
 		transformed[key] = I.serialize_data(src, I.filter_data(src, character[key], errors), errors)
@@ -86,6 +88,8 @@
 	var/list/transformed = list()
 	for(var/key in options)
 		var/datum/category_item/player_setup_item/I = preference_by_key[key]
+		if(!I)
+			continue
 		if(!I.is_global)
 			continue
 		transformed[key] = I.serialize_data(src, I.filter_data(src, character[key], errors), errors)

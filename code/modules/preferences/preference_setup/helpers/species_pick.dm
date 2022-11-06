@@ -37,7 +37,7 @@
 	if(!check_character_species(CS, user))
 		return TRUE	// close window; it shouldn't be letting us select whitelisted speices
 	set_character_species(CS, user)
-	refresh(user)
+	refresh(user, TRUE)
 	return TRUE	// yay done
 
 /datum/preferences/proc/set_character_species(datum/character_species/CS, mob/user)

@@ -67,4 +67,4 @@
 	return get_character_data(CHARACTER_DATA_RELIGION)
 
 /datum/preferences/proc/lore_religion_datum()
-	return SScharacters.resolve_faction(lore_religion_id())
+	return SScharacters.resolve_religion(lore_religion_id())
