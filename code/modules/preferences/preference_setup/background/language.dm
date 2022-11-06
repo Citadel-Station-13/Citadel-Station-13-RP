@@ -92,8 +92,8 @@
 			lore_faction_datum()
 		)
 		for(var/datum/lore/character_background/B in backgrounds)	// eh let's type filter
-			if(islist(B.innate_language_ids))
-				. |= B.innate_languages
+			if(!B.innate_languages)
+				continue
 			. |= B.innate_languages
 
 /**
