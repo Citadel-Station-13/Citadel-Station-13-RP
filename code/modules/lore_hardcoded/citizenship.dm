@@ -37,7 +37,7 @@
 	While the Ascendancy might be one of the three founding fathers of the Hegemony, they have always put a high emphasis on self-governance - \
 	keeping the same rules for their current allies as they do for everyone else."
 
-/datum/lore/character_background/citizanship/vikaracombine
+/datum/lore/character_background/citizenship/vikaracombine
 	name = "Vikara Combine"
 	id = "vikaracom"
 	desc = "Formed initially as an alliance between the Skrell and Teshari of the Vikara System, the Vikara Combine is \
