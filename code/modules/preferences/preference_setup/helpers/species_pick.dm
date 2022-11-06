@@ -37,6 +37,7 @@
 	if(!check_character_species(CS, user))
 		return TRUE	// close window; it shouldn't be letting us select whitelisted speices
 	set_character_species(CS, user)
+	refresh(user)
 	return TRUE	// yay done
 
 /datum/preferences/proc/set_character_species(datum/character_species/CS, mob/user)
@@ -90,7 +91,7 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	src.default = default_id
 	src.prefs = prefs
 	user_ref = REF(user)
-	GLOB.species_picker_active += user_ref
+	GLOB.species_picker_active[user_ref] = src
 	open()
 
 /datum/tgui_species_picker/Destroy()
