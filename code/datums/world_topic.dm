@@ -124,7 +124,7 @@
 
 /datum/world_topic/server_hop/Run(list/input)
 	var/expected_key = input[keyword]
-	for(var/mob/dead/observer/O in GLOB.GLOB.player_list)
+	for(var/mob/observer/dead/O in GLOB.GLOB.player_list)
 		if(O.key == expected_key)
 			if(O.client)
 				new /atom/movable/screen/splash(O.client, TRUE)

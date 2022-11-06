@@ -286,7 +286,7 @@ var/list/intents = list(INTENT_HELP,INTENT_DISARM,INTENT_GRAB,INTENT_HARM)
 	if(subject && subject.client)
 		var/client/C = subject.client
 		keyname = (C.holder && C.holder.fakekey) ? C.holder.fakekey : C.key
-		if(C.mob) //Most of the time this is the dead/observer mob; we can totally use him if there is no better name
+		if(C.mob) //Most of the time this is the observer/dead mob; we can totally use him if there is no better name
 			var/mindname
 			var/realname = C.mob.real_name
 			if(C.mob.mind)

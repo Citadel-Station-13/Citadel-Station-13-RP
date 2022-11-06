@@ -44,7 +44,7 @@
 /datum/controller/subsystem/job/proc/FindOccupationCandidates(datum/job/job, level, flag)
 	JobDebug("Running FOC, Job: [job], Level: [level], Flag: [flag]")
 	var/list/candidates = list()
-	for(var/mob/dead/new_player/player in unassigned)
+	for(var/mob/new_player/player in unassigned)
 		if(jobban_isbanned(player, job.title) || QDELETED(player))
 			JobDebug("FOC isbanned failed, Player: [player]")
 			continue
@@ -68,7 +68,7 @@
 			candidates += player
 	return candidates
 
-/datum/controller/subsystem/job/proc/GiveRandomJob(mob/dead/new_player/player)
+/datum/controller/subsystem/job/proc/GiveRandomJob(mob/new_player/player)
 	JobDebug("GRJ Giving random job, Player: [player]")
 	. = FALSE
 	for(var/datum/job/job in shuffle(GetAllJobs()))
@@ -111,7 +111,7 @@
 
 /datum/controller/subsystem/job/proc/reset_occupations()
 	JobDebug("Occupations reset.")
-	for(var/mob/dead/new_player/player in GLOB.GLOB.player_list)
+	for(var/mob/new_player/player in GLOB.GLOB.player_list)
 		if((player) && (player.mind))
 			player.mind.assigned_role = null
 			player.mind.special_role = null
@@ -132,7 +132,7 @@
 			var/list/candidates = FindOccupationCandidates(job, level)
 			if(!candidates?.len)
 				continue
-			var/mob/dead/new_player/candidate = pick(candidates)
+			var/mob/new_player/candidate = pick(candidates)
 			if(Assign(candidate, job))
 				return 1
 	return 0
@@ -148,7 +148,7 @@
 		var/list/candidates = FindOccupationCandidates(job, level)
 		if(!candidates?.len)
 			continue
-		var/mob/dead/new_player/candidate = pick(candidates)
+		var/mob/new_player/candidate = pick(candidates)
 		Assign(candidate, job)
 
 /datum/controller/subsystem/job/proc/FillAIPosition()
@@ -161,7 +161,7 @@
 			var/list/candidates = list()
 			candidates = FindOccupationCandidates(job, level)
 			if(candidates.len)
-				var/mob/dead/new_player/candidate = pick(candidates)
+				var/mob/new_player/candidate = pick(candidates)
 				if(Assign(candidate, "AI"))
 					ai_selected++
 					break
@@ -189,7 +189,7 @@
 			S.latejoin_active = TRUE
 
 	//Get the players who are ready
-	for(var/mob/dead/new_player/player in GLOB.GLOB.player_list)
+	for(var/mob/new_player/player in GLOB.GLOB.player_list)
 		if(player.ready == PLAYER_READY_TO_PLAY && player.check_preferences() && player.mind && !player.mind.assigned_role)
 			unassigned += player
 
@@ -220,7 +220,7 @@
 	var/datum/job/overflow = GetJobName(SSjob.overflow_role)
 	var/list/overflow_candidates = FindOccupationCandidates(overflow, JP_LOW)
 	JobDebug("AC1, Candidates: [overflow_candidates?.len]")
-	for(var/mob/dead/new_player/player in overflow_candidates)
+	for(var/mob/new_player/player in overflow_candidates)
 		JobDebug("AC1 pass, Player: [player]")
 		Assign(player, SSjob.overflow_role)
 		overflow_candidates -= player
@@ -251,7 +251,7 @@
 		CheckHeadPositions(level)
 
 		// Loop through all unassigned players
-		for(var/mob/dead/new_player/player in unassigned)
+		for(var/mob/new_player/player in unassigned)
 			if(PopcapReached())
 				RejectPlayer(player)
 
@@ -297,12 +297,12 @@
 	JobDebug("DO, Handling unassigned.")
 	// Hand out random jobs to the people who didn't get any in the last check
 	// Also makes sure that they got their preference correct
-	for(var/mob/dead/new_player/player in unassigned)
+	for(var/mob/new_player/player in unassigned)
 		HandleUnassigned(player)
 
 	JobDebug("DO, Handling unrejectable unassigned")
 	//Mop up people who can't leave.
-	for(var/mob/dead/new_player/player in unassigned) //Players that wanted to back out but couldn't because they're antags (can you feel the edge case?)
+	for(var/mob/new_player/player in unassigned) //Players that wanted to back out but couldn't because they're antags (can you feel the edge case?)
 		if(!GiveRandomJob(player))
 			if(!Assign(player, SSjob.overflow_role)) //If everything is already filled, make them an assistant
 				return FALSE //Living on the edge, the forced antagonist couldn't be assigned to overflow role (bans, client age) - just reroll
@@ -328,7 +328,7 @@
 	return FALSE
 
 //We couldn't find a job from prefs for this guy.
-/datum/controller/subsystem/job/proc/HandleUnassigned(mob/dead/new_player/player)
+/datum/controller/subsystem/job/proc/HandleUnassigned(mob/new_player/player)
 	if(PopcapReached())
 		RejectPlayer(player)
 	else if(player.client.prefs.joblessrole == BEOVERFLOW)
@@ -376,7 +376,7 @@
 		else //We ran out of spare locker spawns!
 			break
 
-/datum/controller/subsystem/job/proc/RejectPlayer(mob/dead/new_player/player)
+/datum/controller/subsystem/job/proc/RejectPlayer(mob/new_player/player)
 	if(player.mind && player.mind.special_role)
 		return
 	if(PopcapReached())

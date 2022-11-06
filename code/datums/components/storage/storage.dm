@@ -676,7 +676,7 @@
 /datum/component/storage/proc/signal_can_insert(datum/source, obj/item/I, mob/M, silent = FALSE)
 	return can_be_inserted(I, silent, M)
 
-/datum/component/storage/proc/show_to_ghost(datum/source, mob/dead/observer/M)
+/datum/component/storage/proc/show_to_ghost(datum/source, mob/observer/dead/M)
 	return user_show_to_mob(M, TRUE)
 
 /datum/component/storage/proc/signal_show_attempt(datum/source, mob/showto, force = FALSE)

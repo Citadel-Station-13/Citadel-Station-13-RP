@@ -152,8 +152,8 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
  */
 /datum/join_menu/proc/EffectiveDesc(datum/job/J, mob/new_player/N)
 	var/title = N.client.prefs.get_job_alt_title_name(J)
-	var/datum/alt_title/T = J.alt_titles[title]
-	return initial(T.title_blurb) || J.desc
+	var/datum/alt_title/T = J.alt_titles?[title]
+	return isnull(T)? J.desc : initial(T.title_blurb)
 
 /datum/join_menu/proc/QueueStatus(mob/new_player/N)
 	return null
