@@ -56,7 +56,8 @@
 			"name" = S.name,
 			"desc" = S.desc,
 			"appearance_flags" = S.species_appearance_flags,
-			"flags" = S.species_flags
+			"flags" = S.species_flags,
+			"category" = S.category,	// note to self optimize this
 		))
 
 	tim_sort(character_species_lookup, /proc/cmp_auto_compare, TRUE)

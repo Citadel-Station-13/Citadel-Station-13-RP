@@ -51,7 +51,6 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 	ASSERT(M)
 	ui_interact(M)
 
-#warn ui
 /datum/tgui_language_picker/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -63,7 +62,7 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 	return UI_INTERACTIVE
 
 /datum/tgui_language_picker/ui_static_data(mob/user)
-	. = ..()
+	var/list/data = ..()
 	var/list/built = list()
 	var/list/categories = list("General")
 	for(var/datum/language/L as anything in SScharacters.all_languages())
@@ -76,8 +75,8 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 			"category" = L.category
 		)
 		LAZYOR(categories, L.category)
-	.["languages"] = built
-	.["categories"] = categories
+	data["languages"] = built
+	data["categories"] = categories
 
 /datum/tgui_language_picker/ui_close(mob/user)
 	. = ..()

@@ -102,7 +102,6 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	ASSERT(M)
 	ui_interact(M)
 
-#warn make ui
 /datum/tgui_species_picker/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -114,11 +113,11 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	return UI_INTERACTIVE
 
 /datum/tgui_species_picker/ui_static_data(mob/user)
-	. = ..()
-	.["whitelisted"] = whitelisted
-	.["species"] = SScharacters.character_species_cache
-	.["default"] = default
-	.["admin"] = !!admin_datums[user.ckey]
+	var/list/data = ..()
+	data["whitelisted"] = whitelisted
+	data["species"] = SScharacters.character_species_cache
+	data["default"] = default
+	data["admin"] = !!admin_datums[user.ckey]
 
 /*
 
