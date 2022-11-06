@@ -110,6 +110,8 @@
 	//! warning: missing keys are automatically dropped.
 	for(var/key in preference_by_key)
 		var/datum/category_item/player_setup_item/I = preference_by_key[key]
+		if(!I)
+			continue
 		if(I.is_global)
 			continue
 		character[key] = I.filter_data(src, I.deserialize_data(src, transformed[key], errors), errors)
@@ -129,6 +131,8 @@
 	//! warning: missing keys are automatically dropped.
 	for(var/key in preference_by_key)
 		var/datum/category_item/player_setup_item/I = preference_by_key[key]
+		if(!I)
+			continue
 		if(!I.is_global)
 			continue
 		character[key] = I.filter_data(src, I.deserialize_data(src, transformed[key], errors), errors)
