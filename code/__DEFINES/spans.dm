@@ -59,6 +59,7 @@
 #define SPAN_GREENTEXT(str) ("<span class='greentext'>[str]</span>")
 #define SPAN_GREY(str) ("<span class='grey'>[str]</span>")
 #define SPAN_HEAR(str) ("<span class='hear'>[str]</span>")
+#define SPAN_HELPFUL(X) "<span class='helpful'>[X]</span>"
 #define SPAN_HIDDEN(str) ("<span class='hidden'>[str]</span>")
 #define SPAN_HIEROPHANT_WARNING(str) ("<span class='hierophant_warning'>[str]</span>")
 #define SPAN_HIEROPHANT(str) ("<span class='hierophant'>[str]</span>")
