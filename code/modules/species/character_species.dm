@@ -13,6 +13,7 @@
 	template.genders = genders.Copy()
 	template.min_age = min_age
 	template.max_age = max_age
+	template.our_bodytype = default_bodytype
 	// copy mechanics
 	template.species_flags = species_flags
 	// copy appearance

@@ -81,7 +81,7 @@
 	for(var/path in pref.neu_traits)
 		if(!(path in neutral_traits))
 			pref.neu_traits -= path
-		if(!(pref.real_species_id() != SPECIES_ID_CUSTOM) && !(path in everyone_traits))
+		if((pref.real_species_id() != SPECIES_ID_CUSTOM) && !(path in everyone_traits))
 			pref.neu_traits -= path
 	//Negative traits
 	for(var/path in pref.neg_traits)
@@ -118,7 +118,7 @@
 	//Any additional non-trait settings can be applied here
 	S.blood_color = pref.blood_color
 
-	if(pref.real_species_id() != SPECIES_ID_CUSTOM)
+	if(pref.real_species_id() == SPECIES_ID_CUSTOM)
 		//Statistics for this would be nice
 		var/english_traits = english_list(S.traits, and_text = ";", comma_text = ";")
 		log_game("TRAITS [pref.client_ckey]/([character]) with: [english_traits]") //Terrible 'fake' key_name()... but they aren't in the same entity yet
@@ -135,7 +135,7 @@
 
 	var/traits_left = pref.max_traits
 	. += "<b>Traits Left:</b> [traits_left]<br>"
-	if(pref.real_species_id() != SPECIES_ID_CUSTOM)
+	if(pref.real_species_id() == SPECIES_ID_CUSTOM)
 		var/points_left = pref.starting_trait_points
 		for(var/T in pref.pos_traits + pref.neg_traits)
 			points_left -= traits_costs[T]
@@ -272,7 +272,7 @@
 				picklist = positive_traits.Copy() - pref.pos_traits
 				mylist = pref.pos_traits
 			if(NEUTRAL_MODE)
-				if(pref.real_species_id() != SPECIES_ID_CUSTOM)
+				if(pref.real_species_id() == SPECIES_ID_CUSTOM)
 					picklist = neutral_traits.Copy() - pref.neu_traits
 					mylist = pref.neu_traits
 				else

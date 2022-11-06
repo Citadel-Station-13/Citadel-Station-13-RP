@@ -44,9 +44,8 @@
 	// first set their vars
 	set_preference(/datum/category_item/player_setup_item/background/real_species, CS.real_species_uid())
 	set_preference(/datum/category_item/player_setup_item/background/char_species, CS.uid)
-	// then set stuff so if they get reverted to custom species or whatever tehy don't lose their snowflake
-	custom_species = CS.uid
-	//! WARNING: SHITCODE AHEAD / LEGACY SHIMs
+	custom_species = null
+	//! WARNING: SHITCODE AHEAD / LEGACY SHIMS
 	// so because the guy who made body limbs was too lazy to make sanitization, we have to fully reset it
 	// as well as some other stuff
 	// are you fucking kidding me lol

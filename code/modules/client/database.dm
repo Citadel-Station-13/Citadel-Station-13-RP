@@ -60,6 +60,8 @@
 	loading = FALSE
 
 /datum/client_dbdata/proc/_Load()
+	if(IsAdminAdvancedProcCall())
+		return
 	var/datum/db_query/lookup
 	lookup = SSdbcore.ExecuteQuery(
 		"SELECT id, playerid, firstseen FROM [format_table_name("player_lookup")] WHERE ckey = :ckey",
@@ -103,6 +105,8 @@
 		RegisterNewPlayer(lookup_firstseen, lookup_id)
 
 /datum/client_dbdata/proc/RegisterNewPlayer(migrate_firstseen, lookup_id)
+	if(IsAdminAdvancedProcCall())
+		return
 	// new person!
 	player_age = 0
 	player_flags = NONE
