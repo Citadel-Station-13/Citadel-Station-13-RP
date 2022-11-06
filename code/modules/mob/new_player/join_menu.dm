@@ -18,7 +18,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 	return GLOB.explicit_new_player_state
 
 /datum/join_menu/ui_static_data(mob/user)
-	. = ..()
+	var/list/data = ..()
 	// every entry will have:
 	// - faction
 	// - department
@@ -31,7 +31,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 
 	// generate job list
 	var/list/jobs = list()
-	.["jobs"] = jobs
+	data["jobs"] = jobs
 
 	// collect
 	var/list/datum/job/eligible = list()
@@ -62,18 +62,18 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 			department = jobs[J.faction][department_name]
 		// finally, add job data
 		var/slots = J.slots_remaining(TRUE)
-		var/list/data = list(
+		var/list/job_data = list(
 			"id" = J.id,
 			"name" = EffectiveTitle(J, N),
 			"desc" = EffectiveDesc(J, N),
 			"slots" = slots == INFINITY? -1 : slots,
 			"real_name" = J.title
 		)
-		department += list(data)	// wrap list
+		department += list(job_data)	// wrap list
 
 	// generate ghostrole list
 	var/list/ghostroles = list()
-	.["ghostroles"] = ghostroles
+	data["ghostroles"] = ghostroles
 	for(var/id in GLOB.ghostroles)
 		var/datum/ghostrole/R = GLOB.ghostroles[id]
 		// can't afford runtime here
@@ -125,7 +125,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 	// if -1, ui should present option to queue
 	// if null, ui shouldn't show queue at all or say "there is no queue" etc etc
 	data["queue"] = QueueStatus(user)
-	
+
 	return data
 /**
  * checks if job is available

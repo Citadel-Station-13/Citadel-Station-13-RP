@@ -85,6 +85,7 @@
  * todo: check ckey proc too?
  */
 /datum/job/proc/check_client_availability(client/C, check_char, latejoin)
+	. = NONE
 	if(whitelist && !config.check_job_whitelist(ckey(title), C.ckey))
 		. |= ROLE_UNAVAILABLE_WHITELIST
 	if(!slots_remaining())
@@ -117,6 +118,7 @@
  * todo: check ckey proc too?
  */
 /datum/job/proc/check_client_availability_one(client/C, check_char, latejoin)
+	. = NONE
 	if(whitelist_only && !config.check_job_whitelist(ckey(title), C.ckey))
 		return ROLE_UNAVAILABLE_WHITELIST
 	else if(latejoin && !slots_remaining(TRUE))

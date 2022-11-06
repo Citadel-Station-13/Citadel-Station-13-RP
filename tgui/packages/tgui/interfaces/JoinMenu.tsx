@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-max-depth */
-import { map } from 'common/collections';
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
 import { Box, Button, Section, Flex, Icon, NoticeBox, Collapsible } from '../components';
@@ -25,7 +24,7 @@ interface JoinableRoles {
   slots: number;
 }
 
-interface DepartmentData extends JoinableRoles {
+interface JoinableJob extends JoinableRoles {
   real_name: string;
 }
 
@@ -34,7 +33,7 @@ interface JoinMenuData {
     /** Factions */
     [key: string]: {
       /** Department */
-      [key: string]: DepartmentData[]
+      [key: string]: JoinableJob[]
     }
   };
   ghostroles: JoinableRoles[];
@@ -49,7 +48,7 @@ export const JoinMenu = (props, context) => {
   const { act, data } = useBackend<JoinMenuData>(context);
 
   return (
-    <Window width={700} height={600}>
+    <Window width={400} height={800}>
       <Window.Content>
         <Flex fill direction="column">
           {/* Top bar */}
@@ -84,9 +83,11 @@ export const JoinMenu = (props, context) => {
           </Flex.Item>
           {/* Join things */}
           <Flex.Item mb={1}>
-            {map((v, k) => (
-              <RoleList faction={k} departmentData={v} />
-            ))(data.jobs)}
+            {
+              Object.entries(data.jobs).map(([k, v]) => (
+                <RoleList faction={k} joinableJobs={v} key={k} />
+              ))
+            }
           </Flex.Item>
           {/* Latejoin */}
           <Flex.Item mb={1}>
@@ -154,15 +155,15 @@ const sortWeight = {
 
 interface IRoleListProps {
   faction: string;
-  departmentData: {
-    [key: string]: DepartmentData[]
+  joinableJobs: {
+    [key: string]: JoinableJob[]
   }
 }
 
 const RoleList = (props: IRoleListProps, context) => {
   const { act } = useBackend(context);
 
-  const orderedData = Object.keys(props.departmentData).sort((a, b) => {
+  const orderedData = Object.keys(props.joinableJobs).sort((a, b) => {
     const depA = a.toLowerCase();
     const depB = b.toLowerCase();
     if (!(depB in sortWeight) || !(depA in sortWeight)) {
@@ -180,7 +181,7 @@ const RoleList = (props: IRoleListProps, context) => {
         grow
       >
         {orderedData.map(name => {
-          const data: DepartmentData[] = props.departmentData[name];
+          const data: JoinableJob[] = props.joinableJobs[name];
 
           return (
             <Flex.Item ml={2} mr={2} mt={2} key={name} basis="22%" grow>
