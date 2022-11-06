@@ -194,7 +194,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	for(var/name in pref.body_markings)
 		var/datum/sprite_accessory/marking/mark_datum = body_marking_styles_list[name]
-		var/mark_color = "[pref.body_markings[M]]"
+		var/mark_color = "[pref.body_markings[name]]"
 
 		for(var/BP in mark_datum.body_parts)
 			var/obj/item/organ/external/O = character.organs_by_name[BP]

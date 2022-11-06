@@ -21,18 +21,36 @@
 
 /datum/lore/character_background/New()
 	// resolve typepaths
+	if(allow_species && !islist(allow_species))
+		CRASH("innate languages not a list; fix your shit.")
 	for(var/thing in allow_species)
 		if(ispath(thing))
 			allow_species += SScharacters.resolve_character_species(thing).uid
 			allow_species -= thing
+		else if(istext(thing))
+			ASSERT(!!SScharacters.resolve_character_species(thing))
+		else
+			CRASH("you didn't put a valid path or text; fix your shit.")
+	if(forbid_species && !islist(forbid_species))
+		CRASH("innate languages not a list; fix your shit.")
 	for(var/thing in forbid_species)
 		if(ispath(thing))
 			forbid_species += SScharacters.resolve_character_species(thing).uid
 			forbid_species -= thing
+		else if(istext(thing))
+			ASSERT(!!SScharacters.resolve_character_species(thing))
+		else
+			CRASH("you didn't put a valid path or text; fix your shit.")
+	if(innate_languages && !islist(innate_languages))
+		CRASH("innate languages not a list; fix your shit.")
 	for(var/thing in innate_languages)
 		if(ispath(thing))
 			innate_languages += SScharacters.resolve_language_path(thing).id
 			innate_languages -= thing
+		else if(istext(thing))
+			ASSERT(!!SScharacters.resolve_language_id(thing))
+		else
+			CRASH("you didn't put a valid path or text; fix your shit.")
 
 /**
  * id passed in is for a /datum/character_species, NOT a /datum/speices!
