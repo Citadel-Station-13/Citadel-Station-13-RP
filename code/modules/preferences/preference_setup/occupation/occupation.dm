@@ -118,7 +118,7 @@
 	if(fail_reason)
 		. += "\[[fail_reason]\]"
 	else if(J.id == JOB_ID_ASSISTANT)
-		. += "<a href=?src=[REF(src)];prefs=[REF(prefs)];act=job;job=[J.id];level=[!assistant_selected]' oncontextmenu='javascript:return setjob(\"[J.id]\", [!assistant_selected]);'>[assistant_selected? "Yes" : "No"]</a>"
+		. += "<a href=?src=[REF(src)];prefs=[REF(prefs)];act=job;job=[J.id];level=[assistant_selected? "[JOB_PRIORITY_NEVER]" : "[JOB_PRIORITY_LOW]"]' oncontextmenu='javascript:return setjob(\"[J.id]\", [assistant_selected? "[JOB_PRIORITY_NEVER]" : "[JOB_PRIORITY_LOW]"]);'>[assistant_selected? "Yes" : "No"]</a>"
 	else if(assistant_selected)
 	else
 		var/lower
@@ -159,7 +159,9 @@
 /datum/category_item/player_setup_item/occupation/jobs/act(datum/preferences/prefs, mob/user, action, list/params)
 	switch(action)
 		if("job")
-			prefs.set_job_priority(params["job"], text2num(params["level"]))
+			var/job_id = params["job"]
+			var/level = text2num(params["level"])
+			prefs.set_job_priority(job_id, level)
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 		if("title")
 			var/datum/job/J = SSjob.job_by_id(params["title"])
@@ -333,10 +335,13 @@
 	var/datum/job/J = SSjob.job_by_id(id)
 	if(!J)
 		return
-	if(priority < JOB_PRIORITY_LOW || priority > JOB_PRIORITY_HIGH)
+	if(priority < JOB_PRIORITY_NEVER || priority > JOB_PRIORITY_HIGH)
 		return
 	var/list/current = get_character_data(CHARACTER_DATA_JOBS)
-	current[id] = priority
+	if(priority == JOB_PRIORITY_NEVER)
+		current -= id	// just nuke it
+	else
+		current[id] = priority
 	set_character_data(CHARACTER_DATA_JOBS, current)
 
 /datum/preferences/proc/set_job_title(id, title)

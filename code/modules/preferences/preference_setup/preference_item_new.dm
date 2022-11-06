@@ -54,7 +54,7 @@
  * put errors into errors for user feedback
  */
 /datum/category_item/player_setup_item/proc/sanitize_data(datum/preferences/prefs, list/errors)
-	write(prefs, filter_data(prefs, read(prefs), errors))
+	write(prefs, read(prefs), errors)
 
 /**
  * called to serialize our value for saving
@@ -77,8 +77,8 @@
 /**
  * write data, sanitizing in the process
  */
-/datum/category_item/player_setup_item/proc/write(datum/preferences/prefs, data)
-	prefs.set_character_data(save_key, filter_data(prefs, data))
+/datum/category_item/player_setup_item/proc/write(datum/preferences/prefs, data, list/errors)
+	prefs.set_character_data(save_key, filter_data(prefs, data, errors))
 
 /**
  * read data; does not auto-sanitize

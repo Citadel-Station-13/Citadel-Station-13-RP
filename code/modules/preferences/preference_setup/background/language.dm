@@ -41,15 +41,14 @@
 /datum/category_item/player_setup_item/background/language/filter_data(datum/preferences/prefs, data, list/errors)
 	var/list/languages = sanitize_islist(data)
 	var/list/innate = prefs.innate_language_ids()
-	var/list/extra = languages - innate
-	languages = innate
+	var/list/extra = languages.Copy()
+	extra -= innate
 	var/extra_max = prefs.extraneous_languages_max()
 	if(extra.len > extra_max)
 		var/list/truncated = extra.Copy(extra_max + 1)
 		extra.len = clamp(extra.len, 0, extra_max)
 		errors?.Add(SPAN_WARNING("truncated [english_list(truncated)] languages - too many!"))
-	languages = languages + extra
-	return languages
+	return extra
 
 /datum/category_item/player_setup_item/background/language/copy_to_mob(datum/preferences/prefs, mob/M, data, flags)
 	if(!ishuman(M))
