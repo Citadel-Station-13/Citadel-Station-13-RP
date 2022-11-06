@@ -24,7 +24,9 @@
 		job_debug("Player: [player] is now Rank: [rank], JCP:[job.current_positions]")
 		player.mind.assigned_role = rank
 		player.mind.role_alt_title = GetPlayerAltTitle(player, rank)
-		divide_unassigned -= player
+		// this can be called in latejoin!!
+		// todo: we shouldn't have to do this
+		divide_unassigned?.Remove(player)
 		job.current_positions++
 		return 1
 	job_debug("AR has failed, Player: [player], Rank: [rank]")
