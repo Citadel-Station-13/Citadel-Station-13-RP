@@ -1,14 +1,33 @@
+import { BooleanLike } from 'common/react';
 import { useBackend } from '../backend';
+import { Window } from '../layouts';
 
 type SpeciesPickerContext = {
-
+  whitelisted: String[],
+  species: [Species[]],
+  default: String,
 };
+
+type Species = {
+  id: String,
+  whitelisted: BooleanLike,
+  name: String,
+  desc: String,
+  appearance_flags: Number,
+  flags: Number,
+};
+
+// We currently do NOT render species appearance flags/numbers!
 
 export const SpeciesPicker = (props, context) => {
   const { act, data } = useBackend<SpeciesPickerContext>(context);
 
   return (
-    "TESTING CODE"
+    <Window width={800} height={400}>
+      <Window.Content>
+        testing
+      </Window.Content>
+    </Window>
   );
 };
 

@@ -1,15 +1,46 @@
 import { useBackend } from '../backend';
+import { Window } from '../layouts';
+import { Stack } from '../components';
 
 type LanguagePickerContext = {
+  categories: String[],
+  languages: Language[],
+};
 
+type Language = {
+  id: String,
+  name: String,
+  desc: String,
+  category: String,
 };
 
 export const LanguagePicker = (props, context) => {
   const { act, data } = useBackend<LanguagePickerContext>(context);
 
   return (
-    "TESTING CODE"
+    <Window width={800} height={400}>
+      <Window.Content>
+        <Stack fill>
+          <Stack.Item>
+            test2
+          </Stack.Item>
+          <Stack.Item grow={3}>
+            test1
+          </Stack.Item>
+        </Stack>
+      </Window.Content>
+    </Window>
   );
+};
+
+const LanguageInfo = (props, context) => {
+  const { act, data } = useBackend<LanguagePickerContext>(context);
+
+};
+
+const LanguageSelect = (props, context) => {
+  const { act, data } = useBackend<LanguagePickerContext>(context);
+
 };
 
 

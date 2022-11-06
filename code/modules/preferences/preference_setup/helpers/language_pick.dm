@@ -78,6 +78,7 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 		)
 		LAZYOR(categories, L.category)
 	.["languages"] = built
+	.["categories"] = categories
 
 /datum/tgui_language_picker/ui_close(mob/user)
 	. = ..()
