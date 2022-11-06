@@ -5,7 +5,7 @@
 
 /datum/category_item/player_setup_item/background/faction/content(datum/preferences/prefs, mob/user, data)
 	. = list()
-	var/list/datum/lore/character_background/faction/available = SScharacters.available_factions(prefs.character_species_id())
+	var/list/datum/lore/character_background/faction/available = SScharacters.available_factions(prefs.character_species_id(), prefs.lore_origin_id(), prefs.lore_citizenship_id())
 	var/datum/lore/character_background/faction/current = SScharacters.resolve_faction(data)
 	. += "<center>"
 	. += "<b>Faction</b><br>"

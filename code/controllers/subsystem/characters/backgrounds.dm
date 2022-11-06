@@ -59,10 +59,14 @@
 		if(L.check_species_id(species_id))
 			. += L
 
-/datum/controller/subsystem/characters/proc/available_factions(species_id)
+/datum/controller/subsystem/characters/proc/available_factions(species_id, origin_id, citizenship_id)
 	. = list()
 	for(var/id in character_factions)
 		var/datum/lore/character_background/faction/L = character_factions[id]
+		if(L.origin_whitelist && !(origin_id in L.origin_whitelist))
+			continue
+		if(L.citizenship_whitelist && !(citizenship_id in L.citizenship_whitelist))
+			continue
 		if(L.check_species_id(species_id))
 			. += L
 
