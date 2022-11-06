@@ -1156,6 +1156,12 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /mob/proc/check_obscured_slots()
 	return
 
+/mob/z_pass_in(atom/movable/AM, dir, turf/old_loc)
+	return TRUE	// we don't block
+
+/mob/z_pass_out(atom/movable/AM, dir, turf/new_loc)
+	return TRUE
+
 //! Pixel Offsets
 /mob/proc/get_buckled_pixel_x_offset()
 	if(!buckled)
