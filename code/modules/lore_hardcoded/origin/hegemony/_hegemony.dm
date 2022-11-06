@@ -1,3 +1,3 @@
-/datum/lore/character_background/origin/oricon
-	abstract_type = /datum/lore/character_background/origin/oricon
+/datum/lore/character_background/origin/hegemony
+	abstract_type = /datum/lore/character_background/origin/hegemony
 	category = "Hegemony"

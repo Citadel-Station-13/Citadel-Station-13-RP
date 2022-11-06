@@ -16,6 +16,9 @@
 		if(initial(L.abstract_type) == path)
 			continue
 		L = new path
+		if(!L.id)
+			stack_trace("no ID on [L.type]")
+			continue
 		if(istype(L, /datum/lore/character_background/citizenship))
 			if(character_citizenships[L.id])
 				stack_trace("dupe [L.id] on [L.type]")

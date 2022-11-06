@@ -134,7 +134,7 @@
  * checked set preference data
  */
 /datum/preferences/proc/set_preference(pref, value)
-	var/datum/category_item/player_setup_item/preference = preference_by_key[pref]
+	var/datum/category_item/player_setup_item/preference = preference_by_type[pref]
 	value = preference.filter_data(value)
 	if(preference.is_global)
 		options[preference.save_key] = value
@@ -145,7 +145,7 @@
  * checked get preference data
  */
 /datum/preferences/proc/get_preference(pref)
-	var/datum/category_item/player_setup_item/preference = preference_by_key[pref]
+	var/datum/category_item/player_setup_item/preference = preference_by_type[pref]
 	if(preference.is_global)
 		return options[preference.save_key]
 	else

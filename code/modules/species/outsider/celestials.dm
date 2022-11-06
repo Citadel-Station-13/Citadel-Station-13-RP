@@ -57,7 +57,7 @@
 	uid = SPECIES_ID_DREMACHIR
 	name = SPECIES_DREMACHIR
 	name_plural = SPECIES_DREMACHIR
-	category = "Daedalic (\"Angels/Demons\")"
+	category = "Celestials""
 
 	blurb = {"
 	Dremachir lore is still a work in progress.  They are not actual supernatural creatures.  They are aliens.

@@ -50,7 +50,7 @@ export const SpeciesPicker = (props, context) => {
     <Window width={800} height={400}>
       <Window.Content>
         <Stack fill>
-          <Stack.Item width="20%">
+          <Stack.Item width="25%">
             <Section fill scrollable title="Categories">
               {
                 categories.map((k) => (
@@ -64,8 +64,7 @@ export const SpeciesPicker = (props, context) => {
               }
             </Section>
           </Stack.Item>
-          <Stack.Item width="20%">
-            {selectedCategory}
+          <Stack.Item width="25%">
             {
               (selectedCategory === null)
                 ? (
@@ -86,7 +85,7 @@ export const SpeciesPicker = (props, context) => {
                 )
             }
           </Stack.Item>
-          <Stack.Item width="60%">
+          <Stack.Item width="50%">
             {
               (selected === undefined)
                 ? (
