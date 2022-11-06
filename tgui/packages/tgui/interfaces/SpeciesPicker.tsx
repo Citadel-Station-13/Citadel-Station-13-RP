@@ -7,6 +7,7 @@ type SpeciesPickerContext = {
   whitelisted: string[],
   species: [String: Species[]],
   default: String,
+  admin: BooleanLike,
 };
 
 type Species = {
@@ -42,7 +43,7 @@ export const SpeciesPicker = (props, context) => {
   });
   categories.sort();
   const isWhitelisted = (id) => (
-    (whitelisted.findIndex(id) !!! -1) || !species.find(id)?.whitelisted
+    !(species.find((s) => s.id === id)?.whitelisted) || (whitelisted.findIndex((s) => s === id) !== -1) || !!data.admin
   );
 
   return (
@@ -64,6 +65,7 @@ export const SpeciesPicker = (props, context) => {
             </Section>
           </Stack.Item>
           <Stack.Item width="20%">
+            {selectedCategory}
             {
               (selectedCategory === null)
                 ? (
@@ -106,7 +108,7 @@ export const SpeciesPicker = (props, context) => {
                           Select
                         </Button>
                       ) : (
-                        <Box color="transparent"
+                        <Box
                           bottom="10px"
                           left="10px"
                           right="10px"

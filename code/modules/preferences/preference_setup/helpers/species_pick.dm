@@ -118,6 +118,7 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	.["whitelisted"] = whitelisted
 	.["species"] = SScharacters.character_species_cache
 	.["default"] = default
+	.["admin"] = !!admin_datums[user.ckey]
 
 /*
 
