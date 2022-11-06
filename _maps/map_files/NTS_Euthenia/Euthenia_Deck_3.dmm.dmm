@@ -537,11 +537,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "bn" = (
-/obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/hologram/holopad,
 /obj/machinery/status_display{
 	pixel_y = 32
@@ -659,11 +654,6 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "bD" = (
-/obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -786,11 +776,6 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "bT" = (
-/obj/structure/cable/cyan{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -1676,11 +1661,6 @@
 /turf/simulated/wall/r_wall,
 /area/maintenance/security/starboard)
 "dZ" = (
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
@@ -3083,11 +3063,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "hb" = (
-/obj/structure/cable/cyan{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
@@ -3136,11 +3111,6 @@
 /area/space)
 "hh" = (
 /obj/machinery/door/firedoor/glass,
-/obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -3153,20 +3123,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/general)
-"hi" = (
-/obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techmaint,
-/area/shuttle/excursion/general)
 "hj" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -3175,11 +3131,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
 "hk" = (
-/obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -3685,11 +3636,6 @@
 /area/space)
 "ip" = (
 /obj/machinery/ai_slipper,
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
@@ -3733,11 +3679,6 @@
 	name = "Cargo Compartment";
 	req_one_access = list(67)
 	},
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -3753,15 +3694,16 @@
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology)
 "ix" = (
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
+/obj/machinery/door/airlock/maintenance/sec,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "security_lockdown";
+	name = "Security Blast Doors";
+	opacity = 0
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/bluegrid,
-/area/ai)
+/turf/simulated/floor/plating,
+/area/security/prison)
 "iy" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -3982,11 +3924,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/tether/exploration)
 "iZ" = (
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
@@ -4420,16 +4357,6 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "jU" = (
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable/cyan{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
@@ -4455,11 +4382,6 @@
 /turf/simulated/floor/tiled/old_cargo/gray,
 /area/security/brig)
 "jY" = (
-/obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
@@ -4473,11 +4395,6 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/excursion/cockpit)
 "jZ" = (
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techmaint,
@@ -4504,11 +4421,6 @@
 	},
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 1
-	},
-/obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -4568,10 +4480,6 @@
 	req_one_access = list(11,67)
 	},
 /obj/machinery/light,
-/obj/structure/cable/cyan{
-	d2 = 8;
-	icon_state = "0-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -5126,11 +5034,6 @@
 	name = "Bridge Compartment";
 	req_one_access = list(67)
 	},
-/obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -5424,11 +5327,6 @@
 /obj/machinery/door/airlock/hatch{
 	name = "Engine Compartment";
 	req_one_access = list(67)
-	},
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -6156,16 +6054,6 @@
 /turf/space,
 /area/space)
 "nX" = (
-/obj/structure/cable/cyan{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
 	},
@@ -6329,11 +6217,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "or" = (
-/obj/structure/cable/cyan{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
 "os" = (
@@ -6455,11 +6338,6 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "oG" = (
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/button/remote/blast_door{
@@ -6482,10 +6360,6 @@
 	dir = 1;
 	name = "north bump";
 	pixel_y = 24
-	},
-/obj/structure/cable/cyan{
-	d2 = 2;
-	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/industrial/outline/red,
 /obj/machinery/atmospherics/portables_connector/fuel,
@@ -7893,11 +7767,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/brig)
 "rN" = (
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
@@ -9973,10 +9842,6 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
 "ws" = (
-/obj/structure/cable/cyan{
-	d2 = 2;
-	icon_state = "0-2"
-	},
 /obj/machinery/power/apc{
 	dir = 4;
 	name = "east bump";
@@ -11945,11 +11810,6 @@
 /turf/simulated/floor/wood,
 /area/rnd/xenobiology)
 "AM" = (
-/obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -12815,11 +12675,6 @@
 /area/security/brig)
 "CO" = (
 /obj/machinery/ai_slipper,
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
 /obj/effect/floor_decal/techfloor/corner{
 	dir = 4
 	},
@@ -17183,17 +17038,9 @@
 /turf/simulated/floor/plating,
 /area/space)
 "NG" = (
-/obj/structure/cable/cyan{
-	d2 = 8;
-	icon_state = "0-8"
-	},
 /obj/machinery/power/sensor{
 	name = "Powernet Sensor - AI Subgrid";
 	name_tag = "AI Subgrid"
-	},
-/obj/structure/cable/cyan{
-	d2 = 4;
-	icon_state = "0-4"
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
@@ -19880,10 +19727,6 @@
 	input_level = 200000;
 	output_level = 200000
 	},
-/obj/structure/cable/cyan{
-	d2 = 4;
-	icon_state = "0-4"
-	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
 "Uo" = (
@@ -22180,11 +22023,6 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "ZM" = (
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
@@ -32691,7 +32529,7 @@ MN
 MN
 MN
 MN
-Yc
+ix
 hy
 BP
 BP
@@ -39013,7 +38851,7 @@ cv
 dB
 fi
 bb
-hi
+bT
 eV
 gF
 ht
@@ -39401,7 +39239,7 @@ cA
 dB
 fJ
 gO
-hi
+bT
 fj
 gF
 kL
@@ -54079,8 +53917,8 @@ lI
 oc
 ep
 ws
-ix
-ix
+ep
+ep
 CO
 oj
 yd
@@ -54855,8 +54693,8 @@ mB
 or
 dZ
 ZM
-ix
-ix
+ep
+ep
 ip
 ZY
 yd

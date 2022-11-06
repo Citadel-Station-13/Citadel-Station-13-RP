@@ -285,7 +285,6 @@
 	id_tag = "engineering_main";
 	pixel_y = 26
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/space)
 "aoM" = (
@@ -414,6 +413,9 @@
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/industrial/warning,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "asH" = (
@@ -906,6 +908,9 @@
 	icon_state = "1-2"
 	},
 /obj/effect/floor_decal/industrial/warning,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "aNf" = (
@@ -1111,7 +1116,6 @@
 /area/space)
 "aTP" = (
 /obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
@@ -2624,7 +2628,7 @@
 	name = "Powernet Sensor - Master Grid";
 	name_tag = "Master"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "clx" = (
 /obj/machinery/light{
@@ -3234,16 +3238,12 @@
 /turf/simulated/wall,
 /area/space)
 "cPJ" = (
-/obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/int_door,
-/obj/machinery/atmospherics/pipe/simple/visible/cyan{
-	dir = 4
+/obj/structure/lattice,
+/obj/machinery/camera/network/security{
+	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/visible/aux{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/space)
+/turf/simulated/open,
+/area/security/brig)
 "cQp" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
@@ -3428,12 +3428,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "cXL" = (
-/obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/int_door,
-/obj/machinery/atmospherics/pipe/simple/visible/green{
-	dir = 4
+/obj/effect/floor_decal/industrial/warning,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "cXS" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
@@ -4978,7 +4977,6 @@
 /turf/simulated/floor/reinforced/airless,
 /area/space)
 "eop" = (
-/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
@@ -5187,12 +5185,15 @@
 /area/crew_quarters/recreation_area)
 "ezV" = (
 /obj/structure/curtain/open/shower,
-/obj/structure/window/reinforced,
 /obj/machinery/shower{
 	dir = 4;
 	pixel_x = 5
 	},
 /obj/random/soap,
+/obj/structure/window/reinforced/tinted,
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/space)
 "eAU" = (
@@ -9445,7 +9446,6 @@
 /area/crew_quarters/toilet)
 "iOh" = (
 /obj/machinery/shield_diffuser,
-/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
@@ -10042,7 +10042,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "jjA" = (
 /obj/structure/grille,
@@ -11289,7 +11289,6 @@
 /turf/simulated/open,
 /area/rnd/research/researchdivision)
 "knd" = (
-/atom/movable/map_helper/airlock/door/int_door,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -16258,8 +16257,6 @@
 /obj/machinery/airlock_sensor{
 	pixel_y = 24
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/space)
 "oSA" = (
@@ -16436,7 +16433,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "pbq" = (
 /obj/item/clothing/under/swimsuit,
@@ -16517,7 +16514,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "pfV" = (
@@ -16984,10 +16980,6 @@
 /area/space)
 "pBm" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/vehicle/train/engine{
-	dir = 8;
-	key_type = /obj/item/key
-	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "pBA" = (
@@ -17144,7 +17136,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "pIA" = (
 /obj/structure/cable/green{
@@ -18262,7 +18254,6 @@
 /area/rnd/anomaly_lab/containment_two)
 "qQD" = (
 /obj/machinery/shield_diffuser,
-/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button/airlock_exterior{
 	master_tag = "deck1_airlock2";
 	pixel_x = 24
@@ -18647,7 +18638,6 @@
 /area/tether/exploration/pathfinder_office)
 "rhr" = (
 /obj/machinery/door/airlock/glass_external,
-/atom/movable/map_helper/airlock/door/ext_door,
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
@@ -19803,9 +19793,14 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_11)
 "skk" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/vehicle/train/trolley,
-/turf/simulated/floor/tiled/techfloor/grid,
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/northright{
+	name = "Mailing Room";
+	req_access = list(50)
+	},
+/obj/machinery/door/firedoor/border_only,
+/obj/item/deskbell,
+/turf/simulated/floor/tiled,
 /area/space)
 "sln" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -24883,6 +24878,9 @@
 	icon_state = "0-2"
 	},
 /obj/effect/floor_decal/industrial/warning,
+/obj/effect/floor_decal/industrial/warning{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "wDB" = (
@@ -25100,7 +25098,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/turf/simulated/floor/tiled/techfloor/grid,
+/turf/simulated/floor/airless/ceiling,
 /area/space)
 "wOV" = (
 /obj/effect/floor_decal/borderfloor{
@@ -25197,6 +25195,12 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/kitchen)
+"wTg" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/airless/ceiling,
+/area/space)
 "wTj" = (
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/robotics)
@@ -25539,6 +25543,10 @@
 	dir = 4;
 	pixel_x = 5
 	},
+/obj/structure/window/reinforced/tinted,
+/obj/structure/window/reinforced/tinted{
+	dir = 1
+	},
 /turf/simulated/floor/tiled/white,
 /area/space)
 "xgt" = (
@@ -25757,8 +25765,6 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 8
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/airlock_sensor{
 	dir = 8;
 	id_tag = "deck1_airlock2";
@@ -25791,6 +25797,10 @@
 /obj/machinery/shower{
 	dir = 4;
 	pixel_x = 5
+	},
+/obj/structure/window/reinforced/tinted,
+/obj/structure/window/reinforced/tinted{
+	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/space)
@@ -26282,7 +26292,6 @@
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 4
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
 	dir = 4
 	},
@@ -34059,7 +34068,7 @@ udt
 eqp
 mRB
 tJA
-tJA
+cPJ
 tJA
 bgG
 tdh
@@ -35989,9 +35998,9 @@ mRB
 gLI
 gLI
 mRB
-cXL
+aTP
 riA
-cPJ
+rhr
 mRB
 gLI
 gLI
@@ -36772,8 +36781,8 @@ vgN
 iQH
 iQH
 mTS
-dPw
-emj
+wTg
+cXL
 xpI
 qLV
 mRB
@@ -36966,8 +36975,8 @@ cDO
 cDO
 ttP
 mTS
-dPw
-emj
+wTg
+cXL
 sBf
 cms
 mRB
@@ -37161,7 +37170,7 @@ dIk
 mTG
 mRB
 wNI
-emj
+cXL
 sBf
 drX
 mRB
@@ -39852,7 +39861,7 @@ qOg
 rHE
 duK
 sBf
-skk
+pBm
 sBf
 sBf
 wzd
@@ -40046,7 +40055,7 @@ maN
 rHE
 oho
 sBf
-skk
+pBm
 sBf
 sBf
 fZK
@@ -42160,7 +42169,7 @@ flD
 rHE
 mij
 kMb
-efD
+skk
 lkI
 xAr
 xAr
