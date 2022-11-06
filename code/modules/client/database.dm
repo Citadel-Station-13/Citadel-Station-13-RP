@@ -62,7 +62,7 @@
 /datum/client_dbdata/proc/_Load()
 	var/datum/db_query/lookup
 	lookup = SSdbcore.ExecuteQuery(
-		"SELECT id, playerid FROM [format_table_name("player_lookup")] WHERE ckey = :ckey",
+		"SELECT id, playerid, firstseen FROM [format_table_name("player_lookup")] WHERE ckey = :ckey",
 		list(
 			"ckey" = ckey
 		)
@@ -71,47 +71,72 @@
 		CRASH("failed to load lookup data")
 	var/lookup_id = lookup.item[1]
 	var/lookup_pid = lookup.item[2]
-	if(istext(lookup_id))
-		lookup_id = text2num(lookup_id)
-	if(istext(lookup_pid))
-		lookup_pid = text2num(lookup_pid)
-	qdel(lookup)
-	lookup = SSdbcore.ExecuteQuery(
-		"SELECT id, flags, datediff(Now(), firstseen) FROM [format_table_name("player")] WHERE id = :id",
-		list(
-			"id" = lookup_pid
+	var/lookup_firstseen = lookup.item[3]
+	if(lookup_pid)
+		if(istext(lookup_id))
+			lookup_id = text2num(lookup_id)
+		if(istext(lookup_pid))
+			lookup_pid = text2num(lookup_pid)
+		qdel(lookup)
+		lookup = SSdbcore.ExecuteQuery(
+			"SELECT id, flags, datediff(Now(), firstseen) FROM [format_table_name("player")] WHERE id = :id",
+			list(
+				"id" = lookup_pid
+			)
 		)
-	)
-	if(lookup.NextRow())
-		// found!
-		var/lookup_flags = lookup.item[2]
-		var/lookup_age = lookup.item[3]
-		if(istext(lookup_flags))
-			lookup_flags = text2num(lookup_flags)
-		if(istext(lookup_age))
-			lookup_age = text2num(lookup_age)
-		player_id = lookup_pid
-		player_flags = lookup_flags
-		player_age = lookup_age
+		if(lookup.NextRow())
+			// found!
+			var/lookup_flags = lookup.item[2]
+			var/lookup_age = lookup.item[3]
+			if(istext(lookup_flags))
+				lookup_flags = text2num(lookup_flags)
+			if(istext(lookup_age))
+				lookup_age = text2num(lookup_age)
+			player_id = lookup_pid
+			player_flags = lookup_flags
+			player_age = lookup_age
+			qdel(lookup)
+			available = TRUE
+		else
+			CRASH("failed to lookup player row on id [lookup_pid] even though id was present in player_lookup.")
 	else
-		// new person!
-		player_age = 0
-		player_flags = NONE
-		var/datum/db_query/insert = SSdbcore.ExecuteQuery(
+		RegisterNewPlayer(lookup_firstseen, lookup_id)
+
+/datum/client_dbdata/proc/RegisterNewPlayer(migrate_firstseen, lookup_id)
+	// new person!
+	player_age = 0
+	player_flags = NONE
+	var/datum/db_query/insert
+	if(migrate_firstseen)
+		insert = SSdbcore.ExecuteQuery(
+			"INSERT INTO [format_table_name("player")] (flags, firstseen, lastseen) VALUES (:flags, :fs, Now())",
+			list(
+				"flags" = player_flags,
+				"fs" = migrate_firstseen
+			)
+		)
+	else
+		insert = SSdbcore.ExecuteQuery(
 			"INSERT INTO [format_table_name("player")] (flags, firstseen, lastseen) VALUES (:flags, Now(), Now())",
 			list(
 				"flags" = player_flags,
 			)
 		)
-		var/insert_id = insert.last_insert_id
-		if(istext(insert_id))
-			insert_id = text2num(insert_id)
-		if(!isnum(insert_id))
-			stack_trace("invalid insert id??")
-		player_id = insert_id
-		qdel(insert)
-	qdel(lookup)
-	available = TRUE
+	var/insert_id = insert.last_insert_id
+	if(istext(insert_id))
+		insert_id = text2num(insert_id)
+	if(!isnum(insert_id))
+		stack_trace("invalid insert id??")
+	player_id = insert_id
+	qdel(insert)
+	// now update lookup
+	insert = SSdbcore.ExecuteQuery(
+		"UPDATE [format_table_name("player_lookup")] SET playerid = :pid WHERE id = :id",
+		list(
+			"id" = lookup_id,
+			"pid" = insert_id
+		)
+	)
 
 /**
  * async
