@@ -21,13 +21,13 @@ export const LanguagePicker = (props, context) => {
     <Window width={800} height={400}>
       <Window.Content>
         <Stack fill>
-          <Stack.Item width="200px">
+          <Stack.Item width="20%">
             <LanguageCategories />
           </Stack.Item>
-          <Stack.Item width="200px">
+          <Stack.Item width="20%">
             <LanguageSelect />
           </Stack.Item>
-          <Stack.Item grow={3}>
+          <Stack.Item width="60%">
             <LanguageInfo />
           </Stack.Item>
         </Stack>

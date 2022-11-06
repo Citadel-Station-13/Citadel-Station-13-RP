@@ -1,10 +1,11 @@
 import { BooleanLike } from 'common/react';
-import { useBackend } from '../backend';
+import { useBackend, useLocalState } from '../backend';
+import { Section, Stack, Button, Box } from '../components';
 import { Window } from '../layouts';
 
 type SpeciesPickerContext = {
-  whitelisted: String[],
-  species: [Species[]],
+  whitelisted: string[],
+  species: [String: Species[]],
   default: String,
 };
 
@@ -15,61 +16,114 @@ type Species = {
   desc: String,
   appearance_flags: Number,
   flags: Number,
+  category: String,
 };
 
 // We currently do NOT render species appearance flags/numbers!
 
 export const SpeciesPicker = (props, context) => {
   const { act, data } = useBackend<SpeciesPickerContext>(context);
+  const [selectedCategory, setSelectedCategory] = useLocalState<String | null>(context, 'selectedCategory', null);
+  const [selectedSpecies, setSelectedSpecies] = useLocalState<String | null>(context, 'selectedSpecies', data.default);
+  const { whitelisted = [] } = data;
+  let categories: String[] = [];
+  let species: Species[] = [];
+  let selected: Species | undefined;
+  Object.entries(data.species).forEach(([k, v]) => {
+    if (categories.indexOf(k) === -1) {
+      categories.push(k);
+    }
+    v.forEach((s) => {
+      species.push(s);
+      if (s.id === selectedSpecies) {
+        selected = s;
+      }
+    });
+  });
+  categories.sort();
+  const isWhitelisted = (id) => (
+    (whitelisted.findIndex(id) !!! -1) || !species.find(id)?.whitelisted
+  );
 
   return (
     <Window width={800} height={400}>
       <Window.Content>
-        testing
+        <Stack fill>
+          <Stack.Item width="20%">
+            <Section fill scrollable title="Categories">
+              {
+                categories.map((k) => (
+                  <Button key={k} color="transparent"
+                    fluid
+                    selected={selectedCategory===k}
+                    onClick={() => setSelectedCategory(k)}>
+                    {k}
+                  </Button>
+                ))
+              }
+            </Section>
+          </Stack.Item>
+          <Stack.Item width="20%">
+            {
+              (selectedCategory === null)
+                ? (
+                  <Section fill />
+                ) : (
+                  <Section fill scrollable title="Species">
+                    {
+                      species.filter((s) => s.category === selectedCategory).map((s) => (
+                        <Button fluid color="transparent"
+                          key={s.id}
+                          selected={selectedSpecies === s.id}
+                          onClick={() => setSelectedSpecies(s.id)}>
+                          {s.name}
+                        </Button>
+                      ))
+                    }
+                  </Section>
+                )
+            }
+          </Stack.Item>
+          <Stack.Item width="60%">
+            {
+              (selected === undefined)
+                ? (
+                  <Section fill />
+                ) : (
+                  <Section fill title={selected.name}>
+                    {selected.desc}
+                    {isWhitelisted(selected.id)
+                      ? (
+                        <Button color="transparent"
+                          bottom="10px"
+                          left="10px"
+                          right="10px"
+                          width="auto"
+                          position="absolute"
+                          textAlign="center"
+                          onClick={() => act('pick', { id: selected?.id })}
+                        >
+                          Select
+                        </Button>
+                      ) : (
+                        <Box color="transparent"
+                          bottom="10px"
+                          left="10px"
+                          right="10px"
+                          width="auto"
+                          position="absolute"
+                          textAlign="center"
+                        >
+                          Whitelisted
+                        </Box>
+                      )}
+                  </Section>
+                )
+            }
+          </Stack.Item>
+        </Stack>
       </Window.Content>
     </Window>
   );
 };
 
-
-// /datum/tgui_species_picker/ui_static_data(mob/user)
-// . = ..()
-// .["whitelisted"] = whitelisted
-// .["species"] = SScharacters.character_species_cache
-// .["default"] = default
-
-
-// /datum/controller/subsystem/characters/proc/rebuild_character_species()
-// 	// make species lookup
-// 	character_species_lookup = list()
-// 	for(var/path in species_paths)
-// 		var/datum/species/S = species_paths[path]
-// 		if(!(S.species_spawn_flags & SPECIES_SPAWN_ALLOWED))		// don't bother lmao
-// 			continue
-// 		if(character_species_lookup[S.uid])
-// 			stack_trace("species uid collision on [S.uid] from [S.type].")
-// 			continue
-// 		character_species_lookup[S.uid] = S.construct_character_species()
-// 	for(var/path in subtypesof(/datum/character_species))
-// 		var/datum/character_species/S = path
-// 		if(initial(S.abstract_type) == path)
-// 			continue
-// 		S = new path
-// 		if(character_species_lookup[S.uid])
-// 			stack_trace("ignoring custom character species path [path] - collides on uid [S.uid]")
-// 			continue
-// 		character_species_lookup[S.uid] = S
-
-// 	// make species data cache
-// 	character_species_cache = list()
-// 	for(var/id in character_species_lookup)
-// 		var/datum/character_species/S = character_species_lookup[id]
-// 		LAZYINITLIST(character_species_cache[S.category])
-// 		character_species_cache[S.category] += list(list(
-// 			"id" = S.uid,
-// 			"whitelisted" = S.whitelisted,
-// 			"name" = S.name,
-// 			"desc" = S.desc,
-// 			"appearance_flags" = S.species_appearance_flags,
-// 			"flags" = S.species_flags
-// 		))

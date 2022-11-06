@@ -2,7 +2,7 @@
 	name = SPECIES_AURIL
 	name_plural = SPECIES_AURIL
 	uid = SPECIES_ID_AURIL
-	category = "Daedalic (\"Angels/Demons\")"
+	category = "Celestials"
 
 	blurb = {"
 	The Auril are humanoids that resemble the angelic figures of Old Earth Christian myth.  The resemblance, however,
