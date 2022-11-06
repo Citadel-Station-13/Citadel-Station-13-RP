@@ -55,56 +55,57 @@ export const JoinMenu = (props, context) => {
   const { act, data } = useBackend<JoinMenuData>(context);
 
   return (
-    <Window width={400} height={800}>
-      <Window.Content>
-        <Stack vertical fill>
-          <Stack.Item>
-            <Section fill>
-              <h1>Welcome, {data.charname}!</h1>
-              Round Duration: {data.duration}
-              Security Level: {data.security_level}
-              {!!data.evacuated && (
-                <NoticeBox
-                  info={data.evacuated === 2}
-                  warning={data.evacuated === 1 || data.evacuated === 3}>
-                  {(data.evacuated === 2)? "A crew transfer is in progress."
-                    : ((data.evacuated === 3)? "The installation has been evacuated."
-                      : "An evacuation is in progress.")}
-                </NoticeBox>
-              )}
-            </Section>
-          </Stack.Item>
-          <Stack.Item>
-            {
-              Object.entries(data.jobs).map(([k, v]) => {
-                <JoinFaction faction={k} departments={v} />;
-              })
-            }
-          </Stack.Item>
-          <Stack.Item>
-            <Section title="Ghost Roles">
+    <Window width={500} height={800}>
+      <Window.Content overflow="auto">
+        <Section title={"Welcome, " + data.charname}>
+          Round Duration: {data.duration}<br />
+          Security Level: {data.security_level}
+          {!!data.evacuated && (
+            <NoticeBox
+              info={data.evacuated === 2}
+              warning={data.evacuated === 1 || data.evacuated === 3}>
+              {(data.evacuated === 2)? "A crew transfer is in progress."
+                : ((data.evacuated === 3)? "The installation has been evacuated."
+                  : "An evacuation is in progress.")}
+            </NoticeBox>
+          )}
+        </Section>
+        <Section fill>
+          <Stack vertical>
+            <Stack.Item>
               {
-                data.ghostroles.map((role) => {
+                Object.entries(data.jobs).map(([k, v]) => {
                   return (
-                    <Collapsible key={role.id} title={role.name} color="transparent" buttons={
-                      <>{(role.slots === -1)? '' : role.slots} <Icon name="user-friends" />
-                        <Button.Confirm
-                          icon="sign-in-alt"
-                          content="Join"
-                          color="transparent"
-                          onClick={() => act('join', { id: role.id, type: "ghostrole" })} />
-                      </>
-                    }>
-                      <Box>
-                        {role.desc}
-                      </Box>
-                    </Collapsible>
+                    <JoinFaction key={k} faction={k} departments={v} />
                   );
                 })
               }
-            </Section>
-          </Stack.Item>
-        </Stack>
+            </Stack.Item>
+            <Stack.Item>
+              <Section title="Ghost Roles">
+                {
+                  data.ghostroles.map((role) => {
+                    return (
+                      <Collapsible key={role.id} title={role.name} color="transparent" buttons={
+                        <>{(role.slots === -1)? '' : role.slots} <Icon name="user-friends" />
+                          <Button.Confirm
+                            icon="sign-in-alt"
+                            content="Join"
+                            color="transparent"
+                            onClick={() => act('join', { id: role.id, type: "ghostrole" })} />
+                        </>
+                      } style={{ "padding-left": "5%" }}>
+                        <Box>
+                          {role.desc}
+                        </Box>
+                      </Collapsible>
+                    );
+                  })
+                }
+              </Section>
+            </Stack.Item>
+          </Stack>
+        </Section>
       </Window.Content>
     </Window>
   );
@@ -118,10 +119,10 @@ const JoinFaction = (props: JoinFactionProps, context) => {
     let hasA = (A in sortWeight);
     let hasB = (B in sortWeight);
     if (hasA && !hasB) {
-      return 1;
+      return -1;
     }
     else if (!hasA && hasB) {
-      return -1;
+      return 1;
     }
     else if (!hasA && !hasB) {
       return 0;
@@ -132,25 +133,28 @@ const JoinFaction = (props: JoinFactionProps, context) => {
   });
 
   return (
-    <Collapsible title={`${props.faction} Roles`}>
+    <Collapsible color="transparent" title={`${props.faction} Roles`}>
       {
         ordered.map((depName) => {
           const jobs: JoinableJob[] = props.departments[depName];
           return (
-            <Collapsible color="transparent" key={depName} title={depName}>
+            <Collapsible color="transparent" key={depName} title={depName} style={{ "padding-left": "5%" }}>
               {
                 jobs.map((job) => {
                   return (
-                    <Collapsible color="transparent" key={job.id} title={job.name} buttons={
-                      <>{(job.slots === -1)? '' : job.slots} <Icon name="user-friends" />
-                        <Button.Confirm
-                          icon="sign-in-alt"
-                          content="Join"
-                          color="transparent"
-                          onClick={() => act('join', { id: job.id, type: "job" })} />
-                      </>
-                    }>
-                      {job.desc}
+                    <Collapsible color="transparent" style={{ "padding-left": "10%" }}
+                      key={job.id} title={job.name} buttons={
+                        <>{(job.slots === -1)? 'Unlimited' : `${job.slots} left`} <Icon name="user-friends" />
+                          <Button.Confirm
+                            icon="sign-in-alt"
+                            content="Join"
+                            color="transparent"
+                            onClick={() => act('join', { id: job.id, type: "job" })} />
+                        </>
+                      }>
+                      <Section style={{ "padding-left": "5%", "padding-right": "5%" }}>
+                        {job.desc}
+                      </Section>
                     </Collapsible>
                   );
                 })
@@ -168,11 +172,14 @@ const sortWeight = {
   security: 90,
   engineering: 70,
   medical: 80,
+  research: 70,
   science: 70,
   exploration: 60,
-  civillian: 50,
+  civilian: 50,
   misc: 40,
   miscellaneous: 40,
   "off-duty": 30,
   silicons: 20,
+  trade: -20,
+  "central command": -100,
 };
