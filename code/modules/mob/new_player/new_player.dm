@@ -24,6 +24,7 @@
 
 /mob/new_player/verb/new_player_panel()
 	set src = usr
+	set waitfor = FALSE
 	new_player_panel_proc()
 
 /mob/new_player/proc/new_player_panel_proc()
@@ -116,6 +117,7 @@
 	return age_gate_result
 
 /mob/new_player/proc/verifyage()
+	UNTIL(client.prefs.initialized)	// fuck this stupid ass broken piece of shit age gate
 	if(client.holder)		// they're an admin
 		client.set_preference(/datum/client_preference/debug/age_verified, 1)
 		return TRUE

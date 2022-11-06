@@ -229,7 +229,7 @@
 	for(var/mob/new_player/player in divide_unassigned)
 		if(divide_overflows[player] == JOB_ALTERNATIVE_RETURN_LOBBY)
 			player.ready = 0
-			player.new_player_panel_proc()
+			INVOKE_ASYNC(player, /mob/new_player/proc/new_player_panel_proc)
 			divide_unassigned -= player
 	dispose_unassigned()
 	return 1
