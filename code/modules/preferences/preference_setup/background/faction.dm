@@ -31,6 +31,7 @@
 				to_chat(user, SPAN_WARNING("[prefs.character_species_name()] cannot pick this faction."))
 				return PREFERENCES_NOACTION
 			write(prefs, id)
+			GLOB.join_menu?.update_static_data(user)
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 	return ..()
 

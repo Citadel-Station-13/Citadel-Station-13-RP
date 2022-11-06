@@ -71,6 +71,8 @@
 	// then resanitize literally everything
 	player_setup.sanitize_setup()	// todo: legacy, remove
 	sanitize_everything()
+	// then update their join menu if they're a chucklefuck and had it open
+	GLOB.join_menu?.update_static_data(user)
 
 GLOBAL_LIST_EMPTY(species_picker_active)
 /datum/tgui_species_picker
