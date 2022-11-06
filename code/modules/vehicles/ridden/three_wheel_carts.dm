@@ -1,7 +1,7 @@
 /obj/vehicle/ridden/cart
 	name = "The essence of a cart"
 	desc = "Yell a mapper if you see this."
-	icon = 'icons/obj/vehicles.dmi'
+	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "changeme"
 	integrity = 200
 	max_integrity = 200
@@ -45,7 +45,7 @@
 /obj/item/key/security_cart
 	name = "The Security Cart key"
 	desc = "The Security Cart Key used to start it."
-	icon = 'icons/obj/vehicles.dmi'
+	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "securikey"
 	w_class = ITEMSIZE_TINY
 
@@ -59,6 +59,6 @@
 /obj/item/key/medical_cart
 	name = "The Medical Cart key"
 	desc = "The Medical Cart Key used to start it."
-	icon = 'icons/obj/vehicles.dmi'
+	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "medikey"
 	w_class = ITEMSIZE_TINY

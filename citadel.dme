@@ -3991,6 +3991,7 @@
 #include "code\modules\vehicles\ridden\quad.dm"
 #include "code\modules\vehicles\ridden\rock.dm"
 #include "code\modules\vehicles\ridden\three_wheel_carts.dm"
+#include "code\modules\vehicles\ridden\tug.dm"
 #include "code\modules\vehicles\ridden\wheelchair.dm"
 #include "code\modules\vehicles\sealed\rover.dm"
 #include "code\modules\vehicles_legacy\bike.dm"

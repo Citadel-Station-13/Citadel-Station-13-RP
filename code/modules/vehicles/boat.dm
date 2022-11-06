@@ -1,7 +1,7 @@
 /obj/vehicle/ridden/boat
 	name = "boat"
 	desc = "It's a wooden boat. Looks like it'll hold two people. Oars not included."
-	icon = 'icons/obj/vehicles_36x32.dmi'
+	icon = 'icons/obj/vehicles/vehicles_36x32.dmi'
 	icon_state = "boat"
 	integrity = 100
 	max_integrity = 100
@@ -31,7 +31,7 @@
 /obj/vehicle/ridden/boat/dragon
 	name = "dragon boat"
 	desc = "It's a large wooden boat, carved to have a nordic-looking dragon on the front. Looks like it'll hold five people. Oars not included."
-	icon = 'icons/obj/64x32.dmi'
+	icon = 'icons/obj/vehicles/64x32.dmi'
 	icon_state = "dragon_boat"
 	integrity = 250
 	max_integrity = 250
@@ -52,7 +52,7 @@
 // Oars, which must be held inhand while in a boat to move it.
 /obj/item/oar
 	name = "oar"
-	icon = 'icons/obj/vehicles.dmi'
+	icon = 'icons/obj/vehicles/vehicles.dmi'
 	desc = "Used to provide propulsion to a boat."
 	icon_state = "oar"
 	item_state = "oar"

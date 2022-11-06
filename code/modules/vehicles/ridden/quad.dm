@@ -1,7 +1,7 @@
 /obj/vehicle/ridden/quadbike
 	name = "electric all terrain vehicle"
 	desc = "A ridable electric ATV designed for all terrain. Except space."
-	icon = 'icons/obj/vehicles_64x64.dmi'
+	icon = 'icons/obj/vehicles/vehicles_64x64.dmi'
 	icon_state = "quad"
 	integrity = 200
 	max_integrity = 200
@@ -62,28 +62,28 @@
 	..()
 	overlays.Cut()
 	if(custom_frame)
-		var/image/Bodypaint = new(icon = 'icons/obj/custom_items_vehicle.dmi', icon_state = "[frame_state]_a", layer = src.layer)
+		var/image/Bodypaint = new(icon = 'icons/obj/vehicles/custom_items_vehicle.dmi', icon_state = "[frame_state]_a", layer = src.layer)
 		Bodypaint.color = paint_color
 		overlays += Bodypaint
 
-		var/image/Overmob = new(icon = 'icons/obj/custom_items_vehicle.dmi', icon_state = "[frame_state]_overlay", layer = src.layer + 0.2) //over mobs
-		var/image/Overmob_color = new(icon = 'icons/obj/custom_items_vehicle.dmi', icon_state = "[frame_state]_overlay_a", layer = src.layer + 0.2) //over the over mobs, gives the color.
-		Overmob.plane = FLY_LAYER
-		Overmob_color.plane = FLY_LAYER
+		var/image/Overmob = new(icon = 'icons/obj/vehicles/custom_items_vehicle.dmi', icon_state = "[frame_state]_overlay", layer = src.layer + 0.2) //over mobs
+		var/image/Overmob_color = new(icon = 'icons/obj/vehicles/custom_items_vehicle.dmi', icon_state = "[frame_state]_overlay_a", layer = src.layer + 0.2) //over the over mobs, gives the color.
+		Overmob.plane = MOB_LAYER
+		Overmob_color.plane = MOB_LAYER
 		Overmob_color.color = paint_color
 
 		overlays += Overmob
 		overlays += Overmob_color
 		return
 
-	var/image/Bodypaint = new(icon = 'icons/obj/vehicles_64x64.dmi', icon_state = "[frame_state]_a", layer = src.layer)
+	var/image/Bodypaint = new(icon = 'icons/obj/vehicles/vehicles_64x64.dmi', icon_state = "[frame_state]_a", layer = src.layer)
 	Bodypaint.color = paint_color
 	overlays += Bodypaint
 
-	var/image/Overmob = new(icon = 'icons/obj/vehicles_64x64.dmi', icon_state = "[frame_state]_overlay", layer = src.layer + 0.2) //over mobs
-	var/image/Overmob_color = new(icon = 'icons/obj/vehicles_64x64.dmi', icon_state = "[frame_state]_overlay_a", layer = src.layer + 0.2) //over the over mobs, gives the color.
-	Overmob.plane = FLY_LAYER
-	Overmob_color.plane = FLY_LAYER
+	var/image/Overmob = new(icon = 'icons/obj/vehicles/vehicles_64x64.dmi', icon_state = "[frame_state]_overlay", layer = src.layer + 0.2) //over mobs
+	var/image/Overmob_color = new(icon = 'icons/obj/vehicles/vehicles_64x64.dmi', icon_state = "[frame_state]_overlay_a", layer = src.layer + 0.2) //over the over mobs, gives the color.
+	Overmob.plane = MOB_LAYER
+	Overmob_color.plane = MOB_LAYER
 	Overmob_color.color = paint_color
 
 	overlays += Overmob
