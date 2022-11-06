@@ -40,7 +40,7 @@
 
 	var/atom/obstructing = start.z_exit_obstruction(src, direction)
 	if(obstructing)
-		to_chat(src, "<span class='warning'>\The [obstructing] is in the way.</span>")
+		to_chat(src, SPAN_WARNING("\The [obstructing] is in the way."))
 		return 0
 
 	if(direction == UP && has_gravity() && !can_overcome_gravity())
