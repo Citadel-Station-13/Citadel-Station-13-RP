@@ -184,5 +184,3 @@
  */
 /datum/client_dbdata/proc/immediately_available()
 	return !!available
-
-#warn when testmerging to live, playerid needs to be added on player_lookup
