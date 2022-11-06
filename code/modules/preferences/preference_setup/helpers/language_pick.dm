@@ -39,7 +39,7 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 		CRASH("what?")
 	src.prefs = prefs
 	user_ref = REF(user)
-	GLOB.language_picker_active += user_ref
+	GLOB.language_picker_active[user_ref] = src
 	open()
 
 /datum/tgui_language_picker/Destroy()
@@ -66,8 +66,7 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 	. = ..()
 	var/list/built = list()
 	var/list/categories = list("General")
-	for(var/name in SScharacters.language_names)
-		var/datum/language/L = SScharacters.language_names
+	for(var/datum/language/L as anything in SScharacters.all_languages())
 		if(L.language_flags & RESTRICTED)
 			continue
 		built[++built.len] = list(
