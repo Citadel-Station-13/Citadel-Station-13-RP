@@ -126,7 +126,7 @@
 	if(istext(insert_id))
 		insert_id = text2num(insert_id)
 	if(!isnum(insert_id))
-		stack_trace("invalid insert id??")
+		CRASH("invalid insert id??")
 	player_id = insert_id
 	qdel(insert)
 	// now update lookup
@@ -137,6 +137,7 @@
 			"pid" = insert_id
 		)
 	)
+	available = TRUE
 
 /**
  * async
