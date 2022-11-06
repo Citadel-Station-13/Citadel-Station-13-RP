@@ -43,6 +43,7 @@ GLOBAL_LIST_EMPTY(language_picker_active)
 	open()
 
 /datum/tgui_language_picker/Destroy()
+	SStgui.close_uis(src)
 	GLOB.language_picker_active -= user_ref
 	return ..()
 

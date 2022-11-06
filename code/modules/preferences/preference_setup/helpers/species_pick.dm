@@ -95,6 +95,7 @@ GLOBAL_LIST_EMPTY(species_picker_active)
 	open()
 
 /datum/tgui_species_picker/Destroy()
+	SStgui.close_uis(src)
 	GLOB.species_picker_active -= user_ref
 	return ..()
 

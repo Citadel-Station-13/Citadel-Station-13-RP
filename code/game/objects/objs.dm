@@ -47,6 +47,8 @@
 	STOP_PROCESSING(SSobj, src)
 	if(register_as_dangerous_object)
 		unregister_dangerous_to_step()
+	SStgui.close_uis(src)
+	SSnanoui.close_uis(src)
 	return ..()
 
 /obj/Moved(atom/oldloc)
