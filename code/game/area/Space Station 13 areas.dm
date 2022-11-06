@@ -2756,6 +2756,16 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Research Outpost EVA Storage"
 	icon_state = "eva"
 
+/area/rnd/outpost/maintenance
+	name = "\improper Research Outpost Maintenence"
+	area_flags = AREA_RAD_SHIELDED
+	sound_env = TUNNEL_ENCLOSED
+	turf_initializer = new /datum/turf_initializer/maintenance()
+	ambience = AMBIENCE_MAINTENANCE
+
+/area/rnd/outpost/underground
+	name = "\improper Research Outpost Underground"
+
 /area/rnd/outpost/chamber
 	name = "\improper Research Outpost Burn Chamber"
 	icon_state = "engine"
