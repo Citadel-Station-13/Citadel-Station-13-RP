@@ -8,6 +8,12 @@
 /datum/preferences/proc/perform_global_migrations(savefile/S, current_version, list/errors, list/options)
 	if(current_version < 13)
 		addtimer(CALLBACK(src, .proc/force_reset_keybindings), 5 SECONDS)
+	if(current_version < 15)
+		var/list/language_prefixes
+		S["language_prefixes"] >> language_prefixes
+		if(!islist(language_prefixes))
+			language_prefixes = list()
+		options[GLOBAL_DATA_LANGUAGE_PREFIX] = language_prefixes.Copy()
 
 /**
  * @params
@@ -104,14 +110,9 @@
 			errors?.Add(SPAN_DANGER("Species migration failed - no species datum. Report this to a coder."))
 		// MIGRATE LANGUAGES
 		var/list/alternate_languages
-		var/list/language_prefixes
 		S["language"] >> alternate_languages
-		S["language_prefixes"] >> language_prefixes
 		if(!islist(alternate_languages))
 			alternate_languages = list()
-		if(!islist(language_prefixes))
-			language_prefixes = list()
-		options[GLOBAL_DATA_LANGUAGE_PREFIX] = language_prefixes.Copy()
 		var/list/translated_languages = list()
 		character[CHARACTER_DATA_LANGUAGES] = translated_languages
 		var/list/innate = innate_language_ids()
@@ -121,3 +122,5 @@
 				continue
 			translated_languages += L.id
 		translated_languages.len = clamp(translated_languages.len, 0, extraneous_languages_max())
+	if(current_version < 2)
+		character -= GLOBAL_DATA_LANGUAGE_PREFIX

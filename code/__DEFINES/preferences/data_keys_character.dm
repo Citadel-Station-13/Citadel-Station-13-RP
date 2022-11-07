@@ -1,4 +1,5 @@
 //! Holds data list keys for character preferences.
+//! All of these must either have a datum, or its own handling in read/write to work!
 //? ABSTRACT
 #define CHARACTER_DATA_VERSION "_VERSION_"
 

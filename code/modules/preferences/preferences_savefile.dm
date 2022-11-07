@@ -105,6 +105,7 @@
 	// END SLOT HANDLING
 
 	var/list/io_errors = list()
+
 	// load character data
 	read_character_data(S, slot, io_errors)
 	// perform migrations

@@ -78,13 +78,19 @@
  * write data, sanitizing in the process
  */
 /datum/category_item/player_setup_item/proc/write(datum/preferences/prefs, data, list/errors)
-	prefs.set_character_data(save_key, filter_data(prefs, data, errors))
+	if(is_global)
+		prefs.set_global_data(save_key, filter_data(prefs, data, errors))
+	else
+		prefs.set_character_data(save_key, filter_data(prefs, data, errors))
 
 /**
  * read data; does not auto-sanitize
  */
 /datum/category_item/player_setup_item/proc/read(datum/preferences/prefs)
-	return prefs.get_character_data(save_key)
+	if(is_global)
+		return prefs.get_global_data(save_key)
+	else
+		return prefs.get_character_data(save_key)
 
 /**
  * get default value

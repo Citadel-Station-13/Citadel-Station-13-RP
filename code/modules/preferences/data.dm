@@ -69,6 +69,11 @@
 	var/old_cd = S.cd
 	S.cd = "/"
 	var/list/transformed = list()
+	//! warning: missing keys are automatically dropped.
+	//? Handle abstract
+	//! Write character data version
+	transformed[CHARACTER_DATA_VERSION] = character[CHARACTER_DATA_VERSION]
+	//? Handle prefs
 	for(var/key in character)
 		var/datum/category_item/player_setup_item/I = preference_by_key[key]
 		if(!I)
@@ -80,12 +85,40 @@
 	S.cd = old_cd
 
 /**
+ * load character data from disk
+ */
+/datum/preferences/proc/read_character_data(savefile/S, slot, list/errors)
+	character = list()
+	var/old_cd = S.cd
+	S.cd = "/"
+	var/list/transforming
+	S["slot_[slot]"] >> transforming
+	if(!islist(transforming))
+		transforming = list()
+	//! warning: missing keys are automatically dropped.
+	//? Handle abstract
+	//! Read character data version
+	character[CHARACTER_DATA_VERSION] = transforming[CHARACTER_DATA_VERSION]
+	//? Handle prefs
+	for(var/key in preference_by_key)
+		var/datum/category_item/player_setup_item/I = preference_by_key[key]
+		if(!I)
+			continue
+		if(I.is_global)
+			continue
+		character[key] = I.filter_data(src, I.deserialize_data(src, transforming[key], errors), errors)
+	S.cd = old_cd
+
+/**
  * flush global data to disk
  */
 /datum/preferences/proc/write_global_data(savefile/S, list/errors)
 	var/old_cd = S.cd
 	S.cd = "/"
 	var/list/transformed = list()
+	//! warning: missing keys are automatically dropped.
+	//? Handle abstract
+	//? Handle prefs
 	for(var/key in options)
 		var/datum/category_item/player_setup_item/I = preference_by_key[key]
 		if(!I)
@@ -97,45 +130,26 @@
 	S.cd = old_cd
 
 /**
- * load character data from disk
- */
-/datum/preferences/proc/read_character_data(savefile/S, slot, list/errors)
-	character = list()
-	var/old_cd = S.cd
-	S.cd = "/"
-	var/list/transformed
-	S["slot_[slot]"] >> transformed
-	if(!islist(transformed))
-		transformed = list()
-	//! warning: missing keys are automatically dropped.
-	for(var/key in preference_by_key)
-		var/datum/category_item/player_setup_item/I = preference_by_key[key]
-		if(!I)
-			continue
-		if(I.is_global)
-			continue
-		character[key] = I.filter_data(src, I.deserialize_data(src, transformed[key], errors), errors)
-	S.cd = old_cd
-
-/**
  * load global data from disk
  */
 /datum/preferences/proc/read_global_data(savefile/S, list/errors)
 	options = list()
 	var/old_cd = S.cd
 	S.cd = "/"
-	var/list/transformed
-	S["global"] >> transformed
-	if(!islist(transformed))
-		transformed = list()
+	var/list/transforming
+	S["global"] >> transforming
+	if(!islist(transforming))
+		transforming = list()
 	//! warning: missing keys are automatically dropped.
+	//? Handle abstract
+	//? Handle prefs
 	for(var/key in preference_by_key)
 		var/datum/category_item/player_setup_item/I = preference_by_key[key]
 		if(!I)
 			continue
 		if(!I.is_global)
 			continue
-		character[key] = I.filter_data(src, I.deserialize_data(src, transformed[key], errors), errors)
+		character[key] = I.filter_data(src, I.deserialize_data(src, transforming[key], errors), errors)
 	S.cd = old_cd
 
 /**
