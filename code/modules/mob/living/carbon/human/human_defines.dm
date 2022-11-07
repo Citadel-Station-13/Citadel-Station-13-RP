@@ -4,6 +4,7 @@
 	voice_name = "unknown"
 	icon = 'icons/effects/effects.dmi' //We have an ultra-complex update icons that overlays everything, don't load some stupid random male human
 	icon_state = "nothing"
+	SET_APPEARANCE_FLAGS(KEEP_TOGETHER|TILE_BOUND|PIXEL_SCALE)
 
 	/// To check if we've need to roll for damage on movement while an item is imbedded in us.
 	var/embedded_flag
