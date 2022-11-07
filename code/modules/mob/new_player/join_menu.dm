@@ -109,7 +109,8 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 		else
 			level = "delta";
 	data["security_level"] = level
-	data["duration"] = DisplayTimeText(world.time - SSticker.round_start_time)
+	// todo: have js render this, not us
+	data["duration"] = DisplayTimeText(round(world.time - SSticker.round_start_time, 10))
 	// 0 = not evaccing, 1 = evacuating, 2 = crew transfer, 3 = evacuated
 	var/evac = 0
 	if(SSemergencyshuttle.going_to_centcom())
