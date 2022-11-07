@@ -102,6 +102,7 @@
 		else
 			CRASH("failed to lookup player row on id [lookup_pid] even though id was present in player_lookup.")
 	else
+		qdel(lookup)
 		RegisterNewPlayer(lookup_firstseen, lookup_id)
 
 /datum/client_dbdata/proc/RegisterNewPlayer(migrate_firstseen, lookup_id)
@@ -141,6 +142,7 @@
 			"pid" = insert_id
 		)
 	)
+	qdel(insert)
 	available = TRUE
 	// todo: lookup DATEDIFF so player age is set for the first connect after migrating a ckey.
 
