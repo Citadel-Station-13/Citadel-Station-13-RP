@@ -167,7 +167,7 @@
 			var/datum/job/J = SSjob.job_by_id(params["title"])
 			if(!J)
 				return PREFERENCES_NOACTION
-			var/title = input(user, "Choose a title for [J.title].", "Choose Title", prefs.get_job_alt_title_name(J)) as null|anything in J.alt_titles
+			var/title = input(user, "Choose a title for [J.title].", "Choose Title", prefs.get_job_alt_title_name(J)) as null|anything in (J.alt_titles | J.title)
 			if(!title)
 				return PREFERENCES_NOACTION
 			prefs.set_job_title(params["title"], title)
@@ -348,8 +348,12 @@
 	var/datum/job/J = SSjob.job_by_id(id)
 	if(!J)
 		return
-	if(!J.alt_titles[title])
-		return
 	var/list/current = get_character_data(CHARACTER_DATA_ALT_TITLES)
-	current[id] = title
+	if(J.title == title)
+		// reset
+		current -= id
+	else
+		if(!J.alt_titles[title])
+			return
+		current[id] = title
 	set_character_data(CHARACTER_DATA_ALT_TITLES, current)
