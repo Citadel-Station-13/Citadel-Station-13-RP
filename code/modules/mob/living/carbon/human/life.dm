@@ -374,16 +374,16 @@
 /**
  * Handles masks that warm up/cool down breath, filter gases etc.
  */
-/mob/living/carbon/human/get_breath_from_mask(volume_needed=BREATH_VOLUME)
-	var/datum/gas_mixture/breath = get_breath_from_internal(volume_needed)//first take breath from internals
+/mob/living/carbon/human/get_breath_from_mask()
+	var/datum/gas_mixture/breath = get_breath_from_internal()//first take breath from internals
 	if(!breath && !istype(breath))//if that fails
-		breath = get_breath_from_environment(volume_needed)//get breath from environment
+		breath = get_breath_from_environment()//get breath from environment
 	if(wear_mask)
 		breath = wear_mask.alter_breath(breath)
 	return breath
 
 
-/mob/living/carbon/human/get_breath_from_internal(volume_needed=BREATH_VOLUME)
+/mob/living/carbon/human/get_breath_from_internal()
 	if(internal)
 		//Because rigs store their tanks out of reach of contents.Find(), a check has to be made to make
 		//sure the rig is still worn, still online, and that its air supply still exists.
@@ -397,7 +397,7 @@
 			internal = null
 
 		if(internal)
-			return internal.remove_air_volume(volume_needed)
+			return internal.remove_air_volume(BREATH_VOLUME)
 		else if(internals)
 			internals.icon_state = "internal0"
 	return null

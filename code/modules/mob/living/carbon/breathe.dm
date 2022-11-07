@@ -45,7 +45,7 @@
 	handle_breath(breath)
 	handle_post_breath(breath)
 
-/mob/living/carbon/proc/get_breath_from_internal(var/volume_needed=BREATH_VOLUME) //hopefully this will allow overrides to specify a different default volume without breaking any cases where volume is passed in.
+/mob/living/carbon/proc/get_breath_from_internal() //hopefully this will allow overrides to specify a different default volume without breaking any cases where volume is passed in.
 	if(internal)
 		if (!contents.Find(internal))
 			internal = null
@@ -54,16 +54,16 @@
 		if(internal)
 			if (internals)
 				internals.icon_state = "internal1"
-			return internal.remove_air_volume(volume_needed)
+			return internal.remove_air_volume(BREATH_VOLUME)
 		else
 			if (internals)
 				internals.icon_state = "internal0"
 	return null
 
-/mob/living/carbon/proc/get_breath_from_mask(volume_needed=BREATH_VOLUME)
+/mob/living/carbon/proc/get_breath_from_mask()
 	return null
 
-/mob/living/carbon/proc/get_breath_from_environment(var/volume_needed=BREATH_VOLUME)
+/mob/living/carbon/proc/get_breath_from_environment()
 	var/datum/gas_mixture/breath = null
 
 	var/datum/gas_mixture/environment
@@ -71,7 +71,7 @@
 		environment = loc.return_air_for_internal_lifeform(src)
 
 	if(environment)
-		breath = environment.remove_volume(volume_needed)
+		breath = environment.remove_volume(BREATH_VOLUME)
 		handle_chemical_smoke(environment) //handle chemical smoke while we're at it
 
 	if(breath)
