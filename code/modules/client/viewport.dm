@@ -33,6 +33,13 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 	GLOB.max_client_view_y = viewsize[2]
 
 /**
+ * populates important vars that things may read early before we sleep
+ */
+/client/proc/pre_init_viewport()
+	current_viewport_width = GLOB.max_client_view_x
+	current_viewport_height = GLOB.max_client_view_y
+
+/**
  * called on client init to do this without blocking client/New
  */
 /client/proc/init_viewport_blocking()

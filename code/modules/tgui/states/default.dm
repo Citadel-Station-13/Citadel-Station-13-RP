@@ -31,7 +31,7 @@ GLOBAL_DATUM_INIT(default_state, /datum/ui_state/default, new)
 		return
 
 	// Robots can interact with anything they can see.
-	if(get_dist(src, src_object) <= min(user.client.current_viewport_width, user.client.current_viewport_height))
+	if(get_dist(src, src_object) <= min(client.current_viewport_width, client.current_viewport_height))
 		return UI_INTERACTIVE
 	return UI_DISABLED // Otherwise they can keep the UI open.
 
