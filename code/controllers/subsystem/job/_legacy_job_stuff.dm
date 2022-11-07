@@ -73,7 +73,7 @@
  * ignoring ALL non-head preferences for every level until it locates a head or runs out of levels to check.
  */
 /datum/controller/subsystem/job/proc/FillHeadPosition()
-	for(var/level in JOB_PRIORITY_LOW to JOB_PRIORITY_HIGH)
+	for(var/level in JOB_PRIORITY_HIGH to JOB_PRIORITY_LOW step -1)
 		for(var/command_position in SSjob.get_job_titles_in_department(DEPARTMENT_COMMAND))
 			var/datum/job/job = get_job(command_position)
 			if(!job)
@@ -187,7 +187,7 @@
 	// Loop through all levels from high to low
 	var/list/shuffledoccupations = shuffle(occupations)
 	// var/list/disabled_jobs = SSticker.mode.disabled_jobs  // So we can use .Find down below without a colon.
-	for(var/level = JOB_PRIORITY_LOW to JOB_PRIORITY_HIGH)
+	for(var/level in JOB_PRIORITY_HIGH to JOB_PRIORITY_LOW step -1)
 		//Check the head jobs first each level
 		CheckHeadPositions(level)
 
