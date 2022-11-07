@@ -239,17 +239,24 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 
 #warn deal with above
 
-/client/verb/force_map_zoom(n as number)
+/client/verb/force_map_zoom(n as num)
 	set name = ".viewport_zoom"
 	set hidden = TRUE
 	set src = usr
 	set category = "Debug"
+	if(!isnum(n) || n < 0)
+		to_chat(usr, SPAN_WARNING("invalid number"))
+		return
 	if(viewport_rwlock)
 		to_chat(usr, SPAN_WARNING("Viewport is rwlocked; try again later."))
 		return
-	#warn impl
+	viewport_rwlock = TRUE
+	winset(src, SKIN_MAP_ID_VIEWPORT, "zoom=[n]")
+	assumed_viewport_zoom = n
+	viewport_rwlock = FALSE
+	refit_viewport()
 
-/client/verb/force_map_box(n as number)
+/client/verb/force_map_box(n as num)
 	set name = ".viewport_box"
 	set hidden = TRUE
 	set src = usr
@@ -257,7 +264,12 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 	if(viewport_rwlock)
 		to_chat(usr, SPAN_WARNING("Viewport is rwlocked; try again later."))
 		return
-	#warn impl
+	viewport_rwlock = TRUE
+	n = !!n	// force bool
+	winset(src, SKIN_MAP_ID_VIEWPORT, "letterbox=[n? "true" : "false"]")
+	assumed_viewport_box = n
+	viewport_rwlock = FALSE
+	refit_viewport()
 
 /client/verb/force_onresize_view_update()
 	set name = ".viewport_refit"
