@@ -51,6 +51,8 @@
 	parallax_image_holder.overlays = list(I)
 	return parallax_image_holder
 
+#warn apparently this doesn't work
+
 //Overlay of how this object should look on other skyboxes
 /obj/effect/overmap/proc/get_skybox_representation()
 	if(!cached_skybox_image)
