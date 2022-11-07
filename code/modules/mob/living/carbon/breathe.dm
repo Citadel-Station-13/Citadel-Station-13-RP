@@ -25,7 +25,8 @@
 			spawn emote("gasp")
 	else
 		//Okay, we can breathe, now check if we can get air
-		breath = get_breath_from_internal() //First, check for air from internals
+		breath = get_breath_from_mask()//Handles breath from the mask, this checks for internls before sucking from the environment
+		//was here breath = get_breath_from_internal() //First, check for air from internals
 		// Respirocytes as a NIF implant
 		if(!breath && ishuman(src))
 			var/mob/living/carbon/human/H = src
