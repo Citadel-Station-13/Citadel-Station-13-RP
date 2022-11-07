@@ -15643,7 +15643,14 @@
 "DM" = (
 /obj/structure/table/wooden_reinforced,
 /obj/item/folder/blue_captain,
-/obj/item/stamp/captain,
+/obj/item/stamp/captain{
+	pixel_x = 8;
+	pixel_y = -3
+	},
+/obj/item/stamp/denied{
+	pixel_x = 8;
+	pixel_y = 3
+	},
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/captain)
 "DN" = (
@@ -17884,7 +17891,14 @@
 /area/crew_quarters/bar_backroom)
 "Ip" = (
 /obj/structure/table/reinforced,
-/obj/item/stamp/hop,
+/obj/item/stamp/hop{
+	pixel_x = -8;
+	pixel_y = -3
+	},
+/obj/item/stamp/denied{
+	pixel_x = -8;
+	pixel_y = 3
+	},
 /turf/simulated/floor/carpet/blue,
 /area/crew_quarters/heads/hop)
 "Iq" = (

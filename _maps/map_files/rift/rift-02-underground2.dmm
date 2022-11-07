@@ -303,8 +303,8 @@
 	pixel_x = -3
 	},
 /obj/machinery/firealarm{
-	layer = 3.3;
 	dir = 4;
+	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled,
@@ -732,14 +732,14 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/outlet_injector{
+	dir = 4;
 	frequency = 1438;
 	id = "cooling_in";
 	name = "Coolant Injector";
 	pixel_y = 1;
 	power_rating = 30000;
 	use_power = 1;
-	volume_rate = 700;
-	dir = 4
+	volume_rate = 700
 	},
 /turf/simulated/floor/reinforced/nitrogen{
 	initial_gas_mix = "n2=82.1472;TEMP=293.15"
@@ -881,8 +881,8 @@
 	dir = 1
 	},
 /obj/machinery/requests_console/preset/engineering{
-	pixel_y = -30;
-	pixel_x = -31
+	pixel_x = -31;
+	pixel_y = -30
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engineering_monitoring)
@@ -1109,10 +1109,10 @@
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/button/remote/airlock{
-	pixel_x = -25;
-	pixel_y = 7;
 	id = "engine_access_hatch";
 	name = "Access Hatch bolts";
+	pixel_x = -25;
+	pixel_y = 7;
 	specialfunctions = 4
 	},
 /turf/simulated/floor,
@@ -2877,8 +2877,8 @@
 /area/maintenance/engineering/pumpstation)
 "iD" = (
 /obj/machinery/firealarm{
-	layer = 3.3;
 	dir = 4;
+	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4211,12 +4211,12 @@
 	},
 /obj/machinery/button/remote/blast_door{
 	desc = "A remote control-switch for the engine control room blast doors.";
+	dir = 1;
 	id = "EngineEmitterPortWest";
 	name = "Engine Room Blast Doors";
 	pixel_y = -25;
 	req_access = null;
-	req_one_access = list(11,24);
-	dir = 1
+	req_one_access = list(11,24)
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor,
@@ -5172,9 +5172,9 @@
 	},
 /obj/machinery/door/airlock/hatch{
 	icon_state = "door_locked";
+	id_tag = "engine_access_hatch";
 	locked = 1;
-	req_access = list(11);
-	id_tag = "engine_access_hatch"
+	req_access = list(11)
 	},
 /turf/simulated/floor,
 /area/engineering/engine_core)
@@ -5527,10 +5527,10 @@
 /area/shuttle/cryo/station)
 "px" = (
 /obj/machinery/door/window/southleft{
+	dir = 4;
 	name = "Hardsuit Storage";
 	req_access = newlist();
-	req_one_access = list(11,24);
-	dir = 4
+	req_one_access = list(11,24)
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -8231,11 +8231,11 @@
 	},
 /obj/machinery/button/remote/airlock{
 	desc = "A remote control-switch for the engine core airlock hatch bolts.";
+	dir = 1;
 	id = "EngineVent";
 	name = "Engine Ejection Vent";
 	pixel_y = -32;
-	specialfunctions = 4;
-	dir = 1
+	specialfunctions = 4
 	},
 /obj/structure/window/basic{
 	dir = 1
@@ -8283,8 +8283,8 @@
 /area/maintenance/lower/atmos)
 "zj" = (
 /obj/machinery/firealarm{
-	layer = 3.3;
 	dir = 4;
+	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor,
@@ -10576,9 +10576,9 @@
 /area/rift/surfacebase/underground/under2)
 "Iv" = (
 /obj/machinery/door/window/southright{
+	dir = 4;
 	name = "Hardsuit Storage";
-	req_one_access = list(11,24);
-	dir = 4
+	req_one_access = list(11,24)
 	},
 /obj/structure/table/rack{
 	dir = 8;
@@ -11235,9 +11235,9 @@
 /obj/item/tank/jetpack/carbondioxide,
 /obj/structure/window/reinforced,
 /obj/machinery/door/window/southright{
+	dir = 8;
 	name = "Jetpack Storage";
-	req_one_access = list(11,24);
-	dir = 8
+	req_one_access = list(11,24)
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
@@ -11553,8 +11553,8 @@
 	dir = 4
 	},
 /obj/machinery/firealarm{
-	layer = 3.3;
 	dir = 4;
+	layer = 3.3;
 	pixel_x = 26
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -13582,9 +13582,16 @@
 	},
 /obj/item/pen/multi,
 /obj/item/folder/yellow_ce,
-/obj/item/stamp/ce,
+/obj/item/stamp/ce{
+	pixel_x = 8;
+	pixel_y = -3
+	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
+	},
+/obj/item/stamp/denied{
+	pixel_x = 8;
+	pixel_y = 3
 	},
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
@@ -13853,8 +13860,8 @@
 /area/crew_quarters/sleep/engi_wash)
 "Uz" = (
 /obj/machinery/firealarm{
-	layer = 3.3;
 	dir = 4;
+	layer = 3.3;
 	pixel_x = 26
 	},
 /turf/simulated/floor/tiled/white,
@@ -13983,8 +13990,8 @@
 	pixel_x = 6
 	},
 /obj/item/megaphone{
-	pixel_y = 8;
-	pixel_x = 4
+	pixel_x = 4;
+	pixel_y = 8
 	},
 /turf/simulated/floor/carpet/oracarpet,
 /area/crew_quarters/heads/chief)
@@ -14016,10 +14023,10 @@
 	dir = 1
 	},
 /obj/machinery/door/window/southleft{
+	dir = 8;
 	name = "Jetpack Storage";
 	req_access = newlist();
-	req_one_access = list(11,24);
-	dir = 8
+	req_one_access = list(11,24)
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
@@ -15237,8 +15244,8 @@
 	dir = 4
 	},
 /obj/item/storage/box/lights/mixed{
-	pixel_y = -5;
-	pixel_x = -11
+	pixel_x = -11;
+	pixel_y = -5
 	},
 /obj/machinery/alarm{
 	dir = 1;
