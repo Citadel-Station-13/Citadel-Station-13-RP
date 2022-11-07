@@ -1,6 +1,6 @@
 /atom/movable
 	layer = OBJ_LAYER
-	appearance_flags = TILE_BOUND|PIXEL_SCALE|KEEP_TOGETHER
+	appearance_flags = TILE_BOUND|PIXEL_SCALE
 
 	// todo: kill this (only used for elcetropacks)
 	var/moved_recently = FALSE
