@@ -199,7 +199,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		for(var/BP in mark_datum.body_parts)
 			var/obj/item/organ/external/O = character.organs_by_name[BP]
 			if(O)
-				O.markings[M] = list("color" = mark_color, "datum" = mark_datum)
+				O.markings[name] = list("color" = mark_color, "datum" = mark_datum)
 
 	var/list/last_descriptors = list()
 	if(islist(pref.body_descriptors))

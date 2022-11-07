@@ -93,7 +93,8 @@
 		S["species"] >> name_species
 		var/datum/species/RS = SScharacters.resolve_species_name(name_species)
 		if(!RS)
-			errors?.Add(SPAN_WARNING("Species reset to human - no species found of old species name"))
+			if(name_species)	// if they had any at all
+				errors?.Add(SPAN_WARNING("Species reset to human - no species found of old species name ([name_species])"))
 			RS = SScharacters.resolve_species_path(/datum/species/human)
 			// todo: default species?
 		if(RS)
