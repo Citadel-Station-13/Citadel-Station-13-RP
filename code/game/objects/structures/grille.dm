@@ -13,7 +13,7 @@
 	var/destroyed = 0
 
 
-/obj/structure/grille/ex_act(severity)
+/obj/structure/grille/legacy_ex_act(severity)
 	qdel(src)
 
 /obj/structure/grille/update_icon()
@@ -42,7 +42,7 @@
 	if(shock(user, 70))
 		return
 
-	if(HULK in user.mutations)
+	if(MUTATION_HULK in user.mutations)
 		damage_dealt += 5
 	else
 		damage_dealt += 1
@@ -173,7 +173,7 @@
 		return 0
 	if(!prob(prb))
 		return 0
-	if(!in_range(src, user))//To prevent TK and mech users from getting shocked
+	if(!in_range(src, user))//To prevent MUTATION_TELEKINESIS and mech users from getting shocked
 		return 0
 	var/turf/T = get_turf(src)
 	var/obj/structure/cable/C = T.get_cable_node()

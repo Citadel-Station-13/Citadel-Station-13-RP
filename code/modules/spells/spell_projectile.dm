@@ -21,7 +21,7 @@
 	carried = null
 	return ..()
 
-/obj/item/projectile/spell_projectile/ex_act()
+/obj/item/projectile/spell_projectile/legacy_ex_act()
 	return
 
 /obj/item/projectile/spell_projectile/before_move()

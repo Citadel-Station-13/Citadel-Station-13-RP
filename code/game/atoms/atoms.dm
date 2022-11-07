@@ -76,9 +76,6 @@
 	//! ## Chemistry
 	var/datum/reagents/reagents = null
 
-	//? replaced by OPENCONTAINER flags and atom/proc/is_open_container()
-	//var/chem_is_open_container = 0
-
 	//! ## Detective Work
 	/// Used for the duplicate data points kept in the scanners.
 	var/list/original_atom
@@ -213,10 +210,10 @@
 		update_light()
 
 	if (length(smoothing_groups))
-		sortTim(smoothing_groups) //In case it's not properly ordered, let's avoid duplicate entries with the same values.
+		tim_sort(smoothing_groups) //In case it's not properly ordered, let's avoid duplicate entries with the same values.
 		SET_BITFLAG_LIST(smoothing_groups)
 	if (length(canSmoothWith))
-		sortTim(canSmoothWith)
+		tim_sort(canSmoothWith)
 		if(canSmoothWith[length(canSmoothWith)] > MAX_S_TURF) //If the last element is higher than the maximum turf-only value, then it must scan turf contents for smoothing targets.
 			smoothing_flags |= SMOOTH_OBJ
 		SET_BITFLAG_LIST(canSmoothWith)
@@ -538,8 +535,29 @@
  * The wrapper takes care of the [COMSIG_ATOM_EX_ACT] signal.
  * as well as calling [/atom/proc/contents_explosion].
  */
-/atom/proc/ex_act(severity, target)
+/atom/proc/legacy_ex_act(severity, target)
 	set waitfor = FALSE
+
+/**
+ * todo: implement on most atoms/generic damage system
+ * todo: replace legacy_ex_act entirely with this
+ *
+ * React to being hit by an explosive shockwave
+ *
+ * ? Tip for overrides: . = ..() when you want signal to be sent, mdify power before if you need to; to ignore parent
+ * ? block power, just `return power` in your proc after . = ..().
+ *
+ * @params
+ * - power - power our turf was hit with
+ * - direction - DIR_BIT bits; can bwe null if it wasn't a wave explosion!!
+ * - explosion - explosion automata datum; can be null
+ *
+ * @return power after falloff (e.g. hit with 30 power, return 20 to apply 10 falloff)
+ */
+/atom/proc/ex_act(power, dir, datum/automata/wave/explosion/E)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_EX_ACT, power, dir, E)
+	return power
 
 /atom/proc/emag_act(var/remaining_charges, var/mob/user, var/emag_source)
 	return -1
@@ -600,7 +618,7 @@
 		add_fibers(M)
 
 		//He has no prints!
-		if (mFingerprints in M.mutations)
+		if (MUTATION_NOPRINTS in M.mutations)
 			if(fingerprintslast != M.key)
 				fingerprintshidden += "[time_stamp()]: [key_name(M)] (No fingerprints mutation)"
 				fingerprintslast = M.key
@@ -976,7 +994,7 @@
 
 /atom/proc/update_filters()
 	filters = null
-	filter_data = sortTim(filter_data, /proc/cmp_filter_data_priority, TRUE)
+	filter_data = tim_sort(filter_data, /proc/cmp_filter_data_priority, TRUE)
 	for(var/f in filter_data)
 		var/list/data = filter_data[f]
 		var/list/arguments = data.Copy()
@@ -1099,7 +1117,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_x_offset(dir, atom/aligning)
-	return base_pixel_x + (icon_dimension_x - PIXELS) / 2
+	return base_pixel_x + (icon_dimension_x - WORLD_ICON_SIZE) / 2
 
 /**
  * get the pixel_y needed to adjust an atom on our turf **to the position of our visual center**
@@ -1108,7 +1126,7 @@
  * if we were, for some reason, a 4x4 with -32 x/y, this would probably be 16/16 x/y.
  */
 /atom/proc/get_centering_pixel_y_offset(dir, atom/aligning)
-	return base_pixel_y + (icon_dimension_y - PIXELS) / 2
+	return base_pixel_y + (icon_dimension_y - WORLD_ICON_SIZE) / 2
 
 /// Setter for the `base_pixel_x` variable to append behavior related to its changing.
 /atom/proc/set_base_pixel_x(new_value)

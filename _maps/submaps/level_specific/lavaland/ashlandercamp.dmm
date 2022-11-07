@@ -3,25 +3,16 @@
 /turf/template_noop,
 /area/template_noop)
 "b" = (
-/obj/structure/outcrop,
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
-"c" = (
 /obj/structure/ghost_role_spawner/ashlander,
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
-"m" = (
-/obj/item/reagent_containers/glass/bucket/wood,
+"c" = (
+/obj/structure/fence/wooden/corner{
+	dir = 8
+	},
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
-"v" = (
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
-"x" = (
-/obj/effect/floor_decal/asteroid,
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
-"y" = (
+"h" = (
 /obj/structure/table/hardwoodtable,
 /obj/fiftyspawner/wood,
 /obj/fiftyspawner/wood,
@@ -32,11 +23,67 @@
 /obj/item/pickaxe/bone,
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
-"Q" = (
-/obj/structure/table/hardwoodtable,
+"k" = (
+/obj/effect/floor_decal/asteroid,
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"m" = (
+/obj/structure/fence/wooden{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"o" = (
+/obj/structure/fence/wooden/corner{
+	dir = 4
+	},
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"p" = (
+/obj/structure/fence/wooden/corner,
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"v" = (
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"x" = (
+/obj/structure/outcrop,
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"y" = (
+/obj/structure/fence/wooden,
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"I" = (
 /obj/item/seeds/ashlander/bentars,
 /obj/item/seeds/ashlander/juhtak,
 /obj/item/seeds/ashlander,
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"K" = (
+/obj/structure/fence/wooden/corner{
+	dir = 1
+	},
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"N" = (
+/obj/structure/fence/door/wooden,
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"O" = (
+/obj/item/reagent_containers/glass/bucket/wood,
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"Q" = (
+/obj/machinery/seed_extractor/press,
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"R" = (
+/obj/machinery/portable_atmospherics/hydroponics/soil,
+/turf/simulated/floor/outdoors/lavaland/indoors,
+/area/lavaland/ashlander_camp)
+"X" = (
+/obj/structure/table/hardwoodtable,
 /obj/item/tool/wirecutters/clippers/bone,
 /obj/item/material/minihoe/bone,
 /obj/item/material/knife/machete/hatchet/bone{
@@ -45,16 +92,10 @@
 	},
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
-"R" = (
-/obj/machinery/portable_atmospherics/hydroponics/soil,
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
-"Y" = (
-/obj/structure/sink/puddle,
-/turf/simulated/floor/outdoors/lavaland/indoors,
-/area/lavaland/ashlander_camp)
 
 (1,1,1) = {"
+a
+a
 a
 a
 a
@@ -66,31 +107,39 @@ a
 a
 a
 a
-v
-R
+Q
+O
+h
+X
 a
 "}
 (3,1,1) = {"
 a
+a
+x
 b
-c
 v
-R
+v
+v
 a
 "}
 (4,1,1) = {"
 a
+c
 y
+y
+K
 v
-x
 R
 a
 "}
 (5,1,1) = {"
 a
-Q
+m
+I
 v
-v
+m
+k
 R
 a
 "}
@@ -98,19 +147,35 @@ a
 a
 m
 v
-Y
+v
+m
+v
 a
 a
 "}
 (7,1,1) = {"
 a
+m
 v
 v
+N
 v
 v
 a
 "}
 (8,1,1) = {"
+a
+o
+y
+y
+p
+v
+a
+a
+"}
+(9,1,1) = {"
+a
+a
 a
 a
 a

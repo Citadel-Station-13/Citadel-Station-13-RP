@@ -120,8 +120,8 @@
 	desc = "Because you really needed another excuse to punch your crewmates."
 	icon_state = "boxing"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_gloves.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_gloves.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_gloves.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_gloves.dmi',
 			)
 	item_state = "boxing"
 	special_attack_type = /datum/unarmed_attack/holopugilism
@@ -140,7 +140,7 @@
 	var/armor_block = target.run_armor_check(affecting, "melee")
 	var/armor_soak = target.get_armor_soak(affecting, "melee")
 
-	if(HULK in user.mutations)
+	if(MUTATION_HULK in user.mutations)
 		damage += 5
 
 	playsound(target.loc, "punch", 25, 1, -1)
@@ -268,8 +268,8 @@
 	var/lcolor
 	var/rainbow = FALSE
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 	force = 3.0
 	throw_speed = 1

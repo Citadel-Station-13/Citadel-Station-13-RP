@@ -30,12 +30,12 @@
 	return TRUE
 
 /**
- * puts item in hand or drops, unless we are using TK, in which case just drops at interacted loc
+ * puts item in hand or drops, unless we are using MUTATION_TELEKINESIS, in which case just drops at interacted loc
  * this doesn't actually check if I is in interacted
  * this is intentional.
  */
 /mob/proc/grab_item_from_interacted_with(obj/item/I, atom/interacted)
-	// TODO: proper TK checks
+	// TODO: proper MUTATION_TELEKINESIS checks
 	if(!Adjacent(interacted))
 		I.forceMove(interacted.drop_location())
 		return

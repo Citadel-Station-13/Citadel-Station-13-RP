@@ -34,6 +34,7 @@
 	name = "primitive hatchet"
 	desc = "A broad, flat piece of bone knapped to a sharp edge. A truly primitive weapon."
 	icon_state = "hatchet_bone"
+	default_material = "bone"
 
 /obj/item/material/knife/machete/hatchet/unathiknife
 	name = "duelling knife"
@@ -127,8 +128,8 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "sawcleaver"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/64x64_lefthand.dmi',
-			slot_r_hand_str = 'icons/mob/items/64x64_righthand.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/64x64_lefthand.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/64x64_righthand.dmi',
 			)
 	item_state = "cleaving_saw"
 	active = 0

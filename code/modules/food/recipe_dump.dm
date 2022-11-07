@@ -104,8 +104,8 @@
 	for(var/Rp in drink_recipes)
 		drinks_to_paths["[drink_recipes[Rp]["Result"]] [Rp]"] = Rp
 
-	foods_to_paths = sortTim(foods_to_paths, /proc/cmp_text_asc, TRUE)
-	drinks_to_paths = sortTim(drinks_to_paths, /proc/cmp_text_asc, TRUE)
+	foods_to_paths = tim_sort(foods_to_paths, /proc/cmp_text_asc, TRUE)
+	drinks_to_paths = tim_sort(drinks_to_paths, /proc/cmp_text_asc, TRUE)
 
 	var/list/foods_newly_sorted = list()
 	var/list/drinks_newly_sorted = list()

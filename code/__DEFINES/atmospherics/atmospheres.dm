@@ -22,6 +22,9 @@
 
 #define ATMOSPHERE_ID_TRIUMPH			/datum/atmosphere/planet/virgo3b
 
+/// geothermal vent Atmos ID
+#define ATMOSPHERE_ID_GEOTHERMAL        /datum/atmosphere/geothermal_vent
+
 //LAVALAND
 ///what pressure you have to be under to increase the effect of equipment meant for lavaland
 #define LAVALAND_EQUIPMENT_EFFECT_PRESSURE 50

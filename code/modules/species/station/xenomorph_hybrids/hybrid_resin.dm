@@ -190,7 +190,7 @@
 	healthcheck()
 	return
 
-/obj/effect/alien/hybrid_resin/ex_act(severity)
+/obj/effect/alien/hybrid_resin/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			health-=50
@@ -219,7 +219,7 @@
 
 /obj/effect/alien/hybrid_resin/attack_hand()
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	if (HULK in usr.mutations)
+	if (MUTATION_HULK in usr.mutations)
 		to_chat(usr, "<span class='notice'>You easily destroy the [name].</span>")
 		for(var/mob/O in oviewers(src))
 			O.show_message("<span class='warning'>[usr] destroys the [name]!</span>", 1)

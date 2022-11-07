@@ -3,6 +3,7 @@
 	name = "\proper space"
 	icon_state = "0"
 	plane = SPACE_PLANE
+	z_flags = Z_OPEN_DOWN | Z_OPEN_UP | Z_CONSIDERED_OPEN | Z_AIR_DOWN | Z_AIR_UP
 
 	light_power = 0.25
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED

@@ -421,26 +421,26 @@
 		malfunction()
 	..()
 
-/obj/machinery/clonepod/ex_act(severity)
+/obj/machinery/clonepod/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/A as mob|obj in src)
 				A.loc = src.loc
-				ex_act(severity)
+				legacy_ex_act(severity)
 			qdel(src)
 			return
 		if(2.0)
 			if(prob(50))
 				for(var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
-					ex_act(severity)
+					legacy_ex_act(severity)
 				qdel(src)
 				return
 		if(3.0)
 			if(prob(25))
 				for(var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
-					ex_act(severity)
+					legacy_ex_act(severity)
 				qdel(src)
 				return
 		else
@@ -519,7 +519,7 @@
 	for(var/i=new_SE.len;i<=DNA_SE_LENGTH;i++)
 		new_SE += rand(1,1024)
 	buf.dna.SE=new_SE
-	buf.dna.SetSEValueRange(MONKEYBLOCK,0xDAC, 0xFFF)
+	buf.dna.SetSEValueRange(DNABLOCK_MONKEY,0xDAC, 0xFFF)
 
 /obj/item/disk/data/Initialize(mapload)
 	. = ..()

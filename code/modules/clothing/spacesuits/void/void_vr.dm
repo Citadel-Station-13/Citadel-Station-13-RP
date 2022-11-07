@@ -6,22 +6,6 @@
 //
 
 /obj/item/clothing/head/helmet/space/void
-	sprite_sheets = list(
-		SPECIES_AKULA       = 'icons/mob/clothing/species/akula/helmet.dmi',
-		SPECIES_NEVREAN     = 'icons/mob/clothing/species/nevrean/helmet.dmi',
-		SPECIES_PROMETHEAN  = 'icons/mob/clothing/species/skrell/helmet.dmi',
-		SPECIES_SERGAL      = 'icons/mob/clothing/species/sergal/helmet.dmi',
-		SPECIES_SKRELL      = 'icons/mob/clothing/species/skrell/helmet.dmi',
-		SPECIES_TAJ         = 'icons/mob/clothing/species/tajaran/helmet.dmi',
-		SPECIES_TESHARI     = 'icons/mob/clothing/species/teshari/head.dmi',
-		SPECIES_UNATHI      = 'icons/mob/clothing/species/unathi/helmet.dmi',
-		SPECIES_VOX         = 'icons/mob/clothing/species/vox/helmet.dmi',
-		SPECIES_VULPKANIN   = 'icons/mob/clothing/species/vulpkanin/helmet.dmi',
-		SPECIES_XENOHYBRID  = 'icons/mob/clothing/species/unathi/helmet.dmi',
-		SPECIES_ZORREN_FLAT = 'icons/mob/clothing/species/fennec/helmet.dmi',
-		SPECIES_ZORREN_HIGH = 'icons/mob/clothing/species/fox/helmet.dmi',
-		)
-
 	sprite_sheets_obj = list(
 		SPECIES_TAJ         = 'icons/obj/clothing/species/tajaran/hats.dmi',
 		SPECIES_SKRELL      = 'icons/obj/clothing/species/skrell/hats.dmi',
@@ -39,22 +23,6 @@
 		)
 
 /obj/item/clothing/suit/space/void
-	sprite_sheets = list(
-		SPECIES_AKULA       = 'icons/mob/clothing/species/akula/suits.dmi',
-		SPECIES_NEVREAN     = 'icons/mob/clothing/species/nevrean/suits.dmi',
-		SPECIES_PROMETHEAN  = 'icons/mob/clothing/species/skrell/suits.dmi',
-		SPECIES_SERGAL      = 'icons/mob/clothing/species/sergal/suits.dmi',
-		SPECIES_SKRELL      = 'icons/mob/clothing/species/skrell/suits.dmi',
-		SPECIES_TAJ         = 'icons/mob/clothing/species/tajaran/suits.dmi',
-		SPECIES_TESHARI     = 'icons/mob/clothing/species/teshari/suits.dmi',
-		SPECIES_UNATHI      = 'icons/mob/clothing/species/unathi/suits.dmi',
-		SPECIES_VOX         = 'icons/mob/clothing/species/vox/suits.dmi',
-		SPECIES_VULPKANIN   = 'icons/mob/clothing/species/vulpkanin/suits.dmi',
-		SPECIES_XENOHYBRID  = 'icons/mob/clothing/species/unathi/suits.dmi',
-		SPECIES_ZORREN_FLAT = 'icons/mob/clothing/species/fennec/suits.dmi',
-		SPECIES_ZORREN_HIGH = 'icons/mob/clothing/species/fox/suits.dmi',
-		)
-
 	sprite_sheets_obj = list(
 		SPECIES_AKULA       = 'icons/obj/clothing/species/akula/suits.dmi',
 		SPECIES_NEVREAN     = 'icons/obj/clothing/species/nevrean/suits.dmi',
@@ -148,21 +116,6 @@
 	breach_threshold = 6 //this thing is basically tissue paper
 	w_class = ITEMSIZE_NORMAL //if it's snug, high-tech, and made of relatively soft materials, it should be much easier to store!
 
-/obj/item/clothing/suit/space/void/autolok
-	sprite_sheets = list(
-		SPECIES_AKULA       = 'icons/mob/clothing/species/unathi/suits.dmi',
-		SPECIES_FENNEC      = 'icons/mob/clothing/species/vulpkanin/suits.dmi',
-		SPECIES_HUMAN       = 'icons/mob/clothing/spacesuits.dmi',
-		SPECIES_SERGAL      = 'icons/mob/clothing/species/unathi/suits.dmi',
-		SPECIES_SKRELL      = 'icons/mob/clothing/species/skrell/suits.dmi',
-		SPECIES_TAJ         = 'icons/mob/clothing/species/tajaran/suits.dmi',
-		SPECIES_TESHARI     = 'icons/mob/clothing/species/teshari/suits.dmi',
-		SPECIES_UNATHI      = 'icons/mob/clothing/species/unathi/suits.dmi',
-		SPECIES_VULPKANIN   = 'icons/mob/clothing/species/vulpkanin/suits.dmi',
-		SPECIES_XENOHYBRID  = 'icons/mob/clothing/species/unathi/suits.dmi',
-		SPECIES_ZORREN_HIGH = 'icons/mob/clothing/species/vulpkanin/suits.dmi',
-		)
-
 /obj/item/clothing/suit/space/void/autolok/Initialize(mapload)
 	. = ..()
 	helmet = new /obj/item/clothing/head/helmet/space/void/autolok //autoinstall the helmet
@@ -216,20 +169,6 @@
 	flags_inv = HIDEEARS|BLOCKHAIR //removed HIDEFACE/MASK/EYES flags so sunglasses or facemasks don't disappear. still gotta have BLOCKHAIR or it'll clip out tho.
 
 /obj/item/clothing/head/helmet/space/void/autolok
-	sprite_sheets = list(
-		SPECIES_AKULA       = 'icons/mob/clothing/species/unathi/helmet.dmi',
-		SPECIES_FENNEC      = 'icons/mob/clothing/species/vulpkanin/helmet.dmi',
-		SPECIES_HUMAN       = INV_HEAD_DEF_ICON,
-		SPECIES_SERGAL      = 'icons/mob/clothing/species/unathi/helmet.dmi',
-		SPECIES_SKRELL      = 'icons/mob/clothing/species/skrell/helmet.dmi',
-		SPECIES_TAJ         = 'icons/mob/clothing/species/tajaran/helmet.dmi',
-		SPECIES_TESHARI     = 'icons/mob/clothing/species/teshari/head.dmi',
-		SPECIES_UNATHI      = 'icons/mob/clothing/species/unathi/helmet.dmi',
-		SPECIES_VULPKANIN   = 'icons/mob/clothing/species/vulpkanin/helmet.dmi',
-		SPECIES_XENOHYBRID  = 'icons/mob/clothing/species/unathi/helmet.dmi',
-		SPECIES_ZORREN_HIGH = 'icons/mob/clothing/species/vulpkanin/helmet.dmi',
-		)
-
 	sprite_sheets_obj = list(
 		SPECIES_AKULA       = 'icons/obj/clothing/hats.dmi',
 		SPECIES_FENNEC      = 'icons/obj/clothing/hats.dmi',

@@ -192,7 +192,7 @@
 			qdel(pulse2)
 	..()
 
-/obj/machinery/ex_act(severity)
+/obj/machinery/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -298,7 +298,7 @@
 /*
 		if(!Adjacent(user)) // Next make sure we are next to the machine unless we have telekinesis
 			var/mob/living/carbon/H = L
-			if(!(istype(H) && H.has_dna() && H.dna.check_mutation(TK)))
+			if(!(istype(H) && H.has_dna() && H.dna.check_mutation(MUTATION_TELEKINESIS)))
 				return FALSE
 */
 		if(L.incapacitated()) // Finally make sure we aren't incapacitated

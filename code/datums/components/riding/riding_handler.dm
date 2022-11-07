@@ -273,14 +273,16 @@
 	forbid_turf_types = typelist(NAMEOF(src, forbid_turf_types), forbid_turf_types)
 	if(!default_turf_checks)
 		return
-	if(has_typelist(NAMEOF(src, allowed_turf_typecache)))
-		allowed_turf_typecache = get_typelist(NAMEOF(src, allowed_turf_typecache))
-	else
-		allowed_turf_typecache = typelist(NAMEOF(src, allowed_turf_typecache), typecacheof(allowed_turf_types))
-	if(has_typelist(NAMEOF(src, forbid_turf_typecache)))
-		forbid_turf_typecache = get_typelist(NAMEOF(src, forbid_turf_typecache))
-	else
-		forbid_turf_typecache = typelist(NAMEOF(src, forbid_turf_typecache), typecacheof(forbid_turf_types))
+	if(LAZYLEN(allowed_turf_types))
+		if(has_typelist(NAMEOF(src, allowed_turf_typecache)))
+			allowed_turf_typecache = get_typelist(NAMEOF(src, allowed_turf_typecache))
+		else
+			allowed_turf_typecache = typelist(NAMEOF(src, allowed_turf_typecache), typecacheof(allowed_turf_types))
+	if(LAZYLEN(forbid_turf_types))
+		if(has_typelist(NAMEOF(src, forbid_turf_typecache)))
+			forbid_turf_typecache = get_typelist(NAMEOF(src, forbid_turf_typecache))
+		else
+			forbid_turf_typecache = typelist(NAMEOF(src, forbid_turf_typecache), typecacheof(forbid_turf_types))
 
 /**
  * checks if we can move onto a turf
@@ -315,6 +317,8 @@
  * called when a mob wants to drive us
  */
 /datum/component/riding_handler/proc/attempt_drive(mob/M, dir)
+	if(!(riding_handler_flags & CF_RIDING_HANDLER_IS_CONTROLLABLE))
+		return FALSE
 	var/atom/movable/AM = parent
 	if(!AM.loc)
 		return FALSE
@@ -360,7 +364,7 @@
 			force_dismount(M)
 		return
 	for(var/mob/M as anything in AM.buckled_mobs)
-		if(!ride_check(M, AM.buckled_mobs[M], TRUE))
+		if(!check_rider(M, AM.buckled_mobs[M], TRUE))
 			force_dismount(M)
 			continue	// don't do rest of logic
 
@@ -400,7 +404,7 @@
 			else
 				to_chat(user, SPAN_WARNING("[AM] cannot ride on [parent] whlie restrained!"))
 		return FALSE
-	if(M && (flags & CF_RIDING_CHECK_UNCONSCIOUS) && !STAT_IS_CONSCIOUS(M))
+	if(M && (flags & CF_RIDING_CHECK_UNCONSCIOUS) && !IS_CONSCIOUS(M))
 		if(notify && user)
 			if(we_are_the_vehicle)
 				to_chat(user, SPAN_WARNING("You cannot carry people while unconscious!"))

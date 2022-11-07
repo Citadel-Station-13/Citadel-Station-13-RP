@@ -18,8 +18,8 @@
 	var/projectile_parry_chance = 0	// The base chance for a projectile to be deflected.
 
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 
 	var/SA_bonus_damage = 35 // 50 total against demons and aberrations.

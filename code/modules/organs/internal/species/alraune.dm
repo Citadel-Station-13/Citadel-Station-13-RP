@@ -41,7 +41,6 @@
 	var/short_emote_descriptor = list("picks", "grabs")
 	var/self_emote_descriptor = list("grab", "pick", "snatch")
 	var/fruit_type = "apple"
-	var/mob/organ_owner = null
 	var/gen_cost = 0.5
 
 /obj/item/organ/internal/fruitgland/Initialize(mapload)
@@ -49,22 +48,23 @@
 	create_reagents(usable_volume)
 
 /obj/item/organ/internal/fruitgland/process(delta_time)
-	if(!owner) return
+	if(!owner)
+		return
 	var/obj/item/organ/external/parent = owner.get_organ(parent_organ)
 	var/before_gen
-	if(parent && generated_reagents && organ_owner) //Is it in the chest/an organ, has reagents, and is 'activated'
+	if(parent && generated_reagents && owner) //Is it in the chest/an organ, has reagents, and is 'activated'
 		before_gen = reagents.total_volume
 		if(reagents.total_volume < reagents.maximum_volume)
-			if(organ_owner.nutrition >= gen_cost)
+			if(owner.nutrition >= gen_cost)
 				do_generation()
 
 	if(reagents)
 		if(reagents.total_volume == reagents.maximum_volume * 0.05)
-			to_chat(organ_owner, "<span class='notice'>[pick(empty_message)]</span>")
+			to_chat(owner, SPAN_NOTICE("[pick(empty_message)]"))
 		else if(reagents.total_volume == reagents.maximum_volume && before_gen < reagents.maximum_volume)
-			to_chat(organ_owner, "<span class='warning'>[pick(full_message)]</span>")
+			to_chat(owner, SPAN_WARNING("[pick(full_message)]"))
 
 /obj/item/organ/internal/fruitgland/proc/do_generation()
-	organ_owner.nutrition -= gen_cost
+	owner.nutrition -= gen_cost
 	for(var/reagent in generated_reagents)
 		reagents.add_reagent(reagent, generated_reagents[reagent])

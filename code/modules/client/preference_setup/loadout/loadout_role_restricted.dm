@@ -1135,7 +1135,7 @@
 
 /datum/gear/restricted/science/uniform/fatigues
 	name = "Science Uniform - Fatigues"
-	path = /obj/item/clothing/under/oricon/utility/marine/exploration
+	path = /obj/item/clothing/under/oricon/utility/marine/research
 
 /datum/gear/restricted/science/uniform/jeans
 	name = "Science Uniform - Jeans"
@@ -1528,4 +1528,4 @@
 	for(var/holster in typesof(/obj/item/clothing/accessory/holster))
 		var/obj/item/clothing/accessory/holster_type = holster
 		holsters[initial(holster_type.name)] = holster_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(holsters, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(holsters, /proc/cmp_text_asc))

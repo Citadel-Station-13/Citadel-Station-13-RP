@@ -61,7 +61,7 @@
 		return
 	var/chargedir = get_dir(src, chargeturf)
 	setDir(chargedir)
-	var/turf/T = get_ranged_target_turf(chargeturf, chargedir, isDiagonal(chargedir) ? 1 : 2)
+	var/turf/T = get_ranged_target_turf(chargeturf, chargedir, IS_DIAGONAL(chargedir) ? 1 : 2)
 	if(!T)
 		charging = 0
 		movement_shake_radius = null

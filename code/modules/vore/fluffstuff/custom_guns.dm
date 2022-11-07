@@ -103,8 +103,8 @@
 	icon_state = "ge_pistol"
 	item_state = "ge_pistol"
 	fire_sound = 'sound/weapons/mandalorian.ogg'
-	item_icons = list(slot_r_hand_str = 'icons/obj/gun/energy.dmi', slot_l_hand_str = 'icons/obj/gun/energy.dmi') // WORK YOU FUCKING CUNT PIECE OF SHIT BASTARD STUPID BITCH ITEM ICON AAAAHHHH
-	item_state_slots = list(slot_r_hand_str = "ge_pistol_r", slot_l_hand_str = "ge_pistol_l")
+	item_icons = list(SLOT_ID_RIGHT_HAND = 'icons/obj/gun/energy.dmi', SLOT_ID_LEFT_HAND = 'icons/obj/gun/energy.dmi') // WORK YOU FUCKING CUNT PIECE OF SHIT BASTARD STUPID BITCH ITEM ICON AAAAHHHH
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "ge_pistol_r", SLOT_ID_LEFT_HAND = "ge_pistol_l")
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_NORMAL
 	force = 10
@@ -710,7 +710,7 @@ END OF CITADEL CHANGES */
 	desc = "An extraordinarily rugged laser weapon, built to last and requiring effectively no maintenance. Includes a built-in crank charger for recharging away from civilization."
 	icon_state = "phaser"
 	item_state = "phaser"
-	item_state_slots = list(slot_r_hand_str = "phaser", slot_l_hand_str = "phaser", "SLOT_ID_BELT" = "phaser")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "phaser", SLOT_ID_LEFT_HAND = "phaser", "SLOT_ID_BELT" = "phaser")
 	fire_sound = 'sound/weapons/laser_rifle_1.wav'
 	origin_tech = list(TECH_COMBAT = 4, TECH_MAGNET = 2, TECH_POWER = 4)
 	charge_cost = 300
@@ -754,7 +754,7 @@ END OF CITADEL CHANGES */
 /obj/item/gun/energy/frontier/emp_act(severity)
 	return ..(severity+2)
 
-/obj/item/gun/energy/frontier/ex_act() //|rugged|
+/obj/item/gun/energy/frontier/legacy_ex_act() //|rugged|
 	return
 
 /obj/item/gun/energy/frontier/locked
@@ -767,7 +767,7 @@ END OF CITADEL CHANGES */
 	desc = "An ergonomically improved version of the venerable frontier phaser, the carbine is a fairly new weapon, and has only been produced in limited numbers so far. Includes a built-in crank charger for recharging away from civilization. This one has a safety interlock that prevents firing while in proximity to the facility."
 	icon_state = "carbinekill"
 	item_state = "retro"
-	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_guns.dmi', slot_r_hand_str = 'icons/mob/items/righthand_guns.dmi')
+	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi')
 
 	modifystate = "carbinekill"
 	firemodes = list(

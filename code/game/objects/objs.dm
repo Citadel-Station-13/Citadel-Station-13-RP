@@ -75,7 +75,7 @@
 					is_in_use = 1
 					src.attack_ai(usr)
 
-		// check for TK users
+		// check for MUTATION_TELEKINESIS users
 
 		if (istype(usr, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = usr

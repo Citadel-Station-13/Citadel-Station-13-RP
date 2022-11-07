@@ -129,7 +129,7 @@
 
 /obj/item/projectile/beam/pulse/on_hit(var/atom/target, var/blocked = 0)
 	if(isturf(target))
-		target.ex_act(2)
+		LEGACY_EX_ACT(target, 2, null)
 	..()
 
 /obj/item/projectile/beam/pulse/shotgun

@@ -37,7 +37,7 @@
 	name = "deathsquad helmet"
 	desc = "That's not red paint. That's real blood."
 	icon_state = "deathsquad"
-	item_state_slots = list(slot_r_hand_str = "syndicate-helm-black-red", slot_l_hand_str = "syndicate-helm-black-red")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate-helm-black-red", SLOT_ID_LEFT_HAND = "syndicate-helm-black-red")
 	armor = list(melee = 65, bullet = 55, laser = 35,energy = 20, bomb = 30, bio = 100, rad = 60)
 	clothing_flags = THICKMATERIAL
 	flags_inv = BLOCKHAIR
@@ -48,7 +48,7 @@
 	name = "officer's beret"
 	desc = "An armored beret commonly used by special operations officers."
 	icon_state = "beret_badge"
-	item_state_slots = list(slot_r_hand_str = "beret", slot_l_hand_str = "beret")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "beret", SLOT_ID_LEFT_HAND = "beret")
 	armor = list(melee = 65, bullet = 55, laser = 35,energy = 20, bomb = 30, bio = 30, rad = 30)
 	clothing_flags = 0
 	flags_inv = BLOCKHAIR

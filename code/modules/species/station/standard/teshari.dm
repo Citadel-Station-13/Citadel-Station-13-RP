@@ -2,7 +2,7 @@
 	name = SPECIES_TESHARI
 	default_bodytype = BODYTYPE_TESHARI
 	name_plural = "Tesharii"
-	id = SPECIES_ID_TESHARI
+	uid = SPECIES_ID_TESHARI
 
 	blurb = {"
 	A race of feathered raptors who developed alongside the Skrell, inhabiting

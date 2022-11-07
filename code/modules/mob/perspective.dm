@@ -164,10 +164,3 @@
 /mob/proc/GetSeeInDarkSelf()
 	return self_perspective? self_perspective.see_in_dark : see_in_dark
 
-// Set client view distance (size of client's screen). Returns TRUE if anything changed.
-// TODO: remove this and make everything change self perspective's viewsize
-/mob/proc/set_viewsize(var/new_view = world.view)
-	if (client && new_view != client.view)
-		client.view = new_view
-		return TRUE
-	return FALSE

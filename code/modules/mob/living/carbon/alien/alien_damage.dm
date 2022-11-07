@@ -1,4 +1,4 @@
-/mob/living/carbon/alien/ex_act(severity)
+/mob/living/carbon/alien/legacy_ex_act(severity)
 
 	if(!blinded)
 		flash_eyes()

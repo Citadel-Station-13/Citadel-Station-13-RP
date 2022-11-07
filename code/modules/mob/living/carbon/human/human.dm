@@ -1,24 +1,3 @@
-/mob/living/carbon/human
-	name = "unknown"
-	real_name = "unknown"
-	voice_name = "unknown"
-	icon = 'icons/effects/effects.dmi'	//We have an ultra-complex update icons that overlays everything, don't load some stupid random male human
-	icon_state = "nothing"
-
-	var/embedded_flag					//To check if we've need to roll for damage on movement while an item is imbedded in us.
-	var/obj/item/rig/wearing_rig // This is very not good, but it's much much better than calling get_rig() every update_canmove() call.
-	var/last_push_time					//For human_attackhand.dm, keeps track of the last use of disarm
-
-	var/spitting = 0 					//Spitting and spitting related things. Any human based ranged attacks, be it innate or added abilities.
-	var/spit_projectile = null			//Projectile type.
-	var/spit_name = null 				//String
-	var/last_spit = 0 					//Timestamp.
-
-	var/can_defib = 1					//Horrible damage (like beheadings) will prevent defibbing organics.
-	var/active_regen = FALSE //Used for the regenerate proc in human_powers.dm
-	var/active_regen_delay = 300
-	var/spam_flag = FALSE	//throws byond:tm: errors if placed in human/emote, but not here
-
 /mob/living/carbon/human/Initialize(mapload, datum/species/new_species_or_path)
 	if(!dna)
 		dna = new /datum/dna(null)
@@ -132,7 +111,7 @@
 	if(species)
 		species.Stat(src)
 
-/mob/living/carbon/human/ex_act(severity)
+/mob/living/carbon/human/legacy_ex_act(severity)
 	if(!blinded)
 		flash_eyes()
 
@@ -296,7 +275,7 @@
 //Returns "Unknown" if facially disfigured and real_name if not. Useful for setting name when polyacided or when updating a human's name variable
 /mob/living/carbon/human/proc/get_face_name()
 	var/obj/item/organ/external/head = get_organ(BP_HEAD)
-	if(!head || head.disfigured || head.is_stump() || !real_name || (HUSK in mutations) )	//disfigured. use id-name if possible
+	if(!head || head.disfigured || head.is_stump() || !real_name || (MUTATION_HUSK in mutations) )	//disfigured. use id-name if possible
 		return "Unknown"
 	return real_name
 
@@ -714,9 +693,6 @@
 /mob/living/carbon/human/get_true_species_name()
 	return species.get_true_name()
 
-/mob/living/carbon/human/get_species_id()
-	return species.id
-
 /mob/living/carbon/human/proc/play_xylophone()
 	if(!src.xylophone)
 		var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]
@@ -742,7 +718,7 @@
 	set name = "Morph"
 	set category = "Superpower"
 
-	if(!(mMorph in mutations))
+	if(!(MUTATION_MORPH in mutations))
 		src.verbs -= /mob/living/carbon/human/proc/morph
 		return
 
@@ -812,7 +788,7 @@
 	set name = "Project mind"
 	set category = "Superpower"
 
-	if(!(mRemotetalk in src.mutations))
+	if(!(MUTATION_REMOTE_TALK in src.mutations))
 		src.verbs -= /mob/living/carbon/human/proc/remotesay
 		return
 
@@ -824,7 +800,7 @@
 		return
 
 	var/say = sanitize(input("What do you wish to say"))
-	if(mRemotetalk in target.mutations)
+	if(MUTATION_REMOTE_TALK in target.mutations)
 		target.show_message("<font color=#4F49AF> You hear [src.real_name]'s voice: [say]</font>")
 	else
 		target.show_message("<font color=#4F49AF> You hear a voice that seems to echo around the room: [say]</font>")
@@ -842,7 +818,7 @@
 		reset_perspective()
 		return
 
-	if(!(mRemote in src.mutations))
+	if(!(MUTATION_REMOTE_VIEW in src.mutations))
 		remoteview_target = null
 		reset_perspective()
 		src.verbs -= /mob/living/carbon/human/proc/remoteobserve
@@ -1136,6 +1112,7 @@
 
 	// set
 	species = S
+	. = TRUE
 
 	// apply new species, create organs, do post spawn stuff even though we're presumably not spawning half the time
 	// i seriously hate vorecode
@@ -1148,6 +1125,9 @@
 	if(hud_used)
 		qdel(hud_used) //remove the hud objects
 	hud_used = new /datum/hud(src)
+	// todo: this is awful lol
+	if(plane_holder && client)
+		client.screen |= plane_holder.plane_masters
 
 	// skip the rest
 	if(skip)
@@ -1157,6 +1137,7 @@
 	species.create_blood(src)
 	species.handle_post_spawn(src)
 	species.update_attack_types() // Required for any trait that updates unarmed_types in setup.
+	updatehealth()	// uh oh stinky - some species just have more/less maxhealth, this is a shit fix imo but deal with it for now ~silicons
 
 	// Rebuild the HUD. If they aren't logged in then login() should reinstantiate it for them.
 	update_hud()

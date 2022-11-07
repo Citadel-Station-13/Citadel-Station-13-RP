@@ -24,17 +24,19 @@
 	. = TRUE
 	if(A == src)
 		return FALSE
+	if(!isliving(A))	// no ghosts, only entities
+		return FALSE
 	if(!user.Adjacent(src) || !A.Adjacent(src))
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_DRAG_DROP_BUCKLE_INTERACTION, A, user) & COMPONENT_HANDLED_BUCKLE_INTERACTION)
-		return
+		return TRUE
 	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_DEFAULT_BUCKLE))
 		return FALSE
 	// todo: refactor below
 	if(user.incapacitated())
 		return TRUE
 	// end
-	if(!ismob(A) || (A in buckled_mobs))
+	if(A in buckled_mobs)
 		to_chat(user, SPAN_WARNING("[A] is already buckled to [src]!"))
 		return TRUE
 	user_buckle_mob(A, BUCKLE_OP_DEFAULT_INTERACTION, user)
@@ -50,11 +52,13 @@
 	. = TRUE
 	if(!has_buckled_mobs())
 		return FALSE
+	if(!isliving(user))
+		return FALSE
 	// todo: refactor below
 	if(user.incapacitated())
 		return TRUE
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_CLICK_UNBUCKLE_INTERACTION, user) & COMPONENT_HANDLED_BUCKLE_INTERACTION)
-		return
+		return TRUE
 	if(!buckle_allowed || (buckle_flags & BUCKLING_NO_DEFAULT_UNBUCKLE))
 		return FALSE
 	// end

@@ -3,7 +3,7 @@
 	name = "magboots"
 	icon_state = "magboots0"
 	clothing_flags = PHORONGUARD
-	item_state_slots = list(slot_r_hand_str = "magboots", slot_l_hand_str = "magboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "magboots", SLOT_ID_LEFT_HAND = "magboots")
 	species_restricted = null
 	force = 3
 	overshoes = 1

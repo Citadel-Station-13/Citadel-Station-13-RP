@@ -135,7 +135,7 @@
 	return
 
 
-/obj/structure/window/ex_act(severity)
+/obj/structure/window/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -184,7 +184,7 @@
 
 /obj/structure/window/setDir(newdir)
 	. = ..()
-	update_nearby_tiles(need_rebuild = TRUE)
+	update_nearby_tiles()
 
 /obj/structure/window/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
 	. = ..()
@@ -209,7 +209,7 @@
 
 /obj/structure/window/attack_hand(mob/user as mob)
 	user.setClickCooldown(user.get_attack_speed())
-	if(HULK in user.mutations)
+	if(MUTATION_HULK in user.mutations)
 		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!"))
 		user.visible_message("<span class='danger'>[user] smashes through [src]!</span>")
 		user.do_attack_animation(src)
@@ -398,7 +398,7 @@
 
 	health = maxhealth
 
-	update_nearby_tiles(need_rebuild = TRUE)
+	update_nearby_tiles()
 	update_nearby_icons()
 
 /obj/structure/window/Destroy()
@@ -417,7 +417,7 @@
 
 /obj/structure/window/Moved()
 	. = ..()
-	update_nearby_tiles(need_rebuild = TRUE)
+	update_nearby_tiles()
 
 //checks if this window is full-tile one
 /obj/structure/window/proc/is_fulltile()

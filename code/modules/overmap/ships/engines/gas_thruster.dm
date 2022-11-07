@@ -82,7 +82,7 @@
 /obj/machinery/atmospherics/component/unary/engine/Initialize(mapload)
 	. = ..()
 	controller = new(src)
-	update_nearby_tiles(need_rebuild=1)
+	update_nearby_tiles()
 	if(SSshuttle.initialized)
 		link_to_ship()
 

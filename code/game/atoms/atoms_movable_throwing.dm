@@ -194,7 +194,8 @@
 			if(calculated_speed <= 0)
 				return
 		// user zones
-		zone = L.zone_sel.selecting
+		if(L.zone_sel)	// incase simplemob
+			zone = L.zone_sel.selecting
 
 	var/datum/thrownthing/TT
 	if(emulated)

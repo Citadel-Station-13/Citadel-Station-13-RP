@@ -379,11 +379,14 @@
 			busy = TRUE
 			if(do_mob(src, H, 60))
 				if(!H.handcuffed)
+					var/type
 					if(istype(H.back, /obj/item/rig) && istype(H.gloves,/obj/item/clothing/gloves/gauntlets/rig))
-						H.handcuffed = new /obj/item/handcuffs/cable(H) // Better to be cable cuffed than stun-locked
+						type = /obj/item/handcuffs/cable // Better to be cable cuffed than stun-locked
 					else
-						H.handcuffed = new /obj/item/handcuffs(H)
-					H.update_handcuffed()
+						type = /obj/item/handcuffs
+					var/obj/item/handcuffs/hc = new type(H)
+					// force equip because no mercy
+					H.force_equip_to_slot_or_del(hc, SLOT_ID_HANDCUFFED, user = src)
 			busy = FALSE
 	else if(istype(M, /mob/living))
 		var/mob/living/L = M
@@ -469,8 +472,8 @@
 	icon = 'icons/obj/aibots.dmi'
 	icon_state = "helmet_signaler"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_hats.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_hats.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_hats.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_hats.dmi',
 			)
 	item_state = "helmet"
 	var/build_step = 0

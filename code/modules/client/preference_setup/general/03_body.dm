@@ -231,7 +231,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		. += "Skin Tone: <a href='?src=\ref[src];skin_tone=1'>[-pref.s_tone + 35]/220</a><br>"
 	if(has_flag(mob_species, HAS_BASE_SKIN_COLOR))
 		. += "Base Colour: <a href='?src=\ref[src];base_skin=1'>[pref.s_base]</a><br>"
-	. += "Needs Glasses: <a href='?src=\ref[src];disabilities=[NEARSIGHTED]'><b>[pref.disabilities & NEARSIGHTED ? "Yes" : "No"]</b></a><br>"
+	. += "Needs Glasses: <a href='?src=\ref[src];disabilities=[DISABILITY_NEARSIGHTED]'><b>[pref.disabilities & DISABILITY_NEARSIGHTED ? "Yes" : "No"]</b></a><br>"
 	. += "Limbs: <a href='?src=\ref[src];limbs=1'>Adjust</a> <a href='?src=\ref[src];reset_limbs=1'>Reset</a><br>"
 	. += "Internal Organs: <a href='?src=\ref[src];organs=1'>Adjust</a><br>"
 	. += "Respawn Method: <a href='?src=\ref[src];mirror=1'><b>[pref.mirror ? "Mirror" : "Off-Site Cloning"]</b></a><br>"
@@ -556,16 +556,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			pref.grad_style = valid_gradients[1]
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
-	else if(href_list["facial_color"])
-		if(!has_flag(mob_species, HAS_HAIR_COLOR))
-			return TOPIC_NOACTION
-		var/new_facial = input(user, "Choose your character's facial-hair colour:", "Character Preference", rgb(pref.r_facial, pref.g_facial, pref.b_facial)) as color|null
-		if(new_facial && has_flag(mob_species, HAS_HAIR_COLOR) && CanUseTopic(user))
-			pref.r_facial = hex2num(copytext(new_facial, 2, 4))
-			pref.g_facial = hex2num(copytext(new_facial, 4, 6))
-			pref.b_facial = hex2num(copytext(new_facial, 6, 8))
-			return TOPIC_REFRESH_UPDATE_PREVIEW
-
 	else if(href_list["eye_color"])
 		if(!has_flag(mob_species, HAS_EYE_COLOR))
 			return TOPIC_NOACTION
@@ -602,11 +592,21 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			pref.s_base = new_s_base
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
+	else if(href_list["facial_color"])
+		if(!has_flag(mob_species, HAS_HAIR_COLOR))
+			return TOPIC_NOACTION
+		var/new_facial = input(user, "Choose your character's facial-hair colour:", "Character Preference", rgb(pref.r_facial, pref.g_facial, pref.b_facial)) as color|null
+		if(new_facial && has_flag(mob_species, HAS_HAIR_COLOR) && CanUseTopic(user))
+			pref.r_facial = hex2num(copytext(new_facial, 2, 4))
+			pref.g_facial = hex2num(copytext(new_facial, 4, 6))
+			pref.b_facial = hex2num(copytext(new_facial, 6, 8))
+			return TOPIC_REFRESH_UPDATE_PREVIEW
+
 	else if(href_list["facial_style"])
 		var/list/valid_facialhairstyles = pref.get_valid_facialhairstyles()
 
 		var/new_f_style = input(user, "Choose your character's facial-hair style:", "Character Preference", pref.f_style)  as null|anything in valid_facialhairstyles
-		if(new_f_style && has_flag(mob_species, HAS_HAIR_COLOR) && CanUseTopic(user))
+		if(new_f_style && CanUseTopic(user))
 			pref.f_style = new_f_style
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
@@ -643,18 +643,18 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		var/M = href_list["marking_up"]
 		var/start = pref.body_markings.Find(M)
 		if(start != 1) //If we're not the beginning of the list, swap with the previous element.
-			moveElement(pref.body_markings, start, start-1)
+			move_element(pref.body_markings, start, start-1)
 		else //But if we ARE, become the final element -ahead- of everything else.
-			moveElement(pref.body_markings, start, pref.body_markings.len+1)
+			move_element(pref.body_markings, start, pref.body_markings.len+1)
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["marking_down"])
 		var/M = href_list["marking_down"]
 		var/start = pref.body_markings.Find(M)
 		if(start != pref.body_markings.len) //If we're not the end of the list, swap with the next element.
-			moveElement(pref.body_markings, start, start+2)
+			move_element(pref.body_markings, start, start+2)
 		else //But if we ARE, become the first element -behind- everything else.
-			moveElement(pref.body_markings, start, 1)
+			move_element(pref.body_markings, start, 1)
 		return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["marking_move"])
@@ -667,7 +667,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		var/inject_after = input(user, "Move [M] ahead of...", "Character Preference") as null|anything in move_locs //Move ahead of any marking that isn't the current or previous one.
 		var/newpos = pref.body_markings.Find(inject_after)
 		if(newpos)
-			moveElement(pref.body_markings, start, newpos+1)
+			move_element(pref.body_markings, start, newpos+1)
 			return TOPIC_REFRESH_UPDATE_PREVIEW
 
 	else if(href_list["marking_remove"])

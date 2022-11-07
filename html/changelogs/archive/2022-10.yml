@@ -95,3 +95,45 @@
   Zandario:
   - bugfix: You'll no longer be "a a gynoid" / "an a android"
   - refactor: Species examine text is de-duplicated.
+2022-10-13:
+  Captain277:
+  - bugfix: Fixes bad path in rocket unload proc.
+  - bugfix: Restores Dufflebag of Holding icons.
+  - tweak: Tweaks storage contents for hooded suits.
+  - bugfix: Fixes issue with rockets firing even after expended.
+  G0atman:
+  - rscadd: '"url": "https://files.catbox.moe/9kd1dl.m4a",'
+  - rscdel: '"url": "https://files.catbox.moe/0rlr3j.m4a",'
+  TheLordME:
+  - tweak: tweaked heat pumps to connect to aux and normal pipe layer
+  - balance: rebalanced gas cooler and gas heater magic factor
+  - admin: the cheat factor of gas coolers and gas heaters can be adjusted by admins
+  - code_imp: removes an old debug log entry I forgot about....
+  - tweak: tweaked derlict drone fab dont show on the list until cleared by a player
+  - code_imp: adds a var to drone fabricators to signal them to not show up on the
+      drone list until cleared
+2022-10-14:
+  TheLordME:
+  - bugfix: fixed a the fireplace and bonfire eating its fuel basicly instantly
+  Zandario:
+  - rscadd: Particles to bonfires
+  - rscadd: /obj/effect/abstract/particle_holder
+  - imageadd: several particle DMIs
+  - bugfix: Alarune and apidaen "cannot read null.nutrition" runtimes.
+  - server: Byond Minor Version bumped to 1588.
+  silicons:
+  - rscadd: new item rendering system, please report bugs
+  - refactor: items now can support species-default-icons and per-file-icons. A new
+      worn rendering system has been added that is extensible, modular, and will help
+      when we implement emissives.
+  - code_imp: all future item PRs/item containing PRs MUST USE PER FILE when possible,
+      to reduce the bloat in default icons
+  - rscdel: 'some useless files that weren''t used for years icon: some inhand files
+      were merged (ironically) because they were too small for default files to justify
+      another category'
+  - code_imp: get_flat_icon has been optimized and rewritten.
+2022-10-16:
+  Captain277:
+  - rscadd: Adds Neuratrextate.
+  - rscadd: Adds Cybernetic Rejection Syndrome.
+  - rscadd: Adds the Goliath.

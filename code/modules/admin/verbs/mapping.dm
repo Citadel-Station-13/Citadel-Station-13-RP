@@ -218,7 +218,8 @@ var/list/debug_verbs = list (
 	set category = "ZAS"
 	set name = "Check ZAS connections"
 
-	if(!check_rights(R_DEBUG)) return
+	if(!check_rights(R_DEBUG))
+		return
 	testZAScolors_remove()
 
 	var/turf/simulated/location = get_turf(usr)
@@ -240,6 +241,9 @@ var/list/debug_verbs = list (
 		usedZAScolors = 1
 
 	testZAScolors_zones += location.zone
+	if(!location.zone)
+		to_chat(usr, "No zone in location!")
+		return
 	for(var/turf/T in location.zone.contents)
 		images += image(green, T,"zasdebug", TURF_LAYER)
 		testZAScolors_turfs += T

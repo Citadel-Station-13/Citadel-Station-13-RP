@@ -77,7 +77,7 @@
 	healthcheck()
 	return
 
-/obj/effect/alien/resin/ex_act(severity)
+/obj/effect/alien/resin/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			health-=50
@@ -106,7 +106,7 @@
 
 /obj/effect/alien/resin/attack_hand()
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	if (HULK in usr.mutations)
+	if (MUTATION_HULK in usr.mutations)
 		to_chat(usr, "<span class='notice'>You easily destroy the [name].</span>")
 		for(var/mob/O in oviewers(src))
 			O.show_message("<span class='warning'>[usr] destroys the [name]!</span>", 1)
@@ -307,7 +307,7 @@ Alien plants should do something if theres a lot of poison
 				W.process()
 
 
-/obj/effect/alien/weeds/ex_act(severity)
+/obj/effect/alien/weeds/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)

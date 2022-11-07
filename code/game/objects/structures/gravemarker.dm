@@ -84,7 +84,7 @@
 
 	return
 
-/obj/structure/gravemarker/ex_act(severity)
+/obj/structure/gravemarker/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			visible_message("<span class='danger'>\The [src] is blown apart!</span>")

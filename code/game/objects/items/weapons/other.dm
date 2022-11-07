@@ -113,8 +113,8 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "cane"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 	force = 5.0
 	throw_force = 7.0
@@ -192,8 +192,8 @@
 	desc = "A telescopic white cane. They are commonly used by the blind or visually impaired as a mobility tool or as a courtesy to others."
 	icon_state = "whitecane1in"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 		)
 	slot_flags = SLOT_BELT
 	w_class = ITEMSIZE_SMALL
@@ -209,7 +209,7 @@
 			SPAN_HEAR("You hear an ominous click."),
 		)
 		icon_state = "whitecane1out"
-		item_state_slots = list(slot_r_hand_str = "whitecane", slot_l_hand_str = "whitecane")
+		item_state_slots = list(SLOT_ID_RIGHT_HAND = "whitecane", SLOT_ID_LEFT_HAND = "whitecane")
 		w_class = ITEMSIZE_NORMAL
 		force = 5
 		attack_verb = list("smacked", "struck", "cracked", "beaten")
@@ -220,7 +220,7 @@
 			SPAN_HEAR("You hear a click."),
 		)
 		icon_state = "whitecane1in"
-		item_state_slots = list(slot_r_hand_str = null, slot_l_hand_str = null)
+		item_state_slots = list(SLOT_ID_RIGHT_HAND = null, SLOT_ID_LEFT_HAND = null)
 		w_class = ITEMSIZE_SMALL
 		force = 3
 		attack_verb = list("hit", "poked", "prodded")
@@ -350,8 +350,8 @@
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "staff"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 	)
 	force = 3.0
 	throw_force = 5.0

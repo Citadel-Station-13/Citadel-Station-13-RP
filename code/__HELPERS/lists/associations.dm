@@ -3,7 +3,10 @@
 #error contents via list.values, if that is true remove this
 #error otherwise, update the version and bug lummox
 #endif
-//Flattens a keyed list into a list of it's contents
+
+/**
+ * Flattens a keyed list into a list of it's contents.
+ */
 /proc/flatten_list_nodupe(list/key_list)
 	if(!islist(key_list))
 		return null
@@ -47,8 +50,12 @@
 			L["[key]"] = "[value]"
 	return list2params(L)
 
-//takes an input_key, as text, and the list of keys already used, outputting a replacement key in the format of "[input_key] ([number_of_duplicates])" if it finds a duplicate
-//use this for lists of things that might have the same name, like mobs or objects, that you plan on giving to a player as input
+/**
+ * Takes an input_key, as text, and the list of keys already used, outputting a replacement key
+ * in the format of "[input_key] ([number_of_duplicates])" if it finds a duplicate use this for
+ * lists of things that might have the same name, like mobs or objects, that you plan on giving
+ * to a player as input.
+ */
 /proc/avoid_assoc_duplicate_keys(input_key, list/used_key_list)
 	if(!input_key || !istype(used_key_list))
 		return
@@ -59,8 +66,10 @@
 		used_key_list[input_key] = 1
 	return input_key
 
-// Return a list of the values in an assoc list (including null)
-/proc/list_values(var/list/L)
+/**
+ * Return a list of the values in an assoc list (including null)
+ */
+/proc/list_values(list/L)
 	. = list()
 	for(var/e in L)
 		. += L[e]

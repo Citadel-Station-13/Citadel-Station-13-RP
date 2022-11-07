@@ -40,6 +40,7 @@ DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(SURGICAL_TOOL),
 	BITFIELD(IN_STORAGE),
 	BITFIELD(ITEM_THROW_UNCATCHABLE),
+	BITFIELD(ITEM_NO_TOOL_ATTACK),
 ))
 
 //! Flags for the clothing_flags var on /obj/item

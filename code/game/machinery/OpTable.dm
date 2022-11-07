@@ -30,7 +30,7 @@
 //	spawn(100) //Wont the MC just call this process() before and at the 10 second mark anyway?
 //		process()
 
-/obj/machinery/optable/ex_act(severity)
+/obj/machinery/optable/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			//SN src = null
@@ -46,7 +46,7 @@
 				density = 0
 
 /obj/machinery/optable/attack_hand(mob/user)
-	if(HULK in usr.mutations)
+	if(MUTATION_HULK in usr.mutations)
 		visible_message(SPAN_DANGER("\The [usr] destroys \the [src]!"))
 		density = FALSE
 		qdel(src)

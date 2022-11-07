@@ -2,7 +2,7 @@
 Contains most of the procs that are called when a mob is attacked by something
 
 bullet_act
-ex_act
+legacy_ex_act
 meteor_act
 emp_act
 
@@ -297,7 +297,7 @@ emp_act
 				location.add_blood(src)
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
-				if(get_dist(H, src) <= 1) //people with TK won't get smeared with blood
+				if(get_dist(H, src) <= 1) //people with MUTATION_TELEKINESIS won't get smeared with blood
 					H.bloody_body(src)
 					H.bloody_hands(src)
 

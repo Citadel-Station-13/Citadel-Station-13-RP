@@ -72,8 +72,8 @@
 	desc = "This is an expensive, modern recreation of an antique laser gun. This gun has several unique firemodes, but lacks the ability to recharge over time."
 	icon = 'icons/obj/multiphase.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/inhands/guns_left.dmi',
-		slot_r_hand_str = 'icons/mob/inhands/guns_right.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/inhands/guns_left.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/inhands/guns_right.dmi',
 		)
 	icon_state = "multiphasedis100"
 	projectile_type = /obj/item/projectile/beam/stun/disabler

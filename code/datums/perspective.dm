@@ -188,7 +188,7 @@
 	C.mob.see_in_dark = see_in_dark
 	C.mob.see_invisible = see_invisible
 	if(view_size)
-		C.change_view(view_size)
+		C.change_view(view_size, TRUE)
 
 /**
  * update all viewers
@@ -299,7 +299,7 @@
 	view_size = new_size
 	if(change)
 		for(var/client/C as anything in clients)
-			C.change_view(new_size)
+			C.change_view(new_size, TRUE)
 
 /datum/perspective/proc/considered_remote(mob/M)
 	return eye == M

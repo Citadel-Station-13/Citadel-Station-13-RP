@@ -83,7 +83,7 @@
 
 
 // Exploding.
-/mob/living/simple_mob/ex_act(severity)
+/mob/living/simple_mob/legacy_ex_act(severity)
 	if(!blinded)
 		flash_eyes()
 	var/armor = run_armor_check(def_zone = null, attack_flag = "bomb")

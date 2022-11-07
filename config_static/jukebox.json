@@ -8217,7 +8217,7 @@
 "genre": "Rock"
 },
 {
-"url": "https://files.catbox.moe/0rlr3j.m4a",
+"url": "https://files.catbox.moe/9kd1dl.m4a",
 "title": "[ERR#$][ERROR!]Rats",
 "duration": 1060,
 "artist": "WittyUsername",
@@ -8401,9 +8401,9 @@
 "genre": "Rock"
 },
 {
-"url": "https://files.catbox.moe/al4aga.m4a",
+"url": "https://files.catbox.moe/amxw0j.mp3",
 "title": "Группа крови (Gruppa Krovi) [Blood Type]",
-"duration": 2830,
+"duration": 2840,
 "artist": "Кино́ (Kino)",
 "secret": false,
 "lobby": false,
@@ -8465,6 +8465,46 @@
 "title": "Misery Business",
 "duration": 2030,
 "artist": "Paramore",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/vkx7jp.mp3",
+"title": "First of the Gang to Die",
+"duration": 2180,
+"artist": "Morrissey",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/zvw9zg.mp3",
+"title": "A Day in the Life",
+"duration": 3120,
+"artist": "The Beatles",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/jggdzg.mp3",
+"title": "Kid Dynamo",
+"duration": 2150,
+"artist": "The Buggles",
+"secret": false,
+"lobby": false,
+"jukebox": true,
+"genre": "Rock"
+},
+{
+"url": "https://files.catbox.moe/1dk4e4.mp3",
+"title": "Cold Cold Cold",
+"duration": 2160,
+"artist": "Cage the Elephant",
 "secret": false,
 "lobby": false,
 "jukebox": true,

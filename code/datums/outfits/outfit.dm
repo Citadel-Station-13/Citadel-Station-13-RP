@@ -5,7 +5,7 @@
 		if(initial(O.abstract_type) == path)
 			continue
 		. += new path
-	sortTim(., /proc/cmp_name_asc)
+	tim_sort(., /proc/cmp_name_asc)
 
 /datum/outfit
 	/// the outfit's name
@@ -167,7 +167,7 @@
 		pda.name = "PDA-[H.real_name] ([assignment])"
 		if(H.client.prefs.ringtone) // if null we use the job default
 			pda.ringtone = H.client.prefs.ringtone
-		sortTim(GLOB.PDAs, /proc/cmp_name_asc)
+		tim_sort(GLOB.PDAs, /proc/cmp_name_asc)
 		return pda
 
 /datum/outfit/dd_SortValue()
@@ -195,7 +195,7 @@
 
 /datum/outfit/JSDF/Marine/equip_id(mob/living/carbon/human/H)
 	var/obj/item/card/id/C = ..()
-	C.name = "[H.real_name]'s military ID Card"
+	C.name = "[H?.real_name]'s military ID Card"
 	C.icon_state = "lifetime"
 	C.assignment = "JSDF"
 	C.registered_name = H.real_name

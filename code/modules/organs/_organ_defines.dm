@@ -22,7 +22,7 @@ var/list/organ_cache = list()
 	var/vital
 	/// Current damage to the organ
 	var/damage = 0
-	/// Flag for what kind of robotic organ, if valid.
+	/// What kind of robotic organ, if valid.
 	var/robotic = 0
 	/// If true, this organ can't feel pain.
 	var/stapled_nerves = FALSE

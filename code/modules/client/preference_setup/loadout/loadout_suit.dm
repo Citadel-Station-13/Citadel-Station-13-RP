@@ -91,7 +91,7 @@
 	for(var/military_style in typesof(/obj/item/clothing/suit/storage/miljacket))
 		var/obj/item/clothing/suit/storage/miljacket/miljacket = military_style
 		mil_jackets[initial(miljacket.name)] = miljacket
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(mil_jackets, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(mil_jackets, /proc/cmp_text_asc))
 
 /datum/gear/suit/greyjacket
 	name = "Jacket - Grey"
@@ -123,7 +123,7 @@
 	for(var/hazard_style in typesof(/obj/item/clothing/suit/storage/hazardvest))
 		var/obj/item/clothing/suit/storage/hazardvest/hazardvest = hazard_style
 		hazards[initial(hazardvest.name)] = hazardvest
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(hazards, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(hazards, /proc/cmp_text_asc))
 
 /datum/gear/suit/hoodie
 	name = "Hoodie - Selection"
@@ -135,7 +135,7 @@
 	for(var/hoodie_style in typesof(/obj/item/clothing/suit/storage/toggle/hoodie))
 		var/obj/item/clothing/suit/storage/toggle/hoodie/hoodie = hoodie_style
 		hoodies[initial(hoodie.name)] = hoodie
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(hoodies, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(hoodies, /proc/cmp_text_asc))
 
 /datum/gear/suit/labcoat
 	name = "Labcoat"
@@ -159,7 +159,7 @@
 	for(var/poncho_style in (typesof(/obj/item/clothing/accessory/poncho) - typesof(/obj/item/clothing/accessory/poncho/roles)))
 		var/obj/item/clothing/accessory/poncho/poncho = poncho_style
 		ponchos[initial(poncho.name)] = poncho
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(ponchos, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(ponchos, /proc/cmp_text_asc))
 
 // A colorable cloak
 /datum/gear/suit/roles/poncho/cloak
@@ -240,7 +240,7 @@
 	for(var/varsity_style in typesof(/obj/item/clothing/suit/varsity))
 		var/obj/item/clothing/suit/varsity/varsity = varsity_style
 		varsities[initial(varsity.name)] = varsity
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(varsities, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(varsities, /proc/cmp_text_asc))
 
 /datum/gear/suit/track
 	name = "Track Jacket - Selection"
@@ -252,7 +252,7 @@
 	for(var/track_style in typesof(/obj/item/clothing/suit/storage/toggle/track))
 		var/obj/item/clothing/suit/storage/toggle/track/track = track_style
 		tracks[initial(track.name)] = track
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(tracks, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(tracks, /proc/cmp_text_asc))
 
 /datum/gear/suit/flannel
 	name = "Flannel - Grey"
@@ -344,15 +344,15 @@
 
 /datum/gear/suit/runnerjacket
 	name = "Runner Jacket"
-	path = /obj/item/clothing/suit/storage/runner
+	path = /obj/item/clothing/suit/storage/hooded/runner
+
+/datum/gear/suit/halfpintjacket
+	name = "Half-Pint Jacket"
+	path = /obj/item/clothing/suit/storage/hooded/runner/half_pint
 
 /datum/gear/suit/halfmoon
 	name = "Half Moon Jacket"
 	path = /obj/item/clothing/suit/storage/runner/half_moon
-
-/datum/gear/suit/halfpintjacket
-	name = "Half-Pint Jacket"
-	path = /obj/item/clothing/suit/storage/toggle/half_pint
 
 /datum/gear/suit/labcoat_colorable
 	name = "Labcoat - Colorable"
@@ -372,7 +372,7 @@
 	for(var/the_jacket in typesof(/obj/item/clothing/suit/storage/fluff/jacket))
 		var/obj/item/clothing/suit/jacket_type = the_jacket
 		the_jackets[initial(jacket_type.name)] = jacket_type
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(the_jackets, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(the_jackets, /proc/cmp_text_asc))
 
 /datum/gear/suit/gntop
 	name = "GN Crop Jacket"
@@ -436,7 +436,7 @@
 	for(var/pullover_style in typesof(/obj/item/clothing/suit/storage/pullover))
 		var/obj/item/clothing/suit/storage/pullover/pullover = pullover_style
 		pullovers[initial(pullover.name)] = pullover
-	gear_tweaks += new/datum/gear_tweak/path(sortTim(pullovers, /proc/cmp_text_asc))
+	gear_tweaks += new/datum/gear_tweak/path(tim_sort(pullovers, /proc/cmp_text_asc))
 
 /datum/gear/suit/antediluvian
 	name = "Antediluvian Cloak"

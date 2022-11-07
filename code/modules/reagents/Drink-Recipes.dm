@@ -427,27 +427,6 @@
 	required_reagents = list("martini" = 1, "vodka" = 1)
 	result_amount = 2
 
-/datum/chemical_reaction/drinks/demonsblood
-	name = "Demons Blood"
-	id = "demonsblood"
-	result = "demonsblood"
-	required_reagents = list("rum" = 3, "spacemountainwind" = 1, "blood" = 1, "dr_gibb" = 1)
-	result_amount = 6
-
-/datum/chemical_reaction/drinks/narsour //wanted to keep these near the other blood cocktails - Doom
-	name = "Nar'Sour"
-	id = "narsour"
-	result = "narsour"
-	required_reagents = list("blood" = 1, "demonsblood" = 1, "lemonjuice" = 1)
-	result_amount = 3
-
-/datum/chemical_reaction/drinks/narsian
-	name = "Nar'Sian"
-	id = "narsian"
-	result = "narsian"
-	required_reagents = list("narsour" = 1, "thebestboy" = 1)
-	result_amount = 2
-
 /datum/chemical_reaction/drinks/booger
 	name = "Booger"
 	id = "booger"
@@ -510,13 +489,6 @@
 	result = "sbiten"
 	required_reagents = list("vodka" = 10, "capsaicin" = 1)
 	result_amount = 10
-
-/datum/chemical_reaction/drinks/red_mead
-	name = "Red Mead"
-	id = "red_mead"
-	result = "red_mead"
-	required_reagents = list("blood" = 1, "mead" = 1)
-	result_amount = 2
 
 /datum/chemical_reaction/drinks/mead
 	name = "Mead"
@@ -623,13 +595,6 @@
 	result = "erikasurprise"
 	required_reagents = list("ale" = 2, "limejuice" = 1, "whiskey" = 1, "banana" = 1, "ice" = 1)
 	result_amount = 6
-
-/datum/chemical_reaction/drinks/devilskiss
-	name = "Devils Kiss"
-	id = "devilskiss"
-	result = "devilskiss"
-	required_reagents = list("blood" = 1, "kahlua" = 1, "rum" = 1)
-	result_amount = 3
 
 /datum/chemical_reaction/drinks/hippiesdelight
 	name = "Hippies Delight"
@@ -1368,13 +1333,6 @@
 	required_reagents = list("sassafras" = 2, MAT_GOLD = 2, "whiskey" = 1)
 	result_amount = 5
 
-/datum/chemical_reaction/drinks/bloodmeridian
-	name = "Blood Meridian"
-	id = "bloodmeridian"
-	result = "bloodmeridian"
-	required_reagents = list("sassafras" = 1, "vodkatonic" = 1, "blood" = 3, "egg" = 1, "bluecuracao" = 1)
-	result_amount = 5
-
 /datum/chemical_reaction/drinks/theoutlaw
 	name = "The Outlaw"
 	id = "theoutlaw"
@@ -1477,7 +1435,7 @@
 	name = "Sweet Rush"
 	id = "sugarrush"
 	result = "sugarrush"
-	required_reagents = list("sugar" = 1, "sodawater" = 1, "vodka" =1)
+	required_reagents = list("sugar" = 1, "sodawater" = 1, "grenadine" =1)
 	result_amount = 3
 
 /datum/chemical_reaction/drinks/sbagliato
@@ -1691,13 +1649,6 @@
 	required_reagents = list("whiskey" = 1, "cider" = 1, "tonic" = 1, "ice" = 1, "honey" = 1)
 	result_amount = 5
 
-/datum/chemical_reaction/drinks/maryonacross
-	name = "Mary On a Cross"
-	id = "maryonacross"
-	result = "maryonacross"
-	required_reagents = list("bloodymary" = 2, "blood" = 1, "holywater" = 1, "vodka" = 1)
-	result_amount = 5
-
 /datum/chemical_reaction/drinks/royaljelly
 	name = "Royal Jelly"
 	id = "royaljelly"
@@ -1756,9 +1707,9 @@
 	result_amount = 5
 
 /datum/chemical_reaction/drinks/mochabubbletea
-	name = "Matcha Bubble Tea"
-	id = "matchabubbletea"
-	result = "matchabubbletea"
+	name = "Mocha Bubble Tea"
+	id = "mochaabubbletea"
+	result = "mochabubbletea"
 	required_reagents = list("chocobubbletea" = 5, "coffee" = 1)
 	result_amount = 5
 
@@ -1768,3 +1719,121 @@
 	result = "pinacolada"
 	required_reagents = list("rum" = 1, "pineapplejuice" = 1, "coconutmilk" = 1, "ice" = 1)
 	result_amount = 3
+
+
+//Blud-based Cocktails
+//All of these drinks should contain some level of blood_content in their reagent code
+
+/datum/chemical_reaction/drinks/nightsdelight
+	name = "Night's Delight"
+	id = "nightsdelight"
+	result = "nightsdelight"
+	required_reagents = list("specialwhiskey" = 1, "blud" = 1, "absinthe" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/bludsfizz
+	name = "Blud's Fizz"
+	id = "bludsfizz"
+	result = "bludsfizz"
+	required_reagents = list("champagne" = 1, "orangejuice" = 1, "blud" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/wronghat
+	name = "Wrong Hat"
+	id = "wronghat"
+	result = "wronghat"
+	required_reagents = list("wine" = 1, "blud" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/drinks/braindrain
+	name = "Brain Drain"
+	id = "braindrain"
+	result = "braindrain"
+	required_reagents = list("blud" = 1, "vodka" = 1, "kahlua" = 1)
+	result_amount = 3\
+
+//Blood-based Cocktails
+//All of these drinks should contain some level of blood_content in their reagent code
+
+/datum/chemical_reaction/drinks/bloodmeridian
+	name = "Blood Meridian"
+	id = "bloodmeridian"
+	result = "bloodmeridian"
+	required_reagents = list("sassafras" = 1, "vodkatonic" = 1, "blood" = 3, "egg" = 1, "bluecuracao" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/demonsblood
+	name = "Demons Blood"
+	id = "demonsblood"
+	result = "demonsblood"
+	required_reagents = list("rum" = 3, "spacemountainwind" = 1, "blood" = 1, "dr_gibb" = 1)
+	result_amount = 6
+
+/datum/chemical_reaction/drinks/devilskiss
+	name = "Devils Kiss"
+	id = "devilskiss"
+	result = "devilskiss"
+	required_reagents = list("blood" = 1, "kahlua" = 1, "rum" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/maryonacross
+	name = "Mary On a Cross"
+	id = "maryonacross"
+	result = "maryonacross"
+	required_reagents = list("bloodymary" = 2, "blood" = 1, "holywater" = 1, "vodka" = 1)
+	result_amount = 5
+
+/datum/chemical_reaction/drinks/narsian
+	name = "Nar'Sian"
+	id = "narsian"
+	result = "narsian"
+	required_reagents = list("narsour" = 1, "thebestboy" = 1)
+	result_amount = 2
+
+/datum/chemical_reaction/drinks/narsour
+	name = "Nar'Sour"
+	id = "narsour"
+	result = "narsour"
+	required_reagents = list("blood" = 1, "demonsblood" = 1, "lemonjuice" = 1)
+	result_amount = 3
+
+/datum/chemical_reaction/drinks/red_mead
+	name = "Red Mead"
+	id = "red_mead"
+	result = "red_mead"
+	required_reagents = list("blood" = 1, "mead" = 1)
+	result_amount = 2
+
+// Unathi drinks
+
+/datum/chemical_reaction/skrianhi
+	name = "Skrianhi Tea"
+	id = "skrianhitea"
+	result = "skrianhitea"
+	required_reagents = list("unathijuice" = 2, "water" = 1)
+	result_amount = 3
+	mix_message = "The tea turns a bitter black."
+
+/datum/chemical_reaction/mumbaksting
+	name = "Mumbak Sting"
+	id = "mumbaksting"
+	result = "mumbaksting"
+	required_reagents = list("unathijuice" = 2, "toxin" = 1)
+	result_amount = 3
+	mix_message = "The toxins mix with the juice to create a dark red substance."
+
+/datum/chemical_reaction/wasgaelhi
+	name = "Wasgaelhi"
+	id = "wasgaelhi"
+	result = "wasgaelhi"
+	required_reagents = list("unathijuice" = 2, "wine" = 1)
+	result_amount = 3
+	mix_message = "The mixture turns a dull purple."
+
+/datum/chemical_reaction/kzkzaa
+	name = "Kzkzaa"
+	id = "kzkzaa"
+	result = "kzkzaa"
+	required_reagents = list("unathijuice" = 2, "protein" = 1)
+	result_amount = 3
+	mix_message = "The mixture turns a deep orange."

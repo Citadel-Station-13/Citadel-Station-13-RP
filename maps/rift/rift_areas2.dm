@@ -253,6 +253,39 @@
 /area/outpost/mining_main/outpost/substation
 	name = "\improper Outpost Substation"
 
+/area/outpost/mining_main/outpost/near_gateway
+	name = "\improper Mining Outpost"
+
+/area/outpost/mining_main/outpost/washrooms
+	name = "\improper Mining Outpost Washrooms"
+
+/area/outpost/mining_main/outpost/recreation
+	name = "\improper Mining Outpost Recreation"
+
+/area/outpost/mining_main/outpost/storage
+	name = "\improper Mining Outpost Storage"
+/area/outpost/mining_main/outpost/airlock/one
+	name = "\improper Mining Outpost Exterior Airlock"
+
+/area/outpost/mining_main/outpost/airlock/two
+	name = "\improper Mining Outpost Exterior Airlock"
+
+/area/outpost/mining_main/outpost/airlock/three
+	name = "\improper Mining Outpost Exterior Airlock"
+
+/area/outpost/mining_main/outpost/maintenance
+	name = "\improper Outpost Maintence"
+	area_flags = AREA_RAD_SHIELDED
+	sound_env = TUNNEL_ENCLOSED
+	turf_initializer = new /datum/turf_initializer/maintenance()
+	ambience = AMBIENCE_MAINTENANCE
+
+/area/outpost/mining_main/outpost/maintenance/south
+	name = "\improper Outpost Maintence South"
+
+/area/outpost/mining_main/outpost/maintenance/north
+	name = "\improper Outpost Maintence North"
+
 // Solars map areas
 /area/tether/outpost/solars_outside
 	name = "\improper Solar Farm"

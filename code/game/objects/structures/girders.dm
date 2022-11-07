@@ -293,14 +293,14 @@
 	qdel(src)
 
 /obj/structure/girder/attack_hand(mob/user as mob)
-	if (HULK in user.mutations)
+	if (MUTATION_HULK in user.mutations)
 		visible_message("<span class='danger'>[user] smashes [src] apart!</span>")
 		dismantle()
 		return
 	return ..()
 
 
-/obj/structure/girder/ex_act(severity)
+/obj/structure/girder/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)

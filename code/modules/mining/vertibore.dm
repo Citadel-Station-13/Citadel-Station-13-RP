@@ -82,7 +82,7 @@
 		return
 	if(cell.use(power_cost) && do_after(user, 2.5 SECONDS))
 		var/turf/T = get_turf(user)
-		T.ex_act(1)
+		LEGACY_EX_ACT(T, 1, null)
 
 /obj/item/vertibore/update_icon()
 	var/list/overlays_to_add = list()

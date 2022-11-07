@@ -20,6 +20,20 @@
 						prisoners that have been processed and brigged, and are responsible for their well being. The Warden is also in charge of distributing \
 						Armoury gear in a crisis, and retrieving it when the crisis has passed. In an emergency, the Warden may be called upon to direct the \
 						Security Department as a whole."
+	alt_titles = list(
+		"Brig Governor" = /datum/alt_title/warden/brig_governor,
+		"Jailor" = /datum/alt_title/warden/jailor,
+		"Dispatch Officer" = /datum/alt_title/warden/dispatch_officer
+		)
+
+/datum/alt_title/warden/brig_governor
+	title = "Brig Governor"
+
+/datum/alt_title/warden/jailor
+	title = "Jailor"
+
+/datum/alt_title/warden/dispatch_officer
+	title = "Dispatch Officer"
 
 /datum/outfit/job/station/warden
 	name = OUTFIT_JOB_NAME("Warden")
