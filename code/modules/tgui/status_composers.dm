@@ -73,7 +73,8 @@
 
 /mob/living/silicon/robot/get_ui_access(atom/source)
 	// Robots can interact with anything they can see.
-	if(get_dist(src, source) <= min(client.current_viewport_width, client.current_viewport_height))
+	// todo: in view range for zooming
+	if(get_dist(src, source) <= min(CEILING(client.current_viewport_width / 2, 1), CEILING(client.current_viewport_height / 2, 1)))
 		return UI_INTERACTIVE
 	return UI_DISABLED // Otherwise they can keep the UI open.
 
