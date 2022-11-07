@@ -21,6 +21,7 @@
 	blocks_air = 1
 	can_dirty = FALSE
 
+
 	var/datum/ore/mineral
 	var/sand_dug
 	var/mined_ore = 0
@@ -36,8 +37,42 @@
 	var/obj/item/last_find
 	var/datum/artifact_find/artifact_find
 	var/ignore_mapgen
-
+	var/ignore_oregen = FALSE
+	var/ignore_cavegen = FALSE
 	has_resources = 1
+
+
+
+// Alternatives that ignore ore_gen and cavegen
+/turf/simulated/mineral/ignore_oregen
+	ignore_oregen = TRUE
+
+/turf/simulated/mineral/floor/ignore_oregen
+	ignore_oregen = TRUE
+
+/turf/simulated/mineral/ignore_cavegen
+	ignore_cavegen = TRUE
+
+/turf/simulated/mineral/floor/ignore_cavegen
+	ignore_cavegen = TRUE
+
+/turf/simulated/mineral/floor/ignore_cavegen/has_air
+	initial_gas_mix = GAS_STRING_STP
+
+/turf/simulated/mineral/floor/indoors
+	outdoors = FALSE
+	name = "Depreciated, tell a mapper if you see this"
+	icon_state = ""
+
+/turf/simulated/mineral/icerock/ignore_cavegen
+	ignore_cavegen = TRUE
+
+/turf/simulated/mineral/icerock/floor/ignore_cavegen
+	ignore_cavegen = TRUE
+
+/turf/simulated/mineral/icerock/floor/ignore_cavegen/indoors
+	outdoors = FALSE
+
 
 // Alternative rock wall sprites.
 /turf/simulated/mineral/light
@@ -55,6 +90,8 @@
 	rock_icon_state = "icerock"
 	random_icon = 1
 
+/turf/simulated/mineral/icerock/airmix
+	initial_gas_mix = GAS_STRING_STP
 /turf/unsimulated/mineral/icerock
 	name = "impassable icerock"
 	icon = 'icons/turf/walls.dmi'
@@ -97,6 +134,9 @@
 	name = "ice"
 	icon_state = "ice"
 	sand_icon_state = "ice"
+
+/turf/simulated/mineral/floor/icerock/airmix
+	initial_gas_mix = GAS_STRING_STP
 
 /turf/simulated/mineral/proc/make_floor()
 	if(!density && !opacity)
@@ -224,7 +264,7 @@ GLOBAL_LIST_EMPTY(mining_overlay_cache)
 
 /* smoothing end */
 
-/turf/simulated/mineral/ex_act(severity)
+/turf/simulated/mineral/legacy_ex_act(severity)
 
 	switch(severity)
 		if(2.0)

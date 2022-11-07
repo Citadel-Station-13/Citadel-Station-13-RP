@@ -1649,6 +1649,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Pool"
 	icon_state = "pool"
 
+/area/crew_quarters/pool/changing_room
+	name = "\improper Pool Changing Room"
+	icon_state = "pool"
+
+/area/crew_quarters/pool/emergency_closet
+	name = "\improper Poolside Emergency Closet"
+	icon_state = "maint_locker"
+
 /area/crew_quarters/cafeteria
 	name = "\improper Cafeteria"
 	icon_state = "cafeteria"
@@ -2747,6 +2755,16 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/rnd/outpost/eva
 	name = "Research Outpost EVA Storage"
 	icon_state = "eva"
+
+/area/rnd/outpost/maintenance
+	name = "\improper Research Outpost Maintenence"
+	area_flags = AREA_RAD_SHIELDED
+	sound_env = TUNNEL_ENCLOSED
+	turf_initializer = new /datum/turf_initializer/maintenance()
+	ambience = AMBIENCE_MAINTENANCE
+
+/area/rnd/outpost/underground
+	name = "\improper Research Outpost Underground"
 
 /area/rnd/outpost/chamber
 	name = "\improper Research Outpost Burn Chamber"

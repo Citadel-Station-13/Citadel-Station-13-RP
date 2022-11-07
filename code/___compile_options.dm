@@ -90,11 +90,17 @@
 /// Uncomment to turn on Multi-Z ZAS Support!
 #define MULTIZAS
 /// uncomment to enable laggy as sin ZAS debugging systems coded in for when doing bugfixes or major systems overhaulling.
-#define ZAS_ASSERTIONS
+// #define ZAS_ASSERTIONS
 /// uncomment to enable *actually* laggy as sin ZAS debugging, like "list in contents". don't do this without a major reason.
 // #define ZAS_ASSERTIONS_EXPENSIVE
 /// uncomment to enable debugging graphics. you probably want to keep this off in live!
 // #define ZAS_DEBUG_GRAPHICS
+/// uncomment to enable some otherwise useless hook points for zas debugging
+// #define ZAS_BREAKPOINT_HOOKS
+
+#ifdef ZAS_DEBUG_GRAPHICS
+	#define ZAS_BREAKPOINT_HOOKS
+#endif
 
 //! Overlays
 

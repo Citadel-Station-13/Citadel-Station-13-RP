@@ -111,7 +111,7 @@
 
 	else return attack_hand(user)
 
-/obj/structure/closet/crate/ex_act(severity)
+/obj/structure/closet/crate/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			for(var/obj/O in src.contents)

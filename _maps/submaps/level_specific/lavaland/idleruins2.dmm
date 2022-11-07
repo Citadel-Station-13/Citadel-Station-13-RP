@@ -158,12 +158,6 @@
 /obj/effect/debris/cleanable/molten_item,
 /turf/simulated/floor/plating/lavaland,
 /area/lavaland/idleruins)
-"Qv" = (
-/obj/structure/ghost_pod/manual/human{
-	dir = 8
-	},
-/turf/simulated/shuttle/floor/lavaland,
-/area/lavaland/idleruins)
 "Re" = (
 /turf/template_noop,
 /area/lavaland/idleruins)
@@ -395,7 +389,7 @@ or
 or
 or
 YZ
-Qv
+Sk
 Sk
 IO
 YZ

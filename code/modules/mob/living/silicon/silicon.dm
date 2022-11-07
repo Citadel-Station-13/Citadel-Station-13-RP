@@ -274,7 +274,7 @@
 /mob/living/silicon/binarycheck()
 	return 1
 
-/mob/living/silicon/ex_act(severity)
+/mob/living/silicon/legacy_ex_act(severity)
 	if(!blinded)
 		flash_eyes()
 

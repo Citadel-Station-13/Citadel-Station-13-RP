@@ -289,7 +289,7 @@
 	return
 
 
-/obj/machinery/shieldwall/ex_act(severity)
+/obj/machinery/shieldwall/legacy_ex_act(severity)
 	if(needs_power)
 		var/obj/machinery/shieldwallgen/G
 		switch(severity)

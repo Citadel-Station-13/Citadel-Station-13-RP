@@ -45,15 +45,21 @@
 
 /// T-Pose
 /datum/view_data/proc/assertFormat()
+//	if(!is_preference_enabled(/datum/client_preference/scaling_viewport))
+//		return
 	// winset(chief, "mapwindow.map", "zoom=0")
 	// We're using icon dropdown instead
 
 /// Cuck
 /datum/view_data/proc/resetFormat()
+//	if(!is_preference_enabled(/datum/client_preference/scaling_viewport))
+//		return
 	// winset(chief, "mapwindow.map", "zoom=[chief.prefs.pixel_size]")
 	// We're using icon dropdown instead
 
 /datum/view_data/proc/setZoomMode()
+//	if(!is_preference_enabled(/datum/client_preference/scaling_viewport))
+//		return
 	// winset(chief, "mapwindow.map", "zoom-mode=[chief.prefs.scaling_method]")
 	// We're using icon dropdown instead
 
@@ -74,7 +80,7 @@
 	var/list/shitcode = getviewsize(toAdd)
 	width += shitcode[1]
 	height += shitcode[2]
-	apply()
+	apply(toAdd)
 
 /datum/view_data/proc/setTo(toAdd)
 	/**
@@ -85,7 +91,7 @@
 	var/list/shitcode = getviewsize(toAdd)
 	width = shitcode[1]
 	height = shitcode[2]
-	apply()
+	apply(toAdd)
 
 /datum/view_data/proc/setBoth(wid, hei)
 	width = wid
@@ -108,8 +114,10 @@
 	height += toAdd
 	apply()
 
-/datum/view_data/proc/apply()
-	chief.change_view(getView())
+/datum/view_data/proc/apply(forced)
+	if(!chief.is_preference_enabled(/datum/client_preference/scaling_viewport) && !forced)
+		return
+	chief.change_view(getView(), forced)
 	safeApplyFormat()
 	if(chief.prefs.auto_fit_viewport)
 		chief.fit_viewport()
