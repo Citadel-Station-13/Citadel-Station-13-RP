@@ -221,7 +221,7 @@
 
 /obj/landmark/spawnpoint/job/ai/OnRoundstart()
 	if(latejoin_active && !spawned)
-		empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
+		GLOB.empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
 	return ..()		// qdel happens AFTER we spawn core THANK YOU!
 
 /obj/landmark/spawnpoint/job/ai/secondary

@@ -175,11 +175,13 @@ const sortWeight = {
   research: 70,
   science: 70,
   exploration: 60,
+  cargo: 55,
   civilian: 50,
   misc: 40,
   miscellaneous: 40,
   "off-duty": 30,
   silicons: 20,
+  synthetics: 20,
   trade: -20,
   "central command": -100,
 };
