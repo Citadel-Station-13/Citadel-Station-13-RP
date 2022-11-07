@@ -170,17 +170,14 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 	// i don't understand the above
 	mob?.refit_rendering()
 
+/**
+ * automatically fit their viewport to show everything optimally
+ */
 /client/verb/fit_viewport()
 	set name = "Fit Viewport"
 	set category = "OOC"
 	set desc = "Fit the width of the map window to match the viewport"
 
-	INVOKE_ASYNC(src, .proc/fit_viewport)
-
-/**
- * automatically fit their viewport to show everything optimally
- */
-/client/proc/fit_viewport()
 	// ensure we're not fitting viewport
 	if(viewport_rwlock)
 		return
@@ -191,13 +188,13 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 		return
 	// start - from here to finish we should have exclusive control over the viewport
 	viewport_rwlock = TRUE
-
-	#warn impl
-
+	_fit_viewport()
 	// finish
 	viewport_rwlock = FALSE
 	// refit
 	refit_viewport()
+
+/client/proc/_fit_viewport()
 
 	// Fetch the client's aspect ratio
 	var/view_size = getviewsize(view)
