@@ -2089,11 +2089,11 @@
 /area/maintenance/substation/engineering)
 "fm" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
+	dir = 4;
 	input_tag = "n2_in";
 	name = "Nitrogen Supply Control";
 	output_tag = "n2_out";
-	sensors = list("n2_sensor"="Tank");
-	dir = 4
+	sensors = list("n2_sensor"="Tank")
 	},
 /obj/structure/window/reinforced,
 /obj/machinery/alarm{
@@ -3262,11 +3262,11 @@
 /area/engineering/atmos)
 "kl" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
+	dir = 8;
 	input_tag = "tox_in";
 	name = "Phoron Supply Control";
 	output_tag = "tox_out";
-	sensors = list("tox_sensor"="Tank");
-	dir = 8
+	sensors = list("tox_sensor"="Tank")
 	},
 /obj/structure/window/reinforced,
 /obj/machinery/light/spot{
@@ -3345,6 +3345,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"kN" = (
+/obj/item/flame/candle/small{
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "kP" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/purple,
 /obj/machinery/meter,
@@ -3617,10 +3624,10 @@
 /area/rift/surfacebase/underground/under1)
 "mt" = (
 /obj/machinery/atmospherics/component/quaternary/atmos_filter{
-	tag_north = 1;
-	tag_south = 2;
 	name = "Waste N2O Filter";
-	tag_east = 7
+	tag_east = 7;
+	tag_north = 1;
+	tag_south = 2
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -3801,6 +3808,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/blue,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos)
+"nu" = (
+/obj/item/flame/candle/small{
+	pixel_x = 5;
+	pixel_y = -6
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "nv" = (
 /obj/machinery/pipedispenser,
 /obj/machinery/light,
@@ -3909,13 +3923,13 @@
 	dir = 8
 	},
 /obj/machinery/computer/general_air_control/large_tank_control{
+	dir = 4;
 	frequency = 1443;
 	input_tag = "air_in";
 	name = "Mixed Air Supply Control";
 	output_tag = "air_out";
 	pressure_setting = 2000;
-	sensors = list("air_sensor"="Tank");
-	dir = 4
+	sensors = list("air_sensor"="Tank")
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -4024,9 +4038,9 @@
 "oA" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 1;
-	pixel_y = -10;
 	id = "portables_garage";
-	name = "Portables Garage Shutters"
+	name = "Portables Garage Shutters";
+	pixel_y = -10
 	},
 /turf/simulated/wall,
 /area/hallway/primary/underone)
@@ -4128,6 +4142,14 @@
 /obj/structure/catwalk,
 /obj/structure/cable/green{
 	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
+"pv" = (
+/obj/item/book{
+	desc = "This rough leatherbound book contains the sigils of Unathi writing. The writing itself is smeared with weathering and debris.";
+	icon_state = "book1_old";
+	name = "dusty unathi tome"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
@@ -4236,10 +4258,10 @@
 /area/engineering/atmos)
 "qg" = (
 /obj/machinery/atmospherics/component/quaternary/atmos_filter{
+	name = "Waste Phoron Filter";
 	tag_east = 6;
 	tag_north = 1;
-	tag_west = 2;
-	name = "Waste Phoron Filter"
+	tag_west = 2
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -5502,13 +5524,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/storage/tech)
 "vf" = (
-/obj/random/cutout{
-	name = "guaranteed random wooden figure";
-	spawn_nothing_percentage = 0
-	},
-/obj/item/stool,
 /obj/machinery/light/small{
 	dir = 4
+	},
+/obj/item/trash/candle{
+	pixel_x = 2;
+	pixel_y = 7
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
@@ -7778,10 +7799,10 @@
 /area/maintenance/engineering)
 "CM" = (
 /obj/machinery/atmospherics/component/quaternary/atmos_filter{
-	tag_south = 2;
-	tag_west = 1;
+	name = "Waste CO2 Filter";
 	tag_east = 5;
-	name = "Waste CO2 Filter"
+	tag_south = 2;
+	tag_west = 1
 	},
 /obj/machinery/camera/network/engineering,
 /turf/simulated/floor/tiled,
@@ -8643,6 +8664,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"FH" = (
+/obj/item/storage/fancy/candle_box,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "FI" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -9455,9 +9480,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Im" = (
-/obj/structure/table/rack,
-/obj/item/storage/toolbox/emergency,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/carpet/oracarpet,
 /area/maintenance/engineering)
 "Io" = (
 /obj/item/circuitboard/mech_recharger{
@@ -9947,18 +9970,9 @@
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "JX" = (
-/obj/structure/table/marble,
-/obj/item/reagent_containers/food/drinks/bottle/small/beer{
-	pixel_y = -9
-	},
-/obj/item/reagent_containers/food/drinks/bottle/small/beer{
-	pixel_x = 14
-	},
-/obj/item/reagent_containers/food/drinks/bottle/small/beer{
-	pixel_x = -13
-	},
-/obj/item/reagent_containers/food/drinks/bottle/small/beer{
-	pixel_y = 13
+/obj/item/flame/candle/small{
+	pixel_x = -5;
+	pixel_y = -8
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
@@ -10052,11 +10066,6 @@
 /obj/effect/zone_divider,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
-"Kk" = (
-/obj/structure/table/rack,
-/obj/item/storage/toolbox/electrical,
-/turf/simulated/floor/plating,
-/area/maintenance/engineering)
 "Kl" = (
 /obj/structure/table/steel,
 /obj/item/integrated_electronics/debugger{
@@ -10474,8 +10483,8 @@
 "Lw" = (
 /mob/living/simple_mob/animal/passive/mouse{
 	desc = "A small rodent, this one is seemingly defying gravity. Oh, wait, no, it just has tiny wings. The beauty of nature.";
-	name = "Elizondo the Flying Mouse";
-	flying = 1
+	flying = 1;
+	name = "Elizondo the Flying Mouse"
 	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
@@ -10555,9 +10564,9 @@
 "LU" = (
 /obj/machinery/atmospherics/component/quaternary/atmos_filter{
 	name = "Waste O2 Filter";
-	tag_west = 3;
 	tag_north = 1;
-	tag_south = 2
+	tag_south = 2;
+	tag_west = 3
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -10971,11 +10980,7 @@
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Nh" = (
-/obj/random/cutout{
-	name = "guaranteed random wooden figure";
-	spawn_nothing_percentage = 0
-	},
-/obj/item/stool,
+/obj/machinery/space_heater,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Ni" = (
@@ -11371,11 +11376,11 @@
 /area/tcommsat/chamber)
 "Or" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
+	dir = 8;
 	input_tag = "nitrous_in";
 	name = "Nitrous Oxide Supply Control";
 	output_tag = "nitrous_out";
-	sensors = list("nitrous_sensor"="Tank");
-	dir = 8
+	sensors = list("nitrous_sensor"="Tank")
 	},
 /obj/structure/window/reinforced,
 /obj/machinery/camera/network/engineering{
@@ -11465,6 +11470,7 @@
 /area/tcommsat/chamber)
 "OL" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
+	dir = 8;
 	input_tag = "co2_in";
 	name = "Carbon Dioxide Supply Control";
 	output_tag = "co2_out";
@@ -11706,11 +11712,9 @@
 /turf/simulated/floor/plating,
 /area/tcommsat/computer)
 "Ps" = (
-/obj/machinery/light/small{
-	dir = 8
+/obj/item/trash/candle{
+	pixel_y = -6
 	},
-/obj/structure/table/rack,
-/obj/item/storage/belt/utility,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Pt" = (
@@ -13882,8 +13886,8 @@
 /obj/machinery/atmospherics/component/quaternary/atmos_filter{
 	name = "Waste N2 Filter";
 	tag_east = 1;
-	tag_west = 4;
-	tag_south = 2
+	tag_south = 2;
+	tag_west = 4
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -14536,10 +14540,10 @@
 /area/rift/station/fighter_bay)
 "Zb" = (
 /obj/machinery/atmospherics/component/quaternary/mixer{
-	tag_south = 1;
-	tag_south_con = 0.79;
 	tag_east = 1;
 	tag_east_con = 0.21;
+	tag_south = 1;
+	tag_south_con = 0.79;
 	tag_west = 2
 	},
 /turf/simulated/floor/tiled,
@@ -25417,7 +25421,7 @@ sS
 sa
 sa
 LD
-Ps
+pw
 sR
 AQ
 sa
@@ -25609,11 +25613,11 @@ zz
 my
 sR
 sa
-Kk
+Nh
 sR
 sR
 sR
-sR
+sS
 sa
 aa
 aa
@@ -25803,10 +25807,10 @@ zz
 my
 sR
 sa
-Im
 sR
 sR
 sR
+Ps
 PY
 sa
 aa
@@ -25999,8 +26003,8 @@ sR
 QP
 sR
 sR
-sR
-sR
+Im
+nu
 vF
 Aq
 Jw
@@ -26192,9 +26196,9 @@ my
 sR
 sa
 sR
-Nh
-sR
-sR
+Im
+JX
+pv
 vF
 Jw
 WC
@@ -26386,9 +26390,9 @@ my
 sS
 sa
 Nh
-JX
-Nh
 sR
+Im
+kN
 vF
 Jw
 lq
@@ -26582,7 +26586,7 @@ sa
 sa
 vf
 sR
-sR
+FH
 vF
 Jw
 UB
