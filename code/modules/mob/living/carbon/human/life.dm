@@ -374,13 +374,13 @@
 /**
  * Handles masks that warm up/cool down breath, filter gases etc.
  */
-/mob/living/carbon/human/proc/get_breath_from_mask(volume_needed=BREATH_VOLUME)
-	. = get_breath_from_internal(volume_needed)//first take breath from internals
-	if(!.)//if that fails
-		. = get_breath_from_environment(volume_needed)//get breath from environment
+/mob/living/carbon/human/get_breath_from_mask(volume_needed=BREATH_VOLUME)
+	var/datum/gas_mixture/breath = get_breath_from_internal(volume_needed)//first take breath from internals
+	if(!breath && !istype(breath))//if that fails
+		breath = get_breath_from_environment(volume_needed)//get breath from environment
 	if(wear_mask)
-		. = wear_mask.alter_breath(.)
-	return .
+		breath = wear_mask.alter_breath(breath)
+	return breath
 
 
 /mob/living/carbon/human/get_breath_from_internal(volume_needed=BREATH_VOLUME)
