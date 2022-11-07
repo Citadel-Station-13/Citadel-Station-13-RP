@@ -199,16 +199,44 @@
 	desc = "A portable bed-on-wheels made for transporting medical patients."
 	icon = 'icons/obj/rollerbed.dmi'
 	icon_state = "rollerbed"
-	anchored = 0
+	base_icon_state = "rollerbed"
+	anchored = FALSE
 	surgery_odds = 75
+
 	var/bedtype = /obj/structure/bed/roller
 	var/rollertype = /obj/item/roller
 
 /obj/structure/bed/roller/adv
 	name = "advanced roller bed"
 	icon_state = "rollerbedadv"
+	base_icon_state = "rollerbedadv"
 	bedtype = /obj/structure/bed/roller/adv
 	rollertype = /obj/item/roller/adv
+
+/obj/structure/bed/roller/Moved(atom/old_loc, movement_dir/*, forced, list/old_locs, momentum_change = TRUE*/)
+	. = ..()
+	if(has_gravity())
+		playsound(src, 'sound/effects/roll.ogg', 100, TRUE)
+	//! Behold shitecode to make the our victim not flop like a fish.
+	for(var/mob/living/M in buckled_mobs)
+		if(M.buckled == src)
+			M.dir = buckle_dir
+
+/obj/structure/bed/roller/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
+	set_density(TRUE)
+	icon_state = "[base_icon_state]_up"
+	//Push them up from the normal lying position
+	M.dir = buckle_dir // So they always face the right way, "upwards"
+	M.set_pixel_y(6)
+
+/obj/structure/bed/roller/mob_unbuckled(mob/M, flags, mob/user, semantic)
+	. = ..()
+	set_density(FALSE)
+	icon_state = base_icon_state
+	// Reset our transforms.
+	M.set_pixel_x(0)
+	M.set_pixel_y(0)
 
 /obj/structure/bed/roller/doLocationTransitForceMove(atom/destination)
 	var/list/old_buckled = buckled_mobs?.Copy()
