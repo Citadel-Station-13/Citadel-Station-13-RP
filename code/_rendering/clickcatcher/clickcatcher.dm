@@ -33,6 +33,8 @@
 /atom/movable/screen/click_catcher/proc/UpdateFill(view_size_x, view_size_y)
 	screen_loc = "1,1 to [view_size_x],[view_size_y]"
 
+#warn optimization: use transform instead, tiled bad
+
 /atom/movable/screen/click_catcher/Click(location, control, params)
 	var/list/modifiers = params2list(params)
 	if(modifiers["middle"] && iscarbon(usr))
