@@ -87,8 +87,8 @@
 		if(length(parts) != 2)
 			log_config("alienwhitelist - skipping line [count]: [line]")
 			continue
-		var/alien = ckey(parts[1])
-		var/ckey = ckey(parts[2])
+		var/alien = ckey(parts[2])
+		var/ckey = ckey(parts[1])
 		LAZYINITLIST(alien_whitelist[alien])
 		if(ckey in alien_whitelist[alien])
 			log_config("alienwhitelist - duplicate ckey [ckey] for [alien]")
