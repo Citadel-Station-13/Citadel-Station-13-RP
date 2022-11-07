@@ -119,6 +119,10 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 		view = "[GLOB.lock_client_view_x]x[GLOB.lock_client_view_y]"
 		on_refit_viewport(GLOB.lock_client_view_x, GLOB.lock_client_view_y)
 		return
+	if(using_temporary_viewsize)
+		view = "[temporary_viewsize_width]x[temporary_viewsize_height]"
+		on_refit_viewport(temporary_viewsize_width, temporary_viewsize_height)
+		return
 	var/stretch_to_fit = assumed_viewport_zoom == 0
 	using_perspective.ensure_view_cached()
 	#warn account for client vs world.view

@@ -757,6 +757,10 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 	var/list/L = getviewsize(new_size)
 	set_temporary_view(L[1], L[2])
 
+/**
+ * directly sets our view
+ * WARNING: this is verbatim; aka, view = 7 is 15 width 15 height, NOT 7x7!
+ */
 /client/proc/set_temporary_view(width, height)
 	if(!width || !height || width < 0 || height < 0)
 		reset_temporary_view()
