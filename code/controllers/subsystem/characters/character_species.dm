@@ -75,3 +75,9 @@
 		return built
 	faux.tweak(built)
 	return built
+
+/datum/controller/subsystem/characters/proc/all_character_species()
+	RETURN_TYPE(/list)
+	. = list()
+	for(var/uid in character_species_lookup)
+		. += character_species_lookup[uid]

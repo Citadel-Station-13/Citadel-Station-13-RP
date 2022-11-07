@@ -12,9 +12,8 @@
 /datum/preferences/proc/resolve_whitelisted_species()
 	var/list/names = config.all_alien_whitelists_for(client_ckey)
 	. = list()
-	for(var/n in names)
-		var/datum/character_species/CS = SScharacters.resolve_character_species(n)
-		if(CS)
+	for(var/datum/character_species/CS as anything in SScharacters.all_character_species())
+		if(ckey(CS.name) in names)
 			. += CS.uid
 
 /**
