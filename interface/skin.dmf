@@ -41,36 +41,36 @@ menu "menu"
 		command = ""
 		saved-params = "is-checked"
 	elem "stretch"
-		name = "&Round up and lock to size"
-		command = ".winset \"mapwindow.map.icon-size=0\""
+		name = "Stretch to Fit"
+		command = ".winset \"mapwindow.map.zoom=0;mapwindow.map.letterbox=true\"\\nre_viewport"
 		category = "&Size"
 		is-checked = true
 		can-check = true
 		group = "size"
 		saved-params = "is-checked"
-	elem "cozyin"
-		name = "Get Cozy Inwards"
-		command = "SetCozyViewInwards 8"
+	elem "stretch_alt"
+		name = "Fill Vertically"
+		command = ".winset \"mapwindow.map.zoom=0;mapwindow.map.letterbox=false\"\\nre_viewport"
 		category = "&Size"
 		group = "size"
 		saved-params = "is-checked"
 	elem "icon128"
 		name = "&128x128 (4K)"
-		command = "SetWindowIconSize 128"
+		command = ".winset \"mapwindow.map.zoom=4;mapwindow.map.letterbox=true\"\\nre_viewport"
 		category = "&Size"
 		can-check = true
 		group = "size"
 		saved-params = "is-checked"
 	elem "icon96"
 		name = "&96x96"
-		command = "SetWindowIconSize 96"
+		command = ".winset \"mapwindow.map.zoom=3;mapwindow.map.letterbox=true\"\\nre_viewport"
 		category = "&Size"
 		can-check = true
 		group = "size"
 		saved-params = "is-checked"
 	elem "icon72"
 		name = "&72x72 (Cozy 1080p)"
-		command = "SetWindowIconSize 72"
+		command = ".winset \"mapwindow.map.zoom=2.5;mapwindow.map.letterbox=true\"\\nre_viewport"
 		category = "&Size"
 		is-checked = true
 		can-check = true
@@ -78,7 +78,7 @@ menu "menu"
 		saved-params = "is-checked"
 	elem "icon64"
 		name = "&64x64 (1080p)"
-		command = "SetWindowIconSize 64"
+		command = ".winset \"mapwindow.map.zoom=2;mapwindow.map.letterbox=true\"\\nre_viewport"
 		category = "&Size"
 		is-checked = true
 		can-check = true
@@ -86,14 +86,14 @@ menu "menu"
 		saved-params = "is-checked"
 	elem "icon48"
 		name = "&48x48"
-		command = "SetWindowIconSize 48"
+		command = ".winset \"mapwindow.map.zoom=1.5;mapwindow.map.letterbox=true\"\\nre_viewport"
 		category = "&Size"
 		can-check = true
 		group = "size"
 		saved-params = "is-checked"
 	elem "icon32"
 		name = "&32x32"
-		command = "SetWindowIconSize 32"
+		command = ".winset \"mapwindow.map.zoom=1;mapwindow.map.letterbox=true\"\\nre_viewport"
 		category = "&Size"
 		can-check = true
 		group = "size"
@@ -275,11 +275,8 @@ window "mapwindow"
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
-		outer-size = 656x538
-		inner-size = 640x499
 	elem "map"
 		type = MAP
 		pos = 0,0
