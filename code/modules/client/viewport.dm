@@ -105,6 +105,7 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 			// they're going to truncate the smaller size anyways
 			view = min(max_width, max_height)
 			return
+	// option 3: scale as necessary
 
 
 
@@ -196,6 +197,21 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 		pct += delta
 		winset(src, "mainwindow.split", "splitter=[pct]")
 
+/client/verb/force_map_zoom(n as number)
+	set name = ".viewport_zoom"
+	set hidden = TRUE
+	set src = usr
+	set category = "Debug"
+
+	#warn impl
+
+/client/verb/force_map_box(n as number)
+	set name = ".viewport_box"
+	set hidden = TRUE
+	set src = usr
+	set category = "Debug"
+
+	#warn impl
 
 /client/verb/force_onresize_view_update()
 	set name = ".viewport_refit"

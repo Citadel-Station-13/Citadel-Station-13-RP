@@ -309,30 +309,59 @@
 
 //! view size
 /datum/perspective/proc/set_default_view(size)
-
+	if(size == default_view_size)
+		return
+	// assert it y'know, works
+	if(isnum(size))
+		default_view_size = size
+	else if(isnull(size))
+		default_view_size = size
+	else if(istext(size))
+		var/list/split = splittext(size, "x")
+		ASSERT(split.len == 2)
+		// if the above runtimes, let it so we know who fucked up
+		default_view_size = size
+	else
+		CRASH("What?")
+	view_dirty = TRUE
 
 /datum/perspective/proc/set_augmented_view(width, height)
+	if(!isnull(height))
+		augment_view_height = height
+	if(!isnull(width))
+		augment_view_width = width
+	view_dirty = TRUE
 
 /datum/perspective/proc/update_view_size(client/C)
+	if(view_dirty)
+		recompute_view_size()
+	if(C)
+		C.refit_viewport()
+	else
+		for(var/client/C as anything in clients)
+			update_view_size(C)
 
 /datum/perspective/proc/recompute_view_size()
 	view_dirty = FALSE
+	#warn impl
 
 /datum/perspective/proc/suppress_view(source)
+	var/was = LAZYLEN(view_suppression)
+	LAZYOR(view_suppression, source)
+	if(!was && LAZYLEN(view_suppression))
+		view_dirty = TRUE
+		update_view_size()
 
 /datum/perspective/proc/unsuppress_view(source)
+	var/was = LAZYLEN(view_suppression)
+	LAZYREMOVE(view_suppression, source)
+	if(was && !LAZYLEN(view_suppression))
+		view_dirty = TRUE
+		update_view_size()
 
 /datum/perspective/proc/ensure_view_cached()
 	if(view_dirty)
 		recompute_view_size()
-
-/datum/perspective/proc/SetViewSize(new_size)
-	var/change = view_size == new_size
-	view_size = new_size
-	if(change)
-		for(var/client/C as anything in clients)
-			C.change_view(new_size, TRUE)
-
 
 //! remotes
 /datum/perspective/proc/considered_remote(mob/M)
