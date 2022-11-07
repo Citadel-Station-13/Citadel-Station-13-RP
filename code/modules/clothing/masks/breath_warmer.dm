@@ -9,7 +9,8 @@
     gas_transfer_coefficient = 0.01
     permeability_coefficient = 0.01
     siemens_coefficient = 0.9
-    var/thermal_power = 100//the amount of power we can use to warm the air
+    var/thermal_power = 30//the amount of power we can use to warm the air
+    //Set to 30 allows you to breath the outside of atlas safely, (-25C needed about 22 watts)
     var/set_to_temp = T20C //to what temperature we can set it
 
 /obj/item/clothing/mask/cold/alter_breath(datum/gas_mixture/air)
@@ -17,6 +18,7 @@
         return air//if its not the right thing, just throw it back
     
     if(air.temperature >= set_to_temp)
-        return
+        return air
 
-    return air.adjust_thermal_energy(clamp(air.get_thermal_energy_change(set_to_temp),thermal_power,0))
+    air.adjust_thermal_energy(clamp(air.get_thermal_energy_change(set_to_temp),thermal_power,0))
+    return air
