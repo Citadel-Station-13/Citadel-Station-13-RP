@@ -45,6 +45,22 @@
 	/// the perspective we're currently using
 	var/datum/perspective/using_perspective
 
+	//! Viewport
+	/// what we *think* their current viewport size is in pixels
+	var/assumed_viewport_spx
+	/// what we *think* their current viewport size is in pixels
+	var/assumed_viewport_spy
+	/// what we *think* their current viewport zoom is
+	var/assumed_viewport_zoom
+	/// what we *think* their current viewport letterboxing setting is
+	var/assumed_viewport_box
+	/// current view x - for fast access
+	var/current_viewport_width
+	/// current view y - for fast access
+	var/current_viewport_height
+	/// if things are manipulating the viewport we don't want other things to touch it
+	var/viewport_rwlock = FALSE
+
 		////////////////
 		//ADMIN THINGS//
 		////////////////

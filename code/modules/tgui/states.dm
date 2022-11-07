@@ -29,8 +29,7 @@
 
 		// Regular ghosts can always at least view if in range.
 		if(user.client)
-			var/clientviewlist = getviewsize(user.client.view)
-			if(get_dist(src_object, user) < max(clientviewlist[1], clientviewlist[2]))
+			if(get_dist(src_object, user) < max(user.client.current_viewport_width, user.client.current_viewport_height))
 				. = max(., UI_UPDATE)
 
 	// Check if the state allows interaction

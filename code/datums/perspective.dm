@@ -3,6 +3,13 @@
  *
  * allows managed control of client viewport/eye changes
  *
+ * !  - - - ATTENTION - - -
+ * ! These datums will modify mob variables.
+ * ! This can result in AI mobs having inconsistent sight/whatevers
+ * ! from what they'd usually have after a player enters, and
+ * ! leaves them.
+ * ! Mob reset_perspective() should handle most of these cases, but be wary.
+ *
  * as of right now, perspectives will **trample** the following on every set:
  * client.eye
  * client.lazy_eye (unimplemented)
@@ -132,6 +139,7 @@
 
 /**
  * registers as a mob's current perspective
+ * sets mob vars as necessary
  */
 /datum/perspective/proc/AddMob(mob/M)
 	SHOULD_CALL_PARENT(TRUE)
@@ -141,13 +149,20 @@
 		return
 	mobs += M
 	M.using_perspective = src
+	M.sight = sight
+	M.see_in_dark = see_in_dark
+	M.see_invisible = see_invisible
 	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_MOB_ADD, M)
 
 /**
  * unregisters as a mob's current perspective
+ * resets mob vars to initial() values
  */
 /datum/perspective/proc/RemoveMob(mob/M, switching = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
+	M.sight = initial(M.sight)
+	M.see_in_dark = initial(M.see_in_dark)
+	M.see_invisible = initial(M.see_invisible)
 	mobs -= M
 	SEND_SIGNAL(src, COMSIG_PERSPECTIVE_MOB_REMOVE, M, switching)
 	if(M.using_perspective == src)
@@ -198,9 +213,6 @@
 	if(changed != C.eye)
 		C.parallax_holder?.Reset(force = TRUE)
 	C.perspective = GetEyeMode(C)
-	C.mob.sight = sight
-	C.mob.see_in_dark = see_in_dark
-	C.mob.see_invisible = see_invisible
 	update_view_size(C)
 
 /**
@@ -362,6 +374,8 @@
 /datum/perspective/proc/ensure_view_cached()
 	if(view_dirty)
 		recompute_view_size()
+
+#warn we'll need to use different values if it's a player or not due to world.view issues..
 
 //! remotes
 /datum/perspective/proc/considered_remote(mob/M)

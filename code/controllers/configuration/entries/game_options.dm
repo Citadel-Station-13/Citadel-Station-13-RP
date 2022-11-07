@@ -5,12 +5,14 @@
 	. = ..()
 	#warn impl
 
+/*
 /datum/config_entry/text/game_viewport_size
 	default = "19x15"
 
 /datum/config_entry/text/max_viewport_size/ValidateAndSet(str_val)
 	. = ..()
-	#warn impl
+*/
+//! BYONd world.view is immutable, this config is left here as a todo. If it's still immutable by, say, 516, remove it.
 
 /datum/config_entry/number/starlight
 	default = 2
