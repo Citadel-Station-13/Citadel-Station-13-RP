@@ -359,7 +359,7 @@
 	stored = /datum/nifsoft/package/mining
 
 /datum/nifsoft/package/mining
-	software = list(/datum/nifsoft/material,/datum/nifsoft/spare_breath)
+	software = list(/datum/nifsoft/material)
 
 /obj/item/storage/box/nifsofts_mining
 	name = "mining nifsoft uploaders"

@@ -124,60 +124,6 @@
 
 		return TRUE
 
-/datum/nifsoft/spare_breath
-	name = "Respirocytes"
-	desc = "Nanites simulating red blood cells will filter and recycle oxygen for a short time, preventing suffocation in hostile environments. NOTE: Only capable of supplying OXYGEN."
-	list_pos = NIF_SPAREBREATH
-	cost = 325
-	p_drain = 0.05
-	a_drain = 0.1
-	wear = 2
-	tick_flags = NIF_ALWAYSTICK
-	applies_to = NIF_ORGANIC
-	var/filled = 100 //Tracks the internal tank 'refilling', which still uses power
-	health_flags = (NIF_H_SPAREBREATH)
-
-/datum/nifsoft/spare_breath/activate()
-	if(!(filled > 50))
-		nif.notify("Respirocytes not saturated!",TRUE)
-		return FALSE
-	if((. = ..()))
-		nif.notify("Now taking air from reserves.")
-
-/datum/nifsoft/spare_breath/deactivate(var/force = FALSE)
-	if((. = ..()))
-		nif.notify("Now taking air from environment and refilling reserves.")
-
-/datum/nifsoft/spare_breath/on_life()
-	if((. = ..()))
-		if(active) //Supplying air, not recharging it
-			switch(filled) //Text warnings
-				if(75)
-					nif.notify("Respirocytes at 75% saturation.",TRUE)
-				if(50)
-					nif.notify("Respirocytes at 50% saturation!",TRUE)
-				if(25)
-					nif.notify("Respirocytes at 25% saturation, seek a habitable environment!",TRUE)
-				if(5)
-					nif.notify("Respirocytes at 5% saturation! Failure imminent!",TRUE)
-
-			if(filled == 0) //Ran out
-				deactivate()
-			else //Drain a little
-				filled--
-
-		else //Recharging air, not supplying it
-			if(filled == 100)
-				return TRUE
-			else if(nif.use_charge(0.1) && ++filled == 100)
-				nif.notify("Respirocytes now fully saturated.")
-
-/datum/nifsoft/spare_breath/proc/resp_breath()
-	if(!active) return null
-	var/datum/gas_mixture/breath = new(BREATH_VOLUME)
-	breath.adjust_gas("oxygen", BREATH_MOLES)
-	breath.temperature = T20C
-	return breath
 /*
 /datum/nifsoft/mindbackup
 	name = "Mind Backup"
