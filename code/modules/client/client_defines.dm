@@ -60,6 +60,12 @@
 	var/current_viewport_height
 	/// if things are manipulating the viewport we don't want other things to touch it
 	var/viewport_rwlock = FALSE
+	/// forced temporary view
+	var/temporary_viewsize_width
+	/// forced temporary view
+	var/temporary_viewsize_height
+	/// temporary view active?
+	var/using_temporary_viewsize = FALSE
 
 		////////////////
 		//ADMIN THINGS//

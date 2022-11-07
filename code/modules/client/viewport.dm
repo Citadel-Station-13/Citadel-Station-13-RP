@@ -195,6 +195,8 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 	refit_viewport()
 
 /client/proc/_fit_viewport()
+	// by now we already fetched viewport
+	// figure out how big they want it to be based on their settings
 
 	// Fetch the client's aspect ratio
 	var/view_size = getviewsize(view)

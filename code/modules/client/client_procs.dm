@@ -753,40 +753,24 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 	. = ..()
 
 /client/proc/change_view(new_size, forced, translocate)
-	if(!is_preference_enabled(/datum/client_preference/scaling_viewport))
-		if (isnull(new_size))
-			CRASH("change_view called without argument.")
+	// todo: refactor this, client view changes should be ephemeral.
+	var/list/L = getviewsize(new_size)
+	set_temporary_view(L[1], L[2])
 
-		if(view == new_size)
-			// unnecessary
-			return
+/client/proc/set_temporary_view(width, height)
+	if(!width || !height || width < 0 || height < 0)
+		reset_temporary_view()
+		return
+	using_temporary_viewsize = FALSE
+	temporary_viewsize_width = width
+	temporary_viewsize_height = height
+	refit_viewport()
 
-		/*
-		if(prefs && !prefs.widescreenpref && new_size == CONFIG_GET(string/default_view))
-			new_size = CONFIG_GET(string/default_view_square)
-		*/
-
-		view = new_size
-		mob.reload_rendering()
-		if(!translocate)
-			reset_perspective()
-	else if(!. || forced)
-		if(!translocate)
-			reset_perspective()
-		mob?.reload_fullscreen()
-		update_clickcatcher()
-		if(forced)
-			view = new_size
-		else
-			INVOKE_ASYNC(src, /client.verb/OnResize)
-		/*
-		mob.reload_fullscreen()
-		if (isliving(mob))
-			var/mob/living/M = mob
-			M.update_damage_hud()
-		if (prefs.auto_fit_viewport)
-			addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
-		*/
+/client/proc/reset_temporary_view()
+	using_temporary_viewsize = FALSE
+	temporary_viewsize_height = null
+	temporary_viewsize_width = null
+	refit_viewport()
 
 /**
  * switch perspective - null will cause us to shunt our eye to nullspace!

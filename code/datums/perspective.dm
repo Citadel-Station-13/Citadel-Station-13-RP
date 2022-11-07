@@ -339,9 +339,9 @@
 
 /datum/perspective/proc/set_augmented_view(width, height)
 	if(!isnull(height))
-		augment_view_height = height
+		augment_view_height = max(0, height)
 	if(!isnull(width))
-		augment_view_width = width
+		augment_view_width = max(0, width)
 	view_dirty = TRUE
 
 /datum/perspective/proc/update_view_size(client/C)
