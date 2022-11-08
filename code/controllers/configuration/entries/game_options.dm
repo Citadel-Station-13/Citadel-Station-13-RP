@@ -2,8 +2,19 @@
 	default = "19x15"
 
 /datum/config_entry/text/max_viewport_size/ValidateAndSet(str_val)
+	if(!istext(str_val))
+		return FALSE
+	var/list/split = splittext(str_val, "x")
+	if(length(split) != 2)
+		return FALSE
+	var/width = text2num(split[1])
+	var/height = text2num(split[2])
+	if(height < 1 || width < 1 || height > 69 || width > 69)
+		return FALSE
 	. = ..()
-	#warn impl
+	if(!.)
+		return
+	config.update_player_viewsize()
 
 /*
 /datum/config_entry/text/game_viewport_size

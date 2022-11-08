@@ -29,8 +29,8 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 /datum/controller/configuration/proc/update_player_viewsize()
 	var/viewsize_raw = CONFIG_GET(text/max_viewport_size)
 	var/list/viewsize = splittext(viewsize_raw, "x")
-	GLOB.max_client_view_x = viewsize[1]
-	GLOB.max_client_view_y = viewsize[2]
+	GLOB.max_client_view_x = text2num(viewsize[1])
+	GLOB.max_client_view_y = text2num(viewsize[2])
 
 /**
  * populates important vars that things may read early before we sleep
