@@ -3,16 +3,10 @@
 	desc = "A ridable electric car designed for pulling trolleys."
 	icon = 'icons/obj/vehicles/tug.dmi'
 	icon_state = "tug_base"
-	overlays = list ("wheels","cargo_pride_base","standard_wheels")
 	integrity = 200
 	max_integrity = 200
 	riding_handler_type = /datum/component/riding_handler/vehicle/ridden/tug
 
-/obj/vehicle/ridden/tug/update_icon(initialized)
-	..()
-	overlays.Cut()
-	add_overlay(image(icon = 'icons/obj/vehicles/tug.dmi', icon_state = "wheels", layer = src.layer + 1))
-	return
 
 /datum/component/riding_handler/vehicle/ridden/tug
 	vehicle_move_delay = 3
@@ -24,9 +18,9 @@
 /datum/component/riding_handler/vehicle/ridden/tug
 	rider_offsets = list(
 		list(
-			list(0, 16, 0.1, null),
-			list(-7, 13, 0.1, null),
-			list(0, 16, -0.1, null),
+			list(0, 10, 0.1, null),
+			list(-7, 10, 0.1, null),
+			list(0, 12, 0.1, null),
 			list(7, 13, 0.1, null)
 		)
 	)
@@ -40,14 +34,19 @@
 	riding_handler_flags = list(CF_RIDING_HANDLER_ALLOW_BORDER,
 	CF_RIDING_HANDLER_IS_CONTROLLABLE)
 
+/obj/vehicle/ridden/tug/blank
+	name = "Train Tug"
+	desc = "A ridable electric car designed for pulling trolleys. This one has no markings"
+
 
 /obj/vehicle/ridden/tug/cargo
 	name = "Cargo Train Tug"
 	desc = "A ridable electric car designed for pulling trolleys. This one sports cargo livery"
+	icon_state = "cargo_pride"
+	overlays = list("cargo_front_overlay")
 
-/obj/vehicle/ridden/tug/cargo/update_icon(initalized)
-	..()
+/obj/vehicle/ridden/tug/cargo/update_icon()
+	. = ..()
 	overlays.Cut()
-	add_overlay(image(icon = 'icons/obj/vehicles/tug.dmi', icon_state = "cargo_pride_base", layer = src.layer + 1.1))
-	add_overlay(image(icon = 'icons/obj/vehicles/tug.dmi', icon_state = "standard_wheels", layer = src.layer + 1.1))
+	add_overlay(image(icon = 'icons/obj/vehicles/tug.dmi', icon_state = "cargo_front_overlay", layer = src.layer + 1))
 	return
