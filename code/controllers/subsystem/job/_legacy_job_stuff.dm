@@ -242,6 +242,7 @@
 
 	var/datum/job/job = get_job(rank)
 	var/list/spawn_in_storage = list()
+	var/real_species_name = H.species.name
 
 	if(!joined_late)
 		var/obj/landmark/spawnpoint/S = SSjob.get_roundstart_spawnpoint(H, H.client, job.type, job.faction)
@@ -285,8 +286,7 @@
 					permitted = 1
 
 				// Check if they're whitelisted for this gear (in alien whitelist? seriously?)
-				var/datum/species/S = SScharacters.resolve_species_name(G.whitelisted)
-				if(G.whitelisted && (S.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) && !config.check_alien_whitelist(ckey(S.name), H.ckey))
+				if(G.legacy_species_lock && (real_species_name != G.legacy_species_lock))
 					permitted = 0
 
 				// If they aren't, tell them

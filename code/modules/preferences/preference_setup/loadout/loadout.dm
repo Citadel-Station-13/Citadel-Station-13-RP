@@ -15,7 +15,8 @@ var/list/gear_datums = list()
 	var/cost = 1				  // Number of points used. Items in general cost 1 point, storage/armor/gloves/special use costs 2 points.
 	var/slot					  // Slot to equip to.
 	var/list/allowed_roles		  // Roles that can spawn with this item.
-	var/whitelisted				  // Term to check the whitelist for..
+	// todo: remove in favor of uid locks and or just a better system.
+	var/legacy_species_lock				  // Term to check the whitelist for..
 	var/sort_category = "General"
 	var/list/gear_tweaks = list() // List of datums which will alter the item after it has been spawned.
 	var/exploitable = 0			  // Does it go on the exploitable information list?
@@ -120,31 +121,16 @@ var/list/gear_datums = list()
 	WRITE_FILE(S["gear_list"], pref.gear_list)
 	WRITE_FILE(S["gear_slot"], pref.gear_slot)
 
-/datum/category_item/player_setup_item/loadout/proc/valid_gear_choices(var/max_cost)
+/datum/category_item/player_setup_item/loadout/proc/valid_gear_choices(datum/preferences/prefs ,max_cost)
 	. = list()
 	var/mob/preference_mob = preference_mob()
-	var/list/whitelist_cache = list()
+	// todo: loadouts should use char species UID
+	var/real_species_name = prefs.real_species_name()
 	for(var/gear_name in gear_datums)
 		var/datum/gear/G = gear_datums[gear_name]
-		if(G.whitelisted)
-			// sorry for the pyramid of doom, we'll refactor this shitfest later ~silicons
-			// trust me, it was worse before.
-			if(whitelist_cache[G.whitelisted] != null)
-				// if cached just check cache
-				if(whitelist_cache[G.whitelisted] == FALSE)
-					continue
-			else
-				// else build cache
-				var/spec = G.whitelisted
-				var/datum/species/S = SScharacters.resolve_species_name(spec)
-				if(!S)
-					stack_trace("G.whitelisted was [spec] that couldn't be found; removing.")
-					G.whitelisted = null
-				else
-					whitelist_cache[spec] = config.check_alien_whitelist(ckey(S.name), pref.client_ckey)
-				if(!whitelist_cache[spec])
-					continue
-
+		if(G.legacy_species_lock)
+			if(G.legacy_species_lock != real_species_name)
+				continue
 		if(max_cost && G.cost > max_cost)
 			continue
 		if(preference_mob && preference_mob.client)
@@ -165,11 +151,12 @@ var/list/gear_datums = list()
 		if(!(gear_name in gear_datums))
 			pref.gear -= gear_name
 	var/total_cost = 0
+	var/list/valid = valid_gear_choices(pref)
 	for(var/gear_name in pref.gear)
 		if(!gear_datums[gear_name])
 			to_chat(preference_mob, SPAN_WARNING("You cannot have more than one of the \the [gear_name]"))
 			pref.gear -= gear_name
-		else if(!(gear_name in valid_gear_choices()))
+		else if(!(gear_name in valid))
 			to_chat(preference_mob, SPAN_WARNING("You cannot take \the [gear_name] as you are not whitelisted for the species or item."))
 			pref.gear -= gear_name
 		else

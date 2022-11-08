@@ -216,7 +216,7 @@
 						if(previewJob.title == job_name)
 							permitted = 1
 
-				if(G.whitelisted && (G.whitelisted != mannequin.species.name))
+				if(G.legacy_species_lock && (G.legacy_species_lock != mannequin.species.name))
 					permitted = 0
 
 				if(!permitted)

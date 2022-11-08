@@ -38,7 +38,7 @@
 //**Species-Specific Datum Declarations
 //*Tajaran
 /datum/gear/xeno/tajaran
-	whitelisted = SPECIES_TAJ
+	legacy_species_lock = SPECIES_TAJ
 
 /datum/gear/xeno/tajaran/accessories
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
@@ -63,7 +63,7 @@
 
 //*Promethean
 /datum/gear/xeno/promethean
-	whitelisted = SPECIES_PROMETHEAN
+	legacy_species_lock = SPECIES_PROMETHEAN
 
 /datum/gear/xeno/promethean/accessories
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
@@ -88,7 +88,7 @@
 
 //*Teshari
 /datum/gear/xeno/teshari
-	whitelisted = SPECIES_TESHARI
+	legacy_species_lock = SPECIES_TESHARI
 
 /datum/gear/xeno/teshari/accessories
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
@@ -120,7 +120,7 @@
 
 //*Phoronoid
 /datum/gear/xeno/phoronoid
-	whitelisted = SPECIES_PHORONOID
+	legacy_species_lock = SPECIES_PHORONOID
 
 /datum/gear/xeno/phoronoid/accessories
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
@@ -153,7 +153,7 @@
 
 //*Skrell
 /datum/gear/xeno/skrell
-	whitelisted = SPECIES_SKRELL
+	legacy_species_lock = SPECIES_SKRELL
 
 /datum/gear/xeno/skrell/accessories
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
@@ -186,7 +186,7 @@
 
 //*Unathi
 /datum/gear/xeno/unathi
-	whitelisted = SPECIES_UNATHI
+	legacy_species_lock = SPECIES_UNATHI
 
 /datum/gear/xeno/unathi/accessories
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
@@ -219,7 +219,7 @@
 
 //*Vox
 /datum/gear/xeno/vox
-	whitelisted = SPECIES_VOX
+	legacy_species_lock = SPECIES_VOX
 
 /datum/gear/xeno/vox/accessories
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
