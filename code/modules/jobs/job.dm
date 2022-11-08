@@ -86,13 +86,13 @@
  */
 /datum/job/proc/check_client_availability(client/C, check_char, latejoin)
 	. = NONE
-	if(whitelist && !config.check_job_whitelist(ckey(title), C.ckey))
+	if(whitelist_only && !config.check_job_whitelist(ckey(title), C.ckey))
 		. |= ROLE_UNAVAILABLE_WHITELIST
 	if(!slots_remaining())
 		. |= ROLE_UNAVAILABLE_SLOTS_FULL
 	if(!player_has_enough_pto(C))
 		. |= ROLE_UNAVAILABLE_PTO
-	if(jobban_isbanned(C.mob))
+	if(jobban_isbanned(C.mob, title))
 		. |= ROLE_UNAVAILABLE_BANNED
 	if(!player_old_enough(C))
 		. |= ROLE_UNAVAILABLE_CONNECT_TIME
@@ -125,7 +125,7 @@
 		return ROLE_UNAVAILABLE_SLOTS_FULL
 	else if(!player_has_enough_pto(C))
 		return ROLE_UNAVAILABLE_PTO
-	else if(jobban_isbanned(C.mob))
+	else if(jobban_isbanned(C.mob, title))
 		return ROLE_UNAVAILABLE_BANNED
 	else if(!player_old_enough(C))
 		return ROLE_UNAVAILABLE_CONNECT_TIME
