@@ -21,8 +21,8 @@
 	name = "protein bar"
 	icon_state = "proteinbar"
 
-/obj/item/trash/candy/flamincheezyhonkers
-	name = "flamin' hot cheezie honker"
+/obj/item/trash/candy/flaminhotcheesiehonker
+	name = "flamin' hot cheesie honker"
 	icon_state = "flamin_cheesie_honkers"
 
 /obj/item/trash/cheesie

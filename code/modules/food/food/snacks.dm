@@ -358,6 +358,20 @@
 	reagents.add_reagent("sugar", 4)
 	bitesize = 6
 
+/obj/item/reagent_containers/food/snacks/candy/flaminhotcheesiehonker
+	name = "flamin' hot cheesie honkers"
+	desc = "Found in an abandoned warehouse, probably not fit for safe consumption, still delicious. Now with 50% more mouth-melting dust!"
+	icon_state = "hotcheeziehonker"
+	trash = /obj/item/trash/candy/flaminhotcheesiehonker
+	nutriment_amt = 5
+	nutriment_desc = list("capsaicin" = 2, "cheese" = 3, "chips" = 2)
+
+/obj/item/reagent_containers/food/snacks/candy/flaminhotcheesiehonker/Initialize(mapload)
+	. = ..()
+	reagents.add_reagent("capsaicin", 2)
+	reagents.add_reagent("cheese", 3)
+	bitesize = 5
+
 /obj/item/reagent_containers/food/snacks/candy/donor
 	name = "Donor Candy"
 	desc = "A little treat for blood donors."
