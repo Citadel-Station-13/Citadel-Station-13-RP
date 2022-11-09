@@ -2673,7 +2673,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacetwo)
 "bSJ" = (
-/obj/item/retail_scanner/security,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
@@ -2687,6 +2686,9 @@
 /obj/structure/extinguisher_cabinet{
 	dir = 4;
 	pixel_x = -30
+	},
+/obj/item/paper_bin{
+	pixel_y = 6
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
@@ -4925,7 +4927,14 @@
 /obj/item/pinpointer{
 	pixel_x = 14
 	},
-/obj/item/stamp/hos,
+/obj/item/stamp/hos{
+	pixel_x = -8;
+	pixel_y = -3
+	},
+/obj/item/stamp/denied{
+	pixel_x = -8;
+	pixel_y = 3
+	},
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hos)
 "dGc" = (
@@ -4970,8 +4979,8 @@
 	dir = 1
 	},
 /mob/living/simple_mob/animal/passive/lizard{
-	name = "Beppy";
-	desc = "Beppy is the result of a series of funding cuts to the science division's budget. Beppy is not his original name, but it is the only name he has now. He was born a working man, quickly rising through the ranks to become a hotshot in the Nanotrasen science division, only to be stuck in an accident that irretrievably warped him along with his department to an unreachable part of subspace. Years of research and trial and error finally led the science team to return to the correct dimension, albeit all of their souls were transferred into Beppy's body, and his body was transfigured into that of a small green anole. The true moral of this story is that back in nineteen ninety eight the undertaker threw mankind off hell in a cell and plummeted sixteen feet through an announcers table."
+	desc = "Beppy is the result of a series of funding cuts to the science division's budget. Beppy is not his original name, but it is the only name he has now. He was born a working man, quickly rising through the ranks to become a hotshot in the Nanotrasen science division, only to be stuck in an accident that irretrievably warped him along with his department to an unreachable part of subspace. Years of research and trial and error finally led the science team to return to the correct dimension, albeit all of their souls were transferred into Beppy's body, and his body was transfigured into that of a small green anole. The true moral of this story is that back in nineteen ninety eight the undertaker threw mankind off hell in a cell and plummeted sixteen feet through an announcers table.";
+	name = "Beppy"
 	},
 /turf/simulated/floor/tiled/freezer,
 /area/crew_quarters/pool)
@@ -9302,9 +9311,9 @@
 "gCx" = (
 /obj/structure/table/bench/wooden,
 /obj/machinery/button/windowtint{
-	pixel_y = 30;
 	id = "sauna";
-	pixel_x = 5
+	pixel_x = 5;
+	pixel_y = 30
 	},
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -14969,8 +14978,15 @@
 "kOp" = (
 /obj/structure/table/reinforced,
 /obj/item/folder/white_rd,
-/obj/item/stamp/rd,
+/obj/item/stamp/rd{
+	pixel_x = -8;
+	pixel_y = -3
+	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/item/stamp/denied{
+	pixel_x = -8;
+	pixel_y = 3
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/heads/hor)
 "kPd" = (
@@ -17381,6 +17397,14 @@
 	pixel_x = -8;
 	pixel_y = 6;
 	req_access = list(3)
+	},
+/obj/item/stamp/denied{
+	pixel_x = 8;
+	pixel_y = 3
+	},
+/obj/item/stamp/ward{
+	pixel_x = 8;
+	pixel_y = -3
 	},
 /turf/simulated/floor/carpet,
 /area/security/warden)
@@ -32507,10 +32531,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
 "yem" = (
-/obj/item/stamp/ward,
-/obj/item/stamp/denied{
-	pixel_x = 5
-	},
 /obj/machinery/button/windowtint{
 	id = "warden_office";
 	pixel_x = -18;
