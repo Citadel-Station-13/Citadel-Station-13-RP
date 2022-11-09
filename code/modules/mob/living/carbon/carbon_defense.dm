@@ -55,7 +55,7 @@
 	if(status_flags & GODMODE)
 		return 0	//godmode
 	if(def_zone == "l_hand" || def_zone == "r_hand") //Diona (And any other potential plant people) hands don't get shocked.
-		if(species.flags & IS_PLANT)
+		if(species.species_flags & IS_PLANT)
 			return 0
 	shock_damage *= siemens_coeff
 	if (shock_damage<1)

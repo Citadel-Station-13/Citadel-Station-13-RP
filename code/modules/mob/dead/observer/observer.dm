@@ -135,7 +135,7 @@
 		mind = body.mind	//we don't transfer the mind but we keep a reference to it.
 
 	if(!T)
-		T = SSjob.GetLatejoinSpawnpoint()
+		T = SSjob.get_latejoin_spawnpoint()
 	forceMove(T)
 
 	for(var/v in GLOB.active_alternate_appearances)
@@ -687,7 +687,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Toggles showing your key in dead chat."
 
 	client.toggle_preference(/datum/client_preference/anonymous_ghost_chat)
-	SScharacter_setup.queue_preferences_save(client.prefs)
+	SScharacters.queue_preferences_save(client.prefs)
 	if(is_preference_enabled(/datum/client_preference/anonymous_ghost_chat))
 		to_chat(src, "<span class='info'>Your key won't be shown when you speak in dead chat.</span>")
 	else

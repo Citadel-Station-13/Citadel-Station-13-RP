@@ -1,4 +1,5 @@
 /datum/job/station/head_of_personnel
+	id = JOB_ID_HEAD_OF_PERSONNEL
 	title = "Head of Personnel"
 	flag = HOP
 	departments = list(DEPARTMENT_COMMAND, DEPARTMENT_CIVILIAN, DEPARTMENT_CARGO)

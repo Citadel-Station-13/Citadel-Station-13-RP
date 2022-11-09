@@ -1,6 +1,8 @@
 /datum/species/crew_shadekin
+	uid = SPECIES_ID_SHADEKIN_BLACK
 	name = SPECIES_SHADEKIN_CREW
 	name_plural = SPECIES_SHADEKIN_CREW
+	category = "Special"
 	icobase = 'icons/mob/human_races/r_shadekin_vr.dmi'
 	deform = 'icons/mob/human_races/r_shadekin_vr.dmi'
 	tail = "tail"
@@ -15,7 +17,7 @@
 	name_language = LANGUAGE_SHADEKIN
 	species_language = LANGUAGE_SHADEKIN
 	secondary_langs = list(LANGUAGE_SHADEKIN)
-	num_alternate_languages = 3
+	max_additional_languages = 3
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	rarity_value = 5	//INTERDIMENSIONAL FLUFFERS
 
@@ -46,7 +48,7 @@
 	heat_level_3 = 1150
 
 	flags =  NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE	//shadekin biology is still unknown to the universe (unless some bullshit lore says otherwise); CitadelRP: Now able to walk over shards of glass like regular shadekins
-	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
+	species_spawn_flags = SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_WHITELIST_SELECTABLE
 
 	reagent_tag = IS_SHADEKIN // for shadekin-unique chem interactions
 

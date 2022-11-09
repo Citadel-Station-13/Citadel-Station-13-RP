@@ -124,7 +124,6 @@
 
 	clear_signal_refs()
 	//END: ECS SHIT
-
 	return QDEL_HINT_QUEUE
 
 ///Only override this if you know what you're doing. You do not know what you're doing
@@ -144,12 +143,6 @@
 
 	for(var/target in signal_procs)
 		UnregisterSignal(target, signal_procs[target])
-
-	//END: ECS SHIT
-
-	SSnanoui.close_uis(src)
-
-	return QDEL_HINT_QUEUE
 
 #ifdef DATUMVAR_DEBUGGING_MODE
 /datum/proc/save_vars()

@@ -138,7 +138,7 @@
 		var/obj/item/integrated_circuit/IC = I
 		/* Uncomment for debugging purposes. */
 		if(!IC)
-			to_world(SPAN_DEBUGERROR("Bad assembly_components entry in [src].  Has remove() been called incorrectly?"))
+			TO_WORLD(SPAN_DEBUGERROR("Bad assembly_components entry in [src].  Has remove() been called incorrectly?"))
 			var/x = assembly_components.Find(null)
 			assembly_components.Cut(x,++x)
 			return

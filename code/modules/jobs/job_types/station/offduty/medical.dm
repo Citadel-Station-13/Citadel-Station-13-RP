@@ -1,4 +1,5 @@
 /datum/job/station/off_duty/medical
+	id = JOB_ID_OFFDUTY_MEDBAY
 	title = "Off-duty Medic"
 	selection_color = "#013D3B"
 	access = list(access_maint_tunnels, access_external_airlocks)

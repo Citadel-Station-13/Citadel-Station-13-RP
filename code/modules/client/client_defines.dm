@@ -35,6 +35,14 @@
 	 */
 	parent_type = /datum
 
+	//! Intrinsics
+	/// did New() finish?
+	var/initialized = FALSE
+	/// Persistent round-by-round data holder
+	var/datum/client_data/persistent
+	/// Database data
+	var/datum/client_dbdata/database
+
 	//! Rendering
 	/// Click catcher
 	var/atom/movable/screen/click_catcher/click_catcher
@@ -65,9 +73,9 @@
 		/////////
 		//OTHER//
 		/////////
+	// todo: rename to `preferences` & put it next to `persistent` to sate my OCD ~silicons
 	///Player preferences datum for the client
 	var/datum/preferences/prefs = null
-	var/moving = null
 	///Current area of the controlled mob
 	var/area = null
 	///when the client last died as a mouse
