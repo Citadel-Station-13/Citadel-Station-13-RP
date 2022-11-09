@@ -1,6 +1,7 @@
 /datum/species/xenohybrid
 	name = SPECIES_XENOHYBRID
 	name_plural = "Xenomorph Hybrids"
+	uid = SPECIES_ID_XENOHYBRID
 	default_bodytype = BODYTYPE_XENOHYBRID
 
 	icobase = 'icons/mob/species/xenohybrid/body.dmi'
@@ -9,7 +10,7 @@
 	tail = "tail"
 	icobase_tail = 1
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
-	num_alternate_languages = 2
+	max_additional_languages = 2
 
 	max_age = 150//Xenomorphs probably get pretty old if not shot dead
 
@@ -22,15 +23,12 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/xenohybrid)
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Neomorphs"
 
-	//primitive_form = "" //None for these guys
-	language = LANGUAGE_XENO
-	name_language = LANGUAGE_XENO
-	species_language = LANGUAGE_XENO
-	secondary_langs = list(LANGUAGE_XENO)
-	num_alternate_languages = 3
+	intrinsic_languages = LANGUAGE_ID_XENOMORPH
+	name_language = LANGUAGE_ID_XENOMORPH
+	max_additional_languages = 3
 
-	flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE//Chitin like VASILISSANs should have the same flags
-	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
+	species_flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE//Chitin like VASILISSANs should have the same flags
+	species_spawn_flags = SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_WHITELIST_SELECTABLE
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
 
 	blood_color = "#12ff12"

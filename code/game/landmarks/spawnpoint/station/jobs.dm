@@ -221,7 +221,7 @@
 
 /obj/landmark/spawnpoint/job/ai/OnRoundstart()
 	if(latejoin_active && !spawned)
-		empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
+		GLOB.empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
 	return ..()		// qdel happens AFTER we spawn core THANK YOU!
 
 /obj/landmark/spawnpoint/job/ai/secondary
@@ -232,7 +232,7 @@
 /obj/landmark/spawnpoint/job/ai/secondary/Available(mob/M, client/C, harder)
 	. = ..()
 	// yes this is unoptimized by sue me
-	for(var/obj/landmark/spawnpoint/job/ai/other in SSjob.GetAllSpawnpoints())
+	for(var/obj/landmark/spawnpoint/job/ai/other in SSjob.get_all_spawnpoints())
 		if(other.primary_ai && !other.spawned)
 			return FALSE		// priority to primary slots
 

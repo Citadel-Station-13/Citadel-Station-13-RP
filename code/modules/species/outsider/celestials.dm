@@ -1,6 +1,8 @@
 /datum/species/auril
 	name = SPECIES_AURIL
 	name_plural = SPECIES_AURIL
+	uid = SPECIES_ID_AURIL
+	category = "Celestials"
 
 	blurb = {"
 	The Auril are humanoids that resemble the angelic figures of Old Earth Christian myth.  The resemblance, however,
@@ -14,11 +16,10 @@
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
 
-	default_language = LANGUAGE_GALCOM
-	language = LANGUAGE_ENOCHIAN
-	num_alternate_languages = 3
+	intrinsic_languages = LANGUAGE_ID_DAEDAL_AURIL
+	max_additional_languages = 3
 
-	spawn_flags = SPECIES_CAN_JOIN
+	species_spawn_flags = SPECIES_SPAWN_ALLOWED
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult  = 1
@@ -53,8 +54,10 @@
 		/mob/living/proc/glow_color)
 
 /datum/species/dremachir
+	uid = SPECIES_ID_DREMACHIR
 	name = SPECIES_DREMACHIR
 	name_plural = SPECIES_DREMACHIR
+	category = "Celestials"
 
 	blurb = {"
 	Dremachir lore is still a work in progress.  They are not actual supernatural creatures.  They are aliens.
@@ -65,11 +68,10 @@
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
 
-	default_language = LANGUAGE_GALCOM
-	language = LANGUAGE_DAEMON
-	num_alternate_languages = 3
+	intrinsic_languages = LANGUAGE_ID_DAEDAL_DREMACHIR
+	max_additional_languages = 3
 
-	spawn_flags = SPECIES_CAN_JOIN
+	species_spawn_flags = SPECIES_SPAWN_ALLOWED
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult  = 1

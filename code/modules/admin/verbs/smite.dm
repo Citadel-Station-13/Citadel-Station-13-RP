@@ -6,7 +6,7 @@
 		return
 
 	if(!victim)
-		victim = input("Select a player", "Who?") as null|mob in player_list
+		victim = input("Select a player", "Who?") as null|mob in GLOB.player_list
 
 	if(!ishuman(victim))
 		return

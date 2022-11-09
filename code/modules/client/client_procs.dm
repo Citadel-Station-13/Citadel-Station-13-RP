@@ -168,6 +168,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
+	// resolve persistent data
+	persistent = resolve_client_data(ckey)
+	// todo: move resolve database data up here
+
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
 
@@ -224,6 +228,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		prefs = new /datum/preferences(src)
 		GLOB.preferences_datums[ckey] = prefs
 
+	prefs.client = src
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
 	//fps = prefs.clientfps //(prefs.clientfps < 0) ? RECOMMENDED_FPS : prefs.clientfps
@@ -275,6 +280,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(log_client_to_db() == "BUNKER_DROPPED")
 		disconnect_with_message("Disconnected by bunker: [config_legacy.panic_bunker_message]")
 		return FALSE
+
+	// resolve database data
+	// this is down here because player_lookup won't have an entry for us until log_client_to_db() runs!!
+	database = new(ckey)
+	database.LogConnect()
 
 	if (byond_version >= 512)
 		if (!byond_build || byond_build < 1386)
@@ -365,8 +375,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		// to_chat(src, get_message_output("memo"))
 		// adminGreet()
 
-	prefs.sanitize_preferences()
-
 	if(custom_event_msg && custom_event_msg != "")
 		to_chat(src, "<h1 class='alert'>Custom Event</h1>")
 		to_chat(src, "<h2 class='alert'>A custom event is taking place. OOC Info:</h2>")
@@ -394,7 +402,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		if(isnum(account_age) && account_age <= 2)
 			log_and_message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([account_age] days).")
 
-	fully_created = TRUE
+	initialized = TRUE
+	prefs.auto_flush_errors()
 
 	//////////////
 	//DISCONNECT//
@@ -410,6 +419,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.directory -= ckey
 	log_access("Logout: [key_name(src)]")
 	GLOB.ahelp_tickets.ClientLogout(src)
+	persistent = null
+	database = null
+	if(prefs)
+		prefs.client = null
+		prefs = null
 	SSserver_maint.UpdateHubStatus()
 	if(holder)
 		holder.owner = null
@@ -454,25 +468,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 */
 
 // Returns null if no DB connection can be established, or -1 if the requested key was not found in the database
-
-/proc/get_player_age(key)
-	if(!SSdbcore.Connect())
-		return null
-
-	var/sql_ckey = sql_sanitize_text(ckey(key))
-
-	var/datum/db_query/query = SSdbcore.RunQuery(
-		"SELECT datediff(Now(), firstseen) as age FROM [format_table_name("player_lookup")] WHERE ckey = :ckey",
-		list(
-			"ckey" = sql_ckey
-		)
-	)
-
-	if(query.NextRow())
-		return text2num(query.item[1])
-	else
-		return -1
-
 
 /client/proc/log_client_to_db()
 
@@ -541,7 +536,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(src.holder)
 		admin_rank = src.holder.rank
 
-	var/sql_ip = sql_sanitize_text(src.address)
+	var/sql_ip = sql_sanitize_text(src.address) || "0.0.0.0"
 	var/sql_computerid = sql_sanitize_text(src.computer_id)
 	var/sql_admin_rank = sql_sanitize_text(admin_rank)
 
@@ -850,9 +845,9 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 	var/http[] = world.Export(request)
 
 	/* Debug
-	to_world_log("Requested this: [request]")
+	TO_WORLD_log("Requested this: [request]")
 	for(var/entry in http)
-		to_world_log("[entry] : [http[entry]]")
+		TO_WORLD_log("[entry] : [http[entry]]")
 	*/
 
 	if(!http || !islist(http)) //If we couldn't check, the service might be down, fail-safe.

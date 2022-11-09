@@ -65,7 +65,7 @@
 		return FALSE
 
 	if(!R.key)
-		for(var/mob/observer/dead/ghost in player_list)
+		for(var/mob/observer/dead/ghost in GLOB.player_list)
 			if(ghost.mind && ghost.mind.current == R)
 				R.key = ghost.key
 
@@ -225,7 +225,6 @@
 	R.add_language(LANGUAGE_BIRDSONG, 1)			   //Languages moved from robot/upgrades_vr - Papalus
 	R.add_language(LANGUAGE_SAGARU,	1)
 	R.add_language(LANGUAGE_CANILUNZT, 1)
-	R.add_language(LANGUAGE_ECUREUILIAN, 1)
 	R.add_language(LANGUAGE_DAEMON,	1)
 	R.add_language(LANGUAGE_ENOCHIAN, 1)
 	R.add_language(LANGUAGE_SLAVIC, 1)

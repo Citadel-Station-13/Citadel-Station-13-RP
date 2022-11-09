@@ -22,7 +22,7 @@
 
 /mob/living/carbon/alien/diona/Initialize(mapload)
 	. = ..()
-	species = get_static_species_meta(/datum/species/diona)
+	species = SScharacters.resolve_species_path(/datum/species/diona)
 	add_language(LANGUAGE_ROOTGLOBAL)
 	add_language(LANGUAGE_GALCOM)
 	verbs += /mob/living/carbon/alien/diona/proc/merge

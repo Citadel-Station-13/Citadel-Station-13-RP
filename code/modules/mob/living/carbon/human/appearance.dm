@@ -10,7 +10,7 @@
 	if(species == new_species)
 		return
 
-	if(!(new_species in all_species_names()))
+	if(!(new_species in SScharacters.all_species_names()))
 		return
 
 	set_species(new_species)
@@ -184,17 +184,17 @@
 
 /mob/living/carbon/human/proc/generate_valid_species(var/check_whitelist = 1, var/list/whitelist = list(), var/list/blacklist = list())
 	var/list/valid_species = new()
-	for(var/datum/species/S in all_static_species_meta())
+	for(var/datum/species/S in SScharacters.all_static_species_meta())
 		var/current_species_name = S.name
 
 		if(check_whitelist && config_legacy.usealienwhitelist && !check_rights(R_ADMIN, 0, src)) //If we're using the whitelist, make sure to check it!
-			if(!(S.spawn_flags & SPECIES_CAN_JOIN))
+			if(!(S.species_spawn_flags & SPECIES_SPAWN_ALLOWED))
 				continue
 			if(whitelist.len && !(current_species_name in whitelist))
 				continue
 			if(blacklist.len && (current_species_name in blacklist))
 				continue
-			if((S.spawn_flags & SPECIES_IS_WHITELISTED) && !is_alien_whitelisted(src, S))
+			if((S.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) && !config.check_alien_whitelist(ckey(S.name), ckey))
 				continue
 
 		valid_species += current_species_name
