@@ -7,8 +7,6 @@ GLOBAL_VAR_INIT(game_view_y, 15)
 // these two variables, if set, lock all clients to a certain viewsize no matter what
 GLOBAL_VAR(lock_client_view_x)
 GLOBAL_VAR(lock_client_view_y)
-// valid icon sizes for people to set to; set list an entry to string to override default "sizexsize" string.
-GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x72 (Cozy 1080p)", 96, 128 = "128x128 (4K)"))
 
 /**
  * forces world viewsize; use for config VAS
