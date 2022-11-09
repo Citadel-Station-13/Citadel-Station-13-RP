@@ -3881,6 +3881,7 @@
 #include "code\modules\species\station\standard\tajaran.dm"
 #include "code\modules\species\station\standard\teshari.dm"
 #include "code\modules\species\station\standard\unathi.dm"
+#include "code\modules\species\station\standard\unathidigi.dm"
 #include "code\modules\species\station\standard\vulpkanin.dm"
 #include "code\modules\species\station\standard\zaddat.dm"
 #include "code\modules\species\station\standard\zorren.dm"
