@@ -20,7 +20,7 @@
 		list(
 			list(0, 10, 0.1, null),
 			list(-7, 10, 0.1, null),
-			list(0, 12, 0.1, null),
+			list(0, 12, -0.1, null),
 			list(7, 13, 0.1, null)
 		)
 	)
@@ -43,10 +43,5 @@
 	name = "Cargo Train Tug"
 	desc = "A ridable electric car designed for pulling trolleys. This one sports cargo livery"
 	icon_state = "cargo_pride"
-//	overlays = list("cargo_front_overlay")
 
-/obj/vehicle/ridden/tug/cargo/update_icon()
-	..()
-	overlays.Cut()
-	add_overlay(image(icon = 'icons/obj/vehicles/tug.dmi', icon_state = "cargo_front_overlay", layer = src.layer + 2))
 
