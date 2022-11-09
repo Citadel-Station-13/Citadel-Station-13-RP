@@ -355,8 +355,8 @@
 	if(C)
 		C.refit_viewport()
 	else
-		for(var/client/C as anything in clients)
-			update_view_size(C)
+		for(var/client/_C as anything in clients)
+			update_view_size(_C)
 
 /datum/perspective/proc/recompute_view_size()
 	view_dirty = FALSE

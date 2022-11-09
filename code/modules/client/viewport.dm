@@ -85,21 +85,21 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
  * called directly by the skin
  *
  * @params
- * - width - width of viewport in pixels
- * - height - height of viewport in pixels
- * - zoom - zoom of viewport
- * - letterbox - are we letterboxing?
+ * - w - width of viewport in pixels
+ * - h - height of viewport in pixels
+ * - z - zoom of viewport
+ * - b - are we letterboxing?
  */
-/client/verb/on_viewport(width, height, zoom, letterbox)
+/client/verb/on_viewport(w as num, h as num, z as num, b as text)
 	set name = ".on_viewport"
 	set hidden = TRUE
 	if(viewport_rwlock)	// something is fucking around, don't edit for them
 		return
 	// get vars
-	assumed_viewport_spx = width
-	assumed_viewport_spy = height
-	assumed_viewport_zoom = zoom
-	assumed_viewport_box = letterbox
+	assumed_viewport_spx = w
+	assumed_viewport_spy = h
+	assumed_viewport_zoom = z
+	assumed_viewport_box = b == "true"? TRUE : FALSE
 	// refit
 	refit_viewport()
 
@@ -241,7 +241,7 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 			return
 		// keep adjusting
 		// overshot?
-		if ((delta > 0 && got_width > desired_width) || (delta < 0 && got_width < desired_width))
+		if ((delta > 0 && current_width > desired_pixel_width) || (delta < 0 && current_width < desired_pixel_width))
 			// reverse in half
 			delta = -delta / 2
 
