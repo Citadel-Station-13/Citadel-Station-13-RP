@@ -176,7 +176,7 @@
 		var/list/buffer_reagents_list = list()
 		data["buffer_reagents"] = buffer_reagents_list
 		for(var/datum/reagent/R in reagents.reagent_list)
-			buffer_reagents_list[++buffer_reagents_list.len] = list("name" = R.name, "volume" = R.volume, "id" = R.id, "description" = R.description)
+			buffer_reagents_list[++buffer_reagents_list.len] = list("name" = R.name, "volume" = R.volume, "description" = R.description, "id" = R.id)
 
 	//Calculated once since it'll never change
 	if(!pill_styles || !bottle_styles || !chosen_patch_style || !patch_styles)
@@ -564,9 +564,9 @@
 			if(!id || !amount)
 				return FALSE
 			if(mode)
-				R.trans_id_to(beaker, id, amount)
+				reagents.trans_id_to(beaker, id, amount)
 			else
-				R.remove_reagent(id, amount)
+				reagents.remove_reagent(id, amount)
 			return TRUE
 
 		if("eject")

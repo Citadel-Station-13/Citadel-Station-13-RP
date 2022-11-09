@@ -67,23 +67,21 @@ export const ChemMaster = (props, context) => {
   return (
     <Window
       width={575}
-      height={500}
+      height={495}
       resizable>
       <ComplexModal />
-      <Window.Content scrollable className="Layout__content--flexColumn">
+      <Window.Content className="Layout__content--flexColumn">
         <ChemMasterBeaker
           beaker={beaker}
           beakerReagents={beaker_reagents}
-          bufferNonEmpty={buffer_reagents.length > 0}
-        />
+          bufferNonEmpty={buffer_reagents.length > 0} />
         <ChemMasterBuffer
           mode={mode}
-          bufferReagents={buffer_reagents}
-        />
+          beaker={beaker}
+          bufferReagents={buffer_reagents} />
         <ChemMasterProduction
           isCondiment={condi}
-          bufferNonEmpty={buffer_reagents.length > 0}
-        />
+          bufferNonEmpty={buffer_reagents.length > 0} />
         {/* <ChemMasterCustomization /> */}
       </Window.Content>
     </Window>
@@ -188,8 +186,7 @@ const ChemMasterBuffer = (props, context) => {
             icon={mode ? "flask" : "trash"}
             color={!mode && "bad"}
             content={mode ? "Beaker" : "Disposal"}
-            onClick={() => act('toggle')}
-          />
+            onClick={() => act('toggle')} />
         </Box>
       }>
       {(bufferReagents.length > 0)
