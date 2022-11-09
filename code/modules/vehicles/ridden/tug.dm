@@ -43,10 +43,10 @@
 	name = "Cargo Train Tug"
 	desc = "A ridable electric car designed for pulling trolleys. This one sports cargo livery"
 	icon_state = "cargo_pride"
-	overlays = list("cargo_front_overlay")
+//	overlays = list("cargo_front_overlay")
 
 /obj/vehicle/ridden/tug/cargo/update_icon()
-	. = ..()
+	..()
 	overlays.Cut()
-	add_overlay(image(icon = 'icons/obj/vehicles/tug.dmi', icon_state = "cargo_front_overlay", layer = src.layer + 1))
-	return
+	add_overlay(image(icon = 'icons/obj/vehicles/tug.dmi', icon_state = "cargo_front_overlay", layer = src.layer + 2))
+
