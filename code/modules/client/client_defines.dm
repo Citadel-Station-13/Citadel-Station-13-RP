@@ -89,7 +89,6 @@
 		/////////
 	///Player preferences datum for the client
 	var/datum/preferences/prefs = null
-	var/moving = null
 	///Current area of the controlled mob
 	var/area = null
 	///when the client last died as a mouse
