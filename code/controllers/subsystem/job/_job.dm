@@ -3,9 +3,12 @@ SUBSYSTEM_DEF(job)
 	init_order = INIT_ORDER_JOBS
 	subsystem_flags = SS_NO_FIRE
 
-	var/list/occupations 		//List of all jobs
-	var/list/datum/job/name_occupations	//Dict of all jobs, keys are titles
-	var/list/type_occupations	//Dict of all jobs, keys are types
+	/// List of all jobs
+	var/list/occupations
+	/// Dict of all jobs, keys are titles
+	var/list/datum/job/name_occupations
+	/// Dict of all jobs, keys are types
+	var/list/type_occupations
 	/// jobs by id
 	var/list/job_lookup
 	/// job preferences ui cache - cache[faction string][department name] = list(job ids)
