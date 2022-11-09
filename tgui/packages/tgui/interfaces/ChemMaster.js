@@ -6,13 +6,6 @@ import { BeakerContents } from './common/BeakerContents';
 import { ComplexModal, modalOpen, modalRegisterBodyOverride } from './common/ComplexModal';
 
 const transferAmounts = [1, 5, 10, 30, 60];
-const bottleStyles = [
-  "bottle.png",
-  "small_bottle.png",
-  "wide_bottle.png",
-  "round_bottle.png",
-  "reagent_bottle.png",
-];
 
 const analyzeModalBodyOverride = (modal, context) => {
   const { act, data } = useBackend(context);
@@ -330,102 +323,133 @@ const ChemMasterProduction = (props, context) => {
 
 const ChemMasterProductionChemical = (props, context) => {
   const { act, data } = useBackend(context);
+  const {
+    condi,
+    auto_condi_style,
+    condi_styles = [],
+    chosen_condi_style,
+    pill_styles = [],
+    chosen_pill_style,
+    patch_styles = [],
+    chosen_patch_style,
+    chosen_bottle_style = [],
+    bottle_styles,
+  } = data;
   return (
     <LabeledList>
-      <LabeledList.Item label="Pills">
-        <Button
-          icon="circle"
-          content="One (60u max)"
-          mr="0.5rem"
-          onClick={() => modalOpen(context, 'create_pill')}
-        />
-        <Button
-          icon="plus-circle"
-          content="Multiple"
-          mb="0.5rem"
-          onClick={() => modalOpen(context, 'create_pill_multiple')}
-        /><br />
-        <Button
-          onClick={() => modalOpen(context, 'change_pill_style')}>
-          <div style={
-            "display: inline-block;"
-            + "width: 16px;"
-            + "height: 16px;"
-            + "vertical-align: middle;"
-            + "background: url(pill" + data.pillsprite + ".png);"
-            + "background-size: 200%;"
-            + "background-position: left -10px bottom -6px;"
-          } />
-          Style
-        </Button>
-      </LabeledList.Item>
-      <LabeledList.Item label="Patches">
-        <Button
-          icon="square"
-          content="One (60u max)"
-          mr="0.5rem"
-          onClick={() => modalOpen(context, 'create_patch')}
-        />
-        <Button
-          icon="plus-square"
-          content="Multiple"
-          onClick={() => modalOpen(context, 'create_patch_multiple')}
-        />
-      </LabeledList.Item>
-      <LabeledList.Item label="Lollipops">
-        <Button
-          icon="square"
-          content="One (20u max)"
-          mr="0.5rem"
-          onClick={() => modalOpen(context, 'create_lollipop')}
-        />
-        <Button
-          icon="plus-square"
-          content="Multiple"
-          onClick={() => modalOpen(context, 'create_lollipop_multiple')}
-        />
-      </LabeledList.Item>
-      <LabeledList.Item label="Autoinjectors">
-        <Button
-          icon="square"
-          content="One (5u max)"
-          mr="0.5rem"
-          onClick={() => modalOpen(context, 'create_autoinjector')}
-        />
-        <Button
-          icon="plus-square"
-          content="Multiple"
-          onClick={() => modalOpen(context, 'create_autoinjector_multiple')}
-        />
-      </LabeledList.Item>
-      <LabeledList.Item label="Bottle">
-        <Button
-          icon="wine-bottle"
-          content="Create bottle (60u max)"
-          mr="0.5rem"
-          mb="0.5rem"
-          onClick={() => modalOpen(context, 'create_bottle')}
-        />
-        <Button
-          icon="plus-square"
-          content="Multiple"
-          onClick={() => modalOpen(context, 'create_bottle_multiple')}
-        /><br />
-        <Button
-          mb="0.5rem"
-          onClick={() => modalOpen(context, 'change_bottle_style')}>
-          <div style={
-            "display: inline-block;"
-            + "width: 16px;"
-            + "height: 16px;"
-            + "vertical-align: middle;"
-            + "background: url(bottle-" + data.bottlesprite + ".png);"
-            + "background-size: 200%;"
-            + "background-position: left -10px bottom -6px;"
-          } />
-          Style
-        </Button>
-      </LabeledList.Item>
+      {!condi && (
+        <LabeledList.Item label="Pills">
+          <Button
+            icon="circle"
+            content="One (60u max)"
+            mr="0.5rem"
+            onClick={() => modalOpen(context, 'create_pill')} />
+          <Button
+            icon="plus-circle"
+            content="Multiple"
+            mb="0.5rem"
+            onClick={() => modalOpen(context, 'create_pill_multiple')} />
+        </LabeledList.Item>
+      )}
+      {!condi && (
+        <LabeledList.Item label="Pill type">
+          {pill_styles.map((pill) => (
+            <Button
+              key={pill.id}
+              width="30px"
+              selected={pill.id === chosen_pill_style}
+              textAlign="center"
+              color="transparent"
+              onClick={() => act('pill_style', { id: pill.id })}>
+              <Box mx={-1} className={pill.class_name} />
+            </Button>
+          ))}
+        </LabeledList.Item>
+      )}
+      {!condi && (
+        <LabeledList.Item label="Patches">
+          <Button
+            icon="square"
+            content="One (60u max)"
+            mr="0.5rem"
+            onClick={() => modalOpen(context, 'create_patch')} />
+          <Button
+            icon="plus-square"
+            content="Multiple"
+            onClick={() => modalOpen(context, 'create_patch_multiple')} />
+        </LabeledList.Item>
+      )}
+      {!condi && (
+        <LabeledList.Item label="Patch type">
+          {patch_styles.map((patch) => (
+            <Button
+              key={patch.style}
+              width="30px"
+              selected={patch.style === chosen_patch_style}
+              textAlign="center"
+              color="transparent"
+              onClick={() =>
+                act('change_patch_style', { patch_style: patch.style })}>
+              <Box mb={0} mt={1} className={patch.class_name} />
+            </Button>
+          ))}
+        </LabeledList.Item>
+      )}
+      {!condi && (
+        <LabeledList.Item label="Bottle">
+          <Button
+            icon="wine-bottle"
+            content="One (60u max)"
+            mr="0.5rem"
+            mb="0.5rem"
+            onClick={() => modalOpen(context, 'create_bottle')} />
+          <Button
+            icon="plus-square"
+            content="Multiple"
+            onClick={() => modalOpen(context, 'create_bottle_multiple')} />
+        </LabeledList.Item>
+      )}
+      {!condi && (
+        <LabeledList.Item label="Bottle type">
+          {bottle_styles.map((bottle) => (
+            <Button
+              key={bottle.id}
+              width="30px"
+              selected={bottle.id === chosen_bottle_style}
+              textAlign="center"
+              color="transparent"
+              onClick={() => act('bottle_style', { id: bottle.id })}>
+              <Box mb={0} mt={1} className={bottle.class_name} />
+            </Button>
+          ))}
+        </LabeledList.Item>
+      )}
+      {!condi && (
+        <LabeledList.Item label="Lollipops">
+          <Button
+            icon="square"
+            content="One (20u max)"
+            mr="0.5rem"
+            onClick={() => modalOpen(context, 'create_lollipop')} />
+          <Button
+            icon="plus-square"
+            content="Multiple"
+            onClick={() => modalOpen(context, 'create_lollipop_multiple')} />
+        </LabeledList.Item>
+      )}
+      {!condi && (
+        <LabeledList.Item label="Autoinjectors">
+          <Button
+            icon="square"
+            content="One (5u max)"
+            mr="0.5rem"
+            onClick={() => modalOpen(context, 'create_autoinjector')} />
+          <Button
+            icon="plus-square"
+            content="Multiple"
+            onClick={() => modalOpen(context, 'create_autoinjector_multiple')} />
+        </LabeledList.Item>
+      )}
     </LabeledList>
   );
 };

@@ -3,30 +3,52 @@
 	desc = "Used to seperate and package chemicals in to autoinjectors, lollipops, patches, pills, or bottles. Warranty void if used to create Space Drugs."
 	density = TRUE
 	anchored = TRUE
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "mixer0"
 	circuit = /obj/item/circuitboard/chem_master
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
+	flags = OPENCONTAINER
+	clicksound = "button"
+
+	/// Input reagents container.
 	var/obj/item/reagent_containers/beaker = null
+	/// Pill bottle for newly created pills.
 	var/obj/item/storage/pill_bottle/loaded_pill_bottle = null
-	var/mode = 0
-	var/condi = 0
 	var/useramount = 15 // Last used amount
 	var/pillamount = 10
 	var/lolliamount = 5
 	var/autoamount = 5
-	var/list/bottle_styles
-	var/bottlesprite = 1
-	var/pillsprite = 1
-	var/lollisprite = 1
-	var/autosprite = 1
 	var/max_pill_count = 20
 	var/max_lolli_count = 10
 	var/max_auto_count = 5
 	var/printing = FALSE
-	flags = OPENCONTAINER
-	clicksound = "button"
+	var/autosprite = TRUE
+
+	/// Whether separated reagents should be moved back to container or destroyed. 1 - move, 0 - destroy
+	var/mode = 1
+	/// Decides what UI to show. If TRUE shows UI of CondiMaster, if FALSE - ChemMaster
+	var/condi = FALSE
+
+	/// Currently selected pill style.
+	var/chosen_pill_style = 1
+	/// List of available pill styles for UI
+	var/list/pill_styles
+
+	/// Currently selected bottle style.
+	var/chosen_bottle_style = 1
+	/// List of available bottle styles for UI
+	var/list/bottle_styles
+
+	/// Currently selected patch style.
+	var/chosen_patch_style = DEFAULT_PATCH_STYLE
+	/// List of available patch styles for UI
+	var/list/patch_styles
+
+	/// Currently selected condi style.
+	var/chosen_condi_style = 1
+	/// List of available condi styles for UI
+	var/list/condi_styles
 
 /obj/machinery/chem_master/Initialize(mapload, newdir)
 	. = ..()
@@ -85,9 +107,38 @@
 	user.set_machine(src)
 	ui_interact(user)
 
+/obj/machinery/chem_master/proc/load_styles()
+	/// Calculate the span tags and ids fo all the available pill icons.
+	var/datum/asset/spritesheet/simple/pill_assets = get_asset_datum(/datum/asset/spritesheet/simple/pills)
+	pill_styles = list()
+	for (var/x in 1 to PILL_STYLE_COUNT)
+		var/list/pill_style_list = list()
+		pill_style_list["id"] = x
+		pill_style_list["class_name"] = pill_assets.icon_class_name("pill[x]")
+		pill_styles += list(pill_style_list)
+
+	var/datum/asset/spritesheet/simple/bottle_assets = get_asset_datum(/datum/asset/spritesheet/simple/bottles)
+	bottle_styles = list()
+	for (var/x in 1 to BOTTLE_STYLE_COUNT)
+		var/list/bottle_style_list = list()
+		bottle_style_list["id"] = x
+		bottle_style_list["class_name"] = bottle_assets.icon_class_name("bottle[x]")
+		bottle_styles += list(bottle_style_list)
+
+	var/datum/asset/spritesheet/simple/patches_assets = get_asset_datum(/datum/asset/spritesheet/simple/patches)
+	patch_styles = list()
+	for (var/raw_patch_style in PATCH_STYLE_LIST)
+		//adding class_name for use in UI
+		var/list/patch_style = list()
+		patch_style["style"] = raw_patch_style
+		patch_style["class_name"] = patches_assets.icon_class_name(raw_patch_style)
+		patch_styles += list(patch_style)
+
 /obj/machinery/chem_master/ui_assets(mob/user)
 	return list(
-		get_asset_datum(/datum/asset/simple/namespaced/chem_master),
+		get_asset_datum(/datum/asset/spritesheet/simple/pills),
+		get_asset_datum(/datum/asset/spritesheet/simple/bottles),
+		get_asset_datum(/datum/asset/spritesheet/simple/patches),
 	)
 
 /obj/machinery/chem_master/ui_interact(mob/user, datum/tgui/ui = null)
@@ -104,6 +155,9 @@
 /obj/machinery/chem_master/ui_data(mob/user)
 	var/list/data = list()
 
+	data["autosprite"] = autosprite
+	data["mode"] = mode
+	data["printing"] = printing
 	data["condi"] = condi
 
 	data["loaded_pill_bottle"] = !!loaded_pill_bottle
@@ -124,12 +178,15 @@
 		for(var/datum/reagent/R in reagents.reagent_list)
 			buffer_reagents_list[++buffer_reagents_list.len] = list("name" = R.name, "volume" = R.volume, "id" = R.id, "description" = R.description)
 
-	data["pillsprite"] = pillsprite
-	data["bottlesprite"] = bottlesprite
-	data["lollisprite"] = lollisprite
-	data["autosprite"] = autosprite
-	data["mode"] = mode
-	data["printing"] = printing
+	//Calculated once since it'll never change
+	if(!pill_styles || !bottle_styles || !chosen_patch_style || !patch_styles)
+		load_styles()
+	data["pill_styles"] = pill_styles
+	data["bottle_styles"] = bottle_styles
+	data["patch_styles"] = patch_styles
+	data["chosen_pill_style"] = chosen_pill_style
+	data["chosen_bottle_style"] = chosen_bottle_style
+	data["chosen_patch_style"] = chosen_patch_style
 
 	// Transfer modal information if there is one
 	data["modal"] = ui_modal_data(src)
@@ -166,25 +223,6 @@
 
 					arguments["analysis"] = result
 					ui_modal_message(src, id, "", null, arguments)
-				// if("change_pill_bottle_style")
-				// 	if(!loaded_pill_bottle)
-				// 		return
-				// 	if(!pill_bottle_wrappers)
-				// 		pill_bottle_wrappers = list(
-				// 			"CLEAR" = "Default",
-				// 			COLOR_RED = "Red",
-				// 			COLOR_GREEN = "Green",
-				// 			COLOR_PALE_BTL_GREEN = "Pale green",
-				// 			COLOR_BLUE = "Blue",
-				// 			COLOR_CYAN_BLUE = "Light blue",
-				// 			COLOR_TEAL = "Teal",
-				// 			COLOR_YELLOW = "Yellow",
-				// 			COLOR_ORANGE = "Orange",
-				// 			COLOR_PINK = "Pink",
-				// 			COLOR_MAROON = "Brown"
-				// 		)
-				// 	var/current = pill_bottle_wrappers[loaded_pill_bottle.wrapper_color] || "Default"
-				// 	ui_modal_choice(src, id, "Please select a pill bottle wrapper:", null, arguments, current, pill_bottle_wrappers)
 				if("addcustom")
 					if(!beaker || !beaker.reagents.total_volume)
 						return
@@ -193,10 +231,12 @@
 					if(!reagents.total_volume)
 						return
 					ui_modal_input(src, id, "Please enter the amount to transfer to [mode ? "beaker" : "disposal"]:", null, arguments, useramount)
+			//! CONDIMENTS
 				if("create_condi_pack")
 					if(!condi || !reagents.total_volume)
 						return
 					ui_modal_input(src, id, "Please name your new condiment pack:", null, arguments, reagents.get_master_reagent_name(), MAX_CUSTOM_NAME_LEN)
+			//! PILLS
 				if("create_pill")
 					if(condi || !reagents.total_volume)
 						return
@@ -212,11 +252,7 @@
 					if(condi || !reagents.total_volume)
 						return
 					ui_modal_input(src, id, "Please enter the amount of pills to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, pillamount, 5)
-				if("change_pill_style")
-					var/list/choices = list()
-					for(var/i = 1 to MAX_PILL_SPRITE)
-						choices += "pill[i].png"
-					ui_modal_bento(src, id, "Please select the new style for pills:", null, arguments, pillsprite, choices)
+			//! PATCHES
 				if("create_patch")
 					if(condi || !reagents.total_volume)
 						return
@@ -232,6 +268,7 @@
 					if(condi || !reagents.total_volume)
 						return
 					ui_modal_input(src, id, "Please enter the amount of patches to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, pillamount, 5)
+			//! LOLLIPOPS
 				if("create_lollipop")
 					if(condi || !reagents.total_volume)
 						return
@@ -247,6 +284,7 @@
 					if(condi || !reagents.total_volume)
 						return
 					ui_modal_input(src, id, "Please enter the amount of lollipops to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, lolliamount, 5)
+			//! AUTOINJECTORS
 				if("create_autoinjector")
 					if(condi || !reagents.total_volume)
 						return
@@ -262,6 +300,7 @@
 					if(condi || !reagents.total_volume)
 						return
 					ui_modal_input(src, id, "Please enter the amount of autoinjectors to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, autoamount, 5)
+			//! BOTTLES
 				if("create_bottle")
 					if(condi || !reagents.total_volume)
 						return
@@ -277,31 +316,11 @@
 					if(condi || !reagents.total_volume)
 						return
 					ui_modal_input(src, id, "Please enter the amount of bottles to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, 2, 5)//two bottles on default
-				if("change_bottle_style")
-					var/list/choices = list()
-					for(var/i = 1 to MAX_BOTTLE_SPRITE)
-						choices += "bottle-[i].png"
-					ui_modal_bento(src, id, "Please select the new style for bottles:", null, arguments, bottlesprite, choices)
 				else
 					return FALSE
 		if(UI_MODAL_ANSWER)
 			var/answer = params["answer"]
 			switch(id)
-				// if("change_pill_bottle_style")
-				// 	if(!pill_bottle_wrappers || !loaded_pill_bottle) // wat?
-				// 		return
-				// 	var/color = "CLEAR"
-				// 	for(var/col in pill_bottle_wrappers)
-				// 		var/col_name = pill_bottle_wrappers[col]
-				// 		if(col_name == answer)
-				// 			color = col
-				// 			break
-				// 	if(length(color) && color != "CLEAR")
-				// 		loaded_pill_bottle.wrapper_color = color
-				// 		loaded_pill_bottle.apply_wrap()
-				// 	else
-				// 		loaded_pill_bottle.wrapper_color = null
-				// 		loaded_pill_bottle.cut_overlays()
 				if("addcustom")
 					var/amount = isgoodnumber(text2num(answer))
 					if(!amount || !arguments["id"])
@@ -341,7 +360,7 @@
 						P.name = "[answer] pill"
 						P.pixel_x = rand(-7, 7) // Random position
 						P.pixel_y = rand(-7, 7)
-						P.icon_state = "pill[pillsprite]"
+						P.icon_state = "pill[chosen_pill_style]"
 						if(P.icon_state in list("pill1", "pill2", "pill3", "pill4")) // if using greyscale, take colour from reagent
 							P.color = reagents.get_color()
 						reagents.trans_to_obj(P, amount_per_pill)
@@ -352,11 +371,6 @@
 					if(condi || !reagents.total_volume)
 						return
 					ui_act("modal_open", list("id" = "create_pill", "arguments" = list("num" = answer)), ui, state)
-				if("change_pill_style")
-					var/new_style = clamp(text2num(answer) || 0, 0, MAX_PILL_SPRITE)
-					if(!new_style)
-						return
-					pillsprite = new_style
 				if("create_patch")
 					if(condi || !reagents.total_volume)
 						return
@@ -453,18 +467,13 @@
 						P.name = "[answer] bottle"
 						P.pixel_x = rand(-7, 7) // random position
 						P.pixel_y = rand(-7, 7)
-						P.icon_state = "bottle-[bottlesprite]" || "bottle-1"
+						P.icon_state = "bottle-[bottle_styles]" || "bottle-1"
 						reagents.trans_to_obj(P, amount_per_bottle)
 						P.update_icon()
 				if("create_bottle_multiple")
 					if(condi || !reagents.total_volume)
 						return
 					ui_act("modal_open", list("id" = "create_bottle", "arguments" = list("num" = answer)), ui, state)
-				if("change_bottle_style")
-					var/new_style = clamp(text2num(answer) || 0, 0, MAX_BOTTLE_SPRITE)
-					if(!new_style)
-						return
-					bottlesprite = new_style
 				else
 					return FALSE
 		else
@@ -477,30 +486,36 @@
 	if(ui_act_modal(action, params, ui, state))
 		return TRUE
 
+	if(. || !beaker)
+		return
+
 	add_fingerprint(usr)
 	usr.set_machine(src)
+	var/datum/reagents/R = beaker.reagents
 
-	. = TRUE
 	switch(action)
 		if("toggle")
 			mode = !mode
+			return TRUE
+
 		if("ejectp")
 			if(loaded_pill_bottle)
 				loaded_pill_bottle.forceMove(get_turf(src))
 				if(Adjacent(usr) && !issilicon(usr))
 					usr.put_in_hands(loaded_pill_bottle)
 				loaded_pill_bottle = null
+			return TRUE
+
 		if("print")
 			if(printing || condi)
-				return
-
+				return FALSE
 			var/idx = text2num(params["idx"]) || 0
 			var/from_beaker = text2num(params["beaker"]) || FALSE
 			var/reagent_list = from_beaker ? beaker.reagents.reagent_list : reagents.reagent_list
 			if(idx < 1 || idx > length(reagent_list))
-				return
+				return FALSE
 
-			var/datum/reagent/R = reagent_list[idx]
+			var/datum/reagent/reagent_id = reagent_list[idx]
 
 			printing = TRUE
 			visible_message("<span class='notice'>[src] rattles and prints out a sheet of paper.</span>")
@@ -509,56 +524,196 @@
 			var/obj/item/paper/P = new /obj/item/paper(loc)
 			P.info = "<center><b>Chemical Analysis</b></center><br>"
 			P.info += "<b>Time of analysis:</b> [worldtime2stationtime(world.time)]<br><br>"
-			P.info += "<b>Chemical name:</b> [R.name]<br>"
-			if(istype(R, /datum/reagent/blood))
-				var/datum/reagent/blood/B = R
+			P.info += "<b>Chemical name:</b> [reagent_id.name]<br>"
+			if(istype(reagent_id, /datum/reagent/blood))
+				var/datum/reagent/blood/B = reagent_id
 				P.info += "<b>Description:</b> N/A<br><b>Blood Type:</b> [B.data["blood_type"]]<br><b>DNA:</b> [B.data["blood_DNA"]]"
 			else
-				P.info += "<b>Description:</b> [R.description]"
+				P.info += "<b>Description:</b> [reagent_id.description]"
 			P.info += "<br><br><b>Notes:</b><br>"
-			P.name = "Chemical Analysis - [R.name]"
+			P.name = "Chemical Analysis - [reagent_id.name]"
 			spawn(50)
 				printing = FALSE
-		else
-			. = FALSE
+			return TRUE
 
-	if(. || !beaker)
-		return
+		if("bottle_style")
+			var/id = text2num(params["id"])
+			chosen_bottle_style = id
+			return TRUE
 
-	. = TRUE
-	var/datum/reagents/R = beaker.reagents
-	switch(action)
+		if("pill_style")
+			var/id = text2num(params["id"])
+			chosen_pill_style = id
+			return TRUE
+
+		if("change_patch_style")
+			chosen_patch_style = params["patch_style"]
+			return TRUE
+
 		if("add")
 			var/id = params["id"]
 			var/amount = text2num(params["amount"])
 			if(!id || !amount)
-				return
+				return FALSE
 			R.trans_id_to(src, id, amount)
+			return TRUE
+
 		if("remove")
 			var/id = params["id"]
 			var/amount = text2num(params["amount"])
 			if(!id || !amount)
-				return
+				return FALSE
 			if(mode)
-				reagents.trans_id_to(beaker, id, amount)
+				R.trans_id_to(beaker, id, amount)
 			else
-				reagents.remove_reagent(id, amount)
+				R.remove_reagent(id, amount)
+			return TRUE
+
 		if("eject")
 			if(!beaker)
-				return
+				return FALSE
 			beaker.forceMove(get_turf(src))
 			if(Adjacent(usr) && !issilicon(usr))
 				usr.put_in_hands(beaker)
 			beaker = null
-			reagents.clear_reagents()
+			R.clear_reagents()
 			update_icon()
+			return TRUE
+
 		if("create_condi_bottle")
 			if(!condi || !reagents.total_volume)
-				return
+				return FALSE
 			var/obj/item/reagent_containers/food/condiment/P = new(loc)
-			reagents.trans_to_obj(P, 50)
-		else
+			R.trans_to_obj(P, 50)
+			return TRUE
+
+		if("create")
+			if(reagents.total_volume == 0)
+				return FALSE
+			var/item_type = params["type"]
+			// Get amount of items
+			var/amount = text2num(params["amount"])
+			if(amount == null)
+				amount = text2num(input(usr,
+					"Max 10. Buffer content will be split evenly.",
+					"How many to make?", 1))
+			amount = clamp(round(amount), 0, 10)
+			if (amount <= 0)
+				return FALSE
+			// Get units per item
+			var/vol_each = text2num(params["volume"])
+			var/vol_each_text = params["volume"]
+			var/vol_each_max = reagents.total_volume / amount
+			var/list/style
+			use_power(active_power_usage)
+			if (item_type == "pill")
+				vol_each_max = min(50, vol_each_max)
+			else if (item_type == "patch")
+				vol_each_max = min(40, vol_each_max)
+			else if (item_type == "bottle")
+				vol_each_max = min(30, vol_each_max)
+			else if (item_type == "condimentPack")
+				vol_each_max = min(10, vol_each_max)
+			// else if (item_type == "condimentBottle")
+			// 	var/list/styles = get_condi_styles()
+			// 	if (chosen_condi_style == CONDIMASTER_STYLE_AUTO || !(chosen_condi_style in styles))
+			// 		style = guess_condi_style(reagents)
+			// 	else
+			// 		style = styles[chosen_condi_style]
+			// 	vol_each_max = min(50, vol_each_max)
+			else
+				return FALSE
+			if(vol_each_text == "auto")
+				vol_each = vol_each_max
+			if(vol_each == null)
+				vol_each = text2num(input(usr,
+					"Maximum [vol_each_max] units per item.",
+					"How many units to fill?",
+					vol_each_max))
+			vol_each = round(clamp(vol_each, 0, vol_each_max), 0.01)
+			if(vol_each <= 0)
+				return FALSE
+			// Get item name
+			var/name = params["name"]
+			var/name_has_units = item_type == "pill" || item_type == "patch"
+			if(!name)
+				var/name_default
+				if (style && style["name"] && !style["generate_name"])
+					name_default = style["name"]
+				else
+					name_default = reagents.get_master_reagent_name()
+				if (name_has_units)
+					name_default += " ([vol_each]u)"
+				name = tgui_input_text(usr,
+					"Give it a name!",
+					"Name",
+					name_default,
+					MAX_NAME_LEN)
+			if(!name || !reagents.total_volume || !src || QDELETED(src) || !usr.canUseTopic(src, !issilicon(usr)))
+				return FALSE
+			// Start filling
+			if(item_type == "pill")
+				var/obj/item/reagent_containers/pill/P
+				var/target_loc = drop_location()
+				var/drop_threshold = INFINITY
+				if(loaded_pill_bottle)
+					if(loaded_pill_bottle.max_storage_space)
+						drop_threshold = loaded_pill_bottle.max_storage_space - loaded_pill_bottle.contents.len
+						target_loc = loaded_pill_bottle
+				for(var/i in 1 to amount)
+					if(i-1 < drop_threshold)
+						P = new/obj/item/reagent_containers/pill(target_loc)
+					else
+						P = new/obj/item/reagent_containers/pill(drop_location())
+					P.name = trim("[name] pill")
+					if(chosen_pill_style == RANDOM_PILL_STYLE)
+						P.icon_state ="pill[rand(1, PILL_STYLE_COUNT)]"
+					else
+						P.icon_state = "pill[chosen_pill_style]"
+					if(P.icon_state == "pill4")
+						P.desc = "A tablet or capsule, but not just any, a red one, one taken by the ones not scared of knowledge, freedom, uncertainty and the brutal truths of reality."
+					adjust_item_drop_location(P)
+					reagents.trans_to(P, vol_each)
+				return TRUE
+			if(item_type == "patch")
+				var/obj/item/reagent_containers/pill/patch/P
+				for(var/i in 1 to amount)
+					P = new/obj/item/reagent_containers/pill/patch(drop_location())
+					P.name = trim("[name] patch")
+					P.icon_state = chosen_patch_style
+					adjust_item_drop_location(P)
+					reagents.trans_to(P, vol_each)
+				return TRUE
+			if(item_type == "bottle")
+				var/obj/item/storage/pill_bottle/P
+				for(var/i in 1 to amount)
+					P = new/obj/item/storage/pill_bottle(drop_location())
+					P.name = trim("[name] bottle")
+					adjust_item_drop_location(P)
+					reagents.trans_to(P, vol_each)
+				return TRUE
+			// if(item_type == "condimentPack")
+			// 	var/obj/item/reagent_containers/condiment/pack/P
+			// 	for(var/i in 1 to amount)
+			// 		P = new/obj/item/reagent_containers/condiment/pack(drop_location())
+			// 		P.originalname = name
+			// 		P.name = trim("[name] pack")
+			// 		P.desc = "A small condiment pack. The label says it contains [name]."
+			// 		reagents.trans_to(P, vol_each)
+			// 	return TRUE
+			// if(item_type == "condimentBottle")
+			// 	var/obj/item/reagent_containers/condiment/P
+			// 	for(var/i in 1 to amount)
+			// 		P = new/obj/item/reagent_containers/condiment(drop_location())
+			// 		if (style)
+			// 			apply_condi_style(P, style)
+			// 		P.renamedByPlayer = TRUE
+			// 		P.name = name
+			// 		reagents.trans_to(P, vol_each)
+			// 	return TRUE
 			return FALSE
+
+	return FALSE
 
 /obj/machinery/chem_master/attack_ai(mob/user)
 	return attack_hand(user)
@@ -583,3 +738,23 @@
 /obj/machinery/chem_master/condimaster
 	name = "CondiMaster 3000"
 	condi = 1
+
+/obj/machinery/chem_master/adjust_item_drop_location(atom/movable/AM) // Special version for chemmasters and condimasters
+	if (AM == beaker)
+		AM.pixel_x = AM.base_pixel_x - 8
+		AM.pixel_y = AM.base_pixel_y + 8
+		return null
+	else if (AM == loaded_pill_bottle)
+		if (length(loaded_pill_bottle.contents))
+			AM.pixel_x = AM.base_pixel_x - 13
+		else
+			AM.pixel_x = AM.base_pixel_x - 7
+		AM.pixel_y = AM.base_pixel_y - 8
+		return null
+	else
+		var/md5 = md5(AM.name)
+		for (var/i in 1 to 32)
+			. += hex2num(md5[i])
+		. = . % 9
+		AM.pixel_x = AM.base_pixel_x + ((.%3)*6)
+		AM.pixel_y = AM.base_pixel_y - 8 + (round( . / 3)*8)
