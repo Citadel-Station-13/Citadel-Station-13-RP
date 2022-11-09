@@ -1082,7 +1082,7 @@
 	},
 /area/maintenance/library)
 "aWl" = (
-/turf/simulated/open,
+/turf/simulated/open/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside1)
 "aWt" = (
 /obj/machinery/computer/area_atmos/tag{
