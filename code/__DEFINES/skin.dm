@@ -7,3 +7,7 @@
 //! Menu IDs
 /// main game menu
 #define SKIN_MENU_ID_MAIN "menu_main"
+
+//! Splitter IDs
+/// main window split
+#define SKIN_SPLITTER_ID_MAIN "mainwindow.split"

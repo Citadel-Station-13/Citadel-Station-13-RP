@@ -10,6 +10,10 @@
  * ! leaves them.
  * ! Mob reset_perspective() should handle most of these cases, but be wary.
  *
+ * ! - - - ATTENTION - - -
+ * ! View sizes should only be for clients.
+ * ! Do not read off this for stuff like AI view/target tracking.
+ *
  * as of right now, perspectives will **trample** the following on every set:
  * client.eye
  * client.lazy_eye (unimplemented)
@@ -338,10 +342,11 @@
 	view_dirty = TRUE
 
 /datum/perspective/proc/set_augmented_view(width, height)
-	if(!isnull(height))
-		augment_view_height = max(0, height)
-	if(!isnull(width))
-		augment_view_width = max(0, width)
+	if(!isnum(height) || !isnum(width))
+		CRASH("invalid")
+	// no negative augment values for now
+	augment_view_height = max(0, height)
+	augment_view_width = max(0, width)
 	view_dirty = TRUE
 
 /datum/perspective/proc/update_view_size(client/C)
@@ -355,7 +360,21 @@
 
 /datum/perspective/proc/recompute_view_size()
 	view_dirty = FALSE
-	#warn impl
+	if(isnum(default_view_size))
+		cached_view_height = default_view_size + augment_view_width
+		cached_view_width = default_view_size + augment_view_height
+		return
+	else if(isnull(default_view_size))
+		cached_view_width = GLOB.max_client_view_x + augment_view_width
+		cached_view_height = GLOB.max_client_view_y + augment_view_height
+		return
+	var/list/parsed = splittext(default_view_size, "x")
+	if(length(parsed) != 2)
+		cached_view_width = GLOB.max_client_view_x + augment_view_width
+		cached_view_height = GLOB.max_client_view_y + augment_view_height
+		return
+	cached_view_width = parsed[1] + augment_view_width
+	cached_view_height = parsed[2] + augment_view_height
 
 /datum/perspective/proc/suppress_view(source)
 	var/was = LAZYLEN(view_suppression)
@@ -374,8 +393,6 @@
 /datum/perspective/proc/ensure_view_cached()
 	if(view_dirty)
 		recompute_view_size()
-
-#warn we'll need to use different values if it's a player or not due to world.view issues..
 
 //! remotes
 /datum/perspective/proc/considered_remote(mob/M)

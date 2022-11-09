@@ -127,9 +127,9 @@
 			bottom_turf.plane = src.plane
 			bottom_turf.color = below.color
 			bottom_turf.copy_overlays(below)
+			// todo: zmimic
 			bottom_turf.appearance_flags = KEEP_TOGETHER
 			underlays = list(bottom_turf)
-			#warn do we need KT
 
 		// Get objects (not mobs, they are handled by /obj/zshadow)
 		var/list/o_img = list()

@@ -125,7 +125,6 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 		return
 	var/stretch_to_fit = assumed_viewport_zoom == 0
 	using_perspective.ensure_view_cached()
-	#warn account for client vs world.view
 	var/max_width = using_perspective.cached_view_width
 	var/max_height = using_perspective.cached_view_height
 	if(stretch_to_fit)
@@ -201,6 +200,54 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 /client/proc/_fit_viewport()
 	// by now we already fetched viewport
 	// figure out how big they want it to be based on their settings
+	// note: we only care about horizontal because the splitter.. is, well, horizontal.
+	var/desired_pixel_width
+	// todo: pref
+	// maximum % they're willing to have their map
+	var/maximum_splitter_percent = 80
+	// splitter intrinsic width
+	var/assumed_splitter_width = 4
+	if(assumed_viewport_zoom == 0)
+		// they're stretching to fit; this makes it annoying
+	else
+		// they're not using stretch to fit; this makes it very easy
+		desired_pixel_width = WORLD_ICON_SIZE * assumed_viewport_zoom * current_viewport_width
+	// grab their screen size (or what counts as it)
+	var/list/fetching = winget(src, SKIN_SPLITTER_ID_MAIN, "size")
+	var/list/parsed = splittext(fetching, "x")
+	var/screen_width = text2num(parsed[1])
+	// grab what percent we should go to
+	var/current_percent = min(100 * ((desired_pixel_width + assumed_splitter_width) / screen_width), maximum_splitter_percent)
+	// initial set
+	winset(src, SKIN_SPLITTER_ID_MAIN, "splitter=[current_percent]")
+	// funny method of correcting for misalignments via binary-search-like behavior
+	var/delta
+	fetching = winget(src, SKIN_MAP_ID_VIEWPORT, "size")
+	parsed = splittext(fetching, "x")
+	var/current_width = parsed[1]
+	if(current_width == desired_pixel_width)
+		// done
+		return
+	// nope, start adjusting
+	delta = 100 * ((desired_pixel_width - current_width) / screen_width)
+	for(var/safety in 1 to 10)
+		current_percent += delta
+		winset(src, SKIN_SPLITTER_ID_MAIN, "splitter=[current_percent]")
+		fetching = winget(src, SKIN_MAP_ID_VIEWPORT, "size")
+		parsed = splittext(fetching, "x")
+		current_width = parsed[1]
+		// done?
+		if(current_width == desired_pixel_width)
+			return
+		// keep adjusting
+		// overshot?
+		if ((delta > 0 && got_width > desired_width) || (delta < 0 && got_width < desired_width))
+			// reverse in half
+			delta = -delta / 2
+
+#warn deal with
+
+/*
 
 	// Fetch the client's aspect ratio
 	var/view_size = getviewsize(view)
@@ -242,8 +289,7 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 
 		pct += delta
 		winset(src, "mainwindow.split", "splitter=[pct]")
-
-#warn deal with above
+*/
 
 /client/verb/force_map_zoom(n as num)
 	set name = ".viewport_zoom"

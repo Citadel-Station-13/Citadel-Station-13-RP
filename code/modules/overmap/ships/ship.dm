@@ -16,7 +16,6 @@
 	dir = NORTH
 	icon_state = "ship"
 	appearance_flags = TILE_BOUND|KEEP_TOGETHER|LONG_GLIDE
-	#warn do we need KT
 	var/moving_state = "ship_moving"
 
 	/// Tonnes, arbitrary number, affects acceleration provided by engines.
