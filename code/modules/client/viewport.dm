@@ -27,7 +27,7 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
  * forces screensize update; use for config VAS
  */
 /datum/controller/configuration/proc/update_player_viewsize()
-	var/viewsize_raw = CONFIG_GET(text/max_viewport_size)
+	var/viewsize_raw = CONFIG_GET(string/max_viewport_size)
 	var/list/viewsize = splittext(viewsize_raw, "x")
 	GLOB.max_client_view_x = text2num(viewsize[1])
 	GLOB.max_client_view_y = text2num(viewsize[2])
@@ -69,7 +69,7 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 /client/proc/_fetch_viewport()
 	PRIVATE_PROC(TRUE)
 	// get vars only; they have to manually refit
-	var/list/got = list2params(winget(src, SKIN_MAP_ID_VIEWPORT, "size;zoom;letterbox"))
+	var/list/got = params2list(winget(src, SKIN_MAP_ID_VIEWPORT, "size;zoom;letterbox"))
 	assumed_viewport_zoom = got["zoom"] || 0
 	assumed_viewport_box = (got["letterbox"] == "true")
 	var/list/split = splittext(got["size"], "x")
@@ -90,8 +90,8 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
  * - z - zoom of viewport
  * - b - are we letterboxing?
  */
-/client/verb/on_viewport(w as num, h as num, z as num, b as text)
-	set name = ".on_viewport"
+/client/verb/on_viewport(w as num, h as num, z as num, b as num)
+	set name = "on_viewport"
 	set hidden = TRUE
 	if(viewport_rwlock)	// something is fucking around, don't edit for them
 		return
@@ -99,7 +99,7 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 	assumed_viewport_spx = w
 	assumed_viewport_spy = h
 	assumed_viewport_zoom = z
-	assumed_viewport_box = b == "true"? TRUE : FALSE
+	assumed_viewport_box = b
 	// refit
 	refit_viewport()
 
@@ -292,7 +292,7 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 */
 
 /client/verb/force_map_zoom(n as num)
-	set name = ".viewport_zoom"
+	set name = "viewport_zoom"
 	set hidden = TRUE
 	set src = usr
 	set category = "Debug"
@@ -309,7 +309,7 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 	refit_viewport()
 
 /client/verb/force_map_box(n as num)
-	set name = ".viewport_box"
+	set name = "viewport_box"
 	set hidden = TRUE
 	set src = usr
 	set category = "Debug"
@@ -324,7 +324,7 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 	refit_viewport()
 
 /client/verb/force_onresize_view_update()
-	set name = ".viewport_refit"
+	set name = "viewport_refit"
 	set hidden = TRUE
 	set src = usr
 	set category = "Debug"
@@ -335,7 +335,7 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 	refit_viewport()
 
 /client/verb/show_winset_debug_values()
-	set name = ".viewport_debug"
+	set name = "viewport_debug"
 	set hidden = TRUE
 	set src = usr
 	set category = "Debug"
@@ -347,3 +347,5 @@ GLOBAL_LIST_INIT(valid_icon_sizes, list(32, 48, 64 = "64x64 (1080p)", 72 = "72x7
 	to_chat(usr, "Icon size: [divisor]")
 	to_chat(usr, "xDim: [round(text2num(winsize_string) / divisor)]")
 	to_chat(usr, "yDim: [round(text2num(copytext(winsize_string,findtext(winsize_string,"x")+1,0)) / divisor)]")
+	to_chat(usr, "server thinks viewport is:[assumed_viewport_spx]/[assumed_viewport_spy]/[assumed_viewport_zoom]/[assumed_viewport_box]")
+	to_chat(usr, "server thinks view is:[current_viewport_width]x[current_viewport_height]")
