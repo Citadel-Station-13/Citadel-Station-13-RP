@@ -696,16 +696,19 @@
 /obj/machinery/mecha_part_fabricator/proc/eject_materials(var/material, var/amount) // 0 amount = 0 means ejecting a full stack; -1 means eject everything
 	var/recursive = amount == -1 ? 1 : 0
 	var/matstring = lowertext(material)
+	var/contains = materials[matstring]
+	if(!contains)
+		return
 	var/datum/material/M = get_material_by_name(matstring)
 
 	var/obj/item/stack/material/S = M.place_sheet(get_turf(src))
 	if(amount <= 0)
 		amount = S.max_amount
-	var/ejected = min(round(materials[matstring] / S.perunit), amount)
+	var/ejected = min(round(contains / S.perunit), amount)
 	S.amount = min(ejected, amount)
 	if(S.amount <= 0)
 		qdel(S)
 		return
 	materials[matstring] -= ejected * S.perunit
-	if(recursive && materials[matstring] >= S.perunit)
+	if(recursive && contains >= S.perunit)
 		eject_materials(matstring, -1)

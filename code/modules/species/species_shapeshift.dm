@@ -22,7 +22,7 @@ var/list/wrapped_species_by_ref = list()
 
 /datum/species/shapeshifter/get_icobase(mob/living/carbon/human/H, get_deform)
 	if(!H) return ..(null, get_deform)
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_icobase(H, get_deform)
 
 /datum/species/shapeshifter/real_race_key(mob/living/carbon/human/H)
@@ -30,52 +30,52 @@ var/list/wrapped_species_by_ref = list()
 
 /datum/species/shapeshifter/get_effective_bodytype(mob/living/carbon/human/H, obj/item/I, slot_id)
 	if(!H) return ..(H, I, slot_id)
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_effective_bodytype(H, I, slot_id)
 
 /datum/species/shapeshifter/get_bodytype_legacy(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_bodytype_legacy(H)
 
 /datum/species/shapeshifter/get_worn_legacy_bodytype(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_worn_legacy_bodytype(H)
 
 /datum/species/shapeshifter/get_blood_mask(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_blood_mask(H)
 
 /datum/species/shapeshifter/get_damage_mask(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_damage_mask(H)
 
 /datum/species/shapeshifter/get_damage_overlays(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_damage_overlays(H)
 
 /datum/species/shapeshifter/get_tail(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_tail(H)
 
 /datum/species/shapeshifter/get_tail_animation(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_tail_animation(H)
 
 /datum/species/shapeshifter/get_tail_hair(mob/living/carbon/human/H)
 	if(!H) return ..()
-	var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+	var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 	return S.get_tail_hair(H)
 
 /datum/species/shapeshifter/get_husk_icon(mob/living/carbon/human/H)
 	if(H)
-		var/datum/species/S = get_static_species_meta(species_type_by_name(wrapped_species_by_ref["\ref[H]"]))
+		var/datum/species/S = SScharacters.resolve_species_name(wrapped_species_by_ref["\ref[H]"])
 		if(S)
 			return S.get_husk_icon(H)
 	 return ..()
@@ -180,7 +180,7 @@ var/list/wrapped_species_by_ref = list()
 	var/new_species = null
 	new_species = input("Please select a species to emulate.", "Shapeshifter Body") as null|anything in species.get_valid_shapeshifter_forms(src)
 
-	if(!new_species || !name_static_species_meta(new_species) || wrapped_species_by_ref["\ref[src]"] == new_species)
+	if(!new_species || !SScharacters.resolve_species_name(new_species) || wrapped_species_by_ref["\ref[src]"] == new_species)
 		return
 	shapeshifter_change_shape(new_species)
 

@@ -83,11 +83,11 @@
 		var/mob/living/L = user
 		L.looking_elsewhere = 1
 		L.handle_vision()
-	user.set_viewsize(world.view + extra_view)
+	user.client?.change_view(world.view + extra_view, TRUE, translocate = TRUE)
 
 /obj/machinery/computer/ship/proc/unlook(mob/user)
 	user.reset_perspective()
-	user.set_viewsize(world.view)
+	user.client?.change_view(world.view, FALSE, translocate = TRUE)
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED, /obj/machinery/computer/ship/proc/unlook)
 	if(isliving(user))
 		var/mob/living/L = user

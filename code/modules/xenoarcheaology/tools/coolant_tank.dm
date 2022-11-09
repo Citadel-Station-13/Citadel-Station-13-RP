@@ -14,7 +14,7 @@
 		if(!istype(Proj ,/obj/item/projectile/beam/lasertag) && !istype(Proj ,/obj/item/projectile/beam/practice) ) // TODO: make this not terrible
 			explode()
 
-/obj/structure/reagent_dispensers/coolanttank/ex_act()
+/obj/structure/reagent_dispensers/coolanttank/legacy_ex_act()
 	explode()
 
 /obj/structure/reagent_dispensers/coolanttank/proc/explode()

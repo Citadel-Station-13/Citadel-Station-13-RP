@@ -231,7 +231,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			ispowered = FALSE
 			update_icon()
 
-/obj/machinery/newscaster/ex_act(severity)
+/obj/machinery/newscaster/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)

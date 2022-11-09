@@ -3,12 +3,45 @@
  * They should return negative, zero, or positive numbers for a < b, a == b, and a > b respectively.
  */
 
+//! Standard Sort
+/**
+ * the lazy man's low performance sort
+ *
+ * uses a datum's compare_to() proc.
+ *
+ * **Do not use this for any high performance context. It is slower than hardcoded comparators.
+ *
+ * **Warning: Only use this between to datums of the same logical type**. E.g. if you use one on another kinid of datum, you're going to get weird results,
+ * because the compar procs are going to typecheck, and if it's not of the right type, you'll get unexpected results!
+ */
+/proc/cmp_auto_compare(datum/A, datum/B)
+	if(istext(A) || istext(B))
+		return cmp_text_asc("[A]", "[B]")
+	return A.compare_to(B)
+
+/**
+ * standard datum comparison
+ * no types are checked!
+ *
+ * **Do not use this for any high performance context. It is slower than hardcoded comparators.
+ *
+ * **Warning: Only use this between to datums of the same logical type**. E.g. if you use one on another kinid of datum, you're going to get weird results,
+ * because the compar procs are going to typecheck, and if it's not of the right type, you'll get unexpected results!
+ *
+ * with the context of list index 1 = front,
+ * return -1 for "I am infront of B" (list index closer to 1), 1 for "I am behind B" (list index further from 1), 0 for "I am equivalent to B"
+ */
+/datum/proc/compare_to(datum/D)
+	return cmp_text_asc("[src]", "[D]")
+
+//! Numbers
 /proc/cmp_numeric_dsc(a,b)
 	return b - a
 
 /proc/cmp_numeric_asc(a,b)
 	return a - b
 
+//! Text
 /proc/cmp_text_asc(a,b)
 	return sorttext(b,a)
 
@@ -106,10 +139,10 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 
 /proc/cmp_department_datums(datum/department/a, datum/department/b)
 	// First, sort by the sorting order vars.
-	. = b.sorting_order - a.sorting_order
+	. = a.sorting_order - b.sorting_order
 	// If they have the same var, then sort by name.
 	if(. == 0)
-		. = sorttext(b.name, a.name)
+		. = sorttext(a.name, b.name)
 
 /**
  * Sorts entries in a performance stats list.
@@ -140,36 +173,7 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 /proc/cmp_holiday_priority(datum/holiday/A, datum/holiday/B)
 	return A.priority - B.priority
 
-/**
- * the lazy man's low performance sort
- *
- * uses a datum's compare_to() proc.
- *
- * **Do not use this for any high performance context. It is slower than hardcoded comparators.
- *
- * **Warning: Only use this between to datums of the same logical type**. E.g. if you use one on another kinid of datum, you're going to get weird results,
- * because the compar procs are going to typecheck, and if it's not of the right type, you'll get unexpected results!
- */
-/proc/cmp_auto_compare(datum/A, datum/B)
-	return A.compare_to(B)
-
-/**
- * standard datum comparison
- * no types are checked!
- *
- * **Do not use this for any high performance context. It is slower than hardcoded comparators.
- *
- * **Warning: Only use this between to datums of the same logical type**. E.g. if you use one on another kinid of datum, you're going to get weird results,
- * because the compar procs are going to typecheck, and if it's not of the right type, you'll get unexpected results!
- *
- * with the context of list index 1 = front,
- * return -1 for "I am infront of B" (list index closer to 1), 1 for "I am behind B" (list index further from 1), 0 for "I am equivalent to B"
- */
-/datum/proc/compare_to(datum/D)
-	return cmp_text_asc("[src]", "[D]")
-
-
-//! PROFILE STUFF
+//! Line Profiling
 
 /proc/cmp_profile_avg_time_dsc(list/A, list/B)
 	return (B[PROFILE_ITEM_TIME]/(B[PROFILE_ITEM_COUNT] || 1)) - (A[PROFILE_ITEM_TIME]/(A[PROFILE_ITEM_COUNT] || 1))
@@ -179,3 +183,7 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 
 /proc/cmp_profile_count_dsc(list/A, list/B)
 	return B[PROFILE_ITEM_COUNT] - A[PROFILE_ITEM_COUNT]
+
+//! Preferences
+/proc/cmp_preference_load_order(datum/category_item/player_setup_item/A, datum/category_item/player_setup_item/B)
+	return A.load_order - B.load_order

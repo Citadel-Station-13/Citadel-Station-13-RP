@@ -40,7 +40,7 @@
 				O.update() // This lattice may be supporting things on top of it.  If it's being deleted, they need to fall down.
 	. = ..()
 
-/obj/structure/lattice/ex_act(severity)
+/obj/structure/lattice/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -95,3 +95,8 @@
 
 		icon_state = "lattice[dir_sum]"
 		return
+
+/obj/structure/lattice/prevent_z_fall(atom/movable/victim, levels = 0, fall_flags)
+	if(check_standard_flag_pass(victim))
+		return ..()
+	return fall_flags | FALL_BLOCKED

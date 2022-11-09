@@ -76,7 +76,7 @@
 	if(!can_place(target, user)) //victim may have resisted out of the grab in the meantime
 		return 0
 
-	if(!user.attempt_void_item_for_installation(src))
+	if(!dispenser && !user.attempt_void_item_for_installation(src))
 		return
 
 	add_attack_logs(user,H,"Handcuffed (attempt)")

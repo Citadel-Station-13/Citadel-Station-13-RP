@@ -16,8 +16,8 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/engineering/crew)
 	name = "crew engineering uniform"
 	icon_state = "black_eng"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/sysguard/crew/security
 	desc = "A comfortable turtleneck and black utility trousers, made from a slightly sturdy, biohazard resistant material. This one has silver trim."
@@ -33,15 +33,15 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/medical/crew)
 	name = "crew medical uniform"
 	icon_state = "black_med"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/sysguard/crew/supply
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/supply/crew)
 	name = "crew logistics uniform"
 	icon_state = "black_sup"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/sysguard/crew/exploration
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/exploration/crew)
@@ -54,8 +54,8 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/research/crew)
 	name = "crew science uniform"
 	icon_state = "black_sci"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/sysguard/officer/crew
 	name = "crew officer uniform"
@@ -75,8 +75,8 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/engineering/crew)
 	name = "engineering officer uniform"
 	icon_state = "black_eng_command"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/sysguard/officer/crew/security
 	desc = "A comfortable turtleneck and black utility trousers, made from a slightly sturdy, biohazard resistant material. This one has gold trim."
@@ -92,8 +92,8 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/medical/crew)
 	name = "medical officer uniform"
 	icon_state = "black_med_command"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL
 
 /obj/item/clothing/under/oricon/utility/sysguard/officer/crew/supply
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/supply/crew)
@@ -113,5 +113,5 @@
 	starting_accessories = list(/obj/item/clothing/accessory/oricon/department/research/crew)
 	name = "science officer uniform"
 	icon_state = "black_sci_command"
-	worn_has_rolldown = UNIFORM_HAS_NO_ROLL
-	worn_has_rollsleeve = UNIFORM_HAS_NO_ROLL
+	worn_has_rolldown = UNIFORM_HAS_ROLL
+	worn_has_rollsleeve = UNIFORM_HAS_ROLL

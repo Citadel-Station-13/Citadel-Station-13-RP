@@ -32,10 +32,8 @@ var/list/fusion_cores = list()
 	. = ..()
 	fusion_cores += src
 	default_apply_parts()
-
-/obj/machinery/power/fusion_core/mapped/Initialize(mapload)
-	. = ..()
-	connect_to_network()
+	if(anchored)
+		connect_to_network()
 
 /obj/machinery/power/fusion_core/Destroy()
 	for(var/obj/machinery/computer/fusion_core_control/FCC in GLOB.machines)

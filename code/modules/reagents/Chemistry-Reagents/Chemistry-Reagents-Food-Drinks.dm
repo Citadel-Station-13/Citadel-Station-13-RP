@@ -5024,3 +5024,54 @@ End Citadel Change */
 
 	glass_name = "Crystal Dr. Gibb"
 	glass_desc = "Tastes just like Dr. Gibb, but it's translucent. How?!?"
+
+// Unathi drinks
+
+// Alien Drinks
+
+/datum/reagent/drink/unathijuice
+	name = "Hrukhza Leaf Extract"
+	id = "unathijuice"
+	description = "A bitter liquid used in most recipes on Moghes."
+	taste_description = "bland, disgusting bitterness"
+	color = "#345c52"
+	glass_name = "hrukhza leaf extract"
+	glass_desc = "A bitter extract from the hrukhza."
+
+/datum/reagent/drink/kzkzaa
+	name = "Kzkzaa"
+	id = "kzkzaa"
+	description = "Fish extract from Moghes."
+	taste_description = "fishy fish"
+	color = "#e78108"
+	glass_name = "kzkzaa"
+	glass_desc = "A glass of Kzkzaa, fish extract, commonly drank on Moghes."
+
+/datum/reagent/ethanol/mumbaksting
+	name = "Mumbak Sting"
+	id = "mumbaksting"
+	description = "A drink made from the venom of the Yuum."
+	taste_description = "harsh and stinging sweetness"
+	color = "#550000"
+	strength = 10
+	glass_name = "Mumbak sting"
+	glass_desc = "A drink made from the venom of the Yuum."
+
+/datum/reagent/ethanol/wasgaelhi
+	name = "Wasgaelhi"
+	id = "wasgaelhi"
+	description = "Wine made from various fruits from the swamps of Moghes."
+	taste_description = "swampy fruit"
+	color = "#6b596b"
+	strength = 15
+	glass_name = "wasgaelhi"
+	glass_desc = "Wine made from various fruits from the swamps of Moghes."
+
+/datum/reagent/drink/skrianhi
+	name = "Skrianhi Tea"
+	id = "skrianhitea"
+	description = "A blend of teas from Moghes, commonly drank by Unathi."
+	taste_description = "bitter energising tea"
+	color = "#0e0900"
+	glass_name = "skrianhi tea"
+	glass_desc = "A blend of teas from Moghes, commonly drank by Unathi."

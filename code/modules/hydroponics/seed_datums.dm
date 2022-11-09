@@ -1683,7 +1683,7 @@
 	set_trait(TRAIT_PLANT_ICON,"bush5")
 	set_trait(TRAIT_IDEAL_LIGHT, 2)
 	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.1)
-	set_trait(TRAIT_WATER_CONSUMPTION, 0.25)
+	set_trait(TRAIT_WATER_CONSUMPTION, 0.1)
 
 /datum/seed/juhtak
 	name = "juhtak"
@@ -1705,4 +1705,4 @@
 	set_trait(TRAIT_PLANT_ICON,"bush7")
 	set_trait(TRAIT_IDEAL_LIGHT, 2)
 	set_trait(TRAIT_NUTRIENT_CONSUMPTION, 0.1)
-	set_trait(TRAIT_WATER_CONSUMPTION, 2)
+	set_trait(TRAIT_WATER_CONSUMPTION, 0.1)

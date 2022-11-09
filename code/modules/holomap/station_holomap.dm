@@ -202,7 +202,7 @@
 		return
 	return ..()
 
-/obj/machinery/station_map/ex_act(severity)
+/obj/machinery/station_map/legacy_ex_act(severity)
 	switch(severity)
 		if(1)
 			qdel(src)

@@ -1127,6 +1127,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "cG" = (
@@ -1478,13 +1479,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
-"do" = (
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
-/turf/simulated/floor/tiled/monotile,
-/area/hallway/primary/underone)
 "dp" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/machinery/camera/network/civilian{
@@ -1732,6 +1726,9 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "dP" = (
@@ -1906,6 +1903,9 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
 "eC" = (
@@ -1919,6 +1919,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
 "eD" = (
@@ -2045,6 +2046,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
 "fh" = (
@@ -2085,11 +2089,11 @@
 /area/maintenance/substation/engineering)
 "fm" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
+	dir = 4;
 	input_tag = "n2_in";
 	name = "Nitrogen Supply Control";
 	output_tag = "n2_out";
-	sensors = list("n2_sensor"="Tank");
-	dir = 4
+	sensors = list("n2_sensor"="Tank")
 	},
 /obj/structure/window/reinforced,
 /obj/machinery/alarm{
@@ -2304,9 +2308,6 @@
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "fR" = (
@@ -2363,6 +2364,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1;
 	icon_state = "pipe-c"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
@@ -2442,6 +2446,7 @@
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/secondary/engineering_hallway)
 "gu" = (
@@ -2457,9 +2462,6 @@
 /obj/effect/floor_decal/corner/orange/border{
 	dir = 8
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "gz" = (
@@ -2468,6 +2470,22 @@
 /obj/item/barrier_tape_segment/police,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"gD" = (
+/obj/machinery/atmospherics/component/binary/pump{
+	dir = 1;
+	name = "Scrubbers to Filter"
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 10
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "gH" = (
 /turf/simulated/floor/reinforced,
 /area/maintenance/engineering)
@@ -2501,8 +2519,18 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
+"gT" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/yellow{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "gV" = (
 /obj/machinery/atmospherics/component/binary/pump,
 /turf/simulated/floor/tiled,
@@ -2740,7 +2768,9 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/open/lythios43c{
+	special_temperature = 233
+	},
 /area/rift/surfacebase/underground/under1)
 "io" = (
 /obj/random/junk,
@@ -2846,6 +2876,13 @@
 "iF" = (
 /turf/simulated/wall/r_wall,
 /area/storage/tech)
+"iI" = (
+/obj/machinery/atmospherics/pipe/simple/visible/yellow{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "iO" = (
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4;
@@ -2887,6 +2924,14 @@
 /obj/machinery/meter,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"iW" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "n2_sensor";
+	name = "Nitrogen Tank Sensor"
+	},
+/turf/simulated/floor/reinforced/nitrogen,
+/area/engineering/atmos)
 "iY" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -2978,9 +3023,6 @@
 	},
 /obj/machinery/camera/network/civilian{
 	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "1-2"
 	},
 /obj/machinery/firealarm{
 	dir = 8;
@@ -3209,9 +3251,6 @@
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "ki" = (
@@ -3223,11 +3262,11 @@
 /area/engineering/atmos)
 "kl" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
+	dir = 8;
 	input_tag = "tox_in";
 	name = "Phoron Supply Control";
 	output_tag = "tox_out";
-	sensors = list("tox_sensor"="Tank");
-	dir = 8
+	sensors = list("tox_sensor"="Tank")
 	},
 /obj/structure/window/reinforced,
 /obj/machinery/light/spot{
@@ -3294,6 +3333,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
 "kK" = (
@@ -3305,9 +3345,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"kN" = (
+/obj/item/flame/candle/small{
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "kP" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/purple,
 /obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos)
 "kU" = (
@@ -3380,7 +3428,9 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/open/lythios43c{
+	special_temperature = 233
+	},
 /area/rift/surfacebase/underground/under1)
 "lr" = (
 /obj/effect/floor_decal/borderfloor,
@@ -3413,6 +3463,10 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
+"ly" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "lC" = (
@@ -3478,6 +3532,7 @@
 "mc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
 "md" = (
@@ -3513,11 +3568,18 @@
 /obj/effect/floor_decal/corner/orange/bordercorner2{
 	dir = 9
 	},
-/obj/structure/cable{
-	icon_state = "1-6"
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
+"mh" = (
+/obj/machinery/atmospherics/component/unary/outlet_injector{
+	dir = 4;
+	frequency = 1441;
+	id = "o2_in";
+	power_rating = 5000;
+	use_power = 1
+	},
+/turf/simulated/floor/reinforced/oxygen,
+/area/engineering/atmos)
 "mj" = (
 /obj/machinery/door/firedoor/glass/hidden,
 /turf/simulated/floor/tiled/steel_grid,
@@ -3562,10 +3624,10 @@
 /area/rift/surfacebase/underground/under1)
 "mt" = (
 /obj/machinery/atmospherics/component/quaternary/atmos_filter{
-	tag_north = 1;
-	tag_south = 2;
 	name = "Waste N2O Filter";
-	tag_east = 7
+	tag_east = 7;
+	tag_north = 1;
+	tag_south = 2
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -3607,6 +3669,9 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering/upper)
 "mC" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/primary/underone)
 "mD" = (
@@ -3620,6 +3685,14 @@
 /obj/item/deck/cards,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"mH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/underone)
 "mL" = (
 /obj/machinery/door/airlock/glass_atmos,
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow,
@@ -3629,6 +3702,9 @@
 "mN" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/visible/black{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -3651,6 +3727,14 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/underground/under1)
+"ne" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "mix_sensor";
+	name = "Waste Tank Sensor"
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/engineering/atmos)
 "ng" = (
 /obj/structure/catwalk,
 /obj/structure/cable{
@@ -3704,6 +3788,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/public_bunker)
+"nq" = (
+/obj/machinery/atmospherics/component/binary/heat_pump{
+	use_power = 1
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "ns" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
@@ -3718,6 +3808,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/blue,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos)
+"nu" = (
+/obj/item/flame/candle/small{
+	pixel_x = 5;
+	pixel_y = -6
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "nv" = (
 /obj/machinery/pipedispenser,
 /obj/machinery/light,
@@ -3744,7 +3841,9 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/open/lythios43c{
+	special_temperature = 233
+	},
 /area/rift/surfacebase/underground/under1)
 "nE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/red{
@@ -3795,7 +3894,9 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/open/lythios43c{
+	special_temperature = 233
+	},
 /area/rift/surfacebase/underground/under1)
 "nV" = (
 /turf/simulated/floor/reinforced/nitrogen,
@@ -3822,13 +3923,13 @@
 	dir = 8
 	},
 /obj/machinery/computer/general_air_control/large_tank_control{
+	dir = 4;
 	frequency = 1443;
 	input_tag = "air_in";
 	name = "Mixed Air Supply Control";
 	output_tag = "air_out";
 	pressure_setting = 2000;
-	sensors = list("air_sensor"="Tank");
-	dir = 4
+	sensors = list("air_sensor"="Tank")
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -3839,7 +3940,7 @@
 	external_pressure_bound_default = 0;
 	frequency = 1441;
 	icon_state = "map_vent_in";
-	id_tag = "o2_out";
+	id_tag = "mix_out";
 	initialize_directions = 1;
 	internal_pressure_bound = 4000;
 	internal_pressure_bound_default = 4000;
@@ -3882,6 +3983,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
 "ok" = (
@@ -3936,9 +4038,9 @@
 "oA" = (
 /obj/machinery/button/remote/blast_door{
 	dir = 1;
-	pixel_y = -10;
 	id = "portables_garage";
-	name = "Portables Garage Shutters"
+	name = "Portables Garage Shutters";
+	pixel_y = -10
 	},
 /turf/simulated/wall,
 /area/hallway/primary/underone)
@@ -4043,6 +4145,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"pv" = (
+/obj/item/book{
+	desc = "This rough leatherbound book contains the sigils of Unathi writing. The writing itself is smeared with weathering and debris.";
+	icon_state = "book1_old";
+	name = "dusty unathi tome"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "pw" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -4058,6 +4168,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
@@ -4145,10 +4258,10 @@
 /area/engineering/atmos)
 "qg" = (
 /obj/machinery/atmospherics/component/quaternary/atmos_filter{
+	name = "Waste Phoron Filter";
 	tag_east = 6;
 	tag_north = 1;
-	tag_west = 2;
-	name = "Waste Phoron Filter"
+	tag_west = 2
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -4230,6 +4343,7 @@
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 2
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/secondary/engineering_hallway)
 "qY" = (
@@ -4280,6 +4394,13 @@
 /obj/structure/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/hallway/primary/underone)
+"rh" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/red{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "ri" = (
 /obj/structure/railing{
 	dir = 8
@@ -4322,6 +4443,24 @@
 /obj/item/deck/unus,
 /turf/simulated/floor/wood,
 /area/maintenance/engineering)
+"rq" = (
+/obj/machinery/atmospherics/component/unary/vent_pump{
+	dir = 4;
+	external_pressure_bound = 0;
+	external_pressure_bound_default = 0;
+	frequency = 1441;
+	icon_state = "map_vent_in";
+	id_tag = "mix_out";
+	initialize_directions = 1;
+	internal_pressure_bound = 4000;
+	internal_pressure_bound_default = 4000;
+	pressure_checks = 2;
+	pressure_checks_default = 2;
+	pump_direction = 0;
+	use_power = 1
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/engineering/atmos)
 "rs" = (
 /obj/structure/disposalpipe/segment,
 /turf/simulated/wall/dungeon,
@@ -4422,15 +4561,15 @@
 /area/maintenance/public_bunker)
 "rI" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	icon_state = "9-10"
-	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/window/reinforced/full,
 /obj/structure/window/reinforced/tinted/frosted,
 /obj/structure/grille,
 /obj/structure/window/reinforced{
 	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/pool)
@@ -4796,11 +4935,14 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "tg" = (
-/obj/machinery/atmospherics/portables_connector{
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
 	dir = 4
 	},
-/turf/simulated/floor/tiled,
-/area/engineering/atmos)
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/underone)
 "th" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -5382,13 +5524,12 @@
 /turf/simulated/floor/tiled/dark,
 /area/storage/tech)
 "vf" = (
-/obj/random/cutout{
-	name = "guaranteed random wooden figure";
-	spawn_nothing_percentage = 0
-	},
-/obj/item/stool,
 /obj/machinery/light/small{
 	dir = 4
+	},
+/obj/item/trash/candle{
+	pixel_x = 2;
+	pixel_y = 7
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
@@ -5401,7 +5542,9 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/open/lythios43c{
+	special_temperature = 233
+	},
 /area/rift/surfacebase/underground/under1)
 "vk" = (
 /obj/machinery/telecomms/processor/preset_three,
@@ -5510,6 +5653,16 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"vG" = (
+/obj/machinery/computer/general_air_control/large_tank_control{
+	input_tag = "mix_in";
+	name = "Waste Tank Control";
+	output_tag = "mix_out";
+	sensors = list("mix_sensor"="Tank");
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "vH" = (
 /obj/machinery/telecomms/server/presets/science,
 /turf/simulated/floor/tiled/dark,
@@ -5520,6 +5673,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/plating,
 /area/hallway/secondary/engineering_hallway)
 "vJ" = (
@@ -5944,6 +6098,21 @@
 /obj/machinery/telecomms/bus/preset_three,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/chamber)
+"xd" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/underone)
 "xh" = (
 /obj/effect/floor_decal/spline/plain,
 /turf/simulated/floor/wood,
@@ -6080,13 +6249,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/surfacebase/underground/under1)
 "xC" = (
-/obj/machinery/atmospherics/component/unary/freezer{
-	dir = 8;
-	icon_state = "freezer_1";
-	set_temperature = 73;
-	use_power = 1
-	},
 /obj/effect/floor_decal/industrial/outline/blue,
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/obj/machinery/atmospherics/portables_connector/aux{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "xE" = (
@@ -6102,6 +6269,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/blue{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "xI" = (
@@ -6763,6 +6931,7 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "zM" = (
@@ -7106,6 +7275,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"AV" = (
+/obj/machinery/air_sensor{
+	frequency = 1443;
+	id_tag = "air_sensor";
+	output = 7;
+	name = "Air Mix Tank Sensor"
+	},
+/turf/simulated/floor/reinforced/airmix,
+/area/engineering/atmos)
 "AX" = (
 /obj/machinery/light/small,
 /obj/machinery/ai_status_display{
@@ -7421,9 +7599,10 @@
 	},
 /area/rift/surfacebase/underground/under1)
 "Cg" = (
-/obj/machinery/atmospherics/component/binary/pump{
+/obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "Ch" = (
@@ -7486,6 +7665,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos)
 "Cq" = (
@@ -7584,7 +7764,7 @@
 /obj/machinery/atmospherics/component/unary/outlet_injector{
 	dir = 4;
 	frequency = 1441;
-	id = "o2_in";
+	id = "mix_in";
 	power_rating = 5000;
 	use_power = 1
 	},
@@ -7619,10 +7799,10 @@
 /area/maintenance/engineering)
 "CM" = (
 /obj/machinery/atmospherics/component/quaternary/atmos_filter{
-	tag_south = 2;
-	tag_west = 1;
+	name = "Waste CO2 Filter";
 	tag_east = 5;
-	name = "Waste CO2 Filter"
+	tag_south = 2;
+	tag_west = 1
 	},
 /obj/machinery/camera/network/engineering,
 /turf/simulated/floor/tiled,
@@ -7829,15 +8009,6 @@
 /obj/random/tool,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
-"Dp" = (
-/obj/structure/grille,
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 4
-	},
-/obj/structure/window/phoronreinforced/full,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/reinforced/carbon_dioxide,
-/area/engineering/atmos)
 "Ds" = (
 /obj/structure/closet{
 	name = "Contraband: Patient 8"
@@ -8157,7 +8328,7 @@
 /area/rift/surfacebase/underground/under1)
 "EF" = (
 /obj/structure/cable{
-	icon_state = "5-8"
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/tiled/kafel_full/blue,
 /area/crew_quarters/pool)
@@ -8360,6 +8531,11 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
+"Fp" = (
+/obj/machinery/atmospherics/portables_connector,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "Fq" = (
 /obj/item/handcuffs,
 /turf/simulated/floor/cult,
@@ -8488,6 +8664,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"FH" = (
+/obj/item/storage/fancy/candle_box,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "FI" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -8791,6 +8971,9 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 10
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "GF" = (
@@ -9048,6 +9231,9 @@
 /obj/effect/floor_decal/borderfloorblack/corner2{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/aux{
+	dir = 8
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "Hs" = (
@@ -9117,6 +9303,7 @@
 	dir = 8
 	},
 /obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos)
 "HA" = (
@@ -9193,6 +9380,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
 "HU" = (
@@ -9292,9 +9480,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Im" = (
-/obj/structure/table/rack,
-/obj/item/storage/toolbox/emergency,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/carpet/oracarpet,
 /area/maintenance/engineering)
 "Io" = (
 /obj/item/circuitboard/mech_recharger{
@@ -9372,6 +9558,14 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
+"Iy" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "o2_sensor";
+	name = "Oxygen Tank Sensor"
+	},
+/turf/simulated/floor/reinforced/oxygen,
+/area/engineering/atmos)
 "Iz" = (
 /obj/effect/floor_decal/rust,
 /obj/random/junk,
@@ -9466,6 +9660,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
+"IP" = (
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 4
+	},
+/obj/machinery/meter,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "IQ" = (
 /obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 1;
@@ -9602,9 +9803,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos)
 "Jq" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -30
 	},
@@ -9613,6 +9811,12 @@
 	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 5
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
@@ -9632,6 +9836,13 @@
 	},
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"Jt" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "nitrous_sensor"
+	},
+/turf/simulated/floor/reinforced/n20,
+/area/engineering/atmos)
 "Jw" = (
 /obj/effect/zone_divider,
 /turf/simulated/mineral/icerock/lythios43c,
@@ -9759,18 +9970,9 @@
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "JX" = (
-/obj/structure/table/marble,
-/obj/item/reagent_containers/food/drinks/bottle/small/beer{
-	pixel_y = -9
-	},
-/obj/item/reagent_containers/food/drinks/bottle/small/beer{
-	pixel_x = 14
-	},
-/obj/item/reagent_containers/food/drinks/bottle/small/beer{
-	pixel_x = -13
-	},
-/obj/item/reagent_containers/food/drinks/bottle/small/beer{
-	pixel_y = 13
+/obj/item/flame/candle/small{
+	pixel_x = -5;
+	pixel_y = -8
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
@@ -9839,6 +10041,14 @@
 /obj/structure/salvageable/implant_container,
 /turf/simulated/floor/tiled/white,
 /area/rift/asylum/surgical)
+"Kh" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "co2_sensor";
+	name = "CO2 Tank Sensor"
+	},
+/turf/simulated/floor/reinforced/carbon_dioxide,
+/area/engineering/atmos)
 "Ki" = (
 /obj/structure/table/rack,
 /obj/random/maintenance/engineering,
@@ -9856,11 +10066,6 @@
 /obj/effect/zone_divider,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
-"Kk" = (
-/obj/structure/table/rack,
-/obj/item/storage/toolbox/electrical,
-/turf/simulated/floor/plating,
-/area/maintenance/engineering)
 "Kl" = (
 /obj/structure/table/steel,
 /obj/item/integrated_electronics/debugger{
@@ -9889,7 +10094,9 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/open/lythios43c{
+	special_temperature = 233
+	},
 /area/rift/surfacebase/underground/under1)
 "Kq" = (
 /obj/effect/floor_decal/borderfloor,
@@ -10276,8 +10483,8 @@
 "Lw" = (
 /mob/living/simple_mob/animal/passive/mouse{
 	desc = "A small rodent, this one is seemingly defying gravity. Oh, wait, no, it just has tiny wings. The beauty of nature.";
-	name = "Elizondo the Flying Mouse";
-	flying = 1
+	flying = 1;
+	name = "Elizondo the Flying Mouse"
 	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
@@ -10357,9 +10564,9 @@
 "LU" = (
 /obj/machinery/atmospherics/component/quaternary/atmos_filter{
 	name = "Waste O2 Filter";
-	tag_west = 3;
 	tag_north = 1;
-	tag_south = 2
+	tag_south = 2;
+	tag_west = 3
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -10433,6 +10640,11 @@
 	pixel_y = -32
 	},
 /obj/effect/floor_decal/borderfloorblack,
+/obj/machinery/atmospherics/component/binary/heat_pump{
+	dir = 4;
+	use_power = 1;
+	target_temp = 80
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "Mn" = (
@@ -10673,13 +10885,6 @@
 /turf/simulated/floor/wood/broken,
 /area/maintenance/engineering)
 "MV" = (
-/obj/machinery/computer/general_air_control/large_tank_control{
-	input_tag = "o2_in";
-	name = "Oxygen Supply Control";
-	output_tag = "o2_out";
-	sensors = list("o2_sensor"="Tank");
-	dir = 4
-	},
 /obj/structure/window/reinforced,
 /obj/machinery/light/spot{
 	dir = 8
@@ -10687,6 +10892,13 @@
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24
+	},
+/obj/machinery/computer/general_air_control/large_tank_control{
+	input_tag = "o2_in";
+	name = "Oxygen Supply Control";
+	output_tag = "o2_out";
+	sensors = list("o2_sensor"="Tank");
+	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -10749,6 +10961,13 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
+"Ne" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "tox_sensor"
+	},
+/turf/simulated/floor/reinforced/phoron,
+/area/engineering/atmos)
 "Nf" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
@@ -10761,11 +10980,7 @@
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Nh" = (
-/obj/random/cutout{
-	name = "guaranteed random wooden figure";
-	spawn_nothing_percentage = 0
-	},
-/obj/item/stool,
+/obj/machinery/space_heater,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Ni" = (
@@ -11161,11 +11376,11 @@
 /area/tcommsat/chamber)
 "Or" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
+	dir = 8;
 	input_tag = "nitrous_in";
 	name = "Nitrous Oxide Supply Control";
 	output_tag = "nitrous_out";
-	sensors = list("nitrous_sensor"="Tank");
-	dir = 8
+	sensors = list("nitrous_sensor"="Tank")
 	},
 /obj/structure/window/reinforced,
 /obj/machinery/camera/network/engineering{
@@ -11255,10 +11470,11 @@
 /area/tcommsat/chamber)
 "OL" = (
 /obj/machinery/computer/general_air_control/large_tank_control{
+	dir = 8;
 	input_tag = "co2_in";
 	name = "Carbon Dioxide Supply Control";
 	output_tag = "co2_out";
-	sensors = list("nitrous_sensor"="Tank");
+	sensors = list("co2_sensor"="Tank");
 	dir = 8
 	},
 /obj/structure/window/reinforced,
@@ -11405,7 +11621,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
-	icon_state = "4-8"
+	icon_state = "2-4"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/underone)
@@ -11496,11 +11712,9 @@
 /turf/simulated/floor/plating,
 /area/tcommsat/computer)
 "Ps" = (
-/obj/machinery/light/small{
-	dir = 8
+/obj/item/trash/candle{
+	pixel_y = -6
 	},
-/obj/structure/table/rack,
-/obj/item/storage/belt/utility,
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Pt" = (
@@ -11669,6 +11883,13 @@
 /obj/machinery/papershredder,
 /turf/simulated/floor/tiled/dark,
 /area/outpost/research/longtermstorage)
+"PS" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/turf/simulated/floor/tiled,
+/area/engineering/atmos)
 "PT" = (
 /obj/item/material/shard,
 /turf/simulated/floor/tiled/dark,
@@ -11879,6 +12100,16 @@
 /obj/structure/catwalk/plank,
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"QO" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/underone)
 "QP" = (
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
@@ -11981,6 +12212,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
+/obj/machinery/meter,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "Rj" = (
@@ -12260,7 +12492,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor/glass,
-/turf/space/basic,
+/turf/simulated/floor/plating,
 /area/engineering/atmos)
 "RY" = (
 /obj/structure/grille,
@@ -12524,6 +12756,9 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "SW" = (
@@ -12738,6 +12973,13 @@
 	},
 /turf/simulated/floor/outdoors/safeice/lythios43c,
 /area/rift/surfacebase/underground/under1)
+"TF" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/monotile,
+/area/hallway/primary/underone)
 "TG" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green,
 /obj/machinery/meter,
@@ -12795,6 +13037,7 @@
 	dir = 1;
 	name = "Scrubbers to Filter"
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos)
 "TS" = (
@@ -12923,6 +13166,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/plating,
 /area/engineering/atmos)
 "Us" = (
@@ -12991,7 +13235,9 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 8
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/open/lythios43c{
+	special_temperature = 233
+	},
 /area/rift/surfacebase/underground/under1)
 "UC" = (
 /obj/structure/cable{
@@ -13027,6 +13273,9 @@
 /area/rift/asylum/near_death)
 "UI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "UL" = (
@@ -13087,6 +13336,9 @@
 /obj/item/stock_parts/subspace/treatment,
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 5
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
@@ -13383,6 +13635,7 @@
 /obj/effect/floor_decal/borderfloorblack{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "VV" = (
@@ -13519,10 +13772,11 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "Wu" = (
-/obj/machinery/atmospherics/portables_connector{
-	dir = 8
-	},
-/turf/simulated/floor/tiled,
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/aux,
+/turf/simulated/floor/plating,
 /area/engineering/atmos)
 "Wv" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -13605,7 +13859,9 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/simulated/open/lythios43c,
+/turf/simulated/open/lythios43c{
+	special_temperature = 233
+	},
 /area/rift/surfacebase/underground/under1)
 "WD" = (
 /obj/item/flashlight{
@@ -13630,8 +13886,8 @@
 /obj/machinery/atmospherics/component/quaternary/atmos_filter{
 	name = "Waste N2 Filter";
 	tag_east = 1;
-	tag_west = 4;
-	tag_south = 2
+	tag_south = 2;
+	tag_west = 4
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -14284,10 +14540,10 @@
 /area/rift/station/fighter_bay)
 "Zb" = (
 /obj/machinery/atmospherics/component/quaternary/mixer{
-	tag_south = 1;
-	tag_south_con = 0.79;
 	tag_east = 1;
 	tag_east_con = 0.21;
+	tag_south = 1;
+	tag_south_con = 0.79;
 	tag_west = 2
 	},
 /turf/simulated/floor/tiled,
@@ -14503,6 +14759,9 @@
 /obj/machinery/atmospherics/component/binary/pump,
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/aux{
+	dir = 5
 	},
 /turf/simulated/floor/tiled/dark,
 /area/engineering/atmos)
@@ -25162,7 +25421,7 @@ sS
 sa
 sa
 LD
-Ps
+pw
 sR
 AQ
 sa
@@ -25354,11 +25613,11 @@ zz
 my
 sR
 sa
-Kk
+Nh
 sR
 sR
 sR
-sR
+sS
 sa
 aa
 aa
@@ -25548,10 +25807,10 @@ zz
 my
 sR
 sa
-Im
 sR
 sR
 sR
+Ps
 PY
 sa
 aa
@@ -25744,8 +26003,8 @@ sR
 QP
 sR
 sR
-sR
-sR
+Im
+nu
 vF
 Aq
 Jw
@@ -25937,9 +26196,9 @@ my
 sR
 sa
 sR
-Nh
-sR
-sR
+Im
+JX
+pv
 vF
 Jw
 WC
@@ -26131,9 +26390,9 @@ my
 sS
 sa
 Nh
-JX
-Nh
 sR
+Im
+kN
 vF
 Jw
 lq
@@ -26327,7 +26586,7 @@ sa
 sa
 vf
 sR
-sR
+FH
 vF
 Jw
 UB
@@ -28842,20 +29101,20 @@ jv
 kh
 mg
 XQ
-EF
+fF
 zW
 eT
-yU
+AV
 yU
 eT
-nV
+iW
 nV
 eT
-XT
+Iy
 XT
 eT
 eK
-eK
+ne
 eK
 eT
 NU
@@ -29032,11 +29291,11 @@ di
 eP
 Pb
 gR
-NF
+TF
 ga
 mC
 rI
-CN
+EF
 zW
 eT
 Zv
@@ -29046,11 +29305,11 @@ Yx
 qp
 eT
 oa
-XT
+mh
 eT
 CE
 eK
-eK
+rq
 eT
 At
 Cs
@@ -29427,7 +29686,7 @@ XQ
 XQ
 XQ
 eT
-QT
+IP
 VH
 nZ
 ou
@@ -29437,7 +29696,7 @@ eW
 VH
 MV
 pl
-Zx
+vG
 hu
 DI
 lN
@@ -29805,7 +30064,7 @@ ai
 cy
 dP
 ec
-do
+dP
 wj
 dP
 cZ
@@ -30414,7 +30673,7 @@ xP
 Fk
 yE
 vq
-Wu
+Zx
 Zx
 BE
 qz
@@ -30775,7 +31034,7 @@ bJ
 rU
 aK
 NK
-mc
+mH
 kH
 oj
 HR
@@ -30786,7 +31045,7 @@ qW
 go
 Ur
 zL
-ye
+Fp
 TR
 Hz
 ZO
@@ -30969,7 +31228,7 @@ md
 aR
 aK
 df
-GP
+QO
 ZH
 cI
 em
@@ -31163,7 +31422,7 @@ bF
 bV
 aK
 dw
-eg
+tg
 sl
 cJ
 eD
@@ -31177,20 +31436,20 @@ on
 VH
 iT
 ye
-ZK
+gD
 kP
-Zx
+ly
 Cp
-Zx
-mD
-Zx
-av
-DI
-qt
+ly
+iI
+ly
+gT
+Wu
+rh
 xF
 fI
 hc
-tg
+Zx
 Zx
 dn
 qz
@@ -31357,7 +31616,7 @@ bE
 ba
 ci
 dy
-eg
+tg
 EH
 bA
 bA
@@ -31382,9 +31641,9 @@ av
 DI
 qt
 eX
-nO
+nq
 UY
-mo
+PS
 Zx
 Oc
 DI
@@ -31551,7 +31810,7 @@ bU
 cB
 cV
 dB
-eg
+tg
 St
 qK
 Ao
@@ -31745,7 +32004,7 @@ ae
 ae
 ae
 dF
-NQ
+xd
 xU
 Kr
 KR
@@ -31939,7 +32198,7 @@ Eh
 aG
 bv
 dh
-eg
+tg
 St
 qK
 BI
@@ -32133,7 +32392,7 @@ Ph
 aG
 bx
 dh
-eg
+tg
 Ic
 oA
 re
@@ -32327,7 +32586,7 @@ Ph
 aG
 bz
 dh
-eg
+tg
 St
 qK
 Gg
@@ -32337,7 +32596,7 @@ bG
 mQ
 if
 eT
-Dp
+oi
 RX
 eT
 oi
@@ -32521,7 +32780,7 @@ Ph
 aG
 aT
 dh
-eg
+tg
 St
 qK
 GM
@@ -32715,7 +32974,7 @@ Ph
 aG
 aG
 dH
-eg
+tg
 St
 qK
 Bs
@@ -32726,13 +32985,13 @@ Mv
 lV
 eT
 Ot
-Ot
+Kh
 eT
 Zr
-Zr
+Jt
 eT
 Cz
-Cz
+Ne
 eT
 eT
 Ar
@@ -32909,7 +33168,7 @@ Ph
 dm
 aG
 dM
-eg
+tg
 St
 au
 au
@@ -33103,7 +33362,7 @@ Ph
 gi
 aG
 dM
-eg
+tg
 dp
 am
 hn
@@ -33297,7 +33556,7 @@ Ph
 gi
 aG
 dM
-eg
+tg
 St
 am
 gk
@@ -33491,7 +33750,7 @@ Ph
 hP
 aG
 dR
-eg
+tg
 fu
 am
 am

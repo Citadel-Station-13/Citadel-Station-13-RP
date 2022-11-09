@@ -104,7 +104,7 @@
 ///
 // The Plane Master///
 /atom/movable/screen/plane_master
-	screen_loc = "1,1"
+	screen_loc = "CENTER"
 	plane = -100 //Dodge just in case someone instantiates one of these accidentally, don't end up on 0 with plane_master
 	appearance_flags = PLANE_MASTER
 	mouse_opacity = 0	//Normally unclickable

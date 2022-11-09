@@ -33,7 +33,7 @@
 	else
 		to_chat(user, "<span class='warning'>The gift was empty!</span>")
 
-/obj/item/a_gift/ex_act()
+/obj/item/a_gift/legacy_ex_act()
 	qdel(src)
 
 /obj/effect/spresent/relaymove(mob/user as mob)
@@ -131,7 +131,7 @@
 		to_chat(user, "<span class='warning'>The pumpkin was empty!</span>")
 	qdel(src)
 
-/obj/item/b_gift/ex_act()
+/obj/item/b_gift/legacy_ex_act()
 	qdel(src)
 
 /obj/item/b_gift/attack_self(mob/M as mob)

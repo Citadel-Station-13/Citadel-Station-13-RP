@@ -1804,3 +1804,36 @@
 	required_reagents = list("blood" = 1, "mead" = 1)
 	result_amount = 2
 
+// Unathi drinks
+
+/datum/chemical_reaction/skrianhi
+	name = "Skrianhi Tea"
+	id = "skrianhitea"
+	result = "skrianhitea"
+	required_reagents = list("unathijuice" = 2, "water" = 1)
+	result_amount = 3
+	mix_message = "The tea turns a bitter black."
+
+/datum/chemical_reaction/mumbaksting
+	name = "Mumbak Sting"
+	id = "mumbaksting"
+	result = "mumbaksting"
+	required_reagents = list("unathijuice" = 2, "toxin" = 1)
+	result_amount = 3
+	mix_message = "The toxins mix with the juice to create a dark red substance."
+
+/datum/chemical_reaction/wasgaelhi
+	name = "Wasgaelhi"
+	id = "wasgaelhi"
+	result = "wasgaelhi"
+	required_reagents = list("unathijuice" = 2, "wine" = 1)
+	result_amount = 3
+	mix_message = "The mixture turns a dull purple."
+
+/datum/chemical_reaction/kzkzaa
+	name = "Kzkzaa"
+	id = "kzkzaa"
+	result = "kzkzaa"
+	required_reagents = list("unathijuice" = 2, "protein" = 1)
+	result_amount = 3
+	mix_message = "The mixture turns a deep orange."

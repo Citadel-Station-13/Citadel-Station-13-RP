@@ -1,5 +1,6 @@
 /datum/job/station/senior_researcher
 	title = "Senior Researcher"
+	id = JOB_ID_SENIOR_RESEARCHER
 	flag = SENIOR_RESEARCHER
 	departments = list(DEPARTMENT_RESEARCH)
 	department_flag = MEDSCI

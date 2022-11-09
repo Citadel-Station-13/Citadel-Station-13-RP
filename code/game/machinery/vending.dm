@@ -143,7 +143,7 @@
 	product_records = null
 	return ..()
 
-/obj/machinery/vending/ex_act(severity)
+/obj/machinery/vending/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -661,6 +661,7 @@
 					/obj/item/reagent_containers/food/drinks/bottle/champagne/jericho = 1,
 					/obj/item/reagent_containers/food/drinks/bottle/champagne = 3,
 					/obj/item/reagent_containers/food/drinks/bottle/coconutmilk = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/unathijuice = 2,
 					/obj/item/reagent_containers/food/drinks/cans/sodawater = 15,
 					/obj/item/reagent_containers/food/drinks/cans/tonic = 15,
 					/obj/item/reagent_containers/food/drinks/cans/gingerale = 15,

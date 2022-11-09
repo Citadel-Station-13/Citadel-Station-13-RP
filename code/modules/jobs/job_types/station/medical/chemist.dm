@@ -1,4 +1,5 @@
 /datum/job/station/chemist
+	id = JOB_ID_CHEMIST
 	title = "Chemist"
 	flag = CHEMIST
 	departments = list(DEPARTMENT_MEDICAL)

@@ -165,9 +165,9 @@
 					fields[++fields.len] = MED_FIELD("Blood Type", active2.fields["b_type"], "blood_type", FALSE)
 					fields[++fields.len] = MED_FIELD("DNA", active2.fields["b_dna"], "b_dna", TRUE)
 					fields[++fields.len] = MED_FIELD("Brain Type", active2.fields["brain_type"], "brain_type", TRUE)
-					fields[++fields.len] = MED_FIELD("Important Notes", active2.fields["notes"], "notes", TRUE)
 					if(!active2.fields["comments"] || !islist(active2.fields["comments"]))
 						active2.fields["comments"] = list()
+					medical["notes"] = active2.fields["notes"]
 					medical["comments"] = active2.fields["comments"]
 					medical["empty"] = 0
 				else
@@ -314,7 +314,6 @@
 					R.fields["alg_d"] = "No allergies have been detected in this patient."
 					R.fields["cdi"] = "None"
 					R.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
-					R.fields["notes"] = "No notes."
 					data_core.medical += R
 					active2 = R
 					screen = MED_DATA_RECORD
@@ -443,7 +442,7 @@
 		<br>\nDetails: [active2.fields["alg_d"]]<br>\n
 		<br>\nCurrent Diseases: [active2.fields["cdi"]] (per disease info placed in log/comment section)
 		<br>\nDetails: [active2.fields["cdi_d"]]<br>\n
-		<br>\nImportant Notes:
+		<br>\nMedical Notes Summary:
 		<br>\n\t[active2.fields["notes"]]<br>\n
 		<br>\n
 		<center><b>Comments/Log</b></center><br>"}

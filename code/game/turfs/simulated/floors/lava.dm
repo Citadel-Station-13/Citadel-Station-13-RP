@@ -15,7 +15,7 @@
 	special_temperature = T0C + 2200
 
 /turf/simulated/floor/outdoors/lava/indoors
-	outdoors = TRUE
+	outdoors = FALSE
 
 // For maximum pedantry.
 /turf/simulated/floor/outdoors/lava/Initialize(mapload)

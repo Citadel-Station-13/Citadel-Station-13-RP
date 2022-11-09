@@ -309,7 +309,7 @@
 					EF.visible_message("<span class='danger'>\The [EF] reverberates as it returns to normal.</span>")
 
 			if(objectOrMob)
-				objectOrMob.update_nearby_tiles(need_rebuild=1)
+				objectOrMob.update_nearby_tiles()
 				objectOrMob.forceMove(src)
 				return 1
 

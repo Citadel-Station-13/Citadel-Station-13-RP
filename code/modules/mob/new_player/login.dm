@@ -3,7 +3,7 @@ GLOBAL_DATUM_INIT(lobby_image, /obj/effect/lobby_image, new)
 /obj/effect/lobby_image
 	name = "Citadel Station 13"
 	desc = "How are you reading this?"
-	screen_loc = "1,1"
+	screen_loc = "CENTER-7,CENTER-7"
 
 /obj/effect/lobby_image/Initialize(mapload)
 	icon = GLOB.using_map.lobby_icon
@@ -38,12 +38,12 @@ GLOBAL_DATUM_INIT(lobby_image, /obj/effect/lobby_image, new)
 
 	loc = null
 	my_client = client
-	player_list |= src
+	GLOB.player_list |= src
 
 	new_player_panel()
 	spawn(40)
 		if(client)
 			handle_privacy_poll()
 			client.playtitlemusic()
-
+			client.is_preference_enabled(/datum/client_preference/scaling_viewport) ? client.OnResize() : client.change_view(world.view)
 	return ..()
