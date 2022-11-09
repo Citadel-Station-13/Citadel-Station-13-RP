@@ -38,12 +38,9 @@
 		forceMove(destination)
 		return 1
 
-	if(!start.CanZPass(src, direction))
-		to_chat(src, "<span class='warning'>\The [start] is in the way.</span>")
-		return 0
-
-	if(!destination.CanZPass(src, direction))
-		to_chat(src, "<span class='warning'>\The [destination] blocks your way.</span>")
+	var/atom/obstructing = start.z_exit_obstruction(src, direction)
+	if(obstructing)
+		to_chat(src, SPAN_WARNING("\The [obstructing] is in the way."))
 		return 0
 
 	if(direction == UP && has_gravity() && !can_overcome_gravity())
@@ -78,11 +75,6 @@
 				return 0
 		else
 			to_chat(src, "<span class='warning'>Gravity stops you from moving upward.</span>")
-			return 0
-
-	for(var/atom/A in destination)
-		if(!A.CanPass(src, start, 1.5, 0))
-			to_chat(src, "<span class='warning'>\The [A] blocks you.</span>")
 			return 0
 	if(!Move(destination))
 		return 0
@@ -177,10 +169,11 @@
 
 ////////////////////////////
 
-
-
 //FALLING STUFF
-
+// todo: refactor
+//! WARNING: Falling code is held together by duct tape, to make the new procs shimmed in.
+// Yes, sometimes you need to make things worse temporarily, to make it better
+// yell at me if shit breaks ~silicons
 //Holds fall checks that should not be overriden by children
 /atom/movable/proc/fall()
 	if(!isturf(loc))
@@ -194,7 +187,9 @@
 		return
 
 	var/turf/T = loc
-	if(!T.CanZPass(src, DOWN) || !below.CanZPass(src, DOWN))
+	if(!T.z_exit_check(src, DOWN))
+		return
+	if(!T.z_fall_check(src))
 		return
 
 	// No gravity in space, apparently.
@@ -241,15 +236,17 @@
 		// We spawn here to let the current move operation complete before we start falling. fall() is normally called from
 		// Entered() which is part of Move(), by spawn()ing we let that complete.  But we want to preserve if we were in client movement
 		// or normal movement so other move behavior can continue.
-		var/mob/M = src
-		var/is_client_moving = (ismob(M) && M.client && M.client.moving)
-		var/curr = loc
+		// todo: this is stupid
+		var/checking = loc
 		spawn(0)
-			if(loc != curr)
+			if(loc != checking)	// we moved
 				return
-			if(is_client_moving) M.client.moving = 1
+			if(!isturf(loc))	 // wtf
+				return
+			var/turf/cT = loc
+			if(!cT.z_exit_check(src, DOWN) || !cT.z_fall_check(src))
+				return	// nah
 			handle_fall(below)
-			if(is_client_moving) M.client.moving = 0
 		// TODO - handle fall on damage!
 
 //For children to override
@@ -300,43 +297,18 @@
 	if(..())
 		return species.can_fall(src)
 
-// Check if this atom prevents things standing on it from falling. Return TRUE to allow the fall.
-/obj/proc/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	return TRUE
-
-// Things that prevent objects standing on them from falling into turf below
-/obj/structure/catwalk/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	return FALSE
-
-// So you'll slam when falling onto a catwalk
-/obj/structure/catwalk/CheckFall(var/atom/movable/falling_atom)
-	return falling_atom.fall_impact(src)
-
-/obj/structure/lattice/CanFallThru(atom/movable/mover as mob|obj, turf/target as turf)
-	return check_standard_flag_pass(mover)
-
-// So you'll slam when falling onto a grille
-/obj/structure/lattice/CheckFall(var/atom/movable/falling_atom)
-	if(check_standard_flag_pass(falling_atom))
-		return FALSE
-	return falling_atom.fall_impact(src)
-
 // Actually process the falling movement and impacts.
 /atom/movable/proc/handle_fall(turf/landing)
 	var/turf/oldloc = loc
 
-	// Check if there is anything in our turf we are standing on to prevent falling.
-	for(var/obj/O in loc)
-		if(!O.CanFallThru(src, landing))
-			return FALSE
-	// See if something in turf below prevents us from falling into it.
-	for(var/atom/A in landing)
-		if(!A.CanPass(src, src.loc, 1, 0))
-			return FALSE
+	// something is blocking us
+	if(oldloc.z_exit_obstruction(src, DOWN))
+		return FALSE
+
 	// TODO - Stairs should operate thru a different mechanism, not falling, to allow side-bumping.
 
 	// this is shitcode lmao
-	var/obj/structure/stairs = locate() in landing
+	var/obj/structure/stairs/stairs = locate() in landing
 	if(!stairs)
 		// Now lets move there!
 		if(!Move(landing))
@@ -345,6 +317,11 @@
 		var/atom/A = find_fall_target(oldloc, landing)
 		if(special_fall_handle(A) || !A || !A.check_impact(src))
 			return
+		var/mob/drop_mob = locate(/mob, landing)
+		if(drop_mob && !(drop_mob == src) && ismob(drop_mob) && isliving(drop_mob)) //Shitload of checks. This is because the game finds various ways to screw me over.
+			var/mob/living/drop_living = drop_mob
+			if(drop_living.dropped_onto(src))
+				return
 		fall_impact(A)
 	else
 		locationTransitForceMove(landing)
@@ -389,50 +366,13 @@
 /atom/proc/CheckFall(var/atom/movable/falling_atom)
 	if(density && !(flags & ON_BORDER))
 		return TRUE
+	return prevent_z_fall(falling_atom, 0, NONE) & (FALL_TERMINATED | FALL_BLOCKED)
 
 // If you are hit: how is it handled.
 // Return TRUE if the generic fall_impact should be called
 // Return FALSE if you handled it yourself or if there's no effect from hitting you
 /atom/proc/check_impact(var/atom/movable/falling_atom)
-	if(density && !(flags & ON_BORDER))
-		return TRUE
-
-// By default all turfs are gonna let you hit them regardless of density.
-/turf/CheckFall(var/atom/movable/falling_atom)
 	return TRUE
-
-/turf/check_impact(var/atom/movable/falling_atom)
-	return TRUE
-
-// Obviously you can't really hit open space.
-/turf/simulated/open/CheckFall(var/atom/movable/falling_atom)
-	return FALSE
-
-/turf/simulated/open/check_impact(var/atom/movable/falling_atom)
-	return FALSE
-
-// Or actual space.
-/turf/space/CheckFall(var/atom/movable/falling_atom)
-	return FALSE
-
-/turf/space/check_impact(var/atom/movable/falling_atom)
-	return FALSE
-
-// We return 1 without calling fall_impact in order to provide a soft landing. So nice.
-// Note this really should never even get this far
-/obj/structure/stairs/CheckFall(var/atom/movable/falling_atom)
-	return TRUE
-
-/obj/structure/stairs/check_impact(var/atom/movable/falling_atom)
-	return FALSE
-
-// Can't fall onto ghosts
-/mob/observer/dead/CheckFall()
-	return FALSE
-
-/mob/observer/dead/check_impact()
-	return FALSE
-
 
 // Called by CheckFall when we actually hit something. Various Vars will be described below
 // hit_atom is the thing we fall on

@@ -4976,7 +4976,10 @@
 "dsb" = (
 /obj/structure/table/glass,
 /obj/item/folder/white_cmo,
-/obj/item/stamp/cmo,
+/obj/item/stamp/cmo{
+	pixel_x = -8;
+	pixel_y = -3
+	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -4988,6 +4991,10 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/item/stamp/denied{
+	pixel_x = -8;
+	pixel_y = 3
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
