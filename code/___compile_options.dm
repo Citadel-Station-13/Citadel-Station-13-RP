@@ -1,45 +1,103 @@
 //* Core settings
 //! Fastboot flags - useful for debugging
-/// disable automatic roundstart icon smoothing
+/// Disable automatic roundstart icon smoothing.
 // #define FASTBOOT_DISABLE_SMOOTHING (1<<0)
-/// disable loading late maps
+/// Disable loading late maps.
 // #define FASTBOOT_DISABLE_LATELOAD (1<<1)
-/// disable atmospherics zone build
+/// Disable atmospherics zone build.
 // #define FASTBOOT_DISABLE_ZONES (1<<2)
 
-///By using the testing("message") proc you can create debug-feedback for people with this
-//#define TESTING
-								//uncommented, but not visible in the release version)
+/**
+ * By using the testing("message") proc you can create debug-feedback for people with this uncommented,
+ * but not visible in the release version
+ */
+// #define TESTING
 
-///Enables the ability to cache datum vars and retrieve later for debugging which vars changed.
-//#define DATUMVAR_DEBUGGING_MODE
-// Comment this out if you are debugging problems that might be obscured by custom error handling in world/Error
+/// Enables the ability to cache datum vars and retrieve later for debugging which vars changed.
+// #define DATUMVAR_DEBUGGING_MODE
+
+/// Comment this out if you are debugging problems that might be obscured by custom error handling in world/Error
 #ifdef DEBUG
-	#define USE_CUSTOM_ERROR_HANDLER
+#define USE_CUSTOM_ERROR_HANDLER
+#define DEBUG_SHUTTLES
 #endif
 
-#define DEBUG_SHUTTLES
 
 #ifdef TESTING
 #define DATUMVAR_DEBUGGING_MODE
 
-///Used to find the sources of harddels, quite laggy, don't be surpised if it freezes your client for a good while
+/// Used to find the sources of harddels, quite laggy, don't be surpised if it freezes your client for a good while
+// #define REFERENCE_TRACKING
 #ifdef REFERENCE_TRACKING
 
-///Run a lookup on things hard deleting by default.
-//#define GC_FAILURE_HARD_LOOKUP
+/// Used for doing dry runs of the reference finder, to test for feature completeness
+/// Slightly slower, higher in memory. Just not optimal
+// #define REFERENCE_TRACKING_DEBUG
+
+/// Run a lookup on things hard deleting by default.
+// #define GC_FAILURE_HARD_LOOKUP
 #ifdef GC_FAILURE_HARD_LOOKUP
+/// Don't stop when searching, go till you're totally done
 #define FIND_REF_NO_CHECK_TICK
 #endif //ifdef GC_FAILURE_HARD_LOOKUP
 
 #endif //ifdef REFERENCE_TRACKING
 
-///Highlights atmos active turfs in green
-//#define VISUALIZE_ACTIVE_TURFS
+/**
+ * Enables debug messages for every single reaction step.
+ * This is 1 message per 0.5s for a SINGLE reaction.
+ * Useful for tracking down bugs/asking me for help in the main reaction handiler (equilibrium.dm).
+ *
+ * * Requires TESTING to be defined to work.
+ * ! Not implemented yet.
+ */
+// #define REAGENTS_TESTING
+
+/**
+ * Displays static object lighting updates.
+ *
+ * Also enables some debug vars on sslighting that can be used to modify
+ * how extensively we prune lighting corners to update.
+ */
+#define VISUALIZE_LIGHT_UPDATES
+
+/// Highlights atmos active turfs in green.
+#define VISUALIZE_ACTIVE_TURFS
 #endif //ifdef TESTING
 
-///Enables unit tests via TEST_RUN_PARAMETER
-//#define UNIT_TESTS
+/// If this is uncommented, we do a single run though of the game setup and tear down process with unit tests in between
+// #define UNIT_TESTS
+
+/**
+ * If this is uncommented, will attempt to load and initialize prof.dll/libprof.so.
+ * We do not ship byond-tracy. Build it yourself here: https://github.com/mafemergency/byond-tracy/
+ */
+// #define USE_BYOND_TRACY
+
+/// If defined, we will NOT defer asset generation till later in the game, and will instead do it all at once, during initiialize.
+//#define DO_NOT_DEFER_ASSETS
+
+/// If this is uncommented, Autowiki will generate edits and shut down the server.
+/// Prefer the autowiki build target instead.
+// #define AUTOWIKI
+
+/// If this is uncommented, will profile mapload atom initializations
+// #define PROFILE_MAPLOAD_INIT_ATOM
+
+/// If this is uncommented, force our verb processing into just the 2% of a tick
+/// We normally reserve for it
+/// NEVER run this on live, it's for simulating highpop only
+// #define VERB_STRESS_TEST
+
+#ifdef VERB_STRESS_TEST
+/// Uncomment this to force all verbs to run into overtime all of the time
+/// Essentially negating the reserve 2%
+
+// #define FORCE_VERB_OVERTIME
+#warn Hey brother, you're running in LAG MODE.
+#warn IF YOU PUT THIS ON LIVE I WILL FIND YOU AND MAKE YOU WISH YOU WERE NEVE-
+#endif
+
 #ifndef PRELOAD_RSC				//set to:
 ///	0 to allow using external resources or on-demand behaviour;
 #define PRELOAD_RSC	2

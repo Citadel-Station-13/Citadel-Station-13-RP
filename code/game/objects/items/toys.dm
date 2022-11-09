@@ -388,7 +388,7 @@
 
 		var/obj/effect/decal/D = new/obj/effect/decal/(get_turf(src))
 		D.name = "water"
-		D.icon = 'icons/obj/chemical.dmi'
+		D.icon = 'icons/obj/medical/chemical.dmi'
 		D.icon_state = "chempuff"
 		D.create_reagents(5)
 		src.reagents.trans_to_obj(D, 1)

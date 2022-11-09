@@ -6,7 +6,7 @@
 /obj/item/reagent_containers/pill/patch
 	name = "patch"
 	desc = "A patch."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = null
 	item_state = "pill"
 

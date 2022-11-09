@@ -67,10 +67,6 @@ var/list/bradycardics  = list("neurotoxin", "cryoxadone", "clonexadone", "space_
 var/list/heartstopper  = list("potassium_chlorophoride", "zombie_powder") // This stops the heart.
 var/list/cheartstopper = list("potassium_chloride")                       // This stops the heart when overdose is met. -- c = conditional
 
-///Max icon state of the pill sprites
-#define MAX_PILL_SPRITE 24
-///Max icon state of the pill sprites
-#define MAX_BOTTLE_SPRITE 4
 ///Max number of pills/patches that can be made at once
 #define MAX_MULTI_AMOUNT 20
 ///Max amount of units in a pill

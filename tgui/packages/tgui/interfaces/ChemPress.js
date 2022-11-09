@@ -7,11 +7,13 @@ export const ChemPress = (props, context) => {
   const {
     current_volume,
     product_name,
-    pill_style,
-    pill_styles = [],
     product,
     min_volume,
     max_volume,
+    bottle_style,
+    bottle_styles = [],
+    pill_style,
+    pill_styles = [],
     patch_style,
     patch_styles = [],
   } = data;

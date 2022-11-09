@@ -1,6 +1,6 @@
 /obj/machinery/iv_drip
 	name = "\improper IV drip"
-	icon = 'icons/obj/iv_drip.dmi'
+	icon = 'icons/obj/medical/iv_drip.dmi'
 	anchored = FALSE
 	density = FALSE
 	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
@@ -20,7 +20,7 @@
 	if(beaker)
 		var/datum/reagents/reagents = beaker.reagents
 		if(reagents.total_volume)
-			var/image/filling = image('icons/obj/iv_drip.dmi', src, "reagent")
+			var/image/filling = image('icons/obj/medical/iv_drip.dmi', src, "reagent")
 
 			var/percent = round((reagents.total_volume / beaker.volume) * 100)
 			switch(percent)
