@@ -153,7 +153,8 @@
 
 //*Skrell
 /datum/gear/xeno/skrell
-	legacy_species_lock = SPECIES_SKRELL
+	// hello monara
+	// legacy_species_lock = SPECIES_SKRELL
 
 /datum/gear/xeno/skrell/accessories
 	slot = /datum/inventory_slot_meta/abstract/attach_as_accessory
