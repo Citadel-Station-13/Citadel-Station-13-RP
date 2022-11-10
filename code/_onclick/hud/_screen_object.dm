@@ -9,7 +9,7 @@
 /atom/movable/screen
 	name = ""
 	icon = 'icons/mob/screen1.dmi'
-	appearance_flags = TILE_BOUND|PIXEL_SCALE|NO_CLIENT_COLOR
+	appearance_flags = TILE_BOUND | PIXEL_SCALE | NO_CLIENT_COLOR
 	layer = LAYER_HUD_BASE
 	plane = PLANE_PLAYER_HUD
 	var/obj/master = null	//A reference to the object in the slot. Grabs or items, generally.

@@ -54,6 +54,12 @@
 /proc/_ispath(path, type)
 	return ispath(path, type)
 
+/proc/_json_encode(list/L)
+	return json_encode(L)
+
+/proc/_json_decode(json)
+	return json_decode(json)
+
 /proc/_length(E)
 	return length(E)
 
@@ -152,6 +158,9 @@
 
 /proc/_sin(X)
 	return sin(X)
+
+/proc/_list2params(L)
+	return list2params(L)
 
 /proc/_list_construct(...)
 	. = args.Copy()

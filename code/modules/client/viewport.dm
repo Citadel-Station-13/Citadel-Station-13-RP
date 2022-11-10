@@ -5,12 +5,23 @@ GLOBAL_VAR_INIT(max_client_view_y, 15)
 GLOBAL_VAR_INIT(game_view_x, 19)
 GLOBAL_VAR_INIT(game_view_y, 15)
 // minimum size viewports can be
-// todo: parallax/action buttons are the reason this is so high
 GLOBAL_VAR_INIT(min_client_view_x, 15)
 GLOBAL_VAR_INIT(min_client_view_y, 15)
 // these two variables, if set, lock all clients to a certain viewsize no matter what
 GLOBAL_VAR(lock_client_view_x)
 GLOBAL_VAR(lock_client_view_y)
+
+/// BYOND is a piece of fucking shit.
+GLOBAL_LIST_INIT(viewport_menu_ids, list(
+	"stretch",
+	"stretch_alt",
+	"icon128",
+	"icon96",
+	"icon72",
+	"icon64",
+	"icon48",
+	"icon32"
+))
 
 /**
  * forces world viewsize; use for config VAS
@@ -40,6 +51,18 @@ GLOBAL_VAR(lock_client_view_y)
 /client/proc/pre_init_viewport()
 	current_viewport_width = GLOB.max_client_view_x
 	current_viewport_height = GLOB.max_client_view_y
+	hook_viewport_menu()
+
+/**
+ * since byond is so awful we can't do multi-verbs for a command in
+ * the skin editor, we have to hook it at runtime : )
+ */
+/client/proc/hook_viewport_menu()
+	var/list/commands = params2list(winget(src, list2params(GLOB.viewport_menu_ids), "command"))
+	for(var/key in commands)
+		var/value = commands[key]
+		commands[key] = "[value]\n.update_viewport"
+	winset(src, null, list2params(commands))
 
 /**
  * called on client init to do this without blocking client/New
@@ -52,12 +75,13 @@ GLOBAL_VAR(lock_client_view_y)
  * called by verbs that change viewport
  */
 /client/verb/init_viewport()
-	set name = ".init_viewport"
+	set name = ".update_viewport"
 	set hidden = TRUE
 	if(viewport_rwlock)
 		// don't bother
 		return
-	init_viewport_blocking()
+	fetch_viewport()
+	refit_viewport()
 
 /**
  * called to manually update viewport vars since the skin macro is only triggered on resize
@@ -303,7 +327,8 @@ GLOBAL_VAR(lock_client_view_y)
 	if(viewport_rwlock)
 		to_chat(usr, SPAN_WARNING("Viewport is rwlocked; try again later."))
 		return
-	init_viewport_blocking()
+	fetch_viewport()
+	refit_viewport()
 
 /client/verb/show_winset_debug_values()
 	set name = ".viewport_debug"
