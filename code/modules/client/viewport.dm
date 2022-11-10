@@ -233,7 +233,7 @@ GLOBAL_VAR(lock_client_view_y)
 		winset(src, SKIN_SPLITTER_ID_MAIN, "splitter=[current_percent]")
 		fetching = winget(src, SKIN_MAP_ID_VIEWPORT, "size")
 		parsed = splittext(fetching, "x")
-		current_width = parsed[1]
+		current_width = text2num(parsed[1])
 		// done?
 		if(current_width == desired_pixel_width)
 			return
