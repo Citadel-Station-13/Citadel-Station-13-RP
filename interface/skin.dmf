@@ -48,7 +48,7 @@ menu "menu"
 		group = "size"
 		saved-params = "is-checked"
 	elem "stretch_alt"
-		name = "Fill Vertically"
+		name = "Fill Screen"
 		command = ".winset \"mapwindow.map.zoom=0;mapwindow.map.letterbox=false\""
 		category = "&Size"
 		can-check = true
@@ -273,11 +273,8 @@ window "mapwindow"
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
-		outer-size = 656x538
-		inner-size = 640x499
 	elem "map"
 		type = MAP
 		pos = 0,0
