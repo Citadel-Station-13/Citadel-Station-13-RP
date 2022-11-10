@@ -51,6 +51,7 @@ menu "menu"
 		name = "Fill Vertically"
 		command = ".winset \"mapwindow.map.zoom=0;mapwindow.map.letterbox=false\"\\nre_viewport"
 		category = "&Size"
+		can-check = true
 		group = "size"
 		saved-params = "is-checked"
 	elem "icon128"
@@ -272,11 +273,8 @@ window "mapwindow"
 		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
-		outer-size = 656x538
-		inner-size = 640x499
 	elem "map"
 		type = MAP
 		pos = 0,0
