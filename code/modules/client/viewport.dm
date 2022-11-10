@@ -48,7 +48,7 @@ GLOBAL_VAR(lock_client_view_y)
  * called by verbs that change viewport
  */
 /client/verb/re_viewport()
-	set name = ".re_viewport"
+	set name = "re_viewport"
 	set hidden = TRUE
 	fetch_viewport()
 	refit_viewport()
@@ -222,7 +222,7 @@ GLOBAL_VAR(lock_client_view_y)
 	var/delta
 	fetching = winget(src, SKIN_MAP_ID_VIEWPORT, "size")
 	parsed = splittext(fetching, "x")
-	var/current_width = parsed[1]
+	var/current_width = text2num(parsed[1])
 	if(current_width == desired_pixel_width)
 		// done
 		return

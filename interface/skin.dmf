@@ -44,7 +44,6 @@ menu "menu"
 		name = "Stretch to Fit"
 		command = ".winset \"mapwindow.map.zoom=0;mapwindow.map.letterbox=true\"\\nre_viewport"
 		category = "&Size"
-		is-checked = true
 		can-check = true
 		group = "size"
 		saved-params = "is-checked"
@@ -72,7 +71,6 @@ menu "menu"
 		name = "&72x72 (Cozy 1080p)"
 		command = ".winset \"mapwindow.map.zoom=2.5;mapwindow.map.letterbox=true\"\\nre_viewport"
 		category = "&Size"
-		is-checked = true
 		can-check = true
 		group = "size"
 		saved-params = "is-checked"
@@ -80,7 +78,6 @@ menu "menu"
 		name = "&64x64 (1080p)"
 		command = ".winset \"mapwindow.map.zoom=2;mapwindow.map.letterbox=true\"\\nre_viewport"
 		category = "&Size"
-		is-checked = true
 		can-check = true
 		group = "size"
 		saved-params = "is-checked"
