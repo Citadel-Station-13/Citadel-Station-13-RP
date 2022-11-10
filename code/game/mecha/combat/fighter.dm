@@ -225,7 +225,12 @@
 //causes damage when running into objects
 /obj/mecha/combat/fighter/Bump(atom/obstacle)
 	. = ..()
+	// this isn't defined becuase this is shitcode anyways and i'm just patching it
+	// todo: why the fuck are you guys doing snowflake collision code??
+	if(TIMER_COOLDOWN_CHECK(src, "fighter_collision"))
+		return
 	if(istype(obstacle, /obj) || istype(obstacle, /turf))
+		TIMER_COOLDOWN_START(src, "fighter_collision", 5 SECONDS)
 		occupant_message("<B><FONT COLOR=red SIZE=+1>Collision Alert!</B></FONT>")
 		take_damage(20, "brute")
 		playsound(src, 'sound/effects/grillehit.ogg', 50, 1)

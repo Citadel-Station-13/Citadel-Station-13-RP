@@ -248,7 +248,7 @@ GLOBAL_LIST_INIT(viewport_menu_ids, list(
 		desired_pixel_width = assumed_viewport_spy * aspect_ratio
 	else
 		// they're not using stretch to fit; this makes it very easy
-		desired_pixel_width = WORLD_ICON_SIZE * assumed_viewport_zoom * current_viewport_width
+		desired_pixel_width = WORLD_ICON_SIZE * assumed_viewport_zoom * using_perspective.cached_view_width
 	// grab their screen size (or what counts as it)
 	var/list/fetching = winget(src, SKIN_SPLITTER_ID_MAIN, "size")
 	var/list/parsed = splittext(fetching, "x")

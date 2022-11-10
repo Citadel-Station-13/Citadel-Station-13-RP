@@ -312,3 +312,4 @@
 
 /atom/movable/screen/parallax_vis
 	screen_loc = "CENTER,CENTER"
+	icon = null
