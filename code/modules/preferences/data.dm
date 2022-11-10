@@ -268,3 +268,9 @@
 	for(var/key in skipped)
 		errors?.Add("Skipping key [key] - no datum found.")
 	return TRUE
+
+//! Skin stuff
+#warn impl
+/datum/preferences/proc/save_skin_data(key, value)
+
+/datum/preferences/proc/load_skin_data(key)

@@ -40,6 +40,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/character
 	/// global data
 	var/list/options
+	/// data for byond skin - checkboxes and whatnot; this is ENTIRELY synchronized by the skin system.
+	var/list/skin
 
 //! ## Game Preferences
 	var/tgui_fancy = TRUE

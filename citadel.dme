@@ -4204,6 +4204,8 @@
 #include "interface\interface.dm"
 #include "interface\stylesheet.dm"
 #include "interface\skin.dmf"
+#include "interface\menus\_menus.dm"
+#include "interface\menus\main.dm"
 #include "maps\Generic\death_triggers.dm"
 #include "maps\Generic\map_data.dm"
 #include "maps\Generic\misc.dm"

@@ -324,6 +324,14 @@
 			C.mob.see_invisible = see_invisible
 
 //! view size
+/**
+ * Sets our default size.
+ *
+ * DO NOT use this in place of augmented.
+ * User widescreen preferences WILL override this!
+ *
+ * Ideally this shouldn't be used at all.
+ */
 /datum/perspective/proc/set_default_view(size)
 	if(size == default_view_size)
 		return
@@ -340,7 +348,14 @@
 	else
 		CRASH("What?")
 	view_dirty = TRUE
+	update_view_size()
 
+/**
+ * Sets augmented size ontop of default size.
+ *
+ * Currently only supports positive numbers. Numbers apply equally
+ * to both directions of a dimension.
+ */
 /datum/perspective/proc/set_augmented_view(width, height)
 	if(!isnum(height) || !isnum(width))
 		CRASH("invalid")
@@ -348,6 +363,7 @@
 	augment_view_height = max(0, height)
 	augment_view_width = max(0, width)
 	view_dirty = TRUE
+	update_view_size()
 
 /datum/perspective/proc/update_view_size(client/C)
 	if(view_dirty)

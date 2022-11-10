@@ -1,13 +1,42 @@
-//! SKIN ELEMENT IDS; MAKE SURE TO UPDATE THESE WHEN CHANGING SKIN.DMF.
+//? SKIN ELEMENT IDS; MAKE SURE TO UPDATE THESE WHEN CHANGING SKIN.DMF.
 
 //! Map IDs
 /// main game viewport
 #define SKIN_MAP_ID_VIEWPORT "mapwindow.map"
 
-//! Menu IDs
-/// main game menu
-#define SKIN_MENU_ID_MAIN "menu_main"
-
 //! Splitter IDs
 /// main window split
 #define SKIN_SPLITTER_ID_MAIN "mainwindow.split"
+
+//? Dynamic skin IDs used by code-generated elements
+// TOP LEVEL MENU //
+#define SKIN_ID_MAIN_MENU "menu_main"
+	// what it attaches to
+	#define SKIN_ID_MAIN_MENU_ATTACH_TO "mainwindow"
+	// categories
+	#define SKIN_ID_MENU_CATEGORY_FILE "menu_file"
+	#define SKIN_ID_MENU_CATEGORY_ZOOM "menu_zoom"
+	#define SKIN_ID_MENU_CATEGORY_SCALING "menu_scaling"
+	#define SKIN_ID_MENU_CATEGORY_HELP "menu_help"
+	// groups
+	#define SKIN_BUTTON_GROUP_MAP_ZOOM "main_map_zoom"
+	#define SKIN_BUTTON_GROUP_MAP_SCALING "main_map_scaling"
+	#define SKIN_BUTTON_GROUP_MAP_WIDESCREEN "main_map_widescreen"
+	// buttons - file
+	#define SKIN_ID_MENU_BUTTON_SCREENSHOT "menubutton_screenshot"
+	#define SKIN_ID_MENU_BUTTON_SCREENSHOT_QUICK "menubutton_screenshot_quick"
+	#define SKIN_ID_MENU_BUTTON_RECONNECT "menubutton_reconnect"
+	#define SKIN_ID_MENU_BUTTON_PING "menubutton_ping"
+	#define SKIN_ID_MENU_BUTTON_QUIT "menubutton_quit"
+	// buttons - size
+	#define SKIN_ID_MENU_BUTTON_STRETCH_TO_FIT "menubutton_stretchtofit"
+	#define SKIN_ID_MENU_BUTTON_STRETCH_NO_LETTERBOX "menubutton_stretchtofill"
+	#define SKIN_ID_MENU_BUTTON_FOR_RESOLUTION(resolution) "menubutton_[#resolution]x[#resolution]"
+	#define SKIN_ID_MENU_BUTTON_WIDESCREEN_ENABLED "menubutton_widescreen_on"
+	#define SKIN_ID_MENU_BUTTON_WIDESCREEN_DISABLED "menubutton_widescreen_off"
+	// buttons - scaling
+	#define SKIN_ID_MENU_BUTTON_NEAREST_NEIGHBOR "menubutton_scale_distort"
+	#define SKIN_ID_MENU_BUTTON_POINT_SAMPLE "menubutton_scale_normal"
+	#define SKIN_ID_MENU_BUTTON_BILINEAR "menubutton_scale_blur"
+	// buttons - help
+	#define SKIN_ID_MENU_BUTTON_ADMINHELP "menubutton_adminhelp"
