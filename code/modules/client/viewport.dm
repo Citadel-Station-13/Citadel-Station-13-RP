@@ -68,7 +68,7 @@ GLOBAL_VAR(lock_client_view_y)
 	PRIVATE_PROC(TRUE)
 	// get vars only; they have to manually refit
 	var/list/got = params2list(winget(src, SKIN_MAP_ID_VIEWPORT, "size;zoom;letterbox"))
-	assumed_viewport_zoom = got["zoom"] || 0
+	assumed_viewport_zoom = text2num(got["zoom"]) || 0
 	assumed_viewport_box = (got["letterbox"] == "true")
 	var/list/split = splittext(got["size"], "x")
 	if(split && split.len == 2)
@@ -88,14 +88,14 @@ GLOBAL_VAR(lock_client_view_y)
  * - z - zoom of viewport
  * - b - are we letterboxing?
  */
-/client/verb/on_viewport(w as num, h as num, z as num, b as num)
+/client/verb/on_viewport(w as text, h as text, z as num, b as num)
 	set name = "on_viewport"
 	set hidden = TRUE
 	if(viewport_rwlock)	// something is fucking around, don't edit for them
 		return
 	// get vars
-	assumed_viewport_spx = w
-	assumed_viewport_spy = h
+	assumed_viewport_spx = text2num(w)
+	assumed_viewport_spy = text2num(h)
 	assumed_viewport_zoom = z
 	assumed_viewport_box = b
 	// refit
