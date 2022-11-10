@@ -241,7 +241,7 @@ GLOBAL_LIST_INIT(viewport_menu_ids, list(
 	var/assumed_splitter_width = 4
 	if(assumed_viewport_zoom == 0)
 		// they're stretching to fit; this makes it annoying
-		var/aspect_ratio = min(GLOB.min_client_view_x, using_perspective.cached_view_width) / min(GLOB.min_client_view_y, using_perspective.cached_view_height)
+		var/aspect_ratio = max(GLOB.min_client_view_x, using_perspective.cached_view_width) / max(GLOB.min_client_view_y, using_perspective.cached_view_height)
 		// we have to fit everything
 		// viewport_spy should never change since that's not what the player can drag,
 		// unless they resize the outer window itself.
