@@ -1,8 +1,17 @@
 #warn turn into world procs
 /proc/directory_walk(list/roots, maxdepth = 10)
+	ASSERT(roots)
+	if(!islist(roots))
+		roots = list(roots)
 	return directory_walk_internal(islist(roots)? roots : list(roots), maxdepth)
 
 /proc/directory_walk_exts(list/roots, list/exts, maxdepth = 10)
+	ASSERT(roots)
+	if(!islist(roots))
+		roots = list(roots)
+	ASSERT(exts)
+	if(!islist(exts))
+		exts = list(exts)
 	return directory_walk_internal(islist(roots)? roots : list(roots), new /regex("\\.([exts.Join("|")])$", "i"), maxdepth)
 
 /proc/directory_walk_internal(list/roots, regex/R, depth_remaining)
