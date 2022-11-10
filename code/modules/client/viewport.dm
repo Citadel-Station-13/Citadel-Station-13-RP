@@ -169,7 +169,7 @@ GLOBAL_LIST_INIT(viewport_menu_ids, list(
 			var/stretch_pixel_amount = assumed_viewport_spy / max_height
 			var/available_width = assumed_viewport_spx / stretch_pixel_amount
 			available_width = CEILING(available_width, 1)
-			available_width = max(available_width, GLOB.min_client_view_x)
+			available_width = clamp(available_width, GLOB.min_client_view_x, max_width)
 			view = "[available_width]x[max_height]"
 			on_refit_viewport(available_width, max_height)
 			return
@@ -241,7 +241,7 @@ GLOBAL_LIST_INIT(viewport_menu_ids, list(
 	var/assumed_splitter_width = 4
 	if(assumed_viewport_zoom == 0)
 		// they're stretching to fit; this makes it annoying
-		var/aspect_ratio = current_viewport_width / current_viewport_height
+		var/aspect_ratio = min(GLOB.min_client_view_x, using_perspective.cached_view_width) / min(GLOB.min_client_view_y, using_perspective.cached_view_height)
 		// we have to fit everything
 		// viewport_spy should never change since that's not what the player can drag,
 		// unless they resize the outer window itself.
