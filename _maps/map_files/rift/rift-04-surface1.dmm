@@ -7391,7 +7391,7 @@
 /area/tether/surfacebase/funny/mimeoffice)
 "eWb" = (
 /obj/structure/sink/puddle,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/research/lower)
 "eWe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -8636,7 +8636,7 @@
 /area/hallway/primary/surfaceone)
 "fVu" = (
 /mob/living/simple_mob/animal/passive/woolie,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/research/lower)
 "fVw" = (
 /turf/simulated/wall,
@@ -14006,7 +14006,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/janitor)
 "jfW" = (
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/research/lower)
 "jfX" = (
 /obj/effect/floor_decal/borderfloor{
@@ -33375,7 +33375,7 @@
 	dir = 1
 	},
 /obj/structure/railing,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside1)
 "uQu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{

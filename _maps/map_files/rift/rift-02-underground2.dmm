@@ -2137,7 +2137,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 1
 	},
-/turf/simulated/floor/outdoors/snow/noblend{
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c{
 	special_temperature = 233
 	},
 /area/engineering/engine_room)
@@ -2356,7 +2356,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
 	},
-/turf/simulated/floor/outdoors/snow/noblend{
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c{
 	special_temperature = 233
 	},
 /area/engineering/engine_room)
@@ -2823,7 +2823,7 @@
 /obj/machinery/camera/network/engine{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/noblend{
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c{
 	special_temperature = 233
 	},
 /area/engineering/engine_room)
@@ -6989,7 +6989,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
 	},
-/turf/simulated/floor/outdoors/snow/noblend{
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c{
 	special_temperature = 233
 	},
 /area/engineering/engine_room)
@@ -8057,7 +8057,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/noblend{
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c{
 	special_temperature = 233
 	},
 /area/engineering/engine_room)
@@ -8113,7 +8113,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 9
 	},
-/turf/simulated/floor/outdoors/snow/noblend{
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c{
 	special_temperature = 233
 	},
 /area/engineering/engine_room)
@@ -8692,7 +8692,7 @@
 /area/quartermaster/belterdock/refinery)
 "Eb" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
-/turf/simulated/floor/outdoors/snow/noblend{
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c{
 	special_temperature = 233
 	},
 /area/engineering/engine_room)
@@ -10689,7 +10689,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 4
 	},
-/turf/simulated/floor/outdoors/snow/noblend{
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c{
 	special_temperature = 233
 	},
 /area/engineering/engine_room)
@@ -11234,7 +11234,7 @@
 	dir = 4
 	},
 /obj/effect/zone_divider,
-/turf/simulated/floor/outdoors/snow/noblend{
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c{
 	special_temperature = 233
 	},
 /area/engineering/engine_room)
@@ -12147,7 +12147,7 @@
 /obj/machinery/camera/network/engine{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/noblend{
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c{
 	special_temperature = 233
 	},
 /area/engineering/engine_room)
@@ -12241,7 +12241,7 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 6
 	},
-/turf/simulated/floor/outdoors/snow/noblend{
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c{
 	special_temperature = 233
 	},
 /area/engineering/engine_room)
@@ -12763,7 +12763,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "Xb" = (
-/turf/simulated/floor/outdoors/snow/noblend{
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c{
 	special_temperature = 233
 	},
 /area/engineering/engine_room)
