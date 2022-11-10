@@ -20,7 +20,6 @@
 		screen.SetView(client.view)
 		client.screen += screen
 	return screen
-	#warn give this shit a pass
 
 /**
  * Wipes a fullscreen of a certain category
@@ -75,7 +74,6 @@
 				client.screen |= screen
 			else
 				client.screen -= screen
-	#warn give this shit a pass
 
 /atom/movable/screen/fullscreen
 	icon = 'icons/screen/fullscreen/fullscreen_15x15.dmi'
@@ -101,7 +99,6 @@
 
 /atom/movable/screen/fullscreen/proc/SetView(client_view)
 	view_current = client_view
-	#warn give this shit a pass
 
 /atom/movable/screen/fullscreen/proc/ShouldShow(mob/M)
 	if(!show_when_dead && M.stat == DEAD)
@@ -126,7 +123,6 @@
 		view_current = client_view
 		transform = matrix(actualview[1] / size_x, 0, 0, 0, actualview[2] / size_y, 0)
 	return ..()
-	#warn give this shit a pass
 
 /atom/movable/screen/fullscreen/scaled/brute
 	icon_state = "brutedamageoverlay"

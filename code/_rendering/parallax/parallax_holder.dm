@@ -83,7 +83,6 @@
 	// hard reset positions to correct positions
 	for(var/atom/movable/screen/parallax_layer/L in layers)
 		L.ResetPosition(T.x, T.y)
-	#warn give this shit a pass
 
 // better updates via client_mobs_in_contents can be created again when important recursive contents is ported!
 /datum/parallax_holder/proc/Update(full)
@@ -110,7 +109,6 @@
 	if(last_area != T.loc)
 		last_area = T.loc
 		UpdateMotion()
-	#warn give this shit a pass
 
 /**
  * Gets the eye we should be centered on
@@ -140,7 +138,6 @@
 		vis_holder = new /atom/movable/screen/parallax_vis
 	SyncVisContents()
 	UpdateMotion(auto_z_change, force)
-	#warn give this shit a pass
 
 /**
  * syncs vis contents
@@ -189,7 +186,6 @@
 				1, 1, 1, 1,
 				0, 0, 0, 0
 			)
-	#warn give this shit a pass
 
 /datum/parallax_holder/proc/Remove(client/C = owner)
 	if(QDELETED(C))

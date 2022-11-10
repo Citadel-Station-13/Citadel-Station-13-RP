@@ -134,10 +134,13 @@ GLOBAL_VAR(lock_client_view_y)
 			return
 		// option 2: they're stretching to fit the longest side
 		else
-			// in which case..
-			// they're going to truncate the smaller size anyways
-			view = min(max_width, max_height)
-			on_refit_viewport(max_width, max_height)
+			// todo: handle horizontally-wider view sizes
+			// for now we only care about horizontal fit
+			var/stretch_pixel_amount = assumed_viewport_spy / max_height
+			var/available_width = assumed_viewport_spx / stretch_pixel_amount
+			available_width = CEILING(available_width, 1)
+			view = "[max_height]x[available_width]"
+			on_refit_viewport(max_width, available_width)
 			return
 	// option 3: scale as necessary
 	var/pixels_per_tile = assumed_viewport_zoom * WORLD_ICON_SIZE
@@ -151,7 +154,7 @@ GLOBAL_VAR(lock_client_view_y)
 	on_refit_viewport(desired_width, desired_height)
 
 /client/proc/on_refit_viewport(new_width, new_height)
-	var/changed = (current_viewport_height == new_height) && (current_viewport_width == new_width)
+	var/changed = (current_viewport_height != new_height) || (current_viewport_width != new_width)
 	if(changed)
 		current_viewport_width = new_width
 		current_viewport_height = new_height
@@ -235,7 +238,7 @@ GLOBAL_VAR(lock_client_view_y)
 	// nope, start adjusting
 	delta = 100 * ((desired_pixel_width - current_width) / screen_width)
 	for(var/safety in 1 to 10)
-		current_percent += delta
+		current_percent = min(current_percent + delta, maximum_splitter_percent)
 		winset(src, SKIN_SPLITTER_ID_MAIN, "splitter=[current_percent]")
 		fetching = winget(src, SKIN_MAP_ID_VIEWPORT, "size")
 		parsed = splittext(fetching, "x")
@@ -246,6 +249,7 @@ GLOBAL_VAR(lock_client_view_y)
 		// if we're literally down to a pixel how about like Don't
 		if(last_width == current_width)
 			return
+		last_width = current_width
 		// keep adjusting
 		// overshot?
 		if ((delta > 0 && current_width > desired_pixel_width) || (delta < 0 && current_width < desired_pixel_width))
