@@ -51,7 +51,7 @@
 		var/perspective = input("Select a perspective type.",
                       "Client perspective",
                       occupant.client.perspective) in list(MOB_PERSPECTIVE,EYE_PERSPECTIVE)
-		to_world("[perspective]")
+		TO_WORLD("[perspective]")
 		occupant.client.perspective = perspective
 		return
 
@@ -63,7 +63,7 @@
 			occupant.client.eye = src
 		else
 			occupant.client.eye = occupant
-		to_world("[occupant.client.eye]")
+		TO_WORLD("[occupant.client.eye]")
 		return
 */
 
@@ -74,15 +74,15 @@
 
 //	process_hud(var/mob/M) //TODO VIS
 /*
-		to_world("view(M)")
+		TO_WORLD("view(M)")
 		for(var/mob/mob in view(M))
-			to_world("[mob]")
-		to_world("view(M.client)")
+			TO_WORLD("[mob]")
+		TO_WORLD("view(M.client)")
 		for(var/mob/mob in view(M.client))
-			to_world("[mob]")
-		to_world("view(M.loc)")
+			TO_WORLD("[mob]")
+		TO_WORLD("view(M.loc)")
 		for(var/mob/mob in view(M.loc))
-			to_world("[mob]")
+			TO_WORLD("[mob]")
 
 
 		if(!M || M.stat || !(M in view(M)))	return

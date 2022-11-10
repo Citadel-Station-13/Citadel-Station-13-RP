@@ -2,7 +2,7 @@
  * Run when a client is put in this mob or reconnets to byond and their client was on this mob
  *
  * Things it does:
- * * Adds player to player_list
+ * * Adds player to GLOB.player_list
  * * sets lastKnownIP
  * * sets computer_id
  * * logs the login
@@ -24,7 +24,7 @@
 /mob/Login()
 	SHOULD_CALL_PARENT(TRUE)
 
-	player_list |= src
+	GLOB.player_list |= src
 	update_Login_details()
 	world.update_status()
 
@@ -94,7 +94,7 @@
 	computer_id	= client.computer_id
 	log_access_in(client)
 	if(config_legacy.log_access)
-		for(var/mob/M in player_list)
+		for(var/mob/M in GLOB.player_list)
 			if(M == src)	continue
 			if( M.key && (M.key != key) )
 				var/matches

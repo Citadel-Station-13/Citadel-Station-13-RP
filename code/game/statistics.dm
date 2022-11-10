@@ -1,7 +1,7 @@
 /proc/sql_poll_population()
 	var/admincount = admins.len
 	var/playercount = 0
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M.client)
 			playercount += 1
 

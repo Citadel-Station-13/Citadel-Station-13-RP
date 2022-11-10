@@ -1,8 +1,8 @@
 /datum/species/shadekin
+	uid = SPECIES_ID_SHADEKIN
 	name = SPECIES_SHADEKIN
 	name_plural = SPECIES_SHADEKIN
-	uid = SPECIES_ID_SHADEKIN
-	id = SPECIES_ID_SHADEKIN
+	category = "Special"
 
 	icobase      = 'icons/mob/species/shadekin/body.dmi'
 	deform       = 'icons/mob/species/shadekin/body.dmi'
@@ -23,11 +23,9 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
 	rarity_value = 15 //INTERDIMENSIONAL FLUFFERS
 
-	num_alternate_languages = 3
-	language = LANGUAGE_SHADEKIN
-	name_language = LANGUAGE_SHADEKIN
-	species_language = LANGUAGE_SHADEKIN
-	secondary_langs = list(LANGUAGE_SHADEKIN)
+	max_additional_languages = 3
+	intrinsic_languages = LANGUAGE_ID_SHADEKIN_HIVEMIND
+	name_language = LANGUAGE_ID_SHADEKIN_HIVEMIND
 
 	unarmed_types = list(
 		/datum/unarmed_attack/stomp,
@@ -59,8 +57,8 @@
 	heat_level_2 = 1000
 	heat_level_3 = 1150
 
-	flags =  NO_SCAN | NO_MINOR_CUT | NO_INFECT | CONTAMINATION_IMMUNE
-	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
+	species_flags = NO_SCAN | NO_MINOR_CUT | NO_INFECT | CONTAMINATION_IMMUNE
+	species_spawn_flags = SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELIST_SELECTABLE
 
 	reagent_tag = IS_SHADEKIN // for shadekin-unique chem interactions
 

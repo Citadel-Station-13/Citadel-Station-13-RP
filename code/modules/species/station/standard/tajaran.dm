@@ -1,6 +1,8 @@
 /datum/species/tajaran
+	uid = SPECIES_ID_TAJARAN
 	name = SPECIES_TAJ
 	name_plural = "Tajaran"
+	category = "Tajaran"
 	default_bodytype = BODYTYPE_TAJARAN
 
 	icobase      = 'icons/mob/species/tajaran/body_greyscale.dmi'
@@ -10,10 +12,14 @@
 	tail = "tajtail"
 	tail_animation = 'icons/mob/species/tajaran/tail_greyscale.dmi'
 
-	num_alternate_languages = 3
-	name_language = LANGUAGE_SIIK
-	species_language = LANGUAGE_SIIK
-	secondary_langs = list(LANGUAGE_SIIK, LANGUAGE_AKHANI, LANGUAGE_ALAI)
+	max_additional_languages = 3
+	name_language = LANGUAGE_ID_TAJARAN
+	intrinsic_languages = LANGUAGE_ID_TAJARAN
+	whitelist_languages = list(
+		LANGUAGE_ID_TAJARAN,
+		LANGUAGE_ID_TAJARAN_ALT,
+		LANGUAGE_ID_TAJARAN_SIGN
+	)
 
 	darksight = 8
 	slowdown  = -0.5
@@ -64,7 +70,7 @@
 
 	primitive_form = SPECIES_MONKEY_TAJ
 
-	spawn_flags = SPECIES_CAN_JOIN
+	species_spawn_flags = SPECIES_SPAWN_ALLOWED
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"

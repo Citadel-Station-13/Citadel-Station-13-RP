@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(vote)
 	// Before doing the vote, see if anyone is playing.
 	// If not, just do the transfer.
 	var/players_are_in_round = FALSE
-	for(var/a in player_list) // Mobs with clients attached.
+	for(var/a in GLOB.player_list) // Mobs with clients attached.
 		var/mob/living/L = a
 		if(!istype(L)) // Exclude ghosts and other weird things.
 			continue

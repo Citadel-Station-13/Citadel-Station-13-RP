@@ -1,6 +1,7 @@
 /datum/species/rapala
 	name = SPECIES_RAPALA
 	name_plural = "Rapalans"
+	uid = SPECIES_ID_RAPALA
 
 	icobase      = 'icons/mob/species/rapala/body.dmi'
 	deform       = 'icons/mob/species/rapala/deformed_body.dmi'
@@ -9,9 +10,9 @@
 	tail = "tail"
 	icobase_tail = 1
 
-	num_alternate_languages = 3
+	max_additional_languages = 3
 	name_language = null
-	secondary_langs = list(LANGUAGE_BIRDSONG)
+	intrinsic_languages = LANGUAGE_ID_BIRDSONG
 
 	color_mult = 1
 	max_age = 80
@@ -31,7 +32,7 @@
 	// wikilink = ""
 	catalogue_data = list(/datum/category_item/catalogue/fauna/rapala)
 
-	spawn_flags = SPECIES_CAN_JOIN
+	species_spawn_flags = SPECIES_SPAWN_ALLOWED
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	heat_discomfort_strings = list(

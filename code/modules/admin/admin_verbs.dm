@@ -605,7 +605,7 @@ var/list/admin_verbs_event_manager = list(
 		prefs.ooccolor = input(src, "Please select your OOC colour.", "OOC colour") as color
 	else if(response == "Reset to default")
 		prefs.ooccolor = initial(prefs.ooccolor)
-	SScharacter_setup.queue_preferences_save(prefs)
+	SScharacters.queue_preferences_save(prefs)
 
 	feedback_add_details("admin_verb","OC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
@@ -1029,7 +1029,7 @@ var/list/admin_verbs_event_manager = list(
 			return
 		var/job = input("Please select job slot to free", "Free job slot")  as null|anything in jobs
 		if (job)
-			job_master.FreeRole(job)
+			SSjob.FreeRole(job)
 			message_admins("A job slot for [job] has been opened by [key_name_admin(usr)]")
 			return
 

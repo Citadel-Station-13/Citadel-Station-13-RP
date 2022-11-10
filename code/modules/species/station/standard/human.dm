@@ -1,4 +1,7 @@
 /datum/species/human
+	id = SPECIES_ID_HUMAN
+	uid = SPECIES_ID_HUMAN
+	category = "Human"
 	name = SPECIES_HUMAN
 	name_plural = "Humans"
 	primitive_form = SPECIES_MONKEY
@@ -12,9 +15,14 @@
 	worlds tumultous at best."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/humans)
 
-	num_alternate_languages = 3
-	species_language = LANGUAGE_SOL_COMMON
-	secondary_langs  = list(LANGUAGE_SOL_COMMON, LANGUAGE_TERMINUS)
+	max_additional_languages = 3
+	intrinsic_languages = list(
+		LANGUAGE_ID_COMMON,
+		LANGUAGE_ID_HUMAN
+	)
+	whitelist_languages = list(
+		LANGUAGE_ID_HUMAN_SLAVIC
+	)
 	name_language    = null // Use the first-name last-name generator rather than a language scrambler
 	assisted_langs   = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
@@ -24,7 +32,7 @@
 
 	health_hud_intensity = 1.5
 
-	spawn_flags = SPECIES_CAN_JOIN
+	species_spawn_flags = SPECIES_SPAWN_ALLOWED
 
 	has_organ = list(
 		O_HEART     = /obj/item/organ/internal/heart,

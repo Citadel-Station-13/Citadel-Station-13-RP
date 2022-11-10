@@ -27,7 +27,7 @@
 		gib()
 		return
 
-	set_species(species_type_by_name(species.primitive_form))
+	set_species(species.primitive_form)
 	dna.SetSEState(DNABLOCK_MONKEY,1)
 	dna.SetSEValueRange(DNABLOCK_MONKEY,0xDAC, 0xFFF)
 
@@ -88,15 +88,13 @@
 	add_language(LANGUAGE_ZADDAT, 0)
 
 	// Lorefolks say it may be so.
-	if(O.client && O.client.prefs)
-		var/datum/preferences/B = O.client.prefs
-		if(LANGUAGE_ROOTGLOBAL in B.alternate_languages)
-			O.add_language(LANGUAGE_ROOTGLOBAL, 1)
-		if(LANGUAGE_ROOTLOCAL in B.alternate_languages)
-			O.add_language(LANGUAGE_ROOTLOCAL, 1)
+	if(LANGUAGE_ROOTGLOBAL in languages)
+		O.add_language(LANGUAGE_ROOTGLOBAL, 1)
+	if(LANGUAGE_ROOTLOCAL in languages)
+		O.add_language(LANGUAGE_ROOTLOCAL, 1)
 
 	if(move)
-		var/obj/landmark/spawnpoint/S = SSjob.GetLatejoinSpawnpoint(job_path = /datum/job/station/ai)
+		var/obj/landmark/spawnpoint/S = SSjob.get_latejoin_spawnpoint(job_path = /datum/job/station/ai)
 		O.forceMove(S.GetSpawnLoc())
 		S.OnSpawn(O)
 
@@ -150,13 +148,14 @@
 	else
 		O.key = key
 
-	O.loc = loc
+	O.forceMove(loc)
 	O.job = "Cyborg"
+
+	for(var/i in languages)
+		O.add_language(i)
 
 	if(O.client && O.client.prefs)
 		var/datum/preferences/B = O.client.prefs
-		for(var/language in B.alternate_languages)
-			O.add_language(language)
 		O.resize(B.size_multiplier, animate = TRUE)		// Adds size prefs to borgs
 		O.fuzzy = B.fuzzy								// Ditto
 

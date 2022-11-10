@@ -56,7 +56,7 @@
 	update_appearance()
 
 /obj/item/mmi/digital/posibrain/proc/request_player()
-	for(var/mob/observer/dead/O in player_list)
+	for(var/mob/observer/dead/O in GLOB.player_list)
 		if(!O.MayRespawn())
 			continue
 		if(jobban_isbanned(O, "AI") && jobban_isbanned(O, "Cyborg"))
