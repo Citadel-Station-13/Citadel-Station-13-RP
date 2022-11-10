@@ -43,9 +43,9 @@
 
 		if(S.species_spawn_flags & SPECIES_SPAWN_WHITELISTED)
 			whitelisted_species += S.name
-		if(!(S.species_spawn_flags & SPECIES_SPAWN_RESTRICTED))
+		if(!(S.species_spawn_flags & SPECIES_SPAWN_SPECIAL))
 			playable_species += S.name
-		if((!(S.species_spawn_flags & (SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_RESTRICTED)) && !(S.get_species_id() in blacklisted_icon_ids)) || (S.get_species_id() in whitelisted_icon_ids))
+		if((!(S.species_spawn_flags & (SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_SPECIAL)) && !(S.get_species_id() in blacklisted_icon_ids)) || (S.get_species_id() in whitelisted_icon_ids))
 			custom_species_bases += S.name
 
 	tim_sort(species_lookup, /proc/cmp_auto_compare, TRUE)

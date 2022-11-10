@@ -220,6 +220,7 @@
 #include "code\__DEFINES\sound\channels.dm"
 #include "code\__DEFINES\sound\environment.dm"
 #include "code\__DEFINES\sound\sound.dm"
+#include "code\__DEFINES\species\category.dm"
 #include "code\__DEFINES\species\species.dm"
 #include "code\__DEFINES\species\species_flags.dm"
 #include "code\__DEFINES\tools\balancing.dm"

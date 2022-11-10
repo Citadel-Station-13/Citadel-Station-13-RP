@@ -12,13 +12,21 @@ type SpeciesPickerContext = {
 
 type Species = {
   id: String,
-  whitelisted: BooleanLike,
+  spawn_flags: SpeciesSpawnFlags,
   name: String,
   desc: String,
   appearance_flags: Number,
   flags: Number,
   category: String,
 };
+
+enum SpeciesSpawnFlags {
+  Special = (1<<0),
+  Character = (1<<1),
+  Whitelisted = (1<<2),
+  Secret = (1<<3),
+  Restricted = (1<<4),
+}
 
 // We currently do NOT render species appearance flags/numbers!
 
@@ -42,8 +50,9 @@ export const SpeciesPicker = (props, context) => {
     });
   });
   categories.sort();
-  const isWhitelisted = (id) => (
-    !(species.find((s) => s.id === id)?.whitelisted) || (whitelisted.findIndex((s) => s === id) !== -1) || !!data.admin
+  const isWhitelisted = (s: Species) => (
+    !(s.spawn_flags & SpeciesSpawnFlags.Whitelisted)
+    || (whitelisted.findIndex((str) => str === s.id) !== -1) || !!data.admin
   );
 
   return (
@@ -93,7 +102,7 @@ export const SpeciesPicker = (props, context) => {
                 ) : (
                   <Section fill title={selected.name}>
                     {selected.desc}
-                    {isWhitelisted(selected.id)
+                    {isWhitelisted(selected)
                       ? (
                         <Button color="transparent"
                           bottom="10px"

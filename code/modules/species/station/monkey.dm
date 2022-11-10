@@ -35,7 +35,7 @@
 	brute_mod = 1.5
 	burn_mod = 1.5
 
-	species_spawn_flags = SPECIES_SPAWN_RESTRICTED
+	species_spawn_flags = SPECIES_SPAWN_SPECIAL
 
 	bump_flag  = MONKEY
 	swap_flags = MONKEY|SLIME|SIMPLE_ANIMAL

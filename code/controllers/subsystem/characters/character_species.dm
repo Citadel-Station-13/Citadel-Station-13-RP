@@ -26,7 +26,9 @@
 	character_species_lookup = list()
 	for(var/path in species_paths)
 		var/datum/species/S = species_paths[path]
-		if(!(S.species_spawn_flags & SPECIES_SPAWN_ALLOWED))		// don't bother lmao
+		if(S.species_spawn_flags & (SPECIES_SPAWN_SPECIAL))	// don't bother
+			continue
+		if(!(S.species_spawn_flags & (SPECIES_SPAWN_CHARACTER))) // don't bother
 			continue
 		if(!S.uid)
 			stack_trace("no species ID on [S.type].")
@@ -52,7 +54,7 @@
 		LAZYINITLIST(character_species_cache[S.category])
 		character_species_cache[S.category] += list(list(
 			"id" = S.uid,
-			"whitelisted" = S.whitelisted,
+			"spawn_flags" = S.species_spawn_flags,
 			"name" = S.name,
 			"desc" = S.desc,
 			"appearance_flags" = S.species_appearance_flags,

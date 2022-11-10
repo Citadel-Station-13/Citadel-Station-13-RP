@@ -20,7 +20,7 @@
  * check if we can play a species
  */
 /datum/preferences/proc/check_character_species(datum/character_species/CS)
-	if(CS.whitelisted && !(config.check_alien_whitelist(ckey(CS.name), client_ckey)))
+	if((CS.species_spawn_flags & SPECIES_SECRET) && !(config.check_alien_whitelist(ckey(CS.name), client_ckey)))
 		return FALSE
 	return TRUE
 
