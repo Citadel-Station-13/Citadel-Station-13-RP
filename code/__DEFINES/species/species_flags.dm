@@ -1,3 +1,4 @@
+// todo: species_flags
 //! ## SPECIES_FLAGS
 /// Can step on broken glass with no ill-effects. Either thick skin (diona), cut resistant (slimes) or incorporeal (shadows)
 #define NO_MINOR_CUT (1<<0)
@@ -25,27 +26,67 @@
 #define NO_DEFIB (1<<11)
 ///(Phoron) Contamination doesnt affect them.
 #define CONTAMINATION_IMMUNE (1<<12)
-// unused: 0x8000 - higher than this will overflow
 
+DEFINE_BITFIELD(species_flags, list(
+	BITFIELD(NO_MINOR_CUT),
+	BITFIELD(IS_PLANT),
+	BITFIELD(NO_SCAN),
+	BITFIELD(NO_PAIN),
+	BITFIELD(NO_SLIP),
+	BITFIELD(NO_POISON),
+	BITFIELD(NO_EMBED),
+	BITFIELD(NO_HALLUCINATION),
+	BITFIELD(NO_BLOOD),
+	BITFIELD(UNDEAD),
+	BITFIELD(NO_INFECT),
+	BITFIELD(NO_DEFIB),
+	BITFIELD(CONTAMINATION_IMMUNE),
+))
 
-//! ## SPAWN_FLAGS
+//! species_fluff_flags
+/// deny cultures that don't specifically whitelist us
+#define SPECIES_FLUFF_PICKY_FACTION (1<<0)
+/// deny origins that don't specifically whitelist us
+#define SPECIES_FLUFF_PICKY_ORIGIN (1<<1)
+/// deny citizenships that don't specifically whitelist us
+#define SPECIES_FLUFF_PICKY_CITIZENSHIP (1<<2)
+/// deny religions that don't specifically whitelist us
+#define SPECIES_FLUFF_PICKY_RELIGION (1<<3)
+
+DEFINE_BITFIELD(species_fluff_flags, list(
+	BITFIELD(SPECIES_FLUFF_PICKY_FACTION),
+	BITFIELD(SPECIES_FLUFF_PICKY_ORIGIN),
+	BITFIELD(SPECIES_FLUFF_PICKY_CITIZENSHIP),
+	BITFIELD(SPECIES_FLUFF_PICKY_RELIGION),
+))
+
+//! species_spawn_flags
 /// Must be whitelisted to play.
-#define SPECIES_IS_WHITELISTED (1<<0)
+#define SPECIES_SPAWN_WHITELISTED (1<<0)
 /// Is not a core/normally playable species. (castes, mutantraces)
-#define SPECIES_IS_RESTRICTED (1<<1)
-/// Species is selectable in chargen.
-#define SPECIES_CAN_JOIN (1<<2)
+#define SPECIES_SPAWN_RESTRICTED (1<<1)
+/// Species is selectable in chargen. - **this must be on a species to be roundstart/latejoin playable!!*
+#define SPECIES_SPAWN_ALLOWED (1<<2)
 /// FBP of this species can't be made in-game.
-#define SPECIES_NO_FBP_CONSTRUCTION (1<<3)
+#define SPECIES_SPAWN_NO_FBP_CONSTRUCT (1<<3)
 /// FBP of this species can't be selected at chargen.
-#define SPECIES_NO_FBP_CHARGEN (1<<4)
+#define SPECIES_SPAWN_NO_FBP_SETUP (1<<4)
 /// Species cannot start with robotic organs or have them attached.
-#define SPECIES_NO_ROBOTIC_INTERNAL_ORGANS (1<<5)
+#define SPECIES_SPAWN_NO_ROBOTIC_ORGANS (1<<5)
 /// Can select and customize, but not join as
-#define SPECIES_WHITELIST_SELECTABLE (1<<6)
+#define SPECIES_SPAWN_WHITELIST_SELECTABLE (1<<6)
 
+DEFINE_BITFIELD(species_spawn_flags, list(
+	BITFIELD(SPECIES_SPAWN_WHITELISTED),
+	BITFIELD(SPECIES_SPAWN_RESTRICTED),
+	BITFIELD(SPECIES_SPAWN_ALLOWED),
+	BITFIELD(SPECIES_SPAWN_NO_FBP_CONSTRUCT),
+	BITFIELD(SPECIES_SPAWN_NO_FBP_SETUP),
+	BITFIELD(SPECIES_SPAWN_NO_ROBOTIC_ORGANS),
+	BITFIELD(SPECIES_SPAWN_WHITELIST_SELECTABLE),
+))
 
-//! ## APPEARANCE_FLAGS
+//! species_appearance_flags
 /// Skin tone selectable in chargen. (0-255)
 #define HAS_SKIN_TONE (1<<0)
 /// Skin colour selectable in chargen. (RGB)
@@ -75,7 +116,7 @@ DEFINE_BITFIELD(species_appearance_flags, list(
 ))
 
 
-//! ## SKIN FLAGS
+//! skin flags
 #define SKIN_NORMAL (1<<0)
 #define SKIN_THREAT (1<<1)
 #define SKIN_CLOAK  (1<<2)

@@ -56,7 +56,7 @@
 		if(FS._stair_tag == _stair_tag)
 			target = FS
 	if(!target && mapload)
-		to_world("<span class='danger'>Fake stairs at [x],[y],[z] couldn't get a target!</span>")
+		TO_WORLD("<span class='danger'>Fake stairs at [x],[y],[z] couldn't get a target!</span>")
 
 /obj/structure/fake_stairs/Destroy()
 	if(target)

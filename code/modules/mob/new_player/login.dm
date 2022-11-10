@@ -34,7 +34,7 @@ GLOBAL_DATUM_INIT(lobby_image, /obj/effect/lobby_image, new)
 		mind.current = src
 
 	loc = null
-	player_list |= src
+	GLOB.player_list |= src
 
 	new_player_panel()
 	spawn(40)

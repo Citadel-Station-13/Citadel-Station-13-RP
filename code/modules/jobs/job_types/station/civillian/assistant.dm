@@ -1,4 +1,5 @@
 /datum/job/station/assistant
+	id = JOB_ID_ASSISTANT
 	title = USELESS_JOB
 	flag = ASSISTANT
 	departments = list(DEPARTMENT_CIVILIAN)

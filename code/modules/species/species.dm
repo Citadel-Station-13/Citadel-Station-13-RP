@@ -1,8 +1,10 @@
 /**
  * Species Datums
  *
- * They are globally cached by typepath. This is out of necessity, because unlike things like movespeed modifiers,
- * species are always assumed to be variable.
+ * They are **not** singletons, however, they are globally cached as a static set
+ * for use in preferences to determine default properties/whatever
+ *
+ * ? Someday we'll rework this. Someday. I believe.
  *
  * Mob set_species supports either a datum or a typepath. Mobs, upon receiving a typepath, will make their own copy for modification.
  *
@@ -16,19 +18,62 @@
  * - A global cache of species by typepath will still be maintained for "static" usages of these datums, like for preferences rendering.
  */
 /datum/species
-//! ## Intrinsics
+	//! Intrinsics
 	/// abstract type
 	var/abstract_type = /datum/species
-	/// uid
+	/// uid - **must be unique**
 	var/uid
 	/// if we're a subspecies, real id
 	var/id
 	// TODO: ref species by id in code, so we can rename as needed
 
+	//! Appearance
+	/// Appearance/display related features.
+	var/species_appearance_flags = NONE
+
+	//! Spawning
+	/// Flags that specify who can spawn as this species
+	var/species_spawn_flags = NONE
+
+	//! Culture/Background - Typepaths
+	/// default origin
+	var/default_origin = /datum/lore/character_background/origin/custom
+	/// default citizenship
+	var/default_citizenship = /datum/lore/character_background/citizenship/custom
+	/// default faction
+	var/default_faction = /datum/lore/character_background/faction/nanotrasen
+	/// default religion
+	var/default_religion = /datum/lore/character_background/religion/custom
+	/// fluff flags
+	var/species_fluff_flags = NONE
+
+	//! Language - IDs
+	/// default language used when speaking
+	var/default_language = LANGUAGE_ID_COMMON
+	/// do we have galactic common? this is so common we just have this as a var
+	var/galactic_language = TRUE
+	/// intrinsic species languages - list() or singular language or null
+	// todo: linter check for language default being in here
+	var/list/intrinsic_languages = LANGUAGE_ID_COMMON
+	/// language our name is in - used for namegen; null to force stock ss13 namegen instead
+	// todo: language for namegen is questionaable
+	var/name_language = LANGUAGE_ID_COMMON
+	/// languages we are always allowed to learn (overridden by intrinsic languages) even if restricted - list() or singular language
+	var/list/whitelist_languages
+	/// additional languages we can learn (ONTOP OF INTRINSIC AND CULTURE)
+	var/max_additional_languages = 3
+
+//! ## Languages (old)
+	/// The languages the species can't speak without an assisted organ.
+	/// This list is a guess at things that no one other than the parent species should be able to speak
+	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
+
 //! ## Descriptors and strings.
 	/// Species real name.
 	// TODO: STOP USING THIS. This is being phased out for species IDs.
 	var/name
+	/// Category in character setup
+	var/category = "Miscellaneous"
 	/// what you see on tooltip/examine
 	var/examine_name
 	/// what you see on health analyzers/IC
@@ -135,27 +180,11 @@
 	/// The maximum age a species is allowed to be played as. This is generally determined by lifespan.
 	var/max_age = 70
 
-//! ## Language/culture vars.
-	/// Default language is used when 'say' is used without modifiers.
-	var/default_language = LANGUAGE_GALCOM
-	/// Default racial language, if any.
-	var/language = LANGUAGE_GALCOM
-	/// Used on the Character Setup screen
-	var/list/species_language = list(LANGUAGE_GALCOM)
-	/// The names of secondary languages that are available to this species.
-	var/list/secondary_langs = list()
+//! ## Speech Sounds
 	/// A list of sounds to potentially play when speaking.
 	var/list/speech_sounds = list()
 	/// The likelihood of a speech sound playing.
 	var/list/speech_chance = list()
-	/// How many secondary languages are available to select at character creation.
-	var/num_alternate_languages = 0
-	/// The language to use when determining names for this species, or null to use the first name/last name generator.
-	var/name_language = LANGUAGE_GALCOM
-
-	/// The languages the species can't speak without an assisted organ.
-	/// This list is a guess at things that no one other than the parent species should be able to speak
-	var/list/assisted_langs = list(LANGUAGE_EAL, LANGUAGE_SKRELLIAN, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
 //! ## Soundy emotey things.
 	var/scream_verb = "screams"
@@ -312,12 +341,7 @@
 
 //! ## Flags
 	/// Various specific features.
-	var/flags = NONE
-	/// Appearance/display related features.
-	var/species_appearance_flags = NONE
-	/// Flags that specify who can spawn as this species
-	var/spawn_flags = NONE
-
+	var/species_flags = NONE
 	/// What marks are left when walking
 	var/obj/effect/debris/cleanable/blood/tracks/move_trail = /obj/effect/debris/cleanable/blood/tracks/footprints
 	var/list/skin_overlays = list()
@@ -447,9 +471,6 @@
 	var/selects_bodytype = FALSE // Allows the species to choose from body types intead of being forced to be just one.
 
 /datum/species/New()
-	if(isnull(uid))
-		uid = ckey(name)
-
 	if(hud_type)
 		hud = new hud_type()
 	else
@@ -485,12 +506,9 @@
  * handle_post_spawn() and create_organs() should be called manually if you are applying a species to a human being instantiated!
  */
 /datum/species/proc/on_apply(mob/living/carbon/human/H)
-	ASSERT(istype(H))
-
-	if(language)
-		H.add_language(language)
-	if(default_language)
-		H.add_language(default_language)
+	// todo: language sources and holder
+	for(var/id in intrinsic_languages)
+		H.add_language(id)
 
 	if(holder_type)
 		H.holder_type = holder_type
@@ -511,12 +529,9 @@
  * called when we are removed from a mob
  */
 /datum/species/proc/on_remove(mob/living/carbon/human/H)
-	if(language)
-		H.remove_language(language)
-	if(default_language)
-		H.remove_language(default_language)
-	for(var/datum/language/L in assisted_langs)
-		H.remove_language(L)
+	// todo: language sources and holder
+	for(var/id in intrinsic_languages)
+		H.remove_language(id)
 	remove_inherent_spells(H)
 	remove_inherent_verbs(H)
 	H.holder_type = null
@@ -858,9 +873,9 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	ASSERT(to_copy)
 
 	if(ispath(to_copy))
-		to_copy = get_static_species_meta(to_copy)
+		to_copy = SScharacters.resolve_species_path(to_copy)
 	if(istext(to_copy))
-		to_copy = name_static_species_meta(to_copy)
+		to_copy = SScharacters.resolve_species_name(to_copy)
 
 	//Initials so it works with a simple path passed, or an instance
 	base_species = to_copy.name

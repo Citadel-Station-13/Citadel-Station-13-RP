@@ -69,7 +69,7 @@
 	. = list()
 	if(!department)
 		return
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		// Do not count AI's shells
 		if(isrobot(M))
 			var/mob/living/silicon/robot/R = M
@@ -84,12 +84,12 @@
 /datum/metric/proc/get_people_with_job(job_type, cutoff = 75)
 	. = list()
 	// First, get the name.
-	var/datum/job/J = SSjob.get_job_type(job_type)
+	var/datum/job/J = SSjob.job_by_type(job_type)
 	if(!istype(J))
 		return
 
 	// Now find people with the job name.
-	for(var/M in player_list)
+	for(var/M in GLOB.player_list)
 		var/datum/job/their_job = guess_job(M)
 		if(!istype(their_job)) // No job was guessed.
 			continue
@@ -109,7 +109,7 @@
 	. = list()
 
 	var/list/people_with_jobs = get_people_with_job(job_type, cutoff)
-	var/datum/job/J = SSjob.get_job_type(job_type)
+	var/datum/job/J = SSjob.job_by_type(job_type)
 	var/datum/alt_title/A = new alt_title_type()
 
 	for(var/M in people_with_jobs)

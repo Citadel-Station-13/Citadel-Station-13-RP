@@ -1,7 +1,8 @@
 /datum/species/crew_shadekin
+	uid = SPECIES_ID_SHADEKIN_BLACK
 	name = SPECIES_SHADEKIN_CREW
 	name_plural = SPECIES_SHADEKIN_CREW
-	uid = SPECIES_ID_SHADEKIN_BLACK_EYED
+	uid = SPECIES_ID_SHADEKIN_BLACK
 	id = SPECIES_ID_SHADEKIN
 
 	icobase      = 'icons/mob/species/shadekin/body.dmi'
@@ -22,11 +23,11 @@
 
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Race:_Shadekin"
 
-	language = LANGUAGE_SHADEKIN
-	name_language = LANGUAGE_SHADEKIN
-	species_language = LANGUAGE_SHADEKIN
-	secondary_langs  = list(LANGUAGE_SHADEKIN)
-	num_alternate_languages = 3
+	name_language = LANGUAGE_ID_SHADEKIN_HIVEMIND
+	intrinsic_languages = list(
+		LANGUAGE_ID_SHADEKIN_HIVEMIND
+	)
+	max_additional_languages = 3
 
 	rarity_value = 5 // INTERDIMENSIONAL FLUFFERS
 
@@ -58,8 +59,8 @@
 	heat_level_3 = 1150
 
 	// Shadekin biology is still unknown to the universe (unless some bullshit lore says otherwise)
-	flags =  NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE
-	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
+	species_flags =  NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE
+	species_spawn_flags = SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_WHITELIST_SELECTABLE
 
 	reagent_tag = IS_SHADEKIN // for shadekin-unique chem interactions
 
