@@ -41,7 +41,7 @@
 	var/id
 	/// name
 	var/name
-	/// entry datum types - transformed into datums at runtime
+	/// entry datum types - transformed into datums at runtime; insert a null to create a divider
 	var/list/datum/skin_menu_entry/entries
 	/// menu we belong to
 	var/datum/skin_menu/menu
@@ -123,6 +123,13 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 
 /datum/skin_menu_entry/proc/cache_constructor()
 	cached_constructor = creation_parameters()
+
+/**
+ * the empty entry used as a spacer
+ */
+/datum/skin_menu_entry/spacer
+	id = null
+	name = null
 
 //! client stuff needed to make this work
 /client/verb/menu_button_triggered(id as text)

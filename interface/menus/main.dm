@@ -51,6 +51,8 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 //! misc zoom
 /datum/skin_menu_entry/auto_fit
 
+/datum/skin_menu_entry/fit_viewport
+
 //! scaling
 /datum/skin_menu_entry/scaling
 	group = SKIN_BUTTON_GROUP_MAP_SCALING
