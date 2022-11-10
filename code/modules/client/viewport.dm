@@ -101,7 +101,7 @@ GLOBAL_LIST_INIT(viewport_menu_ids, list(
 	assumed_viewport_zoom = text2num(got["zoom"]) || 0
 	assumed_viewport_box = (got["letterbox"] == "true")
 	var/list/split = splittext(got["size"], "x")
-	if(split && split.len == 2)
+	if(length(split) == 2)
 		assumed_viewport_spx = text2num(split[1]) || (WORLD_ICON_SIZE * GLOB.game_view_x)
 		assumed_viewport_spy = text2num(split[2]) || (WORLD_ICON_SIZE * GLOB.game_view_y)
 	else
