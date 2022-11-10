@@ -1,4 +1,3 @@
-#warn turn into world procs
 /proc/directory_walk(list/roots, maxdepth = 10)
 	ASSERT(roots)
 	if(!islist(roots))
