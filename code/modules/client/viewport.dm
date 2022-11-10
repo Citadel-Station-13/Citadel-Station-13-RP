@@ -207,6 +207,11 @@ GLOBAL_VAR(lock_client_view_y)
 	var/assumed_splitter_width = 4
 	if(assumed_viewport_zoom == 0)
 		// they're stretching to fit; this makes it annoying
+		var/aspect_ratio = current_viewport_width / current_viewport_height
+		// we have to fit everything
+		// viewport_spy should never change since that's not what the player can drag,
+		// unless they resize the outer window itself.
+		desired_pixel_width = assumed_viewport_spy * aspect_ratio
 	else
 		// they're not using stretch to fit; this makes it very easy
 		desired_pixel_width = WORLD_ICON_SIZE * assumed_viewport_zoom * current_viewport_width
