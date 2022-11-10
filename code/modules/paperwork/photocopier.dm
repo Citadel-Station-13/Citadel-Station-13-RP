@@ -119,7 +119,7 @@
 			copyitem = null
 		else if(has_buckled_mobs())
 			to_chat(buckled_mobs[1], "<span class='notice'>You feel a slight pressure on your ass.</span>") // It can't eject your asscheeks, but it'll try.
-			return PREFERENCES_REFRESH
+			return TOPIC_REFRESH
 	else if(href_list["min"])
 		if(copies > 1)
 			copies--
@@ -184,7 +184,7 @@
 
 	return
 
-/obj/machinery/photocopier/legacy_ex_act(severity)
+/obj/machinery/photocopier/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)

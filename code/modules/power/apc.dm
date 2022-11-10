@@ -1391,30 +1391,30 @@ GLOBAL_LIST_EMPTY(apcs)
 	update_icon()
 	..()
 
-/obj/machinery/power/apc/legacy_ex_act(severity)
+/obj/machinery/power/apc/ex_act(severity)
 
 	switch(severity)
 		if(1)
 			//set_broken() //now qdel() do what we need
 			if (cell)
-				LEGACY_EX_ACT(cell, 1, null) // more lags woohoo
+				cell.ex_act(1) // more lags woohoo
 			qdel(src)
 			return
 		if(2)
 			if (prob(75))
 				set_broken()
 				if (cell && prob(50))
-					LEGACY_EX_ACT(cell, 2, null)
+					cell.ex_act(2)
 		if(3)
 			if (prob(50))
 				set_broken()
 				if (cell && prob(50))
-					LEGACY_EX_ACT(cell, 3, null)
+					cell.ex_act(3)
 		if(4)
 			if (prob(25))
 				set_broken()
 				if (cell && prob(50))
-					LEGACY_EX_ACT(cell, 3, null)
+					cell.ex_act(3)
 	return
 
 /obj/machinery/power/apc/disconnect_terminal()
@@ -1519,7 +1519,7 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	if(prob(10)) // Computers get broken.
 		for(var/obj/machinery/computer/comp in area)
-			LEGACY_EX_ACT(comp, 3, null)
+			comp.ex_act(3)
 
 	if(prob(5)) // APC completely ruined.
 		set_broken()

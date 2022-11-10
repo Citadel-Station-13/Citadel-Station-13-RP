@@ -80,14 +80,14 @@
 		var/obj/item/uav/U = locate(href_list["switch_uav"]) //This is a \ref to the UAV itself
 		if(!istype(U))
 			to_chat(usr,"<span class='warning'>Something is blocking the connection to that UAV. In-person investigation is required.</span>")
-			return PREFERENCES_NOACTION
+			return TOPIC_NOACTION
 
 		if(!get_signal_to(U))
 			to_chat(usr,"<span class='warning'>The screen freezes for a moment, before returning to the UAV selection menu. It's not able to connect to that UAV.</span>")
-			return PREFERENCES_NOACTION
+			return TOPIC_NOACTION
 
 		set_current(U)
-		return PREFERENCES_REFRESH
+		return TOPIC_REFRESH
 
 	if(href_list["del_uav"])
 		var/refstring = href_list["del_uav"] //This is a \ref to the UAV itself
@@ -101,17 +101,17 @@
 
 	else if(href_list["view_uav"])
 		if(!current_uav)
-			return PREFERENCES_NOACTION
+			return TOPIC_NOACTION
 
 		if(current_uav.check_eye(user) < 0)
 			to_chat(usr,SPAN_WARNING("The screen freezes for a moment, before returning to the UAV selection menu. It's not able to connect to that UAV."))
 		else
 			viewing_uav(user) ? unlook(user) : look(user)
-		return PREFERENCES_NOACTION
+		return TOPIC_NOACTION
 
 	else if(href_list["power_uav"])
 		if(!current_uav)
-			return PREFERENCES_NOACTION
+			return TOPIC_NOACTION
 		else if(current_uav.toggle_power())
 			//Clean up viewers faster
 			if(LAZYLEN(viewers))
@@ -119,7 +119,7 @@
 					var/M = W.resolve()
 					if(M)
 						unlook(M)
-			return PREFERENCES_REFRESH
+			return TOPIC_REFRESH
 
 /datum/nano_module/uav/proc/DefaultTopicState()
 	return global.default_state

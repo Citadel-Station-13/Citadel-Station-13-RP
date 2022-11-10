@@ -1,5 +1,4 @@
 /datum/job/station/doctor
-	id = JOB_ID_MEDICAL_DOCTOR
 	title = "Medical Doctor"
 	flag = DOCTOR
 	departments = list(DEPARTMENT_MEDICAL)

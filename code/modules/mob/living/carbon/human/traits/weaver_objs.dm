@@ -11,7 +11,7 @@ var/global/list/weavable_items = list()
 	anchored = TRUE
 	density = FALSE
 
-/obj/effect/weaversilk/legacy_ex_act(severity)
+/obj/effect/weaversilk/ex_act(severity)
 	qdel(src)
 	return
 

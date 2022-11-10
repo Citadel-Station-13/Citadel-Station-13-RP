@@ -32,7 +32,7 @@
 /turf/simulated/floor/outdoors/snow/chill()
 	return // Todo: Add heavy snow.
 
-/turf/simulated/floor/outdoors/legacy_ex_act(severity)
+/turf/simulated/floor/outdoors/ex_act(severity)
 	switch(severity)
 		// Outdoor turfs are less explosion resistant
 		if(1)

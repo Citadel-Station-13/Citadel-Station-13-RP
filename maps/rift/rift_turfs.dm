@@ -44,7 +44,6 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/shuttle/floor/voidcraft)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor)
 LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/mineral/icerock)
-LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/mineral)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/ignore_cavegen)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/floor/ignore_cavegen)
 LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/floor/icerock)
@@ -92,9 +91,6 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 	outdoors = FALSE /* So that we don't get weather effects for the ice used indoors. Convuluted, I know, but this
 	means I don't need another, almost identical turf to be created. */
 
-/turf/simulated/open/lythios43c/indoors
-	outdoors = FALSE
-
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors
 	outdoors = FALSE
 
@@ -132,9 +128,6 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors
 	outdoors = FALSE
 
-/turf/simulated/floor/tiled/techfloor/lythios43c/indoors
-	outdoors = FALSE
-
 /turf/simulated/mineral/icerock
 	initial_gas_mix = GAS_STRING_STP
 
@@ -155,6 +148,7 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/mineral/icerock)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name
+	outdoors = FALSE
 	if(rare_ore)
 		mineral_name = pickweight(list(
 			"marble" = 3,
@@ -188,6 +182,7 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/mineral/icerock)
 	if(mineral || ignore_mapgen)
 		return
 	var/mineral_name
+	outdoors = FALSE
 	if(rare_ore)
 		mineral_name = pickweight(list(
 			"marble" = 7,

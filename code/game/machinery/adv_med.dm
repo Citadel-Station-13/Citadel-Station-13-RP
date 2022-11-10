@@ -128,12 +128,12 @@
 	update_icon() //Health display for consoles with light and such.
 	return
 
-/obj/machinery/bodyscanner/legacy_ex_act(severity)
+/obj/machinery/bodyscanner/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/A as mob|obj in src)
 				A.loc = src.loc
-				legacy_ex_act(severity)
+				ex_act(severity)
 				//Foreach goto(35)
 			//SN src = null
 			qdel(src)
@@ -142,7 +142,7 @@
 			if (prob(50))
 				for(var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
-					legacy_ex_act(severity)
+					ex_act(severity)
 					//Foreach goto(108)
 				//SN src = null
 				qdel(src)
@@ -151,7 +151,7 @@
 			if (prob(25))
 				for(var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
-					legacy_ex_act(severity)
+					ex_act(severity)
 					//Foreach goto(181)
 				//SN src = null
 				qdel(src)
@@ -210,7 +210,7 @@
 /obj/machinery/body_scanconsole/power_change()
 	update_icon() //Health display for consoles with light and such.
 
-/obj/machinery/body_scanconsole/legacy_ex_act(severity)
+/obj/machinery/body_scanconsole/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			//SN src = null

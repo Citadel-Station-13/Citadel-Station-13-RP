@@ -192,7 +192,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	active_power_usage = 100
 
 //Destruction procs.
-/obj/machinery/hologram/legacy_ex_act(severity)
+/obj/machinery/hologram/ex_act(severity)
 	switch(severity)
 		if(1)
 			qdel(src)

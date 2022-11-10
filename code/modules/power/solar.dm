@@ -148,7 +148,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 	return
 
 
-/obj/machinery/power/solar/legacy_ex_act(severity)
+/obj/machinery/power/solar/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			if(prob(15))
@@ -545,7 +545,7 @@ GLOBAL_LIST_EMPTY(solars_list)
 	update_icon()
 
 
-/obj/machinery/power/solar_control/legacy_ex_act(severity)
+/obj/machinery/power/solar_control/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			//SN src = null

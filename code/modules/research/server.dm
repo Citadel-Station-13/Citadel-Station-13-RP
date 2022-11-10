@@ -74,7 +74,7 @@
 	griefProtection()
 	..()
 
-/obj/machinery/r_n_d/server/legacy_ex_act(severity)
+/obj/machinery/r_n_d/server/ex_act(severity)
 	griefProtection()
 	..()
 

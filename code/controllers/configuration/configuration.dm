@@ -53,7 +53,6 @@
 					LoadEntries(J)
 				break
 	loadmaplist(CONFIG_MAPS_FILE)
-	LoadWhitelists()
 	LoadMOTD()
 
 	loaded = TRUE

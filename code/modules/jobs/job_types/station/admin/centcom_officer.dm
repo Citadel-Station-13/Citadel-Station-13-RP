@@ -1,5 +1,4 @@
 /datum/job/station/centcom_officer //For Business
-	id = JOB_ID_CENTCOM_OFFICER
 	title = "CentCom Officer"
 	departments = list("Central Command")
 	department_accounts = list(DEPARTMENT_COMMAND, DEPARTMENT_ENGINEERING, DEPARTMENT_MEDICAL, DEPARTMENT_RESEARCH, DEPARTMENT_SECURITY, DEPARTMENT_CARGO, DEPARTMENT_PLANET, DEPARTMENT_CIVILIAN)
@@ -13,7 +12,7 @@
 	minimal_player_age = 14
 	economic_modifier = 20
 	whitelist_only = 1
-	join_types = JOB_LATEJOIN
+	latejoin_only = 1
 	outfit_type = /datum/outfit/job/station/centcom_officer
 	desc = "A Central Command Officer is there on official business. Most of time. Whatever it is, they're a VIP."
 

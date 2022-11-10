@@ -1,5 +1,4 @@
 /datum/job/station/atmos
-	id = JOB_ID_ATMOSPHERIC_TECHNICIAN
 	title = "Atmospheric Technician"
 	flag = ATMOSTECH
 	departments = list(DEPARTMENT_ENGINEERING)

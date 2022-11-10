@@ -33,7 +33,7 @@
 	default_apply_parts()
 	create_reagents(1000)
 
-/obj/machinery/chem_master/legacy_ex_act(severity)
+/obj/machinery/chem_master/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)

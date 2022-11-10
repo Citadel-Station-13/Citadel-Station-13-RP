@@ -8,7 +8,6 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	name = SPECIES_MOTH
 	uid = SPECIES_ID_MOTH
 	id = SPECIES_ID_MOTH
-	category = "Dnin-Nepid (Moth)"
 	abstract_type = /datum/species/moth
 	name_plural   = "Dnin-Nepids"
 	examine_name  = "Dnin-Nepid"
@@ -30,10 +29,12 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 	burn_mod  = 1
 	metabolic_rate = 0.5
 	gluttonous = 0
-	max_additional_languages = 3
+	num_alternate_languages = 3
 	rarity_value = 2
-	intrinsic_languages = LANGUAGE_ID_LUINIMMA
-	name_language = LANGUAGE_ID_LUINIMMA
+	species_language = list(
+		LANGUAGE_LUINIMMA,
+	)
+	name_language = LANGUAGE_LUINIMMA
 	// sensitive
 	health_hud_intensity = 1.5
 
@@ -110,7 +111,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/claw
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	spawn_flags = SPECIES_CAN_JOIN
 	primitive_form = null
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
@@ -157,7 +158,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 /datum/species/moth/dark
 	name = SPECIES_MOTH_DARK
 	uid = SPECIES_ID_MOTH_DARK
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	spawn_flags = SPECIES_CAN_JOIN
 
 	// darksight, but weak to light
 	darksight = 7
@@ -167,7 +168,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 /datum/species/moth/light
 	name = SPECIES_MOTH_LIGHT
 	uid = SPECIES_ID_MOTH_LIGHT
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	spawn_flags = SPECIES_CAN_JOIN
 
 	// hardy, but no darksight
 	darksight = 2

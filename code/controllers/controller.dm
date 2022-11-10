@@ -2,8 +2,6 @@
 	var/name
 	// The object used for the clickable stat() button.
 	var/obj/effect/statclick/statclick
-	/// debug/verbose logging?
-	var/verbose_logging = FALSE
 
 /datum/controller/proc/Initialize()
 

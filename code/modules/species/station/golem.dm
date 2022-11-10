@@ -1,17 +1,16 @@
 /datum/species/golem
 	name = SPECIES_GOLEM
 	name_plural = "golems"
-	uid = SPECIES_ID_GOLEM
 
 	icobase      = 'icons/mob/species/golem/body.dmi'
 	deform       = 'icons/mob/species/golem/body.dmi'
 	preview_icon = 'icons/mob/species/golem/preview.dmi'
 	husk_icon    = 'icons/mob/species/golem/husk.dmi'
 
-	intrinsic_languages = LANGUAGE_ID_HUMAN // todo?
+	language = "Sol Common" //todo?
 
-	species_spawn_flags = SPECIES_SPAWN_RESTRICTED
-	species_flags = NO_PAIN | NO_SCAN | NO_POISON | NO_MINOR_CUT
+	spawn_flags = SPECIES_IS_RESTRICTED
+	flags = NO_PAIN | NO_SCAN | NO_POISON | NO_MINOR_CUT
 
 	siemens_coefficient = 0
 

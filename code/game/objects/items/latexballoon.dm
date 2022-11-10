@@ -30,7 +30,7 @@
 	item_state = "lgloves"
 	loc.assume_air(air_contents)
 
-/obj/item/latexballon/legacy_ex_act(severity)
+/obj/item/latexballon/ex_act(severity)
 	burst()
 	switch(severity)
 		if (1)

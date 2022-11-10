@@ -289,7 +289,7 @@
 		if(secondary_effect && secondary_effect.trigger == TRIGGER_ENERGY && prob(25))
 			secondary_effect.ToggleActivate(0)
 
-/obj/machinery/artifact/legacy_ex_act(severity)
+/obj/machinery/artifact/ex_act(severity)
 	switch(severity)
 		if(1.0) qdel(src)
 		if(2.0)

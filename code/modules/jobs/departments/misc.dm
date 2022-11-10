@@ -4,5 +4,5 @@
 	name = "Miscellaneous"
 	short_name = "Misc"
 	color = "#666666"
-	sorting_order = 18
+	sorting_order = 0
 	assignable = FALSE

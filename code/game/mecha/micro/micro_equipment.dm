@@ -133,7 +133,7 @@
 					occupant_message("<span class='warning'>[target] is too durable to drill through.</span>")
 				else
 					log_message("Drilled through [target]")
-					LEGACY_EX_ACT(target, 2, null)
+					target.ex_act(2)
 			else if(istype(target, /turf/simulated/mineral))
 				for(var/turf/simulated/mineral/M in range(chassis,1))
 					if(get_dir(chassis,M)&chassis.dir)
@@ -150,7 +150,7 @@
 								ore.forceMove(ore_box)
 			else if(target.loc == C)
 				log_message("Drilled through [target]")
-				LEGACY_EX_ACT(target, 2, null)
+				target.ex_act(2)
 	return 1
 
 

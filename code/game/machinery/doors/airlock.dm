@@ -1069,7 +1069,7 @@ About the new airlock wires panel:
 	return src.p_open && (operating < 0 || (!operating && welded && !src.arePowerSystemsOn() && density && (!src.locked || (machine_stat & BROKEN))))
 
 /obj/machinery/door/airlock/attackby(obj/item/C, mob/user as mob)
-	//TO_WORLD("airlock attackby src [src] obj [C] mob [user]")
+	//to_world("airlock attackby src [src] obj [C] mob [user]")
 	if(!istype(usr, /mob/living/silicon))
 		if(src.isElectrified())
 			if(src.shock(user, 75))
@@ -1244,7 +1244,7 @@ About the new airlock wires panel:
 	for(var/turf/turf in locs)
 		var/obj/structure/window/killthis = (locate(/obj/structure/window) in turf)
 		if(killthis)
-			LEGACY_EX_ACT(killthis, 2, null)//Smashin windows
+			killthis.ex_act(2)//Smashin windows
 	return ..()
 
 /obj/machinery/door/airlock/can_open(var/forced=0)

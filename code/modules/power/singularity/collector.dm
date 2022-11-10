@@ -101,7 +101,7 @@ var/global/list/rad_collectors = list()
 	. = ..()
 	. += "The meter indicates that \the [src] is collecting [last_power] W."
 
-/obj/machinery/power/rad_collector/legacy_ex_act(severity)
+/obj/machinery/power/rad_collector/ex_act(severity)
 	switch(severity)
 		if(2, 3)
 			eject()

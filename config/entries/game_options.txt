@@ -12,5 +12,5 @@ ENGINE_SUBMAP EngineSubmap_Tesla 20
 ENGINE_SUBMAP EngineSubmap_Singulo 20
 
 ## Max distance for clients to view with widescren mode enabled.
-MAX_CLIENT_VIEW_X 21
-MAX_CLIENT_VIEW_Y 15
+MAX_CLIENT_VIEW_X 19
+MAX_CLIENT_VIEW_Y 16

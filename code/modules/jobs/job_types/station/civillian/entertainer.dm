@@ -1,5 +1,4 @@
 /datum/job/station/entertainer
-	id = JOB_ID_ENTERTAINER
 	title = "Entertainer"
 	flag = ENTERTAINER
 	departments = list(DEPARTMENT_CIVILIAN)

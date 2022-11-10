@@ -87,7 +87,7 @@
 	return 0
 
 
-/obj/machinery/am_shielding/legacy_ex_act(severity)
+/obj/machinery/am_shielding/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			stability -= 80

@@ -77,7 +77,7 @@
 	healthcheck()
 	return
 
-/obj/effect/alien/resin/legacy_ex_act(severity)
+/obj/effect/alien/resin/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			health-=50
@@ -307,7 +307,7 @@ Alien plants should do something if theres a lot of poison
 				W.process()
 
 
-/obj/effect/alien/weeds/legacy_ex_act(severity)
+/obj/effect/alien/weeds/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)

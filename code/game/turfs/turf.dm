@@ -151,7 +151,7 @@
 	// requires_activation = FALSE
 	..()
 
-/turf/legacy_ex_act(severity)
+/turf/ex_act(severity)
 	return 0
 
 /turf/proc/is_space()

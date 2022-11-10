@@ -47,8 +47,7 @@
 		//new /datum/data/mining_equipment("Mining Conscription Kit",	/obj/item/storage/backpack/duffelbag/mining_conscript,				1000),
 		new /datum/data/mining_equipment("Diamond Pickaxe",				/obj/item/pickaxe/diamond,									2000),
 		new /datum/data/mining_equipment("Advanced Ore Scanner",				/obj/item/mining_scanner/advanced,										2000),
-		new /datum/data/mining_equipment("100 Thalers",					/obj/item/spacecash/c100,									1000),
-		new /datum/data/mining_equipment("1000 Thalers",					/obj/item/spacecash/c1000,									10000),
+		new /datum/data/mining_equipment("Space Cash",					/obj/item/spacecash/c100,									1000),
 		new /datum/data/mining_equipment("Hardsuit - Control Module",	/obj/item/rig/industrial,									2000),
 		new /datum/data/mining_equipment("Hardsuit - Plasma Cutter",		/obj/item/rig_module/device/plasmacutter,						800),
 		new /datum/data/mining_equipment("Hardsuit - Drill",				/obj/item/rig_module/device/drill,								5000),
@@ -246,7 +245,7 @@
 		name = "Generic Entry"
 	prize_list += new /datum/data/mining_equipment(name, path, cost)
 
-/obj/machinery/mineral/equipment_vendor/legacy_ex_act(severity, target)
+/obj/machinery/mineral/equipment_vendor/ex_act(severity, target)
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, src)
 	s.start()

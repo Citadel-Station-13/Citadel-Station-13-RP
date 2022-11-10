@@ -1,5 +1,4 @@
 /datum/species/human/gravworlder
-	uid = SPECIES_ID_HUMAN_GRAV
 	name = SPECIES_HUMAN_GRAV
 	name_plural = "grav-adapted Humans"
 
@@ -27,8 +26,8 @@
 	total_health = 130
 	hunger_factor = 0.075//50% more hungry
 
-	species_flags = NO_MINOR_CUT
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	flags = NO_MINOR_CUT
+	spawn_flags = SPECIES_CAN_JOIN
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult = 1
@@ -50,7 +49,6 @@
 	)
 
 /datum/species/human/spacer
-	uid = SPECIES_ID_HUMAN_SPACE
 	name = SPECIES_HUMAN_SPACER
 	name_plural = "space-adapted Humans"
 
@@ -75,7 +73,7 @@
 	slowdown = -0.1//Minor speedboost
 	item_slowdown_mod = 1.05 //Minor slowdown
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	spawn_flags = SPECIES_CAN_JOIN
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult = 1
@@ -97,7 +95,6 @@
 	)
 
 /datum/species/human/vatgrown
-	uid = SPECIES_ID_HUMAN_VAT
 	name = SPECIES_HUMAN_VATBORN
 	name_plural = SPECIES_HUMAN_VATBORN
 
@@ -116,7 +113,7 @@
 	total_health = 115
 	hunger_factor = 0.35//less hungry
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	spawn_flags = SPECIES_CAN_JOIN
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	color_mult = 1

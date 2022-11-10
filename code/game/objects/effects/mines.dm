@@ -31,7 +31,7 @@
 	if(prob(50))
 		explode()
 
-/obj/effect/mine/legacy_ex_act(severity)
+/obj/effect/mine/ex_act(severity)
 	if(severity <= 2 || prob(50))
 		explode()
 	..()

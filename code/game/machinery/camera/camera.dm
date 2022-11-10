@@ -101,7 +101,7 @@
 /obj/machinery/camera/bullet_act(var/obj/item/projectile/P)
 	take_damage(P.get_structure_damage())
 
-/obj/machinery/camera/legacy_ex_act(severity)
+/obj/machinery/camera/ex_act(severity)
 	if(src.invuln)
 		return
 

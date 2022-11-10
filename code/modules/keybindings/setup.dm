@@ -55,7 +55,6 @@
 	keys_held.Cut()
 
 	erase_all_macros()
-	update_movement_keys()
 
 	apply_macro_set(SKIN_MACROSET_HOTKEYS, SSinput.macroset_hotkey)
 	apply_macro_set(SKIN_MACROSET_CLASSIC_HOTKEYS, SSinput.macroset_classic_hotkey)

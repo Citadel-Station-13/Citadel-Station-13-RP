@@ -124,7 +124,7 @@
 				new ore(get_turf(src))
 	qdel(src)
 
-/obj/structure/statue/legacy_ex_act(severity = 1)
+/obj/structure/statue/ex_act(severity = 1)
 	switch(severity)
 		if(1)
 			Dismantle(1)

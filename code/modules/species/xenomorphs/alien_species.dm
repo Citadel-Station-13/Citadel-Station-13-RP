@@ -1,15 +1,10 @@
 //Stand-in until this is made more lore-friendly.
 /datum/species/xenos
-	id = SPECIES_ID_XENOMORPH
-	uid = SPECIES_ID_XENOMORPH
 	name = SPECIES_XENO
 	name_plural = "Xenomorphs"
 
-	default_language = LANGUAGE_ID_XENOMORPH
-	intrinsic_languages = list(
-		LANGUAGE_ID_XENOMORPH,
-		LANGUAGE_ID_XENOMORPH_HIVEMIND
-	)
+	default_language = LANGUAGE_XENO
+	language = "Hivemind"
 	assisted_langs = list()
 	unarmed_types = list(/datum/unarmed_attack/claws/strong/xeno, /datum/unarmed_attack/bite/strong/xeno)
 	hud_type = /datum/hud_data/alien
@@ -29,8 +24,8 @@
 	cold_level_2 = -1
 	cold_level_3 = -1
 
-	species_flags =  NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_INFECT
-	species_spawn_flags = SPECIES_SPAWN_RESTRICTED
+	flags =  NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_INFECT
+	spawn_flags = SPECIES_IS_RESTRICTED
 
 	reagent_tag = IS_XENOS
 
@@ -172,7 +167,6 @@
 */
 
 /datum/species/xenos/drone
-	uid = SPECIES_ID_XENOMORPH_DRONE
 	name = SPECIES_XENO_DRONE
 	caste_name = "drone"
 	weeds_plasma_rate = 15
@@ -213,7 +207,6 @@
 	..()
 
 /datum/species/xenos/hunter
-	uid = SPECIES_ID_XENOMORPH_HUNTER
 	name = SPECIES_XENO_HUNTER
 	weeds_plasma_rate = 5
 	caste_name = "hunter"
@@ -244,7 +237,6 @@
 		)
 
 /datum/species/xenos/sentinel
-	uid = SPECIES_ID_XENOMORPH_SENTINEL
 	name = SPECIES_XENO_SENTINEL
 	weeds_plasma_rate = 10
 	caste_name = "sentinel"
@@ -277,7 +269,7 @@
 		)
 
 /datum/species/xenos/queen
-	uid = SPECIES_ID_XENOMORPH_QUEEN
+
 	name = SPECIES_XENO_QUEEN
 	total_health = 250
 	weeds_heal_rate = 5

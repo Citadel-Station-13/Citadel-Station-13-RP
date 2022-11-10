@@ -1,5 +1,4 @@
 /datum/job/station/librarian
-	id = JOB_ID_LIBRARIAN
 	title = "Librarian"
 	flag = LIBRARIAN
 	departments = list(DEPARTMENT_CIVILIAN)

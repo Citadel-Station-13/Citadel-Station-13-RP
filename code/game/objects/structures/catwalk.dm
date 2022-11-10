@@ -61,7 +61,7 @@
 	icon_state = "catwalk[connectdir]-[diagonalconnect]"
 
 
-/obj/structure/catwalk/legacy_ex_act(severity)
+/obj/structure/catwalk/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -109,16 +109,7 @@
 		visible_message("<span class='warning'>\The [src] breaks down!</span>")
 		playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
 		new /obj/item/stack/rods(get_turf(src))
-		qdel(src)
-
-/obj/structure/catwalk/prevent_z_fall(atom/movable/victim, levels = 0, fall_flags)
-	return fall_flags | FALL_BLOCKED
-
-/obj/structure/catwalk/z_pass_in(atom/movable/AM, dir, turf/old_loc)
-	return dir == UP
-
-/obj/structure/catwalk/z_pass_out(atom/movable/AM, dir, turf/new_loc)
-	return dir == UP
+		Destroy()
 
 /obj/effect/catwalk_plated
 	name = "plated catwalk spawner"
@@ -214,4 +205,3 @@
 		icon_state = "[initial(icon_state)]_rickety"
 	if(health < 25)
 		icon_state = "[initial(icon_state)]_dangerous"
-

@@ -1,4 +1,4 @@
-GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
+var/global/list/empty_playable_ai_cores = list()
 
 /mob/living/silicon/ai/verb/store_core()
 	set name = "Store Core"
@@ -15,7 +15,7 @@ GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
 		return
 
 	// We warned you.
-	GLOB.empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
+	empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
 	GLOB.global_announcer.autosay("[src] has been moved to intelligence storage.", "Artificial Intelligence Oversight")
 
 	//Handle job slot/tater cleanup.

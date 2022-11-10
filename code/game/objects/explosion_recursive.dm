@@ -35,12 +35,12 @@ var/explosion_in_progress = 0
 
 	explosion_turfs[epicenter] = power
 
-	//This steap handles the gathering of turfs which will be legacy_ex_act() -ed in the next step. It also ensures each turf gets the maximum possible amount of power dealt to it.
+	//This steap handles the gathering of turfs which will be ex_act() -ed in the next step. It also ensures each turf gets the maximum possible amount of power dealt to it.
 	for(var/direction in GLOB.cardinal)
 		var/turf/T = get_step(epicenter, direction)
 		T.explosion_spread(power - epicenter.explosion_resistance, direction)
 
-	//This step applies the legacy_ex_act effects for the explosion, as planned in the previous step.
+	//This step applies the ex_act effects for the explosion, as planned in the previous step.
 	for(var/turf/T in explosion_turfs)
 		if(explosion_turfs[T] <= 0) continue
 		if(!T) continue
@@ -52,11 +52,11 @@ var/explosion_in_progress = 0
 		var/x = T.x
 		var/y = T.y
 		var/z = T.z
-		LEGACY_EX_ACT(T, severity, null)
+		T.ex_act(severity)
 		if(!T)
 			T = locate(x,y,z)
 		for(var/atom/A in T)
-			LEGACY_EX_ACT(A, severity, null)
+			A.ex_act(severity)
 
 	explosion_in_progress = 0
 
@@ -71,6 +71,7 @@ var/explosion_in_progress = 0
 
 /turf/simulated/mineral
 	explosion_resistance = 2
+	outdoors = TRUE // for weather
 
 /turf/simulated/shuttle/floor
 	explosion_resistance = 1

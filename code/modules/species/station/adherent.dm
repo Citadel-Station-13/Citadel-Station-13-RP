@@ -1,7 +1,6 @@
 /datum/species/adherent
 	name = SPECIES_ADHERENT
 	name_plural = "Adherents"
-	uid = SPECIES_ID_ADHERENT
 	default_bodytype = BODYTYPE_ADHERENT
 
 	blurb = "The Vigil is a relatively loose association of machine-servitors, Adherents, \
@@ -48,12 +47,13 @@
 	heat_level_2 = 1000
 	heat_level_3 = 2000
 
-	species_flags = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
-	species_spawn_flags = SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_NO_FBP_CONSTRUCT | SPECIES_SPAWN_NO_FBP_SETUP | SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELIST_SELECTABLE
+	flags       = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
+	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
 	species_appearance_flags = HAS_EYE_COLOR | HAS_BASE_SKIN_COLOR
 
-	intrinsic_languages = LANGUAGE_ID_ADHERENT
-	max_additional_languages = 2
+	language         = LANGUAGE_ADHERENT
+	species_language = LANGUAGE_ADHERENT
+	num_alternate_languages = 2
 
 	blood_color = "#2de00d"
 	flesh_color = "#90edeb"

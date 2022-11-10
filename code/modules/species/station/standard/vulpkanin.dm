@@ -1,5 +1,4 @@
 /datum/species/vulpkanin
-	uid = SPECIES_ID_VULPKANIN
 	name = SPECIES_VULPKANIN
 	name_plural = SPECIES_VULPKANIN
 	primitive_form = SPECIES_MONKEY_VULPKANIN
@@ -13,9 +12,9 @@
 	tail = "vulptail"
 	tail_animation = 'icons/mob/clothing/species/vulpkanin/tail.dmi' // probably need more than just one of each, but w/e
 
-	max_additional_languages = 3
-	name_language   = LANGUAGE_ID_VULPKANIN
-	intrinsic_languages = LANGUAGE_ID_VULPKANIN
+	num_alternate_languages = 3
+	name_language   = LANGUAGE_CANILUNZT
+	secondary_langs = list(LANGUAGE_CANILUNZT)
 
 	darksight = 5 //worse than cats, but better than lizards. -- Poojawa
 //	gluttonous = 1
@@ -34,7 +33,7 @@
 
 	primitive_form = SPECIES_MONKEY_VULPKANIN
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	spawn_flags = SPECIES_CAN_JOIN
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#966464"

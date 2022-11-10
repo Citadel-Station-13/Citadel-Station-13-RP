@@ -24,7 +24,6 @@
 
 /mob/new_player/verb/new_player_panel()
 	set src = usr
-	set waitfor = FALSE
 	new_player_panel_proc()
 
 /mob/new_player/proc/new_player_panel_proc()
@@ -117,7 +116,6 @@
 	return age_gate_result
 
 /mob/new_player/proc/verifyage()
-	UNTIL(client.prefs.initialized)	// fuck this stupid ass broken piece of shit age gate
 	if(client.holder)		// they're an admin
 		client.set_preference(/datum/client_preference/debug/age_verified, 1)
 		return TRUE
@@ -140,7 +138,7 @@
 				else
 					//they claim to be of age, so allow them to continue and update their flags
 					client.set_preference(/datum/client_preference/debug/age_verified, 1)
-					SScharacters.queue_preferences_save(client.prefs)
+					SScharacter_setup.queue_preferences_save(client.prefs)
 					//log this
 					message_admins("[ckey] has joined through the automated age gate process.")
 					return TRUE
@@ -168,7 +166,7 @@
 			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
 			totalPlayers = 0
 			totalPlayersReady = 0
-			for(var/mob/new_player/player in GLOB.player_list)
+			for(var/mob/new_player/player in player_list)
 				stat("[player.key]", (player.ready)?("(Playing)"):(null))
 				totalPlayers++
 				if(player.ready)totalPlayersReady++
@@ -305,6 +303,34 @@
 	if(href_list["manifest"])
 		ViewManifest()
 
+	if(href_list["SelectedJob"])
+/*
+		// Prevents people rejoining as same character.
+		for (var/mob/living/carbon/human/C in GLOB.mob_list)
+			var/char_name = client.prefs.real_name
+			if(char_name == C.real_name)
+				to_chat(usr, "<span class='notice'>There is a character that already exists with the same name - <b>[C.real_name]</b>, please join with a different one, or use Quit the Round with the previous character.</span>")
+				return
+*/
+		if(!config_legacy.enter_allowed)
+			to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
+			return
+		else if(SSticker && SSticker.mode && SSticker.mode.explosion_in_progress)
+			to_chat(usr, "<span class='danger'>The station is currently exploding. Joining would go poorly.</span>")
+			return
+/*
+		if(!is_alien_whitelisted(src, GLOB.species_meta[client.prefs.species]))
+			src << alert("You are currently not whitelisted to play [client.prefs.species].")
+			return 0
+*/
+		var/datum/species/S = client.prefs.character_static_species_meta()
+		if(!(S.spawn_flags & SPECIES_CAN_JOIN))
+			src << alert("Your current species, [client.prefs.species], is not available for play on the station.")
+			return 0
+
+		AttemptLateSpawn(href_list["SelectedJob"],client.prefs.spawnpoint)
+		return
+
 	if(href_list["privacy_poll"])
 		if(!SSdbcore.Connect())
 			return
@@ -425,7 +451,7 @@
 	var/savefile/F = get_server_news()
 	if(F)
 		client.prefs.lastnews = md5(F["body"])
-		SScharacters.queue_preferences_save(client.prefs)
+		SScharacter_setup.queue_preferences_save(client.prefs)
 
 		var/dat = "<html><body><center>"
 		dat += "<h1>[F["title"]]</h1>"
@@ -456,7 +482,18 @@
 	// Timer still going
 	return timer - world.time
 
-/mob/new_player/proc/AttemptLateSpawn(rank)
+/mob/new_player/proc/IsJobAvailable(rank)
+	var/datum/job/job = job_master.GetJob(rank)
+	if(!job)	return 0
+	if(!job.is_position_available()) return 0
+	if(jobban_isbanned(src,rank))	return 0
+	if(!job.player_old_enough(src.client))	return 0
+	if(!is_job_whitelisted(src,rank))	return 0
+	if(!job.player_has_enough_pto(src.client)) return 0
+	return 1
+
+
+/mob/new_player/proc/AttemptLateSpawn(rank, spawning_at)
 	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified)) return
 	if (src != usr)
 		return 0
@@ -466,20 +503,15 @@
 	if(!config_legacy.enter_allowed)
 		to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
 		return 0
-	var/datum/job/J = SSjob.job_by_title(rank)
-	var/reason
-	if((reason = J.check_client_availability_one(client)) != ROLE_AVAILABLE)
-		to_chat(src, SPAN_WARNING("[rank] is not available: [J.get_availability_reason(client, reason)]"))
-		return FALSE
-	if(!spawn_checks_vr())
-		return FALSE
-	var/list/errors = list()
-	if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_LATEJOIN, errors))
-		to_chat(src, SPAN_WARNING("An error has occured while trying to spawn you in:<br>[errors.Join("<br>")]"))
-		return FALSE
+	if(!IsJobAvailable(rank))
+		src << alert("[rank] is not available. Please try another.")
+		return 0
+	if(!attempt_vr(src,"spawn_checks_vr",list())) return 0
+	if(!client)
+		return 0
 
 	//Find our spawning point.
-	var/list/join_props = SSjob.LateSpawn(client, rank)
+	var/list/join_props = job_master.LateSpawn(client, rank)
 	var/obj/landmark/spawnpoint/SP = pick(join_props["spawnpoint"])
 	var/announce_channel = join_props["channel"] || "Common"
 
@@ -489,17 +521,14 @@
 	spawning = 1
 	close_spawn_windows()
 
-	if(!SSjob.AssignRole(src, rank, 1))
-		to_chat(src, SPAN_WARNING("SSjob.AssignRole failed; something is seriously wrong. Attempted: [rank]."))
-		. = FALSE
-		CRASH("AssignRole failed; something is seriously wrong!")
+	job_master.AssignRole(src, rank, 1)
 
 	var/mob/living/character = create_character(SP.GetSpawnLoc())		// Creates the human and transfers vars and mind
 	SP.OnSpawn(character)
 	//Announces Cyborgs early, because that is the only way it works
 	if(character.mind.assigned_role == "Cyborg")
 		AnnounceCyborg(character, rank, SP.RenderAnnounceMessage(character, name = character.name, job_name = character.mind.role_alt_title || rank), announce_channel, character.z)
-	character = SSjob.EquipRank(character, rank, 1)	// Equips the human
+	character = job_master.EquipRank(character, rank, 1)	// Equips the human
 	UpdateFactionList(character)
 
 	// AIs don't need a spawnpoint, they must spawn at an empty core
@@ -508,8 +537,8 @@
 		character = character.AIize(move=0)	// AIize the character, but don't move them yet
 
 		// IsJobAvailable for AI checks that there is an empty core available in this list
-		var/obj/structure/AIcore/deactivated/C = GLOB.empty_playable_ai_cores[1]
-		GLOB.empty_playable_ai_cores -= C
+		var/obj/structure/AIcore/deactivated/C = empty_playable_ai_cores[1]
+		empty_playable_ai_cores -= C
 
 		character.loc = C.loc
 
@@ -549,28 +578,64 @@
 		// can't use their name here, since cyborg namepicking is done post-spawn, so we'll just say "A new Cyborg has arrived"/"A new Android has arrived"/etc.
 		GLOB.global_announcer.autosay("A new [rank] has arrived on the station.", "Arrivals Announcement Computer")
 
+/mob/new_player/proc/LateChoices()
+	var/name = client.prefs.be_random_name ? "friend" : client.prefs.real_name
+
+	var/dat = "<html><body><center>"
+	dat += "<b>Welcome, [name].<br></b>"
+	dat += "Round Duration: [roundduration2text()]<br>"
+
+	if(SSemergencyshuttle) //In case NanoTrasen decides reposess CentCom's shuttles.
+		if(SSemergencyshuttle.going_to_centcom()) //Shuttle is going to CentCom, not recalled
+			dat += "<font color='red'><b>The station has been evacuated.</b></font><br>"
+		if(SSemergencyshuttle.online())
+			if (SSemergencyshuttle.evac)	// Emergency shuttle is past the point of no recall
+				dat += "<font color='red'>The station is currently undergoing evacuation procedures.</font><br>"
+			else						// Crew transfer initiated
+				dat += "<font color='red'>The station is currently undergoing crew transfer procedures.</font><br>"
+
+	dat += "Choose from the following open/valid positions:<br>"
+	dat += "<a href='byond://?src=\ref[src];hidden_jobs=1'>[show_hidden_jobs ? "Hide":"Show"] Hidden Jobs.</a><br>"
+	for(var/datum/job/job in job_master.occupations)
+		if(job && IsJobAvailable(job.title))
+			// Checks for jobs with minimum age requirements
+			if(job.minimum_character_age && (client.prefs.age < job.minimum_character_age))
+				continue
+			// Checks for jobs set to "Never" in preferences	//TODO: Figure out a better way to check for this
+			if(!(client.prefs.GetJobDepartment(job, 1) & job.flag))
+				if(!(client.prefs.GetJobDepartment(job, 2) & job.flag))
+					if(!(client.prefs.GetJobDepartment(job, 3) & job.flag))
+						if(!show_hidden_jobs && job.title != "Assistant")	// Assistant is always an option
+							continue
+			var/active = 0
+			// Only players with the job assigned and AFK for less than 10 minutes count as active
+			for(var/mob/M in player_list) if(M.mind && M.client && M.mind.assigned_role == job.title && M.client.inactivity <= 10 * 60 * 10)
+				active++
+			dat += "<a href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title] ([job.current_positions]) (Active: [active])</a><br>"
+
+	dat += "</center>"
+	src << browse(dat, "window=latechoices;size=300x640;can_close=1")
+
 
 /mob/new_player/proc/create_character(var/turf/T)
-	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified))
-		return FALSE
-	if(!spawn_checks_vr())
-		return FALSE
-	var/list/errors = list()
-	if(!client.prefs.spawn_checks(PREF_COPY_TO_FOR_ROUNDSTART, errors))
-		to_chat(src, SPAN_WARNING("An error has occured while trying to spawn you in:<br>[errors.Join("<br>")]"))
-		return FALSE
+	if(!client.is_preference_enabled(/datum/client_preference/debug/age_verified)) return
+	if (!attempt_vr(src,"spawn_checks_vr",list()))
+		return 0
 	spawning = 1
 	close_spawn_windows()
 
 	var/mob/living/carbon/human/new_character
 
 	var/use_species_name
-	var/datum/species/chosen_species = client.prefs.real_species_datum()
+	var/datum/species/chosen_species
+	if(client.prefs.species)
+		chosen_species = name_static_species_meta(client.prefs.species)
+		use_species_name = chosen_species.get_station_variant()	// Only used by pariahs atm.
 
 	if(chosen_species && use_species_name)
 		// Have to recheck admin due to no usr at roundstart. Latejoins are fine though.
-		if(!(chosen_species.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) || config.check_alien_whitelist(ckey(chosen_species.name), ckey))
-			new_character = new(T, use_species_name)
+		if(is_alien_whitelisted(chosen_species))
+			new_character = new(T, species_type_by_name(use_species_name))
 
 	if(!new_character)
 		new_character = new(T)
@@ -582,7 +647,7 @@
 		client.prefs.real_name = random_name(new_character.gender)
 		client.prefs.randomize_appearance_and_body_for(new_character)
 	else
-		client.prefs.copy_to(new_character)
+		client.prefs.copy_to(new_character, icon_updates = TRUE)
 
 	if(client && client.media)
 		client.media.stop_music()	// MAD JAMS cant last forever yo
@@ -594,12 +659,9 @@
 		//	new_character.real_name = pick(GLOB.clown_names)	// I hate this being here of all places but unfortunately dna is based on real_name!
 		//	new_character.rename_self("clown")
 		mind.original = new_character
-		// todo: kick vore's persist shit into new persistence system...
 		mind.loaded_from_ckey = client.ckey
 		mind.loaded_from_slot = client.prefs.default_slot
 		//mind.traits = client.prefs.traits.Copy()	// Conflict
-		//! Preferences shim: transfer stuff over
-		client.prefs.imprint_mind(mind)
 		mind.transfer_to(new_character)				// Won't transfer key since the mind is not active
 
 	new_character.name = real_name
@@ -620,6 +682,11 @@
 			E.handle_implant(new_character)
 			E.post_implant(new_character)
 
+	for(var/lang in client.prefs.alternate_languages)
+		var/datum/language/chosen_language = GLOB.all_languages[lang]
+		if(chosen_language)
+			if(is_lang_whitelisted(src,chosen_language) || (new_character.species && (chosen_language.name in new_character.species.secondary_langs)))
+				new_character.add_language(lang)
 	// And uncomment this, too.
 	//new_character.dna.UpdateSE()
 
@@ -654,12 +721,14 @@
 	return check_rights(R_ADMIN, 0, src)
 
 /mob/new_player/get_species_name()
-	var/datum/species/chosen_species = client?.prefs?.real_species_datum()
+	var/datum/species/chosen_species
+	if(client.prefs.species)
+		chosen_species = name_static_species_meta(client.prefs.species)
 
 	if(!chosen_species)
 		return SPECIES_HUMAN
 
-	if(!(chosen_species.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) || config.check_alien_whitelist(ckey(chosen_species.name), ckey))
+	if(is_alien_whitelisted(chosen_species))
 		return chosen_species.name
 
 	return SPECIES_HUMAN
@@ -708,8 +777,13 @@
 		pass = FALSE
 		to_chat(src, SPAN_WARNING("You have not set your scale yet.  Do this on the Species Customization tab in character setup."))
 
+	//Can they play?
+	if(!is_alien_whitelisted(src, client.prefs.character_static_species_meta()) && !check_rights(R_ADMIN, 0))
+		pass = FALSE
+		to_chat(src,"<span class='warning'>You are not allowed to spawn in as this species.</span>")
+
 	//Custom species checks
-	if (client && client.prefs && client.prefs.real_species_name() == SPECIES_CUSTOM)
+	if (client && client.prefs && client.prefs.species == SPECIES_CUSTOM)
 
 		//Didn't name it
 		if(!client.prefs.custom_species)

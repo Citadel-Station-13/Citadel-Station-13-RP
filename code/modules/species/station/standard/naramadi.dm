@@ -1,8 +1,6 @@
 /datum/species/naramadi
 	name = SPECIES_SERGAL
-	uid = SPECIES_ID_NARAMADI
 	name_plural = "Naramadi"
-	category = "Naramadi"
 	default_bodytype = BODYTYPE_SERGAL
 	icobase = 'icons/mob/species/naramadi/body.dmi'
 	deform = 'icons/mob/species/naramadi/deformed_body.dmi'
@@ -17,9 +15,9 @@
 	//burn_mod =  1.15
 	//gluttonous = 1
 	hunger_factor = 0.1 // By math should be half of the Teshari Nutrition drain
-	max_additional_languages = 3
-	intrinsic_languages = LANGUAGE_ID_NARAMADI
-	name_language = LANGUAGE_ID_NARAMADI
+	num_alternate_languages = 3
+	secondary_langs = list(LANGUAGE_SAGARU)
+	name_language = LANGUAGE_SAGARU
 	color_mult = 1
 
 	max_age = 120
@@ -35,7 +33,7 @@
 
 	primitive_form = SPECIES_MONKEY_SERGAL
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	spawn_flags = SPECIES_CAN_JOIN
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"

@@ -9,7 +9,7 @@
 		return
 
 	var/mob/selected = null
-	for(var/mob/living/M in GLOB.player_list)
+	for(var/mob/living/M in player_list)
 		//Dead people only thanks!
 		if((M.stat != 2) || (!M.client))
 			continue
@@ -83,7 +83,7 @@
 		if(ckey(clonemind.key) != R.ckey)
 			return FALSE
 	else
-		for(var/mob/observer/dead/G in GLOB.player_list)
+		for(var/mob/observer/dead/G in player_list)
 			if(G.ckey == R.ckey)
 				if(G.can_reenter_corpse)
 					break
@@ -335,7 +335,7 @@
 
 	if(ishuman(occupant)) //Need to be safe.
 		var/mob/living/carbon/human/patient = occupant
-		if(!(patient.species.species_flags & NO_SCAN)) //If, for some reason, someone makes a genetically-unalterable clone, let's not make them permanently disabled.
+		if(!(patient.species.flags & NO_SCAN)) //If, for some reason, someone makes a genetically-unalterable clone, let's not make them permanently disabled.
 			domutcheck(occupant) //Waiting until they're out before possible transforming.
 
 	occupant = null
@@ -421,26 +421,26 @@
 		malfunction()
 	..()
 
-/obj/machinery/clonepod/legacy_ex_act(severity)
+/obj/machinery/clonepod/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/A as mob|obj in src)
 				A.loc = src.loc
-				legacy_ex_act(severity)
+				ex_act(severity)
 			qdel(src)
 			return
 		if(2.0)
 			if(prob(50))
 				for(var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
-					legacy_ex_act(severity)
+					ex_act(severity)
 				qdel(src)
 				return
 		if(3.0)
 			if(prob(25))
 				for(var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
-					legacy_ex_act(severity)
+					ex_act(severity)
 				qdel(src)
 				return
 		else

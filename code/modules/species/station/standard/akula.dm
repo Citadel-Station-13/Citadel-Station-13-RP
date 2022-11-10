@@ -1,5 +1,4 @@
 /datum/species/akula
-	uid = SPECIES_ID_AKULA
 	name = SPECIES_AKULA
 	name_plural = SPECIES_AKULA //It's singular and plural. English is weird.
 	primitive_form = SPECIES_MONKEY_AKULA
@@ -8,7 +7,6 @@
 	deform       = 'icons/mob/species/akula/deformed_body.dmi'
 	preview_icon = 'icons/mob/species/akula/preview.dmi'
 	husk_icon    = 'icons/mob/species/akula/husk.dmi'
-	default_bodytype = BODYTYPE_AKULA
 	tail = "tail"
 	icobase_tail = 1
 
@@ -27,9 +25,9 @@
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Akula"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/akula)
 
-	max_additional_languages = 3
-	name_language   = LANGUAGE_ID_SKRELL
-	intrinsic_languages = LANGUAGE_ID_SKRELL
+	num_alternate_languages = 3
+	name_language   = LANGUAGE_SKRELLIAN
+	secondary_langs = list(LANGUAGE_SKRELLIAN)
 	assisted_langs  = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
 	// darksight  = 8
@@ -42,7 +40,7 @@
 	water_movement = -4
 	max_age = 80
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	spawn_flags = SPECIES_CAN_JOIN
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"

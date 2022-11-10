@@ -55,7 +55,7 @@
 	if (N)
 		amount_per_transfer_from_this = N
 
-/obj/structure/reagent_dispensers/legacy_ex_act(severity)
+/obj/structure/reagent_dispensers/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -206,7 +206,7 @@
 		if(!istype(Proj ,/obj/item/projectile/beam/lasertag) && !istype(Proj ,/obj/item/projectile/beam/practice) )
 			explode()
 
-/obj/structure/reagent_dispensers/fueltank/legacy_ex_act()
+/obj/structure/reagent_dispensers/fueltank/ex_act()
 	explode()
 
 /obj/structure/reagent_dispensers/fueltank/blob_act()
@@ -454,7 +454,7 @@
 	if(Proj.get_structure_damage())
 		explode()
 
-/obj/structure/reagent_dispensers/cookingoil/legacy_ex_act()
+/obj/structure/reagent_dispensers/cookingoil/ex_act()
 	explode()
 
 /obj/structure/reagent_dispensers/cookingoil/proc/explode()

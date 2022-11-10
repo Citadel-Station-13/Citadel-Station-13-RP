@@ -28,6 +28,3 @@
 		message_admins("Database connection failed: " + SSdbcore.ErrorMsg())
 	else
 		message_admins("Database connection re-established")
-		message_admins("Reloading client database data...")
-		for(var/client/C in GLOB.clients)
-			C.database?.Load()

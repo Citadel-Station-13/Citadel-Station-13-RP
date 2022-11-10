@@ -41,7 +41,7 @@
 			for(var/obj/effect/energy_field/F in T)
 				F.update_icon()
 
-/obj/effect/energy_field/legacy_ex_act(var/severity)
+/obj/effect/energy_field/ex_act(var/severity)
 	adjust_strength(-(4 - severity) * 4)
 
 /obj/effect/energy_field/bullet_act(var/obj/item/projectile/Proj)

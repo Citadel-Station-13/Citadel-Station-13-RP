@@ -64,7 +64,7 @@
 
 	return ..()
 
-/obj/structure/plasticflaps/legacy_ex_act(severity)
+/obj/structure/plasticflaps/ex_act(severity)
 	switch(severity)
 		if (1)
 			qdel(src)

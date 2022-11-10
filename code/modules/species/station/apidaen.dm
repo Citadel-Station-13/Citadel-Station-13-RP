@@ -1,7 +1,6 @@
 /datum/species/apidaen
 	name = SPECIES_APIDAEN
 	name_plural = SPECIES_APIDAEN
-	uid = SPECIES_ID_APIDAEN
 
 	icobase      = 'icons/mob/species/apidaen/body.dmi'
 	deform       = 'icons/mob/species/apidaen/body.dmi' // No deformed set has been made yet.
@@ -15,8 +14,8 @@
 	brute_mod = 0.8   // 20% brute damage reduction seems fitting to match spiders, due to exoskeletons.
 	burn_mod  = 1.15  // 15% burn damage increase, the same as spiders. For the same reason.
 
-	max_additional_languages = 2
-	intrinsic_languages = LANGUAGE_ID_VASILISSAN
+	num_alternate_languages = 2
+	secondary_langs = list(LANGUAGE_VESPINAE)
 
 	reagent_tag = IS_APIDAEN
 
@@ -42,8 +41,8 @@
 
 	//primitive_form = SPECIES_MONKEY //I dunno. Replace this in the future.
 
-	species_flags = NO_MINOR_CUT
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	flags = NO_MINOR_CUT
+	spawn_flags = SPECIES_CAN_JOIN
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	color_mult = 1

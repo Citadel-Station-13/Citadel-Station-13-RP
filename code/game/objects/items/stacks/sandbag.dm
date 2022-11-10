@@ -197,7 +197,7 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 	//Make it drop materials? I dunno. For now it just disappears.
 	return
 
-/obj/structure/sandbag/legacy_ex_act(severity)
+/obj/structure/sandbag/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			dismantle()

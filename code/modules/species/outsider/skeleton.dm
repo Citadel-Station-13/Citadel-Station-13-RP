@@ -1,5 +1,4 @@
 /datum/species/skeleton
-	uid = SPECIES_ID_SKELETON
 	name = SPECIES_SKELETON
 	name_plural = "Skeletons"
 	primitive_form = SPECIES_MONKEY
@@ -10,14 +9,14 @@
 
 	icobase = 'icons/mob/species/human/skeleton.dmi'
 
-	intrinsic_languages = LANGUAGE_ID_HUMAN // todo?
+	language = "Sol Common"
 	name_language = null // Use the first-name last-name generator rather than a language scrambler
 
 	max_age = 110
 	health_hud_intensity = 1.5
 
-	species_flags = NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_BLOOD | UNDEAD | NO_DEFIB
-	species_spawn_flags = SPECIES_SPAWN_RESTRICTED
+	flags = NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_BLOOD | UNDEAD | NO_DEFIB
+	spawn_flags = SPECIES_IS_RESTRICTED
 	species_appearance_flags = null
 
 	show_ssd = null

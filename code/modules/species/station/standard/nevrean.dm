@@ -1,5 +1,4 @@
 /datum/species/nevrean
-	uid = SPECIES_ID_NEVREAN
 	name = SPECIES_NEVREAN
 	name_plural = "Nevreans"
 	primitive_form = SPECIES_MONKEY_NEVREAN
@@ -22,9 +21,9 @@
 
 	catalogue_data = list(/datum/category_item/catalogue/fauna/nevrean)
 
-	max_additional_languages = 3
-	name_language = LANGUAGE_ID_BIRDSONG
-	intrinsic_languages = LANGUAGE_ID_BIRDSONG
+	num_alternate_languages = 3
+	name_language = LANGUAGE_BIRDSONG
+	secondary_langs = list(LANGUAGE_BIRDSONG)
 
 	//darksight = 8
 	//slowdown = -0.5
@@ -35,7 +34,7 @@
 	color_mult = 1
 	max_age = 80
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	spawn_flags = SPECIES_CAN_JOIN
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"

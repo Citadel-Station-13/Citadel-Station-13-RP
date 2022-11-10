@@ -105,7 +105,7 @@
 	return 0
 
 
-/obj/machinery/power/am_control_unit/legacy_ex_act(severity)
+/obj/machinery/power/am_control_unit/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			stability -= 60

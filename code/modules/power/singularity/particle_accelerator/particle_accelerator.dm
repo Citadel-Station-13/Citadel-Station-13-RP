@@ -140,7 +140,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 		log_game("PACCEL([x],[y],[z]) Was moved while active and turned off.")
 		investigate_log("was moved whilst active; it <font color='red'>powered down</font>.","singulo")
 
-/obj/structure/particle_accelerator/legacy_ex_act(severity)
+/obj/structure/particle_accelerator/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -311,7 +311,7 @@ So, hopefully this is helpful if any more icons are to be added/changed/wonderin
 	..()
 	return
 
-/obj/machinery/particle_accelerator/legacy_ex_act(severity)
+/obj/machinery/particle_accelerator/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)

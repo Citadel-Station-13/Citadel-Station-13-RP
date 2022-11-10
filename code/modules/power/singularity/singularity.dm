@@ -50,7 +50,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	consume(user)
 	return 1
 
-/obj/singularity/legacy_ex_act(severity, target)
+/obj/singularity/ex_act(severity, target)
 	switch(severity)
 		if(1)
 			if(current_size <= STAGE_TWO)

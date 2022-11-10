@@ -23,9 +23,6 @@
 /obj/random/triumph,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/space)
-"hj" = (
-/turf/simulated/floor/tiled/monotile/lythios43c,
-/area/space)
 "jK" = (
 /obj/structure/girder,
 /turf/space/basic,
@@ -53,17 +50,11 @@
 "pZ" = (
 /turf/simulated/mineral/icerock/lythios43c,
 /area/space)
-"qi" = (
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/space)
 "qU" = (
 /turf/simulated/floor/outdoors/dirt/lythios43c/indoors,
 /area/space)
 "su" = (
 /turf/simulated/floor/outdoors/dirt/lythios43c,
-/area/space)
-"sB" = (
-/turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/space)
 "tO" = (
 /obj/random/mre,
@@ -72,9 +63,6 @@
 "tV" = (
 /obj/structure/lattice,
 /turf/space/basic,
-/area/space)
-"ug" = (
-/turf/simulated/floor/tiled/techfloor/grid/lythios43c,
 /area/space)
 "um" = (
 /turf/simulated/mineral/icerock/ignore_cavegen/lythios43c,
@@ -103,14 +91,8 @@
 /obj/machinery/door/airlock/external,
 /turf/space/basic,
 /area/space)
-"yQ" = (
-/turf/simulated/floor/tiled/techfloor/lythios43c,
-/area/space)
 "yR" = (
 /turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
-/area/space)
-"zL" = (
-/turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/space)
 "Au" = (
 /turf/simulated/floor/tiled/lythios43c,
@@ -134,9 +116,6 @@
 "EU" = (
 /obj/random/crystal,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
-/area/space)
-"GQ" = (
-/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
 /area/space)
 "HG" = (
 /turf/space/basic,
@@ -597,9 +576,9 @@ Rr
 Rr
 Au
 Au
-hj
-qi
-ug
+xu
+xu
+xu
 Td
 nc
 xu
@@ -620,8 +599,8 @@ Rr
 Au
 Au
 xu
-zL
-sB
+xu
+xu
 Td
 AF
 xu
@@ -642,8 +621,8 @@ UM
 XP
 XP
 xu
-yQ
-GQ
+xu
+xu
 Td
 AF
 xu
@@ -664,8 +643,8 @@ UM
 XP
 XP
 xu
-AF
-AG
+xu
+xu
 Td
 AF
 xu

@@ -1,7 +1,5 @@
 /datum/species/unathi
-	uid = SPECIES_ID_UNATHI
 	name = SPECIES_UNATHI
-	category = "Unathi"
 	name_plural = SPECIES_UNATHI
 	primitive_form = SPECIES_MONKEY_UNATHI
 	default_bodytype = BODYTYPE_UNATHI
@@ -24,9 +22,10 @@
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Unathi"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/unathi)
 
-	max_additional_languages = 3
-	name_language    = LANGUAGE_ID_UNATHI
-	intrinsic_languages = LANGUAGE_ID_UNATHI
+	num_alternate_languages = 3
+	name_language    = LANGUAGE_UNATHI
+	species_language = LANGUAGE_UNATHI
+	secondary_langs  = list(LANGUAGE_UNATHI)
 
 	ambiguous_genders = TRUE
 	gluttonous = 1
@@ -68,7 +67,7 @@
 
 	body_temperature = null //mesothermic is basically cold-blooded right?
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED // Species_can_join is the only spawn flag all the races get, so that none of them will be whitelist only if whitelist is enabled.
+	spawn_flags = SPECIES_CAN_JOIN // Species_can_join is the only spawn flag all the races get, so that none of them will be whitelist only if whitelist is enabled.
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	color_mult  = 1

@@ -1,5 +1,4 @@
 /datum/job/station/mining
-	id = JOB_ID_SHAFT_MINER
 	title = "Shaft Miner"
 	flag = MINER
 	departments = list(DEPARTMENT_CARGO)

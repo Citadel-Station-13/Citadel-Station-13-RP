@@ -93,7 +93,7 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 		junk_list = GLOB.generic_fishing_pool_list
 		fishing_loot = GLOB.generic_fishing_chance_list
 
-/turf/simulated/floor/water/legacy_ex_act(severity)	// Explosive fishing.
+/turf/simulated/floor/water/ex_act(severity)	// Explosive fishing.
 	if(prob(5 * severity))
 		pick_fish()
 		if(fish_type)

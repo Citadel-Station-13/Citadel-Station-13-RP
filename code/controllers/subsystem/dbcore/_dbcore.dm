@@ -177,8 +177,6 @@ SUBSYSTEM_DEF(dbcore)
 /**
  * makes a query
  *
- * **you must qdel this query yourself.**
- *
  * @params
  * - sql_query - the query. use :arg for arguments
  * - arguments - keyed list
@@ -193,8 +191,6 @@ SUBSYSTEM_DEF(dbcore)
 
 /**
  * makes, and runs a query
- *
- * **you must qdel this query yourself.**
  *
  * @params
  * - sql_query - the query. use :arg for arguments

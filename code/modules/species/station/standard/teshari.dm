@@ -1,8 +1,6 @@
 /datum/species/teshari
-	uid = SPECIES_ID_TESHARI
 	name = SPECIES_TESHARI
 	default_bodytype = BODYTYPE_TESHARI
-	category = "Teshari"
 	name_plural = "Tesharii"
 	uid = SPECIES_ID_TESHARI
 
@@ -25,13 +23,10 @@
 	tail_hair = "feathers"
 	icobase_tail = 1
 
-	max_additional_languages = 3
-	name_language    = LANGUAGE_ID_TESHARI
-	intrinsic_languages = LANGUAGE_ID_TESHARI
-	whitelist_languages = list(
-		LANGUAGE_ID_TESHARI,
-		LANGUAGE_ID_SKRELL
-	)
+	num_alternate_languages = 3
+	name_language    = LANGUAGE_SCHECHI
+	species_language = LANGUAGE_SCHECHI
+	secondary_langs  = list(LANGUAGE_SCHECHI, LANGUAGE_SKRELLIAN)
 
 	male_cough_sounds   = list('sound/effects/mob_effects/tesharicougha.ogg', 'sound/effects/mob_effects/tesharicoughb.ogg')
 	female_cough_sounds = list('sound/effects/mob_effects/tesharicougha.ogg', 'sound/effects/mob_effects/tesharicoughb.ogg')
@@ -71,7 +66,7 @@
 
 	ambiguous_genders = TRUE
 
-	species_spawn_flags	= SPECIES_SPAWN_ALLOWED
+	spawn_flags	= SPECIES_CAN_JOIN
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	bump_flag  = MONKEY

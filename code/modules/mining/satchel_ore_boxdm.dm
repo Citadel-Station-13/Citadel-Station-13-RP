@@ -10,7 +10,7 @@
 	var/last_update = 0
 	var/list/stored_ore = list()
 
-/obj/structure/ore_box/legacy_ex_act(severity)
+/obj/structure/ore_box/ex_act(severity)
 	return //if an overstuffed ore box explodes it crashes the server, thank you GC
 
 /obj/structure/ore_box/attackby(obj/item/W as obj, mob/user as mob)

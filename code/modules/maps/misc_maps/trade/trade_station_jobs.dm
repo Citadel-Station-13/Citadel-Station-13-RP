@@ -3,14 +3,13 @@
 	name = DEPARTMENT_TRADE
 	short_name = "Beruang"
 	color = "#afccb8"
-	sorting_order = 50
+	sorting_order = -3
 	assignable = FALSE
 	visible = FALSE
 
 /datum/job/trader
 	title = "Trader"
 	flag = TRADER
-	id = JOB_ID_TRADER
 //	department = "Trader"
 	//department_flag = TRADE
 	department_flag = CIVILIAN

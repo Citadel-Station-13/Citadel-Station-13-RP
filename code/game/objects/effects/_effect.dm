@@ -32,7 +32,7 @@
 /obj/effect/blob_act(obj/structure/blob/B)
 	return
 
-/obj/effect/legacy_ex_act(severity, target)
+/obj/effect/ex_act(severity, target)
 	return FALSE
 
 /obj/effect/singularity_act()

@@ -65,7 +65,7 @@ In short:
 
 	for (var/obj/machinery/firealarm/alm in GLOB.machines)
 		if (!(alm.machine_stat & BROKEN))
-			LEGACY_EX_ACT(alm, 2, null)
+			alm.ex_act(2)
 
 /datum/universal_state/hell/proc/APCSet()
 	for (var/obj/machinery/power/apc/APC in GLOB.apcs)

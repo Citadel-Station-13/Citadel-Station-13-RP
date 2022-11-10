@@ -303,9 +303,6 @@ const MedicalRecordsViewMedical = (_properties, context) => {
           </LabeledList.Item>
         ))}
       </LabeledList>
-      <Section title="Medical Notes Summary" level={2} preserveWhitespace>
-        {medical.notes || "No data found."}
-      </Section>
       <Section title="Comments/Log" level={2}>
         {medical.comments.length === 0 ? (
           <Box color="label">

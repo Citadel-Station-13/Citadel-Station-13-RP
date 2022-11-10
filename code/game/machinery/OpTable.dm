@@ -30,7 +30,7 @@
 //	spawn(100) //Wont the MC just call this process() before and at the 10 second mark anyway?
 //		process()
 
-/obj/machinery/optable/legacy_ex_act(severity)
+/obj/machinery/optable/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			//SN src = null

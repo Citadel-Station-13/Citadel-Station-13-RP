@@ -846,7 +846,7 @@
 
 
 // pipe affected by explosion
-/obj/structure/disposalpipe/legacy_ex_act(severity)
+/obj/structure/disposalpipe/ex_act(severity)
 
 	switch(severity)
 		if(1.0)
@@ -1443,11 +1443,16 @@
 	var/turf/target	// this will be where the output objects are 'thrown' to.
 	var/mode = 0
 
-/obj/structure/disposaloutlet/LateInitialize()
-	target = get_ranged_target_turf(src, dir, 10)
-	var/obj/structure/disposalpipe/trunk/trunk = locate() in loc
-	if(trunk)
-		trunk.linked = src	// link the pipe trunk to self
+/obj/structure/disposaloutlet/New()
+	..()
+
+	spawn(1)
+		target = get_ranged_target_turf(src, dir, 10)
+
+
+		var/obj/structure/disposalpipe/trunk/trunk = locate() in src.loc
+		if(trunk)
+			trunk.linked = src	// link the pipe trunk to self
 
 // expel the contents of the holder object, then delete it
 // called when the holder exits the outlet

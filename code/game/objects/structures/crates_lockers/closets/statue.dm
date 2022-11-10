@@ -92,9 +92,9 @@
 		for(var/mob/M in src)
 			shatter(M)
 
-/obj/structure/closet/statue/legacy_ex_act(severity)
+/obj/structure/closet/statue/ex_act(severity)
 	for(var/mob/M in src)
-		LEGACY_EX_ACT(M, severity, null)
+		M.ex_act(severity)
 		health -= 60 / severity
 		check_health()
 

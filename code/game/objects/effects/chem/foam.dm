@@ -160,7 +160,7 @@
 	else
 		icon_state = "ironfoam"
 
-/obj/structure/foamedmetal/legacy_ex_act(severity)
+/obj/structure/foamedmetal/ex_act(severity)
 	qdel(src)
 
 /obj/structure/foamedmetal/bullet_act(var/obj/item/projectile/P)

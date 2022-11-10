@@ -52,7 +52,7 @@
 	silicon_mob_list |= src
 	. = ..()
 	add_language(LANGUAGE_GALCOM)
-	set_default_language(SScharacters.resolve_language_name(LANGUAGE_GALCOM))
+	set_default_language(GLOB.all_languages[LANGUAGE_GALCOM])
 	init_id()
 	init_subsystems()
 
@@ -195,7 +195,7 @@
 	return universal_speak || (speaking in src.speech_synthesizer_langs) || (speaking.name == "Noise")	//need speech synthesizer support to vocalize a language
 
 /mob/living/silicon/add_language(var/language, var/can_speak=1)
-	var/datum/language/added_language = SScharacters.resolve_language_name(language)
+	var/datum/language/added_language = GLOB.all_languages[language]
 	if(!added_language)
 		return
 
@@ -205,7 +205,7 @@
 		return 1
 
 /mob/living/silicon/remove_language(var/rem_language)
-	var/datum/language/removed_language = SScharacters.resolve_language_name(rem_language)
+	var/datum/language/removed_language = GLOB.all_languages[rem_language]
 	if(!removed_language)
 		return
 
@@ -223,7 +223,7 @@
 		dat += "Current default language: [default_language] - <a href='byond://?src=\ref[src];default_lang=reset'>reset</a><br/><br/>"
 
 	for(var/datum/language/L in languages)
-		if(!(L.language_flags & NONGLOBAL))
+		if(!(L.flags & NONGLOBAL))
 			var/default_str
 			if(L == default_language)
 				default_str = " - default - <a href='byond://?src=\ref[src];default_lang=reset'>reset</a>"
@@ -274,7 +274,7 @@
 /mob/living/silicon/binarycheck()
 	return 1
 
-/mob/living/silicon/legacy_ex_act(severity)
+/mob/living/silicon/ex_act(severity)
 	if(!blinded)
 		flash_eyes()
 
@@ -383,7 +383,7 @@
 	//Handle job slot/tater cleanup.
 	var/job = mind.assigned_role
 
-	SSjob.FreeRole(job)
+	job_master.FreeRole(job)
 
 	if(mind.objectives.len)
 		qdel(mind.objectives)

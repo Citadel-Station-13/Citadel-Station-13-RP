@@ -4,7 +4,6 @@
 //			Geneticist
 //////////////////////////////////
 /datum/job/station/geneticist
-	id = "geneticist"
 	title = "Geneticist"
 	flag = GENETICIST
 	departments = list(DEPARTMENT_MEDICAL, DEPARTMENT_RESEARCH)

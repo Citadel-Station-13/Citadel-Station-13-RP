@@ -300,7 +300,7 @@
 	return ..()
 
 
-/obj/structure/girder/legacy_ex_act(severity)
+/obj/structure/girder/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)

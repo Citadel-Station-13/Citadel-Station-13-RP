@@ -1,7 +1,6 @@
 /datum/species/vasilissan //These actually look pretty damn spooky!
 	name = SPECIES_VASILISSAN
 	name_plural = "Vasilissans"
-	uid = SPECIES_ID_VASILISSAN
 
 	icobase = 'icons/mob/species/vasilissan/body.dmi'
 	deform = 'icons/mob/species/vasilissan/deformed_body.dmi'
@@ -15,8 +14,8 @@
 	brute_mod = 0.8    // 20% brute damage reduction
 	burn_mod  = 1.15   // 15% burn damage increase. They're spiders. Aerosol can+lighter = dead spiders.
 
-	max_additional_languages = 2
-	intrinsic_languages = LANGUAGE_ID_VASILISSAN
+	num_alternate_languages = 2
+	secondary_langs = list(LANGUAGE_VESPINAE)
 
 	is_weaver = TRUE
 	silk_reserve = 500
@@ -50,8 +49,8 @@
 
 	//primitive_form = SPECIES_MONKEY //I dunno. Replace this in the future.
 
-	species_flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE
+	spawn_flags = SPECIES_CAN_JOIN
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	color_mult = 1

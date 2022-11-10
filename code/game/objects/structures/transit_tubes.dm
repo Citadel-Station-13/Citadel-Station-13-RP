@@ -60,12 +60,12 @@
 
 
 // When destroyed by explosions, properly handle contents.
-/obj/structure/transit_tube_pod/legacy_ex_act(severity)
+/obj/structure/transit_tube_pod/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/AM in contents)
 				AM.loc = loc
-				LEGACY_EX_ACT(AM, severity + 1, null)
+				AM.ex_act(severity++)
 
 			qdel(src)
 			return
@@ -73,7 +73,7 @@
 			if(prob(50))
 				for(var/atom/movable/AM in contents)
 					AM.loc = loc
-					LEGACY_EX_ACT(AM, severity + 1, null)
+					AM.ex_act(severity++)
 
 				qdel(src)
 				return

@@ -1,6 +1,5 @@
 /datum/species/werebeast
 	name = SPECIES_WEREBEAST
-	uid = SPECIES_ID_WEREBEAST
 	name_plural = "Werebeasts"
 	primitive_form = SPECIES_MONKEY_VULPKANIN
 	default_bodytype = BODYTYPE_WEREBEAST
@@ -11,9 +10,9 @@
 	preview_icon  = 'icons/mob/species/werebeast/preview.dmi'
 	tail = "tail"
 
-	max_additional_languages = 3
-	intrinsic_languages = LANGUAGE_ID_VULPKANIN
-	name_language = LANGUAGE_ID_VULPKANIN
+	num_alternate_languages = 3
+	secondary_langs = list(LANGUAGE_CANILUNZT)
+	name_language = LANGUAGE_CANILUNZT
 
 	total_health = 200
 	brute_mod = 0.85
@@ -35,7 +34,7 @@
 	wikilink="N/A"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/vulpkanin)
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_WHITELIST_SELECTABLE
+	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	inherent_verbs = list(

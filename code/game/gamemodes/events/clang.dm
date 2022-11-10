@@ -1,7 +1,7 @@
 /*
 Immovable rod random event.
 The rod will spawn at some location outside the station, and travel in a straight line to the opposite side of the station
-Everything solid in the way will be legacy_ex_act()'d
+Everything solid in the way will be ex_act()'d
 In my current plan for it, 'solid' will be defined as anything with density == 1
 
 --NEOFite
@@ -22,19 +22,19 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 
 	else if (istype(clong, /turf) && !istype(clong, /turf/unsimulated))
 		if(clong.density)
-			LEGACY_EX_ACT(clong, 2, null)
+			clong.ex_act(2)
 			for (var/mob/O in hearers(src, null))
 				O.show_message("CLANG", 2)
 
 	else if (istype(clong, /obj))
 		if(clong.density)
-			LEGACY_EX_ACT(clong, 2, null)
+			clong.ex_act(2)
 			for (var/mob/O in hearers(src, null))
 				O.show_message("CLANG", 2)
 
 	else if (istype(clong, /mob))
 		if(clong.density || prob(10))
-			LEGACY_EX_ACT(clong, 2, null)
+			clong.ex_act(2)
 	else
 		qdel(src)
 

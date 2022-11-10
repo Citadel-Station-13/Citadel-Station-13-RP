@@ -83,7 +83,7 @@ var/global/list/stool_cache = list() //haha stool
 		return
 	..()
 
-/obj/item/stool/legacy_ex_act(severity)
+/obj/item/stool/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)

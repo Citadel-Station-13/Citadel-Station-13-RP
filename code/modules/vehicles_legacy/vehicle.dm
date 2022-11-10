@@ -129,7 +129,7 @@
 	health = clamp( health + amount, 0,  maxhealth)
 	healthcheck()
 
-/obj/vehicle_old/legacy_ex_act(severity)
+/obj/vehicle_old/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			explode()

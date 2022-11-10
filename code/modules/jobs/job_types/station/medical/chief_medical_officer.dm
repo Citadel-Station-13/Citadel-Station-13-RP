@@ -1,5 +1,4 @@
 /datum/job/station/chief_medical_officer
-	id = JOB_ID_CHIEF_MEDICAL_OFFICER
 	title = "Chief Medical Officer"
 	flag = CMO
 	departments_managed = list(DEPARTMENT_MEDICAL)

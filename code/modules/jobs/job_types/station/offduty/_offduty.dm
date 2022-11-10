@@ -1,6 +1,5 @@
 /datum/job/station/off_duty
-	abstract_type = /datum/job/station/off_duty
-	join_types = JOB_LATEJOIN
+	latejoin_only = TRUE
 	timeoff_factor = -1
 	total_positions = -1
 	departments = list(DEPARTMENT_OFFDUTY)
