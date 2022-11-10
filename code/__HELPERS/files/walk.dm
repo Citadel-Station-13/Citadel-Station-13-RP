@@ -2,7 +2,7 @@
 	ASSERT(roots)
 	if(!islist(roots))
 		roots = list(roots)
-	return directory_walk_internal(islist(roots)? roots : list(roots), maxdepth)
+	return directory_walk_internal(islist(roots)? roots : list(roots), null, maxdepth)
 
 /proc/directory_walk_exts(list/roots, list/exts, maxdepth = 10)
 	ASSERT(roots)
@@ -29,7 +29,7 @@
 		for(var/found in flist(path))
 			if(found[length(found)] != "/")	// file
 				if(!R || R.Find(found))
-					. += found
+					. += path + found
 			else
 				nested += path + found
 	var/list/recursed = directory_walk_internal(nested, R, depth_remaining - 1)

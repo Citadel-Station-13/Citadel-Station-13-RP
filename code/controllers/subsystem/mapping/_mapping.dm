@@ -29,10 +29,6 @@ SUBSYSTEM_DEF(mapping)
 	/// Cached map name for statpanel
 	var/static/stat_map_name = "Loading..."
 
-	// Obfuscation Module
-	/// "secret" key
-	var/obfuscation_secret
-
 //dlete dis once #39770 is resolved
 /datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
 	if(!config)
