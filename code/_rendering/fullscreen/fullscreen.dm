@@ -160,7 +160,6 @@
 /atom/movable/screen/fullscreen/scaled/fishbed
 	icon_state = "fishbed"
 
-#warn check if these can be stretched instead of tiled
 /atom/movable/screen/fullscreen/tiled/blurry
 	icon = 'icons/mob/screen_gen.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"

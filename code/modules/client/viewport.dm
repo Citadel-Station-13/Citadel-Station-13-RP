@@ -95,7 +95,7 @@ GLOBAL_VAR(lock_client_view_y)
  * - b - are we letterboxing?
  */
 /client/verb/on_viewport(w as text, h as text, z as num, b as num)
-	set name = "on_viewport"
+	set name = ".on_viewport"
 	set hidden = TRUE
 	if(viewport_rwlock)	// something is fucking around, don't edit for them
 		return
