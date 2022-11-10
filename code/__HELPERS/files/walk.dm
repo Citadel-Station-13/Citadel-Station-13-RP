@@ -1,10 +1,25 @@
-/proc/directory_walk(list/roots, maxdepth = 10)
+/**
+ * walks a directory, returning paths of all files.
+ *
+ * @params
+ * - roots - a single or a list of roots. roots MUST end with /, or they won't work.
+ * - maxdepth - maximum depth to walk. default is 5.
+ */
+/proc/directory_walk(list/roots, maxdepth = 5)
 	ASSERT(roots)
 	if(!islist(roots))
 		roots = list(roots)
 	return directory_walk_internal(islist(roots)? roots : list(roots), null, maxdepth)
 
-/proc/directory_walk_exts(list/roots, list/exts, maxdepth = 10)
+/**
+ * walks a directory, returning paths of all files with certain extensions
+ *
+ * @params
+ * - roots - a single or a list of roots. roots MUST end with /, or they won't work.
+ * - exts - a single or a list of extensions. do not including the ., e.g. pass in "txt", not ".txt".
+ * - maxdepth - maximum depth to walk. default is 5.
+ */
+/proc/directory_walk_exts(list/roots, list/exts, maxdepth = 5)
 	ASSERT(roots)
 	if(!islist(roots))
 		roots = list(roots)
