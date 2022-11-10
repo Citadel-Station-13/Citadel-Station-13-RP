@@ -1,5 +1,6 @@
 /datum/job/station/head_nurse
 	title = "Head Nurse"
+	id = JOB_ID_HEAD_NURSE
 	flag = HEAD_NURSE
 	departments = list(DEPARTMENT_MEDICAL)
 	department_flag = MEDSCI

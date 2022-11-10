@@ -1,4 +1,5 @@
 /datum/species/skrell
+	uid = SPECIES_ID_SKRELL
 	name = SPECIES_SKRELL
 	name_plural = SPECIES_SKRELL
 	primitive_form = SPECIES_MONKEY_SKRELL
@@ -18,10 +19,14 @@
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Skrell"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/skrell)
 
-	num_alternate_languages = 3
-	name_language    = LANGUAGE_SKRELLIAN
-	species_language = LANGUAGE_SKRELLIAN
-	secondary_langs  = list(LANGUAGE_SKRELLIAN, LANGUAGE_SCHECHI)
+	max_additional_languages = 3
+	name_language    = LANGUAGE_ID_SKRELL
+	intrinsic_languages = LANGUAGE_ID_SKRELL
+	whitelist_languages = list(
+		LANGUAGE_ID_SKRELL,
+		LANGUAGE_ID_SKRELL_ALT,
+		LANGUAGE_ID_TESHARI
+	)
 	assisted_langs   = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
 	color_mult = 1
@@ -41,7 +46,7 @@
 
 	ambiguous_genders = TRUE
 
-	spawn_flags = SPECIES_CAN_JOIN
+	species_spawn_flags = SPECIES_SPAWN_ALLOWED
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
 
 	flesh_color = "#8CD7A3"

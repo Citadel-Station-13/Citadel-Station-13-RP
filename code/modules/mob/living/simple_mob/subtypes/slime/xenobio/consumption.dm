@@ -132,7 +132,7 @@
 		return FALSE
 	if(istype(L, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = L
-		if(H.species.flags & NO_SCAN)
+		if(H.species.species_flags & NO_SCAN)
 			to_chat(src, "This subject's life energy is beyond my reach...")
 			return FALSE
 	if(L.has_buckled_mobs())

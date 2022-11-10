@@ -289,7 +289,7 @@ var/syndicate_code_response//Code response for traitors.
 			// Returns null if the name doesn't meet some basic requirements. Tidies up a few other things like bad-characters.
 			newname = sanitizeName(newname)
 
-			for(var/mob/living/M in player_list)
+			for(var/mob/living/M in GLOB.player_list)
 				if(M == src)
 					continue
 				if(!newname || M.real_name == newname)

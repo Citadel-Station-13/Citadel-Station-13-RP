@@ -36,7 +36,7 @@
 		if(prob(devastation_range*30+heavy_impact_range*5) && on_station) // Huge explosions are near guaranteed to make the station creak and whine, smaller ones might.
 			creaking_explosion = TRUE // prob over 100 always returns true
 		var/far_volume = clamp(far_dist, 30, 50) // Volume is based on explosion size and dist
-		for(var/mob/M in player_list)
+		for(var/mob/M in GLOB.player_list)
 			var/turf/M_turf = get_turf(M)
 			var/dist = get_dist(M_turf, epicenter)
 			if(M.z == epicenter.z)
@@ -100,9 +100,9 @@
 				for(var/atom/movable/AM as anything in T.contents)	//bypass type checking since only atom/movable can be contained by turfs anyway
 					if(AM.flags & ATOM_ABSTRACT)
 						continue
-					AM.ex_act(dist)
+					LEGACY_EX_ACT(AM, dist, null)
 
-				T.ex_act(dist)
+				LEGACY_EX_ACT(T, dist, null)
 
 		var/took = (world.timeofday-start)/10
 		//You need to press the DebugGame verb to see these now....they were getting annoying and we've collected a fair bit of data. Just -test- changes  to explosion code using this please so we can compare
@@ -123,4 +123,4 @@
 
 /proc/secondaryexplosion(turf/epicenter, range)
 	for(var/turf/tile in range(range, epicenter))
-		tile.ex_act(2)
+		LEGACY_EX_ACT(tile, 2, null)

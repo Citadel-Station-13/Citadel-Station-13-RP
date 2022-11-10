@@ -176,7 +176,7 @@
 		|| locate(/obj/machinery/computer/cloning, get_step(src, WEST)))
 
 		if(!M.client && M.mind)
-			for(var/mob/observer/dead/ghost in player_list)
+			for(var/mob/observer/dead/ghost in GLOB.player_list)
 				if(ghost.mind == M.mind)
 					to_chat(ghost, "<b><font color = #330033><font size = 3>Your corpse has been placed into a cloning scanner. Return to your body if you want to be resurrected/cloned!</b> (Verbs -> Ghost -> Re-enter corpse)</font></font>")
 					break
@@ -197,12 +197,12 @@
 	occupant = null
 	icon_state = "scanner_0"
 
-/obj/machinery/dna_scannernew/ex_act(severity)
+/obj/machinery/dna_scannernew/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/A as mob|obj in src)
 				A.loc = src.loc
-				ex_act(severity)
+				legacy_ex_act(severity)
 				//Foreach goto(35)
 			//SN src = null
 			qdel(src)
@@ -211,7 +211,7 @@
 			if (prob(50))
 				for(var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
-					ex_act(severity)
+					legacy_ex_act(severity)
 					//Foreach goto(108)
 				//SN src = null
 				qdel(src)
@@ -220,7 +220,7 @@
 			if (prob(25))
 				for(var/atom/movable/A as mob|obj in src)
 					A.loc = src.loc
-					ex_act(severity)
+					legacy_ex_act(severity)
 					//Foreach goto(181)
 				//SN src = null
 				qdel(src)
@@ -268,7 +268,7 @@
 		..()
 	return
 
-/obj/machinery/computer/scan_consolenew/ex_act(severity)
+/obj/machinery/computer/scan_consolenew/legacy_ex_act(severity)
 
 	switch(severity)
 		if(1.0)

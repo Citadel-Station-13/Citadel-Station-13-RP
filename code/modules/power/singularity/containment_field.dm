@@ -38,7 +38,7 @@
 	if(isliving(bumped_atom))
 		shock(bumped_atom)
 
-/obj/machinery/containment_field/ex_act(severity)
+/obj/machinery/containment_field/legacy_ex_act(severity)
 	return 0
 
 /obj/machinery/containment_field/shock(mob/living/user as mob)

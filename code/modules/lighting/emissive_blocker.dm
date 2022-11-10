@@ -24,7 +24,7 @@
 
 	render_source = source
 
-/atom/movable/emissive_blocker/ex_act(severity)
+/atom/movable/emissive_blocker/legacy_ex_act(severity)
 	return FALSE
 
 /atom/movable/emissive_blocker/singularity_act()

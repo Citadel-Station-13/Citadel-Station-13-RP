@@ -1,4 +1,5 @@
 /datum/job/station/off_duty/civilian
+	id = JOB_ID_OFFDUTY_CIVILLIAN
 	title = "Off-duty Worker"
 	selection_color = "#9b633e"
 	access = list(access_maint_tunnels)

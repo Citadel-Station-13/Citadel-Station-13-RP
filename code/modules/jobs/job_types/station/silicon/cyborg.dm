@@ -1,4 +1,5 @@
 /datum/job/station/cyborg
+	id = JOB_ID_CYBORG
 	title = "Cyborg"
 	flag = CYBORG
 	departments = list(DEPARTMENT_SYNTHETIC)

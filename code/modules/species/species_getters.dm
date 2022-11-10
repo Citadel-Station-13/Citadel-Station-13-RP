@@ -1,3 +1,4 @@
+//! IDs
 /**
  * get species id; subspecies returns main species
  */
@@ -10,11 +11,34 @@
 /datum/species/proc/get_exact_species_id()
 	return uid
 
+//! Bodytypes
 /**
  * get effective bodytype
  */
 /datum/species/proc/get_effective_bodytype(mob/living/carbon/human/H, obj/item/I, slot_id)
 	return default_bodytype
+
+//! Languages
+/datum/species/proc/get_default_language_id()
+	return default_language
+
+/datum/species/proc/get_intrinsic_language_ids()
+	RETURN_TYPE(/list)
+	. = intrinsic_languages? (islist(intrinsic_languages)? intrinsic_languages.Copy() : list(intrinsic_languages)) : list()
+	if(galactic_language)
+		. |= LANGUAGE_ID_COMMON
+
+/datum/species/proc/get_name_language_id()
+	return name_language
+
+/datum/species/proc/get_max_additional_languages()
+	return max_additional_languages
+
+/datum/species/proc/get_whitelisted_language_ids()
+	RETURN_TYPE(/list)
+	return whitelist_languages? (islist(whitelist_languages)? whitelist_languages.Copy() : list(whitelist_languages)) : list()
+
+//? misc
 
 /datum/species/proc/get_valid_shapeshifter_forms(mob/living/carbon/human/H)
 	return list()
@@ -45,9 +69,6 @@
 
 /datum/species/proc/get_husk_icon(mob/living/carbon/human/H)
 	return husk_icon
-
-/datum/species/proc/get_station_variant()
-	return name
 
 // used for limb caching
 // todo: rework limbs and get rid of this, numerical static keys are dumb as fuck,
@@ -132,9 +153,9 @@
 		else
 			return capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
 
-	var/datum/language/species_language = GLOB.all_languages[name_language]
+	var/datum/language/species_language = SScharacters.resolve_language_id(name_language)
 	if(!species_language)
-		species_language = GLOB.all_languages[default_language]
+		species_language = SScharacters.resolve_language_id(default_language)
 	if(!species_language)
 		return "unknown"
 	return species_language.get_random_name(gender)

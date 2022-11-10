@@ -230,7 +230,7 @@
 
 	updateDialog()
 
-/obj/machinery/shield_gen/ex_act(var/severity)
+/obj/machinery/shield_gen/legacy_ex_act(var/severity)
 
 	if(active)
 		toggle()
