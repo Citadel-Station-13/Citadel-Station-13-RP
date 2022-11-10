@@ -228,6 +228,7 @@ GLOBAL_VAR(lock_client_view_y)
 	fetching = winget(src, SKIN_MAP_ID_VIEWPORT, "size")
 	parsed = splittext(fetching, "x")
 	var/current_width = text2num(parsed[1])
+	var/last_width = current_width
 	if(current_width == desired_pixel_width)
 		// done
 		return
@@ -242,57 +243,14 @@ GLOBAL_VAR(lock_client_view_y)
 		// done?
 		if(current_width == desired_pixel_width)
 			return
+		// if we're literally down to a pixel how about like Don't
+		if(last_width == current_width)
+			return
 		// keep adjusting
 		// overshot?
 		if ((delta > 0 && current_width > desired_pixel_width) || (delta < 0 && current_width < desired_pixel_width))
 			// reverse in half
 			delta = -delta / 2
-
-#warn deal with
-
-/*
-
-	// Fetch the client's aspect ratio
-	var/view_size = getviewsize(view)
-	var/aspect_ratio = view_size[1] / view_size[2]
-
-	// Calculate desired pixel width using window size and aspect ratio
-	var/sizes = params2list(winget(src, "mainwindow.split;mapwindow", "size"))
-	var/map_size = splittext(sizes["mapwindow.size"], "x")
-	var/height = text2num(map_size[2])
-	var/desired_width = round(height * aspect_ratio)
-	if (text2num(map_size[1]) == desired_width)
-		return	// You're already good fam.
-
-	var/split_size = splittext(sizes["mainwindow.split.size"], "x")
-	var/split_width = text2num(split_size[1])
-
-	// Calculate and apply our best estimate
-	// +4 pixels are for the eidth of the splitter's handle
-	var/pct = 100 * (desired_width + 4) / split_width
-	winset(src, "mainwindow.split", "splitter=[pct]")
-
-	// Apply an ever-lowering offset until we finish or fail
-	var/delta
-	for(var/safety in 1 to 10)
-		var/after_size = winget(src, "mapwindow", "size")
-		map_size = splittext(after_size, "x")
-		var/got_width = text2num(map_size[1])
-
-		if (got_width == desired_width)
-			return	// Success!
-
-		// Calculate a probable delta value based on the diff
-		else if (isnull(delta))
-			delta = 100 * (desired_width - got_width) / split_width
-
-		// If we overshot, halve the delta and reverse direction
-		else if ((delta > 0 && got_width > desired_width) || (delta < 0 && got_width < desired_width))
-			delta = -delta/2
-
-		pct += delta
-		winset(src, "mainwindow.split", "splitter=[pct]")
-*/
 
 /client/verb/force_map_zoom(n as num)
 	set name = "viewport_zoom"
