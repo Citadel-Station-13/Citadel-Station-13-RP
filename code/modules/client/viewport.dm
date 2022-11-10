@@ -4,6 +4,10 @@ GLOBAL_VAR_INIT(max_client_view_y, 15)
 // these two variables **reflect** (config updates, not this!) effective default viewsize for view(), range(), etc.
 GLOBAL_VAR_INIT(game_view_x, 19)
 GLOBAL_VAR_INIT(game_view_y, 15)
+// minimum size viewports can be
+// todo: parallax/action buttons are the reason this is so high
+GLOBAL_VAR_INIT(min_client_view_x, 15)
+GLOBAL_VAR_INIT(min_client_view_y, 15)
 // these two variables, if set, lock all clients to a certain viewsize no matter what
 GLOBAL_VAR(lock_client_view_x)
 GLOBAL_VAR(lock_client_view_y)
@@ -47,11 +51,13 @@ GLOBAL_VAR(lock_client_view_y)
 /**
  * called by verbs that change viewport
  */
-/client/verb/re_viewport()
-	set name = "re_viewport"
+/client/verb/init_viewport()
+	set name = ".init_viewport"
 	set hidden = TRUE
-	fetch_viewport()
-	refit_viewport()
+	if(viewport_rwlock)
+		// don't bother
+		return
+	init_viewport_blocking()
 
 /**
  * called to manually update viewport vars since the skin macro is only triggered on resize
@@ -139,8 +145,9 @@ GLOBAL_VAR(lock_client_view_y)
 			var/stretch_pixel_amount = assumed_viewport_spy / max_height
 			var/available_width = assumed_viewport_spx / stretch_pixel_amount
 			available_width = CEILING(available_width, 1)
-			view = "[max_height]x[available_width]"
-			on_refit_viewport(max_width, available_width)
+			available_width = max(available_width, GLOB.min_client_view_x)
+			view = "[available_width]x[max_height]"
+			on_refit_viewport(available_width, max_height)
 			return
 	// option 3: scale as necessary
 	var/pixels_per_tile = assumed_viewport_zoom * WORLD_ICON_SIZE
@@ -148,8 +155,8 @@ GLOBAL_VAR(lock_client_view_y)
 	var/div_y = assumed_viewport_spy / pixels_per_tile
 	div_x = CEILING(div_x, 1)
 	div_y = CEILING(div_y, 1)
-	var/desired_width = min(max_width, div_x)
-	var/desired_height = min(max_height, div_y)
+	var/desired_width = clamp(div_x, GLOB.min_client_view_x, max_width)
+	var/desired_height = clamp(div_y, GLOB.min_client_view_y, max_height)
 	view = "[desired_width]x[desired_height]"
 	on_refit_viewport(desired_width, desired_height)
 
@@ -257,7 +264,7 @@ GLOBAL_VAR(lock_client_view_y)
 			delta = -delta / 2
 
 /client/verb/force_map_zoom(n as num)
-	set name = "viewport_zoom"
+	set name = ".viewport_zoom"
 	set hidden = TRUE
 	set src = usr
 	set category = "Debug"
@@ -274,7 +281,7 @@ GLOBAL_VAR(lock_client_view_y)
 	refit_viewport()
 
 /client/verb/force_map_box(n as num)
-	set name = "viewport_box"
+	set name = ".viewport_box"
 	set hidden = TRUE
 	set src = usr
 	set category = "Debug"
@@ -289,18 +296,17 @@ GLOBAL_VAR(lock_client_view_y)
 	refit_viewport()
 
 /client/verb/force_onresize_view_update()
-	set name = "viewport_refit"
+	set name = ".viewport_refit"
 	set hidden = TRUE
 	set src = usr
 	set category = "Debug"
 	if(viewport_rwlock)
 		to_chat(usr, SPAN_WARNING("Viewport is rwlocked; try again later."))
 		return
-	fetch_viewport()
-	refit_viewport()
+	init_viewport_blocking()
 
 /client/verb/show_winset_debug_values()
-	set name = "viewport_debug"
+	set name = ".viewport_debug"
 	set hidden = TRUE
 	set src = usr
 	set category = "Debug"
