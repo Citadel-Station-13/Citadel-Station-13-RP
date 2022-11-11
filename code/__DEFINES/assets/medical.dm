@@ -7,5 +7,5 @@
 
 //used by chem masters and pill presses
 //update this if you add more patch icons
-#define PATCH_STYLE_LIST list("bandaid", "bandaid_brute", "bandaid_burn", "bandaid_both") //icon_state list
-#define DEFAULT_PATCH_STYLE "bandaid"
+#define PATCH_STYLE_LIST list("patch", "patch_brute", "patch_burn", "patch_both") //icon_state list
+#define DEFAULT_PATCH_STYLE "patch"

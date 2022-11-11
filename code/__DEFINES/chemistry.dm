@@ -104,3 +104,7 @@ var/list/cheartstopper = list("potassium_chloride")                       // Thi
 #define AMOUNT_VISIBLE (1<<5)
 ///Applied to a reagent holder, the contents will not react with each other.
 #define NO_REACT (1<<6)
+
+//! Used by chem master
+#define CONDIMASTER_STYLE_AUTO "auto"
+#define CONDIMASTER_STYLE_FALLBACK "_"
