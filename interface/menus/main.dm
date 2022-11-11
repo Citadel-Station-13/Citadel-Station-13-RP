@@ -2,6 +2,7 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 
 /datum/skin_menu/main
 	id = SKIN_ID_MAIN_MENU
+	bind_to = SKIN_WINDOW_ID_MAIN
 	categories = list(
 		/datum/skin_menu_category/main_file,
 		/datum/skin_menu_category/main_zoom,

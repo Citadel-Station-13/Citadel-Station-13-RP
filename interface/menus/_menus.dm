@@ -43,6 +43,7 @@
 
 /datum/skin_menu/proc/creation_list(client/C)
 	. = list()
+	// create categories after
 	for(var/datum/skin_menu_category/cat as anything in categories)
 		. |= cat.creation_list(C)
 
@@ -80,6 +81,9 @@
 		E.load(C, TRUE)
 
 /datum/skin_menu/proc/create_and_bind(client/C)
+	// menu creation is special
+	// we must winclone; skin must not have a control named "menu"
+	winclone(C, SKIN_ID_ABSTRACT_MENU, id)
 	var/list/creation = creation_list(C)
 	for(var/id in creation)
 		winset(C, id, creation[id])
@@ -118,11 +122,12 @@
 
 /datum/skin_menu_category/proc/creation_list(client/C)
 	. = list()
+	// create us first
 	.[id] = list2params(list(
-		"type" = "menu",
 		"parent" = menu.id,
 		"name" = name,
 	))
+	// create our children
 	for(var/datum/skin_menu_entry/E as anything in entries)
 		.[E.id] = E.cached_constructor
 
@@ -246,7 +251,6 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 /datum/skin_menu_entry/proc/creation_parameters()
 	var/list/params = list()
 	params["parent"] = category.id
-	params["type"] = "menu"
 	var/built = "[generate_command()]\n.menutrigger [id] \[\[is-checked\]\]"
 	params["command"] = built
 	params["name"] = name

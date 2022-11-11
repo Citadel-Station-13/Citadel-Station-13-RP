@@ -165,6 +165,11 @@
 /proc/_list_construct(...)
 	. = args.Copy()
 
+/proc/_list_construct_assoc(...)
+	. = list()
+	for(var/i in 1 to (args.len - 1) step 2)
+		.[args[i]] = args[i+1]
+
 /proc/_list_add(list/L, ...)
 	if (args.len < 2)
 		return

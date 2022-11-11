@@ -1,4 +1,13 @@
+//? WINCLONE IDs; NO SKIN CONTROL MAY HAVE THESE IDs, OR WINCLONE WILL NOT CREATE "NAKED" CONTROLS OF THIS TYPE!
+#define SKIN_ID_ABSTRACT_MENU "menu"
+#define SKIN_ID_ABSTRACT_WINDOW "window"
+#define SKIN_ID_ABSTRACT_PANE "pane"
+#define SKIN_ID_ABSTRACT_MACRO "macro"
+
 //? SKIN ELEMENT IDS; MAKE SURE TO UPDATE THESE WHEN CHANGING SKIN.DMF.
+//! Window IDs
+/// main game window
+#define SKIN_WINDOW_ID_MAIN "mainwindow"
 
 //! Map IDs
 /// main game viewport
