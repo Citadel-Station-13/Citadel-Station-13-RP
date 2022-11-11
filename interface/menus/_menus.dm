@@ -251,8 +251,7 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 /datum/skin_menu_entry/proc/creation_parameters()
 	var/list/params = list()
 	params["parent"] = category.id
-	var/built = ".menutrigger \"[id]\" \[\[is-checked\]\]\n[generate_command()]"
-	params["command"] = built
+	params["command"] = ".menutrigger \"[id]\" \[\[is-checked\]\]\n[generate_command()]"
 	params["name"] = name
 	if(group)
 		params["group"] = group
