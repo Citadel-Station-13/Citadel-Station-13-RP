@@ -171,6 +171,7 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 	id = SKIN_ID_MENU_BUTTON_NEAREST_NEIGHBOR
 	name = "Nearest Neighbor (Sharp)"
 	zoom_mode = "distort"
+	is_default = TRUE
 
 /datum/skin_menu_entry/scaling/normal
 	id = SKIN_ID_MENU_BUTTON_POINT_SAMPLE

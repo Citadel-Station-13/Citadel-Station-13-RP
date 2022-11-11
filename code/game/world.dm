@@ -18,13 +18,6 @@ GLOBAL_LIST(topic_status_cache)
 //This happens after the Master subsystem new(s) (it's a global datum)
 //So subsystems globals exist, but are not initialised
 /world/New()
-	//! init auxtools
-	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
-	if (debug_server)
-		call(debug_server, "auxtools_init")()
-		enable_debugging()
-	// AUXTOOLS_CHECK(AUXTOOLS_YAML)
-
 	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 
 	var/tempfile = "data/logs/config_error.[GUID()].log"	//temporary file used to record errors with loading config, moved to log directory once logging is set

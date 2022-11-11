@@ -25,12 +25,13 @@
 	for(var/i in 1 to categories.len)
 		if(ispath(categories[i]))
 			var/path = categories[i]
-			var/datum/skin_menu_category/C = new path
+			var/datum/skin_menu_category/C = new path(src)
 			categories[i] = C
 			// category will init in /New(), so...
 			for(var/datum/skin_menu_entry/E as anything in C.entries)
 				// again let it runtime if it's bad, we WANT it to runtime so integration tests fail
-				button_groups |= E.group
+				if(E.group)
+					button_groups |= E.group
 				if(E.is_default)
 					button_groups[E.group] = E.id
 		else
@@ -38,7 +39,7 @@
 	// verify
 	for(var/group in button_groups)
 		if(!button_groups[group])
-			CRASH("no default for group [group]")
+			stack_trace("no default for group [group]")
 
 /datum/skin_menu/proc/creation_list(client/C)
 	. = list()
@@ -108,9 +109,9 @@
 		var/path = entries[i]
 		var/datum/skin_menu_entry/entry
 		if(isnull(path))
-			entry = new /datum/skin_menu_entry/spacer
+			entry = new /datum/skin_menu_entry/spacer(src)
 		else if(ispath(path))
-			entry = new path
+			entry = new path(src)
 		else
 			continue	// wtf? let it runtime later
 		entries[i] = entry
@@ -263,6 +264,12 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 /datum/skin_menu_entry/spacer
 	id = null
 	name = null
+
+/datum/skin_menu_entry/spacer/register()
+	return
+
+/datum/skin_menu_entry/spacer/unregister()
+	return
 
 //! client stuff needed to make this work
 /client/verb/menu_button_triggered(id as text, checked as num)
