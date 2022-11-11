@@ -21,11 +21,23 @@
 	return ..()
 
 /datum/skin_menu/proc/init_categories()
+	button_groups = list()
 	for(var/i in 1 to categories.len)
 		if(ispath(categories[i]))
-			categories[i] = new categories[i]
+			var/datum/skin_menu_category/C
+			categories[i] = C = new categories[i]
+			// category will init in /New(), so...
+			for(var/datum/skin_menu_entry/E as anything in C.entries)
+				// again let it runtime if it's bad, we WANT it to runtime so integration tests fail
+				butotn_groups |= E.group
+				if(E.is_default)
+					button_groups[E.group] = E.id
 		else
 			continue	// wtf? let it runtime later
+	// verify
+	for(var/group in button_groups)
+		if(!button_groups[group])
+			CRASH("no default for group [group]")
 
 /datum/skin_menu/proc/creation_list(client/C)
 	. = list()
@@ -36,8 +48,34 @@
 	create_and_bind(C)
 	load_settings(C)
 
+/datum/skin_menu/proc/all_entries()
+	. = list()
+	for(var/datum/skin_menu_category/C as anything in categories)
+		for(var/datum/skin_menu_entry/E as anything in C.entries)
+			if(istype(C, /datum/skin_menu_entry/spacer))
+				continue
+			. += E
+
 /datum/skin_menu/proc/load_settings(client/C)
-	#warn impl
+	// basically we need to load saved settings, and default if not
+	var/list/groups_loaded = list()
+	for(var/datum/skin_menu_entry/E as anything in all_entries())
+		if(!E.checkbox || !E.is_saved)
+			continue	// don't care
+		if(E.group)
+			// don't load groups, they only load enable, not disable
+			groups_loaded[E.group] = id
+		else
+			// load anything else
+			var/enabled = !!C.menu_button_checked(E.id)
+			E.load(C, enabled)
+	// we do need to load groups if possible
+	for(var/group in button_groups)
+		if(groups_loaded[group])
+			continue
+		var/default = button_groups[group]
+		var/datum/skin_menu_entry/E = GLOB.skin_menu_entries[default]
+		E.load(C, TRUE)
 
 /datum/skin_menu/proc/create_and_bind(client/C)
 	var/list/creation = creation_list(C)
@@ -98,7 +136,7 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 	 * generate_command() overrides this.
 	 */
 	var/command
-	/// do we have a button group? checkbox is required for this
+	/// do we have a button group? checkbox is required for this; we will NOT load disabled for groups!
 	var/group
 	/// default enabled for checkable? only one in a group can have this!! infact, only one in a group **MUST** have tihs!!
 	var/is_default = FALSE
