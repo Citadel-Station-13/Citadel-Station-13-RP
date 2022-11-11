@@ -7,7 +7,7 @@
 	name_plural = "Proteans"
 	category = "Special"
 	blurb = "Sometimes very advanced civilizations will produce the ability to swap into manufactured, robotic bodies. And sometimes \
-			<i>VERY</i> advanced civilizations have the option of 'nanoswarm' bodies. Effectively a single robot body comprised \
+			<i>very</i> advanced civilizations have the option of 'nanoswarm' bodies. Effectively a single robot body comprised \
 			of millions of tiny nanites working in concert to maintain cohesion."
 	show_ssd = "totally quiescent"
 	death_message = "rapidly loses cohesion, dissolving into a cloud of gray dust..."

@@ -14,22 +14,22 @@
 		. += "This is a [SPAN_RED("restricted")] species. You cannot join as this outside of special circumstances."
 	else if(CS.species_spawn_flags & SPECIES_SPAWN_WHITELISTED)
 		. += "This is a whitelisted species. You "
-		if(config.check_alien_whitelist(ckey(CS.name), client_ckey))
+		if(config.check_alien_whitelist(ckey(CS.name), prefs.client_ckey))
 			. += SPAN_GREEN("do")
 		else
 			. += SPAN_RED("do not")
 		. += " have the whitelist to play as one."
 	. += "</center>"
 	. += "<div class='statusDisplay'>"
-	. += "[S.desc]"
+	. += "[CS.desc]"
 	. += "</div>"
 
 /datum/category_item/player_setup_item/background/char_species/spawn_checks(datum/preferences/prefs, data, flags, list/errors)
 	var/datum/character_species/CS = SScharacters.resolve_character_species(data)
-	if((CS.species_spawn_flags & SPECIES_SPAWN_RESTRICTED) && !(flags & PRE_FCOPY_TO_NO_SPECIES_CHECK))
+	if((CS.species_spawn_flags & SPECIES_SPAWN_RESTRICTED) && !(flags & PREF_COPY_TO_NO_CHECK_SPECIES))
 		errors?.Add(SPAN_WARNING("[CS.name] is a restricted species. You cannot join as this as most normal roles."))
 		return FALSE
-	if(CS.whitelisted && !config.check_alien_whitelist(ckey(CS.name), prefs.client_ckey))
+	if((CS.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) && !config.check_alien_whitelist(ckey(CS.name), prefs.client_ckey))
 		errors?.Add(SPAN_WARNING("You do not have the whitelist to play as a [CS.name]."))
 		return FALSE
 	return TRUE
