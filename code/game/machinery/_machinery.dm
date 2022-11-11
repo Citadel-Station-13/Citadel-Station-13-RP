@@ -456,7 +456,8 @@
 
 /obj/machinery/proc/dismantle()
 	playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
-	//TFF 3/6/19 - port Cit RP fix of infinite frames. If it doesn't have a circuit board, don't create a frame. Return a smack instead. BONK!
+	on_deconstruction()
+	// If it doesn't have a circuit board, don't create a frame. Return a smack instead. BONK!
 	if(!circuit)
 		return 0
 	var/obj/structure/frame/A = new /obj/structure/frame(src.loc)
@@ -501,6 +502,14 @@
 	M.after_deconstruct(src)
 	qdel(src)
 	return 1
+
+//called on machinery construction (i.e from frame to machinery) but not on initialization
+// /obj/machinery/proc/on_construction() //! Not used yet.
+// 	return
+
+//called on deconstruction before the final deletion
+/obj/machinery/proc/on_deconstruction()
+	return
 
 /**
  * Puts passed object in to user's hand
