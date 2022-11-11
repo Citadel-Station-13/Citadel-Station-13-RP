@@ -759,13 +759,17 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 	. = ..()
 
 /client/proc/change_view(new_size, forced, translocate)
+	set waitfor = FALSE	// to async temporary view
 	// todo: refactor this, client view changes should be ephemeral.
 	var/list/L = getviewsize(new_size)
 	set_temporary_view(L[1], L[2])
 
 /**
  * directly sets our view
+ * you should probably be using perspective datums most of the time instead
  * WARNING: this is verbatim; aka, view = 7 is 15 width 15 height, NOT 7x7!
+ *
+ * furthermore, this proc is BLOCKING.
  */
 /client/proc/set_temporary_view(width, height)
 	if(!width || !height || width < 0 || height < 0)
@@ -778,6 +782,12 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 		fit_viewport()
 	refit_viewport()
 
+/**
+ * resets our temporary view
+ * you should probably be using perspective datums most of the time instead
+ *
+ * furthermore, this proc is BLOCKING
+ */
 /client/proc/reset_temporary_view()
 	using_temporary_viewsize = FALSE
 	temporary_viewsize_height = null
