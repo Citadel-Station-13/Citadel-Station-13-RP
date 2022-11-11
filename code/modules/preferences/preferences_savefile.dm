@@ -79,6 +79,7 @@
 	if(!S)
 		return FALSE
 	S.cd = "/"
+	skin = sanitize_islist(skin)
 	WRITE_FILE(S["skin"], skin)
 	return TRUE
 
@@ -95,6 +96,7 @@
 		return FALSE
 	S.cd = "/"
 	READ_FILE(S["skin"], skin)
+	skin = sanitize_islist(skin)
 	return TRUE
 
 /datum/preferences/proc/load_character(slot)

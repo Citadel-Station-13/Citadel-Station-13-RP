@@ -94,6 +94,7 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 /datum/skin_menu_entry/zoom
 	group = SKIN_BUTTON_GROUP_MAP_ZOOM
 	load_command_default = TRUE
+	checkbox = TRUE
 
 /datum/skin_menu_entry/zoom/stretch_to_fit
 	name = "Stretch to Fit"
@@ -128,6 +129,7 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 //! widescreen
 /datum/skin_menu_entry/widescreen
 	group = SKIN_BUTTON_GROUP_MAP_WIDESCREEN
+	checkbox = TRUE
 
 /datum/skin_menu_entry/widescreen/pressed(client/C, new_checked)
 	. = ..()
@@ -162,6 +164,7 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 //! scaling
 /datum/skin_menu_entry/scaling
 	group = SKIN_BUTTON_GROUP_MAP_SCALING
+	checkbox = TRUE
 	load_command_default = TRUE
 	var/zoom_mode
 
