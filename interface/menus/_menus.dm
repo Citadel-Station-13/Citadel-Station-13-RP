@@ -272,7 +272,7 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 	/// next id
 	var/static/next_id = 0
 
-/datum/skin_menu_entry/New()
+/datum/skin_menu_entry/spacer/New()
 	..()
 	id = "menubutton_spacer_[++next_id]"
 
