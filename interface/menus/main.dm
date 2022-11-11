@@ -26,8 +26,13 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 	group = SKIN_BUTTON_GROUP_MAP_ZOOM
 
 /datum/skin_menu_entry/zoom/stretch_to_fit
+	name = "Stretch to Fit"
+	id = SKIN_ID_MENU_BUTTON_STRETCH_TO_FIT
+	is_default = TRUE
 
 /datum/skin_menu_entry/zoom/stretch_to_fill
+	name = "Stretch to Fill"
+	id = SKIN_ID_MENU_BUTTON_STRETCH_NO_LETTERBOX
 
 //? the normal sizes are created by main_zoom category
 /datum/skin_menu_entry/zoom/specific
@@ -36,9 +41,9 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 
 /datum/skin_menu_entry/zoom/specific/New(datum/skin_menu_category/category, pixel_size)
 	src.pixel_size = pixel_size
+	src.id = SKIN_ID_MENU_BUTTON_FOR_RESOLUTION(pixel_size)
+	src.name = "[pixel_size]x[pixel_size]"
 	..()
-
-/datum/skin_menu_entry/zoom/specific/creation_parameters()
 
 //! widescreen
 /datum/skin_menu_entry/widescreen

@@ -75,6 +75,11 @@
 	/// temporary view active?
 	var/using_temporary_viewsize = FALSE
 
+	//! menu button statuses
+	var/list/menu_buttons_checked = list()
+	//! menu group statuses
+	var/list/menu_group_status = list()
+
 		////////////////
 		//ADMIN THINGS//
 		////////////////

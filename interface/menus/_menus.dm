@@ -9,7 +9,7 @@
 	var/bind_to
 	/// category datum types - transformed into datums at runtime
 	var/list/datum/skin_menu_category/categories
-	/// during initial build, we will construct groups list
+	/// during initial build, we will construct groups list, group name associated to button id for default
 	var/list/button_groups
 
 /datum/skin_menu/New()
@@ -20,7 +20,7 @@
 	button_groups = null
 	return ..()
 
-/datum/skin_menu/proc/init_entries()
+/datum/skin_menu/proc/init_categories()
 
 /datum/skin_menu/proc/creation_list(client/C)
 
@@ -72,8 +72,8 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 	var/command
 	/// do we have a button group? checkbox is required for this
 	var/group
-	/// are we the default for the group?
-	var/default
+	/// default enabled for checkable? only one in a group can have this!! infact, only one in a group **MUST** have tihs!!
+	var/is_default = FALSE
 	/// checkable?
 	var/checkbox = FALSE
 	/// command to execute, if any, when loading prefs if we're checked
@@ -105,10 +105,15 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 	GLOB.skin_menu_entries -= id
 
 /datum/skin_menu_entry/proc/load(client/C)
+	if(!checkbox)
+		return	// why do we care?
+	var/enabled = C.prefs.load_skin_data(id)
+	if(load_command_proc)
+
 
 /datum/skin_menu_entry/proc/save(client/C, enabled)
 
-/datum/skin_menu_entry/proc/pressed(client/C)
+/datum/skin_menu_entry/proc/pressed(client/C, new_checked)
 
 /datum/skin_menu_entry/proc/load_command_enabled(client/C)
 	CRASH("why did the proc get called without an override?")
@@ -117,9 +122,25 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 	CRASH("why did the proc get called without an override?")
 
 /**
+ * generates our normal command
+ */
+/datum/skin_menu_entry/proc/generate_command()
+	return command
+
+/**
  * should omit id, that'll be set separately
  */
 /datum/skin_menu_entry/proc/creation_parameters()
+	var/list/params = list()
+	params["parent"] = category.id
+	params["type"] = "menu"
+	var/built = "[generate_command()]\n.menutrigger [id] \[\[is-checked\]\]"
+	params["command"] = built
+	params["name"] = name
+	if(group)
+		params["group"] = group
+	params["is-checked"] = is_default? "true" : "false"
+	params["can-check"] = checkbox? "true" : "false"
 
 /datum/skin_menu_entry/proc/cache_constructor()
 	cached_constructor = creation_parameters()
@@ -132,7 +153,7 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 	name = null
 
 //! client stuff needed to make this work
-/client/verb/menu_button_triggered(id as text)
+/client/verb/menu_button_triggered(id as text, checked as num)
 	set name = ".menutrigger"
 	set hidden = TRUE
 
@@ -141,4 +162,22 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 		stack_trace("no entry found for [id], triggered by [src]")
 		to_chat(usr, SPAN_WARNING("error: no menu entry found; this is a bug. id: [id]"))
 		return
-	E.pressed(src)
+	E.pressed(src, checked)
+
+/**
+ * gets which button of a group we have selected
+ */
+/client/proc/menu_group_query(group)
+	return menu_group_statuses[group]
+
+/**
+ * gets if a button is checked
+ */
+/client/proc/menu_button_checked(id)
+	return menu_buttons_checked[id]
+
+/**
+ * executes a command
+ */
+/client/proc/menu_run_command(str)
+	winset(src, null, "command=[str]")

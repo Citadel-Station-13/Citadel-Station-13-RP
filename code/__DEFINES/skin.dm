@@ -31,7 +31,7 @@
 	// buttons - size
 	#define SKIN_ID_MENU_BUTTON_STRETCH_TO_FIT "menubutton_stretchtofit"
 	#define SKIN_ID_MENU_BUTTON_STRETCH_NO_LETTERBOX "menubutton_stretchtofill"
-	#define SKIN_ID_MENU_BUTTON_FOR_RESOLUTION(resolution) "menubutton_[#resolution]x[#resolution]"
+	#define SKIN_ID_MENU_BUTTON_FOR_RESOLUTION(resolution) "menubutton_[resolution]x[resolution]"
 	#define SKIN_ID_MENU_BUTTON_WIDESCREEN_ENABLED "menubutton_widescreen_on"
 	#define SKIN_ID_MENU_BUTTON_WIDESCREEN_DISABLED "menubutton_widescreen_off"
 	// buttons - scaling
