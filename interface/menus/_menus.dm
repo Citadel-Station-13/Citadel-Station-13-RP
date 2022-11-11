@@ -41,8 +41,8 @@
 
 /datum/skin_menu/proc/creation_list(client/C)
 	. = list()
-	for(var/datum/skin_menu_category/C as anything in categories)
-		. |= C.creation_list(C)
+	for(var/datum/skin_menu_category/cat as anything in categories)
+		. |= cat.creation_list(C)
 
 /datum/skin_menu/proc/setup(client/C)
 	create_and_bind(C)
