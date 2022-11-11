@@ -29,7 +29,7 @@
 			// category will init in /New(), so...
 			for(var/datum/skin_menu_entry/E as anything in C.entries)
 				// again let it runtime if it's bad, we WANT it to runtime so integration tests fail
-				butotn_groups |= E.group
+				button_groups |= E.group
 				if(E.is_default)
 					button_groups[E.group] = E.id
 		else
