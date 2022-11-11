@@ -14,6 +14,14 @@
  * ! View sizes should only be for clients.
  * ! Do not read off this for stuff like AI view/target tracking.
  *
+ * ? - - - ATTENTION - - -
+ * ? We track MAXIMUM view sizes.
+ * ? Client can resize up/down as needed.
+ * ? If you want to force a client to a specific size,
+ * ? regardless of their widescreen setting,
+ * ? use client.set_temporary_view.
+ * ? Augmented view will also ignore client prefs on widescreen, *kinda.*
+ *
  * as of right now, perspectives will **trample** the following on every set:
  * client.eye
  * client.lazy_eye (unimplemented)

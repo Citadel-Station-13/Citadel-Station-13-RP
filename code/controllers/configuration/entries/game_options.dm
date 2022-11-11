@@ -9,7 +9,7 @@
 		return FALSE
 	var/width = text2num(split[1])
 	var/height = text2num(split[2])
-	if(height < 1 || width < 1 || height > 69 || width > 69)
+	if(height < 1 || width < 1 || height > 67 || width > 67)
 		return FALSE
 	. = ..()
 	if(!.)

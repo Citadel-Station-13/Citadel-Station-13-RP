@@ -50,7 +50,7 @@ GLOBAL_VAR(lock_client_view_y)
 /**
  * called by verbs that change viewport
  */
-/client/verb/init_viewport()
+/client/verb/update_viewport()
 	set name = ".update_viewport"
 	set hidden = TRUE
 	if(viewport_rwlock)
@@ -130,6 +130,14 @@ GLOBAL_VAR(lock_client_view_y)
 	if(using_temporary_viewsize)
 		view = "[temporary_viewsize_width]x[temporary_viewsize_height]"
 		on_refit_viewport(temporary_viewsize_width, temporary_viewsize_height)
+		return
+	var/widescreen = menu_button_checked(SKIN_ID_MENU_BUTTON_WIDESCREEN_ENABLED)
+	if(!widescreen)
+		// if not widescreen, we should just force to 15 x 15 and their augmented view
+		var/width = 15 + (using_perspective.augment_view_width * 2)
+		var/height = 15 + (using_perspective.augment_view_height * 2)
+		view = "[width]x[height]"
+		on_refit_viewport(width, height)
 		return
 	var/stretch_to_fit = assumed_viewport_zoom == 0
 	using_perspective.ensure_view_cached()
@@ -219,9 +227,23 @@ GLOBAL_VAR(lock_client_view_y)
 	var/maximum_splitter_percent = 80
 	// splitter intrinsic width
 	var/assumed_splitter_width = 4
+	// effective size
+	var/widescreen = menu_button_checked(SKIN_ID_MENU_BUTTON_WIDESCREEN_ENABLED)
+	var/effective_view_width
+	var/effective_view_height
+	// todo: optimize the shit out of this proc and the view system
+	if(!isnull(GLOB.lock_client_view_x) && !isnull(GLOB.lock_client_view_y))
+		effective_view_width = GLOB.lock_client_view_x
+		effective_view_height = GLOB.lock_client_view_y
+	if(widescreen)
+		effective_view_width = clamp(temporary_viewsize_width || using_perspective.cached_view_width, GLOB.min_client_view_x, 67)
+		effective_view_height = clamp(temporary_viewsize_height || using_perspective.cached_view_height, GLOB.min_client_view_y, 67)
+	else
+		effective_view_width = temporary_viewsize_width || (15 + (using_perspective.augment_view_width * 2))
+		effective_view_height = temporary_viewsize_height || (15 + (using_perspective.augment_view_height * 2))
 	if(assumed_viewport_zoom == 0)
 		// they're stretching to fit; this makes it annoying
-		var/aspect_ratio = max(GLOB.min_client_view_x, using_perspective.cached_view_width) / max(GLOB.min_client_view_y, using_perspective.cached_view_height)
+		var/aspect_ratio = effective_view_width / effective_view_height
 		// we have to fit everything
 		// viewport_spy should never change since that's not what the player can drag,
 		// unless they resize the outer window itself.
