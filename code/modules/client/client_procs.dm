@@ -151,32 +151,39 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	///////////
 
 /client/New(TopicData)
+	//! pre-connect-ish
+	// set appadmin for profiling or it might not work (?) (this is old code we just assume it's here for a reason)
 	world.SetConfig("APP/admin", ckey, "role=admin")
-	//var/tdata = TopicData //save this for later use
-	TopicData = null							//Prevent calls to client.Topic from connect
-
-	if(connection != "seeker" && connection != "web")//Invalid connection type.
+	// block client.Topic() calls from connect
+	TopicData = null
+	// kick out invalid connections
+	if(connection != "seeker" && connection != "web")
 		return null
-
+	// kick out guests
 	if(!config_legacy.guests_allowed && IsGuestKey(key))
 		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
 		del(src)
 		return
-
+	// pre-connect greeting
 	to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
-
+	// register in globals
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
+	//! Resolve storage datums
 	// resolve persistent data
 	persistent = resolve_client_data(ckey)
-	// todo: move resolve database data up here
+	// todo: move resolve database data up here but above preferences
+	// todo: move preferences up here but above persistent
 
+	//! Setup user interface
+	// build top level menu
+	GLOB.main_window_menu.setup(src)
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
 
+	//! Setup admin tooling
 	GLOB.ahelp_tickets.ClientLogin(src)
-	SSserver_maint.UpdateHubStatus()
 	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
 	//Admin Authorisation
 	holder = admin_datums[ckey]
@@ -405,8 +412,12 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			log_and_message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([account_age] days).")
 
 	//? We are done
+	// set initialized
 	initialized = TRUE
+	// show any migration errors
 	prefs.auto_flush_errors()
+	// update our hub label
+	SSserver_maint.UpdateHubStatus()
 
 	//////////////
 	//DISCONNECT//

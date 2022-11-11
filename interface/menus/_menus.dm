@@ -21,19 +21,29 @@
 	return ..()
 
 /datum/skin_menu/proc/init_categories()
+	for(var/i in 1 to categories.len)
+		if(ispath(categories[i]))
+			categories[i] = new categories[i]
+		else
+			continue	// wtf? let it runtime later
 
 /datum/skin_menu/proc/creation_list(client/C)
+	. = list()
+	for(var/datum/skin_menu_category/C as anything in categories)
+		. |= C.creation_list(C)
 
 /datum/skin_menu/proc/setup(client/C)
 	create_and_bind(C)
 	load_settings(C)
 
 /datum/skin_menu/proc/load_settings(client/C)
+	#warn impl
 
 /datum/skin_menu/proc/create_and_bind(client/C)
 	var/list/creation = creation_list(C)
 	for(var/id in creation)
 		winset(C, id, creation[id])
+	winset(C, bind_to, "menu=[id]")
 
 //! skin menu categories
 /datum/skin_menu_category
@@ -55,8 +65,19 @@
 	return ..()
 
 /datum/skin_menu_category/proc/init_entries()
+	for(var/i in 1 to entries.len)
+		var/path = entries[i]
+		if(isnull(path))
+			entries[path] = new /datum/skin_menu_entry/spacer
+		else if(ispath(path))
+			entries[path] = new path
+		else
+			continue	// wtf? let it runtime later
 
-/datum/skin_menu_category/proc/
+/datum/skin_menu_category/proc/creation_list(client/C)
+	. = list()
+	for(var/datum/skin_menu_entry/E as anything in entries)
+		.[E.id] = E.cached_constructor
 
 //! skin menu entries
 /// lookup for skin menu entries
@@ -104,16 +125,40 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 /datum/skin_menu_entry/proc/unregister()
 	GLOB.skin_menu_entries -= id
 
-/datum/skin_menu_entry/proc/load(client/C)
+/datum/skin_menu_entry/proc/load(client/C, enabled)
 	if(!checkbox)
 		return	// why do we care?
-	var/enabled = C.prefs.load_skin_data(id)
+	var/command
 	if(load_command_proc)
-
+		if(enabled)
+			command = load_command_enabled(C)
+		else
+			command = load_command_enabled(C)
+	else
+		if(enabled)
+			command = load_command_enabled
+		else
+			command = load_command_disabled
+	if(command)
+		C.menu_run_command(command)
+	if(enabled)
+		LAZYSET(C.menu_buttons_checked, id, TRUE)
+		if(group)
+			LAZYSET(C.menu_group_statuses, group, id)
+	winset(C, id, "is-checked=[enabled? "true" : "false"]")
 
 /datum/skin_menu_entry/proc/save(client/C, enabled)
+	if(!checkbox)
+		return	// we don't care
+	if(group)
+		C.prefs.save_skin_data(group, id)
+	else
+		C.prefs.save_skin_data(id, enabled)
 
 /datum/skin_menu_entry/proc/pressed(client/C, new_checked)
+	if(!checkbox)
+		return	// we don't care
+	save(C, new_enabled)
 
 /datum/skin_menu_entry/proc/load_command_enabled(client/C)
 	CRASH("why did the proc get called without an override?")

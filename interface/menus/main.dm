@@ -1,14 +1,23 @@
 GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 
 /datum/skin_menu/main
+	id = SKIN_ID_MAIN_MENU
 
 /datum/skin_menu_category/main_file
+	id = SKIN_ID_MENU_CATEGORY_FILE
+	name = "File"
 
 /datum/skin_menu_category/main_zoom
+	id = SKIN_ID_MENU_CATEGORY_ZOOM
+	name = "Zoom"
 
 /datum/skin_menu_category/main_scaling
+	id = SKIN_ID_MENU_CATEGORY_SCALING
+	name = "Scaling"
 
 /datum/skin_menu_category/main_help
+	id = SKIN_ID_MENU_CATEGORY_HELP
+	name = "Help"
 
 //! file
 /datum/skin_menu_entry/quick_screenshot
