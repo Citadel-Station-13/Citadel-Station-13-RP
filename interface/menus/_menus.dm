@@ -254,6 +254,7 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 		params["group"] = group
 	params["is-checked"] = is_default? "true" : "false"
 	params["can-check"] = checkbox? "true" : "false"
+	return list2params(params)
 
 /datum/skin_menu_entry/proc/cache_constructor()
 	cached_constructor = creation_parameters()
