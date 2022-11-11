@@ -24,8 +24,9 @@
 	button_groups = list()
 	for(var/i in 1 to categories.len)
 		if(ispath(categories[i]))
-			var/datum/skin_menu_category/C
-			categories[i] = C = new categories[i]
+			var/path = categories[i]
+			var/datum/skin_menu_category/C = new path
+			categories[i] = C
 			// category will init in /New(), so...
 			for(var/datum/skin_menu_entry/E as anything in C.entries)
 				// again let it runtime if it's bad, we WANT it to runtime so integration tests fail
@@ -105,12 +106,14 @@
 /datum/skin_menu_category/proc/init_entries()
 	for(var/i in 1 to entries.len)
 		var/path = entries[i]
+		var/datum/skin_menu_entry/entry
 		if(isnull(path))
-			entries[path] = new /datum/skin_menu_entry/spacer
+			entry = new /datum/skin_menu_entry/spacer
 		else if(ispath(path))
-			entries[path] = new path
+			entry = new path
 		else
 			continue	// wtf? let it runtime later
+		entries[i] = entry
 
 /datum/skin_menu_category/proc/creation_list(client/C)
 	. = list()
