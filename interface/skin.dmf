@@ -24,7 +24,6 @@ window "mainwindow"
 		anchor2 = 100,100
 		background-color = none
 		saved-params = "splitter"
-		on-size = "OnResize"
 		left = "mapwindow"
 		right = "infowindow"
 		is-vert = true
