@@ -111,7 +111,7 @@
 #include "code\__DEFINES\_flags\obj_flags.dm"
 #include "code\__DEFINES\_flags\turf_flags.dm"
 #include "code\__DEFINES\admin\keybindings.dm"
-#include "code\__DEFINES\assets\chemistry.dm"
+#include "code\__DEFINES\assets\medical.dm"
 #include "code\__DEFINES\atmospherics\atmos.dm"
 #include "code\__DEFINES\atmospherics\atmospheres.dm"
 #include "code\__DEFINES\atmospherics\constants.dm"

@@ -7,56 +7,22 @@ import { ComplexModal, modalOpen, modalRegisterBodyOverride } from './common/Com
 
 const transferAmounts = [1, 5, 10, 30, 60];
 
-const analyzeModalBodyOverride = (modal, context) => {
-  const { act, data } = useBackend(context);
-  const result = modal.args.analysis;
-  return (
-    <Section
-      level={2}
-      m="-1rem"
-      pb="1rem"
-      title={data.condi ? "Condiment Analysis" : "Reagent Analysis"}>
-      <Box mx="0.5rem">
-        <LabeledList>
-          <LabeledList.Item label="Name">
-            {result.name}
-          </LabeledList.Item>
-          <LabeledList.Item label="Description">
-            {(result.desc || "").length > 0 ? result.desc : "N/A"}
-          </LabeledList.Item>
-          {result.blood_type && (
-            <Fragment>
-              <LabeledList.Item label="Blood type">
-                {result.blood_type}
-              </LabeledList.Item>
-              <LabeledList.Item
-                label="Blood DNA"
-                className="LabeledList__breakContents">
-                {result.blood_dna}
-              </LabeledList.Item>
-            </Fragment>
-          )}
-          {!data.condi && (
-            <Button
-              icon={data.printing ? 'spinner' : 'print'}
-              disabled={data.printing}
-              iconSpin={!!data.printing}
-              ml="0.5rem"
-              content="Print"
-              onClick={() => act('print', {
-                idx: result.idx,
-                beaker: modal.args.beaker,
-              })}
-            />
-          )}
-        </LabeledList>
-      </Box>
-    </Section>
-  );
+type Data = {
+  mode: boolean,
+  beaker: BooleanLike;
+  beakerReagents: ReagentData[];
+  bufferReagents: ReagentData[];
+};
+
+type ReagentData = {
+  name: string;
+  id: string;
+  description: string;
+  volume: number;
 };
 
 export const ChemMaster = (props, context) => {
-  const { data } = useBackend(context);
+  const { data } = useBackend<Data>(context);
   const {
     condi,
     beaker,
@@ -66,11 +32,13 @@ export const ChemMaster = (props, context) => {
   } = data;
   return (
     <Window
-      width={575}
-      height={495}
+      width={500}
+      height={655}
       resizable>
       <ComplexModal />
-      <Window.Content className="Layout__content--flexColumn">
+      <Window.Content
+        className="Layout__content--flexColumn"
+        scrollable >
         <ChemMasterBeaker
           beaker={beaker}
           beakerReagents={beaker_reagents}
@@ -252,20 +220,20 @@ const ChemMasterProduction = (props, context) => {
         flexGrow="1"
         buttons={
           <Button
-            disabled={!data.loaded_pill_bottle}
+            disabled={!data.pill_bottle}
             icon="eject"
-            content={data.loaded_pill_bottle
+            content={data.pill_bottle
               ? (
-                data.loaded_pill_bottle_name
+                data.pill_bottle_name
                 + " ("
-                + data.loaded_pill_bottle_contents_len
+                + data.pill_bottle_contents_len
                 + "/"
-                + data.loaded_pill_bottle_storage_slots
+                + data.pill_bottle_storage_slots
                 + ")"
               )
               : "No pill bottle loaded"}
             mb="0.5rem"
-            onClick={() => act('ejectp')}
+            onClick={() => act('eject_pill_bottle')}
           />
         }>
         <Flex height="100%">
@@ -293,20 +261,20 @@ const ChemMasterProduction = (props, context) => {
       flexGrow="1"
       buttons={
         <Button
-          disabled={!data.loaded_pill_bottle}
+          disabled={!data.pill_bottle}
           icon="eject"
-          content={data.loaded_pill_bottle
+          content={data.pill_bottle
             ? (
-              data.loaded_pill_bottle_name
+              data.pill_bottle_name
               + " ("
-              + data.loaded_pill_bottle_contents_len
+              + data.pill_bottle_contents_len
               + "/"
-              + data.loaded_pill_bottle_storage_slots
+              + data.pill_bottle_storage_slots
               + ")"
             )
             : "No pill bottle loaded"}
           mb="0.5rem"
-          onClick={() => act('ejectp')}
+          onClick={() => act('eject_pill_bottle')}
         />
       }>
       {!props.isCondiment ? (
@@ -354,11 +322,12 @@ const ChemMasterProductionChemical = (props, context) => {
             <Button
               key={pill.id}
               width="30px"
-              selected={pill.id === chosen_pill_style}
+              verticalAlignContent="middle"
               textAlign="center"
+              selected={pill.id === chosen_pill_style}
               color="transparent"
-              onClick={() => act('pill_style', { id: pill.id })}>
-              <Box mx={-1} className={pill.class_name} />
+              onClick={() => act('change_pill_style', { id: pill.id })}>
+              <Box mx={-1} mb={0} mt={1} className={pill.class_name} />
             </Button>
           ))}
         </LabeledList.Item>
@@ -382,12 +351,13 @@ const ChemMasterProductionChemical = (props, context) => {
             <Button
               key={patch.style}
               width="30px"
+              verticalAlignContent="middle"
               selected={patch.style === chosen_patch_style}
               textAlign="center"
               color="transparent"
               onClick={() =>
                 act('change_patch_style', { patch_style: patch.style })}>
-              <Box mb={0} mt={1} className={patch.class_name} />
+              <Box mx={-1} mb={0} mt={1} className={patch.class_name} />
             </Button>
           ))}
         </LabeledList.Item>
@@ -415,8 +385,8 @@ const ChemMasterProductionChemical = (props, context) => {
               selected={bottle.id === chosen_bottle_style}
               textAlign="center"
               color="transparent"
-              onClick={() => act('bottle_style', { id: bottle.id })}>
-              <Box mb={0} mt={1} className={bottle.class_name} />
+              onClick={() => act('change_bottle_style', { id: bottle.id })}>
+              <Box mx={-1} mb={0} mt={1} className={bottle.class_name} />
             </Button>
           ))}
         </LabeledList.Item>
@@ -473,7 +443,7 @@ const ChemMasterProductionCondiment = (props, context) => {
 
 // const ChemMasterCustomization = (props, context) => {
 //   const { act, data } = useBackend(context);
-//   if (!data.loaded_pill_bottle) {
+//   if (!data.pill_bottle) {
 //     return (
 //       <Section title="Pill Bottle Customization">
 //         <Box color="label">
@@ -486,23 +456,71 @@ const ChemMasterProductionCondiment = (props, context) => {
 //   return (
 //     <Section title="Pill Bottle Customization">
 //       <Button
-//         disabled={!data.loaded_pill_bottle}
+//         disabled={!data.pill_bottle}
 //         icon="eject"
-//         content={data.loaded_pill_bottle
+//         content={data.pill_bottle
 //           ? (
-//             data.loaded_pill_bottle_name
+//             data.pill_bottle_name
 //               + " ("
-//               + data.loaded_pill_bottle_contents_len
+//               + data.pill_bottle_contents_len
 //               + "/"
-//               + data.loaded_pill_bottle_storage_slots
+//               + data.pill_bottle_storage_slots
 //               + ")"
 //           )
 //           : "None loaded"}
 //         mb="0.5rem"
-//         onClick={() => act('ejectp')}
+//         onClick={() => act('eject_pill_bottle')}
 //       />
 //     </Section>
 //   );
 // };
 
 modalRegisterBodyOverride('analyze', analyzeModalBodyOverride);
+
+const analyzeModalBodyOverride = (modal, context) => {
+  const { act, data } = useBackend(context);
+  const result = modal.args.analysis;
+  return (
+    <Section
+      level={2}
+      m="-1rem"
+      pb="1rem"
+      title={data.condi ? "Condiment Analysis" : "Reagent Analysis"}>
+      <Box mx="0.5rem">
+        <LabeledList>
+          <LabeledList.Item label="Name">
+            {result.name}
+          </LabeledList.Item>
+          <LabeledList.Item label="Description">
+            {(result.desc || "").length > 0 ? result.desc : "N/A"}
+          </LabeledList.Item>
+          {result.blood_type && (
+            <Fragment>
+              <LabeledList.Item label="Blood type">
+                {result.blood_type}
+              </LabeledList.Item>
+              <LabeledList.Item
+                label="Blood DNA"
+                className="LabeledList__breakContents">
+                {result.blood_dna}
+              </LabeledList.Item>
+            </Fragment>
+          )}
+          {!data.condi && (
+            <Button
+              icon={data.printing ? 'spinner' : 'print'}
+              disabled={data.printing}
+              iconSpin={!!data.printing}
+              ml="0.5rem"
+              content="Print"
+              onClick={() => act('print', {
+                idx: result.idx,
+                beaker: modal.args.beaker,
+              })}
+            />
+          )}
+        </LabeledList>
+      </Box>
+    </Section>
+  );
+};
