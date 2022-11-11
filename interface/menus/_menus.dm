@@ -268,7 +268,7 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
  */
 /datum/skin_menu_entry/spacer
 	id = null
-	name = null
+	name = ""
 
 /datum/skin_menu_entry/spacer/register()
 	return
