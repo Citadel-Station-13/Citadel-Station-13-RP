@@ -16,6 +16,7 @@
 	blinded = FALSE
 	anchored = TRUE
 	invisibility = INVISIBILITY_OBSERVER
+	SET_APPEARANCE_FLAGS(PIXEL_SCALE | KEEP_TOGETHER)
 	/// Do we set dir on move
 	var/updatedir = TRUE
 	var/can_reenter_corpse
