@@ -268,13 +268,25 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
  */
 /datum/skin_menu_entry/spacer
 	id = null
-	name = ""
+	name = null
+	/// next id
+	var/static/next_id = 0
+
+/datum/skin_menu_entry/New()
+	..()
+	id = "menubutton_spacer_[++next_id]"
 
 /datum/skin_menu_entry/spacer/register()
 	return
 
 /datum/skin_menu_entry/spacer/unregister()
 	return
+
+/datum/skin_menu_entry/spacer/creation_parameters()
+	return list2params(list(
+		parent = category.id,
+		name = ""
+	))
 
 //! client stuff needed to make this work
 /client/verb/menu_button_triggered(id as text, checked as num)
