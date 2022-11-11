@@ -5,12 +5,11 @@
 	name = "pill"
 	desc = "A pill."
 	icon = 'icons/obj/medical/chemical.dmi'
-	icon_state = null
+	icon_state = "pill"
+	base_icon_state = "pill"
 	item_state = "pill"
 	drop_sound = 'sound/items/drop/food.ogg'
 	pickup_sound = 'sound/items/pickup/food.ogg'
-
-	var/base_state = "pill"
 
 	possible_transfer_amounts = null
 	w_class = ITEMSIZE_TINY
@@ -20,7 +19,7 @@
 /obj/item/reagent_containers/pill/Initialize(mapload)
 	. = ..()
 	if(!icon_state)
-		icon_state = "[base_state][rand(1, 4)]" //preset pills only use colour changing or unique icons
+		icon_state = "[base_icon_state][rand(1, 4)]" //preset pills only use colour changing or unique icons
 
 /obj/item/reagent_containers/pill/attack(mob/M as mob, mob/user as mob)
 	if(M == user)

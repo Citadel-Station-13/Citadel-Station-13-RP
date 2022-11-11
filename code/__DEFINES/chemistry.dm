@@ -4,9 +4,21 @@
 #define DEFAULT_THIRST_FACTOR 0.03
 /// Means 'Reagent Effect Multiplier'. This is how many units of reagent are consumed per tick
 #define REM 0.2
-#define CHEM_TOUCH 1
-#define CHEM_INGEST 2
-#define CHEM_BLOOD 3
+
+//! Reagent exposure methods.
+/// Used for splashing.
+#define CHEM_TOUCH (1<<0)
+/// Used for ingesting the reagents. Food, drinks, inhaling smoke.
+#define CHEM_INGEST (1<<1)
+/// Used by foams, sprays, and blob attacks.
+#define CHEM_VAPOR (1<<2)
+/// Used by medical patches and gels.
+#define CHEM_PATCH (1<<3)
+/// Used for direct injection of reagents.
+#define CHEM_INJECT (1<<4)
+/// Used for blood contamination.
+#define CHEM_BLOOD (1<<5)
+
 
 #define MINIMUM_CHEMICAL_VOLUME 0.01
 
@@ -86,6 +98,7 @@ var/list/cheartstopper = list("potassium_chloride")                       // Thi
 #define SYRINGE_DRAW 0
 #define SYRINGE_INJECT 1
 #define SYRINGE_BROKEN 2
+#define SYRINGE_CAPPED 3
 
 //reagents_holder_flags defines
 ///Makes it possible to add reagents through droppers and syringes.

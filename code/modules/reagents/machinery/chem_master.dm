@@ -259,297 +259,364 @@
 	return data
 
 /**
-  * Called in ui_act() to process modal actions
-  *
-  * Arguments:
-  * * action - The action passed by tgui
-  * * params - The params passed by tgui
-  */
+ * Called in ui_act() to process modal actions
+ *
+ * Arguments:
+ * * action - The action passed by tgui
+ * * params - The params passed by tgui
+ */
 /obj/machinery/chem_master/proc/ui_act_modal(action, params, datum/tgui/ui, datum/ui_state/state)
 	. = TRUE
 	var/id = params["id"] // The modal's ID
 	var/list/arguments = istext(params["arguments"]) ? json_decode(params["arguments"]) : params["arguments"]
 	switch(ui_modal_act(src, action, params))
 		if(UI_MODAL_OPEN)
-			switch(id)
-				if("analyze")
-					var/idx = text2num(arguments["idx"]) || 0
-					var/from_beaker = text2num(arguments["beaker"]) || FALSE
-					var/reagent_list = from_beaker ? beaker.reagents.reagent_list : reagents.reagent_list
-					if(idx < 1 || idx > length(reagent_list))
-						return
-
-					var/datum/reagent/R = reagent_list[idx]
-					var/list/result = list("idx" = idx, "name" = R.name, "desc" = R.description)
-					if(!condi && istype(R, /datum/reagent/blood))
-						var/datum/reagent/blood/B = R
-						result["blood_type"] = B.data["blood_type"]
-						result["blood_dna"] = B.data["blood_DNA"]
-
-					arguments["analysis"] = result
-					ui_modal_message(src, id, "", null, arguments)
-				if("addcustom")
-					if(!beaker || !beaker.reagents.total_volume)
-						return
-					ui_modal_input(src, id, "Please enter the amount to transfer to buffer:", null, arguments, useramount)
-				if("removecustom")
-					if(!reagents.total_volume)
-						return
-					ui_modal_input(src, id, "Please enter the amount to transfer to [mode ? "beaker" : "disposal"]:", null, arguments, useramount)
-			//! CONDIMENTS
-				if("create_condi_pack")
-					if(!condi || !reagents.total_volume)
-						return
-					ui_modal_input(src, id, "Please name your new condiment pack:", null, arguments, reagents.get_master_reagent_name(), MAX_CUSTOM_NAME_LEN)
-			//! PILLS
-				if("create_pill")
-					if(condi || !reagents.total_volume)
-						return
-					var/num = round(text2num(arguments["num"] || 1))
-					if(!num)
-						return
-					arguments["num"] = num
-					var/amount_per_pill = clamp(reagents.total_volume / num, 0, MAX_UNITS_PER_PILL)
-					var/default_name = "[reagents.get_master_reagent_name()] ([amount_per_pill]u)"
-					var/pills_text = num == 1 ? "new pill" : "[num] new pills"
-					ui_modal_input(src, id, "Please name your [pills_text]:", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
-				if("create_pill_multiple")
-					if(condi || !reagents.total_volume)
-						return
-					ui_modal_input(src, id, "Please enter the amount of pills to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, pillamount, 5)
-			//! PATCHES
-				if("create_patch")
-					if(condi || !reagents.total_volume)
-						return
-					var/num = round(text2num(arguments["num"] || 1))
-					if(!num)
-						return
-					arguments["num"] = num
-					var/amount_per_patch = clamp(reagents.total_volume / num, 0, MAX_UNITS_PER_PATCH)
-					var/default_name = "[reagents.get_master_reagent_name()] ([amount_per_patch]u)"
-					var/patches_text = num == 1 ? "new patch" : "[num] new patches"
-					ui_modal_input(src, id, "Please name your [patches_text]:", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
-				if("create_patch_multiple")
-					if(condi || !reagents.total_volume)
-						return
-					ui_modal_input(src, id, "Please enter the amount of patches to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, pillamount, 5)
-			//! LOLLIPOPS
-				if("create_lollipop")
-					if(condi || !reagents.total_volume)
-						return
-					var/num = round(text2num(arguments["num"] || 1))
-					if(!num)
-						return
-					arguments["num"] = num
-					var/amount_per_lolli = clamp(reagents.total_volume / num, 0, MAX_UNITS_PER_LOLLI)
-					var/default_name = "[reagents.get_master_reagent_name()] ([amount_per_lolli]u)"
-					var/lolli_text = num == 1 ? "new lollipop" : "[num] new lollipops"
-					ui_modal_input(src, id, "Please name your [lolli_text]:", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
-				if("create_lollipop_multiple")
-					if(condi || !reagents.total_volume)
-						return
-					ui_modal_input(src, id, "Please enter the amount of lollipops to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, lolliamount, 5)
-			//! AUTOINJECTORS
-				if("create_autoinjector")
-					if(condi || !reagents.total_volume)
-						return
-					var/num = round(text2num(arguments["num"] || 1))
-					if(!num)
-						return
-					arguments["num"] = num
-					var/amount_per_auto = clamp(reagents.total_volume / num, 0, MAX_UNITS_PER_AUTO)
-					var/default_name = "[reagents.get_master_reagent_name()] ([amount_per_auto]u)"
-					var/auto_text = num == 1 ? "new autoinjector" : "[num] new autoinjectors"
-					ui_modal_input(src, id, "Please name your [auto_text]:", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
-				if("create_autoinjector_multiple")
-					if(condi || !reagents.total_volume)
-						return
-					ui_modal_input(src, id, "Please enter the amount of autoinjectors to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, autoamount, 5)
-			//! BOTTLES
-				if("create_bottle")
-					if(condi || !reagents.total_volume)
-						return
-					var/num = round(text2num(arguments["num"] || 1))
-					if(!num)
-						return
-					arguments["num"] = num
-					var/amount_per_bottle = clamp(reagents.total_volume / num, 0, MAX_UNITS_PER_BOTTLE)
-					var/default_name = "[reagents.get_master_reagent_name()]"
-					var/bottles_text = num == 1 ? "new bottle" : "[num] new bottles"
-					ui_modal_input(src, id, "Please name your [bottles_text] ([amount_per_bottle]u in bottle):", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
-				if("create_bottle_multiple")
-					if(condi || !reagents.total_volume)
-						return
-					ui_modal_input(src, id, "Please enter the amount of bottles to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, 2, 5)//two bottles on default
-				else
-					return FALSE
-
+			ui_open_modal(action, params, ui, state, id, arguments)
 		if(UI_MODAL_ANSWER)
 			var/answer = params["answer"]
-			switch(id)
-				if("addcustom")
-					var/amount = isgoodnumber(text2num(answer))
-					if(!amount || !arguments["id"])
-						return
-					ui_act("add", list("id" = arguments["id"], "amount" = amount), ui, state)
-				if("removecustom")
-					var/amount = isgoodnumber(text2num(answer))
-					if(!amount || !arguments["id"])
-						return
-					ui_act("remove", list("id" = arguments["id"], "amount" = amount), ui, state)
-				if("create_condi_pack")
-					if(!condi || !reagents.total_volume)
-						return
-					if(!length(answer))
-						answer = reagents.get_master_reagent_name()
-					var/obj/item/reagent_containers/pill/P = new(loc)
-					P.name = "[answer] pack"
-					P.desc = "A small condiment pack. The label says it contains [answer]."
-					P.icon_state = "bouilloncube"//Reskinned monkey cube
-					reagents.trans_to_obj(P, 10)
+			ui_answer_modal(action, params, ui, state, id, arguments, answer)
+		else
+			return FALSE
 
-				if("create_pill")
-					if(condi || !reagents.total_volume)
-						return
-					var/count = clamp(round(text2num(arguments["num"]) || 0), 0, MAX_MULTI_AMOUNT)
-					if(!count)
-						return
+/**
+ * Called in ui_act_modal() to process modal calls
+ *
+ *! This is a temporary solution until we have a better way to handle modals.
+ *! Prefereably not what Virgo made.
+ *! @Zandario
+ */
+/obj/machinery/chem_master/proc/ui_open_modal(action, params, datum/tgui/ui, datum/ui_state/state, id, arguments)
+	switch(id)
 
-					if(!length(answer))
-						answer = reagents.get_master_reagent_name()
-					var/amount_per_pill = clamp(reagents.total_volume / count, 0, MAX_UNITS_PER_PILL)
-					while(count--)
-						if(reagents.total_volume <= 0)
-							to_chat(usr, SPAN_NOTICE("Not enough reagents to create these pills!"))
-							return
+		//! UNIVERSAL MODALS
 
-						var/obj/item/reagent_containers/pill/P = new(loc)
-						P.name = "[answer] pill"
-						adjust_item_drop_location(P)
+		if("analyze")
+			var/idx = text2num(arguments["idx"]) || 0
+			var/from_beaker = text2num(arguments["beaker"]) || FALSE
+			var/reagent_list = from_beaker ? beaker.reagents.reagent_list : reagents.reagent_list
+			if(idx < 1 || idx > length(reagent_list))
+				return
 
-						// Set our Icon and color.
-						if(chosen_pill_style == RANDOM_PILL_STYLE)
-							P.icon_state ="pill[rand(1, PILL_STYLE_COUNT)]"
-						else
-							P.icon_state = "pill[chosen_pill_style]"
-						if(P.icon_state in list("pill4", "pill5", "pill12"))
-							P.desc = "A tablet or capsule, but not just any, a red one, one taken by the ones not scared of knowledge, freedom, uncertainty and the brutal truths of reality."
-						if(P.icon_state in list("pill9", "pill18", "pill19", "pill21")) // if using greyscale, take colour from reagent
-							P.color = reagents.get_color()
+			var/datum/reagent/analyzed_reagent = GLOB.name2reagent[idx]
+			var/list/result = list(
+				"idx" = analyzed_reagent.id,
+				"name" = analyzed_reagent.name,
+				"desc" = analyzed_reagent.description,
+			)
+			if(!condi && istype(analyzed_reagent, /datum/reagent/blood))
+				var/datum/reagent/blood/B = analyzed_reagent
+				result["blood_type"] = B.data["blood_type"]
+				result["blood_dna"] = B.data["blood_DNA"]
 
-						reagents.trans_to_obj(P, amount_per_pill)
-						// Load the pills in the bottle if there's one loaded
-						if(istype(pill_bottle) && length(pill_bottle.contents) < pill_bottle.max_storage_space)
-							P.forceMove(pill_bottle)
+			arguments["analysis"] = result
+			ui_modal_message(src, id, "", null, arguments)
 
-				if("create_pill_multiple")
-					if(condi || !reagents.total_volume)
-						return
-					ui_act("modal_open", list("id" = "create_pill", "arguments" = list("num" = answer)), ui, state)
+		if("addcustom")
+			if(!beaker || !beaker.reagents.total_volume)
+				return
+			ui_modal_input(src, id, "Please enter the amount to transfer to buffer:", null, arguments, useramount)
 
-				if("create_patch")
-					if(condi || !reagents.total_volume)
-						return
-					var/count = clamp(round(text2num(arguments["num"]) || 0), 0, MAX_MULTI_AMOUNT)
-					if(!count)
-						return
+		if("removecustom")
+			if(!reagents.total_volume)
+				return
+			ui_modal_input(src, id, "Please enter the amount to transfer to [mode ? "beaker" : "disposal"]:", null, arguments, useramount)
 
-					if(!length(answer))
-						answer = reagents.get_master_reagent_name()
-					var/amount_per_patch = clamp(reagents.total_volume / count, 0, MAX_UNITS_PER_PATCH)
-					// var/is_medical_patch = chemical_safety_check(reagents)
-					while(count--)
-						if(reagents.total_volume <= 0)
-							to_chat(usr, SPAN_NOTICE("Not enough reagents to create these patches!"))
-							return
+		//! CONDIMENT MODALS
 
-						var/obj/item/reagent_containers/pill/patch/P = new(loc)
-						P.name = trim("[answer] patch")
-						adjust_item_drop_location(P)
-						reagents.trans_to_obj(P, amount_per_patch)
+		if("create_condi_pack")
+			if(!condi || !reagents.total_volume)
+				return
+			ui_modal_input(src, id, "Please name your new condiment pack:", null, arguments, reagents.get_master_reagent_name(), MAX_CUSTOM_NAME_LEN)
 
-				if("create_patch_multiple")
-					if(condi || !reagents.total_volume)
-						return
-					ui_act("modal_open", list("id" = "create_patch", "arguments" = list("num" = answer)), ui, state)
+		//! PILL MODALS
 
-				if("create_lollipop")
-					if(condi || !reagents.total_volume)
-						return
-					var/count = clamp(round(text2num(arguments["num"]) || 0), 0, MAX_MULTI_AMOUNT)
-					if(!count)
-						return
+		if("create_pill")
+			if(condi || !reagents.total_volume)
+				return
+			var/num = round(text2num(arguments["num"] || 1))
+			if(!num)
+				return
+			arguments["num"] = num
+			var/amount_per_pill = clamp(reagents.total_volume / num, 0, MAX_UNITS_PER_PILL)
+			var/default_name = "[reagents.get_master_reagent_name()] ([amount_per_pill]u)"
+			var/pills_text = num == 1 ? "new pill" : "[num] new pills"
+			ui_modal_input(src, id, "Please name your [pills_text]:", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
 
-					if(!length(answer))
-						answer = reagents.get_master_reagent_name()
-					var/amount_per_lolli = clamp(reagents.total_volume / count, 0, MAX_UNITS_PER_LOLLI)
-					// var/is_medical_patch = chemical_safety_check(reagents)
-					while(count--)
-						if(reagents.total_volume <= 0)
-							to_chat(usr, "<span class='notice'>Not enough reagents to create these candies!</span>")
-							return
+		if("create_pill_multiple")
+			if(condi || !reagents.total_volume)
+				return
+			ui_modal_input(src, id, "Please enter the amount of pills to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, pillamount, 5)
 
-						var/obj/item/reagent_containers/hard_candy/lollipop/L = new(loc)
-						L.name = trim("[name] lollipop")
-						adjust_item_drop_location(L)
-						reagents.trans_to_obj(L, amount_per_lolli)
+		//! PATCH MODALS
 
-				if("create_lollipop_multiple")
-					if(condi || !reagents.total_volume)
-						return
-					ui_act("modal_open", list("id" = "create_lollipop", "arguments" = list("num" = answer)), ui, state)
+		if("create_patch")
+			if(condi || !reagents.total_volume)
+				return
+			var/num = round(text2num(arguments["num"] || 1))
+			if(!num)
+				return
+			arguments["num"] = num
+			var/amount_per_patch = clamp(reagents.total_volume / num, 0, MAX_UNITS_PER_PATCH)
+			var/default_name = "[reagents.get_master_reagent_name()] ([amount_per_patch]u)"
+			var/patches_text = num == 1 ? "new patch" : "[num] new patches"
+			ui_modal_input(src, id, "Please name your [patches_text]:", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
 
-				if("create_autoinjector")
-					if(condi || !reagents.total_volume)
-						return
-					var/count = clamp(round(text2num(arguments["num"]) || 0), 0, MAX_MULTI_AMOUNT)
-					if(!count)
-						return
+		if("create_patch_multiple")
+			if(condi || !reagents.total_volume)
+				return
+			ui_modal_input(src, id, "Please enter the amount of patches to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, pillamount, 5)
 
-					if(!length(answer))
-						answer = reagents.get_master_reagent_name()
-					var/amount_per_auto = clamp(reagents.total_volume / count, 0, MAX_UNITS_PER_AUTO)
-					// var/is_medical_patch = chemical_safety_check(reagents)
-					while(count--)
-						if(reagents.total_volume <= 0)
-							to_chat(usr, "<span class='notice'>Not enough reagents to create these injectors!</span>")
-							return
+		//! LOLLIPOP MODALS
 
-						var/obj/item/reagent_containers/hypospray/autoinjector/empty/A = new(loc)
-						A.name = trim("[answer] autoinjector")
-						adjust_item_drop_location(A)
-						reagents.trans_to_obj(A, amount_per_auto)
-				if("create_autoinjector_multiple")
-					if(condi || !reagents.total_volume)
-						return
-					ui_act("modal_open", list("id" = "create_autoinjector", "arguments" = list("num" = answer)), ui, state)
-				if("create_bottle")
-					if(condi || !reagents.total_volume)
-						return
-					var/count = clamp(round(text2num(arguments["num"]) || 0), 0, MAX_MULTI_AMOUNT)
-					if(!count)
-						return
+		if("create_lollipop")
+			if(condi || !reagents.total_volume)
+				return
+			var/num = round(text2num(arguments["num"] || 1))
+			if(!num)
+				return
+			arguments["num"] = num
+			var/amount_per_lolli = clamp(reagents.total_volume / num, 0, MAX_UNITS_PER_LOLLI)
+			var/default_name = "[reagents.get_master_reagent_name()] ([amount_per_lolli]u)"
+			var/lolli_text = num == 1 ? "new lollipop" : "[num] new lollipops"
+			ui_modal_input(src, id, "Please name your [lolli_text]:", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
+		if("create_lollipop_multiple")
+			if(condi || !reagents.total_volume)
+				return
+			ui_modal_input(src, id, "Please enter the amount of lollipops to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, lolliamount, 5)
 
-					if(!length(answer))
-						answer = reagents.get_master_reagent_name()
-					var/amount_per_bottle = clamp(reagents.total_volume / count, 0, MAX_UNITS_PER_BOTTLE)
-					var/obj/item/reagent_containers/glass/bottle/P
-					while(count--)
-						if(reagents.total_volume <= 0)
-							to_chat(usr, "<span class='notice'>Not enough reagents to create these bottles!</span>")
-							return
+		//! AUTOINJECTOR MODALS
 
-						P = new/obj/item/reagent_containers/glass/bottle(drop_location())
-						P.name = trim("[answer] bottle")
-						P.icon_state = "bottle-[chosen_patch_style]" || "bottle-1"
-						adjust_item_drop_location(P)
-						reagents.trans_to_obj(P, amount_per_bottle)
-				if("create_bottle_multiple")
-					if(condi || !reagents.total_volume)
-						return
-					ui_act("modal_open", list("id" = "create_bottle", "arguments" = list("num" = answer)), ui, state)
+		if("create_autoinjector")
+			if(condi || !reagents.total_volume)
+				return
+			var/num = round(text2num(arguments["num"] || 1))
+			if(!num)
+				return
+			arguments["num"] = num
+			var/amount_per_auto = clamp(reagents.total_volume / num, 0, MAX_UNITS_PER_AUTO)
+			var/default_name = "[reagents.get_master_reagent_name()] ([amount_per_auto]u)"
+			var/auto_text = num == 1 ? "new autoinjector" : "[num] new autoinjectors"
+			ui_modal_input(src, id, "Please name your [auto_text]:", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
+
+		if("create_autoinjector_multiple")
+			if(condi || !reagents.total_volume)
+				return
+			ui_modal_input(src, id, "Please enter the amount of autoinjectors to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, autoamount, 5)
+
+		//! BOTTLE MODALS
+
+		if("create_bottle")
+			if(condi || !reagents.total_volume)
+				return
+			var/num = round(text2num(arguments["num"] || 1))
+			if(!num)
+				return
+			arguments["num"] = num
+			var/amount_per_bottle = clamp(reagents.total_volume / num, 0, MAX_UNITS_PER_BOTTLE)
+			var/default_name = "[reagents.get_master_reagent_name()]"
+			var/bottles_text = num == 1 ? "new bottle" : "[num] new bottles"
+			ui_modal_input(src, id, "Please name your [bottles_text] ([amount_per_bottle]u in bottle):", null, arguments, default_name, MAX_CUSTOM_NAME_LEN)
+
+		if("create_bottle_multiple")
+			if(condi || !reagents.total_volume)
+				return
+			ui_modal_input(src, id, "Please enter the amount of bottles to make (max [MAX_MULTI_AMOUNT] at a time):", null, arguments, 2, 5)//two bottles on default
+
+		else
+			return FALSE
+
+/**
+ * Called in ui_act_modal() to process modal answers
+ *
+ *! This is a temporary solution until we have a better way to handle modals.
+ *! Prefereably not what Virgo made.
+ *! @Zandario
+ */
+/obj/machinery/chem_master/proc/ui_answer_modal(action, params, datum/tgui/ui, datum/ui_state/state, id, arguments, answer)
+	switch(id)
+
+		//! UNIVERSAL MODALS
+
+		if("addcustom")
+			var/amount = isgoodnumber(text2num(answer))
+			if(!amount || !arguments["id"])
+				return
+			ui_act("add", list("id" = arguments["id"], "amount" = amount), ui, state)
+
+		if("removecustom")
+			var/amount = isgoodnumber(text2num(answer))
+			if(!amount || !arguments["id"])
+				return
+			ui_act("remove", list("id" = arguments["id"], "amount" = amount), ui, state)
+
+		//! CONDIMENTS MODALS
+
+		if("create_condi_pack")
+			if(!condi || !reagents.total_volume)
+				return
+			if(!length(answer))
+				answer = reagents.get_master_reagent_name()
+			var/obj/item/reagent_containers/pill/P = new(loc)
+			P.name = "[answer] pack"
+			P.desc = "A small condiment pack. The label says it contains [answer]."
+			P.icon_state = "bouilloncube"//Reskinned monkey cube
+			reagents.trans_to_obj(P, 10)
+
+		//! PILL MODALS
+
+		if("create_pill")
+			if(condi || !reagents.total_volume)
+				return
+			var/count = clamp(round(text2num(arguments["num"]) || 0), 0, MAX_MULTI_AMOUNT)
+			if(!count)
+				return
+
+			if(!length(answer))
+				answer = reagents.get_master_reagent_name()
+			var/amount_per_pill = clamp(reagents.total_volume / count, 0, MAX_UNITS_PER_PILL)
+			while(count--)
+				if(reagents.total_volume <= 0)
+					to_chat(usr, SPAN_NOTICE("Not enough reagents to create these pills!"))
+					return
+
+				var/obj/item/reagent_containers/pill/P = new(loc)
+				P.name = "[answer] pill"
+				adjust_item_drop_location(P)
+
+				// Set our Icon and color.
+				if(chosen_pill_style == RANDOM_PILL_STYLE)
+					P.icon_state ="pill[rand(1, PILL_STYLE_COUNT)]"
 				else
-					return FALSE
+					P.icon_state = "pill[chosen_pill_style]"
+				if(P.icon_state in PILL_STYLE_RED)
+					P.desc = "A tablet or capsule, but not just any, a red one, one taken by the ones not scared of knowledge, freedom, uncertainty and the brutal truths of reality."
+				if(P.icon_state in PILL_STYLE_COLORABLE) // if using greyscale, take colour from reagent
+					P.color = reagents.get_color()
+
+				reagents.trans_to_obj(P, amount_per_pill)
+				// Load the pills in the bottle if there's one loaded
+				if(istype(pill_bottle) && length(pill_bottle.contents) < pill_bottle.max_storage_space)
+					P.forceMove(pill_bottle)
+
+		if("create_pill_multiple")
+			if(condi || !reagents.total_volume)
+				return
+			ui_act("modal_open", list("id" = "create_pill", "arguments" = list("num" = answer)), ui, state)
+
+		//! PATCH MODALS
+
+		if("create_patch")
+			if(condi || !reagents.total_volume)
+				return
+			var/count = clamp(round(text2num(arguments["num"]) || 0), 0, MAX_MULTI_AMOUNT)
+			if(!count)
+				return
+
+			if(!length(answer))
+				answer = reagents.get_master_reagent_name()
+			var/amount_per_patch = clamp(reagents.total_volume / count, 0, MAX_UNITS_PER_PATCH)
+			// var/is_medical_patch = chemical_safety_check(reagents)
+			while(count--)
+				if(reagents.total_volume <= 0)
+					to_chat(usr, SPAN_NOTICE("Not enough reagents to create these patches!"))
+					return
+
+				var/obj/item/reagent_containers/pill/patch/P = new(loc)
+				P.name = trim("[answer] patch")
+				P.icon_state = chosen_patch_style
+				adjust_item_drop_location(P)
+				reagents.trans_to_obj(P, amount_per_patch)
+
+		if("create_patch_multiple")
+			if(condi || !reagents.total_volume)
+				return
+			ui_act("modal_open", list("id" = "create_patch", "arguments" = list("num" = answer)), ui, state)
+
+		//! LOLLIPOP MODALS
+
+		if("create_lollipop")
+			if(condi || !reagents.total_volume)
+				return
+			var/count = clamp(round(text2num(arguments["num"]) || 0), 0, MAX_MULTI_AMOUNT)
+			if(!count)
+				return
+
+			if(!length(answer))
+				answer = reagents.get_master_reagent_name()
+			var/amount_per_lolli = clamp(reagents.total_volume / count, 0, MAX_UNITS_PER_LOLLI)
+			// var/is_medical_patch = chemical_safety_check(reagents)
+			while(count--)
+				if(reagents.total_volume <= 0)
+					to_chat(usr, SPAN_NOTICE("Not enough reagents to create these candies!"))
+					return
+
+				var/obj/item/reagent_containers/hard_candy/lollipop/L = new(loc)
+				L.name = trim("[name] lollipop")
+				adjust_item_drop_location(L)
+				reagents.trans_to_obj(L, amount_per_lolli)
+
+		if("create_lollipop_multiple")
+			if(condi || !reagents.total_volume)
+				return
+			ui_act("modal_open", list("id" = "create_lollipop", "arguments" = list("num" = answer)), ui, state)
+
+		//! AUTOINJECTOR MODALS
+
+		if("create_autoinjector")
+			if(condi || !reagents.total_volume)
+				return
+			var/count = clamp(round(text2num(arguments["num"]) || 0), 0, MAX_MULTI_AMOUNT)
+			if(!count)
+				return
+
+			if(!length(answer))
+				answer = reagents.get_master_reagent_name()
+			var/amount_per_auto = clamp(reagents.total_volume / count, 0, MAX_UNITS_PER_AUTO)
+			// var/is_medical_patch = chemical_safety_check(reagents)
+			while(count--)
+				if(reagents.total_volume <= 0)
+					to_chat(usr, SPAN_NOTICE("Not enough reagents to create these injectors!"))
+					return
+
+				var/obj/item/reagent_containers/hypospray/autoinjector/empty/A = new(loc)
+				A.name = trim("[answer] autoinjector")
+				adjust_item_drop_location(A)
+				reagents.trans_to_obj(A, amount_per_auto)
+
+		if("create_autoinjector_multiple")
+			if(condi || !reagents.total_volume)
+				return
+			ui_act("modal_open", list("id" = "create_autoinjector", "arguments" = list("num" = answer)), ui, state)
+
+		//! BOTTLE MODALS
+
+		if("create_bottle")
+			if(condi || !reagents.total_volume)
+				return
+			var/count = clamp(round(text2num(arguments["num"]) || 0), 0, MAX_MULTI_AMOUNT)
+			if(!count)
+				return
+
+			if(!length(answer))
+				answer = reagents.get_master_reagent_name()
+			var/amount_per_bottle = clamp(reagents.total_volume / count, 0, MAX_UNITS_PER_BOTTLE)
+			var/obj/item/reagent_containers/glass/bottle/P
+			while(count--)
+				if(reagents.total_volume <= 0)
+					to_chat(usr, SPAN_NOTICE("Not enough reagents to create these bottles!"))
+					return
+
+				P = new/obj/item/reagent_containers/glass/bottle(drop_location())
+				P.name = trim("[answer] bottle")
+				P.icon_state = "bottle-[chosen_bottle_style]" || "bottle-1"
+				adjust_item_drop_location(P)
+				reagents.trans_to_obj(P, amount_per_bottle)
+
+		if("create_bottle_multiple")
+			if(condi || !reagents.total_volume)
+				return
+			ui_act("modal_open", list("id" = "create_bottle", "arguments" = list("num" = answer)), ui, state)
+
 		else
 			return FALSE
 

@@ -50,3 +50,4 @@
 	name = "chemicals"
 	icon = 'icons/obj/medical/chempuff.dmi'
 	icon_state = ""
+	layer = FLY_LAYER

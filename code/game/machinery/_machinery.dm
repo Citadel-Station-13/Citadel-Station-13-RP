@@ -105,10 +105,12 @@
 
 	var/machine_stat = 0
 	var/emagged = FALSE
+	/**
+	 * USE_POWER_OFF = dont run the auto
+	 * USE_POWER_IDLE = run auto, use idle
+	 * USE_POWER_ACTIVE = run auto, use active
+	 */
 	var/use_power = USE_POWER_IDLE
-		//0 = dont run the auto
-		//1 = run auto, use idle
-		//2 = run auto, use active
 	/// idle power usage in watts
 	var/idle_power_usage = 0
 	/// active power usage in watts
