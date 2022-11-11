@@ -76,6 +76,11 @@
 
 /datum/skin_menu_category/proc/creation_list(client/C)
 	. = list()
+	.[id] = list2params(list(
+		"type" = "menu",
+		"parent" = menu.id,
+		"name" = name,
+	))
 	for(var/datum/skin_menu_entry/E as anything in entries)
 		.[E.id] = E.cached_constructor
 
@@ -87,8 +92,10 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 	var/id
 	/// name
 	var/name
-	/** command to execute; \n to execute multiple.
+	/**
+	 * command to execute; \n to execute multiple.
 	 * this datum will also inject our own command for synchronization automatically.
+	 * generate_command() overrides this.
 	 */
 	var/command
 	/// do we have a button group? checkbox is required for this
@@ -103,6 +110,10 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 	var/load_command_disabled
 	/// use proc for load command
 	var/load_command_proc = FALSE
+	/// default load_command_enabled to command
+	var/load_command_default = FALSE
+	/// is saved? only applicable for checkboxes
+	var/is_saved = TRUE
 	/// cached creation parameters
 	var/cached_constructor
 	/// category we belong to
@@ -111,6 +122,8 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 /datum/skin_menu_entry/New(datum/skin_menu_category/category)
 	src.category = category
 	cache_constructor()
+	if(load_command_default)
+		load_command_enabled = generate_command()
 	register()
 
 /datum/skin_menu_entry/Destroy()
@@ -126,7 +139,7 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 	GLOB.skin_menu_entries -= id
 
 /datum/skin_menu_entry/proc/load(client/C, enabled)
-	if(!checkbox)
+	if(!checkbox || !is_saved)
 		return	// why do we care?
 	var/command
 	if(load_command_proc)
@@ -142,23 +155,36 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 	if(command)
 		C.menu_run_command(command)
 	if(enabled)
-		LAZYSET(C.menu_buttons_checked, id, TRUE)
+		C.menu_buttons_checked[id] = TRUE
 		if(group)
-			LAZYSET(C.menu_group_statuses, group, id)
+			C.menu_group_status[group] = id
+	else
+		C.menu_buttons_checked -= id
+		// we assume group is taken care of by the other item overwriting it.
 	winset(C, id, "is-checked=[enabled? "true" : "false"]")
 
 /datum/skin_menu_entry/proc/save(client/C, enabled)
-	if(!checkbox)
+	if(!checkbox || !is_saved)
 		return	// we don't care
 	if(group)
 		C.prefs.save_skin_data(group, id)
 	else
 		C.prefs.save_skin_data(id, enabled)
 
+/**
+ * called when someone presses us; using usr here is fine as this should only be called from verb anyways!
+ */
 /datum/skin_menu_entry/proc/pressed(client/C, new_checked)
-	if(!checkbox)
-		return	// we don't care
 	save(C, new_enabled)
+	if(!checkbox)
+		return	// don't care
+	if(group && new_checked)
+		C.menu_group_status[group] = id
+	else
+		if(new_checked)
+			C.menu_buttons_checked[id] = TRUE
+		else
+			C.menu_buttons_checked -= id
 
 /datum/skin_menu_entry/proc/load_command_enabled(client/C)
 	CRASH("why did the proc get called without an override?")

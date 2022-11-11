@@ -11,18 +11,6 @@ GLOBAL_VAR_INIT(min_client_view_y, 15)
 GLOBAL_VAR(lock_client_view_x)
 GLOBAL_VAR(lock_client_view_y)
 
-/// BYOND is a piece of fucking shit.
-GLOBAL_LIST_INIT(viewport_menu_ids, list(
-	"stretch",
-	"stretch_alt",
-	"icon128",
-	"icon96",
-	"icon72",
-	"icon64",
-	"icon48",
-	"icon32"
-))
-
 /**
  * forces world viewsize; use for config VAS
  */
@@ -51,18 +39,6 @@ GLOBAL_LIST_INIT(viewport_menu_ids, list(
 /client/proc/pre_init_viewport()
 	current_viewport_width = GLOB.max_client_view_x
 	current_viewport_height = GLOB.max_client_view_y
-	hook_viewport_menu()
-
-/**
- * since byond is so awful we can't do multi-verbs for a command in
- * the skin editor, we have to hook it at runtime : )
- */
-/client/proc/hook_viewport_menu()
-	var/list/commands = params2list(winget(src, list2params(GLOB.viewport_menu_ids), "command"))
-	for(var/key in commands)
-		var/value = commands[key]
-		commands[key] = "[value]\n.update_viewport"
-	winset(src, null, list2params(commands))
 
 /**
  * called on client init to do this without blocking client/New
@@ -80,6 +56,9 @@ GLOBAL_LIST_INIT(viewport_menu_ids, list(
 	if(viewport_rwlock)
 		// don't bother
 		return
+	// check if they want auto
+	if(menu_button_checked(SKIN_ID_MENU_BUTTON_AUTO_FIT_VIEWPORT))
+		fit_viewport()
 	fetch_viewport()
 	refit_viewport()
 

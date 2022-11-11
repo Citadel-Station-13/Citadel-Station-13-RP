@@ -34,6 +34,8 @@
 	#define SKIN_ID_MENU_BUTTON_FOR_RESOLUTION(resolution) "menubutton_[resolution]x[resolution]"
 	#define SKIN_ID_MENU_BUTTON_WIDESCREEN_ENABLED "menubutton_widescreen_on"
 	#define SKIN_ID_MENU_BUTTON_WIDESCREEN_DISABLED "menubutton_widescreen_off"
+	#define SKIN_ID_MENU_BUTTON_AUTO_FIT_VIEWPORT "menubutton_auto_fit_viewport"
+	#define SKIN_ID_MENU_BUTTON_FIT_VIEWPORT "menubutton_fit_viewport"
 	// buttons - scaling
 	#define SKIN_ID_MENU_BUTTON_NEAREST_NEIGHBOR "menubutton_scale_distort"
 	#define SKIN_ID_MENU_BUTTON_POINT_SAMPLE "menubutton_scale_normal"
