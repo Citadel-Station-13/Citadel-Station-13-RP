@@ -270,7 +270,9 @@
 	return TRUE
 
 //! Skin stuff
-#warn impl
-/datum/preferences/proc/save_skin_data(key, value)
+/datum/preferences/proc/set_skin_data(key, value)
+	skin[key] = value
+	save_skin()
 
-/datum/preferences/proc/load_skin_data(key)
+/datum/preferences/proc/get_skin_data(key)
+	return skin[key]

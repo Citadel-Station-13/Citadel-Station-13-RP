@@ -167,15 +167,15 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 	if(!checkbox || !is_saved)
 		return	// we don't care
 	if(group)
-		C.prefs.save_skin_data(group, id)
+		C.prefs.set_skin_data(group, id)
 	else
-		C.prefs.save_skin_data(id, enabled)
+		C.prefs.set_skin_data(id, enabled)
 
 /**
  * called when someone presses us; using usr here is fine as this should only be called from verb anyways!
  */
 /datum/skin_menu_entry/proc/pressed(client/C, new_checked)
-	save(C, new_enabled)
+	save(C, new_checked)
 	if(!checkbox)
 		return	// don't care
 	if(group && new_checked)
@@ -239,7 +239,7 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
  * gets which button of a group we have selected
  */
 /client/proc/menu_group_query(group)
-	return menu_group_statuses[group]
+	return menu_group_status[group]
 
 /**
  * gets if a button is checked

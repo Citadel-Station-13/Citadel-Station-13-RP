@@ -9,6 +9,7 @@
 #define SKIN_SPLITTER_ID_MAIN "mainwindow.split"
 
 //? Dynamic skin IDs used by code-generated elements
+//? button groups MUST have unique ids to all skin elements!
 // TOP LEVEL MENU //
 #define SKIN_ID_MAIN_MENU "menu_main"
 	// what it attaches to
@@ -19,9 +20,9 @@
 	#define SKIN_ID_MENU_CATEGORY_SCALING "menu_scaling"
 	#define SKIN_ID_MENU_CATEGORY_HELP "menu_help"
 	// groups
-	#define SKIN_BUTTON_GROUP_MAP_ZOOM "main_map_zoom"
-	#define SKIN_BUTTON_GROUP_MAP_SCALING "main_map_scaling"
-	#define SKIN_BUTTON_GROUP_MAP_WIDESCREEN "main_map_widescreen"
+	#define SKIN_BUTTON_GROUP_MAP_ZOOM "group_map_zoom"
+	#define SKIN_BUTTON_GROUP_MAP_SCALING "group_map_scaling"
+	#define SKIN_BUTTON_GROUP_MAP_WIDESCREEN "group_map_widescreen"
 	// buttons - file
 	#define SKIN_ID_MENU_BUTTON_SCREENSHOT "menubutton_screenshot"
 	#define SKIN_ID_MENU_BUTTON_SCREENSHOT_QUICK "menubutton_screenshot_quick"

@@ -122,6 +122,7 @@ GLOBAL_VAR(lock_client_view_y)
 	viewport_rwlock = FALSE
 
 /client/proc/_refit_viewport()
+	#warn check pref button for widescreen
 	if(!isnull(GLOB.lock_client_view_x) && !isnull(GLOB.lock_client_view_y))
 		view = "[GLOB.lock_client_view_x]x[GLOB.lock_client_view_y]"
 		on_refit_viewport(GLOB.lock_client_view_x, GLOB.lock_client_view_y)

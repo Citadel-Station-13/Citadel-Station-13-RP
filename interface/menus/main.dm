@@ -94,7 +94,6 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 	group = SKIN_BUTTON_GROUP_MAP_ZOOM
 	load_command_default = TRUE
 
-#warn below
 /datum/skin_menu_entry/zoom/stretch_to_fit
 	name = "Stretch to Fit"
 	id = SKIN_ID_MENU_BUTTON_STRETCH_TO_FIT
@@ -141,8 +140,6 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 /datum/skin_menu_entry/widescreen/legacy
 	id = SKIN_ID_MENU_BUTTON_WIDESCREEN_DISABLED
 	name = "Lock to 15x15 (Legacy)"
-
-#warn above
 
 //! misc zoom
 /datum/skin_menu_entry/auto_fit
