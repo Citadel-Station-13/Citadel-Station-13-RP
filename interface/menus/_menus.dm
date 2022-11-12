@@ -68,6 +68,8 @@
 			continue	// don't care
 		// don't load groups, they only load enable, not disable
 		if(E.group)
+			// we, do, however, want to load *unchecking* it.
+			winset(C, E.id, "is-checked=false")
 			continue
 		// load anything else
 		var/enabled = C.prefs.skin[E.id]
