@@ -164,6 +164,7 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 	id = SKIN_ID_MENU_BUTTON_AUTO_FIT_VIEWPORT
 	name = "Automatically Fit Viewport"
 	checkbox = TRUE
+	is_default = TRUE
 
 /datum/skin_menu_entry/auto_fit/load(client/C, enabled)
 	. = ..()
