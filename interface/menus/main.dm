@@ -109,14 +109,18 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 	id = SKIN_ID_MENU_BUTTON_STRETCH_TO_FIT
 	is_default = TRUE
 
-/datum/skin_menu_entry/zoom/stretch_to_fit/generate_command()
+/datum/skin_menu_entry/zoom/stretch_to_fit/generate_command(loading)
+	if(loading)
+		return ".winset \"[SKIN_MAP_ID_VIEWPORT].zoom=0;[SKIN_MAP_ID_VIEWPORT].letterbox=true\""
 	return ".winset \"[SKIN_MAP_ID_VIEWPORT].zoom=0;[SKIN_MAP_ID_VIEWPORT].letterbox=true\"\n.update_viewport"
 
 /datum/skin_menu_entry/zoom/stretch_to_fill
 	name = "Stretch to Fill"
 	id = SKIN_ID_MENU_BUTTON_STRETCH_NO_LETTERBOX
 
-/datum/skin_menu_entry/zoom/stretch_to_fill/generate_command()
+/datum/skin_menu_entry/zoom/stretch_to_fill/generate_command(loading)
+	if(loading)
+		return ".winset \"[SKIN_MAP_ID_VIEWPORT].zoom=0;[SKIN_MAP_ID_VIEWPORT].letterbox=false\""
 	return ".winset \"[SKIN_MAP_ID_VIEWPORT].zoom=0;[SKIN_MAP_ID_VIEWPORT].letterbox=false\"\n.update_viewport"
 
 //? the normal sizes are created by main_zoom category
@@ -130,8 +134,10 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 	src.name = "[pixel_size]x[pixel_size]"
 	..()
 
-/datum/skin_menu_entry/zoom/specific/generate_command()
+/datum/skin_menu_entry/zoom/specific/generate_command(loading)
 	var/zoom = pixel_size / WORLD_ICON_SIZE
+	if(loading)
+		return ".winset \"[SKIN_MAP_ID_VIEWPORT].zoom=[zoom]\""
 	return ".winset \"[SKIN_MAP_ID_VIEWPORT].zoom=[zoom]\"\n.update_viewport"
 
 //! widescreen
@@ -189,7 +195,7 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 	load_command_default = TRUE
 	var/zoom_mode
 
-/datum/skin_menu_entry/scaling/generate_command()
+/datum/skin_menu_entry/scaling/generate_command(loading)
 	return ".winset \"[SKIN_MAP_ID_VIEWPORT].zoom-mode=[zoom_mode]\""
 
 /datum/skin_menu_entry/scaling/sharp

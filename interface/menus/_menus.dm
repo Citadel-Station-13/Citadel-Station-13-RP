@@ -254,8 +254,11 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 
 /**
  * generates our normal command
+ *
+ * ! WARNING !
+ * While loading, you CANNOT use chained commands with \n.
  */
-/datum/skin_menu_entry/proc/generate_command()
+/datum/skin_menu_entry/proc/generate_command(loading)
 	return command
 
 /**
