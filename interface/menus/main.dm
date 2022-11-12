@@ -145,7 +145,7 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 
 /datum/skin_menu_entry/widescreen/load(client/C, enabled)
 	. = ..()
-	C.queue_viewport_update()
+	C.request_viewport_update()
 
 /datum/skin_menu_entry/widescreen/automatic
 	id = SKIN_ID_MENU_BUTTON_WIDESCREEN_ENABLED
