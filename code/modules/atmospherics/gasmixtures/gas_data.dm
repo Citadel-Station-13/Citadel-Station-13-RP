@@ -113,7 +113,7 @@ GLOBAL_REAL(gas_data, /datum/gas_data)
 		visuals -= G.id
 		visual_images -= G.id
 	else
-		visual[G.id] = list(
+		visuals[G.id] = list(
 			G.visual_overlay,
 			G.visual_threshold,
 			G.visual_factor
