@@ -177,8 +177,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// todo: move preferences up here but above persistent
 
 	//! Setup user interface
-	// build top level menu
-	GLOB.main_window_menu.setup(src)
+	// todo: move top level menu here, for now it has to be under prefs.
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
 
@@ -229,6 +228,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(!debug_tools_allowed)
 		world.SetConfig("APP/admin", ckey, null)
 	//END CITADEL EDIT
+	// todo: refactor and hoist
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
 	prefs = GLOB.preferences_datums[ckey]
 	if(!prefs)
@@ -236,9 +236,14 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		GLOB.preferences_datums[ckey] = prefs
 
 	prefs.client = src
+	// todo: refactor
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
 	//fps = prefs.clientfps //(prefs.clientfps < 0) ? RECOMMENDED_FPS : prefs.clientfps
+
+	// todo: hoist
+	// build top level menu
+	GLOB.main_window_menu.setup(src)
 
 	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
