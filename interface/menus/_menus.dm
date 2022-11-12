@@ -331,4 +331,4 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
  * executes a command
  */
 /client/proc/menu_run_command(str)
-	winset(src, null, "command=[str]")
+	winset(src, null, list2params(list("command" = str)))
