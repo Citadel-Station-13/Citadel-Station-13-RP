@@ -61,23 +61,31 @@
 
 /datum/skin_menu/proc/load_settings(client/C)
 	// basically we need to load saved settings, and default if not
-	var/list/groups_loaded = list()
 	for(var/datum/skin_menu_entry/E as anything in all_entries())
 		if(!E.checkbox || !E.is_saved)
 			continue	// don't care
+		// don't load groups, they only load enable, not disable
 		if(E.group)
-			// don't load groups, they only load enable, not disable
-			groups_loaded[E.group] = id
-		else
-			// load anything else
-			var/enabled = !!C.menu_button_checked(E.id)
-			E.load(C, enabled)
+			continue
+		// load anything else
+		var/enabled = C.prefs.skin[E.id]
+		if(isnull(enabled))
+			// default
+			enabled = E.is_default
+			// save it while we're at it
+			E.save(C, enabled)
+		E.load(C, enabled)
 	// we do need to load groups if possible
 	for(var/group in button_groups)
-		if(groups_loaded[group])
-			continue
-		var/default = button_groups[group]
-		var/datum/skin_menu_entry/E = GLOB.skin_menu_entries[default]
+		var/choice = C.prefs.skin[group]
+		var/datum/skin_menu_entry/E
+		if(isnull(choice) || !GLOB.skin_menu_entries[choice])
+			// default if null or if choice doesn't exist anymore
+			E = GLOB.skin_menu_entries[button_groups[group]]
+			// save it while we're at it
+			E.save(C, TRUE)
+		else
+			E = GLOB.skin_menu_entries[choice]
 		E.load(C, TRUE)
 
 /datum/skin_menu/proc/create_and_bind(client/C)
