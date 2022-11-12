@@ -60,6 +60,8 @@
 			. += E
 
 /datum/skin_menu/proc/load_settings(client/C)
+	// let's like, not do that before they load
+	UNTIL(C.prefs.initialized)
 	// basically we need to load saved settings, and default if not
 	for(var/datum/skin_menu_entry/E as anything in all_entries())
 		if(!E.checkbox || !E.is_saved)
