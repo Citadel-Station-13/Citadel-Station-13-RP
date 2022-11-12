@@ -243,7 +243,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	// todo: hoist
 	// build top level menu
-	GLOB.main_window_menu.setup(src, FALSE)
+	GLOB.main_window_menu.setup(src)
 
 	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
@@ -290,7 +290,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// yes, this is a spawn
 	// this is so this works during init.
 	// sue me.
-	addtimer(CALLBACK(GLOB.main_window_menu, /datum/skin_menu/proc/load_settings, src), 10 SECONDS)
+	// addtimer(CALLBACK(GLOB.main_window_menu, /datum/skin_menu/proc/load_settings, src), 10 SECONDS)
 
 	// if(!using_perspective)
 	// 	stack_trace("mob login didn't put in perspective")
