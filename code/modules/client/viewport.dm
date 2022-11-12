@@ -59,10 +59,6 @@ GLOBAL_VAR(lock_client_view_y)
  */
 /client/proc/fetch_viewport()
 	PRIVATE_PROC(TRUE)
-	_fetch_viewport()
-
-/client/proc/_fetch_viewport()
-	PRIVATE_PROC(TRUE)
 	// get vars only; they have to manually refit
 	var/list/got = params2list(winget(src, SKIN_MAP_ID_VIEWPORT, "size;zoom;letterbox"))
 	assumed_viewport_zoom = text2num(got["zoom"]) || 0
@@ -82,10 +78,6 @@ GLOBAL_VAR(lock_client_view_y)
  * this is automatically called every time something modifies us
  */
 /client/proc/refit_viewsize()
-	PRIVATE_PROC(TRUE)
-	_refit_viewsize()
-
-/client/proc/_refit_viewsize()
 	PRIVATE_PROC(TRUE)
 	if(!isnull(GLOB.lock_client_view_x) && !isnull(GLOB.lock_client_view_y))
 		view = "[GLOB.lock_client_view_x]x[GLOB.lock_client_view_y]"
@@ -161,11 +153,6 @@ GLOBAL_VAR(lock_client_view_y)
  * called to fit our viewport to what we **should** have to get our effective view.
  */
 /client/proc/fit_viewport()
-	// first, fetch
-	fetch_viewport()
-	_fit_viewport()
-
-/client/proc/_fit_viewport()
 	// by now we already fetched viewport
 	// figure out how big they want it to be based on their settings
 	// note: we only care about horizontal because the splitter.. is, well, horizontal.
@@ -243,7 +230,12 @@ GLOBAL_VAR(lock_client_view_y)
  *
  * should only be called **in code**, not by the skin!
  */
-/client/proc/request_viewport_update(no_fit)
+/client/proc/request_viewport_update(no_fit, no_fetch)
+	set waitfor = FALSE
+	_request_viewport_update(no_fit)
+
+/client/proc/_request_viewport_update(no_fit, no_fetch)
+	PRIVATE_PROC(TRUE)
 	// this is the proc called when size is updated
 	// we absolutely must run and assume the current data will
 	// not respect the update.
@@ -256,9 +248,15 @@ GLOBAL_VAR(lock_client_view_y)
 	// clear queued, acquire lock
 	viewport_queued = FALSE
 	viewport_rwlock = TRUE
-	refit_viewsize()
+	// fit first if they want it
 	if(!no_fit && is_auto_fit_viewport_enabled())
 		fit_viewport()
+		// fetch values regardless of args; we do not trust on-size to trigger
+		fetch_viewport()
+	else if(!no_fetch)
+		fetch_viewport()
+	// refit size based on viewport
+	refit_viewsize()
 	// release lock
 	viewport_rwlock = FALSE
 
@@ -266,6 +264,11 @@ GLOBAL_VAR(lock_client_view_y)
  * call this to request a viewport fit
  */
 /client/proc/request_viewport_fit(no_recalc)
+	set waitfor = FALSE
+	_request_viewport_fit(no_recalc)
+
+/client/proc/_request_viewport_fit(no_recalc)
+	PRIVATE_PROC(TRUE)
 	// if viewport is locked, ignore it
 	if(viewport_rwlock)
 		return
@@ -273,7 +276,11 @@ GLOBAL_VAR(lock_client_view_y)
 	viewport_rwlock = TRUE
 	// clear the queue at the same time because we're about to refit anyways
 	viewport_queued = FALSE
+	// fit viewport
 	fit_viewport()
+	// fetch values; we do not trust on-size to trigger
+	fetch_viewport()
+	// then refit the viewsize if needed
 	if(!no_recalc)
 		refit_viewsize()
 	// release lock
@@ -299,7 +306,7 @@ GLOBAL_VAR(lock_client_view_y)
 	assumed_viewport_zoom = z
 	assumed_viewport_box = b
 	// refit
-	request_viewport_update(TRUE)
+	request_viewport_update(TRUE, TRUE)
 
 /**
  * automatically fit their viewport to show everything optimally
