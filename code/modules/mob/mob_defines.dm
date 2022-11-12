@@ -162,9 +162,6 @@
 	var/lying = 0
 	var/lying_prev = 0
 
-	/// Player pixel shifting, if TRUE, we need to reset on move.
-	var/is_shifted = FALSE
-
 	var/canmove = 1
 	/// Allows mobs to move through dense areas without restriction. For instance, in space or out of holder objects.
 	var/incorporeal_move = 0 //0 is off, 1 is normal, 2 is for ninjas.
@@ -204,7 +201,6 @@
 	var/stunned = 0
 	var/weakened = 0
 	var/losebreath = 0 //?Carbon
-	var/_intent = null //?Living
 	var/shakecamera = 0
 	var/a_intent = INTENT_HELP //?Living
 	var/m_int = null //?Living
@@ -221,10 +217,13 @@
 	/// whether or not we're prepared to throw stuff.
 	var/in_throw_mode = THROW_MODE_OFF
 
+	// todo: nuke from orbit
 	var/music_lastplayed = "null"
 
+	// todo: nuke from orbit
 	var/job = null //?Living
 
+	// todo: nuke from orbit
 	var/const/blindness = 1 //?Carbon
 	var/const/deafness = 2 //?Carbon
 	var/const/muteness = 4 //?Carbon
@@ -245,20 +244,8 @@
 	///Used for checking whether hostile simple animals will attack you, possibly more stuff later.
 	var/faction = "neutral"
 	/// To prevent pAIs/mice/etc from getting antag in autotraitor and future auto- modes. Uses inheritance instead of a bunch of typechecks.
+	// todo: what the fuck
 	var/can_be_antagged = FALSE
-
-	/// Generic list for proc holders. Only way I can see to enable certain verbs/procs. Should be modified if needed.
-	var/proc_holder_list[] = list()//Right now unused.
-	//Also unlike the spell list, this would only store the object in contents, not an object in itself.
-
-	/* Add this line to whatever stat module you need in order to use the proc holder list.
-	Unlike the object spell system, it's also possible to attach verb procs from these objects to right-click menus.
-	This requires creating a verb for the object proc holder.
-
-	if (proc_holder_list.len)//Generic list for proc_holder objects.
-		for(var/obj/effect/proc_holder/P in proc_holder_list)
-			statpanel("[P.panel]","",P)
-	*/
 
 	/// The last mob/living/carbon to push/drag/grab this mob (mostly used by slimes friend recognition)
 	var/mob/living/carbon/LAssailant = null

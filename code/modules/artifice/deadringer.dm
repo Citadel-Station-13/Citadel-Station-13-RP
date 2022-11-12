@@ -161,7 +161,7 @@
 	corpse.flavor_texts = H.flavor_texts.Copy()
 	corpse.real_name = H.real_name
 	corpse.name = H.name
-	corpse.set_species(species_type_by_name(corpse.dna.species))
+	corpse.set_species(corpse.dna.species)
 	corpse.change_hair(H.h_style)
 	corpse.change_facial_hair(H.f_style)
 	corpse.change_hair_color(H.r_hair, H.g_hair, H.b_hair)

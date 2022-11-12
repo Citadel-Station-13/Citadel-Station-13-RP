@@ -82,8 +82,9 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 /mob/living/carbon/human/update_transform()
 	var/desired_scale_x = size_multiplier * icon_scale_x
 	var/desired_scale_y = size_multiplier * icon_scale_y
-	desired_scale_x *= species.icon_scale_x
-	desired_scale_y *= species.icon_scale_y
+	if(istype(species))
+		desired_scale_x *= species.icon_scale_x
+		desired_scale_y *= species.icon_scale_y
 
 	var/matrix/M = matrix()
 	var/anim_time = 3

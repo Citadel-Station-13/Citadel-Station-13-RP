@@ -1,4 +1,5 @@
 /datum/species/shadow
+	uid = SPECIES_ID_SHADOW
 	name = SPECIES_SHADOW
 	name_plural = "shadows"
 
@@ -26,8 +27,8 @@
 	remains_type = /obj/effect/debris/cleanable/ash
 	death_message = "dissolves into ash..."
 
-	flags = NO_SCAN | NO_SLIP | NO_POISON | NO_MINOR_CUT
-	spawn_flags = SPECIES_IS_RESTRICTED
+	species_flags = NO_SCAN | NO_SLIP | NO_POISON | NO_MINOR_CUT
+	species_spawn_flags = SPECIES_SPAWN_RESTRICTED
 
 	genders = list(NEUTER)
 
