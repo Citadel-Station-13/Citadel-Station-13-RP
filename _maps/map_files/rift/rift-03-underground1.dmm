@@ -2930,6 +2930,13 @@
 	},
 /turf/simulated/floor,
 /area/storage/tech)
+"jk" = (
+/mob/living/simple_mob/animal/passive/mouse{
+	desc = "A small rodent, this one is seemingly defying gravity. Oh, wait, no, it just has tiny wings. The beauty of nature.";
+	name = "Elizondo the Flying Mouse"
+	},
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "jl" = (
 /obj/machinery/door/window{
 	dir = 2;
@@ -9664,12 +9671,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Lw" = (
-/mob/living/simple_mob/animal/passive/mouse{
-	desc = "A small rodent, this one is seemingly defying gravity. Oh, wait, no, it just has tiny wings. The beauty of nature.";
-	flying = 1;
-	name = "Elizondo the Flying Mouse"
-	},
-/turf/simulated/open/lythios43c,
+/obj/structure/fence,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "Ly" = (
 /obj/effect/alien/weeds/node,
@@ -14722,7 +14725,7 @@ td
 td
 OA
 td
-Lw
+td
 td
 td
 td
@@ -16619,8 +16622,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+Lw
+Lw
 aa
 aa
 aa
@@ -16813,8 +16816,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+jL
+jL
 aa
 aa
 aa
@@ -17006,11 +17009,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -17200,12 +17203,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jk
+jL
+jL
+jL
 aa
 aa
 aa
@@ -17395,11 +17398,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -17590,8 +17593,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+jL
+jL
 aa
 aa
 aa
