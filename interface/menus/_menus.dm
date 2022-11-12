@@ -183,7 +183,7 @@ GLOBAL_LIST_EMPTY(skin_menu_entries)
 	src.category = category
 	cache_constructor()
 	if(load_command_default)
-		load_command_enabled = generate_command()
+		load_command_enabled = generate_command(TRUE)
 	register()
 
 /datum/skin_menu_entry/Destroy()

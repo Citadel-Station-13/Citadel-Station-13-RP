@@ -286,12 +286,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	//! therefore, DO NOT PUT ANYTHING YOU WILL RELY ON LATER IN THIS PROC IN LOGIN!
 	. = ..()	//calls mob.Login()
 
-	// load it after they've connected because of byond overriding what we winset if we do it too early
-	// yes, this is a spawn
-	// this is so this works during init.
-	// sue me.
-	// addtimer(CALLBACK(GLOB.main_window_menu, /datum/skin_menu/proc/load_settings, src), 10 SECONDS)
-
 	// if(!using_perspective)
 	// 	stack_trace("mob login didn't put in perspective")
 
