@@ -35,7 +35,7 @@
 	)
 
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"
@@ -99,7 +99,7 @@
 		/datum/category_item/catalogue/fauna/flatzorren,
 	)
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	flesh_color = "#AFA59E"

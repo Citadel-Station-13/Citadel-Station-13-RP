@@ -8,7 +8,7 @@
 		template.superspecies_id = id
 	template.category = category
 	template.desc = blurb
-	template.whitelisted = !!(species_spawn_flags & SPECIES_SPAWN_WHITELISTED)
+	template.species_spawn_flags = species_spawn_flags
 	template.real_species_type = type
 	template.genders = genders.Copy()
 	template.min_age = min_age
@@ -58,8 +58,8 @@
 	var/desc
 	/// are we an actual species as opposed to a demoted species? **DO NOT TOUCH THIS VAR.**
 	var/is_real = FALSE
-	/// is whitelisted (do someone need to be on alienwhitelist)
-	var/whitelisted = FALSE
+	/// spawn flags
+	var/species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	/// real species type
 	var/real_species_type = /datum/species/custom
 	/// species fluff flags - read species_flags.dm in __DEFINES

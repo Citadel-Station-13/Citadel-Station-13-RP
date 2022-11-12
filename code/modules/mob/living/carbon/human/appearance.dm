@@ -188,7 +188,7 @@
 		var/current_species_name = S.name
 
 		if(check_whitelist && config_legacy.usealienwhitelist && !check_rights(R_ADMIN, 0, src)) //If we're using the whitelist, make sure to check it!
-			if(!(S.species_spawn_flags & SPECIES_SPAWN_ALLOWED))
+			if(!(S.species_spawn_flags & SPECIES_SPAWN_CHARACTER))
 				continue
 			if(whitelist.len && !(current_species_name in whitelist))
 				continue

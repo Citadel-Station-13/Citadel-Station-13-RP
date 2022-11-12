@@ -26,7 +26,9 @@
 	character_species_lookup = list()
 	for(var/path in species_paths)
 		var/datum/species/S = species_paths[path]
-		if(!(S.species_spawn_flags & SPECIES_SPAWN_ALLOWED))		// don't bother lmao
+		if(S.species_spawn_flags & (SPECIES_SPAWN_SPECIAL))	// don't bother
+			continue
+		if(!(S.species_spawn_flags & (SPECIES_SPAWN_CHARACTER))) // don't bother
 			continue
 		if(!S.uid)
 			stack_trace("no species ID on [S.type].")
@@ -44,7 +46,10 @@
 			stack_trace("ignoring custom character species path [path] - collides on uid [S.uid]")
 			continue
 		character_species_lookup[S.uid] = S
+	tim_sort(character_species_lookup, /proc/cmp_auto_compare, TRUE)
+	rebuild_character_species_ui_cache()
 
+/datum/controller/subsystem/characters/proc/rebuild_character_species_ui_cache()
 	// make species data cache
 	character_species_cache = list()
 	for(var/id in character_species_lookup)
@@ -52,15 +57,13 @@
 		LAZYINITLIST(character_species_cache[S.category])
 		character_species_cache[S.category] += list(list(
 			"id" = S.uid,
-			"whitelisted" = S.whitelisted,
+			"spawn_flags" = S.species_spawn_flags,
 			"name" = S.name,
 			"desc" = S.desc,
 			"appearance_flags" = S.species_appearance_flags,
 			"flags" = S.species_flags,
 			"category" = S.category,	// note to self optimize this
 		))
-
-	tim_sort(character_species_lookup, /proc/cmp_auto_compare, TRUE)
 
 /datum/controller/subsystem/characters/proc/resolve_character_species(uid)
 	RETURN_TYPE(/datum/character_species)

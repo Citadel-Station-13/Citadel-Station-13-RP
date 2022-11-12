@@ -28,7 +28,7 @@
 	max_additional_languages = 3
 
 	species_flags = NO_MINOR_CUT | CONTAMINATION_IMMUNE//Chitin like VASILISSANs should have the same flags
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_WHITELIST_SELECTABLE
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
 
 	blood_color = "#12ff12"
