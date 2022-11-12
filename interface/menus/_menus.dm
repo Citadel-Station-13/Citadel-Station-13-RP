@@ -47,9 +47,10 @@
 	for(var/datum/skin_menu_category/cat as anything in categories)
 		. |= cat.creation_list(C)
 
-/datum/skin_menu/proc/setup(client/C)
+/datum/skin_menu/proc/setup(client/C, load = TRUE)
 	create_and_bind(C)
-	load_settings(C)
+	if(load)
+		load_settings(C)
 
 /datum/skin_menu/proc/all_entries()
 	. = list()

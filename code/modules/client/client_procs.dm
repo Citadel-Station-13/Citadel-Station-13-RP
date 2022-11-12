@@ -243,7 +243,13 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	// todo: hoist
 	// build top level menu
-	GLOB.main_window_menu.setup(src)
+	GLOB.main_window_menu.setup(src, FALSE)
+	// load it after they've connected because of byond overriding what we winset if we do it too early
+	// yes, this is a spawn
+	// this is so this works during init.
+	// sue me.
+	spawn(5 SECONDS)
+		GLOB.main_window_menu.load_settings(src)
 
 	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
