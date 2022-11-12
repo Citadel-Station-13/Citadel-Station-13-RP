@@ -51,7 +51,8 @@ when portals are shortly lived, or when portals are made to be obvious with spec
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	// keep together to force non TILE_BOUND
-	SET_APPEARANCE_FLAGS(PIXEL_SCALE | KEEP_TOGETHER)
+	//! No keep together so it doesn't overwrite planes you dumbass
+	SET_APPEARANCE_FLAGS(PIXEL_SCALE)
 
 	var/obj/effect/map_effect/portal/counterpart = null // The portal line or master that this is connected to, on the 'other side'.
 
