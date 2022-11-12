@@ -1,3 +1,4 @@
+//TODO: We don't have check_reactions or something like it, so we can't prevent idiot transfers. @Zandario
 /obj/machinery/chem_master
 	name = "ChemMaster 3000"
 	desc = "Used to seperate and package chemicals in to autoinjectors, lollipops, patches, pills, or bottles. Warranty void if used to create Space Drugs."
@@ -62,8 +63,8 @@
 
 /obj/machinery/chem_master/Initialize(mapload, newdir)
 	. = ..()
-	default_apply_parts()
 	create_reagents(1000)
+	default_apply_parts()
 
 /obj/machinery/chem_master/Destroy()
 	QDEL_NULL(beaker)
@@ -102,10 +103,10 @@
 /obj/machinery/chem_master/attackby(obj/item/I, mob/user, params)
 	if(default_unfasten_wrench(user, I, 20))
 		return
-	else if(default_deconstruction_screwdriver(user, "mixer0_nopower", "mixer0", I))
+	else if(default_deconstruction_screwdriver(user, I))
 		return
 
-	else if(default_deconstruction_crowbar(I))
+	else if(default_deconstruction_crowbar(user, I))
 		return
 
 	if(is_reagent_container(I) && !(I.item_flags & ATOM_ABSTRACT) && I.is_open_container())
@@ -295,7 +296,7 @@
 			return TRUE
 
 		if("transfer")
-			var/reagent = GLOB.name2reagent[params["id"]]
+			var/id = params["id"]
 			var/amount = text2num(params["amount"])
 			var/to_container = params["to"]
 			// Custom amount
@@ -307,21 +308,15 @@
 				return FALSE
 			use_power(active_power_usage)
 			if (to_container == "beaker" && !mode)
-				reagents.remove_reagent(reagent, amount)
+				reagents.remove_reagent(id, amount)
 				return TRUE
 			if (!beaker)
 				return FALSE
 			if (to_container == "buffer")
-				var/datum/reagent/R = beaker.reagents.get_reagent(reagent)
-				if(!check_reactions(R, beaker.reagents, usr)) // USR IS TEMPORARY UNTIL BETTER SAY CODE @Zandario
-					return FALSE
-				beaker.reagents.trans_id_to(src, reagent, amount)
+				beaker.reagents.trans_id_to(src, id, amount)
 				return TRUE
 			if (to_container == "beaker" && mode)
-				var/datum/reagent/R = reagents.get_reagent(reagent)
-				if(!check_reactions(R, reagents, usr)) // USR IS TEMPORARY UNTIL BETTER SAY CODE @Zandario
-					return FALSE
-				reagents.trans_id_to(beaker, reagent, amount)
+				reagents.trans_id_to(beaker, id, amount)
 				return TRUE
 			return FALSE
 
@@ -349,10 +344,12 @@
 			var/list/style
 			use_power(active_power_usage)
 			if (item_type == "pill")
-				vol_each_max = min(50, vol_each_max)
+				vol_each_max = min(60, vol_each_max)
 			else if (item_type == "patch")
 				vol_each_max = min(40, vol_each_max)
 			else if (item_type == "pill_bottle")
+				vol_each_max = min(30, vol_each_max)
+			else if (item_type == "bottle")
 				vol_each_max = min(30, vol_each_max)
 			else if (item_type == "condiment_pack")
 				vol_each_max = min(10, vol_each_max)
@@ -394,7 +391,7 @@
 			if(!name || !reagents.total_volume || !src || QDELETED(src) || !usr.canUseTopic(src, !issilicon(usr)))
 				return FALSE
 
-			// Start filling
+			//! Start filling
 			if(item_type == "pill")
 				var/obj/item/reagent_containers/pill/P
 				var/target_loc = drop_location()
@@ -413,10 +410,12 @@
 						P.icon_state ="pill[rand(1,21)]"
 					else
 						P.icon_state = "pill[chosen_pill_style]"
-					if(P.icon_state == "pill4")
+					if(P.icon_state in PILL_STYLE_RED)
 						P.desc = "A tablet or capsule, but not just any, a red one, one taken by the ones not scared of knowledge, freedom, uncertainty and the brutal truths of reality."
+					if(P.icon_state in PILL_STYLE_COLORABLE) // if using greyscale, take colour from reagent
+						P.color = reagents.get_color()
 					adjust_item_drop_location(P)
-					reagents.trans_to(P, vol_each,/* transfered_by = usr*/)
+					reagents.trans_to_obj(P, vol_each,/* transfered_by = usr*/)
 				return TRUE
 
 			if(item_type == "patch")
@@ -426,7 +425,7 @@
 					P.name = trim("[name] patch")
 					P.icon_state = chosen_patch_style
 					adjust_item_drop_location(P)
-					reagents.trans_to(P, vol_each,/* transfered_by = usr*/)
+					reagents.trans_to_obj(P, vol_each,/* transfered_by = usr*/)
 				return TRUE
 
 			if(item_type == "pill_bottle")
@@ -435,7 +434,7 @@
 					P = new/obj/item/storage/pill_bottle(drop_location())
 					P.name = trim("[name] pill_bottle")
 					adjust_item_drop_location(P)
-					reagents.trans_to(P, vol_each,/* transfered_by = usr*/)
+					reagents.trans_to_obj(P, vol_each,/* transfered_by = usr*/)
 				return TRUE
 
 			// if(item_type == "condiment_pack")
@@ -445,7 +444,7 @@
 			// 		P.originalname = name
 			// 		P.name = trim("[name] pack")
 			// 		P.desc = "A small condiment pack. The label says it contains [name]."
-			// 		reagents.trans_to(P, vol_each,/* transfered_by = usr*/)
+			// 		reagents.trans_to_obj(P, vol_each,/* transfered_by = usr*/)
 			// 	return TRUE
 
 			if(item_type == "bottle")
@@ -453,9 +452,9 @@
 				for(var/i in 1 to amount)
 					P = new/obj/item/reagent_containers/glass/bottle(drop_location())
 					P.name = trim("[name] bottle")
-					P.icon_state = chosen_bottle_style
+					P.icon_state = "bottle[chosen_bottle_style]"
 					P.renamed_by_player = TRUE
-					reagents.trans_to(P, vol_each,/* transfered_by = usr*/)
+					reagents.trans_to_obj(P, vol_each,/* transfered_by = usr*/)
 				return TRUE
 
 			if(item_type == "condiment_bottle")
@@ -466,7 +465,7 @@
 						apply_condi_style(P, style)
 					P.renamed_by_player = TRUE
 					P.name = name
-					reagents.trans_to(P, vol_each,/* transfered_by = usr*/)
+					reagents.trans_to_obj(P, vol_each,/* transfered_by = usr*/)
 				return TRUE
 
 			return FALSE
@@ -551,8 +550,8 @@
 		AM.pixel_y = AM.base_pixel_y - 8
 		return null
 	else if (istype(AM, /obj/item/reagent_containers/pill))
-		AM.pixel_x = AM.base_pixel_x + rand(-7, 7)
-		AM.pixel_y = AM.base_pixel_y + rand(-7, 7)
+		AM.pixel_x = AM.base_pixel_x + rand(-10, 10)
+		AM.pixel_y = AM.base_pixel_y + rand(-10, 10)
 		return null
 	else
 		var/md5 = md5(AM.name)
@@ -793,29 +792,3 @@
 			container.lefthand_file = style["lefthand_file"]
 			container.righthand_file = style["righthand_file"]
 	*/
-
-/**
- * Checks to see if the target reagent is being created (reacting) and if so prevents transfer
- * Only prevents reactant from being moved so that people can still manlipulate input reagents
- */
-/obj/machinery/chem_master/proc/check_reactions(datum/reagent/reagent, datum/reagents/holder, mob/user)
-	if(!reagent)
-		return FALSE
-	var/canMove = TRUE
-	/*
-	for(var/e in holder.reaction_list)
-		var/datum/equilibrium/E = e
-		if(E.reaction.reaction_flags & REACTION_COMPETITIVE)
-			continue
-		for(var/result in E.reaction.required_reagents)
-			var/datum/reagent/R = result
-			if(R == reagent.type)
-				canMove = FALSE
-	*/
-	if(holder.can_reactions_happen())
-		canMove = FALSE
-	canMove = TRUE
-	if(!canMove)
-		// say("Cannot move arrested chemical reaction reagents!")
-		to_chat(user, "Cannot move arrested chemical reaction reagents!")
-	return canMove

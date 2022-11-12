@@ -1246,5 +1246,5 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
  * need_hands - Whether you need hands to use this
  * floor_okay - Whether mobility flags should be checked for MOBILITY_UI to use.
  */
-/mob/proc/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE, need_hands = FALSE, floor_okay=FALSE)
+/mob/proc/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
 	return

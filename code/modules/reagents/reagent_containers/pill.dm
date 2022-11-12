@@ -16,10 +16,15 @@
 	slot_flags = SLOT_EARS
 	volume = 60
 
+	/// When set, we allow automatic naming on init.
+	var/rename_with_volume = FALSE
+
 /obj/item/reagent_containers/pill/Initialize(mapload)
 	. = ..()
 	if(!icon_state)
-		icon_state = "[base_icon_state][rand(1, 4)]" //preset pills only use colour changing or unique icons
+		icon_state = "pill[rand(1,20)]"
+	if(reagents.total_volume && rename_with_volume)
+		name += " ([reagents.total_volume]u)"
 
 /obj/item/reagent_containers/pill/attack(mob/M as mob, mob/user as mob)
 	if(M == user)

@@ -3,8 +3,6 @@ import { useBackend, useSharedState } from '../backend';
 import { AnimatedNumber, Box, Button, ColorBox, LabeledList, NumberInput, Section, Table } from '../components';
 import { Window } from '../layouts';
 
-const transferAmounts = [1, 5, 10, 30, 60];
-
 type ChemMasterData = {
   // Generic Data
   mode: boolean;
@@ -190,7 +188,7 @@ const ChemMasterContent = (props, context) => {
 const ChemicalBuffer = Table;
 
 const ChemicalBufferEntry = (props, context) => {
-  const { act } = useBackend(context);
+  const { act } = useBackend<ChemMasterData>(context);
   const { chemical, transferTo } = props;
   return (
     <Table.Row key={chemical.id}>
@@ -223,6 +221,24 @@ const ChemicalBufferEntry = (props, context) => {
             act('transfer', {
               id: chemical.id,
               amount: 10,
+              to: transferTo,
+            })}
+        />
+        <Button
+          content="30"
+          onClick={() =>
+            act('transfer', {
+              id: chemical.id,
+              amount: 30,
+              to: transferTo,
+            })}
+        />
+        <Button
+          content="60"
+          onClick={() =>
+            act('transfer', {
+              id: chemical.id,
+              amount: 60,
               to: transferTo,
             })}
         />
@@ -316,11 +332,12 @@ const PackagingControls = (props, context) => {
             <Button
               key={pill.id}
               width="30px"
-              selected={pill.id === chosen_pill_style}
+              verticalAlignContent="middle"
               textAlign="center"
+              selected={pill.id === chosen_pill_style}
               color="transparent"
               onClick={() => act('change_pill_style', { id: pill.id })}>
-              <Box mx={-1} className={pill.className} />
+              <Box mx={-1} mb={0} mt={1} className={pill.className} />
             </Button>
           ))}
         </LabeledList.Item>
