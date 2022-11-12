@@ -98,10 +98,14 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 
 /datum/skin_menu_entry/zoom/pressed(client/C, new_checked)
 	. = ..()
+	if(C.is_auto_fit_viewport_enabled())
+		C.request_viewport_fit()
 	C.request_viewport_update()
 
 /datum/skin_menu_entry/zoom/load(client/C, enabled)
 	. = ..()
+	if(C.is_auto_fit_viewport_enabled())
+		C.request_viewport_fit()
 	C.request_viewport_update()
 
 /datum/skin_menu_entry/zoom/stretch_to_fit
@@ -147,10 +151,14 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 
 /datum/skin_menu_entry/widescreen/pressed(client/C, new_checked)
 	. = ..()
+	if(C.is_auto_fit_viewport_enabled())
+		C.request_viewport_fit()
 	C.request_viewport_update()
 
 /datum/skin_menu_entry/widescreen/load(client/C, enabled)
 	. = ..()
+	if(C.is_auto_fit_viewport_enabled())
+		C.request_viewport_fit()
 	C.request_viewport_update()
 
 /datum/skin_menu_entry/widescreen/automatic
@@ -168,9 +176,9 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 //! misc zoom
 /datum/skin_menu_entry/auto_fit
 	id = SKIN_ID_MENU_BUTTON_AUTO_FIT_VIEWPORT
-	name = "Automatically Fit Viewport"
+	name = "Automatically Fit Viewport (EXPERIMENTAL)"
 	checkbox = TRUE
-	is_default = TRUE
+	is_default = FALSE
 
 /datum/skin_menu_entry/auto_fit/load(client/C, enabled)
 	. = ..()

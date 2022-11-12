@@ -56,36 +56,47 @@ GLOBAL_VAR(lock_client_view_y)
 
 /**
  * called to manually update viewport vars since the skin macro is only triggered on resize
+ *
+ * return TRUE if changed
  */
 /client/proc/fetch_viewport()
 	PRIVATE_PROC(TRUE)
+	. = FALSE
 	// get vars only; they have to manually refit
 	var/list/got = params2list(winget(src, SKIN_MAP_ID_VIEWPORT, "size;zoom;letterbox"))
-	assumed_viewport_zoom = text2num(got["zoom"]) || 0
-	assumed_viewport_box = (got["letterbox"] == "true")
+	var/got_zoom = text2num(got["zoom"]) || 0
+	var/got_box = (got["letterbox"] == "true")
 	var/list/split = splittext(got["size"], "x")
+	var/got_spx
+	var/got_spy
 	if(length(split) == 2)
-		assumed_viewport_spx = text2num(split[1]) || (WORLD_ICON_SIZE * GLOB.game_view_x)
-		assumed_viewport_spy = text2num(split[2]) || (WORLD_ICON_SIZE * GLOB.game_view_y)
+		got_spx = text2num(split[1]) || (WORLD_ICON_SIZE * GLOB.game_view_x)
+		got_spy = text2num(split[2]) || (WORLD_ICON_SIZE * GLOB.game_view_y)
 	else
 		stack_trace("fetch_viewport failed to get spx/spy")
-		assumed_viewport_spx = (WORLD_ICON_SIZE * GLOB.game_view_x)
-		assumed_viewport_spy = (WORLD_ICON_SIZE * GLOB.game_view_y)
+		got_spx = (WORLD_ICON_SIZE * GLOB.game_view_x)
+		got_spy = (WORLD_ICON_SIZE * GLOB.game_view_y)
+	if(got_zoom != assumed_viewport_zoom || got_spx != assumed_viewport_spx || got_spy != assumed_viewport_spy || got_box != assumed_viewport_box)
+		. = TRUE
+		assumed_viewport_zoom = got_zoom
+		assumed_viewport_spx = got_spx
+		assumed_viewport_spy = got_spy
+		assumed_viewport_box = got_box
 
 /**
  * called to refit our view size as necessary
  *
  * this is automatically called every time something modifies us
  */
-/client/proc/refit_viewsize()
+/client/proc/refit_viewsize(no_fit)
 	PRIVATE_PROC(TRUE)
 	if(!isnull(GLOB.lock_client_view_x) && !isnull(GLOB.lock_client_view_y))
 		view = "[GLOB.lock_client_view_x]x[GLOB.lock_client_view_y]"
-		on_refit_viewsize(GLOB.lock_client_view_x, GLOB.lock_client_view_y)
+		on_refit_viewsize(GLOB.lock_client_view_x, GLOB.lock_client_view_y, no_fit)
 		return
 	if(using_temporary_viewsize)
 		view = "[temporary_viewsize_width]x[temporary_viewsize_height]"
-		on_refit_viewsize(temporary_viewsize_width, temporary_viewsize_height)
+		on_refit_viewsize(temporary_viewsize_width, temporary_viewsize_height, no_fit)
 		return
 	var/widescreen = is_widescreen_enabled()
 	if(!widescreen)
@@ -93,7 +104,7 @@ GLOBAL_VAR(lock_client_view_y)
 		var/width = 15 + (using_perspective.augment_view_width * 2)
 		var/height = 15 + (using_perspective.augment_view_height * 2)
 		view = "[width]x[height]"
-		on_refit_viewsize(width, height)
+		on_refit_viewsize(width, height, no_fit)
 		return
 	var/stretch_to_fit = assumed_viewport_zoom == 0
 	using_perspective.ensure_view_cached()
@@ -115,7 +126,7 @@ GLOBAL_VAR(lock_client_view_y)
 			available_width = CEILING(available_width, 1)
 			available_width = clamp(available_width, GLOB.min_client_view_x, max_width)
 			view = "[available_width]x[max_height]"
-			on_refit_viewsize(available_width, max_height)
+			on_refit_viewsize(available_width, max_height, no_fit)
 			return
 	// option 3: scale as necessary
 	var/pixels_per_tile = assumed_viewport_zoom * WORLD_ICON_SIZE
@@ -126,13 +137,15 @@ GLOBAL_VAR(lock_client_view_y)
 	var/desired_width = clamp(div_x, GLOB.min_client_view_x, max_width)
 	var/desired_height = clamp(div_y, GLOB.min_client_view_y, max_height)
 	view = "[desired_width]x[desired_height]"
-	on_refit_viewsize(desired_width, desired_height)
+	on_refit_viewsize(desired_width, desired_height, no_fit)
 
-/client/proc/on_refit_viewsize(new_width, new_height)
+/client/proc/on_refit_viewsize(new_width, new_height, no_fit)
 	var/changed = (current_viewport_height != new_height) || (current_viewport_width != new_width)
 	if(changed)
 		current_viewport_width = new_width
 		current_viewport_height = new_height
+		if(!no_fit && is_auto_fit_viewport_enabled())
+			fit_viewport()
 	post_refit_viewsize(changed)
 
 /**
@@ -235,9 +248,27 @@ GLOBAL_VAR(lock_client_view_y)
  */
 /client/proc/request_viewport_update()
 	set waitfor = FALSE
+	if(!viewport_rwlock)
+		_request_viewport_update()
 	if(!viewport_queued)
 		viewport_queued = TRUE
 		addtimer(CALLBACK(src, .proc/_request_viewport_update), 0)
+
+/**
+ * call this when things change to queue an update
+ *
+ * should only be called **in code**, not by the skin!
+ *
+ * blocks until finished
+ */
+/client/proc/request_viewport_update_blocking()
+	if(!viewport_rwlock)
+		_request_viewport_update()
+		return
+	if(!viewport_queued)
+		viewport_queued = TRUE
+		addtimer(CALLBACK(src, .proc/_request_viewport_update), 0)
+	UNTIL(!viewport_queued)
 
 // todo : locks are probably bad when working with request fit
 /client/proc/_request_viewport_update(no_fit, no_fetch)
@@ -248,18 +279,10 @@ GLOBAL_VAR(lock_client_view_y)
 	viewport_queued = FALSE
 	// lock
 	viewport_rwlock = TRUE
-	// fit first if they want it
-	if(!no_fit && is_auto_fit_viewport_enabled())
-		// just in case because this is called by a lot of things that are too shitcoded to update (like my own code)
-		fetch_viewport()
-		// fit
-		fit_viewport()
-		// fetch values regardless of args; we do not trust on-size to trigger
-		fetch_viewport()
-	else if(!no_fetch)
+	if(!no_fetch)
 		fetch_viewport()
 	// refit size based on viewport
-	refit_viewsize()
+	refit_viewsize(no_fit)
 	// release lock
 	viewport_rwlock = FALSE
 
@@ -269,6 +292,17 @@ GLOBAL_VAR(lock_client_view_y)
 /client/proc/request_viewport_fit(no_recalc)
 	set waitfor = FALSE
 	_request_viewport_fit(no_recalc)
+
+/**
+ * call this to request a viewport fit
+ * forcefully fits
+ * blocks until finished
+ * don't call this from non-buttons because it blocks and
+ * absolutely can stack and ruin everyone's day.
+ */
+/client/proc/viewport_fit_blocking(no_recalc)
+	UNTIL(!viewport_rwlock)
+	return _request_viewport_fit(no_recalc)
 
 // todo : locks are probably bad when working with request update
 /client/proc/_request_viewport_fit(no_recalc)
