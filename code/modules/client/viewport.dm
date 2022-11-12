@@ -249,6 +249,9 @@ GLOBAL_VAR(lock_client_view_y)
 	viewport_rwlock = TRUE
 	// fit first if they want it
 	if(!no_fit && is_auto_fit_viewport_enabled())
+		// just in case because this is called by a lot of things that are too shitcoded to update (like my own code)
+		fetch_viewport()
+		// fit
 		fit_viewport()
 		// fetch values regardless of args; we do not trust on-size to trigger
 		fetch_viewport()
@@ -275,6 +278,8 @@ GLOBAL_VAR(lock_client_view_y)
 	viewport_rwlock = TRUE
 	// clear the queue at the same time because we're about to refit anyways
 	viewport_queued = FALSE
+	// just in case because this is called by a lot of things that are too shitcoded to update (like my own code)
+	fetch_viewport()
 	// fit viewport
 	fit_viewport()
 	// fetch values; we do not trust on-size to trigger
