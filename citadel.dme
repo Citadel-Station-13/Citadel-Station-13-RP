@@ -3944,6 +3944,7 @@
 #include "code\modules\sprite_accessories\hair\tajaran_hair.dm"
 #include "code\modules\sprite_accessories\hair\teshari_hair.dm"
 #include "code\modules\sprite_accessories\hair\unathi_hair.dm"
+#include "code\modules\sprite_accessories\hair\unathidigi_hair.dm"
 #include "code\modules\sprite_accessories\hair\vox_hair.dm"
 #include "code\modules\sprite_accessories\hair\vulpakin_hair.dm"
 #include "code\modules\sprite_accessories\hair\xenomorph_hybrid_domes.dm"
