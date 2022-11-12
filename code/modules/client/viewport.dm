@@ -229,24 +229,23 @@ GLOBAL_VAR(lock_client_view_y)
  * call this when things change to queue an update
  *
  * should only be called **in code**, not by the skin!
+ *
+ * warning: this proc doesn't refit instantly, it only queues.
+ * client decides what time is best to refit.
  */
-/client/proc/request_viewport_update(no_fit, no_fetch)
+/client/proc/request_viewport_update()
 	set waitfor = FALSE
-	_request_viewport_update(no_fit)
+	if(!viewport_queued)
+		viewport_queued = TRUE
+		addtimer(CALLBACK(src, .proc/_request_viewport_update), 0)
 
 /client/proc/_request_viewport_update(no_fit, no_fetch)
 	PRIVATE_PROC(TRUE)
-	// this is the proc called when size is updated
-	// we absolutely must run and assume the current data will
-	// not respect the update.
-	// thus, queue.
-	if(viewport_rwlock)
-		if(!viewport_queued)
-			viewport_queued = TRUE
-			addtimer(CALLBACK(src, .proc/request_viewport_update), 0)
-		return
-	// clear queued, acquire lock
+	// if rwlocked, wait; people should be queuing and not calling this directly
+	UNTIL(!viewport_rwlock)
+	// clear queued
 	viewport_queued = FALSE
+	// lock
 	viewport_rwlock = TRUE
 	// fit first if they want it
 	if(!no_fit && is_auto_fit_viewport_enabled())
@@ -306,7 +305,7 @@ GLOBAL_VAR(lock_client_view_y)
 	assumed_viewport_zoom = z
 	assumed_viewport_box = b
 	// refit
-	request_viewport_update(TRUE, TRUE)
+	_request_viewport_update(TRUE, TRUE)
 
 /**
  * automatically fit their viewport to show everything optimally

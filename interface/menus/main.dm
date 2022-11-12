@@ -100,6 +100,10 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 	. = ..()
 	C.request_viewport_update()
 
+/datum/skin_menu_entry/zoom/load(client/C, enabled)
+	. = ..()
+	C.request_viewport_update()
+
 /datum/skin_menu_entry/zoom/stretch_to_fit
 	name = "Stretch to Fit"
 	id = SKIN_ID_MENU_BUTTON_STRETCH_TO_FIT
@@ -139,6 +143,10 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 	. = ..()
 	C.request_viewport_update()
 
+/datum/skin_menu_entry/widescreen/load(client/C, enabled)
+	. = ..()
+	C.queue_viewport_update()
+
 /datum/skin_menu_entry/widescreen/automatic
 	id = SKIN_ID_MENU_BUTTON_WIDESCREEN_ENABLED
 	name = "Automatic Widescreen"
@@ -156,6 +164,11 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 	id = SKIN_ID_MENU_BUTTON_AUTO_FIT_VIEWPORT
 	name = "Automatically Fit Viewport"
 	checkbox = TRUE
+
+/datum/skin_menu_entry/auto_fit/load(client/C, enabled)
+	. = ..()
+	if(enabled)
+		C.request_viewport_fit()
 
 /client/proc/is_auto_fit_viewport_enabled()
 	return menu_button_checked(SKIN_ID_MENU_BUTTON_AUTO_FIT_VIEWPORT)
