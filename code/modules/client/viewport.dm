@@ -170,12 +170,12 @@ GLOBAL_VAR(lock_client_view_y)
 	if(!isnull(GLOB.lock_client_view_x) && !isnull(GLOB.lock_client_view_y))
 		effective_view_width = GLOB.lock_client_view_x
 		effective_view_height = GLOB.lock_client_view_y
-	if(widescreen)
+	else if(widescreen)
 		effective_view_width = clamp(temporary_viewsize_width || using_perspective.cached_view_width, GLOB.min_client_view_x, 67)
 		effective_view_height = clamp(temporary_viewsize_height || using_perspective.cached_view_height, GLOB.min_client_view_y, 67)
 	else
-		effective_view_width = temporary_viewsize_width || (15 + (using_perspective.augment_view_width * 2))
-		effective_view_height = temporary_viewsize_height || (15 + (using_perspective.augment_view_height * 2))
+		effective_view_width = clamp(temporary_viewsize_width || (15 + (using_perspective.augment_view_width * 2)), GLOB.min_client_view_x, 67)
+		effective_view_height = clamp(temporary_viewsize_height || (15 + (using_perspective.augment_view_height * 2)), GLOB.min_client_view_y, 67)
 	if(assumed_viewport_zoom == 0)
 		// they're stretching to fit; this makes it annoying
 		var/aspect_ratio = effective_view_width / effective_view_height
@@ -185,7 +185,7 @@ GLOBAL_VAR(lock_client_view_y)
 		desired_pixel_width = assumed_viewport_spy * aspect_ratio
 	else
 		// they're not using stretch to fit; this makes it very easy
-		desired_pixel_width = WORLD_ICON_SIZE * assumed_viewport_zoom * using_perspective.cached_view_width
+		desired_pixel_width = WORLD_ICON_SIZE * assumed_viewport_zoom * effective_view_width
 	// grab their screen size (or what counts as it)
 	var/list/fetching = winget(src, SKIN_SPLITTER_ID_MAIN, "size")
 	var/list/parsed = splittext(fetching, "x")
