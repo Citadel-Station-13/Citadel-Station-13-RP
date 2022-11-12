@@ -191,15 +191,14 @@ var/global/floorIsLava = 0
 	// language toggles
 	body += "<br><br><b>Languages:</b><br>"
 	var/f = 1
-	for(var/k in GLOB.all_languages)
-		var/datum/language/L = GLOB.all_languages[k]
-		if(!(L.flags & INNATE))
+	for(var/datum/language/L as anything in SScharacters.all_languages())
+		if(!(L.language_flags & INNATE))
 			if(!f) body += " | "
 			else f = 0
 			if(L in M.languages)
-				body += "<a href='?src=\ref[src];toglang=\ref[M];lang=[html_encode(k)]' style='color:#006600'>[k]</a>"
+				body += "<a href='?src=\ref[src];toglang=\ref[M];lang=[html_encode(L.name)]' style='color:#006600'>[L.name]</a>"
 			else
-				body += "<a href='?src=\ref[src];toglang=\ref[M];lang=[html_encode(k)]' style='color:#ff0000'>[k]</a>"
+				body += "<a href='?src=\ref[src];toglang=\ref[M];lang=[html_encode(L.name)]' style='color:#ff0000'>[L.name]</a>"
 
 	body += {"<br>
 		</body></html>
@@ -970,7 +969,7 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 	set name = "Unprison"
 	if (M.z == 2)
 		if (config_legacy.allow_admin_jump)
-			M.forceMove(SSjob.GetLatejoinSpawnpoint(faction = JOB_FACTION_STATION))
+			M.forceMove(SSjob.get_latejoin_spawnpoint(faction = JOB_FACTION_STATION))
 			message_admins("[key_name_admin(usr)] has unprisoned [key_name_admin(M)]", 1)
 			log_admin("[key_name(usr)] has unprisoned [key_name(M)]")
 		else

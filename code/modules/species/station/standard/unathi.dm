@@ -1,5 +1,7 @@
 /datum/species/unathi
+	uid = SPECIES_ID_UNATHI
 	name = SPECIES_UNATHI
+	category = "Unathi"
 	name_plural = SPECIES_UNATHI
 	primitive_form = SPECIES_MONKEY_UNATHI
 	default_bodytype = BODYTYPE_UNATHI
@@ -22,10 +24,9 @@
 	wikilink = "https://citadel-station.net/wikiRP/index.php?title=Unathi"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/unathi)
 
-	num_alternate_languages = 3
-	name_language    = LANGUAGE_UNATHI
-	species_language = LANGUAGE_UNATHI
-	secondary_langs  = list(LANGUAGE_UNATHI)
+	max_additional_languages = 3
+	name_language    = LANGUAGE_ID_UNATHI
+	intrinsic_languages = LANGUAGE_ID_UNATHI
 
 	ambiguous_genders = TRUE
 	gluttonous = 1
@@ -65,9 +66,9 @@
 
 	minimum_breath_pressure = 18 // Bigger, means they need more air
 
-	body_temperature = T20C
+	body_temperature = null //mesothermic is basically cold-blooded right?
 
-	spawn_flags = SPECIES_CAN_JOIN // Species_can_join is the only spawn flag all the races get, so that none of them will be whitelist only if whitelist is enabled.
+	species_spawn_flags = SPECIES_SPAWN_ALLOWED // Species_can_join is the only spawn flag all the races get, so that none of them will be whitelist only if whitelist is enabled.
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	color_mult  = 1
@@ -112,14 +113,14 @@
 		/datum/unarmed_attack/bite/sharp,
 	)
 
-	heat_discomfort_level = 295
+	heat_discomfort_level = 343
 	heat_discomfort_strings = list(
 		"You feel soothingly warm.",
 		"You feel the heat sink into your bones.",
 		"You feel warm enough to take a nap.",
 	)
 
-	cold_discomfort_level = 292
+	cold_discomfort_level = 282
 	cold_discomfort_strings = list(
 		"You feel chilly.",
 		"You feel sluggish and cold.",

@@ -4,7 +4,7 @@
 
 // #define EMPDEBUG 10
 
-/proc/empulse(turf/epicenter, first_range, second_range, third_range, fourth_range, log=0)
+/proc/empulse(turf/epicenter, first_range, second_range, third_range, fourth_range, log = FALSE)
 	if(!epicenter)
 		return
 
@@ -13,7 +13,7 @@
 
 	if(log)
 		message_admins("EMP with size ([first_range], [second_range], [third_range], [fourth_range]) in area [epicenter.loc.name] ")
-		log_game("EMP with size ([first_range], [second_range], [third_range], [fourth_range]) in area [epicenter.loc.name] ")
+	log_game("EMP with size ([first_range], [second_range], [third_range], [fourth_range]) in area [epicenter.loc.name] ")
 
 	if(first_range > 1)
 		var/obj/effect/overlay/pulse = new /obj/effect/overlay(epicenter)

@@ -31,7 +31,7 @@
 		visible_message("<span class='cult'>\The [src] is completely unaffected by \the [Proj].</span>")
 	qdel(Proj) //No piercing. No.
 
-/obj/machinery/door/blast/puzzle/ex_act(severity)
+/obj/machinery/door/blast/puzzle/legacy_ex_act(severity)
 	visible_message("<span class='cult'>\The [src] is completely unaffected by the blast.</span>")
 	return
 

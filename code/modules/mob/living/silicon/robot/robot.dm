@@ -149,6 +149,21 @@
 		/mob/living/silicon/robot/proc/robot_checklaws
 	)
 
+	var/sleeper_g
+	var/sleeper_r
+	var/leaping = 0
+	var/pounce_cooldown = 0
+	var/pounce_cooldown_time = 40
+	var/leap_at
+	var/dogborg = FALSE //Quadborg special features (overlays etc.)
+	var/wideborg = FALSE //When the borg simply doesn't use standard 32p size.
+	var/scrubbing = FALSE //Floor cleaning enabled
+	var/datum/matter_synth/water_res = null
+	var/notransform
+	var/original_icon = 'icons/mob/robots.dmi'
+	var/sitting = FALSE
+	var/bellyup = FALSE
+
 /mob/living/silicon/robot/Initialize(mapload, unfinished = FALSE)
 	spark_system = new /datum/effect_system/spark_spread()
 	spark_system.set_up(5, 0, src)
@@ -297,7 +312,7 @@
 		return
 	var/list/modules = list()
 	modules.Add(robot_module_types)
-	if(crisis || security_level == SEC_LEVEL_RED || crisis_override)
+	if(crisis || GLOB.security_level == SEC_LEVEL_RED || crisis_override)
 		to_chat(src, "<font color='red'>Crisis mode active. Combat module available.</font>")
 		modules+="Combat"
 		modules+="ERT"
@@ -874,6 +889,35 @@
 		else
 			icon_state = module_sprites[icontype]
 
+	if(dogborg == TRUE && stat == CONSCIOUS)
+		if(sleeper_g == TRUE)
+			add_overlay("[module_sprites[icontype]]-sleeper_g")
+		if(sleeper_r == TRUE)
+			add_overlay("[module_sprites[icontype]]-sleeper_r")
+		if(istype(module_active,/obj/item/gun/energy/laser/mounted))
+			add_overlay("laser")
+		if(istype(module_active,/obj/item/gun/energy/taser/mounted/cyborg))
+			add_overlay("taser")
+		if(istype(module_active,/obj/item/gun/energy/taser/xeno/robot))
+			add_overlay("taser")
+		if(lights_on)
+			add_overlay("eyes-[module_sprites[icontype]]-lights")
+		if(resting)
+			cut_overlays() // Hide that gut for it has no ground sprite yo.
+			if(sitting)
+				icon_state = "[module_sprites[icontype]]-sit"
+			if(bellyup)
+				icon_state = "[module_sprites[icontype]]-bellyup"
+			else if(!sitting && !bellyup)
+				icon_state = "[module_sprites[icontype]]-rest"
+		else
+			icon_state = "[module_sprites[icontype]]"
+
+	if(dogborg == TRUE && stat == DEAD)
+		icon_state = "[module_sprites[icontype]]-wreck"
+		add_overlay("wreck-overlay")
+
+
 /mob/living/silicon/robot/proc/installed_modules()
 	if(weapon_lock)
 		to_chat(src, "<font color='red'>Weapon lock active, unable to use modules! Count:[weaponlock_time]</font>")
@@ -1040,6 +1084,38 @@
 				B.gather_all(tile, src, 1) //Shhh, unless the bag fills, don't spam the borg's chat with stuff that's going on every time they move!
 		return
 
+	if(scrubbing)
+		var/datum/matter_synth/water = water_res
+		if(water && water.energy >= 1)
+			var/turf/tile = loc
+			if(isturf(tile))
+				water.use_charge(1)
+				tile.clean_blood()
+				if(istype(tile, /turf/simulated))
+					var/turf/simulated/T = tile
+					T.dirt = 0
+				for(var/A in tile)
+					if(istype(A,/obj/effect/rune) || istype(A,/obj/effect/debris/cleanable) || istype(A,/obj/effect/overlay))
+						qdel(A)
+					else if(istype(A, /mob/living/carbon/human))
+						var/mob/living/carbon/human/cleaned_human = A
+						if(cleaned_human.lying)
+							if(cleaned_human.head)
+								cleaned_human.head.clean_blood()
+								cleaned_human.update_inv_head(0)
+							if(cleaned_human.wear_suit)
+								cleaned_human.wear_suit.clean_blood()
+								cleaned_human.update_inv_wear_suit(0)
+							else if(cleaned_human.w_uniform)
+								cleaned_human.w_uniform.clean_blood()
+								cleaned_human.update_inv_w_uniform(0)
+							if(cleaned_human.shoes)
+								cleaned_human.shoes.clean_blood()
+								cleaned_human.update_inv_shoes(0)
+							cleaned_human.clean_blood(1)
+							to_chat(cleaned_human, "<span class='warning'>[src] cleans your face!</span>")
+	return
+
 /mob/living/silicon/robot/proc/self_destruct()
 	gib()
 	return
@@ -1114,7 +1190,6 @@
 	if(icontype == "Custom")
 		icon = CUSTOM_ITEM_SYNTH
 	else // This is to fix an issue where someone with a custom borg sprite chooses a non-custom sprite and turns invisible.
-		vr_sprite_check()
 		icon_state = module_sprites[icontype]
 	updateicon()
 
@@ -1283,3 +1358,50 @@
 
 /mob/living/silicon/robot/get_cell()
 	return cell
+
+/mob/living/silicon/robot/verb/robot_nom(var/mob/living/T in living_mobs(1))
+	set name = "Robot Nom"
+	set category = "IC"
+	set desc = "Allows you to eat someone."
+
+	if (stat != CONSCIOUS)
+		return
+	return feed_grabbed_to_self(src,T)
+
+/mob/living/silicon/robot/proc/rest_style()
+	set name = "Switch Rest Style"
+	set category = "IC"
+	set desc = "Select your resting pose."
+	sitting = FALSE
+	bellyup = FALSE
+	var/choice = alert(src, "Select resting pose", "", "Resting", "Sitting", "Belly up")
+	switch(choice)
+		if("Resting")
+			return 0
+		if("Sitting")
+			sitting = TRUE
+		if("Belly up")
+			bellyup = TRUE
+
+/mob/living/silicon/robot/proc/ex_reserve_refill()
+	set name = "Refill Extinguisher"
+	set category = "Object"
+	var/datum/matter_synth/water = water_res
+	for(var/obj/item/extinguisher/E in module.modules)
+		if(E.reagents.total_volume < E.max_water)
+			if(water && water.energy > 0)
+				var/amount = E.max_water - E.reagents.total_volume
+				if(water.energy < amount)
+					amount = water.energy
+				water.use_charge(amount)
+				E.reagents.add_reagent("water", amount)
+				to_chat(src, "You refill the extinguisher using your water reserves.")
+			else
+				to_chat(src, "Insufficient water reserves.")
+
+/mob/living/silicon/robot/onTransitZ(old_z, new_z)
+	if(shell)
+		if(deployed && GLOB.using_map.ai_shell_restricted && !(new_z in GLOB.using_map.ai_shell_allowed_levels))
+			to_chat(src,"<span class='warning'>Your connection with the shell is suddenly interrupted!</span>")
+			undeploy()
+	..()

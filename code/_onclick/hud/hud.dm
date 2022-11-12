@@ -30,7 +30,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 
 /datum/global_hud/proc/setup_overlay(var/icon_state)
 	var/atom/movable/screen/screen = new /atom/movable/screen()
-	screen.screen_loc = "1,1"
+	screen.screen_loc = "CENTER-7,CENTER-7"
 	screen.icon = 'icons/obj/hud_full.dmi'
 	screen.icon_state = icon_state
 	screen.layer = SCREEN_LAYER
@@ -53,7 +53,7 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new)
 	//darksight 'hanger' for attached icons
 	darksight = new /atom/movable/screen()
 	darksight.icon = null
-	darksight.screen_loc = "1,1"
+	darksight.screen_loc = "CENTER-7,CENTER-7"
 	darksight.plane = LIGHTING_PLANE
 
 	//Marks the center of the screen, for things like ventcrawl

@@ -215,7 +215,7 @@
 		//Public alerts
 		if((damage > emergency_point) && !public_alert)
 			GLOB.global_announcer.autosay("WARNING: SUPERMATTER CRYSTAL DELAMINATION IMMINENT!", "Supermatter Monitor")
-			for(var/mob/M in player_list)
+			for(var/mob/M in GLOB.player_list)
 				if(!istype(M,/mob/new_player) && !isdeaf(M))
 					SEND_SOUND(M, message_sound)
 			admin_chat_message(message = "SUPERMATTER DELAMINATING!", color = "#FF2222")
@@ -223,7 +223,7 @@
 			log_game("SUPERMATTER([x],[y],[z]) Emergency PUBLIC announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]")
 		else if((damage > emergency_point) && public_alert)
 			GLOB.global_announcer.autosay("DANGER: SUPERMATTER CRYSTAL DEGRADATION IN PROGRESS! INTEGRITY AT [integrity]%", "Supermatter Monitor")
-			for(var/mob/M in player_list)
+			for(var/mob/M in GLOB.player_list)
 				if(!istype(M,/mob/new_player) && !isdeaf(M))
 					SEND_SOUND(M, sound('sound/ambience/engine_alert2.ogg'))
 		else if(safe_warned && public_alert)

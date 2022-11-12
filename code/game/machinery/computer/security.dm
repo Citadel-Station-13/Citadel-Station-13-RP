@@ -174,9 +174,9 @@
 					fields[++fields.len] = FIELD("Details", active2.fields["mi_crim_d"], "mi_crim_d")
 					fields[++fields.len] = FIELD("Major Crimes", active2.fields["ma_crim"], "ma_crim")
 					fields[++fields.len] = FIELD("Details", active2.fields["ma_crim_d"], "ma_crim_d")
-					fields[++fields.len] = FIELD("Important Notes", active2.fields["notes"], "notes")
 					if(!active2.fields["comments"] || !islist(active2.fields["comments"]))
 						active2.fields["comments"] = list()
+					security["notes"] = active2.fields["notes"]
 					security["comments"] = active2.fields["comments"]
 					security["empty"] = FALSE
 				else
@@ -297,8 +297,6 @@
 					R.fields["mi_crim_d"]	= "No minor crime convictions."
 					R.fields["ma_crim"]		= "None"
 					R.fields["ma_crim_d"]	= "No major crime convictions."
-					R.fields["notes"]		= "No notes."
-					R.fields["notes"]		= "No notes."
 					data_core.security += R
 					active2 = R
 					screen = SEC_DATA_RECORD
@@ -397,7 +395,7 @@
 							active1.fields["real_rank"] = answer
 
 					if(field == "criminal")
-						for(var/mob/living/carbon/human/H in player_list)
+						for(var/mob/living/carbon/human/H in GLOB.player_list)
 							H.update_hud_sec_status()
 
 					if(istype(active2) && (field in active2.fields))
@@ -439,7 +437,7 @@
 		<br>\nDetails: [active2.fields["mi_crim_d"]]<br>\n
 		<br>\nMajor Crimes: [active2.fields["ma_crim"]]
 		<br>\nDetails: [active2.fields["ma_crim_d"]]<br>\n
-		<br>\nImportant Notes:
+		<br>\nSecurity Notes Summary:
 		<br>\n\t[active2.fields["notes"]]<br>\n
 		<br>\n
 		<center><b>Comments/Log</b></center><br>"}

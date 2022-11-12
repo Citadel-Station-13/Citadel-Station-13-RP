@@ -24,8 +24,11 @@
 					"Miss M" = "miss-engineer",
 					"Coffstruction" = "coffin-Construction",
 					"Coffgineer" = "coffin-Engineering",
-					"X-88" = "xeightyeight-engineering"
-
+					"X-88" = "xeightyeight-engineering",
+					"Acheron" = "mechoid-Engineering",
+					"Shellguard Noble" = "Noble-ENG",
+					"ZOOM-BA" = "zoomba-engineering",
+					"W02M" = "worm-engineering"
 					)
 
 /obj/item/robot_module/robot/engineering/construction
@@ -163,19 +166,20 @@
 	src.modules += PL
 
 
-/obj/item/robot_module/robot/engiedog
-	name = "Construction Hound module"
+/obj/item/robot_module/robot/quad_engi
+	name = "EngiQuad module"
 	sprites = list(
 					"Pupdozer" = "pupdozer",
 					"V2 Engidog" = "thottbot",
-					"Borgi" = "borgi-eng"
+					"Borgi" = "borgi-eng",
+					"F3-LINE" = "FELI-Engineer"
 					)
 	channels = list("Engineering" = 1)
 	networks = list(NETWORK_ENGINEERING)
 	subsystems = list(/mob/living/silicon/proc/subsystem_power_monitor)
 	can_be_pushed = 0
 
-/obj/item/robot_module/robot/engiedog/Initialize(mapload)
+/obj/item/robot_module/robot/quad_engi/Initialize(mapload)
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/borg/sight/meson(src)
@@ -283,9 +287,7 @@
 	PL.synths = list(plastic)
 	src.modules += PL
 
-	R.icon 		 = 'icons/mob/widerobot_vr.dmi'
-	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'
-	R.ui_style_vr = TRUE
+	R.icon = 'icons/mob/robots_wide.dmi'
 	R.set_base_pixel_x(-16)
 	R.dogborg = TRUE
 	R.wideborg = TRUE

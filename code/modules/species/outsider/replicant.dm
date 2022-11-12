@@ -3,16 +3,16 @@
  */
 
 /datum/species/shapeshifter/replicant
+	uid = SPECIES_ID_REPLICANT
 	name = SPECIES_REPLICANT
 	name_plural = "Replicants"
 	primitive_form = SPECIES_MONKEY
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/claws, /datum/unarmed_attack/bite/sharp)
 	blurb = "The remnants of some lost or dead race's research. These seem relatively normal."
-	num_alternate_languages = 3
-	species_language = LANGUAGE_GALCOM
-	secondary_langs = list(LANGUAGE_TERMINUS)
+	max_additional_languages = 3
+	whitelist_languages = LANGUAGE_ID_TERMINUS
 	assisted_langs = list(LANGUAGE_ROOTGLOBAL)
-	name_language = LANGUAGE_TERMINUS
+	name_language = LANGUAGE_ID_TERMINUS
 
 	blood_color = "#aaaadd"
 
@@ -22,7 +22,7 @@
 
 	health_hud_intensity = 1.5
 
-	flags = NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT
+	species_flags = NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT
 
 	vision_flags = SEE_SELF
 	darksight = 5
@@ -37,7 +37,7 @@
 	siemens_coefficient = 0.9
 	heal_rate = 0
 
-	spawn_flags = SPECIES_IS_RESTRICTED
+	species_spawn_flags = SPECIES_SPAWN_RESTRICTED
 	species_appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_UNDERWEAR
 
 	valid_transform_species = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_DIONA, SPECIES_TESHARI, SPECIES_MONKEY, SPECIES_VOX)
@@ -67,11 +67,13 @@
 
 /datum/species/shapeshifter/replicant/alpha
 	name = SPECIES_REPLICANT_ALPHA
+	uid = SPECIES_ID_REPLICANT_ALPHA
 	blurb = "The remnants of some lost or dead race's research. These seem caustic."
 
 	blood_color = "#55ff55"
 
-	species_language = LANGUAGE_SIGN
+	intrinsic_languages = LANGUAGE_ID_SIGN
+	whitelist_languages = LANGUAGE_ID_TERMINUS
 	assisted_langs = list(LANGUAGE_ROOTGLOBAL, LANGUAGE_SOL_COMMON, LANGUAGE_SKRELLIANFAR)
 
 	inherent_verbs = list(
@@ -104,12 +106,16 @@
 
 /datum/species/shapeshifter/replicant/beta
 	name = SPECIES_REPLICANT_BETA
+	uid = SPECIES_ID_REPLICANT_BETA
 	blurb = "The remnants of some lost or dead race's research. These seem elastic."
 
 	blood_color = "#C0C0C0"
 
-	species_language = LANGUAGE_SIGN
-	secondary_langs = list(LANGUAGE_TERMINUS, LANGUAGE_ROOTGLOBAL)	// Radio-waves.
+	intrinsic_languages = LANGUAGE_ID_SIGN
+	whitelist_languages = list(
+		LANGUAGE_ID_TERMINUS,
+		LANGUAGE_ID_DIONA_HIVEMIND
+	)
 
 	has_organ = list(
 		O_HEART     = /obj/item/organ/internal/heart/replicant/rage,

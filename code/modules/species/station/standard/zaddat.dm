@@ -1,4 +1,5 @@
 /datum/species/zaddat
+	uid = SPECIES_ID_ZADDAT
 	name = SPECIES_ZADDAT
 	name_plural = SPECIES_ZADDAT
 	icobase = 'icons/mob/species/zaddat/body.dmi'
@@ -15,10 +16,13 @@
 	gluttonous = 0
 	taste_sensitivity = TASTE_SENSITIVE
 
-	num_alternate_languages = 3
-	name_language    = LANGUAGE_ZADDAT
-	species_language = LANGUAGE_ZADDAT
-	secondary_langs  = list(LANGUAGE_ZADDAT, LANGUAGE_UNATHI)
+	max_additional_languages = 3
+	name_language    = LANGUAGE_ID_ZADDAT
+	intrinsic_languages = LANGUAGE_ID_ZADDAT
+	whitelist_languages = list(
+		LANGUAGE_ID_ZADDAT,
+		LANGUAGE_ID_UNATHI
+	)
 	assisted_langs   = list(LANGUAGE_EAL, LANGUAGE_TERMINUS, LANGUAGE_SKRELLIANFAR, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX, LANGUAGE_SOL_COMMON, LANGUAGE_AKHANI, LANGUAGE_SIIK, LANGUAGE_GUTTER) //limited vocal range; can talk Unathi and magical Galcom but not much else
 
 
@@ -50,7 +54,7 @@
 
 	genders = list(FEMALE, PLURAL) //females are polyp-producing, infertile females and males are nigh-identical
 
-	spawn_flags = SPECIES_CAN_JOIN
+	species_spawn_flags = SPECIES_SPAWN_ALLOWED
 	species_appearance_flags = null
 
 	flesh_color = "#AFA59E"

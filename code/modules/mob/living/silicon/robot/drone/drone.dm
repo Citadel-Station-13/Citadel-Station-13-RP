@@ -185,7 +185,7 @@
 
 			user.visible_message("<span class='danger'>\The [user] swipes [TU.his] ID card through \the [src], attempting to reboot it.</span>", "<span class='danger'>>You swipe your ID card through \the [src], attempting to reboot it.</span>")
 			var/drones = 0
-			for(var/mob/living/silicon/robot/drone/D in player_list)
+			for(var/mob/living/silicon/robot/drone/D in GLOB.player_list)
 				drones++
 			if(drones < config_legacy.max_maint_drones)
 				request_player()
@@ -292,7 +292,7 @@
 //Reboot procs.
 
 /mob/living/silicon/robot/drone/proc/request_player()
-	for(var/mob/observer/dead/O in player_list)
+	for(var/mob/observer/dead/O in GLOB.player_list)
 		if(jobban_isbanned(O, "Cyborg"))
 			continue
 		if(O.client)

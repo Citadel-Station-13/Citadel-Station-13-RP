@@ -236,7 +236,7 @@ var/global/list/all_objectives = list()
 		return FALSE
 	var/area/shuttle = locate(/area/shuttle/escape/centcom)
 	var/list/protected_mobs = list(/mob/living/silicon/ai, /mob/living/silicon/pai)
-	for(var/mob/living/player in player_list)
+	for(var/mob/living/player in GLOB.player_list)
 		if(player.type in protected_mobs)
 			continue
 		if (player.mind && (player.mind != owner))
@@ -258,7 +258,7 @@ var/global/list/all_objectives = list()
 		return FALSE
 	var/area/shuttle = locate(/area/shuttle/escape/centcom)
 	var/protected_mobs[] = list(/mob/living/silicon/ai, /mob/living/silicon/pai, /mob/living/silicon/robot)
-	for(var/mob/living/player in player_list)
+	for(var/mob/living/player in GLOB.player_list)
 		if(player.type in protected_mobs)	continue
 		if (player.mind)
 			if (player.stat != 2)
@@ -273,7 +273,7 @@ var/global/list/all_objectives = list()
 	if(!SSemergencyshuttle.returned())
 		return FALSE
 
-	for(var/mob/living/player in player_list)
+	for(var/mob/living/player in GLOB.player_list)
 		if(player == owner.current)
 			continue
 		if(player.mind)
@@ -620,11 +620,11 @@ var/global/list/all_objectives = list()
 	if (SSticker)
 		var/n_p = 1 //autowin
 		if (SSticker.current_state == GAME_STATE_SETTING_UP)
-			for(var/mob/new_player/P in player_list)
+			for(var/mob/new_player/P in GLOB.player_list)
 				if(P.client && P.ready && P.mind!=owner)
 					n_p ++
 		else if (SSticker.current_state == GAME_STATE_PLAYING)
-			for(var/mob/living/carbon/human/P in player_list)
+			for(var/mob/living/carbon/human/P in GLOB.player_list)
 				if(P.client && !(P.mind.changeling) && P.mind!=owner)
 					n_p ++
 		target_amount = min(target_amount, n_p)
@@ -871,7 +871,7 @@ var/global/list/all_objectives = list()
 /datum/objective/cult/sacrifice/find_target()
 	var/list/possible_targets = list()
 	if(!possible_targets.len)
-		for(var/mob/living/carbon/human/player in player_list)
+		for(var/mob/living/carbon/human/player in GLOB.player_list)
 			if(player.mind && !(player.mind in cult))
 				possible_targets += player.mind
 	if(possible_targets.len > 0)

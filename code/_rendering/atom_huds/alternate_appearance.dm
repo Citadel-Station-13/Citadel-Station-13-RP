@@ -138,7 +138,7 @@ GLOBAL_LIST_EMPTY(active_alternate_appearances)
 
 /datum/atom_hud/alternate_appearance/basic/noncult/New()
 	..()
-	for(var/mob in player_list)
+	for(var/mob in GLOB.player_list)
 		if(mobShouldSee(mob))
 			add_hud_to(mob)
 
@@ -151,7 +151,7 @@ GLOBAL_LIST_EMPTY(active_alternate_appearances)
 
 /datum/atom_hud/alternate_appearance/basic/cult/New()
 	..()
-	for(var/mob in player_list)
+	for(var/mob in GLOB.player_list)
 		if(mobShouldSee(mob))
 			add_hud_to(mob)
 

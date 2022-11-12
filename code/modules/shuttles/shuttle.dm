@@ -158,7 +158,7 @@
 
 // TODO - Far Future - Would be great if this was driven by process too.
 /datum/shuttle/proc/long_jump(var/obj/effect/shuttle_landmark/destination, var/obj/effect/shuttle_landmark/interim, var/travel_time)
-	//to_world("shuttle/long_jump: current_location=[current_location], destination=[destination], interim=[interim], travel_time=[travel_time]")
+	//TO_WORLD("shuttle/long_jump: current_location=[current_location], destination=[destination], interim=[interim], travel_time=[travel_time]")
 	if(moving_status != SHUTTLE_IDLE)
 		return
 

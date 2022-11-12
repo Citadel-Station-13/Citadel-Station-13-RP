@@ -197,9 +197,6 @@
 	dir = 4
 	},
 /obj/structure/railing,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
 /obj/effect/overlay/snow/wall,
 /turf/simulated/floor/plating/lythios43c,
 /area/engineering/engine_eva)
@@ -1016,12 +1013,6 @@
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
 /area/janitor)
-"aSt" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/turf/simulated/floor/wood/broken,
-/area/maintenance/maint_bar)
 "aSW" = (
 /obj/structure/railing{
 	dir = 1
@@ -1091,7 +1082,7 @@
 	},
 /area/maintenance/library)
 "aWl" = (
-/turf/simulated/open,
+/turf/simulated/open/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside1)
 "aWt" = (
 /obj/machinery/computer/area_atmos/tag{
@@ -1128,13 +1119,6 @@
 "aXA" = (
 /obj/structure/catwalk,
 /obj/structure/railing,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy,
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "aXF" = (
@@ -1839,9 +1823,6 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenobiology/outpost_main)
 "brm" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
@@ -1952,14 +1933,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/cargo)
-"buV" = (
-/obj/effect/overlay/snow/floor/pointy,
-/obj/structure/catwalk,
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/evahallway)
 "bvj" = (
 /obj/machinery/hologram/holopad,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -2556,14 +2529,6 @@
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
-"bTN" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy,
-/obj/structure/railing,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfaceeva/aa/surface_south)
 "bTP" = (
 /obj/machinery/atmospherics/pipe/zpipe/down/scrubbers,
 /obj/machinery/atmospherics/pipe/zpipe/down/supply,
@@ -2604,9 +2569,6 @@
 "bWq" = (
 /obj/structure/railing,
 /obj/effect/overlay/snow/wall,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "bWw" = (
@@ -3126,7 +3088,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_a)
 "col" = (
-/obj/effect/overlay/snow/floor/pointy,
 /obj/machinery/power/pointdefense{
 	id_tag = "s1north"
 	},
@@ -3878,9 +3839,6 @@
 /turf/simulated/wall,
 /area/crew_quarters/medical_restroom)
 "cMh" = (
-/obj/effect/overlay/snow/floor/edges{
-	dir = 5
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -4976,7 +4934,10 @@
 "dsb" = (
 /obj/structure/table/glass,
 /obj/item/folder/white_cmo,
-/obj/item/stamp/cmo,
+/obj/item/stamp/cmo{
+	pixel_x = -8;
+	pixel_y = -3
+	},
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
@@ -4988,6 +4949,10 @@
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/item/stamp/denied{
+	pixel_x = -8;
+	pixel_y = 3
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/heads/cmo)
@@ -5669,13 +5634,6 @@
 /obj/structure/closet/l3closet/scientist,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_south_airlock)
-"dMW" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/medical/medbay_emt_bay)
 "dMX" = (
 /turf/simulated/floor/plating,
 /area/maintenance/security/lower)
@@ -5951,7 +5909,6 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/effect/overlay/snow/floor/pointy,
 /turf/simulated/floor/tiled/steel_grid,
 /area/medical/medbay_emt_bay)
 "dUb" = (
@@ -6635,19 +6592,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/medical/virologymaint)
-"epT" = (
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/engineering/engine_eva)
 "epV" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/brown/border,
@@ -6788,13 +6732,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/storage/surface_eva)
 "evk" = (
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
@@ -7454,7 +7391,7 @@
 /area/tether/surfacebase/funny/mimeoffice)
 "eWb" = (
 /obj/structure/sink/puddle,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/research/lower)
 "eWe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7583,7 +7520,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/tool_storage)
 "fbN" = (
-/obj/effect/overlay/snow/floor/pointy,
 /obj/effect/zone_divider,
 /obj/machinery/power/pointdefense{
 	id_tag = "s1south"
@@ -7678,9 +7614,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "fgL" = (
-/obj/effect/overlay/snow/floor/edges{
-	dir = 6
-	},
 /obj/structure/railing{
 	dir = 4
 	},
@@ -7944,12 +7877,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/library)
-"fss" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "fsO" = (
 /obj/structure/bookcase,
 /obj/item/book/manual,
@@ -8709,7 +8636,7 @@
 /area/hallway/primary/surfaceone)
 "fVu" = (
 /mob/living/simple_mob/animal/passive/woolie,
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/research/lower)
 "fVw" = (
 /turf/simulated/wall,
@@ -8738,10 +8665,6 @@
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/medbreak)
 "fWO" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy,
 /obj/effect/zone_divider,
 /obj/machinery/light/small{
 	dir = 4
@@ -9954,16 +9877,6 @@
 /obj/effect/zone_divider,
 /turf/simulated/wall,
 /area/maintenance/research/lower)
-"gPO" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfaceeva/aa/surface_south)
 "gQl" = (
 /obj/structure/table/rack/steel,
 /obj/item/storage/toolbox/electrical,
@@ -10259,14 +10172,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
-"gVW" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/effect/overlay/snow/floor/pointy,
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "gWs" = (
 /obj/effect/floor_decal/borderfloorwhite,
 /obj/effect/floor_decal/corner/paleblue/border,
@@ -10689,9 +10594,6 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
 /obj/structure/railing{
 	dir = 8
 	},
@@ -11100,13 +11002,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/virologyaccess)
-"hun" = (
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfaceeva/aa/surface_north)
 "huw" = (
 /obj/structure/railing{
 	dir = 1
@@ -11510,6 +11405,10 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora)
+"hGB" = (
+/obj/structure/barricade/cutout/swarmer,
+/turf/simulated/floor/plating,
+/area/maintenance/central_heating/surface_one)
 "hGF" = (
 /obj/machinery/light{
 	dir = 4
@@ -11737,7 +11636,6 @@
 /obj/structure/sign/graffiti/pisoff{
 	pixel_y = 26
 	},
-/obj/effect/overlay/snow/floor/pointy,
 /turf/simulated/floor/snow/gravsnow,
 /area/maintenance/maint_bar)
 "hNW" = (
@@ -12481,18 +12379,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/quartermaster/office)
-"ikX" = (
-/obj/structure/catwalk,
-/obj/structure/railing,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy,
-/turf/simulated/floor/plating/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "ilP" = (
 /obj/structure/table/woodentable,
 /obj/item/storage/box/donkpockets,
@@ -13669,9 +13555,6 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
 /obj/structure/railing,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside1)
@@ -14123,7 +14006,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/janitor)
 "jfW" = (
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/research/lower)
 "jfX" = (
 /obj/effect/floor_decal/borderfloor{
@@ -14222,9 +14105,6 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
 	},
-/obj/effect/overlay/snow/floor/edges{
-	dir = 10
-	},
 /obj/structure/railing,
 /obj/structure/railing{
 	dir = 8
@@ -14232,10 +14112,6 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "jkc" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy,
 /obj/structure/railing,
 /obj/machinery/light/small{
 	dir = 4
@@ -14480,10 +14356,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/delivery)
 "jvY" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/pointy,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -14491,10 +14363,6 @@
 /area/medical/medbay_emt_bay)
 "jwH" = (
 /obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
 	dir = 8
 	},
 /obj/structure/catwalk,
@@ -15579,16 +15447,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
-"kfH" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfaceeva/aa/surface_north)
 "kfI" = (
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -16061,9 +15919,6 @@
 "ktw" = (
 /obj/structure/railing{
 	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
 	},
 /obj/effect/overlay/snow/wall{
 	dir = 1
@@ -17063,14 +16918,6 @@
 "kWq" = (
 /turf/simulated/wall,
 /area/tether/surfacebase/entertainment)
-"kWB" = (
-/obj/structure/catwalk,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy,
-/turf/simulated/floor/plating/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "kWH" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
@@ -18586,9 +18433,6 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
 /obj/effect/overlay/snow/wall{
 	dir = 1
 	},
@@ -19084,13 +18928,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/research/lower)
 "mmE" = (
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
 /obj/machinery/door/blast/regular/open{
 	id = "main_ext_blast";
 	name = "Surface External Blast Door"
@@ -19431,9 +19268,6 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/xenobiology/outpost_first_aid)
 "mtT" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
 /obj/structure/railing,
 /obj/machinery/power/pointdefense{
 	id_tag = "s1north"
@@ -20458,9 +20292,6 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 4
 	},
-/obj/effect/overlay/snow/floor/grav_surround{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "nbp" = (
@@ -21401,9 +21232,6 @@
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rift/station/public_garden)
 "nBa" = (
-/obj/effect/overlay/snow/floor/edges{
-	dir = 4
-	},
 /obj/structure/railing{
 	dir = 4
 	},
@@ -21559,9 +21387,6 @@
 "nFo" = (
 /obj/effect/overlay/snow/floor,
 /obj/effect/overlay/snow/floor/surround{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -22289,9 +22114,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/cargo_hallway)
 "nYy" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
 /obj/structure/railing,
 /obj/machinery/power/pointdefense{
 	id_tag = "s1south"
@@ -22407,9 +22229,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora)
 "nZY" = (
-/obj/effect/overlay/snow/floor/edges{
-	dir = 8
-	},
 /obj/structure/railing{
 	dir = 8
 	},
@@ -24323,12 +24142,6 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engine_eva)
 "pcA" = (
@@ -24767,8 +24580,7 @@
 /area/rift/surfaceeva/aa/surface_south)
 "prt" = (
 /obj/machinery/door/firedoor/glass,
-/obj/structure/lattice,
-/turf/simulated/open,
+/turf/simulated/floor/plating,
 /area/maintenance/central_heating/surface_one)
 "prD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -26215,23 +26027,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/security/forensics)
-"qnJ" = (
-/obj/effect/overlay/snow/floor,
-/obj/effect/overlay/snow/floor/edges{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/structure/catwalk,
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/safeice/indoors,
-/area/maintenance/starboard)
 "qnQ" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/grille,
@@ -26849,14 +26644,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/entertainment)
-"qJy" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/edges,
-/obj/structure/railing,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "qJB" = (
 /obj/structure/bed/chair/comfy/beige{
 	dir = 1
@@ -28152,10 +27939,6 @@
 /area/rift/station/public_garden)
 "rDi" = (
 /obj/effect/overlay/snow/floor,
-/obj/effect/overlay/snow/floor/edges{
-	dir = 6
-	},
-/obj/effect/overlay/snow/floor/pointy,
 /obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 8
@@ -28382,9 +28165,6 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
 	},
-/obj/effect/overlay/snow/floor/edges{
-	dir = 6
-	},
 /obj/structure/railing,
 /obj/structure/railing{
 	dir = 4
@@ -28415,12 +28195,6 @@
 /area/rnd/outpost/xenobiology/outpost_main)
 "rLp" = (
 /obj/effect/overlay/snow/floor,
-/obj/effect/overlay/snow/floor/edges{
-	dir = 9
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
 /obj/structure/catwalk,
 /obj/structure/railing{
 	dir = 1
@@ -28457,13 +28231,6 @@
 /area/maintenance/lowmedbaymaint)
 "rMj" = (
 /obj/effect/zone_divider,
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfaceeva/aa/surface_south)
 "rMk" = (
@@ -28547,13 +28314,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/checkpoint)
 "rPa" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy,
 /obj/structure/railing,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfaceeva/aa/surface_south)
@@ -28625,10 +28385,6 @@
 /obj/effect/floor_decal/steeldecal/steel_decals5,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfaceone)
-"rRS" = (
-/obj/effect/overlay/snow/floor/pointy,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfaceeva/aa/surface_north)
 "rRT" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -28785,9 +28541,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/medical/psych/psych_2)
 "rVE" = (
-/obj/effect/overlay/snow/floor/edges{
-	dir = 9
-	},
 /obj/structure/railing{
 	dir = 8
 	},
@@ -29665,9 +29418,6 @@
 /area/rift/surfaceeva/aa/surface_north)
 "svX" = (
 /obj/effect/floor_decal/industrial/warning,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
 /obj/machinery/button/remote/blast_door{
 	id = "medical_ext_shutter";
 	name = "Rescue airlock shutters";
@@ -29858,13 +29608,6 @@
 	},
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside1)
-"sFP" = (
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfaceeva/aa/surface_north)
 "sGb" = (
 /obj/structure/table/woodentable,
 /obj/item/book/custom_library/fiction,
@@ -29983,9 +29726,6 @@
 /area/maintenance/cargo)
 "sIP" = (
 /obj/effect/overlay/snow/floor,
-/obj/effect/overlay/snow/floor/edges{
-	dir = 10
-	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
@@ -30014,16 +29754,6 @@
 /area/rnd/outpost/xenobiology/outpost_main)
 "sJo" = (
 /obj/effect/overlay/snow/floor,
-/obj/effect/overlay/snow/floor/edges{
-	dir = 6
-	},
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/edges{
-	dir = 1
-	},
 /turf/simulated/floor/plating,
 /area/maintenance/starboard)
 "sJM" = (
@@ -30220,15 +29950,6 @@
 "sNo" = (
 /turf/simulated/floor/wood/broken,
 /area/maintenance/starboard)
-"sPq" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_grid,
-/area/engineering/engine_eva)
 "sPz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -30489,16 +30210,6 @@
 /obj/structure/kitchenspike,
 /turf/simulated/floor/tiled/dark,
 /area/maintenance/security/lower)
-"sWF" = (
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfaceeva/aa/surface_north)
 "sWR" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 10
@@ -30783,21 +30494,6 @@
 /obj/effect/floor_decal/corner/beige/border,
 /turf/simulated/floor/tiled/white,
 /area/medical/psych)
-"tgg" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
-/obj/structure/catwalk,
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing,
-/turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "tgw" = (
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -32457,12 +32153,6 @@
 	},
 /turf/simulated/floor/lythios43c,
 /area/maintenance/evahallway)
-"uhQ" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfaceeva/aa/surface_north)
 "uhR" = (
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 10
@@ -32514,9 +32204,6 @@
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
 	},
-/obj/effect/overlay/snow/floor/edges{
-	dir = 4
-	},
 /obj/structure/railing{
 	dir = 4
 	},
@@ -32535,10 +32222,6 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -33587,15 +33270,6 @@
 /obj/effect/floor_decal/industrial/warning/full,
 /turf/simulated/floor/plating,
 /area/medical/virologymaint)
-"uLd" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfaceeva/aa/surface_north)
 "uLP" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -33697,15 +33371,11 @@
 	icon_state = "4-8"
 	},
 /obj/structure/catwalk,
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
 /obj/structure/railing{
 	dir = 1
 	},
 /obj/structure/railing,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside1)
 "uQu" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -34186,7 +33856,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/xenobiology/outpost_main)
 "veF" = (
-/obj/effect/overlay/snow/floor/edges,
 /obj/structure/railing,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside1)
@@ -34799,9 +34468,6 @@
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/effect/overlay/snow/floor/edges{
-	dir = 5
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -34937,17 +34603,6 @@
 /obj/machinery/reagentgrinder,
 /turf/simulated/floor/wood,
 /area/rnd/outpost/xenobiology/outpost_office)
-"vIt" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy,
-/obj/structure/railing,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfaceeva/aa/surface_north)
 "vIx" = (
 /turf/simulated/wall,
 /area/medical/patient_b)
@@ -35399,13 +35054,6 @@
 "vXh" = (
 /turf/simulated/floor/carpet/gaycarpet,
 /area/tether/surfacebase/funny/clownoffice)
-"vXi" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy,
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfaceeva/aa/surface_north)
 "vXw" = (
 /obj/effect/overlay/snow/floor,
 /obj/structure/grille,
@@ -36157,9 +35805,6 @@
 /turf/simulated/floor/plating,
 /area/rnd/outpost/xenobiology/outpost_first_aid)
 "wug" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
 /obj/structure/railing,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfaceeva/aa/surface_north)
@@ -36299,9 +35944,6 @@
 /area/tether/surfacebase/entertainment/backstage)
 "wya" = (
 /obj/effect/floor_decal/industrial/warning/corner,
-/obj/effect/overlay/snow/floor/edges{
-	dir = 9
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -36583,12 +36225,6 @@
 /area/maintenance/tool_storage)
 "wGn" = (
 /obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -36970,12 +36606,6 @@
 /turf/simulated/wall,
 /area/hallway/secondary/cargo_hallway)
 "wSo" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfaceeva/aa/surface_south)
 "wSD" = (
@@ -37112,13 +36742,6 @@
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/maintenance/maint_bar)
-"wXQ" = (
-/obj/effect/overlay/snow/floor/pointy,
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "wYB" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -37916,31 +37539,12 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/virologytransitwest)
-"xyV" = (
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/turf/simulated/floor/reinforced/lythios43c,
-/area/rift/surfaceeva/aa/surface_south)
 "xze" = (
 /obj/structure/railing,
 /obj/structure/railing{
 	dir = 4
 	},
 /turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/outside1)
-"xzC" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "xzD" = (
 /obj/machinery/door/blast/regular/open{
@@ -38378,12 +37982,6 @@
 /turf/simulated/shuttle/wall/voidcraft,
 /area/turbolift/rmine/surface)
 "xPr" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfaceeva/aa/surface_north)
 "xPI" = (
@@ -38442,10 +38040,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/prison)
-"xQZ" = (
-/obj/effect/overlay/snow/floor/pointy,
-/turf/simulated/floor/snow/gravsnow,
-/area/rift/surfacebase/outside/outside1)
 "xRb" = (
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/civilian_hallway_mid)
@@ -38705,12 +38299,6 @@
 /obj/structure/sign/warning/caution,
 /turf/simulated/wall,
 /area/rnd/tankstorage)
-"xWi" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/area/rift/surfacebase/outside/outside1)
 "xWD" = (
 /obj/effect/floor_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
@@ -42909,7 +42497,7 @@ iFN
 iFN
 xwv
 aBn
-tgg
+vgp
 lcN
 lcN
 iFN
@@ -43103,7 +42691,7 @@ iFN
 xwv
 lcN
 aBn
-tgg
+vgp
 lcN
 lcN
 lcN
@@ -43297,7 +42885,7 @@ jZZ
 lcN
 lcN
 aBn
-tgg
+vgp
 lcN
 lcN
 lcN
@@ -43442,7 +43030,7 @@ mif
 vUA
 vUA
 vUA
-ikX
+aXA
 cOG
 hcn
 iFN
@@ -43491,7 +43079,7 @@ jZZ
 lcN
 lcN
 aBn
-tgg
+vgp
 lcN
 lcN
 lcN
@@ -43636,7 +43224,7 @@ mif
 vUA
 aXH
 mix
-kWB
+sGn
 hHw
 hcn
 hcn
@@ -43879,7 +43467,7 @@ jZZ
 lcN
 lcN
 aBn
-tgg
+vgp
 lcN
 lcN
 lcN
@@ -44073,7 +43661,7 @@ iFN
 fdY
 lcN
 aBn
-tgg
+vgp
 lcN
 lcN
 lcN
@@ -44267,7 +43855,7 @@ iFN
 jZZ
 lcN
 aBn
-tgg
+vgp
 lcN
 lcN
 lcN
@@ -44461,7 +44049,7 @@ iFN
 jZZ
 lcN
 aBn
-tgg
+vgp
 lcN
 lcN
 lcN
@@ -44655,7 +44243,7 @@ iFN
 jZZ
 lcN
 aBn
-tgg
+vgp
 lcN
 lcN
 lcN
@@ -44849,7 +44437,7 @@ iFN
 xoc
 lcN
 aBn
-tgg
+vgp
 lcN
 lcN
 lcN
@@ -45043,7 +44631,7 @@ jZZ
 lcN
 lcN
 aBn
-tgg
+vgp
 lcN
 lcN
 lcN
@@ -45237,7 +44825,7 @@ jZZ
 lcN
 lcN
 aBn
-tgg
+vgp
 lcN
 lcN
 lcN
@@ -45431,7 +45019,7 @@ jZZ
 lcN
 lcN
 aBn
-tgg
+vgp
 lcN
 lcN
 lcN
@@ -45625,7 +45213,7 @@ jZZ
 lcN
 lcN
 aBn
-tgg
+vgp
 lcN
 lcN
 lcN
@@ -45819,7 +45407,7 @@ jZZ
 lcN
 lcN
 aBn
-tgg
+vgp
 lcN
 lcN
 lcN
@@ -46315,7 +45903,7 @@ iFN
 vUA
 vUA
 vUA
-ikX
+aXA
 xZP
 iFN
 iFN
@@ -46509,7 +46097,7 @@ iFN
 vUA
 aXH
 mix
-kWB
+sGn
 iGS
 oFG
 oFG
@@ -46789,7 +46377,7 @@ iFd
 klr
 lcN
 aBn
-tgg
+vgp
 qqW
 mSy
 iKr
@@ -46983,7 +46571,7 @@ jZZ
 lcN
 lcN
 aBn
-tgg
+vgp
 uKj
 mDM
 vKj
@@ -47177,7 +46765,7 @@ jZZ
 lcN
 lcN
 aBn
-tgg
+vgp
 uKj
 rZO
 dQD
@@ -47371,7 +46959,7 @@ xoc
 lcN
 lcN
 aBn
-tgg
+vgp
 qqW
 wqA
 iKr
@@ -47565,7 +47153,7 @@ mix
 lcN
 lcN
 aBn
-tgg
+vgp
 uKj
 wqA
 iKr
@@ -47759,7 +47347,7 @@ mix
 lcN
 lcN
 aBn
-tgg
+vgp
 uKj
 wqA
 iKr
@@ -47917,7 +47505,7 @@ nZY
 hhD
 nZY
 hhD
-xzC
+nZY
 jjm
 dER
 iFN
@@ -47953,7 +47541,7 @@ mix
 lcN
 lcN
 aBn
-tgg
+vgp
 qqW
 mSy
 iKr
@@ -48147,7 +47735,7 @@ mix
 lcN
 lcN
 aBn
-tgg
+vgp
 uKj
 wqA
 iKr
@@ -48295,7 +47883,7 @@ mif
 kbD
 mif
 vow
-gVW
+qQY
 kYl
 kYl
 kYl
@@ -48307,7 +47895,7 @@ kYl
 kYl
 kYl
 kYl
-qJy
+iSM
 dER
 mif
 vFs
@@ -48501,7 +48089,7 @@ kYl
 kYl
 kYl
 kYl
-fss
+kYl
 hNW
 wSJ
 jPV
@@ -48535,7 +48123,7 @@ mix
 lcN
 lcN
 aBn
-tgg
+vgp
 qqW
 wqA
 iKr
@@ -48683,7 +48271,7 @@ iFN
 mif
 iFN
 lPZ
-wXQ
+xWX
 wXk
 kYl
 kYl
@@ -48695,7 +48283,7 @@ kYl
 kYl
 kYl
 kYl
-fss
+kYl
 hNW
 ylu
 kWH
@@ -48729,7 +48317,7 @@ fdY
 lcN
 lcN
 aBn
-tgg
+vgp
 uKj
 wqA
 iKr
@@ -48858,7 +48446,7 @@ iFN
 iFN
 iFN
 mUL
-kfH
+xPr
 hNW
 oFG
 oFG
@@ -48877,7 +48465,7 @@ iFN
 mif
 iFN
 lPZ
-wXQ
+xWX
 kYl
 kYl
 kYl
@@ -48923,7 +48511,7 @@ jZZ
 lcN
 lcN
 aBn
-tgg
+vgp
 uKj
 wqA
 iKr
@@ -49051,9 +48639,9 @@ iFN
 iFN
 iFN
 lPZ
-vIt
+wug
 jzK
-sWF
+xPr
 dER
 iFN
 mif
@@ -49244,7 +48832,7 @@ iFN
 iFN
 iFN
 lPZ
-hun
+xPr
 mtT
 jzK
 col
@@ -49345,7 +48933,7 @@ iFN
 iFN
 iFN
 jZZ
-gPO
+wSo
 teB
 iFN
 iFN
@@ -49438,11 +49026,11 @@ iFN
 iFN
 iFN
 lPZ
-rRS
+xPr
 wug
 jzK
-rRS
-uhQ
+xPr
+xPr
 dER
 mif
 iFN
@@ -49632,11 +49220,11 @@ iFN
 iFN
 iFN
 lPZ
-sFP
+xPr
 mtT
 jzK
 col
-uLd
+xPr
 dER
 mif
 iFN
@@ -49731,7 +49319,7 @@ iFN
 iFN
 iFN
 iFN
-xyV
+wSo
 nYy
 cTN
 fbN
@@ -49829,7 +49417,7 @@ iFN
 lPZ
 jkc
 jzK
-vXi
+xPr
 dER
 iFN
 mif
@@ -49926,7 +49514,7 @@ hgE
 hgE
 hgE
 hgE
-bTN
+rPa
 cTN
 fWO
 dER
@@ -50226,7 +49814,7 @@ hgE
 hgE
 hgE
 hgE
-xWi
+iFN
 hgE
 hgE
 hgE
@@ -50809,7 +50397,7 @@ hgE
 fUY
 egH
 jvY
-dMW
+wnK
 eGx
 enA
 lUE
@@ -51451,7 +51039,7 @@ jwH
 wGn
 ngp
 qvB
-epT
+pbQ
 aSW
 cuR
 noF
@@ -51641,7 +51229,7 @@ cEL
 cEL
 cEL
 cEL
-buV
+bCH
 brm
 sLr
 qvB
@@ -51655,7 +51243,7 @@ xCi
 rga
 wOB
 heV
-sPq
+evk
 qvB
 fLU
 aeZ
@@ -53574,11 +53162,11 @@ bQA
 eNx
 nyE
 bQA
-prt
 kDP
 kDP
 kDP
-prt
+kDP
+kDP
 bQA
 lsb
 tEx
@@ -55514,11 +55102,11 @@ bQA
 whO
 yeH
 bQA
-prt
+hGB
 kDP
 kDP
 kDP
-prt
+kDP
 bQA
 mIq
 wQz
@@ -59781,7 +59369,7 @@ iNE
 kEs
 lYg
 nFo
-qnJ
+rDi
 rDi
 sIP
 wBu
@@ -59918,9 +59506,9 @@ eGb
 ftg
 rPR
 jlF
-aSt
+mXL
 cBk
-xQZ
+xSV
 xSV
 xSV
 xSV

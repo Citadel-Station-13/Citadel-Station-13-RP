@@ -37,7 +37,7 @@
 
 /obj/structure/inflatable/Initialize(mapload)
 	. = ..()
-	update_nearby_tiles(need_rebuild=1)
+	update_nearby_tiles()
 
 /obj/structure/inflatable/Destroy()
 	update_nearby_tiles()
@@ -53,7 +53,7 @@
 		puncture()
 	return
 
-/obj/structure/inflatable/ex_act(severity)
+/obj/structure/inflatable/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)

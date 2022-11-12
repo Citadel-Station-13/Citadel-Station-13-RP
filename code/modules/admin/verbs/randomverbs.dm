@@ -125,7 +125,7 @@
 		return
 
 	if(!M)
-		M = input("Direct narrate to whom?", "Active Players") as null|anything in player_list
+		M = input("Direct narrate to whom?", "Active Players") as null|anything in GLOB.player_list
 
 	if(!M)
 		return
@@ -474,7 +474,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			spawnloc = get_turf(src.mob)
 
 		if("Arrivals") //Spawn them at a latejoin spawnpoint
-			spawnloc = SSjob.GetLatejoinSpawnpoint(faction = JOB_FACTION_STATION)?.GetSpawnLoc()
+			spawnloc = SSjob.get_latejoin_spawnpoint(faction = JOB_FACTION_STATION)?.GetSpawnLoc()
 
 		else //I have no idea how you're here
 			to_chat(src, "Invalid spawn location choice.")
@@ -514,7 +514,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	//If desired, apply equipment.
 	if(equipment)
 		if(charjob)
-			job_master.EquipRank(new_character, charjob, 1)
+			SSjob.EquipRank(new_character, charjob, 1)
 
 	//If desired, add records.
 	if(records)
@@ -734,7 +734,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	switch(alert("How would you like to ban someone today?", "Manual Ban", "Key List", "Enter Manually", "Cancel"))
 		if("Key List")
 			var/list/keys = list()
-			for(var/mob/M in player_list)
+			for(var/mob/M in GLOB.player_list)
 				keys += M.client
 			var/selection = input("Please, select a player!", "Admin Jumping", null, null) as null|anything in keys
 			if(!selection)
@@ -835,8 +835,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(view == world.view)
 		view = input("Select view range:", "FUCK YE", 7) in list(1,2,3,4,5,6,7,8,9,10,11,12,13,14,128)
 	else
-		view = world.view
-	mob.set_viewsize(view)
+		SetWindowIconSize(prefs.icon_size)
 
 	log_admin("[key_name(usr)] changed their view range to [view].")
 	//message_admins("<font color=#4F49AF>[key_name_admin(usr)] changed their view range to [view].</font>", 1)	//why? removed by order of XSI
@@ -1013,7 +1012,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	else if(issilicon(M))
 		if(isAI(M))
 			var/mob/living/silicon/ai/ai = M
-			empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(ai.loc)
+			GLOB.empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(ai.loc)
 			GLOB.global_announcer.autosay("[ai] has been moved to intelligence storage.", "Artificial Intelligence Oversight")
 			ai.clear_client()
 			return

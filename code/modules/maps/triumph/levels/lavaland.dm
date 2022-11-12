@@ -57,3 +57,29 @@ LAVALAND_TURF_CREATE(/turf/simulated/floor/bluegrid)
 LAVALAND_TURF_CREATE(/turf/simulated/floor/greengrid)
 LAVALAND_TURF_CREATE(/turf/unsimulated/mineral/triumph)
 LAVALAND_TURF_CREATE(/turf/simulated/mineral/)
+
+
+/turf/simulated/mineral/floor/lavaland
+	outdoors = TRUE
+
+//Cave doesnt make things indoor, its actually a variant that
+//has an initial gas string of regular air mix. The turf creator overrides
+//that gas mix though so this is effectively useless. Lava land was made though with this
+//being default outdoors so I will leave it as is for now
+/turf/simulated/mineral/floor/cave/lavaland
+	outdoors = TRUE
+
+/turf/simulated/mineral/floor/ignore_mapgen/lavaland
+	outdoors = TRUE
+
+///... why are is a TRIUMPH_TURF_CREATE turf being chewed through LAVALAND_TURF_CREATE I dont
+/// know. This will need to be looked into at some point soon
+/turf/simulated/mineral/triumph/lavaland
+	outdoors = TRUE
+
+/turf/simulated/mineral/triumph/rich/lavaland
+	outdoors = TRUE
+
+/turf/simulated/mineral/rich/triumph/lavaland
+	outdoors = TRUE
+

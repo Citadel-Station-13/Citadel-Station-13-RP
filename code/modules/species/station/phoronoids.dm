@@ -1,5 +1,6 @@
 /datum/species/phoronoid
 	name = SPECIES_PHORONOID
+	uid = SPECIES_ID_PHORONOID
 	name_plural = "Phoronoids"
 	default_bodytype = BODYTYPE_PHORONOID
 
@@ -8,9 +9,8 @@
 	preview_icon = 'icons/mob/species/phoronoid/preview.dmi'
 	husk_icon    = 'icons/mob/species/phoronoid/husk.dmi'
 
-	language = LANGUAGE_GALCOM
-	species_language = LANGUAGE_BONES
-	num_alternate_languages = 3
+	intrinsic_languages = LANGUAGE_ID_PHORONOID
+	max_additional_languages = 3
 	name_language = null // name randomisers are fucking weird
 
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch)
@@ -25,8 +25,8 @@
 	rarity_value = 5
 	blood_color = "#FC2BC5"
 
-	flags = NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE
-	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
+	species_flags = NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE
+	species_spawn_flags = SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELIST_SELECTABLE
 	species_appearance_flags = HAS_EYE_COLOR
 
 	show_ssd = "completely motionless"

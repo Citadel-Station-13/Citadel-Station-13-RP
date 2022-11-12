@@ -655,7 +655,7 @@
 /obj/machinery/power/rtg/abductor/blob_act(obj/structure/blob/B)
 	asplod()
 
-/obj/machinery/power/rtg/abductor/ex_act()
+/obj/machinery/power/rtg/abductor/legacy_ex_act()
 	if(going_kaboom)
 		qdel(src)
 	else

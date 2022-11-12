@@ -18,10 +18,12 @@ GLOBAL_LIST(topic_status_cache)
 //This happens after the Master subsystem new(s) (it's a global datum)
 //So subsystems globals exist, but are not initialised
 /world/New()
+	//! init auxtools
 	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
 	if (debug_server)
 		call(debug_server, "auxtools_init")()
 		enable_debugging()
+	// AUXTOOLS_CHECK(AUXTOOLS_YAML)
 
 	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 
@@ -75,10 +77,6 @@ GLOBAL_LIST(topic_status_cache)
 	src.update_status()
 
 	. = ..()
-
-	// *sighs*
-	job_master = new
-	job_master.SetupOccupations()
 
 	// This is kinda important. Set up details of what the hell things are made of.
 	populate_material_list()
@@ -280,6 +278,11 @@ GLOBAL_LIST(topic_status_cache)
 
 	log_world("World rebooted at [time_stamp()]")
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
+
+	//! Shutdown Auxtools
+	// AUXTOOLS_SHUTDOWN(AUXTOOLS_YAML)
+
+	//! Finale
 	// hmmm let's sleep for one (1) second incase rust_g threads are running for whatever reason
 	sleep(1 SECONDS)
 	..()

@@ -158,12 +158,16 @@
 
 /datum/ghostrole_instantiator/human/player_static/Create(client/C, atom/location, list/params)
 	var/mob/living/carbon/human/H = ..()
+	var/list/errors = list()
+	if(!C.prefs.spawn_checks(PREF_COPY_TO_FOR_GHOSTROLE, errors))
+		to_chat(C, SPAN_WARNING("An error has occured while attempting to spawn you in:<br>[errors.Join("<br>")]"))
+		return
 	LoadSavefile(C, H)
 	return H
 
 /datum/ghostrole_instantiator/human/player_static/proc/LoadSavefile(client/C, mob/living/carbon/human/H)
 	C.prefs.copy_to(H)
-	job_master.EquipRank(H, USELESS_JOB)
+	SSjob.EquipRank(H, USELESS_JOB)
 	// if(equip_loadout)
 	// 	SSjob.EquipLoadout(H, FALSE, null, C.prefs, C.ckey)
 	// if(equip_traits && CONFIG_GET(flag/roundstart_traits))

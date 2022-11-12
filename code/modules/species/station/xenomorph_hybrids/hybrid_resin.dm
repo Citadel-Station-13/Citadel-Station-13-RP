@@ -190,7 +190,7 @@
 	healthcheck()
 	return
 
-/obj/effect/alien/hybrid_resin/ex_act(severity)
+/obj/effect/alien/hybrid_resin/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			health-=50

@@ -57,7 +57,6 @@ Class Procs:
 	air.temperature = TCMB
 	air.group_multiplier = 1
 	air.volume = CELL_VOLUME
-	renderer_one_for_all = new
 
 /datum/zas_zone/proc/add(turf/simulated/T)
 #ifdef ZAS_ASSERTIONS
@@ -76,7 +75,7 @@ Class Procs:
 		air_master.active_fire_zones |= src
 		if(fuel)
 			fuel_objs += fuel
-	if(T.allow_gas_overlays && !T.outdoors)
+	if(renderer_one_for_all && T.allow_gas_overlays && !T.outdoors)
 		T.vis_contents += renderer_one_for_all
 
 /datum/zas_zone/proc/remove(turf/simulated/T)
@@ -96,7 +95,8 @@ Class Procs:
 		if(fuel)
 			fuel_objs -= fuel
 	T.zone = null
-	T.vis_contents -= renderer_one_for_all
+	if(renderer_one_for_all)
+		T.vis_contents -= renderer_one_for_all
 	if(contents.len)
 		air.group_multiplier = contents.len
 	else
@@ -112,7 +112,8 @@ Class Procs:
 
 	c_invalidate()
 	for(var/turf/simulated/T in contents)
-		T.vis_contents -= renderer_one_for_all
+		if(renderer_one_for_all)
+			T.vis_contents -= renderer_one_for_all
 		into.add(T)
 		#ifdef ZAS_DEBUG_GRAPHICS
 		T.dbg(merged)
@@ -138,7 +139,8 @@ Class Procs:
 		return //Short circuit for explosions where rebuild is called many times over.
 	c_invalidate()
 	for(var/turf/simulated/T in contents)
-		T.vis_contents -= renderer_one_for_all
+		if(renderer_one_for_all)
+			T.vis_contents -= renderer_one_for_all
 		//T.dbg(invalid_zone)
 		T.queue_zone_update()
 
@@ -157,7 +159,23 @@ Class Procs:
 		if(istype(T))
 			T.create_fire(firelevel_multiplier)
 
-	renderer_one_for_all.overlays = air.get_turf_graphics()
+	var/list/new_graphics = air.get_turf_graphics()
+	if(length(new_graphics))
+		if(renderer_one_for_all)
+			// we have it; mutate
+			renderer_one_for_all.overlays = new_graphics
+		else
+			// we don't; make
+			renderer_one_for_all = new
+			renderer_one_for_all.overlays = new_graphics
+			for(var/turf/T as anything in contents)
+				T.vis_contents += renderer_one_for_all
+	else
+		if(renderer_one_for_all)
+			// destruct; don't need it anymore
+			for(var/turf/T as anything in contents)
+				T.vis_contents -= renderer_one_for_all
+			QDEL_NULL(renderer_one_for_all)
 
 	for(var/datum/zas_edge/E in edges)
 		if(E.sleeping)

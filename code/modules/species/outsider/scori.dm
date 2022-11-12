@@ -1,9 +1,9 @@
 /datum/species/scori
+	uid = SPECIES_ID_SCORI
 	name = "Scorian"
 	name_plural = SPECIES_SCORI
-	default_language = LANGUAGE_EVENT1
-	language = LANGUAGE_EVENT1
-	num_alternate_languages = 2
+	default_language = LANGUAGE_ID_EVENT_1
+	max_additional_languages = 2
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/bite)
 	rarity_value = 4
 
@@ -16,7 +16,7 @@
 	Harmony have since confirmed the presence of a nearby Scori tribe."
 	catalogue_data = list(/datum/category_item/catalogue/fauna/ashlander)
 
-	spawn_flags = SPECIES_IS_RESTRICTED
+	species_spawn_flags = SPECIES_SPAWN_RESTRICTED
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
 	deform  = 'icons/mob/species/human/deformed_body_greyscale.dmi'
@@ -26,7 +26,7 @@
 	base_color = "#373652"
 	blood_color = "#3c6d45"
 
-	flags = NO_MINOR_CUT
+	species_flags = NO_MINOR_CUT
 	siemens_coefficient = 1.5
 
 	max_age = 200

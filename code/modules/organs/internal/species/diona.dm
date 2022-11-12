@@ -78,7 +78,7 @@
 /obj/item/organ/internal/brain/cephalon/Initialize(mapload)
 	. = ..()
 	spawn(30 SECONDS) // FBP Dionaea need some way to be disassembled through surgery, if absolutely necessary.
-		if(!owner.isSynthetic())
+		if(!owner.synthetic)
 			vital = FALSE
 
 /obj/item/organ/internal/brain/cephalon/robotize()
@@ -90,7 +90,7 @@
 /obj/item/organ/internal/brain/cephalon/digitize()
 	return
 
-/obj/item/organ/internal/brain/cephalon/removed(var/mob/living/user, var/skip_nymph)
+/obj/item/organ/internal/brain/cephalon/removed(mob/living/user, skip_nymph)
 	if(robotic >= ORGAN_ROBOT)
 		return ..()
 	var/mob/living/carbon/human/H = owner
