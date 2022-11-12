@@ -39,7 +39,7 @@
 /obj/item/clothing/suit/storage/hooded/proc/RemoveHood()
 	icon_state = toggleicon
 	hood_up = FALSE
-	REMOVE_TRAIT(hood, TRAIT_NODROP, CLOTHING_TRAIT)
+	REMOVE_TRAIT(hood, TRAIT_ITEM_NODROP, CLOTHING_TRAIT)
 	hood.forceMove(src)
 	update_worn_icon()
 
@@ -66,7 +66,7 @@
 				if(armor)
 					hood.armor = armor.Copy()
 				hood_up = TRUE
-				ADD_TRAIT(hood, TRAIT_NODROP, CLOTHING_TRAIT)
+				ADD_TRAIT(hood, TRAIT_ITEM_NODROP, CLOTHING_TRAIT)
 				icon_state = "[toggleicon]-t"
 				update_worn_icon()
 	else

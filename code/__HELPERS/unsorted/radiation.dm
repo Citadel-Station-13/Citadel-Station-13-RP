@@ -8,11 +8,14 @@
 	var/lim = 1
 	var/atom/thing
 	while(i < lim)
-		thing = pprocessing[++i]
+		thing = processing[++i]
 		if(radiation_full_ignore[thing.type])
 			continue
 		. += thing
-		if((thing.rad_flags & RAD_PROTECT_CONTENTS) || (SEND_SIGNAL(thing, COMSIG_ATOM_RAD_PROBE) & COMPONENT_BLOCK_RADIATION))
+		if(thing.rad_flags & RAD_BLOCK_CONTENTS)
 			continue
 		processing += thing.contents
 		lim = processing.len
+
+/atom/proc/radiation_pulse(intensity, falloff_modifier, log, no_contaminate)
+	return SSradiation.radiation_pulse(get_turf(src), src, intensity, falloff_modifier, log, no_contaminate)

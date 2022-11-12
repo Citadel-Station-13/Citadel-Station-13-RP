@@ -243,7 +243,7 @@
 	if(!slot)
 		slot = slot_by_item(I)
 
-	if(!(flags & INV_OP_FORCE) && HAS_TRAIT(I, TRAIT_NODROP))
+	if(!(flags & INV_OP_FORCE) && HAS_TRAIT(I, TRAIT_ITEM_NODROP))
 		if(!(flags & INV_OP_SUPPRESS_WARNING))
 			to_chat(user, SPAN_WARNING("[I] is stuck to your hand!"))
 		return FALSE

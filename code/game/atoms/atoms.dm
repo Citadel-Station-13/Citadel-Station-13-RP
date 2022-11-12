@@ -908,7 +908,17 @@
  * called when we're hit by a radiation wave
  */
 /atom/proc/rad_act(strength, datum/radiation_wave/wave)
+	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_RAD_ACT, strength)
+
+/atom/proc/add_rad_block_contents(source)
+	ADD_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS, source)
+	rad_flags |= RAD_BLOCK_CONTENTS
+
+/atom/proc/remove_rad_block_contents(source)
+	REMOVE_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS, source)
+	if(!HAS_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS))
+		rad_flags &= ~RAD_BLOCK_CONTENTS
 
 //! ## Atom Colour Priority System
 /**
