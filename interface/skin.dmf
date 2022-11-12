@@ -5,19 +5,21 @@ window "mainwindow"
 	elem "mainwindow"
 		type = MAIN
 		pos = 281,0
-		size = 640x440
+		size = 640x480
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		icon = 'icons\\CS13.png'
 		macro = "default"
 	elem "split"
 		type = CHILD
-		pos = 3,0
-		size = 640x420
+		pos = 0,0
+		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		saved-params = "splitter"
 		left = "mapwindow"
 		right = "infowindow"
@@ -28,6 +30,7 @@ window "mainwindow"
 		size = 200x200
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		is-visible = false
 		saved-params = ""
 	elem "tooltip"
@@ -36,6 +39,7 @@ window "mainwindow"
 		size = 999x999
 		anchor1 = -1,-1
 		anchor2 = -1,-1
+		background-color = none
 		is-visible = false
 		saved-params = ""
 
