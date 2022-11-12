@@ -1,5 +1,3 @@
-///when processing a reaction, iterate this many times
-#define PROCESS_REACTION_ITER 5
 /datum/reagents
 	var/list/datum/reagent/reagent_list = list()
 	var/total_volume = 0
@@ -293,11 +291,13 @@
 
 /* Holder-to-atom and similar procs */
 
-//The general proc for applying reagents to things. This proc assumes the reagents are being applied externally,
-//not directly injected into the contents. It first calls touch, then the appropriate trans_to_*() or splash_mob().
-//If for some reason touch effects are bypassed (e.g. injecting stuff directly into a reagent container or person),
-//call the appropriate trans_to_*() proc.
-/datum/reagents/proc/trans_to(var/atom/target, var/amount = 1, var/multiplier = 1, var/copy = 0)
+/**
+ * The general proc for applying reagents to things. This proc assumes the reagents are being applied externally,
+ * not directly injected into the contents. It first calls touch, then the appropriate trans_to_*() or splash_mob().
+ * If for some reason touch effects are bypassed (e.g. injecting stuff directly into a reagent container or person),
+ * call the appropriate trans_to_*() proc.
+ */
+/datum/reagents/proc/trans_to(atom/target, amount = 1, multiplier = 1, copy = 0)
 	touch(target) //First, handle mere touch effects
 
 	if(ismob(target))
@@ -495,3 +495,18 @@
 	for(var/datum/reagent/R in cached_reagents)
 		R.on_update (A)
 	update_total()
+
+// I wrote this while :headempty: and I'm not sure if it's correct. @Zandario
+/datum/reagents/proc/can_reactions_happen()
+	var/do_happen = FALSE
+	var/list/eligible_reactions = list()
+	for(var/i in reagent_list)
+		var/datum/reagent/R = i
+		if(SSchemistry.chemical_reactions_by_reagent[R.id])
+			eligible_reactions |= SSchemistry.chemical_reactions_by_reagent[R.id]
+
+	for(var/i in eligible_reactions)
+		var/datum/chemical_reaction/C = i
+		if(C.can_happen(src))
+			do_happen = TRUE
+	return do_happen
