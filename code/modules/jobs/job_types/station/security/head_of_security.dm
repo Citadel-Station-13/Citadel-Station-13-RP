@@ -1,4 +1,5 @@
 /datum/job/station/head_of_security
+	id = JOB_ID_HEAD_OF_SECURITY
 	title = "Head of Security"
 	flag = HOS
 	departments_managed = list(DEPARTMENT_SECURITY)

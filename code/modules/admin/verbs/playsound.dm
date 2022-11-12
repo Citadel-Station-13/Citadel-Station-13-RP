@@ -32,7 +32,7 @@
 	log_admin("[key_name(src)] played sound [S]")
 	message_admins("[key_name_admin(src)] played sound [S]")
 
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M.is_preference_enabled(/datum/client_preference/play_admin_midis)) //if(M.client.prefs.toggles & SOUND_MIDI)
 			admin_sound.volume = vol * M.client.admin_music_volume
 			SEND_SOUND(M, admin_sound)
@@ -123,7 +123,7 @@
 			to_chat(src, "<span class='warning'>The media provider returned a content URL that isn't using the HTTP or HTTPS protocol</span>")
 			return
 		if(web_sound_url || stop_web_sounds)
-			for(var/m in player_list)
+			for(var/m in GLOB.player_list)
 				var/mob/M = m
 				var/client/C = M.client
 				if(M.is_preference_enabled(/datum/client_preference/play_admin_midis)) //if(C.prefs.toggles & SOUND_MIDI)
@@ -147,7 +147,7 @@
 			log_admin("[key_name(src)] stopped web sound")
 			message_admins("[key_name(src)] stopped web sound")
 			var/mob/M
-			for(var/i in player_list)
+			for(var/i in GLOB.player_list)
 				M = i
 				M?.client?.tgui_panel?.stop_music()
 			return
@@ -173,7 +173,7 @@
 		log_admin("[key_name(src)] played web sound: [web_sound_input]")
 		message_admins("[key_name(src)] played web sound: [web_sound_input]")
 
-		for(var/m in player_list)
+		for(var/m in GLOB.player_list)
 			var/mob/M = m
 			var/client/C = M.client
 			if(M.is_preference_enabled(/datum/client_preference/play_admin_midis)) //if(C.prefs.toggles & SOUND_MIDI)
@@ -202,7 +202,7 @@
 
 	log_admin("[key_name(src)] stopped all currently playing sounds.")
 	message_admins("[key_name_admin(src)] stopped all currently playing sounds.")
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		SEND_SOUND(M, sound(null))
 		var/client/C = M.client
 		C?.tgui_panel?.stop_music()

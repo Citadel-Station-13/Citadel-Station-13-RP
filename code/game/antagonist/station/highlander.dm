@@ -54,7 +54,7 @@ var/datum/antagonist/highlander/highlanders
 	player.equip_to_slot_or_del(W, SLOT_ID_WORN_ID)
 
 /proc/only_one()
-	for(var/mob/living/carbon/human/H in player_list)
+	for(var/mob/living/carbon/human/H in GLOB.player_list)
 		if(H.stat == 2 || !(H.client)) continue
 		if(is_special_character(H)) continue
 		highlanders.add_antagonist(H.mind)

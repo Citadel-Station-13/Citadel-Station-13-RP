@@ -63,7 +63,7 @@
 	Log(message, message_title)
 
 /datum/legacy_announcement/proc/Message(message as text, message_title as text, list/zlevels)
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(!istype(M,/mob/new_player) && !isdeaf(M))
 			to_chat(M, "<h2 class='alert'>[title]</h2>")
 			to_chat(M, "<span class='alert'>[message]</span>")
@@ -95,7 +95,7 @@
 	announce_newscaster_news(news)
 
 /datum/legacy_announcement/proc/PlaySound(message_sound, list/zlevels)
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(zlevels && !(M.z in zlevels))
 			continue
 		if(!istype(M,/mob/new_player) && !isdeaf(M))
@@ -105,7 +105,7 @@
 		return
 
 	spawn(22) // based on length of preamble.ogg + arbitrary delay
-		for(var/mob/M in player_list)
+		for(var/mob/M in GLOB.player_list)
 			if(zlevels && !(M.z in zlevels))
 				continue
 			if(!istype(M,/mob/new_player) && !isdeaf(M))

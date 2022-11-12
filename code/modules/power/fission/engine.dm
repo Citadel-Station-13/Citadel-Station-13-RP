@@ -424,7 +424,7 @@
 		if(announce)
 			var/sound = sound('sound/effects/nuclear_meltdown.ogg')
 			if(!off_station)
-				for(var/mob/M in player_list)
+				for(var/mob/M in GLOB.player_list)
 					SEND_SOUND(M,sound)
 			spawn(1 SECONDS)
 				radio.autosay("DANGER! FISSION CORE HAS BREACHED!", "Nuclear Monitor")

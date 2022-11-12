@@ -3,7 +3,11 @@
 /*
 	Datum based languages. Easily editable and modular.
 */
-
+/**
+ * language datums
+ *
+ * singletons stored on SScharacters, only referenced by id most of the time.
+ */
 /datum/language
 	/// abstract type
 	var/abstract_type = /datum/language
@@ -14,6 +18,9 @@
 	var/name = "an unknown language"
 	/// Short description for 'Check Languages'.
 	var/desc = "A language."
+	// todo: sort languages into categories
+	/// category in UI
+	var/category = "General"
 	/// 'says', 'hisses', 'farts'.
 	var/speech_verb = "says"
 	/// Used when sentence ends in a ?
@@ -22,14 +29,14 @@
 	var/exclaim_verb = "exclaims"
 	/// Optional. When not specified speech_verb + quietly/softly is used instead.
 	var/whisper_verb
-	/// list of emotes that might be displayed if this language has NONVERBAL or SIGNLANG flags
+	/// list of emotes that might be displayed if this language has NONVERBAL or SIGNLANG language_flags
 	var/signlang_verb = list("signs", "gestures")
 	/// CSS style to use for strings in this language.
 	var/colour = "body"
 	/// Character used to speak in language eg. :o for Unathi.
 	var/key = "x"
-	/// Various language flags.
-	var/flags = 0
+	/// Various language language_flags.
+	var/language_flags = NONE
 	/// If set, non-native speakers will have trouble speaking.
 	var/native
 	/// Used when scrambling text for a non-speaker.
@@ -153,7 +160,7 @@
 	if(!speaker_mask) speaker_mask = speaker.name
 	message = format_message(message, get_spoken_verb(message))
 
-	for(var/mob/player in player_list)
+	for(var/mob/player in GLOB.player_list)
 		player.hear_broadcast(src, speaker, speaker_mask, message)
 
 /mob/proc/hear_broadcast(var/datum/language/language, var/mob/speaker, var/speaker_name, var/message)
@@ -186,7 +193,7 @@
 	if(name != "Noise")	// Audible Emotes
 		if(ishuman(speaker))
 			var/mob/living/carbon/human/H = speaker
-			if(H.species.has_organ[O_VOICE] && !(flags & SIGNLANG) && !(flags & NONVERBAL)) // Does the species need a voicebox? Is the language even spoken?
+			if(H.species.has_organ[O_VOICE] && !(language_flags & SIGNLANG) && !(language_flags & NONVERBAL)) // Does the species need a voicebox? Is the language even spoken?
 				var/obj/item/organ/internal/voicebox/vocal = H.internal_organs_by_name[O_VOICE]
 				if(!vocal || vocal.is_broken() || vocal.mute)
 					return FALSE
@@ -201,7 +208,7 @@
 // Language handling.
 /mob/proc/add_language(var/language)
 
-	var/datum/language/new_language = GLOB.all_languages[language]
+	var/datum/language/new_language = SScharacters.resolve_language(language)
 
 	if(!istype(new_language) || (new_language in languages))
 		return 0
@@ -210,12 +217,12 @@
 	return 1
 
 /mob/proc/remove_language(var/rem_language)
-	var/datum/language/L = GLOB.all_languages[rem_language]
+	var/datum/language/L = SScharacters.resolve_language(rem_language)
 	. = (L in languages)
 	languages.Remove(L)
 
 /mob/living/remove_language(rem_language)
-	var/datum/language/L = GLOB.all_languages[rem_language]
+	var/datum/language/L = SScharacters.resolve_language(rem_language)
 	if(default_language == L)
 		default_language = null
 	return ..()
@@ -227,32 +234,26 @@
 		log_debug("[src] attempted to speak a null language.")
 		return 0
 
-	if(speaking == GLOB.all_languages["Noise"])
+	if(speaking == SScharacters.resolve_language_name("Noise"))
 		return 1
 
-	if (only_species_language && speaking != GLOB.all_languages[species_language])
+	if (only_species_language && speaking != SScharacters.resolve_language_name(species_language))
 		return 0
 
 	if(speaking.can_speak_special(src))
 		if(universal_speak)
 			return 1
-		if(speaking && (speaking.flags & INNATE))
+		if(speaking && (speaking.language_flags & INNATE))
 			return 1
 		if(speaking in src.languages)
 			return 1
 	return 0
 
 /mob/proc/get_language_prefix()
-	if(client && client.prefs.language_prefixes && client.prefs.language_prefixes.len)
-		return client.prefs.language_prefixes[1]
+	return client?.prefs?.get_primary_language_prefix() || config_legacy.language_prefixes[1]
 
-	return config_legacy.language_prefixes[1]
-
-/mob/proc/is_language_prefix(var/prefix)
-	if(client && client.prefs.language_prefixes && client.prefs.language_prefixes.len)
-		return prefix in client.prefs.language_prefixes
-
-	return prefix in config_legacy.language_prefixes
+/mob/proc/is_language_prefix(prefix)
+	return client?.prefs?.is_language_prefix(prefix) || (prefix in config_legacy.language_prefixes)
 
 //TBD
 /mob/verb/check_languages()
@@ -263,7 +264,7 @@
 	var/dat = "<b><font size = 5>Known Languages</font></b><br/><br/>"
 
 	for(var/datum/language/L in languages)
-		if(!(L.flags & NONGLOBAL))
+		if(!(L.language_flags & NONGLOBAL))
 			dat += "<b>[L.name] ([get_language_prefix()][L.key])</b><br/>[L.desc]<br/><br/>"
 
 	src << browse(dat, "window=checklanguage")
@@ -276,7 +277,7 @@
 		dat += "Current default language: [default_language] - <a href='byond://?src=\ref[src];default_lang=reset'>reset</a><br/><br/>"
 
 	for(var/datum/language/L in languages)
-		if(!(L.flags & NONGLOBAL))
+		if(!(L.language_flags & NONGLOBAL))
 			if(L == default_language)
 				dat += "<b>[L.name] ([get_language_prefix()][L.key])</b> - default - <a href='byond://?src=\ref[src];default_lang=reset'>reset</a><br/>[L.desc]<br/><br/>"
 			else if (can_speak(L))
@@ -290,7 +291,7 @@
 	if(href_list["default_lang"])
 		if(href_list["default_lang"] == "reset")
 			if (species_language)
-				set_default_language(GLOB.all_languages[species_language])
+				set_default_language(SScharacters.resolve_language_name(species_language))
 			else
 				set_default_language(null)
 		else
@@ -304,7 +305,7 @@
 
 /proc/transfer_languages(var/mob/source, var/mob/target, var/except_flags)
 	for(var/datum/language/L in source.languages)
-		if(L.flags & except_flags)
+		if(L.language_flags & except_flags)
 			continue
 		target.add_language(L.name)
 

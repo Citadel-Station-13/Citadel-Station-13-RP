@@ -27,7 +27,7 @@
 		to_chat(src, "<span class='warning'>\The [T] is not compatible with our biology.</span>")
 		return 0
 
-	if(T.species.flags & NO_SCAN)
+	if(T.species.species_flags & NO_SCAN)
 		to_chat(src, "<span class='warning'>We do not know how to parse this creature's DNA!</span>")
 		return 0
 

@@ -313,7 +313,7 @@
 	if (MUTATION_NOCLONE in subject.mutations)
 		scantemp = "Error: Mental interface failure."
 		return
-	if (subject.species && subject.species.flags & NO_SCAN && !brain_skip)
+	if (subject.species && subject.species.species_flags & NO_SCAN && !brain_skip)
 		scantemp = "Error: Mental interface failure."
 		return
 	for(var/modifier_type in subject.modifiers)	//Can't be cloned, even if they had a previous scan
@@ -323,7 +323,7 @@
 	if ((!subject.ckey) || (!subject.client))
 		scantemp = "Error: Mental interface failure."
 		if(subject.stat == DEAD && subject.mind && subject.mind.key) // If they're dead and not in their body, tell them to get in it.
-			for(var/mob/observer/dead/ghost in player_list)
+			for(var/mob/observer/dead/ghost in GLOB.player_list)
 				if(ghost.ckey == ckey(subject.mind.key))
 					ghost.notify_revive("Someone is trying to scan your body in the cloner. Re-enter your body if you want to be revived!", 'sound/effects/genetics.ogg')
 					break

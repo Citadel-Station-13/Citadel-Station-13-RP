@@ -1,16 +1,19 @@
-/mob/living/carbon/human/Initialize(mapload, datum/species/new_species_or_path)
+/**
+ * constructor; pass in a specieslike resolver as second argument to set
+ *
+ * specieslike resolver = species datum, id, path, or name.
+ */
+/mob/living/carbon/human/Initialize(mapload, datum/species/specieslike)
+	. = ..()
+
 	if(!dna)
 		dna = new /datum/dna(null)
 		// Species name is handled by set_species()
 
-	if(new_species_or_path)
-		set_species(new_species_or_path, force = TRUE, regen_icons = FALSE)
-	else if(!istype(species))
-		// no one set us yet
-		if(ispath(species))
-			set_species(species, force = TRUE, regen_icons = FALSE)
-		else
-			set_species(force = TRUE, regen_icons = FALSE)
+	if(specieslike)
+		set_species(specieslike, force = TRUE, regen_icons = FALSE)
+	else
+		reset_species(force = TRUE)
 
 	if(!species)
 		stack_trace("Why is there no species? Resetting to human.")	// NO NO, YOU DONT GET TO CHICKEN OUT, SET_SPECIES WAS CALLED AND YOU BETTER HAVE ONE
@@ -28,9 +31,6 @@
 	AddComponent(/datum/component/personal_crafting)
 
 	human_mob_list |= src
-
-	. = ..()
-
 	hide_underwear.Cut()
 	for(var/category in GLOB.global_underwear.categories_by_name)
 		hide_underwear[category] = FALSE
@@ -1060,51 +1060,41 @@
 /**
  * Sets a human mob's species.
  *
- * Accepts a typepath or species instance
+ * todo: no more using anything id, and MAYBE path/direct datum; we really don't like names,
+ * todo: and things generally shouldn't be making species datums.
  *
  * @param
- * - species_or_path - species instance or typepath
+ * - specieslike - species instance, id, typepath, or name; if null, we reset species to dna.
  * - regen_icons - immediately update icons?
  * - force - change even if we are already that species **by type**
  * - skip - skip most ops that aren't apply or remove which are required for instance cleanup. do not do this unless you absolutely know what you are doing.
  * - example - dumbshit argument used for vore transformations to copy necessary data, why tf is this not done in the vore module? //TODO: REMOVE.
  */
-/mob/living/carbon/human/proc/set_species(datum/species/species_or_path, regen_icons = TRUE, force = FALSE, skip, mob/living/carbon/human/example)
-	// check if we need to
-	if(!force && species_or_path)
-		if(istype(species, istype(species_or_path)? species_or_path.type : species_or_path))
-			// already are that typepath, don't bother
-			return
-
-	if(!species_or_path)
-		// try to get default
-		// priority one: dna
-		if(dna?.species)
-			var/path = species_type_by_name(dna.species)
-			if(!path)
-				CRASH("dna species invalid name: [dna.species]")
-			species_or_path = path
-		// priority two: species var
-		else if(ispath(species))
-			species_or_path = species
-		// priority 3: human
-		else
-			species_or_path = /datum/species/human
+/mob/living/carbon/human/proc/set_species(datum/species/specieslike, regen_icons = TRUE, force = FALSE, skip, mob/living/carbon/human/example)
+	ASSERT(specieslike)
+	// resolve id
+	var/resolved_id
+	var/datum/species/resolving
+	if(istype(specieslike))
+		resolving = specieslike
+	else
+		resolving = SScharacters.resolve_species(specieslike)
+	ASSERT(istype(resolving))
+	resolved_id = resolving.uid
+	if(!force && (species?.uid == resolved_id))
+		return
 
 	var/datum/species/S
 
-	// if we're a typepath instead of a species instance
-	if(ispath(species_or_path))
-		ASSERT(species_or_path in GLOB.species_meta)		// check that too
-		S = new species_or_path
-	else if(!istype(species_or_path))
-		// make sure no one did a bad call
-		CRASH("Invalid species change attempt: [species_or_path]")
+	// provided? if so, set
+	// (and hope to god the provider isn't stupid and didn't quantum entangle a datum)
+	// if not provided, make a new one
+	if(istype(specieslike))
+		if(SScharacters.species_paths[specieslike.type] == specieslike)
+			CRASH("attempted to set species to static datum")
+		S = specieslike
 	else
-		// we're a species datum
-		S = species_or_path
-		// in the future we might have unique instancing so it'd need a check too, for now, mobs can share species
-		// (DO NOT DO THIS OR IT WILL BUG OUT AND I **WILL** FIND YOU)
+		S = SScharacters.construct_species_path(resolving.type)
 
 	// clean up old species
 	if(istype(species))
@@ -1162,6 +1152,21 @@
 		//A slew of bits that may be affected by our species change
 		regenerate_icons()
 		update_transform()
+
+/**
+ * resets our species to default with this priority:
+ *
+ * 1. dna species
+ * 2. species var (aka prototype species)
+ * 3. human
+ */
+/mob/living/carbon/human/proc/reset_species(force)
+	if(dna?.species)
+		return set_species(dna.species, force = force)
+	else if(ispath(species))
+		return set_species(species, force = force)
+	else
+		return set_species(/datum/species/human, force = force)
 
 /mob/living/carbon/human/proc/bloody_doodle()
 	set category = "IC"
@@ -1313,14 +1318,14 @@
 		return ..()
 
 /mob/living/carbon/human/getDNA()
-	if(species.flags & NO_SCAN)
+	if(species.species_flags & NO_SCAN)
 		return null
 	if(isSynthetic())
 		return
 	..()
 
 /mob/living/carbon/human/setDNA()
-	if(species.flags & NO_SCAN)
+	if(species.species_flags & NO_SCAN)
 		return
 	if(isSynthetic())
 		return
@@ -1347,7 +1352,7 @@
 		if(C.body_parts_covered & FEET)
 			footcoverage_check = TRUE
 			break
-	if((species.flags & NO_SLIP && !footcoverage_check) || (shoes && (shoes.clothing_flags & NOSLIP))) //Footwear negates a species' natural traction.
+	if((species.species_flags & NO_SLIP && !footcoverage_check) || (shoes && (shoes.clothing_flags & NOSLIP))) //Footwear negates a species' natural traction.
 		return 0
 	if(..(slipped_on,stun_duration))
 		return 1
@@ -1470,7 +1475,7 @@
 		if(!istype(check_organ))
 			return 0
 		return check_organ.organ_can_feel_pain()
-	return !(species.flags & NO_PAIN)
+	return !(species.species_flags & NO_PAIN)
 
 /mob/living/carbon/human/is_sentient()
 	if(get_FBP_type() == FBP_DRONE)

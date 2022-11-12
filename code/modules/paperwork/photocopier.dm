@@ -119,7 +119,7 @@
 			copyitem = null
 		else if(has_buckled_mobs())
 			to_chat(buckled_mobs[1], "<span class='notice'>You feel a slight pressure on your ass.</span>") // It can't eject your asscheeks, but it'll try.
-			return TOPIC_REFRESH
+			return PREFERENCES_REFRESH
 	else if(href_list["min"])
 		if(copies > 1)
 			copies--
