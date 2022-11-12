@@ -96,6 +96,10 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 	load_command_default = TRUE
 	checkbox = TRUE
 
+/datum/skin_menu_entry/zoom/pressed(client/C, new_checked)
+	. = ..()
+	request_viewport_update()
+
 /datum/skin_menu_entry/zoom/stretch_to_fit
 	name = "Stretch to Fit"
 	id = SKIN_ID_MENU_BUTTON_STRETCH_TO_FIT
