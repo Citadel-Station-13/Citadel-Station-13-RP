@@ -456,12 +456,12 @@
 	flags = PHORONGUARD
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	clothing_flags = THICKMATERIAL
-	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
-	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
+	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
 	hoodtype = /obj/item/clothing/head/hood/miner
 	siemens_coefficient = 0.9
-	armor = list(melee = 50, bullet = 5, laser = 20, energy = 5, bomb = 55, bio = 100, rad = 65)
+	armor = list(melee = 50, bullet = 5, laser = 10, energy = 0, bomb = 35, bio = 50, rad = 65)
 	allowed = list(
 		/obj/item/flashlight,
 		/obj/item/material/knife,
