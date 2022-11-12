@@ -3,6 +3,7 @@
 
 /datum/species/shapeshifter/promethean/avatar/human
 	name = SPECIES_VR_HUMAN
+	uid = SPECIES_ID_VIRTUAL_REALITY_HUMAN
 	icobase = 'icons/mob/species/human/body.dmi'
 	deform = 'icons/mob/species/human/deformed_body.dmi'
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
@@ -22,6 +23,7 @@
 
 /datum/species/shapeshifter/promethean/avatar/unathi
 	name = SPECIES_VR_UNATHI
+	uid = SPECIES_ID_VIRTUAL_REALITY_UNATHI
 	icobase = 'icons/mob/species/unathi/body_greyscale.dmi'
 	deform  = 'icons/mob/species/unathi/deformed_body_greyscale.dmi'
 	tail = "sogtail"
@@ -43,6 +45,7 @@
 
 /datum/species/shapeshifter/promethean/avatar/tajaran
 	name = "Virtual Reality Tajaran"
+	uid = SPECIES_ID_VIRTUAL_REALITY_TAJARAN
 	icobase = 'icons/mob/species/tajaran/body_greyscale.dmi'
 	deform  = 'icons/mob/species/tajaran/deformed_body_greyscale.dmi'
 	tail = "tajtail"
@@ -64,6 +67,7 @@
 
 /datum/species/shapeshifter/promethean/avatar/skrell
 	name = SPECIES_VR_SKRELL
+	uid = SPECIES_ID_VIRTUAL_REALITY_SKRELL
 	icobase = 'icons/mob/species/skrell/body_greyscale.dmi'
 	deform  = 'icons/mob/species/skrell/deformed_body_greyscale.dmi'
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR
@@ -83,6 +87,7 @@
 
 /datum/species/shapeshifter/promethean/avatar/teshari
 	name = SPECIES_VR_TESHARI
+	uid = SPECIES_ID_VIRTUAL_REALITY_TESHARI
 	icobase = 'icons/mob/species/teshari/body.dmi'
 	deform  = 'icons/mob/species/teshari/deformed_body.dmi'
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
@@ -101,6 +106,7 @@
 	)
 
 /datum/species/shapeshifter/promethean/avatar/diona
+	uid = SPECIES_ID_VIRTUAL_REALITY_DIONA
 	name = SPECIES_VR_DIONA
 	icobase = 'icons/mob/species/diona/body.dmi'
 	deform  = 'icons/mob/species/diona/deformed_body.dmi'
@@ -120,6 +126,7 @@
 	)
 
 /datum/species/shapeshifter/promethean/avatar/monkey
+	uid = SPECIES_ID_VIRTUAL_REALITY_MONKEY
 	name = SPECIES_VR_MONKEY
 	icobase         = 'icons/mob/species/monkey/body_monkey.dmi'
 	deform          = 'icons/mob/species/monkey/body_monkey.dmi'
@@ -143,6 +150,7 @@
 	)
 
 /datum/species/shapeshifter/promethean/avatar/vox
+	uid = SPECIES_ID_VIRTUAL_REALITY_VOX
 	name = SPECIES_VR_VOX
 	icobase = 'icons/mob/species/vox/body.dmi'
 	deform  = 'icons/mob/species/vox/deformed_body.dmi'
@@ -162,6 +170,7 @@
 	)
 
 /datum/species/shapeshifter/promethean/avatar/skeleton
+	uid = SPECIES_ID_VIRTUAL_REALITY_SKELETON
 	name = SPECIES_VR_SKELETON
 	icobase = 'icons/mob/species/human/skeleton.dmi'
 	deform  = 'icons/mob/species/human/skeleton.dmi'

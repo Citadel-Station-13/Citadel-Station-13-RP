@@ -150,7 +150,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	var/list/contributer_names = list()
 	var/turf/T = get_turf(user) || get_turf(target)
 	var/list/contributing_z = GetConnectedZlevels(T.z)
-	for(var/thing in player_list)
+	for(var/thing in GLOB.player_list)
 		var/mob/living/L = thing
 		if(L == user)
 			continue

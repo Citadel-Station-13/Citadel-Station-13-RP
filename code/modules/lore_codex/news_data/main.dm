@@ -21,7 +21,9 @@
 		/datum/lore/codex/page/ad2,
 		/datum/lore/codex/page/surt,
 		/datum/lore/codex/page/tyrmalins,
-		/datum/lore/codex/page/moths
+		/datum/lore/codex/page/moths,
+		/datum/lore/codex/page/fungaltb,
+		/datum/lore/codex/page/pirates3
 		)
 
 /datum/lore/codex/page/about_news
@@ -215,7 +217,7 @@
 	bound for the planet of Morrigan.\
 	<br><br>\
 	The loss of the cargo along with the losses of the ships themselves and the escorts put Gilthari's financial losses at almost a quarter billion.\
-	Official Gilthari sources have denied that this massive heist ever occurred though secondary sources with the Blackstar Legion and Ironhammer Securities Group have confirmed \
+	Official Gilthari sources have denied that this massive heist ever occurred though secondary sources with the Blackstar Legion and Five Star Security have confirmed \
 	a sharp increase in defense contract purchases in the region where the alleged ambush happened, their customers citing a massive rise in pirate activity and teleporter boarding actions.\
 	The planetary government of Morrigan claims to have not heard anything about the loss of the freighters and state that any contracts they or distributors on their planet have with \
 	Gilthari are strictly confidential. Oculum News Network promises to keep you updated on this story as it develops and wishes all spacemen a safe journey in these dangerous times."
@@ -231,18 +233,24 @@
 	teams have already released a statement stating optimism with the opening of relations and stating that they can't wait to learn from eachother."
 
 /datum/lore/codex/page/ad2
-	name = "AD: IRONHAMMER, the BEST protection money can buy!"
-	data = "The Sigmar Sector is a Dangerous Place: Everyone Needs Someone to Look After Them!\
+	name = "AD: Vey-Med NIFs: Bridging the Gap between man and machine!"
+	data = "Are you falling behind your synthetic coworkers? \
 	<br><br>\
-	So why leave your safety up to amateurs or let alone yourself. Those Vox Pirates will kick your ass then eat you. Those Rodents, they got tanks you can't fight a tank.\
-	And as for the weirdo sadistic pirates with the swords, well less said about what they will do to you the better. In such a dangerous sector you need the best protection money can offer.\
-	We here at IRONHAMMER Security can provide you with the best protection money can offer. Our contracts are flexible so our soldier can fill a wide vareity of roles as needed.\
-	No task is beneath the soldiers of IRONHAMMER. Our soldiers are disciplined and experienced, no red shirt mall cops here. Our equipment is some of the best on the market, rifles,\
-	pistols, machine guns, we don't cheap out on your protection so why should you? Sign a Contract with IRONHAMMER Security today.\
+	Do you struggle to bridge the gap between your fleshy mind and increasing complex computer interfaces? \
 	<br><br>\
-	Tune your subspace communicators to: 8769.1998.247365.420.911 To get in contact with your nearest IRONHAMMER Contractor. Again that is 8769.1998.247365.420.911 and we can get an \
-	IRONHAMMER mercenary team to you in as little as a week. (Actual Travel Time may vary. IRONHAMMER is not responsible for damages occurred to contractors life or property while \
-	operatives remain in transit)."
+	Do you want to take the next step in man machine interfaces? \
+	<br><br>\
+	Don't settle for anything else than the best with Vey-Med Nanite Interface Frameworks (NIF)! Upgrade your biological reality without giving yourself up to guady prosthetics and \
+	implants. The Nanite Implant Framework is the size of a postage stamp and can install in your brain in short routine surgeries. Experience a new world of possibilities \
+	with your NIF. Medichines will boost your natural healing getting rtid of though tiny cuts and bruises. Augmented Reality interfaces can stream your work data directly \
+	into your brain. And with the Soulcatcher(tm) build your mind palace a personal sanctuary where the limit is your own imagination. Never use a communicator again with \
+	integrated communicator options. Vey-Med NIFs can last over twice as long as their competitors with no chance of breakdown so call your nearest Vey-Med clinic today to \
+	sechedule a free NIF consultation. Contact 63303.55461.02415.88991.56879 to be connected toll free to the nearest Vey-Med call center to arrange your appointment.\
+	Don't get left behind! Get your Vey-Med NIF before you are outdated. \
+	<br><br>\
+	Disclaimer: Side effects of NIF installation include temporary pain, occasional headaches, confusion, inability to fall asleep, dizziness, and loss of coordination.\
+	Contact your doctor immediately if any of they symptoms persist. Vey-Med is not repsonsible for the effects of third party software on effected individuals including \
+	mind altering softwares. Use of third party software and modifications will render warranty on the NIF null and void."
 
 /datum/lore/codex/page/surt
 	name = "Fate of Isolated Mining Settlement Discovered after Months. - 3/13/2566"
@@ -256,16 +264,16 @@
 /datum/lore/codex/page/tyrmalins
 	name = "Mars By-Elections results in Landslide for Tyrmalin Population - 4/2/2566"
 	data = "Martian By-Elections this week have resulted in an unexpected windfall for the Tyrmalin population on the planet.\
-	A dozen Tyrmalin political hopefuls have been elected to the lower Martian house doubling the amount ofg Tyrmalin representatives \
+	A dozen Tyrmalin political hopefuls have been elected to the lower Martian house doubling the amount of Tyrmalin representatives \
 	serving in the Martian lower house. Political analysts have contributed this surprise win to the high political participation rate \
 	among Mar's Tyrmalin minority along with the increasing populations of the 'little green aliens' of Mars. Last Martian census \
 	showed the Tyrmalin as being 9% of the Martian population with the Tyrmalins being the fastest growing population on the planet.\
-	<br>\
+	<br><br>\
 	Celebrations of the sudden political victory have sontaneously errupted across the entire planet with some Tyrmalin districts \
 	annoucing week long celebrations with all being welcome to attend. Tyrmalin restraunts across Mars are annnoucing free serving \
-	of Digger's Stew and a shot of Green Stuff (as long as you are over the legal drinking age) part of the festivities.\
-	<br>\
-	What's come next for the next representatives is unknown though with such a strong turnout among the Tyrmalin population \
+	of Digger's Stew and a shot of Green Stuff (as long as you are over the legal drinking age) as part of the festivities.\
+	<br><br>\
+	What's come next for the new representatives is unknown though with such a strong turnout among the Tyrmalin population \
 	there has been some discussion of the newly elected politicians forming a Tyrmalin minority interest party.\
 	Opponents claim this would alien their supports among Mar's non-Tyrmalin population while supporters claim \
 	it is the best way to protect the interests of the growing Tyrmalin minority on Mars. With the next census \
@@ -280,7 +288,70 @@
 	in Confederacy based companies. Though a small step the many hopefuls among the Confederation hope it is but the first to seeing the Dnin-Nepids join the \
 	Confederacy while frontier wrolds with pre-existing trade relations are hoping Dnin-Nepids immigrants can boost their tiny populations and shore up the \
 	existing labor force on these planets.\
-	<br>\
+	<br><br>\
 	The Dnin-Nepid reaction to the treaty has been signifcantly more muted with many puzzled by the extreme positive reaction of many with Oricon.\
 	Official representatives have stated that the existing treaty is just an extension of presexisting friendships and good will between the Nepids \
 	and their human friends, more an acknowledgement of the existing reality then any step forward or backward."
+
+/datum/lore/codex/page/fungaltb
+	name = "Fungal Tuberculois Outbreaks Kills Thirty on Asteroind Mining Station - 8/3/2566"
+	data = "The quiet independent asteroid mining station of Rzhavoye-Zoloto suffered a massive tragedy when miners salvaging an unidentified derelict, \
+	accidentally released a sample of Fungal Tuberculois into the ventilation systems of the station. The genetically engineered fungus quickly \
+	spread through the vents infecting dozens before the station's Chief Engineer disabled the ventilation systems an action which is thought to \
+	have saved possibly hundreds of lives. Still even with its spread quickly contained, and the quick response of station medical staff quarantining \
+	infected areas and individuals, the infection was still able to kill thirty and infect thrice that number. A Vey-Med quick response force was able \
+	to arrive within 48 hours of the distress signal being received from the station. The Vey-Med team equipped specifically to deal with deadly outbreaks \
+	was able to adminster anti-fungal drugs to the surviving crew and cleanse infected areas. They are expected to release an all clear by the end of the week. \
+	The Orion Confederation has suspened the mining operations of Rzhavoye-Zoloto for the immediate future while it dispatches a team to comb the region for \
+	any additional Syndicate assets still hidden in the belt, hoping to make sure that no addition Nuclear Biological or Chemical weapons are hidden in the region. \
+	<br><br>\
+	Fungal Tuberculois was developed by new defunct Cybersun Industries at the height of the Syndicate's war on Nanotrasen. The fungus, whose offical name has \
+	been likely intentionally lost by its creators, was designed to infect station and starsghip ventilation systems rapidly spreading itself to an entire crew \
+	undetected. Infected individuals would rapidly develop symptoms similar to late stage tuberculois infections. Victims often die coughing up blood as the fungus \
+	rapidly eats away at their lungs. Cybersun and its Syndicate allies would often deploy the bioweapon on targets covertly shortly before launching boarding \
+	actions in hopes to seize vessels, stations or thier cargos. Though initially highly effective, Nanotrasen's own medical staff was able to rise against this \
+	new threat and was able to devise an effective antifungal treatment in a matter of months since the first reports of the infection. Unfortunately the rapid \
+	spread of the fungal infection and its quick lethality meant that many stations were often crippled by the infection and countless NT employess died \
+	before Cybersun ultimately moved its remaining stockpile of Fungal Tuberculois and its dispersal device into storage shortly a few years before Cybersun \
+	Industries and the Syndicate dissolved entirely signaling an end to the phoron wars. \
+	<br><br>\
+	Since that time incidents like the tragedy on Rzhavoye-Zoloto have not been entirely unheard of. Cybersun's rapid dissolution alongside the collapse of its \
+	allies such as Gorlex Manufacturing Corporation, saw countless stockpiles of Syndicate weaponry even their well guarded Nuclear Biological and Chemical weapon \
+	stockpiles disappear, as they were either hidden, destroyed, sold or perhaps even simply forgotten about. With the spread of Nanotrasen's antifungal counter \
+	to the old bioweapon and Zeng-Hu Pharmaceutical's incorporation of similarly effective anti-fungal agents into their own mass market antifungal drugs, \
+	deaths from Fungal Tuberculois are now thankfully rare, and with fewer and fewer samples floating about the galaxy, many hope that this grim \
+	reminder of the phoron wars will soon only exist in labortories."
+
+/datum/lore/codex/page/pirates3
+	name = "Pirate Raids Lock Down the Temhöser Gate, Kill Prominent Naramadi Matriach! - 11/7/2566"
+	data = "With the frontier colonies being more spread out as ever, Piracy is growing rampart in those territories. While Megacorporations such as NanoTrasen, \
+	Hepastheus and even Necropolis Industries might protect certain trade routes neccessary for their continued prosperity, it was always assumed that \
+	the three major Galactic powers, that being the Orion Confederacy, Moghes Hegemony and Vikara Combine, will protect that major hyperspace routes from dangers. \
+	That, however, has been proven not to be the case. \
+	<br><br>\
+	In recent days there was a major spike in Pirate activity on lanes connecting Orion Confederacy and it's frontiers, as well as the Hegemony and the Combine. \
+	With the amount of pirate raids increasing, most free traders do not dare cross the Temhöser gate, the so called 'bottleneck' in Hyperlanes leading into \
+	the Hegemony from Galactic south or follow the ill-protected Eastern Highways into the Vikara Combine. \
+	<br><br>\
+	It was reported by many of our readers in the Western frontier that a large group of pirates has made their camp right outside the Temhöser gate, \
+	awaiting any ship to approach the nearest re-fueling station just to strike them unaware. Moghes Hegemony advises all traders and travellers to choose the \
+	longer, yet more protected, route going near the galactic core if they want to reach their trade ports. \
+	<br><br>\
+	Orion Confederacy and Vikara Combine are promising that they will combine their available forces into a Joint Operations team to hunt down \
+	any pirate fleets camping near the galactic highways, however our anonymous contact within Combine Armed Forces suggests that said \
+	operation will not be ready until early 2567. \
+	<br><br>\
+	And for those curious about the Hegemony response, the Naramadi Ascendancy has put out a statement after they suffered a major blow - loss of \
+	Inkinira viator Galvus and the Council of Elders for House Galvus.  The statement is as follows:\
+	<br>\
+	'The despicable actions of pirates preying on unprepared vessels attempting to enter and leave the Hegemony space have never been our point of focus, \
+	until they have decided to take something dear to us, Inkinira viator Galvus, a beloved Matriarch, Mother to many and the eldest viator this landsmeet \
+	had the honour to host. As only aggression has been shown to us, We will respond in kind. The Third and Sixth fleets are being mobilised, together with \
+	the Fifth and Sixth legions. We will not stop untill her killers are brought to justice.'\
+	<br><br>\
+	The response of the Naramadi Ascendancy was called '... A show of power, and a poor one at that' by the Confederacy high command, and the Moghes Kingdoms \
+	offer no official military support, however they reportedly allow 'volunteers' to join the Fleets in their quest to hunt down the pirates. \
+	<br><br>\
+	In closing words, We need to expect price increases in various luxury goods and raw materials coming from outside the Orion Confederacy. With piracy on the rise, \
+	not many traders and transport corporations are willing to risk loosing their ships, and cargo, in wild space, and those that do often raise their prices to be \
+	able to pay for their security staff."

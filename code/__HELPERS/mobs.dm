@@ -75,7 +75,7 @@
 /proc/sanitize_name(name, species = SPECIES_HUMAN)
 	var/datum/species/current_species
 	if(species)
-		current_species = name_static_species_meta(species)
+		current_species = SScharacters.resolve_species_name(species)
 
 	return current_species ? current_species.sanitize_name(name) : sanitizeName(name, MAX_NAME_LEN)
 
@@ -83,7 +83,7 @@
 
 	var/datum/species/current_species
 	if(species)
-		current_species = name_static_species_meta(species)
+		current_species = SScharacters.resolve_species_name(species)
 
 	if(!current_species || current_species.name_language == null)
 		if(gender==FEMALE)
