@@ -981,7 +981,7 @@
 	req_access = s
 	},
 /turf/simulated/floor/tiled/dark,
-/area/space)
+/area/chapel/main)
 "ct" = (
 /obj/effect/floor_decal/corner/beige{
 	dir = 6
@@ -1516,7 +1516,7 @@
 	icon_state = "open"
 	},
 /turf/simulated/floor/carpet/bcarpet,
-/area/space)
+/area/chapel/main)
 "dE" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -2646,7 +2646,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/chapel/main)
 "gb" = (
 /obj/machinery/button/remote/blast_door{
 	id = "xenobio3";
@@ -3103,6 +3103,12 @@
 /obj/machinery/door/firedoor,
 /turf/simulated/floor/tiled,
 /area/rnd/rdoffice)
+"hd" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/chapel/main)
 "he" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/reagent_containers/glass/bottle/biomass{
@@ -3144,6 +3150,14 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/excursion/general)
+"hi" = (
+/obj/machinery/turretid/stun{
+	control_area = "\improper AI Upload Chamber";
+	name = "AI Upload turret control";
+	pixel_y = -26
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/ai/foyer)
 "hj" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -3433,6 +3447,13 @@
 /obj/random/trash_pile,
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
+"hU" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 10
+	},
+/obj/machinery/holoplant,
+/turf/simulated/floor/wood,
+/area/chapel/main)
 "hV" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "AI Upload";
@@ -6102,7 +6123,7 @@
 	icon_state = "open"
 	},
 /turf/simulated/floor/tiled/dark,
-/area/space)
+/area/chapel/main)
 "oa" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -6479,7 +6500,7 @@
 	pixel_x = -25
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/chapel/main)
 "oS" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 9
@@ -6957,6 +6978,9 @@
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/security/prison)
+"pR" = (
+/turf/simulated/wall,
+/area/chapel/main)
 "pS" = (
 /obj/machinery/status_display/supply_display{
 	pixel_y = 32
@@ -8104,6 +8128,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
+"sv" = (
+/obj/effect/floor_decal/spline/fancy/wood,
+/turf/simulated/floor/wood,
+/area/chapel/main)
 "sw" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -9182,7 +9210,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/chapel/main)
 "uQ" = (
 /turf/simulated/wall/r_wall,
 /area/rnd/storage)
@@ -12210,6 +12238,12 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/tiled,
 /area/medical/psych_ward)
+"BG" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/chapel/main)
 "BH" = (
 /obj/structure/catwalk,
 /turf/space,
@@ -13013,7 +13047,7 @@
 	dir = 8
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/chapel/main)
 "DK" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 1
@@ -13131,6 +13165,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/space)
+"DX" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 5
+	},
+/turf/simulated/floor/wood,
+/area/chapel/main)
 "DY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -13499,6 +13539,12 @@
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/simulated/floor/tiled,
 /area/rnd/storage)
+"EU" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 6
+	},
+/turf/simulated/floor/wood,
+/area/chapel/main)
 "EV" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -13513,6 +13559,9 @@
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/security/brig)
+"EW" = (
+/turf/simulated/floor/tiled/techfloor,
+/area/chapel/main)
 "EX" = (
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay4)
@@ -13965,7 +14014,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/chapel/main)
 "Gd" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/floor_decal/industrial/warning{
@@ -14516,6 +14565,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/space)
+"Hs" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/chapel/main)
 "Ht" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 10
@@ -15012,7 +15067,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/chapel/main)
 "IA" = (
 /obj/machinery/door/airlock/research{
 	id_tag = "researchdoor";
@@ -15657,6 +15712,9 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/brig)
+"Ki" = (
+/turf/simulated/floor/carpet/bcarpet,
+/area/chapel/main)
 "Kj" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 6
@@ -15872,6 +15930,9 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"KG" = (
+/turf/simulated/floor/wood,
+/area/chapel/main)
 "KH" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -16841,6 +16902,13 @@
 /obj/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled,
 /area/rnd/test_area)
+"MX" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 9
+	},
+/obj/machinery/holoplant,
+/turf/simulated/floor/wood,
+/area/chapel/main)
 "MY" = (
 /obj/machinery/computer/power_monitor{
 	dir = 4;
@@ -16928,6 +16996,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/workshop)
+"Ni" = (
+/obj/effect/floor_decal/spline/fancy/wood{
+	dir = 5
+	},
+/obj/machinery/holoplant,
+/turf/simulated/floor/wood,
+/area/chapel/main)
 "Nj" = (
 /obj/structure/filingcabinet/chestdrawer{
 	name = "Medical Forms"
@@ -16985,7 +17060,7 @@
 /obj/spawner/window/reinforced/full/firelocks,
 /obj/structure/curtain/black,
 /turf/simulated/floor,
-/area/space)
+/area/chapel/main)
 "Nq" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -17007,7 +17082,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/chapel/main)
 "Nt" = (
 /obj/structure/flora/ausbushes/ywflowers,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
@@ -18396,7 +18471,7 @@
 	dir = 4
 	},
 /turf/simulated/floor/wood,
-/area/space)
+/area/chapel/main)
 "Rc" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 9
@@ -18434,7 +18509,7 @@
 	},
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
-/area/space)
+/area/chapel/main)
 "Rg" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/simulated/floor/outdoors/dirt,
@@ -19873,7 +19948,7 @@
 "UG" = (
 /obj/structure/table/fancyblack,
 /turf/simulated/floor/wood,
-/area/space)
+/area/chapel/main)
 "UH" = (
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled/steel_grid,
@@ -20113,7 +20188,7 @@
 "Vk" = (
 /obj/structure/table/wooden_reinforced,
 /turf/simulated/floor/carpet/bcarpet,
-/area/space)
+/area/chapel/main)
 "Vl" = (
 /obj/structure/railing{
 	dir = 8
@@ -21326,8 +21401,9 @@
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 6
 	},
+/obj/machinery/holoplant,
 /turf/simulated/floor/wood,
-/area/space)
+/area/chapel/main)
 "Yf" = (
 /obj/effect/floor_decal/corner/green{
 	dir = 9
@@ -21607,6 +21683,9 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/space)
+"YM" = (
+/turf/simulated/wall/r_wall,
+/area/chapel/main)
 "YN" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -27537,9 +27616,9 @@ MN
 MN
 MN
 MN
-ob
-ob
-ob
+MN
+MN
+MN
 mN
 mi
 Go
@@ -36396,7 +36475,7 @@ rm
 Lp
 RL
 RL
-RL
+hi
 Qa
 wL
 qp
@@ -37173,16 +37252,16 @@ Jg
 ob
 ob
 Jg
-Jg
-Mr
-Mr
-Mr
-Mr
-Mr
-Mr
-Mr
 MN
-Jg
+MN
+MN
+MN
+MN
+MN
+MN
+MN
+MN
+MN
 Jg
 NP
 NP
@@ -44157,12 +44236,12 @@ la
 la
 la
 xa
-uV
-IZ
-IZ
-IZ
-FA
-Jg
+MX
+BG
+BG
+BG
+hU
+pR
 dJ
 BY
 KJ
@@ -44351,11 +44430,11 @@ xa
 xa
 xa
 xa
-tA
-iF
-iF
-iF
-EK
+hd
+KG
+KG
+KG
+sv
 Rf
 bJ
 bz
@@ -44541,15 +44620,15 @@ MN
 xa
 yx
 xa
-MN
-MN
-MN
-Jg
-tA
-iF
-iF
-iF
-EK
+FO
+FO
+FO
+EW
+hd
+KG
+KG
+KG
+sv
 nZ
 bJ
 bz
@@ -44735,15 +44814,15 @@ MN
 xa
 yA
 xa
-MN
-MN
-MN
-Jg
-tA
-iF
-iF
-iF
-EK
+FO
+FO
+FO
+pR
+hd
+KG
+KG
+KG
+sv
 Rf
 bJ
 bz
@@ -44929,16 +45008,16 @@ MN
 xa
 xa
 xa
-MN
-MN
-MN
-Jg
-GY
-ql
-ql
-ql
+FO
+FO
+FO
+pR
+Ni
+Hs
+Hs
+Hs
 Ye
-Jg
+pR
 vl
 Yg
 Pn
@@ -45125,14 +45204,14 @@ MN
 MN
 MN
 qc
-Jg
-Jg
-Jg
+pR
+pR
+pR
 dD
 dD
-Jg
-Jg
-Jg
+pR
+pR
+pR
 HA
 Jh
 Lj
@@ -45319,11 +45398,11 @@ MN
 MN
 MN
 uJ
-Jg
+pR
 Rb
 Iz
-wr
-wr
+Ki
+Ki
 Rb
 Iz
 Np
@@ -45513,13 +45592,13 @@ MN
 MN
 MN
 ut
-Jg
-tA
-EK
-wr
-wr
-tA
-EK
+pR
+hd
+sv
+Ki
+Ki
+hd
+sv
 Np
 HC
 Pc
@@ -45707,14 +45786,14 @@ MN
 MN
 iS
 MN
-Jg
+pR
 Ns
 uP
-wr
-wr
+Ki
+Ki
 Ns
 uP
-Jg
+pR
 fX
 Jn
 JP
@@ -45901,13 +45980,13 @@ MN
 MN
 MN
 MN
-Jg
-tA
-EK
-wr
-wr
-tA
-EK
+pR
+hd
+sv
+Ki
+Ki
+hd
+sv
 Np
 HI
 SR
@@ -46095,13 +46174,13 @@ MN
 MN
 MN
 MN
-Jg
-tA
-EK
-wr
-wr
-tA
-EK
+pR
+hd
+sv
+Ki
+Ki
+hd
+sv
 Np
 HC
 SR
@@ -46290,13 +46369,13 @@ IB
 MN
 MN
 cs
-tA
-EK
+hd
+sv
 Vk
 Vk
-tA
-EK
-Jg
+hd
+sv
+pR
 HN
 SR
 SR
@@ -46483,13 +46562,13 @@ MN
 IB
 MN
 MN
-Jg
-GY
+pR
+DX
 ga
 DJ
 oR
 Gc
-Ye
+EU
 Np
 HC
 SR
@@ -46677,10 +46756,10 @@ Mr
 IB
 MN
 MN
-Mr
-Mr
-Mr
-Mr
+YM
+YM
+YM
+YM
 UG
 UG
 UG
@@ -46874,11 +46953,11 @@ MN
 Mr
 mg
 mg
-Mr
-Mr
-Mr
-Mr
-Jg
+YM
+YM
+YM
+YM
+pR
 dN
 JC
 Lo

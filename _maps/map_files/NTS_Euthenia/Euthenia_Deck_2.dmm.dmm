@@ -27,6 +27,7 @@
 /obj/machinery/atmospherics/component/binary/pump,
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/industrial/danger,
+/obj/machinery/door/airlock/glass_atmos,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "acH" = (
@@ -360,6 +361,9 @@
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
+	},
+/obj/machinery/camera/network/engineering{
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/space)
@@ -975,8 +979,6 @@
 	icon_state = "1-2"
 	},
 /obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -1877,6 +1879,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
+"buF" = (
+/obj/machinery/camera/network/engineering,
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "bvc" = (
 /mob/living/simple_mob/animal/passive/penguin/emperor{
 	desc = "There's a tag on this pengiun that says Skipper. You're not even sure where the chef found them.";
@@ -10014,6 +10020,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/command)
+"jgw" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/obj/machinery/camera/network/engineering,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
 "jhb" = (
 /obj/structure/curtain/open/shower/engineering,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -10323,6 +10339,15 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
+"jxe" = (
+/obj/machinery/atmospherics/component/binary/pump{
+	name = "Fuel Line to Thrusters"
+	},
+/obj/machinery/camera/network/engineering{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
 "jxR" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -10549,6 +10574,16 @@
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
+/area/space)
+"jJn" = (
+/obj/machinery/atmospherics/portables_connector{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/empty,
+/obj/machinery/camera/network/engineering{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/space)
 "jJr" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -12724,6 +12759,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
+"lDm" = (
+/obj/machinery/atmospherics/pipe/simple/visible/green{
+	dir = 10
+	},
+/obj/machinery/camera/network/engineering{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "lEd" = (
 /obj/structure/railing,
 /turf/simulated/floor/tiled,
@@ -13697,6 +13741,13 @@
 "mqy" = (
 /turf/simulated/floor/tiled,
 /area/hallway/primary/port)
+"mqz" = (
+/obj/structure/catwalk,
+/obj/machinery/camera/network/engineering{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/space)
 "mqM" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -14152,6 +14203,7 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 8
 	},
+/obj/machinery/door/airlock/glass_atmos,
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "mTG" = (
@@ -15012,6 +15064,9 @@
 "nIY" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
+	},
+/obj/machinery/camera/network/engineering{
+	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
@@ -17174,6 +17229,17 @@
 	},
 /turf/simulated/floor/plating,
 /area/space)
+"pJP" = (
+/obj/effect/floor_decal/industrial/danger{
+	dir = 8
+	},
+/obj/effect/floor_decal/industrial/outline/red,
+/obj/structure/closet/firecloset,
+/obj/machinery/camera/network/engineering{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
 "pKb" = (
 /obj/structure/cable/green{
 	icon_state = "1-4"
@@ -19136,6 +19202,16 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
+"rBx" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/obj/machinery/camera/network/engineering,
+/turf/simulated/floor/tiled/techfloor/grid,
+/area/space)
 "rBy" = (
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -19310,6 +19386,7 @@
 "rJx" = (
 /obj/machinery/door/firedoor/glass,
 /obj/effect/floor_decal/industrial/danger,
+/obj/machinery/door/airlock/glass_atmos,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "rKR" = (
@@ -20129,6 +20206,13 @@
 	},
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/space)
+"sEi" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel,
+/obj/machinery/camera/network/engineering{
+	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
@@ -21714,6 +21798,16 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/techmaint,
+/area/space)
+"ufA" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/fuel{
+	dir = 4
+	},
+/obj/machinery/camera/network/engineering,
+/turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "ufT" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -25546,6 +25640,7 @@
 /obj/effect/floor_decal/industrial/danger{
 	dir = 4
 	},
+/obj/machinery/camera/network/engineering,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
 "xgn" = (
@@ -26495,8 +26590,6 @@
 /area/space)
 "xST" = (
 /obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -26664,6 +26757,7 @@
 "yeW" = (
 /obj/machinery/atmospherics/pipe/simple/visible/green,
 /obj/machinery/door/firedoor/glass,
+/obj/machinery/door/airlock/glass_atmos,
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "yfq" = (
@@ -31529,7 +31623,7 @@ mRB
 mRB
 mRB
 vea
-sGG
+jxe
 gRY
 woS
 nSV
@@ -31911,7 +32005,7 @@ mRB
 mRB
 mRB
 kao
-kao
+jJn
 kao
 mRB
 tid
@@ -32489,7 +32583,7 @@ lve
 kEj
 mTI
 mRB
-jJz
+buF
 jJz
 nXu
 mqg
@@ -33089,7 +33183,7 @@ qeJ
 qeJ
 kCU
 qeJ
-qeJ
+sEi
 weG
 mRB
 yao
@@ -33852,7 +33946,7 @@ kLI
 eqP
 jjA
 pAg
-eFZ
+lDm
 yeW
 meo
 meo
@@ -34052,7 +34146,7 @@ nvK
 pTH
 tuY
 mRB
-uVz
+rBx
 qOg
 gNi
 uuP
@@ -35417,7 +35511,7 @@ mRB
 mRB
 mRB
 oXm
-oXm
+pJP
 pHd
 mRB
 xOH
@@ -36380,7 +36474,7 @@ web
 ssG
 whl
 mRB
-asH
+ufA
 lXM
 mRB
 yao
@@ -37394,7 +37488,7 @@ yao
 yao
 ktE
 yao
-yao
+eqy
 nsj
 ncc
 rHE
@@ -37588,7 +37682,7 @@ seS
 seS
 hlN
 yao
-yao
+rHE
 nsj
 ncc
 rHE
@@ -37782,7 +37876,7 @@ mRB
 mRB
 mRB
 mRB
-yao
+rHE
 nsj
 ncc
 rHE
@@ -37932,7 +38026,7 @@ ugJ
 rws
 meb
 mRB
-asH
+ufA
 nAZ
 jbo
 oNn
@@ -37976,8 +38070,8 @@ pgl
 aKp
 qpT
 mRB
-eqy
 rHE
+eqy
 rHE
 rHE
 ktE
@@ -38138,7 +38232,7 @@ bSI
 sBf
 rUJ
 nsj
-nsj
+mqz
 nsj
 nsj
 nsj
@@ -38146,7 +38240,7 @@ wnT
 nsj
 nsj
 nsj
-nsj
+mqz
 nsj
 kOL
 bSI
@@ -38701,7 +38795,7 @@ yao
 yao
 yao
 rHE
-ohB
+jgw
 qOg
 igT
 qOg
@@ -39302,14 +39396,14 @@ unk
 rHE
 yao
 yao
-yao
-yao
-yao
-yao
-yao
-yao
-rHE
 iwU
+seS
+seS
+seS
+seS
+seS
+seS
+seS
 seS
 seS
 seS
@@ -39496,14 +39590,14 @@ ppP
 mRB
 mRB
 mRB
-yao
-yao
-yao
-yao
-yao
-yao
-rHE
 ktE
+yao
+yao
+yao
+yao
+yao
+yao
+yao
 yao
 yao
 yao
@@ -39690,14 +39784,14 @@ ciL
 mRB
 iwU
 wFm
-seS
-seS
+hlN
 yao
 yao
 yao
 yao
-rHE
-ktE
+yao
+yao
+yao
 yao
 rHE
 rHE
@@ -39890,8 +39984,8 @@ yao
 yao
 yao
 yao
-rHE
-ktE
+yao
+yao
 yao
 rHE
 yao
@@ -40084,8 +40178,8 @@ yao
 yao
 yao
 yao
-rHE
-ktE
+yao
+yao
 yao
 rHE
 yao
@@ -40274,12 +40368,12 @@ yao
 yao
 yao
 yao
-seS
-seS
-seS
-seS
-seS
-hlN
+yao
+yao
+yao
+yao
+yao
+yao
 yao
 rHE
 uwV
