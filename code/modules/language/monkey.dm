@@ -1,4 +1,5 @@
 /datum/language/human/monkey
+	id = LANGUAGE_ID_CHIMPANZEE
 	name = "Chimpanzee"
 	desc = "Ook ook ook."
 	speech_verb = "chimpers"
@@ -6,77 +7,33 @@
 	exclaim_verb = "screeches"
 	key = "6"
 	syllables = list("ook","eek")
-	flags = RESTRICTED
+	language_flags = RESTRICTED
 	machine_understands = 0
 
 /datum/language/skrell/monkey
+	id = LANGUAGE_ID_NEAERA
 	name = SPECIES_MONKEY_SKRELL
 	desc = "Squik squik squik."
 	key = "8"
 	syllables = list("hiss","gronk")
-	flags = RESTRICTED
+	language_flags = RESTRICTED
 	machine_understands = 0
 
 /datum/language/unathi/monkey
+	id = LANGUAGE_ID_STOK
 	name = SPECIES_MONKEY_UNATHI
 	desc = "Hiss hiss hiss."
 	key = "7"
 	syllables = list("squick","croak")
-	flags = RESTRICTED
+	language_flags = RESTRICTED
 	machine_understands = 0
 
 /datum/language/tajaran/monkey
+	id = LANGUAGE_ID_FARWA
 	name = SPECIES_MONKEY_TAJ
 	desc = "Meow meow meow."
 	key = "9"
 	syllables = list("meow","mew")
-	flags = RESTRICTED
+	language_flags = RESTRICTED
 	machine_understands = 0
 
-/datum/language/corgi
-	name = "Dog"
-	desc = "Woof woof woof."
-	speech_verb = "barks"
-	ask_verb = "woofs"
-	exclaim_verb = "howls"
-	key = "n"
-	flags = RESTRICTED
-	machine_understands = 0
-	space_chance = 100
-	syllables = list("bark", "woof", "bowwow", "yap", "arf")
-
-/datum/language/cat
-	name = "Cat"
-	desc = "Meow meow meow."
-	speech_verb = "meows"
-	ask_verb = "mrowls"
-	exclaim_verb = "yowls"
-	key = "c"
-	flags = RESTRICTED
-	machine_understands = 0
-	space_chance = 100
-	syllables = list("meow", "mrowl", "purr", "meow", "meow", "meow")
-
-/datum/language/mouse
-	name = "Mouse"
-	desc = "Squeak squeak. *Nibbles on cheese*"
-	speech_verb = "squeaks"
-	ask_verb = "squeaks"
-	exclaim_verb = "squeaks"
-	key = "m"
-	flags = RESTRICTED
-	machine_understands = 0
-	space_chance = 100
-	syllables = list("squeak")	// , "gripes", "oi", "meow")
-
-/datum/language/bird
-	name = "Bird"
-	desc = "Chirp chirp, give me food"
-	speech_verb = "chirps"
-	ask_verb = "tweets"
-	exclaim_verb = "squawks"
-	key = "m"
-	flags = RESTRICTED
-	machine_understands = 0
-	space_chance = 100
-	syllables = list("chirp", "squawk", "tweet")

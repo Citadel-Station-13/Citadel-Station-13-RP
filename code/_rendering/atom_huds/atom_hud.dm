@@ -110,5 +110,5 @@ GLOBAL_LIST_INIT(huds, list(
 			for(var/atom/A in hud.hudatoms)
 				hud.add_to_single_hud(src, A)
 
-/mob/dead/new_player/reload_huds()
+/mob/new_player/reload_huds()
 	return

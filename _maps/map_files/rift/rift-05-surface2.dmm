@@ -518,7 +518,7 @@
 /area/medical/resleeving)
 "avF" = (
 /obj/structure/girder,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/maintenance/medbay)
 "avP" = (
 /obj/machinery/hologram/holopad,
@@ -1898,7 +1898,7 @@
 /obj/random/maintenance/research,
 /obj/random/maintenance/research,
 /obj/random/maintenance/research,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
 "bnK" = (
 /obj/effect/floor_decal/borderfloor{
@@ -3082,9 +3082,6 @@
 /area/security/evidence_storage)
 "clF" = (
 /obj/item/arrow/rod,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
 "cmk" = (
@@ -3876,10 +3873,6 @@
 "cQN" = (
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/reading_room)
-"cQY" = (
-/obj/structure/barricade,
-/turf/simulated/floor/outdoors/safeice/indoors,
-/area/rift/surfacebase/outside/outside2)
 "cRn" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -4422,12 +4415,6 @@
 /obj/machinery/floodlight,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
-"dsi" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/overlay/snow/floor,
-/obj/effect/overlay/snow/floor/edges,
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
 "dsC" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -5156,7 +5143,6 @@
 "dLN" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/floor_decal/rust,
-/obj/effect/overlay/snow/floor/pointy,
 /turf/simulated/floor/plating,
 /area/rift/surfacebase/outside/outside2)
 "dMA" = (
@@ -5311,12 +5297,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
-"dSx" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/overlay/snow/floor/edges,
-/obj/effect/overlay/snow/floor,
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
 "dSF" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -5533,15 +5513,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/security_processing)
-"eaj" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/overlay/snow/floor,
-/obj/effect/overlay/snow/floor/edges{
-	dir = 6
-	},
-/obj/random/maintenance/research,
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
 "eaK" = (
 /obj/item/deskbell,
 /obj/structure/table/steel,
@@ -7069,13 +7040,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
-"fgg" = (
-/obj/effect/overlay/snow/floor,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
 "fgh" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -7111,7 +7075,7 @@
 "fgZ" = (
 /obj/structure/girder,
 /obj/effect/overlay/snow/floor,
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/maintenance/medbay)
 "fhb" = (
 /obj/effect/floor_decal/spline/plain,
@@ -7515,14 +7479,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
-"fvL" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
 "fwi" = (
 /obj/structure/barricade,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
@@ -7918,8 +7874,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
 "fKt" = (
-/turf/simulated/floor/outdoors/safeice/indoors,
-/area/rift/surfacebase/outside/outside2)
+/turf/simulated/floor/lythios43c/indoors,
+/area/maintenance/medbay)
 "fKU" = (
 /obj/structure/table,
 /obj/random/tech_supply,
@@ -8166,7 +8122,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/hallway)
 "fTO" = (
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/maintenance/medbay)
 "fTU" = (
 /obj/structure/table/steel,
@@ -8834,16 +8790,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/pool/changing_room)
-"gny" = (
-/obj/item/arrow/rod,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/research/rnd)
 "gon" = (
 /obj/effect/floor_decal/spline/plain{
 	dir = 8
@@ -8857,7 +8803,7 @@
 /obj/structure/barricade,
 /obj/effect/floor_decal/rust,
 /obj/effect/overlay/snow/floor,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
 "gpa" = (
 /obj/structure/symbol/sa{
@@ -9651,14 +9597,6 @@
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
-"gPO" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/overlay/snow/floor/edges{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor,
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
 "gQs" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
@@ -9697,13 +9635,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
-"gQX" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/pointy,
-/turf/simulated/floor/plating,
-/area/maintenance/security/upper)
 "gSp" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/heads/hor)
@@ -11264,12 +11195,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/research/researchdivision)
-"icc" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/research/rnd)
 "icn" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -11761,14 +11686,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/assembly/robotics)
-"isw" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/overlay/snow/floor,
-/obj/effect/overlay/snow/floor/edges{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
 "isC" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -12870,7 +12787,7 @@
 /obj/effect/floor_decal/rust,
 /obj/effect/overlay/snow/floor,
 /obj/structure/simple_door/iron,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
 "jlL" = (
 /obj/effect/floor_decal/borderfloorwhite{
@@ -13956,15 +13873,6 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
-"kdx" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/turf/simulated/floor/outdoors/safeice/indoors,
-/area/maintenance/medbay)
 "kdW" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
@@ -14391,8 +14299,8 @@
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "kqN" = (
-/obj/machinery/crystal/ice,
-/turf/simulated/floor/outdoors/safeice/indoors,
+/obj/effect/overlay/snow/floor,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
 "kqZ" = (
 /obj/effect/floor_decal/borderfloor{
@@ -15154,10 +15062,7 @@
 /mob/living/simple_mob/slime/feral/dark_blue,
 /obj/effect/floor_decal/rust,
 /obj/effect/overlay/snow/floor,
-/obj/effect/overlay/snow/floor/edges{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
 "kVL" = (
 /obj/machinery/disposal,
@@ -15356,14 +15261,6 @@
 /obj/machinery/disposal,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
-"kYN" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/overlay/snow/floor,
-/obj/effect/overlay/snow/floor/edges{
-	dir = 9
-	},
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
 "kYZ" = (
 /obj/machinery/door/airlock/maintenance/medical{
 	name = "Medbay Auxillary Storage"
@@ -15694,7 +15591,7 @@
 /turf/simulated/floor/plating,
 /area/security/hallway)
 "lpl" = (
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/lythios43c,
 /area/rift/surfacebase/outside/outside2)
 "lpI" = (
 /obj/structure/table/rack/shelf/steel,
@@ -16787,7 +16684,7 @@
 /obj/effect/floor_decal/rust,
 /obj/effect/overlay/snow/floor,
 /obj/random/maintenance/research,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
 "met" = (
 /obj/structure/closet/hydrant{
@@ -17703,10 +17600,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
-"mNf" = (
-/obj/effect/overlay/snow/floor,
-/turf/simulated/floor/plating,
-/area/maintenance/medbay)
 "mNn" = (
 /obj/item/modular_computer/console/preset/command{
 	dir = 8
@@ -18823,16 +18716,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
-"nFy" = (
-/obj/effect/overlay/snow/floor,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
 "nFJ" = (
 /obj/effect/floor_decal/steeldecal/steel_decals10{
 	dir = 4
@@ -18983,12 +18866,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/security/security_lockerroom)
-"nNt" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/asmaint2)
 "nND" = (
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/borderfloor{
@@ -19537,13 +19414,6 @@
 	},
 /obj/effect/floor_decal/rust,
 /turf/simulated/floor/plating,
-/area/maintenance/asmaint2)
-"oiK" = (
-/obj/effect/overlay/snow/floor/edges,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/asmaint2)
 "oji" = (
 /obj/structure/table/steel,
@@ -20198,14 +20068,6 @@
 "oOG" = (
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/heads/hos)
-"oPg" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/overlay/snow/floor,
-/obj/effect/overlay/snow/floor/edges{
-	dir = 8
-	},
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
 "oPH" = (
 /obj/machinery/computer/security{
 	dir = 1
@@ -20665,16 +20527,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_two)
-"pbL" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy,
-/turf/simulated/floor/plating,
-/area/maintenance/medbay)
 "pbY" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -21447,12 +21299,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_2)
 "pAP" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
 /obj/item/pickaxe,
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
@@ -21593,20 +21439,6 @@
 /obj/item/storage/box/survival_knife,
 /turf/simulated/floor/tiled/dark,
 /area/security/warden)
-"pJD" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor,
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
 "pKj" = (
 /obj/structure/railing{
 	dir = 1
@@ -22154,7 +21986,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
 "qfQ" = (
-/turf/simulated/floor/airless/ceiling,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
 "qgp" = (
 /obj/machinery/firealarm{
@@ -22179,15 +22011,6 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "qgH" = (
-/obj/effect/overlay/snow/floor/edges{
-	dir = 8
-	},
-/obj/effect/overlay/snow/floor/edges{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
 /turf/simulated/floor/outdoors/safeice/indoors,
 /area/maintenance/research/rnd)
 "qgP" = (
@@ -24948,12 +24771,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
-"swy" = (
-/obj/effect/overlay/snow/floor/edges{
-	dir = 10
-	},
-/turf/simulated/floor/outdoors/safeice/indoors,
-/area/maintenance/asmaint2)
 "sxe" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -25617,11 +25434,6 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/medical/surgery)
-"taq" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/overlay/snow/floor/pointy,
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
 "tav" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -25803,13 +25615,6 @@
 /obj/structure/catwalk,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside2)
-"teH" = (
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/security/upper)
 "teP" = (
 /obj/effect/floor_decal/borderfloor/corner,
 /obj/effect/floor_decal/corner/purple/bordercorner,
@@ -25834,7 +25639,7 @@
 /area/medical/surgery_hallway)
 "tfC" = (
 /obj/structure/metal_edge,
-/turf/simulated/floor/airless/ceiling,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
 "tfF" = (
 /obj/structure/sign/poster,
@@ -26257,12 +26062,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
-"txW" = (
-/obj/effect/overlay/snow/floor/edges{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/outside2)
 "txZ" = (
 /obj/machinery/vending/medical,
 /obj/effect/floor_decal/corner/paleblue{
@@ -26349,13 +26148,7 @@
 /area/crew_quarters/pool/emergency_closet)
 "tBl" = (
 /obj/effect/overlay/snow/floor,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/lythios43c/indoors,
 /area/maintenance/medbay)
 "tBq" = (
 /obj/effect/floor_decal/borderfloor{
@@ -26887,12 +26680,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
-"tWO" = (
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/turf/simulated/floor/outdoors/safeice/indoors,
-/area/maintenance/medbay)
 "tXm" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/structure/window/reinforced{
@@ -26995,15 +26782,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/security/lobby)
-"ubr" = (
-/obj/effect/overlay/snow/floor/edges{
-	dir = 6
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/safeice/indoors,
-/area/maintenance/asmaint2)
 "ucL" = (
 /obj/structure/catwalk,
 /obj/effect/floor_decal/rust,
@@ -27047,14 +26825,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/public_garden/stairwell)
-"udS" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/overlay/snow/floor,
-/obj/effect/overlay/snow/floor/edges{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
 "uep" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4
@@ -27197,13 +26967,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
-"ukO" = (
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/medbay)
 "ula" = (
 /obj/structure/lattice,
 /obj/structure/disposalpipe/down{
@@ -27751,7 +27514,7 @@
 /obj/effect/decal/remains,
 /obj/item/clothing/suit/storage/hooded/wintercoat/science,
 /obj/item/clothing/shoes/boots/winter/science,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
 "uKr" = (
 /obj/structure/railing{
@@ -28460,7 +28223,7 @@
 /area/maintenance/research/rnd)
 "vaj" = (
 /obj/structure/inflatable/door,
-/turf/simulated/floor/outdoors/safeice/indoors,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
 "van" = (
 /obj/effect/floor_decal/borderfloor{
@@ -29062,7 +28825,7 @@
 "vxs" = (
 /obj/structure/barricade,
 /obj/effect/floor_decal/rust,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
 "vyi" = (
 /obj/structure/catwalk,
@@ -29287,9 +29050,6 @@
 "vHo" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/overlay/snow/floor,
-/obj/effect/overlay/snow/floor/edges{
-	dir = 1
-	},
 /obj/structure/closet/crate/science,
 /obj/random/unidentified_medicine/scientific,
 /obj/random/unidentified_medicine/scientific,
@@ -29297,7 +29057,7 @@
 /obj/random/unidentified_medicine/scientific,
 /obj/random/unidentified_medicine/scientific,
 /obj/random/unidentified_medicine/scientific,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
 "vIc" = (
 /obj/structure/table/steel,
@@ -29539,30 +29299,16 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/maintenance/medbay)
-"vTK" = (
-/obj/machinery/crystal/ice,
-/obj/effect/overlay/snow/floor/edges{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
-/area/rift/surfacebase/outside/outside2)
 "vUk" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
-"vUt" = (
-/obj/effect/overlay/snow/floor/surround,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/turf/simulated/floor/outdoors/safeice/indoors,
-/area/maintenance/research/rnd)
 "vUE" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/overlay/snow/floor,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
 "vVr" = (
 /obj/effect/floor_decal/rust,
@@ -29679,9 +29425,6 @@
 /area/rnd/outpost/xenobiology/outpost_slimepens)
 "vYh" = (
 /obj/effect/overlay/snow/floor,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 8
-	},
 /turf/simulated/floor/plating,
 /area/maintenance/research/rnd)
 "vYO" = (
@@ -30480,15 +30223,12 @@
 "wzZ" = (
 /obj/effect/floor_decal/rust,
 /obj/effect/overlay/snow/floor,
-/obj/effect/overlay/snow/floor/edges{
-	dir = 5
-	},
 /obj/structure/closet/crate/science,
 /obj/random/slimecore,
 /obj/random/slimecore,
 /obj/random/slimecore,
 /obj/random/slimecore,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
 "wAb" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -30740,22 +30480,6 @@
 "wJl" = (
 /turf/simulated/wall/r_wall,
 /area/medical/resleeving)
-"wJu" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
-"wKw" = (
-/obj/effect/overlay/snow/floor/edges{
-	dir = 10
-	},
-/turf/simulated/floor/outdoors/safeice/indoors,
-/area/maintenance/research/rnd)
 "wKX" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -30848,7 +30572,7 @@
 /obj/effect/floor_decal/rust,
 /obj/effect/overlay/snow/floor,
 /obj/item/extinguisher,
-/turf/simulated/floor/plating,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/outside2)
 "wQw" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -32258,14 +31982,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether/surfacebase/reading_room)
-"xTZ" = (
-/obj/effect/overlay/snow/floor/pointy,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 4
-	},
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/plating,
-/area/maintenance/security/upper)
 "xUe" = (
 /turf/simulated/shuttle/wall/voidcraft,
 /area/turbolift/rsurface/level2)
@@ -32416,13 +32132,6 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/security_lockerroom)
-"xZQ" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/overlay/snow/floor/pointy{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/rift/surfacebase/outside/outside2)
 "yam" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/machinery/space_heater,
@@ -44054,8 +43763,8 @@ wyV
 pPm
 pHH
 pPm
-pJD
-pJD
+kqN
+kqN
 pBj
 pBj
 pBj
@@ -44170,9 +43879,9 @@ pBj
 pBj
 pBj
 vUE
-dsi
+vUE
 tmJ
-isw
+vUE
 enB
 enB
 pBj
@@ -44248,12 +43957,12 @@ aWA
 pPm
 qOG
 pPm
-pJD
-fKt
+kqN
+enB
 pBj
 pBj
 pBj
-fKt
+enB
 pBj
 pBj
 pBj
@@ -44264,7 +43973,7 @@ pBj
 pBj
 pBj
 vaj
-fKt
+enB
 pBj
 xzS
 qiJ
@@ -44364,9 +44073,9 @@ enB
 enB
 enB
 enB
-dsi
+vUE
 jlw
-isw
+vUE
 vUE
 enB
 enB
@@ -44443,14 +44152,12 @@ pPm
 pag
 pPm
 pBj
-fKt
-fKt
+enB
+enB
 pBj
-fKt
-fKt
-fKt
-pBj
-pBj
+enB
+enB
+enB
 pBj
 pBj
 pBj
@@ -44458,7 +44165,9 @@ pBj
 pBj
 pBj
 pBj
-fKt
+pBj
+pBj
+enB
 pBj
 xzS
 qiJ
@@ -44548,9 +44257,9 @@ enB
 enB
 enB
 enB
-dSx
+vUE
 wpV
-gPO
+vUE
 dVV
 enB
 enB
@@ -44558,9 +44267,9 @@ enB
 enB
 dVV
 enB
-dsi
+vUE
 tmJ
-isw
+vUE
 vUE
 vUE
 enB
@@ -44621,10 +44330,10 @@ pBj
 pBj
 pBj
 pBj
-pJD
-pJD
-pJD
-pJD
+kqN
+kqN
+kqN
+kqN
 pBj
 pBj
 pBj
@@ -44638,12 +44347,12 @@ pPm
 pPm
 pBj
 pBj
-fKt
-fKt
-fKt
+enB
+enB
+enB
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
@@ -44724,8 +44433,8 @@ hJs
 hJs
 hJs
 wdQ
-fgg
-nFy
+bDx
+bDx
 pBj
 pBj
 pBj
@@ -44742,11 +44451,11 @@ enB
 enB
 enB
 vUE
-dsi
-vxs
-isw
 vUE
-bDx
+vxs
+vUE
+vUE
+kqN
 enB
 enB
 pBj
@@ -44818,8 +44527,8 @@ pBj
 pBj
 pBj
 pBj
-fKt
-pJD
+enB
+kqN
 pBj
 pBj
 pBj
@@ -44831,22 +44540,22 @@ pPm
 pPm
 pBj
 pBj
-fKt
-fKt
-fKt
+enB
+enB
+enB
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
+enB
+enB
+enB
+enB
+enB
+enB
 pBj
 xzS
 qiJ
@@ -44919,7 +44628,7 @@ eBi
 eBi
 eBi
 eBi
-icc
+iiF
 eBi
 hhh
 hhh
@@ -44936,9 +44645,9 @@ pBj
 pBj
 vUE
 vUE
-dSx
+vUE
 uhl
-gPO
+vUE
 vUE
 vUE
 vUE
@@ -45012,8 +44721,8 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
@@ -45024,23 +44733,23 @@ hGK
 ybi
 pPm
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
-pJD
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+kqN
 pBj
 xzS
 qiJ
@@ -45117,9 +44826,9 @@ iiF
 son
 uZZ
 iiF
-gny
+clF
 vYh
-wKw
+qgH
 pBj
 pBj
 pBj
@@ -45207,7 +44916,7 @@ pBj
 pBj
 pBj
 pBj
-fKt
+enB
 pBj
 pBj
 pBj
@@ -45217,8 +44926,8 @@ xdl
 pPm
 pPm
 pPm
-pJD
-pJD
+kqN
+kqN
 pBj
 pBj
 pBj
@@ -45227,14 +44936,14 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-fKt
+enB
+enB
+enB
 pBj
 pBj
 pBj
-pJD
-pJD
+kqN
+kqN
 pBj
 xzS
 qiJ
@@ -45316,7 +45025,7 @@ clF
 pAP
 vYh
 qgH
-vUt
+qgH
 pBj
 pBj
 pBj
@@ -45401,7 +45110,7 @@ pBj
 pBj
 pBj
 pBj
-fKt
+enB
 pBj
 pBj
 pBj
@@ -45411,19 +45120,19 @@ aWA
 hGK
 iLl
 pPm
-pJD
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
 kqN
-fKt
 pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+dVV
+enB
+enB
 pBj
 pBj
 avF
@@ -45595,7 +45304,7 @@ pBj
 pBj
 pBj
 pBj
-fKt
+enB
 pBj
 pBj
 pBj
@@ -45605,8 +45314,8 @@ pPm
 pPm
 mxG
 pPm
-pJD
-pJD
+kqN
+kqN
 pBj
 pBj
 pBj
@@ -45615,14 +45324,14 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 fTO
-mNf
-tWO
-mNf
-pbL
+tBl
+fTO
+tBl
+fKt
 qAq
 oDD
 xzS
@@ -45701,9 +45410,9 @@ gbb
 drE
 daF
 btM
-nNt
+aTy
 aYR
-swy
+tdD
 pBj
 pBj
 pBj
@@ -45789,34 +45498,34 @@ pBj
 pBj
 pBj
 pBj
-fKt
+enB
 pBj
 pBj
 pBj
 pBj
 pBj
 pBj
-pJD
-pJD
+kqN
+kqN
 pBj
 pBj
-fKt
-fKt
-pBj
-pBj
-pBj
+enB
+enB
 pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+pBj
+pBj
+pBj
+enB
+enB
 pBj
 pBj
 fTO
-mNf
-kdx
-ukO
+tBl
+fTO
+fKt
 fdT
 hga
 amf
@@ -45895,10 +45604,10 @@ baU
 btM
 btM
 btM
-nNt
+aTy
 aYR
 tdD
-swy
+tdD
 pBj
 pBj
 pBj
@@ -45982,34 +45691,34 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
 pBj
 pBj
+dVV
 kqN
-pJD
-pJD
+kqN
 pBj
 pBj
 pBj
-fKt
-fKt
-fKt
-fKt
+enB
+enB
+enB
+enB
 pBj
-fKt
-fKt
+enB
+enB
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
 fgZ
-mNf
+tBl
 tBl
 hHm
 oVk
@@ -46089,10 +45798,10 @@ nkE
 qjB
 dTX
 btM
-nNt
+aTy
 aYR
 tdD
-oiK
+tdD
 pBj
 pBj
 pBj
@@ -46176,34 +45885,34 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-pJD
+enB
+enB
+kqN
 pBj
 pBj
 pBj
-fKt
+enB
 pBj
 pBj
-fKt
-fKt
-fKt
+enB
+enB
+enB
 pBj
 pBj
-fKt
-fKt
-fKt
+enB
+enB
+enB
 pBj
 pBj
 pBj
-mNf
+tBl
 avF
 xzS
 xzS
@@ -46286,7 +45995,7 @@ btM
 ejY
 thO
 cLl
-oiK
+tdD
 pBj
 pBj
 pBj
@@ -46369,21 +46078,21 @@ pBj
 pBj
 pBj
 pBj
+dVV
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
 kqN
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
-pJD
 pBj
 pBj
 pBj
 pBj
-fKt
+enB
 pBj
 pBj
 pBj
@@ -46392,8 +46101,8 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
@@ -46480,7 +46189,7 @@ sSg
 aTy
 sSg
 cLl
-ubr
+tdD
 pBj
 pBj
 pBj
@@ -46563,21 +46272,21 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
 pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
@@ -46587,8 +46296,8 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
@@ -46756,8 +46465,8 @@ pBj
 pBj
 pBj
 pBj
-fKt
-cQY
+enB
+fwi
 pBj
 pBj
 pBj
@@ -46774,18 +46483,18 @@ pBj
 pBj
 pBj
 pBj
-fKt
+enB
 pBj
 pBj
 pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-fKt
-fKt
-fKt
+enB
+enB
+enB
+enB
+enB
 pBj
 pBj
 xzS
@@ -46895,9 +46604,9 @@ pBj
 pBj
 pBj
 pBj
-udS
-udS
-udS
+vUE
+vUE
+vUE
 pBj
 pBj
 pBj
@@ -46949,8 +46658,8 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
@@ -46968,19 +46677,19 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
 pBj
 pBj
-fKt
-kqN
-fKt
+enB
+dVV
+enB
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 xzS
 qiJ
@@ -47143,8 +46852,8 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
@@ -47163,18 +46872,18 @@ pBj
 pBj
 pBj
 pBj
-fKt
+enB
 pBj
 pBj
 pBj
 pBj
 pBj
-fKt
-kqN
-fKt
+enB
+dVV
+enB
 pBj
 pBj
-fKt
+enB
 pBj
 xzS
 qiJ
@@ -47283,9 +46992,9 @@ pBj
 pBj
 pBj
 pBj
-oPg
-oPg
-oPg
+vUE
+vUE
+vUE
 pBj
 pBj
 pBj
@@ -47336,8 +47045,8 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
@@ -47357,19 +47066,19 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
-fKt
+enB
 pBj
-fKt
-fKt
-fKt
+enB
+enB
+enB
 pBj
 pBj
-fKt
-pJD
+enB
+kqN
 xzS
 qiJ
 xzS
@@ -47530,8 +47239,8 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
@@ -47552,18 +47261,18 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
+enB
+enB
+enB
+enB
+enB
+enB
+enB
 pBj
 pBj
 pBj
 pBj
-pJD
+kqN
 xzS
 qiJ
 xzS
@@ -47723,10 +47432,10 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-fKt
-fKt
+enB
+enB
+enB
+enB
 pBj
 pBj
 pBj
@@ -47736,28 +47445,28 @@ pBj
 pBj
 pBj
 pBj
-fKt
+enB
 pBj
 pBj
 pBj
-fKt
-fKt
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-fKt
-fKt
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
 pBj
 pBj
-pJD
+pBj
+enB
+enB
+enB
+enB
+pBj
+pBj
+pBj
+pBj
+pBj
+kqN
 xzS
 qiJ
 xzS
@@ -47917,11 +47626,11 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-fKt
-fKt
-fKt
+enB
+enB
+enB
+enB
+enB
 pBj
 pBj
 pBj
@@ -47930,28 +47639,28 @@ pBj
 pBj
 pBj
 pBj
-fKt
+enB
 pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-pBj
-pBj
-pBj
-pBj
-pBj
-cQY
-pBj
-pBj
-fKt
+enB
+enB
 pBj
 pBj
 pBj
 pBj
 pBj
-pJD
+fwi
+pBj
+pBj
+enB
+pBj
+pBj
+pBj
+pBj
+pBj
+kqN
 xzS
 qiJ
 xzS
@@ -48111,36 +47820,36 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
-fKt
-fKt
-pBj
-pBj
+enB
+enB
 pBj
 pBj
 pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+pBj
+pBj
+enB
+enB
 pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-fKt
+enB
+enB
+enB
 pBj
-kqN
-fKt
-fKt
+dVV
+enB
+enB
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
@@ -48247,7 +47956,7 @@ pBj
 pBj
 tmJ
 xdy
-txW
+enB
 enB
 enB
 enB
@@ -48305,36 +48014,36 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
-fKt
-fKt
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-fKt
+enB
+enB
 pBj
 pBj
 pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-fKt
-fKt
-fKt
+pBj
+pBj
+enB
 pBj
 pBj
 pBj
-fKt
+pBj
+pBj
+pBj
+enB
+enB
+enB
+enB
+enB
+pBj
+pBj
+pBj
+enB
 pBj
 pBj
 pBj
@@ -48440,7 +48149,7 @@ pBj
 pBj
 pBj
 tmJ
-kYN
+vUE
 mea
 enB
 enB
@@ -48500,21 +48209,12 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
-fKt
-fKt
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
@@ -48522,13 +48222,22 @@ pBj
 pBj
 pBj
 pBj
-pBj
-fKt
-fKt
-pBj
+enB
+enB
 pBj
 pBj
-fKt
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+enB
+enB
+pBj
+pBj
+pBj
+enB
 pBj
 ugJ
 ugJ
@@ -48638,7 +48347,7 @@ kVm
 vUE
 wQd
 enB
-vTK
+dVV
 pBj
 pBj
 pBj
@@ -48694,21 +48403,12 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
-fKt
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-pBj
-fKt
+enB
 pBj
 pBj
 pBj
@@ -48716,9 +48416,18 @@ pBj
 pBj
 pBj
 pBj
-kqN
-fKt
-fKt
+pBj
+enB
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+pBj
+dVV
+enB
+enB
 pBj
 pBj
 pBj
@@ -48831,7 +48540,7 @@ tmJ
 vHo
 vUE
 uKp
-dsi
+vUE
 wpV
 pBj
 pBj
@@ -48889,8 +48598,8 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
@@ -48902,16 +48611,16 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
+enB
+enB
+enB
+enB
+enB
+enB
 pBj
 pBj
 pBj
@@ -49023,9 +48732,9 @@ pBj
 pBj
 tmJ
 wzZ
-udS
-udS
-eaj
+vUE
+vUE
+mea
 tmJ
 pBj
 pBj
@@ -49083,29 +48792,29 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
 pBj
 pBj
 pBj
-fKt
+enB
 pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
 pBj
 pBj
 pBj
@@ -49277,30 +48986,30 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-fKt
+enB
+enB
+enB
 pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-fKt
+enB
+enB
+enB
 pBj
 pBj
 pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
@@ -49472,30 +49181,30 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
-fKt
-cQY
-pBj
-pBj
-pBj
-pBj
+enB
+fwi
 pBj
 pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+pBj
+pBj
+pBj
+pBj
+enB
+enB
 pBj
 pBj
 pBj
@@ -49666,32 +49375,32 @@ pBj
 pBj
 pBj
 pBj
-kqN
-fKt
-fKt
+dVV
+enB
+enB
 pBj
 pBj
 pBj
 pBj
-fKt
+enB
 pBj
 pBj
 pBj
-fKt
-pBj
-pBj
-pBj
-pBj
-pBj
+enB
 pBj
 pBj
 pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-fKt
+pBj
+pBj
+pBj
+pBj
+pBj
+enB
+enB
+enB
 pBj
 pBj
 ugJ
@@ -49861,17 +49570,17 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
+enB
+enB
 pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-fKt
-fKt
-fKt
+enB
+enB
+enB
+enB
+enB
 pBj
 pBj
 pBj
@@ -50055,17 +49764,17 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-fKt
+enB
+enB
+enB
 pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-fKt
-fKt
+enB
+enB
+enB
+enB
 pBj
 pBj
 pBj
@@ -50249,16 +49958,16 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-fKt
-fKt
+enB
+enB
+enB
+enB
 pBj
 pBj
-kqN
-fKt
-fKt
-kqN
+dVV
+enB
+enB
+dVV
 pBj
 pBj
 pBj
@@ -50443,15 +50152,15 @@ pBj
 pBj
 pBj
 pBj
-kqN
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
+dVV
+enB
+enB
+enB
+enB
+enB
+enB
+enB
+enB
 pBj
 pBj
 pBj
@@ -50639,12 +50348,12 @@ pBj
 pBj
 pBj
 pBj
-fKt
-fKt
-fKt
-fKt
-fKt
-fKt
+enB
+enB
+enB
+enB
+enB
+enB
 pBj
 pBj
 pBj
@@ -56318,7 +56027,7 @@ pBj
 pBj
 pBj
 fwK
-teH
+vBG
 kcC
 lMt
 kBE
@@ -57095,7 +56804,7 @@ pBj
 pBj
 fwK
 rJw
-xTZ
+pCP
 gWn
 civ
 pYz
@@ -57484,7 +57193,7 @@ pBj
 pBj
 fwK
 rJw
-gQX
+vBG
 pVv
 dlX
 qHK
@@ -60602,7 +60311,7 @@ iQr
 iQr
 iQr
 iQr
-taq
+whY
 uJq
 uJq
 uJq
@@ -60800,7 +60509,7 @@ pBj
 dLN
 whY
 whY
-xZQ
+whY
 pBj
 jff
 jff
@@ -60992,8 +60701,8 @@ pBj
 pBj
 pBj
 pBj
-fvL
-wJu
+whY
+whY
 pBj
 pBj
 pBj

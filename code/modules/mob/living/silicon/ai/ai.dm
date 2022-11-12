@@ -160,8 +160,6 @@ var/list/ai_verbs_default = list(
 
 	holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo1"))
 
-	proc_holder_list = new()
-
 	if(L)
 		if (istype(L, /datum/ai_laws))
 			laws = L
@@ -200,7 +198,6 @@ var/list/ai_verbs_default = list(
 	add_language(LANGUAGE_BIRDSONG,		1)
 	add_language(LANGUAGE_SAGARU,		1)
 	add_language(LANGUAGE_CANILUNZT,	1)
-	add_language(LANGUAGE_ECUREUILIAN,	1)
 	add_language(LANGUAGE_DAEMON,		1)
 	add_language(LANGUAGE_ENOCHIAN,		1)
 	add_language(LANGUAGE_SQUEAKISH,	1)
@@ -208,7 +205,7 @@ var/list/ai_verbs_default = list(
 
 	if(!safety)//Only used by AIize() to successfully spawn an AI.
 		if (!B)//If there is no player/brain inside.
-			empty_playable_ai_cores += new/obj/structure/AIcore/deactivated(loc)//New empty terminal.
+			GLOB.empty_playable_ai_cores += new/obj/structure/AIcore/deactivated(loc)//New empty terminal.
 			qdel(src)//Delete AI.
 			return
 		else

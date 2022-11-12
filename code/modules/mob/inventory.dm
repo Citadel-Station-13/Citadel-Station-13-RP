@@ -1,3 +1,5 @@
+// todo: see all this? needs to be decided what to do with and shoved into the inventory handling system proper once evaluated.
+
 /mob
 	var/obj/item/storage/s_active = null // Even ghosts can/should be able to peek into boxes on the ground
 

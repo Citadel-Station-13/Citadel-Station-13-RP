@@ -25,7 +25,7 @@
 		return
 
 	var/mob/living/carbon/human/adult = new adult_form(get_turf(src))
-	adult.set_species(species_type_by_name(new_species))
+	adult.set_species(new_species)
 	show_evolution_blurb()
 
 	transfer_languages(src, adult)

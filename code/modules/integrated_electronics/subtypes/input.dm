@@ -1014,14 +1014,14 @@
 /obj/item/integrated_circuit/input/microphone/sign/Initialize(mapload)
 	. = ..()
 	for(var/lang in readable_langs)
-		var/datum/language/newlang = GLOB.all_languages[lang]
+		var/datum/language/newlang = SScharacters.resolve_language_name(lang)
 		my_langs |= newlang
 
 /obj/item/integrated_circuit/input/microphone/sign/hear_talk(mob/living/M, msg, var/verb="says", datum/language/speaking=null)
 	var/signlang = FALSE
 	if(M && msg)
 		if(speaking)
-			if(!((speaking.flags & NONVERBAL) || (speaking.flags & SIGNLANG)))
+			if(!((speaking.language_flags & NONVERBAL) || (speaking.language_flags & SIGNLANG)))
 				signlang = FALSE
 				msg = speaking.scramble(msg, my_langs)
 			else

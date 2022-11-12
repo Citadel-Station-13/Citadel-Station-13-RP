@@ -28,7 +28,7 @@
 
 	if(iscarbon(owner))
 		var/mob/living/carbon/C = owner
-		species = get_static_species_meta(/datum/species/human)
+		species = SScharacters.resolve_species_path(/datum/species/human)
 		if(owner.dna)
 			dna = C.dna.Clone()
 			species = C.species //For custom species
@@ -47,7 +47,7 @@
 					blood_DNA = list()
 				blood_DNA[dna.unique_enzymes] = dna.b_type
 	else
-		species = get_static_species_meta(/datum/species/human)
+		species = SScharacters.resolve_species_path(/datum/species/human)
 
 	if(owner)
 		if(!meat_type)
@@ -292,7 +292,7 @@
 	handle_organ_proc_special()
 
 	//Process infections
-	if(robotic >= ORGAN_ROBOT || (istype(owner) && (owner.species && (owner.species.flags & (IS_PLANT | NO_INFECT)))))
+	if(robotic >= ORGAN_ROBOT || (istype(owner) && (owner.species && (owner.species.species_flags & (IS_PLANT | NO_INFECT)))))
 		germ_level = 0
 		return
 
@@ -316,7 +316,7 @@
 	handle_organ_proc_special()
 
 	//Process infections
-	if(robotic >= ORGAN_ROBOT || (istype(owner) && (owner.species && (owner.species.flags & (IS_PLANT | NO_INFECT)))))
+	if(robotic >= ORGAN_ROBOT || (istype(owner) && (owner.species && (owner.species.species_flags & (IS_PLANT | NO_INFECT)))))
 		germ_level = 0
 		return
 
@@ -596,7 +596,7 @@
 
 
 /obj/item/organ/proc/organ_can_feel_pain()
-	if(species.flags & NO_PAIN)
+	if(species.species_flags & NO_PAIN)
 		return FALSE
 	if(status & ORGAN_DESTROYED)
 		return FALSE

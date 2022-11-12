@@ -213,13 +213,13 @@
 	..()
 
 /mob/living/carbon/human/proc/Stasis(amount)
-	if((species.flags & NO_SCAN) || isSynthetic())
+	if((species.species_flags & NO_SCAN) || isSynthetic())
 		in_stasis = 0
 	else
 		in_stasis = amount
 
 /mob/living/carbon/human/proc/getStasis()
-	if((species.flags & NO_SCAN) || isSynthetic())
+	if((species.species_flags & NO_SCAN) || isSynthetic())
 		return 0
 
 	return in_stasis
@@ -233,12 +233,12 @@
 	return 0
 
 /mob/living/carbon/human/getCloneLoss()
-	if((species.flags & NO_SCAN) || isSynthetic())
+	if((species.species_flags & NO_SCAN) || isSynthetic())
 		cloneloss = 0
 	return ..()
 
 /mob/living/carbon/human/setCloneLoss(var/amount)
-	if((species.flags & NO_SCAN) || isSynthetic())
+	if((species.species_flags & NO_SCAN) || isSynthetic())
 		cloneloss = 0
 	else
 		..()
@@ -246,7 +246,7 @@
 /mob/living/carbon/human/adjustCloneLoss(var/amount)
 	..()
 
-	if((species.flags & NO_SCAN) || isSynthetic())
+	if((species.species_flags & NO_SCAN) || isSynthetic())
 		cloneloss = 0
 		return
 
@@ -298,19 +298,19 @@
 		..()
 
 /mob/living/carbon/human/getToxLoss()
-	if(species.flags & NO_POISON)
+	if(species.species_flags & NO_POISON)
 		toxloss = 0
 	return ..()
 
 /mob/living/carbon/human/adjustToxLoss(var/amount)
-	if(species.flags & NO_POISON)
+	if(species.species_flags & NO_POISON)
 		toxloss = 0
 	else
 		amount = amount*species.toxins_mod
 		..(amount)
 
 /mob/living/carbon/human/setToxLoss(var/amount)
-	if(species.flags & NO_POISON)
+	if(species.species_flags & NO_POISON)
 		toxloss = 0
 	else
 		..()
