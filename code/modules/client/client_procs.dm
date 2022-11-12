@@ -778,9 +778,7 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 	using_temporary_viewsize = FALSE
 	temporary_viewsize_width = width
 	temporary_viewsize_height = height
-	if(menu_button_checked(SKIN_ID_MENU_BUTTON_AUTO_FIT_VIEWPORT))
-		fit_viewport()
-	refit_viewport()
+	request_viewport_update()
 
 /**
  * resets our temporary view
@@ -792,9 +790,7 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 	using_temporary_viewsize = FALSE
 	temporary_viewsize_height = null
 	temporary_viewsize_width = null
-	if(menu_button_checked(SKIN_ID_MENU_BUTTON_AUTO_FIT_VIEWPORT))
-		fit_viewport()
-	refit_viewport()
+	request_viewport_update()
 
 /**
  * switch perspective - null will cause us to shunt our eye to nullspace!

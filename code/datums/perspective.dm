@@ -377,7 +377,7 @@
 	if(view_dirty)
 		recompute_view_size()
 	if(C)
-		C.refit_viewport()
+		C.request_viewport_update()
 	else
 		for(var/client/_C as anything in clients)
 			update_view_size(_C)

@@ -33,10 +33,14 @@ GLOBAL_VAR(lock_client_view_y)
 	GLOB.max_client_view_x = text2num(viewsize[1])
 	GLOB.max_client_view_y = text2num(viewsize[2])
 
+//! Core viewport procs
+//! These don't obey the read-write lock, and should only be called from the synchronized procs!
+
 /**
  * populates important vars that things may read early before we sleep
  */
 /client/proc/pre_init_viewport()
+	PRIVATE_PROC(TRUE)
 	current_viewport_width = GLOB.max_client_view_x
 	current_viewport_height = GLOB.max_client_view_y
 
@@ -44,34 +48,18 @@ GLOBAL_VAR(lock_client_view_y)
  * called on client init to do this without blocking client/New
  */
 /client/proc/init_viewport_blocking()
+	PRIVATE_PROC(TRUE)
 	fetch_viewport()
-	refit_viewport()
-
-/**
- * called by verbs that change viewport
- */
-/client/verb/update_viewport()
-	set name = ".update_viewport"
-	set hidden = TRUE
-	if(viewport_rwlock)
-		// don't bother
-		return
-	// check if they want auto
-	if(menu_button_checked(SKIN_ID_MENU_BUTTON_AUTO_FIT_VIEWPORT))
-		fit_viewport()
-	fetch_viewport()
-	refit_viewport()
+	refit_viewsize()
+	// release the initial lock
+	viewport_rwlock = FALSE
 
 /**
  * called to manually update viewport vars since the skin macro is only triggered on resize
  */
 /client/proc/fetch_viewport()
-	if(viewport_rwlock)
-		// we're probably spazzing out right now, don't even bother
-		return
-	viewport_rwlock = TRUE
+	PRIVATE_PROC(TRUE)
 	_fetch_viewport()
-	viewport_rwlock = FALSE
 
 /client/proc/_fetch_viewport()
 	PRIVATE_PROC(TRUE)
@@ -89,54 +77,31 @@ GLOBAL_VAR(lock_client_view_y)
 		assumed_viewport_spy = (WORLD_ICON_SIZE * GLOB.game_view_y)
 
 /**
- * called directly by the skin
+ * called to refit our view size as necessary
  *
- * @params
- * - w - width of viewport in pixels
- * - h - height of viewport in pixels
- * - z - zoom of viewport
- * - b - are we letterboxing?
+ * this is automatically called every time something modifies us
  */
-/client/verb/on_viewport(w as text, h as text, z as num, b as num)
-	set name = ".on_viewport"
-	set hidden = TRUE
-	if(viewport_rwlock)	// something is fucking around, don't edit for them
-		return
-	// get vars
-	assumed_viewport_spx = text2num(w)
-	assumed_viewport_spy = text2num(h)
-	assumed_viewport_zoom = z
-	assumed_viewport_box = b
-	// refit
-	refit_viewport()
+/client/proc/refit_viewsize()
+	PRIVATE_PROC(TRUE)
+	_refit_viewsize()
 
-/**
- * called to refit the viewport as necessary
- */
-/client/proc/refit_viewport()
-	if(viewport_rwlock)
-		// we're probably spazzing out right now, don't even bother
-		return
-	viewport_rwlock = TRUE
-	_refit_viewport()
-	viewport_rwlock = FALSE
-
-/client/proc/_refit_viewport()
+/client/proc/_refit_viewsize()
+	PRIVATE_PROC(TRUE)
 	if(!isnull(GLOB.lock_client_view_x) && !isnull(GLOB.lock_client_view_y))
 		view = "[GLOB.lock_client_view_x]x[GLOB.lock_client_view_y]"
-		on_refit_viewport(GLOB.lock_client_view_x, GLOB.lock_client_view_y)
+		on_refit_viewsize(GLOB.lock_client_view_x, GLOB.lock_client_view_y)
 		return
 	if(using_temporary_viewsize)
 		view = "[temporary_viewsize_width]x[temporary_viewsize_height]"
-		on_refit_viewport(temporary_viewsize_width, temporary_viewsize_height)
+		on_refit_viewsize(temporary_viewsize_width, temporary_viewsize_height)
 		return
-	var/widescreen = menu_button_checked(SKIN_ID_MENU_BUTTON_WIDESCREEN_ENABLED)
+	var/widescreen = is_widescreen_enabled()
 	if(!widescreen)
 		// if not widescreen, we should just force to 15 x 15 and their augmented view
 		var/width = 15 + (using_perspective.augment_view_width * 2)
 		var/height = 15 + (using_perspective.augment_view_height * 2)
 		view = "[width]x[height]"
-		on_refit_viewport(width, height)
+		on_refit_viewsize(width, height)
 		return
 	var/stretch_to_fit = assumed_viewport_zoom == 0
 	using_perspective.ensure_view_cached()
@@ -147,7 +112,7 @@ GLOBAL_VAR(lock_client_view_y)
 		if(assumed_viewport_box)
 			// fit everything
 			view = "[max_width]x[max_height]"
-			on_refit_viewport(max_width, max_height)
+			on_refit_viewsize(max_width, max_height)
 			return
 		// option 2: they're stretching to fit the longest side
 		else
@@ -158,7 +123,7 @@ GLOBAL_VAR(lock_client_view_y)
 			available_width = CEILING(available_width, 1)
 			available_width = clamp(available_width, GLOB.min_client_view_x, max_width)
 			view = "[available_width]x[max_height]"
-			on_refit_viewport(available_width, max_height)
+			on_refit_viewsize(available_width, max_height)
 			return
 	// option 3: scale as necessary
 	var/pixels_per_tile = assumed_viewport_zoom * WORLD_ICON_SIZE
@@ -169,19 +134,19 @@ GLOBAL_VAR(lock_client_view_y)
 	var/desired_width = clamp(div_x, GLOB.min_client_view_x, max_width)
 	var/desired_height = clamp(div_y, GLOB.min_client_view_y, max_height)
 	view = "[desired_width]x[desired_height]"
-	on_refit_viewport(desired_width, desired_height)
+	on_refit_viewsize(desired_width, desired_height)
 
-/client/proc/on_refit_viewport(new_width, new_height)
+/client/proc/on_refit_viewsize(new_width, new_height)
 	var/changed = (current_viewport_height != new_height) || (current_viewport_width != new_width)
 	if(changed)
 		current_viewport_width = new_width
 		current_viewport_height = new_height
-	post_refit_viewport(changed)
+	post_refit_viewsize(changed)
 
 /**
  * updates everything when our viewport changes
  */
-/client/proc/post_refit_viewport(changed)
+/client/proc/post_refit_viewsize(changed)
 	if(!changed)
 		return
 	// force perspective swap for ??? reasons (???)
@@ -193,28 +158,12 @@ GLOBAL_VAR(lock_client_view_y)
 	mob?.refit_rendering()
 
 /**
- * automatically fit their viewport to show everything optimally
+ * called to fit our viewport to what we **should** have to get our effective view.
  */
-/client/verb/fit_viewport()
-	set name = "Fit Viewport"
-	set category = "OOC"
-	set desc = "Fit the width of the map window to match the viewport"
-
-	// ensure we're not fitting viewport
-	if(viewport_rwlock)
-		return
+/client/proc/fit_viewport()
 	// first, fetch
 	fetch_viewport()
-	// ensure we're not fitting viewport since above sleeps
-	if(viewport_rwlock)
-		return
-	// start - from here to finish we should have exclusive control over the viewport
-	viewport_rwlock = TRUE
 	_fit_viewport()
-	// finish
-	viewport_rwlock = FALSE
-	// refit
-	refit_viewport()
 
 /client/proc/_fit_viewport()
 	// by now we already fetched viewport
@@ -227,7 +176,7 @@ GLOBAL_VAR(lock_client_view_y)
 	// splitter intrinsic width
 	var/assumed_splitter_width = 4
 	// effective size
-	var/widescreen = menu_button_checked(SKIN_ID_MENU_BUTTON_WIDESCREEN_ENABLED)
+	var/widescreen = is_widescreen_enabled()
 	var/effective_view_width
 	var/effective_view_height
 	// todo: optimize the shit out of this proc and the view system
@@ -288,6 +237,79 @@ GLOBAL_VAR(lock_client_view_y)
 			// reverse in half
 			delta = -delta / 2
 
+//! Synchronized procs; calling these from outside is fine.
+/**
+ * call this when things change to queue an update
+ *
+ * should only be called **in code**, not by the skin!
+ */
+/client/proc/request_viewport_update(no_fit)
+	// this is the proc called when size is updated
+	// we absolutely must run and assume the current data will
+	// not respect the update.
+	// thus, queue.
+	if(viewport_rwlock)
+		if(!viewport_queued)
+			viewport_queued = TRUE
+			addtimer(CALLBACK(src, .proc/request_viewport_update), 0)
+		return
+	// clear queued, acquire lock
+	viewport_queued = FALSE
+	viewport_rwlock = TRUE
+	refit_viewsize()
+	if(!no_fit && is_auto_fit_viewport_enabled())
+		fit_viewport()
+	// release lock
+	viewport_rwlock = FALSE
+
+/**
+ * call this to request a viewport fit
+ */
+/client/proc/request_viewport_fit(no_recalc)
+	// if viewport is locked, ignore it
+	if(viewport_rwlock)
+		return
+	// acquire lock
+	viewport_rwlock = TRUE
+	// clear the queue at the same time because we're about to refit anyways
+	viewport_queued = FALSE
+	fit_viewport()
+	if(!no_recalc)
+		refit_viewsize()
+	// release lock
+	viewport_rwlock = FALSE
+
+/**
+ * called directly by the skin when resizing
+ *
+ * @params
+ * - w - width of viewport in pixels
+ * - h - height of viewport in pixels
+ * - z - zoom of viewport
+ * - b - are we letterboxing?
+ */
+/client/verb/on_viewport(w as text, h as text, z as num, b as num)
+	set name = ".on_viewport"
+	set hidden = TRUE
+	if(viewport_rwlock)	// something is fucking around, don't edit for them
+		return
+	// get vars
+	assumed_viewport_spx = text2num(w)
+	assumed_viewport_spy = text2num(h)
+	assumed_viewport_zoom = z
+	assumed_viewport_box = b
+	// refit
+	request_viewport_update(TRUE)
+
+/**
+ * automatically fit their viewport to show everything optimally
+ */
+/client/verb/user_fit_viewport()
+	set name = "Fit Viewport"
+	set category = "OOC"
+	set desc = "Fit the width of the map window to match the viewport"
+	request_viewport_fit()
+
 /client/verb/force_map_zoom(n as num)
 	set name = ".viewport_zoom"
 	set hidden = TRUE
@@ -299,11 +321,9 @@ GLOBAL_VAR(lock_client_view_y)
 	if(viewport_rwlock)
 		to_chat(usr, SPAN_WARNING("Viewport is rwlocked; try again later."))
 		return
-	viewport_rwlock = TRUE
 	winset(src, SKIN_MAP_ID_VIEWPORT, "zoom=[n]")
 	assumed_viewport_zoom = n
-	viewport_rwlock = FALSE
-	refit_viewport()
+	request_viewport_update(TRUE)
 
 /client/verb/force_map_box(n as num)
 	set name = ".viewport_box"
@@ -313,23 +333,20 @@ GLOBAL_VAR(lock_client_view_y)
 	if(viewport_rwlock)
 		to_chat(usr, SPAN_WARNING("Viewport is rwlocked; try again later."))
 		return
-	viewport_rwlock = TRUE
 	n = !!n	// force bool
 	winset(src, SKIN_MAP_ID_VIEWPORT, "letterbox=[n? "true" : "false"]")
 	assumed_viewport_box = n
-	viewport_rwlock = FALSE
-	refit_viewport()
+	request_viewport_update(TRUE)
 
 /client/verb/force_onresize_view_update()
-	set name = ".viewport_refit"
+	set name = ".viewport_update"
 	set hidden = TRUE
 	set src = usr
 	set category = "Debug"
 	if(viewport_rwlock)
 		to_chat(usr, SPAN_WARNING("Viewport is rwlocked; try again later."))
 		return
-	fetch_viewport()
-	refit_viewport()
+	request_viewport_update()
 
 /client/verb/show_winset_debug_values()
 	set name = ".viewport_debug"

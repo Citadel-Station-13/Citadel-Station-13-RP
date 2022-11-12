@@ -67,7 +67,9 @@
 	/// current view y - for fast access
 	var/current_viewport_height
 	/// if things are manipulating the viewport we don't want other things to touch it
-	var/viewport_rwlock = FALSE
+	var/viewport_rwlock = TRUE	//! default block so we can release it during init_viewport
+	/// viewport update queued?
+	var/viewport_queued = FALSE
 	/// forced temporary view
 	var/temporary_viewsize_width
 	/// forced temporary view

@@ -133,7 +133,7 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 
 /datum/skin_menu_entry/widescreen/pressed(client/C, new_checked)
 	. = ..()
-	C.refit_viewport()
+	C.request_viewport_update()
 
 /datum/skin_menu_entry/widescreen/automatic
 	id = SKIN_ID_MENU_BUTTON_WIDESCREEN_ENABLED
@@ -144,11 +144,17 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 	id = SKIN_ID_MENU_BUTTON_WIDESCREEN_DISABLED
 	name = "Lock to 15x15 (Legacy)"
 
+/client/proc/is_widescreen_enabled()
+	return menu_group_query(SKIN_BUTTON_GROUP_MAP_WIDESCREEN) == SKIN_ID_MENU_BUTTON_WIDESCREEN_ENABLED
+
 //! misc zoom
 /datum/skin_menu_entry/auto_fit
 	id = SKIN_ID_MENU_BUTTON_AUTO_FIT_VIEWPORT
 	name = "Automatically Fit Viewport"
 	checkbox = TRUE
+
+/client/proc/is_auto_fit_viewport_enabled()
+	return menu_button_checked(SKIN_ID_MENU_BUTTON_AUTO_FIT_VIEWPORT)
 
 /datum/skin_menu_entry/fit_viewport
 	id = SKIN_ID_MENU_BUTTON_FIT_VIEWPORT
@@ -156,10 +162,7 @@ GLOBAL_DATUM_INIT(main_window_menu, /datum/skin_menu/main, new)
 
 /datum/skin_menu_entry/fit_viewport/pressed(client/C, new_checked)
 	. = ..()
-	if(C.viewport_rwlock)
-		to_chat(usr, SPAN_WARNING("viewport is rwlocked; try again later."))
-		return
-	C.fit_viewport()
+	C.request_viewport_fit()
 
 //! scaling
 /datum/skin_menu_entry/scaling
