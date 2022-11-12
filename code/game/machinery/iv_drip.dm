@@ -259,7 +259,7 @@
 
 /obj/machinery/iv_drip/proc/get_reagent_holder()
 	// return use_internal_storage ? reagents : reagent_container?.reagents
-	return reagents
+	return reagent_container?.reagents
 
 /obj/machinery/iv_drip/verb/eject_beaker()
 	set category = "Object"
