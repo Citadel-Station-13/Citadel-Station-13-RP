@@ -290,7 +290,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// yes, this is a spawn
 	// this is so this works during init.
 	// sue me.
-	GLOB.main_window_menu.load_settings(src)
+	spawn(5 SECONDS)
+		GLOB.main_window_menu.load_settings(src)
 
 	// if(!using_perspective)
 	// 	stack_trace("mob login didn't put in perspective")

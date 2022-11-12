@@ -239,6 +239,7 @@ GLOBAL_VAR(lock_client_view_y)
 		viewport_queued = TRUE
 		addtimer(CALLBACK(src, .proc/_request_viewport_update), 0)
 
+// todo : locks are probably bad when working with request fit
 /client/proc/_request_viewport_update(no_fit, no_fetch)
 	PRIVATE_PROC(TRUE)
 	// if rwlocked, wait; people should be queuing and not calling this directly
@@ -269,6 +270,7 @@ GLOBAL_VAR(lock_client_view_y)
 	set waitfor = FALSE
 	_request_viewport_fit(no_recalc)
 
+// todo : locks are probably bad when working with request update
 /client/proc/_request_viewport_fit(no_recalc)
 	PRIVATE_PROC(TRUE)
 	// if viewport is locked, ignore it
@@ -276,8 +278,6 @@ GLOBAL_VAR(lock_client_view_y)
 		return
 	// acquire lock
 	viewport_rwlock = TRUE
-	// clear the queue at the same time because we're about to refit anyways
-	viewport_queued = FALSE
 	// just in case because this is called by a lot of things that are too shitcoded to update (like my own code)
 	fetch_viewport()
 	// fit viewport
