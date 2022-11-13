@@ -156,7 +156,23 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	// Destroy/cyborgize organs and limbs.
 	character.synthetic = null
-	for(var/name in list(BP_HEAD, BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM, BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG, BP_GROIN, BP_TORSO))
+	// todo: refactor organs/limbs to not need this
+	//! COMPATIBILITY PATCH
+	// we must robotize going from the logical root to the extremities
+	// so auto-robotize-nested doesn't break things by overwriting their prefs
+	for(var/name in list(
+		BP_TORSO,
+		BP_GROIN,
+		BP_HEAD,
+		BP_L_ARM,
+		BP_L_HAND,
+		BP_R_ARM,
+		BP_R_HAND,
+		BP_L_LEG,
+		BP_L_FOOT,
+		BP_R_LEG,
+		BP_R_FOOT
+	))
 		var/status = pref.organ_data[name]
 		var/obj/item/organ/external/O = character.organs_by_name[name]
 		if(O)
