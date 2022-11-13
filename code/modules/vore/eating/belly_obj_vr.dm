@@ -506,7 +506,7 @@
 	//Sketchy fallback for safety, put them somewhere safe.
 	else
 		stack_trace("[src] (\ref[src]) doesn't have an owner, and dropped someone at a latespawn point!")
-		var/fallback = SSjob.GetLatejoinSpawnpoint(faction = JOB_FACTION_STATION)
+		var/fallback = SSjob.get_latejoin_spawnpoint(faction = JOB_FACTION_STATION)
 		return get_turf(fallback)
 
 //Yes, it's ""safe"" to drop items here

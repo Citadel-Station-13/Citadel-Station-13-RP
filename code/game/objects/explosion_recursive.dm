@@ -71,7 +71,6 @@ var/explosion_in_progress = 0
 
 /turf/simulated/mineral
 	explosion_resistance = 2
-	outdoors = TRUE // for weather
 
 /turf/simulated/shuttle/floor
 	explosion_resistance = 1

@@ -262,7 +262,7 @@
 
 			var/randn = rand(1, 100)
 			last_push_time = world.time
-			if(!(species.flags & NO_SLIP) && randn <= 25)
+			if(!(species.species_flags & NO_SLIP) && randn <= 25)
 				var/armor_check = run_armor_check(affecting, "melee")
 				apply_effect(3, WEAKEN, armor_check)
 				playsound(src, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)

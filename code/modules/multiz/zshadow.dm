@@ -16,6 +16,12 @@
 /mob/zshadow/can_fall()
 	return FALSE
 
+/mob/zshadow/check_impact(atom/movable/falling_atom)
+	return FALSE
+
+/mob/zshadow/CheckFall(atom/movable/falling_atom)
+	return FALSE
+
 /mob/zshadow/Initialize(mapload, mob/attach)
 	. = ..()
 	owner = attach

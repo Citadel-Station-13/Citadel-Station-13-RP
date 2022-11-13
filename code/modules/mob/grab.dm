@@ -495,7 +495,7 @@
 
 	attacker.visible_message("<span class='danger'>[attacker] [pick("bent", "twisted")] [target]'s [organ.name] into a jointlock!</span>")
 
-	if(target.species.flags & NO_PAIN)
+	if(target.species.species_flags & NO_PAIN)
 		return
 
 	var/armor = target.run_armor_check(target, "melee")
