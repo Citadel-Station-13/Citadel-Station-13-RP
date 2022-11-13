@@ -9,7 +9,7 @@
 
 	if(!maps.basic)
 		return message
-	if(L.flags & NO_STUTTER)		// Currently prevents EAL, Sign language, and emotes from autohissing
+	if(L.language_flags & NO_STUTTER)		// Currently prevents EAL, Sign language, and emotes from autohissing
 		return message
 	if(maps.exempt && (L.name in maps.exempt))
 		return message

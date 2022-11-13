@@ -1,5 +1,6 @@
 /datum/job/station/senior_engineer
 	title = "Senior Engineer"
+	id = JOB_ID_SENIOR_ENGINEER
 	flag = SENIOR_ENGINEER
 	departments = list(DEPARTMENT_ENGINEERING)
 	department_flag = ENGSEC

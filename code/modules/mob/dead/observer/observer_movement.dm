@@ -23,5 +23,5 @@
 /mob/observer/dead/Process_Spacemove(dir)
 	return TRUE		//we don't drift.
 
-/mob/dead/observer/canface()
+/mob/observer/dead/canface()
 	return TRUE

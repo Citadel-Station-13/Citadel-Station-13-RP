@@ -891,7 +891,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/gateway)
 "ju" = (
-/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/facility/interior/undergound2)
 "jw" = (
 /obj/structure/table/marble,
@@ -4471,7 +4471,7 @@
 /area/rift/facility/interior/undergound2)
 "Sw" = (
 /obj/effect/map_effect/radiation_emitter/chernobyl,
-/turf/simulated/mineral/floor/ignore_cavegen/lythios43c,
+/turf/simulated/open/lythios43c,
 /area/rift/facility/interior/undergound2)
 "Sy" = (
 /obj/effect/floor_decal/corner/black{
