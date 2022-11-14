@@ -539,10 +539,11 @@
 /obj/item/broken_sm/Initialize(mapload)
 	. = ..()
 	message_admins("Broken SM shard created at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
+	investigate_log(INVESTIGATE_RADIATION, "Broken SM shard created.")
 	START_PROCESSING(SSobj, src)
 
 /obj/item/broken_sm/process(delta_time)
-	SSradiation.radiate(src, 50)
+	radiation_pulse(src, RAD_INTENSITY_SM_BROKEN)
 
 /obj/item/broken_sm/Destroy()
 	STOP_PROCESSING(SSobj, src)

@@ -1111,8 +1111,12 @@
 	affects_robots = TRUE
 
 /datum/reagent/irradiated_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	SSradiation.radiate(get_turf(M), 20)	// Irradiate people around you.
-	M.radiation = max(M.radiation + 5 * removed, 0)	// Irradiate you. Because it's inside you.
+	// todo: this should be more brutal on people around the person without being too brutal on the person
+	// new radiation just kind of scales pretty badly
+	/// rads to everyone around you
+	radiation_pulse(M, RAD_INTENSITY_CHEM_IRRADIATED_NANITES)
+	/// radiate the person a bit just in case they're armored
+	M.rad_act(RAD_INTENSITY_CHEM_IRRADIATED_NANITES_SELF)
 
 /datum/reagent/neurophage_nanites
 	name = "Restorative Nanites"

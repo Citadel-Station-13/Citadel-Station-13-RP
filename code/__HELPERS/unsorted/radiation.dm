@@ -1,8 +1,10 @@
 /**
  * get_all_contents but for radiation
+ *
+ * global proc for speed
  */
-/atom/proc/get_rad_contents()
-	var/list/processing = list(src)
+/proc/get_rad_contents(atom/where_at)
+	var/list/processing = list(where_at)
 	. = list()
 	var/i = 0
 	var/lim = 1
@@ -17,5 +19,17 @@
 		processing += thing.contents
 		lim = processing.len
 
-/atom/proc/radiation_pulse(intensity, falloff_modifier, log, no_contaminate)
-	return SSradiation.radiation_pulse(get_turf(src), src, intensity, falloff_modifier, log, no_contaminate)
+/**
+ * emit pulse of radiation at a certain place with a certain strength
+ * global proc for ease of modification
+ *
+ * @params
+ * - source - what's irradiating
+ * - intensity - how much
+ * - falloff_modifier - 0.5 = goes twice as far, 2 = goes half as far, etc
+ * - log - emit game log?
+ * - can_contaminate - allow contamination? if null, will default
+ * - override_turf - override where
+ */
+/proc/radiation_pulse(atom/source, intensity, falloff_modifier, log, can_contaminate, turf/override_turf)
+	return SSradiation.radiation_pulse(override_turf || get_turf(source), source, intensity, falloff_modifier, log, can_contaminate)

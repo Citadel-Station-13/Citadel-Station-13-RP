@@ -1,6 +1,6 @@
 PROCESSING_SUBSYSTEM_DEF(radiation)
 	name = "Radiation"
-	flags = SS_NO_INIT | SS_BACKGROUND
+	subsystem_flags = SS_NO_INIT | SS_BACKGROUND
 	wait = 1 SECONDS
 
 	var/list/warned_atoms = list()
@@ -13,14 +13,14 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 		return
 	warned_atoms[ref] = TRUE
 	var/atom/master = contamination.parent
-	SSblackbox.record_feedback("tally", "contaminated", 1, master.type)
+	// SSblackbox.record_feedback("tally", "contaminated", 1, master.type)
 	var/msg = "has become contaminated with enough radiation to contaminate other objects. || Source: [contamination.source] || Strength: [contamination.strength]"
 	master.investigate_log(msg, INVESTIGATE_RADIATION)
 
 /**
  * todo: comment
  */
-/datum/controller/subsystem/processing/radiation/proc/radiation_pulse(turf/T, atom/source, intensity, falloff_modifier, log, no_contaminate)
+/datum/controller/subsystem/processing/radiation/proc/radiation_pulse(turf/T, atom/source, intensity, falloff_modifier, log, can_contaminate = RAD_CONTAMINATION_DEFAULT)
 	if(!can_fire)	// we don't care
 		return FALSE
 

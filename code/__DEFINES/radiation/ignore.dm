@@ -1,6 +1,6 @@
 //! superglobals for speed
 
-GLOBAL_REAL(radiation_full_ignore, /list) = __radiation_full_ignore()
+GLOBAL_REAL_MANAGED(radiation_full_ignore, /list) = __radiation_full_ignore()
 
 /proc/__radiation_full_ignore()
 	return typecacheof(list(
@@ -11,7 +11,7 @@ GLOBAL_REAL(radiation_full_ignore, /list) = __radiation_full_ignore()
 		/obj/effect,
 	))
 
-GLOBAL_REAL(radiation_infect_ignore, /list) = __radiation_infect_ignore()
+GLOBAL_REAL_MANAGED(radiation_infect_ignore, /list) = __radiation_infect_ignore()
 
 /proc/__radiation_infect_ignore()
 	return typecacheof(list(

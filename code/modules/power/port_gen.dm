@@ -471,13 +471,13 @@
 /obj/machinery/power/port_gen/pacman/super/UseFuel()
 	//produces a tiny amount of radiation when in use
 	if (prob(2*power_output))
-		SSradiation.radiate(src, 4)
+		radiation_pulse(src, RADIATION_INTENSITY_SUPERPACMAN)
 	..()
 
 /obj/machinery/power/port_gen/pacman/super/explode()
 	//a nice burst of radiation
-	var/rads = 50 + (sheets + sheet_left)*1.5
-	SSradiation.radiate(src, (max(20, rads)))
+	var/rads = (sheets + sheet_left) * RAD_INTENSITY_SUPERPACMAN_BOOM_FACTOR
+	radiation_pulse(src, rads)
 
 	explosion(src.loc, 3, 3, 5, 3)
 	qdel(src)
@@ -533,7 +533,7 @@
 	..()
 	add_avail(power_gen)
 	if(panel_open && irradiate)
-		SSradiation.radiate(src, 60)
+		SSradiation.radiate(src, RAD_INTENSITY_RADIOISOTOPE_GEN)
 
 /obj/machinery/power/rtg/examine(mob/user)
 	. = ..()

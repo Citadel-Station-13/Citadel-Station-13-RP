@@ -97,3 +97,7 @@
 #define TECHNOMANCER_TRAIT "technomancer"
 
 #define CPR_TRAIT "cpr"
+
+//! component source
+/// rad_insulation
+#define TRAIT_SOURCE_COMPONENT_RAD_INSULATION "c_rad_insulation"

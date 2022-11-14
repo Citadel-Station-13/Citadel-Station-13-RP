@@ -15,6 +15,8 @@
 
 	matter = list(MAT_STEEL = 200, MAT_GLASS = 100)
 
+#warn add ranged
+
 /obj/item/geiger/Initialize(mapload)
 	soundloop = new(list(src), FALSE)
 	return ..()

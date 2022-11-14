@@ -15,12 +15,14 @@
 	var/dir
 	/// can we cause contaminate?
 	var/can_contaminate
+	/// remaining contamination
+	var/remaining_contam
 
 /datum/radiation_wave/New(atom/source, turf/starting, dir, intensity = 0, falloff_modifier = RAD_FALLOFF_DEFAULT, can_contaminate = TRUE)
 	src.source = source
 	src.current = starting
 	src.dir = dir
-	src.starting_intensity = src.current_intensity = intensity
+	src.starting_intensity = src.current_intensity = src.remaining_contam = intensity
 	src.falloff_modifier = falloff_modifier
 	src.can_contaminate = can_contaminate
 
@@ -31,98 +33,79 @@
 	..()
 	return QDEL_HINT_IWILLGC
 
-
-
 /datum/radiation_wave/process(delta_time)
-	master_turf = get_step(master_turf, move_dir)
-	if(!master_turf)
+	current = get_step(current, dir)
+	if(!current)
 		qdel(src)
 		return
-	steps++
-	var/list/atoms = get_rad_atoms()
-
-	var/strength
-	if(steps>1)
-		strength = INVERSE_SQUARE(intensity, max(range_modifier*steps, 1), 1)
-	else
-		strength = intensity
-
+	++steps
+	var/list/atom/atoms = atoms_within_line()
+	var/effective_steps = max(falloff_modifier * steps, 1)
+	var/strength = steps > 1? INVERSE_SQUARE(current_intensity, effective_steps) : current_intensity
 	if(strength<RAD_BACKGROUND_RADIATION)
 		qdel(src)
 		return
+	var/contaminated = radiate(atoms, strength)
+	if(contaminated)
+		remaining_contam = max(0, remaining_contam - contaminated)
+	process_obstructions(atoms) // reduce our overall strength if there are radiation insulators
 
-	if(radiate(atoms, FLOOR(min(strength,remaining_contam), 1)))
-		//oof ow ouch
-		remaining_contam = max(0,remaining_contam-((min(strength,remaining_contam)-RAD_MINIMUM_CONTAMINATION) * RAD_CONTAMINATION_STR_COEFFICIENT))
-	check_obstructions(atoms) // reduce our overall strength if there are radiation insulators
+/datum/radiation_wave/proc/atoms_within_line()
+	. = list()
+	var/cmove_dir = dir
+	// prevent corners overlapping
+	var/cdist = (cmove_dir & (NORTH|SOUTH)) ? (steps - 1) : steps
+	var/turf/cturf = current
+	// get current
+	. += get_rad_contents(cturf)
+	// scan left
+	var/turf/cscan = cturf
+	var/dscan = turn(cmove_dir, 90)
+	for(var/i in 1 to cdist)
+		cscan = get_step(cscan, dscan)
+		if(isnull(cscan))
+			break
+		. += get_rad_contents(cscan)
+	// scan right
+	cscan = cturf
+	dscan = turn(cmove_dir, -90)
+	for(var/i in 1 to cdist)
+		cscan = get_step(cscan, dscan)
+		if(isnull(cscan))
+			break
+		. += get_rad_contents(cscan)
 
-/datum/radiation_wave/proc/get_rad_atoms()
-	var/list/atoms = list()
-	var/distance = steps
-	var/cmove_dir = move_dir
-	var/cmaster_turf = master_turf
-
-	if(cmove_dir == NORTH || cmove_dir == SOUTH)
-		distance-- //otherwise corners overlap
-
-	atoms += get_rad_contents(cmaster_turf)
-
-	var/turf/place
-	for(var/dir in __dirs) //There should be just 2 dirs in here, left and right of the direction of movement
-		place = cmaster_turf
-		for(var/i in 1 to distance)
-			place = get_step(place, dir)
-			if(!place)
-				break
-			atoms += get_rad_contents(place)
-
-	return atoms
-
-/datum/radiation_wave/proc/check_obstructions(list/atoms)
-	var/width = steps
-	var/cmove_dir = move_dir
-	if(cmove_dir == NORTH || cmove_dir == SOUTH)
-		width--
-	width = 1+(2*width)
-
-	for(var/k in 1 to atoms.len)
-		var/atom/thing = atoms[k]
-		if(!thing)
+/**
+ * reduce our intensity based on stuff with radiation insulation
+ * insulating objects have higher effect to us the closer they are to our start
+ * which is a shit model of radiation but hey it's faster than
+ * fully raycasting everything (kinda) (probably)
+ */
+/datum/radiation_wave/proc/process_obstructions(list/atoms)
+	var/cwidth = 1 + ((dir & (NORTH|SOUTH)) ? (steps - 1) : steps) * 2
+	for(var/atom/A as anything in atoms)
+		if(SEND_SIGNAL(A, COMSIG_ATOM_RAD_WAVE_PASSING, src, cwidth) & COMPONENT_RAD_WAVE_HANDLED)
 			continue
-		if (SEND_SIGNAL(thing, COMSIG_ATOM_RAD_WAVE_PASSING, src, width) & COMPONENT_RAD_WAVE_HANDLED)
-			continue
-		if (thing.rad_insulation != RAD_NO_INSULATION)
+		if(A.rad_insulation != RAD_NO_INSULATION)
 			intensity *= (1-((1-thing.rad_insulation)/width))
 
+/**
+ * hits atoms with radiation wave
+ * hits amount of contamination inflicted
+ */
 /datum/radiation_wave/proc/radiate(list/atoms, strength)
-	var/can_contam = strength >= RAD_MINIMUM_CONTAMINATION
-	var/list/contam_atoms = list()
-	for(var/k in 1 to atoms.len)
-		var/atom/thing = atoms[k]
-		if(!thing)
+	var/cannot_contam = strength < RAD_MINIMUM_CONTAMINATION
+	var/list/contaminating = list()
+	for(var/atom/A as anything in atoms)
+		A.rad_act(strength)
+		if(radiation_infect_ignore[A.type] || cannot_contam)
 			continue
-		thing.rad_act(strength)
-
-		// This list should only be for types which don't get contaminated but you want to look in their contents
-		// If you don't want to look in their contents and you don't want to rad_act them:
-		// modify the ignored_things list in __HELPERS/radiation.dm instead
-		var/static/list/blacklisted = typecacheof(list(
-			/turf,
-			/obj/structure/cable,
-			/obj/machinery/atmospherics,
-			/obj/item/ammo_casing,
-			/obj/singularity
-			))
-		if(!can_contaminate || blacklisted[thing.type])
+		if((A.rad_flags & RAD_NO_CONTAMINATE) || (SEND_SIGNAL(thing, COMSIG_ATOM_RAD_CONTAMINATING, strength) & COMPONENT_BLOCK_CONTAMINATION))
 			continue
-		if((thing.rad_flags & RAD_NO_CONTAMINATE) || SEND_SIGNAL(thing, COMSIG_ATOM_RAD_CONTAMINATING, strength) & COMPONENT_BLOCK_CONTAMINATION)
-			continue
-		contam_atoms += thing
-	var/did_contam = 0
-	if(can_contam && contam_atoms.len)
-		var/rad_strength = ((strength-RAD_MINIMUM_CONTAMINATION) * RAD_CONTAMINATION_STR_COEFFICIENT)/contam_atoms.len
-		for(var/A in contam_atoms)
-			var/atom/thing = A
-			thing.AddComponent(/datum/component/radioactive, rad_strength, source)
-			did_contam = 1
-	return did_contam
+		contaminating += A
+	. = 0
+	if(!cannot_contam)
+		var/contam_strength = min(((strength - RAD_MINIMUM_CONTAMINATION) * RAD_CONTAMINATION_STR_COEFFICIENT) / length(contaminating), starting_intensity * RAD_CONTAMINATION_MAXIMUM_OBJECT_RATIO)
+		for(var/atom/A as anything in contaminating)
+			A.AddComponent(/datum/component/radioactive, contam_strength, source)
+			. += contam_strength
