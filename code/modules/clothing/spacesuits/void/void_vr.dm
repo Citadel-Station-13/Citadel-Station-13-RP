@@ -10,7 +10,7 @@
 		SPECIES_TAJ         = 'icons/obj/clothing/species/tajaran/hats.dmi',
 		SPECIES_SKRELL      = 'icons/obj/clothing/species/skrell/hats.dmi',
 		SPECIES_UNATHI      = 'icons/obj/clothing/species/unathi/hats.dmi',
-		SPECIES_UNATHI_DIGI = 'icons/obj/clothing/species/unathi/suits.dmi',
+		SPECIES_UNATHI_DIGI = 'icons/obj/clothing/species/unathi/hats.dmi',
 		SPECIES_TESHARI     = 'icons/obj/clothing/species/teshari/hats.dmi',
 		SPECIES_NEVREAN     = 'icons/obj/clothing/species/nevrean/hats.dmi',
 		SPECIES_AKULA       = 'icons/obj/clothing/species/akula/hats.dmi',
