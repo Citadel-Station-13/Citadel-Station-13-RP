@@ -41,7 +41,7 @@
 	++steps
 	var/list/atom/atoms = atoms_within_line()
 	var/effective_steps = max(falloff_modifier * steps, 1)
-	var/strength = steps > 1? INVERSE_SQUARE(current_intensity, effective_steps) : current_intensity
+	var/strength = steps > 1? INVERSE_SQUARE(current_intensity, effective_steps, 1) : current_intensity
 	if(strength<RAD_BACKGROUND_RADIATION)
 		qdel(src)
 		return
@@ -86,7 +86,7 @@
 	for(var/atom/A as anything in atoms)
 		if(SEND_SIGNAL(A, COMSIG_ATOM_RAD_WAVE_PASSING, src, cwidth) & COMPONENT_RAD_WAVE_HANDLED)
 			continue
-		if(A.rad_insulation != RAD_NO_INSULATION)
+		if(A.rad_insulation != RAD_INSULATION_NONE)
 			current_intensity *= (1-((1-A.rad_insulation)/cwidth))
 
 /**
@@ -100,7 +100,7 @@
 		A.rad_act(strength)
 		if(radiation_infect_ignore[A.type] || cannot_contam)
 			continue
-		if((A.rad_flags & RAD_NO_CONTAMINATE) || (SEND_SIGNAL(thing, COMSIG_ATOM_RAD_CONTAMINATING, strength) & COMPONENT_BLOCK_CONTAMINATION))
+		if((A.rad_flags & RAD_NO_CONTAMINATE) || (SEND_SIGNAL(A, COMSIG_ATOM_RAD_CONTAMINATING, strength) & COMPONENT_BLOCK_CONTAMINATION))
 			continue
 		contaminating += A
 	. = 0
