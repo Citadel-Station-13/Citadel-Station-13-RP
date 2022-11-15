@@ -509,6 +509,8 @@
 	// todo: language sources and holder
 	for(var/id in intrinsic_languages)
 		H.add_language(id)
+	if(galactic_language)
+		H.add_language(LANGUAGE_ID_COMMON)
 
 	if(holder_type)
 		H.holder_type = holder_type
@@ -532,6 +534,9 @@
 	// todo: language sources and holder
 	for(var/id in intrinsic_languages)
 		H.remove_language(id)
+	if(galactic_language)
+		H.remove_language(LANGUAGE_ID_COMMON)
+
 	remove_inherent_spells(H)
 	remove_inherent_verbs(H)
 	H.holder_type = null
