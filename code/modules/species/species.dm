@@ -532,7 +532,7 @@
  */
 /datum/species/proc/on_remove(mob/living/carbon/human/H)
 	// todo: language sources and holder
-	for(var/id in get_intrinsic_language_ids()in)
+	for(var/id in get_intrinsic_language_ids())
 		H.remove_language(id)
 	if(galactic_language)
 		H.remove_language(LANGUAGE_ID_COMMON)
