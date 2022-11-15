@@ -119,7 +119,7 @@ export const SpeciesPicker = (props, context) => {
                       bottom="10px"
                       left="10px"
                       right="10px"
-                      width="100%"
+                      width="auto"
                       position="absolute"
                       textAlign="center"
                     >
@@ -143,7 +143,7 @@ export const SpeciesPicker = (props, context) => {
                         ))}
                       <Button color="transparent"
                         textAlign="center"
-                        width="90%"
+                        width="100% "
                         onClick={() => act('pick', { id: selected?.id })}
                       >
                         Select
