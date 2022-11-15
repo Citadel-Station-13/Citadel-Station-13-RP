@@ -471,7 +471,7 @@
 /obj/machinery/power/port_gen/pacman/super/UseFuel()
 	//produces a tiny amount of radiation when in use
 	if (prob(2*power_output))
-		radiation_pulse(src, RADIATION_INTENSITY_SUPERPACMAN)
+		radiation_pulse(src, RAD_INTENSITY_SUPERPACMAN)
 	..()
 
 /obj/machinery/power/port_gen/pacman/super/explode()

@@ -188,6 +188,7 @@
 		return ..()
 
 /mob/living/simple_mob/slime/promethean/rad_act(severity)
+	. = ..()
 	rad_glow += severity
 	rad_glow = clamp(rad_glow,0,250)
 	if(rad_glow > 1)

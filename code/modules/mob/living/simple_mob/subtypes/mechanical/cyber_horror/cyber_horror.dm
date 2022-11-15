@@ -498,12 +498,12 @@
 /obj/item/projectile/arc/radioactive/priest
 	name  = "superheated plama discharge"
 	icon_state = "plasma3"
-	rad_power = 10
+	rad_power = RAD_INTENSITY_PROJ_ARC_HORROR_PRIEST
 
 /obj/item/projectile/arc/radioactive/priest/on_impact(turf/T)
 	new /obj/effect/explosion(T)
-	SSradiation.radiate(T, rad_power)
-	explosion(T, 0, 1, 4, adminlog = FALSE)
+	SSradiation.radiate(T, RAD_INTENSITY_PROJ_ARC_HORROR_PRIEST)
+	explosion(T, 0, 1, 4)
 
 ////////////////////////
 //Lavaland Cyber_Horrors

@@ -21,11 +21,9 @@
 /// standalone shockpaddles - fail tick
 #define RAD_INTENSITY_STANDALONE_DEFIB_FAIL 150
 
-//? mecha
-/// mecha nuclear generator rad per tick
-#define RAD_INTENSITY_MECH_REACTOR_TICK 50
-
 //? machines
+/// gravity generator grav per tick while charging/discharging
+#define RAD_INTENSITY_GRAVGEN_OPERATING_TICK 300
 /**
  * particle smasher lost energy to radiation conversion
  * at time of writing, energy loss is usually 5-30 per tick.
@@ -43,9 +41,25 @@
  */
 #define RAD_INTENSITY_SUPERPACMAN_BOOM_FACTOR 100
 
+//? materials
+/// supermatter material radiation on pickup per sheet
+#define RAD_INTENSITY_MAT_SUPERMATTER_PICKUP_PER_SHEET(s) (s * 50)
+/// supermatter material radiation on explode per sheet
+#define RAD_INTENSITY_MAT_SUPERMATTER_EXPLODE_PER_SHEET(s) (s * 200)
+
+//? mecha
+/// mecha nuclear generator rad per tick
+#define RAD_INTENSITY_MECH_REACTOR_TICK 50
+
+//? mobs
+/// xenobio green slime per tick
+#define RAD_INTENSITY_GREEN_SLIME_TICK 500
+
 //? projectiles
 /// arc projectiles default
 #define RAD_INTENSITY_PROJ_ARC 450
+/// cyberhorror priest arc projectiles
+#define RAD_INTENSITY_PROJ_ARC_HORROR_PRIEST 450
 
 //? chems
 /// irradiated nanites - area
