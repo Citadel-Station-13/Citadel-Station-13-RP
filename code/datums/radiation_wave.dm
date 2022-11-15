@@ -87,7 +87,7 @@
 		if(SEND_SIGNAL(A, COMSIG_ATOM_RAD_WAVE_PASSING, src, cwidth) & COMPONENT_RAD_WAVE_HANDLED)
 			continue
 		if(A.rad_insulation != RAD_NO_INSULATION)
-			intensity *= (1-((1-thing.rad_insulation)/width))
+			current_intensity *= (1-((1-A.rad_insulation)/cwidth))
 
 /**
  * hits atoms with radiation wave

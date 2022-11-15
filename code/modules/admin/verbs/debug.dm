@@ -511,10 +511,10 @@
 		if(Rad.anchored)
 			if(!Rad.P)
 				var/obj/item/tank/phoron/Phoron = new/obj/item/tank/phoron(Rad)
-				Phoron.air_contents.gas[/datum/gas/phoron] = 70
-				Rad.drainratio = 0
+				/// supercooled so we don't just maxcap the engine lol
+				Phoron.air_contents.adjust_gas_temp(/datum/gas/phoron, 350, 25)
+				Phoron.forceMove(Rad)
 				Rad.P = Phoron
-				Phoron.loc = Rad
 
 			if(!Rad.active)
 				Rad.toggle_power()
