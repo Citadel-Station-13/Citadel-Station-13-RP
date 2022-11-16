@@ -123,13 +123,13 @@ export const SpeciesPicker = (props, context) => {
                       position="absolute"
                       textAlign="center"
                     >
-                      {isRestricted(selected) && (
+                      {!!isRestricted(selected) && (
                         <NoticeBox danger textAlign="center">
                           This is a restricted species.
                           You can select it, but cannot join the game with it in most normal roles.
                         </NoticeBox>
                       )}
-                      {isWhitelisted(selected) && (hasWhitelist(selected)
+                      {!!isWhitelisted(selected) && (hasWhitelist(selected)
                         ?(
                           <NoticeBox success textAlign="center">
                             You have the whitelist to play this species.
