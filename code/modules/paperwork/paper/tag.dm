@@ -8,10 +8,10 @@ GLOBAL_LIST_INIT(paper_tags, paper_tags())
 			continue
 		. += new path
 
-/obj/item/paper/proc/parse_tags(str, mob/user)
+/obj/item/paper/proc/parse_tags(str, mob/user, obj/item/pen/T)
 	. = str
 	for(var/datum/paper_tag/T as anything in GLOB.paper_tags)
-		. = T.run(., user, src)
+		. = T.run(., user, src, T)
 
 /**
  * datumized paper tag system ~silicons
@@ -33,6 +33,7 @@ GLOBAL_LIST_INIT(paper_tags, paper_tags())
 /**
  * user can be null
  * P can be null
+ * T can be null
  */
 /datum/paper_tag/proc/run(str, mob/user, obj/item/paper/P, obj/item/pen/T)
 	return str
@@ -48,6 +49,7 @@ GLOBAL_LIST_INIT(paper_tags, paper_tags())
 /**
  * user can be null
  * P can be null
+ * T can be null
  */
 /datum/paper_tag/single/proc/replace_with(mob/user, obj/item/paper/P, obj/item/pen/T)
 	return ""

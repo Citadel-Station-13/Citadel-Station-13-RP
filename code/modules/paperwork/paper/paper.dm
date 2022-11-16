@@ -253,7 +253,7 @@
 /obj/item/paper/proc/parsepencode(var/t, var/obj/item/pen/P, mob/user as mob, var/iscrayon = 0)
 	//! todo: do this shit in rust_g or something
 	//? repacements
-	t = parse_tags(t, user)
+	t = parse_tags(t, user, P)
 
 //	t = copytext(sanitize(t),1,MAX_MESSAGE_LEN)
 
