@@ -141,12 +141,12 @@ var/datum/planet/classd/planet_classd = null
 	indoor_sounds_type = /datum/looping_sound/weather/wind/indoors
 
 	// How much radiation a mob gets while on an outside tile.
-	var/direct_rad_low = RAD_LEVEL_LOW
-	var/direct_rad_high = RAD_LEVEL_MODERATE
+	var/direct_rad_low = RAD_INTENSITY_FALLOUT_DIRECT_LOW
+	var/direct_rad_high = RAD_INTENSITY_FALLOUT_DIRECT_HIGH
 
 	// How much radiation is bursted onto a random tile near a mob.
-	var/fallout_rad_low = RAD_LEVEL_HIGH
-	var/fallout_rad_high = RAD_LEVEL_VERY_HIGH
+	var/fallout_rad_low = RAD_INTENSITY_FALLOUT_INDIRECT_LOW
+	var/fallout_rad_high = RAD_INTENSITY_FALLOUT_INDIRECT_HIGH
 
 /datum/weather/classd/fallout/process_effects()
 	..()
@@ -170,4 +170,4 @@ var/datum/planet/classd/planet_classd = null
 	if(!istype(T))
 		return
 	if(T.outdoors)
-		SSradiation.radiate(T, rand(fallout_rad_low, fallout_rad_high))
+		radiation_pulse(T, rand(fallout_rad_low, fallout_rad_high))

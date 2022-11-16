@@ -15,6 +15,12 @@
 //! Pulse - Strength
 //* When updating, write what it's for and how it's used so future coders don't have a Bad Time
 
+//? chems
+/// irradiated nanites - area
+#define RAD_INTENSITY_CHEM_IRRADIATED_NANITES 50
+/// irradiated nanites - self
+#define RAD_INTENSITY_CHEM_IRRADIATED_NANITES_SELF 25
+
 //? items
 /// standalone shockpaddles - use
 #define RAD_INTENSITY_STANDALONE_DEFIB 100
@@ -80,11 +86,15 @@
 /// cyberhorror priest arc projectiles
 #define RAD_INTENSITY_PROJ_ARC_HORROR_PRIEST 450
 
-//? chems
-/// irradiated nanites - area
-#define RAD_INTENSITY_CHEM_IRRADIATED_NANITES 50
-/// irradiated nanites - self
-#define RAD_INTENSITY_CHEM_IRRADIATED_NANITES_SELF 25
+//? weather
+/// fallout radiation amount - direct
+#define RAD_INTENSITY_FALLOUT_DIRECT_LOW 5
+/// fallout radiation amount - direct
+#define RAD_INTENSITY_FALLOUT_DIRECT_HIGH 15
+/// fallout radiation amount - direct
+#define RAD_INTENSITY_FALLOUT_INDIRECT_LOW 150
+/// fallout radiation amount - direct
+#define RAD_INTENSITY_FALLOUT_INDIRECT_HIGH 750
 
 //! Pulse - Other
 //* When updating, write what it's for and how it's used so future coders don't have a Bad Time
@@ -110,3 +120,7 @@
 #define RAD_CONTAMINATION_MAXIMUM_OBJECT_RATIO 0.1	// max amount of starting intensity that can be imparted to one object at a time
 /// can things contaminate by default?
 #define RAD_CONTAMINATION_DEFAULT TRUE
+/// amount of contamination washed out by a single tick of a shower, or 10 units of water
+#define RAD_CONTAMINATION_CLEANSE_POWER 25
+/// amount of contamination washed out as a multiplier
+#define RAD_CONTAMINATION_CLEANSE_FACTOR 0.8

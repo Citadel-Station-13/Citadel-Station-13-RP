@@ -119,8 +119,6 @@
 			else
 				to_chat(user, "<span class='notice'>You need a tighter grip.</span>")
 
-
-
 /obj/machinery/shower
 	name = "shower"
 	desc = "The HS-451. Installed in the 2550s by the Hygiene Division."
@@ -211,7 +209,10 @@
 
 //Yes, showers are super powerful as far as washing goes.
 /obj/machinery/shower/proc/wash(atom/movable/O as obj|mob)
-	if(!on) return
+	if(!on)
+		return
+
+#warn clean rads
 
 	if(isliving(O))
 		var/mob/living/L = O
