@@ -17,6 +17,8 @@
 	var/can_contaminate
 	/// remaining contamination
 	var/remaining_contam
+	/// mobs we already hit - we REALLY do not want to double hit mobs and turn 1500 intensity one-off to lethal.
+	var/list/hit_mobs
 
 /datum/radiation_wave/New(atom/source, turf/starting, dir, intensity = 0, falloff_modifier = RAD_FALLOFF_DEFAULT, can_contaminate = TRUE)
 	src.source = source
@@ -25,11 +27,13 @@
 	src.starting_intensity = src.current_intensity = src.remaining_contam = intensity
 	src.falloff_modifier = falloff_modifier
 	src.can_contaminate = can_contaminate
+	hit_mobs = list()
 
 	START_PROCESSING(SSradiation, src)
 
 /datum/radiation_wave/Destroy()
 	STOP_PROCESSING(SSradiation, src)
+	hit_mobs = null
 	..()
 	return QDEL_HINT_IWILLGC
 
@@ -98,6 +102,10 @@
 	var/list/contaminating = list()
 	for(var/atom/A as anything in atoms)
 		A.rad_act(strength)
+		if(GLOB.typecache_living[A.type])
+			if(hit_mobs[A])
+				continue
+			hit_mobs[A] = TRUE	// let's NOT doublehit mobs
 		if(radiation_infect_ignore[A.type] || cannot_contam)
 			continue
 		if((A.rad_flags & RAD_NO_CONTAMINATE) || (SEND_SIGNAL(A, COMSIG_ATOM_RAD_CONTAMINATING, strength) & COMPONENT_BLOCK_CONTAMINATION))

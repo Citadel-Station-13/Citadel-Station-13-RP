@@ -501,8 +501,8 @@
 	rad_power = RAD_INTENSITY_PROJ_ARC_HORROR_PRIEST
 
 /obj/item/projectile/arc/radioactive/priest/on_impact(turf/T)
+	. = ..()
 	new /obj/effect/explosion(T)
-	SSradiation.radiate(T, RAD_INTENSITY_PROJ_ARC_HORROR_PRIEST)
 	explosion(T, 0, 1, 4)
 
 ////////////////////////

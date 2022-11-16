@@ -533,7 +533,7 @@
 	..()
 	add_avail(power_gen)
 	if(panel_open && irradiate)
-		SSradiation.radiate(src, RAD_INTENSITY_RADIOISOTOPE_GEN)
+		radiation_pulse(src, RAD_INTENSITY_RADIOISOTOPE_GEN)
 
 /obj/machinery/power/rtg/examine(mob/user)
 	. = ..()

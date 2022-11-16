@@ -315,7 +315,8 @@
 
 /obj/item/stack/material/supermatter/legacy_ex_act(severity)	// An incredibly hard to manufacture material, SM chunks are unstable by their 'stabilized' nature.
 	if(prob((4 / severity) * 20))
-		SSradiation.radiate(get_turf(src), amount * 4)
+		// you dun fucked up
+		radiation_pulse(src, RAD_INTENSITY_MAT_SUPERMATTER_EXPLODE_PER_SHEET(amount))
 		explosion(get_turf(src),round(amount / 12) , round(amount / 6), round(amount / 3), round(amount / 25))
 		qdel(src)
 		return

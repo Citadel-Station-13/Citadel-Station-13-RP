@@ -9,8 +9,20 @@
 //* When updating, write what it's for and how it's used so future coders don't have a Bad Time
 
 //? Only defaults are defined for the above reasons.
+/// default falloff
 #define RAD_FALLOFF_NORMAL 1
+/// default falloff for contaminated objects
 #define RAD_FALLOFF_CONTAMINATION_NORMAL 2
+/// default falloff for anomalies
+#define RAD_FALLOFF_ANOMALY 0.33
+/// fission engine
+#define RAD_FALLOFF_ENGINE_FISSION 0.5
+/// fusion engine
+#define RAD_FALLOFF_ENGINE_FUSION 0.5
+/// supermatter
+#define RAD_FALLOFF_ENGINE_SUPERMATTER 0.5
+/// singulo
+#define RAD_FALLOFF_ENGINE_SINGULARITY 0.5
 
 //! Pulse - Strength
 //* When updating, write what it's for and how it's used so future coders don't have a Bad Time
@@ -47,18 +59,22 @@
  */
 #define RAD_INTENSITY_SUPERPACMAN_BOOM_FACTOR 100
 
-//? materials
+//? materials - radioactivity
+#define RAD_INTENSITY_MAT_URANIUM 60
+#define RAD_INTENSITY_MAT_SUPERMATTER 240
+
+//? materials - snowflake
 /// supermatter material radiation on pickup per sheet
 #define RAD_INTENSITY_MAT_SUPERMATTER_PICKUP_PER_SHEET(s) (s * 50)
 /// supermatter material radiation on explode per sheet
 #define RAD_INTENSITY_MAT_SUPERMATTER_EXPLODE_PER_SHEET(s) (s * 200)
-
-//? materials - snowflake
 /**
  * uranium airlock
  * at time of writing this is about every 4 seconds
  */
 #define RAD_INTENSITY_MAT_SPECIAL_URANIUM_AIRLOCK 150
+/// simple door divisor for material radioactivity
+#define RAD_INTENSITY_DIVISOR_SIMPLE_DOOR 3
 
 //? mecha
 /// mecha nuclear generator rad per tick
@@ -96,6 +112,16 @@
 /// fallout radiation amount - direct
 #define RAD_INTENSITY_FALLOUT_INDIRECT_HIGH 750
 
+//? xenoarcheology
+/// anomaly radiation low
+#define RAD_INTENSITY_ANOMALY_PULSE_LOW 250
+/// anomaly radiation high
+#define RAD_INTENSITY_ANOMALY_PULSE_LOW 400
+/// anomaly radiation low - broken
+#define RAD_INTENSITY_ANOMALY_SMASH_LOW 200
+/// anomaly radiation high - broken
+#define RAD_INTENSITY_ANOMALY_SMASH_HIGH 500
+
 //! Pulse - Other
 //* When updating, write what it's for and how it's used so future coders don't have a Bad Time
 
@@ -109,12 +135,14 @@
  * the **default** half life of a radioactive atom, in ds
  */
 #define RAD_HALF_LIFE_DEFAULT (9 SECONDS)
+/// broken anomaly decay
+#define RAD_HALF_LIFE_ANOMALY_SMASH (1 MINUTES)
 
 //! contamination - uh oh
 // WARNING: The deines below could have disastrous consequences if tweaked incorrectly. See: The great SM purge of Oct.6.2017
 // contamination_chance = 		(strength-RAD_MINIMUM_CONTAMINATION) * RAD_CONTAMINATION_CHANCE_COEFFICIENT * min(1/(steps*RAD_DISTANCE_COEFFICIENT), 1))
 // contamination_strength = 	(strength-RAD_MINIMUM_CONTAMINATION) * RAD_CONTAMINATION_STR_COEFFICIENT
-#define RAD_MINIMUM_CONTAMINATION 300				// How strong does a radiation wave have to be to contaminate objects
+#define RAD_MINIMUM_CONTAMINATION 200				// How strong does a radiation wave have to be to contaminate objects
 #define RAD_CONTAMINATION_CHANCE_COEFFICIENT 0.005	// Higher means higher strength scaling contamination chance
 #define RAD_CONTAMINATION_STR_COEFFICIENT 0.99		// Higher means higher strength scaling contamination strength
 #define RAD_CONTAMINATION_MAXIMUM_OBJECT_RATIO 0.1	// max amount of starting intensity that can be imparted to one object at a time

@@ -530,7 +530,7 @@
 	..()
 
 /mob/living/simple_mob/slime/xenobio/green/proc/irradiate()
-	SSradiation.radiate(src, RAD_INTENSITY_GREEN_SLIME_TICK)
+	radiation_pulse(src, RAD_INTENSITY_GREEN_SLIME_TICK)
 
 /mob/living/simple_mob/slime/xenobio/pink
 	desc = "This slime has regenerative properties."

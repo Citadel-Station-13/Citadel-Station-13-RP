@@ -274,7 +274,7 @@
 	if(!total_radiation)
 		return
 
-	SSradiation.radiate(src, total_radiation)
+	radiation_pulse(src, total_radiation)
 	return total_radiation
 
 /turf/simulated/wall/proc/burn(temperature)

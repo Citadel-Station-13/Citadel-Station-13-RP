@@ -1,4 +1,4 @@
-#define REACTOR_RADIATION_MULTIPLIER 20
+#define REACTOR_RADIATION_MULTIPLIER 200
 #define BREACH_RADIATION_MULTIPLIER 0.1
 #define REACTOR_TEMPERATURE_CUTOFF 10000
 #define REACTOR_RADS_TO_MJ 10000
@@ -104,7 +104,7 @@
 
 	var/healthmul = (((health / max_health) - 1) / -1)
 	var/power = (decay_heat / REACTOR_RADS_TO_MJ) * max(healthmul, 0.1)
-	SSradiation.radiate(src, max(power * REACTOR_RADIATION_MULTIPLIER, 0))
+	radiation_pulse(src, max(power * REACTOR_RADIATION_MULTIPLIER, 0), RAD_FALLOFF_ENGINE_FISSION)
 
 /obj/machinery/power/fission/attack_hand(mob/user)
 	nano_ui_interact(user)
