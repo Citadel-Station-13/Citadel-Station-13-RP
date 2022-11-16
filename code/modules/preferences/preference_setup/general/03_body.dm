@@ -189,7 +189,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 				O.remove_rejuv()
 			else if(status == "cyborg")
 				if(pref.rlimb_data[name])
-					O.robotize(pref.rlimb_data[name])
+					// use force to override prior robotizations oh god THIS IS BAD
+					O.robotize(pref.rlimb_data[name], null, null, TRUE)
 				else
 					O.robotize()
 
