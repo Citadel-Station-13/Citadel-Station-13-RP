@@ -1,7 +1,21 @@
-/*
+/**
  * Paper
  * also scraps of paper
  */
+#define MAX_PAPER_LENGTH 5000
+#define MAX_PAPER_STAMPS 30 // Too low?
+#define MAX_PAPER_STAMPS_OVERLAYS 4
+#define MODE_READING 0
+#define MODE_WRITING 1
+#define MODE_STAMPING 2
+
+/**
+ * Paper is now using markdown (like in github pull notes) for ALL rendering
+ * so we do loose a bit of functionality but we gain in easy of use of
+ * paper and getting rid of that crashing bug
+ */
+/obj/item/paper
+
 
 /obj/item/paper
 	name = "sheet of paper"
@@ -237,8 +251,13 @@
 	updateinfolinks()
 
 /obj/item/paper/proc/parsepencode(var/t, var/obj/item/pen/P, mob/user as mob, var/iscrayon = 0)
+	//! todo: do this shit in rust_g or something
+	//? repacements
+	t = parse_tags(t, user)
+
 //	t = copytext(sanitize(t),1,MAX_MESSAGE_LEN)
 
+	//? misc
 	t = replacetext(t, "\[center\]", "<center>")
 	t = replacetext(t, "\[/center\]", "</center>")
 	t = replacetext(t, "\[br\]", "<BR>")
@@ -248,8 +267,6 @@
 	t = replacetext(t, "\[/i\]", "</I>")
 	t = replacetext(t, "\[u\]", "<U>")
 	t = replacetext(t, "\[/u\]", "</U>")
-	t = replacetext(t, "\[time\]", "[stationtime2text()]")
-	t = replacetext(t, "\[date\]", "[stationdate2text()]")
 	t = replacetext(t, "\[large\]", "<font size=\"4\">")
 	t = replacetext(t, "\[/large\]", "</font>")
 	if(findtext(t, "\[sign\]"))
