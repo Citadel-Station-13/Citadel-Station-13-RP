@@ -254,7 +254,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	AddInteraction("<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>")
 	//send this msg to all admins
 
-	for(var/client/X in admins)
+	for(var/client/X in GLOB.admins)
 		if(X.is_preference_enabled(/datum/client_preference/holder/play_adminhelp_ping))
 			SEND_SOUND(X, sound('sound/effects/adminhelp.ogg'))
 		window_flash(X)
@@ -577,7 +577,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
 
 /proc/get_admin_counts(requiredflags = R_BAN)
 	. = list("total" = list(), "noflags" = list(), "afk" = list(), "stealth" = list(), "present" = list())
-	for(var/client/X in admins)
+	for(var/client/X in GLOB.admins)
 		.["total"] += X
 		if(requiredflags != 0 && !check_rights(rights_required = requiredflags, show_msg = FALSE, C = X))
 			.["noflags"] += X
@@ -612,7 +612,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ahelp)
 /proc/ircadminwho()
 	var/list/message = list("Admins: ")
 	var/list/admin_keys = list()
-	for(var/adm in admins)
+	for(var/adm in GLOB.admins)
 		var/client/C = adm
 		admin_keys += "[C][C.holder.fakekey ? "(Stealth)" : ""][C.is_afk() ? "(AFK)" : ""]"
 

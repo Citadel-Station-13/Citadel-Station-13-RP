@@ -69,7 +69,7 @@
 	var/msg = ""
 	var/num_admins_online = 0
 	if(holder)
-		for(var/client/C in admins)
+		for(var/client/C in GLOB.admins)
 			if(C.holder.fakekey && !((R_ADMIN|R_MOD) & holder.rights))
 				continue
 
@@ -94,7 +94,7 @@
 			num_admins_online++
 
 	else
-		for(var/client/C in admins)
+		for(var/client/C in GLOB.admins)
 			if(!C.holder.fakekey)
 				msg += "\t[C] is a [C.holder.rank]"
 				num_admins_online++
