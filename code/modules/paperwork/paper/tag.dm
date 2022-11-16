@@ -44,7 +44,7 @@ GLOBAL_LIST_INIT(paper_tags, paper_tags())
 	var/cached_replace_query
 
 /datum/paper_tag/single/New()
-	cached_replace_query = "\[tagname\]"
+	cached_replace_query = "\[[tagname]\]"
 
 /**
  * user can be null
