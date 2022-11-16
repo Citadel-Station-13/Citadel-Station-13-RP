@@ -10,8 +10,8 @@ GLOBAL_LIST_INIT(paper_tags, paper_tags())
 
 /obj/item/paper/proc/parse_tags(str, mob/user, obj/item/pen/T)
 	. = str
-	for(var/datum/paper_tag/T as anything in GLOB.paper_tags)
-		. = T.run(., user, src, T)
+	for(var/datum/paper_tag/tag as anything in GLOB.paper_tags)
+		. = tag.transform_string(., user, src, T)
 
 /**
  * datumized paper tag system ~silicons
@@ -35,7 +35,7 @@ GLOBAL_LIST_INIT(paper_tags, paper_tags())
  * P can be null
  * T can be null
  */
-/datum/paper_tag/proc/run(str, mob/user, obj/item/paper/P, obj/item/pen/T)
+/datum/paper_tag/proc/transform_string(str, mob/user, obj/item/paper/P, obj/item/pen/T)
 	return str
 
 /datum/paper_tag/single
@@ -54,7 +54,7 @@ GLOBAL_LIST_INIT(paper_tags, paper_tags())
 /datum/paper_tag/single/proc/replace_with(mob/user, obj/item/paper/P, obj/item/pen/T)
 	return ""
 
-/datum/paper_tag/single/run(str, mob/user, obj/item/paper/P, obj/item/pen/T)
+/datum/paper_tag/single/transform_string(str, mob/user, obj/item/paper/P, obj/item/pen/T)
 	return replacetext(str, cached_replace_query, replace_with(user, P, T))
 
 /datum/paper_tag/single/current_time
