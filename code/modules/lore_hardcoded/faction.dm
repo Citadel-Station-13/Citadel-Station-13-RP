@@ -3,6 +3,8 @@
 	/// station job types you can play as under this - **typepaths** e.g. /datum/job/station/security_officer, etc
 	/// if null, you can play as everything
 	var/list/job_whitelist = list()
+	/// job blacklist
+	var/list/job_blacklist
 	/// where 'desc' is the corporation description, this is what a player should know if they're a contractor
 	var/contractor_info
 	/// list of origins that can select this
@@ -26,6 +28,8 @@
 	return ..()
 
 /datum/lore/character_background/faction/proc/check_job_id(id)
+	if(job_blacklist && job_blacklist[id])
+		return FALSE
 	return job_whitelist? (job_whitelist[id]) : TRUE
 
 /datum/lore/character_background/faction/nanotrasen
@@ -45,6 +49,7 @@
 	the NTS Creon in the privateyl owned Thebes system."
 	contractor_info = "You are an employee working for NanoTrasen. You are not a contractor, <i>you belong here.</i>"
 	job_whitelist = null
+	job_blacklist = list(JOB_ID_TRADER)
 
 /datum/lore/character_background/faction/aether
 	name = "Aether Atmos & Recycling"
@@ -122,7 +127,8 @@
 		JOB_ID_OFFDUTY_EXPLORER,
 		JOB_ID_OFFDUTY_MEDBAY,
 		JOB_ID_OFFDUTY_CARGO,
-		JOB_ID_OFFDUTY_ENGINEER
+		JOB_ID_OFFDUTY_ENGINEER,
+		JOB_ID_TRADER
 		)
 	innate_languages = list(
 		/datum/language/trader
