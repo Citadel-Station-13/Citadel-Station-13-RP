@@ -6,7 +6,7 @@
 
 /proc/count_matriarchs()
 	var/matriarchs = 0
-	for(var/mob/living/silicon/robot/drone/construction/matriarch/M in player_list)
+	for(var/mob/living/silicon/robot/drone/construction/matriarch/M in GLOB.player_list)
 		matriarchs++
 	return matriarchs
 
