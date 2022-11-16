@@ -40,11 +40,11 @@ GLOBAL_LIST_INIT(paper_tags, paper_tags())
 
 /datum/paper_tag/single
 	abstract_type = /datum/paper_tag/single
-	var/tag
+	var/tagname
 	var/cached_replace_query
 
 /datum/paper_tag/single/New()
-	cached_replace_query = "\[[tag\]"
+	cached_replace_query = "\[tagname\]"
 
 /**
  * user can be null
@@ -58,19 +58,19 @@ GLOBAL_LIST_INIT(paper_tags, paper_tags())
 	return replacetext(str, cached_replace_query, replace_with(user, P, T))
 
 /datum/paper_tag/single/current_time
-	tag = "time"
+	tagname = "time"
 
 /datum/paper_tag/single/current_time/replace_with(mob/user, obj/item/paper/P, obj/item/pen/T)
 	return stationtime2text()
 
 /datum/paper_tag/single/current_date
-	tag = "date"
+	tagname = "date"
 
 /datum/paper_tag/single/current_date/replace_with(mob/user, obj/item/paper/P, obj/item/pen/T)
 	return stationdate2text()
 
 /datum/paper_tag/single/current_map
-	tag = "station"
+	tagname = "station"
 
 /datum/paper_tag/single/current_date/replace_with(mob/user, obj/item/paper/P, obj/item/pen/T)
 	return GLOB.using_map.name
