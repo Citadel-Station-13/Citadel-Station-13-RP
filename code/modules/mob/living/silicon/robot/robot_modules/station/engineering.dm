@@ -96,7 +96,7 @@
 	src.modules += new /obj/item/floor_painter(src)
 	src.modules += new /obj/item/inflatable_dispenser/robot(src)
 	src.emag = new /obj/item/melee/baton/robot/arm(src)
-	src.modules += new /obj/item/geiger(src)
+	src.modules += new /obj/item/geiger/cyborg(src)
 	src.modules += new /obj/item/rcd/electric/mounted/borg(src)
 	src.modules += new /obj/item/pickaxe/plasmacutter(src)
 	src.modules += new /obj/item/gripper/no_use/loader(src)
