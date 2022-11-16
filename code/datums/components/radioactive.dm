@@ -7,8 +7,8 @@
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
 
 	var/source
-
-	var/hl3_release_date //the half-life measured in ticks
+	/// half life in deciseconds
+	var/hl3_release_date
 	var/strength
 	var/can_contaminate
 
@@ -43,14 +43,16 @@
 	master.remove_filter("rad_glow")
 	return ..()
 
-/datum/component/radioactive/process()
+/datum/component/radioactive/process(delta_time)
 	if(!prob(50))
 		return
 	radiation_pulse(parent, strength, RAD_FALLOFF_CONTAMINATION_NORMAL, FALSE, can_contaminate)
 
 	if(!hl3_release_date)
 		return
-	strength -= strength / hl3_release_date
+	// delta time is in seconds, not deciseconds
+	// strength -= (1 / 2) ** ((delta_time * 0.1) / RAD_HALF_LIFE_DEFAULT
+	strength -= (1 / 2) ** (delta_time / (hl3_release_date * 0.1))
 	if(strength <= RAD_BACKGROUND_RADIATION)
 		addtimer(CALLBACK(src, .proc/check_dissipate), 5 SECONDS)
 		return PROCESS_KILL
