@@ -318,7 +318,7 @@
 		C.layer = layer + 0.1
 
 	if(ismob(C))
-		user_buckle_mob(C, user)
+		user_buckle_mob(C, user = user)
 
 	return 1
 
@@ -353,15 +353,15 @@
 	if(!isturf(dest))	//if there still is nowhere to unload, cancel out since the vehicle is probably in nullspace
 		return 0
 
+	if(ismob(load))
+		unbuckle_mob(load, BUCKLE_OP_FORCE)
+
 	load.forceMove(dest)
 	load.setDir(get_dir(loc, dest))
 	load.anchored = 0		//we can only load non-anchored items, so it makes sense to set this to false
 	load.pixel_x = initial(load.pixel_x)
 	load.pixel_y = initial(load.pixel_y)
 	load.layer = initial(load.layer)
-
-	if(ismob(load))
-		unbuckle_mob(load)
 
 	load = null
 
