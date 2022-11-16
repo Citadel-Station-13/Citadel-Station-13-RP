@@ -72,5 +72,7 @@ GLOBAL_LIST_INIT(paper_tags, paper_tags())
 /datum/paper_tag/single/current_map
 	tagname = "station"
 
-/datum/paper_tag/single/current_date/replace_with(mob/user, obj/item/paper/P, obj/item/pen/T)
-	return GLOB.using_map.name
+/datum/paper_tag/single/current_map/replace_with(mob/user, obj/item/paper/P, obj/item/pen/T)
+	return GLOB.using_map.station_name
+
+//? todo: [station_controller]
