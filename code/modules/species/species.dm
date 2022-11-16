@@ -224,7 +224,7 @@
 	/// Damage modifier for overdose
 	var/chemOD_mod = 1
 	/// Same flags as glasses.
-	var/vision_flags = SEE_SELF
+	var/vision_flags = SIGHT_FLAGS_DEFAULT
 
 //! ## Death vars.
 	var/meat_type = /obj/item/reagent_containers/food/snacks/meat/human
