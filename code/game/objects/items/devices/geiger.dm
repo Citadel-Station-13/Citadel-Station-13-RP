@@ -29,6 +29,7 @@
 /obj/item/geiger/process(delta_time)
 	get_radiation()
 
+#warn store like on main
 /obj/item/geiger/proc/get_radiation()
 	if(!scanning)
 		return

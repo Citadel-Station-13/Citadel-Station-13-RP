@@ -2,7 +2,7 @@
 /obj/effect/map_effect/radiation_emitter
 	name = "radiation emitter"
 	icon_state = "radiation_emitter"
-	var/radiation_power = 30 // Bigger numbers means more radiation.
+	var/radiation_power = 200 // Bigger numbers means more radiation.
 
 /obj/effect/map_effect/radiation_emitter/Initialize(mapload)
 	START_PROCESSING(SSobj, src)
@@ -13,12 +13,12 @@
 	return ..()
 
 /obj/effect/map_effect/radiation_emitter/process(delta_time)
-	SSradiation.radiate(src, radiation_power)
+	radiation_pulse(src, radiation_power)
 
 /obj/effect/map_effect/radiation_emitter/strong
-	radiation_power = 100
+	radiation_power = 750
 
 /obj/effect/map_effect/radiation_emitter/chernobyl // I need this.
-	radiation_power = 500
+	radiation_power = 2000
 
 

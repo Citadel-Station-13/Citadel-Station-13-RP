@@ -593,7 +593,7 @@
 	attack_verb = "splashes"
 
 /datum/blob_type/radioactive_ooze/on_pulse(var/obj/structure/blob/B)
-	SSradiation.radiate(B, 200)
+	radiation_pulse(src, RAD_INTENSITY_BLOB_RADIOACTIVE_OOZE)
 
 /datum/blob_type/volatile_alluvium
 	name = "volatile alluvium"

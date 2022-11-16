@@ -47,11 +47,30 @@
 /// supermatter material radiation on explode per sheet
 #define RAD_INTENSITY_MAT_SUPERMATTER_EXPLODE_PER_SHEET(s) (s * 200)
 
+//? materials - snowflake
+/**
+ * uranium airlock
+ * at time of writing this is about every 4 seconds
+ */
+#define RAD_INTENSITY_MAT_SPECIAL_URANIUM_AIRLOCK 150
+
 //? mecha
 /// mecha nuclear generator rad per tick
 #define RAD_INTENSITY_MECH_REACTOR_TICK 50
+/// phasing being cancelled by damage
+#define RAD_INTENSITY_MECH_JANUS_FORCED_UNPHASE 350
+
+//? misc
+/// manhole cover for POI
+#define RAD_INTENSITY_POI_MANHOLE_COVER 100
+/// reactor rack for POI
+#define RAD_INTENSITY_POI_REACTOR_RACK 500
+/// radioactive meteors
+#define RAD_INTENSITY_RADIOACTIVE_METEOR 1500
 
 //? mobs
+/// radioactive blob power
+#define RAD_INTENSITY_BLOB_RADIOACTIVE_OOZE 250
 /// xenobio green slime per tick
 #define RAD_INTENSITY_GREEN_SLIME_TICK 500
 

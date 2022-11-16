@@ -272,7 +272,7 @@
 	if(explode)
 		explosion(src.loc, devastation_range = 0, heavy_impact_range = 0, light_impact_range = 4, flash_range = 6, adminlog = 0)
 	new /obj/effect/debris/cleanable/greenglow(get_turf(src))
-	SSradiation.radiate(src, 50)
+	radiation_pulse(src, RAD_INTENSITY_RADIOACTIVE_METEOR)
 
 // This meteor fries toasters.
 /obj/effect/meteor/emp

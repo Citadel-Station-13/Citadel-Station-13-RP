@@ -403,7 +403,6 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 		smwave()
 	return 1
 
-
 /obj/singularity/proc/toxmob()
 	var/toxrange = 10
 	var/toxdamage = 4
@@ -418,7 +417,6 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 		toxdamage = (toxdamage - (toxdamage*M.getarmor(null, "rad")))
 		M.apply_effect(toxdamage, TOX)
 	return
-
 
 /obj/singularity/proc/mezzer()
 	for(var/mob/living/carbon/M in oviewers(8, src))

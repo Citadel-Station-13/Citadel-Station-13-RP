@@ -2,11 +2,8 @@
 // WHOEVER WROTE THIS IS HIGH
 //Interactions
 /turf/simulated/wall/proc/toggle_open(var/mob/user)
-
 	if(can_open == WALL_OPENING)
 		return
-
-	SSradiation.resistance_cache.Remove(src)
 
 	if(density)
 		can_open = WALL_OPENING

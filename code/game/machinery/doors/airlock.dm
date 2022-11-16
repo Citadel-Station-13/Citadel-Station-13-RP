@@ -439,7 +439,7 @@
 	icon = 'icons/obj/doors/Dooruranium.dmi'
 	mineral = "uranium"
 	var/last_event = 0
-	var/rad_power = 7.5
+	var/rad_power = RAD_INTENSITY_MAT_SPECIAL_URANIUM_AIRLOCK
 
 /obj/machinery/door/airlock/bananium
 	name = "Bananium Airlock"
@@ -474,7 +474,7 @@
 /obj/machinery/door/airlock/uranium/process(delta_time)
 	if(world.time > last_event+20)
 		if(prob(50))
-			SSradiation.radiate(src, rad_power)
+			radiation_pulse(src, rad_power)
 		last_event = world.time
 	..()
 
