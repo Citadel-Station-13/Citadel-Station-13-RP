@@ -403,21 +403,6 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 		smwave()
 	return 1
 
-/obj/singularity/proc/toxmob()
-	var/toxrange = 10
-	var/toxdamage = 4
-	var/radiation = 15
-	if (src.energy>200)
-		toxdamage = round(((src.energy-150)/50)*4,1)
-		radiation = round(((src.energy-150)/50)*5,1)
-	SSradiation.radiate(src, radiation) //Always radiate at max, so a decent dose of radiation is applied
-	for(var/mob/living/M in view(toxrange, src.loc))
-		if(M.status_flags & GODMODE)
-			continue
-		toxdamage = (toxdamage - (toxdamage*M.getarmor(null, "rad")))
-		M.apply_effect(toxdamage, TOX)
-	return
-
 /obj/singularity/proc/mezzer()
 	for(var/mob/living/carbon/M in oviewers(8, src))
 		if(istype(M, /mob/living/carbon/brain)) //Ignore brains
@@ -456,9 +441,8 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	return
 
 /obj/singularity/proc/pulse()
-	for(var/obj/machinery/power/rad_collector/R in rad_collectors)
-		if (get_dist(R, src) <= 15) //Better than using orange() every process.
-			R.receive_pulse(energy)
+	//! if you hit super you eat shit from 50k :^)
+	radiation_pulse(src, clamp(energy, 0, 50000))
 
 /obj/singularity/proc/on_capture()
 	chained = 1

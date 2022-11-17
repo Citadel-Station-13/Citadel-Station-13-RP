@@ -357,7 +357,8 @@
 		if(!istype(l.glasses, /obj/item/clothing/glasses/meson)) // Only mesons can protect you!
 			l.hallucination = max(0, min(200, l.hallucination + power * config_hallucination_power * sqrt( 1 / max(1,get_dist(l, src)) ) ) )
 
-	SSradiation.radiate(src, max(power * 1.5, 50) ) //Better close those shutters!
+	//! uh oh!
+	radiation_pulse(src, clamp(power * 4, 0, 50000))
 
 	power -= (power/DECAY_FACTOR)**3		//energy losses due to radiation
 
