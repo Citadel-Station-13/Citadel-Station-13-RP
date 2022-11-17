@@ -36,6 +36,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//? values MUST be string, number, or null.
 	//? Savefiles do not play nice with typepaths.
 	//! Loaded data
+	/// local state for UI
+	var/list/local_state
 	/// character data
 	var/list/character
 	/// global data
@@ -233,6 +235,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 /datum/preferences/proc/Initialize()
 	// todo: refactor
+	local_state = list()
 	player_setup = new(src)
 	tim_sort(preference_by_key, /proc/cmp_preference_load_order, TRUE)
 	tim_sort(preference_by_type, /proc/cmp_preference_load_order, TRUE)

@@ -9,35 +9,91 @@
 	var/datum/sprite_accessory_meta/accessory
 	/// emissives enabled?
 	var/emissives_enabled = FALSE
+	/// emissives strength, 0 to 100 percent
+	var/emissives_strength = 100
 	//! at the moment we don't need full GAGS so we "abstract" around the fact we don't actually use packed color string or colors list
 	/// color 1
-	var/color1 = "#ffffff"
+	var/color_1 = "#ffffff"
 	/// color 2
-	var/color2 = "#ffffff"
+	var/color_2 = "#ffffff"
 	/// color 3
-	var/color3 = "#ffffff"
+	var/color_3 = "#ffffff"
 
 	#warn layers?
 	/// addons
 	var/list/datum/sprite_accessory_addon/addons
+
+/datum/sprite_accessory_data/New(datum/sprite_accessory_meta/accessory)
+	src.accessory = accessory
 
 /**
  * returns either one mutable_appearance, or a list of them to apply, with layers
  * already set.
  */
 /datum/sprite_accessory_data/proc/render_mob_appearance(mob/M)
-	return accessory?.render_mob_appearance(M, src)
+	return accessory.render_mob_appearance(M, src)
 
+/**
+ * returns either one mutable_appearance, or a list of them to apply, with layers
+ * already set.
+ */
+/datum/sprite_accessory_data/proc/render_mob_emissives(mob/M)
+	return accessory.render_mob_emissives(M, src)
+
+/**
+ * returns color as #abcdef
+ */
 /datum/sprite_accessory_data/proc/get_color_index(i)
+	if(i > color_amount())
+		return null
+	switch(i)
+		if(1)
+			return color_1
+		if(2)
+			return color_2
+		if(3)
+			return color_3
 
+/**
+ * sets color to color as #abcdef
+ */
 /datum/sprite_accessory_data/proc/set_color_index(i, color)
+	if(islist(color)? is_list_vaguely_color_matrix_length(color) :is_hexcolor(color))
+		CRASH("invalid hexcolor")
+	if(i > color_amount())
+		return FALSE
+	switch(i)
+		if(1)
+			color_1 = color
+			return TRUE
+		if(2)
+			color_2 = color
+			return TRUE
+		if(3)
+			color_3 = color
+			return TRUE
+	return FALSE
+
+/**
+ * gets our color amount
+ */
+/datum/sprite_accessory_data/proc/color_amount()
+	return accessory.color_amount()
 
 /**
  * sets colors with a packed coloration string
  */
-/datum/sprite_accessory_data/proc/set_colors(coloration_string)
+/datum/sprite_accessory_data/proc/set_coloration(coloration_string)
+	var/list/unpacked = unpack_coloration_string(coloration_string)
+	for(var/i in 1 to length(unpacked))
+		set_color_index(i, unpacked[i])
 
 /**
  * returns a packed coloration string
  */
-/datum/sprite_accessory_data/proc/get_colors()
+/datum/sprite_accessory_data/proc/get_coloration()
+	var/list/packing = list()
+	for(var/i in 1 to color_amount())
+		packing += get_color_index(i)
+	return pack_coloration_string(packing)
+
