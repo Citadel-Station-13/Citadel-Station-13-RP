@@ -207,6 +207,7 @@
 				L.resist()
 
 		if("mov_intent")
+			// todo: reworks
 			if(isliving(usr))
 				if(iscarbon(usr))
 					var/mob/living/carbon/C = usr
