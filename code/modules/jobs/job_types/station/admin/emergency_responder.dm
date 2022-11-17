@@ -1,4 +1,5 @@
 /datum/job/station/emergency_responder //For staff managing/leading ERTs
+	id = JOB_ID_EMERGENCY_RESPONDER
 	title = "Emergency Responder"
 	departments = list("Central Command")
 	department_accounts = list(DEPARTMENT_COMMAND, DEPARTMENT_ENGINEERING, DEPARTMENT_MEDICAL, DEPARTMENT_RESEARCH, DEPARTMENT_SECURITY, DEPARTMENT_CARGO, DEPARTMENT_PLANET, DEPARTMENT_CIVILIAN)
@@ -11,7 +12,7 @@
 	minimal_player_age = 14
 	economic_modifier = 20
 	whitelist_only = 1
-	latejoin_only = 1
+	join_types = JOB_LATEJOIN
 	outfit_type = /datum/outfit/job/station/emergency_responder
 	desc = "Emergency Responders are usually called in to deal with on-station emergencies that the crew require assistance to deal with."
 

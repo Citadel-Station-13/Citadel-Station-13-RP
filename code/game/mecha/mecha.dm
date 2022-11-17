@@ -789,16 +789,7 @@
 		var/result = TRUE
 
 		for(var/turf/T in locs)
-			if(!T.CanZPass(src,direction))
-				occupant_message("<span class='warning'>You can't move that direction from here!</span>")
-				result = FALSE
-				break
-			var/turf/dest = direction & UP ? GetAbove(T) : GetBelow(T)
-			if(!dest)
-				occupant_message("<span class='notice'>There is nothing of interest in this direction.</span>")
-				result = FALSE
-				break
-			if(!dest.CanZPass(src,direction))
+			if(!T.z_exit_check(src, direction))
 				occupant_message("<span class='warning'>There's something blocking your movement in that direction!</span>")
 				result = FALSE
 				break
@@ -846,7 +837,7 @@
 /obj/mecha/proc/mechstep(direction)
 	var/current_dir = dir	//For strafing
 	var/result = get_step(src,direction)
-	if(result && Move(result))
+	if(result && Move(result, direction))
 		if(stomp_sound)
 			playsound(src,stomp_sound,40,1)
 		handle_equipment_movement()

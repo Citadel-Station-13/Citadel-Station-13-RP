@@ -154,7 +154,7 @@ SUBSYSTEM_DEF(supply)
 			var/datum/exported_crate/adm = new()
 			adm.name = EC.name
 			adm.value = EC.value
-			adm.contents = deepCopyList(EC.contents)
+			adm.contents = deep_copy_list(EC.contents)
 			adm_export_history += adm
 
 			qdel(MA)

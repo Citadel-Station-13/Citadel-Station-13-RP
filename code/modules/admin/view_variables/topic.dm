@@ -441,13 +441,13 @@
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		var/new_species = tgui_input_list(usr, "Please choose a new species.","Species", GLOB.species_meta)
+		var/new_species = tgui_input_list(usr, "Please choose a new species.","Species", SScharacters.all_species_names())
 
 		if(!H)
 			to_chat(usr, "Mob doesn't exist anymore")
 			return
 
-		if(H.set_species(new_species))
+		if(H.set_species(new_species, force = TRUE))
 			to_chat(usr, "Set species of [H] to [H.species].")
 		else
 			to_chat(usr, "Failed! Something went wrong.")
@@ -460,7 +460,7 @@
 			to_chat(usr, "This can only be done to instances of type /mob")
 			return
 
-		var/new_language = tgui_input_list(usr, "Please choose a language to add.","Language", GLOB.all_languages)
+		var/new_language = tgui_input_list(usr, "Please choose a language to add.","Language", SScharacters.all_language_names())
 
 		if(!new_language)
 			return

@@ -40,7 +40,7 @@
 /obj/map_helper/network_builder/power_cable/build()
 	if(!network_directions)
 		return
-	var/knot = KNOT_FORCED || (KNOT_AUTO && detect_knot())
+	var/knot = (src.knot == KNOT_FORCED) || ((src.knot == KNOT_AUTO) && detect_knot())
 	if(knot)
 		for(var/i in GLOB.cardinal)
 			if(!(network_directions & i))

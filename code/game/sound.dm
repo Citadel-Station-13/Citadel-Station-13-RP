@@ -25,7 +25,7 @@ GLOBAL_VAR_INIT(sound_env_dry, 0)
 	var/sound/S = sound(get_sfx(soundin))
 	var/maxdistance = (world.view + extrarange) * GLOB.sound_extrarange_multiplier
 	var/z = turf_source.z
-	var/list/listeners = player_list		//SSmobs.clients_by_zlevel[z]
+	var/list/listeners = GLOB.player_list		//SSmobs.clients_by_zlevel[z]
 	if(!ignore_walls) //these sounds don't carry through walls
 		listeners = listeners & hearers(maxdistance,turf_source)
 	for(var/P in listeners)
@@ -177,7 +177,7 @@ GLOBAL_VAR_INIT(sound_distance_offscreen, 7)
 
 /proc/sound_to_playing_players(sound, volume = 100, vary)
 	sound = get_sfx(sound)
-	for(var/M in player_list)
+	for(var/M in GLOB.player_list)
 		if(ismob(M) && !isnewplayer(M))
 			var/mob/MO = M
 			MO.playsound_local(get_turf(MO), sound, volume, vary, pressure_affected = FALSE)

@@ -1,8 +1,9 @@
 /mob/Logout()
+	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGOUT, client)
 	SSnanoui.user_logout(src) // this is used to clean up (remove) this user's Nano UIs
 	SStgui.on_logout(src) // Cleanup any TGUIs the user has open
-	player_list -= src
+	GLOB.player_list -= src
 	disconnect_time = world.realtime // Logging when we disappear.
 	update_client_z(null)
 	log_access_out(src)

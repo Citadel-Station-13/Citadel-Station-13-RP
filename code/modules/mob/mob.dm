@@ -302,7 +302,7 @@
  *
  * visible_message will handle invisibility properly
  *
- * overridden here and in /mob/dead/observer for different point span classes and sanity checks
+ * overridden here and in /mob/observer/dead for different point span classes and sanity checks
  */
 /mob/verb/pointed(atom/A as mob|obj|turf in view())
 	set name = "Point To"
@@ -1155,6 +1155,12 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /// Checks for slots that are currently obscured by other garments.
 /mob/proc/check_obscured_slots()
 	return
+
+/mob/z_pass_in(atom/movable/AM, dir, turf/old_loc)
+	return TRUE	// we don't block
+
+/mob/z_pass_out(atom/movable/AM, dir, turf/new_loc)
+	return TRUE
 
 //! Pixel Offsets
 /mob/proc/get_buckled_pixel_x_offset()

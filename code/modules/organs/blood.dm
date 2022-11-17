@@ -20,7 +20,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	if(vessel)
 		return
 
-	if(species.flags & NO_BLOOD)
+	if(species.species_flags & NO_BLOOD)
 		return
 
 	vessel = new/datum/reagents(species.blood_volume)

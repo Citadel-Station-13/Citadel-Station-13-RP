@@ -48,11 +48,10 @@ GLOBAL_PROTECT(href_token)
 
 /datum/admins/proc/reassociate()
 	if(owner)
-		GLOB.admins += owner
+		GLOB.admins |= owner
 		owner.holder = src
 		owner.deadmin_holder = null
 		owner.add_admin_verbs()
-
 
 /*
 checks if usr is an admin with at least ONE of the flags in rights_required. (Note, they don't need all the flags)

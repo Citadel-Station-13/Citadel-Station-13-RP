@@ -247,7 +247,7 @@
 	var/limb_icon
 	/// Used for if the mob can drop limbs. Overrides the icon cache key, so it doesn't keep remaking the icon needlessly.
 	var/limb_icon_key
-	
+
 	///Does the simple mob drop organs when butchered?
 	butchery_drops_organs = FALSE
 
@@ -270,7 +270,7 @@
 	randomize()
 
 	for(var/L in has_langs)
-		languages |= GLOB.all_languages[L]
+		languages |= SScharacters.resolve_language_name(L)
 	if(languages.len)
 		default_language = languages[1]
 

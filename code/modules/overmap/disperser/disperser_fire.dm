@@ -31,7 +31,7 @@
 					LEGACY_EX_ACT(A, 1, null)
 
 	var/list/relevant_z = GetConnectedZlevels(start.z)
-	for(var/mob/M in global.player_list)
+	for(var/mob/M in global.GLOB.player_list)
 		var/turf/T = get_turf(M)
 		if(!T || !(T.z in relevant_z))
 			continue

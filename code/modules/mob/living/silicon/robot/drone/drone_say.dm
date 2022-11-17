@@ -14,7 +14,7 @@
 			return emote(copytext(message,2))
 
 		if(copytext(message,1,2) == ";")
-			var/datum/language/L = GLOB.all_languages["Drone Talk"]
+			var/datum/language/L = SScharacters.resolve_language_id(LANGUAGE_ID_DRONE_BINARY)
 			if(istype(L))
 				return L.broadcast(src,trim(copytext(message,2)))
 
@@ -29,7 +29,7 @@
 			if(D.client && D.local_transmit)
 				to_chat(D, "<b>[src]</b> transmits, \"[message]\"")
 
-		for (var/mob/M in player_list)
+		for (var/mob/M in GLOB.player_list)
 			if (istype(M, /mob/new_player))
 				continue
 			else if(M.stat == DEAD &&  M.is_preference_enabled(/datum/client_preference/ghost_ears))

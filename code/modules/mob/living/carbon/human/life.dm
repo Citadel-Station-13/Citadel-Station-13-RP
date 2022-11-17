@@ -969,7 +969,7 @@
 				if(I.contaminated)
 					if(check_belly(I))
 						continue
-					if(src.species && !(src.species.flags & CONTAMINATION_IMMUNE))
+					if(src.species && !(src.species.species_flags & CONTAMINATION_IMMUNE))
 						// This is hacky, I'm so sorry.
 						if(I != l_hand && I != r_hand)	//If the item isn't in your hands, you're probably wearing it. Full damage for you.
 							total_phoronloss += loss_per_part
@@ -1059,7 +1059,7 @@
 			Paralyse(3)
 
 		if(hallucination)
-			if(hallucination >= 20 && !(species.flags & (NO_POISON|IS_PLANT|NO_HALLUCINATION)) )
+			if(hallucination >= 20 && !(species.species_flags & (NO_POISON|IS_PLANT|NO_HALLUCINATION)) )
 				if(prob(3))
 					fake_attack(src)
 				if(!handling_hal)
@@ -1276,7 +1276,7 @@
 
 				var/no_damage = 1
 				var/trauma_val = 0 // Used in calculating softcrit/hardcrit indicators.
-				if(!(species.flags & NO_PAIN))
+				if(!(species.species_flags & NO_PAIN))
 					trauma_val = max(traumatic_shock,halloss)/species.total_health
 				var/limb_trauma_val = trauma_val*0.3
 				// Collect and apply the images all at once to avoid appearance churn.
@@ -1292,7 +1292,7 @@
 
 				// Show a general pain/crit indicator if needed.
 				if(trauma_val)
-					if(!(species.flags & NO_PAIN))
+					if(!(species.species_flags & NO_PAIN))
 						if(trauma_val > 0.7)
 							health_images += image('icons/mob/screen1_health.dmi',"softcrit")
 						if(trauma_val >= 1)

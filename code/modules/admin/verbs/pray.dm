@@ -47,11 +47,8 @@
 	// GLOB.requests.pray(usr.client, msg, usr.mind.assigned_role == CHAPLAIN)
 	msg = SPAN_ADMINNOTICE("[icon2html(cross, GLOB.admins)][SPAN_BOLD("<font color=[font_color]>[prayer_type][deity ? " (to [deity])" : ""]: </font>[ADMIN_FULLMONTY(src)] [ADMIN_SC(src)] [ADMIN_ST(src)]:")]</b> [SPAN_LINKIFY(msg)]")
 
-	// for(var/client/C in GLOB.admins)
-	// 	if(C.prefs.chat_toggles & CHAT_PRAYER)
-	// 		to_chat(C, msg, confidential = TRUE)
 	for(var/client/C in GLOB.admins)
-		if((R_ADMIN | R_MOD) & C.holder.rights)
+		if((R_ADMIN|R_MOD) & C.holder.rights)
 			if(C.is_preference_enabled(/datum/client_preference/admin/show_chat_prayers))
 				to_chat(C, msg)
 				SEND_SOUND(C, sound('sound/effects/ding.ogg'))
