@@ -24,7 +24,7 @@
 /turf/simulated/wall/classd/indoors,
 /area/class_d/explored)
 "g" = (
-/obj/item/geiger,
+/obj/item/geiger_counter,
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/explored)

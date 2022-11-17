@@ -8,7 +8,7 @@
 
 #define RAD_GRACE_PERIOD 2
 
-/obj/item/geiger
+/obj/item/geiger_counter
 	name = "geiger counter"
 	desc = "A handheld device used for detecting and measuring radiation in an area."
 	icon = 'icons/obj/device.dmi'

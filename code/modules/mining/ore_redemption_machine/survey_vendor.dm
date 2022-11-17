@@ -19,7 +19,7 @@
 		new /datum/data/mining_equipment("Cigar",						/obj/item/clothing/mask/smokable/cigarette/cigar/havana,	15),
 		new /datum/data/mining_equipment("Soap",						/obj/item/soap/nanotrasen,									20),
 		new /datum/data/mining_equipment("Laser Pointer",				/obj/item/laser_pointer,									90),
-		new /datum/data/mining_equipment("Geiger Counter",				/obj/item/geiger,											75),
+		new /datum/data/mining_equipment("Geiger Counter",				/obj/item/geiger_counter,											75),
 		new /datum/data/mining_equipment("Plush Toy",					/obj/random/plushie,										30),
 		new /datum/data/mining_equipment("Extraction Equipment - Fulton Beacon",	/obj/item/fulton_core,							300),
 		new /datum/data/mining_equipment("Extraction Equipment - Fulton Pack",		/obj/item/extraction_pack,						125),

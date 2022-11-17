@@ -24365,7 +24365,7 @@
 /obj/effect/floor_decal/corner_steel_grid{
 	dir = 4
 	},
-/obj/item/geiger,
+/obj/item/geiger_counter,
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled,
 /area/engineering/gravity_gen)

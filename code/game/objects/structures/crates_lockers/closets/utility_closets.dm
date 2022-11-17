@@ -157,7 +157,7 @@
 	starts_with = list(
 		/obj/item/clothing/suit/radiation = 2,
 		/obj/item/clothing/head/radiation = 2,
-		/obj/item/geiger = 2)
+		/obj/item/geiger_counter = 2)
 
 /*
  * Bombsuit closet
