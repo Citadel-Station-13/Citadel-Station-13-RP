@@ -40,7 +40,7 @@
 			/obj/item/reagent_containers/food/snacks/unajerky = 4
 			)
 	cost = 25
-	container_type = /obj/structure/closet/crate
+	container_type = /obj/structure/closet/crate/unathi
 	container_name = "Moghes imports crate"
 	contraband = 1
 
