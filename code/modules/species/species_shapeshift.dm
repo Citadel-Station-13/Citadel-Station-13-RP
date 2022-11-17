@@ -109,7 +109,7 @@ var/list/wrapped_species_by_ref = list()
 	var/list/valid_facialhairstyles = list()
 	var/list/valid_gradstyles = GLOB.hair_gradients
 	for(var/hairstyle in hair_styles_list)
-		var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
+		var/datum/sprite_accessory_meta/S = hair_styles_list[hairstyle]
 		if(gender == MALE && S.gender == FEMALE)
 			continue
 		if(gender == FEMALE && S.gender == MALE)
@@ -118,7 +118,7 @@ var/list/wrapped_species_by_ref = list()
 			continue
 		valid_hairstyles += hairstyle
 	for(var/facialhairstyle in facial_hair_styles_list)
-		var/datum/sprite_accessory/S = facial_hair_styles_list[facialhairstyle]
+		var/datum/sprite_accessory_meta/S = facial_hair_styles_list[facialhairstyle]
 		if(gender == MALE && S.gender == FEMALE)
 			continue
 		if(gender == FEMALE && S.gender == MALE)
@@ -304,7 +304,7 @@ var/list/wrapped_species_by_ref = list()
 	// Construct the list of names allowed for this user.
 	var/list/pretty_ear_styles = list("Normal" = null)
 	for(var/path in ear_styles_list)
-		var/datum/sprite_accessory/ears/instance = ear_styles_list[path]
+		var/datum/sprite_accessory_meta/ears/instance = ear_styles_list[path]
 		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
 			pretty_ear_styles[instance.name] = path
 
@@ -358,7 +358,7 @@ var/list/wrapped_species_by_ref = list()
 	// Construct the list of names allowed for this user.
 	var/list/pretty_tail_styles = list("Normal" = null)
 	for(var/path in tail_styles_list)
-		var/datum/sprite_accessory/tail/instance = tail_styles_list[path]
+		var/datum/sprite_accessory_meta/tail/instance = tail_styles_list[path]
 		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
 			pretty_tail_styles[instance.name] = path
 
@@ -412,7 +412,7 @@ var/list/wrapped_species_by_ref = list()
 	// Construct the list of names allowed for this user.
 	var/list/pretty_wing_styles = list("None" = null)
 	for(var/path in wing_styles_list)
-		var/datum/sprite_accessory/wing/instance = wing_styles_list[path]
+		var/datum/sprite_accessory_meta/wing/instance = wing_styles_list[path]
 		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
 			pretty_wing_styles[instance.name] = path
 

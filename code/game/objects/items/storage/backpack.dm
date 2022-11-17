@@ -551,7 +551,7 @@
 	icon_state = "saddlebag"
 	max_storage_space = INVENTORY_DUFFLEBAG_SPACE //Saddlebags can hold more, like dufflebags
 	slowdown = 1 //And are slower, too...Unless you're a macro, that is.
-	var/taurtype = /datum/sprite_accessory/tail/taur/horse //Acceptable taur type to be wearing this
+	var/taurtype = /datum/sprite_accessory_meta/tail/taur/horse //Acceptable taur type to be wearing this
 	var/no_message = "You aren't the appropriate taur type to wear this!"
 
 /obj/item/storage/backpack/saddlebag/can_equip(mob/M, slot, mob/user, flags)
@@ -574,7 +574,7 @@
 	name = "Drider Saddlebags"
 	item_state = "saddlebag_drider"
 	icon_state = "saddlebag_drider"
-	var/taurtype = /datum/sprite_accessory/tail/taur/spider
+	var/taurtype = /datum/sprite_accessory_meta/tail/taur/spider
 */
 
 /obj/item/storage/backpack/saddlebag_common //Shared bag for other taurs with sturdy backs
@@ -594,57 +594,57 @@
 	if(!.)
 		return FALSE
 	var/mob/living/carbon/human/H
-	var/datum/sprite_accessory/tail/taur/TT = H.tail_style
-	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/horse))
+	var/datum/sprite_accessory_meta/tail/taur/TT = H.tail_style
+	if(istype(H) && istype(TT, /datum/sprite_accessory_meta/tail/taur/horse))
 		item_state = "[icon_base]_Horse"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
-	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/wolf))
+	if(istype(H) && istype(TT, /datum/sprite_accessory_meta/tail/taur/wolf))
 		item_state = "[icon_base]_Wolf"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
-	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/cow))
+	if(istype(H) && istype(TT, /datum/sprite_accessory_meta/tail/taur/cow))
 		item_state = "[icon_base]_Cow"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
-	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/lizard))
+	if(istype(H) && istype(TT, /datum/sprite_accessory_meta/tail/taur/lizard))
 		item_state = "[icon_base]_Lizard"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
-	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/feline))
+	if(istype(H) && istype(TT, /datum/sprite_accessory_meta/tail/taur/feline))
 		item_state = "[icon_base]_Feline"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
-	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/drake))
+	if(istype(H) && istype(TT, /datum/sprite_accessory_meta/tail/taur/drake))
 		item_state = "[icon_base]_Drake"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
-	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/otie))
+	if(istype(H) && istype(TT, /datum/sprite_accessory_meta/tail/taur/otie))
 		item_state = "[icon_base]_Otie"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
-	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/deer))
+	if(istype(H) && istype(TT, /datum/sprite_accessory_meta/tail/taur/deer))
 		item_state = "[icon_base]_Deer"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0

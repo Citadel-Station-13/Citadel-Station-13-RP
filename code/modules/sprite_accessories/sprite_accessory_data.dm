@@ -6,7 +6,7 @@
 // todo: rename to sprite_accessory, rename sprite_accessorry to sprite_accessory_meta
 /datum/sprite_accessory_data
 	/// reference to accessory
-	var/datum/sprite_accessory/accessory
+	var/datum/sprite_accessory_meta/accessory
 	/// emissives enabled?
 	var/emissives_enabled = FALSE
 	//! at the moment we don't need full GAGS so we "abstract" around the fact we don't actually use packed color string or colors list

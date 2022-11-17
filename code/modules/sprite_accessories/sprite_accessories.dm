@@ -20,7 +20,7 @@
 // TODO: actual better way to do these
 // TODO: actual better way to do "can we use this" checks because one whitelist list and a var is fucking horrible to maintain what the fuck
 
-/datum/sprite_accessory
+/datum/sprite_accessory_meta
 
 	/// The icon file the accessory is located in.
 	var/icon
@@ -49,34 +49,34 @@
 //skin styles - WIP
 //going to have to re-integrate this with surgery
 //let the icon_state hold an icon preview for now
-/datum/sprite_accessory/skin
+/datum/sprite_accessory_meta/skin
 	icon = 'icons/mob/species/human/body.dmi'
 
-/datum/sprite_accessory/skin/human
+/datum/sprite_accessory_meta/skin/human
 	name = "Default human skin"
 	icon_state = "default"
 	species_allowed = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN)
 
-/datum/sprite_accessory/skin/human_tatt01
+/datum/sprite_accessory_meta/skin/human_tatt01
 	name = "Tatt01 human skin"
 	icon_state = "tatt1"
 	icon = 'icons/mob/species/human/tatt1.dmi'
 	species_allowed = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN)
 
-/datum/sprite_accessory/skin/tajaran
+/datum/sprite_accessory_meta/skin/tajaran
 	name = "Default tajaran skin"
 	icon_state = "default"
 	icon = 'icons/mob/species/tajaran/body.dmi'
 	species_allowed = list(SPECIES_TAJ)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/skin/unathi
+/datum/sprite_accessory_meta/skin/unathi
 	name = "Default Unathi skin"
 	icon_state = "default"
 	icon = 'icons/mob/species/unathi/body.dmi'
 	species_allowed = list(SPECIES_UNATHI)
 
-/datum/sprite_accessory/skin/skrell
+/datum/sprite_accessory_meta/skin/skrell
 	name = "Default skrell skin"
 	icon_state = "default"
 	icon = 'icons/mob/species/skrell/body.dmi'

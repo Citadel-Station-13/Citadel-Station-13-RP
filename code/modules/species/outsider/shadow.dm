@@ -28,7 +28,7 @@
 	death_message = "dissolves into ash..."
 
 	species_flags = NO_SCAN | NO_SLIP | NO_POISON | NO_MINOR_CUT
-	species_spawn_flags = SPECIES_SPAWN_RESTRICTED
+	species_spawn_flags = SPECIES_SPAWN_SPECIAL
 
 	genders = list(NEUTER)
 

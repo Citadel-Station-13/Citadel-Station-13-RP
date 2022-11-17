@@ -9,7 +9,7 @@
 */
 
 // Add Additional variable onto sprite_accessory
-/datum/sprite_accessory
+/datum/sprite_accessory_meta
 	// Ckey of person allowed to use this, if defined.
 	var/list/ckeys_allowed = null
 	var/apply_restrictions = FALSE		//whether to apply restrictions for specific tails/ears/wings

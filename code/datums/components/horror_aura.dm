@@ -6,6 +6,7 @@ It also serves the purposes of portraying the Lore accurate effect of "Acausal L
 /datum/component/horror_aura
 	var/radius = 5
 	var/emp_radius = 3
+	var/remain_while_dead = FALSE
 
 /datum/component/horror_aura/Initialize(radius)
 	if(radius)
@@ -17,7 +18,17 @@ It also serves the purposes of portraying the Lore accurate effect of "Acausal L
 	else
 		START_PROCESSING(SSobj, src)
 
+
+/datum/component/horror_aura/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
 /datum/component/horror_aura/process()
+	if(ismob(parent) && !remain_while_dead)
+		var/mob/M = parent
+		if(IS_DEAD(M))
+			qdel(src)
+			return
 	aura_effect()
 
 /datum/component/horror_aura/proc/aura_effect()
@@ -26,11 +37,7 @@ It also serves the purposes of portraying the Lore accurate effect of "Acausal L
 			H.hallucination += 15
 	var/turf/T = get_turf(parent)
 	empulse(T, 0, 0, 0, emp_radius)
-
-/datum/component/horror_aura/Destroy()
-	STOP_PROCESSING(SSobj, src)
-	return ..()
-
+	
 /datum/component/horror_aura/weak
 	radius = 2
 	emp_radius = 2

@@ -191,22 +191,22 @@
 
 	if(pref.ear_style)
 		pref.ear_style	= sanitize_inlist(pref.ear_style, ear_styles_list, initial(pref.ear_style))
-		var/datum/sprite_accessory/temp_ear_style = ear_styles_list[pref.ear_style]
+		var/datum/sprite_accessory_meta/temp_ear_style = ear_styles_list[pref.ear_style]
 		if(temp_ear_style.apply_restrictions && (!(species_name in temp_ear_style.species_allowed)))
 			pref.ear_style = initial(pref.ear_style)
 	if(pref.horn_style)
 		pref.horn_style	= sanitize_inlist(pref.horn_style, horn_styles_list, initial(pref.horn_style))
-		var/datum/sprite_accessory/temp_horn_style = horn_styles_list[pref.horn_style]
+		var/datum/sprite_accessory_meta/temp_horn_style = horn_styles_list[pref.horn_style]
 		if(temp_horn_style.apply_restrictions && (!(species_name in temp_horn_style.species_allowed)))
 			pref.horn_style = initial(pref.horn_style)
 	if(pref.tail_style)
 		pref.tail_style	= sanitize_inlist(pref.tail_style, tail_styles_list, initial(pref.tail_style))
-		var/datum/sprite_accessory/temp_tail_style = tail_styles_list[pref.tail_style]
+		var/datum/sprite_accessory_meta/temp_tail_style = tail_styles_list[pref.tail_style]
 		if(temp_tail_style.apply_restrictions && (!(species_name in temp_tail_style.species_allowed)))
 			pref.tail_style = initial(pref.tail_style)
 	if(pref.wing_style)
 		pref.wing_style	= sanitize_inlist(pref.wing_style, wing_styles_list, initial(pref.wing_style))
-		var/datum/sprite_accessory/temp_wing_style = wing_styles_list[pref.wing_style]
+		var/datum/sprite_accessory_meta/temp_wing_style = wing_styles_list[pref.wing_style]
 		if(temp_wing_style.apply_restrictions && (!(species_name in temp_wing_style.species_allowed)))
 			pref.wing_style = initial(pref.wing_style)
 
@@ -265,7 +265,7 @@
 
 	var/ear_display = "Normal"
 	if(pref.ear_style && (pref.ear_style in ear_styles_list))
-		var/datum/sprite_accessory/ears/instance = ear_styles_list[pref.ear_style]
+		var/datum/sprite_accessory_meta/ears/instance = ear_styles_list[pref.ear_style]
 		ear_display = instance.name
 
 	else if(pref.ear_style)
@@ -273,7 +273,7 @@
 	. += "<b>Ears</b><br>"
 	. += " Style: <a href='?src=\ref[src];ear_style=1'>[ear_display]</a><br>"
 	if(ear_styles_list[pref.ear_style])
-		var/datum/sprite_accessory/ears/ear = ear_styles_list[pref.ear_style]
+		var/datum/sprite_accessory_meta/ears/ear = ear_styles_list[pref.ear_style]
 		if(ear.do_colouration)
 			. += "<a href='?src=\ref[src];ear_color=1'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_ears, 2)][num2hex(pref.g_ears, 2)][num2hex(pref.b_ears, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_ears, 2)][num2hex(pref.g_ears, 2)][num2hex(pref.b_ears, 2)]'><tr><td>__</td></tr></table> </font><br>"
 		if(ear.extra_overlay)
@@ -283,7 +283,7 @@
 
 	var/horn_display = "Normal"
 	if(pref.horn_style && (pref.horn_style in horn_styles_list))
-		var/datum/sprite_accessory/ears/instance = horn_styles_list[pref.horn_style]
+		var/datum/sprite_accessory_meta/ears/instance = horn_styles_list[pref.horn_style]
 		horn_display = instance.name
 
 	else if(pref.horn_style)
@@ -291,7 +291,7 @@
 	. += "<b>Secondary Ears</b><br>"
 	. += " Style: <a href='?src=\ref[src];horn_style=1'>[horn_display]</a><br>"
 	if(horn_styles_list[pref.horn_style])
-		var/datum/sprite_accessory/ears/ear2 = horn_styles_list[pref.horn_style]
+		var/datum/sprite_accessory_meta/ears/ear2 = horn_styles_list[pref.horn_style]
 		if(ear2.do_colouration)
 			. += "<a href='?src=\ref[src];horn_color=1'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_horn, 2)][num2hex(pref.g_horn, 2)][num2hex(pref.b_horn, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_horn, 2)][num2hex(pref.g_horn, 2)][num2hex(pref.b_horn, 2)]'><tr><td>__</td></tr></table> </font><br>"
 		if(ear2.extra_overlay)
@@ -301,7 +301,7 @@
 
 	var/tail_display = "Normal"
 	if(pref.tail_style && (pref.tail_style in tail_styles_list))
-		var/datum/sprite_accessory/tail/instance = tail_styles_list[pref.tail_style]
+		var/datum/sprite_accessory_meta/tail/instance = tail_styles_list[pref.tail_style]
 		tail_display = instance.name
 	else if(pref.tail_style)
 		tail_display = "REQUIRES UPDATE"
@@ -309,7 +309,7 @@
 	. += " Style: <a href='?src=\ref[src];tail_style=1'>[tail_display]</a><br>"
 
 	if(tail_styles_list[pref.tail_style])
-		var/datum/sprite_accessory/tail/T = tail_styles_list[pref.tail_style]
+		var/datum/sprite_accessory_meta/tail/T = tail_styles_list[pref.tail_style]
 		if(T.do_colouration)
 			. += "<a href='?src=\ref[src];tail_color=1'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_tail, 2)][num2hex(pref.g_tail, 2)][num2hex(pref.b_tail, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_tail, 2)][num2hex(pref.g_tail, 2)][num2hex(pref.b_tail, 2)]'><tr><td>__</td></tr></table> </font><br>"
 		if(T.extra_overlay)
@@ -319,7 +319,7 @@
 
 	var/wing_display = "Normal"
 	if(pref.wing_style && (pref.wing_style in wing_styles_list))
-		var/datum/sprite_accessory/wing/instance = wing_styles_list[pref.wing_style]
+		var/datum/sprite_accessory_meta/wing/instance = wing_styles_list[pref.wing_style]
 		wing_display = instance.name
 	else if(pref.wing_style)
 		wing_display = "REQUIRES UPDATE"
@@ -327,7 +327,7 @@
 	. += " Style: <a href='?src=\ref[src];wing_style=1'>[wing_display]</a><br>"
 
 	if(wing_styles_list[pref.wing_style])
-		var/datum/sprite_accessory/wing/W = wing_styles_list[pref.wing_style]
+		var/datum/sprite_accessory_meta/wing/W = wing_styles_list[pref.wing_style]
 		if(W.do_colouration)
 			. += "<a href='?src=\ref[src];wing_color=1'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_wing, 2)][num2hex(pref.g_wing, 2)][num2hex(pref.b_wing, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_wing, 2)][num2hex(pref.g_wing, 2)][num2hex(pref.b_wing, 2)]'><tr><td>__</td></tr></table> </font><br>"
 			. += "<b>Gradient</b><br>"
@@ -350,7 +350,7 @@
 		// Construct the list of names allowed for this user.
 		var/list/pretty_ear_styles = list("Normal" = null)
 		for(var/path in ear_styles_list)
-			var/datum/sprite_accessory/ears/instance = ear_styles_list[path]
+			var/datum/sprite_accessory_meta/ears/instance = ear_styles_list[path]
 			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_ear_styles[instance.name] = path
 
@@ -392,7 +392,7 @@
 		// Construct the list of names allowed for this user.
 		var/list/pretty_horn_styles = list("Normal" = null)
 		for(var/path in horn_styles_list)
-			var/datum/sprite_accessory/ears/instance = horn_styles_list[path]
+			var/datum/sprite_accessory_meta/ears/instance = horn_styles_list[path]
 			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_horn_styles[instance.name] = path
 
@@ -434,7 +434,7 @@
 		// Construct the list of names allowed for this user.
 		var/list/pretty_tail_styles = list("Normal" = null)
 		for(var/path in tail_styles_list)
-			var/datum/sprite_accessory/tail/instance = tail_styles_list[path]
+			var/datum/sprite_accessory_meta/tail/instance = tail_styles_list[path]
 			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_tail_styles[instance.name] = path
 
@@ -476,7 +476,7 @@
 		// Construct the list of names allowed for this user.
 		var/list/pretty_wing_styles = list("Normal" = null)
 		for(var/path in wing_styles_list)
-			var/datum/sprite_accessory/wing/instance = wing_styles_list[path]
+			var/datum/sprite_accessory_meta/wing/instance = wing_styles_list[path]
 			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_wing_styles[instance.name] = path
 

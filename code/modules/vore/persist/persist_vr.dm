@@ -183,7 +183,7 @@
 		for(var/name in O.markings)
 			// Expected to be list("color" = mark_color, "datum" = mark_datum). Sanity checks to ensure it.
 			var/list/ML = O.markings[name]
-			var/datum/sprite_accessory/marking/mark_datum = ML["datum"]
+			var/datum/sprite_accessory_meta/marking/mark_datum = ML["datum"]
 			var/mark_color = ML["color"]
 			if(!istype(mark_datum) || !mark_color)
 				log_debug("[character]'s organ [O] ([O.type]) has marking [list2params(ML)] with invalid/missing color/datum!")

@@ -78,7 +78,7 @@
 	var/b_skin = 179
 
 //! ## ears, horns, tails, wings and custom species.
-	var/datum/sprite_accessory/ears/ear_style = null
+	var/datum/sprite_accessory_meta/ears/ear_style = null
 	var/r_ears  = 30
 	var/g_ears  = 30
 	var/b_ears  = 30
@@ -89,7 +89,7 @@
 	var/g_ears3 = 30
 	var/b_ears3 = 30
 
-	var/datum/sprite_accessory/ears/horn_style = null
+	var/datum/sprite_accessory_meta/ears/horn_style = null
 	var/r_horn  = 30
 	var/g_horn  = 30
 	var/b_horn  = 30
@@ -100,7 +100,7 @@
 	var/g_horn3 = 30
 	var/b_horn3 = 30
 
-	var/datum/sprite_accessory/tail/tail_style = null
+	var/datum/sprite_accessory_meta/tail/tail_style = null
 	var/r_tail  = 30
 	var/g_tail  = 30
 	var/b_tail  = 30
@@ -111,7 +111,7 @@
 	var/g_tail3 = 30
 	var/b_tail3 = 30
 
-	var/datum/sprite_accessory/wing/wing_style = null
+	var/datum/sprite_accessory_meta/wing/wing_style = null
 	var/grad_wingstyle = "None"
 	var/r_gradwing = 0
 	var/g_gradwing = 0

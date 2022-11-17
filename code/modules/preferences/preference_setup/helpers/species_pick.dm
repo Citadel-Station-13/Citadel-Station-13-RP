@@ -20,7 +20,7 @@
  * check if we can play a species
  */
 /datum/preferences/proc/check_character_species(datum/character_species/CS)
-	if(CS.whitelisted && !(config.check_alien_whitelist(ckey(CS.name), client_ckey)))
+	if((CS.species_spawn_flags & SPECIES_SPAWN_SECRET) && !(config.check_alien_whitelist(ckey(CS.name), client_ckey)))
 		return FALSE
 	return TRUE
 
@@ -55,10 +55,10 @@
 	var/list/valid_hair = get_valid_hairstyles()
 	var/list/valid_fhair = get_valid_facialhairstyles()
 	if(!(h_style in valid_hair))
-		var/datum/sprite_accessory/hair/H = /datum/sprite_accessory/hair/bald
+		var/datum/sprite_accessory_meta/hair/H = /datum/sprite_accessory_meta/hair/bald
 		h_style = initial(H.name)
 	if(!(f_style in valid_fhair))
-		var/datum/sprite_accessory/facial_hair/FH = /datum/sprite_accessory/facial_hair/shaved
+		var/datum/sprite_accessory_meta/facial_hair/FH = /datum/sprite_accessory_meta/facial_hair/shaved
 		f_style = initial(FH.name)
 	// limbs/markings
 	reset_limbs()

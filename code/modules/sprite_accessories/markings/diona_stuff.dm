@@ -1,7 +1,7 @@
-/datum/sprite_accessory/marking/diona
+/datum/sprite_accessory_meta/marking/diona
 	icon = "icons/mob/sprite_accessories/markings/diona.dmi"
 
-/datum/sprite_accessory/marking/diona/diona_leaves
+/datum/sprite_accessory_meta/marking/diona/diona_leaves
 	name = "Diona Leaves"
 	icon_state = "diona_leaves"
 	color_blend_mode = ICON_MULTIPLY
@@ -9,7 +9,7 @@
 	species_allowed = list(SPECIES_DIONA, SPECIES_ALRAUNE)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/diona/diona_thorns
+/datum/sprite_accessory_meta/marking/diona/diona_thorns
 	name = "Diona Thorns"
 	icon_state = "diona_thorns"
 	color_blend_mode = ICON_MULTIPLY
@@ -17,7 +17,7 @@
 	species_allowed = list(SPECIES_DIONA, SPECIES_ALRAUNE)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/diona/diona_flowers
+/datum/sprite_accessory_meta/marking/diona/diona_flowers
 	name = "Diona Flowers"
 	icon_state = "diona_flowers"
 	color_blend_mode = ICON_MULTIPLY
@@ -25,7 +25,7 @@
 	species_allowed = list(SPECIES_DIONA, SPECIES_ALRAUNE)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/diona/diona_moss
+/datum/sprite_accessory_meta/marking/diona/diona_moss
 	name = "Diona moss"
 	icon_state = "diona_moss"
 	color_blend_mode = ICON_MULTIPLY
@@ -33,7 +33,7 @@
 	species_allowed = list(SPECIES_DIONA, SPECIES_ALRAUNE)
 	apply_restrictions = TRUE
 
-/datum/sprite_accessory/marking/diona/diona_flowers
+/datum/sprite_accessory_meta/marking/diona/diona_flowers
 	name = "Diona Flowers"
 	icon_state = "diona_flowers"
 	color_blend_mode = ICON_MULTIPLY

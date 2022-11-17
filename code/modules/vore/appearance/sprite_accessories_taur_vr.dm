@@ -8,7 +8,7 @@
 
 // Taur sprites are now a subtype of tail since they are mutually exclusive anyway.
 
-/datum/sprite_accessory/tail/taur
+/datum/sprite_accessory_meta/tail/taur
 	name = "You should not see this..."
 	icon = 'icons/mob/sprite_accessories/taurs.dmi'
 	do_colouration = 1 // Yes color, using tail color
@@ -48,14 +48,14 @@
 	clip_mask_icon = 'icons/mob/sprite_accessories/taurs.dmi'
 	clip_mask_state = "taur_clip_mask_def" //Used to clip off the lower part of suits & uniforms
 
-/datum/sprite_accessory/tail/taur/roiz_long_lizard // Not ACTUALLY a taur, but it uses 32x64 so it wouldn't fit in tails.dmi, and having it as a tail bugs up the sprite.
+/datum/sprite_accessory_meta/tail/taur/roiz_long_lizard // Not ACTUALLY a taur, but it uses 32x64 so it wouldn't fit in tails.dmi, and having it as a tail bugs up the sprite.
 	name = "Long Lizard Tail (Roiz Lizden)"
 	icon_state = "roiz_tail_s"
 	do_colouration = 0
 	ckeys_allowed = list("spoopylizz")
 // Species-unique long tails/taurhalves
 
-/datum/sprite_accessory/tail/taur/shadekin_tail
+/datum/sprite_accessory_meta/tail/taur/shadekin_tail
 	name = "Shadekin Tail"
 	icon_state = "shadekin_s"
 	can_ride = 0
@@ -65,52 +65,52 @@
 	apply_restrictions = TRUE
 	species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 
-/datum/sprite_accessory/tail/taur/shadekin_tail/shadekin_tail_2c
+/datum/sprite_accessory_meta/tail/taur/shadekin_tail/shadekin_tail_2c
 	name = "Shadekin Tail dual-color"
 	extra_overlay = "shadekin_markings"
 
-/datum/sprite_accessory/tail/taur/shadekin_tail/shadekin_tail_long
+/datum/sprite_accessory_meta/tail/taur/shadekin_tail/shadekin_tail_long
 	name = "Shadekin Long Tail"
 	icon_state = "shadekin_long_s"
 
-/datum/sprite_accessory/tail/taur/shadekin_tail/shadekin_tail_long_2
+/datum/sprite_accessory_meta/tail/taur/shadekin_tail/shadekin_tail_long_2
 	name = "Shadekin Striped Long Tail"
 	icon_state = "shadekin_long_2"
 	extra_overlay = "shadekin_long_marking_2"
 
-/datum/sprite_accessory/tail/taur/shadekin_tail/shadekin_tail_small
+/datum/sprite_accessory_meta/tail/taur/shadekin_tail/shadekin_tail_small
 	name = "Shadekin Small Tail"
 	icon_state = "shadekin_s2"
 
 // Tails/taurhalves for everyone
 
-/datum/sprite_accessory/tail/taur/wolf
+/datum/sprite_accessory_meta/tail/taur/wolf
 	name = "Wolf (Taur)"
 	icon_state = "wolf_s"
 	suit_sprites = 'icons/mob/clothing/taursuits_wolf.dmi'
 
 //TFF 22/11/19 - CHOMPStation port of fat taur sprites
-/datum/sprite_accessory/tail/taur/fatwolf
+/datum/sprite_accessory_meta/tail/taur/fatwolf
 	name = "Fat Wolf (Taur)"
 	icon_state = "fatwolf_s"
 
-/datum/sprite_accessory/tail/taur/wolf/wolf_2c
+/datum/sprite_accessory_meta/tail/taur/wolf/wolf_2c
 	name = "Wolf dual-color (Taur)"
 	icon_state = "wolf_s"
 	extra_overlay = "wolf_markings"
 
 //TFF 22/11/19 - CHOMPStation port of fat taur sprites
-/datum/sprite_accessory/tail/taur/wolf/fatwolf_2c
+/datum/sprite_accessory_meta/tail/taur/wolf/fatwolf_2c
 	name = "Fat Wolf dual-color (Taur)"
 	icon_state = "fatwolf_s"
 	extra_overlay = "fatwolf_markings"
 
-/datum/sprite_accessory/tail/taur/wolf/synthwolf
+/datum/sprite_accessory_meta/tail/taur/wolf/synthwolf
 	name = "SynthWolf dual-color (Taur)"
 	icon_state = "synthwolf_s"
 	extra_overlay = "synthwolf_markings"
 
-/datum/sprite_accessory/tail/taur/naga
+/datum/sprite_accessory_meta/tail/taur/naga
 	name = "Naga (Taur)"
 	icon_state = "naga_s"
 	suit_sprites = 'icons/mob/clothing/taursuits_naga.dmi'
@@ -142,12 +142,12 @@
 	msg_prey_stepunder = "You jump over %prey's thick tail."
 	msg_owner_stepunder = "%owner bounds over your tail."
 
-/datum/sprite_accessory/tail/taur/naga/naga_2c
+/datum/sprite_accessory_meta/tail/taur/naga/naga_2c
 	name = "Naga dual-color (Taur)"
 	icon_state = "naga_s"
 	extra_overlay = "naga_markings"
 
-/datum/sprite_accessory/tail/taur/horse
+/datum/sprite_accessory_meta/tail/taur/horse
 	name = "Horse (Taur)"
 	icon_state = "horse_s"
 	suit_sprites = 'icons/mob/clothing/taursuits_horse.dmi'
@@ -167,12 +167,12 @@
 	msg_owner_grab_fail = "You step down onto %prey, squishing them and forcing them down to the ground!"
 	msg_prey_grab_fail = "%owner steps down and squishes you with their hoof, forcing you down to the ground!"
 
-/datum/sprite_accessory/tail/taur/horse/synthhorse
+/datum/sprite_accessory_meta/tail/taur/horse/synthhorse
 	name = "SynthHorse dual-color (Taur)"
 	icon_state = "synthhorse_s"
 	extra_overlay = "synthhorse_markings"
 
-/datum/sprite_accessory/tail/taur/cow
+/datum/sprite_accessory_meta/tail/taur/cow
 	name = "Cow (Taur)"
 	icon_state = "cow_s"
 	suit_sprites = 'icons/mob/clothing/taursuits_cow.dmi'
@@ -192,7 +192,7 @@
 	msg_owner_grab_fail = "You step down onto %prey, squishing them and forcing them down to the ground!"
 	msg_prey_grab_fail = "%owner steps down and squishes you with their hoof, forcing you down to the ground!"
 
-/datum/sprite_accessory/tail/taur/deer
+/datum/sprite_accessory_meta/tail/taur/deer
 	name = "Deer dual-color (Taur)"
 	icon_state = "deer_s"
 	extra_overlay = "deer_markings"
@@ -213,22 +213,22 @@
 	msg_owner_grab_fail = "You step down onto %prey, squishing them and forcing them down to the ground!"
 	msg_prey_grab_fail = "%owner steps down and squishes you with their hoof, forcing you down to the ground!"
 
-/datum/sprite_accessory/tail/taur/lizard
+/datum/sprite_accessory_meta/tail/taur/lizard
 	name = "Lizard (Taur)"
 	icon_state = "lizard_s"
 	suit_sprites = 'icons/mob/clothing/taursuits_lizard.dmi'
 
-/datum/sprite_accessory/tail/taur/lizard/lizard_2c
+/datum/sprite_accessory_meta/tail/taur/lizard/lizard_2c
 	name = "Lizard dual-color (Taur)"
 	icon_state = "lizard_s"
 	extra_overlay = "lizard_markings"
 
-/datum/sprite_accessory/tail/taur/lizard/synthlizard
+/datum/sprite_accessory_meta/tail/taur/lizard/synthlizard
 	name = "SynthLizard dual-color (Taur)"
 	icon_state = "synthlizard_s"
 	extra_overlay = "synthlizard_markings"
 
-/datum/sprite_accessory/tail/taur/spider
+/datum/sprite_accessory_meta/tail/taur/spider
 	name = "Spider (Taur)"
 	icon_state = "spider_s"
 	suit_sprites = 'icons/mob/clothing/taursuits_spider.dmi'
@@ -248,7 +248,7 @@
 	msg_owner_grab_fail = "You step down onto %prey, squishing them and forcing them down to the ground!"
 	msg_prey_grab_fail = "%owner steps down and squishes you with their leg, forcing you down to the ground!"
 
-/datum/sprite_accessory/tail/taur/tents
+/datum/sprite_accessory_meta/tail/taur/tents
 	name = "Tentacles (Taur)"
 	icon_state = "tent_s"
 	can_ride = 0
@@ -274,38 +274,38 @@
 	msg_owner_grab_fail = "You step down onto %prey with one of your tentacles, forcing them onto the ground!"
 	msg_prey_grab_fail = "%owner steps down onto you with one of their tentacles, squishing you and forcing you onto the ground!"
 
-/datum/sprite_accessory/tail/taur/feline
+/datum/sprite_accessory_meta/tail/taur/feline
 	name = "Feline (Taur)"
 	icon_state = "feline_s"
 	suit_sprites = 'icons/mob/clothing/taursuits_feline.dmi'
 
 //TFF 22/11/19 - CHOMPStation port of fat taur sprites
-/datum/sprite_accessory/tail/taur/fatfeline
+/datum/sprite_accessory_meta/tail/taur/fatfeline
 	name = "Fat Feline (Taur)"
 	icon_state = "fatfeline_s"
 
-/datum/sprite_accessory/tail/taur/fatfeline_wag
+/datum/sprite_accessory_meta/tail/taur/fatfeline_wag
 	name = "Fat Feline (Taur) (vwag)"
 	icon_state = "fatfeline_s"
 	ani_state = "fatfeline_w"
 
-/datum/sprite_accessory/tail/taur/feline/feline_2c
+/datum/sprite_accessory_meta/tail/taur/feline/feline_2c
 	name = "Feline dual-color (Taur)"
 	icon_state = "feline_s"
 	extra_overlay = "feline_markings"
 
 //TFF 22/11/19 - CHOMPStation port of fat taur sprites
-/datum/sprite_accessory/tail/taur/feline/fatfeline_2c
+/datum/sprite_accessory_meta/tail/taur/feline/fatfeline_2c
 	name = "Fat Feline dual-color (Taur)"
 	icon_state = "fatfeline_s"
 	extra_overlay = "fatfeline_markings"
 
-/datum/sprite_accessory/tail/taur/feline/synthfeline
+/datum/sprite_accessory_meta/tail/taur/feline/synthfeline
 	name = "SynthFeline dual-color (Taur)"
 	icon_state = "synthfeline_s"
 	extra_overlay = "synthfeline_markings"
 
-/datum/sprite_accessory/tail/taur/slug
+/datum/sprite_accessory_meta/tail/taur/slug
 	name = "Slug (Taur)"
 	icon_state = "slug_s"
 	suit_sprites = 'icons/mob/clothing/taursuits_slug.dmi'
@@ -337,23 +337,23 @@
 	msg_prey_stepunder = "You jump over %prey's thick tail."
 	msg_owner_stepunder = "%owner bounds over your tail."
 
-/datum/sprite_accessory/tail/taur/frog
+/datum/sprite_accessory_meta/tail/taur/frog
 	name = "Frog (Taur)"
 	icon_state = "frog_s"
 
-/datum/sprite_accessory/tail/taur/drake //Enabling on request, no suit compatibility but then again see 2 above.
+/datum/sprite_accessory_meta/tail/taur/drake //Enabling on request, no suit compatibility but then again see 2 above.
 	name = "Drake (Taur)"
 	icon_state = "drake_s"
 	extra_overlay = "drake_markings"
 	suit_sprites = 'icons/mob/clothing/taursuits_drake.dmi'
 
-/datum/sprite_accessory/tail/taur/otie
+/datum/sprite_accessory_meta/tail/taur/otie
 	name = "Otie (Taur)"
 	icon_state = "otie_s"
 	extra_overlay = "otie_markings"
 	suit_sprites = 'icons/mob/clothing/taursuits_otie.dmi'
 
-/datum/sprite_accessory/tail/taur/alraune/alraune_2c
+/datum/sprite_accessory_meta/tail/taur/alraune/alraune_2c
 	name = "Alraune (dual color)"
 	icon_state = "alraunecolor_s"
 	ani_state = "alraunecolor_closed_s"
@@ -363,7 +363,7 @@
 	extra_overlay_w = "alraunecolor_closed_markings"
 	clip_mask_state = "taur_clip_mask_alraune"
 
-/datum/sprite_accessory/tail/taur/wasp
+/datum/sprite_accessory_meta/tail/taur/wasp
 	name = "Wasp (dual color)"
 	icon_state = "wasp_s"
 	extra_overlay = "wasp_markings"
@@ -384,7 +384,7 @@
 	msg_owner_grab_fail = "You step down onto %prey, squishing them and forcing them down to the ground!"
 	msg_prey_grab_fail = "%owner steps down and squishes you with their leg, forcing you down to the ground!"
 
-/datum/sprite_accessory/tail/taur/mantis
+/datum/sprite_accessory_meta/tail/taur/mantis
 	name = "Mantis (Taur)"
 	icon_state = "mantis_s"
 	clip_mask_state = "taur_clip_mask_mantis"
@@ -407,7 +407,7 @@
 // Special snowflake tails/taurhalves
 
 //spoopylizz: Roiz Lizden
-/datum/sprite_accessory/tail/taur/roiz_long_lizard // Not ACTUALLY a taur, but it uses 32x64 so it wouldn't fit in tails.dmi, and having it as a tail bugs up the sprite.
+/datum/sprite_accessory_meta/tail/taur/roiz_long_lizard // Not ACTUALLY a taur, but it uses 32x64 so it wouldn't fit in tails.dmi, and having it as a tail bugs up the sprite.
 	name = "Long Lizard Tail (Roiz Lizden)"
 	icon_state = "roiz_tail_s"
 	do_colouration = 0
@@ -417,19 +417,19 @@
 	clip_mask_state = null
 
 //wickedtemp: Chakat Tempest
-/datum/sprite_accessory/tail/taur/feline/tempest
+/datum/sprite_accessory_meta/tail/taur/feline/tempest
 	name = "Feline (wickedtemp) (Taur)"
 	icon_state = "tempest_s"
 	ckeys_allowed = list("wickedtemp")
 
 //silencedmp5a5: Serdykov Antoz
-/datum/sprite_accessory/tail/taur/wolf/serdy
+/datum/sprite_accessory_meta/tail/taur/wolf/serdy
 	name = "CyberSerdy (silencedmp5a5) (Taur)"
 	icon_state = "serdy_s"
 	ckeys_allowed = list("silencedmp5a5")
 
 //liquidfirefly: Ariana Scol
-/datum/sprite_accessory/tail/taur/centipede
+/datum/sprite_accessory_meta/tail/taur/centipede
 	name = "Centipede (liquidfirefly) (Taur)"
 	icon_state = "ariana_s"
 	ckeys_allowed = list("liquidfirefly")
@@ -451,7 +451,7 @@
 	msg_prey_grab_fail = "%owner steps down and squishes you with their leg, forcing you down to the ground!"
 
 //natje:
-/datum/sprite_accessory/tail/taur/alraune
+/datum/sprite_accessory_meta/tail/taur/alraune
 	name = "Alraune (natje) (Taur)"
 	icon_state = "alraune_s"
 	ani_state = "alraune_closed_s"
@@ -482,7 +482,7 @@
 	msg_owner_grab_fail = "You step down onto %prey with one of your vines, forcing them onto the ground!"
 	msg_prey_grab_fail = "%owner steps down onto you with one of their vines, squishing you and forcing you onto the ground!"
 
-/datum/sprite_accessory/tail/taur/alraune/alraune_2c
+/datum/sprite_accessory_meta/tail/taur/alraune/alraune_2c
 	name = "Alraune (dual color)"
 	icon_state = "alraunecolor_s"
 	ani_state = "alraunecolor_closed_s"
@@ -491,7 +491,7 @@
 	extra_overlay = "alraunecolor_markings"
 	extra_overlay_w = "alraunecolor_closed_markings"
 
-/datum/sprite_accessory/tail/taur/long_lizard
+/datum/sprite_accessory_meta/tail/taur/long_lizard
 	name = "Large Dragon Tail"
 	icon_state = "big_liz"
 	can_ride = 0
@@ -499,6 +499,6 @@
 	clip_mask_icon = null
 	clip_mask_state = null
 
-/datum/sprite_accessory/tail/taur/long_lizard/scaled
+/datum/sprite_accessory_meta/tail/taur/long_lizard/scaled
 	name = "Large Dragon Tail/W scales"
 	extra_overlay = "big_liz_mark"

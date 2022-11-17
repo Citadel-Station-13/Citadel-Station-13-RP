@@ -1,7 +1,7 @@
-/datum/sprite_accessory
+/datum/sprite_accessory_meta
 	//! intrinsics
 	/// abstract type
-	var/abstract_type = /datum/sprite_accessory
+	var/abstract_type = /datum/sprite_accessory_meta
 	/// id - must be unique
 	var/id
 
@@ -49,4 +49,4 @@
 	/// center? always center new accessories but legacy ones can't center yet
 	var/center = FALSE
 
-/datum/sprite_accessory/proc/render_mob_appearance(mob/M, datum/sprite_accessory_data/data)
+/datum/sprite_accessory_meta/proc/render_mob_appearance(mob/M, datum/sprite_accessory_data/data)

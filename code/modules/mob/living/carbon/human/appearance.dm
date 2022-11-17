@@ -188,7 +188,7 @@
 		var/current_species_name = S.name
 
 		if(check_whitelist && config_legacy.usealienwhitelist && !check_rights(R_ADMIN, 0, src)) //If we're using the whitelist, make sure to check it!
-			if(!(S.species_spawn_flags & SPECIES_SPAWN_ALLOWED))
+			if(!(S.species_spawn_flags & SPECIES_SPAWN_CHARACTER))
 				continue
 			if(whitelist.len && !(current_species_name in whitelist))
 				continue
@@ -209,7 +209,7 @@
 
 	var/list/valid_hairstyles = new()
 	for(var/hairstyle in hair_styles_list)
-		var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
+		var/datum/sprite_accessory_meta/S = hair_styles_list[hairstyle]
 
 		if(check_gender && gender != NEUTER)
 			if(gender == MALE && S.gender == FEMALE)
@@ -231,7 +231,7 @@
 
 	var/list/valid_facial_hairstyles = new()
 	for(var/facialhairstyle in facial_hair_styles_list)
-		var/datum/sprite_accessory/S = facial_hair_styles_list[facialhairstyle]
+		var/datum/sprite_accessory_meta/S = facial_hair_styles_list[facialhairstyle]
 
 		if(gender != NEUTER)
 			if(gender == MALE && S.gender == FEMALE)

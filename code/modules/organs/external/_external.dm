@@ -509,7 +509,7 @@
 		return 1
 	else
 		last_dam = brute_dam + burn_dam
-	if(germ_level)
+	if(germ_level && (owner && !IS_DEAD(owner)))
 		return 1
 	if(length(wounds))
 		return TRUE
@@ -562,6 +562,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	if(robotic >= ORGAN_ROBOT || (owner.species && (owner.species.species_flags & IS_PLANT || (owner.species.species_flags & NO_INFECT)))) //Robotic limbs shouldn't be infected, nor should nonexistant limbs.
 		germ_level = 0
+		return
+	
+	if(owner && !IS_DEAD(owner))
 		return
 
 	if(owner.bodytemperature >= 170)	//cryo stops germs from moving and doing their bad stuffs

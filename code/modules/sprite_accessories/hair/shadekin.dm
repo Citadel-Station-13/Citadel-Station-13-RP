@@ -1,6 +1,6 @@
 // Shadekin stuffs
 
-/datum/sprite_accessory/hair/shadekin_hair_short
+/datum/sprite_accessory_meta/hair/shadekin_hair_short
 		name = "Shadekin Short Hair"
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
@@ -9,7 +9,7 @@
 		apply_restrictions = TRUE
 		gender = NEUTER
 
-/datum/sprite_accessory/hair/shadekin_hair_poofy
+/datum/sprite_accessory_meta/hair/shadekin_hair_poofy
 		name = "Shadekin Poofy Hair"
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
@@ -18,7 +18,7 @@
 		apply_restrictions = TRUE
 		gender = NEUTER
 
-/datum/sprite_accessory/hair/shadekin_hair_long
+/datum/sprite_accessory_meta/hair/shadekin_hair_long
 		name = "Shadekin Long Hair"
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'
@@ -27,7 +27,7 @@
 		apply_restrictions = TRUE
 		gender = NEUTER
 
-/datum/sprite_accessory/hair/shadekin_hair_rivyr
+/datum/sprite_accessory_meta/hair/shadekin_hair_rivyr
 		name = "Rivyr Hair"
 		icon = 'icons/mob/human_face_vr.dmi'
 		icon_add = 'icons/mob/human_face_vr_add.dmi'

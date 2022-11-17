@@ -742,12 +742,12 @@
 		update_eyes()
 
 	// hair
-	var/list/all_hairs = typesof(/datum/sprite_accessory/hair) - /datum/sprite_accessory/hair
+	var/list/all_hairs = typesof(/datum/sprite_accessory_meta/hair) - /datum/sprite_accessory_meta/hair
 	var/list/hairs = list()
 
 	// loop through potential hairs
 	for(var/x in all_hairs)
-		var/datum/sprite_accessory/hair/H = new x // create new hair datum based on type x
+		var/datum/sprite_accessory_meta/hair/H = new x // create new hair datum based on type x
 		hairs.Add(H.name) // add hair name to hairs
 		qdel(H) // delete the hair after it's all done
 
@@ -758,11 +758,11 @@
 		h_style = new_style
 
 	// facial hair
-	var/list/all_fhairs = typesof(/datum/sprite_accessory/facial_hair) - /datum/sprite_accessory/facial_hair
+	var/list/all_fhairs = typesof(/datum/sprite_accessory_meta/facial_hair) - /datum/sprite_accessory_meta/facial_hair
 	var/list/fhairs = list()
 
 	for(var/x in all_fhairs)
-		var/datum/sprite_accessory/facial_hair/H = new x
+		var/datum/sprite_accessory_meta/facial_hair/H = new x
 		fhairs.Add(H.name)
 		qdel(H)
 

@@ -98,7 +98,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 
 	//Head markings
 	for(var/M in markings)
-		var/datum/sprite_accessory/marking/mark_style = markings[M]["datum"]
+		var/datum/sprite_accessory_meta/marking/mark_style = markings[M]["datum"]
 		var/icon/mark_s = new/icon("icon" = mark_style.icon, "icon_state" = "[mark_style.icon_state]-[organ_tag]")
 		mark_s.Blend(markings[M]["color"], mark_style.color_blend_mode)
 		add_overlay(mark_s) //So when it's not on your body, it has icons
@@ -119,7 +119,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 	var/image/res = image('icons/mob/human_face.dmi',"bald_s")
 	//Facial hair
 	if(owner.f_style)
-		var/datum/sprite_accessory/facial_hair_style = facial_hair_styles_list[owner.f_style]
+		var/datum/sprite_accessory_meta/facial_hair_style = facial_hair_styles_list[owner.f_style]
 		if(facial_hair_style && (!facial_hair_style.apply_restrictions || (species.get_bodytype_legacy(owner) in facial_hair_style.species_allowed)))
 			var/icon/facial_s = new/icon("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
 			if(facial_hair_style.do_colouration)
@@ -129,7 +129,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 	//Head hair
 	if(owner.h_style)
 		var/style = owner.h_style
-		var/datum/sprite_accessory/hair/hair_style = hair_styles_list[style]
+		var/datum/sprite_accessory_meta/hair/hair_style = hair_styles_list[style]
 		if(owner.head && (owner.head.flags_inv & BLOCKHEADHAIR))
 			if(!(hair_style.flags & HAIR_VERY_SHORT))
 				hair_style = hair_styles_list["Short Hair"]
@@ -180,7 +180,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 			//Body markings, actually does not include head this time. Done separately above.
 			if(!istype(src,/obj/item/organ/external/head))
 				for(var/M in markings)
-					var/datum/sprite_accessory/marking/mark_style = markings[M]["datum"]
+					var/datum/sprite_accessory_meta/marking/mark_style = markings[M]["datum"]
 					var/icon/mark_s = new/icon("icon" = mark_style.icon, "icon_state" = "[mark_style.icon_state]-[organ_tag]")
 					mark_s.Blend(markings[M]["color"], mark_style.color_blend_mode)
 					add_overlay(mark_s) //So when it's not on your body, it has icons
@@ -200,7 +200,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 		apply_colouration(mob_icon)
 		if(owner && owner.synth_markings)
 			for(var/M in markings)
-				var/datum/sprite_accessory/marking/mark_style = markings[M]["datum"]
+				var/datum/sprite_accessory_meta/marking/mark_style = markings[M]["datum"]
 				var/icon/mark_s = new/icon("icon" = mark_style.icon, "icon_state" = "[mark_style.icon_state]-[organ_tag]")
 				mark_s.Blend(markings[M]["color"], mark_style.color_blend_mode)
 				add_overlay(mark_s) //So when it's not on your body, it has icons

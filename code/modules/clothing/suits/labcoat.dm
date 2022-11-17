@@ -75,3 +75,8 @@
 	name = "Roboticist labcoat"
 	desc = "A suit that protects against oil, acid, and burn hazards. Has a red stripe on the shoulder."
 	icon_state = "labcoat_robo"
+
+/obj/item/clothing/suit/storage/toggle/labcoat/blue
+	name = "blue-edged labcoat"
+	desc = "A suit that protects against minor chemical spills. This one has blue trim."
+	icon_state = "blue_edge_labcoat"

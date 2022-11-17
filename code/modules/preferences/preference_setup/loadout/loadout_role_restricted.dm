@@ -747,6 +747,10 @@
 	name = "Medical Labcoat - EMT"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/emt
 
+/datum/gear/restricted/medical/suit/labcoat_blue
+	name = "Medical Labcoat - Blue"
+	path = /obj/item/clothing/suit/storage/toggle/labcoat/blue
+	
 /datum/gear/restricted/medical/suit/department_jacket
 	name = "Medical Department Jacket"
 	path = /obj/item/clothing/suit/storage/toggle/med_dep_jacket

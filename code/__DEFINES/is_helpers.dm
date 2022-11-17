@@ -10,7 +10,7 @@
 
 //Datums
 
-#define isTaurTail(A)	istype(A, /datum/sprite_accessory/tail/taur)
+#define isTaurTail(A)	istype(A, /datum/sprite_accessory_meta/tail/taur)
 
 //Turfs
 

@@ -256,7 +256,7 @@
 	var/list/valid_hairstyles = list()
 	var/species_name = real_species_name()
 	for(var/hairstyle in hair_styles_list)
-		var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
+		var/datum/sprite_accessory_meta/S = hair_styles_list[hairstyle]
 		if(S.apply_restrictions && !(species_name in S.species_allowed) && (!custom_base || !(custom_base in S.species_allowed))) //Custom species base species allowance
 			continue
 
@@ -268,7 +268,7 @@
 	var/list/valid_facialhairstyles = list()
 	var/datum/species/RS = real_species_datum()
 	for(var/facialhairstyle in facial_hair_styles_list)
-		var/datum/sprite_accessory/S = facial_hair_styles_list[facialhairstyle]
+		var/datum/sprite_accessory_meta/S = facial_hair_styles_list[facialhairstyle]
 		if(biological_gender == MALE && S.gender == FEMALE)
 			continue
 		if(biological_gender == FEMALE && S.gender == MALE)
