@@ -4,7 +4,16 @@
 /datum/proc/can_vv_get(var_name)
 	return TRUE
 
-/datum/proc/vv_edit_var(var_name, var_value, raw_edit) //called whenever a var is edited
+/**
+ * called to edit a variable
+ * return true for success, false for reject
+ *
+ * @params
+ * - var_name - variable name
+ * - var_value - what to set it to
+ * - raw_edit - did the admin request to bypass automated handling?
+ */
+/datum/proc/vv_edit_var(var_name, var_value, raw_edit)
 	if(var_name == NAMEOF(src, vars) || var_name == NAMEOF(src, parent_type))
 		return FALSE
 	vars[var_name] = var_value

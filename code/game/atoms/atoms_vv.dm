@@ -9,7 +9,7 @@
   * Also, if GLOB.Debug2 is FALSE, it sets the ADMIN_SPAWNED_1 flag on flags_1, which signifies
   * the object has been admin edited
   */
-/atom/vv_edit_var(var_name, var_value)
+/atom/vv_edit_var(var_name, var_value, raw_edit)
 	if(!GLOB.Debug2)
 		flags |= ADMIN_SPAWNED
 	if(!raw_edit)

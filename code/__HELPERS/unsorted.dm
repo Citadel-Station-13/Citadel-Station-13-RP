@@ -645,10 +645,7 @@
  * Returns: 1 if found, 0 if not.
  */
 /proc/hasvar(datum/Ref, varname)
-	if(Ref.vars.Find(lowertext(varname)))
-		return TRUE
-	else
-		return FALSE
+	return Ref.vars.Find(lowertext(varname))? TRUE : FALSE
 
 /// Simple datum for storing coordinates.
 /datum/coords
