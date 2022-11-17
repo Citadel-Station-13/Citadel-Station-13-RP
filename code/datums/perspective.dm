@@ -59,7 +59,7 @@
 	/// screen objects
 	var/list/atom/movable/screens = list()
 	/// sight var
-	var/sight = SEE_SELF
+	var/sight = SIGHT_FLAGS_DEFAULT
 	/// active clients - this is not the same as mobs because a client can be looking somewhere that isn't their mob
 	var/list/client/clients
 	/// mobs that are using this - required for clean gcs
