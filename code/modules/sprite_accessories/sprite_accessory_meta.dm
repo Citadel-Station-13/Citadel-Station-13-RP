@@ -33,13 +33,25 @@
 	/// use front/behind system - will append _front and _behind after state but before coloration and emissives
 	var/front_behind_system = FALSE		// todo: maybe add _adj? do we even need that??
 
+	//! Species/Bodytype Locking
+	/// allowed bodytype - flags; overrides everything
+	var/allow_bodytypes = ~(BODYTYPES_NONHUMAN)
+	/// allowed character species - ids; null to allow all; overrides forbid
+	var/list/allow_species
+	/// forbid character species - ids; null to allow all
+	var/list/forbid_species
+
+	//! Randomgen hints
+	/// suggested gender for randomgen
+	var/randomgen_hint_gender = NEUTER
+
 	#warn how to layer?
 
 	//! addons
-	#warn addons
+	/// allowed addon types
+	var/sprite_addon_type = NONE
 
-	#warn rendering details below
-
+	#warn rendering details
 	/**
 	 * ! Sprite Accessory Icon Rendering !
 	 *
@@ -51,8 +63,16 @@
 	/// center? always center new accessories but legacy ones can't center yet
 	var/center = FALSE
 
+/**
+ * renders mob appearance
+ * returns mutable appearance or list of mutable appearances
+ */
 /datum/sprite_accessory_meta/proc/render_mob_appearance(mob/M, datum/sprite_accessory_data/data)
 
+/**
+ * renders emissive overlay to be put onto a mob's renderer
+ * returns mutable appearance or list of mutable appearances
+ */
 /datum/sprite_accessory_meta/proc/render_mob_emissives(mob/M, datum/sprite_accessory_data/data)
 
 /datum/sprite_accessory_meta/proc/color_amount()

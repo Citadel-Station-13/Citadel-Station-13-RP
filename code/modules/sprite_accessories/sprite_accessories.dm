@@ -26,8 +26,6 @@
 	var/icon
 	/// The icon_state of the accessory.
 	var/icon_state
-	/// A custom preview state for whatever reason.
-	var/preview_state
 
 	/// The preview name of the accessory.
 	var/name

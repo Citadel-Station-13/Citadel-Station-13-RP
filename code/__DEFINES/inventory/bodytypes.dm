@@ -69,6 +69,9 @@
 /// xenomorph hybrid
 #define BODYTYPE_XENOHYBRID			(1<<18)
 
+/// these bodytypes are actually nonhuman, as opposed to "i'm a human but with elf ears" kinda energy
+#define BODYTYPES_NONHUMAN (BODYTYPE_TESHARI | BODYTYPE_ADHERENT | BODYTYPE_VOX | BODYTYPE_WEREBEAST)
+
 // todo: what are we going to do with these?
 //? we should probably standardize bodytypes as entirely different sprites, and also
 //? have a set of "mutators" for items that apply to the default humanoid form

@@ -18,6 +18,8 @@
 	var/color_2 = "#ffffff"
 	/// color 3
 	var/color_3 = "#ffffff"
+	/// addon color
+	var/color_addon = "#ffffff"
 
 	#warn layers?
 	/// addons
@@ -73,6 +75,18 @@
 			color_3 = color
 			return TRUE
 	return FALSE
+
+/**
+ * gets addon color
+ */
+/datum/sprite_accessory_data/proc/get_addon_color(id)
+	#warn impl
+
+/**
+ * sets addon color
+ */
+/datum/sprite_accessory_data/proc/set_addon_color(id, color)
+	#warn impl
 
 /**
  * gets our color amount

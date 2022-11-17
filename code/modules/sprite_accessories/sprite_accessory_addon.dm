@@ -12,6 +12,10 @@
 	var/desc = "An addon."
 	/// category
 	var/category = SPRITE_ADDON_CATEGORY_UNKNOWN
+	/// type - must match for something to let us be used
+	var/sprite_addon_type = NONE
+	/// can't be put on if there's already another addon of this type
+	var/sprite_addon_unique = TRUE
 	/// icon file - must be centered
 	var/icon
 	/// icon state

@@ -9,3 +9,6 @@
 //! sprite_accessory_addon categories
 #define SPRITE_ADDON_CATEGORY_GRADIENT "Gradients"
 #define SPRITE_ADDON_CATEGORY_UNKNOWN "Unknown"
+
+//! addon types
+#define SPRITE_ADDON_TYPE_GRADIENT (1<<0)
