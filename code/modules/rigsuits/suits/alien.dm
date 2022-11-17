@@ -28,14 +28,14 @@
 	siemens_coefficient = 0.2
 
 /obj/item/clothing/head/helmet/space/rig/breacher
-	species_restricted = list(SPECIES_UNATHI)
+	species_restricted = list(SPECIES_UNATHI, SPECIES_UNATHI_DIGI)
 	force = 5
 
 /obj/item/clothing/suit/space/rig/breacher
-	species_restricted = list(SPECIES_UNATHI)
+	species_restricted = list(SPECIES_UNATHI, SPECIES_UNATHI_DIGI)
 
 /obj/item/clothing/shoes/magboots/rig/breacher
-	species_restricted = list(SPECIES_UNATHI)
+	species_restricted = list(SPECIES_UNATHI, SPECIES_UNATHI_DIGI)
 
 /*
  *	VOX
