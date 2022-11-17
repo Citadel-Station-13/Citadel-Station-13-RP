@@ -4,6 +4,10 @@
 #define PREFERENCE_LOAD_ORDER_CHAR_SPECIES -999
 // default
 #define PREFERENCE_LOAD_ORDER_DEFAULT 0
+// limbs load slightly earlier for markings
+#define PREFERENCE_LOAD_ORDER_LIMBS 25
+// body stuff
+#define PREFERENCE_LOAD_ORDER_BODY 30
 // lore/fluff is unimportant and can load later
 #define PREFERENCE_LOAD_ORDER_LORE 50
 // faction depends on origin/citizenship
