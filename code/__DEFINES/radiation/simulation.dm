@@ -116,7 +116,7 @@
 /// anomaly radiation low
 #define RAD_INTENSITY_ANOMALY_PULSE_LOW 250
 /// anomaly radiation high
-#define RAD_INTENSITY_ANOMALY_PULSE_LOW 400
+#define RAD_INTENSITY_ANOMALY_PULSE_HIGH 400
 /// anomaly radiation low - broken
 #define RAD_INTENSITY_ANOMALY_SMASH_LOW 200
 /// anomaly radiation high - broken
