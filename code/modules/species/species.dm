@@ -54,7 +54,7 @@
 	var/galactic_language = TRUE
 	/// intrinsic species languages - list() or singular language or null
 	// todo: linter check for language default being in here
-	var/list/intrinsic_languages = LANGUAGE_ID_COMMON
+	var/list/intrinsic_languages
 	/// language our name is in - used for namegen; null to force stock ss13 namegen instead
 	// todo: language for namegen is questionaable
 	var/name_language = LANGUAGE_ID_COMMON
@@ -507,8 +507,10 @@
  */
 /datum/species/proc/on_apply(mob/living/carbon/human/H)
 	// todo: language sources and holder
-	for(var/id in intrinsic_languages)
+	for(var/id in get_intrinsic_language_ids())
 		H.add_language(id)
+	if(galactic_language)
+		H.add_language(LANGUAGE_ID_COMMON)
 
 	if(holder_type)
 		H.holder_type = holder_type
@@ -530,8 +532,11 @@
  */
 /datum/species/proc/on_remove(mob/living/carbon/human/H)
 	// todo: language sources and holder
-	for(var/id in intrinsic_languages)
+	for(var/id in get_intrinsic_language_ids())
 		H.remove_language(id)
+	if(galactic_language)
+		H.remove_language(LANGUAGE_ID_COMMON)
+
 	remove_inherent_spells(H)
 	remove_inherent_verbs(H)
 	H.holder_type = null
