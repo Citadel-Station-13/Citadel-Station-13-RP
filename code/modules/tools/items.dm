@@ -168,11 +168,12 @@
  * - time - duration of the action in deciseconds
  * - cost - cost multiplier
  * - usage - usage flags, if any
+ * - volume - volume for sounds
  */
-/obj/item/proc/tool_feedback_start(function, flags, mob/user, atom/target, time, cost, usage)
+/obj/item/proc/tool_feedback_start(function, flags, mob/user, atom/target, time, cost, usage, volume)
 	SHOULD_CALL_PARENT(TRUE)
 	if(!(flags & TOOL_OP_NO_STANDARD_AUDIO))
-		standard_tool_feedback_sound(function, flags, user, target, time, cost, usage)
+		standard_tool_feedback_sound(function, flags, user, target, time, cost, usage, volume)
 
 /**
  * standard feedback for ending a tool usage
@@ -186,8 +187,9 @@
  * - cost - cost multiplier
  * - usage - usage flags, if any
  * - success - was it successful?
+ * - volume - volume for sounds
  */
-/obj/item/proc/tool_feedback_end(function, flags, mob/user, atom/target, time, cost, usage, success)
+/obj/item/proc/tool_feedback_end(function, flags, mob/user, atom/target, time, cost, usage, success, volume)
 	SHOULD_CALL_PARENT(TRUE)
 	if(!(flags & TOOL_OP_NO_STANDARD_AUDIO))
 		standard_tool_feedback_sound(function, flags, user, target, time, cost, usage, success)
@@ -204,15 +206,16 @@
  * - cost - cost multiplier
  * - usage - usage flags, if any
  * - success - was it successful? null if we're just starting
+ * - volume - volume for sounds
  */
-/obj/item/proc/standard_tool_feedback_sound(function, flags, mob/user, atom/target, time, cost, usage, success)
+/obj/item/proc/standard_tool_feedback_sound(function, flags, mob/user, atom/target, time, cost, usage, success, volume = 50)
 	if(isnull(success))
 		// starting
-		playsound(src, tool_sound(function, flags, user, target, time, cost, usage, success), 50, TRUE)
+		playsound(src, tool_sound(function, flags, user, target, time, cost, usage, success), volume, TRUE)
 	else
 		// finishing
 		if(time >= MIN_TOOL_SOUND_DELAY)
-			playsound(src, tool_sound(function, flags, user, target, time, cost, usage, success), 50, TRUE)
+			playsound(src, tool_sound(function, flags, user, target, time, cost, usage, success), volume, TRUE)
 
 /**
  * gets sound to play on tool usage

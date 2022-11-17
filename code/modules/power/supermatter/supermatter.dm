@@ -358,7 +358,7 @@
 			l.hallucination = max(0, min(200, l.hallucination + power * config_hallucination_power * sqrt( 1 / max(1,get_dist(l, src)) ) ) )
 
 	//! uh oh!
-	radiation_pulse(src, clamp(power * 4, 0, 50000))
+	radiation_pulse(src, clamp(power * 4, 0, 50000), RAD_FALLOFF_ENGINE_SUPERMATTER)
 
 	power -= (power/DECAY_FACTOR)**3		//energy losses due to radiation
 
@@ -493,8 +493,7 @@
 				"<span class=\"warning\">The unearthly ringing subsides and you notice you have new radiation burns.</span>", 2)
 		else
 			l.show_message("<span class=\"warning\">You hear an uneartly ringing and notice your skin is covered in fresh radiation burns.</span>", 2)
-	var/rads = 500
-	SSradiation.radiate(src, rads)
+	radiation_pulse(src, 3000, RAD_FALLOFF_ENGINE_SUPERMATTER)
 
 /obj/machinery/power/supermatter/GotoAirflowDest(n) //Supermatter not pushed around by airflow
 	return
@@ -544,7 +543,7 @@
 	START_PROCESSING(SSobj, src)
 
 /obj/item/broken_sm/process(delta_time)
-	radiation_pulse(src, RAD_INTENSITY_SM_BROKEN)
+	radiation_pulse(src, RAD_INTENSITY_SM_BROKEN, RAD_FALLOFF_ENGINE_SUPERMATTER)
 
 /obj/item/broken_sm/Destroy()
 	STOP_PROCESSING(SSobj, src)

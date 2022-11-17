@@ -53,7 +53,7 @@
 	. = ..()
 	if(!scanning)
 		return
-	. += span_info("Alt-click it to clear stored radiation levels.")
+	. += SPAN_INFO("Alt-click it to clear stored radiation levels.")
 	if(obj_flags & EMAGGED)
 		. += SPAN_WARNING("The display seems to be incomprehensible.")
 		return
@@ -159,7 +159,7 @@
 			to_chat(user, SPAN_WARNING("Turn off [src] before you perform this action!"))
 			return FALSE
 		user.visible_message(SPAN_NOTICE("[user] unscrews [src]'s maintenance panel and begins fiddling with its innards..."), SPAN_NOTICE("You begin resetting [src]..."))
-		if(!I.use_tool(src, user, 40, volume=50))
+		if(!I.use_tool(src, user, 4 SECONDS, volume = 40))
 			return FALSE
 		user.visible_message(SPAN_NOTICE("[user] refastens [src]'s maintenance panel!"), SPAN_NOTICE("You reset [src] to its factory settings!"))
 		obj_flags &= ~EMAGGED
@@ -170,7 +170,7 @@
 		return ..()
 
 /obj/item/geiger_counter/AltClick(mob/living/user)
-	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE))
+	if(!istype(user) || !user.default_can_use_topic(src))
 		return ..()
 	if(!scanning)
 		to_chat(usr, SPAN_WARNING("[src] must be on to reset its radiation level!"))
@@ -194,6 +194,7 @@
 	var/mob/listeningTo
 
 /obj/item/geiger_counter/cyborg/unequipped(mob/user, slot, flags)
+	. = ..()
 	if(!scanning)
 		return
 	scanning = FALSE
