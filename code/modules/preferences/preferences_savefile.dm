@@ -8,7 +8,7 @@
 	if(!path)
 		return FALSE
 	// check DOS guard
-	if(world.time < loadprefcooldown) //This is done before checking if the file exists to ensure that the server can't hang on read attempts
+	if(initialized && world.time < loadprefcooldown) //This is done before checking if the file exists to ensure that the server can't hang on read attempts
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to load your preferences a little too fast. Wait half a second, then try again.</span>")
 		return FALSE
@@ -48,7 +48,7 @@
 	if(!path)
 		return FALSE
 	// check DOS guard
-	if(world.time < saveprefcooldown)
+	if(initialized && world.time < saveprefcooldown)
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to save your preferences a little too fast. Wait half a second, then try again.</span>")
 		return FALSE
@@ -69,12 +69,42 @@
 		auto_flush_errors()
 	return TRUE
 
+/datum/preferences/proc/save_skin()
+	if(!path)
+		return FALSE
+	// heyooo no interruptions please
+	if(initialized)
+		UNTIL(world.time >= saveprefcooldown)
+	var/savefile/S = new /savefile(path)
+	if(!S)
+		return FALSE
+	S.cd = "/"
+	skin = sanitize_islist(skin)
+	WRITE_FILE(S["skin"], skin)
+	return TRUE
+
+/datum/preferences/proc/load_skin()
+	if(!path)
+		return FALSE
+	// heyooo no interruptions please
+	if(initialized)
+		UNTIL(world.time >= loadprefcooldown)
+	if(!fexists(path))
+		return FALSE
+	var/savefile/S = new /savefile(path)
+	if(!S)
+		return FALSE
+	S.cd = "/"
+	READ_FILE(S["skin"], skin)
+	skin = sanitize_islist(skin)
+	return TRUE
+
 /datum/preferences/proc/load_character(slot)
 	// todo: storage handler datums...
 	if(!path)
 		return FALSE
 	// check DOS guard
-	if(world.time < loadcharcooldown)
+	if(initialized && world.time < loadcharcooldown)
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to load your character a little too fast. Wait half a second, then try again.</span>")
 		return FALSE
@@ -134,7 +164,7 @@
 	if(!path)
 		return FALSE
 	// check DOS guard
-	if(world.time < savecharcooldown)
+	if(initialized && world.time < savecharcooldown)
 		if(istype(client))
 			to_chat(client, "<span class='warning'>You're attempting to save your character a little too fast. Wait half a second, then try again.</span>")
 		return FALSE

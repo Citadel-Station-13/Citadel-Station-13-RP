@@ -31,8 +31,8 @@ GLOBAL_DATUM_INIT(default_state, /datum/ui_state/default, new)
 		return
 
 	// Robots can interact with anything they can see.
-	var/list/clientviewlist = getviewsize(client.view)
-	if(get_dist(src, src_object) <= min(clientviewlist[1],clientviewlist[2]))
+	// todo: in view range for zooming
+	if(get_dist(src, src_object) <= min(CEILING(client.current_viewport_width / 2, 1), CEILING(client.current_viewport_height / 2, 1)))
 		return UI_INTERACTIVE
 	return UI_DISABLED // Otherwise they can keep the UI open.
 
