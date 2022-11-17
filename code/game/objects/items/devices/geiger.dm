@@ -61,13 +61,13 @@
 		if(-INFINITY to RAD_LEVEL_NORMAL)
 			. += SPAN_NOTICE("Ambient radiation level count reports that all is well.")
 		if(RAD_LEVEL_NORMAL + 1 to RAD_LEVEL_MODERATE)
-			. += span_alert("Ambient radiation levels slightly above average.")
+			. += SPAN_ALERT("Ambient radiation levels slightly above average.")
 		if(RAD_LEVEL_MODERATE + 1 to RAD_LEVEL_HIGH)
 			. += SPAN_WARNING("Ambient radiation levels above average.")
 		if(RAD_LEVEL_HIGH + 1 to RAD_LEVEL_VERY_HIGH)
-			. += span_danger("Ambient radiation levels highly above average.")
+			. += SPAN_DANGER("Ambient radiation levels highly above average.")
 		if(RAD_LEVEL_VERY_HIGH + 1 to RAD_LEVEL_CRITICAL)
-			. += span_suicide("Ambient radiation levels nearing critical level.")
+			. += SPAN_SUICIDE("Ambient radiation levels nearing critical level.")
 		if(RAD_LEVEL_CRITICAL + 1 to INFINITY)
 			. += SPAN_BOLDANNOUNCE("Ambient radiation levels above critical level!")
 
@@ -126,7 +126,7 @@
 			user.visible_message(SPAN_NOTICE("[user] scans [target] with [src]."), SPAN_NOTICE("You scan [target]'s radiation levels with [src]..."))
 			addtimer(CALLBACK(src, .proc/scan, target, user), 20, TIMER_UNIQUE) // Let's not have spamming GetAllContents
 		else
-			user.visible_message(SPAN_NOTICE("[user] scans [target] with [src]."), span_danger("You project [src]'s stored radiation into [target]!"))
+			user.visible_message(SPAN_NOTICE("[user] scans [target] with [src]."), SPAN_DANGER("You project [src]'s stored radiation into [target]!"))
 			target.rad_act(radiation_count / get_dist(user, target))	// yeah let's NOT have infinite range killbeams
 			radiation_count = 0
 		return TRUE
