@@ -183,7 +183,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/debug_tools_allowed = FALSE			//CITADEL EDIT
 	if(holder)
 		GLOB.admins |= src
-		admins |= src // i hate this.
 		holder.owner = src
 		connecting_admin = TRUE
 		//CITADEL EDIT
@@ -427,7 +426,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	SSserver_maint.UpdateHubStatus()
 	if(holder)
 		holder.owner = null
-		admins -= src
 		GLOB.admins -= src //delete them on the managed one too
 	if(using_perspective)
 		set_perspective(null)
@@ -622,7 +620,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 //checks if a client is afk
 //3000 frames = 5 minutes
 /client/proc/is_afk(duration=3000)
-	if(inactivity > duration)	return inactivity
+	if(inactivity > duration)
+		return inactivity
 	return 0
 
 // Byond seemingly calls stat, each tick.
