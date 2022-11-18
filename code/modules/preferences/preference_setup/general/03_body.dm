@@ -156,7 +156,32 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	// Destroy/cyborgize organs and limbs.
 	character.synthetic = null
-	for(var/name in list(BP_HEAD, BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM, BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG, BP_GROIN, BP_TORSO))
+	// todo: refactor organs/limbs to not need this
+	//! COMPATIBILITY PATCH
+	// we must robotize going from the logical root to the extremities
+	// so auto-robotize-nested doesn't break things by overwriting their prefs
+	//! EDIT
+	// it seems the protean shitcode makes this break if we use the prior order for proteans
+	// but it'll break for **EVERYONE ELSE** if we don't
+	// because said protean shitcode uses dangerous snowflake variable changes to
+	// make things work
+	// the current order is going to work for now
+	// but keep in mind touching this list can be relatively dangerous
+	// because as of right now this only works due to some further shimming
+	// that makes it force changes even when already robotized
+	for(var/name in list(
+		BP_TORSO,
+		BP_GROIN,
+		BP_HEAD,
+		BP_L_ARM,
+		BP_L_HAND,
+		BP_R_ARM,
+		BP_R_HAND,
+		BP_L_LEG,
+		BP_L_FOOT,
+		BP_R_LEG,
+		BP_R_FOOT
+	))
 		var/status = pref.organ_data[name]
 		var/obj/item/organ/external/O = character.organs_by_name[name]
 		if(O)
@@ -164,7 +189,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 				O.remove_rejuv()
 			else if(status == "cyborg")
 				if(pref.rlimb_data[name])
-					O.robotize(pref.rlimb_data[name])
+					// use force to override prior robotizations oh god THIS IS BAD
+					O.robotize(pref.rlimb_data[name], null, null, TRUE)
 				else
 					O.robotize()
 

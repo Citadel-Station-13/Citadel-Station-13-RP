@@ -118,6 +118,9 @@
 	switch(target_species)
 		if(SPECIES_HUMAN, SPECIES_SKRELL)	//humanoid bodytypes
 			species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_PROMETHEAN, SPECIES_HUMAN_SPACER, SPECIES_HUMAN_GRAV, SPECIES_HUMAN_VATBORN) //skrell/humans can wear each other's suits
+		if (SPECIES_UNATHI)
+			//For the sake of gameplay, unathi is unathi
+			species_restricted = list(SPECIES_UNATHI, SPECIES_UNATHI_DIGI)
 		else
 			species_restricted = list(target_species)
 
@@ -138,6 +141,9 @@
 	switch(target_species)
 		if(SPECIES_HUMAN, SPECIES_SKRELL)	//humanoid bodytypes
 			species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_PROMETHEAN, SPECIES_HUMAN_SPACER, SPECIES_HUMAN_GRAV, SPECIES_HUMAN_VATBORN) //skrell/humans can wear each other's suits
+		if (SPECIES_UNATHI)
+			//For the sake of gameplay, unathi is unathi
+			species_restricted = list(SPECIES_UNATHI, SPECIES_UNATHI_DIGI)
 		else
 			species_restricted = list(target_species)
 

@@ -32,7 +32,7 @@
 
 	health_hud_intensity = 1.5
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 
 	has_organ = list(
 		O_HEART     = /obj/item/organ/internal/heart,

@@ -50,10 +50,10 @@ What is the naming convention for planes or layers?
 /// Reserved for use in space/parallax
 #define PARALLAX_PLANE			-90
 	/// everything layering below
-#define PARALLAX_VIS_LAYER_BELOW			-10000
+#define PARALLAX_VIS_LAYER_BELOW			-100
 	#define PARALLAX_LAYER_CENTER				0
 	/// ditto
-#define PARALLAX_VIS_LAYER_ABOVE			10000
+#define PARALLAX_VIS_LAYER_ABOVE			100
 ///For the Looking Glass holodecks
 #define PLANE_LOOKINGGLASS		-77
 ///For the Looking Glass holodecks

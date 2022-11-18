@@ -59,7 +59,7 @@
 	breath_heat_level_3 = 800 //lower incineration threshold though
 
 	species_flags = NO_SCAN | IS_PLANT | NO_MINOR_CUT
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	unarmed_types = list(

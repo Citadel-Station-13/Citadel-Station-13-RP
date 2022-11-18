@@ -593,6 +593,10 @@ var/list/global/organ_rel_size = list(
 
 /mob/proc/position_hud_item(obj/item/item, slot)
 	var/held = is_holding(item)
+
+	if(!slot)
+		slot = slot_by_item(item)
+
 	if(!istype(hud_used) || !slot || !LAZYLEN(hud_used.slot_info))
 		return
 

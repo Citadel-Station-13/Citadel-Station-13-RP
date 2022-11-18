@@ -71,7 +71,7 @@
 
 	ambiguous_genders = TRUE
 
-	species_spawn_flags	= SPECIES_SPAWN_ALLOWED
+	species_spawn_flags	= SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	bump_flag  = MONKEY

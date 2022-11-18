@@ -110,7 +110,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 
 	move_trail = /obj/effect/debris/cleanable/blood/tracks/claw
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	primitive_form = null
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
@@ -157,7 +157,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 /datum/species/moth/dark
 	name = SPECIES_MOTH_DARK
 	uid = SPECIES_ID_MOTH_DARK
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 
 	// darksight, but weak to light
 	darksight = 7
@@ -167,7 +167,7 @@ GLOBAL_LIST_INIT(moth_lore_data, init_moth_lore())
 /datum/species/moth/light
 	name = SPECIES_MOTH_LIGHT
 	uid = SPECIES_ID_MOTH_LIGHT
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 
 	// hardy, but no darksight
 	darksight = 2

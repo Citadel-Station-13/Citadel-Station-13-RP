@@ -866,6 +866,7 @@ default behaviour is:
 	// TEMPORARY PATCH UNTIL MOBILITY FLAGS
 	if(restrained())
 		stop_pulling()
+		drop_all_held_items()
 	// End
 	if(!resting && cannot_stand() && can_stand_overridden())
 		lying = 0

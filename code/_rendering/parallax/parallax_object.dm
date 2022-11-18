@@ -5,7 +5,7 @@
 	plane = PARALLAX_PLANE
 	screen_loc = "CENTER-7,CENTER-7"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	appearance_flags = PIXEL_SCALE | KEEP_TOGETHER
+	appearance_flags = PIXEL_SCALE | KEEP_TOGETHER | TILE_BOUND
 
 	// notice - all parallax layers are 15x15 tiles. They roll over every 240 pixels.
 	/// pixel x/y shift per real x/y

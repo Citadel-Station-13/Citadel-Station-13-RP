@@ -378,6 +378,7 @@ var/global/list/fancy_release_sounds = list(
 
 var/global/list/global_vore_egg_types = list(
 		SPECIES_UNATHI 		= UNATHI_EGG,
+		SPECIES_UNATHI_DIGI = UNATHI_EGG,
 		"Tajaran" 		= TAJARAN_EGG,
 		SPECIES_AKULA 		= AKULA_EGG,
 		SPECIES_SKRELL 		= SKRELL_EGG,
@@ -391,6 +392,7 @@ var/global/list/global_vore_egg_types = list(
 
 var/global/list/tf_vore_egg_types = list(
 	SPECIES_UNATHI 		= /obj/structure/closet/secure_closet/egg/unathi,
+	SPECIES_UNATHI_DIGI = /obj/structure/closet/secure_closet/egg/unathi,
 	SPECIES_TAJ 		= /obj/structure/closet/secure_closet/egg/tajaran,
 	SPECIES_AKULA 		= /obj/structure/closet/secure_closet/egg/shark,
 	SPECIES_SKRELL 		= /obj/structure/closet/secure_closet/egg/skrell,

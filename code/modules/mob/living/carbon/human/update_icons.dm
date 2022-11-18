@@ -809,11 +809,14 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 /mob/living/carbon/human/update_hud()	//TODO: do away with this if possible
 	if(QDESTROYING(src))
 		return
-
+	// todo: this is utterly shitcode and fucking stupid ~silicons
+	// todo: the rest of hud code here ain't much better LOL
+	var/list/obj/item/relevant = get_equipped_items(TRUE, TRUE)
+	if(hud_used)
+		for(var/obj/item/I as anything in relevant)
+			position_hud_item(I, slot_by_item(I))
 	if(client)
-		client.screen |= contents
-		if(hud_used)
-			hud_used.hidden_inventory_update() 	//Updates the screenloc of the items on the 'other' inventory bar
+		client.screen |= relevant
 
 //update whether handcuffs appears on our hud.
 /mob/living/carbon/proc/update_hud_handcuffed()
@@ -824,7 +827,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		hud_used.l_hand_hud_object.update_icon()
 		hud_used.r_hand_hud_object.update_icon()
 
-/mob/living/carbon/human/update_handcuffed()
+/mob/living/carbon/human/update_inv_handcuffed()
 	if(QDESTROYING(src))
 		return
 

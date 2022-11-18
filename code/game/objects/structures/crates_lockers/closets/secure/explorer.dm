@@ -152,6 +152,7 @@
 		/obj/item/ammo_magazine/m57x28mm,
 		/obj/item/ammo_magazine/m57x28mm,
 		/obj/item/clothing/accessory/holster/machete,
+		/obj/item/clothing/accessory/holster/leg,
 		/obj/item/reagent_containers/food/snacks/liquidfood,
 		/obj/item/reagent_containers/food/snacks/liquidprotein,
 		/obj/item/card/mining_point_card/survey/gimmick,

@@ -831,11 +831,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set name = "Change View Range"
 	set desc = "switches between 1x and custom views"
 
-	var/view = src.view
-	if(view == world.view)
-		view = input("Select view range:", "FUCK YE", 7) in list(1,2,3,4,5,6,7,8,9,10,11,12,13,14,128)
+	if(!using_temporary_viewsize)
+		var/number = input("Select view range:", "FUCK YE", 7) in list(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,20,22,24,26,28,30,32,34)
+		set_temporary_view(number * 2 + 1, number * 2 + 1)
 	else
-		SetWindowIconSize(prefs.icon_size)
+		reset_temporary_view()
 
 	log_admin("[key_name(usr)] changed their view range to [view].")
 	//message_admins("<font color=#4F49AF>[key_name_admin(usr)] changed their view range to [view].</font>", 1)	//why? removed by order of XSI
