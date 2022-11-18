@@ -20,8 +20,8 @@
 	var/color_3 = "#ffffff"
 	/// addon color
 	var/color_addon = "#ffffff"
-
-	#warn layers?
+	/// rendering layer preference
+	var/request_alt_layer = FALSE
 	/// addons
 	var/list/datum/sprite_accessory_addon/addons
 

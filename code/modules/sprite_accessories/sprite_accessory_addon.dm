@@ -1,3 +1,13 @@
+GLOBAL_LIST_INIT(sprite_addons, init_sprite_addons())
+/proc/init_sprite_addons()
+	. = list()
+	for(var/path in subtypesof(/datum/sprite_accessory_addon))
+		var/datum/sprite_accessory_addon/addon = path
+		if(initial(addon.abstract_type) == path)
+			continue
+		addon = new path
+		.[addon.id] = addon
+
 /**
  * markings for markings, basically
  *

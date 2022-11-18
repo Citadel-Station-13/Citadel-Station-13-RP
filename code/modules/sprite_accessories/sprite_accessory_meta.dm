@@ -1,3 +1,13 @@
+GLOBAL_LIST_INIT(sprite_accessories, init_sprite_accessories())
+/proc/init_sprite_accessories()
+	. = list()
+	for(var/path in subtypesof(/datum/sprite_accessory_meta))
+		var/datum/sprite_accessory_meta/sprite = path
+		if(initial(sprite.abstract_type) == path)
+			continue
+		sprite = new path
+		.[sprite.id] = sprite
+
 /datum/sprite_accessory_meta
 	//! intrinsics
 	/// abstract type
@@ -45,7 +55,13 @@
 	/// suggested gender for randomgen
 	var/randomgen_hint_gender = NEUTER
 
-	#warn how to layer?
+	//! rendering
+	/// blocked by these flags
+	var/hidden_inv_flags
+	/// rendering layer - primary
+	var/render_layer
+	/// rendering layer - alt
+	var/render_layer_alt
 
 	//! addons
 	/// allowed addon types
