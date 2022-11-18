@@ -74,7 +74,6 @@
 /area/awaymission/spacebattle/syndicate2)
 "av" = (
 /turf/simulated/shuttle/wall/dark,
-/turf/space,
 /area/awaymission/spacebattle/syndicate3)
 "aw" = (
 /obj/structure/shuttle/engine/propulsion{

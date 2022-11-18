@@ -4500,7 +4500,7 @@
 /area/rift/exterior/nuketown/interior)
 "vh" = (
 /obj/machinery/door/airlock/voidcraft{
-	name = "cockpit"
+	name = "Cockpit"
 	},
 /obj/effect/overlay/snow/wall{
 	dir = 4

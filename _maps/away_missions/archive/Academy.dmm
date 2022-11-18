@@ -716,9 +716,8 @@
 	},
 /area/awaymission/academy/headmaster)
 "cT" = (
-/obj/structure/grille,
 /obj/structure/cable,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/awaymission/academy/headmaster)
 "cU" = (
@@ -1854,8 +1853,8 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/awaymission/academy/academyaft)
 "hK" = (
-/obj/structure/grille,
 /obj/structure/cable,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/awaymission/academy/academyaft)
 "hL" = (
@@ -2332,9 +2331,8 @@
 /turf/simulated/floor/carpet,
 /area/awaymission/academy/academyaft)
 "ju" = (
-/obj/structure/grille,
 /obj/structure/cable,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating,
 /area/awaymission/academy/academyaft)
 "jv" = (

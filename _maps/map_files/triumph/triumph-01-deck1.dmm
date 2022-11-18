@@ -7631,12 +7631,7 @@
 /turf/simulated/floor/airless/ceiling,
 /area/space)
 "Cl" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/spawner/window/reinforced/full/firelocks,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	icon_state = "pdoor0";
@@ -8087,10 +8082,7 @@
 /turf/simulated/floor/plating,
 /area/engineering/atmos/storage)
 "DX" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
+/obj/spawner/window/reinforced/full/firelocks,
 /obj/structure/cable,
 /obj/structure/cable{
 	icon_state = "1-8"

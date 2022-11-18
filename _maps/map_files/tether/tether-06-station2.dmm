@@ -6891,7 +6891,7 @@
 	},
 /obj/machinery/door/blast/regular{
 	id = "AICore";
-	name = "AI core maintenance hatch"
+	name = "AI Core Maintenance Hatch"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/ai)

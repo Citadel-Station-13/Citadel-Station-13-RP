@@ -9652,8 +9652,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/corridor1)
 "ss" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /obj/structure/cable,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/seccells)
