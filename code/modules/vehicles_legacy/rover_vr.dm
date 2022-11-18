@@ -1,6 +1,7 @@
 // TODO: port to modern vehicles. If you're in this file, STOP FUCKING WITH IT AND PORT IT OVER.
 //This is the initial set up for the new carts. Feel free to improve and/or rewrite everything here.
 //I don't know what the hell I'm doing right now. Please help. Especially with the update_icons stuff. -Joan Risu
+// todo: this entire file needs refactored this is disgusting
 
 /obj/vehicle_old/train/rover/engine
 	name = "NT Humvee"
@@ -292,23 +293,17 @@
 /obj/vehicle_old/train/rover/engine/load(var/atom/movable/C)
 	if(!istype(C, /mob/living/carbon/human))
 		return 0
-
-	if(ismob(C))
-		if(buckle_mob(C))
-			C.alpha = 0
-
-	return ..()
+	. = ..()
+	if(!.)
+		return
+	C.alpha = 0
 
 /obj/vehicle_old/train/rover/engine/unload(var/mob/user, var/direction)
 	var/mob/living/carbon/human/C = load
-
-
-	if(ismob(load))
-		unbuckle_mob(load)
-		C.alpha = 255
-
-	load = null
-
+	. = ..()
+	if(!.)
+		return
+	C.alpha = initial(C.alpha)
 
 //Load the object "inside" the trolley and add an overlay of it.
 //This prevents the object from being interacted with until it has

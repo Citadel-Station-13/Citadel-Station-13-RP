@@ -151,6 +151,7 @@
 	var/seemeson = FALSE
 	SetSeeInDarkSelf(8)
 	SetSeeInvisibleSelf(SEE_INVISIBLE_LIVING)
+	SetSightSelf(SIGHT_FLAGS_DEFAULT)
 	if(stat == 2)
 		AddSightSelf(SEE_TURFS | SEE_MOBS | SEE_OBJS)
 		SetSeeInvisibleSelf(SEE_INVISIBLE_LEVEL_TWO)

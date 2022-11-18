@@ -827,7 +827,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		hud_used.l_hand_hud_object.update_icon()
 		hud_used.r_hand_hud_object.update_icon()
 
-/mob/living/carbon/human/update_handcuffed()
+/mob/living/carbon/human/update_inv_handcuffed()
 	if(QDESTROYING(src))
 		return
 
