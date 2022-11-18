@@ -226,7 +226,7 @@
 			/obj/item/rig/medical = 1
 			)
 	cost = 150
-	container_type = /obj/structure/closet/crate/secure/gear/veymed
+	container_type = /obj/structure/closet/crate/secure/veymed
 	container_name = "medical hardsuit crate"
 	access = access_medical
 
