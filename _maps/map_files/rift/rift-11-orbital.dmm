@@ -3760,7 +3760,6 @@
 /area/centcom/simulated/security)
 "lx" = (
 /obj/spawner/window/reinforced/full/firelocks,
-/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
 "ly" = (

@@ -5129,7 +5129,6 @@
 /area/medical/medbay_emt_bay)
 "dzf" = (
 /obj/spawner/window/reinforced/full/firelocks,
-/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rnd/xenobiology/xenoflora/lab_atmos)
 "dzt" = (

@@ -998,7 +998,6 @@
 /area/rift/facility/exterior)
 "eV" = (
 /obj/spawner/window/reinforced/full,
-/obj/spawner/window/reinforced/full,
 /turf/simulated/floor,
 /area/rift/exterior/checkpoint/south)
 "eX" = (
