@@ -3524,15 +3524,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora)
-"cCx" = (
-/obj/machinery/door/blast/shutters{
-	dir = 8;
-	id = "warehouse";
-	name = "Warehouse Shutters"
-	},
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/quartermaster/warehouse)
 "cCA" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -5126,8 +5117,9 @@
 /area/medical/medbay_emt_bay)
 "dzf" = (
 /obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
-/area/rnd/outpost/xenobiology/outpost_storage)
+/area/rnd/xenobiology/xenoflora/lab_atmos)
 "dzt" = (
 /obj/machinery/door/firedoor/glass/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -9457,10 +9449,6 @@
 /obj/machinery/portable_atmospherics/powered/pump,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
-"gDM" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/quartermaster/garage)
 "gET" = (
 /obj/effect/turf_decal/borderfloor{
 	dir = 10
@@ -9852,9 +9840,8 @@
 /area/maintenance/cargo)
 "gQW" = (
 /obj/spawner/window/reinforced/full/firelocks,
-/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
-/area/rnd/xenobiology/xenoflora/lab_atmos)
+/area/rnd/outpost/xenobiology/outpost_storage)
 "gQY" = (
 /obj/effect/turf_decal/techfloor/orange/corner{
 	dir = 8
@@ -17488,15 +17475,19 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
 "lrL" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable/green{
-	icon_state = "1-2"
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "test_chamber_blast";
+	name = "Testing Chamber Blast Door"
 	},
 /obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/dark,
-/area/rnd/outpost/xenobiology/outpost_south_airlock)
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "test_chamber_blast";
+	name = "Testing Chamber Blast Door"
+	},
+/turf/simulated/floor/reinforced,
+/area/rnd/testingroom)
 "lrR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
@@ -20164,6 +20155,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/white,
 /area/medical/virologyisolation)
+"naN" = (
+/obj/machinery/door/blast/shutters{
+	dir = 8;
+	id = "warehouse";
+	name = "Warehouse Shutters"
+	},
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/quartermaster/warehouse)
 "nbg" = (
 /obj/effect/turf_decal/industrial/warning{
 	dir = 4
@@ -30142,11 +30142,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/medical_restroom)
 "sZn" = (
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	id = "test_chamber_blast";
-	name = "Testing Chamber Blast Door"
-	},
 /obj/spawner/window/reinforced/full/firelocks,
 /obj/machinery/door/blast/regular{
 	dir = 4;
@@ -32503,6 +32498,10 @@
 	},
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside1)
+"urU" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/quartermaster/garage)
 "usp" = (
 /obj/landmark/spawnpoint/job/entertainer,
 /obj/structure/cable/green{
@@ -36391,14 +36390,15 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/garage)
 "wRn" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	id = "test_chamber_blast";
-	name = "Testing Chamber Blast Door"
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
-/turf/simulated/floor/reinforced,
-/area/rnd/testingroom)
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/tiled/dark,
+/area/rnd/outpost/xenobiology/outpost_south_airlock)
 "wRu" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 4
@@ -45800,7 +45800,7 @@ oAC
 gjm
 gjm
 cZa
-lrL
+wRn
 mZr
 xvX
 ujw
@@ -46595,7 +46595,7 @@ mip
 fyf
 wIJ
 lIQ
-dzf
+gQW
 ikc
 qKN
 goE
@@ -46983,7 +46983,7 @@ gji
 fyf
 nNF
 hpa
-dzf
+gQW
 xUO
 boU
 vxG
@@ -48283,16 +48283,16 @@ kYl
 veF
 dER
 vgL
-gDM
-gDM
+urU
+urU
 vgL
 vgL
 vgL
 vgL
-gDM
+urU
 gTL
 gTL
-gDM
+urU
 vgL
 iFN
 iFN
@@ -48482,7 +48482,7 @@ jfd
 nwm
 xks
 cHI
-gDM
+urU
 rtL
 xRu
 xRu
@@ -48870,7 +48870,7 @@ jfd
 jfd
 sew
 mnh
-gDM
+urU
 dmW
 nDb
 nDb
@@ -52929,9 +52929,9 @@ dIS
 sgv
 eBp
 eBp
-cCx
-cCx
-cCx
+naN
+naN
+naN
 eBp
 nYt
 nRK
@@ -54541,7 +54541,7 @@ cYM
 fGz
 aBz
 oej
-sZn
+lrL
 iCo
 loi
 iCo
@@ -54735,7 +54735,7 @@ bzC
 gOa
 oYH
 hsz
-wRn
+sZn
 iCo
 iCo
 iCo
@@ -55123,7 +55123,7 @@ cYM
 fZC
 vZe
 aZC
-wRn
+sZn
 iCo
 iCo
 iCo
@@ -57243,7 +57243,7 @@ kKk
 sJP
 tio
 qgo
-gQW
+dzf
 cJq
 jMx
 lvF

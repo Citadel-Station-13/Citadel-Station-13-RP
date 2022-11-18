@@ -1641,6 +1641,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery2)
+"bgr" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/rift/stairwell/primary/surfacetwo)
 "bgB" = (
 /obj/structure/curtain/open/bed{
 	name = "brown curtain";
@@ -13276,10 +13280,6 @@
 "jTH" = (
 /turf/simulated/wall,
 /area/triumph/surfacebase/sauna)
-"jTS" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/rift/stairwell/primary/surfacetwo)
 "jTV" = (
 /obj/machinery/light,
 /obj/effect/turf_decal/borderfloor,
@@ -13551,10 +13551,6 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
-"kdW" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/security/security_processing)
 "ker" = (
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/red,
@@ -25930,6 +25926,10 @@
 /obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
+"tJI" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/medical/resleeving)
 "tLc" = (
 /obj/structure/ladder/up,
 /obj/effect/turf_decal/industrial/outline/yellow,
@@ -27959,6 +27959,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/recovery_room)
+"vmI" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/security/security_processing)
 "vmU" = (
 /obj/effect/turf_decal/steeldecal/steel_decals_central6,
 /obj/effect/turf_decal/steeldecal/steel_decals10{
@@ -29191,10 +29195,6 @@
 /obj/structure/cable/green,
 /turf/simulated/floor/tiled/red,
 /area/security/evidence_storage)
-"wkK" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/medical/resleeving)
 "wla" = (
 /obj/structure/railing{
 	dir = 1
@@ -42222,13 +42222,13 @@ oLJ
 oLJ
 wJl
 wJl
-wkK
-wkK
+tJI
+tJI
 wJl
 wJl
 wJl
-wkK
-wkK
+tJI
+tJI
 wJl
 eMD
 eMD
@@ -42807,7 +42807,7 @@ eYx
 gHr
 ixy
 odu
-wkK
+tJI
 jvX
 vjt
 wnW
@@ -43001,7 +43001,7 @@ eYx
 iKu
 kRa
 lto
-wkK
+tJI
 eUN
 dyj
 wBH
@@ -43195,7 +43195,7 @@ oUw
 dTk
 bor
 lto
-wkK
+tJI
 epz
 tQp
 xkt
@@ -45728,7 +45728,7 @@ ndb
 gwp
 cMV
 rVC
-jTS
+bgr
 cno
 cno
 ppg
@@ -45922,7 +45922,7 @@ rRs
 gwp
 cMV
 wqh
-jTS
+bgr
 cno
 cno
 bSg
@@ -46315,7 +46315,7 @@ ktB
 hhA
 vzn
 gjf
-jTS
+bgr
 hPU
 ngb
 vKN
@@ -46509,7 +46509,7 @@ ktB
 aoF
 nTp
 kYq
-jTS
+bgr
 grW
 ngb
 vKN
@@ -48061,7 +48061,7 @@ ktB
 wHt
 ngX
 jpg
-jTS
+bgr
 hPU
 ngb
 vKN
@@ -48255,7 +48255,7 @@ ktB
 hhA
 sRF
 gjf
-jTS
+bgr
 grW
 ngb
 fre
@@ -48638,7 +48638,7 @@ rZr
 djg
 riA
 fZA
-jTS
+bgr
 cno
 cno
 vQP
@@ -48832,7 +48832,7 @@ dRG
 jNi
 lQY
 fPA
-jTS
+bgr
 cno
 cno
 czJ
@@ -50759,7 +50759,7 @@ uKm
 xNm
 bhS
 nuH
-kdW
+vmI
 pUO
 xQz
 owT
@@ -50953,7 +50953,7 @@ uRD
 dCO
 bhS
 nuH
-kdW
+vmI
 hGI
 ijR
 oZw
@@ -51147,7 +51147,7 @@ odk
 wXp
 bhS
 nuH
-kdW
+vmI
 eUi
 cCa
 fEm
@@ -51729,7 +51729,7 @@ hKS
 tiu
 bhS
 nuH
-kdW
+vmI
 fQG
 bBy
 bVn
@@ -51923,7 +51923,7 @@ hKS
 mve
 bhS
 nuH
-kdW
+vmI
 hGI
 ijR
 eTG
@@ -52117,7 +52117,7 @@ iFX
 eCN
 ohv
 oQS
-kdW
+vmI
 pUO
 mzx
 yaJ

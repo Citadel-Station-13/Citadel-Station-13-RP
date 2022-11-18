@@ -1034,9 +1034,14 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "dc" = (
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/steel_grid,
-/area/engineering/foyer)
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/obj/machinery/door/blast/regular{
+	dir = 2;
+	id = "sm_monitor_blast";
+	name = "Engineering Engine Monitoring Blast Door"
+	},
+/turf/simulated/floor,
+/area/engineering/engine_room)
 "df" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -6870,11 +6875,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
-"vv" = (
-/obj/structure/catwalk,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
-/area/engineering/storage)
 "vy" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-8"
@@ -7666,6 +7666,11 @@
 	},
 /turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
+"yY" = (
+/obj/structure/catwalk,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/engineering/storage)
 "yZ" = (
 /obj/machinery/button/remote/driver{
 	id = "enginecore";
@@ -10270,14 +10275,9 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "LD" = (
-/obj/spawner/window/borosillicate/reinforced/full/firelocks,
-/obj/machinery/door/blast/regular{
-	dir = 2;
-	id = "sm_monitor_blast";
-	name = "Engineering Engine Monitoring Blast Door"
-	},
-/turf/simulated/floor,
-/area/engineering/engine_room)
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/steel_grid,
+/area/engineering/foyer)
 "LF" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -13288,6 +13288,12 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
+"Zz" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/engineering/storage)
 "ZA" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -13348,12 +13354,6 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
-"ZS" = (
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
-/area/engineering/storage)
 "ZT" = (
 /obj/structure/table/bench/padded,
 /obj/machinery/alarm{
@@ -26879,7 +26879,7 @@ iV
 UT
 qQ
 Vu
-ZS
+Zz
 Qd
 BE
 BF
@@ -27271,7 +27271,7 @@ KF
 KF
 KF
 KF
-vv
+yY
 FP
 KF
 KF
@@ -27476,11 +27476,11 @@ fq
 bC
 Pa
 Pa
-LD
-LD
-LD
-LD
-LD
+dc
+dc
+dc
+dc
+dc
 zJ
 zJ
 Iy
@@ -28039,7 +28039,7 @@ OK
 Ak
 Ak
 wp
-dc
+LD
 Pr
 kz
 ce
@@ -29785,7 +29785,7 @@ rU
 qW
 qW
 wp
-dc
+LD
 Pr
 vb
 nD

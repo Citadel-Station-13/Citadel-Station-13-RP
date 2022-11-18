@@ -3336,6 +3336,10 @@
 "lc" = (
 /turf/simulated/floor/plating,
 /area/storage/tech)
+"lf" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/crew_quarters/pool)
 "li" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -3913,13 +3917,12 @@
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
 "oi" = (
-/obj/effect/zone_divider,
-/obj/machinery/atmospherics/pipe/simple/hidden/blue{
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/visible{
+	dir = 4
 	},
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering)
+/area/engineering/atmos)
 "oj" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
@@ -4556,10 +4559,6 @@
 "sa" = (
 /turf/simulated/wall,
 /area/maintenance/engineering)
-"sb" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/engineering/atmos)
 "sd" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/structure/cable{
@@ -7514,6 +7513,10 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/trash_pit)
+"DI" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/engineering/atmos)
 "DK" = (
 /obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 6
@@ -9393,6 +9396,10 @@
 /obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
+"KO" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/outpost/research/longtermstorage)
 "KP" = (
 /obj/machinery/telecomms/relay/preset/rift/base_mid,
 /turf/simulated/floor/tiled/dark,
@@ -10322,10 +10329,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
-"Oe" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/crew_quarters/pool)
 "Oh" = (
 /obj/item/circuitboard/skills{
 	pixel_x = -3;
@@ -11316,13 +11319,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
-"RX" = (
-/obj/machinery/atmospherics/pipe/simple/visible{
-	dir = 4
-	},
-/obj/spawner/window/borosillicate/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/engineering/atmos)
 "RY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 8
@@ -11688,9 +11684,13 @@
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
 "Ty" = (
+/obj/effect/zone_divider,
+/obj/machinery/atmospherics/pipe/simple/hidden/blue{
+	dir = 8
+	},
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
-/area/outpost/research/longtermstorage)
+/area/maintenance/engineering)
 "TA" = (
 /obj/structure/railing{
 	dir = 4
@@ -19674,7 +19674,7 @@ WR
 Qw
 Qw
 Qw
-Ty
+KO
 Qw
 Qw
 WR
@@ -19864,7 +19864,7 @@ WR
 Qw
 Qw
 Qw
-Ty
+KO
 Qw
 Vi
 GS
@@ -20066,7 +20066,7 @@ AM
 Xo
 Qw
 Qw
-Ty
+KO
 Qw
 Qw
 WR
@@ -21036,7 +21036,7 @@ OV
 MX
 Qw
 Qw
-Ty
+KO
 Qw
 Qw
 rV
@@ -21222,7 +21222,7 @@ WR
 Qw
 Qw
 Qw
-Ty
+KO
 Xr
 Xr
 we
@@ -25273,7 +25273,7 @@ QP
 sa
 sa
 Mk
-oi
+Ty
 Mk
 Mk
 Mk
@@ -25284,7 +25284,7 @@ Mk
 Jw
 Mk
 Mk
-oi
+Ty
 Mk
 Mk
 Mk
@@ -26429,7 +26429,7 @@ CN
 ok
 ni
 CN
-Oe
+lf
 BB
 ML
 ML
@@ -26817,7 +26817,7 @@ CN
 rO
 RZ
 CN
-Oe
+lf
 iB
 ML
 ML
@@ -27983,13 +27983,13 @@ CN
 zW
 eT
 dG
-RX
+oi
 eT
 fh
-RX
+oi
 eT
 iA
-RX
+oi
 eT
 Yw
 Mh
@@ -28188,7 +28188,7 @@ MV
 pl
 vG
 hu
-sb
+DI
 lN
 Cs
 ih
@@ -28578,7 +28578,7 @@ Zx
 nL
 eT
 RY
-sb
+DI
 Xg
 eT
 eT
@@ -28778,7 +28778,7 @@ gb
 FC
 AN
 Jx
-sb
+DI
 Ei
 DX
 Th
@@ -28964,7 +28964,7 @@ Zx
 mD
 Zx
 uU
-sb
+DI
 av
 oM
 nO
@@ -28972,7 +28972,7 @@ QX
 Cg
 Zx
 LO
-sb
+DI
 Ei
 DX
 nv
@@ -29158,7 +29158,7 @@ Zx
 mD
 Zx
 av
-sb
+DI
 xP
 Fk
 yE
@@ -29352,7 +29352,7 @@ bW
 mD
 Zx
 av
-sb
+DI
 av
 fC
 Zx
@@ -29360,7 +29360,7 @@ KD
 ye
 gV
 fx
-sb
+DI
 Hp
 DX
 EU
@@ -29740,7 +29740,7 @@ co
 mD
 Zx
 av
-sb
+DI
 qt
 fC
 Zx
@@ -29748,7 +29748,7 @@ BE
 ye
 KC
 fx
-sb
+DI
 ym
 DX
 kB
@@ -30128,7 +30128,7 @@ Zx
 lo
 Zx
 av
-sb
+DI
 qt
 eX
 nq
@@ -30136,7 +30136,7 @@ UY
 PS
 Zx
 Oc
-sb
+DI
 xb
 DX
 Ca
@@ -30322,7 +30322,7 @@ RW
 jp
 AD
 Sn
-sb
+DI
 WH
 RA
 RA
@@ -30330,7 +30330,7 @@ Mz
 ko
 hx
 kK
-sb
+DI
 xb
 DX
 DZ
@@ -30516,12 +30516,12 @@ Zx
 Zx
 Zx
 Zx
-sb
-sb
-sb
-sb
+DI
+DI
+DI
+DI
 Fm
-sb
+DI
 eT
 eT
 eT
@@ -31086,13 +31086,13 @@ bG
 mQ
 if
 eT
-RX
-RX
+oi
+oi
 eT
-RX
+oi
 PE
 eT
-RX
+oi
 dX
 eT
 eT

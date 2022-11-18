@@ -2251,6 +2251,10 @@
 /obj/effect/catwalk_plated/dark,
 /turf/simulated/floor,
 /area/shuttle/belter)
+"vg" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/quartermaster/belterdock)
 "vm" = (
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/lythios43c,
@@ -3357,10 +3361,6 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
-/area/quartermaster/belterdock)
-"Gw" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "Gx" = (
 /obj/structure/table/steel,
@@ -36959,9 +36959,9 @@ cK
 cK
 dP
 uZ
-Gw
+vg
 ll
-Gw
+vg
 rn
 Cl
 Cl

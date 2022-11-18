@@ -996,6 +996,10 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/facility/exterior)
+"eV" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor,
+/area/rnd/outpost/mixing)
 "eX" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/effect/turf_decal/corner/purple{
@@ -1053,10 +1057,6 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
-"fn" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor,
-/area/rnd/outpost/mixing)
 "fo" = (
 /obj/landmark/map_data/west_plains,
 /turf/unsimulated/wall/planetary/lythios43c{
@@ -35377,10 +35377,10 @@ sv
 sv
 Fb
 Fb
-fn
+eV
 rM
 AQ
-fn
+eV
 Fb
 Fb
 sv
@@ -36344,7 +36344,7 @@ sv
 sv
 sv
 sv
-fn
+eV
 fk
 WH
 pJ
@@ -36353,7 +36353,7 @@ sR
 MK
 cD
 az
-fn
+eV
 sv
 sv
 sv
@@ -36538,7 +36538,7 @@ sv
 sv
 sv
 sv
-fn
+eV
 eX
 DD
 zF
@@ -36547,7 +36547,7 @@ Ys
 pJ
 Kn
 dB
-fn
+eV
 sv
 sv
 sv
