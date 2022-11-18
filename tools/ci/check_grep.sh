@@ -71,6 +71,11 @@ if grep -Pzo '"\w+" = \(\n[^)]*?/obj/structure/lattice[/\w]*?,\n[^)]*?/obj/struc
     echo -e "${RED}ERROR: Found multiple lattices on the same tile, please remove them.${NC}"
     st=1
 fi;
+if grep -Pzo '"\w+" = \(\n[^)]*?/obj/spawner/window[/\w]*?,\n[^)]*?/obj/spawner/window[/\w]*?,\n[^)]*?/area/.+\)' _maps/**/*.dmm;	then
+    echo
+    echo -e "${RED}ERROR: Found multiple window spawaners on the same tile, please remove them.${NC}"
+    st=1
+fi;
 if grep -Pzo '"\w+" = \(\n[^)]*?/obj/machinery/atmospherics/pipe/(?<type>[/\w]*),\n[^)]*?/obj/machinery/atmospherics/pipe/\g{type},\n[^)]*?/area/.+\)' _maps/**/*.dmm;	then
     echo
     echo -e "${RED}ERROR: Found multiple identical pipes on the same tile, please remove them.${NC}"
@@ -119,7 +124,7 @@ fi;
 if grep -Pzo '"\w+" = \(\n[^)]*?/obj/structure/stairs/(?<type>[/\w]*),\n[^)]*?/obj/structure/stairs/\g{type},\n[^)]*?/area/.+\)' _maps/**/*.dmm;	then
     echo
     echo -e "${RED}ERROR: Found multiple identical stairs on the same tile, please remove them.${NC}"
-	st=1
+    st=1
 fi;
 if grep -rzoP 'machinery/door.*{([^}]|\n)*name = .*("|\s)(?!of|and|to)[a-z].*\n' _maps/**/*.dmm;	then
     echo
