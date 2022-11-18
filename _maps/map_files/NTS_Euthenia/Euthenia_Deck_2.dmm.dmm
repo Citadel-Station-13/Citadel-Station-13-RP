@@ -9529,12 +9529,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/space)
-"iDI" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/space)
 "iFi" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
 /obj/structure/sign/deck2{
@@ -16177,9 +16171,8 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_10)
 "ouC" = (
-/obj/structure/catwalk,
 /obj/structure/ladder/up,
-/turf/simulated/open,
+/turf/simulated/floor/plating,
 /area/space)
 "ouY" = (
 /obj/effect/floor_decal/spline/fancy/wood{
@@ -22006,12 +21999,10 @@
 /turf/simulated/floor/tiled,
 /area/space)
 "tPi" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "tPq" = (
@@ -24536,10 +24527,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/anomaly_lab)
 "vSM" = (
-/obj/machinery/door/firedoor,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/cable/green,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/prison/cell_block)
 "vSV" = (
@@ -37002,7 +36991,7 @@ fnJ
 bgG
 bgG
 nPL
-nsj
+yao
 ouC
 rHE
 ktE
@@ -38543,7 +38532,7 @@ ncc
 mRB
 wyS
 isB
-iDI
+nnS
 bRO
 bRO
 mRB
@@ -38737,7 +38726,7 @@ lGF
 mRB
 lOw
 isB
-iDI
+nnS
 bRO
 bRO
 mRB
