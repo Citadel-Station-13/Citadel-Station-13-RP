@@ -9,7 +9,7 @@
  * * items are objects. Fruits, tools, circuit boards.
  * * result is type to create as new object
  * * time is optional parameter, you shall use in in your machine,
-     default /datum/recipe/ procs does not rely on this parameter.
+ *   default /datum/recipe/ procs does not rely on this parameter.
  *
  *  Functions you need:
  *  /datum/recipe/proc/make(var/obj/container as obj)
@@ -38,17 +38,27 @@
 #define CEREALMAKER			0x10
 
 /datum/recipe
-	var/list/reagents // example: = list("berryjuice" = 5) // do not list same reagent twice
-	var/list/items    // example: = list(/obj/item/crowbar, /obj/item/welder) // place /foo/bar before /foo
-	var/list/fruit    // example: = list("fruit" = 3)
-	var/coating = null//Required coating on all items in the recipe. The default value of null explitly requires no coating
-	//A value of -1 is permissive and cares not for any coatings
-	//Any typepath indicates a specific coating that should be present
-	//Coatings are used for batter, breadcrumbs, beer-batter, colonel's secret coating, etc
+	/// example: = list("berryjuice" = 5) // do not list same reagent twice
+	var/list/reagents
+	/// example: = list(/obj/item/crowbar, /obj/item/welder) // place /foo/bar before /foo
+	var/list/items
+	/// example: = list("fruit" = 3)
+	var/list/fruit
 
-	var/result        // example: = /obj/item/reagent_containers/food/snacks/donut/normal
-	var/result_quantity = 1 //number of instances of result that are created.
-	var/time = 50    // 1/10 part of second // Citadel change, increases recipe speed.
+	/**
+	 * Required coating on all items in the recipe. The default value of null explitly requires no coating.
+	 * A value of -1 is permissive and cares not for any coatings.
+	 * Any typepath indicates a specific coating that should be present.
+	 * Coatings are used for batter, breadcrumbs, beer-batter, colonel's secret coating, etc.
+	 */
+	var/coating = null
+
+	/// example: = /obj/item/reagent_containers/food/snacks/donut/normal
+	var/result
+	/// number of instances of result that are created.
+	var/result_quantity = 1
+	/// 1/10 part of second // Citadel change, increases recipe speed.
+	var/time = 50
 
 
 	///Reagents in the ingredients are discarded.

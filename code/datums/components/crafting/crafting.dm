@@ -60,22 +60,23 @@
 	var/display_craftable_only = FALSE
 	var/display_compact = TRUE
 
-/*	This is what procs do:
-	get_environment - gets a list of things accessable for crafting by user
-	get_surroundings - takes a list of things and makes a list of key-types to values-amounts of said type in the list
-	check_contents - takes a recipe and a key-type list and checks if said recipe can be done with available stuff
-	check_tools - takes recipe, a key-type list, and a user and checks if there are enough tools to do the stuff, checks bugs one level deep
-	construct_item - takes a recipe and a user, call all the checking procs, calls do_after, checks all the things again, calls del_reqs, creates result, calls CheckParts of said result with argument being list returned by deel_reqs
-	del_reqs - takes recipe and a user, loops over the recipes reqs var and tries to find everything in the list make by get_environment and delete it/add to parts list, then returns the said list
-*/
+/**
+ *! This is what procs do:
+ * get_environment - gets a list of things accessable for crafting by user
+ * get_surroundings - takes a list of things and makes a list of key-types to values-amounts of said type in the list
+ * check_contents - takes a recipe and a key-type list and checks if said recipe can be done with available stuff
+ * check_tools - takes recipe, a key-type list, and a user and checks if there are enough tools to do the stuff, checks bugs one level deep
+ * construct_item - takes a recipe and a user, call all the checking procs, calls do_after, checks all the things again, calls del_reqs, creates result, calls CheckParts of said result with argument being list returned by deel_reqs
+ * del_reqs - takes recipe and a user, loops over the recipes reqs var and tries to find everything in the list make by get_environment and delete it/add to parts list, then returns the said list
+ */
 
 /**
-  * Check that the contents of the recipe meet the requirements.
-  *
-  * user: The /mob that initated the crafting.
-  * R: The /datum/crafting_recipe being attempted.
-  * contents: List of items to search for R's reqs.
-  */
+ * Check that the contents of the recipe meet the requirements.
+ *
+ * user: The /mob that initated the crafting.
+ * R: The /datum/crafting_recipe being attempted.
+ * contents: List of items to search for R's reqs.
+ */
 /datum/component/personal_crafting/proc/check_contents(atom/a, datum/crafting_recipe/R, list/contents)
 	var/list/item_instances = contents["instances"]
 	contents = contents["other"]
@@ -202,26 +203,26 @@
 		return ", missing tool."
 	return ", missing component."
 
-/*Del reqs works like this:
-	Loop over reqs var of the recipe
-	Set var amt to the value current cycle req is pointing to, its amount of type we need to delete
-	Get var/surroundings list of things accessable to crafting by get_environment()
-	Check the type of the current cycle req
-		If its reagent then do a while loop, inside it try to locate() reagent containers, inside such containers try to locate needed reagent, if there isn't remove thing from surroundings
-			If there is enough reagent in the search result then delete the needed amount, create the same type of reagent with the same data var and put it into deletion list
-			If there isn't enough take all of that reagent from the container, put into deletion list, substract the amt var by the volume of reagent, remove the container from surroundings list and keep searching
-			While doing above stuff check deletion list if it already has such reagnet, if yes merge instead of adding second one
-		If its stack check if it has enough amount
-			If yes create new stack with the needed amount and put in into deletion list, substract taken amount from the stack
-			If no put all of the stack in the deletion list, substract its amount from amt and keep searching
-			While doing above stuff check deletion list if it already has such stack type, if yes try to merge them instead of adding new one
-		If its anything else just locate() in in the list in a while loop, each find --s the amt var and puts the found stuff in deletion loop
-	Then do a loop over parts var of the recipe
-		Do similar stuff to what we have done above, but now in deletion list, until the parts conditions are satisfied keep taking from the deletion list and putting it into parts list for return
-	After its done loop over deletion list and delete all the shit that wasn't taken by parts loop
-	del_reqs return the list of parts resulting object will receive as argument of CheckParts proc, on the atom level it will add them all to the contents, on all other levels it calls ..() and does whatever is needed afterwards but from contents list already
-*/
-
+/**
+ *! Del reqs works like this:
+ * Loop over reqs var of the recipe
+ * Set var amt to the value current cycle req is pointing to, its amount of type we need to delete
+ * Get var/surroundings list of things accessable to crafting by get_environment()
+ * Check the type of the current cycle req
+ *     If its reagent then do a while loop, inside it try to locate() reagent containers, inside such containers try to locate needed reagent, if there isn't remove thing from surroundings
+ *         If there is enough reagent in the search result then delete the needed amount, create the same type of reagent with the same data var and put it into deletion list
+ *         If there isn't enough take all of that reagent from the container, put into deletion list, substract the amt var by the volume of reagent, remove the container from surroundings list and keep searching
+ *         While doing above stuff check deletion list if it already has such reagnet, if yes merge instead of adding second one
+ *     If its stack check if it has enough amount
+ *         If yes create new stack with the needed amount and put in into deletion list, substract taken amount from the stack
+ *         If no put all of the stack in the deletion list, substract its amount from amt and keep searching
+ *         While doing above stuff check deletion list if it already has such stack type, if yes try to merge them instead of adding new one
+ *     If its anything else just locate() in in the list in a while loop, each find --s the amt var and puts the found stuff in deletion loop
+ * Then do a loop over parts var of the recipe
+ *     Do similar stuff to what we have done above, but now in deletion list, until the parts conditions are satisfied keep taking from the deletion list and putting it into parts list for return
+ * After its done loop over deletion list and delete all the shit that wasn't taken by parts loop
+ * del_reqs return the list of parts resulting object will receive as argument of CheckParts proc, on the atom level it will add them all to the contents, on all other levels it calls ..() and does whatever is needed afterwards but from contents list already
+ */
 /datum/component/personal_crafting/proc/del_reqs(datum/crafting_recipe/R, atom/a)
 	var/list/surroundings
 	var/list/Deletion = list()

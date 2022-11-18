@@ -46,10 +46,10 @@
 */
 
 /**
-  * Called when an atom exits an area
-  *
-  * Sends signals COMSIG_AREA_EXITED and COMSIG_ATOM_EXIT_AREA (to the atom)
-  */
+ * Called when an atom exits an area
+ *
+ * Sends signals COMSIG_AREA_EXITED and COMSIG_ATOM_EXIT_AREA (to the atom)
+ */
 /area/Exited(atom/movable/M)
 	SEND_SIGNAL(src, COMSIG_AREA_EXITED, M)
 	SEND_SIGNAL(M, COMSIG_ATOM_EXIT_AREA, src) //The atom that exits the area

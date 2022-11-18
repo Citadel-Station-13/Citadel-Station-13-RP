@@ -114,8 +114,10 @@
 	result = /obj/item/book/granter/crafting_recipe/bone_bow
 	time = 200 //Scribing // don't care
 	always_available = FALSE
-	reqs = list(/obj/item/stack/rods = 1,
-				 /obj/item/stack/sheet/mineral/sandstone = 4)
+	reqs = list(
+		/obj/item/stack/rods = 1,
+		/obj/item/stack/sheet/mineral/sandstone = 4,
+	)
 	category = CAT_PRIMAL
 */
 
@@ -123,9 +125,9 @@
 	name = "Collosal Rib"
 	//always_available = FALSE
 	reqs = list(
-            /obj/item/stack/material/bone = 10
-            //datum/reagent/crude_oil = 5
-			)
+		/obj/item/stack/material/bone = 10,
+		// /datum/reagent/crude_oil = 5,
+	)
 	result = /obj/structure/statue/bone
 	category = CAT_PRIMAL
 
@@ -133,9 +135,9 @@
 	name = "Skull Carving"
 	//always_available = FALSE
 	reqs = list(
-            /obj/item/stack/material/bone = 6
-            //datum/reagent/crude_oil = 5
-			)
+		/obj/item/stack/material/bone = 6,
+		// /datum/reagent/crude_oil = 5,
+	)
 	result = /obj/structure/statue/bone/skull
 	category = CAT_PRIMAL
 
@@ -143,9 +145,9 @@
 	name = "Cracked Skull Carving"
 	//always_available = FALSE
 	reqs = list(
-            /obj/item/stack/material/bone = 3
-            ///datum/reagent/crude_oil = 5
-			)
+		/obj/item/stack/material/bone = 3,
+		// /datum/reagent/crude_oil = 5,
+	)
 	result = /obj/structure/statue/bone/skull/half
 	category = CAT_PRIMAL
 
@@ -153,9 +155,10 @@
 	name = "Serrated Bone Shovel"
 	//always_available = FALSE
 	reqs = list(
-            /obj/item/stack/material/bone = 4,
-            //datum/reagent/crude_oil = 5,
-            /obj/item/shovel = 1)
+		/obj/item/stack/material/bone = 4,
+		// /datum/reagent/crude_oil = 5,
+		/obj/item/shovel = 1,
+	)
 	result = /obj/item/shovel/bone
 	category = CAT_PRIMAL
 
@@ -163,8 +166,9 @@
 	name = "Bone Hatchet"
 	//always_available = FALSE
 	reqs = list(
-            /obj/item/stack/material/bone = 6,
-            /obj/item/stack/sinew = 2)
+		/obj/item/stack/material/bone = 6,
+		/obj/item/stack/sinew = 2,
+	)
 	result = /obj/item/material/knife/machete/hatchet/bone
 	category = CAT_PRIMAL
 
@@ -173,8 +177,9 @@
 	name = "Primitive Retractor"
 	//always_available = FALSE
 	reqs = list(
-            /obj/item/stack/material/bone = 5,
-            /obj/item/stack/sinew = 2)
+		/obj/item/stack/material/bone = 5,
+		/obj/item/stack/sinew = 2,
+	)
 	result = /obj/item/surgical/retractor_primitive
 	category = CAT_PRIMAL
 
@@ -182,8 +187,9 @@
 	name = "Primitive Hemostat"
 	//always_available = FALSE
 	reqs = list(
-            /obj/item/stack/material/bone = 4,
-            /obj/item/stack/sinew = 3)
+		/obj/item/stack/material/bone = 4,
+		/obj/item/stack/sinew = 3,
+	)
 	result = /obj/item/surgical/hemostat_primitive
 	category = CAT_PRIMAL
 
@@ -191,9 +197,10 @@
 	name = "Primitive Cautery"
 	//always_available = FALSE
 	reqs = list(
-            /obj/item/stack/material/bone = 3,
-            /obj/item/stack/sinew = 2,
-			/obj/item/soulstone = 1)
+		/obj/item/stack/material/bone = 3,
+		/obj/item/stack/sinew = 2,
+		/obj/item/soulstone = 1,
+	)
 	result = /obj/item/surgical/cautery_primitive
 	category = CAT_PRIMAL
 
@@ -201,9 +208,10 @@
 	name = "Primitive Scalpel"
 	//always_available = FALSE
 	reqs = list(
-            /obj/item/stack/material/bone = 3,
-            /obj/item/stack/sinew = 1,
-			/obj/item/material/shard = 1)
+		/obj/item/stack/material/bone = 3,
+		/obj/item/stack/sinew = 1,
+		/obj/item/material/shard = 1,
+	)
 	result = /obj/item/surgical/scalpel_primitive
 	category = CAT_PRIMAL
 
@@ -211,9 +219,10 @@
 	name = "Primitive Bone Saw"
 	//always_available = FALSE
 	reqs = list(
-            /obj/item/stack/material/bone = 6,
-            /obj/item/stack/sinew = 4,
-			/obj/item/material/shard = 3)
+		/obj/item/stack/material/bone = 6,
+		/obj/item/stack/sinew = 4,
+		/obj/item/material/shard = 3,
+	)
 	result = /obj/item/surgical/saw_primitive
 	category = CAT_PRIMAL
 
@@ -221,8 +230,9 @@
 	name = "Primitive Bone Setter"
 	//always_available = FALSE
 	reqs = list(
-            /obj/item/stack/material/bone = 5,
-            /obj/item/stack/sinew = 3)
+		/obj/item/stack/material/bone = 5,
+		/obj/item/stack/sinew = 3,
+	)
 	result = /obj/item/surgical/bonesetter_primitive
 	category = CAT_PRIMAL
 
@@ -230,61 +240,68 @@
 	name = "Primitive Crowbar"
 	result = /obj/item/tool/crowbar/bone
 	time = 50
-	reqs = list(/obj/item/stack/material/bone = 8
-				)
+	reqs = list(
+		/obj/item/stack/material/bone = 8,
+	)
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/bone_screwdriver
 	name = "Primitive Screwdriver"
 	result = /obj/item/tool/screwdriver/bone
 	time = 50
-	reqs = list(/obj/item/stack/material/bone = 4,
-				/obj/item/stack/sinew = 2
-				)
+	reqs = list(
+		/obj/item/stack/material/bone = 4,
+		/obj/item/stack/sinew = 2,
+	)
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/bone_wrench
 	name = "Primitive Wrench"
 	result = /obj/item/tool/wrench/bone
 	time = 50
-	reqs = list(/obj/item/stack/material/bone = 3,
-				/obj/item/stack/sinew = 1
-				)
+	reqs = list(
+		/obj/item/stack/material/bone = 3,
+		/obj/item/stack/sinew = 1,
+	)
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/bone_wirecutters
 	name = "Primitive Wirecutters"
 	result = /obj/item/tool/wirecutters/bone
 	time = 50
-	reqs = list(/obj/item/stack/material/bone = 4,
-				/obj/item/stack/sinew = 2
-				)
+	reqs = list(
+		/obj/item/stack/material/bone = 4,
+		/obj/item/stack/sinew = 2,
+	)
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/bone_welder
 	name = "Primitive Welding Tool"
 	result = /obj/item/weldingtool/bone
 	time = 50
-	reqs = list(/obj/item/stack/material/bone = 6,
-				/obj/item/stack/sinew = 4
-				)
+	reqs = list(
+		/obj/item/stack/material/bone = 6,
+		/obj/item/stack/sinew = 4,
+	)
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/munition_box
 	name = "Primitive Munitions Box"
 	result = /obj/item/storage/box/munition_box
 	time = 40
-	reqs = list(/obj/item/stack/material/bone = 2,
-				/obj/item/stack/sinew = 2,
-				/obj/item/stack/animalhide/goliath_hide = 1
-				)
+	reqs = list(
+		/obj/item/stack/material/bone = 2,
+		/obj/item/stack/sinew = 2,
+		/obj/item/stack/animalhide/goliath_hide = 1,
+	)
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/powder_horn
 	name = "Bone Powder Horn"
 	result = /obj/item/reagent_containers/glass/powder_horn/tribal
 	time = 40
-	reqs = list(/obj/item/stack/material/bone = 3,
-				/obj/item/stack/sinew = 3
-				)
+	reqs = list(
+		/obj/item/stack/material/bone = 3,
+		/obj/item/stack/sinew = 3,
+	)
 	category = CAT_PRIMAL

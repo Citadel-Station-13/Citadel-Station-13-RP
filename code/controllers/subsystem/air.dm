@@ -288,8 +288,8 @@ SUBSYSTEM_DEF(air)
 //
 
 /**
-  * Initializes all subtypes of /datum/atmosphere and indexes them by key.
-  */
+ * Initializes all subtypes of /datum/atmosphere and indexes them by key.
+ */
 /datum/controller/subsystem/air/proc/generate_atmospheres()
 	generated_atmospheres = list()
 	for(var/T in subtypesof(/datum/atmosphere))
@@ -300,8 +300,8 @@ SUBSYSTEM_DEF(air)
 		generated_atmospheres[A.id] = A
 
 /**
-  * Preprocess a gas string, replacing it with a specific atmosphere's if necessary.
-  */
+ * Preprocess a gas string, replacing it with a specific atmosphere's if necessary.
+ */
 /datum/controller/subsystem/air/proc/preprocess_gas_string(gas_string, turf/T)
 	if(!generated_atmospheres)
 		generate_atmospheres()

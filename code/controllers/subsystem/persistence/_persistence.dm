@@ -15,20 +15,20 @@ SUBSYSTEM_DEF(persistence)
 	return ..()
 
 /**
-  * Loads all persistent information from disk.
-  */
+ * Loads all persistent information from disk.
+ */
 /datum/controller/subsystem/persistence/proc/LoadPersistence()
 	return
 
 /**
-  * Saves all persistent information to disk.
-  */
+ * Saves all persistent information to disk.
+ */
 /datum/controller/subsystem/persistence/proc/SavePersistence()
 	return
 
 /**
-  * Sets our current_map_directory to corrospond to the current map.
-  */
+ * Sets our current_map_directory to corrospond to the current map.
+ */
 /datum/controller/subsystem/persistence/proc/SetMapDirectory()
 	if(!SSmapping.config.persistence_id)
 		return			// map doesn't support persistence.

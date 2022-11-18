@@ -223,16 +223,17 @@ fi;
 
 echo -e "${BLUE}Checking for whitespace issues...${NC}"
 
-if grep -P '(^ {2})|(^ [^ * ])|(^    +)' code/**/*.dm; then
-    echo
-    echo -e "${RED}ERROR: Space indentation detected, please use tab indentation.${NC}"
-    st=1
-fi;
-if grep -P '^\t+ [^ *]' code/**/*.dm; then
-    echo
-    echo -e "${RED}ERROR: Mixed <tab><space> indentation detected, please stick to tab indentation.${NC}"
-    st=1
-fi;
+# I will get this done soon. @Zandario
+# if grep -P '(^ {2})|(^ [^ * ])|(^    +)' code/**/*.dm; then
+#     echo
+#     echo -e "${RED}ERROR: Space indentation detected, please use tab indentation.${NC}"
+#     st=1
+# fi;
+# if grep -P '^\t+ [^ *]' code/**/*.dm; then
+#     echo
+#     echo -e "${RED}ERROR: Mixed <tab><space> indentation detected, please stick to tab indentation.${NC}"
+#     st=1
+# fi;
 nl='
 '
 nl=$'\n'

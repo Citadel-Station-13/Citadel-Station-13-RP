@@ -1,8 +1,8 @@
 /**
-  * Hook for running code when a dir change occurs
-  *
-  * Not recommended to use, listen for the [COMSIG_ATOM_DIR_CHANGE] signal instead (sent by this proc)
-  */
+ * Hook for running code when a dir change occurs
+ *
+ * Not recommended to use, listen for the [COMSIG_ATOM_DIR_CHANGE] signal instead (sent by this proc)
+ */
 /atom/proc/setDir(newdir)
 	if(dir == newdir)
 		return FALSE
@@ -253,10 +253,10 @@
 	A.Bumped(src)
 
 /**
-  * forceMove but it brings along pulling/buckled stuff
-  * recurse_levels determines how many levels it recurses this call. Don't set it too high or else someone's going to transit 20 conga liners in a single move.
-  * Probably needs a better way of handling this in the future.
-  */
+ * forceMove but it brings along pulling/buckled stuff
+ * recurse_levels determines how many levels it recurses this call. Don't set it too high or else someone's going to transit 20 conga liners in a single move.
+ * Probably needs a better way of handling this in the future.
+ */
 /atom/movable/proc/locationTransitForceMove(atom/destination, recurse_levels = 0, allow_buckled = TRUE, allow_pulled = TRUE, allow_grabbed = GRAB_PASSIVE, list/recursed = list())
 	// we need the recursion guard for loop situations.
 	// todo: rework everything about this proc omg
@@ -309,8 +309,8 @@
 		M.forceMove(loc)
 
 /**
-  * Gets the atoms that we'd pull along with a locationTransitForceMove
-  */
+ * Gets the atoms that we'd pull along with a locationTransitForceMove
+ */
 /atom/movable/proc/getLocationTransitForceMoveTargets(atom/destination, recurse_levels = 0, allow_buckled = TRUE, allow_pulled = TRUE, allow_grabbed = GRAB_PASSIVE, list/recursed = list())
 	if(recursed[src])
 		return list()
@@ -333,8 +333,8 @@
 			. |= recurse_levels? M.getLocationTransitForceMoveTargets(destination, recurse_levels - 1, allow_buckled, allow_pulled, allow_grabbed) : M
 
 /**
-  * Wrapper for forceMove when we're called by a recursing locationTransitForceMove().
-  */
+ * Wrapper for forceMove when we're called by a recursing locationTransitForceMove().
+ */
 /atom/movable/proc/doLocationTransitForceMove(atom/destination)
 	. = TRUE
 	forceMove(destination)
@@ -425,16 +425,16 @@
 	return blocker_opinion
 
 /**
-  * Called whenever an object moves and by mobs when they attempt to move themselves through space
-  * And when an object or action applies a force on src, see [newtonian_move][/atom/movable/proc/newtonian_move]
-  *
-  * Return 0 to have src start/keep drifting in a no-grav area and 1 to stop/not start drifting
-  *
-  * Mobs should return 1 if they should be able to move of their own volition, see [/client/Move]
-  *
-  * Arguments:
-  * * movement_dir - 0 when stopping or any dir when trying to move
-  */
+ * Called whenever an object moves and by mobs when they attempt to move themselves through space
+ * And when an object or action applies a force on src, see [newtonian_move][/atom/movable/proc/newtonian_move]
+ *
+ * Return 0 to have src start/keep drifting in a no-grav area and 1 to stop/not start drifting
+ *
+ * Mobs should return 1 if they should be able to move of their own volition, see [/client/Move]
+ *
+ * Arguments:
+ * * movement_dir - 0 when stopping or any dir when trying to move
+ */
 /atom/movable/proc/Process_Spacemove(movement_dir = NONE)
 	if(has_gravity(src))
 		return TRUE
@@ -467,8 +467,8 @@
 	return TRUE
 
 /**
-  * Sets our glide size
-  */
+ * Sets our glide size
+ */
 /atom/movable/proc/set_glide_size(new_glide_size, recursive = TRUE)
 	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, new_glide_size, glide_size)
 	glide_size = new_glide_size
@@ -482,8 +482,8 @@
 		recursive_glidesize_update()
 
 /**
-  * Sets our glide size back to our standard glide size.
-  */
+ * Sets our glide size back to our standard glide size.
+ */
 
 /atom/movable/proc/reset_glide_size()
 	set_glide_size(isnull(default_glide_size)? GLOB.default_glide_size : default_glide_size)

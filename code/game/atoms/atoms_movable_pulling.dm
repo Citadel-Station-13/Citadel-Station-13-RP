@@ -1,6 +1,6 @@
 /**
-  * Attempts to move our pulled atom/movable onto the target.
-  */
+ * Attempts to move our pulled atom/movable onto the target.
+ */
 /atom/movable/proc/move_pulled_towards(atom/A)
 	if(!pulling)
 		return
@@ -20,8 +20,8 @@
 		on_move_pulled(pulling)
 
 /**
-  * Attempts to start pulling an object.
-  */
+ * Attempts to start pulling an object.
+ */
 /atom/movable/proc/start_pulling(atom/movable/AM, force = pull_force, suppress_message = FALSE)
 	if(QDELETED(AM))
 		return FALSE
@@ -51,8 +51,8 @@
 	return TRUE
 
 /**
-  * Stops pulling. Returns the object we "dropped" from our pull.
-  */
+ * Stops pulling. Returns the object we "dropped" from our pull.
+ */
 /atom/movable/proc/stop_pulling()
 	if(pulling)
 		. = pulling
@@ -61,8 +61,8 @@
 		pulling = null
 
 /**
-  * Checks if a pull is valid. If it ain't, stop pulling.
-  */
+ * Checks if a pull is valid. If it ain't, stop pulling.
+ */
 /atom/movable/proc/check_pulling()
 	if(!pulling)
 		return
@@ -82,8 +82,8 @@
 		return
 
 /**
-  * Checks if we can be pulled by something/someone.
-  */
+ * Checks if we can be pulled by something/someone.
+ */
 /atom/movable/proc/can_be_pulled(atom/movable/user, force = MOVE_FORCE_DEFAULT)
 	if(src == user || !isturf(loc))
 		return FALSE
@@ -94,8 +94,8 @@
 	return TRUE
 
 /**
-  * Hook for stuff to do when we move a pulled atom/movable.
-  */
+ * Hook for stuff to do when we move a pulled atom/movable.
+ */
 /atom/movable/proc/on_move_pulled(atom/movable/moved)
 	if(isliving(pulling) && !istype(pulling.loc, /turf/space))
 		var/mob/living/M = pulling

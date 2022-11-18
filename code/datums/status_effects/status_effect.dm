@@ -1,18 +1,28 @@
-//Status effects are used to apply temporary or permanent effects to mobs. Mobs are aware of their status effects at all times.
-//This file contains their code, plus code for applying and removing them.
-//When making a new status effect, add a define to status_effects.dm in __DEFINES for ease of use!
-
+/**
+ * Status effects are used to apply temporary or permanent effects to mobs. Mobs are aware of their status effects at all times.
+ * This file contains their code, plus code for applying and removing them.
+ * When making a new status effect, add a define to status_effects.dm in __DEFINES for ease of use!
+ */
 /datum/status_effect
-	var/id = "effect" //Used for screen alerts.
-	var/duration = -1 //How long the status effect lasts in DECISECONDS. Enter -1 for an effect that never ends unless removed through some means.
-	var/tick_interval = 10 //How many deciseconds between ticks, approximately. Leave at 10 for every second.
-	var/next_tick //The scheduled time for the next tick.
-	var/mob/living/owner //The mob affected by the status effect.
-	var/on_remove_on_mob_delete = FALSE //if we call on_remove() when the mob is deleted
-	var/examine_text //If defined, this text will appear when the mob is examined - to use he, she etc. use "SUBJECTPRONOUN" and replace it in the examines themselves
-	var/alert_type = /atom/movable/screen/alert/status_effect //the alert thrown by the status effect, contains name and description
-	var/atom/movable/screen/alert/status_effect/linked_alert = null //the alert itself, if it exists
-	/// How many of the effect can be on one mob, and what happens when you try to add another
+	/// Used for screen alerts.
+	var/id = "effect"
+	/// How long the status effect lasts in DECISECONDS. Enter -1 for an effect that never ends unless removed through some means.
+	var/duration = -1
+	/// How many deciseconds between ticks, approximately. Leave at 10 for every second.
+	var/tick_interval = 10
+	/// The scheduled time for the next tick.
+	var/next_tick
+	/// The mob affected by the status effect.
+	var/mob/living/owner
+	/// If we call on_remove() when the mob is deleted.
+	var/on_remove_on_mob_delete = FALSE
+	/// If defined, this text will appear when the mob is examined - to use he, she etc. use "SUBJECTPRONOUN" and replace it in the examines themselves.
+	var/examine_text
+	/// The alert thrown by the status effect, contains name and description.
+	var/alert_type = /atom/movable/screen/alert/status_effect
+	/// The alert itself, if it exists.
+	var/atom/movable/screen/alert/status_effect/linked_alert = null
+	/// How many of the effect can be on one mob, and what happens when you try to add another.
 	var/status_type = STATUS_EFFECT_UNIQUE
 
 /datum/status_effect/New(list/arguments)
@@ -81,8 +91,8 @@
 	duration = world.time + original_duration
 
 /**
-  * Multiplied to clickdelays
-  */
+ * Multiplied to clickdelays
+ */
 /datum/status_effect/proc/action_cooldown_mod()
 	return 1
 

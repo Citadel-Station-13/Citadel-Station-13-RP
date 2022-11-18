@@ -1,12 +1,17 @@
 /datum/component/forensics
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 	can_transfer = TRUE
-	var/list/fingerprints		//assoc print = print
-	var/list/hiddenprints		//assoc ckey = realname/gloves/ckey
-	var/list/blood_DNA			//assoc dna = bloodtype
-	var/list/fibers				//assoc print = print
 
-/datum/component/forensics/InheritComponent(datum/component/forensics/F, original)		//Use of | and |= being different here is INTENTIONAL.
+	/// assoc print = print
+	var/list/fingerprints
+	/// assoc ckey = realname/gloves/ckey
+	var/list/hiddenprints
+	/// assoc dna = bloodtype
+	var/list/blood_DNA
+	/// assoc print = print
+	var/list/fibers
+
+/datum/component/forensics/InheritComponent(datum/component/forensics/F, original) //Use of | and |= being different here is INTENTIONAL.
 	fingerprints = fingerprints | F.fingerprints
 	hiddenprints = hiddenprints | F.hiddenprints
 	blood_DNA = blood_DNA | F.blood_DNA
@@ -28,7 +33,7 @@
 	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, .proc/clean_act)
 
 /datum/component/forensics/UnregisterFromParent()
-    UnregisterSignal(parent, list(COMSIG_COMPONENT_CLEAN_ACT))
+	UnregisterSignal(parent, list(COMSIG_COMPONENT_CLEAN_ACT))
 
 /datum/component/forensics/PostTransfer()
 	if(!isatom(parent))
