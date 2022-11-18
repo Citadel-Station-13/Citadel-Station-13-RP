@@ -190,6 +190,7 @@
 #include "code\__DEFINES\mobs\intent.dm"
 #include "code\__DEFINES\mobs\mobility.dm"
 #include "code\__DEFINES\mobs\organs.dm"
+#include "code\__DEFINES\mobs\shapeshift.dm"
 #include "code\__DEFINES\mobs\silicon_privileges.dm"
 #include "code\__DEFINES\mobs\sprite_accessory.dm"
 #include "code\__DEFINES\power\power.dm"
