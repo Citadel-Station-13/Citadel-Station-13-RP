@@ -137,7 +137,7 @@ VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor)
 	blocks_air = TRUE
 
 /turf/unsimulated/floor/steel
-	icon = 'icons/turf/flooring/tiles_vr.dmi'
+	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "steel"
 
 /turf/simulated/mineral/virgo3b/rich/make_ore(var/rare_ore)

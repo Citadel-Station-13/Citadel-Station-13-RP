@@ -5,7 +5,7 @@
 	/// The floor icon used for blend_preview_floor()
 	var/preview_floor_icon = 'icons/turf/floors.dmi'
 	/// The floor icon state used for blend_preview_floor()
-	var/preview_floor_state = "floor"
+	var/preview_floor_state = "steel"
 	/// The associated decal painter type to grab decals, colors, etc from.
 	var/obj/item/airlock_painter/decal/painter_type = /obj/item/airlock_painter/decal
 

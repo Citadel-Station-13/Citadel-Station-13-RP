@@ -260,7 +260,7 @@ var/list/flooring_types
 /decl/flooring/tiling
 	name = "floor"
 	desc = "Scuffed from the passage of countless greyshirts."
-	icon = 'icons/turf/flooring/tiles_vr.dmi' // More ERIS Sprites... For now...
+	icon = 'icons/turf/flooring/tiles.dmi' // More ERIS Sprites... For now...
 	icon_base = "tiled"
 	has_damage_range = 2
 	damage_temperature = T0C+1400
@@ -276,7 +276,7 @@ var/list/flooring_types
 
 /decl/flooring/tiling/tech
 	desc = "Scuffed from the passage of countless greyshirts."
-	icon = 'icons/turf/flooring/techfloor_vr.dmi'
+	icon = 'icons/turf/flooring/techfloor.dmi'
 	icon_base = "techfloor_gray"
 	build_type = /obj/item/stack/tile/floor/techgrey
 	can_paint = null
@@ -652,7 +652,7 @@ var/list/flooring_types
 /decl/flooring/trap
 	name = "suspicious flooring"
 	desc = "There's something off about this tile."
-	icon = 'icons/turf/flooring/plating_vr.dmi'
+	icon = 'icons/turf/flooring/plating.dmi'
 	icon_base = "plating"
 	build_type = null
 	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK

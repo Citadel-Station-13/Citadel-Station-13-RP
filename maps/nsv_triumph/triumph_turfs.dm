@@ -112,7 +112,7 @@
 	blocks_air = TRUE
 
 /turf/unsimulated/floor/steel
-	icon = 'icons/turf/flooring/tiles_vr.dmi'
+	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "steel"
 
 
@@ -126,7 +126,7 @@
 
 /turf/unsimulated/floor/techfloor_grid
 	name = "floor"
-	icon = 'icons/turf/flooring/techfloor_vr.dmi'
+	icon = 'icons/turf/flooring/techfloor.dmi'
 	icon_state = "techfloor_grid"
 
 /turf/unsimulated/floor/maglev

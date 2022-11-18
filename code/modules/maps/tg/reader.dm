@@ -524,4 +524,4 @@
 
 /turf/template_noop
 	name = "Turf Passthrough"
-	icon_state = "template_void"
+	icon_state = "noop"

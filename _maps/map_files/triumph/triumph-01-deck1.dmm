@@ -2082,8 +2082,8 @@
 /obj/machinery/shield_diffuser,
 /obj/item/sign{
 	dir = 1;
-	icon = 'icons/turf/flooring/decals_vr.dmi';
-	icon_override = 'icons/turf/flooring/decals_vr.dmi';
+	icon = 'icons/turf/flooring/decals.dmi';
+	icon_override = 'icons/turf/flooring/decals.dmi';
 	icon_state = "warning";
 	name = "hazard stripes"
 	},
@@ -7288,8 +7288,8 @@
 /obj/structure/catwalk,
 /obj/machinery/shield_diffuser,
 /obj/item/sign{
-	icon = 'icons/turf/flooring/decals_vr.dmi';
-	icon_override = 'icons/turf/flooring/decals_vr.dmi';
+	icon = 'icons/turf/flooring/decals.dmi';
+	icon_override = 'icons/turf/flooring/decals.dmi';
 	icon_state = "warning";
 	name = "hazard stripes"
 	},
@@ -9135,8 +9135,8 @@
 /obj/structure/catwalk,
 /obj/item/sign{
 	dir = 8;
-	icon = 'icons/turf/flooring/decals_vr.dmi';
-	icon_override = 'icons/turf/flooring/decals_vr.dmi';
+	icon = 'icons/turf/flooring/decals.dmi';
+	icon_override = 'icons/turf/flooring/decals.dmi';
 	icon_state = "warning";
 	name = "hazard stripes"
 	},
@@ -14356,8 +14356,8 @@
 /obj/machinery/shield_diffuser,
 /obj/item/sign{
 	dir = 8;
-	icon = 'icons/turf/flooring/decals_vr.dmi';
-	icon_override = 'icons/turf/flooring/decals_vr.dmi';
+	icon = 'icons/turf/flooring/decals.dmi';
+	icon_override = 'icons/turf/flooring/decals.dmi';
 	icon_state = "warning";
 	name = "hazard stripes"
 	},

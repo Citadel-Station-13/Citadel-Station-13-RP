@@ -1,5 +1,5 @@
 /obj/effect/turf_decal
-	icon = 'icons/turf/flooring/decals_vr.dmi'
+	icon = 'icons/turf/flooring/decals.dmi'
 	plane = DECAL_PLANE //TODO: Plane unification. @Zandario
 	layer = MAPPER_DECAL_LAYER
 	anchored = TRUE
