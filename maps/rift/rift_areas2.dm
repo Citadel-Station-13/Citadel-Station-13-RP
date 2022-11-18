@@ -171,6 +171,7 @@
 	icon_state = "under1"
 /area/rift/surfacebase/outside
 	name = "Outside - Surface"
+	ambience = AMBIENCE_LYTHIOS
 /area/rift/surfacebase/outside/outside1
 	icon_state = "outside1"
 /area/rift/surfacebase/outside/outside2
