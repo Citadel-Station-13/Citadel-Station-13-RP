@@ -300,21 +300,21 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/spa)
 "bb" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 9
 	},
 /turf/simulated/floor/reinforced,
 /area/submap/spa)
 "bc" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
 /area/submap/spa)
 "bd" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 5
 	},
@@ -346,7 +346,7 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/spa)
 "bh" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 8
 	},
@@ -362,7 +362,7 @@
 /turf/simulated/floor/reinforced,
 /area/submap/spa)
 "bk" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 4
 	},
@@ -375,7 +375,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/submap/spa)
 "bm" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 10
 	},
@@ -383,14 +383,14 @@
 /area/submap/spa)
 "bn" = (
 /obj/machinery/tele_pad,
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/reinforced,
 /area/submap/spa)
 "bo" = (
 /obj/machinery/tele_projector{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/machinery/light,
 /turf/simulated/floor/reinforced,
 /area/submap/spa)
@@ -398,11 +398,11 @@
 /obj/machinery/computer/teleporter{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/reinforced,
 /area/submap/spa)
 "bq" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 6
 	},

@@ -69,7 +69,7 @@
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/mackerel_lc_wreck)
 "cD" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/item/material/shard/shrapnel,
 /obj/item/material/shard/shrapnel,
 /turf/simulated/floor/tiled/techmaint/airless,
@@ -80,7 +80,7 @@
 /area/shuttle/mackerel_lc_wreck)
 "fL" = (
 /obj/machinery/atmospherics/portables_connector,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/machinery/portable_atmospherics/canister/empty/phoron,
 /turf/simulated/floor/airless,
 /area/shuttle/mackerel_lc_wreck)
@@ -111,7 +111,7 @@
 /area/shuttle/mackerel_lc_wreck)
 "lo" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 4
 	},
 /obj/structure/railing/grey{
@@ -123,14 +123,14 @@
 "lC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/closet/walllocker/emerglocker/west,
-/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/turf_decal/industrial/warning/corner,
 /obj/item/material/shard,
 /obj/machinery/light/flicker,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/mackerel_lc_wreck)
 "lT" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/turf_decal/industrial/warning/corner,
 /obj/structure/extinguisher_cabinet{
 	dir = 8;
 	pixel_x = 30
@@ -148,7 +148,7 @@
 	dir = 8;
 	pixel_x = 26
 	},
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
 /obj/item/tank/oxygen,
@@ -168,10 +168,10 @@
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/machinery/airlock_sensor{
@@ -233,7 +233,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 1
 	},
 /obj/structure/railing/grey{
@@ -244,10 +244,10 @@
 /area/shuttle/mackerel_lc_wreck)
 "rr" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/machinery/embedded_controller/radio/docking_port_multi{
@@ -284,7 +284,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -300,7 +300,7 @@
 	pixel_x = 24
 	},
 /obj/map_helper/airlock/sensor/int_sensor,
-/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/turf_decal/industrial/warning/corner,
 /obj/structure/railing/grey,
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/techfloor,
@@ -344,8 +344,8 @@
 /area/shuttle/mackerel_lc_wreck)
 "ut" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/industrial/warning/corner,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning/corner,
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/structure/closet/walllocker/emerglocker/south,
@@ -367,7 +367,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
 /obj/structure/railing/grey,
@@ -384,7 +384,7 @@
 /area/shuttle/mackerel_lc_wreck)
 "xd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -401,7 +401,7 @@
 /area/shuttle/mackerel_lc_wreck)
 "zo" = (
 /obj/machinery/atmospherics/portables_connector,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/airless,
 /area/shuttle/mackerel_lc_wreck)
@@ -433,7 +433,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/machinery/meter,
@@ -447,7 +447,7 @@
 /area/shuttle/mackerel_lc_wreck)
 "Ck" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
 /obj/structure/extinguisher_cabinet{
@@ -465,7 +465,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/simulated/floor/airless,
 /area/shuttle/mackerel_lc_wreck)
 "Dl" = (
@@ -485,10 +485,10 @@
 /area/shuttle/mackerel_lc_wreck)
 "EC" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 4
 	},
 /obj/structure/closet/walllocker/emerglocker/north,
@@ -496,13 +496,13 @@
 /area/shuttle/mackerel_lc_wreck)
 "EK" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/machinery/alarm/alarms_hidden{
 	pixel_y = 26
 	},
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -515,7 +515,7 @@
 /area/shuttle/mackerel_lc_wreck)
 "FH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 1
 	},
 /obj/structure/railing/grey{
@@ -570,7 +570,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/turf_decal/industrial/warning/corner,
 /obj/structure/railing/grey,
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/techfloor,
@@ -581,7 +581,7 @@
 /area/shuttle/mackerel_lc_wreck)
 "HI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 4
 	},
 /obj/structure/railing/grey{
@@ -616,7 +616,7 @@
 /turf/simulated/floor/airless,
 /area/shuttle/mackerel_lc_wreck)
 "JP" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -650,7 +650,7 @@
 	dir = 8
 	},
 /obj/machinery/portable_atmospherics/canister/empty,
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/turf_decal/industrial/outline/red,
 /turf/simulated/floor/airless,
 /area/shuttle/mackerel_lc_wreck)
 "LW" = (
@@ -681,7 +681,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -691,7 +691,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -731,7 +731,7 @@
 	},
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /obj/machinery/atmospherics/portables_connector,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/simulated/floor/airless,
 /area/shuttle/mackerel_lc_wreck)
 "RV" = (
@@ -743,7 +743,7 @@
 	dir = 4;
 	pixel_x = -26
 	},
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 4
 	},
 /obj/structure/fuel_port/empty{
@@ -753,7 +753,7 @@
 /area/shuttle/mackerel_lc_wreck)
 "So" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 4
 	},
 /obj/structure/railing/grey{
@@ -770,7 +770,7 @@
 	pixel_x = -25
 	},
 /obj/map_helper/airlock/sensor/int_sensor,
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
 /obj/structure/railing/grey,
@@ -794,10 +794,10 @@
 /obj/structure/handrail,
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/map_helper/airlock/atmos/chamber_pump,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/effect/shuttle_landmark/shuttle_initializer/mackerel_lc_wreck,
@@ -816,14 +816,14 @@
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/mackerel_lc_wreck)
 "Wj" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_lc_wreck)
 "Wr" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 1
 	},
 /obj/structure/railing/grey{
@@ -862,7 +862,7 @@
 	},
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /obj/machinery/atmospherics/portables_connector,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/simulated/floor/airless,
 /area/shuttle/mackerel_lc_wreck)
 "Zb" = (
@@ -888,7 +888,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/mackerel_lc_wreck)
 "ZK" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,

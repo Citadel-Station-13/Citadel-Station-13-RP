@@ -4,7 +4,7 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/exterior)
 "bG" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /obj/machinery/tele_pad,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/abductor/interior)
@@ -16,7 +16,7 @@
 /turf/space,
 /area/space)
 "db" = (
-/obj/effect/floor_decal/borderfloorwhite/full{
+/obj/effect/turf_decal/borderfloorwhite/full{
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/alienplating,
@@ -90,7 +90,7 @@
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "gA" = (
-/obj/effect/floor_decal/borderfloorwhite/full,
+/obj/effect/turf_decal/borderfloorwhite/full,
 /turf/simulated/shuttle/floor/alienplating,
 /area/abductor/interior)
 "hj" = (
@@ -702,7 +702,7 @@
 /turf/simulated/floor/plating,
 /area/abductor/interior)
 "Qf" = (
-/obj/effect/floor_decal/borderfloorwhite/full{
+/obj/effect/turf_decal/borderfloorwhite/full{
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/alienplating,

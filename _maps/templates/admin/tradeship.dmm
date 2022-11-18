@@ -635,19 +635,19 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "bH" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 9
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "bI" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "bJ" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 5
 	},
 /turf/simulated/shuttle/floor/black,
@@ -981,21 +981,21 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cu" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 9
 	},
 /obj/structure/largecrate/animal/cat,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cv" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/structure/largecrate/animal/cow,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cw" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/structure/closet/crate/freezer/rations,
@@ -1003,7 +1003,7 @@
 /area/shuttle/trade)
 "cx" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/item/kit/paint/ripley/death,
@@ -1013,21 +1013,21 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cy" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/structure/closet/crate/secure,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cz" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/structure/largecrate/hoverpod,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cA" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 5
 	},
 /obj/mecha/working/ripley/mining,
@@ -1101,25 +1101,25 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cI" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /obj/structure/largecrate/animal/corgi,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cJ" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/structure/largecrate/animal/corgi,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cK" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/structure/closet/crate/internals,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cL" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/item/kit/paint/gygax,
 /obj/item/kit/paint/gygax,
 /obj/item/kit/paint/durand,
@@ -1128,17 +1128,17 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cM" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/structure/closet/crate/secure,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cN" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/structure/largecrate/hoverpod,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "cO" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /obj/mecha/working/ripley/firefighter,
@@ -1390,17 +1390,17 @@
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "dp" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "dq" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/shuttle/floor/black,
 /area/shuttle/trade)
 "dr" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /turf/simulated/shuttle/floor/black,

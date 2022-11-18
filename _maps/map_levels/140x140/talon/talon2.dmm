@@ -116,7 +116,7 @@
 /area/talon/maintenance/decktwo_port)
 "cg" = (
 /obj/machinery/ntnet_relay,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/simulated/floor/bluegrid,
 /area/talon/decktwo/tech)
 "cm" = (
@@ -1308,7 +1308,7 @@
 /turf/simulated/floor/carpet,
 /area/talon/decktwo/pilot_room)
 "ph" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/machinery/power/tracker,
 /obj/structure/cable/green{
 	icon_state = "0-8"
@@ -1993,7 +1993,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/tech)
 "xM" = (
@@ -2301,7 +2301,7 @@
 /obj/machinery/pointdefense_control{
 	id_tag = "talon_pd"
 	},
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/simulated/floor/bluegrid,
 /area/talon/decktwo/tech)
 "Bs" = (
@@ -3022,7 +3022,7 @@
 	id = "talon_aio";
 	network = "Talon"
 	},
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/simulated/floor/bluegrid,
 /area/talon/decktwo/tech)
 "Ju" = (
@@ -3050,7 +3050,7 @@
 /turf/simulated/floor/hull/airless,
 /area/talon/maintenance/decktwo_solars)
 "JF" = (
-/obj/effect/floor_decal/corner/grey/diagonal,
+/obj/effect/turf_decal/corner/grey/diagonal,
 /obj/item/reagent_containers/food/condiment/ketchup{
 	pixel_x = 7;
 	pixel_y = 5
@@ -3083,7 +3083,7 @@
 /turf/simulated/floor/tiled/eris/cafe,
 /area/talon/decktwo/kitchen)
 "JT" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/machinery/power/tracker,
 /obj/structure/cable/green{
 	icon_state = "0-4"
@@ -3829,7 +3829,7 @@
 /obj/machinery/power/shield_generator/charged{
 	anchored = 1
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/techfloor,
 /area/talon/decktwo/tech)
 "Sm" = (

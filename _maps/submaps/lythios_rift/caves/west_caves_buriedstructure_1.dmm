@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aN" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/wood/lythios43c,
@@ -41,7 +41,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "kM" = (
@@ -61,7 +61,7 @@
 /turf/simulated/floor/tiled/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
 "lY" = (
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /mob/living/simple_mob/animal/giant_spider/frost,
 /turf/simulated/floor/wood/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
@@ -79,7 +79,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "nN" = (
@@ -177,7 +177,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "zs" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "zt" = (
@@ -191,11 +191,11 @@
 /obj/structure/window/reinforced/tinted/frosted{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/white/bordercee,
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/corner/white/bordercee,
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 6
 	},
 /obj/random/soap,
@@ -205,7 +205,7 @@
 /obj/structure/toilet{
 	pixel_y = 9
 	},
-/obj/effect/floor_decal/corner/white/bordercee,
+/obj/effect/turf_decal/corner/white/bordercee,
 /turf/simulated/floor/tiled/monotile/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
 "Aq" = (
@@ -247,7 +247,7 @@
 /turf/simulated/floor/carpet/bcarpet/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
 "EK" = (
-/obj/effect/floor_decal/corner/white/border{
+/obj/effect/turf_decal/corner/white/border{
 	dir = 5
 	},
 /obj/machinery/light{
@@ -266,7 +266,7 @@
 /turf/simulated/floor/carpet/arcadecarpet/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
 "GK" = (
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/wood/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
 "HE" = (
@@ -307,7 +307,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "Mx" = (
-/obj/effect/floor_decal/corner/white/border{
+/obj/effect/turf_decal/corner/white/border{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/lythios43c,
@@ -317,7 +317,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "NL" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
 /turf/simulated/floor/wood/lythios43c,
@@ -336,7 +336,7 @@
 /obj/structure/mirror{
 	pixel_x = 25
 	},
-/obj/effect/floor_decal/corner/white/border{
+/obj/effect/turf_decal/corner/white/border{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/lythios43c,
@@ -376,7 +376,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "TT" = (
@@ -406,7 +406,7 @@
 /turf/simulated/floor/tiled/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
 "VZ" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 10
 	},
 /obj/machinery/light{
@@ -425,12 +425,12 @@
 /turf/simulated/floor/tiled/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
 "WO" = (
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /obj/effect/spider/stickyweb,
 /turf/simulated/floor/wood/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
 "WQ" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 6
 	},
 /obj/machinery/light{
@@ -439,7 +439,7 @@
 /turf/simulated/floor/wood/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
 "WU" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 9
 	},
 /obj/effect/spider/stickyweb,
@@ -451,7 +451,7 @@
 /turf/simulated/floor/tiled/lythios43c,
 /area/submap/lythios/west_caves/buried_structure)
 "XY" = (
-/obj/effect/floor_decal/corner/white/border{
+/obj/effect/turf_decal/corner/white/border{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/lythios43c,

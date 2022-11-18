@@ -6,7 +6,7 @@
 /turf/simulated/wall/sandstone/classh,
 /area/class_h/explored)
 "I" = (
-/obj/effect/floor_decal/plaque{
+/obj/effect/turf_decal/plaque{
 	desc = "The carving that used to be here has worn beyond any recoginition.";
 	name = "dusty plaque"
 	},

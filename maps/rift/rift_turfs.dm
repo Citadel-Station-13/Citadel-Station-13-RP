@@ -248,7 +248,7 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/mineral/icerock)
 /turf/unsimulated/floor/transit
 	icon = 'icons/turf/transit_vr.dmi'
 
-/obj/effect/floor_decal/transit/orange
+/obj/effect/turf_decal/transit/orange
 	icon = 'icons/turf/transit_vr.dmi'
 	icon_state = "transit_techfloororange_edges"
 
@@ -300,5 +300,3 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/unsimulated/mineral/icerock)
 	dir = EAST
 /turf/simulated/sky/lythios43c/moving/west
 	dir = WEST
-
-

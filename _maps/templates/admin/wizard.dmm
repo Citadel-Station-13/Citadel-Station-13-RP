@@ -765,7 +765,7 @@
 	pixel_y = 30
 	},
 /obj/item/target,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -773,7 +773,7 @@
 /area/wizard_station)
 "bO" = (
 /obj/item/target/syndicate,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -823,20 +823,20 @@
 	},
 /area/wizard_station)
 "bT" = (
-/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/turf_decal/industrial/warning/corner,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
 	},
 /area/wizard_station)
 "bU" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/wizard_station)
 "bV" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	icon_state = "warningcorner";
 	dir = 8
 	},
@@ -855,7 +855,7 @@
 	syndie = 1
 	},
 /obj/item/target,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "vault";
 	dir = 5
@@ -884,7 +884,7 @@
 	},
 /area/wizard_station)
 "ca" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 4
 	},
@@ -904,7 +904,7 @@
 	},
 /area/wizard_station)
 "cc" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -913,7 +913,7 @@
 	},
 /area/wizard_station)
 "cd" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 9
 	},
 /turf/unsimulated/floor{
@@ -922,7 +922,7 @@
 	},
 /area/wizard_station)
 "ce" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/unsimulated/floor{
@@ -931,7 +931,7 @@
 	},
 /area/wizard_station)
 "cf" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 5
 	},
@@ -968,7 +968,7 @@
 	},
 /area/wizard_station)
 "ck" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 4
 	},
@@ -977,7 +977,7 @@
 	},
 /area/wizard_station)
 "cl" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -985,7 +985,7 @@
 	},
 /area/wizard_station)
 "cm" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -995,14 +995,14 @@
 /area/wizard_station)
 "cn" = (
 /obj/structure/target_stake,
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
 	},
 /area/wizard_station)
 "co" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 4
 	},
@@ -1028,7 +1028,7 @@
 	},
 /area/wizard_station)
 "cr" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /turf/unsimulated/floor{
@@ -1037,14 +1037,14 @@
 	},
 /area/wizard_station)
 "cs" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
 	},
 /area/wizard_station)
 "ct" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /turf/unsimulated/floor{

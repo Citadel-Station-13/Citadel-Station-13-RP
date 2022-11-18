@@ -14,7 +14,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "j" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "o" = (
@@ -28,7 +28,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/submap/lythios/west_caves/buried_structure)
 "u" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/storage/toolbox/electrical,
 /obj/structure/table/rack/steel,

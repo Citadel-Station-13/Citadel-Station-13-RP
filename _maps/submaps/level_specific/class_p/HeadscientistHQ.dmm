@@ -58,7 +58,7 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack,
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "bX" = (
@@ -167,7 +167,7 @@
 /turf/simulated/shuttle/floor/yellow/classp,
 /area/submap/HeadscientistHQ)
 "hn" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -176,7 +176,7 @@
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "hD" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
 /obj/structure/fuel_port{
@@ -186,7 +186,7 @@
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "hY" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
+/obj/effect/turf_decal/borderfloorblack/corner{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -265,7 +265,7 @@
 /area/submap/HeadscientistHQ)
 "ld" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack,
 /obj/machinery/light,
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
@@ -308,7 +308,7 @@
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "nd" = (
-/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack,
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "nA" = (
@@ -577,7 +577,7 @@
 /turf/simulated/shuttle/floor/red/classp,
 /area/submap/HeadscientistHQ)
 "Bw" = (
-/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
@@ -589,7 +589,7 @@
 /turf/simulated/shuttle/floor/red/classp,
 /area/submap/HeadscientistHQ)
 "Bz" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/classp,
@@ -622,8 +622,8 @@
 /turf/simulated/shuttle/floor/purple/classp,
 /area/submap/HeadscientistHQ)
 "Dn" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 6
 	},
 /obj/machinery/light,
@@ -633,7 +633,7 @@
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "Ds" = (
-/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack,
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
@@ -708,7 +708,7 @@
 	dir = 1
 	},
 /obj/effect/debris/cleanable/dirt,
-/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack,
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
 "FT" = (
@@ -780,7 +780,7 @@
 /area/template_noop)
 "IS" = (
 /obj/structure/bed/chair/shuttle,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/classp,
@@ -799,10 +799,10 @@
 /turf/simulated/floor/outdoors/dirt/classp,
 /area/template_noop)
 "Ki" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 5
 	},
 /obj/machinery/light{
@@ -846,7 +846,7 @@
 /turf/simulated/shuttle/floor/red/classp,
 /area/submap/HeadscientistHQ)
 "KK" = (
-/obj/effect/floor_decal/borderfloorblack/corner,
+/obj/effect/turf_decal/borderfloorblack/corner,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
@@ -874,7 +874,7 @@
 /turf/simulated/floor/outdoors/dirt/classp,
 /area/template_noop)
 "LF" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -997,7 +997,7 @@
 /turf/simulated/shuttle/floor/red/classp,
 /area/submap/HeadscientistHQ)
 "Ui" = (
-/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/shuttle/floor/classp,
 /area/submap/HeadscientistHQ)
@@ -1030,7 +1030,7 @@
 /turf/simulated/shuttle/floor/red/classp,
 /area/submap/HeadscientistHQ)
 "VI" = (
-/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack,
 /obj/machinery/power/apc/alarms_hidden{
 	dir = 4;
 	pixel_y = -32;
@@ -1071,7 +1071,7 @@
 /turf/simulated/shuttle/floor/purple/classp,
 /area/submap/HeadscientistHQ)
 "WE" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden,
@@ -1091,7 +1091,7 @@
 "Xc" = (
 /obj/structure/bed/chair/shuttle,
 /obj/effect/debris/cleanable/dirt,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/classp,
@@ -1121,7 +1121,7 @@
 /turf/simulated/shuttle/floor/red/classp,
 /area/submap/HeadscientistHQ)
 "Zc" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,

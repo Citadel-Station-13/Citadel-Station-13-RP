@@ -4,7 +4,7 @@
 	id = "cargo_hatch_port";
 	name = "Port Cargo Hatch"
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
@@ -48,7 +48,7 @@
 	dir = 4;
 	pixel_x = -30
 	},
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 1
 	},
 /obj/structure/handrail{
@@ -78,7 +78,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/light,
 /obj/structure/closet/walllocker/emerglocker/west,
-/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/turf_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_hc_skel_cockpit)
 "cQ" = (
@@ -86,7 +86,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/portables_connector,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/simulated/floor/plating,
 /area/shuttle/mackerel_hc_skel)
@@ -121,7 +121,7 @@
 	name = "east bump";
 	pixel_x = 24
 	},
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -131,7 +131,7 @@
 /area/shuttle/mackerel_hc_skel_eng)
 "fI" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 4
 	},
 /obj/structure/handrail{
@@ -146,7 +146,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /turf/simulated/floor/plating,
 /area/shuttle/mackerel_hc_skel)
 "gv" = (
@@ -160,7 +160,7 @@
 	dir = 8;
 	pixel_x = 26
 	},
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -195,7 +195,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/simulated/floor/plating,
 /area/shuttle/mackerel_hc_skel)
 "lo" = (
@@ -218,7 +218,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_hc_skel)
 "mf" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -283,21 +283,21 @@
 /area/shuttle/mackerel_hc_skel)
 "pZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 5
 	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/mackerel_hc_skel)
 "rf" = (
 /obj/machinery/atmospherics/portables_connector,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/machinery/portable_atmospherics/canister/phoron{
 	start_pressure = 8000.25
 	},
 /turf/simulated/floor/plating,
 /area/shuttle/mackerel_hc_skel)
 "rr" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -308,7 +308,7 @@
 	id = "cargo_hatch_star";
 	name = "Starboard Cargo Hatch"
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
@@ -320,7 +320,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/machinery/meter,
@@ -349,7 +349,7 @@
 /area/shuttle/mackerel_hc_skel)
 "ue" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /turf/simulated/floor/reinforced,
@@ -378,7 +378,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_hc_skel)
 "um" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -422,7 +422,7 @@
 /area/shuttle/mackerel_hc_skel)
 "wH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /turf/simulated/floor/reinforced,
@@ -461,7 +461,7 @@
 	dir = 8
 	},
 /obj/machinery/portable_atmospherics/canister/empty,
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/turf_decal/industrial/outline/red,
 /obj/structure/sign/warning/vacuum{
 	pixel_x = 32
 	},
@@ -499,7 +499,7 @@
 	dir = 4;
 	pixel_x = -26
 	},
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -551,7 +551,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/mackerel_hc_skel)
 "ED" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -560,7 +560,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/mackerel_hc_skel)
 "EK" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/structure/cable{
@@ -592,7 +592,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/mackerel_hc_skel)
 "FH" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -608,10 +608,10 @@
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/light,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/effect/shuttle_landmark/shuttle_initializer/mackerel_hc_skel,
@@ -640,7 +640,7 @@
 /area/shuttle/mackerel_hc_skel_eng)
 "FY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -701,7 +701,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/portables_connector,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/simulated/floor/plating,
 /area/shuttle/mackerel_hc_skel)
@@ -710,7 +710,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 4
 	},
 /obj/machinery/firealarm/alarms_hidden{
@@ -722,7 +722,7 @@
 /area/shuttle/mackerel_hc_skel)
 "JW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 9
 	},
 /turf/simulated/floor/reinforced,
@@ -757,7 +757,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
 /obj/structure/railing/grey{
@@ -766,7 +766,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/mackerel_hc_skel)
 "NN" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -807,7 +807,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 9
 	},
 /obj/structure/cable{
@@ -823,10 +823,10 @@
 /obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/light,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/machinery/embedded_controller/radio/airlock/docking_port_multi{
@@ -842,7 +842,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/mackerel_hc_skel)
 "Qu" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -852,7 +852,7 @@
 /area/shuttle/mackerel_hc_skel)
 "Rn" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -861,7 +861,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -879,14 +879,14 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/turf_decal/industrial/warning/corner,
 /obj/structure/railing/grey{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/mackerel_hc_skel)
 "RV" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -929,11 +929,11 @@
 /area/shuttle/mackerel_hc_skel)
 "Wj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/turf_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/mackerel_hc_skel)
 "Wr" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -960,7 +960,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 1
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -974,13 +974,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 5
 	},
 /turf/simulated/floor/reinforced,
 /area/shuttle/mackerel_hc_skel)
 "Xn" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden{
@@ -989,7 +989,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/mackerel_hc_skel)
 "Xs" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -999,7 +999,7 @@
 /area/shuttle/mackerel_hc_skel)
 "XF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{

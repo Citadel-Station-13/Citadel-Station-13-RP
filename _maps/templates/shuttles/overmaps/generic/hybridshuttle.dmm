@@ -127,7 +127,7 @@
 /obj/machinery/sleeper{
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 9
 	},
@@ -135,25 +135,25 @@
 /area/shuttle/blue_fo)
 "at" = (
 /obj/machinery/sleep_console,
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "au" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "av" = (
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner{
 	icon_state = "techfloororange_corners";
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner{
 	icon_state = "techfloororange_corners";
 	dir = 4
 	},
@@ -176,11 +176,11 @@
 /turf/simulated/shuttle/floor/alien,
 /area/shuttle/blue_fo)
 "ay" = (
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner{
 	icon_state = "techfloororange_corners";
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner{
 	icon_state = "techfloororange_corners";
 	dir = 1
 	},
@@ -190,7 +190,7 @@
 /obj/structure/bed/chair/sofa/right{
 	sofa_material = "black"
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 1
 	},
@@ -200,14 +200,14 @@
 /obj/structure/bed/chair/sofa/left{
 	sofa_material = "black"
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "aB" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 5
 	},
@@ -222,7 +222,7 @@
 /turf/space,
 /area/shuttle/blue_fo)
 "aD" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 8
 	},
@@ -238,7 +238,7 @@
 	tele_name = "Hybrid Shuttle";
 
 	},
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "aG" = (
@@ -255,7 +255,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "aJ" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 4
 	},
@@ -266,7 +266,7 @@
 /obj/machinery/sleeper{
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 10
 	},
@@ -274,16 +274,16 @@
 /area/shuttle/blue_fo)
 "aL" = (
 /obj/machinery/sleep_console,
-/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/turf_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "aM" = (
-/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/turf_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "aN" = (
-/obj/effect/floor_decal/techfloor/orange/corner,
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner,
+/obj/effect/turf_decal/techfloor/orange/corner{
 	icon_state = "techfloororange_corners";
 	dir = 8
 	},
@@ -317,7 +317,7 @@
 	icon_state = "sofaend_left";
 	sofa_material = "black"
 	},
-/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/turf_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "aR" = (
@@ -326,11 +326,11 @@
 	icon_state = "sofaend_right";
 	sofa_material = "black"
 	},
-/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/turf_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "aS" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 6
 	},
@@ -338,11 +338,11 @@
 /area/shuttle/blue_fo)
 "aT" = (
 /obj/machinery/door/airlock/alien/blue,
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 8
 	},
@@ -350,18 +350,18 @@
 /area/shuttle/blue_fo)
 "aU" = (
 /obj/machinery/door/airlock/alien/blue,
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "aV" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 9
 	},
@@ -369,7 +369,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "aW" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 1
 	},
@@ -377,7 +377,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "aX" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 1
 	},
@@ -392,7 +392,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "aY" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 1
 	},
@@ -403,7 +403,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "aZ" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 1
 	},
@@ -419,7 +419,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "ba" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 1
 	},
@@ -431,14 +431,14 @@
 /area/shuttle/blue_fo)
 "bb" = (
 /obj/structure/prop/alien/computer,
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "bc" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 5
 	},
@@ -446,7 +446,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "bd" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 8
 	},
@@ -487,7 +487,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "bi" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 4
 	},
@@ -504,11 +504,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/blue_fo)
 "bk" = (
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner{
 	icon_state = "techfloororange_corners";
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner{
 	icon_state = "techfloororange_corners";
 	dir = 1
 	},
@@ -535,11 +535,11 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "bm" = (
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner{
 	icon_state = "techfloororange_corners";
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/orange/corner,
+/obj/effect/turf_decal/techfloor/orange/corner,
 /obj/effect/shuttle_landmark/shuttle_initializer/hybridshuttle,
 /obj/effect/overmap/visitable/ship/landable/hybridshuttle,
 /turf/simulated/floor/tiled/techfloor,
@@ -551,11 +551,11 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "bo" = (
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "bp" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 4
 	},
@@ -589,21 +589,21 @@
 /turf/simulated/shuttle/floor/alien,
 /area/shuttle/blue_fo)
 "bt" = (
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner{
 	icon_state = "techfloororange_corners";
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor/orange/corner,
+/obj/effect/turf_decal/techfloor/orange/corner,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/blue_fo)
 "bu" = (
-/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/turf_decal/techfloor/orange,
 /obj/structure/table/alien/blue,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "bv" = (
-/obj/effect/floor_decal/techfloor/orange/corner,
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner,
+/obj/effect/turf_decal/techfloor/orange/corner{
 	icon_state = "techfloororange_corners";
 	dir = 8
 	},

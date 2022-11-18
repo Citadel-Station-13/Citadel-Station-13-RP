@@ -74,7 +74,7 @@
 /turf/simulated/shuttle/floor/black/airless,
 /area/space/debrisfield/oldshuttle)
 "ao" = (
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/simulated/shuttle/floor/darkred/airless,
 /area/space/debrisfield/oldshuttle)
 "ap" = (
@@ -128,7 +128,7 @@
 /turf/simulated/shuttle/floor/black/airless,
 /area/space/debrisfield/oldshuttle)
 "aw" = (
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/turf_decal/industrial/outline/red,
 /obj/structure/closet/crate/secure/weapon,
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/phase,
@@ -139,7 +139,7 @@
 /turf/simulated/shuttle/floor/darkred/airless,
 /area/space/debrisfield/oldshuttle)
 "ax" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/machinery/space_heater,
 /turf/simulated/shuttle/floor/darkred/airless,
 /area/space/debrisfield/oldshuttle)
@@ -161,7 +161,7 @@
 /turf/simulated/shuttle/floor/darkred/airless,
 /area/space/debrisfield/oldshuttle)
 "aA" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 9
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -172,7 +172,7 @@
 /turf/simulated/shuttle/floor/black/airless,
 /area/space/debrisfield/oldshuttle)
 "aB" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/black/airless,
@@ -184,7 +184,7 @@
 /turf/simulated/shuttle/wall/voidcraft,
 /area/space/debrisfield/oldshuttle)
 "aD" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 5
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -202,7 +202,7 @@
 /turf/simulated/shuttle/floor/black/airless,
 /area/space/debrisfield/oldshuttle)
 "aF" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -213,7 +213,7 @@
 /turf/simulated/shuttle/floor/black/airless,
 /area/space/debrisfield/oldshuttle)
 "aG" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -238,13 +238,13 @@
 /turf/simulated/shuttle/wall/voidcraft,
 /area/space/debrisfield/oldshuttle)
 "aJ" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/black/airless,
 /area/space/debrisfield/oldshuttle)
 "aK" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -255,7 +255,7 @@
 /turf/simulated/shuttle/floor/black/airless,
 /area/space/debrisfield/oldshuttle)
 "aL" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/shuttle/floor/black/airless,
 /area/space/debrisfield/oldshuttle)
 "aM" = (
@@ -269,7 +269,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/space/debrisfield/oldshuttle)
 "aO" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /obj/machinery/light{
@@ -289,7 +289,7 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/space/debrisfield/oldshuttle)
 "aQ" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/black/airless,
@@ -323,8 +323,8 @@
 /area/space/debrisfield/oldshuttle)
 "aV" = (
 /obj/machinery/light,
-/obj/effect/floor_decal/industrial/warning/corner,
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner,
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
 /obj/effect/debris/cleanable/blood/gibs/xeno/body,
@@ -409,14 +409,14 @@
 /turf/simulated/shuttle/floor/black/airless,
 /area/space/debrisfield/oldshuttle)
 "Iv" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/effect/debris/cleanable/blood/gibs/xeno/body,
 /turf/simulated/shuttle/floor/black/airless,
 /area/space/debrisfield/oldshuttle)
 "Vl" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/effect/gibspawner/human,
 /turf/simulated/shuttle/floor/black/airless,
 /area/space/debrisfield/oldshuttle)

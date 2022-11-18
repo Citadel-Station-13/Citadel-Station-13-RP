@@ -103,7 +103,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/floor_decal/rust/steel_decals_rusted2{
+/obj/effect/turf_decal/rust/steel_decals_rusted2{
 	dir = 1
 	},
 /turf/simulated/floor/airless,
@@ -116,7 +116,7 @@
 /area/submap/debrisfield_vr/mining_outpost)
 "u" = (
 /obj/item/ore,
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/submap/debrisfield_vr/mining_outpost)
 "v" = (
@@ -145,7 +145,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/mining_outpost)
 "A" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/mining_outpost)
 "B" = (
@@ -157,7 +157,7 @@
 /area/submap/debrisfield_vr/mining_outpost)
 "D" = (
 /obj/item/material/shard,
-/obj/effect/floor_decal/steeldecal/steel_decals_central5{
+/obj/effect/turf_decal/steeldecal/steel_decals_central5{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/airless,
@@ -190,7 +190,7 @@
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/ointment,
 /obj/item/storage/mre/random,
-/obj/effect/floor_decal/rust/part_rusted3,
+/obj/effect/turf_decal/rust/part_rusted3,
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/mining_outpost)
 "H" = (
@@ -208,7 +208,7 @@
 /obj/machinery/light_switch{
 	pixel_y = -24
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/mining_outpost)
 "L" = (

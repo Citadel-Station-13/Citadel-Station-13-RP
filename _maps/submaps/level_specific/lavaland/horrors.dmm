@@ -56,7 +56,7 @@
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/horrors)
 "y" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/horrors)
 "A" = (

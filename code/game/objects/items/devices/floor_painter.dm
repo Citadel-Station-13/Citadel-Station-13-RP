@@ -8,24 +8,24 @@
 	var/paint_colour = "#FFFFFF"
 
 	var/list/decals = list(
-		"quarter-turf" =      list("path" = /obj/effect/floor_decal/corner, "precise" = 1, "coloured" = 1),
-		"hazard stripes" =    list("path" = /obj/effect/floor_decal/industrial/warning),
-		"corner, hazard" =    list("path" = /obj/effect/floor_decal/industrial/warning/corner),
-		"hatched marking" =   list("path" = /obj/effect/floor_decal/industrial/hatch, "coloured" = 1),
-		"dotted outline" =    list("path" = /obj/effect/floor_decal/industrial/outline, "coloured" = 1),
-		"loading sign" =      list("path" = /obj/effect/floor_decal/industrial/loading),
-		"1" =                 list("path" = /obj/effect/floor_decal/sign),
-		"2" =                 list("path" = /obj/effect/floor_decal/sign/two),
-		"A" =                 list("path" = /obj/effect/floor_decal/sign/a),
-		"B" =                 list("path" = /obj/effect/floor_decal/sign/b),
-		"C" =                 list("path" = /obj/effect/floor_decal/sign/c),
-		"D" =                 list("path" = /obj/effect/floor_decal/sign/d),
-		"Ex" =                list("path" = /obj/effect/floor_decal/sign/ex),
-		"M" =                 list("path" = /obj/effect/floor_decal/sign/m),
-		"CMO" =               list("path" = /obj/effect/floor_decal/sign/cmo),
-		"V" =                 list("path" = /obj/effect/floor_decal/sign/v),
-		"Psy" =               list("path" = /obj/effect/floor_decal/sign/p),
-		"remove all decals" = list("path" = /obj/effect/floor_decal/reset)
+		"quarter-turf" =      list("path" = /obj/effect/turf_decal/corner, "precise" = 1, "coloured" = 1),
+		"hazard stripes" =    list("path" = /obj/effect/turf_decal/industrial/warning),
+		"corner, hazard" =    list("path" = /obj/effect/turf_decal/industrial/warning/corner),
+		"hatched marking" =   list("path" = /obj/effect/turf_decal/industrial/hatch, "coloured" = 1),
+		"dotted outline" =    list("path" = /obj/effect/turf_decal/industrial/outline, "coloured" = 1),
+		"loading sign" =      list("path" = /obj/effect/turf_decal/industrial/loading),
+		"1" =                 list("path" = /obj/effect/turf_decal/sign),
+		"2" =                 list("path" = /obj/effect/turf_decal/sign/two),
+		"A" =                 list("path" = /obj/effect/turf_decal/sign/a),
+		"B" =                 list("path" = /obj/effect/turf_decal/sign/b),
+		"C" =                 list("path" = /obj/effect/turf_decal/sign/c),
+		"D" =                 list("path" = /obj/effect/turf_decal/sign/d),
+		"Ex" =                list("path" = /obj/effect/turf_decal/sign/ex),
+		"M" =                 list("path" = /obj/effect/turf_decal/sign/m),
+		"CMO" =               list("path" = /obj/effect/turf_decal/sign/cmo),
+		"V" =                 list("path" = /obj/effect/turf_decal/sign/v),
+		"Psy" =               list("path" = /obj/effect/turf_decal/sign/p),
+		"remove all decals" = list("path" = /obj/effect/turf_decal/reset)
 		)
 	var/list/paint_dirs = list(
 		"north" =       NORTH,
@@ -66,7 +66,7 @@
 		to_chat(user, "<span class='warning'>\The [src] flashes an error light. You might need to reconfigure it.</span>")
 		return
 
-	if(F.decals && F.decals.len > 5 && painting_decal != /obj/effect/floor_decal/reset)
+	if(F.decals && F.decals.len > 5 && painting_decal != /obj/effect/turf_decal/reset)
 		to_chat(user, "<span class='warning'>\The [F] has been painted too much; you need to clear it off.</span>")
 		return
 

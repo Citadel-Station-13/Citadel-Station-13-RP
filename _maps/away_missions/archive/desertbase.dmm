@@ -26,145 +26,145 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "ah" = (
-/obj/effect/floor_decal/corner_steel_grid/full{
+/obj/effect/turf_decal/corner_steel_grid/full{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/space)
 "ai" = (
-/obj/effect/floor_decal/corner_steel_grid/full,
+/obj/effect/turf_decal/corner_steel_grid/full,
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/space)
 "aj" = (
-/obj/effect/floor_decal/derelict/d9,
+/obj/effect/turf_decal/derelict/d9,
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "ak" = (
-/obj/effect/floor_decal/derelict/d10,
+/obj/effect/turf_decal/derelict/d10,
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "al" = (
-/obj/effect/floor_decal/derelict/d11,
+/obj/effect/turf_decal/derelict/d11,
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "am" = (
-/obj/effect/floor_decal/derelict/d12,
+/obj/effect/turf_decal/derelict/d12,
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "an" = (
-/obj/effect/floor_decal/derelict/d13,
+/obj/effect/turf_decal/derelict/d13,
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "ao" = (
-/obj/effect/floor_decal/derelict/d14,
+/obj/effect/turf_decal/derelict/d14,
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "ap" = (
-/obj/effect/floor_decal/derelict/d15,
+/obj/effect/turf_decal/derelict/d15,
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "aq" = (
-/obj/effect/floor_decal/derelict/d16,
+/obj/effect/turf_decal/derelict/d16,
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "ar" = (
-/obj/effect/floor_decal/derelict/d1,
+/obj/effect/turf_decal/derelict/d1,
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "as" = (
-/obj/effect/floor_decal/derelict/d2,
+/obj/effect/turf_decal/derelict/d2,
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "at" = (
-/obj/effect/floor_decal/derelict/d3,
+/obj/effect/turf_decal/derelict/d3,
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "au" = (
-/obj/effect/floor_decal/derelict/d4,
+/obj/effect/turf_decal/derelict/d4,
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "av" = (
-/obj/effect/floor_decal/derelict/d5,
+/obj/effect/turf_decal/derelict/d5,
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "aw" = (
-/obj/effect/floor_decal/derelict/d6,
+/obj/effect/turf_decal/derelict/d6,
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "ax" = (
-/obj/effect/floor_decal/derelict/d7,
+/obj/effect/turf_decal/derelict/d7,
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "ay" = (
-/obj/effect/floor_decal/derelict/d8,
+/obj/effect/turf_decal/derelict/d8,
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "az" = (
-/obj/effect/floor_decal/corner_steel_grid/full{
+/obj/effect/turf_decal/corner_steel_grid/full{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/space)
 "aA" = (
-/obj/effect/floor_decal/corner_steel_grid/full{
+/obj/effect/turf_decal/corner_steel_grid/full{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/space)
 "aB" = (
-/obj/effect/floor_decal/corner_steel_grid{
+/obj/effect/turf_decal/corner_steel_grid{
 	dir = 6
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/space)
 "aC" = (
-/obj/effect/floor_decal/corner_steel_grid{
+/obj/effect/turf_decal/corner_steel_grid{
 	dir = 9
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/space)
 "aD" = (
-/obj/effect/floor_decal/corner_steel_grid,
+/obj/effect/turf_decal/corner_steel_grid,
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/space)
 "aE" = (
-/obj/effect/floor_decal/corner_steel_grid{
+/obj/effect/turf_decal/corner_steel_grid{
 	dir = 10
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/space)
 "aF" = (
-/obj/effect/floor_decal/corner_steel_grid{
+/obj/effect/turf_decal/corner_steel_grid{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "aG" = (
-/obj/effect/floor_decal/corner_steel_grid{
+/obj/effect/turf_decal/corner_steel_grid{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/space)
 "aH" = (
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 9
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
 "aI" = (
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
 "aJ" = (
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 5
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
 "aK" = (
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
@@ -173,7 +173,7 @@
 /turf/simulated/floor/reinforced,
 /area/space)
 "aM" = (
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
@@ -503,13 +503,13 @@
 /turf/simulated/shuttle/plating,
 /area/space)
 "bB" = (
-/obj/effect/floor_decal/corner_steel_grid{
+/obj/effect/turf_decal/corner_steel_grid{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/space)
 "bC" = (
-/obj/effect/floor_decal/corner_steel_grid{
+/obj/effect/turf_decal/corner_steel_grid{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -671,17 +671,17 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/space)
 "bW" = (
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /obj/machinery/vending/tool,
 /turf/simulated/floor/tiled/steel,
 /area/space)
 "bX" = (
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /obj/machinery/vending/engivend,
 /turf/simulated/floor/tiled/steel,
 /area/space)
 "bY" = (
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /obj/structure/table/standard,
 /obj/random/tech_supply,
 /obj/random/tech_supply,
@@ -689,12 +689,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/space)
 "bZ" = (
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /obj/structure/closet/toolcloset,
 /turf/simulated/floor/tiled/steel,
 /area/space)
 "ca" = (
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /obj/structure/closet/firecloset/full,
 /turf/simulated/floor/tiled/steel,
 /area/space)
@@ -837,12 +837,12 @@
 /turf/simulated/shuttle/plating,
 /area/space)
 "cl" = (
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /obj/structure/closet/secure_closet/engineering_electrical,
 /turf/simulated/floor/tiled/steel,
 /area/space)
 "cm" = (
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /obj/structure/reagent_dispensers/watertank,
 /turf/simulated/floor/tiled/steel,
 /area/space)
@@ -991,17 +991,17 @@
 /turf/simulated/shuttle/floor/darkred,
 /area/space)
 "cC" = (
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /obj/structure/closet/secure_closet/engineering_welding,
 /turf/simulated/floor/tiled/steel,
 /area/space)
 "cD" = (
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /obj/machinery/portable_atmospherics/canister/empty/phoron,
 /turf/simulated/floor/tiled/steel,
 /area/space)
 "cE" = (
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/tiled/steel,
 /area/space)
@@ -1048,45 +1048,45 @@
 /turf/simulated/floor/reinforced,
 /area/space)
 "cM" = (
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /obj/structure/closet/emcloset,
 /turf/simulated/floor/tiled/steel,
 /area/space)
 "cN" = (
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /obj/structure/reagent_dispensers/fueltank,
 /turf/simulated/floor/tiled/steel,
 /area/space)
 "cO" = (
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 10
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
 "cP" = (
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/turf_decal/industrial/danger,
 /turf/simulated/floor/reinforced,
 /area/space)
 "cQ" = (
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 6
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
 "cR" = (
-/obj/effect/floor_decal/corner_steel_grid{
+/obj/effect/turf_decal/corner_steel_grid{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/space)
 "cS" = (
-/obj/effect/floor_decal/corner_steel_grid{
+/obj/effect/turf_decal/corner_steel_grid{
 	dir = 5
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/space)
 "cT" = (
-/obj/effect/floor_decal/corner_steel_grid{
+/obj/effect/turf_decal/corner_steel_grid{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,

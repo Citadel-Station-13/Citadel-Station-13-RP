@@ -44,7 +44,7 @@
 /obj/item/storage/belt/security/tactical/bandolier,
 /obj/item/storage/belt/security/tactical/bandolier,
 /obj/item/storage/belt/security/tactical/bandolier,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/firealarm/alarms_hidden{
@@ -69,13 +69,13 @@
 /obj/structure/cable/orange{
 	icon_state = "1-4"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/teleporter)
 "al" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -87,7 +87,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -97,13 +97,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "au" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "aB" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -129,7 +129,7 @@
 /obj/machinery/door/airlock/multi_tile/metal{
 	req_one_access = list(150)
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -147,7 +147,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/radiator_port)
 "aJ" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -158,13 +158,13 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_port)
 "aN" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/firealarm/alarms_hidden{
@@ -206,7 +206,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/ship/manta/barracks)
 "aX" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -232,7 +232,7 @@
 /obj/item/gun/energy/sizegun,
 /obj/item/gun/energy/sizegun,
 /obj/item/gun/energy/sizegun,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/item/cell/device/weapon,
@@ -248,22 +248,22 @@
 /obj/structure/cable/orange{
 	icon_state = "2-4"
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "bd" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "bh" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -295,7 +295,7 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/commander)
 "bn" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -314,7 +314,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/radiator_star)
 "bp" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -328,13 +328,13 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_port)
 "bt" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -365,15 +365,15 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/atmos)
 "bx" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/appliance/cooker/fryer,
-/obj/effect/floor_decal/corner/white,
+/obj/effect/turf_decal/corner/white,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/recreation)
 "by" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -403,7 +403,7 @@
 /obj/item/clothing/mask/balaclava,
 /obj/item/clothing/mask/balaclava,
 /obj/item/clothing/mask/balaclava,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -413,7 +413,7 @@
 /area/ship/manta/recreation)
 "bI" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/item/binoculars,
@@ -424,7 +424,7 @@
 /area/ship/manta/armoury_st)
 "bL" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /obj/machinery/light{
@@ -483,7 +483,7 @@
 	pixel_x = 5;
 	pixel_y = -32
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /obj/machinery/light{
@@ -510,11 +510,11 @@
 	pixel_x = 5;
 	pixel_y = -32
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "ce" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/reinforced,
 /area/ship/manta/hangar)
 "ch" = (
@@ -536,11 +536,11 @@
 	pixel_x = 5;
 	pixel_y = -32
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "co" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -567,7 +567,7 @@
 	pixel_x = 5;
 	pixel_y = -32
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "cx" = (
@@ -575,7 +575,7 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -595,7 +595,7 @@
 	pixel_y = 24
 	},
 /obj/structure/table/steel_reinforced,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -614,15 +614,15 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "cM" = (
 /obj/structure/bed,
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "cP" = (
@@ -633,7 +633,7 @@
 /obj/item/storage/belt/utility/full,
 /obj/item/storage/belt/utility/full,
 /obj/item/storage/belt/utility/full,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/power/apc/hyper{
@@ -660,14 +660,14 @@
 /obj/item/flashlight/maglight,
 /obj/item/flashlight/maglight,
 /obj/item/flashlight/maglight,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "cW" = (
 /obj/structure/undies_wardrobe,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -680,13 +680,13 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "cY" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -707,11 +707,11 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -720,7 +720,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -734,7 +734,7 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks/bed_2)
 "dj" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -806,7 +806,7 @@
 /area/ship/manta/barracks)
 "dH" = (
 /obj/structure/flora/pottedplant/minitree,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -836,7 +836,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "dT" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -846,10 +846,10 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/radiator_star)
 "dX" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -871,16 +871,16 @@
 "dZ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "ec" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
@@ -892,7 +892,7 @@
 /turf/simulated/wall/rshull,
 /area/shuttle/manta_ship_boat)
 "ee" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -913,10 +913,10 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks/bed_1)
 "el" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -925,7 +925,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "em" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -934,36 +934,36 @@
 /obj/machinery/chemical_dispenser/full,
 /obj/structure/table/steel_reinforced,
 /obj/item/reagent_containers/glass/beaker/large,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "er" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "et" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "ex" = (
 /obj/structure/sink/kitchen{
 	pixel_y = 28
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/white,
+/obj/effect/turf_decal/corner/white,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/recreation)
 "eB" = (
 /obj/machinery/chemical_dispenser/ert,
 /obj/structure/table/steel_reinforced,
 /obj/item/reagent_containers/glass/beaker/large,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -975,7 +975,7 @@
 /obj/machinery/chemical_dispenser/biochemistry/full,
 /obj/structure/table/steel_reinforced,
 /obj/item/reagent_containers/glass/beaker/large,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/white,
@@ -986,7 +986,7 @@
 "eJ" = (
 /obj/structure/table/rack,
 /obj/item/rig/merc/empty,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1008,7 +1008,7 @@
 "eR" = (
 /obj/structure/table/rack,
 /obj/item/rig/merc/empty,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1034,7 +1034,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "fg" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
@@ -1047,7 +1047,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_port)
 "fj" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1062,7 +1062,7 @@
 /obj/item/modular_computer/console/preset/mercenary{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -1071,7 +1071,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "fw" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -1089,7 +1089,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/manta/bridge)
 "fy" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1128,7 +1128,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/manta/bridge)
 "fI" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1147,7 +1147,7 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/commander)
 "fL" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -1156,7 +1156,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "fN" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -1171,7 +1171,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/reagent_containers/hypospray,
 /obj/item/storage/box/syringes,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -1184,13 +1184,13 @@
 /area/ship/manta/med)
 "fR" = (
 /obj/machinery/tele_projector,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/teleporter)
 "fU" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/white,
@@ -1205,7 +1205,7 @@
 /obj/item/reagent_containers/blood/OMinus,
 /obj/item/reagent_containers/blood/OMinus,
 /obj/item/reagent_containers/blood/OMinus,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -1223,7 +1223,7 @@
 /obj/item/card/id/syndicate,
 /obj/item/card/id/syndicate,
 /obj/item/card/id/syndicate,
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/light,
 /obj/item/card/id/syndicate,
 /obj/item/card/id/syndicate,
@@ -1233,7 +1233,7 @@
 /turf/simulated/wall/shull,
 /area/ship/manta/barracks/bed_1)
 "gf" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1249,13 +1249,13 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "gm" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/firealarm/alarms_hidden{
@@ -1269,7 +1269,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "gB" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/structure/cable/orange{
 	icon_state = "1-4"
 	},
@@ -1303,11 +1303,11 @@
 /obj/structure/cable/orange{
 	icon_state = "0-2"
 	},
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/industrial/outline/blue,
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -1331,7 +1331,7 @@
 /turf/simulated/wall/rshull,
 /area/ship/manta/bridge)
 "gJ" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -1359,7 +1359,7 @@
 	dir = 4
 	},
 /obj/structure/railing/grey,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1388,14 +1388,14 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/manta/bridge)
 "gZ" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "hc" = (
 /obj/structure/medical_stand,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -1411,7 +1411,7 @@
 /obj/machinery/vending/medical{
 	req_access = null
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/white,
@@ -1426,7 +1426,7 @@
 	dir = 8
 	},
 /obj/structure/railing/grey,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1488,7 +1488,7 @@
 /obj/item/modular_computer/console/preset/mercenary{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1514,7 +1514,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1539,14 +1539,14 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/hallways_star)
 "hO" = (
-/obj/effect/floor_decal/industrial/warning/corner,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/industrial/warning/corner,
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
@@ -1566,7 +1566,7 @@
 /obj/item/ammo_magazine/m10mm,
 /obj/item/ammo_magazine/m10mm,
 /obj/item/ammo_magazine/m10mm,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /obj/machinery/light{
@@ -1605,11 +1605,11 @@
 "ia" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/button/flasher,
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "ic" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1623,7 +1623,7 @@
 /obj/item/ammo_magazine/m45/ap,
 /obj/item/ammo_magazine/m45,
 /obj/item/ammo_magazine/m45/rubber,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /obj/item/gun/projectile/sec/wood,
@@ -1634,7 +1634,7 @@
 /obj/structure/table/reinforced,
 /obj/item/storage/belt/utility/full,
 /obj/item/multitool,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1644,7 +1644,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-2"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1681,7 +1681,7 @@
 /obj/item/clothing/glasses/night,
 /obj/item/clothing/glasses/night,
 /obj/item/clothing/glasses/night,
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "ip" = (
@@ -1690,7 +1690,7 @@
 /obj/item/suit_cooling_unit,
 /obj/item/suit_cooling_unit,
 /obj/item/suit_cooling_unit,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /obj/machinery/light{
@@ -1700,17 +1700,17 @@
 /area/ship/manta/armoury_st)
 "it" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "iu" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/appliance/cooker/oven,
-/obj/effect/floor_decal/corner/white,
+/obj/effect/turf_decal/corner/white,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/recreation)
 "iv" = (
@@ -1726,7 +1726,7 @@
 /obj/machinery/light_switch{
 	pixel_y = 23
 	},
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/turf_decal/industrial/outline/red,
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "iw" = (
@@ -1736,7 +1736,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1747,7 +1747,7 @@
 /area/ship/manta/hallways_aft)
 "iA" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /obj/item/reagent_containers/food/snacks/meat/chicken,
@@ -1759,10 +1759,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/recreation)
 "iB" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/structure/cable/orange{
@@ -1788,8 +1788,8 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor,
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1807,7 +1807,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-8"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1834,7 +1834,7 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/commander)
 "iR" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1848,7 +1848,7 @@
 /obj/item/clothing/suit/space/void/merc,
 /obj/item/clothing/mask/gas/syndicate,
 /obj/item/clothing/head/helmet/space/void/merc,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /obj/machinery/light{
@@ -1874,7 +1874,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/radiator_star)
 "iZ" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 1
 	},
 /obj/structure/cable/orange{
@@ -1887,7 +1887,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "jc" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1912,7 +1912,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-2"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -1924,7 +1924,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/machinery/button/remote/blast_door{
@@ -1956,7 +1956,7 @@
 /obj/item/tool/screwdriver,
 /obj/effect/spawner/newbomb/timer/syndicate,
 /obj/structure/table/reinforced,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -1965,7 +1965,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -1978,7 +1978,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "jx" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -1989,41 +1989,41 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/turf_decal/corner/white/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/recreation)
 "jB" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/turf_decal/corner/white/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/recreation)
 "jD" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/white{
+/obj/effect/turf_decal/corner/white{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/recreation)
 "jE" = (
 /obj/effect/shuttle_landmark/shuttle_initializer/manta_ship_boat,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/effect/overmap/visitable/ship/landable/manta_ship_boat,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/manta_ship_boat)
 "jF" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -2033,10 +2033,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2045,7 +2045,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2058,7 +2058,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/manta_ship_boat)
 "jP" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -2068,7 +2068,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -2079,19 +2079,19 @@
 	dir = 1;
 	pixel_y = -23
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "jW" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "jX" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 6
 	},
 /obj/machinery/recharge_station,
@@ -2099,7 +2099,7 @@
 /area/ship/manta/hangar)
 "jZ" = (
 /obj/machinery/chem_master,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -2117,7 +2117,7 @@
 /area/ship/manta/med)
 "kl" = (
 /obj/machinery/computer/operating,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -2146,13 +2146,13 @@
 	dir = 8;
 	pixel_y = 27
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "kz" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /obj/machinery/appliance/cooker/grill,
@@ -2165,7 +2165,7 @@
 /obj/item/surgical/bone_clamp,
 /obj/item/surgical/scalpel/manager,
 /obj/item/surgical/circular_saw/manager,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /obj/machinery/light_switch{
@@ -2179,8 +2179,8 @@
 	pixel_x = -1;
 	pixel_y = 8
 	},
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/corner/white{
+/obj/effect/turf_decal/techfloor,
+/obj/effect/turf_decal/corner/white{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -2189,16 +2189,16 @@
 /obj/machinery/vending/food{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/white{
+/obj/effect/turf_decal/corner/white{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/recreation)
 "kL" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /obj/structure/cable/orange{
@@ -2210,7 +2210,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2229,7 +2229,7 @@
 /turf/simulated/floor/reinforced,
 /area/ship/manta/recreation)
 "le" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/structure/cable/orange{
@@ -2241,7 +2241,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2255,17 +2255,17 @@
 	name = "Port Docking Control";
 	pixel_y = 22
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/dock_port)
 "li" = (
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -2280,7 +2280,7 @@
 /obj/item/ammo_magazine/m10mm,
 /obj/item/ammo_magazine/m10mm,
 /obj/item/ammo_magazine/m10mm,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/item/gun/projectile/automatic/c20r,
@@ -2298,7 +2298,7 @@
 /turf/simulated/wall/rshull,
 /area/ship/manta/recreation)
 "lo" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/table/rack,
@@ -2329,7 +2329,7 @@
 /obj/item/suit_cooling_unit,
 /obj/item/suit_cooling_unit,
 /obj/item/suit_cooling_unit,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/firealarm/alarms_hidden{
@@ -2342,14 +2342,14 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2358,7 +2358,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-8"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -2370,7 +2370,7 @@
 /obj/machinery/telecomms/allinone{
 	intercept = 1
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2384,7 +2384,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(150)
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/structure/cable/orange{
@@ -2401,7 +2401,7 @@
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
@@ -2411,13 +2411,13 @@
 /obj/item/clothing/suit/space/void/merc,
 /obj/item/clothing/mask/gas/syndicate,
 /obj/item/clothing/head/helmet/space/void/merc,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "lR" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -2498,7 +2498,7 @@
 /area/ship/manta/radiator_port)
 "me" = (
 /obj/machinery/shield_diffuser,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/machinery/door/blast/regular{
@@ -2510,10 +2510,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/manta_ship_boat)
 "mo" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
@@ -2545,7 +2545,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/manta_ship_boat)
 "my" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -2559,7 +2559,7 @@
 /obj/item/defib_kit,
 /obj/item/healthanalyzer,
 /obj/item/healthanalyzer,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -2570,7 +2570,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2612,7 +2612,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2627,7 +2627,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2671,7 +2671,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "nh" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 6
 	},
 /obj/machinery/light{
@@ -2686,7 +2686,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2712,7 +2712,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2734,7 +2734,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /obj/machinery/light{
@@ -2757,13 +2757,13 @@
 /obj/item/storage/belt/medical/emt,
 /obj/item/storage/firstaid/combat,
 /obj/item/defib_kit/compact/combat/loaded,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "nz" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/computer/cryopod/merc{
@@ -2773,7 +2773,7 @@
 /area/ship/manta/med)
 "nA" = (
 /obj/machinery/cryopod/manta_ship,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/white,
@@ -2786,7 +2786,7 @@
 /area/ship/manta/armoury_st)
 "nH" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "nI" = (
@@ -2802,7 +2802,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2824,17 +2824,17 @@
 	pixel_y = -24;
 	req_access = list(150)
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/dark,
@@ -2846,7 +2846,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-4"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -2877,7 +2877,7 @@
 	dir = 1;
 	pixel_y = -26
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2898,7 +2898,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/ship/manta/radiator_star)
 "oi" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/structure/cable/orange{
@@ -2910,7 +2910,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2973,7 +2973,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/hallways_port)
 "ow" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -2992,7 +2992,7 @@
 /obj/structure/table/rack,
 /obj/item/gun/energy/laser,
 /obj/item/gun/energy/laser,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/item/cell/device/weapon,
@@ -3014,16 +3014,16 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "oF" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -3044,7 +3044,7 @@
 /obj/item/ammo_magazine/m45/ap,
 /obj/item/ammo_magazine/m45,
 /obj/item/ammo_magazine/m45/rubber,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -3059,7 +3059,7 @@
 /obj/machinery/suit_cycler/syndicate{
 	locked = 0
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3074,8 +3074,8 @@
 	pixel_x = -1;
 	pixel_y = 8
 	},
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/corner/white{
+/obj/effect/turf_decal/techfloor,
+/obj/effect/turf_decal/corner/white{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3114,13 +3114,13 @@
 /area/ship/manta/radiator_star)
 "oY" = (
 /obj/machinery/scale,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "oZ" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -3198,11 +3198,11 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3241,7 +3241,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/atmos)
 "pX" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -3268,7 +3268,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/fiftyspawner/uranium,
 /obj/fiftyspawner/uranium,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3281,7 +3281,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "qv" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/recharge_station,
@@ -3295,7 +3295,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3316,7 +3316,7 @@
 /obj/item/stack/medical/advanced/ointment,
 /obj/item/stack/medical/advanced/ointment,
 /obj/item/stack/medical/advanced/ointment,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -3326,7 +3326,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "qz" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/white,
@@ -3334,7 +3334,7 @@
 "qA" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/white,
@@ -3356,7 +3356,7 @@
 	dir = 8;
 	pixel_x = 26
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3366,7 +3366,7 @@
 	dir = 4;
 	pixel_x = -26
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3375,7 +3375,7 @@
 /obj/machinery/firealarm/alarms_hidden{
 	pixel_y = 26
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /obj/structure/flora/pottedplant/crystal,
@@ -3393,7 +3393,7 @@
 	dir = 4;
 	pixel_x = 26
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -3409,7 +3409,7 @@
 /obj/machinery/bodyscanner{
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/light_switch{
 	dir = 1;
 	pixel_y = -23
@@ -3418,28 +3418,28 @@
 /area/ship/manta/med)
 "qS" = (
 /obj/machinery/body_scanconsole,
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "qT" = (
 /obj/machinery/sleep_console{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "qU" = (
 /obj/machinery/sleeper{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "rb" = (
 /obj/structure/cable/orange{
 	icon_state = "2-4"
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/white,
@@ -3450,7 +3450,7 @@
 	name = "Merc APC - South";
 	pixel_y = -24
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/structure/cable/orange{
 	icon_state = "0-8"
 	},
@@ -3469,7 +3469,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/ship/manta/radiator_port)
 "rq" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3510,7 +3510,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -3520,13 +3520,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "rD" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "rE" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/firealarm/alarms_hidden{
 	dir = 1;
 	pixel_y = -26
@@ -3535,7 +3535,7 @@
 /area/ship/manta/med)
 "rF" = (
 /obj/machinery/cryopod/manta_ship,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 6
 	},
 /obj/machinery/light{
@@ -3616,20 +3616,20 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/atmos)
 "sg" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "sk" = (
 /obj/machinery/suit_cycler/vintage/omni,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "sn" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
 /obj/structure/bed/chair/bay/shuttle{
@@ -3642,7 +3642,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -3683,7 +3683,7 @@
 /obj/machinery/atmospherics/portables_connector/fuel{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/turf_decal/industrial/outline/red,
 /obj/machinery/door/window/brigdoor/northright{
 	dir = 8;
 	req_access = list(150);
@@ -3692,7 +3692,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/manta_ship_boat)
 "sx" = (
-/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/turf_decal/industrial/warning/corner,
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 8
 	},
@@ -3708,7 +3708,7 @@
 /area/ship/manta/armoury_st)
 "sz" = (
 /obj/machinery/door/firedoor/multi_tile,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
@@ -3717,7 +3717,7 @@
 /turf/simulated/floor/tiled/white,
 /area/ship/manta/med)
 "sG" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -3740,7 +3740,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3749,7 +3749,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3761,7 +3761,7 @@
 /turf/simulated/wall/shull,
 /area/ship/manta/engineering)
 "sY" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -3773,14 +3773,14 @@
 /obj/machinery/alarm/alarms_hidden{
 	pixel_y = 26
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /obj/structure/flora/pottedplant/fern,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "tj" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -3798,7 +3798,7 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks)
 "tm" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3816,7 +3816,7 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks)
 "tt" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/firealarm/alarms_hidden{
@@ -3828,13 +3828,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_port)
 "tx" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_port)
 "tE" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/structure/cable/orange{
@@ -3857,7 +3857,7 @@
 	pixel_x = 5;
 	pixel_y = 32
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -3871,19 +3871,19 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks)
 "tK" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "tL" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "tN" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -3894,20 +3894,20 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "tQ" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "tV" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "tW" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3916,13 +3916,13 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_port)
 "ub" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3935,7 +3935,7 @@
 	dir = 1;
 	pixel_y = -26
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -3951,7 +3951,7 @@
 	id = "Merc_Shuttle_Boarding";
 	opacity = 0
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/machinery/button/remote/blast_door{
@@ -3963,7 +3963,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/manta_ship_boat)
 "uh" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -3979,7 +3979,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "up" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -3992,7 +3992,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/dock_port)
 "ur" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4004,7 +4004,7 @@
 	id = "Merc_Shuttle_Boarding";
 	opacity = 0
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/machinery/button/remote/blast_door{
@@ -4020,7 +4020,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/manta_ship_boat)
 "uy" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4032,14 +4032,14 @@
 /turf/simulated/wall/shull,
 /area/ship/manta/radiator_port)
 "uC" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "uE" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4053,7 +4053,7 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/commander)
 "uJ" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4068,7 +4068,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4076,7 +4076,7 @@
 "uM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4088,8 +4088,8 @@
 /obj/machinery/airlock_sensor{
 	pixel_y = 24
 	},
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor,
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -4101,7 +4101,7 @@
 /obj/structure/sign/department/medbay{
 	pixel_y = 32
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -4113,14 +4113,14 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_star)
 "uT" = (
-/obj/effect/floor_decal/industrial/warning/corner,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/industrial/warning/corner,
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -4139,7 +4139,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "uV" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -4148,7 +4148,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_star)
 "uW" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4184,7 +4184,7 @@
 /obj/structure/table/rack,
 /obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster,
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/mortar,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -4195,7 +4195,7 @@
 "vl" = (
 /obj/machinery/mech_recharger,
 /obj/mecha/combat/gygax/dark,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4204,7 +4204,7 @@
 /obj/structure/table/steel_reinforced,
 /obj/item/clothing/gloves/yellow,
 /obj/item/storage/toolbox/syndicate,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4214,7 +4214,7 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/explosive,
 /obj/item/mecha_parts/mecha_equipment/omni_shield,
 /obj/item/mecha_parts/mecha_equipment/repair_droid,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /obj/machinery/firealarm/alarms_hidden{
@@ -4227,7 +4227,7 @@
 /area/ship/manta/mech_bay)
 "vu" = (
 /obj/machinery/scale,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4269,7 +4269,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "vH" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/light_switch{
@@ -4279,7 +4279,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "vI" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -4318,11 +4318,11 @@
 /obj/structure/cable/orange{
 	icon_state = "0-2"
 	},
-/obj/effect/floor_decal/industrial/outline/blue,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/industrial/outline/blue,
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -4346,7 +4346,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4360,14 +4360,14 @@
 	name = "Starboard Docking Control";
 	pixel_y = 22
 	},
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor,
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/dock_star)
 "vW" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/structure/cable/orange{
 	icon_state = "1-4"
 	},
@@ -4391,10 +4391,10 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4403,7 +4403,7 @@
 /obj/machinery/door/firedoor/multi_tile{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 1;
 	req_one_access = list(150)
@@ -4420,7 +4420,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "wd" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4439,7 +4439,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4452,7 +4452,7 @@
 	dir = 1;
 	pixel_y = -26
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4487,7 +4487,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4497,7 +4497,7 @@
 	pixel_x = 5;
 	pixel_y = -32
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
@@ -4517,7 +4517,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "ww" = (
@@ -4527,7 +4527,7 @@
 /obj/item/storage/firstaid/combat,
 /obj/item/reagent_containers/hypospray,
 /obj/item/reagent_containers/hypospray,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4542,7 +4542,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4584,7 +4584,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4593,7 +4593,7 @@
 /obj/machinery/door/firedoor/multi_tile{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 1;
 	req_one_access = list(150)
@@ -4605,7 +4605,7 @@
 /area/ship/manta/hangar)
 "wU" = (
 /obj/item/modular_computer/console/preset/mercenary,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4614,13 +4614,13 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "wZ" = (
-/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/turf_decal/industrial/warning/corner,
 /obj/structure/cable/orange{
 	icon_state = "2-8"
 	},
@@ -4634,7 +4634,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4651,7 +4651,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/dock_port)
 "xe" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4670,13 +4670,13 @@
 	id = "Merc_Shuttle_Boarding";
 	opacity = 0
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/manta_ship_boat)
 "xh" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/flasher,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
@@ -4700,7 +4700,7 @@
 	id = "Merc_Shuttle_Boarding";
 	opacity = 0
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4714,13 +4714,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "xq" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4742,7 +4742,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/hallways_star)
 "xz" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
 /obj/structure/cable/orange{
@@ -4771,7 +4771,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4784,7 +4784,7 @@
 	dir = 1;
 	req_one_access = list(150)
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
@@ -4796,7 +4796,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4805,7 +4805,7 @@
 /turf/space,
 /area/ship/manta/engine)
 "xN" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
@@ -4818,7 +4818,7 @@
 /turf/simulated/floor/reinforced,
 /area/ship/manta/med)
 "xP" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
@@ -4845,8 +4845,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor,
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -4864,7 +4864,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "xW" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
@@ -4877,7 +4877,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_star)
 "yb" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 8
 	},
 /obj/structure/cable/orange{
@@ -4924,7 +4924,7 @@
 	dir = 8;
 	pixel_x = -26
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -4955,13 +4955,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_star)
 "ys" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
@@ -4975,7 +4975,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_star)
 "yt" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
@@ -5001,7 +5001,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "yv" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -5016,13 +5016,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_star)
 "yw" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "yx" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/dark,
@@ -5046,14 +5046,14 @@
 /area/ship/manta/bridge)
 "yD" = (
 /obj/structure/bed,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "yE" = (
 /obj/structure/toilet,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/dark,
@@ -5065,12 +5065,12 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "yK" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/dark,
@@ -5080,10 +5080,10 @@
 /turf/space,
 /area/space)
 "yP" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -5102,8 +5102,8 @@
 /area/ship/manta/hallways_star)
 "yR" = (
 /obj/structure/bed,
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -5117,16 +5117,16 @@
 	pixel_x = 7;
 	pixel_y = 21
 	},
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor,
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/dock_star)
 "yV" = (
 /obj/structure/toilet,
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/dark,
@@ -5141,7 +5141,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/atmos)
 "yY" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5154,13 +5154,13 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/mech_bay)
 "zb" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/mech_bay)
 "ze" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/door/blast/regular{
@@ -5177,7 +5177,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "zg" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5194,7 +5194,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "zk" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -5213,10 +5213,10 @@
 	req_access = list(999);
 	req_one_access = list(999)
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/door/blast/regular{
@@ -5238,8 +5238,8 @@
 /obj/machinery/chemical_dispenser/bar_soft/full{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/corner/white{
+/obj/effect/turf_decal/techfloor,
+/obj/effect/turf_decal/corner/white{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -5253,7 +5253,7 @@
 "zv" = (
 /obj/structure/table/rack,
 /obj/item/gun/energy/plasmastun,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/light_switch{
@@ -5279,7 +5279,7 @@
 /obj/item/melee/baton/loaded,
 /obj/item/melee/baton/loaded,
 /obj/item/melee/baton/loaded,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/item/cell/device/weapon,
@@ -5298,13 +5298,13 @@
 /obj/item/tank/jetpack/oxygen,
 /obj/item/tank/jetpack/oxygen,
 /obj/item/tank/jetpack/oxygen,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "zz" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/light_switch{
@@ -5331,7 +5331,7 @@
 /obj/item/clothing/suit/space/void/merc,
 /obj/item/clothing/mask/gas/syndicate,
 /obj/item/clothing/head/helmet/space/void/merc,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/light_switch{
@@ -5341,7 +5341,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "zI" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/light_switch{
@@ -5382,7 +5382,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5413,13 +5413,13 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/radiator_star)
 "Ak" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "Al" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -5435,7 +5435,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5444,7 +5444,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/turf_decal/corner/white/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/recreation)
 "AA" = (
@@ -5452,7 +5452,7 @@
 	dir = 4
 	},
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /turf/simulated/floor/plating,
 /area/ship/manta/atmos)
 "AC" = (
@@ -5462,14 +5462,14 @@
 /obj/structure/cable/orange{
 	icon_state = "1-4"
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5489,7 +5489,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/manta_ship_boat)
 "AJ" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 4
 	},
 /obj/structure/window/phoronreinforced{
@@ -5502,7 +5502,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/manta_ship_boat)
 "AO" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/structure/cable/orange{
@@ -5529,7 +5529,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "AU" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/light_switch{
@@ -5539,8 +5539,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "AV" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/industrial/warning,
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -5550,7 +5550,7 @@
 /area/ship/manta/holding)
 "AX" = (
 /obj/machinery/door/firedoor/multi_tile,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
@@ -5572,7 +5572,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5603,7 +5603,7 @@
 /turf/simulated/wall/shull,
 /area/ship/manta/atmos)
 "Bw" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -5612,7 +5612,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/barracks)
 "BJ" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5621,14 +5621,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "BN" = (
 /obj/structure/bed,
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "BO" = (
@@ -5637,7 +5637,7 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks)
 "BP" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -5652,8 +5652,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "BT" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -5668,7 +5668,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/radiator_star)
 "BY" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -5719,14 +5719,14 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/dock_star)
 "Cp" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
@@ -5741,7 +5741,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5756,7 +5756,7 @@
 /obj/structure/table/reinforced,
 /obj/item/storage/belt/utility/full,
 /obj/item/multitool,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -5797,7 +5797,7 @@
 	name = "Mech Bay";
 	req_one_access = list(999)
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/door/blast/regular{
 	closed_layer = 4;
 	id = "Manta_Wargear";
@@ -5824,7 +5824,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5845,7 +5845,7 @@
 /obj/item/pda/syndicate,
 /obj/item/pda/syndicate,
 /obj/item/pda/syndicate,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5854,7 +5854,7 @@
 /obj/structure/table/rack,
 /obj/item/gun/energy/plasmastun,
 /obj/item/gun/energy/plasmastun,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /obj/machinery/light{
@@ -5878,13 +5878,13 @@
 /obj/item/radio/headset/syndicate/alt,
 /obj/item/radio/headset/syndicate/alt,
 /obj/item/radio/headset/syndicate/alt,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "Dc" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -5919,7 +5919,7 @@
 /obj/structure/table/rack,
 /obj/item/storage/box/frags,
 /obj/item/storage/box/frags,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /obj/machinery/firealarm/alarms_hidden{
@@ -5937,17 +5937,17 @@
 /obj/machinery/airlock_sensor{
 	pixel_y = 24
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/dock_port)
 "Dj" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -5977,10 +5977,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -5989,7 +5989,7 @@
 /obj/structure/table/rack,
 /obj/item/storage/box/sniperammo,
 /obj/item/gun/projectile/heavysniper,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -6009,7 +6009,7 @@
 /area/ship/manta/radiator_star)
 "Du" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/item/cell/device/weapon,
@@ -6026,7 +6026,7 @@
 	dir = 1;
 	pixel_y = -23
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -6058,7 +6058,7 @@
 /obj/item/melee/baton/loaded,
 /obj/item/melee/baton/loaded,
 /obj/item/melee/baton/loaded,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/firealarm/alarms_hidden{
@@ -6078,7 +6078,7 @@
 /obj/item/storage/box/syndie_kit/ewar_voice,
 /obj/item/storage/box/syndie_kit/ewar_voice,
 /obj/item/card/emag,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6088,7 +6088,7 @@
 	dir = 8
 	},
 /obj/machinery/portable_atmospherics/canister/empty,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/ship/manta/atmos)
 "DL" = (
@@ -6115,7 +6115,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6125,14 +6125,14 @@
 /area/ship/manta/teleporter)
 "DZ" = (
 /obj/structure/flora/pottedplant/large,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "Eb" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6164,7 +6164,7 @@
 /turf/simulated/wall/rshull,
 /area/shuttle/manta_ship_boat)
 "Eh" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/button/remote/blast_door{
 	dir = 1;
 	id = "Manta_Wargear";
@@ -6178,7 +6178,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_as)
 "El" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/structure/cable/orange{
@@ -6189,7 +6189,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "En" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6198,7 +6198,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/machinery/button/remote/blast_door{
@@ -6218,7 +6218,7 @@
 /area/shuttle/manta_ship_boat)
 "Ew" = (
 /obj/structure/flora/pottedplant/decorative,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6231,7 +6231,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6249,7 +6249,7 @@
 /obj/item/storage/backpack/dufflebag/syndie,
 /obj/item/storage/backpack/dufflebag/syndie,
 /obj/item/storage/backpack/dufflebag/syndie,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6258,7 +6258,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -6286,7 +6286,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -6340,7 +6340,7 @@
 	dir = 8;
 	pixel_x = 26
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6358,7 +6358,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/teleporter)
 "Ff" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /obj/machinery/light_switch{
@@ -6388,7 +6388,7 @@
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
 /obj/item/ammo_casing/rocket,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 6
 	},
 /obj/machinery/power/apc/hyper{
@@ -6431,7 +6431,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6450,7 +6450,7 @@
 	req_one_access = list(150)
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "FV" = (
@@ -6469,9 +6469,9 @@
 	pixel_x = 1;
 	pixel_y = 4
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/light,
-/obj/effect/floor_decal/corner/white{
+/obj/effect/turf_decal/corner/white{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6521,7 +6521,7 @@
 /area/ship/manta/atmos)
 "Gu" = (
 /obj/structure/closet/athletic_mixed,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/window/phoronreinforced,
@@ -6552,7 +6552,7 @@
 	dir = 8
 	},
 /obj/machinery/door/firedoor,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6568,10 +6568,10 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6601,7 +6601,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6621,17 +6621,17 @@
 	pixel_x = -8;
 	pixel_y = 21
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/dock_port)
 "Hg" = (
 /obj/structure/table/rack,
 /obj/item/mecha_parts/mecha_equipment/antiproj_armor_booster,
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/missile_rack/grenade/frag,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6642,7 +6642,7 @@
 "Hl" = (
 /obj/structure/table/rack,
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/ion,
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/mech_bay)
 "Hm" = (
@@ -6662,7 +6662,7 @@
 "Hr" = (
 /obj/structure/table/rack,
 /obj/item/mecha_parts/mecha_equipment/shocker,
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
 	name = "Merc APC - South";
@@ -6678,7 +6678,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -6691,7 +6691,7 @@
 /obj/structure/table/rack,
 /obj/item/mecha_parts/mecha_equipment/tool/jetpack,
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/xray,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 6
 	},
 /obj/machinery/light_switch{
@@ -6726,7 +6726,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "HJ" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -6745,7 +6745,7 @@
 /obj/item/ammo_magazine/s44,
 /obj/item/ammo_magazine/s44,
 /obj/item/gun/projectile/revolver/consul,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6766,7 +6766,7 @@
 	pixel_x = 5;
 	pixel_y = -32
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "HV" = (
@@ -6778,7 +6778,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_as)
 "HY" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -6811,7 +6811,7 @@
 /obj/structure/cable/orange{
 	icon_state = "2-4"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/structure/cable/orange{
@@ -6832,14 +6832,14 @@
 /obj/structure/cable/orange{
 	icon_state = "1-4"
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6848,7 +6848,7 @@
 /obj/structure/table/rack,
 /obj/item/gun/energy/xray,
 /obj/item/gun/energy/xray,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6860,7 +6860,7 @@
 	id_tag = "merc_master";
 	pixel_y = 22
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -6879,7 +6879,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "IG" = (
@@ -6892,10 +6892,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6904,7 +6904,7 @@
 /obj/structure/table/rack,
 /obj/item/gun/energy/gun,
 /obj/item/gun/energy/gun,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/item/cell/device/weapon,
@@ -6915,8 +6915,8 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor,
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -6949,7 +6949,7 @@
 /obj/structure/table/rack,
 /obj/item/gun/energy/ionrifle,
 /obj/item/gun/energy/ionrifle/pistol,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/item/cell/device/weapon,
@@ -6962,7 +6962,7 @@
 	prices = list();
 	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -7001,7 +7001,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7010,7 +7010,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -7030,7 +7030,7 @@
 /obj/item/clothing/glasses/sunglasses,
 /obj/item/clothing/glasses/sunglasses,
 /obj/item/clothing/glasses/sunglasses,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7039,7 +7039,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7051,7 +7051,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-4"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -7068,7 +7068,7 @@
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/shoes/magboots,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -7090,7 +7090,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7110,17 +7110,17 @@
 /obj/structure/railing/grey{
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "JL" = (
 /turf/simulated/floor/plating,
 /area/ship/manta/radiator_port)
 "JW" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -7135,20 +7135,20 @@
 /area/ship/manta/hallways_star)
 "JX" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "JY" = (
-/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/turf_decal/corner/white/diagonal,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/recreation)
 "Kc" = (
 /obj/item/modular_computer/console/preset/mercenary{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/light,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
@@ -7182,7 +7182,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7193,7 +7193,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7202,7 +7202,7 @@
 /obj/structure/cable/orange{
 	icon_state = "2-8"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -7228,7 +7228,7 @@
 /obj/machinery/atmospherics/portables_connector/fuel{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/turf_decal/industrial/outline/red,
 /obj/machinery/door/window/brigdoor/northleft{
 	dir = 8;
 	req_access = list(150);
@@ -7280,7 +7280,7 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks)
 "KH" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7288,17 +7288,17 @@
 "KI" = (
 /obj/machinery/door/airlock/external,
 /obj/map_helper/airlock/door/int_door,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/dock_port)
 "KJ" = (
 /turf/simulated/wall/rshull,
 /area/ship/manta/teleporter)
 "KL" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/structure/cable/orange{
@@ -7338,10 +7338,10 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7351,17 +7351,17 @@
 /obj/item/tray{
 	pixel_y = 5
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/white,
+/obj/effect/turf_decal/corner/white,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/recreation)
 "Ld" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -7379,10 +7379,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "Le" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
@@ -7394,7 +7394,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7404,14 +7404,14 @@
 /turf/simulated/wall/rshull,
 /area/ship/manta/dock_star)
 "Lp" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/dark,
@@ -7420,7 +7420,7 @@
 /obj/machinery/computer/teleporter{
 	dir = 2
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7432,7 +7432,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/ship/manta/dock_star)
 "LC" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/power/apc/hyper{
 	alarms_hidden = 1;
 	name = "Merc APC - South";
@@ -7460,7 +7460,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "LJ" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -7478,7 +7478,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7501,7 +7501,7 @@
 	pixel_y = 25;
 	req_access = list(150)
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -7510,10 +7510,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
@@ -7527,7 +7527,7 @@
 	req_one_access = list(150)
 	},
 /obj/machinery/door/firedoor/multi_tile,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7551,7 +7551,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-8"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -7570,7 +7570,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "Mk" = (
@@ -7586,7 +7586,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7594,7 +7594,7 @@
 "Mp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7621,30 +7621,30 @@
 /area/ship/manta/barracks)
 "Mv" = (
 /obj/structure/closet/athletic_mixed,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/structure/window/phoronreinforced,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "Mw" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "ME" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -7654,7 +7654,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7670,7 +7670,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7683,16 +7683,16 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "MY" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 6
 	},
 /obj/machinery/light,
@@ -7713,7 +7713,7 @@
 	pixel_x = 5;
 	pixel_y = -32
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/item/clothing/accessory/holster/armpit,
 /obj/item/clothing/accessory/holster/armpit,
 /obj/item/clothing/accessory/holster/armpit,
@@ -7728,19 +7728,19 @@
 /obj/item/storage/box/shotgunammo/large,
 /obj/item/gun/projectile/shotgun/pump/combat,
 /obj/item/gun/projectile/shotgun/pump/combat,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_as)
 "Ne" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "Ng" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
@@ -7768,7 +7768,7 @@
 /obj/structure/table/rack,
 /obj/item/gun/energy/sniperrifle,
 /obj/item/gun/energy/sniperrifle,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/light_switch{
@@ -7795,7 +7795,7 @@
 	dir = 4;
 	pixel_x = -26
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -7808,7 +7808,7 @@
 /obj/structure/table/rack,
 /obj/item/gun/energy/gun,
 /obj/item/gun/energy/gun,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /obj/machinery/light{
@@ -7819,7 +7819,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "NA" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7827,7 +7827,7 @@
 "ND" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7836,7 +7836,7 @@
 /obj/structure/table/rack,
 /obj/item/gun/energy/ionrifle,
 /obj/item/gun/energy/ionrifle/pistol,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 6
 	},
 /obj/machinery/light{
@@ -7852,7 +7852,7 @@
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/shoes/magboots,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /obj/machinery/light{
@@ -7866,7 +7866,7 @@
 	id = "Merc_Rear_Blast";
 	name = "Blast Shield"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7877,13 +7877,13 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "NM" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -7895,7 +7895,7 @@
 /turf/simulated/wall/shull,
 /area/ship/manta/barracks)
 "NT" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7917,7 +7917,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/turf_decal/industrial/outline/red,
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "Oj" = (
@@ -7944,7 +7944,7 @@
 /obj/item/clothing/suit/space/void/merc,
 /obj/item/clothing/mask/gas/syndicate,
 /obj/item/clothing/head/helmet/space/void/merc,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 6
 	},
 /obj/machinery/light{
@@ -7966,7 +7966,7 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks)
 "Ou" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/structure/table/rack,
@@ -7989,7 +7989,7 @@
 	pixel_y = -23
 	},
 /obj/map_helper/airlock/sensor/int_sensor,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 6
 	},
 /obj/machinery/light{
@@ -7998,7 +7998,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/dock_port)
 "OD" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -8013,14 +8013,14 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_port)
 "OK" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/techfloor{
 	dir = 6
 	},
 /obj/machinery/firealarm/alarms_hidden{
@@ -8034,7 +8034,7 @@
 /obj/structure/toilet{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/dark,
@@ -8062,7 +8062,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "OT" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -8078,7 +8078,7 @@
 	dir = 8;
 	pixel_x = 26
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -8094,7 +8094,7 @@
 	name = "hacked Hot Drinks machine";
 	prices = list()
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -8103,7 +8103,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "OY" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -8150,8 +8150,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "Pi" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/industrial/warning,
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -8190,7 +8190,7 @@
 /obj/machinery/vending/fitness{
 	prices = list()
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8210,10 +8210,10 @@
 	req_one_access = list(150)
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -8290,14 +8290,14 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "Qd" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/teleporter)
 "Qf" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/power/apc/hyper{
@@ -8339,7 +8339,7 @@
 /area/ship/manta/barracks)
 "Qu" = (
 /obj/machinery/fitness/heavy/lifter,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8361,7 +8361,7 @@
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/bruise_pack,
 /obj/item/melee/telebaton,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -8373,7 +8373,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "QD" = (
@@ -8384,7 +8384,7 @@
 	dir = 1;
 	pixel_y = -23
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
@@ -8399,10 +8399,10 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/radiator_star)
 "QH" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -8415,7 +8415,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "QJ" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/door/firedoor/multi_tile,
@@ -8434,14 +8434,14 @@
 /turf/simulated/wall/shull,
 /area/ship/manta/radiator_star)
 "QU" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/teleporter)
 "Rg" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -8449,7 +8449,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8458,24 +8458,24 @@
 /obj/structure/closet/secure_closet/freezer/kitchen{
 	req_access = list(150)
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/white,
+/obj/effect/turf_decal/corner/white,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/recreation)
 "Rq" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "RA" = (
 /obj/machinery/fitness/heavy/lifter,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8492,7 +8492,7 @@
 /obj/item/ammo_magazine/m9mm,
 /obj/item/gun/projectile/luger,
 /obj/item/gun/projectile/luger/brown,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -8522,7 +8522,7 @@
 /obj/item/clothing/gloves/combat,
 /obj/item/clothing/gloves/combat,
 /obj/item/clothing/gloves/combat,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8574,7 +8574,7 @@
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -8584,23 +8584,23 @@
 /area/ship/manta/armoury_as)
 "RO" = (
 /obj/machinery/tele_pad,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/manta/teleporter)
 "RQ" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/dark,
@@ -8610,14 +8610,14 @@
 	req_one_access = list(150)
 	},
 /obj/machinery/door/firedoor/multi_tile,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "RU" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/light_switch{
 	dir = 1;
 	pixel_y = -23
@@ -8660,7 +8660,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "Sb" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -8668,7 +8668,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "Se" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -8695,7 +8695,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/manta_ship_boat)
 "Sl" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "Sn" = (
@@ -8722,7 +8722,7 @@
 	req_one_access = list(150)
 	},
 /obj/machinery/door/firedoor/multi_tile,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/structure/cable/orange{
@@ -8733,14 +8733,14 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "St" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "SF" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8790,10 +8790,10 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8893,7 +8893,7 @@
 /obj/item/flash,
 /obj/item/laser_pointer/upgraded,
 /obj/item/laser_pointer/upgraded,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /obj/machinery/light{
@@ -8912,7 +8912,7 @@
 /obj/item/plastique,
 /obj/item/plastique,
 /obj/structure/table/reinforced,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/item/plastique,
@@ -8929,7 +8929,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "Tp" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8937,7 +8937,7 @@
 "Tv" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8951,14 +8951,14 @@
 /obj/item/handcuffs,
 /obj/item/handcuffs,
 /obj/item/handcuffs,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "Tz" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -9000,13 +9000,13 @@
 /obj/item/storage/toolbox/syndicate,
 /obj/item/storage/toolbox/syndicate,
 /obj/item/storage/toolbox/syndicate,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "TN" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
@@ -9020,7 +9020,7 @@
 /obj/structure/railing/grey{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9038,8 +9038,8 @@
 "TY" = (
 /obj/item/gun/energy/sizegun,
 /obj/item/gun/energy/sizegun,
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/structure/table/steel_reinforced,
@@ -9048,10 +9048,10 @@
 "Ua" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/dark,
@@ -9061,7 +9061,7 @@
 	pixel_y = -23
 	},
 /obj/map_helper/airlock/sensor/int_sensor,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /obj/machinery/light{
@@ -9081,7 +9081,7 @@
 /obj/machinery/recharger/wallcharger{
 	pixel_y = -27
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /obj/machinery/light,
@@ -9100,7 +9100,7 @@
 	pixel_x = 5;
 	pixel_y = -32
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "Uy" = (
@@ -9119,7 +9119,7 @@
 /obj/item/material/knife/tacknife/combatknife{
 	pixel_x = -7
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/structure/table/steel_reinforced,
@@ -9132,7 +9132,7 @@
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/mop,
 /obj/item/reagent_containers/spray/cleaner,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -9168,7 +9168,7 @@
 /obj/machinery/door/airlock/multi_tile/metal{
 	req_one_access = list(150)
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9178,7 +9178,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "UI" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9196,10 +9196,10 @@
 	req_one_access = list(150)
 	},
 /obj/machinery/door/firedoor/glass,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -9207,7 +9207,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "UQ" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/firealarm/alarms_hidden{
@@ -9222,7 +9222,7 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -9245,10 +9245,10 @@
 	req_one_access = list(150)
 	},
 /obj/machinery/door/firedoor/border_only,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "UY" = (
@@ -9275,7 +9275,7 @@
 /area/ship/manta/barracks/bed_2)
 "Vh" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/item/gun/energy/darkmatter,
@@ -9299,7 +9299,7 @@
 /area/ship/manta/hangar)
 "Vr" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/item/gun/projectile/automatic/bullpup,
@@ -9328,7 +9328,7 @@
 /obj/structure/railing/grey{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/computer/security/nuclear{
@@ -9351,7 +9351,7 @@
 /obj/item/tank/emergency/oxygen/double,
 /obj/item/tank/emergency/oxygen/double,
 /obj/item/tank/emergency/oxygen/double,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /obj/machinery/light{
@@ -9396,7 +9396,7 @@
 	dir = 4
 	},
 /obj/machinery/portable_atmospherics/canister/empty,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/ship/manta/atmos)
 "VH" = (
@@ -9415,10 +9415,10 @@
 /obj/item/storage/firstaid/o2,
 /obj/item/storage/firstaid/o2,
 /obj/item/storage/firstaid/fire,
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 5
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -9430,7 +9430,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/armoury_st)
 "VM" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/structure/table/steel_reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
@@ -9438,8 +9438,8 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor,
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -9451,8 +9451,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hallways_aft)
 "VW" = (
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor,
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/structure/cable/orange{
@@ -9472,7 +9472,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9492,7 +9492,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/ship/manta/bridge)
 "Wv" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -9544,7 +9544,7 @@
 	name = "Engineering";
 	req_one_access = list(150)
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9564,7 +9564,7 @@
 	req_one_access = list(150)
 	},
 /obj/machinery/door/firedoor/multi_tile,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -9574,7 +9574,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/dock_port)
 "WV" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9585,13 +9585,13 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/engineering)
 "Xd" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/structure/cable/orange{
@@ -9641,7 +9641,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9719,7 +9719,7 @@
 	pixel_x = 5;
 	pixel_y = -32
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 6
 	},
 /obj/machinery/light{
@@ -9737,7 +9737,7 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks)
 "XD" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9754,7 +9754,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9764,7 +9764,7 @@
 	dir = 4
 	},
 /obj/structure/flora/pottedplant/dead,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9785,10 +9785,10 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9802,7 +9802,7 @@
 	name = "Brig";
 	req_one_access = list(150)
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -9818,7 +9818,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/dock_star)
 "XV" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/structure/cable/orange{
@@ -9843,7 +9843,7 @@
 /obj/machinery/door/firedoor/multi_tile{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 1;
 	req_one_access = list(150)
@@ -9860,7 +9860,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/dark,
@@ -9875,11 +9875,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/recreation)
 "Yj" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/hangar)
 "Yl" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/door/firedoor/multi_tile{
 	dir = 1
 	},
@@ -9910,10 +9910,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "Yq" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /obj/machinery/light{
@@ -9951,7 +9951,7 @@
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "YC" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -9964,13 +9964,13 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/manta/bridge)
 "YH" = (
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9993,7 +9993,7 @@
 /turf/simulated/floor/wood,
 /area/ship/manta/barracks)
 "YR" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/structure/cable/orange{
@@ -10010,7 +10010,7 @@
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -10019,7 +10019,7 @@
 /obj/item/modular_computer/console/preset/mercenary{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -10038,7 +10038,7 @@
 /obj/item/modular_computer/console/preset/mercenary{
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -10049,8 +10049,8 @@
 "YZ" = (
 /obj/machinery/door/airlock/external,
 /obj/map_helper/airlock/door/int_door,
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor,
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -10066,7 +10066,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "Zp" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -10085,7 +10085,7 @@
 /obj/structure/window/phoronreinforced{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -10137,10 +10137,10 @@
 /turf/simulated/floor/tiled/dark,
 /area/ship/manta/holding)
 "ZG" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/glass{
 	req_one_access = list(150)
@@ -10158,7 +10158,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/techfloor/corner{
+/obj/effect/turf_decal/techfloor/corner{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -10168,7 +10168,7 @@
 	dir = 4;
 	prices = list()
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -10215,7 +10215,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(150)
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/structure/cable/orange{

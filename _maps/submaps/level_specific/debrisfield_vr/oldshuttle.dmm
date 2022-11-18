@@ -161,16 +161,16 @@
 /turf/simulated/shuttle/floor/black/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "aC" = (
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/turf_decal/industrial/outline/red,
 /turf/simulated/shuttle/floor/darkred/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "aD" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/machinery/space_heater,
 /turf/simulated/shuttle/floor/darkred/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "aE" = (
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/simulated/shuttle/floor/darkred/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "aF" = (
@@ -182,7 +182,7 @@
 /turf/simulated/shuttle/plating/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "aG" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 9
 	},
@@ -194,14 +194,14 @@
 /turf/simulated/shuttle/floor/black/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "aH" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/black/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "aI" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 5
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -225,7 +225,7 @@
 /turf/simulated/shuttle/floor/black/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "aL" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 8
 	},
@@ -237,7 +237,7 @@
 /turf/simulated/shuttle/floor/black/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "aM" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 4
 	},
@@ -256,7 +256,7 @@
 /turf/simulated/shuttle/floor/black/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "aO" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 8
 	},
@@ -269,7 +269,7 @@
 /turf/simulated/shuttle/wall/voidcraft,
 /area/submap/debrisfield_vr/misc_debris)
 "aQ" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
@@ -280,11 +280,11 @@
 /turf/simulated/shuttle/floor/black/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "aR" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/shuttle/floor/black/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "aS" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /obj/machinery/light{
@@ -309,7 +309,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/submap/debrisfield_vr/misc_debris)
 "aV" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	icon_state = "warningcorner";
 	dir = 1
 	},
@@ -341,8 +341,8 @@
 /area/submap/debrisfield_vr/misc_debris)
 "ba" = (
 /obj/machinery/light,
-/obj/effect/floor_decal/industrial/warning/corner,
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner,
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
 /turf/simulated/shuttle/floor/black/airless,

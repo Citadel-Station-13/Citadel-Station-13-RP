@@ -35,11 +35,11 @@
 /turf/simulated/mineral/virgo2,
 /area/tether_away/aerostat/surface/unexplored)
 "I" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/surface/explored)
 "Q" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/effect/shuttle_landmark{
 	base_area = /area/tether_away/aerostat/surface/explored;
 	base_turf = /turf/simulated/floor/tiled/techfloor/virgo2;

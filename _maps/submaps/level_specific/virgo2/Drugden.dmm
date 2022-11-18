@@ -16,7 +16,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/virgo2/Drugd)
 "g" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled,
 /area/submap/virgo2/Drugd)
 "h" = (
@@ -187,7 +187,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/virgo2/Drugd)
 "N" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/structure/table/standard,
 /obj/item/survivalcapsule,
 /turf/simulated/floor/tiled,

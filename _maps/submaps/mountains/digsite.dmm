@@ -59,7 +59,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/digsite)
 "q" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/submap/cave/digsite)
 "r" = (

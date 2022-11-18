@@ -58,7 +58,7 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/DecoupledEngine)
 "ap" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
@@ -99,7 +99,7 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/DecoupledEngine)
 "ay" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/item/stack/material/steel,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
@@ -108,14 +108,14 @@
 	 icon_state = "intact";
 	dir = 6
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "aA" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "aB" = (
@@ -123,7 +123,7 @@
 	icon_state = "heater";
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/effect/debris/cleanable/cobweb2,
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
@@ -159,34 +159,34 @@
 /area/submap/DecoupledEngine)
 "aG" = (
 /obj/machinery/fusion_fuel_compressor,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "aH" = (
 /obj/machinery/fusion_fuel_injector/mapped,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "aI" = (
 /obj/effect/debris/cleanable/blood/oil/streak{
 	amount = 0
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "aJ" = (
 /obj/machinery/power/rad_collector,
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 9
 	},
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "aK" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 5
 	},
@@ -199,12 +199,12 @@
 	dir = 4
 	},
 /obj/item/material/shard/phoron,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "aM" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "aN" = (
@@ -212,7 +212,7 @@
 	icon_state = "heater";
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
@@ -226,7 +226,7 @@
 /turf/simulated/floor/water,
 /area/submap/DecoupledEngine)
 "aP" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "aQ" = (
@@ -242,8 +242,8 @@
 /obj/structure/closet/crate/oldreactor{
 	anchored = 1
 	},
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 8
 	},
@@ -253,15 +253,15 @@
 /obj/structure/closet/crate/oldreactor{
 	anchored = 1
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "aT" = (
 /obj/item/poi/brokenoldreactor{
 	anchored = 1
 	},
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 4
 	},
@@ -269,7 +269,7 @@
 /area/submap/DecoupledEngine)
 "aU" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "aV" = (
@@ -289,7 +289,7 @@
 	 icon_state = "intact";
 	dir = 5
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "aX" = (
@@ -337,7 +337,7 @@
 /area/submap/DecoupledEngine)
 "bd" = (
 /obj/machinery/atmospherics/pipe/tank/carbon_dioxide,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "be" = (
@@ -347,8 +347,8 @@
 	 icon_state = "phoronrwindow";
 	dir = 8
 	},
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /turf/simulated/floor,
@@ -356,8 +356,8 @@
 "bf" = (
 /obj/machinery/power/rad_collector,
 /obj/structure/window/phoronreinforced,
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "bg" = (
@@ -367,8 +367,8 @@
 	dir = 4
 	},
 /obj/structure/window/phoronreinforced,
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /turf/simulated/floor,
@@ -383,19 +383,19 @@
 /obj/machinery/atmospherics/tvalve/digital{
 	dir = 8
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "bj" = (
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "bk" = (
 /obj/machinery/atmospherics/pipe/manifold/visible,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "bl" = (
@@ -422,17 +422,17 @@
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/DecoupledEngine)
 "bn" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/structure/closet/crate/radiation,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "bo" = (
 /obj/effect/debris/cleanable/blood/oil,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/submap/DecoupledEngine)
 "bp" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/effect/debris/cleanable/dirt,
 /obj/item/rcd,
 /turf/simulated/floor,

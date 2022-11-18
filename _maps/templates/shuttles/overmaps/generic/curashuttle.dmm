@@ -9,10 +9,10 @@
 /obj/machinery/shipsensors{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 8
 	},
 /turf/simulated/shuttle/plating/airless,

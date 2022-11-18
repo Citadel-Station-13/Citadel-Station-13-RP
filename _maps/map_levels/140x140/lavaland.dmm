@@ -121,10 +121,10 @@
 /obj/machinery/shower{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile,
@@ -142,7 +142,7 @@
 /obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -249,16 +249,16 @@
 /obj/machinery/sleeper{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals5{
+/obj/effect/turf_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals5{
+/obj/effect/turf_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -273,7 +273,7 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/explored)
 "gE" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -351,7 +351,7 @@
 /area/lavaland/central/base/common)
 "hU" = (
 /obj/structure/table/marble,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -492,7 +492,7 @@
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/central/explored)
 "lA" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -658,7 +658,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "oj" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /obj/structure/bed/chair/sofa/right{
@@ -782,7 +782,7 @@
 /area/lavaland/central/explored)
 "pJ" = (
 /obj/structure/bed/chair/sofa/left,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
 /turf/simulated/floor/wood,
@@ -860,7 +860,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "qz" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -1092,7 +1092,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "uA" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/machinery/atmospherics/portables_connector{
@@ -1450,7 +1450,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "Ch" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/tiled/monotile,
 /area/lavaland/central/base/common)
 "Cl" = (
@@ -1492,7 +1492,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "CL" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -1546,7 +1546,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "Dm" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /obj/structure/bed/chair/sofa/left{
@@ -1764,7 +1764,7 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/lavaland/central/base/common)
 "Hz" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -1831,7 +1831,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Js" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -1971,7 +1971,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "Lj" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -2042,7 +2042,7 @@
 /area/lavaland/central/base/common)
 "NH" = (
 /obj/structure/table/marble,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /obj/structure/flora/pottedplant/small,
@@ -2147,7 +2147,7 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Pr" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -2210,7 +2210,7 @@
 /area/lavaland/central/base/common)
 "QN" = (
 /obj/structure/bed/chair/sofa/right,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 9
 	},
 /mob/living/simple_mob/animal/passive/mouse/gray{
@@ -2274,7 +2274,7 @@
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "Sm" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -2636,10 +2636,10 @@
 /obj/machinery/shower{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/effect/turf_decal/steeldecal/steel_decals10,
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/central/base/common)
 "Zh" = (

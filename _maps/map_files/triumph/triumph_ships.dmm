@@ -101,12 +101,12 @@
 /area/space)
 "fS" = (
 /obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/spline/fancy/wood/corner,
+/obj/effect/turf_decal/spline/fancy/wood/corner,
 /turf/simulated/floor/holofloor/grass,
 /area/houseboat/holodeck/picnic)
 "fT" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 6
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -117,7 +117,7 @@
 /area/houseboat/holodeck/picnic)
 "fV" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -134,7 +134,7 @@
 /area/houseboat/holodeck/bunking)
 "fZ" = (
 /obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -146,7 +146,7 @@
 /area/houseboat/holodeck/picnic)
 "gc" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -160,7 +160,7 @@
 /area/houseboat/holodeck/picnic)
 "gf" = (
 /obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -171,28 +171,28 @@
 /area/houseboat/holodeck/bunking)
 "gj" = (
 /obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/houseboat/holodeck/picnic)
 "gk" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/houseboat/holodeck/picnic)
 "gl" = (
 /obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/houseboat/holodeck/picnic)
 "gm" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -212,26 +212,26 @@
 /turf/simulated/floor/holofloor/wood,
 /area/houseboat/holodeck/gaming)
 "gq" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/houseboat/holodeck/basketball)
 "gr" = (
-/obj/effect/floor_decal/corner/red/full{
+/obj/effect/turf_decal/corner/red/full{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/houseboat/holodeck/basketball)
 "gs" = (
 /obj/structure/holohoop,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/houseboat/holodeck/basketball)
 "gt" = (
-/obj/effect/floor_decal/corner/red/full{
+/obj/effect/turf_decal/corner/red/full{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -242,13 +242,13 @@
 /obj/item/clothing/suit/armor/tdome/red,
 /obj/item/clothing/under/color/red,
 /obj/item/holo/esword/red,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/houseboat/holodeck/thunderdome)
 "gv" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -258,7 +258,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/houseboat/holodeck/gaming)
 "gx" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -284,32 +284,32 @@
 /turf/simulated/floor/holofloor/wood,
 /area/houseboat/holodeck/gaming)
 "gD" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/houseboat/holodeck/basketball)
 "gE" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/houseboat/holodeck/basketball)
 "gF" = (
-/obj/effect/floor_decal/corner/green/full,
+/obj/effect/turf_decal/corner/green/full,
 /turf/simulated/floor/holofloor/tiled,
 /area/houseboat/holodeck/basketball)
 "gG" = (
 /obj/structure/holohoop{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/houseboat/holodeck/basketball)
 "gH" = (
-/obj/effect/floor_decal/corner/green/full{
+/obj/effect/turf_decal/corner/green/full{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -320,13 +320,13 @@
 /obj/item/clothing/suit/armor/tdome/green,
 /obj/item/clothing/under/color/green,
 /obj/item/holo/esword/green,
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/houseboat/holodeck/thunderdome)
 "gJ" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/tiled,

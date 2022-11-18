@@ -148,7 +148,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "aw" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 9
 	},
@@ -158,7 +158,7 @@
 /obj/structure/closet/crate/freezer,
 /obj/item/reagent_containers/food/snacks/meat,
 /obj/item/reagent_containers/food/snacks/meat,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -166,7 +166,7 @@
 "ay" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/reagent_containers/food/snacks/meat,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -174,7 +174,7 @@
 "az" = (
 /obj/structure/table/reinforced,
 /obj/item/packageWrap,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -185,19 +185,19 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "aB" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "aC" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/plating,
@@ -230,7 +230,7 @@
 /area/awaymission/zoo/pirateship)
 "aI" = (
 /obj/structure/largecrate,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -252,13 +252,13 @@
 /obj/item/tank/oxygen/yellow,
 /obj/item/clothing/suit/space/emergency,
 /obj/item/clothing/head/helmet/space/emergency,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "aM" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 5
 	},
 /turf/simulated/floor/plating,
@@ -296,7 +296,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "aT" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/landmark/loot_spawn{
@@ -334,16 +334,16 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "ba" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "bb" = (
 /obj/machinery/light/small,
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "bc" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /turf/simulated/floor/plating,
@@ -381,7 +381,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "bj" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /obj/landmark/loot_spawn{
@@ -391,11 +391,11 @@
 /area/awaymission/zoo/pirateship)
 "bk" = (
 /obj/structure/kitchenspike,
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "bl" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/landmark/loot_spawn{
 	live_cargo = 0
 	},
@@ -407,7 +407,7 @@
 	pixel_y = -24
 	},
 /obj/machinery/light/small,
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "bn" = (
@@ -432,16 +432,16 @@
 	name = "scribbled note"
 	},
 /obj/item/tool/screwdriver,
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "br" = (
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "bs" = (
 /obj/machinery/portable_atmospherics/hydroponics,
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
@@ -450,7 +450,7 @@
 /obj/structure/sink{
 	dir = 2
 	},
-/obj/effect/floor_decal/corner/beige{
+/obj/effect/turf_decal/corner/beige{
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
@@ -459,21 +459,21 @@
 /obj/machinery/vending/hydroseeds{
 	slogan_delay = 700
 	},
-/obj/effect/floor_decal/corner/beige{
+/obj/effect/turf_decal/corner/beige{
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "bv" = (
 /obj/machinery/vending/hydronutrients,
-/obj/effect/floor_decal/corner/beige{
+/obj/effect/turf_decal/corner/beige{
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "bw" = (
 /obj/machinery/portable_atmospherics/hydroponics,
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
@@ -487,37 +487,37 @@
 /obj/item/reagent_containers/food/snacks/xenomeat,
 /obj/item/reagent_containers/food/snacks/xenomeat,
 /obj/item/reagent_containers/food/snacks/xenomeat,
-/obj/effect/floor_decal/corner/blue/diagonal,
+/obj/effect/turf_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo/pirateship)
 "by" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/donkpockets,
-/obj/effect/floor_decal/corner/blue/diagonal,
+/obj/effect/turf_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo/pirateship)
 "bz" = (
 /obj/structure/table/reinforced,
-/obj/effect/floor_decal/corner/blue/diagonal,
+/obj/effect/turf_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo/pirateship)
 "bA" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/blue/diagonal,
+/obj/effect/turf_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo/pirateship)
 "bB" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/food/drinks/bottle/small/beer,
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "bC" = (
 /obj/structure/table/reinforced,
 /obj/item/material/knife,
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "bD" = (
@@ -525,13 +525,13 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "bE" = (
 /obj/structure/table/reinforced,
 /obj/effect/debris/cleanable/cobweb2,
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "bF" = (
@@ -596,7 +596,7 @@
 /area/awaymission/zoo/tradeship)
 "bN" = (
 /obj/item/reagent_containers/food/snacks/hugemushroomslice,
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "bO" = (
@@ -607,12 +607,12 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "bQ" = (
-/obj/effect/floor_decal/corner/blue/diagonal,
+/obj/effect/turf_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo/pirateship)
 "bR" = (
 /obj/item/stool,
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "bS" = (
@@ -708,14 +708,14 @@
 /area/awaymission/zoo/pirateship)
 "cl" = (
 /obj/structure/window/reinforced,
-/obj/effect/floor_decal/corner/blue/diagonal,
+/obj/effect/turf_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo/pirateship)
 "cm" = (
 /obj/machinery/door/window{
 	dir = 2
 	},
-/obj/effect/floor_decal/corner/blue/diagonal,
+/obj/effect/turf_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo/pirateship)
 "cn" = (
@@ -723,12 +723,12 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced,
-/obj/effect/floor_decal/corner/blue/diagonal,
+/obj/effect/turf_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo/pirateship)
 "co" = (
 /obj/item/reagent_containers/food/drinks/bottle/small/beer,
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "cp" = (
@@ -764,13 +764,13 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo/pirateship)
 "cu" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "cv" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -902,11 +902,11 @@
 /area/awaymission/zoo/pirateship)
 "cL" = (
 /obj/machinery/portable_atmospherics/hydroponics,
-/obj/effect/floor_decal/corner/green/full,
+/obj/effect/turf_decal/corner/green/full,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "cM" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
@@ -914,14 +914,14 @@
 "cN" = (
 /obj/machinery/seed_extractor,
 /obj/item/seeds/angelmycelium,
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "cO" = (
 /obj/machinery/portable_atmospherics/hydroponics,
-/obj/effect/floor_decal/corner/green/full{
+/obj/effect/turf_decal/corner/green/full{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -934,7 +934,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -1071,14 +1071,14 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "dk" = (
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "dl" = (
@@ -1094,7 +1094,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -1106,20 +1106,20 @@
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "dp" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 9
 	},
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "dq" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "dr" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 5
 	},
 /turf/simulated/shuttle/floor/black,
@@ -1199,7 +1199,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "dE" = (
@@ -1207,7 +1207,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "dF" = (
@@ -1238,7 +1238,7 @@
 "dI" = (
 /obj/structure/table/rack,
 /obj/item/storage/box/lights,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -1357,14 +1357,14 @@
 /area/awaymission/zoo/pirateship)
 "ea" = (
 /obj/item/reagent_containers/glass/bucket,
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "eb" = (
 /obj/machinery/conveyor_switch/oneway{
 	id = "meatConvey1"
 	},
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "ec" = (
@@ -1372,7 +1372,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "ed" = (
@@ -1382,7 +1382,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "ee" = (
@@ -1410,7 +1410,7 @@
 "eh" = (
 /obj/structure/table/rack,
 /obj/item/storage/belt/utility/full,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -1455,7 +1455,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "eo" = (
@@ -1476,7 +1476,7 @@
 "eq" = (
 /obj/structure/table/rack,
 /obj/item/cell/high,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -1552,7 +1552,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "ez" = (
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /mob/living/simple_mob/humanoid/pirate,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
@@ -1590,7 +1590,7 @@
 /area/awaymission/zoo/pirateship)
 "eF" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -1667,7 +1667,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "eR" = (
@@ -1713,17 +1713,17 @@
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "eY" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "eZ" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "fa" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /turf/simulated/shuttle/floor/black,
@@ -1765,7 +1765,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "fg" = (
@@ -1854,14 +1854,14 @@
 /area/awaymission/zoo/tradeship)
 "ft" = (
 /obj/item/material/knife,
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "fu" = (
 /obj/machinery/conveyor_switch/oneway{
 	id = "meatConvey2"
 	},
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "fv" = (
@@ -1870,7 +1870,7 @@
 /area/awaymission/zoo/pirateship)
 "fw" = (
 /obj/structure/reagent_dispensers/fueltank,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -1949,11 +1949,11 @@
 /area/awaymission/zoo/pirateship)
 "fK" = (
 /obj/machinery/light/small,
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
 "fL" = (
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /obj/structure/kitchenspike,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo/pirateship)
@@ -2052,7 +2052,7 @@
 /turf/simulated/floor/reinforced,
 /area/awaymission/zoo/pirateship)
 "gc" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/machinery/light/small{
@@ -2136,7 +2136,7 @@
 /turf/simulated/shuttle/plating,
 /area/awaymission/zoo/tradeship)
 "gn" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 4
 	},
@@ -2256,7 +2256,7 @@
 /turf/simulated/shuttle/floor/black,
 /area/awaymission/zoo/tradeship)
 "gE" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /turf/simulated/floor/plating,
@@ -2266,7 +2266,7 @@
 /obj/item/tank/oxygen/yellow,
 /obj/item/clothing/suit/space/emergency,
 /obj/item/clothing/head/helmet/space/emergency,
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo/pirateship)
 "gG" = (
@@ -3501,7 +3501,7 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo)
 "jm" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	icon_state = "spline_fancy";
 	dir = 9
 	},
@@ -3509,13 +3509,13 @@
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "jn" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "jo" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
 /obj/structure/flora/ausbushes/grassybush,
@@ -3616,41 +3616,41 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo)
 "jB" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	icon_state = "spline_fancy";
 	dir = 9
 	},
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "jC" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner,
+/obj/effect/turf_decal/spline/fancy/wood/corner,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "jD" = (
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "jE" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 6
 	},
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "jF" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	icon_state = "spline_fancy";
 	dir = 10
 	},
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "jG" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 8
 	},
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "jH" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
 /turf/simulated/floor/grass,
@@ -3688,7 +3688,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo)
 "jN" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 6
 	},
 /obj/structure/flora/ausbushes/grassybush,
@@ -3699,7 +3699,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/zoo)
 "jP" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	icon_state = "spline_fancy";
 	dir = 10
 	},
@@ -3767,7 +3767,7 @@
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "jX" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
@@ -3790,13 +3790,13 @@
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "ka" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "kb" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/grass,
@@ -3876,7 +3876,7 @@
 /turf/simulated/floor/holofloor/carpet,
 /area/awaymission/zoo)
 "kp" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -3885,7 +3885,7 @@
 /turf/simulated/floor/holofloor/lino,
 /area/awaymission/zoo)
 "kr" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -3930,13 +3930,13 @@
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "ky" = (
-/obj/effect/floor_decal/corner/green/full{
+/obj/effect/turf_decal/corner/green/full{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo)
 "kz" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	icon_state = "spline_fancy";
 	dir = 9
 	},
@@ -3945,7 +3945,7 @@
 	},
 /area/awaymission/zoo)
 "kA" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/beach{
@@ -3953,7 +3953,7 @@
 	},
 /area/awaymission/zoo)
 "kB" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
 /turf/simulated/floor/outdoors/beach{
@@ -3961,7 +3961,7 @@
 	},
 /area/awaymission/zoo)
 "kC" = (
-/obj/effect/floor_decal/corner/green/full,
+/obj/effect/turf_decal/corner/green/full,
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo)
 "kD" = (
@@ -4088,7 +4088,7 @@
 /turf/simulated/floor/holofloor/lino,
 /area/awaymission/zoo)
 "kZ" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
@@ -4099,7 +4099,7 @@
 	},
 /area/awaymission/zoo)
 "lb" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
 /obj/item/coin/gold,
@@ -4108,7 +4108,7 @@
 	},
 /area/awaymission/zoo)
 "lc" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
@@ -4229,7 +4229,7 @@
 /turf/simulated/floor/holofloor/carpet,
 /area/awaymission/zoo)
 "lx" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach{
@@ -4237,7 +4237,7 @@
 	},
 /area/awaymission/zoo)
 "ly" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	icon_state = "spline_plain_full";
 	dir = 1
 	},
@@ -4250,7 +4250,7 @@
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "lz" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/beach{
@@ -4291,7 +4291,7 @@
 /turf/simulated/floor/wood,
 /area/awaymission/zoo)
 "lF" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	icon_state = "spline_fancy";
 	dir = 10
 	},
@@ -4306,7 +4306,7 @@
 	},
 /area/awaymission/zoo)
 "lH" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 6
 	},
 /turf/simulated/floor/outdoors/beach{
@@ -4409,13 +4409,13 @@
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "lY" = (
-/obj/effect/floor_decal/corner/green/full{
+/obj/effect/turf_decal/corner/green/full{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo)
 "lZ" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 2
 	},
 /turf/simulated/floor/outdoors/beach{
@@ -4423,7 +4423,7 @@
 	},
 /area/awaymission/zoo)
 "ma" = (
-/obj/effect/floor_decal/corner/green/full{
+/obj/effect/turf_decal/corner/green/full{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -4456,13 +4456,13 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/zoo)
 "mg" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 1
 	},
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "mh" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
 /turf/simulated/floor/grass,
@@ -4504,7 +4504,7 @@
 /turf/simulated/floor/holofloor/lino,
 /area/awaymission/zoo)
 "mn" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
@@ -5509,25 +5509,25 @@
 	},
 /area/awaymission/zoo)
 "oN" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner,
+/obj/effect/turf_decal/spline/fancy/wood/corner,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "oO" = (
 /obj/structure/flora/ausbushes/sunnybush,
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "oP" = (
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "oQ" = (
 /obj/structure/flora/ausbushes/lavendergrass,
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "oR" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -5609,14 +5609,14 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "pb" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 6
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "pd" = (
 /obj/structure/flora/ausbushes/genericbush,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	icon_state = "spline_fancy";
 	dir = 10
 	},
@@ -5699,13 +5699,13 @@
 	},
 /area/awaymission/zoo)
 "pn" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "po" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -5767,7 +5767,7 @@
 /area/awaymission/zoo)
 "py" = (
 /obj/structure/flora/ausbushes/palebush,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -5814,20 +5814,20 @@
 	},
 /area/awaymission/zoo)
 "pF" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "pG" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "pH" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	icon_state = "spline_fancy";
 	dir = 9
 	},
@@ -5835,7 +5835,7 @@
 /area/awaymission/zoo)
 "pI" = (
 /obj/structure/flora/ausbushes/sunnybush,
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -5854,62 +5854,62 @@
 /area/awaymission/zoo)
 "pL" = (
 /obj/structure/flora/ausbushes/fernybush,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "pM" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	icon_state = "spline_fancy";
 	dir = 9
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "pN" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "pO" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	icon_state = "carpet";
 	dir = 2
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 9
 	},
 /turf/simulated/floor/lino,
 /area/awaymission/zoo)
 "pP" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	icon_state = "carpet";
 	dir = 2
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
 /turf/simulated/floor/lino,
 /area/awaymission/zoo)
 "pQ" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	icon_state = "carpet";
 	dir = 2
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 5
 	},
 /turf/simulated/floor/lino,
@@ -5934,7 +5934,7 @@
 /area/awaymission/zoo)
 "pU" = (
 /obj/structure/flora/ausbushes/genericbush,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -5944,28 +5944,28 @@
 /turf/simulated/floor/lino,
 /area/awaymission/zoo)
 "pW" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	icon_state = "carpet";
 	dir = 2
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
 /turf/simulated/floor/lino,
 /area/awaymission/zoo)
 "pX" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	icon_state = "carpet";
 	dir = 2
 	},
 /turf/simulated/floor/lino,
 /area/awaymission/zoo)
 "pY" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	icon_state = "carpet";
 	dir = 2
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
 /turf/simulated/floor/lino,
@@ -6017,37 +6017,37 @@
 	},
 /area/awaymission/zoo)
 "qh" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	icon_state = "carpet";
 	dir = 2
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 10
 	},
 /turf/simulated/floor/lino,
 /area/awaymission/zoo)
 "qi" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	icon_state = "carpet";
 	dir = 2
 	},
-/obj/effect/floor_decal/carpet,
+/obj/effect/turf_decal/carpet,
 /turf/simulated/floor/lino,
 /area/awaymission/zoo)
 "qj" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	icon_state = "carpet";
 	dir = 2
 	},
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 6
 	},
 /turf/simulated/floor/lino,
@@ -6066,7 +6066,7 @@
 /area/awaymission/zoo)
 "qm" = (
 /obj/structure/flora/ausbushes/sunnybush,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -6123,7 +6123,7 @@
 /area/awaymission/zoo)
 "qw" = (
 /obj/structure/flora/ausbushes/fernybush,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -6207,7 +6207,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "qE" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	icon_state = "spline_fancy";
 	dir = 9
 	},
@@ -6215,25 +6215,25 @@
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "qF" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "qG" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
 /obj/structure/flora/ausbushes/ppflowers,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "qH" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "qI" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/effect/debris/cleanable/generic,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -6248,7 +6248,7 @@
 /area/awaymission/zoo)
 "qL" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
 /turf/simulated/floor/grass,
@@ -6259,7 +6259,7 @@
 /area/awaymission/zoo)
 "qN" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 1
 	},
 /turf/simulated/floor/grass,
@@ -6334,14 +6334,14 @@
 	},
 /area/awaymission/zoo)
 "rc" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "rd" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /obj/structure/flora/ausbushes/brflowers,
@@ -6369,7 +6369,7 @@
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "rg" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	icon_state = "spline_fancy";
 	dir = 10
 	},
@@ -6378,18 +6378,18 @@
 /area/awaymission/zoo)
 "rh" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 8
 	},
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "ri" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/spline/fancy/wood/corner,
+/obj/effect/turf_decal/spline/fancy/wood/corner,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "rj" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 6
 	},
 /obj/structure/flora/ausbushes/ppflowers,
@@ -6429,14 +6429,14 @@
 /turf/simulated/floor,
 /area/awaymission/zoo)
 "rr" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 2
 	},
 /obj/structure/flora/ausbushes/brflowers,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "rs" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 1
 	},
@@ -6498,7 +6498,7 @@
 	},
 /area/awaymission/zoo)
 "ry" = (
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
@@ -6517,7 +6517,7 @@
 	},
 /area/awaymission/zoo)
 "rA" = (
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
@@ -6529,12 +6529,12 @@
 	},
 /area/awaymission/zoo)
 "rB" = (
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
 	},
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_s";
 	name = "rocky edge"
@@ -6549,7 +6549,7 @@
 /turf/simulated/floor/holofloor/space,
 /area/awaymission/zoo)
 "rD" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/floor/holofloor/desert{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
@@ -6557,12 +6557,12 @@
 	},
 /area/awaymission/zoo)
 "rE" = (
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
 	},
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_s";
 	name = "rocky edge"
@@ -6574,12 +6574,12 @@
 	},
 /area/awaymission/zoo)
 "rF" = (
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
 	},
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_n";
 	name = "rocky edge"
@@ -6591,7 +6591,7 @@
 	},
 /area/awaymission/zoo)
 "rG" = (
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_n";
 	name = "rocky edge"
@@ -6607,12 +6607,12 @@
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "rI" = (
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
 	},
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/floor/holofloor/desert{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
@@ -6624,17 +6624,17 @@
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "rK" = (
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
 	},
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
 	},
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_n";
 	name = "rocky edge"
@@ -6656,12 +6656,12 @@
 	},
 /area/awaymission/zoo)
 "rM" = (
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
 	},
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_n";
 	name = "rocky edge"
@@ -6673,12 +6673,12 @@
 	},
 /area/awaymission/zoo)
 "rN" = (
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
 	},
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/floor/holofloor/desert{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroidplating";
@@ -6687,7 +6687,7 @@
 /area/awaymission/zoo)
 "rO" = (
 /obj/structure/closet/crate,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/neutral,
 /area/awaymission/zoo)
 "rP" = (
@@ -6774,7 +6774,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "rY" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "rZ" = (
@@ -6786,12 +6786,12 @@
 	},
 /area/awaymission/zoo)
 "sa" = (
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
 	},
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_s";
 	name = "rocky edge"
@@ -6806,7 +6806,7 @@
 	},
 /area/awaymission/zoo)
 "sb" = (
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_s";
 	name = "rocky edge"
@@ -6818,7 +6818,7 @@
 	},
 /area/awaymission/zoo)
 "sc" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /mob/living/simple_mob/vore/aggressive/mimic{
 	faction = "zoo"
 	},
@@ -6832,7 +6832,7 @@
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "se" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /mob/living/simple_mob/animal/space/bear{
 	faction = "zoo"
 	},
@@ -6850,19 +6850,19 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "si" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 9
 	},
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "sj" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 1
 	},
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "sk" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 5
 	},
 /turf/simulated/floor/outdoors/beach,
@@ -6888,12 +6888,12 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "sn" = (
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
 	},
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
@@ -6905,7 +6905,7 @@
 	},
 /area/awaymission/zoo)
 "so" = (
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
@@ -6985,13 +6985,13 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "sv" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "sw" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/beach,
@@ -7011,17 +7011,17 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "sy" = (
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
 	},
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_s";
 	name = "rocky edge"
 	},
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_n";
 	name = "rocky edge"
@@ -7033,7 +7033,7 @@
 	},
 /area/awaymission/zoo)
 "sz" = (
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
@@ -7100,7 +7100,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "sF" = (
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
@@ -7178,17 +7178,17 @@
 	},
 /area/awaymission/zoo)
 "sQ" = (
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
 	},
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_e";
 	name = "rocky edge"
 	},
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_s";
 	name = "rocky edge"
@@ -7212,33 +7212,33 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "sT" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 10
 	},
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "sU" = (
-/obj/effect/floor_decal/spline/plain,
+/obj/effect/turf_decal/spline/plain,
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "sV" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 6
 	},
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "sW" = (
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_w";
 	name = "rocky edge"
 	},
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_s";
 	name = "rocky edge"
 	},
-/obj/effect/floor_decal/spline{
+/obj/effect/turf_decal/spline{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "asteroid_edge_n";
 	name = "rocky edge"
@@ -7264,7 +7264,7 @@
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "ta" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /mob/living/simple_mob/animal/space/alien{
 	faction = "zoo"
 	},
@@ -7370,7 +7370,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "tn" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /mob/living/carbon/human/stok{
 	faction = "zoo"
 	},
@@ -7539,7 +7539,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "tL" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /obj/effect/debris/cleanable/greenglow,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
@@ -7552,7 +7552,7 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "tO" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /mob/living/simple_mob/vore/aggressive/dino{
 	faction = "zoo"
 	},
@@ -7627,7 +7627,7 @@
 	},
 /area/awaymission/zoo)
 "tV" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/mimic/guaranteed,
 /turf/simulated/floor/tiled/neutral,
 /area/awaymission/zoo)
@@ -7684,7 +7684,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "uc" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /mob/living/simple_mob/vore/aggressive/deathclaw{
 	faction = "zoo"
 	},
@@ -7772,7 +7772,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "ul" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /mob/living/simple_mob/animal/passive/lizard{
 	faction = "zoo"
 	},
@@ -7842,7 +7842,7 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo)
 "uu" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass4"
 	},
@@ -7854,7 +7854,7 @@
 	},
 /area/awaymission/zoo)
 "uw" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass0"
 	},
@@ -7866,13 +7866,13 @@
 	},
 /area/awaymission/zoo)
 "uy" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass2"
 	},
 /area/awaymission/zoo)
 "uz" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /mob/living/carbon/human/sergallingm{
 	faction = "zoo"
 	},
@@ -7887,7 +7887,7 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "uB" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass1"
 	},
@@ -7901,13 +7901,13 @@
 	},
 /area/awaymission/zoo)
 "uD" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass3"
 	},
 /area/awaymission/zoo)
 "uE" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass1"
 	},
@@ -7927,7 +7927,7 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "uI" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass0"
 	},
@@ -7944,7 +7944,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "uK" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass3"
 	},
@@ -8478,33 +8478,33 @@
 /area/awaymission/zoo)
 "vZ" = (
 /obj/machinery/shield_gen/external,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "wa" = (
 /obj/machinery/shield_gen/external,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/awaymission/zoo)
 "wb" = (
 /obj/machinery/shield_gen,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/awaymission/zoo)
 "wc" = (
 /obj/machinery/shieldwallgen,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/awaymission/zoo)
 "wd" = (
 /obj/machinery/shieldgen,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/awaymission/zoo)
 "we" = (
 /obj/machinery/shieldgen,
 /obj/effect/debris/cleanable/dirt,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/awaymission/zoo)
 "wf" = (
@@ -8512,7 +8512,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "wg" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/landmark/loot_spawn,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
@@ -8521,7 +8521,7 @@
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit.";
 	name = "power storage unit"
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)
 "wi" = (
@@ -8632,12 +8632,12 @@
 /area/awaymission/zoo)
 "wy" = (
 /obj/machinery/shield_capacitor,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "wz" = (
 /obj/machinery/shield_capacitor,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/awaymission/zoo)
 "wA" = (
@@ -8715,39 +8715,39 @@
 "wN" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/floodlight,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/awaymission/zoo)
 "wO" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/power/emitter,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/awaymission/zoo)
 "wP" = (
 /obj/machinery/power/port_gen/pacman{
 	anchored = 1
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "wQ" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/item/clothing/under/rank/engineer/skirt,
 /obj/structure/closet/crate/mimic/guaranteed,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "wR" = (
 /obj/machinery/portable_atmospherics/canister/nitrogen,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/awaymission/zoo)
 "wS" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "wT" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/landmark/loot_spawn,
 /obj/structure/symbol/da{
 	pixel_x = -32
@@ -8787,12 +8787,12 @@
 /area/awaymission/zoo)
 "wZ" = (
 /obj/machinery/floodlight,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/awaymission/zoo)
 "xa" = (
 /obj/machinery/power/emitter,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor,
 /area/awaymission/zoo)
 "xb" = (
@@ -8800,12 +8800,12 @@
 /obj/item/stack/material/phoron{
 	amount = 25
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "xc" = (
 /obj/structure/closet/crate/solar,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/item/cell/crap,
 /obj/item/cell/crap,
 /obj/item/cell/crap,

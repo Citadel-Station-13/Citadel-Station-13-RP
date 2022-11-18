@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 8
 	},
 /obj/structure/shuttle/engine/propulsion{
@@ -19,7 +19,7 @@
 /area/shuttle/deployable/escapepod)
 "d" = (
 /obj/structure/fans,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -41,7 +41,7 @@
 /obj/item/fbp_backup_cell,
 /obj/item/fbp_backup_cell,
 /obj/item/storage/pill_bottle/dice,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/item/storage/box/survival/space,
@@ -58,13 +58,13 @@
 /area/shuttle/deployable/escapepod)
 "f" = (
 /obj/machinery/sleeper/survival_pod,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/deployable/escapepod)
 "g" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /obj/structure/handrail,
@@ -98,8 +98,8 @@
 /obj/machinery/computer/shuttle_control/explore/escapepod{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor,
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/light/small{
@@ -118,7 +118,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/deployable/escapepod)
 "m" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -132,7 +132,7 @@
 	pixel_x = -5;
 	pixel_y = 26
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/map_helper/airlock/door/int_door,
@@ -146,7 +146,7 @@
 /area/shuttle/deployable/escapepod)
 "p" = (
 /obj/machinery/door/airlock/external,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 8
 	},
@@ -163,7 +163,7 @@
 /area/shuttle/deployable/escapepod)
 "q" = (
 /obj/structure/table/survival_pod,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /obj/machinery/recharger,
@@ -177,7 +177,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/deployable/escapepod)
 "s" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/structure/bed/chair/shuttle{
 	dir = 1
 	},
@@ -195,7 +195,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	icon_state = "techfloor_edges";
 	dir = 6
 	},
@@ -213,7 +213,7 @@
 /turf/simulated/wall/rpshull,
 /area/shuttle/deployable/escapepod)
 "L" = (
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /obj/structure/bed/chair/shuttle{
 	dir = 1
 	},

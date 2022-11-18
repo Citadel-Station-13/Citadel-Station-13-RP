@@ -36,7 +36,7 @@
 	dir = 4;
 	name = "Oxygen Port"
 	},
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "ae" = (
@@ -67,7 +67,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
 	dir = 10
 	},
-/obj/effect/floor_decal/plaque{
+/obj/effect/turf_decal/plaque{
 	desc = "The plaque has details on how to pay. Step one, look at the register and choose Custom Order. Step two, input what you bought. Step threee, input calculated total. 250 Thaler per canister of Phoron, 50 per canister of Oxygen. Step four, swipe your card or insert cash to pay.";
 	name = "Payment Information"
 	},
@@ -78,7 +78,7 @@
 	dir = 4;
 	name = "Phoron Port"
 	},
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/turf_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "ai" = (
@@ -104,7 +104,7 @@
 	dir = 1;
 	name = "oxygen pump"
 	},
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "al" = (
@@ -434,7 +434,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
 	dir = 6
 	},
-/obj/effect/floor_decal/plaque{
+/obj/effect/turf_decal/plaque{
 	desc = "The plaque has details on how to pay. Step one, look at the register and choose Custom Order. Step two, input what you bought. Step threee, input calculated total. 250 Thaler per canister of Phoron, 50 per canister of Oxygen. Step four, swipe your card or insert cash to pay.";
 	name = "Payment Information"
 	},
@@ -449,7 +449,7 @@
 	dir = 8;
 	name = "phoron pump"
 	},
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "bi" = (
@@ -498,10 +498,10 @@
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bn" = (
-/obj/effect/floor_decal/borderfloorwhite/full{
+/obj/effect/turf_decal/borderfloorwhite/full{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/turf_decal/industrial/outline/red,
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	dir = 4
 	},
@@ -515,10 +515,10 @@
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bp" = (
-/obj/effect/floor_decal/borderfloorwhite/full{
+/obj/effect/turf_decal/borderfloorwhite/full{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/turf_decal/industrial/outline/red,
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	dir = 8
 	},
@@ -552,14 +552,14 @@
 /obj/machinery/atmospherics/portables_connector/fuel{
 	name = "Phoron Port"
 	},
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/turf_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "bu" = (
 /obj/machinery/atmospherics/portables_connector/aux{
 	name = "Oxygen Port"
 	},
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "bv" = (
@@ -874,7 +874,7 @@
 	dir = 1;
 	name = "Oxygen Port"
 	},
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "cb" = (
@@ -882,7 +882,7 @@
 	dir = 1;
 	name = "Phoron Port"
 	},
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/turf_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "cc" = (
@@ -914,7 +914,7 @@
 	dir = 4;
 	name = "phoron pump"
 	},
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "cg" = (
@@ -924,7 +924,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
 	dir = 9
 	},
-/obj/effect/floor_decal/plaque{
+/obj/effect/turf_decal/plaque{
 	desc = "The plaque has details on how to pay. Step one, look at the register and choose Custom Order. Step two, input what you bought. Step threee, input calculated total. 250 Thaler per canister of Phoron, 50 per canister of Oxygen. Step four, swipe your card or insert cash to pay.";
 	name = "Payment Information"
 	},
@@ -978,10 +978,10 @@
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "cn" = (
-/obj/effect/floor_decal/borderfloorwhite/full{
+/obj/effect/turf_decal/borderfloorwhite/full{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /obj/machinery/atmospherics/pipe/tank/oxygen{
 	dir = 1
 	},
@@ -1104,7 +1104,7 @@
 /obj/machinery/atmospherics/component/binary/pump/aux{
 	name = "oxygen pump"
 	},
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "cC" = (
@@ -1112,7 +1112,7 @@
 	dir = 8;
 	name = "Phoron Port"
 	},
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/turf_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "cD" = (
@@ -1122,7 +1122,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/fuel{
 	dir = 5
 	},
-/obj/effect/floor_decal/plaque{
+/obj/effect/turf_decal/plaque{
 	desc = "The plaque has details on how to pay. Step one, look at the register and choose Custom Order. Step two, input what you bought. Step threee, input calculated total. 250 Thaler per canister of Phoron, 50 per canister of Oxygen. Step four, swipe your card or insert cash to pay.";
 	name = "Payment Information"
 	},
@@ -1156,7 +1156,7 @@
 	dir = 8;
 	name = "Oxygen Port"
 	},
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/tether_away/fueldepot)
 "cH" = (

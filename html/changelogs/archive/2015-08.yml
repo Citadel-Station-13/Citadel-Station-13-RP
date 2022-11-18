@@ -117,7 +117,7 @@
       Pariahs longer than it does their target.
   - tweak: Rewrote tiling. White floors, dark floors and freezer floors now have associated
       tiles.
-  - tweak: Changed how decals work in the mapper. floor_decal is now used instead
+  - tweak: Changed how decals work in the mapper. turf_decal is now used instead
       of an icon in floors.dmi.
   - tweak: The floor painter has been rewritten to use decals. Click it in-hand to
       set direction and decal.

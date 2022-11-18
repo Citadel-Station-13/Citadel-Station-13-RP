@@ -37,7 +37,7 @@
 	dir = 4;
 	id = "desert_bunker"
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/class_h/POIs/vault)
 "bC" = (
@@ -160,7 +160,7 @@
 /turf/simulated/floor/tiled/white,
 /area/class_h/POIs/vault)
 "mt" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/light/small/emergency,
 /turf/simulated/floor/plating,
 /area/class_h/POIs/vault)
@@ -177,7 +177,7 @@
 /area/class_h/POIs/vault)
 "qa" = (
 /obj/machinery/door/airlock/maintenance/int,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/class_h/POIs/vault)
 "ql" = (
@@ -235,7 +235,7 @@
 /area/class_h/POIs/vault)
 "wE" = (
 /obj/structure/janitorialcart,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/class_h/POIs/vault)
 "wK" = (
@@ -458,7 +458,7 @@
 	},
 /obj/structure/closet/jcloset,
 /obj/random/soap,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/class_h/POIs/vault)
 "Lp" = (
@@ -496,7 +496,7 @@
 /turf/simulated/mineral/floor/cave,
 /area/class_h/explored)
 "MO" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/class_h/POIs/vault)
 "MP" = (
@@ -628,7 +628,7 @@
 /area/class_h/POIs/vault)
 "VI" = (
 /obj/machinery/porta_turret/stationary,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/class_h/POIs/vault)
 "Wd" = (
@@ -684,7 +684,7 @@
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/vault)
 "Zh" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/light/small/emergency{
 	dir = 1
 	},

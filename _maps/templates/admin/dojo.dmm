@@ -19,7 +19,7 @@
 	},
 /area/ninja_dojo/dojo)
 "af" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/unsimulated/floor{
 	icon = 'icons/turf/snow_new.dmi';
 	icon_state = "snow";
@@ -86,13 +86,13 @@
 	},
 /area/ninja_dojo/dojo)
 "aq" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 9
 	},
 /turf/unsimulated/floor{
@@ -100,7 +100,7 @@
 	},
 /area/ninja_dojo/dojo)
 "ar" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
 /turf/unsimulated/floor{
@@ -108,13 +108,13 @@
 	},
 /area/ninja_dojo/dojo)
 "as" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -130,7 +130,7 @@
 /area/ninja_dojo/dojo)
 "au" = (
 /obj/machinery/tele_pad,
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /turf/unsimulated/floor{
 	icon_state = "plating";
 	name = "plating"
@@ -151,7 +151,7 @@
 	},
 /area/ninja_dojo/dojo)
 "ax" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -164,7 +164,7 @@
 	},
 /area/ninja_dojo/dojo)
 "az" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
 /turf/unsimulated/floor{
@@ -181,7 +181,7 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/shuttle/ninja)
 "aC" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/tank/air{
@@ -199,18 +199,18 @@
 /area/shuttle/ninja)
 "aF" = (
 /obj/machinery/tele_pad,
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /turf/simulated/shuttle/plating,
 /area/shuttle/ninja)
 "aG" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/machinery/computer/ship/engines,
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/ninja)
 "aH" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/unsimulated/floor{
@@ -276,7 +276,7 @@
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/shuttle/ninja)
 "aM" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/visible,
@@ -284,13 +284,13 @@
 /turf/simulated/shuttle/floor/voidcraft/light,
 /area/shuttle/ninja)
 "aN" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/shuttle/ninja)
 "aO" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/voidcraft/light,
@@ -357,11 +357,11 @@
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/shuttle/ninja)
 "aW" = (
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 10
 	},
 /turf/unsimulated/floor{
@@ -369,17 +369,17 @@
 	},
 /area/ninja_dojo/dojo)
 "aX" = (
-/obj/effect/floor_decal/carpet,
+/obj/effect/turf_decal/carpet,
 /turf/unsimulated/floor{
 	icon_state = "carpet"
 	},
 /area/ninja_dojo/dojo)
 "aY" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 6
 	},
 /turf/unsimulated/floor{

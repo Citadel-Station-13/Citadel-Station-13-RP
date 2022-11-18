@@ -341,11 +341,11 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/shuttle/tabiranth)
 "ai" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /turf/simulated/floor/reinforced,
 /area/shuttle/tabiranth)
 "aj" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
@@ -358,7 +358,7 @@
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/machinery/button/remote/blast_door{
@@ -382,7 +382,7 @@
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/machinery/button/remote/blast_door{
@@ -393,7 +393,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/tabiranth)
 "an" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
@@ -403,7 +403,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/tabiranth)
 "ao" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 10
 	},
@@ -423,7 +423,7 @@
 /turf/simulated/floor/bluegrid,
 /area/shuttle/tabiranth)
 "aq" = (
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
@@ -433,7 +433,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/reinforced,
@@ -446,7 +446,7 @@
 /obj/structure/bed/chair/bay/shuttle{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/reinforced,
@@ -462,8 +462,8 @@
 /area/shuttle/tabiranth)
 "av" = (
 /obj/machinery/mech_recharger,
-/obj/effect/floor_decal/techfloor,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor,
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced,
@@ -558,7 +558,7 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/machinery/recharger/wallcharger{
@@ -593,10 +593,10 @@
 "aH" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/machinery/mech_recharger,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/reinforced,
 /area/shuttle/tabiranth)
 "aI" = (
@@ -639,7 +639,7 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/machinery/recharger/wallcharger{
@@ -1086,7 +1086,7 @@
 /obj/item/perfect_tele_beacon{
 	tele_name = "Tabiranth"
 	},
-/obj/effect/floor_decal/industrial/hatch,
+/obj/effect/turf_decal/industrial/hatch,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/tabiranth)
 "be" = (
@@ -1106,7 +1106,7 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/tabiranth)
 "bh" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/machinery/door/airlock/alien/blue{
 	req_one_access = list(101)
 	},
@@ -1387,7 +1387,7 @@
 /obj/item/modular_computer/laptop,
 /obj/item/perfect_tele,
 /obj/item/perfect_tele,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /obj/item/inducer,
@@ -1400,7 +1400,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/shuttle/tabiranth)
 "bk" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /obj/structure/closet/secure_closet/wall{
@@ -1486,13 +1486,13 @@
 /area/shuttle/tabiranth)
 "bq" = (
 /obj/machinery/mineral/equipment_vendor,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/tabiranth)
 "br" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /obj/machinery/light/small{
@@ -1567,7 +1567,7 @@
 /area/shuttle/tabiranth)
 "bx" = (
 /obj/machinery/mineral/equipment_vendor/survey,
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -1577,7 +1577,7 @@
 	charges = 10;
 	density = 0
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 6
 	},
 /obj/machinery/vending/nifsoft_shop{
@@ -1711,7 +1711,7 @@
 	id = "tabi-vault";
 	name = "Vault"
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_ridged,
@@ -1720,7 +1720,7 @@
 /obj/machinery/door/airlock/alien/blue{
 	req_one_access = list(101)
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_ridged,

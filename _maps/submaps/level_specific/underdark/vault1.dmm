@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/virgo3b,
 /area/mine/explored/underdark)
 "b" = (
@@ -13,13 +13,13 @@
 /turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored/underdark)
 "e" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/structure/closet/crate/mimic/cointoss,
 /obj/random/underdark,
 /turf/simulated/floor/virgo3b,
 /area/mine/explored/underdark)
 "f" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/structure/closet/crate/mimic/safe,
 /obj/random/underdark/uncertain,
 /turf/simulated/floor/virgo3b,

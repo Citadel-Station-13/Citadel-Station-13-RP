@@ -11,7 +11,7 @@
 /turf/simulated/floor/outdoors/classd,
 /area/class_d/explored)
 "w" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/floor/outdoors/classd,
 /area/class_d/explored)
 "Y" = (

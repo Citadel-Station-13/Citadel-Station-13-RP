@@ -115,7 +115,7 @@
 /area/shuttle/trade_ship/general)
 "ax" = (
 /obj/structure/table/marble,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 6
 	},
 /turf/simulated/floor/wmarble,
@@ -180,7 +180,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/blue/diagonal{
+/obj/effect/turf_decal/corner/blue/diagonal{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -192,7 +192,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/floor_decal/spline/plain,
+/obj/effect/turf_decal/spline/plain,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndishow)
 "aN" = (
@@ -292,7 +292,7 @@
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
 "bd" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport)
 "be" = (
@@ -311,7 +311,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndi)
 "bf" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/dark,
@@ -366,14 +366,14 @@
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/tradeport/pads)
 "bw" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 10
 	},
 /obj/machinery/door/window/southright,
 /turf/simulated/floor/tiled/monotile,
 /area/tradeport/medical)
 "by" = (
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
@@ -393,7 +393,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/machinery/exonet_node,
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport/engineering)
@@ -442,7 +442,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "bL" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -454,7 +454,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "bS" = (
-/obj/effect/floor_decal/spline/plain,
+/obj/effect/turf_decal/spline/plain,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndishow)
 "bT" = (
@@ -507,7 +507,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "bX" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/dark,
@@ -549,7 +549,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -645,7 +645,7 @@
 /turf/simulated/floor/airless,
 /area/tradeport/expansion)
 "cx" = (
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/item/reagent_containers/syringe/drugs,
 /obj/item/reagent_containers/syringe/drugs,
 /obj/item/reagent_containers/syringe/drugs,
@@ -743,7 +743,7 @@
 	pixel_x = 22;
 	req_one_access = list(160)
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /obj/machinery/photocopier/faxmachine{
@@ -763,7 +763,7 @@
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/general)
 "cQ" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -807,7 +807,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/white,
@@ -846,7 +846,7 @@
 	dir = 1
 	},
 /obj/machinery/portable_atmospherics/canister/air,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "dd" = (
@@ -899,7 +899,7 @@
 "dj" = (
 /obj/structure/table/glass,
 /obj/item/reagent_containers/food/snacks/chips,
-/obj/effect/floor_decal/spline/fancy/wood/cee{
+/obj/effect/turf_decal/spline/fancy/wood/cee{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -995,7 +995,7 @@
 /area/tradeport/commons)
 "dA" = (
 /obj/machinery/body_scanconsole,
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -1106,7 +1106,7 @@
 /area/tradeport/pads)
 "dY" = (
 /obj/structure/closet/secure_closet/freezer/meat,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 8
 	},
 /turf/simulated/floor/wmarble,
@@ -1162,7 +1162,7 @@
 /area/tradeport/cafeteria)
 "ek" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/random/paintkit,
@@ -1241,7 +1241,7 @@
 	dir = 8;
 	pixel_x = -29
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "ex" = (
@@ -1254,7 +1254,7 @@
 /turf/simulated/wall,
 /area/tradeport/atmospherics)
 "eC" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/structure/largecrate/vehicle/bike,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -1272,7 +1272,7 @@
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport)
 "eJ" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /obj/structure/bed/chair{
@@ -1349,12 +1349,12 @@
 /area/tradeport/pads)
 "eW" = (
 /obj/structure/flora/pumpkin/carved,
-/obj/effect/floor_decal/grass_edge,
+/obj/effect/turf_decal/grass_edge,
 /turf/simulated/floor/outdoors/dirt,
 /area/tradeport/cyndishow)
 "eX" = (
 /obj/machinery/photocopier,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -1392,10 +1392,10 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndishow)
 "ff" = (
-/obj/effect/floor_decal/corner/blue/diagonal{
+/obj/effect/turf_decal/corner/blue/diagonal{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/blue/diagonal,
+/obj/effect/turf_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
 "fg" = (
@@ -1486,7 +1486,7 @@
 /turf/simulated/floor/water,
 /area/tradeport/safarizoo)
 "fG" = (
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /obj/machinery/atmospherics/pipe/tank/air,
 /obj/machinery/light/small{
 	dir = 1
@@ -1533,7 +1533,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /obj/structure/stasis_cage,
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
@@ -1601,7 +1601,7 @@
 /area/shuttle/trade_ship/general)
 "gd" = (
 /obj/structure/closet/emcloset,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/facility)
 "ge" = (
@@ -1620,7 +1620,7 @@
 	name = "emergency cut-off pump";
 	target_pressure = 15000
 	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/tradeport/pads)
 "gh" = (
@@ -1650,17 +1650,17 @@
 /area/tradeport/facility)
 "gk" = (
 /obj/machinery/vending/loadout/clothing,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
 "gl" = (
 /obj/structure/bed/chair/sofa/black{
 	dir = 8
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -1717,7 +1717,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/meter,
 /obj/effect/debris/cleanable/cobweb2,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport)
 "gE" = (
@@ -1725,7 +1725,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -1751,10 +1751,10 @@
 /area/tradeport/spine)
 "gH" = (
 /obj/machinery/vending/loadout/costume,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
 "gI" = (
@@ -1983,7 +1983,7 @@
 /turf/simulated/floor/airless,
 /area/space)
 "hB" = (
-/obj/effect/floor_decal/corner_techfloor_grid{
+/obj/effect/turf_decal/corner_techfloor_grid{
 	dir = 5
 	},
 /obj/landmark/spawnpoint/job/trader,
@@ -2000,7 +2000,7 @@
 "hF" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/glasses/square,
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet,
 /area/shuttle/trade_ship/general)
 "hG" = (
@@ -2053,7 +2053,7 @@
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "hQ" = (
-/obj/effect/floor_decal/grass_edge,
+/obj/effect/turf_decal/grass_edge,
 /turf/simulated/floor/outdoors/dirtlight,
 /area/tradeport/cyndishow)
 "hR" = (
@@ -2066,7 +2066,7 @@
 /area/tradeport/commons)
 "hT" = (
 /obj/structure/stasis_cage,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
 "hY" = (
@@ -2074,7 +2074,7 @@
 	name = "Cargo Hold";
 	req_access = list(160)
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -2119,7 +2119,7 @@
 /turf/simulated/floor/wood,
 /area/shuttle/trade_ship/general)
 "ij" = (
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
@@ -2270,7 +2270,7 @@
 /obj/machinery/atm{
 	pixel_x = -32
 	},
-/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/turf_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "iS" = (
@@ -2312,7 +2312,7 @@
 	},
 /obj/item/material/knife/butch/plasteel,
 /obj/item/material/kitchen/rollingpin/durasteel,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 1
 	},
 /turf/simulated/floor/wmarble,
@@ -2413,13 +2413,13 @@
 /area/space)
 "jr" = (
 /obj/machinery/door/window/southright,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/medical)
 "js" = (
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
 /obj/item/reagent_containers/food/drinks/teapot{
 	desc = "An elegant teapot. It simply oozes class. This one looks especially valuable.";
@@ -2455,7 +2455,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "jy" = (
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/structure/closet/crate,
 /obj/item/stolenpackageplus,
 /obj/item/stolenpackageplus,
@@ -2472,7 +2472,7 @@
 /obj/machinery/chemical_dispenser/bar_alc/full{
 	dir = 1
 	},
-/obj/effect/floor_decal/spline/plain,
+/obj/effect/turf_decal/spline/plain,
 /turf/simulated/floor/wmarble,
 /area/tradeport/cafeteria)
 "jE" = (
@@ -2502,12 +2502,12 @@
 /area/tradeport)
 "jJ" = (
 /obj/structure/flora/pumpkin/carved/girly,
-/obj/effect/floor_decal/grass_edge,
+/obj/effect/turf_decal/grass_edge,
 /turf/simulated/floor/outdoors/dirt,
 /area/tradeport/cyndishow)
 "jK" = (
 /obj/structure/closet/emcloset,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport)
 "jL" = (
@@ -2652,7 +2652,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 10
 	},
 /turf/simulated/floor/carpet,
@@ -2737,7 +2737,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/facility)
 "kx" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/structure/largecrate/animal/corgi,
@@ -2745,7 +2745,7 @@
 /area/shuttle/trade_ship/general)
 "ky" = (
 /obj/structure/table/glass,
-/obj/effect/floor_decal/spline/fancy/wood/cee{
+/obj/effect/turf_decal/spline/fancy/wood/cee{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -2760,14 +2760,14 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/engineering)
 "kG" = (
 /obj/machinery/appliance/cooker/oven,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 1
 	},
 /obj/machinery/light/small{
@@ -2848,7 +2848,7 @@
 	dir = 4;
 	pixel_x = 27
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 6
 	},
 /turf/simulated/floor/carpet,
@@ -2858,7 +2858,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "kW" = (
-/obj/effect/floor_decal/spline/fancy{
+/obj/effect/turf_decal/spline/fancy{
 	dir = 5
 	},
 /turf/simulated/floor/bmarble,
@@ -2887,7 +2887,7 @@
 /obj/machinery/camera{
 	dir = 8
 	},
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -2896,14 +2896,14 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/effect/floor_decal/plaque{
+/obj/effect/turf_decal/plaque{
 	desc = "Although the orbital college where this chain of grisly murders once took place has been long since scuttled and scrapped, the public psyche has not yet forgotten the bloody deeds of the Valentine Killer.";
 	name = "The Valentine Killer"
 	},
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "ld" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/airless,
 /area/space)
 "lf" = (
@@ -2914,7 +2914,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/loading{
+/obj/effect/turf_decal/industrial/loading{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
@@ -2983,7 +2983,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/carpet,
@@ -3006,7 +3006,7 @@
 /turf/simulated/wall/r_wall,
 /area/tradeport/expansion)
 "lw" = (
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/structure/closet/crate/secure/weapon{
 	req_access = list(160)
 	},
@@ -3031,10 +3031,10 @@
 /area/tradeport/dock)
 "lz" = (
 /obj/structure/undies_wardrobe,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/carpet,
@@ -3043,7 +3043,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/tradeport)
 "lC" = (
-/obj/effect/floor_decal/spline/fancy{
+/obj/effect/turf_decal/spline/fancy{
 	dir = 8
 	},
 /turf/simulated/floor/bmarble,
@@ -3105,7 +3105,7 @@
 /area/tradeport/atmospherics)
 "lM" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
@@ -3180,7 +3180,7 @@
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
 "mi" = (
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
@@ -3246,7 +3246,7 @@
 	dir = 4
 	},
 /obj/structure/closet/firecloset,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/random/coin,
 /turf/simulated/floor/plating,
 /area/tradeport)
@@ -3256,7 +3256,7 @@
 /obj/machinery/door/airlock/silver{
 	name = "Laundry Room"
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/white,
@@ -3336,7 +3336,7 @@
 /area/tradeport/spine)
 "mN" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/floor_decal/grass_edge,
+/obj/effect/turf_decal/grass_edge,
 /turf/simulated/floor/outdoors/dirtlight,
 /area/tradeport/cyndishow)
 "mP" = (
@@ -3434,19 +3434,19 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/structure/closet/crate/secure/loot,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "nf" = (
 /obj/effect/debris/cleanable/spiderling_remains,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport)
 "ng" = (
 /obj/structure/table/glass,
 /obj/item/reagent_containers/food/snacks/cheesyfries,
-/obj/effect/floor_decal/spline/fancy/wood/cee{
+/obj/effect/turf_decal/spline/fancy/wood/cee{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -3476,7 +3476,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/dock)
 "nj" = (
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
@@ -3484,7 +3484,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 1
 	},
 /obj/structure/cable/green,
@@ -3582,7 +3582,7 @@
 /area/shuttle/trade_ship/cockpit)
 "nz" = (
 /obj/structure/transit_tube,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
@@ -3591,7 +3591,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport)
 "nB" = (
@@ -3639,7 +3639,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "nI" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden{
@@ -3659,7 +3659,7 @@
 "nK" = (
 /obj/structure/bed,
 /obj/item/bedsheet/blue,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/dark,
@@ -3700,7 +3700,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/turf_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/engineering)
 "nS" = (
@@ -3760,7 +3760,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "oe" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/structure/closet/crate/secure{
@@ -3905,7 +3905,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/commhall)
 "oI" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 6
 	},
 /obj/structure/window/reinforced/tinted,
@@ -3936,7 +3936,7 @@
 /obj/structure/sign/nosmoking_1{
 	pixel_y = 30
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "oM" = (
@@ -3964,7 +3964,7 @@
 	req_access = list(160);
 	req_one_access = null
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/blue,
@@ -4001,7 +4001,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "oU" = (
@@ -4024,7 +4024,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/commons)
 "oZ" = (
-/obj/effect/floor_decal/spline/fancy{
+/obj/effect/turf_decal/spline/fancy{
 	dir = 9
 	},
 /turf/simulated/floor/bmarble,
@@ -4045,7 +4045,7 @@
 	dir = 4
 	},
 /obj/item/toy/plushie/bear_panda,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
 /turf/simulated/floor/carpet,
@@ -4099,7 +4099,7 @@
 /obj/item/roller{
 	pixel_y = 8
 	},
-/obj/effect/floor_decal/corner/blue/border,
+/obj/effect/turf_decal/corner/blue/border,
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
 "pr" = (
@@ -4147,7 +4147,7 @@
 "pv" = (
 /obj/structure/medical_stand,
 /obj/structure/window/reinforced,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
@@ -4166,7 +4166,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "px" = (
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/structure/closet/crate,
 /obj/item/stolenpackage,
 /obj/item/stolenpackage,
@@ -4316,7 +4316,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -4401,7 +4401,7 @@
 	id = "cyndi";
 	name = "C&K Shutters"
 	},
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -4486,7 +4486,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "qz" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/structure/largecrate/animal/cow,
@@ -4524,7 +4524,7 @@
 /area/shuttle/trade_ship/general)
 "qE" = (
 /obj/machinery/vending/giftvendor,
-/obj/effect/floor_decal/spline/fancy/wood/cee{
+/obj/effect/turf_decal/spline/fancy/wood/cee{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -4673,7 +4673,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "rs" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/airless,
@@ -4813,10 +4813,10 @@
 /area/tradeport/safari)
 "rZ" = (
 /obj/machinery/vending/loadout,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
 "sa" = (
@@ -4834,7 +4834,7 @@
 /area/tradeport/spine)
 "sc" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/effect/floor_decal/corner/blue/diagonal{
+/obj/effect/turf_decal/corner/blue/diagonal{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -4871,7 +4871,7 @@
 	},
 /obj/structure/table/alien,
 /obj/item/phone,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 10
 	},
 /turf/simulated/floor/carpet/blue,
@@ -4891,7 +4891,7 @@
 	},
 /obj/structure/table/alien,
 /obj/item/folder/blue_captain,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 6
 	},
 /turf/simulated/floor/carpet/blue,
@@ -4915,7 +4915,7 @@
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/safari)
 "sl" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 9
 	},
 /obj/structure/closet/crate/secure/hydrosec{
@@ -4944,7 +4944,7 @@
 /area/tradeport/dock)
 "sq" = (
 /obj/machinery/smartfridge/chemistry,
-/obj/effect/floor_decal/corner/blue/border,
+/obj/effect/turf_decal/corner/blue/border,
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
 "sr" = (
@@ -5011,14 +5011,14 @@
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 6
 	},
 /obj/item/pinpointer/nukeop,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndishow)
 "sE" = (
-/obj/effect/floor_decal/spline/fancy{
+/obj/effect/turf_decal/spline/fancy{
 	dir = 10
 	},
 /turf/simulated/floor/bmarble,
@@ -5062,7 +5062,7 @@
 	locked = 0;
 	req_access = list(160)
 	},
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/machinery/alarm/alarms_hidden{
 	dir = 4;
 	pixel_x = -22;
@@ -5097,7 +5097,7 @@
 	name = "cigars crate";
 	req_access = list(160)
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -5174,7 +5174,7 @@
 "tn" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/purple,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/carpet,
@@ -5233,7 +5233,7 @@
 /turf/simulated/floor/wood,
 /area/shuttle/trade_ship/general)
 "tv" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/dock)
 "tw" = (
@@ -5289,7 +5289,7 @@
 	pixel_x = -26;
 	specialfunctions = 4
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /turf/simulated/floor/carpet,
@@ -5301,18 +5301,18 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/effect/floor_decal/spline/plain,
+/obj/effect/turf_decal/spline/plain,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndishow)
 "tM" = (
 /obj/structure/window/reinforced,
-/obj/effect/floor_decal/plaque{
+/obj/effect/turf_decal/plaque{
 	desc = "Ancient tombs like these are common across multiple species. The final resting place of Ahten-Ka is a popular topic amongst modern occult enthusiasts, who still debate whether the strange occurrence at that cyclopean pyramid were in fact early instances of Low Frequency Wave interference on humankind."
 	},
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tradeport/cyndishow)
 "tN" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/structure/largecrate/animal/cat,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -5352,7 +5352,7 @@
 /turf/simulated/floor/tiled/old_tile/red,
 /area/tradeport/commhall)
 "tU" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -5412,7 +5412,7 @@
 /turf/simulated/floor/grass,
 /area/tradeport/safarizoo)
 "uc" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/neutral,
@@ -5553,7 +5553,7 @@
 /turf/simulated/floor/tiled/old_tile/white,
 /area/tradeport)
 "uQ" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/structure/closet/crate/freezer/rations,
 /obj/random/mre,
 /obj/random/mre,
@@ -5579,7 +5579,7 @@
 	dir = 8;
 	pixel_x = -26
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 10
 	},
 /turf/simulated/floor/carpet,
@@ -5605,7 +5605,7 @@
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 8
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 6
 	},
 /obj/landmark{
@@ -5730,7 +5730,7 @@
 	dir = 4
 	},
 /obj/item/toy/plushie/bear_space,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
 /turf/simulated/floor/carpet,
@@ -5741,10 +5741,10 @@
 	prices = list();
 	products = list(/obj/item/storage/fancy/cigarettes = 10, /obj/item/storage/box/matches = 10, /obj/item/flame/lighter/zippo = 4, /obj/item/clothing/mask/smokable/cigarette/cigar/havana = 2)
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
 "vy" = (
@@ -5795,7 +5795,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 5
 	},
 /obj/structure/window/reinforced/tinted{
@@ -5822,7 +5822,7 @@
 	dir = 4;
 	req_one_access = list(160)
 	},
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 4
 	},
 /turf/simulated/floor/wmarble,
@@ -5833,7 +5833,7 @@
 	pixel_x = -35;
 	pixel_y = 3
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 9
 	},
 /turf/simulated/floor/carpet,
@@ -5847,7 +5847,7 @@
 	dir = 4;
 	pixel_x = 26
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 6
 	},
 /turf/simulated/floor/carpet,
@@ -5860,7 +5860,7 @@
 	dir = 4;
 	pixel_x = 25
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 6
 	},
 /turf/simulated/floor/carpet,
@@ -5897,7 +5897,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/spline/fancy/wood/cee{
+/obj/effect/turf_decal/spline/fancy/wood/cee{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -5958,7 +5958,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/cyndishow)
 "vZ" = (
-/obj/effect/floor_decal/spline/fancy{
+/obj/effect/turf_decal/spline/fancy{
 	dir = 6
 	},
 /turf/simulated/floor/bmarble,
@@ -5970,7 +5970,7 @@
 /turf/simulated/floor/beach/sand,
 /area/tradeport/safarizoo)
 "wb" = (
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
 /obj/item/material/knife/tacknife/dataknife,
 /obj/item/gun/energy/frontier/taj,
@@ -6012,7 +6012,7 @@
 	dir = 1;
 	pixel_y = 27
 	},
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 5
 	},
 /turf/simulated/floor/wmarble,
@@ -6052,7 +6052,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/machinery/door/airlock/glass{
 	name = "Showers"
 	},
@@ -6078,7 +6078,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/expansion)
 "wz" = (
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/machinery/light,
 /obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/tiled/dark,
@@ -6095,7 +6095,7 @@
 /area/tradeport/atmospherics)
 "wE" = (
 /obj/structure/table/alien,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 9
 	},
 /turf/simulated/floor/carpet/blue,
@@ -6174,7 +6174,7 @@
 	frequency = 1380;
 	id_tag = "trade_solars"
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/engineering)
 "wS" = (
@@ -6184,7 +6184,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/blue/diagonal,
+/obj/effect/turf_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
 "wW" = (
@@ -6197,7 +6197,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport)
 "wY" = (
@@ -6207,7 +6207,7 @@
 "wZ" = (
 /obj/structure/bed,
 /obj/item/bedsheet/blue,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6228,7 +6228,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(160)
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/shuttle/floor/white,
@@ -6278,7 +6278,7 @@
 /area/shuttle/trade_ship/cockpit)
 "xh" = (
 /obj/structure/transit_tube,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
@@ -6294,7 +6294,7 @@
 /obj/item/storage/firstaid/adv,
 /obj/item/storage/firstaid/adv,
 /obj/structure/table/rack/shelf/steel,
-/obj/effect/floor_decal/corner/blue/border,
+/obj/effect/turf_decal/corner/blue/border,
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
 "xk" = (
@@ -6333,12 +6333,12 @@
 	pixel_y = -28;
 	req_access = list(160)
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "xq" = (
 /obj/structure/undies_wardrobe,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/carpet,
@@ -6370,7 +6370,7 @@
 	name = "Nebula Gas - Dormitories";
 	req_access = list(160)
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -6485,7 +6485,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4,
+/obj/effect/turf_decal/steeldecal/steel_decals4,
 /obj/structure/sign/poster{
 	pixel_x = -32
 	},
@@ -6531,7 +6531,7 @@
 /turf/simulated/floor,
 /area/tradeport/pads)
 "xX" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/airless,
@@ -6564,7 +6564,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -6634,7 +6634,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 9
 	},
 /turf/simulated/floor/carpet,
@@ -6660,7 +6660,7 @@
 	pixel_y = 27
 	},
 /obj/structure/bed/chair/sofa/black/right,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 9
 	},
 /obj/landmark{
@@ -6714,7 +6714,7 @@
 	dir = 8;
 	start_pressure = 740.5
 	},
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "yy" = (
@@ -6744,7 +6744,7 @@
 	dir = 1
 	},
 /obj/structure/bed/chair/sofa/black/corner,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
 /obj/landmark{
@@ -6786,7 +6786,7 @@
 	name = "Nebula Gas - Rec Area";
 	req_access = list(160)
 	},
-/obj/effect/floor_decal/spline/fancy/wood/cee{
+/obj/effect/turf_decal/spline/fancy/wood/cee{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -6812,7 +6812,7 @@
 "yS" = (
 /obj/machinery/atmospherics/pipe/tank/phoron,
 /obj/structure/window/reinforced/tinted,
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/turf_decal/industrial/outline/red,
 /turf/simulated/floor/plating,
 /area/shuttle/trade_ship/general)
 "yU" = (
@@ -6882,7 +6882,7 @@
 "zm" = (
 /obj/structure/table/marble,
 /obj/machinery/reagentgrinder,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 9
 	},
 /turf/simulated/floor/wmarble,
@@ -6894,7 +6894,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /turf/simulated/floor/carpet,
@@ -6958,7 +6958,7 @@
 	id = "cyndi";
 	name = "C&K Shutters"
 	},
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 6
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -6994,7 +6994,7 @@
 	pixel_y = -28;
 	req_access = list(160)
 	},
-/obj/effect/floor_decal/corner/blue/border,
+/obj/effect/turf_decal/corner/blue/border,
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
 "zD" = (
@@ -7002,7 +7002,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/tradeport)
 "zF" = (
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
 /obj/item/pizzabox/pineapple,
 /obj/item/pizzabox/pineapple,
@@ -7059,7 +7059,7 @@
 "zP" = (
 /obj/structure/table/marble,
 /obj/machinery/microwave,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 1
 	},
 /turf/simulated/floor/wmarble,
@@ -7071,11 +7071,11 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "zT" = (
-/obj/effect/floor_decal/corner/blue/diagonal,
+/obj/effect/turf_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
 "zU" = (
@@ -7116,7 +7116,7 @@
 	name = "Cargo Hold";
 	req_access = list(160)
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -7133,7 +7133,7 @@
 /area/tradeport/facility)
 "Ai" = (
 /obj/machinery/light,
-/obj/effect/floor_decal/industrial/loading{
+/obj/effect/turf_decal/industrial/loading{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile/purple,
@@ -7177,7 +7177,7 @@
 /obj/random/energy,
 /obj/random/handgun,
 /obj/random/weapon/guarenteed,
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
 "As" = (
@@ -7222,7 +7222,7 @@
 /turf/simulated/floor/tiled/old_tile/blue,
 /area/tradeport)
 "AH" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/dark,
@@ -7272,7 +7272,7 @@
 /area/tradeport/pads)
 "Bb" = (
 /obj/structure/bed/chair,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/carpet,
@@ -7281,7 +7281,7 @@
 /obj/machinery/vending/medical{
 	req_access = null
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/white,
@@ -7324,10 +7324,10 @@
 /area/tradeport/safarizoo)
 "Bm" = (
 /obj/machinery/vending/loadout/overwear,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
 "Bn" = (
@@ -7350,7 +7350,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "Bs" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -7451,7 +7451,7 @@
 	},
 /obj/structure/table/marble,
 /obj/item/gun/energy/alien,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -7503,7 +7503,7 @@
 /area/shuttle/trade_ship/general)
 "BQ" = (
 /obj/machinery/chem_master/condimaster,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 10
 	},
 /turf/simulated/floor/wmarble,
@@ -7560,7 +7560,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 8
 	},
 /turf/simulated/floor/wmarble,
@@ -7600,7 +7600,7 @@
 /obj/machinery/oxygen_pump/anesthetic{
 	pixel_y = 29
 	},
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/monotile,
@@ -7622,7 +7622,7 @@
 	pixel_x = -26;
 	specialfunctions = 4
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /turf/simulated/floor/carpet,
@@ -7638,7 +7638,7 @@
 	dir = 8;
 	name = "C&K Cash Register"
 	},
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -7659,11 +7659,11 @@
 /obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/effect/debris/cleanable/blood/gibs/robot/limb,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "Cz" = (
@@ -7674,10 +7674,10 @@
 /turf/simulated/floor/beach/sand,
 /area/tradeport/safarizoo)
 "CC" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "CG" = (
@@ -7716,7 +7716,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/trade_ship/general)
 "CO" = (
@@ -7783,7 +7783,7 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/turf_decal/industrial/outline/red,
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	dir = 1
 	},
@@ -7812,7 +7812,7 @@
 	name = "Cargo Hold";
 	req_access = list(160)
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -7843,7 +7843,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/tradeport/engineering)
 "Df" = (
@@ -7955,7 +7955,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/effect/floor_decal/plaque{
+/obj/effect/turf_decal/plaque{
 	desc = "This diorama features soil and produce cultivated from the very place of the infamous massacre. The scarecrow came with the purchase for free, and is a guest favorite for photographs.";
 	name = "Durian V Massacre"
 	},
@@ -7968,7 +7968,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/tradeport/engineering)
 "DR" = (
@@ -7997,7 +7997,7 @@
 	dir = 5
 	},
 /obj/machinery/light/small,
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet,
 /area/tradeport/commons)
 "DX" = (
@@ -8033,7 +8033,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
 "Ej" = (
@@ -8082,7 +8082,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "Ep" = (
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cafeteria)
 "Eq" = (
@@ -8181,7 +8181,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -8245,7 +8245,7 @@
 /turf/simulated/floor/beach/sand,
 /area/tradeport/safarizoo)
 "EY" = (
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /obj/machinery/atmospherics/pipe/tank/air,
 /turf/simulated/floor/plating,
 /area/tradeport)
@@ -8272,7 +8272,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport)
 "Fj" = (
@@ -8334,7 +8334,7 @@
 /area/tradeport/spine)
 "Ft" = (
 /obj/structure/table/glass,
-/obj/effect/floor_decal/spline/fancy/wood/cee{
+/obj/effect/turf_decal/spline/fancy/wood/cee{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -8469,7 +8469,7 @@
 /area/tradeport/expansion)
 "FU" = (
 /obj/machinery/light,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 10
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -8507,7 +8507,7 @@
 /turf/simulated/floor,
 /area/tradeport/pads)
 "Gg" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Gl" = (
@@ -8561,7 +8561,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Gu" = (
-/obj/effect/floor_decal/corner_techfloor_grid{
+/obj/effect/turf_decal/corner_techfloor_grid{
 	dir = 5
 	},
 /turf/simulated/shuttle/floor/white,
@@ -8676,7 +8676,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "GV" = (
@@ -8785,7 +8785,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/tradeport)
 "Hx" = (
-/obj/effect/floor_decal/corner_techfloor_grid{
+/obj/effect/turf_decal/corner_techfloor_grid{
 	dir = 5
 	},
 /obj/machinery/light_switch{
@@ -8795,7 +8795,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/tradeport/commons)
 "Hy" = (
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/random/multiple/large_corp_crate,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
@@ -8868,10 +8868,10 @@
 /area/tradeport/spine)
 "Ik" = (
 /obj/machinery/vending/loadout/loadout_misc,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
 "Im" = (
@@ -8903,7 +8903,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy/wood/cee{
+/obj/effect/turf_decal/spline/fancy/wood/cee{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -8991,7 +8991,7 @@
 /obj/item/pen{
 	pixel_y = 4
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -9000,7 +9000,7 @@
 /obj/structure/table/rack/shelf/steel,
 /obj/item/defib_kit/loaded,
 /obj/item/defib_kit/jumper_kit/loaded,
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/white,
@@ -9012,7 +9012,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -9023,7 +9023,7 @@
 /turf/simulated/floor/tiled/freezer,
 /area/tradeport)
 "ID" = (
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/machinery/light,
 /obj/random/multiple/large_corp_crate,
 /turf/simulated/floor/tiled/dark,
@@ -9064,7 +9064,7 @@
 	},
 /obj/structure/table/marble,
 /obj/item/gun/energy/gun/fluff/gunsword,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 10
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -9074,7 +9074,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
 	},
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "IM" = (
@@ -9113,7 +9113,7 @@
 /turf/simulated/floor/wood,
 /area/shuttle/trade_ship/general)
 "IP" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -9152,7 +9152,7 @@
 /turf/simulated/shuttle/wall/voidcraft,
 /area/shuttle/trade_ship/general)
 "Ja" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /turf/simulated/floor/wood,
@@ -9162,7 +9162,7 @@
 	dir = 8;
 	start_pressure = 740.5
 	},
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Je" = (
@@ -9247,7 +9247,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "Js" = (
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/structure/closet/crate/secure/loot,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
@@ -9262,7 +9262,7 @@
 "Jx" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/blue,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/carpet,
@@ -9296,14 +9296,14 @@
 /area/space)
 "JC" = (
 /obj/structure/bed/chair/office/dark,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/shuttle/trade_ship/general)
 "JE" = (
 /obj/structure/window/reinforced,
-/obj/effect/floor_decal/plaque{
+/obj/effect/turf_decal/plaque{
 	desc = "This infamous set of antique armor belonged to an Old Earth warrior who died in battle. Although the details behind the Samurai's identity have long since been lost, rumors abound that this suit bears a powerful curse. Perhaps the spirit of that long dead Samurai still guards what is left of its remains.";
 	name = "Ancient Samurai"
 	},
@@ -9346,7 +9346,7 @@
 	dir = 8
 	},
 /obj/landmark/spawnpoint/job/trader,
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/blue,
 /area/tradeport/commons)
 "JJ" = (
@@ -9362,7 +9362,7 @@
 	name = "main fuel pump";
 	target_pressure = 15000
 	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/tradeport/pads)
 "JS" = (
@@ -9501,7 +9501,7 @@
 /turf/simulated/floor/airless,
 /area/space)
 "Kl" = (
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/machinery/light,
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/tiled/dark,
@@ -9559,7 +9559,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/facility)
 "KD" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 5
 	},
 /mob/living/bot/cleanbot/roomba/meido{
@@ -9638,7 +9638,7 @@
 	},
 /obj/structure/table/marble,
 /obj/item/gun/energy/decloner,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -9683,7 +9683,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/white,
@@ -9701,7 +9701,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-10"
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 6
 	},
 /obj/machinery/button/remote/blast_door{
@@ -9948,7 +9948,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "LY" = (
-/obj/effect/floor_decal/spline/fancy,
+/obj/effect/turf_decal/spline/fancy,
 /turf/simulated/floor/bmarble,
 /area/tradeport/cafeteria)
 "LZ" = (
@@ -10016,7 +10016,7 @@
 /area/tradeport/safarizoo)
 "Mp" = (
 /obj/structure/closet/firecloset,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/facility)
 "Mq" = (
@@ -10026,7 +10026,7 @@
 /turf/space,
 /area/space)
 "Mr" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 6
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -10036,7 +10036,7 @@
 /area/tradeport/pads)
 "Mt" = (
 /obj/machinery/camera,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -10050,7 +10050,7 @@
 	pixel_x = 22;
 	req_one_access = list(160)
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/carpet,
@@ -10069,7 +10069,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/engineering)
 "MA" = (
-/obj/effect/floor_decal/spline/fancy{
+/obj/effect/turf_decal/spline/fancy{
 	dir = 1
 	},
 /turf/simulated/floor/bmarble,
@@ -10157,7 +10157,7 @@
 /area/tradeport/cyndishow)
 "MN" = (
 /obj/structure/table/alien,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/blue,
@@ -10229,7 +10229,7 @@
 	dir = 1
 	},
 /obj/structure/flora/ausbushes,
-/obj/effect/floor_decal/grass_edge{
+/obj/effect/turf_decal/grass_edge{
 	dir = 8
 	},
 /turf/simulated/floor/outdoors/dirt,
@@ -10246,15 +10246,15 @@
 	pixel_y = 23;
 	text = "Text"
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
 "Ne" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/obj/effect/floor_decal/corner/blue/diagonal{
+/obj/effect/turf_decal/corner/blue/diagonal{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -10332,7 +10332,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport)
 "Nq" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /obj/structure/closet/crate/solar,
@@ -10417,7 +10417,7 @@
 /obj/machinery/floodlight{
 	anchored = 1
 	},
-/obj/effect/floor_decal/industrial/warning/full,
+/obj/effect/turf_decal/industrial/warning/full,
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
@@ -10562,7 +10562,7 @@
 /turf/simulated/floor/tiled/old_cargo/red,
 /area/shuttle/trade_ship/general)
 "Ol" = (
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/random/multiple/corp_crate/no_weapons,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
@@ -10648,14 +10648,14 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "OH" = (
 /turf/simulated/mineral/vacuum,
 /area/tradeport/pads)
 "OJ" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
 /obj/structure/cable/green{
@@ -10686,7 +10686,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 9
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport)
 "OQ" = (
@@ -10730,7 +10730,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/cafeteria)
 "OX" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /mob/living/bot/farmbot{
@@ -10760,7 +10760,7 @@
 /area/tradeport/spine)
 "Pa" = (
 /obj/machinery/camera,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -10810,7 +10810,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-8"
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/tradeport/engineering)
 "Pq" = (
@@ -10869,7 +10869,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 8
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "PE" = (
@@ -10891,7 +10891,7 @@
 	name = "Cargo Hold";
 	req_access = list(160)
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/dark,
@@ -10906,7 +10906,7 @@
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/commhall)
 "PO" = (
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /obj/structure/stasis_cage,
 /turf/simulated/floor/tiled/old_tile/yellow,
 /area/tradeport/safari)
@@ -10983,7 +10983,7 @@
 /area/tradeport/engineering)
 "Qa" = (
 /obj/item/material/gravemarker,
-/obj/effect/floor_decal/grass_edge{
+/obj/effect/turf_decal/grass_edge{
 	dir = 10
 	},
 /turf/simulated/floor/outdoors/dirt,
@@ -11037,7 +11037,7 @@
 /obj/machinery/camera{
 	dir = 4
 	},
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 1
 	},
 /turf/simulated/floor/plating,
@@ -11076,7 +11076,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "Qn" = (
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/tiled/dark,
 /area/tradeport/facility)
@@ -11239,7 +11239,7 @@
 	dir = 1
 	},
 /obj/machinery/light/small,
-/obj/effect/floor_decal/spline/plain,
+/obj/effect/turf_decal/spline/plain,
 /turf/simulated/floor/wmarble,
 /area/tradeport/cafeteria)
 "QQ" = (
@@ -11321,7 +11321,7 @@
 	pixel_y = 8
 	},
 /obj/item/pen/click,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
 /turf/simulated/floor/carpet/blue,
@@ -11444,7 +11444,7 @@
 	},
 /obj/item/toy/plushie/squid/blue,
 /obj/landmark/spawnpoint/job/trader,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 10
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -11547,7 +11547,7 @@
 	pixel_y = 22;
 	req_one_access = list(160)
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -11667,7 +11667,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-22"
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
 /turf/simulated/floor/carpet,
@@ -11792,7 +11792,7 @@
 "Te" = (
 /obj/structure/table/marble,
 /obj/item/reagent_containers/food/snacks/crayonburger_rbw,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 4
 	},
 /turf/simulated/floor/wmarble,
@@ -11836,12 +11836,12 @@
 /area/tradeport)
 "Tm" = (
 /obj/machinery/light,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/old_tile/purple,
 /area/tradeport/spine)
 "Tq" = (
 /obj/structure/stasis_cage,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/old_tile/beige,
 /area/tradeport/safari)
 "Ts" = (
@@ -11887,7 +11887,7 @@
 /area/tradeport)
 "Ty" = (
 /obj/structure/bed/chair/sofa/black,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -11959,7 +11959,7 @@
 /turf/simulated/wall/r_wall,
 /area/tradeport/atmospherics)
 "TL" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/dark,
@@ -11975,7 +11975,7 @@
 /turf/simulated/floor/reinforced,
 /area/tradeport/pads)
 "TR" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 9
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -11985,13 +11985,13 @@
 	dir = 8
 	},
 /obj/machinery/computer/arcade/battle,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 9
 	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
 "TT" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -12023,7 +12023,7 @@
 /obj/structure/closet/secure_closet/freezer/kitchen{
 	locked = 0
 	},
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 8
 	},
 /turf/simulated/floor/wmarble,
@@ -12086,7 +12086,7 @@
 /area/tradeport/commons)
 "Uo" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/item/kit/paint/honker,
 /obj/random/paintkit/durand,
 /obj/random/paintkit/gygax,
@@ -12108,7 +12108,7 @@
 	name = "Nebula Gas - Warehouse";
 	req_access = list(160)
 	},
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "Uv" = (
@@ -12118,10 +12118,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/blue/diagonal{
+/obj/effect/turf_decal/corner/blue/diagonal{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/blue/diagonal,
+/obj/effect/turf_decal/corner/blue/diagonal,
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
 "Uw" = (
@@ -12137,7 +12137,7 @@
 	name = "Nebula Gas - Dormitories";
 	req_access = list(160)
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/neutral,
@@ -12272,7 +12272,7 @@
 /obj/machinery/atmospherics/component/binary/passive_gate/on{
 	dir = 1
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport)
 "Ve" = (
@@ -12283,13 +12283,13 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
-/obj/effect/floor_decal/corner/blue/diagonal{
+/obj/effect/turf_decal/corner/blue/diagonal{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
 "Vf" = (
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/structure/table/rack/shelf/steel,
 /obj/item/storage/box/survival_knife,
 /obj/item/gun/energy/stripper,
@@ -12318,7 +12318,7 @@
 /obj/machinery/vending/boozeomat{
 	req_access = null
 	},
-/obj/effect/floor_decal/spline/plain,
+/obj/effect/turf_decal/spline/plain,
 /turf/simulated/floor/wmarble,
 /area/tradeport/cafeteria)
 "Vm" = (
@@ -12433,7 +12433,7 @@
 /area/tradeport/pads)
 "VN" = (
 /obj/machinery/vending/blood,
-/obj/effect/floor_decal/corner/blue/border,
+/obj/effect/turf_decal/corner/blue/border,
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
 "VO" = (
@@ -12484,7 +12484,7 @@
 	id = "cyndi";
 	name = "C&K Shutters"
 	},
-/obj/effect/floor_decal/spline/plain,
+/obj/effect/turf_decal/spline/plain,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndi)
 "VV" = (
@@ -12516,7 +12516,7 @@
 "Wa" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
 /obj/structure/catwalk,
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/mineral/floor/vacuum,
 /area/tradeport/pads)
 "Wc" = (
@@ -12538,7 +12538,7 @@
 /obj/item/clothing/gloves/sterile/nitrile,
 /obj/item/clothing/mask/surgical,
 /obj/item/clothing/suit/surgicalapron,
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -12754,7 +12754,7 @@
 	id = "cyndi";
 	name = "C&K Shutters"
 	},
-/obj/effect/floor_decal/spline/plain,
+/obj/effect/turf_decal/spline/plain,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/cyndi)
 "WT" = (
@@ -12805,7 +12805,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/engineering)
 "Xe" = (
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -12818,7 +12818,7 @@
 /turf/simulated/wall/r_wall,
 /area/tradeport/pads)
 "Xh" = (
-/obj/effect/floor_decal/spline/fancy{
+/obj/effect/turf_decal/spline/fancy{
 	dir = 4
 	},
 /turf/simulated/floor/bmarble,
@@ -12861,11 +12861,11 @@
 	},
 /obj/fiftyspawner/glass,
 /obj/fiftyspawner/steel,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/atmospherics)
 "Xo" = (
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
 "Xt" = (
@@ -12879,7 +12879,7 @@
 	dir = 1
 	},
 /obj/effect/gibspawner/human,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/hydro,
 /area/tradeport/cyndishow)
 "Xv" = (
@@ -12890,7 +12890,7 @@
 /area/tradeport/facility)
 "Xy" = (
 /obj/structure/flora/pumpkin,
-/obj/effect/floor_decal/grass_edge,
+/obj/effect/turf_decal/grass_edge,
 /turf/simulated/floor/outdoors/dirt,
 /area/tradeport/cyndishow)
 "Xz" = (
@@ -12967,7 +12967,7 @@
 /turf/simulated/floor/plating,
 /area/tradeport/spine)
 "XH" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 10
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -12985,7 +12985,7 @@
 	pixel_x = -25;
 	pixel_y = -26
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "XK" = (
@@ -13022,7 +13022,7 @@
 	pixel_y = 25
 	},
 /obj/map_helper/airlock/sensor/chamber_sensor,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "XS" = (
@@ -13048,7 +13048,7 @@
 "XV" = (
 /obj/structure/table/glass,
 /obj/item/reagent_containers/food/snacks/milosoup,
-/obj/effect/floor_decal/spline/fancy/wood/cee{
+/obj/effect/turf_decal/spline/fancy/wood/cee{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -13071,7 +13071,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "XY" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor,
 /area/tradeport/pads)
 "Yb" = (
@@ -13082,11 +13082,11 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "Yc" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/tradeport/facility)
 "Ye" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/structure/closet/crate/secure/science{
 	name = "NIF crate";
 	req_access = list(160)
@@ -13368,7 +13368,7 @@
 /turf/simulated/floor/wood,
 /area/tradeport/commons)
 "Zi" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/structure/cable/green{
@@ -13395,10 +13395,10 @@
 /area/tradeport/commons)
 "Zn" = (
 /obj/machinery/vending/loadout/gadget,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet,
 /area/tradeport/commons)
 "Zo" = (
@@ -13419,27 +13419,27 @@
 "Zq" = (
 /obj/structure/table/marble,
 /obj/item/pizzabox/meat,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 4
 	},
 /turf/simulated/floor/wmarble,
 /area/tradeport/cafeteria)
 "Zr" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /obj/structure/closet/crate/secure/loot,
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/general)
 "Zs" = (
 /obj/machinery/atmospherics/pipe/tank/phoron,
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/turf_decal/industrial/outline/red,
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/tradeport/pads)
 "Zt" = (
 /obj/machinery/media/jukebox,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -13505,7 +13505,7 @@
 /obj/machinery/computer/security/telescreen{
 	pixel_y = 29
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet,
@@ -13555,7 +13555,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "ZZ" = (

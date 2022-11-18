@@ -40,7 +40,7 @@
 /turf/template_noop,
 /area/class_d/POIs/ship)
 "ap" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
@@ -77,7 +77,7 @@
 /turf/simulated/floor/outdoors/classd,
 /area/class_d/POIs/ship)
 "ay" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/item/stack/material/steel,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
@@ -85,21 +85,21 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 6
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "aA" = (
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "aB" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/effect/debris/cleanable/cobweb2,
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
@@ -130,33 +130,33 @@
 /area/class_d/POIs/ship)
 "aG" = (
 /obj/machinery/fusion_fuel_compressor,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/effect/debris/cleanable/cobweb,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "aH" = (
 /obj/machinery/fusion_fuel_injector/mapped,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "aI" = (
 /obj/effect/debris/cleanable/blood/oil/streak{
 	amount = 0
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "aJ" = (
 /obj/machinery/power/rad_collector,
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning{
 	dir = 9
 	},
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "aK" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning{
 	dir = 5
 	},
 /turf/simulated/floor/classd,
@@ -167,19 +167,19 @@
 	dir = 4
 	},
 /obj/item/material/shard/phoron,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "aM" = (
 /obj/machinery/atmospherics/pipe/manifold4w/visible,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "aN" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
@@ -193,7 +193,7 @@
 /turf/simulated/floor/outdoors/classd,
 /area/class_d/POIs/ship)
 "aP" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "aQ" = (
@@ -207,8 +207,8 @@
 /obj/structure/closet/crate/oldreactor{
 	anchored = 1
 	},
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/classd,
@@ -217,22 +217,22 @@
 /obj/structure/closet/crate/oldreactor{
 	anchored = 1
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "aT" = (
 /obj/item/poi/brokenoldreactor{
 	anchored = 1
 	},
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "aU" = (
 /obj/machinery/atmospherics/pipe/simple/visible,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "aV" = (
@@ -249,7 +249,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 5
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "aX" = (
@@ -287,11 +287,11 @@
 /area/class_d/POIs/ship)
 "bd" = (
 /obj/machinery/atmospherics/pipe/tank/carbon_dioxide,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "be" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/item/projectile/bullet/magnetic/fuelrod,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
@@ -301,8 +301,8 @@
 /obj/structure/window/phoronreinforced{
 	dir = 8
 	},
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /turf/simulated/floor/classd,
@@ -310,8 +310,8 @@
 "bg" = (
 /obj/machinery/power/rad_collector,
 /obj/structure/window/phoronreinforced,
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "bh" = (
@@ -320,8 +320,8 @@
 	dir = 4
 	},
 /obj/structure/window/phoronreinforced,
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /turf/simulated/floor/classd,
@@ -336,19 +336,19 @@
 /obj/machinery/atmospherics/tvalve/digital{
 	dir = 8
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "bk" = (
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 8
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "bl" = (
 /obj/machinery/atmospherics/pipe/manifold/visible,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "bm" = (
@@ -373,17 +373,17 @@
 /turf/simulated/floor/outdoors/classd,
 /area/class_d/POIs/ship)
 "bo" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/structure/closet/crate/radiation,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "bp" = (
 /obj/effect/debris/cleanable/blood/oil,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/POIs/ship)
 "bq" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/effect/debris/cleanable/dirt,
 /obj/item/rcd,
 /turf/simulated/floor/classd,

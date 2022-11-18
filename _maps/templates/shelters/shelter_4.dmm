@@ -30,7 +30,7 @@
 "g" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/voidcraft/survival_pod,
-/obj/effect/floor_decal/industrial/danger/full,
+/obj/effect/turf_decal/industrial/danger/full,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 1;
@@ -125,7 +125,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/survivalpod)
 "l" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/machinery/suit_cycler{
 	departments = list("Engineering","Mining","Medical","Security","Atmos","HAZMAT","Construction","Biohazard","Emergency Medical Response","Crowd Control","Exploration","Pilot Blue","Pilot");
 	locked = 0
@@ -145,13 +145,13 @@
 /area/survivalpod)
 "o" = (
 /obj/machinery/mech_recharger,
-/obj/effect/floor_decal/industrial/warning/full,
+/obj/effect/turf_decal/industrial/warning/full,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/survivalpod)
 "p" = (
 /obj/machinery/door/airlock/voidcraft/survival_pod,
 /obj/structure/fans/tiny,
-/obj/effect/floor_decal/industrial/danger/full,
+/obj/effect/turf_decal/industrial/danger/full,
 /obj/machinery/door/blast/regular{
 	density = 0;
 	dir = 4;
@@ -191,7 +191,7 @@
 /area/survivalpod)
 "u" = (
 /obj/machinery/door/airlock/voidcraft/survival_pod,
-/obj/effect/floor_decal/industrial/hatch,
+/obj/effect/turf_decal/industrial/hatch,
 /turf/simulated/shuttle/floor/voidcraft,
 /area/survivalpod)
 "v" = (
@@ -204,7 +204,7 @@
 /area/survivalpod)
 "w" = (
 /obj/machinery/washing_machine,
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/survivalpod)
 "x" = (
@@ -222,7 +222,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning/full,
+/obj/effect/turf_decal/industrial/warning/full,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/survivalpod)
 "A" = (
@@ -384,7 +384,7 @@
 /area/survivalpod)
 "M" = (
 /obj/machinery/mech_recharger,
-/obj/effect/floor_decal/industrial/warning/full,
+/obj/effect/turf_decal/industrial/warning/full,
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/shuttle/floor/voidcraft/dark,
 /area/survivalpod)
@@ -410,7 +410,7 @@
 /area/survivalpod)
 "R" = (
 /obj/machinery/iv_drip,
-/obj/effect/floor_decal/industrial/loading{
+/obj/effect/turf_decal/industrial/loading{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor/voidcraft/light,

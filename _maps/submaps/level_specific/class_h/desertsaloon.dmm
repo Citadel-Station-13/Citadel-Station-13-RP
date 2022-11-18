@@ -68,7 +68,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
 "kG" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 9
 	},
 /obj/structure/railing{
@@ -114,7 +114,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
 "qh" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/blucarpet,
@@ -142,7 +142,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
 "tl" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /obj/structure/railing{
@@ -152,7 +152,7 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/class_h/POIs/saloon)
 "tt" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 10
 	},
 /obj/structure/railing{
@@ -213,7 +213,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
 "Dp" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /obj/structure/railing{
@@ -223,7 +223,7 @@
 /turf/simulated/floor/carpet/blucarpet,
 /area/class_h/POIs/saloon)
 "Et" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 8
 	},
 /obj/spawner/corpse/clown,
@@ -272,7 +272,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/wood/classh,
@@ -325,7 +325,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /obj/machinery/light/small/flicker,
@@ -333,7 +333,7 @@
 /area/class_h/POIs/saloon)
 "PU" = (
 /obj/structure/railing,
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/saloon)
 "Qs" = (
@@ -351,7 +351,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /turf/simulated/floor/wood/classh,

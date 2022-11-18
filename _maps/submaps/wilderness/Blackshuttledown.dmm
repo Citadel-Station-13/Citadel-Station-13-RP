@@ -78,14 +78,14 @@
 /obj/item/clothing/suit/space,
 /obj/item/clothing/suit/space,
 /obj/item/clothing/suit/space,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "ao" = (
 /obj/structure/dispenser/oxygen,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel,
@@ -101,7 +101,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "aq" = (
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 9
 	},
@@ -109,7 +109,7 @@
 /area/submap/Blackshuttledown)
 "ar" = (
 /obj/machinery/gibber,
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 1
 	},
@@ -119,7 +119,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 1
 	},
@@ -129,7 +129,7 @@
 /obj/machinery/bodyscanner{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 1
 	},
@@ -137,7 +137,7 @@
 /area/submap/Blackshuttledown)
 "au" = (
 /obj/machinery/body_scanconsole,
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 5
 	},
@@ -160,13 +160,13 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/Blackshuttledown)
 "ay" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "az" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -176,7 +176,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "aB" = (
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 8
 	},
@@ -195,7 +195,7 @@
 /area/submap/Blackshuttledown)
 "aF" = (
 /obj/machinery/organ_printer/flesh,
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 5
 	},
@@ -230,19 +230,19 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/Blackshuttledown)
 "aK" = (
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/turf_decal/borderfloor/corner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "aL" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "aM" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel,
@@ -261,7 +261,7 @@
 	icon_state = "tube1";
 	pixel_x = 0
 	},
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 4
 	},
@@ -269,7 +269,7 @@
 /area/submap/Blackshuttledown)
 "aQ" = (
 /obj/structure/table/steel,
-/obj/effect/floor_decal/borderfloor/full,
+/obj/effect/turf_decal/borderfloor/full,
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "aR" = (
@@ -278,11 +278,11 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/Blackshuttledown)
 "aS" = (
-/obj/effect/floor_decal/borderfloor/corner,
+/obj/effect/turf_decal/borderfloor/corner,
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "aT" = (
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "aU" = (
@@ -291,7 +291,7 @@
 	icon_state = "tube1";
 	pixel_x = 0
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
@@ -299,7 +299,7 @@
 "aV" = (
 /obj/structure/table/standard,
 /obj/item/storage/firstaid/surgery,
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 10
 	},
@@ -308,31 +308,31 @@
 "aW" = (
 /obj/structure/table/standard,
 /obj/item/tank/anesthetic,
-/obj/effect/floor_decal/corner/green/border,
+/obj/effect/turf_decal/corner/green/border,
 /turf/simulated/floor/tiled/white,
 /area/submap/Blackshuttledown)
 "aX" = (
-/obj/effect/floor_decal/corner/green/border,
+/obj/effect/turf_decal/corner/green/border,
 /turf/simulated/floor/tiled/white,
 /area/submap/Blackshuttledown)
 "aY" = (
 /obj/structure/table/standard,
 /obj/item/clothing/gloves/sterile,
 /obj/item/clothing/gloves/sterile,
-/obj/effect/floor_decal/corner/green/border,
+/obj/effect/turf_decal/corner/green/border,
 /turf/simulated/floor/tiled/white,
 /area/submap/Blackshuttledown)
 "aZ" = (
 /obj/structure/table/standard,
 /obj/item/reagent_containers/spray/sterilizine,
 /obj/item/reagent_containers/spray/sterilizine,
-/obj/effect/floor_decal/corner/green/border,
+/obj/effect/turf_decal/corner/green/border,
 /turf/simulated/floor/tiled/white,
 /area/submap/Blackshuttledown)
 "ba" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/masks,
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 6
 	},
@@ -343,7 +343,7 @@
 	icon_state = "tube1";
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
@@ -352,7 +352,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel,
@@ -376,19 +376,19 @@
 /area/submap/Blackshuttledown)
 "bg" = (
 /obj/machinery/computer/communications,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "bh" = (
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/turf_decal/borderfloor/corner{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "bi" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
@@ -443,7 +443,7 @@
 /area/submap/Blackshuttledown)
 "br" = (
 /obj/structure/table/steel,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -453,7 +453,7 @@
 	icon_state = "tube1";
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -464,7 +464,7 @@
 	icon_state = "tube1";
 	pixel_x = 0
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -493,13 +493,13 @@
 /area/submap/Blackshuttledown)
 "by" = (
 /obj/machinery/door/airlock/glass,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "bz" = (
-/obj/effect/floor_decal/corner/grey,
+/obj/effect/turf_decal/corner/grey,
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "bA" = (
@@ -521,11 +521,11 @@
 /area/submap/Blackshuttledown)
 "bE" = (
 /obj/machinery/door/airlock/glass,
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "bF" = (
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/turf_decal/borderfloor/corner{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -555,7 +555,7 @@
 /area/submap/Blackshuttledown)
 "bJ" = (
 /obj/machinery/computer/area_atmos,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel,
@@ -565,16 +565,16 @@
 /turf/template_noop,
 /area/submap/Blackshuttledown)
 "bL" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "bM" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -617,14 +617,14 @@
 	icon_state = "tube1";
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "bU" = (
 /obj/structure/bed/chair/office/dark,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
@@ -634,10 +634,10 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/Blackshuttledown)
 "bW" = (
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/turf_decal/borderfloor/corner{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/turf_decal/borderfloor/corner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -648,7 +648,7 @@
 	icon_state = "tube1";
 	pixel_x = 0
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel,
@@ -679,7 +679,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/submap/Blackshuttledown)
 "cd" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
@@ -724,14 +724,14 @@
 /obj/item/clothing/suit/space,
 /obj/item/clothing/suit/space,
 /obj/item/clothing/suit/space,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "ck" = (
 /obj/structure/dispenser/oxygen,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
@@ -772,14 +772,14 @@
 	},
 /area/submap/Blackshuttledown)
 "cr" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /mob/living/simple_mob/humanoid/merc/melee/sword/poi,
 /turf/simulated/floor/tiled/steel,
 /area/submap/Blackshuttledown)
 "cs" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /mob/living/simple_mob/humanoid/merc/ranged/laser/poi,

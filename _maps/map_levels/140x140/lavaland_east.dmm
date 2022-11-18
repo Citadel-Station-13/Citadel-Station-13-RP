@@ -66,7 +66,7 @@
 /turf/simulated/floor/tiled/dark/lavaland,
 /area/lavaland/east/transit)
 "aQ" = (
-/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/turf_decal/industrial/warning/dust,
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
@@ -80,7 +80,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "ba" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 4
 	},
 /obj/machinery/power/tracker,
@@ -90,7 +90,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "bd" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -115,7 +115,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "bn" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/secure/nanotrasen,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
@@ -136,8 +136,8 @@
 /area/lavaland/east/colony)
 "bv" = (
 /obj/structure/closet/crate/medical/blood,
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/blue/border,
+/obj/effect/turf_decal/borderfloorwhite,
+/obj/effect/turf_decal/corner/blue/border,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "bF" = (
@@ -186,7 +186,7 @@
 "cQ" = (
 /obj/structure/table/glass,
 /obj/random/medical,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "cU" = (
@@ -208,7 +208,7 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/explored)
 "dk" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
 "dx" = (
@@ -217,20 +217,20 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "dI" = (
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 10
 	},
-/obj/effect/floor_decal/borderfloorwhite/corner2{
+/obj/effect/turf_decal/borderfloorwhite/corner2{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/blue/bordercorner2{
+/obj/effect/turf_decal/corner/blue/bordercorner2{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -275,23 +275,23 @@
 /turf/simulated/mineral/triumph/lavaland,
 /area/lavaland/east/explored)
 "fL" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "fO" = (
 /obj/machinery/computer/operating,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "fP" = (
-/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/turf_decal/industrial/warning/dust,
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
@@ -301,12 +301,12 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "fT" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/xion,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "ge" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /obj/structure/cable/yellow{
@@ -327,7 +327,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "gp" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/internals,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
@@ -343,10 +343,10 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
 "gI" = (
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 10
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4,
+/obj/effect/turf_decal/steeldecal/steel_decals4,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "gK" = (
@@ -358,25 +358,25 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "gV" = (
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 6
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 1
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "hn" = (
 /obj/structure/table/marble,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "hr" = (
 /obj/effect/gibspawner/human,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "hu" = (
@@ -405,14 +405,14 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/explored)
 "iL" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "iX" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 10
 	},
 /obj/structure/simple_door/hardwood,
@@ -423,7 +423,7 @@
 /area/lavaland/east/colony)
 "jz" = (
 /obj/structure/table/hardwoodtable,
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /obj/item/flame/candle/everburn,
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
@@ -454,16 +454,16 @@
 "jK" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 10
 	},
-/obj/effect/floor_decal/borderfloorwhite/corner2{
+/obj/effect/turf_decal/borderfloorwhite/corner2{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/blue/bordercorner2{
+/obj/effect/turf_decal/corner/blue/bordercorner2{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -476,7 +476,7 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/east/colony)
 "jU" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 10
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
@@ -485,7 +485,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "kh" = (
-/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/turf_decal/industrial/warning/dust,
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
@@ -498,8 +498,8 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "km" = (
-/obj/effect/floor_decal/corner/red/diagonal,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/corner/red/diagonal,
+/obj/effect/turf_decal/spline/plain{
 	dir = 4
 	},
 /obj/machinery/door/window/eastright,
@@ -549,16 +549,16 @@
 /obj/structure/bed/chair/backed_grey{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 6
 	},
-/obj/effect/floor_decal/borderfloorwhite/corner2{
+/obj/effect/turf_decal/borderfloorwhite/corner2{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/blue/bordercorner2{
+/obj/effect/turf_decal/corner/blue/bordercorner2{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -567,13 +567,13 @@
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 4
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
 "lp" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -608,8 +608,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4,
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4,
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -621,7 +621,7 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
 "mJ" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "mK" = (
@@ -636,7 +636,7 @@
 /area/lavaland/east/colony)
 "mX" = (
 /obj/structure/table/hardwoodtable,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
@@ -646,12 +646,12 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
 "nc" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/nanotrasen,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "ne" = (
-/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/turf_decal/industrial/warning/dust,
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
@@ -661,10 +661,10 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "nh" = (
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -700,10 +700,10 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "nJ" = (
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -713,8 +713,8 @@
 /turf/simulated/floor/outdoors/grass/lavaland/interior,
 /area/lavaland/east/colony)
 "nR" = (
-/obj/effect/floor_decal/steeldecal/steel_decals10,
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10,
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
 /obj/structure/window/reinforced{
@@ -724,11 +724,11 @@
 	dir = 4
 	},
 /obj/structure/curtain/open/shower,
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/steeldecal/steel_decals10,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "oh" = (
@@ -754,10 +754,10 @@
 "ow" = (
 /obj/item/material/shard,
 /obj/structure/table,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -766,16 +766,16 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "oI" = (
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorwhite/corner2{
+/obj/effect/turf_decal/borderfloorwhite/corner2{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/blue/bordercorner2{
+/obj/effect/turf_decal/corner/blue/bordercorner2{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -794,10 +794,10 @@
 /area/lavaland/east/colony)
 "pj" = (
 /obj/structure/table/glass,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 10
 	},
 /obj/random/medical,
@@ -811,10 +811,10 @@
 /area/lavaland/east/colony)
 "pz" = (
 /obj/structure/bed/roller,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 5
 	},
 /obj/effect/decal/remains/mummy1,
@@ -859,10 +859,10 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "qX" = (
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
 /obj/machinery/shower{
@@ -870,10 +870,10 @@
 	},
 /obj/item/material/shard,
 /obj/structure/curtain/open/shower,
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -884,7 +884,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "ro" = (
-/obj/effect/floor_decal/industrial/warning/dust/corner,
+/obj/effect/turf_decal/industrial/warning/dust/corner,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -895,13 +895,13 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced,
-/obj/effect/floor_decal/steeldecal/steel_decals10,
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10,
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
 /obj/structure/curtain/open/shower,
-/obj/effect/floor_decal/steeldecal/steel_decals10,
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10,
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -924,15 +924,15 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "sx" = (
 /mob/living/simple_mob/mechanical/cyber_horror/surt,
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 9
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -942,12 +942,12 @@
 /turf/simulated/floor/water/lavaland/interior,
 /area/lavaland/east/colony)
 "sR" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/gilthari,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "tb" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 8
 	},
 /obj/structure/cable/yellow{
@@ -959,7 +959,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "tk" = (
-/obj/effect/floor_decal/industrial/warning/dust/corner{
+/obj/effect/turf_decal/industrial/warning/dust/corner{
 	dir = 4
 	},
 /obj/structure/cable/yellow{
@@ -997,7 +997,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "tC" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 6
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
@@ -1009,7 +1009,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "tN" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
@@ -1019,7 +1019,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
 "tZ" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 5
 	},
 /obj/structure/cable/yellow{
@@ -1058,7 +1058,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
 "vi" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -1067,7 +1067,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "vk" = (
-/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/turf_decal/industrial/warning/dust,
 /mob/living/simple_mob/mechanical/cyber_horror/surt,
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
@@ -1080,7 +1080,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "vy" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /obj/effect/debris/cleanable/blood,
@@ -1103,7 +1103,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "vH" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /obj/structure/cable/yellow{
@@ -1155,10 +1155,10 @@
 /area/lavaland/east/colony)
 "wF" = (
 /mob/living/simple_mob/mechanical/cyber_horror/tajaran/surt,
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 10
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4,
+/obj/effect/turf_decal/steeldecal/steel_decals4,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "wL" = (
@@ -1226,10 +1226,10 @@
 /area/lavaland/east/colony)
 "xG" = (
 /obj/effect/gibspawner/human,
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 9
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -1241,13 +1241,13 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "xM" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/einstein,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "xO" = (
 /obj/structure/table/marble,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 8
 	},
 /obj/machinery/light,
@@ -1284,10 +1284,10 @@
 	icon_state = "biohazard";
 	name = "biohazard bin"
 	},
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -1297,16 +1297,16 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "yU" = (
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 9
 	},
-/obj/effect/floor_decal/borderfloorwhite/corner2{
+/obj/effect/turf_decal/borderfloorwhite/corner2{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/blue/bordercorner2{
+/obj/effect/turf_decal/corner/blue/bordercorner2{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -1342,14 +1342,14 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
 "zD" = (
-/obj/effect/floor_decal/steeldecal/steel_decals4,
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4,
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "zH" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 8
 	},
 /obj/structure/cable/yellow{
@@ -1362,7 +1362,7 @@
 /area/lavaland/east/colony)
 "zT" = (
 /obj/structure/ore_box,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Am" = (
@@ -1377,10 +1377,10 @@
 /area/lavaland/east/colony)
 "AN" = (
 /mob/living/simple_mob/mechanical/cyber_horror/surt,
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -1389,7 +1389,7 @@
 /obj/structure/closet/crate/bin{
 	anchored = 1
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "AY" = (
@@ -1404,10 +1404,10 @@
 "Bi" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 9
 	},
 /obj/effect/gibspawner/human,
@@ -1419,7 +1419,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "BA" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "BB" = (
@@ -1430,10 +1430,10 @@
 /obj/machinery/oxygen_pump/anesthetic{
 	pixel_y = 28
 	},
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 9
 	},
 /obj/effect/gibspawner/robot,
@@ -1442,8 +1442,8 @@
 "BM" = (
 /obj/item/material/shard,
 /obj/structure/table,
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/blue/border,
+/obj/effect/turf_decal/borderfloorwhite,
+/obj/effect/turf_decal/corner/blue/border,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "BQ" = (
@@ -1466,7 +1466,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Cu" = (
-/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/turf_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "Cx" = (
@@ -1485,14 +1485,14 @@
 /area/lavaland/east/colony)
 "Di" = (
 /obj/structure/table/marble,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Dl" = (
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/blue/border,
+/obj/effect/turf_decal/borderfloorwhite,
+/obj/effect/turf_decal/corner/blue/border,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Do" = (
@@ -1505,7 +1505,7 @@
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 8
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
@@ -1523,7 +1523,7 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/colony)
 "DB" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 9
 	},
 /obj/structure/simple_door/hardwood,
@@ -1537,7 +1537,7 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/colony)
 "DF" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
@@ -1557,7 +1557,7 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/east/colony)
 "Ew" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 6
 	},
 /obj/structure/cable/yellow{
@@ -1580,13 +1580,13 @@
 /obj/structure/bed/chair/sofa/black/left{
 	dir = 4
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
 "Fx" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /obj/structure/sign/warning/high_voltage{
@@ -1604,17 +1604,17 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
 "FB" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/science,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "FC" = (
 /obj/structure/table/hardwoodtable,
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
 "FG" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /obj/effect/gibspawner/generic,
@@ -1629,17 +1629,17 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "FU" = (
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 9
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Gy" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "GF" = (
@@ -1671,10 +1671,10 @@
 "HQ" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 8
 	},
 /obj/effect/decal/remains/human,
@@ -1700,10 +1700,10 @@
 /area/lavaland/east/colony)
 "IH" = (
 /obj/structure/bed/roller,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -1716,18 +1716,18 @@
 /area/lavaland/east/colony)
 "IP" = (
 /obj/machinery/iv_drip,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 6
 	},
-/obj/effect/floor_decal/borderfloorwhite/corner2,
-/obj/effect/floor_decal/corner/blue/bordercorner2,
+/obj/effect/turf_decal/borderfloorwhite/corner2,
+/obj/effect/turf_decal/corner/blue/bordercorner2,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "IS" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 9
 	},
 /obj/structure/cable/yellow{
@@ -1736,7 +1736,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "Jh" = (
-/obj/effect/floor_decal/spline/plain,
+/obj/effect/turf_decal/spline/plain,
 /obj/machinery/door/airlock/glass_external{
 	density = 0;
 	icon_state = "door_open";
@@ -1774,17 +1774,17 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Km" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Kt" = (
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 9
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -1813,7 +1813,7 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/colony)
 "Ld" = (
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /obj/structure/sign/poster{
 	pixel_x = -32
 	},
@@ -1829,7 +1829,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "LF" = (
-/obj/effect/floor_decal/industrial/warning/dust/corner{
+/obj/effect/turf_decal/industrial/warning/dust/corner{
 	dir = 8
 	},
 /obj/structure/cable/yellow{
@@ -1855,14 +1855,14 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Ml" = (
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 6
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -1893,7 +1893,7 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/colony)
 "Ns" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/medical,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
@@ -1906,7 +1906,7 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/east/colony)
 "NF" = (
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -1924,7 +1924,7 @@
 /area/lavaland/east/colony)
 "NY" = (
 /obj/structure/table/hardwoodtable,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /obj/item/flame/candle/everburn,
@@ -1940,11 +1940,11 @@
 /turf/simulated/floor/outdoors/dirt/lavaland/interior,
 /area/lavaland/east/colony)
 "Ot" = (
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
 "Oy" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 4
 	},
 /obj/structure/cable/yellow{
@@ -1956,13 +1956,13 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "OH" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "OM" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -1979,7 +1979,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
 "Pl" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
@@ -1989,7 +1989,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Pr" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 4
 	},
 /obj/structure/cable/yellow{
@@ -2015,10 +2015,10 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/east/colony)
 "Qc" = (
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -2040,13 +2040,13 @@
 /turf/simulated/floor/outdoors/dirt/lavaland/interior,
 /area/lavaland/east/colony)
 "Qy" = (
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 5
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "QJ" = (
@@ -2054,11 +2054,11 @@
 /area/lavaland/east/explored)
 "QK" = (
 /obj/structure/table/steel_reinforced,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/east/colony)
 "Re" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/secure/aether,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
@@ -2073,7 +2073,7 @@
 /obj/structure/bed/chair/sofa/black/right{
 	dir = 8
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
@@ -2099,7 +2099,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "RI" = (
@@ -2108,14 +2108,14 @@
 /area/lavaland/east/colony)
 "RJ" = (
 /obj/machinery/mineral/input,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "RK" = (
 /turf/simulated/floor/outdoors/dirt/lavaland,
 /area/lavaland/east/colony)
 "RL" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 10
 	},
 /obj/structure/cable/yellow{
@@ -2181,13 +2181,13 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "SS" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
 /area/lavaland/east/colony)
 "SU" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/hydroponics,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
@@ -2210,7 +2210,7 @@
 /area/lavaland/east/colony)
 "Tl" = (
 /obj/structure/bed/chair/wood,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Tm" = (
@@ -2222,7 +2222,7 @@
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/east/explored)
 "Tv" = (
-/obj/effect/floor_decal/corner/red/diagonal,
+/obj/effect/turf_decal/corner/red/diagonal,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Ty" = (
@@ -2243,7 +2243,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "TI" = (
-/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/turf_decal/industrial/warning/dust,
 /obj/machinery/power/solar,
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
@@ -2270,7 +2270,7 @@
 /turf/simulated/floor/tiled/dark/lavaland,
 /area/lavaland/east/transit)
 "TY" = (
-/obj/effect/floor_decal/industrial/warning/dust/corner{
+/obj/effect/turf_decal/industrial/warning/dust/corner{
 	dir = 1
 	},
 /obj/structure/cable/yellow{
@@ -2279,10 +2279,10 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "Ui" = (
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -2310,11 +2310,11 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "Uz" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 9
 	},
 /turf/simulated/floor/carpet/bcarpet/lavaland,
@@ -2343,14 +2343,14 @@
 /area/lavaland/east/colony)
 "VR" = (
 /obj/structure/bed/roller,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 6
 	},
-/obj/effect/floor_decal/borderfloorwhite/corner2,
-/obj/effect/floor_decal/corner/blue/bordercorner2,
+/obj/effect/turf_decal/borderfloorwhite/corner2,
+/obj/effect/turf_decal/corner/blue/bordercorner2,
 /obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
@@ -2368,7 +2368,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Wp" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /obj/structure/cable/yellow{
@@ -2380,7 +2380,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "WH" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/medical/blood,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
@@ -2403,16 +2403,16 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Xd" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/veymed,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Xf" = (
 /obj/structure/table/glass,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 8
 	},
 /obj/item/storage/firstaid/regular{
@@ -2426,10 +2426,10 @@
 /turf/simulated/floor/outdoors/grass/lavaland/interior,
 /area/lavaland/east/colony)
 "Xo" = (
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 1
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
@@ -2448,10 +2448,10 @@
 "XF" = (
 /obj/structure/table/glass,
 /obj/item/storage/firstaid/surgery,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -2509,8 +2509,8 @@
 /area/lavaland/east/colony)
 "YG" = (
 /obj/structure/barricade,
-/obj/effect/floor_decal/steeldecal/steel_decals4,
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4,
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -2560,22 +2560,22 @@
 /obj/structure/bed/chair/backed_grey{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 5
 	},
-/obj/effect/floor_decal/borderfloorwhite/corner2{
+/obj/effect/turf_decal/borderfloorwhite/corner2{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorwhite/corner2{
+/obj/effect/turf_decal/borderfloorwhite/corner2{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/blue/bordercorner2{
+/obj/effect/turf_decal/corner/blue/bordercorner2{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/blue/bordercorner2{
+/obj/effect/turf_decal/corner/blue/bordercorner2{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/lavaland,
@@ -2598,34 +2598,34 @@
 /area/lavaland/east/colony)
 "Zw" = (
 /obj/structure/table/marble,
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "ZE" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior,
 /area/lavaland/east/colony)
 "ZL" = (
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/blue/border{
+/obj/effect/turf_decal/corner/blue/border{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorwhite/corner2{
+/obj/effect/turf_decal/borderfloorwhite/corner2{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/blue/bordercorner2{
+/obj/effect/turf_decal/corner/blue/bordercorner2{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "ZS" = (
-/obj/effect/floor_decal/spline/plain,
+/obj/effect/turf_decal/spline/plain,
 /obj/machinery/door/airlock/glass_external{
 	name = "The Caldera Cauldron";
 	req_one_access = null
@@ -2633,7 +2633,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "ZX" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/freezer/rations,
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)

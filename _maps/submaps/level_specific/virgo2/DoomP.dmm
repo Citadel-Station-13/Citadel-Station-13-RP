@@ -61,7 +61,7 @@
 /turf/simulated/wall/r_wall,
 /area/submap/virgo2/DoomP)
 "av" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/plating,
 /area/submap/virgo2/DoomP)
 "aw" = (
@@ -69,26 +69,26 @@
 /turf/simulated/floor/plating,
 /area/submap/virgo2/DoomP)
 "ax" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
 /area/submap/virgo2/DoomP)
 "ay" = (
 /obj/structure/bed/chair,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/submap/virgo2/DoomP)
 "az" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/submap/virgo2/DoomP)
 "aA" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /mob/living/simple_mob/humanoid/merc/ranged/space,
@@ -98,14 +98,14 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/submap/virgo2/DoomP)
 "aC" = (
 /obj/machinery/vending/cigarette,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
@@ -176,7 +176,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -195,7 +195,7 @@
 /area/submap/virgo2/DoomP)
 "aQ" = (
 /obj/machinery/vending/snack,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -249,7 +249,7 @@
 /area/submap/virgo2/DoomP)
 "aZ" = (
 /obj/machinery/vending/cola,
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/turf_decal/borderfloor/corner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -267,22 +267,22 @@
 /turf/simulated/wall/r_wall,
 /area/submap/virgo2/DoomP)
 "bd" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
 /area/submap/virgo2/DoomP)
 "be" = (
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /turf/simulated/floor/tiled,
 /area/submap/virgo2/DoomP)
 "bf" = (
 /obj/machinery/light/small,
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /turf/simulated/floor/tiled,
 /area/submap/virgo2/DoomP)
 "bg" = (
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/turf_decal/borderfloor/corner{
 	dir = 8
 	},
 /mob/living/simple_mob/humanoid/merc/ranged/space,
@@ -313,7 +313,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
 /mob/living/simple_mob/humanoid/merc/ranged/space,
@@ -359,14 +359,14 @@
 /obj/structure/bed,
 /obj/item/bedsheet,
 /obj/item/toy/plushie/spider,
-/obj/effect/floor_decal/corner/lime/full{
+/obj/effect/turf_decal/corner/lime/full{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
 /area/submap/virgo2/DoomP)
 "bu" = (
 /obj/structure/table/standard,
-/obj/effect/floor_decal/corner/lime{
+/obj/effect/turf_decal/corner/lime{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/white,
@@ -374,7 +374,7 @@
 "bv" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/obj/effect/floor_decal/corner/lime{
+/obj/effect/turf_decal/corner/lime{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/white,
@@ -382,7 +382,7 @@
 "bw" = (
 /obj/structure/table/standard,
 /obj/item/flashlight/lamp,
-/obj/effect/floor_decal/corner/lime{
+/obj/effect/turf_decal/corner/lime{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/white,
@@ -390,7 +390,7 @@
 "bx" = (
 /obj/structure/table/standard,
 /obj/structure/bedsheetbin,
-/obj/effect/floor_decal/corner/lime{
+/obj/effect/turf_decal/corner/lime{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -427,7 +427,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/virgo2/DoomP)
 "bD" = (
-/obj/effect/floor_decal/corner/lime{
+/obj/effect/turf_decal/corner/lime{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/white,
@@ -437,7 +437,7 @@
 	dir = 4;
 	pixel_y = 0
 	},
-/obj/effect/floor_decal/corner/lime{
+/obj/effect/turf_decal/corner/lime{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/white,
@@ -492,12 +492,12 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lime/full,
+/obj/effect/turf_decal/corner/lime/full,
 /mob/living/simple_mob/humanoid/merc/ranged/space,
 /turf/simulated/floor/tiled/white,
 /area/submap/virgo2/DoomP)
 "bL" = (
-/obj/effect/floor_decal/corner/lime{
+/obj/effect/turf_decal/corner/lime{
 	dir = 10
 	},
 /mob/living/simple_mob/humanoid/merc/ranged/space,
@@ -524,7 +524,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/DoomP)
 "Hh" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /mob/living/simple_mob/mechanical/mecha/combat/gygax/dark/advanced,
 /turf/simulated/floor/plating,
 /area/submap/virgo2/DoomP)

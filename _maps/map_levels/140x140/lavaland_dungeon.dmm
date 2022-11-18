@@ -11,10 +11,10 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "aP" = (
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 10
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4,
+/obj/effect/turf_decal/steeldecal/steel_decals4,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "be" = (
@@ -32,20 +32,20 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "bl" = (
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 1
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "ce" = (
 /obj/structure/flora/pottedplant/dead,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -61,7 +61,7 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "cA" = (
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -71,10 +71,10 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "cS" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/yellow/border{
+/obj/effect/turf_decal/corner/yellow/border{
 	dir = 1
 	},
 /obj/structure/sign/poster/nanotrasen{
@@ -94,10 +94,10 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "dK" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -123,10 +123,10 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "eW" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/yellow/border{
+/obj/effect/turf_decal/corner/yellow/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -151,31 +151,31 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "gM" = (
-/obj/effect/floor_decal/steeldecal/steel_decals6{
+/obj/effect/turf_decal/steeldecal/steel_decals6{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "hm" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -204,10 +204,10 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "jC" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/orange/border{
+/obj/effect/turf_decal/corner/orange/border{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -220,10 +220,10 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/orange/border{
+/obj/effect/turf_decal/corner/orange/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -247,7 +247,7 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "lL" = (
-/obj/effect/floor_decal/industrial/danger/corner{
+/obj/effect/turf_decal/industrial/danger/corner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -262,7 +262,7 @@
 /area/lavaland/dungeon/facility)
 "mo" = (
 /obj/structure/table/marble,
-/obj/effect/floor_decal/spline/fancy{
+/obj/effect/turf_decal/spline/fancy{
 	dir = 4
 	},
 /turf/simulated/floor/wood/lavaland,
@@ -280,16 +280,16 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "mL" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -304,15 +304,15 @@
 /turf/simulated/floor/outdoors/lava/lavaland,
 /area/lavaland/dungeon/exterior)
 "nH" = (
-/obj/effect/floor_decal/steeldecal/steel_decals6{
+/obj/effect/turf_decal/steeldecal/steel_decals6{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "nL" = (
 /obj/machinery/light,
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/turf_decal/borderfloorblack,
+/obj/effect/turf_decal/corner/brown/border,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "nY" = (
@@ -325,7 +325,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -345,10 +345,10 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "pG" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -393,13 +393,13 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/orange/border{
+/obj/effect/turf_decal/corner/orange/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -415,17 +415,17 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "td" = (
-/obj/effect/floor_decal/steeldecal/steel_decals4,
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4,
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "tD" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -434,14 +434,14 @@
 /obj/structure/bed/chair/sofa/right{
 	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy{
+/obj/effect/turf_decal/spline/fancy{
 	dir = 4
 	},
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/dungeon/facility)
 "tW" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/turf_decal/borderfloorblack,
+/obj/effect/turf_decal/corner/brown/border,
 /obj/structure/railing{
 	dir = 1
 	},
@@ -451,7 +451,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 4
 	},
 /turf/simulated/floor/lavaland,
@@ -469,19 +469,19 @@
 	dir = 8;
 	pixel_x = -28
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "vV" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/orange/border{
+/obj/effect/turf_decal/corner/orange/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -494,10 +494,10 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "wn" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 1
 	},
 /obj/structure/railing,
@@ -528,7 +528,7 @@
 /area/lavaland/dungeon/facility)
 "xN" = (
 /obj/structure/railing,
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/turf_decal/industrial/danger,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "xV" = (
@@ -538,16 +538,16 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "yc" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/yellow/border{
+/obj/effect/turf_decal/corner/yellow/border{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/yellow/bordercorner2{
+/obj/effect/turf_decal/corner/yellow/bordercorner2{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -562,10 +562,10 @@
 	dir = 8;
 	pixel_x = -28
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -585,7 +585,7 @@
 /obj/machinery/chemical_dispenser/bar_soft{
 	dir = 8
 	},
-/obj/effect/floor_decal/spline/fancy{
+/obj/effect/turf_decal/spline/fancy{
 	dir = 8
 	},
 /turf/simulated/floor/wood/lavaland,
@@ -615,16 +615,16 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "AW" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/yellow/border{
+/obj/effect/turf_decal/corner/yellow/border{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/yellow/bordercorner2{
+/obj/effect/turf_decal/corner/yellow/bordercorner2{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -654,10 +654,10 @@
 /area/lavaland/dungeon/facility)
 "CO" = (
 /mob/living/simple_mob/animal/roach/uberfallen,
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 6
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals4{
+/obj/effect/turf_decal/steeldecal/steel_decals4{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -683,10 +683,10 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/yellow/border{
+/obj/effect/turf_decal/corner/yellow/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -700,10 +700,10 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "DP" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 9
 	},
 /obj/structure/railing,
@@ -716,10 +716,10 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/dungeon/facility)
 "DT" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/yellow/border{
+/obj/effect/turf_decal/corner/yellow/border{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -743,19 +743,19 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "Ga" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/yellow/border,
+/obj/effect/turf_decal/borderfloorblack,
+/obj/effect/turf_decal/corner/yellow/border,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "Gg" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 6
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2,
-/obj/effect/floor_decal/corner/brown/bordercorner2,
+/obj/effect/turf_decal/borderfloorblack/corner2,
+/obj/effect/turf_decal/corner/brown/bordercorner2,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "Gx" = (
@@ -766,8 +766,8 @@
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/dungeon/exterior)
 "Hx" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/orange/border,
+/obj/effect/turf_decal/borderfloorblack,
+/obj/effect/turf_decal/corner/orange/border,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "HH" = (
@@ -788,41 +788,41 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "Jg" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/yellow/border{
+/obj/effect/turf_decal/corner/yellow/border{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "Ju" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 6
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "Kq" = (
 /obj/structure/flora/pottedplant/dead,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -840,7 +840,7 @@
 /area/lavaland/dungeon/facility)
 "KW" = (
 /obj/structure/bed/chair/sofa/left,
-/obj/effect/floor_decal/spline/fancy{
+/obj/effect/turf_decal/spline/fancy{
 	dir = 4
 	},
 /turf/simulated/floor/wood/lavaland,
@@ -855,10 +855,10 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "Md" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/orange/border{
+/obj/effect/turf_decal/corner/orange/border{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -868,7 +868,7 @@
 	dir = 4;
 	pixel_x = -11
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "NK" = (
@@ -892,10 +892,10 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "Of" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
+/obj/effect/turf_decal/borderfloorblack/corner{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner{
+/obj/effect/turf_decal/corner/brown/bordercorner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -915,8 +915,8 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "QY" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/turf_decal/borderfloorblack,
+/obj/effect/turf_decal/corner/brown/border,
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "QZ" = (
@@ -939,7 +939,7 @@
 "RI" = (
 /obj/structure/table/marble,
 /obj/machinery/microwave,
-/obj/effect/floor_decal/spline/fancy{
+/obj/effect/turf_decal/spline/fancy{
 	dir = 8
 	},
 /turf/simulated/floor/wood/lavaland,
@@ -949,7 +949,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/floor_decal/spline/fancy{
+/obj/effect/turf_decal/spline/fancy{
 	dir = 8
 	},
 /obj/structure/sign/poster{
@@ -981,19 +981,19 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "SE" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/yellow/border{
+/obj/effect/turf_decal/corner/yellow/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "SP" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
+/obj/effect/turf_decal/borderfloorblack/corner{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner{
+/obj/effect/turf_decal/corner/brown/bordercorner{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -1009,16 +1009,16 @@
 /turf/simulated/mineral/rich/triumph/lavaland,
 /area/lavaland/dungeon/exterior)
 "TO" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -1040,16 +1040,16 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "UX" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -1066,31 +1066,31 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "Vx" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
@@ -1139,15 +1139,15 @@
 /turf/simulated/floor/tiled/steel_dirty/lavaland,
 /area/lavaland/dungeon/facility)
 "XN" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/lavaland,
 /area/lavaland/dungeon/facility)
 "XX" = (
 /obj/structure/flora/pottedplant/dead,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty/lavaland,

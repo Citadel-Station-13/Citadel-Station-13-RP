@@ -17,13 +17,13 @@
 "f" = (
 /obj/structure/table/bananium_reinforced,
 /obj/machinery/light,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/class_h/POIs/covert_post)
 "g" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 1
 	},
 /mob/living/simple_mob/humanoid/clown/commando/ranged,
@@ -36,7 +36,7 @@
 /area/class_h/POIs/covert_post)
 "i" = (
 /obj/structure/closet/crate/bin,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -70,7 +70,7 @@
 /turf/simulated/floor/wood,
 /area/class_h/POIs/covert_post)
 "q" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -159,7 +159,7 @@
 /turf/simulated/floor/bananium,
 /area/class_h/POIs/covert_post)
 "H" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/wood,
@@ -177,7 +177,7 @@
 /obj/structure/bed/chair/comfy/lime{
 	dir = 4
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/wood,

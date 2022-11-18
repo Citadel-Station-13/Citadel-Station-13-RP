@@ -101,7 +101,7 @@
 /obj/structure/prop/lock/projectile{
 	lockID = "anak"
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "ik" = (
@@ -966,7 +966,7 @@
 /area/class_p/POIs/archaic_temple)
 "OJ" = (
 /obj/structure/boulder,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "OM" = (
@@ -1104,7 +1104,7 @@
 /turf/simulated/floor/phoron/classp,
 /area/class_p/POIs/archaic_temple)
 "UJ" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classp,
 /area/class_p/POIs/archaic_temple)
 "UR" = (

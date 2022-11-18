@@ -419,16 +419,16 @@
 	},
 /area/skipjack_station)
 "bd" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 9
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -468,10 +468,10 @@
 	},
 /area/skipjack_station)
 "bj" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
 /turf/unsimulated/floor{
@@ -507,16 +507,16 @@
 	},
 /area/skipjack_station)
 "bp" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 10
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 6
 	},
 /turf/unsimulated/floor{

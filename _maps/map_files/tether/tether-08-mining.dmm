@@ -16,30 +16,30 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/outpost/mining_main/airlock)
 "af" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "ag" = (
 /turf/simulated/wall/r_wall,
 /area/outpost/mining_main/hangar)
 "ah" = (
-/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/turf_decal/industrial/warning/corner,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "ai" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "aj" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/machinery/camera/network/mining,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "ak" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
@@ -53,7 +53,7 @@
 /turf/simulated/wall/r_wall,
 /area/outpost/mining_main/hangar)
 "an" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -72,8 +72,8 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "ap" = (
-/obj/effect/floor_decal/rust/steel_decals_rusted1,
-/obj/effect/floor_decal/rust/steel_decals_rusted2{
+/obj/effect/turf_decal/rust/steel_decals_rusted1,
+/obj/effect/turf_decal/rust/steel_decals_rusted2{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
@@ -82,28 +82,28 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "ar" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "as" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "at" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "au" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -123,14 +123,14 @@
 /turf/simulated/floor/virgo3b,
 /area/outpost/mining_main/maintenance)
 "aw" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "ax" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -159,7 +159,7 @@
 /turf/simulated/floor/virgo3b,
 /area/mine/explored)
 "aC" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -171,16 +171,16 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 10
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -189,8 +189,8 @@
 /obj/machinery/computer/shuttle_control/surface_mining_outpost{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/corner/brown/border,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "aF" = (
@@ -241,7 +241,7 @@
 /turf/simulated/floor/virgo3b,
 /area/mine/explored)
 "aK" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -262,14 +262,14 @@
 /turf/simulated/floor/virgo3b,
 /area/mine/explored)
 "aM" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/effect/floor_decal/steeldecal/steel_decals7{
+/obj/effect/turf_decal/steeldecal/steel_decals7,
+/obj/effect/turf_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
 /obj/structure/table/woodentable,
@@ -315,16 +315,16 @@
 /area/outpost/mining_main/maintenance)
 "aR" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 9
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 10
 	},
 /obj/machinery/status_display{
@@ -371,7 +371,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "aV" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
 	},
@@ -394,21 +394,21 @@
 /obj/vehicle_old/train/engine{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/machinery/camera/network/mining{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/corner/brown/border,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "aY" = (
 /obj/vehicle_old/train/trolley{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/turf_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/corner/brown/border,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "aZ" = (
@@ -422,8 +422,8 @@
 	pixel_y = -24
 	},
 /obj/structure/cable/green,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/corner/brown/border,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "ba" = (
@@ -478,7 +478,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "bg" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -487,7 +487,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "bh" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/structure/cable/green{
@@ -500,12 +500,12 @@
 /area/outpost/mining_main/hangar)
 "bi" = (
 /obj/structure/table/glass,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/brown/border,
-/obj/effect/floor_decal/steeldecal/steel_decals7{
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/corner/brown/border,
+/obj/effect/turf_decal/steeldecal/steel_decals7{
 	dir = 1
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
+/obj/effect/turf_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
 /obj/item/storage/box/cups{
@@ -526,7 +526,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "bk" = (
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /obj/machinery/atmospherics/component/binary/pump/on{
 	dir = 4;
 	name = "Air to Supply"
@@ -586,16 +586,16 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "bt" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 10
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 8
 	},
 /obj/machinery/vending/cola{
@@ -613,7 +613,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "bv" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/structure/cable/green{
@@ -688,7 +688,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/maintenance)
 "bE" = (
-/obj/effect/floor_decal/rust/steel_decals_rusted2,
+/obj/effect/turf_decal/rust/steel_decals_rusted2,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "bF" = (
@@ -727,16 +727,16 @@
 /turf/simulated/floor/bluegrid,
 /area/outpost/mining_main/airlock)
 "bK" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
+/obj/effect/turf_decal/steeldecal/steel_decals7{
 	dir = 9
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
+/obj/effect/turf_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
 /obj/machinery/vending/wallmed_airlock{
@@ -745,45 +745,45 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
 "bL" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 5
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
+/obj/effect/turf_decal/steeldecal/steel_decals7{
 	dir = 9
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
+/obj/effect/turf_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
 "bM" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/corner/brown/border,
 /obj/machinery/vending/coffee{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
 "bN" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 6
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 6
 	},
 /obj/machinery/vending/snack{
@@ -793,16 +793,16 @@
 /area/outpost/mining_main/break_room)
 "bO" = (
 /obj/structure/closet/secure_closet/miner,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
 "bP" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 1
 	},
 /obj/machinery/firealarm{
@@ -821,14 +821,14 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "bQ" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/corner/brown/border,
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "bR" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/corner/brown/border,
 /obj/machinery/light,
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled,
@@ -848,10 +848,10 @@
 	dir = 8;
 	pixel_x = -26
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -860,8 +860,8 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
 "bV" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/corner/brown/border,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -869,38 +869,38 @@
 /area/outpost/mining_main/hangar)
 "bX" = (
 /obj/structure/bed/chair,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
 "bY" = (
 /obj/structure/ore_box,
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "bZ" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "ca" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /obj/machinery/mining/brace,
@@ -914,7 +914,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/passage)
 "cc" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 5
 	},
 /obj/machinery/mining/brace,
@@ -925,20 +925,20 @@
 /obj/machinery/camera/network/mining{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
 "ce" = (
 /obj/structure/table/woodentable,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 4
 	},
 /obj/item/suit_cooling_unit,
@@ -949,50 +949,50 @@
 /area/outpost/mining_main/secondary_gear_storage)
 "cf" = (
 /obj/structure/ore_box,
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "cg" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "ch" = (
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "ci" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "cj" = (
 /obj/structure/closet/secure_closet/miner,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
 "ck" = (
-/obj/effect/floor_decal/rust/steel_decals_rusted1,
+/obj/effect/turf_decal/rust/steel_decals_rusted1,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cl" = (
-/obj/effect/floor_decal/rust/steel_decals_rusted1,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust/steel_decals_rusted1,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "cm" = (
 /turf/simulated/mineral/ignore_cavegen/virgo3b,
 /area/mine/explored)
 "cn" = (
-/obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/effect/floor_decal/steeldecal/steel_decals7{
+/obj/effect/turf_decal/steeldecal/steel_decals7,
+/obj/effect/turf_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
 /obj/machinery/light_switch{
@@ -1000,16 +1000,16 @@
 	pixel_x = 12;
 	pixel_y = 24
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 4
 	},
 /obj/item/radio/intercom{
@@ -1023,16 +1023,16 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
@@ -1053,7 +1053,7 @@
 "cs" = (
 /obj/structure/table/steel,
 /obj/machinery/cell_charger,
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 8
 	},
 /obj/item/cell/high,
@@ -1061,7 +1061,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "ct" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 4
 	},
 /obj/machinery/mining/brace,
@@ -1073,10 +1073,10 @@
 /area/mine/explored)
 "cv" = (
 /obj/structure/reagent_dispensers/fueltank,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
@@ -1085,9 +1085,9 @@
 /obj/vehicle_old/train/trolley{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/turf_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/corner/brown/border,
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
@@ -1098,12 +1098,12 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/brown/border,
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/corner/brown/border,
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 9
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -1123,7 +1123,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/hangar)
 "cz" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 8
 	},
 /obj/structure/ore_box,
@@ -1158,30 +1158,30 @@
 /obj/item/tool/screwdriver,
 /obj/item/tool/crowbar,
 /obj/item/tool/wrench,
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "cD" = (
-/obj/effect/floor_decal/steeldecal/steel_decals7,
-/obj/effect/floor_decal/steeldecal/steel_decals7{
+/obj/effect/turf_decal/steeldecal/steel_decals7,
+/obj/effect/turf_decal/steeldecal/steel_decals7{
 	dir = 4
 	},
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
 /obj/machinery/washing_machine,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -1203,16 +1203,16 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1273,16 +1273,16 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
+/obj/effect/turf_decal/steeldecal/steel_decals7{
 	dir = 9
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
+/obj/effect/turf_decal/steeldecal/steel_decals7{
 	dir = 10
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -1307,7 +1307,7 @@
 /area/outpost/mining_main/break_room)
 "cN" = (
 /obj/machinery/light/small,
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 10
 	},
 /obj/structure/cable/green{
@@ -1323,11 +1323,11 @@
 	name = "south bump";
 	pixel_y = -32
 	},
-/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/turf_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "cQ" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 6
 	},
 /obj/structure/sign/atmos_air{
@@ -1339,16 +1339,16 @@
 "cR" = (
 /obj/structure/table/glass,
 /obj/machinery/microwave,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 10
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 8
 	},
 /obj/machinery/firealarm{
@@ -1358,10 +1358,10 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/break_room)
 "cS" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -1371,8 +1371,8 @@
 /area/outpost/mining_main/secondary_gear_storage)
 "cT" = (
 /obj/structure/reagent_dispensers/watertank,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/brown/border,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/corner/brown/border,
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/secondary_gear_storage)
@@ -1426,12 +1426,12 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/brown/border,
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/corner/brown/border,
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -1523,8 +1523,8 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/airlock)
 "hw" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /obj/machinery/mining/drill,
@@ -1534,7 +1534,7 @@
 /turf/simulated/wall/r_wall,
 /area/outpost/mining_main/dorms)
 "rH" = (
-/obj/effect/floor_decal/rust/steel_decals_rusted1{
+/obj/effect/turf_decal/rust/steel_decals_rusted1{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
@@ -1549,12 +1549,12 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/break_room)
 "tt" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/brown/border,
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border,
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 1
 	},
 /obj/machinery/meter,
@@ -1572,22 +1572,22 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner2{
+/obj/effect/turf_decal/corner/brown/bordercorner2{
 	dir = 10
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
+/obj/effect/turf_decal/steeldecal/steel_decals7{
 	dir = 5
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
+/obj/effect/turf_decal/steeldecal/steel_decals7{
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -1618,10 +1618,10 @@
 /turf/simulated/floor/bluegrid,
 /area/outpost/mining_main/airlock)
 "vG" = (
-/obj/effect/floor_decal/borderfloorblack/cee{
+/obj/effect/turf_decal/borderfloorblack/cee{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/brown/bordercee{
+/obj/effect/turf_decal/corner/brown/bordercee{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
@@ -1690,12 +1690,12 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/maintenance)
 "Dr" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/brown/border,
-/obj/effect/floor_decal/steeldecal/steel_decals7{
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/corner/brown/border,
+/obj/effect/turf_decal/steeldecal/steel_decals7{
 	dir = 1
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
+/obj/effect/turf_decal/steeldecal/steel_decals7{
 	dir = 8
 	},
 /obj/machinery/camera/network/mining{
@@ -1711,12 +1711,12 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/brown/border,
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border,
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/binary/pump/on{
@@ -1787,7 +1787,7 @@
 /turf/simulated/wall/r_wall,
 /area/outpost/mining_main/airlock)
 "HP" = (
-/obj/effect/floor_decal/rust/steel_decals_rusted1{
+/obj/effect/turf_decal/rust/steel_decals_rusted1{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -1842,9 +1842,9 @@
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/mine/explored)
 "Pv" = (
-/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/turf_decal/industrial/warning/dust,
 /obj/machinery/atmospherics/portables_connector,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/outpost/mining_main/drill_equipment)
 "Px" = (
@@ -1858,12 +1858,12 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/brown/border,
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border,
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/cyan{
@@ -1898,10 +1898,10 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/break_room)
 "Uy" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/brown/border{
+/obj/effect/turf_decal/corner/brown/border{
 	dir = 5
 	},
 /obj/structure/table/woodentable,
@@ -1913,10 +1913,10 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/borderfloorblack/cee{
+/obj/effect/turf_decal/borderfloorblack/cee{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/brown/bordercee{
+/obj/effect/turf_decal/corner/brown/bordercee{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/universal{
@@ -1953,8 +1953,8 @@
 /turf/simulated/floor/wood,
 /area/outpost/mining_main/dorms)
 "XD" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored)
 "ZC" = (
@@ -1973,16 +1973,16 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/turf_decal/borderfloor/corner{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/brown/bordercorner{
+/obj/effect/turf_decal/corner/brown/bordercorner{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
+/obj/effect/turf_decal/steeldecal/steel_decals7{
 	dir = 6
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals7{
+/obj/effect/turf_decal/steeldecal/steel_decals7{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,

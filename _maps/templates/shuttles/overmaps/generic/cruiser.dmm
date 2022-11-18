@@ -76,21 +76,21 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/breakroom)
 "aj" = (
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/breakroom)
 "ak" = (
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/breakroom)
 "al" = (
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -436,7 +436,7 @@
 /turf/simulated/wall/rpshull,
 /area/mothership/hydroponics)
 "bf" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /obj/structure/cable/cyan{
@@ -450,7 +450,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/mothership/hydroponics)
 "bg" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /obj/machinery/door/firedoor/glass,
@@ -471,7 +471,7 @@
 /obj/machinery/door/window/northleft,
 /obj/machinery/door/window/southleft,
 /obj/structure/table/steel_reinforced,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -943,7 +943,7 @@
 /area/mothership/kitchen)
 "cl" = (
 /obj/machinery/appliance/mixer/cereal,
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/white,
@@ -951,7 +951,7 @@
 "cm" = (
 /obj/machinery/appliance/cooker/fryer,
 /obj/structure/table/steel_reinforced,
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -959,7 +959,7 @@
 "cn" = (
 /obj/machinery/appliance/cooker/oven,
 /obj/structure/table/steel_reinforced,
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -967,7 +967,7 @@
 "co" = (
 /obj/machinery/appliance/cooker/grill,
 /obj/structure/table/steel_reinforced,
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /obj/machinery/light,
@@ -975,7 +975,7 @@
 /area/mothership/kitchen)
 "cp" = (
 /obj/machinery/appliance/mixer/candy,
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -1161,7 +1161,7 @@
 	pixel_y = -26;
 	req_one_access = list(101)
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -1262,7 +1262,7 @@
 	pixel_y = -26;
 	req_one_access = list(101)
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -1546,7 +1546,7 @@
 	pixel_x = 2
 	},
 /obj/machinery/door/window/survival_pod,
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
 /obj/structure/curtain/open/shower,
@@ -1671,7 +1671,7 @@
 	dir = 8;
 	pixel_x = 2
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
 /obj/structure/curtain/open/shower,
@@ -1843,11 +1843,11 @@
 /obj/structure/cable/cyan{
 	icon_state = "2-8"
 	},
-/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/turf_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
 "eh" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -2030,22 +2030,22 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
 "ex" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
 "ey" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
 "ez" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -2055,7 +2055,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /obj/structure/cable/cyan{
 	icon_state = "0-8"
 	},
@@ -2219,7 +2219,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "eN" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /obj/machinery/tele_pad,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
@@ -2234,14 +2234,14 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
 "eQ" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /obj/item/perfect_tele_beacon{
 	tele_name = "Daedalus"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
 "eR" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/machinery/alarm{
@@ -2250,7 +2250,7 @@
 	dir = 1;
 	pixel_y = -22
 	},
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -2484,7 +2484,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/vault)
 "fy" = (
@@ -2497,7 +2497,7 @@
 /obj/machinery/power/port_gen/pacman/super{
 	sheets = 100
 	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/vault)
 "fA" = (
@@ -2664,7 +2664,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/power/terminal,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -2679,7 +2679,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -2701,7 +2701,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/terminal,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -2848,7 +2848,7 @@
 /obj/machinery/power/port_gen/pacman/super{
 	sheets = 100
 	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/vault)
 "gk" = (
@@ -2860,7 +2860,7 @@
 /obj/machinery/power/port_gen/pacman/super{
 	sheets = 100
 	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/vault)
 "gn" = (
@@ -3906,13 +3906,13 @@
 	pixel_y = 22
 	},
 /obj/structure/table/steel_reinforced,
-/obj/effect/floor_decal/corner/lightorange{
+/obj/effect/turf_decal/corner/lightorange{
 	dir = 5
 	},
-/obj/effect/floor_decal/borderfloor/shifted{
+/obj/effect/turf_decal/borderfloor/shifted{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/lightorange/border/shifted{
+/obj/effect/turf_decal/corner/lightorange/border/shifted{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -3920,13 +3920,13 @@
 "iM" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet,
-/obj/effect/floor_decal/corner/lightorange{
+/obj/effect/turf_decal/corner/lightorange{
 	dir = 5
 	},
-/obj/effect/floor_decal/borderfloor/shifted{
+/obj/effect/turf_decal/borderfloor/shifted{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/lightorange/border/shifted{
+/obj/effect/turf_decal/corner/lightorange/border/shifted{
 	dir = 1
 	},
 /obj/machinery/light/small{
@@ -3938,13 +3938,13 @@
 /obj/structure/closet/secure_closet/brig{
 	id = "Cell M1"
 	},
-/obj/effect/floor_decal/corner/lightorange{
+/obj/effect/turf_decal/corner/lightorange{
 	dir = 5
 	},
-/obj/effect/floor_decal/borderfloor/shifted{
+/obj/effect/turf_decal/borderfloor/shifted{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/lightorange/border/shifted{
+/obj/effect/turf_decal/corner/lightorange/border/shifted{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -4114,7 +4114,7 @@
 /area/mothership/sechallway)
 "ji" = (
 /obj/machinery/door/firedoor/glass,
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /obj/machinery/door/window/brigdoor/southleft{
 	dir = 4;
 	id = "Cell M1";
@@ -4397,13 +4397,13 @@
 	pixel_y = 22
 	},
 /obj/structure/table/steel_reinforced,
-/obj/effect/floor_decal/borderfloor/shifted{
+/obj/effect/turf_decal/borderfloor/shifted{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/lightorange{
+/obj/effect/turf_decal/corner/lightorange{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/lightorange/border/shifted{
+/obj/effect/turf_decal/corner/lightorange/border/shifted{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -4411,13 +4411,13 @@
 "jO" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet,
-/obj/effect/floor_decal/borderfloor/shifted{
+/obj/effect/turf_decal/borderfloor/shifted{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/lightorange{
+/obj/effect/turf_decal/corner/lightorange{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/lightorange/border/shifted{
+/obj/effect/turf_decal/corner/lightorange/border/shifted{
 	dir = 1
 	},
 /obj/machinery/light/small{
@@ -4429,13 +4429,13 @@
 /obj/structure/closet/secure_closet/brig{
 	id = "Cell M2"
 	},
-/obj/effect/floor_decal/borderfloor/shifted{
+/obj/effect/turf_decal/borderfloor/shifted{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/lightorange{
+/obj/effect/turf_decal/corner/lightorange{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/lightorange/border/shifted{
+/obj/effect/turf_decal/corner/lightorange/border/shifted{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -4620,7 +4620,7 @@
 /area/mothership/morgue)
 "kg" = (
 /obj/machinery/door/firedoor/glass,
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /obj/machinery/door/window/brigdoor/southleft{
 	dir = 4;
 	id = "Cell M2";
@@ -6484,13 +6484,13 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/rnd)
 "nP" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/rnd)
 "nQ" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/rnd)
 "nR" = (
@@ -6720,7 +6720,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/robotics)
 "op" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -6731,13 +6731,13 @@
 /area/mothership/robotics)
 "oq" = (
 /obj/machinery/mech_recharger,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/bluegrid,
 /area/mothership/robotics)
 "or" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/bluegrid,
@@ -6749,7 +6749,7 @@
 /area/mothership/robotics)
 "ot" = (
 /obj/structure/ghost_pod/manual/lost_drone/dogborg,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6768,7 +6768,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/mothership/robotics)
 "ov" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -6782,7 +6782,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/holodeck)
 "oy" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 4
 	},
 /obj/machinery/status_display{
@@ -6840,7 +6840,7 @@
 /turf/simulated/floor/bluegrid,
 /area/mothership/robotics)
 "oF" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6922,7 +6922,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/holodeck)
 "oK" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 4
 	},
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
@@ -6975,7 +6975,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -6995,7 +6995,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -7095,7 +7095,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/holodeck)
 "pd" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 4
 	},
 /obj/machinery/firealarm{
@@ -7194,7 +7194,7 @@
 	pixel_y = 26;
 	req_one_access = list(101)
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -7421,7 +7421,7 @@
 	pixel_y = 26;
 	req_one_access = list(101)
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techmaint,
@@ -7656,10 +7656,10 @@
 /turf/simulated/floor/greengrid,
 /area/mothership/telecomms1)
 "qw" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner_techfloor_grid{
+/obj/effect/turf_decal/corner_techfloor_grid{
 	dir = 4
 	},
 /obj/machinery/mech_recharger{
@@ -7687,7 +7687,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/cryotube)
 "qE" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 9
 	},
 /obj/structure/cable/cyan{
@@ -7696,14 +7696,14 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/cryotube)
 "qF" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 1
 	},
 /obj/machinery/washing_machine,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/cryotube)
 "qG" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -7730,7 +7730,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms1)
 "qT" = (
@@ -7772,7 +7772,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/cryotube)
 "qY" = (
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
 /obj/machinery/power/apc{
@@ -7806,7 +7806,7 @@
 /obj/machinery/computer/cryopod{
 	pixel_y = -32
 	},
-/obj/effect/floor_decal/techfloor{
+/obj/effect/turf_decal/techfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -7855,10 +7855,10 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "rh" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner_techfloor_grid{
+/obj/effect/turf_decal/corner_techfloor_grid{
 	dir = 6
 	},
 /obj/machinery/mech_recharger{
@@ -7878,10 +7878,10 @@
 /turf/space,
 /area/space)
 "rj" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner_techfloor_grid{
+/obj/effect/turf_decal/corner_techfloor_grid{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -7939,10 +7939,10 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "rt" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner_techfloor_grid{
+/obj/effect/turf_decal/corner_techfloor_grid{
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/purple{
@@ -8161,10 +8161,10 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "rZ" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner_techfloor_grid{
+/obj/effect/turf_decal/corner_techfloor_grid{
 	dir = 4
 	},
 /obj/machinery/mech_recharger{
@@ -8629,10 +8629,10 @@
 /turf/space,
 /area/space)
 "tb" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner_techfloor_grid{
+/obj/effect/turf_decal/corner_techfloor_grid{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -8671,7 +8671,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms2)
 "tZ" = (
@@ -8724,14 +8724,14 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms1)
 "wm" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner_techfloor_grid{
+/obj/effect/turf_decal/corner_techfloor_grid{
 	dir = 1
 	},
 /obj/machinery/mech_recharger{
@@ -8892,7 +8892,7 @@
 	pixel_y = -26;
 	req_one_access = list(101)
 	},
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "Am" = (
@@ -8906,7 +8906,7 @@
 	pixel_y = -26;
 	req_one_access = list(101)
 	},
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/engineering)
 "AL" = (
@@ -8931,10 +8931,10 @@
 /turf/simulated/floor/reinforced,
 /area/mothership/telecomms2)
 "BQ" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner_techfloor_grid{
+/obj/effect/turf_decal/corner_techfloor_grid{
 	dir = 6
 	},
 /obj/machinery/mech_recharger{
@@ -8944,10 +8944,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms1)
 "Ch" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner_techfloor_grid{
+/obj/effect/turf_decal/corner_techfloor_grid{
 	dir = 1
 	},
 /obj/machinery/mech_recharger{
@@ -8969,7 +8969,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -8987,7 +8987,7 @@
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
 "DG" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -8996,10 +8996,10 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "DX" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner_techfloor_grid{
+/obj/effect/turf_decal/corner_techfloor_grid{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9023,7 +9023,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "Ex" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/reinforced/airless{
@@ -9031,10 +9031,10 @@
 	},
 /area/mothership/bridge)
 "Ez" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner_techfloor_grid{
+/obj/effect/turf_decal/corner_techfloor_grid{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9065,7 +9065,7 @@
 /turf/space,
 /area/space)
 "EQ" = (
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /obj/mecha/combat/fighter/gunpod/loaded,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
@@ -9073,10 +9073,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms1)
 "EV" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner_techfloor_grid{
+/obj/effect/turf_decal/corner_techfloor_grid{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -9122,16 +9122,16 @@
 	pixel_y = 26;
 	req_one_access = list(101)
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
 /area/mothership/breakroom)
 "GT" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner_techfloor_grid{
+/obj/effect/turf_decal/corner_techfloor_grid{
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/purple{
@@ -9140,10 +9140,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms2)
 "Hl" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/structure/cable/cyan{
@@ -9152,10 +9152,10 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/mothership/teleporter)
 "Hs" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner_techfloor_grid{
+/obj/effect/turf_decal/corner_techfloor_grid{
 	dir = 9
 	},
 /obj/machinery/mech_recharger{
@@ -9239,7 +9239,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "MI" = (
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /obj/mecha/combat/fighter/gunpod/loaded,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 8
@@ -9251,17 +9251,17 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/mothership/hallway)
 "Ox" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner_techfloor_grid,
+/obj/effect/turf_decal/corner_techfloor_grid,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms1)
 "OC" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms2)
 "Pi" = (
@@ -9282,7 +9282,7 @@
 	pixel_y = 26;
 	req_one_access = list(101)
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/wood,
@@ -9356,10 +9356,10 @@
 /turf/space,
 /area/space)
 "RE" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner_techfloor_grid{
+/obj/effect/turf_decal/corner_techfloor_grid{
 	dir = 9
 	},
 /obj/machinery/mech_recharger{
@@ -9513,10 +9513,10 @@
 /turf/simulated/wall/rpshull,
 /area/mothership/processing)
 "TK" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner_techfloor_grid,
+/obj/effect/turf_decal/corner_techfloor_grid,
 /turf/simulated/floor/tiled/techfloor,
 /area/mothership/telecomms2)
 "Ux" = (
@@ -9596,10 +9596,10 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/mothership/bridge)
 "XQ" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner_techfloor_grid{
+/obj/effect/turf_decal/corner_techfloor_grid{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,

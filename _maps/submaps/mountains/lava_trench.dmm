@@ -214,7 +214,7 @@
 /turf/simulated/floor/tiled/old_tile,
 /area/submap/lava_trench/outpost)
 "aR" = (
-/obj/effect/floor_decal/corner_oldtile/blue/full{
+/obj/effect/turf_decal/corner_oldtile/blue/full{
 	dir = 8
 	},
 /obj/machinery/microscope,
@@ -222,7 +222,7 @@
 /turf/simulated/floor/tiled/old_tile,
 /area/submap/lava_trench/outpost)
 "aS" = (
-/obj/effect/floor_decal/corner_oldtile/blue/full{
+/obj/effect/turf_decal/corner_oldtile/blue/full{
 	dir = 8
 	},
 /obj/structure/table/standard,
@@ -295,7 +295,7 @@
 /obj/structure/table/steel,
 /obj/item/storage/excavation,
 /obj/item/measuring_tape,
-/obj/effect/floor_decal/corner_oldtile/purple{
+/obj/effect/turf_decal/corner_oldtile/purple{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile,
@@ -356,7 +356,7 @@
 /turf/simulated/floor/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "bo" = (
-/obj/effect/floor_decal/corner_oldtile/purple/full{
+/obj/effect/turf_decal/corner_oldtile/purple/full{
 	dir = 1
 	},
 /obj/machinery/space_heater,
@@ -376,7 +376,7 @@
 /turf/simulated/floor/tiled/old_tile,
 /area/submap/lava_trench/outpost)
 "br" = (
-/obj/effect/floor_decal/corner_oldtile/blue{
+/obj/effect/turf_decal/corner_oldtile/blue{
 	dir = 1
 	},
 /obj/structure/bed/chair/office/light{
@@ -388,7 +388,7 @@
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/submap/lava_trench/outpost)
 "bt" = (
-/obj/effect/floor_decal/corner_oldtile/purple{
+/obj/effect/turf_decal/corner_oldtile/purple{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile,
@@ -403,7 +403,7 @@
 /obj/item/slime_crystal,
 /obj/item/slime_crystal,
 /obj/item/slime_crystal,
-/obj/effect/floor_decal/corner_oldtile/blue{
+/obj/effect/turf_decal/corner_oldtile/blue{
 	dir = 9
 	},
 /obj/structure/table/standard,
@@ -426,19 +426,19 @@
 /turf/simulated/floor/tiled/old_tile,
 /area/submap/lava_trench/outpost)
 "bz" = (
-/obj/effect/floor_decal/corner_oldtile{
+/obj/effect/turf_decal/corner_oldtile{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/submap/lava_trench/outpost)
 "bA" = (
-/obj/effect/floor_decal/corner_oldtile{
+/obj/effect/turf_decal/corner_oldtile{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/submap/lava_trench/outpost)
 "bB" = (
-/obj/effect/floor_decal/corner_oldtile/blue{
+/obj/effect/turf_decal/corner_oldtile/blue{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile,
@@ -446,7 +446,7 @@
 "bC" = (
 /obj/structure/table/rack,
 /obj/item/shovel,
-/obj/effect/floor_decal/corner_oldtile/purple/full{
+/obj/effect/turf_decal/corner_oldtile/purple/full{
 	dir = 1
 	},
 /obj/item/pickaxe/drill,
@@ -464,19 +464,19 @@
 /obj/structure/table/rack,
 /obj/random/tool/powermaint,
 /obj/random/tool/powermaint,
-/obj/effect/floor_decal/corner_oldtile/purple{
+/obj/effect/turf_decal/corner_oldtile/purple{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/old_tile,
 /area/submap/lava_trench/outpost)
 "bG" = (
-/obj/effect/floor_decal/corner_oldtile/purple,
+/obj/effect/turf_decal/corner_oldtile/purple,
 /obj/structure/table/steel,
 /obj/item/xenoarch_multi_tool,
 /turf/simulated/floor/tiled/old_tile,
 /area/submap/lava_trench/outpost)
 "bH" = (
-/obj/effect/floor_decal/corner_oldtile/purple,
+/obj/effect/turf_decal/corner_oldtile/purple,
 /turf/simulated/floor/tiled/old_tile,
 /area/submap/lava_trench/outpost)
 "bI" = (
@@ -486,7 +486,7 @@
 /turf/simulated/floor/tiled/old_tile,
 /area/submap/lava_trench/outpost)
 "bK" = (
-/obj/effect/floor_decal/corner_oldtile/blue/full,
+/obj/effect/turf_decal/corner_oldtile/blue/full,
 /obj/random/drinkbottle,
 /obj/random/maintenance/research,
 /obj/structure/table/standard,
@@ -497,14 +497,14 @@
 /area/submap/lava_trench/outpost)
 "bL" = (
 /obj/structure/flora/pottedplant/crystal,
-/obj/effect/floor_decal/corner_oldtile/blue{
+/obj/effect/turf_decal/corner_oldtile/blue{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/old_tile,
 /area/submap/lava_trench/outpost)
 "bM" = (
 /obj/structure/cult/pylon,
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /turf/simulated/floor/tiled/old_tile/gray,
 /area/submap/lava_trench/outpost)
 "bN" = (
@@ -519,7 +519,7 @@
 /turf/simulated/floor/tiled/old_tile,
 /area/submap/lava_trench/outpost)
 "bP" = (
-/obj/effect/floor_decal/corner_oldtile/purple/full{
+/obj/effect/turf_decal/corner_oldtile/purple/full{
 	dir = 4
 	},
 /obj/structure/table/steel,
@@ -542,7 +542,7 @@
 /turf/simulated/floor/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "bS" = (
-/obj/effect/floor_decal/corner_oldtile/blue{
+/obj/effect/turf_decal/corner_oldtile/blue{
 	dir = 1
 	},
 /obj/structure/loot_pile/surface/medicine_cabinet{
@@ -556,7 +556,7 @@
 /obj/machinery/suspension_gen{
 	anchored = 1
 	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/old_tile,
 /area/submap/lava_trench/outpost)
 "bU" = (
@@ -569,7 +569,7 @@
 /turf/simulated/floor/outdoors/rocks/caves,
 /area/submap/lava_trench)
 "bX" = (
-/obj/effect/floor_decal/corner_oldtile/purple/full{
+/obj/effect/turf_decal/corner_oldtile/purple/full{
 	dir = 4
 	},
 /obj/item/storage/box/samplebags,
@@ -596,7 +596,7 @@
 /turf/simulated/floor/tiled/old_tile,
 /area/submap/lava_trench/outpost)
 "ce" = (
-/obj/effect/floor_decal/corner_oldtile/blue/full,
+/obj/effect/turf_decal/corner_oldtile/blue/full,
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled/old_tile,
 /area/submap/lava_trench/outpost)

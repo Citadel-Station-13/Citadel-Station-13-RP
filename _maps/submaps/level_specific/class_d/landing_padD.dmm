@@ -28,7 +28,7 @@
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "e" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/classd,
@@ -43,7 +43,7 @@
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "g" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/atmospherics/pipe/manifold/hidden{
 	dir = 4
 	},
@@ -73,12 +73,12 @@
 /turf/simulated/floor/tiled/kafel_full,
 /area/class_d/POIs/landing_pad)
 "k" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/structure/closet/toolcloset,
 /turf/simulated/floor/plating,
 /area/class_d/POIs/landing_pad)
 "l" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/classd,
@@ -96,13 +96,13 @@
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "p" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/classd,
 /area/class_d/POIs/landing_pad)
 "q" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/classd,
@@ -148,14 +148,14 @@
 /turf/simulated/floor/outdoors/classd,
 /area/class_d/POIs/landing_pad)
 "x" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
 /turf/simulated/floor/plating,
 /area/class_d/POIs/landing_pad)
 "y" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/classd,
@@ -189,7 +189,7 @@
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "C" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/plating,
 /area/class_d/POIs/landing_pad)
@@ -255,7 +255,7 @@
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "M" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/classd,
@@ -278,11 +278,11 @@
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "R" = (
-/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/turf_decal/techfloor/orange,
 /turf/simulated/floor/tiled/classd,
 /area/class_d/POIs/landing_pad)
 "S" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
@@ -295,7 +295,7 @@
 /turf/simulated/floor/tiled,
 /area/class_d/POIs/landing_pad)
 "U" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/classd,
@@ -307,7 +307,7 @@
 /turf/simulated/floor/outdoors/classd,
 /area/class_d/POIs/landing_pad)
 "W" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},

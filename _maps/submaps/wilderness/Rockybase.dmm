@@ -60,17 +60,17 @@
 /turf/template_noop,
 /area/template_noop)
 "aq" = (
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/turf_decal/industrial/danger,
 /turf/simulated/floor,
 /area/submap/Rockybase)
 "ar" = (
 /obj/machinery/light,
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/turf_decal/industrial/danger,
 /turf/simulated/floor,
 /area/submap/Rockybase)
 "as" = (
 /obj/effect/debris/cleanable/blood,
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/turf_decal/industrial/danger,
 /turf/simulated/floor,
 /area/submap/Rockybase)
 "at" = (
@@ -186,14 +186,14 @@
 "aO" = (
 /obj/structure/table/standard,
 /obj/item/modular_computer/laptop/preset/custom_loadout/cheap,
-/obj/effect/floor_decal/corner/red/border{
+/obj/effect/turf_decal/corner/red/border{
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "aP" = (
 /obj/structure/table/standard,
-/obj/effect/floor_decal/corner/red/border{
+/obj/effect/turf_decal/corner/red/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -201,7 +201,7 @@
 "aQ" = (
 /obj/structure/table/rack,
 /obj/item/gun/projectile/pistol,
-/obj/effect/floor_decal/corner/red/border{
+/obj/effect/turf_decal/corner/red/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -209,7 +209,7 @@
 "aR" = (
 /obj/structure/table/rack,
 /obj/item/gun/energy/gun/taser,
-/obj/effect/floor_decal/corner/red/border{
+/obj/effect/turf_decal/corner/red/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -218,14 +218,14 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/red/border{
+/obj/effect/turf_decal/corner/red/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "aT" = (
 /obj/machinery/vending/coffee,
-/obj/effect/floor_decal/corner/red/border{
+/obj/effect/turf_decal/corner/red/border{
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
@@ -241,14 +241,14 @@
 /area/submap/Rockybase)
 "aW" = (
 /obj/machinery/vending/hydronutrients,
-/obj/effect/floor_decal/corner/lime/border{
+/obj/effect/turf_decal/corner/lime/border{
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "aX" = (
 /obj/structure/closet/crate/hydroponics,
-/obj/effect/floor_decal/corner/lime/border{
+/obj/effect/turf_decal/corner/lime/border{
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
@@ -295,7 +295,7 @@
 	info = "Carl's absolutly fucked in the head. He's trying to squeeze as much drone production out as he can since he's worried we're gonna get found out but he's getting sloppier with each batch. Now's he's telling us he can speed the time on the IFF encoding. I already have a hard enough time getting these damn things not to stare at walls and now he's gonna shortchange the only part of these tincans that tells em not to turn us into paste on a wall. I told Richter to get out while he can, We're counting days before either some Sif task force shows up at our door or these things decide we aren't there friends anymore.";
 	name = "Note"
 	},
-/obj/effect/floor_decal/corner/red/border{
+/obj/effect/turf_decal/corner/red/border{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -312,7 +312,7 @@
 /area/submap/Rockybase)
 "bg" = (
 /obj/machinery/vending/security,
-/obj/effect/floor_decal/corner/red/border{
+/obj/effect/turf_decal/corner/red/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -325,7 +325,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/submap/Rockybase)
 "bi" = (
-/obj/effect/floor_decal/corner/lime/border{
+/obj/effect/turf_decal/corner/lime/border{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -335,7 +335,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/effect/floor_decal/corner/lime/border{
+/obj/effect/turf_decal/corner/lime/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -382,7 +382,7 @@
 "br" = (
 /obj/structure/table/standard,
 /obj/item/paper_bin,
-/obj/effect/floor_decal/corner/red/border{
+/obj/effect/turf_decal/corner/red/border{
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
@@ -391,15 +391,15 @@
 /obj/machinery/light,
 /obj/structure/table/standard,
 /obj/item/pen,
-/obj/effect/floor_decal/corner/red/border,
+/obj/effect/turf_decal/corner/red/border,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bt" = (
-/obj/effect/floor_decal/corner/red/border,
+/obj/effect/turf_decal/corner/red/border,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bu" = (
-/obj/effect/floor_decal/corner/red/border,
+/obj/effect/turf_decal/corner/red/border,
 /mob/living/simple_mob/mechanical/viscerator,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
@@ -421,7 +421,7 @@
 /area/submap/Rockybase)
 "by" = (
 /obj/machinery/portable_atmospherics/hydroponics,
-/obj/effect/floor_decal/corner/lime/border{
+/obj/effect/turf_decal/corner/lime/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -431,7 +431,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bA" = (
-/obj/effect/floor_decal/corner/lime/border{
+/obj/effect/turf_decal/corner/lime/border{
 	dir = 8
 	},
 /mob/living/bot/farmbot{
@@ -445,7 +445,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/lime/border{
+/obj/effect/turf_decal/corner/lime/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -456,13 +456,13 @@
 /area/template_noop)
 "bD" = (
 /obj/machinery/vending/cola,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bE" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -471,21 +471,21 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bG" = (
 /obj/structure/door_assembly,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bH" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -493,7 +493,7 @@
 "bI" = (
 /obj/effect/debris/cleanable/dirt,
 /obj/effect/debris/cleanable/cobweb2,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -524,16 +524,16 @@
 /area/submap/Rockybase)
 "bP" = (
 /obj/machinery/vending/snack,
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bQ" = (
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bR" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bS" = (
@@ -543,22 +543,22 @@
 /area/submap/Rockybase)
 "bT" = (
 /obj/effect/decal/remains,
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bU" = (
 /obj/machinery/light,
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bV" = (
 /obj/effect/debris/cleanable/blood,
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bW" = (
 /obj/item/mecha_parts/part/gygax_right_arm,
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "bX" = (
@@ -576,7 +576,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "ca" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cb" = (
@@ -650,7 +650,7 @@
 /area/submap/Rockybase)
 "cl" = (
 /obj/structure/door_assembly,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "cm" = (
@@ -878,7 +878,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "dc" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "dd" = (
@@ -937,7 +937,7 @@
 /area/submap/Rockybase)
 "dj" = (
 /obj/item/mecha_parts/part/gygax_right_leg,
-/obj/effect/floor_decal/corner/lime/border{
+/obj/effect/turf_decal/corner/lime/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -980,7 +980,7 @@
 /area/submap/Rockybase)
 "dq" = (
 /obj/structure/closet/secure_closet/hydroponics,
-/obj/effect/floor_decal/corner/lime/border{
+/obj/effect/turf_decal/corner/lime/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -1043,14 +1043,14 @@
 /area/submap/Rockybase)
 "dC" = (
 /obj/machinery/vending/hydroseeds,
-/obj/effect/floor_decal/corner/lime/border{
+/obj/effect/turf_decal/corner/lime/border{
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
 /area/submap/Rockybase)
 "dD" = (
 /obj/structure/closet/crate/secure/hydrosec,
-/obj/effect/floor_decal/corner/lime/border{
+/obj/effect/turf_decal/corner/lime/border{
 	dir = 6
 	},
 /turf/simulated/floor/tiled,

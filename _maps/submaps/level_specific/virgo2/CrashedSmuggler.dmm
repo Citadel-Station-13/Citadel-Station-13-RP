@@ -24,12 +24,12 @@
 /obj/structure/cable/cyan{
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "cI" = (
 /obj/effect/debris/cleanable/blood/xeno,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/item/stack/material/steel,
 /obj/item/stack/material/steel,
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -131,13 +131,13 @@
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "in" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 4
 	},
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "iC" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/porta_turret/alien/destroyed{
 	desc = "A high-tech turret frame, presumably used to non-lethally disable dangerous fauna.";
 	dir = 4;
@@ -185,7 +185,7 @@
 	dir = 8
 	},
 /obj/effect/debris/cleanable/blood,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "oB" = (
@@ -206,7 +206,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "tf" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "uX" = (
@@ -214,7 +214,7 @@
 /obj/effect/debris/cleanable/blood,
 /obj/item/bedsheet/brown,
 /obj/item/digestion_remains/ribcage,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "vp" = (
@@ -246,7 +246,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "xc" = (
@@ -266,7 +266,7 @@
 /area/submap/virgo2/CrashedSmuggler/ship)
 "xC" = (
 /obj/effect/decal/remains/xeno,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "xR" = (
@@ -314,12 +314,12 @@
 	dir = 4;
 	pixel_x = 29
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "Ck" = (
 /obj/structure/window/reinforced,
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -327,7 +327,7 @@
 "Cr" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel,
 /obj/machinery/light/small,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "CE" = (
@@ -370,7 +370,7 @@
 /area/submap/virgo2/CrashedSmuggler/ship)
 "Fu" = (
 /obj/machinery/light,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "FF" = (
@@ -422,7 +422,7 @@
 /area/submap/virgo2/CrashedSmuggler)
 "GY" = (
 /obj/machinery/door/window/southright,
-/obj/effect/floor_decal/industrial/warning/dust/corner{
+/obj/effect/turf_decal/industrial/warning/dust/corner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -474,7 +474,7 @@
 /obj/machinery/door/airlock/hatch{
 	name = "Commons Hatch"
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "KS" = (
@@ -515,7 +515,7 @@
 /turf/simulated/mineral/floor/ignore_mapgen/virgo2,
 /area/submap/virgo2/CrashedSmuggler)
 "OE" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -538,7 +538,7 @@
 	dir = 4
 	},
 /obj/item/material/shard,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "PP" = (
@@ -605,7 +605,7 @@
 /area/submap/virgo2/CrashedSmuggler)
 "SH" = (
 /obj/machinery/door/window/southleft,
-/obj/effect/floor_decal/industrial/warning/dust/corner{
+/obj/effect/turf_decal/industrial/warning/dust/corner{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/virgo2,
@@ -633,7 +633,7 @@
 /area/submap/virgo2/CrashedSmuggler/ship)
 "Yj" = (
 /obj/effect/debris/cleanable/blood,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/submap/virgo2/CrashedSmuggler/ship)
 "Zr" = (

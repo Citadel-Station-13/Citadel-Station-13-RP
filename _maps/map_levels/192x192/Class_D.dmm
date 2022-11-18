@@ -104,7 +104,7 @@
 /area/class_d/wildcat_mining_base/exterior_power)
 "gM" = (
 /obj/structure/fence/door/opened,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "gQ" = (
@@ -139,7 +139,7 @@
 /area/class_d/wildcat_mining_base/exterior_power)
 "is" = (
 /obj/structure/sandbag,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "iG" = (
@@ -186,7 +186,7 @@
 /obj/machinery/alarm/alarms_hidden{
 	pixel_y = 28
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/utility_room)
 "jx" = (
@@ -212,7 +212,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers{
 	dir = 5
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/utility_room)
 "jK" = (
@@ -225,14 +225,14 @@
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
 	dir = 6
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/utility_room)
 "jN" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/supply{
 	dir = 1
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/utility_room)
 "kc" = (
@@ -292,7 +292,7 @@
 /obj/machinery/portable_atmospherics/canister/air/airlock{
 	start_pressure = 4559.63
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/utility_room)
 "ms" = (
@@ -318,17 +318,17 @@
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "mU" = (
 /obj/machinery/mech_recharger,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "ne" = (
 /obj/structure/table/steel_reinforced,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "nG" = (
@@ -336,7 +336,7 @@
 /obj/machinery/cell_charger{
 	pixel_y = 5
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "nH" = (
@@ -345,12 +345,12 @@
 	pixel_y = 7
 	},
 /obj/structure/table/steel_reinforced,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "nP" = (
 /obj/structure/reagent_dispensers/fueltank,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "nZ" = (
@@ -362,18 +362,18 @@
 	name = "north bump";
 	pixel_y = 28
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "oa" = (
 /obj/structure/fence{
 	dir = 1
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "od" = (
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "ok" = (
@@ -426,14 +426,14 @@
 /obj/machinery/light/spot{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "qT" = (
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "qW" = (
@@ -441,7 +441,7 @@
 /obj/machinery/light/spot/flicker{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "qZ" = (
@@ -499,7 +499,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "rX" = (
@@ -511,25 +511,25 @@
 	name = "north bump";
 	pixel_y = 28
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "rZ" = (
 /obj/machinery/alarm/alarms_hidden{
 	pixel_y = 28
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "sa" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/utility_room)
 "si" = (
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "sp" = (
@@ -582,7 +582,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 4
 	},
 /turf/simulated/floor/classd,
@@ -591,14 +591,14 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/utility_room)
 "tJ" = (
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "tQ" = (
@@ -606,7 +606,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/gibspawner/robot,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "ur" = (
@@ -616,14 +616,14 @@
 /obj/structure/cable/orange{
 	icon_state = "1-4"
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "uH" = (
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 8
 	},
 /turf/simulated/floor/classd,
@@ -654,19 +654,19 @@
 /area/class_d/wildcat_mining_base/exterior_power)
 "vr" = (
 /obj/structure/dispenser/oxygen,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "vy" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "vz" = (
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "vA" = (
@@ -688,7 +688,7 @@
 /area/class_d/wildcat_mining_base/exterior_power)
 "wK" = (
 /obj/effect/decal/mecha_wreckage/ripley,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "xc" = (
@@ -707,12 +707,12 @@
 /area/class_d/wildcat_mining_base/interior/main_room)
 "xt" = (
 /obj/structure/sandbag,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "xz" = (
 /obj/structure/table/bench/steel,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "xM" = (
@@ -720,7 +720,7 @@
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "xP" = (
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /obj/structure/closet/crate/secure/bin,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
@@ -736,20 +736,20 @@
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "yq" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_power)
 "yw" = (
 /obj/machinery/light/spot/flicker{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "yx" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /turf/simulated/floor/classd/indoors,
@@ -758,7 +758,7 @@
 /obj/machinery/light/spot{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /turf/simulated/floor/classd/indoors,
@@ -782,14 +782,14 @@
 /area/class_d/wildcat_mining_base/interior/main_room)
 "zJ" = (
 /obj/structure/table/steel,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "zK" = (
 /turf/simulated/floor/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "zP" = (
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
@@ -819,7 +819,7 @@
 /turf/simulated/floor/outdoors/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "AM" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "AQ" = (
@@ -828,14 +828,14 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "AY" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "Ba" = (
@@ -848,7 +848,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "Bi" = (
@@ -856,7 +856,7 @@
 	dir = 8
 	},
 /obj/structure/table/bench/steel,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "Bk" = (
@@ -864,7 +864,7 @@
 /obj/item/material/shard,
 /obj/item/material/shard,
 /obj/item/material/shard,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "Bo" = (
@@ -877,18 +877,18 @@
 /obj/structure/cable/orange{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/exterior_power)
 "BE" = (
 /obj/machinery/light,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "Cd" = (
 /obj/machinery/light,
 /obj/structure/table/steel,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "Cn" = (
@@ -908,8 +908,8 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "CL" = (
@@ -917,7 +917,7 @@
 	dir = 4
 	},
 /obj/structure/table/steel_reinforced,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "CR" = (
@@ -957,7 +957,7 @@
 	desc = "Not the most comfy, but useful for napping when no one is in the brig.";
 	name = "cot"
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "EI" = (
@@ -970,7 +970,7 @@
 	pixel_y = 28
 	},
 /obj/structure/closet/secure_closet/personal,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "EK" = (
@@ -982,24 +982,24 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /obj/effect/debris/cleanable/blood/splatter,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "EP" = (
 /obj/structure/bed/chair/comfy/black,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "Fe" = (
 /obj/structure/closet/secure_closet/freezer/meat,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "Fr" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/microwave,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "Ft" = (
@@ -1035,22 +1035,22 @@
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "GM" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "Hh" = (
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "Hl" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "HM" = (
@@ -1061,7 +1061,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "HY" = (
@@ -1069,7 +1069,7 @@
 	dir = 4
 	},
 /obj/structure/table/woodentable,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "Ig" = (
@@ -1082,7 +1082,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "Iq" = (
@@ -1121,12 +1121,12 @@
 	desc = "Not the most comfy, but useful for napping when no one is in the brig.";
 	name = "cot"
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "Jf" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "Jh" = (
@@ -1135,7 +1135,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
@@ -1143,7 +1143,7 @@
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "JA" = (
@@ -1157,14 +1157,14 @@
 	pixel_y = 16
 	},
 /obj/structure/curtain/open/shower,
-/obj/effect/floor_decal/steeldecal/steel_decals5,
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals5,
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 6
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals5{
+/obj/effect/turf_decal/steeldecal/steel_decals5{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/classd/indoors,
@@ -1175,7 +1175,7 @@
 	},
 /obj/structure/table/steel,
 /obj/random/soap,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bathroom)
 "Kn" = (
@@ -1193,7 +1193,7 @@
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "KI" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "KK" = (
@@ -1207,7 +1207,7 @@
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "Lo" = (
 /obj/machinery/atmospherics/portables_connector,
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/turf_decal/industrial/outline/red,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "LO" = (
@@ -1227,7 +1227,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "Me" = (
@@ -1238,7 +1238,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
@@ -1254,7 +1254,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
@@ -1271,7 +1271,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock,
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bathroom)
 "Mm" = (
@@ -1284,7 +1284,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bathroom)
 "My" = (
@@ -1299,7 +1299,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bathroom)
 "Mz" = (
@@ -1325,7 +1325,7 @@
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/refueling_outbuilding)
 "NT" = (
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
 /obj/item/ammo_casing/spent,
@@ -1333,7 +1333,7 @@
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
 "Ok" = (
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /obj/effect/gibspawner/human,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bunk_room)
@@ -1349,7 +1349,7 @@
 	dir = 4;
 	pixel_x = -25
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bathroom)
 "Ot" = (
@@ -1360,7 +1360,7 @@
 /obj/structure/toilet{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/bathroom)
 "ON" = (
@@ -1389,7 +1389,7 @@
 /obj/structure/cable/orange{
 	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/corner_kafel/yellow/diagonal,
+/obj/effect/turf_decal/corner_kafel/yellow/diagonal,
 /turf/simulated/floor/tiled/classd/indoors,
 /area/class_d/wildcat_mining_base/interior/main_room)
 "Qb" = (
@@ -1425,7 +1425,7 @@
 /area/class_d/wildcat_mining_base/exterior_power)
 "Qw" = (
 /obj/item/beartrap,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/effect/debris/cleanable/blood/xeno,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
@@ -1535,7 +1535,7 @@
 /obj/structure/fence/door/locked{
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "UA" = (
@@ -1556,7 +1556,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "Vn" = (
@@ -1619,7 +1619,7 @@
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_workshop)
 "WI" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/random/humanoidremains,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_workshop)
@@ -1701,8 +1701,8 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "YD" = (
@@ -1727,7 +1727,7 @@
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored/underground)
 "YM" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd,
 /area/class_d/wildcat_mining_base/exterior_power)
 "Zh" = (

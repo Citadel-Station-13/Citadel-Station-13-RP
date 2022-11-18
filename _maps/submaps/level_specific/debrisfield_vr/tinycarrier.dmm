@@ -62,7 +62,7 @@
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "aj" = (
 /obj/machinery/suit_storage_unit/standard_unit,
-/obj/effect/floor_decal/corner/brown/full{
+/obj/effect/turf_decal/corner/brown/full{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -71,7 +71,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/obj/effect/floor_decal/corner/brown/full{
+/obj/effect/turf_decal/corner/brown/full{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -152,7 +152,7 @@
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "as" = (
 /obj/machinery/suit_storage_unit/standard_unit,
-/obj/effect/floor_decal/corner/brown{
+/obj/effect/turf_decal/corner/brown{
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
@@ -166,7 +166,7 @@
 	pixel_x = 24
 	},
 /obj/map_helper/airlock/sensor/int_sensor,
-/obj/effect/floor_decal/corner/brown{
+/obj/effect/turf_decal/corner/brown{
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
@@ -187,7 +187,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-6"
 	},
-/obj/effect/floor_decal/corner/black/border{
+/obj/effect/turf_decal/corner/black/border{
 	dir = 6
 	},
 /turf/simulated/floor/bluegrid/airless,
@@ -197,14 +197,14 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/blue/full{
+/obj/effect/turf_decal/corner/blue/full{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/tinyshuttle/bridge)
 "ax" = (
 /obj/machinery/computer/shuttle_control/explore/tinycarrier,
-/obj/effect/floor_decal/corner/blue{
+/obj/effect/turf_decal/corner/blue{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/airless{
@@ -219,7 +219,7 @@
 	},
 /obj/effect/debris/cleanable/generic,
 /obj/machinery/atmospherics/component/unary/vent_scrubber,
-/obj/effect/floor_decal/corner/blue/full{
+/obj/effect/turf_decal/corner/blue/full{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/airless{
@@ -234,7 +234,7 @@
 "aA" = (
 /obj/item/modular_computer/laptop/preset/custom_loadout/rugged,
 /obj/structure/table/steel,
-/obj/effect/floor_decal/corner/brown/full{
+/obj/effect/turf_decal/corner/brown/full{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -249,7 +249,7 @@
 /obj/structure/closet/wardrobe/black{
 	starts_with = list()
 	},
-/obj/effect/floor_decal/corner/brown/full{
+/obj/effect/turf_decal/corner/brown/full{
 	dir = 1
 	},
 /obj/item/clothing/shoes/boots/duty,
@@ -261,7 +261,7 @@
 	dir = 4;
 	pixel_x = -28
 	},
-/obj/effect/floor_decal/corner/brown{
+/obj/effect/turf_decal/corner/brown{
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
@@ -270,21 +270,21 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/floor_decal/corner/brown{
+/obj/effect/turf_decal/corner/brown{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "aE" = (
 /obj/effect/debris/cleanable/dirt,
-/obj/effect/floor_decal/corner/brown{
+/obj/effect/turf_decal/corner/brown{
 	dir = 5
 	},
 /obj/structure/handrail,
 /turf/simulated/floor/tiled,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "aF" = (
-/obj/effect/floor_decal/corner/brown{
+/obj/effect/turf_decal/corner/brown{
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
@@ -298,13 +298,13 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/effect/floor_decal/corner/brown{
+/obj/effect/turf_decal/corner/brown{
 	dir = 5
 	},
 /turf/simulated/floor/tiled,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "aH" = (
-/obj/effect/floor_decal/corner/blue/full{
+/obj/effect/turf_decal/corner/blue/full{
 	dir = 8
 	},
 /obj/machinery/computer/ship/helm{
@@ -323,7 +323,7 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/blue{
+/obj/effect/turf_decal/corner/blue{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/airless,
@@ -352,7 +352,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/blue{
+/obj/effect/turf_decal/corner/blue{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/airless,
@@ -361,7 +361,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/brown{
+/obj/effect/turf_decal/corner/brown{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -378,7 +378,7 @@
 	icon_state = "cryopod_0";
 	name = "cryogenic freezer"
 	},
-/obj/effect/floor_decal/corner/brown/full{
+/obj/effect/turf_decal/corner/brown/full{
 	dir = 1
 	},
 /turf/simulated/floor/tiled,
@@ -410,7 +410,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/brown{
+/obj/effect/turf_decal/corner/brown{
 	dir = 9
 	},
 /turf/simulated/floor/tiled,
@@ -468,7 +468,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-5"
 	},
-/obj/effect/floor_decal/corner/blue/full,
+/obj/effect/turf_decal/corner/blue/full,
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/tinyshuttle/bridge)
 "aX" = (
@@ -490,7 +490,7 @@
 	name = "Sensor Shroud";
 	pixel_y = -24
 	},
-/obj/effect/floor_decal/corner/blue{
+/obj/effect/turf_decal/corner/blue{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/airless,
@@ -501,7 +501,7 @@
 	req_access = list()
 	},
 /obj/structure/table/steel_reinforced,
-/obj/effect/floor_decal/corner/blue{
+/obj/effect/turf_decal/corner/blue{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/airless,
@@ -519,7 +519,7 @@
 	pixel_x = 22;
 	pixel_y = -24
 	},
-/obj/effect/floor_decal/corner/blue/full{
+/obj/effect/turf_decal/corner/blue/full{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/airless,
@@ -546,7 +546,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/brown{
+/obj/effect/turf_decal/corner/brown{
 	dir = 6
 	},
 /turf/simulated/floor/tiled,
@@ -564,7 +564,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/brown/full,
+/obj/effect/turf_decal/corner/brown/full,
 /obj/item/ammo_magazine/m9mm/large,
 /obj/item/ammo_magazine/m9mm/large,
 /obj/item/ammo_magazine/m9mm/large,
@@ -581,7 +581,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/brown{
+/obj/effect/turf_decal/corner/brown{
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
@@ -598,7 +598,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/brown{
+/obj/effect/turf_decal/corner/brown{
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
@@ -612,7 +612,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/effect/floor_decal/corner/brown{
+/obj/effect/turf_decal/corner/brown{
 	dir = 10
 	},
 /obj/machinery/light,
@@ -657,7 +657,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/brown{
+/obj/effect/turf_decal/corner/brown{
 	dir = 10
 	},
 /obj/machinery/alarm/alarms_hidden{
@@ -676,13 +676,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/brown{
+/obj/effect/turf_decal/corner/brown{
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
 /area/submap/debrisfield_vr/tinyshuttle/crew)
 "bn" = (
-/obj/effect/floor_decal/industrial/warning/cee{
+/obj/effect/turf_decal/industrial/warning/cee{
 	dir = 8
 	},
 /obj/machinery/shipsensors{
@@ -707,7 +707,7 @@
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bp" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/machinery/door/blast/regular{
@@ -763,7 +763,7 @@
 	dir = 4
 	},
 /obj/machinery/portable_atmospherics/canister/air,
-/obj/effect/floor_decal/corner/orange/full{
+/obj/effect/turf_decal/corner/orange/full{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -793,7 +793,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/orange{
+/obj/effect/turf_decal/corner/orange{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel,
@@ -817,7 +817,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/turf_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "bz" = (
@@ -835,14 +835,14 @@
 	pixel_x = 26;
 	pixel_y = 8
 	},
-/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/turf_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "bA" = (
 /obj/structure/handrail{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/turf_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "bB" = (
@@ -851,7 +851,7 @@
 	starts_with = list(/obj/item/tool/screwdriver,/obj/item/tool/wrench,/obj/item/tool/crowbar,/obj/item/analyzer,/obj/item/tool/wirecutters)
 	},
 /obj/item/t_scanner,
-/obj/effect/floor_decal/corner/orange{
+/obj/effect/turf_decal/corner/orange{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
@@ -869,7 +869,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/orange/full{
+/obj/effect/turf_decal/corner/orange/full{
 	dir = 1
 	},
 /obj/machinery/light{
@@ -935,7 +935,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/orange{
+/obj/effect/turf_decal/corner/orange{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_ridged,
@@ -944,7 +944,7 @@
 /obj/machinery/atmospherics/portables_connector/fuel{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/orange{
+/obj/effect/turf_decal/corner/orange{
 	dir = 9
 	},
 /obj/effect/debris/cleanable/liquid_fuel,
@@ -969,7 +969,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/orange/full{
+/obj/effect/turf_decal/corner/orange/full{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1004,7 +1004,7 @@
 /obj/structure/handrail{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/orange{
+/obj/effect/turf_decal/corner/orange{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1019,7 +1019,7 @@
 	icon_state = "orangeps-1"
 	},
 /obj/effect/debris/cleanable/liquid_fuel,
-/obj/effect/floor_decal/corner/orange/full,
+/obj/effect/turf_decal/corner/orange/full,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/submap/debrisfield_vr/tinyshuttle/engine)
 "bS" = (
@@ -1029,7 +1029,7 @@
 	pixel_y = -24
 	},
 /obj/effect/debris/cleanable/liquid_fuel,
-/obj/effect/floor_decal/corner/orange{
+/obj/effect/turf_decal/corner/orange{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -1108,7 +1108,7 @@
 	pixel_x = -10;
 	pixel_y = -24
 	},
-/obj/effect/floor_decal/corner/orange/full{
+/obj/effect/turf_decal/corner/orange/full{
 	dir = 4
 	},
 /obj/structure/fuel_port/empty_tank{
@@ -1134,7 +1134,7 @@
 	pixel_y = -24
 	},
 /obj/item/weldingtool/electric,
-/obj/effect/floor_decal/corner/orange{
+/obj/effect/turf_decal/corner/orange{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty,
@@ -1146,7 +1146,7 @@
 /turf/simulated/shuttle/plating/airless/carry,
 /area/submap/debrisfield_vr/tinyshuttle/hangar)
 "cj" = (
-/obj/effect/floor_decal/corner/brown{
+/obj/effect/turf_decal/corner/brown{
 	dir = 10
 	},
 /turf/simulated/floor/tiled,
@@ -1159,7 +1159,7 @@
 	icon_state = "cryopod_0";
 	name = "cryogenic freezer"
 	},
-/obj/effect/floor_decal/corner/brown/full{
+/obj/effect/turf_decal/corner/brown/full{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,

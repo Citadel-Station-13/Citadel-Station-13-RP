@@ -3,7 +3,7 @@
 /turf/template_noop,
 /area/template_noop)
 "b" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/idleruins)
 "c" = (
@@ -35,7 +35,7 @@
 /turf/simulated/floor/wood/lavaland,
 /area/lavaland/idleruins)
 "v" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/mineral/floor/ignore_mapgen/lavaland,
 /area/lavaland/idleruins)
 "w" = (

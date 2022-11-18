@@ -83,7 +83,7 @@
 /area/shuttle/salamander_wreck_galley)
 "bK" = (
 /obj/machinery/atmospherics/portables_connector,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/simulated/floor/airless,
 /area/shuttle/salamander_wreck_engineering)
@@ -343,7 +343,7 @@
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck)
 "fP" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
@@ -354,7 +354,7 @@
 	},
 /area/shuttle/salamander_wreck)
 "fR" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /obj/structure/railing/grey{
@@ -429,7 +429,7 @@
 	},
 /area/shuttle/salamander_wreck_cockpit)
 "gD" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/railing/grey{
 	dir = 1
 	},
@@ -495,7 +495,7 @@
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck_cockpit)
 "hC" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/railing/grey,
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	dir = 4;
@@ -630,7 +630,7 @@
 /turf/simulated/floor/plating,
 /area/shuttle/salamander_wreck_cockpit)
 "jq" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/structure/handrail{
@@ -719,7 +719,7 @@
 	},
 /area/shuttle/salamander_wreck)
 "kZ" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 9
 	},
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -734,7 +734,7 @@
 	},
 /area/shuttle/salamander_wreck)
 "lc" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 5
 	},
 /obj/structure/railing/grey{
@@ -811,7 +811,7 @@
 /area/shuttle/salamander_wreck_engineering)
 "lw" = (
 /obj/machinery/atmospherics/portables_connector,
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /turf/simulated/floor/airless,
 /area/shuttle/salamander_wreck)
 "lK" = (
@@ -866,7 +866,7 @@
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck)
 "mE" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/structure/handrail{
@@ -944,7 +944,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/outline/red,
+/obj/effect/turf_decal/industrial/outline/red,
 /obj/machinery/portable_atmospherics/canister/empty,
 /turf/simulated/floor/airless,
 /area/shuttle/salamander_wreck_engineering)
@@ -1125,7 +1125,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /turf/simulated/floor/plating,
 /area/shuttle/salamander_wreck)
 "rj" = (
@@ -1498,7 +1498,7 @@
 	},
 /area/shuttle/salamander_wreck)
 "Lf" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /obj/random/empty_or_lootable_crate,
 /turf/simulated/floor/tiled/techfloor{
 	initial_gas_mix = GAS_STRING_VACUUM
@@ -1550,7 +1550,7 @@
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck)
 "ON" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/random/empty_or_lootable_crate,
@@ -1617,7 +1617,7 @@
 /turf/simulated/floor/tiled/techmaint/airless,
 /area/shuttle/salamander_wreck)
 "Rd" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/structure/handrail,
@@ -1712,7 +1712,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/structure/closet/walllocker_double/south{
@@ -1829,7 +1829,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/structure/closet/walllocker_double/north{
@@ -1840,7 +1840,7 @@
 	},
 /area/shuttle/salamander_wreck)
 "Xn" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/structure/handrail,

@@ -1,6 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/effect/map_effect/portal/master/side_b{
 	name = "from_tether_to_wild";
 	portal_id = "wilderness_step"
@@ -20,7 +20,7 @@
 /turf/simulated/mineral/virgo3b/rich,
 /area/mine/explored)
 "af" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/effect/map_effect/portal/line/side_b,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/outpost/exploration_shed)
@@ -32,7 +32,7 @@
 /turf/simulated/wall/r_wall,
 /area/tether/outpost/exploration_shed)
 "ai" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/button/remote/blast_door{
 	dir = 1;
 	id = "wilderness";
@@ -42,21 +42,21 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/outpost/exploration_shed)
 "aj" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/outpost/exploration_shed)
 "ak" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/outpost/exploration_shed)
 "al" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/power/apc{
 	alarms_hidden = 1;
 	dir = 4;
@@ -69,7 +69,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/outpost/exploration_shed)
 "am" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/structure/cable/green,
 /obj/machinery/power/port_gen/pacman,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
@@ -86,7 +86,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/outpost/exploration_shed)
 "ap" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "wilderness";
@@ -113,18 +113,18 @@
 /turf/unsimulated/wall/planetary/virgo3b,
 /area/tether/outpost/exploration_shed)
 "bj" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/tether/outpost/exploration_shed)
 "bF" = (
 /turf/simulated/mineral/virgo3b,
 /area/mine/unexplored)
 "eX" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/unexplored)
 "vZ" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/structure/loot_pile/maint/trash,
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/unexplored)
@@ -143,7 +143,7 @@
 /turf/simulated/floor/outdoors/grass/sif/virgo3b,
 /area/tether/outpost/exploration_plains)
 "Pd" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/machinery/vending/glukoz{
 	name = "Suspicious Vendor";
 	use_power = 0

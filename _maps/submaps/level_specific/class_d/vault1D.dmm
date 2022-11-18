@@ -9,7 +9,7 @@
 /turf/simulated/mineral/floor/classd/indoors,
 /area/class_d/explored)
 "e" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/structure/closet/crate/mimic/cointoss,
 /obj/random/bomb_supply,
 /obj/random/medical/lite,
@@ -18,13 +18,13 @@
 /turf/simulated/floor/classd/indoors,
 /area/class_d/explored)
 "f" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/structure/closet/crate/mimic/safe,
 /obj/random/energy,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/explored)
 "N" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/classd/indoors,
 /area/class_d/explored)
 

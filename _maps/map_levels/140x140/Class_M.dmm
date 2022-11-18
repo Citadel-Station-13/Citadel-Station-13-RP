@@ -163,10 +163,10 @@
 /turf/simulated/floor/tiled/classm/outdoors,
 /area/class_m/inside)
 "eu" = (
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 10
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/white,
@@ -421,7 +421,7 @@
 /turf/simulated/floor/water/classm,
 /area/class_m/outside)
 "jF" = (
-/obj/effect/floor_decal/grass_edge,
+/obj/effect/turf_decal/grass_edge,
 /turf/simulated/floor/outdoors/dirt/classm,
 /area/class_m/outside)
 "jH" = (
@@ -803,10 +803,10 @@
 /obj/machinery/shower{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -862,10 +862,10 @@
 /obj/machinery/shower{
 	dir = 1
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/white,
@@ -900,10 +900,10 @@
 /turf/simulated/mineral/floor/classm,
 /area/class_m/outside)
 "tB" = (
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 9
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/white,
@@ -1121,10 +1121,10 @@
 /obj/machinery/shower{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -1250,10 +1250,10 @@
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
 "Bp" = (
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/effect/turf_decal/steeldecal/steel_decals10,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -1517,10 +1517,10 @@
 /obj/machinery/shower{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/effect/turf_decal/steeldecal/steel_decals10,
 /turf/simulated/floor/tiled/white,
 /area/class_m/inside)
 "Hl" = (
@@ -2012,10 +2012,10 @@
 /obj/machinery/shower{
 	pixel_y = 16
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 10
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/white,

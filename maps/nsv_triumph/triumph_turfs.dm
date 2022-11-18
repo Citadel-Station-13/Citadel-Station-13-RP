@@ -141,7 +141,7 @@
 /turf/unsimulated/floor/transit
 	icon = 'icons/turf/transit_vr.dmi'
 
-/obj/effect/floor_decal/transit/orange
+/obj/effect/turf_decal/transit/orange
 	icon = 'icons/turf/transit_vr.dmi'
 	icon_state = "transit_techfloororange_edges"
 

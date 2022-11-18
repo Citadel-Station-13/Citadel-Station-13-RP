@@ -34,7 +34,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/machinery/power/smes/buildable,
 /turf/simulated/floor/plating,
 /area/awaymission/carpfarm/base)
@@ -42,7 +42,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 8
 	},
@@ -55,7 +55,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/carpfarm/base)
 "ap" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/machinery/power/port_gen/pacman,
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -132,14 +132,14 @@
 	name = "west bump";
 	pixel_x = -24
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/item/paper/awaygate/carpfarm/suicide,
 /turf/simulated/floor/plating,
 /area/awaymission/carpfarm/base)
 "aA" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	icon_state = "warningcorner";
 	dir = 1
 	},
@@ -191,7 +191,7 @@
 /obj/item/clothing/head/helmet/space/void/mining,
 /obj/item/mining_scanner,
 /obj/item/tank/jetpack/oxygen,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/awaymission/carpfarm/base)
 "aK" = (
@@ -200,7 +200,7 @@
 "aL" = (
 /obj/structure/closet/toolcloset,
 /obj/item/pickaxe/jackhammer,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/plating,
 /area/awaymission/carpfarm/base)
 "aM" = (
@@ -236,7 +236,7 @@
 /turf/simulated/floor/tiled/white,
 /area/awaymission/carpfarm/base)
 "aQ" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
@@ -250,13 +250,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
 "aT" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/landmark/loot_spawn,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
 "aU" = (
 /obj/structure/closet/jcloset,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
 "aV" = (
@@ -264,7 +264,7 @@
 /obj/random/medical,
 /obj/random/medical,
 /obj/random/medical,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
 "aW" = (
@@ -306,16 +306,16 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
 "bf" = (
 /obj/structure/closet/gimmick/russian,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
 "bg" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/closet/crate/freezer,
 /obj/item/trash/syndi_cakes,
 /turf/simulated/floor/tiled/dark,
@@ -323,12 +323,12 @@
 "bh" = (
 /obj/structure/closet/wardrobe/black,
 /obj/item/clothing/under/syndicate/tacticool,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
 "bi" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/landmark/costume/random,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
@@ -347,7 +347,7 @@
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
 "bl" = (
@@ -358,18 +358,18 @@
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
 "bm" = (
 /obj/structure/closet/crate/plastic,
 /obj/random/contraband,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
 "bn" = (
 /obj/structure/closet/crate,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/random/weapon,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
@@ -393,7 +393,7 @@
 /area/awaymission/carpfarm/base)
 "bs" = (
 /obj/structure/ore_box,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "bt" = (
@@ -409,7 +409,7 @@
 /area/awaymission/carpfarm/base)
 "bv" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "bw" = (
@@ -421,37 +421,37 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/turf_decal/corner/white/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "bx" = (
-/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/turf_decal/corner/white/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "by" = (
 /obj/machinery/vending/coffee{
 	prices = list()
 	},
-/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/turf_decal/corner/white/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "bz" = (
 /obj/machinery/vending/sovietsoda,
-/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/turf_decal/corner/white/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "bA" = (
 /obj/machinery/vending/snack{
 	prices = list()
 	},
-/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/turf_decal/corner/white/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "bB" = (
 /obj/machinery/vending/cigarette{
 	prices = list()
 	},
-/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/turf_decal/corner/white/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "bC" = (
@@ -459,13 +459,13 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/turf_decal/corner/white/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "bD" = (
 /obj/structure/closet/crate/secure/weapon,
 /obj/item/gun/projectile/shotgun/pump/rifle,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
 "bE" = (
@@ -473,13 +473,13 @@
 /obj/item/ammo_magazine/clip/c762,
 /obj/item/ammo_magazine/clip/c762,
 /obj/item/ammo_magazine/clip/c762,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
 "bF" = (
 /obj/structure/dispenser/oxygen,
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "bG" = (
@@ -519,12 +519,12 @@
 /area/awaymission/carpfarm/base)
 "bK" = (
 /obj/machinery/suit_cycler/mining,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "bL" = (
 /obj/structure/bed/chair,
-/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/turf_decal/corner/white/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "bM" = (
@@ -540,7 +540,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/machinery/portable_atmospherics/canister/air/airlock,
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/carpfarm/base)
@@ -571,18 +571,18 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/turf_decal/corner/white/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "bS" = (
 /obj/item/reagent_containers/food/snacks/cubancarp,
-/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/turf_decal/corner/white/diagonal,
 /obj/structure/table/glass,
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "bT" = (
 /obj/item/reagent_containers/food/snacks/carpmeat,
-/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/turf_decal/corner/white/diagonal,
 /obj/structure/table/glass,
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
@@ -590,7 +590,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/turf_decal/corner/white/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "bV" = (
@@ -610,7 +610,7 @@
 	tag_exterior_door = "carp_outer";
 	tag_interior_door = "carp_inner"
 	},
-/obj/effect/floor_decal/industrial/warning/cee{
+/obj/effect/turf_decal/industrial/warning/cee{
 	icon_state = "warningcee";
 	dir = 8
 	},
@@ -622,7 +622,7 @@
 	frequency = 1375;
 	id_tag = "carp_pump"
 	},
-/obj/effect/floor_decal/industrial/warning/cee{
+/obj/effect/turf_decal/industrial/warning/cee{
 	icon_state = "warningcee";
 	dir = 4
 	},
@@ -640,18 +640,18 @@
 /area/awaymission/carpfarm/base)
 "bY" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/turf_decal/corner/white/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "bZ" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/turf_decal/corner/white/diagonal,
 /turf/simulated/floor/tiled,
 /area/awaymission/carpfarm/base)
 "ca" = (
-/obj/effect/floor_decal/corner/white/diagonal,
+/obj/effect/turf_decal/corner/white/diagonal,
 /obj/structure/closet/crate/bin,
 /obj/item/trash/candy/proteinbar,
 /turf/simulated/floor/tiled,
@@ -694,25 +694,25 @@
 /turf/space,
 /area/space)
 "cg" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 9
 	},
 /turf/simulated/floor/airless,
 /area/space)
 "ch" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/airless,
 /area/space)
 "ci" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 5
 	},
 /turf/simulated/floor/airless,
 /area/space)
 "cj" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/airless,
@@ -721,7 +721,7 @@
 /turf/simulated/floor/airless,
 /area/space)
 "cl" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	icon_state = "warning";
 	dir = 4
 	},
@@ -732,17 +732,17 @@
 /turf/simulated/floor/airless,
 /area/space)
 "cn" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /turf/simulated/floor/airless,
 /area/space)
 "co" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/airless,
 /area/space)
 "cp" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /turf/simulated/floor/airless,

@@ -24,7 +24,7 @@
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
 "k" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/floor/outdoors/lavaland/indoors,
 /area/lavaland/ashlander_camp)
 "m" = (

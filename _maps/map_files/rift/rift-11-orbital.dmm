@@ -88,19 +88,19 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
 "ay" = (
-/obj/effect/floor_decal/corner/red/full{
+/obj/effect/turf_decal/corner/red/full{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
 "az" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
 "aA" = (
-/obj/effect/floor_decal/corner/red/full{
+/obj/effect/turf_decal/corner/red/full{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -122,16 +122,16 @@
 	dir = 4
 	},
 /obj/structure/bed/chair/shuttle,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 5
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 5
 	},
 /obj/machinery/light{
@@ -168,7 +168,7 @@
 /turf/simulated/floor/holofloor/reinforced,
 /area/holodeck/source_wildlife)
 "aM" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 9
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -177,7 +177,7 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
 "aO" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 6
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -229,22 +229,22 @@
 /area/centcom/suppy)
 "aW" = (
 /obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/spline/fancy/wood/corner,
+/obj/effect/turf_decal/spline/fancy/wood/corner,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
 "aX" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
 "aY" = (
 /obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
 "aZ" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -281,19 +281,19 @@
 	dir = 1;
 	name = "Jury Box"
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 9
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -319,16 +319,16 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/shuttle,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 9
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 10
 	},
 /obj/machinery/light{
@@ -357,8 +357,8 @@
 /area/centcom/suppy)
 "bm" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/spline/fancy/wood,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 6
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -377,38 +377,38 @@
 /area/holodeck/source_picnicarea)
 "bq" = (
 /obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
 "br" = (
 /obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
 "bs" = (
-/obj/effect/floor_decal/spline/plain{
+/obj/effect/turf_decal/spline/plain{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_theatre)
 "bt" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 5
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 9
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -465,13 +465,13 @@
 /obj/structure/bed/chair/holochair{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 9
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -480,10 +480,10 @@
 /obj/structure/bed/chair/holochair{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet/corners{
+/obj/effect/turf_decal/carpet/corners{
 	dir = 9
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -518,14 +518,14 @@
 /area/holodeck/source_picnicarea)
 "bI" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
 "bJ" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -534,70 +534,70 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_theatre)
 "bL" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 9
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_theatre)
 "bM" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_theatre)
 "bN" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_theatre)
 "bO" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_theatre)
 "bP" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 9
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
 "bQ" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
 "bR" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -606,7 +606,7 @@
 /obj/structure/bed/chair/holochair{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -615,7 +615,7 @@
 /obj/structure/bed/chair/holochair{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -637,7 +637,7 @@
 /area/space)
 "bY" = (
 /obj/structure/holostool,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -648,14 +648,14 @@
 /area/holodeck/source_theatre)
 "ca" = (
 /obj/structure/holostool,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_theatre)
 "cb" = (
 /obj/structure/table/woodentable/holotable,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -669,19 +669,19 @@
 /area/holodeck/source_courtroom)
 "ce" = (
 /obj/structure/table/woodentable/holotable,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
 "cf" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 9
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
 "cg" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 6
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -691,7 +691,7 @@
 /turf/space/transit/south,
 /area/space)
 "ci" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -700,13 +700,13 @@
 /turf/space/internal_edge/left,
 /area/space)
 "ck" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
 /area/space)
 "cl" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel,
@@ -730,24 +730,24 @@
 /area/centcom/suppy)
 "cp" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
 "cq" = (
 /obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
 "cr" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -756,7 +756,7 @@
 /obj/structure/bed/chair/holochair{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -771,19 +771,19 @@
 /obj/structure/bed/chair/holochair{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
 "cv" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/space)
 "cw" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -809,14 +809,14 @@
 /area/centcom/suppy)
 "cz" = (
 /obj/structure/flora/ausbushes/brflowers,
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
 "cA" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/grass,
@@ -829,13 +829,13 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_courtroom)
 "cC" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
 "cD" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -849,48 +849,48 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_emptycourt)
 "cF" = (
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "cG" = (
 /obj/structure/holostool,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_theatre)
 "cH" = (
 /obj/structure/holostool,
-/obj/effect/floor_decal/carpet,
+/obj/effect/turf_decal/carpet,
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_theatre)
 "cI" = (
 /obj/structure/holostool,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 6
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_theatre)
 "cJ" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 6
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -899,11 +899,11 @@
 /obj/structure/bed/chair/holochair{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -912,11 +912,11 @@
 /obj/structure/bed/chair/holochair{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 6
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -947,16 +947,16 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_theatre)
 "cS" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 5
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 6
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 10
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 9
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -965,11 +965,11 @@
 /obj/structure/bed/chair/holochair{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -978,61 +978,61 @@
 /obj/structure/bed/chair/holochair{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet,
+/obj/effect/turf_decal/carpet,
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
 "cV" = (
 /obj/structure/bed/chair/holochair{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 6
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_courtroom)
 "cW" = (
-/obj/effect/floor_decal/corner/green/full,
+/obj/effect/turf_decal/corner/green/full,
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
 "cX" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
 "cY" = (
-/obj/effect/floor_decal/corner/green/full{
+/obj/effect/turf_decal/corner/green/full{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_emptycourt)
 "cZ" = (
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/turf_decal/industrial/danger,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
 "da" = (
 /obj/machinery/light,
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/turf_decal/industrial/danger,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
 "db" = (
-/obj/effect/floor_decal/industrial/warning/dust/corner,
+/obj/effect/turf_decal/industrial/warning/dust/corner,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "dc" = (
-/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/turf_decal/industrial/warning/dust,
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "dd" = (
-/obj/effect/floor_decal/rust/part_rusted3,
-/obj/effect/floor_decal/steeldecal/steel_decals6{
+/obj/effect/turf_decal/rust/part_rusted3,
+/obj/effect/turf_decal/steeldecal/steel_decals6{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1042,13 +1042,13 @@
 /area/centcom/simulated/evac)
 "df" = (
 /obj/machinery/door/airlock/multi_tile/metal,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
 "dg" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1072,29 +1072,29 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "dl" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "dm" = (
-/obj/effect/floor_decal/rust/steel_decals_rusted2,
-/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/turf_decal/rust/steel_decals_rusted2,
+/obj/effect/turf_decal/industrial/warning/dust,
 /obj/structure/sign/hangar/one{
 	pixel_y = 32
 	},
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "dn" = (
-/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/turf_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "dp" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "dq" = (
-/obj/effect/floor_decal/industrial/warning/dust/corner{
+/obj/effect/turf_decal/industrial/warning/dust/corner{
 	dir = 8
 	},
 /obj/structure/sign/hangar/one{
@@ -1103,7 +1103,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "dr" = (
-/obj/effect/floor_decal/rust/part_rusted3,
+/obj/effect/turf_decal/rust/part_rusted3,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "ds" = (
@@ -1136,26 +1136,26 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
 "dz" = (
-/obj/effect/floor_decal/corner/red/full{
+/obj/effect/turf_decal/corner/red/full{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
 "dA" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
 "dB" = (
 /obj/structure/holohoop,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
 "dC" = (
-/obj/effect/floor_decal/corner/red/full{
+/obj/effect/turf_decal/corner/red/full{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -1180,7 +1180,7 @@
 "dH" = (
 /obj/structure/table/holotable,
 /obj/machinery/readybutton,
-/obj/effect/floor_decal/corner/red/full{
+/obj/effect/turf_decal/corner/red/full{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -1191,14 +1191,14 @@
 /obj/item/clothing/suit/armor/tdome/red,
 /obj/item/clothing/under/color/red,
 /obj/item/holo/esword/red,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
 "dJ" = (
 /obj/structure/table/holotable,
-/obj/effect/floor_decal/corner/red/full{
+/obj/effect/turf_decal/corner/red/full{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -1212,13 +1212,13 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_boxingcourt)
 "dM" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "dN" = (
-/obj/effect/floor_decal/industrial/warning/dust/corner{
+/obj/effect/turf_decal/industrial/warning/dust/corner{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1238,46 +1238,46 @@
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/source_snowfield)
 "dR" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 9
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_meetinghall)
 "dS" = (
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_meetinghall)
 "dT" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 5
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 6
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_meetinghall)
 "dU" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 9
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -1286,7 +1286,7 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
 "dW" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 6
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -1296,7 +1296,7 @@
 /turf/simulated/floor/holofloor/beach/sand,
 /area/holodeck/source_beach)
 "dY" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 9
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -1305,7 +1305,7 @@
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
 "ea" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 6
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -1315,11 +1315,11 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_boxingcourt)
 "ec" = (
-/obj/effect/floor_decal/rust/mono_rusted3,
+/obj/effect/turf_decal/rust/mono_rusted3,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "ed" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1367,10 +1367,10 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_boxingcourt)
 "em" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 8
 	},
-/obj/effect/floor_decal/sign/dock/one,
+/obj/effect/turf_decal/sign/dock/one,
 /obj/machinery/camera/network/crescent{
 	dir = 8
 	},
@@ -1384,13 +1384,13 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "eo" = (
-/obj/effect/floor_decal/steeldecal/steel_decals5{
+/obj/effect/turf_decal/steeldecal/steel_decals5{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
+/obj/effect/turf_decal/steeldecal/steel_decals9{
 	dir = 1
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
+/obj/effect/turf_decal/steeldecal/steel_decals9{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1415,13 +1415,13 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "es" = (
-/obj/effect/floor_decal/steeldecal/steel_decals5{
+/obj/effect/turf_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
+/obj/effect/turf_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/turf_decal/steeldecal/steel_decals9,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "et" = (
@@ -1445,13 +1445,13 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_boxingcourt)
 "ey" = (
-/obj/effect/floor_decal/corner/red/full{
+/obj/effect/turf_decal/corner/red/full{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_boxingcourt)
 "ez" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -1466,7 +1466,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_boxingcourt)
 "eC" = (
-/obj/effect/floor_decal/industrial/warning/dust/corner{
+/obj/effect/turf_decal/industrial/warning/dust/corner{
 	dir = 4
 	},
 /obj/machinery/camera/network/crescent{
@@ -1475,16 +1475,16 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "eD" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals5{
+/obj/effect/turf_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
+/obj/effect/turf_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/turf_decal/steeldecal/steel_decals9,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "eE" = (
@@ -1492,72 +1492,72 @@
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/source_snowfield)
 "eF" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 5
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 6
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 9
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_meetinghall)
 "eG" = (
 /obj/structure/holostool,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 9
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_meetinghall)
 "eH" = (
 /obj/structure/holostool,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_meetinghall)
 "eI" = (
 /obj/structure/holostool,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_meetinghall)
 "eJ" = (
-/obj/effect/floor_decal/corner/red/full,
+/obj/effect/turf_decal/corner/red/full,
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
 "eK" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
 "eL" = (
 /obj/item/beach_ball/holoball,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
 "eM" = (
-/obj/effect/floor_decal/corner/red/full{
+/obj/effect/turf_decal/corner/red/full{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -1568,49 +1568,49 @@
 /area/holodeck/source_beach)
 "eO" = (
 /obj/structure/window/reinforced/holowindow/disappearing,
-/obj/effect/floor_decal/corner/red/full,
+/obj/effect/turf_decal/corner/red/full,
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
 "eP" = (
 /obj/structure/window/reinforced/holowindow/disappearing,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
 "eQ" = (
 /obj/structure/window/reinforced/holowindow/disappearing,
-/obj/effect/floor_decal/corner/red/full{
+/obj/effect/turf_decal/corner/red/full{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
 "eR" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 9
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_boxingcourt)
 "eS" = (
-/obj/effect/floor_decal/corner/blue/full{
+/obj/effect/turf_decal/corner/blue/full{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_boxingcourt)
 "eT" = (
-/obj/effect/floor_decal/corner/blue/full{
+/obj/effect/turf_decal/corner/blue/full{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_boxingcourt)
 "eU" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 6
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_boxingcourt)
 "eV" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /obj/structure/sign/hangar/one{
@@ -1619,63 +1619,63 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "eW" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "eX" = (
-/obj/effect/floor_decal/corner_steel_grid/diagonal,
+/obj/effect/turf_decal/corner_steel_grid/diagonal,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "eY" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals6{
+/obj/effect/turf_decal/steeldecal/steel_decals6{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "eZ" = (
-/obj/effect/floor_decal/rust,
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/rust,
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /obj/machinery/light,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "fa" = (
-/obj/effect/floor_decal/steeldecal/steel_decals5{
+/obj/effect/turf_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
+/obj/effect/turf_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/turf_decal/steeldecal/steel_decals9,
 /obj/structure/sign/hangar/one{
 	pixel_y = -32
 	},
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "fb" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "fc" = (
-/obj/effect/floor_decal/industrial/warning/dust/corner{
+/obj/effect/turf_decal/industrial/warning/dust/corner{
 	dir = 1
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals5{
+/obj/effect/turf_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
+/obj/effect/turf_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/turf_decal/steeldecal/steel_decals9,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "fd" = (
@@ -1686,7 +1686,7 @@
 /area/centcom/simulated/evac)
 "fe" = (
 /obj/structure/holostool,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -1697,25 +1697,25 @@
 /area/holodeck/source_meetinghall)
 "fg" = (
 /obj/structure/holostool,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_meetinghall)
 "fh" = (
-/obj/effect/floor_decal/corner/green/full{
+/obj/effect/turf_decal/corner/green/full{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
 "fi" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
 "fj" = (
-/obj/effect/floor_decal/corner/green/full{
+/obj/effect/turf_decal/corner/green/full{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -1724,7 +1724,7 @@
 /obj/structure/window/reinforced/holowindow/disappearing{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/green/full{
+/obj/effect/turf_decal/corner/green/full{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -1733,7 +1733,7 @@
 /obj/structure/window/reinforced/holowindow/disappearing{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -1742,17 +1742,17 @@
 /obj/structure/window/reinforced/holowindow/disappearing{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/green/full{
+/obj/effect/turf_decal/corner/green/full{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
 "fn" = (
-/obj/effect/floor_decal/corner/blue/full,
+/obj/effect/turf_decal/corner/blue/full,
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_boxingcourt)
 "fo" = (
-/obj/effect/floor_decal/corner/blue/full{
+/obj/effect/turf_decal/corner/blue/full{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -1762,13 +1762,13 @@
 /turf/space/transit/west,
 /area/space)
 "fq" = (
-/obj/effect/floor_decal/industrial/warning/dust{
+/obj/effect/turf_decal/industrial/warning/dust{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "fr" = (
-/obj/effect/floor_decal/industrial/warning/dust/corner{
+/obj/effect/turf_decal/industrial/warning/dust/corner{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1780,37 +1780,37 @@
 /turf/unsimulated/wall,
 /area/centcom/simulated/security)
 "fu" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 9
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
 "fv" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 6
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
 "fw" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 9
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
 "fx" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 6
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
 "fy" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_boxingcourt)
 "fz" = (
-/obj/effect/floor_decal/corner/green/full{
+/obj/effect/turf_decal/corner/green/full{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -1829,7 +1829,7 @@
 /turf/unsimulated/wall,
 /area/centcom/simulated/terminal)
 "fD" = (
-/obj/effect/floor_decal/industrial/warning/cee{
+/obj/effect/turf_decal/industrial/warning/cee{
 	dir = 8
 	},
 /obj/machinery/door/blast/regular/open{
@@ -1838,8 +1838,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/terminal)
 "fE" = (
-/obj/effect/floor_decal/industrial/warning,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /obj/machinery/door/blast/regular/open{
@@ -1848,7 +1848,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/terminal)
 "fF" = (
-/obj/effect/floor_decal/industrial/warning/cee{
+/obj/effect/turf_decal/industrial/warning/cee{
 	dir = 4
 	},
 /obj/machinery/door/blast/regular/open{
@@ -1889,13 +1889,13 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "fN" = (
-/obj/effect/floor_decal/borderfloor/shifted{
+/obj/effect/turf_decal/borderfloor/shifted{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightorange/border/shifted{
+/obj/effect/turf_decal/corner/lightorange/border/shifted{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightorange{
+/obj/effect/turf_decal/corner/lightorange{
 	dir = 9
 	},
 /obj/structure/table/steel,
@@ -1930,13 +1930,13 @@
 /turf/simulated/floor/tiled/dark,
 /area/centcom/simulated/security)
 "fU" = (
-/obj/effect/floor_decal/borderfloor/shifted{
+/obj/effect/turf_decal/borderfloor/shifted{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/lightorange/border/shifted{
+/obj/effect/turf_decal/corner/lightorange/border/shifted{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/lightorange{
+/obj/effect/turf_decal/corner/lightorange{
 	dir = 6
 	},
 /obj/structure/table/steel,
@@ -1951,7 +1951,7 @@
 /area/holodeck/source_snowfield)
 "fW" = (
 /obj/structure/holostool,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/carpet{
@@ -1967,7 +1967,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_basketball)
 "fY" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -1999,7 +1999,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_boxingcourt)
 "gd" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -2014,10 +2014,10 @@
 /turf/unsimulated/floor/techfloor_grid,
 /area/centcom/simulated/terminal)
 "gg" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 8
 	},
 /turf/simulated/floor/tiled,
@@ -2026,10 +2026,10 @@
 /turf/simulated/floor/tiled,
 /area/centcom/simulated/terminal)
 "gi" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -2044,7 +2044,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/simulated/terminal)
 "gk" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -2057,13 +2057,13 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "gn" = (
-/obj/effect/floor_decal/borderfloor/shifted{
+/obj/effect/turf_decal/borderfloor/shifted{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightorange/border/shifted{
+/obj/effect/turf_decal/corner/lightorange/border/shifted{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightorange{
+/obj/effect/turf_decal/corner/lightorange{
 	dir = 9
 	},
 /obj/machinery/light/small{
@@ -2075,27 +2075,27 @@
 /turf/simulated/floor/tiled/dark,
 /area/centcom/simulated/security)
 "gp" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /obj/machinery/door/window/brigdoor/eastleft{
 	name = "CC-Cell 1"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/centcom/simulated/security)
 "gq" = (
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /obj/machinery/door/window/brigdoor/westright{
 	name = "CC-Cell 2"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/centcom/simulated/security)
 "gr" = (
-/obj/effect/floor_decal/borderfloor/shifted{
+/obj/effect/turf_decal/borderfloor/shifted{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/lightorange/border/shifted{
+/obj/effect/turf_decal/corner/lightorange/border/shifted{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/lightorange{
+/obj/effect/turf_decal/corner/lightorange{
 	dir = 6
 	},
 /obj/machinery/light/small{
@@ -2105,27 +2105,27 @@
 /area/centcom/simulated/security)
 "gs" = (
 /obj/structure/holostool,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_meetinghall)
 "gt" = (
 /obj/structure/holostool,
-/obj/effect/floor_decal/carpet,
+/obj/effect/turf_decal/carpet,
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/source_meetinghall)
 "gu" = (
 /obj/structure/holostool,
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 6
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -2134,7 +2134,7 @@
 /turf/simulated/floor/holofloor/beach/water,
 /area/holodeck/source_beach)
 "gw" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 8
 	},
 /obj/machinery/camera/network/crescent{
@@ -2180,10 +2180,10 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/escape)
 "gC" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -2192,10 +2192,10 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/simulated/terminal)
 "gE" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -2207,7 +2207,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/simulated/terminal)
 "gG" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 4
 	},
 /obj/machinery/camera/network/crescent{
@@ -2247,13 +2247,13 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "gN" = (
-/obj/effect/floor_decal/borderfloor/shifted{
+/obj/effect/turf_decal/borderfloor/shifted{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightorange/border/shifted{
+/obj/effect/turf_decal/corner/lightorange/border/shifted{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightorange{
+/obj/effect/turf_decal/corner/lightorange{
 	dir = 9
 	},
 /obj/structure/bed/padded,
@@ -2271,13 +2271,13 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/security)
 "gQ" = (
-/obj/effect/floor_decal/borderfloor/shifted{
+/obj/effect/turf_decal/borderfloor/shifted{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/lightorange/border/shifted{
+/obj/effect/turf_decal/corner/lightorange/border/shifted{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/lightorange{
+/obj/effect/turf_decal/corner/lightorange{
 	dir = 6
 	},
 /obj/structure/bed/padded,
@@ -2285,27 +2285,27 @@
 /turf/simulated/floor/tiled/dark,
 /area/centcom/simulated/security)
 "gR" = (
-/obj/effect/floor_decal/corner/green/full,
+/obj/effect/turf_decal/corner/green/full,
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
 "gS" = (
 /obj/structure/holohoop{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
 "gT" = (
-/obj/effect/floor_decal/corner/green/full{
+/obj/effect/turf_decal/corner/green/full{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_basketball)
 "gU" = (
 /obj/structure/table/holotable,
-/obj/effect/floor_decal/corner/green/full,
+/obj/effect/turf_decal/corner/green/full,
 /turf/simulated/floor/holofloor/tiled,
 /area/holodeck/source_thunderdomecourt)
 "gV" = (
@@ -2314,7 +2314,7 @@
 /obj/item/clothing/suit/armor/tdome/green,
 /obj/item/clothing/under/color/green,
 /obj/item/holo/esword/green,
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -2322,7 +2322,7 @@
 "gW" = (
 /obj/structure/table/holotable,
 /obj/machinery/readybutton,
-/obj/effect/floor_decal/corner/green/full{
+/obj/effect/turf_decal/corner/green/full{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled,
@@ -2351,7 +2351,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "hd" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 4
 	},
 /obj/machinery/light{
@@ -2375,7 +2375,7 @@
 /turf/unsimulated/wall,
 /area/space)
 "hh" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 8
 	},
 /obj/machinery/light{
@@ -2501,22 +2501,22 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/security)
 "hx" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner,
+/obj/effect/turf_decal/spline/fancy/wood/corner,
 /turf/unsimulated/floor/steel,
 /area/centcom/simulated/evac)
 "hy" = (
-/obj/effect/floor_decal/spline/fancy/wood,
+/obj/effect/turf_decal/spline/fancy/wood,
 /turf/unsimulated/floor/steel,
 /area/centcom/simulated/evac)
 "hz" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 8
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/simulated/evac)
 "hA" = (
 /obj/machinery/cryopod/robot/door/gateway,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -2530,7 +2530,7 @@
 /area/centcom/simulated/living)
 "hC" = (
 /obj/machinery/cryopod/robot/door/gateway,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -2693,7 +2693,7 @@
 /turf/space/transit/north,
 /area/space)
 "ih" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
@@ -2713,13 +2713,13 @@
 	},
 /area/centcom/simulated/evac)
 "ik" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/simulated/evac)
 "il" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -2728,14 +2728,14 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/living)
 "in" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/living)
 "io" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
+/obj/effect/turf_decal/corner/white/full,
+/obj/effect/turf_decal/corner/white{
 	dir = 4
 	},
 /obj/item/chess/brook,
@@ -2746,8 +2746,8 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "iq" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
+/obj/effect/turf_decal/corner/white/full,
+/obj/effect/turf_decal/corner/white{
 	dir = 4
 	},
 /obj/item/chess/bbishop,
@@ -2758,8 +2758,8 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "is" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
+/obj/effect/turf_decal/corner/white/full,
+/obj/effect/turf_decal/corner/white{
 	dir = 4
 	},
 /obj/item/chess/bking,
@@ -2770,8 +2770,8 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "iu" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
+/obj/effect/turf_decal/corner/white/full,
+/obj/effect/turf_decal/corner/white{
 	dir = 4
 	},
 /obj/item/chess/bknight,
@@ -2782,8 +2782,8 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "iw" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
+/obj/effect/turf_decal/corner/white/full,
+/obj/effect/turf_decal/corner/white{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -2870,7 +2870,7 @@
 /area/centcom/simulated/security)
 "iL" = (
 /obj/structure/table/bench/wooden,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
@@ -2950,7 +2950,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/living)
 "iX" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/machinery/camera/network/crescent{
@@ -2963,8 +2963,8 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "iZ" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
+/obj/effect/turf_decal/corner/white/full,
+/obj/effect/turf_decal/corner/white{
 	dir = 4
 	},
 /obj/item/chess/bpawn,
@@ -3026,16 +3026,16 @@
 /area/shuttle/escape)
 "jk" = (
 /obj/structure/bed/chair/shuttle,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 9
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -3045,78 +3045,78 @@
 	dir = 4
 	},
 /obj/structure/bed/chair/shuttle,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 5
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "jm" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
 /obj/structure/handrail,
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 9
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "jn" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "jo" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "jp" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
 /obj/structure/handrail,
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 5
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -3126,16 +3126,16 @@
 	dir = 8
 	},
 /obj/structure/bed/chair/shuttle,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 9
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -3221,7 +3221,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/security)
 "jE" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/structure/bed/chair{
@@ -3231,23 +3231,23 @@
 /area/centcom/simulated/living)
 "jF" = (
 /obj/structure/bed/chair/shuttle,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 5
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "jG" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
+/obj/effect/turf_decal/corner/white/full,
+/obj/effect/turf_decal/corner/white{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -3351,19 +3351,19 @@
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/escape)
 "jZ" = (
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/turf_decal/borderfloor/corner{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/danger/corner{
+/obj/effect/turf_decal/industrial/danger/corner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/centcom/simulated/terminal)
 "ka" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -3403,11 +3403,11 @@
 /turf/simulated/floor/tiled/dark,
 /area/centcom/simulated/security)
 "kg" = (
-/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/turf_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/living)
 "kh" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /obj/machinery/light{
@@ -3473,22 +3473,22 @@
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/escape)
 "ku" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -3499,22 +3499,22 @@
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
 "kx" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 6
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -3570,7 +3570,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/centcom/simulated/security)
 "kH" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 10
 	},
 /obj/machinery/door/firedoor,
@@ -3580,7 +3580,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/living)
 "kI" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 6
 	},
 /obj/machinery/door/firedoor,
@@ -3720,26 +3720,26 @@
 /turf/simulated/floor/tiled/dark,
 /area/centcom/simulated/security)
 "kW" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 1
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/simulated/evac)
 "kX" = (
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/simulated/evac)
 "kY" = (
 /obj/structure/table/bench/wooden,
-/obj/effect/floor_decal/spline/fancy/wood{
+/obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/simulated/evac)
 "kZ" = (
-/obj/effect/floor_decal/spline/fancy/wood/corner{
+/obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
@@ -3756,11 +3756,11 @@
 /turf/space/transit/south,
 /area/space)
 "ld" = (
-/obj/effect/floor_decal/sign/dock/three,
+/obj/effect/turf_decal/sign/dock/three,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_chess)
 "le" = (
-/obj/effect/floor_decal/sign/dock/three,
+/obj/effect/turf_decal/sign/dock/three,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_checker)
 "lf" = (
@@ -3809,16 +3809,16 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -3830,46 +3830,46 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "ln" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "lo" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -3881,16 +3881,16 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -3899,16 +3899,16 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -3936,11 +3936,11 @@
 /obj/machinery/porta_turret/crescent{
 	density = 1
 	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/security)
 "lv" = (
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/security)
 "lw" = (
@@ -3977,12 +3977,12 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/living)
 "lC" = (
-/obj/effect/floor_decal/sign/dock/two,
+/obj/effect/turf_decal/sign/dock/two,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_chess)
 "lD" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
+/obj/effect/turf_decal/corner/white/full,
+/obj/effect/turf_decal/corner/white{
 	dir = 4
 	},
 /obj/item/chess/wpawn,
@@ -3993,7 +3993,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "lF" = (
-/obj/effect/floor_decal/sign/dock/two,
+/obj/effect/turf_decal/sign/dock/two,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_checker)
 "lG" = (
@@ -4035,44 +4035,44 @@
 /obj/structure/closet/walllocker/emergsuit_wall{
 	pixel_y = -26
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "lM" = (
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/turf_decal/borderfloor/corner{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "lN" = (
-/obj/effect/floor_decal/borderfloor/corner,
+/obj/effect/turf_decal/borderfloor/corner,
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "lO" = (
 /obj/structure/closet/walllocker/emergsuit_wall{
 	pixel_y = -26
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "lP" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9,
+/obj/effect/turf_decal/steeldecal/steel_decals9,
 /turf/simulated/floor/tiled,
 /area/centcom/simulated/terminal)
 "lQ" = (
@@ -4085,20 +4085,20 @@
 /turf/simulated/floor/tiled,
 /area/centcom/simulated/main_hall)
 "lS" = (
-/obj/effect/floor_decal/industrial/loading{
+/obj/effect/turf_decal/industrial/loading{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
 "lT" = (
-/obj/effect/floor_decal/industrial/loading,
+/obj/effect/turf_decal/industrial/loading,
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
 "lU" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9{
+/obj/effect/turf_decal/steeldecal/steel_decals9{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
+/obj/effect/turf_decal/steeldecal/steel_decals9{
 	dir = 1
 	},
 /obj/machinery/computer/cryopod/dorms{
@@ -4108,7 +4108,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/living)
 "lV" = (
-/obj/effect/floor_decal/sign/dock/one,
+/obj/effect/turf_decal/sign/dock/one,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_chess)
 "lW" = (
@@ -4116,8 +4116,8 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "lX" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
+/obj/effect/turf_decal/corner/white/full,
+/obj/effect/turf_decal/corner/white{
 	dir = 4
 	},
 /obj/item/chess/wknight,
@@ -4128,8 +4128,8 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "lZ" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
+/obj/effect/turf_decal/corner/white/full,
+/obj/effect/turf_decal/corner/white{
 	dir = 4
 	},
 /obj/item/chess/wqueen,
@@ -4140,8 +4140,8 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "mb" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
+/obj/effect/turf_decal/corner/white/full,
+/obj/effect/turf_decal/corner/white{
 	dir = 4
 	},
 /obj/item/chess/wbishop,
@@ -4152,47 +4152,47 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "md" = (
-/obj/effect/floor_decal/corner/white/full,
-/obj/effect/floor_decal/corner/white{
+/obj/effect/turf_decal/corner/white/full,
+/obj/effect/turf_decal/corner/white{
 	dir = 4
 	},
 /obj/item/chess/wrook,
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "me" = (
-/obj/effect/floor_decal/sign/dock/one,
+/obj/effect/turf_decal/sign/dock/one,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_checker)
 "mf" = (
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/holodorm/source_seating)
 "mg" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 9
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/holodorm/source_seating)
 "mh" = (
 /obj/structure/bed/chair/holochair,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/holodorm/source_seating)
 "mi" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 5
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -4203,7 +4203,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/holodorm/source_boxing)
 "mk" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 9
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -4212,7 +4212,7 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/holodorm/source_boxing)
 "mm" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 6
 	},
 /turf/simulated/floor/holofloor/tiled/dark,
@@ -4230,22 +4230,22 @@
 "mp" = (
 /obj/structure/table/glass,
 /obj/random/action_figure,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "mq" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -4260,11 +4260,11 @@
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/escape)
 "ms" = (
-/obj/effect/floor_decal/steeldecal/steel_decals5{
+/obj/effect/turf_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/steeldecal/steel_decals9{
+/obj/effect/turf_decal/steeldecal/steel_decals9,
+/obj/effect/turf_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
 /turf/simulated/floor/tiled,
@@ -4276,10 +4276,10 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/simulated/main_hall)
 "mu" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9{
+/obj/effect/turf_decal/steeldecal/steel_decals9{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
+/obj/effect/turf_decal/steeldecal/steel_decals9{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
@@ -4291,27 +4291,27 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/living)
 "mw" = (
-/obj/effect/floor_decal/sign/a,
+/obj/effect/turf_decal/sign/a,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_chess)
 "mx" = (
-/obj/effect/floor_decal/sign/b,
+/obj/effect/turf_decal/sign/b,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_chess)
 "my" = (
-/obj/effect/floor_decal/sign/c,
+/obj/effect/turf_decal/sign/c,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_chess)
 "mz" = (
-/obj/effect/floor_decal/sign/a,
+/obj/effect/turf_decal/sign/a,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_checker)
 "mA" = (
-/obj/effect/floor_decal/sign/b,
+/obj/effect/turf_decal/sign/b,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_checker)
 "mB" = (
-/obj/effect/floor_decal/sign/c,
+/obj/effect/turf_decal/sign/c,
 /turf/simulated/floor/holofloor/wood,
 /area/holodeck/source_checker)
 "mC" = (
@@ -4333,7 +4333,7 @@
 /obj/structure/bed/chair/holochair{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -4346,7 +4346,7 @@
 /obj/structure/bed/chair/holochair{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -4385,19 +4385,19 @@
 /area/shuttle/escape)
 "mK" = (
 /obj/structure/closet/emcloset,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 10
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/machinery/light{
 	dir = 8;
 	light_range = 12
@@ -4405,19 +4405,19 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "mL" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -4456,21 +4456,21 @@
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/escape)
 "mR" = (
-/obj/effect/floor_decal/steeldecal/steel_decals5{
+/obj/effect/turf_decal/steeldecal/steel_decals5{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9,
-/obj/effect/floor_decal/steeldecal/steel_decals9{
+/obj/effect/turf_decal/steeldecal/steel_decals9,
+/obj/effect/turf_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/simulated/terminal)
 "mS" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 10
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -4479,15 +4479,15 @@
 /obj/structure/bed/chair/holochair{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet,
+/obj/effect/turf_decal/carpet,
 /turf/simulated/floor/holofloor/carpet,
 /area/holodeck/holodorm/source_seating)
 "mU" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 6
 	},
 /turf/simulated/floor/holofloor/carpet,
@@ -4573,35 +4573,35 @@
 /area/shuttle/escape)
 "nf" = (
 /obj/structure/closet/emcloset,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "ng" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -4634,7 +4634,7 @@
 /turf/simulated/floor/reinforced,
 /area/shuttle/escape)
 "nk" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9{
+/obj/effect/turf_decal/steeldecal/steel_decals9{
 	dir = 4
 	},
 /obj/machinery/camera/network/crescent{
@@ -4643,10 +4643,10 @@
 /turf/simulated/floor/tiled,
 /area/centcom/simulated/terminal)
 "np" = (
-/obj/effect/floor_decal/steeldecal/steel_decals9{
+/obj/effect/turf_decal/steeldecal/steel_decals9{
 	dir = 8
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals9{
+/obj/effect/turf_decal/steeldecal/steel_decals9{
 	dir = 1
 	},
 /obj/machinery/camera/network/crescent{
@@ -4673,16 +4673,16 @@
 	pixel_y = 6
 	},
 /obj/structure/table/glass,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 10
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2{
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -4691,17 +4691,17 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "nu" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 6
 	},
-/obj/effect/floor_decal/borderfloor/corner2,
-/obj/effect/floor_decal/corner/lightgrey/bordercorner2,
+/obj/effect/turf_decal/borderfloor/corner2,
+/obj/effect/turf_decal/corner/lightgrey/bordercorner2,
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "nv" = (
@@ -4744,7 +4744,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/main_hall)
 "nD" = (
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /obj/structure/bed/chair{
 	dir = 1
 	},
@@ -4884,7 +4884,7 @@
 /area/centcom/simulated/medical)
 "oa" = (
 /obj/structure/bed/chair,
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -4912,10 +4912,10 @@
 	dir = 1
 	},
 /obj/machinery/meter,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 9
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/structure/handrail,
@@ -4928,7 +4928,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
 /obj/structure/handrail,
@@ -4938,10 +4938,10 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/fuel{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -4956,10 +4956,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -4969,10 +4969,10 @@
 	dir = 1
 	},
 /obj/machinery/meter,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 5
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/structure/handrail,
@@ -5066,19 +5066,19 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/bathroom)
 "oy" = (
-/obj/effect/floor_decal/corner/paleblue{
+/obj/effect/turf_decal/corner/paleblue{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/paleblue{
+/obj/effect/turf_decal/corner/paleblue{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "oz" = (
-/obj/effect/floor_decal/corner/paleblue{
+/obj/effect/turf_decal/corner/paleblue{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/paleblue{
+/obj/effect/turf_decal/corner/paleblue{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/white,
@@ -5089,14 +5089,14 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "oB" = (
-/obj/effect/floor_decal/industrial/loading,
+/obj/effect/turf_decal/industrial/loading,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "oC" = (
-/obj/effect/floor_decal/steeldecal/steel_decals6{
+/obj/effect/turf_decal/steeldecal/steel_decals6{
 	dir = 5
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals6{
+/obj/effect/turf_decal/steeldecal/steel_decals6{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/white,
@@ -5118,7 +5118,7 @@
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorblack/full,
+/obj/effect/turf_decal/borderfloorblack/full,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -5131,25 +5131,25 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 9
 	},
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "oH" = (
-/obj/effect/floor_decal/borderfloorblack/corner,
-/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/turf_decal/borderfloorblack/corner,
+/obj/effect/turf_decal/industrial/warning/corner,
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "oI" = (
 /obj/machinery/atmospherics/component/binary/pump/fuel{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/borderfloorblack,
+/obj/effect/turf_decal/industrial/warning,
 /obj/structure/handrail{
 	dir = 1
 	},
@@ -5157,23 +5157,23 @@
 /area/shuttle/escape)
 "oJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel,
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/borderfloorblack,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "oK" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/borderfloorblack,
+/obj/effect/turf_decal/industrial/warning,
 /obj/structure/handrail{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "oL" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
+/obj/effect/turf_decal/borderfloorblack/corner{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -5182,10 +5182,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/fuel{
 	dir = 5
 	},
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -5194,7 +5194,7 @@
 /obj/machinery/atmospherics/pipe/tank/phoron{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloorblack/full,
+/obj/effect/turf_decal/borderfloorblack/full,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -5204,13 +5204,13 @@
 /turf/simulated/floor/tiled,
 /area/shuttle/escape)
 "oP" = (
-/obj/effect/floor_decal/borderfloor/corner,
-/obj/effect/floor_decal/industrial/danger/corner,
+/obj/effect/turf_decal/borderfloor/corner,
+/obj/effect/turf_decal/industrial/danger/corner,
 /turf/simulated/floor/tiled/steel_grid,
 /area/centcom/simulated/terminal)
 "oQ" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/industrial/danger,
 /turf/simulated/floor/tiled/steel_grid,
 /area/centcom/simulated/terminal)
 "oR" = (
@@ -5292,10 +5292,10 @@
 "pc" = (
 /obj/structure/table/glass,
 /obj/item/healthanalyzer/improved,
-/obj/effect/floor_decal/corner/paleblue{
+/obj/effect/turf_decal/corner/paleblue{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/paleblue{
+/obj/effect/turf_decal/corner/paleblue{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/white,
@@ -5308,10 +5308,10 @@
 	icon_state = "laptop";
 	light_color = "#00b000"
 	},
-/obj/effect/floor_decal/corner/paleblue{
+/obj/effect/turf_decal/corner/paleblue{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/paleblue{
+/obj/effect/turf_decal/corner/paleblue{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/white,
@@ -5320,10 +5320,10 @@
 /obj/structure/table/glass{
 	desc = "It's a table, it has some scracthes..they say 'Mlem'."
 	},
-/obj/effect/floor_decal/corner/paleblue{
+/obj/effect/turf_decal/corner/paleblue{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/paleblue{
+/obj/effect/turf_decal/corner/paleblue{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/white,
@@ -5347,7 +5347,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "pq" = (
@@ -5357,7 +5357,7 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "pr" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -5381,19 +5381,19 @@
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/escape)
 "pv" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "pw" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -5450,16 +5450,16 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "pF" = (
-/obj/effect/floor_decal/industrial/loading{
+/obj/effect/turf_decal/industrial/loading{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "pG" = (
-/obj/effect/floor_decal/steeldecal/steel_decals6{
+/obj/effect/turf_decal/steeldecal/steel_decals6{
 	dir = 9
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals6{
+/obj/effect/turf_decal/steeldecal/steel_decals6{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/white,
@@ -5472,17 +5472,17 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "pI" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /obj/structure/fans/tiny,
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 10
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
 /obj/machinery/door/airlock/glass_external/public{
@@ -5491,17 +5491,17 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "pJ" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
 /obj/structure/fans/tiny,
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 9
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 6
 	},
 /obj/machinery/door/airlock/glass_external/public{
@@ -5659,19 +5659,19 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "qp" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/centcom/simulated/terminal)
 "qq" = (
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/turf_decal/borderfloor/corner{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/danger/corner{
+/obj/effect/turf_decal/industrial/danger/corner{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -5757,30 +5757,30 @@
 	pixel_y = 1
 	},
 /obj/item/tool/wrench,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "qM" = (
 /obj/machinery/atmospherics/component/unary/cryo_cell,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "qN" = (
 /obj/machinery/atmospherics/component/unary/freezer,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -5792,39 +5792,39 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "qP" = (
 /obj/structure/table/glass,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "qQ" = (
 /obj/machinery/vending/medical,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "qR" = (
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -5832,10 +5832,10 @@
 "qS" = (
 /obj/structure/table/glass,
 /obj/item/defib_kit/loaded,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -5846,10 +5846,10 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
@@ -5857,19 +5857,19 @@
 "qU" = (
 /obj/structure/table/glass,
 /obj/item/storage/pill_bottle/spaceacillin,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "qV" = (
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 1
 	},
 /obj/machinery/camera/network/crescent,
@@ -5892,10 +5892,10 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/white,
@@ -5917,10 +5917,10 @@
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 6
 	},
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 8
 	},
 /obj/machinery/camera/network/crescent{
@@ -5943,10 +5943,10 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "re" = (
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/white,
@@ -5955,48 +5955,48 @@
 /obj/machinery/computer/transhuman/designer{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "rg" = (
 /obj/structure/railing,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/centcom/simulated/terminal)
 "rh" = (
 /obj/structure/railing,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/industrial/danger,
 /turf/simulated/floor/tiled/steel_grid,
 /area/centcom/simulated/terminal)
 "ri" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/industrial/danger,
 /obj/structure/railing,
 /turf/simulated/floor/tiled/steel_grid,
 /area/centcom/simulated/terminal)
 "rj" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 6
 	},
 /obj/structure/railing,
 /turf/simulated/floor/tiled/steel_grid,
 /area/centcom/simulated/terminal)
 "rk" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 4
 	},
 /obj/machinery/camera/network/crescent{
@@ -6027,10 +6027,10 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -6087,10 +6087,10 @@
 	dir = 1
 	},
 /obj/machinery/portable_atmospherics/canister/oxygen/prechilled,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/white,
@@ -6100,42 +6100,42 @@
 	dir = 1
 	},
 /obj/machinery/portable_atmospherics/canister/oxygen/prechilled,
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/turf_decal/borderfloorwhite,
+/obj/effect/turf_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "rM" = (
 /obj/structure/table/glass,
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/turf_decal/borderfloorwhite,
+/obj/effect/turf_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "rN" = (
 /obj/structure/table/glass,
 /obj/machinery/chemical_dispenser/full,
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/turf_decal/borderfloorwhite,
+/obj/effect/turf_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "rO" = (
 /obj/machinery/chem_master,
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/turf_decal/borderfloorwhite,
+/obj/effect/turf_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "rP" = (
 /obj/structure/table/glass,
 /obj/machinery/chemical_dispenser/ert,
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/turf_decal/borderfloorwhite,
+/obj/effect/turf_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "rQ" = (
 /obj/machinery/transhuman/synthprinter,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -6219,10 +6219,10 @@
 /area/centcom/simulated/bar)
 "rY" = (
 /obj/structure/bed/chair/shuttle,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -6231,14 +6231,14 @@
 /obj/machinery/bodyscanner{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner_steel_grid{
+/obj/effect/turf_decal/corner_steel_grid{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "sa" = (
 /obj/machinery/body_scanconsole,
-/obj/effect/floor_decal/corner_steel_grid{
+/obj/effect/turf_decal/corner_steel_grid{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/white,
@@ -6259,10 +6259,10 @@
 /obj/machinery/computer/transhuman/resleeving{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -6287,7 +6287,7 @@
 /obj/item/surgical/scalpel,
 /obj/item/autopsy_scanner,
 /obj/item/surgical/cautery,
-/obj/effect/floor_decal/techfloor,
+/obj/effect/turf_decal/techfloor,
 /turf/simulated/floor/tiled/techfloor,
 /area/centcom/simulated/medical)
 "sm" = (
@@ -6322,10 +6322,10 @@
 /area/centcom/simulated/medical)
 "sr" = (
 /obj/machinery/transhuman/resleever,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
@@ -6411,17 +6411,17 @@
 /obj/structure/filingcabinet/chestdrawer{
 	name = "Medical Forms"
 	},
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "sH" = (
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/turf_decal/borderfloorwhite,
+/obj/effect/turf_decal/corner/paleblue/border,
 /obj/machinery/camera/network/crescent{
 	dir = 1
 	},
@@ -6429,19 +6429,19 @@
 /area/centcom/simulated/medical)
 "sI" = (
 /obj/machinery/light,
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/turf_decal/borderfloorwhite,
+/obj/effect/turf_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "sJ" = (
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/turf_decal/borderfloorwhite,
+/obj/effect/turf_decal/corner/paleblue/border,
 /obj/machinery/organ_printer/flesh,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "sK" = (
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/turf_decal/borderfloorwhite,
+/obj/effect/turf_decal/corner/paleblue/border,
 /obj/structure/table/glass,
 /obj/item/reagent_containers/glass/bottle/biomass{
 	pixel_x = -3;
@@ -6454,22 +6454,22 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "sL" = (
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/turf_decal/borderfloorwhite,
+/obj/effect/turf_decal/corner/paleblue/border,
 /obj/machinery/vending/blood,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "sM" = (
-/obj/effect/floor_decal/borderfloorwhite,
-/obj/effect/floor_decal/corner/paleblue/border,
+/obj/effect/turf_decal/borderfloorwhite,
+/obj/effect/turf_decal/corner/paleblue/border,
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "sN" = (
 /obj/machinery/clonepod/transhuman/full,
-/obj/effect/floor_decal/borderfloorwhite{
+/obj/effect/turf_decal/borderfloorwhite{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/paleblue/border{
+/obj/effect/turf_decal/corner/paleblue/border{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/white,
@@ -6481,7 +6481,7 @@
 /obj/structure/table/rack,
 /obj/item/gun/energy/ionrifle,
 /obj/item/gun/energy/ionrifle,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -6491,7 +6491,7 @@
 	dir = 1
 	},
 /obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -6507,7 +6507,7 @@
 	},
 /obj/structure/table/rack,
 /obj/item/gun/energy/netgun,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -6520,7 +6520,7 @@
 /obj/item/gun/energy/laser,
 /obj/item/gun/energy/laser,
 /obj/item/gun/energy/laser,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -6533,7 +6533,7 @@
 	dir = 1
 	},
 /obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/item/gun/energy/gun/nuclear,
 /obj/item/gun/energy/gun/nuclear,
 /obj/item/gun/energy/gun/nuclear,
@@ -6547,7 +6547,7 @@
 	dir = 1
 	},
 /obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -6564,7 +6564,7 @@
 	dir = 1
 	},
 /obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/item/ammo_magazine/m545/ap,
 /obj/item/ammo_magazine/m545/ap,
 /obj/item/ammo_magazine/m545,
@@ -6584,7 +6584,7 @@
 	dir = 1
 	},
 /obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -6607,7 +6607,7 @@
 	dir = 1
 	},
 /obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/item/gun/energy/taser,
 /obj/item/gun/energy/taser,
 /obj/item/gun/energy/taser,
@@ -6623,13 +6623,13 @@
 /obj/item/shield/energy,
 /obj/item/shield/energy,
 /obj/item/shield/energy,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/item/melee/energy/sword,
 /obj/item/melee/energy/sword,
 /obj/item/melee/energy/sword,
 /obj/item/melee/energy/sword,
 /obj/item/melee/energy/sword,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -6645,7 +6645,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /obj/item/gun/energy/stunrevolver,
 /obj/item/gun/energy/stunrevolver,
 /obj/item/gun/energy/stunrevolver,
@@ -6670,7 +6670,7 @@
 	},
 /obj/item/storage/box/smokes,
 /obj/item/storage/box/smokes,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -6916,10 +6916,10 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_grid,
@@ -7604,7 +7604,7 @@
 	},
 /area/centcom/specops)
 "uU" = (
-/obj/effect/floor_decal/corner/white{
+/obj/effect/turf_decal/corner/white{
 	dir = 10
 	},
 /turf/unsimulated/floor{
@@ -7613,7 +7613,7 @@
 	},
 /area/centcom/specops)
 "uV" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 10
 	},
 /turf/unsimulated/floor{
@@ -7752,7 +7752,7 @@
 	},
 /area/centcom/specops)
 "vt" = (
-/obj/effect/floor_decal/corner/yellow{
+/obj/effect/turf_decal/corner/yellow{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -7760,7 +7760,7 @@
 	},
 /area/centcom/specops)
 "vu" = (
-/obj/effect/floor_decal/corner/blue{
+/obj/effect/turf_decal/corner/blue{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -7775,7 +7775,7 @@
 /obj/item/pda/ert,
 /obj/item/pda/ert,
 /obj/item/pda/ert,
-/obj/effect/floor_decal/corner/blue{
+/obj/effect/turf_decal/corner/blue{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -7790,7 +7790,7 @@
 /obj/item/megaphone,
 /obj/item/megaphone,
 /obj/item/megaphone,
-/obj/effect/floor_decal/corner/blue{
+/obj/effect/turf_decal/corner/blue{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -7805,7 +7805,7 @@
 /obj/item/clothing/accessory/holster/waist,
 /obj/item/clothing/accessory/holster/waist,
 /obj/structure/table/reinforced,
-/obj/effect/floor_decal/corner/blue{
+/obj/effect/turf_decal/corner/blue{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -7820,7 +7820,7 @@
 /obj/item/clothing/accessory/holster/hip,
 /obj/item/clothing/accessory/holster/hip,
 /obj/structure/table/reinforced,
-/obj/effect/floor_decal/corner/blue{
+/obj/effect/turf_decal/corner/blue{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -8150,7 +8150,7 @@
 "wa" = (
 /obj/machinery/cell_charger,
 /obj/structure/table/reinforced,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8163,7 +8163,7 @@
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8247,7 +8247,7 @@
 /area/centcom/specops)
 "wr" = (
 /obj/structure/table/reinforced,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /obj/item/cell/hyper,
 /obj/item/cell/hyper,
 /obj/item/cell/hyper,
@@ -8272,7 +8272,7 @@
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
 /obj/item/clothing/mask/breath,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8428,7 +8428,7 @@
 /obj/item/rig_module/device/rcd,
 /obj/item/rig_module/device/plasmacutter,
 /obj/item/rig_module/device/plasmacutter,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8441,7 +8441,7 @@
 /obj/item/rig_module/chem_dispenser/injector,
 /obj/item/rig_module/device/healthscanner,
 /obj/item/rig_module/device/healthscanner,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8450,7 +8450,7 @@
 /obj/structure/table/rack,
 /obj/item/rig_module/mounted/egun,
 /obj/item/rig_module/mounted/egun,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8463,7 +8463,7 @@
 /obj/item/tool/crowbar,
 /obj/item/tool/screwdriver,
 /obj/item/tool/wrench,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8474,7 +8474,7 @@
 /obj/item/rig_module/device/drill,
 /obj/item/rig_module/maneuvering_jets,
 /obj/item/rig_module/maneuvering_jets,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8484,14 +8484,14 @@
 /obj/item/rig_module/mounted/taser,
 /obj/item/rig_module/mounted/taser,
 /obj/item/rig_module/mounted/taser,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/centcom/specops)
 "wP" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /obj/item/rig_module/rescue_pharm,
 /obj/item/rig_module/sprinter,
 /obj/item/rig_module/sprinter,
@@ -8513,7 +8513,7 @@
 /obj/item/storage/box,
 /obj/item/storage/box,
 /obj/item/storage/box,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8524,21 +8524,21 @@
 	hacked = 1;
 	name = "Unlocked Autolathe"
 	},
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/centcom/specops)
 "wS" = (
 /obj/structure/dispenser/oxygen,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/centcom/specops)
 "wT" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8553,7 +8553,7 @@
 /obj/item/tank/emergency/oxygen/double,
 /obj/item/tank/emergency/oxygen/double,
 /obj/item/tank/emergency/oxygen/double,
-/obj/effect/floor_decal/industrial/outline/blue,
+/obj/effect/turf_decal/industrial/outline/blue,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -8600,16 +8600,16 @@
 /obj/structure/flora/pottedplant{
 	pixel_y = 8
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "xi" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 1
 	},
 /turf/unsimulated/floor/steel,
@@ -8618,25 +8618,25 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "xk" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "xl" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "xm" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 5
 	},
 /turf/unsimulated/floor/steel,
@@ -8645,19 +8645,19 @@
 /obj/machinery/porta_turret/crescent{
 	density = 1
 	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "xo" = (
 /obj/structure/bed/padded,
 /obj/item/bedsheet/captain,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 9
 	},
 /turf/unsimulated/floor{
@@ -8666,13 +8666,13 @@
 /area/centcom/control)
 "xp" = (
 /obj/structure/table/standard,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 1
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -8693,13 +8693,13 @@
 "xs" = (
 /obj/structure/table/woodentable,
 /obj/machinery/recharger,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "xt" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -8707,7 +8707,7 @@
 	},
 /area/centcom/control)
 "xu" = (
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
 /turf/unsimulated/floor{
@@ -8719,43 +8719,43 @@
 /obj/structure/flora/pottedplant/small{
 	pixel_y = 8
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "xw" = (
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "xx" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 9
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "xy" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor/corner2,
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "xz" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 6
 	},
-/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/turf_decal/borderfloor/corner2,
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "xA" = (
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 10
 	},
 /obj/structure/closet/secure_closet/personal,
@@ -8764,11 +8764,11 @@
 	},
 /area/centcom/control)
 "xB" = (
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 6
 	},
 /turf/unsimulated/floor{
@@ -8776,11 +8776,11 @@
 	},
 /area/centcom/control)
 "xC" = (
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 8
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 10
 	},
 /turf/unsimulated/floor{
@@ -8789,11 +8789,11 @@
 /area/centcom/control)
 "xD" = (
 /obj/structure/closet/secure_closet/personal,
-/obj/effect/floor_decal/carpet,
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet,
+/obj/effect/turf_decal/carpet{
 	dir = 4
 	},
-/obj/effect/floor_decal/carpet{
+/obj/effect/turf_decal/carpet{
 	dir = 6
 	},
 /turf/unsimulated/floor{
@@ -8882,28 +8882,28 @@
 	},
 /area/centcom/main_hall)
 "xO" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 10
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 1
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "xP" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 10
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "xQ" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
 /obj/structure/table/woodentable,
@@ -8917,14 +8917,14 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "xT" = (
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /obj/structure/closet/secure_closet/nanotrasen_security{
 	desc = "This locker is filled silly stickers and some other serious NanoTrasen ones. It is lazily labeled 'The big cat'."
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "xX" = (
-/obj/effect/floor_decal/industrial/outline,
+/obj/effect/turf_decal/industrial/outline,
 /obj/structure/closet/secure_closet/nanotrasen_security,
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
@@ -8969,7 +8969,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "yc" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /obj/structure/table/woodentable,
@@ -8994,37 +8994,37 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "yg" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 9
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "yh" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 6
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "yi" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 8
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/main_hall)
 "yj" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
 /obj/structure/table/woodentable,
@@ -9211,20 +9211,20 @@
 /obj/machinery/computer/skills{
 	pixel_y = 2
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "yP" = (
 /obj/structure/table/standard,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "yQ" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /obj/structure/reagent_dispensers/water_cooler/full,
@@ -9233,7 +9233,7 @@
 /area/centcom/command)
 "yR" = (
 /obj/structure/table/standard,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /obj/machinery/status_display{
@@ -9249,14 +9249,14 @@
 /obj/machinery/computer/skills{
 	pixel_y = 2
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "yT" = (
 /obj/structure/table/standard,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /obj/item/paper_bin{
@@ -9270,43 +9270,43 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "yU" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 1
 	},
 /obj/machinery/photocopier,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "yV" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 1
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "yW" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 4
 	},
 /obj/machinery/vending/loadout/accessory,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "yX" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /obj/machinery/vending/loadout,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "yY" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
 /obj/machinery/vending/loadout/clothing,
@@ -9341,7 +9341,7 @@
 /area/tdome/tdomeobserve)
 "zd" = (
 /obj/structure/table/standard,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
 /turf/unsimulated/floor/steel,
@@ -9353,13 +9353,13 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zf" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	pixel_y = -16
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zg" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	pixel_y = -16
 	},
 /obj/structure/bed/chair/office/light{
@@ -9368,10 +9368,10 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zh" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 6
 	},
 /turf/unsimulated/floor/steel,
@@ -9386,14 +9386,14 @@
 	},
 /area/centcom/command)
 "zj" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
 /obj/machinery/washing_machine,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zk" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
@@ -9456,7 +9456,7 @@
 	},
 /area/tdome/tdomeadmin)
 "zr" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
 /obj/structure/filingcabinet/filingcabinet,
@@ -9482,16 +9482,16 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zv" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 8
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zx" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
 /obj/machinery/recharge_station,
@@ -9508,7 +9508,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zA" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /obj/structure/table/standard,
@@ -9516,24 +9516,24 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zB" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
 /obj/machinery/vending/coffee,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zC" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 5
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zD" = (
 /obj/structure/table/standard,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1;
 	pixel_y = -16
 	},
@@ -9544,7 +9544,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1;
 	pixel_y = -16
 	},
@@ -9552,7 +9552,7 @@
 /area/centcom/command)
 "zF" = (
 /obj/structure/table/standard,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1;
 	pixel_y = -16
 	},
@@ -9564,16 +9564,16 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zG" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 10
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zH" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
 /obj/structure/table/standard,
@@ -9586,7 +9586,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zJ" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /obj/structure/table/bench/standard,
@@ -9621,7 +9621,7 @@
 /area/tdome/tdome1)
 "zN" = (
 /obj/structure/table/standard,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
 /obj/structure/flora/pottedplant{
@@ -9659,58 +9659,58 @@
 /obj/machinery/computer/skills{
 	pixel_y = 2
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zT" = (
 /obj/structure/table/standard,
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zU" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 9
 	},
 /obj/structure/closet/crate/bin,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zV" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor/corner2,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zW" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 9
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zX" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 9
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zY" = (
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor/corner2,
 /obj/machinery/vending/loadout/overwear,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "zZ" = (
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /obj/machinery/vending/loadout/costume,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Aa" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
 /obj/machinery/vending/loadout/loadout_misc,
@@ -9826,24 +9826,24 @@
 /area/tdome/tdome1)
 "Am" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "An" = (
 /obj/structure/flora/pottedplant,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Ao" = (
 /obj/machinery/camera/network/crescent,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 1
 	},
 /turf/unsimulated/floor/steel,
@@ -9853,7 +9853,7 @@
 /obj/machinery/computer/skills{
 	pixel_y = 2
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
@@ -9875,7 +9875,7 @@
 /obj/structure/flora/pottedplant{
 	pixel_y = 10
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8;
 	pixel_x = 16
 	},
@@ -9884,10 +9884,10 @@
 "At" = (
 /obj/structure/closet/crate/bin,
 /obj/machinery/camera/network/crescent,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
@@ -9896,14 +9896,14 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-10"
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Av" = (
 /obj/structure/reagent_dispensers/water_cooler/full,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
 /turf/unsimulated/floor/steel,
@@ -9945,14 +9945,14 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "AA" = (
 /obj/structure/table/glass,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
@@ -9965,7 +9965,7 @@
 /area/centcom/command)
 "AC" = (
 /obj/structure/table/glass,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8;
 	pixel_x = 16
 	},
@@ -9980,7 +9980,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
@@ -10000,24 +10000,24 @@
 /obj/machinery/newscaster{
 	pixel_x = -27
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "AH" = (
 /obj/structure/table/glass,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 5
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "AI" = (
 /obj/structure/table/glass,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1;
 	pixel_y = -16
 	},
@@ -10025,15 +10025,15 @@
 /area/centcom/command)
 "AJ" = (
 /obj/structure/table/glass,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1;
 	pixel_y = -16
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8;
 	pixel_x = 16
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 10;
 	pixel_x = 16
 	},
@@ -10046,7 +10046,7 @@
 /obj/machinery/newscaster{
 	pixel_x = 29
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
@@ -10072,7 +10072,7 @@
 /area/space)
 "AQ" = (
 /obj/machinery/vending/snack,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
 /turf/unsimulated/floor/steel,
@@ -10081,34 +10081,34 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-22"
 	},
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "AS" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-22"
 	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/borderfloor/corner2,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor/corner2,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "AU" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "AW" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-24"
 	},
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "AY" = (
 /obj/machinery/vending/cola,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
 /turf/unsimulated/floor/steel,
@@ -10157,59 +10157,59 @@
 /turf/unsimulated/wall,
 /area/centcom/command)
 "Be" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Bf" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Bg" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 1
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Bh" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor/corner2{
+/obj/effect/turf_decal/borderfloor/corner2{
 	dir = 4
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Bj" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Bk" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Bl" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Bn" = (
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /turf/unsimulated/floor/steel,
 /area/centcom/command)
 "Bo" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
 /turf/unsimulated/floor/steel,
@@ -10269,8 +10269,8 @@
 /obj/structure/handrail{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/lightgrey/border,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/corner/lightgrey/border,
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "KE" = (
@@ -10317,10 +10317,10 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 6
 	},
 /obj/machinery/light,
@@ -10361,10 +10361,10 @@
 /obj/structure/bed/chair/shuttle{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/lightgrey/border{
+/obj/effect/turf_decal/corner/lightgrey/border{
 	dir = 10
 	},
 /obj/machinery/light,

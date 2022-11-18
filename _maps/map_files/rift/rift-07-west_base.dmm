@@ -23,22 +23,22 @@
 /area/rift/facility/interior/vault)
 "aY" = (
 /obj/random/obstruction,
-/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/turf_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "bd" = (
 /obj/random/obstruction,
 /obj/random/obstruction,
-/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/turf_decal/techfloor/orange,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "be" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/turf_decal/corner/beige/border{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -47,16 +47,16 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "bk" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/turf_decal/corner/beige/border{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel/lythios43c,
@@ -65,23 +65,23 @@
 /turf/simulated/mineral/ignore_cavegen,
 /area/rift/surfacebase/outside/west_base)
 "bD" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/facility/interior/vault)
 "bP" = (
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/turf_decal/borderfloor/corner{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/beige/bordercorner{
+/obj/effect/turf_decal/corner/beige/bordercorner{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
 "bW" = (
 /obj/machinery/light/small,
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -95,13 +95,13 @@
 	chargelevel = 0;
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "cH" = (
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -121,7 +121,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
 "dk" = (
-/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/turf_decal/techfloor/orange,
 /obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
@@ -159,7 +159,7 @@
 /turf/simulated/mineral/cave,
 /area/rift/surfacebase/outside/west_base)
 "fR" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -172,10 +172,10 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
 "hg" = (
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -188,7 +188,7 @@
 /obj/effect/trap/pop_up/flame{
 	id = "LF_V"
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -201,17 +201,17 @@
 /obj/random/contraband,
 /obj/random/contraband,
 /obj/random/contraband,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/turf_decal/corner/beige/border{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
 "ig" = (
 /obj/random/obstruction,
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -239,24 +239,24 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
 "kC" = (
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "kG" = (
 /obj/machinery/door/airlock/vault/bolted,
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/vault)
 "kH" = (
 /obj/structure/girder/reinforced,
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -274,17 +274,17 @@
 /obj/item/clothing/suit/tajaran/furs,
 /obj/item/clothing/head/tajaran/scarf,
 /obj/item/flame/lighter/random,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/turf_decal/corner/beige/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
 "lv" = (
 /obj/random/obstruction,
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -313,10 +313,10 @@
 /obj/item/clothing/suit/tajaran/furs,
 /obj/item/clothing/head/tajaran/scarf,
 /obj/item/storage/mre/random,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/turf_decal/corner/beige/border{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel/lythios43c,
@@ -334,8 +334,8 @@
 /obj/item/clothing/suit/tajaran/furs,
 /obj/item/clothing/head/tajaran/scarf,
 /obj/random/alcohol,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/beige/border,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/corner/beige/border,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
 "nk" = (
@@ -354,7 +354,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
 "nO" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -367,7 +367,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
 "ok" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 4
 	},
 /obj/random/trash,
@@ -375,7 +375,7 @@
 /area/rift/facility/interior/undergound3)
 "oo" = (
 /obj/structure/girder/reinforced,
-/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/turf_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "oA" = (
@@ -391,7 +391,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west_base)
 "pJ" = (
-/obj/effect/floor_decal/techfloor/orange/corner,
+/obj/effect/turf_decal/techfloor/orange/corner,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "pS" = (
@@ -399,51 +399,51 @@
 /obj/item/clothing/suit/tajaran/furs,
 /obj/item/clothing/head/tajaran/scarf,
 /obj/item/storage/mre/random,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/beige/border,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/corner/beige/border,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
 "qd" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 8
 	},
 /obj/random/trash,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "qK" = (
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/turf_decal/borderfloor/corner{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/beige/bordercorner{
+/obj/effect/turf_decal/corner/beige/bordercorner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
 "qS" = (
 /obj/effect/map_effect/radiation_emitter,
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "rn" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "rp" = (
-/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/turf_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "rq" = (
 /obj/structure/fence{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -463,7 +463,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -488,7 +488,7 @@
 /area/rift/facility/interior/vault)
 "tZ" = (
 /obj/machinery/light/small,
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -507,7 +507,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -517,10 +517,10 @@
 /obj/item/clothing/suit/tajaran/furs,
 /obj/item/clothing/head/tajaran/scarf,
 /obj/item/storage/mre/random,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/turf_decal/corner/beige/border{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -529,10 +529,10 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/interior/core)
 "vh" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/turf_decal/corner/beige/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -557,8 +557,8 @@
 "wq" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/beige/border,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/corner/beige/border,
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/barracks)
 "ws" = (
@@ -574,22 +574,22 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
 "xU" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "xY" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "yE" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/turf_decal/corner/beige/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel/lythios43c,
@@ -616,15 +616,15 @@
 /area/rift/facility/interior/core)
 "zh" = (
 /obj/machinery/door/airlock/vault/bolted,
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/turf_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "zo" = (
 /obj/structure/fence,
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -633,10 +633,10 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/turf_decal/corner/beige/border{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -664,7 +664,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -672,16 +672,16 @@
 "Cc" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/turf_decal/corner/beige/border{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
 "CB" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -714,21 +714,21 @@
 /area/rift/surfacebase/outside/west_base)
 "Eb" = (
 /obj/random/obstruction,
-/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/turf_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/core)
 "Ei" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
 "Ex" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/turf_decal/corner/beige/border{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -738,10 +738,10 @@
 /obj/item/clothing/suit/tajaran/furs,
 /obj/item/clothing/head/tajaran/scarf,
 /obj/item/flame/lighter/random,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/turf_decal/corner/beige/border{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -761,10 +761,10 @@
 /turf/simulated/wall,
 /area/rift/surfacebase/outside/west_base)
 "FI" = (
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner{
 	dir = 8
 	},
-/obj/effect/floor_decal/techfloor/orange/corner,
+/obj/effect/turf_decal/techfloor/orange/corner,
 /obj/effect/overlay/snow/floor/pointy{
 	dir = 1
 	},
@@ -785,22 +785,22 @@
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
 "Gx" = (
-/obj/effect/floor_decal/techfloor/orange/corner,
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner,
+/obj/effect/turf_decal/techfloor/orange/corner{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/facility/interior/vault)
 "Hl" = (
-/obj/effect/floor_decal/borderfloor/corner,
-/obj/effect/floor_decal/corner/beige/bordercorner,
+/obj/effect/turf_decal/borderfloor/corner,
+/obj/effect/turf_decal/corner/beige/bordercorner,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
 "HA" = (
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_base)
 "Id" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 9
 	},
 /obj/random/trash,
@@ -813,7 +813,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -821,12 +821,12 @@
 "IF" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/obj/effect/floor_decal/borderfloor,
-/obj/effect/floor_decal/corner/beige/border,
+/obj/effect/turf_decal/borderfloor,
+/obj/effect/turf_decal/corner/beige/border,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
 "Jq" = (
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -839,17 +839,17 @@
 	chargelevel = 0;
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/turf_decal/corner/beige/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/barracks)
 "JZ" = (
 /obj/machinery/light/small,
-/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/turf_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "Kh" = (
@@ -892,10 +892,10 @@
 	info = "There is going to be another accident I can feel it. Colonel Lii'jar seems certain of it and now these latest tests will push the ractors to its limits. I can only hope it holds, at least after last time we know what to do when it fails.";
 	name = "torn diary page"
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/turf_decal/corner/beige/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -918,10 +918,10 @@
 /obj/effect/trap/pit/deep{
 	id = "LF_VE"
 	},
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -930,7 +930,7 @@
 /turf/simulated/mineral/floor/ignore_cavegen/has_air,
 /area/rift/surfacebase/outside/west_base)
 "NI" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/techfloor,
@@ -948,10 +948,10 @@
 "Om" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/turf_decal/corner/beige/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -989,10 +989,10 @@
 /obj/random/contraband,
 /obj/random/contraband,
 /obj/random/contraband,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/turf_decal/corner/beige/border{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -1000,17 +1000,17 @@
 "QC" = (
 /obj/machinery/door/airlock/vault/bolted,
 /obj/effect/overlay/snow/airlock,
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rift/facility/interior/core)
 "QO" = (
 /obj/random/trash,
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -1021,8 +1021,8 @@
 /turf/simulated/floor,
 /area/turbolift/rwest_mining/base)
 "Rw" = (
-/obj/effect/floor_decal/techfloor/orange/corner,
-/obj/effect/floor_decal/techfloor/orange/corner{
+/obj/effect/turf_decal/techfloor/orange/corner,
+/obj/effect/turf_decal/techfloor/orange/corner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -1041,10 +1041,10 @@
 /turf/simulated/floor/outdoors/lava/indoors,
 /area/rift/surfacebase/outside/west_base)
 "RJ" = (
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/turf_decal/borderfloor/corner{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/beige/bordercorner{
+/obj/effect/turf_decal/corner/beige/bordercorner{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel/lythios43c,
@@ -1060,7 +1060,7 @@
 /area/rift/facility/interior/core)
 "So" = (
 /obj/structure/fence,
-/obj/effect/floor_decal/techfloor/orange,
+/obj/effect/turf_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "Su" = (
@@ -1085,7 +1085,7 @@
 /obj/structure/fence{
 	dir = 4
 	},
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -1099,10 +1099,10 @@
 "TT" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/turf_decal/corner/beige/border{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -1120,7 +1120,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/undergound3)
 "UL" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -1129,7 +1129,7 @@
 /turf/simulated/mineral/icerock/airmix,
 /area/rift/surfacebase/outside/west_base)
 "VI" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -1170,7 +1170,7 @@
 /turf/simulated/floor/tiled/steel_ridged,
 /area/rift/facility/interior/vault)
 "XH" = (
-/obj/effect/floor_decal/techfloor/orange{
+/obj/effect/turf_decal/techfloor/orange{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
@@ -1179,10 +1179,10 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/turf_decal/corner/beige/border{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel/lythios43c,
@@ -1197,10 +1197,10 @@
 "Yy" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/beige/border{
+/obj/effect/turf_decal/corner/beige/border{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,

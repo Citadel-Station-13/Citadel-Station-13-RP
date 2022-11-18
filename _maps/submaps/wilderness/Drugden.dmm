@@ -19,7 +19,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/Drugd)
 "g" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled,
 /area/submap/Drugd)
 "h" = (
@@ -189,7 +189,7 @@
 /turf/simulated/floor/tiled,
 /area/submap/Drugd)
 "N" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled,
 /area/submap/Drugd)

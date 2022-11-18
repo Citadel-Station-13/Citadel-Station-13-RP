@@ -3,7 +3,7 @@
  * everywhere that is included in the sprite. Up to you if you want to make some opacity=FALSE or density=FALSE
  * Set a matching fancy_shuttle_tag on your walls and on the /obj/effect/fancy_shuttle. Make sure it's unique.
  *
- * If you want flooring to look like the shuttle flooring, put /obj/effect/floor_decal/fancy_shuttle on all of it.
+ * If you want flooring to look like the shuttle flooring, put /obj/effect/turf_decal/fancy_shuttle on all of it.
  * You can add your own decals on top of that. Just make sure to put the fancy_shuttle decal lowest.
  * Also set the same tag as your /obj/effect/fancy_shuttle on the decals.
  */
@@ -150,14 +150,14 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 
 		add_overlay(damage_overlays[overlay])
 
-/obj/effect/floor_decal/fancy_shuttle
+/obj/effect/turf_decal/fancy_shuttle
 	icon = 'icons/turf/fancy_shuttles/_fancy_helpers.dmi'
 	icon_state = "fancy_shuttle"
 	layer = MAPPER_DECAL_LAYER-1
 	var/icon_file
 	var/fancy_shuttle_tag
 
-/obj/effect/floor_decal/fancy_shuttle/Initialize(mapload)
+/obj/effect/turf_decal/fancy_shuttle/Initialize(mapload)
 	var/obj/effect/fancy_shuttle/F = GLOB.fancy_shuttles[fancy_shuttle_tag]
 	if(!F)
 		warning("Fancy shuttle floor decal at [x],[y],[z] couldn't locate a helper with tag [fancy_shuttle_tag]")
@@ -167,10 +167,10 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 	icon_state = "floors [x - F.x],[y - F.y]"
 	return ..()
 
-/obj/effect/floor_decal/fancy_shuttle/make_decal_image()
+/obj/effect/turf_decal/fancy_shuttle/make_decal_image()
 	return image(icon = icon, icon_state = icon_state, layer = BUILTIN_DECAL_LAYER)
 
-/obj/effect/floor_decal/fancy_shuttle/get_cache_key(var/turf/T)
+/obj/effect/turf_decal/fancy_shuttle/get_cache_key(var/turf/T)
 	return "[alpha]-[color]-[dir]-[icon_state]-[T.layer]-[icon_file]"
 
 /**

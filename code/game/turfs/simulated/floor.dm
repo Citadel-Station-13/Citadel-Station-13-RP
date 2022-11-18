@@ -75,9 +75,9 @@
 	flooring = newflooring
 	footstep_sounds = newflooring.footstep_sounds
 	// We are plating switching to flooring, swap out old_decals for decals
-	var/list/overfloor_decals = old_decals
+	var/list/overturf_decals = old_decals
 	old_decals = decals
-	decals = overfloor_decals
+	decals = overturf_decals
 	if(!init)
 		QUEUE_SMOOTH(src)
 		QUEUE_SMOOTH_NEIGHBORS(src)
@@ -89,9 +89,9 @@
 
 	if(flooring)
 		// We are flooring switching to plating, swap out old_decals for decals.
-		var/list/underfloor_decals = old_decals
+		var/list/underturf_decals = old_decals
 		old_decals = decals
-		decals = underfloor_decals
+		decals = underturf_decals
 
 		if(place_product)
 			flooring.drop_product(src)

@@ -78,7 +78,7 @@
 /area/antag/antag_base)
 "ak" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 5
 	},
 /obj/item/ammo_magazine/m545,
@@ -101,7 +101,7 @@
 /obj/structure/table/rack,
 /obj/item/gun/energy/plasmastun,
 /obj/item/gun/energy/plasmastun,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -112,7 +112,7 @@
 /obj/structure/table/rack,
 /obj/item/gun/energy/darkmatter,
 /obj/item/gun/energy/darkmatter,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -120,7 +120,7 @@
 	},
 /area/antag/antag_base)
 "an" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 5
 	},
 /obj/structure/table/rack,
@@ -133,10 +133,10 @@
 	},
 /area/antag/antag_base)
 "ao" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 5
 	},
 /obj/structure/table/rack,
@@ -148,10 +148,10 @@
 /area/antag/antag_base)
 "ap" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 6
 	},
 /obj/item/storage/box/sniperammo,
@@ -178,7 +178,7 @@
 /obj/structure/table/rack,
 /obj/item/gun/energy/xray,
 /obj/item/gun/energy/xray,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 6
 	},
 /turf/unsimulated/floor{
@@ -244,7 +244,7 @@
 /area/antag/antag_base)
 "aw" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 10
 	},
 /obj/item/ammo_magazine/s44,
@@ -260,7 +260,7 @@
 /area/antag/antag_base)
 "ax" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 10
 	},
 /obj/item/storage/box/shotgunshells/large,
@@ -273,7 +273,7 @@
 /area/antag/antag_base)
 "ay" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 10
 	},
 /obj/item/ammo_magazine/m9mm,
@@ -292,7 +292,7 @@
 /area/antag/antag_base)
 "az" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 10
 	},
 /obj/item/gun/energy/lasercannon,
@@ -309,10 +309,10 @@
 /obj/structure/table/rack,
 /obj/item/gun/energy/sniperrifle,
 /obj/item/gun/energy/sniperrifle,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 6
 	},
 /turf/unsimulated/floor{
@@ -327,10 +327,10 @@
 /area/antag/antag_base)
 "aC" = (
 /obj/machinery/fitness/heavy/lifter,
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 6
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -346,10 +346,10 @@
 	icon_state = "frame";
 	pixel_y = 32
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 6
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -517,10 +517,10 @@
 /obj/item/gun/energy/sizegun,
 /obj/item/gun/energy/sizegun,
 /obj/item/gun/energy/sizegun,
-/obj/effect/floor_decal/corner/purple{
+/obj/effect/turf_decal/corner/purple{
 	dir = 5
 	},
-/obj/effect/floor_decal/corner/purple{
+/obj/effect/turf_decal/corner/purple{
 	dir = 10
 	},
 /obj/machinery/recharger/wallcharger{
@@ -538,10 +538,10 @@
 /obj/item/storage/box/syndie_kit/imp_uplink,
 /obj/item/storage/box/syndie_kit/imp_uplink,
 /obj/item/storage/box/syndie_kit/imp_uplink,
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 10
 	},
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 5
 	},
 /obj/machinery/recharger/wallcharger{
@@ -581,10 +581,10 @@
 	},
 /area/antag/antag_base)
 "aW" = (
-/obj/effect/floor_decal/steeldecal/steel_decals6{
+/obj/effect/turf_decal/steeldecal/steel_decals6{
 	dir = 4
 	},
-/obj/effect/floor_decal/steeldecal/steel_decals6,
+/obj/effect/turf_decal/steeldecal/steel_decals6,
 /turf/unsimulated/floor{
 	icon_state = "steel"
 	},
@@ -622,7 +622,7 @@
 	},
 /area/antag/antag_base)
 "ba" = (
-/obj/effect/floor_decal/corner/purple{
+/obj/effect/turf_decal/corner/purple{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -630,7 +630,7 @@
 	},
 /area/antag/antag_base)
 "bb" = (
-/obj/effect/floor_decal/corner/green{
+/obj/effect/turf_decal/corner/green{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -667,7 +667,7 @@
 	},
 /area/antag/antag_base)
 "bd" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 6
 	},
 /turf/unsimulated/floor{
@@ -694,10 +694,10 @@
 /obj/item/gun/projectile/automatic/c20r,
 /obj/item/gun/projectile/automatic/c20r,
 /obj/item/gun/projectile/automatic/c20r,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 6
 	},
 /turf/unsimulated/floor{
@@ -713,10 +713,10 @@
 /obj/item/gun/projectile/silenced,
 /obj/item/gun/projectile/silenced,
 /obj/item/gun/projectile/silenced,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 6
 	},
 /turf/unsimulated/floor{
@@ -724,7 +724,7 @@
 	},
 /area/antag/antag_base)
 "bg" = (
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 9
 	},
 /turf/unsimulated/floor{
@@ -737,7 +737,7 @@
 /obj/item/clothing/suit/space/void/merc,
 /obj/item/clothing/mask/gas/syndicate,
 /obj/item/clothing/head/helmet/space/void/merc,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 9
 	},
 /turf/unsimulated/floor{
@@ -750,7 +750,7 @@
 /obj/item/clothing/suit/space/void/merc,
 /obj/item/clothing/mask/gas/syndicate,
 /obj/item/clothing/head/helmet/space/void/merc,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
 /turf/unsimulated/floor{
@@ -765,7 +765,7 @@
 /obj/item/tank/jetpack/oxygen,
 /obj/item/tank/jetpack/oxygen,
 /obj/item/tank/jetpack/oxygen,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
 /turf/unsimulated/floor{
@@ -778,7 +778,7 @@
 /obj/item/clothing/suit/space/void/merc,
 /obj/item/clothing/mask/gas/syndicate,
 /obj/item/clothing/head/helmet/space/void/merc,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -828,10 +828,10 @@
 /obj/item/ammo_magazine/m45,
 /obj/item/ammo_magazine/m45,
 /obj/item/ammo_magazine/m45,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 6
 	},
 /turf/unsimulated/floor{
@@ -844,10 +844,10 @@
 /obj/item/gun/energy/laser,
 /obj/item/gun/energy/laser,
 /obj/item/gun/energy/laser,
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 9
 	},
-/obj/effect/floor_decal/corner/red{
+/obj/effect/turf_decal/corner/red{
 	dir = 6
 	},
 /turf/unsimulated/floor{
@@ -855,10 +855,10 @@
 	},
 /area/antag/antag_base)
 "bp" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 4
 	},
 /turf/unsimulated/floor{
@@ -866,7 +866,7 @@
 	},
 /area/antag/antag_base)
 "bq" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
+/obj/effect/turf_decal/borderfloorblack/corner{
 	dir = 1
 	},
 /turf/unsimulated/floor{
@@ -874,7 +874,7 @@
 	},
 /area/antag/antag_base)
 "br" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 4
 	},
 /turf/unsimulated/floor{
@@ -888,7 +888,7 @@
 	},
 /area/antag/antag_base)
 "bt" = (
-/obj/effect/floor_decal/corner/yellow{
+/obj/effect/turf_decal/corner/yellow{
 	dir = 6
 	},
 /turf/unsimulated/floor{
@@ -903,10 +903,10 @@
 /obj/item/gun/energy/gun,
 /obj/item/gun/energy/gun,
 /obj/item/gun/energy/gun,
-/obj/effect/floor_decal/corner/yellow{
+/obj/effect/turf_decal/corner/yellow{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/yellow{
+/obj/effect/turf_decal/corner/yellow{
 	dir = 9
 	},
 /turf/unsimulated/floor{
@@ -919,10 +919,10 @@
 /obj/item/gun/energy/ionrifle/pistol,
 /obj/item/gun/energy/ionrifle,
 /obj/item/gun/energy/ionrifle,
-/obj/effect/floor_decal/corner/yellow{
+/obj/effect/turf_decal/corner/yellow{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/yellow{
+/obj/effect/turf_decal/corner/yellow{
 	dir = 9
 	},
 /turf/unsimulated/floor{
@@ -930,7 +930,7 @@
 	},
 /area/antag/antag_base)
 "bw" = (
-/obj/effect/floor_decal/corner/yellow{
+/obj/effect/turf_decal/corner/yellow{
 	dir = 9
 	},
 /turf/unsimulated/floor{
@@ -938,14 +938,14 @@
 	},
 /area/antag/antag_base)
 "bx" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/borderfloorblack/corner2,
+/obj/effect/turf_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack/corner2,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
 "by" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
+/obj/effect/turf_decal/borderfloorblack/corner{
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -953,14 +953,14 @@
 	},
 /area/antag/antag_base)
 "bz" = (
-/obj/effect/floor_decal/borderfloorblack/corner,
+/obj/effect/turf_decal/borderfloorblack/corner,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
 "bA" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 9
 	},
 /obj/machinery/recharger/wallcharger{
@@ -980,8 +980,8 @@
 	},
 /area/antag/antag_base)
 "bC" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/borderfloorblack/corner2,
+/obj/effect/turf_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack/corner2,
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 5;
 	pixel_y = -32
@@ -991,7 +991,7 @@
 	},
 /area/antag/antag_base)
 "bD" = (
-/obj/effect/floor_decal/corner/blue{
+/obj/effect/turf_decal/corner/blue{
 	dir = 6
 	},
 /turf/unsimulated/floor{
@@ -1002,10 +1002,10 @@
 /obj/structure/table/rack,
 /obj/item/gun/energy/netgun,
 /obj/item/gun/energy/netgun,
-/obj/effect/floor_decal/corner/blue{
+/obj/effect/turf_decal/corner/blue{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/blue{
+/obj/effect/turf_decal/corner/blue{
 	dir = 9
 	},
 /turf/unsimulated/floor{
@@ -1025,10 +1025,10 @@
 /obj/item/gun/energy/stunrevolver,
 /obj/item/gun/energy/stunrevolver,
 /obj/item/gun/energy/stunrevolver,
-/obj/effect/floor_decal/corner/blue{
+/obj/effect/turf_decal/corner/blue{
 	dir = 6
 	},
-/obj/effect/floor_decal/corner/blue{
+/obj/effect/turf_decal/corner/blue{
 	dir = 9
 	},
 /obj/item/melee/baton/loaded,
@@ -1042,7 +1042,7 @@
 	},
 /area/antag/antag_base)
 "bG" = (
-/obj/effect/floor_decal/corner/blue{
+/obj/effect/turf_decal/corner/blue{
 	dir = 9
 	},
 /turf/unsimulated/floor{
@@ -1059,7 +1059,7 @@
 	},
 /area/antag/antag_base)
 "bI" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 10
 	},
 /obj/structure/table/rack,
@@ -1071,7 +1071,7 @@
 /area/antag/antag_base)
 "bJ" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 6
 	},
 /turf/unsimulated/floor{
@@ -1096,7 +1096,7 @@
 /obj/item/tank/oxygen/red,
 /obj/item/tank/oxygen/red,
 /obj/item/tank/oxygen/red,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 10
 	},
 /turf/unsimulated/floor{
@@ -1107,7 +1107,7 @@
 /obj/machinery/suit_cycler/syndicate{
 	locked = 0
 	},
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 6
 	},
 /turf/unsimulated/floor{
@@ -1245,7 +1245,7 @@
 /obj/item/tank/emergency/oxygen/double,
 /obj/item/tank/emergency/oxygen/double,
 /obj/item/tank/emergency/oxygen/double,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 9
 	},
 /turf/unsimulated/floor{
@@ -1260,7 +1260,7 @@
 /obj/item/storage/toolbox/syndicate,
 /obj/item/storage/toolbox/syndicate,
 /obj/item/storage/toolbox/syndicate,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
 /turf/unsimulated/floor{
@@ -1274,10 +1274,10 @@
 /obj/item/borg/sight/thermal,
 /obj/item/borg/sight/thermal,
 /obj/item/borg/sight/thermal,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 1
 	},
 /turf/unsimulated/floor{
@@ -1291,10 +1291,10 @@
 /obj/item/storage/firstaid/combat,
 /obj/item/reagent_containers/hypospray,
 /obj/item/reagent_containers/hypospray,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 4
 	},
 /turf/unsimulated/floor{
@@ -1335,7 +1335,7 @@
 /obj/item/storage/belt/security/tactical/bandolier,
 /obj/item/storage/belt/security/tactical/bandolier,
 /obj/item/storage/belt/security/tactical/bandolier,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
 /turf/unsimulated/floor{
@@ -1350,7 +1350,7 @@
 /obj/item/storage/belt/utility/full,
 /obj/item/storage/belt/utility/full,
 /obj/item/storage/belt/utility/full,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -1448,7 +1448,7 @@
 /obj/item/tool/crowbar/red,
 /obj/item/tool/crowbar/red,
 /obj/item/tool/crowbar/red,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 8
 	},
 /obj/item/flashlight/maglight,
@@ -1471,10 +1471,10 @@
 /obj/item/storage/firstaid/o2,
 /obj/item/storage/firstaid/o2,
 /obj/item/storage/firstaid/fire,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -1600,7 +1600,7 @@
 /area/antag/antag_base)
 "cu" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 8
 	},
 /obj/item/clothing/mask/gas,
@@ -1631,7 +1631,7 @@
 /area/antag/antag_base)
 "cx" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 8
 	},
 /obj/item/clothing/mask/gas/voice,
@@ -1653,10 +1653,10 @@
 /obj/item/storage/backpack/dufflebag/syndie/med,
 /obj/item/storage/backpack/dufflebag/syndie/ammo,
 /obj/item/storage/backpack/dufflebag/syndie/med,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 6
 	},
 /turf/unsimulated/floor{
@@ -1681,7 +1681,7 @@
 /obj/item/stack/medical/advanced/ointment,
 /obj/item/stack/medical/advanced/ointment,
 /obj/item/stack/medical/advanced/ointment,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -1698,7 +1698,7 @@
 	},
 /area/antag/antag_base)
 "cB" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
 /turf/unsimulated/floor{
@@ -1712,7 +1712,7 @@
 /obj/item/reagent_containers/glass/bucket,
 /obj/item/mop,
 /obj/item/reagent_containers/spray/cleaner,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -1733,7 +1733,7 @@
 /obj/item/camera,
 /obj/item/camera,
 /obj/item/camera,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 10
 	},
 /turf/unsimulated/floor{
@@ -1748,7 +1748,7 @@
 /obj/item/material/knife/tacknife/combatknife,
 /obj/item/material/knife/tacknife/combatknife,
 /obj/item/material/knife/tacknife/combatknife,
-/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1760,7 +1760,7 @@
 /obj/item/binoculars,
 /obj/item/binoculars,
 /obj/item/binoculars,
-/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1773,7 +1773,7 @@
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/black_vest,
-/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1785,7 +1785,7 @@
 /obj/item/radio,
 /obj/item/radio,
 /obj/item/radio,
-/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1798,7 +1798,7 @@
 /obj/item/pinpointer/nukeop,
 /obj/item/pinpointer/nukeop,
 /obj/item/pinpointer/nukeop,
-/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1812,7 +1812,7 @@
 /obj/item/flashlight/flare,
 /obj/item/flashlight/flare,
 /obj/item/flashlight/flare,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 6
 	},
 /turf/unsimulated/floor{
@@ -1820,7 +1820,7 @@
 	},
 /area/antag/antag_base)
 "cK" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 8
 	},
 /obj/machinery/vending/nifsoft_shop{
@@ -1844,7 +1844,7 @@
 /obj/structure/toilet{
 	dir = 4
 	},
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1881,10 +1881,10 @@
 /obj/item/handcuffs/fuzzy,
 /obj/item/handcuffs,
 /obj/structure/table/steel,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 5
 	},
 /turf/unsimulated/floor{
@@ -1904,10 +1904,10 @@
 	},
 /area/antag/antag_base)
 "cR" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 10
 	},
 /turf/unsimulated/floor{
@@ -1931,7 +1931,7 @@
 	},
 /area/antag/antag_base)
 "cU" = (
-/obj/effect/floor_decal/borderfloorblack/corner{
+/obj/effect/turf_decal/borderfloorblack/corner{
 	dir = 4
 	},
 /turf/unsimulated/floor{
@@ -1939,13 +1939,13 @@
 	},
 /area/antag/antag_base)
 "cV" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 1
 	},
 /obj/machinery/portable_atmospherics/canister/air,
@@ -1954,7 +1954,7 @@
 	},
 /area/antag/antag_base)
 "cW" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -1968,10 +1968,10 @@
 	},
 /area/antag/antag_base)
 "cY" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 6
 	},
 /turf/unsimulated/floor{
@@ -1990,10 +1990,10 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "plant-22"
 	},
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 10
 	},
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -2001,8 +2001,8 @@
 	},
 /area/antag/antag_base)
 "db" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 9
 	},
 /turf/unsimulated/floor{
@@ -2010,13 +2010,13 @@
 	},
 /area/antag/antag_base)
 "dc" = (
-/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
 "dd" = (
-/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack,
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 5;
 	pixel_y = -32
@@ -2026,8 +2026,8 @@
 	},
 /area/antag/antag_base)
 "de" = (
-/obj/effect/floor_decal/borderfloorblack,
-/obj/effect/floor_decal/borderfloorblack/corner2{
+/obj/effect/turf_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack/corner2{
 	dir = 9
 	},
 /obj/machinery/portable_atmospherics/canister/air,
@@ -2053,7 +2053,7 @@
 	},
 /area/antag/antag_base)
 "dh" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -2095,7 +2095,7 @@
 	pixel_x = 3;
 	pixel_y = 9
 	},
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 8
 	},
 /obj/structure/table/steel,
@@ -2155,20 +2155,20 @@
 /area/antag/antag_base)
 "ds" = (
 /obj/machinery/atmospherics/component/unary/cryo_cell,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/effect/turf_decal/industrial/outline/yellow,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
 "dt" = (
 /obj/machinery/atmospherics/component/unary/freezer,
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
 /area/antag/antag_base)
 "du" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -2246,7 +2246,7 @@
 /obj/item/gun/energy/sizegun,
 /obj/item/gun/energy/sizegun,
 /obj/structure/table/steel,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 4
 	},
 /turf/unsimulated/floor{
@@ -2317,7 +2317,7 @@
 /obj/item/cell/device/weapon,
 /obj/item/cell/device/weapon,
 /obj/structure/table/steel,
-/obj/effect/floor_decal/borderfloorblack,
+/obj/effect/turf_decal/borderfloorblack,
 /turf/unsimulated/floor{
 	icon_state = "dark"
 	},
@@ -2329,7 +2329,7 @@
 /obj/item/clothing/gloves/knuckledusters,
 /obj/item/clothing/gloves/knuckledusters,
 /obj/structure/table/steel,
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 6
 	},
 /obj/item/melee/baton/loaded,
@@ -2431,7 +2431,7 @@
 	},
 /area/antag/antag_base)
 "dX" = (
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 8
 	},
 /obj/machinery/embedded_controller/radio/simple_docking_controller{
@@ -2448,7 +2448,7 @@
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
 	},
-/obj/effect/floor_decal/industrial/hatch/yellow,
+/obj/effect/turf_decal/industrial/hatch/yellow,
 /obj/machinery/portable_atmospherics/canister/oxygen/prechilled,
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -2496,7 +2496,7 @@
 /obj/structure/table/standard,
 /obj/machinery/reagentgrinder,
 /obj/item/reagent_containers/glass/beaker/large,
-/obj/effect/floor_decal/steeldecal/steel_decals10,
+/obj/effect/turf_decal/steeldecal/steel_decals10,
 /turf/unsimulated/floor{
 	icon_state = "white"
 	},
@@ -2505,7 +2505,7 @@
 /obj/machinery/bodyscanner{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner_steel_grid{
+/obj/effect/turf_decal/corner_steel_grid{
 	dir = 10
 	},
 /turf/unsimulated/floor{
@@ -2514,7 +2514,7 @@
 /area/antag/antag_base)
 "ee" = (
 /obj/machinery/body_scanconsole,
-/obj/effect/floor_decal/corner_steel_grid{
+/obj/effect/turf_decal/corner_steel_grid{
 	dir = 10
 	},
 /turf/unsimulated/floor{
@@ -2523,7 +2523,7 @@
 /area/antag/antag_base)
 "ef" = (
 /obj/structure/medical_stand,
-/obj/effect/floor_decal/steeldecal/steel_decals10{
+/obj/effect/turf_decal/steeldecal/steel_decals10{
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -2567,7 +2567,7 @@
 	id_tag = "merc_base_hatch";
 	req_access = list(150)
 	},
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 8
 	},
 /turf/unsimulated/floor{
@@ -2580,7 +2580,7 @@
 	id_tag = "merc_base_hatch";
 	req_access = list(150)
 	},
-/obj/effect/floor_decal/borderfloorblack{
+/obj/effect/turf_decal/borderfloorblack{
 	dir = 4
 	},
 /turf/unsimulated/floor{
@@ -2627,10 +2627,10 @@
 	pixel_x = -25;
 	req_access = list(150)
 	},
-/obj/effect/floor_decal/corner_steel_grid{
+/obj/effect/turf_decal/corner_steel_grid{
 	dir = 5
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor{
@@ -2651,10 +2651,10 @@
 	name = "Outer Airlock";
 	opacity = 0
 	},
-/obj/effect/floor_decal/corner_steel_grid{
+/obj/effect/turf_decal/corner_steel_grid{
 	dir = 5
 	},
-/obj/effect/floor_decal/industrial/danger{
+/obj/effect/turf_decal/industrial/danger{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor{
@@ -2987,7 +2987,7 @@
 	dir = 4
 	},
 /obj/machinery/meter,
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/plating,
 /area/shuttle/mercenary)
 "fa" = (
@@ -3003,7 +3003,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 9
 	},
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 4
 	},
 /turf/simulated/shuttle/floor{
@@ -3011,7 +3011,7 @@
 	},
 /area/shuttle/mercenary)
 "fc" = (
-/obj/effect/floor_decal/industrial/warning{
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor{
@@ -3019,7 +3019,7 @@
 	},
 /area/shuttle/mercenary)
 "fd" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 1
 	},
 /turf/simulated/shuttle/floor{
@@ -3140,7 +3140,7 @@
 /turf/simulated/shuttle/wall/dark,
 /area/shuttle/mercenary)
 "fr" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/structure/bed/chair{
 	dir = 4
 	},
@@ -3917,14 +3917,14 @@
 	info = "Remember to stock the armory before leaving.\[br]-Mike";
 	name = "reminder"
 	},
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_black"
 	},
 /area/shuttle/mercenary)
 "gQ" = (
 /obj/structure/table/rack,
-/obj/effect/floor_decal/industrial/outline/grey,
+/obj/effect/turf_decal/industrial/outline/grey,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_black"
 	},
@@ -3980,7 +3980,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 4
 	},
-/obj/effect/floor_decal/industrial/warning/corner,
+/obj/effect/turf_decal/industrial/warning/corner,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_red"
 	},
@@ -3989,19 +3989,19 @@
 /obj/machinery/atmospherics/pipe/simple/visible{
 	dir = 10
 	},
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_dred"
 	},
 /area/shuttle/mercenary)
 "gX" = (
-/obj/effect/floor_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning,
 /turf/simulated/shuttle/floor{
 	icon_state = "floor_dred"
 	},
 /area/shuttle/mercenary)
 "gY" = (
-/obj/effect/floor_decal/industrial/warning/corner{
+/obj/effect/turf_decal/industrial/warning/corner{
 	dir = 8
 	},
 /turf/simulated/shuttle/floor{
@@ -4234,10 +4234,10 @@
 	master_tag = "merc_south_airlock";
 	pixel_x = -25
 	},
-/obj/effect/floor_decal/corner_steel_grid{
+/obj/effect/turf_decal/corner_steel_grid{
 	dir = 10
 	},
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/turf_decal/industrial/danger,
 /obj/machinery/door/airlock/glass_external/public{
 	frequency = 1379;
 	icon_state = "door_locked";
@@ -4256,10 +4256,10 @@
 	},
 /area/shuttle/mercenary)
 "hv" = (
-/obj/effect/floor_decal/corner_steel_grid{
+/obj/effect/turf_decal/corner_steel_grid{
 	dir = 10
 	},
-/obj/effect/floor_decal/industrial/danger,
+/obj/effect/turf_decal/industrial/danger,
 /obj/machinery/door/airlock/glass_external/public{
 	frequency = 1379;
 	icon_state = "door_locked";

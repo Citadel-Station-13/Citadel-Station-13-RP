@@ -683,7 +683,7 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "ct" = (
-/obj/effect/floor_decal/asteroid,
+/obj/effect/turf_decal/asteroid,
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/dark)
 "cu" = (
@@ -1098,14 +1098,14 @@
 /obj/item/clothing/suit/space,
 /obj/item/clothing/suit/space,
 /obj/item/clothing/suit/space,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "dU" = (
 /obj/structure/dispenser/oxygen,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1121,7 +1121,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "dW" = (
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 9
 	},
@@ -1129,7 +1129,7 @@
 /area/awaymission/snow_outpost/powered)
 "dX" = (
 /obj/machinery/gibber,
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 1
 	},
@@ -1139,7 +1139,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 1
 	},
@@ -1149,7 +1149,7 @@
 /obj/machinery/bodyscanner{
 	dir = 8
 	},
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 1
 	},
@@ -1157,7 +1157,7 @@
 /area/awaymission/snow_outpost/powered)
 "ea" = (
 /obj/machinery/body_scanconsole,
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 5
 	},
@@ -1180,13 +1180,13 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/awaymission/snow_outpost/powered)
 "ee" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "ef" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1196,7 +1196,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "eh" = (
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 8
 	},
@@ -1215,7 +1215,7 @@
 /area/awaymission/snow_outpost/powered)
 "el" = (
 /obj/machinery/organ_printer/flesh,
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 5
 	},
@@ -1250,19 +1250,19 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/awaymission/snow_outpost/powered)
 "eq" = (
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/turf_decal/borderfloor/corner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "er" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "es" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1281,7 +1281,7 @@
 	icon_state = "tube1";
 	pixel_x = 0
 	},
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 4
 	},
@@ -1289,7 +1289,7 @@
 /area/awaymission/snow_outpost/powered)
 "ew" = (
 /obj/structure/table/steel,
-/obj/effect/floor_decal/borderfloor/full,
+/obj/effect/turf_decal/borderfloor/full,
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "ex" = (
@@ -1298,11 +1298,11 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/awaymission/snow_outpost/powered)
 "ey" = (
-/obj/effect/floor_decal/borderfloor/corner,
+/obj/effect/turf_decal/borderfloor/corner,
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "ez" = (
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "eA" = (
@@ -1311,7 +1311,7 @@
 	icon_state = "tube1";
 	pixel_x = 0
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1319,7 +1319,7 @@
 "eB" = (
 /obj/structure/table/standard,
 /obj/item/storage/firstaid/surgery,
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 10
 	},
@@ -1328,31 +1328,31 @@
 "eC" = (
 /obj/structure/table/standard,
 /obj/item/tank/anesthetic,
-/obj/effect/floor_decal/corner/green/border,
+/obj/effect/turf_decal/corner/green/border,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "eD" = (
-/obj/effect/floor_decal/corner/green/border,
+/obj/effect/turf_decal/corner/green/border,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "eE" = (
 /obj/structure/table/standard,
 /obj/item/clothing/gloves/sterile,
 /obj/item/clothing/gloves/sterile,
-/obj/effect/floor_decal/corner/green/border,
+/obj/effect/turf_decal/corner/green/border,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "eF" = (
 /obj/structure/table/standard,
 /obj/item/reagent_containers/spray/sterilizine,
 /obj/item/reagent_containers/spray/sterilizine,
-/obj/effect/floor_decal/corner/green/border,
+/obj/effect/turf_decal/corner/green/border,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "eG" = (
 /obj/structure/table/standard,
 /obj/item/storage/box/masks,
-/obj/effect/floor_decal/corner/green/border{
+/obj/effect/turf_decal/corner/green/border{
 	icon_state = "bordercolor";
 	dir = 6
 	},
@@ -1363,7 +1363,7 @@
 	icon_state = "tube1";
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1372,7 +1372,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 1
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1396,19 +1396,19 @@
 /area/awaymission/snow_outpost/outside/nospawn)
 "eM" = (
 /obj/machinery/computer/communications,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "eN" = (
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/turf_decal/borderfloor/corner{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "eO" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 9
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1463,7 +1463,7 @@
 /area/awaymission/snow_outpost/outside/nospawn)
 "eX" = (
 /obj/structure/table/steel,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1473,7 +1473,7 @@
 	icon_state = "tube1";
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1490,7 +1490,7 @@
 	icon_state = "tube1";
 	pixel_x = 0
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1519,13 +1519,13 @@
 /area/awaymission/snow_outpost/outside/nospawn)
 "ff" = (
 /obj/machinery/door/airlock/glass,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "fg" = (
-/obj/effect/floor_decal/corner/grey,
+/obj/effect/turf_decal/corner/grey,
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "fh" = (
@@ -1547,11 +1547,11 @@
 /area/awaymission/snow_outpost/powered)
 "fl" = (
 /obj/machinery/door/airlock/glass,
-/obj/effect/floor_decal/borderfloor,
+/obj/effect/turf_decal/borderfloor,
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "fm" = (
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/turf_decal/borderfloor/corner{
 	dir = 8
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1581,29 +1581,29 @@
 /area/awaymission/snow_outpost/powered)
 "fq" = (
 /obj/machinery/computer/area_atmos,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "fr" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /mob/living/simple_mob/humanoid/merc/ranged/laser/poi,
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "fs" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "ft" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1646,14 +1646,14 @@
 	icon_state = "tube1";
 	dir = 8
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "fB" = (
 /obj/structure/bed/chair/office/dark,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1663,10 +1663,10 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/awaymission/snow_outpost/powered)
 "fD" = (
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/turf_decal/borderfloor/corner{
 	dir = 4
 	},
-/obj/effect/floor_decal/borderfloor/corner{
+/obj/effect/turf_decal/borderfloor/corner{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1677,7 +1677,7 @@
 	icon_state = "tube1";
 	pixel_x = 0
 	},
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 5
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1708,7 +1708,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/awaymission/snow_outpost/powered)
 "fK" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
@@ -1737,7 +1737,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/awaymission/snow_outpost/powered)
 "fP" = (
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 4
 	},
 /mob/living/simple_mob/humanoid/merc/melee/sword/poi,
@@ -1760,14 +1760,14 @@
 /obj/item/clothing/suit/space,
 /obj/item/clothing/suit/space,
 /obj/item/clothing/suit/space,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 10
 	},
 /turf/simulated/floor/tiled/steel,
 /area/awaymission/snow_outpost/powered)
 "fS" = (
 /obj/structure/dispenser/oxygen,
-/obj/effect/floor_decal/borderfloor{
+/obj/effect/turf_decal/borderfloor{
 	dir = 6
 	},
 /turf/simulated/floor/tiled/steel,
@@ -2078,7 +2078,7 @@
 /turf/simulated/floor/outdoors/ice,
 /area/awaymission/snow_outpost/outside)
 "gY" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /turf/simulated/floor/tiled,
 /area/awaymission/snow_outpost/dark)
 "gZ" = (
@@ -2245,7 +2245,7 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/snow_outpost/dark)
 "hE" = (
-/obj/effect/floor_decal/rust,
+/obj/effect/turf_decal/rust,
 /obj/structure/table/standard,
 /turf/simulated/floor/tiled,
 /area/awaymission/snow_outpost/dark)
