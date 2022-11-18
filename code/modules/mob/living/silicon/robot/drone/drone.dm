@@ -158,7 +158,7 @@
 	else
 		overlays -= "eyes"
 	if(hat) // Let the drones wear hats.
-		var/mutable_appearance/MA = hat.render_mob_appearance(src, SLOT_ID_HEAD)
+		var/mutable_appearance/MA = hat.render_mob_appearance(src, SLOT_ID_HEAD, BODYTYPE_DEFAULT)
 		MA.pixel_x = hat_x_offset
 		MA.pixel_y = hat_y_offset
 		overlays |= MA
