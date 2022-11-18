@@ -2373,7 +2373,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/centcom/simulated/terminal)
 "kr" = (
-/obj/machinery/telecomms/server/presets/centcomm,
+/obj/machinery/telecomms/server/presets/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "kL" = (
@@ -3150,7 +3150,7 @@
 "xe" = (
 /obj/machinery/account_database{
 	dir = 1;
-	name = "CentComm Accounts database"
+	name = "CentCom Accounts database"
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)

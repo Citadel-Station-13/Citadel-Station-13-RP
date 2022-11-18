@@ -7395,7 +7395,7 @@
 /area/mothership/telecomms2)
 "pP" = (
 /obj/machinery/account_database{
-	name = "CentComm Accounts database"
+	name = "CentCom Accounts database"
 	},
 /turf/simulated/floor/greengrid,
 /area/mothership/telecomms2)

@@ -113,7 +113,7 @@ var/global/list/latejoin_shuttle   = list()
 	reagents.add_reagent("paracetamol", 5)
 */
 /*
-// Used at centcomm for the elevator
+// Used at centcom for the elevator
 /obj/machinery/cryopod/robot/door/dorms
 	spawnpoint_type = /datum/spawnpoint/shuttle
 

@@ -1285,7 +1285,7 @@
 "cb" = (
 /obj/item/aicard,
 /obj/item/pinpointer/advpinpointer,
-/obj/item/stamp/centcomm,
+/obj/item/stamp/centcom,
 /obj/structure/table/steel_reinforced,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors.dmi';
@@ -1489,7 +1489,7 @@
 	},
 /area/centcom/specops)
 "cs" = (
-/obj/item/stamp/centcomm,
+/obj/item/stamp/centcom,
 /obj/item/pen,
 /obj/item/paper_bin{
 	pixel_x = 1;
@@ -5961,7 +5961,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "kX" = (
-/obj/machinery/telecomms/server/presets/centcomm,
+/obj/machinery/telecomms/server/presets/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "kY" = (
@@ -6497,7 +6497,7 @@
 /area/centcom/medical)
 "lQ" = (
 /obj/machinery/account_database{
-	name = "CentComm Accounts database"
+	name = "CentCom Accounts database"
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
@@ -15700,7 +15700,7 @@
 	},
 /area/centcom/command)
 "CG" = (
-/obj/machinery/telecomms/server/presets/centcomm,
+/obj/machinery/telecomms/server/presets/centcom,
 /turf/unsimulated/floor{
 	icon_state = "steel"
 	},

@@ -1829,7 +1829,7 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "fL" = (
-/obj/machinery/telecomms/server/presets/centcomm,
+/obj/machinery/telecomms/server/presets/centcom,
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
 "fM" = (
@@ -2153,7 +2153,7 @@
 "gH" = (
 /obj/machinery/account_database{
 	dir = 1;
-	name = "CentComm Accounts database"
+	name = "CentCom Accounts database"
 	},
 /turf/unsimulated/floor/steel,
 /area/centcom/control)
@@ -7205,7 +7205,7 @@
 /obj/structure/table/reinforced,
 /obj/item/aicard,
 /obj/item/pinpointer/advpinpointer,
-/obj/item/stamp/centcomm,
+/obj/item/stamp/centcom,
 /turf/unsimulated/floor/steel{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "wood"
@@ -7439,7 +7439,7 @@
 /area/centcom/specops)
 "vP" = (
 /obj/structure/table/reinforced,
-/obj/item/stamp/centcomm,
+/obj/item/stamp/centcom,
 /obj/item/pen,
 /obj/item/paper_bin{
 	pixel_x = 1;

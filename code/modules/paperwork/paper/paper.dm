@@ -485,7 +485,7 @@
 		var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
 		var/x
 		var/y
-		if(istype(P, /obj/item/stamp/captain) || istype(P, /obj/item/stamp/centcomm))
+		if(istype(P, /obj/item/stamp/captain) || istype(P, /obj/item/stamp/centcom))
 			x = rand(-2, 0)
 			y = rand(-1, 2)
 		else

@@ -259,7 +259,7 @@
 	for(var/i = 1 to 4)
 		new /obj/item/gun/energy/frontier/locked/holdout(src)
 
-// Used at centcomm for the elevator
+// Used at centcom for the elevator
 /obj/machinery/cryopod/robot/door/dorms
 	spawnpoint_type = /datum/spawnpoint/tram
 
@@ -336,7 +336,7 @@
 	req_access = list()
 */
 
-// Used at centcomm for the elevator
+// Used at centcom for the elevator
 /obj/machinery/cryopod/robot/door/dorms
 	spawnpoint_type = /datum/spawnpoint/tram
 
@@ -521,4 +521,3 @@
 		/mob/living/simple_mob/animal/passive/woolie = 3,
 		/mob/living/simple_mob/animal/passive/furnacegrub
 	)
-

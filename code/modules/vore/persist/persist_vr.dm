@@ -23,7 +23,7 @@
 				var/mob/observer/dead/O = Player
 				if(O.started_as_observer)
 					continue // They are just a pure observer, ignore
-			// Died and were not cloned - Respawn at centcomm
+			// Died and were not cloned - Respawn at centcom
 			persist_interround_data(Player, GLOB.using_map.spawnpoint_died)
 		else
 			var/turf/playerTurf = get_turf(Player)

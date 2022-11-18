@@ -1768,7 +1768,7 @@
 /area/shuttle/specops/centcom)
 "dF" = (
 /obj/structure/table/woodentable,
-/obj/item/stamp/centcomm,
+/obj/item/stamp/centcom,
 /obj/item/storage/box/cdeathalarm_kit,
 /obj/item/storage/box/trackimp,
 /turf/simulated/floor/carpet,

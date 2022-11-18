@@ -63,7 +63,7 @@
 	name = "internal affairs rubber stamp"
 	icon_state = "stamp-intaff"
 
-/obj/item/stamp/centcomm
+/obj/item/stamp/centcom
 	name = "\improper CentCom rubber stamp"
 	icon_state = "stamp-cent"
 

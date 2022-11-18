@@ -3992,7 +3992,7 @@
 /obj/structure/table/woodentable,
 /obj/item/storage/box/trackimp,
 /obj/item/storage/box/cdeathalarm_kit,
-/obj/item/stamp/centcomm,
+/obj/item/stamp/centcom,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/wood,
 /area/ship/ert/commander)
