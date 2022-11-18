@@ -493,7 +493,7 @@
 				target.species.breath_type = /datum/gas/carbon_dioxide
 				target.species.exhale_type = /datum/gas/oxygen
 		if(target == src)
-			to_chat("<span class = 'Notice'>It is done.</span>")
+			to_chat(src, SPAN_NOTICE("It is done."))
 		else
 			if(prob(10))
 				var/datum/disease2/disease/virus2 = new /datum/disease2/disease
@@ -619,7 +619,7 @@
 		to_chat(src,"<span class = 'Notice'>We cannot change a being of metal!</span>")
 		return
 	if(target == src)
-		to_chat("<span class = 'Notice'>We begin modifying our skin...</span>")
+		to_chat(src, SPAN_NOTICE("We begin modifying our skin..."))
 	else
 		target.visible_message("<span class = 'danger'>[src] has fleshy tendrils emerge and begin to merge and mold with [target]!</span>", "<span class = 'warning'>You feel an extremely uncomfortable slithering sensation going through your skin, it begins to feel foreign and dead, emanating from them...</span>")
 	if(do_after(src,15 SECONDS))

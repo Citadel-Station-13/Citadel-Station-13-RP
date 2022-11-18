@@ -221,7 +221,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		var/mob/living/simple_mob/protean_blob/B = H.temporary_form
 		to_chat(B, deathmsg)
 	else if(!gibbed)
-		to_chat(H)
+		to_chat(H, deathmsg)
 		H.gib()
 
 /datum/species/protean/proc/getActualDamage(mob/living/carbon/human/H)

@@ -184,7 +184,7 @@
 	if(istype(O, /obj/item/stack/wetleather/))
 		var/obj/item/stack/wetleather/WL = O
 		if(WL.amount > 2)
-			to_chat("<span class='notice'>The rack can only fit one sheet at a time!</span>")
+			to_chat(user, SPAN_NOTICE("The rack can only fit one sheet at a time!"))
 			return 1
 		else
 			if(!user.attempt_insert_item_for_installation(WL, src))

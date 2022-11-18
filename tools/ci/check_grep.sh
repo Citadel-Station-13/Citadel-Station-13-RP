@@ -223,7 +223,7 @@ fi;
 
 echo -e "${BLUE}Checking for whitespace issues...${NC}"
 
-# I will get this done soon. @Zandario
+# ! I will get this done soon. @Zandario
 # if grep -P '(^ {2})|(^ [^ * ])|(^    +)' code/**/*.dm; then
 #     echo
 #     echo -e "${RED}ERROR: Space indentation detected, please use tab indentation.${NC}"
@@ -264,11 +264,12 @@ fi;
 #     echo -e "${RED}ERROR: Unmanaged global var use detected in code, please use the helpers.${NC}"
 #     st=1
 # fi;
-if grep -P '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' code/**/*.dm; then
-    echo
-    echo -e "${RED}ERROR: Changed files contains a proc argument starting with 'var'.${NC}"
-    st=1
-fi;
+# ! This'll be done soon as well. Kill me. @Zandario
+# if grep -P '^/[\w/]\S+\(.*(var/|, ?var/.*).*\)' code/**/*.dm; then
+#     echo
+#     echo -e "${RED}ERROR: Changed files contains a proc argument starting with 'var'.${NC}"
+#     st=1
+# fi;
 if ls _maps/*.json | grep -P "[A-Z]"; then
     echo
     echo -e "${RED}ERROR: Uppercase in a map .JSON file detected, these must be all lowercase.${NC}"
