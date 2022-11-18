@@ -611,6 +611,10 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engine_smes)
+"bB" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/steel_grid,
+/area/engineering/break_room)
 "bC" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -7666,11 +7670,6 @@
 	},
 /turf/simulated/floor/sky/depths/lythios43c,
 /area/rift/surfacebase/underground/under2)
-"yY" = (
-/obj/structure/catwalk,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
-/area/engineering/storage)
 "yZ" = (
 /obj/machinery/button/remote/driver{
 	id = "enginecore";
@@ -8554,9 +8553,10 @@
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "DA" = (
+/obj/structure/catwalk,
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/steel_grid,
-/area/engineering/break_room)
+/turf/simulated/floor/plating,
+/area/engineering/storage)
 "DB" = (
 /turf/simulated/wall,
 /area/engineering/break_room)
@@ -9441,6 +9441,10 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
+"HI" = (
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/steel_grid,
+/area/engineering/foyer)
 "HJ" = (
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -10275,9 +10279,11 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "LD" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/tiled/steel_grid,
-/area/engineering/foyer)
+/turf/simulated/floor/plating,
+/area/engineering/storage)
 "LF" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -13288,12 +13294,6 @@
 	},
 /turf/simulated/floor,
 /area/engineering/engine_room)
-"Zz" = (
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/plating,
-/area/engineering/storage)
 "ZA" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -26879,7 +26879,7 @@ iV
 UT
 qQ
 Vu
-Zz
+LD
 Qd
 BE
 BF
@@ -27271,7 +27271,7 @@ KF
 KF
 KF
 KF
-yY
+DA
 FP
 KF
 KF
@@ -28039,7 +28039,7 @@ OK
 Ak
 Ak
 wp
-LD
+HI
 Pr
 kz
 ce
@@ -29785,7 +29785,7 @@ rU
 qW
 qW
 wp
-LD
+HI
 Pr
 vb
 nD
@@ -30953,7 +30953,7 @@ uP
 ul
 Pr
 zq
-DA
+bB
 lL
 Ib
 Ko

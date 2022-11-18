@@ -2251,10 +2251,6 @@
 /obj/effect/catwalk_plated/dark,
 /turf/simulated/floor,
 /area/shuttle/belter)
-"vg" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/quartermaster/belterdock)
 "vm" = (
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/lythios43c,
@@ -2853,6 +2849,10 @@
 /obj/structure/closet/crate,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west_deep)
+"BB" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor,
+/area/quartermaster/belterdock)
 "BE" = (
 /obj/random/obstruction,
 /obj/effect/turf_decal/borderfloor{
@@ -3361,6 +3361,10 @@
 	dir = 1
 	},
 /turf/simulated/floor/tiled/monotile,
+/area/quartermaster/belterdock)
+"Gw" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
 /area/quartermaster/belterdock)
 "Gx" = (
 /obj/structure/table/steel,
@@ -4411,10 +4415,6 @@
 /obj/effect/turf_decal/corner/beige/border,
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/prison)
-"RO" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor,
-/area/quartermaster/belterdock)
 "RV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -36578,7 +36578,7 @@ rn
 Pq
 ww
 Cl
-RO
+BB
 XN
 nK
 Mo
@@ -36959,9 +36959,9 @@ cK
 cK
 dP
 uZ
-vg
+Gw
 ll
-vg
+Gw
 rn
 Cl
 Cl
@@ -37738,7 +37738,7 @@ dP
 uu
 Ij
 Ij
-RO
+BB
 Oe
 sW
 ZL
@@ -37920,8 +37920,8 @@ bh
 bh
 rn
 rn
-RO
-RO
+BB
+BB
 rn
 uZ
 dP
@@ -37933,8 +37933,8 @@ uu
 Ij
 rn
 rn
-RO
-RO
+BB
+BB
 rn
 rn
 jZ

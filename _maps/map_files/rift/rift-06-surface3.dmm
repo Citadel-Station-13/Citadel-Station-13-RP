@@ -7231,10 +7231,6 @@
 	},
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/outside3)
-"nV" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/hydroponics)
 "nW" = (
 /obj/structure/flora/pottedplant/minitree{
 	pixel_y = 12
@@ -17117,8 +17113,11 @@
 /area/bridge/bridge_hallway)
 "Iw" = (
 /obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/hallway/secondary/docking_hallway)
+/obj/structure/curtain/open/bed{
+	name = "brown curtain"
+	},
+/turf/simulated/wall/r_wall,
+/area/crew_quarters/bar)
 "Ix" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /obj/machinery/atmospherics/portables_connector{
@@ -17996,11 +17995,8 @@
 /area/shuttle/courser/cockpit)
 "Kf" = (
 /obj/spawner/window/reinforced/full/firelocks,
-/obj/structure/curtain/open/bed{
-	name = "brown curtain"
-	},
-/turf/simulated/wall/r_wall,
-/area/crew_quarters/bar)
+/turf/simulated/floor/plating,
+/area/hydroponics)
 "Kg" = (
 /obj/structure/table/marble,
 /obj/item/material/ashtray/glass,
@@ -23028,6 +23024,10 @@
 "Uu" = (
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/shuttle)
+"Uv" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/hallway/secondary/docking_hallway)
 "Uw" = (
 /obj/structure/cable/green{
 	icon_state = "32-4"
@@ -36327,7 +36327,7 @@ cO
 rs
 rs
 rs
-Kf
+Iw
 rs
 cO
 rs
@@ -39603,7 +39603,7 @@ ry
 ej
 cH
 cH
-Iw
+Uv
 ab
 ah
 ai
@@ -39797,7 +39797,7 @@ Uu
 LD
 ej
 cH
-Iw
+Uv
 ac
 Uk
 KQ
@@ -39829,7 +39829,7 @@ JT
 VO
 Xu
 Xu
-nV
+Kf
 Wv
 xp
 Xu
@@ -40184,7 +40184,7 @@ Uu
 Uu
 Uu
 Uu
-Iw
+Uv
 IC
 FK
 sX
@@ -40599,7 +40599,7 @@ Wg
 aQ
 Wg
 my
-nV
+Kf
 Kv
 ix
 Kv
@@ -40987,7 +40987,7 @@ Wg
 aQ
 Wg
 my
-nV
+Kf
 yg
 Kv
 eO
@@ -41569,7 +41569,7 @@ Wg
 aQ
 Wg
 my
-nV
+Kf
 Bq
 ns
 ns
@@ -41763,7 +41763,7 @@ Wg
 aQ
 Wg
 my
-nV
+Kf
 NQ
 Kv
 Kv
@@ -42124,7 +42124,7 @@ Uu
 Uu
 Uu
 Uu
-Iw
+Uv
 Lg
 dd
 qp
@@ -42513,7 +42513,7 @@ Uu
 Wz
 ej
 cH
-Iw
+Uv
 Hi
 Uk
 pQ
@@ -42707,7 +42707,7 @@ ry
 ej
 cH
 cH
-Iw
+Uv
 Ib
 WO
 gg
@@ -43293,7 +43293,7 @@ KO
 CP
 Vq
 db
-Iw
+Uv
 tK
 Pg
 nP
@@ -43487,7 +43487,7 @@ DI
 ve
 xJ
 RS
-Iw
+Uv
 tK
 Pg
 gQ
@@ -43681,7 +43681,7 @@ UQ
 cf
 GH
 QL
-Iw
+Uv
 tK
 Pg
 qQ

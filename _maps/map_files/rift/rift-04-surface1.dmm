@@ -3524,6 +3524,20 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/rnd/xenobiology/xenoflora)
+"cCx" = (
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "test_chamber_blast";
+	name = "Testing Chamber Blast Door"
+	},
+/obj/spawner/window/reinforced/full/firelocks,
+/obj/machinery/door/blast/regular{
+	dir = 4;
+	id = "test_chamber_blast";
+	name = "Testing Chamber Blast Door"
+	},
+/turf/simulated/floor/reinforced,
+/area/rnd/testingroom)
 "cCA" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
@@ -9449,6 +9463,10 @@
 /obj/machinery/portable_atmospherics/powered/pump,
 /turf/simulated/floor/plating,
 /area/maintenance/lowmedbaymaint)
+"gDM" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/quartermaster/garage)
 "gET" = (
 /obj/effect/turf_decal/borderfloor{
 	dir = 10
@@ -17058,7 +17076,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/public_garden)
 "ldy" = (
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
@@ -17474,20 +17491,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
-"lrL" = (
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	id = "test_chamber_blast";
-	name = "Testing Chamber Blast Door"
-	},
-/obj/spawner/window/reinforced/full/firelocks,
-/obj/machinery/door/blast/regular{
-	dir = 4;
-	id = "test_chamber_blast";
-	name = "Testing Chamber Blast Door"
-	},
-/turf/simulated/floor/reinforced,
-/area/rnd/testingroom)
 "lrR" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/black,
@@ -32499,9 +32502,16 @@
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "urU" = (
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/quartermaster/garage)
+/turf/simulated/floor/tiled/dark,
+/area/rnd/outpost/xenobiology/outpost_south_airlock)
 "usp" = (
 /obj/landmark/spawnpoint/job/entertainer,
 /obj/structure/cable/green{
@@ -36389,16 +36399,6 @@
 /obj/machinery/door/window/northleft,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/garage)
-"wRn" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/tiled/dark,
-/area/rnd/outpost/xenobiology/outpost_south_airlock)
 "wRu" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
 	dir = 4
@@ -45800,11 +45800,11 @@ oAC
 gjm
 gjm
 cZa
-wRn
+ldy
 mZr
 xvX
 ujw
-ldy
+urU
 veE
 iBr
 iKe
@@ -48283,16 +48283,16 @@ kYl
 veF
 dER
 vgL
-urU
-urU
+gDM
+gDM
 vgL
 vgL
 vgL
 vgL
-urU
+gDM
 gTL
 gTL
-urU
+gDM
 vgL
 iFN
 iFN
@@ -48482,7 +48482,7 @@ jfd
 nwm
 xks
 cHI
-urU
+gDM
 rtL
 xRu
 xRu
@@ -48870,7 +48870,7 @@ jfd
 jfd
 sew
 mnh
-urU
+gDM
 dmW
 nDb
 nDb
@@ -54541,7 +54541,7 @@ cYM
 fGz
 aBz
 oej
-lrL
+cCx
 iCo
 loi
 iCo

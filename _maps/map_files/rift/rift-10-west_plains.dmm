@@ -997,9 +997,10 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/facility/exterior)
 "eV" = (
-/obj/spawner/window/reinforced/full/firelocks,
+/obj/spawner/window/reinforced/full,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor,
-/area/rnd/outpost/mixing)
+/area/rift/exterior/checkpoint/south)
 "eX" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/effect/turf_decal/corner/purple{
@@ -7789,10 +7790,9 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "LG" = (
-/obj/spawner/window/reinforced/full,
-/obj/spawner/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
-/area/rift/exterior/checkpoint/south)
+/area/rnd/outpost/mixing)
 "LH" = (
 /obj/effect/turf_decal/industrial/warning/cee{
 	dir = 1
@@ -32318,7 +32318,7 @@ sv
 sv
 sv
 sv
-LG
+eV
 LV
 lg
 co
@@ -35377,10 +35377,10 @@ sv
 sv
 Fb
 Fb
-eV
+LG
 rM
 AQ
-eV
+LG
 Fb
 Fb
 sv
@@ -36344,7 +36344,7 @@ sv
 sv
 sv
 sv
-eV
+LG
 fk
 WH
 pJ
@@ -36353,7 +36353,7 @@ sR
 MK
 cD
 az
-eV
+LG
 sv
 sv
 sv
@@ -36538,7 +36538,7 @@ sv
 sv
 sv
 sv
-eV
+LG
 eX
 DD
 zF
@@ -36547,7 +36547,7 @@ Ys
 pJ
 Kn
 dB
-eV
+LG
 sv
 sv
 sv

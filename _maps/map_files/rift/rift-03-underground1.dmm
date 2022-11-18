@@ -3336,10 +3336,6 @@
 "lc" = (
 /turf/simulated/floor/plating,
 /area/storage/tech)
-"lf" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/crew_quarters/pool)
 "li" = (
 /obj/structure/catwalk,
 /obj/structure/cable/green{
@@ -9396,10 +9392,6 @@
 /obj/structure/grille,
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
-"KO" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/outpost/research/longtermstorage)
 "KP" = (
 /obj/machinery/telecomms/relay/preset/rift/base_mid,
 /turf/simulated/floor/tiled/dark,
@@ -10329,6 +10321,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"Oe" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/crew_quarters/pool)
 "Oh" = (
 /obj/item/circuitboard/skills{
 	pixel_x = -3;
@@ -11319,6 +11315,14 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
+"RX" = (
+/obj/effect/zone_divider,
+/obj/machinery/atmospherics/pipe/simple/hidden/blue{
+	dir = 8
+	},
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/maintenance/engineering)
 "RY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/yellow{
 	dir = 8
@@ -11684,13 +11688,9 @@
 /turf/simulated/floor/plating,
 /area/rift/trade_shop)
 "Ty" = (
-/obj/effect/zone_divider,
-/obj/machinery/atmospherics/pipe/simple/hidden/blue{
-	dir = 8
-	},
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
-/area/maintenance/engineering)
+/area/outpost/research/longtermstorage)
 "TA" = (
 /obj/structure/railing{
 	dir = 4
@@ -19674,7 +19674,7 @@ WR
 Qw
 Qw
 Qw
-KO
+Ty
 Qw
 Qw
 WR
@@ -19864,7 +19864,7 @@ WR
 Qw
 Qw
 Qw
-KO
+Ty
 Qw
 Vi
 GS
@@ -20066,7 +20066,7 @@ AM
 Xo
 Qw
 Qw
-KO
+Ty
 Qw
 Qw
 WR
@@ -21036,7 +21036,7 @@ OV
 MX
 Qw
 Qw
-KO
+Ty
 Qw
 Qw
 rV
@@ -21222,7 +21222,7 @@ WR
 Qw
 Qw
 Qw
-KO
+Ty
 Xr
 Xr
 we
@@ -25273,7 +25273,7 @@ QP
 sa
 sa
 Mk
-Ty
+RX
 Mk
 Mk
 Mk
@@ -25284,7 +25284,7 @@ Mk
 Jw
 Mk
 Mk
-Ty
+RX
 Mk
 Mk
 Mk
@@ -26429,7 +26429,7 @@ CN
 ok
 ni
 CN
-lf
+Oe
 BB
 ML
 ML
@@ -26817,7 +26817,7 @@ CN
 rO
 RZ
 CN
-lf
+Oe
 iB
 ML
 ML

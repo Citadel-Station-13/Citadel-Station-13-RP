@@ -575,9 +575,10 @@
 /// Trimlines
 
 /obj/effect/turf_decal/trimline
+	icon = 'icons/turf/decals.dmi'
+	icon_state = "trimline_box"
 	layer = TURF_PLATING_DECAL_LAYER
 	alpha = 110
-	icon_state = "trimline_box"
 
 /obj/effect/turf_decal/trimline/Initialize(mapload)
 	if(check_holidays(APRIL_FOOLS))

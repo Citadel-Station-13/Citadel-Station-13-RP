@@ -13280,6 +13280,10 @@
 "jTH" = (
 /turf/simulated/wall,
 /area/triumph/surfacebase/sauna)
+"jTS" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/medical/resleeving)
 "jTV" = (
 /obj/machinery/light,
 /obj/effect/turf_decal/borderfloor,
@@ -13551,6 +13555,10 @@
 /obj/random/maintenance/clean,
 /turf/simulated/floor/plating,
 /area/maintenance/medbay)
+"kdW" = (
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/security/security_processing)
 "ker" = (
 /obj/structure/table/rack/shelf/steel,
 /turf/simulated/floor/tiled/red,
@@ -25926,10 +25934,6 @@
 /obj/random/trash,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
-"tJI" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/medical/resleeving)
 "tLc" = (
 /obj/structure/ladder/up,
 /obj/effect/turf_decal/industrial/outline/yellow,
@@ -27959,10 +27963,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/recovery_room)
-"vmI" = (
-/obj/spawner/window/reinforced/full/firelocks,
-/turf/simulated/floor/plating,
-/area/security/security_processing)
 "vmU" = (
 /obj/effect/turf_decal/steeldecal/steel_decals_central6,
 /obj/effect/turf_decal/steeldecal/steel_decals10{
@@ -42222,13 +42222,13 @@ oLJ
 oLJ
 wJl
 wJl
-tJI
-tJI
+jTS
+jTS
 wJl
 wJl
 wJl
-tJI
-tJI
+jTS
+jTS
 wJl
 eMD
 eMD
@@ -42807,7 +42807,7 @@ eYx
 gHr
 ixy
 odu
-tJI
+jTS
 jvX
 vjt
 wnW
@@ -43001,7 +43001,7 @@ eYx
 iKu
 kRa
 lto
-tJI
+jTS
 eUN
 dyj
 wBH
@@ -43195,7 +43195,7 @@ oUw
 dTk
 bor
 lto
-tJI
+jTS
 epz
 tQp
 xkt
@@ -50759,7 +50759,7 @@ uKm
 xNm
 bhS
 nuH
-vmI
+kdW
 pUO
 xQz
 owT
@@ -50953,7 +50953,7 @@ uRD
 dCO
 bhS
 nuH
-vmI
+kdW
 hGI
 ijR
 oZw
@@ -51147,7 +51147,7 @@ odk
 wXp
 bhS
 nuH
-vmI
+kdW
 eUi
 cCa
 fEm
@@ -51729,7 +51729,7 @@ hKS
 tiu
 bhS
 nuH
-vmI
+kdW
 fQG
 bBy
 bVn
@@ -51923,7 +51923,7 @@ hKS
 mve
 bhS
 nuH
-vmI
+kdW
 hGI
 ijR
 eTG
@@ -52117,7 +52117,7 @@ iFX
 eCN
 ohv
 oQS
-vmI
+kdW
 pUO
 mzx
 yaJ
