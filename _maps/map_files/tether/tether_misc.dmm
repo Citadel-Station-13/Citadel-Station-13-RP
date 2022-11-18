@@ -797,7 +797,6 @@
 	teleport_z = 4;
 	teleport_z_offset = 4
 	},
-/turf/space,
 /turf/space/transit/north,
 /area/space)
 "cs" = (
@@ -2740,7 +2739,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/living)
 "qz" = (
-/turf/space,
 /turf/space/internal_edge/bottomright,
 /area/space)
 "qT" = (
@@ -3427,7 +3425,7 @@
 /area/centcom/simulated/medical)
 "Al" = (
 /obj/machinery/door/window/brigdoor/southright{
-	name = "holding cell"
+	name = "Holding Cell"
 	},
 /turf/simulated/floor/tiled,
 /area/shuttle/escape)
@@ -3552,7 +3550,6 @@
 /turf/simulated/floor/holofloor/tiled/dark,
 /area/holodeck/source_chess)
 "BK" = (
-/turf/space,
 /turf/space/internal_edge/bottomleft,
 /area/space)
 "BP" = (
@@ -3705,7 +3702,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/escape)
 "DF" = (
-/turf/space,
 /turf/space/internal_edge/topright,
 /area/space)
 "DI" = (
@@ -3914,7 +3910,6 @@
 /turf/unsimulated/wall,
 /area/beach)
 "Gs" = (
-/turf/space,
 /turf/space/transit/north,
 /area/space)
 "Gw" = (
@@ -5685,7 +5680,6 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "VW" = (
-/turf/space,
 /turf/space/internal_edge/topleft,
 /area/space)
 "VX" = (

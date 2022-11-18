@@ -12157,7 +12157,6 @@
 "aCN" = (
 /obj/machinery/door/airlock/glass,
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/firedoor/glass/hidden/steel,
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/station/docks)
 "aCO" = (
@@ -20215,7 +20214,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/science{
-	name = "Contraband and Security holdings";
+	name = "Contraband And Security Holdings";
 	req_one_access = list(44)
 	},
 /turf/simulated/floor/tiled,

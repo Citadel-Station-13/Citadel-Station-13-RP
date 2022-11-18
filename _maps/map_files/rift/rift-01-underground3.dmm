@@ -126,7 +126,7 @@
 /area/quartermaster/mining_airlock)
 "hP" = (
 /obj/machinery/door/airlock/maintenance/common{
-	name = "SM delam chamber";
+	name = "SM Delam Chamber";
 	locked = 1
 	},
 /obj/item/barrier_tape_segment/engineering,

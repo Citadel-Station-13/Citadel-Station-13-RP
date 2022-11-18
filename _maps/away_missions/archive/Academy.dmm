@@ -1070,7 +1070,6 @@
 /area/awaymission/academy)
 "ex" = (
 /obj/machinery/door/airlock/glass,
-/obj/machinery/door/airlock/external,
 /turf/simulated/floor/plating,
 /area/awaymission/academy/classrooms)
 "ey" = (

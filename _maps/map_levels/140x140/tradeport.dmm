@@ -466,7 +466,7 @@
 	dir = 4
 	},
 /obj/machinery/door/window/westleft{
-	name = "rare item display case";
+	name = "Rare Item Display Case";
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
@@ -1854,7 +1854,7 @@
 	dir = 4
 	},
 /obj/machinery/door/window/westleft{
-	name = "rare item display case";
+	name = "Rare Item Display Case";
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
@@ -2879,7 +2879,7 @@
 	dir = 4
 	},
 /obj/machinery/door/window/westleft{
-	name = "rare item display case";
+	name = "Rare Item Display Case";
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
@@ -4347,7 +4347,7 @@
 	dir = 8
 	},
 /obj/machinery/door/window/eastright{
-	name = "rare item display case";
+	name = "Rare Item Display Case";
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
@@ -5007,7 +5007,7 @@
 	},
 /obj/machinery/door/window/westleft{
 	dir = 2;
-	name = "rare item display case";
+	name = "Rare Item Display Case";
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
@@ -6800,7 +6800,7 @@
 	dir = 8
 	},
 /obj/machinery/door/window/eastright{
-	name = "rare item display case";
+	name = "Rare Item Display Case";
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
@@ -7446,7 +7446,7 @@
 	dir = 8
 	},
 /obj/machinery/door/window/northright{
-	name = "rare item display case";
+	name = "Rare Item Display Case";
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
@@ -9059,7 +9059,7 @@
 	},
 /obj/machinery/door/window/westright{
 	dir = 2;
-	name = "rare item display case";
+	name = "Rare Item Display Case";
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
@@ -9633,7 +9633,7 @@
 	dir = 8
 	},
 /obj/machinery/door/window/northleft{
-	name = "rare item display case";
+	name = "Rare Item Display Case";
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
@@ -11030,7 +11030,7 @@
 	},
 /obj/item/material/twohanded/baseballbat/penbat,
 /obj/machinery/door/window/eastright{
-	name = "rare item display case";
+	name = "Rare Item Display Case";
 	req_access = list(160)
 	},
 /obj/structure/table/marble,
@@ -11055,7 +11055,6 @@
 /area/tradeport/pads)
 "Ql" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -13109,7 +13108,7 @@
 	dir = 8
 	},
 /obj/machinery/door/window/northleft{
-	name = "rare item display case";
+	name = "Rare Item Display Case";
 	req_access = list(160)
 	},
 /obj/structure/table/marble,

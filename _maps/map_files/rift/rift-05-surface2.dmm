@@ -4774,7 +4774,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	id = "rd_shutter";
-	name = "Research Director Office shutter";
+	name = "Research Director Office Shutter";
 	opacity = 0
 	},
 /obj/machinery/door/firedoor/glass,
@@ -5144,7 +5144,7 @@
 "dRG" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/door/window/brigdoor/northright{
-	name = "security reception";
+	name = "Security Reception";
 	req_one_access = list(1)
 	},
 /obj/machinery/door/blast/regular{
@@ -7961,7 +7961,6 @@
 /area/maintenance/research/rnd)
 "fUX" = (
 /obj/machinery/door/airlock/maintenance/common,
-/obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/maintenance/security/upper)
@@ -8058,7 +8057,6 @@
 /turf/simulated/floor/tiled/red,
 /area/security/observation)
 "fZq" = (
-/turf/simulated/open/lythios43c,
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/outside2)
 "fZv" = (
@@ -8816,7 +8814,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/effect/turf_decal/borderfloorblack/full,
 /obj/machinery/door/airlock/security{
-	name = "Interrogation view room";
+	name = "Interrogation View Room";
 	req_access = newlist();
 	req_one_access = list(1,2,4,38)
 	},
@@ -10527,7 +10525,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	id = "robotics_shutter_ext";
-	name = "Robotics shutter";
+	name = "Robotics Shutter";
 	opacity = 0
 	},
 /obj/structure/disposalpipe/segment,
@@ -12138,7 +12136,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	id = "research_shutter_int";
-	name = "Research shutter";
+	name = "Research Shutter";
 	opacity = 0
 	},
 /obj/spawner/window/reinforced/full/firelocks,
@@ -12674,7 +12672,7 @@
 /obj/machinery/door/firedoor/glass,
 /obj/effect/turf_decal/borderfloorblack/full,
 /obj/machinery/door/airlock/security{
-	name = "Interrogation view room";
+	name = "Interrogation View Room";
 	req_access = newlist();
 	req_one_access = list(1,2,4,38)
 	},
@@ -17116,8 +17114,6 @@
 	icon_state = "1-2"
 	},
 /obj/effect/turf_decal/steeldecal/steel_decals_central4,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/airlock{
 	name = "Unisex Showers"
 	},
@@ -19196,7 +19192,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	id = "research_shutter_ext";
-	name = "Research shutter";
+	name = "Research Shutter";
 	opacity = 0
 	},
 /obj/spawner/window/reinforced/full/firelocks,
@@ -19925,7 +19921,6 @@
 /obj/effect/turf_decal/steeldecal/steel_decals_central1{
 	dir = 8
 	},
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/maintenance/common,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel,
@@ -20341,7 +20336,6 @@
 /area/security/interrogation)
 "pkN" = (
 /obj/machinery/atmospherics/pipe/simple/visible/supply,
-/obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/visible/scrubbers,
 /obj/structure/disposalpipe/up{
 	dir = 4
@@ -20965,7 +20959,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	id = "research_shutter_ext";
-	name = "Research shutter";
+	name = "Research Shutter";
 	opacity = 0
 	},
 /obj/machinery/door/window/brigdoor/southleft{
@@ -21683,7 +21677,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	id = "rd_shutter";
-	name = "Research Director Office shutter";
+	name = "Research Director Office Shutter";
 	opacity = 0
 	},
 /obj/spawner/window/reinforced/full/firelocks,
@@ -23628,7 +23622,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	id = "rd_shutter";
-	name = "Research Director Office shutter";
+	name = "Research Director Office Shutter";
 	opacity = 0
 	},
 /obj/spawner/window/reinforced/full/firelocks,
@@ -23886,7 +23880,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	id = "robotics_shutter_int";
-	name = "Robotics shutter";
+	name = "Robotics Shutter";
 	opacity = 0
 	},
 /obj/spawner/window/reinforced/full/firelocks,
@@ -26791,7 +26785,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	id = "robotics_shutter_ext";
-	name = "Robotics shutter";
+	name = "Robotics Shutter";
 	opacity = 0
 	},
 /obj/spawner/window/reinforced/full/firelocks,
@@ -29498,7 +29492,6 @@
 	dir = 2
 	},
 /obj/machinery/camera/network/medbay,
-/turf/simulated/floor/plating,
 /turf/simulated/floor/tiled/techfloor,
 /area/medical/morgue)
 "wwg" = (
@@ -29896,7 +29889,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	id = "research_shutter_int";
-	name = "Research shutter";
+	name = "Research Shutter";
 	opacity = 0
 	},
 /obj/machinery/door/firedoor/glass,
@@ -30316,7 +30309,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	id = "rd_shutter";
-	name = "Research Director Office shutter";
+	name = "Research Director Office Shutter";
 	opacity = 0
 	},
 /turf/simulated/floor/plating,
@@ -30891,7 +30884,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	id = "robotics_shutter_int";
-	name = "Robotics shutter";
+	name = "Robotics Shutter";
 	opacity = 0
 	},
 /obj/structure/disposalpipe/segment,

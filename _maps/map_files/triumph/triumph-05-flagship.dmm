@@ -10,7 +10,6 @@
 	dir = 8;
 	icon_state = "burst_l"
 	},
-/turf/unsimulated/floor/techfloor_grid,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/specops/centcom)
 "af" = (
@@ -28,7 +27,6 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 8
 	},
-/turf/unsimulated/floor/techfloor_grid,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/specops/centcom)
 "aj" = (
@@ -689,7 +687,6 @@
 	dir = 8;
 	icon_state = "burst_r"
 	},
-/turf/unsimulated/floor/techfloor_grid,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/specops/centcom)
 "bi" = (
@@ -1174,7 +1171,7 @@
 /area/centcom/specops)
 "bP" = (
 /obj/machinery/door/blast/regular{
-	name = "When Everything else fails."
+	name = "When Everything Else Fails."
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -4021,7 +4018,7 @@
 /area/centcom/control)
 "hm" = (
 /obj/machinery/door/airlock/freezer{
-	name = "Kitchen cold room";
+	name = "Kitchen Cold Room";
 	req_access = list(28)
 	},
 /turf/unsimulated/floor/steel{
@@ -15418,7 +15415,7 @@
 /area/centcom/security)
 "Ca" = (
 /obj/machinery/door/airlock/freezer{
-	name = "Kitchen cold room";
+	name = "Kitchen Cold Room";
 	req_access = list(28)
 	},
 /turf/unsimulated/floor/steel{

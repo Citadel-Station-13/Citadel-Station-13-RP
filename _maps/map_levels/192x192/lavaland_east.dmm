@@ -347,7 +347,7 @@
 /obj/machinery/door/airlock/glass_external{
 	density = 0;
 	icon_state = "door_open";
-	name = "Temple to the Great Designer";
+	name = "Temple To The Great Designer";
 	req_one_access = null
 	},
 /turf/simulated/floor/wood/lavaland,
@@ -458,7 +458,7 @@
 /area/lavaland/east/colony)
 "kQ" = (
 /obj/machinery/door/airlock/glass_external{
-	name = "Temple to the Great Designer";
+	name = "Temple To The Great Designer";
 	req_one_access = null
 	},
 /turf/simulated/floor/wood/lavaland,

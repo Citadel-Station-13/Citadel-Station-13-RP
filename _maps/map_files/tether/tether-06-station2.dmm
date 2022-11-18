@@ -6886,7 +6886,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/vault/bolted{
-	name = "AI core";
+	name = "AI Core";
 	req_access = list(16)
 	},
 /obj/machinery/door/blast/regular{
@@ -15834,7 +15834,6 @@
 "fxk" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor/glass,
-/obj/machinery/door/firedoor/border_only,
 /obj/structure/window/reinforced/polarized/full{
 	id = "shopdressingroom"
 	},
@@ -16334,7 +16333,6 @@
 /turf/simulated/floor/tiled,
 /area/tether/station/visitorhallway/lounge)
 "gjG" = (
-/obj/structure/lattice,
 /obj/structure/lattice,
 /turf/space,
 /area/space)
@@ -20668,11 +20666,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
 /turf/simulated/floor/tiled,
 /area/crew_quarters/sleep/spacedorm1)
 "ooI" = (
@@ -23024,7 +23017,6 @@
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/gear)
 "szi" = (
-/turf/space,
 /turf/simulated/floor/wood,
 /area/tether/station/visitorhallway/office)
 "sAL" = (

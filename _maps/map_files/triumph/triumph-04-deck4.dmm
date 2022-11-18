@@ -295,7 +295,6 @@
 /area/maintenance/chapel)
 "amI" = (
 /obj/structure/lattice,
-/obj/structure/lattice,
 /turf/space,
 /area/space)
 "amS" = (
@@ -2663,7 +2662,6 @@
 /turf/simulated/floor/tiled/dark,
 /area/bridge)
 "bZX" = (
-/obj/structure/lattice,
 /obj/structure/lattice,
 /obj/structure/grille,
 /turf/space,
@@ -13787,7 +13785,7 @@
 /area/library)
 "kbJ" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
-	name = "battery hatch"
+	name = "Battery Hatch"
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -14373,7 +14371,7 @@
 "kCt" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/security{
-	name = "Interrogation view room";
+	name = "Interrogation View Room";
 	req_access = newlist();
 	req_one_access = list(1,2,4,38)
 	},
@@ -15247,7 +15245,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/voidcraft/vertical{
-	name = "fire control hatch"
+	name = "Fire Control Hatch"
 	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -22835,7 +22833,7 @@
 /area/crew_quarters/sleep/CMO_quarters)
 "qwf" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
-	name = "cockpit hatch"
+	name = "Cockpit Hatch"
 	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -25375,7 +25373,7 @@
 /area/crew_quarters/clownoffice)
 "she" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
-	name = "cockpit hatch"
+	name = "Cockpit Hatch"
 	},
 /obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button/airlock_interior{
@@ -34085,7 +34083,7 @@
 "yko" = (
 /obj/machinery/door/firedoor/glass,
 /obj/machinery/door/airlock/security{
-	name = "Interrogation view room";
+	name = "Interrogation View Room";
 	req_access = newlist();
 	req_one_access = list(1,2,4,38)
 	},

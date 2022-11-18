@@ -517,7 +517,6 @@
 /obj/effect/debris/cleanable/dirt,
 /obj/machinery/door/blast/regular/open{
 	id = "desert_bunker";
-	name = "Blast Door"
 	},
 /turf/simulated/floor/tiled,
 /area/class_h/POIs/vault)

@@ -8298,7 +8298,7 @@
 "Co" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/northright{
-	name = "Mining desk";
+	name = "Mining Desk";
 	req_access = list(50)
 	},
 /turf/simulated/floor/tiled,
@@ -8336,7 +8336,6 @@
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/turbolift/rmine/under2)
 "CB" = (
-/obj/structure/closet/crate,
 /obj/structure/closet/crate,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
@@ -10330,7 +10329,6 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
-/obj/structure/closet/crate,
 /obj/structure/closet/crate,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)

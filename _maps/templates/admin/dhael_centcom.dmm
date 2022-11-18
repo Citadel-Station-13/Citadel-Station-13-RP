@@ -817,7 +817,7 @@
 "bP" = (
 /obj/machinery/door/blast/regular{
 	dir = 4;
-	name = "When Everything else fails."
+	name = "When Everything Else Fails."
 	},
 /turf/unsimulated/floor{
 	icon_state = "dark"
@@ -3452,7 +3452,7 @@
 /area/centcom/control)
 "hm" = (
 /obj/machinery/door/airlock/freezer{
-	name = "Kitchen cold room";
+	name = "Kitchen Cold Room";
 	req_access = list(28)
 	},
 /turf/unsimulated/floor/steel{
@@ -14244,7 +14244,7 @@
 /area/centcom/security)
 "Ca" = (
 /obj/machinery/door/airlock/freezer{
-	name = "Kitchen cold room";
+	name = "Kitchen Cold Room";
 	req_access = list(28)
 	},
 /turf/unsimulated/floor/steel{

@@ -495,12 +495,12 @@
 /area/crew_quarters/bar)
 "aT" = (
 /obj/machinery/door/airlock/vault/bolted{
-	name = "AI core";
+	name = "AI Core";
 	req_access = list(16)
 	},
 /obj/machinery/door/blast/regular{
 	id = "AICore";
-	name = "AI core maintenance hatch"
+	name = "AI Core Maintenance Hatch"
 	},
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/cyan{
@@ -4915,7 +4915,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/voidcraft{
-	name = "cockpit"
+	name = "Cockpit"
 	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/cockpit)
@@ -7193,7 +7193,7 @@
 /area/exploration/meeting)
 "nR" = (
 /obj/machinery/door/airlock/voidcraft{
-	name = "cockpit"
+	name = "Cockpit"
 	},
 /obj/structure/cable/cyan{
 	icon_state = "1-2"
@@ -11091,7 +11091,7 @@
 /area/bridge)
 "vZ" = (
 /obj/machinery/door/airlock/voidcraft{
-	name = "engine bay"
+	name = "Engine Bay"
 	},
 /turf/simulated/floor,
 /area/shuttle/emt/general)
@@ -12516,7 +12516,7 @@
 /area/crew_quarters/heads/hop)
 "yJ" = (
 /obj/machinery/door/airlock/voidcraft{
-	name = "battery hatch"
+	name = "Battery Hatch"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /obj/structure/cable/cyan{
@@ -14576,7 +14576,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/voidcraft{
-	name = "battery hatch"
+	name = "Battery Hatch"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
 /turf/simulated/floor,
@@ -18421,7 +18421,7 @@
 /area/maintenance/ai)
 "Lb" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
-	name = "cockpit hatch"
+	name = "Cockpit Hatch"
 	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -21060,7 +21060,7 @@
 /area/hallway/primary/surfacethree)
 "Qy" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
-	name = "battery hatch"
+	name = "Battery Hatch"
 	},
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
@@ -24079,7 +24079,7 @@
 /area/ai_upload)
 "WD" = (
 /obj/machinery/door/airlock/voidcraft/vertical{
-	name = "cockpit hatch"
+	name = "Cockpit Hatch"
 	},
 /obj/machinery/access_button/airlock_interior{
 	dir = 4;
@@ -24543,7 +24543,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/voidcraft/vertical{
-	name = "fire control hatch"
+	name = "Fire Control Hatch"
 	},
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
@@ -25525,7 +25525,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/voidcraft{
-	name = "engine bay"
+	name = "Engine Bay"
 	},
 /turf/simulated/floor,
 /area/shuttle/civvie/general)

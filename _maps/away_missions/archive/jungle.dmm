@@ -662,7 +662,6 @@
 /area/jungle/crash_ship_source)
 "dA" = (
 /turf/simulated/floor/outdoors/dirt,
-/turf/simulated/shuttle/wall,
 /area/jungle/crash_ship_source)
 "dB" = (
 /obj/structure/grille,

@@ -13,7 +13,7 @@
 /turf/simulated/floor/outdoors/rocks/caves,
 /area/submap/cave/random_geyser)
 "d" = (
-/obj/random/turf/lava,
+/obj/random/random_turf/lava,
 /turf/simulated/floor/outdoors/rocks/caves,
 /area/submap/cave/random_geyser)
 "e" = (

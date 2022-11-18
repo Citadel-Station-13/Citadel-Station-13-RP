@@ -8649,7 +8649,7 @@
 "wB" = (
 /obj/structure/table/steel_reinforced,
 /obj/machinery/door/window/brigdoor/northleft{
-	name = "lost and found"
+	name = "Lost & Found"
 	},
 /turf/simulated/floor/tiled/dark,
 /area/awaymission/zoo)

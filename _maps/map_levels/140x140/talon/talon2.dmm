@@ -2215,7 +2215,7 @@
 /obj/machinery/door/firedoor/glass/talon,
 /obj/machinery/door/airlock/command{
 	id_tag = "talon_capdoor";
-	name = "Captain's cabin";
+	name = "Captain's Cabin";
 	req_one_access = list(301)
 	},
 /obj/structure/cable/green{

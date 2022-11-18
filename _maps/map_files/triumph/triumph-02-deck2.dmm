@@ -283,7 +283,7 @@
 /obj/machinery/door/airlock/voidcraft{
 	frequency = 2020;
 	id_tag = "belt_shuttle_exterior";
-	name = "belter craft hatch"
+	name = "Belter Craft Hatch"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/shuttle/belter)
@@ -7298,7 +7298,7 @@
 /obj/machinery/door/airlock/voidcraft{
 	frequency = 2020;
 	id_tag = "belt_shuttle_exterior";
-	name = "maintenance hatch"
+	name = "Maintenance Hatch"
 	},
 /obj/machinery/atmospherics/component/binary/pump{
 	dir = 4;
@@ -11891,7 +11891,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/multi_tile/glass{
-	name = "Vacant lobby"
+	name = "Vacant Lobby"
 	},
 /turf/simulated/floor/plating,
 /area/vacant/vacant_office)

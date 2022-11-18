@@ -894,7 +894,6 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/checkpoint)
 "aJU" = (
-/obj/structure/table/steel_reinforced,
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/structure/table/steel_reinforced,
@@ -4055,7 +4054,6 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
 /turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "cVJ" = (
@@ -7775,7 +7773,7 @@
 	dir = 4;
 	icon_state = "shutter0";
 	id = "cargo_shuttle_shutter";
-	name = "Cargo shuttle access shutter";
+	name = "Cargo Shuttle Access Shutter";
 	opacity = 0
 	},
 /obj/structure/fans/tiny,
@@ -10303,7 +10301,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	id = "cargo_line_shutter";
-	name = "Cargo Line shutter";
+	name = "Cargo Line Shutter";
 	opacity = 0
 	},
 /obj/structure/disposalpipe/segment{
@@ -15832,7 +15830,6 @@
 	dir = 1
 	},
 /obj/structure/metal_edge,
-/turf/simulated/floor/plating/lythios43c,
 /turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "ktI" = (
@@ -17927,7 +17924,7 @@
 	dir = 4;
 	icon_state = "shutter0";
 	id = "cargo_shuttle_shutter";
-	name = "Cargo shuttle access shutter";
+	name = "Cargo Shuttle Access Shutter";
 	opacity = 0
 	},
 /obj/structure/plasticflaps/mining,
@@ -20844,7 +20841,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	id = "cargo_line_shutter";
-	name = "Cargo Line shutter";
+	name = "Cargo Line Shutter";
 	opacity = 0
 	},
 /turf/simulated/floor/tiled/steel,
@@ -22894,7 +22891,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	id = "cargo_line_shutter";
-	name = "Cargo Line shutter";
+	name = "Cargo Line Shutter";
 	opacity = 0
 	},
 /obj/structure/window/reinforced/polarized/full{
@@ -25639,7 +25636,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	id = "cargo_line_shutter";
-	name = "Cargo Line shutter";
+	name = "Cargo Line Shutter";
 	opacity = 0
 	},
 /obj/structure/disposalpipe/segment,
@@ -26576,7 +26573,7 @@
 	density = 0;
 	icon_state = "shutter0";
 	id = "cargo_shuttle_shutter";
-	name = "Cargo shuttle access shutter";
+	name = "Cargo Shuttle Access Shutter";
 	opacity = 0
 	},
 /obj/spawner/window/reinforced/full/firelocks,
@@ -27056,7 +27053,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	id = "cargo_line_shutter";
-	name = "Cargo Line shutter";
+	name = "Cargo Line Shutter";
 	opacity = 0
 	},
 /obj/structure/window/reinforced/polarized/full{
@@ -30285,7 +30282,6 @@
 "teB" = (
 /obj/effect/zone_divider,
 /obj/effect/turf_decal/industrial/halfstair,
-/turf/simulated/floor/outdoors/snow/lythios43c,
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfaceeva/aa/surface_south)
 "teC" = (
@@ -34640,7 +34636,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	id = "cargo_line_shutter";
-	name = "Cargo Line shutter";
+	name = "Cargo Line Shutter";
 	opacity = 0
 	},
 /obj/structure/window/reinforced/polarized/full{
@@ -34852,11 +34848,11 @@
 /area/maintenance/research/lower)
 "vWv" = (
 /obj/machinery/door/window/westright{
-	name = "monkey pen";
+	name = "Monkey Pen";
 	req_access = list(39)
 	},
 /obj/machinery/door/window/eastleft{
-	name = "monkey pen";
+	name = "Monkey Pen";
 	req_access = list(39)
 	},
 /turf/simulated/floor/tiled,
@@ -35019,7 +35015,7 @@
 	dir = 2;
 	icon_state = "shutter0";
 	id = "cargo_shuttle_shutter";
-	name = "Cargo shuttle access shutter";
+	name = "Cargo Shuttle Access Shutter";
 	opacity = 0
 	},
 /obj/spawner/window/reinforced/full/firelocks,
@@ -36069,11 +36065,11 @@
 /area/library)
 "wGE" = (
 /obj/machinery/door/window/westleft{
-	name = "monkey pen";
+	name = "Monkey Pen";
 	req_access = list(39)
 	},
 /obj/machinery/door/window/eastright{
-	name = "monkey pen";
+	name = "Monkey Pen";
 	req_access = list(39)
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/black{
@@ -36533,7 +36529,7 @@
 /obj/structure/table/woodentable,
 /obj/item/paper{
 	desc = "";
-	info = "The Silence Into Laughter program works to place hard working, studied, accomplished, hardworking, homebrewed, diplomaholding, or otherwise clowns and mimes into the workforce! The Head Clowncellor and the Director at Mime have finally worked together to bring this titan of a workers' union! If you have a background in silence or laughter, please apply at our exonet site at: https://forum.vore-station.net/viewforum.php?f=45";
+	info = "The Silence Into Laughter program works to place hard working, studied, accomplished, hardworking, homebrewed, diplomaholding, or otherwise clowns and mimes into the workforce! The Head Clowncellor and the Director at Mime have finally worked together to bring this titan of a workers' union!";
 	name = "Clowns and Mimes Wanted!"
 	},
 /turf/simulated/floor/lino,

@@ -22625,7 +22625,6 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
 "sDI" = (
-/obj/structure/table/steel_reinforced,
 /obj/item/paper_bin,
 /obj/item/pen,
 /obj/structure/table/steel_reinforced,

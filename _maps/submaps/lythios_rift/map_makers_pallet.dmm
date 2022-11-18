@@ -197,7 +197,7 @@
 /turf/simulated/floor/lythios43c/indoors,
 /area/space)
 "Uq" = (
-/obj/random/turf/lava,
+/obj/random/random_turf/lava,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/space)
 "UM" = (

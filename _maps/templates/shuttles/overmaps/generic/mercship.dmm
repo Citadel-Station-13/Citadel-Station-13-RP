@@ -228,8 +228,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
 /obj/machinery/door/blast/regular{
-	id = "mercblast";
-	name = "window blast doors"
+	id = "mercblast"
 	},
 /turf/simulated/floor,
 /area/ship/mercenary/bridge)

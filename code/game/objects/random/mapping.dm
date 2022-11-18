@@ -457,7 +457,7 @@
  * Turf swappers.
  */
 
-/obj/random/turf
+/obj/random/random_turf
 	name = "random Sif turf"
 	desc = "This is a random Sif turf."
 
@@ -466,7 +466,7 @@
 	var/override_outdoors = FALSE	// Do we override our chosen turf's outdoors?
 	var/turf_outdoors = TRUE	// Will our turf be outdoors?
 
-/obj/random/turf/spawn_item()
+/obj/random/random_turf/spawn_item()
 	var/build_path = item_to_spawn()
 
 	var/turf/T1 = get_turf(src)
@@ -475,20 +475,20 @@
 	if(override_outdoors)
 		T1.outdoors = turf_outdoors
 
-/obj/random/turf/item_to_spawn()
+/obj/random/random_turf/item_to_spawn()
 	return pick(prob(25);/turf/simulated/floor/outdoors/grass/sif,
 				prob(25);/turf/simulated/floor/outdoors/dirt,
 				prob(25);/turf/simulated/floor/outdoors/grass/sif/forest,
 				prob(25);/turf/simulated/floor/outdoors/rocks)
 
-/obj/random/turf/lava
+/obj/random/random_turf/lava
 	name = "random Lava spawn"
 	desc = "This is a random lava spawn."
 
 	override_outdoors = TRUE
 	turf_outdoors = FALSE
 
-/obj/random/turf/lava/item_to_spawn()
+/obj/random/random_turf/lava/item_to_spawn()
 	return pick(prob(5);/turf/simulated/floor/outdoors/lava,
 				prob(3);/turf/simulated/floor/outdoors/rocks/caves,
 				prob(1);/turf/simulated/mineral)

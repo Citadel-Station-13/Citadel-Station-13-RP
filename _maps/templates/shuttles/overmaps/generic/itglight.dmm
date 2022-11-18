@@ -201,8 +201,7 @@
 	dir = 8
 	},
 /obj/machinery/door/blast/regular/open{
-	id = "dauntless_blastdoors";
-	name = "blast door"
+	id = "dauntless_blastdoors"
 	},
 /turf/simulated/floor,
 /area/itglight/captain)
@@ -600,8 +599,7 @@
 	},
 /obj/machinery/door/blast/regular/open{
 	dir = 4;
-	id = "dauntless_blastdoors";
-	name = "blast door"
+	id = "dauntless_blastdoors"
 	},
 /turf/simulated/floor,
 /area/itglight/cockpit)
@@ -737,8 +735,7 @@
 	},
 /obj/machinery/door/blast/regular/open{
 	dir = 4;
-	id = "dauntless_blastdoors";
-	name = "blast door"
+	id = "dauntless_blastdoors"
 	},
 /turf/simulated/floor,
 /area/itglight/captain)
@@ -1256,8 +1253,7 @@
 	dir = 4
 	},
 /obj/machinery/door/blast/regular/open{
-	id = "dauntless_blastdoors";
-	name = "blast door"
+	id = "dauntless_blastdoors"
 	},
 /turf/simulated/floor,
 /area/itglight/medbay)
@@ -1423,8 +1419,7 @@
 	dir = 8
 	},
 /obj/machinery/door/blast/regular/open{
-	id = "dauntless_blastdoors";
-	name = "blast door"
+	id = "dauntless_blastdoors"
 	},
 /turf/simulated/floor,
 /area/itglight/readyroom)
@@ -1637,8 +1632,7 @@
 	dir = 4
 	},
 /obj/machinery/door/blast/regular/open{
-	id = "dauntless_blastdoors";
-	name = "blast door"
+	id = "dauntless_blastdoors"
 	},
 /turf/simulated/floor,
 /area/itglight/kitchen)
@@ -2648,8 +2642,7 @@
 	dir = 4
 	},
 /obj/machinery/door/blast/regular/open{
-	id = "dauntless_blastdoors";
-	name = "blast door"
+	id = "dauntless_blastdoors"
 	},
 /turf/simulated/floor,
 /area/itglight/starboardengi)
@@ -4377,8 +4370,7 @@
 	},
 /obj/machinery/door/blast/regular/open{
 	dir = 4;
-	id = "dauntless_blastdoors";
-	name = "blast door"
+	id = "dauntless_blastdoors"
 	},
 /turf/simulated/floor,
 /area/itglight/shuttlebay)
@@ -4852,8 +4844,7 @@
 	dir = 4
 	},
 /obj/machinery/door/blast/regular/open{
-	id = "dauntless_blastdoors";
-	name = "blast door"
+	id = "dauntless_blastdoors"
 	},
 /turf/simulated/floor,
 /area/itglight/portengi)
@@ -4875,8 +4866,7 @@
 	},
 /obj/machinery/door/blast/regular/open{
 	dir = 4;
-	id = "dauntless_blastdoors";
-	name = "blast door"
+	id = "dauntless_blastdoors"
 	},
 /turf/simulated/floor,
 /area/itglight/readyroom)
@@ -5558,8 +5548,7 @@
 	dir = 4
 	},
 /obj/machinery/door/blast/regular/open{
-	id = "dauntless_blastdoors";
-	name = "blast door"
+	id = "dauntless_blastdoors"
 	},
 /turf/simulated/floor,
 /area/itglight/passengersleeping)
@@ -5902,8 +5891,7 @@
 	},
 /obj/machinery/door/blast/regular/open{
 	dir = 4;
-	id = "dauntless_blastdoors";
-	name = "blast door"
+	id = "dauntless_blastdoors"
 	},
 /turf/simulated/floor,
 /area/itglight/kitchen)
@@ -6017,8 +6005,7 @@
 /obj/structure/window/reinforced,
 /obj/machinery/door/blast/regular/open{
 	dir = 4;
-	id = "dauntless_blastdoors";
-	name = "blast door"
+	id = "dauntless_blastdoors"
 	},
 /turf/simulated/floor,
 /area/itglight/kitchen)
@@ -6190,8 +6177,7 @@
 	dir = 4
 	},
 /obj/machinery/door/blast/regular/open{
-	id = "dauntless_blastdoors";
-	name = "blast door"
+	id = "dauntless_blastdoors"
 	},
 /turf/simulated/floor,
 /area/itglight/lockers)
@@ -6290,8 +6276,7 @@
 	},
 /obj/machinery/door/blast/regular/open{
 	dir = 4;
-	id = "dauntless_blastdoors";
-	name = "blast door"
+	id = "dauntless_blastdoors"
 	},
 /turf/simulated/floor,
 /area/itglight/medbay)

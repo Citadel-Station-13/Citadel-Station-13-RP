@@ -116,7 +116,6 @@
 /area/awaymission/syndishuttle)
 "aD" = (
 /turf/simulated/shuttle/wall/dark,
-/turf/space,
 /area/awaymission/syndishuttle)
 "aH" = (
 /obj/effect/decal/remains/robot,
@@ -1401,7 +1400,6 @@
 /turf/simulated/shuttle/plating,
 /area/awaymission/arrivalblock)
 "fT" = (
-/turf/space,
 /turf/simulated/shuttle/wall,
 /area/awaymission/arrivalblock)
 "fU" = (

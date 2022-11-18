@@ -926,7 +926,6 @@
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "vu" = (
 /obj/structure/table/bench/wooden,
-/obj/structure/table/bench/wooden,
 /obj/effect/turf_decal/techfloor/orange{
 	dir = 4
 	},

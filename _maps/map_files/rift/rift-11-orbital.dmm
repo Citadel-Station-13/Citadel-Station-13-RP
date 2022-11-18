@@ -304,7 +304,6 @@
 /area/centcom/simulated/restaurant)
 "bh" = (
 /turf/space/basic,
-/turf/space/basic,
 /area/space)
 "bi" = (
 /obj/structure/window/reinforced{
@@ -4353,7 +4352,7 @@
 "nd" = (
 /obj/machinery/door/window/brigdoor/southright{
 	dir = 4;
-	name = "holding cell"
+	name = "Holding Cell"
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/shuttle/escape)
@@ -7109,7 +7108,7 @@
 /area/centcom/specops)
 "uT" = (
 /obj/machinery/door/blast/regular{
-	name = "When Everything else fails."
+	name = "When Everything Else Fails."
 	},
 /turf/simulated/floor/tiled/steel,
 /area/centcom/specops)

@@ -3578,7 +3578,6 @@
 	dir = 8;
 	name = "pulse laser"
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/mercenary)
 "gl" = (
@@ -3755,7 +3754,6 @@
 	dir = 4;
 	icon_state = "propulsion_r"
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/mercenary)
 "gB" = (
@@ -4295,7 +4293,6 @@
 /obj/structure/shuttle/engine/propulsion{
 	dir = 4
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/mercenary)
 "hy" = (
@@ -4303,7 +4300,6 @@
 	dir = 4;
 	icon_state = "propulsion_l"
 	},
-/turf/space,
 /turf/simulated/shuttle/plating/airless/carry,
 /area/shuttle/mercenary)
 

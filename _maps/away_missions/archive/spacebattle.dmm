@@ -6,7 +6,6 @@
 /area)
 "ac" = (
 /turf/simulated/shuttle/wall/dark,
-/turf/space,
 /area/awaymission/spacebattle/syndicate2)
 "ad" = (
 /obj/structure/shuttle/engine/propulsion{
@@ -134,7 +133,6 @@
 /area/awaymission/spacebattle/syndicate2)
 "aP" = (
 /turf/simulated/shuttle/wall/dark,
-/turf/space,
 /area/awaymission/spacebattle/syndicate1)
 "aQ" = (
 /obj/structure/shuttle/engine/propulsion{
@@ -309,7 +307,6 @@
 /area/awaymission/spacebattle/syndicate1)
 "bJ" = (
 /turf/simulated/shuttle/wall/dark,
-/turf/space,
 /area/awaymission/spacebattle/cruiser)
 "bK" = (
 /obj/structure/shuttle/engine/propulsion{
@@ -814,7 +811,6 @@
 /area/awaymission/spacebattle/cruiser)
 "et" = (
 /turf/simulated/shuttle/wall/dark,
-/turf/space,
 /area/awaymission/spacebattle/syndicate4)
 "eu" = (
 /turf/simulated/shuttle/wall/dark,
@@ -1198,7 +1194,6 @@
 /area/awaymission/spacebattle/syndicate7)
 "gV" = (
 /turf/simulated/shuttle/wall/dark,
-/turf/space,
 /area/awaymission/spacebattle/syndicate7)
 "gW" = (
 /obj/structure/shuttle/engine/heater,
@@ -1596,7 +1591,6 @@
 /area)
 "iL" = (
 /turf/simulated/shuttle/wall/dark,
-/turf/space,
 /area/awaymission/spacebattle/syndicate5)
 "iM" = (
 /turf/simulated/shuttle/wall/dark,
@@ -1646,7 +1640,6 @@
 /area/awaymission/spacebattle/syndicate5)
 "jc" = (
 /turf/simulated/shuttle/wall/dark,
-/turf/space,
 /area/awaymission/spacebattle/syndicate6)
 "jd" = (
 /turf/simulated/shuttle/wall/dark,

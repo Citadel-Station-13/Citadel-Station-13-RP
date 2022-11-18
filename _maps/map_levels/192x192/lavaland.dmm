@@ -74,7 +74,6 @@
 	dir = 10
 	},
 /obj/structure/closet/firecloset,
-/obj/structure/closet/firecloset,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "db" = (

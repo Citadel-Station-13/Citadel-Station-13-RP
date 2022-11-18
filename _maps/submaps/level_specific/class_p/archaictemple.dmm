@@ -406,7 +406,7 @@
 	icon_state_open = "metalopen";
 	icon_state_opening = "metalopening";
 	lockID = "bchar";
-	name = "The Tomb of the Forgotten One"
+	name = "The Tomb Of The Forgotten One"
 	},
 /turf/simulated/floor/crystal/classp,
 /area/class_p/POIs/archaic_temple)
@@ -628,7 +628,7 @@
 	icon_state_open = "metalopen";
 	icon_state_opening = "metalopening";
 	lockID = "dmirr";
-	name = "enchanted door"
+	name = "Enchanted Door"
 	},
 /turf/simulated/floor/gold/classp,
 /area/class_p/POIs/archaic_temple)

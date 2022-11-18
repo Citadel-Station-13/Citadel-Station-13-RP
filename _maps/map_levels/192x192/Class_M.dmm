@@ -2287,7 +2287,7 @@
 /area/class_m/inside)
 "YE" = (
 /obj/machinery/door/airlock/glass{
-	name = "Weapon storage"
+	name = "Weapon Storage"
 	},
 /turf/simulated/floor/wood/classm,
 /area/class_m/inside)
