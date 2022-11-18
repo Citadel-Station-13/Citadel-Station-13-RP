@@ -15,7 +15,7 @@
 	var/human_name = TRUE
 
 	var/static/list/cutout_types
-	var/static/list/painters = list(/obj/item/reagent_containers/glass/paint, /obj/item/floor_painter)//, /obj/item/closet_painter)
+	var/static/list/painters = list(/obj/item/reagent_containers/glass/paint, /obj/item/airlock_painter/decal/tile)//, /obj/item/closet_painter)
 
 /obj/structure/barricade/cutout/Initialize(mapload, material_name)
 	. = ..()

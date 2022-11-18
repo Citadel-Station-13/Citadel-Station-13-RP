@@ -3807,7 +3807,6 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/supply,
 /obj/machinery/atmospherics/component/binary/passive_gate{
 	dir = 8;
-	in_use = 1;
 	unlocked = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -9286,7 +9285,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/item/floor_painter,
+/obj/item/airlock_painter/decal/tile,
 /obj/item/closet_painter,
 /obj/item/pipe_painter,
 /obj/item/hand_labeler,

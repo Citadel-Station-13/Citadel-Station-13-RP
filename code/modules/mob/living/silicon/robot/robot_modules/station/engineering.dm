@@ -46,7 +46,7 @@
 	src.modules += new /obj/item/weldingtool/electric/mounted/cyborg(src)
 	src.modules += new /obj/item/pickaxe/plasmacutter(src)
 	src.modules += new /obj/item/pipe_painter(src)
-	src.modules += new /obj/item/floor_painter(src)
+	src.modules += new /obj/item/airlock_painter/decal/tile(src)
 	src.modules += new /obj/item/gripper/no_use/loader(src)
 	src.modules += new /obj/item/geiger(src)
 
@@ -93,7 +93,7 @@
 	src.modules += new /obj/item/gripper/circuit(src)
 	src.modules += new /obj/item/lightreplacer(src)
 	src.modules += new /obj/item/pipe_painter(src)
-	src.modules += new /obj/item/floor_painter(src)
+	src.modules += new /obj/item/airlock_painter/decal/tile(src)
 	src.modules += new /obj/item/inflatable_dispenser/robot(src)
 	src.emag = new /obj/item/melee/baton/robot/arm(src)
 	src.modules += new /obj/item/geiger(src)
@@ -198,7 +198,7 @@
 	src.modules += new /obj/item/dogborg/boop_module(src)
 	src.modules += new /obj/item/geiger(src)
 	src.modules += new /obj/item/pipe_painter(src)
-	src.modules += new /obj/item/floor_painter(src)
+	src.modules += new /obj/item/airlock_painter/decal/tile(src)
 	src.modules += new /obj/item/gripper(src)
 	src.modules += new /obj/item/gripper/no_use/loader(src)
 	src.modules += new /obj/item/pipe_dispenser(src)
@@ -300,5 +300,3 @@
 		sprites += "Alina"
 		sprites["Alina"] = "alina-eng"
 		. = ..()
-
-

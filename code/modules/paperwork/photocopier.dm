@@ -169,7 +169,7 @@
 				return
 			to_chat(user, "<span class='notice'>You insert the toner cartridge into \the [src].</span>")
 			var/obj/item/toner/T = O
-			toner += T.toner_amount
+			toner += T.charges
 			qdel(T)
 		else
 			to_chat(user, "<span class='notice'>This cartridge is not yet ready for replacement! Use up the rest of the toner.</span>")
@@ -382,8 +382,31 @@
 			return FALSE
 	return ..()
 
+/**
+ * Toner cartridge
+ */
 /obj/item/toner
 	name = "toner cartridge"
+	desc = "A small, lightweight cartridge of NanoTrasen ValueBrand toner. Fits photocopiers and autopainters alike."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "tonercartridge"
-	var/toner_amount = 30
+	// grind_results = list(/datum/reagent/iodine = 40, /datum/reagent/iron = 10)
+	var/charges = 5
+	var/max_charges = 5
+
+/obj/item/toner/examine(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("The ink level gauge on the side reads [round(charges / max_charges * 100)]%")
+
+/obj/item/toner/large
+	name = "large toner cartridge"
+	desc = "A hefty cartridge of NanoTrasen ValueBrand toner. Fits photocopiers and autopainters alike."
+	// grind_results = list(/datum/reagent/iodine = 90, /datum/reagent/iron = 10)
+	charges = 25
+	max_charges = 25
+
+/obj/item/toner/extreme
+	name = "extremely large toner cartridge"
+	desc = "Why would ANYONE need THIS MUCH TONER?"
+	charges = 200
+	max_charges = 200

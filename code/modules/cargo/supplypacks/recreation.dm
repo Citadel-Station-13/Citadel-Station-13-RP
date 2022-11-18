@@ -65,7 +65,7 @@
 	container_type = /obj/structure/closet/crate
 	contains = list(
 			/obj/item/pipe_painter = 2,
-			/obj/item/floor_painter = 2,
+			/obj/item/airlock_painter/decal/tile = 2,
 			/obj/item/closet_painter = 2
 			)
 

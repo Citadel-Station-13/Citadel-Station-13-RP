@@ -15,7 +15,6 @@
 	var/sharp = 0		// whether this object cuts
 	var/edge = 0		// whether this object is more likely to dismember
 	var/pry = 0			//Used in attackby() to open doors
-	var/in_use = 0 // If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
 	var/damtype = "brute"
 	var/armor_penetration = 0
 	var/show_messages
@@ -64,21 +63,30 @@
 /obj/item/proc/is_used_on(obj/O, mob/user)
 
 /obj/proc/updateUsrDialog()
-	if(in_use)
-		var/is_in_use = 0
+	if((obj_flags & IN_USE) && !(obj_flags & USES_TGUI))
+		var/is_in_use = FALSE
 		var/list/nearby = viewers(1, src)
 		for(var/mob/M in nearby)
 			if ((M.client && M.machine == src))
-				is_in_use = 1
-				src.attack_hand(M)
-		if (istype(usr, /mob/living/silicon/ai) || istype(usr, /mob/living/silicon/robot))
+				is_in_use = TRUE
+				ui_interact(M)
+		if(issilicon(usr) || is_admin_ghost_ai(usr))
 			if (!(usr in nearby))
 				if (usr.client && usr.machine==src) // && M.machine == src is omitted because if we triggered this by using the dialog, it doesn't matter if our machine changed in between triggering it and this - the dialog is probably still supposed to refresh.
-					is_in_use = 1
-					src.attack_ai(usr)
+					is_in_use = TRUE
+					ui_interact(usr)
 
 		// check for MUTATION_TELEKINESIS users
 
+		/* Switch to this or something like this once our mutations aren't shit. @Zandario
+		if(ishuman(usr))
+			var/mob/living/carbon/human/H = usr
+			if(!(usr in nearby))
+				if(usr.client && usr.machine==src)
+					if(H.dna.check_mutation(/datum/mutation/human/telekinesis))
+						is_in_use = TRUE
+						ui_interact(usr)
+		*/
 		if (istype(usr, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = usr
 			if(H.get_held_item_of_type(/obj/item/tk_grab))
@@ -86,35 +94,56 @@
 					if(H.client && H.machine==src)
 						is_in_use = 1
 						src.attack_hand(H)
-		in_use = is_in_use
 
-/obj/proc/updateDialog()
+		if (is_in_use)
+			obj_flags |= IN_USE
+		else
+			obj_flags &= ~IN_USE
+
+/obj/proc/updateDialog(update_viewers = TRUE,update_ais = TRUE)
 	// Check that people are actually using the machine. If not, don't update anymore.
-	if(in_use)
-		var/list/nearby = viewers(1, src)
-		var/is_in_use = 0
-		for(var/mob/M in nearby)
-			if ((M.client && M.machine == src))
-				is_in_use = 1
-				src.interact(M)
-		var/ai_in_use = AutoUpdateAI(src)
+	if(obj_flags & IN_USE)
+		var/is_in_use = FALSE
+		if(update_viewers)
+			for(var/mob/M in viewers(1, src))
+				if ((M.client && M.machine == src))
+					is_in_use = TRUE
+					src.interact(M)
+		var/ai_in_use = FALSE
+		if(update_ais)
+			ai_in_use = AutoUpdateAI(src)
 
-		if(!ai_in_use && !is_in_use)
-			in_use = 0
+		if(update_viewers && update_ais) //State change is sure only if we check both
+			if(!ai_in_use && !is_in_use)
+				obj_flags &= ~IN_USE
 
 /obj/attack_ghost(mob/user)
+	. = ..()
+	if(.)
+		return
+	SEND_SIGNAL(src, COMSIG_ATOM_UI_INTERACT, user)
+	ui_interact(user)
 	nano_ui_interact(user)
-	..()
 
 /mob/proc/unset_machine()
+	SIGNAL_HANDLER
+	if(!machine)
+		return
+	UnregisterSignal(machine, COMSIG_PARENT_QDELETING)
+	machine.on_unset_machine(src)
 	machine = null
 
-/mob/proc/set_machine(var/obj/O)
-	if(src.machine)
+/// Called when the user unsets the machine.
+/atom/movable/proc/on_unset_machine(mob/user)
+	return
+
+/mob/proc/set_machine(obj/O)
+	if(machine)
 		unset_machine()
-	src.machine = O
+	machine = O
+	RegisterSignal(O, COMSIG_PARENT_QDELETING, .proc/unset_machine)
 	if(istype(O))
-		O.in_use = 1
+		O.obj_flags |= IN_USE
 
 /obj/item/proc/updateSelfDialog()
 	var/mob/M = src.loc

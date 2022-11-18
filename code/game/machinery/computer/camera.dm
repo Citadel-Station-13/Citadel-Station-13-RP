@@ -75,6 +75,7 @@
 	light_range_on = 2
 	network = list(NETWORK_THUNDER)
 	circuit = /obj/item/circuitboard/security/telescreen/entertainment
+	interaction_flags_atom = INTERACT_ATOM_UI_INTERACT | INTERACT_ATOM_NO_FINGERPRINT_INTERACT | INTERACT_ATOM_NO_FINGERPRINT_ON_TOUCH | INTERACT_MACHINE_REQUIRES_SIGHT
 	var/obj/item/radio/radio = null
 
 /obj/machinery/computer/security/telescreen/entertainment/Initialize(mapload)

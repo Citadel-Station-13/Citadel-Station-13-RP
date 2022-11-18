@@ -264,7 +264,7 @@
 
 	if(!voodoo_link)
 		if(I.loc == user && istype(I) && I.w_class <= WEIGHT_CLASS_SMALL)
-			if (user.transferItemToLoc(I,src))
+			if (user.transfer_item_to_loc(I,src))
 				voodoo_link = I
 				to_chat(user, "You attach [I] to the doll.")
 				update_targets()

@@ -22,7 +22,7 @@
 	src.modules += new /obj/item/gripper/no_use/loader(src)
 	src.modules += new /obj/item/extinguisher(src)
 	src.modules += new /obj/item/pipe_painter(src)
-	src.modules += new /obj/item/floor_painter(src)
+	src.modules += new /obj/item/airlock_painter/decal/tile(src)
 	src.modules += new /obj/item/t_scanner(src)
 	src.modules += new /obj/item/analyzer(src)
 

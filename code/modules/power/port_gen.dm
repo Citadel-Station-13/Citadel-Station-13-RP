@@ -8,6 +8,8 @@
 	anchored = 0
 	use_power = USE_POWER_OFF
 
+	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND | INTERACT_ATOM_UI_INTERACT | INTERACT_ATOM_REQUIRES_ANCHORED
+
 	var/active = 0
 	/// in kw
 	var/power_gen = 5

@@ -20,6 +20,8 @@
 	var/burning = null
 	/// Sound to play on hit. Set to [HITSOUND_UNSET] to have it automatically set on init.
 	var/hitsound = HITSOUND_UNSET
+	///Played when the item is used, for example tools.
+	var/usesound
 	var/storage_cost = null
 	/// This is used to determine on which slots an item can fit.
 	var/slot_flags = 0
@@ -690,6 +692,32 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	add_fingerprint(user)
 	ui_interact(user)
 
+/obj/item/ui_act(action, list/params)
+	add_fingerprint(usr)
+	return ..()
+
 // /obj/item/update_filters()
 // 	. = ..()
 // 	update_action_buttons()
+
+/// Plays item's usesound, if any.
+/obj/item/proc/play_tool_sound(atom/target, volume=50)
+	if(target && usesound && volume)
+		var/played_sound = usesound
+
+		if(islist(usesound))
+			played_sound = pick(usesound)
+
+		playsound(target, played_sound, volume, TRUE)
+
+/// Common proc used by painting tools like spraycans and palettes that can access the entire 24 bits color space.
+/obj/item/proc/pick_painting_tool_color(mob/user, default_color)
+	var/chosen_color = input(user,"Pick new color", "[src]", default_color) as color|null
+	if(!chosen_color || QDELETED(src) || !user.is_holding(src))
+		return
+
+	set_painting_tool_color(chosen_color)
+
+/obj/item/proc/set_painting_tool_color(chosen_color)
+	return chosen_color // Temporary
+	// SEND_SIGNAL(src, COMSIG_PAINTING_TOOL_SET_COLOR, chosen_color)

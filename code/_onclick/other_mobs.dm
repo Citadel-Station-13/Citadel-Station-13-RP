@@ -30,31 +30,46 @@
 
 	A.attack_hand(src)
 
-/// Return TRUE to cancel other attack hand effects that respect it.
-/atom/proc/attack_hand(mob/user)
-	. = _try_interact(user)
+/// Return TRUE to cancel other attack hand effects that respect it. Modifiers is the assoc list for click info such as if it was a right click.
+/atom/proc/attack_hand(mob/user, list/modifiers)
+	. = FALSE
+	if(!(interaction_flags_atom & INTERACT_ATOM_NO_FINGERPRINT_ON_TOUCH))
+		add_fingerprint(user)
+	if(SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_HAND, user, modifiers))
+		. = TRUE
+	if(interaction_flags_atom & INTERACT_ATOM_ATTACK_HAND)
+		. = _try_interact(user)
 
-//Return a non FALSE value to cancel whatever called this from propagating, if it respects it.
+/// Return a non FALSE value to cancel whatever called this from propagating, if it respects it.
 /atom/proc/_try_interact(mob/user)
-	// if(isAdminGhostAI(user))		//admin abuse
-	// 	return interact(user)
+	if(is_admin_ghost_ai(user)) //admin abuse
+		return interact(user)
 	if(can_interact(user))
 		return interact(user)
 	return FALSE
 
-/atom/proc/can_interact(mob/user)
-	// if(!user.can_interact_with(src))
+/atom/proc/can_interact(mob/user, require_adjacent_turf = TRUE)
+	// if(!user.can_interact_with(src, interaction_flags_atom & INTERACT_ATOM_ALLOW_USER_LOCATION))
 	// 	return FALSE
-	// if((interaction_flags_atom & INTERACT_ATOM_REQUIRES_DEXTERITY) && !user.IsAdvancedToolUser())
-	// 	to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
-	// 	return FALSE
-	// if(!(interaction_flags_atom & INTERACT_ATOM_IGNORE_INCAPACITATED) && user.incapacitated((interaction_flags_atom & INTERACT_ATOM_IGNORE_RESTRAINED), !(interaction_flags_atom & INTERACT_ATOM_CHECK_GRAB)))
-	// 	return FALSE
+	if((interaction_flags_atom & INTERACT_ATOM_REQUIRES_DEXTERITY) && !user.IsAdvancedToolUser())
+		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
+		return FALSE
+	if(!(interaction_flags_atom & INTERACT_ATOM_IGNORE_INCAPACITATED))
+		// var/ignore_flags = NONE
+		// if(interaction_flags_atom & INTERACT_ATOM_IGNORE_RESTRAINED)
+		// 	ignore_flags |= IGNORE_RESTRAINTS
+		// if(!(interaction_flags_atom & INTERACT_ATOM_CHECK_GRAB))
+		// 	ignore_flags |= IGNORE_GRAB
+
+		if(user.incapacitated())
+		// if(user.incapacitated(ignore_flags))
+			return FALSE
 	return TRUE
 
 /atom/ui_status(mob/user)
 	. = ..()
-	if(!can_interact(user) && !IsAdminGhost(user))
+	//Check if both user and atom are at the same location
+	if(!can_interact(user))
 		. = min(., UI_UPDATE)
 
 /atom/movable/can_interact(mob/user)
@@ -69,9 +84,10 @@
 		add_hiddenprint(user)
 	else
 		add_fingerprint(user)
-	// if(interaction_flags_atom & INTERACT_ATOM_UI_INTERACT)
-	return (ui_interact(user) || nano_ui_interact(user))
-	// return FALSE
+	if(interaction_flags_atom & INTERACT_ATOM_UI_INTERACT)
+		SEND_SIGNAL(src, COMSIG_ATOM_UI_INTERACT, user)
+		return (ui_interact(user) || nano_ui_interact(user))
+	return FALSE
 
 /mob/living/carbon/human/RestrainedClickOn(var/atom/A)
 	return

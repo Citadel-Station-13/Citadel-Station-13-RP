@@ -367,7 +367,7 @@
 		if(istype(T, denied_type) || istype(src, T.denied_type))
 			to_chat(user, "<span class='warning'>You can't seem to attach [src] to [H]. Maybe remove a few trophies?</span>")
 			return FALSE
-	if(!user.transferItemToLoc(src, H))
+	if(!user.transfer_item_to_loc(src, H))
 		return
 	H.trophies += src
 	to_chat(user, "<span class='notice'>You attach [src] to [H].</span>")

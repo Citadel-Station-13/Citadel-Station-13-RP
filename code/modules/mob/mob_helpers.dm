@@ -115,7 +115,7 @@
 	return TRUE
 
 /// Is the passed in mob an admin ghost WITH AI INTERACT enabled
-/proc/isAdminGhostAI(mob/user)
+/proc/is_admin_ghost_ai(mob/user)
 	if(!isAdminObserver(user))
 		return
 	if(!user.client.AI_Interact) // Do they have it enabled?

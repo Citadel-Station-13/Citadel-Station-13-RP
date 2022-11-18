@@ -79,12 +79,12 @@
 	else if(diff == FORWARD)
 		switch(current_step["action"])
 			if(ITEM_DELETE)
-				. = user.transferItemToLoc(I, parent)
+				. = user.transfer_item_to_loc(I, parent)
 				if(.)
 					qdel(I)
 
 			if(ITEM_MOVE_INSIDE)
-				. = user.transferItemToLoc(I, parent)
+				. = user.transfer_item_to_loc(I, parent)
 
 			// Using stacks
 			else if(istype(I, /obj/item/stack))

@@ -116,7 +116,7 @@
 
 /*
 	if(user.a_intent != INTENT_HARM && !(I.clothing_flags & ITEM_ABSTRACT))
-		if(user.transferItemToLoc(I, drop_location(), silent = FALSE))
+		if(user.transfer_item_to_loc(I, drop_location(), silent = FALSE))
 			var/list/click_params = params2list(params)
 			//Center the icon where the user clicked.
 			if(!click_params || !click_params["icon-x"] || !click_params["icon-y"])

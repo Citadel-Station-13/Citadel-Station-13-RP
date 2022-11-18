@@ -10,16 +10,24 @@ FLOOR SAFES
 	desc = "A huge chunk of metal with a dial embedded in it. Fine print on the dial reads \"Scarborough Arms - 2 tumbler safe, guaranteed thermite resistant, explosion resistant, and assistant resistant.\""
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "safe"
-	anchored = 1
-	density = 1
-	var/open = 0		//is the safe open?
-	var/tumbler_1_pos	//the tumbler position- from 0 to 72
-	var/tumbler_1_open	//the tumbler position to open at- 0 to 72
+	anchored = TRUE
+	density = TRUE
+	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND | INTERACT_ATOM_UI_INTERACT
+
+	/// Is the safe open?
+	var/open = 0
+	/// The tumbler position- from 0 to 72.
+	var/tumbler_1_pos
+	/// The tumbler position to open at- 0 to 72.
+	var/tumbler_1_open
 	var/tumbler_2_pos
 	var/tumbler_2_open
-	var/dial = 0		//where is the dial pointing?
-	var/space = 0		//the combined w_class of everything in the safe
-	var/maxspace = 24	//the maximum combined w_class of stuff in the safe
+	/// Where is the dial pointing?
+	var/dial = 0
+	/// The combined w_class of everything in the safe.
+	var/space = 0
+	/// The maximum combined w_class of stuff in the safe.
+	var/maxspace = 24
 
 
 /obj/structure/safe/Initialize(mapload)

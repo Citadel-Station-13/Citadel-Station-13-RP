@@ -1,10 +1,8 @@
 // Flags for the obj_flags var on /obj
 /// we're emagged
 #define EMAGGED					(1<<0)
-/*
 ///If we have a user using us, this will be set on. We will check if the user has stopped using us, and thus stop updating and LAGGING EVERYTHING!
 #define IN_USE					(1<<1)
-*/
 /// can this be bludgeoned by items?
 #define CAN_BE_HIT				(1<<2)
 /*
@@ -18,8 +16,10 @@
 /*
 ///can you customize the description/name of the thing?
 #define UNIQUE_RENAME			(1<<6)
+*/
 ///put on things that use tgui on ui_interact instead of custom/old UI.
 #define USES_TGUI				(1<<7)
+/*
 #define FROZEN					(1<<8)
 /// Should this object block z falling from loc?
 #define BLOCK_Z_OUT_DOWN		(1<<9)
@@ -54,7 +54,9 @@
 
 DEFINE_BITFIELD(obj_flags, list(
 	BITFIELD(EMAGGED),
+	BITFIELD(IN_USE),
 	BITFIELD(CAN_BE_HIT),
 	BITFIELD(ON_BLUEPRINTS),
+	BITFIELD(USES_TGUI),
 	BITFIELD(OBJ_PREVENT_CLICK_UNDER),
 ))

@@ -680,3 +680,12 @@
 	color = "#464650"
 	taste_description = "salt"
 
+
+/datum/reagent/iodine
+	name = "Iodine"
+	description = "Commonly added to table salt as a nutrient. On its own it tastes far less pleasing."
+	reagent_state = REAGENT_LIQUID
+	color = "#BC8A00"
+	taste_description = "metal"
+	// ph = 4.5
+	// chemical_flags = REAGENT_CAN_BE_SYNTHESIZED

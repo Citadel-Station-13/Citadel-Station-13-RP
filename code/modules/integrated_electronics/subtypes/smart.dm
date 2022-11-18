@@ -160,7 +160,7 @@
 	if(installed_brain)
 		to_chat(user,"<span class='warning'>There's already a brain inside.</span>")
 		return
-	user.transferItemToLoc(O,src)
+	user.transfer_item_to_loc(O,src)
 	installed_brain = O
 	can_be_asked_input = FALSE
 	to_chat(user, "<span class='notice'>You gently place \the man-machine interface inside the tank.</span>")
@@ -284,7 +284,7 @@
 	if(installed_pai)
 		to_chat(user,"<span class='warning'>There's already a pAI connected to this.</span>")
 		return
-	user.transferItemToLoc(O,src)
+	user.transfer_item_to_loc(O,src)
 	installed_pai = O
 	can_be_asked_input = FALSE
 	to_chat(user, "<span class='notice'>You slowly connect the circuit's pins to the [installed_pai].</span>")
