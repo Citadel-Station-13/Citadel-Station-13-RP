@@ -2,6 +2,7 @@
 	icon = 'icons/mapping/spawners/windows.dmi'
 	icon_state = "window_grille_pane"
 	late = TRUE
+	layer = WINDOW_LAYER
 
 	/// spawn full windows or panes on grille?
 	var/full_window = FALSE

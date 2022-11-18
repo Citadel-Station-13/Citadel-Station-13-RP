@@ -83,10 +83,8 @@ What is the naming convention for planes or layers?
 #define TURF_PLANE				-45
 	///The 'bottom' of water tiles.
 	#define WATER_FLOOR_LAYER	2.0
-	///For floors that automatically add decal overlays
-	#define BUILTIN_DECAL_LAYER 2.01
-	///For intentionally placed floor decal overlays
-	#define MAPPER_DECAL_LAYER	2.02
+	#define TURF_PLATING_DECAL_LAYER 2.031 // Decal layer for the base of the turf
+	#define TURF_DECAL_LAYER         2.039 // Makes turf decals appear in DM how they will look inworld. // For intentionally placed floor decal overlays.
 	///Anything on this layer will render under the water layer.
 	#define UNDERWATER_LAYER	2.5
 	///Layer for water overlays.

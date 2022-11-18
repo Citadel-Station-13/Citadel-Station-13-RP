@@ -56,8 +56,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/green{
 	dir = 4
 	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "al" = (
@@ -105,8 +104,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 9
 	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "ar" = (
@@ -145,8 +143,7 @@
 "av" = (
 /obj/effect/turf_decal/rust,
 /obj/effect/zone_divider,
-/obj/structure/window/reinforced/full,
-/obj/structure/grille,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating/lythios43c{
 	outdoors = 0
 	},
@@ -279,8 +276,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 1
 	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "aR" = (
@@ -633,6 +629,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/engineering/engine_smes)
 "bF" = (
@@ -727,8 +724,7 @@
 /area/engineering/engine_core)
 "bV" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/green,
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "bX" = (
@@ -1011,8 +1007,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "cW" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/engineering/workshop)
 "cX" = (
@@ -1039,15 +1034,9 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "dc" = (
-/obj/structure/window/phoronreinforced/full,
-/obj/machinery/door/blast/regular{
-	dir = 2;
-	id = "sm_monitor_blast";
-	name = "Engineering Engine Monitoring Blast Door"
-	},
-/obj/structure/grille,
-/turf/simulated/floor,
-/area/engineering/engine_room)
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/steel_grid,
+/area/engineering/foyer)
 "df" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -1094,8 +1083,7 @@
 /area/engineering/engine_room)
 "dm" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan,
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "dp" = (
@@ -1104,6 +1092,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "dq" = (
@@ -1268,8 +1257,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
 	dir = 4
 	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/engine_room)
 "dQ" = (
@@ -1727,6 +1715,7 @@
 	id = "ce_office"
 	},
 /obj/structure/grille,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/crew_quarters/heads/chief)
 "eX" = (
@@ -1843,6 +1832,7 @@
 	name = "Electrical Maintenance";
 	req_access = list(10)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/engineering/engine_smes)
 "ft" = (
@@ -1895,8 +1885,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
 	dir = 8
 	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "fH" = (
@@ -2472,8 +2461,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "hk" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/engineering/engine_airlock)
 "hl" = (
@@ -2525,6 +2513,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/locker_room)
 "hu" = (
@@ -2540,6 +2529,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
 "hy" = (
@@ -2948,8 +2938,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)
 "jc" = (
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced/full,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "jd" = (
@@ -3687,6 +3676,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/break_room)
 "kI" = (
@@ -3773,8 +3763,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "kZ" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "lb" = (
@@ -5134,15 +5123,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "oP" = (
-/obj/structure/grille,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "bunker"
-	},
-/obj/structure/window/phoronreinforced/full,
-/obj/structure/window/phoronreinforced,
-/obj/structure/window/phoronreinforced{
-	dir = 1
 	},
 /turf/simulated/floor/plating,
 /area/crew_quarters/public_bunker)
@@ -5174,18 +5158,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "oV" = (
-/obj/structure/grille,
 /obj/machinery/door/blast/shutters{
 	dir = 4;
 	id = "bunker"
 	},
-/obj/structure/window/phoronreinforced/full,
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/public_bunker)
 "oW" = (
@@ -5227,18 +5204,11 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "oZ" = (
-/obj/structure/grille,
 /obj/machinery/door/blast/shutters{
 	dir = 8;
 	id = "bunker"
 	},
-/obj/structure/window/phoronreinforced/full,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced{
-	dir = 4
-	},
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/public_bunker)
 "pb" = (
@@ -5643,6 +5613,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/locker_room)
 "qu" = (
@@ -6248,8 +6219,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_airlock)
 "sz" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor,
 /area/engineering/engine_airlock)
 "sA" = (
@@ -6260,6 +6230,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/engineering/locker_room)
 "sD" = (
@@ -6607,6 +6578,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "ub" = (
@@ -6634,6 +6606,7 @@
 /area/maintenance/lower/mining)
 "ul" = (
 /obj/machinery/door/airlock/atmos,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/locker_room)
 "um" = (
@@ -6897,6 +6870,11 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/undertwo)
+"vv" = (
+/obj/structure/catwalk,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/engineering/storage)
 "vy" = (
 /obj/structure/cable/cyan{
 	icon_state = "1-8"
@@ -7546,6 +7524,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/engineering/engine_smes)
 "yh" = (
@@ -7817,6 +7796,7 @@
 	name = "Engineering EVA Storage";
 	req_one_access = list(11,24)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "zS" = (
@@ -8569,10 +8549,9 @@
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "DA" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/polarized/full,
-/turf/simulated/floor/plating,
-/area/engineering/engineering_monitoring)
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/tiled/steel_grid,
+/area/engineering/break_room)
 "DB" = (
 /turf/simulated/wall,
 /area/engineering/break_room)
@@ -8611,8 +8590,7 @@
 /area/engineering/storage)
 "DL" = (
 /obj/effect/zone_divider,
-/obj/structure/window/reinforced/full,
-/obj/structure/grille,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating/lythios43c{
 	outdoors = 0
 	},
@@ -8831,11 +8809,10 @@
 /turf/simulated/floor/plating,
 /area/maintenance/atmos)
 "EO" = (
-/obj/structure/grille,
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
 	},
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/maintenance/substation/engineering)
 "EP" = (
@@ -9081,6 +9058,7 @@
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 2
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/engineering/storage)
 "FU" = (
@@ -9163,6 +9141,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engineering_monitoring)
 "Gh" = (
@@ -9180,6 +9159,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "Gl" = (
@@ -9668,6 +9648,7 @@
 /obj/machinery/door/airlock/maintenance/engi{
 	name = "Engineering Substation"
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/maintenance/substation/engineering)
 "IJ" = (
@@ -9774,6 +9755,7 @@
 	name = "Engine Access";
 	req_one_access = list(11,24)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_airlock)
 "Jm" = (
@@ -9863,6 +9845,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	req_one_access = list(11,24)
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/foyer)
 "JC" = (
@@ -9943,9 +9926,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "JW" = (
-/obj/machinery/door/firedoor/border_only,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
 "JZ" = (
@@ -10289,13 +10270,12 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "LD" = (
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /obj/machinery/door/blast/regular{
 	dir = 2;
 	id = "sm_monitor_blast";
 	name = "Engineering Engine Monitoring Blast Door"
 	},
-/obj/structure/window/phoronreinforced/full,
-/obj/structure/grille,
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "LF" = (
@@ -10984,16 +10964,11 @@
 /turf/simulated/wall,
 /area/quartermaster/miningdock)
 "OE" = (
-/obj/structure/grille,
 /obj/machinery/door/blast/shutters{
 	dir = 2;
 	id = "bunker"
 	},
-/obj/structure/window/phoronreinforced/full,
-/obj/structure/window/phoronreinforced{
-	dir = 1
-	},
-/obj/structure/window/phoronreinforced,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/public_bunker)
 "OF" = (
@@ -11037,8 +11012,7 @@
 /turf/simulated/floor/plating,
 /area/quartermaster/belterdock/refinery)
 "ON" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/engineering_monitoring)
 "OO" = (
@@ -11434,6 +11408,7 @@
 /obj/structure/catwalk,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/airlock/multi_tile/metal,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/plating,
 /area/engineering/storage)
 "Qz" = (
@@ -11580,6 +11555,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engine_room)
 "Rp" = (
@@ -12251,6 +12227,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/techfloor,
 /area/engineering/locker_room)
 "UV" = (
@@ -12989,6 +12966,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "XZ" = (
@@ -13045,6 +13023,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/engineering_monitoring)
 "Yp" = (
@@ -13150,9 +13129,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "YL" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/miningdock)
 "YM" = (
@@ -13371,6 +13348,12 @@
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
+"ZS" = (
+/obj/structure/catwalk,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/floor/plating,
+/area/engineering/storage)
 "ZT" = (
 /obj/structure/table/bench/padded,
 /obj/machinery/alarm{
@@ -26896,7 +26879,7 @@ iV
 UT
 qQ
 Vu
-Qd
+ZS
 Qd
 BE
 BF
@@ -27288,7 +27271,7 @@ KF
 KF
 KF
 KF
-BF
+vv
 FP
 KF
 KF
@@ -27493,8 +27476,8 @@ fq
 bC
 Pa
 Pa
-dc
-dc
+LD
+LD
 LD
 LD
 LD
@@ -28056,7 +28039,7 @@ OK
 Ak
 Ak
 wp
-wp
+dc
 Pr
 kz
 ce
@@ -29230,7 +29213,7 @@ nE
 vq
 fp
 Zu
-DA
+ON
 NI
 ce
 Im
@@ -29424,7 +29407,7 @@ sm
 nE
 fp
 gW
-DA
+ON
 eY
 ce
 Im
@@ -29616,8 +29599,8 @@ MC
 ON
 ON
 NE
-DA
-DA
+ON
+ON
 MC
 gf
 ce
@@ -29802,7 +29785,7 @@ rU
 qW
 qW
 wp
-wp
+dc
 Pr
 vb
 nD
@@ -30970,7 +30953,7 @@ uP
 ul
 Pr
 zq
-Tt
+DA
 lL
 Ib
 Ko

@@ -153,7 +153,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 /obj/effect/turf_decal/fancy_shuttle
 	icon = 'icons/turf/fancy_shuttles/_fancy_helpers.dmi'
 	icon_state = "fancy_shuttle"
-	layer = MAPPER_DECAL_LAYER-1
+	layer = TURF_DECAL_LAYER-1
 	var/icon_file
 	var/fancy_shuttle_tag
 

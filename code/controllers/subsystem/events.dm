@@ -19,7 +19,9 @@ SUBSYSTEM_DEF(events)
 /datum/controller/subsystem/events/PreInit()
 	// unfortunately, character setup server startup hooks fire before /Initialize so :/
 	// SScharactersetup but not shit when :)
-	InitializeHolidays(force = TRUE)
+	// Instantiate our holidays list if it hasn't been already
+	if(isnull(GLOB.holidays))
+		fill_holidays()
 	return ..()
 
 /datum/controller/subsystem/events/Initialize()
@@ -30,9 +32,6 @@ SUBSYSTEM_DEF(events)
 			EVENT_LEVEL_MODERATE	= new/datum/event_container/moderate,
 			EVENT_LEVEL_MAJOR 		= new/datum/event_container/major
 		)
-	// unfortunately, character setup server startup hooks fire before /Initialize so :/
-	// SScharactersetup but not shit when :)
-	InitializeHolidays()
 	return ..()
 
 /datum/controller/subsystem/events/fire(resumed)
@@ -104,57 +103,73 @@ SUBSYSTEM_DEF(events)
 		to_chat(world, message)
 
 
-//////////////
-// HOLIDAYS //
-//////////////
-//Uncommenting ALLOW_HOLIDAYS in config.txt will enable holidays
+/**
+ * HOLIDAYS
+ *
+ * Uncommenting ALLOW_HOLIDAYS in config.txt will enable holidays
+ *
+ * It's easy to add stuff. Just add a holiday datum in code/modules/holiday/holidays.dm
+ * You can then check if it's a special day in any code in the game by calling check_holidays("Groundhog Day")
+ *
+ * You can also make holiday random events easily thanks to Pete/Gia's system.
+ * simply make a random event normally, then assign it a holidayID string which matches the holiday's name.
+ * Anything with a holidayID, which isn't in the holidays list, will never occur.
+ *
+ * Please, Don't spam stuff up with stupid stuff (key example being april-fools Pooh/ERP/etc),
+ * and don't forget: CHECK YOUR CODE!!!! We don't want any zero-day bugs which happen only on holidays and never get found/fixed!
+ */
+GLOBAL_LIST(holidays)
 
-//It's easy to add stuff. Just add a holiday datum in code/modules/holiday/holidays.dm
-//You can then check if it's a special day in any code in the game by doing if(SSevents.holidays["Groundhog Day"])
-
-//You can also make holiday random events easily thanks to Pete/Gia's system.
-//simply make a random event normally, then assign it a holidayID string which matches the holiday's name.
-//Anything with a holidayID, which isn't in the holidays list, will never occur.
-
-//Please, Don't spam stuff up with stupid stuff (key example being april-fools Pooh/ERP/etc),
-//And don't forget: CHECK YOUR CODE!!!! We don't want any zero-day bugs which happen only on holidays and never get found/fixed!
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-//ALSO, MOST IMPORTANTLY: Don't add stupid stuff! Discuss bonus content with Project-Heads first please!//
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-//sets up the holidays and holidays list
-/datum/controller/subsystem/events/proc/InitializeHolidays(force = FALSE)
-	if(holidays)
-		QDEL_LIST_ASSOC_VAL(holidays)
-	holidays = list()
-	if(!force && !CONFIG_GET(flag/allow_holidays))
+/**
+ * Checks that the passed holiday is located in the global holidays list.
+ *
+ * Returns a holiday datum, or null if it's not that holiday.
+ */
+/proc/check_holidays(holiday_to_find)
+	if(!CONFIG_GET(flag/allow_holidays))
 		return // Holiday stuff was not enabled in the config!
 
-	var/YY = text2num(time2text(world.timeofday, "YY")) // get the current year
-	var/MM = text2num(time2text(world.timeofday, "MM")) // get the current month
-	var/DD = text2num(time2text(world.timeofday, "DD")) // get the current day
-	var/DDD = time2text(world.timeofday, "DDD")	// get the current weekday
-	var/W = weekdayofthemonth()	// is this the first monday? second? etc.
+	if(isnull(GLOB.holidays) && !fill_holidays())
+		return // Failed to generate holidays, for some reason
 
-	for(var/H in subtypesof(/datum/holiday))
-		var/datum/holiday/holiday = new H
-		if(holiday.ShouldCelebrate(DD, MM, YY, W, DDD))
-			holiday.OnInit()
-			holidays[holiday.name] = holiday
-		else
+	return GLOB.holidays[holiday_to_find]
+
+/**
+ * Fills the holidays list if applicable, or leaves it an empty list.
+ */
+/proc/fill_holidays()
+	if(!CONFIG_GET(flag/allow_holidays))
+		return FALSE // Holiday stuff was not enabled in the config!
+
+	GLOB.holidays = list()
+	for(var/holiday_type in subtypesof(/datum/holiday))
+		var/datum/holiday/holiday = new holiday_type()
+		var/delete_holiday = TRUE
+		for(var/timezone in holiday.timezones)
+			var/time_in_timezone = world.realtime + timezone HOURS
+
+			var/YYYY = text2num(time2text(time_in_timezone, "YYYY")) // get the current year
+			var/MM = text2num(time2text(time_in_timezone, "MM")) // get the current month
+			var/DD = text2num(time2text(time_in_timezone, "DD")) // get the current day
+			var/DDD = time2text(time_in_timezone, "DDD") // get the current weekday
+
+			if(holiday.should_celebrate(DD, MM, YYYY, DDD))
+				holiday.celebrate()
+				GLOB.holidays[holiday.name] = holiday
+				delete_holiday = FALSE
+				break
+		if(delete_holiday)
 			qdel(holiday)
 
-	tim_sort(holidays, /proc/cmp_holiday_priority)
-	// // regenerate station name because holiday prefixes.
-	// set_station_name(new_station_name())
-	// world.update_status()
+	if(GLOB.holidays.len)
+		shuffle_inplace(GLOB.holidays)
+		// regenerate station name because holiday prefixes.
+		// set_station_name(new_station_name())
+		// world.update_status()
+
+	return TRUE
 
 /datum/controller/subsystem/events/proc/HolidayRoundstart()
 	for(var/name in holidays)
 		var/datum/holiday/holiday = holidays[name]
 		holiday.OnRoundstart()
-
-/proc/IsHoliday(name)
-	return SSevents.holidays[name]? TRUE : FALSE

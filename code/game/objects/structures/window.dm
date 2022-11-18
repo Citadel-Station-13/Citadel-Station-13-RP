@@ -577,12 +577,12 @@
 	glasstype = /obj/item/stack/material/glass
 	maximal_heat = T0C + 500 // Bumping it up a bit, so that a small fire doesn't instantly melt it. Also, makes sense as glass starts softening at around ~700 C
 	damage_per_fire_tick = 2.0
-	maxhealth = 12.0
+	maxhealth = 50
 	force_threshold = 3
 
 /obj/structure/window/basic/full
 	icon_state = "window-full"
-	maxhealth = 24
+	maxhealth = 100
 	fulltile = TRUE
 
 /obj/structure/window/phoronbasic
@@ -594,12 +594,12 @@
 	glasstype = /obj/item/stack/material/glass/phoronglass
 	maximal_heat = INFINITY // This is high-grade atmospherics glass. Let's not have it burn, mmmkay?
 	damage_per_fire_tick = 1.0
-	maxhealth = 40.0
+	maxhealth = 200
 	force_threshold = 5
 
 /obj/structure/window/phoronbasic/full
 	icon_state = "phoronwindow-full"
-	maxhealth = 80
+	maxhealth = 400
 	fulltile = TRUE
 
 /obj/structure/window/phoronreinforced
@@ -612,12 +612,12 @@
 	considered_reinforced = 1
 	maximal_heat = INFINITY // Same here. The reinforcement is just structural anyways
 	damage_per_fire_tick = 1.0 // This should last for 80 fire ticks if the window is not damaged at all. The idea is that borosilicate windows have something like ablative layer that protects them for a while.
-	maxhealth = 80.0
+	maxhealth = 500
 	force_threshold = 10
 
 /obj/structure/window/phoronreinforced/full
 	icon_state = "phoronrwindow-full"
-	maxhealth = 160
+	maxhealth = 1000
 	fulltile = TRUE
 
 /obj/structure/window/reinforced
@@ -625,7 +625,7 @@
 	desc = "It looks rather strong. Might take a few good hits to shatter it."
 	icon_state = "rwindow"
 	basestate = "rwindow"
-	maxhealth = 40.0
+	maxhealth = 75
 	considered_reinforced = 1
 	maximal_heat = T0C + 1000 // Bumping this as well, as most fires quickly get over 800 C
 	damage_per_fire_tick = 2.0
@@ -634,7 +634,7 @@
 
 /obj/structure/window/reinforced/full
 	icon_state = "rwindow-full"
-	maxhealth = 80
+	maxhealth = 150
 	fulltile = TRUE
 
 /obj/structure/window/reinforced/tinted
@@ -649,7 +649,7 @@
 	desc = "It looks rather strong and frosted over. Looks like it might take a few less hits then a normal reinforced window."
 	icon_state = "fwindow"
 	basestate = "fwindow"
-	maxhealth = 30
+	maxhealth = 60
 	force_threshold = 5
 
 /obj/structure/window/shuttle
@@ -658,7 +658,7 @@
 	icon = 'icons/obj/podwindows.dmi'
 	icon_state = "window"
 	basestate = "window"
-	maxhealth = 40
+	maxhealth = 150
 	considered_reinforced = 1
 	basestate = "w"
 	dir = 5
@@ -671,7 +671,7 @@
 
 /obj/structure/window/reinforced/polarized/full
 	icon_state = "rwindow-full"
-	maxhealth = 80
+	maxhealth = 100
 	fulltile = TRUE
 
 /obj/structure/window/reinforced/polarized/attackby(obj/item/W as obj, mob/user as mob)
@@ -760,9 +760,9 @@
 	shardtype = /obj/item/material/shard/wood
 	maximal_heat = T0C + 300 // Same as wooden walls "melting"
 	damage_per_fire_tick = 2.0
-	maxhealth = 10.0
+	maxhealth = 15
 	force_threshold = 3
-	opacity = 1
+	opacity = TRUE
 
 /obj/structure/window/wooden/take_damage(var/damage = 0,  var/sound_effect = 1)
 	var/initialhealth = health

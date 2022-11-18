@@ -97,8 +97,7 @@
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/outpost/chamber)
 "aD" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor/lythios43c,
 /area/rift/facility/interior/surface)
 "aL" = (
@@ -504,16 +503,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "cC" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/rnd/outpost/heating)
 "cD" = (
@@ -523,11 +517,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor,
 /area/tether/outpost/solars_shed)
 "cG" = (
@@ -618,9 +608,7 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/facility/exterior)
 "cZ" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/testing)
 "da" = (
@@ -958,10 +946,7 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "eD" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/rnd/outpost)
 "eG" = (
@@ -1011,15 +996,6 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/facility/exterior)
-"eV" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/door/firedoor/glass,
-/turf/simulated/floor,
-/area/rnd/outpost/mixing)
 "eX" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/effect/turf_decal/corner/purple{
@@ -1078,10 +1054,7 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "fn" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/rnd/outpost/mixing)
 "fo" = (
@@ -1157,15 +1130,10 @@
 /turf/simulated/floor/tiled/monotile,
 /area/rift/exterior/nuketown/interior)
 "fF" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 9
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/rnd/outpost/heating)
 "fG" = (
@@ -1634,12 +1602,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "hI" = (
@@ -2330,16 +2293,10 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenoarch_storage)
 "kT" = (
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced/full{
-	icon_state = "phoronwindow0"
-	},
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
 	},
+/obj/spawner/window/borosillicate/reinforced/full,
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/outpost/chamber)
 "kV" = (
@@ -3187,8 +3144,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/exterior)
 "pn" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/airlock/one)
 "pq" = (
@@ -3753,12 +3709,7 @@
 /obj/machinery/atmospherics/pipe/manifold/visible/blue{
 	dir = 1
 	},
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/rnd/outpost/mixing)
 "rN" = (
@@ -3959,8 +3910,7 @@
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/surface)
 "sP" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor,
 /area/rift/exterior/nuketown/interior)
 "sR" = (
@@ -4251,9 +4201,7 @@
 "tY" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/effect/turf_decal/industrial/warning/corner,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "tZ" = (
@@ -4496,15 +4444,10 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/facility/exterior)
 "uS" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/insulated{
 	dir = 4
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/rnd/outpost/heating)
 "uT" = (
@@ -4592,9 +4535,7 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/facility/exterior)
 "vk" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/analysis)
 "vl" = (
@@ -5117,12 +5058,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "xz" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/rnd/outpost/heating)
 "xB" = (
@@ -5152,8 +5088,7 @@
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
 "xK" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/turbolift/rwest_mining/surface)
 "xL" = (
@@ -5183,10 +5118,8 @@
 /turf/simulated/floor/wood/lythios43c,
 /area/rift/exterior/nuketown/interior)
 "xU" = (
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
-/obj/structure/window/reinforced/full,
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/testing)
 "ya" = (
@@ -5678,12 +5611,10 @@
 /turf/simulated/floor/lythios43c,
 /area/tether/outpost/solars_outside)
 "Az" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "AD" = (
@@ -5744,12 +5675,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
 	dir = 9
 	},
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/rnd/outpost/mixing)
 "AS" = (
@@ -6924,13 +6850,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "GT" = (
-/obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/tiled,
+/obj/spawner/window/reinforced/full/firelocks,
+/turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/testing)
 "GV" = (
 /obj/structure/girder,
@@ -7663,15 +7587,10 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "Kw" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 6
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/rnd/outpost/heating)
 "Ky" = (
@@ -7870,14 +7789,10 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "LG" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor,
-/area/rnd/outpost/mixing)
+/area/rift/exterior/checkpoint/south)
 "LH" = (
 /obj/effect/turf_decal/industrial/warning/cee{
 	dir = 1
@@ -7905,26 +7820,14 @@
 /obj/machinery/atmospherics/pipe/simple/insulated{
 	dir = 4
 	},
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced/full{
-	icon_state = "phoronwindow0"
-	},
+/obj/spawner/window/borosillicate/reinforced/full,
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/outpost/chamber)
 "LQ" = (
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced/full{
-	icon_state = "phoronwindow0"
-	},
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
 	dir = 4
 	},
+/obj/spawner/window/borosillicate/reinforced/full,
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/outpost/chamber)
 "LS" = (
@@ -8441,20 +8344,14 @@
 /turf/simulated/floor/lythios43c,
 /area/rift/facility/interior/surface)
 "Ol" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor,
 /area/rift/exterior/checkpoint/south)
 "Om" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/maintenance/substation/outpost)
 "On" = (
@@ -8825,12 +8722,7 @@
 /turf/simulated/mineral/icerock/lythios43c,
 /area/rift/surfacebase/outside/west)
 "PR" = (
-/obj/structure/window/basic/full,
-/obj/structure/window/basic{
-	dir = 4
-	},
-/obj/structure/grille,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
 "PS" = (
@@ -8967,8 +8859,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/eva)
 "QJ" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor,
 /area/rift/facility/interior/surface)
 "QK" = (
@@ -9136,13 +9027,8 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/exterior)
 "Rt" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/simple/visible/yellow,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/rnd/outpost/heating)
 "Ru" = (
@@ -10057,8 +9943,7 @@
 /turf/simulated/floor/tiled/steel/lythios43c,
 /area/rift/facility/interior/surface)
 "VU" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/surface)
 "VW" = (
@@ -10142,11 +10027,7 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost/airlock/one)
 "Ww" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor,
 /area/tether/outpost/solars_shed)
 "Wz" = (
@@ -10756,14 +10637,10 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/tether/outpost/solars_outside)
 "Zq" = (
-/obj/structure/grille,
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor,
 /area/tether/outpost/solars_shed)
 "Zs" = (
@@ -10795,13 +10672,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/tether/outpost/solars_outside)
 "ZD" = (
-/obj/structure/grille,
-/obj/structure/window/phoronreinforced{
-	dir = 8
-	},
-/obj/structure/window/phoronreinforced/full{
-	icon_state = "phoronwindow0"
-	},
+/obj/spawner/window/borosillicate/reinforced/full,
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/outpost/chamber)
 "ZF" = (
@@ -17417,7 +17288,7 @@ sv
 sv
 sv
 sv
-sv
+mq
 sv
 sv
 sv
@@ -32447,7 +32318,7 @@ sv
 sv
 sv
 sv
-Ol
+LG
 LV
 lg
 co
@@ -35506,10 +35377,10 @@ sv
 sv
 Fb
 Fb
-LG
+fn
 rM
 AQ
-LG
+fn
 Fb
 Fb
 sv
@@ -36473,7 +36344,7 @@ sv
 sv
 sv
 sv
-eV
+fn
 fk
 WH
 pJ
@@ -36667,7 +36538,7 @@ sv
 sv
 sv
 sv
-eV
+fn
 eX
 DD
 zF

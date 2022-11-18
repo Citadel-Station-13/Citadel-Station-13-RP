@@ -1869,9 +1869,7 @@
 /turf/simulated/wall,
 /area/outpost/mining_main/outpost/washrooms)
 "vY" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/storage)
 "wb" = (
@@ -3502,8 +3500,7 @@
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "Ou" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
 "Ox" = (
@@ -3616,8 +3613,7 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "PO" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/storage)
 "PP" = (
@@ -3655,8 +3651,7 @@
 /turf/simulated/floor/outdoors/rocks/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "Qe" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/interior/command)
 "Qh" = (
@@ -4206,11 +4201,10 @@
 /turf/simulated/wall/r_wall,
 /area/rift/surfacebase/outside/west_caves)
 "VW" = (
-/obj/machinery/door/firedoor/glass,
-/obj/spawner/window/reinforced/full,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
 "VZ" = (
@@ -4573,12 +4567,10 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west_caves)
 "Zz" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/storage)
 "ZB" = (
