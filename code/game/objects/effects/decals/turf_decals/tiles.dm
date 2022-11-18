@@ -1,63 +1,6 @@
-// These are objects that destroy themselves and add themselves to the
-// decal list of the floor under them. Use them rather than distinct icon_states
-// when mapping in interesting floor designs.
-var/list/turf_decals = list()
-
-/obj/effect/turf_decal
-	name = "floor decal"
-	icon = 'icons/turf/flooring/decals_vr.dmi'
-	plane = DECAL_PLANE
-	layer = MAPPER_DECAL_LAYER
-	var/supplied_dir
-
-/obj/effect/turf_decal/Initialize(mapload, newdir, newcolour)
-	supplied_dir = newdir
-	if(newcolour)
-		color = newcolour
-	. = ..()
-	return INITIALIZE_HINT_LATELOAD
-
-/obj/effect/turf_decal/LateInitialize()
-	add_to_turf_decals()
-	qdel(src)
-
-/obj/effect/turf_decal/proc/make_decal_image()
-	var/image/I = image(icon = icon, icon_state = icon_state, dir = dir)
-	I.layer = MAPPER_DECAL_LAYER
-	I.color = color
-	I.alpha = alpha
-	return I
-
-/obj/effect/turf_decal/proc/get_cache_key(var/turf/T)
-	return "[alpha]-[color]-[dir]-[icon_state]-[T.layer]"
-
-// This is a separate proc from initialize() to facilitiate its caching and other stuff.  Look into it someday.
-/obj/effect/turf_decal/proc/add_to_turf_decals()
-	if(supplied_dir)
-		setDir(supplied_dir) // TODO - Why can't this line be done in initialize/New()?
-	var/turf/T = get_turf(src)
-	if(istype(T, /turf/simulated/floor) || istype(T, /turf/unsimulated/floor) || istype(T, /turf/simulated/shuttle/floor))
-		var/cache_key = "[alpha]-[color]-[dir]-[icon_state]-[T.layer]"
-		var/image/I = turf_decals[cache_key]
-		if(!I)
-			I = image(icon = icon, icon_state = icon_state, dir = dir)
-			I.layer = T.layer
-			I.color = color
-			I.alpha = alpha
-			turf_decals[cache_key] = I
-		LAZYADD(T.decals, I) // Add to its decals list (so it remembers to re-apply after it cuts overlays)
-		T.add_overlay(I) // Add to its current overlays too.
-		return T
 
 /obj/effect/turf_decal/reset
 	name = "reset marker"
-
-/obj/effect/turf_decal/reset/LateInitialize()
-	var/turf/T = get_turf(src)
-	if(T.decals && T.decals.len)
-		T.decals.Cut()
-		T.update_icon()
-	qdel(src)
 
 /obj/effect/turf_decal/corner
 	icon_state = "corner_white"

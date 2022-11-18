@@ -22,9 +22,9 @@
 #define COMSIG_UI_ACT "COMSIG_UI_ACT"
 
 /// Fires on the target datum when an element is attached to it (/datum/element)
-////#define COMSIG_ELEMENT_ATTACH "element_attach"
+#define COMSIG_ELEMENT_ATTACH "element_attach"
 /// Fires on the target datum when an element is attached to it  (/datum/element)
-////#define COMSIG_ELEMENT_DETACH "element_detach"
+#define COMSIG_ELEMENT_DETACH "element_detach"
 
 //! ## Merger datum signals
 /// Called on the object being added to a merger group: (datum/merger/new_merger)

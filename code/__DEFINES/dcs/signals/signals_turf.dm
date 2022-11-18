@@ -24,4 +24,4 @@
 ////#define COMSIG_TURF_INDUSTRIAL_LIFT_ENTER "turf_industrial_life_enter"
 
 /// From /datum/element/decal/Detach(): (description, cleanable, directional, mutable_appearance/pic)
-////#define COMSIG_TURF_DECAL_DETACHED "turf_decal_detached"
+#define COMSIG_TURF_DECAL_DETACHED "turf_decal_detached"

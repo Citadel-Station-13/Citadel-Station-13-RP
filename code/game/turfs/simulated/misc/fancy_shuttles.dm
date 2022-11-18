@@ -167,12 +167,6 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 	icon_state = "floors [x - F.x],[y - F.y]"
 	return ..()
 
-/obj/effect/turf_decal/fancy_shuttle/make_decal_image()
-	return image(icon = icon, icon_state = icon_state, layer = BUILTIN_DECAL_LAYER)
-
-/obj/effect/turf_decal/fancy_shuttle/get_cache_key(var/turf/T)
-	return "[alpha]-[color]-[dir]-[icon_state]-[T.layer]-[icon_file]"
-
 /**
  * Invisible ship equipment (otherwise the same as normal)
  */
