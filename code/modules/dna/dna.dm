@@ -39,24 +39,34 @@ var/global/list/datum/gene/dna_genes[0]
 // Used for genes that check for value rather than a binary on/off.
 #define GENE_ALWAYS_ACTIVATE 1
 
+/**
+ * DNA
+ *
+ * holds genetic information on an organism
+ * anything semantically genetic that is non-temporary-state
+ * not held by organs should probably be held here
+ * basically: anything cosmetic, or anything full-body-gene-power-y
+ */
 /datum/dna
-	//! cosmetics
+	//! cosmetics - PLEASE use setters, as we aggressively cache these on clone to avoid meomry overhead!
 	/// skin color, or a string corrosponding to skin tone lookup
 	var/skin_color = rgb(238, 206, 179)
 	/// hair
-	var/datum/sprite_accessory_data/hair
+	VAR_PRIVATE/datum/sprite_accessory_data/hair
 	/// facial hair
-	var/datum/sprite_accessory_data/facial_hair
+	VAR_PRIVATE/datum/sprite_accessory_data/facial_hair
 	/// ears
-	var/datum/sprite_accessory_data/ears_1
+	VAR_PRIVATE/datum/sprite_accessory_data/ears_1
 	/// ears
-	var/datum/sprite_accessory_data/ears_2
+	VAR_PRIVATE/datum/sprite_accessory_data/ears_2
 	/// tail
-	var/datum/sprite_accessory_data/tail
+	VAR_PRIVATE/datum/sprite_accessory_data/tail
 	/// wings
-	var/datum/sprite_accessory_data/wings
+	VAR_PRIVATE/datum/sprite_accessory_data/wings
 	/// body markings
-	var/list/datum/sprite_accessory_data/markings
+	VAR_PRIVATE/list/datum/sprite_accessory_data/markings
+	/// gender
+	var/gender = MALE
 
 
 //! READ-ONLY, GETS OVERWRITTEN
@@ -92,7 +102,6 @@ var/global/list/datum/gene/dna_genes[0]
 
 //? New stuff.
 	var/species = SPECIES_HUMAN
-	var/list/body_markings = list()
 	var/list/body_descriptors = null
 	///? Modifiers with the MODIFIER_GENETIC flag are saved.  Note that only the type is saved, not an instance.
 	var/list/genetic_modifiers = list()
@@ -105,29 +114,44 @@ var/global/list/datum/gene/dna_genes[0]
  * Make a copy of this strand.
  * USE THIS WHEN COPYING STUFF OR YOU'LL GET CORRUPTION!
  */
-/datum/dna/proc/Clone()
-	var/datum/dna/new_dna = new()
-	new_dna.unique_enzymes=unique_enzymes
-	new_dna.b_type=b_type
-	new_dna.real_name=real_name
-	new_dna.species=species
-	new_dna.body_markings=body_markings.Copy()
-	new_dna.base_species=base_species
-	new_dna.custom_species=custom_species
-	new_dna.species_traits=species_traits.Copy()
-	new_dna.blood_color=blood_color
-	new_dna.custom_say=custom_say
-	new_dna.custom_ask=custom_ask
-	new_dna.custom_whisper=custom_whisper
-	new_dna.custom_exclaim=custom_exclaim
-	new_dna.s_base=s_base
+/datum/dna/proc/clone()
+	var/datum/dna/cloned = new
+	//! reference accessories, not full clone
+	hair.is_shared_datum = TRUE
+	cloned.hair = hair
+	facial_hair.is_shared_datum = TRUE
+	cloned.facial_hair = facial_hair
+	ears_1.is_shared_datum = TRUE
+	cloned.ears_1 = ears_1
+	ears_2.is_shared_datum = TRUE
+	cloned.ears_2 = ears_2
+	tail.is_shared_datum = TRUE
+	cloned.tail = tail
+	wings.is_shared_datum = TRUE
+	cloned.wings = wings
+	cloned.markings = list()
+	for(var/datum/sprite_accessory_data/D in markings)
+		D.is_shared_datum = TRUE
+		cloned.markings += D
+
+	cloned.unique_enzymes=unique_enzymes
+	cloned.b_type=b_type
+	cloned.real_name=real_name
+	cloned.species=species
+	cloned.base_species=base_species
+	cloned.custom_species=custom_species
+	cloned.species_traits=species_traits.Copy()
+	cloned.blood_color=blood_color
+	cloned.custom_say=custom_say
+	cloned.custom_ask=custom_ask
+	cloned.custom_whisper=custom_whisper
+	cloned.custom_exclaim=custom_exclaim
+	cloned.s_base=s_base
 	for(var/b=1;b<=DNA_SE_LENGTH;b++)
-		new_dna.SE[b]=SE[b]
-		if(b<=DNA_UI_LENGTH)
-			new_dna.UI[b]=UI[b]
-	new_dna.UpdateUI()
-	new_dna.UpdateSE()
-	return new_dna
+		cloned.SE[b]=SE[b]
+	cloned.UpdateUI()
+	cloned.UpdateSE()
+	return cloned
 
 
 //! ## UNIQUE IDENTITY ## !//
@@ -136,12 +160,7 @@ var/global/list/datum/gene/dna_genes[0]
  * Create random UI.
  */
 /datum/dna/proc/ResetUI(defer=0)
-	for(var/i=1,i<=DNA_UI_LENGTH,i++)
-		switch(i)
-			if(DNA_UI_SKIN_TONE)
-				SetUIValueRange(DNA_UI_SKIN_TONE,rand(1,220),220,1) // Otherwise, it gets fucked
-			else
-				UI[i]=rand(0,4095)
+	// todo: actual randomization based on species when
 	if(!defer)
 		UpdateUI()
 
@@ -149,32 +168,7 @@ var/global/list/datum/gene/dna_genes[0]
 /datum/dna/proc/ResetUIFrom(mob/living/carbon/human/character)
 	// INITIALIZE!
 	ResetUI(1)
-	//! Hair
-	// FIXME:  Species-specific defaults pls
-	if(!character.h_style)
-		character.h_style = "Skinhead"
-	var/hair = hair_styles_list.Find(character.h_style)
-
-	//! Facial Hair
-	if(!character.f_style)
-		character.f_style = "Shaved"
-	var/beard	= facial_hair_styles_list.Find(character.f_style)
-
-	//! Demi Ears
-	var/ear_style = 0
-	if(character.ear_style)
-		ear_style = ear_styles_list.Find(character.ear_style.type)
-
-	//! Demi Tails
-	var/tail_style = 0
-	if(character.tail_style)
-		tail_style = tail_styles_list.Find(character.tail_style.type)
-
-	//! Demi Wings
-	var/wing_style = 0
-	if(character.wing_style)
-		wing_style = wing_styles_list.Find(character.wing_style.type)
-
+	gender = character.gender
 	//! Playerscale (This assumes list is sorted big->small)
 	var/size_multiplier = player_sizes_list.len // If fail to find, take smallest
 	for(var/N in player_sizes_list)
@@ -193,72 +187,7 @@ var/global/list/datum/gene/dna_genes[0]
 	src.custom_whisper = character.custom_whisper
 	src.custom_exclaim = character.custom_exclaim
 
-	// +1 to account for the none-of-the-above possibility
-
-	SetUIValueRange(DNA_UI_EAR_STYLE,      ear_style + 1,  ear_styles_list.len  + 1,  1)
-	SetUIValueRange(DNA_UI_TAIL_STYLE,    tail_style + 1,  tail_styles_list.len + 1,  1)
 	SetUIValueRange(DNA_UI_PLAYERSCALE,  size_multiplier,     player_sizes_list.len,  1)
-	SetUIValueRange(DNA_UI_WING_STYLE,    wing_style + 1,  wing_styles_list.len + 1,  1)
-
-	//              DNA BLOCK            VALUE                MAX   MIN
-	SetUIValueRange(DNA_UI_TAIL_R,       character.r_tail,    255,    1)
-	SetUIValueRange(DNA_UI_TAIL_G,       character.g_tail,    255,    1)
-	SetUIValueRange(DNA_UI_TAIL_B,       character.b_tail,    255,    1)
-
-	SetUIValueRange(DNA_UI_TAIL2_R,      character.r_tail2,   255,    1)
-	SetUIValueRange(DNA_UI_TAIL2_G,      character.g_tail2,   255,    1)
-	SetUIValueRange(DNA_UI_TAIL2_B,      character.b_tail2,   255,    1)
-
-	SetUIValueRange(DNA_UI_TAIL3_R,      character.r_tail3,   255,    1)
-	SetUIValueRange(DNA_UI_TAIL3_G,      character.g_tail3,   255,    1)
-	SetUIValueRange(DNA_UI_TAIL3_B,      character.b_tail3,   255,    1)
-
-	SetUIValueRange(DNA_UI_WING_R,       character.r_wing,    255,    1)
-	SetUIValueRange(DNA_UI_WING_G,       character.g_wing,    255,    1)
-	SetUIValueRange(DNA_UI_WING_B,       character.b_wing,    255,    1)
-
-	SetUIValueRange(DNA_UI_WING2_R,      character.r_wing2,   255,    1)
-	SetUIValueRange(DNA_UI_WING2_G,      character.g_wing2,   255,    1)
-	SetUIValueRange(DNA_UI_WING2_B,      character.b_wing2,   255,    1)
-
-	SetUIValueRange(DNA_UI_WING3_R,      character.r_wing3,   255,    1)
-	SetUIValueRange(DNA_UI_WING3_G,      character.g_wing3,   255,    1)
-	SetUIValueRange(DNA_UI_WING3_B,      character.b_wing3,   255,    1)
-
-	SetUIValueRange(DNA_UI_EARS_R,       character.r_ears,    255,    1)
-	SetUIValueRange(DNA_UI_EARS_G,       character.g_ears,    255,    1)
-	SetUIValueRange(DNA_UI_EARS_B,       character.b_ears,    255,    1)
-
-	SetUIValueRange(DNA_UI_EARS2_R,      character.r_ears2,   255,    1)
-	SetUIValueRange(DNA_UI_EARS2_G,      character.g_ears2,   255,    1)
-	SetUIValueRange(DNA_UI_EARS2_B,      character.b_ears2,   255,    1)
-
-	SetUIValueRange(DNA_UI_EARS3_R,      character.r_ears3,   255,    1)
-	SetUIValueRange(DNA_UI_EARS3_G,      character.g_ears3,   255,    1)
-	SetUIValueRange(DNA_UI_EARS3_B,      character.b_ears3,   255,    1)
-
-	SetUIValueRange(DNA_UI_HAIR_R,       character.r_hair,    255,    1)
-	SetUIValueRange(DNA_UI_HAIR_G,       character.g_hair,    255,    1)
-	SetUIValueRange(DNA_UI_HAIR_B,       character.b_hair,    255,    1)
-
-	SetUIValueRange(DNA_UI_BEARD_R,      character.r_facial,  255,    1)
-	SetUIValueRange(DNA_UI_BEARD_G,      character.g_facial,  255,    1)
-	SetUIValueRange(DNA_UI_BEARD_B,      character.b_facial,  255,    1)
-
-	SetUIValueRange(DNA_UI_EYES_R,       character.r_eyes,    255,    1)
-	SetUIValueRange(DNA_UI_EYES_G,       character.g_eyes,    255,    1)
-	SetUIValueRange(DNA_UI_EYES_B,       character.b_eyes,    255,    1)
-
-	SetUIValueRange(DNA_UI_SKIN_R,       character.r_skin,    255,    1)
-	SetUIValueRange(DNA_UI_SKIN_G,       character.g_skin,    255,    1)
-	SetUIValueRange(DNA_UI_SKIN_B,       character.b_skin,    255,    1)
-
-	SetUIValueRange(DNA_UI_SKIN_TONE, 35-character.s_tone,    220,    1) // Value can be negative.
-
-	SetUIState(DNA_UI_GENDER,      character.gender!=MALE,        1)
-
-	SetUIValueRange(DNA_UI_HAIR_STYLE,  hair,  hair_styles_list.len,       1)
-	SetUIValueRange(DNA_UI_BEARD_STYLE, beard, facial_hair_styles_list.len,1)
 
 	body_markings.Cut()
 	//s_base = character.s_base //doesn't work, fuck me

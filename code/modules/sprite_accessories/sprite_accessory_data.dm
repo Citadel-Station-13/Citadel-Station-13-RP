@@ -24,9 +24,26 @@
 	var/request_alt_layer = FALSE
 	/// addons
 	var/list/datum/sprite_accessory_addon/addons
+	//! tracking - are we shared? some things like DNA copy references to us, they need to know if it's safe to modify
+	var/is_shared_datum = FALSE
 
 /datum/sprite_accessory_data/New(datum/sprite_accessory_meta/accessory)
 	src.accessory = accessory
+
+/**
+ * returns a new data of us
+ */
+/datum/sprite_accessory_data/proc/clone()
+	var/datum/sprite_accessory_data/cloned = new(accessory)
+	cloned.emissives_enabled = emissives_enabled
+	cloned.emissives_strength = emissives_strength
+	cloned.color_1 = color_1
+	cloned.color_2 = color_2
+	cloned.color_3 = color_3
+	cloned.color_addon = color_addon
+	cloned.request_alt_layer = request_alt_layer
+	cloned.addons = addons.Copy()
+	cloned.is_shared_datum = FALSE
 
 /**
  * returns either one mutable_appearance, or a list of them to apply, with layers

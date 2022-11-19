@@ -2147,6 +2147,7 @@
 #include "code\modules\dna\dna.dm"
 #include "code\modules\dna\dna2_domutcheck.dm"
 #include "code\modules\dna\dna2_helpers.dm"
+#include "code\modules\dna\setters.dm"
 #include "code\modules\dna\genes\_gene.dm"
 #include "code\modules\dna\genes\disabilities.dm"
 #include "code\modules\dna\genes\powers.dm"
