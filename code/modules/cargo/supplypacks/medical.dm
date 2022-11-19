@@ -83,7 +83,7 @@
 			/obj/item/storage/firstaid/clotting
 			)
 	cost = 100
-	container_type = /obj/structure/closet/crate/secure
+	container_type = /obj/structure/closet/crate/secure/zenghu
 	container_name = "Clotting Medicine crate"
 	access = access_medical
 
