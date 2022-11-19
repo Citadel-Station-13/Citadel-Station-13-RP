@@ -10,7 +10,7 @@
 /// external features like cat ears/tail/etc
 #define SHAPESHIFT_CAPABILITY_MUTANT_PARTS (1<<4)
 /// limbs - without ADMINISTRATOR, this only allows changing robo to robo, organic to organic, etc
-#define SHPAESHIFT_CAPABILITY_LIMBS (1<<5)
+#define SHAPESHIFT_CAPABILITY_LIMBS (1<<5)
 /// allow creating/cloning faux clothing - currently this is *unrestricted* on all /clothing or /item!
 #define SHAPESHIFT_CAPABILITY_CLOTHING (1<<6)
 /// skin color, mutant colors, etc

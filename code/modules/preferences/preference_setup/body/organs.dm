@@ -6,3 +6,5 @@
 	name = "External / Internal Organs"
 
 #warn impl
+
+#warn posibrain/drone/nano option, brain name option

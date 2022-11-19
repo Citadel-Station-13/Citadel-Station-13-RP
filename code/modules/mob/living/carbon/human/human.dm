@@ -5,6 +5,8 @@
  */
 /mob/living/carbon/human/Initialize(mapload, datum/species/specieslike)
 	. = ..()
+	// todo: proper randomization systems for species appearances, right now
+	// todo: everyone spawns as a blank, pale human.
 
 	if(!dna)
 		dna = new /datum/dna(null)
