@@ -3,6 +3,7 @@
 	name = "holder"
 	desc = "You shouldn't ever see this."
 	icon = 'icons/obj/objects.dmi'
+	SET_APPEARANCE_FLAGS(KEEP_TOGETHER | PIXEL_SCALE | TILE_BOUND)
 	slot_flags = SLOT_HEAD | SLOT_HOLSTER
 	show_messages = 1
 	origin_tech = null
@@ -74,6 +75,8 @@
 	MA.appearance = M
 	MA.plane = plane
 	MA.dir = SOUTH
+	icon = M.icon	// legacy
+	icon_state = M.icon_state	// legacy
 	overlays += MA
 	name = M.name
 	desc = M.desc
