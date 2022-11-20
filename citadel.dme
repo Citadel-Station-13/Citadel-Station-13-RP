@@ -2145,6 +2145,7 @@
 #include "code\modules\detectivework\tools\swabs.dm"
 #include "code\modules\detectivework\tools\uvlight.dm"
 #include "code\modules\dna\accessors.dm"
+#include "code\modules\dna\apply.dm"
 #include "code\modules\dna\dna.dm"
 #include "code\modules\dna\dna2_domutcheck.dm"
 #include "code\modules\dna\dna2_helpers.dm"

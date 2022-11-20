@@ -167,40 +167,6 @@ var/global/list/datum/gene/dna_genes[0]
 		UpdateUI()
 
 
-/datum/dna/proc/ResetUIFrom(mob/living/carbon/human/character)
-	// INITIALIZE!
-	ResetUI(1)
-	set_gender(character.gender)
-	//! Playerscale (This assumes list is sorted big->small)
-	var/size_multiplier = player_sizes_list.len // If fail to find, take smallest
-	for(var/N in player_sizes_list)
-		if(character.size_multiplier >= player_sizes_list[N])
-			size_multiplier = player_sizes_list.Find(N)
-			break
-
-	// Technically custom_species is not part of the UI, but this place avoids merge problems.
-	src.custom_species = character.custom_species
-	src.base_species = character.species.base_species
-	src.blood_color = character.species.blood_color
-	src.species_traits = character.species.traits.Copy()
-
-	src.custom_say = character.custom_say
-	src.custom_ask = character.custom_ask
-	src.custom_whisper = character.custom_whisper
-	src.custom_exclaim = character.custom_exclaim
-
-	SetUIValueRange(DNA_UI_PLAYERSCALE,  size_multiplier,     player_sizes_list.len,  1)
-
-	body_markings.Cut()
-	//s_base = character.s_base //doesn't work, fuck me
-	for(var/obj/item/organ/external/E in character.organs)
-		E.s_base = s_base
-		if(E.markings.len)
-			body_markings[E.organ_tag] = E.markings.Copy()
-
-	UpdateUI()
-
-
 /// Set a DNA UI block's raw value.
 /datum/dna/proc/SetUIValue(block, value, defer=0)
 	if (block<=0)
