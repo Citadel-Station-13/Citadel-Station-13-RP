@@ -9,9 +9,7 @@
 	if(!istype(M) || !istype(O))
 		return
 
-	M.r_eyes = O.r_eyes
-	M.g_eyes = O.g_eyes
-	M.b_eyes = O.b_eyes
+	M.dna.set_eye_color(O.dna.get_eye_color())
 	M.update_eyes()
 	M.update_icons_body()
 	if(message)

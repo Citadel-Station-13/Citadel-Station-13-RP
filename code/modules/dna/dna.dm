@@ -51,6 +51,8 @@ var/global/list/datum/gene/dna_genes[0]
 	//! cosmetics - PLEASE use setters, as we aggressively cache these on clone to avoid meomry overhead!
 	/// skin color, or a string corrosponding to skin tone lookup
 	var/skin_color = rgb(238, 206, 179)
+	/// eye color
+	var/eye_color = rgb(50, 50, 50)
 	/// hair
 	VAR_PRIVATE/datum/sprite_accessory_data/hair
 	/// facial hair
@@ -168,7 +170,7 @@ var/global/list/datum/gene/dna_genes[0]
 /datum/dna/proc/ResetUIFrom(mob/living/carbon/human/character)
 	// INITIALIZE!
 	ResetUI(1)
-	gender = character.gender
+	set_gender(character.gender)
 	//! Playerscale (This assumes list is sorted big->small)
 	var/size_multiplier = player_sizes_list.len // If fail to find, take smallest
 	for(var/N in player_sizes_list)

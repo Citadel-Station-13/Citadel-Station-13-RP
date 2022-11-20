@@ -1401,7 +1401,6 @@
 /obj/effect/floor_decal/corner/paleblue/border{
 	dir = 1
 	},
-/obj/machinery/computer/transhuman/designer,
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/resleeving)
 "ace" = (
@@ -3353,9 +3352,6 @@
 	},
 /obj/effect/floor_decal/corner/pink/border{
 	dir = 8
-	},
-/obj/machinery/computer/transhuman/designer{
-	dir = 4
 	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/examroom)

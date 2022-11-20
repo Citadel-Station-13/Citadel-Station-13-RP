@@ -2840,10 +2840,6 @@
 /area/storage/tech)
 "amD" = (
 /obj/structure/table/rack/steel,
-/obj/item/circuitboard/body_designer{
-	pixel_x = -3;
-	pixel_y = 3
-	},
 /obj/item/circuitboard/resleeving_control{
 	pixel_x = -1;
 	pixel_y = 1

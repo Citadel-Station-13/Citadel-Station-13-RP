@@ -137,3 +137,6 @@
 // misc
 #define VV_HK_SPACEVINE_PURGE "spacevine_purge"
 */
+
+// /mob/living/carbon/human
+#define VV_HK_EDIT_APPEARANCE
