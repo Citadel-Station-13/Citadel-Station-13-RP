@@ -1,7 +1,6 @@
 /obj
-
-	layer = OBJ_LAYER
 	plane = OBJ_PLANE
+	layer = OBJ_LAYER
 	pass_flags_self = ATOM_PASS_OVERHEAD_THROW
 	animate_movement = SLIDE_STEPS
 

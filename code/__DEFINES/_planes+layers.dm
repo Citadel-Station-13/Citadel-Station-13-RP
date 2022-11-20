@@ -68,7 +68,7 @@ What is the naming convention for planes or layers?
 //Turf Planes
 // todo: kill these too because frankly, fuck off.
 ///Plating
-#define PLATING_PLANE			-44
+#define PLATING_PLANE			-45
 	///Under objects, even when planeswapped
 	#define DISPOSAL_LAYER		2.1
 	///Under objects, even when planeswapped
@@ -79,22 +79,21 @@ What is the naming convention for planes or layers?
 	#define ATMOS_LAYER			2.4
 	///Above stuff like pipes and wires
 	#define ABOVE_UTILITY		2.5
-///Turfs themselves, most flooring
-#define TURF_PLANE				-45
-	///The 'bottom' of water tiles.
-	#define WATER_FLOOR_LAYER	2.0
-	#define TURF_PLATING_DECAL_LAYER 2.031 // Decal layer for the base of the turf
-	#define TURF_DECAL_LAYER         2.039 // Makes turf decals appear in DM how they will look inworld. // For intentionally placed floor decal overlays.
-	///Anything on this layer will render under the water layer.
-	#define UNDERWATER_LAYER	2.5
-	///Layer for water overlays.
-	#define WATER_LAYER			3.0
-	///Snow and wallmounted/floormounted equipment
-	#define ABOVE_TURF_LAYER	3.1
-// todo: kill all these useless goddamn arbitrary planes and unify things to 3-5 of turf, floor, obj, mob, there is no excuse for this utter charade.
-#define DECAL_PLANE				-44
+
+//! Turfs themselves, most flooring.
+#define TURF_PLANE -44
+#define WATER_FLOOR_LAYER        2.0   // The 'bottom' of water tiles.
+#define TURF_DECAL_LAYER         2.035 // Makes turf decals appear in DM how they will look inworld. // For intentionally placed floor decal overlays.
+#define TURF_OVERLAY_DECAL_LAYER 2.039 // Mostly for decals that are made to blend their tile instead of 'being' the tile.
+#define UNDERWATER_LAYER         2.5   // Anything on this layer will render under the water layer.
+#define CATWALK_LAYER            2.51  // Catwalks are on top of water, but under everything else.
+#define WATER_LAYER              3.0   // Layer for water overlays.
+#define BELOW_OBJ_LAYER          2.9
+#define ABOVE_TURF_LAYER         3.1   // Snow and wallmounted/floormounted equipment.
+
+
 //Obj planes
-#define OBJ_PLANE				-35
+#define OBJ_PLANE -43
 	/// cleanable debris
 	#define DEBRIS_LAYER			2.4
 	///Layer for stairs
@@ -110,7 +109,7 @@ What is the naming convention for planes or layers?
 	#define UNDER_JUNK_LAYER		2.9
 	//Turf/Obj layer boundary
 	///Things that want to be slightly above common objects
-	#define ABOVE_JUNK_LAYER		3.1
+	#define ABOVE_OBJ_LAYER			3.1
 	///Doors when closed
 	#define DOOR_CLOSED_LAYER		3.1
 	///Windows

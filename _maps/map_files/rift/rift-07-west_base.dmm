@@ -238,6 +238,10 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/core)
+"ko" = (
+/obj/effect/turf_decal/tile/brick,
+/turf/simulated/floor/outdoors/lava/indoors,
+/area/rift/surfacebase/outside/west_base)
 "kC" = (
 /obj/effect/turf_decal/techfloor/orange/corner{
 	dir = 4
@@ -9308,7 +9312,7 @@ RE
 RE
 RE
 RE
-RE
+ko
 fd
 fd
 fd

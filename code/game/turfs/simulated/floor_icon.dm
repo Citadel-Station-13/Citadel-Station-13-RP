@@ -5,11 +5,12 @@ GLOBAL_DATUM_INIT(no_ceiling_image, /image, generate_no_ceiling_image())
 	I.plane = PLANE_MESONS
 	return I
 
-/turf/simulated/floor/custom_smooth()
-	return // We'll update_icon().
+// /turf/simulated/floor/custom_smooth(dirs)
+// 	smoothing_junction = dirs
+// 	return // We'll update_icon().
 
-/turf/simulated/floor/calculate_adjacencies()
-	return NONE
+// /turf/simulated/floor/calculate_adjacencies()
+// 	return NONE
 
 GLOBAL_LIST_EMPTY(turf_edge_cache)
 
@@ -22,7 +23,17 @@ var/list/flooring_cache = list()
 		name = flooring.name
 		desc = flooring.desc
 		icon = flooring.icon
+		// plane = TURF_PLANE
 
+		smoothing_groups = flooring.smoothing_groups
+		canSmoothWith    = flooring.canSmoothWith
+
+		//! Begin new smoothing.
+		if(!flooring.uses_legacy_smooth)
+			smoothing_flags  = flooring.smoothing_flags
+			return ..() // RUN WHILE WE STILL CAN! @Zandario
+
+		//! Begin legacy smoothing.
 		if(flooring_override)
 			icon_state = flooring_override
 		else
@@ -80,6 +91,7 @@ var/list/flooring_cache = list()
 		if(is_plating() && !(isnull(broken) && isnull(burnt))) //temp, todo
 			icon = 'icons/turf/flooring/plating.dmi'
 			icon_state = "dmg[rand(1,4)]"
+			// plane = PLATING_PLANE
 
 	// Re-apply floor decals
 	if(LAZYLEN(decals))
@@ -104,7 +116,7 @@ var/list/flooring_cache = list()
  * 3. i can think of a reason but honestly performance is better than some niche case of floor resin creeping onto walls or something, use objs for that.
  */
 /turf/simulated/floor/proc/update_border_spillover()
-	if(!edge_blending_priority)
+	if(!edge_blending_priority || flooring.uses_legacy_smooth)
 		return // Not us.
 	for(var/d in GLOB.cardinal)
 		var/turf/simulated/F = get_step(src, d)

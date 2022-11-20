@@ -2,10 +2,9 @@
 /obj/structure/flora
 	name = "flora"
 	desc = "A perfectly generic plant."
-
+	plane = TURF_PLANE
+	layer = BELOW_OBJ_LAYER
 	anchored = TRUE // Usually, plants don't move. Usually.
-	plane = DECAL_PLANE
-	layer = BELOW_MOB_LAYER
 
 	var/randomize_size = FALSE
 	var/max_x_scale = 1.25

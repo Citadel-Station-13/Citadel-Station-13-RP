@@ -23,7 +23,7 @@
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		if(!user.attempt_insert_item_for_installation(W, loc))
 			return
-		W.layer = ABOVE_JUNK_LAYER
+		W.layer = ABOVE_OBJ_LAYER
 		pinned_target = W
 		to_chat(user, "You slide the target into the stake.")
 	else

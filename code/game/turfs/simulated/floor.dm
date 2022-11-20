@@ -3,10 +3,13 @@
 	desc = "Unfinished flooring."
 	icon = 'icons/turf/flooring/plating.dmi'
 	icon_state = "plating"
-	smoothing_flags = SMOOTH_CUSTOM
 	base_icon_state = "plating"
 	thermal_conductivity = 0.040
 	heat_capacity = 10000
+
+	smoothing_flags = SMOOTH_CUSTOM
+	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_OPEN_FLOOR)
+	canSmoothWith = list()
 
 	// Damage to flooring.
 	var/broken
@@ -16,12 +19,15 @@
 	var/base_name = "plating"
 	var/base_desc = "The naked hull."
 	var/base_icon = 'icons/turf/flooring/plating.dmi'
-	var/static/list/base_footstep_sounds = list("human" = list(
-		'sound/effects/footstep/plating1.ogg',
-		'sound/effects/footstep/plating2.ogg',
-		'sound/effects/footstep/plating3.ogg',
-		'sound/effects/footstep/plating4.ogg',
-		'sound/effects/footstep/plating5.ogg'))
+	var/static/list/base_footstep_sounds = list(
+		"human" = list(
+			'sound/effects/footstep/plating1.ogg',
+			'sound/effects/footstep/plating2.ogg',
+			'sound/effects/footstep/plating3.ogg',
+			'sound/effects/footstep/plating4.ogg',
+			'sound/effects/footstep/plating5.ogg',
+		),
+	)
 
 	var/list/old_decals = null // Remember what decals we had between being pried up and replaced.
 
@@ -83,8 +89,10 @@
 		QUEUE_SMOOTH_NEIGHBORS(src)
 	levelupdate()
 
-//This proc will set floor_type to null and the update_icon() proc will then change the icon_state of the turf
-//This proc auto corrects the grass tiles' siding.
+/**
+ * This proc will set floor_type to null and the update_icon() proc will then change the icon_state of the turf.
+ * This proc auto corrects the grass tiles' siding.
+ */
 /turf/simulated/floor/proc/make_plating(place_product, defer_icon_update, strip_bare)
 
 	if(flooring)

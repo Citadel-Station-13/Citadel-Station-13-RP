@@ -8,12 +8,12 @@
 	/// Option flags for element behaviour
 	var/element_flags = NONE
 	/**
-	  * The index of the first attach argument to consider for duplicate elements
-	  *
-	  * Is only used when flags contains [ELEMENT_BESPOKE]
-	  *
-	  * This is infinity so you must explicitly set this
-	  */
+	 * The index of the first attach argument to consider for duplicate elements
+	 *
+	 * Is only used when flags contains [ELEMENT_BESPOKE]
+	 *
+	 * This is infinity so you must explicitly set this
+	 */
 	var/id_arg_index = INFINITY
 
 /// Activates the functionality defined by the element on the given target datum
@@ -43,7 +43,7 @@
 	SSdcs.elements_by_type -= type
 	return ..()
 
-//DATUM PROCS
+//! DATUM PROCS
 
 /// Finds the singleton for the element type given and attaches it to src
 /datum/proc/_AddElement(list/arguments)

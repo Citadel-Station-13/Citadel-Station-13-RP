@@ -1,10 +1,8 @@
 /obj/effect/turf_decal
 	icon = 'icons/turf/flooring/decals.dmi'
-	plane = DECAL_PLANE //TODO: Plane unification. @Zandario
+	plane = TURF_PLANE
 	layer = TURF_DECAL_LAYER
 	anchored = TRUE
-
-	var/supplied_dir
 
 /**
  * This is with the intent of optimizing mapload.

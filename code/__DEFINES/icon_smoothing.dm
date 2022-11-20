@@ -71,13 +71,20 @@ DEFINE_BITFIELD(smoothing_junction, list(
 #define S_TURF(num) ((24 * 0) + num)
 /* /turf only */
 
-// empty for now
+#define SMOOTH_GROUP_TURF_OPEN S_TURF(0)
+
+#define SMOOTH_GROUP_OPEN_FLOOR S_TURF(4) // /turf/simulated/floor
+
+#define SMOOTH_GROUP_CLOSED_TURFS S_TURF(50)
+
 ///Always match this value with the one above it.
-#define MAX_S_TURF S_TURF(0)
+#define MAX_S_TURF SMOOTH_GROUP_CLOSED_TURFS
 #define S_OBJ(num) (MAX_S_TURF + 1 + num)
 /* /obj included */
 
 ///obj/structure/sandbag
 #define SMOOTH_GROUP_SANDBAGS S_OBJ(0)
+
+
 ///Always match this value with the one above it.
 #define MAX_S_OBJ SMOOTH_GROUP_SANDBAGS

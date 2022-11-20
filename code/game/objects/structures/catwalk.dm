@@ -2,8 +2,8 @@
 /obj/structure/catwalk
 	name = "catwalk"
 	desc = "Cats really don't like these things."
-	plane = DECAL_PLANE
-	layer = ABOVE_UTILITY
+	plane = TURF_PLANE
+	layer = CATWALK_LAYER
 	icon = 'icons/turf/catwalks.dmi'
 	icon_state = "catwalk"
 	density = FALSE
@@ -124,11 +124,12 @@
 	name = "plated catwalk spawner"
 	icon = 'icons/turf/catwalks.dmi'
 	icon_state = "catwalk_plated"
-	density = 1
-	anchored = 1.0
+	density = TRUE
+	anchored = TRUE
+	plane = TURF_PLANE
+	layer = CATWALK_LAYER
+
 	var/activated = FALSE
-	plane = DECAL_PLANE
-	layer = ABOVE_UTILITY
 	var/tile = /obj/item/stack/tile/floor
 	var/platecolor = "#858a8f"
 
@@ -178,12 +179,12 @@
 /obj/structure/catwalk/plank
 	name = "plank bridge"
 	desc = "Some flimsy wooden planks, generally set across a hazardous area."
-	plane = DECAL_PLANE
-	layer = ABOVE_UTILITY
 	icon = 'icons/turf/catwalks.dmi'
 	icon_state = "plank"
-	density = 0
-	anchored = 1.0
+	plane = TURF_PLANE
+	layer = CATWALK_LAYER
+	density = FALSE
+	anchored = TRUE
 
 /obj/structure/catwalk/plank/Crossed()
 	. = ..()
@@ -214,4 +215,3 @@
 		icon_state = "[initial(icon_state)]_rickety"
 	if(health < 25)
 		icon_state = "[initial(icon_state)]_dangerous"
-

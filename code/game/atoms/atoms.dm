@@ -6,6 +6,8 @@
  */
 /atom
 	layer = TURF_LAYER
+	appearance_flags = TILE_BOUND | LONG_GLIDE
+
 	var/level = 2
 
 	/// Used for changing icon states for different base sprites.
