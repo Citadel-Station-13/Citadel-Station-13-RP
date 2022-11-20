@@ -486,7 +486,7 @@
 /turf/simulated/floor/tiled/asteroid_steel/airless,
 /area/debrisfield/derelict)
 "cf" = (
-/obj/machinery/dna_scannernew,
+/obj/machinery/dna_scanner,
 /turf/simulated/floor/tiled/white/airless,
 /area/debrisfield/derelict)
 "cg" = (

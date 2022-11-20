@@ -5,7 +5,7 @@
 	light_color = "#315ab4"
 	circuit = /obj/item/circuitboard/cloning
 	req_access = list(access_heads) //Only used for record deletion right now.
-	var/obj/machinery/dna_scannernew/scanner = null //Linked scanner. For scanning.
+	var/obj/machinery/dna_scanner/scanner = null //Linked scanner. For scanning.
 	var/list/pods = list() //Linked cloning pods.
 	var/temp = ""
 	var/scantemp = "Scanner unoccupied"
@@ -30,18 +30,18 @@
 	findcloner()
 
 /obj/machinery/computer/cloning/proc/findscanner()
-	var/obj/machinery/dna_scannernew/scannerf = null
+	var/obj/machinery/dna_scanner/scannerf = null
 
 	//Try to find scanner on adjacent tiles first
 	for(dir in list(NORTH,EAST,SOUTH,WEST))
-		scannerf = locate(/obj/machinery/dna_scannernew, get_step(src, dir))
+		scannerf = locate(/obj/machinery/dna_scanner, get_step(src, dir))
 		if (scannerf)
 			return scannerf
 
 	//Then look for a free one in the area
 	if(!scannerf)
 		var/area/A = get_area(src)
-		for(var/obj/machinery/dna_scannernew/S in A.get_contents())
+		for(var/obj/machinery/dna_scanner/S in A.get_contents())
 			return S
 
 	return

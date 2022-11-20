@@ -251,7 +251,7 @@
 /turf/simulated/floor/snow/snow2,
 /area/awaymission/snow_outpost/outside/nospawn)
 "aU" = (
-/obj/machinery/dna_scannernew,
+/obj/machinery/dna_scanner,
 /turf/simulated/floor/tiled/white,
 /area/awaymission/snow_outpost/powered)
 "aV" = (

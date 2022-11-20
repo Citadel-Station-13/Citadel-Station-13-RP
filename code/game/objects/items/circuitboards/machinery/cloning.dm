@@ -16,7 +16,7 @@
 
 /obj/item/circuitboard/clonescanner
 	name = T_BOARD("cloning scanner")
-	build_path = /obj/machinery/dna_scannernew
+	build_path = /obj/machinery/dna_scanner
 	board_type = new /datum/frame/frame_types/machine
 	origin_tech = list(TECH_DATA = 2, TECH_BIO = 2)
 	req_components = list(

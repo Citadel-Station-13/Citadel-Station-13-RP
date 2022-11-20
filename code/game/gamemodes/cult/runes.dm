@@ -825,7 +825,7 @@ var/list/sacrificed = list()
 			istype(cultist.wear_mask, /obj/item/clothing/mask/muzzle) || \
 			(istype(cultist.loc, /obj/structure/closet)&&cultist.loc:welded) || \
 			(istype(cultist.loc, /obj/structure/closet/secure_closet)&&cultist.loc:locked) || \
-			(istype(cultist.loc, /obj/machinery/dna_scannernew)&&cultist.loc:locked) \
+			(istype(cultist.loc, /obj/machinery/dna_scanner)&&cultist.loc:locked) \
 		))
 			to_chat(user, "<span class='warning'>The [cultist] is already free.</span>")
 			return
@@ -841,8 +841,8 @@ var/list/sacrificed = list()
 				var/obj/structure/closet/secure_closet/SC = cultist.loc
 				SC.locked = FALSE
 			C.update_appearance()
-		if(istype(cultist.loc, /obj/machinery/dna_scannernew))
-			var/obj/machinery/dna_scannernew/S = cultist.loc
+		if(istype(cultist.loc, /obj/machinery/dna_scanner))
+			var/obj/machinery/dna_scanner/S = cultist.loc
 			S.locked = FALSE
 			S.update_appearance()
 		for(var/mob/living/carbon/C in users)

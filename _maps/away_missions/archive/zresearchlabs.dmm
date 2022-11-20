@@ -514,7 +514,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "cd" = (
-/obj/machinery/dna_scannernew,
+/obj/machinery/dna_scanner,
 /turf/simulated/floor{
 	dir = 5
 	},
@@ -537,7 +537,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "cg" = (
-/obj/machinery/computer/scan_consolenew,
+/obj/machinery/computer/dna_modifier,
 /turf/simulated/floor{
 	dir = 5
 	},
@@ -559,7 +559,7 @@
 	},
 /area/awaymission/labs/researchdivision)
 "ck" = (
-/obj/machinery/dna_scannernew,
+/obj/machinery/dna_scanner,
 /obj/machinery/light{
 	dir = 4
 	},

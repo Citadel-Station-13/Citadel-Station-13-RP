@@ -651,7 +651,7 @@
 /turf/simulated/floor/tiled/white,
 /area/submap/debrisfield_vr/derelict/interior)
 "cj" = (
-/obj/machinery/dna_scannernew,
+/obj/machinery/dna_scanner,
 /turf/simulated/floor/tiled/white,
 /area/submap/debrisfield_vr/derelict/interior)
 "ck" = (

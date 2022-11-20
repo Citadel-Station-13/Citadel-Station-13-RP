@@ -32,7 +32,7 @@
 		/obj/structure/sink,
 		/obj/item/storage,
 		/obj/machinery/atmospherics/component/unary/cryo_cell,
-		/obj/machinery/dna_scannernew,
+		/obj/machinery/dna_scanner,
 		/obj/item/grenade/chem_grenade,
 		/mob/living/bot/medibot,
 		/obj/item/storage/secure/safe,

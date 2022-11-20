@@ -520,7 +520,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "lk" = (
-/obj/machinery/dna_scannernew,
+/obj/machinery/dna_scanner,
 /obj/effect/floor_decal/corner/purple/border{
 	dir = 8
 	},

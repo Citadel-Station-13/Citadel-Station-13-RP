@@ -377,7 +377,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "cf" = (
-/obj/machinery/dna_scannernew,
+/obj/machinery/dna_scanner,
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "cg" = (
@@ -461,7 +461,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "ct" = (
-/obj/machinery/computer/scan_consolenew,
+/obj/machinery/computer/dna_modifier,
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "cu" = (

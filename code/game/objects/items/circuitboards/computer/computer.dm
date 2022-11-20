@@ -27,7 +27,7 @@
 
 /obj/item/circuitboard/scan_consolenew
 	name = T_BOARD("DNA machine")
-	build_path = /obj/machinery/computer/scan_consolenew
+	build_path = /obj/machinery/computer/dna_modifier
 	origin_tech = list(TECH_DATA = 2, TECH_BIO = 2)
 
 /obj/item/circuitboard/communications
