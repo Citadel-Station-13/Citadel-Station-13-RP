@@ -171,6 +171,16 @@
 	attempting = 0
 	return 1
 
+//Used for new human mobs created by cloning/goleming/etc.
+/mob/living/carbon/human/proc/set_cloned_appearance()
+	dna.set_sprite_accessory_facial_hair(/datum/sprite_accessory_meta/facial_hair/shaved)
+
+	f_style = "Shaved"
+	if(dna.species == SPECIES_HUMAN) //no more xenos losing ears/tentacles
+		h_style = pick("Bedhead", "Bedhead 2", "Bedhead 3")
+	all_underwear.Cut()
+	regenerate_icons()
+
 /// Grow clones to maturity then kick them out.  FREELOADERS
 /obj/machinery/clonepod/process(delta_time)
 	if(machine_stat & NOPOWER) // Autoeject if power is lost

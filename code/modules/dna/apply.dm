@@ -3,6 +3,7 @@
  */
 /datum/dna/proc/copy_from_mob(mob/living/carbon/human/template)
 	#warn impl
+	#warn make sure hair/whatnot gets set to something!!
 
 /*
 

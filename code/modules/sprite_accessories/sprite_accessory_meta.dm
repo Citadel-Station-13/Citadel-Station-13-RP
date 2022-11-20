@@ -6,7 +6,23 @@ GLOBAL_LIST_INIT(sprite_accessories, init_sprite_accessories())
 		if(initial(sprite.abstract_type) == path)
 			continue
 		sprite = new path
+		if(!sprite.id)
+			stack_trace("no id on accessory [path]")
+			continue
+		if(.[sprite.id])
+			stack_trace("collision on accessory [path], id [id] with [.[sprite.id]].")
+			continue
 		.[sprite.id] = sprite
+
+/proc/resolve_sprite_accessory(datum/sprite_accessory_meta/id_path_datum)
+	if(istype(id_path_datum))
+		return id_path_datum
+	if(istext(id_path_datum))
+		return GLOB.sprite_accessories[id_path_datum]
+	if(ispath(id_path_datum))
+		var/datum/sprite_accessory_meta/M = id_path_datum
+		return GLOB.sprite_accessories[initial(M.id)]
+	CRASH("what?")
 
 /datum/sprite_accessory_meta
 	//! intrinsics

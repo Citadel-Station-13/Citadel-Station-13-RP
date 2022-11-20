@@ -23,8 +23,14 @@
  * sets hair to new datum
  */
 /datum/dna/proc/set_sprite_accessory_hair(datum/sprite_accessory_data/D)
+	if(!istype(D))
+		var/datum/sprite_accessory_meta/M = resolve_sprite_accessory(D)
+		if(!istype(M, /datum/sprite_accessory_meta/hair))
+			CRASH("invalid resolution")
+		D = new(M)
+	#warn carry through color from old hair datum for above
+	#warn do the same for every other setter
 	hair = D
-#warn add id resolution to ALL of these setters
 
 /**
  * gets facial_hair for reading
@@ -46,6 +52,7 @@
  * sets facial_hair to new datum
  */
 /datum/dna/proc/set_sprite_accessory_facial_hair(datum/sprite_accessory_data/D)
+	D = resolve_sprite_accessory(D)
 	facial_hair = D
 
 /**
@@ -68,6 +75,7 @@
  * sets ears_1 to new datum
  */
 /datum/dna/proc/set_sprite_accessory_ears_1(datum/sprite_accessory_data/D)
+	D = resolve_sprite_accessory(D)
 	ears_1 = D
 
 /**
@@ -90,6 +98,7 @@
  * sets ears_2 to new datum
  */
 /datum/dna/proc/set_sprite_accessory_ears_2(datum/sprite_accessory_data/D)
+	D = resolve_sprite_accessory(D)
 	ears_2 = D
 
 /**
@@ -112,6 +121,7 @@
  * sets tail to new datum
  */
 /datum/dna/proc/set_sprite_accessory_tail(datum/sprite_accessory_data/D)
+	D = resolve_sprite_accessory(D)
 	tail = D
 
 /**
@@ -134,6 +144,7 @@
  * sets wings to new datum
  */
 /datum/dna/proc/set_sprite_accessory_wings(datum/sprite_accessory_data/D)
+	D = resolve_sprite_accessory(D)
 	wings = D
 
 /**
@@ -158,6 +169,7 @@
  * adds a marking
  */
 /datum/dna/proc/add_marking(datum/sprite_accessory_data/D)
+	D = resolve_sprite_accessory(D)
 	#warn impl
 
 /**
@@ -171,6 +183,7 @@
  */
 /datum/dna/proc/set_markings(list/datum/sprite_accessory_data/D)
 	#warn impl
+	#warn allow ids in list with resolve_sprite_accessory
 
 /**
  * directly clones markings from another DNA

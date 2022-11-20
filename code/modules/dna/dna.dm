@@ -69,6 +69,9 @@
 
 	var/s_base = ""
 
+/datum/dna/New()
+	#warn init defaults somehow
+
 #warn vv edit var to allow editing things via id for sprite accessories!
 
 /**
