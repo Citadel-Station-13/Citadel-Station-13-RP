@@ -55,8 +55,8 @@ export const SpeciesPicker = (props, context) => {
   categories.sort();
   const hasWhitelist = (s: Species) => (
     (whitelisted.findIndex((str) => str === s.id) !== -1)
-    && !!data.admin
   );
+  const hasAdminWhitelist = !!data.admin;
   const isWhitelisted = (s: Species) => (
     (s.spawn_flags & SpeciesSpawnFlags.Whitelisted)
   );
@@ -134,15 +134,21 @@ export const SpeciesPicker = (props, context) => {
                           <NoticeBox success textAlign="center">
                             You have the whitelist to play this species.
                           </NoticeBox>
-                        )
-                        : (
+                        ) : (hasAdminWhitelist? (
+                          <NoticeBox success textAlign="center">
+                            You have administrative override for this species whitelist.
+                            Please play responsibly.
+                          </NoticeBox>
+                        ) : (
                           <NoticeBox warning textAlign="center">
                             This is a whitelisted species.
                             You can select it, but cannot join the game with it without a whitelist.
                           </NoticeBox>
+                        )
                         ))}
                       <Button color="transparent"
                         textAlign="center"
+                        width="100% "
                         onClick={() => act('pick', { id: selected?.id })}
                       >
                         Select

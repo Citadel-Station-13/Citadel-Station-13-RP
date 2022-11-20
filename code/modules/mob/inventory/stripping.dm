@@ -271,9 +271,14 @@
 		// no ghost fuckery
 		return FALSE
 	if(user.incapacitated())
+		to_chat(user, SPAN_WARNING("You are incapacitated!"))
 		close_strip_menu(user)
 		return FALSE
+	if(user.restrained())
+		to_chat(user, SPAN_WARNING("You are restrained!"))
+		return FALSE
 	if(!user.Adjacent(src))
+		to_chat(user, SPAN_WARNING("You are too far away!"))
 		close_strip_menu(user)
 		return FALSE
 	return TRUE

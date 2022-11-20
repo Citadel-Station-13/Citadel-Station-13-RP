@@ -3,7 +3,6 @@
 	#include "tether_defines.dm"
 	#include "tether_turfs.dm"
 	#include "tether_things.dm"
-	#include "tether_areas.dm"
 	#include "tether_shuttle_defs.dm"
 	#include "tether_shuttles.dm"
 	#include "tether_telecomms.dm"
