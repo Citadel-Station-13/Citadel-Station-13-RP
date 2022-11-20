@@ -1162,3 +1162,5 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	ret.color = color
 	ret.appearance_flags = (PIXEL_SCALE) | flags
 	return ret
+
+//! sprite accessories
