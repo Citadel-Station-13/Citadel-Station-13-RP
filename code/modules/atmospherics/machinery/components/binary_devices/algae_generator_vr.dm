@@ -293,7 +293,7 @@
 	shard_type = SHARD_SPLINTER
 	weight = 5
 	hardness = 20
-	icon_base = "stone"
+	base_icon_state = "stone"
 	icon_reinf = "reinf_stone"
 	icon_reinf_directionals = TRUE
 	door_icon_base = "stone"

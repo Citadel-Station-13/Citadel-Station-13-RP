@@ -85,7 +85,6 @@
 	set_density(0)
 	update_visuals()
 	update_nearby_tiles() //Force ZAS update
-	update_explosion_resistance()
 
 // Regenerates this shield segment.
 /obj/effect/shield/proc/regenerate()
@@ -99,7 +98,6 @@
 		set_density(1)
 		update_visuals()
 		update_nearby_tiles() //Force ZAS update
-		update_explosion_resistance()
 		gen.damaged_segments -= src
 
 /obj/effect/shield/proc/diffuse(var/duration)
@@ -114,7 +112,6 @@
 	set_density(0)
 	update_visuals()
 	update_nearby_tiles() //Force ZAS update
-	update_explosion_resistance()
 
 /obj/effect/shield/attack_generic(var/source, var/damage, var/emote)
 	take_damage(damage, SHIELD_DAMTYPE_PHYSICAL)
@@ -287,13 +284,6 @@
 	// Update airflow - If atmospheric we block air as long as we're enabled (density works for this)
 	set_can_atmos_pass(gen.check_flag(MODEFLAG_ATMOSPHERIC) ? ATMOS_PASS_DENSITY : ATMOS_PASS_NOT_BLOCKED)
 	update_visuals()
-	update_explosion_resistance()
-
-/obj/effect/shield/proc/update_explosion_resistance()
-	if(gen && gen.check_flag(MODEFLAG_HYPERKINETIC))
-		explosion_resistance = INFINITY
-	else
-		explosion_resistance = 0
 
 //
 // Visual effect of shield taking impact

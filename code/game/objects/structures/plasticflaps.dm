@@ -7,7 +7,6 @@
 	anchored = 1
 	layer = MOB_LAYER
 	plane = MOB_PLANE
-	explosion_resistance = 5
 	var/can_pass_lying = TRUE
 	var/list/mobs_can_pass = list(
 		/mob/living/bot,

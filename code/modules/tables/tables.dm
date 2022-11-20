@@ -366,7 +366,7 @@ var/list/table_icon_cache = list()
 		// Standard table image
 		if(material)
 			for(var/i = 1 to 4)
-				var/image/I = get_table_image(icon, "[material.icon_base]_[connections[i]]", 1<<(i-1), material.icon_colour, 255 * material.opacity)
+				var/image/I = get_table_image(icon, "[material.base_icon_state]_[connections[i]]", 1<<(i-1), material.icon_colour, 255 * material.opacity)
 				overlays += I
 
 		// Reinforcements
@@ -398,7 +398,7 @@ var/list/table_icon_cache = list()
 
 		icon_state = "flip[type]"
 		if(material)
-			var/image/I = image(icon, "[material.icon_base]_flip[type]")
+			var/image/I = image(icon, "[material.base_icon_state]_flip[type]")
 			I.color = material.icon_colour
 			I.alpha = 255 * material.opacity
 			overlays += I

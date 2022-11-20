@@ -8,7 +8,6 @@
 	pass_flags_self = ATOM_PASS_GRILLE
 	pressure_resistance = 5*ONE_ATMOSPHERE
 	layer = TABLE_LAYER
-	explosion_resistance = 1
 	var/health = 10
 	var/destroyed = 0
 

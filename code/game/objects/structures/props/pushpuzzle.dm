@@ -4,8 +4,7 @@
 	name = "perfectly smooth glass pillar"
 	desc = "A pillar made of a strange glass tough looking glass. You can't seem to pull it no matter how hard you try, though perhaps you could push?"
 	icon_state = "puzzle-glass"
-	explosion_resistance = 100
-	anchored = 0
+	anchored = FALSE
 	max_health = 9999999
 	health = 9999999
 
@@ -54,4 +53,3 @@
 	desc = "A sturdy metal pillar that is smooth all around. You can't seem to get a grip on it."
 	icon_state = "puzzle-block"
 	opacity = 1
-

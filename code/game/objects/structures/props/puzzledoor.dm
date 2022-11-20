@@ -9,8 +9,6 @@
 	icon_state_closing = "pdoorc1"
 	icon_state = "pdoor1"
 
-	explosion_resistance = 100
-
 	maxhealth = 9999999 //No.
 
 	var/list/locks = list()

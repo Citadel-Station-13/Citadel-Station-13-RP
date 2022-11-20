@@ -581,16 +581,17 @@
 /obj/machinery/power/rtg/abductor
 	name = "Void Core"
 	icon_state = "core-nocell"
+	base_icon_state = "core"
 	desc = "An alien power source that produces energy seemingly out of nowhere."
 	circuit = /obj/item/circuitboard/machine/abductor/core
 	power_gen = 10
 	irradiate = FALSE // Green energy!
 	buckle_allowed = FALSE
 	pixel_y = 7
+
 	var/going_kaboom = FALSE // Is it about to explode?
 	var/obj/item/cell/device/weapon/recharge/alien
 
-	var/icon_base = "core"
 	var/state_change = TRUE
 
 /obj/machinery/power/rtg/abductor/RefreshParts()
@@ -646,11 +647,11 @@
 
 	if(alien)
 		if(panel_open)
-			icon_state = "[icon_base]-open"
+			icon_state = "[base_icon_state]-open"
 		else
-			icon_state = "[icon_base]"
+			icon_state = "[base_icon_state]"
 	else
-		icon_state = "[icon_base]-nocell"
+		icon_state = "[base_icon_state]-nocell"
 
 	state_change = FALSE
 
@@ -682,7 +683,7 @@
 // Bloo version
 /obj/machinery/power/rtg/abductor/hybrid
 	icon_state = "coreb-nocell"
-	icon_base = "coreb"
+	base_icon_state = "coreb"
 	circuit = /obj/item/circuitboard/machine/abductor/core/hybrid
 
 /obj/machinery/power/rtg/abductor/hybrid/built

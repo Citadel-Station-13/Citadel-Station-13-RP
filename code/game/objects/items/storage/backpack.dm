@@ -584,7 +584,7 @@
 	icon_override = 'icons/mob/clothing/back_taur.dmi'
 	item_state = "saddlebag"
 	icon_state = "saddlebag"
-	var/icon_base = "saddlebag"
+	base_icon_state = "saddlebag"
 	max_storage_space = INVENTORY_DUFFLEBAG_SPACE //Saddlebags can hold more, like dufflebags
 	slowdown = 1 //And are slower, too...Unless you're a macro, that is.
 	var/no_message = "You aren't the appropriate taur type to wear this!"
@@ -596,56 +596,56 @@
 	var/mob/living/carbon/human/H
 	var/datum/sprite_accessory/tail/taur/TT = H.tail_style
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/horse))
-		item_state = "[icon_base]_Horse"
+		item_state = "[base_icon_state]_Horse"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/wolf))
-		item_state = "[icon_base]_Wolf"
+		item_state = "[base_icon_state]_Wolf"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/cow))
-		item_state = "[icon_base]_Cow"
+		item_state = "[base_icon_state]_Cow"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/lizard))
-		item_state = "[icon_base]_Lizard"
+		item_state = "[base_icon_state]_Lizard"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/feline))
-		item_state = "[icon_base]_Feline"
+		item_state = "[base_icon_state]_Feline"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/drake))
-		item_state = "[icon_base]_Drake"
+		item_state = "[base_icon_state]_Drake"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/otie))
-		item_state = "[icon_base]_Otie"
+		item_state = "[base_icon_state]_Otie"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
 			slowdown = initial(slowdown)
 		return 1
 	if(istype(H) && istype(TT, /datum/sprite_accessory/tail/taur/deer))
-		item_state = "[icon_base]_Deer"
+		item_state = "[base_icon_state]_Deer"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
@@ -662,7 +662,7 @@
 	icon_override = 'icons/mob/clothing/back_taur.dmi'
 	item_state = "robustsaddle"
 	icon_state = "robustsaddle"
-	icon_base = "robustsaddle"
+	base_icon_state = "robustsaddle"
 
 /obj/item/storage/backpack/saddlebag_common/vest //Shared bag for other taurs with sturdy backs
 	name = "Taur Duty Vest"
@@ -671,7 +671,7 @@
 	icon_override = 'icons/mob/clothing/back_taur.dmi'
 	item_state = "taurvest"
 	icon_state = "taurvest"
-	icon_base = "taurvest"
+	base_icon_state = "taurvest"
 	max_storage_space = INVENTORY_STANDARD_SPACE
 	slowdown = 0
 

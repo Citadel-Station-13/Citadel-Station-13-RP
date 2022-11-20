@@ -25,7 +25,7 @@
 	var/turf/simulated/wall/T = get_step(src, direction)
 	if(!T)
 		return NULLTURF_BORDER
-	return (istype(T) && (material.icon_base == T.material?.icon_base))? ADJ_FOUND : NO_ADJ_FOUND
+	return (istype(T) && (material.base_icon_state == T.material?.base_icon_state))? ADJ_FOUND : NO_ADJ_FOUND
 
 /turf/simulated/wall/custom_smooth(dirs)
 	smoothing_junction = dirs
@@ -43,7 +43,7 @@
 	// handle fakewalls
 	// TODO: MAKE FAKEWALLS NOT TURFS WTF
 	if(!density)
-		I = image('icons/turf/wall_masks.dmi', "[material.icon_base]fwall_open")
+		I = image('icons/turf/wall_masks.dmi', "[material.base_icon_state]fwall_open")
 		I.color = material.icon_colour
 		add_overlay(I)
 		return ..()
@@ -64,7 +64,7 @@
 			for(var/i in 0 to 3)
 				state = get_corner_state_using_junctions(i)
 				dir = (1<<i)
-				I = image('icons/turf/wall_masks.dmi', "[material.icon_base][state]", dir = dir)
+				I = image('icons/turf/wall_masks.dmi', "[material.base_icon_state][state]", dir = dir)
 				I.color = material.icon_colour
 				add_overlay(I)
 				I = image('icons/turf/wall_masks.dmi', "[reinf_material.icon_reinf][state]", dir = dir)
@@ -72,7 +72,7 @@
 				add_overlay(I)
 		else
 			for(var/i in 0 to 3)
-				I = image('icons/turf/wall_masks.dmi', "[material.icon_base][get_corner_state_using_junctions(i)]", dir = (1<<i))
+				I = image('icons/turf/wall_masks.dmi', "[material.base_icon_state][get_corner_state_using_junctions(i)]", dir = (1<<i))
 				I.color = material.icon_colour
 				add_overlay(I)
 		I = image('icons/turf/wall_masks.dmi', reinf_material.icon_reinf)
@@ -81,7 +81,7 @@
 	else
 		// just normal
 		for(var/i in 0 to 3)
-			I = image('icons/turf/wall_masks.dmi', "[material.icon_base][get_corner_state_using_junctions(i)]", dir = (1<<i))
+			I = image('icons/turf/wall_masks.dmi', "[material.base_icon_state][get_corner_state_using_junctions(i)]", dir = (1<<i))
 			I.color = material.icon_colour
 			add_overlay(I)
 

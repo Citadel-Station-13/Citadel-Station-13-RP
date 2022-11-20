@@ -38,7 +38,6 @@
 
 /turf/simulated/wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
 	. = ..()
-	icon_state = "blank"
 	if(!materialtype)
 		materialtype = MAT_STEEL
 	material = get_material_by_name(materialtype)
@@ -217,8 +216,9 @@
 /turf/simulated/wall/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
-			if(girder_material.explosion_resistance >= 25 && prob(girder_material.explosion_resistance))
-				new /obj/structure/girder/displaced(src, girder_material.name)
+			//TODO: New displaced trigger. @Zandario
+			// if(girder_material.explosion_resistance >= 25 && prob(girder_material.explosion_resistance))
+			// 	new /obj/structure/girder/displaced(src, girder_material.name)
 			ScrapeAway()
 		if(2.0)
 			if(prob(75))

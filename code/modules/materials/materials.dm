@@ -1,45 +1,49 @@
-/*
-	MATERIAL DATUMS
-	This data is used by various parts of the game for basic physical properties and behaviors
-	of the metals/materials used for constructing many objects. Each var is commented and should be pretty
-	self-explanatory but the various object types may have their own documentation. ~Z
+//TODO: Redesign this system to be more efficient and able to support new smoothing generation. @Zandario
+/**
+ *! MATERIAL DATUMS
+ *? This data is used by various parts of the game for basic physical properties and behaviors
+ *? of the metals/materials used for constructing many objects. Each var is commented and should be pretty
+ *? self-explanatory but the various object types may have their own documentation. ~Z
+ *
+ *? PATHS THAT USE DATUMS
+ *     turf/simulated/wall
+ *     obj/item/material
+ *     obj/structure/barricade
+ *     obj/item/stack/material
+ *     obj/structure/table
+ *
+ *! VALID ICONS
+ *
+ * *   WALLS
+ *         stone
+ *         metal
+ *         solid
+ *         resin
+ *         ONLY WALLS
+ *             cult
+ *             hull
+ *             curvy
+ *             jaggy
+ *             brick
+ *             REINFORCEMENT
+ *                 reinf_over
+ *                 reinf_mesh
+ *                 reinf_cult
+ *                 reinf_metal
+ * *   DOORS
+ *         stone
+ *         metal
+ *         resin
+ *         wood
+ */
 
-	PATHS THAT USE DATUMS
-		turf/simulated/wall
-		obj/item/material
-		obj/structure/barricade
-		obj/item/stack/material
-		obj/structure/table
-
-	VALID ICONS
-		WALLS
-			stone
-			metal
-			solid
-			resin
-			ONLY WALLS
-				cult
-				hull
-				curvy
-				jaggy
-				brick
-				REINFORCEMENT
-					reinf_over
-					reinf_mesh
-					reinf_cult
-					reinf_metal
-		DOORS
-			stone
-			metal
-			resin
-			wood
-*/
-
-// Assoc list containing all material datums indexed by name.
+/// Assoc list containing all material datums indexed by name.
 var/list/name_to_material
 
-//Returns the material the object is made of, if applicable.
-//Will we ever need to return more than one value here? Or should we just return the "dominant" material.
+/**
+ * Returns the material the object is made of, if applicable.
+ * Will we ever need to return more than one value here? Or should we just return the "dominant" material.
+ */
 /obj/proc/get_material()
 	return null
 
@@ -60,7 +64,7 @@ var/list/name_to_material
 		name_to_material[lowertext(new_mineral.name)] = new_mineral
 	return 1
 
-// Safety proc to make sure the material list exists before trying to grab from it.
+/// Safety proc to make sure the material list exists before trying to grab from it.
 /proc/get_material_by_name(name)
 	if(!name_to_material)
 		populate_material_list()
@@ -74,67 +78,96 @@ var/list/name_to_material
 
 // Material definition and procs follow.
 /datum/material
-	var/name	                          // Unique name for use in indexing the list.
-	var/display_name                      // Prettier name for display.
+	/// Unique name for use in indexing the list.
+	var/name
+	/// Prettier name for display.
+	var/display_name
 	var/use_name
-	var/flags = 0                         // Various status modifiers.
+	/// Various status modifiers.
+	var/flags = 0
 	var/sheet_singular_name = "sheet"
 	var/sheet_plural_name = "sheets"
 	var/is_fusion_fuel
 
-	// Shards/tables/structures
-	var/shard_type = SHARD_SHRAPNEL       // Path of debris object.
-	var/shard_icon                        // Related to above.
-	var/shard_can_repair = 1              // Can shards be turned into sheets with a welder?
-	var/list/recipes                      // Holder for all recipes usable with a sheet of this material.
-	var/destruction_desc = "breaks apart" // Fancy string for barricades/tables/objects exploding.
+	//! Shards/tables/structures
+	/// Path of debris object.
+	var/shard_type = SHARD_SHRAPNEL
+	/// Related to above.
+	var/shard_icon
+	/// Can shards be turned into sheets with a welder?
+	var/shard_can_repair = 1
+	/// Holder for all recipes usable with a sheet of this material.
+	var/list/recipes
+	/// Fancy string for barricades/tables/objects exploding.
+	var/destruction_desc = "breaks apart"
 
-	// Icons
-	var/icon_colour                                      // Colour applied to products of this material.
-	var/icon_base = "metal"                              // Wall and table base icon tag. See header.
-	var/door_icon_base = "metal"                         // Door base icon tag. See header.
-	var/icon_reinf = "reinf_metal"                       // Overlay used
-	/// do we have directional reinforced states on walls?
+	//! Icons
+	/// Colour applied to products of this material.
+	var/icon_colour
+	/// Wall and table base icon tag. See header.
+	var/base_icon_state = "metal"
+	/// Door base icon tag. See header.
+	var/door_icon_base = "metal"
+	/// Overlay used
+	var/icon_reinf = "reinf_metal"
+	/// Do we have directional reinforced states on walls?
 	var/icon_reinf_directionals = FALSE
-	var/list/stack_origin_tech = list(TECH_MATERIAL = 1) // Research level for stacks.
-	var/pass_stack_colors = FALSE                        // Will stacks made from this material pass their colors onto objects?
+	/// Research level for stacks.
+	var/list/stack_origin_tech = list(TECH_MATERIAL = 1)
+	/// Will stacks made from this material pass their colors onto objects?
+	var/pass_stack_colors = FALSE
 
-	// Attributes
-	var/cut_delay = 0            // Delay in ticks when cutting through this wall.
-	var/radioactivity            // Radiation var. Used in wall and object processing to irradiate surroundings.
-	var/ignition_point           // K, point at which the material catches on fire.
-	var/melting_point = 1800     // K, walls will take damage if they're next to a fire hotter than this
-	var/integrity = 150          // General-use HP value for products.
-	var/protectiveness = 10      // How well this material works as armor.  Higher numbers are better, diminishing returns applies.
-	var/opacity = 1              // Is the material transparent? 0.5< makes transparent walls/doors.
-	var/reflectivity = 0         // How reflective to light is the material?  Currently used for laser reflection and defense.
-	var/explosion_resistance = 5 // Only used by walls currently.
-	var/negation = 0             // Objects that respect this will randomly absorb impacts with this var as the percent chance.
-	var/spatial_instability = 0  // Objects that have trouble staying in the same physical space by sheer laws of nature have this. Percent for respecting items to cause teleportation.
-	var/conductive = 1           // Objects without this var add NOCONDUCT to flags on spawn.
-	var/conductivity = null      // How conductive the material is. Iron acts as the baseline, at 10.
-	var/list/composite_material  // If set, object matter var will be a list containing these values.
+	//! Attributes
+	/// Delay in ticks when cutting through this wall.
+	var/cut_delay = 0
+	/// Radiation var. Used in wall and object processing to irradiate surroundings.
+	var/radioactivity
+	/// K, point at which the material catches on fire.
+	var/ignition_point
+	/// K, walls will take damage if they're next to a fire hotter than this
+	var/melting_point = 1800
+	/// General-use HP value for products.
+	var/integrity = 150
+	/// How well this material works as armor.  Higher numbers are better, diminishing returns applies.
+	var/protectiveness = 10
+	/// Is the material transparent? 0.5< makes transparent walls/doors.
+	var/opacity = 1
+	/// How reflective to light is the material?  Currently used for laser reflection and defense.
+	var/reflectivity = 0
+	/// Objects that respect this will randomly absorb impacts with this var as the percent chance.
+	var/negation = 0
+	/// Objects that have trouble staying in the same physical space by sheer laws of nature have this. Percent for respecting items to cause teleportation.
+	var/spatial_instability = 0
+	/// Objects without this var add NOCONDUCT to flags on spawn.
+	var/conductive = 1
+	/// How conductive the material is. Iron acts as the baseline, at 10.
+	var/conductivity = null
+	/// If set, object matter var will be a list containing these values.
+	var/list/composite_material
 	var/luminescence
-	var/radiation_resistance = 0 // Radiation resistance, which is added on top of a material's weight for blocking radiation. Needed to make lead special without superrobust weapons.
+	/// Radiation resistance, which is added on top of a material's weight for blocking radiation. Needed to make lead special without superrobust weapons.
+	var/radiation_resistance = 0
 
-	// Placeholder vars for the time being, todo properly integrate windows/light tiles/rods.
+	//! Placeholder vars for the time being, todo properly integrate windows/light tiles/rods.
 	var/created_window
 	var/created_fulltile_window
 	var/rod_product
 	var/wire_product
 	var/list/window_options = list()
 
-	// Damage values.
-	var/hardness = 60            // Prob of wall destruction by hulk, used for edge damage in weapons.  Also used for bullet protection in armor.
-	var/weight = 20              // Determines blunt damage/throw_force for weapons.
+	//! Damage values.
+	/// Prob of wall destruction by hulk, used for edge damage in weapons.  Also used for bullet protection in armor.
+	var/hardness = 60
+	/// Determines blunt damage/throw_force for weapons.
+	var/weight = 20
 
-	// Noise when someone is faceplanted onto a table made of this material.
+	/// Noise when someone is faceplanted onto a table made of this material.
 	var/tableslam_noise = 'sound/weapons/tablehit1.ogg'
-	// Noise made when a simple door made of this material opens or closes.
+	/// Noise made when a simple door made of this material opens or closes.
 	var/dooropen_noise = 'sound/effects/stonedoor_openclose.ogg'
-	// Path to resulting stacktype. Todo remove need for this.
+	/// Path to resulting stacktype. Todo remove need for this.
 	var/stack_type
-	// Wallrot crumble message.
+	/// Wallrot crumble message.
 	var/rotting_touch_message = "crumbles under your touch"
 
 // Placeholders for light tiles and rglass.
@@ -251,7 +284,7 @@ var/list/name_to_material
 	name = "uranium"
 	stack_type = /obj/item/stack/material/uranium
 	radioactivity = 12
-	icon_base = "stone"
+	base_icon_state = "stone"
 	icon_reinf = "reinf_stone"
 	icon_reinf_directionals = TRUE
 	icon_colour = "#007A00"
@@ -308,7 +341,7 @@ var/list/name_to_material
 	radioactivity = 20
 	luminescence = 3
 	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
-	icon_base = "stone"
+	base_icon_state = "stone"
 	shard_type = SHARD_SHARD
 	hardness = 30
 	door_icon_base = "stone"
@@ -321,7 +354,7 @@ var/list/name_to_material
 	name = "phoron"
 	stack_type = /obj/item/stack/material/phoron
 	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
-	icon_base = "stone"
+	base_icon_state = "stone"
 	icon_colour = "#FC2BC5"
 	shard_type = SHARD_SHARD
 	hardness = 30
@@ -350,7 +383,7 @@ var/list/name_to_material
 /datum/material/stone
 	name = "sandstone"
 	stack_type = /obj/item/stack/material/sandstone
-	icon_base = "stone"
+	base_icon_state = "stone"
 	icon_reinf = "reinf_stone"
 	icon_reinf_directionals = TRUE
 	icon_colour = "#D9C179"
@@ -379,7 +412,7 @@ var/list/name_to_material
 	integrity = 150
 	conductivity = 11 // Assuming this is carbon steel, it would actually be slightly less conductive than iron, but lets ignore that.
 	protectiveness = 10 // 33%
-	icon_base = "solid"
+	base_icon_state = "solid"
 	icon_reinf = "reinf_over"
 	icon_colour = "#666666"
 
@@ -387,8 +420,7 @@ var/list/name_to_material
 	name = MAT_STEELHULL
 	stack_type = /obj/item/stack/material/steel/hull
 	integrity = 250
-	explosion_resistance = 10
-	icon_base = "hull"
+	base_icon_state = "hull"
 	icon_reinf = "reinf_mesh"
 	icon_colour = "#666677"
 
@@ -400,7 +432,7 @@ var/list/name_to_material
 	icon_colour = null
 	stack_type = null
 	integrity = 600
-	icon_base = "diona"
+	base_icon_state = "diona"
 	icon_reinf = "noreinf"
 
 /datum/material/diona/place_dismantled_product()
@@ -420,10 +452,9 @@ var/list/name_to_material
 	stack_type = /obj/item/stack/material/plasteel
 	integrity = 400
 	melting_point = 6000
-	icon_base = "solid"
+	base_icon_state = "solid"
 	icon_reinf = "reinf_over"
 	icon_colour = "#777777"
-	explosion_resistance = 25
 	hardness = 80
 	weight = 23
 	protectiveness = 20 // 50%
@@ -436,10 +467,9 @@ var/list/name_to_material
 	name = MAT_PLASTEELHULL
 	stack_type = /obj/item/stack/material/plasteel/hull
 	integrity = 600
-	icon_base = "hull"
+	base_icon_state = "hull"
 	icon_reinf = "reinf_mesh"
 	icon_colour = "#777788"
-	explosion_resistance = 40
 
 /datum/material/plasteel/hull/place_sheet(var/turf/target) //Deconstructed into normal plasteel sheets.
 	new /obj/item/stack/material/plasteel(target)
@@ -450,10 +480,9 @@ var/list/name_to_material
 	stack_type = /obj/item/stack/material/durasteel
 	integrity = 600
 	melting_point = 7000
-	icon_base = "metal"
+	base_icon_state = "metal"
 	icon_reinf = "reinf_metal"
 	icon_colour = "#6EA7BE"
-	explosion_resistance = 75
 	hardness = 100
 	weight = 28
 	protectiveness = 60 // 75%
@@ -463,10 +492,9 @@ var/list/name_to_material
 
 /datum/material/durasteel/hull //The 'Hardball' of starship hulls.
 	name = MAT_DURASTEELHULL
-	icon_base = "hull"
+	base_icon_state = "hull"
 	icon_reinf = "reinf_mesh"
 	icon_colour = "#45829a"
-	explosion_resistance = 90
 	reflectivity = 0.9
 
 /datum/material/durasteel/hull/place_sheet(var/turf/target) //Deconstructed into normal durasteel sheets.
@@ -476,7 +504,7 @@ var/list/name_to_material
 	name = MAT_TITANIUM
 	stack_type = /obj/item/stack/material/titanium
 	conductivity = 2.38
-	icon_base = "metal"
+	base_icon_state = "metal"
 	door_icon_base = "metal"
 	icon_colour = "#D1E6E3"
 	icon_reinf = "reinf_metal"
@@ -484,7 +512,7 @@ var/list/name_to_material
 /datum/material/plasteel/titanium/hull
 	name = MAT_TITANIUMHULL
 	stack_type = null
-	icon_base = "hull"
+	base_icon_state = "hull"
 	icon_reinf = "reinf_mesh"
 
 /datum/material/glass
@@ -637,7 +665,7 @@ var/list/name_to_material
 	name = "plastic"
 	stack_type = /obj/item/stack/material/plastic
 	flags = MATERIAL_BRITTLE
-	icon_base = "solid"
+	base_icon_state = "solid"
 	icon_reinf = "reinf_over"
 	icon_colour = "#CCCCCC"
 	hardness = 10
@@ -725,7 +753,7 @@ var/list/name_to_material
 /datum/material/verdantium
 	name = MAT_VERDANTIUM
 	stack_type = /obj/item/stack/material/verdantium
-	icon_base = "metal"
+	base_icon_state = "metal"
 	door_icon_base = "metal"
 	icon_reinf = "reinf_metal"
 	icon_colour = "#4FE95A"
@@ -746,7 +774,7 @@ var/list/name_to_material
 /datum/material/morphium
 	name = MAT_MORPHIUM
 	stack_type = /obj/item/stack/material/morphium
-	icon_base = "metal"
+	base_icon_state = "metal"
 	door_icon_base = "metal"
 	icon_colour = "#37115A"
 	icon_reinf = "reinf_metal"
@@ -758,7 +786,6 @@ var/list/name_to_material
 	shard_type = SHARD_SHARD
 	weight = 30
 	negation = 25
-	explosion_resistance = 85
 	reflectivity = 0.2
 	radiation_resistance = 10
 	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_MAGNET = 8, TECH_PHORON = 6, TECH_BLUESPACE = 6, TECH_ARCANE = 3)
@@ -766,13 +793,13 @@ var/list/name_to_material
 /datum/material/morphium/hull
 	name = MAT_MORPHIUMHULL
 	stack_type = /obj/item/stack/material/morphium/hull
-	icon_base = "hull"
+	base_icon_state = "hull"
 	icon_reinf = "reinf_mesh"
 
 /datum/material/valhollide
 	name = MAT_VALHOLLIDE
 	stack_type = /obj/item/stack/material/valhollide
-	icon_base = "stone"
+	base_icon_state = "stone"
 	door_icon_base = "stone"
 	icon_reinf = "reinf_mesh"
 	icon_colour = "##FFF3B2"
@@ -798,8 +825,7 @@ var/list/name_to_material
 	stack_type = null
 	icon_colour = "#6C7364"
 	integrity = 1200
-	melting_point = 6000       // Hull plating.
-	explosion_resistance = 200 // Hull plating.
+	melting_point = 6000 // Hull plating.
 	hardness = 500
 	weight = 500
 	protectiveness = 80 // 80%
@@ -814,25 +840,25 @@ var/list/name_to_material
 /datum/material/alienalloy/dungeonium
 	name = "dungeonium"
 	display_name = "ultra-durable"
-	icon_base = "dungeon"
+	base_icon_state = "dungeon"
 	icon_colour = "#FFFFFF"
 
 /datum/material/alienalloy/bedrock
 	name = "bedrock"
 	display_name = "impassable rock"
-	icon_base = "rock"
+	base_icon_state = "rock"
 	icon_colour = "#FFFFFF"
 
 /datum/material/alienalloy/alium
 	name = "alium"
 	display_name = "alien"
-	icon_base = "alien"
+	base_icon_state = "alien"
 	icon_colour = "#FFFFFF"
 
 /datum/material/resin
 	name = "resin"
 	icon_colour = "#261438"
-	icon_base = "resin"
+	base_icon_state = "resin"
 	dooropen_noise = 'sound/effects/attackblob.ogg'
 	door_icon_base = "resin"
 	icon_reinf = "reinf_mesh"
@@ -840,7 +866,6 @@ var/list/name_to_material
 	sheet_singular_name = "blob"
 	sheet_plural_name = "blobs"
 	conductive = 0
-	explosion_resistance = 60
 	radiation_resistance = 10
 	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_PHORON = 4, TECH_BLUESPACE = 4, TECH_BIO = 7)
 	stack_type = /obj/item/stack/material/resin
@@ -868,8 +893,7 @@ var/list/name_to_material
 	stack_type = /obj/item/stack/material/wood
 	icon_colour = "#9c5930"
 	integrity = 50
-	icon_base = "wood"
-	explosion_resistance = 2
+	base_icon_state = "wood"
 	shard_type = SHARD_SPLINTER
 	shard_can_repair = 0 // you can't weld splinters back into planks
 	hardness = 15
@@ -888,7 +912,7 @@ var/list/name_to_material
 
 /datum/material/wood/log
 	name = MAT_LOG
-	icon_base = "log"
+	base_icon_state = "log"
 	stack_type = /obj/item/stack/material/log
 	sheet_singular_name = null
 	sheet_plural_name = "pile"
@@ -920,7 +944,7 @@ var/list/name_to_material
 	name = MAT_HARDWOOD
 	stack_type = /obj/item/stack/material/wood/hard
 	icon_colour = "#42291a"
-	icon_base = "stone"
+	base_icon_state = "stone"
 	icon_reinf = "reinf_stone"
 	icon_reinf_directionals = TRUE
 	integrity = 65	//a bit stronger than regular wood
@@ -932,7 +956,7 @@ var/list/name_to_material
 	stack_type = /obj/item/stack/material/cardboard
 	flags = MATERIAL_BRITTLE
 	integrity = 10
-	icon_base = "solid"
+	base_icon_state = "solid"
 	icon_reinf = "reinf_over"
 	icon_colour = "#AAAAAA"
 	hardness = 1
@@ -951,7 +975,7 @@ var/list/name_to_material
 	name = MAT_SNOW
 	stack_type = /obj/item/stack/material/snow
 	flags = MATERIAL_BRITTLE
-	icon_base = "solid"
+	base_icon_state = "solid"
 	icon_reinf = "reinf_over"
 	icon_colour = "#FFFFFF"
 	integrity = 1
@@ -969,7 +993,7 @@ var/list/name_to_material
 	name = "packed snow"
 	flags = MATERIAL_BRITTLE
 	stack_type = /obj/item/stack/material/snowbrick
-	icon_base = "stone"
+	base_icon_state = "stone"
 	icon_reinf = "reinf_stone"
 	icon_reinf_directionals = TRUE
 	icon_colour = "#D8FDFF"
@@ -998,7 +1022,7 @@ var/list/name_to_material
 /datum/material/cult
 	name = "cult"
 	display_name = "disturbing stone"
-	icon_base = "cult"
+	base_icon_state = "cult"
 	icon_colour = "#402821"
 	icon_reinf = "reinf_cult"
 	shard_type = SHARD_STONE_PIECE
@@ -1021,7 +1045,7 @@ var/list/name_to_material
 /datum/material/flesh
 	name = "flesh"
 	icon_colour = "#35343a"
-	icon_base = "flesh"
+	base_icon_state = "flesh"
 	dooropen_noise = 'sound/effects/attackblob.ogg'
 	door_icon_base = "fleshclosed"
 	icon_reinf = "reinf_mesh"
@@ -1029,7 +1053,6 @@ var/list/name_to_material
 	sheet_singular_name = "glob"
 	sheet_plural_name = "globs"
 	conductive = 0
-	explosion_resistance = 60
 	radiation_resistance = 10
 	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_PHORON = 4, TECH_BLUESPACE = 4, TECH_BIO = 7)
 
@@ -1054,13 +1077,12 @@ var/list/name_to_material
 /datum/material/bone
 	name = "bone"
 	icon_colour = "#e6dfc8"
-	icon_base = "bone"
+	base_icon_state = "bone"
 	icon_reinf = "reinf_mesh"
 	melting_point = T0C+300
 	sheet_singular_name = "fragment"
 	sheet_plural_name = "fragments"
 	conductive = 0
-	explosion_resistance = 60
 	radiation_resistance = 10
 	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_PHORON = 4, TECH_BLUESPACE = 4, TECH_BIO = 7)
 

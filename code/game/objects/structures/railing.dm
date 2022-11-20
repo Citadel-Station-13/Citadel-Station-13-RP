@@ -10,6 +10,8 @@
 	anchored = TRUE
 	flags = ON_BORDER
 	icon_state = "railing0"
+	base_icon_state = "railing"
+
 	var/broken = FALSE
 	var/health = 70
 	var/maxhealth = 70
@@ -19,16 +21,17 @@
 	name = "grey railing"
 	desc = "A standard steel railing. Prevents stupid people from falling to their doom."
 	icon_state = "grey_railing0"
+	base_icon_state = "grey_railing"
 
 /obj/structure/railing/Initialize(mapload, constructed = FALSE)
 	. = ..()
 	// TODO - "constructed" is not passed to us. We need to find a way to do this safely.
 	if (constructed) // player-constructed railings
-		anchored = 0
+		anchored = FALSE
 	if(climbable)
 		verbs += /obj/structure/proc/climb_on
 	if(src.anchored)
-		update_icon(0)
+		update_icon(FALSE)
 
 /obj/structure/railing/Destroy()
 	var/turf/location = loc
@@ -63,11 +66,11 @@
 	health -= amount
 	if(health <= 0)
 		visible_message("<span class='warning'>\The [src] breaks down!</span>")
-		playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
+		playsound(loc, 'sound/effects/grillehit.ogg', 50, TRUE)
 		new /obj/item/stack/rods(get_turf(src))
 		qdel(src)
 
-/obj/structure/railing/proc/NeighborsCheck(var/UpdateNeighbors = 1)
+/obj/structure/railing/proc/NeighborsCheck(UpdateNeighbors = TRUE)
 	check = 0
 	//if (!anchored) return
 	var/Rturn = turn(src.dir, -90)
@@ -105,30 +108,30 @@
 			if (UpdateNeighbors)
 				R.update_icon(0)
 
-/obj/structure/railing/update_icon(var/UpdateNeighgors = 1)
+/obj/structure/railing/update_icon(UpdateNeighgors = TRUE)
 	NeighborsCheck(UpdateNeighgors)
 	//layer = (dir == SOUTH) ? FLY_LAYER : initial(layer) // wtf does this even do
 	overlays.Cut()
 	if (!check || !anchored)//|| !anchored
-		icon_state = "railing0"
+		icon_state = "[base_icon_state]0"
 	else
-		icon_state = "railing1"
+		icon_state = "[base_icon_state]1"
 		if (check & 32)
-			overlays += image ('icons/obj/railing.dmi', src, "corneroverlay")
+			overlays += image (icon, src, "[base_icon_state]_corneroverlay")
 		if ((check & 16) || !(check & 32) || (check & 64))
-			overlays += image ('icons/obj/railing.dmi', src, "frontoverlay_l")
+			overlays += image (icon, src, "[base_icon_state]_frontoverlay_l")
 		if (!(check & 2) || (check & 1) || (check & 4))
-			overlays += image ('icons/obj/railing.dmi', src, "frontoverlay_r")
+			overlays += image (icon, src, "[base_icon_state]_frontoverlay_r")
 			if(check & 4)
 				switch (src.dir)
 					if (NORTH)
-						overlays += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_x = 32)
+						overlays += image (icon, src, "[base_icon_state]_mcorneroverlay", pixel_x = 32)
 					if (SOUTH)
-						overlays += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_x = -32)
+						overlays += image (icon, src, "[base_icon_state]_mcorneroverlay", pixel_x = -32)
 					if (EAST)
-						overlays += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_y = -32)
+						overlays += image (icon, src, "[base_icon_state]_mcorneroverlay", pixel_y = -32)
 					if (WEST)
-						overlays += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_y = 32)
+						overlays += image (icon, src, "[base_icon_state]_mcorneroverlay", pixel_y = 32)
 
 /obj/structure/railing/verb/rotate_counterclockwise()
 	set name = "Rotate Railing Counter-Clockwise"

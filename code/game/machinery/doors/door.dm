@@ -54,11 +54,9 @@
 	. = ..()
 	if(density)
 		layer = closed_layer
-		explosion_resistance = initial(explosion_resistance)
 		update_heat_protection(get_turf(src))
 	else
 		layer = open_layer
-		explosion_resistance = 0
 
 
 	if(width > 1)
@@ -413,48 +411,46 @@
 	return
 
 
-/obj/machinery/door/proc/open(var/forced = 0)
+/obj/machinery/door/proc/open(forced = FALSE)
 	if(!can_open(forced))
 		return
-	operating = 1
+	operating = TRUE
 
 	do_animate("opening")
 	icon_state = "door0"
-	set_opacity(0)
+	set_opacity(FALSE)
 	sleep(3)
-	src.density = 0
+	src.density = FALSE
 	update_nearby_tiles()
 	sleep(7)
 	src.layer = open_layer
-	explosion_resistance = 0
 	update_icon()
-	set_opacity(0)
-	operating = 0
+	set_opacity(FALSE)
+	operating = FALSE
 
 	if(autoclose)
 		close_door_at = next_close_time()
 
-	return 1
+	return TRUE
 
 /obj/machinery/door/proc/next_close_time()
 	return world.time + (normalspeed ? 150 : 5)
 
-/obj/machinery/door/proc/close(var/forced = 0)
+/obj/machinery/door/proc/close(forced = FALSE)
 	if(!can_close(forced))
 		return
-	operating = 1
+	operating = TRUE
 
-	close_door_at = 0
+	close_door_at = FALSE
 	do_animate("closing")
 	sleep(3)
-	src.density = 1
-	explosion_resistance = initial(explosion_resistance)
+	set_density(TRUE)
 	src.layer = closed_layer
 	update_nearby_tiles()
 	sleep(7)
 	update_icon()
 	if(visible && !glass)
-		set_opacity(1)	//caaaaarn!
+		set_opacity(TRUE) //caaaaarn!
 	operating = 0
 
 	//I shall not add a check every x ticks if a door has closed over some fire.
@@ -462,7 +458,7 @@
 	if(fire)
 		qdel(fire)
 
-	return 1
+	return TRUE
 
 /obj/machinery/door/proc/toggle_open(var/forced)
 	if(density)

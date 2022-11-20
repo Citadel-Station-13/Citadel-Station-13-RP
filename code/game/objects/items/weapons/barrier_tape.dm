@@ -3,6 +3,7 @@
 	name = "tape roll"
 	icon = 'icons/policetape.dmi'
 	icon_state = "tape"
+	base_icon_state = "tape"
 	w_class = ITEMSIZE_SMALL
 
 	tool_speed = 3 //You can use it in surgery. It's stupid, but you can.
@@ -10,7 +11,6 @@
 	var/turf/start
 	var/turf/end
 	var/tape_type = /obj/item/barrier_tape_segment
-	var/icon_base = "tape"
 
 	var/apply_tape = FALSE
 
@@ -32,24 +32,25 @@ var/list/tape_roll_applications = list()
 /obj/item/barrier_tape_segment
 	name = "tape"
 	icon = 'icons/policetape.dmi'
-	anchored = 1
+	base_icon_state = "tape"
+	anchored = TRUE
 	layer = WINDOW_LAYER
+
 	var/lifted = 0
 	var/crumpled = 0
 	var/tape_dir = 0
-	var/icon_base = "tape"
 
 /obj/item/barrier_tape_segment/update_icon()
 	//Possible directional bitflags: 0 (AIRLOCK), 1 (NORTH), 2 (SOUTH), 4 (EAST), 8 (WEST), 3 (VERTICAL), 12 (HORIZONTAL)
 	switch (tape_dir)
 		if(0)  // AIRLOCK
-			icon_state = "[icon_base]_door_[crumpled]"
+			icon_state = "[base_icon_state]_door_[crumpled]"
 		if(3)  // VERTICAL
-			icon_state = "[icon_base]_v_[crumpled]"
+			icon_state = "[base_icon_state]_v_[crumpled]"
 		if(12) // HORIZONTAL
-			icon_state = "[icon_base]_h_[crumpled]"
+			icon_state = "[base_icon_state]_h_[crumpled]"
 		else   // END POINT (1|2|4|8)
-			icon_state = "[icon_base]_dir_[crumpled]"
+			icon_state = "[base_icon_state]_dir_[crumpled]"
 			dir = tape_dir
 
 /obj/item/barrier_tape_segment/Initialize(mapload)
@@ -263,7 +264,7 @@ var/list/tape_roll_applications = list()
 					if(istype(window) && !window.is_fulltile() && window.dir == orientation)
 						tape_dir = dir
 			for(var/obj/item/barrier_tape_segment/T in cur)
-				if((T.tape_dir == tape_dir) && (T.icon_base == icon_base))
+				if((T.tape_dir == tape_dir) && (T.base_icon_state == base_icon_state))
 					tapetest = 1
 					break
 			if(!tapetest)

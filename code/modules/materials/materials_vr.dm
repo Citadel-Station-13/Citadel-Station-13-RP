@@ -6,7 +6,6 @@
 	sheet_plural_name = "meats"
 	integrity = 1200
 	melting_point = 6000
-	explosion_resistance = 200
 	hardness = 500
 	weight = 500
 
@@ -22,11 +21,11 @@
 /datum/material/darkglass
 	name = "darkglass"
 	display_name = "darkglass"
-	icon_base = "darkglass"
+	base_icon_state = "darkglass"
 	icon_colour = "#FFFFFF"
 
 /datum/material/fancyblack
 	name = "fancyblack"
 	display_name = "fancyblack"
-	icon_base = "fancyblack"
+	base_icon_state = "fancyblack"
 	icon_colour = "#FFFFFF"

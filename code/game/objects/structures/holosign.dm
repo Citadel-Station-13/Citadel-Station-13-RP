@@ -6,7 +6,6 @@
 	anchored = TRUE
 	var/obj/item/holosign_creator/projector
 	var/health = 10
-	explosion_resistance = 1
 
 /obj/structure/holosign/Initialize(mapload, source_projector)
 	. = ..()
@@ -47,6 +46,3 @@
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	layer = ABOVE_TURF_LAYER
 	alpha = 150
-
-
-

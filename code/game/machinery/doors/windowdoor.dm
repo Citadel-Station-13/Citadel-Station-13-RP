@@ -14,7 +14,6 @@
 	flags = ON_BORDER
 	opacity = 0
 	var/obj/item/airlock_electronics/electronics = null
-	explosion_resistance = 5
 	air_properties_vary_with_direction = 1
 
 /obj/machinery/door/window/Initialize(mapload)
@@ -110,33 +109,31 @@
 	return !density
 
 /obj/machinery/door/window/open()
-	if (operating == 1 || !density) //doors can still open when emag-disabled
-		return 0
+	if (operating == TRUE || !density) //doors can still open when emag-disabled
+		return FALSE
 	if (!operating) //in case of emag
-		operating = 1
+		operating = TRUE
 	flick(text("[src.base_state]opening"), src)
-	playsound(src.loc, 'sound/machines/windowdoor.ogg', 100, 1)
+	playsound(src.loc, 'sound/machines/windowdoor.ogg', 100, TRUE)
 	sleep(10)
 
-	explosion_resistance = 0
-	density = 0
+	set_density(FALSE)
 	update_icon()
 	update_nearby_tiles()
 
-	if(operating == 1) //emag again
-		operating = 0
-	return 1
+	if(operating == TRUE) //emag again
+		operating = FALSE
+	return TRUE
 
 /obj/machinery/door/window/close()
 	if(operating || density)
 		return FALSE
 	operating = TRUE
 	flick(text("[]closing", src.base_state), src)
-	playsound(src.loc, 'sound/machines/windowdoor.ogg', 100, 1)
+	playsound(src.loc, 'sound/machines/windowdoor.ogg', 100, TRUE)
 
-	density = TRUE
+	set_density(TRUE)
 	update_icon()
-	explosion_resistance = initial(explosion_resistance)
 	update_nearby_tiles()
 
 	sleep(10)
