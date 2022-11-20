@@ -75,7 +75,9 @@
 	MA.appearance = M
 	MA.plane = plane
 	MA.dir = SOUTH
-	icon = M.icon	// legacy
+	// ok this was a bad idea 
+	// todo: refactor holders entirely, we shouldn't be cloning mob state???
+	// icon = M.icon	// legacy
 	icon_state = M.icon_state	// legacy
 	overlays += MA
 	name = M.name
