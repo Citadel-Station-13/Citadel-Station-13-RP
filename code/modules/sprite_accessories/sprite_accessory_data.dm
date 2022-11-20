@@ -46,6 +46,38 @@
 	cloned.is_shared_datum = FALSE
 
 /**
+ * returns if we're equivalent to another
+ */
+/datum/sprite_accessory_data/proc/equivalent(datum/sprite_accessory_data/other)
+	if(!other)
+		return FALSE
+	if(src == other)	// caching results in this often for vore transformations
+		// fuck vore transformations
+		return FALSE
+	if(accessory.id != other.accessory.id)
+		return FALSE
+	if(emissives_enabled)
+		if(!other.emissives_enabled || emissives_strength != other.emissives_strength)
+			return FALSE
+	else
+		if(other.emissives_enabled)
+			return FALSE
+	for(var/i in 1 to color_amount())
+		if(get_color_index(i) != other.get_color_index(i))
+			return FALSE
+	if(LAZYLEN(addons))
+		if(color_addon != other.color_addon)
+			return FALSE
+		var/list/ids = list()
+		for(var/datum/sprite_accessory_addon/addon as anything in addons)
+			ids += addon.id
+		var/list/other_ids = list()
+		for(var/datum/sprite_accessory_addon/addon as anything in other.addons)
+			other_ids += addon.id
+		if(length(ids ^ other_ids))
+			return FALSE
+
+/**
  * returns either one mutable_appearance, or a list of them to apply, with layers
  * already set.
  */
