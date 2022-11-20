@@ -24,6 +24,7 @@
  */
 /datum/dna/proc/set_sprite_accessory_hair(datum/sprite_accessory_data/D)
 	hair = D
+#warn add id resolution to ALL of these setters
 
 /**
  * gets facial_hair for reading

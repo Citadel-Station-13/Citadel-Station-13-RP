@@ -3,7 +3,7 @@
 // M: Mob to mess with
 // connected: Machine we're in, type unchecked so I doubt it's used beyond monkeying
 // flags: See below, bitfield.
-#define MUTCHK_FORCED        1
+
 /proc/domutcheck(mob/living/M, connected=null, flags=0)
 	for(var/datum/gene/gene in dna_genes)
 		if(!M || !M.dna)

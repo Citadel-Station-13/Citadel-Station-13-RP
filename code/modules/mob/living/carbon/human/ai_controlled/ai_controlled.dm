@@ -39,7 +39,7 @@
 
 	..(loc, generate_species)
 
-	h_style = to_wear_hair
+	dna.set_sprite_accessory_hair(to_wear_hair)
 
 	if(to_wear_uniform)
 		equip_to_slot_or_del(new to_wear_uniform(src), SLOT_ID_UNIFORM)

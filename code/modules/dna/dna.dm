@@ -1,45 +1,4 @@
 /**
- * DNA 2: The Spaghetti Strikes Back
- *
- * @author N3X15 <nexisentertainment@gmail.com>
- */
-
-// What each index means:
-#define DNA_OFF_LOWERBOUND 0
-#define DNA_OFF_UPPERBOUND 1
-#define DNA_ON_LOWERBOUND  2
-#define DNA_ON_UPPERBOUND  3
-
-// Define block bounds (off-low,off-high,on-low,on-high)
-// Used in setupgame.dm
-#define DNA_DEFAULT_BOUNDS list(1,2049,2050,4095)
-#define DNA_HARDER_BOUNDS  list(1,3049,3050,4095)
-#define DNA_HARD_BOUNDS    list(1,3490,3500,4095)
-
-/**
- * Defines which values mean "on" or "off".
- *
- * This is to make some of the more OP superpowers a larger PITA to activate,
- * and to tell our new DNA datum which values to set in order to turn something
- * on or off.
- */
-var/global/list/dna_activity_bounds[DNA_SE_LENGTH]
-
-/**
- * Used to determine what each block means (admin hax and species stuff on /vg/, mostly)
- */
-var/global/list/assigned_blocks[DNA_SE_LENGTH]
-
-var/global/list/datum/gene/dna_genes[0]
-
-/////////////////
-//! ## GENE DEFINES ## !//
-/////////////////
-// Skip checking if it's already active.
-// Used for genes that check for value rather than a binary on/off.
-#define GENE_ALWAYS_ACTIVATE 1
-
-/**
  * DNA
  *
  * holds genetic information on an organism
