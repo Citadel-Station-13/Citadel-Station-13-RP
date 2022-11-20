@@ -30,6 +30,21 @@
 /mob/living/carbon/human/proc/update_dna()
 
 //! DNA setters/getters
+//* singular strings/primitives
+#warn update icons for these
+/mob/living/carbon/human/proc/get_eye_color()
+	return dna.get_eye_color()
+
+/mob/living/carbon/human/proc/set_eye_color(str, update = TRUE)
+	return dna.set_eye_color(str)
+
+/mob/living/carbon/human/proc/get_body_color()
+	return dna.get_body_color()
+
+/mob/living/carbon/human/proc/set_body_color(str, update = TRUE)
+	return dna.set_body_color(str)
+
+//* Sprite Accessories
 #warn update icons for these!
 //? hair
 /**
@@ -54,7 +69,7 @@
  * - full sprite accessory datum
  * - sprite accessory data datum
  */
-/mob/living/carbon/human/proc/set_sprite_accessory_hair(datum/sprite_accessory_data/accessorylike)
+/mob/living/carbon/human/proc/set_sprite_accessory_hair(datum/sprite_accessory_data/accessorylike, update = TRUE)
 	return dna.set_sprite_accessory_hair(accessorylike)
 
 /**
@@ -62,7 +77,7 @@
  *
  * accepts a sprite_accessory_data datum
  */
-/mob/living/carbon/human/proc/copy_sprite_accessory_hair(datum/sprite_accessory_data/data)
+/mob/living/carbon/human/proc/copy_sprite_accessory_hair(datum/sprite_accessory_data/accessorylike, update = TRUE)
 	data.is_shared_datum = TRUE
 	return dna.set_sprite_accessory_hair(data)
 
@@ -89,7 +104,7 @@
  * - full sprite accessory datum
  * - sprite accessory data datum
  */
-/mob/living/carbon/human/proc/set_sprite_accessory_facial_hair(datum/sprite_accessory_data/accessorylike)
+/mob/living/carbon/human/proc/set_sprite_accessory_facial_hair(datum/sprite_accessory_data/accessorylike, update = TRUE)
 	return dna.set_sprite_accessory_facial_hair(accessorylike)
 
 /**
@@ -97,7 +112,7 @@
  *
  * accepts a sprite_accessory_data datum
  */
-/mob/living/carbon/human/proc/copy_sprite_accessory_facial_hair(datum/sprite_accessory_data/data)
+/mob/living/carbon/human/proc/copy_sprite_accessory_facial_hair(datum/sprite_accessory_data/accessorylike, update = TRUE)
 	data.is_shared_datum = TRUE
 	return dna.set_sprite_accessory_facial_hair(data)
 
@@ -124,7 +139,7 @@
  * - full sprite accessory datum
  * - sprite accessory data datum
  */
-/mob/living/carbon/human/proc/set_sprite_accessory_ears_1(datum/sprite_accessory_data/accessorylike)
+/mob/living/carbon/human/proc/set_sprite_accessory_ears_1(datum/sprite_accessory_data/accessorylike, update = TRUE)
 	return dna.set_sprite_accessory_ears_1(accessorylike)
 
 /**
@@ -132,7 +147,7 @@
  *
  * accepts a sprite_accessory_data datum
  */
-/mob/living/carbon/human/proc/copy_sprite_accessory_ears_1(datum/sprite_accessory_data/data)
+/mob/living/carbon/human/proc/copy_sprite_accessory_ears_1(datum/sprite_accessory_data/accessorylike, update = TRUE)
 	data.is_shared_datum = TRUE
 	return dna.set_sprite_accessory_ears_1(data)
 
@@ -159,7 +174,7 @@
  * - full sprite accessory datum
  * - sprite accessory data datum
  */
-/mob/living/carbon/human/proc/set_sprite_accessory_ears_2(datum/sprite_accessory_data/accessorylike)
+/mob/living/carbon/human/proc/set_sprite_accessory_ears_2(datum/sprite_accessory_data/accessorylike, update = TRUE)
 	return dna.set_sprite_accessory_ears_2(accessorylike)
 
 /**
@@ -167,7 +182,7 @@
  *
  * accepts a sprite_accessory_data datum
  */
-/mob/living/carbon/human/proc/copy_sprite_accessory_ears_2(datum/sprite_accessory_data/data)
+/mob/living/carbon/human/proc/copy_sprite_accessory_ears_2(datum/sprite_accessory_data/accessorylike, update = TRUE)
 	data.is_shared_datum = TRUE
 	return dna.set_sprite_accessory_ears_2(data)
 
@@ -194,7 +209,7 @@
  * - full sprite accessory datum
  * - sprite accessory data datum
  */
-/mob/living/carbon/human/proc/set_sprite_accessory_tail(datum/sprite_accessory_data/accessorylike)
+/mob/living/carbon/human/proc/set_sprite_accessory_tail(datum/sprite_accessory_data/accessorylike, update = TRUE)
 	return dna.set_sprite_accessory_tail(accessorylike)
 
 /**
@@ -202,7 +217,7 @@
  *
  * accepts a sprite_accessory_data datum
  */
-/mob/living/carbon/human/proc/copy_sprite_accessory_tail(datum/sprite_accessory_data/data)
+/mob/living/carbon/human/proc/copy_sprite_accessory_tail(datum/sprite_accessory_data/accessorylike, update = TRUE)
 	data.is_shared_datum = TRUE
 	return dna.set_sprite_accessory_tail(data)
 
@@ -229,7 +244,7 @@
  * - full sprite accessory datum
  * - sprite accessory data datum
  */
-/mob/living/carbon/human/proc/set_sprite_accessory_wings(datum/sprite_accessory_data/accessorylike)
+/mob/living/carbon/human/proc/set_sprite_accessory_wings(datum/sprite_accessory_data/accessorylike, update = TRUE)
 	return dna.set_sprite_accessory_wings(accessorylike)
 
 /**
@@ -237,6 +252,6 @@
  *
  * accepts a sprite_accessory_data datum
  */
-/mob/living/carbon/human/proc/copy_sprite_accessory_wings(datum/sprite_accessory_data/data)
+/mob/living/carbon/human/proc/copy_sprite_accessory_wings(datum/sprite_accessory_data/accessorylike, update = TRUE)
 	data.is_shared_datum = TRUE
 	return dna.set_sprite_accessory_wings(data)

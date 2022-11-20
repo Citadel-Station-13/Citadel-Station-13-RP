@@ -1005,30 +1005,28 @@
 
 	var/mob/living/carbon/human/H = M
 	if(alien == IS_SLIME && istype(H)) //Shifts them toward white, faster than Rezadone does toward grey.
-		if(prob(50))
-			if(H.r_skin)
-				H.r_skin = round((H.r_skin + 510)/3)
-			if(H.r_hair)
-				H.r_hair = round((H.r_hair + 510)/3)
-			if(H.r_facial)
-				H.r_facial = round((H.r_facial + 510)/3)
-			H.adjustToxLoss(6 * removed)
-		if(prob(50))
-			if(H.g_skin)
-				H.g_skin = round((H.g_skin + 510)/3)
-			if(H.g_hair)
-				H.g_hair = round((H.g_hair + 510)/3)
-			if(H.g_facial)
-				H.g_facial = round((H.g_facial + 510)/3)
-			H.adjustToxLoss(6 * removed)
-		if(prob(50))
-			if(H.b_skin)
-				H.b_skin = round((H.b_skin + 510)/3)
-			if(H.b_hair)
-				H.b_hair = round((H.b_hair + 510)/3)
-			if(H.b_facial)
-				H.b_facial = round((H.b_facial + 510)/3)
-			H.adjustToxLoss(6 * removed)
+		var/updated = FALSE
+		if(prob(50))	// the code was just as shit before ~silicons
+			var/list/rgb = ReadRGB(H.get_body_color())
+			for(var/i in 1 to 3)
+				rgb[i] = (rgb[i] + 510) / 3
+			H.set_body_color(rgb(rgb[1], rgb[2], rgb[3]), FALSE)
+			updated = TRUE
+		if(prob(50))	// the code was just as shit before ~silicons
+			var/list/rgb = ReadRGB(H.get_body_color())
+			for(var/i in 1 to 3)
+				rgb[i] = (rgb[i] + 510) / 3
+			H.set_body_color(rgb(rgb[1], rgb[2], rgb[3]), FALSE)
+			updated = TRUE
+		if(prob(50))	// the code was just as shit before ~silicons
+			var/list/rgb = ReadRGB(H.get_body_color())
+			for(var/i in 1 to 3)
+				rgb[i] = (rgb[i] + 510) / 3
+			H.set_body_color(rgb(rgb[1], rgb[2], rgb[3]), FALSE)
+			updated = TRUE
+		if(updated)
+			H.update_icons_body()
+			H.update_hair()
 
 	// Might need to update appearance for hulk etc.
 	if(needs_update && ishuman(M))
@@ -1313,28 +1311,30 @@
 	if(alien == IS_DIONA)
 		return
 	var/mob/living/carbon/human/H = M
+
 	if(alien == IS_SLIME && istype(H))
-		if(prob(50))
-			if(H.r_skin)
-				H.r_skin = round((H.r_skin + 50)/2)
-			if(H.r_hair)
-				H.r_hair = round((H.r_hair + 50)/2)
-			if(H.r_facial)
-				H.r_facial = round((H.r_facial + 50)/2)
-		if(prob(50))
-			if(H.g_skin)
-				H.g_skin = round((H.g_skin + 50)/2)
-			if(H.g_hair)
-				H.g_hair = round((H.g_hair + 50)/2)
-			if(H.g_facial)
-				H.g_facial = round((H.g_facial + 50)/2)
-		if(prob(50))
-			if(H.b_skin)
-				H.b_skin = round((H.b_skin + 50)/2)
-			if(H.b_hair)
-				H.b_hair = round((H.b_hair + 50)/2)
-			if(H.b_facial)
-				H.b_facial = round((H.b_facial + 50)/2)
+		var/updated = FALSE
+		if(prob(50))	// the code was just as shit before ~silicons
+			var/list/rgb = ReadRGB(H.get_body_color())
+			for(var/i in 1 to 3)
+				rgb[i] = (rgb[i] + 50) / 2
+			H.set_body_color(rgb(rgb[1], rgb[2], rgb[3]), FALSE)
+			updated = TRUE
+		if(prob(50))	// the code was just as shit before ~silicons
+			var/list/rgb = ReadRGB(H.get_body_color())
+			for(var/i in 1 to 3)
+				rgb[i] = (rgb[i] + 50) / 2
+			H.set_body_color(rgb(rgb[1], rgb[2], rgb[3]), FALSE)
+			updated = TRUE
+		if(prob(50))	// the code was just as shit before ~silicons
+			var/list/rgb = ReadRGB(H.get_body_color())
+			for(var/i in 1 to 3)
+				rgb[i] = (rgb[i] + 50) / 2
+			H.set_body_color(rgb(rgb[1], rgb[2], rgb[3]), FALSE)
+			updated = TRUE
+		if(updated)
+			H.update_icons_body()
+			H.update_hair()
 	M.adjustCloneLoss(-20 * removed)
 	M.adjustOxyLoss(-2 * removed)
 	M.heal_organ_damage(20 * removed, 20 * removed)

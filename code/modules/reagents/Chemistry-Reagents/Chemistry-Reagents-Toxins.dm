@@ -574,53 +574,53 @@
 		var/mob/living/carbon/human/H = M
 		if(alien == IS_SLIME && prob(25))
 			var/color_shift = rand(-100, 100)
-			spawn(1)
-				if(prob(33))
-					if(H.r_skin)
-						H.r_skin = max(0, min(255, H.r_skin + color_shift))
-					if(H.r_hair)
-						H.r_hair = max(0, min(255, H.r_hair + color_shift))
-					if(H.r_facial)
-						H.r_facial = max(0, min(255, H.r_facial + color_shift))
-				if(prob(33))
-					if(H.g_skin)
-						H.g_skin = max(0, min(255, H.g_skin + color_shift))
-					if(H.g_hair)
-						H.g_hair = max(0, min(255, H.g_hair + color_shift))
-					if(H.g_facial)
-						H.g_facial = max(0, min(255, H.g_facial + color_shift))
-				if(prob(33))
-					if(H.b_skin)
-						H.b_skin = max(0, min(255, H.b_skin + color_shift))
-					if(H.b_hair)
-						H.b_hair = max(0, min(255, H.b_hair + color_shift))
-					if(H.b_facial)
-						H.b_facial = max(0, min(255, H.b_facial + color_shift))
-						return
+			var/updated = FALSE
+			if(prob(33))	// the code was just as shit before ~silicons
+				var/list/rgb = ReadRGB(H.get_body_color())
+				for(var/i in 1 to 3)
+					rgb[i] = clamp(rgb[i] + color_shift, 0, 255)
+				H.set_body_color(rgb(rgb[1], rgb[2], rgb[3]), FALSE)
+				updated = TRUE
+			if(prob(33))	// the code was just as shit before ~silicons
+				var/list/rgb = ReadRGB(H.get_body_color())
+				for(var/i in 1 to 3)
+					rgb[i] = clamp(rgb[i] + color_shift, 0, 255)
+				H.set_body_color(rgb(rgb[1], rgb[2], rgb[3]), FALSE)
+				updated = TRUE
+			if(prob(33))	// the code was just as shit before ~silicons
+				var/list/rgb = ReadRGB(H.get_body_color())
+				for(var/i in 1 to 3)
+					rgb[i] = clamp(rgb[i] + color_shift, 0, 255)
+				H.set_body_color(rgb(rgb[1], rgb[2], rgb[3]), FALSE)
+				updated = TRUE
+			if(updated)
+				H.update_icons_body()
+				H.update_hair()
+
 		if(alien == IS_CHIMERA && prob(33))
 			var/color_shift = rand(-100, 100)
-			spawn(1)
-				if(prob(45))
-					if(H.r_skin)
-						H.r_skin = max(0, min(255, H.r_skin + color_shift))
-					if(H.r_hair)
-						H.r_hair = max(0, min(255, H.r_hair + color_shift))
-					if(H.r_facial)
-						H.r_facial = max(0, min(255, H.r_facial + color_shift))
-				if(prob(45))
-					if(H.g_skin)
-						H.g_skin = max(0, min(255, H.g_skin + color_shift))
-					if(H.g_hair)
-						H.g_hair = max(0, min(255, H.g_hair + color_shift))
-					if(H.g_facial)
-						H.g_facial = max(0, min(255, H.g_facial + color_shift))
-				if(prob(45))
-					if(H.b_skin)
-						H.b_skin = max(0, min(255, H.b_skin + color_shift))
-					if(H.b_hair)
-						H.b_hair = max(0, min(255, H.b_hair + color_shift))
-					if(H.b_facial)
-						H.b_facial = max(0, min(255, H.b_facial + color_shift))
+			var/updated = FALSE
+			if(prob(45))	// the code was just as shit before ~silicons
+				var/list/rgb = ReadRGB(H.get_body_color())
+				for(var/i in 1 to 3)
+					rgb[i] = clamp(rgb[i] + color_shift, 0, 255)
+				H.set_body_color(rgb(rgb[1], rgb[2], rgb[3]), FALSE)
+				updated = TRUE
+			if(prob(45))	// the code was just as shit before ~silicons
+				var/list/rgb = ReadRGB(H.get_body_color())
+				for(var/i in 1 to 3)
+					rgb[i] = clamp(rgb[i] + color_shift, 0, 255)
+				H.set_body_color(rgb(rgb[1], rgb[2], rgb[3]), FALSE)
+				updated = TRUE
+			if(prob(45))	// the code was just as shit before ~silicons
+				var/list/rgb = ReadRGB(H.get_body_color())
+				for(var/i in 1 to 3)
+					rgb[i] = clamp(rgb[i] + color_shift, 0, 255)
+				H.set_body_color(rgb(rgb[1], rgb[2], rgb[3]), FALSE)
+				updated = TRUE
+			if(updated)
+				H.update_icons_body()
+				H.update_hair()
 		if(H.species.species_flags & NO_SCAN)
 			return
 
