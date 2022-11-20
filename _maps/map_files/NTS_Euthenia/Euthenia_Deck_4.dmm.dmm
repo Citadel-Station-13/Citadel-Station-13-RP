@@ -349,7 +349,6 @@
 /area/ai)
 "oH" = (
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/effect/debris/cleanable/blood,
 /obj/structure/bed/chair{
 	dir = 1
 	},
@@ -12780,8 +12779,8 @@ FB
 FB
 py
 py
-kL
-kL
+tZ
+XF
 Za
 Za
 Za
@@ -12974,8 +12973,8 @@ MU
 FB
 FB
 py
-kL
-kL
+tZ
+XF
 Za
 Za
 Za
@@ -13168,8 +13167,8 @@ lX
 jg
 FB
 tZ
-kL
-kL
+tZ
+XF
 Za
 Za
 Za
@@ -13750,8 +13749,8 @@ lX
 FB
 FB
 tZ
-kL
-kL
+tZ
+XF
 Za
 Za
 Za
@@ -13944,8 +13943,8 @@ Fo
 FB
 py
 RM
-kL
-kL
+tZ
+XF
 Za
 Za
 Za
