@@ -80,7 +80,7 @@ DEFINE_BITFIELD(item_flags, list(
 /// ignores "do we have a jumpsuit" for belt
 #define EQUIP_IGNORE_BELTLINK	(1<<14)
 /// for plural limbs, wearable with just one
-#define EQUIP_ALLOW_ONE_LIMB	(1<<15)
+#define EQUIP_ALLOW_SINGLE_LIMB	(1<<15)
 
 DEFINE_BITFIELD(clothing_flags, list(
 	BITFIELD(BLOCK_GAS_SMOKE_EFFECT),
@@ -92,7 +92,7 @@ DEFINE_BITFIELD(clothing_flags, list(
 	BITFIELD(ALLOW_SURVIVALFOOD),
 	BITFIELD(EQUIP_IGNORE_DELIMB),
 	BITFIELD(EQUIP_IGNORE_BELTLINK),
-	BITFIELD(EQUIP_ALLOW_ONE_LIMB),
+	BITFIELD(EQUIP_ALLOW_SINGLE_LIMB),
 ))
 
 //!# bitflags for the /obj/item/var/flags_inv variable. These determine when a piece of clothing hides another, i.e. a helmet hiding glasses.
