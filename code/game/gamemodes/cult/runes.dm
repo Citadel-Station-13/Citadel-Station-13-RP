@@ -474,9 +474,7 @@ var/list/sacrificed = list()
 			break
 	D.universal_speak = 1
 	D.status_flags &= ~GODMODE
-	D.b_eyes = 200
-	D.r_eyes = 200
-	D.g_eyes = 200
+	D.dna.set_eye_color(rgb(200, 200, 200))
 	D.update_eyes()
 	D.all_underwear.Cut()
 	D.key = ghost.key

@@ -1,6 +1,7 @@
 /mob/living/carbon/human/proc/change_appearance(var/flags = APPEARANCE_ALL_HAIR, var/location = src, var/mob/user = src, var/check_species_whitelist = 1, var/list/species_whitelist = list(), var/list/species_blacklist = list(), var/datum/topic_state/state = default_state)
 	#warn refactor to use shapeshift panel
 
+#warn this crap
 /mob/living/carbon/human/proc/change_species(var/new_species)
 	if(!new_species)
 		return

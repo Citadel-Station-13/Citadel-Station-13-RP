@@ -233,6 +233,9 @@
 	/// Whether or not the mob can pull other mobs.
 	var/can_pull_mobs = MOB_PULL_LARGER
 
+	//! mandatory
+	// todo: comment
+	// todo: hoist to /human
 	var/datum/dna/dna = null//?Carbon
 	var/radiation = 0 //?Carbon
 
