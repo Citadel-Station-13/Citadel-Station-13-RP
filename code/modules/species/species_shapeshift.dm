@@ -7,6 +7,7 @@ var/list/wrapped_species_by_ref = list()
 	abstract_type = /datum/species/shapeshifter
 
 	#warn every shapeshifter needs the funny shapeshift panel, capabiltiies implemented, etc
+	#warn OH RIGHT WE SHOULDNT HAVE SHAPESHIFTER BE A FUCKING SUBTYPE WTF
 	var/datum/shapeshift_system/shapeshift_system
 	var/datum/shapeshift_panel/shapeshift_panel
 	var/shapeshift_capability
