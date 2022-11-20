@@ -82,7 +82,7 @@
 	if(machine_stat & (NOPOWER|BROKEN))
 		return FALSE
 
-	activation_time = REALTIMEOFDAy
+	activation_time = REALTIMEOFDAY
 	timing = TRUE
 
 	for(var/datum/weakref/door_ref as anything in doors)
@@ -144,7 +144,7 @@
 	return TRUE
 
 /obj/machinery/door_timer/proc/time_left(seconds = FALSE)
-	. = max(0, timer_duration - (activation_time ? (RELATIMEOFDAY - activation_time) : 0))
+	. = max(0, timer_duration - (activation_time ? (REALTIMEOFDAY - activation_time) : 0))
 	if(seconds)
 		. /= 10
 
