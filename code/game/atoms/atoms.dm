@@ -293,6 +293,7 @@
 	return
 
 /atom/proc/emp_act(var/severity)
+	// todo: SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_EMP_ACT, severity)
 
 
