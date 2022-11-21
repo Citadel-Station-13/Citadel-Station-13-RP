@@ -21,7 +21,6 @@
 	idle_power_usage = 0
 	active_power_usage = 0
 
-	var/configured = FALSE
 	var/range = 7
 	var/number_of_collectors = 0
 	var/list/collectors = list()
@@ -35,33 +34,38 @@
 		return
 	update_icon()
 	if(powernet)
-		add_avail(power_total)
+		if(use_power)
+			add_avail(power_total)
 
 
 /obj/machinery/power/geothermal_controller/update_icon()
-	if(configured)
-		switch(power_total)
-			if(0 to 500 KILOWATTS)
-				icon_state = "controller_low"
-			if(500 KILOWATTS to 1 MEGAWATTS)
-				icon_state = "controller_med"
-			if(1 MEGAWATTS to 2 MEGAWATTS)
-				icon_state = "controller_high"
-			if(2 MEGAWATTS to INFINITY)
-				icon_state = "controller_vhigh"
-	else
-		icon_state = "controller_idle"
+	switch(power_total)
+		if(50 to 500 KILOWATTS)
+			icon_state = "controller_low"
+		if(500 KILOWATTS to 1 MEGAWATTS)
+			icon_state = "controller_med"
+		if(1 MEGAWATTS to 2 MEGAWATTS)
+			icon_state = "controller_high"
+		if(2 MEGAWATTS to INFINITY)
+			icon_state = "controller_vhigh"
+		else
+			icon_state = "controller_idle"
 	if(use_power == USE_POWER_OFF)
 		icon_state = "controller_off"
 
 
 /obj/machinery/power/geothermal_controller/Initialize(mapload)
 	. = ..()
-	for (var/obj/machinery/power/geothermal_collector/col in range(7))
+	for (var/obj/machinery/power/geothermal_collector/col in range(7, src))
 		if(istype(col))
 			number_of_collectors++
 			power_total += col.power_provided
 			LAZYADD(collectors, col)
+
+/obj/machinery/power/geothermal_controller/attackby(obj/item/W, mob/user)
+	if(W.is_multitool())
+		use_power = USE_POWER_IDLE
+		to_chat(user, "You set the [src.name] up to siphon geothermal power.")
 
 /obj/machinery/power/geothermal_collector
 	name = "Akureyri Geothermal Power Collector"
@@ -84,13 +88,13 @@
 	var/turf/simulated/T = src.loc
 	if(istype(T))
 		local_special_temp = T.special_temperature
-		power_provided = local_special_temp / 100 //lets try that
+		power_provided = max(0, local_special_temp - 273) / 350
 		if(local_special_temp > 500)
 			var/icon_temperature = local_special_temp
 
-			var/h_r = heat2colour_r(icon_temperature)
-			var/h_g = heat2colour_g(icon_temperature)
-			var/h_b = heat2colour_b(icon_temperature)
+			var/h_r = heat2colour_r(icon_temperature / 1.5)
+			var/h_g = heat2colour_g(icon_temperature / 1.5)
+			var/h_b = heat2colour_b(icon_temperature / 1.5)
 
 			if(icon_temperature < 2000) //scale up overlay until 2000K
 				var/scale = (icon_temperature - 500) / 1500
