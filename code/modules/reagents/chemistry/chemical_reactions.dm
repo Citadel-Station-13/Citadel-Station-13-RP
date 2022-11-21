@@ -1,15 +1,3 @@
-//helper that ensures the reaction rate holds after iterating
-//Ex. REACTION_RATE(0.3) means that 30% of the reagents will react each chemistry tick (~2 seconds by default).
-#define REACTION_RATE(rate) (1.0 - (1.0-rate)**(1.0/PROCESS_REACTION_ITER))
-
-//helper to define reaction rate in terms of half-life
-//Ex.
-//HALF_LIFE(0) -> Reaction completes immediately (default chems)
-//HALF_LIFE(1) -> Half of the reagents react immediately, the rest over the following ticks.
-//HALF_LIFE(2) -> Half of the reagents are consumed after 2 chemistry ticks.
-//HALF_LIFE(3) -> Half of the reagents are consumed after 3 chemistry ticks.
-#define HALF_LIFE(ticks) (ticks? 1.0 - (0.5)**(1.0/(ticks*PROCESS_REACTION_ITER)) : 1.0)
-
 /datum/chemical_reaction
 	var/name = null
 	var/id = null
@@ -35,7 +23,7 @@
 
 	var/log_is_important = 0 // If this reaction should be considered important for logging. Important recipes message admins when mixed, non-important ones just log to file.
 
-/datum/chemical_reaction/proc/can_happen(var/datum/reagents/holder)
+/datum/chemical_reaction/proc/can_happen(datum/reagents/holder)
 	//check that all the required reagents are present
 	if(!holder.has_all_reagents(required_reagents))
 		return 0
