@@ -230,8 +230,7 @@ var/list/_client_preferences_by_type
 	. = ..()
 	if(preference_mob && preference_mob.plane_holder)
 		var/datum/plane_holder/PH = preference_mob.plane_holder
-		PH.set_ao(VIS_OBJS, enabled)
-		PH.set_ao(VIS_MOBS, enabled)
+		PH.set_ao(VIS_GAME, enabled)
 
 /datum/client_preference/instrument_toggle
 	description ="Hear In-game Instruments"

@@ -148,7 +148,7 @@
 /area/quartermaster/mining_airlock)
 "jo" = (
 /obj/turbolift_map_holder/rift_mining,
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/unsimulated/mask,
 /area/turbolift/rmine/under3)
 "jq" = (
 /obj/structure/ladder/up,
@@ -158,7 +158,7 @@
 /turf/simulated/wall,
 /area/quartermaster/mining_airlock)
 "jV" = (
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/unsimulated/mask,
 /area/turbolift/rmine/under3)
 "jW" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -623,6 +623,7 @@
 	dir = 4
 	},
 /obj/structure/cable/green,
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/mining_airlock)
 "NT" = (

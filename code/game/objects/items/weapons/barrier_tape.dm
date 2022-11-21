@@ -342,7 +342,6 @@ var/list/tape_roll_applications = list()
 
 /obj/item/barrier_tape_segment/proc/lift(time)
 	lifted = 1
-	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
 	spawn(time)
 		lifted = 0

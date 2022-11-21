@@ -6,7 +6,7 @@
 	anchored = 1
 	density = 0
 	opacity = 0
-	plane = ABOVE_PLANE
+	plane = ABOVE_GAME_PLANE
 	flags = ATOM_ABSTRACT
 	mouse_opacity = 0
 

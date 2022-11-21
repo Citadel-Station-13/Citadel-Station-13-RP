@@ -15,14 +15,15 @@ GLOBAL_LIST_EMPTY(landmarks_keyed)
 	name = "landmark"
 	icon = 'icons/mapping/landmarks/landmarks.dmi'
 	icon_state = ""	// greyscale x
-	color = COLOR_RED
+	plane = GAME_PLANE
+	layer = OBJ_LAYER
 	anchored = TRUE
-	layer = MID_LANDMARK_LAYER
-	invisibility = INVISIBILITY_MAXIMUM
+	invisibility = INVISIBILITY_ABSTRACT
+	color = COLOR_RED
 
-	/// important landmarks get registered by id. not vv hooked, admins usually shouldn't mess with this.
+	/// Important landmarks get registered by id. not vv hooked, admins usually shouldn't mess with this.
 	var/landmark_key
-	/// delete on roundstart
+	/// Delete on roundstart.
 	var/delete_on_roundstart = FALSE
 
 INITIALIZE_IMMEDIATE(/obj/landmark)

@@ -14,9 +14,6 @@
 /// custom smoothing - citrp snowflake for floors. don't you dare use this with normal things unless you absolutely know what you're doing.
 #define SMOOTH_CUSTOM			(1<<6)
 
-/// macro for checking if something is smooth
-#define IS_SMOOTH(A)			(A.smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK|SMOOTH_CUSTOM))
-
 DEFINE_BITFIELD(smoothing_flags, list(
 	"SMOOTH_CORNERS" = SMOOTH_CORNERS,
 	"SMOOTH_BITMASK" = SMOOTH_BITMASK,
@@ -28,6 +25,9 @@ DEFINE_BITFIELD(smoothing_flags, list(
 ))
 
 /*smoothing macros*/
+
+/// macro for checking if something is smooth
+#define IS_SMOOTH(A) (A.smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK|SMOOTH_CUSTOM))
 
 #define QUEUE_SMOOTH(thing_to_queue) if(IS_SMOOTH(thing_to_queue)) {SSicon_smooth.add_to_queue(thing_to_queue)}
 
@@ -72,8 +72,6 @@ DEFINE_BITFIELD(smoothing_junction, list(
 /* /turf only */
 
 #define SMOOTH_GROUP_TURF_OPEN S_TURF(0)
-
-#define SMOOTH_GROUP_OPEN_FLOOR S_TURF(4) // /turf/simulated/floor
 
 #define SMOOTH_GROUP_CLOSED_TURFS S_TURF(50)
 

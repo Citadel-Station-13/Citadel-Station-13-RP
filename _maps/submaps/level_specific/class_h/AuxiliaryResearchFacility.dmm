@@ -626,7 +626,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "og" = (
-/obj/structure/flora/tree/jungle_small,
+/obj/structure/flora/tree/jungle/small/style_random,
 /obj/effect/turf_decal/techfloor/orange/corner{
 	dir = 8
 	},
@@ -2143,7 +2143,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "XQ" = (
-/obj/structure/flora/tree/jungle_small,
+/obj/structure/flora/tree/jungle/small/style_random,
 /turf/simulated/floor/grass,
 /area/class_h/POIs/AuxiliaryResearchFacility)
 "XR" = (

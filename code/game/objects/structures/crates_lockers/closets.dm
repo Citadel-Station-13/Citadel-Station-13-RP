@@ -3,32 +3,46 @@
 	desc = "It's a basic storage unit."
 	icon = 'icons/obj/closet.dmi'
 	icon_state = "closed"
-	density = 1
+	density = TRUE
 	w_class = ITEMSIZE_HUGE
-	layer = UNDER_JUNK_LAYER
+
 	var/icon_closed = "closed"
 	var/icon_opened = "open"
 	var/opened = 0
 	var/sealed = 0
-	var/seal_tool = /obj/item/weldingtool	//Tool used to seal the closet, defaults to welder
-	var/wall_mounted = 0 //never solid (You can always pass over it)
+	/// Tool used to seal the closet, defaults to welder.
+	var/seal_tool = /obj/item/weldingtool
+	/// Never solid (You can always pass over it).
+	var/wall_mounted = 0
 	var/health = 100
 
-	var/breakout = 0 //if someone is currently breaking out. mutex
-	var/breakout_time = 2 //2 minutes by default
-	var/breakout_sound = 'sound/effects/grillehit.ogg'	//Sound that plays while breaking out
+	/// If someone is currently breaking out. mutex
+	var/breakout = 0
+	/// 2 minutes by default.
+	var/breakout_time = 2
+	/// Sound that plays while breaking out.
+	var/breakout_sound = 'sound/effects/grillehit.ogg'
 
-	var/storage_capacity = 2 * MOB_MEDIUM //This is so that someone can't pack hundreds of items in a locker/crate
-							  //then open it in a populated area to crash clients.
-	var/storage_cost = 40	//How much space this closet takes up if it's stuffed in another closet
+	/**
+	 * This is so that someone can't pack hundreds of items in a locker/crate
+	 * then open it in a populated area to crash clients.
+	 */
+	var/storage_capacity = 2 * MOB_MEDIUM
+
+	/// How much space this closet takes up if it's stuffed in another closet.
+	var/storage_cost = 40
 
 	var/open_sound = 'sound/machines/click.ogg'
 	var/close_sound = 'sound/machines/click.ogg'
 
-	var/store_misc = 1		//Chameleon item check
-	var/store_items = 1		//Will the closet store items?
-	var/store_mobs = 1		//Will the closet store mobs?
-	var/max_closets = 0		//Number of other closets allowed on tile before it won't close.
+	/// Chameleon item check
+	var/store_misc = 1
+	/// Will the closet store items?
+	var/store_items = 1
+	/// Will the closet store mobs?
+	var/store_mobs = 1
+	/// Number of other closets allowed on tile before it won't close.
+	var/max_closets = 0
 
 	var/list/starts_with
 
@@ -398,10 +412,12 @@
 	overlays.Cut()
 	if(!opened)
 		icon_state = icon_closed
+		layer = OBJ_LAYER
 		if(sealed)
 			overlays += "welded"
 	else
 		icon_state = icon_opened
+		layer = BELOW_OBJ_LAYER
 
 /obj/structure/closet/attack_generic(var/mob/user, var/damage, var/attack_message = "destroys")
 	if(damage < STRUCTURE_MIN_DAMAGE_THRESHOLD)

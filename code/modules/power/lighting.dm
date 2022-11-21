@@ -26,9 +26,10 @@ var/global/list/light_type_cache = list()
 	desc = "A light fixture under construction."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "tube-construct-stage1"
-	anchored = 1
-	plane = MOB_PLANE
-	layer = ABOVE_MOB_LAYER
+	anchored = TRUE
+	plane = GAME_PLANE_UPPER
+	layer = WALL_OBJ_LAYER
+
 	var/stage = 1
 	var/fixture_type = /obj/machinery/light
 	var/sheets_refunded = 2
@@ -186,9 +187,7 @@ var/global/list/light_type_cache = list()
 	desc = "A floor light fixture under construction."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "flamp-construct-stage1"
-	anchored = 0
-	plane = OBJ_PLANE
-	layer = OBJ_LAYER
+	anchored = FALSE
 	stage = 1
 	fixture_type = /obj/machinery/light/flamp
 	sheets_refunded = 2
@@ -208,9 +207,7 @@ var/global/list/light_type_cache = list()
 	desc = "A string of cable with lots of sockets - under construction."
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "fairy-construct-stage1"
-	anchored = 0
-	plane = OBJ_PLANE
-	layer = OBJ_LAYER
+	anchored = FALSE
 	stage = 1
 	fixture_type = /obj/machinery/light/fairy
 	sheets_refunded = 1
@@ -224,16 +221,16 @@ var/global/list/light_type_cache = list()
 		if(3)
 			icon_state = "fairy-empty"
 
-// the standard tube light fixture
+/// The standard tube light fixture.
 /obj/machinery/light
 	name = "light fixture"
 	icon = 'icons/obj/lighting_vr.dmi'
 	var/base_state = "tube" // base description and icon_state
 	icon_state = "tube1"
 	desc = "A lighting fixture."
-	anchored = 1
-	plane = MOB_PLANE
-	layer = ABOVE_MOB_LAYER
+	plane = GAME_PLANE_UPPER
+	layer = WALL_OBJ_LAYER
+	anchored = TRUE
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 2
 	active_power_usage = 10
@@ -311,8 +308,6 @@ var/global/list/light_type_cache = list()
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "flamp1"
 	base_state = "flamp"
-	plane = OBJ_PLANE
-	layer = OBJ_LAYER
 	desc = "A floor lamp."
 	light_type = /obj/item/light/bulb
 	construct_type = /obj/machinery/light_construct/flamp

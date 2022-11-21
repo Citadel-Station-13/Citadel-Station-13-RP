@@ -1,7 +1,8 @@
 /obj/structure
 	icon = 'icons/obj/structures.dmi'
-	w_class = ITEMSIZE_NO_CONTAINER
 	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND | INTERACT_ATOM_UI_INTERACT
+	layer = BELOW_OBJ_LAYER
+	w_class = ITEMSIZE_NO_CONTAINER
 
 	var/climbable
 	var/climb_delay = 3.5 SECONDS
@@ -10,8 +11,32 @@
 
 	var/list/connections
 	var/list/other_connections
-	var/list/blend_objects = newlist() // Objects which to blend with
-	var/list/noblend_objects = newlist() //Objects to avoid blending with (such as children of listed blend objects.
+	/// Objects which to blend with.
+	var/list/blend_objects = newlist()
+	/// Objects to avoid blending with (such as children of listed blend objects.
+	var/list/noblend_objects = newlist()
+
+/obj/structure/Initialize(mapload)
+	. = ..()
+	if(climbable)
+		verbs += /obj/structure/proc/climb_on
+
+	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
+		if(smoothing_flags & SMOOTH_CORNERS)
+			icon_state = ""
+	GLOB.cameranet.updateVisibility(src)
+
+/obj/structure/Destroy()
+	GLOB.cameranet.updateVisibility(src)
+	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		QUEUE_SMOOTH_NEIGHBORS(src)
+	return ..()
+
+/obj/structure/ui_act(action, params)
+	add_fingerprint(usr)
+	return ..()
 
 /obj/structure/attack_hand(mob/user)
 	if(breakable)
@@ -44,11 +69,6 @@
 				return
 		if(3.0)
 			return
-
-/obj/structure/Initialize(mapload)
-	. = ..()
-	if(climbable)
-		verbs += /obj/structure/proc/climb_on
 
 /obj/structure/proc/climb_on()
 

@@ -421,6 +421,7 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 
 /obj/structure/closet/secure_closet/wall
 	name = "wall locker"
+	icon = 'icons/obj/walllocker.dmi'
 	icon_state = "wall-locker1"
 	icon_closed = "wall-locker"
 	icon_locked = "wall-locker1"
@@ -428,10 +429,10 @@ GLOBAL_LIST_BOILERPLATE(all_brig_closets, /obj/structure/closet/secure_closet/br
 	icon_broken = "wall-lockerbroken"
 	icon_off = "wall-lockeroff"
 	req_access = list(access_security)
-	density = 1
+	density = TRUE
 
 	//too small to put a man in
-	large = 0
+	large = FALSE
 
 /obj/structure/closet/secure_closet/wall/update_icon()
 	if(broken)

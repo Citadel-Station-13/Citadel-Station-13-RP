@@ -277,7 +277,7 @@
 /obj/structure/fans/tiny
 	name = "tiny fan"
 	desc = "A tiny fan, releasing a thin gust of air."
-	plane = TURF_PLANE
+	plane = FLOOR_PLANE
 	layer = ABOVE_TURF_LAYER
 	density = FALSE
 	icon_state = "fan_tiny"

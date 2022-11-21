@@ -8,6 +8,8 @@
 	desc = "A huge chunk of iron used to separate rooms."
 	icon = 'icons/turf/wall_masks.dmi'
 	icon_state = "generic"
+	plane = GAME_PLANE
+
 	opacity = TRUE
 	density = TRUE
 	blocks_air = TRUE
@@ -251,7 +253,7 @@
 	O.icon_state = "2"
 	O.anchored = 1
 	O.density = 1
-	O.plane = ABOVE_PLANE
+	O.plane = ABOVE_GAME_PLANE
 
 	if(girder_material.integrity >= 150 && !girder_material.is_brittle()) //Strong girders will remain in place when a wall is melted.
 		dismantle_wall(1,1)

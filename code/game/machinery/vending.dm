@@ -256,7 +256,7 @@
 /obj/machinery/vending/query_transaction_details(list/data)
 	. = ..()
 	.[CHARGE_DETAIL_DEVICE] = name
-	.[CHARGE_DETAIL_LOCATION] = get_area(src).name
+	.[CHARGE_DETAIL_LOCATION] = get_area_name(src)
 	.[CHARGE_DETAIL_REASON] = currently_vending? "Purchase of [currently_vending.item_name]" : "Unknown"
 	.[CHARGE_DETAIL_RECIPIENT] = GLOB.vendor_account.owner_name
 

@@ -191,8 +191,8 @@
 
 			var/image/overmob = image('icons/obj/custom_items_vehicle.dmi', "[bike_icon]_on_overlay", MOB_LAYER + 1)
 			var/image/overmob_color = image('icons/obj/custom_items_vehicle.dmi', "[bike_icon]_on_overlay_a", MOB_LAYER + 1)
-			overmob.plane = MOB_PLANE
-			overmob_color.plane = MOB_PLANE
+			overmob.plane = GAME_PLANE_UPPER
+			overmob_color.plane = GAME_PLANE_UPPER
 			overmob_color.color = paint_color
 			overlays += overmob
 			overlays += overmob_color
@@ -207,8 +207,8 @@
 
 			var/image/overmob = image('icons/obj/custom_items_vehicle.dmi', "[bike_icon]_off_overlay", MOB_LAYER + 1)
 			var/image/overmob_color = image('icons/obj/custom_items_vehicle.dmi', "[bike_icon]_off_overlay_a", MOB_LAYER + 1)
-			overmob.plane = MOB_PLANE
-			overmob_color.plane = MOB_PLANE
+			overmob.plane = GAME_PLANE_UPPER
+			overmob_color.plane = GAME_PLANE_UPPER
 			overmob_color.color = paint_color
 			overlays += overmob
 			overlays += overmob_color
@@ -226,8 +226,8 @@
 
 		var/image/overmob = image('icons/obj/bike.dmi', "[bike_icon]_on_overlay", MOB_LAYER + 1)
 		var/image/overmob_color = image('icons/obj/bike.dmi', "[bike_icon]_on_overlay_a", MOB_LAYER + 1)
-		overmob.plane = MOB_PLANE
-		overmob_color.plane = MOB_PLANE
+		overmob.plane = GAME_PLANE_UPPER
+		overmob_color.plane = GAME_PLANE_UPPER
 		overmob_color.color = paint_color
 		overlays += overmob
 		overlays += overmob_color
@@ -242,8 +242,8 @@
 
 		var/image/overmob = image('icons/obj/bike.dmi', "[bike_icon]_off_overlay", MOB_LAYER + 1)
 		var/image/overmob_color = image('icons/obj/bike.dmi', "[bike_icon]_off_overlay_a", MOB_LAYER + 1)
-		overmob.plane = MOB_PLANE
-		overmob_color.plane = MOB_PLANE
+		overmob.plane = GAME_PLANE_UPPER
+		overmob_color.plane = GAME_PLANE_UPPER
 		overmob_color.color = paint_color
 		overlays += overmob
 		overlays += overmob_color

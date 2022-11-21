@@ -88,8 +88,8 @@
 
 		var/image/Overmob = new(icon = 'icons/obj/custom_items_vehicle.dmi', icon_state = "[frame_state]_overlay", layer = src.layer + 0.2) //over mobs
 		var/image/Overmob_color = new(icon = 'icons/obj/custom_items_vehicle.dmi', icon_state = "[frame_state]_overlay_a", layer = src.layer + 0.2) //over the over mobs, gives the color.
-		Overmob.plane = MOB_PLANE
-		Overmob_color.plane = MOB_PLANE
+		Overmob.plane = GAME_PLANE_UPPER
+		Overmob_color.plane = GAME_PLANE_UPPER
 		Overmob_color.color = paint_color
 
 		overlays += Overmob
@@ -102,8 +102,8 @@
 
 	var/image/Overmob = new(icon = 'icons/obj/vehicles_64x64.dmi', icon_state = "[frame_state]_overlay", layer = src.layer + 0.2) //over mobs
 	var/image/Overmob_color = new(icon = 'icons/obj/vehicles_64x64.dmi', icon_state = "[frame_state]_overlay_a", layer = src.layer + 0.2) //over the over mobs, gives the color.
-	Overmob.plane = MOB_PLANE
-	Overmob_color.plane = MOB_PLANE
+	Overmob.plane = GAME_PLANE_UPPER
+	Overmob_color.plane = GAME_PLANE_UPPER
 	Overmob_color.color = paint_color
 
 	overlays += Overmob

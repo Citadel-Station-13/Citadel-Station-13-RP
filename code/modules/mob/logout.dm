@@ -1,5 +1,6 @@
 /mob/Logout()
 	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_MOB_LOGOUT)
 	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGOUT, client)
 	SSnanoui.user_logout(src) // this is used to clean up (remove) this user's Nano UIs
 	SStgui.on_logout(src) // Cleanup any TGUIs the user has open
@@ -22,4 +23,4 @@
 		reset_perspective()
 
 	..()
-	return 1
+	return TRUE

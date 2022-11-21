@@ -4,6 +4,17 @@
  * A grouping of tiles into a logical space, mostly used by map editors
  */
 /area
+	name = "Unknown"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "unknown"
+	//Keeping this on the default plane, GAME_PLANE, will make area overlays fail to render on FLOOR_PLANE.
+	plane = AREA_PLANE
+	layer = AREA_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	// invisibility = INVISIBILITY_LIGHTING
+
+	level = null
+
 	/// area flags
 	var/area_flags = NONE
 
@@ -12,12 +23,6 @@
 	var/atmosalm = 0
 	var/poweralm = 1
 	var/party = null
-	level = null
-	name = "Unknown"
-	icon = 'icons/turf/areas.dmi'
-	icon_state = "unknown"
-	plane = ABOVE_LIGHTING_PLANE //In case we color them
-	mouse_opacity = 0
 	var/lightswitch = 1
 
 	var/eject = null

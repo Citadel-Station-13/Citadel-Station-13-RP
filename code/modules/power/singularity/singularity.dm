@@ -9,7 +9,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	icon_state = "singularity_s1"
 	anchored = 1
 	density = 1
-	plane = ABOVE_PLANE
+	plane = ABOVE_GAME_PLANE
 	light_range = 6
 	unacidable = 1 //Don't comment this out.
 

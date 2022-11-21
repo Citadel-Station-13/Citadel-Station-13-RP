@@ -234,9 +234,8 @@ GLOBAL_LIST_EMPTY(apcs)
 	desc = "A control terminal for the area electrical systems."
 	icon = 'icons/obj/power_vr.dmi'
 	icon_state = "apc0"
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	anchored = 1
+	anchored = TRUE
 	use_power = USE_POWER_OFF
 	req_access = list(access_engine_equip)
 	var/area/area

@@ -3,11 +3,11 @@
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/POIs/ranch)
 "b" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/outdoors/grass,
 /area/class_h/POIs/ranch)
 "d" = (
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny/style_random,
 /turf/simulated/floor/water,
 /area/class_h/POIs/ranch)
 "f" = (
@@ -30,7 +30,7 @@
 /turf/simulated/floor/outdoors/grass,
 /area/class_h/POIs/ranch)
 "k" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /mob/living/simple_mob/animal/passive/cow,
 /turf/simulated/floor/outdoors/grass,
 /area/class_h/POIs/ranch)
@@ -51,7 +51,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/ranch)
 "p" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/simulated/floor/outdoors/grass,
 /area/class_h/POIs/ranch)
 "v" = (
@@ -92,13 +92,13 @@
 /turf/simulated/floor/outdoors/grass,
 /area/class_h/POIs/ranch)
 "J" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /mob/living/simple_mob/animal/passive/chicken,
 /turf/simulated/floor/outdoors/grass,
 /area/class_h/POIs/ranch)
 "K" = (
 /obj/structure/railing,
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/sparsegrass/style_random,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/POIs/ranch)
 "M" = (
@@ -118,7 +118,7 @@
 /turf/simulated/floor/wood/classh,
 /area/class_h/POIs/ranch)
 "P" = (
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny/style_random,
 /turf/simulated/floor/holofloor/beach/water,
 /area/class_h/POIs/ranch)
 "Q" = (
@@ -159,7 +159,7 @@
 /turf/simulated/wall/sandstone/classh,
 /area/class_h/POIs/ranch)
 "U" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/sparsegrass/style_random,
 /turf/simulated/floor/outdoors/beach/sand/lowdesert,
 /area/class_h/POIs/ranch)
 "W" = (

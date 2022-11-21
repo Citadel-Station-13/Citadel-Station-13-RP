@@ -233,18 +233,16 @@ SUBSYSTEM_DEF(emergencyshuttle)
 			return "ETD-[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]"
 
 	return ""
-/*
-	Some slapped-together star effects for maximum spess immershuns. Basically consists of a
-	spawner, an ender, and bgstar. Spawners create bgstars, bgstars shoot off into a direction
-	until they reach a starender.
-*/
-
+/**
+ * Some slapped-together star effects for maximum spess immershuns. Basically consists of a
+ * spawner, an ender, and bgstar. Spawners create bgstars, bgstars shoot off into a direction
+ * until they reach a starender.
+ */
 /obj/effect/bgstar
 	name = "star"
 	var/speed = 10
 	var/direction = SOUTH
 	layer = TURF_LAYER
-	plane = TURF_PLANE
 
 /obj/effect/bgstar/Initialize(mapload)
 	. = ..()

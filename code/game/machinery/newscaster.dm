@@ -127,49 +127,55 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	desc = "A standard newsfeed handler for use on commercial space stations. All the news you absolutely have no use for, in one place!"
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "newscaster_normal"
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	anchored = TRUE
 
 	/// TRUE if someone banged it with something heavy.
 	var/isbroken = FALSE
 	/// Starts powered, changes with power_change()
-	var/ispowered = 1
-	//var/list/datum/feed_channel/channel_list = list() //This list will contain the names of the feed channels. Each name will refer to a data region where the messages of the feed channels are stored.
-	//OBSOLETE: We're now using a global news network
-	var/screen = 0 //Or maybe I'll make it into a list within a list afterwards... whichever I prefer, go fuck yourselves :3
-		// 0 = welcome screen - main menu
-		// 1 = view feed channels
-		// 2 = create feed channel
-		// 3 = create feed story
-		// 4 = feed story submited sucessfully
-		// 5 = feed channel created successfully
-		// 6 = ERROR: Cannot create feed story
-		// 7 = ERROR: Cannot create feed channel
-		// 8 = print newspaper
-		// 9 = viewing channel feeds
-		// 10 = censor feed story
-		// 11 = censor feed channel
-		//Holy shit this is outdated, made this when I was still starting newscasters :3
+	var/ispowered = TRUE
+	/**
+	 * 0 = welcome screen - main menu
+	 * 1 = view feed channels
+	 * 2 = create feed channel
+	 * 3 = create feed story
+	 * 4 = feed story submited sucessfully
+	 * 5 = feed channel created successfully
+	 * 6 = ERROR: Cannot create feed story
+	 * 7 = ERROR: Cannot create feed channel
+	 * 8 = print newspaper
+	 * 9 = viewing channel feeds
+	 * 10 = censor feed story
+	 * 11 = censor feed channel
+	 *
+	 *! Holy shit this is outdated, made this when I was still starting newscasters :3
+	 */
+	var/screen = 0 // Or maybe I'll make it into a list within a list afterwards... whichever I prefer, go fuck yourselves :3
 	var/paper_remaining = 0
-	var/securityCaster = 0
-		// 0 = Caster cannot be used to issue wanted posters
-		// 1 = the opposite
-	var/unit_no = 0 //Each newscaster has a unit number
-	//var/datum/feed_message/wanted //We're gonna use a feed_message to store data of the wanted person because fields are similar
-	//var/wanted_issue = 0          //OBSOLETE
-		// 0 = there's no WANTED issued, we don't need a special icon_state
-		// 1 = Guess what.
+	/**
+	 * FALSE = Caster cannot be used to issue wanted posters.
+	 * TRUE  = The opposite.
+	 */
+	var/securityCaster = FALSE
+	/// Each newscaster has a unit number.
+	var/unit_no = 0
 	var/alert_delay = 500
+	/**
+	 * There hasn't been a news/wanted update in the last alert_delay.
+	 * There has.
+	 */
 	var/alert = 0
-		// 0 = there hasn't been a news/wanted update in the last alert_delay
-		// 1 = there has
-	var/scanned_user = "Unknown" //Will contain the name of the person who currently uses the newscaster
-	var/msg = "";                //Feed message
+	/// Will contain the name of the person who currently uses the newscaster.
+	var/scanned_user = "Unknown"
+	/// Feed message.
+	var/msg = "";
 	var/datum/news_photo/photo_data = null
-	var/channel_name = ""; //the feed channel which will be receiving the feed, or being created
-	var/c_locked=0;        //Will our new channel be locked to public submissions?
-	var/hitstaken = 0      //Death at 3 hits from an item with force>=15
+	/// The feed channel which will be receiving the feed, or being created.
+	var/channel_name = "";
+	/// Will our new channel be locked to public submissions?
+	var/c_locked=0;
+	/// Death at 3 hits from an item with force>=15.
+	var/hitstaken = 0
 	var/datum/feed_channel/viewing_channel = null
 	light_range = 0
 	var/obj/machinery/exonet_node/node = null

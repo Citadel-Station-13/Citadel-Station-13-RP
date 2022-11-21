@@ -60,9 +60,11 @@
 /obj/effect/debris/cleanable/cobweb
 	name = "cobweb"
 	desc = "Somebody should remove that."
-	density = 0
-	anchored = 1
-	plane = OBJ_PLANE
+	gender = NEUTER
+	plane = GAME_PLANE_UPPER
+	layer = WALL_OBJ_LAYER
+	anchored = TRUE
+	density = FALSE
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "cobweb1"
 
@@ -71,7 +73,6 @@
 	desc = "It looks like a melted... something."
 	density = 0
 	anchored = 1
-	plane = OBJ_PLANE
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "molten"
 
@@ -80,7 +81,6 @@
 	desc = "Somebody should remove that."
 	density = 0
 	anchored = 1
-	plane = OBJ_PLANE
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "cobweb2"
 

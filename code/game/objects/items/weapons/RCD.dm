@@ -431,16 +431,16 @@
 	. = ..()
 	. += "It currently holds [remaining]/[initial(remaining)] matter-units."
 
-// RCD Construction Effects
+//! RCD Construction Effects
 
-/obj/item/rcd/proc/perform_effect(var/atom/A, var/time_taken)
+/obj/item/rcd/proc/perform_effect(atom/A, time_taken)
 	effects[A] = new /obj/effect/constructing_effect(get_turf(A), time_taken, modes[mode_index])
 
 /obj/item/rcd/use_rcd(atom/A, mob/living/user)
 	. = ..()
 	cleanup_effect(A)
 
-/obj/item/rcd/proc/cleanup_effect(var/atom/A)
+/obj/item/rcd/proc/cleanup_effect(atom/A)
 	if(A in effects)
 		qdel(effects[A])
 		effects -= A
@@ -448,10 +448,10 @@
 /obj/effect/constructing_effect
 	icon = 'icons/effects/effects_rcd.dmi'
 	icon_state = ""
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
 	var/status = 0
 	var/delay = 0
 

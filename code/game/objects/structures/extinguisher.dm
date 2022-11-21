@@ -1,14 +1,16 @@
 /obj/structure/extinguisher_cabinet
 	name = "extinguisher cabinet"
 	desc = "A small wall mounted cabinet designed to hold a fire extinguisher."
-	icon = 'icons/obj/closet.dmi'
+	icon = 'icons/obj/wallmount.dmi'
 	icon_state = "extinguisher_closed"
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
+
 	var/obj/item/extinguisher/has_extinguisher
 	var/opened = 0
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/extinguisher_cabinet, 29)
 
 /obj/structure/extinguisher_cabinet/Initialize(mapload, dir, building = FALSE)
 	. = ..()

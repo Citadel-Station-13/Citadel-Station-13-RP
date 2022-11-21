@@ -5,7 +5,7 @@
 	name = "tile decal"
 	icon = 'icons/turf/decals.dmi'
 	icon_state = "tile_corner"
-	layer = TURF_OVERLAY_DECAL_LAYER
+	layer = DECAL_OVERLAY_LAYER
 	alpha = 110
 
 #define PRIDE_ALPHA 60
@@ -580,7 +580,7 @@
 /obj/effect/turf_decal/trimline
 	icon = 'icons/turf/decals.dmi'
 	icon_state = "trimline_box"
-	layer = TURF_OVERLAY_DECAL_LAYER
+	layer = DECAL_OVERLAY_LAYER
 	alpha = 110
 
 /obj/effect/turf_decal/trimline/Initialize(mapload)

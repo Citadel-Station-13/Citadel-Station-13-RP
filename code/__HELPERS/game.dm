@@ -25,18 +25,12 @@
 		max_z = max(z, max_z)
 	return max_z
 
-/proc/get_area(atom/A)
-	RETURN_TYPE(/area)
-	if (isarea(A))
-		return A
-	var/turf/T = get_turf(A)
-	return T ? T.loc : null
-
-/proc/get_area_name(atom/X, format_text = FALSE)
-	var/area/A = isarea(X) ? X : get_area(X)
-	if(!A)
+/// Returns the name of the area the atom is in.
+/proc/get_area_name(atom/checked_atom, format_text = FALSE)
+	var/area/checked_area = isarea(checked_atom) ? checked_atom : get_area(checked_atom)
+	if(!checked_area)
 		return null
-	return format_text ? format_text(A.name) : A.name
+	return format_text ? format_text(checked_area.name) : checked_area.name
 
 /proc/get_area_master(const/O)
 	var/area/A = get_area(O)

@@ -155,7 +155,6 @@
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "tape"
 	w_class = ITEMSIZE_TINY
-	plane = MOB_PLANE
 	item_flags = ITEM_NOBLUDGEON
 	anchored = FALSE
 

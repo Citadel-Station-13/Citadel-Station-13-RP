@@ -7,7 +7,7 @@
 	icon = 'icons/obj/machines/shielding_vr.dmi'
 	icon_state = "shield"
 	anchored = TRUE
-	plane = MOB_PLANE
+	plane = GAME_PLANE_UPPER
 	layer = ABOVE_MOB_LAYER
 	density = FALSE
 	invisibility = 0
@@ -292,7 +292,7 @@
 	name = "shield impact"
 	icon = 'icons/obj/machines/shielding_vr.dmi'
 	icon_state = "shield_impact"
-	plane = MOB_PLANE
+	plane = GAME_PLANE_UPPER
 	layer = ABOVE_MOB_LAYER
 	duration = 2 SECONDS
 	randomdir = FALSE

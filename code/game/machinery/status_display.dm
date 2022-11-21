@@ -3,16 +3,19 @@
 #define FONT_STYLE "Small Fonts"
 #define SCROLL_SPEED 2
 
-// Status display
-// (formerly Countdown timer display)
+/**
+ *! Status display
+ *? (formerly Countdown timer display)
+ */
 
-// Use to show shuttle ETA/ETD times
-// Alert status
-// And arbitrary messages set by comms computer
+/**
+ * Use to show shuttle ETA/ETD times.
+ * Alert status.
+ * And arbitrary messages set by comms computer.
+ */
 /obj/machinery/status_display
 	icon = 'icons/obj/status_display.dmi'
 	icon_state = "frame"
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	name = "status display"
 	anchored = TRUE
@@ -20,27 +23,36 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	circuit = /obj/item/circuitboard/status_display
-	var/mode = 1	// 0 = Blank
-					// 1 = Shuttle timer
-					// 2 = Arbitrary message(s)
-					// 3 = Alert picture
-					// 4 = Supply shuttle timer
-
-	var/picture_state	// Icon_state of alert picture
-	var/message1 = ""	// Message line 1
-	var/message2 = ""	// Message line 2
-	var/index1			// Display index for scrolling messages or 0 if non-scrolling
-	var/index2
-	var/picture = null
-
-	var/frequency = 1435	// Radio frequency
-
-	var/friendc = 0			// Track if Friend Computer mode
-	var/ignore_friendc = 0
 
 	maptext_height = 26
 	maptext_width = 32
 	maptext_y = -1
+
+	/**
+	 * 0 = Blank.
+	 * 1 = Shuttle timer.
+	 * 2 = Arbitrary message(s).
+	 * 3 = Alert picture.
+	 * 4 = Supply shuttle timer.
+	 */
+	var/mode = 1
+	/// Icon_state of alert picture.
+	var/picture_state
+	/// Message line 1.
+	var/message1 = ""
+	/// Message line 2.
+	var/message2 = ""
+	/// Display index for scrolling messages or 0 if non-scrolling.
+	var/index1
+	var/index2
+	var/picture = null
+
+	/// Radio frequency.
+	var/frequency = 1435
+
+	/// Track if Friend Computer mode.
+	var/friendc = 0
+	var/ignore_friendc = 0
 
 	var/const/CHARS_PER_LINE = 5
 	var/const/STATUS_DISPLAY_BLANK = 0

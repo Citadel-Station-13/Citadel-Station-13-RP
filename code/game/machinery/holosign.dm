@@ -4,7 +4,6 @@
 	desc = "Small wall-mounted holographic projector"
 	icon = 'icons/obj/holosign.dmi'
 	icon_state = "sign_off"
-	plane = MOB_PLANE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 2
 	active_power_usage = 4

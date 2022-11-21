@@ -6,8 +6,8 @@
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 5
 	active_power_usage = 10
-	plane = MOB_PLANE
-	layer = BELOW_MOB_LAYER
+	plane = GAME_PLANE_UPPER
+	layer = WALL_OBJ_LAYER
 
 	var/list/network = list(NETWORK_DEFAULT)
 	var/c_tag = null

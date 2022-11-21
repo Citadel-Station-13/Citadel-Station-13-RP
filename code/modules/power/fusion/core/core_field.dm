@@ -9,7 +9,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	icon = 'icons/obj/machines/power/fusion.dmi'
 	icon_state = "emfield_s1"
 	alpha = 1
-	plane = MOB_PLANE
+	plane = GAME_PLANE_UPPER
 	layer = 4
 	light_color = "#cc7700"
 

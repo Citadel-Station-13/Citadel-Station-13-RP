@@ -10,8 +10,8 @@
 /obj/structure/bed/chair/modern_chair/Initialize(mapload)
 	. = ..()
 	var/image/I = image(icon, "[base_icon]_over")
+	I.plane = GAME_PLANE_UPPER
 	I.layer = ABOVE_MOB_LAYER
-	I.plane = MOB_PLANE
 	add_overlay(I)
 
 /obj/structure/bed/chair/bar_stool
@@ -77,7 +77,7 @@
 	cache_key = "[base_icon]-[material.name]-over"
 	if(isnull(stool_cache[cache_key]))
 		var/image/I = image(icon, "[base_icon]_over")
-		I.plane = MOB_PLANE
+		I.plane = GAME_PLANE_UPPER
 		I.layer = ABOVE_MOB_LAYER
 		if(applies_material_colour)
 			I.color = material.icon_colour
@@ -90,7 +90,7 @@
 		if(isnull(stool_cache[padding_cache_key]))
 			var/image/I =  image(icon, "[base_icon]_padding_over")
 			I.color = padding_material.icon_colour
-			I.plane = MOB_PLANE
+			I.plane = GAME_PLANE_UPPER
 			I.layer = ABOVE_MOB_LAYER
 			stool_cache[padding_cache_key] = I
 		add_overlay(stool_cache[padding_cache_key])
@@ -101,7 +101,7 @@
 		// Armrest ('_armrest') (base material color)
 		if(isnull(stool_cache[cache_key]))
 			var/image/I = image(icon, "[base_icon]_armrest")
-			I.plane = MOB_PLANE
+			I.plane = GAME_PLANE_UPPER
 			I.layer = ABOVE_MOB_LAYER
 			if(applies_material_colour)
 				I.color = material.icon_colour
@@ -112,7 +112,7 @@
 			// Padding Armrest ('_padding_armrest') (padding material color)
 			if(isnull(stool_cache[cache_key]))
 				var/image/I = image(icon, "[base_icon]_padding_armrest")
-				I.plane = MOB_PLANE
+				I.plane = GAME_PLANE_UPPER
 				I.layer = ABOVE_MOB_LAYER
 				I.color = padding_material.icon_colour
 				stool_cache[cache_key] = I
@@ -202,7 +202,7 @@
 /obj/structure/bed/chair/bay/comfy/captain/update_icon()
 	..()
 	var/image/I = image(icon, "[base_icon]_special")
-	I.plane = MOB_PLANE
+	I.plane = GAME_PLANE_UPPER
 	I.layer = ABOVE_MOB_LAYER
 	add_overlay(I)
 
@@ -232,7 +232,7 @@
 	..()
 	if(!has_buckled_mobs())
 		var/image/I = image(icon, "[base_icon]_special")
-		I.plane = MOB_PLANE
+		I.plane = GAME_PLANE_UPPER
 		I.layer = ABOVE_MOB_LAYER
 		if(applies_material_colour)
 			I.color = material.icon_colour

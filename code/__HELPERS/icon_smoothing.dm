@@ -144,7 +144,7 @@
 	update_appearance(~UPDATE_SMOOTHING)
 
 /atom/proc/custom_smooth()
-	CRASH("based custom_smooth called on atom")
+	CRASH("[type] called custom_smooth() on atom")
 
 /atom/proc/corners_diagonal_smooth(adjacencies)
 	switch(adjacencies)
@@ -289,8 +289,7 @@
 			return ADJ_FOUND
 
 	if(smoothing_flags & SMOOTH_OBJ)
-		for(var/am in target_turf)
-			var/atom/movable/thing = am
+		for(var/atom/movable/thing as anything in target_turf)
 			if(!thing.anchored || isnull(thing.smoothing_groups))
 				continue
 			for(var/target in canSmoothWith)
@@ -363,7 +362,7 @@
 					var/junction_dir = reverse_ndir(smoothing_junction)
 					var/turned_adjacency = REVERSE_DIR(junction_dir)
 					var/turf/neighbor_turf = get_step(src, turned_adjacency & (NORTH|SOUTH))
-					var/mutable_appearance/underlay_appearance = mutable_appearance(layer = TURF_LAYER, plane = TURF_PLANE)
+					var/mutable_appearance/underlay_appearance = mutable_appearance(layer = TURF_LAYER, plane = FLOOR_PLANE)
 					if(!neighbor_turf.get_smooth_underlay_icon(underlay_appearance, src, turned_adjacency))
 						neighbor_turf = get_step(src, turned_adjacency & (EAST|WEST))
 

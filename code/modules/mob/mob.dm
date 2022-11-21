@@ -319,7 +319,7 @@
 
 	var/obj/P = new /obj/effect/decal/point(tile)
 	P.invisibility = invisibility
-	P.plane = ABOVE_PLANE
+	P.plane = ABOVE_GAME_PLANE
 	P.layer = FLY_LAYER
 	P.pixel_x = A.pixel_x + world.icon_size * (x - A.x)
 	P.pixel_y = A.pixel_y + world.icon_size * (y - A.y)

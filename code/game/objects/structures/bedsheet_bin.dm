@@ -10,7 +10,6 @@ LINEN BINS
 	icon = 'icons/obj/items.dmi'
 	icon_state = "sheet"
 	slot_flags = SLOT_BACK
-	plane = MOB_PLANE
 	layer = BELOW_MOB_LAYER
 	throw_force = 1
 	throw_speed = 1

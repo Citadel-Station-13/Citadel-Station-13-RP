@@ -152,7 +152,7 @@
 	name = "mist"
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "mist"
-	plane = MOB_PLANE
+	plane = GAME_PLANE_UPPER
 	layer = ABOVE_MOB_LAYER
 	anchored = 1
 	mouse_opacity = 0

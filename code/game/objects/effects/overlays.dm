@@ -1,7 +1,8 @@
 /obj/effect/overlay
 	name = "overlay"
-	unacidable = 1
-	var/i_attached//Added for possible image attachments to objects. For hallucinations and the like.
+	unacidable = TRUE
+	/// Added for possible image attachments to objects. For hallucinations and the like.
+	var/i_attached
 
 /// Not actually a projectile, just an effect.
 /obj/effect/overlay/beam
@@ -10,28 +11,27 @@
 	icon_state="b_beam"
 	var/tmp/atom/BeamSource
 
-/obj/effect/overlay/beam/New()
-	..()
-	spawn(10)
-		qdel(src)
+/obj/effect/overlay/beam/Initialize(mapload)
+	. = ..()
+	QDEL_IN(src, 10)
 
 /obj/effect/overlay/palmtree_r
 	name = "Palm tree"
 	icon = 'icons/misc/beach2.dmi'
 	icon_state = "palm1"
-	density = 1
-	plane = MOB_PLANE
-	layer = ABOVE_MOB_LAYER
-	anchored = 1
+	plane = GAME_PLANE_UPPER
+	layer = WALL_OBJ_LAYER
+	anchored = TRUE
+	density = TRUE
 
 /obj/effect/overlay/palmtree_l
 	name = "Palm tree"
 	icon = 'icons/misc/beach2.dmi'
 	icon_state = "palm2"
-	density = 1
-	plane = MOB_PLANE
-	layer = ABOVE_MOB_LAYER
-	anchored = 1
+	plane = GAME_PLANE_UPPER
+	layer = WALL_OBJ_LAYER
+	anchored = TRUE
+	density = TRUE
 
 /obj/effect/overlay/coconut
 	name = "Coconuts"
@@ -42,7 +42,7 @@
 	name = "Bluespace"
 	icon = 'icons/turf/space.dmi'
 	icon_state = "bluespacify"
-	plane = ABOVE_PLANE
+	plane = ABOVE_GAME_PLANE
 
 /obj/effect/overlay/wallrot
 	name = "wallrot"
@@ -50,7 +50,6 @@
 	icon = 'icons/effects/wallrot.dmi'
 	anchored = 1
 	density = 1
-	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
 	mouse_opacity = 0
 
@@ -76,9 +75,8 @@
 
 /obj/effect/overlay/snow/floor
 	icon_state = "snowfloor"
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	mouse_opacity = 0 //Don't block underlying tile interactions
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT // Don't block underlying tile interactions.
 
 /obj/effect/overlay/snow/floor/edges
 	icon = 'icons/turf/snow.dmi'
@@ -113,13 +111,13 @@
 
 /obj/effect/overlay/snow/wall
 	icon_state = "snowwall"
-	plane = MOB_PLANE
+	plane = GAME_PLANE_UPPER
 	layer = ABOVE_MOB_LAYER
 
 /obj/effect/overlay/holographic
 	mouse_opacity = FALSE
 	anchored = TRUE
-	plane = ABOVE_PLANE
+	plane = ABOVE_GAME_PLANE
 
 // Similar to the tesla ball but doesn't actually do anything and is purely visual.
 /obj/effect/overlay/energy_ball

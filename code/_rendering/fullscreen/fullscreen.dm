@@ -79,8 +79,8 @@
 	icon = 'icons/screen/fullscreen/fullscreen_15x15.dmi'
 	icon_state = "default"
 	screen_loc = "CENTER-7,CENTER-7"
-	layer = FULLSCREEN_LAYER
 	plane = FULLSCREEN_PLANE
+	layer = FULLSCREEN_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	/// current view we're adapted to
 	var/view_current

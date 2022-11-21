@@ -17,8 +17,12 @@ Thus, the two variables affect pump operation are set in New():
 	icon_state = "map_off"
 	construction_type = /obj/item/pipe/directional
 	pipe_state = "pump"
+	base_icon_state = "pump"
 	level = 1
-	var/base_icon = "pump"
+
+	use_power = USE_POWER_OFF
+	idle_power_usage = 150		//internal circuitry, friction losses and stuff
+	power_rating = 7500			//7500 W ~ 10 HP
 
 	name = "gas pump"
 	desc = "A pump"
@@ -26,10 +30,6 @@ Thus, the two variables affect pump operation are set in New():
 	var/target_pressure = ONE_ATMOSPHERE
 
 	//var/max_volume_transfer = 10000
-
-	use_power = USE_POWER_OFF
-	idle_power_usage = 150		//internal circuitry, friction losses and stuff
-	power_rating = 7500			//7500 W ~ 10 HP
 
 	var/max_pressure_setting = 15000	//kPa
 
@@ -83,7 +83,7 @@ Thus, the two variables affect pump operation are set in New():
 
 /obj/machinery/atmospherics/component/binary/pump/fuel
 	icon_state = "map_off-fuel"
-	base_icon = "pump-fuel"
+	base_icon_state = "pump-fuel"
 	icon_connect_type = "-fuel"
 	connect_types = CONNECT_TYPE_FUEL
 
@@ -93,7 +93,7 @@ Thus, the two variables affect pump operation are set in New():
 
 /obj/machinery/atmospherics/component/binary/pump/aux
 	icon_state = "map_off-aux"
-	base_icon = "pump-aux"
+	base_icon_state = "pump-aux"
 	icon_connect_type = "-aux"
 	connect_types = CONNECT_TYPE_AUX
 
@@ -103,9 +103,9 @@ Thus, the two variables affect pump operation are set in New():
 
 /obj/machinery/atmospherics/component/binary/pump/update_icon()
 	if(!powered())
-		icon_state = "[base_icon]-off"
+		icon_state = "[base_icon_state]-off"
 	else
-		icon_state = "[use_power ? "[base_icon]-on" : "[base_icon]-off"]"
+		icon_state = "[use_power ? "[base_icon_state]-on" : "[base_icon_state]-off"]"
 
 /obj/machinery/atmospherics/component/binary/pump/update_underlays()
 	if(..())

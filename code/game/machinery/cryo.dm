@@ -6,7 +6,7 @@
 	icon_state = "pod_preview"
 	density = TRUE
 	anchored = TRUE
-	layer = UNDER_JUNK_LAYER
+	layer = BELOW_OBJ_LAYER
 	interact_offline = TRUE
 
 	var/on = FALSE
@@ -34,12 +34,12 @@
 	var/image/tank = image(icon,"tank")
 	tank.alpha = 200
 	tank.pixel_y = 18
-	tank.plane = MOB_PLANE
+	tank.plane = GAME_PLANE_UPPER
 	tank.layer = MOB_LAYER+0.2 //Above fluid
 	fluid = image(icon, "tube_filler")
 	fluid.pixel_y = 18
 	fluid.alpha = 200
-	fluid.plane = MOB_PLANE
+	fluid.plane = GAME_PLANE_UPPER
 	fluid.layer = MOB_LAYER+0.1 //Below glass, above mob
 
 	add_overlay(tank)

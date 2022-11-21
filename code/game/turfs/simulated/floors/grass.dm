@@ -10,8 +10,8 @@ var/list/grass_types = list(
 	var/grass_chance = 20
 
 	var/list/grass_types = list(
-		/obj/structure/flora/ausbushes/sparsegrass,
-		/obj/structure/flora/ausbushes/fullgrass
+		/obj/structure/flora/bush/sparsegrass,
+		/obj/structure/flora/bush/fullgrass
 		)
 
 /datum/category_item/catalogue/flora/sif_grass

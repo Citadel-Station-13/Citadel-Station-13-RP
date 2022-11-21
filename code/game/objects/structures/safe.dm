@@ -74,9 +74,10 @@ FLOOR SAFES
 /obj/structure/safe/update_icon()
 	if(open)
 		icon_state = "[initial(icon_state)]-open"
+		layer = BELOW_OBJ_LAYER
 	else
 		icon_state = initial(icon_state)
-
+		layer = OBJ_LAYER
 
 /obj/structure/safe/attack_hand(mob/user as mob)
 	user.set_machine(src)
@@ -176,20 +177,19 @@ FLOOR SAFES
 /obj/structure/safe/floor
 	name = "floor safe"
 	icon_state = "floorsafe"
-	density = 0
-	level = 1	//underfloor
-	plane = TURF_PLANE
-	layer = ABOVE_UTILITY
+	density = FALSE
+	level = 1 //underfloor
+	layer = LOW_OBJ_LAYER
 
 /obj/structure/safe/floor/Initialize(mapload)
 	. = ..()
 	var/turf/T = loc
 	if(istype(T) && !T.is_plating())
-		hide(1)
+		hide(TRUE)
 	update_icon()
 
-/obj/structure/safe/floor/hide(var/intact)
-	invisibility = intact ? 101 : 0
+/obj/structure/safe/floor/hide(intact)
+	invisibility = intact ? INVISIBILITY_ABSTRACT : 0
 
 /obj/structure/safe/floor/hides_under_flooring()
-	return 1
+	return TRUE

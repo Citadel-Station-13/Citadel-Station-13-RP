@@ -166,7 +166,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 			middle = part
 		if(count <= 3) // Their sprite is the top part of the generator
 			part.density = FALSE
-			part.plane = MOB_PLANE
+			part.plane = GAME_PLANE_UPPER
 			part.layer = ABOVE_MOB_LAYER
 		part.sprite_number = count
 		part.main_part = src

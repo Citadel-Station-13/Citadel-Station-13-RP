@@ -52,7 +52,7 @@
 	desc = "A resonating field that significantly damages anything inside of it when the field eventually ruptures."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shield1"
-	plane = MOB_PLANE
+	plane = GAME_PLANE_UPPER
 	layer = ABOVE_MOB_LAYER
 	mouse_opacity = 0
 	var/resonance_damage = 20
@@ -97,7 +97,7 @@
 
 /obj/effect/temp_visual/resonance_crush
 	icon_state = "shield1"
-	plane = MOB_PLANE
+	plane = GAME_PLANE_UPPER
 	layer = ABOVE_MOB_LAYER
 	duration = 4
 

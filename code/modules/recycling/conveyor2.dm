@@ -10,9 +10,8 @@
 	icon_state = "conveyor0"
 	name = "conveyor belt"
 	desc = "A conveyor belt."
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	anchored = 1
+	anchored = TRUE
 	circuit = /obj/item/circuitboard/conveyor
 	speed_process = TRUE
 	/// What we set things to glide size to when they are being moved by us

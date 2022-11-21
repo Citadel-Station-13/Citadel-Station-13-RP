@@ -56,15 +56,15 @@
 		var/cache_key = "[base_icon]-armrest-[padding_material.name]"
 		if(isnull(stool_cache[cache_key]))
 			var/image/I = image(icon, "[base_icon]_armrest")
+			I.plane = GAME_PLANE_UPPER
 			I.layer = MOB_LAYER + 0.1
-			I.plane = MOB_PLANE
 			I.color = padding_material.icon_colour
 			stool_cache[cache_key] = I
 		overlays |= stool_cache[cache_key]
 
 /obj/structure/bed/chair/proc/update_layer()
 	if(src.dir == NORTH)
-		plane = MOB_PLANE
+		plane = GAME_PLANE_UPPER
 		layer = MOB_LAYER + 0.1
 	else
 		reset_plane_and_layer()
@@ -225,7 +225,7 @@
 /obj/structure/bed/chair/update_layer()
 	// Corner east/west should be on top of mobs, any other state's north should be.
 	if((icon_state == "sofacorner" && ((dir & EAST) || (dir & WEST))) || (icon_state != "sofacorner" && (dir & NORTH)))
-		plane = MOB_PLANE
+		plane = GAME_PLANE_UPPER
 		layer = MOB_LAYER + 0.1
 	else
 		reset_plane_and_layer()

@@ -3505,7 +3505,7 @@
 	icon_state = "spline_fancy";
 	dir = 9
 	},
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "jn" = (
@@ -3518,7 +3518,7 @@
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "jp" = (
@@ -3567,7 +3567,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/reed/style_random,
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "jv" = (
@@ -3681,7 +3681,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/reed/style_random,
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "jM" = (
@@ -3691,7 +3691,7 @@
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 6
 	},
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "jO" = (
@@ -3703,7 +3703,7 @@
 	icon_state = "spline_fancy";
 	dir = 10
 	},
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "jQ" = (
@@ -3763,7 +3763,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/reed/style_random,
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "jX" = (
@@ -3786,7 +3786,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/reed/style_random,
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "ka" = (
@@ -3965,48 +3965,48 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo)
 "kD" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "kE" = (
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "kF" = (
-/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/flora/bush/leafy/style_random,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "kG" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "kH" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /mob/living/simple_mob/animal/passive/bird/parrot/kea{
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "kI" = (
-/obj/structure/flora/ausbushes/pointybush,
+/obj/structure/flora/bush/pointy/style_random,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "kJ" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br/style_random,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "kK" = (
-/obj/structure/flora/ausbushes/pointybush,
+/obj/structure/flora/bush/pointy/style_random,
 /mob/living/simple_mob/animal/passive/bird/parrot/pink_cockatoo{
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "kL" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/sparsegrass/style_random,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "kM" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "kN" = (
@@ -4114,7 +4114,7 @@
 /turf/simulated/floor/tiled,
 /area/awaymission/zoo)
 "ld" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "le" = (
@@ -4124,29 +4124,29 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "lf" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "lg" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /mob/living/simple_mob/animal/passive/bird/parrot/cockatiel/grey{
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "lh" = (
-/obj/structure/flora/ausbushes,
+/obj/structure/flora/bush/snow/style_random,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "li" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br/style_random,
 /mob/living/simple_mob/animal/passive/bird/parrot/cockatiel/yellowish{
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "lj" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /mob/living/simple_mob/animal/passive/bird/parrot/budgerigar/bluegreen{
 	faction = "zoo"
 	},
@@ -4320,14 +4320,14 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "lJ" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /mob/living/simple_mob/animal/passive/bird/parrot/cockatiel{
 	faction = "zoo"
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "lK" = (
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/generic/style_random,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "lL" = (
@@ -4739,7 +4739,7 @@
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "mK" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/reed/style_random,
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "mL" = (
@@ -4817,35 +4817,35 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "mQ" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass2"
 	},
 /area/awaymission/zoo)
 "mR" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass2"
 	},
 /area/awaymission/zoo)
 "mS" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass1"
 	},
 /area/awaymission/zoo)
 "mT" = (
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/lavendergrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass1"
 	},
 /area/awaymission/zoo)
 "mU" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "mV" = (
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/lavendergrass/style_random,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "mW" = (
@@ -4877,13 +4877,13 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "mY" = (
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/generic/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass1"
 	},
 /area/awaymission/zoo)
 "mZ" = (
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass1"
 	},
@@ -4900,7 +4900,7 @@
 	},
 /area/awaymission/zoo)
 "nc" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass3"
 	},
@@ -4911,7 +4911,7 @@
 	},
 /area/awaymission/zoo)
 "ne" = (
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass3"
 	},
@@ -4923,7 +4923,7 @@
 	},
 /area/awaymission/zoo)
 "ng" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/sparsegrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass1"
 	},
@@ -4935,13 +4935,13 @@
 	},
 /area/awaymission/zoo)
 "ni" = (
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass2"
 	},
 /area/awaymission/zoo)
 "nj" = (
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny/style_random,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "nk" = (
@@ -4949,7 +4949,7 @@
 /turf/simulated/wall,
 /area/awaymission/zoo)
 "nl" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/stalky/style_random,
 /turf/simulated/floor/outdoors/beach,
 /area/awaymission/zoo)
 "nm" = (
@@ -4959,7 +4959,7 @@
 	},
 /area/awaymission/zoo)
 "nn" = (
-/obj/structure/flora/ausbushes,
+/obj/structure/flora/bush/snow/style_random,
 /turf/simulated/floor/holofloor/grass{
 	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
@@ -5008,13 +5008,13 @@
 	},
 /area/awaymission/zoo)
 "nu" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass0"
 	},
 /area/awaymission/zoo)
 "nv" = (
-/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/flora/bush/leafy/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass0"
 	},
@@ -5036,7 +5036,7 @@
 	},
 /area/awaymission/zoo)
 "nz" = (
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass0"
 	},
@@ -5048,13 +5048,13 @@
 	},
 /area/awaymission/zoo)
 "nB" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass1"
 	},
 /area/awaymission/zoo)
 "nC" = (
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/lavendergrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass0"
 	},
@@ -5067,14 +5067,14 @@
 	},
 /area/awaymission/zoo)
 "nE" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /turf/simulated/floor/holofloor/grass{
 	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "nF" = (
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/lavendergrass/style_random,
 /turf/simulated/floor/holofloor/grass{
 	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
@@ -5165,13 +5165,13 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "nQ" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass1"
 	},
 /area/awaymission/zoo)
 "nR" = (
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass0"
 	},
@@ -5191,13 +5191,13 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "nT" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass2"
 	},
 /area/awaymission/zoo)
 "nU" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass0"
 	},
@@ -5209,25 +5209,25 @@
 	},
 /area/awaymission/zoo)
 "nW" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass3"
 	},
 /area/awaymission/zoo)
 "nX" = (
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/generic/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass0"
 	},
 /area/awaymission/zoo)
 "nY" = (
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/lavendergrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass0"
 	},
 /area/awaymission/zoo)
 "nZ" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass2"
 	},
@@ -5239,7 +5239,7 @@
 	},
 /area/awaymission/zoo)
 "ob" = (
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/lavendergrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass3"
 	},
@@ -5273,7 +5273,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "oe" = (
-/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/flora/bush/leafy/style_random,
 /turf/simulated/floor/holofloor/grass{
 	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
@@ -5320,7 +5320,7 @@
 	},
 /area/awaymission/zoo)
 "ok" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass1"
 	},
@@ -5331,19 +5331,19 @@
 	},
 /area/awaymission/zoo)
 "om" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/sparsegrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass4"
 	},
 /area/awaymission/zoo)
 "on" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass3"
 	},
 /area/awaymission/zoo)
 "oo" = (
-/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/flora/bush/leafy/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass4"
 	},
@@ -5355,21 +5355,21 @@
 	},
 /area/awaymission/zoo)
 "oq" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/holofloor/grass{
 	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "or" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br/style_random,
 /turf/simulated/floor/holofloor/grass{
 	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "os" = (
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/generic/style_random,
 /turf/simulated/floor/holofloor/grass{
 	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
@@ -5391,7 +5391,7 @@
 /turf/simulated/floor/lino,
 /area/awaymission/zoo)
 "ow" = (
-/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/flora/bush/leafy/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass0"
 	},
@@ -5409,13 +5409,13 @@
 	},
 /area/awaymission/zoo)
 "oz" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass0"
 	},
 /area/awaymission/zoo)
 "oA" = (
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/lavendergrass/style_random,
 /mob/living/simple_mob/animal/passive/cat{
 	faction = "zoo"
 	},
@@ -5434,14 +5434,14 @@
 	},
 /area/awaymission/zoo)
 "oC" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/sparsegrass/style_random,
 /turf/simulated/floor/holofloor/grass{
 	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "oD" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /turf/simulated/floor/holofloor/grass{
 	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
@@ -5465,19 +5465,19 @@
 /turf/simulated/mineral/floor/ignore_mapgen,
 /area/awaymission/zoo)
 "oG" = (
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/lavendergrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass1"
 	},
 /area/awaymission/zoo)
 "oH" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass0"
 	},
 /area/awaymission/zoo)
 "oI" = (
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/generic/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass2"
 	},
@@ -5489,7 +5489,7 @@
 	},
 /area/awaymission/zoo)
 "oK" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass0"
 	},
@@ -5503,7 +5503,7 @@
 	},
 /area/awaymission/zoo)
 "oM" = (
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/lavendergrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass2"
 	},
@@ -5513,7 +5513,7 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "oO" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
@@ -5522,7 +5522,7 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "oQ" = (
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/lavendergrass/style_random,
 /obj/effect/turf_decal/spline/fancy/wood,
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
@@ -5577,7 +5577,7 @@
 	},
 /area/awaymission/zoo)
 "oX" = (
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/generic/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass3"
 	},
@@ -5615,7 +5615,7 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "pd" = (
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/generic/style_random,
 /obj/effect/turf_decal/spline/fancy/wood{
 	icon_state = "spline_fancy";
 	dir = 10
@@ -5665,7 +5665,7 @@
 	},
 /area/awaymission/zoo)
 "pi" = (
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass3"
 	},
@@ -5685,7 +5685,7 @@
 	},
 /area/awaymission/zoo)
 "pl" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass1"
 	},
@@ -5711,38 +5711,38 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "pp" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/simulated/floor/holofloor/grass{
 	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "pq" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/sparsegrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass1"
 	},
 /area/awaymission/zoo)
 "pr" = (
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass4"
 	},
 /area/awaymission/zoo)
 "ps" = (
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/generic/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass0"
 	},
 /area/awaymission/zoo)
 "pt" = (
-/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/flora/bush/leafy/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass1"
 	},
 /area/awaymission/zoo)
 "pu" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass4"
 	},
@@ -5754,7 +5754,7 @@
 	},
 /area/awaymission/zoo)
 "pw" = (
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/generic/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass1"
 	},
@@ -5766,21 +5766,21 @@
 	},
 /area/awaymission/zoo)
 "py" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "pz" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/simulated/floor/holofloor/grass{
 	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
 	},
 /area/awaymission/zoo)
 "pA" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/sparsegrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass2"
 	},
@@ -5800,7 +5800,7 @@
 	},
 /area/awaymission/zoo)
 "pD" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass1"
 	},
@@ -5826,7 +5826,7 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "pH" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /obj/effect/turf_decal/spline/fancy/wood{
 	icon_state = "spline_fancy";
 	dir = 9
@@ -5834,26 +5834,26 @@
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "pI" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/awaymission/zoo)
 "pJ" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass0"
 	},
 /area/awaymission/zoo)
 "pK" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass3"
 	},
 /area/awaymission/zoo)
 "pL" = (
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny/style_random,
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
@@ -5915,25 +5915,25 @@
 /turf/simulated/floor/lino,
 /area/awaymission/zoo)
 "pR" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass0"
 	},
 /area/awaymission/zoo)
 "pS" = (
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/generic/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass4"
 	},
 /area/awaymission/zoo)
 "pT" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass3"
 	},
 /area/awaymission/zoo)
 "pU" = (
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/generic/style_random,
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
@@ -5975,19 +5975,19 @@
 /turf/simulated/floor/lino,
 /area/awaymission/zoo)
 "qa" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass4"
 	},
 /area/awaymission/zoo)
 "qb" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass4"
 	},
 /area/awaymission/zoo)
 "qc" = (
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/lavendergrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass3"
 	},
@@ -6053,19 +6053,19 @@
 /turf/simulated/floor/lino,
 /area/awaymission/zoo)
 "qk" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/sparsegrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass0"
 	},
 /area/awaymission/zoo)
 "ql" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass3"
 	},
 /area/awaymission/zoo)
 "qm" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
@@ -6088,7 +6088,7 @@
 /turf/simulated/floor/lino,
 /area/awaymission/zoo)
 "qq" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass4"
 	},
@@ -6104,7 +6104,7 @@
 	},
 /area/awaymission/zoo)
 "qt" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass4"
 	},
@@ -6122,7 +6122,7 @@
 	},
 /area/awaymission/zoo)
 "qw" = (
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny/style_random,
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
@@ -6140,7 +6140,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "qy" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "fullgrass0"
 	},
@@ -6211,21 +6211,21 @@
 	icon_state = "spline_fancy";
 	dir = 9
 	},
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "qF" = (
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br/style_random,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "qG" = (
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 5
 	},
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "qH" = (
@@ -6247,18 +6247,18 @@
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "qL" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "qM" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "qN" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 1
 	},
@@ -6309,15 +6309,15 @@
 /turf/simulated/floor,
 /area/awaymission/zoo)
 "qX" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "qY" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "qZ" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/style_random,
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "ra" = (
@@ -6337,14 +6337,14 @@
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br/style_random,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "rd" = (
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br/style_random,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "re" = (
@@ -6373,18 +6373,18 @@
 	icon_state = "spline_fancy";
 	dir = 10
 	},
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "rh" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 8
 	},
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "ri" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/effect/turf_decal/spline/fancy/wood/corner,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
@@ -6392,7 +6392,7 @@
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 6
 	},
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "rk" = (
@@ -6432,7 +6432,7 @@
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 2
 	},
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br/style_random,
 /turf/simulated/floor/grass,
 /area/awaymission/zoo)
 "rs" = (
@@ -6603,7 +6603,7 @@
 	},
 /area/awaymission/zoo)
 "rH" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/sparsegrass/style_random,
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "rI" = (
@@ -6620,7 +6620,7 @@
 	},
 /area/awaymission/zoo)
 "rJ" = (
-/obj/structure/flora/bush,
+/obj/structure/flora/bush/style_random,
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "rK" = (
@@ -6694,7 +6694,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/awaymission/zoo)
 "rQ" = (
-/obj/structure/flora/grass/both,
+/obj/structure/flora/grass/both/style_random,
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "rR" = (
@@ -6825,7 +6825,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/awaymission/zoo)
 "sd" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /mob/living/simple_mob/animal/passive/penguin{
 	faction = "zoo"
 	},
@@ -6839,7 +6839,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "sf" = (
-/obj/structure/flora/grass/both,
+/obj/structure/flora/grass/both/style_random,
 /mob/living/simple_mob/animal/passive/penguin{
 	faction = "zoo"
 	},
@@ -7256,11 +7256,11 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "sY" = (
-/obj/structure/flora/grass/green,
+/obj/structure/flora/grass/green/style_random,
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "sZ" = (
-/obj/structure/flora/grass/brown,
+/obj/structure/flora/grass/brown/style_random,
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "ta" = (
@@ -7323,14 +7323,14 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "tf" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/holofloor/wood{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
 	},
 /area/awaymission/zoo)
 "tg" = (
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/generic/style_random,
 /turf/simulated/floor/holofloor/wood{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
@@ -7366,7 +7366,7 @@
 /turf/simulated/floor/cult,
 /area/awaymission/zoo)
 "tm" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "tn" = (
@@ -7377,14 +7377,14 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "to" = (
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/lavendergrass/style_random,
 /turf/simulated/floor/holofloor/wood{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
 	},
 /area/awaymission/zoo)
 "tp" = (
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny/style_random,
 /turf/simulated/floor/holofloor/wood{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
@@ -7411,28 +7411,28 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "tu" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /turf/simulated/floor/holofloor/wood{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
 	},
 /area/awaymission/zoo)
 "tv" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /turf/simulated/floor/holofloor/wood{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
 	},
 /area/awaymission/zoo)
 "tw" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /turf/simulated/floor/holofloor/wood{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
 	},
 /area/awaymission/zoo)
 "tx" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /mob/living/simple_mob/animal/passive/yithian{
 	faction = "zoo"
 	},
@@ -7461,11 +7461,11 @@
 /turf/simulated/floor/cult,
 /area/awaymission/zoo)
 "tB" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "tC" = (
-/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/flora/bush/leafy/style_random,
 /turf/simulated/floor/holofloor/wood{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
@@ -7476,11 +7476,11 @@
 /turf/simulated/floor/cult,
 /area/awaymission/zoo)
 "tE" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "tF" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/simulated/floor/holofloor/wood{
 	icon = 'icons/turf/floors.dmi';
 	icon_state = "diona"
@@ -7535,7 +7535,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "tK" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/sparsegrass/style_random,
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "tL" = (
@@ -7765,7 +7765,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "uk" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/sparsegrass/style_random,
 /mob/living/simple_mob/vore/aggressive/dino{
 	faction = "zoo"
 	},
@@ -7848,7 +7848,7 @@
 	},
 /area/awaymission/zoo)
 "uv" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /turf/simulated/floor/holofloor/beach/sand{
 	icon_state = "dgrass1"
 	},
@@ -7966,7 +7966,7 @@
 	},
 /area/awaymission/zoo)
 "uN" = (
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/generic/style_random,
 /mob/living/simple_mob/animal/space/bear/brown{
 	faction = "zoo"
 	},
@@ -8014,7 +8014,7 @@
 /turf/simulated/floor/plating,
 /area/awaymission/zoo)
 "uS" = (
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny/style_random,
 /turf/simulated/floor/holofloor/grass{
 	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
@@ -8080,7 +8080,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/awaymission/zoo)
 "va" = (
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny/style_random,
 /mob/living/carbon/human/monkey{
 	faction = "zoo"
 	},
@@ -8096,7 +8096,7 @@
 	},
 /area/awaymission/zoo)
 "vc" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /turf/simulated/floor/holofloor/grass{
 	icon = 'icons/jungle.dmi';
 	icon_state = "grass2"
@@ -8232,7 +8232,7 @@
 /turf/simulated/floor/holofloor/snow,
 /area/awaymission/zoo)
 "vr" = (
-/obj/structure/flora/bush,
+/obj/structure/flora/bush/style_random,
 /mob/living/simple_mob/animal/sif/shantak{
 	faction = "zoo"
 	},
@@ -8247,7 +8247,7 @@
 	},
 /area/awaymission/zoo)
 "vt" = (
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/lavendergrass/style_random,
 /mob/living/carbon/human/monkey{
 	faction = "zoo"
 	},

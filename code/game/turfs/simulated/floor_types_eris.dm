@@ -880,8 +880,8 @@
 	grass_chance = 40
 
 	grass_types = list(
-		/obj/structure/flora/ausbushes/sparsegrass,
-		/obj/structure/flora/ausbushes/fullgrass
+		/obj/structure/flora/bush/sparsegrass,
+		/obj/structure/flora/bush/fullgrass
 		)
 /turf/simulated/floor/outdoors/grass/heavy/interior
     name = "heavy grass"

@@ -62,4 +62,4 @@
 	icon_state = "back"
 	circuit = /obj/item/circuitboard/disperserback
 	density = FALSE
-	layer = UNDER_JUNK_LAYER //So the charges go above us.
+	layer = BELOW_OBJ_LAYER //So the charges go above us.

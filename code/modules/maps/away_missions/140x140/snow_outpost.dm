@@ -25,9 +25,9 @@
 					  /mob/living/simple_mob/animal/sif/kururak, /mob/living/simple_mob/animal/sif/frostfly)
 	valid_flora = list(/obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine,
 					/obj/structure/flora/tree/dead, /obj/structure/flora/grass/brown, /obj/structure/flora/grass/green,
-					/obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/ausbushes/grassybush,
-					/obj/structure/flora/ausbushes/sunnybush, /obj/structure/flora/ausbushes/genericbush, /obj/structure/flora/ausbushes/pointybush,
-					/obj/structure/flora/ausbushes/lavendergrass, /obj/structure/flora/ausbushes/sparsegrass, /obj/structure/flora/ausbushes/fullgrass)
+					/obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/bush/grassy,
+					/obj/structure/flora/bush/sunny, /obj/structure/flora/bush/generic, /obj/structure/flora/bush/pointy,
+					/obj/structure/flora/bush/lavendergrass, /obj/structure/flora/bush/sparsegrass, /obj/structure/flora/bush/fullgrass)
 
 /area/awaymission/snow_outpost/outside/EvalValidSpawnTurfs()
 	..()

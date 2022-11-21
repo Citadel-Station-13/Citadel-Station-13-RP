@@ -753,7 +753,7 @@
 /area/shuttle/trade_ship/general)
 "cN" = (
 /obj/structure/window/reinforced,
-/obj/structure/flora/bush,
+/obj/structure/flora/bush/style_random,
 /turf/simulated/floor/snow,
 /area/tradeport/cyndishow)
 "cP" = (
@@ -1001,7 +1001,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tradeport/medical)
 "dB" = (
-/obj/structure/flora/tree/jungle_small,
+/obj/structure/flora/tree/jungle/small/style_random,
 /turf/simulated/floor/grass,
 /area/tradeport/safarizoo)
 "dC" = (
@@ -3335,7 +3335,7 @@
 /turf/simulated/floor/airless,
 /area/tradeport/spine)
 "mN" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /obj/effect/turf_decal/grass_edge,
 /turf/simulated/floor/outdoors/dirtlight,
 /area/tradeport/cyndishow)
@@ -3831,7 +3831,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/facility)
 "or" = (
-/obj/structure/flora/tree/jungle,
+/obj/structure/flora/tree/jungle/style_random,
 /turf/simulated/floor/grass,
 /area/tradeport/safarizoo)
 "os" = (
@@ -5681,7 +5681,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/outdoors/dirt,
 /area/tradeport/cyndishow)
 "vo" = (
@@ -7776,7 +7776,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/shuttle/trade_ship/cockpit)
 "CV" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/style_random,
 /turf/simulated/floor/snow,
 /area/tradeport/cyndishow)
 "CW" = (
@@ -10228,7 +10228,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/flora/ausbushes,
+/obj/structure/flora/bush/snow/style_random,
 /obj/effect/turf_decal/grass_edge{
 	dir = 8
 	},
@@ -10470,7 +10470,7 @@
 /turf/simulated/shuttle/floor/white,
 /area/shuttle/trade_ship/cockpit)
 "NP" = (
-/obj/structure/flora/grass/brown,
+/obj/structure/flora/grass/brown/style_random,
 /turf/simulated/floor/snow,
 /area/tradeport/cyndishow)
 "NT" = (

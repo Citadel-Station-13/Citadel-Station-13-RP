@@ -11,8 +11,8 @@
 		/area/turbolift/runder/level1,
 		/area/turbolift/rsurface/level1,
 		/area/turbolift/rsurface/level2,
-		/area/turbolift/rsurface/level3
-		)
+		/area/turbolift/rsurface/level3,
+	)
 
 /obj/turbolift_map_holder/rift_mining
 	name = "Atlas Minging Lift"
@@ -26,8 +26,8 @@
 		/area/turbolift/rmine/under3,
 		/area/turbolift/rmine/under2,
 		/area/turbolift/rmine/under1,
-		/area/turbolift/rmine/surface
-		)
+		/area/turbolift/rmine/surface,
+	)
 
 /obj/turbolift_map_holder/rift_west_base
 	name = "Atlas Minging Lift"
@@ -43,8 +43,8 @@
 		/area/turbolift/rwest_mining/base,
 		/area/turbolift/rwest_mining/deep,
 		/area/turbolift/rwest_mining/caves,
-		/area/turbolift/rwest_mining/surface
-		)
+		/area/turbolift/rwest_mining/surface,
+	)
 
 /obj/turbolift_map_holder/triumph
 	name = "Triumph Climber"
@@ -58,8 +58,8 @@
 		/area/turbolift/t_ship/level1,
 		/area/turbolift/t_ship/level2,
 		/area/turbolift/t_ship/level3,
-		/area/turbolift/t_ship/level4
-		)
+		/area/turbolift/t_ship/level4,
+	)
 
 
 /obj/turbolift_map_holder/tether
@@ -76,8 +76,8 @@
 		/area/turbolift/t_surface/level3,
 		/area/turbolift/tether/transit,
 		/area/turbolift/t_station/level1,
-		/area/turbolift/t_station/level2
-		)
+		/area/turbolift/t_station/level2,
+	)
 
 
 

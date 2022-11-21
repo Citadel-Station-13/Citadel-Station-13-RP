@@ -20,7 +20,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/source_desert)
 "ak" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/sparsegrass/style_random,
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/source_desert)
 "al" = (
@@ -33,11 +33,11 @@
 /turf/unsimulated/wall,
 /area/space)
 "am" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
 "an" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/sparsegrass/style_random,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
 "ao" = (
@@ -140,15 +140,15 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/shuttle/escape)
 "aF" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/source_desert)
 "aG" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
 "aH" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
 "aI" = (
@@ -229,7 +229,7 @@
 /turf/unsimulated/wall,
 /area/centcom/suppy)
 "aW" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /obj/effect/turf_decal/spline/fancy/wood/corner,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
@@ -238,7 +238,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/tdome)
 "aZ" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 8
 	},
@@ -747,14 +747,14 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/suppy)
 "cz" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/source_picnicarea)
 "cA" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 4
 	},
@@ -1163,7 +1163,7 @@
 /turf/simulated/floor/holofloor/space,
 /area/holodeck/source_space)
 "dQ" = (
-/obj/structure/flora/grass/both,
+/obj/structure/flora/grass/both/style_random,
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/source_snowfield)
 "dR" = (
@@ -1354,7 +1354,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "et" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/style_random,
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/source_snowfield)
 "eu" = (
@@ -1417,7 +1417,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/centcom/simulated/evac)
 "eE" = (
-/obj/structure/flora/grass/green,
+/obj/structure/flora/grass/green/style_random,
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/source_snowfield)
 "eF" = (
@@ -1875,7 +1875,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/centcom/simulated/security)
 "fV" = (
-/obj/structure/flora/grass/brown,
+/obj/structure/flora/grass/brown/style_random,
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/source_snowfield)
 "fW" = (
@@ -2504,8 +2504,8 @@
 /turf/simulated/floor/holofloor/beach/sand,
 /area/holodeck/holodorm/source_beach)
 "hS" = (
-/obj/structure/flora/grass/brown,
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/grass/brown/style_random,
+/obj/structure/flora/tree/dead/style_random,
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/holodorm/source_snow)
 "hT" = (
@@ -2579,7 +2579,7 @@
 /turf/simulated/floor/grass,
 /area/centcom/simulated/evac)
 "ij" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /turf/simulated/floor/grass,
 /area/centcom/simulated/evac)
 "il" = (
@@ -2676,11 +2676,11 @@
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/holodorm/source_snow)
 "iC" = (
-/obj/structure/flora/grass/brown,
+/obj/structure/flora/grass/brown/style_random,
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/holodorm/source_snow)
 "iD" = (
-/obj/structure/flora/grass/green,
+/obj/structure/flora/grass/green/style_random,
 /obj/structure/flora/tree/pine,
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/holodorm/source_snow)
@@ -2727,11 +2727,11 @@
 /turf/unsimulated/floor/steel,
 /area/centcom/simulated/evac)
 "iM" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/simulated/floor/grass,
 /area/centcom/simulated/evac)
 "iN" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /turf/simulated/floor/grass,
 /area/centcom/simulated/evac)
 "iO" = (
@@ -2776,7 +2776,7 @@
 /area/centcom/simulated/evac)
 "iV" = (
 /obj/structure/table/bench/wooden,
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /turf/simulated/floor/grass,
 /area/centcom/simulated/evac)
 "iW" = (
@@ -2838,11 +2838,11 @@
 /turf/simulated/floor/holofloor/beach/water,
 /area/holodeck/holodorm/source_beach)
 "jg" = (
-/obj/structure/flora/grass/green,
+/obj/structure/flora/grass/green/style_random,
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/holodorm/source_snow)
 "jh" = (
-/obj/structure/flora/grass/both,
+/obj/structure/flora/grass/both/style_random,
 /turf/simulated/floor/holofloor/snow,
 /area/holodeck/holodorm/source_snow)
 "ji" = (
@@ -3279,22 +3279,22 @@
 /turf/simulated/floor/holofloor/space,
 /area/space)
 "km" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/holodorm/source_desert)
 "kn" = (
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/holodorm/source_desert)
 "ko" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/sparsegrass/style_random,
 /turf/simulated/floor/holofloor/desert,
 /area/holodeck/holodorm/source_desert)
 "kp" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/holodorm/source_garden)
 "kq" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /turf/simulated/floor/holofloor/grass,
 /area/holodeck/holodorm/source_garden)
 "kr" = (
@@ -3439,7 +3439,7 @@
 /turf/simulated/floor/holofloor/space,
 /area/space)
 "kK" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/landmark{
 	name = "Catgirl Spawn"
 	},

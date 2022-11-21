@@ -63,11 +63,11 @@
 	icon_state = "railing0";
 	dir = 1
 	},
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /turf/simulated/floor/water,
 /area/submap/spa)
 "am" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /turf/simulated/floor/grass,
 /area/submap/spa)
 "an" = (
@@ -107,7 +107,7 @@
 /turf/simulated/floor/water,
 /area/submap/spa)
 "as" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /obj/structure/railing{
 	icon_state = "railing0";
 	dir = 4
@@ -119,11 +119,11 @@
 	icon_state = "railing0";
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /turf/simulated/floor/water,
 /area/submap/spa)
 "au" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/simulated/floor/grass,
 /area/submap/spa)
 "av" = (
@@ -140,7 +140,7 @@
 /area/submap/spa)
 "ax" = (
 /obj/structure/railing,
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/simulated/floor/grass,
 /area/submap/spa)
 "ay" = (
@@ -161,7 +161,7 @@
 /area/submap/spa)
 "aB" = (
 /obj/structure/railing,
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /turf/simulated/floor/water,
 /area/submap/spa)
 "aC" = (

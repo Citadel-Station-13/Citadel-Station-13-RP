@@ -5,22 +5,25 @@ var/global/list/image/splatter_cache=list()
 
 /obj/effect/debris/cleanable/blood
 	name = "blood"
-	var/dryname = "dried blood"
 	desc = "It's thick and gooey. Perhaps it's the chef's cooking?"
-	var/drydesc = "It's dry and crusty. Someone is not doing their job."
 	gender = PLURAL
 	density = 0
 	anchored = 1
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "mfloor1"
 	random_icon_states = list("mfloor1", "mfloor2", "mfloor3", "mfloor4", "mfloor5", "mfloor6", "mfloor7")
-	var/base_icon = 'icons/effects/blood.dmi'
 	blood_DNA = list()
+
+	var/dryname = "dried blood"
+	var/drydesc = "It's dry and crusty. Someone is not doing their job."
+	var/drytime
+
+	var/base_icon = 'icons/effects/blood.dmi'
 	var/basecolor="#A10808" // Color when wet.
+
 	var/synthblood = 0
 	var/list/datum/disease2/disease/virus2 = list()
 	var/amount = 5
-	var/drytime
 
 /obj/effect/debris/cleanable/blood/reveal_blood()
 	if(!fluorescent)
@@ -138,8 +141,8 @@ var/global/list/image/splatter_cache=list()
 		user.verbs += /mob/living/carbon/human/proc/bloody_doodle
 
 /obj/effect/debris/cleanable/blood/splatter
-        random_icon_states = list("mgibbl1", "mgibbl2", "mgibbl3", "mgibbl4", "mgibbl5")
-        amount = 2
+	random_icon_states = list("mgibbl1", "mgibbl2", "mgibbl3", "mgibbl4", "mgibbl5")
+	amount = 2
 
 /obj/effect/debris/cleanable/blood/drip
 	name = "drips of blood"

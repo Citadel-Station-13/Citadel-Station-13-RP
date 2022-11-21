@@ -517,7 +517,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/effect/turf_decal/grass_edge{
 	dir = 1
 	},
@@ -661,7 +661,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/grass_edge,
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "aBk" = (
@@ -1335,7 +1335,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /obj/effect/turf_decal/grass_edge{
 	dir = 1
 	},
@@ -1474,7 +1474,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "bjY" = (
@@ -1665,7 +1665,7 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
 "bqw" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /obj/structure/flora/tree/sif,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
@@ -1740,7 +1740,7 @@
 /obj/effect/turf_decal/spline/fancy{
 	dir = 1
 	},
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny/style_random,
 /turf/simulated/floor/water/deep/indoors,
 /area/hydroponics/garden)
 "bum" = (
@@ -2052,7 +2052,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/exploration/courser_dock)
 "bGc" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /obj/effect/turf_decal/grass_edge,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
@@ -2155,7 +2155,7 @@
 /area/maintenance/central)
 "bKC" = (
 /obj/structure/railing,
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "bKU" = (
@@ -2723,7 +2723,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "ccJ" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "ccW" = (
@@ -3359,7 +3359,7 @@
 /turf/simulated/floor/wood,
 /area/hallway/secondary/docking_hallway)
 "cCw" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /obj/structure/railing{
 	dir = 8
 	},
@@ -3785,7 +3785,7 @@
 /turf/simulated/floor/tiled,
 /area/security/security_lockerroom)
 "cUU" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/structure/railing{
 	dir = 1
 	},
@@ -3942,7 +3942,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/generic/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "dga" = (
@@ -4040,7 +4040,7 @@
 /turf/simulated/floor/plating,
 /area/exploration/excursion_dock)
 "dkB" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /obj/effect/turf_decal/spline/plain{
 	dir = 9
 	},
@@ -4210,7 +4210,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "dqW" = (
@@ -5384,7 +5384,7 @@
 /turf/simulated/floor/tiled,
 /area/maintenance/chapel)
 "ecI" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "ecQ" = (
@@ -5830,7 +5830,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/clownoffice)
 "euB" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/effect/turf_decal/grass_edge{
 	dir = 9
 	},
@@ -6954,7 +6954,7 @@
 /obj/effect/turf_decal/grass_edge{
 	dir = 5
 	},
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "fbp" = (
@@ -7207,7 +7207,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /obj/effect/turf_decal/grass_edge,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -8355,7 +8355,7 @@
 /obj/effect/turf_decal/spline/fancy{
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny/style_random,
 /turf/simulated/floor/water/deep/indoors,
 /area/hydroponics/garden)
 "glA" = (
@@ -8892,7 +8892,7 @@
 /turf/simulated/floor/tiled,
 /area/bridge/hallway)
 "gAj" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /obj/effect/turf_decal/spline/plain,
 /turf/simulated/floor/grass,
 /area/security/brig)
@@ -9422,7 +9422,7 @@
 /turf/simulated/floor/wood,
 /area/hydroponics/garden)
 "gWS" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /turf/simulated/floor/grass,
 /area/security/brig)
 "gWT" = (
@@ -9526,7 +9526,7 @@
 /obj/effect/turf_decal/grass_edge{
 	dir = 1
 	},
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /obj/machinery/firealarm{
 	layer = 3.3;
 	pixel_x = 4;
@@ -11044,7 +11044,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "hYz" = (
@@ -12300,7 +12300,7 @@
 /turf/simulated/floor/tiled,
 /area/security/hanger)
 "iSm" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /obj/structure/railing{
 	dir = 8
 	},
@@ -12491,7 +12491,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "jcn" = (
@@ -12990,7 +12990,7 @@
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/cockpit)
 "jve" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /obj/structure/railing,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
@@ -13259,7 +13259,7 @@
 /turf/simulated/floor/plating,
 /area/crew_quarters/lounge)
 "jFI" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /obj/effect/turf_decal/spline/plain{
 	dir = 1
 	},
@@ -14476,7 +14476,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "kIp" = (
@@ -15831,7 +15831,7 @@
 /area/hallway/secondary/docking_hallway)
 "lyT" = (
 /obj/structure/railing,
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "lzp" = (
@@ -16048,7 +16048,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
@@ -16137,7 +16137,7 @@
 	},
 /obj/effect/turf_decal/grass_edge,
 /obj/structure/closet/crate/hydroponics,
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /obj/item/material/minihoe,
 /obj/item/material/minihoe,
 /obj/item/shovel/spade,
@@ -16738,7 +16738,7 @@
 /area/maintenance/chapel)
 "mfz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "mgK" = (
@@ -16963,7 +16963,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/riot_control)
 "moj" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /obj/effect/turf_decal/spline/plain{
 	dir = 6
 	},
@@ -18116,7 +18116,7 @@
 /obj/item/radio/intercom{
 	pixel_y = -24
 	},
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "nky" = (
@@ -18126,7 +18126,7 @@
 /area/crew_quarters/heads/hop)
 "nlp" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/structure/railing{
 	dir = 8
 	},
@@ -18586,7 +18586,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
 "nAS" = (
-/obj/structure/flora/tree/jungle,
+/obj/structure/flora/tree/jungle/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "nBi" = (
@@ -19327,7 +19327,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/hallway/secondary/civilian_hallway_mid)
 "oib" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /obj/effect/turf_decal/spline/plain{
 	dir = 4
 	},
@@ -19354,7 +19354,7 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
 "ois" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /obj/effect/turf_decal/spline/plain{
 	dir = 8
 	},
@@ -19844,7 +19844,7 @@
 "oxG" = (
 /obj/effect/turf_decal/spline/fancy,
 /obj/structure/railing,
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/stalky,
 /turf/simulated/floor/water/deep/indoors,
 /area/hydroponics/garden)
 "oxJ" = (
@@ -20263,7 +20263,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "oNU" = (
@@ -20771,7 +20771,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "pdI" = (
@@ -21032,7 +21032,7 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "pjF" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /obj/effect/turf_decal/grass_edge{
 	dir = 4
 	},
@@ -21356,7 +21356,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "pyH" = (
@@ -21441,7 +21441,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/flora/tree/jungle,
+/obj/structure/flora/tree/jungle/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "pEd" = (
@@ -21656,7 +21656,7 @@
 /turf/simulated/floor/plating,
 /area/exploration/explorer_prep)
 "pMj" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /obj/effect/turf_decal/grass_edge{
 	dir = 4
 	},
@@ -21781,7 +21781,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "pPW" = (
@@ -22266,7 +22266,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "qeC" = (
@@ -22407,7 +22407,7 @@
 /turf/simulated/floor/wood,
 /area/library)
 "qiX" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "qjp" = (
@@ -24403,7 +24403,7 @@
 /obj/effect/turf_decal/grass_edge{
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "ruN" = (
@@ -25177,7 +25177,7 @@
 /turf/simulated/floor/wood,
 /area/maintenance/security/starboard)
 "rZq" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/stalky,
 /turf/simulated/floor/water/deep/indoors,
 /area/hydroponics/garden)
 "rZF" = (
@@ -25468,7 +25468,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /obj/effect/turf_decal/grass_edge{
 	dir = 8
 	},
@@ -25571,7 +25571,7 @@
 /turf/simulated/floor/tiled,
 /area/security/eva)
 "spo" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/effect/turf_decal/grass_edge{
 	dir = 4
 	},
@@ -25947,7 +25947,7 @@
 	},
 /obj/effect/turf_decal/grass_edge,
 /obj/item/reagent_containers/glass/bucket/wood,
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "sDg" = (
@@ -25960,7 +25960,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "sDy" = (
@@ -26036,7 +26036,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /obj/structure/railing,
 /obj/structure/lightpost,
 /turf/simulated/floor/grass,
@@ -26268,7 +26268,7 @@
 "sNj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/structure/flora/tree/jungle,
+/obj/structure/flora/tree/jungle/style_random,
 /obj/structure/railing,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
@@ -27944,7 +27944,7 @@
 "uas" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/railing,
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "ubk" = (
@@ -29665,7 +29665,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "vnf" = (
@@ -30109,7 +30109,7 @@
 	},
 /obj/effect/turf_decal/grass_edge,
 /obj/structure/lightpost,
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "vAk" = (
@@ -30160,7 +30160,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/security/starboard)
 "vBd" = (
-/obj/structure/flora/tree/jungle_small,
+/obj/structure/flora/tree/jungle/small/style_random,
 /obj/structure/railing,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
@@ -30169,7 +30169,7 @@
 	dir = 8
 	},
 /obj/structure/railing,
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "vBq" = (
@@ -31096,7 +31096,7 @@
 /turf/simulated/floor/tiled/monotile,
 /area/security/forensics)
 "wdF" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /obj/structure/railing,
 /obj/structure/railing{
 	dir = 4
@@ -31167,7 +31167,7 @@
 /area/library)
 "wfa" = (
 /obj/structure/railing,
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "wfb" = (
@@ -31190,7 +31190,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /obj/structure/flora/tree/sif,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
@@ -31608,7 +31608,7 @@
 	dir = 4;
 	pixel_x = -23
 	},
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /obj/effect/turf_decal/grass_edge{
 	dir = 8
 	},
@@ -32292,7 +32292,7 @@
 /obj/effect/turf_decal/grass_edge{
 	dir = 1
 	},
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "wVd" = (
@@ -32394,7 +32394,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "xaP" = (
@@ -32652,7 +32652,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/structure/lightpost,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
@@ -32945,7 +32945,7 @@
 /obj/effect/turf_decal/grass_edge{
 	dir = 5
 	},
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /obj/machinery/firealarm{
 	layer = 3.3;
 	pixel_x = 4;
@@ -33321,7 +33321,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /obj/structure/railing,
 /obj/effect/turf_decal/grass_edge{
 	dir = 9
@@ -33971,7 +33971,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/flora/tree/jungle,
+/obj/structure/flora/tree/jungle/style_random,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "yfn" = (
@@ -34108,7 +34108,7 @@
 /obj/effect/turf_decal/grass_edge{
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /turf/simulated/floor/grass,
 /area/hydroponics/garden)
 "ykE" = (

@@ -201,14 +201,13 @@
 /obj/structure/closet/hydrant //wall mounted fire closet
 	name = "fire-safety closet"
 	desc = "It's a storage unit for fire-fighting supplies."
+	icon = 'icons/obj/walllocker.dmi'
 	icon_state = "hydrant"
 	icon_closed = "hydrant"
 	icon_opened = "hydrant_open"
-	plane = TURF_PLANE
-	layer = ABOVE_TURF_LAYER
-	anchored = 1
-	density = 0
-	wall_mounted = 1
+	anchored = TRUE
+	density = FALSE
+	wall_mounted = TRUE
 
 	starts_with = list(
 		/obj/item/clothing/suit/fire/firefighter,
@@ -226,15 +225,10 @@
 /obj/structure/closet/medical_wall //wall mounted medical closet
 	name = "first-aid closet"
 	desc = "It's wall-mounted storage unit for first aid supplies."
+	icon = 'icons/obj/walllocker.dmi'
 	icon_state = "medical_wall"
 	icon_closed = "medical_wall"
 	icon_opened = "medical_wall_open"
-	anchored = 1
-	density = 0
-	wall_mounted = 1
-
-/obj/structure/closet/medical_wall/update_icon()
-	if(!opened)
-		icon_state = icon_closed
-	else
-		icon_state = icon_opened
+	anchored = TRUE
+	density = FALSE
+	wall_mounted = TRUE

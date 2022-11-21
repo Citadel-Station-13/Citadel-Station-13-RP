@@ -6,7 +6,7 @@
 	density = 0
 	anchored = 1.0
 	w_class = ITEMSIZE_NORMAL
-	plane = PLATING_PLANE
+	plane = FLOOR_PLANE
 
 /obj/structure/lattice/Initialize(mapload)
 	. = ..()

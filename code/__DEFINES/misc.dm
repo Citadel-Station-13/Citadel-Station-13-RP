@@ -16,41 +16,44 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 #define NOT_IMPLEMENTED	"NOT_IMPLEMENTED"
 
-// Invisibility constants. These should only be used for TRUE invisibility, AKA nothing living players touch
-#define INVISIBILITY_LIGHTING		20
-#define INVISIBILITY_LEVEL_ONE		35
-#define INVISIBILITY_LEVEL_TWO		45
-#define INVISIBILITY_OBSERVER		60
-#define INVISIBILITY_EYE			61
+/**
+ *! Invisibility constants.
+ *? These should only be used for TRUE invisibility, AKA nothing living players touch.
+ */
+#define INVISIBILITY_LIGHTING  20
+#define INVISIBILITY_LEVEL_ONE 35
+#define INVISIBILITY_LEVEL_TWO 45
+#define INVISIBILITY_OBSERVER  60
+#define INVISIBILITY_EYE       61
 
-#define SEE_INVISIBLE_LIVING		25
-#define SEE_INVISIBLE_NOLIGHTING	15
-#define SEE_INVISIBLE_LEVEL_ONE		35
-#define SEE_INVISIBLE_LEVEL_TWO		45
-#define SEE_INVISIBLE_CULT			60
-#define SEE_INVISIBLE_OBSERVER		61
+#define SEE_INVISIBLE_LIVING     25
+#define SEE_INVISIBLE_NOLIGHTING 15
+#define SEE_INVISIBLE_LEVEL_ONE  35
+#define SEE_INVISIBLE_LEVEL_TWO  45
+#define SEE_INVISIBLE_CULT       60
+#define SEE_INVISIBLE_OBSERVER   61
 
-#define SEE_INVISIBLE_MINIMUM		5
-#define INVISIBILITY_MAXIMUM		100
-#define INVISIBILITY_ABSTRACT		101
+#define SEE_INVISIBLE_MINIMUM 5
+#define INVISIBILITY_MAXIMUM  100
+#define INVISIBILITY_ABSTRACT 101 // Only used for abstract objects (e.g. spacevine_controller), things that are not really there.
 
 /// Pseudo-Invis, like Ninja, Ling, Etc.
 /// Below this, can't be examined, may as well be invisible to the game
-#define EFFECTIVE_INVIS				50
+#define EFFECTIVE_INVIS 50
 
 /// default mob sight flags
 #define SIGHT_FLAGS_DEFAULT (SEE_SELF)
 
 /// For the client FPS pref and anywhere else
-#define MAX_CLIENT_FPS	200
+#define MAX_CLIENT_FPS 200
 
 // Some arbitrary defines to be used by self-pruning global lists. (see master_controller)
 /// Used to trigger removal from a processing list.
-#define PROCESS_KILL	26
+#define PROCESS_KILL 26
 /// Used in chargen for accessory loadout limit.
-#define MAX_GEAR_COST					20
+#define MAX_GEAR_COST 20
 /// Used in chargen for accessory loadout limit on holidays.
-#define MAX_GEAR_COST_HOLIDAY_SPAM		30
+#define MAX_GEAR_COST_HOLIDAY_SPAM 30
 
 //	Shuttles.
 

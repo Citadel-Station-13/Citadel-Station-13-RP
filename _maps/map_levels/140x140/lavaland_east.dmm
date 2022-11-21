@@ -131,7 +131,7 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/east/colony)
 "bs" = (
-/obj/structure/flora/tree/jungle,
+/obj/structure/flora/tree/jungle/style_random,
 /turf/simulated/floor/outdoors/grass/lavaland/interior,
 /area/lavaland/east/colony)
 "bv" = (
@@ -263,7 +263,7 @@
 /turf/simulated/mineral/ignore_mapgen/lavaland,
 /area/lavaland/east/colony)
 "fv" = (
-/obj/structure/flora/ausbushes,
+/obj/structure/flora/bush/snow/style_random,
 /turf/simulated/floor/outdoors/grass/lavaland/interior,
 /area/lavaland/east/colony)
 "fC" = (
@@ -709,7 +709,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "nL" = (
-/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/flora/bush/leafy/style_random,
 /turf/simulated/floor/outdoors/grass/lavaland/interior,
 /area/lavaland/east/colony)
 "nR" = (
@@ -938,7 +938,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "sJ" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/stalky/style_random,
 /turf/simulated/floor/water/lavaland/interior,
 /area/lavaland/east/colony)
 "sR" = (
@@ -1936,7 +1936,7 @@
 /turf/simulated/floor/lavaland,
 /area/lavaland/east/colony)
 "Oj" = (
-/obj/structure/flora/tree/jungle_small,
+/obj/structure/flora/tree/jungle/small/style_random,
 /turf/simulated/floor/outdoors/dirt/lavaland/interior,
 /area/lavaland/east/colony)
 "Ot" = (
@@ -2214,7 +2214,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Tm" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/simulated/floor/outdoors/grass/lavaland/interior,
 /area/lavaland/east/colony)
 "To" = (
@@ -2385,7 +2385,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "WM" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/outdoors/grass/lavaland/interior,
 /area/lavaland/east/colony)
 "WO" = (
@@ -2422,7 +2422,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "Xn" = (
-/obj/structure/flora/tree/jungle_small,
+/obj/structure/flora/tree/jungle/small/style_random,
 /turf/simulated/floor/outdoors/grass/lavaland/interior,
 /area/lavaland/east/colony)
 "Xo" = (
@@ -2442,7 +2442,7 @@
 /turf/simulated/floor/tiled/lavaland,
 /area/lavaland/east/colony)
 "XE" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /turf/simulated/floor/outdoors/grass/lavaland/interior,
 /area/lavaland/east/colony)
 "XF" = (

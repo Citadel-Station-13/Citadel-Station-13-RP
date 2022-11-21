@@ -1,7 +1,8 @@
 /atom/movable
 	layer = OBJ_LAYER
+	glide_size = 8
 	// todo: evaluate if we need TILE_BOUND
-	SET_APPEARANCE_FLAGS(TILE_BOUND | PIXEL_SCALE)
+	SET_APPEARANCE_FLAGS(TILE_BOUND | PIXEL_SCALE | LONG_GLIDE)
 
 	// todo: kill this (only used for elcetropacks)
 	var/moved_recently = FALSE
@@ -375,7 +376,7 @@
 	G.maptext_width = 256
 	G.maptext_x = -128 + (world.icon_size * 0.5)
 	G.maptext_y = 32
-	G.plane = PLANE_GHOSTS
+	G.plane = GHOST_PLANE
 	G.loc = null		// lol
 	vis_contents += G
 	return G

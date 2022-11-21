@@ -10,9 +10,9 @@
 /// Called on /basic when updating its speed, from base of /mob/living/basic/update_basic_mob_varspeed(): ()
 ////#define POST_BASIC_MOB_UPDATE_VARSPEED "post_basic_mob_update_varspeed"
 /// From base of /mob/Login(): ()
-////#define COMSIG_MOB_LOGIN "mob_login"
+#define COMSIG_MOB_LOGIN "mob_login"
 /// From base of /mob/Logout(): ()
-////#define COMSIG_MOB_LOGOUT "mob_logout"
+#define COMSIG_MOB_LOGOUT "mob_logout"
 /// From base of mob/set_stat(): (new_stat, old_stat)
 ////#define COMSIG_MOB_STATCHANGE "mob_statchange"
 /// From base of mob/clickon(): (atom/A, params)

@@ -13,14 +13,14 @@
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Epod4)
 "e" = (
-/obj/structure/flora/grass/green,
+/obj/structure/flora/grass/green/style_random,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Epod4)
 "f" = (
 /turf/simulated/floor/water,
 /area/submap/Epod4)
 "g" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/style_random,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Epod4)
 "h" = (
@@ -32,7 +32,7 @@
 /turf/simulated/shuttle/plating,
 /area/submap/Epod4)
 "j" = (
-/obj/structure/flora/grass/both,
+/obj/structure/flora/grass/both/style_random,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Epod4)
 "k" = (
@@ -95,7 +95,7 @@
 /turf/simulated/floor/water,
 /area/submap/Epod4)
 "q" = (
-/obj/structure/flora/grass/brown,
+/obj/structure/flora/grass/brown/style_random,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Epod4)
 

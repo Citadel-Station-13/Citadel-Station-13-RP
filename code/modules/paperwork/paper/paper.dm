@@ -27,8 +27,6 @@
 	w_class = ITEMSIZE_TINY
 	throw_range = 1
 	throw_speed = 1
-	plane = MOB_PLANE
-	layer = MOB_LAYER
 	pressure_resistance = 1
 	slot_flags = SLOT_HEAD
 	body_parts_covered = HEAD

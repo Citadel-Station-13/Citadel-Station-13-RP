@@ -908,7 +908,12 @@
 /area/awaymission/snow_outpost
 	icon_state = "blank"
 	requires_power = 0
-	ambience = list('sound/music/main.ogg', 'sound/ambience/maintenance/maintenance4.ogg', 'sound/ambience/sif/sif1.ogg', 'sound/ambience/ruins/ruins1.ogg')
+	ambience = list(
+		'sound/music/main.ogg',
+		'sound/ambience/maintenance/maintenance4.ogg',
+		'sound/ambience/sif/sif1.ogg',
+		'sound/ambience/ruins/ruins1.ogg',
+	)
 
 /area/awaymission/snow_outpost/outside
 	icon_state = "away1"
@@ -920,24 +925,55 @@
 	power_environ = 0
 	mobcountmax = 100
 	floracountmax = 7000
-	valid_mobs = list(/mob/living/simple_mob/animal/sif/savik, /mob/living/simple_mob/animal/wolf, /mob/living/simple_mob/animal/sif/shantak,
-					  /mob/living/simple_mob/animal/sif/kururak, /mob/living/simple_mob/animal/sif/frostfly)
-	valid_flora = list(/obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine,
-					/obj/structure/flora/tree/dead, /obj/structure/flora/grass/brown, /obj/structure/flora/grass/green,
-					/obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/ausbushes/grassybush,
-					/obj/structure/flora/ausbushes/sunnybush, /obj/structure/flora/ausbushes/genericbush, /obj/structure/flora/ausbushes/pointybush,
-					/obj/structure/flora/ausbushes/lavendergrass, /obj/structure/flora/ausbushes/sparsegrass, /obj/structure/flora/ausbushes/fullgrass)
+	valid_mobs = list(
+		/mob/living/simple_mob/animal/sif/savik,
+		/mob/living/simple_mob/animal/wolf,
+		/mob/living/simple_mob/animal/sif/shantak,
+		/mob/living/simple_mob/animal/sif/kururak,
+		/mob/living/simple_mob/animal/sif/frostfly,
+	)
+	valid_flora = list(
+		/obj/structure/flora/tree/pine,
+		/obj/structure/flora/tree/pine,
+		/obj/structure/flora/tree/pine,
+		/obj/structure/flora/tree/dead,
+		/obj/structure/flora/grass/brown,
+		/obj/structure/flora/grass/green,
+		/obj/structure/flora/grass/both,
+		/obj/structure/flora/bush,
+		/obj/structure/flora/bush/grassy,
+		/obj/structure/flora/bush/sunny,
+		/obj/structure/flora/bush/generic,
+		/obj/structure/flora/bush/pointy,
+		/obj/structure/flora/bush/lavendergrass,
+		/obj/structure/flora/bush/sparsegrass,
+		/obj/structure/flora/bush/fullgrass,
+	)
 
 /area/awaymission/snow_outpost/restricted // No mob spawns!
 	icon_state = "red"
 	mobcountmax = 1 // Hacky fix.
 	floracountmax = 100
-	valid_mobs = list(/obj/structure/flora/tree/pine) // Hacky fix.
-	valid_flora = list(/obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine,
-					/obj/structure/flora/tree/dead, /obj/structure/flora/grass/brown, /obj/structure/flora/grass/green,
-					/obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/ausbushes/grassybush,
-					/obj/structure/flora/ausbushes/sunnybush, /obj/structure/flora/ausbushes/genericbush, /obj/structure/flora/ausbushes/pointybush,
-					/obj/structure/flora/ausbushes/lavendergrass, /obj/structure/flora/ausbushes/sparsegrass, /obj/structure/flora/ausbushes/fullgrass)
+	valid_mobs = list(
+		/obj/structure/flora/tree/pine,
+	) // Hacky fix.
+	valid_flora = list(
+		/obj/structure/flora/bush,
+		/obj/structure/flora/bush/fullgrass,
+		/obj/structure/flora/bush/generic,
+		/obj/structure/flora/bush/grassy,
+		/obj/structure/flora/bush/lavendergrass,
+		/obj/structure/flora/bush/pointy,
+		/obj/structure/flora/bush/sparsegrass,
+		/obj/structure/flora/bush/sunny,
+		/obj/structure/flora/grass/both,
+		/obj/structure/flora/grass/brown,
+		/obj/structure/flora/grass/green,
+		/obj/structure/flora/tree/dead,
+		/obj/structure/flora/tree/pine,
+		/obj/structure/flora/tree/pine,
+		/obj/structure/flora/tree/pine,
+	)
 
 /area/awaymission/snow_outpost/outpost
 	icon_state = "away"
@@ -959,25 +995,56 @@
 	mobcountmax = 40
 	floracountmax = 2000
 
-	valid_mobs = list(/mob/living/simple_mob/animal/sif/sakimm/polar, /mob/living/simple_mob/animal/sif/diyaab/polar,
-					/mob/living/simple_mob/animal/sif/shantak/polar, /mob/living/simple_mob/animal/space/bear/polar,
-					/mob/living/simple_mob/animal/wolf)
-	valid_flora = list(/obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine,
-					/obj/structure/flora/tree/dead, /obj/structure/flora/grass/brown, /obj/structure/flora/grass/green,
-					/obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/ausbushes/grassybush,
-					/obj/structure/flora/ausbushes/sunnybush, /obj/structure/flora/ausbushes/genericbush, /obj/structure/flora/ausbushes/pointybush,
-					/obj/structure/flora/ausbushes/lavendergrass, /obj/structure/flora/ausbushes/sparsegrass, /obj/structure/flora/ausbushes/fullgrass)
+	valid_mobs = list(
+		/mob/living/simple_mob/animal/sif/sakimm/polar,
+		/mob/living/simple_mob/animal/sif/diyaab/polar,
+		/mob/living/simple_mob/animal/sif/shantak/polar,
+		/mob/living/simple_mob/animal/space/bear/polar,
+		/mob/living/simple_mob/animal/wolf,
+	)
+
+	valid_flora = list(
+		/obj/structure/flora/tree/pine,
+		/obj/structure/flora/tree/pine,
+		/obj/structure/flora/tree/pine,
+		/obj/structure/flora/tree/dead,
+		/obj/structure/flora/grass/brown,
+		/obj/structure/flora/grass/green,
+		/obj/structure/flora/grass/both,
+		/obj/structure/flora/bush,
+		/obj/structure/flora/bush/grassy,
+		/obj/structure/flora/bush/sunny,
+		/obj/structure/flora/bush/generic,
+		/obj/structure/flora/bush/pointy,
+		/obj/structure/flora/bush/lavendergrass,
+		/obj/structure/flora/bush/sparsegrass,
+		/obj/structure/flora/bush/fullgrass,
+	)
 
 /area/awaymission/snowfield/restricted // No mob spawns!
 	icon_state = "red"
 	mobcountmax = 1 // Hacky fix.
 	floracountmax = 120
-	valid_mobs = list(/obj/structure/flora/tree/pine) // Hacky fix.
-	valid_flora = list(/obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine, /obj/structure/flora/tree/pine,
-					/obj/structure/flora/tree/dead, /obj/structure/flora/grass/brown, /obj/structure/flora/grass/green,
-					/obj/structure/flora/grass/both, /obj/structure/flora/bush, /obj/structure/flora/ausbushes/grassybush,
-					/obj/structure/flora/ausbushes/sunnybush, /obj/structure/flora/ausbushes/genericbush, /obj/structure/flora/ausbushes/pointybush,
-					/obj/structure/flora/ausbushes/lavendergrass, /obj/structure/flora/ausbushes/sparsegrass, /obj/structure/flora/ausbushes/fullgrass)
+	valid_mobs = list(
+		/obj/structure/flora/tree/pine,
+	) // Hacky fix.
+	valid_flora = list(
+		/obj/structure/flora/tree/pine,
+		/obj/structure/flora/tree/pine,
+		/obj/structure/flora/tree/pine,
+		/obj/structure/flora/tree/dead,
+		/obj/structure/flora/grass/brown,
+		/obj/structure/flora/grass/green,
+		/obj/structure/flora/grass/both,
+		/obj/structure/flora/bush,
+		/obj/structure/flora/bush/grassy,
+		/obj/structure/flora/bush/sunny,
+		/obj/structure/flora/bush/generic,
+		/obj/structure/flora/bush/pointy,
+		/obj/structure/flora/bush/lavendergrass,
+		/obj/structure/flora/bush/sparsegrass,
+		/obj/structure/flora/bush/fullgrass,
+	)
 
 /area/awaymission/snowfield/base
 	icon_state = "away"
@@ -987,7 +1054,13 @@
 	icon_state = "green"
 	requires_power = 0
 	dynamic_lighting = 0
-	ambience = list('sound/ambience/ambispace.ogg','sound/music/title2.ogg','sound/music/space.ogg','sound/music/main.ogg','sound/music/traitor.ogg')
+	ambience = list(
+		'sound/ambience/ambispace.ogg',
+		'sound/music/title2.ogg',
+		'sound/music/space.ogg',
+		'sound/music/main.ogg',
+		'sound/music/traitor.ogg',
+	)
 
 /area/awaymission/zoo/solars
 	icon_state = "yellow"

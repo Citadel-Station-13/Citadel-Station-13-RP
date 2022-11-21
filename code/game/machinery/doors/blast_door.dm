@@ -15,17 +15,18 @@
 	desc = "That looks like it doesn't open easily."
 	icon = 'icons/obj/doors/rapid_pdoor.dmi'
 	icon_state = null
+	layer = BLASTDOOR_OPEN_LAYER
+	open_layer = BLASTDOOR_OPEN_LAYER
+	closed_layer = BLASTDOOR_CLOSED_LAYER
 	min_force = 20 //minimum amount of force needed to damage the door with a melee weapon
+	dir = 1
 	var/datum/material/implicit_material
 	// Icon states for different shutter types. Simply change this instead of rewriting the update_icon proc.
 	var/icon_state_open = null
 	var/icon_state_opening = null
 	var/icon_state_closed = null
 	var/icon_state_closing = null
-
-	closed_layer = ON_WINDOW_LAYER // Above airlocks when closed
 	var/id = 1.0
-	dir = 1
 
 	//Most blast doors are infrequently toggled and sometimes used with regular doors anyways,
 	//turning this off prevents awkward zone geometry in places like medbay lobby, for example.

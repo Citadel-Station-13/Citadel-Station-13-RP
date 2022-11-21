@@ -40,11 +40,12 @@
 		last_fire = current_fire
 		playsound(user, 'sound/weapons/wave.ogg', 60, 1)
 		return
-	var/turf/T = get_turf(A)
-	if(!T || T.check_density(ignore_border = TRUE))
+	var/turf/our_turf = get_turf(A)
+	if(!our_turf || our_turf.check_density(ignore_border = TRUE))
 		to_chat(user,"<span class = 'warning'>That's a little too solid to harpoon into!</span>")
 		return
-	if(get_area(A).area_flags & AREA_BLUE_SHIELDED)
+	var/area/our_area = get_area(A)
+	if(our_area.area_flags & AREA_BLUE_SHIELDED)
 		to_chat(user, "<span class='warning'>The target area protected by bluespace shielding!</span>")
 		return
 

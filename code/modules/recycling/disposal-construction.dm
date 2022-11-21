@@ -7,11 +7,12 @@
 	desc = "A huge pipe segment used for constructing disposal systems."
 	icon = 'icons/obj/pipes/disposal.dmi'
 	icon_state = "conpipe-s"
-	anchored = 0
-	density = 0
+	anchored = FALSE
+	density = FALSE
 	pressure_resistance = 5*ONE_ATMOSPHERE
 	matter = list(MAT_STEEL = 1850)
 	level = 2
+
 	var/sortType = ""
 	var/ptype = 0
 	var/subtype = 0

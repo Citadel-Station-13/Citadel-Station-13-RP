@@ -10071,14 +10071,14 @@
 /turf/simulated/mineral,
 /area/tether/surfacebase/reading_room)
 "aqh" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /obj/machinery/light/small{
 	dir = 1
 	},
 /turf/simulated/floor/grass,
 /area/maintenance/lower/south)
 "aqi" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/simulated/floor/grass,
 /area/maintenance/lower/south)
 "aqj" = (
@@ -32549,7 +32549,7 @@
 /turf/simulated/open/virgo3b,
 /area/tether/surfacebase/outside/outside2)
 "djo" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/sparsegrass/style_random,
 /obj/machinery/camera/network/civilian,
 /turf/simulated/floor/grass,
 /area/maintenance/lower/south)
@@ -33024,7 +33024,7 @@
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/breakroom)
 "lOO" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/grass,
 /area/maintenance/lower/south)
 "lTc" = (

@@ -1,7 +1,7 @@
 /obj/effect/projectile
 	icon = 'icons/effects/projectiles.dmi'
 	icon_state = "bolt"
-	plane = ABOVE_PLANE
+	plane = ABOVE_GAME_PLANE
 	mouse_opacity = 0
 
 /obj/effect/projectile/proc/set_transform(var/matrix/M)

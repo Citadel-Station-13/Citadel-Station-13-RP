@@ -8056,9 +8056,6 @@
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled/red,
 /area/security/observation)
-"fZq" = (
-/turf/simulated/open/lythios43c,
-/area/rift/surfacebase/outside/outside2)
 "fZv" = (
 /obj/effect/turf_decal/spline/plain{
 	dir = 8
@@ -23319,7 +23316,7 @@
 /turf/simulated/wall,
 /area/medical/recovery_room)
 "rCo" = (
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/unsimulated/mask,
 /area/turbolift/rsurface/level2)
 "rDQ" = (
 /obj/structure/table/steel,
@@ -41191,7 +41188,7 @@ uIZ
 uIZ
 uIZ
 uIZ
-fZq
+uIZ
 uIZ
 uIZ
 uIZ

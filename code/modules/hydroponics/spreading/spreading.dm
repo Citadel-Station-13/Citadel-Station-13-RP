@@ -175,7 +175,7 @@
 		icon_state = "[seed.get_trait(TRAIT_PLANT_ICON)]-[growth]"
 
 	if(growth>2 && growth == max_growth)
-		plane = ABOVE_PLANE
+		plane = ABOVE_GAME_PLANE
 		set_opacity(1)
 		if(!isnull(seed.chems["woodpulp"]))
 			density = 1

@@ -1,8 +1,7 @@
 /mob
 	datum_flags = DF_USE_TAG
-	density = 1
+	density = TRUE
 	layer = MOB_LAYER
-	plane = MOB_PLANE
 	animate_movement = 2
 	flags = HEAR
 	pass_flags_self = ATOM_PASS_MOB | ATOM_PASS_OVERHEAD_THROW

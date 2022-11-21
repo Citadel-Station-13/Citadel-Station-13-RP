@@ -6,10 +6,10 @@
 	name = "Wall Locker"
 	icon = 'icons/obj/walllocker.dmi'
 	icon_state = "wall-locker"
-	density = 0
-	anchored = 1
 	icon_closed = "wall-locker"
 	icon_opened = "wall-lockeropen"
+	density = FALSE
+	anchored = TRUE
 
 //spawns endless (3 sets) amounts of breathmask, emergency oxy tank and crowbar
 
@@ -61,12 +61,10 @@
 	desc = "A wall mounted storage cabinet."
 	name = "Wall Cabinet"
 	icon = 'icons/obj/closets/bases/wall_double.dmi'
-	density = 0
-	anchored = 1
-	store_mobs = 0
-	wall_mounted = 1
-	plane = TURF_PLANE
-	layer = ABOVE_TURF_LAYER
+	density = FALSE
+	anchored = TRUE
+	store_mobs = FALSE
+	wall_mounted = TRUE
 
 /obj/structure/closet/walllocker_double/north
 	pixel_y = 32

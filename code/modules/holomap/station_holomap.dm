@@ -6,22 +6,19 @@
 	desc = "A virtual map of the surrounding station."
 	icon = 'icons/obj/machines/stationmap.dmi'
 	icon_state = "station_map"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
+	layer = ABOVE_TURF_LAYER
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	active_power_usage = 500
 	circuit = /obj/item/circuitboard/station_map
+	light_color = "#64C864"
 
 	// TODO - Port use_auto_lights from /vg - for now declare here
 	var/use_auto_lights = 1
 	var/light_power_on = 1
 	var/light_range_on = 2
-	light_color = "#64C864"
-
-	plane = TURF_PLANE
-	layer = ABOVE_TURF_LAYER
-
 	var/mob/watching_mob = null
 	var/image/small_station_map = null
 	var/image/floor_markings = null

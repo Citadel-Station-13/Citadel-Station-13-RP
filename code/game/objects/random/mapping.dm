@@ -970,8 +970,10 @@
 	spawn_nothing_percentage = 40
 
 /obj/random/crystal/normal_ice/item_to_spawn()
-	return pick(/obj/machinery/crystal/ice,
-				/obj/machinery/crystal)
+	return pick(
+		/obj/machinery/crystal/ice,
+		/obj/machinery/crystal,
+	)
 
 /obj/random/snow_debris
 	name = "random snow and ice debri"
@@ -980,13 +982,13 @@
 	icon_state = "snowman"
 
 /obj/random/snow_debris/item_to_spawn()
-	return pick(prob(100);/obj/structure/flora/rock/ice,
-				prob(100);/obj/structure/flora/rock/ice/alternative_1,
-				prob(100);/obj/structure/flora/rock/ice/alternative_2,
-				prob(80);/obj/structure/flora/grass/both,
-				prob(60);/obj/structure/flora/bush,
-				prob(40);/obj/structure/flora/tree/dead,
-				prob(1);/obj/structure/snowman,
-				prob(1);/obj/structure/snowman/borg,
-				prob(1);/obj/structure/snowman/spider,
-				prob(1);/obj/machinery/crystal/ice)
+	return pick(
+		prob(100);/obj/structure/flora/rock/icy/style_random,
+		prob(80);/obj/structure/flora/grass/both,
+		prob(60);/obj/structure/flora/bush,
+		prob(40);/obj/structure/flora/tree/dead,
+		prob(1);/obj/structure/snowman,
+		prob(1);/obj/structure/snowman/borg,
+		prob(1);/obj/structure/snowman/spider,
+		prob(1);/obj/machinery/crystal/ice,
+	)

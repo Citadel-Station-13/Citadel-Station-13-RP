@@ -1130,11 +1130,11 @@
 /turf/simulated/floor/wood,
 /area/hallway/station/atrium)
 "acF" = (
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /turf/simulated/floor/grass,
 /area/hallway/station/atrium)
 "acG" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br/style_random,
 /turf/simulated/floor/grass,
 /area/hallway/station/atrium)
 "acH" = (
@@ -5143,7 +5143,7 @@
 /obj/effect/turf_decal/spline/fancy{
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/bush/flowers_pp/style_random,
 /obj/effect/turf_decal/spline/fancy{
 	dir = 10
 	},
@@ -5264,7 +5264,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/backup)
 "alA" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /obj/effect/turf_decal/spline/fancy{
 	dir = 6
 	},
@@ -5282,7 +5282,7 @@
 /obj/effect/turf_decal/spline/fancy{
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/sparsegrass{
+/obj/structure/flora/bush/sparsegrass{
 	pixel_x = 5
 	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
@@ -5584,7 +5584,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/hallway)
 "amg" = (
-/obj/structure/flora/tree/jungle_small,
+/obj/structure/flora/tree/jungle/small/style_random,
 /obj/effect/turf_decal/spline/fancy,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tether/exploration/hallway)
@@ -5836,13 +5836,13 @@
 /turf/simulated/floor/water/pool,
 /area/hallway/station/atrium)
 "amI" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br/style_random,
 /obj/machinery/light/flamp/noshade,
 /turf/simulated/floor/grass,
 /area/hallway/station/atrium)
 "amJ" = (
 /obj/machinery/light/flamp/noshade,
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br/style_random,
 /turf/simulated/floor/grass,
 /area/hallway/station/atrium)
 "amK" = (
@@ -16740,8 +16740,8 @@
 /obj/effect/turf_decal/spline/fancy{
 	dir = 9
 	},
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/sunnybush{
+/obj/structure/flora/bush/sparsegrass/style_random,
+/obj/structure/flora/bush/sunny{
 	pixel_y = 8
 	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
@@ -17489,7 +17489,7 @@
 /obj/effect/turf_decal/spline/fancy{
 	dir = 9
 	},
-/obj/structure/flora/ausbushes/sparsegrass{
+/obj/structure/flora/bush/sparsegrass{
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -17636,7 +17636,7 @@
 /obj/effect/turf_decal/spline/fancy{
 	dir = 8
 	},
-/obj/structure/flora/ausbushes/ywflowers{
+/obj/structure/flora/bush/flowers_yw{
 	pixel_x = 2;
 	pixel_y = 7
 	},
@@ -18584,7 +18584,7 @@
 /obj/effect/turf_decal/spline/fancy{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/sparsegrass{
+/obj/structure/flora/bush/sparsegrass{
 	pixel_x = -2
 	},
 /obj/item/radio/intercom{
@@ -19233,7 +19233,7 @@
 /obj/effect/turf_decal/spline/fancy{
 	dir = 6
 	},
-/obj/structure/flora/ausbushes/lavendergrass{
+/obj/structure/flora/bush/lavendergrass{
 	pixel_x = -2;
 	pixel_y = 3
 	},
@@ -19353,7 +19353,7 @@
 /turf/simulated/floor/tiled,
 /area/tether/exploration/hallway)
 "iaH" = (
-/obj/structure/flora/tree/jungle_small,
+/obj/structure/flora/tree/jungle/small/style_random,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tether/exploration/staircase)
 "ibn" = (
@@ -19566,16 +19566,16 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/eng_lower)
 "iCx" = (
-/obj/structure/flora/ausbushes/grassybush{
+/obj/structure/flora/bush/grassy{
 	pixel_y = 20
 	},
 /obj/effect/turf_decal/spline/fancy{
 	dir = 6
 	},
-/obj/structure/flora/ausbushes/stalkybush{
+/obj/structure/flora/bush/stalky/style_random,{
 	pixel_y = 15
 	},
-/obj/structure/flora/ausbushes/sparsegrass{
+/obj/structure/flora/bush/sparsegrass{
 	pixel_x = -2;
 	pixel_y = 3
 	},
@@ -20696,11 +20696,11 @@
 /obj/effect/turf_decal/spline/fancy{
 	dir = 10
 	},
-/obj/structure/flora/ausbushes/fernybush{
+/obj/structure/flora/bush/ferny{
 	pixel_x = 3;
 	pixel_y = 15
 	},
-/obj/structure/flora/ausbushes/fernybush{
+/obj/structure/flora/bush/ferny{
 	pixel_y = 4
 	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
@@ -20848,7 +20848,7 @@
 /obj/effect/turf_decal/spline/fancy{
 	dir = 1
 	},
-/obj/structure/flora/ausbushes/sparsegrass{
+/obj/structure/flora/bush/sparsegrass{
 	pixel_x = -3;
 	pixel_y = -3
 	},
@@ -22648,7 +22648,7 @@
 /turf/simulated/floor/tiled/eris/techmaint_panels,
 /area/shuttle/securiship/general)
 "rgd" = (
-/obj/structure/flora/ausbushes/sparsegrass{
+/obj/structure/flora/bush/sparsegrass{
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -22744,7 +22744,7 @@
 /obj/machinery/mineral/equipment_vendor/survey{
 	pixel_y = 5
 	},
-/obj/structure/flora/ausbushes/lavendergrass{
+/obj/structure/flora/bush/lavendergrass{
 	pixel_y = 10
 	},
 /obj/effect/turf_decal/borderfloorwhite/corner2,
@@ -23858,19 +23858,19 @@
 /obj/effect/turf_decal/spline/fancy{
 	dir = 10
 	},
-/obj/structure/flora/ausbushes/reedbush{
+/obj/structure/flora/bush/reed{
 	pixel_x = 20;
 	pixel_y = 25
 	},
-/obj/structure/flora/ausbushes/reedbush{
+/obj/structure/flora/bush/reed{
 	pixel_x = 10;
 	pixel_y = 15
 	},
-/obj/structure/flora/ausbushes/sparsegrass{
+/obj/structure/flora/bush/sparsegrass{
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/generic/style_random,
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
@@ -24254,7 +24254,7 @@
 /area/engineering/hallway)
 "uNU" = (
 /obj/effect/turf_decal/spline/fancy,
-/obj/structure/flora/ausbushes/fullgrass{
+/obj/structure/flora/bush/fullgrass{
 	pixel_y = 3
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -24687,7 +24687,7 @@
 /obj/structure/sink/puddle{
 	pixel_y = 3
 	},
-/obj/structure/flora/ausbushes/reedbush{
+/obj/structure/flora/bush/reed{
 	pixel_x = 20;
 	pixel_y = 15
 	},
@@ -25523,7 +25523,7 @@
 /obj/effect/turf_decal/spline/fancy{
 	dir = 5
 	},
-/obj/structure/flora/ausbushes/sparsegrass{
+/obj/structure/flora/bush/sparsegrass{
 	pixel_x = -5
 	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
@@ -25731,7 +25731,7 @@
 /obj/effect/turf_decal/spline/fancy{
 	dir = 10
 	},
-/obj/structure/flora/ausbushes/lavendergrass{
+/obj/structure/flora/bush/lavendergrass{
 	pixel_x = 2;
 	pixel_y = 1
 	},

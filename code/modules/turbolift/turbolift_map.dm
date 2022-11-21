@@ -2,10 +2,14 @@
 /obj/turbolift_map_holder
 	name = "turbolift map placeholder"
 	icon = 'icons/obj/turbolift_preview_3x3.dmi'
-	dir = SOUTH         // Direction of the holder determines the placement of the lift control panel and doors.
-	var/depth = 1       // Number of floors to generate, including the initial floor.
-	var/lift_size_x = 2 // Number of turfs on each axis to generate in addition to the first
-	var/lift_size_y = 2 // ie. a 3x3 lift would have a value of 2 in each of these variables.
+	dir = SOUTH // Direction of the holder determines the placement of the lift control panel and doors.
+
+	/// Number of floors to generate, including the initial floor.
+	var/depth = 1
+	/// Number of turfs on each axis to generate in addition to the first
+	var/lift_size_x = 2
+	/// ie. a 3x3 lift would have a value of 2 in each of these variables.
+	var/lift_size_y = 2
 
 	// Various turf and door types used when generating the turbolift floors.
 	var/wall_type =  /turf/simulated/wall/elevator
@@ -137,7 +141,7 @@
 
 				// Update path appropriately if needed.
 				var/swap_to = /turf/simulated/open
-				if(cz == uz)                                                                       // Elevator.
+				if(cz == uz) // Elevator.
 					if(wall_type && (tx == ux || ty == uy || tx == ex || ty == ey) && !(tx >= door_x1 && tx <= door_x2 && ty >= door_y1 && ty <= door_y2))
 						swap_to = wall_type
 					else
@@ -147,7 +151,7 @@
 				if(checking.type != swap_to)
 					checking.ChangeTurf(swap_to)
 					// /tg/ baseturfs - IMPORTANT - inject plating beneath
-					checking.PlaceBelowLogicalTop(/turf/simulated/floor/plating)
+					checking.PlaceBelowLogicalTop(/turf/simulated/open)
 					// Let's make absolutely sure that we have the right turf.
 					checking = locate(tx,ty,cz)
 

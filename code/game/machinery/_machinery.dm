@@ -101,7 +101,7 @@
 	name = "machinery"
 	icon = 'icons/obj/stationobjs.dmi'
 	w_class = ITEMSIZE_NO_CONTAINER
-	layer = UNDER_JUNK_LAYER
+	layer = BELOW_OBJ_LAYER //keeps shit coming out of the machine from ending up underneath it.
 
 	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND | INTERACT_ATOM_UI_INTERACT
 

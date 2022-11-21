@@ -1,214 +1,167 @@
-/*This file is a list of all preclaimed planes & layers
+////////////////////////////////////////////////////////////////////////////////////////
+//! For easy recordkeeping; this is a byond define
+// #define FLOAT_LAYER -1
+// #define AREA_LAYER   1
+// #define TURF_LAYER   2
+// #define OBJ_LAYER    3
+// #define MOB_LAYER    4
+// #define FLY_LAYER    5
+////////////////////////////////////////////////////////////////////////////////////////
 
-All planes & layers should be given a value here instead of using a magic/arbitrary number.
-
-After fiddling with planes and layers for some time, I figured I may as well provide some documentation:
-
-What are planes?
-	Think of Planes as a sort of layer for a layer - if plane X is a larger number than plane Y, the highest number for a layer in X will be below the lowest
-	number for a layer in Y.
-	Planes also have the added bonus of having planesmasters.
-
-What are Planesmasters?
-	Planesmasters, when in the sight of a player, will have its appearance properties (for example, colour matrices, alpha, transform, etc)
-	applied to all the other objects in the plane. This is all client sided.
-	Usually you would want to add the planesmaster as an invisible image in the client's screen.
-
-What can I do with Planesmasters?
-	You can: Make certain players not see an entire plane,
-	Make an entire plane have a certain colour matrices,
-	Make an entire plane transform in a certain way,
-	Make players see a plane which is hidden to normal players - I intend to implement this with the antag HUDs for example.
-	Planesmasters can be used as a neater way to deal with client images or potentially to do some neat things
-
-How do planes work?
-	A plane can be any integer from -100 to 100. (If you want more, bug lummox.)
-	All planes above 0, the 'base plane', are visible even when your character cannot 'see' them, for example, the HUD.
-	All planes below 0, the 'base plane', are only visible when a character can see them.
-
-How do I add a plane?
-	Think of where you want the plane to appear, look through the pre-existing planes and find where it is above and where it is below
-	Slot it in in that place, and change the pre-existing planes, making sure no plane shares a number.
-	Add a description with a comment as to what the plane does.
-
-How do I make something a planesmaster?
-	Add the PLANE_MASTER appearance flag to the appearance_flags variable.
-
-What is the naming convention for planes or layers?
-	Make sure to use the name of your object before the _LAYER or _PLANE, eg: [NAME_OF_YOUR_OBJECT HERE]_LAYER or [NAME_OF_YOUR_OBJECT HERE]_PLANE
-	Also, as it's a define, it is standard practice to use capital letters for the variable so people know this.
-
-*/
+/**
+ *! Defines for atom layers and planes
+ *! KEEP THESE IN A NICE ACSCENDING ORDER, PLEASE
+ */
 
 // TODO: UNFUCK PLANES. HALF OF THESE HAVE NO REASON TO EXIST. WHOEVER ADDED THEM IS AN IDIOT!
+// TODO: Layers still need to be linear regardless of plane. stuff like projectiles DO CARE.
 
-//! todo: layers still need to be linear regardless of plane. stuff like projectiles DO CARE.
+//! NEVER HAVE ANYTHING BELOW THIS PLANE ADJUST IF YOU NEED MORE SPACE
+#define LOWEST_EVER_PLANE -100
 
-#define CLICKCATCHER_PLANE		-99
-/// Reserved for use in space/parallax
-#define SPACE_PLANE				-95
-/// Reserved for use in space/parallax
-#define PARALLAX_PLANE			-90
-	/// everything layering below
-#define PARALLAX_VIS_LAYER_BELOW			-100
-	#define PARALLAX_LAYER_CENTER				0
-	/// ditto
-#define PARALLAX_VIS_LAYER_ABOVE			100
-///For the Looking Glass holodecks
-#define PLANE_LOOKINGGLASS		-77
-///For the Looking Glass holodecks
-#define PLANE_LOOKINGGLASS_IMG	-76
+#define CLICKCATCHER_PLANE -80
+
+#define SPACE_PLANE    -31
+#define PARALLAX_PLANE -30
+#define PARALLAX_VIS_LAYER_BELOW -100
+#define PARALLAX_LAYER_CENTER       0
+#define PARALLAX_VIS_LAYER_ABOVE  100
+
+// For the Looking Glass holodecks
+#define PLANE_LOOKINGGLASS     -28
+#define PLANE_LOOKINGGLASS_IMG -27
+
 //OPENSPACE_PLANE reserves all planes between OPENSPACE_PLANE_START and OPENSPACE_PLANE_END inclusive
 ///turf/simulated/open will use OPENSPACE_PLANE + z (Valid z's being 2 thru 17)
-#define OPENSPACE_PLANE			-75
-#define OPENSPACE_PLANE_START	-73
-#define OPENSPACE_PLANE_END		-58
-#define OVER_OPENSPACE_PLANE	-57
+#define OPENSPACE_PLANE       -26
+#define OPENSPACE_PLANE_START -25
+#define OPENSPACE_PLANE_END   -10
+#define OVER_OPENSPACE_PLANE  -9
 
-//Turf Planes
-// todo: kill these too because frankly, fuck off.
-///Plating
-#define PLATING_PLANE			-45
-	///Under objects, even when planeswapped
-	#define DISPOSAL_LAYER		2.1
-	///Under objects, even when planeswapped
-	#define PIPES_LAYER			2.2
-	///Under objects, even when planeswapped
-	#define WIRES_LAYER			2.3
-	///Pipe-like atmos machinery that goes on the floor, like filters.
-	#define ATMOS_LAYER			2.4
-	///Above stuff like pipes and wires
-	#define ABOVE_UTILITY		2.5
+#define FLOOR_PLANE      -8
+#define GAME_PLANE       -7
+#define GAME_PLANE_UPPER -5
+// Slightly above the game plane but does not catch mouse clicks. Useful for certain visuals that should be clicked through, like seethrough trees
+#define SEETHROUGH_PLANE -3
+#define ABOVE_GAME_PLANE -2
 
-//! Turfs themselves, most flooring.
-#define TURF_PLANE -44
-#define WATER_FLOOR_LAYER        2.0   // The 'bottom' of water tiles.
-#define TURF_DECAL_LAYER         2.035 // Makes turf decals appear in DM how they will look inworld. // For intentionally placed floor decal overlays.
-#define TURF_OVERLAY_DECAL_LAYER 2.039 // Mostly for decals that are made to blend their tile instead of 'being' the tile.
-#define UNDERWATER_LAYER         2.5   // Anything on this layer will render under the water layer.
-#define CATWALK_LAYER            2.51  // Catwalks are on top of water, but under everything else.
-#define WATER_LAYER              3.0   // Layer for water overlays.
-#define BELOW_OBJ_LAYER          2.9
-#define ABOVE_TURF_LAYER         3.1   // Snow and wallmounted/floormounted equipment.
+#define BLACKNESS_PLANE 0 // To keep from conflicts with SEE_BLACKNESS internals
 
+#define AREA_PLANE  2
+#define GHOST_PLANE 4
 
-//Obj planes
-#define OBJ_PLANE -43
-	/// cleanable debris
-	#define DEBRIS_LAYER			2.4
-	///Layer for stairs
-	#define STAIRS_LAYER			2.5
-	///Layer at which mobs hide to be under things like tables
-	#define HIDING_LAYER			2.6
-	///Under all objects if opened. 2.7 due to tables being at 2.6
-	#define DOOR_OPEN_LAYER			2.7
-	///Just under stuff that wants to be slightly below common objects.
-	#define TABLE_LAYER				2.8
-	#define PROJECTILE_HIT_THRESHOLD_LAYER 2.8
-	///Things that want to be slightly below common objects
-	#define UNDER_JUNK_LAYER		2.9
-	//Turf/Obj layer boundary
-	///Things that want to be slightly above common objects
-	#define ABOVE_OBJ_LAYER			3.1
-	///Doors when closed
-	#define DOOR_CLOSED_LAYER		3.1
-	///Windows
-	#define WINDOW_LAYER			3.2
-	///Ontop of a window
-	#define ON_WINDOW_LAYER			3.3
-	///Above full tile windows so wall items are clickable
-	#define ABOVE_WINDOW_LAYER		3.4
-	#define MID_LANDMARK_LAYER		3.5
+//! FLOOR_PLANE (-8) layers
+#define DECAL_LAYER             2.01 // For floors that automatically add decal overlays.
+#define DECAL_OVERLAY_LAYER     2.02 // For intentionally placed floor decal overlays.
+#define ABOVE_NORMAL_TURF_LAYER 2.08
+#define PIPES_LAYER             2.2
+#define DISPOSAL_PIPE_LAYER     2.3
+#define ATMOS_LAYER             2.35 // Pipe-like atmos machinery that goes on the floor, like filters.
+#define WIRE_LAYER              2.4
+#define WIRE_TERMINAL_LAYER     2.45
+#define GAS_SCRUBBER_LAYER      2.46
+#define GAS_PIPE_VISIBLE_LAYER  2.47 //layer = initial(layer) + piping_layer / 1000 in atmospherics/update_icon() to determine order of pipe overlap
+#define GAS_FILTER_LAYER        2.48
+#define GAS_PUMP_LAYER          2.49
+#define LOW_OBJ_LAYER           2.5
+#define UNDERWATER_LAYER        2.51 // Anything on this layer will render under the water layer.
+#define BELOW_TURF_LAYER        2.6  // Below the turf layer, for things like the floor plating frame's icon. //! Which doesn't exist yet, but it will. @Zandario :)
+//? Turf/Obj layer boundary
+#define ABOVE_TURF_LAYER        3.1  //Snow and wallmounted/floormounted equipment
 
-//Mob planes
-#define MOB_PLANE				-25
-	#define BELOW_MOB_LAYER			3.9
-	#define ABOVE_MOB_LAYER			4.1
+//! GAME_PLANE (-7) layers
+#define DEBRIS_LAYER           2.4  // Cleanable debris.
+#define STAIRS_LAYER           2.5  // Layer for stairs.
+#define CATWALK_LAYER          2.51 // Layer for catwalks.
+#define HIDING_LAYER           2.6  // Layer at which mobs hide to be under things like tables.
+#define BLASTDOOR_OPEN_LAYER   2.65
+#define DOOR_OPEN_LAYER        2.7  // Under all objects if opened. 2.7 due to tables being at 2.6
+#define PROJECTILE_HIT_THRESHOLD_LAYER 2.75
+#define TABLE_LAYER            2.8  // Just under stuff that wants to be slightly below common objects.
+#define BELOW_OBJ_LAYER        2.9  // Things that want to be slightly below common objects.
+//? Turf/Obj layer boundary
+#define ABOVE_OBJ_LAYER        3.1  // Things that want to be slightly above common objects.
+#define DOOR_CLOSED_LAYER      3.1  // Doors when closed.
+#define WINDOW_LAYER           3.2  // Windows.
+#define BLASTDOOR_CLOSED_LAYER 3.3 // ABOVE WINDOWS AND DOORS
+#define ABOVE_WINDOW_LAYER     3.4  // Above full tile windows so wall items are clickable.
+#define SIGN_LAYER             3.4
+#define BELOW_MOB_LAYER        3.9
 
-//Invisible things plane
-#define CLOAKED_PLANE			-15
+//! GAME_PLANE_UPPER (-5) layers
+#define ABOVE_MOB_LAYER     4.1
+#define WALL_OBJ_LAYER      4.25
+#define EDGED_TURF_LAYER    4.3
+#define ON_EDGED_TURF_LAYER 4.35
+#define SPACEVINE_LAYER     4.4
+// #define LARGE_MOB_LAYER     4.5
+// #define SPACEVINE_MOB_LAYER 4.6
 
-//Top plane (in the sense that it's the highest in 'the world' and not a UI element)
-#define ABOVE_PLANE				-10
+// Invisible things plane
+#define CLOAKED_PLANE -1 //TODO: This shouldn't be a plane.
 
-	//define FLOAT_LAYER		-1	//For easy recordkeeping; this is a byond define
+//! ABOVE_GAME_PLANE (-2) layers
+#define ABOVE_ALL_MOB_LAYER 4.7 // Intermediate layer used by both GAME_PLANE_FOV_HIDDEN and ABOVE_GAME_PLANE
 
 ////////////////////////////////////////////////////////////////////////////////////////
-///BYOND's default value for plane, the "base plane"
-#define PLANE_WORLD				0
-////////////////////////////////////////////////////////////////////////////////////////
 
-	//#define AREA_LAYER		1	//For easy recordkeeping; this is a byond define
+#define HUD_LAYER    20 // Above lighting, but below obfuscation. For in-game HUD effects (whereas SCREEN_LAYER is for abstract/OOC things like inventory slots).
+#define SCREEN_LAYER 22 // Mob HUD/effects layer.
 
-	//#define TURF_LAYER		2	//For easy recordkeeping; this is a byond define
+// Status Indicators that show over mobs' heads when certain things like stuns affect them.
+#define PLANE_STATUS 5
 
-	//#define OBJ_LAYER			3	//For easy recordkeeping; this is a byond define
+// Lighting on planets
+#define PLANE_PLANETLIGHTING 6
 
-	//#define MOB_LAYER			4	//For easy recordkeeping; this is a byond define
+// Where the lighting (and darkness) lives (ignoring all other higher planes)
+#define LIGHTING_PLANE 7
+#define LIGHTBULB_LAYER      0
+#define LIGHTING_LAYER       1
+#define ABOVE_LIGHTING_LAYER 2
 
-	//#define FLY_LAYER			5	//For easy recordkeeping; this is a byond define
+// For glowy eyes etc. that shouldn't be affected by darkness
+#define ABOVE_LIGHTING_PLANE 8
+#define EYE_GLOW_LAYER         1
+#define BEAM_PROJECTILE_LAYER  2
+#define SUPERMATTER_WALL_LAYER 3
 
-	///Above lighting, but below obfuscation. For in-game HUD effects (whereas SCREEN_LAYER is for abstract/OOC things like inventory slots)
-#define HUD_LAYER				20
-	///Mob HUD/effects layer
-#define SCREEN_LAYER			22
-///Status Indicators that show over mobs' heads when certain things like stuns affect them.
-#define PLANE_STATUS			2
-///Purely for shenanigans (below lighting)
-#define PLANE_ADMIN1			3
-///Lighting on planets
-#define PLANE_PLANETLIGHTING	4
-///Where the lighting (and darkness) lives (ignoring all other higher planes)
-#define LIGHTING_PLANE			5
-	#define LIGHTBULB_LAYER			0
-	#define LIGHTING_LAYER			1
-	#define ABOVE_LIGHTING_LAYER	2
-///For glowy eyes etc. that shouldn't be affected by darkness
-#define ABOVE_LIGHTING_PLANE	6
-	#define EYE_GLOW_LAYER			1
-	#define BEAM_PROJECTILE_LAYER	2
-	#define SUPERMATTER_WALL_LAYER	3
+#define SONAR_PLANE 10
 
-#define SONAR_PLANE				8
-
-///Spooooooooky ghooooooosts
-#define PLANE_GHOSTS			10
 ///The AI eye lives here
-#define PLANE_AI_EYE			11
+#define PLANE_AI_EYE 20
+
 ///Stuff seen with mesons, like open ceilings. This is 30 for downstreams.
-#define PLANE_MESONS			30
-///Purely for shenanigans (above lighting)
-#define PLANE_ADMIN2			33
+#define PLANE_MESONS 35
+
 ///Augmented-reality plane
-#define PLANE_AUGMENTED				40
+#define PLANE_AUGMENTED 40
+
 #define FULLSCREEN_PLANE 90
 #define OBFUSCATION_LAYER 19.9
-#define FLASH_LAYER 20
-#define FULLSCREEN_LAYER 20.1
-#define UI_DAMAGE_LAYER 20.2
-#define BLIND_LAYER 20.3
-#define CRIT_LAYER 20.4
-#define CURSE_LAYER 20.5
+#define FLASH_LAYER       20
+#define FULLSCREEN_LAYER  20.1
+#define UI_DAMAGE_LAYER   20.2
+#define BLIND_LAYER       20.3
+#define CRIT_LAYER        20.4
+#define CURSE_LAYER       20.5
 #define FULLSCREEN_RENDER_TARGET "FULLSCREEN_PLANE"
 
-//Client UI HUD stuff
-///The character's UI is on this plane
-#define PLANE_PLAYER_HUD		95
-	///Under the HUD items
-#define LAYER_HUD_UNDER		1
-	///The HUD items themselves
-#define LAYER_HUD_BASE		2
-	///Things sitting on HUD items (largely irrelevant because PLANE_PLAYER_HUD_ITEMS)
-#define LAYER_HUD_ITEM		3
-	///Things that reside above items (highlights)
-#define LAYER_HUD_ABOVE		4
-///Separate layer with which to apply colorblindness
-#define PLANE_PLAYER_HUD_ITEMS	96
-///Things above the player hud
-#define PLANE_PLAYER_HUD_ABOVE	97
-///Purely for shenanigans (above HUD)
-#define PLANE_ADMIN3			99
+//! Client UI HUD stuff
+// The character's UI is on this plane
+#define PLANE_PLAYER_HUD 95
+#define LAYER_HUD_UNDER 1 // Under the HUD items
+#define LAYER_HUD_BASE  2 // The HUD items themselves
+#define LAYER_HUD_ITEM  3 // Things sitting on HUD items (largely irrelevant because PLANE_PLAYER_HUD_ITEMS)
+#define LAYER_HUD_ABOVE 4 // Things that reside above items (highlights)
+
+// Separate layer with which to apply colorblindness
+#define PLANE_PLAYER_HUD_ITEMS 96
+
+// Things above the player hud
+#define PLANE_PLAYER_HUD_ABOVE 97
+
 //////////////////////////
 
 //Check if a mob can "logically" see an atom plane
-#define 	MOB_CAN_SEE_PLANE(M, P) (P <= PLANE_WORLD || (P in M.planes_visible) || P >= PLANE_PLAYER_HUD)
+#define MOB_CAN_SEE_PLANE(M, P) (P <= BLACKNESS_PLANE || (P in M.planes_visible) || P >= PLANE_PLAYER_HUD)

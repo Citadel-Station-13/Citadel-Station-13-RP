@@ -1458,7 +1458,7 @@
 /turf/simulated/floor/airless,
 /area/tradeport/spine)
 "fI" = (
-/obj/structure/flora/grass/brown,
+/obj/structure/flora/grass/brown/style_random,
 /turf/simulated/floor/snow,
 /area/tradeport/cyndishow)
 "fK" = (
@@ -3543,7 +3543,7 @@
 /turf/simulated/wall/r_wall,
 /area/tradeport/commons)
 "nr" = (
-/obj/structure/flora/tree/jungle_small,
+/obj/structure/flora/tree/jungle/small/style_random,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "nt" = (
@@ -5044,7 +5044,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "tS" = (
-/obj/structure/flora/tree/jungle,
+/obj/structure/flora/tree/jungle/style_random,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/tradeport/safarizoo)
 "tU" = (
@@ -5212,7 +5212,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/flora/ausbushes,
+/obj/structure/flora/bush/snow/style_random,
 /obj/effect/turf_decal/grass_edge{
 	dir = 8
 	},
@@ -9114,7 +9114,7 @@
 /area/shuttle/trade_ship/general)
 "IO" = (
 /obj/structure/window/reinforced,
-/obj/structure/flora/bush,
+/obj/structure/flora/bush/style_random,
 /turf/simulated/floor/snow,
 /area/tradeport/cyndishow)
 "IP" = (
@@ -9171,7 +9171,7 @@
 /turf/simulated/floor/wmarble,
 /area/tradeport/cafeteria)
 "Je" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/style_random,
 /turf/simulated/floor/snow,
 /area/tradeport/cyndishow)
 "Jf" = (
@@ -11436,7 +11436,7 @@
 /turf/simulated/floor/tiled/neutral,
 /area/tradeport/commons)
 "RF" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /obj/effect/turf_decal/grass_edge,
 /turf/simulated/floor/outdoors/dirtlight,
 /area/tradeport/cyndishow)
@@ -11462,7 +11462,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/outdoors/dirt,
 /area/tradeport/cyndishow)
 "RM" = (

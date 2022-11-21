@@ -13,7 +13,7 @@
 /turf/template_noop,
 /area/submap/MilitaryCamp1)
 "e" = (
-/obj/structure/flora/bush,
+/obj/structure/flora/bush/style_random,
 /turf/template_noop,
 /area/submap/MilitaryCamp1)
 "f" = (
@@ -138,7 +138,7 @@
 /turf/simulated/floor,
 /area/submap/MilitaryCamp1)
 "G" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/style_random,
 /turf/template_noop,
 /area/submap/MilitaryCamp1)
 "H" = (

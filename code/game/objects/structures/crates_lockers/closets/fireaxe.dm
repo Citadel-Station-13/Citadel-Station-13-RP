@@ -2,14 +2,15 @@
 /obj/structure/closet/fireaxecabinet
 	name = "fire axe cabinet"
 	desc = "There is small label that reads \"For Emergency use only\" along with details for safe use of the axe. As if."
-	var/obj/item/material/twohanded/fireaxe/fireaxe
+	icon = 'icons/obj/wallmount.dmi'
 	icon_state = "fireaxe1000"
 	icon_closed = "fireaxe1000"
 	icon_opened = "fireaxe1100"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
+	opened = TRUE
+	var/obj/item/material/twohanded/fireaxe/fireaxe
 	var/localopened = 0 //Setting this to keep it from behaviouring like a normal closet and obstructing movement in the map. -Agouri
-	opened = 1
 	var/hitstaken = 0
 	var/locked = 1
 	var/smashed = 0

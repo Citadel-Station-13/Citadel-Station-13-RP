@@ -5,6 +5,7 @@
  * as much as possible to the components/elements system
  */
 /atom
+	plane = GAME_PLANE
 	layer = TURF_LAYER
 	appearance_flags = TILE_BOUND | LONG_GLIDE
 

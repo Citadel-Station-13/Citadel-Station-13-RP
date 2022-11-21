@@ -15,7 +15,7 @@
 	icon_state = "shield"
 	alpha = 100
 	anchored = TRUE
-	plane = MOB_PLANE
+	plane = GAME_PLANE_UPPER
 	layer = ABOVE_MOB_LAYER
 	density = FALSE
 	CanAtmosPass = ATMOS_PASS_NOT_BLOCKED

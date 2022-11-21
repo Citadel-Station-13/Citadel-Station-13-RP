@@ -10,18 +10,18 @@
 /turf/template_noop,
 /area/submap/Lake1)
 "d" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/template_noop,
 /area/submap/Lake1)
 "e" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/style_random,
 /turf/template_noop,
 /area/submap/Lake1)
 "f" = (
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/Lake1)
 "g" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /turf/template_noop,
 /area/submap/Lake1)
 "h" = (
@@ -34,7 +34,7 @@
 /turf/simulated/mineral,
 /area/submap/Lake1)
 "k" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/stalky,
 /turf/template_noop,
 /area/submap/Lake1)
 

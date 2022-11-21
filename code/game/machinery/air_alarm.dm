@@ -2,42 +2,36 @@
 #define LOAD_TLV_VALUES(x, y) red_min = x[1]; yel_min = x[2]; yel_max = x[3]; red_max = x[4]; tlv_comparitor = y;
 #define TEST_TLV_VALUES (((tlv_comparitor >= red_max && red_max > 0) || tlv_comparitor <= red_min) ? 2 : ((tlv_comparitor >= yel_max && yel_max > 0) || tlv_comparitor <= yel_min) ? 1 : 0)
 
-#define AALARM_MODE_SCRUBBING	1
-///like scrubbing, but faster.
-#define AALARM_MODE_REPLACEMENT	2
-///constantly sucks all air
-#define AALARM_MODE_PANIC		3
-///sucks off all air, then refill and switches to scrubbing
-#define AALARM_MODE_CYCLE		4
-///emergency fill
-#define AALARM_MODE_FILL		5
-///Shuts it all down.
-#define AALARM_MODE_OFF			6
-#define AALARM_SCREEN_MAIN		1
-#define AALARM_SCREEN_VENT		2
-#define AALARM_SCREEN_SCRUB		3
-#define AALARM_SCREEN_MODE		4
-#define AALARM_SCREEN_SENSORS	5
+#define AALARM_MODE_SCRUBBING   1 // Just scrubbing.
+#define AALARM_MODE_REPLACEMENT 2 // Like scrubbing, but faster.
+#define AALARM_MODE_PANIC       3 // Constantly sucks all air.
+#define AALARM_MODE_CYCLE       4 // Sucks off all air, then refill and switches to scrubbing.
+#define AALARM_MODE_FILL        5 // Emergency fill.
+#define AALARM_MODE_OFF         6 // Shuts it all down.
+
+#define AALARM_SCREEN_MAIN    1
+#define AALARM_SCREEN_VENT    2
+#define AALARM_SCREEN_SCRUB   3
+#define AALARM_SCREEN_MODE    4
+#define AALARM_SCREEN_SENSORS 5
 
 #define AALARM_REPORT_TIMEOUT 100
 
-#define MAX_TEMPERATURE 90
+#define MAX_TEMPERATURE  90
 #define MIN_TEMPERATURE -40
 
-//all air alarms in area are connected via magic
-/area
-	var/obj/machinery/alarm/master_air_alarm
-	var/list/air_vent_names = list()
-	var/list/air_scrub_names = list()
-	var/list/air_vent_info = list()
-	var/list/air_scrub_info = list()
+//? All air alarms in area are connected via magic.
+/area/var/obj/machinery/alarm/master_air_alarm
+/area/var/list/air_vent_names = list()
+/area/var/list/air_scrub_names = list()
+/area/var/list/air_vent_info = list()
+/area/var/list/air_scrub_info = list()
 
 /obj/machinery/alarm
 	name = "alarm"
 	desc = "Used to control various station atmospheric systems. The light indicates the current air status of the area."
 	icon = 'icons/obj/monitors.dmi'
 	icon_state = "alarm0"
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	anchored = TRUE
 	use_power = USE_POWER_IDLE

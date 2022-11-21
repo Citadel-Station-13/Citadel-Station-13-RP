@@ -123,7 +123,7 @@
 /turf/simulated/floor/plating,
 /area/submap/BoomBase)
 "aC" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/style_random,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/BoomBase)
 "aD" = (
@@ -231,7 +231,7 @@
 /turf/template_noop,
 /area/submap/BoomBase)
 "aY" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/style_random,
 /turf/template_noop,
 /area/submap/BoomBase)
 

@@ -538,7 +538,7 @@ steam.start() -- spawns the effect
 	icon_state = "teleport_greyscale"
 	anchored = 1
 	mouse_opacity = 0
-	plane = MOB_PLANE
+	plane = GAME_PLANE_UPPER
 	layer = ABOVE_MOB_LAYER
 
 /obj/effect/teleport_greyscale/Initialize(mapload)

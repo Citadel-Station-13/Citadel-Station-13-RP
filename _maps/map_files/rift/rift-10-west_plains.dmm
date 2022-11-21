@@ -5108,7 +5108,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /turf/simulated/floor/grass,
 /area/rnd/outpost)
 "xR" = (
@@ -5508,7 +5508,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /turf/simulated/floor/grass,
 /area/rnd/outpost)
 "zP" = (

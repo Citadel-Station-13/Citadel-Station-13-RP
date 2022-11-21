@@ -5,7 +5,7 @@
 	name = "steel tile decal"
 	icon = 'icons/turf/tiles/steel.dmi'
 	icon_state = "tile"
-	layer = TURF_DECAL_LAYER
+	layer = DECAL_LAYER
 
 /obj/effect/turf_decal/tile/Initialize(mapload)
 	if (check_holidays(APRIL_FOOLS))

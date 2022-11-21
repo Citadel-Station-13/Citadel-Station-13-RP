@@ -3,10 +3,8 @@
 	desc = "Completely impassable - or are they?"
 	icon = 'icons/obj/stationobjs.dmi' //Change this.
 	icon_state = "plasticflaps"
-	density = 0
-	anchored = 1
-	layer = MOB_LAYER
-	plane = MOB_PLANE
+	density = FALSE
+	anchored = TRUE
 	var/can_pass_lying = TRUE
 	var/list/mobs_can_pass = list(
 		/mob/living/bot,
@@ -14,6 +12,13 @@
 		/mob/living/simple_mob/animal/passive/mouse,
 		/mob/living/silicon/robot/drone
 		)
+
+/obj/structure/plasticflaps/opaque
+	opacity = TRUE
+/obj/structure/plasticflaps/Initialize(mapload)
+	. = ..()
+	alpha = 0
+	SSvis_overlays.add_vis_overlay(src, icon, icon_state, ABOVE_MOB_LAYER, GAME_PLANE_UPPER, dir, add_appearance_flags = RESET_ALPHA) //you see mobs under it, but you hit them like they are above it
 
 /obj/structure/plasticflaps/attackby(obj/item/P, mob/user)
 	if(P.is_wirecutter())

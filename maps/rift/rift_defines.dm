@@ -323,3 +323,9 @@
 	name = "Orbital Relay"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
 
+
+/obj/effect/map_effect/portal/master/side_a/lythios/rift
+	portal_id = "lythios-rift"
+
+/obj/effect/map_effect/portal/master/side_b/lythios/rift
+	portal_id = "lythios-rift"

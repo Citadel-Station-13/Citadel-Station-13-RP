@@ -1,7 +1,7 @@
 /obj/vehicle/ridden
 	name = "ridden vehicle"
 	// todo: i wish byond planes weren't monolithic and awful but we should probably have a proper plane system haha.
-	plane = MOB_PLANE
+	plane = GAME_PLANE_UPPER
 	buckle_allowed = TRUE
 	buckle_max_mobs = 1
 	buckle_lying = FALSE

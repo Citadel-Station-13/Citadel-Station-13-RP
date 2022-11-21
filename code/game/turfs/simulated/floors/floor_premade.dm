@@ -104,8 +104,8 @@
 	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "tiled"
 	initial_flooring = /decl/flooring/tiling
-	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_OPEN_FLOOR)
-	canSmoothWith = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_OPEN_FLOOR)
+	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN)
+	canSmoothWith = list(SMOOTH_GROUP_TURF_OPEN)
 
 /turf/simulated/floor/tiled/techmaint
 	name = "floor"

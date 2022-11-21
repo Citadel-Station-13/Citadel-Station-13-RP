@@ -164,6 +164,5 @@
 	desc = "... Blitzkrieg?"
 	icon = 'icons/mecha/mecha64x64.dmi'
 	icon_state = "pzrwreck"
-	plane = MOB_PLANE
 	pixel_x = -16
 	anchored = 1 // It's fucking huge. You aren't moving it.

@@ -5,7 +5,9 @@
 /obj/spawner
 	icon = 'icons/mapping/spawners/spawners.dmi'
 	icon_state = ""
-	layer = MID_LANDMARK_LAYER
+	plane = GAME_PLANE
+	layer = OBJ_LAYER
+	invisibility = INVISIBILITY_ABSTRACT
 	/// lateload?
 	var/late = FALSE
 

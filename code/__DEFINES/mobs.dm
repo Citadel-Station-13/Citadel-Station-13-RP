@@ -312,55 +312,52 @@
 // at half damage compared to the old mob system, meaning mobs who could hurt structures may not be able to now, so now it is 5.
 #define STRUCTURE_MIN_DAMAGE_THRESHOLD 5
 
-//Vision flags, for dealing with plane visibility
-#define VIS_FULLBRIGHT		1
-#define VIS_LIGHTING		2
-#define VIS_GHOSTS			3
-#define VIS_AI_EYE			4
+//! Vision Flags, for dealing with plane visibility
+#define VIS_FULLBRIGHT 1
+#define VIS_LIGHTING   2
+#define VIS_GHOSTS     3
+#define VIS_AI_EYE     4
 
-#define VIS_ADMIN1			5
-#define VIS_ADMIN2			6
-#define VIS_ADMIN3			7
+#define VIS_MESONS     5
 
-#define VIS_MESONS			8
+#define VIS_FLOOR      6
+#define VIS_GAME       7
 
-#define VIS_TURFS			9
-#define VIS_OBJS			10
-#define VIS_MOBS			11
+#define VIS_SEETHROUGH 8
 
-#define VIS_AUGMENTED		12
-#define VIS_CLOAKED			13
-#define VIS_PARALLAX		14
-#define VIS_STATUS			15
-#define VIS_SPACE			16
-#define VIS_SONAR			17
-///Must be highest number from above.
-#define VIS_COUNT			17
+#define VIS_AUGMENTED  9
+#define VIS_CLOAKED   10
+#define VIS_PARALLAX  11
+#define VIS_STATUS    12
+#define VIS_SPACE     13
+#define VIS_SONAR     14
+//? Must be highest number from above.
+#define VIS_COUNT     14
 
-// Clothing flags, organized in roughly top-bottom
-#define EXAMINE_SKIPHELMET			0x0001
-#define EXAMINE_SKIPEARS			0x0002
-#define EXAMINE_SKIPEYEWEAR			0x0004
-#define EXAMINE_SKIPMASK			0x0008
-#define EXAMINE_SKIPJUMPSUIT		0x0010
-#define EXAMINE_SKIPTIE				0x0020
-#define EXAMINE_SKIPHOLSTER			0x0040
-#define EXAMINE_SKIPSUITSTORAGE		0x0080
-#define EXAMINE_SKIPBACKPACK		0x0100
-#define EXAMINE_SKIPGLOVES			0x0200
-#define EXAMINE_SKIPBELT			0x0400
-#define EXAMINE_SKIPSHOES			0x0800
+//! Clothing Examine Flags, organized in roughly top-bottom
+#define EXAMINE_SKIPHELMET      (1<<0)
+#define EXAMINE_SKIPEARS        (1<<1)
+#define EXAMINE_SKIPEYEWEAR     (1<<2)
+#define EXAMINE_SKIPMASK        (1<<3)
+#define EXAMINE_SKIPJUMPSUIT    (1<<4)
+#define EXAMINE_SKIPTIE         (1<<5)
+#define EXAMINE_SKIPHOLSTER     (1<<6)
+#define EXAMINE_SKIPSUITSTORAGE (1<<7)
+#define EXAMINE_SKIPBACKPACK    (1<<8)
+#define EXAMINE_SKIPGLOVES      (1<<9)
+#define EXAMINE_SKIPBELT        (1<<10)
+#define EXAMINE_SKIPSHOES       (1<<11)
 
-// Body flags
-#define EXAMINE_SKIPHEAD			0x0001
-#define EXAMINE_SKIPEYES			0x0002
-#define EXAMINE_SKIPFACE			0x0004
-#define EXAMINE_SKIPBODY			0x0008
-#define EXAMINE_SKIPGROIN			0x0010
-#define EXAMINE_SKIPARMS			0x0020
-#define EXAMINE_SKIPHANDS			0x0040
-#define EXAMINE_SKIPLEGS			0x0080
-#define EXAMINE_SKIPFEET			0x0100
+//! Body Examine Flags
+#define EXAMINE_SKIPHEAD  (1<<0)
+#define EXAMINE_SKIPEYES  (1<<1)
+#define EXAMINE_SKIPFACE  (1<<2)
+#define EXAMINE_SKIPBODY  (1<<3)
+#define EXAMINE_SKIPGROIN (1<<4)
+#define EXAMINE_SKIPARMS  (1<<5)
+#define EXAMINE_SKIPHANDS (1<<6)
+#define EXAMINE_SKIPLEGS  (1<<7)
+#define EXAMINE_SKIPFEET  (1<<8)
 
 /// How far away you can be to make eye contact with someone while examining
 #define EYE_CONTACT_RANGE 5

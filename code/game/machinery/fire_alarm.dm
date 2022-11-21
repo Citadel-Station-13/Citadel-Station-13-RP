@@ -6,22 +6,22 @@ FIRE ALARM
 	desc = "<i>\"Pull this in case of emergency\"</i>. Thus, keep pulling it forever."
 	icon = 'icons/obj/monitors.dmi'
 	icon_state = "fire0"
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	var/detecting = TRUE
-	var/working = TRUE
-	var/time = 10
-	var/timing = 0
-	var/lockdownbyai = FALSE
 	anchored = TRUE
 	use_power = TRUE
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = ENVIRON
-	var/last_process = 0
 	panel_open = FALSE
-	var/seclevel
 	circuit = /obj/item/circuitboard/firealarm
+
+	var/last_process = 0
+	var/seclevel
+	var/detecting = TRUE
+	var/working = TRUE
+	var/time = 10
+	var/timing = 0
+	var/lockdownbyai = FALSE
 	/// If the alarms from this machine are visible on consoles.
 	var/alarms_hidden = FALSE
 

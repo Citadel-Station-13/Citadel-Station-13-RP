@@ -18,7 +18,6 @@
 	var/is_adult = 0
 	speak_emote = list("chirps")
 
-	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
 	maxHealth = 150
 	health = 150

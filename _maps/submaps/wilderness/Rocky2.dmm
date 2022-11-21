@@ -20,27 +20,27 @@
 /turf/template_noop,
 /area/submap/Rocky2)
 "g" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/template_noop,
 /area/submap/Rocky2)
 "h" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/template_noop,
 /area/submap/Rocky2)
 "i" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/sparsegrass/style_random,
 /turf/template_noop,
 /area/submap/Rocky2)
 "j" = (
-/obj/structure/flora/ausbushes/sunnybush,
+/obj/structure/flora/bush/sunny/style_random,
 /turf/template_noop,
 /area/submap/Rocky2)
 "k" = (
-/obj/structure/flora/ausbushes/stalkybush,
+/obj/structure/flora/bush/stalky,
 /turf/template_noop,
 /area/submap/Rocky2)
 "l" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/style_random,
 /turf/template_noop,
 /area/submap/Rocky2)
 "A" = (

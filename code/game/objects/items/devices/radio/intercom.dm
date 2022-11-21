@@ -3,15 +3,16 @@
 	desc = "Talk through this."
 	icon = 'icons/obj/radio.dmi'
 	icon_state = "intercom"
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	anchored = 1
+	anchored = TRUE
 	w_class = ITEMSIZE_LARGE
 	canhear_range = 2
 	flags = NOBLOODY
+
 	var/circuit = /obj/item/circuitboard/intercom
 	var/number = 0
-	var/last_tick //used to delay the powercheck
+	/// Used to delay the powercheck.
+	var/last_tick
 	var/wiresexposed = 0
 
 /obj/item/radio/intercom/custom

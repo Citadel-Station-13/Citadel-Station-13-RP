@@ -1,7 +1,6 @@
 /obj/effect/turf_decal
 	icon = 'icons/turf/flooring/decals.dmi'
-	plane = TURF_PLANE
-	layer = TURF_DECAL_LAYER
+	layer = DECAL_LAYER
 	anchored = TRUE
 
 /**

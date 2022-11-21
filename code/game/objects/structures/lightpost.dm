@@ -3,7 +3,7 @@
 	desc = "A homely lightpost."
 	icon = 'icons/obj/32x64.dmi'
 	icon_state = "lightpost"
-	plane = MOB_PLANE
+	plane = GAME_PLANE_UPPER
 	layer = ABOVE_MOB_LAYER
 	anchored = TRUE
 	density = TRUE

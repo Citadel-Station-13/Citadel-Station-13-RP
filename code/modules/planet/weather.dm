@@ -45,8 +45,8 @@
 	if(!current_weather)
 		current_weather = old_weather
 		// todo: actually unit test this because rp devs fucked it up royally and we can have unknown types!
-	next_weather_shift = world.time + rand(current_weather.timer_low_bound, current_weather.timer_high_bound) MINUTES
 	if(new_weather != old_weather)
+		next_weather_shift = world.time + rand(current_weather.timer_low_bound, current_weather.timer_high_bound) MINUTES
 		// At roundstart this is null.
 		if(istype(old_weather))
 			// Ensure that people who should hear the ending sound will hear it.

@@ -4,7 +4,7 @@
 	var/affect_ghosts = 0
 	var/stopper = 1 // stops throwers
 	invisibility = 99 // nope cant see this shit
-	plane = ABOVE_PLANE
+	plane = ABOVE_GAME_PLANE
 	anchored = 1
 	icon = 'icons/mob/screen1.dmi' //VS Edit
 	icon_state = "centermarker" //VS Edit

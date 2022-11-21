@@ -331,7 +331,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/atom/movable/screen/setup_preview/bg/BG= LAZYACCESS(char_render_holders, "BG")
 	if(!BG)
 		BG = new
-		BG.plane = TURF_PLANE
+		BG.plane = FLOOR_PLANE
 		BG.icon = 'icons/effects/setup_backgrounds_vr.dmi'
 		BG.pref = src
 		LAZYSET(char_render_holders, "BG", BG)

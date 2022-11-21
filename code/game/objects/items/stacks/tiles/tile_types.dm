@@ -48,22 +48,22 @@
 	update_icon()
 
 var/global/list/datum/stack_recipe/grass_recipes = list( \
-	new/datum/stack_recipe("bush", /obj/structure/flora/ausbushes, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("reeds", /obj/structure/flora/ausbushes/reedbush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("leafy bush", /obj/structure/flora/ausbushes/leafybush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("sparse bush", /obj/structure/flora/ausbushes/palebush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("stalks", /obj/structure/flora/ausbushes/stalkybush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("ferns", /obj/structure/flora/ausbushes/fernybush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("sapling", /obj/structure/flora/ausbushes/sunnybush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("leafy sapling", /obj/structure/flora/ausbushes/genericbush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("needled sapling", /obj/structure/flora/ausbushes/pointybush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("sparse flowers", /obj/structure/flora/ausbushes/lavendergrass, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("yellow flowers", /obj/structure/flora/ausbushes/ywflowers, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("colorful flowers", /obj/structure/flora/ausbushes/brflowers, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("purple flowers", /obj/structure/flora/ausbushes/ppflowers, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("lush grass", /obj/structure/flora/ausbushes/grassybush, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("grass", /obj/structure/flora/ausbushes/fullgrass, 1, one_per_turf = 0, on_floor = 1),
-	new/datum/stack_recipe("sparse grass", /obj/structure/flora/ausbushes/sparsegrass, 1, one_per_turf = 0, on_floor = 1))
+	new/datum/stack_recipe("bush", /obj/structure/flora/bush, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("reeds", /obj/structure/flora/bush/reed, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("leafy bush", /obj/structure/flora/bush/leafy, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("sparse bush", /obj/structure/flora/bush/pale, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("stalks", /obj/structure/flora/bush/stalky, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("ferns", /obj/structure/flora/bush/ferny, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("sapling", /obj/structure/flora/bush/sunny, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("leafy sapling", /obj/structure/flora/bush/generic, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("needled sapling", /obj/structure/flora/bush/pointy, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("sparse flowers", /obj/structure/flora/bush/lavendergrass, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("yellow flowers", /obj/structure/flora/bush/flowers_yw, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("colorful flowers", /obj/structure/flora/bush/flowers_br, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("purple flowers", /obj/structure/flora/bush/flowers_pp, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("lush grass", /obj/structure/flora/bush/grassy, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("grass", /obj/structure/flora/bush/fullgrass, 1, one_per_turf = 0, on_floor = 1),
+	new/datum/stack_recipe("sparse grass", /obj/structure/flora/bush/sparsegrass, 1, one_per_turf = 0, on_floor = 1))
 
 /*
  * Wood

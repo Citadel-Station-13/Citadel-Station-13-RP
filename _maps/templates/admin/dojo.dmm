@@ -541,7 +541,7 @@
 	},
 /area/ninja_dojo/dojo)
 "bo" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /turf/unsimulated/floor{
 	icon = 'icons/turf/snow_new.dmi';
 	icon_state = "snow";

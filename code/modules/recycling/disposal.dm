@@ -657,16 +657,18 @@
 	icon = 'icons/obj/pipes/disposal.dmi'
 	name = "disposal pipe"
 	desc = "An underfloor disposal pipe."
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 
-	level = 1			// underfloor only
-	var/dpdir = 0		// bitmask of pipe directions
-	dir = 0				// dir will contain dominant direction for junction pipes
-	var/health = 10 	// health points 0-10
-	plane = PLATING_PLANE
-	layer = DISPOSAL_LAYER	// slightly lower than wires and other pipes
-	base_icon_state	// initial icon state on map
+	level = 1 // underfloor only
+	dir = 0   // dir will contain dominant direction for junction pipes
+	plane = FLOOR_PLANE
+	layer = DISPOSAL_PIPE_LAYER	// slightly lower than wires and other pipes
+
+	/// Bitmask of pipe directions.
+	var/dpdir = 0
+	/// Health points 0-10
+	var/health = 10
 	var/sortType = ""
 	var/subtype = 0
 	// new pipe, set the icon_state as on map

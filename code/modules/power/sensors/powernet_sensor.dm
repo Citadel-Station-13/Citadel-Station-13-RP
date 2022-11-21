@@ -12,7 +12,7 @@
 	desc = "Small machine which transmits data about specific powernet"
 	anchored = TRUE
 	density = FALSE
-	layer = ABOVE_UTILITY
+	layer = LOW_OBJ_LAYER
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "floor_beacon" // If anyone wants to make better sprite, feel free to do so without asking me.
 

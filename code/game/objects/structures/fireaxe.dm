@@ -3,10 +3,11 @@
 	name = "fire axe cabinet"
 	desc = "There is small label that reads \"For Emergency use only\" along with details for safe use of the axe. As if."
 	var/obj/item/material/twohanded/fireaxe/fireaxe
-	icon = 'icons/obj/closet.dmi'	//Not bothering to move icons out for now. But its dumb still.
+	icon = 'icons/obj/wallmount.dmi' // Not bothering to move icons out for now. But its dumb still.
 	icon_state = "fireaxe1000"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
+
 	var/open = 0
 	var/hitstaken = 0
 	var/locked = 1

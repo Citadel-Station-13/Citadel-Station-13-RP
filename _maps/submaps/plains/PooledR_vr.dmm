@@ -22,7 +22,7 @@
 /turf/template_noop,
 /area/submap/PooledR)
 "g" = (
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/pale/style_random,
 /turf/template_noop,
 /area/submap/PooledR)
 "h" = (
@@ -33,21 +33,21 @@
 /turf/template_noop,
 /area/submap/PooledR)
 "i" = (
-/obj/structure/flora/ausbushes/reedbush,
+/obj/structure/flora/bush/reed/style_random,
 /turf/template_noop,
 /area/submap/PooledR)
 "j" = (
 /turf/simulated/floor/outdoors/rocks,
 /area/submap/PooledR)
 "k" = (
-/obj/structure/flora/ausbushes,
+/obj/structure/flora/bush/snow/style_random,
 /turf/template_noop,
 /area/submap/PooledR)
 "l" = (
 /turf/simulated/floor/water,
 /area/submap/PooledR)
 "m" = (
-/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/bush/grassy/style_random,
 /turf/template_noop,
 /area/submap/PooledR)
 "n" = (

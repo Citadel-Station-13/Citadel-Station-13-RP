@@ -160,15 +160,14 @@
 	name = "weeds"
 	desc = "Weird purple weeds."
 	icon_state = "weeds"
-
-	anchored = 1
-	density = 0
-	plane = TURF_PLANE
+	anchored = TRUE
+	density = FALSE
 	layer = ABOVE_TURF_LAYER
+	color = "#332342"
+
 	var/health = 15
 	var/obj/effect/alien/weeds/node/linked_node = null
 	var/static/list/weedImageCache
-	color = "#332342"
 
 /obj/effect/alien/weeds/Destroy()
 	var/turf/T = get_turf(src)

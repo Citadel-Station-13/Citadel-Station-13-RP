@@ -1,5 +1,5 @@
 /turf/unsimulated
-	name = "command"
+	plane = FLOOR_PLANE
 
 	//air_status = AIR_STATUS_IMMUTABLE
 

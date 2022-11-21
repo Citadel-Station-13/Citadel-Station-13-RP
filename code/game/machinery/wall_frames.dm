@@ -119,7 +119,7 @@
 /obj/item/frame/extinguisher_cabinet
 	name = "extinguisher cabinet frame"
 	desc = "Used for building fire extinguisher cabinets."
-	icon = 'icons/obj/closet.dmi'
+	icon = 'icons/obj/wallmount.dmi'
 	icon_state = "extinguisher_empty"
 	refund_amt = 4
 	build_machine_type = /obj/structure/extinguisher_cabinet
@@ -144,7 +144,7 @@
 /obj/item/frame/fireaxe_cabinet
 	name = "fire axe cabinet frame"
 	desc = "Used for building fire axe cabinets."
-	icon = 'icons/obj/closet.dmi'
+	icon = 'icons/obj/wallmount.dmi'
 	icon_state = "fireaxe0101"
 	refund_amt = 4
 	build_machine_type = /obj/structure/fireaxecabinet

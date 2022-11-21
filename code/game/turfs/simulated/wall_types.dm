@@ -97,19 +97,18 @@
 	blocks_air = 1
 
 	var/base_state = "light" //The base iconstate to base sprites on
-	var/hard_corner = 0 //Forces hard corners (as opposed to diagonals)
 	var/true_name = "wall" //What to rename this to on init
 
 	//Extra things this will try to locate and act like we're joining to. You can put doors, or whatever.
 	//Carefully means only if it's on a /turf/simulated/shuttle subtype turf.
 	var/static/list/join_carefully = list(
-	/obj/structure/grille,
-	/obj/machinery/door/blast/regular
+		/obj/structure/grille,
+		/obj/machinery/door/blast/regular,
 	)
 	var/static/list/join_always = list(
-	/obj/structure/shuttle/engine,
-	/obj/structure/shuttle/window,
-	/obj/machinery/door/airlock/voidcraft
+		/obj/structure/shuttle/engine,
+		/obj/structure/shuttle/window,
+		/obj/machinery/door/airlock/voidcraft,
 	)
 
 /turf/simulated/shuttle/wall/hard_corner

@@ -92,7 +92,7 @@
 /turf/simulated/floor/wood,
 /area/submap/Shack1)
 "u" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/style_random,
 /turf/template_noop,
 /area/submap/Shack1)
 

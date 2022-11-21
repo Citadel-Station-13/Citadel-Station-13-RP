@@ -7,9 +7,10 @@
 	name = "\improper Tram Station"
 	icon = 'icons/obj/doors/Doorextglass.dmi'
 	icon_state = "door_closed"
-	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	base_icon_state = "door_closed"
 	occupied_icon_state = "door_locked"
+	layer = DOOR_CLOSED_LAYER
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	desc = "The tram station you might've came in from.  You could leave the base easily using this."
 	on_store_message = "has departed on the tram."
 	on_store_name = "Travel Oversight"
@@ -56,9 +57,10 @@
 	name = "\improper Shuttle Station"
 	icon = 'icons/obj/doors/Doorextglass.dmi'
 	icon_state = "door_closed"
-	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	base_icon_state = "door_closed"
 	occupied_icon_state = "door_locked"
+	layer = DOOR_CLOSED_LAYER
+	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	desc = "The shuttle bay you might've came in from.  You could leave the base easily using this.<br><span class='userdanger'>Drag-drop yourself onto it while adjacent to leave.</span>"
 	on_store_message = "has departed on the shuttle."
 	on_store_name = "Crew Shift Transfer Services"

@@ -13,7 +13,7 @@
 /turf/simulated/floor/outdoors/snow,
 /area/submap/Small1)
 "e" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/style_random,
 /turf/simulated/floor/outdoors/snow,
 /area/submap/Small1)
 "f" = (

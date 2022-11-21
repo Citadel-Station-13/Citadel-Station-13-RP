@@ -78,7 +78,7 @@
 /turf/simulated/shuttle/plating,
 /area/submap/Epod1)
 "n" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/style_random,
 /turf/simulated/floor/outdoors/dirt,
 /area/submap/Epod1)
 

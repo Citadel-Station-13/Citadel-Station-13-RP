@@ -1,8 +1,6 @@
 /// Any floor or wall. What makes up the station and the rest of the map.
 /turf
 	icon = 'icons/turf/floors.dmi'
-	plane = TURF_PLANE
-	layer = TURF_LAYER
 	luminosity = 1
 	level = 1
 

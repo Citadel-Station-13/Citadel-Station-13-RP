@@ -36,14 +36,14 @@
 /turf/unsimulated/wall,
 /area/space)
 "eE" = (
-/obj/structure/flora/grass/both,
+/obj/structure/flora/grass/both/style_random,
 /turf/simulated/floor/holofloor/snow,
 /area/houseboat/holodeck/snow)
 "eF" = (
 /turf/simulated/floor/holofloor/snow,
 /area/houseboat/holodeck/snow)
 "eG" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass/style_random,
 /turf/simulated/floor/holofloor/desert,
 /area/houseboat/holodeck/desert)
 "eH" = (
@@ -69,7 +69,7 @@
 /turf/simulated/floor/holofloor/beach/sand,
 /area/houseboat/holodeck/beach)
 "eS" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/sparsegrass/style_random,
 /turf/simulated/floor/holofloor/desert,
 /area/houseboat/holodeck/desert)
 "fd" = (
@@ -78,7 +78,7 @@
 	},
 /area/houseboat/holodeck/beach)
 "fe" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/style_random,
 /turf/simulated/floor/holofloor/snow,
 /area/houseboat/holodeck/snow)
 "ff" = (
@@ -89,7 +89,7 @@
 /turf/simulated/floor/holofloor/beach/water,
 /area/houseboat/holodeck/beach)
 "fx" = (
-/obj/structure/flora/grass/green,
+/obj/structure/flora/grass/green/style_random,
 /turf/simulated/floor/holofloor/snow,
 /area/houseboat/holodeck/snow)
 "fL" = (
@@ -100,12 +100,12 @@
 /turf/unsimulated/wall,
 /area/space)
 "fS" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /obj/effect/turf_decal/spline/fancy/wood/corner,
 /turf/simulated/floor/holofloor/grass,
 /area/houseboat/holodeck/picnic)
 "fT" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 6
 	},
@@ -116,7 +116,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/houseboat/holodeck/picnic)
 "fV" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
@@ -133,7 +133,7 @@
 /turf/simulated/floor/holofloor/wood,
 /area/houseboat/holodeck/bunking)
 "fZ" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
@@ -145,7 +145,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/houseboat/holodeck/picnic)
 "gc" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 4
 	},
@@ -159,7 +159,7 @@
 /turf/simulated/floor/holofloor/desert,
 /area/houseboat/holodeck/picnic)
 "gf" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 8
 	},
@@ -170,28 +170,28 @@
 /turf/simulated/floor/holofloor/wood,
 /area/houseboat/holodeck/bunking)
 "gj" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/houseboat/holodeck/picnic)
 "gk" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/houseboat/holodeck/picnic)
 "gl" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /obj/effect/turf_decal/spline/fancy/wood{
 	dir = 1
 	},
 /turf/simulated/floor/holofloor/grass,
 /area/houseboat/holodeck/picnic)
 "gm" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw/style_random,
 /obj/effect/turf_decal/spline/fancy/wood/corner{
 	dir = 4
 	},

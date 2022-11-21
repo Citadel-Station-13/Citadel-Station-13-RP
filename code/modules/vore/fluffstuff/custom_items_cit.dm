@@ -40,7 +40,7 @@
 		update_state(2)
 		sleep(60)
 		if(owner.stat == DEAD)
-			ebroadcast("Alert! [owner.real_name] is in critical condition in [get_area(owner).name]!")
+			ebroadcast("Alert! [owner.real_name] is in critical condition in [get_area_name(owner)]!")
 			update_state(3)
 
 

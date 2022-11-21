@@ -1,23 +1,25 @@
-/* Holograms!
- * Contains:
- *		Holopad
- *		Hologram
- *		Other stuff
+/**
+ *! Holograms!
+ *? Contains:
+ * * Holopad
+ * * Hologram
+ * * Other stuff
  */
 
-/*
-Revised. Original based on space ninja hologram code. Which is also mine. /N
-How it works:
-AI clicks on holopad in camera view. View centers on holopad.
-AI clicks again on the holopad to display a hologram. Hologram stays as long as AI is looking at the pad and it (the hologram) is in range of the pad.
-AI can use the directional keys to move the hologram around, provided the above conditions are met and the AI in question is the holopad's master.
-Only one AI may project from a holopad at any given time.
-AI may cancel the hologram at any time by clicking on the holopad once more.
-
-Possible to do for anyone motivated enough:
-	Give an AI variable for different hologram icons.
-	Itegrate EMP effect to disable the unit.
-*/
+/**
+ *? Revised. Original based on space ninja hologram code. Which is also mine. /N
+ *
+ *? How it works:
+ * AI clicks on holopad in camera view. View centers on holopad.
+ * AI clicks again on the holopad to display a hologram. Hologram stays as long as AI is looking at the pad and it (the hologram) is in range of the pad.
+ * AI can use the directional keys to move the hologram around, provided the above conditions are met and the AI in question is the holopad's master.
+ * Only one AI may project from a holopad at any given time.
+ * AI may cancel the hologram at any time by clicking on the holopad once more.
+ *
+ *? Possible to do for anyone motivated enough:
+ *    Give an AI variable for different hologram icons.
+ *    Itegrate EMP effect to disable the unit.
+ */
 
 /*
  * Holopad
@@ -35,14 +37,24 @@ var/const/HOLOPAD_MODE = RANGE_BASED
 	icon_state = "holopad0"
 	show_messages = TRUE
 	circuit = /obj/item/circuitboard/holopad
-	plane = TURF_PLANE
-	layer = ABOVE_TURF_LAYER
-	var/power_per_hologram = 500 //per usage per hologram
+	plane = GAME_PLANE
+	layer = LOW_OBJ_LAYER
 	idle_power_usage = 5
 	use_power = USE_POWER_IDLE
-	var/list/mob/living/silicon/ai/masters = new() //List of AIs that use the holopad
-	var/last_request = 0 //to prevent request spam. ~Carn
-	var/holo_range = 5 // Change to change how far the AI can move away from the holopad before deactivating.
+
+	/// Per usage per hologram.
+	var/power_per_hologram = 500
+	/// List of AIs that use the holopad.
+	var/list/mob/living/silicon/ai/masters = new()
+	/// To prevent request spam. ~Carn
+	var/last_request = 0
+	/// Change to change how far the AI can move away from the holopad before deactivating.
+	var/holo_range = 5
+
+/obj/machinery/hologram/holopad/Initialize(mapload)
+	. = ..()
+	/// We set the plane on mapload such that we can see the holopad render over atmospherics pipe and cabling in a map editor (without initialization), but so it gets that "inset" look in the floor in-game.
+	plane = FLOOR_PLANE
 
 /obj/machinery/hologram/holopad/attackby(obj/item/I, mob/user)
 	if(computer_deconstruction_screwdriver(user, I))

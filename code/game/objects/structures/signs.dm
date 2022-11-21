@@ -1,10 +1,9 @@
 /obj/structure/sign
 	icon = 'icons/obj/decals.dmi'
-	anchored = 1
-	opacity = 0
-	density = 0
-	plane = OBJ_PLANE
-	layer = ABOVE_OBJ_LAYER
+	anchored = TRUE
+	opacity = FALSE
+	density = FALSE
+	layer = SIGN_LAYER
 	w_class = ITEMSIZE_NORMAL
 
 /obj/structure/sign/legacy_ex_act(severity)

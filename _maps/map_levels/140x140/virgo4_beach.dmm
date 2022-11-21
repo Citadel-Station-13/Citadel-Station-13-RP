@@ -1215,7 +1215,7 @@
 	},
 /area/tether_away/beach/resort/kitchen)
 "xb" = (
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny/style_random,
 /turf/simulated/floor/water,
 /area/tether_away/beach/cavebase)
 "xi" = (
@@ -1298,7 +1298,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/powershed)
 "Ar" = (
-/obj/structure/flora/tree/jungle_small,
+/obj/structure/flora/tree/jungle/small/style_random,
 /turf/simulated/floor/outdoors/grass/forest,
 /area/tether_away/beach/jungle)
 "Aw" = (
@@ -1544,7 +1544,7 @@
 	},
 /area/tether_away/beach/water)
 "IA" = (
-/obj/structure/flora/tree/jungle,
+/obj/structure/flora/tree/jungle/style_random,
 /turf/simulated/floor/outdoors/grass/forest,
 /area/tether_away/beach/jungle)
 "IB" = (
@@ -1933,7 +1933,7 @@
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/janibar)
 "SQ" = (
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny/style_random,
 /turf/simulated/floor/outdoors/grass,
 /area/tether_away/beach/cavebase)
 "ST" = (

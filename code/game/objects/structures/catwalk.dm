@@ -2,7 +2,7 @@
 /obj/structure/catwalk
 	name = "catwalk"
 	desc = "Cats really don't like these things."
-	plane = TURF_PLANE
+	plane = GAME_PLANE
 	layer = CATWALK_LAYER
 	icon = 'icons/turf/catwalks.dmi'
 	icon_state = "catwalk"
@@ -126,7 +126,7 @@
 	icon_state = "catwalk_plated"
 	density = TRUE
 	anchored = TRUE
-	plane = TURF_PLANE
+	plane = GAME_PLANE
 	layer = CATWALK_LAYER
 
 	var/activated = FALSE
@@ -181,7 +181,7 @@
 	desc = "Some flimsy wooden planks, generally set across a hazardous area."
 	icon = 'icons/turf/catwalks.dmi'
 	icon_state = "plank"
-	plane = TURF_PLANE
+	plane = GAME_PLANE
 	layer = CATWALK_LAYER
 	density = FALSE
 	anchored = TRUE

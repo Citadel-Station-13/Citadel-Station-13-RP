@@ -3,8 +3,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/color_matrix_proxy_view)
 /atom/movable/screen/color_matrix_proxy_view
 	name = "color_matrix_proxy_view"
 	del_on_map_removal = FALSE
-	layer = OBJ_PLANE
-	plane = OBJ_PLANE
+	plane = GAME_PLANE
 
 	var/list/plane_masters = list()
 

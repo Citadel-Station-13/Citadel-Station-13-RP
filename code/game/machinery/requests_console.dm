@@ -38,9 +38,9 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	anchored = TRUE
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "req_comp0"
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	circuit = /obj/item/circuitboard/request
+	light_range = 0
 
 	/// The list of all departments on the station. (Determined from this variable on each unit)
 	/// Set this to the same thing if you want several consoles in one department.
@@ -71,7 +71,6 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	var/recipient = "";
 	/// Priority of the message being sent.
 	var/priority = -1 ;
-	light_range = 0
 	var/datum/legacy_announcement/announcement = new
 
 /obj/machinery/requests_console/power_change()

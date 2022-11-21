@@ -15,10 +15,13 @@
 /turf/simulated/shuttle
 	name = "shuttle"
 	icon = 'icons/turf/shuttle_white.dmi'
+	plane = GAME_PLANE
 	thermal_conductivity = 0.05
 	heat_capacity = 0
 
 	var/interior_corner = 0
+	/// Forces hard corners (as opposed to diagonals)
+	var/hard_corner = FALSE
 	var/takes_underlays = TRUE
 	var/turf/under_turf	// Underlay override turf path.
 	var/join_flags = 0	// Bitstring to represent adjacency of joining walls
@@ -27,7 +30,7 @@
 
 /turf/simulated/shuttle/Initialize(mapload)
 	. = ..()
-	if(!antilight_cache)
+	if(!antilight_cache && !hard_corner)
 		antilight_cache = list()
 		for(var/diag in GLOB.cornerdirs)
 			var/image/I = image(LIGHTING_ICON, null, icon_state = "diagonals", layer = 10, dir = diag)
@@ -38,8 +41,9 @@
 /turf/simulated/shuttle/proc/update_breaklights()
 	if(join_flags in GLOB.cornerdirs)	// We're joined at an angle
 		// Dynamic lighting dissolver
-		var/turf/T = get_step(src, turn(join_flags,180))
-		if(!T || !T.dynamic_lighting || !get_area(T).dynamic_lighting)
+		var/turf/our_turf = get_step(src, turn(join_flags,180))
+		var/area/our_area = get_area(src)
+		if(!our_turf || !our_turf.dynamic_lighting || our_area.dynamic_lighting)
 			add_overlay(antilight_cache["[join_flags]"], TRUE)
 			return
 	cut_overlay(antilight_cache["[join_flags]"], TRUE)

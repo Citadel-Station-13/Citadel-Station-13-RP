@@ -14,7 +14,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "ae" = (
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/plating,
 /area/turbolift/runder/level2)
 "af" = (
 /obj/machinery/door/airlock/lift,
@@ -22,7 +22,7 @@
 /area/turbolift/runder/level2)
 "ag" = (
 /obj/turbolift_map_holder/rift,
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/simulated/floor/plating,
 /area/turbolift/runder/level2)
 "ah" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -875,6 +875,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "cF" = (
@@ -899,6 +900,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_room)
 "cJ" = (
@@ -2595,6 +2597,7 @@
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 2
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_one)
 "hI" = (
@@ -3197,6 +3200,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/public_bunker)
 "jK" = (
@@ -4223,6 +4227,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/locker_room)
 "ms" = (
@@ -4242,6 +4247,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/techfloor,
 /area/shuttle/cryo/station)
 "mu" = (
@@ -4309,6 +4315,7 @@
 	req_access = list();
 	req_one_access = list(11,67)
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled,
 /area/engineering/engineering_monitoring)
 "mG" = (
@@ -5765,9 +5772,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
-"qW" = (
-/turf/simulated/floor/carpet,
-/area/engineering/foyer)
 "qX" = (
 /obj/effect/turf_decal/borderfloor{
 	dir = 10
@@ -6122,6 +6126,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/engi_wash)
 "sd" = (
@@ -6426,6 +6431,7 @@
 	name = "west bump";
 	pixel_x = -24
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled,
 /area/crew_quarters/heads/chief)
 "tw" = (
@@ -7068,6 +7074,7 @@
 	name = "north bump";
 	pixel_y = 24
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "wy" = (
@@ -7190,10 +7197,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 8
-	},
 /obj/machinery/camera/network/engineering,
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled,
 /area/engineering/engine_airlock)
 "xa" = (
@@ -7384,6 +7389,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/techfloor,
 /area/chapel/chapel_morgue)
 "xG" = (
@@ -7629,7 +7635,7 @@
 /turf/simulated/floor,
 /area/engineering/engine_room)
 "yI" = (
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/lavendergrass/style_random,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "yL" = (
@@ -7994,6 +8000,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/wood,
 /area/chapel/observation)
 "AT" = (
@@ -8454,6 +8461,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/dark,
 /area/chapel/main)
 "Di" = (
@@ -8566,7 +8574,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)
 "DD" = (
-/obj/structure/flora/grass/brown,
+/obj/structure/flora/grass/brown/style_random,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "DG" = (
@@ -8762,7 +8770,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "EC" = (
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/unsimulated/mask,
 /area/turbolift/rmine/under2)
 "ED" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -8784,6 +8792,7 @@
 	dir = 1;
 	pixel_y = 24
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled,
 /area/quartermaster/belterdock/refinery)
 "EJ" = (
@@ -10209,7 +10218,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "Lp" = (
-/obj/structure/flora/grass/green,
+/obj/structure/flora/grass/green/style_random,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "Lq" = (
@@ -10231,7 +10240,7 @@
 /turf/simulated/floor/tiled,
 /area/engineering/engine_eva)
 "Lv" = (
-/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/bush/sparsegrass/style_random,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "Lw" = (
@@ -10957,6 +10966,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-4"
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled,
 /area/engineering/foyer)
 "Ox" = (
@@ -11365,6 +11375,7 @@
 	req_access = list();
 	req_one_access = list(11,67)
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "Qm" = (
@@ -11710,6 +11721,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/belterdock/gear)
 "So" = (
@@ -11831,7 +11843,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "SZ" = (
-/obj/structure/flora/tree/dead,
+/obj/structure/flora/tree/dead/style_random,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "Td" = (
@@ -12592,6 +12604,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/atmos/hallway)
 "Wq" = (
@@ -12936,8 +12949,8 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-4"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
-	dir = 5
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 1
 	},
 /turf/simulated/floor/tiled,
 /area/engineering/engine_airlock)
@@ -13165,6 +13178,7 @@
 	name = "south bump";
 	pixel_y = -28
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/steel,
 /area/engineering/atmos/locker_room)
 "YX" = (
@@ -29004,8 +29018,8 @@ ll
 fY
 gq
 Tu
-qW
-qW
+Ak
+Ak
 So
 VE
 bq
@@ -29198,8 +29212,8 @@ ll
 fY
 xM
 wp
-qW
-qW
+Ak
+Ak
 UO
 CQ
 hf
@@ -29392,8 +29406,8 @@ Km
 wr
 Fa
 KR
-qW
-qW
+Ak
+Ak
 OV
 Fa
 Ii
@@ -29586,8 +29600,8 @@ ll
 fY
 Fa
 PO
-qW
-qW
+Ak
+Ak
 wp
 JB
 eT
@@ -29780,8 +29794,8 @@ fl
 fY
 Fa
 rU
-qW
-qW
+Ak
+Ak
 wp
 HI
 Pr

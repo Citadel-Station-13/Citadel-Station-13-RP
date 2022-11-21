@@ -77,7 +77,7 @@
 /turf/simulated/floor/plating,
 /area/maintenance/public_bunker)
 "ao" = (
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/unsimulated/mask,
 /area/turbolift/runder/level1)
 "ap" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging/junction{
@@ -513,6 +513,7 @@
 	name = "north bump";
 	pixel_y = 24
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/techfloor,
 /area/rift/turbolift/maint)
 "bp" = (
@@ -848,6 +849,7 @@
 	name = "west bump";
 	pixel_x = -24
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_two)
 "bY" = (
@@ -1058,6 +1060,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/stairs_two)
 "cC" = (
@@ -1507,6 +1510,7 @@
 /obj/effect/turf_decal/corner/lightorange/border{
 	dir = 1
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/underone)
 "dv" = (
@@ -2566,7 +2570,7 @@
 /turf/simulated/floor/tiled/kafel_full/blue,
 /area/crew_quarters/pool)
 "hq" = (
-/obj/structure/flora/grass/both,
+/obj/structure/flora/grass/both/style_random,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "hs" = (
@@ -5300,6 +5304,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "uX" = (
@@ -6994,10 +6999,11 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/steel_grid,
 /area/hallway/secondary/engineering_hallway)
 "Bx" = (
-/turf/simulated/floor/holofloor/tiled/dark,
+/turf/unsimulated/mask,
 /area/turbolift/rmine/under1)
 "BA" = (
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
@@ -7368,6 +7374,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/steel,
 /area/rift/station/fighter_bay)
 "CW" = (
@@ -7779,7 +7786,7 @@
 /turf/simulated/open/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "ER" = (
-/obj/structure/flora/bush,
+/obj/structure/flora/bush/style_random,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "ES" = (
@@ -9091,6 +9098,7 @@
 	name = "east bump";
 	pixel_x = 24
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled,
 /area/maintenance/elevator)
 "JF" = (
@@ -9347,6 +9355,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-4"
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/plating,
 /area/storage/tech)
 "KH" = (
@@ -10368,6 +10377,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/rift/station/fighter_bay/hangar)
 "Ol" = (
@@ -10951,7 +10961,7 @@
 /turf/simulated/wall/r_wall,
 /area/outpost/research/longtermstorage)
 "Qx" = (
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/lavendergrass/style_random,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under1)
 "Qz" = (
@@ -11075,6 +11085,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /obj/machinery/meter,
 /turf/simulated/floor/tiled,
 /area/engineering/atmos)
@@ -11745,6 +11756,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rift/station/fighter_bay/maintenance)
 "TN" = (
@@ -12059,6 +12071,7 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/drone_fabrication)
 "Va" = (
@@ -12831,6 +12844,7 @@
 	name = "north bump";
 	pixel_y = 24
 	},
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/steel_dirty,
 /area/outpost/research/longtermstorage)
 "Yp" = (

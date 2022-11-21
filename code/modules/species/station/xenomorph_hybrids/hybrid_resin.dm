@@ -267,8 +267,7 @@
 	desc = "A rubbery organic covering, you might know it from a Xenomorph Hybrid friend already."
 	icon_state = "weeds"
 
-	anchored = 1
-	density = 0
-	plane = TURF_PLANE
+	anchored = TRUE
+	density = FALSE
 	layer = ABOVE_TURF_LAYER
 	color = "#422649"

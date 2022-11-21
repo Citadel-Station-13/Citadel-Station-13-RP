@@ -1,10 +1,11 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber
+	name = "Air Scrubber"
+	desc = "Has a valve and pump attached to it"
 	icon = 'icons/atmos/vent_scrubber.dmi'
 	icon_state = "map_scrubber_off"
 	pipe_state = "scrubber"
+	layer = GAS_SCRUBBER_LAYER
 
-	name = "Air Scrubber"
-	desc = "Has a valve and pump attached to it"
 	use_power = USE_POWER_OFF
 	idle_power_usage = 150		//internal circuitry, friction losses and stuff
 	power_rating = 7500			//7500 W ~ 10 HP

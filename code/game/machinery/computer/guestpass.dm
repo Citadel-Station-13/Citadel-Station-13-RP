@@ -78,11 +78,10 @@
 /obj/machinery/computer/guestpass
 	name = "guest pass terminal"
 	icon_state = "guest"
-	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
 	icon_keyboard = null
 	icon_screen = "pass"
-	density = 0
+	density = FALSE
 	circuit = /obj/item/circuitboard/guestpass
 
 	var/obj/item/card/id/giver
