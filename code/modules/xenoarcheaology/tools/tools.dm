@@ -88,9 +88,6 @@
 
 /obj/item/ano_scanner/integrated
 
-/obj/item/ano_scanner/integrated/ui_host(mob/user)
-	return loc
-
 /obj/item/depth_scanner
 	name = "depth analysis scanner"
 	desc = "Used to check spatial depth and density of rock outcroppings."
@@ -359,4 +356,4 @@
 	set desc = "Scan for artifacts and anomalies within your vicinity."
 	if(!(src in usr))
 		return
-	anomaly_scanner.ui_interact(usr)
+	anomaly_scanner.interact(usr)
