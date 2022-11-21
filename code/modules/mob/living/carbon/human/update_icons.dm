@@ -56,6 +56,19 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		cut_overlay(I)
 		overlays_standing[cache_index] = null
 
+/**
+ * applies a layer while cutting the old one
+ *
+ * overlays can be a single overlay or a list.
+ */
+/mob/living/carbon/human/proc/render_layer(cache_index, overlays)
+	if(overlays_standing[cache_index])
+		cut_overlay(overlays_standing[cache_index])
+	overlays_standing[cache_index] = overlays
+	if(!overlays)
+		return
+	add_overlay(overlays_standing[cache_index])
+
 /mob/living/carbon/human
 	var/list/overlays_standing[TOTAL_LAYERS]
 	var/previous_damage_appearance // store what the body last looked like, so we only have to update it if something changed
@@ -1164,3 +1177,14 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	return ret
 
 //! sprite accessories
+/mob/living/carbon/human/update_hair()
+
+/mob/living/carbon/human/update_facial_hair()
+
+/mob/living/carbon/human/update_hair()
+
+/mob/living/carbon/human/update_ears()
+
+/mob/living/carbon/human/update_wings()
+
+/mob/living/carbon/human/update_markings()

@@ -606,10 +606,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		if((organ in H.organs) || (organ in H.internal_organs))
 			qdel(organ)
 
-	if(H.organs)									H.organs.Cut()
-	if(H.internal_organs)				 H.internal_organs.Cut()
-	if(H.organs_by_name)					H.organs_by_name.Cut()
-	if(H.internal_organs_by_name) H.internal_organs_by_name.Cut()
+	// todo: what the FUCK is this proc
 
 	H.organs = list()
 	H.internal_organs = list()
@@ -633,6 +630,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 			O.organ_tag = organ_tag
 		H.internal_organs_by_name[organ_tag] = O
 
+	// todo: oh god this is so shit
 	if(H.nif)
 		var/type = H.nif.type
 		var/durability = H.nif.durability
@@ -643,13 +641,7 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 		nif.nifsofts = nifsofts
 
 	if(base_color)
-		H.r_skin = hex2num(copytext(base_color,2,4))
-		H.g_skin = hex2num(copytext(base_color,4,6))
-		H.b_skin = hex2num(copytext(base_color,6,8))
-	else
-		H.r_skin = 0
-		H.g_skin = 0
-		H.b_skin = 0
+		H.set_body_color(base_color)
 
 /**
  * called to ensure blood is consistent

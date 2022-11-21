@@ -8,7 +8,7 @@
 	var/mob/living/carbon/human/O = owner
 
 ///////////////////////////// DM_EGG /////////////////////////////
-	else if(mode == DM_EGG)
+	if(mode == DM_EGG)
 		for (var/mob/living/carbon/human/P in touchable_mobs)
 			if(P.absorbed || P.stat == DEAD)
 				continue

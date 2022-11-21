@@ -86,6 +86,17 @@
 	update_inv_l_hand()
 	update_inv_r_hand()
 
+/mob/proc/update_eyes()
+
+//! sprite accessories
 /mob/proc/update_hair()
 
-/mob/proc/update_eyes()
+/mob/proc/update_facial_hair()
+
+/mob/proc/update_tail()
+
+/mob/proc/update_ears()
+
+/mob/proc/update_wings()
+
+/mob/proc/update_markings()

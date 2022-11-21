@@ -2,6 +2,10 @@
 // These are used as the layers for the icons, as well as indexes in a list that holds onto them.
 // Technically the layers used are all -100+layer to make them FLOAT_LAYER overlays.
 //! Human Overlays Indexes/////////
+// todo: move these to HUMAN_OVERLAY_X
+//? reasoning: we don't want to make layers have to use indexes
+//? e.g. inventory items should dynamically generate their overlays
+//? instead of having to have a reserved list entry.
 /// Mutations like fat, and lasereyes
 #define MUTATIONS_LAYER			1
 /// Skin things added by a call on species
@@ -38,38 +42,40 @@
 #define SUIT_STORE_LAYER		17
 /// Back-slot item
 #define BACK_LAYER				18
+/// facial hair
+#define FACIAL_HAIR_LAYER		19
 /// The human's hair
-#define HAIR_LAYER				19
+#define HAIR_LAYER				20
 /// Both ear-slot items (combined image)
-#define EARS_LAYER				20
+#define EARS_LAYER				21
 /// Mob's eyes (used for glowing eyes)
-#define EYES_LAYER				21
+#define EYES_LAYER				22
 /// Mask-slot item
-#define FACEMASK_LAYER			22
+#define FACEMASK_LAYER			23
 /// Head-slot item
-#define HEAD_LAYER				23
+#define HEAD_LAYER				24
 /// Handcuffs, if the human is handcuffed, in a secret inv slot
-#define HANDCUFF_LAYER			24
+#define HANDCUFF_LAYER			25
 /// Same as handcuffs, for legcuffs
-#define LEGCUFF_LAYER			25
+#define LEGCUFF_LAYER			26
 /// Left-hand item
-#define L_HAND_LAYER			26
+#define L_HAND_LAYER			27
 /// Right-hand item
-#define R_HAND_LAYER			27
+#define R_HAND_LAYER			28
 /// Wing overlay layer.
-#define WING_LAYER				28
+#define WING_LAYER				29
 /// Tail alt. overlay layer for fixing overlay issues.
-#define TAIL_LAYER_ALT			29
+#define TAIL_LAYER_ALT			30
 /// Effects drawn by modifiers
-#define MODIFIER_EFFECTS_LAYER	30
+#define MODIFIER_EFFECTS_LAYER	31
 /// 'Mob on fire' overlay layer
-#define FIRE_LAYER				31
+#define FIRE_LAYER				32
 /// 'Mob submerged' overlay layer
-#define MOB_WATER_LAYER			32
+#define MOB_WATER_LAYER			33
 /// 'Aimed at' overlay layer
-#define TARGETED_LAYER			33
+#define TARGETED_LAYER			34
 //! KEEP THIS UPDATED, should always equal the highest number here, used to initialize a list.
-#define TOTAL_LAYERS			33
+#define TOTAL_LAYERS			34
 //! the offset used
 #define BODY_LAYER		-100
 //////////////////////////////////

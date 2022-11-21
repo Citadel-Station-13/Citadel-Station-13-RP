@@ -3,6 +3,10 @@
 // used for slimes but it may be useful for changelings later.
 var/list/wrapped_species_by_ref = list()
 
+// todo: kill this stupid subtype
+// there's no reason to have it
+// composition over inheritance
+// all of these should just be vars on species or otherwise integrated.
 /datum/species/shapeshifter
 	abstract_type = /datum/species/shapeshifter
 
@@ -13,7 +17,6 @@ var/list/wrapped_species_by_ref = list()
 	var/shapeshift_capability
 
 	var/list/valid_transform_species = list()
-	var/monochromatic = FALSE
 	var/default_form = SPECIES_HUMAN
 	var/heal_rate = 0
 
@@ -83,13 +86,6 @@ var/list/wrapped_species_by_ref = list()
 /datum/species/shapeshifter/handle_post_spawn(mob/living/carbon/human/H)
 	..()
 	wrapped_species_by_ref["\ref[H]"] = default_form
-	if(monochromatic)
-		H.r_hair =   H.r_skin
-		H.g_hair =   H.g_skin
-		H.b_hair =   H.b_skin
-		H.r_facial = H.r_skin
-		H.g_facial = H.g_skin
-		H.b_facial = H.b_skin
 
 	for(var/obj/item/organ/external/E in H.organs)
 		E.sync_colour_to_human(H)

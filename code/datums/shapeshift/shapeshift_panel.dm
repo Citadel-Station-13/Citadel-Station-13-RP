@@ -4,6 +4,8 @@
  * for ui synchronization
  */
 /datum/shapeshift_panel
+	/// our system
+	var/datum/shapeshift_system/system
 
 #warn impl
 

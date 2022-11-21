@@ -191,14 +191,14 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 /mob/living/proc/inform_someone_you_just_stepped_over_them(mob/living/micro)
 	var/mob/living/carbon/human/H
 	var/datum/sprite_accessory_meta/tail/taur/tail
-	tail = ishuman(src)? ((H = src) && isTaurTail(H.tail_style) && H.tail_style) : null
+	tail = ishuman(src)? ((H = src) && H.is_taur() && H.peek_sprite_accessory_tail()) : null
 	to_chat(src, tail? STEP_TEXT_OWNER_NON_SHITCODE(tail.msg_owner_help_run, micro) : "You carefully step over [micro].")
 	to_chat(micro, tail? STEP_TEXT_PREY_NON_SHITCODE(tail.msg_prey_help_run, src) : "[src] carefully steps over you.")
 
 /mob/living/proc/inform_someone_they_just_ran_under_you(mob/living/micro)
 	var/mob/living/carbon/human/H
 	var/datum/sprite_accessory_meta/tail/taur/tail
-	tail = ishuman(src)? ((H = src) && isTaurTail(H.tail_style) && H.tail_style) : null
+	tail = ishuman(src)? ((H = src) && H.is_taur() && H.peek_sprite_accessory_tail()) : null
 	to_chat(micro, tail? STEP_TEXT_OWNER_NON_SHITCODE(tail.msg_prey_stepunder, src) : "You run between [src]'s legs.")
 	to_chat(src, tail? STEP_TEXT_PREY_NON_SHITCODE(tail.msg_owner_stepunder, micro) : "[micro] runs between your legs.")
 
@@ -222,12 +222,12 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 				return
 			// macro walked onto our tile
 			if(WE_RAN_BETWEEN_THEIR_LEGS)
-				tail = ishuman(AM) && (H = AM) && isTaurTail(H.tail_style) && H.tail_style
+				tail = ishuman(AM) && (H = AM) && H.is_taur() && H.peek_sprite_accessory_tail()
 				to_chat(AM, STEP_TEXT_OWNER_NON_SHITCODE(tail?.msg_owner_help_run, AM) || "You carefully step over [src].")
 				to_chat(src, STEP_TEXT_PREY_NON_SHITCODE(tail?.msg_prey_help_run, src) || "[AM] carefully steps over you.")
 			// micro ran onto our tile
 			if(THEY_RAN_BETWEEN_OUR_LEGS)
-				tail = ishuman(src) && (H = src) && isTaurTail(H.tail_style) && H.tail_style
+				tail = ishuman(src) && (H = src) && H.is_taur() && H.peek_sprite_accessory_tail()
 				to_chat(AM, STEP_TEXT_PREY_NON_SHITCODE(tail?.msg_prey_stepunder, src),  || "You run between [src]'s legs.")
 				to_chat(src, STEP_TEXT_OWNER_NON_SHITCODE(tail?.msg_owner_stepunder, AM) || "[AM] runs between your legs.")
 */
@@ -313,13 +313,13 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 					add_attack_logs(src,tmob,"Pinned underfoot (run, no halloss)")
 
 					//Not a human, or not a taur, generic message only
-					if(!H || !isTaurTail(H.tail_style))
+					if(!H || !H.is_taur())
 						to_chat(src,"<span class='danger'>You quickly push [tmob] to the ground with your foot!</span>")
 						to_chat(tmob,"<span class='danger'>[src] pushes you down to the ground with their foot!</span>")
 
 					//Human with taur tail, special messages are sent
 					else
-						var/datum/sprite_accessory_meta/tail/taur/tail = H.tail_style
+						var/datum/sprite_accessory_meta/tail/taur/tail = H.peek_sprite_accessory_tail()
 						to_chat(src,STEP_TEXT_OWNER("<span class='danger'>[tail.msg_owner_disarm_run]</span>"))
 						to_chat(tmob,STEP_TEXT_PREY("<span class='danger'>[tail.msg_prey_disarm_run]</span>"))
 
@@ -335,13 +335,13 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 					add_attack_logs(src,tmob,"Pinned underfoot (walk, about [damage] halloss)")
 
 					//Not a human, or not a taur, generic message only
-					if(!H || !isTaurTail(H.tail_style))
+					if(!H || !H.is_taur())
 						to_chat(src,"<span class='danger'>You firmly push your foot down on [tmob], painfully but harmlessly pinning them to the ground!</span>")
 						to_chat(tmob,"<span class='danger'>[src] firmly pushes their foot down on you, quite painfully but harmlessly pinning you to the ground!</span>")
 
 					//Human with taur tail, special messages are sent
 					else
-						var/datum/sprite_accessory_meta/tail/taur/tail = H.tail_style
+						var/datum/sprite_accessory_meta/tail/taur/tail = H.peek_sprite_accessory_tail()
 						to_chat(src,STEP_TEXT_OWNER("<span class='danger'>[tail.msg_owner_disarm_walk]</span>"))
 						to_chat(tmob,STEP_TEXT_PREY("<span class='danger'>[tail.msg_prey_disarm_walk]</span>"))
 
@@ -367,13 +367,13 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 				if(m_intent == "run")
 
 					//Not a human, or not a taur, generic message only
-					if(!H || !isTaurTail(H.tail_style))
+					if(!H || !H.is_taur())
 						to_chat(src,"<span class='danger'>You carelessly step down onto [tmob], crushing them!</span>")
 						to_chat(tmob,"<span class='danger'>[src] steps carelessly on your body, crushing you!</span>")
 
 					//Human with taur tail, special messages are sent
 					else
-						var/datum/sprite_accessory_meta/tail/taur/tail = H.tail_style
+						var/datum/sprite_accessory_meta/tail/taur/tail = H.peek_sprite_accessory_tail()
 						to_chat(src,STEP_TEXT_OWNER("<span class='danger'>[tail.msg_owner_harm_run]</span>"))
 						to_chat(tmob,STEP_TEXT_PREY("<span class='danger'>[tail.msg_prey_harm_run]</span>"))
 
@@ -397,13 +397,13 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 						add_attack_logs(src,tmob,"Crushed underfoot (walk, about [calculated_damage] damage)")
 
 					//Not a human, or not a taur, generic message only
-					if(!H || !isTaurTail(H.tail_style))
+					if(!H || !H.is_taur())
 						to_chat(src,"<span class='danger'>You methodically place your foot down upon [tmob]'s body, slowly applying pressure, crushing them against the floor below!</span>")
 						to_chat(tmob,"<span class='danger'>[src] methodically places their foot upon your body, slowly applying pressure, crushing you against the floor below!</span>")
 
 					//Human with taur tail, special messages are sent
 					else
-						var/datum/sprite_accessory_meta/tail/taur/tail = H.tail_style
+						var/datum/sprite_accessory_meta/tail/taur/tail = H.peek_sprite_accessory_tail()
 						to_chat(src,STEP_TEXT_OWNER("<span class='danger'>[tail.msg_owner_harm_walk]</span>"))
 						to_chat(tmob,STEP_TEXT_PREY("<span class='danger'>[tail.msg_prey_harm_walk]</span>"))
 
@@ -422,13 +422,13 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 				forceMove(tmob.loc)
 
 				//Not a human, or not a taur while wearing shoes = no grab
-				if(!H || (!isTaurTail(H.tail_style) && H.shoes))
+				if(!H || (!H.is_taur() && H.shoes))
 					to_chat(src,"<span class='danger'>You step down onto [tmob], squishing them and forcing them down to the ground!</span>")
 					to_chat(tmob,"<span class='danger'>[src] steps down and squishes you with their foot, forcing you down to the ground!</span>")
 					add_attack_logs(src,tmob,"Grabbed underfoot (nontaur, shoes)")
 
 				//Human, not a taur, but not wearing shoes = yes grab
-				else if(H && (!isTaurTail(H.tail_style) && !H.shoes))
+				else if(H && (!H.is_taur() && !H.shoes))
 					to_chat(src,"<span class='danger'>You pin [tmob] down onto the floor with your foot and curl your toes up around their body, trapping them inbetween them!</span>")
 					to_chat(tmob,"<span class='danger'>[src] pins you down to the floor with their foot and curls their toes up around your body, trapping you inbetween them!</span>")
 					equip_to_slot_if_possible(tmob.get_scooped(H), SLOT_ID_SHOES, INV_OP_SILENT)
@@ -436,14 +436,14 @@ var/const/RESIZE_A_SMALLTINY = (RESIZE_SMALL + RESIZE_TINY) / 2
 
 				//Human, taur, shoes = no grab, special message
 				else if(H.shoes)
-					var/datum/sprite_accessory_meta/tail/taur/tail = H.tail_style
+					var/datum/sprite_accessory_meta/tail/taur/tail = H.peek_sprite_accessory_tail()
 					to_chat(src,STEP_TEXT_OWNER("<span class='danger'>[tail.msg_owner_grab_fail]</span>"))
 					to_chat(tmob,STEP_TEXT_PREY("<span class='danger'>[tail.msg_prey_grab_fail]</span>"))
 					add_attack_logs(src,tmob,"Grabbed underfoot (taur, shoes)")
 
 				//Human, taur, no shoes = yes grab, special message
 				else
-					var/datum/sprite_accessory_meta/tail/taur/tail = H.tail_style
+					var/datum/sprite_accessory_meta/tail/taur/tail = H.peek_sprite_accessory_tail()
 					to_chat(src,STEP_TEXT_OWNER("<span class='danger'>[tail.msg_owner_grab_success]</span>"))
 					to_chat(tmob,STEP_TEXT_PREY("<span class='danger'>[tail.msg_prey_grab_success]</span>"))
 					equip_to_slot_if_possible(tmob.get_scooped(H), SLOT_ID_SHOES, INV_OP_SILENT)
