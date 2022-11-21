@@ -1178,13 +1178,20 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 //! sprite accessories
 /mob/living/carbon/human/update_hair()
+	var/datum/sprite_accessory_data/data = peek_sprite_accessory_hair()
 
 /mob/living/carbon/human/update_facial_hair()
+	var/datum/sprite_accessory_data/data = peek_sprite_accessory_facial_hair()
 
-/mob/living/carbon/human/update_hair()
+/mob/living/carbon/human/update_tail()
+	var/datum/sprite_accessory_data/data = peek_sprite_accessory_tail()
 
 /mob/living/carbon/human/update_ears()
+	var/datum/sprite_accessory_data/data1 = peek_sprite_accessory_ears_1()
+	var/datum/sprite_accessory_data/data2 = peek_sprite_accessory_ears_2()
 
 /mob/living/carbon/human/update_wings()
+	var/datum/sprite_accessory_data/data = peek_sprite_accessory_wings()
 
 /mob/living/carbon/human/update_markings()
+	update_icons_body()

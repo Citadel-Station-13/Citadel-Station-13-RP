@@ -230,9 +230,9 @@
 	var/mob/living/carbon/human/owner = M
 	if(istype(owner) && owner.species)
 
-		var/skin_colour = rgb(owner.r_skin, owner.g_skin, owner.b_skin)
-		var/hair_colour = rgb(owner.r_hair, owner.g_hair, owner.b_hair)
-		var/eye_colour =  rgb(owner.r_eyes, owner.g_eyes, owner.b_eyes)
+		var/skin_colour = owner.get_body_color()
+		var/hair_colour = owner.get_hair_color() || "#000000"
+		var/eye_colour =  owner.get_eye_color()
 		var/species_name = bodytype_to_string(owner.species.default_bodytype)
 
 		for(var/cache_entry in generate_for_slots)

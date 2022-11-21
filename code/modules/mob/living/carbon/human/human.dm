@@ -723,64 +723,7 @@
 	if(!(MUTATION_MORPH in mutations))
 		src.verbs -= /mob/living/carbon/human/proc/morph
 		return
-
-	var/new_facial = input("Please select facial hair color.", "Character Generation",rgb(r_facial,g_facial,b_facial)) as color
-	if(new_facial)
-		r_facial = hex2num(copytext(new_facial, 2, 4))
-		g_facial = hex2num(copytext(new_facial, 4, 6))
-		b_facial = hex2num(copytext(new_facial, 6, 8))
-
-	var/new_hair = input("Please select hair color.", "Character Generation",rgb(r_hair,g_hair,b_hair)) as color
-	if(new_facial)
-		r_hair = hex2num(copytext(new_hair, 2, 4))
-		g_hair = hex2num(copytext(new_hair, 4, 6))
-		b_hair = hex2num(copytext(new_hair, 6, 8))
-
-	var/new_eyes = input("Please select eye color.", "Character Generation",rgb(r_eyes,g_eyes,b_eyes)) as color
-	if(new_eyes)
-		r_eyes = hex2num(copytext(new_eyes, 2, 4))
-		g_eyes = hex2num(copytext(new_eyes, 4, 6))
-		b_eyes = hex2num(copytext(new_eyes, 6, 8))
-		update_eyes()
-
-	// hair
-	var/list/all_hairs = typesof(/datum/sprite_accessory_meta/hair) - /datum/sprite_accessory_meta/hair
-	var/list/hairs = list()
-
-	// loop through potential hairs
-	for(var/x in all_hairs)
-		var/datum/sprite_accessory_meta/hair/H = new x // create new hair datum based on type x
-		hairs.Add(H.name) // add hair name to hairs
-		qdel(H) // delete the hair after it's all done
-
-	var/new_style = input("Please select hair style", "Character Generation",h_style)  as null|anything in hairs
-
-	// if new style selected (not cancel)
-	if (new_style)
-		h_style = new_style
-
-	// facial hair
-	var/list/all_fhairs = typesof(/datum/sprite_accessory_meta/facial_hair) - /datum/sprite_accessory_meta/facial_hair
-	var/list/fhairs = list()
-
-	for(var/x in all_fhairs)
-		var/datum/sprite_accessory_meta/facial_hair/H = new x
-		fhairs.Add(H.name)
-		qdel(H)
-
-	new_style = input("Please select facial style", "Character Generation",f_style)  as null|anything in fhairs
-
-	if(new_style)
-		f_style = new_style
-
-	var/new_gender = alert(usr, "Please select gender.", "Character Generation", "Male", "Female", "Neutral")
-	if (new_gender)
-		if(new_gender == "Male")
-			gender = MALE
-		else if(new_gender == "Female")
-			gender = FEMALE
-		else
-			gender = NEUTER
+	#warn shapeshift panel
 	regenerate_icons()
 	check_dna()
 	var/datum/gender/T = GLOB.gender_datums[get_visible_gender()]

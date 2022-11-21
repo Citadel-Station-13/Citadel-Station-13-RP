@@ -89,6 +89,14 @@
 /mob/proc/update_eyes()
 
 //! sprite accessories
+/mob/proc/update_sprite_accessories()
+	update_hair()
+	update_facial_hair()
+	update_tail()
+	update_ears()
+	update_wings()
+	update_markings()
+
 /mob/proc/update_hair()
 
 /mob/proc/update_facial_hair()

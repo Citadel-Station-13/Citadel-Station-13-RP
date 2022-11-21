@@ -255,3 +255,12 @@
 /mob/living/carbon/human/proc/copy_sprite_accessory_wings(datum/sprite_accessory_data/accessorylike, update = TRUE)
 	data.is_shared_datum = TRUE
 	return dna.set_sprite_accessory_wings(data)
+
+//* abstracted read methods
+/**
+ * gets primary hair color
+ * returns null if for some reason we don't have hair accessory set.
+ */
+/mob/living/carbon/human/proc/get_hair_color()
+	var/datum/sprite_accessory_data/D = peek_sprite_accessory_hair()
+	return D.get_color_index(1)
