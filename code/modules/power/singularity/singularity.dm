@@ -393,8 +393,6 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	switch (numb)
 		if (1) //EMP.
 			emp_area()
-		if (2, 3) //Tox damage all carbon mobs in area.
-			toxmob()
 		if (4) //Stun mobs who lack optic scanners.
 			mezzer()
 		else
@@ -437,8 +435,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 			to_chat(M, "<span class=\"danger\">You hear an uneartly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")
 			to_chat(M, "<span class=\"danger\">You don't even have a moment to react as you are reduced to ashes by the intense radiation.</span>")
 			M.dust()
-	SSradiation.radiate(src, rand(energy))
-	return
+	radiation_pulse(src, energy, RAD_FALLOFF_ENGINE_SINGULARITY)
 
 /obj/singularity/proc/pulse()
 	//! if you hit super you eat shit from 50k :^)

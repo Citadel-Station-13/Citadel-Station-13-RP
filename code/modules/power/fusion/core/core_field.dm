@@ -321,7 +321,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	radiation += plasma_temperature/2
 	plasma_temperature = 0
 
-	SSradiation.radiate(src, radiation)
+	radiation_pulse(src, clamp(radiation, 0, 50000), RAD_FALLOFF_ENGINE_FUSION)
 	Radiate()
 
 /obj/effect/fusion_em_field/proc/Radiate()
