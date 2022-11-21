@@ -155,6 +155,7 @@
 	/// Name for the species' blood.
 	var/blood_name = "blood"
 	/// Initial blood volume.
+	/// TODO: Put this on living so this is moreso an override. @Zandario
 	var/blood_volume = 560
 	/// Multiplier for how fast a species bleeds out. Higher = Faster
 	var/bloodloss_rate = 1

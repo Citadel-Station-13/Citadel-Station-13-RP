@@ -493,3 +493,8 @@
 	visible_message("<b>[src]</b> fades away from the screen, the pAI device goes silent.")
 	card.removePersonality()
 	clear_client()
+
+// See software.dm for Topic()
+/mob/living/silicon/pai/canUseTopic(atom/movable/movable, be_close = FALSE, no_dexterity = FALSE, no_tk = FALSE)
+	// Resting is just an aesthetic feature for them.
+	return ..(movable, be_close, no_dexterity, no_tk)
