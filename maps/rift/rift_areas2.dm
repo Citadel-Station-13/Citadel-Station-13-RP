@@ -295,6 +295,15 @@
 /area/tether/outpost/solars_shed
 	name = "\improper Solar Farm Shed"
 
+// Geothermal power areas
+/area/rift/geothermal
+	name = "\improper Geothermal Power Plant"
+
+/area/rift/geothermal/balcony
+	name = "\improper Geothermal Overview balcony"
+
+/area/rift/geothermal/sauna
+	name = "\improper Geothermal Sauna"
 
 /area/maintenance/substation/medsec
 	name = "\improper MedSec Substation"
