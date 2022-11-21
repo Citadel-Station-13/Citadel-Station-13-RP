@@ -920,6 +920,10 @@
 	if(!HAS_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS))
 		rad_flags &= ~RAD_BLOCK_CONTENTS
 
+/atom/proc/clean_radiation(str, mul, cheap)
+	return
+	#warn impl
+
 //! ## Atom Colour Priority System
 /**
  * A System that gives finer control over which atom colour to colour the atom with.

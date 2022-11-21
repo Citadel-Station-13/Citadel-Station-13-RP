@@ -212,7 +212,7 @@
 	if(!on)
 		return
 
-#warn clean rads
+	O.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER, RAD_CONTAMINATION_CLEANSE_FACTOR)
 
 	if(isliving(O))
 		var/mob/living/L = O

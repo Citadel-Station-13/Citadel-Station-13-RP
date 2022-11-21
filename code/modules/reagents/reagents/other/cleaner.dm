@@ -7,10 +7,12 @@
 	color = "#A5F0EE"
 	touch_met = 50
 
-/datum/reagent/space_cleaner/touch_obj(var/obj/O)
+/datum/reagent/space_cleaner/touch_obj(var/obj/O, amount)
 	O.clean_blood()
+	O.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (amount / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (amount / 10)))
 
-#warn clean rad
+/datum/reagent/space_cleaner/touch_mob(mob/M, amount)
+	M.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (amount / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (amount / 10)))
 
 /datum/reagent/space_cleaner/touch_turf(var/turf/T)
 	if(volume >= 1)
@@ -50,8 +52,6 @@
 			H.clean_blood(1)
 			return
 	M.clean_blood()
-
-#warn clean rad
 
 /datum/reagent/space_cleaner/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_SLIME)

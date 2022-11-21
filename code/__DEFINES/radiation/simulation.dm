@@ -153,4 +153,4 @@
 /// amount of contamination washed out by a single tick of a shower, or 10 units of water
 #define RAD_CONTAMINATION_CLEANSE_POWER 25
 /// amount of contamination washed out as a multiplier
-#define RAD_CONTAMINATION_CLEANSE_FACTOR 0.8
+#define RAD_CONTAMINATION_CLEANSE_FACTOR 0.33
