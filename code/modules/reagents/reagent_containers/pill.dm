@@ -4,23 +4,27 @@
 /obj/item/reagent_containers/pill
 	name = "pill"
 	desc = "A pill."
-	icon = 'icons/obj/chemical.dmi'
-	icon_state = null
+	icon = 'icons/obj/medical/chemical.dmi'
+	icon_state = "pill"
+	base_icon_state = "pill"
 	item_state = "pill"
 	drop_sound = 'sound/items/drop/food.ogg'
 	pickup_sound = 'sound/items/pickup/food.ogg'
-
-	var/base_state = "pill"
 
 	possible_transfer_amounts = null
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
 	volume = 60
 
+	/// When set, we allow automatic naming on init.
+	var/rename_with_volume = FALSE
+
 /obj/item/reagent_containers/pill/Initialize(mapload)
 	. = ..()
 	if(!icon_state)
-		icon_state = "[base_state][rand(1, 4)]" //preset pills only use colour changing or unique icons
+		icon_state = "pill[rand(1,20)]"
+	if(reagents.total_volume && rename_with_volume)
+		name += " ([reagents.total_volume]u)"
 
 /obj/item/reagent_containers/pill/attack(mob/M as mob, mob/user as mob)
 	if(M == user)

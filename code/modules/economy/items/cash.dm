@@ -108,6 +108,8 @@
 	. = amount
 	if(!worth)
 		qdel(src)
+		return
+	update_appearance()
 
 /obj/item/spacecash/amount_static_currency()
 	return worth

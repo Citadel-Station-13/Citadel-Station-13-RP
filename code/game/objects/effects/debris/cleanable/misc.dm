@@ -72,7 +72,7 @@
 	density = 0
 	anchored = 1
 	plane = OBJ_PLANE
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "molten"
 
 /obj/effect/debris/cleanable/cobweb2

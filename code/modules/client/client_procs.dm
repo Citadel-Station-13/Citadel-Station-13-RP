@@ -151,39 +151,44 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	///////////
 
 /client/New(TopicData)
+	//! pre-connect-ish
+	// set appadmin for profiling or it might not work (?) (this is old code we just assume it's here for a reason)
 	world.SetConfig("APP/admin", ckey, "role=admin")
-	//var/tdata = TopicData //save this for later use
-	TopicData = null							//Prevent calls to client.Topic from connect
-
-	if(connection != "seeker" && connection != "web")//Invalid connection type.
+	// block client.Topic() calls from connect
+	TopicData = null
+	// kick out invalid connections
+	if(connection != "seeker" && connection != "web")
 		return null
-
+	// kick out guests
 	if(!config_legacy.guests_allowed && IsGuestKey(key))
 		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
 		del(src)
 		return
-
+	// pre-connect greeting
 	to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
-
+	// register in globals
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
+	//! Resolve storage datums
 	// resolve persistent data
 	persistent = resolve_client_data(ckey)
-	// todo: move resolve database data up here
+	// todo: move resolve database data up here but above preferences
+	// todo: move preferences up here but above persistent
 
+	//! Setup user interface
+	// todo: move top level menu here, for now it has to be under prefs.
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
 
+	//! Setup admin tooling
 	GLOB.ahelp_tickets.ClientLogin(src)
-	SSserver_maint.UpdateHubStatus()
 	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
 	//Admin Authorisation
 	holder = admin_datums[ckey]
 	var/debug_tools_allowed = FALSE			//CITADEL EDIT
 	if(holder)
 		GLOB.admins |= src
-		admins |= src // i hate this.
 		holder.owner = src
 		connecting_admin = TRUE
 		//CITADEL EDIT
@@ -222,6 +227,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(!debug_tools_allowed)
 		world.SetConfig("APP/admin", ckey, null)
 	//END CITADEL EDIT
+	// todo: refactor and hoist
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
 	prefs = GLOB.preferences_datums[ckey]
 	if(!prefs)
@@ -229,9 +235,14 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		GLOB.preferences_datums[ckey] = prefs
 
 	prefs.client = src
+	// todo: refactor
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
 	//fps = prefs.clientfps //(prefs.clientfps < 0) ? RECOMMENDED_FPS : prefs.clientfps
+
+	// todo: hoist
+	// build top level menu
+	GLOB.main_window_menu.setup(src)
 
 	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
@@ -383,6 +394,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	send_resources()
 
+	//? Startup rendering
+	pre_init_viewport()
 	mob.reload_rendering()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
@@ -402,8 +415,13 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		if(isnum(account_age) && account_age <= 2)
 			log_and_message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([account_age] days).")
 
+	//? We are done
+	// set initialized
 	initialized = TRUE
+	// show any migration errors
 	prefs.auto_flush_errors()
+	// update our hub label
+	SSserver_maint.UpdateHubStatus()
 
 	//////////////
 	//DISCONNECT//
@@ -427,7 +445,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	SSserver_maint.UpdateHubStatus()
 	if(holder)
 		holder.owner = null
-		admins -= src
 		GLOB.admins -= src //delete them on the managed one too
 	if(using_perspective)
 		set_perspective(null)
@@ -622,7 +639,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 //checks if a client is afk
 //3000 frames = 5 minutes
 /client/proc/is_afk(duration=3000)
-	if(inactivity > duration)	return inactivity
+	if(inactivity > duration)
+		return inactivity
 	return 0
 
 // Byond seemingly calls stat, each tick.
@@ -745,40 +763,38 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 	. = ..()
 
 /client/proc/change_view(new_size, forced, translocate)
-	if(!is_preference_enabled(/datum/client_preference/scaling_viewport))
-		if (isnull(new_size))
-			CRASH("change_view called without argument.")
+	set waitfor = FALSE	// to async temporary view
+	// todo: refactor this, client view changes should be ephemeral.
+	var/list/L = getviewsize(new_size)
+	set_temporary_view(L[1], L[2])
 
-		if(view == new_size)
-			// unnecessary
-			return
+/**
+ * directly sets our view
+ * you should probably be using perspective datums most of the time instead
+ * WARNING: this is verbatim; aka, view = 7 is 15 width 15 height, NOT 7x7!
+ *
+ * furthermore, this proc is BLOCKING.
+ */
+/client/proc/set_temporary_view(width, height)
+	if(!width || !height || width < 0 || height < 0)
+		reset_temporary_view()
+		return
+	using_temporary_viewsize = FALSE
+	temporary_viewsize_width = width
+	temporary_viewsize_height = height
+	request_viewport_update()
 
-		/*
-		if(prefs && !prefs.widescreenpref && new_size == CONFIG_GET(string/default_view))
-			new_size = CONFIG_GET(string/default_view_square)
-		*/
-
-		view = new_size
-		mob.reload_rendering()
-		if(!translocate)
-			reset_perspective()
-	else if(!. || forced)
-		if(!translocate)
-			reset_perspective()
-		mob?.reload_fullscreen()
-		update_clickcatcher()
-		if(forced)
-			view = new_size
-		else
-			INVOKE_ASYNC(src, /client.verb/OnResize)
-		/*
-		mob.reload_fullscreen()
-		if (isliving(mob))
-			var/mob/living/M = mob
-			M.update_damage_hud()
-		if (prefs.auto_fit_viewport)
-			addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
-		*/
+/**
+ * resets our temporary view
+ * you should probably be using perspective datums most of the time instead
+ *
+ * furthermore, this proc is BLOCKING
+ */
+/client/proc/reset_temporary_view()
+	using_temporary_viewsize = FALSE
+	temporary_viewsize_height = null
+	temporary_viewsize_width = null
+	request_viewport_update()
 
 /**
  * switch perspective - null will cause us to shunt our eye to nullspace!

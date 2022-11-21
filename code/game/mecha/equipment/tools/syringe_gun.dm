@@ -66,7 +66,7 @@
 	S.forceMove(get_turf(chassis))
 	reagents.trans_to_obj(S, min(S.volume, reagents.total_volume))
 	syringes -= S
-	S.icon = 'icons/obj/chemical.dmi'
+	S.icon = 'icons/obj/medical/chemical.dmi'
 	S.icon_state = "syringeproj"
 	playsound(src, 'sound/items/syringeproj.ogg', 50, 1)
 	log_message("Launched [S] from [src], targeting [target].")

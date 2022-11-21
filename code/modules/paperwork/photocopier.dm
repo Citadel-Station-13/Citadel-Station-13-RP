@@ -281,6 +281,8 @@
 				temp_img = icon('icons/obj/butts.dmi', "tajaran")
 			if(SPECIES_UNATHI)
 				temp_img = icon('icons/obj/butts.dmi', "unathi")
+			if(SPECIES_UNATHI_DIGI)
+				temp_img = icon('icons/obj/butts.dmi', "unathi")
 			if(SPECIES_SKRELL)
 				temp_img = icon('icons/obj/butts.dmi', "skrell")
 			if(SPECIES_VOX)
