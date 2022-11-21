@@ -11,12 +11,16 @@
 	var/hl3_release_date
 	var/strength
 	var/can_contaminate
+	/// distance falloff
+	var/falloff = RAD_FALLOFF_CONTAMINATION_NORMAL
 
-/datum/component/radioactive/Initialize(_strength=0, _source, _half_life=RAD_HALF_LIFE, _can_contaminate=TRUE)
+/datum/component/radioactive/Initialize(_strength=0, _source, _half_life=RAD_HALF_LIFE, _can_contaminate=TRUE, falloff)
 	strength = _strength
 	source = _source
 	hl3_release_date = _half_life
 	can_contaminate = _can_contaminate
+	if(falloff)
+		src.falloff = falloff
 
 	if(istype(parent, /atom))
 		RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/rad_examine)
@@ -46,7 +50,7 @@
 /datum/component/radioactive/process(delta_time)
 	if(!prob(50))
 		return
-	radiation_pulse(parent, strength, RAD_FALLOFF_CONTAMINATION_NORMAL, FALSE, can_contaminate)
+	radiation_pulse(parent, strength, falloff, FALSE, can_contaminate)
 
 	if(!hl3_release_date)
 		return

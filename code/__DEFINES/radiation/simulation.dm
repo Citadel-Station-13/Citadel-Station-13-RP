@@ -15,6 +15,8 @@
 #define RAD_FALLOFF_CONTAMINATION_NORMAL 2
 /// default falloff for anomalies
 #define RAD_FALLOFF_ANOMALY 0.33
+/// default falloff for smashed anomalies
+#define RAD_FALLOFF_ANOMALY_SHARDS 0.25
 /// fission engine
 #define RAD_FALLOFF_ENGINE_FISSION 0.5
 /// fusion engine

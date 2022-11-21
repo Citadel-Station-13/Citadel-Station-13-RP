@@ -1,5 +1,5 @@
 #define REACTOR_RADIATION_MULTIPLIER 200
-#define BREACH_RADIATION_MULTIPLIER 0.1
+#define BREACH_RADIATION_MULTIPLIER 1
 #define REACTOR_TEMPERATURE_CUTOFF 10000
 #define REACTOR_RADS_TO_MJ 10000
 
@@ -436,7 +436,7 @@
 
 		// Give the alarm time to play. Then... FLASH! AH-AH!
 		spawn(15 SECONDS)
-			SSradiation.z_radiate(locate(1, 1, L.z), rad_power * BREACH_RADIATION_MULTIPLIER, 1)
+			z_radiation(get_turf(src), null, rad_power * BREACH_RADIATION_MULTIPLIER)
 			for(var/mob/living/mob in living_mob_list)
 				var/turf/T = get_turf(mob)
 				if(T && (L.z == T.z))

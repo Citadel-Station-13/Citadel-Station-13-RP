@@ -3,6 +3,7 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 	subsystem_flags = SS_NO_INIT | SS_BACKGROUND
 	wait = 1 SECONDS
 
+	/// atom refs we warned about already
 	var/list/warned_atoms = list()
 
 /datum/controller/subsystem/processing/radiation/proc/warn(datum/component/radioactive/contamination)
@@ -56,3 +57,13 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 		log_game("Radiation pulse with intensity: [intensity] and range modifier: [range_modifier] in [loc_name(_source_T)][spawn_waves ? "" : " (contained by [nested_loc.name])"]")
 	return TRUE
 */
+
+/**
+ * does our best faith attempt at irradiating a whole zlevel without lagging the server to death
+ */
+/datum/controller/subsystem/processing/radiation/proc/z_radiation(turf/T, z, intensity, falloff_modifier, log, can_contaminate)
+	if(!T && !z)
+		CRASH("need either turf or z")
+	if(!z)
+		z = T.z
+

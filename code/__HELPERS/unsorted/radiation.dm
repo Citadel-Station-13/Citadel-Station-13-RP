@@ -33,3 +33,15 @@
  */
 /proc/radiation_pulse(atom/source, intensity, falloff_modifier, log, can_contaminate, turf/override_turf)
 	return SSradiation.radiation_pulse(override_turf || get_turf(source), source, intensity, falloff_modifier, log, can_contaminate)
+
+/**
+ * radiates a whole zlevel
+ *
+ * implementation doesn't matter to you, the radiation amount does.
+ * radiation amount should be sane for the radiation system in question.
+ *
+ * specifying a turf source is allowed, or just a flat zlevel is allowed;
+ * z-only no-turf z radiation is flat.
+ */
+/proc/z_radiation(turf/source, z, intensity, falloff_modifier, log = TRUE, can_contaminate = FALSE)
+	return SSradiation.z_radiation(source, z, intensity, falloff_modifier, log, can_contaminate)

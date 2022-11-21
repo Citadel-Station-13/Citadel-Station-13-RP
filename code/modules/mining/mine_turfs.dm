@@ -684,7 +684,7 @@ GLOBAL_LIST_EMPTY(mining_overlay_cache)
 				M.flash_eyes()
 				if(prob(50))
 					M.Stun(5)
-			SSradiation.flat_radiate(src, 25, 100)
+			new /obj/item/artifact_shards(src, 500, rand(0.5 MINUTES, 3 MINUTES), RAD_FALLOFF_ANOMALY_SHARDS)
 			if(prob(25))
 				excavate_find(prob(5), finds[1])
 	else if(rand(1,500) == 1)
@@ -692,6 +692,16 @@ GLOBAL_LIST_EMPTY(mining_overlay_cache)
 		new /obj/structure/closet/crate/secure/loot(src)
 
 	make_floor()
+
+/obj/item/artifact_shards
+	name = "sickening fragments"
+	icon = 'icons/obj/shards.dmi'
+	icon_state = "splinterslarge"
+	desc = "Looking at this makes you feel sick. You should probably get away from it."
+
+/obj/item/artifact_shards/Initialize(mapload, intensity, half_life, falloff)
+	. = ..()
+	AddComponent(/datum/component/radioactive, intensity, src, half_life, falloff = falloff)
 
 /turf/simulated/mineral/proc/excavate_find(var/is_clean = 0, var/datum/find/F)
 	//with skill and luck, players can cleanly extract finds

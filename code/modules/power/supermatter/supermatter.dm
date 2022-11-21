@@ -162,7 +162,7 @@
 	if(!TS)
 		return
 	for(var/z in GetConnectedZlevels(TS.z))
-		SSradiation.z_radiate(locate(1, 1, z), DETONATION_RADS, 1)
+		z_radiation(locate(x, y, z), null, DETONATION_RADS)
 	for(var/mob/living/mob in living_mob_list)
 		var/turf/T = get_turf(mob)
 		if(T && (loc.z == T.z))

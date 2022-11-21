@@ -564,3 +564,5 @@
 		accuracy_penalty += 45
 
 	return accuracy_penalty
+
+#warn rad_act

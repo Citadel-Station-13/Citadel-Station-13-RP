@@ -42,7 +42,7 @@
 				insertion_multiplier = 1
 			var/power = (tick_life(0, insertion_multiplier) / REACTOR_RADS_TO_MJ)
 			adjust_thermal_energy(power)
-			SSradiation.radiate(src, max(power * ROD_RADIATION_MULTIPLIER, 0))
+			radiation_pulse(src, max(power * ROD_RADIATION_MULTIPLIER, 0))
 
 /obj/item/fuelrod/proc/equalize(var/E, var/efficiency)
 	var/our_heatcap = heat_capacity()
