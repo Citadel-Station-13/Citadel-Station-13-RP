@@ -5,6 +5,11 @@
  * anything semantically genetic that is non-temporary-state
  * not held by organs should probably be held here
  * basically: anything cosmetic, or anything full-body-gene-power-y
+ *
+ * what's represented in something's dna is not necessarily what's on their body!
+ * sometimes things like genetics consoles can modify both at once
+ * but generally, this is their base genetics
+ * e.g. a synthetic can have no wings on their dna, but have wings on their body.
  */
 /datum/dna
 	//! cosmetics - PLEASE use setters, as we aggressively cache these on clone to avoid meomry overhead!

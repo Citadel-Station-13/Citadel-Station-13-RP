@@ -45,6 +45,25 @@
 	buckle_allowed = TRUE
 	buckle_flags = BUCKLING_NO_DEFAULT_BUCKLE // Custom procs handle that.
 
+	//! Sprite Accessories - these are AGGRESSIVELY CACHED, please use necessary procs!
+	//? Note: This is what we actually have.
+	//? DNA can differ; DNA is our DNA, this is our body.
+	#warn ugh handle this
+	/// hair
+	VAR_PRIVATE/datum/sprite_accessory_data/hair
+	/// facial hair
+	VAR_PRIVATE/datum/sprite_accessory_data/facial_hair
+	/// ears
+	VAR_PRIVATE/datum/sprite_accessory_data/ears_1
+	/// ears
+	VAR_PRIVATE/datum/sprite_accessory_data/ears_2
+	/// tail
+	VAR_PRIVATE/datum/sprite_accessory_data/tail
+	/// wings
+	VAR_PRIVATE/datum/sprite_accessory_data/wings
+	/// body markings
+	VAR_PRIVATE/list/datum/sprite_accessory_data/markings
+
 	var/wagging  = 0 //UGH.
 	var/flapping = 0
 	var/spread   = 0
