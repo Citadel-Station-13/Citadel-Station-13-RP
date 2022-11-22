@@ -127,8 +127,8 @@
 	user.client.screen -= src.closer
 	user.client.screen -= src.contents
 
-/obj/item/storage/proc/open(mob/user as mob)
-	if (src.use_sound && !isobserver(user))
+/obj/item/storage/proc/open(mob/user as mob, sound_played = FALSE)
+	if (src.use_sound && !isobserver(user) && !sound_played)
 		playsound(src.loc, src.use_sound, 50, 1, -5)
 
 	orient2hud(user)
