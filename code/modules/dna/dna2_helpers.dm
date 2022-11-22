@@ -152,3 +152,9 @@
 /// Used below, simple injection modifier.
 /proc/probinj(pr, inj)
 	return prob(pr+inj*pr)
+
+/mob/proc/has_dna()
+	return
+
+/mob/living/carbon/has_dna()
+	return dna

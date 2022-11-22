@@ -837,7 +837,7 @@
 /obj/mecha/proc/mechstep(direction)
 	var/current_dir = dir	//For strafing
 	var/result = get_step(src,direction)
-	if(result && Move(result))
+	if(result && Move(result, direction))
 		if(stomp_sound)
 			playsound(src,stomp_sound,40,1)
 		handle_equipment_movement()

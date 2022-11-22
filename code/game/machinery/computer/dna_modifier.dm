@@ -2,6 +2,7 @@
 /obj/machinery/computer/dna_modifier
 	name = "DNA Modifier Access Console"
 	desc = "Scan DNA."
+	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_keyboard = "med_key"
 	icon_screen = "dna"
 	density = 1

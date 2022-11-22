@@ -29,8 +29,8 @@
 
 		// Regular ghosts can always at least view if in range.
 		if(user.client)
-			var/clientviewlist = getviewsize(user.client.view)
-			if(get_dist(src_object, user) < max(clientviewlist[1], clientviewlist[2]))
+			// todo: in view range for zooming
+			if(get_dist(src_object, user) < max(CEILING(user.client.current_viewport_width / 2, 1), CEILING(user.client.current_viewport_height / 2, 1)))
 				. = max(., UI_UPDATE)
 
 	// Check if the state allows interaction

@@ -6,7 +6,7 @@
 /obj/machinery/vr_sleeper/alien
 	name = "strange pod"
 	desc = "A strange machine with what appears to be a comfortable, if quite vertical, bed. Numerous mechanical cylinders dot the ceiling, their purpose uncertain."
-	icon = 'icons/obj/Cryogenic2.dmi'
+	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "alienpod_0"
 	base_state = "alienpod_"
 

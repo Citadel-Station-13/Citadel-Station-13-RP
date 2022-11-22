@@ -3,7 +3,7 @@
 /obj/item/slimepotion
 	name = "slime agent"
 	desc = "A flask containing strange, mysterious substances excreted by a slime."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	w_class = ITEMSIZE_TINY
 	origin_tech = list(TECH_BIO = 4)
 

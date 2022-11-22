@@ -42,6 +42,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/character
 	/// global data
 	var/list/options
+	/// data for byond skin - checkboxes and whatnot; this is ENTIRELY synchronized by the skin system.
+	var/list/skin
 
 //! ## Game Preferences
 	var/tgui_fancy = TRUE
@@ -255,6 +257,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			load_path(client.ckey)
 			if(load_preferences())
 				if(load_character())
+					load_skin()
 					sanitize_everything()
 					player_setup.sanitize_setup()
 					client.update_movement_keys()

@@ -21,6 +21,7 @@
 	// Technically custom_species is not part of the UI, but this place avoids merge problems.
 	src.custom_species = character.custom_species
 	src.base_species = character.species.base_species
+	src.species = character.species.name
 	src.blood_color = character.species.blood_color
 	src.species_traits = character.species.traits.Copy()
 

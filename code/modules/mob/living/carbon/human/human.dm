@@ -1008,6 +1008,12 @@
  * todo: no more using anything id, and MAYBE path/direct datum; we really don't like names,
  * todo: and things generally shouldn't be making species datums.
  *
+ * todo: turn all of this shit into SPECIES_OP_X flags
+ * todo: either flags, or variable for keep organs:
+ *       [X_REPLACE_ALL_ORGANS, X_DESTROY_EXTRA_ORGANS/X_DROP_EXTRA_ORGANS,
+ *        X_REPLACE_VITAL_ORGANS, X_ASSERT_VITAL_ORGANS]?
+ *       god this is going to be a pain in the ass
+ *
  * @param
  * - specieslike - species instance, id, typepath, or name; if null, we reset species to dna.
  * - regen_icons - immediately update icons?

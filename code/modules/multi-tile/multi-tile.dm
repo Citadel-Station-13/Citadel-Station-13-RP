@@ -21,11 +21,11 @@
 			// check enter
 			if(!T2.Enter(src, T))
 				return FALSE
-				
+
 	// uh oh, second loop, check exits
 	for(var/turf/T as anything in locs)
 		if(!(T in moving_to))
 			if(!T.Exit(src, get_step(T, stepdir)))
 				return FALSE
-				
+
 	return TRUE
