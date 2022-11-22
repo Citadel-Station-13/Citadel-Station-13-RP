@@ -85,7 +85,7 @@ var/list/gear_datums = list()
 		if(length(G.holiday_whitelist))
 			var/found = FALSE
 			for(var/name in G.holiday_whitelist)
-				if(name in SSevents.holidays)
+				if(name in GLOB.holidays)
 					found = TRUE
 					break
 			if(!found)
@@ -305,7 +305,7 @@ var/list/gear_datums = list()
 
 /proc/max_gear_points()
 	. = MAX_GEAR_COST
-	for(var/name in SSevents.holidays)
-		var/datum/holiday/H = SSevents.holidays[name]
+	for(var/name in GLOB.holidays)
+		var/datum/holiday/H = GLOB.holidays[name]
 		if(H.loadout_spam)
 			return MAX_GEAR_COST_HOLIDAY_SPAM

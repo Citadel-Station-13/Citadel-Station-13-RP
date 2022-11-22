@@ -151,7 +151,7 @@
 				if(checking.type != swap_to)
 					checking.ChangeTurf(swap_to)
 					// /tg/ baseturfs - IMPORTANT - inject plating beneath
-					checking.PlaceBelowLogicalTop(/turf/simulated/open)
+					checking.PlaceBelowLogicalTop(/turf/simulated/floor/plating)
 					// Let's make absolutely sure that we have the right turf.
 					checking = locate(tx,ty,cz)
 

@@ -3,9 +3,6 @@ SUBSYSTEM_DEF(events)
 	wait = 2 SECONDS
 	init_order = INIT_ORDER_EVENTS
 
-	/// Current holidays
-	var/list/holidays = list()
-
 	var/tmp/list/currentrun = null
 
 	var/list/datum/event/active_events = list()
@@ -17,21 +14,30 @@ SUBSYSTEM_DEF(events)
 	var/datum/event_meta/new_event = new
 
 /datum/controller/subsystem/events/PreInit()
-	// unfortunately, character setup server startup hooks fire before /Initialize so :/
-	// SScharactersetup but not shit when :)
-	// Instantiate our holidays list if it hasn't been already
+	/**
+	 *! Unfortunately, character setup server startup hooks fire before /Initialize so :/
+	 *! SScharactersetup but not shit when :)
+	 *? Instantiate our holidays list if it hasn't been already.
+	 */
 	if(isnull(GLOB.holidays))
-		fill_holidays()
+		fill_holidays(force = TRUE)
 	return ..()
 
 /datum/controller/subsystem/events/Initialize()
 	SSticker.OnRoundstart(CALLBACK(src, .proc/HolidayRoundstart))
 	allEvents = typesof(/datum/event) - /datum/event
 	event_containers = list(
-			EVENT_LEVEL_MUNDANE 	= new/datum/event_container/mundane,
-			EVENT_LEVEL_MODERATE	= new/datum/event_container/moderate,
-			EVENT_LEVEL_MAJOR 		= new/datum/event_container/major
-		)
+		EVENT_LEVEL_MUNDANE  = new/datum/event_container/mundane,
+		EVENT_LEVEL_MODERATE = new/datum/event_container/moderate,
+		EVENT_LEVEL_MAJOR    = new/datum/event_container/major,
+	)
+	/**
+	 *! Unfortunately, character setup server startup hooks fire before /Initialize so :/
+	 *! SScharactersetup but not shit when :)
+	 *? Instantiate our holidays list if it hasn't been already.
+	 */
+	if(isnull(GLOB.holidays))
+		fill_holidays()
 	return ..()
 
 /datum/controller/subsystem/events/fire(resumed)
@@ -136,9 +142,10 @@ GLOBAL_LIST(holidays)
 
 /**
  * Fills the holidays list if applicable, or leaves it an empty list.
+ * param force: If true, will force the holidays list to be generated. This is useful for when holidays add/remove character content.
  */
-/proc/fill_holidays()
-	if(!CONFIG_GET(flag/allow_holidays))
+/proc/fill_holidays(force = FALSE)
+	if(!force && !CONFIG_GET(flag/allow_holidays))
 		return FALSE // Holiday stuff was not enabled in the config!
 
 	GLOB.holidays = list()
@@ -148,10 +155,10 @@ GLOBAL_LIST(holidays)
 		for(var/timezone in holiday.timezones)
 			var/time_in_timezone = world.realtime + timezone HOURS
 
-			var/YYYY = text2num(time2text(time_in_timezone, "YYYY")) // get the current year
-			var/MM = text2num(time2text(time_in_timezone, "MM")) // get the current month
-			var/DD = text2num(time2text(time_in_timezone, "DD")) // get the current day
-			var/DDD = time2text(time_in_timezone, "DDD") // get the current weekday
+			var/YYYY = text2num(time2text(time_in_timezone, "YYYY")) // Get the current year.
+			var/MM   = text2num(time2text(time_in_timezone, "MM"))   // Get the current month.
+			var/DD   = text2num(time2text(time_in_timezone, "DD"))   // Get the current day.
+			var/DDD  = time2text(time_in_timezone, "DDD")            // Get the current weekday.
 
 			if(holiday.should_celebrate(DD, MM, YYYY, DDD))
 				holiday.celebrate()
@@ -163,13 +170,16 @@ GLOBAL_LIST(holidays)
 
 	if(GLOB.holidays.len)
 		shuffle_inplace(GLOB.holidays)
-		// regenerate station name because holiday prefixes.
+		// Regenerate station name because holiday prefixes.
 		// set_station_name(new_station_name())
 		// world.update_status()
 
 	return TRUE
 
 /datum/controller/subsystem/events/proc/HolidayRoundstart()
-	for(var/name in holidays)
-		var/datum/holiday/holiday = holidays[name]
+	for(var/name in GLOB.holidays)
+		var/datum/holiday/holiday = GLOB.holidays[name]
 		holiday.OnRoundstart()
+
+/proc/is_holiday(name)
+	return GLOB.holidays[name]? TRUE : FALSE
