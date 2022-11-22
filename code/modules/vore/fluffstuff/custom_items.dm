@@ -1136,20 +1136,6 @@
 	reagents.add_reagent("milk", 2)
 	bitesize = 2
 
-//PontifexMinimus: Lucius/Lucia Null
-/obj/item/fluff/dragor_dot
-	name = "supplemental battery"
-	desc = "A tiny supplemental battery for powering something or someone synthetic."
-	icon = 'icons/vore/custom_items_vr.dmi'
-	icon_state = "dragor_dot"
-	w_class = ITEMSIZE_SMALL
-
-/obj/item/fluff/dragor_dot/attack_self(mob/user)
-	if(user.ckey == "pontifexminimus")
-		user.verbs |= /mob/living/carbon/human/proc/shapeshifter_select_gender
-	else
-		return
-
 //LuminescentRing: Briana Moore
 /obj/item/storage/backpack/messenger/black/fluff/briana
 	name = "2561 graduation bag"

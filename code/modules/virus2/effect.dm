@@ -526,11 +526,10 @@
 /datum/disease2/effect/hair/activate(var/mob/living/carbon/mob,var/multiplier)
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		if(H.species.name == SPECIES_HUMAN && !(H.h_style == "Bald") && !(H.h_style == "Balding Hair"))
+		var/path = H.peek_sprite_accessory_hair()?.accessory.type
+		if(path != /datum/sprite_accessory_meta/hair/bald && path != /datum/sprite_accessory_meta/hair/balding)
 			to_chat(H, "<span class='danger'>Your hair starts to fall out in clumps...</span>")
-			spawn(50)
-				H.h_style = "Balding Hair"
-				H.update_hair()
+			addtimer(CALLBACK(H, /mob/living/carbon/human/proc/set_sprite_accessory_hair, /datum/sprite_accessory_meta/hair/bald, TRUE), 0)
 
 /datum/disease2/effect/stimulant
 	name = "Overactive Adrenal Gland"

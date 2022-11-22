@@ -244,8 +244,6 @@
 			newBlock+=copytext(oldBlock,i,i+1)
 	SetUIBlock(block,newBlock,defer)
 
-
-
 //! ## STRUCTURAL ENZYMES ## !//
 
 /**

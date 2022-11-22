@@ -3998,7 +3998,6 @@
 #include "code\modules\sprite_accessories\legacy\ears.dm"
 #include "code\modules\sprite_accessories\legacy\spider_taur_powers_vr.dm"
 #include "code\modules\sprite_accessories\legacy\sprite_accessories_taur_vr.dm"
-#include "code\modules\sprite_accessories\legacy\sprite_accessories_vr.dm"
 #include "code\modules\sprite_accessories\legacy\tail.dm"
 #include "code\modules\sprite_accessories\legacy\wings.dm"
 #include "code\modules\sprite_accessories\markings\diona_stuff.dm"

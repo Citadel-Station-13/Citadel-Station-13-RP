@@ -26,13 +26,3 @@
 		species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
 		apply_restrictions = TRUE
 		gender = NEUTER
-
-/datum/sprite_accessory_meta/hair/shadekin_hair_rivyr
-		name = "Rivyr Hair"
-		icon = 'icons/mob/human_face_vr.dmi'
-		icon_add = 'icons/mob/human_face_vr_add.dmi'
-		icon_state = "shadekin_rivyr"
-		ckeys_allowed = list("verysoft")
-		species_allowed = list(SPECIES_SHADEKIN, SPECIES_SHADEKIN_CREW)
-		apply_restrictions = TRUE
-		gender = NEUTER

@@ -55,7 +55,7 @@
 	to_chat(S, "<b>You are a promethean, brought into existence on [station_name()].</b>")
 	S.mind.assigned_role = SPECIES_PROMETHEAN
 	S.set_species(/datum/species/shapeshifter/promethean)
-	S.shapeshifter_set_colour("#2398FF")
+	S.set_body_color("#2398ff", TRUE)
 	visible_message("<span class='warning'>The monkey cube suddenly takes the shape of a humanoid!</span>")
 	var/newname = sanitize(input(S, "You are a Promethean. Would you like to change your name to something else?", "Name change") as null|text, MAX_NAME_LEN)
 	if(newname)

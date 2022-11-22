@@ -927,20 +927,6 @@
 	icon_add = 'icons/mob/human_face_vr_add.dmi'
 	icon_state = "momijihair"
 
-/datum/sprite_accessory_meta/hair/citheronia
-	name = "Citheronia Hair (Kira72)"
-	icon = 'icons/mob/human_face_vr.dmi'
-	icon_state = "citheronia_hair"
-	ckeys_allowed = list("Kira72")
-	do_colouration = 0
-
-/datum/sprite_accessory_meta/hair/taramaw
-	name = "Hairmaw (Liquidfirefly)"
-	icon = 'icons/mob/human_face_vr.dmi'
-	icon_state = "maw_hair"
-	ckeys_allowed = list("liquidfirefly")
-	do_colouration = 0
-
 /datum/sprite_accessory_meta/hair/citheronia_colorable
 	name = "Citheronia Hair"
 	icon = 'icons/mob/human_face_vr.dmi'

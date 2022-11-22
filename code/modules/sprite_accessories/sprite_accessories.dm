@@ -21,61 +21,26 @@
 // TODO: actual better way to do "can we use this" checks because one whitelist list and a var is fucking horrible to maintain what the fuck
 
 /datum/sprite_accessory_meta
-
-	/// The icon file the accessory is located in.
-	var/icon
-	/// The icon_state of the accessory.
-	var/icon_state
-
-	/// The preview name of the accessory.
-	var/name
-
-	/// Determines if the accessory will be skipped or included in random hair generations.
-	var/gender = NEUTER
-
-	/// Restrict some styles to specific species.
-	var/list/species_allowed = list(SPECIES_HUMAN,SPECIES_PROMETHEAN,SPECIES_HUMAN_VATBORN)
-
 	/// Whether or not the accessory can be affected by colouration.
 	var/do_colouration = 1
-
 	var/color_blend_mode = ICON_MULTIPLY	// If checked.
 
-	/// use front/behind, citadel snowflake for now; only usable on wings/tails
-	var/front_behind_system = FALSE
+/*
+	Hello and welcome to VOREStation sprite_accessories: For a more general overview
+	please read sprite_accessories.dm. This file is for ears and tails.
+	This is intended to be friendly for people with little to no actual coding experience.
+	!!WARNING!!: changing existing accessory information can be VERY hazardous to savefiles,
+	to the point where you may completely corrupt a server's savefiles. Please refrain
+	from doing this unless you absolutely know what you are doing, and have defined a
+	conversion in savefile.dm
+*/
 
-//skin styles - WIP
-//going to have to re-integrate this with surgery
-//let the icon_state hold an icon preview for now
-/datum/sprite_accessory_meta/skin
-	icon = 'icons/mob/species/human/body.dmi'
+// Add Additional variable onto sprite_accessory
+/datum/sprite_accessory_meta
+	var/apply_restrictions = FALSE		//whether to apply restrictions for specific tails/ears/wings
 
-/datum/sprite_accessory_meta/skin/human
-	name = "Default human skin"
-	icon_state = "default"
-	species_allowed = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN)
 
-/datum/sprite_accessory_meta/skin/human_tatt01
-	name = "Tatt01 human skin"
-	icon_state = "tatt1"
-	icon = 'icons/mob/species/human/tatt1.dmi'
-	species_allowed = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN)
+#warn full shapeshifter tgui panel after this rework it won't be enough to use menu
 
-/datum/sprite_accessory_meta/skin/tajaran
-	name = "Default tajaran skin"
-	icon_state = "default"
-	icon = 'icons/mob/species/tajaran/body.dmi'
-	species_allowed = list(SPECIES_TAJ)
-	apply_restrictions = TRUE
 
-/datum/sprite_accessory_meta/skin/unathi
-	name = "Default Unathi skin"
-	icon_state = "default"
-	icon = 'icons/mob/species/unathi/body.dmi'
-	species_allowed = list(SPECIES_UNATHI)
-
-/datum/sprite_accessory_meta/skin/skrell
-	name = "Default skrell skin"
-	icon_state = "default"
-	icon = 'icons/mob/species/skrell/body.dmi'
-	species_allowed = list(SPECIES_SKRELL)
+#warn impl
