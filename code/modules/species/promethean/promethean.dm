@@ -203,12 +203,6 @@ var/datum/species/shapeshifter/promethean/prometheans
 		if(H)
 			H.gib()
 
-/datum/species/shapeshifter/promethean/get_blood_colour(mob/living/carbon/human/H)
-	return (H ? rgb(H.r_skin, H.g_skin, H.b_skin) : ..())
-
-/datum/species/shapeshifter/promethean/get_flesh_colour(mob/living/carbon/human/H)
-	return (H ? rgb(H.r_skin, H.g_skin, H.b_skin) : ..())
-
 /datum/species/shapeshifter/promethean/get_additional_examine_text(mob/living/carbon/human/H)
 
 	if(!stored_shock_by_ref["\ref[H]"])

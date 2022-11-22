@@ -107,20 +107,21 @@
 	..(S,H)
 	if(color && istype(S)) //Sanity check to see if they're actually a shadekin, otherwise just don't do anything. They shouldn't be able to spawn with the trait.
 		S.kin_type = color
+		var/eye_color = "#0000ff"
 		switch(color)
 			if(BLUE_EYES)
-				H.shapeshifter_set_eye_color("0000FF")
+				eye_color = "#0000ff"
 			if(RED_EYES)
-				H.shapeshifter_set_eye_color("FF0000")
+				eye_color = "#ff0000"
 			if(GREEN_EYES)
-				H.shapeshifter_set_eye_color("00FF00")
+				eye_color = "#00ff00"
 			if(PURPLE_EYES)
-				H.shapeshifter_set_eye_color("FF00FF")
+				eye_color = "#ff00ff"
 			if(YELLOW_EYES)
-				H.shapeshifter_set_eye_color("FFFF00")
+				eye_color = "#ffff00"
 			if(ORANGE_EYES)
-				H.shapeshifter_set_eye_color("FFA500")
-
+				eye_color = "#ffa500"
+		H.set_eye_color(eye_color, TRUE)
 
 /datum/unarmed_attack/shadekinharmbap
 	attack_name = "syphon strike"
