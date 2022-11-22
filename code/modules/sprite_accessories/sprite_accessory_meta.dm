@@ -96,6 +96,24 @@ GLOBAL_LIST_INIT(sprite_accessories, init_sprite_accessories())
 	var/center = FALSE
 
 /**
+ * is valid for a character species
+ */
+/datum/sprite_accessory_meta/proc/is_character_species_allowed(datum/character_species/CS)
+	#warn impl
+
+/**
+ * is valid for a species
+ */
+/datum/sprite_accessory_meta/proc/is_species_allowed(datum/character_species/CS)
+	#warn impl
+
+/**
+ * is allowed for a specific human
+ */
+/datum/sprite_accessory_meta/proc/is_allowed_for(mob/living/carbon/human/H)
+	#warn impl
+
+/**
  * renders mob appearance
  * returns mutable appearance or list of mutable appearances
  */
