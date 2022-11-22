@@ -4,9 +4,21 @@
 #define DEFAULT_THIRST_FACTOR 0.03
 /// Means 'Reagent Effect Multiplier'. This is how many units of reagent are consumed per tick
 #define REM 0.2
-#define CHEM_TOUCH 1
-#define CHEM_INGEST 2
-#define CHEM_BLOOD 3
+
+//! Reagent exposure methods.
+/// Used for splashing.
+#define CHEM_TOUCH (1<<0)
+/// Used for ingesting the reagents. Food, drinks, inhaling smoke.
+#define CHEM_INGEST (1<<1)
+/// Used by foams, sprays, and blob attacks.
+#define CHEM_VAPOR (1<<2)
+/// Used by medical patches and gels.
+#define CHEM_PATCH (1<<3)
+/// Used for direct injection of reagents.
+#define CHEM_INJECT (1<<4)
+/// Used for blood contamination.
+#define CHEM_BLOOD (1<<5)
+
 
 #define MINIMUM_CHEMICAL_VOLUME 0.01
 
@@ -67,10 +79,6 @@ var/list/bradycardics  = list("neurotoxin", "cryoxadone", "clonexadone", "space_
 var/list/heartstopper  = list("potassium_chlorophoride", "zombie_powder") // This stops the heart.
 var/list/cheartstopper = list("potassium_chloride")                       // This stops the heart when overdose is met. -- c = conditional
 
-///Max icon state of the pill sprites
-#define MAX_PILL_SPRITE 24
-///Max icon state of the pill sprites
-#define MAX_BOTTLE_SPRITE 4
 ///Max number of pills/patches that can be made at once
 #define MAX_MULTI_AMOUNT 20
 ///Max amount of units in a pill
@@ -90,6 +98,7 @@ var/list/cheartstopper = list("potassium_chloride")                       // Thi
 #define SYRINGE_DRAW 0
 #define SYRINGE_INJECT 1
 #define SYRINGE_BROKEN 2
+#define SYRINGE_CAPPED 3
 
 //reagents_holder_flags defines
 ///Makes it possible to add reagents through droppers and syringes.
@@ -108,3 +117,27 @@ var/list/cheartstopper = list("potassium_chloride")                       // Thi
 #define AMOUNT_VISIBLE (1<<5)
 ///Applied to a reagent holder, the contents will not react with each other.
 #define NO_REACT (1<<6)
+
+//! Used by chem master
+#define CONDIMASTER_STYLE_AUTO "auto"
+#define CONDIMASTER_STYLE_FALLBACK "_"
+
+/// When processing a reaction, iterate this many times.
+#define PROCESS_REACTION_ITER 5
+
+/**
+ * Helper that ensures the reaction rate holds after iterating
+ * Ex. REACTION_RATE(0.3) means that 30% of the reagents will react each chemistry tick (~2 seconds by default).
+ */
+#define REACTION_RATE(rate) (1.0 - (1.0-rate)**(1.0/PROCESS_REACTION_ITER))
+
+/**
+ * Helper to define reaction rate in terms of half-life
+ *
+ * Ex.
+ * HALF_LIFE(0) -> Reaction completes immediately (default chems)
+ * HALF_LIFE(1) -> Half of the reagents react immediately, the rest over the following ticks.
+ * HALF_LIFE(2) -> Half of the reagents are consumed after 2 chemistry ticks.
+ * HALF_LIFE(3) -> Half of the reagents are consumed after 3 chemistry ticks.
+ */
+#define HALF_LIFE(ticks) (ticks? 1.0 - (0.5)**(1.0/(ticks*PROCESS_REACTION_ITER)) : 1.0)

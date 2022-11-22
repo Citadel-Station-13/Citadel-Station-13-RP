@@ -366,3 +366,14 @@
 #define EXAMINE_MORE_TIME 1 SECONDS
 
 #define SLEEP_CHECK_DEATH(X) sleep(X); if(QDELETED(src) || stat == DEAD) return;
+
+//! Blood levels
+#define BLOOD_VOLUME_MAX_LETHAL  2150
+#define BLOOD_VOLUME_EXCESS      2100
+#define BLOOD_VOLUME_MAXIMUM     2000
+#define BLOOD_VOLUME_SLIME_SPLIT 1120
+#define BLOOD_VOLUME_NORMAL      560
+#define BLOOD_VOLUME_SAFE        475
+#define BLOOD_VOLUME_OKAY        336
+#define BLOOD_VOLUME_BAD         224
+#define BLOOD_VOLUME_SURVIVE     122

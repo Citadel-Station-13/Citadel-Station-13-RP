@@ -26,6 +26,9 @@
 	var/list/req_access
 	var/list/req_one_access
 
+	/// Set when a player renames a renamable object.
+	var/renamed_by_player = FALSE
+
 /obj/Initialize(mapload)
 	if(register_as_dangerous_object)
 		register_dangerous_to_step()

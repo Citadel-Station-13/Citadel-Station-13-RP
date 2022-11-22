@@ -73,7 +73,7 @@
 	desc = "It looks like a melted... something."
 	density = 0
 	anchored = 1
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "molten"
 
 /obj/effect/debris/cleanable/cobweb2

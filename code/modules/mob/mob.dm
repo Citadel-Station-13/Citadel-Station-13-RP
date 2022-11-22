@@ -1235,3 +1235,16 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /mob/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
 	return FALSE
+
+/**
+ * Whether the mob can use Topic to interact with machines
+ *
+ * Args:
+ * be_close - Whether you need to be next to/on top of M
+ * no_dexterity - Whether you need to be an ADVANCEDTOOLUSER
+ * no_tk - If be_close is TRUE, this will block Telekinesis from bypassing the requirement
+ * need_hands - Whether you need hands to use this
+ * floor_okay - Whether mobility flags should be checked for MOBILITY_UI to use.
+ */
+/mob/proc/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
+	return

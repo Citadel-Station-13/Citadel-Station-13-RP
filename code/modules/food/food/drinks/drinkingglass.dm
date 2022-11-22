@@ -119,7 +119,7 @@
 	overlays.Cut()
 
 	if(reagents.total_volume)
-		var/image/filling = image('icons/obj/reagentfillings.dmi', src, "[icon_state]1")
+		var/image/filling = image('icons/obj/medical/reagentfillings.dmi', src, "[icon_state]1")
 
 		switch(reagents.total_volume)
 			if(0 to 3)			filling.icon_state = "[icon_state]1"
@@ -147,7 +147,7 @@
 	overlays.Cut()
 
 	if(reagents.total_volume)
-		var/image/filling = image('icons/obj/reagentfillings.dmi', src, "fitness-cup10")
+		var/image/filling = image('icons/obj/medical/reagentfillings.dmi', src, "fitness-cup10")
 
 		switch(reagents.total_volume)
 			if(0 to 10)			filling.icon_state = "fitness-cup10"

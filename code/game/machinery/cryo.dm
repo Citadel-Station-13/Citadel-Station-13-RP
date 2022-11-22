@@ -2,7 +2,7 @@
 #define HEAT_CAPACITY_HUMAN 100
 /obj/machinery/atmospherics/component/unary/cryo_cell
 	name = "cryo cell"
-	icon = 'icons/obj/cryogenics.dmi' // map only
+	icon = 'icons/obj/medical/cryogenics.dmi' // map only
 	icon_state = "pod_preview"
 	density = TRUE
 	anchored = TRUE
@@ -27,7 +27,7 @@
 /obj/machinery/atmospherics/component/unary/cryo_cell/Initialize(mapload)
 	. = ..()
 
-	icon = 'icons/obj/cryogenics_split.dmi'
+	icon = 'icons/obj/medical/cryogenics_split.dmi'
 	icon_state = "base"
 	initialize_directions = dir
 
