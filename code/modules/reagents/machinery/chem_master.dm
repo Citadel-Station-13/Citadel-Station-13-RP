@@ -350,7 +350,7 @@
 			else if (item_type == "pill_bottle")
 				vol_each_max = min(30, vol_each_max)
 			else if (item_type == "bottle")
-				vol_each_max = min(30, vol_each_max)
+				vol_each_max = min(60, vol_each_max)
 			else if (item_type == "condiment_pack")
 				vol_each_max = min(10, vol_each_max)
 			else if (item_type == "condiment_bottle")
