@@ -3,19 +3,11 @@
 	name = "holder"
 	desc = "You shouldn't ever see this."
 	icon = 'icons/obj/objects.dmi'
+	SET_APPEARANCE_FLAGS(KEEP_TOGETHER | PIXEL_SCALE | TILE_BOUND)
 	slot_flags = SLOT_HEAD | SLOT_HOLSTER
 	show_messages = 1
-
-	sprite_sheets = list(
-		BODYTYPE_STRING_TESHARI = 'icons/mob/clothing/species/teshari/head.dmi',
-		BODYTYPE_STRING_VOX = 'icons/mob/clothing/species/vox/head.dmi'
-		)
-
 	origin_tech = null
-	item_icons = list(
-		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_holder.dmi',
-		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_holder.dmi',
-		)
+	inhand_default_type = INHAND_DEFAULT_ICON_HOLDERS
 	pixel_y = 8
 	throw_range = 14
 	throw_force = 10
@@ -83,6 +75,10 @@
 	MA.appearance = M
 	MA.plane = plane
 	MA.dir = SOUTH
+	// ok this was a bad idea 
+	// todo: refactor holders entirely, we shouldn't be cloning mob state???
+	// icon = M.icon	// legacy
+	icon_state = M.icon_state	// legacy
 	overlays += MA
 	name = M.name
 	desc = M.desc
