@@ -47,8 +47,9 @@
 
 		for(var/vismob in vis_mobs)
 			var/mob/M = vismob
-			if(M.client && !M.client.is_preference_enabled(/datum/client_preference/subtle_see))
-				continue
+			if(istype(vismob, /mob/observer))
+				if(M.client && !M.client.is_preference_enabled(/datum/client_preference/subtle_see))
+					continue
 			spawn(0)
 				M.show_message(message, 2)
 
@@ -94,6 +95,7 @@
 
 	if (message)
 		message = say_emphasis(message)
+		var/admin_message = "<B>SUBTLER EMOTE:</B> [message]"
 		SEND_SIGNAL(src, COMSIG_MOB_SUBTLE_EMOTE, src, message)
 
 		var/list/vis = get_mobs_and_objs_in_view_fast(get_turf(src),1,2) //Turf, Range, and type 2 is emote
@@ -101,13 +103,16 @@
 		var/list/vis_objs = vis["objs"]
 
 		for(var/vismob in vis_mobs)
-			if(istype(vismob, /mob/observer))
-				var/mob/observer/O = vismob
-				if(O.client && !check_rights(R_ADMIN, FALSE, O.client) && !O.client.is_preference_enabled(/datum/client_preference/subtle_see))
-					continue
 			var/mob/M = vismob
 			spawn(0)
-				M.show_message(message, 2)
+				if(istype(vismob, /mob/observer))
+					var/mob/observer/O = vismob
+					if(O.client && check_rights(R_ADMIN, FALSE, O.client) && O.client.is_preference_enabled(/datum/client_preference/subtle_see))
+						O.show_message(admin_message)
+					else
+						continue
+				if(!istype(vismob, /mob/observer))
+					M.show_message(message, 2)
 
 		for(var/visobj in vis_objs)
 			var/obj/O = visobj

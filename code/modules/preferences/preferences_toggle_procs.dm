@@ -314,7 +314,7 @@
 
 	var/pref_path = /datum/client_preference/subtle_see
 	toggle_preference(pref_path)
-	SScharacter_setup.queue_preferences_save(prefs)
+	SScharacters.queue_preferences_save(prefs)
 
 	to_chat(src, "You will now [(is_preference_enabled(/datum/client_preference/subtle_see)) ? "see" : "not see"] status indicators.")
 
