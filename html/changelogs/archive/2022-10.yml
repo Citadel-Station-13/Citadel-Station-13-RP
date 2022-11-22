@@ -1,0 +1,139 @@
+2022-10-01:
+  Captain277:
+  - rscadd: Adds empty hood variant for hoodless jackets.
+  - rscadd: Adds mob sprite for duffel of holding.
+  - rscadd: Adds back sprite for Grit.
+  ktoma36:
+  - bugfix: Access to mining underground area and airlock
+  silicons:
+  - rscadd: piggybacking (drag yourself to someone while passively grabbed)
+  - rscadd: firemanning (drag someone to you in grab intent while they're passively
+      or above grabbed and on the ground)
+  - refactor: old vehicles kicked to obj/vehicle_old pending evaluation and port
+  - refactor: new, multiseat vehicle backend added
+  - refactor: riding components (handlers and filters)
+  - refactor: buckling
+2022-10-02:
+  Captain277:
+  - rscadd: Adds the Kanabo.
+  - bugfix: Fixes turf edge blending.
+2022-10-03:
+  jakeramsay007:
+  - bugfix: Borgs can now remove beakers from the grinder correctly
+  - bugfix: Stunprods and teleprods can once more be constructed
+  - rscdel: Removed redundant shielding and cell UI elements from the atmospheric
+      canister UI
+  - bugfix: Fixes alt-clicking for borgs to not double-call AltClick() thereby breaking
+      some interactions
+2022-10-05:
+  Captain277:
+  - rscadd: Adds the Twintails Short Hairstyle.
+  FreeStylaLT:
+  - tweak: Makes Ears and Horns separate
+  TheLordME:
+  - tweak: tweaked xenomorph hybrids to pass over tables like teshari
+  - bugfix: fixed plasma transfer only working at a distance
+  Zandario:
+  - bugfix: Fixed the Account Terminal's Visual
+  - code_imp: Un-relative-defined some procs
+2022-10-06:
+  ktoma36:
+  - rscadd: Submap Generation for the west part of rift
+  - rscadd: Directional Variants for some objects and some objects
+  - bugfix: Fixed a few bugs regarding window spawners, map defines,
+  - code_imp: Touched up on map defines and lateloading for the rift. Messed with
+      largecrates to get them to work as intended
+2022-10-07:
+  CharlesWedge:
+  - rscadd: Psychiatric wing at the back of medical.
+  - rscadd: Asylum Dungeon to the north of the underground areas of the station. Puzzle
+      Focus with three entrances.
+  - tweak: Perma is now much hard to escape, feel free to add more pickaxes to it
+      for now.
+  TheLordME:
+  - rscadd: Added the ability to make gases be processed like reagents in the body.
+  Zandario:
+  - bugfix: Fixes ColorMate TGUI
+2022-10-08:
+  Captain277:
+  - rscadd: Adds chlorine gas mines.
+  Zandario:
+  - bugfix: Supply Computer Circuitboard TGUI Fixed
+  - bugfix: AI's name prompt TGUI Fixed
+2022-10-09:
+  AlphaM01:
+  - tweak: Changed Atmos' Phoron tank hazard sign to correctly call the gas "Phoron"
+      instead of "Plasma".
+  - tweak: Renamed the doors inside Centcomm's Medbay to accurately say what they
+      are instead of all being the same copied "Operating Theatre" door.
+  - bugfix: Split the Memorial monument in Centcomm into two different objects, each
+      occupying their own tile to prevent phasing through it.
+  - bugfix: Anchored the memorial room's statues in place.
+  - bugfix: Moved Surface 1 airlock buttons to the outsides of the airlock, instead
+      of inside the doors, to prevent them being interactable from the wrong side
+      of the doors.
+  - rscadd: Connected the central heating area of the Emergency Bunker to the power
+      grid by adding a missing section of wire under a door.
+  - rscadd: Added plating to the underside of the catwalks on the Mining Outpost to
+      prevent situations where it was possible to fall through the catwalk because
+      of the empty space it was on (in a few spots leading to insta-death).
+  - rscdel: Deleted outdated/floating path edge overlays.
+  Captain277:
+  - bugfix: '''Fixes'' Chem Grenade timer.'
+  ktoma36:
+  - rscadd: Oregen to Station Z levels and added object generation to lythios snow
+      turfs
+2022-10-10:
+  jakeramsay007:
+  - bugfix: Fixes borg alt-click to show objects on a turf
+2022-10-11:
+  Captain277:
+  - rscadd: Adds chlorine gas grenade.
+  - tweak: Tweaks edge blending.
+  CharlesWedge:
+  - bugfix: Toxins Medibot Now Uses Right Skin name
+  Zandario:
+  - bugfix: You'll no longer be "a a gynoid" / "an a android"
+  - refactor: Species examine text is de-duplicated.
+2022-10-13:
+  Captain277:
+  - bugfix: Fixes bad path in rocket unload proc.
+  - bugfix: Restores Dufflebag of Holding icons.
+  - tweak: Tweaks storage contents for hooded suits.
+  - bugfix: Fixes issue with rockets firing even after expended.
+  G0atman:
+  - rscadd: '"url": "https://files.catbox.moe/9kd1dl.m4a",'
+  - rscdel: '"url": "https://files.catbox.moe/0rlr3j.m4a",'
+  TheLordME:
+  - tweak: tweaked heat pumps to connect to aux and normal pipe layer
+  - balance: rebalanced gas cooler and gas heater magic factor
+  - admin: the cheat factor of gas coolers and gas heaters can be adjusted by admins
+  - code_imp: removes an old debug log entry I forgot about....
+  - tweak: tweaked derlict drone fab dont show on the list until cleared by a player
+  - code_imp: adds a var to drone fabricators to signal them to not show up on the
+      drone list until cleared
+2022-10-14:
+  TheLordME:
+  - bugfix: fixed a the fireplace and bonfire eating its fuel basicly instantly
+  Zandario:
+  - rscadd: Particles to bonfires
+  - rscadd: /obj/effect/abstract/particle_holder
+  - imageadd: several particle DMIs
+  - bugfix: Alarune and apidaen "cannot read null.nutrition" runtimes.
+  - server: Byond Minor Version bumped to 1588.
+  silicons:
+  - rscadd: new item rendering system, please report bugs
+  - refactor: items now can support species-default-icons and per-file-icons. A new
+      worn rendering system has been added that is extensible, modular, and will help
+      when we implement emissives.
+  - code_imp: all future item PRs/item containing PRs MUST USE PER FILE when possible,
+      to reduce the bloat in default icons
+  - rscdel: 'some useless files that weren''t used for years icon: some inhand files
+      were merged (ironically) because they were too small for default files to justify
+      another category'
+  - code_imp: get_flat_icon has been optimized and rewritten.
+2022-10-16:
+  Captain277:
+  - rscadd: Adds Neuratrextate.
+  - rscadd: Adds Cybernetic Rejection Syndrome.
+  - rscadd: Adds the Goliath.

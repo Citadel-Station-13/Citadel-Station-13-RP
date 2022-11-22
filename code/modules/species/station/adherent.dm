@@ -1,6 +1,7 @@
 /datum/species/adherent
 	name = SPECIES_ADHERENT
 	name_plural = "Adherents"
+	uid = SPECIES_ID_ADHERENT
 	default_bodytype = BODYTYPE_ADHERENT
 
 	blurb = "The Vigil is a relatively loose association of machine-servitors, Adherents, \
@@ -47,13 +48,12 @@
 	heat_level_2 = 1000
 	heat_level_3 = 2000
 
-	flags       = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
-	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_NO_FBP_CONSTRUCTION | SPECIES_NO_FBP_CHARGEN | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
+	species_flags = NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN
+	species_spawn_flags = SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_NO_FBP_CONSTRUCT | SPECIES_SPAWN_NO_FBP_SETUP | SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_EYE_COLOR | HAS_BASE_SKIN_COLOR
 
-	language         = LANGUAGE_ADHERENT
-	species_language = LANGUAGE_ADHERENT
-	num_alternate_languages = 2
+	intrinsic_languages = LANGUAGE_ID_ADHERENT
+	max_additional_languages = 2
 
 	blood_color = "#2de00d"
 	flesh_color = "#90edeb"
@@ -121,8 +121,8 @@
 
 /datum/species/adherent/New()
 	/*equip_adjust = list(
-		"[slot_l_hand_str]" = list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
-		"[slot_r_hand_str]" = list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
+		"[SLOT_ID_LEFT_HAND]" = list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
+		"[SLOT_ID_RIGHT_HAND]" = list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
 		"[SLOT_ID_BACK]" =   list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
 		"[SLOT_ID_BELT]" =   list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 0, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = 0,  "y" = 14)),
 		"[SLOT_ID_HEAD]" =   list("[NORTH]" = list("x" = 0, "y" = 14), "[EAST]" = list("x" = 3, "y" = 14), "[SOUTH]" = list("x" = 0, "y" = 14), "[WEST]" = list("x" = -3, "y" = 14)),
@@ -149,7 +149,8 @@
 	return slowdown
 */
 /datum/species/adherent/handle_environment_special(mob/living/carbon/human/H)
-	H.our_overlays = list()//This removes all overlays, including temperature and pressure warnings
+	for(var/i in H.overlays_standing)
+		H.cut_overlay(i)
 	//Todo: find a better way to adjust clothing, than to wipe all overlays
 
 /datum/species/adherent/handle_fall_special(mob/living/carbon/human/H, turf/landing)

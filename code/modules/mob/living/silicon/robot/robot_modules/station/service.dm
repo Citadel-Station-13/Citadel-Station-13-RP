@@ -17,8 +17,12 @@
 					"L3P1-D0T" = "Glitterfly-Janitor",
 					"Miss M" = "miss-janitor",
 					"Cleriffin" = "coffin-Clerical",
-					"Coffstodial" = "coffin-Custodial"
-
+					"Coffstodial" = "coffin-Custodial",
+					"Handy" = "handy-janitor",
+					"Acheron" = "mechoid-Janitor",
+					"Shellguard Noble" = "Noble-CLN",
+					"ZOOM-BA" = "zoomba-janitor",
+					"W02M" = "worm-janitor"
 					)
 
 /obj/item/robot_module/robot/janitor/Initialize(mapload)
@@ -42,20 +46,27 @@
 	name = "service robot module"
 	channels = list("Service" = 1)
 	languages = list(
-					LANGUAGE_SOL_COMMON	= 1,
-					LANGUAGE_UNATHI		= 1,
-					LANGUAGE_SIIK		= 1,
 					LANGUAGE_AKHANI		= 1,
+					LANGUAGE_BIRDSONG	= 1,
+					LANGUAGE_CANILUNZT	= 1,
+					LANGUAGE_DAEMON		= 1,
+					LANGUAGE_EAL		= 1,
+					LANGUAGE_ECUREUILIAN= 1,
+					LANGUAGE_ENOCHIAN	= 1,
+					LANGUAGE_GUTTER		= 1,
+					LANGUAGE_ROOTLOCAL	= 0,
+					LANGUAGE_SAGARU		= 1,
+					LANGUAGE_SCHECHI	= 1,
+					LANGUAGE_SIGN		= 0,
+					LANGUAGE_SIIK		= 1,
 					LANGUAGE_SKRELLIAN	= 1,
 					LANGUAGE_SKRELLIANFAR = 0,
-					LANGUAGE_ROOTLOCAL	= 0,
-					LANGUAGE_TRADEBAND	= 1,
-					LANGUAGE_GUTTER		= 1,
-					LANGUAGE_SCHECHI	= 1,
-					LANGUAGE_EAL		= 1,
+					LANGUAGE_SOL_COMMON	= 1,
+					LANGUAGE_SQUEAKISH	= 1,
 					LANGUAGE_TERMINUS	= 1,
-					LANGUAGE_SIGN		= 0,
-					LANGUAGE_ZADDAT		= 1,
+					LANGUAGE_TRADEBAND	= 1,
+					LANGUAGE_UNATHI		= 1,
+					LANGUAGE_ZADDAT		= 1
 					)
 
 /obj/item/robot_module/robot/clerical/butler
@@ -78,7 +89,13 @@
 					"Drone - Hydro" = "drone-hydro",
 					"Misato" = "tall2service",
 					"L3P1-D0T" = "Glitterfly-Service",
-					"Miss M" = "miss-service"
+					"Miss M" = "miss-service",
+					"Handy - Service" = "handy-service",
+					"Handy - Hydro" = "handy-hydro",
+					"Acheron" = "mechoid-Service",
+					"Shellguard Noble" = "Noble-SRV",
+					"ZOOM-BA" = "zoomba-service",
+					"W02M" = "worm-service"
 				  	)
 
 /obj/item/robot_module/robot/clerical/butler/Initialize(mapload)
@@ -133,7 +150,12 @@
 					"Drone" = "drone-blu",
 					"Misato" = "tall2service",
 					"L3P1-D0T" = "Glitterfly-Clerical",
-					"Miss M" = "miss-service"
+					"Miss M" = "miss-service",
+					"Handy" = "handy-clerk",
+					"Acheron" = "mechoid-Service",
+					"Shellguard Noble" = "Noble-SRV",
+					"ZOOM-BA" = "zoomba-clerical",
+					"W02M" = "worm-service"
 					)
 
 /obj/item/robot_module/robot/clerical/general/Initialize(mapload)
@@ -154,18 +176,19 @@
 		var/obj/item/reagent_containers/food/drinks/bottle/small/beer/B = src.emag
 		B.reagents.add_reagent("beer2", 2 * amount)
 
-/obj/item/robot_module/robot/scrubpup
-	name = "Custodial Hound module"
+/obj/item/robot_module/robot/quad_jani
+	name = "JaniQuad module"
 	sprites = list(
 					"Custodial Hound" = "scrubpup",
 					"Borgi" = "borgi-jani",
 					"Otieborg" = "otiej",
-					"Janihound, J9" = "J9"
+					"Janihound, J9" = "J9",
+					"F3-LINE" = "FELI-Janitor"
 					)
 	channels = list("Service" = 1)
 	can_be_pushed = 0
 
-/obj/item/robot_module/robot/scrubpup/Initialize(mapload)
+/obj/item/robot_module/robot/quad_jani/Initialize(mapload)
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/dogborg/jaws/small(src)
@@ -225,34 +248,31 @@
 	G.recipes += new/datum/stack_recipe("glass sheet", /obj/item/stack/material/glass, 1, 1, 20)
 	src.modules += G
 
-	R.icon 		 = 'icons/mob/widerobot_vr.dmi'
-	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'
-	R.ui_style_vr = TRUE
-	R.pixel_x 	 = -16
-	R.old_x 	 = -16
-	R.default_pixel_x = -16
+	R.icon = 'icons/mob/robots_wide.dmi'
+	R.set_base_pixel_x(-16)
 	R.dogborg = TRUE
 	R.wideborg = TRUE
+	R.icon_dimension_x = 64
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
-	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
 	R.verbs |= /mob/living/proc/shred_limb
 	R.verbs |= /mob/living/silicon/robot/proc/rest_style
 	..()
 
 // Uses modified K9 sprites.
-/obj/item/robot_module/robot/clerical/brodog
-	name = "service-hound module"
+/obj/item/robot_module/robot/clerical/quad_serv
+	name = "Service Quadruped module"
 	sprites = list(
 					"Blackhound" = "k50",
 					"Pinkhound" = "k69",
 					"ServicehoundV2" = "serve2",
 					"ServicehoundV2 Darkmode" = "servedark",
+					"F3-LINE" = "FELI-Service"
 					)
 	channels = list("Service" = 1)
 	can_be_pushed = 0
 
 // In a nutshell, basicly service/butler robot but in dog form.
-/obj/item/robot_module/robot/clerical/brodog/Initialize(mapload)
+/obj/item/robot_module/robot/clerical/quad_serv/Initialize(mapload)
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/gripper/service(src)
@@ -301,16 +321,12 @@
 	src.modules += B
 */
 
-	R.icon 		 = 'icons/mob/widerobot_vr.dmi'
-	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'
-	R.ui_style_vr = TRUE
-	R.pixel_x 	 = -16
-	R.old_x 	 = -16
-	R.default_pixel_x = -16
+	R.icon = 'icons/mob/robots_wide.dmi'
+	R.set_base_pixel_x(-16)
 	R.dogborg = TRUE
 	R.wideborg = TRUE
+	R.icon_dimension_x = 64
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
-	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
 	R.verbs |= /mob/living/silicon/robot/proc/rest_style
 
 
@@ -320,10 +336,8 @@
 	R.icon = initial(R.icon)
 	R.dogborg = FALSE
 	R.wideborg = FALSE
-	R.ui_style_vr = FALSE
-	R.default_pixel_x = initial(pixel_x)
+	R.base_pixel_x = initial(pixel_x)
 	R.scrubbing = FALSE
 	R.verbs -= /mob/living/silicon/robot/proc/ex_reserve_refill
-	R.verbs -= /mob/living/silicon/robot/proc/robot_mount
 	R.verbs -= /mob/living/proc/shred_limb
 	R.verbs -= /mob/living/silicon/robot/proc/rest_style

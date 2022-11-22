@@ -91,7 +91,7 @@
 	//Drill through the flooring, if any.
 	if(istype(get_turf(src), /turf/simulated))
 		var/turf/simulated/T = get_turf(src)
-		T.ex_act(2.0)
+		LEGACY_EX_ACT(T, 2, null)
 
 	//Dig out the tasty ores.
 	if(resource_field.len)
@@ -344,7 +344,7 @@
 			to_chat(user, "<span class='notice'>You can't anchor something to empty space. Idiot.</span>")
 			return
 
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]anchor the brace.</span>")
 
 		anchored = !anchored

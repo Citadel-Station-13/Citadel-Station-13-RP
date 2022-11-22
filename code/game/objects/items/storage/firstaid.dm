@@ -26,7 +26,7 @@
 	name = "fire first aid kit"
 	desc = "It's an emergency medical kit for when the toxins lab <i>spontaneously</i> burns down."
 	icon_state = "ointment"
-	item_state_slots = list(slot_r_hand_str = "firstaid-ointment", slot_l_hand_str = "firstaid-ointment")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "firstaid-ointment", SLOT_ID_LEFT_HAND = "firstaid-ointment")
 	starts_with = list(
 		/obj/item/healthanalyzer,
 		/obj/item/reagent_containers/hypospray/autoinjector,
@@ -53,7 +53,7 @@
 	name = "poison first aid kit" //IRL the term used would be poison first aid kit.
 	desc = "Used to treat when one has a high amount of toxins in their body."
 	icon_state = "antitoxin"
-	item_state_slots = list(slot_r_hand_str = "firstaid-toxin", slot_l_hand_str = "firstaid-toxin")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "firstaid-toxin", SLOT_ID_LEFT_HAND = "firstaid-toxin")
 	starts_with = list(
 		/obj/item/reagent_containers/syringe/antitoxin,
 		/obj/item/reagent_containers/syringe/antitoxin,
@@ -68,7 +68,7 @@
 	name = "oxygen deprivation first aid kit"
 	desc = "A box full of oxygen goodies."
 	icon_state = "o2"
-	item_state_slots = list(slot_r_hand_str = "firstaid-o2", slot_l_hand_str = "firstaid-o2")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "firstaid-o2", SLOT_ID_LEFT_HAND = "firstaid-o2")
 	starts_with = list(
 		/obj/item/reagent_containers/pill/dexalin,
 		/obj/item/reagent_containers/pill/dexalin,
@@ -83,7 +83,7 @@
 	name = "advanced first aid kit"
 	desc = "Contains advanced medical treatments, for <b>serious</b> boo-boos."
 	icon_state = "advfirstaid"
-	item_state_slots = list(slot_r_hand_str = "firstaid-advanced", slot_l_hand_str = "firstaid-advanced")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "firstaid-advanced", SLOT_ID_LEFT_HAND = "firstaid-advanced")
 	starts_with = list(
 		/obj/item/reagent_containers/hypospray/autoinjector,
 		/obj/item/stack/medical/advanced/bruise_pack,
@@ -98,7 +98,7 @@
 	name = "combat medical kit"
 	desc = "Contains advanced medical treatments."
 	icon_state = "bezerk"
-	item_state_slots = list(slot_r_hand_str = "firstaid-advanced", slot_l_hand_str = "firstaid-advanced")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "firstaid-advanced", SLOT_ID_LEFT_HAND = "firstaid-advanced")
 	starts_with = list(
 		/obj/item/storage/pill_bottle/bicaridine,
 		/obj/item/storage/pill_bottle/dermaline,
@@ -162,10 +162,10 @@
 	name = "pill bottle"
 	desc = "It's an airtight container for storing medication."
 	icon_state = "pill_canister"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	drop_sound = 'sound/items/drop/pillbottle.ogg'
 	pickup_sound = 'sound/items/pickup/pillbottle.ogg'
-	item_state_slots = list(slot_r_hand_str = "contsolid", slot_l_hand_str = "contsolid")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "contsolid", SLOT_ID_LEFT_HAND = "contsolid")
 	w_class = ITEMSIZE_SMALL
 	can_hold = list(/obj/item/reagent_containers/pill,/obj/item/dice,/obj/item/paper)
 	allow_quick_gather = 1
@@ -244,7 +244,7 @@
 /obj/item/storage/pill_bottle/update_icon()
 	..()
 	if(labeled == 1)
-		add_overlay(image(icon = 'icons/obj/chemical.dmi', icon_state = "pill_canister_label"))
+		add_overlay(image(icon = 'icons/obj/medical/chemical.dmi', icon_state = "pill_canister_label"))
 	if(base_icon == "pill_canister")
 		if(bottle_color == "orange")
 			icon_state = "[base_icon]"
@@ -423,7 +423,7 @@
 	name = "combat organ kit"
 	desc = "Contains advanced organ medical treatments."
 	icon_state = "bezerk"
-	item_state_slots = list(slot_r_hand_str = "firstaid-advanced", slot_l_hand_str = "firstaid-advanced")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "firstaid-advanced", SLOT_ID_LEFT_HAND = "firstaid-advanced")
 	starts_with = list(
 		/obj/item/storage/pill_bottle/rezadone,
 		/obj/item/storage/pill_bottle/peridaxon,

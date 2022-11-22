@@ -97,7 +97,7 @@
 	max_shells = 7
 
 
-obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
+/obj/item/gun/projectile/revolver/detective45/verb/rename_gun()
 	set name = "Name Gun"
 	set category = "Object"
 	set desc = "Rename your gun. If you're the Detective."

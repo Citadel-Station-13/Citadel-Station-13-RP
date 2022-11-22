@@ -94,7 +94,9 @@
 /proc/HeapPathWeightCompare(datum/jps_node/a, datum/jps_node/b)
 	return b.f_value - a.f_value
 
-/// The datum used to handle the JPS pathfinding, completely self-contained
+/**
+ * The datum used to handle the JPS pathfinding, completely self-contained.
+ */
 /datum/pathfind
 	/// The thing that we're actually trying to path for
 	var/atom/movable/caller
@@ -179,7 +181,10 @@
 	qdel(open)
 	return path
 
-/// Called when we've hit the goal with the node that represents the last tile, then sets the path var to that path so it can be returned by [datum/pathfind/proc/search]
+/**
+ * Called when we've hit the goal with the node that represents the last tile,
+ * then sets the path var to that path so it can be returned by [datum/pathfind/proc/search]
+ */
 /datum/pathfind/proc/unwind_path(datum/jps_node/unwind_node)
 	path = new()
 	var/turf/iter_turf = unwind_node.tile

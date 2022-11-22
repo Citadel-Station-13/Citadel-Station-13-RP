@@ -266,6 +266,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	throw_speed = 0.5
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS | SLOT_MASK
+	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_ALLOW_DEFAULT
 	attack_verb = list("burnt", "singed")
 	type_butt = /obj/item/cigbutt
 	chem_volume = 15
@@ -395,7 +396,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "cigbutt"
 	w_class = ITEMSIZE_TINY
 	slot_flags = SLOT_EARS
-	throwforce = 1
+	throw_force = 1
 
 /obj/item/cigbutt/Initialize(mapload)
 	. = ..()
@@ -573,7 +574,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "lighter-g"
 	item_state = "lighter-g"
 	w_class = ITEMSIZE_TINY
-	throwforce = 4
+	throw_force = 4
 	slot_flags = SLOT_BELT
 	attack_verb = list("burnt", "singed")
 	var/base_state

@@ -58,7 +58,6 @@ var/list/ai_verbs_default = list(
 	density = TRUE
 	can_be_antagged = TRUE
 	status_flags = CANSTUN|CANPARALYSE|CANPUSH
-	shouldnt_see = list(/obj/effect/rune)
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/ai)
 
 	/// The network we have access to.
@@ -139,11 +138,11 @@ var/list/ai_verbs_default = list(
 	announcement.announcement_type = "A.I. Announcement"
 	announcement.newscast = 1
 
-	var/list/possibleNames = ai_names
+	var/list/possibleNames = GLOB.ai_names
 
 	var/pickedName = null
 	while(!pickedName)
-		pickedName = pick(ai_names)
+		pickedName = pick(GLOB.ai_names)
 		for (var/mob/living/silicon/ai/A in GLOB.mob_list)
 			if (A.real_name == pickedName && possibleNames.len > 1) //fixing the theoretically possible infinite loop
 				possibleNames -= pickedName
@@ -160,8 +159,6 @@ var/list/ai_verbs_default = list(
 		aiCommunicator = new /obj/item/communicator/integrated(src)
 
 	holo_icon = getHologramIcon(icon('icons/mob/AI.dmi',"holo1"))
-
-	proc_holder_list = new()
 
 	if(L)
 		if (istype(L, /datum/ai_laws))
@@ -201,7 +198,6 @@ var/list/ai_verbs_default = list(
 	add_language(LANGUAGE_BIRDSONG,		1)
 	add_language(LANGUAGE_SAGARU,		1)
 	add_language(LANGUAGE_CANILUNZT,	1)
-	add_language(LANGUAGE_ECUREUILIAN,	1)
 	add_language(LANGUAGE_DAEMON,		1)
 	add_language(LANGUAGE_ENOCHIAN,		1)
 	add_language(LANGUAGE_SQUEAKISH,	1)
@@ -209,7 +205,7 @@ var/list/ai_verbs_default = list(
 
 	if(!safety)//Only used by AIize() to successfully spawn an AI.
 		if (!B)//If there is no player/brain inside.
-			empty_playable_ai_cores += new/obj/structure/AIcore/deactivated(loc)//New empty terminal.
+			GLOB.empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)//New empty terminal.
 			qdel(src)//Delete AI.
 			return
 		else
@@ -555,7 +551,7 @@ var/list/ai_verbs_default = list(
 		for(var/i in tempnetwork)
 			cameralist[i] = i
 
-	cameralist = sortTim(cameralist, /proc/cmp_text_asc, TRUE)
+	cameralist = tim_sort(cameralist, /proc/cmp_text_asc, TRUE)
 	return cameralist
 
 /mob/living/silicon/ai/proc/ai_network_change(var/network in get_camera_network_list())
@@ -610,7 +606,7 @@ var/list/ai_verbs_default = list(
 				input = input("Select a crew member:") as null|anything in targets //The definition of "crew member" is a little loose...
 				//This is torture, I know. If someone knows a better way...
 				if(!input) return
-				var/new_holo = getHologramIcon(getCompoundIcon(targets[input]))
+				var/new_holo = getHologramIcon(get_compound_icon(targets[input]))
 				qdel(holo_icon)
 				holo_icon = new_holo
 
@@ -625,7 +621,7 @@ var/list/ai_verbs_default = list(
 			sleep(1 SECOND) //Strange bug in preview code? Without this, certain things won't show up. Yay race conditions?
 			dummy.regenerate_icons()
 
-			var/new_holo = getHologramIcon(getCompoundIcon(dummy))
+			var/new_holo = getHologramIcon(get_compound_icon(dummy))
 			qdel(holo_icon)
 			qdel(dummy)
 			holo_icon = new_holo
@@ -792,18 +788,18 @@ var/list/ai_verbs_default = list(
 			to_chat(user, "<span class='notice'>The shell's subsystems resist your efforts to tamper with your bolts.</span>")
 			return
 		if(anchored)
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			user.visible_message("<font color=#4F49AF>\The [user] starts to unbolt \the [src] from the plating...</font>")
-			if(!do_after(user,40 * W.toolspeed))
+			if(!do_after(user,40 * W.tool_speed))
 				user.visible_message("<font color=#4F49AF>\The [user] decides not to unbolt \the [src].</font>")
 				return
 			user.visible_message("<font color=#4F49AF>\The [user] finishes unfastening \the [src]!</font>")
 			anchored = 0
 			return
 		else
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			user.visible_message("<font color=#4F49AF>\The [user] starts to bolt \the [src] to the plating...</font>")
-			if(!do_after(user,40 * W.toolspeed))
+			if(!do_after(user,40 * W.tool_speed))
 				user.visible_message("<font color=#4F49AF>\The [user] decides not to bolt \the [src].</font>")
 				return
 			user.visible_message("<font color=#4F49AF>\The [user] finishes fastening down \the [src]!</font>")
@@ -868,7 +864,7 @@ var/list/ai_verbs_default = list(
 	return istype(loc, /turf)
 
 
-/mob/living/silicon/ai/ex_act(var/severity)
+/mob/living/silicon/ai/legacy_ex_act(var/severity)
 	if(severity == 1.0)
 		qdel(src)
 		return
@@ -920,3 +916,9 @@ var/list/ai_verbs_default = list(
 
 #undef AI_CHECK_WIRELESS
 #undef AI_CHECK_RADIO
+
+/mob/living/silicon/ai/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
+	if(control_disabled)
+		to_chat(src, SPAN_WARNING("You can't do that right now!"))
+		return FALSE
+	return can_see(M) && ..() //stop AIs from leaving windows open and using then after they lose vision

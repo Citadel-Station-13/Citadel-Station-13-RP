@@ -1,23 +1,3 @@
-var/list/mob_hat_cache = list()
-/proc/get_hat_icon(var/obj/item/hat, var/offset_x = 0, var/offset_y = 0)
-	var/t_state = hat.icon_state
-	if(hat.item_state_slots && hat.item_state_slots[SLOT_ID_HEAD])
-		t_state = hat.item_state_slots[SLOT_ID_HEAD]
-	else if(hat.item_state)
-		t_state = hat.item_state
-	var/key = "[t_state]_[offset_x]_[offset_y]"
-	if(!mob_hat_cache[key])            // Not ideal as there's no guarantee all hat icon_states
-		var/t_icon = INV_HEAD_DEF_ICON // are unique across multiple dmis, but whatever.
-		if(hat.icon_override)
-			t_icon = hat.icon_override
-		else if(hat.item_icons && (SLOT_ID_HEAD in hat.item_icons))
-			t_icon = hat.item_icons[SLOT_ID_HEAD]
-		var/image/I = image(icon = t_icon, icon_state = t_state)
-		I.pixel_x = offset_x
-		I.pixel_y = offset_y
-		mob_hat_cache[key] = I
-	return mob_hat_cache[key]
-
 /mob/living/silicon/robot/drone
 	name = "maintenance drone"
 	real_name = "drone"
@@ -29,7 +9,7 @@ var/list/mob_hat_cache = list()
 	universal_speak = 0
 	universal_understand = 1
 	gender = NEUTER
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	braintype = "Drone"
 	lawupdate = 0
 	density = 1
@@ -153,7 +133,10 @@ var/list/mob_hat_cache = list()
 	else
 		overlays -= "eyes"
 	if(hat) // Let the drones wear hats.
-		overlays |= get_hat_icon(hat, hat_x_offset, hat_y_offset)
+		var/mutable_appearance/MA = hat.render_mob_appearance(src, SLOT_ID_HEAD)
+		MA.pixel_x = hat_x_offset
+		MA.pixel_y = hat_y_offset
+		overlays |= MA
 
 /mob/living/silicon/robot/drone/choose_icon()
 	return
@@ -189,7 +172,7 @@ var/list/mob_hat_cache = list()
 		return
 
 	else if (istype(W, /obj/item/card/id)||istype(W, /obj/item/pda))
-		var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+		var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 		if(stat == 2)
 
 			if(!config_legacy.allow_drone_spawn || emagged || health < -35) //It's dead, Dave.
@@ -202,7 +185,7 @@ var/list/mob_hat_cache = list()
 
 			user.visible_message("<span class='danger'>\The [user] swipes [TU.his] ID card through \the [src], attempting to reboot it.</span>", "<span class='danger'>>You swipe your ID card through \the [src], attempting to reboot it.</span>")
 			var/drones = 0
-			for(var/mob/living/silicon/robot/drone/D in player_list)
+			for(var/mob/living/silicon/robot/drone/D in GLOB.player_list)
 				drones++
 			if(drones < config_legacy.max_maint_drones)
 				request_player()
@@ -247,7 +230,7 @@ var/list/mob_hat_cache = list()
 	clear_supplied_laws()
 	clear_inherent_laws()
 	laws = new /datum/ai_laws/syndicate_override
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	set_zeroth_law("Only [user.real_name] and people [TU.he] designate[TU.s] as being such are operatives.")
 
 	to_chat(src, "<b>Obey these laws:</b>")
@@ -309,7 +292,7 @@ var/list/mob_hat_cache = list()
 //Reboot procs.
 
 /mob/living/silicon/robot/drone/proc/request_player()
-	for(var/mob/observer/dead/O in player_list)
+	for(var/mob/observer/dead/O in GLOB.player_list)
 		if(jobban_isbanned(O, "Cyborg"))
 			continue
 		if(O.client)

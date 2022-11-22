@@ -48,6 +48,7 @@ var/datum/antagonist/renegade/renegades
 		/obj/item/gun/projectile/silenced,
 		/obj/item/gun/projectile/pistol,
 		/obj/item/gun/projectile/p92x,
+		/obj/item/gun/projectile/konigin,
 		/obj/item/gun/projectile/revolver,
 		/obj/item/gun/projectile/derringer,
 		/obj/item/gun/projectile/shotgun/pump,
@@ -100,7 +101,7 @@ var/datum/antagonist/renegade/renegades
 /proc/rightandwrong()
 	to_chat(usr, "<B>You summoned guns!</B>")
 	message_admins("[key_name_admin(usr, 1)] summoned guns!")
-	for(var/mob/living/carbon/human/H in player_list)
+	for(var/mob/living/carbon/human/H in GLOB.player_list)
 		if(H.stat == 2 || !(H.client)) continue
 		if(is_special_character(H)) continue
 		renegades.add_antagonist(H.mind)

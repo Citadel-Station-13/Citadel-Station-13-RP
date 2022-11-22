@@ -6,12 +6,12 @@
 /obj/item/defib_kit
 	name = "defibrillator"
 	desc = "A device that delivers powerful shocks to detachable paddles that resuscitate incapacitated patients."
-	icon = 'icons/obj/defibrillator.dmi'
+	icon = 'icons/obj/medical/defibrillator.dmi'
 	icon_state = "defibunit"
 	item_state = "defibunit"
 	slot_flags = SLOT_BACK
 	force = 5
-	throwforce = 6
+	throw_force = 6
 	preserve_item = 1
 	w_class = ITEMSIZE_LARGE
 	origin_tech = list(TECH_BIO = 4, TECH_POWER = 2)
@@ -187,12 +187,12 @@
 /obj/item/shockpaddles
 	name = "defibrillator paddles"
 	desc = "A pair of plastic-gripped paddles with flat metal surfaces that are used to deliver powerful electric shocks."
-	icon = 'icons/obj/defibrillator.dmi'
+	icon = 'icons/obj/medical/defibrillator.dmi'
 	icon_state = "defibpaddles"
 	item_state = "defibpaddles"
 	gender = PLURAL
 	force = 2
-	throwforce = 6
+	throw_force = 6
 	w_class = ITEMSIZE_LARGE
 
 	var/safety = 1 //if you can zap people with the paddles on harm mode
@@ -253,7 +253,7 @@
 
 //Checks for various conditions to see if the mob is revivable
 /obj/item/shockpaddles/proc/can_defib(mob/living/carbon/human/H) //This is checked before doing the defib operation
-	if((H.species.flags & NO_DEFIB))
+	if((H.species.species_flags & NO_DEFIB))
 		return "buzzes, \"Alien physiology. Operation aborted. Consider alternative resucitation methods.\""
 	else if(H.isSynthetic() && !use_on_synthetic)
 		return "buzzes, \"Synthetic Body. Operation aborted.\""
@@ -276,7 +276,7 @@
 		if(H.health + H.getOxyLoss() + H.getToxLoss() <= config_legacy.health_threshold_dead)
 			return "buzzes, \"Resuscitation failed - Severe damage detected. Begin manual repair.\""
 
-	else if(H.health + H.getOxyLoss() <= config_legacy.health_threshold_dead || (HUSK in H.mutations) || !H.can_defib)
+	else if(H.health + H.getOxyLoss() <= config_legacy.health_threshold_dead || (MUTATION_HUSK in H.mutations) || !H.can_defib)
 		// TODO: REFACTOR DEFIBS AND HEALTH
 		return "buzzes, \"Resuscitation failed - Severe tissue damage makes recovery of patient impossible via defibrillator.\""
 
@@ -368,7 +368,7 @@
 // This proc is used so that we can return out of the revive process while ensuring that busy and update_icon() are handled
 /obj/item/shockpaddles/proc/do_revive(mob/living/carbon/human/H, mob/user)
 	if(!H.client && !H.teleop)
-		for(var/mob/observer/dead/ghost in player_list)
+		for(var/mob/observer/dead/ghost in GLOB.player_list)
 			if(ghost.mind == H.mind)
 				ghost.notify_revive("Someone is trying to resuscitate you. Re-enter your body if you want to be revived!", 'sound/effects/genetics.ogg')
 				break

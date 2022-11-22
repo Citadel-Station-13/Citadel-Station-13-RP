@@ -18,7 +18,7 @@
 	var/jumpspeed = 3
 	var/recharging_rate = 60 //default 6 seconds between each dash
 	var/recharging_time = 0 //time until next dash
-	// var/jumping = FALSE //are we mid-jump? We have no throw_at callback, so we have to check user.throwing.
+	// var/jumping = FALSE //are we mid-jump? We have no throw_at_old callback, so we have to check user.throwing.
 
 /obj/item/clothing/shoes/bhop/ui_action_click()
 	var/mob/living/user = loc
@@ -36,5 +36,5 @@
 
 	playsound(src, 'sound/effects/stealthoff.ogg', 50, 1, 1)
 	user.visible_message(SPAN_WARNING("[user] dashes forward into the air!"))
-	user.throw_at(target, jumpdistance, jumpspeed)
+	user.throw_at_old(target, jumpdistance, jumpspeed)
 	recharging_time = world.time + recharging_rate

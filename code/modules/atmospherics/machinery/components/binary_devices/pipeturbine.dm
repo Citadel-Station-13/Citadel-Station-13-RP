@@ -85,7 +85,7 @@
 /obj/machinery/atmospherics/pipeturbine/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		anchored = !anchored
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		to_chat(user, "<span class='notice'>You [anchored ? "secure" : "unsecure"] the bolts holding \the [src] to the floor.</span>")
 
 		if(anchored)
@@ -263,7 +263,7 @@
 /obj/machinery/power/turbinemotor/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
 		anchored = !anchored
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		turbine = null
 		to_chat(user, "<span class='notice'>You [anchored ? "secure" : "unsecure"] the bolts holding \the [src] to the floor.</span>")
 		updateConnection()

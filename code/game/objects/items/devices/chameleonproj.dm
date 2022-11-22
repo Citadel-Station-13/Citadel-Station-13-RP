@@ -4,7 +4,7 @@
 	icon_state = "shield0"
 	slot_flags = SLOT_BELT
 	item_state = "electronic"
-	throwforce = 5.0
+	throw_force = 5.0
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
@@ -112,7 +112,7 @@
 		to_chat(M, "<span class='warning'>Your chameleon-projector deactivates.</span>")
 	master.disrupt()
 
-/obj/effect/dummy/chameleon/ex_act()
+/obj/effect/dummy/chameleon/legacy_ex_act()
 	for(var/mob/M in src)
 		to_chat(M, "<span class='warning'>Your chameleon-projector deactivates.</span>")
 	master.disrupt()

@@ -10,9 +10,6 @@ var/list/global/tank_gauge_cache = list()
 /obj/item/tank
 	name = "tank"
 	icon = 'icons/obj/tank.dmi'
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/back.dmi'
-		)
 	drop_sound = 'sound/items/drop/gascan.ogg'
 	pickup_sound = 'sound/items/pickup/gascan.ogg'
 
@@ -24,14 +21,14 @@ var/list/global/tank_gauge_cache = list()
 	w_class = ITEMSIZE_NORMAL
 
 	force = 5.0
-	throwforce = 10.0
+	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 4
 
 	var/datum/gas_mixture/air_contents = null
 	var/distribute_pressure = ONE_ATMOSPHERE
-	var/integrity = 20
-	var/max_integrity = 20
+	integrity = 20
+	max_integrity = 20
 	var/valve_welded = 0
 	var/obj/item/tankassemblyproxy/proxyassembly
 
@@ -204,7 +201,7 @@ var/list/global/tank_gauge_cache = list()
 						to_chat(user, "<span class='danger'>You accidentally rake \the [W] across \the [src]!</span>")
 						max_integrity -= rand(2,6)
 						integrity = min(integrity,max_integrity)
-						src.air_contents.add_thermal_energy(rand(2000,50000))
+						src.air_contents.adjust_thermal_energy(rand(2000,50000))
 				WT.eyecheck(user)
 			else
 				to_chat(user, "<span class='notice'>The emergency pressure relief valve has already been welded.</span>")
@@ -329,7 +326,7 @@ var/list/global/tank_gauge_cache = list()
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/tank/add_thermal_energy(joules)
+/obj/item/tank/adjust_thermal_energy(joules)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
@@ -365,7 +362,7 @@ var/list/global/tank_gauge_cache = list()
 	if(src.wired)
 		src.overlays += "bomb_assembly"
 		if(src.proxyassembly.assembly)
-			var/icon/test = getFlatIcon(src.proxyassembly.assembly)
+			var/icon/test = get_flat_icon(src.proxyassembly.assembly)
 			test.Shift(SOUTH,1)
 			test.Shift(WEST,3)
 			overlays += test
@@ -657,7 +654,7 @@ var/list/global/tank_gauge_cache = list()
 	src.update_icon()
 	src.update_gauge()
 
-	air_contents.add_thermal_energy(15000)
+	air_contents.adjust_thermal_energy(15000)
 
 
 /obj/item/tankassemblyproxy/update_icon()

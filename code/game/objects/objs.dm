@@ -1,6 +1,9 @@
 /obj
+
 	layer = OBJ_LAYER
 	plane = OBJ_PLANE
+	pass_flags_self = ATOM_PASS_OVERHEAD_THROW
+	animate_movement = SLIDE_STEPS
 
 	var/obj_flags = CAN_BE_HIT
 	var/set_obj_flags // ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "EMAGGED;!CAN_BE_HIT" to set EMAGGED and clear CAN_BE_HIT.
@@ -9,9 +12,6 @@
 	var/list/matter
 	var/w_class // Size of the object.
 	var/unacidable = 0 //universal "unacidabliness" var, here so you can use it in any obj.
-	animate_movement = 2
-	var/throwforce = 1
-	var/catchable = 1	// can it be caught on throws/flying?
 	var/sharp = 0		// whether this object cuts
 	var/edge = 0		// whether this object is more likely to dismember
 	var/pry = 0			//Used in attackby() to open doors
@@ -28,6 +28,9 @@
 	// Access levels, used in modules\jobs\access.dm
 	var/list/req_access
 	var/list/req_one_access
+
+	/// Set when a player renames a renamable object.
+	var/renamed_by_player = FALSE
 
 /obj/Initialize(mapload)
 	if(register_as_dangerous_object)
@@ -47,6 +50,8 @@
 	STOP_PROCESSING(SSobj, src)
 	if(register_as_dangerous_object)
 		unregister_dangerous_to_step()
+	SStgui.close_uis(src)
+	SSnanoui.close_uis(src)
 	return ..()
 
 /obj/Moved(atom/oldloc)
@@ -75,7 +80,7 @@
 					is_in_use = 1
 					src.attack_ai(usr)
 
-		// check for TK users
+		// check for MUTATION_TELEKINESIS users
 
 		if (istype(usr, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = usr
@@ -139,7 +144,7 @@
 /obj/proc/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
 	if(ismovable(caller))
 		var/atom/movable/AM = caller
-		if(AM.checkpass(pass_flags))
+		if(AM.pass_flags & pass_flags_self)
 			return TRUE
 	. = !density
 

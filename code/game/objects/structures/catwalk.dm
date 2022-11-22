@@ -6,7 +6,8 @@
 	layer = ABOVE_UTILITY
 	icon = 'icons/turf/catwalks.dmi'
 	icon_state = "catwalk"
-	density = 0
+	density = FALSE
+	anchored = TRUE
 	var/health = 100
 	var/maxhealth = 100
 	var/obj/item/stack/tile/plated_tile = null
@@ -14,7 +15,6 @@
 		/obj/item/stack/tile/floor = "#858a8f",
 		/obj/item/stack/tile/floor/dark = "#4f4f4f",
 		/obj/item/stack/tile/floor/white = "#e8e8e8")
-	anchored = 1.0
 
 /obj/structure/catwalk/Initialize(mapload)
 	. = ..()
@@ -61,7 +61,7 @@
 	icon_state = "catwalk[connectdir]-[diagonalconnect]"
 
 
-/obj/structure/catwalk/ex_act(severity)
+/obj/structure/catwalk/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -97,11 +97,11 @@
 		playsound(src, pick('sound/effects/footstep/catwalk1.ogg', 'sound/effects/footstep/catwalk2.ogg', 'sound/effects/footstep/catwalk3.ogg', 'sound/effects/footstep/catwalk4.ogg', 'sound/effects/footstep/catwalk5.ogg'), 25, 1)
 
 /obj/structure/catwalk/CheckExit(atom/movable/O, turf/target)
-	if(O.checkpass(PASSGRILLE))
-		return 1
+	if(O.check_pass_flags(ATOM_PASS_GRILLE))
+		return TRUE
 	if(target && target.z < src.z)
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /obj/structure/catwalk/take_damage(amount)
 	health -= amount
@@ -109,7 +109,16 @@
 		visible_message("<span class='warning'>\The [src] breaks down!</span>")
 		playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
 		new /obj/item/stack/rods(get_turf(src))
-		Destroy()
+		qdel(src)
+
+/obj/structure/catwalk/prevent_z_fall(atom/movable/victim, levels = 0, fall_flags)
+	return fall_flags | FALL_BLOCKED
+
+/obj/structure/catwalk/z_pass_in(atom/movable/AM, dir, turf/old_loc)
+	return dir == UP
+
+/obj/structure/catwalk/z_pass_out(atom/movable/AM, dir, turf/new_loc)
+	return dir == UP
 
 /obj/effect/catwalk_plated
 	name = "plated catwalk spawner"
@@ -205,3 +214,4 @@
 		icon_state = "[initial(icon_state)]_rickety"
 	if(health < 25)
 		icon_state = "[initial(icon_state)]_dangerous"
+

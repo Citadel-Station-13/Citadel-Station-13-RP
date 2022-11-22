@@ -88,6 +88,11 @@
 	icon_state = "Chief Engineer"
 	job_path = /datum/job/station/chief_engineer
 
+/obj/landmark/spawnpoint/job/senior_engineer
+	name = "Senior Engineer"
+	icon_state = "Chief Engineer"
+	job_path = /datum/job/station/senior_engineer
+
 /obj/landmark/spawnpoint/job/head_of_personnel
 	name = "Head of Personnel"
 	icon_state = "Head of Personnel"
@@ -113,6 +118,10 @@
 	icon_state = "Medical Doctor"
 	job_path = /datum/job/station/doctor
 
+/obj/landmark/spawnpoint/job/head_nurse
+	name = "Head Nurse"
+//	icon_state = "Medical Doctor"
+	job_path = /datum/job/station/head_nurse
 /obj/landmark/spawnpoint/job/paramedic
 	name = "Paramedic"
 	icon_state = "Paramedic"
@@ -122,6 +131,11 @@
 	name = "Scientist"
 	icon_state = "Scientist"
 	job_path = /datum/job/station/scientist
+
+/obj/landmark/spawnpoint/job/senior_researcher
+	name = "Senior Researcher"
+//	icon_state = "Scientist"
+	job_path = /datum/job/station/senior_researcher
 
 /obj/landmark/spawnpoint/job/chemist
 	name = "Chemist"
@@ -207,7 +221,7 @@
 
 /obj/landmark/spawnpoint/job/ai/OnRoundstart()
 	if(latejoin_active && !spawned)
-		empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
+		GLOB.empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
 	return ..()		// qdel happens AFTER we spawn core THANK YOU!
 
 /obj/landmark/spawnpoint/job/ai/secondary
@@ -218,7 +232,7 @@
 /obj/landmark/spawnpoint/job/ai/secondary/Available(mob/M, client/C, harder)
 	. = ..()
 	// yes this is unoptimized by sue me
-	for(var/obj/landmark/spawnpoint/job/ai/other in SSjob.GetAllSpawnpoints())
+	for(var/obj/landmark/spawnpoint/job/ai/other in SSjob.get_all_spawnpoints())
 		if(other.primary_ai && !other.spawned)
 			return FALSE		// priority to primary slots
 

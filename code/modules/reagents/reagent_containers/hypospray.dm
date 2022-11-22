@@ -5,7 +5,7 @@
 /obj/item/reagent_containers/hypospray
 	name = "hypospray"
 	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients."
-	icon = 'icons/obj/syringe.dmi'
+	icon = 'icons/obj/medical/syringe.dmi'
 	item_state = "hypo"
 	icon_state = "hypo"
 	amount_per_transfer_from_this = 5
@@ -359,6 +359,13 @@
 	if(.) // Will occur if successfully injected.
 		infect_mob_random_lesser(H)
 		add_attack_logs(user, H, "Infected \the [H] with \the [src], by \the [user].")
+
+/obj/item/reagent_containers/hypospray/autoinjector/biginjector/neuratrextate
+	name = "neuratrextate injector"
+	desc = "A refined version of the standard autoinjector, allowing greater capacity. \
+	The hypospray contains a potent compound of immunosuppressants and antipsychotics \
+	designed to be rapidly delivered to victims of CRS in case of emergency."
+	filled_reagents = list("neuratrextate" = 15)
 
 //Hjorthorn's Drug Injectors
 /obj/item/reagent_containers/hypospray/glukoz

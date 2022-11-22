@@ -176,6 +176,7 @@
 
 /mob/Login()
 	. = ..()
+
 	if(ability_master)
 		ability_master.toggle_open(1)
 		client.screen -= ability_master

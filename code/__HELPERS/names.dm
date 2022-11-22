@@ -195,9 +195,9 @@ var/syndicate_code_response//Code response for traitors.
 						if(names.len&&prob(70))
 							code_phrase += pick(names)
 						else
-							code_phrase += pick(pick(first_names_male,first_names_female))
+							code_phrase += pick(pick(GLOB.first_names_male, GLOB.first_names_female))
 							code_phrase += " "
-							code_phrase += pick(last_names)
+							code_phrase += pick(GLOB.last_names)
 					if(2)
 						code_phrase += pick(joblist)//Returns a job.
 				safety -= 1
@@ -213,12 +213,106 @@ var/syndicate_code_response//Code response for traitors.
 					if(1)
 						code_phrase += pick(nouns)
 					if(2)
-						code_phrase += pick(adjectives)
+						code_phrase += pick(GLOB.adjectives)
 					if(3)
-						code_phrase += pick(verbs)
+						code_phrase += pick(GLOB.verbs)
 		if(words==1)
 			code_phrase += "."
 		else
 			code_phrase += ", "
 
 	return code_phrase
+
+/**
+ * This will update a mob's name, real_name, mind.name, data_core records, pda and id.
+ * Calling this proc without an oldname will only update the mob and skip updating the pda, id and records. ~Carn
+ */
+/mob/proc/fully_replace_character_name(oldname, newname)
+	if(!newname)
+		return FALSE
+	real_name = newname
+	name = newname
+	if (mind)
+		mind.name = newname
+	if (dna)
+		dna.real_name = real_name
+
+	if(oldname)
+		// Update the datacore records! This is goig to be a bit costly.
+		for(var/list/L in list(data_core.general, data_core.medical, data_core.security, data_core.locked))
+			for(var/datum/data/record/R in L)
+				if (R.fields["name"] == oldname)
+					R.fields["name"] = newname
+					break
+
+		// Update our pda and id if we have them on our person.
+		var/list/searching = get_all_contents()
+		var/search_id = 1
+		var/search_pda = 1
+
+		for(var/A in searching)
+			if(search_id && istype(A,/obj/item/card/id))
+				var/obj/item/card/id/ID = A
+				if (ID.registered_name == oldname)
+					ID.registered_name = newname
+					ID.name = "[newname]'s ID Card ([ID.assignment])"
+					if(!search_pda)
+						break
+					search_id = 0
+
+			else if(search_pda && istype(A,/obj/item/pda))
+				var/obj/item/pda/PDA = A
+				if (PDA.owner == oldname)
+					PDA.owner = newname
+					PDA.name = "PDA-[newname] ([PDA.ownjob])"
+					if(!search_id)
+						break
+					search_pda = 0
+	return TRUE
+
+/**
+ * Generalised helper proc for letting mobs rename themselves.
+ * Used for the AI name prompt and apparently /used/ to be use for Clowns too.
+ * TODO: Change this to use the new role ID system when it's ready.
+ */
+/mob/proc/rename_self(role)
+	spawn(0)
+		var/oldname = real_name
+		// var/time_passed = world.time
+		var/newname
+
+		// We get 3 attempts to pick a suitable name.
+		for(var/i=1,i<=3,i++)
+			// newname = input(src,"You are \a [role]. Would you like to change your name to something else?", "Name change",oldname) as text
+			newname = tgui_input_text(src, "You are \a [role].  Would you like to change your name to something else?", "Name change", oldname, MAX_NAME_LEN, timeout = 3000)
+
+			// Returns null if the name doesn't meet some basic requirements. Tidies up a few other things like bad-characters.
+			newname = sanitizeName(newname)
+
+			for(var/mob/living/M in GLOB.player_list)
+				if(M == src)
+					continue
+				if(!newname || M.real_name == newname)
+					newname = null
+					break
+
+			// That's a suitable name!
+			if(newname)
+				break
+			to_chat(src, "Sorry, that [role]-name wasn't appropriate, please try another. It's possibly too long/short, has bad characters or is already taken.")
+
+		// We'll stick with the oldname then.
+		if(!newname)
+			return
+
+		if(cmptext("ai",role))
+			if(isAI(src))
+				var/mob/living/silicon/ai/A = src
+				// Don't bother with the records update crap.
+				oldname = null
+				// to_chat(world, "<b>[newname] is the AI!</b>")
+				// world << sound('sound/AI/newAI.ogg')
+				// Set eyeobj name.
+				A.SetName(newname)
+
+		fully_replace_character_name(oldname, newname)

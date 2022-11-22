@@ -62,7 +62,7 @@
 	else
 		switch(M.a_intent)
 			if(INTENT_HELP)
-				var/datum/gender/T = gender_datums[src.get_visible_gender()]
+				var/datum/gender/T = GLOB.gender_datums[src.get_visible_gender()]
 				M.visible_message(
 					SPAN_NOTICE("\The [M] hugs [src] to make [T.him] feel better!"), \
 					SPAN_NOTICE("You hug [src] to make [T.him] feel better!")
@@ -90,7 +90,7 @@
 	visible_message(SPAN_WARNING( "\The [user]'s [I] goes through \the [src]!"))
 	return FALSE
 
-/mob/living/simple_mob/illusion/ex_act()
+/mob/living/simple_mob/illusion/legacy_ex_act()
 	return
 
 // Try to have the same tooltip, or else it becomes really obvious which one is fake.

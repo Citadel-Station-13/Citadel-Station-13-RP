@@ -11,9 +11,6 @@ var/can_call_traders = 1
 	if(!holder)
 		to_chat(usr, "<span class='danger'>Only administrators may use this command.</span>")
 		return
-	if(!SSticker)
-		to_chat(usr, "<span class='danger'>The game hasn't started yet!</span>")
-		return
 	if(SSticker.current_state == 1)
 		to_chat(usr, "<span class='danger'>The round hasn't started yet!</span>")
 		return
@@ -31,7 +28,7 @@ var/can_call_traders = 1
 	log_admin("[key_name(usr)] used Hire Nebula Gas Employees.")
 	trigger_trader_visit()
 
-client/verb/JoinTraders()
+/client/verb/JoinTraders()
 
 	set name = "Join as Nebula Gas Employee"
 	set category = "IC"
@@ -48,7 +45,7 @@ client/verb/JoinTraders()
 	else
 		to_chat(usr, "You need to be an observer or new player to use this.")
 
-proc/trigger_trader_visit()
+/proc/trigger_trader_visit()
 	if(!can_call_traders)
 		return
 	if(hire_nebula)

@@ -201,7 +201,7 @@
 		return list()
 	return T.AtmosAdjacencyFloodfillHeuristic(amt, maxrad)
 
-/mob/living/simple_mob/slime/xenobio/dark_purple/ex_act(severity)
+/mob/living/simple_mob/slime/xenobio/dark_purple/legacy_ex_act(severity)
 	log_and_message_admins("[src] ignited due to a chain reaction with an explosion.")
 	ignite()
 
@@ -261,7 +261,7 @@
 	var/turf/T = get_turf(src)
 	var/datum/gas_mixture/env = T.return_air()
 	if(env)
-		env.add_thermal_energy(-10 * 1000)
+		env.adjust_thermal_energy(-10 * 1000)
 
 /mob/living/simple_mob/slime/xenobio/dark_blue/apply_melee_effects(atom/A)
 	..()
@@ -417,7 +417,7 @@
 			playsound(src, "punch", 50, 1)
 			L.Weaken(1)
 			var/throwdir = get_dir(src, L)
-			L.throw_at(get_edge_target_turf(L, throwdir), 3, 1, src)
+			L.throw_at_old(get_edge_target_turf(L, throwdir), 3, 1, src)
 		else
 			to_chat(L, SPAN_WARNING( "\The [src] hits you with incredible force, but you remain in place."))
 
@@ -658,7 +658,7 @@
 
 	return ..()
 
-/mob/living/simple_mob/slime/xenobio/oil/ex_act(severity)
+/mob/living/simple_mob/slime/xenobio/oil/legacy_ex_act(severity)
 	log_and_message_admins("[src] exploded due to a chain reaction with another explosion.")
 	explode()
 

@@ -5,7 +5,8 @@
 GLOBAL_LIST_INIT(generic_fishing_rare_list, list(
 		/mob/living/simple_mob/animal/passive/fish/solarfish = 0, // was 1, sif meat
 		/mob/living/simple_mob/animal/passive/fish/icebass = 0, // was 5, sif meat
-		/mob/living/simple_mob/animal/passive/fish/koi = 3
+		/mob/living/simple_mob/animal/passive/fish/koi = 3,
+		/obj/item/reagent_containers/food/snacks/lobster = 2
 		))
 
 GLOBAL_LIST_INIT(generic_fishing_uncommon_list, list(
@@ -19,6 +20,7 @@ GLOBAL_LIST_INIT(generic_fishing_common_list, list(
 		/mob/living/simple_mob/animal/passive/fish/bass = 10,
 		/mob/living/simple_mob/animal/passive/fish/trout = 8,
 		/mob/living/simple_mob/animal/passive/fish/perch = 6,
+		/obj/item/reagent_containers/food/snacks/shrimp = 5,
 		/mob/living/simple_mob/animal/passive/fish/murkin = 0, // was 8, sif meat
 		/mob/living/simple_mob/animal/passive/fish/rockfish = 0, //was 5, contains sif meat which cannot be used to cook
 		/mob/living/simple_mob/animal/passive/crab = 1
@@ -91,7 +93,7 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 		junk_list = GLOB.generic_fishing_pool_list
 		fishing_loot = GLOB.generic_fishing_chance_list
 
-/turf/simulated/floor/water/ex_act(severity)	// Explosive fishing.
+/turf/simulated/floor/water/legacy_ex_act(severity)	// Explosive fishing.
 	if(prob(5 * severity))
 		pick_fish()
 		if(fish_type)
@@ -132,7 +134,7 @@ GLOBAL_LIST_INIT(generic_fishing_chance_list, list(FISHING_RARE = 10, FISHING_UN
 		to_chat(user,"You cast \the [P.name] into \the [src].")
 		being_fished = TRUE
 		R.cast = TRUE
-		var/fishing_time = rand(min_fishing_time SECONDS,max_fishing_time SECONDS) * R.toolspeed
+		var/fishing_time = rand(min_fishing_time SECONDS,max_fishing_time SECONDS) * R.tool_speed
 		if(do_after(user,fishing_time,user))
 			playsound(src, 'sound/effects/slosh.ogg', 5, 1, 5)
 			to_chat(user,"<span class='notice'>You feel a tug and begin pulling!</span>")

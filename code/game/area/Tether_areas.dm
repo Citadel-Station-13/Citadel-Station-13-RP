@@ -672,8 +672,7 @@
 /area/engineering/lower/atmos_eva
 	name = "\improper Engineering Atmos EVA"
 
-/area/gateway/prep_room
-	name = "\improper Gateway Prep Room"
+
 /area/crew_quarters/locker/laundry_arrival
 	name = "\improper Arrivals Laundry"
 
@@ -1438,7 +1437,7 @@
 	name = "\improper Mining Outpost Shuttle - Station"
 	ambience = AMBIENCE_HANGAR
 	sound_env = LARGE_ENCLOSED
-area/shuttle/mining_outpost/shuttle
+/area/shuttle/mining_outpost/shuttle
 	name = "\improper Mining Outpost Shuttle"
 	icon_state = "shuttle2"
 // Elevator area //

@@ -6,7 +6,7 @@
 	icon_state = "paperplane"
 	throw_range = 7
 	throw_speed = 1
-	throwforce = 0
+	throw_force = 0
 	w_class = ITEMSIZE_TINY
 
 	var/obj/item/paper/internalPaper
@@ -64,7 +64,7 @@
 		update_icon()
 
 	else if(is_hot(P))
-		if(user.disabilities & CLUMSY && prob(10))
+		if(user.disabilities & MUTATION_CLUMSY && prob(10))
 			user.visible_message("<span class='warning'>[user] accidentally ignites themselves!</span>", \
 				"<span class='userdanger'>You miss the [src] and accidentally light yourself on fire!</span>")
 			user.drop_item_to_ground(P)

@@ -33,15 +33,15 @@
 	desc = "Its a gun. It's pretty terrible, though."
 	icon = 'icons/obj/gun/ballistic.dmi'
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_guns.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_guns.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_guns.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_guns.dmi',
 		)
 	icon_state = "detective"
 	item_state = "gun"
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	matter = list(MAT_STEEL = 2000)
 	w_class = ITEMSIZE_NORMAL
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 4
 	throw_range = 5
 	force = 5
@@ -164,11 +164,11 @@
 		var/mob/living/M = loc
 		if(istype(M))
 			if(M.can_wield_item(src) && src.is_held_twohanded(M))
-				item_state_slots[slot_l_hand_str] = wielded_item_state
-				item_state_slots[slot_r_hand_str] = wielded_item_state
+				item_state_slots[SLOT_ID_LEFT_HAND] = wielded_item_state
+				item_state_slots[SLOT_ID_RIGHT_HAND] = wielded_item_state
 			else
-				item_state_slots[slot_l_hand_str] = initial(item_state)
-				item_state_slots[slot_r_hand_str] = initial(item_state)
+				item_state_slots[SLOT_ID_LEFT_HAND] = initial(item_state)
+				item_state_slots[SLOT_ID_RIGHT_HAND] = initial(item_state)
 	..()
 
 
@@ -204,15 +204,15 @@
 						sleep(1)
 						qdel(src)
 					return 0
-	if(HULK in M.mutations)
+	if(MUTATION_HULK in M.mutations)
 		to_chat(M, "<span class='danger'>Your fingers are much too large for the trigger guard!</span>")
 		return 0
-	if((CLUMSY in M.mutations) && prob(40)) //Clumsy handling
+	if((MUTATION_CLUMSY in M.mutations) && prob(40)) //Clumsy handling
 		var/obj/P = consume_next_projectile()
 		if(P)
 			if(process_projectile(P, user, user, pick("l_foot", "r_foot")))
 				handle_post_fire(user, user)
-				var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+				var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 				user.visible_message(
 					"<span class='danger'>\The [user] shoots [TU.himself] in the foot with \the [src]!</span>",
 					"<span class='danger'>You shoot yourself in the foot with \the [src]!</span>"
@@ -278,8 +278,8 @@
 	if(A.is_screwdriver())
 		if(dna_lock && attached_lock && !attached_lock.controller_lock)
 			to_chat(user, "<span class='notice'>You begin removing \the [attached_lock] from \the [src].</span>")
-			playsound(src, A.usesound, 50, 1)
-			if(do_after(user, 25 * A.toolspeed))
+			playsound(src, A.tool_sound, 50, 1)
+			if(do_after(user, 25 * A.tool_speed))
 				to_chat(user, "<span class='notice'>You remove \the [attached_lock] from \the [src].</span>")
 				user.put_in_hands(attached_lock)
 				dna_lock = 0
@@ -293,8 +293,8 @@
 	if(A.is_multitool())
 		if(!scrambled)
 			to_chat(user, "<span class='notice'>You begin scrambling \the [src]'s electronic pins.</span>")
-			playsound(src, A.usesound, 50, 1)
-			if(do_after(user, 60 * A.toolspeed))
+			playsound(src, A.tool_sound, 50, 1)
+			if(do_after(user, 60 * A.tool_speed))
 				switch(rand(1,100))
 					if(1 to 10)
 						to_chat(user, "<span class='danger'>The electronic pin suite detects the intrusion and explodes!</span>")
@@ -313,8 +313,8 @@
 	if(A.is_wirecutter())
 		if(pin && scrambled)
 			to_chat(user, "<span class='notice'>You attempt to remove \the firing pin from \the [src].</span>")
-			playsound(src, A.usesound, 50, 1)
-			if(do_after(user, 60* A.toolspeed))
+			playsound(src, A.tool_sound, 50, 1)
+			if(do_after(user, 60* A.tool_speed))
 				switch(rand(1,100))
 					if(1 to 10)
 						to_chat(user, "<span class='danger'>You twist \the firing pin as you tug, destroying the firing pin.</span>")

@@ -26,16 +26,16 @@
 	use_power = USE_POWER_IDLE
 	interact_offline = 0
 
-	attack_hand(mob/living/user as mob)
-		if(istype(user, /mob/living/silicon/ai)) // lets not teleport AI cores
-			return
-		if(inoperable(MAINT))
-			return 1
-		else if(do_after(user, 10))
-			to_chat(user, "You feel reality shift around you.")
-			do_teleport(user, pick(lavaland_entry), local = FALSE)
-			move_object(user, pick(lavaland_entry))
+/obj/machinery/lavaland_entryportal/attack_hand(mob/living/user)
+	if(istype(user, /mob/living/silicon/ai)) // lets not teleport AI cores
 		return
+	if(inoperable(MAINT))
+		return 1
+	else if(do_after(user, 10))
+		to_chat(user, "You feel reality shift around you.")
+		do_teleport(user, pick(lavaland_entry), local = FALSE)
+		move_object(user, pick(lavaland_entry))
+	return
 
 /obj/machinery/lavaland_entryportal/proc/move_object(atom/movable/AM, turf/T)
 	if(AM.anchored && !istype(AM, /obj/mecha))
@@ -62,14 +62,14 @@
 	anchored = 1
 
 
-	attack_hand(mob/living/user as mob)
-		if(istype(usr, /mob/living/silicon/ai))
-			return
-		if(do_after(user, 10))
-			to_chat(user, "You feel reality shift around you.")
-			do_teleport(user, pick(lavaland_exit), local = FALSE)
-			move_object(user, pick(lavaland_exit))
+/obj/effect/lavaland_exitportal/attack_hand(mob/living/user)
+	if(istype(usr, /mob/living/silicon/ai))
 		return
+	if(do_after(user, 10))
+		to_chat(user, "You feel reality shift around you.")
+		do_teleport(user, pick(lavaland_exit), local = FALSE)
+		move_object(user, pick(lavaland_exit))
+	return
 
 /obj/effect/lavaland_exitportal/proc/move_object(atom/movable/AM, turf/T)
 	if(AM.anchored && !istype(AM, /obj/mecha))
@@ -99,6 +99,9 @@
 	base_icon_state = "asteroid"
 	baseturfs = /turf/simulated/mineral/floor/lavaland
 	initial_flooring = /decl/flooring/outdoors/lavaland
+
+/turf/simulated/floor/outdoors/lavaland/indoors //I know this path is confusing. Basically this is a way to simulate interior caverns that don't use mapgen for specific POIs.
+	outdoors = 0
 
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior
 	outdoors = 1

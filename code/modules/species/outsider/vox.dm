@@ -1,15 +1,17 @@
 /datum/species/vox
 	name = SPECIES_VOX
 	name_plural = SPECIES_VOX
-	id = SPECIES_ID_VOX
+	uid = SPECIES_ID_VOX
+	category = SPECIES_CATEGORY_VOX
+	default_bodytype = BODYTYPE_VOX
 
 	icobase = 'icons/mob/species/vox/body.dmi'
 	deform  = 'icons/mob/species/vox/deformed_body.dmi'
 
-	num_alternate_languages = 1
-	language = LANGUAGE_GALCOM
-	default_language = LANGUAGE_VOX
-	species_language = LANGUAGE_VOX
+	max_additional_languages = 1
+	intrinsic_languages = LANGUAGE_ID_VOX
+	default_language = LANGUAGE_ID_VOX
+	name_language = LANGUAGE_ID_VOX
 	assisted_langs   = list(LANGUAGE_ROOTGLOBAL)
 
 	blurb = {"
@@ -54,8 +56,8 @@
 	poison_type = /datum/gas/oxygen
 	siemens_coefficient = 0.2
 
-	flags = NO_SCAN | CONTAMINATION_IMMUNE
-	spawn_flags = SPECIES_CAN_JOIN | SPECIES_IS_WHITELISTED | SPECIES_WHITELIST_SELECTABLE
+	species_flags = NO_SCAN | CONTAMINATION_IMMUNE
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED
 	species_appearance_flags = HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_SKIN_COLOR
 
 	blood_color = "#9066BD"
@@ -110,7 +112,7 @@
 		)
 
 /datum/species/vox/get_random_name(gender)
-	var/datum/language/species_language = GLOB.all_languages[default_language]
+	var/datum/language/species_language = SScharacters.resolve_language_id(default_language)
 	return species_language.get_random_name(gender)
 
 /datum/species/vox/equip_survival_gear(mob/living/carbon/human/H, extendedtank = FALSE, comprehensive = FALSE)
@@ -121,7 +123,7 @@
 		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), SLOT_ID_BACK, INV_OP_SILENT | INV_OP_FLUFFLESS)
 		H.internal = H.back
 	else
-		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), /datum/inventory_slot_meta/abstract/right_hand, INV_OP_SILENT | INV_OP_FLUFFLESS)
+		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), /datum/inventory_slot_meta/abstract/hand/right, INV_OP_SILENT | INV_OP_FLUFFLESS)
 		H.internal = H.r_hand
 	H.internal = locate(/obj/item/tank) in H.contents
 	if(istype(H.internal,/obj/item/tank) && H.internals)

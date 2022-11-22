@@ -23,9 +23,9 @@
 	desc = "Looks like some kind of slimy growth."
 	icon_state = "resin"
 
-	density = 1
-	opacity = 1
-	anchored = 1
+	density = TRUE
+	opacity = TRUE
+	anchored = TRUE
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	var/health = 200
 	//var/mob/living/affecting = null
@@ -39,7 +39,7 @@
 	name = "resin membrane"
 	desc = "Purple slime just thin enough to let light pass through."
 	icon_state = "resinmembrane"
-	opacity = 0
+	opacity = FALSE
 	health = 120
 
 /obj/effect/alien/resin/Initialize(mapload)
@@ -77,7 +77,7 @@
 	healthcheck()
 	return
 
-/obj/effect/alien/resin/ex_act(severity)
+/obj/effect/alien/resin/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			health-=50
@@ -91,24 +91,22 @@
 	healthcheck()
 	return
 
-/obj/effect/alien/resin/hitby(AM as mob|obj)
-	..()
+/obj/effect/alien/resin/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	for(var/mob/O in viewers(src, null))
 		O.show_message("<span class='danger'>[src] was hit by [AM].</span>", 1)
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 10
 	else
-		tforce = AM:throwforce
+		tforce = AM:throw_force
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	health = max(0, health - tforce)
 	healthcheck()
-	..()
-	return
 
 /obj/effect/alien/resin/attack_hand()
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	if (HULK in usr.mutations)
+	if (MUTATION_HULK in usr.mutations)
 		to_chat(usr, "<span class='notice'>You easily destroy the [name].</span>")
 		for(var/mob/O in oviewers(src))
 			O.show_message("<span class='warning'>[usr] destroys the [name]!</span>", 1)
@@ -143,11 +141,9 @@
 	return
 
 /obj/effect/alien/resin/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(istype(mover) && mover.checkpass(PASSGLASS))
-		return !opacity
-	return !density
-
+	if(!opacity && mover.check_pass_flags(ATOM_PASS_GLASS))
+		return TRUE
+	return ..()
 
 /*
  * Weeds
@@ -311,7 +307,7 @@ Alien plants should do something if theres a lot of poison
 				W.process()
 
 
-/obj/effect/alien/weeds/ex_act(severity)
+/obj/effect/alien/weeds/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -450,11 +446,10 @@ Alien plants should do something if theres a lot of poison
 
 	var/health = 100
 	var/status = GROWING //can be GROWING, GROWN or BURST; all mutually exclusive
-	flags = PROXMOVE
-
 /obj/effect/alien/egg/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
+	new /datum/proxfield/basic/square(src, 1)
 	spawn(rand(MIN_GROWTH_TIME,MAX_GROWTH_TIME))
 		if((status == GROWING) && (BURST == 0))
 			Grow()
@@ -558,6 +553,7 @@ Alien plants should do something if theres a lot of poison
 		healthcheck()
 
 /*/obj/effect/alien/egg/HasProximity(atom/movable/AM as mob|obj)
+
 	if(status == GROWN)
 		if(!CanHug(AM))
 			return

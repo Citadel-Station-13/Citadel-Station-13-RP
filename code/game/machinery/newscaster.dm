@@ -231,7 +231,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			ispowered = FALSE
 			update_icon()
 
-/obj/machinery/newscaster/ex_act(severity)
+/obj/machinery/newscaster/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -813,7 +813,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 	drop_sound = 'sound/items/drop/wrapper.ogg'
 	pickup_sound = 'sound/items/pickup/wrapper.ogg'
 
-obj/item/newspaper/attack_self(mob/user as mob)
+/obj/item/newspaper/attack_self(mob/user)
 	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		var/dat
@@ -892,7 +892,7 @@ obj/item/newspaper/attack_self(mob/user as mob)
 	else
 		to_chat(user, "The paper is full of intelligible symbols!")
 
-obj/item/newspaper/Topic(href, href_list)
+/obj/item/newspaper/Topic(href, href_list)
 	var/mob/living/U = usr
 	..()
 	if((src in U.contents) || (istype(loc, /turf) && in_range(src, U)))
@@ -923,7 +923,7 @@ obj/item/newspaper/Topic(href, href_list)
 		if(istype(src.loc, /mob))
 			attack_self(src.loc)
 
-obj/item/newspaper/attackby(obj/item/W, mob/user)
+/obj/item/newspaper/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/pen))
 		if(scribble_page == curr_page)
 			to_chat(user, "<font color=#4F49AF>There's already a scribble in this page... You wouldn't want to make things too cluttered, would you?</FONT>")

@@ -110,7 +110,7 @@
 		occupantData["btCelsius"] = occupant.bodytemperature - T0C
 		occupantData["btFaren"] = ((occupant.bodytemperature - T0C) * (9.0/5.0))+ 32
 
-		if(ishuman(occupant) && !(NO_BLOOD in occupant.species.flags) && occupant.vessel)
+		if(ishuman(occupant) && !(NO_BLOOD in occupant.species.species_flags) && occupant.vessel)
 			occupantData["pulse"] = occupant.get_pulse(GETPULSE_TOOL)
 			occupantData["hasBlood"] = 1
 			var/blood_volume = round(occupant.vessel.get_reagent_amount("blood"))

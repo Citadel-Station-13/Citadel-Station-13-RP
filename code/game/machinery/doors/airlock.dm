@@ -1069,7 +1069,7 @@ About the new airlock wires panel:
 	return src.p_open && (operating < 0 || (!operating && welded && !src.arePowerSystemsOn() && density && (!src.locked || (machine_stat & BROKEN))))
 
 /obj/machinery/door/airlock/attackby(obj/item/C, mob/user as mob)
-	//to_world("airlock attackby src [src] obj [C] mob [user]")
+	//TO_WORLD("airlock attackby src [src] obj [C] mob [user]")
 	if(!istype(usr, /mob/living/silicon))
 		if(src.isElectrified())
 			if(src.shock(user, 75))
@@ -1088,7 +1088,7 @@ About the new airlock wires panel:
 				src.welded = 1
 			else
 				src.welded = null
-			playsound(src.loc, C.usesound, 75, 1)
+			playsound(src.loc, C.tool_sound, 75, 1)
 			src.update_icon()
 			return
 		else
@@ -1099,10 +1099,10 @@ About the new airlock wires panel:
 				to_chat(usr, "<span class='warning'>The panel is broken and cannot be closed.</span>")
 			else
 				src.p_open = 0
-				playsound(src, C.usesound, 50, 1)
+				playsound(src, C.tool_sound, 50, 1)
 		else
 			src.p_open = 1
-			playsound(src, C.usesound, 50, 1)
+			playsound(src, C.tool_sound, 50, 1)
 		src.update_icon()
 	else if(C.is_wirecutter())
 		return src.attack_hand(user)
@@ -1115,9 +1115,9 @@ About the new airlock wires panel:
 		cable.plugin(src, user)
 	else if(!repairing && C.is_crowbar())
 		if(can_remove_electronics())
-			playsound(src, C.usesound, 75, 1)
+			playsound(src, C.tool_sound, 75, 1)
 			user.visible_message("[user] removes the electronics from the airlock assembly.", "You start to remove electronics from the airlock assembly.")
-			if(do_after(user,40 * C.toolspeed))
+			if(do_after(user,40 * C.tool_speed))
 				to_chat(user, "<span class='notice'>You removed the airlock electronics!</span>")
 
 				var/obj/structure/door_assembly/da = new assembly_type(src.loc)
@@ -1244,7 +1244,7 @@ About the new airlock wires panel:
 	for(var/turf/turf in locs)
 		var/obj/structure/window/killthis = (locate(/obj/structure/window) in turf)
 		if(killthis)
-			killthis.ex_act(2)//Smashin windows
+			LEGACY_EX_ACT(killthis, 2, null)//Smashin windows
 	return ..()
 
 /obj/machinery/door/airlock/can_open(var/forced=0)
@@ -1352,7 +1352,7 @@ About the new airlock wires panel:
 
 // Airlock is passable if it is open (!density), bot has access, and is not bolted shut or powered off)
 /obj/machinery/door/airlock/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
-	return !density || (check_access(ID) && !locked && inoperable())
+	return ..() || (check_access(ID) && !locked && inoperable())
 
 /obj/machinery/door/airlock/Initialize(mapload, obj/structure/door_assembly/assembly)
 	//if assembly is given, create the new door from the assembly

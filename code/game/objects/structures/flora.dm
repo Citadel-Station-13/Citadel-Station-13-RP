@@ -100,7 +100,7 @@
 /obj/structure/flora/ausbushes/attackby(obj/item/W as obj, mob/user as mob)
 	// Dismantle
 	if(istype(W, /obj/item/shovel))
-		playsound(src.loc, W.usesound, 50, 1)
+		playsound(src.loc, W.tool_sound, 50, 1)
 		if(do_after(user, 10, src))
 			user.visible_message("<span class='notice'>\The [user] digs up \the [src].</span>", "<span class='notice'>You dig up \the [src].</span>")
 			new /obj/item/stack/tile/grass(get_turf(usr), 1)

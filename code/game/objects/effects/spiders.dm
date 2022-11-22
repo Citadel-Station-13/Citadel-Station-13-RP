@@ -8,7 +8,7 @@
 	var/health = 15
 
 //similar to weeds, but only barfed out by nurses manually
-/obj/effect/spider/ex_act(severity)
+/obj/effect/spider/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -35,7 +35,7 @@
 
 		if(WT.remove_fuel(0, user))
 			damage = 15
-			playsound(src, W.usesound, 100, 1)
+			playsound(src, W.tool_sound, 100, 1)
 
 	health -= damage
 	healthcheck()

@@ -40,7 +40,7 @@
 	anchored = 1
 	plane = TURF_PLANE
 	layer = ABOVE_TURF_LAYER
-	appearance_flags = PIXEL_SCALE|KEEP_TOGETHER
+	SET_APPEARANCE_FLAGS(TILE_BOUND)
 
 	var/_stair_tag //Make this match another one and they'll connect!
 
@@ -56,7 +56,7 @@
 		if(FS._stair_tag == _stair_tag)
 			target = FS
 	if(!target && mapload)
-		to_world("<span class='danger'>Fake stairs at [x],[y],[z] couldn't get a target!</span>")
+		TO_WORLD("<span class='danger'>Fake stairs at [x],[y],[z] couldn't get a target!</span>")
 
 /obj/structure/fake_stairs/Destroy()
 	if(target)

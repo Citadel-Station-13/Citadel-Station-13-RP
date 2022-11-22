@@ -61,7 +61,7 @@
 		return
 	var/chargedir = get_dir(src, chargeturf)
 	setDir(chargedir)
-	var/turf/T = get_ranged_target_turf(chargeturf, chargedir, isDiagonal(chargedir) ? 1 : 2)
+	var/turf/T = get_ranged_target_turf(chargeturf, chargedir, IS_DIAGONAL(chargedir) ? 1 : 2)
 	if(!T)
 		charging = 0
 		movement_shake_radius = null
@@ -89,7 +89,7 @@
 			M.Stun(5)
 			M.Weaken(3)
 			var/throwdir = pick(turn(dir, 45), turn(dir, -45))
-			M.throw_at(get_step(src.loc, throwdir), 1, 1, src)
+			M.throw_at_old(get_step(src.loc, throwdir), 1, 1, src)
 			runOver(M) // Actually should not use this, placeholder
 		if(istype(AM, /obj/structure))
 			if(istype(AM, /obj/structure/window))

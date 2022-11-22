@@ -8,7 +8,7 @@
 	name = "Health Scanner HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status."
 	icon_state = "healthhud"
-	item_state_slots = list(slot_r_hand_str = "headset", slot_l_hand_str = "headset")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "headset", SLOT_ID_LEFT_HAND = "headset")
 	body_parts_covered = 0
 
 /obj/item/clothing/glasses/hud/health/Initialize(mapload)
@@ -20,13 +20,13 @@
 	desc = "A medical HUD integrated with a set of prescription glasses"
 	prescription = 1
 	icon_state = "healthhudpresc"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 
 /obj/item/clothing/glasses/hud/security
 	name = "Security HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their ID status and security records."
 	icon_state = "securityhud"
-	item_state_slots = list(slot_r_hand_str = "headset", slot_l_hand_str = "headset")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "headset", SLOT_ID_LEFT_HAND = "headset")
 	body_parts_covered = 0
 
 /obj/item/clothing/glasses/hud/security/Initialize(mapload)
@@ -38,13 +38,13 @@
 	desc = "A security HUD integrated with a set of prescription glasses"
 	prescription = 1
 	icon_state = "sechudpresc"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 
 /obj/item/clothing/glasses/hud/security/jensenshades
 	name = "Augmented shades"
 	desc = "Polarized bioneural eyewear, designed to augment your vision."
 	icon_state = "jensenshades"
-	item_state_slots = list(slot_r_hand_str = "sunglasses", slot_l_hand_str = "sunglasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sunglasses", SLOT_ID_LEFT_HAND = "sunglasses")
 	vision_flags = SEE_MOBS
 	see_invisible = SEE_INVISIBLE_NOLIGHTING
 
@@ -264,7 +264,7 @@
     name = "Security Hudpatch"
     desc = "An eyepatch with built in scanners, that analyzes those in view and provides accurate data about their ID status and security records."
     icon_state = "hudpatch"
-    item_state_slots = list(slot_r_hand_str = "blindfold", slot_l_hand_str = "blindfold")
+    item_state_slots = list(SLOT_ID_RIGHT_HAND = "blindfold", SLOT_ID_LEFT_HAND = "blindfold")
     body_parts_covered = 0
     enables_planes = list(VIS_AUGMENTED)
     var/eye = null
@@ -322,6 +322,6 @@
 	name = "Health Scanner Patch"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their health status. This one's an eyepatch."
 	icon_state = "medpatch"
-	item_state_slots = list(slot_r_hand_str = "headset", slot_l_hand_str = "headset")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "headset", SLOT_ID_LEFT_HAND = "headset")
 	body_parts_covered = 0
 	enables_planes = list(VIS_AUGMENTED)

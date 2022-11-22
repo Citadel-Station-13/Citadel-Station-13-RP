@@ -11,7 +11,7 @@
 	requires_power = 0
 
 // Elevator areas.
-/area/turbolift
+/area/turbolift				//Why are we editing the base turbolift here instead of making a new child like area/turbolift/rift/---- ?
 	delay_time = 1 SECONDS
 	dynamic_lighting = FALSE //Temporary fix for elevator lighting
 
@@ -69,6 +69,30 @@
 	lift_floor_label = "Undergound Level 3"
 	lift_floor_name = "Mining Bottom"
 	lift_announce_str = "Arriving at Lower Level."
+
+/area/turbolift/rwest_mining/surface
+	name = "west base (surface)"
+	lift_floor_label = "Surface"
+	lift_floor_name = "Surface"
+	lift_announce_str = "Arriving at Surface Level."
+
+/area/turbolift/rwest_mining/caves
+	name = "west base (caves)"
+	lift_floor_label = "Level 1"
+	lift_floor_name = "Caves"
+	lift_announce_str = "Arriving at Mining Level."
+
+/area/turbolift/rwest_mining/deep
+	name = "west base (deep)"
+	lift_floor_label = "Level 2"
+	lift_floor_name = "Landing Pads"
+	lift_announce_str = "Arriving at Landing Pads Level."
+
+/area/turbolift/rwest_mining/base
+	name = "west base (base)"
+	lift_floor_label = "Level 3"
+	lift_floor_name = "Base"
+	lift_announce_str = "Arriving at Base Level."
 
 
 /*

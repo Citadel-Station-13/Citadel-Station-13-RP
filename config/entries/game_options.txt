@@ -1,3 +1,10 @@
+## Max distance for clients to view with widescren mode enabled. Maximum: 35 in either dimension.
+MAX_VIEWPORT_SIZE 19x15
+## Effective distance used for world.view, affects stuff like AI target aquisition. Maximum: 35 in either dimension.
+## GAME_VIEWPORT_SIZE 15x19
+## AT THE CURRENT TIME, BYOND WORLD.VIEW IS READ-ONLY
+## THIS CONFIGURATION IS LEFT HERE AS A TODO.
+
 ## Set to 0 to disable holidays (you monster)
 ALLOW_HOLIDAYS
 

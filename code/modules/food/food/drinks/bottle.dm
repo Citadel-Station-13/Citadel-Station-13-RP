@@ -13,7 +13,9 @@
 
 	var/obj/item/reagent_containers/glass/rag/rag = null
 	var/rag_underlay = "rag"
-	on_reagent_change() return // To suppress price updating. Bottles have their own price tags.
+
+/obj/item/reagent_containers/food/drinks/bottle/on_reagent_change()
+	return // To suppress price updating. Bottles have their own price tags.
 
 /obj/item/reagent_containers/food/drinks/bottle/Initialize(mapload)
 	. = ..()
@@ -26,13 +28,13 @@
 	return ..()
 
 //when thrown on impact, bottles smash and spill their contents
-/obj/item/reagent_containers/food/drinks/bottle/throw_impact(atom/hit_atom, var/speed)
+/obj/item/reagent_containers/food/drinks/bottle/throw_impact(atom/hit_atom, datum/thrownthing/TT)
 	..()
 
-	var/mob/M = thrower
+	var/mob/M = TT.thrower
 	if(isGlass && istype(M) && M.a_intent == INTENT_HARM)
-		var/throw_dist = get_dist(throw_source, loc)
-		if(speed >= throw_speed && smash_check(throw_dist)) //not as reliable as smashing directly
+		var/throw_dist = get_dist(TT.initial_turf, loc)
+		if(TT.speed >= throw_speed && smash_check(throw_dist)) //not as reliable as smashing directly
 			if(reagents)
 				hit_atom.visible_message("<span class='notice'>The contents of \the [src] splash all over [hit_atom]!</span>")
 				reagents.splash(hit_atom, reagents.total_volume)
@@ -176,7 +178,7 @@
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "broken_bottle"
 	force = 10
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 3
 	throw_range = 5
 	item_state = "beer"
@@ -760,3 +762,17 @@
 /obj/item/reagent_containers/food/drinks/bottle/royaljelly/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("mead", 100)
+
+//Unathi Food Imports
+
+/obj/item/reagent_containers/food/drinks/bottle/unathijuice
+	name = "Hrukhza Leaf Extract"
+	desc = "Hrukhza Leaf, a vital component of any Moghes drinks."
+	icon_state = "hrukhzaextract"
+	item_state = "carton"
+	center_of_mass = "x=16;y=8"
+	isGlass = FALSE
+
+/obj/item/reagent_containers/food/drinks/bottle/unathijuice/Initialize()
+	.=..()
+	reagents.add_reagent("unathijuice", 100)

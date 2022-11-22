@@ -40,7 +40,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	desc = "A hand-held device, used for compiling information about an object by scanning it. This one is an upgraded model, \
 	with a scanner that both can scan from farther away, and with less time."
 	scan_range = 4
-	toolspeed = 0.8
+	tool_speed = 0.8
 
 // Able to see all defined catalogue data regardless of if it was unlocked, intended for testing.
 /obj/item/cataloguer/debug
@@ -49,7 +49,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	just seems to already know everything about narrowly defined pieces of knowledge one would find \
 	from nearby, perhaps due to being colored gold. Truly a epistemological mystery."
 	icon_state = "debug_cataloguer"
-	toolspeed = 0.1
+	tool_speed = 0.1
 	scan_range = 7
 	debug = TRUE
 
@@ -91,7 +91,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 		return
 
 	// Get how long the delay will be.
-	var/scan_delay = target.get_catalogue_delay() * toolspeed
+	var/scan_delay = target.get_catalogue_delay() * tool_speed
 	if(partial_scanned)
 		if(partial_scanned.resolve() == target)
 			scan_delay -= partial_scan_time
@@ -150,7 +150,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 	var/list/contributer_names = list()
 	var/turf/T = get_turf(user) || get_turf(target)
 	var/list/contributing_z = GetConnectedZlevels(T.z)
-	for(var/thing in player_list)
+	for(var/thing in GLOB.player_list)
 		var/mob/living/L = thing
 		if(L == user)
 			continue
@@ -186,7 +186,7 @@ GLOBAL_LIST_EMPTY(all_cataloguers)
 		// Now to our friends, if any.
 		if(contributers.len)
 			for(var/mob/M in contributers)
-				var/list/things = M.GetAllContents() // Depth of two should reach into bags but just in case lets make it three.
+				var/list/things = M.get_all_contents() // Depth of two should reach into bags but just in case lets make it three.
 				var/obj/item/cataloguer/other_cataloguer = locate() in things // If someone has two or more scanners this only adds points to one.
 				if(other_cataloguer)
 					to_chat(M, SPAN_NOTICE("Gained [points_gained] points from \the [user]'s scan of \the [target]."))

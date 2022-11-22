@@ -20,7 +20,7 @@
 	pickup_sound = 'sound/items/pickup/crowbar.ogg'
 
 /obj/item/melee/classic_baton/attack(mob/M as mob, mob/living/user as mob)
-	if ((CLUMSY in user.mutations) && prob(50))
+	if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
 		user.Weaken(3 * force)
 		if(ishuman(user))
@@ -93,7 +93,7 @@
 
 /obj/item/melee/telebaton/attack(mob/target as mob, mob/living/user as mob)
 	if(on)
-		if ((CLUMSY in user.mutations) && prob(50))
+		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 			to_chat(user, "<span class='warning'>You club yourself over the head.</span>")
 			user.Weaken(3 * force)
 			if(ishuman(user))
@@ -123,8 +123,8 @@
 	icon_state = "newspaper"
 	item_state = "newspaper"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 
 /obj/item/melee/disruptor
@@ -134,8 +134,8 @@
 	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "armblade"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_material.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 			)
 	item_state = "armblade"
 	force = 15 // same force as a drill
@@ -166,8 +166,8 @@
 	edge = TRUE
 	icon_state = "embed_spike"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_material.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 			)
 	item_state = "switchblade_open"
 
@@ -180,7 +180,7 @@
 	icon = 'icons/obj/furniture.dmi'
 	icon_state = "cn_stool_c"
 	force = 10
-	throwforce = 10
+	throw_force = 10
 	w_class = ITEMSIZE_SMALL
 	var/on =  0
 	slot_flags = null
@@ -209,7 +209,7 @@
 	slot_flags = SLOT_BELT | SLOT_BACK
 	damtype = HALLOSS
 	force = 5
-	throwforce = 5
+	throw_force = 5
 	attack_verb = list("whacked", "smacked", "struck")
 	hitsound = 'sound/weapons/genhit3.ogg'
 	var/reinforced = FALSE
@@ -221,7 +221,7 @@
 		var/new_name = stripped_input(user, "What do you wish to name [src]?", "New Name", "bokken", 30)
 		if(new_name)
 			name = new_name
-	if(I.tool_behaviour == TOOL_WELDER)
+	if(I.is_welder())
 		var/new_burn = stripped_input(user, "What do you wish to burn into [src]?", "Burnt Inscription","", 140)
 		if(new_burn)
 			burned_in = new_burn
@@ -289,3 +289,74 @@
 	name = "hardwood wakibokken blade"
 	desc = "A sturdy wooden wakizashi blade, used for training on old Terrae."
 	icon_state = "wakibokken_blade_h"
+
+/obj/item/bo_staff
+	name = "stave"
+	desc = "A thick rod of hardened wood, useful as a walking stick, as much as a defensive tool."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "wakibokken_blade_h"
+	force = 15
+	slot_flags = SLOT_BACK
+	sharp = 1
+	hitsound = "swing_hit"
+	attack_verb = list("smashed", "slammed", "whacked", "thwacked")
+	icon_state = "bostaff0"
+	item_state = "bostaff0"
+	var/defend_chance = 40
+	var/projectile_parry_chance = 0
+
+/obj/item/bo_staff/proc/jedi_spin(mob/living/user)
+	for(var/i in list(NORTH,SOUTH,EAST,WEST,EAST,SOUTH,NORTH,SOUTH,EAST,WEST,EAST,SOUTH))
+		user.setDir(i)
+		if(i == WEST)
+			user.emote("flip")
+		sleep(1)
+
+/obj/item/bo_staff/attack(mob/target, mob/living/user)
+	add_fingerprint(user)
+	if(!ishuman(target))
+		return
+	if(user.a_intent != INTENT_DISARM)
+		return
+	else
+		var/mob/living/carbon/human/H = target
+		var/list/fluffmessages = list("[user] clubs [H] with [src]!", \
+									  "[user] smacks [H] with the butt of [src]!", \
+									  "[user] broadsides [H] with [src]!", \
+									  "[user] smashes [H]'s head with [src]!", \
+									  "[user] beats [H] with front of [src]!", \
+									  "[user] twirls and slams [H] with [src]!")
+		H.visible_message("<span class='warning'>[pick(fluffmessages)]</span>", \
+							   "<span class='userdanger'>[pick(fluffmessages)]</span>")
+		playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, 1, -1)
+		if(prob(25))
+			(INVOKE_ASYNC(src, .proc/jedi_spin, user))
+			return ..()
+
+//Kanabo
+/obj/item/melee/kanabo // parrying stick
+	name = "kanabo"
+	desc = "A heavy wooden club reinforced with metal studs. Ancient Terran Oni were often depicted carrying this weapon."
+	icon_state = "kanabo"
+	slot_flags = SLOT_BACK
+	damtype = BRUTE
+	force = 15
+	throw_force = 5
+	attack_verb = list("battered", "hammered", "struck")
+	hitsound = 'sound/weapons/genhit3.ogg'
+
+/obj/item/melee/kanabo/attackby(obj/item/I, mob/living/user, params)
+	if(istype(I, /obj/item/pen))
+		var/new_name = stripped_input(user, "What do you wish to name [src]?", "New Name", "bokken", 30)
+		if(new_name)
+			name = new_name
+
+/obj/item/kanabo_shaft
+	name = "kanabo shaft"
+	desc = "A hefty wooden club, not dissimilar to an oversized baseball bat."
+	icon_state = "kanabo_shaft"
+
+/obj/item/kanabo_studs
+	name = "kanabo studs"
+	desc = "A handful of octahedral studs. Fashioned out of steel, these studs are designed to be driven into solid wood."
+	icon_state = "kanabo_studs"

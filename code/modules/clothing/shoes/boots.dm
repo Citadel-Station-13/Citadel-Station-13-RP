@@ -35,33 +35,33 @@
 	name = "toe-less jackboots"
 	desc = "Modified pair of jackboots, particularly friendly to those species whose toes hold claws."
 	icon_state = "digiboots"
-	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	species_restricted = null
 
 /obj/item/clothing/shoes/boots/jackboots/knee
 	name = "knee-length jackboots"
 	desc = "Taller synthleather boots with an artificial shine."
 	icon_state = "kneeboots"
-	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 
 /obj/item/clothing/shoes/boots/jackboots/toeless/knee
 	name = "toe-less knee-length jackboots"
 	desc = "Modified pair of taller boots, particularly friendly to those species whose toes hold claws."
 	icon_state = "digikneeboots"
-	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	species_restricted = null
 
 /obj/item/clothing/shoes/boots/jackboots/thigh
 	name = "thigh-length jackboots"
 	desc = "Even taller synthleather boots with an artificial shine."
 	icon_state = "thighboots"
-	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 
 /obj/item/clothing/shoes/boots/jackboots/toeless/thigh
 	name = "toe-less thigh-length jackboots"
 	desc = "Modified pair of even taller boots, particularly friendly to those species whose toes hold claws."
 	icon_state = "digithighboots"
-	item_state_slots = list(slot_r_hand_str = "jackboots", slot_l_hand_str = "jackboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "jackboots", SLOT_ID_LEFT_HAND = "jackboots")
 	species_restricted = null
 
 /obj/item/clothing/shoes/boots/workboots
@@ -75,7 +75,7 @@
 	name = "toe-less workboots"
 	desc = "A pair of toeless work boots designed for use in industrial settings. Modified for species whose toes have claws."
 	icon_state = "workbootstoeless"
-	item_state_slots = list(slot_r_hand_str = "workboots", slot_l_hand_str = "workboots")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "workboots", SLOT_ID_LEFT_HAND = "workboots")
 	species_restricted = null
 
 /obj/item/clothing/shoes/boots/winter
@@ -229,3 +229,8 @@
 	name = "laconic field boots"
 	desc = "These flexible boots cover the wearer's calves. An additional protective kneepad is integrated, perhaps to assist in collecting specimens in the field."
 	icon_state = "laconic"
+
+/obj/item/clothing/shoes/boots/half_moon
+	name = "Half Moon boots"
+	desc = "Perfect boots for crossing Mare Serenitatis. Flexible and tight, these boots ensure the wearer will be leaving a solid impression without sacrificing mobility."
+	icon_state = "half_moon"

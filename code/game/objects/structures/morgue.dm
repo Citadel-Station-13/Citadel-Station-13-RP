@@ -43,7 +43,7 @@
 			src.icon_state = "morgue2"
 			get_occupants()
 			for (var/mob/living/carbon/human/H in occupants)
-				if(H.isSynthetic() || H.suiciding || !H.ckey || !H.client || (NOCLONE in H.mutations) || (H.species && H.species.flags & NO_SCAN))
+				if(H.isSynthetic() || H.suiciding || !H.ckey || !H.client || (MUTATION_NOCLONE in H.mutations) || (H.species && H.species.species_flags & NO_SCAN))
 					src.icon_state = "morgue2"
 					break
 				else
@@ -54,26 +54,26 @@
 			src.icon_state = "morgue1"
 	return
 
-/obj/structure/morgue/ex_act(severity)
+/obj/structure/morgue/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			for(var/atom/movable/A as mob|obj in src)
 				A.forceMove(src.loc)
-				ex_act(severity)
+				legacy_ex_act(severity)
 			qdel(src)
 			return
 		if(2.0)
 			if (prob(50))
 				for(var/atom/movable/A as mob|obj in src)
 					A.forceMove(src.loc)
-					ex_act(severity)
+					legacy_ex_act(severity)
 				qdel(src)
 				return
 		if(3.0)
 			if (prob(5))
 				for(var/atom/movable/A as mob|obj in src)
 					A.forceMove(src.loc)
-					ex_act(severity)
+					legacy_ex_act(severity)
 				qdel(src)
 				return
 	return
@@ -134,11 +134,11 @@
 	if(istype(W, /obj/item/tool/wrench))
 		if(anchored)
 			user.show_message(text("<span class='notice'>[src] can now be moved.</span>"))
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			anchored = FALSE
 		else if(!anchored)
 			user.show_message(text("<span class='notice'>[src] is now secured.</span>"))
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 			anchored = TRUE
 	src.add_fingerprint(user)
 	return
@@ -157,11 +157,11 @@
 	desc = "Apply corpse before closing."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "morguet"
-	density = 1
+	density = TRUE
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_OVERHEAD_THROW
+	anchored = TRUE
 	plane = TURF_PLANE
 	var/obj/structure/morgue/connected = null
-	anchored = 1
-	throwpass = 1
 
 /obj/structure/m_tray/Destroy()
 	if(connected && connected.connected == src)

@@ -31,7 +31,7 @@
 	friendly = list("prods")
 
 	status_flags = CANPUSH
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	movement_cooldown = 5
 
 	universal_understand = TRUE
@@ -238,7 +238,7 @@
 		return emote(copytext(message, 2))
 
 	var/datum/language/L = parse_language(message)
-	if(L && L.flags & HIVEMIND)
+	if(L && L.language_flags & HIVEMIND)
 		L.broadcast(src,trim(copytext(message,3)), src.true_name)
 		return
 
@@ -267,7 +267,7 @@
 	to_chat(src, "You drop words into [host]'s mind: \"[message]\"")
 	to_chat(host, "Your own thoughts speak: \"[message]\"")
 
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(istype(M, /mob/new_player))
 			continue
 		else if(M.stat == DEAD && M.is_preference_enabled(/datum/client_preference/ghost_ears))

@@ -1,28 +1,6 @@
-
-/mob/living/handle_fall(var/turf/landing)
-	var/mob/drop_mob = locate(/mob, landing)
-
-	if(locate(/obj/structure/stairs) in landing)
-		for(var/atom/A in landing)
-			if(!A.CanPass(src, src.loc, 1, 0))
-				return FALSE
-		locationTransitForceMove(landing)
-		return TRUE
-
-	for(var/obj/O in loc)
-		if(!O.CanFallThru(src, landing))
-			return 1
-
-	if(drop_mob && !(drop_mob == src) && ismob(drop_mob) && isliving(drop_mob)) //Shitload of checks. This is because the game finds various ways to screw me over.
-		var/mob/living/drop_living = drop_mob
-		if(drop_living.dropped_onto(src))
-			return
-
-	// Then call parent to have us actually fall
-	return ..()
-
 /mob/CheckFall(var/atom/movable/falling_atom)
 	return falling_atom.fall_impact(src)
+
 /* //Leaving this here to show my previous iterations which failed.
 /mob/living/fall_impact(var/atom/hit_atom) //This is called even when a humanoid falls. Dunno why, it just does.
 	if(isliving(hit_atom)) //THIS WEAKENS THE PERSON FALLING & NOMS THE PERSON FALLEN ONTO. SRC is person fallen onto.  hit_atom is the person falling. Confusing.
@@ -91,15 +69,3 @@
 		pred.updatehealth()
 		prey.updatehealth()
 	return 1
-
-/mob/observer/dead/CheckFall()
-	return
-
-/mob/proc/CanZPass(atom/A, direction)
-	if(z == A.z) //moving FROM this turf
-		return direction == UP //can't go below
-	else
-		if(direction == UP) //on a turf below, trying to enter
-			return 0
-		if(direction == DOWN) //on a turf above, trying to enter
-			return 1

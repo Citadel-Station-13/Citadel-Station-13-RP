@@ -5,7 +5,7 @@
 	icon = 'icons/obj/assemblies.dmi'
 	icon_state = "plastic-explosive0"
 	item_state = "plasticx"
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_ILLEGAL = 2)
 	var/datum/wires/explosive/c4/wires = null
@@ -32,7 +32,7 @@
 	if(I.is_screwdriver())
 		open_panel = !open_panel
 		to_chat(user, "<span class='notice'>You [open_panel ? "open" : "close"] the wire panel.</span>")
-		playsound(src, I.usesound, 50, 1)
+		playsound(src, I.tool_sound, 50, 1)
 	else if(I.is_wirecutter() || istype(I, /obj/item/multitool) || istype(I, /obj/item/assembly/signaler ))
 		wires.Interact(user)
 	else
@@ -83,9 +83,9 @@
 			var/turf/simulated/wall/W = target
 			W.dismantle_wall(1,1,1)
 		else if(istype(target, /mob/living))
-			target.ex_act(2) // c4 can't gib mobs anymore.
+			LEGACY_EX_ACT(target, 2, null) // c4 can't gib mobs anymore.
 		else
-			target.ex_act(1)
+			LEGACY_EX_ACT(target, 1, null)
 	if(target)
 		target.overlays -= image_overlay
 	qdel(src)

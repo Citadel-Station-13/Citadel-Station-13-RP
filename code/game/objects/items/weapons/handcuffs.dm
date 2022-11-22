@@ -5,7 +5,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "handcuff"
 	slot_flags = SLOT_BELT
-	throwforce = 5
+	throw_force = 5
 	w_class = ITEMSIZE_SMALL
 	throw_speed = 2
 	throw_range = 5
@@ -19,20 +19,13 @@
 	var/cuff_sound = 'sound/weapons/handcuffs.ogg'
 	var/cuff_type = "handcuffs"
 	var/use_time = 30
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/handcuffs.dmi')
-
-/obj/item/handcuffs/get_worn_icon_state(var/slot_id)
-	if(slot_id == SLOT_ID_HANDCUFFED)
-		return "handcuff1" //Simple
-
-	return ..()
 
 /obj/item/handcuffs/attack(var/mob/living/carbon/C, var/mob/living/user)
 
 	if(!user.IsAdvancedToolUser())
 		return
 
-	if ((CLUMSY in user.mutations) && prob(50))
+	if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>Uh ... how do those things work?!</span>")
 		place_handcuffs(user, user)
 		return
@@ -83,7 +76,7 @@
 	if(!can_place(target, user)) //victim may have resisted out of the grab in the meantime
 		return 0
 
-	if(!user.attempt_void_item_for_installation(src))
+	if(!dispenser && !user.attempt_void_item_for_installation(src))
 		return
 
 	add_attack_logs(user,H,"Handcuffed (attempt)")
@@ -123,7 +116,7 @@ var/last_chew = 0
 	var/obj/item/organ/external/O = H.organs_by_name[(H.hand ? BP_L_HAND : BP_R_HAND)]
 	if (!O) return
 
-	var/datum/gender/T = gender_datums[H.get_visible_gender()]
+	var/datum/gender/T = GLOB.gender_datums[H.get_visible_gender()]
 
 	var/s = "<span class='warning'>[H.name] chews on [T.his] [O.name]!</span>"
 	H.visible_message(s, "<span class='warning'>You chew on your [O.name]!</span>")
@@ -208,13 +201,7 @@ var/last_chew = 0
 /obj/item/handcuffs/disruptor
 	name = "disruptor cuffs"
 	icon_state = "disruptorcuff"
-	desc = "These cutting edge handcuffs were originally designed by the PMD. Commonly deployed to restrain anomalous lifeforms, disruptor cuffs employ a form of acuasal logic engine disruption, in tandem with morphogenic resonance, to neutralize the abilities of technological and biological threats."
-
-/obj/item/handcuffs/disruptor/get_worn_icon_state(var/slot_id)
-	if(slot_id == SLOT_ID_HANDCUFFED)
-		return "disruptorcuff1" //Simple
-
-	return ..()
+	desc = "These cutting edge handcuffs were originally designed by the PMD. Commonly deployed to restrain anomalous lifeforms, disruptor cuffs employ a form of acausal logic engine disruption, in tandem with morphogenic resonance, to neutralize the abilities of technological and biological threats."
 
 /obj/item/handcuffs/disruptor/equipped(var/mob/living/user,var/slot)
 	. = ..()
@@ -228,26 +215,19 @@ var/last_chew = 0
 	gender = PLURAL
 	icon = 'icons/obj/items.dmi'
 	icon_state = "legcuff"
-	throwforce = 0
+	throw_force = 0
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1)
 	breakouttime = 300	//Deciseconds = 30s = 0.5 minute
 	cuff_type = "legcuffs"
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/handcuffs.dmi')
 	elastic = 0
 	cuff_sound = 'sound/weapons/handcuffs.ogg' //This shold work for now.
-
-/obj/item/handcuffs/legcuffs/get_worn_icon_state(var/slot_id)
-	if(slot_id == SLOT_ID_LEGCUFFED)
-		return "legcuff1"
-
-	return ..()
 
 /obj/item/handcuffs/legcuffs/attack(var/mob/living/carbon/C, var/mob/living/user)
 	if(!user.IsAdvancedToolUser())
 		return
 
-	if ((CLUMSY in user.mutations) && prob(50))
+	if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>Uh ... how do those things work?!</span>")
 		place_legcuffs(user, user)
 		return

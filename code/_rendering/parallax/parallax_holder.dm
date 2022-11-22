@@ -175,6 +175,8 @@
 			continue
 		L.SetView(C.view, TRUE)
 		. |= L
+	if(vis_holder)
+		. |= vis_holder
 	C.screen |= .
 	if(!secondary_map)
 		var/atom/movable/screen/plane_master/parallax_white/PM = locate() in C.screen
@@ -191,6 +193,7 @@
 	if(QDELETED(C))
 		return
 	C.screen -= layers
+	C.screen -= vis_holder
 	if(!secondary_map)
 		var/atom/movable/screen/plane_master/parallax_white/PM = locate() in C.screen
 		if(PM)
@@ -311,4 +314,5 @@
 		parallax_holder = new(src)
 
 /atom/movable/screen/parallax_vis
-	screen_loc = "CENTER,CENTER"
+	screen_loc = "LEFT,BOTTOM"
+	icon = null

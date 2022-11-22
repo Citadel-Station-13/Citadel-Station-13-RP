@@ -3,8 +3,8 @@
 	desc = "Dance my monkeys! DANCE!!!"
 	icon_state = "electropack0"
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_storage.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_storage.dmi',
 			)
 	item_state = "electropack"
 	frequency = 1449
@@ -87,9 +87,9 @@
 		var/mob/M = loc
 		var/turf/T = M.loc
 		if(istype(T, /turf))
-			if(!M.moved_recently && M.last_move)
+			if(!M.moved_recently && M.last_move_dir)
 				M.moved_recently = 1
-				step(M, M.last_move)
+				step(M, M.last_move_dir)
 				sleep(50)
 				if(M)
 					M.moved_recently = 0

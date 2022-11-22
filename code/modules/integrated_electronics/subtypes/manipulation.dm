@@ -316,14 +316,14 @@
 /obj/item/integrated_circuit/manipulation/claw/do_work(ord)
 	var/obj/acting_object = get_object()
 	var/atom/movable/AM = get_pin_data_as_type(IC_INPUT, 1, /atom/movable)
-	var/mode = get_pin_data(IC_INPUT, 2)
+	// var/mode = get_pin_data(IC_INPUT, 2)
 	switch(ord)
 		if(1)
-			mode = clamp(mode, GRAB_PASSIVE, max_grab)
+			// mode = clamp(mode, GRAB_PASSIVE, max_grab)
 			if(AM)
 				if(check_target(AM, exclude_contents = TRUE))
 					acting_object.investigate_log("grabbed ([AM]) using [src].", INVESTIGATE_CIRCUIT)
-					acting_object.start_pulling(AM,mode)
+					acting_object.start_pulling(AM)
 					if(acting_object.pulling)
 						set_pin_data(IC_OUTPUT, 1, TRUE)
 					else
@@ -431,7 +431,7 @@
 		assembly.visible_message("<span class='danger'>[assembly] has thrown [A]!</span>")
 		log_attack("[assembly] [REF(assembly)] has thrown [A] with non-lethal force.")
 		A.forceMove(drop_location())
-		A.throw_at(locate(x_abs, y_abs, T.z), range, 3, src)
+		A.throw_at_old(locate(x_abs, y_abs, T.z), range, 3, src)
 
 		// If the item came from a grabber now we can update the outputs since we've thrown it.
 		if(istype(G))
@@ -711,10 +711,10 @@
 			investigate_log("Drilled through [target]")
 		else if(istype(S, /turf/simulated/wall))
 			investigate_log("Drilled through [target]")
-			S.ex_act(2)
+			LEGACY_EX_ACT(S, 2, null)
 	else
 		investigate_log("Drilled through [target]")
-		target.ex_act(2)
+		LEGACY_EX_ACT(target, 2, null)
 	activate_pin(2)
 	return(TRUE)
 

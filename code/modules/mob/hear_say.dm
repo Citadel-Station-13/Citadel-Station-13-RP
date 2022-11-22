@@ -25,11 +25,11 @@
 		return
 
 	//non-verbal languages are garbled if you can't see the speaker. Yes, this includes if they are inside a closet.
-	if (language && (language.flags & NONVERBAL))
-		if (!speaker || (src.sdisabilities & BLIND || src.blinded) || !(speaker in view(src)))
+	if (language && (language.language_flags & NONVERBAL))
+		if (!speaker || (src.sdisabilities & SDISABILITY_NERVOUS || src.blinded) || !(speaker in view(src)))
 			message = stars(message)
 
-	if(!(language && (language.flags & INNATE))) // skip understanding checks for INNATE languages
+	if(!(language && (language.language_flags & INNATE))) // skip understanding checks for INNATE languages
 		if(!say_understands(speaker,language))
 			if(language)
 				message = language.scramble(message, languages)
@@ -55,7 +55,7 @@
 			message = "<b>[message]</b>"
 
 	if(is_deaf())
-		if(!language || !(language.flags & INNATE)) // INNATE is the flag for audible-emote-language, so we don't want to show an "x talks but you cannot hear them" message if it's set
+		if(!language || !(language.language_flags & INNATE)) // INNATE is the flag for audible-emote-language, so we don't want to show an "x talks but you cannot hear them" message if it's set
 			if(speaker == src)
 				to_chat(src, "<span class='warning'>You cannot hear yourself speak!</span>")
 			else
@@ -68,6 +68,7 @@
 			message_to_send = "<span class='game say'><span class='name'>[speaker_name]</span>[alt_name] [track][verb], <span class='message'><span class='body'>\"[message]\"</span></span></span>"
 		if(check_mentioned(message) && is_preference_enabled(/datum/client_preference/check_mention))
 			message_to_send = "<font size='3'><b>[message_to_send]</b></font>"
+
 
 		on_hear_say(message_to_send)
 
@@ -124,6 +125,15 @@
 	input = replacetext_char(input, strikethrough, "<s>$1</s>")
 	return input
 
+/mob/proc/say_emphasis_strip(input)
+	var/static/regex/italics = regex("\\|(?=\\S)(.*?)(?=\\S)\\|", "g")
+	input = replacetext_char(input, italics, "$1")
+	var/static/regex/bold = regex("\\+(?=\\S)(.*?)(?=\\S)\\+", "g")
+	input = replacetext_char(input, bold, "$1")
+	var/static/regex/underline = regex("_(?=\\S)(.*?)(?=\\S)_", "g")
+	input = replacetext_char(input, underline, "$1")
+	return input
+
 /mob/proc/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/part_c, var/mob/speaker = null, var/hard_to_hear = 0, var/vname ="")
 
 	if(!client)
@@ -141,11 +151,11 @@
 	var/track = null
 
 	//non-verbal languages are garbled if you can't see the speaker. Yes, this includes if they are inside a closet.
-	if (language && (language.flags & NONVERBAL))
-		if (!speaker || (src.sdisabilities & BLIND || src.blinded) || !(speaker in view(src)))
+	if (language && (language.language_flags & NONVERBAL))
+		if (!speaker || (src.sdisabilities & SDISABILITY_NERVOUS || src.blinded) || !(speaker in view(src)))
 			message = stars(message)
 
-	if(!(language && (language.flags & INNATE))) // skip understanding checks for INNATE languages
+	if(!(language && (language.language_flags & INNATE))) // skip understanding checks for INNATE languages
 		if(!say_understands(speaker,language))
 			if(language)
 				message = language.scramble(message, languages)
@@ -232,7 +242,7 @@
 		formatted = "[verb], <span class=\"body\">\"[message]\"</span>[part_c]"
 
 
-	if((sdisabilities & DEAF) || ear_deaf)
+	if((sdisabilities & SDISABILITY_DEAF) || ear_deaf)
 		if(prob(20))
 			to_chat(src, "<span class='warning'>You feel your headset vibrate but can hear nothing from it!</span>")
 	else

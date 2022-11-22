@@ -5,7 +5,49 @@
 	icon_state = "densecrate"
 	density = 1
 	var/list/starts_with
+	var/storage_capacity = 2 * MOB_LARGE //This is so that someone can't pack hundreds of items in a locker/crate
+							  //then open it in a populated area to crash clients.
 
+
+
+/obj/structure/largecrate/Initialize(mapload)	//Shamelessly copied from closets.dm since the old Initializer didnt seem to function properly - Bloop
+	. = ..()
+	if(mapload)
+		addtimer(CALLBACK(src, .proc/take_contents), 0)
+	PopulateContents()
+	// Closets need to come later because of spawners potentially creating objects during init.
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/largecrate/LateInitialize()
+	. = ..()
+	if(starts_with)
+		create_objects_in_loc(src, starts_with)
+		starts_with = null
+	update_icon()
+
+/obj/structure/largecrate/proc/take_contents()
+	// if(istype(loc, /mob/living))
+	//	return // No collecting mob organs if spawned inside mob
+	// I'll leave this out, if someone dies to this from voring someone who made a closet go yell at a coder to
+	// fix the fact you can build closets inside living people, not try to make it work you numbskulls.
+	var/obj/item/I
+	for(I in src.loc)
+		if(I.density || I.anchored || I == src) continue
+		I.forceMove(src)
+	// adjust locker size to hold all items with 5 units of free store room
+	var/content_size = 0
+	for(I in src.contents)
+		content_size += CEILING(I.w_class/2, 1)
+	if(content_size > storage_capacity-5)
+		storage_capacity = content_size + 5
+
+/**
+ * The proc that fills the closet with its initial contents.
+ */
+/obj/structure/largecrate/proc/PopulateContents()
+	return
+
+/*	/// Doesnt work but im gonna leave this here commented out in case I broke something with the shameless copy pasta from above -Bloop
 /obj/structure/largecrate/Initialize(mapload)
 	. = ..()
 	if(starts_with)
@@ -16,6 +58,8 @@
 			continue
 		I.forceMove(src)
 	update_icon()
+
+*/
 
 /obj/structure/largecrate/attack_hand(mob/user as mob)
 	to_chat(user, "<span class='notice'>You need a crowbar to pry this open!</span>")
@@ -75,7 +119,8 @@
 
 /obj/structure/largecrate/vehicle/quadbike
 	name = "\improper ATV crate"
-	starts_with = list(/obj/structure/vehiclecage/quadbike)
+	starts_with = list(/obj/vehicle/ridden/quadbike/random,
+		/obj/item/key/quadbike)
 
 /obj/structure/largecrate/vehicle/quadtrailer
 	name = "\improper ATV trailer crate"
@@ -212,19 +257,37 @@
 	return ..()
 
 /obj/structure/closet/crate/large/aether
-	name = "large atmospherics crate"
 	desc = "A hefty metal crate, painted in Aether Atmospherics and Recycling colours."
+	icon_state = "aetherlarge"
+	icon_opened = "aetherlargeopen"
+	icon_closed = "aetherlarge"
+
 /obj/structure/closet/crate/large/einstein
-	name = "large crate"
-	desc = "A hefty metal crate, painted in Einstein Engines colours."
+	desc = "A hefty metal crate, with an Einstien Engines sticker, the company has since been bought out by Hephaestus Industries."
+	icon_state = "eelarge"
+	icon_opened = "eelargeopen"
+	icon_closed = "eelarge"
+
 /obj/structure/closet/crate/large/nanotrasen
-	name = "large crate"
 	desc = "A hefty metal crate, painted in standard NanoTrasen livery."
+	icon_state = "ntlarge"
+	icon_opened = "ntlargeopen"
+	icon_closed = "ntlarge"
+
 /obj/structure/closet/crate/large/xion
-	name = "large crate"
-	desc = "A hefty metal crate, painted in Xion Manufacturing Group orange."
+	desc = "A hefty metal crate, painted in the orange of the former Xion Manufacturing Group, now a subsidiary of Aether Atmospherics and Recycling."
+	icon_state = "xionlarge"
+	icon_opened = "xionlargeopen"
+	icon_closed = "xionlarge"
+
 /obj/structure/closet/crate/large/secure/heph
 	desc = "A hefty metal crate with an electronic locking system, marked with Hephaestus Industries colours."
+	icon_state = "hephlarge"
+	icon_opened = "hephlargeopen"
+	icon_closed = "hephlarge"
 
 /obj/structure/closet/crate/large/secure/xion
-	desc = "A hefty metal crate with an electronic locking system, painted in Xion Manufacturing Group orange."
+	desc = "A hefty metal crate with an electronic locking system, painted in the orange of the former Xion Manufacturing Group, now a subsidiary of Aether Atmospherics and Recycling."
+	icon_state = "xionlargesecure"
+	icon_opened = "xionlargesecureopen"
+	icon_closed = "xionlargesecure"

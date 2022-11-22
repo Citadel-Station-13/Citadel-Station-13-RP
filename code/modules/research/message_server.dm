@@ -343,7 +343,7 @@ var/obj/machinery/blackbox_recorder/blackbox
 	var/round_id
 
 	var/datum/db_query/query = SSdbcore.RunQuery(
-		"SELECT MAX(ronud_id) AS round_id FROM [format_table_name("feedback")]",
+		"SELECT MAX(round_id) AS round_id FROM [format_table_name("feedback")]",
 		list()
 	)
 
@@ -365,59 +365,69 @@ var/obj/machinery/blackbox_recorder/blackbox
 			)
 		)
 
-proc/feedback_set(var/variable,var/value)
-	if(!blackbox) return
+/proc/feedback_set(variable, value)
+	if(!blackbox)
+		return
 
 	variable = sql_sanitize_text(variable)
 
 	var/datum/feedback_variable/FV = blackbox.find_feedback_datum(variable)
 
-	if(!FV) return
+	if(!FV)
+		return
 
 	FV.set_value(value)
 
-proc/feedback_inc(var/variable,var/value)
-	if(!blackbox) return
+/proc/feedback_inc(variable, value)
+	if(!blackbox)
+		return
 
 	variable = sql_sanitize_text(variable)
 
 	var/datum/feedback_variable/FV = blackbox.find_feedback_datum(variable)
 
-	if(!FV) return
+	if(!FV)
+		return
 
 	FV.inc(value)
 
-proc/feedback_dec(var/variable,var/value)
-	if(!blackbox) return
+/proc/feedback_dec(variable, value)
+	if(!blackbox)
+		return
 
 	variable = sql_sanitize_text(variable)
 
 	var/datum/feedback_variable/FV = blackbox.find_feedback_datum(variable)
 
-	if(!FV) return
+	if(!FV)
+		return
 
 	FV.dec(value)
 
-proc/feedback_set_details(var/variable,var/details)
-	if(!blackbox) return
+/proc/feedback_set_details(variable, details)
+	if(!blackbox)
+		return
 
 	variable = sql_sanitize_text(variable)
 	details = sql_sanitize_text(details)
 
 	var/datum/feedback_variable/FV = blackbox.find_feedback_datum(variable)
 
-	if(!FV) return
+	if(!FV)
+		return
 
 	FV.set_details(details)
 
-proc/feedback_add_details(var/variable,var/details)
-	if(!blackbox) return
+/proc/feedback_add_details(variable, details)
+	if(!blackbox)
+		return
 
 	variable = sql_sanitize_text(variable)
 	details = sql_sanitize_text(details)
 
 	var/datum/feedback_variable/FV = blackbox.find_feedback_datum(variable)
 
-	if(!FV) return
+	if(!FV)
+		return
 
 	FV.add_details(details)

@@ -87,7 +87,7 @@
 	if(istype(I, /obj/item/tool/crowbar))
 		if(modkits.len)
 			to_chat(user, "<span class='notice'>You pry the modifications out.</span>")
-			playsound(loc, I.usesound, 100, 1)
+			playsound(loc, I.tool_sound, 100, 1)
 			for(var/obj/item/borg/upgrade/modkit/M in modkits)
 				M.uninstall(src)
 		else

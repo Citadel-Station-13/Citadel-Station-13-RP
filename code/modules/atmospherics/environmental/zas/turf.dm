@@ -55,6 +55,12 @@
 	var/check_dirs = get_zone_neighbours(src)
 	var/unconnected_dirs = check_dirs
 
+	//? from: kapu1178
+	//src is only connected to the zone by a single direction, this is a safe removal.
+	if (!(. & (. - 1)))
+		return TRUE
+	//? end
+
 	#ifdef MULTIZAS
 	var/to_check = GLOB.cornerdirsz
 	#else
@@ -87,6 +93,10 @@
 				. |= dir
 
 /turf/simulated/update_air_properties()
+	#ifdef ZAS_BREAKPOINT_HOOKS
+	if(zas_verbose)
+		pass()
+	#endif
 	if(zone?.invalid)
 		c_copy_air()
 		zone = null //Easier than iterating through the list at the zone.
@@ -94,7 +104,7 @@
 	var/self_block = CanAtmosPass(src, NONE)
 	if(self_block == ATMOS_PASS_AIR_BLOCKED)
 		#ifdef ZAS_DEBUG_GRAPHICS
-		if(verbose)
+		if(zas_verbose)
 			to_chat(world, "Self-blocked.")
 		//dbg(blocked)
 		#endif
@@ -123,7 +133,7 @@
 		if(them_to_us == ATMOS_PASS_AIR_BLOCKED)
 
 			#ifdef ZAS_DEBUG_GRAPHICS
-			if(verbose) to_chat(world, "[d] is blocked.")
+			if(zas_verbose) to_chat(world, "[d] is blocked.")
 			//unsim.dbg(air_blocked, turn(180,d))
 			#endif
 
@@ -133,7 +143,7 @@
 		if(us_to_them == ATMOS_PASS_AIR_BLOCKED)
 
 			#ifdef ZAS_DEBUG_GRAPHICS
-			if(verbose) to_chat(world, "[d] is blocked.")
+			if(zas_verbose) to_chat(world, "[d] is blocked.")
 			//dbg(air_blocked, d)
 			#endif
 
@@ -142,8 +152,10 @@
 			if((previously_open & d) && istype(potential, /turf/simulated))
 				var/turf/simulated/S = potential
 				if(zone && S.zone == zone)
+					// todo: safely remove? for now the hueristic doesn't seem to work
 					zone.rebuild()
-					return
+					// todo: don't do this, just keep going, zone rebuilds shouldn't need this return
+					return	// handle it next cycle, we're done here
 
 			continue
 
@@ -161,7 +173,7 @@
 					//    we are blocking them and not blocking ourselves - this prevents tiny zones from forming on doorways.
 					if(((them_to_us == ATMOS_PASS_ZONE_BLOCKED) && (us_to_them != ATMOS_PASS_ZONE_BLOCKED)) || ((us_to_them == ATMOS_PASS_ZONE_BLOCKED) && (self_block != ATMOS_PASS_ZONE_BLOCKED)))
 						#ifdef ZAS_DEBUG_GRAPHICS
-						if(verbose)
+						if(zas_verbose)
 							to_chat(world, "[d] is zone blocked.")
 						//dbg(zone_blocked, d)
 						#endif
@@ -174,23 +186,23 @@
 
 						#ifdef ZAS_DEBUG_GRAPHICS
 						dbg(assigned)
-						if(verbose) to_chat(world, "Added to [zone]")
+						if(zas_verbose) to_chat(world, "Added to [zone]")
 						#endif
 
 				else if(S.zone != zone)
 
 					#ifdef ZAS_DEBUG_GRAPHICS
-					if(verbose)
+					if(zas_verbose)
 						to_chat(world, "Connecting to [sim.zone]")
 					#endif
 
 					air_master.connect(src, potential, min(them_to_us, us_to_them), d)
 
 			#ifdef ZAS_DEBUG_GRAPHICS
-				else if(verbose)
+				else if(zas_verbose)
 					to_chat(world, "[d] has same zone.")
 
-			else if(verbose)
+			else if(zas_verbose)
 				to_chat(world, "[d] has invalid zone.")
 			#endif
 
@@ -207,7 +219,7 @@
 		dbg(created)
 	#endif
 
-	#ifdef ZAS_DEBUG
+	#ifdef ZAS_ASSERTIONS
 	ASSERT(zone)
 	#endif
 

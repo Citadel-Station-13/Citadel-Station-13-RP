@@ -106,9 +106,9 @@ var/global/list/light_type_cache = list()
 
 	if (W.is_wrench())
 		if (src.stage == 1)
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			to_chat(usr, "You begin deconstructing [src].")
-			if (!do_after(usr, 30 * W.toolspeed))
+			if (!do_after(usr, 30 * W.tool_speed))
 				return
 			new /obj/item/stack/material/steel( get_turf(src.loc), sheets_refunded )
 			user.visible_message("[user.name] deconstructs [src].", \
@@ -130,7 +130,7 @@ var/global/list/light_type_cache = list()
 		new /obj/item/stack/cable_coil(get_turf(src.loc), 1, null, "red")
 		user.visible_message("[user.name] removes the wiring from [src].", \
 			"You remove the wiring from [src].", "You hear a noise.")
-		playsound(src.loc, W.usesound, 50, 1)
+		playsound(src.loc, W.tool_sound, 50, 1)
 		return
 
 	if(istype(W, /obj/item/stack/cable_coil))
@@ -149,7 +149,7 @@ var/global/list/light_type_cache = list()
 			src.update_icon()
 			user.visible_message("[user.name] closes [src]'s casing.", \
 				"You close [src]'s casing.", "You hear a noise.")
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 
 			var/obj/machinery/light/newlight = new fixture_type(src.loc, src)
 			newlight.setDir(src.dir)
@@ -618,7 +618,7 @@ var/global/list/light_type_cache = list()
 					continue
 				M.show_message("[user.name] smashed the light!", 3, "You hear a tinkle of breaking glass", 2)
 			if(on && !(W.flags & NOCONDUCT))
-				//if(!user.mutations & COLD_RESISTANCE)
+				//if(!user.mutations & MUTATION_COLD_RESIST)
 				if (prob(12))
 					electrocute_mob(user, get_area(src), src, 0.3)
 			broken()
@@ -629,7 +629,7 @@ var/global/list/light_type_cache = list()
 	// attempt to stick weapon into light socket
 	else if(status == LIGHT_EMPTY)
 		if(W.is_screwdriver()) //If it's a screwdriver open it.
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			user.visible_message("[user.name] opens [src]'s casing.", \
 				"You open [src]'s casing.", "You hear a noise.")
 			new construct_type(src.loc, null, null, null, src)
@@ -641,14 +641,14 @@ var/global/list/light_type_cache = list()
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(3, 1, src)
 			s.start()
-			//if(!user.mutations & COLD_RESISTANCE)
+			//if(!user.mutations & MUTATION_COLD_RESIST)
 			if (prob(75))
 				electrocute_mob(user, get_area(src), src, rand(0.7,1.0))
 
 /obj/machinery/light/flamp/attackby(obj/item/W, mob/user)
 	if(W.is_wrench())
 		anchored = !anchored
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] \the [src].</span>")
 
 	if(!lamp_shade)
@@ -660,7 +660,7 @@ var/global/list/light_type_cache = list()
 
 	else
 		if(W.is_screwdriver())
-			playsound(src, W.usesound, 75, 1)
+			playsound(src, W.tool_sound, 75, 1)
 			user.visible_message("[user.name] removes [src]'s lamp shade.", \
 				"You remove [src]'s lamp shade.", "You hear a noise.")
 			lamp_shade = 0
@@ -775,9 +775,9 @@ var/global/list/light_type_cache = list()
 		else
 			prot = 1
 
-		if(prot > 0 || (COLD_RESISTANCE in user.mutations))
+		if(prot > 0 || (MUTATION_COLD_RESIST in user.mutations))
 			to_chat(user, "You remove the [get_fitting_name()]")
-		else if(TK in user.mutations)
+		else if(MUTATION_TELEKINESIS in user.mutations)
 			to_chat(user, "You telekinetically remove the [get_fitting_name()].")
 		else
 			to_chat(user, "You try to remove the [get_fitting_name()], but it's too hot and you don't want to burn your hand.")
@@ -838,7 +838,7 @@ var/global/list/light_type_cache = list()
 // explosion effect
 // destroy the whole light fixture or just shatter it
 
-/obj/machinery/light/ex_act(severity)
+/obj/machinery/light/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -905,7 +905,7 @@ var/global/list/light_type_cache = list()
 /obj/item/light
 	icon = 'icons/obj/lighting.dmi'
 	force = 2
-	throwforce = 5
+	throw_force = 5
 	w_class = ITEMSIZE_TINY
 	var/status = 0		// LIGHT_OK, LIGHT_BURNED or LIGHT_BROKEN
 	var/base_state

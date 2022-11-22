@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `rp_feedback` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 ;
 
-CREATE TABLE IF NOT EXISTS `rp_player` (
+CREATE TABLE IF NOT EXISTS `rp_player_lookup` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ckey` varchar(32) NOT NULL,
   `firstseen` datetime NOT NULL,
@@ -94,8 +94,17 @@ CREATE TABLE IF NOT EXISTS `rp_player` (
   `ip` varchar(18) NOT NULL,
   `computerid` varchar(32) NOT NULL,
   `lastadminrank` varchar(32) NOT NULL DEFAULT 'Player',
+  `playerid` int(11),
   PRIMARY KEY (`id`),
   UNIQUE KEY `ckey` (`ckey`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE IF NOT EXISTS `rp_player` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `flags` int(24) NOT NULL DEFAULT 0,
+  `firstseen` datetime NOT NULL DEFAULT Now(),
+  `lastseen` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE IF NOT EXISTS `rp_poll_option` (

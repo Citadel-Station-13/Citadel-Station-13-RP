@@ -1,5 +1,6 @@
 /datum/species/alraune
 	name = SPECIES_ALRAUNE
+	uid = SPECIES_ID_ALRAUNE
 	name_plural = "Alraunes"
 
 	icobase = 'icons/mob/species/human/body_greyscale.dmi'
@@ -15,9 +16,8 @@
 	They are highly adaptable both mentally and physically, but tend to have a collecting intra-species mindset.
 	"}
 
-	num_alternate_languages = 3
-	language = LANGUAGE_VERNAL
-	species_language = LANGUAGE_VERNAL
+	max_additional_languages = 3
+	intrinsic_languages = LANGUAGE_ID_VERNAL
 
 	slowdown = 1 //slow, they're plants. Not as slow as full diona.
 	total_health = 100 //standard
@@ -58,8 +58,8 @@
 	breath_heat_level_2 = 450
 	breath_heat_level_3 = 800 //lower incineration threshold though
 
-	flags = NO_SCAN | IS_PLANT | NO_MINOR_CUT
-	spawn_flags = SPECIES_CAN_JOIN
+	species_flags = NO_SCAN | IS_PLANT | NO_MINOR_CUT
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	unarmed_types = list(
@@ -281,7 +281,7 @@
 
 
 	// Hot air hurts :(
-	if((breath.temperature < breath_cold_level_1 || breath.temperature > breath_heat_level_1) && !(COLD_RESISTANCE in H.mutations))
+	if((breath.temperature < breath_cold_level_1 || breath.temperature > breath_heat_level_1) && !(MUTATION_COLD_RESIST in H.mutations))
 
 		if(breath.temperature <= breath_cold_level_1)
 			if(prob(20))
@@ -354,8 +354,7 @@
 			fruit_gland.fruit_type = selection
 		verbs |= /mob/living/carbon/human/proc/alraune_fruit_pick
 		verbs -= /mob/living/carbon/human/proc/alraune_fruit_select
-		fruit_gland.organ_owner = src
-		fruit_gland.emote_descriptor = list("fruit right off of [fruit_gland.organ_owner]!", "a fruit from [fruit_gland.organ_owner]!")
+		fruit_gland.emote_descriptor = list("fruit right off of [fruit_gland.owner]!", "a fruit from [fruit_gland.owner]!")
 
 	else
 		to_chat(src, SPAN_NOTICE("You lack the organ required to produce fruit."))
@@ -412,5 +411,5 @@
 
 //! WARNING SHITCODE
 /datum/species/alraune/get_race_key(mob/living/carbon/human/H)
-	var/datum/species/real = name_static_species_meta(base_species || SPECIES_HUMAN)
+	var/datum/species/real = SScharacters.resolve_species_name(base_species || SPECIES_HUMAN)
 	return real.real_race_key(H)

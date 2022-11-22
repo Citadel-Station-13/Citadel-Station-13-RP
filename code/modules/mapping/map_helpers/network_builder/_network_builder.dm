@@ -1,6 +1,6 @@
 // Builds networks like power cables/atmos lines/etc
 // Just a holder parent type for now..
-/atom/movable/map_helper/network_builder
+/obj/map_helper/network_builder
 	icon = 'icons/mapping/helpers/mapping_helpers.dmi'
 	late = TRUE
 	invisibility = INVISIBILITY_MAXIMUM
@@ -11,7 +11,7 @@
 	/// our base type
 	var/base_type
 
-/atom/movable/map_helper/network_builder/Initialize(mapload)
+/obj/map_helper/network_builder/Initialize(mapload)
 	. = ..()
 	if(!mapload)
 		/// if it isn't adminspawned i am going to come find you
@@ -28,29 +28,29 @@
 	return INITIALIZE_HINT_LATELOAD
 
 /// How this works: On LateInitialize, detect all directions that this should be applicable to, and do what it needs to do, and then inform all network builders in said directions that it's been around since it won't be around afterwards.
-/atom/movable/map_helper/network_builder/LateInitialize()
+/obj/map_helper/network_builder/LateInitialize()
 	build()
 	qdel(src)
 
-/atom/movable/map_helper/network_builder/proc/duplicates()
+/obj/map_helper/network_builder/proc/duplicates()
 	CRASH("Base abstract network builder tried to check duplicates.")
 
-/atom/movable/map_helper/network_builder/proc/scan()
+/obj/map_helper/network_builder/proc/scan()
 	CRASH("Base abstract network builder tried to scan directions.")
 
-/atom/movable/map_helper/network_builder/proc/build()
+/obj/map_helper/network_builder/proc/build()
 	CRASH("Base abstract network builder tried to build network.")
 
-/atom/movable/map_helper/network_builder/proc/teardown()
+/obj/map_helper/network_builder/proc/teardown()
 	for(var/atom/movable/AM as anything in duplicates())
 		ASSERT(istype(AM))
 		qdel(AM)
 
-/atom/movable/map_helper/network_builder/proc/rebuild(propagate = TRUE)
+/obj/map_helper/network_builder/proc/rebuild(propagate = TRUE)
 	teardown()
 	if(propagate)
 		for(var/d in GLOB.cardinal)
-			var/atom/movable/map_helper/network_builder/NB = locate(base_type) in get_step(src, d)
+			var/obj/map_helper/network_builder/NB = locate(base_type) in get_step(src, d)
 			if(NB)
 				NB.rebuild(FALSE)
 	network_directions = scan()

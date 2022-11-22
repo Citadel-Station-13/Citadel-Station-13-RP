@@ -412,9 +412,9 @@
 				return
 			if(!H.dna)
 				return
-			if(NOCLONE in H.mutations)
+			if(MUTATION_NOCLONE in H.mutations)
 				return
-			if(H.species.flags & NO_BLOOD)
+			if(H.species.species_flags & NO_BLOOD)
 				return
 			if(!H.should_have_organ(O_HEART))
 				return

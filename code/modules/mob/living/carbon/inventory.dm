@@ -19,10 +19,11 @@
 		if(SLOT_ID_HANDCUFFED)
 			handcuffed = I
 			if(!(flags & INV_OP_NO_LOGIC))
-				if(!handcuffed && buckled && buckled.buckle_require_restraints)
-					buckled.unbuckle_mob()
-			if(!(flags & INV_OP_NO_UPDATE_ICONS))
-				update_inv_handcuffed()
+				buckled?.buckled_reconsider_restraints()
+			// uh oh shitcode alert; call update handcuffed instead
+			update_handcuffed()
+			// if(!(flags & INV_OP_NO_UPDATE_ICONS))
+			// 	update_inv_handcuffed()
 		if(SLOT_ID_LEGCUFFED)
 			legcuffed = I
 			if(!(flags & INV_OP_NO_UPDATE_ICONS))

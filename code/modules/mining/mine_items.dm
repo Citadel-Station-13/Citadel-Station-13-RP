@@ -15,7 +15,7 @@
 	icon = 'icons/obj/items.dmi'
 	slot_flags = SLOT_BELT
 	force = 15.0
-	throwforce = 4.0
+	throw_force = 4.0
 	icon_state = "pickaxe"
 	item_state = "jackhammer"
 	w_class = ITEMSIZE_LARGE
@@ -31,6 +31,14 @@
 
 	var/excavation_amount = 200
 	var/destroy_artefacts = FALSE // some mining tools will destroy artefacts completely while avoiding side-effects.
+
+/obj/item/pickaxe/bone
+	name = "bone pickaxe"
+	icon_state = "bpickaxe"
+	item_state = "bpickaxe"
+	digspeed = 30
+	origin_tech = list(TECH_MATERIAL = 1)
+	desc = "A sturdy pick fashioned from some animal's bone, wound with powerful sinew."
 
 /obj/item/pickaxe/silver
 	name = "silver pickaxe"
@@ -115,7 +123,7 @@
 	desc = "A simple icepick, for all your digging, climbing, and lobotomizing needs."
 	slot_flags = SLOT_BELT
 	force = 12
-	throwforce = 15 //Discount shuriken.
+	throw_force = 15 //Discount shuriken.
 	icon_state = "icepick"
 	item_state = "spickaxe" //im lazy fuck u
 	w_class = ITEMSIZE_SMALL
@@ -149,8 +157,9 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-obj/item/pickaxe/tyrmalin/proc/turnOn(mob/user as mob)
-	if(active) return
+/obj/item/pickaxe/tyrmalin/proc/turnOn(mob/user as mob)
+	if(active)
+		return
 
 	to_chat(user, "You start pulling the string on \the [src].")
 	//visible_message("[usr] starts pulling the string on the [src].")
@@ -257,7 +266,7 @@ obj/item/pickaxe/tyrmalin/proc/turnOn(mob/user as mob)
 	icon_state = "shovel"
 	slot_flags = SLOT_BELT
 	force = 8.0
-	throwforce = 4.0
+	throw_force = 4.0
 	item_state = "shovel"
 	w_class = ITEMSIZE_NORMAL
 	origin_tech = list(TECH_MATERIAL = 1, TECH_ENGINEERING = 1)
@@ -267,25 +276,31 @@ obj/item/pickaxe/tyrmalin/proc/turnOn(mob/user as mob)
 	edge = 1
 	var/digspeed = 40
 
+/obj/item/shovel/bone
+	name = "serrated bone shovel"
+	desc = "A wicked tool that cleaves through dirt just as easily as it does flesh. The design was styled after ancient tribal designs."
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "shovel_bone"
+	force = 15
+	throw_force = 12
+	tool_speed = 0.7
+	attack_verb = list("slashed", "impaled", "stabbed", "sliced")
+	sharp = 1
+
 /obj/item/shovel/spade
 	name = "spade"
 	desc = "A small tool for digging and moving dirt."
 	icon_state = "spade"
 	item_state = "spade"
 	force = 5.0
-	throwforce = 7.0
+	throw_force = 7.0
 	w_class = ITEMSIZE_SMALL
 
-/obj/item/shovel/bone
-	name = "serrated bone shovel"
-	desc = "A wicked tool that cleaves through dirt just as easily as it does flesh. The design was styled after ancient tribal designs."
-	icon_state = "shovel_bone"
-	force = 15
-	throwforce = 12
-	toolspeed = 0.7
-	attack_verb = list("slashed", "impaled", "stabbed", "sliced")
-	sharp = 1
-
+/obj/item/shovel/spade/bone
+	name = "primitive spade"
+	desc = "A small shove cruedly fashioned out of some beast's scapula."
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "spade_bone"
 
 /**********************Mining car (Crate like thing, not the rail car)**************************/
 

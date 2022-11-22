@@ -26,9 +26,8 @@
 	name = "Goliath Cloak"
 	result = /obj/item/clothing/suit/storage/hooded/cloak/goliath
 	time = 50
-	reqs = list(/obj/item/stack/material/leather = 2,
-				/obj/item/stack/sinew = 2,
-				/obj/item/stack/animalhide/goliath_hide = 2) //it takes 4 goliaths to make 1 cloak if the plates are skinned
+	reqs = list(/obj/item/stack/sinew = 2,
+				/obj/item/stack/animalhide/goliath_hide = 4)
 	category = CAT_PRIMAL
 
 /datum/crafting_recipe/drakecloak
@@ -225,4 +224,67 @@
             /obj/item/stack/material/bone = 5,
             /obj/item/stack/sinew = 3)
 	result = /obj/item/surgical/bonesetter_primitive
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/bone_crowbar
+	name = "Primitive Crowbar"
+	result = /obj/item/tool/crowbar/bone
+	time = 50
+	reqs = list(/obj/item/stack/material/bone = 8
+				)
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/bone_screwdriver
+	name = "Primitive Screwdriver"
+	result = /obj/item/tool/screwdriver/bone
+	time = 50
+	reqs = list(/obj/item/stack/material/bone = 4,
+				/obj/item/stack/sinew = 2
+				)
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/bone_wrench
+	name = "Primitive Wrench"
+	result = /obj/item/tool/wrench/bone
+	time = 50
+	reqs = list(/obj/item/stack/material/bone = 3,
+				/obj/item/stack/sinew = 1
+				)
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/bone_wirecutters
+	name = "Primitive Wirecutters"
+	result = /obj/item/tool/wirecutters/bone
+	time = 50
+	reqs = list(/obj/item/stack/material/bone = 4,
+				/obj/item/stack/sinew = 2
+				)
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/bone_welder
+	name = "Primitive Welding Tool"
+	result = /obj/item/weldingtool/bone
+	time = 50
+	reqs = list(/obj/item/stack/material/bone = 6,
+				/obj/item/stack/sinew = 4
+				)
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/munition_box
+	name = "Primitive Munitions Box"
+	result = /obj/item/storage/box/munition_box
+	time = 40
+	reqs = list(/obj/item/stack/material/bone = 2,
+				/obj/item/stack/sinew = 2,
+				/obj/item/stack/animalhide/goliath_hide = 1
+				)
+	category = CAT_PRIMAL
+
+/datum/crafting_recipe/powder_horn
+	name = "Bone Powder Horn"
+	result = /obj/item/reagent_containers/glass/powder_horn/tribal
+	time = 40
+	reqs = list(/obj/item/stack/material/bone = 3,
+				/obj/item/stack/sinew = 3
+				)
 	category = CAT_PRIMAL

@@ -1,12 +1,11 @@
 /turf/simulated/floor/outdoors/snow
 	name = "snow"
 	icon_state = "snow"
-	edge_blending_priority = 6
+	edge_blending_priority = 1
 	movement_cost = 2
 	initial_flooring = /decl/flooring/snow
 	baseturfs = /turf/simulated/floor/outdoors/dirt
 	var/list/crossed_dirs = list()
-
 
 /turf/simulated/floor/outdoors/snow/Entered(atom/A)
 	if(isliving(A))
@@ -26,7 +25,7 @@
 /turf/simulated/floor/outdoors/snow/attackby(var/obj/item/W, var/mob/user)
 	if(istype(W, /obj/item/shovel))
 		to_chat(user, "<span class='notice'>You begin to remove \the [src] with your [W].</span>")
-		if(do_after(user, 4 SECONDS * W.toolspeed))
+		if(do_after(user, 4 SECONDS * W.tool_speed))
 			to_chat(user, "<span class='notice'>\The [src] has been dug up, and now lies in a pile nearby.</span>")
 			new /obj/item/stack/material/snow(src)
 			ScrapeAway(flags = CHANGETURF_INHERIT_AIR|CHANGETURF_PRESERVE_OUTDOORS)
@@ -42,10 +41,17 @@
 		visible_message("[user] scoops up a pile of snow.", "You scoop up a pile of snow.")
 	return
 
+/turf/simulated/floor/outdoors/snow/noblend
+	edge_blending_priority = 0
+
+/turf/simulated/floor/outdoors/snow/noblend/indoors
+	outdoors = FALSE
+
 /turf/simulated/floor/outdoors/ice
 	name = "ice"
 	icon_state = "ice"
 	desc = "Looks slippery."
+	edge_blending_priority = 0
 
 /turf/simulated/floor/outdoors/ice/Entered(var/mob/living/M)
 	. = ..()
@@ -61,6 +67,7 @@
 	icon_state = "ice"
 	desc = "Looks slippery."
 	movement_cost = 4
+	edge_blending_priority = 0
 
 // Ice that is safe to walk on.
 /turf/simulated/floor/outdoors/safeice
@@ -68,6 +75,7 @@
 	icon_state = "ice"
 	desc = "Seems safe enough to walk on."
 	movement_cost = 2
+	edge_blending_priority = 0
 
 // Snowy gravel
 /turf/simulated/floor/outdoors/gravsnow
@@ -75,5 +83,6 @@
 	icon = 'icons/turf/snow_new.dmi'
 	icon_state = "gravsnow"
 	desc = "A layer of coarse ice pebbles and assorted gravel."
+	edge_blending_priority = 0
 	initial_flooring = /decl/flooring/snow/gravsnow
 	baseturfs = /turf/simulated/floor/outdoors/dirt

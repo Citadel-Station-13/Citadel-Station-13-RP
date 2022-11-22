@@ -8,10 +8,6 @@
 	subspace_transmission = 1
 	canhear_range = 0	// Can't hear headsets from very far away
 	slot_flags = SLOT_EARS
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/ears.dmi',
-		SPECIES_VOX = 'icons/mob/clothing/species/vox/ears.dmi'
-		)
 
 	var/translate_binary = 0
 	var/translate_hive = 0
@@ -54,10 +50,10 @@
 /obj/item/radio/headset/handle_message_mode(mob/living/M as mob, message, channel)
 	if (channel == "special")
 		if (translate_binary)
-			var/datum/language/binary = GLOB.all_languages["Robot Talk"]
+			var/datum/language/binary = SScharacters.resolve_language_id(LANGUAGE_ID_SILICON_BINARY)
 			binary.broadcast(M, message)
 		if (translate_hive)
-			var/datum/language/hivemind = GLOB.all_languages["Hivemind"]
+			var/datum/language/hivemind = SScharacters.resolve_language_name("Hivemind")
 			hivemind.broadcast(M, message)
 		return null
 
@@ -71,17 +67,6 @@
 		if(H.l_ear == src || H.r_ear == src)
 			return ..(freq, level)
 	return -1
-
-/obj/item/radio/headset/get_worn_icon_state(var/slot_id)
-	var/append = ""
-	if(icon_override)
-		switch(slot_id)
-			if(SLOT_ID_LEFT_EAR)
-				append = "_l"
-			if(SLOT_ID_RIGHT_EAR)
-				append = "_r"
-
-	return "[..()][append]"
 
 /obj/item/radio/headset/ui_state(mob/user)
 	return GLOB.inventory_state
@@ -391,7 +376,7 @@
 
 			recalculateChannels()
 			to_chat(user, "You pop out the encryption keys in the headset!")
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 
 		else
 			to_chat(user, "This headset doesn't have any encryption keys!  How useless...")
@@ -485,11 +470,6 @@
 	icon_state = "nt_headset"
 	centComm = 1
 	ks2type = /obj/item/encryptionkey/ert
-
-/obj/item/radio/headset
-	sprite_sheets = list(SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/ears.dmi',
-						SPECIES_WEREBEAST = 'icons/mob/clothing/species/werebeast/ears.dmi',
-						SPECIES_VOX = 'icons/mob/clothing/species/vox/ears.dmi')
 
 /obj/item/radio/headset/mob_headset	//Adminbus headset for simplemob shenanigans.
 	name = "nonhuman radio implant"

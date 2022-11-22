@@ -2,7 +2,7 @@
 #define HEAT_CAPACITY_HUMAN 100
 /obj/machinery/atmospherics/component/unary/cryo_cell
 	name = "cryo cell"
-	icon = 'icons/obj/cryogenics.dmi' // map only
+	icon = 'icons/obj/medical/cryogenics.dmi' // map only
 	icon_state = "pod_preview"
 	density = TRUE
 	anchored = TRUE
@@ -27,7 +27,7 @@
 /obj/machinery/atmospherics/component/unary/cryo_cell/Initialize(mapload)
 	. = ..()
 
-	icon = 'icons/obj/cryogenics_split.dmi'
+	icon = 'icons/obj/medical/cryogenics_split.dmi'
 	icon_state = "base"
 	initialize_directions = dir
 
@@ -274,8 +274,8 @@
 	if(!(occupant))
 		return
 	vis_contents -= occupant
-	occupant.pixel_x = occupant.default_pixel_x
-	occupant.pixel_y = occupant.default_pixel_y
+	occupant.pixel_x = occupant.base_pixel_x
+	occupant.pixel_y = occupant.base_pixel_y
 	occupant.forceMove(get_step(loc, SOUTH))	//this doesn't account for walls or anything, but i don't forsee that being a problem.
 	if(occupant.bodytemperature < 261 && occupant.bodytemperature >= 70) //Patch by Aranclanos to stop people from taking burn damage after being ejected
 		occupant.bodytemperature = 261									  // Changed to 70 from 140 by Zuhayr due to reoccurance of bug.

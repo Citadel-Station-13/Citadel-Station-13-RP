@@ -45,7 +45,7 @@
 	taser_kill = 0
 
 	mob_size = MOB_MINISCULE
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 //	can_pull_size = ITEMSIZE_TINY
 //	can_pull_mobs = MOB_PULL_NONE
 	layer = MOB_LAYER
@@ -62,8 +62,8 @@
 	//Mob melee settings
 	melee_damage_lower = 5
 	melee_damage_upper = 15
-	list/attacktext = list("attacked", "chomped", "gnawed on")
-	list/friendly = list("baps", "nuzzles")
+	attacktext = list("attacked", "chomped", "gnawed on")
+	friendly = list("baps", "nuzzles")
 	attack_armor_type = "melee"
 	attack_sharp = 1
 	attack_edge = 1
@@ -71,13 +71,14 @@
 	//Damage resistances
 	shock_resist = 1
 	armor = list(
-				"melee" = 30,
-				"bullet" = 20,
-				"laser" = 20,
-				"energy" = 10,
-				"bomb" = 10,
-				"bio" = 0,
-				"rad" = 0)	//Standard armor vest stats, slightly dropped due to scale.
+		"melee" = 30,
+		"bullet" = 20,
+		"laser" = 20,
+		"energy" = 10,
+		"bomb" = 10,
+		"bio" = 0,
+		"rad" = 0,
+	) // Standard armor vest stats, slightly dropped due to scale.
 
 	has_langs = list("Mouse")
 

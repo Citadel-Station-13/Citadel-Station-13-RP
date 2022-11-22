@@ -941,3 +941,52 @@
 /obj/random/empty_or_lootable_crate/item_to_spawn()
 	return pick(/obj/random/crate,
 			/obj/random/multiple/corp_crate)
+
+/obj/random/crystal
+	name = "random crystal"
+	desc = "Sometimes spawns a crystal, sometimes spawns nothing 40% of the time"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "crystal"
+	spawn_nothing_percentage = 40
+
+/obj/random/crystal/item_to_spawn()
+	return	/obj/machinery/crystal
+
+/obj/random/crystal/ice
+	name = "random ice crystal"
+	desc = "Sometimes spawns a crystal, sometimes spawns nothing 40% of the time. This time its an ice crystal"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "icecrystal2"
+	spawn_nothing_percentage = 40
+
+/obj/random/crystal/ice/item_to_spawn()
+	return	/obj/machinery/crystal/ice
+
+/obj/random/crystal/normal_ice
+	name = "random crystal, ice/normal"
+	desc = "Sometimes spawns a crystal, sometimes spawns nothing 40% of the time. 50/50 between ice and normal crystal spawning"
+	icon = 'icons/obj/mining.dmi'
+	icon_state = "crystal"
+	spawn_nothing_percentage = 40
+
+/obj/random/crystal/normal_ice/item_to_spawn()
+	return pick(/obj/machinery/crystal/ice,
+				/obj/machinery/crystal)
+
+/obj/random/snow_debris
+	name = "random snow and ice debri"
+	desc = "for all your cold needs and fun :)"
+	icon = 'icons/obj/snowman.dmi'
+	icon_state = "snowman"
+
+/obj/random/snow_debris/item_to_spawn()
+	return pick(prob(100);/obj/structure/flora/rock/ice,
+				prob(100);/obj/structure/flora/rock/ice/alternative_1,
+				prob(100);/obj/structure/flora/rock/ice/alternative_2,
+				prob(80);/obj/structure/flora/grass/both,
+				prob(60);/obj/structure/flora/bush,
+				prob(40);/obj/structure/flora/tree/dead,
+				prob(1);/obj/structure/snowman,
+				prob(1);/obj/structure/snowman/borg,
+				prob(1);/obj/structure/snowman/spider,
+				prob(1);/obj/machinery/crystal/ice)

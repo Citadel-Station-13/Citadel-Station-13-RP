@@ -1,4 +1,5 @@
 /datum/job/station/ai
+	id = JOB_ID_AI
 	title = "AI"
 	flag = AI
 	departments = list(DEPARTMENT_SYNTHETIC)
@@ -28,8 +29,13 @@
 		return 0
 	return 1
 
+/datum/job/station/ai/slots_remaining(latejoin)
+	if(latejoin)
+		return GLOB.empty_playable_ai_cores.len
+	return ..()
+
 /datum/job/station/ai/is_position_available()
-	return (empty_playable_ai_cores.len != 0)
+	return (GLOB.empty_playable_ai_cores.len != 0)
 
 /datum/job/station/ai/equip_preview(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/straight_jacket(H), SLOT_ID_SUIT)

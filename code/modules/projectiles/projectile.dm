@@ -9,7 +9,7 @@
 	density = FALSE
 	anchored = TRUE
 	unacidable = TRUE
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	mouse_opacity = 0
 
 	////TG PROJECTILE SYTSEM
@@ -237,7 +237,7 @@
 	if(AM.is_incorporeal())
 		return
 	..()
-	if(isliving(AM) && !(pass_flags & PASSMOB))
+	if(isliving(AM) && !check_pass_flags(ATOM_PASS_MOB))
 		var/mob/living/L = AM
 		if(can_hit_target(L, permutated, (AM == original)))
 			Bump(AM)
@@ -353,7 +353,7 @@
 	if(.)
 		if(temporary_unstoppable_movement)
 			temporary_unstoppable_movement = FALSE
-			DISABLE_BITFIELD(movement_type, UNSTOPPABLE)
+			movement_type &= ~UNSTOPPABLE
 		if(fired && can_hit_target(original, permutated, TRUE))
 			Bump(original)
 
@@ -430,9 +430,8 @@
 		var/y = text2num(screen_loc_Y[1]) * 32 + text2num(screen_loc_Y[2]) - 32
 
 		//Calculate the "resolution" of screen based on client's view and world's icon size. This will work if the user can view more tiles than average.
-		var/list/screenview = user.client? getviewsize(user.client.view) : world.view
-		var/screenviewX = screenview[1] * world.icon_size
-		var/screenviewY = screenview[2] * world.icon_size
+		var/screenviewX = user.client.current_viewport_width * world.icon_size
+		var/screenviewY = user.client.current_viewport_height * world.icon_size
 
 		var/ox = round(screenviewX/2) - user.client.pixel_x //"origin" x
 		var/oy = round(screenviewY/2) - user.client.pixel_y //"origin" y

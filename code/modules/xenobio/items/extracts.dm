@@ -6,7 +6,7 @@
 	icon_state = "grey slime extract"
 	force = 1
 	w_class = ITEMSIZE_TINY
-	throwforce = 0
+	throw_force = 0
 	throw_speed = 3
 	throw_range = 6
 	origin_tech = list(TECH_BIO = 4)
@@ -140,7 +140,7 @@
 /obj/item/reagent_containers/glass/bottle/metamorphic
 	name = "Metamorphic Metal Bottle"
 	desc = "A small bottle. Contains some really weird liquid metal."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle-4"
 	prefill = list("metamorphic" = 60)
 
@@ -211,7 +211,7 @@
 /obj/item/reagent_containers/glass/bottle/binding
 	name = "Binding Metal Bottle"
 	desc = "A small bottle. Contains some really weird liquid metal."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle-4"
 	prefill = list("binding" = 60)
 
@@ -526,7 +526,7 @@
 	var/datum/gas_mixture/env = T.return_air()
 	if(env)
 		// This is most likely physically impossible but when has that stopped slimes before?
-		env.add_thermal_energy(-10 * 1000 * 1000) // For a moderately sized room this doesn't actually lower it that much.
+		env.adjust_thermal_energy(-10 * 1000 * 1000) // For a moderately sized room this doesn't actually lower it that much.
 
 	playsound(T, 'sound/effects/phasein.ogg', 75, 1)
 
@@ -677,7 +677,7 @@
 /obj/item/slime_extract/oil
 	name = "oil slime extract"
 	icon_state = "oil slime extract"
-	description_info = "This extract cause a moderately sized delayed explosion if injected with phoron.  The delay is five seconds.  Extract enhancers will \
+	description_info = "This extract cause a moderately sized delayed explosion if injected with blood.  The delay is five seconds.  Extract enhancers will \
 	increase the power of the explosion instead of allowing for multiple explosions."
 
 

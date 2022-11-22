@@ -33,7 +33,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 //  update_bloodied()	//Handles adding/clearing the blood overlays for hands & feet.  Call when bloodied or cleaned.
 //  update_underwear()	//Handles updating the sprite for underwear.
 //  update_hair()		//Handles updating your hair and eyes overlay
-//  update_mutations()	//Handles updating your appearance for certain mutations.  e.g TK head-glows
+//  update_mutations()	//Handles updating your appearance for certain mutations.  e.g MUTATION_TELEKINESIS head-glows
 //  update_fire()		//Handles overlay from being on fire.
 //  update_water()		//Handles overlay from being submerged.
 //  update_surgery()	//Handles overlays from open external organs.
@@ -55,79 +55,6 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(I)
 		cut_overlay(I)
 		overlays_standing[cache_index] = null
-
-// These are used as the layers for the icons, as well as indexes in a list that holds onto them.
-// Technically the layers used are all -100+layer to make them FLOAT_LAYER overlays.
-//Human Overlays Indexes/////////
-/// Mutations like fat, and lasereyes
-#define MUTATIONS_LAYER			1
-/// Skin things added by a call on species
-#define SKIN_LAYER				2
-/// Bloodied hands/feet/anything else
-#define BLOOD_LAYER				3
-/// Injury overlay sprites like open wounds
-#define DAMAGE_LAYER			4
-/// Overlays for open surgical sites
-#define SURGERY_LAYER			5
-/// Underwear/bras/etc
-#define UNDERWEAR_LAYER  		6
-/// Shoe-slot item (when set to be under uniform via verb)
-#define SHOES_LAYER_ALT			7
-/// Uniform-slot item
-#define UNIFORM_LAYER			8
-/// ID-slot item
-#define ID_LAYER				9
-/// Shoe-slot item
-#define SHOES_LAYER				10
-/// Glove-slot item
-#define GLOVES_LAYER			11
-/// Belt-slot item
-#define BELT_LAYER				12
-/// Suit-slot item
-#define SUIT_LAYER				13
-/// Some species have tails to render
-#define TAIL_LAYER				14
-/// Eye-slot item
-#define GLASSES_LAYER			15
-/// Belt-slot item (when set to be above suit via verb)
-#define BELT_LAYER_ALT			16
-/// Suit storage-slot item
-#define SUIT_STORE_LAYER		17
-/// Back-slot item
-#define BACK_LAYER				18
-/// The human's hair
-#define HAIR_LAYER				19
-/// Both ear-slot items (combined image)
-#define EARS_LAYER				20
-/// Mob's eyes (used for glowing eyes)
-#define EYES_LAYER				21
-/// Mask-slot item
-#define FACEMASK_LAYER			22
-/// Head-slot item
-#define HEAD_LAYER				23
-/// Handcuffs, if the human is handcuffed, in a secret inv slot
-#define HANDCUFF_LAYER			24
-/// Same as handcuffs, for legcuffs
-#define LEGCUFF_LAYER			25
-/// Left-hand item
-#define L_HAND_LAYER			26
-/// Right-hand item
-#define R_HAND_LAYER			27
-/// Wing overlay layer.
-#define WING_LAYER				28
-/// Tail alt. overlay layer for fixing overlay issues.
-#define TAIL_LAYER_ALT			29
-/// Effects drawn by modifiers
-#define MODIFIER_EFFECTS_LAYER	30
-/// 'Mob on fire' overlay layer
-#define FIRE_LAYER				31
-/// 'Mob submerged' overlay layer
-#define MOB_WATER_LAYER			32
-/// 'Aimed at' overlay layer
-#define TARGETED_LAYER			33
-//! KEEP THIS UPDATED, should always equal the highest number here, used to initialize a list.
-#define TOTAL_LAYERS			33
-//////////////////////////////////
 
 /mob/living/carbon/human
 	var/list/overlays_standing[TOTAL_LAYERS]
@@ -155,8 +82,9 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 /mob/living/carbon/human/update_transform()
 	var/desired_scale_x = size_multiplier * icon_scale_x
 	var/desired_scale_y = size_multiplier * icon_scale_y
-	desired_scale_x *= species.icon_scale_x
-	desired_scale_y *= species.icon_scale_y
+	if(istype(species))
+		desired_scale_x *= species.icon_scale_x
+		desired_scale_y *= species.icon_scale_y
 
 	var/matrix/M = matrix()
 	var/anim_time = 3
@@ -236,10 +164,10 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	var/husk_color_mod = rgb(96,88,80)
 	var/hulk_color_mod = rgb(48,224,40)
 
-	var/husk = (HUSK in src.mutations)
-	var/fat = (FAT in src.mutations)
-	var/hulk = (HULK in src.mutations)
-	var/skeleton = (SKELETON in src.mutations)
+	var/husk = (MUTATION_HUSK in src.mutations)
+	var/fat = (MUTATION_FAT in src.mutations)
+	var/hulk = (MUTATION_HULK in src.mutations)
+	var/skeleton = (MUTATION_SKELETON in src.mutations)
 
 	robolimb_count = 0 //TODO, here, really tho?
 	robobody_count = 0
@@ -286,6 +214,8 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 				icon_key += "[rgb(part.s_col[1],part.s_col[2],part.s_col[3])]"
 			if(part.body_hair && part.h_col && part.h_col.len >= 3)
 				icon_key += "[rgb(part.h_col[1],part.h_col[2],part.h_col[3])]"
+				if(species.color_force_greyscale)
+					icon_key += "_ags"
 				if(species.color_mult)
 					icon_key += "[ICON_MULTIPLY]"
 				else
@@ -502,6 +432,14 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		apply_layer(HAIR_LAYER)
 		return
 
+	var/icon/horns_s = get_horns_overlay()
+	if(horns_s)
+		face_standing.Blend(horns_s, ICON_OVERLAY)
+	if(istype(head_organ,/obj/item/organ/external/head/vr))
+		var/obj/item/organ/external/head/vr/head_organ_vr = head_organ
+		overlays_standing[HAIR_LAYER] = image(face_standing, layer = BODY_LAYER+HAIR_LAYER, "pixel_y" = head_organ_vr.head_offset)
+		apply_layer(HAIR_LAYER)
+		return
 
 	if(head_organ.transparent)
 		face_standing += rgb(,,,120)
@@ -563,7 +501,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	//TODO: THIS PROC???
 	var/fat
-	if(FAT in mutations)
+	if(MUTATION_FAT in mutations)
 		fat = "fat"
 
 	var/image/standing	= image(icon = 'icons/effects/genetics.dmi', layer = BODY_LAYER+MUTATIONS_LAYER)
@@ -578,7 +516,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 				standing.underlays += underlay
 
 	for(var/mut in mutations)
-		if(mut == LASER)
+		if(mut == MUTATION_LASER)
 			standing.overlays += "lasereyes_s" //TODO
 
 	overlays_standing[MUTATIONS_LAYER]	= standing
@@ -646,7 +584,16 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		var/obj/item/clothing/suit/S = wear_suit
 		if((wear_suit?.flags_inv & HIDETAIL) || (istype(S) && S.taurized)) // Reasons to not mask: 1. If you're wearing a suit that hides the tail or if you're wearing a taurized suit.
 			c_mask = null
-	overlays_standing[UNIFORM_LAYER] = w_uniform.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_UNIFORM, default_icon = INV_W_UNIFORM_DEF_ICON, default_layer = UNIFORM_LAYER, clip_mask = c_mask)
+	var/list/MA_or_list = w_uniform.render_mob_appearance(src, SLOT_ID_UNIFORM, species.get_effective_bodytype(src, w_uniform, SLOT_ID_UNIFORM))
+
+	if(c_mask)
+		if(islist(MA_or_list))
+			for(var/mutable_appearance/MA2 as anything in MA_or_list)
+				MA2.filters += filter(type = "alpha", icon = c_mask)
+		else
+			var/mutable_appearance/MA = MA_or_list
+			MA.filters += filter(type = "alpha", icon = c_mask)
+	overlays_standing[UNIFORM_LAYER] = MA_or_list
 
 	apply_layer(UNIFORM_LAYER)
 
@@ -663,7 +610,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(w_uniform && istype(w_uniform, /obj/item/clothing/under))
 		var/obj/item/clothing/under/U = w_uniform
 		if(U.displays_id)
-			overlays_standing[ID_LAYER] = wear_id.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_WORN_ID, default_icon = INV_WEAR_ID_DEF_ICON, default_layer = ID_LAYER)
+			overlays_standing[ID_LAYER] = wear_id.render_mob_appearance(src, SLOT_ID_WORN_ID, species.get_effective_bodytype(src, wear_id, SLOT_ID_WORN_ID))
 
 	apply_layer(ID_LAYER)
 
@@ -676,7 +623,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!gloves)
 		return //No gloves, no reason to be here.
 
-	overlays_standing[GLOVES_LAYER]	= gloves.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_GLOVES, default_icon = INV_GLOVES_DEF_ICON, default_layer = GLOVES_LAYER)
+	overlays_standing[GLOVES_LAYER]	= gloves.render_mob_appearance(src, SLOT_ID_GLOVES, species.get_effective_bodytype(src, gloves, SLOT_ID_GLOVES))
 
 	apply_layer(GLOVES_LAYER)
 
@@ -689,7 +636,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!glasses)
 		return //Not wearing glasses, no need to update anything.
 
-	overlays_standing[GLASSES_LAYER] = glasses.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_GLOVES, default_icon = INV_EYES_DEF_ICON, default_layer = GLASSES_LAYER)
+	overlays_standing[GLASSES_LAYER] = glasses.render_mob_appearance(src, SLOT_ID_GLASSES, species.get_effective_bodytype(src, glasses, SLOT_ID_GLASSES))
 
 	apply_layer(GLASSES_LAYER)
 
@@ -706,15 +653,11 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		return //Why bother, if no ear sprites
 
 	// Blank image upon which to layer left & right overlays.
-	var/image/both = image(icon = 'icons/effects/effects.dmi', icon_state = "nothing", layer = BODY_LAYER+EARS_LAYER)
-
+	var/list/mutable_appearance/both = list()
 	if(l_ear)
-		var/image/standing = l_ear.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_LEFT_EAR, default_icon = INV_EARS_DEF_ICON, default_layer = EARS_LAYER)
-		both.add_overlay(standing)
-
+		both += l_ear.render_mob_appearance(src, SLOT_ID_LEFT_EAR, species.get_effective_bodytype(src, l_ear, SLOT_ID_LEFT_EAR))
 	if(r_ear)
-		var/image/standing = r_ear.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_RIGHT_EAR, default_icon = INV_EARS_DEF_ICON, default_layer = EARS_LAYER)
-		both.add_overlay(standing)
+		both += r_ear.render_mob_appearance(src, SLOT_ID_RIGHT_EAR, species.get_effective_bodytype(src, r_ear, SLOT_ID_RIGHT_EAR))
 
 	overlays_standing[EARS_LAYER] = both
 	apply_layer(EARS_LAYER)
@@ -742,7 +685,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			shoe_layer = SHOES_LAYER_ALT
 
 	//NB: the use of a var for the layer on this one
-	overlays_standing[shoe_layer] = shoes.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_SHOES, default_icon = INV_FEET_DEF_ICON, default_layer = shoe_layer)
+	overlays_standing[shoe_layer] = shoes.render_mob_appearance(src, SLOT_ID_SHOES, species.get_effective_bodytype(src, shoes, SLOT_ID_SHOES))
 
 	apply_layer(SHOES_LAYER)
 	apply_layer(SHOES_LAYER_ALT)
@@ -774,7 +717,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!head)
 		return //No head item, why bother.
 
-	overlays_standing[HEAD_LAYER] = head.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_HEAD, default_icon = INV_HEAD_DEF_ICON, default_layer = HEAD_LAYER)
+	overlays_standing[HEAD_LAYER] = head.render_mob_appearance(src, SLOT_ID_HEAD, species.get_effective_bodytype(src, head, SLOT_ID_HEAD))
 
 	apply_layer(HEAD_LAYER)
 
@@ -796,7 +739,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 			belt_layer = BELT_LAYER_ALT
 
 	//NB: this uses a var from above
-	overlays_standing[belt_layer] = belt.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_BELT, default_icon = INV_BELT_DEF_ICON, default_layer = belt_layer)
+	overlays_standing[belt_layer] = belt.render_mob_appearance(src, SLOT_ID_BELT, species.get_effective_bodytype(src, belt, SLOT_ID_BELT))
 
 	apply_layer(belt_layer)
 
@@ -816,20 +759,23 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		return //No point, no suit.
 
 	// Part of splitting the suit sprites up
-	var/iconFile = INV_SUIT_DEF_ICON
-	var/obj/item/clothing/suit/S
-	if(istype(wear_suit, /obj/item/clothing/suit))
-		S = wear_suit
-		if(S.update_icon_define)
-			iconFile = S.update_icon_define
 
 	var/icon/c_mask = null
 	var/tail_is_rendered = (overlays_standing[TAIL_LAYER] || overlays_standing[TAIL_LAYER_ALT])
 	var/valid_clip_mask = tail_style?.clip_mask
 
+	var/obj/item/clothing/suit/S = wear_suit
 	if(tail_is_rendered && valid_clip_mask && !(istype(S) && S.taurized)) //Clip the lower half of the suit off using the tail's clip mask for taurs since taur bodies aren't hidden.
 		c_mask = valid_clip_mask
-	overlays_standing[SUIT_LAYER] = wear_suit.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_SUIT, default_icon = iconFile, default_layer = SUIT_LAYER, clip_mask = c_mask)
+	var/list/MA_or_list = wear_suit.render_mob_appearance(src, SLOT_ID_SUIT, species.get_effective_bodytype(src, wear_suit, SLOT_ID_SUIT))
+	if(c_mask)
+		if(islist(MA_or_list))
+			for(var/mutable_appearance/MA2 as anything in MA_or_list)
+				MA2.filters += filter(type = "alpha", icon = c_mask)
+		else
+			var/mutable_appearance/MA = MA_or_list
+			MA.filters += filter(type = "alpha", icon = c_mask)
+	overlays_standing[SUIT_LAYER] = MA_or_list
 
 	apply_layer(SUIT_LAYER)
 
@@ -842,7 +788,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!wear_mask || (head && head.flags_inv & HIDEMASK))
 		return //Why bother, nothing in mask slot.
 
-	overlays_standing[FACEMASK_LAYER] = wear_mask.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_MASK, default_icon = INV_MASK_DEF_ICON, default_layer = FACEMASK_LAYER)
+	overlays_standing[FACEMASK_LAYER] = wear_mask.render_mob_appearance(src, SLOT_ID_MASK, species.get_effective_bodytype(src, wear_mask, SLOT_ID_MASK))
 
 	apply_layer(FACEMASK_LAYER)
 
@@ -855,7 +801,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!back)
 		return //Why do anything
 
-	overlays_standing[BACK_LAYER] = back.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_BACK, default_icon = INV_BACK_DEF_ICON, default_layer = BACK_LAYER)
+	overlays_standing[BACK_LAYER] = back.render_mob_appearance(src, SLOT_ID_BACK, species.get_effective_bodytype(src, back, SLOT_ID_BACK))
 
 	apply_layer(BACK_LAYER)
 
@@ -863,11 +809,14 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 /mob/living/carbon/human/update_hud()	//TODO: do away with this if possible
 	if(QDESTROYING(src))
 		return
-
+	// todo: this is utterly shitcode and fucking stupid ~silicons
+	// todo: the rest of hud code here ain't much better LOL
+	var/list/obj/item/relevant = get_equipped_items(TRUE, TRUE)
+	if(hud_used)
+		for(var/obj/item/I as anything in relevant)
+			position_hud_item(I, slot_by_item(I))
 	if(client)
-		client.screen |= contents
-		if(hud_used)
-			hud_used.hidden_inventory_update() 	//Updates the screenloc of the items on the 'other' inventory bar
+		client.screen |= relevant
 
 //update whether handcuffs appears on our hud.
 /mob/living/carbon/proc/update_hud_handcuffed()
@@ -878,7 +827,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		hud_used.l_hand_hud_object.update_icon()
 		hud_used.r_hand_hud_object.update_icon()
 
-/mob/living/carbon/human/update_handcuffed()
+/mob/living/carbon/human/update_inv_handcuffed()
 	if(QDESTROYING(src))
 		return
 
@@ -888,7 +837,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!handcuffed)
 		return //Not cuffed, why bother
 
-	overlays_standing[HANDCUFF_LAYER] = handcuffed.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_HANDCUFFED, default_icon = INV_HCUFF_DEF_ICON, default_layer = HANDCUFF_LAYER)
+	overlays_standing[HANDCUFF_LAYER] = handcuffed.render_mob_appearance(src, SLOT_ID_HANDCUFFED, species.get_effective_bodytype(src, handcuffed, SLOT_ID_HANDCUFFED))
 
 	apply_layer(HANDCUFF_LAYER)
 
@@ -901,7 +850,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!legcuffed)
 		return //Not legcuffed, why bother.
 
-	overlays_standing[LEGCUFF_LAYER] = legcuffed.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), slot_id = SLOT_ID_LEGCUFFED, default_icon = INV_LCUFF_DEF_ICON, default_layer = LEGCUFF_LAYER)
+	overlays_standing[LEGCUFF_LAYER] = legcuffed.render_mob_appearance(src, SLOT_ID_LEGCUFFED, species.get_effective_bodytype(src, legcuffed, SLOT_ID_LEGCUFFED))
 
 	apply_layer(LEGCUFF_LAYER)
 
@@ -914,7 +863,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!r_hand)
 		return //No hand, no bother.
 
-	overlays_standing[R_HAND_LAYER] = r_hand.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), inhands = TRUE, slot_id = slot_r_hand_str, default_icon = INV_R_HAND_DEF_ICON, default_layer = R_HAND_LAYER)
+	overlays_standing[R_HAND_LAYER] = r_hand.render_mob_appearance(src, 2, BODYTYPE_DEFAULT)
 
 	apply_layer(R_HAND_LAYER)
 
@@ -927,7 +876,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!l_hand)
 		return //No hand, no bother.
 
-	overlays_standing[L_HAND_LAYER] = l_hand.make_worn_icon(body_type = species.get_worn_legacy_bodytype(src), inhands = TRUE, slot_id = slot_l_hand_str, default_icon = INV_L_HAND_DEF_ICON, default_layer = L_HAND_LAYER)
+	overlays_standing[L_HAND_LAYER] = l_hand.render_mob_appearance(src, 1, BODYTYPE_DEFAULT)
 
 	apply_layer(L_HAND_LAYER)
 
@@ -940,13 +889,23 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
 
-	var/image/vr_tail_image = get_tail_image()
-	if(vr_tail_image)
-		vr_tail_image.layer = BODY_LAYER+used_tail_layer
-		overlays_standing[used_tail_layer] = vr_tail_image
+	var/list/image/tail_images = list()
+
+	var/image/rendering
+	rendering = get_tail_image(TRUE)
+	if(rendering)
+		rendering.layer = BODY_LAYER + used_tail_layer
+		tail_images += rendering
+
+	if(tail_style?.front_behind_system)
+		rendering = get_tail_image(FALSE)
+		rendering.layer = BODY_LAYER - used_tail_layer
+		tail_images += rendering
+
+	if(length(tail_images))
+		overlays_standing[used_tail_layer] = tail_images
 		apply_layer(used_tail_layer)
 		return
-
 
 	var/species_tail = species.get_tail(src) // Species tail icon_state prefix.
 
@@ -963,14 +922,18 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	if(!tail_icon)
 		//generate a new one
 		var/species_tail_anim = species.get_tail_animation(src)
-		if(!species_tail_anim && species.icobase_tail) species_tail_anim = species.icobase // Allow override of file for non-animated tails
-		if(!species_tail_anim) species_tail_anim = 'icons/effects/species.dmi'
+		if(!species_tail_anim && species.icobase_tail)
+			species_tail_anim = species.icobase // Allow override of file for non-animated tails
+		if(!species_tail_anim)
+			species_tail_anim = 'icons/effects/species.dmi'
 		tail_icon = new/icon(species_tail_anim)
 		tail_icon.Blend(rgb(r_skin, g_skin, b_skin), species.color_mult ? ICON_MULTIPLY : ICON_ADD)
 		// The following will not work with animated tails.
 		var/use_species_tail = species.get_tail_hair(src)
 		if(use_species_tail)
 			var/icon/hair_icon = icon('icons/effects/species.dmi', "[species.get_tail(src)]_[use_species_tail]_s") // Suffix icon state string with '_s' to compensate for diff in .dmi b/w us & Polaris. //TODO: No.
+			if(species.color_force_greyscale)
+				hair_icon.MapColors(arglist(color_matrix_greyscale()))
 			hair_icon.Blend(rgb(r_hair, g_hair, b_hair), species.color_mult ? ICON_MULTIPLY : ICON_ADD) // Check for species color_mult
 			tail_icon.Blend(hair_icon, ICON_OVERLAY)
 		GLOB.tail_icon_cache[icon_key] = tail_icon
@@ -979,16 +942,24 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 /mob/living/carbon/human/proc/set_tail_state(var/t_state)
 	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
-	var/image/tail_overlay = overlays_standing[used_tail_layer]
+	var/list/image/tail_overlays = overlays_standing[used_tail_layer]
 
 	remove_layer(TAIL_LAYER)
 	remove_layer(TAIL_LAYER_ALT)
 
-	if(tail_overlay)
-		overlays_standing[used_tail_layer] = tail_overlay
+	if(!tail_overlays)
+		return
+	if(islist(tail_overlays))
+		for(var/image/tail_overlay as anything in tail_overlays)
+			if(species.get_tail_animation(src))
+				tail_overlay.icon_state = t_state
+		overlays_standing[used_tail_layer] = tail_overlays
+	else
+		var/image/tail_overlay = tail_overlays
 		if(species.get_tail_animation(src))
 			tail_overlay.icon_state = t_state
 			. = tail_overlay
+		overlays_standing[used_tail_layer] = tail_overlay
 
 	apply_layer(used_tail_layer)
 
@@ -1204,7 +1175,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 				qdel(overlay)
 
 		if(wing_style.center)
-			center_image(wing_style, wing_style.dimension_x, wing_style.dimension_y)
+			center_appearance(wing_s, wing_style.dimension_x, wing_style.dimension_y)
 		return image(wing_s, "pixel_x" = -16)
 
 // TODO - Move this to where it should go ~Leshana
@@ -1224,37 +1195,3 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	ret.color = color
 	ret.appearance_flags = (PIXEL_SCALE) | flags
 	return ret
-
-
-//Human Overlays Indexes/////////
-#undef MUTATIONS_LAYER
-#undef SKIN_LAYER
-#undef DAMAGE_LAYER
-#undef SURGERY_LAYER
-#undef UNDERWEAR_LAYER
-#undef SHOES_LAYER_ALT
-#undef UNIFORM_LAYER
-#undef ID_LAYER
-#undef SHOES_LAYER
-#undef GLOVES_LAYER
-#undef BELT_LAYER
-#undef SUIT_LAYER
-#undef TAIL_LAYER
-#undef GLASSES_LAYER
-#undef BELT_LAYER_ALT
-#undef SUIT_STORE_LAYER
-#undef BACK_LAYER
-#undef HAIR_LAYER
-#undef EARS_LAYER
-#undef EYES_LAYER
-#undef FACEMASK_LAYER
-#undef HEAD_LAYER
-#undef HANDCUFF_LAYER
-#undef LEGCUFF_LAYER
-#undef L_HAND_LAYER
-#undef R_HAND_LAYER
-#undef MODIFIER_EFFECTS_LAYER
-#undef FIRE_LAYER
-#undef MOB_WATER_LAYER
-#undef TARGETED_LAYER
-#undef TOTAL_LAYERS

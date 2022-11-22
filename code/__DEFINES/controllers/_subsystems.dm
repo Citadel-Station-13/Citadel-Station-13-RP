@@ -69,16 +69,19 @@ DEFINE_BITFIELD(runlevels, list(
 // Subsystems shutdown in the reverse of the order they initialize in
 // The numbers just define the ordering, they are meaningless otherwise.
 
+#define INIT_ORDER_PROTOTYPES		103
 #define INIT_ORDER_FAIL2TOPIC		102
 #define INIT_ORDER_DBCORE			101
 #define INIT_ORDER_INPUT			100
+#define INIT_ORDER_JOBS				99
+#define INIT_ORDER_CHARACTERS		98
 #define INIT_ORDER_SOUNDS			95
-#define INIT_ORDER_JOBS				85
 #define INIT_ORDER_VIS				80
 #define INIT_ORDER_GARBAGE			70
 #define INIT_ORDER_SERVER_MAINT		65
 #define INIT_ORDER_TIMER			60
 #define INIT_ORDER_INSTRUMENTS		50
+#define INIT_ORDER_EARLY_ASSETS		48
 #define INIT_ORDER_SQLITE			40
 #define INIT_ORDER_CHEMISTRY		35
 #define INIT_ORDER_SKYBOX			30
@@ -103,12 +106,12 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_XENOARCH			-20
 #define INIT_ORDER_CIRCUIT			-21
 #define INIT_ORDER_AI				-22
-#define INIT_ORDER_OPENSPACE		-50
 #define INIT_ORDER_PERSISTENCE		-95
 #define INIT_ORDER_PATH				-98
 #define INIT_ORDER_ICON_SMOOTHING	-99
 ///Should be last to ensure chat remains smooth during init.
 #define INIT_ORDER_CHAT				-100
+#define INIT_ORDER_OPENSPACE		-110
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
 
@@ -133,36 +136,15 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_PLANETS		75
 #define FIRE_PRIORITY_INSTRUMENTS	90
 #define FIRE_PRIORITY_MACHINES		100
+#define FIRE_PRIORITY_ASSETS		105
 #define FIRE_PRIORITY_TGUI			110
 #define FIRE_PRIORITY_PROJECTILES	150
+#define FIRE_PRIORITY_THROWING		150
 #define FIRE_PRIORITY_CHAT			400
 #define FIRE_PRIORITY_OVERLAYS		500
 #define FIRE_PRIORITY_SMOOTHING		500
 #define FIRE_PRIORITY_TIMER			700
-///never drop input
-#define FIRE_PRIORITY_INPUT			1000
-///Compile all the overlays for an atom from the cache lists
-// |= on overlays is not actually guaranteed to not add same appearances but we're optimistically using it anyway.
-#define COMPILE_OVERLAYS(A)\
-	do {\
-		var/list/oo = A.our_overlays;\
-		var/list/po = A.priority_overlays;\
-		if(LAZYLEN(po)){\
-			if(LAZYLEN(oo)){\
-				A.overlays = oo + po;\
-			}\
-			else{\
-				A.overlays = po;\
-			}\
-		}\
-		else if(LAZYLEN(oo)){\
-			A.overlays = oo;\
-		}\
-		else{\
-			A.overlays.Cut();\
-		}\
-		A.flags &= ~OVERLAY_QUEUED;\
-	} while(FALSE)
+#define FIRE_PRIORITY_INPUT			1000 //! Never drop input
 
 /**
 	Create a new timer and add it to the queue.

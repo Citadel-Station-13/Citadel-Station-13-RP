@@ -76,24 +76,24 @@
 	//use up stored charges
 	if(charges >= 10)
 		charges -= 10
-		new /obj/effect/spider/eggcluster(pick(view(1,src)))
+		new /obj/effect/spider/eggcluster(pick(RANGE_TURFS(1, src)))
 
 	if(charges >= 3)
 		if(prob(5))
 			charges -= 1
 			var/spawn_type = pick(/mob/living/simple_mob/creature)
-			new spawn_type(pick(view(1,src)))
+			new spawn_type(pick(RANGE_TURFS(1, src)))
 			playsound(loc, pick('sound/hallucinations/growl1.ogg','sound/hallucinations/growl2.ogg','sound/hallucinations/growl3.ogg'), 50, 1, -3)
 
 	if(charges >= 1)
 		if(shadow_wights.len < 5 && prob(5))
-			shadow_wights.Add(new /obj/effect/shadow_wight(loc))
+			shadow_wights.Add(new /obj/effect/shadow_wight(get_turf(src)))
 			playsound(loc, 'sound/effects/ghost.ogg', 50, 1, -3)
 			charges -= 0.1
 
 	if(charges >= 0.1)
 		if(prob(5))
-			visible_message("<font color='red'>[icon2html(thing = src, target = world)] [src]'s eyes glow ruby red for a moment!</font>")
+			visible_message(SPAN_WARNING("[icon2html(thing = src, target = world)] [src]'s eyes glow ruby red for a moment!"))
 			charges -= 0.1
 
 	//check on our shadow wights

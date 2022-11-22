@@ -1,14 +1,18 @@
-// Because we can control each corner of every lighting object.
-// And corners get shared between multiple turfs (unless you're on the corners of the map, then 1 corner doesn't).
-// For the record: these should never ever ever be deleted, even if the turf doesn't have dynamic lighting.
-
+/**
+ * Because we can control each corner of every lighting object.
+ * And corners get shared between multiple turfs (unless you're on the corners of the map, then 1 corner doesn't).
+ * For the record: these should never ever ever be deleted, even if the turf doesn't have dynamic lighting.
+ */
 /datum/lighting_corner
 	var/turf/northeast
 	var/turf/northwest
 	var/turf/southeast
 	var/turf/southwest
-	var/list/datum/light_source/affecting // Light sources affecting us.
-	var/active                            = FALSE  // TRUE if one of our masters has dynamic lighting.
+
+	/// Light sources affecting us.
+	var/list/datum/light_source/affecting
+	/// TRUE if one of our masters has dynamic lighting.
+	var/active = FALSE
 
 	var/x     = 0
 	var/y     = 0
@@ -72,10 +76,15 @@
 		active = TRUE
 
 // God that was a mess, now to do the rest of the corner code! Hooray!
-/datum/lighting_corner/proc/update_lumcount(var/delta_r, var/delta_g, var/delta_b)
+/datum/lighting_corner/proc/update_lumcount(delta_r, delta_g, delta_b)
 
-	if ((abs(delta_r)+abs(delta_g)+abs(delta_b)) == 0)
+#ifdef VISUALIZE_LIGHT_UPDATES
+	if (!GLOB.allow_duped_values && !(delta_r || delta_g || delta_b)) // 0 is falsey ok
 		return
+#else
+	if (!(delta_r || delta_g || delta_b)) // 0 is falsey ok
+		return
+#endif
 
 	lum_r += delta_r
 	lum_g += delta_g
@@ -86,7 +95,7 @@
 		GLOB.lighting_update_corners += src
 
 /datum/lighting_corner/proc/update_objects()
-	// Cache these values a head of time so 4 individual lighting objects don't all calculate them individually.
+	// Cache these values ahead of time so 4 individual lighting objects don't all calculate them individually.
 	var/lum_r = src.lum_r
 	var/lum_g = src.lum_g
 	var/lum_b = src.lum_b
@@ -94,6 +103,10 @@
 	. = 1 // factor
 	if (mx > 1)
 		. = 1 / mx
+
+	var/old_r = cache_r
+	var/old_g = cache_g
+	var/old_b = cache_b
 
 	#if LIGHTING_SOFT_THRESHOLD != 0
 	else if (mx < LIGHTING_SOFT_THRESHOLD)
@@ -109,6 +122,14 @@
 	#endif
 	cache_mx = round(mx, LIGHTING_ROUND_VALUE)
 
+#ifdef VISUALIZE_LIGHT_UPDATES
+	if(!GLOB.allow_duped_corners && old_r == cache_r && old_g == cache_g && old_b == cache_b)
+		return
+#else
+	if(old_r == cache_r && old_g == cache_g && old_b == cache_b)
+		return
+#endif
+
 	#define QUEUE(turf) if(turf?.lighting_object && !turf.lighting_object.needs_update) { turf.lighting_object.needs_update = TRUE; GLOB.lighting_update_objects += turf.lighting_object }
 	QUEUE(northeast)
 	QUEUE(northwest)
@@ -120,7 +141,7 @@
 	return
 
 
-/datum/lighting_corner/Destroy(var/force)
+/datum/lighting_corner/Destroy(force)
 	if (!force)
 		return QDEL_HINT_LETMELIVE
 

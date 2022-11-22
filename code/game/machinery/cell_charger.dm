@@ -76,7 +76,7 @@
 
 		anchored = !anchored
 		to_chat(user, "You [anchored ? "attach" : "detach"] [src] [anchored ? "to" : "from"] the ground.")
-		playsound(src, W.usesound, 75, TRUE)
+		playsound(src, W.tool_sound, 75, TRUE)
 
 	else if(default_deconstruction_screwdriver(user, W))
 		return
@@ -142,8 +142,8 @@
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "box"
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_storage.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_storage.dmi',
 		)
 	item_state = "syringe_kit"
 	w_class = ITEMSIZE_NORMAL

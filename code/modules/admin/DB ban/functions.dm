@@ -1,6 +1,6 @@
 
 //Either pass the mob you wish to ban in the 'banned_mob' attribute, or the banckey, banip and bancid variables. If both are passed, the mob takes priority! If a mob is not passed, banckey is the minimum that needs to be passed! banip and bancid are optional.
-datum/admins/proc/DB_ban_record(var/bantype, var/mob/banned_mob, var/duration = -1, var/reason, var/job = "", var/rounds = 0, var/banckey = null, var/banip = null, var/bancid = null)
+/datum/admins/proc/DB_ban_record(bantype, mob/banned_mob, duration = -1, reason, job = "", rounds = 0, banckey = null, banip = null, bancid = null)
 
 	if(!check_rights(R_MOD,0) && !check_rights(R_BAN))	return
 
@@ -60,7 +60,7 @@ datum/admins/proc/DB_ban_record(var/bantype, var/mob/banned_mob, var/duration = 
 			who += ", [C]"
 
 	var/adminwho
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if(!adminwho)
 			adminwho = "[C]"
 		else
@@ -68,13 +68,17 @@ datum/admins/proc/DB_ban_record(var/bantype, var/mob/banned_mob, var/duration = 
 
 	reason = sql_sanitize_text(reason)
 
+	if(isnull(computerid))
+		computerid = ""
+	if(isnull(ip))
+		ip = ""
 	var/sql = "INSERT INTO [format_table_name("ban")] \
 	(`id`,`bantime`,`serverip`,`bantype`,`reason`,`job`,`duration`,`rounds`,`expiration_time`,`ckey`,`computerid`,`ip`,`a_ckey`,`a_computerid`,`a_ip`,`who`,`adminwho`,`edits`,`unbanned`,`unbanned_datetime`,`unbanned_ckey`,`unbanned_computerid`,`unbanned_ip`) \
-	VALUES (null, Now(), :ip, :type, :reason, :job, :duration, :rounds, Now() + INTERVAL :duration MINUTE, :ckey, :cid, :ip, :a_ckey, :a_cid, :a_ip, :who, :adminwho, '', null, null, null, null, null)"
+	VALUES (null, Now(), :serverip, :type, :reason, :job, :duration, :rounds, Now() + INTERVAL :duration MINUTE, :ckey, :cid, :ip, :a_ckey, :a_cid, :a_ip, :who, :adminwho, '', null, null, null, null, null)"
 	SSdbcore.RunQuery(
 		sql,
 		list(
-			"ip" = serverip,
+			"serverip" = serverip,
 			"type" = bantype_str,
 			"reason" = reason,
 			"job" = job,
@@ -95,9 +99,10 @@ datum/admins/proc/DB_ban_record(var/bantype, var/mob/banned_mob, var/duration = 
 
 
 
-datum/admins/proc/DB_ban_unban(var/ckey, var/bantype, var/job = "")
+/datum/admins/proc/DB_ban_unban(ckey, bantype, job = "")
 
-	if(!check_rights(R_BAN))	return
+	if(!check_rights(R_BAN))
+		return
 
 	var/bantype_str
 	if(bantype)
@@ -163,9 +168,10 @@ datum/admins/proc/DB_ban_unban(var/ckey, var/bantype, var/job = "")
 
 	DB_ban_unban_by_id(ban_id)
 
-datum/admins/proc/DB_ban_edit(var/banid = null, var/param = null)
+/datum/admins/proc/DB_ban_edit(banid = null, param = null)
 
-	if(!check_rights(R_BAN))	return
+	if(!check_rights(R_BAN))
+		return
 
 	if(!isnum(banid) || !istext(param))
 		to_chat(usr, "Cancelled")
@@ -404,24 +410,33 @@ datum/admins/proc/DB_ban_edit(var/banid = null, var/param = null)
 			var/cidsearch = ""
 			var/bantypesearch = ""
 
+			var/list/search_params = list()
 			if(!match)
 				if(adminckey)
 					adminsearch = "AND a_ckey = :a_ckey "
+					search_params["a_ckey"] = "[adminckey]"
 				if(playerckey)
 					playersearch = "AND ckey = :ckey "
+					search_params["ckey"] = "[playerckey]"
 				if(playerip)
 					ipsearch  = "AND ip = :ip "
+					search_params["ip"] = "[playerip]"
 				if(playercid)
 					cidsearch  = "AND computerid = :cid "
+					search_params["cid"] = "[playercid]"
 			else
 				if(adminckey && length(adminckey) >= 3)
-					adminsearch = "AND a_ckey LIKE ':a_ckey%' "
+					adminsearch = "AND a_ckey LIKE :a_ckey "
+					search_params["a_ckey"] = "[adminckey]%"
 				if(playerckey && length(playerckey) >= 3)
-					playersearch = "AND ckey LIKE ':ckey%' "
+					playersearch = "AND ckey LIKE :ckey "
+					search_params["ckey"] = "[playerckey]%"
 				if(playerip && length(playerip) >= 3)
-					ipsearch  = "AND ip LIKE ':ip%' "
+					ipsearch  = "AND ip LIKE :ip "
+					search_params["ip"] = "[playerip]%"
 				if(playercid && length(playercid) >= 7)
-					cidsearch  = "AND computerid LIKE ':cid%' "
+					cidsearch  = "AND computerid LIKE :cid "
+					search_params["cid"] = "[playercid]%"
 
 			if(dbbantype)
 				bantypesearch = "AND bantype = "
@@ -440,12 +455,7 @@ datum/admins/proc/DB_ban_edit(var/banid = null, var/param = null)
 				"SELECT id, bantime, bantype, reason, job, duration, expiration_time, ckey, a_ckey, unbanned, unbanned_ckey, unbanned_datetime, edits, ip, computerid \
 				FROM [format_table_name("ban")] \
 				WHERE 1 [playersearch] [adminsearch] [ipsearch] [cidsearch] [bantypesearch] ORDER BY bantime DESC LIMIT 100",
-				list(
-					"a_ckey" = adminckey,
-					"ckey" = playerckey,
-					"ip" = playerip,
-					"cid" = playercid
-				)
+				search_params
 			)
 
 			var/now = time2text(world.realtime, "YYYY-MM-DD hh:mm:ss") // MUST BE the same format as SQL gives us the dates in, and MUST be least to most specific (i.e. year, month, day not day, month, year)

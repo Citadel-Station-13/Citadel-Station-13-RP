@@ -35,9 +35,9 @@
 /// From base of [/atom/update_icon]: ()
 #define COMSIG_ATOM_UPDATE_ICON "atom_update_icon"
 	///? If returned from [COMSIG_ATOM_UPDATE_ICON] it prevents the atom from updating its icon state.
-	////#define COMSIG_ATOM_NO_UPDATE_ICON_STATE UPDATE_ICON_STATE
+	#define COMSIG_ATOM_NO_UPDATE_ICON_STATE UPDATE_ICON_STATE
 	///? If returned from [COMSIG_ATOM_UPDATE_ICON] it prevents the atom from updating its overlays.
-	////#define COMSIG_ATOM_NO_UPDATE_OVERLAYS UPDATE_OVERLAYS
+	#define COMSIG_ATOM_NO_UPDATE_OVERLAYS UPDATE_OVERLAYS
 /// From base of [atom/update_icon_state]: ()
 #define COMSIG_ATOM_UPDATE_ICON_STATE "atom_update_icon_state"
 /// From base of [/atom/update_overlays]: (list/new_overlays)
@@ -61,10 +61,6 @@
 ////#define COMSIG_ATOM_CONTENTS_DEL "atom_contents_del"
 /// From base of atom/has_gravity(): (turf/location, list/forced_gravities)
 ////#define COMSIG_ATOM_HAS_GRAVITY "atom_has_gravity"
-/// From internal loop in atom/movable/proc/CanReach(): (list/next)
-////#define COMSIG_ATOM_CANREACH "atom_can_reach"
-	////#define COMPONENT_ALLOW_REACH (1<<0)
-	////#define COMPONENT_BLOCK_REACH (1<<1)
 /// For when an atom has been created through processing (atom/original_atom, list/chosen_processing_option)
 ////#define COMSIG_ATOM_CREATEDBY_PROCESSING "atom_createdby_processing"
 /// When an atom is processed (mob/living/user, obj/item/I, list/atom/results)

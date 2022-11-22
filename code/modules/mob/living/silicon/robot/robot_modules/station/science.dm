@@ -13,8 +13,10 @@
 					"Insekt" = "insekt-Sci",
 					"L3P1-D0T" = "Glitterfly-Research",
 					"Coffsearch" = "coffin-Research",
-					"X-88" = "xeightyeight-science"
-
+					"X-88" = "xeightyeight-science",
+					"Acheron" = "mechoid-Science",
+					"ZOOM-BA" = "zoomba-research",
+					"W02M" = "worm-engineering"
 					)
 
 /obj/item/robot_module/robot/research/Initialize(mapload)
@@ -68,16 +70,17 @@
 
 	..()
 
-/obj/item/robot_module/robot/science
-	name = "Research Hound Module"
+/obj/item/robot_module/robot/quad_sci
+	name = "SciQuad Module"
 	sprites = list(
 					"Research Hound" = "science",
-					"Borgi" = "borgi-sci"
+					"Borgi" = "borgi-sci",
+					"F3-LINE" = "FELI-Research"
 					)
 	channels = list("Science" = 1)
 	can_be_pushed = 0
 
-/obj/item/robot_module/robot/science/Initialize(mapload)
+/obj/item/robot_module/robot/quad_sci/Initialize(mapload)
 	. = ..()
 	var/mob/living/silicon/robot/R = loc
 	src.modules += new /obj/item/portable_destructive_analyzer(src)
@@ -135,16 +138,12 @@
 	C.synths = list(wire)
 	src.modules += C
 
-	R.icon 		 = 'icons/mob/widerobot_vr.dmi'
-	R.hands.icon = 'icons/mob/screen1_robot_vr.dmi'
-	R.ui_style_vr = TRUE
-	R.pixel_x 	 = -16
-	R.old_x 	 = -16
-	R.default_pixel_x = -16
+	R.icon = 'icons/mob/robots_wide.dmi'
+	R.set_base_pixel_x(-16)
 	R.dogborg = TRUE
 	R.wideborg = TRUE
+	R.icon_dimension_x = 64
 	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
-	R.verbs |= /mob/living/silicon/robot/proc/robot_mount
 	R.verbs |= /mob/living/proc/shred_limb
 	R.verbs |= /mob/living/silicon/robot/proc/rest_style
 

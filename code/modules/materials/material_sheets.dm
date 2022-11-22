@@ -1,15 +1,15 @@
 // Stacked resources. They use a material datum for a lot of inherited values.
 // If you're adding something here, make sure to add it to fifty_spawner_mats.dm as well
 /obj/item/stack/material
-	force = 5.0
-	throwforce = 5
+	force = 5
+	throw_force = 5
 	w_class = ITEMSIZE_NORMAL
 	throw_speed = 3
 	throw_range = 3
 	max_amount = 50
 	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_material.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_material.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_material.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 		)
 
 	var/default_type = MAT_STEEL
@@ -313,7 +313,7 @@
 	if(burn_user)
 		M.apply_damage(amount, BURN, null, used_weapon="Supermatter Chunk")
 
-/obj/item/stack/material/supermatter/ex_act(severity)	// An incredibly hard to manufacture material, SM chunks are unstable by their 'stabilized' nature.
+/obj/item/stack/material/supermatter/legacy_ex_act(severity)	// An incredibly hard to manufacture material, SM chunks are unstable by their 'stabilized' nature.
 	if(prob((4 / severity) * 20))
 		SSradiation.radiate(get_turf(src), amount * 4)
 		explosion(get_turf(src),round(amount / 12) , round(amount / 6), round(amount / 3), round(amount / 25))
@@ -370,7 +370,7 @@
 	if(!istype(W) || W.force <= 0)
 		return ..()
 	if(W.sharp && W.edge)
-		var/time = (3 SECONDS / max(W.force / 10, 1)) * W.toolspeed
+		var/time = (3 SECONDS / max(W.force / 10, 1)) * W.tool_speed
 		user.setClickCooldown(time)
 		if(do_after(user, time, src) && use(1))
 			to_chat(user, "<span class='notice'>You cut up a log into planks.</span>")

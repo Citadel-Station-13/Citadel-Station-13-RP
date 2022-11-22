@@ -35,14 +35,52 @@
 	 */
 	parent_type = /datum
 
-		///////////////
-		// Rendering //
-		///////////////
+	//! Intrinsics
+	/// did New() finish?
+	var/initialized = FALSE
+	/// Persistent round-by-round data holder
+	var/datum/client_data/persistent
+	/// Database data
+	var/datum/client_dbdata/database
 
+	//! Rendering
 	/// Click catcher
 	var/atom/movable/screen/click_catcher/click_catcher
 	/// Parallax holder
 	var/datum/parallax_holder/parallax_holder
+
+	//! Perspectives
+	/// the perspective we're currently using
+	var/datum/perspective/using_perspective
+
+	//! Viewport
+	/// what we *think* their current viewport size is in pixels
+	var/assumed_viewport_spx
+	/// what we *think* their current viewport size is in pixels
+	var/assumed_viewport_spy
+	/// what we *think* their current viewport zoom is
+	var/assumed_viewport_zoom
+	/// what we *think* their current viewport letterboxing setting is
+	var/assumed_viewport_box
+	/// current view x - for fast access
+	var/current_viewport_width
+	/// current view y - for fast access
+	var/current_viewport_height
+	/// if things are manipulating the viewport we don't want other things to touch it
+	var/viewport_rwlock = TRUE	//! default block so we can release it during init_viewport
+	/// viewport update queued?
+	var/viewport_queued = FALSE
+	/// forced temporary view
+	var/temporary_viewsize_width
+	/// forced temporary view
+	var/temporary_viewsize_height
+	/// temporary view active?
+	var/using_temporary_viewsize = FALSE
+
+	//! menu button statuses
+	var/list/menu_buttons_checked = list()
+	//! menu group statuses
+	var/list/menu_group_status = list()
 
 		////////////////
 		//ADMIN THINGS//
@@ -61,18 +99,12 @@
 	///Internal counter for clients sending irc relay messages via ahelp to prevent spamming. Set to a number every time an admin reply is sent, decremented for every client send.
 	var/ircreplyamount = 0
 
-		////////////////
-		//PERSPECTIVES//
-		////////////////
-	/// the perspective we're currently using
-	var/datum/perspective/using_perspective
-
 		/////////
 		//OTHER//
 		/////////
+	// todo: rename to `preferences` & put it next to `persistent` to sate my OCD ~silicons
 	///Player preferences datum for the client
 	var/datum/preferences/prefs = null
-	var/moving = null
 	///Current area of the controlled mob
 	var/area = null
 	///when the client last died as a mouse

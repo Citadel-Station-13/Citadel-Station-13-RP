@@ -29,6 +29,22 @@
 		/area/turbolift/rmine/surface
 		)
 
+/obj/turbolift_map_holder/rift_west_base
+	name = "Atlas Minging Lift"
+	dir = NORTH
+	depth = 4
+	lift_size_x = 3
+	lift_size_y = 3
+	icon = 'icons/obj/turbolift_preview_3x3.dmi'
+	wall_type = null // Don't make walls
+	floor_type = /turf/simulated/shuttle/floor/voidcraft/lythios43c
+
+	areas_to_use = list(
+		/area/turbolift/rwest_mining/base,
+		/area/turbolift/rwest_mining/deep,
+		/area/turbolift/rwest_mining/caves,
+		/area/turbolift/rwest_mining/surface
+		)
 
 /obj/turbolift_map_holder/triumph
 	name = "Triumph Climber"

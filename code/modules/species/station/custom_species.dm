@@ -1,6 +1,7 @@
 
 /datum/species/custom
 	name = SPECIES_CUSTOM
+	uid = SPECIES_ID_CUSTOM
 	name_plural = "Custom"
 	selects_bodytype = TRUE
 	base_species = SPECIES_HUMAN
@@ -15,10 +16,10 @@
 	name_language = null // Use the first-name last-name generator rather than a language scrambler
 	max_age = 200
 	health_hud_intensity = 2
-	num_alternate_languages = 3
+	max_additional_languages = 3
 	assisted_langs = list(LANGUAGE_EAL, LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)
 
-	spawn_flags = SPECIES_CAN_JOIN
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
 
 	has_limbs = list(
@@ -46,16 +47,19 @@
 		/mob/living/carbon/human/proc/tie_hair,
 	)
 
+/datum/species/custom/get_effective_bodytype(mob/living/carbon/human/H, obj/item/I, slot_id)
+	return SScharacters.resolve_species_name(base_species).get_effective_bodytype(H, I, slot_id)
+
 /datum/species/custom/get_bodytype_legacy()
 	return base_species
 
 /datum/species/custom/get_worn_legacy_bodytype()
-	var/datum/species/real = name_static_species_meta(base_species)
+	var/datum/species/real = SScharacters.resolve_species_name(base_species)
 	// infinite loop guard
 	return istype(real, src)? base_species : real.get_worn_legacy_bodytype()
 
 /datum/species/custom/get_race_key(mob/living/carbon/human/H)
-	var/datum/species/real = name_static_species_meta(base_species)
+	var/datum/species/real = SScharacters.resolve_species_name(base_species)
 	return real.real_race_key(H)
 
 // Stub species overrides for shoving trait abilities into
@@ -76,10 +80,10 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H), SLOT_ID_MASK)
 	if(H.backbag == 1)
 		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), SLOT_ID_BACK)
-		H.equip_to_slot_or_del(new /obj/item/storage/box/vox(H), /datum/inventory_slot_meta/abstract/right_hand)
+		H.equip_to_slot_or_del(new /obj/item/storage/box/vox(H), /datum/inventory_slot_meta/abstract/hand/right)
 		H.internal = H.back
 	else
-		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), /datum/inventory_slot_meta/abstract/right_hand)
+		H.equip_to_slot_or_del(new /obj/item/tank/vox(H), /datum/inventory_slot_meta/abstract/hand/right)
 		H.equip_to_slot_or_del(new /obj/item/storage/box/vox(H.back), /datum/inventory_slot_meta/abstract/put_in_backpack)
 		H.internal = H.r_hand
 	H.internal = locate(/obj/item/tank) in H.contents

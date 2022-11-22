@@ -245,7 +245,7 @@
 		ui.set_auto_update(1)
 
 
-obj/machinery/lapvend/attackby(obj/item/W as obj, mob/user as mob)
+/obj/machinery/lapvend/attackby(obj/item/W, mob/user)
 	var/obj/item/card/id/I = W.GetID()
 	// Awaiting payment state
 	if(state == 2)
@@ -302,7 +302,7 @@ obj/machinery/lapvend/attackby(obj/item/W as obj, mob/user as mob)
 		T.purpose = "Purchase of [(devtype == 1) ? "laptop computer" : "tablet microcomputer"]."
 		T.amount = total_price
 		T.source_terminal = src.name
-		T.date = current_date_string
+		T.date = GLOB.current_date_string
 		T.time = stationtime2text()
 		customer_account.transaction_log.Add(T)
 		return 1

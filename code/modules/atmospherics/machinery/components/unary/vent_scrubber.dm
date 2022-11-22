@@ -32,6 +32,10 @@
 	use_power = USE_POWER_IDLE
 	icon_state = "map_scrubber_on"
 
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on/welded
+	welded = 1
+
+
 /obj/machinery/atmospherics/component/unary/vent_scrubber/Initialize(mapload)
 	. = ..()
 	air_contents.volume = ATMOS_DEFAULT_VOLUME_FILTER
@@ -59,6 +63,7 @@
 		initial_loc.air_scrub_names -= id_tag
 	return ..()
 
+
 /obj/machinery/atmospherics/component/unary/vent_scrubber/update_icon(var/safety = 0)
 	if(!check_icon_cache())
 		return
@@ -71,7 +76,9 @@
 	if(!istype(T))
 		return
 
-	if(!powered())
+	if(welded)
+		scrubber_icon += "weld"
+	else if(!powered())
 		scrubber_icon += "off"
 	else
 		scrubber_icon += "[use_power ? "[scrubbing ? "on" : "in"]" : "off"]"
@@ -137,6 +144,17 @@
 		set_frequency(frequency)
 		src.broadcast_status()
 
+
+/obj/machinery/atmospherics/component/unary/vent_scrubber/proc/can_scrub()
+	if(machine_stat & (NOPOWER|BROKEN))
+		return 0
+	if(!use_power)
+		return 0
+	if(welded)
+		return 0
+	return 1
+
+
 /obj/machinery/atmospherics/component/unary/vent_scrubber/process(delta_time)
 	..()
 
@@ -146,7 +164,7 @@
 	if (!node)
 		update_use_power(USE_POWER_OFF)
 	//broadcast_status()
-	if(!use_power || (machine_stat & (NOPOWER|BROKEN)))
+	if(!can_scrub())
 		return 0
 
 	var/datum/gas_mixture/environment = loc.return_air()
@@ -280,9 +298,9 @@
 	if(unsafe_pressure())
 		to_chat(user, "<span class='warning'>You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..</span>")
 	add_fingerprint(user)
-	playsound(src, W.usesound, 50, 1)
+	playsound(src, W.tool_sound, 50, 1)
 	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
-	if (do_after(user, 40 * W.toolspeed))
+	if (do_after(user, 40 * W.tool_speed))
 		user.visible_message( \
 			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
 			"<span class='notice'>You have unfastened \the [src].</span>", \
@@ -292,3 +310,31 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/examine(mob/user)
 	. = ..()
 	. += "A small gauge in the corner reads [round(last_flow_rate, 0.1)] L/s; [round(last_power_draw)] W"
+	if(welded)
+		. += "It seems welded shut."
+
+/// Scrubber Welding
+
+/obj/machinery/atmospherics/component/unary/vent_scrubber/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/weldingtool))
+		var/obj/item/weldingtool/WT = W
+		if (WT.remove_fuel(0,user))
+			to_chat(user, "<span class='notice'>Now welding the vent.</span>")
+			if(do_after(user, 20 * WT.tool_speed))
+				if(!src || !WT.isOn()) return
+				playsound(src.loc, WT.tool_sound, 50, 1)
+				if(!welded)
+					user.visible_message("<span class='notice'>\The [user] welds the vent shut.</span>", "<span class='notice'>You weld the vent shut.</span>", "You hear welding.")
+					welded = 1
+					update_icon()
+				else
+					user.visible_message("<span class='notice'>[user] unwelds the vent.</span>", "<span class='notice'>You unweld the vent.</span>", "You hear welding.")
+					welded = 0
+					update_icon()
+			else
+				to_chat(user, "<span class='notice'>The welding tool needs to be on to start this task.</span>")
+		else
+			to_chat(user, "<span class='warning'>You need more welding fuel to complete this task.</span>")
+			return 1
+	else
+		..()

@@ -15,9 +15,9 @@
 			stack_trace("attempted usage of slot id in abstract insertion converted successfully")
 	. = FALSE
 	switch(slot)
-		if(/datum/inventory_slot_meta/abstract/left_hand)
+		if(/datum/inventory_slot_meta/abstract/hand/left)
 			return put_in_left_hand(I, flags)
-		if(/datum/inventory_slot_meta/abstract/right_hand)
+		if(/datum/inventory_slot_meta/abstract/hand/right)
 			return put_in_right_hand(I, flags)
 		if(/datum/inventory_slot_meta/abstract/put_in_belt)
 			var/obj/item/storage/S = item_by_slot(SLOT_ID_BELT)
@@ -176,7 +176,7 @@
 			// this is meant to catch any potential deletions dropped can cause.
 			. = FALSE
 		else
-			if(!(I.item_flags & DROPDEL))
+			if(!(I.item_flags & ITEM_DROPDEL))
 				if(newloc == null)
 					I.moveToNullspace()
 				else if(newloc != FALSE)
@@ -239,7 +239,7 @@
 		to_chat(user, SPAN_DANGER("A deleted [I] was checked in can_unequip(). Report this entire line to coders immediately. Debug data: [I] ([REF(I)]) slot [slot] flags [flags] user [user]"))
 		to_chat(user, SPAN_DANGER("can_unequip will return TRUE to allow you to drop the item, but expect potential glitches!"))
 		return TRUE
-		
+
 	if(!slot)
 		slot = slot_by_item(I)
 
@@ -386,7 +386,7 @@
 		to_chat(user, SPAN_DANGER("A deleted [I] was checked in can_equip(). Report this entire line to coders immediately. Debug data: [I] ([REF(I)]) slot [slot] flags [flags] user [user]"))
 		to_chat(user, SPAN_DANGER("can_equip will now attempt to prevent the deleted item from being equipped. There should be no glitches."))
 		return FALSE
-		
+
 	var/datum/inventory_slot_meta/slot_meta = resolve_inventory_slot_meta(slot)
 	var/self_equip = user == src
 	if(!slot_meta)
@@ -396,9 +396,9 @@
 	if(slot_meta.inventory_slot_flags & INV_SLOT_IS_ABSTRACT)
 		// special handling: make educated guess, defaulting to yes
 		switch(slot_meta.type)
-			if(/datum/inventory_slot_meta/abstract/left_hand)
+			if(/datum/inventory_slot_meta/abstract/hand/left)
 				return (flags & INV_OP_FORCE) || !get_left_held_item()
-			if(/datum/inventory_slot_meta/abstract/right_hand)
+			if(/datum/inventory_slot_meta/abstract/hand/right)
 				return (flags & INV_OP_FORCE) || !get_right_held_item()
 			if(/datum/inventory_slot_meta/abstract/put_in_backpack)
 				var/obj/item/storage/S = item_by_slot(SLOT_ID_BACK)
@@ -603,11 +603,19 @@
 		if(!can_equip(I, slot, flags | INV_OP_IS_FINAL_CHECK, user))
 			return FALSE
 
+		var/atom/oldLoc = I.loc
+		if(I.loc != src)
+			I.forceMove(src)
+		if(I.loc != src)
+			// UH OH, SOMEONE MOVED US
+			log_inventory("[key_name(src)] failed to equip [I] to slot (loc sanity failed).")
+			// UH OH x2, WE GOT WORN OVER SOMETHING
+			if(I.worn_over)
+				handle_item_denesting(I, slot, INV_OP_FATAL, user)
+			return FALSE
+
 		_equip_slot(I, slot, flags)
 
-		var/atom/oldLoc = I.loc
-
-		I.forceMove(src)
 		// TODO: HANDLE DELETIONS IN PICKUP AND EQUIPPED PROPERLY
 		I.pickup(src, flags, oldLoc)
 		I.equipped(src, slot, flags)

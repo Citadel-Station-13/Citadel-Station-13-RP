@@ -7,7 +7,6 @@
  */
 
 /obj/item/rig
-
 	name = "hardsuit control module"
 	icon = 'icons/obj/rig_modules.dmi'
 	desc = "A back-mounted hardsuit deployment and control mechanism."
@@ -192,19 +191,22 @@
 	for(var/obj/item/piece in list(gloves,boots,helmet,chest))
 		qdel(piece)
 	STOP_PROCESSING(SSobj, src)
+	if(minihud)
+		QDEL_NULL(minihud)
 	qdel(wires)
 	wires = null
 	qdel(spark_system)
 	spark_system = null
 	return ..()
 
-/obj/item/rig/get_worn_icon_file(var/body_type,var/slot_id,var/default_icon,var/inhands)
-	if(!inhands && (slot_id == SLOT_ID_BACK || slot_id == SLOT_ID_BELT))
-		if(icon_override)
-			return icon_override
-		else if(mob_icon)
-			return mob_icon
-
+/obj/item/rig/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype)
+	switch(slot_id_or_hand_index)
+		if(SLOT_ID_BACK)
+			if(mob_icon)
+				return mob_icon
+		if(SLOT_ID_BELT)
+			if(mob_icon)
+				return mob_icon
 	return ..()
 
 /obj/item/rig/proc/suit_is_deployed()
@@ -241,11 +243,9 @@
 	//Reset the trap and upgrade it. Won't affect standard rigs.
 	trapSprung = 0
 	springtrapped = 1
+	update_component_sealed()
 	for(var/obj/item/piece in list(helmet,boots,gloves,chest))
-		if(!piece) continue
 		piece.icon_state = "[suit_state]"
-		if(airtight)
-			update_airtight(piece, 0) // Unseal
 	update_icon(1)
 
 /obj/item/rig/proc/trap(var/mob/living/carbon/human/M)
@@ -391,7 +391,7 @@
 		for(var/obj/item/piece in list(helmet,boots,gloves,chest))
 			if(!piece)
 				continue
-			piece.icon_state = "[suit_state][is_activated() ? "" : "_sealed"]"
+			piece.icon_state = "[suit_state][is_activated() ? "_sealed" : ""]"
 			piece.update_worn_icon()
 
 		if(is_activated())
@@ -642,8 +642,8 @@
 	if(src.loc != user)
 		data["ai"] = 1
 
-	data["seals"] =     "[src.is_activated()]"
-	data["sealing"] =   "[src.is_cycling()]"
+	data["seals"] =     is_activated()
+	data["sealing"] =   is_cycling()
 	data["helmet"] =    (helmet ? "[helmet.name]" : "None.")
 	data["gauntlets"] = (gloves ? "[gloves.name]" : "None.")
 	data["boots"] =     (boots ?  "[boots.name]" :  "None.")
@@ -1088,7 +1088,7 @@
 	// AIs are a bit slower than regular and ignore move intent.
 	wearer_move_delay = world.time + ai_controlled_move_delay
 
-	if(istype(wearer.buckled, /obj/vehicle))
+	if(istype(wearer.buckled, /obj/vehicle_old))
 		//manually set move_delay for vehicles so we don't inherit any mob movement penalties
 		//specific vehicle move delays are set in code\modules\vehicles\vehicle.dm
 		wearer_move_delay = world.time
@@ -1147,7 +1147,7 @@
 
 //Boot animation screen objects
 /atom/movable/screen/rig_booting
-	screen_loc = "1,1"
+	screen_loc = "CENTER-7,CENTER-7"
 	icon = 'icons/obj/rig_boot.dmi'
 	icon_state = ""
 	layer = SCREEN_LAYER

@@ -45,10 +45,8 @@
 	melee_damage_upper = 30
 	attack_armor_pen = 25
 
-	pixel_x = -16
-	pixel_y = -16
-	old_x = -16
-	old_y = -16
+	base_pixel_x = -16
+	base_pixel_y = -16
 
 	mod_min = 100
 	mod_max = 150

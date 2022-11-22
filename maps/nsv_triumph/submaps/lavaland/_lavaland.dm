@@ -97,8 +97,12 @@
 	icon_state = "asteroid"
 	outdoors = 1
 	base_icon_state = "asteroid"
+	edge_blending_priority = 0
 	baseturfs = /turf/simulated/mineral/floor/lavaland
 	initial_flooring = /decl/flooring/outdoors/lavaland
+
+/turf/simulated/floor/outdoors/lavaland/indoors //I know this path is confusing. Basically this is a way to simulate interior caverns that don't use mapgen for specific POIs.
+	outdoors = 0
 
 /turf/simulated/floor/tiled/steel_dirty/lavaland/exterior
 	outdoors = 1

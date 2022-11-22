@@ -13,10 +13,11 @@
 	icon = 'icons/obj/furniture.dmi'
 	icon_state = "bed"
 	pressure_resistance = 15
-	anchored = 1
-	can_buckle = 1
+	anchored = TRUE
+	buckle_allowed = TRUE
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 	buckle_dir = SOUTH
-	buckle_lying = 1
+	buckle_lying = 90
 	var/datum/material/material
 	var/datum/material/padding_material
 	var/base_icon = "bed"
@@ -68,12 +69,7 @@
 		name = "[material.display_name] [initial(name)]"
 		desc += " It's made of [material.use_name]."
 
-/obj/structure/bed/CanAllowThrough(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return TRUE
-	return ..()
-
-/obj/structure/bed/ex_act(severity)
+/obj/structure/bed/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -89,7 +85,7 @@
 
 /obj/structure/bed/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench())
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		dismantle()
 		qdel(src)
 	else if(istype(W,/obj/item/stack))
@@ -117,7 +113,7 @@
 			to_chat(user, "\The [src] has no padding to remove.")
 			return
 		to_chat(user, "You remove the padding from \the [src].")
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		remove_padding()
 
 	else if(istype(W, /obj/item/grab))
@@ -159,6 +155,7 @@
 	desc = "For prime comfort during psychiatric evaluations."
 	icon_state = "psychbed"
 	base_icon = "psychbed"
+	icon_dimension_y = 32
 
 /obj/structure/bed/psych/Initialize(mapload)
 	. = ..(mapload, "wood", "leather")
@@ -170,17 +167,29 @@
 	name = "double bed"
 	icon_state = "doublebed"
 	base_icon = "doublebed"
+	buckle_max_mobs = 2
+	icon_dimension_y = 32
 
 /obj/structure/bed/double/padded/Initialize(mapload)
 	. = ..(mapload, "wood", "cotton")
 
-/obj/structure/bed/double/post_buckle_mob(mob/living/M as mob)
-	if(M.buckled == src)
-		M.pixel_y = 13
-		M.old_y = 13
-	else
-		M.pixel_y = 0
-		M.old_y = 0
+/obj/structure/bed/double/padded/get_centering_pixel_y_offset(dir, atom/aligning)
+	if(!aligning)
+		return ..()
+	if(!has_buckled_mobs())
+		return ..()
+	var/index = buckled_mobs.Find(aligning)
+	if(!index)
+		return ..()
+	switch(index)
+		if(1)
+			return -6
+		if(2)
+			return 6
+		if(3)
+			return 3
+		else
+			return rand(-6, 6)
 
 /*
  * Roller beds
@@ -188,25 +197,53 @@
 /obj/structure/bed/roller
 	name = "roller bed"
 	desc = "A portable bed-on-wheels made for transporting medical patients."
-	icon = 'icons/obj/rollerbed.dmi'
+	icon = 'icons/obj/medical/rollerbed.dmi'
 	icon_state = "rollerbed"
-	anchored = 0
+	base_icon_state = "rollerbed"
+	anchored = FALSE
 	surgery_odds = 75
+
 	var/bedtype = /obj/structure/bed/roller
 	var/rollertype = /obj/item/roller
 
 /obj/structure/bed/roller/adv
 	name = "advanced roller bed"
 	icon_state = "rollerbedadv"
+	base_icon_state = "rollerbedadv"
 	bedtype = /obj/structure/bed/roller/adv
 	rollertype = /obj/item/roller/adv
+
+/obj/structure/bed/roller/Moved(atom/old_loc, movement_dir/*, forced, list/old_locs, momentum_change = TRUE*/)
+	. = ..()
+	if(has_gravity())
+		playsound(src, 'sound/effects/roll.ogg', 100, TRUE)
+	//! Behold shitecode to make the our victim not flop like a fish.
+	for(var/mob/living/M in buckled_mobs)
+		if(M.buckled == src)
+			M.dir = buckle_dir
+
+/obj/structure/bed/roller/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
+	set_density(TRUE)
+	icon_state = "[base_icon_state]_up"
+	//Push them up from the normal lying position
+	M.dir = buckle_dir // So they always face the right way, "upwards"
+	M.set_pixel_y(6)
+
+/obj/structure/bed/roller/mob_unbuckled(mob/M, flags, mob/user, semantic)
+	. = ..()
+	set_density(FALSE)
+	icon_state = base_icon_state
+	// Reset our transforms.
+	M.set_pixel_x(0)
+	M.set_pixel_y(0)
 
 /obj/structure/bed/roller/doLocationTransitForceMove(atom/destination)
 	var/list/old_buckled = buckled_mobs?.Copy()
 	. = ..()
 	if(old_buckled)
 		for(var/mob/M in old_buckled)
-			buckle_mob(M, forced = TRUE)
+			buckle_mob(M, BUCKLE_OP_FORCE)
 
 /obj/structure/bed/roller/update_icon()
 	return
@@ -229,7 +266,7 @@
 /obj/item/roller
 	name = "roller bed"
 	desc = "A collapsed roller bed that can be carried around."
-	icon = 'icons/obj/rollerbed.dmi'
+	icon = 'icons/obj/medical/rollerbed.dmi'
 	icon_state = "folded_rollerbed"
 	slot_flags = SLOT_BACK
 	w_class = ITEMSIZE_LARGE
@@ -266,7 +303,7 @@
 /obj/item/roller_holder
 	name = "roller bed rack"
 	desc = "A rack for carrying a collapsed roller bed."
-	icon = 'icons/obj/rollerbed.dmi'
+	icon = 'icons/obj/medical/rollerbed.dmi'
 	icon_state = "rollerbed"
 	var/obj/item/roller/held
 
@@ -296,24 +333,25 @@
 			if(L.buckled == src)
 				L.forceMove(loc)
 
-/obj/structure/bed/roller/post_buckle_mob(mob/living/M as mob)
-	if(M.buckled == src)
-		M.pixel_y = 6
-		M.old_y = 6
-		density = 1
-		icon_state = "[initial(icon_state)]_up"
-	else
-		M.pixel_y = 0
-		M.old_y = 0
-		density = 0
-		icon_state = "[initial(icon_state)]"
+/obj/structure/bed/roller/mob_buckled(mob/M, flags, mob/user, semantic)
+	. = ..()
+	density = TRUE
+	icon_state = "[initial(icon_state)]_up"
+
+/obj/structure/bed/roller/mob_unbuckled(mob/M, flags, mob/user, semantic)
+	. = ..()
+	if(has_buckled_mobs())
+		return
+	density = FALSE
+	icon_state = "[initial(icon_state)]"
 	update_icon()
-	return ..()
 
 /obj/structure/bed/roller/OnMouseDropLegacy(over_object, src_location, over_location)
 	if((over_object == usr && (in_range(src, usr) || usr.contents.Find(src))))
-		if(!ishuman(usr))	return 0
-		if(has_buckled_mobs())	return 0
+		if(!ishuman(usr))
+			return 0
+		if(has_buckled_mobs())
+			return 0
 		visible_message("[usr] collapses \the [src.name].")
 		new rollertype(get_turf(src))
 		spawn(0)

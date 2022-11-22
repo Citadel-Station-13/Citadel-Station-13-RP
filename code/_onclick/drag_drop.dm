@@ -53,7 +53,7 @@
  * - params - click params
  */
 /atom/proc/OnMouseDrop(atom/over, mob/user, proximity, params)
-
+	return NONE
 
 /**
  * we were dropped onto over object
@@ -74,6 +74,7 @@
  * - params - click params
  */
 /atom/proc/MouseDroppedOn(atom/dropping, mob/user, proximity, params)
+	return NONE
 
 /**
  * user dropped an atom on us with mouse-drag-drop

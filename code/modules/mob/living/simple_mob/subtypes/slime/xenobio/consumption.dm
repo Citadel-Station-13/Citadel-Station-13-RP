@@ -87,7 +87,7 @@
 	if(loc != L.loc)
 		return
 
-	if(L.buckle_mob(src, forced = TRUE))
+	if(L.buckle_mob(src, BUCKLE_OP_FORCE))
 		victim = L
 		update_icon()
 		set_AI_busy(TRUE) // Don't want the AI to interfere with eatting.
@@ -99,7 +99,7 @@
 /mob/living/simple_mob/slime/xenobio/proc/stop_consumption(mob/living/L)
 	if(!victim)
 		return
-	victim.unbuckle_mob()
+	victim.unbuckle_mob(src, BUCKLE_OP_FORCE)
 	victim.visible_message(
 		SPAN_NOTICE("\The [src] slides off of [victim]!"),
 		SPAN_NOTICE("\The [src] slides off of you!")
@@ -132,7 +132,7 @@
 		return FALSE
 	if(istype(L, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = L
-		if(H.species.flags & NO_SCAN)
+		if(H.species.species_flags & NO_SCAN)
 			to_chat(src, "This subject's life energy is beyond my reach...")
 			return FALSE
 	if(L.has_buckled_mobs())

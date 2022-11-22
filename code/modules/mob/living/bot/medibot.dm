@@ -91,7 +91,7 @@
 
 /mob/living/bot/medibot/toxin
 	name = "\improper Toxic"
-	skin = "antitoxin"
+	skin = "toxin"
 
 /mob/living/bot/medibot/o2
 	name = "\improper Lifeless"

@@ -22,39 +22,55 @@
 	desc = "Exosuit"
 	description_info = "Alt click to strafe."
 	icon = 'icons/mecha/mecha.dmi'
-	density = 1							//Dense. To raise the heat.
-	opacity = 1							//Opaque. Menacing.
-	anchored = 1						//No pulling around.
-	unacidable = 1						//And no deleting hoomans inside
-	layer = MOB_LAYER					//Icon draw layer
-	infra_luminosity = 15				//Byond implementation is bugged.
-	var/initial_icon = null				//Mech type for resetting icon. Only used for reskinning kits (see custom items)
+	/// Dense. To raise the heat.
+	density = 1
+	/// Opaque. Menacing.
+	opacity = 1
+	/// No pulling around.
+	anchored = 1
+	/// And no deleting hoomans inside.
+	unacidable = 1
+	/// Icon draw layer.
+	layer = MOB_LAYER
+	/// Byond implementation is bugged.
+	infra_luminosity = 15
+	/// Mech type for resetting icon. Only used for reskinning kits (see custom items).
+	var/initial_icon = null
 	var/can_move = 1
 	var/mob/living/carbon/occupant = null
 
-	var/step_in = 10					//Make a step in step_in/10 sec.
-	var/encumbrance_gap = 1			//How many points of slowdown are negated from equipment? Added to the mech's base step_in.
+	/// Make a step in step_in/10 sec.
+	var/step_in = 10
+	/// How many points of slowdown are negated from equipment? Added to the mech's base step_in.
+	var/encumbrance_gap = 1
 
-	var/dir_in = 2						//What direction will the mech face when entered/powered on? Defaults to South.
+	/// What direction will the mech face when entered/powered on? Defaults to South.
+	var/dir_in = 2
 	var/step_energy_drain = 10
-	var/health = 300 					//Health is health
-	var/maxhealth = 300 				//Maxhealth is maxhealth.
-	var/deflect_chance = 10 			//Chance to deflect the incoming projectiles, hits, or lesser the effect of ex_act.
-	//the values in this list show how much damage will pass through, not how much will be absorbed.
+	/// Health is healthdrain = 10
+	var/health = 300
+	/// Maxhealth is maxhealth.
+	var/maxhealth = 300
+	/// Chance to deflect the incoming projectiles, hits, or lesser the effect of legacy_ex_act.
+	var/deflect_chance = 10
+	/// The values in this list show how much damage will pass through, not how much will be absorbed.
 	var/list/damage_absorption = list(
-									"brute"=0.8,
-									"fire"=1.2,
-									"bullet"=0.9,
-									"laser"=1,
-									"energy"=1,
-									"bomb"=1,
-									"bio"=1,
-									"rad"=1
-									)
+		"brute"=0.8,
+		"fire"=1.2,
+		"bullet"=0.9,
+		"laser"=1,
+		"energy"=1,
+		"bomb"=1,
+		"bio"=1,
+		"rad"=1,
+	)
 
-	var/damage_minimum = 10				//Incoming damage lower than this won't actually deal damage. Scrapes shouldn't be a real thing.
-	var/minimum_penetration = 15		//Incoming damage won't be fully applied if you don't have at least 20. Almost all AP clears this.
-	var/fail_penetration_value = 0.66	//By how much failing to penetrate reduces your shit. 66% by default. 100dmg = 66dmg if failed pen
+	/// Incoming damage lower than this won't actually deal damage. Scrapes shouldn't be a real thing.
+	var/damage_minimum = 10
+	/// Incoming damage won't be fully applied if you don't have at least 20. Almost all AP clears this.
+	var/minimum_penetration = 15
+	/// By how much failing to penetrate reduces your shit. 66% by default. 100dmg = 66dmg if failed pen.
+	var/fail_penetration_value = 0.66
 
 	var/obj/item/cell/cell
 	var/state = MECHA_OPERATING
@@ -62,20 +78,23 @@
 	var/last_message = 0
 	var/add_req_access = 1
 	var/maint_access = 1
-	var/dna								//Dna-locking the mech
-	var/list/proc_res = list() 			//Stores proc owners, like proc_res["functionname"] = owner reference
+	/// Dna-locking the mech.
+	var/dna
+	/// Stores proc owners, like proc_res["functionname"] = owner reference.
+	var/list/proc_res = list()
 	var/datum/effect_system/spark_spread/spark_system = new
 	var/lights = 0
 	var/lights_power = 6
 	var/force = 0
 
 	var/mech_faction = null
-	var/firstactivation = 0 			//It's simple. If it's 0, no one entered it yet. Otherwise someone entered it at least once.
+	/// It's simple. If it's 0, no one entered it yet. Otherwise someone entered it at least once.
+	var/firstactivation = 0
 
 	var/stomp_sound = 'sound/mecha/mechstep.ogg'
 	var/swivel_sound = 'sound/mecha/mechturn.ogg'
 
-	//inner atmos
+	//! Inner atmos
 	var/use_internal_tank = 0
 	var/internal_tank_valve = ONE_ATMOSPHERE
 	var/obj/machinery/portable_atmospherics/canister/internal_tank
@@ -84,23 +103,33 @@
 
 	var/obj/item/radio/radio = null
 
-	var/max_temperature = 25000			//Kelvin values.
-	var/internal_damage_threshold = 33	//Health percentage below which internal damage is possible
-	var/internal_damage_minimum = 15	//At least this much damage to trigger some real bad hurt.
-	var/internal_damage = 0 			//Contains bitflags
+	/// Kelvin values.
+	var/max_temperature = 25000
+	/// Health percentage below which internal damage is possible.
+	var/internal_damage_threshold = 33
+	/// At least this much damage to trigger some real bad hurt.
+	var/internal_damage_minimum = 15
+	/// Contains bitflags.
+	var/internal_damage = 0
 
-	var/list/operation_req_access = list()								//Required access level for mecha operation
-	var/list/internals_req_access = list(access_engine,access_robotics)	//Required access level to open cell compartment
+	/// Required access level for mecha operation.
+	var/list/operation_req_access = list()
+	/// Required access level to open cell compartment.
+	var/list/internals_req_access = list(access_engine,access_robotics)
 
-	var/datum/global_iterator/pr_int_temp_processor 	//Normalizes internal air mixture temperature
-	var/datum/global_iterator/pr_inertial_movement 		//Controls intertial movement in spesss
-	var/datum/global_iterator/pr_give_air 				//Moves air from tank to cabin
-	var/datum/global_iterator/pr_internal_damage		//Processes internal damage
+	/// Normalizes internal air mixture temperature.
+	var/datum/global_iterator/pr_int_temp_processor
+	/// Controls intertial movement in spesss.
+	var/datum/global_iterator/pr_inertial_movement
+	/// Moves air from tank to cabin.
+	var/datum/global_iterator/pr_give_air
+	/// Processes internal damage.
+	var/datum/global_iterator/pr_internal_damage
 
 
 	var/wreckage
-
-	var/list/equipment = new		//This lists holds what stuff you bolted onto your baby ride
+	/// This lists holds what stuff you bolted onto your baby ride.
+	var/list/equipment = new
 	var/obj/item/mecha_parts/mecha_equipment/selected
 	var/max_equip = 2
 	var/datum/events/events
@@ -117,7 +146,8 @@
 	var/max_universal_equip = 2
 	var/max_special_equip = 1
 
-	var/list/starting_equipment = null	// List containing starting tools.
+	/// List containing starting tools.
+	var/list/starting_equipment = null
 
 // Mech Components, similar to Cyborg, but Bigger.
 	var/list/internal_components = list(
@@ -144,7 +174,7 @@
 	var/static/image/radial_image_lighttoggle = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_light")
 	var/static/image/radial_image_statpanel = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine2")
 
-//Mech actions
+//! Mech actions
 	var/datum/mini_hud/mech/minihud
 	/// re we strafing or not?
 	var/strafing = 0
@@ -210,14 +240,15 @@
 	var/datum/action/innate/mecha/mech_toggle_phasing/phasing_action = new
 	var/datum/action/innate/mecha/mech_toggle_cloaking/cloak_action = new
 
-	var/weapons_only_cycle = FALSE	//So combat mechs don't switch to their equipment at times.
+	/// So combat mechs don't switch to their equipment at times.
+	var/weapons_only_cycle = FALSE
 
 /obj/mecha/Initialize(mapload)
 	. = ..()
 	INVOKE_ASYNC(src, .proc/create_components)
 	update_transform()
 
-// shitcode
+//! shitcode
 // VEHICLE MECHS WHEN?
 /obj/mecha/proc/create_components()
 	for(var/path in starting_components)
@@ -758,16 +789,7 @@
 		var/result = TRUE
 
 		for(var/turf/T in locs)
-			if(!T.CanZPass(src,direction))
-				occupant_message("<span class='warning'>You can't move that direction from here!</span>")
-				result = FALSE
-				break
-			var/turf/dest = direction & UP ? GetAbove(T) : GetBelow(T)
-			if(!dest)
-				occupant_message("<span class='notice'>There is nothing of interest in this direction.</span>")
-				result = FALSE
-				break
-			if(!dest.CanZPass(src,direction))
+			if(!T.z_exit_check(src, direction))
 				occupant_message("<span class='warning'>There's something blocking your movement in that direction!</span>")
 				result = FALSE
 				break
@@ -815,7 +837,7 @@
 /obj/mecha/proc/mechstep(direction)
 	var/current_dir = dir	//For strafing
 	var/result = get_step(src,direction)
-	if(result && Move(result))
+	if(result && Move(result, direction))
 		if(stomp_sound)
 			playsound(src,stomp_sound,40,1)
 		handle_equipment_movement()
@@ -1028,7 +1050,7 @@
 			user.visible_message("<span class='danger'>\The [user] hits \the [src]. Nothing happens.</span>","<span class='danger'>You hit \the [src] with no visible effect.</span>")
 			src.log_append_to_last("Armor saved.")
 		return
-	else if ((HULK in user.mutations) && !prob(temp_deflect_chance))
+	else if ((MUTATION_HULK in user.mutations) && !prob(temp_deflect_chance))
 		src.take_damage(15)	//The take_damage() proc handles armor values
 		if(prob(25))	//Hulks punch hard but lets not give them consistent internal damage.
 			src.check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
@@ -1038,11 +1060,10 @@
 		src.log_append_to_last("Armor saved.")
 	return
 
-/obj/mecha/hitby(atom/movable/A as mob|obj) //wrapper
-	..()
-	src.log_message("Hit by [A].",1)
-	call((proc_res["dynhitby"]||src), "dynhitby")(A)
-	return
+/obj/mecha/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
+	log_message("Hit by [AM].",1)
+	call((proc_res["dynhitby"]||src), "dynhitby")(AM)
 
 //I think this is relative to throws.
 /obj/mecha/proc/dynhitby(atom/movable/A)
@@ -1078,9 +1099,9 @@
 			M.take_organ_damage(10)
 	else if(istype(A, /obj))
 		var/obj/O = A
-		if(O.throwforce)
+		if(O.throw_force)
 
-			var/pass_damage = O.throwforce
+			var/pass_damage = O.throw_force
 			var/pass_damage_reduc_mod
 			if(pass_damage <= temp_damage_minimum)//Too little to go through.
 				src.occupant_message("<span class='notice'>\The [A] bounces off the armor.</span>")
@@ -1201,7 +1222,7 @@
 	return
 
 //This refer to whenever you are caught in an explosion.
-/obj/mecha/ex_act(severity)
+/obj/mecha/legacy_ex_act(severity)
 	var/obj/item/mecha_parts/component/armor/ArmC = internal_components[MECH_ARMOR]
 
 	var/temp_deflect_chance = deflect_chance
@@ -2683,15 +2704,15 @@
 ////////  Mecha global iterators  ////////
 //////////////////////////////////////////
 
-
-/datum/global_iterator/mecha_preserve_temp  //normalizing cabin air temperature to 20 degrees celsium
+/// Normalizing cabin air temperature to 20 degrees celcius.
+/datum/global_iterator/mecha_preserve_temp
 	delay = 20
 
-	process(var/obj/mecha/mecha)
-		if(mecha.cabin_air && mecha.cabin_air.volume > 0)
-			var/delta = mecha.cabin_air.temperature - T20C
-			mecha.cabin_air.temperature -= max(-10, min(10, round(delta/4,0.1)))
-		return
+/datum/global_iterator/mecha_preserve_temp/process(obj/mecha/mecha)
+	if(mecha.cabin_air && mecha.cabin_air.volume > 0)
+		var/delta = mecha.cabin_air.temperature - T20C
+		mecha.cabin_air.temperature -= max(-10, min(10, round(delta/4,0.1)))
+	return
 
 /datum/global_iterator/mecha_tank_give_air
 	delay = 15

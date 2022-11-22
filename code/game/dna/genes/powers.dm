@@ -3,192 +3,194 @@
 ///////////////////////////////////
 
 /datum/gene/basic/nobreath
-	name="No Breathing"
-	activation_messages=list("You feel no need to breathe.")
-	mutation=mNobreath
+	name = "No Breathing"
+	activation_messages = list("You feel no need to breathe.")
+	mutation = MUTATION_NOBREATH
 
-	New()
-		block=NOBREATHBLOCK
+/datum/gene/basic/nobreath/New()
+	block = DNABLOCK_NOBREATH
 
 /datum/gene/basic/remoteview
-	name="Remote Viewing"
-	activation_messages=list("Your mind expands.")
-	mutation=mRemote
+	name = "Remote Viewing"
+	activation_messages = list("Your mind expands.")
+	mutation = MUTATION_REMOTE_VIEW
 
-	New()
-		block=REMOTEVIEWBLOCK
+/datum/gene/basic/remoteview/New()
+	block = DNABLOCK_REMOTEVIEW
 
-	activate(var/mob/M, var/connected, var/flags)
-		..(M,connected,flags)
-		M.verbs += /mob/living/carbon/human/proc/remoteobserve
+/datum/gene/basic/remoteview/activate(mob/M, connected, flags)
+	..(M,connected,flags)
+	M.verbs += /mob/living/carbon/human/proc/remoteobserve
 
 /datum/gene/basic/regenerate
-	name="Regenerate"
-	activation_messages=list("You feel better.")
-	mutation=mRegen
+	name = "Regenerate"
+	activation_messages = list("You feel better.")
+	mutation = MUTATION_REGENERATE
 
-	New()
-		block=REGENERATEBLOCK
+/datum/gene/basic/regenerate/New()
+	block = DNABLOCK_REGENERATE
 
 /datum/gene/basic/increaserun
-	name="Super Speed"
-	activation_messages=list("Your leg muscles pulsate.")
-	mutation=mRun
+	name = "Super Speed"
+	activation_messages = list("Your leg muscles pulsate.")
+	mutation = MUTATION_INCREASE_RUN
 
-	New()
-		block=INCREASERUNBLOCK
+/datum/gene/basic/increaserun/New()
+	block = DNABLOCK_INCREASERUN
 
 /datum/gene/basic/remotetalk
-	name="Telepathy"
-	activation_messages=list("You expand your mind outwards.")
-	mutation=mRemotetalk
+	name = "Telepathy"
+	activation_messages = list("You expand your mind outwards.")
+	mutation = MUTATION_REMOTE_TALK
 
-	New()
-		block=REMOTETALKBLOCK
+/datum/gene/basic/remotetalk/New()
+	block = DNABLOCK_REMOTETALK
 
-	activate(var/mob/M, var/connected, var/flags)
-		..(M,connected,flags)
-		M.verbs += /mob/living/carbon/human/proc/remotesay
+/datum/gene/basic/remotetalk/activate(mob/M, connected, flags)
+	..(M,connected,flags)
+	M.verbs += /mob/living/carbon/human/proc/remotesay
 
 /datum/gene/basic/morph
-	name="Morph"
-	activation_messages=list("Your skin feels strange.")
-	mutation=mMorph
+	name = "Morph"
+	activation_messages = list("Your skin feels strange.")
+	mutation = MUTATION_MORPH
 
-	New()
-		block=MORPHBLOCK
+/datum/gene/basic/morph/New()
+	block = DNABLOCK_MORPH
 
-	activate(var/mob/M)
-		..(M)
-		M.verbs += /mob/living/carbon/human/proc/morph
+/datum/gene/basic/morph/activate(mob/M)
+	..(M)
+	M.verbs += /mob/living/carbon/human/proc/morph
 
 /* Not used on bay
 /datum/gene/basic/heat_resist
-	name="Heat Resistance"
-	activation_messages=list("Your skin is icy to the touch.")
-	mutation=mHeatres
+	name = "Heat Resistance"
+	activation_messages = list("Your skin is icy to the touch.")
+	mutation = mHeatres
 
-	New()
-		block=COLDBLOCK
+/datum/gene/basic/heat_resist/New()
+	block = COLDBLOCK
 
-	can_activate(var/mob/M,var/flags)
-		if(flags & MUTCHK_FORCED)
-			return !(/datum/gene/basic/cold_resist in M.active_genes)
-		// Probability check
-		var/_prob = 15
-		if(COLD_RESISTANCE in M.mutations)
-			_prob=5
-		if(probinj(_prob,(flags&MUTCHK_FORCED)))
-			return 1
+/datum/gene/basic/heat_resist/can_activate(mob/M, flags)
+	if(flags & MUTCHK_FORCED)
+		return !(/datum/gene/basic/cold_resist in M.active_genes)
+	// Probability check
+	var/_prob = 15
+	if(MUTATION_COLD_RESIST in M.mutations)
+		_prob=5
+	if(probinj(_prob,(flags&MUTCHK_FORCED)))
+		return 1
 
-	OnDrawUnderlays(var/mob/M,var/g,var/fat)
-		return "cold[fat]_s"
+/datum/gene/basic/heat_resist/OnDrawUnderlays(mob/M, g, fat)
+	return "cold[fat]_~s"
 */
 
 /datum/gene/basic/cold_resist
-	name="Cold Resistance"
-	activation_messages=list("Your body is filled with warmth.")
-	mutation=COLD_RESISTANCE
+	name = "Cold Resistance"
+	activation_messages = list("Your body is filled with warmth.")
+	mutation = MUTATION_COLD_RESIST
 
-	New()
-		block=FIREBLOCK
+/datum/gene/basic/cold_resist/New()
+	block = DNABLOCK_FIRE
 
-	can_activate(var/mob/M,var/flags)
-		if(flags & MUTCHK_FORCED)
-			return 1
-		//	return !(/datum/gene/basic/heat_resist in M.active_genes)
-		// Probability check
-		var/_prob=30
-		//if(mHeatres in M.mutations)
-		//	_prob=5
-		if(probinj(_prob,(flags&MUTCHK_FORCED)))
-			return 1
+/datum/gene/basic/cold_resist/can_activate(mob/M, flags)
+	if(flags & MUTCHK_FORCED)
+		return 1
+	//	return !(/datum/gene/basic/heat_resist in M.active_genes)
+	// Probability check
+	var/_prob=30
+	//if(mHeatres in M.mutations)
+	//	_prob=5
+	if(probinj(_prob,(flags & MUTCHK_FORCED)))
+		return 1
 
-	OnDrawUnderlays(var/mob/M,var/g,var/fat)
-		return "fire[fat]_s"
+/datum/gene/basic/cold_resist/OnDrawUnderlays(mob/M, g, fat)
+	return "fire[fat]_s"
 
 /datum/gene/basic/noprints
-	name="No Prints"
-	activation_messages=list("Your fingers feel numb.")
-	mutation=mFingerprints
+	name = "No Prints"
+	activation_messages = list("Your fingers feel numb.")
+	mutation = MUTATION_NOPRINTS
 
-	New()
-		block=NOPRINTSBLOCK
+/datum/gene/basic/noprints/New()
+	block = DNABLOCK_NOPRINTS
 
 /datum/gene/basic/noshock
-	name="Shock Immunity"
-	activation_messages=list("Your skin feels strange.")
-	mutation=mShock
+	name = "Shock Immunity"
+	activation_messages = list("Your skin feels strange.")
+	mutation = MUTATION_NOSHOCK
 
-	New()
-		block=SHOCKIMMUNITYBLOCK
+/datum/gene/basic/noshock/New()
+	block = DNABLOCK_NOSHOCK
 
-/datum/gene/basic/midget
-	name="Midget"
-	activation_messages=list("Your skin feels rubbery.")
-	mutation=mSmallsize
+/datum/gene/basic/dwarfism
+	name = "Dwarfism"
+	activation_messages = list("Your skin feels rubbery.")
+	mutation = MUTATION_DWARFISM
 
-	New()
-		block=SMALLSIZEBLOCK
+/datum/gene/basic/dwarfism/New()
+	block = DNABLOCK_DWARFISM
 
-	can_activate(var/mob/M,var/flags)
-		// Can't be big and small.
-		if(HULK in M.mutations)
-			return 0
-		return ..(M,flags)
+/datum/gene/basic/dwarfism/can_activate(mob/M, flags)
+	// Can't be big and small.
+	if(MUTATION_HULK in M.mutations)
+		return 0
+	return ..(M,flags)
 
-	activate(var/mob/M, var/connected, var/flags)
-		..(M,connected,flags)
-		M.pass_flags |= 1
+/datum/gene/basic/dwarfism/activate(mob/M, connected, flags)
+	..(M,connected,flags)
+	M.pass_flags |= 1
 
-	deactivate(var/mob/M, var/connected, var/flags)
-		..(M,connected,flags)
-		M.pass_flags &= ~1 //This may cause issues down the track, but offhand I can't think of any other way for humans to get passtable short of varediting so it should be fine. ~Z
+/datum/gene/basic/dwarfism/deactivate(mob/M, connected, flags)
+	..(M,connected,flags)
+	M.pass_flags &= ~1 //This may cause issues down the track, but offhand I can't think of any other way for humans to get ATOM_PASS_TABLE short of varediting so it should be fine. ~Z
 
 /datum/gene/basic/hulk
-	name="Hulk"
-	activation_messages=list("Your muscles hurt.")
-	mutation=HULK
+	name = "Hulk"
+	activation_messages = list("Your muscles hurt.")
+	mutation = MUTATION_HULK
 
-	New()
-		block=HULKBLOCK
+/datum/gene/basic/hulk/New()
+	block = DNABLOCK_HULK
 
-	can_activate(var/mob/M,var/flags)
-		// Can't be big and small.
-		if(mSmallsize in M.mutations)
-			return 0
-		return ..(M,flags)
+/datum/gene/basic/hulk/can_activate(mob/M, flags)
+	// Can't be big and small.
+	if(MUTATION_DWARFISM in M.mutations)
+		return 0
+	return ..(M,flags)
 
-	OnDrawUnderlays(var/mob/M,var/g,var/fat)
-		if(fat)
-			return "hulk_[fat]_s"
-		else
-			return "hulk_[g]_s"
+/datum/gene/basic/hulk/OnDrawUnderlays(mob/M, g, fat)
+	if(fat)
+		return "hulk_[fat]_s"
+	else
+		return "hulk_[g]_s"
 
-	OnMobLife(var/mob/living/carbon/human/M)
-		if(!istype(M)) return
-		if(M.health <= 25)
-			M.mutations.Remove(HULK)
-			M.update_mutations()		//update our mutation overlays
-			to_chat(M, "<span class='warning'>You suddenly feel very weak.</span>")
-			M.Weaken(3)
-			M.emote("collapse")
+/datum/gene/basic/hulk/OnMobLife(mob/living/carbon/human/M)
+	if(!istype(M))
+		return
+	if(M.health <= 25)
+		M.mutations.Remove(MUTATION_HULK)
+		M.update_mutations() //update our mutation overlays
+		to_chat(M, SPAN_WARNING("You suddenly feel very weak."))
+		M.Weaken(3)
+		M.emote("collapse")
 
 /datum/gene/basic/xray
-	name="X-Ray Vision"
-	activation_messages=list("The walls suddenly disappear.")
-	mutation=XRAY
+	name = "X-Ray Vision"
+	activation_messages = list("The walls suddenly disappear.")
+	mutation = MUTATION_XRAY
 
-	New()
-		block=XRAYBLOCK
+/datum/gene/basic/xray/New()
+	block = DNABLOCK_XRAY
 
 /datum/gene/basic/tk
-	name="Telekenesis"
-	activation_messages=list("You feel smarter.")
-	mutation=TK
+	name = "Telekenesis"
+	activation_messages = list("You feel smarter.")
+	mutation = MUTATION_TELEKINESIS
 	activation_prob=15
 
-	New()
-		block=TELEBLOCK
-	OnDrawUnderlays(var/mob/M,var/g,var/fat)
-		return "telekinesishead[fat]_s"
+/datum/gene/basic/tk/New()
+		block = DNABLOCK_TELE
+
+/datum/gene/basic/tk/OnDrawUnderlays(mob/M, g, fat)
+	return "telekinesishead[fat]_s"

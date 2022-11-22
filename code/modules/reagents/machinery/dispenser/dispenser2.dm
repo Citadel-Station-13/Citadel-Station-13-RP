@@ -1,6 +1,6 @@
 /obj/machinery/chemical_dispenser
 	name = "chemical dispenser"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "dispenser"
 
 	var/list/spawn_cartridges = null // Set to a list of types to spawn one of each on New()
@@ -53,7 +53,7 @@
 		to_chat(user, "<span class='notice'>You add \the [C] to \the [src].</span>")
 
 	cartridges[C.label] = C
-	cartridges = sortTim(cartridges, /proc/cmp_text_asc)
+	cartridges = tim_sort(cartridges, /proc/cmp_text_asc)
 	SStgui.update_uis(src)
 
 /obj/machinery/chemical_dispenser/proc/remove_cartridge(label)
@@ -63,9 +63,9 @@
 
 /obj/machinery/chemical_dispenser/attackby(obj/item/W, mob/user)
 	if(W.is_wrench())
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		to_chat(user, "<span class='notice'>You begin to [anchored ? "un" : ""]fasten \the [src].</span>")
-		if (do_after(user, 20 * W.toolspeed))
+		if (do_after(user, 20 * W.tool_speed))
 			user.visible_message(
 				"<span class='notice'>\The [user] [anchored ? "un" : ""]fastens \the [src].</span>",
 				"<span class='notice'>You have [anchored ? "un" : ""]fastened \the [src].</span>",
@@ -84,7 +84,7 @@
 		if(C)
 			to_chat(user, "<span class='notice'>You remove \the [C] from \the [src].</span>")
 			C.loc = loc
-			playsound(src, W.usesound, 50, 1)
+			playsound(src, W.tool_sound, 50, 1)
 
 	else if(istype(W, /obj/item/reagent_containers/glass) || istype(W, /obj/item/reagent_containers/food))
 		if(container)

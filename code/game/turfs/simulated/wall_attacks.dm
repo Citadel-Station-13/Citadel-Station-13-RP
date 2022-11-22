@@ -101,7 +101,7 @@
 	add_fingerprint(user)
 	user.setClickCooldown(user.get_attack_speed())
 	var/rotting = (locate(/obj/effect/overlay/wallrot) in src)
-	if (HULK in user.mutations)
+	if (MUTATION_HULK in user.mutations)
 		if (rotting || !prob(material.hardness))
 			success_smash(user)
 		else
@@ -207,7 +207,7 @@
 			var/obj/item/weldingtool/WT = W
 			if( WT.remove_fuel(0,user) )
 				to_chat(user, "<span class='notice'>You burn away the fungi with \the [WT].</span>")
-				playsound(src, WT.usesound, 10, 1)
+				playsound(src, WT.tool_sound, 10, 1)
 				for(var/obj/effect/overlay/wallrot/WR in src)
 					qdel(WR)
 				return
@@ -256,8 +256,8 @@
 
 		if(WT.remove_fuel(0,user))
 			to_chat(user, "<span class='notice'>You start repairing the damage to [src].</span>")
-			playsound(src.loc, WT.usesound, 100, 1)
-			if(do_after(user, max(5, damage / 5) * WT.toolspeed) && WT && WT.isOn())
+			playsound(src.loc, WT.tool_sound, 100, 1)
+			if(do_after(user, max(5, damage / 5) * WT.tool_speed) && WT && WT.isOn())
 				to_chat(user, "<span class='notice'>You finish repairing the damage to [src].</span>")
 				take_damage(-damage)
 		else
@@ -281,7 +281,7 @@
 				to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 				return
 			dismantle_verb = "cutting"
-			dismantle_sound = W.usesound
+			dismantle_sound = W.tool_sound
 		//	cut_delay *= 0.7 // Tools themselves now can shorten the time it takes.
 		else if(istype(W,/obj/item/melee/energy/blade))
 			dismantle_sound = "sparks"
@@ -315,7 +315,7 @@
 			if(cut_delay<0)
 				cut_delay = 0
 
-			if(!do_after(user,cut_delay * W.toolspeed))
+			if(!do_after(user,cut_delay * W.tool_speed))
 				return
 
 			to_chat(user, "<span class='notice'>You remove the outer plating.</span>")
@@ -328,7 +328,7 @@
 		switch(construction_stage)
 			if(6)
 				if (W.is_wirecutter())
-					playsound(src, W.usesound, 100, 1)
+					playsound(src, W.tool_sound, 100, 1)
 					construction_stage = 5
 					user.update_examine_panel(src)
 					to_chat(user, "<span class='notice'>You cut through the outer grille.</span>")
@@ -337,8 +337,8 @@
 			if(5)
 				if (W.is_screwdriver())
 					to_chat(user, "<span class='notice'>You begin removing the support lines.</span>")
-					playsound(src, W.usesound, 100, 1)
-					if(!do_after(user,40 * W.toolspeed) || !istype(src, /turf/simulated/wall) || construction_stage != 5)
+					playsound(src, W.tool_sound, 100, 1)
+					if(!do_after(user,40 * W.tool_speed) || !istype(src, /turf/simulated/wall) || construction_stage != 5)
 						return
 					construction_stage = 4
 					user.update_examine_panel(src)
@@ -349,7 +349,7 @@
 					construction_stage = 6
 					user.update_examine_panel(src)
 					to_chat(user, "<span class='notice'>You mend the outer grille.</span>")
-					playsound(src, W.usesound, 100, 1)
+					playsound(src, W.tool_sound, 100, 1)
 					update_icon()
 					return
 			if(4)
@@ -379,8 +379,8 @@
 						return
 				if(cut_cover)
 					to_chat(user, "<span class='notice'>You begin slicing through the metal cover.</span>")
-					playsound(src, W.usesound, 100, 1)
-					if(!do_after(user, 60 * W.toolspeed) || !istype(src, /turf/simulated/wall) || construction_stage != 4)
+					playsound(src, W.tool_sound, 100, 1)
+					if(!do_after(user, 60 * W.tool_speed) || !istype(src, /turf/simulated/wall) || construction_stage != 4)
 						return
 					construction_stage = 3
 					user.update_examine_panel(src)
@@ -389,8 +389,8 @@
 					return
 				else if (W.is_screwdriver())
 					to_chat(user, "<span class='notice'>You begin screwing down the support lines.</span>")
-					playsound(src, W.usesound, 100, 1)
-					if(!do_after(user,40 * W.toolspeed) || !istype(src, /turf/simulated/wall) || construction_stage != 4)
+					playsound(src, W.tool_sound, 100, 1)
+					if(!do_after(user,40 * W.tool_speed) || !istype(src, /turf/simulated/wall) || construction_stage != 4)
 						return
 					construction_stage = 5
 					user.update_examine_panel(src)
@@ -400,8 +400,8 @@
 			if(3)
 				if (W.is_crowbar())
 					to_chat(user, "<span class='notice'>You struggle to pry off the cover.</span>")
-					playsound(src, W.usesound, 100, 1)
-					if(!do_after(user,100 * W.toolspeed) || !istype(src, /turf/simulated/wall) || construction_stage != 3)
+					playsound(src, W.tool_sound, 100, 1)
+					if(!do_after(user,100 * W.tool_speed) || !istype(src, /turf/simulated/wall) || construction_stage != 3)
 						return
 					construction_stage = 2
 					user.update_examine_panel(src)
@@ -411,8 +411,8 @@
 			if(2)
 				if (W.is_wrench())
 					to_chat(user, "<span class='notice'>You start loosening the anchoring bolts which secure the support rods to their frame.</span>")
-					playsound(src, W.usesound, 100, 1)
-					if(!do_after(user,40 * W.toolspeed) || !istype(src, /turf/simulated/wall) || construction_stage != 2)
+					playsound(src, W.tool_sound, 100, 1)
+					if(!do_after(user,40 * W.tool_speed) || !istype(src, /turf/simulated/wall) || construction_stage != 2)
 						return
 					construction_stage = 1
 					user.update_examine_panel(src)
@@ -435,8 +435,8 @@
 						cut_cover = 1
 				if(cut_cover)
 					to_chat(user, "<span class='notice'>You begin slicing through the support rods.</span>")
-					playsound(src, W.usesound, 100, 1)
-					if(!do_after(user,70 * W.toolspeed) || !istype(src, /turf/simulated/wall) || construction_stage != 1)
+					playsound(src, W.tool_sound, 100, 1)
+					if(!do_after(user,70 * W.tool_speed) || !istype(src, /turf/simulated/wall) || construction_stage != 1)
 						return
 					construction_stage = 0
 					user.update_examine_panel(src)
@@ -446,8 +446,8 @@
 			if(0)
 				if(W.is_crowbar())
 					to_chat(user, "<span class='notice'>You struggle to pry off the outer sheath.</span>")
-					playsound(src, W.usesound, 100, 1)
-					if(!do_after(user,100 * W.toolspeed) || !istype(src, /turf/simulated/wall) || !user || !W || !T )
+					playsound(src, W.tool_sound, 100, 1)
+					if(!do_after(user,100 * W.tool_speed) || !istype(src, /turf/simulated/wall) || !user || !W || !T )
 						return
 					if(user.loc == T && user.get_active_held_item() == W )
 						to_chat(user, "<span class='notice'>You pry off the outer sheath.</span>")
@@ -457,4 +457,3 @@
 	if(istype(W,/obj/item/frame))
 		var/obj/item/frame/F = W
 		F.try_build(src, user)
-

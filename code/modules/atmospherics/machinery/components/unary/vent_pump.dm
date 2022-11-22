@@ -55,6 +55,9 @@
 	use_power = USE_POWER_IDLE
 	icon_state = "map_vent_out"
 
+/obj/machinery/atmospherics/component/unary/vent_pump/on/welded
+	welded = 1
+
 /obj/machinery/atmospherics/component/unary/vent_pump/aux
 	icon_state = "map_vent_aux"
 	icon_connect_type = "-aux"
@@ -394,9 +397,9 @@
 		var/obj/item/weldingtool/WT = W
 		if (WT.remove_fuel(0,user))
 			to_chat(user, "<span class='notice'>Now welding the vent.</span>")
-			if(do_after(user, 20 * WT.toolspeed))
+			if(do_after(user, 20 * WT.tool_speed))
 				if(!src || !WT.isOn()) return
-				playsound(src.loc, WT.usesound, 50, 1)
+				playsound(src.loc, WT.tool_sound, 50, 1)
 				if(!welded)
 					user.visible_message("<span class='notice'>\The [user] welds the vent shut.</span>", "<span class='notice'>You weld the vent shut.</span>", "You hear welding.")
 					welded = 1
@@ -438,9 +441,9 @@
 	if(unsafe_pressure())
 		to_chat(user, "<span class='warning'>You feel a gust of air blowing in your face as you try to unwrench [src]. Maybe you should reconsider..</span>")
 	add_fingerprint(user)
-	playsound(src, W.usesound, 50, 1)
+	playsound(src, W.tool_sound, 50, 1)
 	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
-	if (do_after(user, 40 * W.toolspeed))
+	if (do_after(user, 40 * W.tool_speed))
 		user.visible_message( \
 			"<span class='notice'>\The [user] unfastens \the [src].</span>", \
 			"<span class='notice'>You have unfastened \the [src].</span>", \

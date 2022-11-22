@@ -41,3 +41,15 @@ GLOBAL_LIST_EMPTY(typelistkeys)
 	for (var/saving in savings)
 		to_chat(world, "Savings for [saving]: [savings[saving]] lists, [saveditems[saving]] items")
 #endif
+
+/datum/proc/has_typelist(key)
+	var/list/dlist = GLOB.typelists[type]
+	if(!dlist)
+		return FALSE
+	return !!dlist[key]
+
+/datum/proc/get_typelist(key)
+	var/list/dlist = GLOB.typelists[type]
+	if(!dlist)
+		return
+	return dlist[key]

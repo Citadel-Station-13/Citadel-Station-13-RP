@@ -109,7 +109,7 @@
 	var/turf/T = get_step(src, movedir)
 	if(!T)
 		return
-	affecting.len = max(min(affecting.len, 10, 150 - T.contents.len), 0)
+	affecting.len = max(min(affecting.len, 150 - T.contents.len), 0)
 	if(!affecting.len)
 		return
 	var/items_moved = 0
@@ -290,8 +290,8 @@
 			if(!WT.remove_fuel(0, user))
 				to_chat(user, "The welding tool must be on to complete this task.")
 				return
-			playsound(src, WT.usesound, 50, 1)
-			if(do_after(user, 20 * WT.toolspeed))
+			playsound(src, WT.tool_sound, 50, 1)
+			if(do_after(user, 20 * WT.tool_speed))
 				if(!src || !WT.isOn()) return
 				to_chat(user, "<span class='notice'>You deconstruct the frame.</span>")
 				new /obj/item/stack/material/steel( src.loc, 2 )

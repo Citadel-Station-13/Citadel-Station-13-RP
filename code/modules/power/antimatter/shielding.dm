@@ -1,5 +1,5 @@
-//like orange but only checks north/south/east/west for one step
-proc/cardinalrange(var/center)
+/// Like orange but only checks north/south/east/west for one step.
+/proc/cardinalrange(var/center)
 	var/list/things = list()
 	for(var/direction in GLOB.cardinal)
 		var/turf/T = get_step(center, direction)
@@ -13,8 +13,8 @@ proc/cardinalrange(var/center)
 
 	icon = 'icons/obj/machines/antimatter.dmi'
 	icon_state = "shield"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	dir = 1
 	use_power = USE_POWER_OFF //Living things generally dont use power
 	idle_power_usage = 0
@@ -87,7 +87,7 @@ proc/cardinalrange(var/center)
 	return 0
 
 
-/obj/machinery/am_shielding/ex_act(severity)
+/obj/machinery/am_shielding/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			stability -= 80
@@ -189,7 +189,7 @@ proc/cardinalrange(var/center)
 	icon_state = "box"
 	item_state = "electronic"
 	w_class = ITEMSIZE_LARGE
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 1
 	throw_range = 2
 	matter = list(MAT_STEEL = 100)

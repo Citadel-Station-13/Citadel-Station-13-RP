@@ -72,7 +72,7 @@
 		Bump(A)
 
 
-/obj/effect/accelerated_particle/ex_act(severity)
+/obj/effect/accelerated_particle/legacy_ex_act(severity)
 	qdel(src)
 
 /obj/effect/accelerated_particle/singularity_act()

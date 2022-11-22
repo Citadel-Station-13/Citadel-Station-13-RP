@@ -14,7 +14,7 @@
 	name = "baby slime"
 	icon = 'icons/mob/slimes.dmi'
 	icon_state = "grey baby slime"
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	var/is_adult = 0
 	speak_emote = list("chirps")
 
@@ -185,7 +185,7 @@
 	powerlevel = 0 // oh no, the power!
 	..()
 
-/mob/living/carbon/slime/ex_act(severity)
+/mob/living/carbon/slime/legacy_ex_act(severity)
 	..()
 
 	var/b_loss = null
@@ -290,7 +290,7 @@
 
 			attacked += 10
 			if (prob(90))
-				if (HULK in M.mutations)
+				if (MUTATION_HULK in M.mutations)
 					damage += 5
 					if(Victim || Target)
 						Victim = null

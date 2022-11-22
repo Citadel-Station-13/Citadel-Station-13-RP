@@ -1,3 +1,10 @@
+
+/**
+ * ## BONFIRES
+ *
+ * Structure that makes a big old fire. You can add rods to construct a grill for grilling meat, or a stake for buckling people to the fire,
+ * salem style. Keeping the fire on requires oxygen. You can dismantle the bonfire back into logs when it is unignited.
+ */
 /obj/structure/bonfire
 	name = "bonfire"
 	desc = "For grilling, broiling, charring, smoking, heating, roasting, toasting, simmering, searing, melting, and occasionally burning things."
@@ -5,9 +12,15 @@
 	icon_state = "bonfire"
 	density = FALSE
 	anchored = TRUE
-	buckle_lying = FALSE
+	buckle_lying = 0
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_THROWN
+	buckle_pixel_y = 12
+
+	/// Is the bonfire lit?
 	var/burning = FALSE
-	var/next_fuel_consumption = 0 // world.time of when next item in fuel list gets eatten to sustain the fire.
+	/// world.time of when next item in fuel list gets eatten to sustain the fire.
+	var/next_fuel_consumption = 0
+	/// If the bonfire has a grill attached.
 	var/grill = FALSE
 	var/datum/material/material
 	var/set_temperature = T0C + 30	//K
@@ -15,6 +28,7 @@
 
 /obj/structure/bonfire/Initialize(mapload, material_name)
 	. = ..()
+
 	if(!material_name)
 		material_name = MAT_WOOD
 	material = get_material_by_name("[material_name]")
@@ -35,23 +49,26 @@
 	. = ..(mapload, MAT_SIFWOOD)
 
 /obj/structure/bonfire/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/stack/rods) && !can_buckle && !grill)
+	if(istype(W, /obj/item/stack/rods) && !buckle_allowed && !grill)
 		var/obj/item/stack/rods/R = W
 		var/choice = input(user, "What would you like to construct?", "Bonfire") as null|anything in list("Stake","Grill")
+
+		if(!choice)
+			return
+
+		R.use(1)
 		switch(choice)
 			if("Stake")
-				R.use(1)
-				can_buckle = TRUE
-				buckle_require_restraints = TRUE
-				to_chat(user, "<span class='notice'>You add a rod to \the [src].</span>")
+				buckle_allowed = TRUE
+				buckle_flags |= BUCKLING_REQUIRES_RESTRAINTS
+				to_chat(user, SPAN_NOTICE("You add a rod to \the [src]."))
 				var/mutable_appearance/rod_underlay = mutable_appearance('icons/obj/structures.dmi', "bonfire_rod")
 				rod_underlay.pixel_y = 16
 				rod_underlay.appearance_flags = RESET_COLOR|PIXEL_SCALE|TILE_BOUND
 				underlays += rod_underlay
 			if("Grill")
-				R.use(1)
 				grill = TRUE
-				to_chat(user, "<span class='notice'>You add a grill to \the [src].</span>")
+				to_chat(user, SPAN_NOTICE("You add a grill to \the [src]."))
 				update_icon()
 			else
 				return ..()
@@ -83,7 +100,7 @@
 			user.visible_message("[user] dismantles down \the [src].", "You dismantle \the [src].")
 			qdel(src)
 	else
-		to_chat(user, "<span class='warning'>\The [src] is still burning. Extinguish it first if you want to dismantle it.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] is still burning. Extinguish it first if you want to dismantle it."))
 
 /obj/structure/bonfire/proc/get_fuel_amount()
 	var/F = 0
@@ -101,7 +118,7 @@
 	if(get_fuel_amount())
 		var/atom/movable/AM = pop(contents)
 		AM.forceMove(get_turf(src))
-		to_chat(user, "<span class='notice'>You take \the [AM] out of \the [src] before it has a chance to burn away.</span>")
+		to_chat(user, SPAN_NOTICE("You take \the [AM] out of \the [src] before it has a chance to burn away."))
 		update_icon()
 
 /obj/structure/bonfire/permanent/remove_fuel(mob/user)
@@ -109,40 +126,37 @@
 
 /obj/structure/bonfire/proc/add_fuel(atom/movable/new_fuel, mob/user)
 	if(get_fuel_amount() >= 20)
-		to_chat(user, "<span class='warning'>\The [src] already has enough fuel!</span>")
+		to_chat(user, SPAN_WARNING("\The [src] already has enough fuel!"))
 		return FALSE
 	if(istype(new_fuel, /obj/item/stack/material/wood) || istype(new_fuel, /obj/item/stack/material/log) )
 		var/obj/item/stack/F = new_fuel
 		var/obj/item/stack/S = F.split(1)
 		if(S)
 			S.forceMove(src)
-			to_chat(user, "<span class='warning'>You add \the [new_fuel] to \the [src].</span>")
+			to_chat(user, SPAN_WARNING("You add \the [new_fuel] to \the [src]."))
 			update_icon()
 			return TRUE
 		return FALSE
 	else
-		to_chat(user, "<span class='warning'>\The [src] needs raw wood to burn, \a [new_fuel] won't work.</span>")
+		to_chat(user, SPAN_WARNING("\The [src] needs raw wood to burn, \a [new_fuel] won't work."))
 		return FALSE
 
 /obj/structure/bonfire/permanent/add_fuel(mob/user)
-	to_chat(user, "<span class='warning'>\The [src] has plenty of fuel and doesn't need more fuel.</span>")
+	to_chat(user, SPAN_WARNING("\The [src] has plenty of fuel and doesn't need more fuel."))
 
-/obj/structure/bonfire/proc/consume_fuel(var/obj/item/stack/consumed_fuel)
+/obj/structure/bonfire/proc/consume_fuel(obj/item/stack/consumed_fuel)
 	if(!istype(consumed_fuel))
 		qdel(consumed_fuel) // Don't know, don't care.
 		return FALSE
 
-	if(istype(consumed_fuel, /obj/item/stack/material/log))
-		next_fuel_consumption = world.time + 4 MINUTES
-		qdel(consumed_fuel)
+	if(consumed_fuel.use(1))
+		if(istype(consumed_fuel, /obj/item/stack/material/log))
+			next_fuel_consumption = world.time + 8 MINUTES //Wood does burn much longer than 2 minutes
+		else if(istype(consumed_fuel, /obj/item/stack/material/wood)) // One log makes two planks of wood.
+			next_fuel_consumption = world.time + 4 MINUTE
 		update_icon()
 		return TRUE
 
-	else if(istype(consumed_fuel, /obj/item/stack/material/wood)) // One log makes two planks of wood.
-		next_fuel_consumption = world.time + 2 MINUTE
-		qdel(consumed_fuel)
-		update_icon()
-		return TRUE
 	return FALSE
 
 /obj/structure/bonfire/permanent/consume_fuel()
@@ -158,15 +172,17 @@
 	if(burning)
 		burning = FALSE
 		update_icon()
+		QDEL_NULL(particles)
 		STOP_PROCESSING(SSobj, src)
-		visible_message("<span class='notice'>\The [src] stops burning.</span>")
+		visible_message(SPAN_NOTICE("\The [src] stops burning."))
 
 /obj/structure/bonfire/proc/ignite()
 	if(!burning && get_fuel_amount())
 		burning = TRUE
 		update_icon()
+		particles = new /particles/bonfire()
 		START_PROCESSING(SSobj, src)
-		visible_message("<span class='warning'>\The [src] starts burning!</span>")
+		visible_message(SPAN_WARNING("\The [src] starts burning!"))
 
 /obj/structure/bonfire/proc/burn()
 	var/turf/current_location = get_turf(src)
@@ -218,7 +234,7 @@
 		extinguish()
 		return
 	if(world.time >= next_fuel_consumption)
-		if(!consume_fuel(pop(contents)))
+		if(!consume_fuel(DEFAULTPICK(contents, null)))
 			extinguish()
 			return
 	if(!grill)
@@ -237,7 +253,7 @@
 					if(heat_transfer > 0)
 						heat_transfer = min(heat_transfer , heating_power)
 
-						removed.add_thermal_energy(heat_transfer)
+						removed.adjust_thermal_energy(heat_transfer)
 
 				env.merge(removed)
 
@@ -247,13 +263,6 @@
 /obj/structure/bonfire/water_act(amount)
 	if(prob(amount * 10))
 		extinguish()
-
-/obj/structure/bonfire/post_buckle_mob(mob/living/M)
-	if(M.buckled == src) // Just buckled someone
-		M.pixel_y += 13
-	else // Just unbuckled someone
-		M.pixel_y -= 13
-	update_icon()
 
 /obj/structure/fireplace //more like a space heater than a bonfire. A cozier alternative to both.
 	name = "fireplace"
@@ -318,17 +327,15 @@
 		qdel(consumed_fuel) // Don't know, don't care.
 		return FALSE
 
-	if(istype(consumed_fuel, /obj/item/stack/material/log))
-		next_fuel_consumption = world.time + 2 MINUTES
-		qdel(consumed_fuel)
+	
+	if(consumed_fuel.use(1))
+		if(istype(consumed_fuel, /obj/item/stack/material/log))
+			next_fuel_consumption = world.time + 10 MINUTES
+		else if(istype(consumed_fuel, /obj/item/stack/material/wood)) // One log makes two planks of wood.
+			next_fuel_consumption = world.time + 5 MINUTE
 		update_icon()
 		return TRUE
 
-	else if(istype(consumed_fuel, /obj/item/stack/material/wood)) // One log makes two planks of wood.
-		next_fuel_consumption = world.time + 1 MINUTE
-		qdel(consumed_fuel)
-		update_icon()
-		return TRUE
 	return FALSE
 
 /obj/structure/fireplace/proc/check_oxygen()
@@ -386,7 +393,7 @@
 		extinguish()
 		return
 	if(world.time >= next_fuel_consumption)
-		if(!consume_fuel(pop(contents)))
+		if(!consume_fuel(DEFAULTPICK(contents, null)))
 			extinguish()
 			return
 
@@ -403,7 +410,7 @@
 					if(heat_transfer > 0)
 						heat_transfer = min(heat_transfer , heating_power)
 
-						removed.add_thermal_energy(heat_transfer)
+						removed.adjust_thermal_energy(heat_transfer)
 
 				env.merge(removed)
 

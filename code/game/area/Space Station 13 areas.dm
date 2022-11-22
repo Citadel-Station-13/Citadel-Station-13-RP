@@ -535,6 +535,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	var/asteroid_spawns = list()
 	var/mob_spawns = list()
 	var/shuttle_area //It would be neat if this were more dynamic, but eh.
+	ambience = AMBIENCE_SPACE
+//	has_gravity = FALSE
 
 /area/asteroid/rogue/zone1
 	name = "Asteroid Belt Zone 1"
@@ -1647,6 +1649,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Pool"
 	icon_state = "pool"
 
+/area/crew_quarters/pool/changing_room
+	name = "\improper Pool Changing Room"
+	icon_state = "pool"
+
+/area/crew_quarters/pool/emergency_closet
+	name = "\improper Poolside Emergency Closet"
+	icon_state = "maint_locker"
+
 /area/crew_quarters/cafeteria
 	name = "\improper Cafeteria"
 	icon_state = "cafeteria"
@@ -2026,35 +2036,36 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 //Solars
 
-/area/solar
+/area/solar/
 	requires_power = 1
 	always_unpowered = 1
 	dynamic_lighting = 0
 	ambience = AMBIENCE_SPACE
 
-	auxport
-		name = "\improper Fore Port Solar Array"
-		icon_state = "panelsA"
+/area/solar/auxport
+	name = "\improper Fore Port Solar Array"
+	icon_state = "panelsA"
 
-	auxstarboard
-		name = "\improper Fore Starboard Solar Array"
-		icon_state = "panelsA"
+/area/solar/auxstarboard
+	name = "\improper Fore Starboard Solar Array"
+	icon_state = "panelsA"
 
-	fore
-		name = "\improper Fore Solar Array"
-		icon_state = "yellow"
+/area/solar/fore
+	name = "\improper Fore Solar Array"
+	icon_state = "yellow"
 
-	aft
-		name = "\improper Aft Solar Array"
-		icon_state = "aft"
+/area/solar/aft
+	name = "\improper Aft Solar Array"
+	icon_state = "aft"
 
-	starboard
-		name = "\improper Aft Starboard Solar Array"
-		icon_state = "panelsS"
+/area/solar/starboard
+	name = "\improper Aft Starboard Solar Array"
+	icon_state = "panelsS"
 
-	port
-		name = "\improper Aft Port Solar Array"
-		icon_state = "panelsP"
+/area/solar/port
+	name = "\improper Aft Port Solar Array"
+	icon_state = "panelsP"
+
 
 /area/maintenance/auxsolarport
 	name = "Solar Maintenance - Fore Port"
@@ -2245,6 +2256,22 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/medical/virologyisolation
 	name = "\improper Virology Isolation"
+	icon_state = "virology"
+
+/area/medical/virologypurge
+	name = "\improper Virology Purge"
+	icon_state = "virology"
+
+/area/medical/virologytransitwest
+	name = "\improper Virology Transit Hub - West"
+	icon_state = "virology"
+
+/area/medical/virologytransiteast
+	name = "\improper Virology Transit Hub - East"
+	icon_state = "virology"
+
+/area/medical/virologymaint
+	name = "\improper Virology Maintenance Shaft"
 	icon_state = "virology"
 
 /area/medical/recoveryrestroom
@@ -2559,6 +2586,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Quartermasters"
 	icon_state = "quart"
 
+/area/quartermaster/hallway
+	name = "\improper Cargo Hallway"
+	icon_state = "quart"
+
 /area/quartermaster/office
 	name = "\improper Cargo Office"
 	icon_state = "quartoffice"
@@ -2588,9 +2619,15 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Cargo Mining Dock"
 	icon_state = "mining"
 
+/area/quartermaster/mining_airlock
+	name = "\improper Mining Airlock"
+	icon_state = "mining"
 /area/quartermaster/belterdock
 	name = "\improper Cargo Belter Access"
 	icon_state = "mining"
+
+/area/quartermaster/garage
+	name = "\improper Cargo Garage"
 
 // SCIENCE
 
@@ -2722,6 +2759,16 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/rnd/outpost/eva
 	name = "Research Outpost EVA Storage"
 	icon_state = "eva"
+
+/area/rnd/outpost/maintenance
+	name = "\improper Research Outpost Maintenence"
+	area_flags = AREA_RAD_SHIELDED
+	sound_env = TUNNEL_ENCLOSED
+	turf_initializer = new /datum/turf_initializer/maintenance()
+	ambience = AMBIENCE_MAINTENANCE
+
+/area/rnd/outpost/underground
+	name = "\improper Research Outpost Underground"
 
 /area/rnd/outpost/chamber
 	name = "\improper Research Outpost Burn Chamber"

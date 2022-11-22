@@ -20,7 +20,7 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 	if(vessel)
 		return
 
-	if(species.flags & NO_BLOOD)
+	if(species.species_flags & NO_BLOOD)
 		return
 
 	vessel = new/datum/reagents(species.blood_volume)
@@ -309,8 +309,9 @@ var/const/CE_STABLE_THRESHOLD = 0.5
 					return D
 	return res
 
-proc/blood_incompatible(donor,receiver,donor_species,receiver_species)
-	if(!donor || !receiver) return 0
+/proc/blood_incompatible(donor, receiver, donor_species, receiver_species)
+	if(!donor || !receiver)
+		return 0
 
 	if(donor_species && receiver_species)
 		if(donor_species != receiver_species)
@@ -332,7 +333,7 @@ proc/blood_incompatible(donor,receiver,donor_species,receiver_species)
 		//AB is a universal receiver.
 	return 0
 
-proc/blood_splatter(var/target,var/datum/reagent/blood/source,var/large)
+/proc/blood_splatter(target, datum/reagent/blood/source, large)
 
 	// We're not going to splatter at all because we're in something and that's silly.
 	if(istype(source,/atom/movable))

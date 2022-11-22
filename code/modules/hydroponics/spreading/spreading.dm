@@ -45,13 +45,13 @@
 
 /obj/effect/plant
 	name = "plant"
-	anchored = 1
-	can_buckle = 1
+	anchored = TRUE
+	buckle_allowed = TRUE
 	opacity = 0
 	density = 0
 	icon = 'icons/obj/hydroponics_growing.dmi'
 	icon_state = "bush4-1"
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	mouse_opacity = 2
 
 	var/health = 15
@@ -121,7 +121,8 @@
 	//Some plants eat through plating.
 	if(islist(seed.chems) && !isnull(seed.chems["pacid"]))
 		var/turf/T = get_turf(src)
-		T.ex_act(prob(80) ? 3 : 2)
+		var/P = prob(80)? 3 : 2
+		LEGACY_EX_ACT(T, P, null)
 
 /obj/effect/plant/update_icon()
 	//TODO: should really be caching this.
@@ -274,7 +275,7 @@
 		health -= aggression*5
 		check_health()
 
-/obj/effect/plant/ex_act(severity)
+/obj/effect/plant/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			die_off()

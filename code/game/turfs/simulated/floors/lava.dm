@@ -6,7 +6,7 @@
 	gender = PLURAL // So it says "That's some lava." on examine.
 	icon = 'icons/turf/outdoors.dmi'
 	icon_state = "lava"
-	edge_blending_priority = 4
+	edge_blending_priority = 1
 	light_range = 2
 	light_power = 0.75
 	light_color = LIGHT_COLOR_LAVA
@@ -15,7 +15,7 @@
 	special_temperature = T0C + 2200
 
 /turf/simulated/floor/outdoors/lava/indoors
-	outdoors = TRUE
+	outdoors = FALSE
 
 // For maximum pedantry.
 /turf/simulated/floor/outdoors/lava/Initialize(mapload)
@@ -32,11 +32,12 @@
 	name = "magma"
 
 /turf/simulated/floor/outdoors/lava/Entered(atom/movable/AM)
-	..()
+	. = ..()
 	if(burn_stuff(AM))
 		START_PROCESSING(SSobj, src)
 
-/turf/simulated/floor/outdoors/lava/hitby(atom/movable/AM)
+/turf/simulated/floor/outdoors/lava/throw_landed(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	if(burn_stuff(AM))
 		START_PROCESSING(SSobj, src)
 

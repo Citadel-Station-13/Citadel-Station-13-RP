@@ -86,9 +86,7 @@
 	panel_open = 1
 	},
 /obj/structure/cable{
-	icon_state = "0-2";
-	pixel_y = 1;
-	d2 = 2
+	icon_state = "0-2"
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/submap/cave/deadBeacon)

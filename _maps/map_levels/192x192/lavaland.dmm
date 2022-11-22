@@ -20,10 +20,6 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/lavaland/central/base/common)
-"bJ" = (
-/mob/living/simple_mob/construct/shade/surt,
-/turf/simulated/floor/outdoors/lavaland,
-/area/lavaland/central/explored)
 "bM" = (
 /turf/simulated/wall/lavaland,
 /area/lavaland/central/transit)
@@ -329,7 +325,6 @@
 	inputting = 2
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
@@ -365,8 +360,6 @@
 /area/lavaland/central/base/common)
 "ig" = (
 /obj/structure/cable/green{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/yellow{
@@ -379,8 +372,6 @@
 	target_pressure = 15000
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
@@ -403,8 +394,6 @@
 /area/lavaland/central/base/common)
 "ix" = (
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/component/binary/pump/high_power/on{
@@ -418,8 +407,6 @@
 	req_access = list(48)
 	},
 /obj/structure/cable/green{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
@@ -429,7 +416,6 @@
 	dir = 1
 	},
 /obj/structure/cable/green{
-	d2 = 8;
 	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
@@ -467,15 +453,12 @@
 	anchored = 1
 	},
 /obj/structure/cable/green{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "kr" = (
 /obj/structure/cable/green{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
@@ -485,8 +468,6 @@
 	dir = 8
 	},
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -502,8 +483,6 @@
 	dir = 9
 	},
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -516,8 +495,6 @@
 /area/lavaland/central/base/common)
 "lA" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance{
@@ -534,8 +511,6 @@
 /area/lavaland/central/base/common)
 "lD" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -553,7 +528,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/access_button{
 	dir = 4;
 	frequency = 1384;
@@ -572,7 +547,7 @@
 	id_tag = "mining_engine";
 	pixel_y = -25
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "mh" = (
@@ -582,7 +557,7 @@
 	id_tag = "mining_engine";
 	power_rating = 20000
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "mm" = (
@@ -653,8 +628,6 @@
 /area/lavaland/central/base/common)
 "nq" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -784,8 +757,6 @@
 	dir = 9
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
@@ -828,8 +799,6 @@
 "pz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -872,7 +841,7 @@
 	id_tag = "mining_engine";
 	power_rating = 20000
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "pQ" = (
@@ -891,8 +860,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -940,8 +907,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -1014,7 +979,6 @@
 	pixel_y = -28
 	},
 /obj/structure/cable{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
@@ -1046,8 +1010,6 @@
 	dir = 4
 	},
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
@@ -1221,7 +1183,7 @@
 /turf/simulated/floor/wood,
 /area/lavaland/central/base/common)
 "vu" = (
-/mob/living/simple_mob/animal/space/bats/surt,
+/obj/structure/mob_spawner/gutshank,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/explored)
 "vz" = (
@@ -1477,8 +1439,6 @@
 /area/lavaland/central/base/common)
 "zv" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/visible/universal,
@@ -1504,7 +1464,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	dir = 8;
 	frequency = 1384;
@@ -1661,7 +1621,7 @@
 /turf/simulated/floor/tiled/old_tile,
 /area/lavaland/central/base/common)
 "Fe" = (
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/map_helper/airlock/sensor/ext_sensor,
 /obj/machinery/airlock_sensor/airlock_exterior{
 	dir = 4;
 	frequency = 1384;
@@ -1888,10 +1848,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
+"Lc" = (
+/obj/structure/mob_spawner/goliath,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/central/explored)
 "Lg" = (
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
@@ -1945,7 +1907,7 @@
 	pixel_y = 25;
 	req_one_access = list(48)
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
@@ -1982,7 +1944,7 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(48)
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
@@ -2091,6 +2053,10 @@
 	},
 /turf/simulated/floor/carpet/blucarpet,
 /area/lavaland/central/base/common)
+"PP" = (
+/obj/structure/mob_spawner/goliath,
+/turf/simulated/floor/outdoors/lavaland,
+/area/lavaland/central/unexplored)
 "PZ" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -2118,7 +2084,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/structure/fans/tiny,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
@@ -2170,14 +2136,14 @@
 /obj/machinery/door/firedoor{
 	req_one_access = list(48)
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "RJ" = (
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
 	frequency = 1384;
@@ -2216,7 +2182,7 @@
 	id_tag = "mining_outpost";
 	pixel_y = -25
 	},
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/light/small,
 /obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
 	dir = 1;
@@ -2224,7 +2190,7 @@
 	id_tag = "mining_outpost";
 	power_rating = 20000
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Sm" = (
@@ -2234,7 +2200,7 @@
 	id_tag = "mining_outpost";
 	power_rating = 20000
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Ss" = (
@@ -2249,7 +2215,7 @@
 	pixel_y = -25;
 	req_one_access = list(48)
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
@@ -2328,8 +2294,6 @@
 /area/lavaland/central/base/common)
 "TJ" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /obj/machinery/light/small{
@@ -2344,7 +2308,7 @@
 /obj/machinery/door/airlock/glass_external{
 	req_one_access = list(48)
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/plating,
 /area/lavaland/central/base/common)
 "TW" = (
@@ -2460,7 +2424,7 @@
 	pixel_x = -22;
 	pixel_y = -4
 	},
-/atom/movable/map_helper/airlock/sensor/ext_sensor,
+/obj/map_helper/airlock/sensor/ext_sensor,
 /turf/simulated/floor/outdoors/lavaland,
 /area/lavaland/central/base/common)
 "Wb" = (
@@ -6775,13 +6739,13 @@ MX
 MX
 MX
 gy
-bJ
 gy
 gy
 gy
 gy
 gy
-bJ
+gy
+gy
 gy
 MX
 MX
@@ -8414,7 +8378,7 @@ DG
 DG
 DG
 MX
-bJ
+vu
 MX
 MX
 MX
@@ -9194,7 +9158,7 @@ MX
 MX
 MX
 MX
-bJ
+gy
 MX
 MX
 gy
@@ -9481,7 +9445,7 @@ MX
 gy
 gy
 gy
-gy
+Lc
 MX
 MX
 MX
@@ -12188,7 +12152,7 @@ MX
 MX
 MX
 MX
-gy
+vu
 gy
 gy
 gy
@@ -16568,7 +16532,7 @@ RX
 RX
 MX
 MX
-gy
+Lc
 gy
 gy
 MX
@@ -19111,7 +19075,7 @@ MX
 MX
 MX
 MX
-gy
+vu
 MX
 MX
 MX
@@ -24775,7 +24739,7 @@ RX
 RX
 MX
 MX
-gy
+Lc
 gy
 gy
 gy
@@ -25005,7 +24969,7 @@ gy
 gy
 gy
 gy
-gy
+Lc
 MX
 RX
 RX
@@ -29447,7 +29411,7 @@ MX
 MX
 MX
 gy
-vu
+gy
 gy
 gy
 gy
@@ -30033,7 +29997,7 @@ MX
 gy
 gy
 gy
-gy
+vu
 MX
 MX
 RL
@@ -35651,7 +35615,7 @@ xd
 xd
 RL
 RL
-gy
+Lc
 gy
 RL
 RL
@@ -38461,7 +38425,7 @@ xd
 xd
 RX
 RX
-ax
+PP
 RX
 RX
 RX

@@ -284,7 +284,7 @@
 	flags = NOBLOODY
 	slot_flags = SLOT_BELT
 	force = 10
-	throwforce = 3
+	throw_force = 3
 	w_class = ITEMSIZE_NORMAL
 	damtype = HALLOSS
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined", "chastised", "flayed")
@@ -507,7 +507,7 @@
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "khlifebox"
 	desc = "This case can only hold the VM-LC91-1 and a manual."
-	item_state_slots = list(slot_r_hand_str = "syringe_kit", slot_l_hand_str = "syringe_kit")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syringe_kit", SLOT_ID_LEFT_HAND = "syringe_kit")
 	storage_slots = 2
 	can_hold = list(/obj/item/clothing/accessory/collar/vmcrystal)
 	max_storage_space = ITEMSIZE_COST_SMALL * 2
@@ -523,10 +523,10 @@
 	desc = "A cane used by a true gentlemen. Or a clown."
 	icon = 'icons/vore/custom_items_vr.dmi'
 	icon_state = "browncane"
-	item_icons = list (slot_r_hand_str = 'icons/vore/custom_items_vr.dmi', slot_l_hand_str = 'icons/vore/custom_items_vr.dmi')
-	item_state_slots = list(slot_r_hand_str = "browncanemob_r", slot_l_hand_str = "browncanemob_l")
+	item_icons = list (SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_vr.dmi', SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_vr.dmi')
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "browncanemob_r", SLOT_ID_LEFT_HAND = "browncanemob_l")
 	force = 5.0
-	throwforce = 7.0
+	throw_force = 7.0
 	w_class = ITEMSIZE_SMALL
 	matter = list(MAT_STEEL = 50)
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
@@ -542,10 +542,10 @@
     desc = "A really old looking wand with floating parts and cyan crystals, wich seem to radiate a cyan glow. The wand has a golden plaque on the side that would say Corncobble, but it is covered by a sSSticker saying Bloise."
     icon = 'icons/vore/custom_items_vr.dmi'
     icon_state = "alexiswand"
-    item_icons = list (slot_r_hand_str = 'icons/vore/custom_items_vr.dmi', slot_l_hand_str = 'icons/vore/custom_items_vr.dmi')
-    item_state_slots = list(slot_r_hand_str = "alexiswandmob_r", slot_l_hand_str = "alexiswandmob_l")
+    item_icons = list (SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_vr.dmi', SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_vr.dmi')
+    item_state_slots = list(SLOT_ID_RIGHT_HAND = "alexiswandmob_r", SLOT_ID_LEFT_HAND = "alexiswandmob_l")
     force = 1.0
-    throwforce = 2.0
+    throw_force = 2.0
     w_class = ITEMSIZE_SMALL
     matter = list(MAT_STEEL = 50)
     attack_verb = list("sparkled", "whacked", "twinkled", "radiated", "dazzled", "zapped")
@@ -554,15 +554,14 @@
     var/cooldown = 30
 
 /obj/item/cane/wand/attack_self(mob/user)
-    if(last_use + cooldown >= world.time)
-        return
-    playsound(loc, 'sound/weapons/sparkle.ogg', 50, 1)
-    user.visible_message("<span class='warning'> [user] swings their wand.</span>")
-    var/datum/effect_system/spark_spread/s = new
-    s.set_up(3, 1, src)
-    s.start()
-    last_use = world.time
-    qdel ()
+	if(last_use + cooldown >= world.time)
+		return
+	playsound(src, 'sound/weapons/sparkle.ogg', 50, 1)
+	user.visible_message("<span class='warning'> [user] swings their wand.</span>")
+	var/datum/effect_system/spark_spread/s = new
+	s.set_up(3, 1, src)
+	s.start()
+	last_use = world.time
 
 /obj/item/fluff/id_kit_ivy
 	name = "Holo-ID reprinter"
@@ -1145,11 +1144,12 @@
 	icon_state = "dragor_dot"
 	w_class = ITEMSIZE_SMALL
 
-	attack_self(mob/user as mob)
-		if(user.ckey == "pontifexminimus")
-			user.verbs |= /mob/living/carbon/human/proc/shapeshifter_select_gender
-		else
-			return
+/obj/item/fluff/dragor_dot/attack_self(mob/user)
+	if(user.ckey == "pontifexminimus")
+		user.verbs |= /mob/living/carbon/human/proc/shapeshifter_select_gender
+	else
+		return
+
 //LuminescentRing: Briana Moore
 /obj/item/storage/backpack/messenger/black/fluff/briana
 	name = "2561 graduation bag"
@@ -1176,11 +1176,7 @@
 	if(configured == 1)
 		return ..()
 
-	var/title
-	if(user.client.prefs.player_alt_titles[user.job])
-		title = user.client.prefs.player_alt_titles[user.job]
-	else
-		title = user.job
+	var/title = user.client.prefs.get_job_alt_title_name(SSjob.name_occupations[user.job]) || user.job
 	assignment = title
 	user.set_id_info(src)
 	if(user.mind && user.mind.initial_account)
@@ -1204,7 +1200,7 @@
 	name = "Aesthetic Science Goggles"
 	desc = "The goggles really do nothing this time!"
 	icon_state = "purple"
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	clothing_flags = ALLOWINTERNALS
 
 //General use, Verk felt like sharing.
@@ -1215,7 +1211,7 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "spiffygogs"
 	slot_flags = SLOT_EYES | SLOT_EARS
-	item_state_slots = list(slot_r_hand_str = "glasses", slot_l_hand_str = "glasses")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	toggleable = 1
 	off_state = "spiffygogsup"
 
@@ -1248,7 +1244,7 @@
 	desc = "Seems absurd, doesn't it? Yet, here we are. Generally considered dangerous contraband unless the user has permission from Central Command."
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "hand_tele"
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MAGNET = 5, TECH_BLUESPACE = 5, TECH_ILLEGAL = 7)
 
@@ -1538,7 +1534,7 @@
 	icon = 'icons/obj/device_alt.dmi'
 	icon_state = "motion2"
 	w_class = ITEMSIZE_TINY
-	item_flags = NOBLUDGEON
+	item_flags = ITEM_NOBLUDGEON
 
 	var/tele_name
 	var/obj/item/perfect_tele/tele_hand
@@ -1714,8 +1710,8 @@
 	desc = "This object is so fluffy. Just from the sight of it, you know that either something went wrong or someone spawned the incorrect item."
 	icon = 'icons/vore/custom_items_vr.dmi'
 	item_icons = list(
-				slot_l_hand_str = 'icons/vore/custom_items_left_hand_vr.dmi',
-				slot_r_hand_str = 'icons/vore/custom_items_right_hand_vr.dmi',
+				SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_left_hand_vr.dmi',
+				SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_right_hand_vr.dmi',
 				)
 
 /obj/item/material/twohanded/fluff/Initialize(mapload, material_key)
@@ -1817,13 +1813,13 @@
 	name = "Electrostaff"
 	desc = "Six-foot long staff from dull, rugged metal, with two thin spikes protruding from each end. Small etching near to the middle of it reads 'Children Of Nyx Facilities: Product No. 12'."
 	icon = 'icons/vore/custom_items_vr.dmi'
-	item_icons = list(slot_l_hand_str = 'icons/vore/custom_items_left_hand_vr.dmi', slot_r_hand_str = 'icons/vore/custom_items_right_hand_vr.dmi')
+	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_left_hand_vr.dmi', SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_right_hand_vr.dmi')
 	icon_state = "stunstaff00"
 	var/base_icon = "stunstaff"
 	force = 5
 	sharp = 0
 	edge = 0
-	throwforce = 7
+	throw_force = 7
 	w_class = ITEMSIZE_HUGE
 	origin_tech = list(TECH_COMBAT = 2)
 	attack_verb = list("beaten")
@@ -1895,7 +1891,7 @@
 	icon_state = "holster_stunstaff"
 	desc = "A sturdy synthetic leather sheath with matching belt and rubberized interior."
 	slot_flags = SLOT_BACK
-	item_icons = list(SLOT_ID_BACK = 'icons/vore/custom_onmob_vr.dmi', slot_l_hand_str = 'icons/vore/custom_items_left_hand_vr.dmi', slot_r_hand_str = 'icons/vore/custom_items_right_hand_vr.dmi')
+	item_icons = list(SLOT_ID_BACK = 'icons/vore/custom_onmob_vr.dmi', SLOT_ID_LEFT_HAND = 'icons/vore/custom_items_left_hand_vr.dmi', SLOT_ID_RIGHT_HAND = 'icons/vore/custom_items_right_hand_vr.dmi')
 
 	can_hold = list(/obj/item/melee/baton/fluff/stunstaff)
 
@@ -1926,7 +1922,7 @@
 	active = 1
 	embed_chance = active_embed_chance
 	force = active_force
-	throwforce = active_throwforce
+	throw_force = active_throwforce
 	sharp = 1
 	edge = 1
 	w_class = active_w_class
@@ -1939,14 +1935,14 @@
 	active = 0
 	embed_chance = initial(embed_chance)
 	force = initial(force)
-	throwforce = initial(throwforce)
+	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)
 	w_class = initial(w_class)
 
 /obj/item/melee/fluffstuff/attack_self(mob/living/user as mob)
 	if (active)
-		if ((CLUMSY in user.mutations) && prob(50))
+		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 			user.visible_message("<span class='danger'>\The [user] accidentally cuts \himself with \the [src].</span>",\
 			"<span class='danger'>You accidentally cut yourself with \the [src].</span>")
 			user.take_organ_damage(5,5)
@@ -1979,12 +1975,12 @@
 	active_throwforce = 7
 	active_w_class = ITEMSIZE_LARGE
 	force = 1
-	throwforce = 1
+	throw_force = 1
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
-	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi', SLOT_ID_BACK = 'icons/vore/custom_items_vr.dmi', SLOT_ID_SUIT = 'icons/vore/custom_items_vr.dmi')
+	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi', SLOT_ID_BACK = 'icons/vore/custom_items_vr.dmi', SLOT_ID_SUIT = 'icons/vore/custom_items_vr.dmi')
 	var/active_state = "wolfgirlsword"
 	allowed = list(/obj/item/shield/fluff/wolfgirlshield)
 	damtype = HALLOSS

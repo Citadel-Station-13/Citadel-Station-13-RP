@@ -9,7 +9,7 @@
 /atom/movable/screen
 	name = ""
 	icon = 'icons/mob/screen1.dmi'
-	appearance_flags = TILE_BOUND|PIXEL_SCALE|NO_CLIENT_COLOR
+	appearance_flags = PIXEL_SCALE | NO_CLIENT_COLOR
 	layer = LAYER_HUD_BASE
 	plane = PLANE_PLAYER_HUD
 	var/obj/master = null	//A reference to the object in the slot. Grabs or items, generally.
@@ -207,6 +207,7 @@
 				L.resist()
 
 		if("mov_intent")
+			// todo: reworks
 			if(isliving(usr))
 				if(iscarbon(usr))
 					var/mob/living/carbon/C = usr
@@ -318,7 +319,7 @@
 							to_chat(C, "<span class='warning'>You don't have an internals tank.</span>")
 							return
 		if("act_intent")
-			usr.a_intent_change("right")
+			usr.a_intent_change(INTENT_HOTKEY_RIGHT)
 		if(INTENT_HELP)
 			usr.a_intent = INTENT_HELP
 			usr.hud_used.action_intent.icon_state = "intent_help"
@@ -334,9 +335,6 @@
 
 		if("pull")
 			usr.stop_pulling()
-		if("throw")
-			if(!usr.stat && isturf(usr.loc) && !usr.restrained())
-				usr:toggle_throw_mode()
 		if("drop")
 			if(usr.client)
 				usr.client.drop_item()

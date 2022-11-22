@@ -22,12 +22,11 @@
 		F.dirt += 4
 	qdel(src)
 
-/obj/effect/debris/cleanable/greenglow
 
-	New()
-		..()
-		spawn(1200)// 2 minutes
-			qdel(src)
+/obj/effect/debris/cleanable/greenglow/New()
+	..()
+	spawn(1200)// 2 minutes
+		qdel(src)
 
 /obj/effect/debris/cleanable/dirt
 	name = "dirt"
@@ -73,7 +72,7 @@
 	density = 0
 	anchored = 1
 	plane = OBJ_PLANE
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "molten"
 
 /obj/effect/debris/cleanable/cobweb2

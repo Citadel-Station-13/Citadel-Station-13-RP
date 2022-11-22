@@ -54,13 +54,13 @@
 	if(linked)
 		user.set_machine(src)
 		user.reset_perspective(linked)
-	user.set_viewsize(world.view + extra_view)
+	user.client?.change_view(world.view + extra_view, TRUE, translocate = TRUE)
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/unlook)
 	LAZYDISTINCTADD(viewers, WEAKREF(user))
 
 /datum/tgui_module/ship/proc/unlook(var/mob/user)
 	user.reset_perspective()
-	user.set_viewsize() // reset to default
+	user.client?.change_view(world.view, translocate = FALSE) // reset to default
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 	LAZYREMOVE(viewers, WEAKREF(user))
 
@@ -174,13 +174,6 @@
 		if(linked.check_ownership(S))
 			sensors = S
 			break
-
-/datum/tgui_module/ship/fullmonty/relaymove(var/mob/user, direction)
-	if(viewing_overmap(user) && linked)
-		direction = turn(direction,pick(90,-90))
-		linked.relaymove(user, direction, accellimit)
-		return 1
-	return ..()
 
 // Beware ye eyes. This holds all of the data from helm, engine, and sensor control all at once.
 /datum/tgui_module/ship/fullmonty/ui_data(mob/user, datum/tgui/ui, datum/ui_state/state)

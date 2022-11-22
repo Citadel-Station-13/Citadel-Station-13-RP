@@ -47,10 +47,6 @@
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC"
 
-	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
-		return
-
 	if(IsGuestKey(key))
 		to_chat(src, "Guests may not use OOC.")
 		return
@@ -146,10 +142,6 @@
 	set desc = "Local OOC, seen only by those in view."
 	set category = "OOC"
 
-	if(say_disabled)	//This is here to try to identify lag problems
-		to_chat(src, "<span class='danger'>Speech is currently admin-disabled.</span>")
-		return
-
 	if(!mob)
 		return
 
@@ -216,7 +208,7 @@
 				receivers |= E.owner.client
 
 	// Admins with RLOOC displayed who weren't already in
-	for(var/client/admin in admins)
+	for(var/client/admin in GLOB.admins)
 		if(!(admin in receivers) && admin.is_preference_enabled(/datum/client_preference/holder/show_rlooc))
 			r_receivers |= admin
 
@@ -226,7 +218,7 @@
 	for(var/client/target in receivers)
 		var/admin_stuff = ""
 
-		if(target in admins)
+		if(target in GLOB.admins)
 			admin_stuff += "/([key])"
 
 		to_chat(target, "<span class='looc'>" +  "LOOC: " + "<EM>[display_name][admin_stuff]: </EM><span class='message'><span class='linkify'>[msg]</span></span></span>")
@@ -243,49 +235,3 @@
 	if(eyeobj)
 		return eyeobj
 	return src
-
-/client/verb/fit_viewport()
-	set name = "Fit Viewport"
-	set category = "OOC"
-	set desc = "Fit the width of the map window to match the viewport"
-
-	// Fetch the client's aspect ratio
-	var/view_size = getviewsize(view)
-	var/aspect_ratio = view_size[1] / view_size[2]
-
-	// Calculate desired pixel width using window size and aspect ratio
-	var/sizes = params2list(winget(src, "mainwindow.split;mapwindow", "size"))
-	var/map_size = splittext(sizes["mapwindow.size"], "x")
-	var/height = text2num(map_size[2])
-	var/desired_width = round(height * aspect_ratio)
-	if (text2num(map_size[1]) == desired_width)
-		return	// You're already good fam.
-
-	var/split_size = splittext(sizes["mainwindow.split.size"], "x")
-	var/split_width = text2num(split_size[1])
-
-	// Calculate and apply our best estimate
-	// +4 pixels are for the eidth of the splitter's handle
-	var/pct = 100 * (desired_width + 4) / split_width
-	winset(src, "mainwindow.split", "splitter=[pct]")
-
-	// Apply an ever-lowering offset until we finish or fail
-	var/delta
-	for(var/safety in 1 to 10)
-		var/after_size = winget(src, "mapwindow", "size")
-		map_size = splittext(after_size, "x")
-		var/got_width = text2num(map_size[1])
-
-		if (got_width == desired_width)
-			return	// Success!
-
-		// Calculate a probable delta value based on the diff
-		else if (isnull(delta))
-			delta = 100 * (desired_width - got_width) / split_width
-
-		// If we overshot, halve the delta and reverse direction
-		else if ((delta > 0 && got_width > desired_width) || (delta < 0 && got_width < desired_width))
-			delta = -delta/2
-
-		pct += delta
-		winset(src, "mainwindow.split", "splitter=[pct]")

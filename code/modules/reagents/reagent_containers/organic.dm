@@ -4,7 +4,7 @@
 	var/base_name = " "
 	desc = " "
 	var/base_desc = " "
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "null"
 	item_state = "null"
 	amount_per_transfer_from_this = 10
@@ -79,7 +79,7 @@
 		overlays += lid
 
 /obj/item/reagent_containers/organic/attack(mob/M as mob, mob/user as mob, def_zone)
-	if(force && !(item_flags & NOBLUDGEON) && user.a_intent == INTENT_HARM)
+	if(force && !(item_flags & ITEM_NOBLUDGEON) && user.a_intent == INTENT_HARM)
 		return	..()
 
 	if(standard_feed_mob(user, M))

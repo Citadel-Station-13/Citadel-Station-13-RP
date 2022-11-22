@@ -78,7 +78,7 @@
 	w_class = ITEMSIZE_NORMAL
 	ammo_type = /obj/item/ammo_casing/a12g/beanbag
 
-obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
+/obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 	set name = "Name Gun"
 	set category = "Object"
 	set desc = "Rename your gun. If you're the Warden."
@@ -115,6 +115,32 @@ obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 		to_chat(M, "Your gun is now sprited as [choice]. Lock and load.")
 		update_icon()
 		return 1
+
+//Don't you wish you had bigger arms?
+/obj/item/gun/projectile/shotgun/pump/combat/grit
+	name = "Grit"
+	desc = "This exotic ten gauge shotgun sports a custom paint job and a cylinder choke. At close ranges, it packs quite the punch."
+	icon_state = "grit"
+	item_state = "grit"
+	caliber = "10g"
+	ammo_type = /obj/item/ammo_casing/a10g/pellet/grit
+	fire_sound = 'sound/weapons/gunshot/musket.ogg'
+	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 4)
+	one_handed_penalty = 5
+	recoil = 10
+	accuracy = 40
+
+/*
+//This is being stubborn. Might need more input. / In fact, I'm gonna save this work for some larger kind of "Recoil Size Check" system later.
+/obj/item/gun/projectile/shotgun/pump/combat/grit/Fire(atom/target, mob/living/user)
+	. = ..()
+	if(user.mob_size < MOB_MEDIUM)
+		var/mob/living/L = target
+		var/throwdir = get_dir(user,L)
+		var/destination = turn(throwdir, 180)
+		user.forceMove(destination)
+		user.emote("flip")
+*/
 
 /obj/item/gun/projectile/shotgun/doublebarrel
 	name = "double-barreled shotgun"
@@ -202,7 +228,7 @@ obj/item/gun/projectile/shotgun/pump/combat/warden/verb/rename_gun()
 	ammo_type = /obj/item/ammo_casing/a12g/silver
 	holy = TRUE
 
-obj/item/gun/projectile/shotgun/doublebarrel/quad
+/obj/item/gun/projectile/shotgun/doublebarrel/quad
 	name = "quad-barreled shotgun"
 	desc = "A shotgun pattern designed to make the most out of the limited machining capability of the frontier. 4 Whole barrels of death, loads using 12 gauge rounds."
 	icon_state = "shotgun_q"
@@ -231,11 +257,13 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	desc = "Rip and tear, until it is done."
 	icon_state = "supershotgun"
 	item_state = "supershotgun"
+	caliber = "10g"
 	recoil = 0
 	accuracy = 80
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
-	ammo_type = /obj/item/ammo_casing/a12g/pellet
+	ammo_type = /obj/item/ammo_casing/a10g/silver
 	w_class = ITEMSIZE_NORMAL
+	safety_state = GUN_SAFETY_OFF
 	force = 15
 
 //Flaregun Code that may work?
@@ -290,6 +318,20 @@ obj/item/gun/projectile/shotgun/doublebarrel/quad
 	sharp = 1
 	edge = 1
 	holy = TRUE
+
+/obj/item/gun/projectile/shotgun/underslung
+	name = "underslung shotgun"
+	desc = "A compact shotgun designed to be mounted underneath a proper weapon, this secondary unit usually has a limited capacity."
+	icon_state = null
+	item_state = null
+	load_method = SINGLE_CASING
+	handle_casings = CYCLE_CASINGS
+	max_shells = 1
+	w_class = ITEMSIZE_TINY
+	caliber = "12g"
+	ammo_type = /obj/item/ammo_casing/a12g
+	one_handed_penalty = 0
+	safety_state = GUN_SAFETY_OFF
 
 //Foam Shotguns
 /obj/item/gun/projectile/shotgun/pump/foam

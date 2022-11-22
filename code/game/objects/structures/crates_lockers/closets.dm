@@ -216,18 +216,18 @@
 	update_icon()
 
 // this should probably use dump_contents()
-/obj/structure/closet/ex_act(severity)
+/obj/structure/closet/legacy_ex_act(severity)
 	switch(severity)
 		if(1)
 			for(var/atom/movable/A as mob|obj in src)//pulls everything out of the locker and hits it with an explosion
 				A.forceMove(src.loc)
-				A.ex_act(severity + 1)
+				LEGACY_EX_ACT(A, severity + 1, null)
 			qdel(src)
 		if(2)
 			if(prob(50))
 				for (var/atom/movable/A as mob|obj in src)
 					A.forceMove(src.loc)
-					A.ex_act(severity + 1)
+					LEGACY_EX_ACT(A, severity + 1, null)
 				qdel(src)
 		if(3)
 			if(prob(5))
@@ -271,7 +271,7 @@
 				else
 					to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 					return
-			playsound(src, WT.usesound, 50)
+			playsound(src, WT.tool_sound, 50)
 			new /obj/item/stack/material/steel(src.loc)
 			for(var/mob/M in viewers(src))
 				M.show_message("<span class='notice'>\The [src] has been cut apart by [user] with \the [WT].</span>", 3, "You hear welding.", 2)
@@ -308,10 +308,10 @@
 					else
 						to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")
 						return
-			if(do_after(user, 20 * S.toolspeed))
+			if(do_after(user, 20 * S.tool_speed))
 				if(opened)
 					return
-				playsound(src, S.usesound, 50)
+				playsound(src, S.tool_sound, 50)
 				src.sealed = !src.sealed
 				src.update_icon()
 				for(var/mob/M in viewers(src))
@@ -322,8 +322,8 @@
 				user.visible_message("\The [user] begins unsecuring \the [src] from the floor.", "You start unsecuring \the [src] from the floor.")
 			else
 				user.visible_message("\The [user] begins securing \the [src] to the floor.", "You start securing \the [src] to the floor.")
-			playsound(src, W.usesound, 50)
-			if(do_after(user, 20 * W.toolspeed))
+			playsound(src, W.tool_sound, 50)
+			if(do_after(user, 20 * W.tool_speed))
 				if(!src) return
 				to_chat(user, "<span class='notice'>You [anchored? "un" : ""]secured \the [src]!</span>")
 				anchored = !anchored
@@ -457,6 +457,7 @@
 		visible_message(SPAN_DANGER("\The [escapee] successfully broke out of \the [src]!"))
 		playsound(src.loc, breakout_sound, 100, 1)
 		animate_shake()
+		break_open()
 
 /obj/structure/closet/proc/break_open()
 	sealed = 0
@@ -491,3 +492,9 @@
 	dump_contents()
 	spawn(1) qdel(src)
 	return 1
+
+/obj/structure/closet/CanReachOut(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return FALSE
+
+/obj/structure/closet/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
+	return FALSE

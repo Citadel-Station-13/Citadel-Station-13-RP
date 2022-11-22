@@ -58,11 +58,11 @@
 	cuttable = FALSE
 
 /obj/structure/fence/cut/medium
-	icon_state = "straight_cut2"
+	icon_state = "straight-cut2"
 	hole_size = MEDIUM_HOLE
 
 /obj/structure/fence/cut/large
-	icon_state = "straight_cut3"
+	icon_state = "straight-cut3"
 	hole_size = LARGE_HOLE
 
 // Projectiles can pass through fences.
@@ -86,9 +86,9 @@
 
 		user.visible_message(SPAN_DANGER("\The [user] starts cutting through \the [src] with \the [W]."),\
 		SPAN_DANGER("You start cutting through \the [src] with \the [W]."))
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 
-		if(do_after(user, CUT_TIME * W.toolspeed, target = src))
+		if(do_after(user, CUT_TIME * W.tool_speed, target = src))
 			if(current_stage == hole_size)
 				switch(++hole_size)
 					if(MEDIUM_HOLE)
@@ -111,9 +111,9 @@
 		if(NO_HOLE)
 			icon_state = initial(icon_state)
 		if(MEDIUM_HOLE)
-			icon_state = "straight_cut2"
+			icon_state = "straight-cut2"
 		if(LARGE_HOLE)
-			icon_state = "straight_cut3"
+			icon_state = "straight-cut3"
 			density = FALSE
 
 //FENCE DOORS
@@ -121,7 +121,7 @@
 /obj/structure/fence/door
 	name = "fence door"
 	desc = "Not very useful without a real lock."
-	icon_state = "door_closed"
+	icon_state = "door-closed"
 	cuttable = FALSE
 	var/open = FALSE
 	var/locked = FALSE
@@ -131,7 +131,7 @@
 	return ..()
 
 /obj/structure/fence/door/opened
-	icon_state = "door_opened"
+	icon_state = "door-opened"
 	open = TRUE
 	density = TRUE
 
@@ -163,15 +163,61 @@
 	switch(open)
 		if(FALSE)
 			density = TRUE
-			icon_state = "door_closed"
+			icon_state = "door-closed"
 		if(TRUE)
 			density = FALSE
-			icon_state = "door_opened"
+			icon_state = "door-opened"
 
 /obj/structure/fence/door/proc/can_open(mob/user)
 	if(locked)
 		return FALSE
 	return TRUE
+
+//Wooden Fence!
+/obj/structure/fence/wooden
+	name = "wooden fence"
+	desc = "A fence made out of roughly hewn logs. Not as effective as a wall, but generally it keeps people out."
+	icon_state = "straight_wood"
+	color = "#824B28"
+
+/obj/structure/fence/wooden/end
+	icon_state = "end_wood"
+	cuttable = FALSE
+
+/obj/structure/fence/wooden/corner
+	icon_state = "corner_wood"
+	cuttable = FALSE
+
+/obj/structure/fence/wooden/post
+	icon_state = "post_wood"
+	cuttable = FALSE
+
+/obj/structure/fence/wooden/cut/medium
+	icon_state = "straight_wood-cut2"
+	hole_size = MEDIUM_HOLE
+
+/obj/structure/fence/wooden/cut/large
+	icon_state = "straight_wood-cut3"
+	hole_size = LARGE_HOLE
+
+/obj/structure/fence/door/wooden
+	name = "wooden fence gate"
+	icon_state = "door_wood-closed"
+	color = "#824B28"
+
+/obj/structure/fence/door/wooden/opened
+	icon_state = "door_wood-opened"
+	open = TRUE
+	density = TRUE
+
+/obj/structure/fence/door/wooden/update_door_status()
+	switch(open)
+		if(FALSE)
+			density = TRUE
+			icon_state = "door_wood-closed"
+		if(TRUE)
+			density = FALSE
+			icon_state = "door_wood-opened"
 
 #undef CUT_TIME
 #undef CLIMB_TIME

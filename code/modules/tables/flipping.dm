@@ -80,7 +80,7 @@
 	for (var/atom/movable/A in get_turf(src))
 		if (!A.anchored)
 			spawn(0)
-				A.throw_at(pick(targets),1,1)
+				A.throw_at_old(pick(targets),1,1)
 
 	setDir(direction)
 	if(dir != NORTH)

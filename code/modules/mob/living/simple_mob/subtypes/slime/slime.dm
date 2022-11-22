@@ -27,7 +27,7 @@
 	faction = "slime" // Note that slimes are hostile to other slimes of different color regardless of faction (unless Unified).
 	maxHealth = 150
 	movement_cooldown = 0
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	makes_dirt = FALSE	// Goop
 	mob_class = MOB_CLASS_SLIME
 
@@ -106,6 +106,7 @@
 /mob/living/simple_mob/slime/update_icon()
 	..() // Do the regular stuff first.
 
+	cut_overlays()
 	if(stat != DEAD)
 		// General slime shine.
 		var/image/I = image(icon, src, "slime light")
@@ -125,11 +126,10 @@
 
 	// Hat simulator.
 	if(hat)
-		var/hat_state = hat.item_state ? hat.item_state : hat.icon_state
-		var/image/I = image(INV_HEAD_DEF_ICON, src, hat_state)
-		I.pixel_y = -7 // Slimes are small.
-		I.appearance_flags = RESET_COLOR
-		add_overlay(I)
+		var/mutable_appearance/MA = hat.render_mob_appearance(src, SLOT_ID_HEAD)
+		MA.pixel_y = -7
+		MA.appearance_flags |= RESET_COLOR
+		add_overlay(MA)
 
 // Controls the 'mood' overlay. Overrided in subtypes for specific behaviour.
 /mob/living/simple_mob/slime/proc/update_mood()

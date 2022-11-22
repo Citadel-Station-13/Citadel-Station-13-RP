@@ -8,6 +8,9 @@
 	icon_living = "mouse_gray"
 	icon_dead = "mouse_gray_dead"
 	intelligence_level = SA_ANIMAL
+	move_force = MOVE_FORCE_MOUSE
+	pull_force = MOVE_FORCE_MOUSE
+	throw_impulse = MOVE_FORCE_MOUSE
 
 	maxHealth = 5
 	health = 5
@@ -17,7 +20,7 @@
 	universal_understand = 1
 
 	mob_size = MOB_SMALL
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 //	can_pull_size = ITEMSIZE_TINY
 //	can_pull_mobs = MOB_PULL_NONE
 	layer = MOB_LAYER

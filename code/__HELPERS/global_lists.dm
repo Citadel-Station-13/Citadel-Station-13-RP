@@ -6,8 +6,6 @@ var/list/admins = list()
 //Since it didn't really belong in any other category, I'm putting this here
 //This is for procs to replace all the goddamn 'in world's that are chilling around the code
 
-/// List of all mobs **with clients attached**. Excludes /mob/new_player
-var/global/list/player_list = list()
 /// List of all human mobs and sub-types, including clientless.
 var/global/list/human_mob_list = list()
 /// List of all silicon mobs, including clientless.
@@ -63,10 +61,12 @@ var/global/list/ear_styles_list = list()
 var/global/list/tail_styles_list = list()
 /// Stores /datum/sprite_accessory/wing indexed by type
 var/global/list/wing_styles_list = list()
+/// Stores /datum/sprite_accessory/ears again indexed by type
+var/global/list/horn_styles_list = list()
 //!Underwear
 var/datum/category_collection/underwear/global_underwear = new()
-//!Backpacks
-var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag","Duffle Bag", "RIG")
+//!Backpacks - The load order here is important to maintain. Don't go swapping these around.
+var/global/list/backbaglist = list("Nothing", "Backpack", "Satchel", "Satchel Alt", "Messenger Bag", "RIG", "Duffle Bag")
 var/global/list/pdachoicelist = list("Default", "Slim", "Old", "Rugged","Minimalist", "Holographic", "Wrist-Bound")
 var/global/list/exclude_jobs = list(/datum/job/station/ai,/datum/job/station/cyborg)
 
@@ -159,7 +159,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 			else
 				hair_styles_male_list += H.name
 				hair_styles_female_list += H.name
-	sortTim(hair_styles_list, /proc/cmp_name_asc, associative = TRUE)
+	tim_sort(hair_styles_list, /proc/cmp_name_asc, associative = TRUE)
 
 	//Facial Hair - Initialise all /datum/sprite_accessory/facial_hair into an list indexed by facialhair-style name
 	paths = typesof(/datum/sprite_accessory/facial_hair) - /datum/sprite_accessory/facial_hair
@@ -179,7 +179,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 			else
 				facial_hair_styles_male_list += H.name
 				facial_hair_styles_female_list += H.name
-	sortTim(facial_hair_styles_list, /proc/cmp_name_asc, associative = TRUE)
+	tim_sort(facial_hair_styles_list, /proc/cmp_name_asc, associative = TRUE)
 
 	//Body markings - Initialise all /datum/sprite_accessory/marking into an list indexed by marking name
 	paths = typesof(/datum/sprite_accessory/marking) - /datum/sprite_accessory/marking
@@ -194,7 +194,7 @@ GLOBAL_LIST_EMPTY(mannequins)
 			continue
 
 		body_marking_styles_list[M.name] = M
-	sortTim(body_marking_styles_list, /proc/cmp_name_asc, associative = TRUE)
+	tim_sort(body_marking_styles_list, /proc/cmp_name_asc, associative = TRUE)
 
 	//List of job. I can't believe this was calculated multiple times per tick!
 	paths = typesof(/datum/job)-/datum/job
@@ -202,30 +202,6 @@ GLOBAL_LIST_EMPTY(mannequins)
 	for(var/T in paths)
 		var/datum/job/J = new T
 		joblist[J.title] = J
-
-	if(!length(GLOB.species_meta))	// yeah i hate it too but hey
-		initialize_static_species_cache()
-	// SScharacter_setup handling static caches and body markings and sprit eaccessories when?? this is all awful
-
-	//Languages and species.
-	paths = subtypesof(/datum/language)
-	for(var/T in paths)
-		var/datum/language/L = T
-		if(initial(L.abstract_type) == T)
-			continue
-		L = new T
-		GLOB.all_languages[L.name] = L
-
-	for (var/language_name in GLOB.all_languages)
-		var/datum/language/L = GLOB.all_languages[language_name]
-		if(!(L.flags & NONGLOBAL))
-			GLOB.language_keys[L.key] = L
-
-	for(var/datum/species/S as anything in all_static_species_meta())
-		if(!(S.spawn_flags & SPECIES_IS_RESTRICTED))
-			GLOB.playable_species += S.name
-		if(S.spawn_flags & SPECIES_IS_WHITELISTED)
-			GLOB.whitelisted_species += S.name
 
 	//Posters
 	paths = typesof(/datum/poster) - /datum/poster
@@ -257,6 +233,9 @@ GLOBAL_LIST_EMPTY(mannequins)
 		var/datum/sprite_accessory/wing/instance = new path()
 		wing_styles_list[path] = instance
 
+	//Custom Ears2 -- Repathing was deemed worse than this I'm so sorry
+	horn_styles_list = LAZYCOPY(ear_styles_list)
+
 	// Custom species traits
 	paths = typesof(/datum/trait) - /datum/trait - /datum/trait/negative - /datum/trait/neutral - /datum/trait/positive
 	for(var/path in paths)
@@ -274,19 +253,6 @@ GLOBAL_LIST_EMPTY(mannequins)
 			if(0.1 to INFINITY)
 				positive_traits[path] = instance
 
-	// Custom species icon bases
-	var/list/blacklisted_icons = list(SPECIES_CUSTOM, SPECIES_PROMETHEAN)
-	var/list/whitelisted_icons = list(SPECIES_VULPKANIN, SPECIES_XENOHYBRID)
-	for(var/species_name in GLOB.playable_species)
-		if(species_name in blacklisted_icons)
-			continue
-		var/datum/species/S = name_static_species_meta(species_name)
-		if(S.spawn_flags & SPECIES_IS_WHITELISTED)
-			continue
-		GLOB.custom_species_bases += species_name
-	for(var/species_name in whitelisted_icons)
-		GLOB.custom_species_bases += species_name
-
 	return 1 // Hooks must return 1
 
 /* // Uncomment to debug chemical reaction list.
@@ -302,9 +268,6 @@ GLOBAL_LIST_EMPTY(mannequins)
 */
 ///Hexidecimal numbers
 var/global/list/hexNums = list("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F")
-
-//* Custom Species Lists *//
-GLOBAL_LIST_EMPTY(custom_species_bases)
 
 //! ## Traits
 /// Negative custom species traits, indexed by path.
@@ -415,6 +378,7 @@ var/global/list/fancy_release_sounds = list(
 
 var/global/list/global_vore_egg_types = list(
 		SPECIES_UNATHI 		= UNATHI_EGG,
+		SPECIES_UNATHI_DIGI = UNATHI_EGG,
 		"Tajaran" 		= TAJARAN_EGG,
 		SPECIES_AKULA 		= AKULA_EGG,
 		SPECIES_SKRELL 		= SKRELL_EGG,
@@ -428,6 +392,7 @@ var/global/list/global_vore_egg_types = list(
 
 var/global/list/tf_vore_egg_types = list(
 	SPECIES_UNATHI 		= /obj/structure/closet/secure_closet/egg/unathi,
+	SPECIES_UNATHI_DIGI = /obj/structure/closet/secure_closet/egg/unathi,
 	SPECIES_TAJ 		= /obj/structure/closet/secure_closet/egg/tajaran,
 	SPECIES_AKULA 		= /obj/structure/closet/secure_closet/egg/shark,
 	SPECIES_SKRELL 		= /obj/structure/closet/secure_closet/egg/skrell,

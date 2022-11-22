@@ -51,7 +51,7 @@
 	fire_sound = 'sound/weapons/pulse3.ogg'
 	damage = 0
 	damage_type = BURN
-	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GLASS | ATOM_PASS_GRILLE
 	nodamage = 1
 	check_armour = "energy" // It actually checks heat/cold protection.
 	var/target_temperature = 50
@@ -103,24 +103,15 @@
 
 /obj/item/projectile/meteor/Bump(atom/A as mob|obj|turf|area)
 	if(A == firer)
-		loc = A.loc
 		return
 
-	sleep(-1) //Might not be important enough for a sleep(-1) but the sleep/spawn itself is necessary thanks to explosions and metoerhits
+	LEGACY_EX_ACT(A, 2, null)
+	playsound(src.loc, 'sound/effects/meteorimpact.ogg', 40, 1)
 
-	if(src)//Do not add to this if() statement, otherwise the meteor won't delete them
-		if(A)
-
-			A.ex_act(2)
-			playsound(src.loc, 'sound/effects/meteorimpact.ogg', 40, 1)
-
-			for(var/mob/M in range(10, src))
-				if(!M.stat && !istype(M, /mob/living/silicon/ai))\
-					shake_camera(M, 3, 1)
-			qdel(src)
-			return 1
-	else
-		return 0
+	for(var/mob/M in range(10, src))
+		if(!M.stat && !istype(M, /mob/living/silicon/ai))\
+			shake_camera(M, 3, 1)
+	qdel(src)
 
 /obj/item/projectile/meteor/slug
 	name = "meteor"
@@ -146,11 +137,11 @@
 	var/mob/living/M = target
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = M
-		if((H.species.flags & IS_PLANT) && (M.nutrition < 500))
+		if((H.species.species_flags & IS_PLANT) && (M.nutrition < 500))
 			if(prob(15))
 				M.apply_effect((rand(30,80)),IRRADIATE)
 				M.Weaken(5)
-				var/datum/gender/TM = gender_datums[M.get_visible_gender()]
+				var/datum/gender/TM = GLOB.gender_datums[M.get_visible_gender()]
 				for (var/mob/V in viewers(src))
 					V.show_message("<font color='red'>[M] writhes in pain as [TM.his] vacuoles boil.</font>", 3, "<font color='red'>You hear the crunching of leaves.</font>", 2)
 			if(prob(35))
@@ -200,7 +191,7 @@
 	var/mob/M = target
 	if(ishuman(target)) //These rays make plantmen fat.
 		var/mob/living/carbon/human/H = M
-		if((H.species.flags & IS_PLANT) && (M.nutrition < 500))
+		if((H.species.species_flags & IS_PLANT) && (M.nutrition < 500))
 			M.nutrition += 30
 	else if (istype(target, /mob/living/carbon/))
 		M.show_message("<font color=#4F49AF>The radiation beam dissipates harmlessly through your body.</font>")
@@ -268,7 +259,7 @@
 	name = "core of molten tungsten"
 	icon_state = "energy"
 	fire_sound = 'sound/weapons/gauss_shoot.ogg'
-	pass_flags = PASSTABLE | PASSGRILLE
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GRILLE
 	damage = 70
 	damage_type = BURN
 	check_armour = "laser"
@@ -294,7 +285,7 @@
 
 			if(target_armor >= 60)
 				var/turf/T = get_step(H, pick(GLOB.alldirs - src.dir))
-				H.throw_at(T, 1, 1, src)
+				H.throw_at_old(T, 1, 1, src)
 				H.apply_damage(20, BURN, def_zone)
 				if(target_limb)
 					armor_special = 2

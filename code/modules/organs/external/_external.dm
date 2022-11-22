@@ -326,61 +326,69 @@
 	var/result = update_icon()
 	return result
 
-//Helper proc used by various tools for repairing robot limbs
-/obj/item/organ/external/proc/robo_repair(var/repair_amount, var/damage_type, var/damage_desc, obj/item/tool, mob/living/user)
+/// Helper proc used by various tools for repairing robot limbs
+/obj/item/organ/external/proc/robo_repair(repair_amount, damage_type, damage_desc, obj/item/tool, mob/living/user)
 	if((src.robotic < ORGAN_ROBOT))
-		return 0
+		return FALSE
 
 	var/damage_amount
 	switch(damage_type)
-		if(BRUTE)   damage_amount = brute_dam
-		if(BURN)    damage_amount = burn_dam
-		if("omni")  damage_amount = max(brute_dam,burn_dam)
-		else return 0
+		if(BRUTE)
+			damage_amount = brute_dam
+		if(BURN)
+			damage_amount = burn_dam
+		if("omni")
+			damage_amount = max(brute_dam,burn_dam)
+		else
+			return FALSE
 
 	if(!damage_amount)
-		to_chat(user, "<span class='notice'>Nothing to fix!</span>")
-		return 0
+		to_chat(user, SPAN_NOTICE("Nothing to fix!"))
+		return FALSE
 
-	if(brute_dam + burn_dam >= min_broken_damage) // Makes robotic limb damage scalable
-		to_chat(user, "<span class='danger'>The damage is far too severe to patch over externally.</span>")
-		return 0
+	// Makes robotic limb damage scalable.
+	if(brute_dam + burn_dam >= min_broken_damage)
+		to_chat(user, SPAN_DANGER("The damage is far too severe to patch over externally."))
+		return FALSE
 
 	if(user == src.owner)
 		var/grasp
 		if(user.l_hand == tool && (src.body_part & (ARM_LEFT|HAND_LEFT)))
-			grasp = "l_hand"
+			grasp = BP_L_HAND
 		else if(user.r_hand == tool && (src.body_part & (ARM_RIGHT|HAND_RIGHT)))
-			grasp = "r_hand"
+			grasp = BP_R_HAND
 
 		if(grasp)
-			to_chat(user, "<span class='warning'>You can't reach your [src.name] while holding [tool] in your [owner.get_bodypart_name(grasp)].</span>")
-			return 0
+			to_chat(user, SPAN_WARNING("You can't reach your [src.name] while holding [tool] in your [owner.get_bodypart_name(grasp)]."))
+			return FALSE
 
 	user.setClickCooldown(user.get_attack_speed(tool))
 	if(!do_mob(user, owner, 10))
-		to_chat(user, "<span class='warning'>You must stand still to do that.</span>")
-		return 0
+		to_chat(user, SPAN_WARNING("You must stand still to do that."))
+		return FALSE
 
 	switch(damage_type)
-		if(BRUTE) src.heal_damage(repair_amount, 0, 0, 1)
-		if(BURN)  src.heal_damage(0, repair_amount, 0, 1)
-		if("omni")src.heal_damage(repair_amount, repair_amount, 0, 1)
+		if(BRUTE)
+			src.heal_damage(repair_amount, 0, 0, 1)
+		if(BURN)
+			src.heal_damage(0, repair_amount, 0, 1)
+		if("omni")
+			src.heal_damage(repair_amount, repair_amount, 0, 1)
 
 	if(damage_desc)
 		if(user == src.owner)
-			var/datum/gender/T = gender_datums[user.get_visible_gender()]
-			user.visible_message("<span class='notice'>\The [user] patches [damage_desc] on [T.his] [src.name] with [tool].</span>")
+			var/datum/gender/T = GLOB.gender_datums[user.get_visible_gender()]
+			user.visible_message(SPAN_NOTICE("\The [user] patches [damage_desc] on [T.his] [src.name] with [tool]."))
 		else
-			user.visible_message("<span class='notice'>\The [user] patches [damage_desc] on [owner]'s [src.name] with [tool].</span>")
+			user.visible_message(SPAN_NOTICE("\The [user] patches [damage_desc] on [owner]'s [src.name] with [tool]."))
 
-	return 1
+	return TRUE
 
 
-/*
-This function completely restores a damaged organ to perfect condition.
-*/
-/obj/item/organ/external/rejuvenate(var/ignore_prosthetic_prefs)
+/**
+ * This function completely restores a damaged organ to perfect condition.
+ */
+/obj/item/organ/external/rejuvenate(ignore_prosthetic_prefs)
 	damage_state = "00"
 	status = 0
 	brute_dam = 0
@@ -432,14 +440,14 @@ This function completely restores a damaged organ to perfect condition.
 	//moved this before the open_wound check so that having many small wounds for example doesn't somehow protect you from taking internal damage (because of the return)
 	//Possibly trigger an internal wound, too.
 	var/local_damage = brute_dam + burn_dam + damage
-	if((damage > 15) && (type != BURN) && (local_damage > 30) && prob(damage) && (robotic < ORGAN_ROBOT) && !(species.flags & NO_BLOOD))
+	if((damage > 15) && (type != BURN) && (local_damage > 30) && prob(damage) && (robotic < ORGAN_ROBOT) && !(species.species_flags & NO_BLOOD))
 		var/datum/wound/internal_bleeding/I = new (min(damage - 15, 15))
 		wounds += I
 		owner.custom_pain("You feel something rip in your [name]!", 50)
 
 //Burn damage can cause fluid loss due to blistering and cook-off
 
-	if((damage > 5 || damage + burn_dam >= 15) && type == BURN && (robotic < ORGAN_ROBOT) && !(species.flags & NO_BLOOD))
+	if((damage > 5 || damage + burn_dam >= 15) && type == BURN && (robotic < ORGAN_ROBOT) && !(species.species_flags & NO_BLOOD))
 		var/fluid_loss = 0.4 * (damage/(owner.getMaxHealth() - config_legacy.health_threshold_dead)) * owner.species.blood_volume*(1 - owner.species.blood_level_fatal)
 		owner.remove_blood(fluid_loss)
 
@@ -501,8 +509,10 @@ This function completely restores a damaged organ to perfect condition.
 		return 1
 	else
 		last_dam = brute_dam + burn_dam
-	if(germ_level)
+	if(germ_level && (owner && !IS_DEAD(owner)))
 		return 1
+	if(length(wounds))
+		return TRUE
 	return 0
 
 /obj/item/organ/external/tick_life(dt)
@@ -550,8 +560,11 @@ Note that amputating the affected organ does in fact remove the infection from t
 */
 /obj/item/organ/external/proc/update_germs()
 
-	if(robotic >= ORGAN_ROBOT || (owner.species && (owner.species.flags & IS_PLANT || (owner.species.flags & NO_INFECT)))) //Robotic limbs shouldn't be infected, nor should nonexistant limbs.
+	if(robotic >= ORGAN_ROBOT || (owner.species && (owner.species.species_flags & IS_PLANT || (owner.species.species_flags & NO_INFECT)))) //Robotic limbs shouldn't be infected, nor should nonexistant limbs.
 		germ_level = 0
+		return
+
+	if(owner && !IS_DEAD(owner))
 		return
 
 	if(owner.bodytemperature >= 170)	//cryo stops germs from moving and doing their bad stuffs
@@ -627,7 +640,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 //Updating wounds. Handles wound natural I had some free spachealing, internal bleedings and infections
 /obj/item/organ/external/proc/update_wounds()
 
-	if((robotic >= ORGAN_ROBOT) || (species.flags & UNDEAD)) //Robotic and dead limbs don't heal or get worse.
+	if((robotic >= ORGAN_ROBOT) || (species.species_flags & UNDEAD)) //Robotic and dead limbs don't heal or get worse.
 		for(var/datum/wound/W in wounds) //Repaired wounds disappear though
 			if(W.damage <= 0)  //and they disappear right away
 				wounds -= W    //TODO: robot wounds for robot limbs
@@ -702,7 +715,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			else
 				brute_dam += W.damage
 
-		if(!(robotic >= ORGAN_ROBOT) && W.bleeding() && (H && H.should_have_organ(O_HEART)) && !(H.species.flags & NO_BLOOD))
+		if(!(robotic >= ORGAN_ROBOT) && W.bleeding() && (H && H.should_have_organ(O_HEART)) && !(H.species.species_flags & NO_BLOOD))
 			W.bleed_timer--
 			status |= ORGAN_BLEEDING
 
@@ -838,7 +851,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(!clean)
 				// Throw limb around.
 				if(src && istype(loc,/turf))
-					throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
+					throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
 				dir = 2
 		if(DROPLIMB_BURN)
 			new /obj/effect/debris/cleanable/ash(droploc)
@@ -857,19 +870,19 @@ Note that amputating the affected organ does in fact remove the infection from t
 					gore.basecolor =  use_blood_colour
 					gore.update_icon()
 
-			gore.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
+			gore.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
 
 			for(var/obj/item/organ/I in internal_organs)
 				I.removed()
 				if(istype(loc,/turf))
-					I.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
+					I.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
 
 			for(var/obj/item/I in src)
 				if(I.w_class <= ITEMSIZE_SMALL)
 					qdel(I)
 					continue
 				I.forceMove(droploc)
-				I.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
+				I.throw_at_old(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
 
 			qdel(src)
 
@@ -1021,9 +1034,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 		return 1
 	return 0
 
-/obj/item/organ/external/robotize(var/company, var/skip_prosthetics = 0, var/keep_organs = 0)
-
-	if(robotic >= ORGAN_ROBOT)
+/obj/item/organ/external/robotize(var/company, var/skip_prosthetics = 0, var/keep_organs = 0, force)
+	//! SHITCODE ALERT: REFACTOR ORGANS ASAP; FORCE IS JUST SO PREFS WORK.
+	if(robotic >= ORGAN_ROBOT && !force)
 		return
 
 	..()
@@ -1035,6 +1048,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 			R = GLOB.basic_robolimb
 		if(R)
 			force_icon = R.icon
+			brute_mod = initial(brute_mod)
+			burn_mod = initial(brute_mod)
 			brute_mod *= R.robo_brute_mod
 			burn_mod *= R.robo_burn_mod
 			if(R.lifelike)
@@ -1076,7 +1091,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 //! ## VIRGO HOOK, TODO: Integrate this.
 //Sideways override for nanoform limbs (ugh)
-/obj/item/organ/external/robotize(var/company, var/skip_prosthetics = FALSE, var/keep_organs = FALSE)
+/obj/item/organ/external/robotize(var/company, var/skip_prosthetics = FALSE, var/keep_organs = FALSE, force)
 	var/original_robotic = robotic
 	if(original_robotic >= ORGAN_NANOFORM)
 		var/o_encased = encased
@@ -1119,7 +1134,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 /obj/item/organ/external/proc/embed(var/obj/item/W, var/silent = 0)
 	if(!owner || loc != owner)
 		return
-	if(owner.species.flags & IS_SLIME)
+	if(owner.species.species_flags & IS_SLIME)
 		createwound( CUT, 15 )  //fixes proms being bugged into paincrit;instead whatever would embed now just takes a chunk out
 		src.visible_message("<font color='red'>[owner] has been seriously wounded by [W]!</font>")
 		W.add_blood(owner)

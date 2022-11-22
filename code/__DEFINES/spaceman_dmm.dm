@@ -28,8 +28,11 @@
 	#define VAR_PROTECTED var
 #endif
 
+/proc/auxtools_stack_trace(msg)
+	CRASH(msg)
+
 /proc/enable_debugging()
-    CRASH("Auxtools not found")
+	CRASH("Auxtools not found")
 
 /proc/auxtools_expr_stub()
 	CRASH("Auxtools not found")

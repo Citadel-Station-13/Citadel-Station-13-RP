@@ -65,7 +65,7 @@
 #undef RESIST_ATTACK_BITE
 
 /mob/living/carbon/human/proc/can_break_straight_jacket()
-	if((HULK in mutations) || species.can_shred(src,1))
+	if((MUTATION_HULK in mutations) || species.can_shred(src,1))
 		return TRUE
 	return FALSE
 
@@ -88,8 +88,7 @@
 
 		qdel(wear_suit)
 		wear_suit = null
-		if(buckled && buckled.buckle_require_restraints)
-			buckled.unbuckle_mob()
+		buckled?.buckled_reconsider_restraints(src)
 
 /mob/living/carbon/human/can_break_cuffs()
 	if(species.can_shred(src,1))

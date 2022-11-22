@@ -151,35 +151,44 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	///////////
 
 /client/New(TopicData)
+	//! pre-connect-ish
+	// set appadmin for profiling or it might not work (?) (this is old code we just assume it's here for a reason)
 	world.SetConfig("APP/admin", ckey, "role=admin")
-	//var/tdata = TopicData //save this for later use
-	TopicData = null							//Prevent calls to client.Topic from connect
-
-	if(connection != "seeker" && connection != "web")//Invalid connection type.
+	// block client.Topic() calls from connect
+	TopicData = null
+	// kick out invalid connections
+	if(connection != "seeker" && connection != "web")
 		return null
-
+	// kick out guests
 	if(!config_legacy.guests_allowed && IsGuestKey(key))
 		alert(src,"This server doesn't allow guest accounts to play. Please go to http://www.byond.com/ and register for a key.","Guest","OK")
 		del(src)
 		return
-
+	// pre-connect greeting
 	to_chat(src, "<font color='red'>If the title screen is black, resources are still downloading. Please be patient until the title screen appears.</font>")
-
+	// register in globals
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
+	//! Resolve storage datums
+	// resolve persistent data
+	persistent = resolve_client_data(ckey)
+	// todo: move resolve database data up here but above preferences
+	// todo: move preferences up here but above persistent
+
+	//! Setup user interface
+	// todo: move top level menu here, for now it has to be under prefs.
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
 
+	//! Setup admin tooling
 	GLOB.ahelp_tickets.ClientLogin(src)
-	SSserver_maint.UpdateHubStatus()
 	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
 	//Admin Authorisation
 	holder = admin_datums[ckey]
 	var/debug_tools_allowed = FALSE			//CITADEL EDIT
 	if(holder)
 		GLOB.admins |= src
-		admins |= src // i hate this.
 		holder.owner = src
 		connecting_admin = TRUE
 		//CITADEL EDIT
@@ -218,15 +227,22 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(!debug_tools_allowed)
 		world.SetConfig("APP/admin", ckey, null)
 	//END CITADEL EDIT
+	// todo: refactor and hoist
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
 	prefs = GLOB.preferences_datums[ckey]
 	if(!prefs)
 		prefs = new /datum/preferences(src)
 		GLOB.preferences_datums[ckey] = prefs
 
+	prefs.client = src
+	// todo: refactor
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
 	//fps = prefs.clientfps //(prefs.clientfps < 0) ? RECOMMENDED_FPS : prefs.clientfps
+
+	// todo: hoist
+	// build top level menu
+	GLOB.main_window_menu.setup(src)
 
 	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
@@ -275,6 +291,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(log_client_to_db() == "BUNKER_DROPPED")
 		disconnect_with_message("Disconnected by bunker: [config_legacy.panic_bunker_message]")
 		return FALSE
+
+	// resolve database data
+	// this is down here because player_lookup won't have an entry for us until log_client_to_db() runs!!
+	database = new(ckey)
+	database.LogConnect()
 
 	if (byond_version >= 512)
 		if (!byond_build || byond_build < 1386)
@@ -365,8 +386,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		// to_chat(src, get_message_output("memo"))
 		// adminGreet()
 
-	prefs.sanitize_preferences()
-
 	if(custom_event_msg && custom_event_msg != "")
 		to_chat(src, "<h1 class='alert'>Custom Event</h1>")
 		to_chat(src, "<h2 class='alert'>A custom event is taking place. OOC Info:</h2>")
@@ -375,6 +394,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	send_resources()
 
+	//? Startup rendering
+	pre_init_viewport()
 	mob.reload_rendering()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
@@ -394,7 +415,13 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		if(isnum(account_age) && account_age <= 2)
 			log_and_message_admins("PARANOIA: [key_name(src)] has a very new BYOND account ([account_age] days).")
 
-	fully_created = TRUE
+	//? We are done
+	// set initialized
+	initialized = TRUE
+	// show any migration errors
+	prefs.auto_flush_errors()
+	// update our hub label
+	SSserver_maint.UpdateHubStatus()
 
 	//////////////
 	//DISCONNECT//
@@ -410,10 +437,14 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.directory -= ckey
 	log_access("Logout: [key_name(src)]")
 	GLOB.ahelp_tickets.ClientLogout(src)
+	persistent = null
+	database = null
+	if(prefs)
+		prefs.client = null
+		prefs = null
 	SSserver_maint.UpdateHubStatus()
 	if(holder)
 		holder.owner = null
-		admins -= src
 		GLOB.admins -= src //delete them on the managed one too
 	if(using_perspective)
 		set_perspective(null)
@@ -455,25 +486,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 // Returns null if no DB connection can be established, or -1 if the requested key was not found in the database
 
-/proc/get_player_age(key)
-	if(!SSdbcore.Connect())
-		return null
-
-	var/sql_ckey = sql_sanitize_text(ckey(key))
-
-	var/datum/db_query/query = SSdbcore.RunQuery(
-		"SELECT datediff(Now(), firstseen) as age FROM [format_table_name("player")] WHERE ckey = :ckey",
-		list(
-			"ckey" = sql_ckey
-		)
-	)
-
-	if(query.NextRow())
-		return text2num(query.item[1])
-	else
-		return -1
-
-
 /client/proc/log_client_to_db()
 
 	if ( IsGuestKey(src.key) )
@@ -485,7 +497,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/sql_ckey = sql_sanitize_text(src.ckey)
 
 	var/datum/db_query/query = SSdbcore.RunQuery(
-		"SELECT id, datediff(Now(), firstseen) as age FROM [format_table_name("player")] WHERE ckey = :ckey",
+		"SELECT id, datediff(Now(), firstseen) as age FROM [format_table_name("player_lookup")] WHERE ckey = :ckey",
 		list(
 			"ckey" = sql_ckey
 		)
@@ -509,7 +521,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			account_age = text2num(query_datediff.item[1])
 
 	var/datum/db_query/query_ip = SSdbcore.RunQuery(
-		"SELECT ckey FROM [format_table_name("player")] WHERE ip = :addr",
+		"SELECT ckey FROM [format_table_name("player_lookup")] WHERE ip = :addr",
 		list(
 			"addr" = address
 		)
@@ -520,7 +532,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		break
 
 	var/datum/db_query/query_cid = SSdbcore.RunQuery(
-		"SELECT ckey FROM [format_table_name("player")] WHERE computerid = :cid",
+		"SELECT ckey FROM [format_table_name("player_lookup")] WHERE computerid = :cid",
 		list(
 			"cid" = sanitizeSQL(computer_id)
 		)
@@ -541,7 +553,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(src.holder)
 		admin_rank = src.holder.rank
 
-	var/sql_ip = sql_sanitize_text(src.address)
+	var/sql_ip = sql_sanitize_text(src.address) || "0.0.0.0"
 	var/sql_computerid = sql_sanitize_text(src.computer_id)
 	var/sql_admin_rank = sql_sanitize_text(admin_rank)
 
@@ -590,7 +602,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	if(sql_id)
 		SSdbcore.RunQuery(
-			"UPDATE [format_table_name("player")] SET lastseen = Now(), ip = :ip, computerid = :computerid, lastadminrank = :lastadminrank WHERE id = :id",
+			"UPDATE [format_table_name("player_lookup")] SET lastseen = Now(), ip = :ip, computerid = :computerid, lastadminrank = :lastadminrank WHERE id = :id",
 			list(
 				"ip" = sql_ip,
 				"computerid" = sql_computerid,
@@ -601,7 +613,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	else
 		//New player!! Need to insert all the stuff
 		SSdbcore.RunQuery(
-			"INSERT INTO [format_table_name("player")] (id, ckey, firstseen, lastseen, ip, computerid, lastadminrank) VALUES (null, :ckey, Now(), Now(), :ip, :cid, :rank)",
+			"INSERT INTO [format_table_name("player_lookup")] (id, ckey, firstseen, lastseen, ip, computerid, lastadminrank) VALUES (null, :ckey, Now(), Now(), :ip, :cid, :rank)",
 			list(
 				"ckey" = sql_ckey,
 				"ip" = sql_ip,
@@ -627,7 +639,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 //checks if a client is afk
 //3000 frames = 5 minutes
 /client/proc/is_afk(duration=3000)
-	if(inactivity > duration)	return inactivity
+	if(inactivity > duration)
+		return inactivity
 	return 0
 
 // Byond seemingly calls stat, each tick.
@@ -666,6 +679,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 					log_game("[key_name(src)] is using the middle click aimbot exploit")
 					message_admins("[ADMIN_LOOKUPFLW(src)] [ADMIN_KICK(usr)] is using the middle click aimbot exploit")
 					add_system_note("aimbot", "Is using the middle click aimbot exploit")
+					log_click("DROPPED: [ckey] middle click aimbot on [middragatom]:[object]")
 
 				log_game("[key_name(src)] Has hit the per-minute click limit of [mcl] clicks in a given game minute")
 				message_admins("[ADMIN_LOOKUPFLW(src)] [ADMIN_KICK(usr)] Has hit the per-minute click limit of [mcl] clicks in a given game minute")
@@ -694,7 +708,12 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		// so that the visual focus indicator matches reality.
 		winset(src, null, "input.background-color=[COLOR_INPUT_DISABLED]")
 
+	if(GLOB.log_clicks)
+		log_click("CLICK: [ckey] [object]~[location]~[control]~[params]")
+
 	return ..()
+
+GLOBAL_VAR_INIT(log_clicks, FALSE)
 
 /client/proc/last_activity_seconds()
 	return inactivity / 10
@@ -739,34 +758,43 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		if (NAMEOF(src, key))
 			return FALSE
 		if(NAMEOF(src, view))
-			change_view(var_value)
+			change_view(var_value, TRUE)
 			return TRUE
 	. = ..()
 
-/client/proc/change_view(new_size)
-	if (isnull(new_size))
-		CRASH("change_view called without argument.")
+/client/proc/change_view(new_size, forced, translocate)
+	set waitfor = FALSE	// to async temporary view
+	// todo: refactor this, client view changes should be ephemeral.
+	var/list/L = getviewsize(new_size)
+	set_temporary_view(L[1], L[2])
 
-	if(view == new_size)
-		// unnecessary
+/**
+ * directly sets our view
+ * you should probably be using perspective datums most of the time instead
+ * WARNING: this is verbatim; aka, view = 7 is 15 width 15 height, NOT 7x7!
+ *
+ * furthermore, this proc is BLOCKING.
+ */
+/client/proc/set_temporary_view(width, height)
+	if(!width || !height || width < 0 || height < 0)
+		reset_temporary_view()
 		return
+	using_temporary_viewsize = FALSE
+	temporary_viewsize_width = width
+	temporary_viewsize_height = height
+	request_viewport_update()
 
-	/*
-	if(prefs && !prefs.widescreenpref && new_size == CONFIG_GET(string/default_view))
-		new_size = CONFIG_GET(string/default_view_square)
-	*/
-
-	view = new_size
-	mob.reload_rendering()
-
-	/*
-	mob.reload_fullscreen()
-	if (isliving(mob))
-		var/mob/living/M = mob
-		M.update_damage_hud()
-	if (prefs.auto_fit_viewport)
-		addtimer(CALLBACK(src,.verb/fit_viewport,10)) //Delayed to avoid wingets from Login calls.
-	*/
+/**
+ * resets our temporary view
+ * you should probably be using perspective datums most of the time instead
+ *
+ * furthermore, this proc is BLOCKING
+ */
+/client/proc/reset_temporary_view()
+	using_temporary_viewsize = FALSE
+	temporary_viewsize_height = null
+	temporary_viewsize_width = null
+	request_viewport_update()
 
 /**
  * switch perspective - null will cause us to shunt our eye to nullspace!
@@ -833,9 +861,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/http[] = world.Export(request)
 
 	/* Debug
-	to_world_log("Requested this: [request]")
+	TO_WORLD_log("Requested this: [request]")
 	for(var/entry in http)
-		to_world_log("[entry] : [http[entry]]")
+		TO_WORLD_log("[entry] : [http[entry]]")
 	*/
 
 	if(!http || !islist(http)) //If we couldn't check, the service might be down, fail-safe.

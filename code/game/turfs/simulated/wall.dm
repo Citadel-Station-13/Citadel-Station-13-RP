@@ -16,6 +16,7 @@
 	heat_capacity = 312500 //a little over 5 cm thick , 312500 for 1 m by 2.5 m by 0.25 m plasteel wall
 	baseturfs = /turf/simulated/floor/plating
 	smoothing_flags = SMOOTH_CUSTOM
+	edge_blending_priority = INFINITY		// let's not have floors render onto us mmkay?
 
 	var/icon/wall_masks = 'icons/turf/wall_masks.dmi'
 	var/damage = 0
@@ -107,12 +108,12 @@
 	take_damage(damage)
 	return
 
-/turf/simulated/wall/hitby(AM as mob|obj, var/speed=THROWFORCE_SPEED_DIVISOR)
-	..()
-	if(ismob(AM))
+/turf/simulated/wall/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
+	if(TT.throw_flags & THROW_AT_IS_GENTLE)
 		return
 
-	var/tforce = AM:throwforce * (speed/THROWFORCE_SPEED_DIVISOR)
+	var/tforce = AM.throw_force * TT.get_damage_multiplier()
 	if (tforce < 15)
 		return
 
@@ -213,7 +214,7 @@
 			O.forceMove(src)
 	ScrapeAway()
 
-/turf/simulated/wall/ex_act(severity)
+/turf/simulated/wall/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			if(girder_material.explosion_resistance >= 25 && prob(girder_material.explosion_resistance))

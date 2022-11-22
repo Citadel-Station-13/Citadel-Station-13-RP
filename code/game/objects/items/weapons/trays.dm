@@ -6,8 +6,8 @@
 	icon = 'icons/obj/food.dmi'
 	icon_state = "tray"
 	desc = "A metal tray to lay food on."
-	throwforce = 12.0
-	throwforce = 10.0
+	throw_force = 12.0
+	throw_force = 10.0
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
@@ -30,7 +30,7 @@
 						sleep(rand(2,4))
 
 
-	if((CLUMSY in user.mutations) && prob(50))              //What if he's a clown?
+	if((MUTATION_CLUMSY in user.mutations) && prob(50))              //What if he's a clown?
 		to_chat(M, "<span class='warning'>You accidentally slam yourself with the [src]!</span>")
 		M.Weaken(1)
 		user.take_organ_damage(2)

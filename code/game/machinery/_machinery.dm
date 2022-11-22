@@ -105,10 +105,12 @@
 
 	var/machine_stat = 0
 	var/emagged = FALSE
+	/**
+	 * USE_POWER_OFF = dont run the auto
+	 * USE_POWER_IDLE = run auto, use idle
+	 * USE_POWER_ACTIVE = run auto, use active
+	 */
 	var/use_power = USE_POWER_IDLE
-		//0 = dont run the auto
-		//1 = run auto, use idle
-		//2 = run auto, use active
 	/// idle power usage in watts
 	var/idle_power_usage = 0
 	/// active power usage in watts
@@ -192,7 +194,7 @@
 			qdel(pulse2)
 	..()
 
-/obj/machinery/ex_act(severity)
+/obj/machinery/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -298,7 +300,7 @@
 /*
 		if(!Adjacent(user)) // Next make sure we are next to the machine unless we have telekinesis
 			var/mob/living/carbon/H = L
-			if(!(istype(H) && H.has_dna() && H.dna.check_mutation(TK)))
+			if(!(istype(H) && H.has_dna() && H.dna.check_mutation(MUTATION_TELEKINESIS)))
 				return FALSE
 */
 		if(L.incapacitated()) // Finally make sure we aren't incapacitated
@@ -387,8 +389,8 @@
 		return FALSE
 	if(panel_open)
 		return FALSE // Close panel first!
-	playsound(loc, W.usesound, 50, 1)
-	var/actual_time = W.toolspeed * time
+	playsound(loc, W.tool_sound, 50, 1)
+	var/actual_time = W.tool_speed * time
 	if(actual_time != 0)
 		user.visible_message( \
 			"<span class='warning'>\The [user] begins [anchored ? "un" : ""]securing \the [src].</span>", \
@@ -403,6 +405,8 @@
 	return TRUE
 
 /obj/machinery/proc/default_deconstruction_crowbar(var/mob/user, var/obj/item/C)
+
+
 	if(!C.is_crowbar())
 		return 0
 	if(!panel_open)
@@ -412,7 +416,7 @@
 /obj/machinery/proc/default_deconstruction_screwdriver(var/mob/user, var/obj/item/S)
 	if(!S.is_screwdriver())
 		return 0
-	playsound(src, S.usesound, 50, 1)
+	playsound(src, S.tool_sound, 50, 1)
 	panel_open = !panel_open
 	to_chat(user, "<span class='notice'>You [panel_open ? "open" : "close"] the maintenance hatch of [src].</span>")
 	update_appearance()
@@ -424,8 +428,8 @@
 	if(!circuit)
 		return 0
 	to_chat(user, "<span class='notice'>You start disconnecting the monitor.</span>")
-	playsound(src, S.usesound, 50, 1)
-	if(do_after(user, 20 * S.toolspeed))
+	playsound(src, S.tool_sound, 50, 1)
+	if(do_after(user, 20 * S.tool_speed))
 		if(machine_stat & BROKEN)
 			to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
 			new /obj/item/material/shard(src.loc)
@@ -436,7 +440,7 @@
 /obj/machinery/proc/alarm_deconstruction_screwdriver(var/mob/user, var/obj/item/S)
 	if(!S.is_screwdriver())
 		return 0
-	playsound(src, S.usesound, 50, 1)
+	playsound(src, S.tool_sound, 50, 1)
 	panel_open = !panel_open
 	to_chat(user, "The wires have been [panel_open ? "exposed" : "unexposed"]")
 	update_appearance()
@@ -448,13 +452,14 @@
 	if(!panel_open)
 		return 0
 	user.visible_message("<span class='warning'>[user] has cut the wires inside \the [src]!</span>", "You have cut the wires inside \the [src].")
-	playsound(src.loc, W.usesound, 50, 1)
+	playsound(src.loc, W.tool_sound, 50, 1)
 	new/obj/item/stack/cable_coil(get_turf(src), 5)
 	. = dismantle()
 
 /obj/machinery/proc/dismantle()
 	playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
-	//TFF 3/6/19 - port Cit RP fix of infinite frames. If it doesn't have a circuit board, don't create a frame. Return a smack instead. BONK!
+	on_deconstruction()
+	// If it doesn't have a circuit board, don't create a frame. Return a smack instead. BONK!
 	if(!circuit)
 		return 0
 	var/obj/structure/frame/A = new /obj/structure/frame(src.loc)
@@ -496,6 +501,39 @@
 	A.update_desc()
 	A.update_appearance()
 	M.loc = null
-	M.deconstruct(src)
+	M.after_deconstruct(src)
 	qdel(src)
 	return 1
+
+//called on machinery construction (i.e from frame to machinery) but not on initialization
+// /obj/machinery/proc/on_construction() //! Not used yet.
+// 	return
+
+//called on deconstruction before the final deletion
+/obj/machinery/proc/on_deconstruction()
+	return
+
+/**
+ * Puts passed object in to user's hand
+ *
+ * Puts the passed object in to the users hand if they are adjacent.
+ * If the user is not adjacent then place the object on top of the machine.
+ *
+ * Vars:
+ * * object (obj) The object to be moved in to the users hand.
+ * * user (mob/living) The user to recive the object
+ */
+/obj/machinery/proc/try_put_in_hand(obj/object, mob/living/user)
+	if(!issilicon(user) && in_range(src, user))
+		user.put_in_hands(object)
+	else
+		object.forceMove(drop_location())
+
+/// Adjust item drop location to a 3x3 grid inside the tile, returns slot id from 0 to 8.
+/obj/machinery/proc/adjust_item_drop_location(atom/movable/dropped_atom)
+	var/md5 = md5(dropped_atom.name) // Oh, and it's deterministic too. A specific item will always drop from the same slot.
+	for (var/i in 1 to 32)
+		. += hex2num(md5[i])
+	. = . % 9
+	dropped_atom.pixel_x = -8 + ((.%3)*8)
+	dropped_atom.pixel_y = -8 + (round( . / 3)*8)

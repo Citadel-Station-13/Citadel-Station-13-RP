@@ -150,7 +150,7 @@
 				// Not staying still fails you too.
 				if(success)
 					var/calc_duration = rand(S.min_duration, S.max_duration)
-					if(!do_mob(user, M, calc_duration * toolspeed, zone))
+					if(!do_mob(user, M, calc_duration * tool_speed, zone))
 						success = FALSE
 						to_chat(user, "<span class='warning'>You must remain close to and keep focused on your patient to conduct surgery.</span>")
 
@@ -170,7 +170,7 @@
 	. = list()
 	for(var/path in subtypesof(/datum/surgery_step))
 		. += new path
-	sortTim(., cmp = /proc/cmp_surgery_priority_asc)
+	tim_sort(., cmp = /proc/cmp_surgery_priority_asc)
 
 /datum/surgery_status/
 	var/eyes	=	0

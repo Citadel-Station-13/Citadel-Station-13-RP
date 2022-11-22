@@ -33,6 +33,6 @@
 			L.Weaken(weaken_amount)
 			var/throw_dir = get_dir(src, L)
 			var/throw_dist = L.incapacitated(INCAPACITATION_DISABLED) ? 4 : 1
-			L.throw_at(get_edge_target_turf(L, throw_dir), throw_dist, 1, src)
+			L.throw_at_old(get_edge_target_turf(L, throw_dir), throw_dist, 1, src)
 		else
 			to_chat(L, SPAN_WARNING( "\The [src] punches you with incredible force, but you remain in place."))

@@ -35,7 +35,7 @@
 	var/toggled = TRUE
 	var/on = TRUE
 	///Basically HP, loses integrity by heat.
-	var/integrity = 100
+	integrity = 100
 	///Whether the machine will produce heat when on.
 	var/produces_heat = TRUE
 	///How many process() ticks to delay per heat.
@@ -53,7 +53,7 @@
 
 	if(!on)
 		return
-	//to_world("[src] ([src.id]) - [signal.debug_print()]")
+	//TO_WORLD("[src] ([src.id]) - [signal.debug_print()]")
 	var/send_count = 0
 
 	signal.data["slow"] += rand(0, round((100-integrity))) // apply some lag based on integrity
@@ -239,7 +239,7 @@
 				if (traffic <= 0)
 					heat_produced *= 0.30	//if idle, produce less heat.
 
-				removed.add_thermal_energy(heat_produced)
+				removed.adjust_thermal_energy(heat_produced)
 
 			env.merge(removed)
 /*
@@ -393,8 +393,8 @@
 	. = ..()
 	default_apply_parts()
 
-/obj/machinery/telecomms/relay/forceMove(var/newloc)
-	. = ..(newloc)
+/obj/machinery/telecomms/relay/onTransitZ(old_z, new_z)
+	. = ..()
 	listening_level = z
 
 /obj/machinery/telecomms/relay/receive_information(datum/signal/signal, obj/machinery/telecomms/machine_from)

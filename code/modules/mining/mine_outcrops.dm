@@ -2,10 +2,10 @@
 	name = "outcrop"
 	desc = "A boring rocky outcrop."
 	icon = 'icons/obj/outcrop.dmi'
-	density = 1
-	throwpass = 1
-	climbable = 1
-	anchored = 1
+	density = TRUE
+	pass_flags_self = ATOM_PASS_THROWN | ATOM_PASS_OVERHEAD_THROW
+	climbable = TRUE
+	anchored = TRUE
 	icon_state = "outcrop"
 	var/mindrop = 5
 	var/upperdrop = 10

@@ -559,7 +559,7 @@ GLOBAL_LIST_EMPTY(forced_ambiance_list)
 			return // Being buckled to something solid keeps you in place.
 		if(istype(H.shoes, /obj/item/clothing/shoes/magboots) && (H.shoes.clothing_flags & NOSLIP))
 			return
-		if(H.species.flags & NO_SLIP)//diona and similar should not slip from moving onto space either.
+		if(H.species.species_flags & NO_SLIP)//diona and similar should not slip from moving onto space either.
 			return
 		if(H.m_intent == MOVE_INTENT_RUN)
 			H.AdjustStunned(6)
@@ -621,7 +621,7 @@ var/list/teleportlocs = list()
 		if(station)
 			teleportlocs[AR.name] = AR
 
-	teleportlocs = sortTim(teleportlocs, /proc/cmp_text_asc, TRUE)
+	teleportlocs = tim_sort(teleportlocs, /proc/cmp_text_asc, TRUE)
 
 	return 1
 
@@ -638,6 +638,6 @@ var/list/ghostteleportlocs = list()
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 
-	ghostteleportlocs = sortTim(ghostteleportlocs, /proc/cmp_text_asc, TRUE)
+	ghostteleportlocs = tim_sort(ghostteleportlocs, /proc/cmp_text_asc, TRUE)
 
 	return 1

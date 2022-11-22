@@ -82,60 +82,37 @@
 /obj/structure/bed/hybrid_nest/update_icon()
 	return
 
-/obj/structure/bed/hybrid_nest/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
-	if(buckled_mob)
-		if(buckled_mob.buckled == src)
-			if(buckled_mob != user)
-				buckled_mob.visible_message(\
-					"<span class='notice'>[user.name] pulls [buckled_mob.name] free from the sticky nest!</span>",\
-					"<span class='notice'>[user.name] pulls you free from the gelatinous resin.</span>",\
-					"<span class='notice'>You hear squelching...</span>")
-				buckled_mob.pixel_y = 0
-				buckled_mob.old_y = 0
-				unbuckle_mob(buckled_mob)
-			else
-				if(world.time <= buckled_mob.last_special+20)
-					return
-				buckled_mob.last_special = world.time
-				buckled_mob.visible_message(\
-					"<span class='warning'>[buckled_mob.name] struggles to break free of the gelatinous resin...</span>",\
-					"<span class='warning'>You struggle to break free from the gelatinous resin...</span>",\
-					"<span class='notice'>You hear squelching...</span>")
-				if(user && buckled_mob && user.buckled == src)
-					buckled_mob.last_special = world.time
-					buckled_mob.pixel_y = 0
-					buckled_mob.old_y = 0
-					unbuckle_mob(buckled_mob)
-			src.add_fingerprint(user)
-	return
+/obj/structure/bed/hybrid_nest/user_unbuckle_feedback(mob/M, flags, mob/user, semantic)
+	if(user != M)
+		user.visible_message(\
+			"<span class='notice'>[user.name] pulls [M.name] free from the sticky nest!</span>",\
+			"<span class='notice'>[user.name] pulls you free from the gelatinous resin.</span>",\
+			"<span class='notice'>You hear squelching...</span>")
+	else
+		user.visible_message(
+			SPAN_WARNING("[user] tears free of [src]."),
+			SPAN_WARNING("You tear free of [src]."),
+			SPAN_WARNING("You hear squelching...")
+		)
 
-/obj/structure/bed/hybrid_nest/user_buckle_mob(mob/M as mob, mob/user as mob)
+/obj/structure/bed/hybrid_nest/user_buckle_mob(mob/M, flags, mob/user, semantic)
 	if ( !ismob(M) || (get_dist(src, user) > 1) || (M.loc != src.loc) || user.restrained() || usr.stat || M.buckled || istype(user, /mob/living/silicon/pai) )
 		return
 
-	unbuckle_mob()
-
-	var/mob/living/carbon/xenos = user
-
+	var/mob/living/carbon/human/xenos = user
 	if(istype(xenos) && !istype(xenos.species, /datum/species/xenohybrid))//if a non xenomorph tries to buckle someone in, fail, because they cant secrete resin
 		return
 
-	if(M == usr)
+	if(M == user)
 		return
-	else
-		M.visible_message(\
-			"<span class='notice'>[user.name] secretes a thick vile goo, securing [M.name] into [src]!</span>",\
-			"<span class='warning'>[user.name] drenches you in a foul-smelling resin, trapping you in the [src]!</span>",\
-			"<span class='notice'>You hear squelching...</span>")
-	M.buckled = src
-	M.loc = src.loc
-	M.setDir(src.dir)
-	M.update_canmove()
-	M.pixel_y = 6
-	M.old_y = 6
-	src.buckled_mobs |= M
-	src.add_fingerprint(user)
-	return
+
+	return ..()
+
+/obj/structure/bed/hybrid_nest/user_buckle_feedback(mob/M, flags, mob/user, semantic)
+	user.visible_message(\
+		"<span class='notice'>[user.name] secretes a thick vile goo, securing [M.name] into [src]!</span>",\
+		"<span class='warning'>[user.name] drenches you in a foul-smelling resin, trapping you in the [src]!</span>",\
+		"<span class='notice'>You hear squelching...</span>")
 
 /obj/structure/bed/hybrid_nest/attackby(obj/item/W as obj, mob/user as mob)
 	var/aforce = W.force
@@ -213,7 +190,7 @@
 	healthcheck()
 	return
 
-/obj/effect/alien/hybrid_resin/ex_act(severity)
+/obj/effect/alien/hybrid_resin/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			health-=50
@@ -227,24 +204,22 @@
 	healthcheck()
 	return
 
-/obj/effect/alien/hybrid_resin/hitby(AM as mob|obj)
-	..()
+/obj/effect/alien/hybrid_resin/throw_impacted(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	for(var/mob/O in viewers(src, null))
 		O.show_message("<span class='danger'>[src] was hit by [AM].</span>", 1)
 	var/tforce = 0
 	if(ismob(AM))
 		tforce = 10
 	else
-		tforce = AM:throwforce
+		tforce = AM.throw_force
 	playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	health = max(0, health - tforce)
 	healthcheck()
-	..()
-	return
 
 /obj/effect/alien/hybrid_resin/attack_hand()
 	usr.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
-	if (HULK in usr.mutations)
+	if (MUTATION_HULK in usr.mutations)
 		to_chat(usr, "<span class='notice'>You easily destroy the [name].</span>")
 		for(var/mob/O in oviewers(src))
 			O.show_message("<span class='warning'>[usr] destroys the [name]!</span>", 1)
@@ -279,11 +254,9 @@
 	return
 
 /obj/effect/alien/hybrid_resin/CanAllowThrough(atom/movable/mover, turf/target)
-	. = ..()
-	if(istype(mover) && mover.checkpass(PASSGLASS))
-		return !opacity
-	return !density
-
+	if(check_standard_flag_pass(mover))
+		return TRUE
+	return ..()
 
 #define WEED_NORTH_EDGING "north"
 #define WEED_SOUTH_EDGING "south"

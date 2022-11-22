@@ -5,8 +5,10 @@
  */
 
 //! ## /x_act Signals.
-/// From the [EX_ACT] wrapper macro: (severity, target)
-////#define COMSIG_ATOM_EX_ACT "atom_ex_act"
+/// from base of atom/ex_act: (power, dir, wave datum)
+#define COMSIG_ATOM_EX_ACT "atom_ex_act"
+/// From the [LEGACY_EX_ACT] wrapper macro: (severity, target)
+////#define COMSIG_ATOM_LEGACY_EX_ACT "atom_legacy_ex_act"
 /// From base of atom/emp_act(): (severity)
 ////#define COMSIG_ATOM_EMP_ACT "atom_emp_act"
 /// From base of atom/fire_act(): (exposed_temperature, exposed_volume)
@@ -37,32 +39,6 @@
 ////#define COMSIG_ATOM_BSA_BEAM "atom_bsa_beam_pass"
 	////#define COMSIG_ATOM_BLOCKS_BSA_BEAM (1<<0)
 
-//! ## Tool Act Signals
-/// For any tool behaviors: (mob/living/user, obj/item/I, list/recipes)
-////#define COMSIG_ATOM_TOOL_ACT(tooltype) "tool_act_[tooltype]"
-	////#define COMPONENT_BLOCK_TOOL_ATTACK (1<<0)
-/// For any rightclick tool behaviors: (mob/living/user, obj/item/I)
-////#define COMSIG_ATOM_SECONDARY_TOOL_ACT(tooltype) "tool_secondary_act_[tooltype]"
-	//? We have the same returns here as COMSIG_ATOM_TOOL_ACT
-	////#define COMPONENT_BLOCK_TOOL_ATTACK (1<<0)
-
-//TODO: Convert to above system.
-//! ## Legacy Tool Act Signals
-/// From base of atom/screwdriver_act(): (mob/living/user, obj/item/I)
-#define COMSIG_ATOM_SCREWDRIVER_ACT "atom_screwdriver_act"
-/// From base of atom/wrench_act(): (mob/living/user, obj/item/I)
-#define COMSIG_ATOM_WRENCH_ACT "atom_wrench_act"
-/// From base of atom/multitool_act(): (mob/living/user, obj/item/I)
-#define COMSIG_ATOM_MULTITOOL_ACT "atom_multitool_act"
-/// From base of atom/welder_act(): (mob/living/user, obj/item/I)
-#define COMSIG_ATOM_WELDER_ACT "atom_welder_act"
-/// From base of atom/wirecutter_act(): (mob/living/user, obj/item/I)
-#define COMSIG_ATOM_WIRECUTTER_ACT "atom_wirecutter_act"
-/// From base of atom/crowbar_act(): (mob/living/user, obj/item/I)
-#define COMSIG_ATOM_CROWBAR_ACT "atom_crowbar_act"
-/// From base of atom/analyser_act(): (mob/living/user, obj/item/I)
-#define COMSIG_ATOM_ANALYSER_ACT "atom_analyser_act"
-	#define COMPONENT_BLOCK_TOOL_ATTACK (1<<0)
 /// Called when teleporting into a protected turf: (channel, turf/origin)
 #define COMSIG_ATOM_INTERCEPT_TELEPORT "intercept_teleport"
 	#define COMPONENT_BLOCK_TELEPORT (1<<0)

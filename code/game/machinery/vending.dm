@@ -143,7 +143,7 @@
 	product_records = null
 	return ..()
 
-/obj/machinery/vending/ex_act(severity)
+/obj/machinery/vending/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -170,7 +170,7 @@
 /obj/machinery/vending/attackby(obj/item/W, mob/user)
 	var/obj/item/card/id/I = W.GetID()
 
-	if(currently_vending && vendor_account && !vendor_account.suspended)
+	if(currently_vending && GLOB.vendor_account && !GLOB.vendor_account.suspended)
 		var/paid = FALSE
 		var/handled = FALSE
 
@@ -214,7 +214,7 @@
 	else if(W.is_screwdriver())
 		panel_open = !panel_open
 		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
-		playsound(src, W.usesound, 50, 1)
+		playsound(src, W.tool_sound, 50, 1)
 		overlays.Cut()
 		if(panel_open)
 			overlays += image(icon, "[initial(icon_state)]-panel")
@@ -234,13 +234,13 @@
 		SSnanoui.update_uis(src)
 		return
 	else if(W.is_wrench())
-		playsound(src, W.usesound, 100, 1)
+		playsound(src, W.tool_sound, 100, 1)
 		if(anchored)
 			user.visible_message("[user] begins unsecuring \the [src] from the floor.", "You start unsecuring \the [src] from the floor.")
 		else
 			user.visible_message("[user] begins securing \the [src] to the floor.", "You start securing \the [src] to the floor.")
 
-		if(do_after(user, 20 * W.toolspeed))
+		if(do_after(user, 20 * W.tool_speed))
 			if(!src) return
 			to_chat(user, "<span class='notice'>You [anchored? "un" : ""]secured \the [src]!</span>")
 			anchored = !anchored
@@ -258,7 +258,7 @@
 	.[CHARGE_DETAIL_DEVICE] = name
 	.[CHARGE_DETAIL_LOCATION] = get_area(src).name
 	.[CHARGE_DETAIL_REASON] = currently_vending? "Purchase of [currently_vending.item_name]" : "Unknown"
-	.[CHARGE_DETAIL_RECIPIENT] = vendor_account.owner_name
+	.[CHARGE_DETAIL_RECIPIENT] = GLOB.vendor_account.owner_name
 
 /**
  *  Add money for current purchase to the vendor account.
@@ -266,16 +266,16 @@
  *  Called after the money has already been taken from the customer.
  */
 /obj/machinery/vending/proc/credit_purchase(var/target as text)
-	vendor_account.money += currently_vending.price
+	GLOB.vendor_account.money += currently_vending.price
 
 	var/datum/transaction/T = new()
 	T.target_name = target
 	T.purpose = "Purchase of [currently_vending.item_name]"
 	T.amount = "[currently_vending.price]"
 	T.source_terminal = name
-	T.date = current_date_string
+	T.date = GLOB.current_date_string
 	T.time = stationtime2text()
-	vendor_account.transaction_log.Add(T)
+	GLOB.vendor_account.transaction_log.Add(T)
 
 /obj/machinery/vending/attack_ai(mob/user as mob)
 	return attack_hand(user)
@@ -381,7 +381,7 @@
 				return
 			else
 				currently_vending = R
-				if(!vendor_account || vendor_account.suspended)
+				if(!GLOB.vendor_account || GLOB.vendor_account.suspended)
 					status_message = "This machine is currently unable to process payments due to issues with the associated account."
 					status_error = 1
 				else
@@ -574,7 +574,7 @@
 	if(!throw_item)
 		return 0
 	spawn(0)
-		throw_item.throw_at(target, 16, 3, src)
+		throw_item.throw_at_old(target, 16, 3, src)
 	visible_message("<span class='warning'>\The [src] launches \a [throw_item] at \the [target]!</span>")
 	return 1
 
@@ -661,6 +661,7 @@
 					/obj/item/reagent_containers/food/drinks/bottle/champagne/jericho = 1,
 					/obj/item/reagent_containers/food/drinks/bottle/champagne = 3,
 					/obj/item/reagent_containers/food/drinks/bottle/coconutmilk = 5,
+					/obj/item/reagent_containers/food/drinks/bottle/unathijuice = 2,
 					/obj/item/reagent_containers/food/drinks/cans/sodawater = 15,
 					/obj/item/reagent_containers/food/drinks/cans/tonic = 15,
 					/obj/item/reagent_containers/food/drinks/cans/gingerale = 15,
@@ -710,13 +711,13 @@
 					/obj/item/reagent_containers/food/snacks/sosjerky = 6,/obj/item/reagent_containers/food/snacks/no_raisin = 6,/obj/item/reagent_containers/food/snacks/spacetwinkie = 6,
 					/obj/item/reagent_containers/food/snacks/cheesiehonkers = 6, /obj/item/reagent_containers/food/snacks/tastybread = 6, /obj/item/reagent_containers/food/snacks/skrellsnacks = 3,
 					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6, /obj/item/reagent_containers/hard_candy/lollipop = 6,
-					/obj/item/reagent_containers/food/snacks/spunow = 6, /obj/item/reagent_containers/food/snacks/glad2nut = 6)
+					/obj/item/reagent_containers/food/snacks/spunow = 6, /obj/item/reagent_containers/food/snacks/glad2nut = 6, /obj/item/reagent_containers/food/snacks/natkat = 6)
 	contraband = list(/obj/item/reagent_containers/food/snacks/syndicake = 6,/obj/item/reagent_containers/food/snacks/unajerky = 6,)
 	prices = list(/obj/item/reagent_containers/food/snacks/candy = 1,/obj/item/reagent_containers/food/drinks/dry_ramen = 5,/obj/item/reagent_containers/food/snacks/chips = 1,
 					/obj/item/reagent_containers/food/snacks/sosjerky = 2,/obj/item/reagent_containers/food/snacks/no_raisin = 1,/obj/item/reagent_containers/food/snacks/spacetwinkie = 1,
 					/obj/item/reagent_containers/food/snacks/cheesiehonkers = 1, /obj/item/reagent_containers/food/snacks/tastybread = 2, /obj/item/reagent_containers/food/snacks/skrellsnacks = 4,
 					/obj/item/reagent_containers/food/snacks/baschbeans = 6, /obj/item/reagent_containers/food/snacks/creamcorn = 6, /obj/item/reagent_containers/hard_candy/lollipop = 6,
-					/obj/item/reagent_containers/food/snacks/spunow = 1, /obj/item/reagent_containers/food/snacks/glad2nut = 1)
+					/obj/item/reagent_containers/food/snacks/spunow = 1, /obj/item/reagent_containers/food/snacks/glad2nut = 1, /obj/item/reagent_containers/food/snacks/natkat = 1)
 
 /obj/machinery/vending/cola
 	name = "Robust Softdrinks"
@@ -769,7 +770,8 @@
 					/obj/item/reagent_containers/food/snacks/liquidfood = 10,
 					/obj/item/reagent_containers/food/snacks/liquidprotein = 10,
 					/obj/item/reagent_containers/pill/diet = 8,
-					/obj/item/towel/random = 8)
+					/obj/item/towel/random = 8,
+					/obj/item/reagent_containers/food/snacks/brainsnax = 5)
 
 	prices = list(/obj/item/reagent_containers/food/drinks/smallmilk = 3,
 					/obj/item/reagent_containers/food/drinks/smallchocmilk = 3,
@@ -780,6 +782,7 @@
 					/obj/item/reagent_containers/food/snacks/liquidprotein = 10,
 					/obj/item/reagent_containers/pill/diet = 25,
 					/obj/item/towel/random = 40,
+					/obj/item/reagent_containers/food/snacks/brainsnax = 20
 					)
 
 	contraband = list(/obj/item/reagent_containers/syringe/steroid = 4)
@@ -842,7 +845,8 @@
 					/obj/item/reagent_containers/syringe/antiviral = 4,/obj/item/reagent_containers/syringe = 30,
 					/obj/item/healthanalyzer = 5,/obj/item/reagent_containers/glass/beaker = 4, /obj/item/reagent_containers/dropper = 2,
 					/obj/item/stack/medical/advanced/bruise_pack = 6, /obj/item/stack/medical/advanced/ointment = 6, /obj/item/stack/medical/splint = 4,
-					/obj/item/storage/pill_bottle/carbon = 2, /obj/item/storage/pill_bottle = 3)
+					/obj/item/storage/pill_bottle/carbon = 2, /obj/item/storage/pill_bottle = 3, /obj/item/storage/box/vmcrystal = 4,
+					/obj/item/clothing/glasses/omnihud/med = 4, /obj/item/glasses_kit = 1,  /obj/item/storage/quickdraw/syringe_case = 4)
 	contraband = list(/obj/item/reagent_containers/pill/tox = 3,/obj/item/reagent_containers/pill/stox = 4,/obj/item/reagent_containers/pill/antitox = 6)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	req_log_access = access_cmo
@@ -903,10 +907,10 @@
 	icon_state = "sec"
 	icon_deny = "sec-deny"
 	req_access = list(access_security)
-	products = list(/obj/item/handcuffs = 8,/obj/item/grenade/flashbang = 4,/obj/item/flash = 5,
-					/obj/item/reagent_containers/food/snacks/donut/normal = 12,/obj/item/storage/box/evidence = 6,
+	products = list(/obj/item/handcuffs = 8,/obj/item/grenade/flashbang = 4, /obj/item/flash = 5, /obj/item/reagent_containers/spray/pepper = 6,
+					/obj/item/reagent_containers/food/snacks/donut/normal = 12, /obj/item/storage/box/evidence = 6,
 					/obj/item/gun/projectile/sec = 2, /obj/item/ammo_magazine/m45/rubber = 6, /obj/item/clothing/mask/gas/half = 6,
-					/obj/item/hailer = 6, /obj/item/flashlight/glowstick = 6)
+					/obj/item/clothing/glasses/omnihud/sec = 6, /obj/item/hailer = 6, /obj/item/barrier_tape_roll/police = 6, /obj/item/flashlight/glowstick = 6)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/box/donut = 2)
 	req_log_access = access_armory
 	has_logs = 1
@@ -935,7 +939,8 @@
 					/obj/item/seeds/sunflowerseed = 3,/obj/item/seeds/taroseed = 3,/obj/item/seeds/tomatoseed = 3,/obj/item/seeds/towermycelium = 3,/obj/item/seeds/wheatseed = 3,/obj/item/seeds/appleseed = 3,
 					/obj/item/seeds/poppyseed = 3,/obj/item/seeds/sugarcaneseed = 3,/obj/item/seeds/ambrosiavulgarisseed = 3,/obj/item/seeds/peanutseed = 3,/obj/item/seeds/whitebeetseed = 3,/obj/item/seeds/watermelonseed = 3,/obj/item/seeds/lavenderseed = 3,/obj/item/seeds/limeseed = 3,
 					/obj/item/seeds/lemonseed = 3,/obj/item/seeds/orangeseed = 3,/obj/item/seeds/grassseed = 3,/obj/item/seeds/cocoapodseed = 3,/obj/item/seeds/plumpmycelium = 2,
-					/obj/item/seeds/cabbageseed = 3,/obj/item/seeds/grapeseed = 3,/obj/item/seeds/pumpkinseed = 3,/obj/item/seeds/cherryseed = 3,/obj/item/seeds/plastiseed = 3,/obj/item/seeds/riceseed = 3)
+					/obj/item/seeds/cabbageseed = 3,/obj/item/seeds/grapeseed = 3,/obj/item/seeds/pumpkinseed = 3,/obj/item/seeds/cherryseed = 3,/obj/item/seeds/plastiseed = 3,/obj/item/seeds/riceseed = 3,
+					/obj/item/seeds/shrinkshroom = 3,/obj/item/seeds/megashroom = 3,/obj/item/seeds/peaseed = 3)
 	contraband = list(/obj/item/seeds/amanitamycelium = 2,/obj/item/seeds/glowshroom = 2,/obj/item/seeds/libertymycelium = 2,/obj/item/seeds/mtearseed = 2,
 					  /obj/item/seeds/nettleseed = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/reishimycelium = 2,/obj/item/seeds/shandseed = 2)
 	premium = list(/obj/item/toy/waterflower = 1)
@@ -1027,7 +1032,7 @@
 	products = list(/obj/item/stack/cable_coil/random = 10,/obj/item/tool/crowbar = 5,/obj/item/weldingtool = 3,/obj/item/tool/wirecutters = 5,
 					/obj/item/tool/wrench = 5,/obj/item/analyzer = 5,/obj/item/t_scanner = 5,/obj/item/tool/screwdriver = 5,
 					/obj/item/flashlight/glowstick = 3, /obj/item/flashlight/glowstick/red = 3, /obj/item/flashlight/glowstick/blue = 3,
-					/obj/item/flashlight/glowstick/orange =3, /obj/item/flashlight/glowstick/yellow = 3)
+					/obj/item/flashlight/glowstick/orange =3, /obj/item/flashlight/glowstick/yellow = 3, /obj/item/reagent_containers/spray/windowsealant = 5)
 	contraband = list(/obj/item/weldingtool/hugetank = 2,/obj/item/clothing/gloves/fyellow = 2,)
 	premium = list(/obj/item/clothing/gloves/yellow = 1)
 	req_log_access = access_ce
@@ -1049,7 +1054,7 @@
 					/obj/item/circuitboard/photocopier,/obj/item/circuitboard/fax,/obj/item/circuitboard/request,
 					/obj/item/circuitboard/microwave,/obj/item/circuitboard/washing,/obj/item/circuitboard/scanner_console,
 					/obj/item/circuitboard/sleeper_console,/obj/item/circuitboard/body_scanner,/obj/item/circuitboard/sleeper,
-					/obj/item/circuitboard/dna_analyzer)
+					/obj/item/circuitboard/dna_analyzer, /obj/item/clothing/glasses/omnihud/eng = 6)
 	contraband = list(/obj/item/cell/potato = 3)
 	premium = list(/obj/item/storage/belt/utility = 3)
 	product_records = list()
@@ -1182,31 +1187,6 @@
 					/obj/item/material/fishing_net = 40,
 					/obj/item/stack/cable_coil/random = 4)
 
-//Port of _vr file
-//Tweaked existing vendors
-/obj/machinery/vending/hydroseeds/Initialize(mapload)
-	. = ..()
-	products += list(/obj/item/seeds/shrinkshroom = 3,/obj/item/seeds/megashroom = 3)
-
-/obj/machinery/vending/security/Initialize(mapload)
-	. = ..()
-	products += list(/obj/item/gun/energy/taser = 8,/obj/item/gun/energy/stunrevolver = 4,
-					/obj/item/reagent_containers/spray/pepper = 6,/obj/item/barrier_tape_roll/police = 6,
-					/obj/item/clothing/glasses/omnihud/sec = 6)
-
-/obj/machinery/vending/tool/Initialize(mapload)
-	. = ..()
-	products += list(/obj/item/reagent_containers/spray/windowsealant = 5)
-
-/obj/machinery/vending/engivend/Initialize(mapload)
-	. = ..()
-	products += list(/obj/item/clothing/glasses/omnihud/eng = 6)
-
-/obj/machinery/vending/medical/Initialize(mapload)
-	. = ..()
-	products += list(/obj/item/storage/box/vmcrystal = 4,/*/obj/item/backup_implanter = 3,*/
-					/obj/item/clothing/glasses/omnihud/med = 4, /obj/item/glasses_kit = 1,  /obj/item/storage/quickdraw/syringe_case = 4)
-
 //Custom vendors
 
 
@@ -1240,7 +1220,8 @@
 					/obj/item/reagent_containers/food/snacks/appletart = 4,
 					/obj/item/reagent_containers/food/snacks/sliceable/applecake = 2,
 					/obj/item/reagent_containers/food/snacks/sliceable/bananabread = 2,
-					/obj/item/reagent_containers/food/snacks/sliceable/creamcheesebread = 2
+					/obj/item/reagent_containers/food/snacks/sliceable/creamcheesebread = 2,
+					/obj/item/reagent_containers/food/snacks/brainsnax = 5
 					)
 	contraband = list(/obj/item/reagent_containers/food/snacks/mysterysoup = 10)
 	vend_delay = 15

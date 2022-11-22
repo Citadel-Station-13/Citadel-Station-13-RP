@@ -241,11 +241,11 @@
 
 	if(malfunctioning && prob(30)) // Alien Tech is a hell of a drug.
 		malfunctioned = TRUE
-		var/possible_species = list(SPECIES_HUMAN, SPECIES_VOX, SPECIES_SKRELL, SPECIES_ZADDAT, SPECIES_UNATHI, SPECIES_GOLEM, SPECIES_SHADOW)
+		var/possible_species = list(SPECIES_HUMAN, SPECIES_VOX, SPECIES_SKRELL, SPECIES_ZADDAT, SPECIES_UNATHI, SPECIES_UNATHI_DIGI, SPECIES_GOLEM, SPECIES_SHADOW)
 		var/new_species = pick(possible_species)
-		var/datum/species/S = name_static_species_meta(new_species)
+		var/datum/species/S = SScharacters.resolve_species_name(new_species)
 		if(!S)
-			new_species = name_static_species_meta(/datum/species/human)
+			new_species = SScharacters.resolve_species_name(/datum/species/human)
 		O.species = new_species
 
 	if(istype(O, /obj/item/organ/external) && !malfunctioned)

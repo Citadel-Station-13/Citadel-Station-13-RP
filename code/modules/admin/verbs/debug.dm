@@ -97,9 +97,6 @@
 	set category = "Fun"
 	set name = "Make Robot"
 
-	if(!SSticker)
-		alert("Wait until the game starts")
-		return
 	if(istype(M, /mob/living/carbon/human))
 		log_admin("[key_name(src)] has robotized [M.key].")
 		spawn(10)
@@ -111,10 +108,6 @@
 /client/proc/cmd_admin_animalize(var/mob/M in GLOB.mob_list)
 	set category = "Fun"
 	set name = "Make Simple Animal"
-
-	if(!SSticker)
-		alert("Wait until the game starts")
-		return
 
 	if(!M)
 		alert("That mob doesn't seem to exist, close the panel and try again.")
@@ -160,9 +153,6 @@
 	set category = "Fun"
 	set name = "Make Alien"
 
-	if(!SSticker)
-		alert("Wait until the game starts")
-		return
 	if(ishuman(M))
 		log_admin("[key_name(src)] has alienized [M.key].")
 		spawn(10)
@@ -245,7 +235,7 @@
 
 	if(!check_rights(R_DEBUG))	return
 	var/list/dellog = list("<B>List of things that have gone through qdel this round</B><BR><BR><ol>")
-	sortTim(SSgarbage.items, cmp=/proc/cmp_qdel_item_time, associative = TRUE)
+	tim_sort(SSgarbage.items, cmp=/proc/cmp_qdel_item_time, associative = TRUE)
 	for(var/path in SSgarbage.items)
 		var/datum/qdel_item/I = SSgarbage.items[path]
 		dellog += "<li><u>[path]</u><ul>"
@@ -292,7 +282,7 @@
 
 // Render stats list for round-end statistics.
 /proc/render_stats(list/stats, user, sort = /proc/cmp_generic_stat_item_time)
-	sortTim(stats, sort, TRUE)
+	tim_sort(stats, sort, TRUE)
 
 	var/list/lines = list()
 	for (var/entry in stats)
@@ -617,7 +607,7 @@
 
 	switch(input("Which list?") in list("Players","Admins","Mobs","Living Mobs","Dead Mobs", "Clients"))
 		if("Players")
-			to_chat(usr, jointext(player_list,","))
+			to_chat(usr, jointext(GLOB.player_list,","))
 		if("Admins")
 			to_chat(usr, jointext(admins,","))
 		if("Mobs")
@@ -631,9 +621,6 @@
 
 // DNA2 - Admin Hax
 /client/proc/cmd_admin_toggle_block(var/mob/M,var/block)
-	if(!SSticker)
-		alert("Wait until the game starts")
-		return
 	if(istype(M, /mob/living/carbon))
 		M.dna.SetSEState(block,!M.dna.GetSEState(block))
 		domutcheck(M,null,MUTCHK_FORCED)
@@ -719,7 +706,7 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/mob/living/carbon/human/H = input("Pick a mob with a player","Quick NIF") as null|anything in player_list
+	var/mob/living/carbon/human/H = input("Pick a mob with a player","Quick NIF") as null|anything in GLOB.player_list
 
 	if(!H)
 		return
@@ -736,7 +723,7 @@
 		to_chat(usr,"<span class='warning'>Target already has a NIF.</span>")
 		return
 
-	if(H.species.flags & NO_SCAN)
+	if(H.species.species_flags & NO_SCAN)
 		var/obj/item/nif/S = /obj/item/nif/bioadap
 		input_NIF = initial(S.name)
 		new /obj/item/nif/bioadap(H)

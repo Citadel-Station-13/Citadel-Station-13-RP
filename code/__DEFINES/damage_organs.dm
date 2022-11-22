@@ -35,23 +35,23 @@
 #define FIRE_DAMAGE_MODIFIER 0.0215
 /// More means less damage from hot air scalding lungs, less = more damage. (default 2.025)
 #define  AIR_DAMAGE_MODIFIER 2.025
-// Organ defines. Bitflag into organ.status
+//! Organ defines. Bitflag into organ.status
 #define ORGAN_CUT_AWAY   (1<<0)
 #define ORGAN_BLEEDING   (1<<1)
 #define ORGAN_BROKEN     (1<<2)
 #define ORGAN_DESTROYED  (1<<3)
 #define ORGAN_DEAD       (1<<4)
 #define ORGAN_MUTATED    (1<<5)
-/// The organ takes additional blunt damage. If robotic, cannot be repaired through normal means.
-#define ORGAN_BRITTLE	 (1<<6)
-#define DROPLIMB_EDGE 0
+#define ORGAN_BRITTLE    (1<<6) // The organ takes additional blunt damage. If robotic, cannot be repaired through normal means.
+#define DROPLIMB_EDGE  0
 #define DROPLIMB_BLUNT 1
-#define DROPLIMB_BURN 2
+#define DROPLIMB_BURN  2
 
 // Damage above this value must be repaired with surgery.
 #define ROBOLIMB_REPAIR_CAP 30
 
-//The condition defines. /SET/ into organ.robotic [example: if(organ.robotic == ORGAN_NANOFORM) to_chat("Organ is nanites")]
+//! The condition defines. /SET/ into organ.robotic [example: if(organ.robotic == ORGAN_NANOFORM) to_chat("Organ is nanites")]
+//? This isn't a flag, maybe in the future. @Zandario
 /// Normal organic organs.
 #define ORGAN_FLESH    0
 /// Like pacemakers, not robotic
@@ -64,12 +64,14 @@
 #define ORGAN_NANOFORM 4
 /// The organ does not suffer laser damage, but shatters on droplimb.
 #define ORGAN_CRYSTAL  5
-//Germs and infections.
+
+//! Germs and infections.
 //? Using no gloves on surgery WILL give a high risk of infection.
 /// Maximum germ level you can reach by standing still.
 #define GERM_LEVEL_AMBIENT  110
 /// Maximum germ level you can reach by running around.
 #define GERM_LEVEL_MOVE_CAP 200
+
 #define INFECTION_LEVEL_ONE   100
 #define INFECTION_LEVEL_TWO   500
 #define INFECTION_LEVEL_THREE 1000

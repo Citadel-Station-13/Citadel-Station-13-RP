@@ -1,14 +1,15 @@
 /**
+ *
  * our only job is to spawn something and then self-delete
  */
-/atom/movable/spawner
+/obj/spawner
 	icon = 'icons/mapping/spawners/spawners.dmi'
 	icon_state = ""
 	layer = MID_LANDMARK_LAYER
 	/// lateload?
 	var/late = FALSE
 
-/atom/movable/spawner/Initialize(mapload)
+/obj/spawner/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
 	flags |= INITIALIZED
 	if(!late)
@@ -20,20 +21,21 @@
 				// do not use late unless you absolutely know what you're doing
 		return INITIALIZE_HINT_LATELOAD
 
-/atom/movable/spawner/LateInitialize()
+/obj/spawner/LateInitialize()
 	Spawn()
+	qdel(src)
 
-/atom/movable/spawner/proc/Spawn()
+/obj/spawner/proc/Spawn()
 	return
 
 /**
  * simple spawner - spawn a typepath x times
  */
-/atom/movable/spawner/simple
+/obj/spawner/simple
 	var/path
 	var/amount
 
-/atom/movable/spawner/simple/Spawn()
+/obj/spawner/simple/Spawn()
 	for(var/i in 1 to min(50, amount))
 		new path(loc)
 
@@ -41,10 +43,10 @@
  * multi spawner - spawn a typepath x times for paths in list
  * paths can be text as **byond params**, not json.
  */
-/atom/movable/spawner/multi
+/obj/spawner/multi
 	var/list/paths
 
-/atom/movable/spawner/multi/Spawn()
+/obj/spawner/multi/Spawn()
 	// check lists
 	var/list/_paths = list()
 	// if is text, params2list

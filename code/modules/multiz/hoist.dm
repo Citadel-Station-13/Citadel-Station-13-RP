@@ -20,9 +20,9 @@
 	desc = "A clamp used to lift people or things."
 	icon = 'icons/obj/hoists.dmi'
 	icon_state = "hoist_hook"
+	buckle_allowed = TRUE
+	anchored = TRUE
 	var/obj/structure/hoist/source_hoist
-	can_buckle = 1
-	anchored = 1
 	description_info = "Click and drag someone (or any object) to this to attach them to the clamp. If you are within reach, when you click and drag this to a turf adjacent to you, it will move the attached object there and release it."
 
 /obj/effect/hoist_hook/attack_hand(mob/living/user)
@@ -80,12 +80,11 @@
 	source_hoist.release_hoistee()
 
 // This will handle mobs unbuckling themselves.
-/obj/effect/hoist_hook/unbuckle_mob()
+/obj/effect/hoist_hook/mob_unbuckled(mob/M, flags, mob/user, semantic)
 	. = ..()
-	if (. && !QDELETED(source_hoist))
-		var/mob/M = .
+	if(source_hoist && source_hoist.hoistee == M)
 		source_hoist.hoistee = null
-		M.fall()
+	M.fall()
 
 /obj/structure/hoist
 	icon = 'icons/obj/hoists.dmi'
@@ -141,7 +140,7 @@
 		release_hoistee()
 	QDEL_NULL(source_hook)
 
-/obj/structure/hoist/ex_act(severity)
+/obj/structure/hoist/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -158,7 +157,7 @@
 				break_hoist()
 			return
 
-/obj/effect/hoist_hook/ex_act(severity)
+/obj/effect/hoist_hook/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			source_hoist.break_hoist()

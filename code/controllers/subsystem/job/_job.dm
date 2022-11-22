@@ -3,26 +3,70 @@ SUBSYSTEM_DEF(job)
 	init_order = INIT_ORDER_JOBS
 	subsystem_flags = SS_NO_FIRE
 
-	var/list/occupations = list()		//List of all jobs
-	var/list/datum/job/name_occupations = list()	//Dict of all jobs, keys are titles
-	var/list/type_occupations = list()	//Dict of all jobs, keys are types
+	/// List of all jobs
+	var/list/occupations
+	/// Dict of all jobs, keys are titles
+	var/list/datum/job/name_occupations
+	/// Dict of all jobs, keys are types
+	var/list/type_occupations
+	/// jobs by id
+	var/list/job_lookup
+	/// job preferences ui cache - cache[faction string][department name] = list(job ids)
+	var/list/job_pref_ui_cache
+	/// jobs per column
+	var/job_pref_ui_per = 25
 
 	var/list/department_datums = list()
 	var/debug_messages = FALSE
 
 
 /datum/controller/subsystem/job/Initialize(timeofday)
-	if(!department_datums.len)
+	if(!length(department_datums))
 		setup_departments()
-	if(!occupations.len)
+	if(!length(occupations))
 		setup_occupations()
+	reconstruct_job_ui_caches()
 	return ..()
 
 /datum/controller/subsystem/job/Recover()
-	ReconstructSpawnpoints()
+	occupations = SSjob.occupations
+	name_occupations = SSjob.name_occupations
+	job_lookup = SSjob.job_lookup
+	type_occupations = SSjob.type_occupations
+
+	reconstruct_spawnpoints()
+	reconstruct_job_ui_caches()
+
+	return ..()
+
+/datum/controller/subsystem/job/proc/reconstruct_job_ui_caches()
+	// todo: this is shit but it works
+	job_pref_ui_cache = list()
+	for(var/id in job_lookup)
+		var/datum/job/J = job_lookup[id]
+		if(!(J.join_types & JOB_ROUNDSTART))
+			continue
+		var/faction = J.faction
+		LAZYINITLIST(job_pref_ui_cache[faction])
+		var/department = LAZYACCESS(J.departments, 1) || "Misc"
+		LAZYADD(job_pref_ui_cache[faction][department], id)
+	// todo: why
+	for(var/fname in job_pref_ui_cache)
+		var/list/faction = job_pref_ui_cache[fname]
+		var/list/asinine_sort = list()
+		for(var/depname in department_datums)
+			if(faction[depname])
+				asinine_sort[depname] = faction[depname]
+				faction -= depname
+		faction.Insert(1, asinine_sort)
+		for(var/depname in asinine_sort)
+			faction[depname] = asinine_sort[depname]
 
 /datum/controller/subsystem/job/proc/setup_occupations()
 	occupations = list()
+	job_lookup = list()
+	name_occupations = list()
+	type_occupations = list()
 	var/list/all_jobs = subtypesof(/datum/job)
 	if(!all_jobs.len)
 		to_chat(world, SPAN_WARNING( "Error setting up jobs, no job datums found"))
@@ -34,16 +78,29 @@ SUBSYSTEM_DEF(job)
 			continue
 		job = new J
 		occupations += job
+		if(!job.id)
+			stack_trace("no job id for [J]")
+			continue
+		if(!job.title)
+			stack_trace("no job title for [J]")
+			continue
+		if(job_lookup[job.id])
+			stack_trace("job id collision on [job.id] for [J]")
+			continue
+		if(name_occupations[job.title])
+			stack_trace("job title collision on [job.title] for [J]")
+			continue
 		name_occupations[job.title] = job
 		type_occupations[J] = job
+		job_lookup[job.id] = job
 		if(LAZYLEN(job.departments))
 			add_to_departments(job)
 
-	sortTim(occupations, /proc/cmp_job_datums)
+	tim_sort(occupations, /proc/cmp_job_datums)
 	for(var/D in department_datums)
 		var/datum/department/dept = department_datums[D]
-		sortTim(dept.jobs, /proc/cmp_job_datums, TRUE)
-		sortTim(dept.primary_jobs, /proc/cmp_job_datums, TRUE)
+		tim_sort(dept.jobs, /proc/cmp_job_datums, TRUE)
+		tim_sort(dept.primary_jobs, /proc/cmp_job_datums, TRUE)
 
 	return TRUE
 
@@ -71,7 +128,7 @@ SUBSYSTEM_DEF(job)
 		var/datum/department/D = new t()
 		department_datums[D.name] = D
 
-	sortTim(department_datums, /proc/cmp_department_datums, TRUE)
+	tim_sort(department_datums, /proc/cmp_department_datums, TRUE)
 
 /datum/controller/subsystem/job/proc/get_all_department_datums()
 	var/list/dept_datums = list()
@@ -83,11 +140,6 @@ SUBSYSTEM_DEF(job)
 	if(!occupations.len)
 		setup_occupations()
 	return name_occupations[rank]
-
-/datum/controller/subsystem/job/proc/get_job_type(jobtype)
-	if(!occupations.len)
-		setup_occupations()
-	return type_occupations[jobtype]
 
 // Determines if a job title is inside of a specific department.
 // Useful to replace the old `if(job_title in command_positions)` code.
@@ -114,7 +166,7 @@ SUBSYSTEM_DEF(job)
 /datum/controller/subsystem/job/proc/get_primary_department_of_job(datum/job/J)
 	if(!istype(J, /datum/job))
 		if(ispath(J))
-			J = get_job_type(J)
+			J = job_by_type(J)
 		else if(istext(J))
 			J = get_job(J)
 

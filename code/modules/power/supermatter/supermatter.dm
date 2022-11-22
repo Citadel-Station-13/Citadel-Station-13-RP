@@ -215,7 +215,7 @@
 		//Public alerts
 		if((damage > emergency_point) && !public_alert)
 			GLOB.global_announcer.autosay("WARNING: SUPERMATTER CRYSTAL DELAMINATION IMMINENT!", "Supermatter Monitor")
-			for(var/mob/M in player_list)
+			for(var/mob/M in GLOB.player_list)
 				if(!istype(M,/mob/new_player) && !isdeaf(M))
 					SEND_SOUND(M, message_sound)
 			admin_chat_message(message = "SUPERMATTER DELAMINATING!", color = "#FF2222")
@@ -223,7 +223,7 @@
 			log_game("SUPERMATTER([x],[y],[z]) Emergency PUBLIC announcement. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]")
 		else if((damage > emergency_point) && public_alert)
 			GLOB.global_announcer.autosay("DANGER: SUPERMATTER CRYSTAL DEGRADATION IN PROGRESS! INTEGRITY AT [integrity]%", "Supermatter Monitor")
-			for(var/mob/M in player_list)
+			for(var/mob/M in GLOB.player_list)
 				if(!istype(M,/mob/new_player) && !isdeaf(M))
 					SEND_SOUND(M, sound('sound/ambience/engine_alert2.ogg'))
 		else if(safe_warned && public_alert)
@@ -346,7 +346,7 @@
 			visible_message("[src]: Releasing [round(thermal_power)] W.")
 			visible_message("[src]: Releasing additional [round((heat_capacity_new - heat_capacity)*removed.temperature)] W with exhaust gasses.")
 
-		removed.add_thermal_energy(thermal_power)
+		removed.adjust_thermal_energy(thermal_power)
 		removed.temperature = clamp( removed.temperature, 0,  10000)
 
 		env.merge(removed)
@@ -394,7 +394,7 @@
 	ui_interact(user)
 
 /obj/machinery/power/supermatter/attack_hand(mob/user as mob)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	user.visible_message("<span class=\"warning\">\The [user] reaches out and touches \the [src], inducing a resonance... [TU.his] body starts to glow and bursts into flames before flashing into ash.</span>",\
 		"<span class=\"danger\">You reach out and touch \the [src]. Everything starts burning and all you can hear is ringing. Your last thought is \"That was not a wise decision.\"</span>",\
 		"<span class=\"warning\">You hear an uneartly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")
@@ -466,7 +466,7 @@
 		return
 	if(istype(AM, /mob/living))
 		var/mob/living/M = AM
-		var/datum/gender/T = gender_datums[M.get_visible_gender()]
+		var/datum/gender/T = GLOB.gender_datums[M.get_visible_gender()]
 		AM.visible_message("<span class=\"warning\">\The [AM] slams into \the [src] inducing a resonance... [T.his] body starts to glow and catch flame before flashing into ash.</span>",\
 		"<span class=\"danger\">You slam into \the [src] as your ears are filled with unearthly ringing. Your last thought is \"Oh, fuck.\"</span>",\
 		"<span class=\"warning\">You hear an uneartly ringing, then what sounds like a shrilling kettle as you are washed with a wave of heat.</span>")

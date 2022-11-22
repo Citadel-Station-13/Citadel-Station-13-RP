@@ -20,7 +20,6 @@
 	var/mob/living/carbon/owner
 	var/mutable_appearance/head
 	var/headcolor = rgb(0, 0, 0)
-	sprite_sheets = list(INV_MASK_DEF_ICON)
 	volume = 20
 
 /obj/item/reagent_containers/hard_candy/proc/On_Consume(mob/M, mob/user)
@@ -97,22 +96,15 @@
 				if(blocked)
 					to_chat(user, "<span class='warning'>\The [blocked] is in the way!</span>")
 					return
-
-			if(!istype(M, /mob/living/carbon/slime)) // If you're feeding it to someone else.
-
-				user.visible_message(SPAN_DANGER("[user] attempts to feed [M] [src]."))
-
-				user.setClickCooldown(user.get_attack_speed(src))
-				if(!do_mob(user, M)) return
-
-				//Do we really care about this
-				add_attack_logs(user,M,"Fed with [src.name] containing [reagentlist(src)]", admin_notify = FALSE)
-
-				user.visible_message("<span class='danger'>[user] feeds [M] [src].</span>")
-
-			else
-				to_chat(user, "This creature does not seem to have a mouth!")
+					
+			user.visible_message(SPAN_DANGER("[user] attempts to feed [M] [src]."))
+			user.setClickCooldown(user.get_attack_speed(src))
+			if(!do_mob(user, M, 3 SECONDS))
 				return
+			//Do we really care about this
+			// yes we do you idiot
+			add_attack_logs(user,M,"Fed with [src.name] containing [reagentlist(src)]", admin_notify = FALSE)
+			user.visible_message("<span class='danger'>[user] feeds [M] [src].</span>")
 
 		if(reagents)								//Handle ingestion of the reagent.
 			playsound(M.loc,'sound/items/eatfood.ogg', rand(10,50), 1)

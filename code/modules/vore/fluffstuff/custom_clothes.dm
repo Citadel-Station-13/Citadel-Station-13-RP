@@ -48,9 +48,7 @@
 
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "wolfgirluni"
-	worn_state = "wolfgirluni_mob"
-	rolled_sleeves = 0
-	rolled_down = 0
+	snowflake_worn_state = "wolfgirluni_mob"
 
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	item_state = "wolfgirluni_mob"
@@ -560,9 +558,6 @@
 	icon_state = "latexmaid"
 	item_state = "latexmaid_mob"
 
-	sprite_sheets = list(
-			SPECIES_TESHARI = 'icons/vore/custom_clothes_tesh_vr.dmi'
-			)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
 //Aztectornado:Tron inspired Siren outfit
@@ -574,9 +569,8 @@
 	icon = 'icons/vore/custom_clothes_vr.dmi'
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 	icon_state = "tronsiren"
-	worn_state = "tronsiren_mob"
+	snowflake_worn_state = "tronsiren_mob"
 	item_state = "tronsiren_mob"
-	rolled_sleeves = 0
 
 /obj/item/clothing/gloves/fluff/siren
 	name = "Siren Gloves"
@@ -660,10 +654,10 @@
 	flags_inv = HIDEJUMPSUIT | HIDETIE
 
 	item_icons = list(
-		slot_l_hand_str = 'icons/vore/custom_clothes_vr.dmi',
-		slot_r_hand_str = 'icons/vore/custom_clothes_vr.dmi',
+		SLOT_ID_LEFT_HAND = 'icons/vore/custom_clothes_vr.dmi',
+		SLOT_ID_RIGHT_HAND = 'icons/vore/custom_clothes_vr.dmi',
 		)
-	item_state_slots = list(slot_r_hand_str = "aika_coat_mob_r", slot_l_hand_str = "aika_coat_mob_l")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "aika_coat_mob_r", SLOT_ID_LEFT_HAND = "aika_coat_mob_l")
 
 //Burrito Justice: Jayda Wilson
 /obj/item/clothing/under/oricon/utility/sysguard/medical/fluff
@@ -673,11 +667,9 @@
 	icon_override = 'icons/vore/custom_clothes_vr.dmi'
 
 	icon_state = "blackutility_med"
-	worn_state = "blackutility_med"
+	snowflake_worn_state = "blackutility_med"
 	item_state = "blackutility_med"
 
-	rolled_down = 0
-	rolled_sleeves = 0
 	starting_accessories = null
 	item_icons = list()
 

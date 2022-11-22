@@ -93,9 +93,9 @@
 	density = 1
 	anchored = 1
 	var/hits = 4
-	var/hitpwr = 2 //Level of ex_act to be called on hit.
+	var/hitpwr = 2 //Level of legacy_ex_act to be called on hit.
 	var/dest
-	pass_flags = PASSTABLE
+	pass_flags = ATOM_PASS_TABLE
 	var/heavy = 0
 	var/z_original
 
@@ -156,7 +156,7 @@
 			continue
 		if(isturf(A)) // Don't hit floors. We'll deal with walls later.
 			continue
-		A.ex_act(hitpwr)
+		LEGACY_EX_ACT(A, hitpwr, null)
 
 	//then, ram the turf if it still exists
 	if(T)
@@ -179,7 +179,7 @@
 	meteor_effect(explode)
 	qdel(src)
 
-/obj/effect/meteor/ex_act()
+/obj/effect/meteor/legacy_ex_act()
 	return
 
 /obj/effect/meteor/attackby(obj/item/W as obj, mob/user as mob, params)
@@ -191,10 +191,10 @@
 /obj/effect/meteor/proc/make_debris()
 	for(var/throws = dropamt, throws > 0, throws--)
 		var/obj/item/O = new meteordrop(get_turf(src))
-		O.throw_at(dest, 5, 10)
+		O.throw_at_old(dest, 5, 10)
 
 /obj/effect/meteor/proc/shake_players()
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		var/turf/T = get_turf(M)
 		if(!T || T.z != src.z)
 			continue
@@ -214,7 +214,7 @@
 /obj/effect/meteor/dust
 	name = "space dust"
 	icon_state = "dust"
-	pass_flags = PASSTABLE | PASSGRILLE
+	pass_flags = ATOM_PASS_TABLE | ATOM_PASS_GRILLE
 	hits = 1
 	hitpwr = 3
 	meteordrop = /obj/item/ore/glass

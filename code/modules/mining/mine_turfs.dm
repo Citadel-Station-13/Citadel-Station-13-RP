@@ -20,7 +20,7 @@
 	density = 1
 	blocks_air = 1
 	can_dirty = FALSE
-	edge_blending_priority = 0
+
 
 	var/datum/ore/mineral
 	var/sand_dug
@@ -37,8 +37,42 @@
 	var/obj/item/last_find
 	var/datum/artifact_find/artifact_find
 	var/ignore_mapgen
-
+	var/ignore_oregen = FALSE
+	var/ignore_cavegen = FALSE
 	has_resources = 1
+
+
+
+// Alternatives that ignore ore_gen and cavegen
+/turf/simulated/mineral/ignore_oregen
+	ignore_oregen = TRUE
+
+/turf/simulated/mineral/floor/ignore_oregen
+	ignore_oregen = TRUE
+
+/turf/simulated/mineral/ignore_cavegen
+	ignore_cavegen = TRUE
+
+/turf/simulated/mineral/floor/ignore_cavegen
+	ignore_cavegen = TRUE
+
+/turf/simulated/mineral/floor/ignore_cavegen/has_air
+	initial_gas_mix = GAS_STRING_STP
+
+/turf/simulated/mineral/floor/indoors
+	outdoors = FALSE
+	name = "Depreciated, tell a mapper if you see this"
+	icon_state = ""
+
+/turf/simulated/mineral/icerock/ignore_cavegen
+	ignore_cavegen = TRUE
+
+/turf/simulated/mineral/icerock/floor/ignore_cavegen
+	ignore_cavegen = TRUE
+
+/turf/simulated/mineral/icerock/floor/ignore_cavegen/indoors
+	outdoors = FALSE
+
 
 // Alternative rock wall sprites.
 /turf/simulated/mineral/light
@@ -56,6 +90,8 @@
 	rock_icon_state = "icerock"
 	random_icon = 1
 
+/turf/simulated/mineral/icerock/airmix
+	initial_gas_mix = GAS_STRING_STP
 /turf/unsimulated/mineral/icerock
 	name = "impassable icerock"
 	icon = 'icons/turf/walls.dmi'
@@ -75,19 +111,19 @@
 	can_build_into_floor = TRUE
 
 //Alternative sand floor sprite.
-turf/simulated/mineral/floor/light
+/turf/simulated/mineral/floor/light
 	icon_state = "sand-light"
 	sand_icon_state = "sand-light"
 
-turf/simulated/mineral/floor/light_border
+/turf/simulated/mineral/floor/light_border
 	icon_state = "sand-light-border"
 	sand_icon_state = "sand-light-border"
 
-turf/simulated/mineral/floor/light_nub
+/turf/simulated/mineral/floor/light_nub
 	icon_state = "sand-light-nub"
 	sand_icon_state = "sand-light-nub"
 
-turf/simulated/mineral/floor/light_corner
+/turf/simulated/mineral/floor/light_corner
 	icon_state = "sand-light-corner"
 	sand_icon_state = "sand-light-corner"
 
@@ -99,6 +135,9 @@ turf/simulated/mineral/floor/light_corner
 	icon_state = "ice"
 	sand_icon_state = "ice"
 
+/turf/simulated/mineral/floor/icerock/airmix
+	initial_gas_mix = GAS_STRING_STP
+
 /turf/simulated/mineral/proc/make_floor()
 	if(!density && !opacity)
 		return
@@ -108,7 +147,7 @@ turf/simulated/mineral/floor/light_corner
 	reconsider_lights()
 	blocks_air = FALSE
 	can_build_into_floor = TRUE
-	SSplanets.addTurf(src)
+	//SSplanets.addTurf(src)	// Thank you Silicons, this was causing underground areas to have weather effects in them	- Bloop
 	queue_zone_update()
 	QUEUE_SMOOTH(src)
 	QUEUE_SMOOTH_NEIGHBORS(src)
@@ -122,7 +161,7 @@ turf/simulated/mineral/floor/light_corner
 	reconsider_lights()
 	blocks_air = TRUE
 	can_build_into_floor = FALSE
-	SSplanets.removeTurf(src)
+	//SSplanets.removeTurf(src)	// Thank you Silicons, this was causing underground areas to have weather effects in them as well -Bloop
 	queue_zone_update()
 	QUEUE_SMOOTH(src)
 	QUEUE_SMOOTH_NEIGHBORS(src)
@@ -225,7 +264,7 @@ GLOBAL_LIST_EMPTY(mining_overlay_cache)
 
 /* smoothing end */
 
-/turf/simulated/mineral/ex_act(severity)
+/turf/simulated/mineral/legacy_ex_act(severity)
 
 	switch(severity)
 		if(2.0)

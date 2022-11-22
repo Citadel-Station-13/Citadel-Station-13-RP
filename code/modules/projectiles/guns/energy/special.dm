@@ -164,7 +164,7 @@
 	projectile_type = /obj/item/projectile/animate
 	charge_cost = 240
 */
-obj/item/gun/energy/staff/focus
+/obj/item/gun/energy/staff/focus
 	name = "mental focus"
 	desc = "An artifact that channels the will of the user into destructive bolts of force. If you aren't careful with it, you might poke someone's brain out."
 	icon = 'icons/obj/wizard.dmi'
@@ -334,6 +334,7 @@ obj/item/gun/energy/staff/focus
 	cell_type = /obj/item/cell/device/weapon/recharge/captain
 	battery_lock = 1
 	one_handed_penalty = 0
+	safety_state = GUN_SAFETY_OFF
 
 /obj/item/gun/energy/service/attack_self(mob/user)
 	cycle_weapon(user)

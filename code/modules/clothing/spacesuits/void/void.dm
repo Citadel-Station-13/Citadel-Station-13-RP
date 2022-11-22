@@ -3,7 +3,7 @@
 	name = "void helmet"
 	desc = "A high-tech dark red space suit helmet. Used for AI satellite maintenance."
 	icon_state = "void"
-	item_state_slots = list(slot_r_hand_str = "syndicate", slot_l_hand_str = "syndicate")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "syndicate", SLOT_ID_LEFT_HAND = "syndicate")
 	heat_protection = HEAD
 	armor = list(melee = 40, bullet = 5, laser = 20,energy = 5, bomb = 35, bio = 100, rad = 20)
 	max_heat_protection_temperature = SPACE_SUIT_MAX_HEAT_PROTECTION_TEMPERATURE
@@ -16,12 +16,14 @@
 	species_restricted = list(SPECIES_HUMAN, SPECIES_PROMETHEAN, SPECIES_ALRAUNE)
 	sprite_sheets_refit = list(
 		SPECIES_UNATHI = 'icons/mob/clothing/species/unathi/helmet.dmi',
+		SPECIES_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/head.dmi',
 		SPECIES_TAJ = 'icons/mob/clothing/species/tajaran/helmet.dmi',
 		SPECIES_SKRELL = 'icons/mob/clothing/species/skrell/helmet.dmi'
 		//Teshari have a general sprite sheet defined in modules/clothing/clothing.dm
 		)
 	sprite_sheets_obj = list(
 		SPECIES_UNATHI = 'icons/obj/clothing/species/unathi/hats.dmi',
+		SPECIES_UNATHI_DIGI = 'icons/obj/clothing/species/unathi/hats.dmi',
 		SPECIES_TAJ = 'icons/obj/clothing/species/tajaran/hats.dmi',
 		SPECIES_SKRELL = 'icons/obj/clothing/species/skrell/hats.dmi',
 		SPECIES_TESHARI = 'icons/obj/clothing/species/teshari/hats.dmi',
@@ -33,7 +35,7 @@
 /obj/item/clothing/suit/space/void
 	name = "voidsuit"
 	icon_state = "void"
-	item_state_slots = list(slot_r_hand_str = "space_suit_syndicate", slot_l_hand_str = "space_suit_syndicate")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "space_suit_syndicate", SLOT_ID_LEFT_HAND = "space_suit_syndicate")
 	desc = "A high-tech dark red space suit. Used for AI satellite maintenance."
 	slowdown = 1
 	armor = list(melee = 40, bullet = 5, laser = 20,energy = 5, bomb = 35, bio = 100, rad = 20)
@@ -46,6 +48,7 @@
 	species_restricted = list(SPECIES_HUMAN, SPECIES_SKRELL, SPECIES_PROMETHEAN)
 	sprite_sheets_refit = list(
 		SPECIES_UNATHI = 'icons/mob/clothing/species/unathi/suits.dmi',
+		SPECIES_UNATHI_DIGI = 'icons/mob/clothing/species/unathidigi/suits.dmi',
 		SPECIES_TAJ = 'icons/mob/clothing/species/tajaran/suits.dmi',
 		SPECIES_SKRELL = 'icons/mob/clothing/species/skrell/suits.dmi'
 		//Teshari have a general sprite sheet defined in modules/clothing/clothing.dm
@@ -54,6 +57,7 @@
 		SPECIES_TAJ				= 'icons/obj/clothing/species/tajaran/suits.dmi',
 		SPECIES_SKRELL			= 'icons/obj/clothing/species/skrell/suits.dmi',
 		SPECIES_UNATHI			= 'icons/obj/clothing/species/unathi/suits.dmi',
+		SPECIES_UNATHI_DIGI     = 'icons/obj/clothing/species/unathi/suits.dmi',
 		SPECIES_TESHARI			= 'icons/obj/clothing/species/teshari/suits.dmi',
 		SPECIES_NEVREAN			= 'icons/obj/clothing/species/nevrean/suits.dmi',
 		SPECIES_AKULA			= 'icons/obj/clothing/species/akula/suits.dmi',
@@ -275,25 +279,25 @@
 				to_chat(user, "You pop \the [tank] out of \the [src]'s storage compartment.")
 				tank.forceMove(get_turf(src))
 				tank.clothing_flags &= ~EQUIP_IGNORE_DELIMB
-				playsound(src, W.usesound, 50, 1)
+				playsound(src, W.tool_sound, 50, 1)
 				src.tank = null
 			else if(choice == cooler)
 				to_chat(user, "You pop \the [cooler] out of \the [src]'s storage compartment.")
 				cooler.forceMove(get_turf(src))
 				cooler.clothing_flags &= ~EQUIP_IGNORE_DELIMB
-				playsound(src, W.usesound, 50, 1)
+				playsound(src, W.tool_sound, 50, 1)
 				src.cooler = null
 			else if(choice == helmet)
 				to_chat(user, "You detach \the [helmet] from \the [src]'s helmet mount.")
 				helmet.forceMove(get_turf(src))
 				helmet.clothing_flags &= ~EQUIP_IGNORE_DELIMB
-				playsound(src, W.usesound, 50, 1)
+				playsound(src, W.tool_sound, 50, 1)
 				src.helmet = null
 			else if(choice == boots)
 				to_chat(user, "You detach \the [boots] from \the [src]'s boot mounts.")
 				boots.forceMove(get_turf(src))
 				boots.clothing_flags &= ~EQUIP_IGNORE_DELIMB
-				playsound(src, W.usesound, 50, 1)
+				playsound(src, W.tool_sound, 50, 1)
 				src.boots = null
 		else
 			to_chat(user, "\The [src] does not have anything installed.")

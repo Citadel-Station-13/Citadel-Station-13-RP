@@ -1,6 +1,8 @@
 /datum/species/shadekin
+	uid = SPECIES_ID_SHADEKIN
 	name = SPECIES_SHADEKIN
 	name_plural = SPECIES_SHADEKIN
+	category = "Special"
 
 	icobase      = 'icons/mob/species/shadekin/body.dmi'
 	deform       = 'icons/mob/species/shadekin/body.dmi'
@@ -21,11 +23,9 @@
 	catalogue_data = list(/datum/category_item/catalogue/fauna/shadekin)
 	rarity_value = 15 //INTERDIMENSIONAL FLUFFERS
 
-	num_alternate_languages = 3
-	language = LANGUAGE_SHADEKIN
-	name_language = LANGUAGE_SHADEKIN
-	species_language = LANGUAGE_SHADEKIN
-	secondary_langs = list(LANGUAGE_SHADEKIN)
+	max_additional_languages = 3
+	intrinsic_languages = LANGUAGE_ID_SHADEKIN_HIVEMIND
+	name_language = LANGUAGE_ID_SHADEKIN_HIVEMIND
 
 	unarmed_types = list(
 		/datum/unarmed_attack/stomp,
@@ -57,8 +57,8 @@
 	heat_level_2 = 1000
 	heat_level_3 = 1150
 
-	flags =  NO_SCAN | NO_MINOR_CUT | NO_INFECT | CONTAMINATION_IMMUNE
-	spawn_flags = SPECIES_IS_WHITELISTED | SPECIES_CAN_JOIN | SPECIES_WHITELIST_SELECTABLE
+	species_flags = NO_SCAN | NO_MINOR_CUT | NO_INFECT | CONTAMINATION_IMMUNE
+	species_spawn_flags = SPECIES_SPAWN_RESTRICTED | SPECIES_SPAWN_CHARACTER
 
 	reagent_tag = IS_SHADEKIN // for shadekin-unique chem interactions
 
@@ -180,7 +180,7 @@
 
 	var/brightness = T.get_lumcount() //Brightness in 0.0 to 1.0
 	darkness = 1-brightness //Invert
-	var/is_dark = (darkness <= 0.5)
+	var/is_dark = (darkness >= 0.5)
 
 	if(H.ability_flags & AB_PHASE_SHIFTED)
 		dark_gains = 0

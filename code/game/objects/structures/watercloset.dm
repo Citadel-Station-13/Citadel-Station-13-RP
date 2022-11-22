@@ -176,8 +176,8 @@
 	if(I.is_wrench())
 		var/newtemp = input(user, "What setting would you like to set the temperature valve to?", "Water Temperature Valve") in temperature_settings
 		to_chat(user, "<span class='notice'>You begin to adjust the temperature valve with \the [I].</span>")
-		playsound(src.loc, I.usesound, 50, 1)
-		if(do_after(user, 50 * I.toolspeed))
+		playsound(src.loc, I.tool_sound, 50, 1)
+		if(do_after(user, 50 * I.tool_speed))
 			watertemp = newtemp
 			user.visible_message("<span class='notice'>[user] adjusts the shower with \the [I].</span>", "<span class='notice'>You adjust the shower with \the [I].</span>")
 			add_fingerprint(user)
@@ -425,7 +425,7 @@
 					R.cell.charge -= 20
 				else
 					B.deductcharge(B.hitcost)
-				var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+				var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 				user.visible_message( \
 					"<span class='danger'>[user] was stunned by [TU.his] wet [O]!</span>", \
 					"<span class='userdanger'>[user] was stunned by [TU.his] wet [O]!</span>")

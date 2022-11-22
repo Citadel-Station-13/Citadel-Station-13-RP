@@ -1,0 +1,7 @@
+- type: Dud
+  content: ayy
+  num: 2
+  fragments:
+  - trait: faction
+    ATC: NT
+  nul: ~

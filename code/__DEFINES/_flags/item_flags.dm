@@ -14,27 +14,33 @@
 #define NO_MAT_REDEMPTION		(1<<5)
 */
 /// When dropped, it calls qdel on itself
-#define DROPDEL					(1<<6)
+#define ITEM_DROPDEL					(1<<6)
 
 /// when an item has this it produces no "X has been hit by Y with Z" message in the default attackby()
-#define NOBLUDGEON				(1<<7)
+#define ITEM_NOBLUDGEON				(1<<7)
 /// for all things that are technically items but used for various different stuff
-#define ITEM_ABSTRACT				(1<<8)
+#define ITEM_ABSTRACT			(1<<8)
 /// When players should not be able to change the slowdown of the item (Speed potions, ect)
 #define IMMUTABLE_SLOW			(1<<9)
 /// Tool commonly used for surgery: won't attack targets in an active surgical operation on help intent (in case of mistakes)
 #define SURGICAL_TOOL			(1<<10)
 /// is this item in a storage component?
 #define IN_STORAGE				(1<<14)
+/// we can't be caught when hitting a mob on throw
+#define ITEM_THROW_UNCATCHABLE	(1<<15)
+/// we cannot be used a tool on click, no matter what
+#define ITEM_NO_TOOL_ATTACK		(1<<16)
 
 DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(IN_INVENTORY),
-	BITFIELD(DROPDEL),
-	BITFIELD(NOBLUDGEON),
+	BITFIELD(ITEM_DROPDEL),
+	BITFIELD(ITEM_NOBLUDGEON),
 	BITFIELD(ITEM_ABSTRACT),
 	BITFIELD(IMMUTABLE_SLOW),
 	BITFIELD(SURGICAL_TOOL),
 	BITFIELD(IN_STORAGE),
+	BITFIELD(ITEM_THROW_UNCATCHABLE),
+	BITFIELD(ITEM_NO_TOOL_ATTACK),
 ))
 
 //! Flags for the clothing_flags var on /obj/item

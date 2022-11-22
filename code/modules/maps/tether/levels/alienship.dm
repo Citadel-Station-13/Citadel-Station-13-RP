@@ -128,7 +128,7 @@
 			R.update_power()
 
 		//Teleport time!
-		for(var/mob in player_list) //This is extreme, but it's very hard to find people hiding in things, and this is pretty cheap.
+		for(var/mob in GLOB.player_list) //This is extreme, but it's very hard to find people hiding in things, and this is pretty cheap.
 			try
 				if(isliving(mob) && get_area(mob) == src)
 					abduct(mob)
@@ -165,7 +165,7 @@
 					continue
 				L.drop_item_to_ground(I, INV_OP_FORCE)
 			// second pass - NO HIDING, M*CROS
-			for(var/obj/item/holder/H in L.GetAllContents())
+			for(var/obj/item/holder/H in L.get_all_contents())
 				H.forceMove(get_turf(L))
 				abduct(H)
 		L.Paralyse(10)

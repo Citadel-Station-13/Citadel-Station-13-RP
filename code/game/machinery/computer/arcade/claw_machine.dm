@@ -23,7 +23,7 @@
 	if(..())
 		return
 
-	if(gamepaid == 0 && vendor_account && !vendor_account.suspended)
+	if(gamepaid == 0 && GLOB.vendor_account && !GLOB.vendor_account.suspended)
 		var/paid = 0
 		var/obj/item/card/id/W = I.GetID()
 		if(W) //for IDs and PDAs and wallets with IDs
@@ -124,14 +124,14 @@
 
 		// create entry in the purchaser's account log
 		var/datum/transaction/T = new()
-		T.target_name = "[vendor_account.owner_name] (via [name])"
+		T.target_name = "[GLOB.vendor_account.owner_name] (via [name])"
 		T.purpose = "Purchase of arcade game([name])"
 		if(gameprice > 0)
 			T.amount = "([gameprice])"
 		else
 			T.amount = "[gameprice]"
 		T.source_terminal = name
-		T.date = current_date_string
+		T.date = GLOB.current_date_string
 		T.time = stationtime2text()
 		customer_account.transaction_log.Add(T)
 
@@ -144,16 +144,16 @@
 /// Add to vendor account
 
 /obj/machinery/computer/arcade/clawmachine/proc/credit_purchase(target as text)
-	vendor_account.money += gameprice
+	GLOB.vendor_account.money += gameprice
 
 	var/datum/transaction/T = new()
 	T.target_name = target
 	T.purpose = "Purchase of arcade game([name])"
 	T.amount = "[gameprice]"
 	T.source_terminal = name
-	T.date = current_date_string
+	T.date = GLOB.current_date_string
 	T.time = stationtime2text()
-	vendor_account.transaction_log.Add(T)
+	GLOB.vendor_account.transaction_log.Add(T)
 
 /// End Payment
 
@@ -221,7 +221,7 @@
 			winscreen = "You won...?"
 			var/obj/item/grenade/G = new /obj/item/grenade/explosive(get_turf(src)) /// YEAAAAAAAAAAAAAAAAAAH!!!!!!!!!!
 			G.activate()
-			G.throw_at(get_turf(usr),10,10) /// Play stupid games, win stupid prizes.
+			G.throw_at_old(get_turf(usr),10,10) /// Play stupid games, win stupid prizes.
 
 		playsound(src, 'sound/arcade/Ori_win.ogg', 50, 1, extrarange = -3, falloff = 0.1, ignore_walls = FALSE)
 		winprob = 0

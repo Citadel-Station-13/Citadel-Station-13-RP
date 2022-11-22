@@ -6,7 +6,7 @@
 	density = 0
 	anchored = 0
 	force = 8
-	throwforce = 10
+	throw_force = 10
 	throw_speed = 1
 	throw_range = 2
 
@@ -15,7 +15,7 @@
 	var/stability = 100//TODO: add all the stability things to this so its not very safe if you keep hitting in on things
 
 
-/obj/item/am_containment/ex_act(severity)
+/obj/item/am_containment/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			explosion(get_turf(src), 1, 2, 3, 5)//Should likely be larger but this works fine for now I guess

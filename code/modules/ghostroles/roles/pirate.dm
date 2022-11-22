@@ -59,7 +59,7 @@
 				"<span class='notice'>You start to pry open [src]...</span>",
 				"<span class='italics'>You hear prying...</span>")
 		W.play_tool_sound(src)
-		if(do_after(user, 100*W.toolspeed, target = src))
+		if(do_after(user, 100*W.tool_speed, target = src))
 			user.visible_message("<span class='warning'>[user] pries open [src], disrupting the sleep of the pirate within and killing them.</span>",
 				"<span class='notice'>You pry open [src], disrupting the sleep of the pirate within and killing them.</span>",
 				"<span class='italics'>You hear prying, followed by the death rattling of bones.</span>")

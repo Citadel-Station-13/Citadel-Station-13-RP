@@ -35,11 +35,15 @@
 
 #define ismecha(A) (istype(A, /obj/mecha))
 
+#define isvehicle(A) (istype(A, /obj/vehicle_old) || istype(A, /obj/vehicle) || istype(A, /obj/mecha))
+
 #define isorgan(A) istype(A, /obj/item/organ/external)
 
 #define isairlock(A) istype(A, /obj/machinery/door/airlock)
 
-#define isbelly(A)		istype(A, /obj/belly)
+#define isbelly(A) istype(A, /obj/belly)
+
+#define is_reagent_container(O) (istype(O, /obj/item/reagent_containers))
 
 //Areas
 

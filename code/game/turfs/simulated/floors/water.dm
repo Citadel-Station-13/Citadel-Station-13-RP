@@ -6,7 +6,6 @@
 	icon_state = "seashallow" // So it shows up in the map editor as water.
 	var/water_state = "water_shallow"
 	var/under_state = "rock"
-	edge_blending_priority = -1
 	edge_icon_state = "water_shallow"
 	movement_cost = 4
 	outdoors = TRUE
@@ -96,7 +95,6 @@
 	desc = "A body of water.  It seems quite deep."
 	icon_state = "seadeep" // So it shows up in the map editor as water.
 	under_state = "abyss"
-	edge_blending_priority = -2
 	movement_cost = 8
 	depth = 2
 
@@ -193,7 +191,7 @@ var/list/shoreline_icon_cache = list()
 	desc = "This water smells pretty acrid."
 	var/poisonlevel = 10
 
-turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
+/turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	..()
 	if(istype(AM, /mob/living))
 		var/mob/living/L = AM
@@ -212,7 +210,6 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	icon_state = "acid_shallow"
 	var/acid_state = "acid_shallow"
 	under_state = "rock"
-	edge_blending_priority = 0
 	movement_cost = 4
 	depth = 4
 	layer = WATER_FLOOR_LAYER
@@ -251,7 +248,8 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	if(burn_stuff(AM))
 		START_PROCESSING(SSobj, src)
 
-/turf/simulated/floor/water/acid/hitby(atom/movable/AM)
+/turf/simulated/floor/water/acid/throw_landed(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	if(burn_stuff(AM))
 		START_PROCESSING(SSobj, src)
 
@@ -312,7 +310,6 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	desc = "A body of sickly green liquid. It emanates an acrid stench.  It seems quite deep."
 	icon_state = "acid_deep"
 	under_state = "abyss"
-	edge_blending_priority = -2
 	movement_cost = 8
 	depth = 5
 
@@ -324,7 +321,6 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	icon_state = "acidb_shallow"
 	var/blood_state = "acidb_shallow"
 	under_state = "rock"
-	edge_blending_priority = -1
 	movement_cost = 4
 	layer = WATER_FLOOR_LAYER
 	depth = 6
@@ -357,12 +353,14 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 			return water_breath
 	return return_air() // Otherwise their head is above the water, so get the air from the atmosphere instead.
 
+//! this entire file needs refactored, jesus christ
 /turf/simulated/floor/water/blood/Entered(atom/movable/AM)
 	..()
 	if(blood_wade(AM))
 		START_PROCESSING(SSobj, src)
 
-/turf/simulated/floor/water/blood/hitby(atom/movable/AM)
+/turf/simulated/floor/water/blood/throw_landed(atom/movable/AM, datum/thrownthing/TT)
+	. = ..()
 	if(blood_wade(AM))
 		START_PROCESSING(SSobj, src)
 
@@ -408,6 +406,5 @@ turf/simulated/floor/water/contaminated/Entered(atom/movable/AM, atom/oldloc)
 	desc = "A body of crimson fluid. It smells like pennies and gasoline.  It seems quite deep."
 	icon_state = "acidb_deep"
 	under_state = "abyss"
-	edge_blending_priority = -2
 	movement_cost = 8
 	depth = 7

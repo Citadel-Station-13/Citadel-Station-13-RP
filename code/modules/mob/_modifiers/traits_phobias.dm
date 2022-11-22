@@ -496,7 +496,7 @@
 
 		if(istype(thing, /obj/machinery/iv_drip))
 			var/obj/machinery/iv_drip/I = thing
-			if(I.beaker)
+			if(I.reagent_container)
 				fear_amount += 8
 			else
 				fear_amount += 6
@@ -670,4 +670,3 @@
 		"WetSkrell was a mistake."
 		)
 	return pick(generic_responses)
-

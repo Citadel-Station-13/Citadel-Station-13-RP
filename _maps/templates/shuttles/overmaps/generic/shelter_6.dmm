@@ -502,8 +502,6 @@
 /area/shuttle/tabiranth)
 "aC" = (
 /obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /obj/machinery/telecomms/relay{
@@ -527,7 +525,7 @@
 	pixel_x = -5;
 	pixel_y = -26
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/tabiranth)
 "aE" = (
@@ -545,8 +543,8 @@
 	frequency = 1380;
 	pixel_y = 25
 	},
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -664,7 +662,7 @@
 	pixel_x = 5;
 	pixel_y = 26
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/tabiranth)
 "aL" = (
@@ -682,7 +680,7 @@
 	pixel_x = -5;
 	pixel_y = 26
 	},
-/atom/movable/map_helper/airlock/door/int_door,
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/tabiranth)
 "aM" = (
@@ -1032,13 +1030,9 @@
 /area/shuttle/tabiranth)
 "aW" = (
 /obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/structure/cable/cyan{
-	d1 = 2;
-	d2 = 8;
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/white,
@@ -1052,7 +1046,6 @@
 	pixel_x = -28
 	},
 /obj/structure/cable/cyan{
-	d2 = 4;
 	icon_state = "0-4"
 	},
 /turf/simulated/floor/tiled/white,
@@ -1068,8 +1061,6 @@
 /area/shuttle/tabiranth)
 "aZ" = (
 /obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/tiled/white,
@@ -1090,8 +1081,6 @@
 /area/shuttle/tabiranth)
 "bd" = (
 /obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/item/perfect_tele_beacon{
@@ -1434,8 +1423,6 @@
 /area/shuttle/tabiranth)
 "bm" = (
 /obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 8;
 	icon_state = "1-8"
 	},
 /obj/machinery/power/terminal{
@@ -1548,8 +1535,8 @@
 	},
 /obj/effect/shuttle_landmark/shuttle_initializer/tabiranth,
 /obj/effect/overmap/visitable/ship/landable/tabiranth,
-/atom/movable/map_helper/airlock/sensor/chamber_sensor,
-/atom/movable/map_helper/airlock/atmos/chamber_pump,
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /obj/structure/handrail{
 	dir = 1
 	},
@@ -1608,8 +1595,6 @@
 /area/shuttle/tabiranth)
 "bA" = (
 /obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/alien/blue{
@@ -1693,7 +1678,7 @@
 /obj/machinery/door/airlock/alien/blue/locked{
 	req_one_access = list(101)
 	},
-/atom/movable/map_helper/airlock/door/ext_door,
+/obj/map_helper/airlock/door/ext_door,
 /obj/machinery/access_button{
 	command = "cycle_exterior";
 	frequency = 1380;

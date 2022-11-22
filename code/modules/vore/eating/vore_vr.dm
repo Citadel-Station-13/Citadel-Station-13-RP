@@ -33,10 +33,10 @@
 	var/permit_healbelly = FALSE
 	var/can_be_drop_prey = FALSE
 	var/can_be_drop_pred = FALSE
-	var/permit_sizegun = FALSE
+	var/permit_sizegun = TRUE
 	var/permit_size_trample = TRUE
 	var/permit_size_pickup = TRUE
-	var/permit_stripped = FALSE
+	var/permit_stripped = TRUE
 
 	//Mechanically required
 	var/path
@@ -90,28 +90,28 @@
 		save_vore() //Make the file first
 		return TRUE
 
-	var/list/json_from_file = json_decode(file2text(path))
-	if(!json_from_file)
+	var/list/json_FROM_FILE = json_decode(file2text(path))
+	if(!json_FROM_FILE)
 		return FALSE //My concern grows
 
-	var/version = json_from_file["version"]
-	json_from_file = patch_version(json_from_file,version)
+	var/version = json_FROM_FILE["version"]
+	json_FROM_FILE = patch_version(json_FROM_FILE,version)
 
-	digestable = json_from_file["digestable"]
-	devourable = json_from_file["devourable"]
-	feeding = json_from_file["feeding"]
-	digest_leave_remains = json_from_file["digest_leave_remains"]
-	allowmobvore = json_from_file["allowmobvore"]
-	vore_taste = json_from_file["vore_taste"]
-	vore_smell = json_from_file["vore_smell"]
-	permit_healbelly = json_from_file["permit_healbelly"]
-	can_be_drop_prey = json_from_file["can_be_drop_prey"]
-	can_be_drop_pred = json_from_file["can_be_drop_pred"]
-	belly_prefs = json_from_file["belly_prefs"]
-	permit_sizegun = json_from_file["permit_sizegun"]
-	permit_size_trample = json_from_file["permit_size_trample"]
-	permit_size_pickup = json_from_file["permit_size_pickup"]
-	permit_stripped = json_from_file["permit_stripped"]
+	digestable = json_FROM_FILE["digestable"]
+	devourable = json_FROM_FILE["devourable"]
+	feeding = json_FROM_FILE["feeding"]
+	digest_leave_remains = json_FROM_FILE["digest_leave_remains"]
+	allowmobvore = json_FROM_FILE["allowmobvore"]
+	vore_taste = json_FROM_FILE["vore_taste"]
+	vore_smell = json_FROM_FILE["vore_smell"]
+	permit_healbelly = json_FROM_FILE["permit_healbelly"]
+	can_be_drop_prey = json_FROM_FILE["can_be_drop_prey"]
+	can_be_drop_pred = json_FROM_FILE["can_be_drop_pred"]
+	belly_prefs = json_FROM_FILE["belly_prefs"]
+	permit_sizegun = json_FROM_FILE["permit_sizegun"]
+	permit_size_trample = json_FROM_FILE["permit_size_trample"]
+	permit_size_pickup = json_FROM_FILE["permit_size_pickup"]
+	permit_stripped = json_FROM_FILE["permit_stripped"]
 
 	//Quick sanitize
 	if(isnull(digestable))
@@ -131,13 +131,13 @@
 	if(isnull(can_be_drop_pred))
 		can_be_drop_pred = FALSE
 	if(isnull(permit_sizegun))
-		permit_sizegun = FALSE
+		permit_sizegun = TRUE
 	if(isnull(permit_size_trample))
 		permit_size_trample = TRUE
 	if(isnull(permit_size_pickup))
 		permit_size_pickup = TRUE
 	if(isnull(permit_stripped))
-		permit_stripped = FALSE
+		permit_stripped = TRUE
 	if(isnull(belly_prefs))
 		belly_prefs = list()
 
@@ -167,8 +167,8 @@
 		)
 
 	//List to JSON
-	var/json_to_file = json_encode(settings_list)
-	if(!json_to_file)
+	var/json_TO_FILE = json_encode(settings_list)
+	if(!json_TO_FILE)
 		log_debug("Saving: [path] failed jsonencode")
 		return FALSE
 
@@ -176,7 +176,7 @@
 	// Fall back to using old format if we are not using rust-g
 	if(fexists(path))
 		fdel(path) //Byond only supports APPENDING to files, not replacing.
-	text2file(json_to_file, path)
+	text2file(json_TO_FILE, path)
 	if(!fexists(path))
 		log_debug("Saving: [path] failed file write")
 		return FALSE
@@ -184,5 +184,5 @@
 	return TRUE
 
 //Can do conversions here
-/datum/vore_preferences/proc/patch_version(var/list/json_from_file,var/version)
-	return json_from_file
+/datum/vore_preferences/proc/patch_version(var/list/json_FROM_FILE,var/version)
+	return json_FROM_FILE

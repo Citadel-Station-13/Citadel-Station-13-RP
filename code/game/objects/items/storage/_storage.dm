@@ -3,15 +3,11 @@
 // see item/attackby() (/game/objects/items.dm)
 // Do not remove this functionality without good reason, cough reagent_containers cough.
 // -Sayu
-
-
+#define storage_ui_default "LEFT+7,BOTTOM+7 to LEFT+10,BOTTOM+8"
 /obj/item/storage
 	name = "storage"
 	icon = 'icons/obj/storage.dmi'
-	item_icons = list(
-		slot_l_hand_str = 'icons/mob/items/lefthand_storage.dmi',
-		slot_r_hand_str = 'icons/mob/items/righthand_storage.dmi',
-		)
+	inhand_default_type = INHAND_DEFAULT_ICON_STORAGE
 	w_class = ITEMSIZE_NORMAL
 	show_messages = 1
 
@@ -59,7 +55,7 @@
 		src.close(user)
 	// I would think there should be some incap check here or something
 	// But MouseDrop doesn't use one (as of this writing), so...
-	else if(isliving(user) && Adjacent(user))
+	else if(isliving(user) && user.Reachability(src))
 		src.open(user)
 	else
 		return ..()
@@ -69,7 +65,7 @@
 		return ..()
 	if(user in is_seeing)
 		close(user)
-	else if(isliving(user) && Adjacent(user))
+	else if(isliving(user) && user.Reachability(src))
 		open(user)
 	else
 		return ..()
@@ -170,42 +166,42 @@
 /obj/item/storage/proc/orient_objs(tx, ty, mx, my)
 	var/cx = tx
 	var/cy = ty
-	src.boxes.screen_loc = "[tx]:,[ty] to [mx],[my]"
+	src.boxes.screen_loc = "LEFT+[tx],BOTTOM+[ty] to LEFT+[mx],BOTTOM+[my]"
 	for(var/obj/O in src.contents)
-		O.screen_loc = "[cx],[cy]"
+		O.screen_loc = "LEFT+[cx],BOTTOM+[cy]"
 		O.hud_layerise()
 		cx++
 		if (cx > mx)
 			cx = tx
 			cy--
-	src.closer.screen_loc = "[mx+1],[my]"
+	src.closer.screen_loc = "LEFT+[mx+1],BOTTOM+[my]"
 	return
 
 //This proc draws out the inventory and places the items on it. It uses the standard position.
 /obj/item/storage/proc/slot_orient_objs(var/rows, var/cols, var/list/obj/item/display_contents)
-	var/cx = 4
-	var/cy = 2+rows
-	src.boxes.screen_loc = "4:16,2:16 to [4+cols]:16,[2+rows]:16"
+	var/cx = 3
+	var/cy = 1 + rows
+	src.boxes.screen_loc = "LEFT+3:16,BOTTOM+1:16 to LEFT+[3+cols]:16,BOTTOM+[1+rows]:16"
 
 	if(display_contents_with_number)
 		for(var/datum/numbered_display/ND in display_contents)
-			ND.sample_object.screen_loc = "[cx]:16,[cy]:16"
+			ND.sample_object.screen_loc = "LEFT+[cx]:16,BOTTOM+[cy]:16"
 			ND.sample_object.maptext = "<font color='white'>[(ND.number > 1)? "[ND.number]" : ""]</font>"
 			ND.sample_object.hud_layerise()
 			cx++
-			if (cx > (4+cols))
-				cx = 4
+			if (cx > (3+cols))
+				cx = 3
 				cy--
 	else
 		for(var/obj/O in contents)
-			O.screen_loc = "[cx]:16,[cy]:16"
+			O.screen_loc = "LEFT+[cx]:16,BOTTOM+[cy]:16"
 			O.maptext = ""
 			O.hud_layerise()
 			cx++
-			if (cx > (4+cols))
-				cx = 4
+			if (cx > (3+cols))
+				cx = 3
 				cy--
-	src.closer.screen_loc = "[4+cols+1]:16,2:16"
+	src.closer.screen_loc = "LEFT+[3+cols+1]:16,BOTTOM+1:16"
 	return
 
 /obj/item/storage/proc/space_orient_objs(var/list/obj/item/display_contents)
@@ -224,9 +220,9 @@
 	M.Scale((storage_width-storage_cap_width*2+3)/32,1)
 	src.storage_continue.transform = M
 
-	src.storage_start.screen_loc = "4:16,2:16"
-	src.storage_continue.screen_loc = "4:[storage_cap_width+(storage_width-storage_cap_width*2)/2+2],2:16"
-	src.storage_end.screen_loc = "4:[19+storage_width-storage_cap_width],2:16"
+	src.storage_start.screen_loc = "LEFT+3:16,BOTTOM+1:16"
+	src.storage_continue.screen_loc = "LEFT+3:[storage_cap_width+(storage_width-storage_cap_width*2)/2+2],BOTTOM+1:16"
+	src.storage_end.screen_loc = "LEFT+3:[19+storage_width-storage_cap_width],BOTTOM+1:16"
 
 	var/startpoint = 0
 	var/endpoint = 1
@@ -249,11 +245,11 @@
 		storage_start.overlays += src.stored_continue
 		storage_start.overlays += src.stored_end
 
-		O.screen_loc = "4:[round((startpoint+endpoint)/2)+2],2:16"
+		O.screen_loc = "LEFT+3:[round((startpoint+endpoint)/2)+2],BOTTOM+1:16"
 		O.maptext = ""
 		O.hud_layerise()
 
-	src.closer.screen_loc = "4:[storage_width+19],2:16"
+	src.closer.screen_loc = "LEFT+3:[storage_width+19],BOTTOM+1:16"
 	return
 
 
@@ -261,11 +257,11 @@
 	var/obj/item/sample_object
 	var/number
 
-	New(obj/item/sample as obj)
-		if(!istype(sample))
-			qdel(src)
-		sample_object = sample
-		number = 1
+/datum/numbered_display/New(obj/item/sample)
+	if(!istype(sample))
+		qdel(src)
+	sample_object = sample
+	number = 1
 
 //This proc determins the size of the inventory to be displayed. Please touch it only if you know what you're doing.
 /obj/item/storage/proc/orient2hud(mob/user as mob)
@@ -455,8 +451,8 @@
 			H.r_store = null
 			return
 
-	if (src.loc == user)
-		src.open(user)
+	if (loc == user)
+		open(user)
 	else
 		..()
 		for(var/mob/M in range(1))
@@ -530,25 +526,25 @@
 	src.boxes.name = "storage"
 	src.boxes.master = src
 	src.boxes.icon_state = "block"
-	src.boxes.screen_loc = "7,7 to 10,8"
+	src.boxes.screen_loc = storage_ui_default
 
 	src.storage_start = new /atom/movable/screen/storage(  )
 	src.storage_start.name = "storage"
 	src.storage_start.master = src
 	src.storage_start.icon_state = "storage_start"
-	src.storage_start.screen_loc = "7,7 to 10,8"
+	src.storage_start.screen_loc = storage_ui_default
 
 	src.storage_continue = new /atom/movable/screen/storage(  )
 	src.storage_continue.name = "storage"
 	src.storage_continue.master = src
 	src.storage_continue.icon_state = "storage_continue"
-	src.storage_continue.screen_loc = "7,7 to 10,8"
+	src.storage_continue.screen_loc = storage_ui_default
 
 	src.storage_end = new /atom/movable/screen/storage(  )
 	src.storage_end.name = "storage"
 	src.storage_end.master = src
 	src.storage_end.icon_state = "storage_end"
-	src.storage_end.screen_loc = "7,7 to 10,8"
+	src.storage_end.screen_loc = storage_ui_default
 
 	src.stored_start = new /atom/movable //we just need these to hold the icon
 	src.stored_start.icon_state = "stored_start"
@@ -720,4 +716,4 @@
 		. += "<span class='notice'>\The [src] contains \the [display_item]!</span>"
 
 /obj/item/storage/AllowDrop()
-	return TRUE
+	return FALSE

@@ -6,7 +6,7 @@
 	icon_state = "sandbag_empty"
 	w_class = ITEMSIZE_NORMAL
 	force = 1
-	throwforce = 1
+	throw_force = 1
 	throw_speed = 5
 	throw_range = 20
 	drop_sound = 'sound/items/drop/backpack.ogg'
@@ -53,7 +53,7 @@
 	icon_state = "sandbags"
 	w_class = ITEMSIZE_NORMAL
 	force = 10
-	throwforce = 15
+	throw_force = 15
 	throw_speed = 3
 	throw_range = 10
 	drop_sound = 'sound/items/drop/backpack.ogg'
@@ -106,6 +106,7 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 	base_icon_state = "sandbags"
 	anchored = TRUE
 	density = TRUE
+	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_THROWN | ATOM_PASS_CLICK
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_SANDBAGS)
 	canSmoothWith = list(SMOOTH_GROUP_SANDBAGS)
@@ -196,19 +197,13 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 	//Make it drop materials? I dunno. For now it just disappears.
 	return
 
-/obj/structure/sandbag/ex_act(severity)
+/obj/structure/sandbag/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
 			dismantle()
 		if(2.0)
 			health -= 25
 			CheckHealth()
-
-/obj/structure/sandbag/CanAllowThrough(atom/movable/mover, turf/target)//So bullets will fly over and stuff.
-	. = ..()
-	if(istype(mover) && mover.checkpass(PASSTABLE))
-		return TRUE
-	return FALSE
 
 /obj/structure/sandbag/proc/break_to_parts(full_return = 0)
 	if(full_return || prob(20))
@@ -217,4 +212,3 @@ var/global/list/datum/stack_recipe/sandbags_recipes = list( \
 		new /obj/item/stack/material/cloth(src.loc)
 		new /obj/item/ore/glass(src.loc)
 	qdel(src)
-	return

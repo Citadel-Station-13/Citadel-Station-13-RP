@@ -128,7 +128,7 @@
 	add_fingerprint(user)
 	if(on && user.zone_sel.selecting == O_EYES)
 
-		if((CLUMSY in user.mutations) && prob(50))	//too dumb to use flashlight properly
+		if((MUTATION_CLUMSY in user.mutations) && prob(50))	//too dumb to use flashlight properly
 			return ..()	//just hit them in the head
 
 		var/mob/living/carbon/human/H = M	//mob has protective eyewear
@@ -150,7 +150,7 @@
 				if(M.stat == DEAD || M.blinded)	//mob is dead or fully blind
 					to_chat(user, SPAN_WARNING("\The [M]'s pupils do not react to the light!"))
 					return
-				if(XRAY in M.mutations)
+				if(MUTATION_XRAY in M.mutations)
 					to_chat(user, SPAN_NOTICE("\The [M] pupils give an eerie glow!"))
 				if(vision.is_bruised())
 					to_chat(user, SPAN_WARNING("There's visible damage to [M]'s [vision.name]!"))

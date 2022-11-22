@@ -5,9 +5,6 @@
 	desc = "Standard pilot gear. Protects the head from impacts."
 	icon_state = "pilot_helmet1"
 	item_icons = list(SLOT_ID_HEAD = 'icons/mob/clothing/pilot_helmet.dmi')
-	sprite_sheets = list(
-		SPECIES_TESHARI = 'icons/mob/clothing/species/teshari/pilot_helmet.dmi'
-		)
 	clothing_flags = THICKMATERIAL
 	armor = list(melee = 20, bullet = 10, laser = 10, energy = 5, bomb = 10, bio = 0, rad = 0)
 	flags_inv = HIDEEARS
@@ -30,7 +27,7 @@
 	raw_images = list()
 
 	pilot_hud = new(src)
-	pilot_hud.screen_loc = "1,1"
+	pilot_hud.screen_loc = "CENTER-7,CENTER-7"
 	pilot_hud.icon = 'icons/obj/piloting_overlay.dmi'
 	pilot_hud.icon_state = "dimmer"
 	pilot_hud.layer = SCREEN_LAYER

@@ -8,7 +8,7 @@
 	density = 0
 	anchored = 0.0
 	force = 1.0
-	throwforce = 1.0
+	throw_force = 1.0
 	throw_speed = 1
 	throw_range = 2
 	w_class = ITEMSIZE_SMALL
@@ -108,6 +108,8 @@
 	. = amount
 	if(!worth)
 		qdel(src)
+		return
+	update_appearance()
 
 /obj/item/spacecash/amount_static_currency()
 	return worth
@@ -174,9 +176,15 @@
 	drop_sound = 'sound/items/drop/card.ogg'
 	pickup_sound = 'sound/items/pickup/card.ogg'
 	var/owner_name = "" //So the ATM can set it so the EFTPOS can put a valid name on transactions.
-	attack_self() return  //Don't act
-	attackby()    return  //like actual
-	update_icon() return  //space cash
+
+/obj/item/spacecash/ewallet/attack_self()
+	return //Don't act
+
+/obj/item/spacecash/ewallet/attackby()
+	return //like actual
+
+/obj/item/spacecash/ewallet/update_icon()
+	return //space cash
 
 /obj/item/spacecash/ewallet/examine(mob/user)
 	. = ..()

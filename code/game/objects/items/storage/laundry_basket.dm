@@ -7,7 +7,7 @@
 	name = "laundry basket"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "laundry-empty"
-	item_state_slots = list(slot_r_hand_str = "laundry", slot_l_hand_str = "laundry")
+	item_state_slots = list(SLOT_ID_RIGHT_HAND = "laundry", SLOT_ID_LEFT_HAND = "laundry")
 	desc = "The peak of thousands of years of laundry evolution."
 
 	w_class = ITEMSIZE_HUGE
@@ -19,7 +19,6 @@
 	allow_quick_gather = 1
 	collection_mode = 1
 	var/linked
-
 
 /obj/item/storage/laundry_basket/attack_hand(mob/living/user as mob)
 	if(ishuman(user))
@@ -43,6 +42,8 @@
 
 /obj/item/storage/laundry_basket/pickup(mob/user, flags, atom/oldLoc)
 	. = ..()
+	if(!use_to_pickup)
+		return		// DON'T FUCKING INFINITELY RECURSE
 	var/obj/item/storage/laundry_basket/offhand/O = new(user)
 	O.name = "[name] - second hand"
 	O.desc = "Your second grip on the [name]."
@@ -64,7 +65,8 @@
 		return ..()
 
 /obj/item/storage/laundry_basket/dropped(mob/user, flags, atom/newLoc)
-	QDEL_NULL(linked)
+	if(use_to_pickup)	// sigh refactor this shit when
+		QDEL_NULL(linked)
 	return ..()
 
 /obj/item/storage/laundry_basket/show_to(mob/user as mob)
@@ -74,6 +76,7 @@
 
 
 //Offhand
+// TODO: REFACTOR THIS SHIT
 /obj/item/storage/laundry_basket/offhand
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "offhand"
@@ -83,4 +86,3 @@
 /obj/item/storage/laundry_basket/offhand/dropped(mob/user, flags, atom/newLoc)
 	. = ..()
 	user.drop_item_to_ground(linked)
-

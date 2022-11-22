@@ -20,8 +20,8 @@
 	var/obj/item/cell/bcell = null
 	var/cell_type = /obj/item/cell/device
 	item_icons = list(
-			slot_l_hand_str = 'icons/mob/items/lefthand_melee.dmi',
-			slot_r_hand_str = 'icons/mob/items/righthand_melee.dmi',
+			SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi',
+			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi',
 			)
 
 /obj/item/melee/energy/proc/activate(mob/living/user)
@@ -34,7 +34,7 @@
 		item_state = "[icon_state]_blade"
 	embed_chance = active_embed_chance
 	force = active_force
-	throwforce = active_throwforce
+	throw_force = active_throwforce
 	sharp = 1
 	edge = 1
 	w_class = active_w_class
@@ -51,7 +51,7 @@
 	active = 0
 	embed_chance = initial(embed_chance)
 	force = initial(force)
-	throwforce = initial(throwforce)
+	throw_force = initial(throw_force)
 	sharp = initial(sharp)
 	edge = initial(edge)
 	w_class = initial(w_class)
@@ -81,9 +81,9 @@
 			to_chat(user, "<span class='notice'>\The [src] does not seem to have power.</span>")
 			return
 
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	if (active)
-		if ((CLUMSY in user.mutations) && prob(50))
+		if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 			user.visible_message("<span class='danger'>\The [user] accidentally cuts [TU.himself] with \the [src].</span>",\
 			"<span class='danger'>You accidentally cut yourself with \the [src].</span>")
 			user.take_organ_damage(5,5)
@@ -100,7 +100,7 @@
 	return
 
 /obj/item/melee/energy/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	if(active)
 		user.visible_message(pick("<span class='danger'>\The [user] is slitting [TU.his] stomach open with \the [src]! It looks like [TU.he] [TU.is] trying to commit seppuku.</span>",\
 			"<span class='danger'>\The [user] is falling on \the [src]! It looks like [TU.he] [TU.is] trying to commit suicide.</span>"))
@@ -193,9 +193,9 @@
 	active_throwforce = 35
 	active_w_class = ITEMSIZE_HUGE
 	//force = 40
-	//throwforce = 25
+	//throw_force = 25
 	force = 20
-	throwforce = 10
+	throw_force = 10
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_NORMAL
@@ -216,7 +216,7 @@
 	to_chat(user, "<span class='notice'>\The [src] is de-energised. It's just a regular axe now.</span>")
 
 /obj/item/melee/energy/axe/suicide_act(mob/user)
-	var/datum/gender/TU = gender_datums[user.get_visible_gender()]
+	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
 	visible_message("<span class='warning'>\The [user] swings \the [src] towards [TU.his] head! It looks like [TU.he] [TU.is] trying to commit suicide.</span>")
 	return (BRUTELOSS|FIRELOSS)
 
@@ -246,7 +246,7 @@
 	active_throwforce = 20
 	active_w_class = ITEMSIZE_LARGE
 	force = 3
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
@@ -338,7 +338,7 @@
 	item_state = "dualsaber"
 	force = 3
 	active_force = 60
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 3
 	armor_penetration = 35
 	colorable = TRUE
@@ -452,7 +452,7 @@
 	item_state = "dualsaber"
 	force = 3
 	active_force = 50
-	throwforce = 5
+	throw_force = 5
 	throw_speed = 3
 	armor_penetration = 30
 	colorable = TRUE
@@ -485,7 +485,7 @@
 	sharp = 1
 	edge = 1
 	anchored = 1    // Never spawned outside of inventory, should be fine.
-	throwforce = 1  //Throwing or dropping the item deletes it.
+	throw_force = 1  //Throwing or dropping the item deletes it.
 	throw_speed = 1
 	throw_range = 1
 	w_class = ITEMSIZE_LARGE//So you can't hide it in your pocket or some such.
@@ -572,7 +572,7 @@
 	sharp = 1
 	edge = 1
 	force = 5
-	throwforce = 10
+	throw_force = 10
 	throw_speed = 7
 	throw_range = 11
 	reach = 2
@@ -615,7 +615,7 @@
 	sharp = TRUE
 	edge = TRUE
 	force = 20 // You can be crueler than that, Jack.
-	throwforce = 40
+	throw_force = 40
 	throw_speed = 8
 	throw_range = 8
 	w_class = WEIGHT_CLASS_NORMAL
@@ -645,7 +645,7 @@
 			active = !active
 	if(active)
 		force = 40
-		throwforce = 20
+		throw_force = 20
 		throw_speed = 3
 		// sharpness = 1.7
 		// sharpness_flags += HOT_EDGE | CUT_WALL | CUT_AIRLOCK - if only there  a good sharpness system
@@ -656,7 +656,7 @@
 		// user.lazy_register_event(/lazy_event/on_moved, src, .proc/mob_moved)
 	else
 		force = initial(force)
-		throwforce = initial(throwforce)
+		throw_force = initial(throw_force)
 		throw_speed = initial(throw_speed)
 		// sharpness = initial(sharpness)
 		// sharpness_flags = initial(sharpness_flags) - if only there was a good sharpness system
@@ -680,7 +680,7 @@
 /obj/item/melee/energy/hfmachete/dropped(mob/user, flags, atom/newLoc)
 	user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
 
-/obj/item/melee/energy/hfmachete/throw_at(atom/target, range, speed, thrower) // todo: get silicons to interpret this because >sleeps
+/obj/item/melee/energy/hfmachete/throw_at_old(atom/target, range, speed, thrower) // todo: get silicons to interpret this because >sleeps
 	if(!usr)
 		return ..()
 	spawn()
@@ -699,7 +699,7 @@
 
 // none of these are working properly in testing which is something you absolutely hate to see
 /*
-/obj/item/melee/energy/hfmachete/throw_at(atom/target, range, speed, thrower)
+/obj/item/melee/energy/hfmachete/throw_at_old(atom/target, range, speed, thrower)
 	playsound(src, get_sfx("machete_throw"), 30, 0)
 	. = ..()
 
@@ -736,7 +736,7 @@
 	desc = "A broad, short energy blade.  You'll be glad to have this in a fight."
 	icon_state = "sword0"
 	icon = 'icons/obj/weapons_vr.dmi'
-	item_icons = list(slot_l_hand_str = 'icons/mob/items/lefthand_melee_vr.dmi', slot_r_hand_str = 'icons/mob/items/righthand_melee_vr.dmi')
+	item_icons = list(SLOT_ID_LEFT_HAND = 'icons/mob/items/lefthand_melee.dmi', SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_melee.dmi')
 
 /obj/item/melee/energy/sword/imperial/activate(mob/living/user)
 	..()

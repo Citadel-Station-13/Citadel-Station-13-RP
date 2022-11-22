@@ -56,7 +56,7 @@ var/list/department_radio_keys = list(
 
 
 var/list/channel_to_radio_key = new
-proc/get_radio_key_from_channel(var/channel)
+/proc/get_radio_key_from_channel(channel)
 	var/key = channel_to_radio_key[channel]
 	if(!key)
 		for(var/radio_key in department_radio_keys)
@@ -103,7 +103,8 @@ proc/get_radio_key_from_channel(var/channel)
 		message_data[1] = ""
 		return
 
-	if((HULK in mutations) && health >= 25 && length_char(message))
+
+	if((MUTATION_HULK in mutations) && health >= 25 && length_char(message))
 		message = "[uppertext(message)]!!!"
 		verb = pick("yells","roars","hollers")
 		whispering = 0
@@ -150,7 +151,7 @@ proc/get_radio_key_from_channel(var/channel)
 	if(client)
 		if(message)
 			client.handle_spam_prevention(MUTE_IC)
-			if((client.prefs.muted & MUTE_IC) || say_disabled)
+			if((client.prefs.muted & MUTE_IC))
 				to_chat(src, "<span class='warning'>You cannot speak in IC (Muted).</span>")
 				return
 
@@ -190,7 +191,7 @@ proc/get_radio_key_from_channel(var/channel)
 		speaking = get_default_language()
 
 	if(!can_speak(speaking))
-		speaking = GLOB.all_languages[LANGUAGE_GIBBERISH]
+		speaking = SScharacters.resolve_language_name(LANGUAGE_GIBBERISH)
 		var/babble_key = ",r"
 		message = babble_key + message
 
@@ -202,11 +203,11 @@ proc/get_radio_key_from_channel(var/channel)
 	while(speaking && is_language_prefix(copytext_char(message, 1, 2)))
 		message = copytext_char(message,2+length_char(speaking.key))
 
-	if(speaking && speaking == GLOB.all_languages["Noise"])
+	if(speaking && speaking == SScharacters.resolve_language_name("Noise"))
 		message = copytext_char(message,2)
 
 	//HIVEMIND languages always send to all people with that language
-	if(speaking && (speaking.flags & HIVEMIND))
+	if(speaking && (speaking.language_flags & HIVEMIND))
 		speaking.broadcast(src,trim(message))
 		return 1
 
@@ -215,7 +216,7 @@ proc/get_radio_key_from_channel(var/channel)
 		return
 
 	//Self explanatory.
-	if(is_muzzled() && !(speaking && (speaking.flags & SIGNLANG)))
+	if(is_muzzled() && !(speaking && (speaking.language_flags & SIGNLANG)))
 		to_chat(src, "<span class='danger'>You're muzzled and cannot speak!</span>")
 		return
 
@@ -246,7 +247,7 @@ proc/get_radio_key_from_channel(var/channel)
 		w_not_heard = "[speaking.speech_verb] something [w_adverb]"
 
 	//For speech disorders (hulk, slurring, stuttering)
-	if(!(speaking && (speaking.flags & NO_STUTTER || speaking.flags & SIGNLANG)))
+	if(!(speaking && (speaking.language_flags & NO_STUTTER || speaking.language_flags & SIGNLANG)))
 		var/list/message_data = list(message, verb, whispering)
 		if(handle_speech_problems(message_data))
 			message = message_data[1]
@@ -285,9 +286,9 @@ proc/get_radio_key_from_channel(var/channel)
 		if(speaking)
 			message_range = speaking.get_talkinto_msg_range(message)
 		var/msg
-		if(!speaking || !(speaking.flags & NO_TALK_MSG))
+		if(!speaking || !(speaking.language_flags & NO_TALK_MSG))
 			msg = "<span class='notice'>\The [src] talks into \the [used_radios[1]]</span>"
-		for(var/mob/living/M in hearers(5, src))
+		for(var/mob/living/M in hearers(7, src))
 			if((M != src) && msg)
 				M.show_message(msg)
 			if (speech_sound)
@@ -314,11 +315,11 @@ proc/get_radio_key_from_channel(var/channel)
 
 	//Handle nonverbal and sign languages here
 	if (speaking)
-		if (speaking.flags & SIGNLANG)
+		if (speaking.language_flags & SIGNLANG)
 			log_say("(SIGN) [message]", src)
 			return say_signlang(message, pick(speaking.signlang_verb), speaking)
 
-		if (speaking.flags & NONVERBAL)
+		if (speaking.language_flags & NONVERBAL)
 			if (prob(30))
 				src.custom_emote(1, "[pick(speaking.signlang_verb)].")
 
@@ -380,6 +381,10 @@ proc/get_radio_key_from_channel(var/channel)
 					listening[item] = z_speech_bubble
 			listening_obj |= results["objs"]
 		above = above.shadow
+	var/atom/emitter = src
+	if(!isobserver(emitter) || !IsAdminGhost(emitter))
+		emitter.say_overhead(say_emphasis_strip(message), whispering, message_range, speaking)
+
 
 	//Main 'say' and 'whisper' message delivery
 	for(var/mob/M in listening)
@@ -401,6 +406,7 @@ proc/get_radio_key_from_channel(var/channel)
 							images_to_clients[I2] |= M.client
 							SEND_IMAGE(M, I2)
 						M.hear_say(stars(message), verb, speaking, alt_name, italics, src, speech_sound, sound_vol*0.2)
+
 					if(dst > w_scramble_range && dst <= world.view) //Inside whisper 'visible' range
 						M.show_message("<span class='game say'><span class='name'>[src.name]</span> [w_not_heard].</span>", 2)
 
