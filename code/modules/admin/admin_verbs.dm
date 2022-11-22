@@ -882,20 +882,6 @@ var/list/admin_verbs_event_manager = list(
 	log_and_message_admins("has opened [S]'s law manager.")
 	feedback_add_details("admin_verb","MSL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/change_human_appearance_admin()
-	set name = "Change Mob Appearance - Admin"
-	set desc = "Allows you to change the mob appearance"
-	set category = "Admin"
-
-	if(!check_rights(R_FUN)) return
-
-	var/mob/living/carbon/human/H = input("Select mob.", "Change Mob Appearance - Admin") as null|anything in human_mob_list
-	if(!H) return
-
-	log_and_message_admins("is altering the appearance of [H].")
-	H.change_appearance(APPEARANCE_ALL, usr, usr, check_species_whitelist = 0, state = admin_state)
-	feedback_add_details("admin_verb","CHAA") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
 /client/proc/change_human_appearance_self()
 	set name = "Change Mob Appearance - Self"
 	set desc = "Allows the mob to change its appearance"
@@ -913,10 +899,10 @@ var/list/admin_verbs_event_manager = list(
 	switch(alert("Do you wish for [H] to be allowed to select non-whitelisted races?","Alter Mob Appearance","Yes","No","Cancel"))
 		if("Yes")
 			log_and_message_admins("has allowed [H] to change [T.his] appearance, without whitelisting of races.")
-			H.change_appearance(APPEARANCE_ALL, H.loc, check_species_whitelist = 0)
+			H.ephemeral_shapeshift()
 		if("No")
 			log_and_message_admins("has allowed [H] to change [T.his] appearance, with whitelisting of races.")
-			H.change_appearance(APPEARANCE_ALL, H.loc, check_species_whitelist = 1)
+			H.ephemeral_shapeshift(flags = SHAPESHIFT_SYSTEM_MODIFY_DNA|SHAPESHIFT_SYSTEM_RESPECT_WHITELIST)
 	feedback_add_details("admin_verb","CMAS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/change_security_level()

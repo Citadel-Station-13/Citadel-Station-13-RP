@@ -121,7 +121,7 @@
 		H.adjustBruteLoss(rand(1,20))
 
 	if(allow_appearance_change)
-		H.change_appearance(APPEARANCE_ALL, H.loc, check_species_whitelist = 1)
+		H.ephemeral_shapeshift(flags = SHAPESHIFT_SYSTEM_MODIFY_DNA|SHAPESHIFT_SYSTEM_RESPECT_WHITELIST)
 
 	visible_message("<span class='aliem'>\The [src] [pick("gurgles", "seizes", "clangs")] before releasing \the [H]!</span>")
 
@@ -241,6 +241,6 @@
 		H.adjustBruteLoss(rand(1,20))
 
 	if(allow_appearance_change)
-		H.change_appearance(APPEARANCE_ALL, H.loc, check_species_whitelist = 1)
+		H.ephemeral_shapeshift(flags = SHAPESHIFT_SYSTEM_MODIFY_DNA|SHAPESHIFT_SYSTEM_RESPECT_WHITELIST)
 
 	visible_message("<span class='aliem'>\The [src] [pick("gurgles", "seizes", "clangs")] before releasing \the [H]!</span>")

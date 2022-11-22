@@ -45,6 +45,14 @@
 	buckle_allowed = TRUE
 	buckle_flags = BUCKLING_NO_DEFAULT_BUCKLE // Custom procs handle that.
 
+	//! Cosmetics / Basic Rendering
+	//? Note: This is what we actually have.
+	//? DNA can differ; DNA is our DNA, this is our body.
+	/// body color
+	var/body_color
+	/// eye color
+	var/eye_color
+
 	//! Sprite Accessories - these are AGGRESSIVELY CACHED, please use necessary procs!
 	//? Note: This is what we actually have.
 	//? DNA can differ; DNA is our DNA, this is our body.

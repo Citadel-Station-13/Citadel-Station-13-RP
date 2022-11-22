@@ -1,6 +1,7 @@
 //* Sprite Accessories
 #warn update icons for these!
 #warn param for updating DNA too?
+#warn oh my god redo this page
 //? hair
 /**
  * gets sprite accessory data of our hair accessory

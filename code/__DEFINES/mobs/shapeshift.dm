@@ -57,6 +57,8 @@ DEFINE_BITFIELD(shapeshift_capability, list(
 //! /datum/shapeshift_system shapeshift system flags
 /// modfiy our DNA
 #define SHAPESHIFT_SYSTEM_MODIFY_DNA (1<<0)
+/// try to check the user's species whitelists
+#define SHAPESHIFT_SYSTEM_CHECK_SPECIES_WHITELIST (1<<1)
 
 DEFINE_BITFIELD(shapeshift_system_flags, list(
 	BITFIELD(SHAPESHIFT_SYSTEM_MODIFY_DNA),

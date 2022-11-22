@@ -16,3 +16,8 @@
 /datum/shapeshift/proc/clone()
 	var/datum/shapeshift/cloned = new type
 	return cloned
+
+/datum/shapeshift/ui_data()
+	return list(
+		"component" = template_name
+	)
