@@ -1,23 +1,24 @@
-/* Toys!
+/**
+ *! Toys!
  * Contains:
- *		Balloons
- *		Fake telebeacon
- *		Fake singularity
- *		Toy gun
- *		Toy crossbow
- *		Toy swords
- *		Toy bosun's whistle
- *      Toy mechs
- *		Snap pops
- *		Water flower
- *      Therapy dolls
- *      Toddler doll
- *      Inflatable duck
- *		Action figures
- *		Plushies
- *		Toy cult sword
- *		Bouquets
- 		Stick Horse
+ * - Balloons
+ * - Fake telebeacon
+ * - Fake singularity
+ * - Toy gun
+ * - Toy crossbow
+ * - Toy swords
+ * - Toy bosun's whistle
+ * - Toy mechs
+ * - Snap pops
+ * - Water flower
+ * - Therapy dolls
+ * - Toddler doll
+ * - Inflatable duck
+ * - Action figures
+ * - Plushies
+ * - Toy cult sword
+ * - Bouquets
+ * - Stick Horse
  */
 
 

@@ -75,7 +75,7 @@
 		on_engagement(target)
 		if(firing_lanes && !test_projectile_safety(target))
 			// Nudge them a bit, maybe they can shoot next time.
-			var/turf/T = get_step(holder, pick(GLOB.cardinal))
+			var/turf/T = get_step(holder, pick(GLOB.cardinals))
 			if(T)
 				holder.IMove(T) // IMove() will respect movement cooldown.
 				holder.face_atom(target)
@@ -282,7 +282,7 @@
 /datum/ai_holder/proc/destroy_surroundings(direction, violent = TRUE)
 	ai_log("destroy_surroundings() : Entering.", AI_LOG_TRACE)
 	if(!direction)
-		direction = pick(GLOB.cardinal) // FLAIL WILDLY
+		direction = pick(GLOB.cardinals) // FLAIL WILDLY
 		ai_log("destroy_surroundings() : No direction given, picked [direction] randomly.", AI_LOG_DEBUG)
 
 	var/turf/problem_turf = get_step(holder, direction)

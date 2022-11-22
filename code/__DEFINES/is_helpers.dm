@@ -20,7 +20,19 @@
 
 #define ismineralturf(A) istype(A, /turf/simulated/mineral)
 
-#define isfloorturf(A) (istype(A, /turf/simulated/floor))
+GLOBAL_LIST_INIT(floor_turfs, typecacheof(list(
+	/turf/simulated/floor,
+	/turf/unsimulated/floor,
+	)))
+
+#define isfloorturf(A) (is_type_in_typecache(A, GLOB.floor_turfs))
+
+GLOBAL_LIST_INIT(wall_turfs, typecacheof(list(
+	/turf/simulated/wall,
+	/turf/unsimulated/wall,
+	)))
+
+#define iswallturf(A) (is_type_in_typecache(A, GLOB.wall_turfs))
 
 //Objs
 ///override the byond proc because it returns true on children of /atom/movable that aren't objs

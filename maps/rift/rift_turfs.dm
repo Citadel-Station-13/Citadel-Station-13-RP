@@ -60,7 +60,7 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 /turf/simulated/floor/outdoors/grass/sif
 	name = "growth"
 	icon_state = "grass_sif"
-	initial_flooring = /decl/flooring/outdoors/grass/sif
+	initial_flooring = /singleton/flooring/outdoors/grass/sif
 	grass_chance = 5
 	var/tree_chance = 2
 

@@ -3,23 +3,27 @@
 	desc = "Unfinished flooring."
 	icon = 'icons/turf/flooring/plating.dmi'
 	icon_state = "plating"
-	base_icon_state = "plating"
 	plane = FLOOR_PLANE
 	thermal_conductivity = 0.040
 	heat_capacity = 10000
 
 	smoothing_flags = SMOOTH_CUSTOM
-	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN)
-	canSmoothWith = list()
+	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_OPEN_FLOOR)
+	canSmoothWith = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_OPEN_FLOOR)
+
+	// height = -FLUID_SHALLOW / 2
 
 	// Damage to flooring.
 	var/broken
 	var/burnt
 
 	// Plating data.
-	var/base_name = "plating"
-	var/base_desc = "The naked hull."
-	var/base_icon = 'icons/turf/flooring/plating.dmi'
+	var/base_name   = "plating"
+	var/base_desc   = "The naked hull."
+	var/base_icon   = 'icons/turf/flooring/plating.dmi'
+	base_icon_state = "plating"
+	var/base_color  = COLOR_WHITE
+
 	var/static/list/base_footstep_sounds = list(
 		"human" = list(
 			'sound/effects/footstep/plating1.ogg',
@@ -27,16 +31,16 @@
 			'sound/effects/footstep/plating3.ogg',
 			'sound/effects/footstep/plating4.ogg',
 			'sound/effects/footstep/plating5.ogg',
-		),
-	)
+	))
 
 	var/list/old_decals = null // Remember what decals we had between being pried up and replaced.
 
 	// Flooring data.
 	var/flooring_override
 	var/initial_flooring
-	var/decl/flooring/flooring
+	var/singleton/flooring/flooring
 	var/mineral = MAT_STEEL
+
 
 /turf/simulated/floor/is_plating()
 	return !flooring
@@ -46,7 +50,7 @@
 	if(!floortype && initial_flooring)
 		floortype = initial_flooring
 	if(floortype)
-		set_flooring(get_flooring_data(floortype), TRUE)
+		set_flooring(GET_SINGLETON(floortype))
 	else
 		footstep_sounds = base_footstep_sounds
 	if(mapload && can_dirty && can_start_dirty)
@@ -77,7 +81,7 @@
  * TODO: REWORK FLOORING GETTERS/INIT/SETTERS THIS IS BAD
  */
 
-/turf/simulated/floor/proc/set_flooring(decl/flooring/newflooring, init)
+/turf/simulated/floor/proc/set_flooring(singleton/flooring/newflooring, init)
 	make_plating(null, TRUE, TRUE)
 	flooring = newflooring
 	footstep_sounds = newflooring.footstep_sounds
@@ -106,7 +110,7 @@
 			flooring.drop_product(src)
 		var/newtype = flooring.get_plating_type()
 		if(newtype && !strip_bare) // Has a custom plating type to become
-			set_flooring(get_flooring_data(newtype))
+			set_flooring(GET_SINGLETON(newtype))
 		else
 			flooring = null
 			// this branch is only if we don't set flooring because otherwise it'll do it for us
@@ -115,6 +119,8 @@
 				desc = base_desc
 				icon = base_icon
 				icon_state = base_icon_state
+				color = base_color
+				layer = PLATING_LAYER
 				footstep_sounds = base_footstep_sounds
 				QUEUE_SMOOTH(src)
 				QUEUE_SMOOTH_NEIGHBORS(src)
@@ -128,6 +134,14 @@
 /turf/simulated/floor/levelupdate()
 	for(var/obj/O in src)
 		O.hide(O.hides_under_flooring() && src.flooring)
+
+	if(flooring)
+		layer = TURF_LAYER
+		// height = flooring.height
+	else
+		layer = PLATING_LAYER
+		// height = -FLUID_SHALLOW / 2
+
 
 /turf/simulated/floor/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)

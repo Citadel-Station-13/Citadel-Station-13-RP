@@ -12,6 +12,7 @@ GLOBAL_DATUM_INIT(no_ceiling_image, /image, generate_no_ceiling_image())
 	return NONE
 
 GLOBAL_LIST_EMPTY(turf_edge_cache)
+GLOBAL_LIST_EMPTY(flooring_cache)
 
 var/list/flooring_cache = list()
 
@@ -19,9 +20,9 @@ var/list/flooring_cache = list()
 	cut_overlays()
 	if(flooring)
 		// Set initial icon and strings.
-		name = flooring.name
-		desc = flooring.desc
+		name  = flooring.name
 		icon = flooring.icon
+		color = flooring.color
 
 		if(flooring_override)
 			icon_state = flooring_override
@@ -34,7 +35,7 @@ var/list/flooring_cache = list()
 		// Apply edges, corners, and inner corners.
 		if(flooring.flags & TURF_HAS_EDGES)
 			var/has_border = 0
-			for(var/step_dir in GLOB.cardinal)
+			for(var/step_dir in GLOB.cardinals)
 				var/turf/simulated/floor/T = get_step(src, step_dir)
 				if(!flooring.test_link(src, T))
 					has_border |= step_dir
@@ -75,15 +76,24 @@ var/list/flooring_cache = list()
 		if(!isnull(burnt) && (flooring.flags & TURF_CAN_BURN))
 			add_overlay(flooring.get_flooring_overlay("[flooring.base_icon_state]-burned-[burnt]","burned[burnt]"))
 
-	else
-		// no flooring - just handle plating stuff
-		if(is_plating() && !(isnull(broken) && isnull(burnt))) //temp, todo
-			icon = 'icons/turf/flooring/plating.dmi'
-			icon_state = "dmg[rand(1,4)]"
+	// no flooring - just handle plating stuff
+	if(is_plating() && !(isnull(broken) && isnull(burnt))) //temp, todo
+		icon = 'icons/turf/flooring/plating.dmi'
+		icon_state = "dmg[rand(1,4)]"
+	else if(flooring)
+		// Apply broken states.
+		if(!isnull(broken) && (flooring.flags & TURF_CAN_BREAK))
+			add_overlay(get_damage_overlay("broken[broken]", BLEND_MULTIPLY))
+		// Apply burnt states.
+		if(!isnull(burnt) && (flooring.flags & TURF_CAN_BURN))
+			add_overlay(get_damage_overlay("burned[burnt]"))
 
 	// Re-apply floor decals
 	if(LAZYLEN(decals))
-		add_overlay(decals)
+		for(var/image/I in decals)
+			if(I.layer != DECAL_PLATING_LAYER)
+				continue
+			add_overlay(decals)
 
 	// Show 'ceilingless' overlay.
 	var/turf/above = Above(src)
@@ -107,7 +117,7 @@ var/list/flooring_cache = list()
 	if(!edge_blending_priority)
 		return // Not us.
 
-	for(var/d in GLOB.cardinal)
+	for(var/d in GLOB.cardinals)
 		var/turf/simulated/F = get_step(src, d)
 		// todo: BETTER ICON SYSTEM BUT HEY I GUESS WE'LL CHECK DENSITY
 		if(!istype(F) || F.density)
@@ -146,7 +156,7 @@ var/list/flooring_cache = list()
  * Tests whether this flooring will smooth with the specified turf.
  * You can override this if you want a flooring to have super special snowflake smoothing behaviour.
  */
-/decl/flooring/proc/test_link(turf/origin, turf/T, countercheck = FALSE)
+/singleton/flooring/proc/test_link(turf/origin, turf/T, countercheck = FALSE)
 
 	var/is_linked = FALSE
 	if (countercheck)
@@ -155,7 +165,7 @@ var/list/flooring_cache = list()
 	else if(T)
 
 		//If it's a wall, use the wall_smooth setting
-		if(istype(T, /turf/simulated/wall))
+		if(iswallturf(T))
 			if(wall_smooth == SMOOTH_ALL)
 				is_linked = TRUE
 
@@ -293,8 +303,21 @@ var/list/flooring_cache = list()
 	return is_linked
 
 /turf/simulated/floor/proc/get_flooring_overlay(cache_key, base_icon_state, icon_dir = 0)
-	if(!flooring_cache[cache_key])
+	if(!GLOB.flooring_cache[cache_key])
 		var/image/I = image(icon = flooring.icon, icon_state = base_icon_state, dir = icon_dir)
-		I.layer = layer
-		flooring_cache[cache_key] = I
-	return flooring_cache[cache_key]
+		I.turf_decal_layerise()
+		I.layer = flooring.decal_layer
+		GLOB.flooring_cache[cache_key] = I
+	return GLOB.flooring_cache[cache_key]
+
+/turf/simulated/floor/proc/get_damage_overlay(cache_key, blend)
+	if(!GLOB.flooring_cache[cache_key])
+		var/image/I = image(icon = 'icons/turf/flooring/damage.dmi', icon_state = cache_key)
+		if(blend)
+			I.blend_mode = blend
+		I.turf_decal_layerise()
+		GLOB.flooring_cache[cache_key] = I
+	return GLOB.flooring_cache[cache_key]
+
+/singleton/flooring/proc/symmetric_test_link(turf/A, turf/B)
+	return test_link(A, B) && test_link(B,A)

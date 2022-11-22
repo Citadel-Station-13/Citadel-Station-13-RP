@@ -250,11 +250,16 @@
 		// TODO - handle fall on damage!
 
 //For children to override
-/atom/movable/proc/can_fall()
+/atom/movable/proc/can_fall(turf/location_override = loc)
 	if(anchored)
 		return FALSE
 	// if(throwing)
 		// return FALSE
+	//Override will make checks from different location used for prediction
+	if(location_override)
+		for(var/obj/O in location_override)
+			if(O.obj_flags & OBJ_FLAG_NOFALL)
+				return FALSE
 	return TRUE
 
 /obj/effect/can_fall()
@@ -431,10 +436,14 @@
 
 //Using /atom/movable instead of /obj/item because I'm not sure what all humans can pick up or wear
 /atom/movable
-	var/parachute = FALSE	// Is this thing a parachute itself?
-	var/hovering = FALSE	// Is the thing floating or flying in some way? If so, don't fall normally.	//Not implemented yet, idea is to let mobs/mechs ignore terrain slowdown and falling down floors
-	var/softfall = FALSE	// Is the thing able to lessen their impact upon falling?
-	var/parachuting = FALSE	// Is the thing able to jump out of planes and survive? Don't check this directly outside of CanParachute().
+	/// Is this thing a parachute itself?
+	var/parachute = FALSE
+	/// Is the thing floating or flying in some way? If so, don't fall normally.	//Not implemented yet, idea is to let mobs/mechs ignore terrain slowdown and falling down floors
+	var/hovering = FALSE
+	/// Is the thing able to lessen their impact upon falling?
+	var/softfall = FALSE
+	/// Is the thing able to jump out of planes and survive? Don't check this directly outside of CanParachute().
+	var/parachuting = FALSE
 
 /atom/movable/proc/isParachute()
 	return parachute

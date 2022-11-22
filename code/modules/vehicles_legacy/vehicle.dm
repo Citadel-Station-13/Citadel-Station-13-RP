@@ -158,7 +158,7 @@
 	pulse2.icon_state = "empdisable"
 	pulse2.name = "emp sparks"
 	pulse2.anchored = 1
-	pulse2.setDir(pick(GLOB.cardinal))
+	pulse2.setDir(pick(GLOB.cardinals))
 
 	spawn(10)
 		qdel(pulse2)

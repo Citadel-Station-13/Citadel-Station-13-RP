@@ -129,7 +129,7 @@
 
 		for(var/obj/effect/shield/SE in field_segments)
 			var/adjacent_fields = 0
-			for(var/direction in GLOB.cardinal)
+			for(var/direction in GLOB.cardinals)
 				var/turf/T = get_step(SE, direction)
 				var/obj/effect/shield/S = locate() in T
 				if(S)
@@ -185,7 +185,7 @@
 		//Corners
 		for(var/obj/effect/shield/S in corners)
 			var/adjacent = corners[S]
-			if(adjacent in GLOB.cornerdirs)
+			if(adjacent in GLOB.diagonals)
 				do_corner_shield(S, adjacent) //Dir is adjacent fields direction
 			else
 				// Okay first a quick hack. If only one nonshield...
@@ -207,7 +207,7 @@
 
 					else
 						var/list/touchnonshield = list()
-						for(var/direction in GLOB.cornerdirs)
+						for(var/direction in GLOB.diagonals)
 							var/turf/T = get_step(S, direction)
 							if(!isspaceturf(T))
 								touchnonshield += T

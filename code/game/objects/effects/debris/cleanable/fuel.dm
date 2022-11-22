@@ -34,7 +34,7 @@
 	var/turf/simulated/S = loc
 	if(!istype(S))
 		return
-	for(var/d in GLOB.cardinal)
+	for(var/d in GLOB.cardinals)
 		var/turf/simulated/target = get_step(src,d)
 		var/turf/simulated/origin = get_turf(src)
 		if(target.Enter(src, origin))

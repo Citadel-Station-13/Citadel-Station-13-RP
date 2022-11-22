@@ -62,7 +62,7 @@
 	while(i <= turfs.len)
 		var/turf/check = turfs[i]
 		. += check
-		for(var/d in GLOB.cardinal)
+		for(var/d in GLOB.cardinals)
 			var/turf/potential = get_step(check, d)
 			if(turfs[potential])
 				continue

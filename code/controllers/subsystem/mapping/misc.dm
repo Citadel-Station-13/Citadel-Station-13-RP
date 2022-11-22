@@ -19,7 +19,7 @@
  * *sigh*
  */
 /datum/controller/subsystem/mapping/proc/throw_movables_on_z_turfs_of_type(z, list/type_or_cache, dir)
-	ASSERT(dir in GLOB.cardinal)
+	ASSERT(dir in GLOB.cardinals)
 	var/list/throwing = list()
 	for(var/turf/T as anything in z_turfs_of_type(z, type_or_cache))
 		for(var/atom/movable/AM as anything in T)

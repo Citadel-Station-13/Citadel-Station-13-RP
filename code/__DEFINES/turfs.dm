@@ -1,25 +1,24 @@
-#define TURF_REMOVE_CROWBAR     1
-#define TURF_REMOVE_SCREWDRIVER 2
-#define TURF_REMOVE_SHOVEL      4
-#define TURF_REMOVE_WRENCH      8
-#define TURF_CAN_BREAK          16
-#define TURF_CAN_BURN           32
-#define TURF_HAS_EDGES          64
-#define TURF_HAS_CORNERS        128
-#define TURF_IS_FRAGILE         256
-#define TURF_ACID_IMMUNE        512
+#define TURF_REMOVE_CROWBAR     (1<<0)  // Crowbar can remove this surface.
+#define TURF_REMOVE_SCREWDRIVER (1<<1)  // Screwdriver can remove this surface.
+#define TURF_REMOVE_SHOVEL      (1<<2)  // Shovel can remove this surface.
+#define TURF_REMOVE_WRENCH      (1<<3)  // Wrench can remove this surface.
+#define TURF_CAN_BREAK          (1<<4)  // This surface can be broken.
+#define TURF_CAN_BURN           (1<<5)  // This surface can be burned.
+#define TURF_HAS_EDGES          (1<<6)  // This surface has edges.
+#define TURF_HAS_CORNERS        (1<<7)  // This surface has corners.
+#define TURF_HAS_INNER_CORNERS  (1<<8)  // This surface has inner corners.
+#define TURF_IS_FRAGILE         (1<<9)  // This surface is fragile.
+#define TURF_ACID_IMMUNE        (1<<10) // This surface is immune to acid.
+#define TURF_IS_WET             (1<<11) // This surface is wet.
+#define TURF_HAS_RANDOM_BORDER  (1<<12) // This surface has a random border.
+// #define TURF_DISALLOW_BLOB      (1<<13) // This surface disallows blob.
 
-//Used for floor/wall smoothing
-///Smooth only with itself
-#define SMOOTH_NONE 0
-///Smooth with all of type
-#define SMOOTH_ALL 1
-///Smooth with a whitelist of subtypes
-#define SMOOTH_WHITELIST 2
-///Smooth with all but a blacklist of subtypes
-#define SMOOTH_BLACKLIST 3
-/// Use a whitelist and a blacklist at the same time. atom smoothing only
-#define SMOOTH_GREYLIST 4
+//! Used for floor/wall smoothing.
+#define SMOOTH_NONE      0 // Smooth only with itself.
+#define SMOOTH_ALL       1 // Smooth with all of type.
+#define SMOOTH_WHITELIST 2 // Smooth with a whitelist of subtypes.
+#define SMOOTH_BLACKLIST 3 // Smooth with all but a blacklist of subtypes.
+#define SMOOTH_GREYLIST  4 // Use a whitelist and a blacklist at the same time. atom smoothing only.
 
 // #define IS_CARDINAL(x) ((x & (x - 1)) == 0) // Cardinal using math.
 #define IS_CARDINAL(DIR) (DIR == NORTH || DIR == SOUTH || DIR == EAST || DIR == WEST)

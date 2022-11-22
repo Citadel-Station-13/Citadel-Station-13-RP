@@ -34,7 +34,7 @@
 		if(EVENT_LEVEL_MODERATE)
 			meteor_types = meteors_catastrophic.Copy()
 
-	direction = pick(GLOB.cardinal) // GLOB.alldirs doesn't work with current meteor code unfortunately.
+	direction = pick(GLOB.cardinals) // GLOB.alldirs doesn't work with current meteor code unfortunately.
 	waves = rand(5, 8)
 	switch(direction)
 		if(NORTH)

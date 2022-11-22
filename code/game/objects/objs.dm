@@ -3,8 +3,8 @@
 	pass_flags_self = ATOM_PASS_OVERHEAD_THROW
 	animate_movement = SLIDE_STEPS
 
-	var/obj_flags = CAN_BE_HIT
-	var/set_obj_flags // ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "EMAGGED;!CAN_BE_HIT" to set EMAGGED and clear CAN_BE_HIT.
+	var/obj_flags = OBJ_FLAG_CAN_BE_HIT
+	var/set_obj_flags // ONLY FOR MAPPING: Sets flags from a string list, handled in Initialize. Usage: set_obj_flags = "OBJ_FLAG_EMAGGED;!OBJ_FLAG_CAN_BE_HIT" to set OBJ_FLAG_EMAGGED and clear OBJ_FLAG_CAN_BE_HIT.
 
 	//Used to store information about the contents of the object.
 	var/list/matter
@@ -64,7 +64,7 @@
 /obj/item/proc/is_used_on(obj/O, mob/user)
 
 /obj/proc/updateUsrDialog()
-	if((obj_flags & IN_USE) && !(obj_flags & USES_TGUI))
+	if((obj_flags & OBJ_FLAG_IN_USE) && !(obj_flags & OBJ_FLAG_USES_TGUI))
 		var/is_in_use = FALSE
 		var/list/nearby = viewers(1, src)
 		for(var/mob/M in nearby)
@@ -97,13 +97,13 @@
 						src.attack_hand(H)
 
 		if (is_in_use)
-			obj_flags |= IN_USE
+			obj_flags |= OBJ_FLAG_IN_USE
 		else
-			obj_flags &= ~IN_USE
+			obj_flags &= ~OBJ_FLAG_IN_USE
 
 /obj/proc/updateDialog(update_viewers = TRUE,update_ais = TRUE)
 	// Check that people are actually using the machine. If not, don't update anymore.
-	if(obj_flags & IN_USE)
+	if(obj_flags & OBJ_FLAG_IN_USE)
 		var/is_in_use = FALSE
 		if(update_viewers)
 			for(var/mob/M in viewers(1, src))
@@ -116,7 +116,7 @@
 
 		if(update_viewers && update_ais) //State change is sure only if we check both
 			if(!ai_in_use && !is_in_use)
-				obj_flags &= ~IN_USE
+				obj_flags &= ~OBJ_FLAG_IN_USE
 
 /obj/attack_ghost(mob/user)
 	. = ..()
@@ -144,7 +144,7 @@
 	machine = O
 	RegisterSignal(O, COMSIG_PARENT_QDELETING, .proc/unset_machine)
 	if(istype(O))
-		O.obj_flags |= IN_USE
+		O.obj_flags |= OBJ_FLAG_IN_USE
 
 /obj/item/proc/updateSelfDialog()
 	var/mob/M = src.loc

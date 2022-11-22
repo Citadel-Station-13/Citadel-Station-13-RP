@@ -15,7 +15,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "ac" = (
@@ -28,7 +28,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "ad" = (
@@ -576,7 +576,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bw" = (
@@ -725,7 +725,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-8"
 	},
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bJ" = (
@@ -736,7 +736,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "bK" = (
@@ -866,7 +866,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "ca" = (
@@ -1169,7 +1169,7 @@
 /obj/structure/cable/green{
 	icon_state = "2-4"
 	},
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "cI" = (
@@ -1185,7 +1185,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
 	dir = 10
 	},
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /turf/simulated/floor/airless,
 /area/tether_away/fueldepot)
 "dX" = (

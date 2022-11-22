@@ -89,18 +89,18 @@ var/global/list/datum/stack_recipe/rods_recipes = list( \
 			else
 				return 1
 
-	else if(!(obj_flags & IN_USE))
+	else if(!(obj_flags & OBJ_FLAG_IN_USE))
 		if(get_amount() < 2)
 			to_chat(user, "<span class='warning'>You need at least two rods to do this.</span>")
 			return
 		to_chat(usr, "<span class='notice'>Assembling grille...</span>")
-		obj_flags |= IN_USE
+		obj_flags |= OBJ_FLAG_IN_USE
 		if (!do_after(usr, 10))
-			obj_flags &= ~IN_USE
+			obj_flags &= ~OBJ_FLAG_IN_USE
 			return
 		var/obj/structure/grille/F = new /obj/structure/grille/ ( usr.loc )
 		to_chat(usr, "<span class='notice'>You assemble a grille</span>")
-		obj_flags &= ~IN_USE
+		obj_flags &= ~OBJ_FLAG_IN_USE
 		F.add_fingerprint(usr)
 		use(2)
 	return

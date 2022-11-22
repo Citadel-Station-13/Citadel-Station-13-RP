@@ -32,14 +32,14 @@
 	. = ..()
 	if(!antilight_cache && !hard_corner)
 		antilight_cache = list()
-		for(var/diag in GLOB.cornerdirs)
+		for(var/diag in GLOB.diagonals)
 			var/image/I = image(LIGHTING_ICON, null, icon_state = "diagonals", layer = 10, dir = diag)
 			I.plane = LIGHTING_PLANE
 			antilight_cache["[diag]"] = I
 
 // For joined corners touching static lighting turfs, add an overlay to cancel out that part of our lighting overlay.
 /turf/simulated/shuttle/proc/update_breaklights()
-	if(join_flags in GLOB.cornerdirs)	// We're joined at an angle
+	if(join_flags in GLOB.diagonals)	// We're joined at an angle
 		// Dynamic lighting dissolver
 		var/turf/our_turf = get_step(src, turn(join_flags,180))
 		var/area/our_area = get_area(src)

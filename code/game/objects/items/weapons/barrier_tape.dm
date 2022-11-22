@@ -155,7 +155,7 @@ var/list/tape_roll_applications = list()
 			// spread tape in all directions, provided there is a wall/window
 			var/turf/T
 			var/possible_dirs = 0
-			for(var/dir in GLOB.cardinal)
+			for(var/dir in GLOB.cardinals)
 				T = get_step(start, dir)
 				if(T && T.density)
 					possible_dirs |= dir

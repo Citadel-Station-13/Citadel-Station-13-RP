@@ -71,7 +71,7 @@
 	if(!loc)
 		return
 
-	for(var/direction in GLOB.cardinal)
+	for(var/direction in GLOB.cardinals)
 		switch(find_type_in_direction(direction))
 			if(NULLTURF_BORDER)
 				if((smoothing_flags & SMOOTH_BORDER))
@@ -308,7 +308,7 @@
 /atom/proc/bitmask_smooth()
 	var/new_junction = NONE
 
-	for(var/direction in GLOB.cardinal) //Cardinal case first.
+	for(var/direction in GLOB.cardinals) //Cardinal case first.
 		SET_ADJ_IN_DIR(src, new_junction, direction, direction)
 
 	if(!(new_junction & (NORTH|SOUTH)) || !(new_junction & (EAST|WEST)))

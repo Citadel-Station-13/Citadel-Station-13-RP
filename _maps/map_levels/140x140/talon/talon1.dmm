@@ -1077,7 +1077,7 @@
 	name = "Talon Starboard Solar Panels";
 	name_tag = "TLN-SBD-SLR"
 	},
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /turf/simulated/floor/airless,
 /area/talon/deckone/starboard_solar)
 "jJ" = (
@@ -1696,7 +1696,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
@@ -2007,7 +2007,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /turf/simulated/floor/airless,
 /area/talon/deckone/port_solar)
 "rh" = (
@@ -3065,7 +3065,7 @@
 	name = "Talon Port Solar Panels";
 	name_tag = "TLN-PRT-SLR"
 	},
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /turf/simulated/floor/airless,
 /area/talon/deckone/port_solar)
 "zJ" = (
@@ -3723,7 +3723,7 @@
 /obj/structure/cable/green{
 	icon_state = "1-4"
 	},
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},
@@ -4623,7 +4623,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -4918,7 +4918,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /turf/simulated/floor/tiled/eris/white/orangecorner,
 /area/talon/deckone/bridge_hallway)
 "NV" = (
@@ -5063,7 +5063,7 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /turf/simulated/floor/airless,
 /area/talon/deckone/starboard_solar)
 "PC" = (
@@ -5530,7 +5530,7 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan{
 	dir = 4
 	},

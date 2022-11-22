@@ -2320,7 +2320,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /turf/simulated/floor/plating,
 /area/ship/manta/engine)
 "lz" = (
@@ -2693,7 +2693,7 @@
 /area/ship/manta/hallways_aft)
 "nl" = (
 /obj/machinery/atmospherics/component/binary/pump/on,
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /obj/structure/railing{
 	dir = 8
 	},
@@ -3224,7 +3224,7 @@
 	name = "Merc APC - East";
 	pixel_x = 24
 	},
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /obj/structure/cable/orange{
 	icon_state = "0-2"
 	},
@@ -5392,7 +5392,7 @@
 	dir = 8
 	},
 /obj/effect/debris/cleanable/blood,
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -8316,7 +8316,7 @@
 /area/ship/manta/recreation)
 "Qh" = (
 /obj/machinery/atmospherics/component/binary/pump/on,
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /obj/structure/railing{
 	dir = 4
 	},
@@ -9944,7 +9944,7 @@
 /obj/structure/cable/orange{
 	icon_state = "0-4"
 	},
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /obj/machinery/light{
 	dir = 1
 	},

@@ -1574,7 +1574,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /turf/simulated/floor/plating,
 /area/ship/ert/barracks)
 "nl" = (
@@ -3257,7 +3257,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
 	},
@@ -3353,7 +3353,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
 	},
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
 	},
@@ -5317,7 +5317,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 8
 	},
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /turf/simulated/floor/plating,
 /area/ship/ert/engine)
 "NI" = (
@@ -5500,7 +5500,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /turf/simulated/floor/plating,
 /area/ship/ert/bridge)
 "OE" = (
@@ -5515,7 +5515,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /turf/simulated/floor/plating,
 /area/ship/ert/bridge)
 "OF" = (
@@ -5730,7 +5730,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /turf/simulated/floor/plating,
 /area/ship/ert/eng_storage)
 "PG" = (
@@ -6023,7 +6023,7 @@
 "Sp" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
@@ -6528,7 +6528,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /obj/landmark{
 	name = "Commando"
 	},

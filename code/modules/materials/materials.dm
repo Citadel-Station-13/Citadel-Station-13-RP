@@ -570,12 +570,12 @@ var/list/name_to_material
 		return 1
 
 	// Get data for building windows here.
-	var/list/possible_directions = GLOB.cardinal.Copy()
+	var/list/possible_directions = GLOB.cardinals.Copy()
 	var/window_count = 0
 	for (var/obj/structure/window/check_window in user.loc)
 		window_count++
 		if(check_window.is_fulltile())
-			possible_directions -= GLOB.cardinal
+			possible_directions -= GLOB.cardinals
 		else
 			possible_directions -= check_window.dir
 	for (var/obj/structure/windoor_assembly/check_assembly in user.loc)
@@ -937,7 +937,7 @@ var/list/name_to_material
 /datum/material/wood/sif
 	name = MAT_SIFWOOD
 	stack_type = /obj/item/stack/material/wood/sif
-	icon_colour = "#0099cc" // Cyan-ish
+	icon_colour = WOOD_COLOR_SIF // Cyan-ish
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2) // Alien wood would presumably be more interesting to the analyzer.
 
 /datum/material/wood/hardwood

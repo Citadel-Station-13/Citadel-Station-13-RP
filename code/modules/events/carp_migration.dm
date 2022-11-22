@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(carp_count,list())// a list of Z levels (string), associated wi
 	var/Z = pick(affecting_z)
 
 	if(!dir)
-		dir = pick(GLOB.cardinal)
+		dir = pick(GLOB.cardinals)
 	if(!speed)
 		speed = rand(1,3)
 

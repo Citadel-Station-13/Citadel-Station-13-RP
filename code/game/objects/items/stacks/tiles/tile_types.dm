@@ -73,11 +73,13 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "wood floor tile"
 	desc = "An easy to fit wooden floor tile."
 	icon_state = "tile-wood"
+	color = WOOD_COLOR_GENERIC
+	matter = list(MATERIAL_WOOD = 450)
 	force = 1.0
 	throw_force = 1.0
 	throw_speed = 5
 	throw_range = 20
-	flags = 0
+	flags = NONE
 	no_variants = FALSE
 	drop_sound = 'sound/items/drop/wooden.ogg'
 	pickup_sound = 'sound/items/pickup/wooden.ogg'
@@ -87,6 +89,7 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	singular_name = "alien wood tile"
 	desc = "An easy to fit wooden floor tile. It's blue!"
 	icon_state = "tile-sifwood"
+	color = WOOD_COLOR_SIF
 
 /obj/item/stack/tile/wood/cyborg
 	name = "wood floor tile synthesizer"
@@ -95,6 +98,42 @@ var/global/list/datum/stack_recipe/grass_recipes = list( \
 	charge_costs = list(250)
 	stacktype = /obj/item/stack/tile/wood
 	build_type = /obj/item/stack/tile/wood
+
+/obj/item/stack/tile/wood/mahogany
+	name = "mahogany floor tile"
+	singular_name = "mahogany floor tile"
+	desc = "An easy to fit mahogany wood floor tile."
+	color = WOOD_COLOR_RICH
+
+/obj/item/stack/tile/wood/maple
+	name = "maple floor tile"
+	singular_name = "maple floor tile"
+	desc = "An easy to fit maple wood floor tile."
+	color = WOOD_COLOR_PALE
+
+/obj/item/stack/tile/wood/ebony
+	name = "ebony floor tile"
+	singular_name = "ebony floor tile"
+	desc = "An easy to fit ebony floor tile."
+	color = WOOD_COLOR_BLACK
+
+/obj/item/stack/tile/wood/walnut
+	name = "walnut floor tile"
+	singular_name = "walnut floor tile"
+	desc = "An easy to fit walnut wood floor tile."
+	color = WOOD_COLOR_CHOCOLATE
+
+/obj/item/stack/tile/wood/bamboo
+	name = "bamboo floor tile"
+	singular_name = "bamboo floor tile"
+	desc = "An easy to fit bamboo wood floor tile."
+	color = WOOD_COLOR_PALE2
+
+/obj/item/stack/tile/wood/yew
+	name = "yew floor tile"
+	singular_name = "yew floor tile"
+	desc = "An easy to fit yew wood floor tile."
+	color = WOOD_COLOR_YELLOW
 
 /*
  * Carpets

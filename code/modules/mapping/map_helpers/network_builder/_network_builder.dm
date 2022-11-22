@@ -49,7 +49,7 @@
 /obj/map_helper/network_builder/proc/rebuild(propagate = TRUE)
 	teardown()
 	if(propagate)
-		for(var/d in GLOB.cardinal)
+		for(var/d in GLOB.cardinals)
 			var/obj/map_helper/network_builder/NB = locate(base_type) in get_step(src, d)
 			if(NB)
 				NB.rebuild(FALSE)

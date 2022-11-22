@@ -654,7 +654,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 1
 	},
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /turf/simulated/floor/plating,
 /area/shuttle/salamander)
 "jV" = (

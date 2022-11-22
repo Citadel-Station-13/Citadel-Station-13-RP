@@ -284,7 +284,7 @@ var/list/flesh_overlay_cache = list()
 	if(density)
 		icon = 'icons/turf/stomach_vr.dmi'
 		icon_state = "flesh"
-		for(var/direction in GLOB.cardinal)
+		for(var/direction in GLOB.cardinals)
 			var/turf/T = get_step(src,direction)
 			if(istype(T) && !T.density)
 				var/place_dir = turn(direction, 180)
@@ -322,7 +322,7 @@ var/list/bone_overlay_cache = list()
 	if(density)
 		icon = 'icons/turf/wall_masks.dmi'
 		icon_state = "bone"
-		for(var/direction in GLOB.cardinal)
+		for(var/direction in GLOB.cardinals)
 			var/turf/T = get_step(src,direction)
 			if(istype(T) && !T.density)
 				var/place_dir = turn(direction, 180)

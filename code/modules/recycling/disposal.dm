@@ -663,7 +663,7 @@
 	level = 1 // underfloor only
 	dir = 0   // dir will contain dominant direction for junction pipes
 	plane = FLOOR_PLANE
-	layer = DISPOSAL_PIPE_LAYER	// slightly lower than wires and other pipes
+	layer = DISPOSALS_PIPE_LAYER // slightly lower than wires and other pipes
 
 	/// Bitmask of pipe directions.
 	var/dpdir = 0
@@ -818,7 +818,7 @@
 // remains : set to leave broken pipe pieces in place
 /obj/structure/disposalpipe/proc/broken(var/remains = 0)
 	if(remains)
-		for(var/D in GLOB.cardinal)
+		for(var/D in GLOB.cardinals)
 			if(D & dpdir)
 				var/obj/structure/disposalpipe/broken/P = new(src.loc)
 				P.setDir(D)

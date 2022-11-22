@@ -1,6 +1,6 @@
 /obj/effect/debris/cleanable
 	gender = PLURAL
-	layer = ABOVE_NORMAL_TURF_LAYER
+	layer = ABOVE_TILE_LAYER
 	var/list/random_icon_states = list()
 
 /obj/effect/debris/cleanable/clean_blood(var/ignore = 0)

@@ -347,7 +347,7 @@
 "if" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -377,7 +377,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_cr)
 "je" = (
@@ -948,7 +948,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/meter,
-/obj/effect/catwalk_plated/dark,
+/obj/structure/catwalk/plated/dark,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_cr)
 "te" = (
@@ -1378,7 +1378,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_cr)
 "Br" = (
@@ -2494,7 +2494,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_cr)
 "Td" = (

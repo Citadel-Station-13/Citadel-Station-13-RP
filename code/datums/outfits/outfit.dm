@@ -8,10 +8,11 @@
 	tim_sort(., /proc/cmp_name_asc)
 
 /datum/outfit
+	/// abstract type - set to self type for abstract outfits.
+	abstract_type = /datum/outfit
+
 	/// the outfit's name
 	var/name = "Naked"
-	/// abstract type - set to self type for abstract outfits.
-	var/abstract_type = /datum/outfit
 
 	var/uniform = null
 	var/suit = null
@@ -177,6 +178,8 @@
 //! ## VR FILE MERGE ## !//
 
 /datum/outfit/JSDF/Marine
+	abstract_type = /datum/outfit/wizard
+
 	name = "JSDF marine"
 	uniform = /obj/item/clothing/under/oricon/utility/marine/green
 	shoes = /obj/item/clothing/shoes/boots/jackboots
@@ -188,7 +191,6 @@
 	r_hand = /obj/item/ammo_magazine/m95
 	back = /obj/item/gun/projectile/automatic/battlerifle
 	backpack_contents = list(/obj/item/storage/box = 1)
-	abstract_type = /datum/outfit/wizard
 	head = /obj/item/clothing/head/helmet/combat/JSDF
 	suit = /obj/item/clothing/suit/armor/combat/JSDF
 	belt = /obj/item/storage/belt/security/tactical

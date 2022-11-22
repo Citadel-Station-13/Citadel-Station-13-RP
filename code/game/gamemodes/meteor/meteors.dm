@@ -25,7 +25,7 @@
 
 /proc/spawn_meteor(var/list/meteortypes, var/startSide, var/startLevel)
 	if(isnull(startSide))
-		startSide = pick(GLOB.cardinal)
+		startSide = pick(GLOB.cardinals)
 	if(isnull(startLevel))
 		startLevel = pick(GLOB.using_map.station_levels - GLOB.using_map.sealed_levels)
 

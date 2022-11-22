@@ -9,7 +9,7 @@
 	var/datum/pipeline/parent
 	var/volume = 0
 
-	layer = PIPES_LAYER
+	layer = EXPOSED_PIPE_LAYER
 	use_power = USE_POWER_OFF
 
 	pipe_flags = 0 // Does not have PIPING_DEFAULT_LAYER_ONLY flag.

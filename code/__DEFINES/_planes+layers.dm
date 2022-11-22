@@ -51,28 +51,43 @@
 #define GHOST_PLANE 4
 
 //! FLOOR_PLANE (-8) layers
-#define DECAL_LAYER             2.01 // For floors that automatically add decal overlays.
-#define DECAL_OVERLAY_LAYER     2.02 // For intentionally placed floor decal overlays.
-#define ABOVE_NORMAL_TURF_LAYER 2.08
-#define PIPES_LAYER             2.2
-#define DISPOSAL_PIPE_LAYER     2.3
-#define ATMOS_LAYER             2.35 // Pipe-like atmos machinery that goes on the floor, like filters.
-#define WIRE_LAYER              2.4
-#define WIRE_TERMINAL_LAYER     2.45
-#define GAS_SCRUBBER_LAYER      2.46
-#define GAS_PIPE_VISIBLE_LAYER  2.47 //layer = initial(layer) + piping_layer / 1000 in atmospherics/update_icon() to determine order of pipe overlap
-#define GAS_FILTER_LAYER        2.48
-#define GAS_PUMP_LAYER          2.49
-#define LOW_OBJ_LAYER           2.5
-#define UNDERWATER_LAYER        2.51 // Anything on this layer will render under the water layer.
-#define BELOW_TURF_LAYER        2.6  // Below the turf layer, for things like the floor plating frame's icon. //! Which doesn't exist yet, but it will. @Zandario :)
+#define PLATING_LAYER               1
+//ABOVE PLATING
+// #define HOLOMAP_LAYER               1.01
+#define DECAL_PLATING_LAYER         1.02
+#define DISPOSALS_PIPE_LAYER        1.03
+#define LATTICE_LAYER               1.04
+// #define PIPE_LAYER                  1.05
+// #define WIRE_LAYER                  1.06
+// #define WIRE_TERMINAL_LAYER         1.07
+#define ABOVE_WIRE_LAYER            1.08
+//TURF PLANE
+//TURF_LAYER = 2
+#define TURF_DETAIL_LAYER           2.01
+#define TURF_SHADOW_LAYER           2.02
+//ABOVE TURF
+#define DECAL_LAYER                 2.03  // Base layer for decals.
+#define DECAL_OVERLAY_LAYER         2.031 // Secondary layer for decals.
+#define ABOVE_TILE_LAYER            2.05
+#define EXPOSED_PIPE_LAYER          2.06
+#define EXPOSED_WIRE_LAYER          2.07
+#define EXPOSED_WIRE_TERMINAL_LAYER 2.08
+#define CATWALK_LAYER               2.09
+#define ABOVE_CATWALK_LAYER         2.10
+#define ATMOS_LAYER                 2.35 // Pipe-like atmos machinery that goes on the floor, like filters.
+#define GAS_SCRUBBER_LAYER          2.46
+#define GAS_PIPE_VISIBLE_LAYER      2.47 //layer = initial(layer) + piping_layer / 1000 in atmospherics/update_icon() to determine order of pipe overlap
+#define GAS_FILTER_LAYER            2.48
+#define GAS_PUMP_LAYER              2.49
+#define LOW_OBJ_LAYER               2.5
+#define UNDERWATER_LAYER            2.51 // Anything on this layer will render under the water layer.
+#define BELOW_TURF_LAYER            2.6  // Below the turf layer, for things like the floor plating frame's icon. //! Which doesn't exist yet, but it will. @Zandario :)
 //? Turf/Obj layer boundary
-#define ABOVE_TURF_LAYER        3.1  //Snow and wallmounted/floormounted equipment
+#define ABOVE_TURF_LAYER            3.1  //Snow and wallmounted/floormounted equipment
 
 //! GAME_PLANE (-7) layers
 #define DEBRIS_LAYER           2.4  // Cleanable debris.
 #define STAIRS_LAYER           2.5  // Layer for stairs.
-#define CATWALK_LAYER          2.51 // Layer for catwalks.
 #define HIDING_LAYER           2.6  // Layer at which mobs hide to be under things like tables.
 #define BLASTDOOR_OPEN_LAYER   2.65
 #define DOOR_OPEN_LAYER        2.7  // Under all objects if opened. 2.7 due to tables being at 2.6

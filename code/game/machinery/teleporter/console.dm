@@ -16,10 +16,10 @@
 	. = ..()
 
 	// Search surrounding turfs for the projector, and then search the projector's surrounding turfs for the pad.
-	for(var/direction in GLOB.cardinal)
+	for(var/direction in GLOB.cardinals)
 		projector = locate(/obj/machinery/tele_projector, get_step(src, direction))
 		if(projector)
-			for(direction in GLOB.cardinal)
+			for(direction in GLOB.cardinals)
 				pad = locate(/obj/machinery/tele_pad, get_step(projector, direction))
 				if(pad)
 					break

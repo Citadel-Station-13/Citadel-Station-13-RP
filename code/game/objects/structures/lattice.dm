@@ -1,12 +1,22 @@
 /obj/structure/lattice
 	name = "lattice"
 	desc = "A lightweight support lattice."
-	icon = 'icons/obj/structures.dmi'
-	icon_state = "latticefull"
-	density = 0
-	anchored = 1.0
+	icon = 'icons/obj/smooth_structures/lattice.dmi'
+	icon_state = "lattice-255"
+	base_icon_state = "lattice"
+	density = FALSE
+	anchored = TRUE
 	w_class = ITEMSIZE_NORMAL
 	plane = FLOOR_PLANE
+	layer = LATTICE_LAYER
+	color = COLOR_STEEL
+	obj_flags = OBJ_FLAG_NOFALL
+
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_LATTICE)
+	canSmoothWith = list(SMOOTH_GROUP_OPEN_FLOOR, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_LATTICE)
+
+	var/init_material = MAT_STEEL
 
 /obj/structure/lattice/Initialize(mapload)
 	. = ..()
@@ -14,31 +24,14 @@
 	if(!(istype(src.loc, /turf/space) || istype(src.loc, /turf/simulated/open) || istype(src.loc, /turf/simulated/mineral)))
 		return INITIALIZE_HINT_QDEL
 
-	for(var/obj/structure/lattice/LAT in src.loc)
-		if(LAT != src)
-			//stack_trace("Found multiple lattices at '[log_info_line(loc)]'")
-			return INITIALIZE_HINT_QDEL
-	icon = 'icons/obj/smoothlattice.dmi'
-	icon_state = "latticeblank"
-	updateOverlays()
-	for (var/dir in GLOB.cardinal)
-		var/obj/structure/lattice/L
-		if(locate(/obj/structure/lattice, get_step(src, dir)))
-			L = locate(/obj/structure/lattice, get_step(src, dir))
-			L.updateOverlays()
+	for(var/obj/structure/lattice/LAT in loc)
+		if(LAT == src)
+			continue
+		stack_trace("multiple lattices found in ([loc.x], [loc.y], [loc.z])")
+		return INITIALIZE_HINT_QDEL
 
-/obj/structure/lattice/Destroy()
-	for (var/dir in GLOB.cardinal)
-		var/obj/structure/lattice/L
-		if(locate(/obj/structure/lattice, get_step(src, dir)))
-			L = locate(/obj/structure/lattice, get_step(src, dir))
-			L.updateOverlays(src.loc)
-	if(istype(loc, /turf/simulated/open))
-		var/turf/simulated/open/O = loc
-		spawn(1)
-			if(istype(O)) // If we built a new floor with the lattice, the open turf won't exist anymore.
-				O.update() // This lattice may be supporting things on top of it.  If it's being deleted, they need to fall down.
-	. = ..()
+/obj/structure/lattice/blob_act(obj/structure/blob/B)
+	return
 
 /obj/structure/lattice/legacy_ex_act(severity)
 	switch(severity)
@@ -50,7 +43,6 @@
 			return
 		if(3.0)
 			return
-		else
 	return
 
 /obj/structure/lattice/attackby(obj/item/C as obj, mob/user as mob)
@@ -77,24 +69,6 @@
 				qdel(src)
 		return
 	return
-
-/obj/structure/lattice/proc/updateOverlays()
-	//if(!(istype(src.loc, /turf/space)))
-	//	qdel(src)
-	spawn(1)
-		overlays = list()
-
-		var/dir_sum = 0
-
-		for (var/direction in GLOB.cardinal)
-			if(locate(/obj/structure/lattice, get_step(src, direction)))
-				dir_sum += direction
-			else
-				if(!(istype(get_step(src, direction), /turf/space)))
-					dir_sum += direction
-
-		icon_state = "lattice[dir_sum]"
-		return
 
 /obj/structure/lattice/prevent_z_fall(atom/movable/victim, levels = 0, fall_flags)
 	if(check_standard_flag_pass(victim))

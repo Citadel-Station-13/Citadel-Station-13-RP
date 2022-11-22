@@ -98,7 +98,7 @@
 
 /obj/machinery/xenobio/proc/finished_task()
 	active = 0
-	obj_flags &= ~IN_USE
+	obj_flags &= ~OBJ_FLAG_IN_USE
 	if(failed_task)
 		failed_task = 0
 		visible_message("[icon2html(thing = src, target = world)] [src] pings unhappily, flashing a red warning light.")
@@ -376,7 +376,7 @@
 		to_chat(user, "<span class='danger'>The [src] is full, empty it first!</span>")
 		return
 
-	if(obj_flags & IN_USE)
+	if(obj_flags & OBJ_FLAG_IN_USE)
 		to_chat(user, "<span class='danger'>The [src] is locked and running, wait for it to finish.</span>")
 		return
 

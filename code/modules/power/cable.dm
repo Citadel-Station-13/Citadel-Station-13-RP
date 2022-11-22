@@ -54,7 +54,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 	var/d1 = 0
 	var/d2 = 1
 	plane = FLOOR_PLANE
-	layer = WIRE_LAYER
+	layer = EXPOSED_WIRE_LAYER
 	color = COLOR_RED
 	var/obj/machinery/power/breakerbox/breaker_box
 

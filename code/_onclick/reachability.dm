@@ -240,7 +240,7 @@
 
 //! Obfuscation
 /**
- * is the atom obscured by a OBJ_PREVENT_CLICK_UNDER object above it
+ * is the atom obscured by a OBJ_FLAG_PREVENT_CLICK_UNDER object above it
  */
 /atom/proc/IsObsecured()
 	if(!isturf(loc))
@@ -249,12 +249,12 @@
 	if(!T)
 		return FALSE
 	for(var/obj/O in T)
-		if((O.obj_flags & OBJ_PREVENT_CLICK_UNDER) && O.layer > layer && O.plane >= plane)
+		if((O.obj_flags & OBJ_FLAG_PREVENT_CLICK_UNDER) && O.layer > layer && O.plane >= plane)
 			return TRUE
 	return FALSE
 
 /turf/IsObsecured()
 	for(var/obj/O in contents)
-		if(O.obj_flags & OBJ_PREVENT_CLICK_UNDER)
+		if(O.obj_flags & OBJ_FLAG_PREVENT_CLICK_UNDER)
 			return TRUE
 	return FALSE

@@ -18,9 +18,10 @@
  * - A global cache of species by typepath will still be maintained for "static" usages of these datums, like for preferences rendering.
  */
 /datum/species
-	//! Intrinsics
 	/// abstract type
-	var/abstract_type = /datum/species
+	abstract_type = /datum/species
+
+	//! Intrinsics
 	/// uid - **must be unique**
 	var/uid
 	/// if we're a subspecies, real id

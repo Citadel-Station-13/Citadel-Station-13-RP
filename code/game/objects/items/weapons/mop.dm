@@ -65,7 +65,7 @@ GLOBAL_LIST_BOILERPLATE(all_mops, /obj/item/mop)
 	user.setClickCooldown(sweep_time)
 	var/direction = get_dir(get_turf(src),target)
 	var/list/turfs
-	if (direction in GLOB.cardinal)
+	if (direction in GLOB.cardinals)
 		turfs = list(target, get_step(target,turn(direction, 90)), get_step(target,turn(direction, -90)))
 	else
 		turfs = list(target, get_step(target,turn(direction, 135)), get_step(target,turn(direction, -135)))

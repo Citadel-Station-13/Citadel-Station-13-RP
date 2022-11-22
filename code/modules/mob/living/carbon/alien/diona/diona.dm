@@ -38,6 +38,6 @@
 	if(D.stat != CONSCIOUS)
 		return
 	if(prob(33) && D.canmove && isturf(D.loc) && !D.pulledby) //won't move if being pulled
-		step(D, pick(GLOB.cardinal))
+		step(D, pick(GLOB.cardinals))
 	if(prob(1))
 		D.emote(pick("scratch","jump","chirp","roll"))

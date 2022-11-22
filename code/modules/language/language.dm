@@ -10,7 +10,8 @@
  */
 /datum/language
 	/// abstract type
-	var/abstract_type = /datum/language
+	abstract_type = /datum/language
+
 	/// uid
 	var/id
 	// TODO: ref languages by id in code, so we can rename as needed

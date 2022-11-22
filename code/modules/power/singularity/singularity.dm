@@ -309,11 +309,11 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	step(src, movement_dir)
 
 /obj/singularity/proc/check_cardinals_range(steps, retry_with_move = FALSE)
-	. = length(GLOB.cardinal)			//Should be 4.
-	for(var/i in GLOB.cardinal)
+	. = length(GLOB.cardinals)			//Should be 4.
+	for(var/i in GLOB.cardinals)
 		. -= check_turfs_in(i, steps)	//-1 for each working direction
 	if(. && retry_with_move)			//If there's still a positive value it means it didn't pass. Retry with move if applicable
-		for(var/i in GLOB.cardinal)
+		for(var/i in GLOB.cardinals)
 			if(step(src, i))			//Move in each direction.
 				if(check_cardinals_range(steps, FALSE))		//New location passes, return true.
 					return TRUE

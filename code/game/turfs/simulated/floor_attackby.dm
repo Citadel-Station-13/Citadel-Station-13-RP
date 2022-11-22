@@ -19,7 +19,7 @@
 			if(istype(T, /turf/simulated/open) || istype(T, /turf/space))
 			 	// Must be build adjacent to an existing floor/wall, no floating floors
 				var/list/cardinalTurfs = list() // Up a Z level
-				for(var/dir in GLOB.cardinal)
+				for(var/dir in GLOB.cardinals)
 					var/turf/B = get_step(T, dir)
 					if(B)
 						cardinalTurfs += B
@@ -43,7 +43,7 @@
 
 		// Create a ceiling to shield from the weather
 		if(outdoors)
-			for(var/dir in GLOB.cardinal)
+			for(var/dir in GLOB.cardinals)
 				var/turf/A = get_step(src, dir)
 				if(A && !A.outdoors)
 					if(expended_tile || R.use(1))
@@ -77,9 +77,10 @@
 				to_chat(user, "<span class='warning'>This section is too damaged to support anything. Use a welder to fix the damage.</span>")
 				return
 			var/obj/item/stack/S = C
-			var/decl/flooring/use_flooring
-			for(var/flooring_type in flooring_types)
-				var/decl/flooring/F = flooring_types[flooring_type]
+			var/singleton/flooring/use_flooring
+			var/list/singletons = GET_SINGLETON_SUBTYPE_MAP(/singleton/flooring)
+			for(var/flooring_type in singletons)
+				var/singleton/flooring/F = singletons[flooring_type]
 				if(!F.build_type)
 					continue
 				if((S.type == F.build_type) || (S.build_type == F.build_type))

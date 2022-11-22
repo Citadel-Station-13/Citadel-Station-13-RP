@@ -398,7 +398,7 @@
 "if" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/scrubbers,
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -1451,7 +1451,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /turf/simulated/floor/plating,
 /area/shuttle/gecko_sh)
 "Dc" = (
@@ -2076,7 +2076,7 @@
 "Pz" = (
 /obj/machinery/atmospherics/pipe/manifold4w/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/effect/catwalk_plated,
+/obj/structure/catwalk/plated,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},

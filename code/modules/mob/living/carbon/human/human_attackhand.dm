@@ -181,7 +181,7 @@
 						attack_message = "[H] attempted to strike [src], but missed!"
 					else
 						attack_message = "[H] attempted to strike [src], but [TT.he] rolled out of the way!"
-						src.setDir(pick(GLOB.cardinal))
+						src.setDir(pick(GLOB.cardinals))
 					miss_type = 1
 
 			if(!miss_type && block)

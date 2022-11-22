@@ -1,4 +1,5 @@
 /obj/item/clothing/accessory/storage
+	abstract_type = /obj/item/clothing/accessory/storage
 	name = "load bearing equipment"
 	desc = "Used to hold things when you don't have enough hands."
 	icon_state = "webbing"
@@ -13,6 +14,8 @@
 
 /obj/item/clothing/accessory/storage/Initialize(mapload)
 	. = ..()
+	if (. == INITIALIZE_HINT_QDEL)
+		return
 	hold = new/obj/item/storage/internal(src)
 	hold.max_storage_space = slots * 2
 	hold.max_w_class = ITEMSIZE_SMALL

@@ -156,7 +156,7 @@ Buildable meters
 		setDir(EAST)
 
 /obj/item/pipe/trinary/flippable/fixdir()
-	if(dir in GLOB.cornerdirs)
+	if(dir in GLOB.diagonals)
 		setDir(turn(dir, 45))
 
 /obj/item/pipe/attack_self(mob/user)

@@ -5,7 +5,7 @@ var/list/grass_types = list(
 /turf/simulated/floor/outdoors/grass
 	name = "grass"
 	icon_state = "grass"
-	initial_flooring = /decl/flooring/outdoors/grass
+	initial_flooring = /singleton/flooring/outdoors/grass
 	baseturfs = /turf/simulated/floor/outdoors/dirt
 	var/grass_chance = 20
 
@@ -25,7 +25,7 @@ var/list/grass_types = list(
 /turf/simulated/floor/outdoors/grass/sif
 	name = "growth"
 	icon_state = "grass_sif"
-	initial_flooring = /decl/flooring/outdoors/grass/sif
+	initial_flooring = /singleton/flooring/outdoors/grass/sif
 	grass_chance = 5
 	var/tree_chance = 2
 

@@ -1,65 +1,31 @@
 // Based on catwalk.dm from https://github.com/Endless-Horizon/CEV-Eris
 /obj/structure/catwalk
 	name = "catwalk"
-	desc = "Cats really don't like these things."
-	plane = GAME_PLANE
+	icon = 'icons/obj/smooth_structures/catwalk.dmi'
+	icon_state = "catwalk-0"
+	base_icon_state = "catwalk"
+	plane = FLOOR_PLANE
 	layer = CATWALK_LAYER
-	icon = 'icons/turf/catwalks.dmi'
-	icon_state = "catwalk"
-	density = FALSE
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_OPEN_FLOOR, SMOOTH_GROUP_LATTICE, SMOOTH_GROUP_CATWALK)
+	canSmoothWith = list(SMOOTH_GROUP_CATWALK)
 	anchored = TRUE
+	obj_flags = OBJ_FLAG_NOFALL
+
 	var/health = 100
 	var/maxhealth = 100
-	var/obj/item/stack/tile/plated_tile = null
-	var/static/plating_color = list(
-		/obj/item/stack/tile/floor = "#858a8f",
-		/obj/item/stack/tile/floor/dark = "#4f4f4f",
-		/obj/item/stack/tile/floor/white = "#e8e8e8")
 
 /obj/structure/catwalk/Initialize(mapload)
 	. = ..()
-	for(var/obj/structure/catwalk/O in range(1))
-		O.update_icon()
 	for(var/obj/structure/catwalk/C in get_turf(src))
 		if(C != src)
 			warning("Duplicate [type] in [loc] ([x], [y], [z])")
 			return INITIALIZE_HINT_QDEL
-	update_icon()
 
 /obj/structure/catwalk/Destroy()
 	var/turf/location = loc
 	. = ..()
 	location.alpha = initial(location.alpha)
-	for(var/obj/structure/catwalk/L in orange(location, 1))
-		L.update_icon()
-
-/obj/structure/catwalk/update_icon()
-	var/connectdir = 0
-	for(var/direction in GLOB.cardinal)
-		if(locate(/obj/structure/catwalk, get_step(src, direction)))
-			connectdir |= direction
-
-	//Check the diagonal connections for corners, where you have, for example, connections both north and east. In this case it checks for a north-east connection to determine whether to add a corner marker or not.
-	var/diagonalconnect = 0 //1 = NE; 2 = SE; 4 = NW; 8 = SW
-	//NORTHEAST
-	if(connectdir & NORTH && connectdir & EAST)
-		if(locate(/obj/structure/catwalk, get_step(src, NORTHEAST)))
-			diagonalconnect |= 1
-	//SOUTHEAST
-	if(connectdir & SOUTH && connectdir & EAST)
-		if(locate(/obj/structure/catwalk, get_step(src, SOUTHEAST)))
-			diagonalconnect |= 2
-	//NORTHWEST
-	if(connectdir & NORTH && connectdir & WEST)
-		if(locate(/obj/structure/catwalk, get_step(src, NORTHWEST)))
-			diagonalconnect |= 4
-	//SOUTHWEST
-	if(connectdir & SOUTH && connectdir & WEST)
-		if(locate(/obj/structure/catwalk, get_step(src, SOUTHWEST)))
-			diagonalconnect |= 8
-
-	icon_state = "catwalk[connectdir]-[diagonalconnect]"
-
 
 /obj/structure/catwalk/legacy_ex_act(severity)
 	switch(severity)
@@ -120,71 +86,45 @@
 /obj/structure/catwalk/z_pass_out(atom/movable/AM, dir, turf/new_loc)
 	return dir == UP
 
-/obj/effect/catwalk_plated
-	name = "plated catwalk spawner"
-	icon = 'icons/turf/catwalks.dmi'
-	icon_state = "catwalk_plated"
-	density = TRUE
-	anchored = TRUE
-	plane = GAME_PLANE
-	layer = CATWALK_LAYER
 
-	var/activated = FALSE
-	var/tile = /obj/item/stack/tile/floor
-	var/platecolor = "#858a8f"
+/obj/structure/catwalk/plated
+	name = "plated catwalk"
+	icon = 'icons/obj/smooth_structures/catwalk_plated.dmi'
+	icon_state = "plated_catwalk-0"
+	base_icon_state = "plated_catwalk"
 
-/obj/effect/catwalk_plated/Initialize(mapload)
-	. = ..()
-	activate()
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_OPEN_FLOOR, SMOOTH_GROUP_LATTICE, SMOOTH_GROUP_PLATED_CATWALK)
+	canSmoothWith = list(SMOOTH_GROUP_PLATED_CATWALK)
 
-/obj/effect/catwalk_plated/attack_hand()
-	attack_generic()
+	// plated_tile = /obj/item/stack/tile/floor
+	color = "#858a8f"
 
-/obj/effect/catwalk_plated/attack_ghost()
-	. = ..()
-	attack_generic()
+/obj/structure/catwalk/plated/dark
+	// plated_tile = /obj/item/stack/tile/floor/dark
+	color = "#4f4f4f"
 
-/obj/effect/catwalk_plated/attack_generic()
-	activate()
-
-/obj/effect/catwalk_plated/proc/activate()
-	if(activated) return
-
-	if(locate(/obj/structure/catwalk) in loc)
-		warning("Frame Spawner: A catwalk already exists at [loc.x]-[loc.y]-[loc.z]")
-	else
-		var/obj/structure/catwalk/C = new /obj/structure/catwalk(loc)
-		C.plated_tile = tile
-		C.plating_color = platecolor
-		C.name = "plated catwalk"
-		C.update_icon()
-	activated = 1
-	/* We don't have wallframes - yet
-	for(var/turf/T in orange(src, 1))
-		for(var/obj/effect/wallframe_spawn/other in T)
-			if(!other.activated) other.activate()
-	*/
-	qdel(src)
-
-/obj/effect/catwalk_plated/dark
-	icon_state = "catwalk_plateddark"
-	tile = /obj/item/stack/tile/floor/dark
-	platecolor = "#4f4f4f"
-
-/obj/effect/catwalk_plated/white
-	icon_state = "catwalk_platedwhite"
-	tile = /obj/item/stack/tile/floor/white
-	platecolor = "#e8e8e8"
+/obj/structure/catwalk/plated/white
+	// plated_tile = /obj/item/stack/tile/floor/white
+	color = "#e8e8e8"
 
 /obj/structure/catwalk/plank
 	name = "plank bridge"
 	desc = "Some flimsy wooden planks, generally set across a hazardous area."
-	icon = 'icons/turf/catwalks.dmi'
+	icon = 'icons/obj/structures/catwalk_planks.dmi'
 	icon_state = "plank"
 	plane = GAME_PLANE
 	layer = CATWALK_LAYER
 	density = FALSE
 	anchored = TRUE
+
+	smoothing_flags = null
+	smoothing_groups = null
+	canSmoothWith = null
+
+/obj/structure/catwalk/plank/Initialize(mapload)
+	. = ..()
+	update_icon_state()
 
 /obj/structure/catwalk/plank/Crossed()
 	. = ..()
@@ -192,21 +132,22 @@
 		switch(rand(1,100))
 			if(1 to 5)
 				qdel(src)
-				visible_message("<span class='danger'>The planks splinter and disintegrate beneath the weight!</span>")
+				visible_message(SPAN_DANGER("The planks splinter and disintegrate beneath the weight!"))
 			if(6 to 50)
 				take_damage(rand(10,20))
-				visible_message("<span class='danger'>The planks creak and groan as they're crossed.</span>")
+				visible_message(SPAN_DANGER("The planks creak and groan as they're crossed."))
 			if(51 to 100)
 				return
 
 /obj/structure/catwalk/plank/take_damage(amount)
 	health -= amount
-	update_icon()
+	update_icon_state()
 	if(health <= 0)
-		visible_message("<span class='warning'>\The [src] breaks down!</span>")
+		visible_message(SPAN_WARNING("\The [src] breaks down!"))
 		Destroy()
 
-/obj/structure/catwalk/plank/update_icon()
+/obj/structure/catwalk/plank/update_icon_state()
+	. = ..()
 	if(health > 75)
 		icon_state = "[initial(icon_state)]"
 	if(health < 75)

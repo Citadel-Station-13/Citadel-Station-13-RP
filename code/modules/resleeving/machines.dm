@@ -495,7 +495,7 @@
 	if(O.anchored)
 		return FALSE //mob is anchored???
 	if(get_dist(user, src) > 1 || get_dist(user, O) > 1)
-		return FALSE //doesn't use adjacent() to allow for non-GLOB.cardinal (fuck my life)
+		return FALSE //doesn't use adjacent() to allow for non-GLOB.cardinals (fuck my life)
 	if(!ishuman(user) && !isrobot(user))
 		return FALSE //not a borg or human
 	if(panel_open)

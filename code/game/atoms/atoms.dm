@@ -202,6 +202,10 @@
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	flags |= INITIALIZED
 
+	if (is_abstract())
+		log_debug("Abstract atom [type] created!")
+		return INITIALIZE_HINT_QDEL
+
 	if(loc)
 		SEND_SIGNAL(loc, COMSIG_ATOM_INITIALIZED_ON, src) /// Sends a signal that the new atom `src`, has been created at `loc`
 
@@ -1149,3 +1153,11 @@
 	base_pixel_y = new_value
 
 	pixel_y = pixel_y + base_pixel_y - .
+
+/image/proc/plating_decal_layerise()
+	plane = FLOOR_PLANE
+	layer = DECAL_PLATING_LAYER
+
+/image/proc/turf_decal_layerise()
+	plane = FLOOR_PLANE
+	layer = DECAL_LAYER

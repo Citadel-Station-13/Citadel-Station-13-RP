@@ -197,10 +197,10 @@
 	. = ..()
 	// TODO - Eschew input/output machinery and just use dirs ~Leshana
 	//Locate our output and input machinery.
-	for (var/dir in GLOB.cardinal)
+	for (var/dir in GLOB.cardinals)
 		src.input = locate(/obj/machinery/mineral/input, get_step(src, dir))
 		if(src.input) break
-	for (var/dir in GLOB.cardinal)
+	for (var/dir in GLOB.cardinals)
 		src.output = locate(/obj/machinery/mineral/output, get_step(src, dir))
 		if(src.output) break
 	return

@@ -10,7 +10,7 @@
 	level = 1
 	anchored = TRUE
 	plane = FLOOR_PLANE
-	layer = WIRE_TERMINAL_LAYER
+	layer = EXPOSED_WIRE_TERMINAL_LAYER
 
 	var/obj/machinery/power/master = null
 

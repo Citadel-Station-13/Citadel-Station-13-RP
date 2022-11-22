@@ -179,7 +179,7 @@
 
 	if ("orientation" in json)
 		orientation = json["orientation"]
-		if(!(orientation in GLOB.cardinal))
+		if(!(orientation in GLOB.cardinals))
 			orientation = SOUTH
 
 	if("persistence_id" in json)

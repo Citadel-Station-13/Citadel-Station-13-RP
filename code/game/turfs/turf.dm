@@ -1,6 +1,7 @@
 /// Any floor or wall. What makes up the station and the rest of the map.
 /turf
 	icon = 'icons/turf/floors.dmi'
+	layer = TURF_LAYER // /atom is already TURF_LAYER by default so this is moreso for documentation purposes.
 	luminosity = 1
 	level = 1
 

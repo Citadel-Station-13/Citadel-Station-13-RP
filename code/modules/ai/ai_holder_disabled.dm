@@ -55,7 +55,7 @@
 			var/unsafe = FALSE
 
 			tile_test:
-				for(var/dir_tested in GLOB.cardinal)
+				for(var/dir_tested in GLOB.cardinals)
 					var/turf/turf_tested = get_step(holder, dir_tested)
 					// Look for unsafe tiles.
 					if(!turf_tested.is_safe_to_enter(holder))
@@ -74,7 +74,7 @@
 				return // Just stay still.
 
 		var/moving_to = 0
-		moving_to = pick(GLOB.cardinal)
+		moving_to = pick(GLOB.cardinals)
 		var/turf/T = get_step(holder, moving_to)
 
 		var/mob/living/L = locate() in T
@@ -100,7 +100,7 @@
 				return
 
 			var/moving_to = 0 // Apparently this is required or it always picks 4, according to the previous developer for simplemob AI.
-			moving_to = pick(GLOB.cardinal)
+			moving_to = pick(GLOB.cardinals)
 			holder.setDir(moving_to)
 			holder.IMove(get_step(holder,moving_to))
 			wander_delay = base_wander_delay

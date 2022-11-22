@@ -8,7 +8,7 @@
 	name = "large power cable"
 	desc = "This cable is tough. It cannot be cut with simple hand tools."
 	plane = FLOOR_PLANE
-	layer = PIPES_LAYER - 0.05 //Just below pipes
+	layer = EXPOSED_PIPE_LAYER - 0.05 //Just below pipes
 	color = null
 
 /obj/structure/cable/heavyduty/attackby(obj/item/W, mob/user)

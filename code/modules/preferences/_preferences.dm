@@ -339,7 +339,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	BG.icon_state = bgstate
 	BG.screen_loc = preview_screen_locs["BG"]
 
-	for(var/D in GLOB.cardinal)
+	for(var/D in GLOB.cardinals)
 		var/atom/movable/screen/setup_preview/O = LAZYACCESS(char_render_holders, "[D]")
 		if(!O)
 			O = new

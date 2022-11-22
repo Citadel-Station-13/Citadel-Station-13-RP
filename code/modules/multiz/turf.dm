@@ -152,12 +152,15 @@
 	icon = 'icons/turf/space.dmi'
 	icon_state = ""
 	desc = "\..."
-	density = 0
+	density = FALSE
 	plane = OPENSPACE_PLANE_START
-	pathweight = 100000		// Seriously, don't try and path over this one numbnuts
+	pathweight = 100000 // Seriously, don't try and path over this one numbnuts
 	can_build_into_floor = TRUE
 	allow_gas_overlays = FALSE
 	z_flags = Z_AIR_UP | Z_AIR_DOWN | Z_OPEN_UP | Z_OPEN_DOWN | Z_CONSIDERED_OPEN
+
+	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN)
+	canSmoothWith = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_OPEN_FLOOR)
 
 	var/turf/below
 

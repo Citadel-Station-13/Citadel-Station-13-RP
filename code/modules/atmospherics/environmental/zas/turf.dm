@@ -62,9 +62,9 @@
 	//? end
 
 	#ifdef MULTIZAS
-	var/to_check = GLOB.cornerdirsz
+	var/to_check = GLOB.corners_multiz
 	#else
-	var/to_check = GLOB.cornerdirs
+	var/to_check = GLOB.diagonals
 	#endif
 
 	for(var/dir in to_check)
@@ -83,9 +83,9 @@
 	. = 0
 	if(istype(T) && T.zone)
 		#ifdef MULTIZAS
-		var/to_check = GLOB.cardinalz
+		var/to_check = GLOB.cardinals_multiz
 		#else
-		var/to_check = GLOB.cardinal
+		var/to_check = GLOB.cardinals
 		#endif
 		for(var/dir in to_check)
 			var/turf/simulated/other = get_step(T, dir)

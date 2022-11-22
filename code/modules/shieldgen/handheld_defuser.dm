@@ -28,7 +28,7 @@
 	if(!enabled)
 		return PROCESS_KILL
 
-	for(var/direction in GLOB.cardinal)
+	for(var/direction in GLOB.cardinals)
 		var/turf/simulated/shielded_tile = get_step(get_turf(src), direction)
 		for(var/obj/effect/shield/S in shielded_tile)
 			if(istype(S) && !S.diffused_for && !S.disabled_for && cell.checked_use_scaled(CELL_COST_SHIELD_DIFFUSION))

@@ -357,7 +357,7 @@
 /obj/item/stack/material/log/sif
 	name = "alien log"
 	default_type = MAT_SIFLOG
-	color = "#0099cc"
+	color = WOOD_COLOR_SIF
 	plank_type = /obj/item/stack/material/wood/sif
 
 /obj/item/stack/material/log/hard

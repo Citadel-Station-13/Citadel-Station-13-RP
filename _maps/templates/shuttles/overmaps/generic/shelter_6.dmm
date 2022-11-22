@@ -419,7 +419,7 @@
 /obj/structure/cable/cyan{
 	icon_state = "0-2"
 	},
-/obj/effect/catwalk_plated/white,
+/obj/structure/catwalk/plated/white,
 /turf/simulated/floor/bluegrid,
 /area/shuttle/tabiranth)
 "aq" = (
@@ -509,7 +509,7 @@
 	layer = 2.45;
 	plane = -44
 	},
-/obj/effect/catwalk_plated/white,
+/obj/structure/catwalk/plated/white,
 /turf/simulated/floor/bluegrid,
 /area/shuttle/tabiranth)
 "aD" = (
@@ -1056,7 +1056,7 @@
 	layer = 2.45;
 	plane = -44
 	},
-/obj/effect/catwalk_plated/white,
+/obj/structure/catwalk/plated/white,
 /turf/simulated/floor/bluegrid,
 /area/shuttle/tabiranth)
 "aZ" = (
@@ -1121,7 +1121,7 @@
 	layer = 2.45;
 	plane = -44
 	},
-/obj/effect/catwalk_plated/white,
+/obj/structure/catwalk/plated/white,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/tabiranth)
 "bj" = (
@@ -1698,7 +1698,7 @@
 	layer = 2.45;
 	plane = -44
 	},
-/obj/effect/catwalk_plated/white,
+/obj/structure/catwalk/plated/white,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/tabiranth)
 "bM" = (

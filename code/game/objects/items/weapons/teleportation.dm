@@ -139,10 +139,10 @@ Frequency:
 	for(var/obj/machinery/tele_pad/R in GLOB.machines)
 		var/obj/machinery/computer/teleporter/com
 		var/obj/machinery/tele_projector/station
-		for(var/direction in GLOB.cardinal)
+		for(var/direction in GLOB.cardinals)
 			station = locate(/obj/machinery/tele_projector, get_step(R, direction))
 			if(station)
-				for(direction in GLOB.cardinal)
+				for(direction in GLOB.cardinals)
 					com = locate(/obj/machinery/computer/teleporter, get_step(station, direction))
 					if(com)
 						break

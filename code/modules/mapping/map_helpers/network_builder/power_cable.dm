@@ -26,7 +26,7 @@
 
 /obj/map_helper/network_builder/power_cable/scan()
 	. = NONE
-	for(var/i in GLOB.cardinal)
+	for(var/i in GLOB.cardinals)
 		var/turf/T = get_step(src, i)
 		if(locate(base_type) in T)
 			. |= i
@@ -42,13 +42,13 @@
 		return
 	var/knot = (src.knot == KNOT_FORCED) || ((src.knot == KNOT_AUTO) && detect_knot())
 	if(knot)
-		for(var/i in GLOB.cardinal)
+		for(var/i in GLOB.cardinals)
 			if(!(network_directions & i))
 				continue
 			new /obj/structure/cable(loc, capitalize(cable_color), 0, i, TRUE)
 	else
 		var/last
-		for(var/i in GLOB.cardinal)
+		for(var/i in GLOB.cardinals)
 			if(!(network_directions & i))
 				continue
 			if(isnull(last))

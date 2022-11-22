@@ -23,7 +23,7 @@
 	return ..()
 
 /obj/spawner/window/proc/find_dirs()
-	for(var/d in GLOB.cardinal)
+	for(var/d in GLOB.cardinals)
 		var/obj/spawner/window/WS = locate() in get_step(src, d)
 		if(WS)
 			found_dirs |= d
@@ -36,7 +36,7 @@
 	else
 		// spawn in dirs not in found dirs
 		var/obj/structure/window/W
-		for(var/d in GLOB.cardinal)
+		for(var/d in GLOB.cardinals)
 			if(found_dirs & d)
 				continue
 			W = new window_pane_path(loc)
