@@ -53,3 +53,11 @@ DEFINE_BITFIELD(shapeshift_capability, list(
 	BITFIELD(SHAPESHIFT_CAPABILITY_SIZE),
 	BITFIELD(SHAPESHIFT_CAPABILITY_ADMINISTRATOR),
 ))
+
+//! /datum/shapeshift_system shapeshift system flags
+/// modfiy our DNA
+#define SHAPESHIFT_SYSTEM_MODIFY_DNA (1<<0)
+
+DEFINE_BITFIELD(shapeshift_system_flags, list(
+	BITFIELD(SHAPESHIFT_SYSTEM_MODIFY_DNA),
+))

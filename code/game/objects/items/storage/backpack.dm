@@ -559,7 +559,7 @@
 	if(!.)
 		return FALSE
 	var/mob/living/carbon/human/H
-	if(istype(H) && istype(H.peek_sprite_accessory_tail(), taurtype))
+	if(istype(H) && istype(H.peek_sprite_accessory_tail().accessory, taurtype))
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?
 			slowdown = 0
 		else
@@ -594,7 +594,7 @@
 	if(!.)
 		return FALSE
 	var/mob/living/carbon/human/H
-	var/datum/sprite_accessory_meta/tail/taur/TT = H.peek_sprite_accessory_tail()
+	var/datum/sprite_accessory_meta/tail/taur/TT = H.peek_sprite_accessory_tail().accessory
 	if(istype(H) && istype(TT, /datum/sprite_accessory_meta/tail/taur/horse))
 		item_state = "[icon_base]_Horse"
 		if(H.size_multiplier >= RESIZE_BIG) //Are they a macro?

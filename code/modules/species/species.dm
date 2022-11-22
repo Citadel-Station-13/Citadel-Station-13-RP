@@ -124,6 +124,9 @@
 	/// Species specific internal organs icons.
 	var/organs_icon
 
+	#warn what the fuck
+	#warn this needs to set ours + dna's tail
+	#warn put default hairs into this too
 	/// Name of tail state in species effects icon file.
 	var/tail
 	/// If set, the icon to obtain tail animation states from.

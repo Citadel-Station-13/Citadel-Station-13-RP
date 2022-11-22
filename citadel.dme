@@ -3987,7 +3987,6 @@
 #include "code\modules\sprite_accessories\legacy\sprite_accessories_taur_vr.dm"
 #include "code\modules\sprite_accessories\legacy\sprite_accessories_vr.dm"
 #include "code\modules\sprite_accessories\legacy\tail.dm"
-#include "code\modules\sprite_accessories\legacy\update_icons_vr.dm"
 #include "code\modules\sprite_accessories\legacy\wings.dm"
 #include "code\modules\sprite_accessories\markings\diona_stuff.dm"
 #include "code\modules\sprite_accessories\markings\eye_stuff.dm"

@@ -586,7 +586,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		return //Wearing a suit that prevents uniform rendering
 
 	//Build a uniform sprite
-	var/icon/c_mask = tail_style?.clip_mask
+	var/icon/c_mask = peek_sprite_accessory_tail()?.accessory.clip_mask
 	if(c_mask)
 		var/obj/item/clothing/suit/S = wear_suit
 		if((wear_suit?.flags_inv & HIDETAIL) || (istype(S) && S.taurized)) // Reasons to not mask: 1. If you're wearing a suit that hides the tail or if you're wearing a taurized suit.
@@ -769,7 +769,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 	var/icon/c_mask = null
 	var/tail_is_rendered = (overlays_standing[TAIL_LAYER] || overlays_standing[TAIL_LAYER_ALT])
-	var/valid_clip_mask = tail_style?.clip_mask
+	var/valid_clip_mask = peek_sprite_accessory_tail()?.accessory.clip_mask
 
 	var/obj/item/clothing/suit/S = wear_suit
 	if(tail_is_rendered && valid_clip_mask && !(istype(S) && S.taurized)) //Clip the lower half of the suit off using the tail's clip mask for taurs since taur bodies aren't hidden.
@@ -913,39 +913,6 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		overlays_standing[used_tail_layer] = tail_images
 		apply_layer(used_tail_layer)
 		return
-
-	var/species_tail = species.get_tail(src) // Species tail icon_state prefix.
-
-	//This one is actually not that bad I guess.
-	if(species_tail && !(wear_suit && wear_suit.flags_inv & HIDETAIL))
-		var/icon/tail_s = get_tail_icon()
-		overlays_standing[used_tail_layer] = image(icon = tail_s, icon_state = "[species_tail]_s", layer = BODY_LAYER+used_tail_layer)
-		animate_tail_reset()
-
-//TODO: Is this the appropriate place for this, and not on species...?
-/mob/living/carbon/human/proc/get_tail_icon()
-	var/icon_key = "[species.get_race_key(src)][r_skin][g_skin][b_skin][r_hair][g_hair][b_hair]"
-	var/icon/tail_icon = GLOB.tail_icon_cache[icon_key]
-	if(!tail_icon)
-		//generate a new one
-		var/species_tail_anim = species.get_tail_animation(src)
-		if(!species_tail_anim && species.icobase_tail)
-			species_tail_anim = species.icobase // Allow override of file for non-animated tails
-		if(!species_tail_anim)
-			species_tail_anim = 'icons/effects/species.dmi'
-		tail_icon = new/icon(species_tail_anim)
-		tail_icon.Blend(rgb(r_skin, g_skin, b_skin), species.color_mult ? ICON_MULTIPLY : ICON_ADD)
-		// The following will not work with animated tails.
-		var/use_species_tail = species.get_tail_hair(src)
-		if(use_species_tail)
-			var/icon/hair_icon = icon('icons/effects/species.dmi', "[species.get_tail(src)]_[use_species_tail]_s") // Suffix icon state string with '_s' to compensate for diff in .dmi b/w us & Polaris. //TODO: No.
-			if(species.color_force_greyscale)
-				hair_icon.MapColors(arglist(color_matrix_greyscale()))
-			hair_icon.Blend(rgb(r_hair, g_hair, b_hair), species.color_mult ? ICON_MULTIPLY : ICON_ADD) // Check for species color_mult
-			tail_icon.Blend(hair_icon, ICON_OVERLAY)
-		GLOB.tail_icon_cache[icon_key] = tail_icon
-
-	return tail_icon
 
 /mob/living/carbon/human/proc/set_tail_state(var/t_state)
 	var/used_tail_layer = tail_alt ? TAIL_LAYER_ALT : TAIL_LAYER
@@ -1113,51 +1080,6 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		overlays_standing[SURGERY_LAYER] = total
 		apply_layer(SURGERY_LAYER)
 
-
-/mob/living/carbon/human/proc/get_wing_image(front) //redbull gives you wings
-	var/icon/grad_swing
-	if(QDESTROYING(src))
-		return
-
-	//If you are FBP with wing style and didn't set a custom one
-	if(synthetic && synthetic.includes_wing && !wing_style)
-		var/icon/wing_s = new/icon("icon" = synthetic.icon, "icon_state" = "wing") //I dunno. If synths have some custom wing?
-		wing_s.Blend(rgb(src.r_skin, src.g_skin, src.b_skin), species.color_mult ? ICON_MULTIPLY : ICON_ADD)
-		return image(wing_s)
-
-	//If you have custom wings selected
-	if(wing_style && (!(wear_suit && wear_suit.flags_inv & HIDETAIL) || !wing_style.clothing_can_hide))
-		var/icon/wing_s = new/icon("icon" = wing_style.icon, "icon_state" = flapping && wing_style.ani_state ? wing_style.ani_state : (wing_style.front_behind_system? (wing_style.icon_state + (front? "_FRONT" : "_BEHIND")) : wing_style.icon_state))
-		if(wing_style.do_colouration)
-			if(grad_wingstyle)
-				grad_swing = new/icon("icon" = 'icons/mob/wing_gradients.dmi', "icon_state" = GLOB.hair_gradients[grad_wingstyle])
-				grad_swing.Blend(wing_s, ICON_AND)
-				grad_swing.Blend(rgb(r_gradwing, g_gradwing, b_gradwing), ICON_MULTIPLY)
-			wing_s.Blend(rgb(src.r_wing, src.g_wing, src.b_wing), wing_style.color_blend_mode)
-		if(grad_swing)
-			wing_s.Blend(grad_swing, ICON_OVERLAY)
-		if(wing_style.extra_overlay)
-			var/icon/overlay = new/icon("icon" = wing_style.icon, "icon_state" = wing_style.extra_overlay)
-			overlay.Blend(rgb(src.r_wing2, src.g_wing2, src.b_wing2), wing_style.color_blend_mode)
-			wing_s.Blend(overlay, ICON_OVERLAY)
-			qdel(overlay)
-
-		if(wing_style.extra_overlay2)
-			var/icon/overlay = new/icon("icon" = wing_style.icon, "icon_state" = wing_style.extra_overlay2)
-			if(wing_style.ani_state)
-				overlay = new/icon("icon" = wing_style.icon, "icon_state" = wing_style.extra_overlay2_w)
-				overlay.Blend(rgb(src.r_wing3, src.g_wing3, src.b_wing3), wing_style.color_blend_mode)
-				wing_s.Blend(overlay, ICON_OVERLAY)
-				qdel(overlay)
-			else
-				overlay.Blend(rgb(src.r_wing3, src.g_wing3, src.b_wing3), wing_style.color_blend_mode)
-				wing_s.Blend(overlay, ICON_OVERLAY)
-				qdel(overlay)
-
-		if(wing_style.center)
-			center_appearance(wing_s, wing_style.dimension_x, wing_style.dimension_y)
-		return image(wing_s, "pixel_x" = -16)
-
 // TODO - Move this to where it should go ~Leshana
 /mob/proc/stop_flying()
 	if(QDESTROYING(src))
@@ -1176,22 +1098,131 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	ret.appearance_flags = (PIXEL_SCALE) | flags
 	return ret
 
+//! new wip overlay system ; elevate to /mob someday maybe if it isn't replaced
+/**
+ * you are responsible for storing what to cut
+ */
+/mob/living/carbon/human/proc/cut_render_overlays(overlays)
+	cut_overlay(overlays)
+
+/**
+ * you are responsible for cutting it later; we do not store it.
+ */
+/mob/living/carbon/human/proc/add_render_overlays(overlays)
+	add_overlay(overlays)
+
+/**
+ * you are responsible for making sure em render is there
+ * you are responsible for storing what to cut
+ */
+/mob/living/carbon/human/proc/cut_emissive_overlays(overlays)
+	em_render?.cut_overlay(overlays)
+
+/**
+ * you are responsible for making sure em render is there
+ * you are responsible for cutting it later; we do not store it.
+ */
+/mob/living/carbon/human/proc/add_emissive_overlays(overlays)
+	em_render?.add_overlay(overlays)
+
 //! sprite accessories
 /mob/living/carbon/human/update_hair()
 	var/datum/sprite_accessory_data/data = peek_sprite_accessory_hair()
+	if(cache_hair_overlays)
+		cut_render_overlays(cache_hair_overlays)
+	if(cache_hair_emissives)
+		cut_emissive_overlays(cache_hair_emissives)
+	if(!data)
+		return
+	var/list/normal = data.render_mob_appearance(src)
+	var/list/emissives = data.render_mob_emissives(src)
+	if(normal)
+		add_render_overlays(normal)
+		cache_hair_overlays = emissives
+	if(emissives)
+		add_emissive_overlays(emissives)
+		cache_hair_emissives = emissives
 
 /mob/living/carbon/human/update_facial_hair()
 	var/datum/sprite_accessory_data/data = peek_sprite_accessory_facial_hair()
+	if(cache_facial_hair_overlays)
+		cut_render_overlays(cache_facial_hair_overlays)
+	if(cache_facial_hair_emissives)
+		cut_emissive_overlays(cache_facial_hair_emissives)
+	if(!data)
+		return
+	var/list/normal = data.render_mob_appearance(src)
+	var/list/emissives = data.render_mob_emissives(src)
+	if(normal)
+		add_render_overlays(normal)
+		cache_facial_hair_overlays = emissives
+	if(emissives)
+		add_emissive_overlays(emissives)
+		cache_facial_hair_emissives = emissives
 
 /mob/living/carbon/human/update_tail()
 	var/datum/sprite_accessory_data/data = peek_sprite_accessory_tail()
+	if(cache_tail_overlays)
+		cut_render_overlays(cache_tail_overlays)
+	if(cache_tail_emissives)
+		cut_emissive_overlays(cache_tail_emissives)
+	if(!data)
+		return
+	var/list/normal = data.render_mob_appearance(src)
+	var/list/emissives = data.render_mob_emissives(src)
+	if(normal)
+		add_render_overlays(normal)
+		cache_tail_overlays = emissives
+	if(emissives)
+		add_emissive_overlays(emissives)
+		cache_tail_emissives = emissives
 
 /mob/living/carbon/human/update_ears()
 	var/datum/sprite_accessory_data/data1 = peek_sprite_accessory_ears_1()
 	var/datum/sprite_accessory_data/data2 = peek_sprite_accessory_ears_2()
+	if(cache_ears_1_overlays)
+		cut_render_overlays(cache_ears_1_overlays)
+	if(cache_ears_2_overlays)
+		cut_render_overlays(cache_ears_2_overlays)
+	if(cache_ears_1_emissives)
+		cut_emissive_overlays(cache_ears_1_emissives)
+	if(cache_ears_2_emissives)
+		cut_emissive_overlays(cache_ears_2_emissives)
+	if(data1)
+		var/list/normal = data1.render_mob_appearance(src)
+		var/list/emissives = data1.render_mob_emissives(src)
+		if(normal)
+			add_render_overlays(normal)
+			cache_ears_1_overlays = normal
+		if(emissives)
+			add_render_overlays(emissives)
+			cache_ears_1_emissives = emissives
+	if(data2)
+		var/list/normal = data2.render_mob_appearance(src)
+		var/list/emissives = data2.render_mob_emissives(src)
+		if(normal)
+			add_render_overlays(normal)
+			cache_ears_2_overlays = normal
+		if(emissives)
+			add_render_overlays(emissives)
+			cache_ears_2_emissives = emissives
 
 /mob/living/carbon/human/update_wings()
 	var/datum/sprite_accessory_data/data = peek_sprite_accessory_wings()
+	if(cache_wing_overlays)
+		cut_render_overlays(cache_wing_overlays)
+	if(cache_wing_emissives)
+		cut_emissive_overlays(cache_wing_emissives)
+	if(!data)
+		return
+	var/list/normal = data.render_mob_appearance(src)
+	var/list/emissives = data.render_mob_emissives(src)
+	if(normal)
+		add_render_overlays(normal)
+		cache_wing_overlays = emissives
+	if(emissives)
+		add_emissive_overlays(emissives)
+		cache_wing_emissives = emissives
 
 /mob/living/carbon/human/update_markings()
 	update_icons_body()

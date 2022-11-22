@@ -9,6 +9,8 @@
 	var/list/datum/shapeshift/stored
 	/// our capabilities
 	var/shapeshift_capability
+	/// system flags
+	var/shapeshift_system_flags
 
 #warn impl
 

@@ -7,10 +7,10 @@
 
 #warn impl
 
-/datum/shapeshift/proc/apply_to_mob(mob/applying, capabilities)
+/datum/shapeshift/proc/apply_to_mob(mob/applying, capabilities, system_flags)
 	return
 
-/datum/shapeshift/proc/copy_from_mob(mob/template, capabilities)
+/datum/shapeshift/proc/copy_from_mob(mob/template, capabilities, system_flags)
 	return
 
 /datum/shapeshift/proc/clone()

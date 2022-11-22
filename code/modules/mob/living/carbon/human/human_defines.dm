@@ -51,18 +51,33 @@
 	#warn ugh handle this
 	/// hair
 	VAR_PRIVATE/datum/sprite_accessory_data/hair
+	var/cache_hair_overlays
+	var/cache_hair_emissives
 	/// facial hair
 	VAR_PRIVATE/datum/sprite_accessory_data/facial_hair
+	var/cache_facial_hair_overlays
+	var/cache_facial_hair_emissives
 	/// ears
 	VAR_PRIVATE/datum/sprite_accessory_data/ears_1
+	var/cache_ears_1_overlays
+	var/cache_ears_1_emissives
 	/// ears
 	VAR_PRIVATE/datum/sprite_accessory_data/ears_2
+	var/cache_ears_2_overlays
+	var/cache_ears_2_emissives
 	/// tail
 	VAR_PRIVATE/datum/sprite_accessory_data/tail
+	var/cache_tail_overlays
+	var/cache_tail_emissives
 	/// wings
 	VAR_PRIVATE/datum/sprite_accessory_data/wings
+	var/cache_wing_overlays
+	var/cache_wing_emissives
 	/// body markings
+	#warn kick this shit to the limb itself maybe?
 	VAR_PRIVATE/list/datum/sprite_accessory_data/markings
+	var/cache_marking_overlays
+	var/cache_marking_emissives
 
 	var/wagging  = 0 //UGH.
 	var/flapping = 0
