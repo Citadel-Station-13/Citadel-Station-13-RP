@@ -852,4 +852,4 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	P.SetSeeInvis(SEE_INVISIBLE_OBSERVER)
 
 /mob/dead/observer/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
-	return isAdminGhostAI(usr)
+	return is_admin_ghost_ai(usr)
