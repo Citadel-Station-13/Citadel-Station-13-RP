@@ -66,6 +66,8 @@ GLOBAL_LIST_INIT(sprite_accessories, init_sprite_accessories())
 	var/list/allow_species
 	/// forbid character species - ids; null to allow all
 	var/list/forbid_species
+	/// hard restrictions - otherwise it'll just be a guideline of who should/n't have this.
+	var/hard_restrictions = FALSE
 
 	//! Randomgen hints
 	/// suggested gender for randomgen
