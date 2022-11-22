@@ -236,3 +236,15 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%connection_log` (
   `computerid` varchar(32) NOT NULL,
   PRIMARY KEY(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+----- Object Persistence Store -----
+-- These are not multi-server synchronization safe! It is expected that you DO NOT share these databases --
+CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_keyed_strings` (
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` datetime NOT NULL,
+  `key` varchar(64) NOT NULL,
+  `value` MEDIUMTEXT NULL,
+  `group` varchar(64) NULL,
+  `revision` INT(11) NOT NULL,
+  PRIMARY KEY(`key`, `group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

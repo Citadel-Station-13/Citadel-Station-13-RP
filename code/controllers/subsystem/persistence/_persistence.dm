@@ -4,6 +4,8 @@ SUBSYSTEM_DEF(persistence)
 	subsystem_flags = SS_NO_FIRE
 	/// The directory to write to for per-map persistence. If null, the current map shouldn't be persisted to/from.
 	var/current_map_directory
+	/// current map id - used for database
+	// var/current_map_id
 
 /datum/controller/subsystem/persistence/Initialize()
 	SetMapDirectory()
