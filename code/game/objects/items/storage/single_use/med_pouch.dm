@@ -55,7 +55,7 @@ Single Use Emergency Pouches
 	. = ..()*/
 
 /obj/item/storage/single_use/med_pouch/trauma
-	name = "trauma pouch"
+	name = "Trauma Pouch"
 	injury_type = "trauma"
 	color = COLOR_RED
 	instructions = {"
@@ -76,7 +76,7 @@ Single Use Emergency Pouches
 		)
 
 /obj/item/storage/single_use/med_pouch/burn
-	name = "burn pouch"
+	name = "Burn Pouch"
 	injury_type = "burn"
 	color = "#cc6600"//COLOR_SEDONA
 	instructions = {"
@@ -97,7 +97,7 @@ Single Use Emergency Pouches
 	)
 
 /obj/item/storage/single_use/med_pouch/oxyloss
-	name = "low oxygen pouch"
+	name = "Low Oxygen Pouch"
 	injury_type = "low oxygen"
 	color = COLOR_BLUE
 	instructions = {"
@@ -119,7 +119,7 @@ Single Use Emergency Pouches
 	)
 
 /obj/item/storage/single_use/med_pouch/toxin
-	name = "toxin pouch"
+	name = "Toxin Pouch"
 	injury_type = "toxin"
 	color = COLOR_GREEN
 	instructions = {"
@@ -136,7 +136,7 @@ Single Use Emergency Pouches
 		)
 
 /obj/item/storage/single_use/med_pouch/radiation
-	name = "radiation pouch"
+	name = "Radiation Pouch"
 	injury_type = "radiation"
 	color = "#ffbf00"//COLOR_AMBER
 	instructions = {"
@@ -153,7 +153,7 @@ Single Use Emergency Pouches
 	)
 
 /obj/item/storage/single_use/med_pouch/overdose
-	name = "overdose treatment pouch"
+	name = "Overdose Treatment Pouch"
 	injury_type = "overdose"
 	color = COLOR_PALE_BLUE_GRAY
 	instructions = {"
