@@ -159,14 +159,7 @@
 		ADD_TRAIT(temp, TRAIT_NODROP, HOLOGRAM_TRAIT)
 	corpse.identifying_gender = H.identifying_gender
 	corpse.flavor_texts = H.flavor_texts.Copy()
-	corpse.real_name = H.real_name
-	corpse.name = H.name
-	corpse.set_species(corpse.dna.species)
-	corpse.change_hair(H.h_style)
-	corpse.change_facial_hair(H.f_style)
-	corpse.change_hair_color(H.r_hair, H.g_hair, H.b_hair)
-	corpse.change_facial_hair_color(H.r_facial, H.g_facial, H.b_facial)
-	corpse.change_skin_color(H.r_skin, H.g_skin, H.b_skin)
+	GLOB.shapeshift_system_human_cloner.immediate_transform(corpse, H)
 	corpse.adjustFireLoss(H.getFireLoss())
 	corpse.adjustBruteLoss(H.getBruteLoss())
 	corpse.UpdateAppearance()

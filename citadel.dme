@@ -633,6 +633,7 @@
 #include "code\datums\repositories\decls.dm"
 #include "code\datums\repositories\repository.dm"
 #include "code\datums\repositories\unique.dm"
+#include "code\datums\shapeshift\globals.dm"
 #include "code\datums\shapeshift\shapeshift.dm"
 #include "code\datums\shapeshift\shapeshift_panel.dm"
 #include "code\datums\shapeshift\shapeshift_system.dm"

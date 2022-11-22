@@ -4,6 +4,7 @@
 
 /datum/shapeshift/human
 	template_name = "ShapeshiftTemplateHuman"
+	shapeshift_type = /datum/shapeshift/human
 	/// hair
 	var/datum/sprite_accessory_data/hair
 	/// facial hair
