@@ -32,10 +32,12 @@
 		if(language_names[L.name])
 			stack_trace("duped language name [L.name] on [path] skipped")
 			continue
+		if(language_keys[L.key])
+			stack_trace("collision on key [L.key] between [name] and [language_keys[L.key]].")
 		language_lookup[L.id] = L
 		language_names[L.name] = L
 		language_paths[path] = L
-		if(!(L.language_flags & NONGLOBAL))
+		if(!(L.language_flags & NONGLOBAL) && L.key)
 			language_keys[L.key] = L
 
 	tim_sort(language_names, /proc/cmp_auto_compare, TRUE)
