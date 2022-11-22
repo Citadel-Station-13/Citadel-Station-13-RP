@@ -4152,7 +4152,6 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/firedoor/multi_tile,
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
@@ -13962,7 +13961,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/cyan,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/firedoor/multi_tile,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
@@ -16615,7 +16613,6 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/firedoor/multi_tile,
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
@@ -16743,7 +16740,6 @@
 	name = "Arrivals Hallway Shutter";
 	opacity = 0
 	},
-/obj/machinery/door/firedoor/glass,
 /obj/machinery/door/firedoor/multi_tile,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
