@@ -847,7 +847,7 @@
 					/obj/item/healthanalyzer = 5,/obj/item/reagent_containers/glass/beaker = 4, /obj/item/reagent_containers/dropper = 2,
 					/obj/item/stack/medical/advanced/bruise_pack = 6, /obj/item/stack/medical/advanced/ointment = 6, /obj/item/stack/medical/splint = 4,
 					/obj/item/storage/pill_bottle/carbon = 2, /obj/item/storage/pill_bottle = 3, /obj/item/storage/box/vmcrystal = 4,
-					/obj/item/clothing/glasses/omnihud/med = 4, /obj/item/glasses_kit = 1,  /obj/item/storage/quickdraw/syringe_case = 4
+					/obj/item/clothing/glasses/omnihud/med = 4, /obj/item/glasses_kit = 1,  /obj/item/storage/quickdraw/syringe_case = 4,
 					/obj/item/storage/single_use/med_pouch/overdose = 6, /obj/item/storage/single_use/med_pouch/radiation = 6,
 					/obj/item/storage/single_use/med_pouch/toxin = 6, /obj/item/storage/single_use/med_pouch/oxyloss = 6,
 					/obj/item/storage/single_use/med_pouch/burn = 6, /obj/item/storage/single_use/med_pouch/trauma = 6)
