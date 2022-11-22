@@ -16,7 +16,7 @@
 	icon_state = "cameronbackpack"
 	item_state = "cameronbackpack"
 
-/obj/item/storage/backpack/statchel/donator/jacksonbackpack
+/obj/item/storage/backpack/satchel/donator/jacksonbackpack
 	name = "Granite Gear Aid Bag"
 	desc = "A square-like robust medical bag in an age-old multicam pattern. A zipper bisects it's top and sides, indicating it folds open to access its contents. T. Lutz is inscribed on a nametape on a molle panel affixed to the face of the bag by buckles."
 	icon = 'icons/donator/jackson_backpack.dmi'
