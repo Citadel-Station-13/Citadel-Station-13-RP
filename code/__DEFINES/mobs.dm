@@ -2,10 +2,39 @@
 // These are used as the layers for the icons, as well as indexes in a list that holds onto them.
 // Technically the layers used are all -100+layer to make them FLOAT_LAYER overlays.
 //! Human Overlays Indexes/////////
-// todo: move these to HUMAN_OVERLAY_X
-//? reasoning: we don't want to make layers have to use indexes
-//? e.g. inventory items should dynamically generate their overlays
-//? instead of having to have a reserved list entry.
+#define HUMAN_OVERLAY_MUTATIONS 1
+#define HUMAN_OVERLAY_SKIN 2
+#define HUMAN_OVERLAY_BLOOD 3
+#define HUMAN_OVERLAY_DAMAGE 4
+#define HUMAN_OVERLAY_SURGERY 5
+#define HUMAN_OVERLAY_UNDERWEAR 6
+// todo: move all inventory shit to their own system off the list
+#define HUMAN_OVERLAY_SHOES 7
+#define HUMAN_OVERLAY_UNIFORM 8
+#define HUMAN_OVERLAY_ID 9
+#define HUMAN_OVERLAY_SHOES 10
+#define HUMAN_OVERLAY_GLOVES 11
+#define HUMAN_OVERLAY_BELT 12
+#define HUMAN_OVERLAY_SUIT 13
+#define HUMAN_OVERLAY_GLASSES 14
+#define HUMAN_OVERLAY_BACK 15
+#define HUMAN_OVERLAY_EARS 16
+#define HUMAN_OVERLAY_EYES 17
+#define HUMAN_OVERLAY_MASK 18
+#define HUMAN_OVERLAY_HEAD 19
+#define HUMAN_OVERLAY_HANDCUFFS 20
+#define HUMAN_OVERLAY_LEGCUFFS 21
+#define HUMAN_OVERLAY_L_HAND 22
+#define HUMAN_OVERLAY_R_HAND 23
+#define HUMAN_OVERLAY_MODIFIER_EFFECTS 24
+#define HUMAN_OVERLAY_FIRE 25
+#define HUMAN_OVERLAY_WATER 26
+#define HUMAN_OVERLAY_TARGETED 27
+#define HUMAN_OVERLAY_SUIT_STORE 28
+//! KEEP THIS UPDATED, should always equal the biggest number here, used to initialize a list.
+#define HUMAN_OVERLAY_TOTAL 28
+
+// ! Human Overlay Layers///////////
 /// Mutations like fat, and lasereyes
 #define MUTATIONS_LAYER			1
 /// Skin things added by a call on species
@@ -74,8 +103,6 @@
 #define MOB_WATER_LAYER			33
 /// 'Aimed at' overlay layer
 #define TARGETED_LAYER			34
-//! KEEP THIS UPDATED, should always equal the highest number here, used to initialize a list.
-#define TOTAL_LAYERS			34
 //! the offset used
 #define BODY_LAYER		-100
 //////////////////////////////////

@@ -410,6 +410,7 @@
 					message = "makes a strong noise."
 					m_type = 2
 
+		/* removed due to this being terrible code and causing rendering issues
 		if("bcough")
 			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
 				message = "appears to cough up blood!"
@@ -431,6 +432,7 @@
 						else
 							if(species.male_cough_sounds)
 								playsound(src, pick(species.male_cough_sounds), 120)
+		*/
 
 		if ("frown")
 			message = "frowns."

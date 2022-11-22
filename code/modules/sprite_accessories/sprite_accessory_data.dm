@@ -20,6 +20,8 @@
 	var/color_3 = "#ffffff"
 	/// rendering layer preference
 	var/request_alt_layer = FALSE
+	/// rendering - should we be wagging/animated?
+	var/request_animated_state = FALSE
 	/// addons associated to their colors
 	var/list/datum/sprite_accessory_addon/addons
 	//! tracking - are we shared? some things like DNA copy references to us, they need to know if it's safe to modify
@@ -276,6 +278,7 @@
 		"alt_layer" = request_alt_layer,
 		"addons" = addons_built,
 		"shared" = is_shared_datum,
+		"animated" = request_animated_state,
 	)
 #warn ui struct
 #warn ui struct for coloration
