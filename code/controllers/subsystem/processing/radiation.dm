@@ -25,6 +25,8 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 	if(!can_fire)	// we don't care
 		return FALSE
 
+#warn impl
+
 /*
 	if(!SSradiation.can_fire)
 		return
@@ -67,3 +69,4 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 	if(!z)
 		z = T.z
 
+#warn impl

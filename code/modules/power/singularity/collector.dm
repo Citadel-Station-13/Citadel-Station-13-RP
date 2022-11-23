@@ -7,6 +7,7 @@
 	anchored = FALSE
 	density = TRUE
 	req_access = list(access_engine_equip)
+	rad_insulation = RAD_INSULATION_EXTREME
 //	use_power = 0
 	var/obj/item/tank/phoron/P = null
 	/// stored power in kilojoules
@@ -23,8 +24,16 @@
 	 * let's set it to 1 hours for such a tryhard setup for now; cooling phoron is now needed for longetivity :)
 	 */
 	var/gas_usage_factor = 30 / ((60 * 60 * 1) * 5000 * RAD_MISC_COLLECTOR_MULTIPLIER)
-	var/last_power = 0
-	var/last_power_new = 0
+	/// last KW
+	var/last_output
+	/// amount of rads to toss
+	var/flat_loss = RAD_MISC_COLLECTOR_FLAT_LOSS
+	/// kj per rad
+	var/efficiency = RAD_MISC_COLLECTOR_MULTIPLIER
+	/// minimum kj to try to push
+	var/minimum_push = 10
+	/// % of stored power to push per process
+	var/push_ratio = 0.05
 	var/active = 0
 	var/locked = 0
 
@@ -84,7 +93,10 @@
 
 /obj/machinery/power/rad_collector/examine(mob/user)
 	. = ..()
-	. += "The meter indicates that \the [src] is collecting [last_power] W."
+	if(active)
+		. += "<span class='notice'>[src]'s display states that it has stored <b>[render_power(stored_power, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_JOULE)]</b>, and is currently outputting [render_power(last_output, ENUM_POWER_SCALE_KILO, ENUM_POWER_UNIT_WATT)].</span>"
+	else
+		. += "<span class='notice'><b>[src]'s display displays the words:</b> \"Power production mode. Please insert <b>Phoron</b>.\"</span>"
 
 /obj/machinery/power/rad_collector/legacy_ex_act(severity)
 	switch(severity)
@@ -108,7 +120,7 @@
 // todo: rework
 /obj/machinery/power/rad_collector/rad_act(strength, datum/radiation_wave/wave)
 	. = ..()
-	var/power_produced = max(0, (strength - RAD_MISC_COLLECTOR_FLAT_LOSS) * RAD_MISC_COLLECTOR_MULTIPLIER)
+	var/power_produced = max(0, (strength - flat_loss) * efficiency)
 	var/gas_needed = power_produced * gas_usage_factor
 	if(!power_produced || !P?.air_contents.gas[/datum/gas/phoron])
 		return
@@ -119,10 +131,14 @@
 	stored_power += power_produced
 
 /obj/machinery/power/rad_collector/process(delta_time)
-	//so that we don't zero out the meter if the SM is processed first.
-	last_power = last_power_new
-	last_power_new = 0
-	#warn actually output power from stored
+	if(!stored_power)
+		last_power = 0
+		return
+	var/attempt = clamp(max(minimum_push, stored_power * push_ratio), 0, stored_power)
+	// if you don't have a powernet you still lose the poewr
+	stored_power -= attempt
+	//? kj to kw
+	add_avail(attempt / delta_time)
 
 /obj/machinery/power/rad_collector/proc/update_icons()
 	overlays.Cut()
