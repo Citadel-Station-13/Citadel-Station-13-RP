@@ -7,6 +7,7 @@
 #define COLOR_GUNMETAL               "#545c68"
 #define COLOR_WALL_GUNMETAL          "#353a42"
 #define COLOR_DARK_GUNMETAL          "#4c535b"
+#define COLOR_DARK_GRAY              "#404040"
 #define COLOR_HALF_TRANSPARENT_BLACK "#0000007A"
 #define COLOR_BLACK                  "#000000"
 #define COLOR_RED_LIGHT              "#FF3333"

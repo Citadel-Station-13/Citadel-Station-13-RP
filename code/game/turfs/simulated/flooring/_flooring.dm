@@ -364,13 +364,13 @@ GLOBAL_LIST_EMPTY(flooring_types)
 
 /singleton/flooring/tiling/mono/white
 	base_icon_state = "monotile_light"
-	color = COLOR_OFF_WHITE
+	color = COLOR_VERY_LIGHT_GRAY
 	build_type = null
 	// build_type = /obj/item/stack/tile/mono/white
 
 /singleton/flooring/tiling/white
 	base_icon_state = "tiled_light"
-	color = COLOR_OFF_WHITE
+	color = COLOR_VERY_LIGHT_GRAY
 	build_type = /obj/item/stack/tile/floor/white
 
 /singleton/flooring/tiling/dark
@@ -423,9 +423,14 @@ GLOBAL_LIST_EMPTY(flooring_types)
 /singleton/flooring/tiling/new_tile/monowhite
 	base_icon_state = "monotile_light"
 
-/singleton/flooring/tiling/new_tile/steel_grid
+/singleton/flooring/tiling/new_tile/grid
 	base_icon_state = "grid"
 	color = COLOR_GUNMETAL
+	build_type = null
+	// build_type = /obj/item/stack/tile/grid
+
+/singleton/flooring/tiling/new_tile/steel_grid
+	base_icon_state = "steelgrid"
 	build_type = null
 	// build_type = /obj/item/stack/tile/grid
 
@@ -823,7 +828,7 @@ GLOBAL_LIST_EMPTY(flooring_types)
 	name = "pool floor"
 	desc = "Sunken flooring designed to hold liquids."
 	icon = 'icons/turf/flooring/pool.dmi'
-	icon_base = "pool"
+	base_icon_state = "pool"
 	// build_type = /obj/item/stack/tile/pool
 	flags = TURF_HAS_CORNERS | TURF_HAS_INNER_CORNERS | TURF_REMOVE_CROWBAR
 	// footstep_type = /singleton/footsteps/tiles
