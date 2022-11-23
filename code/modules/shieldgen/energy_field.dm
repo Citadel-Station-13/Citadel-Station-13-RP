@@ -31,8 +31,9 @@
 
 /obj/effect/energy_field/Destroy()
 	update_nearby_tiles()
-	my_gen.field.Remove(src)
-	my_gen = null
+	if(my_gen)
+		my_gen.field.Remove(src)
+		my_gen = null
 	var/turf/current_loc = get_turf(src)
 	. = ..()
 	for(var/direction in GLOB.cardinals)
