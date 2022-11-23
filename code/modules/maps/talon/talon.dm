@@ -245,7 +245,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 /obj/structure/closet/secure_closet/talon_captain
 	name = "talon captain's locker"
 	req_access = list(access_talon)
-	// closet_appearance = /decl/// closet_appearance/secure_closet/talon/captain
+	// closet_appearance = /singleton/// closet_appearance/secure_closet/talon/captain
 
 	starts_with = list(
 		/obj/item/storage/backpack/dufflebag/captain/talon,
@@ -265,7 +265,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 /obj/structure/closet/secure_closet/talon_guard
 	name = "talon guard's locker"
 	req_access = list(access_talon)
-	// closet_appearance = /decl/// closet_appearance/secure_closet/talon/guard
+	// closet_appearance = /singleton/// closet_appearance/secure_closet/talon/guard
 
 	starts_with = list(
 		/obj/item/clothing/suit/armor/pcarrier/light,
@@ -294,7 +294,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 /obj/structure/closet/secure_closet/talon_doctor
 	name = "talon doctor's locker"
 	req_access = list(access_talon)
-	// closet_appearance = /decl/// closet_appearance/secure_closet/talon/doctor
+	// closet_appearance = /singleton/// closet_appearance/secure_closet/talon/doctor
 
 	starts_with = list(
 		/obj/item/clothing/under/rank/medical,
@@ -316,7 +316,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 /obj/structure/closet/secure_closet/talon_engineer
 	name = "talon engineer's locker"
 	req_access = list(access_talon)
-	// closet_appearance = /decl/// closet_appearance/secure_closet/talon/engineer
+	// closet_appearance = /singleton/// closet_appearance/secure_closet/talon/engineer
 
 	starts_with = list(
 		/obj/item/clothing/accessory/storage/brown_vest,
@@ -339,7 +339,7 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 /obj/structure/closet/secure_closet/talon_pilot
 	name = "talon pilot's locker"
 	req_access = list(access_talon)
-	// closet_appearance = /decl/// closet_appearance/secure_closet/talon/pilot
+	// closet_appearance = /singleton/// closet_appearance/secure_closet/talon/pilot
 
 	starts_with = list(
 		/obj/item/material/knife/tacknife/survival,

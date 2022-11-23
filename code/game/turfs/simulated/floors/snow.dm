@@ -3,7 +3,7 @@
 	icon_state = "snow"
 	edge_blending_priority = 1
 	movement_cost = 2
-	initial_flooring = /decl/flooring/snow
+	initial_flooring = /singleton/flooring/snow
 	baseturfs = /turf/simulated/floor/outdoors/dirt
 	var/list/crossed_dirs = list()
 
@@ -84,5 +84,5 @@
 	icon_state = "gravsnow"
 	desc = "A layer of coarse ice pebbles and assorted gravel."
 	edge_blending_priority = 0
-	initial_flooring = /decl/flooring/snow/gravsnow
+	initial_flooring = /singleton/flooring/snow/gravsnow
 	baseturfs = /turf/simulated/floor/outdoors/dirt
