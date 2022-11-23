@@ -80,10 +80,10 @@
 			halloss += max((effect * blocked), 0) // Useful for objects that cause "subdual" damage. PAIN!
 		if(IRRADIATE)
 		/*
-			var/rad_protection = check_protection ? getarmor(null, "rad")/100 : 0
+			var/rad_protection = check_protection ? run_mob_armor(null, "rad")/100 : 0
 			radiation += max((1-rad_protection)*effect/(blocked+1),0)//Rads auto check armor
 		*/
-			var/rad_protection = getarmor(null, "rad")
+			var/rad_protection = run_mob_armor(null, "rad")
 			rad_protection = (100-rad_protection)/100
 			radiation += max((effect * rad_protection), 0)
 		if(STUTTER)

@@ -121,7 +121,7 @@
 	switch (severity)
 		if (1.0)
 			b_loss += 500
-			if (!prob(getarmor(null, "bomb")))
+			if (!prob(run_mob_armor(null, "bomb")))
 				gib()
 				return
 			else
@@ -137,7 +137,7 @@
 
 			f_loss += 60
 
-			if (prob(getarmor(null, "bomb")))
+			if (prob(run_mob_armor(null, "bomb")))
 				b_loss = b_loss/1.5
 				f_loss = f_loss/1.5
 
@@ -149,7 +149,7 @@
 
 		if(3.0)
 			b_loss += 30
-			if (prob(getarmor(null, "bomb")))
+			if (prob(run_mob_armor(null, "bomb")))
 				b_loss = b_loss/2
 			if (!get_ear_protection() >= 2)
 				ear_damage += 15
