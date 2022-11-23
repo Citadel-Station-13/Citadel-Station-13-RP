@@ -79,13 +79,7 @@
 		if(AGONY)
 			halloss += max((effect * blocked), 0) // Useful for objects that cause "subdual" damage. PAIN!
 		if(IRRADIATE)
-		/*
-			var/rad_protection = check_protection ? run_mob_armor(null, "rad")/100 : 0
-			radiation += max((1-rad_protection)*effect/(blocked+1),0)//Rads auto check armor
-		*/
-			var/rad_protection = run_mob_armor(null, "rad")
-			rad_protection = (100-rad_protection)/100
-			radiation += max((effect * rad_protection), 0)
+			inflict_radiation(effect, TRUE)
 		if(STUTTER)
 			if(status_flags & CANSTUN) // stun is usually associated with stutter
 				stuttering = max(stuttering,(effect * blocked))
@@ -112,3 +106,35 @@
 	if(flammable)	adjust_fire_stacks(flammable)
 	if(ignite)		IgniteMob()
 	return 1
+
+// todo: refactor above
+//! Raw "damage"
+
+// todo: better name
+// /mob/living/proc/damage_brute()
+
+//! Afflictions
+/**
+ * inflicts radiation.
+ * will not heal it.
+ *
+ * @params
+ * - amt - how much
+ * - check_armor - do'th we care about armor?
+ * - def_zone - zone to check if we do
+ */
+/mob/living/proc/afflict_radiation(amt, run_armor, def_zone)
+	if(run_armor)
+		amt *= 1 - ((run_mob_armor(def_zone, ARMOR_RAD)) / 100)
+	amt = amt * RAD_MOB_COEFFICIENT - RAD_MOB_SKIN_PROTECTION
+	radiation += max(amt, 0)
+
+/**
+ * heals radiation.
+ *
+ * @params
+ * - amt - how much
+ */
+/mob/living/proc/cure_radiation(amt)
+	radiation = max(0, radiation - amt)
+
