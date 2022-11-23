@@ -58,6 +58,8 @@
 	                   			locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ]))
 	for(var/L in turfs)
 		var/turf/B = L
+		B.queue_zone_update()
+		QUEUE_SMOOTH(B)
 		atoms += B
 		areas |= B.loc
 		for(var/A in B)
