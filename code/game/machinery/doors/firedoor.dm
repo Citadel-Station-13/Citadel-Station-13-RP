@@ -16,11 +16,11 @@
 	icon = 'icons/obj/doors/DoorHazard.dmi'
 	icon_state = "door_open"
 	req_one_access = list(access_eva)	//access_atmospherics, access_engine_equip)
-	opacity = 0
-	density = 0
-	layer = DOOR_OPEN_LAYER - 0.01
-	open_layer = DOOR_OPEN_LAYER - 0.01 // Just below doors when open
-	closed_layer = DOOR_CLOSED_LAYER + 0.01 // Just above doors when closed
+	opacity = FALSE
+	density = FALSE
+	layer = BELOW_DOOR_OPEN_LAYER
+	open_layer = BELOW_DOOR_OPEN_LAYER // Just below doors when open
+	closed_layer = CLOSED_FIREDOOR_LAYER // Just above doors when closed
 
 	//These are frequenly used with windows, so make sure zones can pass.
 	//Generally if a firedoor is at a place where there should be a zone boundery then there will be a regular door underneath it.

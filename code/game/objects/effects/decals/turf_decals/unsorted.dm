@@ -457,93 +457,6 @@
 /obj/effect/turf_decal/corner/lightgrey/bordercee
 	icon_state = "bordercolorcee"
 
-/obj/effect/turf_decal/spline/plain
-	name = "spline - plain"
-	icon_state = "spline_plain"
-
-/obj/effect/turf_decal/spline/fancy
-	name = "spline - fancy"
-	icon_state = "spline_fancy"
-
-/obj/effect/turf_decal/spline/fancy/wood
-	name = "spline - wood"
-	color = "#CB9E04"
-
-/obj/effect/turf_decal/spline/fancy/wood/corner
-	icon_state = "spline_fancy_corner"
-
-/obj/effect/turf_decal/spline/fancy/wood/cee
-	icon_state = "spline_fancy_cee"
-
-/obj/effect/turf_decal/spline/fancy/wood/three_quarters
-	icon_state = "spline_fancy_full"
-
-/obj/effect/turf_decal/industrial/warning
-	name = "hazard stripes"
-	icon_state = "warning"
-
-/obj/effect/turf_decal/industrial/warning/corner
-	icon_state = "warningcorner"
-
-/obj/effect/turf_decal/industrial/warning/full
-	icon_state = "warningfull"
-
-/obj/effect/turf_decal/industrial/warning/cee
-	icon_state = "warningcee"
-
-/obj/effect/turf_decal/industrial/danger
-	name = "hazard stripes"
-	icon_state = "danger"
-
-/obj/effect/turf_decal/industrial/danger/corner
-	icon_state = "dangercorner"
-
-/obj/effect/turf_decal/industrial/danger/full
-	icon_state = "dangerfull"
-
-/obj/effect/turf_decal/industrial/danger/cee
-	icon_state = "dangercee"
-
-/obj/effect/turf_decal/industrial/warning/dust
-	name = "hazard stripes"
-	icon_state = "warning_dust"
-
-/obj/effect/turf_decal/industrial/warning/dust/corner
-	name = "hazard stripes"
-	icon_state = "warningcorner_dust"
-
-/obj/effect/turf_decal/industrial/hatch
-	name = "hatched marking"
-	icon_state = "delivery"
-
-/obj/effect/turf_decal/industrial/hatch/yellow
-	color = "#CFCF55"
-
-/obj/effect/turf_decal/industrial/outline
-	name = "white outline"
-	icon_state = "outline"
-
-/obj/effect/turf_decal/industrial/outline/blue
-	name = "blue outline"
-	color = "#00B8B2"
-
-/obj/effect/turf_decal/industrial/outline/yellow
-	name = "yellow outline"
-	color = "#CFCF55"
-
-/obj/effect/turf_decal/industrial/outline/grey
-	name = "grey outline"
-	color = "#808080"
-
-/obj/effect/turf_decal/industrial/loading
-	name = "loading area"
-	icon_state = "loadingarea"
-
-/obj/effect/turf_decal/industrial/halfstair
-	name = "half stairs"
-	icon = 'icons/turf/structures.dmi' //These weren't used anywhere except for snowflake instances, lets change them into a decal.
-	icon_state = "ramptop"
-
 /obj/effect/turf_decal/plaque
 	name = "plaque"
 	icon_state = "plaque"
@@ -1035,6 +948,10 @@
 	name = "steel decal"
 	icon_state = "steel_decals1"
 
+/obj/effect/turf_decal/steeldecal
+	icon_state = "steel_decals1"
+	color = COLOR_GUNMETAL
+
 /obj/effect/turf_decal/steeldecal/steel_decals1
 	icon_state = "steel_decals1"
 
@@ -1048,7 +965,7 @@
 	icon_state = "steel_decals4"
 
 /obj/effect/turf_decal/steeldecal/steel_decals5
-	icon_state = "steel_decals5"
+	icon_state = "bordercolorhalf"
 
 /obj/effect/turf_decal/steeldecal/steel_decals5white
 	icon_state = "steel_decals5white"

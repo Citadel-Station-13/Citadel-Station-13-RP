@@ -1034,7 +1034,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacethree)
 "bK" = (
 /obj/effect/turf_decal/borderfloor{
@@ -8040,7 +8040,7 @@
 	name = "Security Checkpoint";
 	sortType = "Security Checkpoint"
 	},
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacethree)
 "pJ" = (
 /obj/machinery/door/blast/regular,
@@ -10689,10 +10689,10 @@
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 1
 	},
-/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /obj/effect/turf_decal/borderfloor,
 /obj/effect/turf_decal/corner/lightgrey/border,
 /obj/effect/turf_decal/corner/lightgrey/bordercorner,
+/obj/effect/turf_decal/steeldecal/steel_decals_central7,
 /turf/simulated/floor/tiled/steel,
 /area/rift/stairwell/primary/surfacethree)
 "vk" = (
@@ -11302,7 +11302,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacethree)
 "wv" = (
 /turf/simulated/wall,
@@ -13511,17 +13511,6 @@
 /obj/effect/debris/cleanable/dirt,
 /turf/simulated/floor/plating,
 /area/maintenance/commandmaint)
-"AW" = (
-/obj/machinery/atmospherics/pipe/simple/hidden/supply,
-/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/obj/structure/cable/green{
-	icon_state = "1-2"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/surfacethree)
 "AX" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
@@ -15516,12 +15505,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid,
 /area/exploration/excursion_dock)
-"Fa" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel,
-/area/hallway/primary/surfacethree)
 "Fb" = (
 /obj/machinery/tele_pad,
 /obj/effect/turf_decal/corner/blue{
@@ -17878,7 +17861,7 @@
 /area/bridge)
 "JT" = (
 /obj/machinery/portable_atmospherics/hydroponics,
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/monotile,
 /area/hydroponics)
 "JU" = (
 /obj/structure/table/woodentable,
@@ -18497,7 +18480,7 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/tiled/steel,
+/turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacethree)
 "Ln" = (
 /turf/simulated/wall,
@@ -39647,7 +39630,7 @@ Tz
 rz
 bJ
 Qx
-AW
+AQ
 Bu
 Xu
 Bj
@@ -39841,7 +39824,7 @@ pi
 Au
 pI
 aQ
-Fa
+Wg
 zU
 Xu
 BH

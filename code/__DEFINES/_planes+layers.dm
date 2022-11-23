@@ -89,6 +89,7 @@
 #define DEBRIS_LAYER           2.4  // Cleanable debris.
 #define STAIRS_LAYER           2.5  // Layer for stairs.
 #define HIDING_LAYER           2.6  // Layer at which mobs hide to be under things like tables.
+#define BELOW_DOOR_OPEN_LAYER  2.6
 #define BLASTDOOR_OPEN_LAYER   2.65
 #define DOOR_OPEN_LAYER        2.7  // Under all objects if opened. 2.7 due to tables being at 2.6
 #define PROJECTILE_HIT_THRESHOLD_LAYER 2.75
@@ -97,6 +98,7 @@
 //? Turf/Obj layer boundary
 #define ABOVE_OBJ_LAYER        3.1  // Things that want to be slightly above common objects.
 #define DOOR_CLOSED_LAYER      3.1  // Doors when closed.
+#define CLOSED_FIREDOOR_LAYER  3.11
 #define WINDOW_LAYER           3.2  // Windows.
 #define BLASTDOOR_CLOSED_LAYER 3.3 // ABOVE WINDOWS AND DOORS
 #define ABOVE_WINDOW_LAYER     3.4  // Above full tile windows so wall items are clickable.

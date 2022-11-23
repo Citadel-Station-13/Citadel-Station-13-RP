@@ -336,6 +336,7 @@ GLOBAL_LIST_EMPTY(flooring_types)
 	desc = "A solid, heavy set of flooring plates."
 	icon = 'icons/turf/flooring/tiles.dmi'
 	base_icon_state = "tiled"
+	color = COLOR_DEFAULT_FLOOR
 	has_damage_range = 4
 	damage_temperature = T0C+1400
 	flags = TURF_REMOVE_CROWBAR | TURF_CAN_BREAK | TURF_CAN_BURN
@@ -351,8 +352,36 @@ GLOBAL_LIST_EMPTY(flooring_types)
 		),
 	)
 
+/singleton/flooring/tiling/mono
+	base_icon_state = "steel_monotile"
+	build_type = null
+	// build_type = /obj/item/stack/tile/mono
+
+/singleton/flooring/tiling/mono/dark
+	color = COLOR_DARK_GRAY
+	build_type = null
+	// build_type = /obj/item/stack/tile/mono/dark
+
+/singleton/flooring/tiling/mono/white
+	base_icon_state = "monotile_light"
+	color = COLOR_OFF_WHITE
+	build_type = null
+	// build_type = /obj/item/stack/tile/mono/white
+
+/singleton/flooring/tiling/white
+	base_icon_state = "tiled_light"
+	color = COLOR_OFF_WHITE
+	build_type = /obj/item/stack/tile/floor/white
+
+/singleton/flooring/tiling/dark
+	color = COLOR_DARK_GRAY
+	build_type = /obj/item/stack/tile/floor/dark
+
+/singleton/flooring/tiling/dark/mono
+	base_icon_state = "monotile"
+	build_type = null
+
 /singleton/flooring/tiling/tech
-	desc = "Scuffed from the passage of countless greyshirts."
 	icon = 'icons/turf/flooring/techfloor.dmi'
 	base_icon_state = "techfloor_gray"
 	build_type = /obj/item/stack/tile/floor/techgrey
@@ -363,40 +392,55 @@ GLOBAL_LIST_EMPTY(flooring_types)
 	build_type = /obj/item/stack/tile/floor/techgrid
 
 /singleton/flooring/tiling/new_tile
-	name = "floor"
 	base_icon_state = "tile_full"
-	flags = TURF_CAN_BREAK | TURF_CAN_BURN | TURF_IS_FRAGILE
 	build_type = null
 
 /singleton/flooring/tiling/new_tile/cargo_one
 	base_icon_state = "cargo_one_full"
+	build_type = null
 
 /singleton/flooring/tiling/new_tile/kafel
 	base_icon_state = "kafel_full"
+	build_type = null
+
+/singleton/flooring/tiling/stone
+	base_icon_state = "stone"
+	build_type = null
+	// build_type = /obj/item/stack/tile/stone
 
 /singleton/flooring/tiling/new_tile/techmaint
 	base_icon_state = "techmaint"
+	build_type = null
+	// build_type = /obj/item/stack/tile/techmaint
 
 /singleton/flooring/tiling/new_tile/monofloor
 	base_icon_state = "monofloor"
+	color = COLOR_GUNMETAL
 
 /singleton/flooring/tiling/new_tile/monotile
-	base_icon_state = "monotile"
+	base_icon_state = "steel_monotile"
 
 /singleton/flooring/tiling/new_tile/monowhite
-	base_icon_state = "monowhite"
+	base_icon_state = "monotile_light"
 
 /singleton/flooring/tiling/new_tile/steel_grid
-	base_icon_state = "steel_grid"
+	base_icon_state = "grid"
+	color = COLOR_GUNMETAL
+	build_type = null
+	// build_type = /obj/item/stack/tile/grid
 
 /singleton/flooring/tiling/new_tile/steel_ridged
-	base_icon_state = "steel_ridged"
+	base_icon_state = "ridged"
+	color = COLOR_GUNMETAL
+	build_type = null
+	// build_type = /obj/item/stack/tile/ridge
 
 /singleton/flooring/linoleum
 	name = "linoleum"
 	desc = "It's like the 2390's all over again."
 	icon = 'icons/turf/flooring/linoleum.dmi'
 	base_icon_state = "lino"
+	color = null
 	can_paint = 1
 	build_type = /obj/item/stack/tile/linoleum
 	flags = TURF_REMOVE_SCREWDRIVER
@@ -404,32 +448,30 @@ GLOBAL_LIST_EMPTY(flooring_types)
 /singleton/flooring/tiling/red
 	name = "floor"
 	base_icon_state = "white"
+	color = null
 	has_damage_range = null
 	flags = TURF_REMOVE_CROWBAR
 	build_type = /obj/item/stack/tile/floor/red
 
 /singleton/flooring/tiling/steel
 	name = "floor"
-	base_icon_state = "steel"
+	base_icon_state = "tiled"
+	color = COLOR_DEFAULT_FLOOR
 	build_type = /obj/item/stack/tile/floor/steel
 
 /singleton/flooring/tiling/steel_dirty
 	name = "floor"
 	base_icon_state = "steel_dirty"
+	color = null
 	build_type = /obj/item/stack/tile/floor/steel_dirty
 
 /singleton/flooring/tiling/asteroidfloor
 	name = "floor"
 	base_icon_state = "asteroidfloor"
 	has_damage_range = null
+	color = null
 	flags = TURF_REMOVE_CROWBAR
 	build_type = /obj/item/stack/tile/floor/steel
-
-/singleton/flooring/tiling/white
-	name = "floor"
-	desc = "How sterile."
-	base_icon_state = "white"
-	build_type = /obj/item/stack/tile/floor/white
 
 /singleton/flooring/tiling/yellow
 	name = "floor"
@@ -437,14 +479,6 @@ GLOBAL_LIST_EMPTY(flooring_types)
 	has_damage_range = null
 	flags = TURF_REMOVE_CROWBAR
 	build_type = /obj/item/stack/tile/floor/yellow
-
-/singleton/flooring/tiling/dark
-	name = "floor"
-	desc = "How ominous."
-	base_icon_state = "dark"
-	has_damage_range = null
-	flags = TURF_REMOVE_CROWBAR
-	build_type = /obj/item/stack/tile/floor/dark
 
 /singleton/flooring/tiling/hydro
 	name = "floor"
@@ -753,6 +787,7 @@ GLOBAL_LIST_EMPTY(flooring_types)
 		'sound/effects/footstep/asteroid2.ogg',
 		'sound/effects/footstep/asteroid3.ogg',
 		'sound/effects/footstep/asteroid4.ogg'))
+
 /turf/simulated/floor/tiled/freezer/cold
 	temperature = T0C - 5
 
@@ -783,3 +818,16 @@ GLOBAL_LIST_EMPTY(flooring_types)
 	damage_temperature = T0C+200
 	build_type = /obj/item/stack/tile/honeycomb
 	flags = TURF_CAN_BREAK | TURF_IS_FRAGILE | TURF_REMOVE_SCREWDRIVER
+
+/singleton/flooring/pool
+	name = "pool floor"
+	desc = "Sunken flooring designed to hold liquids."
+	icon = 'icons/turf/flooring/pool.dmi'
+	icon_base = "pool"
+	// build_type = /obj/item/stack/tile/pool
+	flags = TURF_HAS_CORNERS | TURF_HAS_INNER_CORNERS | TURF_REMOVE_CROWBAR
+	// footstep_type = /singleton/footsteps/tiles
+	floor_smooth = SMOOTH_NONE
+	wall_smooth = SMOOTH_NONE
+	space_smooth = SMOOTH_NONE
+	// height = -FLUID_OVER_MOB_HEAD * 2

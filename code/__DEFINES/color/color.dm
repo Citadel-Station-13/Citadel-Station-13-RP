@@ -4,6 +4,9 @@
 #define COLOR_SILVER                 "#C0C0C0"
 #define COLOR_STEEL                  "#A8B0B2"
 #define COLOR_GRAY                   "#808080"
+#define COLOR_GUNMETAL               "#545c68"
+#define COLOR_WALL_GUNMETAL          "#353a42"
+#define COLOR_DARK_GUNMETAL          "#4c535b"
 #define COLOR_HALF_TRANSPARENT_BLACK "#0000007A"
 #define COLOR_BLACK                  "#000000"
 #define COLOR_RED_LIGHT              "#FF3333"
@@ -82,3 +85,8 @@
 #define COLOR_PRIDE_GREEN  "#41FC66"
 #define COLOR_PRIDE_BLUE   "#42FFF2"
 #define COLOR_PRIDE_PURPLE "#5D5DFC"
+
+// Used to easily change research colour in case of ???
+#define COLOR_RESEARCH COLOR_PURPLE_GRAY
+
+#define COLOR_DEFAULT_FLOOR COLOR_GUNMETAL

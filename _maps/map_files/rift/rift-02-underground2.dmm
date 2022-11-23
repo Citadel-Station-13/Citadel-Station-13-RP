@@ -736,7 +736,7 @@
 	dir = 9
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "ca" = (
 /obj/machinery/door/airlock{
@@ -1104,7 +1104,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/door/firedoor/glass,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "dq" = (
 /obj/machinery/atmospherics/component/quaternary/atmos_filter,
@@ -2244,7 +2244,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "gD" = (
 /obj/machinery/atmospherics/component/binary/pump/high_power,
@@ -2847,7 +2847,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "iE" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/cyan{
@@ -2881,7 +2881,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "iP" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
@@ -3013,7 +3013,7 @@
 	desc = " ";
 	pixel_y = 24
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/crew_quarters/heads/chief)
 "jj" = (
 /obj/effect/turf_decal/industrial/warning{
@@ -3459,7 +3459,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 9
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/crew_quarters/heads/chief)
 "kd" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
@@ -3757,7 +3757,7 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "kW" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/black{
@@ -3972,7 +3972,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "lN" = (
 /obj/structure/bed/chair{
@@ -5647,7 +5647,7 @@
 /obj/structure/curtain/open/bed{
 	name = "brown curtain"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "qA" = (
 /obj/effect/turf_decal/techfloor,
@@ -5770,7 +5770,7 @@
 /obj/machinery/camera/network/engineering{
 	dir = 8
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "qX" = (
 /obj/effect/turf_decal/borderfloor{
@@ -6413,7 +6413,7 @@
 	dir = 5
 	},
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "tr" = (
 /obj/machinery/light{
@@ -7650,7 +7650,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "yQ" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -7775,7 +7775,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "zy" = (
 /turf/simulated/wall,
@@ -8056,7 +8056,7 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/underground/under2)
 "Bg" = (
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/crew_quarters/heads/chief)
 "Bh" = (
 /obj/effect/turf_decal/industrial/warning/corner,
@@ -8152,7 +8152,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "BE" = (
 /obj/structure/catwalk,
@@ -8729,7 +8729,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 9
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/crew_quarters/heads/chief)
 "Ev" = (
 /obj/structure/table/reinforced,
@@ -9016,7 +9016,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 1
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "FH" = (
 /obj/structure/table/reinforced,
@@ -9194,7 +9194,7 @@
 /area/engineering/storage)
 "Gp" = (
 /obj/machinery/light,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "Gr" = (
 /obj/machinery/door/airlock/glass_mining{
@@ -9532,7 +9532,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "Ie" = (
 /obj/structure/catwalk,
@@ -10014,7 +10014,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/engineering/hallway)
 "Ko" = (
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "Kp" = (
 /obj/machinery/portable_atmospherics/canister/phoron,
@@ -10171,7 +10171,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "La" = (
 /obj/structure/railing{
@@ -11084,7 +11084,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "Pf" = (
 /obj/effect/turf_decal/corner/white/diagonal,
@@ -11361,7 +11361,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "Qj" = (
 /obj/structure/cable/cyan{
@@ -11376,7 +11376,7 @@
 	req_one_access = list(11,67)
 	},
 /obj/effect/turf_decal/steeldecal/steel_decals_central7,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "Qm" = (
 /obj/effect/turf_decal/borderfloor{
@@ -11410,7 +11410,7 @@
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "Qu" = (
 /obj/effect/turf_decal/borderfloor,
@@ -11435,7 +11435,7 @@
 	dir = 4;
 	pixel_x = -22
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "QD" = (
 /obj/structure/table/woodentable,
@@ -11520,7 +11520,7 @@
 "Rd" = (
 /obj/structure/bed/double/padded,
 /obj/item/bedsheet/yellowdouble,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "Re" = (
 /obj/machinery/door/airlock/command{
@@ -11534,7 +11534,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/crew_quarters/heads/chief)
 "Rh" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -12226,7 +12226,7 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 1
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "US" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -12271,7 +12271,7 @@
 /obj/item/rig/ce/equipped,
 /obj/item/clothing/mask/breath,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/crew_quarters/heads/chief)
 "Va" = (
 /obj/structure/fence,
@@ -12453,7 +12453,7 @@
 	pixel_x = 24
 	},
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "VL" = (
 /obj/machinery/disposal,
@@ -12828,7 +12828,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "Xq" = (
 /turf/simulated/floor/lino,
@@ -13234,7 +13234,7 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/wood/walnut,
 /area/engineering/break_room)
 "Zj" = (
 /obj/structure/stairs/spawner/south,

@@ -1,7 +1,7 @@
 /turf/simulated/floor/carpet
 	name = "carpet"
 	icon = 'icons/turf/flooring/carpet.dmi'
-	icon_state = "carpet"
+	icon_state = "red"
 	initial_flooring = /singleton/flooring/carpet
 
 /turf/simulated/floor/carpet/bcarpet
@@ -12,18 +12,18 @@
 
 /turf/simulated/floor/carpet/blucarpet
 	name = "blue carpet"
-	icon_state = "blucarpet"
+	icon_state = "blue1"
 	initial_flooring = /singleton/flooring/carpet/blue
 
 /turf/simulated/floor/carpet/tealcarpet
 	name = "teal carpet"
-	icon_state = "tealcarpet"
+	icon_state = "blue3"
 	initial_flooring = /singleton/flooring/carpet/blue3
 
 // Legacy support for existing paths for blue carpet
 /turf/simulated/floor/carpet/blue
 	name = "blue carpet"
-	icon_state = "blucarpet"
+	icon_state = "blue1"
 	initial_flooring = /singleton/flooring/carpet/blue
 
 /turf/simulated/floor/carpet/turcarpet
@@ -34,26 +34,27 @@
 
 /turf/simulated/floor/carpet/sblucarpet
 	name = "sblue carpet"
-	icon_state = "sblucarpet"
+	icon_state = "blue2"
 	initial_flooring = /singleton/flooring/carpet/blue2
 
 /turf/simulated/floor/carpet/gaycarpet
 	name = "clown carpet"
-	icon_state = "gaycarpet"
+	icon_state = "magenta"
 	initial_flooring = /singleton/flooring/carpet/magenta
 
 /turf/simulated/floor/carpet/purcarpet
 	name = "purple carpet"
-	icon_state = "purcarpet"
+	icon_state = "purple"
 	initial_flooring = /singleton/flooring/carpet/purple
 
 /turf/simulated/floor/carpet/oracarpet
 	name = "orange carpet"
-	icon_state = "oracarpet"
+	icon_state = "orange"
 	initial_flooring = /singleton/flooring/carpet/orange
 
 /turf/simulated/floor/carpet/arcadecarpet
 	name = "arcade carpet"
+	icon = 'icons/turf/flooring/carpet_old.dmi'
 	icon_state = "arcade"
 	initial_flooring = /singleton/flooring/carpet/arcadecarpet
 
@@ -134,6 +135,10 @@
 	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN)
 	canSmoothWith = list(SMOOTH_GROUP_TURF_OPEN)
 
+/turf/simulated/floor/tiled/white
+	name = "white floor"
+	initial_flooring = /singleton/flooring/tiling/white
+
 /turf/simulated/floor/tiled/techmaint
 	name = "floor"
 	icon = 'icons/turf/flooring/tiles.dmi'
@@ -154,13 +159,19 @@
 
 /turf/simulated/floor/tiled/monotile
 	icon = 'icons/turf/flooring/tiles.dmi'
-	icon_state = "steel_monotile"
+	icon_state = "monotile"
+	color = COLOR_DEFAULT_FLOOR
 	initial_flooring = /singleton/flooring/tiling/new_tile/monotile
 
 /turf/simulated/floor/tiled/monowhite
 	icon = 'icons/turf/flooring/tiles.dmi'
-	icon_state = "monowhite"
+	icon_state = "monotile"
 	initial_flooring = /singleton/flooring/tiling/new_tile/monowhite
+
+/turf/simulated/floor/tiled/grid
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_state = "grid"
+	initial_flooring = /singleton/flooring/tiling/new_tile/grid
 
 /turf/simulated/floor/tiled/steel_grid
 	icon = 'icons/turf/flooring/tiles.dmi'
@@ -242,6 +253,7 @@
 
 /turf/simulated/floor/reinforced
 	name = "reinforced floor"
+	desc = "Heavily reinforced with steel plating."
 	icon = 'icons/turf/flooring/tiles.dmi'
 	icon_state = "reinforced"
 	initial_flooring = /singleton/flooring/reinforced
@@ -299,7 +311,8 @@
 
 /turf/simulated/floor/tiled/steel
 	name = "steel floor"
-	icon_state = "steel"
+	icon_state = "tiled"
+	color = COLOR_DEFAULT_FLOOR
 	initial_flooring = /singleton/flooring/tiling/steel
 
 /turf/simulated/floor/tiled/steel_dirty
@@ -317,11 +330,6 @@
 /turf/simulated/floor/tiled/asteroid_steel/airless
 	name = "plating"
 	initial_gas_mix = GAS_STRING_VACUUM
-
-/turf/simulated/floor/tiled/white
-	name = "white floor"
-	icon_state = "white"
-	initial_flooring = /singleton/flooring/tiling/white
 
 /turf/simulated/floor/tiled/yellow
 	name = "yellow floor"

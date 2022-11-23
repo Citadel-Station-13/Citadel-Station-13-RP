@@ -1,7 +1,10 @@
 /obj/effect/turf_decal
 	icon = 'icons/turf/flooring/decals.dmi'
+	plane = FLOOR_PLANE
 	layer = DECAL_LAYER
 	anchored = TRUE
+	var/detail_overlay
+	var/detail_color
 
 /**
  * This is with the intent of optimizing mapload.
@@ -18,6 +21,8 @@
 	if(!istype(our_turf)) //you know this will happen somehow
 		CRASH("Turf decal initialized in an object/nullspace")
 	our_turf.AddElement(/datum/element/decal, icon, icon_state, dir, null, null, alpha, color, null, FALSE, null)
+	if(detail_overlay)
+		our_turf.AddElement(/datum/element/decal, detail_overlay, icon_state, dir, null, null, alpha, detail_color, null, FALSE, null)
 	return INITIALIZE_HINT_QDEL
 
 /obj/effect/turf_decal/Destroy(force)
