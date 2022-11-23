@@ -528,6 +528,7 @@
 /obj/structure/window/reinforced,
 /obj/structure/table/reinforced,
 /obj/machinery/recharger,
+/obj/item/storage/single_use/med_pouch/trauma,
 /turf/simulated/floor/tiled,
 /area/engineering/foyer)
 "bs" = (
@@ -2149,6 +2150,8 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/item/clothing/gloves/black,
+/obj/item/tool/crowbar,
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "gu" = (
@@ -10415,8 +10418,22 @@
 /area/chapel/main)
 "Mb" = (
 /obj/structure/table/reinforced,
-/obj/item/clothing/gloves/black,
-/obj/item/tool/crowbar,
+/obj/item/storage/single_use/med_pouch/radiation{
+	pixel_y = -7;
+	pixel_x = -6
+	},
+/obj/item/storage/single_use/med_pouch/trauma{
+	pixel_x = -7;
+	pixel_y = 5
+	},
+/obj/item/storage/single_use/med_pouch/toxin{
+	pixel_x = 6;
+	pixel_y = -7
+	},
+/obj/item/storage/single_use/med_pouch/burn{
+	pixel_x = 6;
+	pixel_y = 5
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/workshop)
 "Mc" = (
@@ -10683,6 +10700,9 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
+/obj/item/storage/single_use/med_pouch/trauma,
+/obj/item/storage/single_use/med_pouch/burn,
+/obj/item/storage/single_use/med_pouch/radiation,
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/miningdock)
 "Ne" = (
@@ -10713,6 +10733,7 @@
 	pixel_x = -32;
 	pixel_y = 30
 	},
+/obj/item/storage/single_use/med_pouch/radiation,
 /turf/simulated/floor/tiled/monotile,
 /area/engineering/engine_room)
 "Nk" = (
