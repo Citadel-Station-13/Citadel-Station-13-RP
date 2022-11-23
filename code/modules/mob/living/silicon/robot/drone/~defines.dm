@@ -2,6 +2,6 @@
 #undef MTX_UPG_CELL
 #undef MTX_UPG_HEALTH
 #undef MTX_UPG_MOP
-//#undef MTX_UPG_DECOR
+#undef MTX_UPG_T
 
 #undef ALL_MATRIX_UPGRADES

@@ -125,9 +125,6 @@
 #define SPAN_YELL(str) ("<span class='yell'>" + str + "</span>")
 #define SPAN_YELLOWTEAMRADIO(str) ("<span class='yellowteamradio'>" + str + "</span>")
 
-#define MATRIX_DANGER(X) (SPAN_DANGER(X))
-#define MATRIX_NOTICE(X) (SPAN_NOTICE(X))
-
 // Spans that use embedded tgui components:
 // Sorted alphabetically
 #define SPAN_TOOLTIP(tip, main_text) ("<span data-component=\"Tooltip\" data-content=\"" + tip + "\" class=\"tooltip\">" + main_text + "</span>")

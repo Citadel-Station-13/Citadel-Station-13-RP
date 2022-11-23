@@ -1,7 +1,6 @@
 /*
  * Holds procs to help with list operations
  */
-#define LAZYISIN(L, I) (L ? (I in L) : FALSE)
 /// Picks from the list, with some safeties, and returns the "default" arg if it fails
 #define DEFAULTPICK(L, default) ((istype(L, /list) && L:len) ? pick(L) : default)
 /// Ensures L is initailized after this point

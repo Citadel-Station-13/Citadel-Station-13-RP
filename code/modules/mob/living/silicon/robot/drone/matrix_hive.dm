@@ -5,7 +5,7 @@ var/global/list/drone_matrices = list()
 	var/datum/weakref/matriarch
 	var/list/datum/weakref/drones = list()
 
-	var/upgrades_remaining = 2
+	var/upgrades_remaining = 3
 	var/list/bought_upgrades
 
 /datum/drone_matrix/New(var/matrix_id)
@@ -55,19 +55,19 @@ var/global/list/drone_matrices = list()
 
 /datum/drone_matrix/proc/handle_death(mob/living/silicon/robot/drone/D)
 	if(isMatriarchDrone(D))
-		message_drones(MATRIX_DANGER("A cold wave washes over your circuits. The matriarch is dead!"))
+		message_drones(SPAN_DANGER("A cold wave washes over your circuits. The matriarch is dead!"))
 	else
 		message_drones(SPAN_DANGER("Your circuits spark. Drone [D.name] has died."))
 
 /datum/drone_matrix/proc/buy_upgrade(var/upgrade_type)
 	LAZYADD(bought_upgrades, upgrade_type)
 	upgrades_remaining--
-	message_drones(MATRIX_NOTICE("A new matrix upgrade is available, visit a recharging staion to install: [upgrade_type]"))
+	message_drones(SPAN_NOTICE("A new matrix upgrade is available, visit a recharging staion to install: [upgrade_type]"))
 
 /datum/drone_matrix/proc/apply_upgrades(mob/living/silicon/robot/drone/D)
 	var/list/applied_upgrades = list()
 	for(var/upgrade in bought_upgrades)
-		if(!LAZYISIN(D.matrix_upgrades, upgrade))
+		if(!LAZYACCESS(D.matrix_upgrades, upgrade))
 			applied_upgrades += upgrade
 			set_upgrade(D, upgrade)
 	if(length(applied_upgrades))
@@ -84,8 +84,9 @@ var/global/list/drone_matrices = list()
 		if(MTX_UPG_MOP)
 			D.module.modules -= locate(/obj/item/mop) in D.module.modules
 			D.module.modules += new/obj/item/mop/advanced(D.module)
-		//if(MTX_UPG_DECOR)
-		//	var/datum/matter_synth/
+		if(MTX_UPG_T)
+			D.module.modules -= locate(/obj/item/t_scanner) in D.module.modules
+			D.module.modules += new/obj/item/t_scanner/upgraded(D.module)
 	LAZYADD(D.matrix_upgrades, upgrade_type)
 
 /proc/assign_drone_to_matrix(mob/living/silicon/robot/drone/D, var/matrix_tag)
