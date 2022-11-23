@@ -27,6 +27,10 @@
 	var/fail_to_receive = 0
 	var/current_warning = 1
 
+/obj/item/geiger_counter/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/z_radiation_listener)
+
 /obj/item/geiger_counter/process(delta_time)
 	if(!scanning)
 		current_tick_amount = 0

@@ -71,11 +71,11 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 /**
  * does our best faith attempt at irradiating a whole zlevel without lagging the server to death
  */
-/datum/controller/subsystem/processing/radiation/proc/z_radiation(turf/T, z, intensity, falloff_modifier, log, can_contaminate)
+/datum/controller/subsystem/processing/radiation/proc/z_radiation(turf/T, z, intensity, falloff_modifier, log, can_contaminate, z_radiate_flags)
 	if(!T && !z)
 		CRASH("need either turf or z")
 	if(!z)
 		z = T.z
 
-#warn put z listener on living mobs, geigers
+#warn rad shield
 #warn impl

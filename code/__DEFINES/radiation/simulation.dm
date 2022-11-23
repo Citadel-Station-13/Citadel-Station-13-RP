@@ -154,3 +154,7 @@
 #define RAD_CONTAMINATION_CLEANSE_POWER 25
 /// amount of contamination washed out as a multiplier
 #define RAD_CONTAMINATION_CLEANSE_FACTOR 0.33
+
+//! z_radiate_flags
+/// respect rad shielded maint
+#define Z_RADIATE_CHECK_AREA_SHIELD (1<<0)

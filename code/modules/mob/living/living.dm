@@ -1,5 +1,6 @@
 /mob/living/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/z_radiation_listener)
 
 	//I'll just hang my coat up over here
 	dsoverlay = image('icons/mob/darksight.dmi', GLOB.global_hud.darksight) //This is a secret overlay! Go look at the file, you'll see.
