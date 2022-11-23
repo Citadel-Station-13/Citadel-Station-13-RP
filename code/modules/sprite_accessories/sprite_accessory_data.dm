@@ -27,6 +27,8 @@
 	//! tracking - are we shared? some things like DNA copy references to us, they need to know if it's safe to modify
 	var/is_shared_datum = FALSE
 
+#warn null color is DEFAULT
+
 /datum/sprite_accessory_data/New(datum/sprite_accessory_meta/accessory)
 	src.accessory = accessory
 
