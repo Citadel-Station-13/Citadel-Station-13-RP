@@ -591,16 +591,16 @@
 	drop_get_turf = FALSE
 
 /obj/random/mre/item_to_spawn()
-	return pick(/obj/item/storage/mre,
-				/obj/item/storage/mre/menu2,
-				/obj/item/storage/mre/menu3,
-				/obj/item/storage/mre/menu4,
-				/obj/item/storage/mre/menu5,
-				/obj/item/storage/mre/menu6,
-				/obj/item/storage/mre/menu7,
-				/obj/item/storage/mre/menu8,
-				/obj/item/storage/mre/menu9,
-				/obj/item/storage/mre/menu10)
+	return pick(/obj/item/storage/single_use/mre,
+				/obj/item/storage/single_use/mre/menu2,
+				/obj/item/storage/single_use/mre/menu3,
+				/obj/item/storage/single_use/mre/menu4,
+				/obj/item/storage/single_use/mre/menu5,
+				/obj/item/storage/single_use/mre/menu6,
+				/obj/item/storage/single_use/mre/menu7,
+				/obj/item/storage/single_use/mre/menu8,
+				/obj/item/storage/single_use/mre/menu9,
+				/obj/item/storage/single_use/mre/menu10)
 
 
 /obj/random/mre/main
@@ -610,14 +610,14 @@
 	drop_get_turf = FALSE
 
 /obj/random/mre/main/item_to_spawn()
-	return pick(/obj/item/storage/mrebag,
-				/obj/item/storage/mrebag/menu2,
-				/obj/item/storage/mrebag/menu3,
-				/obj/item/storage/mrebag/menu4,
-				/obj/item/storage/mrebag/menu5,
-				/obj/item/storage/mrebag/menu6,
-				/obj/item/storage/mrebag/menu7,
-				/obj/item/storage/mrebag/menu8)
+	return pick(/obj/item/storage/single_use/mrebag,
+				/obj/item/storage/single_use/mrebag/menu2,
+				/obj/item/storage/single_use/mrebag/menu3,
+				/obj/item/storage/single_use/mrebag/menu4,
+				/obj/item/storage/single_use/mrebag/menu5,
+				/obj/item/storage/single_use/mrebag/menu6,
+				/obj/item/storage/single_use/mrebag/menu7,
+				/obj/item/storage/single_use/mrebag/menu8)
 
 /obj/random/mre/side
 	name = "random MRE side dish"

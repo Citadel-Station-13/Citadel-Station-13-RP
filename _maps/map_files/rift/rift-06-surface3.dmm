@@ -4819,11 +4819,11 @@
 "iS" = (
 /obj/machinery/light,
 /obj/structure/table/woodentable,
-/obj/item/storage/mre/random{
+/obj/item/storage/single_use/mre/random{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/storage/mre/random{
+/obj/item/storage/single_use/mre/random{
 	pixel_x = -2;
 	pixel_y = -2
 	},
@@ -9022,12 +9022,12 @@
 /obj/structure/closet/crate{
 	name = "MRE crate"
 	},
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/menu9,
-/obj/item/storage/mre/menu10,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/menu9,
+/obj/item/storage/single_use/mre/menu10,
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
 "rn" = (

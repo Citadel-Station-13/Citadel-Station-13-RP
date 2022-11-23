@@ -7840,7 +7840,7 @@
 /obj/machinery/status_display{
 	pixel_y = 32
 	},
-/obj/item/storage/mre/menu12,
+/obj/item/storage/single_use/mre/menu12,
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "fJJ" = (
