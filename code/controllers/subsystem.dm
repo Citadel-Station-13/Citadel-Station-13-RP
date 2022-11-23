@@ -282,3 +282,9 @@
 		if (NAMEOF(src, queued_priority)) //editing this breaks things.
 			return FALSE
 	. = ..()
+
+/**
+ * called when max z is changed since subsystems hook it so much
+ */
+/datum/controller/subsystem/proc/on_max_z_changed(old_z_count, new_z_count)
+	return

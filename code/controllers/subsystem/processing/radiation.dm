@@ -5,6 +5,14 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 
 	/// atom refs we warned about already
 	var/list/warned_atoms = list()
+	/// z radiation listeners - nested list
+	var/static/list/z_listeners = list()
+
+/datum/controller/subsystem/processing/radiation/on_max_z_changed(old_z_count, new_z_count)
+	var/old = z_listeners.len
+	z_listeners.len = new_z_count
+	for(var/i in old + 1 to z_listeners.len)
+		z_listeners[i] = list()
 
 /datum/controller/subsystem/processing/radiation/proc/warn(datum/component/radioactive/contamination)
 	if(!contamination || QDELETED(contamination))
