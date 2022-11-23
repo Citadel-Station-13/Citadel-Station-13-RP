@@ -77,4 +77,5 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 	if(!z)
 		z = T.z
 
+#warn put z listener on living mobs, geigers
 #warn impl
