@@ -26,6 +26,8 @@
 	var/list/datum/sprite_accessory_addon/addons
 	//! tracking - are we shared? some things like DNA copy references to us, they need to know if it's safe to modify
 	var/is_shared_datum = FALSE
+	//! strength to use for highlights
+	var/highlight_strength = 1
 
 #warn null color is DEFAULT
 
@@ -45,6 +47,8 @@
 	cloned.request_alt_layer = request_alt_layer
 	cloned.addons = addons.Copy()
 	cloned.is_shared_datum = FALSE
+	cloned.highlight_strength = highlight_strength
+	cloned.request_animated_state = request_animated_state
 
 /**
  * returns if we're equivalent to another
@@ -281,6 +285,7 @@
 		"addons" = addons_built,
 		"shared" = is_shared_datum,
 		"animated" = request_animated_state,
+		"highlights" = highlight_strength,
 	)
 #warn ui struct
 #warn ui struct for coloration
