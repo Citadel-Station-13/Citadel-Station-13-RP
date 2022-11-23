@@ -1,7 +1,12 @@
 //! mobs
+/// radiation applied via apply_effect is multiplied by this
+
 // apply_effect((amount*RAD_MOB_COEFFICIENT)/max(1, (radiation**2)*RAD_OVERDOSE_REDUCTION), IRRADIATE, blocked)
 #define RAD_MOB_COEFFICIENT 0.20					// Radiation applied is multiplied by this
 #define RAD_MOB_SKIN_PROTECTION ((1/RAD_MOB_COEFFICIENT)+RAD_BACKGROUND_RADIATION)
+
+/// flat loss to radiation hitting mobs
+#define RAD_MOB_SKIN_PROTECTION 15
 
 // #define RAD_LOSS_PER_TICK 0.5
 // #define RAD_TOX_COEFFICIENT 0.05					// Toxin damage per tick coefficient
@@ -27,3 +32,11 @@
 // #define RAD_MOB_KNOCKDOWN 2000						// How much stored radiation to check for stunning
 // #define RAD_MOB_KNOCKDOWN_PROB 1					// Chance of knockdown per tick when over threshold
 // #define RAD_MOB_KNOCKDOWN_AMOUNT 3					// Amount of knockdown when it occurs
+
+//! stuff passed into apply_effect
+
+#define RAD_MOB_EFFECT_STRENGTH_
+
+//! stuff passed into rad_act
+
+#define RAD_MOB_ACT_STRENGTH_
