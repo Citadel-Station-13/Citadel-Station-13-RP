@@ -1,7 +1,6 @@
 
 /obj/item/storage/single_use
 	var/opened = FALSE
-	use_sound = ""
 	var/tear_sound = "rip"
 
 /obj/item/storage/single_use/open(mob/user)

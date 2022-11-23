@@ -11,7 +11,7 @@ Single Use Emergency Pouches
 	max_w_class = ITEM_SIZE_SMALL
 	icon_state = "pack0"
 	opened = FALSE
-	use_sound = 'sound/effects/rip1.ogg'
+	tear_sound = 'sound/effects/rip1.ogg'
 	//material = /decl/material/solid/plastic
 	var/injury_type = "generic"
 	var/static/image/cross_overlay
