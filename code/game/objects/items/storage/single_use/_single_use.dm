@@ -2,14 +2,12 @@
 /obj/item/storage/single_use
 	var/opened = FALSE
 	use_sound = ""
-	tear_sound = "rip"
-	var/opening_text_self = ""
-	var/opening_text_others = ""
+	var/tear_sound = "rip"
 
 /obj/item/storage/single_use/open(mob/user)
 	if(!opened)
 		playsound(src.loc, src.tear_sound, 50, 0, -5)
-		user.visible_message(SPAN_NOTICE(opening_text_others),SPAN_NOTICE(opening_text_self))
+		user.visible_message(SPAN_NOTICE("\The [user] tears open [src], breaking the vacuum seal!"),SPAN_NOTICE("You tear open [src], breaking the vacuum seal!"))
 		opened = 1
 		update_icon()
 	if (src.use_sound)

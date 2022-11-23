@@ -12,8 +12,6 @@ Single Use Emergency Pouches
 	icon_state = "pack0"
 	opened = FALSE
 	use_sound = 'sound/effects/rip1.ogg'
-	opening_text_self = "You tear open [src], breaking the vacuum seal!"
-	opening_text_others = "\The [user] tears open [src], breaking the vacuum seal!"
 	//material = /decl/material/solid/plastic
 	var/injury_type = "generic"
 	var/static/image/cross_overlay
