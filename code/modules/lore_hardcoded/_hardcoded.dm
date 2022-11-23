@@ -1,9 +1,10 @@
 /datum/lore
 	/// abstract type
-	var/abstract_type = /datum/lore
+	abstract_type = /datum/lore
 
 /datum/lore/character_background
 	abstract_type = /datum/lore/character_background
+
 	/// name
 	var/name = "Unknown"
 	/// id - **must be unique on subtypes

@@ -28,7 +28,7 @@ GLOBAL_LIST_INIT(paper_tags, paper_tags())
  * For now, this is what you get.
  */
 /datum/paper_tag
-	var/abstract_type = /datum/paper_tag
+	abstract_type = /datum/paper_tag
 
 /**
  * user can be null

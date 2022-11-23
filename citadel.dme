@@ -510,6 +510,7 @@
 #include "code\datums\EPv2.dm"
 #include "code\datums\ghost_query.dm"
 #include "code\datums\hierarchy.dm"
+#include "code\datums\is_abstract.dm"
 #include "code\datums\mind.dm"
 #include "code\datums\mixed.dm"
 #include "code\datums\mutable_appearance.dm"
