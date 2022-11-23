@@ -1074,6 +1074,7 @@
 	if(alien == IS_DIONA)
 		return
 	M.radiation = max(M.radiation - 30 * removed, 0)
+	#warn radiation
 
 /datum/reagent/arithrazine
 	name = "Arithrazine"
@@ -1093,6 +1094,7 @@
 	M.adjustToxLoss(-10 * removed)
 	if(prob(60))
 		M.take_organ_damage(4 * removed, 0)
+	#warn radiation
 
 /datum/reagent/spaceacillin
 	name = "Spaceacillin"

@@ -85,6 +85,7 @@
 	if(mob.radiation > 50)
 		if(prob(1))
 			majormutate()
+	#warn radiation
 
 	//Space antibiotics have a good chance to stop disease completely
 	if(mob.chem_effects[CE_ANTIBIOTIC])

@@ -109,6 +109,7 @@
 				var/needed = clamp(H.species.max_nutrition - H.nutrition, 0, 20)
 				var/drained = cell.use(DYNAMIC_KJ_TO_CELL_UNITS(needed * SYNTHETIC_NUTRITION_KJ_PER_UNIT))
 				H.nutrition += DYNAMIC_CELL_UNITS_TO_KJ(drained) / SYNTHETIC_NUTRITION_KJ_PER_UNIT
+	#warn radiation
 
 			// And clear up radiation
 			if(H.radiation > 0)

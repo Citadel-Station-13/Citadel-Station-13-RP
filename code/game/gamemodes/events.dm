@@ -47,6 +47,7 @@ var/hadevent    = 0
 			continue
 		if(isNotStationLevel(T.z))
 			continue
+#warn radiation
 		if(istype(H,/mob/living/carbon/human))
 			H.apply_effect((rand(15,75)),IRRADIATE,0)
 			if (prob(5))

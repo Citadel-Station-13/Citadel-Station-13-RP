@@ -12,6 +12,7 @@
 		user.apply_effect(radiation_amount * 5,IRRADIATE,0)
 		user.updatehealth()
 		return 1
+#warn radiation
 
 /datum/artifact_effect/radiate/DoEffectAura()
 	if(holder)

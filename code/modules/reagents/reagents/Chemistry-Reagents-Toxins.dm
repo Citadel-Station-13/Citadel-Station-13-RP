@@ -452,6 +452,7 @@
 		overdose_mod *= H.species.chemOD_mod
 	M.apply_effect(2 * removed,IRRADIATE, 0, 0)
 	M.apply_effect(5 * removed,DROWSY, 0, 0)
+#warn radiation
 
 /datum/reagent/toxin/sifslurry/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	affect_blood(M, alien, removed * 0.7)
@@ -641,6 +642,7 @@
 			randmuti(M)//This should equate to 4 random cosmetic mutations per 10 injected/20 ingested/30 touching units
 			to_chat(M, "<span class='warning'>You feel odd!</span>")
 	M.apply_effect(10 * removed, IRRADIATE, 0)
+#warn radiation
 
 /datum/reagent/slimejelly
 	name = "Slime Jelly"
@@ -1050,6 +1052,7 @@
 			randmuti(M)
 			to_chat(M, "<span class='warning'>You feel odd!</span>")
 	M.apply_effect(16 * removed, IRRADIATE, 0)
+#warn radiation
 
 /datum/reagent/aslimetoxin
 	name = "Docility Toxin"
@@ -1080,6 +1083,7 @@
 			randmuti(M)
 			to_chat(M, "<span class='warning'>You feel odd!</span>")
 	M.apply_effect(6 * removed, IRRADIATE, 0)
+#warn radiation
 
 /*
  * Hostile nanomachines.

@@ -263,6 +263,7 @@
 /mob/living/carbon/human/handle_mutations_and_radiation()
 	if(inStasisNow())
 		return
+	#warn radiation
 
 	if(getFireLoss())
 		if((MUTATION_COLD_RESIST in mutations) || (prob(1)))

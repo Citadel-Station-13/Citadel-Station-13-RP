@@ -470,6 +470,7 @@
 						if(!H.isSynthetic())
 							H.radiation += max(rads / 10, 0) // Not even a radsuit can save you now.
 						H.apply_damage(max((rads / 10) * H.species.radiation_mod, 0), BURN) // Flash burns
+	#warn radiation
 
 		// Some engines just want to see the world burn.
 		spawn(17 SECONDS)

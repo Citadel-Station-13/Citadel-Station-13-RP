@@ -1235,3 +1235,9 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /mob/CanReachIn(atom/movable/mover, atom/target, obj/item/tool, list/cache)
 	return FALSE
+
+//! Radioactivity
+/mob/clean_radiation(str, mul, cheap)
+	. = ..()
+	for(var/obj/item/I as anything in get_equipped_items(TRUE, TRUE))
+		I.clean_radiation(str, mul, cheap)

@@ -459,7 +459,6 @@
 		"<span class=\"warning\">Everything suddenly goes silent.</span>")
 
 	Consume(W)
-	user.apply_effect(150, IRRADIATE)
 
 
 /obj/machinery/power/supermatter/Bumped(atom/AM as mob|obj)

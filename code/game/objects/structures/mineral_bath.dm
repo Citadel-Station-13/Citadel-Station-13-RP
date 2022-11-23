@@ -137,6 +137,7 @@
 			return TRUE
 
 /obj/structure/adherent_bath/proc/crystal_heal_damage(mob/living/carbon/human/patient)
+	#warn radiation
 	if(patient.radiation > 0)
 		patient.radiation = max(patient.radiation - rand(5, 15), 0)
 	for(var/thing in patient.organs)

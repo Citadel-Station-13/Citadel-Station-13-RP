@@ -83,6 +83,7 @@
 	M.apply_effect((radiation*3),IRRADIATE,0)
 	M.updatehealth()
 	//to_chat(M, "<font color='red'>You feel odd.</font>")
+#warn radiation
 
 
 /obj/effect/accelerated_particle/proc/move(var/lag)

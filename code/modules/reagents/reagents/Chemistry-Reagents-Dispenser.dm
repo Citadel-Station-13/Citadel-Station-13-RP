@@ -337,6 +337,7 @@
 						absorbed = 1
 					if(!absorbed)
 						M.adjustToxLoss(100)
+#warn radiation
 
 /datum/reagent/radium/touch_turf(var/turf/T)
 	if(volume >= 3)

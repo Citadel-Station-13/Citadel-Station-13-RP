@@ -29,6 +29,8 @@
 	var/brainloss = 0
 	/// Hallucination damage. 'Fake' damage obtained through hallucinating or the holodeck. Sleeping should cause it to wear off.
 	var/halloss = 0
+	/// radiation stored in us
+	var/radiation = 0
 
 	/// Directly affects how long a mob will hallucinate for
 	var/hallucination = 0

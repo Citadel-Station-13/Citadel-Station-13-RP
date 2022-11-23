@@ -313,6 +313,7 @@
 	for(i=0,i<4,i++)
 		sleep(50)
 		if(occupant)
+#warn radiation
 			occupant.apply_effect(50, IRRADIATE)
 			var/obj/item/organ/internal/diona/nutrients/rad_organ = locate() in occupant.internal_organs
 			if(!rad_organ)

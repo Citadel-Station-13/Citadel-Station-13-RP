@@ -385,6 +385,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 	holder.adjustFireLoss(-burn_heal_left, include_robo = TRUE)
 	holder.adjustToxLoss(-3.6) // With them now having tox immunity, this is redundant, along with the rad regen, but I'm keeping it in, in case they do somehow get some system instability
 	holder.radiation = max(holder.radiation - 30, 0) // I'm keeping this in and increasing it, just in the off chance the protean gets some rads, so that there's way to get rid of them
+	#warn radiation
 
 /proc/protean_requires_healing(mob/living/carbon/human/H)
 	if(!istype(H))

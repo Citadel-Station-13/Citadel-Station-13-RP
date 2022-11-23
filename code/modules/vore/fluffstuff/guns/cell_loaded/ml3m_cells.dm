@@ -114,6 +114,7 @@
 		target.radiation = max(target.radiation - 150, 0) //same as 5 units of arithrazine, sans the brute damage
 	else
 		return 1
+	#warn radiation
 
 /obj/item/ammo_casing/microbattery/medical/brute2
 	name = "\'ML-3/M\' nanite cell - BRUTE-II"

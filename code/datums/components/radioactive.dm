@@ -109,6 +109,11 @@
 		return
 	strength -= strength / hl3_release_date
 
+/datum/component/radioactive/proc/clean(str, mul)
+	strength = strength * mul - str
+	if(strength < RAD_BACKGROUND_RADIATION)
+		qdel(src)
+
 #undef RAD_AMOUNT_LOW
 #undef RAD_AMOUNT_MEDIUM
 #undef RAD_AMOUNT_HIGH

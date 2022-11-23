@@ -179,6 +179,7 @@
 						qdel(sparks)
 					if(1)
 						return
+#warn radiation
 
 			if(30 to 50) //Moderate
 				rng = rand(0,8)
@@ -207,6 +208,7 @@
 					if(8)
 						safe_blink(src, range = 6)
 						to_chat(src, "<span class='warning'>You're teleported against your will!</span>")
+#warn radiation
 
 			if(50 to 100) //Severe
 				rng = rand(0,8)
@@ -233,6 +235,7 @@
 					if(7)
 						adjustToxLoss(instability * 0.25) //25 tox @ 100 instability
 
+#warn radiation
 			if(100 to 200) //Lethal
 				rng = rand(0,8)
 				switch(rng)

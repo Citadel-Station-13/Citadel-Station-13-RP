@@ -342,6 +342,7 @@
 		log_message("[src.name] has malfunctioned. Maintenance required.")
 
 /obj/item/mecha_parts/mecha_equipment/crisis_drone/process()	// Will continually try to find the nearest person above the threshold that is a valid target, and try to heal them.
+	#warn radiation
 	if(chassis && enabled && chassis.has_charge(energy_drain) && (chassis.occupant || enable_special))
 		var/mob/living/Targ = Target
 		var/TargDamage = 0
@@ -423,6 +424,7 @@
 		tallydamage += L.getCloneLoss()
 	if(rad_heal)
 		tallydamage += L.radiation / 2
+	#warn radiation
 
 	if(tallydamage < damcap)
 		return FALSE

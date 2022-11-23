@@ -234,7 +234,6 @@
 	var/can_pull_mobs = MOB_PULL_LARGER
 
 	var/datum/dna/dna = null//?Carbon
-	var/radiation = 0 //?Carbon
 
 	var/list/mutations = list() //?Carbon
 	//see: setup.dm for list of mutations

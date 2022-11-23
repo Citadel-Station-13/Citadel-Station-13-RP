@@ -31,6 +31,7 @@
 			//
 			C.regenerate_icons()
 			return 1
+	#warn radiation
 
 /datum/artifact_effect/heal/DoEffectAura()
 	//todo: check over this properly

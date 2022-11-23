@@ -50,4 +50,5 @@
 		var/radius = max(get_dist(L, src), 1)
 		var/rads = (adjusted_power / 10) * ( 1 / (radius**2) )
 		L.apply_effect(rads, IRRADIATE)
+#warn radiation
 	adjust_instability(2)

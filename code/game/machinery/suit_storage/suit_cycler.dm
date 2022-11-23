@@ -408,6 +408,7 @@
 		if(radiation_level > 1)
 			occupant.take_organ_damage(0,radiation_level + rand(1,3))
 		occupant.apply_effect(radiation_level*10, IRRADIATE)
+#warn radiation
 
 /obj/machinery/suit_cycler/proc/finished_job()
 	var/turf/T = get_turf(src)
