@@ -132,13 +132,13 @@
 
 /obj/machinery/power/rad_collector/process(delta_time)
 	if(!stored_power)
-		last_power = 0
+		last_output = 0
 		return
 	var/attempt = clamp(max(minimum_push, stored_power * push_ratio), 0, stored_power)
 	// if you don't have a powernet you still lose the poewr
 	stored_power -= attempt
 	//? kj to kw
-	add_avail(attempt / delta_time)
+	add_avail((last_output = (attempt / delta_time)))
 
 /obj/machinery/power/rad_collector/proc/update_icons()
 	overlays.Cut()
