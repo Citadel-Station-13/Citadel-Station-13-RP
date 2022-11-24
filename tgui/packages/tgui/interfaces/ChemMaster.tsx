@@ -1,4 +1,4 @@
-import { Color } from 'common/color';
+import { Color } from '../../common/color';
 import { useBackend, useSharedState } from '../backend';
 import { AnimatedNumber, Box, Button, ColorBox, LabeledList, NumberInput, Section, Table } from '../components';
 import { Window } from '../layouts';
@@ -407,7 +407,7 @@ const PackagingControls = (props, context) => {
           label="Bottles"
           amount={bottleAmount}
           amountUnit="bottles"
-          sideNote="max 30u"
+          sideNote="max 60u"
           onChangeAmount={(e, value) => setBottleAmount(value)}
           onCreate={() =>
             act('create', {
