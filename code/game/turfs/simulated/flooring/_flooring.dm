@@ -41,7 +41,7 @@ var/list/flooring_types
 
 	var/descriptor = "tiles"
 	var/flags
-	var/can_paint
+	var/can_paint = TRUE
 	var/list/footstep_sounds = list() // key=species name, value = list of soundss
 	var/is_plating = FALSE
 	var/list/flooring_cache = list() // Cached overlays for our edges and corners and junk
