@@ -436,7 +436,7 @@
 
 		// Give the alarm time to play. Then... FLASH! AH-AH!
 		spawn(15 SECONDS)
-			z_radiation(get_turf(src), null, rad_power * BREACH_RADIATION_MULTIPLIER)
+			z_radiation(get_turf(src), null, rad_power * BREACH_RADIATION_MULTIPLIER / RAD_MOB_ACT_COEFFICIENT, RAD_FALLOFF_ZLEVEL_FISSION_MELTDOWN)
 			for(var/mob/living/mob in living_mob_list)
 				var/turf/T = get_turf(mob)
 				if(T && (L.z == T.z))

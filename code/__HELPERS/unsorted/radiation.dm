@@ -43,5 +43,5 @@
  * specifying a turf source is allowed, or just a flat zlevel is allowed;
  * z-only no-turf z radiation is flat.
  */
-/proc/z_radiation(turf/source, z, intensity, falloff_modifier, log = TRUE, can_contaminate = FALSE, z_radiate_flags)
+/proc/z_radiation(turf/source, z, intensity, falloff_modifier = RAD_FALLOFF_ZLEVEL_DEFAULT, log = TRUE, can_contaminate = FALSE, z_radiate_flags)
 	return SSradiation.z_radiation(source, z, intensity, falloff_modifier, log, can_contaminate, z_radiate_flags)

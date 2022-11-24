@@ -6,6 +6,7 @@
 
 // #define RAD_LOSS_PER_TICK 0.5
 // #define RAD_TOX_COEFFICIENT 0.05					// Toxin damage per tick coefficient
+// overdose was radiation ** 2 * overdose (?)
 // #define RAD_OVERDOSE_REDUCTION 0.000001				// Coefficient to the reduction in applied rads once the thing, usualy mob, has too much radiation
 // 													// WARNING: This number is highly sensitive to change, graph is first for best results
 // #define RAD_BURN_THRESHOLD 1000						// Applied radiation must be over this to burn

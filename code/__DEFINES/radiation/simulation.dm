@@ -26,6 +26,12 @@
 /// singulo
 #define RAD_FALLOFF_ENGINE_SINGULARITY 0.5
 
+//! Pulse - Z Falloff
+//* Keep in mind that these are low because things are usually really far away and the point of Z rad is to hit most things.
+#define RAD_FALLOFF_ZLEVEL_DEFAULT 0.05
+#define RAD_FALLOFF_ZLEVEL_SUPERMATTER_DELAMINATION 0.05
+#define RAD_FALLOFF_ZLEVEL_FISSION_MELTDOWN 0.05
+
 //! Pulse - Strength
 //* When updating, write what it's for and how it's used so future coders don't have a Bad Time
 

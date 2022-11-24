@@ -76,6 +76,30 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 		CRASH("need either turf or z")
 	if(!z)
 		z = T.z
+	// you can tell that this proc is hand-optimized, huh.
+	// :skull_crossbones:
+	if(z_radiate_flags)
+		if(falloff_modifier && T)
+			for(var/atom/A as anything in z_listeners[z])
+				if(z_radiate_flags & Z_RADIATE_CHECK_AREA_SHIELD)
+					var/area/checking = get_area(A)
+					if(checking.area_flags & AREA_RAD_SHIELDED)
+						continue
+				var/dist = get_dist(A, T)
+				A.z_rad_act(INVERSE_SQUARE(intensity, dist, 1))
+		else
+			for(var/atom/A as anything in z_listeners[z])
+				if(z_radiate_flags & Z_RADIATE_CHECK_AREA_SHIELD)
+					var/area/checking = get_area(A)
+					if(checking.area_flags & AREA_RAD_SHIELDED)
+						continue
+				A.z_rad_act(intensity)
 
-#warn rad shield
-#warn impl
+	else
+		if(falloff_modifier && T)
+			for(var/atom/A as anything in z_listeners[z])
+				var/dist = get_dist(A, T)
+				A.z_rad_act(INVERSE_SQUARE(intensity, dist, 1))
+		else
+			for(var/atom/A as anything in z_listeners[z])
+				A.z_rad_act(intensity)

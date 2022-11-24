@@ -32,7 +32,7 @@
 #define DAMAGE_HARD_LIMIT 50
 // Base variants are applied to everyone on the same Z level
 // Range variants are applied on per-range basis: numbers here are on point blank, it scales with the map size (assumes square shaped Z levels)
-#define DETONATION_RADS 20
+#define DETONATION_RADS (1500 / RAD_MOB_ACT_COEFFICIENT) // compensates for mob act so everyone still takes this amount
 #define DETONATION_HALLUCINATION_BASE 300
 #define DETONATION_HALLUCINATION_RANGE 300
 #define DETONATION_HALLUCINATION 600
@@ -150,8 +150,6 @@
 		return 0
 	return round((air.total_moles / air.group_multiplier) / 23.1, 0.01)
 
-
-
 /obj/machinery/power/supermatter/proc/explode()
 	message_admins("Supermatter exploded at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
 	log_game("SUPERMATTER([x],[y],[z]) Exploded. Power:[power], Oxygen:[oxygen], Damage:[damage], Integrity:[get_integrity()]")
@@ -162,7 +160,7 @@
 	if(!TS)
 		return
 	for(var/z in GetConnectedZlevels(TS.z))
-		z_radiation(locate(x, y, z), null, DETONATION_RADS)
+		z_radiation(locate(x, y, z), null, DETONATION_RADS, RAD_FALLOFF_ZLEVEL_SUPERMATTER_DELAMINATION)
 	for(var/mob/living/mob in living_mob_list)
 		var/turf/T = get_turf(mob)
 		if(T && (loc.z == T.z))

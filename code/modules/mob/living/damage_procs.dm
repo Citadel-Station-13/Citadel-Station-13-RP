@@ -126,7 +126,7 @@
 /mob/living/proc/afflict_radiation(amt, run_armor, def_zone)
 	if(run_armor)
 		amt *= 1 - ((run_mob_armor(def_zone, ARMOR_RAD)) / 100)
-	amt = amt * RAD_MOB_COEFFICIENT - RAD_MOB_SKIN_PROTECTION
+	#warn overdose coefficient/whatever to prevent over-stacking
 	radiation += max(amt, 0)
 
 /**

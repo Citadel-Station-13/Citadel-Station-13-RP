@@ -911,6 +911,13 @@
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_RAD_ACT, strength)
 
+/**
+ * called when we're hit by z radiation
+ */
+/atom/proc/z_rad_act(strength)
+	SHOULD_CALL_PARENT(TRUE)
+	rad_act(strength)
+
 /atom/proc/add_rad_block_contents(source)
 	ADD_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS, source)
 	rad_flags |= RAD_BLOCK_CONTENTS
