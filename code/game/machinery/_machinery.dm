@@ -525,7 +525,11 @@
  */
 /obj/machinery/proc/try_put_in_hand(obj/object, mob/living/user)
 	if(!issilicon(user) && in_range(src, user))
-		user.put_in_hands(object)
+		if(!user.put_in_hands(object))
+			object.forceMove(drop_location())
+			// todo: probably split this proc into something that isn't try
+			// because if this fails and something nulls, something bad happens
+			// i bandaided this to drop location but that's inflexible
 	else
 		object.forceMove(drop_location())
 
