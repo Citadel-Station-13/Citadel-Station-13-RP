@@ -79,7 +79,7 @@
 		if(AGONY)
 			halloss += max((effect * blocked), 0) // Useful for objects that cause "subdual" damage. PAIN!
 		if(IRRADIATE)
-			inflict_radiation(effect, TRUE)
+			afflict_radiation(effect, TRUE)
 		if(STUTTER)
 			if(status_flags & CANSTUN) // stun is usually associated with stutter
 				stuttering = max(stuttering,(effect * blocked))

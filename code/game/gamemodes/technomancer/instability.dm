@@ -16,6 +16,8 @@
 	var/last_instability = 0 // Used to calculate instability delta.
 	var/last_instability_event = null // most recent world.time that something bad happened due to instability.
 
+// todo: convert to status effect
+
 // Proc: adjust_instability()
 // Parameters: 0
 // Description: Does nothing, because inheritence.
@@ -179,13 +181,11 @@
 						qdel(sparks)
 					if(1)
 						return
-#warn radiation
-
 			if(30 to 50) //Moderate
 				rng = rand(0,8)
 				switch(rng)
 					if(0)
-						apply_effect(instability * 0.3, IRRADIATE)
+						afflict_radiation(instability * 0.3, FALSE)
 					if(1)
 						return
 					if(2)
@@ -208,13 +208,12 @@
 					if(8)
 						safe_blink(src, range = 6)
 						to_chat(src, "<span class='warning'>You're teleported against your will!</span>")
-#warn radiation
 
 			if(50 to 100) //Severe
 				rng = rand(0,8)
 				switch(rng)
 					if(0)
-						apply_effect(instability * 0.7, IRRADIATE)
+						afflict_radiation(instability * 0.7, FALSE)
 					if(1)
 						return
 					if(2)
@@ -235,12 +234,11 @@
 					if(7)
 						adjustToxLoss(instability * 0.25) //25 tox @ 100 instability
 
-#warn radiation
 			if(100 to 200) //Lethal
 				rng = rand(0,8)
 				switch(rng)
 					if(0)
-						apply_effect(instability, IRRADIATE)
+						afflict_radiation(instability, FALSE)
 					if(1)
 						visible_message("<span class='warning'>\The [src] suddenly collapses!</span>",
 						"<span class='danger'>You suddenly feel very light-headed, and faint!</span>")

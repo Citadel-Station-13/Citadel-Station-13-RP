@@ -466,9 +466,8 @@
 
 			extra_font = "<font color=[occupant.getFireLoss() < 60 ? "blue" : "red"]>"
 			dat += "[extra_font]\t-Burn Severity %: [occupant.getFireLoss()]</font><br>"
-	#warn radiation
 
-			extra_font = "<font color=[occupant.radiation < 10 ? "blue" : "red"]>"
+			extra_font = "<font color=[occupant.radiation < 400 ? "blue" : "red"]>"
 			dat += "[extra_font]\tRadiation Level %: [occupant.radiation]</font><br>"
 
 			extra_font = "<font color=[occupant.getCloneLoss() < 1 ? "blue" : "red"]>"

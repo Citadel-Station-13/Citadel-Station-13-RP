@@ -381,9 +381,9 @@
 	blob.nutrition = nutrition
 	blob.color = rgb(r_skin, g_skin, b_skin)
 	playsound(src.loc, "sound/effects/slime_squish.ogg", 15)
-	#warn radiation
 	if(radiation > 0)
-		blob.rad_glow = clamp(radiation, 0, 250)
+		blob.rad_glow = clamp(radiation / 5, 0, 250)
+		blob.radiation = radiation
 		set_light(0)
 		blob.set_light(max(1,min(5,radiation/15)), max(1,min(10,radiation/25)), blob.color)
 		blob.handle_light()
@@ -461,9 +461,8 @@
 	if(!blob_color)
 		blob_color = rgb(255, 255, 255)
 	shapeshifter_set_colour(blob_color)
-	#warn radiation
-	if(blob.rad_glow > 0)
-		radiation = clamp(blob.rad_glow,0,250)
+	if(blob.radiation > 0)
+		radiation = blob.radiation
 		set_light(max(1,min(5,radiation/15)), max(1,min(10,radiation/25)), species.get_flesh_colour(src))
 	update_icon()
 

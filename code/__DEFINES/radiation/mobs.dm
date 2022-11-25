@@ -37,6 +37,10 @@
 #define RAD_MOB_AFFLICT_STRENGTH_SLIMETOXIN(removed) (75 * removed)
 #define RAD_MOB_AFFLICT_STRENGTH_MUTAGEN(removed) (100 * removed)
 #define RAD_MOB_AFFLICT_STRENGTH_RADIUM(removed) (100 * removed)
+#define RAD_MOB_AFFLICT_DNA_INJECTOR (rand(150, 300))
+#define RAD_MOB_AFFLICT_FLORARAY_ON_PLANT (rand(30, 80))
+#define RAD_MOB_AFFLICT_VIRUS_RADIAN(multiplier) (multiplier * 15)
+#define RAD_MOB_AFFLICT_ANOMALY_BURST 500
 
 #define RAD_MOB_CURE_STRENGTH_HYRONALIN(removed) (50 * removed)
 #define RAD_MOB_CURE_STRENGTH_ARITHRAZINE(removed) (100 * removed)
@@ -45,6 +49,9 @@
 #define RAD_MOB_CURE_STRENGTH_VODKA(removed) (20 * removed)
 #define RAD_MOB_CURE_STRENGTH_GODKA(removed) (100 * removed)
 #define RAD_MOB_CURE_ADHERENT_BATH 125
+#define RAD_MOB_CURE_SYNTH_CHARGER 100
+#define RAD_MOB_CURE_PROTEAN_REGEN 50
+#define RAD_MOB_CURE_ANOMALY_BURST 500
 
 //! stuff passed into rad_act
 //! you should generally be using afflict radiation instead.

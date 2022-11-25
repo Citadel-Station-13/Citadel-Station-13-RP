@@ -19,7 +19,7 @@
 				H.vessel.add_reagent("blood",5)
 				H.nutrition += 50 * weakness
 				H.adjustBrainLoss(-25 * weakness)
-				H.radiation -= min(H.radiation, 25 * weakness)
+				H.cure_radiation(RAD_MOB_CURE_ANOMALY_BURST * weakness)
 				H.bodytemperature = initial(H.bodytemperature)
 				spawn(1)
 					H.fixblood()
@@ -31,7 +31,6 @@
 			//
 			C.regenerate_icons()
 			return 1
-	#warn radiation
 
 /datum/artifact_effect/heal/DoEffectAura()
 	//todo: check over this properly

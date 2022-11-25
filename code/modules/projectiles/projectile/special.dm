@@ -134,13 +134,13 @@
 	combustion = FALSE
 
 /obj/item/projectile/energy/floramut/on_hit(var/atom/target, var/blocked = 0)
-#warn radiation
 	var/mob/living/M = target
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = M
 		if((H.species.species_flags & IS_PLANT) && (M.nutrition < 500))
 			if(prob(15))
-				M.apply_effect((rand(30,80)),IRRADIATE)
+				// todo: less stunlock capability
+				M.afflict_radiation(RAD_MOB_AFFLICT_FLORARAY_ON_PLANT)
 				M.Weaken(5)
 				var/datum/gender/TM = GLOB.gender_datums[M.get_visible_gender()]
 				for (var/mob/V in viewers(src))
