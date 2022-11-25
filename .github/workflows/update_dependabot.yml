@@ -1,6 +1,5 @@
 name: Update Dependabot config
 
-# Only on manual triggers.
 on:
   schedule:
     - cron: "0 0 * * *"
@@ -17,7 +16,7 @@ jobs:
       - name: Update Dependabot
         shell: pwsh
         run: |
-          ./tools/update-dependabot.ps1 -targetBranch dependencies -outputFile ./.github/dependabot.yml
+          tools/update-dependabot.ps1 -targetBranch dependencies -outputFile .github/dependabot.yml
 
       - name: Push files to repo
         shell: pwsh
@@ -27,7 +26,7 @@ jobs:
           git config --global user.name 'Github Action'
           git config --global user.email 'alwayson@users.noreply.github.com'
 
-          git add /.github/dependabot.yml
+          git add .github/dependabot.yml
 
           # Get the name of the commit that triggered the workflow,
           # so we can refer to it in our automated commit message.
