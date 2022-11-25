@@ -293,7 +293,8 @@
 	return
 
 /atom/proc/emp_act(var/severity)
-	return
+	// todo: SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_EMP_ACT, severity)
 
 
 /atom/proc/bullet_act(obj/item/projectile/P, def_zone)
