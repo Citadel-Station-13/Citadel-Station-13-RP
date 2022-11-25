@@ -673,7 +673,7 @@
 					/obj/item/reagent_containers/food/condiment/small/packet/taropowder = 5,
 					/obj/item/glass_extra/stick = 30,
 					/obj/item/glass_extra/straw = 30,
-					/obj/item/storage/single_use/med_pouch/overdose = 5)
+					/obj/item/storage/single_use/med_pouch/overdose = 2)
 	contraband = list()
 	vend_delay = 15
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
@@ -848,9 +848,9 @@
 					/obj/item/stack/medical/advanced/bruise_pack = 6, /obj/item/stack/medical/advanced/ointment = 6, /obj/item/stack/medical/splint = 4,
 					/obj/item/storage/pill_bottle/carbon = 2, /obj/item/storage/pill_bottle = 3, /obj/item/storage/box/vmcrystal = 4,
 					/obj/item/clothing/glasses/omnihud/med = 4, /obj/item/glasses_kit = 1,  /obj/item/storage/quickdraw/syringe_case = 4,
-					/obj/item/storage/single_use/med_pouch/overdose = 6, /obj/item/storage/single_use/med_pouch/radiation = 6,
-					/obj/item/storage/single_use/med_pouch/toxin = 6, /obj/item/storage/single_use/med_pouch/oxyloss = 6,
-					/obj/item/storage/single_use/med_pouch/burn = 6, /obj/item/storage/single_use/med_pouch/trauma = 6)
+					/obj/item/storage/single_use/med_pouch/overdose = 3, /obj/item/storage/single_use/med_pouch/radiation = 3,
+					/obj/item/storage/single_use/med_pouch/toxin = 3, /obj/item/storage/single_use/med_pouch/oxyloss = 3,
+					/obj/item/storage/single_use/med_pouch/burn = 3, /obj/item/storage/single_use/med_pouch/trauma = 3)
 	contraband = list(/obj/item/reagent_containers/pill/tox = 3,/obj/item/reagent_containers/pill/stox = 4,/obj/item/reagent_containers/pill/antitox = 6)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	req_log_access = access_cmo
@@ -892,9 +892,9 @@
 /obj/machinery/vending/wallmed1/public
 	products = list(
 		/obj/item/stack/medical/bruise_pack = 8,
-		/obj/item/storage/single_use/med_pouch/trauma = 3,
+		/obj/item/storage/single_use/med_pouch/trauma = 2,
 		/obj/item/stack/medical/ointment = 8,
-		/obj/item/storage/single_use/med_pouch/burn = 3,
+		/obj/item/storage/single_use/med_pouch/burn = 2,
 		/obj/item/reagent_containers/hypospray/autoinjector = 16,
 		/obj/item/healthanalyzer = 4
 		)
@@ -907,8 +907,8 @@
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
 	products = list(
 		/obj/item/reagent_containers/pill/airlock = 20,
-		/obj/item/storage/single_use/med_pouch/oxyloss = 4,
-		/obj/item/storage/single_use/med_pouch/toxin = 4,
+		/obj/item/storage/single_use/med_pouch/oxyloss = 2,
+		/obj/item/storage/single_use/med_pouch/toxin = 2,
 		)
 	contraband = list(/obj/item/reagent_containers/pill/tox = 2)
 	req_log_access = access_cmo
