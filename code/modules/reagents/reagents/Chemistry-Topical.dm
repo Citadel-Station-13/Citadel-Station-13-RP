@@ -150,8 +150,7 @@
 
 /datum/reagent/topical/cleansalaze/affect_touch(mob/living/carbon/M, alien, removed)
     if(alien != IS_DIONA)
-        M.radiation = max(M.radiation - 15 * removed, 0)//Half as potent as hyroaline
- 	#warn radiation
+		M.cure_radiation(RAD_MOB_CURE_STRENGTH_CLEANSALAZE(removed))
 
 /datum/reagent/topical/lotion//Because chemistry should have some recreational uses
     name = "Lotion"

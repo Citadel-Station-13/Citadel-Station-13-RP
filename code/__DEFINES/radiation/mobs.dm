@@ -30,9 +30,15 @@
 // #define RAD_MOB_KNOCKDOWN_PROB 1					// Chance of knockdown per tick when over threshold
 // #define RAD_MOB_KNOCKDOWN_AMOUNT 3					// Amount of knockdown when it occurs
 
-//! stuff passed into afflict_radiation
+//! stuff passed into afflict/cure_radiation
 
-#define RAD_MOB_EFFECT_STRENGTH_
+#define RAD_MOB_AFFLICT_STRENGTH_SIFSLURRY_OD(removed) (50 * removed)
+#define RAD_MOB_AFFLICT_STRENGTH_ASLIMETOXIN(removed) (50 * removed)
+#define RAD_MOB_AFFLICT_STRENGTH_SLIMETOXIN(removed) (75* removed)
+
+#define RAD_MOB_CURE_STRENGTH_HYRONALIN(removed) (50 * removed)
+#define RAD_MOB_CURE_STRENGTH_ARITHRAZINE(removed) (100 * removed)
+#define RAD_MOB_CURE_STRENGTH_CLEANSALAZE(removed) (25 * removed)
 
 //! stuff passed into rad_act
 //! you should generally be using afflict radiation instead.

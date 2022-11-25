@@ -1073,8 +1073,7 @@
 /datum/reagent/hyronalin/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
 		return
-	M.radiation = max(M.radiation - 30 * removed, 0)
-	#warn radiation
+	M.cure_radiation(RAD_MOB_CURE_STRENGTH_HYRONALIN(removed))
 
 /datum/reagent/arithrazine
 	name = "Arithrazine"
@@ -1090,11 +1089,10 @@
 /datum/reagent/arithrazine/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
 		return
-	M.radiation = max(M.radiation - 70 * removed, 0)
+	M.cure_radiation(RAD_MOB_CURE_STRENGTH_ARITHRAZINE(removed))
 	M.adjustToxLoss(-10 * removed)
 	if(prob(60))
 		M.take_organ_damage(4 * removed, 0)
-	#warn radiation
 
 /datum/reagent/spaceacillin
 	name = "Spaceacillin"

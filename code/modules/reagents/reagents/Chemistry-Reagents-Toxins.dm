@@ -450,9 +450,8 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		overdose_mod *= H.species.chemOD_mod
-	M.apply_effect(2 * removed,IRRADIATE, 0, 0)
-	M.apply_effect(5 * removed,DROWSY, 0, 0)
-#warn radiation
+	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_SIFSLURRY_OD(removed))
+	M.apply_effect(5 * removed, DROWSY, 0, 0)
 
 /datum/reagent/toxin/sifslurry/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	affect_blood(M, alien, removed * 0.7)
@@ -1051,8 +1050,7 @@
 		if(prob(removed * 40))
 			randmuti(M)
 			to_chat(M, "<span class='warning'>You feel odd!</span>")
-	M.apply_effect(16 * removed, IRRADIATE, 0)
-#warn radiation
+	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_SLIMETOXIN(reomved))
 
 /datum/reagent/aslimetoxin
 	name = "Docility Toxin"
@@ -1082,8 +1080,7 @@
 		if(prob(removed * 40))
 			randmuti(M)
 			to_chat(M, "<span class='warning'>You feel odd!</span>")
-	M.apply_effect(6 * removed, IRRADIATE, 0)
-#warn radiation
+	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_ASLIMETOXIN(removed))
 
 /*
  * Hostile nanomachines.
