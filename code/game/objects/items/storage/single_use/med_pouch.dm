@@ -83,8 +83,9 @@ Single Use Emergency Pouches
 	1) Tear open the emergency medical pack using the easy open tab at the top.\n\
 	\t2) Carefully remove all items from the pouch and discard the pouch.\n\
 	\t3) Apply all autoinjectors to the injured party.\n\
-	\t4) Force the injured party to swallow all pills.\n\
+	\t4) Force the injured party to swallow the Kelotane pill.\n\
 	\t5) Use ointment on any burns if required\n\
+	\t6) Force the injured party to swallow the Spaceacillin pill.\n\
 	\t6) Contact the medical team with your location.
 	7) Stay in place once they respond.\
 		"}
@@ -92,8 +93,9 @@ Single Use Emergency Pouches
 		//obj/item/chems/hypospray/autoinjector/pouch_auto/nanoblood,//maybe we add nanoblood one day
 		/obj/item/reagent_containers/hypospray/autoinjector/pouch_pain,
 		/obj/item/reagent_containers/hypospray/autoinjector/burn_pouch,//used to be an adrenaline one, but adrenaline is kinda bad here
-		/obj/item/reagent_containers/pill/dermaline,
-		/obj/item/stack/medical/ointment = 2,
+		/obj/item/reagent_containers/pill/kelotane,
+		/obj/item/reagent_containers/pill/spaceacillin,
+		/obj/item/stack/medical/ointment
 	)
 
 /obj/item/storage/single_use/med_pouch/oxyloss
@@ -123,16 +125,17 @@ Single Use Emergency Pouches
 	injury_type = "toxin"
 	color = COLOR_GREEN
 	instructions = {"
-	1) Tear open the emergency medical pack using the easy open tab at the top.\n\
+	\t1) Tear open the emergency medical pack using the easy open tab at the top.\n\
 	\t2) Carefully remove all items from the pouch and discard the pouch.\n\
 	\t3) Apply all autoinjectors to the injured party.\n\
 	\t4) Force the injured party to swallow all pills.\n\
-	\t5) Contact the medical team with your location.
-	6) Stay in place once they respond.\
+	\t5) Contact the medical team with your location.\n\
+	\t6) Stay in place once they respond.\
 		"}
 	starts_with = list(
 		/obj/item/reagent_containers/hypospray/autoinjector/detox = 2,
-		/obj/item/reagent_containers/pill/antitox = 3
+		/obj/item/reagent_containers/hypospray/autoinjector/pouch_tox,
+		/obj/item/reagent_containers/pill/antitox = 2
 		)
 
 /obj/item/storage/single_use/med_pouch/radiation
@@ -148,8 +151,9 @@ Single Use Emergency Pouches
 	6) Stay in place once they respond.\
 		"}
 	starts_with = list(
+		/obj/item/reagent_containers/hypospray/autoinjector/detox = 1,
 		/obj/item/reagent_containers/hypospray/autoinjector/pouch_rad = 2,
-		/obj/item/reagent_containers/pill/antitox = 3
+		/obj/item/reagent_containers/pill/antitox = 2
 	)
 
 /obj/item/storage/single_use/med_pouch/overdose
@@ -166,9 +170,11 @@ Single Use Emergency Pouches
 	8) Stay in place once they respond.\
 		"}
 	starts_with = list(
-		/obj/item/reagent_containers/hypospray/autoinjector = 2,
+		/obj/item/reagent_containers/hypospray/autoinjector,
 		/obj/item/reagent_containers/hypospray/autoinjector/pouch_oxy,//used to be an inhaler,
-		/obj/item/reagent_containers/hypospray/autoinjector/detox = 2,
+		/obj/item/reagent_containers/hypospray/autoinjector/detox,
+		/obj/item/reagent_containers/pill/carbon,
+		/obj/item/reagent_containers/hypospray/autoinjector/pouch_antialcohol
 		//obj/item/chems/hypospray/autoinjector/pouch_auto/adrenaline
 	)
 
@@ -211,9 +217,19 @@ Single Use Emergency Pouches
 	filled_reagents = list("tramadol" = 5)
 
 /obj/item/reagent_containers/hypospray/autoinjector/pouch_rad
-	name = "Autoinjector (Alkysine)"
+	name = "Autoinjector (Hyronalin)"
 	icon_state = "blue"
-	filled_reagents = list("arithrazine" = 4, "tricordrazine" = 1)
+	filled_reagents = list("hyronalin" = 5)
+
+/obj/item/reagent_containers/hypospray/autoinjector/pouch_tox
+	name = "Critical Use Toxins Autoinjector"
+	icon_state = "blue"
+	filled_reagents = list("antitox"=3, "carthatoline" = 2)
+
+/obj/item/reagent_containers/hypospray/autoinjector/pouch_antialcohol
+	name = "Autoinjector (Ethylredoxrazine)"
+	icon_state = "blue"
+	filled_reagents = list("ethylredoxrazine"=5)
 /*
 /obj/item/chems/pill/pouch_pill
 	name       = "emergency pill"
