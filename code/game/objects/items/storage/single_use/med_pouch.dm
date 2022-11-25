@@ -224,7 +224,7 @@ Single Use Emergency Pouches
 /obj/item/reagent_containers/hypospray/autoinjector/pouch_tox
 	name = "Critical Use Toxins Autoinjector"
 	icon_state = "blue"
-	filled_reagents = list("antitox"=3, "carthatoline" = 2)
+	filled_reagents = list("anti_toxin"=3, "carthatoline" = 2)
 
 /obj/item/reagent_containers/hypospray/autoinjector/pouch_antialcohol
 	name = "Autoinjector (Ethylredoxrazine)"
