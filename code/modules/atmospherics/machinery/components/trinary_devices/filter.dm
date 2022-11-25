@@ -134,12 +134,12 @@
 	data["last_flow_rate"] = round(last_flow_rate, 0.1)
 
 	data["filter_types"] = list()
-	data["filter_types"] += list(list("name" = "Nothing",        "f_type" = -1, "selected" = filter_type == -1))
-	data["filter_types"] += list(list("name" = "Phoron",         "f_type" =  0, "selected" = filter_type ==  0))
-	data["filter_types"] += list(list("name" = "Oxygen",         "f_type" =  1, "selected" = filter_type ==  1))
-	data["filter_types"] += list(list("name" = "Nitrogen",       "f_type" =  2, "selected" = filter_type ==  2))
-	data["filter_types"] += list(list("name" = "Carbon Dioxide", "f_type" =  3, "selected" = filter_type ==  3))
-	data["filter_types"] += list(list("name" = "Nitrous Oxide",  "f_type" =  4, "selected" = filter_type ==  4))
+	data["filter_types"] += list(list("name" = "Nothing", "f_type" = -1, "selected" = filter_type == -1))
+	data["filter_types"] += list(list("name" = "Phoron", "f_type" = 0, "selected" = filter_type == 0))
+	data["filter_types"] += list(list("name" = "Oxygen", "f_type" = 1, "selected" = filter_type == 1))
+	data["filter_types"] += list(list("name" = "Nitrogen", "f_type" = 2, "selected" = filter_type == 2))
+	data["filter_types"] += list(list("name" = "Carbon Dioxide", "f_type" = 3, "selected" = filter_type == 3))
+	data["filter_types"] += list(list("name" = "Nitrous Oxide", "f_type" = 4, "selected" = filter_type == 4))
 
 	return data
 
@@ -163,7 +163,7 @@
 		if("filter")
 			. = TRUE
 			filter_type = text2num(params["filterset"])
-			filtered_out.len = 0 //no need to create new lists unnecessarily
+			filtered_out.Cut()	//no need to create new lists unnecessarily
 			switch(filter_type)
 				if(0) //removing hydrocarbons
 					filtered_out += /datum/gas/phoron
