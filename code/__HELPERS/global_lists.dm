@@ -1,8 +1,5 @@
 //? BEHOLD THE LIST OF GLOBAL LISTS ?//
 
-/// List of all clients whom are admins
-var/list/admins = list()
-
 //Since it didn't really belong in any other category, I'm putting this here
 //This is for procs to replace all the goddamn 'in world's that are chilling around the code
 

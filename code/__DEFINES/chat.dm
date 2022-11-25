@@ -9,6 +9,7 @@
 #define MESSAGE_TYPE_RADIO "radio"
 #define MESSAGE_TYPE_INFO "info"
 #define MESSAGE_TYPE_WARNING "warning"
+#define MESSAGE_TYPE_HELPFUL "helpful"
 #define MESSAGE_TYPE_DEADCHAT "deadchat"
 #define MESSAGE_TYPE_OOC "ooc"
 #define MESSAGE_TYPE_ADMINPM "adminpm"
