@@ -44,6 +44,7 @@
 #define RAD_MOB_CURE_STRENGTH_MEDIGUN 150
 #define RAD_MOB_CURE_STRENGTH_VODKA(removed) (20 * removed)
 #define RAD_MOB_CURE_STRENGTH_GODKA(removed) (100 * removed)
+#define RAD_MOB_CURE_ADHERENT_BATH 125
 
 //! stuff passed into rad_act
 //! you should generally be using afflict radiation instead.

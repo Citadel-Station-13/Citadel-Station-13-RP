@@ -32,41 +32,28 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 /datum/controller/subsystem/processing/radiation/proc/radiation_pulse(turf/T, atom/source, intensity, falloff_modifier, log, can_contaminate = RAD_CONTAMINATION_DEFAULT)
 	if(!can_fire)	// we don't care
 		return FALSE
-
-#warn impl
-
-/*
-	if(!SSradiation.can_fire)
-		return
-	var/area/A = get_area(source)
-	var/atom/nested_loc = source.loc
-	var/spawn_waves = TRUE
-	while(nested_loc != A)
-		if(nested_loc.rad_flags & RAD_PROTECT_CONTENTS)
-			spawn_waves = FALSE
+	if(!T)
+		T = get_turf(source)
+	var/atom/nested = source.loc
+	var/waves = TRUE
+	while(!isarea(nested.loc))
+		if(nested.rad_flags & RAD_BLOCK_CONTENTS)
+			waves = FALSE
 			break
-		nested_loc = nested_loc.loc
-	if(spawn_waves)
-		for(var/dir in GLOB.cardinals)
-			new /datum/radiation_wave(source, dir, intensity, range_modifier, can_contaminate)
-
+		nested = nested.loc
+	if(waves)
+		for(var/dir in GLOB.cardinal)
+			new /datum/radiation_wave(source, T, intensity, falloff_modifier, can_contaminate)
 		var/static/last_huge_pulse = 0
-		if(intensity > 3000 && world.time > last_huge_pulse + 200)
+		if(intensity > 1000 && world.time > last_huge_pulse + 10 SECONDS)
 			last_huge_pulse = world.time
 			log = TRUE
-
-	var/list/things = get_rad_contents(source) //copypasta because I don't want to put special code in waves to handle their origin
-	for(var/k in 1 to things.len)
-		var/atom/thing = things[k]
-		if(!thing)
-			continue
-		thing.rad_act(intensity)
-
+	var/list/things = get_rad_contents(nested)
+	for(var/atom/A as anything in things)
+		A.rad_act(intensity)
 	if(log)
-		var/turf/_source_T = get_turf(source)
-		log_game("Radiation pulse with intensity: [intensity] and range modifier: [range_modifier] in [loc_name(_source_T)][spawn_waves ? "" : " (contained by [nested_loc.name])"]")
+		log_game("Pulse intensity [intensity] falloff [falloff_modifier] in [AREACOORD(T)][waves? "" : " (contained by [nested])"]")
 	return TRUE
-*/
 
 /**
  * does our best faith attempt at irradiating a whole zlevel without lagging the server to death
