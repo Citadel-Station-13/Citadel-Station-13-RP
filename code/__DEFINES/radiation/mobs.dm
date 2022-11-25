@@ -30,6 +30,10 @@
 // #define RAD_MOB_KNOCKDOWN_PROB 1					// Chance of knockdown per tick when over threshold
 // #define RAD_MOB_KNOCKDOWN_AMOUNT 3					// Amount of knockdown when it occurs
 
+//! virology
+
+#define RAD_VIRUS_MUTATE 200	// threshold for viruses to mutate
+
 //! stuff passed into afflict/cure_radiation
 
 #define RAD_MOB_AFFLICT_STRENGTH_SIFSLURRY_OD(removed) (50 * removed)

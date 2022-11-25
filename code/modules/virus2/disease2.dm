@@ -82,10 +82,9 @@
 		cure(mob)
 		return
 
-	if(mob.radiation > 50)
+	if(mob.radiation > RAD_VIRUS_MUTATE)
 		if(prob(1))
 			majormutate()
-	#warn radiation
 
 	//Space antibiotics have a good chance to stop disease completely
 	if(mob.chem_effects[CE_ANTIBIOTIC])
