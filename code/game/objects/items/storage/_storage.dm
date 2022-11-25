@@ -716,4 +716,4 @@
 		. += "<span class='notice'>\The [src] contains \the [display_item]!</span>"
 
 /obj/item/storage/AllowDrop()
-	return FALSE
+	return TRUE
