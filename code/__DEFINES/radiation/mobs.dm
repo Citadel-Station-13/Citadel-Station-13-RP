@@ -34,11 +34,16 @@
 
 #define RAD_MOB_AFFLICT_STRENGTH_SIFSLURRY_OD(removed) (50 * removed)
 #define RAD_MOB_AFFLICT_STRENGTH_ASLIMETOXIN(removed) (50 * removed)
-#define RAD_MOB_AFFLICT_STRENGTH_SLIMETOXIN(removed) (75* removed)
+#define RAD_MOB_AFFLICT_STRENGTH_SLIMETOXIN(removed) (75 * removed)
+#define RAD_MOB_AFFLICT_STRENGTH_MUTAGEN(removed) (100 * removed)
+#define RAD_MOB_AFFLICT_STRENGTH_RADIUM(removed) (100 * removed)
 
 #define RAD_MOB_CURE_STRENGTH_HYRONALIN(removed) (50 * removed)
 #define RAD_MOB_CURE_STRENGTH_ARITHRAZINE(removed) (100 * removed)
 #define RAD_MOB_CURE_STRENGTH_CLEANSALAZE(removed) (25 * removed)
+#define RAD_MOB_CURE_STRENGTH_MEDIGUN 150
+#define RAD_MOB_CURE_STRENGTH_VODKA(removed) (20 * removed)
+#define RAD_MOB_CURE_STRENGTH_GODKA(removed) (100 * removed)
 
 //! stuff passed into rad_act
 //! you should generally be using afflict radiation instead.

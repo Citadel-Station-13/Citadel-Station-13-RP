@@ -640,8 +640,7 @@
 		if(prob(removed * 40)) //Additionally, let's make it so there's an 8% chance per tick for a random cosmetic/not guranteed good/bad mutation.
 			randmuti(M)//This should equate to 4 random cosmetic mutations per 10 injected/20 ingested/30 touching units
 			to_chat(M, "<span class='warning'>You feel odd!</span>")
-	M.apply_effect(10 * removed, IRRADIATE, 0)
-#warn radiation
+	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_MUTAGEN(removed))
 
 /datum/reagent/slimejelly
 	name = "Slime Jelly"
@@ -1050,7 +1049,7 @@
 		if(prob(removed * 40))
 			randmuti(M)
 			to_chat(M, "<span class='warning'>You feel odd!</span>")
-	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_SLIMETOXIN(reomved))
+	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_SLIMETOXIN(removed))
 
 /datum/reagent/aslimetoxin
 	name = "Docility Toxin"
