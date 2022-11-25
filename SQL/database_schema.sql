@@ -240,7 +240,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%connection_log` (
 ----- Object Persistence Store -----
 -- These are not multi-server synchronization safe! It is expected that you DO NOT share these databases --
 CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_keyed_strings` (
-  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created` datetime NOT NULL DEFAULT Now(),
   `modified` datetime NOT NULL,
   `key` varchar(64) NOT NULL,
   `value` MEDIUMTEXT NULL,
