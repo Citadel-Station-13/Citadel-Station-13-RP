@@ -45,6 +45,9 @@
 #define RAD_MOB_AFFLICT_FLORARAY_ON_PLANT (rand(30, 80))
 #define RAD_MOB_AFFLICT_VIRUS_RADIAN(multiplier) (multiplier * 15)
 #define RAD_MOB_AFFLICT_ANOMALY_BURST 500
+#define RAD_MOB_AFFLICT_DNA_MODIFIER(intensity, duration) (intensity * duration)
+#define RAD_MOB_AFFLICT_DNA_MODIFIER_PULSE 150
+#define RAD_MOB_AFFLICT_DNA_MODIFIER_TRANSFER 150
 
 #define RAD_MOB_CURE_STRENGTH_HYRONALIN(removed) (50 * removed)
 #define RAD_MOB_CURE_STRENGTH_ARITHRAZINE(removed) (100 * removed)

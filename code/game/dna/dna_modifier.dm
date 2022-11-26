@@ -464,13 +464,12 @@
 		return 1 // return 1 forces an update to all Nano uis attached to src
 
 	if (href_list["pulseRadiation"])
-		irradiating = src.radiation_duration
+		irradiating = 1
 		var/lock_state = src.connected.locked
 		src.connected.locked = 1//lock it
 		SSnanoui.update_uis(src) // update all UIs attached to src
 
-		sleep(10*src.radiation_duration) // sleep for radiation_duration seconds
-
+		sleep(10 * 2)
 		irradiating = 0
 
 		if (!src.connected.occupant)
@@ -487,8 +486,7 @@
 			else
 				randmuti(src.connected.occupant)
 
-#warn radiation
-		src.connected.occupant.apply_effect(((src.radiation_intensity*3)+src.radiation_duration*3), IRRADIATE, check_protection = 0)
+		connected.occupant.afflict_radiation(RAD_MOB_AFFLICT_DNA_MODIFIER_PULSE)
 		src.connected.locked = lock_state
 		return 1 // return 1 forces an update to all Nano uis attached to src
 
@@ -578,12 +576,11 @@
 		if (!src.connected.occupant)
 			return 1
 
-#warn radiation
 		if (prob((80 + (src.radiation_duration / 2))))
 			block = miniscrambletarget(num2text(selected_ui_target), src.radiation_intensity, src.radiation_duration)
 			src.connected.occupant.dna.SetUISubBlock(src.selected_ui_block,src.selected_ui_subblock,block)
 			src.connected.occupant.UpdateAppearance()
-			src.connected.occupant.apply_effect((src.radiation_intensity+src.radiation_duration), IRRADIATE, check_protection = 0)
+			connected.occupant.afflict_radiation(RAD_MOB_AFFLICT_DNA_MODIFIER(radiation_intensity, radiation_duration))
 		else
 			if	(prob(20+src.radiation_intensity))
 				randmutb(src.connected.occupant)
@@ -646,10 +643,9 @@
 					else if (src.selected_se_block > DNA_SE_LENGTH/2 && src.selected_se_block < DNA_SE_LENGTH)
 						real_SE_block--
 
-#warn radiation
 				//testing("Irradiated SE block [real_SE_block]:[src.selected_se_subblock] ([original_block] now [block]) [(real_SE_block!=selected_se_block) ? "(SHIFTED)":""]!")
 				connected.occupant.dna.SetSESubBlock(real_SE_block,selected_se_subblock,block)
-				src.connected.occupant.apply_effect((src.radiation_intensity+src.radiation_duration), IRRADIATE, check_protection = 0)
+				connected.occupant.afflict_radiation(RAD_MOB_AFFLICT_DNA_MODIFIER(radiation_intensity, radiation_duration))
 				domutcheck(src.connected.occupant,src.connected)
 			else
 				src.connected.occupant.apply_effect(((src.radiation_intensity*2)+src.radiation_duration), IRRADIATE, check_protection = 0)
@@ -791,8 +787,7 @@
 					H.gender = buf.gender
 					H.descriptors = buf.body_descriptors
 				domutcheck(src.connected.occupant,src.connected)
-#warn radiation
-			src.connected.occupant.apply_effect(rand(20,50), IRRADIATE, check_protection = 0)
+			connected.occupant.afflict_radiation(RAD_MOB_AFFLICT_DNA_MODIFIER_TRANSFER)
 			return 1
 
 		if (bufferOption == "createInjector")
