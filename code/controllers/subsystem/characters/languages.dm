@@ -20,20 +20,6 @@
 		if(initial(L.abstract_type) == path)
 			continue
 		L = new path
-		if(!L.id)
-			stack_trace("no ID on language type [path]")
-			continue
-		if(language_lookup[L.id])
-			stack_trace("duped language id [L.id] on [path] skipped")
-			continue
-		if(!L.name)
-			stack_trace("no name on language type [path]")
-			continue
-		if(language_names[L.name])
-			stack_trace("duped language name [L.name] on [path] skipped")
-			continue
-		if(language_keys[L.key])
-			stack_trace("collision on key [L.key] between [path] and [language_keys[L.key]].")
 		language_lookup[L.id] = L
 		language_names[L.name] = L
 		language_paths[path] = L
