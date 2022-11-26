@@ -190,7 +190,7 @@
 				var/input = sanitize(input("Please choose a message to transmit to [GLOB.using_map.boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
 				if(!input || !(usr in view(1,src)))
 					return
-				CentCom_announce(input, usr)
+				message_centcom(input, usr)
 				to_chat(usr, "<font color=#4F49AF>Message transmitted.</font>")
 				log_game("[key_name(usr)] has made an IA [GLOB.using_map.boss_short] announcement: [input]")
 				centcomm_message_cooldown = 1
@@ -207,7 +207,7 @@
 				var/input = sanitize(input(usr, "Please choose a message to transmit to \[ABNORMAL ROUTING CORDINATES\] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination. Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
 				if(!input || !(usr in view(1,src)))
 					return
-				Syndicate_announce(input, usr)
+				message_syndicate(input, usr)
 				to_chat(usr, "<font color=#4F49AF>Message transmitted.</font>")
 				log_game("[key_name(usr)] has made an illegal announcement: [input]")
 				centcomm_message_cooldown = 1
@@ -559,3 +559,11 @@
 			status_signal.data["picture_state"] = data1
 
 	frequency.post_signal(src, status_signal)
+
+//TODO: Convert to proper cooldowns. A bool for cooldowns is insanely dumb.
+/// Override the cooldown for special actions
+/// Used in places such as CentCom messaging back so that the crew can answer right away
+/obj/machinery/computer/communications/proc/override_cooldown()
+	// COOLDOWN_RESET(src, important_action_cooldown)
+	centcomm_message_cooldown = 0
+	message_cooldown = 0

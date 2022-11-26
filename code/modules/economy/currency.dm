@@ -44,7 +44,7 @@
  * - target - used for visual feedback
  * - range - used for visual feedback
  *
- * @return amount consumed
+ * @return amount consumed, or a payment status enum
  */
 /obj/item/proc/consume_static_currency(amount, force, mob/user, atom/target, range)
 	return PAYMENT_NOT_CURRENCY
@@ -126,7 +126,7 @@
  * silent - suppress all feedback
  * visual_range - feedback/message range
  *
- * @returns amount paid
+ * @returns amount paid, or payment failure enum
  */
 /obj/item/proc/attempt_use_currency(mob/user, atom/movable/predicate, amount, force, prevent_types, list/data = list(), silent, visual_range = 7)
 	. = PAYMENT_NOT_CURRENCY

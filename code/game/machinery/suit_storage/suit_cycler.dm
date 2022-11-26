@@ -87,6 +87,11 @@
 	req_access = list(access_explorer) //Old Exploration needs fixing up
 	departments = list("Exploration", "No Change")
 
+/obj/machinery/suit_cycler/pathfinder
+	name = "Pathfinder suit cycler"
+	model_text = "Pathfinder"
+	req_access = list(access_pathfinder)
+	departments = list("Pathfinder", "No Change")
 
 /obj/machinery/suit_cycler/pilot
 	name = "Pilot suit cycler"
@@ -530,6 +535,9 @@
 		if("Old Exploration")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/exploration/alt
 			parent_suit = /obj/item/clothing/suit/space/void/exploration/alt
+		if("Pathfinder")
+			parent_helmet = /obj/item/clothing/head/helmet/space/void/exploration/pathfinder
+			parent_suit = /obj/item/clothing/suit/space/void/exploration/pathfinder
 		if("Pilot")
 			parent_helmet = /obj/item/clothing/head/helmet/space/void/pilot
 			parent_suit = /obj/item/clothing/suit/space/void/pilot

@@ -60,14 +60,14 @@
 			who += ", [C]"
 
 	var/adminwho
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if(!adminwho)
 			adminwho = "[C]"
 		else
 			adminwho += ", [C]"
 
 	reason = sql_sanitize_text(reason)
-	
+
 	if(isnull(computerid))
 		computerid = ""
 	if(isnull(ip))
@@ -409,7 +409,7 @@
 			var/ipsearch = ""
 			var/cidsearch = ""
 			var/bantypesearch = ""
-			
+
 			var/list/search_params = list()
 			if(!match)
 				if(adminckey)

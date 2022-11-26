@@ -227,6 +227,7 @@
 			bottom_turf.plane = src.plane
 			bottom_turf.color = below.color
 			bottom_turf.copy_overlays(below)
+			// todo: zmimic
 			bottom_turf.appearance_flags = KEEP_TOGETHER
 			underlays = list(bottom_turf)
 

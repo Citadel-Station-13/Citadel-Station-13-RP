@@ -268,7 +268,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/observer/dead/verb/reenter_corpse()
 	set category = "Ghost"
 	set name = "Re-enter Corpse"
-	if(!client)	return
+	if(!client)
+		return
 	if(!(mind && mind.current && can_reenter_corpse))
 		to_chat(src, "<span class='warning'>You have no body.</span>")
 		return
@@ -839,3 +840,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/datum/perspective/P = ..()
 	P.SetSight(SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_SELF)
 	P.SetSeeInvis(SEE_INVISIBLE_OBSERVER)
+
+/mob/dead/observer/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
+	return isAdminGhostAI(usr)

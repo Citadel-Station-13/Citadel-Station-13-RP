@@ -30,7 +30,7 @@
 	cold_level_3 = -1
 
 	species_flags =  NO_SCAN | NO_PAIN | NO_SLIP | NO_POISON | NO_MINOR_CUT | NO_INFECT
-	species_spawn_flags = SPECIES_SPAWN_RESTRICTED
+	species_spawn_flags = SPECIES_SPAWN_SPECIAL
 
 	reagent_tag = IS_XENOS
 

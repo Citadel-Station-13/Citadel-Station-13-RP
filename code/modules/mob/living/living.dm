@@ -867,6 +867,7 @@ default behaviour is:
 	// TEMPORARY PATCH UNTIL MOBILITY FLAGS
 	if(restrained())
 		stop_pulling()
+		drop_all_held_items()
 	// End
 	if(!resting && cannot_stand() && can_stand_overridden())
 		lying = 0
@@ -1098,3 +1099,15 @@ default behaviour is:
 	. = ..()
 	// since we're shifted up by transforms..
 	. += ((size_multiplier * icon_scale_y) - 1) * 16
+
+/mob/living/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
+	if(incapacitated())
+		to_chat(src, SPAN_WARNING("You can't do that right now!"))
+		return FALSE
+	if(be_close && !in_range(M, src))
+		to_chat(src, SPAN_WARNING("You are too far away!"))
+		return FALSE
+	if(!no_dexterity && !IsAdvancedToolUser())
+		to_chat(src, SPAN_WARNING("You don't have the dexterity to do this!"))
+		return FALSE
+	return TRUE

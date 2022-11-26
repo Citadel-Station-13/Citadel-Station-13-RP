@@ -58,7 +58,7 @@
 	nano_ui_interact(user)
 
 /obj/machinery/computer/transhuman/designer/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	// log_debug("designer.nano_ui_interact([user], force_open = [force_open])")
+	// log_debug(SPAN_DEBUG("designer.nano_ui_interact([user], force_open = [force_open])"))
 	user.set_machine(src)
 
 	var/data[0]
@@ -74,7 +74,7 @@
 	if(menu == "3")
 		var/stock_bodyrecords_list_ui[0]
 		for (var/datum/species/S in SScharacters.all_static_species_meta())
-			if((S.species_spawn_flags & (SPECIES_SPAWN_WHITELISTED|SPECIES_SPAWN_ALLOWED)) != SPECIES_SPAWN_ALLOWED)
+			if((S.species_spawn_flags & (SPECIES_SPAWN_WHITELISTED|SPECIES_SPAWN_CHARACTER)) != SPECIES_SPAWN_CHARACTER)
 				continue
 			stock_bodyrecords_list_ui += S
 		if(stock_bodyrecords_list_ui.len)
@@ -178,7 +178,7 @@
 
 	else if(href_list["view_stock_brec"])
 		var/datum/species/S = SScharacters.resolve_species_name(href_list["view_stock_brec"])
-		if(S && (S.species_spawn_flags & (SPECIES_SPAWN_WHITELISTED|SPECIES_SPAWN_ALLOWED)) == SPECIES_SPAWN_ALLOWED)
+		if(S && (S.species_spawn_flags & (SPECIES_SPAWN_WHITELISTED|SPECIES_SPAWN_CHARACTER)) == SPECIES_SPAWN_CHARACTER)
 			// Generate body record from species!
 			mannequin = new(null, S.name)
 			mannequin.real_name = "Stock [S.name] Body"
@@ -253,7 +253,7 @@
 /obj/machinery/computer/transhuman/designer/proc/update_preview_mob(var/mob/living/carbon/human/H)
 	ASSERT(!QDELETED(H))
 	ASSERT(!QDELETED(active_br))
-	//log_debug("designer.update_preview_mob([H]) active_br = \ref[active_br]")
+	//log_debug(SPAN_DEBUG("designer.update_preview_mob([H]) active_br = \ref[active_br]"))
 	//Get the DNA and generate a new mob
 	var/datum/dna2/record/R = active_br.mydna
 	H.set_species(R.dna.species) // This needs to happen before anything else becuase it sets some variables.

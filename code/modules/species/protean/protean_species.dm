@@ -7,7 +7,7 @@
 	name_plural = "Proteans"
 	category = "Special"
 	blurb = "Sometimes very advanced civilizations will produce the ability to swap into manufactured, robotic bodies. And sometimes \
-			<i>VERY</i> advanced civilizations have the option of 'nanoswarm' bodies. Effectively a single robot body comprised \
+			<i>very</i> advanced civilizations have the option of 'nanoswarm' bodies. Effectively a single robot body comprised \
 			of millions of tiny nanites working in concert to maintain cohesion."
 	show_ssd = "totally quiescent"
 	death_message = "rapidly loses cohesion, dissolving into a cloud of gray dust..."
@@ -22,7 +22,7 @@
 
 	species_flags =            NO_SCAN | NO_SLIP | NO_MINOR_CUT | NO_HALLUCINATION | NO_INFECT | NO_PAIN | CONTAMINATION_IMMUNE
 	species_appearance_flags = HAS_SKIN_COLOR | HAS_EYE_COLOR | HAS_HAIR_COLOR | HAS_UNDERWEAR | HAS_LIPS
-	species_spawn_flags		 = SPECIES_SPAWN_ALLOWED | SPECIES_SPAWN_WHITELISTED | SPECIES_SPAWN_WHITELIST_SELECTABLE
+	species_spawn_flags		 = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED
 	health_hud_intensity = 2
 	max_additional_languages = 5  // Let's not make them know every language, past me.
 	assisted_langs = list(LANGUAGE_ROOTLOCAL, LANGUAGE_ROOTGLOBAL, LANGUAGE_VOX)

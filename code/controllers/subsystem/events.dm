@@ -67,7 +67,7 @@ SUBSYSTEM_DEF(events)
 	active_events -= E
 
 	if(!E.event_meta || !E.severity)	// datum/event is used here and there for random reasons, maintaining "backwards compatibility"
-		log_debug("Event of '[E.type]' with missing meta-data has completed.")
+		log_debug(SPAN_DEBUG("Event of '[E.type]' with missing meta-data has completed."))
 		return
 
 	finished_events += E
@@ -78,7 +78,7 @@ SUBSYSTEM_DEF(events)
 	if(EM.add_to_queue)
 		EC.available_events += EM
 
-	log_debug("Event '[EM.name]' has completed at [worldtime2stationtime(world.time)].")
+	log_debug(SPAN_DEBUG("Event '[EM.name]' has completed at [worldtime2stationtime(world.time)]."))
 
 /datum/controller/subsystem/events/proc/delay_events(var/severity, var/delay)
 	var/datum/event_container/EC = event_containers[severity]

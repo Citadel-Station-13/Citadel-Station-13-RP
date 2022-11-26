@@ -458,7 +458,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 				)
 			else
 				icon = 'icons/obj/pda_old.dmi'
-				log_debug("Invalid switch for PDA, defaulting to old PDA icons. [pdachoice] chosen.")
+				log_debug(SPAN_DEBUG("Invalid switch for PDA, defaulting to old PDA icons. [pdachoice] chosen."))
 
 
 /obj/item/pda/proc/can_use()

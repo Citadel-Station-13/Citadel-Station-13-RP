@@ -24,7 +24,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 
 // Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
 /obj/item/proc/attack_self(mob/user)
-	return
+	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
 
 // Called at the start of resolve_attackby(), before the actual attack.
 /obj/item/proc/pre_attack(atom/a, mob/user)

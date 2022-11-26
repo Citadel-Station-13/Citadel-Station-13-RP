@@ -76,7 +76,7 @@
 	update_icon()
 
 	if(!humanform) // If we somehow have a blob with no human, lets just clean up.
-		log_debug("Cleaning up blob with no prommie!")
+		log_debug(SPAN_DEBUGINFO("Cleaning up blob with no prommie!"))
 		qdel(src)
 	return
 
@@ -502,4 +502,3 @@
 	else if(humanform.say_understands(other, speaking))		//So they're speaking something other than promethean or sign, let's just ask our original mob if it understands
 		return TRUE
 	else return FALSE
-

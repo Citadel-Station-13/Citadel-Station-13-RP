@@ -274,6 +274,9 @@
 /obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)
 	if(anchored)	// Don't.
 		return ..()
+	if(user.restrained())
+		return ..()	// don't.
+		// todo: restraint levels, e.g. handcuffs vs straightjacket
 	if(!user.is_in_inventory(src))
 		// not being held
 		if(!isturf(loc))	// yea nah
@@ -629,11 +632,11 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 	else if(!zoom && user.item_by_slot(wornslot) != src && wornslot != FALSE)
 		to_chat(user, "You need to wear the [devicename] to look through it properly")
 		cannotzoom = 1
-
 	//We checked above if they are a human and returned already if they weren't.
 	var/mob/living/carbon/human/H = user
 	if(!zoom && !cannotzoom)
-		INVOKE_ASYNC(H.client, /client.proc/change_view, viewsize, TRUE) // Reset to default
+		H.ensure_self_perspective()
+		H.self_perspective.set_augmented_view(viewsize - 2, viewsize - 2)
 		zoom = 1
 
 		var/tilesize = 32
@@ -652,22 +655,18 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 			if (WEST)
 				H.client.pixel_x = -viewoffset
 				H.client.pixel_y = 0
-
 		H.visible_message("[user] peers through the [zoomdevicename ? "[zoomdevicename] of the [src.name]" : "[src.name]"].")
 		H.looking_elsewhere = TRUE
 		H.handle_vision()
-
 	else
-
-
+		H.ensure_self_perspective()
+		H.self_perspective.set_augmented_view(0, 0)
 		zoom = 0
 
 		H.client.pixel_x = 0
 		H.client.pixel_y = 0
 		H.looking_elsewhere = FALSE
 		H.handle_vision()
-
-		INVOKE_ASYNC(H.client, H.client.is_preference_enabled(/datum/client_preference/scaling_viewport) ? /client.verb/OnResize : /client.proc/change_view, world.view) // Reset to default
 
 		if(!cannotzoom)
 			user.visible_message("[zoomdevicename ? "[user] looks up from the [src.name]" : "[user] lowers the [src.name]"].")

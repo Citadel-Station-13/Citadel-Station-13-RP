@@ -111,7 +111,7 @@
 	//Prevent people from printing restricted and whitelisted species
 	var/datum/species/S = SScharacters.resolve_species_name(M.dna.species)
 	if(S)
-		toocomplex = (S.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) || (S.species_spawn_flags & SPECIES_SPAWN_RESTRICTED)
+		toocomplex = (S.species_spawn_flags & SPECIES_SPAWN_WHITELISTED) || (S.species_spawn_flags & SPECIES_SPAWN_SPECIAL)
 
 	//General stuff about them
 	synthetic = M.isSynthetic()

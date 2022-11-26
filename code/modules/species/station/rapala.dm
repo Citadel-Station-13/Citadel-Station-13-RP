@@ -32,7 +32,7 @@
 	// wikilink = ""
 	catalogue_data = list(/datum/category_item/catalogue/fauna/rapala)
 
-	species_spawn_flags = SPECIES_SPAWN_ALLOWED
+	species_spawn_flags = SPECIES_SPAWN_CHARACTER
 	species_appearance_flags = HAS_HAIR_COLOR | HAS_LIPS | HAS_UNDERWEAR | HAS_SKIN_COLOR | HAS_EYE_COLOR
 
 	heat_discomfort_strings = list(

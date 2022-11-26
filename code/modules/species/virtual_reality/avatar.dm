@@ -13,7 +13,7 @@
 	death_message =    "flickers briefly, their gear falling in a heap on the floor around their motionless body."
 	knockout_message = "has been knocked unconscious!"
 
-	species_spawn_flags =		SPECIES_SPAWN_RESTRICTED
+	species_spawn_flags =		SPECIES_SPAWN_SPECIAL
 
 	speech_bubble_appearance = "cyber"
 
@@ -24,7 +24,7 @@
 	male_sneeze_sound = 'sound/effects/mob_effects/sneeze.ogg'
 	female_sneeze_sound = 'sound/effects/mob_effects/f_sneeze.ogg'
 
-	valid_transform_species = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_DIONA, SPECIES_TESHARI, SPECIES_VOX, SPECIES_MONKEY, SPECIES_SKELETON)
+	valid_transform_species = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN, SPECIES_UNATHI, SPECIES_UNATHI_DIGI, SPECIES_TAJ, SPECIES_SKRELL, SPECIES_DIONA, SPECIES_TESHARI, SPECIES_VOX, SPECIES_MONKEY, SPECIES_SKELETON)
 
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick, /datum/unarmed_attack/punch, /datum/unarmed_attack/bite)
 	has_organ =     list(O_BRAIN = /obj/item/organ/internal/brain/slime, O_EYES = /obj/item/organ/internal/eyes) // Slime core.

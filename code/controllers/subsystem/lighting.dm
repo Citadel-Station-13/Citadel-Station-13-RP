@@ -1,6 +1,11 @@
-GLOBAL_LIST_EMPTY(lighting_update_lights) // List of lighting sources  queued for update.
-GLOBAL_LIST_EMPTY(lighting_update_corners) // List of lighting corners  queued for update.
+GLOBAL_LIST_EMPTY(lighting_update_lights)  // List of lighting sources queued for update.
+GLOBAL_LIST_EMPTY(lighting_update_corners) // List of lighting corners queued for update.
 GLOBAL_LIST_EMPTY(lighting_update_objects) // List of lighting objects queued for update.
+
+#ifdef VISUALIZE_LIGHT_UPDATES
+GLOBAL_VAR_INIT(allow_duped_values,  FALSE)
+GLOBAL_VAR_INIT(allow_duped_corners, FALSE)
+#endif
 
 SUBSYSTEM_DEF(lighting)
 	name = "Lighting"

@@ -268,6 +268,7 @@
 			client.statpanel = T.name
 
 /atom/proc/AltClick(var/mob/user)
+	SEND_SIGNAL(src, COMSIG_CLICK_ALT, user)
 	return FALSE
 
 /mob/proc/TurfAdjacent(var/turf/T)

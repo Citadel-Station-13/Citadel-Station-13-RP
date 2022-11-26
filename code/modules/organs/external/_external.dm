@@ -509,7 +509,7 @@
 		return 1
 	else
 		last_dam = brute_dam + burn_dam
-	if(germ_level)
+	if(germ_level && (owner && !IS_DEAD(owner)))
 		return 1
 	if(length(wounds))
 		return TRUE
@@ -562,6 +562,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	if(robotic >= ORGAN_ROBOT || (owner.species && (owner.species.species_flags & IS_PLANT || (owner.species.species_flags & NO_INFECT)))) //Robotic limbs shouldn't be infected, nor should nonexistant limbs.
 		germ_level = 0
+		return
+
+	if(owner && !IS_DEAD(owner))
 		return
 
 	if(owner.bodytemperature >= 170)	//cryo stops germs from moving and doing their bad stuffs
@@ -1031,9 +1034,9 @@ Note that amputating the affected organ does in fact remove the infection from t
 		return 1
 	return 0
 
-/obj/item/organ/external/robotize(var/company, var/skip_prosthetics = 0, var/keep_organs = 0)
-
-	if(robotic >= ORGAN_ROBOT)
+/obj/item/organ/external/robotize(var/company, var/skip_prosthetics = 0, var/keep_organs = 0, force)
+	//! SHITCODE ALERT: REFACTOR ORGANS ASAP; FORCE IS JUST SO PREFS WORK.
+	if(robotic >= ORGAN_ROBOT && !force)
 		return
 
 	..()
@@ -1045,6 +1048,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 			R = GLOB.basic_robolimb
 		if(R)
 			force_icon = R.icon
+			brute_mod = initial(brute_mod)
+			burn_mod = initial(brute_mod)
 			brute_mod *= R.robo_brute_mod
 			burn_mod *= R.robo_burn_mod
 			if(R.lifelike)
@@ -1086,7 +1091,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 //! ## VIRGO HOOK, TODO: Integrate this.
 //Sideways override for nanoform limbs (ugh)
-/obj/item/organ/external/robotize(var/company, var/skip_prosthetics = FALSE, var/keep_organs = FALSE)
+/obj/item/organ/external/robotize(var/company, var/skip_prosthetics = FALSE, var/keep_organs = FALSE, force)
 	var/original_robotic = robotic
 	if(original_robotic >= ORGAN_NANOFORM)
 		var/o_encased = encased

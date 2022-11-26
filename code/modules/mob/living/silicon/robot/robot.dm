@@ -1405,3 +1405,9 @@
 			to_chat(src,"<span class='warning'>Your connection with the shell is suddenly interrupted!</span>")
 			undeploy()
 	..()
+
+/mob/living/silicon/robot/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
+	if(lockcharge)
+		to_chat(src, SPAN_WARNING("You can't do that right now!"))
+		return FALSE
+	return ..()

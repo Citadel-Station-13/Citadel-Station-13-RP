@@ -79,7 +79,7 @@
 			locstring = "hydroponics"
 			spawncount = rand(3,15)
 		if(LOC_ENGINEERING)
-			spawn_area_type = /area/engineering/
+			spawn_area_type = /area/engineering/hallway //To make sure that we don't have roaches suicide bomb the SME
 			locstring = "engineering"
 			spawncount = rand(3,15)
 	if(!locstring)

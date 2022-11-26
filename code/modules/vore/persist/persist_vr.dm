@@ -58,7 +58,7 @@
 
 		// For now as a safety measure we will only save if the name matches.
 		if(prefs.real_name != persister.real_name)
-			log_debug("Persist (P4P): Skipping [persister] because ORIG:[persister.real_name] != CURR:[prefs.real_name].")
+			log_debug(SPAN_DEBUG("Persist (P4P): Skipping [persister] because ORIG:[persister.real_name] != CURR:[prefs.real_name]."))
 			return
 
 		return prefs
@@ -186,10 +186,10 @@
 			var/datum/sprite_accessory/marking/mark_datum = ML["datum"]
 			var/mark_color = ML["color"]
 			if(!istype(mark_datum) || !mark_color)
-				log_debug("[character]'s organ [O] ([O.type]) has marking [list2params(ML)] with invalid/missing color/datum!")
+				log_debug(SPAN_DEBUG("[character]'s organ [O] ([O.type]) has marking [list2params(ML)] with invalid/missing color/datum!"))
 				continue;
 			if(!(mark_datum.name in body_marking_styles_list))
-				log_debug("[character]'s organ [O] ([O.type]) has marking [mark_datum] which is not in body_marking_styles_list!")
+				log_debug(SPAN_DEBUG("[character]'s organ [O] ([O.type]) has marking [mark_datum] which is not in body_marking_styles_list!"))
 				continue;
 			// Note: Since datums can cover multiple organs, we may encounter it multiple times, but this is okay
 			// because you're only allowed to have each marking type once! If this assumption changes, obviously update this. ~Leshana

@@ -47,14 +47,17 @@ SUBSYSTEM_DEF(air)
 		S.update_air_properties()
 		CHECK_TICK
 
-	var/to_send = "<blockquote class ='info'>"
+	// var/to_send = "<blockquote class ='info'>"
+	var/to_send = ""
 	to_send += SPAN_DEBUG("<b>Geometry initialized in [round(0.1*(REALTIMEOFDAY-timeofday),0.1)] seconds.</b><hr>")
 	to_send += SPAN_DEBUGINFO("Total Simulated Turfs: [simulated_turf_count]")
 	to_send += SPAN_DEBUGINFO("\nTotal Zones: [zones.len]")
 	to_send += SPAN_DEBUGINFO("\nTotal Edges: [edges.len]")
 	to_send += SPAN_DEBUGINFO("\nTotal Active Edges: [active_edges.len ? SPAN_DANGER("[active_edges.len]") : "None"]")
 	to_send += SPAN_DEBUGINFO("\nTotal Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_count]")
-	to_send += SPAN_DEBUGINFO("</blockquote>")
+	// to_send += SPAN_DEBUGINFO("</blockquote>")
+
+	to_send = SPAN_BLOCKQUOTE(JOINTEXT(to_send), "info")
 
 	admin_notice(to_send, R_DEBUG)
 

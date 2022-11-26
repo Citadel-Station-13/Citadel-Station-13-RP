@@ -31,7 +31,9 @@
 */
 
 /atom/movable/screen/click_catcher/proc/UpdateFill(view_size_x, view_size_y)
-	screen_loc = "1,1 to [view_size_x],[view_size_y]"
+	var/matrix/transforming = matrix()
+	transforming.Scale(view_size_x, view_size_y)
+	transform = transforming
 
 /atom/movable/screen/click_catcher/Click(location, control, params)
 	var/list/modifiers = params2list(params)
@@ -63,12 +65,8 @@
 /**
  * Makes a clickcatcher if necessary, and ensures it's fit to our size.
  */
-/client/proc/update_clickcatcher(list/view_override)
+/client/proc/update_clickcatcher()
 	if(!click_catcher)
 		click_catcher = new
 	screen |= click_catcher
-	if(view_override)
-		click_catcher.UpdateFill(view_override[1], view_override[2])
-	else
-		var/list/view_list = getviewsize(view)
-		click_catcher.UpdateFill(view_list[1], view_list[2])
+	click_catcher.UpdateFill(current_viewport_width, current_viewport_height)

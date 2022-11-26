@@ -12,3 +12,6 @@
 
 /client/proc/_winshow(window, show)
 	winshow(src, window, show)
+
+/client/proc/_command(str)
+	winset(src, null, "command=[str]")

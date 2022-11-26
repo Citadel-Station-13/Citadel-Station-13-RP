@@ -65,7 +65,7 @@
 			if(!src)
 				return
 			reagents.trans_to_obj(D, amount_per_transfer_from_this)
-			D.set_color()
+			D.color = mix_color_from_reagents(D.reagents.reagent_list)
 			D.set_up(my_target, spray_size, 10)
 	return
 
