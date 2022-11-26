@@ -33,7 +33,7 @@
 			stack_trace("duped language name [L.name] on [path] skipped")
 			continue
 		if(language_keys[L.key])
-			stack_trace("collision on key [L.key] between [name] and [language_keys[L.key]].")
+			stack_trace("collision on key [L.key] between [path] and [language_keys[L.key]].")
 		language_lookup[L.id] = L
 		language_names[L.name] = L
 		language_paths[path] = L
