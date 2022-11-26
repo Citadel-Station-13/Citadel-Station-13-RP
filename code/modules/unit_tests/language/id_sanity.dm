@@ -21,7 +21,8 @@
 			Fail("collision on name [L.name] between [path] and [names[L.name]]")
 		else
 			names[L.name] = path
-		if(keys[L.key])
+		if(!L.key)	// yes empty if statement sue me
+		else if(keys[L.key])
 			Fail("collision on key [L.key] between [path] and [keys[L.key]]")
 		else
 			keys[L.key] = path
