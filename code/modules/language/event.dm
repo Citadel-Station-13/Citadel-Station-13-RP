@@ -21,7 +21,7 @@
 	ask_verb = "asks"
 	exclaim_verb = "shouts"
 	colour = "deadsay"
-	key = "r"
+	key = "["
 	machine_understands = 0
 	language_flags = RESTRICTED
 	syllables = list("rus","zem","ave","groz","ski","ska","ven","konst","pol","lin","svy",
