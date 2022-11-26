@@ -11,7 +11,7 @@
 			Fail("no ID on [path]")
 			continue
 		if(!L.name)
-			Fail("no name on [path])
+			Fail("no name on [path]")
 			continue
 		if(ids[L.id])
 			Fail("collision on id [L.id] between [path] and [ids[L.id]]")
