@@ -235,8 +235,8 @@ CREATE TABLE IF NOT EXISTS `rp_connection_log` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
------ Object Persistence Store -----
--- These are not multi-server synchronization safe! It is expected that you DO NOT share these databases --
+/* Object Persistence Store */
+/* These are not multi-server synchronization safe! It is expected that you DO NOT share these databases */
 CREATE TABLE IF NOT EXISTS `rp_persist_keyed_strings` (
   `created` DATETIME NOT NULL DEFAULT Now(),
   `modified` DATETIME NOT NULL,
