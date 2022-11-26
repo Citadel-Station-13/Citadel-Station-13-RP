@@ -244,7 +244,7 @@ CREATE TABLE IF NOT EXISTS `%_PREFIX_%persist_keyed_strings` (
   `modified` DATETIME NOT NULL,
   `key` VARCHAR(64) NOT NULL,
   `value` MEDIUMTEXT NULL,
-  `group` VARCHAR(64) NULL,
+  `group` VARCHAR(64) NOT NULL,
   `revision` INT(11) NOT NULL,
   PRIMARY KEY(`key`, `group`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
