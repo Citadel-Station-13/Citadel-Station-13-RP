@@ -1,7 +1,6 @@
 #if !defined(USING_MAP_DATUM)
 
 	#include "rift_defines.dm"
-	#include "rift_turfs.dm"
 	#include "rift_areas.dm"
 	#include "rift_areas2.dm"
 	#include "rift_shuttle_defs.dm"

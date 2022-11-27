@@ -187,3 +187,10 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 		mineral = GLOB.ore_data[mineral_name]
 		if(flags & INITIALIZED)
 			UpdateMineral()
+
+
+/// Needs to be remmapped to use /turf/unsimulated/mineral/icerock/lythios43c .
+/turf/unsimulated/icerock/lythios43c
+	icon = 'icons/turf/walls.dmi'
+	icon_state = "icerock-dark"
+	blocks_air = TRUE

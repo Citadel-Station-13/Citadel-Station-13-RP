@@ -266,20 +266,6 @@
 				prob(1);list(/obj/item/mecha_parts/mecha_equipment/tool/drill/diamonddrill),
 				)
 
-//POI STUFF
-VIRGO3B_TURF_CREATE(/turf/simulated/mineral/ignore_oregen)
-VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor/ignore_oregen)
-VIRGO3B_TURF_CREATE(/turf/simulated/mineral/ignore_cavegen)
-VIRGO3B_TURF_CREATE(/turf/simulated/mineral/floor/ignore_cavegen)
-
-//Vault2
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/tiled/freezer)
-
-//Abandonedshelter
-VIRGO3B_TURF_CREATE(/turf/simulated/shuttle/floor/voidcraft)
-
-//Goldhall
-VIRGO3B_TURF_CREATE(/turf/simulated/floor/tiled/kafel_full/yellow)
 
 //Mechbay
 /obj/mecha/working/ripley/abandoned/Initialize(mapload)

@@ -31,6 +31,3 @@
 /obj/effect/shuttle_landmark/premade/fueldepot/south
 	name = "Fuel Depot - South Dock"
 	landmark_tag = "fueldepot_south"
-
-/turf/simulated/floor/tiled/techmaint/airless
-	initial_gas_mix = GAS_STRING_VACUUM

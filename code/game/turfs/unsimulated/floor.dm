@@ -14,3 +14,17 @@
 /turf/unsimulated/floor/steel
 	icon = 'icons/turf/flooring/tiles_vr.dmi'
 	icon_state = "steel"
+
+/turf/unsimulated/floor/techfloor_grid
+	name = "floor"
+	icon = 'icons/turf/flooring/techfloor_vr.dmi'
+	icon_state = "techfloor_grid"
+
+/turf/unsimulated/floor/maglev
+	name = "maglev track"
+	desc = "Magnetic levitation tram tracks. Caution! Electrified!"
+	icon = 'icons/turf/flooring/maglevs.dmi'
+	icon_state = "maglevup"
+
+/turf/unsimulated/floor/transit
+	icon = 'icons/turf/transit_vr.dmi'

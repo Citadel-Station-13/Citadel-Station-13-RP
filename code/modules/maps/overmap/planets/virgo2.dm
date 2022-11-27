@@ -10,20 +10,6 @@
 	minimum_temp = 612
 	maximum_temp = 612
 
-// Turfmakers
-#define VIRGO2_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_VIRGO2
-#define VIRGO2_TURF_CREATE(x)	x/virgo2/initial_gas_mix=ATMOSPHERE_ID_VIRGO2;x/virgo2/color="#eacd7c"
-
-VIRGO2_TURF_CREATE(/turf/unsimulated/wall/planetary)
-VIRGO2_TURF_CREATE(/turf/simulated/wall)
-VIRGO2_TURF_CREATE(/turf/simulated/floor/plating)
-VIRGO2_TURF_CREATE(/turf/simulated/floor/bluegrid)
-VIRGO2_TURF_CREATE(/turf/simulated/floor/tiled/techfloor)
-VIRGO2_TURF_CREATE(/turf/simulated/mineral)
-VIRGO2_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
-VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor)
-VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
-
 
 /obj/effect/overmap/visitable/sector/virgo2
 	name = "Virgo 2"
@@ -105,46 +91,6 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 	anchored = TRUE
 	density = FALSE
 
-// -- Turfs -- //
-
-/turf/simulated/floor/sky/virgo2_sky
-	name = "virgo 2 atmosphere"
-	desc = "Be careful where you step!"
-	color = "#eacd7c"
-	initial_gas_mix = ATMOSPHERE_ID_VIRGO2
-
-/turf/simulated/floor/sky/virgo2_sky/Initialize(mapload)
-	skyfall_levels = list(z+1)
-	. = ..()
-
-/turf/simulated/shuttle/wall/voidcraft/green/virgo2
-	initial_gas_mix = ATMOSPHERE_ID_VIRGO2
-	color = "#eacd7c"
-
-/turf/simulated/shuttle/wall/voidcraft/green/virgo2/nocol
-	color = null
-
-VIRGO2_TURF_CREATE(/turf/unsimulated/wall/planetary)
-
-VIRGO2_TURF_CREATE(/turf/simulated/wall)
-VIRGO2_TURF_CREATE(/turf/simulated/floor/plating)
-VIRGO2_TURF_CREATE(/turf/simulated/floor/bluegrid)
-VIRGO2_TURF_CREATE(/turf/simulated/floor/tiled/techfloor)
-
-VIRGO2_TURF_CREATE(/turf/simulated/mineral)
-/turf/simulated/mineral/virgo2/make_ore()
-	if(mineral)
-		return
-
-	var/mineral_name = pickweight(list(MAT_MARBLE = 5, MAT_URANIUM = 5, MAT_PLATINUM = 5, MAT_HEMATITE = 5, MAT_CARBON = 5, MAT_DIAMOND = 5, MAT_GOLD = 5, MAT_SILVER = 5, MAT_LEAD = 5, MAT_VERDANTIUM = 5))
-
-	if(mineral_name && (mineral_name in GLOB.ore_data))
-		mineral = GLOB.ore_data[mineral_name]
-		UpdateMineral()
-
-VIRGO2_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
-VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor)
-VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 
 // -- Areas -- //
 
