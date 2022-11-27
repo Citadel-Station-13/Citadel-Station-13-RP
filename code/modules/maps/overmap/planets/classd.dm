@@ -8,25 +8,6 @@
 	minimum_temp = 203
 	maximum_temp = 203
 
-//Turfmakers
-#define CLASSD_SET_ATMOS	initial_gas_mix=ATMOSPHERE_ID_CLASSD
-#define CLASSD_TURF_CREATE(x)	x/classd/initial_gas_mix=ATMOSPHERE_ID_CLASSD;x/classd/color="#eaa17c"
-
-CLASSD_TURF_CREATE(/turf/simulated/wall/planetary)
-CLASSD_TURF_CREATE(/turf/simulated/wall)
-CLASSD_TURF_CREATE(/turf/simulated/floor)
-CLASSD_TURF_CREATE(/turf/simulated/floor/reinforced)
-CLASSD_TURF_CREATE(/turf/simulated/floor/tiled)
-CLASSD_TURF_CREATE(/turf/simulated/floor/tiled/steel_dirty)
-CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/dirt)
-CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
-CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/beach/sand/dirt)
-CLASSD_TURF_CREATE(/turf/simulated/mineral)
-CLASSD_TURF_CREATE(/turf/simulated/mineral/floor)
-CLASSD_TURF_CREATE(/turf/simulated/mineral/ignore_mapgen)
-CLASSD_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
-CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
-
 // Now to make this a planet //
 
 /obj/effect/overmap/visitable/sector/classd
@@ -127,49 +108,3 @@ CLASSD_TURF_CREATE(/turf/simulated/floor/outdoors/rocks)
 		/mob/living/simple_mob/mechanical/corrupt_maint_drone = 2
 	)
 
-// Turfs
-/turf/simulated/floor/outdoors/classd
-	name = "irradiated sand"
-	desc = "It literally glows in the dark."
-	icon = 'icons/turf/flooring/asteroid.dmi'
-	icon_state = "asteroid"
-	outdoors = 1
-	color = "#eaa17c"
-	base_icon_state = "asteroid"
-	initial_gas_mix = ATMOSPHERE_ID_CLASSD
-	turf_layers = list(/turf/simulated/mineral/floor/classd)
-	initial_flooring = /decl/flooring/outdoors/classd
-
-///Indoor usage turfs with Class D's Atmos. Unaffected by weather etc (Important because radioactive fallout will happen on a regular basis!)
-/turf/simulated/floor/classd/indoors
-	color = "#eaa17c"
-	initial_gas_mix = ATMOSPHERE_ID_CLASSD
-	outdoors = FALSE
-
-/turf/simulated/mineral/classd/indoors
-	color = "#eaa17c"
-	initial_gas_mix = ATMOSPHERE_ID_CLASSD
-	outdoors = FALSE
-
-/turf/simulated/mineral/floor/classd/indoors
-	color = "#eaa17c"
-	initial_gas_mix = ATMOSPHERE_ID_CLASSD
-	outdoors = FALSE
-
-/turf/simulated/floor/tiled/classd/indoors
-	color = "#eaa17c"
-	initial_gas_mix = ATMOSPHERE_ID_CLASSD
-	outdoors = FALSE
-
-/turf/simulated/wall/classd/indoors
-	color = "#eaa17c"
-	initial_gas_mix = ATMOSPHERE_ID_CLASSD
-	outdoors = FALSE
-
-// Unused Turfs (For now)
-/*
-/turf/simulated/floor/reinforced/classd_indoors
-	color = "#eaa17c"
-	initial_gas_mix = ATMOSPHERE_ID_CLASSD
-	outdoors = FALSE
-*/

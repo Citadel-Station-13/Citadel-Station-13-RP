@@ -1,21 +1,5 @@
 
 //////////////////////////////////////////////////////////////////////////////
-/// Static Load
-/* Currently not in use, breaks shuttles and loading
-/datum/map_template/rift_lateload/rift_misc
-	name = "Rift - Misc"
-	desc = "Misc areas, like some transit areas, holodecks, merc area."
-	mappath = "_maps/map_files/rift/rift-08-orbital.dmm"
-
-	associated_map_datum = /datum/map_z_level/rift_lateload/misc
-
-/datum/map_z_level/rift_lateload/misc
-	name = "Misc"
-	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_SEALED|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
-
-*/
-
-
 /datum/map_template/rift_lateload
 	allow_duplicates = FALSE
 	var/associated_map_datum
@@ -76,7 +60,6 @@
 	base_turf = /turf/space
 
 // lavaland start
-#include "lavaland/_lavaland.dm"
 /datum/map_template/rift_lateload/lavaland
 	name = "Away Mission - Lava Land"
 	desc = "The fabled."

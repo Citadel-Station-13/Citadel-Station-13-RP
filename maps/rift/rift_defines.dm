@@ -323,3 +323,21 @@
 	name = "Orbital Relay"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_CONTACT|MAP_LEVEL_XENOARCH_EXEMPT
 
+/// This is the effect that slams people into the ground upon dropping out of the sky //
+
+/obj/effect/step_trigger/teleporter/planetary_fall/lythios43c/find_planet()
+	planet = planet_lythios43c
+
+/// Temporary place for this
+// Spawner for lythios animals
+/obj/tether_away_spawner/lythios_animals
+	name = "Lythios Animal Spawner"
+	faction = "lythios"
+	atmos_comp = TRUE
+	prob_spawn = 100
+	mobs_to_pick_from = list(
+		/mob/living/simple_mob/animal/icegoat = 2,
+		/mob/living/simple_mob/animal/passive/woolie = 3,
+		/mob/living/simple_mob/animal/passive/furnacegrub,
+		/mob/living/simple_mob/animal/horing = 2
+	)

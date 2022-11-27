@@ -9,6 +9,20 @@
 	initial_generic_waypoints = list("poid_main")
 */
 
+/datum/atmosphere/planet/lavaland
+	base_gases = list(
+	/datum/gas/oxygen = 0.14,
+	/datum/gas/nitrogen = 0.20,
+	/datum/gas/carbon_dioxide = 0.66
+	)
+	base_target_pressure = 35.1
+	minimum_pressure = 32.1
+	maximum_pressure = 37.1
+	minimum_temp = 310.3
+	maximum_temp = 350.1
+
+
+
 /obj/landmark/lavaland_entry
 	name = "lavaland_entry"
 
@@ -87,33 +101,6 @@
 			L.forceMove(T)
 	else
 		AM.forceMove(T)
-
-// Lava Land turfs
-
-/turf/simulated/floor/outdoors/lavaland
-	name = "ash sand"
-	desc = "Soft and ominous."
-	icon = 'icons/turf/flooring/asteroid.dmi'
-	icon_state = "asteroid"
-	outdoors = 1
-	base_icon_state = "asteroid"
-	baseturfs = /turf/simulated/mineral/floor/lavaland
-	initial_flooring = /decl/flooring/outdoors/lavaland
-
-/turf/simulated/floor/outdoors/lavaland/indoors //I know this path is confusing. Basically this is a way to simulate interior caverns that don't use mapgen for specific POIs.
-	outdoors = 0
-
-/turf/simulated/floor/tiled/steel_dirty/lavaland/exterior
-	outdoors = 1
-
-/turf/simulated/floor/water/lavaland/interior
-	outdoors = 0
-
-/turf/simulated/floor/outdoors/grass/lavaland/interior
-	outdoors = 0
-
-/turf/simulated/floor/outdoors/dirt/lavaland/interior
-	outdoors = 0
 
 // This is a special subtype of the thing that generates ores on a map
 // It will generate more rich ores because of the lower numbers than the normal one

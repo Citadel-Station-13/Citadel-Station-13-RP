@@ -99,3 +99,10 @@
 	spawnpoint_type = /datum/spawnpoint/shuttle
 
 ///////////////////////////////////////////////////////////////////////////
+
+// Rift Shuttle variant with slightly different messages //
+/obj/machinery/cryopod/robot/door/shuttle/rift
+	on_store_message = "has departed on an automated shuttle."
+	on_store_name = "Travel Oversight"
+	on_store_visible_message_2 = "to the orbital relay"
+
