@@ -54,6 +54,7 @@
 
 /area/rift/surfaceeva
 	name = "\improper Primary Surface EVA"
+	sound_env = SMALL_ENCLOSED
 
 /area/rift/surfaceeva/airlock/main
 	name = "\improper Primary Surface Airlock"
@@ -170,6 +171,7 @@
 	icon_state = "under1"
 /area/rift/surfacebase/outside
 	name = "Outside - Surface"
+	ambience = AMBIENCE_LYTHIOS
 /area/rift/surfacebase/outside/outside1
 	icon_state = "outside1"
 /area/rift/surfacebase/outside/outside2
@@ -249,9 +251,11 @@
 
 /area/outpost/mining_main/outpost
 	name = "\improper Mining Outpost"
+	ambience = AMBIENCE_OUTPOST
 
 /area/outpost/mining_main/outpost/substation
 	name = "\improper Outpost Substation"
+	ambience = AMBIENCE_SUBSTATION
 
 /area/outpost/mining_main/outpost/near_gateway
 	name = "\improper Mining Outpost"
@@ -347,8 +351,6 @@
 /area/engineering/lower/atmos_eva
 	name = "\improper Engineering Atmos EVA"
 
-/area/gateway/prep_room
-	name = "\improper Gateway Prep Room"
 /area/crew_quarters/locker/laundry_arrival
 	name = "\improper Arrivals Laundry"
 
@@ -682,6 +684,7 @@
 /area/rift/station/fighter_bay
 	icon_state = "blue"
 	name = "\improper Fighter Bay"
+	ambience = AMBIENCE_HANGAR
 
 /area/rift/station/fighter_bay/hangar
 	name = "\improper Fighter Hangar"

@@ -2590,6 +2590,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Quartermasters"
 	icon_state = "quart"
 
+/area/quartermaster/hallway
+	name = "\improper Cargo Hallway"
+	icon_state = "quart"
+
 /area/quartermaster/office
 	name = "\improper Cargo Office"
 	icon_state = "quartoffice"

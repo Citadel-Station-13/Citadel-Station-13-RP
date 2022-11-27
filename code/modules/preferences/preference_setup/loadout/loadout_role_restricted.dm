@@ -750,7 +750,7 @@
 /datum/gear/restricted/medical/suit/labcoat_blue
 	name = "Medical Labcoat - Blue"
 	path = /obj/item/clothing/suit/storage/toggle/labcoat/blue
-	
+
 /datum/gear/restricted/medical/suit/department_jacket
 	name = "Medical Department Jacket"
 	path = /obj/item/clothing/suit/storage/toggle/med_dep_jacket
@@ -1512,24 +1512,3 @@
 	name = "Hydroponics Winter Boots"
 	path = /obj/item/clothing/shoes/boots/winter/hydro
 	allowed_roles = list("Botanist")
-
-
-//*This clusterfuck of access combinations
-//*Now with Talon roles!
-/datum/gear/restricted/misc/accessory/holster
-	name = "(Command/Security/Exploration/Talon) Holster - Selection"
-	path = /obj/item/clothing/accessory/holster
-	cost = 3
-	allowed_roles = list(
-	"Facility Director", "Head of Personnel", "Chief Medical Officer", "Head of Security", "Research Director", "Chief Engineer", "Command Secretary",
-	"Security Officer", "Warden", "Head of Security", "Detective",
-	"Field Medic", "Explorer", "Pathfinder", "Pilot",
-	"Talon Captain", "Talon Doctor", "Talon Medic", "Talon Engineer", "Talon Pilot", "Talon Guard")
-
-/datum/gear/restricted/misc/accessory/holster/New()
-	..()
-	var/list/holsters = list()
-	for(var/holster in typesof(/obj/item/clothing/accessory/holster))
-		var/obj/item/clothing/accessory/holster_type = holster
-		holsters[initial(holster_type.name)] = holster_type
-	gear_tweaks += new/datum/gear_tweak/path(tim_sort(holsters, /proc/cmp_text_asc))

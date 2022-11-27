@@ -131,7 +131,7 @@
 				var/turf/checking = locate(tx,ty,cz)
 
 				if(!istype(checking))
-					log_debug("[name] cannot find a component turf at [tx],[ty] on floor [cz]. Aborting.")
+					log_debug(SPAN_DEBUGERROR("[name] cannot find a component turf at [tx],[ty] on floor [cz]. Aborting."))
 					qdel(src)
 					return
 
@@ -202,7 +202,7 @@
 
 		// Update area.
 		if(az > areas_to_use.len)
-			log_debug("Insufficient defined areas in turbolift datum, aborting.")
+			log_debug(SPAN_DEBUGWARNING("Insufficient defined areas in turbolift datum, aborting."))
 			qdel(src)
 			return
 

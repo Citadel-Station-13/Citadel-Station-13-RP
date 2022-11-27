@@ -162,7 +162,7 @@
 	name = "pill bottle"
 	desc = "It's an airtight container for storing medication."
 	icon_state = "pill_canister"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	drop_sound = 'sound/items/drop/pillbottle.ogg'
 	pickup_sound = 'sound/items/pickup/pillbottle.ogg'
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "contsolid", SLOT_ID_LEFT_HAND = "contsolid")
@@ -244,7 +244,7 @@
 /obj/item/storage/pill_bottle/update_icon()
 	..()
 	if(labeled == 1)
-		add_overlay(image(icon = 'icons/obj/chemical.dmi', icon_state = "pill_canister_label"))
+		add_overlay(image(icon = 'icons/obj/medical/chemical.dmi', icon_state = "pill_canister_label"))
 	if(base_icon == "pill_canister")
 		if(bottle_color == "orange")
 			icon_state = "[base_icon]"

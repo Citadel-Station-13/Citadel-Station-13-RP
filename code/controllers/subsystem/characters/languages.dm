@@ -20,8 +20,14 @@
 		if(initial(L.abstract_type) == path)
 			continue
 		L = new path
+		if(!L.id)
+			stack_trace("no ID on language type [path]")
+			continue
 		if(language_lookup[L.id])
 			stack_trace("duped language id [L.id] on [path] skipped")
+			continue
+		if(!L.name)
+			stack_trace("no name on language type [path]")
 			continue
 		if(language_names[L.name])
 			stack_trace("duped language name [L.name] on [path] skipped")

@@ -323,7 +323,6 @@
 	icon_state = "void_explorer_pf"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "skrell_suit_black", SLOT_ID_LEFT_HAND = "skrell_suit_black")
 	armor = list(melee = 50, bullet = 40, laser = 45,energy = 45, bomb = 30, bio = 100, rad = 70)
-	move_speed = 7
 	allowed = list(/obj/item/flashlight,/obj/item/tank,/obj/item/suit_cooling_unit,/obj/item/stack/flag,/obj/item/healthanalyzer,/obj/item/gps,/obj/item/radio/beacon, \
 	/obj/item/shovel,/obj/item/ammo_magazine,/obj/item/gun)
 

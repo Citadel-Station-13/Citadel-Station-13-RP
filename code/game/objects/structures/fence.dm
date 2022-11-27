@@ -210,6 +210,15 @@
 	open = TRUE
 	density = TRUE
 
+/obj/structure/fence/door/wooden/update_door_status()
+	switch(open)
+		if(FALSE)
+			density = TRUE
+			icon_state = "door_wood-closed"
+		if(TRUE)
+			density = FALSE
+			icon_state = "door_wood-opened"
+
 #undef CUT_TIME
 #undef CLIMB_TIME
 

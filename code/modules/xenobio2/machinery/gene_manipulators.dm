@@ -257,7 +257,7 @@
 
 /obj/machinery/xenobio/editor
 	name = "biological genetic bombarder"
-	icon = 'icons/obj/cryogenics.dmi'
+	icon = 'icons/obj/medical/cryogenics.dmi'
 	icon_state = "cellold0"
 	disk_needs_genes = 1
 	circuit = /obj/item/circuitboard/biobombarder

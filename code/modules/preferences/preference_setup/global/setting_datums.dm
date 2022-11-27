@@ -293,13 +293,6 @@ var/list/_client_preferences_by_type
 	disabled_description = "Hide"
 	enabled_by_default = TRUE
 
-/datum/client_preference/scaling_viewport
-	description = "Scaling Viewport"
-	key = "scaling_viewport"
-	enabled_description = "Show"
-	disabled_description = "Hide"
-	enabled_by_default = TRUE
-
 /********************
 * Staff Preferences *
 ********************/

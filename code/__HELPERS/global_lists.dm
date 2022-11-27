@@ -1,8 +1,5 @@
 //? BEHOLD THE LIST OF GLOBAL LISTS ?//
 
-/// List of all clients whom are admins
-var/list/admins = list()
-
 //Since it didn't really belong in any other category, I'm putting this here
 //This is for procs to replace all the goddamn 'in world's that are chilling around the code
 
@@ -378,6 +375,7 @@ var/global/list/fancy_release_sounds = list(
 
 var/global/list/global_vore_egg_types = list(
 		SPECIES_UNATHI 		= UNATHI_EGG,
+		SPECIES_UNATHI_DIGI = UNATHI_EGG,
 		"Tajaran" 		= TAJARAN_EGG,
 		SPECIES_AKULA 		= AKULA_EGG,
 		SPECIES_SKRELL 		= SKRELL_EGG,
@@ -391,6 +389,7 @@ var/global/list/global_vore_egg_types = list(
 
 var/global/list/tf_vore_egg_types = list(
 	SPECIES_UNATHI 		= /obj/structure/closet/secure_closet/egg/unathi,
+	SPECIES_UNATHI_DIGI = /obj/structure/closet/secure_closet/egg/unathi,
 	SPECIES_TAJ 		= /obj/structure/closet/secure_closet/egg/tajaran,
 	SPECIES_AKULA 		= /obj/structure/closet/secure_closet/egg/shark,
 	SPECIES_SKRELL 		= /obj/structure/closet/secure_closet/egg/skrell,

@@ -68,6 +68,8 @@
 #define BODYTYPE_WEREBEAST			(1<<17)
 /// xenomorph hybrid
 #define BODYTYPE_XENOHYBRID			(1<<18)
+/// digitigrade unathi
+#define BODYTYPE_UNATHI_DIGI        (1<<19)
 
 // todo: what are we going to do with these?
 //? we should probably standardize bodytypes as entirely different sprites, and also
@@ -91,6 +93,7 @@
 #define BODYTYPE_STRING_TESHARI "teshari"
 #define BODYTYPE_STRING_ADHERENT "adherent"
 #define BODYTYPE_STRING_UNATHI "unathi"
+#define BODYTYPE_STRING_UNATHI_DIGI "unathidigi"
 #define BODYTYPE_STRING_TAJARAN "tajaran"
 #define BODYTYPE_STRING_VULPKANIN "vulpkanin"
 #define BODYTYPE_STRING_SKRELL "skrell"
@@ -116,6 +119,8 @@
 			return BODYTYPE_STRING_ADHERENT
 		if(BODYTYPE_UNATHI)
 			return BODYTYPE_STRING_UNATHI
+		if(BODYTYPE_UNATHI_DIGI)
+			return BODYTYPE_STRING_UNATHI_DIGI
 		if(BODYTYPE_TAJARAN)
 			return BODYTYPE_STRING_TAJARAN
 		if(BODYTYPE_VULPKANIN)

@@ -397,9 +397,13 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	if (config_legacy.log_debug)
 		WRITE_LOG(GLOB.world_runtime_log, "DEBUG: [text]")
 
-	for(var/client/C in admins)
+	for(var/client/C in GLOB.admins)
 		if(C.is_preference_enabled(/datum/client_preference/debug/show_debug_logs))
-			to_chat(C, "DEBUG: [text]")
+			to_chat(C,
+				type = MESSAGE_TYPE_DEBUG,
+				html = "DEBUG: [text]",
+				confidential = TRUE,
+			)
 
 /proc/log_ghostsay(text, mob/speaker)
 	if (config_legacy.log_say)

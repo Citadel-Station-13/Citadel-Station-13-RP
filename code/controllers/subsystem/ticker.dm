@@ -389,6 +389,15 @@ SUBSYSTEM_DEF(ticker)
 
 
 /datum/controller/subsystem/ticker/proc/create_characters()
+	//! TEMPORARY PATCH: putting people in nullspace results in obscene behavior from BYOND
+	//? since we really don't want to kill login ..() without reason, we spawn them at random overflow spawnpoint.
+	var/obj/landmark/spawnpoint/S
+	for(var/faction in SSjob.overflow_spawnpoints)
+		var/list/spawnpoints = SSjob.overflow_spawnpoints[faction]
+		S = SAFEPICK(spawnpoints)
+	if(!S)
+		log_and_message_admins("Unable to get overflow spawnpoint; roundstart is going to lag.")
+	//! END
 	for(var/mob/new_player/player in GLOB.player_list)
 		if(player && player.ready && player.mind)
 			if(player.mind.assigned_role=="AI")
@@ -397,7 +406,7 @@ SUBSYSTEM_DEF(ticker)
 			else if(!player.mind.assigned_role)
 				continue
 			else
-				var/mob/living/carbon/human/new_char = player.create_character()
+				var/mob/living/carbon/human/new_char = player.create_character(S)
 				if(new_char)
 					qdel(player)
 				if(istype(new_char) && !(new_char.mind.assigned_role=="Cyborg"))

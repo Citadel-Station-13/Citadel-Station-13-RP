@@ -457,6 +457,7 @@
 	H.update_hud_sec_job()
 	H.update_hud_sec_implants()
 	H.update_hud_antag()
+	H.reset_perspective(no_optimizations = TRUE)
 	return H
 
 /datum/controller/subsystem/job/proc/LoadJobs(jobsfile) //ran during round setup, reads info from jobs.txt -- Urist
