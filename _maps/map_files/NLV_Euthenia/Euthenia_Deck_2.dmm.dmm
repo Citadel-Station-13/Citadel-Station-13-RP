@@ -7973,7 +7973,7 @@
 /obj/structure/closet/walllocker{
 	pixel_y = -28
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/monotile,
 /area/space)
 "hnK" = (
 /obj/machinery/atmospherics/pipe/tank/air{
@@ -11741,7 +11741,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/monotile,
 /area/space)
 "kzA" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow,
@@ -17729,7 +17729,7 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "pXl" = (
-/obj/machinery/vending/fitness,
+/obj/item/clothing/under/swimsuit,
 /turf/simulated/floor/tiled/monotile,
 /area/space)
 "pXw" = (
@@ -19265,7 +19265,7 @@
 /obj/structure/closet/walllocker{
 	pixel_y = 28
 	},
-/turf/simulated/floor/tiled,
+/turf/simulated/floor/tiled/monotile,
 /area/space)
 "rvO" = (
 /obj/structure/table/woodentable,
@@ -19897,7 +19897,7 @@
 /area/space)
 "rXU" = (
 /obj/machinery/vending/snack,
-/turf/simulated/floor/tiled/monotile,
+/turf/simulated/floor/tiled,
 /area/space)
 "rYw" = (
 /obj/structure/cable/green,
@@ -45125,7 +45125,7 @@ kZp
 keD
 rHE
 hnu
-flD
+xAr
 rHE
 rsK
 tGw
@@ -45319,7 +45319,7 @@ lbc
 iOH
 rHE
 rvB
-flD
+xAr
 rHE
 xgt
 lWl
@@ -45512,8 +45512,8 @@ hUz
 lEF
 jsC
 rHE
-flD
-flD
+xAr
+xAr
 rHE
 rHE
 rHE
@@ -45706,8 +45706,8 @@ rHE
 rHE
 rHE
 rHE
-flD
-flD
+xAr
+xAr
 eZZ
 rHE
 rrk
@@ -45896,12 +45896,12 @@ yao
 yao
 rHE
 kzs
-flD
+xAr
 vDJ
 lel
 rHE
-flD
-flD
+xAr
+xAr
 sjc
 rHE
 wFz
@@ -46089,13 +46089,13 @@ yao
 yao
 yao
 rHE
-flD
-flD
+xAr
+xAr
 yky
 jhD
 rHE
-flD
-pbq
+xAr
+pXl
 flD
 gsb
 wFz
@@ -46283,13 +46283,13 @@ yao
 yao
 yao
 orl
-flD
-flD
-flD
-flD
-flD
-flD
-pbq
+xAr
+xAr
+xAr
+xAr
+xAr
+xAr
+pXl
 pbq
 rHE
 iTq
@@ -46477,13 +46477,13 @@ yao
 yao
 yao
 rHE
-flD
-flD
-flD
-flD
-flD
-flD
-flD
+xAr
+xAr
+xAr
+xAr
+xAr
+xAr
+xAr
 flD
 rHE
 vzY
@@ -46674,8 +46674,8 @@ rHE
 rHE
 rHE
 rXU
-xAr
-pXl
+flD
+vGt
 rHE
 rHE
 cWH

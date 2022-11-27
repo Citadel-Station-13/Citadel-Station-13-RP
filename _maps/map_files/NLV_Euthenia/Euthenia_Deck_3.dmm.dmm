@@ -10205,6 +10205,17 @@
 	},
 /turf/simulated/open,
 /area/ai_upload)
+"kgN" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/machinery/disposal,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/light,
+/turf/simulated/floor/reinforced,
+/area/rnd/xenobiology)
 "khj" = (
 /obj/machinery/newscaster{
 	pixel_y = 32
@@ -19939,6 +19950,17 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/space)
+"ual" = (
+/obj/machinery/atmospherics/component/unary/freezer{
+	dir = 1;
+	icon_state = "freezer_1";
+	power_setting = 20;
+	set_temperature = 73;
+	use_power = 1
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/xenobiology)
 "uaI" = (
 /obj/machinery/light{
 	dir = 1
@@ -22461,6 +22483,13 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/entrance)
+"wEX" = (
+/obj/machinery/atmospherics/component/binary/pump/on{
+	dir = 8
+	},
+/obj/machinery/light,
+/turf/simulated/floor/tiled,
+/area/rnd/xenobiology)
 "wFb" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -31465,7 +31494,7 @@ akT
 kCv
 kCv
 rrJ
-otG
+kgN
 uwH
 dTX
 rGu
@@ -32433,7 +32462,7 @@ xFI
 jHl
 jHl
 evl
-opM
+wEX
 uwH
 uwH
 uwH
@@ -32823,7 +32852,7 @@ roI
 wSK
 kCv
 hgH
-ppe
+ual
 uwH
 rah
 vva
