@@ -15,6 +15,7 @@
 	#include "../../_maps/map_files/NLV_Euthenia/Euthenia_Deck_3.dmm"
 	#include "../../_maps/map_files/NLV_Euthenia/Euthenia_Deck_4.dmm"
 	#include "../../_maps/map_files/NLV_Euthenia/Euthenia_Misc.dmm"
+	#include "../../_maps/map_files/NLV_Euthenia/lazy_overmap.dmm"
 
 	#define USING_MAP_DATUM /datum/map/euthenia
 
