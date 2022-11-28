@@ -5,7 +5,7 @@
 
 /datum/map_config
 	// Metadata
-	var/config_filename = "_maps/triumph.json"
+	var/config_filename = "_maps/tether.json"
 	var/defaulted = TRUE  // set to FALSE by LoadConfig() succeeding
 	// Config from maps.txt
 	var/config_max_users = 0
@@ -18,16 +18,16 @@
 	var/map_name = "Tether"
 	var/map_path = "map_files/tether"
 	var/map_file = list(
-	"tether-01-surface1.dmm",
-	"tether-02-surface2.dmm",
-	"tether-03-surface3.dmm",
-	"tether-04-transit.dmm",
-	"tether-05-station1.dmm",
-	"tether-06-station2.dmm",
-	"tether-07-station3.dmm",
-	"tether-08-mining.dmm",
-	"tether-09-solars.dmm",
-	"tether-10-colony.dmm"
+		"tether-01-surface1.dmm",
+		"tether-02-surface2.dmm",
+		"tether-03-surface3.dmm",
+		"tether-04-transit.dmm",
+		"tether-05-station1.dmm",
+		"tether-06-station2.dmm",
+		"tether-07-station3.dmm",
+		"tether-08-mining.dmm",
+		"tether-09-solars.dmm",
+		"tether-10-colony.dmm",
 	)
 
 	/// List of lists for Zlevel traits.
@@ -62,15 +62,42 @@
 	/// Orientation to load in by default.
 	var/orientation = SOUTH		//byond defaults to placing everyting SOUTH.
 
-/proc/load_map_config(filename = "data/next_map.json", default_to_box, delete_after, error_if_missing = TRUE)
-	var/datum/map_config/config = new
-	if (default_to_box)
-		return config
+/**
+ * Proc that simply loads the default map config, which should always be functional.
+ */
+/proc/load_default_map_config()
+	return new /datum/map_config
+
+/**
+ * Proc handling the loading of map configs. Will return the default map config using [/proc/load_default_map_config] if the loading of said file fails for any reason whatsoever, so we always have a working map for the server to run.
+ * Arguments:
+ * * filename - Name of the config file for the map we want to load. The .json file extension is added during the proc, so do not specify filenames with the extension.
+ * * directory - Name of the directory containing our .json - Must be in MAP_DIRECTORY_WHITELIST. We default this to MAP_DIRECTORY_MAPS as it will likely be the most common usecase. If no filename is set, we ignore this.
+ * * error_if_missing - Bool that says whether failing to load the config for the map will be logged in log_world or not as it's passed to LoadConfig().
+ *
+ * Returns the config for the map to load.
+ */
+/proc/load_map_config(filename = null, directory = null, error_if_missing = TRUE)
+	var/datum/map_config/config = load_default_map_config()
+
+	if(filename) // If none is specified, then go to look for next_map.json, for map rotation purposes.
+
+		//Default to MAP_DIRECTORY_MAPS if no directory is passed
+		if(directory)
+			if(!(directory in MAP_DIRECTORY_WHITELIST))
+				log_world("map directory not in whitelist: [directory] for map [filename]")
+				return config
+		else
+			directory = MAP_DIRECTORY_MAPS
+
+		filename = "[directory]/[filename].json"
+	else
+		filename = PATH_TO_NEXT_MAP_JSON
+
+
 	if (!config.LoadConfig(filename, error_if_missing))
 		qdel(config)
-		config = new /datum/map_config  // Fall back to Box
-	if (delete_after)
-		fdel(filename)
+		return load_default_map_config()
 	return config
 
 #define CHECK_EXISTS(X) if(!istext(json[X])) { log_world("[##X] missing from json!"); return; }
@@ -103,7 +130,7 @@
 	map_path = json["map_path"]
 
 	map_file = json["map_file"]
-	// "map_file": "BoxStation.dmm"
+	// "map_file": "MetaStation.dmm"
 	if (istext(map_file))
 		if (!fexists("_maps/[map_path]/[map_file]"))
 			log_world("Map file ([map_path]/[map_file]) does not exist!")
@@ -203,7 +230,7 @@
 		. += "_maps/[map_path]/[file]"
 
 /datum/map_config/proc/MakeNextMap()
-	return config_filename == "data/next_map.json" || fcopy(config_filename, "data/next_map.json")
+	return config_filename == PATH_TO_NEXT_MAP_JSON || fcopy(config_filename, PATH_TO_NEXT_MAP_JSON)
 
 /// badmin moments. Keep up to date with LoadConfig()!
 /datum/map_config/proc/WriteNextMap()

@@ -30,17 +30,16 @@ SUBSYSTEM_DEF(mapping)
 	var/static/stat_map_name = "Loading..."
 
 //dlete dis once #39770 is resolved
-/datum/controller/subsystem/mapping/proc/HACK_LoadMapConfig()
+/datum/controller/subsystem/mapping/PreInit()
 	if(!config)
 #ifdef FORCE_MAP
-		config = load_map_config(FORCE_MAP)
+		config = load_map_config(FORCE_MAP, FORCE_MAP_DIRECTORY)
 #else
 		config = load_map_config(error_if_missing = FALSE)
 #endif
 	stat_map_name = config.map_name
 
-/datum/controller/subsystem/mapping/Initialize(timeofday)
-	HACK_LoadMapConfig()
+/datum/controller/subsystem/mapping/Initialize()
 	if(initialized)
 		return
 	if(config.defaulted)
@@ -79,8 +78,7 @@ SUBSYSTEM_DEF(mapping)
 	repopulate_sorted_areas()
 	return ..()
 
-/datum/controller/subsystem/mapping/proc/LoadGroup(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE, orientation = SOUTH)
-/*
+/datum/controller/subsystem/mapping/proc/LoadGroup(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE)
 	. = list()
 	var/start_time = REALTIMEOFDAY
 
@@ -120,76 +118,57 @@ SUBSYSTEM_DEF(mapping)
 	// load the maps
 	for (var/P in parsed_maps)
 		var/datum/parsed_map/pm = P
-		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE, orientation = orientation))
+		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE))
 			errorList |= pm.original_path
 	if(!silent)
 		INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
 	return parsed_maps
-*/
 
 /datum/controller/subsystem/mapping/proc/loadWorld()
-	// Until we have runtime maploading, just load traits from config
-	if(!config)
-		INIT_ANNOUNCE("WARNING: FAILED TO LOAD MAP CONFIG. THIS ROUND WILL BREAK. REBOOTING WILL LIKELY NOT FIX IT AT THIS POINT, CONTACT A MAINTAINER IMMEDIATELY.")
-		return
-	else
-		z_list = list()
-		add_new_zlevel("RESERVED LEVEL", list(ZTRAIT_RESERVED = TRUE))
-		var/current = 0
-		if((length(config.traits) + 1) != world.maxz)
-			INIT_ANNOUNCE("WARNING: MAP CONFIG TRAIT LIST MISMATCHES WITH ZCOUNT ([length(config.traits)] vs [world.maxz - 1] actual). ERRORS WILL OCCUR.")
-		for(var/i in config.traits)
-			var/list/traits = i
-			current++
-			if(!istype(traits))
-				INIT_ANNOUNCE("WARNING: ERROR DETECTED IN ZTRAIT LIST.")
-				add_new_zlevel("ERROR - Z [current]", list())
-			else
-				add_new_zlevel(traits[ZTRAIT_NAME] || "[config.map_name] [current]", traits)
-		if(length(z_list) != world.maxz)
-			INIT_ANNOUNCE("WARNING: Z_LIST LENGTH [length(z_list)] NOT MATCHING ZCOUNT [world.maxz]. THIS ROUND WILL BREAK. REBOOTING WILL LIKELY NOT FIX IT AT THIS POINT, CONTACT A MAINTAINER IMMEDIATELY.")
-/*
 	//if any of these fail, something has gone horribly, HORRIBLY, wrong
 	var/list/FailedZs = list()
-*/
 
-/*
 	// ensure we have space_level datums for compiled-in maps
 	InitializeDefaultZLevels()
-*/
 
-/*
 	// load the station
-	station_start = world.maxz + 1
+	// station_start = world.maxz + 1
 	INIT_ANNOUNCE("Loading [config.map_name]...")
-	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION, FALSE, config.orientation)
+	LoadGroup(FailedZs, "Station", config.map_path, config.map_file, config.traits, ZTRAITS_STATION)
 
 	if(SSdbcore.Connect())
-		var/datum/DBQuery/query_round_map_name = SSdbcore.NewQuery("UPDATE [format_table_name("round")] SET map_name = '[config.map_name]' WHERE id = [GLOB.round_id]")
+		var/datum/db_query/query_round_map_name = SSdbcore.NewQuery({"
+			UPDATE [format_table_name("round")] SET map_name = :map_name WHERE id = :round_id
+		"}, list("map_name" = config.map_name, "round_id" = GLOB.round_id))
 		query_round_map_name.Execute()
 		qdel(query_round_map_name)
-
+/*
 #ifndef LOWMEMORYMODE
 	// TODO: remove this when the DB is prepared for the z-levels getting reordered
 	while (world.maxz < (5 - 1) && space_levels_so_far < config.space_ruin_levels)
 		++space_levels_so_far
 		add_new_zlevel("Empty Area [space_levels_so_far]", ZTRAITS_SPACE)
 
-	// load mining
 	if(config.minetype == "lavaland")
 		LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
 	else if (!isnull(config.minetype) && config.minetype != "none")
 		INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
 #endif
-
-	if(LAZYLEN(FailedZs))	//but seriously, unless the server's filesystem is messed up this will never happen
+*/
+	if(LAZYLEN(FailedZs)) //but seriously, unless the server's filesystem is messed up this will never happen
 		var/msg = "RED ALERT! The following map files failed to load: [FailedZs[1]]"
 		if(FailedZs.len > 1)
 			for(var/I in 2 to FailedZs.len)
 				msg += ", [FailedZs[I]]"
 		msg += ". Yell at your server host!"
 		INIT_ANNOUNCE(msg)
-*/
+#undef INIT_ANNOUNCE
+
+	// Custom maps are removed after station loading so the map files does not persist for no reason.
+	if(config.map_path == CUSTOM_MAP_PATH)
+		fdel("_maps/custom/[config.map_file]")
+		// And as the file is now removed set the next map to default.
+		next_map_config = load_default_map_config()
 
 
 /datum/controller/subsystem/mapping/proc/wipe_reservations(wipe_safety_delay = 100)

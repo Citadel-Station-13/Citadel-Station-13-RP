@@ -15,10 +15,14 @@ Format:
 	disabled (disables the map)
 endmap
 
+map rift
+	default
+endmap
+
 map tether
 	disabled
 endmap
 
 #map triumph
-#	default
+	disabled
 #endmap

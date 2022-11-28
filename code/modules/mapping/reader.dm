@@ -194,8 +194,8 @@
 	parsed_bounds = bounds
 
 /datum/parsed_map/Destroy()
-	if(template_host && template_host.cached_map == src)
-		template_host.cached_map = null
+	// if(template_host && template_host.cached_map == src)
+	// 	template_host.cached_map = null
 	. = ..()
 	return QDEL_HINT_HARDDEL_NOW
 
@@ -234,7 +234,8 @@
 				continue
 			else
 				while(parsed_z > world.maxz)
-					world.incrementMaxZ()
+					// world.incrementMaxZ()
+					world.maxz++
 			if(!no_changeturf)
 				WARNING("Z-level expansion occurred without no_changeturf set, this may cause problems when /turf/AfterChange is called")
 		//these values are the same until a new gridset is reached.

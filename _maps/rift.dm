@@ -1,1 +1,2 @@
-#define FORCE_MAP "_maps/rift.json"
+#define FORCE_MAP "rift"
+#define FORCE_MAP_DIRECTORY "_maps"
