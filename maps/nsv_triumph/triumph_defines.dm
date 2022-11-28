@@ -252,6 +252,10 @@
 	name = "Misc"
 	flags = MAP_LEVEL_ADMIN|MAP_LEVEL_XENOARCH_EXEMPT
 
+// Our map is small, if the supermatter is ejected lets not have it just blow up somewhere else
+/obj/machinery/power/supermatter/touch_map_edge()
+	qdel(src)
+
 
 /// Z level dropper. Todo, make something generic so we dont have to copy pasta this
 /obj/effect/step_trigger/zlevel_fall //Don't ever use this, only use subtypes.Define a new var/static/target_z on each
