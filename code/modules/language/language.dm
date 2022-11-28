@@ -9,8 +9,9 @@
  * singletons stored on SScharacters, only referenced by id most of the time.
  */
 /datum/language
-	/// abstract type
-	var/abstract_type = /datum/language
+	/// Abstract type.
+	abstract_type = /datum/language
+
 	/// uid
 	var/id
 	// TODO: ref languages by id in code, so we can rename as needed

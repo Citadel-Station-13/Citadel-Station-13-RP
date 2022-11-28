@@ -28,7 +28,7 @@
 	// Flooring data.
 	var/flooring_override
 	var/initial_flooring
-	var/decl/flooring/flooring
+	var/singleton/flooring/flooring
 	var/mineral = MAT_STEEL
 
 /turf/simulated/floor/is_plating()
@@ -70,7 +70,7 @@
  * TODO: REWORK FLOORING GETTERS/INIT/SETTERS THIS IS BAD
  */
 
-/turf/simulated/floor/proc/set_flooring(decl/flooring/newflooring, init)
+/turf/simulated/floor/proc/set_flooring(singleton/flooring/newflooring, init)
 	make_plating(null, TRUE, TRUE)
 	flooring = newflooring
 	footstep_sounds = newflooring.footstep_sounds

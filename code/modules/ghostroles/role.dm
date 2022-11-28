@@ -25,6 +25,9 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
  * Ghostrole datums
  */
 /datum/ghostrole
+	/// Abstract type.
+	abstract_type = /datum/ghostrole
+
 	/// name
 	var/name = "Unnamed Role"
 	/// **short** description - use spawntext for long one.
@@ -33,8 +36,6 @@ GLOBAL_LIST_INIT(ghostroles, init_ghostroles())
 	var/lazy_init = TRUE
 	/// allow selecting the spawner, or random? **If the spawner gets clicked by a player, they can still spawn from it!**
 	var/allow_pick_spawner = FALSE
-	/// abstract type
-	var/abstract_type = /datum/ghostrole
 	/// /datum/ghostrole_instantiator - handles mob creation, equip, and transfer. DOES NOT greet the ghostrole with role information.
 	var/datum/ghostrole_instantiator/instantiator
 	/// spawn count

@@ -31,7 +31,7 @@
 	var/eattiles = FALSE
 	var/maketiles = FALSE
 	var/targetdirection = null
-	var/floor_build_type = /decl/flooring/tiling // Basic steel floor.
+	var/floor_build_type = /singleton/flooring/tiling // Basic steel floor.
 	var/toolbox = /obj/item/storage/toolbox/mechanical
 	skin = "blue" // Blue Toolbox is the default
 
