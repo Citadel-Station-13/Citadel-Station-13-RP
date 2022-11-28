@@ -1,15 +1,3 @@
-/datum/atmosphere/planet/classd
-	base_gases = list(
-	/datum/gas/nitrogen = 0.01
-	)
-	base_target_pressure = 0.1
-	minimum_pressure = 0.1
-	maximum_pressure = 0.5
-	minimum_temp = 203
-	maximum_temp = 203
-
-// Now to make this a planet //
-
 /obj/effect/overmap/visitable/sector/classd
 	name = "Class D Moon"
 	desc = "A rocky planet with radioactive hazards abundant."

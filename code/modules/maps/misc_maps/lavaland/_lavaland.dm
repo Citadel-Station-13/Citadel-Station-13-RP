@@ -9,19 +9,6 @@
 	initial_generic_waypoints = list("poid_main")
 */
 
-/datum/atmosphere/planet/lavaland
-	base_gases = list(
-	/datum/gas/oxygen = 0.14,
-	/datum/gas/nitrogen = 0.20,
-	/datum/gas/carbon_dioxide = 0.66
-	)
-	base_target_pressure = 35.1
-	minimum_pressure = 32.1
-	maximum_pressure = 37.1
-	minimum_temp = 310.3
-	maximum_temp = 350.1
-
-
 
 /obj/landmark/lavaland_entry
 	name = "lavaland_entry"

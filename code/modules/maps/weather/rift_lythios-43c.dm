@@ -1,29 +1,50 @@
-var/datum/planet/virgo3b/planet_virgo3b = null
+/datum/atmosphere/planet/lythios43c
+	base_gases = list(
+	/datum/gas/nitrogen = 0.66,
+	/datum/gas/oxygen = 0.34
+	)
+	base_target_pressure = 76.9
+	minimum_pressure = 76.9
+	maximum_pressure = 76.9
+	minimum_temp = 220.14
+	maximum_temp = 241.72
 
-/datum/time/virgo3b
-	seconds_in_day = 3 HOURS
 
-/datum/planet/virgo3b
-	name = "Virgo-3B"
-	desc = "A mid-sized moon of the Virgo 3 gas giant, this planet has an atmosphere mainly comprised of phoron, with trace \
-	amounts of both oxygen and nitrogen. Fortunately, the oxygen is not enough to be combustible in any meaningful way, however \
-	the phoron is desirable by many corporations, including NanoTrasen."
-	current_time = new /datum/time/virgo3b()
+/datum/time/lythios43c
+	seconds_in_day = 10 HOURS
+
+/datum/planet/lythios43c
+	name = "Lythios-43c"
+	desc = "A freezing ball of ice,"
+	current_time = new /datum/time/lythios43c()
+	planetary_wall_type = /turf/unsimulated/wall/planetary/lythios43c
+
+
+/* // These need to be defined in your map's define folders
+var/datum/planet/lythios43c/planet_lythios43c = null
+
+/datum/planet/lythios43c
 	expected_z_levels = list(
+						Z_LEVEL_UNDERGROUND_FLOOR,
+						Z_LEVEL_UNDERGROUND_DEEP,
+						Z_LEVEL_UNDERGROUND,
 						Z_LEVEL_SURFACE_LOW,
 						Z_LEVEL_SURFACE_MID,
 						Z_LEVEL_SURFACE_HIGH,
-						Z_LEVEL_SURFACE_MINE,
-						Z_LEVEL_SOLARS
+						Z_LEVEL_WEST_BASE,
+						Z_LEVEL_WEST_DEEP,
+						Z_LEVEL_WEST_CAVERN,
+						Z_LEVEL_WEST_PLAIN
 						)
-	planetary_wall_type = /turf/unsimulated/wall/planetary/virgo3b
+*/
 
-/datum/planet/virgo3b/New()
+
+/datum/planet/lythios43c/New()
 	..()
-	planet_virgo3b = src
-	weather_holder = new /datum/weather_holder/virgo3b(src)
+	planet_lythios43c = src
+	weather_holder = new /datum/weather_holder/lythios43c(src)
 
-/datum/planet/virgo3b/update_sun()
+/datum/planet/lythios43c/update_sun()
 	..()
 	var/datum/time/time = current_time
 	var/length_of_day = time.seconds_in_day / 10 / 60 / 60
@@ -103,36 +124,31 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 		update_sun_deferred(2, new_brightness, new_color)
 
 
-/datum/weather_holder/virgo3b
+/datum/weather_holder/lythios43c
 	temperature = T0C
 	allowed_weather_types = list(
-		WEATHER_BLIZZARD	= new /datum/weather/virgo3b/blizzard(),
-		WEATHER_BLOOD_MOON	= new /datum/weather/virgo3b/blood_moon(),
-		WEATHER_CLEAR		= new /datum/weather/virgo3b/clear(),
-		WEATHER_HAIL		= new /datum/weather/virgo3b/hail(),
-		WEATHER_LIGHT_SNOW	= new /datum/weather/virgo3b/light_snow(),
-		WEATHER_OVERCAST	= new /datum/weather/virgo3b/overcast(),
-		WEATHER_RAIN		= new /datum/weather/virgo3b/rain(),
-		WEATHER_SNOW		= new /datum/weather/virgo3b/snow(),
-		WEATHER_STORM		= new /datum/weather/virgo3b/storm()
+		WEATHER_CLEAR		= new /datum/weather/lythios43c/clear(),
+		WEATHER_OVERCAST	= new /datum/weather/lythios43c/overcast(),
+		WEATHER_LIGHT_SNOW	= new /datum/weather/lythios43c/light_snow(),
+		WEATHER_SNOW		= new /datum/weather/lythios43c/snow(),
+		WEATHER_BLIZZARD	= new /datum/weather/lythios43c/blizzard(),
+		WEATHER_HAIL		= new /datum/weather/lythios43c/hail(),
 		)
 	roundstart_weather_chances = list(
-		WEATHER_BLIZZARD	= 5,
-		WEATHER_CLEAR		= 30,
-		WEATHER_HAIL		= 2.5,
+		WEATHER_CLEAR		= 27.5,
+		WEATHER_OVERCAST	= 20,
 		WEATHER_LIGHT_SNOW	= 20,
-		WEATHER_OVERCAST	= 30,
-		WEATHER_RAIN		= 5,
-		WEATHER_SNOW		= 5,
-		WEATHER_STORM		= 2.5
+		WEATHER_SNOW		= 15,
+		WEATHER_BLIZZARD	= 15,
+		WEATHER_HAIL		= 2.5
 		)
 
-/datum/weather/virgo3b
-	name = "virgo3b base"
-	temp_high = 243.15 // -20c
-	temp_low = 233.15  // -30c
+/datum/weather/lythios43c
+	name = "lythios-43c base"
+	temp_low = 220.14
+	temp_high = 241.72
 
-/datum/weather/virgo3b/clear
+/datum/weather/lythios43c/clear
 	name = "clear"
 	transition_chances = list(
 		WEATHER_CLEAR = 60,
@@ -146,16 +162,15 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	sky_visible = TRUE
 	observed_message = "The sky is clear."
 
-/datum/weather/virgo3b/overcast
+/datum/weather/lythios43c/overcast
 	name = "overcast"
 	light_modifier = 0.8
 	transition_chances = list(
-		WEATHER_CLEAR = 25,
-		WEATHER_HAIL = 5,
-		WEATHER_LIGHT_SNOW = 10,
+		WEATHER_CLEAR = 20,
 		WEATHER_OVERCAST = 50,
-		WEATHER_RAIN = 5,
-		WEATHER_SNOW = 5
+		WEATHER_LIGHT_SNOW = 20,
+		WEATHER_SNOW = 5,
+		WEATHER_HAIL = 5
 		)
 	observed_message = "It is overcast, all you can see are clouds."
 	transition_messages = list(
@@ -164,17 +179,17 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 		"It's very cloudy."
 		)
 
-/datum/weather/virgo3b/light_snow
+/datum/weather/lythios43c/light_snow
 	name = "light snow"
 	icon_state = "snowfall_light"
-	temp_high = 235
-	temp_low = 	225
+	temp_low = 218.14
+	temp_high = 239.72
 	light_modifier = 0.7
 	transition_chances = list(
-		WEATHER_HAIL = 5,
-		WEATHER_LIGHT_SNOW = 50,
 		WEATHER_OVERCAST = 20,
-		WEATHER_SNOW = 25
+		WEATHER_LIGHT_SNOW = 50,
+		WEATHER_SNOW = 25,
+		WEATHER_HAIL = 5
 		)
 	observed_message = "It is snowing lightly."
 	effect_message = list(
@@ -183,35 +198,20 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 		"<I>A momentary pause in wind leaves the air still before it finds its peaceful rhythm again.</I>",
 		"<I>Blanketed cold envelops you as the wind carries its chilled embrace.</I>"
 	)
-	transition_messages = list(
-		"Small snowflakes begin to fall from above.",
-		"It begins to snow lightly.",
-		)
 
-/datum/weather/virgo3b/light_snow/process_effects()
-	..()
-	for(var/mob/living/L in living_mob_list)
-		if(L.z in holder.our_planet.expected_z_levels)
-			var/turf/T = get_turf(L)
-			if(!T.outdoors)
-				continue // Are they indoors?
-
-			if(show_message)
-				to_chat(L, pick(effect_message))
-
-/datum/weather/virgo3b/snow
+/datum/weather/lythios43c/snow
 	name = "moderate snow"
 	icon_state = "snowfall_med"
-	temp_high = 230
-	temp_low = 220
+	temp_low = 215.14
+	temp_high = 235.72
 	light_modifier = 0.5
 	flight_failure_modifier = 5
 	transition_chances = list(
+		WEATHER_LIGHT_SNOW = 20,
+		WEATHER_SNOW = 50,
 		WEATHER_BLIZZARD = 20,
 		WEATHER_HAIL = 5,
-		WEATHER_LIGHT_SNOW = 20,
-		WEATHER_OVERCAST = 5,
-		WEATHER_SNOW = 50
+		WEATHER_OVERCAST = 5
 		)
 	observed_message = "It is snowing."
 	effect_message = list(
@@ -220,12 +220,10 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 		"<I>A momentary pause in wind leaves the air still before it finds its peaceful rhythm again.</I>",
 		"<I>Blanketed cold envelops you as the wind carries its chilled embrace.</I>"
 	)
-	transition_messages = list(
-		"It's starting to snow.",
-		"The air feels much colder as snowflakes fall from above."
-	)
+	outdoor_sounds_type = /datum/looping_sound/weather/outside_snow
+	indoor_sounds_type = /datum/looping_sound/weather/inside_snow
 
-/datum/weather/virgo3b/snow/process_effects()
+/datum/weather/lythios43c/snow/process_effects()
 	..()
 	for(var/mob/living/L in living_mob_list)
 		if(L.z in holder.our_planet.expected_z_levels)
@@ -244,18 +242,18 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 					if(istype(T, /turf/simulated/floor/outdoors) && prob(33))
 						T.chill()
 
-/datum/weather/virgo3b/blizzard
+/datum/weather/lythios43c/blizzard
 	name = "blizzard"
 	icon_state = "snowfall_heavy"
-	temp_high = 215
-	temp_low = 200
+	temp_low = 200.14
+	temp_high = 225.72
 	light_modifier = 0.3
 	flight_failure_modifier = 10
 	transition_chances = list(
-		WEATHER_BLIZZARD = 40,
-		WEATHER_HAIL = 10,
-		WEATHER_OVERCAST = 5,
-		WEATHER_SNOW = 45
+		WEATHER_SNOW = 35,
+		WEATHER_BLIZZARD = 30,
+		WEATHER_HAIL = 30,
+		WEATHER_OVERCAST = 5
 		)
 	observed_message = "A blizzard blows snow everywhere."
 	effect_message = list(
@@ -267,8 +265,10 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 		"Strong winds howl around you as a blizzard appears.",
 		"It starts snowing heavily, and it feels extremly cold now."
 	)
+	outdoor_sounds_type = /datum/looping_sound/weather/outside_blizzard
+	indoor_sounds_type = /datum/looping_sound/weather/inside_blizzard
 
-/datum/weather/virgo3b/blizzard/process_effects()
+/datum/weather/lythios43c/blizzard/process_effects()
 	..()
 	for(var/mob/living/L in living_mob_list)
 		if(L.z in holder.our_planet.expected_z_levels)
@@ -287,59 +287,12 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 					if(istype(T, /turf/simulated/floor/outdoors) && prob(50))
 						T.chill()
 
-/datum/weather/virgo3b/rain
-	name = "rain"
-	icon_state = "rain"
-	light_modifier = 0.5
-	effect_message = list(
-		"<I>A gentle white noise of rain taps away a restless song.</I>",
-		"<I>Stray droplets of rain momentarily obscure your vision.</I>",
-		"<I>The rainfall lessens for the span of a breath, stirring your mind from the ambience of it.</I>"
-	)
-
-	transition_chances = list(
-		WEATHER_HAIL = 5,
-		WEATHER_LIGHT_SNOW = 10,
-		WEATHER_OVERCAST = 25,
-		WEATHER_RAIN = 50,
-		WEATHER_STORM = 10
-		)
-	observed_message = "It is raining."
-	transition_messages = list(
-		"The sky is dark, and rain falls down upon you.",
-		"Billowing clouds seem to hasten overhead as stray rain droplets form more consistent patterns from above."
-	)
-
-/datum/weather/virgo3b/rain/process_effects()
-	..()
-	for(var/mob/living/L in living_mob_list)
-		if(L.z in holder.our_planet.expected_z_levels)
-			var/turf/T = get_turf(L)
-			if(!T.outdoors)
-				continue // Are they indoors?
-
-			// If they have an open umbrella, it'll guard from rain
-			if(istype(L.get_active_held_item(), /obj/item/melee/umbrella))
-				var/obj/item/melee/umbrella/U = L.get_active_held_item()
-				if(U.open)
-					if(show_message)
-						to_chat(L, "<span class='notice'>Rain patters softly onto your umbrella.</span>")
-					continue
-			else if(istype(L.get_inactive_held_item(), /obj/item/melee/umbrella))
-				var/obj/item/melee/umbrella/U = L.get_inactive_held_item()
-				if(U.open)
-					if(show_message)
-						to_chat(L, "<span class='notice'>Rain patters softly onto your umbrella.</span>")
-					continue
-
-			L.water_act(1)
-			if(show_message)
-				to_chat(L, pick(effect_message))
-
-/datum/weather/virgo3b/storm
+/datum/weather/lythios43c/storm
 	name = "storm"
 	icon_state = "storm"
 	light_modifier = 0.3
+	temp_low = 215.14
+	temp_high = 235.72
 	flight_failure_modifier = 10
 	effect_message = list(
 		"<I>A gentle white noise of rain taps away a restless song.</I>",
@@ -359,13 +312,13 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 
 
 	transition_chances = list(
-		WEATHER_HAIL = 10,
-		WEATHER_OVERCAST = 5,
 		WEATHER_RAIN = 45,
-		WEATHER_STORM = 40
+		WEATHER_STORM = 40,
+		WEATHER_HAIL = 10,
+		WEATHER_OVERCAST = 5
 		)
 
-/datum/weather/virgo3b/storm/process_effects()
+/datum/weather/lythios43c/storm/process_effects()
 	..()
 	for(var/mob/living/L in living_mob_list)
 		if(L.z in holder.our_planet.expected_z_levels)
@@ -384,11 +337,14 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 				else if(istype(L.get_inactive_held_item(), /obj/item/melee/umbrella))
 					var/obj/item/melee/umbrella/U = L.get_inactive_held_item()
 					if(U.open)
-						to_chat(L, "<span class='danger'>A gust of wind yanks the umbrella from your hand!</span>")
-						playsound(L, 'sound/effects/rustle1.ogg', 100, 1)
-						L.drop_from_inventory(U)
-						U.toggle_umbrella()
-						U.throw_at_old(get_edge_target_turf(U, pick(GLOB.alldirs)), 8, 1, L)
+						if(L.drop_item_to_ground(U))
+							to_chat(L, "<span class='danger'>A gust of wind yanks the umbrella from your hand!</span>")
+							playsound(L, 'sound/effects/rustle1.ogg', 100, 1)
+							U.toggle_umbrella()
+							U.throw_at_old(get_edge_target_turf(U, pick(GLOB.alldirs)), 8, 1, L)
+						else
+							to_chat(L, "<span class='notice'>A gust of wind nearly yanks the umbrella from your hand.</span>")
+							playsound(L, 'sound/effects/rustle1.ogg', 100, 1)
 
 			// If they have an open umbrella, it'll guard from rain
 			if(istype(L.get_active_held_item(), /obj/item/melee/umbrella))
@@ -413,17 +369,19 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 
 // This gets called to do lightning periodically.
 // There is a seperate function to do the actual lightning strike, so that badmins can play with it.
-/datum/weather/virgo3b/storm/proc/handle_lightning()
+/datum/weather/lythios43c/storm/proc/handle_lightning()
 	if(world.time < next_lightning_strike)
 		return // It's too soon to strike again.
 	next_lightning_strike = world.time + rand(min_lightning_cooldown, max_lightning_cooldown)
 	var/turf/T = pick(holder.our_planet.planet_floors) // This has the chance to 'strike' the sky, but that might be a good thing, to scare reckless pilots.
 	lightning_strike(T)
 
-/datum/weather/virgo3b/hail
+/datum/weather/lythios43c/hail
 	name = "hail"
 	icon_state = "hail"
 	light_modifier = 0.3
+	temp_low = 215.14
+	temp_high = 225.72
 	flight_failure_modifier = 15
 	timer_low_bound = 2
 	timer_high_bound = 5
@@ -434,10 +392,10 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 	)
 
 	transition_chances = list(
+		WEATHER_SNOW = 40,
+		WEATHER_BLIZZARD = 30,
 		WEATHER_HAIL = 10,
-		WEATHER_OVERCAST = 5,
-		WEATHER_RAIN = 45,
-		WEATHER_STORM = 40
+		WEATHER_OVERCAST = 20
 		)
 	observed_message = "Ice is falling from the sky."
 	transition_messages = list(
@@ -446,7 +404,7 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 		"An intense chill washes over you as chunks of ice start to fall from the sky."
 	)
 
-/datum/weather/virgo3b/hail/process_effects()
+/datum/weather/lythios43c/hail/process_effects()
 	..()
 	for(var/humie in living_mob_list)
 		var/mob/living/H = humie
@@ -470,16 +428,3 @@ var/datum/planet/virgo3b/planet_virgo3b = null
 
 			if(show_message)
 				to_chat(H, pick(effect_message))
-
-/datum/weather/virgo3b/blood_moon
-	name = "blood moon"
-	light_modifier = 0.5
-	light_color = "#FF0000"
-	flight_failure_modifier = 25
-	transition_chances = list(
-		WEATHER_BLOODMOON = 100
-		)
-	observed_message = "Everything is red. Something really ominous is going on."
-	transition_messages = list(
-		"The sky turns blood red!"
-	)

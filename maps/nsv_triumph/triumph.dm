@@ -7,14 +7,7 @@
 	#include "triumph_shuttles.dm"
 	#include "triumph_telecomms.dm"
 	#include "triumph_overmap.dm"
-	#include "classg.dm"
-	#include "classd.dm"
-	#include "classh.dm"
-	#include "classp.dm"
-	#include "classm.dm"
-	#include "lavaland.dm"
-
-	#include "submaps/_triumph_submaps.dm"
+	#include "triumph_weather.dm"
 
 	#define USING_MAP_DATUM /datum/map/triumph
 

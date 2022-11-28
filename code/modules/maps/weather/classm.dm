@@ -1,4 +1,14 @@
-var/datum/planet/classm/planet_classm = null
+/datum/atmosphere/planet/classm
+	base_gases = list(
+	/datum/gas/oxygen = 0.22,
+	/datum/gas/nitrogen = 0.78
+	)
+	base_target_pressure = 110.1
+	minimum_pressure = 110.1
+	maximum_pressure = 110.1
+	minimum_temp = 293.3
+	maximum_temp = 307.3
+
 
 /datum/time/classm
 	seconds_in_day = 3 HOURS
@@ -7,12 +17,6 @@ var/datum/planet/classm/planet_classm = null
 	name = "Class-M Gaia Planet"
 	desc = "A beautiful, lush planet that is owned by the Happy Days and Sunshine Corporation."
 	current_time = new /datum/time/classm()
-	expected_z_levels = list(14) // Debug testing.
-
-/datum/planet/classm/New()
-	..()
-	planet_classm = src
-	weather_holder = new /datum/weather_holder/classm(src)
 
 /datum/planet/classm/update_sun()
 	..()

@@ -16,7 +16,7 @@
 #define Z_LEVEL_DEBRISFIELD				13
 #define Z_LEVEL_PIRATEBASE				14
 #define Z_LEVEL_MININGPLANET			15 // CLASS G
-#define Z_LEVEL_UNKNOWN_PLANET			16 // CLASS D
+#define Z_LEVEL_CLASS_D					16 // CLASS D
 #define Z_LEVEL_DESERT_PLANET			17 // CLASS H
 #define Z_LEVEL_GAIA_PLANET				18 // CLASS M
 #define Z_LEVEL_FROZEN_PLANET			19 // CLASS P
@@ -226,7 +226,7 @@
 	levels_for_distress = list(
 		Z_LEVEL_DEBRISFIELD,
 		Z_LEVEL_MININGPLANET,
-		Z_LEVEL_UNKNOWN_PLANET,
+		Z_LEVEL_CLASS_D,
 		Z_LEVEL_DESERT_PLANET,
 		Z_LEVEL_GAIA_PLANET,
 		Z_LEVEL_FROZEN_PLANET
@@ -359,3 +359,57 @@
 		/mob/living/simple_mob/animal/passive/furnacegrub,
 		/mob/living/simple_mob/animal/horing = 2
 	)
+
+
+/// Z level dropper. Todo, make something generic so we dont have to copy pasta this
+/obj/effect/step_trigger/zlevel_fall //Don't ever use this, only use subtypes.Define a new var/static/target_z on each
+	affect_ghosts = 1
+
+/obj/effect/step_trigger/zlevel_fall/Initialize(mapload)
+	. = ..()
+
+	if(istype(get_turf(src), /turf/simulated/floor))
+		src:target_z = z
+		return INITIALIZE_HINT_QDEL
+
+/obj/effect/step_trigger/zlevel_fall/Trigger(var/atom/movable/A) //mostly from /obj/effect/step_trigger/teleporter/planetary_fall, step_triggers.dm L160
+	if(!src:target_z)
+		return
+
+	if(isobserver(A) || A.anchored)
+		return
+	if(A.throwing)
+		return
+	if(!A.can_fall())
+		return
+	if(isliving(A))
+		var/mob/living/L = A
+		if(L.is_floating || L.flying)
+			return //Flyers/nograv can ignore it
+
+	var/attempts = 100
+	var/turf/simulated/T
+	while(attempts && !T)
+		var/turf/simulated/candidate = locate(rand(5,world.maxx-5),rand(5,world.maxy-5),src:target_z)
+		if(candidate.density)
+			attempts--
+			continue
+
+		T = candidate
+		break
+
+	if(!T)
+		return
+
+	if(isobserver(A))
+		A.forceMove(T) // Harmlessly move ghosts.
+		return
+
+	A.forceMove(T)
+	if(isliving(A)) // Someday, implement parachutes.  For now, just turbomurder whoever falls.
+		message_admins("\The [A] fell out of the sky.")
+		var/mob/living/L = A
+		L.fall_impact(T, 42, 90, FALSE, TRUE)	//You will not be defibbed from this.
+
+/obj/effect/step_trigger/zlevel_fall/cavernfall
+	var/static/target_z = Z_LEVEL_WEST_CAVERN

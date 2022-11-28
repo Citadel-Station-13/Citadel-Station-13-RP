@@ -1,27 +1,25 @@
-/// Lateloaded by tether.dm after tether_defines.dm
-/// Has to be loaded this way since tether_defines.dm has Z_LEVEL_CLASS_D defined whiiiiiich this .dm uses to designate the z level for the weather to be simulated on.
+/datum/atmosphere/planet/classg
+	base_gases = list(
+	/datum/gas/oxygen = 10,
+	/datum/gas/nitrogen = 10,
+	/datum/gas/phoron = 80
+	)
+	base_target_pressure = 110.1
+	minimum_pressure = 110.1
+	maximum_pressure = 110.1
+	minimum_temp = 293.3
+	maximum_temp = 307.3
 
 
-var/datum/planet/class_d/planet_class_d = null
-
-/datum/time/class_d
+/datum/time/classg
 	seconds_in_day = 3 HOURS
 
-/datum/planet/class_d
-	name = "Virgo - 5"
-	desc = "A rocky moon which has recently had its quarantine lifted following a campaign of nuclear bombings and mercinary \
-	forces fighting to whipe out a large xenomorph infestation."
-	current_time = new /datum/time/class_d()
-	expected_z_levels = list(Z_LEVEL_CLASS_D)		// Designates z level the weather effects should be used one
-	planetary_wall_type = /turf/unsimulated/wall/planetary/class_d
+/datum/planet/classg
+	name = "Class-G Mineral Rich Planet"
+	desc = "A mineral rich planet with a volatile atmosphere."
+	current_time = new /datum/time/classg()
 
-
-/datum/planet/class_d/New()
-	..()
-	planet_class_d = src
-	weather_holder = new /datum/weather_holder/class_d(src)
-
-/datum/planet/class_d/update_sun()
+/datum/planet/classg/update_sun()
 	..()
 	var/datum/time/time = current_time
 	var/length_of_day = time.seconds_in_day / 10 / 60 / 60
@@ -100,46 +98,45 @@ var/datum/planet/class_d/planet_class_d = null
 	spawn(1)
 		update_sun_deferred(2, new_brightness, new_color)
 
-
-
-/datum/weather_holder/class_d
+/datum/weather_holder/classg
 	temperature = T0C
 	allowed_weather_types = list(
-		WEATHER_CLEAR		= new /datum/weather/class_d/clear(),
-		WEATHER_FALLOUT		= new /datum/weather/class_d/fallout()
+		WEATHER_CLEAR		= new /datum/weather/classg/clear(),
+		//WEATHER_FALLOUT		= new /datum/weather/classg/fallout()
 		)
 	roundstart_weather_chances = list(
-		WEATHER_CLEAR		= 95,
-		WEATHER_FALLOUT		= 5
+		WEATHER_CLEAR		= 100
+		//WEATHER_FALLOUT		= 25
 		)
 
-/datum/weather/class_d
-	name = "class_d base"
+/datum/weather/classg
+	name = "classg base"
 	temp_high	= 203
 	temp_low 	= 203
 
-/datum/weather/class_d/clear
+/datum/weather/classg/clear
 	name = "clear"
 	transition_chances = list(
-		WEATHER_CLEAR	 = 85,
-		WEATHER_FALLOUT	 = 15
+		WEATHER_CLEAR	 = 100
+		//WEATHER_FALLOUT	 = 35
 		)
 	transition_messages = list(
-		"The radioactive storm clears.",
-		"The stars are visible once more.",
+		//"The radioactive storm clears.",
+		//"The stars are visible once more.",
 		)
 	sky_visible = TRUE
 	observed_message = "The stars are visible overhead."
 
-/datum/weather/class_d/fallout
+/*
+/datum/weather/classg/fallout
 	name = "fallout"
 	icon_state = "fallout"
 	light_modifier = 0.7
 	light_color = "#CCFFCC"
 	flight_failure_modifier = 30
 	transition_chances = list(
-		WEATHER_CLEAR	= 60,
-		WEATHER_FALLOUT = 40
+		WEATHER_CLEAR	= 50,
+		WEATHER_FALLOUT = 50
 		)
 	observed_message = "Radioactive soot and ash rains down from the heavens."
 	transition_messages = list(
@@ -156,7 +153,7 @@ var/datum/planet/class_d/planet_class_d = null
 	var/fallout_rad_low = RAD_LEVEL_HIGH
 	var/fallout_rad_high = RAD_LEVEL_VERY_HIGH
 
-/datum/weather/class_d/fallout/process_effects()
+/datum/weather/classg/fallout/process_effects()
 	..()
 	for(var/thing in living_mob_list)
 		var/mob/living/L = thing
@@ -170,7 +167,7 @@ var/datum/planet/class_d/planet_class_d = null
 
 // This makes random tiles near people radioactive for awhile.
 // Tiles far away from people are left alone, for performance.
-/datum/weather/class_d/fallout/proc/irradiate_nearby_turf(mob/living/L)
+/datum/weather/classg/fallout/proc/irradiate_nearby_turf(mob/living/L)
 	if(!istype(L))
 		return
 	var/list/turfs = RANGE_TURFS(world.view, L)
@@ -179,3 +176,55 @@ var/datum/planet/class_d/planet_class_d = null
 		return
 	if(T.outdoors)
 		SSradiation.radiate(T, rand(fallout_rad_low, fallout_rad_high))
+*/
+
+// Shuttle Path for Mining Planet
+
+// -- Datums -- //
+/*/obj/effect/overmap/visitable/sector/classg
+	name = "Mineral Rich Planet"			// The name of the destination
+	desc = "Sensors indicate that this is a world filled with minerals.  There seems to be a thin atmosphere on the planet."
+	icon_state = "globe"
+	color = "#4e4e4e"	// Bright yellow
+	initial_generic_waypoints = list("poid_main")
+*/
+
+// This is a special subtype of the thing that generates ores on a map
+// It will generate more rich ores because of the lower numbers than the normal one
+/datum/random_map/noise/ore/classg
+	descriptor = "Mining planet mine ore distribution map"
+	deep_val = 0.6 //More riches, normal is 0.7 and 0.8
+	rare_val = 0.4
+
+// The check_map_sanity proc is sometimes unsatisfied with how AMAZING our ores are
+/datum/random_map/noise/ore/classg/check_map_sanity()
+	var/rare_count = 0
+	var/surface_count = 0
+	var/deep_count = 0
+
+//// Something is causing the ore spawn to error out, but still spawn ores for us so we'll need to keep tabs on why this is.
+//// Hopefully the increased rarity val will cause the error to vanish, but we'll see. - Enzo 9/8/2020
+
+	// Increment map sanity counters.
+	for(var/value in map)
+		if(value < rare_val)
+			surface_count++
+		else if(value < deep_val)
+			rare_count++
+		else
+			deep_count++
+	admin_notice("RARE COUNT [rare_count]", R_DEBUG)
+	admin_notice("SURFACE COUNT [surface_count]", R_DEBUG)
+	admin_notice("DEEP COUNT [deep_count]", R_DEBUG)
+	// Sanity check.
+	if(surface_count < 100)
+		admin_notice("<span class='danger'>Insufficient surface minerals. Rerolling...</span>", R_DEBUG)
+		return 0
+	else if(rare_count < 50)
+		admin_notice("<span class='danger'>Insufficient rare minerals. Rerolling...</span>", R_DEBUG)
+		return 0
+	else if(deep_count < 50)
+		admin_notice("<span class='danger'>Insufficient deep minerals. Rerolling...</span>", R_DEBUG)
+		return 0
+	else
+		return 1

@@ -1,4 +1,16 @@
-var/datum/planet/lavaland/planet_lavaland = null
+/datum/atmosphere/planet/lavaland
+	base_gases = list(
+	/datum/gas/oxygen = 0.14,
+	/datum/gas/nitrogen = 0.20,
+	/datum/gas/carbon_dioxide = 0.66
+	)
+	base_target_pressure = 35.1
+	minimum_pressure = 32.1
+	maximum_pressure = 37.1
+	minimum_temp = 310.3
+	maximum_temp = 350.1
+
+
 
 /datum/time/lavaland
 	seconds_in_day = 2 HOURS
@@ -7,12 +19,6 @@ var/datum/planet/lavaland/planet_lavaland = null
 	name = "Lava Land"
 	desc = "The fabled."
 	current_time = new /datum/time/lavaland()
-	expected_z_levels = list(21, 22) // Debug testing.
-
-/datum/planet/lavaland/New()
-	..()
-	planet_lavaland = src
-	weather_holder = new /datum/weather_holder/lavaland(src)
 
 /datum/planet/lavaland/update_sun()
 	..()

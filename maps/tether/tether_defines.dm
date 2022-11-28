@@ -405,3 +405,140 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	name = "Solar Field"
 	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER|MAP_LEVEL_SEALED
 	base_turf = /turf/simulated/floor/outdoors/rocks/virgo3b
+
+
+/////////////////////
+/// Step Triggers ///
+/////////////////////
+
+/obj/effect/step_trigger/teleporter/to_mining/Initialize(mapload)
+	. = ..()
+	teleport_x = src.x
+	teleport_y = 2
+	teleport_z = Z_LEVEL_SURFACE_MINE
+
+/obj/effect/step_trigger/teleporter/from_mining/Initialize(mapload)
+	. = ..()
+	teleport_x = src.x
+	teleport_y = world.maxy - 1
+	teleport_z = Z_LEVEL_SURFACE_LOW
+
+/obj/effect/step_trigger/teleporter/to_solars/Initialize(mapload)
+	. = ..()
+	teleport_x = world.maxx - 1
+	teleport_y = src.y
+	teleport_z = Z_LEVEL_SOLARS
+
+/obj/effect/step_trigger/teleporter/from_solars/Initialize(mapload)
+	. = ..()
+	teleport_x = 2
+	teleport_y = src.y
+	teleport_z = Z_LEVEL_SURFACE_LOW
+
+/obj/effect/step_trigger/teleporter/wild/Initialize(mapload)
+	. = ..()
+
+	//If starting on east/west edges.
+	if (src.x == 1)
+		teleport_x = world.maxx - 1
+	else if (src.x == world.maxx)
+		teleport_x = 2
+	else
+		teleport_x = src.x
+	//If starting on north/south edges.
+	if (src.y == 1)
+		teleport_y = world.maxy - 1
+	else if (src.y == world.maxy)
+		teleport_y = 2
+	else
+		teleport_y = src.y
+
+/obj/effect/step_trigger/teleporter/to_underdark
+	icon = 'icons/obj/structures/stairs_64x64.dmi'
+	icon_state = ""
+	invisibility = 0
+/obj/effect/step_trigger/teleporter/to_underdark/Initialize(mapload)
+	. = ..()
+	teleport_x = x
+	teleport_y = y
+	for(var/z_num in GLOB.using_map.zlevels)
+		var/datum/map_z_level/Z = GLOB.using_map.zlevels[z_num]
+		if(Z.name == "Underdark")
+			teleport_z = Z.z
+
+/obj/effect/step_trigger/teleporter/from_underdark
+	icon = 'icons/obj/structures/stairs_64x64.dmi'
+	icon_state = ""
+	invisibility = 0
+/obj/effect/step_trigger/teleporter/from_underdark/Initialize(mapload)
+	. = ..()
+	teleport_x = x
+	teleport_y = y
+	for(var/z_num in GLOB.using_map.zlevels)
+		var/datum/map_z_level/Z = GLOB.using_map.zlevels[z_num]
+		if(Z.name == "Mining Outpost")
+			teleport_z = Z.z
+
+/obj/effect/step_trigger/teleporter/to_plains/Initialize(mapload)
+	. = ..()
+	teleport_x = src.x
+	teleport_y = world.maxy - 1
+	teleport_z = Z_LEVEL_PLAINS
+
+/obj/effect/step_trigger/teleporter/from_plains/Initialize(mapload)
+	. = ..()
+	teleport_x = src.x
+	teleport_y = 2
+	teleport_z = Z_LEVEL_SURFACE_LOW
+
+/obj/effect/step_trigger/teleporter/planetary_fall/virgo3b/find_planet()
+	planet = planet_virgo3b
+
+
+// Our map is small, if the supermatter is ejected lets not have it just blow up somewhere else
+/obj/machinery/power/supermatter/touch_map_edge()
+	qdel(src)
+
+
+
+
+
+/// Z level dropper. Todo, make something generic so we dont have to copy pasta this
+
+/obj/effect/step_trigger/zlevel_fall //Don't ever use this, only use subtypes.Define a new var/static/target_z on each
+	affect_ghosts = 1
+
+/obj/effect/step_trigger/zlevel_fall/Initialize(mapload)
+	. = ..()
+
+	if(istype(get_turf(src), /turf/simulated/floor))
+		src:target_z = z
+		return INITIALIZE_HINT_QDEL
+
+/obj/effect/step_trigger/zlevel_fall/Trigger(var/atom/movable/A) //mostly from /obj/effect/step_trigger/teleporter/planetary_fall, step_triggers.dm L160
+	if(!src:target_z)
+		return
+
+	var/attempts = 100
+	var/turf/simulated/T
+	while(attempts && !T)
+		var/turf/simulated/candidate = locate(rand(5,world.maxx-5),rand(5,world.maxy-5),src:target_z)
+		if(candidate.density)
+			attempts--
+			continue
+
+		T = candidate
+		break
+
+	if(!T)
+		return
+
+	if(isobserver(A))
+		A.forceMove(T) // Harmlessly move ghosts.
+		return
+
+	A.forceMove(T)
+	if(isliving(A)) // Someday, implement parachutes.  For now, just turbomurder whoever falls.
+		message_admins("\The [A] fell out of the sky.")
+		var/mob/living/L = A
+		L.fall_impact(T, 42, 90, FALSE, TRUE)	//You will not be defibbed from this.

@@ -1,5 +1,3 @@
-var/datum/planet/virgo4/planet_virgo4 = null
-
 /datum/time/virgo4
 	seconds_in_day = 24 HOURS
 
@@ -7,13 +5,7 @@ var/datum/planet/virgo4/planet_virgo4 = null
 	name = "Virgo-4"
 	desc = "Zorren homeworld. Mostly dry and desolate, but ocean and fresh water are present, with scattered vegitation." //rewrite me
 	current_time = new /datum/time/virgo4()
-	expected_z_levels = list(Z_LEVEL_BEACH, Z_LEVEL_DESERT)
 	planetary_wall_type = /turf/unsimulated/wall/planetary/normal/virgo4
-
-/datum/planet/virgo4/New()
-	..()
-	planet_virgo4 = src
-	weather_holder = new /datum/weather_holder/virgo4(src)
 
 /datum/planet/virgo4/update_sun()
 	..()

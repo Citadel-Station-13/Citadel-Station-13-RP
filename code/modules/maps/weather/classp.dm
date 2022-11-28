@@ -1,4 +1,15 @@
-var/datum/planet/classp/planet_classp = null
+/datum/atmosphere/planet/classp
+	base_gases = list(
+	/datum/gas/oxygen = 0.23,
+	/datum/gas/nitrogen = 0.77
+	)
+	base_target_pressure = 100.1
+	minimum_pressure = 100.1
+	maximum_pressure = 100.1
+	minimum_temp = 225.3
+	maximum_temp = 230.3
+
+
 
 /datum/time/classp
 	seconds_in_day = 2 HOURS
@@ -7,12 +18,6 @@ var/datum/planet/classp/planet_classp = null
 	name = "Class-P Frozen Planet"
 	desc = "A frosted world that seems stuck in time."
 	current_time = new /datum/time/classp()
-	expected_z_levels = list(19) // Debug testing.
-
-/datum/planet/classp/New()
-	..()
-	planet_classp = src
-	weather_holder = new /datum/weather_holder/classp(src)
 
 /datum/planet/classp/update_sun()
 	..()
