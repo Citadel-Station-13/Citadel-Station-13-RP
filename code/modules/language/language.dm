@@ -34,7 +34,7 @@
 	/// CSS style to use for strings in this language.
 	var/colour = "body"
 	/// Character used to speak in language eg. :o for Unathi.
-	var/key = "x"
+	var/key
 	/// Various language language_flags.
 	var/language_flags = NONE
 	/// If set, non-native speakers will have trouble speaking.
