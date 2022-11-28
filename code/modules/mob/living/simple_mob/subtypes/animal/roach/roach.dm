@@ -445,7 +445,7 @@
 	tt_desc = "Periplaneta intervallum"
 	icon_state = "zeitraum"
 	item_state = "zeitraum"
-	icon_living = "zeitraun"
+	icon_living = "zeitraum"
 	icon_dead = "zeitraum_dead"
 	catalogue_data = list(/datum/category_item/catalogue/fauna/roach/zeitraum)
 
