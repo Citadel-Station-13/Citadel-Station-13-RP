@@ -1,17 +1,10 @@
-/obj/effect/overmap/visitable/sector/lythios43c
-	extra_z_levels = list(
-		Z_LEVEL_WEST_PLAIN,
-		Z_LEVEL_WEST_CAVERN,
-		Z_LEVEL_WEST_DEEP,
-		Z_LEVEL_WEST_BASE
-	)
 
 //////////////////////////////////////////////////////////////////////////
 // There is literally a dm file for triumph shuttles, why are these here//
 //////////////////////////////////////////////////////////////////////////
 
 // Vox Pirate ship (Yaya, yous be giving us all your gear now.)
-
+/*
 /obj/effect/overmap/visitable/ship/landable/pirate
 	name = "Pirate Skiff"
 	desc = "Yous need not care about this."
@@ -31,3 +24,6 @@
 /obj/machinery/computer/shuttle_control/explore/pirate
 	name = "short jump raiding console"
 	shuttle_tag = "Pirate Skiff"
+*/
+
+

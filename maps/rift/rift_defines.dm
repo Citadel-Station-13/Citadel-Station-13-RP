@@ -214,6 +214,24 @@
 		/datum/planet/classp,
 		/datum/planet/classm)
 
+// Overmap stuff. Main file is under code/modules/maps/overmap/_lythios43c.dm
+// Todo, find a way to populate this list automatically without having to do this
+/obj/effect/overmap/visitable/sector/lythios43c
+	extra_z_levels = list(
+		Z_LEVEL_WEST_PLAIN,
+		Z_LEVEL_WEST_CAVERN,
+		Z_LEVEL_WEST_DEEP,
+		Z_LEVEL_WEST_BASE
+	)
+	levels_for_distress = list(
+		Z_LEVEL_DEBRISFIELD,
+		Z_LEVEL_MININGPLANET,
+		Z_LEVEL_UNKNOWN_PLANET,
+		Z_LEVEL_DESERT_PLANET,
+		Z_LEVEL_GAIA_PLANET,
+		Z_LEVEL_FROZEN_PLANET
+		)
+
 
 /*
 // For making the 6-in-1 holomap, we calculate some offsets

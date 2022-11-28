@@ -38,26 +38,27 @@
 		)
 
 
-/*	initial_generic_waypoints = list("nav_capitalship_docking2", "triumph_excursion_hangar", "triumph_space_SW", "triumph_mining_port")
 
-	initial_restricted_waypoints = list(
-		"Excursion Shuttle" = list("triumph_excursion_hangar"),
-		"Courser Scouting Vessel" = list("triumph_courser_hangar"),
-		"Civilian Transport" = list("triumph_civvie_home"),
-		"Dart EMT Shuttle" = list("triumph_emt_dock"),
-		"Beruang Trade Ship" = list("triumph_annex_dock"),
-		"Mining Shuttle" = list("triumph_mining_port")
-		)
+//Despite not being in the multi-z complex, these levels are part of the overmap sector
+/* This should be placed in the map's define files.
 
+/obj/effect/overmap/visitable/sector/lythios43c
+	extra_z_levels = list(
+		Z_LEVEL_WEST_PLAIN,
+		Z_LEVEL_WEST_CAVERN,
+		Z_LEVEL_WEST_DEEP,
+		Z_LEVEL_WEST_BASE
+	)
 	levels_for_distress = list(
-		Z_LEVEL_OFFMAP1,
-		Z_LEVEL_BEACH,
-		Z_LEVEL_AEROSTAT,
 		Z_LEVEL_DEBRISFIELD,
-		Z_LEVEL_FUELDEPOT,
-		Z_LEVEL_CLASS_D
+		Z_LEVEL_MININGPLANET,
+		Z_LEVEL_UNKNOWN_PLANET,
+		Z_LEVEL_DESERT_PLANET,
+		Z_LEVEL_GAIA_PLANET,
+		Z_LEVEL_FROZEN_PLANET
 		)
 */
+
 
 /obj/effect/overmap/visitable/sector/lythios43c/Crossed(var/atom/movable/AM)
 	. = ..()

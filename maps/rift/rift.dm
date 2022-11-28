@@ -6,7 +6,7 @@
 	#include "rift_shuttle_defs.dm"
 	#include "rift_shuttles.dm"
 	#include "rift_telecomms.dm"
-	#include "rift_overmap.dm"
+//	#include "rift_overmap.dm"
 	#include "rift_lythios-43c.dm"
 	#include "classd.dm"
 	#include "classg.dm"
