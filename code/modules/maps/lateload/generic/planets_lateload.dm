@@ -108,7 +108,7 @@ For gateway missions please put them in gateway_lateload.dm
 
 /datum/map_template/planets_lateload/away_d_world
 	name = "ExoPlanet - Z2 Planet"
-	desc = "A random unknown planet."
+	desc = "The previously nuked planet Class D away mission"
 	mappath = "_maps/map_levels/192x192/Class_D.dmm"
 	associated_map_datum = /datum/map_z_level/planets_lateload/away_d_world
 	ztraits = list(ZTRAIT_AWAY = TRUE, ZTRAIT_GRAVITY = TRUE)
@@ -192,23 +192,23 @@ For gateway missions please put them in gateway_lateload.dm
 /// Virgo 4 - Beach and caves ///
 /////////////////////////////////
 
-/datum/map_template/tether_lateload/away_beach
+/datum/map_template/planets_lateload/away_beach
 	name = "Desert Planet - Z1 Beach"
 	desc = "The beach away mission."
 	mappath = "_maps/map_levels/140x140/virgo4_beach.dmm"
-	associated_map_datum = /datum/map_z_level/tether_lateload/away_beach
+	associated_map_datum = /datum/map_z_level/planets_lateload/away_beach
 
-/datum/map_z_level/tether_lateload/away_beach
+/datum/map_z_level/planets_lateload/away_beach
 	name = "Away Mission - Desert Beach"
 	base_turf = /turf/simulated/floor/outdoors/rocks/caves
 
-/datum/map_template/tether_lateload/away_beach_cave
+/datum/map_template/planets_lateload/away_beach_cave
 	name = "Desert Planet - Z2 Cave"
 	desc = "The beach away mission's cave."
 	mappath = "_maps/map_levels/140x140/virgo4_cave.dmm"
-	associated_map_datum = /datum/map_z_level/tether_lateload/away_beach_cave
+	associated_map_datum = /datum/map_z_level/planets_lateload/away_beach_cave
 
-/datum/map_template/tether_lateload/away_beach_cave/on_map_loaded(z)
+/datum/map_template/planets_lateload/away_beach_cave/on_map_loaded(z)
 	. = ..()
 	seed_submaps(list(z), 150, /area/tether_away/cave/unexplored/normal, /datum/map_template/submap/level_specific/mountains/normal)
 	//seed_submaps(list(z), 70, /area/tether_away/cave/unexplored/normal, /datum/map_template/submap/level_specific/mountains/deep)
@@ -217,21 +217,21 @@ For gateway missions please put them in gateway_lateload.dm
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z, world.maxx - 4, world.maxy - 4)
 	new /datum/random_map/noise/ore/beachmine(null, 1, 1, z, 64, 64)
 
-/datum/map_z_level/tether_lateload/away_beach_cave
+/datum/map_z_level/planets_lateload/away_beach_cave
 	name = "Away Mission - Desert Cave"
 	base_turf = /turf/simulated/floor/outdoors/rocks/caves
 
-/datum/map_template/tether_lateload/away_desert
+/datum/map_template/planets_lateload/away_desert
 	name = "Desert Planet - Z3 Desert"
 	desc = "The inland desert of V-4."
 	mappath = "_maps/map_levels/140x140/virgo4_desert.dmm"
 	associated_map_datum = /datum/map_template/submap/level_specific/class_h
 
-/datum/map_template/tether_lateload/away_desert/on_map_loaded(z)
+/datum/map_template/planets_lateload/away_desert/on_map_loaded(z)
 	. = ..()
 	seed_submaps(list(z), 150, /area/tether_away/beach/desert/unexplored, /datum/map_template/submap/level_specific/class_h)
 
-/datum/map_z_level/tether_lateload/away_desert
+/datum/map_z_level/planets_lateload/away_desert
 	name = "Away Mission - Desert"
 	base_turf = /turf/simulated/floor/outdoors/beach/sand/lowdesert
 
@@ -243,29 +243,29 @@ For gateway missions please put them in gateway_lateload.dm
 /// Virgo 2 ///
 ///////////////
 
-/datum/map_template/tether_lateload/away_aerostat
+/datum/map_template/planets_lateload/away_aerostat
 	name = "Remmi Aerostat - Z1 Aerostat"
 	desc = "The Virgo 2 Aerostat away mission."
 	mappath = "_maps/map_levels/140x140/virgo2_aerostat.dmm"
-	associated_map_datum = /datum/map_z_level/tether_lateload/away_aerostat
+	associated_map_datum = /datum/map_z_level/planets_lateload/away_aerostat
 
-/datum/map_z_level/tether_lateload/away_aerostat
+/datum/map_z_level/planets_lateload/away_aerostat
 	name = "Away Mission - Aerostat"
 	base_turf = /turf/simulated/floor/sky/virgo2_sky
 
-/datum/map_template/tether_lateload/away_aerostat_surface
+/datum/map_template/planets_lateload/away_aerostat_surface
 	name = "Remmi Aerostat - Z2 Surface"
 	desc = "The surface from the Virgo 2 Aerostat."
 	mappath = "_maps/map_levels/140x140/virgo2_surface.dmm"
-	associated_map_datum = /datum/map_z_level/tether_lateload/away_aerostat_surface
+	associated_map_datum = /datum/map_z_level/planets_lateload/away_aerostat_surface
 
-/datum/map_template/tether_lateload/away_aerostat_surface/on_map_loaded(z)
+/datum/map_template/planets_lateload/away_aerostat_surface/on_map_loaded(z)
 	. = ..()
 	seed_submaps(list(z), 150, /area/tether_away/aerostat/surface/unexplored, /datum/map_template/submap/level_specific/virgo2)
 	new /datum/random_map/automata/cave_system/no_cracks(null, 3, 3, z, world.maxx - 4, world.maxy - 4)
 	new /datum/random_map/noise/ore/virgo2(null, 1, 1, z, 64, 64)
 
-/datum/map_z_level/tether_lateload/away_aerostat_surface
+/datum/map_z_level/planets_lateload/away_aerostat_surface
 	name = "Away Mission - Aerostat Surface"
 	base_turf = /turf/simulated/mineral/floor/ignore_mapgen/virgo2
 

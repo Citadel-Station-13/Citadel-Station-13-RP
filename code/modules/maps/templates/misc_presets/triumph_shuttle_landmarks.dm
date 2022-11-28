@@ -1,5 +1,7 @@
 /*
-** Landmark Defs
+Preset landmarks from Triumph. Still in use for a few maps. At some point need to remap these but
+right now its not a big priority - Bloop 2022
+
  */
 
 // Shared landmark for docking at the station

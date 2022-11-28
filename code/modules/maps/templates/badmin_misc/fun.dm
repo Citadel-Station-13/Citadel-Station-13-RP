@@ -245,3 +245,18 @@
 /obj/effect/shuttle_landmark/automatic/admin_use3
 	name = "Docking Node"
 	landmark_tag = "adminuse_lz_gamma"
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+// Admin-use z-levels for loading whenever an admin feels like
+/datum/map_template/admin
+
+
+
+/datum/map_template/admin/fun
+/// Todo, add more random fun templates for admins to use
+
+/datum/map_template/admin_use/fun/spa
+	name = "Space Spa"
+	desc = "A pleasant spa located in a spaceship."
+	mappath = '_maps/templates/admin/spa.dmm'

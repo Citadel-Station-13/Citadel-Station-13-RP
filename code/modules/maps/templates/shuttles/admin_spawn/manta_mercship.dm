@@ -2,7 +2,7 @@
 
 // Map template for spawning the shuttle
 /datum/map_template/shuttle/overmap/generic/manta_ship
-	name = "OM Ship - Mercenary Cruiser (New Z)"
+	name = "OM Ship - Mercenary Cruiser Manta Class (New Z)"
 	desc = "Mercenary Manta Cruiser."
 	mappath = "_maps/templates/admin/kk_mercship.dmm"
 

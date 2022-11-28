@@ -156,11 +156,42 @@ For gateway missions please put them in gateway_lateload.dm
 // Alien Ship          ///
 //////////////////////////
 
-/datum/map_template/tether_lateload/away_alienship
+/datum/map_template/space_lateload/away_alienship
 	name = "Alien Ship - Z1 Ship"
 	desc = "The alien ship away mission."
 	mappath = "_maps/map_levels/140x140/alienship.dmm"
-	associated_map_datum = /datum/map_z_level/tether_lateload/away_alienship
+	associated_map_datum = /datum/map_z_level/space_lateload/away_alienship
 
-/datum/map_z_level/tether_lateload/away_alienship
+/datum/map_z_level/space_lateload/away_alienship
 	name = "Away Mission - Alien Ship"
+
+
+
+//////////////////////////
+/// Talon Ship         ///
+//////////////////////////
+/*
+Not sure if this will work properly but no reason to get rid of it right now
+*/
+/datum/map_template/space_lateload/offmap/talon1
+	name = "Offmap Ship - Talon Z1"
+	desc = "Offmap spawn ship, the Talon."
+	mappath = "_maps/map_levels/140x140/talon/talon1.dmm"
+	associated_map_datum = /datum/map_z_level/space_lateload/talon1
+
+/datum/map_template/space_lateload/offmap/talon2
+	name = "Offmap Ship - Talon Z2"
+	desc = "Offmap spawn ship, the Talon."
+	mappath = "_maps/map_levels/140x140/talon/talon2.dmm"
+	associated_map_datum = /datum/map_z_level/space_lateload/talon2
+
+/datum/map_z_level/space_lateload/talon1
+	name = "Talon Deck One"
+	flags = MAP_LEVEL_PLAYER
+	base_turf = /turf/space
+
+/datum/map_z_level/space_lateload/talon2
+	name = "Talon Deck Two"
+	flags = MAP_LEVEL_PLAYER
+	base_turf = /turf/simulated/open
+
