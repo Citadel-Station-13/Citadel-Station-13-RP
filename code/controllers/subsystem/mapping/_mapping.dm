@@ -162,7 +162,7 @@ SUBSYSTEM_DEF(mapping)
 				msg += ", [FailedZs[I]]"
 		msg += ". Yell at your server host!"
 		INIT_ANNOUNCE(msg)
-#undef INIT_ANNOUNCE
+
 
 	// Custom maps are removed after station loading so the map files does not persist for no reason.
 	if(config.map_path == CUSTOM_MAP_PATH)
@@ -382,3 +382,6 @@ SUBSYSTEM_DEF(mapping)
 		var/datum/map_template/shelter/S = new shelter_type()
 
 		shelter_templates[S.shelter_id] = S
+
+
+#undef INIT_ANNOUNCE
