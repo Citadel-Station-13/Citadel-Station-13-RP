@@ -1,0 +1,47 @@
+name: size-labels
+
+on: pull_request
+
+jobs:
+  size-labelling:
+    runs-on: ubuntu-latest
+    steps:
+      - name: code-size-labels
+        uses: "pascalgn/size-label-action@v0.4.3"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          # Ignore javascript bundles and map files.
+          IGNORED: "**/*.bundle.*\n**/*.chunk.*\n**/*.dmm"
+        with:
+          # The config for the sizes and labels associated with them.
+          sizes: >
+            {
+              "0": "Code Change Size: XS",
+              "10": "Code Change Size: S",
+              "50": "Code Change Size: M",
+              "100": "Code Change Size: L",
+              "500": "Code Change Size: XL",
+              "1000": "Code Change Size: XXL",
+              "5000": "Code Change Size: FUCK",
+              "10000": "Code Change Size: The Massive Refactor of The Week"
+            }
+
+      - name: map-size-labels
+        uses: "pascalgn/size-label-action@v0.4.3"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          # Ignore everything but dmm files.
+          IGNORED: ".*\n!**/*.dmm"
+        with:
+          # The config for the sizes and labels associated with them.
+          sizes: >
+            {
+              "0": "Map Change Size: XS",
+              "10": "Map Change Size: S",
+              "50": "Map Change Size: M",
+              "100": "Map Change Size: L",
+              "500": "Map Change Size: XL",
+              "1000": "Map Change Size: XXL",
+              "5000": "Map Change Size: FUCK",
+              "10000": "Map Change Size: Unreviewable"
+            }
