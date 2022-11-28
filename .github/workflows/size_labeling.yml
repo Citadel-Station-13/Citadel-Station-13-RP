@@ -16,14 +16,14 @@ jobs:
           # The config for the sizes and labels associated with them.
           sizes: >
             {
-              "0": "Code Change Size: XS",
-              "10": "Code Change Size: S",
-              "50": "Code Change Size: M",
-              "100": "Code Change Size: L",
-              "500": "Code Change Size: XL",
-              "1000": "Code Change Size: XXL",
-              "5000": "Code Change Size: FUCK",
-              "10000": "Code Change Size: The Massive Refactor of The Week"
+              "0": "code: XS",
+              "10": "code: S",
+              "50": "code: M",
+              "100": "code: L",
+              "500": "code: XL",
+              "1000": "code: XXL",
+              "5000": "code: FUCK",
+              "10000": "code: The Massive Refactor of The Week"
             }
 
       - name: map-size-labels
@@ -36,12 +36,12 @@ jobs:
           # The config for the sizes and labels associated with them.
           sizes: >
             {
-              "0": "Map Change Size: XS",
-              "10": "Map Change Size: S",
-              "50": "Map Change Size: M",
-              "100": "Map Change Size: L",
-              "500": "Map Change Size: XL",
-              "1000": "Map Change Size: XXL",
-              "5000": "Map Change Size: FUCK",
-              "10000": "Map Change Size: Unreviewable"
+              "0": "map: XS",
+              "10": "map: S",
+              "50": "map: M",
+              "100": "map: L",
+              "500": "map: XL",
+              "1000": "map: XXL",
+              "5000": "map: FUCK",
+              "10000": "map: The Massive Map Update of The Week"
             }
