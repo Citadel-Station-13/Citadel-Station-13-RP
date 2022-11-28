@@ -1,49 +1,11 @@
-name: size-labels
-
-on:
-  pull_request:
-    branches:
-    - master
-
+name: Size-Based Labeling
+on: pull_request_target
 jobs:
-  size-labeling:
+  size-label:
     runs-on: ubuntu-latest
     steps:
-      - name: code-size-labels
-        uses: "pascalgn/size-label-action@v0.4.3"
+      - name: size-label
+        uses: pascalgn/size-label-action@v0.4.3
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Ignore javascript bundles and map files.
-          IGNORED: "**/*.bundle.*\n**/*.chunk.*\n**/*.dmm"
-        with:
-          # The config for the sizes and labels associated with them.
-          sizes: >
-            {
-              "0": "code: XS",
-              "10": "code: S",
-              "50": "code: M",
-              "100": "code: L",
-              "500": "code: XL",
-              "1000": "code: XXL",
-              "5000": "code: FUCK",
-              "10000": "code: The Massive Refactor of The Week"
-            }
-      - name: map-size-labels
-        uses: "pascalgn/size-label-action@v0.4.3"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Ignore everything but dmm files.
-          IGNORED: ".*\n!**/*.dmm"
-        with:
-          # The config for the sizes and labels associated with them.
-          sizes: >
-            {
-              "0": "map: XS",
-              "10": "map: S",
-              "50": "map: M",
-              "100": "map: L",
-              "500": "map: XL",
-              "1000": "map: XXL",
-              "5000": "map: FUCK",
-              "10000": "map: The Massive Map Update of The Week"
-            }
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          IGNORED: "**/*.bundle.*\n**/*.chunk.*" # **/*.dmm\n
