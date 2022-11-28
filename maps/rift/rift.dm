@@ -17,7 +17,7 @@
 
 	#define USING_MAP_DATUM /datum/map/rift
 
-	#include "submaps/_rift_submaps.dm"
+//	#include "submaps/_rift_submaps.dm"
 
 	#include "../../_maps/map_files/rift/rift-01-underground3.dmm"
 	#include "../../_maps/map_files/rift/rift-02-underground2.dmm"

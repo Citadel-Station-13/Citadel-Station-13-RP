@@ -1,5 +1,19 @@
 // -- Datums -- //
 
+
+/obj/effect/overmap/visitable/sector/debrisfield
+	name = "Debris Field"
+	desc = "Space junk galore."
+	scanner_desc = @{"[i]Information[/i]: A collection of ruins from ages ago.."}
+	icon_state = "dust2"
+	color = "#BBBBBB"
+	known = FALSE
+	in_space = 1
+	initial_generic_waypoints = list("triumph_excursion_debrisfield")
+
+////Holy shit spagetti pain. TODO fix this debrifield/debrifield_vr bullshit - Bloop///
+
+
 /obj/effect/overmap/visitable/sector/debrisfield_vr
 	name = "Debris Field"
 	desc = "Space junk galore."

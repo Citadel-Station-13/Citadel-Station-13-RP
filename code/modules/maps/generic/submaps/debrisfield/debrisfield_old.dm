@@ -1,3 +1,5 @@
+// Need to check all the templates in the other subtemplate file before transitioning to it //
+
 /datum/map_template/submap/level_specific/debrisfield
 	name = "Debris Field Content"
 	desc = "For seeding submaps in debris field"

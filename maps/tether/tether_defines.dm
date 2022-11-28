@@ -263,28 +263,6 @@
 		Z_LEVEL_CLASS_D
 		)
 
-//Port of Triumph Overmap Visitable Effects
-/obj/effect/overmap/visitable/sector/debrisfield
-	name = "Debris Field"
-	desc = "Space junk galore."
-	scanner_desc = @{"[i]Information[/i]: A collection of ruins from ages ago.."}
-	icon_state = "dust2"
-	color = "#BBBBBB"
-	known = FALSE
-	in_space = 1
-	initial_generic_waypoints = list("triumph_excursion_debrisfield")
-
-/* Updated and now handled in classd.dm
-/obj/effect/overmap/visitable/sector/class_d
-	name = "Unidentified Planet"
-	desc = "ASdlke ERROR%%%% UNABLE TO----."
-	scanner_desc = @{"[i]Information[/i]: Scans report a planet with nearly no atmosphere, but life-signs are registered."}
-	in_space = 0
-	icon_state = "globe"
-	known = FALSE
-	color = "#882933"
-*/
-
 /obj/effect/overmap/visitable/sector/class_h
 	name = "Desert Planet"
 	desc = "Planet readings indicate light atmosphere and high heat."
@@ -349,28 +327,6 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	known = FALSE
 	in_space = 0
 
-/*
-/obj/effect/overmap/visitable/sector/trade_post
-	name = "Nebula Gas Food Mart"
-	desc = "A ubiquitous chain of traders common in this area of the Galaxy."
-	scanner_desc = @{"[i]Information[/i]: A trade post and fuel depot. Possible life signs detected."}
-	in_space = 1
-	known = TRUE
-	icon_state = "fueldepot"
-	color = "#8F6E4C"
-
-	initial_generic_waypoints = list("nebula_space_SW")
-
-	initial_restricted_waypoints = list(
-		"Beruang Trade Ship" = list("tradeport_hangar"),
-		"Mining Shuttle" = list("nebula_pad_2"),
-		"Excursion Shuttle" = list("nebula_pad_3"),
-		"Pirate Skiff" = list("nebula_pad_4"),
-		"Dart EMT Shuttle" = list("nebula_pad_5"),
-		"Civilian Transport" = list("nebula_pad_6")
-		)
-
-*/
 
 /obj/effect/overmap/visitable/sector/virgo3b/Crossed(var/atom/movable/AM)
 	. = ..()

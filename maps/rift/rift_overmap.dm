@@ -1,80 +1,10 @@
 /obj/effect/overmap/visitable/sector/lythios43c
-	name = "Lythios 43c"	// Name of the location on the overmap.
-	desc = "A cold, desolate iceball world. Home to the NSB Atlas, a far-frontier research base set up by NanoTrasen shortly after establishing in this sector."
-	scanner_desc = @{"[b][i]Registration[/i][/b]: NSB Atlas
-[b][i]Class[/i][/b]: ALPHA SITE
-[b][i]Transponder[/i][/b]: Transmitting (MIL), NanoTrasen IFF
-[b][i]Notice[/i][/b]: RESTRICTED AREA, authorized personnel only"}
-	base = TRUE
-	icon_state = "globe"
-	color = "#5bbbd3"
-	start_x = 15
-	start_y = 10
-	initial_generic_waypoints = list(
-		"rift_airspace_SE",
-		"rift_airspace_E",
-		"rift_airspace_NE",
-		"rift_airspace_N",
-		"rift_plains",
-		)
-
-	initial_restricted_waypoints = list(
-		"Excursion Shuttle" = list("rift_excursion_pad"),
-		"Courser Scouting Vessel" = list("rift_courser_hangar"),
-		"Civilian Transport" = list("rift_civvie_pad"),
-		"Dart EMT Shuttle" = list("rift_emt_pad"),
-		"Beruang Trade Ship" = list("rift_trade_dock")
-		)
-
 	extra_z_levels = list(
 		Z_LEVEL_WEST_PLAIN,
 		Z_LEVEL_WEST_CAVERN,
 		Z_LEVEL_WEST_DEEP,
 		Z_LEVEL_WEST_BASE
 	)
-
-/*	initial_generic_waypoints = list("nav_capitalship_docking2", "triumph_excursion_hangar", "triumph_space_SW", "triumph_mining_port")
-
-	initial_restricted_waypoints = list(
-		"Excursion Shuttle" = list("triumph_excursion_hangar"),
-		"Courser Scouting Vessel" = list("triumph_courser_hangar"),
-		"Civilian Transport" = list("triumph_civvie_home"),
-		"Dart EMT Shuttle" = list("triumph_emt_dock"),
-		"Beruang Trade Ship" = list("triumph_annex_dock"),
-		"Mining Shuttle" = list("triumph_mining_port")
-		)
-
-	levels_for_distress = list(
-		Z_LEVEL_OFFMAP1,
-		Z_LEVEL_BEACH,
-		Z_LEVEL_AEROSTAT,
-		Z_LEVEL_DEBRISFIELD,
-		Z_LEVEL_FUELDEPOT,
-		Z_LEVEL_CLASS_D
-		)
-*/
-
-/obj/effect/overmap/visitable/sector/lythios43c/Crossed(var/atom/movable/AM)
-	. = ..()
-	announce_atc(AM,going = FALSE)
-
-/obj/effect/overmap/visitable/sector/lythios43c/Uncrossed(var/atom/movable/AM)
-	. = ..()
-	announce_atc(AM,going = TRUE)
-
-/obj/effect/overmap/visitable/sector/lythios43c/proc/announce_atc(var/atom/movable/AM, var/going = FALSE)
-	var/message = "Sensor contact for vessel '[AM.name]' has [going ? "left" : "entered"] ATC control area."
-	//For landables, we need to see if their shuttle is cloaked
-	if(istype(AM, /obj/effect/overmap/visitable/ship/landable))
-		var/obj/effect/overmap/visitable/ship/landable/SL = AM //Phew
-		var/datum/shuttle/autodock/multi/shuttle = SSshuttle.shuttles[SL.shuttle]
-		if(!istype(shuttle) || !shuttle.cloaked) //Not a multishuttle (the only kind that can cloak) or not cloaked
-			GLOB.lore_atc.msg(message)
-
-	//For ships, it's safe to assume they're big enough to not be sneaky
-	else if(istype(AM, /obj/effect/overmap/visitable/ship))
-		GLOB.lore_atc.msg(message)
-
 
 //////////////////////////////////////////////////////////////////////////
 // There is literally a dm file for triumph shuttles, why are these here//
@@ -101,62 +31,3 @@
 /obj/machinery/computer/shuttle_control/explore/pirate
 	name = "short jump raiding console"
 	shuttle_tag = "Pirate Skiff"
-
-// STATIC PLANET/BASE LOCATIONS
-
-// -- Datums -- //
-/obj/effect/overmap/visitable/sector/debrisfield
-	name = "Debris Field"
-	desc = "Space junk galore."
-	scanner_desc = @{"[i]Information[/i]: A collection of ruins from ages ago.."}
-	icon_state = "dust2"
-	color = "#BBBBBB"
-	known = FALSE
-	in_space = 1
-	initial_generic_waypoints = list("triumph_excursion_debrisfield")
-
-/* Old Class D waypoint, new one is being handled in classd.dm . Please use that one -Bloop
-/obj/effect/overmap/visitable/sector/class_d
-	name = "Unidentified Planet"
-	desc = "ASdlke ERROR%%%% UNABLE TO----."
-	scanner_desc = @{"[i]Information[/i]: Scans report a planet with nearly no atmosphere, but life-signs are registered."}
-	in_space = 0
-	icon_state = "globe"
-	known = FALSE
-	color = "#882933"
-*/
-
-/obj/effect/overmap/visitable/sector/pirate_base
-	name = "Vox Pirate Base"
-	desc = "A nest of hostiles to the company. Caution is advised."
-	scanner_desc = @{"[i]Information[/i]
-Warning, unable to scan through sensor shielding systems at location. Possible heavy hostile life-signs."}
-	in_space = 1
-	known = FALSE
-	icon_state = "piratebase"
-	color = "#FF3333"
-	initial_generic_waypoints = list("piratebase_hanger")
-
-
-
-/*
-/obj/effect/overmap/visitable/sector/trade_post
-	name = "Nebula Gas Food Mart"
-	desc = "A ubiquitous chain of traders common in this area of the Galaxy."
-	scanner_desc = @{"[i]Information[/i]: A trade post and fuel depot. Possible life signs detected."}
-	in_space = 1
-	known = TRUE
-	icon_state = "fueldepot"
-	color = "#8F6E4C"
-
-	initial_generic_waypoints = list("nebula_space_SW")
-
-	initial_restricted_waypoints = list(
-		"Beruang Trade Ship" = list("tradeport_hangar"),
-		"Mining Shuttle" = list("nebula_pad_2"),
-		"Excursion Shuttle" = list("nebula_pad_3"),
-		"Pirate Skiff" = list("nebula_pad_4"),
-		"Dart EMT Shuttle" = list("nebula_pad_5"),
-		"Civilian Transport" = list("nebula_pad_6")
-		)
-*/

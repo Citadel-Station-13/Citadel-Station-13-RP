@@ -50,7 +50,7 @@
 	rare_val = 0.5
 
 //The check_map_sanity proc is sometimes unsatisfied with how AMAZING our ores are
-/datum/random_map/noise/ore/classd/check_map_sanity()
+/datum/random_map/noise/ore/classd/check_map_sanity(mapload)
 	var/rare_count = 0
 	var/surface_count = 0
 	var/deep_count = 0
