@@ -62,7 +62,7 @@
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 	connect_types = CONNECT_TYPE_REGULAR|CONNECT_TYPE_FUEL
 
-	// construct_state = /decl/machine_construction/default/panel_closed
+	// construct_state = /singleton/machine_construction/default/panel_closed
 	// maximum_component_parts = list(/obj/item/stock_parts = 6)//don't want too many, let upgraded component shine
 	// uncreated_component_parts = list(/obj/item/stock_parts/power/apc/buildable = 1)
 
@@ -218,5 +218,5 @@
 // Not Implemented - Variant that pulls power from cables.  Too complicated without bay's power components.
 // /obj/machinery/atmospherics/component/unary/engine/terminal
 // 	base_type = /obj/machinery/atmospherics/component/unary/engine
-// 	stock_part_presets = list(/decl/stock_part_preset/terminal_setup)
+// 	stock_part_presets = list(/singleton/stock_part_preset/terminal_setup)
 // 	uncreated_component_parts = list(/obj/item/stock_parts/power/terminal/buildable = 1)
