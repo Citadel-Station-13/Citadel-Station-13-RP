@@ -3,6 +3,12 @@
 #define RAD_MOB_ACT_COEFFICIENT 0.20
 /// flat loss to radiation hitting mobs via rad_act
 #define RAD_MOB_ACT_PROTECTION 15
+/// rad overdose coefficient. calculates radiation ** 2 * this threshold = number of times less radiation to take
+#define RAD_MOB_OVERDOSE_REDUCTION 0.000001
+/// add radiation taking into account overdose
+#define RAD_MOB_ADDITIONAL(amt, rads) amt * (1 / (((rads ** 2) * RAD_MOB_OVERDOSE_REDUCTION) + 1))
+/// radiation to drop every second
+#define RAD_MOB_PASSIVE_LOSS 1
 
 // #define RAD_LOSS_PER_TICK 0.5
 // #define RAD_TOX_COEFFICIENT 0.05					// Toxin damage per tick coefficient

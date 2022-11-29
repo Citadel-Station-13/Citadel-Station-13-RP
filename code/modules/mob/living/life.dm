@@ -46,7 +46,7 @@
 		handle_breathing()
 
 		//Mutations and radiation
-		handle_mutations_and_radiation()
+		handle_mutations_and_radiation(seconds)
 
 		//Blood
 		handle_blood()
@@ -60,7 +60,7 @@
 /mob/living/proc/handle_breathing()
 	return
 
-/mob/living/proc/handle_mutations_and_radiation()
+/mob/living/proc/handle_mutations_and_radiation(seconds)
 	return
 
 /mob/living/proc/handle_chemicals_in_body()
