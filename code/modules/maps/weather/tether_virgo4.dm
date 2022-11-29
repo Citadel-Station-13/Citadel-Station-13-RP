@@ -5,7 +5,7 @@
 	name = "Virgo-4"
 	desc = "Zorren homeworld. Mostly dry and desolate, but ocean and fresh water are present, with scattered vegitation." //rewrite me
 	current_time = new /datum/time/virgo4()
-	planetary_wall_type = /turf/unsimulated/wall/planetary/normal/virgo4
+	planetary_wall_type = /turf/unsimulated/wall/planetary/normal
 
 /datum/planet/virgo4/update_sun()
 	..()

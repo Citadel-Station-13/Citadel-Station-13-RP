@@ -23,320 +23,320 @@
 /turf/simulated/mineral/cave,
 /area/tether_away/cave/explored/normal)
 "h" = (
-/turf/unsimulated/wall/planetary/normal,
-/area/tether_away/cave/unexplored/normal)
+/obj/effect/map_effect/portal/line/side_b{
+	dir = 4
+	},
+/turf/simulated/mineral/floor/ignore_mapgen/cave,
+/area/tether_away/cave/explored/normal)
 "i" = (
 /obj/away_mission_init/beachcave,
 /turf/simulated/mineral/cave,
 /area/tether_away/cave/explored/normal)
 "j" = (
-/turf/unsimulated/wall/planetary/normal,
+/turf/unsimulated/mineral,
 /area/tether_away/cave/explored/normal)
 "r" = (
 /obj/tether_away_spawner/beach_cave,
 /turf/simulated/mineral/floor/ignore_mapgen/cave,
 /area/tether_away/cave/explored/normal)
 "I" = (
-/obj/effect/map_effect/portal/line/side_b{
-	dir = 4
-	},
-/turf/simulated/mineral/floor/ignore_mapgen/cave,
-/area/tether_away/cave/unexplored/normal)
-"M" = (
 /obj/effect/map_effect/portal/master/side_b{
 	dir = 4;
 	name = "desert to caves";
 	portal_id = "V4_cave_desert_step"
 	},
 /turf/simulated/mineral/floor/ignore_mapgen/cave,
+/area/tether_away/cave/explored/normal)
+"M" = (
+/turf/unsimulated/mineral,
 /area/tether_away/cave/unexplored/normal)
 
 (1,1,1) = {"
-h
-h
-h
-h
-h
-h
-I
-I
-I
-I
 M
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
 "}
 (2,1,1) = {"
+M
+e
+e
+e
+e
+j
 h
-e
-e
-e
-e
-e
-d
-d
-d
-d
-d
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
-e
 h
+h
+h
+I
+j
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+e
+M
 "}
 (3,1,1) = {"
-h
+M
 e
 e
 e
@@ -475,10 +475,10 @@ c
 c
 c
 e
-h
+M
 "}
 (4,1,1) = {"
-h
+M
 e
 e
 e
@@ -617,10 +617,10 @@ c
 c
 c
 e
-h
+M
 "}
 (5,1,1) = {"
-h
+M
 e
 e
 d
@@ -759,10 +759,10 @@ c
 c
 c
 e
-h
+M
 "}
 (6,1,1) = {"
-h
+M
 e
 e
 d
@@ -901,10 +901,10 @@ c
 c
 c
 e
-h
+M
 "}
 (7,1,1) = {"
-h
+M
 e
 e
 d
@@ -1043,10 +1043,10 @@ c
 c
 c
 e
-h
+M
 "}
 (8,1,1) = {"
-h
+M
 e
 d
 d
@@ -1185,10 +1185,10 @@ c
 c
 c
 e
-h
+M
 "}
 (9,1,1) = {"
-h
+M
 e
 d
 d
@@ -1327,10 +1327,10 @@ c
 c
 c
 e
-h
+M
 "}
 (10,1,1) = {"
-h
+M
 e
 d
 d
@@ -1469,10 +1469,10 @@ c
 c
 c
 e
-h
+M
 "}
 (11,1,1) = {"
-h
+M
 e
 d
 d
@@ -1611,10 +1611,10 @@ c
 c
 c
 e
-h
+M
 "}
 (12,1,1) = {"
-h
+M
 e
 d
 d
@@ -1753,10 +1753,10 @@ c
 c
 c
 e
-h
+M
 "}
 (13,1,1) = {"
-h
+M
 e
 d
 d
@@ -1895,10 +1895,10 @@ c
 c
 c
 e
-h
+M
 "}
 (14,1,1) = {"
-h
+M
 e
 e
 d
@@ -2037,10 +2037,10 @@ c
 c
 c
 e
-h
+M
 "}
 (15,1,1) = {"
-h
+M
 e
 e
 e
@@ -2179,10 +2179,10 @@ c
 c
 c
 e
-h
+M
 "}
 (16,1,1) = {"
-h
+M
 e
 e
 e
@@ -2321,10 +2321,10 @@ c
 c
 c
 e
-h
+M
 "}
 (17,1,1) = {"
-h
+M
 e
 e
 e
@@ -2463,10 +2463,10 @@ c
 c
 c
 e
-h
+M
 "}
 (18,1,1) = {"
-h
+M
 e
 e
 e
@@ -2605,10 +2605,10 @@ c
 c
 c
 e
-h
+M
 "}
 (19,1,1) = {"
-h
+M
 e
 e
 e
@@ -2747,10 +2747,10 @@ c
 c
 c
 e
-h
+M
 "}
 (20,1,1) = {"
-h
+M
 e
 e
 e
@@ -2889,10 +2889,10 @@ c
 c
 c
 e
-h
+M
 "}
 (21,1,1) = {"
-h
+M
 e
 e
 e
@@ -3031,10 +3031,10 @@ c
 c
 c
 e
-h
+M
 "}
 (22,1,1) = {"
-h
+M
 e
 e
 e
@@ -3173,10 +3173,10 @@ c
 c
 c
 e
-h
+M
 "}
 (23,1,1) = {"
-h
+M
 e
 e
 c
@@ -3315,10 +3315,10 @@ c
 c
 c
 e
-h
+M
 "}
 (24,1,1) = {"
-h
+M
 e
 e
 c
@@ -3457,10 +3457,10 @@ c
 c
 c
 e
-h
+M
 "}
 (25,1,1) = {"
-h
+M
 e
 c
 c
@@ -3599,10 +3599,10 @@ c
 c
 c
 e
-h
+M
 "}
 (26,1,1) = {"
-h
+M
 e
 c
 c
@@ -3741,10 +3741,10 @@ c
 c
 c
 e
-h
+M
 "}
 (27,1,1) = {"
-h
+M
 e
 c
 c
@@ -3883,10 +3883,10 @@ c
 c
 c
 e
-h
+M
 "}
 (28,1,1) = {"
-h
+M
 e
 c
 c
@@ -4025,10 +4025,10 @@ c
 c
 c
 e
-h
+M
 "}
 (29,1,1) = {"
-h
+M
 e
 c
 c
@@ -4167,10 +4167,10 @@ c
 c
 c
 e
-h
+M
 "}
 (30,1,1) = {"
-h
+M
 e
 c
 c
@@ -4309,10 +4309,10 @@ c
 c
 c
 e
-h
+M
 "}
 (31,1,1) = {"
-h
+M
 e
 c
 c
@@ -4451,10 +4451,10 @@ c
 c
 c
 e
-h
+M
 "}
 (32,1,1) = {"
-h
+M
 e
 c
 c
@@ -4593,10 +4593,10 @@ c
 c
 c
 e
-h
+M
 "}
 (33,1,1) = {"
-h
+M
 e
 c
 c
@@ -4735,10 +4735,10 @@ c
 c
 c
 e
-h
+M
 "}
 (34,1,1) = {"
-h
+M
 e
 c
 c
@@ -4877,10 +4877,10 @@ c
 c
 c
 e
-h
+M
 "}
 (35,1,1) = {"
-h
+M
 e
 c
 c
@@ -5019,10 +5019,10 @@ c
 c
 c
 e
-h
+M
 "}
 (36,1,1) = {"
-h
+M
 e
 c
 c
@@ -5161,10 +5161,10 @@ c
 c
 c
 e
-h
+M
 "}
 (37,1,1) = {"
-h
+M
 e
 c
 c
@@ -5303,10 +5303,10 @@ c
 c
 c
 e
-h
+M
 "}
 (38,1,1) = {"
-h
+M
 e
 c
 c
@@ -5445,10 +5445,10 @@ c
 c
 c
 e
-h
+M
 "}
 (39,1,1) = {"
-h
+M
 e
 c
 c
@@ -5587,10 +5587,10 @@ c
 c
 c
 e
-h
+M
 "}
 (40,1,1) = {"
-h
+M
 e
 c
 c
@@ -5729,10 +5729,10 @@ c
 c
 c
 e
-h
+M
 "}
 (41,1,1) = {"
-h
+M
 e
 c
 c
@@ -5871,10 +5871,10 @@ c
 c
 c
 e
-h
+M
 "}
 (42,1,1) = {"
-h
+M
 e
 c
 c
@@ -6013,10 +6013,10 @@ c
 c
 c
 e
-h
+M
 "}
 (43,1,1) = {"
-h
+M
 e
 c
 c
@@ -6155,10 +6155,10 @@ c
 c
 c
 e
-h
+M
 "}
 (44,1,1) = {"
-h
+M
 e
 c
 c
@@ -6297,10 +6297,10 @@ c
 c
 c
 e
-h
+M
 "}
 (45,1,1) = {"
-h
+M
 e
 c
 c
@@ -6439,10 +6439,10 @@ c
 c
 c
 e
-h
+M
 "}
 (46,1,1) = {"
-h
+M
 e
 c
 c
@@ -6581,10 +6581,10 @@ c
 c
 c
 e
-h
+M
 "}
 (47,1,1) = {"
-h
+M
 e
 c
 c
@@ -6723,10 +6723,10 @@ c
 c
 c
 e
-h
+M
 "}
 (48,1,1) = {"
-h
+M
 e
 c
 c
@@ -6865,10 +6865,10 @@ c
 c
 c
 e
-h
+M
 "}
 (49,1,1) = {"
-h
+M
 e
 c
 c
@@ -7007,10 +7007,10 @@ c
 c
 c
 e
-h
+M
 "}
 (50,1,1) = {"
-h
+M
 e
 c
 c
@@ -7149,10 +7149,10 @@ c
 c
 c
 e
-h
+M
 "}
 (51,1,1) = {"
-h
+M
 e
 c
 c
@@ -7291,10 +7291,10 @@ c
 c
 c
 e
-h
+M
 "}
 (52,1,1) = {"
-h
+M
 e
 c
 c
@@ -7433,10 +7433,10 @@ c
 c
 c
 e
-h
+M
 "}
 (53,1,1) = {"
-h
+M
 e
 c
 c
@@ -7575,10 +7575,10 @@ c
 c
 c
 e
-h
+M
 "}
 (54,1,1) = {"
-h
+M
 e
 c
 c
@@ -7717,10 +7717,10 @@ c
 c
 c
 e
-h
+M
 "}
 (55,1,1) = {"
-h
+M
 e
 c
 c
@@ -7859,10 +7859,10 @@ c
 c
 c
 e
-h
+M
 "}
 (56,1,1) = {"
-h
+M
 e
 c
 c
@@ -8001,10 +8001,10 @@ c
 c
 c
 e
-h
+M
 "}
 (57,1,1) = {"
-h
+M
 e
 c
 c
@@ -8143,10 +8143,10 @@ c
 c
 c
 e
-h
+M
 "}
 (58,1,1) = {"
-h
+M
 e
 c
 c
@@ -8285,10 +8285,10 @@ c
 c
 c
 e
-h
+M
 "}
 (59,1,1) = {"
-h
+M
 e
 c
 c
@@ -8427,10 +8427,10 @@ c
 c
 c
 e
-h
+M
 "}
 (60,1,1) = {"
-h
+M
 e
 c
 c
@@ -8569,10 +8569,10 @@ c
 c
 c
 e
-h
+M
 "}
 (61,1,1) = {"
-h
+M
 e
 c
 c
@@ -8711,10 +8711,10 @@ c
 c
 c
 e
-h
+M
 "}
 (62,1,1) = {"
-h
+M
 e
 c
 c
@@ -8853,10 +8853,10 @@ c
 c
 c
 e
-h
+M
 "}
 (63,1,1) = {"
-h
+M
 e
 c
 c
@@ -8995,10 +8995,10 @@ c
 c
 c
 e
-h
+M
 "}
 (64,1,1) = {"
-h
+M
 e
 c
 c
@@ -9137,10 +9137,10 @@ c
 c
 c
 e
-h
+M
 "}
 (65,1,1) = {"
-h
+M
 e
 c
 c
@@ -9279,10 +9279,10 @@ c
 c
 c
 e
-h
+M
 "}
 (66,1,1) = {"
-h
+M
 e
 c
 c
@@ -9421,10 +9421,10 @@ c
 c
 c
 e
-h
+M
 "}
 (67,1,1) = {"
-h
+M
 e
 c
 c
@@ -9563,10 +9563,10 @@ c
 c
 c
 e
-h
+M
 "}
 (68,1,1) = {"
-h
+M
 e
 c
 c
@@ -9705,10 +9705,10 @@ c
 c
 c
 e
-h
+M
 "}
 (69,1,1) = {"
-h
+M
 e
 c
 c
@@ -9847,10 +9847,10 @@ c
 c
 c
 e
-h
+M
 "}
 (70,1,1) = {"
-h
+M
 e
 c
 c
@@ -9989,10 +9989,10 @@ c
 c
 c
 e
-h
+M
 "}
 (71,1,1) = {"
-h
+M
 e
 c
 c
@@ -10131,10 +10131,10 @@ c
 c
 c
 e
-h
+M
 "}
 (72,1,1) = {"
-h
+M
 e
 c
 c
@@ -10273,10 +10273,10 @@ c
 c
 c
 e
-h
+M
 "}
 (73,1,1) = {"
-h
+M
 e
 c
 c
@@ -10415,10 +10415,10 @@ c
 c
 c
 e
-h
+M
 "}
 (74,1,1) = {"
-h
+M
 e
 c
 c
@@ -10557,10 +10557,10 @@ c
 c
 c
 e
-h
+M
 "}
 (75,1,1) = {"
-h
+M
 e
 c
 c
@@ -10699,10 +10699,10 @@ e
 c
 c
 e
-h
+M
 "}
 (76,1,1) = {"
-h
+M
 e
 c
 c
@@ -10841,10 +10841,10 @@ e
 c
 c
 e
-h
+M
 "}
 (77,1,1) = {"
-h
+M
 e
 c
 c
@@ -10983,10 +10983,10 @@ e
 c
 e
 e
-h
+M
 "}
 (78,1,1) = {"
-h
+M
 e
 c
 c
@@ -11128,7 +11128,7 @@ e
 j
 "}
 (79,1,1) = {"
-h
+M
 e
 c
 c
@@ -11270,7 +11270,7 @@ e
 j
 "}
 (80,1,1) = {"
-h
+M
 e
 c
 c
@@ -11412,7 +11412,7 @@ e
 j
 "}
 (81,1,1) = {"
-h
+M
 e
 c
 c
@@ -11554,7 +11554,7 @@ e
 j
 "}
 (82,1,1) = {"
-h
+M
 e
 c
 c
@@ -11696,7 +11696,7 @@ e
 j
 "}
 (83,1,1) = {"
-h
+M
 e
 c
 c
@@ -11838,7 +11838,7 @@ e
 j
 "}
 (84,1,1) = {"
-h
+M
 e
 c
 c
@@ -11980,7 +11980,7 @@ e
 j
 "}
 (85,1,1) = {"
-h
+M
 e
 c
 c
@@ -12122,7 +12122,7 @@ e
 j
 "}
 (86,1,1) = {"
-h
+M
 e
 c
 c
@@ -12264,7 +12264,7 @@ e
 j
 "}
 (87,1,1) = {"
-h
+M
 e
 c
 c
@@ -12406,7 +12406,7 @@ e
 j
 "}
 (88,1,1) = {"
-h
+M
 e
 c
 c
@@ -12548,7 +12548,7 @@ e
 j
 "}
 (89,1,1) = {"
-h
+M
 e
 c
 c
@@ -12690,7 +12690,7 @@ e
 j
 "}
 (90,1,1) = {"
-h
+M
 e
 c
 c
@@ -12832,7 +12832,7 @@ e
 j
 "}
 (91,1,1) = {"
-h
+M
 e
 c
 c
@@ -12974,7 +12974,7 @@ e
 j
 "}
 (92,1,1) = {"
-h
+M
 e
 c
 c
@@ -13116,7 +13116,7 @@ e
 j
 "}
 (93,1,1) = {"
-h
+M
 e
 c
 c
@@ -13258,7 +13258,7 @@ e
 j
 "}
 (94,1,1) = {"
-h
+M
 e
 c
 c
@@ -13400,7 +13400,7 @@ e
 j
 "}
 (95,1,1) = {"
-h
+M
 e
 c
 c
@@ -13542,7 +13542,7 @@ e
 j
 "}
 (96,1,1) = {"
-h
+M
 e
 c
 c
@@ -13684,7 +13684,7 @@ e
 j
 "}
 (97,1,1) = {"
-h
+M
 e
 c
 c
@@ -13826,7 +13826,7 @@ e
 j
 "}
 (98,1,1) = {"
-h
+M
 e
 c
 c
@@ -13968,7 +13968,7 @@ e
 j
 "}
 (99,1,1) = {"
-h
+M
 e
 c
 c
@@ -14110,7 +14110,7 @@ e
 j
 "}
 (100,1,1) = {"
-h
+M
 e
 c
 c
@@ -14252,7 +14252,7 @@ e
 j
 "}
 (101,1,1) = {"
-h
+M
 e
 c
 c
@@ -14394,7 +14394,7 @@ e
 j
 "}
 (102,1,1) = {"
-h
+M
 e
 c
 c
@@ -14532,11 +14532,11 @@ d
 d
 d
 e
-e
+j
 j
 "}
 (103,1,1) = {"
-h
+M
 e
 c
 c
@@ -14659,7 +14659,6 @@ e
 e
 e
 e
-d
 d
 d
 d
@@ -14676,9 +14675,10 @@ d
 d
 d
 a
+j
 "}
 (104,1,1) = {"
-h
+M
 e
 c
 c
@@ -14802,7 +14802,6 @@ e
 e
 e
 e
-d
 d
 d
 d
@@ -14818,9 +14817,10 @@ d
 d
 d
 b
+j
 "}
 (105,1,1) = {"
-h
+M
 e
 c
 c
@@ -14945,7 +14945,6 @@ e
 e
 e
 e
-d
 d
 d
 d
@@ -14960,9 +14959,10 @@ d
 d
 d
 b
+j
 "}
 (106,1,1) = {"
-h
+M
 e
 c
 c
@@ -15088,7 +15088,6 @@ e
 e
 e
 e
-d
 d
 d
 d
@@ -15102,9 +15101,10 @@ d
 d
 d
 b
+j
 "}
 (107,1,1) = {"
-h
+M
 e
 c
 c
@@ -15231,7 +15231,6 @@ e
 e
 e
 e
-d
 d
 d
 d
@@ -15244,9 +15243,10 @@ d
 d
 d
 b
+j
 "}
 (108,1,1) = {"
-h
+M
 e
 c
 c
@@ -15384,11 +15384,11 @@ d
 d
 d
 d
-d
 b
+j
 "}
 (109,1,1) = {"
-h
+M
 e
 c
 c
@@ -15524,13 +15524,13 @@ e
 d
 d
 d
-e
 e
 e
 j
+j
 "}
 (110,1,1) = {"
-h
+M
 e
 c
 c
@@ -15672,7 +15672,7 @@ e
 j
 "}
 (111,1,1) = {"
-h
+M
 e
 c
 c
@@ -15814,7 +15814,7 @@ e
 j
 "}
 (112,1,1) = {"
-h
+M
 e
 c
 c
@@ -15956,7 +15956,7 @@ e
 j
 "}
 (113,1,1) = {"
-h
+M
 e
 c
 c
@@ -16098,7 +16098,7 @@ e
 j
 "}
 (114,1,1) = {"
-h
+M
 e
 c
 c
@@ -16240,7 +16240,7 @@ e
 j
 "}
 (115,1,1) = {"
-h
+M
 e
 c
 c
@@ -16382,7 +16382,7 @@ e
 j
 "}
 (116,1,1) = {"
-h
+M
 e
 c
 c
@@ -16524,7 +16524,7 @@ e
 j
 "}
 (117,1,1) = {"
-h
+M
 e
 c
 c
@@ -16666,7 +16666,7 @@ e
 j
 "}
 (118,1,1) = {"
-h
+M
 e
 c
 c
@@ -16808,7 +16808,7 @@ e
 j
 "}
 (119,1,1) = {"
-h
+M
 e
 c
 c
@@ -16950,7 +16950,7 @@ e
 j
 "}
 (120,1,1) = {"
-h
+M
 e
 c
 c
@@ -17089,10 +17089,10 @@ e
 e
 e
 e
-h
+M
 "}
 (121,1,1) = {"
-h
+M
 e
 c
 c
@@ -17231,10 +17231,10 @@ e
 e
 e
 e
-h
+M
 "}
 (122,1,1) = {"
-h
+M
 e
 c
 c
@@ -17373,10 +17373,10 @@ c
 e
 e
 e
-h
+M
 "}
 (123,1,1) = {"
-h
+M
 e
 c
 c
@@ -17515,10 +17515,10 @@ c
 c
 c
 e
-h
+M
 "}
 (124,1,1) = {"
-h
+M
 e
 c
 c
@@ -17657,10 +17657,10 @@ c
 c
 c
 e
-h
+M
 "}
 (125,1,1) = {"
-h
+M
 e
 c
 c
@@ -17799,10 +17799,10 @@ c
 c
 c
 e
-h
+M
 "}
 (126,1,1) = {"
-h
+M
 e
 c
 c
@@ -17941,10 +17941,10 @@ c
 c
 c
 e
-h
+M
 "}
 (127,1,1) = {"
-h
+M
 e
 c
 c
@@ -18083,10 +18083,10 @@ c
 c
 c
 e
-h
+M
 "}
 (128,1,1) = {"
-h
+M
 e
 c
 c
@@ -18225,10 +18225,10 @@ c
 c
 c
 e
-h
+M
 "}
 (129,1,1) = {"
-h
+M
 e
 c
 c
@@ -18367,10 +18367,10 @@ c
 c
 c
 e
-h
+M
 "}
 (130,1,1) = {"
-h
+M
 e
 c
 c
@@ -18509,10 +18509,10 @@ c
 c
 c
 e
-h
+M
 "}
 (131,1,1) = {"
-h
+M
 e
 c
 c
@@ -18651,10 +18651,10 @@ c
 c
 c
 e
-h
+M
 "}
 (132,1,1) = {"
-h
+M
 e
 c
 c
@@ -18793,10 +18793,10 @@ c
 c
 c
 e
-h
+M
 "}
 (133,1,1) = {"
-h
+M
 e
 c
 c
@@ -18935,10 +18935,10 @@ c
 c
 c
 e
-h
+M
 "}
 (134,1,1) = {"
-h
+M
 e
 c
 c
@@ -19077,10 +19077,10 @@ c
 c
 c
 e
-h
+M
 "}
 (135,1,1) = {"
-h
+M
 e
 c
 c
@@ -19219,10 +19219,10 @@ c
 c
 c
 e
-h
+M
 "}
 (136,1,1) = {"
-h
+M
 e
 c
 c
@@ -19361,10 +19361,10 @@ c
 c
 c
 e
-h
+M
 "}
 (137,1,1) = {"
-h
+M
 e
 c
 c
@@ -19503,10 +19503,10 @@ c
 c
 c
 e
-h
+M
 "}
 (138,1,1) = {"
-h
+M
 e
 c
 c
@@ -19645,10 +19645,10 @@ c
 c
 c
 e
-h
+M
 "}
 (139,1,1) = {"
-h
+M
 e
 e
 e
@@ -19787,147 +19787,147 @@ e
 e
 e
 e
-h
+M
 "}
 (140,1,1) = {"
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
-h
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
+M
 "}

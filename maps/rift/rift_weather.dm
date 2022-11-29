@@ -110,3 +110,17 @@ var/datum/planet/lavaland/planet_lavaland = null
 		Z_LEVEL_LAVALAND_EAST)
 
 ///////////////////////
+/// Virgo 4 Weather ///
+///////////////////////
+var/datum/planet/virgo4/planet_virgo4 = null
+
+/datum/planet/virgo4/New()
+	..()
+	planet_virgo4 = src
+	weather_holder = new /datum/weather_holder/virgo4(src)
+
+/datum/planet/virgo4
+	expected_z_levels = list(Z_LEVEL_BEACH, Z_LEVEL_DESERT)
+
+
+

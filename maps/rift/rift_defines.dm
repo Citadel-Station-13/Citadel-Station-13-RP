@@ -30,6 +30,13 @@
 #define Z_LEVEL_ROGUEMINE_3				25
 #define Z_LEVEL_ROGUEMINE_4				26
 
+#define Z_LEVEL_BEACH					27
+#define Z_LEVEL_BEACH_CAVE				28
+#define Z_LEVEL_DESERT					29
+/*
+#define Z_LEVEL_AEROSTAT				30
+#define Z_LEVEL_AEROSTAT_SURFACE		31
+*/
 /datum/map/rift
 	name = "Rift"
 	full_name = "NSB Atlas"
@@ -184,7 +191,9 @@
 		list("ExoPlanet - Z5 Planet"), // Frozen Planet
 		list("Away Mission - Trade Port"), // Trading Post
 		list("Away Mission - Lava Land", "Away Mission - Lava Land (East)"),
-		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4")
+		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
+		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave","Desert Planet - Z3 Desert")
+	//	list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface")
 	)
 
 	ai_shell_restricted = TRUE
@@ -212,7 +221,9 @@
 		/datum/planet/classd,
 		/datum/planet/classh,
 		/datum/planet/classp,
-		/datum/planet/classm)
+		/datum/planet/classm,
+		/datum/planet/virgo4
+		)
 
 // Overmap stuff. Main file is under code/modules/maps/overmap/_lythios43c.dm
 // Todo, find a way to populate this list automatically without having to do this
