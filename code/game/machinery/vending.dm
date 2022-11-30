@@ -879,12 +879,12 @@
 		/obj/item/storage/single_use/med_pouch/burn = 1,
 		/obj/item/reagent_containers/hypospray/autoinjector = 4,
 		/obj/item/healthanalyzer = 1,
-		)
+	)
 	contraband = list(
 		/obj/item/reagent_containers/syringe/antitoxin = 4,
 		/obj/item/reagent_containers/syringe/antiviral = 4,
-		/obj/item/reagent_containers/pill/tox = 1
-		)
+		/obj/item/reagent_containers/pill/tox = 1,
+	)
 	req_log_access = access_cmo
 	has_logs = 1
 
