@@ -896,8 +896,8 @@
 		/obj/item/stack/medical/ointment = 8,
 		/obj/item/storage/single_use/med_pouch/burn = 2,
 		/obj/item/reagent_containers/hypospray/autoinjector = 16,
-		/obj/item/healthanalyzer = 4
-		)
+		/obj/item/healthanalyzer = 4,
+	)
 
 //Airlock antitox vendor. Used on the tether map and a few other POIS and such
 /obj/machinery/vending/wallmed_airlock
