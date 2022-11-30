@@ -306,6 +306,20 @@
 	if(core)
 		return
 
+	if(mister_robot)
+#ifdef RAD_MOB_BURNS_SYNTHETICS
+		if(radiation >= RAD_MOB_BURN_THRESHOLD)
+#endif
+		if(radiation >= RAD_MOB_TOXIN_THRESHOLD)
+#ifdef RAD_MOB_KNOCKDOWN_SYNTHETICS
+		if(radiation >= RAD_MOB_KNOCKDOWN_THRESHOLD)
+#endif
+	else
+		if(radiation >= RAD_MOB_BURN_THRESHOLD)
+
+		if(radiation >= RAD_MOB_TOXIN_THRESHOLD)
+
+		if(radiation >= RAD_MOB_KNOCKDOWN_THRESHOLD)
 
 	#warn radiation
 #define RADIATION_SPEED_COEFFICIENT 0.1
