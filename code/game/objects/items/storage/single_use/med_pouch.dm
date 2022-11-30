@@ -112,11 +112,11 @@
 	8) Stay in place once they respond.\
 		"}
 	starts_with = list(
+		// /obj/item/chems/hypospray/autoinjector/pouch_auto/adrenaline,
 		/obj/item/reagent_containers/hypospray/autoinjector,
-		/obj/item/reagent_containers/hypospray/autoinjector/pouch_oxy,//used to be an inhaler
-		//obj/item/chems/hypospray/autoinjector/pouch_auto/adrenaline,
-		/obj/item/reagent_containers/pill/inaprovaline/pouch,
+		/obj/item/reagent_containers/hypospray/autoinjector/pouch_oxy, // Used to be an inhaler.
 		/obj/item/reagent_containers/pill/dexalin = 2,
+		/obj/item/reagent_containers/pill/inaprovaline/pouch,
 	)
 
 /obj/item/storage/single_use/med_pouch/toxin
