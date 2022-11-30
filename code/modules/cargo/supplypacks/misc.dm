@@ -148,16 +148,18 @@
 	// num_contained = 6		i'm just commenting this out because whoever made this should have looked and seen that this doesn't work for non randomized crates
 	// screw you for causing me a compile error
 	name = "Emergency - MREs"
-	contains = list(/obj/item/storage/single_use/mre,
-					/obj/item/storage/single_use/mre/menu2,
-					/obj/item/storage/single_use/mre/menu3,
-					/obj/item/storage/single_use/mre/menu4,
-					/obj/item/storage/single_use/mre/menu5,
-					/obj/item/storage/single_use/mre/menu6,
-					/obj/item/storage/single_use/mre/menu7,
-					/obj/item/storage/single_use/mre/menu8,
-					/obj/item/storage/single_use/mre/menu9,
-					/obj/item/storage/single_use/mre/menu10)
+	contains = list(
+		/obj/item/storage/single_use/mre,
+		/obj/item/storage/single_use/mre/menu2,
+		/obj/item/storage/single_use/mre/menu3,
+		/obj/item/storage/single_use/mre/menu4,
+		/obj/item/storage/single_use/mre/menu5,
+		/obj/item/storage/single_use/mre/menu6,
+		/obj/item/storage/single_use/mre/menu7,
+		/obj/item/storage/single_use/mre/menu8,
+		/obj/item/storage/single_use/mre/menu9,
+		/obj/item/storage/single_use/mre/menu10,
+	)
 	cost = 50
 	container_type = /obj/structure/closet/crate/freezer
 	container_name = "ready to eat rations"
