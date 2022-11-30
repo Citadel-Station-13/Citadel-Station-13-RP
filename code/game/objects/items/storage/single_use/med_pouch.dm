@@ -134,8 +134,8 @@
 	starts_with = list(
 		/obj/item/reagent_containers/hypospray/autoinjector/detox = 2,
 		/obj/item/reagent_containers/hypospray/autoinjector/pouch_tox,
-		/obj/item/reagent_containers/pill/antitox = 2
-		)
+		/obj/item/reagent_containers/pill/antitox = 2,
+	)
 
 /obj/item/storage/single_use/med_pouch/radiation
 	name = "Radiation Pouch"
