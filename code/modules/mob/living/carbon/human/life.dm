@@ -282,7 +282,7 @@
 		var/rad_glow_range = max(1,min(5,radiation/15))
 		var/rad_glow_intensity = max(1,min(10,radiation/25))
 		if(glow_toggle)//if body glow_range || glow_intensity > rad_glow_intensity)
-				set_light(glow_range, glow_intensity, glow_color)
+			set_light(glow_range, glow_intensity, glow_color)
 		else
 			set_light(rad_glow_range, rad_glow_intensity, species.get_flesh_colour(src))
 	// todo: DIONA - probably refactor this shit
