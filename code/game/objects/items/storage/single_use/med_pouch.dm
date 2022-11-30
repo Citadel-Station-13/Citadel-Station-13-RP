@@ -22,15 +22,17 @@
 	\t5) Force the injured party to swallow all pills.\n\
 	\t6) Use ointment on any burns if required\n\
 	\t7) Contact the medical team with your location.
-	8) Stay in place once they respond.\
+	\t8) Stay in place once they respond.\
 		"}
 
-/obj/item/storage/single_use/med_pouch/Initialize(ml, material_key)
+/obj/item/storage/single_use/med_pouch/Initialize(mapload)
 	. = ..()
 	name = "emergency [injury_type] pouch"
+	update_desc()
 	if(length(contents))
 		make_exact_fit()
 	update_icon()
+
 
 /obj/item/storage/single_use/med_pouch/update_icon()
 	. = ..()
@@ -39,10 +41,14 @@
 	add_overlay(cross_overlay)
 	icon_state = "pack[opened]"
 
-/obj/item/storage/single_use/med_pouch/examine(mob/user)
+/* /obj/item/storage/single_use/med_pouch/examine(mob/user)
 	. = ..()
 	. += instructions
+*/
 
+/obj/item/storage/single_use/med_pouch/update_desc(updates)
+	. = ..()
+	desc += instructions
 
 /obj/item/storage/single_use/med_pouch/attack_self(mob/user)
 	open(user)
@@ -64,7 +70,7 @@
 	\t4) Use bandages to stop bleeding if required.\n\
 	\t5) Force the injured party to swallow all pills.\n\
 	\t6) Contact the medical team with your location.
-	7) Stay in place once they respond.\
+	\t7) Stay in place once they respond.\
 		"}
 	starts_with = list(
 		/obj/item/reagent_containers/hypospray/autoinjector,
@@ -86,7 +92,7 @@
 	\t5) Use ointment on any burns if required\n\
 	\t6) Force the injured party to swallow the Spaceacillin pill.\n\
 	\t6) Contact the medical team with your location.
-	7) Stay in place once they respond.\
+	\t7) Stay in place once they respond.\
 		"}
 	starts_with = list(
 		// /obj/item/chems/hypospray/autoinjector/pouch_auto/nanoblood, // Maybe we add nanoblood one day.
@@ -109,7 +115,7 @@
 	\t5) Contact the medical team with your location.\n\
 	\t6) Find a source of oxygen if possible.\n\
 	\t7) Update the medical team with your new location.\n\
-	8) Stay in place once they respond.\
+	\t8) Stay in place once they respond.\
 		"}
 	starts_with = list(
 		// /obj/item/chems/hypospray/autoinjector/pouch_auto/adrenaline,
@@ -147,7 +153,7 @@
 	\t3) Apply all autoinjectors to the injured party.\n\
 	\t4) Force the injured party to swallow all pills.\n\
 	\t5) Contact the medical team with your location.
-	6) Stay in place once they respond.\
+	\t6) Stay in place once they respond.\
 		"}
 	starts_with = list(
 		/obj/item/reagent_containers/hypospray/autoinjector/detox = 1,
@@ -166,7 +172,7 @@
 	\t5) Contact the medical team with your location.\n\
 	\t6) Find a source of oxygen if possible.\n\
 	\t7) Update the medical team with your new location.\n\
-	8) Stay in place once they respond.\
+	\t8) Stay in place once they respond.\
 		"}
 	starts_with = list(
 		// /obj/item/chems/hypospray/autoinjector/pouch_auto/adrenaline,
