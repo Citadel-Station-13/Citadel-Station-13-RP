@@ -176,8 +176,8 @@
 /datum/supply_pack/misc/medical_rations
 	name = "Emergency - VitaPaste"
 	contains = list(
-			/obj/item/storage/single_use/mre/menu13 = 2
-			)
+		/obj/item/storage/single_use/mre/menu13 = 2,
+	)
 	cost = 40
 	container_type = /obj/structure/closet/crate/freezer
 	container_name = "emergency rations"
