@@ -152,7 +152,7 @@
 	starts_with = list(
 		/obj/item/reagent_containers/hypospray/autoinjector/detox = 1,
 		/obj/item/reagent_containers/hypospray/autoinjector/pouch_rad = 2,
-		/obj/item/reagent_containers/pill/antitox = 2
+		/obj/item/reagent_containers/pill/antitox = 2,
 	)
 
 /obj/item/storage/single_use/med_pouch/overdose
