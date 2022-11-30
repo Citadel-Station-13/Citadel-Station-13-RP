@@ -909,7 +909,7 @@
 		/obj/item/reagent_containers/pill/airlock = 20,
 		/obj/item/storage/single_use/med_pouch/oxyloss = 2,
 		/obj/item/storage/single_use/med_pouch/toxin = 2,
-		)
+	)
 	contraband = list(/obj/item/reagent_containers/pill/tox = 2)
 	req_log_access = access_cmo
 	has_logs = 1
