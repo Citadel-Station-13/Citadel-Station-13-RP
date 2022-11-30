@@ -5,7 +5,7 @@
 	if(SSopenspace.initialized && !AM.invisibility && isobj(AM))
 		var/turf/T = GetAbove(src)
 		if(isopenturf(T))
-			// log_debug("[T] ([T.x],[T.y],[T.z]) queued for update for [src].Entered([AM])")
+			// log_debug(SPAN_DEBUGINFO("[T][ADMIN_JMP(T)] ([T.x],[T.y],[T.z]) queued for update for [src].Entered([AM])"))
 			SSopenspace.add_turf(T, 1)
 
 /turf/Exited(atom/movable/AM)
@@ -13,19 +13,19 @@
 	if(SSopenspace.initialized && !AM.invisibility && isobj(AM))
 		var/turf/T = GetAbove(src)
 		if(isopenturf(T))
-			// log_debug("[T] ([T.x],[T.y],[T.z]) queued for update for [src].Exited([AM])")
+			// log_debug(SPAN_DEBUGINFO("[T][ADMIN_JMP(T)] ([T.x],[T.y],[T.z]) queued for update for [src].Exited([AM])"))
 			SSopenspace.add_turf(T, 1)
 
-///Updates the icon of the obj
+/// Updates the icon of the obj.
 /obj/update_icon()
 	. = ..()
 	if(SSopenspace.initialized && !invisibility && isturf(loc))
 		var/turf/T = GetAbove(src)
 		if(isopenturf(T))
-			// log_debug("[T] ([T.x],[T.y],[T.z]) queued for update for [src].update_icon()")
+			// log_debug(SPAN_DEBUGINFO("[T][ADMIN_JMP(T)] ([T.x],[T.y],[T.z]) queued for update for [src].update_icon()"))
 			SSopenspace.add_turf(T, 1)
 
-///Just as New() we probably should hook Destroy() If we can think of something more efficient, lets hear it.
+/// Just as New() we probably should hook Destroy() If we can think of something more efficient, lets hear it.
 /obj/Destroy()
 	if(SSopenspace.initialized && !invisibility && isturf(loc))
 		var/turf/T = GetAbove(src)

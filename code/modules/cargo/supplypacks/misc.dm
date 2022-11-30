@@ -18,7 +18,7 @@
 			)
 	name = "Trading Card Crate"
 	cost = 10
-	container_type = /obj/structure/closet/crate
+	container_type = /obj/structure/closet/crate/allico
 	container_name = "cards crate"
 
 /datum/supply_pack/randomised/misc/dnd
@@ -34,7 +34,7 @@
 			)
 	name = "Miniatures Crate"
 	cost = 200
-	container_type = /obj/structure/closet/crate
+	container_type = /obj/structure/closet/crate/allico
 	container_name = "Miniature Crate"
 
 /datum/supply_pack/randomised/misc/plushies
@@ -76,7 +76,7 @@
 			)
 	name = "Plushies Crate"
 	cost = 15
-	container_type = /obj/structure/closet/crate
+	container_type = /obj/structure/closet/crate/allico
 	container_name = "Plushies Crate"
 
 /datum/supply_pack/misc/eftpos
@@ -161,7 +161,7 @@
 		/obj/item/storage/single_use/mre/menu10,
 	)
 	cost = 50
-	container_type = /obj/structure/closet/crate/freezer
+	container_type = /obj/structure/closet/crate/centauri
 	container_name = "ready to eat rations"
 
 /datum/supply_pack/misc/paste_rations
@@ -170,7 +170,7 @@
 		/obj/item/storage/single_use/mre/menu11 = 2,
 	)
 	cost = 25
-	container_type = /obj/structure/closet/crate/freezer
+	container_type = /obj/structure/closet/crate/centauri
 	container_name = "emergency rations"
 
 /datum/supply_pack/misc/medical_rations
@@ -179,7 +179,7 @@
 		/obj/item/storage/single_use/mre/menu13 = 2,
 	)
 	cost = 40
-	container_type = /obj/structure/closet/crate/freezer
+	container_type = /obj/structure/closet/crate/centauri
 	container_name = "emergency rations"
 
 /datum/supply_pack/misc/beltminer
@@ -192,7 +192,7 @@
 			/obj/item/storage/box/traumainjectors = 1
 			)
 	cost = 50
-	container_type = /obj/structure/closet/crate/secure/gear
+	container_type = /obj/structure/closet/crate/secure/grayson
 	container_name = "Belt-miner gear crate"
 	access = access_mining
 
@@ -216,7 +216,7 @@
 			/obj/item/rig/industrial = 1
 			)
 	cost = 150
-	container_type = /obj/structure/closet/crate/secure/gear
+	container_type = /obj/structure/closet/crate/secure/grayson
 	container_name = "industrial hardsuit crate"
 	access = list(access_mining,
 				  access_eva)
@@ -228,7 +228,7 @@
 			/obj/item/rig/medical = 1
 			)
 	cost = 150
-	container_type = /obj/structure/closet/crate/secure/gear
+	container_type = /obj/structure/closet/crate/secure/veymed
 	container_name = "medical hardsuit crate"
 	access = access_medical
 
@@ -269,7 +269,7 @@
 			/obj/item/rig/ce = 1
 			)
 	cost = 150
-	container_type = /obj/structure/closet/crate/secure/gear
+	container_type = /obj/structure/closet/crate/secure/aether
 	container_name = "advanced voidsuit crate"
 	access = access_ce
 

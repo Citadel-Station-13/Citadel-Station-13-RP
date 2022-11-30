@@ -118,7 +118,7 @@
 					qdel(G)
 					return TRUE
 				else
-					log_debug("[attacker] attempted to feed [G.affecting] to [user] ([user.type]) but it failed.")
+					log_debug(SPAN_DEBUG("[attacker] attempted to feed [G.affecting] to [user] ([user.type]) but it failed."))
 
 			///// If user clicked on their grabbed target
 			else if((src == G.affecting) && (attacker.a_intent == INTENT_GRAB) && (attacker.zone_sel.selecting == BP_TORSO) && (is_vore_predator(G.affecting)))
@@ -129,7 +129,7 @@
 					qdel(G)
 					return TRUE
 				else
-					log_debug("[attacker] attempted to feed [user] to [G.affecting] ([G.affecting.type]) but it failed.")
+					log_debug(SPAN_DEBUG("[attacker] attempted to feed [user] to [G.affecting] ([G.affecting.type]) but it failed."))
 
 			///// If user clicked on anyone else but their grabbed target
 			else if((src != G.affecting) && (src != G.assailant) && (is_vore_predator(src)))
@@ -147,7 +147,7 @@
 					qdel(G)
 					return TRUE
 				else
-					log_debug("[attacker] attempted to feed [G.affecting] to [src] ([src.type]) but it failed.")
+					log_debug(SPAN_DEBUG("[attacker] attempted to feed [G.affecting] to [src] ([src.type]) but it failed."))
 
 	//Handle case: /obj/item/holder
 	else if(istype(I,/obj/item/holder))
@@ -163,7 +163,7 @@
 						H.held_mob = null
 			return TRUE //return TRUE to exit upper procs
 		else
-			log_debug("[attacker] attempted to feed [H.contents] to [src] ([src.type]) but it failed.")
+			log_debug(SPAN_DEBUG("[attacker] attempted to feed [H.contents] to [src] ([src.type]) but it failed."))
 
 	//Handle case: /obj/item/radio/beacon
 	else if(istype(I,/obj/item/radio/beacon))
@@ -475,7 +475,7 @@
 /mob/living/proc/perform_the_nom(var/mob/living/user, var/mob/living/prey, var/mob/living/pred, var/obj/belly/belly, var/delay)
 	//Sanity
 	if(!user || !prey || !pred || !istype(belly) || !(belly in pred.vore_organs))
-		log_debug("[user] attempted to feed [prey] to [pred], via [lowertext(belly.name)] but it went wrong.")
+		log_debug(SPAN_DEBUG("[user] attempted to feed [prey] to [pred], via [lowertext(belly.name)] but it went wrong."))
 		return
 
 	// The belly selected at the time of noms

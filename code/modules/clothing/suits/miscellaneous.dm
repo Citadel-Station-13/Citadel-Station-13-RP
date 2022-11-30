@@ -265,15 +265,20 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL|HIDETIE|HIDEHOLSTER
 
-	var/resist_time = 4800	// Eight minutes.
+	var/resist_time = 4 MINUTES
 
-/obj/item/clothing/suit/straight_jacket/attack_hand(mob/living/user as mob)
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(src == H.wear_suit)
-			to_chat(H, "<span class='notice'>You need help taking this off!</span>")
-			return
-	..()
+/obj/item/clothing/suit/straight_jacket/can_unequip(mob/M, slot, mob/user, flags)
+	if(flags & INV_OP_DISALLOW_DELAY)
+		return FALSE
+	. = ..()
+	if(!.)
+		return FALSE
+	if(slot != SLOT_ID_SUIT)
+		return TRUE
+	if(M != user)
+		return TRUE
+	. = FALSE
+	INVOKE_ASYNC(user, /mob/living/carbon/human/proc/escape_straight_jacket)
 
 /obj/item/clothing/suit/straight_jacket/equipped(var/mob/living/user,var/slot)
 	. = ..()

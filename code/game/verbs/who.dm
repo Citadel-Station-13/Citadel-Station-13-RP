@@ -98,11 +98,11 @@
 			if(!C.holder.fakekey)
 				msg += "\t[C] is a [C.holder.rank]"
 				num_admins_online++
-			if(C.is_afk(5 MINUTES))
+			if(C.is_afk(10 MINUTES))
 				if(C.is_afk(30 MINUTES))
-					msg += " (AFK)"
+					msg += " (AFK \[30m+\])"
 				else
-					msg += " (Inactive)"
+					msg += " (Inactive \[10m+\])"
 			msg += "\n"
 
 

@@ -274,6 +274,9 @@
 /obj/item/OnMouseDrop(atom/over, mob/user, proximity, params)
 	if(anchored)	// Don't.
 		return ..()
+	if(user.restrained())
+		return ..()	// don't.
+		// todo: restraint levels, e.g. handcuffs vs straightjacket
 	if(!user.is_in_inventory(src))
 		// not being held
 		if(!isturf(loc))	// yea nah

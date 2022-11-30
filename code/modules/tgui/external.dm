@@ -209,8 +209,7 @@
 			context = context)
 	// Reload all tgui windows
 	if(type == "cacheReloaded")
-		if(!check_rights(R_ADMIN) || usr.client.tgui_cache_reloaded)
-			return TRUE
+		log_tgui(usr, context = "debug/reload")
 		// Mark as reloaded
 		usr.client.tgui_cache_reloaded = TRUE
 		// Notify windows

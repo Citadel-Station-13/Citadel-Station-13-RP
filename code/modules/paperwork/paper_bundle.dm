@@ -162,7 +162,7 @@
 				playsound(src.loc, "pageturn", 50, 1)
 		if(href_list["remove"])
 			var/obj/item/W = pages[page]
-			usr.put_in_hands(W)
+			usr.grab_item_from_interacted_with(W, src)
 			pages.Remove(pages[page])
 
 			to_chat(usr, "<span class='notice'>You remove the [W.name] from the bundle.</span>")
@@ -170,7 +170,7 @@
 			if(pages.len <= 1)
 				var/obj/item/paper/P = src[1]
 				usr.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
-				usr.put_in_hands(P)
+				usr.put_in_hands_or_drop(P)
 				qdel(src)
 				return
 

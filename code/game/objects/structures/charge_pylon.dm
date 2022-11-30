@@ -42,7 +42,7 @@
 	if(ishuman(AM))
 		charge_user(AM)
 
-/decl/flooring/crystal
+/singleton/flooring/crystal
 	name = "crystal floor"
 	icon = 'icons/turf/flooring/crystal.dmi'
 	build_type = null
@@ -53,5 +53,4 @@
 	name = "crystal floor"
 	icon = 'icons/turf/flooring/crystal.dmi'
 	icon_state = ""
-	initial_flooring = /decl/flooring/crystal
-
+	initial_flooring = /singleton/flooring/crystal

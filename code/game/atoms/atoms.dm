@@ -199,6 +199,10 @@
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	flags |= INITIALIZED
 
+	if (is_datum_abstract())
+		log_debug("Abstract atom [type] created!")
+		return INITIALIZE_HINT_QDEL
+
 	if(loc)
 		SEND_SIGNAL(loc, COMSIG_ATOM_INITIALIZED_ON, src) /// Sends a signal that the new atom `src`, has been created at `loc`
 
@@ -293,7 +297,8 @@
 	return
 
 /atom/proc/emp_act(var/severity)
-	return
+	// todo: SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_EMP_ACT, severity)
 
 
 /atom/proc/bullet_act(obj/item/projectile/P, def_zone)
