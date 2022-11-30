@@ -612,14 +612,16 @@
 	drop_get_turf = FALSE
 
 /obj/random/mre/main/item_to_spawn()
-	return pick(/obj/item/storage/single_use/mrebag,
-				/obj/item/storage/single_use/mrebag/menu2,
-				/obj/item/storage/single_use/mrebag/menu3,
-				/obj/item/storage/single_use/mrebag/menu4,
-				/obj/item/storage/single_use/mrebag/menu5,
-				/obj/item/storage/single_use/mrebag/menu6,
-				/obj/item/storage/single_use/mrebag/menu7,
-				/obj/item/storage/single_use/mrebag/menu8)
+	return pick(
+		/obj/item/storage/single_use/mrebag,
+		/obj/item/storage/single_use/mrebag/menu2,
+		/obj/item/storage/single_use/mrebag/menu3,
+		/obj/item/storage/single_use/mrebag/menu4,
+		/obj/item/storage/single_use/mrebag/menu5,
+		/obj/item/storage/single_use/mrebag/menu6,
+		/obj/item/storage/single_use/mrebag/menu7,
+		/obj/item/storage/single_use/mrebag/menu8,
+	)
 
 /obj/random/mre/side
 	name = "random MRE side dish"
