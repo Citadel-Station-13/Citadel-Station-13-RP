@@ -591,16 +591,18 @@
 	drop_get_turf = FALSE
 
 /obj/random/mre/item_to_spawn()
-	return pick(/obj/item/storage/single_use/mre,
-				/obj/item/storage/single_use/mre/menu2,
-				/obj/item/storage/single_use/mre/menu3,
-				/obj/item/storage/single_use/mre/menu4,
-				/obj/item/storage/single_use/mre/menu5,
-				/obj/item/storage/single_use/mre/menu6,
-				/obj/item/storage/single_use/mre/menu7,
-				/obj/item/storage/single_use/mre/menu8,
-				/obj/item/storage/single_use/mre/menu9,
-				/obj/item/storage/single_use/mre/menu10)
+	return pick(
+		/obj/item/storage/single_use/mre,
+		/obj/item/storage/single_use/mre/menu2,
+		/obj/item/storage/single_use/mre/menu3,
+		/obj/item/storage/single_use/mre/menu4,
+		/obj/item/storage/single_use/mre/menu5,
+		/obj/item/storage/single_use/mre/menu6,
+		/obj/item/storage/single_use/mre/menu7,
+		/obj/item/storage/single_use/mre/menu8,
+		/obj/item/storage/single_use/mre/menu9,
+		/obj/item/storage/single_use/mre/menu10,
+	)
 
 
 /obj/random/mre/main
