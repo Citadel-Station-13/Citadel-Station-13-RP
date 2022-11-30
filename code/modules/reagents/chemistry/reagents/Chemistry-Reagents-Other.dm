@@ -215,7 +215,7 @@
 	M.SetBlinded(0)
 	M.SetWeakened(0)
 	M.SetStunned(0)
-	M.SetParalysis(0)
+	M.SetUnconscious(0)
 	M.silent = 0
 	M.dizziness = 0
 	M.drowsyness = 0
@@ -304,7 +304,7 @@
 /datum/reagent/adrenaline/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(alien == IS_DIONA)
 		return
-	M.SetParalysis(0)
+	M.SetUnconscious(0)
 	M.SetWeakened(0)
 	M.adjustToxLoss(rand(3))
 

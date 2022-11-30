@@ -75,7 +75,7 @@
 		if(WEAKEN)
 			Weaken(effect * blocked)
 		if(PARALYZE)
-			Paralyse(effect * blocked)
+			Unconscious(effect * blocked)
 		if(AGONY)
 			halloss += max((effect * blocked), 0) // Useful for objects that cause "subdual" damage. PAIN!
 		if(IRRADIATE)

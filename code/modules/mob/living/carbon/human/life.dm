@@ -215,7 +215,7 @@
 				if(O == src)
 					continue
 				O.show_message(text("<span class='danger'>[src] starts having a seizure!</span>"), 1)
-			Paralyse(10)
+			Unconscious(10)
 			make_jittery(1000)
 	if (disabilities & DISABILITY_COUGHING)
 		if ((prob(5) && paralysis <= 1))
@@ -254,7 +254,7 @@
 		if(10 <= rn && rn <= 12)
 			if(prob(50))
 				to_chat(src, "<span class='danger'>You suddenly black out!</span>")
-				Paralyse(10)
+				Unconscious(10)
 			else if(!lying)
 				to_chat(src, "<span class='danger'>Your legs won't respond properly, you fall down!</span>")
 				Weaken(10)
@@ -560,7 +560,7 @@
 		if(SA_pp > SA_para_min)
 
 			// 3 gives them one second to wake up and run away a bit!
-			Paralyse(3)
+			Unconscious(3)
 
 			// Enough to make us sleep as well
 			if(SA_pp > SA_sleep_min)
@@ -1058,7 +1058,7 @@
 
 		//UNCONSCIOUS. NO-ONE IS HOME
 		if((getOxyLoss() > (species.total_health/2)) || (health <= config_legacy.health_threshold_crit))
-			Paralyse(3)
+			Unconscious(3)
 
 		if(hallucination)
 			if(hallucination >= 20 && !(species.species_flags & (NO_POISON|IS_PLANT|NO_HALLUCINATION)) )
@@ -1087,7 +1087,7 @@
 		if(halloss >= species.total_health)
 			to_chat(src, "<span class='notice'>You're in too much pain to keep going...</span>")
 			src.visible_message("<B>[src]</B> slumps to the ground, too weak to continue fighting.")
-			Paralyse(10)
+			Unconscious(10)
 			setHalLoss(species.total_health - 1)
 
 		if(paralysis || sleeping)
@@ -1185,7 +1185,7 @@
 			eye_blurry = max(2, eye_blurry)
 			if (prob(5))
 				Sleeping(1)
-				Paralyse(5)
+				Unconscious(5)
 
 		// If you're dirty, your gloves will become dirty, too.
 		if(gloves && germ_level > gloves.germ_level && prob(10))
@@ -1690,7 +1690,7 @@
 	if(shock_stage >= 120)
 		if (prob(2))
 			to_chat(src, "<span class='danger'>[pick("You black out", "You feel like you could die any moment now", "You are about to lose consciousness")]!</span>")
-			Paralyse(5)
+			Unconscious(5)
 
 	if(shock_stage == 150)
 		emote("me",1,"can no longer stand, collapsing!")

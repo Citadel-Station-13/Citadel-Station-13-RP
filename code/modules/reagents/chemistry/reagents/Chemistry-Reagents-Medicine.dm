@@ -582,7 +582,7 @@
 			M.adjustFireLoss(-1 * removed)
 		chem_effective = 0.5
 	M.drowsyness = max(M.drowsyness - 5, 0)
-	M.AdjustParalysis(-1)
+	M.AdjustUnconscious(-1)
 	M.AdjustStunned(-1)
 	M.AdjustWeakened(-1)
 	holder.remove_reagent("mindbreaker", 5)
@@ -632,7 +632,7 @@
 		if(M.brainloss >= 10)
 			M.Weaken(5)
 		if(dose >= 10 && M.paralysis < 40)
-			M.AdjustParalysis(1) //Messing with the core with a simple chemical probably isn't the best idea.
+			M.AdjustUnconscious(1) //Messing with the core with a simple chemical probably isn't the best idea.
 	M.adjustBrainLoss(-8 * removed * chem_effective) //the Brain damage heal
 	M.add_chemical_effect(CE_PAINKILLER, 10 * chem_effective)
 

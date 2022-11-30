@@ -105,7 +105,7 @@
 
 	SetWeakened(0)
 	SetStunned(0)
-	SetParalysis(0)
+	SetUnconscious(0)
 
 	if(on && !client && !busy)
 		spawn(0)

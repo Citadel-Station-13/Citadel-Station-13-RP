@@ -526,7 +526,7 @@
 					to_chat(M, "<span class='warning'>You drop what you're holding and clutch at your eyes!</span>")
 					M.drop_active_held_item()
 				M.eye_blurry += 10
-				M.Paralyse(1)
+				M.Unconscious(1)
 				M.Weaken(4)
 			if (eyes.damage >= eyes.min_broken_damage)
 				if(M.stat != 2)

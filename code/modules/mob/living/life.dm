@@ -137,7 +137,7 @@
 
 /mob/living/proc/handle_paralysed()
 	if(paralysis)
-		AdjustParalysis(-1)
+		AdjustUnconscious(-1)
 	return paralysis
 
 /mob/living/proc/handle_confused()

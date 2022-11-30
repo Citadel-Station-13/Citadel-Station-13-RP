@@ -396,7 +396,7 @@ default behaviour is:
 	else
 		add_status_indicator("weakened")
 
-/mob/living/Paralyse(amount)
+/mob/living/Unconscious(amount)
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.disable_duration_percent))
 			amount = round(amount * M.disable_duration_percent)
@@ -404,14 +404,14 @@ default behaviour is:
 	if(paralysis > 0)
 		add_status_indicator("paralysis")
 
-/mob/living/SetParalysis(amount)
+/mob/living/SetUnconscious(amount)
 	..()
 	if(paralysis <= 0)
 		remove_status_indicator("paralysis")
 	else
 		add_status_indicator("paralysis")
 
-/mob/living/AdjustParalysis(amount)
+/mob/living/AdjustUnconscious(amount)
 	if(amount > 0)
 		for(var/datum/modifier/M in modifiers)
 			if(!isnull(M.disable_duration_percent))
@@ -637,7 +637,7 @@ default behaviour is:
 	setOxyLoss(0)
 	setCloneLoss(0)
 	setBrainLoss(0)
-	SetParalysis(0)
+	SetUnconscious(0)
 	SetStunned(0)
 	SetWeakened(0)
 

@@ -127,7 +127,7 @@
 	if(effective_dose >= strength * 6) // Toxic dose
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity*3)
 	if(effective_dose >= strength * 7) // Pass out
-		M.Paralyse(60)
+		M.Unconscious(60)
 		M.Sleeping(90)
 
 	if(druggy != 0)
@@ -175,7 +175,7 @@
 	if(dose * strength_mod >= strength * 6) // Toxic dose
 		M.add_chemical_effect(CE_ALCOHOL_TOXIC, toxicity)
 	if(dose * strength_mod >= strength * 7) // Pass out
-		M.Paralyse(20)
+		M.Unconscious(20)
 		M.Sleeping(30)
 
 	if(druggy != 0)

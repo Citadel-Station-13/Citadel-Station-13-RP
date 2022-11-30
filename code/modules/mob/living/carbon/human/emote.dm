@@ -764,7 +764,7 @@
 					m_type = 1
 
 		if ("collapse")
-			Paralyse(2)
+			Unconscious(2)
 			message = "collapses!"
 			m_type = 2
 			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
