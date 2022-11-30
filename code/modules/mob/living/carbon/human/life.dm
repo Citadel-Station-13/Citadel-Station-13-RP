@@ -264,7 +264,8 @@
 		return
 	// DNA2 - Gene processing.
 	// The MUTATION_HULK stuff that was here is now in the hulk gene.
-	if(!isSynthetic())
+	var/mister_robot = !!isSynthetic()
+	if(!mister_robot)
 		for(var/datum/gene/gene in dna_genes)
 			if(!gene.block)
 				continue
