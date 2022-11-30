@@ -9,6 +9,8 @@
 		return //Certain objects can speak, like MMIs. Most others cannot. -Q
 	else
 		speaking = parse_language(message)
+		if(speaking == -1)
+			return
 		if(speaking)
 			message = copytext(message, 2+length(speaking.key))
 		verb = "says"

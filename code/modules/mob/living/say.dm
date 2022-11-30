@@ -187,6 +187,9 @@ var/list/channel_to_radio_key = new
 	if(!speaking)
 		speaking = parse_language(message)
 
+	if(speaking == -1)
+		return
+		
 	if(!speaking)
 		speaking = get_default_language()
 
