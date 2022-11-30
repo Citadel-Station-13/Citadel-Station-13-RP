@@ -309,66 +309,51 @@
 	if(mister_robot)
 #ifdef RAD_MOB_BURNS_SYNTHETICS
 		if(radiation >= RAD_MOB_BURN_THRESHOLD)
+			take_overall_damage(burn = RAD_MOB_BURN_DAMAGE_FOR(radiation, seconds), used_weapon = "Radiation Burns")
 #endif
 		if(radiation >= RAD_MOB_TOXIN_THRESHOLD)
+			adjustToxLoss(RAD_MOB_SYNTH_INSTABILITY_FOR(radiation, seconds))
 #ifdef RAD_MOB_KNOCKDOWN_SYNTHETICS
 		if(radiation >= RAD_MOB_KNOCKDOWN_THRESHOLD)
+			if(prob(RAD_MOB_KNOCKDOWN_CHANCE(radiation, seconds)))
+				to_chat(src, SPAN_WARNING("You feel weak..."))
+				if(!lying)
+					emote("collapse")
+				Weaken(RAD_MOB_KNOCKDOWN_AMOUNT(radiation, seconds))
 #endif
 	else
 		if(radiation >= RAD_MOB_BURN_THRESHOLD)
-
+			take_overall_damage(burn = RAD_MOB_BURN_DAMAGE_FOR(radiation, seconds), used_weapon = "Radiation Burns")
 		if(radiation >= RAD_MOB_TOXIN_THRESHOLD)
-
+			adjustToxLoss(RAD_MOB_TOXIN_DAMAGE_FOR(radiation, seconds))
+			// todo: autopsy data
 		if(radiation >= RAD_MOB_KNOCKDOWN_THRESHOLD)
-
-	#warn radiation
-#define RADIATION_SPEED_COEFFICIENT 0.1
-
-	var/damage = 0
-	if(prob(25))
-		damage = 1
-
-	if (radiation > 50)
-		damage = 1
-		radiation -= 1 * RADIATION_SPEED_COEFFICIENT
-		if(!isSynthetic())
-			if(prob(5) && prob(100 * RADIATION_SPEED_COEFFICIENT))
-				radiation -= 5 * RADIATION_SPEED_COEFFICIENT
-				to_chat(src, "<span class='warning'>You feel weak.</span>")
-				Weaken(3)
+			if(prob(RAD_MOB_KNOCKDOWN_CHANCE(radiation, seconds)))
+				to_chat(src, SPAN_WARNING("You feel weak..."))
 				if(!lying)
 					emote("collapse")
-			if(prob(5) && prob(100 * RADIATION_SPEED_COEFFICIENT) && species.get_bodytype_legacy() == SPECIES_HUMAN) //apes go bald
-				if((h_style != "Bald" || f_style != "Shaved" ))
-					to_chat(src, "<span class='warning'>Your hair falls out.</span>")
-					h_style = "Bald"
-					f_style = "Shaved"
-					update_hair()
-
-	if (radiation > 75)
-		damage = 3
-		radiation -= 1 * RADIATION_SPEED_COEFFICIENT
-		if(!isSynthetic())
-			if(prob(5))
-				take_overall_damage(0, 5 * RADIATION_SPEED_COEFFICIENT, used_weapon = "Radiation Burns")
-			if(prob(1))
-				to_chat(src, "<span class='warning'>You feel strange!</span>")
-				adjustCloneLoss(5 * RADIATION_SPEED_COEFFICIENT)
+				Weaken(RAD_MOB_KNOCKDOWN_AMOUNT(radiation, seconds))
+		if(radiation >= RAD_MOB_HAIRLOSS_THRESHOLD)
+			if(prob(RAD_MOB_HAIRLOSS_CHANCE(radiation, seconds)))
+				to_chat(src, SPAN_WARNING("Your hair starts falling out in clumps..."))
+				addtimer(CALLBACK(src, .proc/radiation_hairloss), 8 SECONDS)
+		if(radiation >= RAD_MOB_DECLONE_THRESHOLD)
+			if(prob(RAD_MOB_DECLONE_CHANCE(radiation, seconds)))
+				to_chat(src, SPAN_WARNING("You feel a sharp pain, and a strange, numb feeling."))
+				adjustCloneLoss(RAD_MOB_DECLONE_DAMAGE(radiation, seconds))
 				emote("gasp")
-
-	if (radiation > 150)
-		damage = 6
-		radiation -= 4 * RADIATION_SPEED_COEFFICIENT
-
-	if(damage)
-		damage *= species.radiation_mod
-		adjustToxLoss(damage * RADIATION_SPEED_COEFFICIENT)
-		updatehealth()
-		if(!isSynthetic() && organs.len)
-			var/obj/item/organ/external/O = pick(organs)
-			if(istype(O)) O.add_autopsy_data("Radiation Poisoning", damage)
+		if(radiation >= RAD_MOB_VOMIT_THRESHOLD)
+			if(prob(RAD_MOB_VOMIT_CHANCE(radiation, seconds)))
+				to_chat(src, SPAN_WARNING("You throw up!"))
+				// todo: blood vomit
+				vomit()
 
 	cure_radiation(RAD_MOB_PASSIVE_LOSS_FOR(radiation, seconds))
+
+/mob/living/carbon/human/proc/radiation_hairloss()
+	f_style = "Shaved"
+	h_style = "Bald"
+	update_hair()
 
 /** breathing **/
 

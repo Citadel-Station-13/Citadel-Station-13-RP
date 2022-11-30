@@ -21,7 +21,7 @@
 #define RAD_MOB_SYNTH_INSTABILITY_FOR(amt, dt)
 //? burns
 /// minimum amount for burns
-#define RAD_MOB_BURN_THRESOHLD 1000
+#define RAD_MOB_BURN_THRESHOLD 1000
 /// burn per tick
 #define RAD_MOB_BURN_DAMAGE_FOR(amt, dt)
 /// do we burn synths
@@ -60,6 +60,8 @@
 #define RAD_MOB_KNOCKDOWN_CHANCE(amt, dt)
 /// knockdown amount
 #define RAD_MOB_KNOCKDOWN_AMOUNT(amt, dt)
+
+#warn above
 
 //! monkies
 // todo: add harambe
