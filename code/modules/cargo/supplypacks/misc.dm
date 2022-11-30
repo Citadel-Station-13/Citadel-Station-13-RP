@@ -167,8 +167,8 @@
 /datum/supply_pack/misc/paste_rations
 	name = "Emergency - Paste"
 	contains = list(
-			/obj/item/storage/single_use/mre/menu11 = 2
-			)
+		/obj/item/storage/single_use/mre/menu11 = 2,
+	)
 	cost = 25
 	container_type = /obj/structure/closet/crate/freezer
 	container_name = "emergency rations"
