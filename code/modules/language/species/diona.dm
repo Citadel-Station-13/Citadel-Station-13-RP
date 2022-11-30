@@ -10,6 +10,7 @@
 	machine_understands = 0
 	language_flags = RESTRICTED
 	syllables = list("hs","zt","kr","st","sh")
+	shorthand = "DIO"
 
 /datum/language/diona_local/get_random_name()
 	var/new_name = "[pick(list("To Sleep Beneath","Wind Over","Embrace of","Dreams of","Witnessing","To Walk Beneath","Approaching the"))]"

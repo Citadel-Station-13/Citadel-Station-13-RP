@@ -10,6 +10,7 @@
 	machine_understands = 0
 	space_chance = 100
 	syllables = list("bark", "woof", "bowwow", "yap", "arf")
+	shorthand = "DOG"
 
 /datum/language/cat
 	id = LANGUAGE_ID_CAT
@@ -23,6 +24,7 @@
 	machine_understands = 0
 	space_chance = 100
 	syllables = list("meow", "mrowl", "purr", "meow", "meow", "meow")
+	shorthand = "CAT"
 
 /datum/language/mouse
 	id = LANGUAGE_ID_MOUSE
@@ -36,6 +38,7 @@
 	machine_understands = 0
 	space_chance = 100
 	syllables = list("squeak")	// , "gripes", "oi", "meow")
+	shorthand = "MSE"
 
 /datum/language/bird
 	id = LANGUAGE_ID_BIRD
@@ -49,3 +52,4 @@
 	machine_understands = 0
 	space_chance = 100
 	syllables = list("chirp", "squawk", "tweet")
+	shorthand = "BIRD"

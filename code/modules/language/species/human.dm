@@ -8,6 +8,7 @@
 	colour = "solcom"
 	key = "1"
 	//syllables are at the bottom of the file
+	shorthand = "SC"
 
 /datum/language/human/get_random_name(gender)
 	if (prob(80))
@@ -30,6 +31,7 @@
 		"ko", "ne", "en", "po", "ra", "li", "on", "byl", "cto", "eni", "ost", "ol", "ego",
 		"ver", "stv", "pro"
 	)
+	shorthand = "SLAV"
 
 //Syllable Lists
 /*

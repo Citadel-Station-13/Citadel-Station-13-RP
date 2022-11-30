@@ -37,6 +37,7 @@
 	space_chance = 35
 	machine_understands = FALSE
 	partial_understanding = list()
+	shorthand = "LUI"
 
 /datum/language/species/moth/get_random_name(gender, name_count = 2, syllable_count= 4 , syllable_divisor = 2)
 	var/list/names = GLOB.moth_lore_data["name"]

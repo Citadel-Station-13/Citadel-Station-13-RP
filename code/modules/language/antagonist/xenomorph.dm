@@ -10,6 +10,7 @@
 	machine_understands = 0
 	language_flags = RESTRICTED
 	syllables = list("sss","sSs","SSS")
+	shorthand = "XENO"
 
 /datum/language/xenos
 	id = LANGUAGE_ID_XENOMORPH_HIVEMIND

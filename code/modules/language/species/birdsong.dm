@@ -6,5 +6,5 @@
 	colour = "birdsongc"
 	key = "7"
 	syllables = list ("cheep", "peep", "tweet")
-
+	shorthand = "BDSNG"
 // todo: wtf is this

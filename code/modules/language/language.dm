@@ -49,6 +49,9 @@
 	var/list/partial_understanding
 	var/list/scramble_cache = list()
 
+	/// The shorthand name of this language, used for the indicators in chat. Should be only a handful of all-caps letters.
+	var/shorthand = "???"
+
 /datum/language/New()
 	if(isnull(id))
 		id = ckey(name)

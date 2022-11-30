@@ -14,3 +14,4 @@
 		"\[harmonic\]", "\[disharmonic\]", "\[choral\]"
 	)
 	space_chance = 0
+	shorthand = "ADH"

@@ -11,3 +11,4 @@
 	key = "t" //Rustles susurrus crackles
 	syllables = list ("shh", "fssh", "rustle", "snap", "kssh", "sffh", "mssh", "creak",
 			"knock", "crk", "srhh", "rrssh", "sh", "hk", "fsh", "rss", "ks")
+	shorthand = "VERN"
