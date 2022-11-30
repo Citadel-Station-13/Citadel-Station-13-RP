@@ -15232,6 +15232,9 @@
 	req_one_access = list(58)
 	},
 /obj/effect/floor_decal/borderfloorblack/full,
+/obj/item/tank/oxygen{
+	pixel_y = -4
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/heads/hos)
 "kXI" = (
