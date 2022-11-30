@@ -1,5 +1,5 @@
 //! mobs
-/// radiation applied via afflict_radiation is multiplied by this
+/// radiation applied via rad_act is multiplied by this
 #define RAD_MOB_ACT_COEFFICIENT 0.20
 /// flat loss to radiation hitting mobs via rad_act
 #define RAD_MOB_ACT_PROTECTION 15
@@ -8,7 +8,9 @@
 /// add radiation taking into account overdose
 #define RAD_MOB_ADDITIONAL(amt, rads) amt * (1 / (((rads ** 2) * RAD_MOB_OVERDOSE_REDUCTION) + 1))
 /// radiation to drop every second
-#define RAD_MOB_PASSIVE_LOSS 1
+#define RAD_MOB_PASSIVE_LOSS_FOR(amt, dt) ((amt > 1000? ((amt / 1000) ** 2) : 1) * dt)
+/// radiation below which we don't tick effects at all
+#define RAD_MOB_NEGLIGIBLE 500
 
 // #define RAD_LOSS_PER_TICK 0.5
 // #define RAD_TOX_COEFFICIENT 0.05					// Toxin damage per tick coefficient

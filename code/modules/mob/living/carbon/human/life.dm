@@ -262,9 +262,6 @@
 /mob/living/carbon/human/handle_mutations_and_radiation(seconds)
 	if(inStasisNow())
 		return
-	#warn radiation
-#define RADIATION_SPEED_COEFFICIENT 0.1
-
 	// DNA2 - Gene processing.
 	// The MUTATION_HULK stuff that was here is now in the hulk gene.
 	if(!isSynthetic())
@@ -273,36 +270,44 @@
 				continue
 			if(gene.is_active(src))
 				gene.OnMobLife(src)
-
+	// no radiation: stop
 	if(!radiation)
 		if(species.species_appearance_flags & RADIATION_GLOWS)
 			set_light(0)
 		return
-
+	// todo: SPECIES GLOWS - probably refactor this shit
 	if(species.species_appearance_flags & RADIATION_GLOWS)
+		#warn re-math
 		var/rad_glow_range = max(1,min(5,radiation/15))
 		var/rad_glow_intensity = max(1,min(10,radiation/25))
 		if(glow_toggle)//if body glow_range || glow_intensity > rad_glow_intensity)
 				set_light(glow_range, glow_intensity, glow_color)
 		else
 			set_light(rad_glow_range, rad_glow_intensity, species.get_flesh_colour(src))
-	// END DOGSHIT SNOWFLAKE
-
+	// todo: DIONA - probably refactor this shit
 	var/obj/item/organ/internal/diona/nutrients/rad_organ = locate() in internal_organs
 	if(rad_organ && !rad_organ.is_broken())
-		var/rads = radiation/25
-		radiation -= rads
+		var/rads = radiation / 100
 		nutrition += rads
-		adjustBruteLoss(-(rads))
-		adjustFireLoss(-(rads))
-		adjustOxyLoss(-(rads))
-		adjustToxLoss(-(rads))
+		adjustBruteLoss(-rads)
+		adjustFireLoss(-rads)
+		adjustOxyLoss(-rads)
+		adjustToxLoss(-rads)
 		updatehealth()
+		cure_radiation(RAD_MOB_PASSIVE_LOSS_FOR(radiation, seconds) + rads)
 		return
-
+	// not enough to care: stop
+	if(radiation < RAD_MOB_NEGLIGIBLE)
+		cure_radiation(RAD_MOB_PASSIVE_LOSS_FOR(radiation, seconds))
+		return
+	// todo: PROMETHEANS - refactor this shit
 	var/obj/item/organ/internal/brain/slime/core = locate() in internal_organs
 	if(core)
 		return
+
+
+	#warn radiation
+#define RADIATION_SPEED_COEFFICIENT 0.1
 
 	var/damage = 0
 	if(prob(25))
@@ -348,7 +353,7 @@
 			var/obj/item/organ/external/O = pick(organs)
 			if(istype(O)) O.add_autopsy_data("Radiation Poisoning", damage)
 
-	radiation = max(radiation - RAD_MOB_PASSIVE_LOSS * seconds, 0)
+	cure_radiation(RAD_MOB_PASSIVE_LOSS_FOR(radiation, seconds))
 
 /** breathing **/
 
