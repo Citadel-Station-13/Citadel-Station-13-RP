@@ -1,7 +1,6 @@
-/*
-Single Use Emergency Pouches
+/**
+ * Single Use Emergency Pouches
  */
-
 /obj/item/storage/single_use/med_pouch
 	name = "emergency medical pouch"
 	desc = "For use in emergency situations only."
