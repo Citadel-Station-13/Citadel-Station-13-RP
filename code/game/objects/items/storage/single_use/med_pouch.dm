@@ -90,12 +90,12 @@ Single Use Emergency Pouches
 	7) Stay in place once they respond.\
 		"}
 	starts_with = list(
-		//obj/item/chems/hypospray/autoinjector/pouch_auto/nanoblood,//maybe we add nanoblood one day
+		// /obj/item/chems/hypospray/autoinjector/pouch_auto/nanoblood, // Maybe we add nanoblood one day.
+		/obj/item/reagent_containers/hypospray/autoinjector/burn_pouch, // Used to be an adrenaline one, but adrenaline is kinda bad here.
 		/obj/item/reagent_containers/hypospray/autoinjector/pouch_pain,
-		/obj/item/reagent_containers/hypospray/autoinjector/burn_pouch,//used to be an adrenaline one, but adrenaline is kinda bad here
 		/obj/item/reagent_containers/pill/kelotane,
 		/obj/item/reagent_containers/pill/spaceacillin,
-		/obj/item/stack/medical/ointment
+		/obj/item/stack/medical/ointment,
 	)
 
 /obj/item/storage/single_use/med_pouch/oxyloss
