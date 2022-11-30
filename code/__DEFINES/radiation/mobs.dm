@@ -38,28 +38,28 @@
 /// hairloss threshold
 #define RAD_MOB_HAIRLOSS_THRESHOLD 800
 /// hairloss chance
-#define RAD_MOB_HAIRLOSS_CHANCE(amt, dt)
+#define RAD_MOB_HAIRLOSS_CHANCE(amt, dt) (dt)
 //? vomit
 /// vomit threshold
 #define RAD_MOB_VOMIT_THRESHOLD 2000
 /// vomit chance
-#define RAD_MOB_VOMIT_CHANCE(amt, dt)
+#define RAD_MOB_VOMIT_CHANCE(amt, dt) (dt)
 //? cloneloss
 /// declone threshold
 #define RAD_MOB_DECLONE_THRESHOLD 2000
 /// declone chance
-#define RAD_MOB_DECLONE_CHANCE(amt, dt)
+#define RAD_MOB_DECLONE_CHANCE(amt, dt) (dt * 0.5)
 /// declone amount
-#define RAD_MOB_DECLONE_DAMAGE(amt, dt)
+#define RAD_MOB_DECLONE_DAMAGE(amt, dt) rand(3, 8)
 //? paralysis
 /// knockdown threshold
 #define RAD_MOB_KNOCKDOWN_THRESHOLD 2000
 /// do we proc on synths?
 // #define RAD_MOB_KNOCKDOWN_SYNTHETICS
 /// knockdown chance
-#define RAD_MOB_KNOCKDOWN_CHANCE(amt, dt)
+#define RAD_MOB_KNOCKDOWN_CHANCE(amt, dt) (dt)
 /// knockdown amount
-#define RAD_MOB_KNOCKDOWN_AMOUNT(amt, dt)
+#define RAD_MOB_KNOCKDOWN_AMOUNT(amt, dt) 3
 
 #warn above
 

@@ -278,13 +278,14 @@
 		return
 	// todo: SPECIES GLOWS - probably refactor this shit
 	if(species.species_appearance_flags & RADIATION_GLOWS)
-		#warn re-math
-		var/rad_glow_range = max(1,min(5,radiation/15))
-		var/rad_glow_intensity = max(1,min(10,radiation/25))
-		if(glow_toggle)//if body glow_range || glow_intensity > rad_glow_intensity)
-			set_light(glow_range, glow_intensity, glow_color)
-		else
-			set_light(rad_glow_range, rad_glow_intensity, species.get_flesh_colour(src))
+		var/lrange = clamp(sqrt(radiation) / 8, 0, 7)
+		var/lpower = clamp(sqrt(radiation) / 40, 0, 1)
+		var/lcolor = species.get_flesh_colour(src)
+		if(glow_toggle)
+			lpower = max(lpower, glow_intensity)
+			lrange = max(lrange, glow_range)
+			lcolor = glow_color
+		set_light(lrange, lpower, lcolor)
 	// todo: DIONA - probably refactor this shit
 	var/obj/item/organ/internal/diona/nutrients/rad_organ = locate() in internal_organs
 	if(rad_organ && !rad_organ.is_broken())
