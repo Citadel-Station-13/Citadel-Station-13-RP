@@ -72,7 +72,7 @@
 		/obj/item/reagent_containers/pill/inaprovaline/pouch,
 		/obj/item/reagent_containers/pill/bicaridine/pouch,
 		/obj/item/stack/medical/bruise_pack,
-		)
+	)
 
 /obj/item/storage/single_use/med_pouch/burn
 	name = "Burn Pouch"
