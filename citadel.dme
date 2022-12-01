@@ -739,7 +739,7 @@
 #include "code\game\area\asteroid_areas.dm"
 #include "code\game\area\Away Mission areas.dm"
 #include "code\game\area\Off Station Areas.dm"
-#include "code\game\area\rift_areas.dm"
+#include "code\game\area\Rift_Areas.dm"
 #include "code\game\area\Ruin Areas.dm"
 #include "code\game\area\Space Station 13 areas.dm"
 #include "code\game\area\ss13_deprecated_areas.dm"
