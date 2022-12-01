@@ -1,5 +1,5 @@
 name: Size-Based Labeling
-on: pull_request_target
+on: pull_request
 jobs:
   size-label:
     runs-on: ubuntu-latest
