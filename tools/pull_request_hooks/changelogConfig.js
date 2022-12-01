@@ -33,6 +33,13 @@ export const CHANGELOG_ENTRIES = [
 	],
 
 	[
+		["tweak"],
+		{
+			placeholders: ["tweaked a few things"],
+		},
+	],
+
+	[
 		["qol"],
 		{
 			placeholders: ["made something easier to use"],
