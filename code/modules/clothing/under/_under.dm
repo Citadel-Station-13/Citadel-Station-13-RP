@@ -80,6 +80,8 @@
 	init_sensors(istype(H)? H : null)
 
 /obj/item/clothing/under/proc/init_sensors(mob/living/carbon/human/H)
+	if(has_sensors == UNIFORM_HAS_LOCKED_SENSORS)
+		return
 	if(H)
 		switch(H.sensorpref)
 			if(1) sensor_mode = SUIT_SENSOR_OFF				//Sensors off
