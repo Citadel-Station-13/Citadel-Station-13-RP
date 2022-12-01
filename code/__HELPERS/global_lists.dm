@@ -22,8 +22,6 @@ var/global/list/cable_list = list()
 var/global/list/side_effects = list()
 /// List of all mechs. Used by hostile mobs target tracking.
 var/global/list/mechas_list = list()
-/// List of all jobstypes, minus borg and AI
-var/global/list/joblist = list()
 
 #define all_genders_define_list list(MALE,FEMALE,PLURAL,NEUTER,HERM)
 #define all_genders_text_list list("Male","Female","Plural","Neuter","Herm")
@@ -192,13 +190,6 @@ GLOBAL_LIST_EMPTY(mannequins)
 
 		body_marking_styles_list[M.name] = M
 	tim_sort(body_marking_styles_list, /proc/cmp_name_asc, associative = TRUE)
-
-	//List of job. I can't believe this was calculated multiple times per tick!
-	paths = typesof(/datum/job)-/datum/job
-	paths -= exclude_jobs
-	for(var/T in paths)
-		var/datum/job/J = new T
-		joblist[J.title] = J
 
 	//Posters
 	paths = typesof(/datum/poster) - /datum/poster
