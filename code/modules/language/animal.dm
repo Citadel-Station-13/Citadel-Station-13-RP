@@ -5,7 +5,7 @@
 	speech_verb = "barks"
 	ask_verb = "woofs"
 	exclaim_verb = "howls"
-	key = "n"
+	key = null	// demoted
 	language_flags = RESTRICTED
 	machine_understands = 0
 	space_chance = 100
@@ -18,7 +18,7 @@
 	speech_verb = "meows"
 	ask_verb = "mrowls"
 	exclaim_verb = "yowls"
-	key = "c"
+	key = null	// demoted 
 	language_flags = RESTRICTED
 	machine_understands = 0
 	space_chance = 100
@@ -31,7 +31,7 @@
 	speech_verb = "squeaks"
 	ask_verb = "squeaks"
 	exclaim_verb = "squeaks"
-	key = "m"
+	key = null	// demoted
 	language_flags = RESTRICTED
 	machine_understands = 0
 	space_chance = 100
@@ -44,7 +44,7 @@
 	speech_verb = "chirps"
 	ask_verb = "tweets"
 	exclaim_verb = "squawks"
-	key = "m"
+	key = null	// demoted
 	language_flags = RESTRICTED
 	machine_understands = 0
 	space_chance = 100

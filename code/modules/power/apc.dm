@@ -1231,7 +1231,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		main_status = 2
 
 	if(debug)
-		log_debug("Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light] - Longterm: [longtermpower]")
+		log_debug(SPAN_DEBUGINFO("Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light] - Longterm: [longtermpower]"))
 
 	if(cell && !shorted && !grid_check)
 		// draw power from cell as before to power the area

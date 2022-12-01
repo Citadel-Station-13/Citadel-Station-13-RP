@@ -11,9 +11,9 @@
 	. += "<center>"
 	. += "<b>Species</b><br>[CS.name] - \[[href_simple(prefs, "change", "CHANGE")]\]"
 	if(CS.species_spawn_flags & SPECIES_SPAWN_RESTRICTED)
-		. += "This is a [SPAN_RED("restricted")] species. You cannot join as this outside of special circumstances."
+		. += "<br>This is a [SPAN_RED("restricted")] species. You cannot join as this outside of special circumstances."
 	else if(CS.species_spawn_flags & SPECIES_SPAWN_WHITELISTED)
-		. += "This is a whitelisted species. You "
+		. += "<br>This is a whitelisted species. You "
 		if(config.check_alien_whitelist(ckey(CS.name), prefs.client_ckey))
 			. += SPAN_GREEN("do")
 		else

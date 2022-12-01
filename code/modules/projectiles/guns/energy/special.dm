@@ -46,7 +46,7 @@
 	cell_type = /obj/item/cell/device/weapon/recharge
 	no_pin_required = 1
 	battery_lock = 1
-	var/decl/plantgene/gene = null
+	var/singleton/plantgene/gene = null
 
 	firemodes = list(
 		list(mode_name="induce mutations", projectile_type=/obj/item/projectile/energy/floramut, modifystate="floramut"),

@@ -133,7 +133,7 @@
 				if(isliving(mob) && get_area(mob) == src)
 					abduct(mob)
 			catch
-				log_debug("Problem doing [mob] for Alienship arrival teleport!")
+				log_debug(SPAN_DEBUG("Problem doing [mob] for Alienship arrival teleport!"))
 
 		did_entry = TRUE
 

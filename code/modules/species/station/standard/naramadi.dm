@@ -40,7 +40,17 @@
 
 	flesh_color = "#AFA59E"
 	base_color  = "#777777"
-
+	
+	ambiguous_genders = TRUE   //Naramadi look the same when female and male, at least from the groin up if you catch my drift ;^) - Papalus
+	
+	cold_level_1 = 280  //I'm not sorry, Lore changes. - Papalus
+	cold_level_2 = 240
+	cold_level_3 = 180
+	
+	heat_level_1 = 380
+	heat_level_2 = 420 //Nice
+	heat_level_3 = 1000
+	
 	heat_discomfort_strings = list(
 		"Your fur prickles in the heat.",
 		"You feel uncomfortably warm.",

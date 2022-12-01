@@ -59,7 +59,7 @@
 	shuttle_landmark_flags = SLANDMARK_FLAG_AUTOSET
 
 // /obj/machinery/computer/shuttle_control/power_change()
-// 	log_debug("[src].power_change() - area=[get_area(src)] powered=[powered(power_channel)]")
+// 	log_debug(SPAN_DEBUG("[src].power_change() - area=[get_area(src)] powered=[powered(power_channel)]"))
 // 	. = ..()
 
 

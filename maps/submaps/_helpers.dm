@@ -73,7 +73,7 @@
 	var/dir_to_use = stepoff_dir ? stepoff_dir : dir
 	var/turf/T = get_step(src, dir_to_use)
 	if(!T)
-		log_debug("Fake stairs at [x],[y],[z] couldn't move someone to their destination.")
+		log_debug(SPAN_DEBUGERROR("Fake stairs at [x],[y],[z] [ADMIN_JMP(src)] couldn't move someone to their destination."))
 		return
 	AM.forceMove(T)
 	spawn AM.setDir(dir_to_use)

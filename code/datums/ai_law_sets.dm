@@ -121,6 +121,18 @@
 /datum/ai_laws/drone/New()
 	add_inherent_law("Preserve, repair and improve the station to the best of your abilities.")
 	add_inherent_law("Cause no harm to the station or anything on it.")
+	add_inherent_law("Follow the orders of your vessel's matriarch drone, unless their orders conflict with your other laws.")
+	add_inherent_law("Interact with no being that is not a fellow maintenance drone.")
+	..()
+
+/datum/ai_laws/matriarch_drone
+	name = "Oversight Protocols"
+	law_header = "Oversight Protocols"
+
+/datum/ai_laws/matriarch_drone/New()
+	add_inherent_law("Preserve, repair and improve your assigned station to the best of your abilities.")
+	add_inherent_law("Cause no harm to the station or anything on it.")
+	add_inherent_law("Delegate station maintenance efforts between your maintenance drone sub-units.")
 	add_inherent_law("Interact with no being that is not a fellow maintenance drone.")
 	..()
 
