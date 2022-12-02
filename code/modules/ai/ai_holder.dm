@@ -179,7 +179,7 @@
 	else if(stance == STANCE_DISABLED)
 		if(LAZYLEN(holder.grabbed_by))
 			ai_log("handle_stance_tactical() : Going to resist while disabled due to grab.", AI_LOG_TRACE)
-			hoder.resist()
+			holder.resist()
 
 	switch(stance)
 		if(STANCE_IDLE)
