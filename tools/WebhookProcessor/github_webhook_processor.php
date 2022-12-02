@@ -697,6 +697,11 @@ function checkchangelog($payload) {
 					$tags[] = 'Fix';
 				}
 				break;
+			case 'tweak':
+				if($item != 'tweaked a few things') {
+					$tags[] = 'Tweak';
+				}
+				break;
 			case 'qol':
 				if($item != 'made something easier to use') {
 					$tags[] = 'Quality of Life';
