@@ -184,55 +184,55 @@
 /obj/item/reagent_containers/glass/bottle/inaprovalaze
 	name = "Inaprovalaze bottle"
 	desc = "A small bottle of Inaprovalaze. Do NOT drink."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle-2"
 	prefill = list("inaprovalaze" = 60)
 
 /obj/item/reagent_containers/glass/bottle/bicarilaze
 	name = "Bicarilaze bottle"
 	desc = "A small bottle of Bicarilaze. Do NOT drink."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle-2"
 	prefill = list("bicarilaze" = 60)
 
 /obj/item/reagent_containers/glass/bottle/kelotalaze
 	name = "Kelotalaze bottle"
 	desc = "A small bottle of Kelotalaze. Do NOT drink."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle-2"
 	prefill = list("kelotalaze" = 60)
 
 /obj/item/reagent_containers/glass/bottle/tricoralaze
 	name = "Tricoralaze bottle"
 	desc = "A small bottle of Tricoralaze. Do NOT drink."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle-2"
 	prefill = list("tricoralaze" = 60)
 
 /obj/item/reagent_containers/glass/bottle/neurolaze
 	name = "Neurolaze bottle"
 	desc = "A small bottle of Neurolaze. Do NOT drink."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle-2"
 	prefill = list("neurolaze" = 60)
 
 /obj/item/reagent_containers/glass/bottle/sterilaze
 	name = "Sterilaze bottle"
 	desc = "A small bottle of Sterilaze. Do NOT drink."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle-2"
 	prefill = list("sterilaze" = 60)
 
 /obj/item/reagent_containers/glass/bottle/cleansalaze
 	name = "Cleansalaze bottle"
 	desc = "A small bottle of Cleansalaze. Do NOT drink."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle-2"
 	prefill = list("cleansalaze" = 60)
 
 /obj/item/reagent_containers/glass/bottle/lotion
 	name = "Lotion bottle"
 	desc = "A small bottle of Lotion. Do NOT drink."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle-2"
 	prefill = list("lotion" = 60)

@@ -20,7 +20,7 @@
 	/// mobs we already hit - we REALLY do not want to double hit mobs and turn 1500 intensity one-off to lethal.
 	var/list/hit_mobs
 
-/datum/radiation_wave/New(atom/source, turf/starting, dir, intensity = 0, falloff_modifier = RAD_FALLOFF_DEFAULT, can_contaminate = TRUE)
+/datum/radiation_wave/New(atom/source, turf/starting, dir, intensity = 0, falloff_modifier = RAD_FALLOFF_NORMAL, can_contaminate = TRUE)
 	src.source = source
 	src.current = starting
 	src.dir = dir

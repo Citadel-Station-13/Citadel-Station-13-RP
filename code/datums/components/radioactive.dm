@@ -14,7 +14,7 @@
 	/// distance falloff
 	var/falloff = RAD_FALLOFF_CONTAMINATION_NORMAL
 
-/datum/component/radioactive/Initialize(_strength=0, _source, _half_life=RAD_HALF_LIFE, _can_contaminate=TRUE, falloff)
+/datum/component/radioactive/Initialize(_strength=0, _source, _half_life = RAD_HALF_LIFE_DEFAULT, _can_contaminate = TRUE, falloff)
 	strength = _strength
 	source = _source
 	hl3_release_date = _half_life
