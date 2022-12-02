@@ -263,6 +263,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	client?.update_movement_keys(src)
+	LAZYINITLIST(character)
+	LAZYINITLIST(options)
+	LAZYINITLIST(skin)
 	initialized = TRUE
 
 /datum/preferences/proc/block_until_initialized()
