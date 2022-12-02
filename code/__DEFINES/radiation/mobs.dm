@@ -16,18 +16,18 @@
 /// minimum amount for toxins
 #define RAD_MOB_TOXIN_THRESHOLD 500
 /// toxin damage per tick
-#define RAD_MOB_TOXIN_DAMAGE_FOR(amt, dt)
+#define RAD_MOB_TOXIN_DAMAGE_FOR(amt, dt) (min(3, ((rad / 1000) ** 2) * 0.1) * dt)
 /// toxin damage per tick, synths
-#define RAD_MOB_SYNTH_INSTABILITY_FOR(amt, dt)
+#define RAD_MOB_SYNTH_INSTABILITY_FOR(amt, dt) RAD_MOB_TOXIN_DAMAGE_FOR(amt, dt) // same for now
 //? burns
 /// minimum amount for burns
-#define RAD_MOB_BURN_THRESHOLD 1000
+#define RAD_MOB_BURN_THRESHOLD 1500 // boy you fucked up if your skin is blistering
 /// burn per tick
-#define RAD_MOB_BURN_DAMAGE_FOR(amt, dt)
+#define RAD_MOB_BURN_DAMAGE_FOR(amt, dt) (min(5, (((rad - 1500) / 750) ** 2) * 0.1) * dt)
 /// do we burn synths
 // #define RAD_MOB_BURNS_SYNTHETICS
 /// burn per tick, synths
-#define RAD_MOB_SYNTH_BURN_FOR(amt, dt)
+#define RAD_MOB_SYNTH_BURN_FOR(amt, dt) 0 // synth gang synth gang
 //? genes
 // todo: good genetics
 /// mutate threshold
