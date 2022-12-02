@@ -36,12 +36,12 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 		T = get_turf(source)
 	var/atom/nested = source.loc
 	var/waves = TRUE
-	while(!isarea(nested.loc))
+	while(nested && !isarea(nested.loc))
 		if(nested.rad_flags & RAD_BLOCK_CONTENTS)
 			waves = FALSE
 			break
 		nested = nested.loc
-	if(waves)
+	if(waves && T)
 		for(var/dir in GLOB.cardinal)
 			new /datum/radiation_wave(source, T, intensity, falloff_modifier, can_contaminate)
 		var/static/last_huge_pulse = 0
