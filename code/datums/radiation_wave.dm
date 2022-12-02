@@ -46,7 +46,7 @@
 	var/list/atom/atoms = atoms_within_line()
 	var/effective_steps = max(falloff_modifier * steps, 1)
 	var/strength = steps > 1? INVERSE_SQUARE(current_intensity, effective_steps, 1) : current_intensity
-	if(strength<RAD_BACKGROUND_RADIATION)
+	if(strength < RAD_BACKGROUND_RADIATION)
 		qdel(src)
 		return
 	var/contaminated = radiate(atoms, strength)

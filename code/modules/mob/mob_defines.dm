@@ -7,6 +7,7 @@
 	flags = HEAR
 	pass_flags_self = ATOM_PASS_MOB | ATOM_PASS_OVERHEAD_THROW
 	sight = SIGHT_FLAGS_DEFAULT
+	rad_flags = NONE
 
 //! Core
 	/// mobs use ids as ref tags instead of actual refs.

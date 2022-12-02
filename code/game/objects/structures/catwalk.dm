@@ -8,6 +8,7 @@
 	icon_state = "catwalk"
 	density = FALSE
 	anchored = TRUE
+	rad_flags = RAD_NO_CONTAMINATE
 	var/health = 100
 	var/maxhealth = 100
 	var/obj/item/stack/tile/plated_tile = null

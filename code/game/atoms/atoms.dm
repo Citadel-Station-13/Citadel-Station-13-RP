@@ -96,7 +96,7 @@
 
 	//! Radiation
 	/// radiation flags
-	var/rad_flags = NONE
+	var/rad_flags = RAD_NO_CONTAMINATE	// overridden to NONe in /obj and /mob base
 	/// radiation insulation
 	var/rad_insulation = RAD_INSULATION_NONE
 
