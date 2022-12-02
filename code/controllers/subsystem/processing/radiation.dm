@@ -46,7 +46,7 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 		T = get_turf(source)
 	if(waves && T)
 		for(var/dir in GLOB.cardinal)
-			new /datum/radiation_wave(source, T, intensity, falloff_modifier, can_contaminate)
+			new /datum/radiation_wave(source, T, dir, intensity, falloff_modifier, can_contaminate)
 		var/static/last_huge_pulse = 0
 		if(intensity > 1000 && world.time > last_huge_pulse + 10 SECONDS)
 			last_huge_pulse = world.time
