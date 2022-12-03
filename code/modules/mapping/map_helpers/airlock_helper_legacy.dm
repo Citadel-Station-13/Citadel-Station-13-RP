@@ -8,9 +8,9 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 
 /obj/map_helper/airlock
 	name = "use a subtype!"
-	icon = 'icons/misc/map_helpers.dmi'
-	plane = 20 //I dunno just high.
-	alpha = 170
+	icon = 'icons/mapping/helpers/map_helpers.dmi'
+	layer = DOOR_HELPER_LAYER
+	late = TRUE
 
 	//The controller we're wanting our device to use
 	var/obj/machinery/embedded_controller/radio/my_controller
@@ -31,9 +31,17 @@ Any frequency works, it's self-setting, but it seems like people have decided 13
 		TO_WORLD("<b><font color='red'>WARNING:</font><font color='black'>Airlock helper '[name]' couldn't find a controller at: X:[x] Y:[y] Z:[z]</font></b>")
 	else if(!my_controller.id_tag)
 		TO_WORLD("<b><font color='red'>WARNING:</font><font color='black'>Airlock helper '[name]' found a controller without an 'id_tag' set: X:[x] Y:[y] Z:[z]</font></b>")
+
+	var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in loc
+	if(!airlock)
+		log_mapping("[src] failed to find an airlock at [AREACOORD(src)]")
 	else
-		setup()
+		payload(airlock)
+
 	return INITIALIZE_HINT_QDEL
+
+/obj/map_helper/airlock/proc/payload(obj/machinery/door/airlock/payload)
+	return
 
 /obj/map_helper/airlock/Destroy()
 	my_controller = null

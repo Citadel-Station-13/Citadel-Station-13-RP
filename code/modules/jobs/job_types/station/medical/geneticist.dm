@@ -16,8 +16,8 @@
 	pto_type = PTO_MEDICAL
 	idtype = /obj/item/card/id/medical/geneticist
 	economic_modifier = 7
-	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_research)
-	minimal_access = list(access_medical, access_morgue, access_genetics, access_research)
+	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics, access_science)
+	minimal_access = list(access_medical, access_morgue, access_genetics, access_science)
 
 	outfit_type = /datum/outfit/job/station/geneticist
 	desc = "A Geneticist operates genetic manipulation equipment to repair any genetic defects encountered in crew, from cloning or radiation as examples. \

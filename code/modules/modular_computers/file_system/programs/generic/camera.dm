@@ -12,7 +12,7 @@
 		if(NETWORK_ENGINE,NETWORK_ALARM_ATMOS,NETWORK_ALARM_FIRE,NETWORK_ALARM_POWER)
 			return access_engine
 		if(NETWORK_CIRCUITS)
-			return access_research
+			return access_science
 		if(NETWORK_ERT)
 			return access_cent_specops
 

@@ -1,71 +1,18 @@
-//Landmarks and other helpers which speed up the mapping process and reduce the number of unique instances/subtypes of items/turf/ect
+/// Landmarks and other helpers which speed up the mapping process and reduce the number of unique instances/subtypes of items/turf/ect.
 /obj/map_helper
-	icon = 'icons/mapping/helpers/mapping_helpers.dmi'
+	icon = 'icons/mapping/helpers/map_helpers.dmi'
 	icon_state = ""
+	plane = MAPPING_PLANE
+	layer = BASE_HELPER_LAYER
+
+	/// If set to TRUE, we will wait till LateInitialize() to do our work.
 	var/late = FALSE
 
 /obj/map_helper/Initialize(mapload)
 	. = ..()
 	return late ? INITIALIZE_HINT_LATELOAD : INITIALIZE_HINT_QDEL
 
-/* these need renaming because airlock already exist!
-
-//airlock helpers
-/obj/map_helper/airlock
-	layer = DOOR_HELPER_LAYER
-
-/obj/map_helper/airlock/cyclelink_helper
-	name = "airlock cyclelink helper"
-	icon_state = "airlock_cyclelink_helper"
-
-/obj/map_helper/airlock/cyclelink_helper/Initialize(mapload)
-	. = ..()
-	if(!mapload)
-		log_mapping("[src] spawned outside of mapload!")
-		return
-	var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in loc
-	if(airlock)
-		if(airlock.cyclelinkeddir)
-			log_mapping("[src] at [AREACOORD(src)] tried to set [airlock] cyclelinkeddir, but it's already set!")
-		else
-			airlock.cyclelinkeddir = dir
-	else
-		log_mapping("[src] failed to find an airlock at [AREACOORD(src)]")
-
-
-/obj/map_helper/airlock/locked
-	name = "airlock lock helper"
-	icon_state = "airlock_locked_helper"
-
-/obj/map_helper/airlock/locked/Initialize(mapload)
-	. = ..()
-	if(!mapload)
-		log_mapping("[src] spawned outside of mapload!")
-		return
-	var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in loc
-	if(airlock)
-		if(airlock.locked)
-			log_mapping("[src] at [AREACOORD(src)] tried to bolt [airlock] but it's already locked!")
-		else
-			airlock.locked = TRUE
-	else
-		log_mapping("[src] failed to find an airlock at [AREACOORD(src)]")
-
-/obj/map_helper/airlock/unres
-	name = "airlock unresctricted side helper"
-	icon_state = "airlock_unres_helper"
-
-/obj/map_helper/airlock/unres/Initialize(mapload)
-	. = ..()
-	if(!mapload)
-		log_mapping("[src] spawned outside of mapload!")
-		return
-	var/obj/machinery/door/airlock/airlock = locate(/obj/machinery/door/airlock) in loc
-	if(airlock)
-		airlock.unres_sides ^= dir
-	else
-		log_mapping("[src] failed to find an airlock at [AREACOORD(src)]")
-
+/*
 
 //needs to do its thing before spawn_rivers() is called
 INITIALIZE_IMMEDIATE(/obj/map_helper/no_lava)
@@ -83,6 +30,7 @@ INITIALIZE_IMMEDIATE(/obj/map_helper/no_lava)
 /obj/map_helper/component_injector
 	name = "Component Injector"
 	late = TRUE
+
 	var/target_type
 	var/target_name
 	var/component_type

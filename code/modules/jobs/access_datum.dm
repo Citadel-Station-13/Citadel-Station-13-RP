@@ -46,9 +46,9 @@
 	desc = "Morgue"
 	region = ACCESS_REGION_MEDBAY
 
-/var/const/access_tox = 7
-/datum/access/tox
-	id = access_tox
+/var/const/access_research = 7
+/datum/access/research
+	id = access_research
 	desc = "R&D Lab"
 	region = ACCESS_REGION_RESEARCH
 
@@ -282,9 +282,9 @@ var/const/access_pathfinder = 44
 
 // /var/const/free_access_id = 46
 
-/var/const/access_research = 47
+/var/const/access_science = 47
 /datum/access/research
-	id = access_research
+	id = access_science
 	desc = "Science"
 	region = ACCESS_REGION_RESEARCH
 

@@ -28,8 +28,8 @@
 
 	stun_strength = 10
 	xeno_harm_strength = 9
-	req_one_access = list(access_research, access_robotics)
-	botcard_access = list(access_research, access_robotics, access_xenobiology, access_xenoarch, access_tox, access_tox_storage, access_maint_tunnels)
+	req_one_access = list(access_science, access_robotics)
+	botcard_access = list(access_science, access_robotics, access_xenobiology, access_xenoarch, access_research, access_tox_storage, access_maint_tunnels)
 	var/xeno_stun_strength = 6
 
 /mob/living/bot/secbot/ed209/slime/update_icons()
@@ -177,4 +177,3 @@
 				var/turf/T = get_turf(src)
 				new /mob/living/bot/secbot/ed209/slime(T,created_name,lasercolor)
 				qdel(src)
-

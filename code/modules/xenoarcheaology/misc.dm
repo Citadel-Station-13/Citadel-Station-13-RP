@@ -99,7 +99,7 @@
 		/obj/item/hand_labeler)
 
 /obj/machinery/alarm/isolation
-	req_one_access = list(access_research, access_atmospherics, access_engine_equip)
+	req_one_access = list(access_science, access_atmospherics, access_engine_equip)
 
 /obj/machinery/alarm/monitor/isolation
-	req_one_access = list(access_research, access_atmospherics, access_engine_equip)
+	req_one_access = list(access_science, access_atmospherics, access_engine_equip)

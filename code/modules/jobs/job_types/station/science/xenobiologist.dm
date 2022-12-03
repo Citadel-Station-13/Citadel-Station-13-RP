@@ -14,8 +14,8 @@
 	idtype = /obj/item/card/id/science/xenobiologist
 	pto_type = PTO_SCIENCE
 	economic_modifier = 7
-	access = list(access_robotics, access_tox, access_tox_storage, access_research, access_xenobiology, access_hydroponics, access_tox)
-	minimal_access = list(access_research, access_xenobiology, access_hydroponics, access_tox_storage,access_tox)
+	access = list(access_robotics, access_research, access_tox_storage, access_science, access_xenobiology, access_hydroponics, access_research)
+	minimal_access = list(access_science, access_xenobiology, access_hydroponics, access_tox_storage,access_research)
 
 	minimal_player_age = 14
 

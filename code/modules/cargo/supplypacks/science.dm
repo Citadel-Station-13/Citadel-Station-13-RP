@@ -85,7 +85,7 @@
 	cost = 100
 	container_type = /obj/structure/closet/crate/secure/science
 	container_name = "Xenoarchaeology Tech crate"
-	access = access_research
+	access = access_science
 
 /datum/supply_pack/sci/jukebox_circuitboard
 	name = "Jukebox Circuit Board crate"

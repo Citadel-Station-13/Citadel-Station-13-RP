@@ -71,7 +71,7 @@
 	desc = "Like the civilian model, but provides ... well, nothing. For now."
 	list_pos = NIF_SCIENCE_AR
 	cost = 375
-	access = access_research
+	access = access_science
 	a_drain = 0.01
 	data_huds = list(DATA_HUD_ID_JOB)
 	planes_enabled = list(VIS_AUGMENTED)
@@ -139,7 +139,7 @@
 	list_pos = NIF_MATERIAL
 	cost = 500
 	a_drain = 0.1
-	access = access_research
+	access = access_science
 	tick_flags = NIF_ACTIVETICK
 	planes_enabled = list(VIS_FULLBRIGHT)
 	vision_flags = (NIF_V_MATERIAL)

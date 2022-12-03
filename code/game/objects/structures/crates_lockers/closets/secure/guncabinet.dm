@@ -88,7 +88,7 @@
 
 /obj/structure/closet/secure_closet/guncabinet/robotics
 	name = "exosuit equipment cabinet"
-	req_one_access = list(access_robotics,access_research)
+	req_one_access = list(access_robotics,access_science)
 
 /obj/structure/closet/secure_closet/guncabinet/excursion
 	name = "expedition weaponry cabinet"

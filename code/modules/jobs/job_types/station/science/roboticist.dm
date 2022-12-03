@@ -10,8 +10,8 @@
 	selection_color = "#633D63"
 	economic_modifier = 5
 	pto_type = PTO_SCIENCE
-	access = list(access_robotics, access_tox, access_tox_storage, access_tech_storage, access_morgue, access_research, access_tox) //As a job that handles so many corpses, it makes sense for them to have morgue access.
-	minimal_access = list(access_robotics, access_tech_storage, access_morgue, access_research, access_tox) //As a job that handles so many corpses, it makes sense for them to have morgue access.
+	access = list(access_robotics, access_research, access_tox_storage, access_tech_storage, access_morgue, access_science, access_research) //As a job that handles so many corpses, it makes sense for them to have morgue access.
+	minimal_access = list(access_robotics, access_tech_storage, access_morgue, access_science, access_research) //As a job that handles so many corpses, it makes sense for them to have morgue access.
 	minimal_player_age = 7
 
 	outfit_type = /datum/outfit/job/station/roboticist

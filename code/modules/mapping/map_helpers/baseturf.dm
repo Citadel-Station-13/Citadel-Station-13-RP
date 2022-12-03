@@ -1,6 +1,6 @@
 /obj/effect/baseturf_helper //Set the baseturfs of every turf in the /area/ it is placed.
 	name = "baseturf editor"
-	icon = 'icons/mapping/helpers/mapping_helpers.dmi'
+	icon = 'icons/mapping/helpers/map_helpers.dmi'
 	icon_state = ""
 
 	var/list/baseturf_to_replace
@@ -79,4 +79,3 @@
 // /obj/effect/baseturf_helper/lava_land/surface
 // 	name = "lavaland baseturf editor"
 // 	baseturf = /turf/open/lava/smooth/lava_land_surface
-

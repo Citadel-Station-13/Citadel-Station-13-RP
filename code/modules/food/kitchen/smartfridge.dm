@@ -62,7 +62,7 @@
 /obj/machinery/smartfridge/secure/extract
 	name = "\improper Biological Sample Storage"
 	desc = "A refrigerated storage unit for xenobiological samples."
-	req_access = list(access_research)
+	req_access = list(access_science)
 
 /obj/machinery/smartfridge/secure/extract/accept_check(var/obj/item/O as obj)
 	if(istype(O, /obj/item/slime_extract))

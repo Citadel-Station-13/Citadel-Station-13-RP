@@ -1,7 +1,7 @@
 // Builds networks like power cables/atmos lines/etc
 // Just a holder parent type for now..
 /obj/map_helper/network_builder
-	icon = 'icons/mapping/helpers/mapping_helpers.dmi'
+	icon = 'icons/mapping/helpers/map_helpers.dmi'
 	late = TRUE
 	invisibility = INVISIBILITY_MAXIMUM
 	/// what directions we know connections are in. flag. uses X_BIT defines!

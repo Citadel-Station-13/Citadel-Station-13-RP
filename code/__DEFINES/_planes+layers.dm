@@ -209,9 +209,24 @@ What is the naming convention for planes or layers?
 #define PLANE_PLAYER_HUD_ITEMS	96
 ///Things above the player hud
 #define PLANE_PLAYER_HUD_ABOVE	97
+
 ///Purely for shenanigans (above HUD)
-#define PLANE_ADMIN3			99
+#define PLANE_ADMIN3 99
+
+
+//////////////////////////
+
+/// This is for mapper stuff.
+#define MAPPING_PLANE 100
+
+#define BELOW_HELPER_LAYER      -1
+#define BASE_HELPER_LAYER        0
+#define DOOR_ACCESS_HELPER_LAYER 1 // Special layer used for /obj/map_helpers/airlock/access
+#define DOOR_HELPER_LAYER        2 // Keep this above DOOR_ACCESS_HELPER_LAYER since the others tend to have tiny sprites that tend to be covered up.
+#define OBJ_HELPER_LAYER         3
+#define MOB_HELPER_LAYER         4
+
 //////////////////////////
 
 //Check if a mob can "logically" see an atom plane
-#define 	MOB_CAN_SEE_PLANE(M, P) (P <= PLANE_WORLD || (P in M.planes_visible) || P >= PLANE_PLAYER_HUD)
+#define MOB_CAN_SEE_PLANE(M, P) (P <= PLANE_WORLD || (P in M.planes_visible) || P >= PLANE_PLAYER_HUD)
