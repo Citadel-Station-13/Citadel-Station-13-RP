@@ -2616,6 +2616,7 @@
 #include "code\modules\lore_hardcoded\origin\oricon\sol.dm"
 #include "code\modules\mapping\map_config.dm"
 #include "code\modules\mapping\map_orientation_patterns.dm"
+#include "code\modules\mapping\merge_conflicts.dm"
 #include "code\modules\mapping\minimaps.dm"
 #include "code\modules\mapping\preloader.dm"
 #include "code\modules\mapping\shuttle.dm"
