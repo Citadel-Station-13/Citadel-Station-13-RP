@@ -1753,12 +1753,12 @@
 /area/mothership/security)
 "dW" = (
 /obj/structure/closet/crate/medical,
-/obj/item/storage/mre/menu11,
-/obj/item/storage/mre/menu11,
-/obj/item/storage/mre/menu11,
-/obj/item/storage/mre/menu11,
-/obj/item/storage/mre/menu13,
-/obj/item/storage/mre/menu13,
+/obj/item/storage/single_use/mre/menu11,
+/obj/item/storage/single_use/mre/menu11,
+/obj/item/storage/single_use/mre/menu11,
+/obj/item/storage/single_use/mre/menu11,
+/obj/item/storage/single_use/mre/menu13,
+/obj/item/storage/single_use/mre/menu13,
 /turf/simulated/floor/tiled/white,
 /area/mothership/surgery)
 "dX" = (

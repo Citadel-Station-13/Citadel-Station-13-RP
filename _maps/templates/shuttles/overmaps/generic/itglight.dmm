@@ -688,7 +688,7 @@
 	dir = 8
 	},
 /obj/structure/table/woodentable,
-/obj/item/storage/mre/random,
+/obj/item/storage/single_use/mre/random,
 /obj/random/plushie,
 /obj/random/contraband,
 /obj/machinery/vending/cola,
@@ -1313,7 +1313,7 @@
 	dir = 8
 	},
 /obj/structure/table/woodentable,
-/obj/item/storage/mre/random,
+/obj/item/storage/single_use/mre/random,
 /obj/random/plushie,
 /obj/random/contraband,
 /obj/machinery/vending/cola,
@@ -3272,7 +3272,7 @@
 /obj/machinery/vending/cola,
 /obj/random/contraband,
 /obj/random/plushie,
-/obj/item/storage/mre/random,
+/obj/item/storage/single_use/mre/random,
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
@@ -3898,7 +3898,7 @@
 	dir = 8
 	},
 /obj/structure/table/woodentable,
-/obj/item/storage/mre/random,
+/obj/item/storage/single_use/mre/random,
 /obj/random/plushie,
 /obj/random/contraband,
 /obj/machinery/vending/cola,
@@ -4159,7 +4159,7 @@
 	dir = 8
 	},
 /obj/structure/table/woodentable,
-/obj/item/storage/mre/random,
+/obj/item/storage/single_use/mre/random,
 /obj/random/plushie,
 /obj/random/contraband,
 /obj/machinery/vending/cola,

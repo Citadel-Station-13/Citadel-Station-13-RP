@@ -2196,6 +2196,7 @@
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 1
 	},
+/obj/item/storage/single_use/med_pouch/oxyloss,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/secondary/engineering_hallway)
 "fH" = (
@@ -8676,6 +8677,8 @@
 /area/engineering/atmos)
 "HB" = (
 /obj/structure/table/wooden_reinforced,
+/obj/item/storage/single_use/med_pouch/burn,
+/obj/item/storage/single_use/med_pouch/oxyloss,
 /turf/simulated/floor/wood,
 /area/rift/station/fighter_bay)
 "HD" = (
@@ -12764,6 +12767,7 @@
 	dir = 8
 	},
 /obj/item/multitool/rift_buffered,
+/obj/item/storage/single_use/med_pouch/burn,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "Xg" = (

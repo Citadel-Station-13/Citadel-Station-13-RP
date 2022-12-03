@@ -310,10 +310,14 @@
 		if ("clap")
 			if (!src.restrained())
 				message = "claps."
-				playsound(src.loc, 'sound/misc/clapping.ogg')
-				m_type = 2
-				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
-					m_type = 1
+				var/use_sound
+				use_sound = pick('sound/misc/clapping.ogg','sound/voice/clap2.ogg','sound/voice/clap3.ogg','sound/voice/clap4.ogg')
+				playsound(src.loc, use_sound, 50, 0)
+
+		if("golfclap")
+			if (!src.restrained())
+				message = "claps very slowly."
+				playsound(src.loc, 'sound/voice/golfclap.ogg', 50, 0)
 
 		if ("flap")
 			if (!src.restrained())

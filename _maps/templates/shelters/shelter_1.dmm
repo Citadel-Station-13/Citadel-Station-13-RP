@@ -14,10 +14,10 @@
 /area/survivalpod)
 "d" = (
 /obj/machinery/smartfridge/survival_pod,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/menu11,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/menu11,
 /obj/item/fbp_backup_cell,
 /obj/item/fbp_backup_cell,
 /obj/item/fbp_backup_cell,
