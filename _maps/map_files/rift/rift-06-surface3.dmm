@@ -2698,6 +2698,8 @@
 /obj/structure/table/marble,
 /obj/item/reagent_containers/food/drinks/shaker,
 /obj/item/reagent_containers/glass/rag,
+/obj/item/storage/single_use/med_pouch/overdose,
+/obj/item/storage/single_use/med_pouch/toxin,
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
 "eL" = (
@@ -4819,11 +4821,11 @@
 "iS" = (
 /obj/machinery/light,
 /obj/structure/table/woodentable,
-/obj/item/storage/mre/random{
+/obj/item/storage/single_use/mre/random{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/storage/mre/random{
+/obj/item/storage/single_use/mre/random{
 	pixel_x = -2;
 	pixel_y = -2
 	},
@@ -6178,6 +6180,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 5
 	},
+/obj/item/storage/single_use/med_pouch/burn,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "lz" = (
@@ -9022,12 +9025,12 @@
 /obj/structure/closet/crate{
 	name = "MRE crate"
 	},
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/menu9,
-/obj/item/storage/mre/menu10,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/menu9,
+/obj/item/storage/single_use/mre/menu10,
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
 "rn" = (
@@ -15345,6 +15348,8 @@
 	dir = 8;
 	pixel_x = 24
 	},
+/obj/item/storage/single_use/med_pouch/overdose,
+/obj/item/storage/single_use/med_pouch/overdose,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar_backroom)
 "DO" = (
@@ -21118,6 +21123,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 6
 	},
+/obj/item/storage/single_use/med_pouch/burn,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "Px" = (
@@ -25973,6 +25979,8 @@
 	pixel_y = 8
 	},
 /obj/item/robotanalyzer,
+/obj/item/storage/single_use/med_pouch/oxyloss,
+/obj/item/storage/single_use/med_pouch/toxin,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/excursion/general)
 "YY" = (

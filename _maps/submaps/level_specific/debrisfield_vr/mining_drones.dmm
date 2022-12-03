@@ -189,7 +189,7 @@
 	},
 /obj/item/stack/medical/bruise_pack,
 /obj/item/stack/medical/ointment,
-/obj/item/storage/mre/random,
+/obj/item/storage/single_use/mre/random,
 /obj/effect/floor_decal/rust/part_rusted3,
 /turf/simulated/floor/tiled/airless,
 /area/submap/debrisfield_vr/mining_outpost)
