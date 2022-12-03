@@ -157,7 +157,7 @@
 	if(vocal && prob(1))
 		var/message_options = list(
 			"Radar, put a mask on!" = 'sound/voice/medibot/mradar.ogg',
-			"There's always a catch, and it's the best there is." = 'sound/voice/medibot/mcatch.ogg',
+			"There's always a catch, and I'm the best there is." = 'sound/voice/medibot/mcatch.ogg',
 			"I knew it, I should've been a plastic surgeon." = 'sound/voice/medibot/msurgeon.ogg',
 			"What kind of medbay is this? Everyone's dropping like flies." = 'sound/voice/medibot/mflies.ogg',
 			"Delicious!" = 'sound/voice/medibot/mdelicious.ogg'

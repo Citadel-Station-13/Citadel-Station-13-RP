@@ -3435,7 +3435,7 @@
 /obj/random/alcohol,
 /obj/random/cigarettes,
 /obj/item/flame/lighter/random,
-/obj/item/storage/mre/random,
+/obj/item/storage/single_use/mre/random,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/exterior/nuketown/bunker)
 "ND" = (
