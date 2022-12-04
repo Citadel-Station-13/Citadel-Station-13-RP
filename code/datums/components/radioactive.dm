@@ -36,7 +36,7 @@
 	//Let's make er glow
 	//This relies on parent not being a turf or something. IF YOU CHANGE THAT, CHANGE THIS
 	var/atom/movable/master = parent
-	master.add_filter("rad_glow", 2, list("type" = "outline", "color" = "#14fff714", "size" = 1))
+	master.add_filter("rad_glow", 2, list("type" = "outline", "color" = "#14fff714", "size" = 2))
 	addtimer(CALLBACK(src, .proc/glow_loop, master), rand(1,19))//Things should look uneven
 
 	START_PROCESSING(SSradiation, src)

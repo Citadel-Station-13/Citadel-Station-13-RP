@@ -164,9 +164,9 @@
 			continue
 		contaminating += A
 	. = 0
-	var/stack_to = current_intensity
+	var/stack_to = strength * RAD_CONTAMINATION_STACK_COEFFICIENT
 	if(!cannot_contam && length(contaminating))
 		var/contam_strength = min(remaining_contam / length(contaminating), starting_intensity * RAD_CONTAMINATION_MAXIMUM_OBJECT_RATIO)
 		for(var/atom/A as anything in contaminating)
 			A.AddComponent(/datum/component/radioactive, contam_strength, source, max_stack = stack_to)
-			. += contam_strength
+		. = contam_strength * length(contaminating)

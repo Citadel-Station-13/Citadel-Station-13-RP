@@ -154,6 +154,8 @@
 #define RAD_CONTAMINATION_CHANCE_COEFFICIENT 0.005	// Higher means higher strength scaling contamination chance
 #define RAD_CONTAMINATION_STR_COEFFICIENT 0.99		// Higher means higher strength scaling contamination strength
 #define RAD_CONTAMINATION_MAXIMUM_OBJECT_RATIO 0.1	// max amount of starting intensity that can be imparted to one object at a time
+/// percentage of current intensity that can stack onto objects
+#define RAD_CONTAMINATION_STACK_COEFFICIENT 0.5
 /// can things contaminate by default?
 #define RAD_CONTAMINATION_DEFAULT TRUE
 /// can z-wide radiatoin contaminate by default?
