@@ -1332,15 +1332,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
 "oy" = (
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
-/obj/structure/window/phoronbasic{
-	dir = 8
-	},
-/obj/structure/window/phoronbasic{
-	dir = 4
-	},
+/obj/machinery/portable_atmospherics/powered/scrubber,
 /turf/simulated/floor/tiled,
 /area/rift/geothermal)
 "oz" = (
@@ -3798,6 +3790,10 @@
 	},
 /turf/simulated/floor/outdoors/lava/indoors/geothermal,
 /area/rift/geothermal)
+"OU" = (
+/obj/machinery/portable_atmospherics/powered/pump/filled,
+/turf/simulated/floor/tiled,
+/area/rift/geothermal)
 "OY" = (
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "N-SE"
@@ -4804,6 +4800,18 @@
 	},
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
+"YE" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/obj/structure/window/phoronbasic{
+	dir = 8
+	},
+/obj/structure/window/phoronbasic{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/rift/geothermal)
 "YG" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -28683,8 +28691,8 @@ SF
 lN
 xg
 xg
-oy
-oy
+YE
+YE
 EZ
 BE
 pt
@@ -30618,7 +30626,7 @@ cU
 cU
 cU
 EI
-CB
+OU
 bU
 EI
 EI
@@ -30812,7 +30820,7 @@ cU
 cU
 cU
 EI
-CB
+oy
 Ez
 hb
 Yv
