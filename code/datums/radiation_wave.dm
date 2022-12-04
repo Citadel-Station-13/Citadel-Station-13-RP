@@ -1,3 +1,9 @@
+/turf
+	var/datum/radiation_wave/rad_wave_north
+	var/datum/radiation_wave/rad_wave_south
+	var/datum/radiation_wave/rad_wave_east
+	var/datum/radiation_wave/rad_wave_west
+
 /datum/radiation_wave
 	/// source atom - can be null
 	var/atom/source
@@ -21,6 +27,31 @@
 	var/list/hit_mobs
 
 /datum/radiation_wave/New(atom/source, turf/starting, dir, intensity = 0, falloff_modifier = RAD_FALLOFF_NORMAL, can_contaminate = TRUE)
+	switch(dir)
+		if(NORTH)
+			if(starting.rad_wave_north)
+				starting.rad_wave_north.starting_intensity += intensity
+				starting.rad_wave_north.current_intensity += intensity
+			else
+				starting.rad_wave_north = src
+		if(SOUTH)
+			if(starting.rad_wave_south)
+				starting.rad_wave_south.starting_intensity += intensity
+				starting.rad_wave_south.current_intensity += intensity
+			else
+				starting.rad_wave_south = src
+		if(EAST)
+			if(starting.rad_wave_east)
+				starting.rad_wave_east.starting_intensity += intensity
+				starting.rad_wave_east.current_intensity += intensity
+			else
+				starting.rad_wave_east = src
+		if(WEST)
+			if(starting.rad_wave_west)
+				starting.rad_wave_west.starting_intensity += intensity
+				starting.rad_wave_west.current_intensity += intensity
+			else
+				starting.rad_wave_west = src
 	src.source = source
 	src.current = starting
 	src.dir = dir
@@ -28,7 +59,6 @@
 	src.falloff_modifier = falloff_modifier
 	src.can_contaminate = can_contaminate
 	hit_mobs = list()
-
 	START_PROCESSING(SSradiation, src)
 
 /datum/radiation_wave/Destroy()
@@ -42,6 +72,16 @@
 	if(!current)
 		qdel(src)
 		return
+	if(!steps)
+		switch(dir)
+			if(NORTH)
+				current.rad_wave_north = null
+			if(SOUTH)
+				current.rad_wave_south = null
+			if(EAST)
+				current.rad_wave_east = null
+			if(WEST)
+				current.rad_wave_west = null
 	++steps
 	var/list/atom/atoms = atoms_within_line()
 	var/effective_steps = max(falloff_modifier * steps, 1)
