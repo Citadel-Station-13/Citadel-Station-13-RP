@@ -6,6 +6,7 @@
 	pass_flags_self = ATOM_PASS_GLASS
 	CanAtmosPass = ATMOS_PASS_PROC
 	w_class = ITEMSIZE_NORMAL
+	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
 
 	layer = WINDOW_LAYER
 	pressure_resistance = 4*ONE_ATMOSPHERE
@@ -28,7 +29,7 @@
 	var/force_threshold = 0
 	var/basestate
 	var/shardtype = /obj/item/material/shard
-	var/glasstype = null // Set this in subtypes. Null is assumed strange or otherwise impossible to dismantle, such as for shuttle glass.
+	var/glasstype = null // Set this in subtypes. Null is assumed strange osr otherwise impossible to dismantle, such as for shuttle glass.
 	var/silicate = 0 // number of units of silicate
 
 /obj/structure/window/Initialize(mapload)
