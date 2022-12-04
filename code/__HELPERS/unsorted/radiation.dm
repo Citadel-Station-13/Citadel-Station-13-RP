@@ -31,8 +31,8 @@
  * - can_contaminate - allow contamination? if null, will default
  * - override_turf - override where
  */
-/proc/radiation_pulse(atom/source, intensity, falloff_modifier, log, can_contaminate, turf/override_turf)
-	return SSradiation.radiation_pulse(override_turf || get_turf(source), source, intensity, falloff_modifier, log, can_contaminate)
+/proc/radiation_pulse(atom/source, intensity, falloff_modifier, log, can_contaminate)
+	return SSradiation.radiation_pulse(source, intensity, falloff_modifier, log, can_contaminate)
 
 /**
  * radiates a whole zlevel

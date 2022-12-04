@@ -8,15 +8,15 @@
 	effect_type = pick(EFFECT_PARTICLE, EFFECT_ORGANIC)
 
 /datum/artifact_effect/radiate/DoEffectTouch(var/mob/living/user)
-	radiation_pulse(src, radiation_amount, RAD_FALLOFF_ANOMALY)
+	radiation_pulse(holder, radiation_amount, RAD_FALLOFF_ANOMALY)
 	return 1
 
 /datum/artifact_effect/radiate/DoEffectAura()
 	if(holder)
-		radiation_pulse(src, radiation_amount, RAD_FALLOFF_ANOMALY)
+		radiation_pulse(holder, radiation_amount, RAD_FALLOFF_ANOMALY)
 		return 1
 
 /datum/artifact_effect/radiate/DoEffectPulse()
 	if(holder)
-		radiation_pulse(src, radiation_amount, RAD_FALLOFF_ANOMALY)
+		radiation_pulse(holder, radiation_amount, RAD_FALLOFF_ANOMALY)
 		return 1
