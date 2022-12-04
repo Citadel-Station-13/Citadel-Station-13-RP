@@ -7,6 +7,7 @@
 	anchored = TRUE
 	pass_flags_self = ATOM_PASS_GRILLE
 	pressure_resistance = 5*ONE_ATMOSPHERE
+	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
 	layer = TABLE_LAYER
 	explosion_resistance = 1
 	var/health = 10
