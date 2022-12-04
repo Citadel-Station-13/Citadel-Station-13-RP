@@ -17,7 +17,7 @@ GLOBAL_VAR(test_log)
 
 /datum/unit_test
 	/// Abstract type of the test
-	var/abstract_type = /datum/unit_test
+	abstract_type = /datum/unit_test
 
 	//Bit of metadata for the future maybe
 	var/list/procs_tested

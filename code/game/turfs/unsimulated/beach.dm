@@ -27,7 +27,7 @@
 /turf/simulated/floor/outdoors/beach
 	name = "beach"
 	icon = 'icons/misc/beach.dmi'
-	initial_flooring = /decl/flooring/outdoors/beach
+	initial_flooring = /singleton/flooring/outdoors/beach
 
 /turf/simulated/floor/outdoors/beach/sand
 	name = "sand"
@@ -38,7 +38,7 @@
 	desc = "It seems to go on and on.."
 	icon = 'icons/turf/desert.dmi'
 	icon_state = "desert"
-	initial_flooring = /decl/flooring/outdoors/beach/sand/desert
+	initial_flooring = /singleton/flooring/outdoors/beach/sand/desert
 
 /turf/simulated/floor/outdoors/beach/sand/desert/Initialize(mapload)
 	. = ..()
@@ -78,7 +78,7 @@
 /turf/simulated/floor/outdoors/beach/water
 	name = "Water"
 	icon_state = "water"
-	initial_flooring = /decl/flooring/water
+	initial_flooring = /singleton/flooring/water
 
 /turf/simulated/floor/outdoors/beach/water/ocean
 	icon_state = "seadeep"

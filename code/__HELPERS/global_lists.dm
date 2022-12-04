@@ -1,8 +1,5 @@
 //? BEHOLD THE LIST OF GLOBAL LISTS ?//
 
-/// List of all clients whom are admins
-var/list/admins = list()
-
 //Since it didn't really belong in any other category, I'm putting this here
 //This is for procs to replace all the goddamn 'in world's that are chilling around the code
 
@@ -25,8 +22,6 @@ var/global/list/cable_list = list()
 var/global/list/side_effects = list()
 /// List of all mechs. Used by hostile mobs target tracking.
 var/global/list/mechas_list = list()
-/// List of all jobstypes, minus borg and AI
-var/global/list/joblist = list()
 
 #define all_genders_define_list list(MALE,FEMALE,PLURAL,NEUTER,HERM)
 #define all_genders_text_list list("Male","Female","Plural","Neuter","Herm")
@@ -195,13 +190,6 @@ GLOBAL_LIST_EMPTY(mannequins)
 
 		body_marking_styles_list[M.name] = M
 	tim_sort(body_marking_styles_list, /proc/cmp_name_asc, associative = TRUE)
-
-	//List of job. I can't believe this was calculated multiple times per tick!
-	paths = typesof(/datum/job)-/datum/job
-	paths -= exclude_jobs
-	for(var/T in paths)
-		var/datum/job/J = new T
-		joblist[J.title] = J
 
 	//Posters
 	paths = typesof(/datum/poster) - /datum/poster
@@ -378,6 +366,7 @@ var/global/list/fancy_release_sounds = list(
 
 var/global/list/global_vore_egg_types = list(
 		SPECIES_UNATHI 		= UNATHI_EGG,
+		SPECIES_UNATHI_DIGI = UNATHI_EGG,
 		"Tajaran" 		= TAJARAN_EGG,
 		SPECIES_AKULA 		= AKULA_EGG,
 		SPECIES_SKRELL 		= SKRELL_EGG,
@@ -391,6 +380,7 @@ var/global/list/global_vore_egg_types = list(
 
 var/global/list/tf_vore_egg_types = list(
 	SPECIES_UNATHI 		= /obj/structure/closet/secure_closet/egg/unathi,
+	SPECIES_UNATHI_DIGI = /obj/structure/closet/secure_closet/egg/unathi,
 	SPECIES_TAJ 		= /obj/structure/closet/secure_closet/egg/tajaran,
 	SPECIES_AKULA 		= /obj/structure/closet/secure_closet/egg/shark,
 	SPECIES_SKRELL 		= /obj/structure/closet/secure_closet/egg/skrell,

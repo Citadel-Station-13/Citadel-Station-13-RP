@@ -461,14 +461,18 @@
 	cold_protection = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	hoodtype = /obj/item/clothing/head/hood/miner
 	siemens_coefficient = 0.9
-	armor = list(melee = 50, bullet = 5, laser = 10, energy = 0, bomb = 35, bio = 50, rad = 65)
+	armor = list(melee = 50, bullet = 5, laser = 10, energy = 0, bomb = 55, bio = 50, rad = 65)
 	allowed = list(
 		/obj/item/flashlight,
 		/obj/item/material/knife,
 		/obj/item/tank,
 		/obj/item/radio,
 		/obj/item/suit_cooling_unit,
-		/obj/item/pickaxe
+		/obj/item/pickaxe,
+		/obj/item/gun/energy/kinetic_accelerator,
+		/obj/item/kinetic_crusher,
+		/obj/item/resonator,
+		/obj/item/gun/magnetic/matfed
 		)
 
 //The Chippin' In Set -Cap

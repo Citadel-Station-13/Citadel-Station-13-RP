@@ -65,7 +65,7 @@
 	// Updating the sun should be done sparingly.
 	if(old_light_modifier && current_weather.light_modifier != old_light_modifier)
 		our_planet.update_sun()
-	log_debug("[our_planet.name]'s weather is now [new_weather], with a temperature of [temperature]&deg;K ([temperature - T0C]&deg;C | [temperature * 1.8 - 459.67]&deg;F).")
+	log_debug(SPAN_DEBUGINFO("[our_planet.name]'s weather is now [new_weather], with a temperature of [temperature]&deg;K ([temperature - T0C]&deg;C | [temperature * 1.8 - 459.67]&deg;F)."))
 
 
 /datum/weather_holder/process(delta_time)
@@ -128,7 +128,7 @@
 			/// Get a suitable weather pattern to shift to from this one.
 			var/new_weather = get_next_weather(W)
 			forecast += new_weather
-	log_debug("[our_planet.name]'s weather forecast is now '[english_list(forecast, and_text = " then ", final_comma_text = ", ")]'.")
+	log_debug(SPAN_DEBUGINFO("[our_planet.name]'s weather forecast is now '[english_list(forecast, and_text = " then ", final_comma_text = ", ")]'."))
 
 
 /**

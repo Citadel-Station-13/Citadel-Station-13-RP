@@ -312,7 +312,7 @@
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
 /obj/item/clothing/head/tajaran/scarf,
-/obj/item/storage/mre/random,
+/obj/item/storage/single_use/mre/random,
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
 	},
@@ -398,7 +398,7 @@
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
 /obj/item/clothing/head/tajaran/scarf,
-/obj/item/storage/mre/random,
+/obj/item/storage/single_use/mre/random,
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/beige/border,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -516,7 +516,7 @@
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
 /obj/item/clothing/head/tajaran/scarf,
-/obj/item/storage/mre/random,
+/obj/item/storage/single_use/mre/random,
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
 	},
@@ -985,7 +985,7 @@
 /obj/structure/closet,
 /obj/item/clothing/suit/tajaran/furs,
 /obj/item/clothing/head/tajaran/scarf,
-/obj/item/storage/mre/random,
+/obj/item/storage/single_use/mre/random,
 /obj/random/contraband,
 /obj/random/contraband,
 /obj/random/contraband,

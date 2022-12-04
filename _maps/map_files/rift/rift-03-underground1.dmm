@@ -2197,6 +2197,7 @@
 /obj/machinery/door/firedoor/glass/hidden{
 	dir = 1
 	},
+/obj/item/storage/single_use/med_pouch/oxyloss,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/secondary/engineering_hallway)
 "fH" = (
@@ -2930,6 +2931,13 @@
 	},
 /turf/simulated/floor,
 /area/storage/tech)
+"jk" = (
+/mob/living/simple_mob/animal/passive/mouse{
+	desc = "A small rodent, this one is seemingly defying gravity. Oh, wait, no, it just has tiny wings. The beauty of nature.";
+	name = "Elizondo the Flying Mouse"
+	},
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
+/area/rift/surfacebase/underground/under1)
 "jl" = (
 /obj/machinery/door/window{
 	dir = 2;
@@ -8670,6 +8678,8 @@
 /area/engineering/atmos)
 "HB" = (
 /obj/structure/table/wooden_reinforced,
+/obj/item/storage/single_use/med_pouch/burn,
+/obj/item/storage/single_use/med_pouch/oxyloss,
 /turf/simulated/floor/wood,
 /area/rift/station/fighter_bay)
 "HD" = (
@@ -9664,12 +9674,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/engineering)
 "Lw" = (
-/mob/living/simple_mob/animal/passive/mouse{
-	desc = "A small rodent, this one is seemingly defying gravity. Oh, wait, no, it just has tiny wings. The beauty of nature.";
-	flying = 1;
-	name = "Elizondo the Flying Mouse"
-	},
-/turf/simulated/open/lythios43c,
+/obj/structure/fence,
+/turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
 "Ly" = (
 /obj/effect/alien/weeds/node,
@@ -9974,11 +9980,11 @@
 /turf/simulated/floor/plating,
 /area/maintenance/elevator)
 "MQ" = (
-/obj/machinery/drone_fabricator{
-	fabricator_tag = "Engineering"
-	},
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
+	},
+/obj/machinery/drone_fabricator/matriarch{
+	fabricator_tag = "Engineering Matriarch"
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/engineering/drone_fabrication)
@@ -12762,6 +12768,7 @@
 	dir = 8
 	},
 /obj/item/multitool/rift_buffered,
+/obj/item/storage/single_use/med_pouch/burn,
 /turf/simulated/floor/tiled/dark,
 /area/tcommsat/computer)
 "Xg" = (
@@ -14722,7 +14729,7 @@ td
 td
 OA
 td
-Lw
+td
 td
 td
 td
@@ -16619,8 +16626,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+Lw
+Lw
 aa
 aa
 aa
@@ -16813,8 +16820,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+jL
+jL
 aa
 aa
 aa
@@ -17006,11 +17013,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -17200,12 +17207,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jk
+jL
+jL
+jL
 aa
 aa
 aa
@@ -17395,11 +17402,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+jL
+jL
+jL
+jL
+jL
 aa
 aa
 aa
@@ -17590,8 +17597,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+jL
+jL
 aa
 aa
 aa

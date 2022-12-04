@@ -151,9 +151,9 @@
 	path = /obj/item/clothing/head/donator/hberet
 	ckeywhitelist = list("certifiedhyena")
 
-/datum/gear/donator/woolhat
-	name = "Army Garrison Cap"
-	path = /obj/item/clothing/head/donator/woolhat
+/datum/gear/donator/jacksonb
+	name = "Granite Gear Aid Bag"
+	path = /obj/item/storage/backpack/satchel/donator/jacksonbackpack
 	ckeywhitelist = list("vfivesix")
 
 /datum/gear/donator/carcharodon

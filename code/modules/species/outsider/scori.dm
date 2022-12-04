@@ -4,6 +4,7 @@
 	name_plural = SPECIES_SCORI
 	category = SPECIES_CATEGORY_RESTRICTED
 	default_language = LANGUAGE_ID_EVENT_1
+	intrinsic_languages = LANGUAGE_ID_EVENT_1
 	max_additional_languages = 2
 	unarmed_types = list(/datum/unarmed_attack/stomp, /datum/unarmed_attack/kick,  /datum/unarmed_attack/bite)
 	rarity_value = 4

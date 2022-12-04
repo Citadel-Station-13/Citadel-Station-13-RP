@@ -48,6 +48,8 @@ INITIALIZE_IMMEDIATE(/obj/landmark)
  * Called when the round is finished setting up directly from SSticker
  */
 /obj/landmark/proc/OnRoundstart()
+	if(QDELETED(src))
+		CRASH("already deleted")
 	if(delete_on_roundstart)
 		qdel(src)
 
@@ -109,7 +111,6 @@ INITIALIZE_IMMEDIATE(/obj/landmark)
 			lavaland_exit += loc
 			delete_on_roundstart = 1
 			return
-	GLOB.landmarks_list += src
 	return 1
 
 /obj/landmark/observer_spawn

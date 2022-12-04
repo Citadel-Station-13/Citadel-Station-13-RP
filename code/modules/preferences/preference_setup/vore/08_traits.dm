@@ -119,9 +119,10 @@
 	S.blood_color = pref.blood_color
 
 	if(pref.real_species_id() == SPECIES_ID_CUSTOM)
-		//Statistics for this would be nice
-		var/english_traits = english_list(S.traits, and_text = ";", comma_text = ";")
-		log_game("TRAITS [pref.client_ckey]/([character]) with: [english_traits]") //Terrible 'fake' key_name()... but they aren't in the same entity yet
+		if(flags & PREF_COPY_TO_IS_SPAWNING)
+			//Statistics for this would be nice
+			var/english_traits = english_list(S.traits, and_text = ";", comma_text = ";")
+			log_game("TRAITS [pref.client_ckey]/([character]) with: [english_traits]") //Terrible 'fake' key_name()... but they aren't in the same entity yet
 	return TRUE
 
 /datum/category_item/player_setup_item/vore/traits/content(datum/preferences/prefs, mob/user, data)
@@ -133,8 +134,8 @@
 		. += "<b>Icon Base: </b> "
 		. += "<a href='?src=\ref[src];custom_base=1'>[pref.custom_base ? pref.custom_base : SPECIES_HUMAN]</a><br>"
 
-	var/traits_left = pref.max_traits
-	. += "<b>Traits Left:</b> [traits_left]<br>"
+	var/traits_left = pref.max_traits - length(pref.pos_traits) - length(pref.neg_traits)
+	. += "<b>Traits Left:</b> [traits_left > 0? traits_left : "<font color='red'>[traits_left]</font>"]<br>"
 	if(pref.real_species_id() == SPECIES_ID_CUSTOM)
 		var/points_left = pref.starting_trait_points
 		for(var/T in pref.pos_traits + pref.neg_traits)

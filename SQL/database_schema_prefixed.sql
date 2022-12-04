@@ -234,3 +234,15 @@ CREATE TABLE IF NOT EXISTS `rp_connection_log` (
   `computerid` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/* Object Persistence Store */
+/* These are not multi-server synchronization safe! It is expected that you DO NOT share these databases */
+CREATE TABLE IF NOT EXISTS `rp_persist_keyed_strings` (
+  `created` DATETIME NOT NULL DEFAULT Now(),
+  `modified` DATETIME NOT NULL,
+  `key` VARCHAR(64) NOT NULL,
+  `value` MEDIUMTEXT NULL,
+  `group` VARCHAR(64) NOT NULL,
+  `revision` INT(11) NOT NULL,
+  PRIMARY KEY(`key`, `group`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

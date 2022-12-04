@@ -17,12 +17,14 @@ PROCESSING_SUBSYSTEM_DEF(chemistry)
 	initialize_chemical_reagents()
 	return ..()
 
-//Chemical Reactions - Initialises all /datum/chemical_reaction into a list
-// It is filtered into multiple lists within a list.
-// For example:
-// chemical_reaction_list["phoron"] is a list of all reactions relating to phoron
-// Note that entries in the list are NOT duplicated. So if a reaction pertains to
-// more than one chemical it will still only appear in only one of the sublists.
+/**
+ * Chemical Reactions - Initialises all /datum/chemical_reaction into a list
+ * It is filtered into multiple lists within a list.
+ * For example:
+ * - chemical_reaction_list["phoron"] is a list of all reactions relating to phoron
+ * - Note that entries in the list are NOT duplicated. So if a reaction pertains to
+ * - more than one chemical it will still only appear in only one of the sublists.
+ */
 /datum/controller/subsystem/processing/chemistry/proc/initialize_chemical_reactions()
 	var/paths = typesof(/datum/chemical_reaction) - /datum/chemical_reaction
 	chemical_reactions = list()
@@ -36,7 +38,7 @@ PROCESSING_SUBSYSTEM_DEF(chemistry)
 			LAZYINITLIST(chemical_reactions_by_reagent[reagent_id])
 			chemical_reactions_by_reagent[reagent_id] += D
 
-//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
+/// Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
 /datum/controller/subsystem/processing/chemistry/proc/initialize_chemical_reagents()
 	var/paths = typesof(/datum/reagent) - /datum/reagent
 	chemical_reagents = list()

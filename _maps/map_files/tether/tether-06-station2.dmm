@@ -15280,11 +15280,11 @@
 /obj/structure/closet/crate{
 	name = "MRE crate"
 	},
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/menu9,
-/obj/item/storage/mre/menu10,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/menu9,
+/obj/item/storage/single_use/mre/menu10,
 /turf/simulated/floor/tiled/monofloor{
 	dir = 4
 	},

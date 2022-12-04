@@ -72,22 +72,22 @@
 /datum/uplink_item/item/medical/mre
 	name = "Meal, Ready to eat (Random)"
 	item_cost = 5
-	path = /obj/item/storage/mre/random
+	path = /obj/item/storage/single_use/mre/random
 
 /datum/uplink_item/item/medical/protein
 	name = "Meal, Ready to eat (Protein)"
 	item_cost = 5
-	path = /obj/item/storage/mre/menu10
+	path = /obj/item/storage/single_use/mre/menu10
 
 /datum/uplink_item/item/medical/emergency
 	name = "Meal, Ready to eat (Emergency)"
 	item_cost = 5
-	path = /obj/item/storage/mre/menu11
+	path = /obj/item/storage/single_use/mre/menu11
 
 /datum/uplink_item/item/medical/medical
 	name = "Meal, Ready to eat (medical)"
 	item_cost = 5
-	path = /obj/item/storage/mre/menu13
+	path = /obj/item/storage/single_use/mre/menu13
 
 /datum/uplink_item/item/medical/glucose
 	name = "Glucose injector"

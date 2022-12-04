@@ -58,7 +58,7 @@
 	nano_ui_interact(user)
 
 /obj/machinery/computer/transhuman/designer/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	// log_debug("designer.nano_ui_interact([user], force_open = [force_open])")
+	// log_debug(SPAN_DEBUG("designer.nano_ui_interact([user], force_open = [force_open])"))
 	user.set_machine(src)
 
 	var/data[0]
@@ -253,7 +253,7 @@
 /obj/machinery/computer/transhuman/designer/proc/update_preview_mob(var/mob/living/carbon/human/H)
 	ASSERT(!QDELETED(H))
 	ASSERT(!QDELETED(active_br))
-	//log_debug("designer.update_preview_mob([H]) active_br = \ref[active_br]")
+	//log_debug(SPAN_DEBUG("designer.update_preview_mob([H]) active_br = \ref[active_br]"))
 	//Get the DNA and generate a new mob
 	var/datum/dna2/record/R = active_br.mydna
 	H.set_species(R.dna.species) // This needs to happen before anything else becuase it sets some variables.
