@@ -56,7 +56,7 @@
 		return
 	// delta time is in seconds, not deciseconds
 	// strength -= (1 / 2) ** ((delta_time * 0.1) / RAD_HALF_LIFE_DEFAULT
-	strength -= (1 / 2) ** (delta_time / (hl3_release_date * 0.1))
+	strength = strength * ((1 / 2) ** (delta_time / (hl3_release_date * 0.1)))
 	if(strength <= RAD_BACKGROUND_RADIATION)
 		addtimer(CALLBACK(src, .proc/check_dissipate), 5 SECONDS)
 		return PROCESS_KILL
