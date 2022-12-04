@@ -30,11 +30,20 @@
 /obj/item/geiger_counter/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/z_radiation_listener)
+	soundloop = new(src)
+	if(scanning)
+		START_PROCESSING(SSobj, src)
+
+/obj/item/geiger_counter/Destroy()
+	if(scanning)
+		scanning = FALSE
+		STOP_PROCESSING(SSobj, src)
+	return ..()
 
 /obj/item/geiger_counter/process(delta_time)
 	if(!scanning)
 		current_tick_amount = 0
-		return
+		return PROCESS_KILL
 
 	radiation_count -= radiation_count/RAD_MEASURE_SMOOTHING
 	radiation_count += current_tick_amount/RAD_MEASURE_SMOOTHING
@@ -120,6 +129,10 @@
 
 /obj/item/geiger_counter/attack_self(mob/user)
 	scanning = !scanning
+	if(scanning)
+		START_PROCESSING(SSobj, src)
+	else
+		STOP_PROCESSING(SSobj, src)
 	update_appearance()
 	to_chat(user, SPAN_NOTICE("[icon2html(src, user)] You switch [scanning ? "on" : "off"] [src]."))
 

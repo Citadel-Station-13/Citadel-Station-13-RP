@@ -153,6 +153,8 @@
 #define RAD_MINIMUM_CONTAMINATION 200				// How strong does a radiation wave have to be to contaminate objects
 #define RAD_CONTAMINATION_CHANCE_COEFFICIENT 0.005	// Higher means higher strength scaling contamination chance
 #define RAD_CONTAMINATION_STR_COEFFICIENT 0.99		// Higher means higher strength scaling contamination strength
+/// percentage of contamination strength that can be slowly added on an atom, even if coefficient is low
+#define RAD_CONTAMINATION_STACK_COEFFICIENT (2/3)
 #define RAD_CONTAMINATION_MAXIMUM_OBJECT_RATIO 0.1	// max amount of starting intensity that can be imparted to one object at a time
 /// can things contaminate by default?
 #define RAD_CONTAMINATION_DEFAULT TRUE

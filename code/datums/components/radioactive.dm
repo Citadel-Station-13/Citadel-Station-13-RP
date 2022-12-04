@@ -14,7 +14,7 @@
 	/// distance falloff
 	var/falloff = RAD_FALLOFF_CONTAMINATION_NORMAL
 
-/datum/component/radioactive/Initialize(_strength=0, _source, _half_life = RAD_HALF_LIFE_DEFAULT, _can_contaminate = TRUE, falloff)
+/datum/component/radioactive/Initialize(_strength=0, _source, _half_life = RAD_HALF_LIFE_DEFAULT, _can_contaminate = TRUE, falloff, max_stack)
 	strength = _strength
 	source = _source
 	hl3_release_date = _half_life
@@ -74,16 +74,16 @@
 		animate(filter, alpha = 110, time = 15, loop = -1)
 		animate(alpha = 40, time = 25)
 
-/datum/component/radioactive/InheritComponent(datum/component/C, i_am_original, _strength, _source, _half_life, _can_contaminate)
+/datum/component/radioactive/InheritComponent(datum/component/C, i_am_original, _strength, _source, _half_life, _can_contaminate, max_stack)
 	if(!i_am_original)
 		return
 	if(!hl3_release_date) // Permanently radioactive things don't get to grow stronger
 		return
 	if(C)
 		var/datum/component/radioactive/other = C
-		strength = max(strength, other.strength)
+		strength = max(strength, other.strength, min(strength + other.strength, max_stack))
 	else
-		strength = max(strength, _strength)
+		strength = max(strength, _strength, min(strength + _strength, max_stack))
 
 /datum/component/radioactive/proc/rad_examine(datum/source, mob/user, list/examine_list)
 	var/atom/master = parent
