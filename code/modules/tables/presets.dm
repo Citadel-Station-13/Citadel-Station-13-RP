@@ -1,4 +1,6 @@
-//TABLE PRESETS
+// TODO: Redo how we do this stuff. This is horrible. @Zandario
+
+/// TABLE PRESETS
 /obj/structure/table/standard
 	icon_state = "plain_preview"
 	color = "#EEEEEE"
@@ -45,6 +47,9 @@
 	icon_state = "reinf_preview"
 	color = "#824B28"
 
+	smoothing_groups = list(SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
+	canSmoothWith = list(SMOOTH_GROUP_WOOD_TABLES)
+
 /obj/structure/table/wooden_reinforced/Initialize(mapload)
 	material = get_material_by_name("wood")
 	reinforced = get_material_by_name(MAT_STEEL)
@@ -54,6 +59,9 @@
 	icon_state = "plain_preview"
 	color = "#824B28"
 
+	smoothing_groups = list(SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
+	canSmoothWith = list(SMOOTH_GROUP_WOOD_TABLES)
+
 /obj/structure/table/woodentable/Initialize(mapload)
 	material = get_material_by_name("wood")
 	return ..()
@@ -61,6 +69,9 @@
 /obj/structure/table/sifwoodentable
 	icon_state = "plain_preview"
 	color = "#824B28"
+
+	smoothing_groups = list(SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
+	canSmoothWith = list(SMOOTH_GROUP_WOOD_TABLES)
 
 /obj/structure/table/sifwoodentable/Initialize(mapload)
 	material = get_material_by_name("alien wood")
@@ -70,6 +81,9 @@
 	icon_state = "reinf_preview"
 	color = "#824B28"
 
+	smoothing_groups = list(SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
+	canSmoothWith = list(SMOOTH_GROUP_WOOD_TABLES)
+
 /obj/structure/table/sifwooden_reinforced/Initialize(mapload)
 	material = get_material_by_name("alien wood")
 	reinforced = get_material_by_name(MAT_STEEL)
@@ -78,6 +92,9 @@
 /obj/structure/table/hardwoodtable
 	icon_state = "stone_preview"
 	color = "#42291a"
+
+	smoothing_groups = list(SMOOTH_GROUP_WOOD_TABLES) //Don't smooth with SMOOTH_GROUP_TABLES
+	canSmoothWith = list(SMOOTH_GROUP_WOOD_TABLES)
 
 /obj/structure/table/hardwoodtable/Initialize(mapload)
 	material = get_material_by_name("hardwood")
@@ -95,6 +112,9 @@
 	icon_state = "plain_preview"
 	color = "#00E1FF"
 	alpha = 77 // 0.3 * 255
+
+	smoothing_groups = list(SMOOTH_GROUP_GLASS_TABLES)
+	canSmoothWith = list(SMOOTH_GROUP_GLASS_TABLES)
 
 /obj/structure/table/glass/Initialize(mapload)
 	material = get_material_by_name("glass")

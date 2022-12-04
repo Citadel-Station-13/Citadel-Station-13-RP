@@ -5,6 +5,11 @@
 	movement_cost = 2
 	initial_flooring = /singleton/flooring/snow
 	baseturfs = /turf/simulated/floor/outdoors/dirt
+
+	// smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
+	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_FLOOR_SNOW)
+	canSmoothWith = list(SMOOTH_GROUP_FLOOR_SNOW)
+
 	var/list/crossed_dirs = list()
 
 /turf/simulated/floor/outdoors/snow/Entered(atom/A)

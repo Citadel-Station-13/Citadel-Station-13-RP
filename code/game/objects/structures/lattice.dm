@@ -8,6 +8,10 @@
 	w_class = ITEMSIZE_NORMAL
 	plane = PLATING_PLANE
 
+	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_LATTICE)
+	canSmoothWith = list(SMOOTH_GROUP_LATTICE, SMOOTH_GROUP_OPEN_FLOOR, SMOOTH_GROUP_WALLS)
+
 /obj/structure/lattice/Initialize(mapload)
 	. = ..()
 
