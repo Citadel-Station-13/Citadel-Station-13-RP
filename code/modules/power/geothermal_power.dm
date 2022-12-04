@@ -70,7 +70,7 @@
 
 /obj/machinery/power/geothermal_controller/attackby(obj/item/W, mob/user)
 	if(W.is_multitool())
-		use_power = USE_POWER_IDLE
+		update_use_power(USE_POWER_IDLE)
 		to_chat(user, "You set the [src.name] up to siphon geothermal power.")
 
 /obj/machinery/power/geothermal_collector
