@@ -674,7 +674,9 @@
 /turf/simulated/open/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
 "hb" = (
-/obj/machinery/door/airlock/maintenance/engi,
+/obj/machinery/door/airlock/maintenance/engi{
+	req_one_access = null
+	},
 /obj/structure/cable/white{
 	icon_state = "1-2"
 	},
@@ -4199,7 +4201,9 @@
 /obj/structure/cable/white{
 	icon_state = "1-2"
 	},
-/obj/machinery/door/airlock/maintenance/engi,
+/obj/machinery/door/airlock/maintenance/engi{
+	req_one_access = null
+	},
 /turf/simulated/floor,
 /area/rift/geothermal)
 "SF" = (

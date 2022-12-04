@@ -8688,7 +8688,9 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenoarch_storage)
 "Qy" = (
-/obj/machinery/door/airlock/maintenance/engi,
+/obj/machinery/door/airlock/maintenance/engi{
+	req_one_access = null
+	},
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
