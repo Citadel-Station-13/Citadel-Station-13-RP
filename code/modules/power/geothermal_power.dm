@@ -15,8 +15,8 @@
 	icon_state = "controller_off"
 
 	dir = NORTH
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	use_power = USE_POWER_OFF
 	idle_power_usage = 0
 	active_power_usage = 0
@@ -38,7 +38,7 @@
 			add_avail(power_total)
 
 
-/obj/machinery/power/geothermal_controller/update_icon()
+/obj/machinery/power/geothermal_controller/update_icon_state()
 	switch(power_total)
 		if(50 to 500 KILOWATTS)
 			icon_state = "controller_low"
@@ -52,6 +52,7 @@
 			icon_state = "controller_idle"
 	if(use_power == USE_POWER_OFF)
 		icon_state = "controller_off"
+	return ..()
 
 
 /obj/machinery/power/geothermal_controller/Initialize(mapload)
@@ -79,8 +80,8 @@
 	icon = 'icons/obj/machines/power/geothermal.dmi'
 	icon_state = "pipe"
 
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	use_power = USE_POWER_OFF
 	idle_power_usage = 0
 	active_power_usage = 0
@@ -93,7 +94,7 @@
 	var/turf/simulated/T = src.loc
 	if(istype(T))
 		local_special_temp = T.special_temperature
-		power_provided = max(0, local_special_temp - 273) / 350
+		power_provided = max(0, local_special_temp - 273) / 400
 		if(local_special_temp > 500)
 			var/icon_temperature = local_special_temp
 
