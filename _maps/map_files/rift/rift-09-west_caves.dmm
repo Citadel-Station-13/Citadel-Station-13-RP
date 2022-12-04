@@ -5,15 +5,6 @@
 	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
-"ak" = (
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/simulated/floor,
-/area/rift/geothermal)
 "ao" = (
 /obj/structure/railing{
 	dir = 4
@@ -121,6 +112,13 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/outpost/mining_main/outpost)
+"bh" = (
+/obj/spawner/window/full/firelocks,
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/rift/geothermal)
 "bk" = (
 /obj/structure/ore_box,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -186,6 +184,7 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
+/obj/machinery/portable_atmospherics/powered/scrubber,
 /turf/simulated/floor/tiled,
 /area/rift/geothermal)
 "cl" = (
@@ -439,6 +438,9 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/outpost/mining_main/outpost/washrooms)
+"eM" = (
+/turf/simulated/floor,
+/area/rift/geothermal)
 "eQ" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -621,6 +623,13 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/outpost/mining_main/outpost)
+"gD" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/space_heater,
+/turf/simulated/floor/tiled,
+/area/rift/geothermal)
 "gG" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 1
@@ -1261,6 +1270,15 @@
 	},
 /turf/simulated/floor/tiled/monotile/lythios43c,
 /area/rift/facility/interior/bathrooms)
+"nO" = (
+/obj/structure/cable/white{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/rift/geothermal)
 "nU" = (
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "N-S"
@@ -1341,7 +1359,7 @@
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost)
 "oy" = (
-/obj/machinery/portable_atmospherics/powered/scrubber,
+/obj/structure/closet/secure_closet/personal,
 /turf/simulated/floor/tiled,
 /area/rift/geothermal)
 "oz" = (
@@ -1401,12 +1419,22 @@
 /obj/effect/mist,
 /obj/machinery/alarm{
 	dir = 4;
-	pixel_x = -23
+	pixel_x = -23;
+	target_temperature = 303.15
 	},
 /turf/simulated/floor/wood,
 /area/rift/geothermal/sauna)
 "pt" = (
 /turf/simulated/floor/outdoors/lava/indoors/geothermal,
+/area/rift/geothermal)
+"px" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor,
 /area/rift/geothermal)
 "pA" = (
 /obj/structure/catwalk/plank,
@@ -1981,13 +2009,6 @@
 "vI" = (
 /turf/simulated/wall,
 /area/rift/facility/interior/command)
-"vL" = (
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
-/obj/machinery/door/airlock/maintenance/engi,
-/turf/simulated/floor,
-/area/rift/geothermal)
 "vV" = (
 /turf/simulated/wall,
 /area/outpost/mining_main/outpost/washrooms)
@@ -2272,12 +2293,15 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/workroom)
 "yt" = (
-/obj/machinery/door/airlock,
+/obj/machinery/door/airlock{
+	name = "Thermal Bath"
+	},
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
+/obj/structure/atmospheric_retention_field,
 /turf/simulated/floor/wood,
-/area/rift/geothermal)
+/area/rift/geothermal/sauna)
 "yv" = (
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/exterior/mineshaft)
@@ -2681,15 +2705,6 @@
 "CB" = (
 /turf/simulated/floor/tiled,
 /area/rift/geothermal)
-"CC" = (
-/obj/structure/cable/white{
-	icon_state = "0-2"
-	},
-/obj/machinery/power/terminal{
-	dir = 4
-	},
-/turf/simulated/floor,
-/area/rift/geothermal)
 "CG" = (
 /obj/random/obstruction,
 /obj/effect/floor_decal/techfloor/orange,
@@ -2989,6 +3004,12 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/medical)
+"EP" = (
+/obj/structure/cable/white{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled,
+/area/rift/geothermal)
 "ET" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -3281,9 +3302,6 @@
 "Iq" = (
 /turf/simulated/wall,
 /area/rnd/outpost/underground)
-"Ix" = (
-/turf/simulated/floor,
-/area/rift/geothermal)
 "IC" = (
 /obj/machinery/power/breakerbox/activated{
 	RCon_tag = "Mining Outpost Substation Bypass"
@@ -3396,6 +3414,12 @@
 /obj/structure/barricade,
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/outpost/underground)
+"JQ" = (
+/obj/structure/cable/white{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor,
+/area/rift/geothermal)
 "JT" = (
 /turf/simulated/open/lythios43c,
 /area/rift/exterior/bunker/lower)
@@ -3615,13 +3639,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
-"Mr" = (
-/obj/spawner/window/full/firelocks,
-/obj/structure/cable/white{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor,
-/area/rift/geothermal)
 "Mt" = (
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "E-W-Pass"
@@ -3649,12 +3666,6 @@
 /obj/item/gun/energy/kinetic_accelerator,
 /turf/simulated/floor/tiled/steel_grid,
 /area/outpost/mining_main/outpost/storage)
-"MX" = (
-/obj/structure/cable/white{
-	icon_state = "2-8"
-	},
-/turf/simulated/floor,
-/area/rift/geothermal)
 "Nc" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -4084,12 +4095,6 @@
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
-"Rr" = (
-/obj/structure/cable/white{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/geothermal)
 "Rs" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -4190,6 +4195,13 @@
 "SA" = (
 /turf/simulated/mineral/ignore_cavegen/geothermal,
 /area/rift/geothermal/sauna)
+"SE" = (
+/obj/structure/cable/white{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/maintenance/engi,
+/turf/simulated/floor,
+/area/rift/geothermal)
 "SF" = (
 /obj/structure/cable/white{
 	icon_state = "2-4"
@@ -4277,12 +4289,6 @@
 /obj/structure/cable/green,
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
-"Tj" = (
-/obj/structure/cable/white{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/tiled,
-/area/rift/geothermal)
 "Ts" = (
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
@@ -4331,17 +4337,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/outpost/mining_main/outpost)
-"Uh" = (
-/obj/structure/cable/white{
-	icon_state = "0-4"
-	},
-/obj/machinery/power/smes/buildable{
-	cur_coils = 3;
-	input_level_max = 750;
-	output_level_max = 750
-	},
-/turf/simulated/floor,
-/area/rift/geothermal)
 "Uj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -4934,6 +4929,17 @@
 /obj/structure/window/phoronbasic,
 /turf/simulated/floor/tiled,
 /area/rift/geothermal)
+"Zm" = (
+/obj/structure/cable/white{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/smes/buildable{
+	cur_coils = 3;
+	input_level_max = 750;
+	output_level_max = 750
+	},
+/turf/simulated/floor,
+/area/rift/geothermal)
 "Zp" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -4975,6 +4981,12 @@
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/lava/indoors/geothermal,
+/area/rift/geothermal)
+"ZS" = (
+/obj/structure/cable/white{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled,
 /area/rift/geothermal)
 "ZT" = (
 /turf/unsimulated/mineral/lythios43c,
@@ -29135,11 +29147,11 @@ ux
 ux
 cU
 EI
-CC
+nO
 Yv
-vL
+SE
 xg
-Tj
+EP
 EI
 hl
 ZQ
@@ -29329,8 +29341,8 @@ ux
 ux
 cU
 EI
-Uh
-Ix
+Zm
+eM
 EI
 CB
 CB
@@ -29523,11 +29535,11 @@ ux
 ux
 cU
 EI
-MX
-ak
-Mr
+JQ
+px
+bh
 xg
-Rr
+ZS
 EI
 Vm
 Vm
@@ -30302,7 +30314,7 @@ cU
 cU
 cU
 EI
-JG
+gD
 bU
 CB
 CB
