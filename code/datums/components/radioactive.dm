@@ -14,7 +14,7 @@
 	/// distance falloff
 	var/falloff = RAD_FALLOFF_CONTAMINATION_NORMAL
 
-/datum/component/radioactive/Initialize(_strength=0, _source, _half_life = RAD_HALF_LIFE_DEFAULT, _can_contaminate = TRUE, falloff)
+/datum/component/radioactive/Initialize(_strength=0, _source, _half_life = RAD_HALF_LIFE_DEFAULT, _can_contaminate = TRUE, falloff, max_stack)
 	strength = _strength
 	source = _source
 	hl3_release_date = _half_life
@@ -36,7 +36,7 @@
 	//Let's make er glow
 	//This relies on parent not being a turf or something. IF YOU CHANGE THAT, CHANGE THIS
 	var/atom/movable/master = parent
-	master.add_filter("rad_glow", 2, list("type" = "outline", "color" = "#39ff1430", "size" = 2))
+	master.add_filter("rad_glow", 2, list("type" = "outline", "color" = "#14fff714", "size" = 1))
 	addtimer(CALLBACK(src, .proc/glow_loop, master), rand(1,19))//Things should look uneven
 
 	START_PROCESSING(SSradiation, src)
@@ -71,19 +71,19 @@
 /datum/component/radioactive/proc/glow_loop(atom/movable/master)
 	var/filter = master.get_filter("rad_glow")
 	if(filter)
-		animate(filter, alpha = 110, time = 15, loop = -1)
-		animate(alpha = 40, time = 25)
+		animate(filter, alpha = 75, time = 15, loop = -1)
+		animate(alpha = 25, time = 25)
 
-/datum/component/radioactive/InheritComponent(datum/component/C, i_am_original, _strength, _source, _half_life, _can_contaminate)
+/datum/component/radioactive/InheritComponent(datum/component/C, i_am_original, _strength, _source, _half_life, _can_contaminate, max_stack)
 	if(!i_am_original)
 		return
 	if(!hl3_release_date) // Permanently radioactive things don't get to grow stronger
 		return
 	if(C)
 		var/datum/component/radioactive/other = C
-		strength = max(strength, other.strength)
+		strength = max(strength, other.strength, min(max_stack, other.strength + strength))
 	else
-		strength = max(strength, _strength)
+		strength = max(strength, _strength, min(max_stack, _strength + strength))
 
 /datum/component/radioactive/proc/rad_examine(datum/source, mob/user, list/examine_list)
 	var/atom/master = parent
