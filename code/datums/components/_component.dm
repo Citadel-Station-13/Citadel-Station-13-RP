@@ -346,7 +346,7 @@
 	// if(initial(c_type.dupe_mode) == COMPONENT_DUPE_ALLOWED || initial(c_type.dupe_mode) == COMPONENT_DUPE_SELECTIVE)
 	// 	stack_trace("GetComponent was called to get a component of which multiple copies could be on an object. This can easily break and should be changed. Type: \[[c_type]\]")
 	. = datum_components?[c_type]
-	return length(.) && .[1]
+	return . && (length(.) ? .[1] : .)
 
 // The type arg is casted so initial works, you shouldn't be passing a real instance into this
 /**
