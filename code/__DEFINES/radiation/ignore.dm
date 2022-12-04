@@ -9,6 +9,7 @@ GLOBAL_REAL_MANAGED(radiation_full_ignore, /list) = __radiation_full_ignore()
 		/atom/movable/lighting_object,
 		/obj/item/projectile,
 		/obj/effect,
+		/obj/mob_spawner,
 	))
 
 GLOBAL_REAL_MANAGED(radiation_infect_ignore, /list) = __radiation_infect_ignore()

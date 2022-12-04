@@ -28,7 +28,7 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 
 /**
  * todo: comment
- */image.png
+ */
 /datum/controller/subsystem/processing/radiation/proc/radiation_pulse(atom/source, intensity, falloff_modifier, log, can_contaminate)
 	if(!can_fire)	// we don't care
 		return FALSE

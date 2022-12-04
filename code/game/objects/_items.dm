@@ -2,6 +2,8 @@
 	name = "item"
 	icon = 'icons/obj/items.dmi'
 	w_class = ITEMSIZE_NORMAL
+	// todo: better way, for now, block all rad contamination to interior
+	rad_flags = RAD_BLOCK_CONTENTS
 
 	/// flags relating to items - see [code/__DEFINES/_flags/item_flags.dm]
 	var/item_flags = NONE
