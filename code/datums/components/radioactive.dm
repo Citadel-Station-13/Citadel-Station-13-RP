@@ -77,13 +77,23 @@
 /datum/component/radioactive/InheritComponent(datum/component/C, i_am_original, _strength, _source, _half_life, _can_contaminate)
 	if(!i_am_original)
 		return
-	if(!hl3_release_date) // Permanently radioactive things don't get to grow stronger
-		return
 	if(C)
 		var/datum/component/radioactive/other = C
-		strength = max(strength, other.strength)
+		constructive_interference(other.strength)
 	else
-		strength = max(strength, _strength)
+		constructive_interference(_strength)
+
+/**
+ * returns amount added
+ */
+/datum/component/radioactive/proc/constructive_interference(str)
+	// permanent ones shouldn't
+	if(!hl3_release_date)
+		return 0
+	if(strength > str)
+		return 0
+	. = str - strength
+	strength = str
 
 /datum/component/radioactive/proc/rad_examine(datum/source, mob/user, list/examine_list)
 	var/atom/master = parent

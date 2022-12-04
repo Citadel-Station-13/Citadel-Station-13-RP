@@ -341,14 +341,12 @@
  */
 /datum/proc/GetComponent(datum/component/c_type)
 	RETURN_TYPE(c_type)
-	if(initial(c_type.dupe_mode) == COMPONENT_DUPE_ALLOWED || initial(c_type.dupe_mode) == COMPONENT_DUPE_SELECTIVE)
-		stack_trace("GetComponent was called to get a component of which multiple copies could be on an object. This can easily break and should be changed. Type: \[[c_type]\]")
-	var/list/dc = datum_components
-	if(!dc)
-		return null
-	. = dc[c_type]
-	if(length(.))
-		return .[1]
+	//? Don't use the cycles to check; assume they aren't going to screw up.
+	//? If you're screwing up and you're reading this, please reevaluate why you're using GetComponent.
+	// if(initial(c_type.dupe_mode) == COMPONENT_DUPE_ALLOWED || initial(c_type.dupe_mode) == COMPONENT_DUPE_SELECTIVE)
+	// 	stack_trace("GetComponent was called to get a component of which multiple copies could be on an object. This can easily break and should be changed. Type: \[[c_type]\]")
+	. = datum_components?[c_type]
+	return length(.) && .[1]
 
 // The type arg is casted so initial works, you shouldn't be passing a real instance into this
 /**

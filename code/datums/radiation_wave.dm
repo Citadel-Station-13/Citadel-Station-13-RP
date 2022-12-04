@@ -168,5 +168,9 @@
 	if(!cannot_contam && remaining_contam && length(contaminating))
 		var/contam_strength = min(remaining_contam / length(contaminating), starting_intensity * RAD_CONTAMINATION_MAXIMUM_OBJECT_RATIO)
 		for(var/atom/A as anything in contaminating)
-			A.AddComponent(/datum/component/radioactive, contam_strength, source)
-		. = contam_strength * length(contaminating)
+			var/datum/component/radioactive/R = A.GetComponent(/datum/component/radioactive)
+			if(!R)
+				A.AddComponent(/datum/component/radioactive, contam_strength, source)
+				. += contam_strength
+			else
+				. += R.constructive_interference(contam_strength)

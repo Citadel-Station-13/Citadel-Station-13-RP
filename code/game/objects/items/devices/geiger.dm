@@ -30,7 +30,7 @@
 /obj/item/geiger_counter/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/z_radiation_listener)
-	soundloop = new(src)
+	soundloop = new(list(src))
 	if(scanning)
 		START_PROCESSING(SSobj, src)
 
