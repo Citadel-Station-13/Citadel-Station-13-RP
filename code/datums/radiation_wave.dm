@@ -32,24 +32,32 @@
 			if(starting.rad_wave_north)
 				starting.rad_wave_north.starting_intensity += intensity
 				starting.rad_wave_north.current_intensity += intensity
+				qdel(src)
+				return
 			else
 				starting.rad_wave_north = src
 		if(SOUTH)
 			if(starting.rad_wave_south)
 				starting.rad_wave_south.starting_intensity += intensity
 				starting.rad_wave_south.current_intensity += intensity
+				qdel(src)
+				return
 			else
 				starting.rad_wave_south = src
 		if(EAST)
 			if(starting.rad_wave_east)
 				starting.rad_wave_east.starting_intensity += intensity
 				starting.rad_wave_east.current_intensity += intensity
+				qdel(src)
+				return
 			else
 				starting.rad_wave_east = src
 		if(WEST)
 			if(starting.rad_wave_west)
 				starting.rad_wave_west.starting_intensity += intensity
 				starting.rad_wave_west.current_intensity += intensity
+				qdel(src)
+				return
 			else
 				starting.rad_wave_west = src
 	src.source = source
@@ -68,10 +76,6 @@
 	return QDEL_HINT_IWILLGC
 
 /datum/radiation_wave/process(delta_time)
-	current = get_step(current, dir)
-	if(!current)
-		qdel(src)
-		return
 	if(!steps)
 		switch(dir)
 			if(NORTH)
@@ -82,6 +86,10 @@
 				current.rad_wave_east = null
 			if(WEST)
 				current.rad_wave_west = null
+	current = get_step(current, dir)
+	if(!current)
+		qdel(src)
+		return
 	++steps
 	var/list/atom/atoms = atoms_within_line()
 	var/effective_steps = max(falloff_modifier * steps, 1)
