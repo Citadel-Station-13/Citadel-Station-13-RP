@@ -32,7 +32,7 @@
 			if(starting.rad_wave_north)
 				starting.rad_wave_north.starting_intensity += intensity
 				starting.rad_wave_north.current_intensity += intensity
-				starting.rad_wave_north.remaining_contam += intensity
+				starting.rad_wave_north.remaining_contam += intensity * RAD_CONTAMINATION_STR_COEFFICIENT
 				qdel(src)
 				return
 			else
@@ -41,7 +41,7 @@
 			if(starting.rad_wave_south)
 				starting.rad_wave_south.starting_intensity += intensity
 				starting.rad_wave_south.current_intensity += intensity
-				starting.rad_wave_north.remaining_contam += intensity
+				starting.rad_wave_north.remaining_contam += intensity * RAD_CONTAMINATION_STR_COEFFICIENT
 				qdel(src)
 				return
 			else
@@ -50,7 +50,7 @@
 			if(starting.rad_wave_east)
 				starting.rad_wave_east.starting_intensity += intensity
 				starting.rad_wave_east.current_intensity += intensity
-				starting.rad_wave_north.remaining_contam += intensity
+				starting.rad_wave_north.remaining_contam += intensity * RAD_CONTAMINATION_STR_COEFFICIENT
 				qdel(src)
 				return
 			else
@@ -59,7 +59,7 @@
 			if(starting.rad_wave_west)
 				starting.rad_wave_west.starting_intensity += intensity
 				starting.rad_wave_west.current_intensity += intensity
-				starting.rad_wave_north.remaining_contam += intensity
+				starting.rad_wave_north.remaining_contam += intensity * RAD_CONTAMINATION_STR_COEFFICIENT
 				qdel(src)
 				return
 			else
@@ -67,7 +67,8 @@
 	src.source = source
 	src.current = starting
 	src.dir = dir
-	src.starting_intensity = src.current_intensity = src.remaining_contam = intensity
+	src.starting_intensity = src.current_intensity = intensity
+	src.remaining_contam = intensity * RAD_CONTAMINATION_STR_COEFFICIENT
 	src.falloff_modifier = falloff_modifier
 	src.can_contaminate = can_contaminate
 	hit_mobs = list()
@@ -164,9 +165,8 @@
 			continue
 		contaminating += A
 	. = 0
-	var/stack_to = strength * RAD_CONTAMINATION_STACK_COEFFICIENT
-	if(!cannot_contam && length(contaminating))
+	if(!cannot_contam && remaining_contam && length(contaminating))
 		var/contam_strength = min(remaining_contam / length(contaminating), starting_intensity * RAD_CONTAMINATION_MAXIMUM_OBJECT_RATIO)
 		for(var/atom/A as anything in contaminating)
-			A.AddComponent(/datum/component/radioactive, contam_strength, source, max_stack = stack_to)
+			A.AddComponent(/datum/component/radioactive, contam_strength, source)
 		. = contam_strength * length(contaminating)
