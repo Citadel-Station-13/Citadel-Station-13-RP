@@ -12,16 +12,11 @@
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "ah" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
+/obj/machinery/light{
+	dir = 4
 	},
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/lythios43c,
-/area/rift/surfacebase/outside/west)
+/turf/simulated/floor/tiled,
+/area/rift/geothermal)
 "al" = (
 /obj/machinery/atmospherics/component/unary/heater{
 	dir = 1;
@@ -520,16 +515,12 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "cF" = (
+/obj/spawner/window/reinforced/full,
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /turf/simulated/floor,
-/area/tether/outpost/solars_shed)
+/area/rift/geothermal)
 "cG" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 10
@@ -820,15 +811,6 @@
 /obj/machinery/vending/snack,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
-"dZ" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
 "ea" = (
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/anomaly_lab/testing)
@@ -862,14 +844,8 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
 "ek" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
+/turf/simulated/wall,
+/area/rift/geothermal/balcony)
 "el" = (
 /obj/machinery/atmospherics/pipe/manifold/visible,
 /obj/machinery/meter,
@@ -917,6 +893,12 @@
 "er" = (
 /turf/simulated/wall/r_wall,
 /area/rnd/outpost/anomaly_lab/airlock)
+"eu" = (
+/obj/structure/bed/chair/sofa/red/left{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/rift/geothermal/balcony)
 "ev" = (
 /obj/structure/table/marble,
 /obj/random/toy,
@@ -1142,14 +1124,14 @@
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/facility/exterior)
 "fA" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
+/obj/structure/cable/white{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
+/obj/structure/cable/white{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled,
+/area/rift/geothermal)
 "fD" = (
 /obj/effect/floor_decal/rust/mono_rusted3,
 /obj/structure/table/standard,
@@ -1537,6 +1519,9 @@
 "hj" = (
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/exterior/checkpoint/south)
+"hn" = (
+/turf/simulated/floor/outdoors/rocks/caves/geothermal,
+/area/rift/geothermal)
 "ho" = (
 /obj/structure/fence{
 	dir = 4
@@ -1882,17 +1867,20 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
 "iR" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
+/obj/structure/railing{
+	dir = 4
 	},
-/obj/structure/cable/yellow{
+/obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
-/obj/structure/cable/yellow{
+/obj/structure/cable/heavyduty{
 	icon_state = "2-8"
 	},
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/simulated/floor/lythios43c,
-/area/tether/outpost/solars_outside)
+/area/rift/surfacebase/outside/west)
 "iS" = (
 /obj/effect/floor_decal/spline/fancy{
 	dir = 8
@@ -1965,15 +1953,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/west)
-"jl" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 9
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
 "jm" = (
 /turf/simulated/wall,
 /area/rift/facility/interior/elevator)
@@ -2032,15 +2011,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
-"jw" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 1
-	},
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
 "jx" = (
 /obj/effect/floor_decal/rust/mono_rusted3,
 /obj/structure/closet/lasertag/red,
@@ -2168,9 +2138,6 @@
 /obj/effect/overlay/snow/airlock,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/interior/surface)
-"kh" = (
-/turf/simulated/floor,
-/area/tether/outpost/solars_shed)
 "kl" = (
 /obj/machinery/radiocarbon_spectrometer,
 /obj/structure/window/reinforced{
@@ -2238,16 +2205,12 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/heating)
 "ku" = (
-/obj/machinery/power/apc{
-	dir = 4;
-	name = "east bump";
-	pixel_x = 28
+/obj/structure/cable/heavyduty{
+	icon_state = "0-4"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-2"
-	},
-/turf/simulated/floor/lythios43c,
-/area/tether/outpost/solars_outside)
+/obj/structure/cable/white,
+/turf/simulated/floor,
+/area/rift/geothermal)
 "ky" = (
 /obj/structure/bed,
 /turf/simulated/floor/wood,
@@ -2312,16 +2275,8 @@
 /turf/simulated/floor,
 /area/maintenance/substation/outpost)
 "kQ" = (
-/obj/effect/floor_decal/rust,
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/cable/heavyduty{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/lythios43c,
-/area/tether/outpost/solars_outside)
+/turf/simulated/floor/tiled,
+/area/rift/geothermal/balcony)
 "kS" = (
 /obj/structure/closet/excavation,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -2713,10 +2668,15 @@
 /turf/simulated/floor/plating,
 /area/rift/exterior/nuketown/interior)
 "mW" = (
-/obj/effect/floor_decal/industrial/warning/dust,
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
 "mX" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 6
@@ -2802,12 +2762,12 @@
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/west)
 "nl" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 1
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 22
 	},
-/obj/machinery/camera/network/engineering,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
+/turf/simulated/floor/tiled,
+/area/rift/geothermal/balcony)
 "nn" = (
 /turf/simulated/wall,
 /area/rnd/outpost/xenoarch_storage)
@@ -3020,17 +2980,12 @@
 /turf/simulated/wall/r_wall,
 /area/rift/surfacebase/outside/west)
 "ou" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4
+/obj/structure/catwalk,
+/obj/machinery/light{
+	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
+/turf/simulated/floor,
+/area/rift/geothermal)
 "ov" = (
 /obj/structure/window/wooden{
 	dir = 8
@@ -3072,15 +3027,12 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "oE" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 22
 	},
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing,
-/turf/simulated/floor/lythios43c,
-/area/rift/surfacebase/outside/west)
+/turf/simulated/floor/tiled,
+/area/rift/geothermal)
 "oG" = (
 /obj/structure/bonfire/permanent,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
@@ -3130,17 +3082,12 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/facility/exterior)
 "oY" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4
+/obj/spawner/window/reinforced/full,
+/obj/structure/cable/white{
+	icon_state = "4-8"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
+/turf/simulated/floor,
+/area/rift/geothermal/balcony)
 "pd" = (
 /obj/structure/anomaly_container,
 /turf/simulated/floor/tiled/dark,
@@ -3454,14 +3401,9 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
 "qo" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 6
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
+/obj/machinery/light/small,
+/turf/simulated/floor,
+/area/rift/geothermal)
 "qs" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 9
@@ -3616,12 +3558,8 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "rd" = (
-/obj/machinery/power/solar,
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
+/turf/simulated/floor/tiled,
+/area/rift/geothermal)
 "rf" = (
 /obj/structure/bed/chair/shuttle{
 	dir = 1
@@ -3901,15 +3839,6 @@
 "sD" = (
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/rift/surfacebase/outside/west)
-"sE" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 8
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
 "sH" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -3946,9 +3875,12 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
 "sL" = (
-/obj/machinery/door/airlock/multi_tile/metal/mait,
-/turf/simulated/floor,
-/area/tether/outpost/solars_shed)
+/obj/structure/cable/white{
+	icon_state = "32-4"
+	},
+/obj/structure/lattice,
+/turf/simulated/open,
+/area/rift/geothermal)
 "sN" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -4075,15 +4007,9 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "tl" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/obj/structure/closet/crate/solar,
+/obj/structure/catwalk,
 /turf/simulated/floor,
-/area/tether/outpost/solars_shed)
+/area/rift/geothermal)
 "to" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -4182,13 +4108,6 @@
 "tI" = (
 /turf/simulated/open/lythios43c,
 /area/rift/facility/interior/surface)
-"tJ" = (
-/obj/effect/floor_decal/industrial/warning/dust/corner,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
 "tK" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 4
@@ -4327,26 +4246,6 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/simulated/floor,
 /area/rnd/outpost/storage)
-"uq" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 1
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
-"us" = (
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
-/obj/structure/cable/yellow,
-/obj/machinery/power/solar_control{
-	dir = 1
-	},
-/turf/simulated/floor,
-/area/tether/outpost/solars_shed)
-"ut" = (
-/obj/effect/floor_decal/industrial/warning/dust,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
 "uu" = (
 /obj/structure/window/wooden{
 	dir = 4
@@ -4360,18 +4259,6 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/exterior/nuketown)
-"uw" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
 "uz" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -4386,12 +4273,11 @@
 /turf/simulated/floor,
 /area/rnd/outpost/storage)
 "uB" = (
-/obj/item/stool,
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
+/obj/machinery/light/small{
+	dir = 8
 	},
-/turf/simulated/floor,
-/area/tether/outpost/solars_shed)
+/turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/geothermal)
 "uC" = (
 /obj/structure/railing{
 	dir = 8
@@ -5290,17 +5176,20 @@
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
 "yr" = (
-/obj/effect/floor_decal/industrial/warning/dust,
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/rift/surfacebase/outside/west)
-"yt" = (
-/obj/effect/floor_decal/industrial/warning/dust,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
+/obj/machinery/light{
+	dir = 4
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
+/obj/machinery/airlock_sensor/phoron{
+	pixel_x = 24;
+	id_tag = "geothermal"
+	},
+/obj/map_helper/airlock/sensor/int_sensor,
+/turf/simulated/floor/tiled,
+/area/rift/geothermal)
+"yt" = (
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor,
+/area/rift/geothermal/balcony)
 "yx" = (
 /obj/effect/shuttle_landmark/automatic,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -5637,8 +5526,17 @@
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/exterior/checkpoint/south)
 "Al" = (
-/turf/simulated/floor/lythios43c,
-/area/tether/outpost/solars_outside)
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/machinery/airlock_sensor/phoron{
+	pixel_y = 11;
+	pixel_x = -21;
+	id_tag = "geothermal"
+	},
+/obj/map_helper/airlock/sensor/ext_sensor,
+/turf/simulated/floor/outdoors/gravsnow/lythios43c,
+/area/rift/geothermal)
 "Ao" = (
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -5671,12 +5569,6 @@
 /obj/fiftyspawner/steel,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
-"Av" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/lythios43c,
-/area/tether/outpost/solars_outside)
 "Az" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -5848,11 +5740,9 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost/airlock/one)
 "BC" = (
-/obj/machinery/camera/network/engineering{
-	dir = 1
-	},
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor,
-/area/tether/outpost/solars_shed)
+/area/rift/geothermal/balcony)
 "BF" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
@@ -5876,12 +5766,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
-"BG" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
 "BH" = (
 /obj/structure/railing,
 /turf/simulated/open,
@@ -6057,9 +5941,6 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
-"CG" = (
-/turf/simulated/wall,
-/area/tether/outpost/solars_shed)
 "CK" = (
 /obj/effect/floor_decal/rust/mono_rusted3,
 /obj/machinery/door/blast/shutters,
@@ -6252,15 +6133,9 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
 "DE" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Power - Solar Array";
-	cur_coils = 3;
-	output_attempt = 0;
-	outputting = 0
-	},
-/obj/structure/cable/heavyduty,
-/turf/simulated/floor,
-/area/tether/outpost/solars_shed)
+/obj/machinery/door/airlock/glass,
+/turf/simulated/floor/tiled,
+/area/rift/geothermal/balcony)
 "DH" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -6358,14 +6233,11 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
 "Ei" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
+/obj/structure/cable/white{
+	icon_state = "4-8"
 	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
+/turf/simulated/floor/tiled,
+/area/rift/geothermal)
 "Em" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -6380,18 +6252,6 @@
 /obj/structure/anomaly_container,
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
-"Es" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
 "Et" = (
 /turf/simulated/wall,
 /area/rnd/outpost/anomaly_lab)
@@ -6507,8 +6367,8 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "2-8"
+/obj/structure/railing{
+	dir = 8
 	},
 /turf/simulated/floor/lythios43c,
 /area/rift/surfacebase/outside/west)
@@ -6563,15 +6423,6 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/facility/exterior)
-"Fs" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/simulated/floor/lythios43c,
-/area/tether/outpost/solars_outside)
 "Ft" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber{
 	dir = 8
@@ -6749,11 +6600,18 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/surfacebase/outside/west)
 "Gl" = (
-/obj/structure/cable/yellow{
+/obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Gn" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/blue{
 	dir = 4
@@ -7056,13 +6914,6 @@
 /obj/machinery/meter,
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
-"HO" = (
-/obj/machinery/power/tracker,
-/obj/structure/cable/yellow{
-	icon_state = "0-4"
-	},
-/turf/simulated/floor/lythios43c,
-/area/tether/outpost/solars_outside)
 "HR" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -7156,6 +7007,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
+"Im" = (
+/obj/structure/bed/chair/sofa/red/right{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/rift/geothermal/balcony)
 "In" = (
 /obj/effect/floor_decal/rust/mono_rusted3,
 /obj/machinery/door/blast/shutters,
@@ -7190,14 +7047,11 @@
 /turf/simulated/open,
 /area/rift/exterior/mineshaft)
 "It" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
+/obj/machinery/light{
+	dir = 4
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
+/turf/simulated/floor/tiled,
+/area/rift/geothermal/balcony)
 "Iu" = (
 /obj/structure/sign/nanotrasen,
 /turf/simulated/wall/r_wall,
@@ -7220,15 +7074,6 @@
 	},
 /turf/simulated/floor/wood/lythios43c,
 /area/rift/exterior/nuketown/interior)
-"IA" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
 "IC" = (
 /obj/effect/floor_decal/rust/mono_rusted3,
 /turf/simulated/floor/tiled/monotile/lythios43c,
@@ -7293,12 +7138,6 @@
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging,
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/outpost/chamber)
-"IT" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/lythios43c,
-/area/tether/outpost/solars_outside)
 "IU" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/effect/floor_decal/industrial/outline/blue,
@@ -7375,12 +7214,11 @@
 /turf/simulated/wall,
 /area/rnd/outpost/testing_lab)
 "Jy" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
+/obj/structure/cable/white{
+	icon_state = "1-4"
 	},
-/obj/structure/railing,
-/turf/simulated/floor/lythios43c,
-/area/tether/outpost/solars_outside)
+/turf/simulated/floor/tiled,
+/area/rift/geothermal/balcony)
 "JA" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -7437,24 +7275,14 @@
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/facility/exterior)
 "JT" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 8
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
-"JU" = (
 /obj/machinery/power/apc{
-	name = "south bump";
-	pixel_y = -28
+	dir = 4;
+	name = "east bump";
+	pixel_x = 28
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
-/turf/simulated/floor,
-/area/tether/outpost/solars_shed)
+/obj/structure/cable/white,
+/turf/simulated/floor/tiled,
+/area/rift/geothermal)
 "JV" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -7767,17 +7595,11 @@
 /turf/simulated/floor,
 /area/rnd/outpost/storage)
 "KO" = (
-/obj/effect/floor_decal/industrial/warning/dust/corner{
-	dir = 4
+/obj/structure/cable/white{
+	icon_state = "2-8"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
+/turf/simulated/floor,
+/area/rift/geothermal)
 "KP" = (
 /obj/machinery/vending/cigarette{
 	dir = 4
@@ -7818,15 +7640,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
-"Lk" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 5
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-8"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
 "Ln" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/surfacebase/outside/west)
@@ -8012,19 +7825,27 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
-"Mq" = (
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
 "Mr" = (
-/obj/machinery/power/terminal{
+/obj/machinery/embedded_controller/radio/airlock/phoron{
+	frequency = 1452;
+	id_tag = "anomaly_chamber_airlock";
+	pixel_x = -25;
+	tag_airpump = "anomaly_airlock_pump";
+	tag_chamber_sensor = "anomaly_chamber_airlock_sensor";
+	tag_exterior_door = "anomaly_testing_exterior";
+	tag_interior_door = "anomaly_testing_interior";
+	tag_scrubber = "anomaly_airlock_scrubber"
+	},
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 1;
+	id_tag = "geothermal"
+	},
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/structure/railing{
 	dir = 1
 	},
-/obj/structure/cable/yellow{
-	icon_state = "0-8"
-	},
 /turf/simulated/floor,
-/area/tether/outpost/solars_shed)
+/area/rift/geothermal)
 "Mu" = (
 /obj/effect/floor_decal/borderfloor/corner{
 	dir = 4
@@ -8145,23 +7966,6 @@
 	},
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/facility/exterior)
-"MP" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/structure/railing,
-/obj/machinery/light/small{
-	dir = 4
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-2"
-	},
-/obj/machinery/power/sensor{
-	name = "Powernet Sensor - Solar Farm Input";
-	name_tag = "Solar Farm Input"
-	},
-/turf/simulated/floor/lythios43c,
-/area/tether/outpost/solars_outside)
 "MV" = (
 /obj/machinery/vending/phoronresearch{
 	dir = 8;
@@ -8248,14 +8052,16 @@
 /turf/simulated/floor/wood,
 /area/rnd/outpost/breakroom)
 "Nl" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
+/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
+	dir = 1;
+	id_tag = "geothermal"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
+/obj/map_helper/airlock/atmos/chamber_pump,
+/obj/structure/railing{
+	dir = 1
 	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
+/turf/simulated/floor,
+/area/rift/geothermal)
 "Nn" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -8337,13 +8143,9 @@
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/exterior/bunker)
 "NI" = (
-/obj/structure/table/standard,
-/obj/item/clothing/gloves/yellow,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor,
-/area/tether/outpost/solars_shed)
+/area/rift/geothermal)
 "NL" = (
 /obj/item/banner/green,
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
@@ -8552,13 +8354,6 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
-"OF" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 1
-	},
-/obj/effect/floor_decal/rust,
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
 "OH" = (
 /turf/simulated/wall/wood,
 /area/rift/exterior/nuketown/interior)
@@ -8566,8 +8361,8 @@
 /turf/simulated/wall,
 /area/rift/exterior/nuketown)
 "OJ" = (
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
+/turf/simulated/open/geothermal,
+/area/rift/geothermal)
 "ON" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -8872,18 +8667,6 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/exterior/mineshaft)
-"Qj" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
 "Qm" = (
 /obj/machinery/atmospherics/portables_connector,
 /obj/effect/floor_decal/industrial/outline/red,
@@ -8929,29 +8712,17 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/anomaly_lab/testing)
-"Qv" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "0-8"
-	},
-/obj/structure/cable/heavyduty{
-	icon_state = "0-2"
-	},
-/obj/machinery/power/sensor{
-	name = "Powernet Sensor - Solar Farm Output";
-	name_tag = "Solar Farm Output"
-	},
-/turf/simulated/floor/lythios43c,
-/area/tether/outpost/solars_outside)
 "Qw" = (
 /obj/machinery/suspension_gen,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenoarch_storage)
 "Qy" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "2-4"
+/obj/machinery/door/airlock/maintenance/engi,
+/obj/structure/cable/white{
+	icon_state = "4-8"
 	},
 /turf/simulated/floor,
-/area/tether/outpost/solars_shed)
+/area/rift/geothermal)
 "QH" = (
 /obj/structure/railing{
 	dir = 8
@@ -9093,14 +8864,11 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "Rg" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 4
+/obj/structure/cable/white{
+	icon_state = "4-8"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "1-2"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
+/turf/simulated/floor,
+/area/rift/geothermal)
 "Ri" = (
 /obj/effect/floor_decal/rust/mono_rusted3,
 /obj/structure/table/standard,
@@ -9506,11 +9274,8 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "Tq" = (
-/obj/structure/cable/yellow{
-	icon_state = "2-4"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
+/turf/simulated/wall,
+/area/rift/geothermal)
 "Ts" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
@@ -9682,12 +9447,8 @@
 /turf/simulated/floor/lythios43c,
 /area/rift/facility/exterior)
 "TW" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/closet/crate/solar,
-/turf/simulated/floor,
-/area/tether/outpost/solars_shed)
+/turf/simulated/open,
+/area/rift/geothermal)
 "TX" = (
 /obj/machinery/portable_atmospherics/canister/empty/phoron,
 /obj/machinery/atmospherics/pipe/simple/visible/black,
@@ -9853,9 +9614,13 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/west)
 "Uz" = (
-/obj/machinery/space_heater,
+/obj/machinery/door/airlock/glass_external/public{
+	name = "Mining Outpost Airlock";
+	id_tag = "geothermal"
+	},
+/obj/map_helper/airlock/door/int_door,
 /turf/simulated/floor,
-/area/tether/outpost/solars_shed)
+/area/rift/geothermal)
 "UD" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -9873,14 +9638,18 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "UE" = (
-/obj/structure/table/standard,
-/obj/structure/cable/yellow{
+/obj/structure/catwalk,
+/obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
-/obj/item/stack/cable_coil/yellow,
-/obj/machinery/cell_charger,
-/turf/simulated/floor,
-/area/tether/outpost/solars_shed)
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
+"UK" = (
+/obj/structure/bed/chair/sofa/red{
+	dir = 8
+	},
+/turf/simulated/floor/tiled,
+/area/rift/geothermal/balcony)
 "UM" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
@@ -9955,14 +9724,6 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/outpost)
-"UZ" = (
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'HIGH VOLTAGE'";
-	icon_state = "shock";
-	name = "HIGH VOLTAGE"
-	},
-/turf/simulated/wall,
-/area/tether/outpost/solars_shed)
 "Vd" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -9975,10 +9736,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenoarch_storage)
-"Vg" = (
-/obj/structure/symbol/em,
-/turf/simulated/wall,
-/area/tether/outpost/solars_shed)
 "Vl" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 8
@@ -10080,9 +9837,16 @@
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
 "Wf" = (
-/obj/structure/railing,
-/turf/simulated/floor/lythios43c,
-/area/tether/outpost/solars_outside)
+/obj/structure/cable/white{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/apc{
+	dir = 4;
+	name = "east bump";
+	pixel_x = 28
+	},
+/turf/simulated/floor/tiled,
+/area/rift/geothermal/balcony)
 "Wh" = (
 /obj/structure/sign/department/anomaly,
 /turf/simulated/wall,
@@ -10141,14 +9905,6 @@
 /obj/machinery/vending/nifsoft_shop,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost/airlock/one)
-"Ww" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor,
-/area/tether/outpost/solars_shed)
 "Wz" = (
 /obj/structure/closet/emcloset,
 /obj/effect/overlay/snow/floor/edges{
@@ -10272,15 +10028,6 @@
 /obj/structure/barricade/cutout,
 /turf/simulated/floor/tiled/monotile,
 /area/rift/exterior/nuketown/interior)
-"Xa" = (
-/obj/effect/floor_decal/industrial/warning/dust{
-	dir = 10
-	},
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
 "Xd" = (
 /obj/structure/table/woodentable,
 /obj/machinery/microwave,
@@ -10647,14 +10394,18 @@
 /turf/simulated/floor/wood,
 /area/rnd/outpost/breakroom)
 "YM" = (
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
+/obj/structure/cable/white{
+	icon_state = "1-2"
 	},
-/obj/machinery/light/small{
-	dir = 1
+/obj/structure/cable/white{
+	icon_state = "2-8"
+	},
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 22
 	},
 /turf/simulated/floor,
-/area/tether/outpost/solars_shed)
+/area/rift/geothermal)
 "YN" = (
 /obj/machinery/light,
 /turf/simulated/floor/tiled,
@@ -10746,26 +10497,18 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "Zp" = (
-/obj/effect/floor_decal/industrial/warning/dust,
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
-"Zq" = (
-/obj/structure/grille,
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/obj/structure/window/reinforced/full,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/spawner/window/borosillicate/full,
 /turf/simulated/floor,
-/area/tether/outpost/solars_shed)
+/area/rift/geothermal)
+"Zq" = (
+/obj/machinery/airlock_sensor/phoron{
+	pixel_y = 28;
+	id_tag = "geothermal"
+	},
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/structure/catwalk,
+/turf/simulated/floor,
+/area/rift/geothermal)
 "Zs" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -10786,14 +10529,13 @@
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
 "ZC" = (
-/obj/structure/cable/yellow{
-	icon_state = "1-4"
+/obj/machinery/door/airlock/glass_external/public{
+	name = "Mining Outpost Airlock";
+	id_tag = "geothermal"
 	},
-/obj/structure/cable/yellow{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c,
-/area/tether/outpost/solars_outside)
+/obj/map_helper/airlock/door/ext_door,
+/turf/simulated/floor,
+/area/rift/geothermal)
 "ZD" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
@@ -27699,8 +27441,8 @@ sv
 sv
 sv
 sv
-dQ
-dQ
+sv
+sv
 sv
 sv
 sv
@@ -27893,8 +27635,8 @@ sv
 sv
 sv
 sv
-dQ
-dQ
+sv
+sv
 sv
 sv
 sv
@@ -28087,8 +27829,8 @@ sv
 sv
 sv
 sv
-dQ
-dQ
+sv
+sv
 sv
 sv
 sv
@@ -28281,8 +28023,8 @@ sv
 sv
 sv
 sv
-dQ
-dQ
+sv
+sv
 sv
 sv
 sv
@@ -28475,8 +28217,8 @@ sv
 sv
 sv
 sv
-dQ
-dQ
+sv
+sv
 sv
 sv
 sv
@@ -28669,8 +28411,8 @@ sv
 sv
 sv
 sv
-dQ
-dQ
+sv
+sv
 sv
 sv
 sv
@@ -28851,32 +28593,32 @@ sv
 sv
 sv
 sv
-jl
-uw
-uw
-uw
-uw
-Ei
-JT
-uw
-uw
-uw
-uw
-Ei
-OJ
-OJ
-IA
-Qj
-Qj
-Qj
-Qj
-sE
-IA
-Qj
-Qj
-Qj
-Qj
-Xa
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
@@ -29045,32 +28787,32 @@ sv
 sv
 sv
 sv
-fA
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-OJ
-OJ
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-yt
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
@@ -29239,32 +28981,32 @@ sv
 sv
 sv
 sv
-Es
-Nl
-Nl
-Nl
-Nl
-BG
-It
-Nl
-Nl
-Nl
-Nl
-BG
-OJ
-OJ
-Tq
-ek
-ek
-ek
-ek
-ZC
-Tq
-ek
-ek
-ek
-ek
-Zp
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
@@ -29433,32 +29175,32 @@ sv
 sv
 sv
 sv
-fA
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-OJ
-OJ
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-yt
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
@@ -29627,32 +29369,32 @@ sv
 sv
 sv
 sv
-Es
-Nl
-Nl
-Nl
-Nl
-BG
-It
-Nl
-Nl
-Nl
-Nl
-BG
-OJ
-OJ
-Tq
-ek
-ek
-ek
-ek
-ZC
-Tq
-ek
-ek
-ek
-ek
-Zp
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
@@ -29821,32 +29563,32 @@ sv
 sv
 sv
 sv
-fA
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-OJ
-OJ
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-yt
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
@@ -30015,32 +29757,32 @@ sv
 sv
 sv
 sv
-fA
-OJ
-OJ
-OJ
-OJ
-OJ
-Gl
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-Gl
-OJ
-OJ
-OJ
-OJ
-OJ
-yt
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
@@ -30209,32 +29951,32 @@ sv
 sv
 sv
 sv
-Es
-Nl
-Nl
-Nl
-Nl
-BG
-It
-Nl
-Nl
-Nl
-Nl
-BG
-OJ
-OJ
-Tq
-ek
-ek
-ek
-ek
-ZC
-Tq
-ek
-ek
-ek
-ek
-Zp
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
@@ -30403,32 +30145,32 @@ sv
 sv
 sv
 sv
-fA
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-OJ
-OJ
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-yt
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
@@ -30597,32 +30339,32 @@ sv
 sv
 sv
 sv
-Es
-Nl
-Nl
-Nl
-Nl
-BG
-It
-Nl
-Nl
-Nl
-Nl
-BG
-OJ
-OJ
-Tq
-ek
-ek
-ek
-ek
-ZC
-Tq
-ek
-ek
-ek
-ek
-Zp
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
@@ -30791,32 +30533,32 @@ sv
 sv
 sv
 sv
-fA
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-OJ
-OJ
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-yt
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
@@ -30985,32 +30727,32 @@ sv
 sv
 sv
 sv
-Es
-Nl
-Nl
-Nl
-Nl
-BG
-It
-Nl
-Nl
-Nl
-Nl
-BG
-OJ
-OJ
-Tq
-ek
-ek
-ek
-ek
-ZC
-Tq
-ek
-ek
-ek
-ek
-Zp
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
@@ -31179,32 +30921,32 @@ sv
 sv
 sv
 sv
-fA
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-OJ
-OJ
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-yt
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
@@ -31373,32 +31115,32 @@ sv
 sv
 sv
 sv
-fA
-OJ
-OJ
-OJ
-OJ
-OJ
-Gl
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-Gl
-OJ
-OJ
-OJ
-OJ
-OJ
-yt
+sv
+PP
+PP
+PP
+PP
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
@@ -31567,32 +31309,32 @@ sv
 sv
 sv
 sv
-Es
-Nl
-Nl
-Nl
-Nl
-BG
-It
-Nl
-Nl
-Nl
-Nl
-BG
-OJ
-OJ
-Tq
-ek
-ek
-ek
-ek
-ZC
-Tq
-ek
-ek
-ek
-ek
-Zp
+sv
+sv
+PP
+PP
+PP
+PP
+PP
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
@@ -31761,32 +31503,32 @@ sv
 sv
 sv
 sv
-fA
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-OJ
-OJ
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-yt
+sv
+sv
+sv
+PP
+PP
+PP
+PP
+PP
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
@@ -31955,32 +31697,32 @@ sv
 sv
 sv
 sv
-Es
-Nl
-Nl
-Nl
-Nl
-BG
-It
-Nl
-Nl
-Nl
-Nl
-BG
-OJ
-OJ
-Tq
-ek
-ek
-ek
-ek
-ZC
-Tq
-ek
-ek
-ek
-ek
-Zp
+sv
+sv
+sv
+PP
+PP
+PP
+PP
+PP
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
@@ -32149,32 +31891,32 @@ sv
 sv
 sv
 sv
-fA
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-OJ
-OJ
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-yt
+sv
+sv
+sv
+sv
+PP
+PP
+PP
+PP
+PP
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
@@ -32343,32 +32085,32 @@ sv
 sv
 sv
 sv
-Es
-Nl
-Nl
-Nl
-Nl
-BG
-It
-Nl
-Nl
-Nl
-Nl
-BG
-OJ
-OJ
-Tq
-ek
-ek
-ek
-ek
-ZC
-Tq
-ek
-ek
-ek
-ek
-Zp
+sv
+sv
+sv
+sv
+sv
+PP
+PP
+PP
+PP
+PP
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
@@ -32537,38 +32279,38 @@ sv
 sv
 sv
 sv
-fA
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-OJ
-OJ
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-yt
+sv
+sv
+sv
+sv
+sv
+sv
+PP
+PP
+PP
+PP
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
 dQ
 dQ
-sv
+dQ
 sv
 sv
 sv
@@ -32731,40 +32473,40 @@ sv
 sv
 sv
 sv
-fA
-OJ
-OJ
-OJ
-OJ
-OJ
-Gl
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-Gl
-OJ
-OJ
-OJ
-OJ
-OJ
-yt
+sv
+sv
+sv
+sv
+sv
+sv
+PP
+PP
+PP
+PP
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
 dQ
 dQ
-sv
-sv
-sv
+dQ
+dQ
+dQ
 sv
 sv
 PP
@@ -32925,41 +32667,41 @@ sv
 sv
 sv
 sv
-Es
-Nl
-Nl
-Nl
-Nl
-BG
-It
-Nl
-Nl
-Nl
-Nl
-BG
-OJ
-OJ
-Tq
-ek
-ek
-ek
-ek
-ZC
-Tq
-ek
-ek
-ek
-ek
-Zp
+sv
+sv
+sv
+sv
+sv
+sv
+PP
+PP
+PP
+PP
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
 dQ
 dQ
-sv
-sv
-sv
-sv
+dQ
+dQ
+dQ
 sv
 sv
 sv
@@ -33119,41 +32861,41 @@ sv
 sv
 sv
 sv
-fA
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-OJ
-OJ
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-yt
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+PP
+PP
+PP
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 sv
 sv
 dQ
 dQ
 dQ
-sv
-sv
-sv
-sv
+dQ
 sv
 sv
 PP
@@ -33167,7 +32909,7 @@ PP
 PP
 PP
 PP
-sv
+PP
 sv
 sv
 sv
@@ -33313,43 +33055,43 @@ sv
 sv
 sv
 sv
-Es
-Nl
-Nl
-Nl
-Nl
-BG
-It
-Nl
-Nl
-Nl
-Nl
-BG
-OJ
-OJ
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+PP
+PP
+PP
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 Tq
-ek
-ek
-ek
-ek
-ZC
-Tq
-ek
-ek
-ek
-ek
 Zp
-sv
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Zp
+Tq
 sv
 dQ
 dQ
 dQ
 sv
 sv
-sv
-sv
-sv
-sv
 PP
 PP
 PP
@@ -33362,7 +33104,7 @@ PP
 PP
 PP
 PP
-sv
+PP
 sv
 sv
 sv
@@ -33507,41 +33249,41 @@ sv
 sv
 sv
 sv
-fA
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+PP
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+Zp
 OJ
 OJ
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-yt
-sv
+OJ
+OJ
+OJ
+OJ
+OJ
+OJ
+OJ
+Zp
 sv
 dQ
 dQ
 dQ
-sv
-sv
-sv
-sv
 cL
 sv
 PP
@@ -33556,8 +33298,8 @@ PP
 PP
 PP
 PP
-sv
-sv
+PP
+PP
 sv
 sv
 sv
@@ -33701,43 +33443,43 @@ sv
 sv
 sv
 sv
-Es
-Nl
-Nl
-Nl
-Nl
-BG
-It
-Nl
-Nl
-Nl
-Nl
-BG
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+PP
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+Zp
 OJ
 OJ
-Tq
-ek
-ek
-ek
-ek
-ZC
-Tq
-ek
-ek
-ek
-ek
+OJ
+OJ
+OJ
+OJ
+OJ
+OJ
+OJ
 Zp
 sv
-sv
 dQ
 dQ
 dQ
 sv
 sv
-sv
-sv
-sv
-sv
 PP
 PP
 PP
@@ -33750,8 +33492,8 @@ PP
 PP
 PP
 PP
-sv
-sv
+PP
+PP
 sv
 sv
 sv
@@ -33895,42 +33637,42 @@ sv
 sv
 sv
 sv
-fA
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+Zp
 OJ
 OJ
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-yt
-sv
+OJ
+OJ
+OJ
+OJ
+OJ
+OJ
+OJ
+Zp
 sv
 dQ
 dQ
 dQ
 sv
-sv
-sv
-sv
-sv
 PP
 PP
 PP
@@ -33944,9 +33686,9 @@ PP
 PP
 PP
 PP
-sv
-sv
-sv
+PP
+PP
+PP
 sv
 sv
 sv
@@ -34089,42 +33831,42 @@ sv
 sv
 sv
 sv
-fA
-OJ
-OJ
-OJ
-OJ
-OJ
-Gl
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-Gl
-OJ
-OJ
-OJ
-OJ
-OJ
-yt
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+Zp
+OJ
+OJ
+OJ
+OJ
+OJ
+OJ
+OJ
+OJ
+OJ
+Zp
 sv
 dQ
 dQ
 dQ
 sv
-sv
-sv
-sv
-sv
 PP
 PP
 PP
@@ -34138,9 +33880,9 @@ PP
 PP
 PP
 PP
-sv
-sv
-sv
+PP
+PP
+PP
 sv
 sv
 sv
@@ -34283,42 +34025,42 @@ sv
 sv
 sv
 sv
-Es
-Nl
-Nl
-Nl
-Nl
-BG
-It
-Nl
-Nl
-Nl
-Nl
-BG
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+Zp
 OJ
 OJ
-Tq
-ek
-ek
-ek
-ek
-ZC
-Tq
-ek
-ek
-ek
-ek
+OJ
+OJ
+OJ
+OJ
+OJ
+OJ
+OJ
 Zp
 sv
-sv
 dQ
 dQ
 dQ
 sv
-sv
-sv
-sv
-sv
 PP
 PP
 PP
@@ -34332,9 +34074,9 @@ PP
 PP
 PP
 PP
-sv
-sv
-sv
+PP
+PP
+PP
 sv
 sv
 sv
@@ -34477,43 +34219,43 @@ sv
 sv
 sv
 sv
-fA
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+Zp
+hn
+hn
 OJ
 OJ
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-yt
-sv
+OJ
+OJ
+OJ
+OJ
+OJ
+Zp
 sv
 dQ
 dQ
 dQ
 sv
 sv
-sv
-sv
-sv
-sv
 PP
 PP
 PP
@@ -34526,9 +34268,9 @@ PP
 PP
 PP
 PP
-sv
-sv
-sv
+PP
+PP
+PP
 sv
 sv
 sv
@@ -34671,43 +34413,43 @@ sv
 sv
 sv
 sv
-Es
-Nl
-Nl
-Nl
-Nl
-BG
-It
-Nl
-Nl
-Nl
-Nl
-BG
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+Zp
+hn
+hn
+hn
+hn
+hn
 OJ
 OJ
-Tq
-ek
-ek
-ek
-ek
-ZC
-Tq
-ek
-ek
-ek
-ek
+OJ
+OJ
 Zp
 sv
-sv
 dQ
 dQ
 dQ
 sv
 sv
-sv
-sv
-sv
-sv
 PP
 PP
 PP
@@ -34720,9 +34462,9 @@ PP
 PP
 PP
 PP
-sv
-sv
-sv
+PP
+PP
+PP
 sv
 sv
 sv
@@ -34865,33 +34607,37 @@ sv
 sv
 sv
 sv
-fA
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+Zp
+hn
+hn
+hn
 OJ
 OJ
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-yt
-sv
+OJ
+OJ
+OJ
+OJ
+Zp
 sv
 dQ
 dQ
@@ -34899,11 +34645,6 @@ dQ
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
 PP
 PP
 PP
@@ -34914,9 +34655,10 @@ PP
 PP
 PP
 PP
-sv
-sv
-sv
+PP
+PP
+PP
+PP
 sv
 sv
 sv
@@ -35059,34 +34801,38 @@ sv
 sv
 sv
 sv
-Es
-Nl
-Nl
-Nl
-Nl
-BG
-It
-Nl
-Nl
-Nl
-Nl
-BG
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+Zp
 OJ
 OJ
-Tq
-ek
-ek
-ek
-ek
-ZC
-Tq
-ek
-ek
-ek
-ek
+OJ
+OJ
+OJ
+OJ
+OJ
+OJ
+OJ
 Zp
 sv
-sv
 dQ
 dQ
 dQ
@@ -35094,10 +34840,6 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
 PP
 PP
 PP
@@ -35108,9 +34850,9 @@ PP
 PP
 PP
 PP
-sv
-sv
-sv
+PP
+PP
+PP
 sv
 sv
 sv
@@ -35253,33 +34995,37 @@ sv
 sv
 sv
 sv
-fA
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-OJ
-OJ
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+ek
 yt
-sv
+yt
+yt
+yt
+yt
+yt
+yt
+yt
+yt
+ek
 sv
 dQ
 dQ
@@ -35288,10 +35034,6 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
 PP
 PP
 PP
@@ -35302,7 +35044,7 @@ PP
 PP
 PP
 PP
-sv
+PP
 sv
 sv
 sv
@@ -35447,33 +35189,37 @@ sv
 sv
 sv
 sv
-fA
-OJ
-OJ
-OJ
-OJ
-OJ
-Gl
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-OJ
-Gl
-OJ
-OJ
-OJ
-OJ
-OJ
-yt
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+BC
+Im
+UK
+eu
+kQ
+kQ
+kQ
+Im
+UK
+eu
+BC
 sv
 dQ
 dQ
@@ -35481,10 +35227,6 @@ dQ
 sv
 sv
 sv
-sv
-sv
-sv
-sv
 PP
 PP
 PP
@@ -35495,7 +35237,7 @@ PP
 PP
 PP
 PP
-sv
+PP
 sv
 sv
 sv
@@ -35641,41 +35383,41 @@ sv
 sv
 sv
 sv
-Es
-Nl
-Nl
-Nl
-Nl
-BG
-It
-Nl
-Nl
-Nl
-Nl
-BG
-OJ
-OJ
-Tq
-ek
-ek
-ek
-ek
-ZC
-Tq
-ek
-ek
-ek
-ek
-Zp
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+BC
+kQ
+kQ
+kQ
+kQ
+kQ
+kQ
+kQ
+kQ
+kQ
+BC
 sv
 dQ
 dQ
 dQ
-sv
-sv
-sv
-sv
 sv
 sv
 sv
@@ -35835,33 +35577,37 @@ sv
 sv
 sv
 sv
-fA
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-OJ
-OJ
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-yt
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+BC
+nl
+It
+Wf
+Jy
+kQ
+kQ
+kQ
+kQ
+kQ
+BC
 sv
 dQ
 dQ
@@ -35869,10 +35615,6 @@ dQ
 sv
 sv
 sv
-sv
-sv
-sv
-PP
 PP
 PP
 PP
@@ -36029,33 +35771,37 @@ sv
 sv
 sv
 sv
-Es
-Nl
-Nl
-Nl
-Nl
-BG
-It
-Nl
-Nl
-Nl
-Nl
-BG
-OJ
-OJ
-Tq
-ek
-ek
-ek
-ek
-ZC
-Tq
-ek
-ek
-ek
-ek
-Zp
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+ek
+ek
+ek
+ek
+oY
+BC
+BC
+DE
+BC
+BC
+ek
 sv
 dQ
 dQ
@@ -36063,10 +35809,6 @@ dQ
 sv
 sv
 sv
-sv
-sv
-sv
-PP
 PP
 PP
 PP
@@ -36223,33 +35965,37 @@ Do
 sv
 sv
 sv
-fA
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-OJ
-OJ
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-yt
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+Tq
+TW
+TW
+rd
+Ei
+rd
+rd
+rd
+rd
+rd
+NI
 sv
 dQ
 dQ
@@ -36257,10 +36003,6 @@ dQ
 sv
 sv
 sv
-sv
-sv
-PP
-PP
 PP
 PP
 PP
@@ -36417,33 +36159,37 @@ ce
 Do
 sv
 sv
-Es
-Nl
-Nl
-Nl
-Nl
-BG
-It
-Nl
-Nl
-Nl
-Nl
-BG
-OJ
-OJ
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 Tq
-ek
-ek
-ek
-ek
-ZC
-Tq
-ek
-ek
-ek
-ek
-Zp
-sv
+TW
+TW
+ah
+fA
+JT
+oE
+rd
+rd
+yr
+NI
 sv
 dQ
 dQ
@@ -36451,10 +36197,6 @@ dQ
 sv
 sv
 sv
-sv
-PP
-PP
-PP
 PP
 PP
 PP
@@ -36611,33 +36353,37 @@ wU
 ce
 Do
 sv
-fA
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-OJ
-OJ
-rd
-rd
-rd
-rd
-rd
-Gl
-rd
-rd
-rd
-rd
-rd
-yt
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+Tq
+Tq
+Tq
+Tq
+Qy
+Tq
+Tq
+Uz
+Uz
+Tq
+Tq
 sv
 dQ
 dQ
@@ -36645,10 +36391,6 @@ dQ
 sv
 sv
 sv
-sv
-PP
-PP
-PP
 PP
 PP
 PP
@@ -36805,33 +36547,37 @@ wU
 SP
 Do
 sv
-Lk
-Rg
-Rg
-Rg
-Rg
-Rg
-ou
-Rg
-Rg
-Rg
-Rg
-Rg
-KO
-tJ
-Rg
-Rg
-Rg
-Rg
-Rg
-oY
-Rg
-Rg
-Rg
-Rg
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+Tq
+sL
 Rg
 qo
-sv
+Tq
+ou
+tl
+Mr
+Tq
 sv
 dQ
 dQ
@@ -36839,10 +36585,6 @@ dQ
 sv
 sv
 sv
-PP
-PP
-PP
-PP
 PP
 PP
 PP
@@ -37011,8 +36753,6 @@ sv
 sv
 sv
 sv
-fA
-ut
 sv
 sv
 sv
@@ -37023,9 +36763,15 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
+Tq
+KO
+YM
+ku
+Tq
+Zq
+tl
+Nl
+Tq
 sv
 dQ
 dQ
@@ -37033,10 +36779,6 @@ dQ
 sv
 sv
 sv
-PP
-PP
-PP
-PP
 PP
 PP
 PP
@@ -37205,8 +36947,6 @@ sv
 sv
 sv
 sv
-fA
-ut
 sv
 sv
 sv
@@ -37217,20 +36957,22 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
+Tq
+Tq
+Tq
+cF
+Tq
+ZC
+ZC
+Tq
+Tq
 sv
 dQ
 dQ
 dQ
 sv
 sv
-PP
-PP
-PP
-PP
-PP
+sv
 PP
 PP
 PP
@@ -37399,8 +37141,6 @@ sv
 sv
 sv
 sv
-fA
-ut
 sv
 sv
 sv
@@ -37413,18 +37153,20 @@ sv
 sv
 sv
 sv
+sv
+mW
+uB
+dQ
+dQ
+Al
 sv
 sv
 dQ
 dQ
-dQ
 sv
 sv
-PP
-PP
-PP
-PP
-PP
+sv
+sv
 PP
 PP
 PP
@@ -37588,13 +37330,6 @@ sv
 sv
 sv
 sv
-Al
-HO
-Al
-Al
-Wf
-fA
-ut
 sv
 sv
 sv
@@ -37608,16 +37343,23 @@ sv
 sv
 sv
 sv
+sv
+sv
+sv
+sv
+sv
+mW
 sv
 dQ
 dQ
 dQ
 sv
 sv
-PP
-PP
-PP
-PP
+dQ
+dQ
+sv
+sv
+sv
 PP
 PP
 PP
@@ -37782,36 +37524,36 @@ sv
 sv
 sv
 sv
-ku
-iR
-IT
-IT
-MP
-dZ
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 mW
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+dQ
+dQ
+dQ
 dQ
 dQ
 dQ
 sv
 sv
-PP
-PP
-PP
-PP
+sv
+sv
 PP
 PP
 sv
@@ -37976,13 +37718,6 @@ sv
 sv
 sv
 sv
-CG
-Zq
-CG
-CG
-CG
-nl
-Mq
 sv
 sv
 sv
@@ -37996,17 +37731,24 @@ sv
 sv
 sv
 sv
+sv
+sv
+sv
+sv
+sv
+mW
 sv
 dQ
 dQ
 dQ
+dQ
+dQ
+dQ
 sv
-PP
-PP
-PP
-PP
-PP
-PP
+sv
+sv
+sv
+sv
 sv
 sv
 sv
@@ -38170,13 +37912,6 @@ sv
 sv
 sv
 sv
-CG
-tl
-uB
-us
-CG
-uq
-Mq
 sv
 sv
 sv
@@ -38189,15 +37924,22 @@ sv
 sv
 sv
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+mW
 sv
 sv
 dQ
 dQ
 dQ
+dQ
 sv
-PP
-PP
-PP
+sv
+sv
 sv
 sv
 sv
@@ -38364,33 +38106,33 @@ sv
 sv
 sv
 sv
-CG
-TW
-kh
-JU
-CG
-uq
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 mW
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+dQ
 dQ
 dQ
 dQ
 sv
-PP
-PP
+sv
 sv
 sv
 sv
@@ -38558,25 +38300,25 @@ sv
 sv
 sv
 sv
-CG
-NI
-kh
-Uz
-CG
-uq
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 mW
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
 sv
 sv
 dQ
@@ -38752,25 +38494,25 @@ sv
 sv
 sv
 sv
-CG
-UE
-kh
-BC
-CG
-jw
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 mW
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
 sv
 sv
 dQ
@@ -38946,13 +38688,6 @@ sv
 sv
 sv
 sv
-Ww
-YM
-kh
-kh
-sL
-Mq
-Mq
 sv
 sv
 sv
@@ -38965,6 +38700,13 @@ sv
 sv
 sv
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+mW
 sv
 sv
 dQ
@@ -39140,25 +38882,25 @@ sv
 sv
 sv
 sv
-Ww
-kh
-kh
-kh
-kh
-OJ
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 mW
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
 sv
 sv
 dQ
@@ -39334,13 +39076,6 @@ sv
 sv
 sv
 sv
-CG
-Qy
-DE
-Mr
-Vg
-OF
-Mq
 sv
 sv
 sv
@@ -39353,6 +39088,13 @@ sv
 sv
 sv
 sv
+sv
+sv
+sv
+sv
+sv
+sv
+mW
 sv
 sv
 dQ
@@ -39528,25 +39270,25 @@ sv
 sv
 sv
 sv
-CG
-cF
-CG
-CG
-UZ
-Mq
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
 mW
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
 sv
 sv
 dQ
@@ -39723,12 +39465,6 @@ sv
 sv
 sv
 sv
-Qv
-Av
-Av
-Fs
-kQ
-Mq
 sv
 sv
 sv
@@ -39741,6 +39477,12 @@ sv
 sv
 sv
 sv
+sv
+sv
+sv
+sv
+sv
+mW
 sv
 sv
 dQ
@@ -39917,12 +39659,6 @@ sv
 sv
 sv
 sv
-Al
-Al
-Al
-Al
-Jy
-Mq
 sv
 sv
 sv
@@ -39935,6 +39671,12 @@ sv
 sv
 sv
 sv
+sv
+sv
+sv
+sv
+sv
+mW
 sv
 sv
 dQ
@@ -40115,8 +39857,8 @@ sv
 sv
 sv
 sv
-ah
-wU
+sv
+sv
 sv
 sv
 sv
@@ -40128,7 +39870,7 @@ sv
 sv
 sv
 sv
-sv
+Gl
 sv
 tZ
 dQ
@@ -40309,20 +40051,20 @@ sv
 sv
 sv
 sv
-ah
-yr
+sv
+sv
+sv
+sv
+sv
 dQ
 sv
 dQ
 dQ
-sv
 dQ
 dQ
 dQ
 dQ
-dQ
-sv
-dQ
+UE
 dQ
 dQ
 dQ
@@ -40503,7 +40245,10 @@ sv
 sv
 sv
 sv
-oE
+sv
+sv
+sv
+sv
 dQ
 dQ
 dQ
@@ -40513,10 +40258,7 @@ dQ
 dQ
 dQ
 dQ
-dQ
-dQ
-dQ
-dQ
+UE
 dQ
 dQ
 dQ
@@ -40697,21 +40439,21 @@ sv
 sv
 sv
 sv
-oE
 sv
-dQ
-dQ
-dQ
-dQ
-dQ
-dQ
+sv
+sv
+sv
+sv
 dQ
 sv
 sv
 dQ
 dQ
-sv
-sv
+dQ
+dQ
+dQ
+UE
+dQ
 dQ
 dQ
 dQ
@@ -40904,7 +40646,7 @@ xE
 Jf
 Jf
 UW
-Jf
+iR
 Jf
 If
 bA
