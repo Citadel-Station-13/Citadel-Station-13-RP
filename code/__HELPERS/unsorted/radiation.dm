@@ -31,7 +31,7 @@
  * - can_contaminate - allow contamination? if null, will default
  * - override_turf - override where
  */
-/proc/radiation_pulse(atom/source, intensity, falloff_modifier, log, can_contaminate)
+/proc/radiation_pulse(atom/source, intensity, falloff_modifier = RAD_FALLOFF_NORMAL, log, can_contaminate = RAD_CONTAMINATION_DEFAULT)
 	return SSradiation.radiation_pulse(source, intensity, falloff_modifier, log, can_contaminate)
 
 /**
@@ -43,5 +43,5 @@
  * specifying a turf source is allowed, or just a flat zlevel is allowed;
  * z-only no-turf z radiation is flat.
  */
-/proc/z_radiation(turf/source, z, intensity, falloff_modifier = RAD_FALLOFF_ZLEVEL_DEFAULT, log = TRUE, can_contaminate = FALSE, z_radiate_flags)
+/proc/z_radiation(turf/source, z, intensity, falloff_modifier = RAD_FALLOFF_ZLEVEL_DEFAULT, log = TRUE, can_contaminate = RAD_ZLEVEL_CONTAMINATION_DEFAULT, z_radiate_flags)
 	return SSradiation.z_radiation(source, z, intensity, falloff_modifier, log, can_contaminate, z_radiate_flags)

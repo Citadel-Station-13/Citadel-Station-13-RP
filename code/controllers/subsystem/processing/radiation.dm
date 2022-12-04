@@ -28,8 +28,8 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 
 /**
  * todo: comment
- */
-/datum/controller/subsystem/processing/radiation/proc/radiation_pulse(atom/source, intensity, falloff_modifier, log, can_contaminate = RAD_CONTAMINATION_DEFAULT)
+ */image.png
+/datum/controller/subsystem/processing/radiation/proc/radiation_pulse(atom/source, intensity, falloff_modifier, log, can_contaminate)
 	if(!can_fire)	// we don't care
 		return FALSE
 	var/atom/nested = source
@@ -37,13 +37,17 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 		// we're not going to emit in nullspace at all, don't bother
 		return
 	var/waves = TRUE
-	do
-		nested = nested.loc
-		if(nested.rad_flags & RAD_BLOCK_CONTENTS)
-			waves = FALSE
-			break
-	while(nested.loc && !isarea(nested.loc))
-	var/turf/T = get_turf(nested)
+	var/turf/T
+	if(!isturf(nested))
+		do
+			nested = nested.loc
+			if(nested.rad_flags & RAD_BLOCK_CONTENTS)
+				waves = FALSE
+				break
+		while(nested.loc && !isarea(nested.loc))
+		T = get_turf(nested)
+	else
+		T = nested
 	if(waves && T)
 		for(var/dir in GLOB.cardinal)
 			new /datum/radiation_wave(source, T, dir, intensity, falloff_modifier, can_contaminate)

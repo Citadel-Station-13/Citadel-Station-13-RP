@@ -102,7 +102,7 @@
 	var/list/contaminating = list()
 	for(var/atom/A as anything in atoms)
 		A.rad_act(strength)
-		if(GLOB.typecache_living[A.type])
+		if(ismob(A))
 			if(hit_mobs[A])
 				continue
 			hit_mobs[A] = TRUE	// let's NOT doublehit mobs
