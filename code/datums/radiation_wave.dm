@@ -32,6 +32,7 @@
 			if(starting.rad_wave_north)
 				starting.rad_wave_north.starting_intensity += intensity
 				starting.rad_wave_north.current_intensity += intensity
+				starting.rad_wave_north.remaining_contam += intensity
 				qdel(src)
 				return
 			else
@@ -40,6 +41,7 @@
 			if(starting.rad_wave_south)
 				starting.rad_wave_south.starting_intensity += intensity
 				starting.rad_wave_south.current_intensity += intensity
+				starting.rad_wave_north.remaining_contam += intensity
 				qdel(src)
 				return
 			else
@@ -48,6 +50,7 @@
 			if(starting.rad_wave_east)
 				starting.rad_wave_east.starting_intensity += intensity
 				starting.rad_wave_east.current_intensity += intensity
+				starting.rad_wave_north.remaining_contam += intensity
 				qdel(src)
 				return
 			else
@@ -56,6 +59,7 @@
 			if(starting.rad_wave_west)
 				starting.rad_wave_west.starting_intensity += intensity
 				starting.rad_wave_west.current_intensity += intensity
+				starting.rad_wave_north.remaining_contam += intensity
 				qdel(src)
 				return
 			else
@@ -149,7 +153,7 @@
 	var/cannot_contam = strength < RAD_MINIMUM_CONTAMINATION
 	var/list/contaminating = list()
 	for(var/atom/A as anything in atoms)
-		A.rad_act(strength)
+		A.rad_act(strength, src)
 		if(ismob(A))
 			if(hit_mobs[A])
 				continue
