@@ -1130,9 +1130,6 @@
 /obj/structure/cable/white{
 	icon_state = "2-4"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 6
-	},
 /turf/simulated/floor/tiled,
 /area/rift/geothermal)
 "fD" = (
@@ -1560,10 +1557,6 @@
 /obj/structure/anomaly_container,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
-"hr" = (
-/obj/machinery/atmospherics/pipe/simple/hidden,
-/turf/simulated/floor/tiled,
-/area/rift/geothermal)
 "hu" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 4
@@ -1824,15 +1817,10 @@
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/exterior/nuketown)
 "iE" = (
-/obj/machinery/door/airlock/glass_external/public{
-	name = "Mining Outpost Airlock";
-	id_tag = "geothermal"
+/obj/machinery/door/airlock/multi_tile/glass{
+	dir = 2
 	},
-/obj/map_helper/airlock/door/int_door,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
-/obj/structure/catwalk,
+/obj/structure/atmospheric_retention_field,
 /turf/simulated/floor,
 /area/rift/geothermal)
 "iG" = (
@@ -3006,11 +2994,8 @@
 /turf/simulated/wall/r_wall,
 /area/rift/surfacebase/outside/west)
 "ou" = (
-/obj/structure/catwalk,
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/simulated/floor,
+/obj/machinery/light/small,
+/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/geothermal)
 "ov" = (
 /obj/structure/window/wooden{
@@ -3057,7 +3042,6 @@
 	dir = 8;
 	pixel_x = 22
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
 /area/rift/geothermal)
 "oG" = (
@@ -3429,10 +3413,6 @@
 /area/rnd/outpost/storage)
 "qo" = (
 /obj/machinery/light/small,
-/obj/machinery/portable_atmospherics/canister/air/airlock,
-/obj/machinery/atmospherics/portables_connector{
-	dir = 1
-	},
 /turf/simulated/floor,
 /area/rift/geothermal)
 "qs" = (
@@ -4038,11 +4018,10 @@
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
 "tl" = (
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/manifold/hidden{
+/obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor,
+/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/geothermal)
 "to" = (
 /obj/effect/floor_decal/borderfloor{
@@ -5209,17 +5188,6 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
-"yr" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/machinery/airlock_sensor/phoron{
-	pixel_x = 24;
-	id_tag = "geothermal"
-	},
-/obj/map_helper/airlock/sensor/int_sensor,
-/turf/simulated/floor/tiled,
-/area/rift/geothermal)
 "yt" = (
 /obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
@@ -5565,18 +5533,6 @@
 /obj/structure/fence/door/locked,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/exterior/checkpoint/south)
-"Al" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/obj/machinery/airlock_sensor/phoron{
-	pixel_y = 11;
-	pixel_x = -21;
-	id_tag = "geothermal"
-	},
-/obj/map_helper/airlock/sensor/ext_sensor,
-/turf/simulated/floor/outdoors/gravsnow/lythios43c,
-/area/rift/geothermal)
 "Ao" = (
 /obj/machinery/power/apc{
 	name = "south bump";
@@ -6087,12 +6043,6 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
-"Dj" = (
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 5
-	},
-/turf/simulated/floor/tiled,
-/area/rift/geothermal)
 "Dl" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/structure/cable/green{
@@ -7322,7 +7272,6 @@
 	pixel_x = 28
 	},
 /obj/structure/cable/white,
-/obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
 /area/rift/geothermal)
 "JV" = (
@@ -7868,25 +7817,10 @@
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
 "Mr" = (
-/obj/machinery/embedded_controller/radio/airlock/phoron{
-	frequency = 1452;
-	id_tag = "anomaly_chamber_airlock";
-	pixel_x = -25;
-	tag_airpump = "anomaly_airlock_pump";
-	tag_chamber_sensor = "anomaly_chamber_airlock_sensor";
-	tag_exterior_door = "anomaly_testing_exterior";
-	tag_interior_door = "anomaly_testing_interior";
-	tag_scrubber = "anomaly_airlock_scrubber"
+/obj/machinery/light/small{
+	dir = 8
 	},
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 1;
-	id_tag = "geothermal"
-	},
-/obj/map_helper/airlock/atmos/chamber_pump,
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/geothermal)
 "Mu" = (
 /obj/effect/floor_decal/borderfloor/corner{
@@ -8094,15 +8028,10 @@
 /turf/simulated/floor/wood,
 /area/rnd/outpost/breakroom)
 "Nl" = (
-/obj/machinery/atmospherics/component/unary/vent_pump/high_volume{
-	dir = 1;
-	id_tag = "geothermal"
+/obj/machinery/light/small{
+	dir = 4
 	},
-/obj/map_helper/airlock/atmos/chamber_pump,
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor,
+/turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/geothermal)
 "Nn" = (
 /obj/machinery/light/small{
@@ -8763,9 +8692,6 @@
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 4
-	},
 /turf/simulated/floor,
 /area/rift/geothermal)
 "QH" = (
@@ -8835,13 +8761,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
-"QQ" = (
-/obj/structure/catwalk,
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
-	},
-/turf/simulated/floor,
-/area/rift/geothermal)
 "QR" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
 	dir = 5
@@ -8918,9 +8837,6 @@
 "Rg" = (
 /obj/structure/cable/white{
 	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/hidden{
-	dir = 10
 	},
 /turf/simulated/floor,
 /area/rift/geothermal)
@@ -9669,12 +9585,7 @@
 /turf/simulated/floor/plating/lythios43c,
 /area/rift/surfacebase/outside/west)
 "Uz" = (
-/obj/machinery/door/airlock/glass_external/public{
-	name = "Mining Outpost Airlock";
-	id_tag = "geothermal"
-	},
-/obj/map_helper/airlock/door/int_door,
-/obj/structure/catwalk,
+/obj/structure/atmospheric_retention_field,
 /turf/simulated/floor,
 /area/rift/geothermal)
 "UD" = (
@@ -10547,16 +10458,7 @@
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
 "Zp" = (
-/obj/spawner/window/borosillicate/full,
-/turf/simulated/floor,
-/area/rift/geothermal)
-"Zq" = (
-/obj/machinery/airlock_sensor/phoron{
-	pixel_y = 28;
-	id_tag = "geothermal"
-	},
-/obj/map_helper/airlock/sensor/chamber_sensor,
-/obj/structure/catwalk,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor,
 /area/rift/geothermal)
 "Zs" = (
@@ -10578,15 +10480,6 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
-"ZC" = (
-/obj/machinery/door/airlock/glass_external/public{
-	name = "Mining Outpost Airlock";
-	id_tag = "geothermal"
-	},
-/obj/map_helper/airlock/door/ext_door,
-/obj/structure/catwalk,
-/turf/simulated/floor,
-/area/rift/geothermal)
 "ZD" = (
 /obj/structure/grille,
 /obj/structure/window/phoronreinforced{
@@ -32932,6 +32825,7 @@ sv
 sv
 sv
 sv
+Nl
 sv
 sv
 sv
@@ -32941,8 +32835,7 @@ sv
 sv
 sv
 sv
-sv
-sv
+Nl
 dQ
 dQ
 dQ
@@ -33125,7 +33018,7 @@ sv
 sv
 sv
 sv
-sv
+ou
 Tq
 Zp
 Zp
@@ -33137,7 +33030,7 @@ Zp
 Zp
 Zp
 Tq
-sv
+tl
 dQ
 dQ
 dQ
@@ -35065,7 +34958,7 @@ sv
 sv
 sv
 sv
-sv
+ou
 ek
 yt
 yt
@@ -35076,8 +34969,8 @@ yt
 yt
 yt
 yt
-ek
-sv
+Tq
+tl
 dQ
 dQ
 dQ
@@ -36237,9 +36130,9 @@ ah
 fA
 JT
 oE
-hr
-Dj
-yr
+rd
+rd
+ah
 NI
 sv
 dQ
@@ -36625,10 +36518,10 @@ sL
 Rg
 qo
 Tq
-ou
-tl
+lb
+lb
 Mr
-Tq
+sv
 sv
 dQ
 dQ
@@ -36819,10 +36712,10 @@ KO
 YM
 ku
 Tq
-Zq
-QQ
-Nl
-Tq
+lb
+lb
+dQ
+sv
 sv
 dQ
 dQ
@@ -37013,10 +36906,10 @@ Tq
 Tq
 cF
 Tq
-ZC
-ZC
-Tq
-Tq
+dQ
+dQ
+dQ
+sv
 sv
 dQ
 dQ
@@ -37209,9 +37102,9 @@ mW
 uB
 dQ
 dQ
-Al
+dQ
 sv
-sv
+dQ
 dQ
 dQ
 sv
@@ -37405,7 +37298,7 @@ dQ
 dQ
 dQ
 sv
-sv
+dQ
 dQ
 dQ
 sv

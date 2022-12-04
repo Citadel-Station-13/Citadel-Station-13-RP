@@ -180,7 +180,7 @@
 /turf/simulated/floor/tiled,
 /area/rift/geothermal)
 "cl" = (
-/obj/spawner/window/borosillicate/full/firelocks,
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/rift/geothermal/sauna)
 "co" = (
