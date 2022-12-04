@@ -62,6 +62,11 @@
 			power_total += col.power_provided
 			LAZYADD(collectors, col)
 
+/obj/machinery/power/geothermal_controller/examine(mob/user)
+	. = ..()
+	if(use_power == USE_POWER_OFF)
+		. += "Use a multitool to set it up."
+
 /obj/machinery/power/geothermal_controller/attackby(obj/item/W, mob/user)
 	if(W.is_multitool())
 		use_power = USE_POWER_IDLE
