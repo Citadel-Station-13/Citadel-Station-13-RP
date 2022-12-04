@@ -163,5 +163,5 @@
 	if(!cannot_contam && length(contaminating))
 		var/contam_strength = min(((strength - RAD_MINIMUM_CONTAMINATION) * RAD_CONTAMINATION_STR_COEFFICIENT) / length(contaminating), starting_intensity * RAD_CONTAMINATION_MAXIMUM_OBJECT_RATIO)
 		for(var/atom/A as anything in contaminating)
-			A.AddComponent(/datum/component/radioactive, contam_strength, source, max_stack = starting_intensity * RAD_CONTAMINATION_STACK_COEFFICIENT)
+			A.AddComponent(/datum/component/radioactive, contam_strength, source)
 			. += contam_strength
