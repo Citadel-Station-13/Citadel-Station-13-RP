@@ -166,7 +166,7 @@
 	else
 		if(istype(O, /turf/simulated/wall))
 			var/turf/simulated/wall/W = O
-			if(W.material.flags & MATERIAL_UNMELTABLE)
+			if(W.material.legacy_flags & MATERIAL_UNMELTABLE)
 				cannot_melt = 1
 		else if(istype(O, /turf/simulated/floor))
 /*			var/turf/simulated/floor/F = O							//Turfs are qdel'd to space (Even asteroid tiles), will need to be touched by someone smarter than myself. -Mech

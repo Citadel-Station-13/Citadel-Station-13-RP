@@ -21,7 +21,7 @@
 
 /obj/structure/table/rack/update_icon()
 	if(material)
-		color = material.icon_colour
+		color = material.color
 	return
 
 /obj/structure/table/rack/holorack/dismantle(obj/item/tool/wrench/W, mob/user)

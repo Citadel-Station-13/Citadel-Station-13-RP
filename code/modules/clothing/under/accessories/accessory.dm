@@ -442,7 +442,7 @@
 		return INITIALIZE_HINT_QDEL
 	name = "[material.display_name] bracelet"
 	desc = "A bracelet made from [material.display_name]."
-	color = material.icon_colour
+	color = material.color
 
 /obj/item/clothing/accessory/bracelet/material/get_material()
 	return material

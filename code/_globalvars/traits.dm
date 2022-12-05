@@ -111,8 +111,11 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_T_RAY_VISIBLE" = TRAIT_T_RAY_VISIBLE,
 		"TRAIT_NO_TELEPORT" = TRAIT_NO_TELEPORT
 		*/
-		)
-	))
+	),
+	/atom = list(
+		"TRAIT_KEEP_TOGETHER" = TRAIT_KEEP_TOGETHER,
+	),
+))
 
 /// value -> trait name, generated on use from trait_by_type global
 GLOBAL_LIST(trait_name_map)

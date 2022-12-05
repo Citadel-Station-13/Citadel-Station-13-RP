@@ -14,7 +14,7 @@
 		return
 	name = "[material.display_name] ring"
 	desc = "A ring made from [material.display_name]."
-	color = material.icon_colour
+	color = material.color
 
 /obj/item/clothing/gloves/ring/material/get_material()
 	return material

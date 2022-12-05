@@ -31,7 +31,7 @@
 	hardness = max(1,round(material.integrity/10))
 	icon_state = material.door_icon_base
 	name = "[material.display_name] door"
-	color = material.icon_colour
+	color = material.color
 	if(material.opacity < 0.5)
 		set_opacity(0)
 	else
@@ -135,7 +135,7 @@
 	else if(istype(W,/obj/item)) //not sure, can't not just weapons get passed to this proc?
 		hardness -= W.force/10
 		visible_message("<span class='danger'>[user] hits [src] with [W]!</span>")
-		if(material == get_material_by_name("resin"))
+		if(material == get_material_by_name(MAT_RESIN))
 			playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 		else if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD) || get_material_by_name(MAT_HARDWOOD)))
 			playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
@@ -160,7 +160,7 @@
 
 /obj/structure/simple_door/attack_generic(var/mob/user, var/damage, var/attack_verb)
 	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
-	if(material == get_material_by_name("resin"))
+	if(material == get_material_by_name(MAT_RESIN))
 		playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
 	else if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD) || get_material_by_name(MAT_HARDWOOD)))
 		playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
@@ -230,7 +230,7 @@
 	return ..(mapload, MAT_HARDWOOD)
 
 /obj/structure/simple_door/resin/Initialize(mapload, material_name)
-	return ..(mapload, "resin")
+	return ..(mapload, MAT_RESIN)
 
 /obj/structure/simple_door/cult/Initialize(mapload, material_name)
 	return ..(mapload, "cult")

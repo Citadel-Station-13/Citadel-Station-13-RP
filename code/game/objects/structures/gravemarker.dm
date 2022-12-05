@@ -27,7 +27,7 @@
 	if(!material)
 		qdel(src)
 		return
-	add_atom_colour(material.icon_colour, FIXED_COLOUR_PRIORITY)
+	add_atom_colour(material.color, FIXED_COLOUR_PRIORITY)
 
 /obj/structure/gravemarker/examine(mob/user)
 	. = ..()

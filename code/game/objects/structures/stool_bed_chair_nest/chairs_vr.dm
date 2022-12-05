@@ -60,7 +60,7 @@
 	if(isnull(stool_cache[cache_key]))
 		var/image/I = image(icon, base_icon)
 		if(applies_material_colour)
-			I.color = material.icon_colour
+			I.color = material.color
 		stool_cache[cache_key] = I
 	add_overlay(stool_cache[cache_key])
 
@@ -69,7 +69,7 @@
 		var/padding_cache_key = "[base_icon]-padding-[padding_material.name]"
 		if(isnull(stool_cache[padding_cache_key]))
 			var/image/I =  image(icon, "[base_icon]_padding")
-			I.color = padding_material.icon_colour
+			I.color = padding_material.color
 			stool_cache[padding_cache_key] = I
 		add_overlay(stool_cache[padding_cache_key])
 
@@ -80,7 +80,7 @@
 		I.plane = MOB_PLANE
 		I.layer = ABOVE_MOB_LAYER
 		if(applies_material_colour)
-			I.color = material.icon_colour
+			I.color = material.color
 		stool_cache[cache_key] = I
 	add_overlay(stool_cache[cache_key])
 
@@ -89,7 +89,7 @@
 		var/padding_cache_key = "[base_icon]-padding-[padding_material.name]-over"
 		if(isnull(stool_cache[padding_cache_key]))
 			var/image/I =  image(icon, "[base_icon]_padding_over")
-			I.color = padding_material.icon_colour
+			I.color = padding_material.color
 			I.plane = MOB_PLANE
 			I.layer = ABOVE_MOB_LAYER
 			stool_cache[padding_cache_key] = I
@@ -104,7 +104,7 @@
 			I.plane = MOB_PLANE
 			I.layer = ABOVE_MOB_LAYER
 			if(applies_material_colour)
-				I.color = material.icon_colour
+				I.color = material.color
 			stool_cache[cache_key] = I
 		add_overlay(stool_cache[cache_key])
 		if(padding_material)
@@ -114,7 +114,7 @@
 				var/image/I = image(icon, "[base_icon]_padding_armrest")
 				I.plane = MOB_PLANE
 				I.layer = ABOVE_MOB_LAYER
-				I.color = padding_material.icon_colour
+				I.color = padding_material.color
 				stool_cache[cache_key] = I
 			add_overlay(stool_cache[cache_key])
 
@@ -235,7 +235,7 @@
 		I.plane = MOB_PLANE
 		I.layer = ABOVE_MOB_LAYER
 		if(applies_material_colour)
-			I.color = material.icon_colour
+			I.color = material.color
 		add_overlay(I)
 
 /obj/structure/bed/chair/bay/chair/padded/red/smallnest

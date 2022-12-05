@@ -39,7 +39,7 @@
 		origin_tech = material.stack_origin_tech.Copy()
 
 	if(apply_colour)
-		color = material.icon_colour
+		color = material.color
 
 	if(!material.conductive)
 		flags |= NOCONDUCT
@@ -400,7 +400,7 @@
 	pickup_sound = 'sound/items/pickup/cloth.ogg'
 
 /obj/item/stack/material/resin
-	name = "resin"
+	name = MAT_RESIN
 	icon_state = "sheet-resin"
 	default_type = "resin"
 	no_variants = TRUE
@@ -428,7 +428,7 @@
 	name = "snow brick"
 	desc = "For all of your igloo building needs."
 	icon_state = "sheet-snowbrick"
-	default_type = "packed snow"
+	default_type = MAT_SNOW_PACKED
 
 /obj/item/stack/material/leather
 	name = "leather"

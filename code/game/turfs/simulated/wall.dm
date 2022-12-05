@@ -6,8 +6,8 @@
 /turf/simulated/wall
 	name = "wall"
 	desc = "A huge chunk of iron used to separate rooms."
-	icon = 'icons/turf/wall_masks.dmi'
-	icon_state = "generic"
+	icon = 'icons/turf/walls/_previews.dmi'
+	icon_state = "solid"
 	opacity = TRUE
 	density = TRUE
 	blocks_air = TRUE
@@ -18,7 +18,6 @@
 	smoothing_flags = SMOOTH_CUSTOM
 	edge_blending_priority = INFINITY		// let's not have floors render onto us mmkay?
 
-	var/icon/wall_masks = 'icons/turf/wall_masks.dmi'
 	var/damage = 0
 	var/damage_overlay = 0
 	/// damage overlays are cached
@@ -64,10 +63,13 @@
 	if(!radiate())
 		return PROCESS_KILL
 
+/turf/simulated/wall/proc/get_wall_icon()
+	. = (istype(material) && material.wall_icon) || 'icons/turf/walls/solid.dmi'
+
 /turf/simulated/wall/proc/get_material()
 	return material
 
-/turf/simulated/wall/bullet_act(var/obj/item/projectile/Proj)
+/turf/simulated/wall/bullet_act(obj/item/projectile/Proj)
 	if(istype(Proj,/obj/item/projectile/beam))
 		burn(2500)
 	else if(istype(Proj,/obj/item/projectile/ion))
@@ -237,7 +239,7 @@
 		new/obj/effect/overlay/wallrot(src)
 
 /turf/simulated/wall/proc/can_melt()
-	if(material.flags & MATERIAL_UNMELTABLE)
+	if(material.legacy_flags & MATERIAL_UNMELTABLE)
 		return 0
 	return 1
 

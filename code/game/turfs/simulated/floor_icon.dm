@@ -26,7 +26,7 @@ var/list/flooring_cache = list()
 		if(flooring_override)
 			icon_state = flooring_override
 		else
-			icon_state = flooring.icon_base
+			icon_state = flooring.base_icon_state
 			if(flooring.has_base_range)
 				icon_state = "[icon_state][rand(0,flooring.has_base_range)]"
 				flooring_override = icon_state
@@ -38,41 +38,41 @@ var/list/flooring_cache = list()
 				var/turf/simulated/floor/T = get_step(src, step_dir)
 				if(!flooring.test_link(src, T))
 					has_border |= step_dir
-					add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-edge-[step_dir]", "[flooring.icon_base]_edges", step_dir))
+					add_overlay(flooring.get_flooring_overlay("[flooring.base_icon_state]-edge-[step_dir]", "[flooring.base_icon_state]_edges", step_dir))
 
 			//Note: Doesn't actually check northeast, this is bitmath to check if we're edge'd (aka not smoothed) to NORTH and EAST
 			//North = 0001, East = 0100, Northeast = 0101, so (North|East) == Northeast, therefore (North|East)&Northeast == Northeast
 			if((has_border & NORTHEAST) == NORTHEAST)
-				add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-edge-[NORTHEAST]", "[flooring.icon_base]_edges", NORTHEAST))
+				add_overlay(flooring.get_flooring_overlay("[flooring.base_icon_state]-edge-[NORTHEAST]", "[flooring.base_icon_state]_edges", NORTHEAST))
 			if((has_border & NORTHWEST) == NORTHWEST)
-				add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-edge-[NORTHWEST]", "[flooring.icon_base]_edges", NORTHWEST))
+				add_overlay(flooring.get_flooring_overlay("[flooring.base_icon_state]-edge-[NORTHWEST]", "[flooring.base_icon_state]_edges", NORTHWEST))
 			if((has_border & SOUTHEAST) == SOUTHEAST)
-				add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-edge-[SOUTHEAST]", "[flooring.icon_base]_edges", SOUTHEAST))
+				add_overlay(flooring.get_flooring_overlay("[flooring.base_icon_state]-edge-[SOUTHEAST]", "[flooring.base_icon_state]_edges", SOUTHEAST))
 			if((has_border & SOUTHWEST) == SOUTHWEST)
-				add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-edge-[SOUTHWEST]", "[flooring.icon_base]_edges", SOUTHWEST))
+				add_overlay(flooring.get_flooring_overlay("[flooring.base_icon_state]-edge-[SOUTHWEST]", "[flooring.base_icon_state]_edges", SOUTHWEST))
 
 			if(flooring.flags & TURF_HAS_CORNERS)
 				//Like above but checking for NO similar bits rather than both similar bits.
 				if((has_border & NORTHEAST) == 0) //Are connected NORTH and EAST
 					var/turf/simulated/floor/T = get_step(src, NORTHEAST)
 					if(!flooring.test_link(src, T)) //But not NORTHEAST
-						add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-corner-[NORTHEAST]", "[flooring.icon_base]_corners", NORTHEAST))
+						add_overlay(flooring.get_flooring_overlay("[flooring.base_icon_state]-corner-[NORTHEAST]", "[flooring.base_icon_state]_corners", NORTHEAST))
 				if((has_border & NORTHWEST) == 0)
 					var/turf/simulated/floor/T = get_step(src, NORTHWEST)
 					if(!flooring.test_link(src, T))
-						add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-corner-[NORTHWEST]", "[flooring.icon_base]_corners", NORTHWEST))
+						add_overlay(flooring.get_flooring_overlay("[flooring.base_icon_state]-corner-[NORTHWEST]", "[flooring.base_icon_state]_corners", NORTHWEST))
 				if((has_border & SOUTHEAST) == 0)
 					var/turf/simulated/floor/T = get_step(src, SOUTHEAST)
 					if(!flooring.test_link(src, T))
-						add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-corner-[SOUTHEAST]", "[flooring.icon_base]_corners", SOUTHEAST))
+						add_overlay(flooring.get_flooring_overlay("[flooring.base_icon_state]-corner-[SOUTHEAST]", "[flooring.base_icon_state]_corners", SOUTHEAST))
 				if((has_border & SOUTHWEST) == 0)
 					var/turf/simulated/floor/T = get_step(src, SOUTHWEST)
 					if(!flooring.test_link(src, T))
-						add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-corner-[SOUTHWEST]", "[flooring.icon_base]_corners", SOUTHWEST))
+						add_overlay(flooring.get_flooring_overlay("[flooring.base_icon_state]-corner-[SOUTHWEST]", "[flooring.base_icon_state]_corners", SOUTHWEST))
 		if(!isnull(broken) && (flooring.flags & TURF_CAN_BREAK))
-			add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-broken-[broken]","broken[broken]"))
+			add_overlay(flooring.get_flooring_overlay("[flooring.base_icon_state]-broken-[broken]","broken[broken]"))
 		if(!isnull(burnt) && (flooring.flags & TURF_CAN_BURN))
-			add_overlay(flooring.get_flooring_overlay("[flooring.icon_base]-burned-[burnt]","burned[burnt]"))
+			add_overlay(flooring.get_flooring_overlay("[flooring.base_icon_state]-burned-[burnt]","burned[burnt]"))
 	else
 		// no flooring - just handle plating stuff
 		if(is_plating() && !(isnull(broken) && isnull(burnt))) //temp, todo
@@ -287,9 +287,9 @@ var/list/flooring_cache = list()
 
 	return is_linked
 
-/turf/simulated/floor/proc/get_flooring_overlay(var/cache_key, var/icon_base, var/icon_dir = 0)
+/turf/simulated/floor/proc/get_flooring_overlay(var/cache_key, var/base_icon_state, var/icon_dir = 0)
 	if(!flooring_cache[cache_key])
-		var/image/I = image(icon = flooring.icon, icon_state = icon_base, dir = icon_dir)
+		var/image/I = image(icon = flooring.icon, icon_state = base_icon_state, dir = icon_dir)
 		I.layer = layer
 		flooring_cache[cache_key] = I
 	return flooring_cache[cache_key]

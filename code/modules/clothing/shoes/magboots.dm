@@ -2,6 +2,7 @@
 	desc = "Magnetic boots, often used during extravehicular activity to ensure the user remains safely attached to the vehicle. They're large enough to be worn over other footwear."
 	name = "magboots"
 	icon_state = "magboots0"
+	base_icon_state = "magboots"
 	clothing_flags = PHORONGUARD
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "magboots", SLOT_ID_LEFT_HAND = "magboots")
 	species_restricted = null
@@ -11,7 +12,6 @@
 	preserve_item = 1
 	var/magpulse = 0
 	var/slowdown_on = 3
-	var/icon_base = "magboots"
 	action_button_name = "Toggle Magboots"
 	step_volume_mod = 1.3
 	drop_sound = 'sound/items/drop/metalboots.ogg'
@@ -28,14 +28,16 @@
 		magpulse = 0
 		set_slowdown()
 		force = 3
-		if(icon_base) icon_state = "[icon_base]0"
+		if(base_icon_state)
+			icon_state = "[base_icon_state]0"
 		to_chat(user, "You disable the mag-pulse traction system.")
 	else
 		clothing_flags |= NOSLIP
 		magpulse = 1
 		set_slowdown()
 		force = 5
-		if(icon_base) icon_state = "[icon_base]1"
+		if(base_icon_state)
+			icon_state = "[base_icon_state]1"
 		to_chat(user, "You enable the mag-pulse traction system.")
 	user.update_inv_shoes()	//so our mob-overlays update
 	user.update_action_buttons()
@@ -65,6 +67,7 @@
 	if(clothing_flags & NOSLIP)
 		state = "enabled"
 	. += "Its mag-pulse traction system appears to be [state]."
+
 /obj/item/clothing/shoes/magboots/vox
 
 	desc = "A pair of heavy, jagged armoured foot pieces, seemingly suitable for a velociraptor."
@@ -115,12 +118,12 @@
 /obj/item/clothing/shoes/magboots/advanced
 	name = "advanced magboots"
 	icon_state = "advmag0"
+	base_icon_state = "advmag"
 	slowdown_on = 0
-	icon_base = "advmag"
 
 /obj/item/clothing/shoes/magboots/syndicate
 	name = "blood red magboots"
 	desc = "Prior to its dissolution, many Syndicate agents were tasked with stealing NanoTrasen's prototype advanced magboots. Reverse engineering these rare tactical boots was achieved shortly before the end of the conflict."
 	icon_state = "syndiemag0"
-	icon_base = "syndiemag"
+	base_icon_state = "syndiemag"
 	slowdown_on = 0

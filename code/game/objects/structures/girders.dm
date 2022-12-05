@@ -51,7 +51,7 @@
 	health = max_health
 	displaced_health = round(max_health/4)
 	if(applies_material_colour)
-		color = girder_material.icon_colour
+		color = girder_material.color
 	if(girder_material.products_need_process()) //Am I radioactive or some other? Process me!
 		START_PROCESSING(SSobj, src)
 	else if(datum_flags & DF_ISPROCESSING) //If I happened to be radioactive or s.o. previously, and am not now, stop processing.
@@ -361,7 +361,7 @@
 	max_health = 225
 	health = 225
 	cover = 60
-	girder_material = "resin"
+	girder_material = MAT_RESIN
 
 /obj/structure/girder/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	var/turf/simulated/T = get_turf(src)

@@ -2,7 +2,7 @@
 	name = "looking glass surface"
 	desc = "Too expensive to replace. Don't break it!"
 	icon = 'icons/turf/flooring/lg_origin.dmi'
-	icon_base = "origin"
+	base_icon_state = "origin"
 	build_type = null
 	damage_temperature = T0C+200
 

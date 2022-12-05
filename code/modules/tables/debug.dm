@@ -6,17 +6,3 @@
 	New()
 		material = get_material_by_name("debugium")
 		..()
-
-/datum/material/debug
-	name = "debugium"
-	stack_type = /obj/item/stack/material/debug
-	icon_base = "debug"
-	icon_reinf = "rdebug"
-	icon_colour = "#FFFFFF"
-
-/obj/item/stack/material/debug
-	name = "debugium"
-	icon = 'icons/obj/tables.dmi'
-	icon_state = "debugium"
-	default_type = "debugium"
-

@@ -84,7 +84,7 @@
 	cold_protection    = FEET
 	heat_protection    = FEET
 
-	icon_base = null
+	base_icon_state = null
 	force = 5 // if you're kicking someone with something meant to keep you locked on a hunk of metal...
 
 	species_restricted = list(

@@ -49,7 +49,7 @@
 	if(isnull(stool_cache[cache_key]))
 		var/image/I = image(icon, base_icon)
 		if(applies_material_colour)
-			I.color = material.icon_colour
+			I.color = material.color
 		stool_cache[cache_key] = I
 	overlays |= stool_cache[cache_key]
 	// Padding overlay.
@@ -57,7 +57,7 @@
 		var/padding_cache_key = "[base_icon]-padding-[padding_material.name]"
 		if(isnull(stool_cache[padding_cache_key]))
 			var/image/I =  image(icon, "[base_icon]_padding")
-			I.color = padding_material.icon_colour
+			I.color = padding_material.color
 			stool_cache[padding_cache_key] = I
 		overlays |= stool_cache[padding_cache_key]
 	// Strings.
@@ -98,7 +98,7 @@
 			padding_type = "carpet"
 		else if(istype(W, /obj/item/stack/material))
 			var/obj/item/stack/material/M = W
-			if(M.material && (M.material.flags & MATERIAL_PADDING))
+			if(M.material && (M.material.legacy_flags & MATERIAL_PADDING))
 				padding_type = "[M.material.name]"
 		if(!padding_type)
 			to_chat(user, "You cannot pad \the [src] with that.")

@@ -9,7 +9,7 @@
 	generated.len = amt
 	. = generated
 	for(var/i in 1 to 16)
-		var/image/I = image(icon = 'icons/turf/wall/damage_masks.dmi', icon_state = "overlay_damage")
+		var/image/I = image(icon = 'icons/turf/walls/_damage_masks.dmi', icon_state = "overlay_damage")
 		I.blend_mode = BLEND_MULTIPLY
 		I.alpha = (i * alpha_inc) - 1
 		generated[i] = I
@@ -25,7 +25,7 @@
 	var/turf/simulated/wall/T = get_step(src, direction)
 	if(!T)
 		return NULLTURF_BORDER
-	return (istype(T) && (material.icon_base == T.material?.icon_base))? ADJ_FOUND : NO_ADJ_FOUND
+	return (istype(T) && (material.wall_icon == T.material?.wall_icon))? ADJ_FOUND : NO_ADJ_FOUND
 
 /turf/simulated/wall/custom_smooth(dirs)
 	smoothing_junction = dirs
@@ -39,12 +39,14 @@
 	cut_overlays()
 
 	var/image/I
+	var/material_icon_base = get_wall_icon()
+	var/base_color = material.color
 
 	// handle fakewalls
 	// TODO: MAKE FAKEWALLS NOT TURFS WTF
 	if(!density)
-		I = image('icons/turf/wall_masks.dmi', "[material.icon_base]fwall_open")
-		I.color = material.icon_colour
+		I = image(material.wall_icon, "fwall_open")
+		I.color = material.color
 		add_overlay(I)
 		return ..()
 
@@ -57,32 +59,32 @@
 	if(reinf_material)
 		// normal and reinf
 		if(construction_stage != null && construction_stage < 6)
-			I = image('icons/turf/wall_masks.dmi', "reinf_construct-[construction_stage]")
-			I.color = reinf_material.icon_colour
+			I = image('icons/turf/walls/_construction_overlays.dmi', "reinf_construct-[construction_stage]")
+			I.color = base_color
 			add_overlay(I)
 		if(reinf_material.icon_reinf_directionals)
 			for(var/i in 0 to 3)
 				state = get_corner_state_using_junctions(i)
 				dir = (1<<i)
-				I = image('icons/turf/wall_masks.dmi', "[material.icon_base][state]", dir = dir)
-				I.color = material.icon_colour
+				I = image(material_icon_base, "wall_[state]", dir = dir)
+				I.color = base_color
 				add_overlay(I)
-				I = image('icons/turf/wall_masks.dmi', "[reinf_material.icon_reinf][state]", dir = dir)
-				I.color = material.icon_colour
+				I = image(reinf_material.wall_reinf_icon, "reinf_[state]", dir = dir)
+				I.color = base_color
 				add_overlay(I)
 		else
 			for(var/i in 0 to 3)
-				I = image('icons/turf/wall_masks.dmi', "[material.icon_base][get_corner_state_using_junctions(i)]", dir = (1<<i))
-				I.color = material.icon_colour
+				I = image(material_icon_base, "wall_[get_corner_state_using_junctions(i)]", dir = (1<<i))
+				I.color = base_color
 				add_overlay(I)
-		I = image('icons/turf/wall_masks.dmi', reinf_material.icon_reinf)
-		I.color = reinf_material.icon_colour
+			I = image(reinf_material.wall_reinf_icon, "reinf")
+			I.color = reinf_material.color
 		add_overlay(I)
 	else
 		// just normal
 		for(var/i in 0 to 3)
-			I = image('icons/turf/wall_masks.dmi', "[material.icon_base][get_corner_state_using_junctions(i)]", dir = (1<<i))
-			I.color = material.icon_colour
+			I = image(material_icon_base, "wall_[get_corner_state_using_junctions(i)]", dir = (1<<i))
+			I.color = base_color
 			add_overlay(I)
 
 	// handle damage overlays

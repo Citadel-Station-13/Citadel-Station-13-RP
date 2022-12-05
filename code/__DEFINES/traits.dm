@@ -324,3 +324,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TECHNOMANCER_TRAIT "technomancer"
 
 #define CPR_TRAIT "cpr"
+
+///Used for managing KEEP_TOGETHER in [/atom/var/appearance_flags]
+#define TRAIT_KEEP_TOGETHER "keep-together"

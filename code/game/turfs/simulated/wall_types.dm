@@ -1,5 +1,5 @@
 /turf/simulated/wall/r_wall
-	icon_state = "rgeneric"
+	icon_state = "solid-reinf"
 /turf/simulated/wall/r_wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
 	return ..(mapload, "plasteel","plasteel") //3strong
 
@@ -24,43 +24,44 @@
 	icon_state = "cult"
 /turf/simulated/wall/cult/Initialize(mapload, materialtype, rmaterialtype, girdertype)
 	return ..(mapload,"cult","cult2","cult")
+
 /turf/unsimulated/wall/cult
 	name = "cult wall"
 	desc = "Hideous images dance beneath the surface."
-	icon = 'icons/turf/wall_masks.dmi'
+	icon = 'icons/turf/walls/_previews.dmi'
 	icon_state = "cult"
 
 /turf/simulated/wall/iron/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"iron")
+	return ..(mapload, MAT_IRON)
 /turf/simulated/wall/uranium/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"uranium")
+	return ..(mapload, MAT_URANIUM)
 /turf/simulated/wall/diamond/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"diamond")
+	return ..(mapload, MAT_DIAMOND)
 /turf/simulated/wall/gold/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"gold")
+	return ..(mapload, MAT_GOLD)
 /turf/simulated/wall/silver/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"silver")
+	return ..(mapload, MAT_SILVER)
 /turf/simulated/wall/lead/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"lead")
+	return ..(mapload, MAT_LEAD)
 /turf/simulated/wall/r_lead/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"lead", "lead")
+	return ..(mapload, MAT_LEAD, MAT_LEAD)
 /turf/simulated/wall/phoron/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"phoron")
+	return ..(mapload, MAT_PHORON)
 /turf/simulated/wall/sandstone/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"sandstone")
+	return ..(mapload, MAT_SANDSTONE)
 /turf/simulated/wall/ironphoron/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"iron","phoron")
+	return ..(mapload, MAT_IRON, MAT_PHORON)
 /turf/simulated/wall/golddiamond/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"gold","diamond")
+	return ..(mapload, MAT_GOLD, MAT_DIAMOND)
 /turf/simulated/wall/silvergold/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"silver","gold")
+	return ..(mapload, MAT_SILVER, MAT_GOLD)
 /turf/simulated/wall/sandstonediamond/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"sandstone","diamond")
+	return ..(mapload, MAT_SANDSTONE, MAT_DIAMOND)
 /turf/simulated/wall/snowbrick/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"packed snow")
+	return ..(mapload, MAT_SNOW_PACKED)
 
 /turf/simulated/wall/resin/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"resin",null,"resin")
+	return ..(mapload, MAT_RESIN, null, MAT_RESIN)
 
 // Kind of wondering if this is going to bite me in the butt.
 /turf/simulated/wall/skipjack/Initialize(mapload, materialtype, rmaterialtype, girdertype)
@@ -297,42 +298,4 @@ var/list/flesh_overlay_cache = list()
 		for(var/direction in GLOB.alldirs)
 			if(istype(get_step(src, direction), /turf/simulated/flesh))
 				var/turf/simulated/flesh/F = get_step(src, direction)
-				F.update_icon()
-
-/turf/simulated/bone
-	name = "bone wall"
-	desc = "This wall of aging bones is held together by sinew and dried gore. The empty eye sockets stare back at you."
-	icon = 'icons/turf/wall_masks.dmi'
-	icon_state = "bone"
-	opacity = 1
-	density = 1
-	blocks_air = 1
-
-/turf/simulated/bone/attackby()
-	return
-
-/turf/simulated/bone/Initialize(mapload)
-	. = ..()
-	update_icon(1)	//TODO: TG icon smoothing
-
-var/list/bone_overlay_cache = list()
-
-/turf/simulated/bone/update_icon(var/update_neighbors)
-	cut_overlays()
-
-	if(density)
-		icon = 'icons/turf/wall_masks.dmi'
-		icon_state = "bone"
-		for(var/direction in GLOB.cardinal)
-			var/turf/T = get_step(src,direction)
-			if(istype(T) && !T.density)
-				var/place_dir = turn(direction, 180)
-				if(!bone_overlay_cache["bone[place_dir]"])
-					bone_overlay_cache["bone[place_dir]"] = image('icons/turf/wall_masks.dmi', "bone", dir = place_dir)
-				add_overlay(bone_overlay_cache["bone[place_dir]"])
-
-	if(update_neighbors)
-		for(var/direction in GLOB.alldirs)
-			if(istype(get_step(src, direction), /turf/simulated/bone))
-				var/turf/simulated/bone/F = get_step(src, direction)
 				F.update_icon()

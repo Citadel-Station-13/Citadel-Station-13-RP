@@ -23,14 +23,14 @@
 	if(istype(material))
 		name = "[material.use_name] fuel rod assembly"
 		desc = "A fuel rod for a fusion reactor. This one is made from [material.use_name]."
-		fuel_colour = material.icon_colour
+		fuel_colour = material.color
 		fuel_type = material.use_name
 		if(material.radioactivity)
 			radioactivity = material.radioactivity
 			desc += " It is warm to the touch."
 			START_PROCESSING(SSobj, src)
 		if(material.luminescence)
-			set_light(material.luminescence, material.luminescence, material.icon_colour)
+			set_light(material.luminescence, material.luminescence, material.color)
 	else
 		name = "[fuel_type] fuel rod assembly"
 		desc = "A fuel rod for a fusion reactor. This one is made from [fuel_type]."

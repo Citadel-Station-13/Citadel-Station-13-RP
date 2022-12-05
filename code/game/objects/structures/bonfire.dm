@@ -35,7 +35,7 @@
 	if(!material)
 		qdel(src)
 		return
-	color = material.icon_colour
+	color = material.color
 
 // Blue wood.
 /obj/structure/bonfire/sifwood/Initialize(mapload)
@@ -327,7 +327,7 @@
 		qdel(consumed_fuel) // Don't know, don't care.
 		return FALSE
 
-	
+
 	if(consumed_fuel.use(1))
 		if(istype(consumed_fuel, /obj/item/stack/material/log))
 			next_fuel_consumption = world.time + 10 MINUTES

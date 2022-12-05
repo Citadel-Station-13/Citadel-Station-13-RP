@@ -1,8 +1,7 @@
 /obj/structure/table/darkglass
 	name = "darkglass table"
 	desc = "Shiny!"
-	icon = 'icons/obj/tables_vr.dmi'
-	icon_state = "darkglass_table_preview"
+	icon_state = "darkglass"
 	flipped = -1
 	can_reinforce = FALSE
 	can_plate = FALSE
@@ -24,7 +23,7 @@
 /obj/structure/table/fancyblack
 	name = "fancy table"
 	desc = "Cloth!"
-	icon = 'icons/obj/tablesfancy_vr.dmi'
+	icon = 'icons/obj/structures/tables/tablesfancy.dmi'
 	icon_state = "fancyblack"
 	flipped = -1
 	can_reinforce = FALSE

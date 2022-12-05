@@ -58,7 +58,7 @@
 			var/image/I = image(icon, "[base_icon]_armrest")
 			I.layer = MOB_LAYER + 0.1
 			I.plane = MOB_PLANE
-			I.color = padding_material.icon_colour
+			I.color = padding_material.color
 			stool_cache[cache_key] = I
 		overlays |= stool_cache[cache_key]
 
@@ -215,7 +215,7 @@
 /obj/structure/bed/chair/sofa/update_icon()
 	if(applies_material_colour && sofa_material)
 		var/datum/material/color_material = get_material_by_name(sofa_material)
-		color = color_material.icon_colour
+		color = color_material.color
 
 		if(sofa_material == "carpet")
 			name = "red [initial(name)]"
