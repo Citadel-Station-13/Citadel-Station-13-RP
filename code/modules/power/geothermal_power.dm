@@ -94,7 +94,7 @@
 	var/turf/simulated/T = src.loc
 	if(istype(T))
 		local_special_temp = T.special_temperature
-		power_provided = max(0, local_special_temp - 273) / 400
+		power_provided = max(0, local_special_temp - 273) / 250
 		if(local_special_temp > 500)
 			var/icon_temperature = local_special_temp
 
