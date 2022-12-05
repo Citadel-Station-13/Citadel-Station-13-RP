@@ -1,12 +1,15 @@
-/turf
-	var/datum/radiation_wave/rad_wave_north
-	var/datum/radiation_wave/rad_wave_south
-	var/datum/radiation_wave/rad_wave_east
-	var/datum/radiation_wave/rad_wave_west
+/datum/radiation_burst
+	/// intensity
+	var/intensity
+	/// falloff
+	var/falloff
+
+/datum/radiation_burst/New(intensity, falloff)
+	src.source = source
+	src.intensity = intensity
+	src.falloff = falloff
 
 /datum/radiation_wave
-	/// source atom - can be null
-	var/atom/source
 	/// current center of wave
 	var/turf/current
 	/// how far we've moved
@@ -26,45 +29,7 @@
 	/// mobs we already hit - we REALLY do not want to double hit mobs and turn 1500 intensity one-off to lethal.
 	var/list/hit_mobs
 
-/datum/radiation_wave/New(atom/source, turf/starting, dir, intensity = 0, falloff_modifier = RAD_FALLOFF_NORMAL, can_contaminate = TRUE)
-	switch(dir)
-		if(NORTH)
-			if(starting.rad_wave_north)
-				starting.rad_wave_north.starting_intensity += intensity
-				starting.rad_wave_north.current_intensity += intensity
-				starting.rad_wave_north.remaining_contam += intensity * RAD_CONTAMINATION_STR_COEFFICIENT
-				qdel(src)
-				return
-			else
-				starting.rad_wave_north = src
-		if(SOUTH)
-			if(starting.rad_wave_south)
-				starting.rad_wave_south.starting_intensity += intensity
-				starting.rad_wave_south.current_intensity += intensity
-				starting.rad_wave_north.remaining_contam += intensity * RAD_CONTAMINATION_STR_COEFFICIENT
-				qdel(src)
-				return
-			else
-				starting.rad_wave_south = src
-		if(EAST)
-			if(starting.rad_wave_east)
-				starting.rad_wave_east.starting_intensity += intensity
-				starting.rad_wave_east.current_intensity += intensity
-				starting.rad_wave_north.remaining_contam += intensity * RAD_CONTAMINATION_STR_COEFFICIENT
-				qdel(src)
-				return
-			else
-				starting.rad_wave_east = src
-		if(WEST)
-			if(starting.rad_wave_west)
-				starting.rad_wave_west.starting_intensity += intensity
-				starting.rad_wave_west.current_intensity += intensity
-				starting.rad_wave_north.remaining_contam += intensity * RAD_CONTAMINATION_STR_COEFFICIENT
-				qdel(src)
-				return
-			else
-				starting.rad_wave_west = src
-	src.source = source
+/datum/radiation_wave/New(turf/starting, dir, intensity = 0, falloff_modifier = RAD_FALLOFF_NORMAL, can_contaminate = TRUE)
 	src.current = starting
 	src.dir = dir
 	src.starting_intensity = src.current_intensity = intensity
@@ -81,16 +46,6 @@
 	return QDEL_HINT_IWILLGC
 
 /datum/radiation_wave/process(delta_time)
-	if(!steps)
-		switch(dir)
-			if(NORTH)
-				current.rad_wave_north = null
-			if(SOUTH)
-				current.rad_wave_south = null
-			if(EAST)
-				current.rad_wave_east = null
-			if(WEST)
-				current.rad_wave_west = null
 	current = get_step(current, dir)
 	if(!current)
 		qdel(src)
@@ -151,7 +106,7 @@
  * hits amount of contamination inflicted
  */
 /datum/radiation_wave/proc/radiate(list/atoms, strength)
-	var/cannot_contam = strength < RAD_MINIMUM_CONTAMINATION
+	var/cannot_contam = strength < RAD_MINIMUM_CONTAMINATION || !can_contaminate || !remaining_contam
 	var/list/contaminating = list()
 	for(var/atom/A as anything in atoms)
 		A.rad_act(strength, src)
@@ -165,12 +120,15 @@
 			continue
 		contaminating += A
 	. = 0
-	if(!cannot_contam && remaining_contam && length(contaminating))
-		var/contam_strength = min(remaining_contam / length(contaminating), starting_intensity * RAD_CONTAMINATION_MAXIMUM_OBJECT_RATIO)
+	if(length(contaminating))
+		// maximum we can contaminate them up to
+		var/max_str = strength * RAD_CONTAMINATION_STR_COEFFICIENT
+		// how much we're going to apply
+		var/apply_str = min(max_str, remaining_contam / length(contaminating))
 		for(var/atom/A as anything in contaminating)
 			var/datum/component/radioactive/R = A.GetComponent(/datum/component/radioactive)
 			if(!R)
-				A.AddComponent(/datum/component/radioactive, contam_strength, source)
-				. += contam_strength
+				A.AddComponent(/datum/component/radioactive, apply_str)
+				. += apply_str
 			else
-				. += R.constructive_interference(contam_strength)
+				. += R.constructive_interference(max_str, apply_str)

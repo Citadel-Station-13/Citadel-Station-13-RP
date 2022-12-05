@@ -7,6 +7,13 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 	var/list/warned_atoms = list()
 	/// z radiation listeners - nested list
 	var/static/list/z_listeners = list()
+	/// waves about to be sent out on next tick; list [ turf = list(burst) ]
+	var/static/list/queued_waves = list()
+
+/datum/controller/subsystem/processing/radiation/fire(resumed)
+	if(!resumed)
+		queued_waves = list()
+	..()
 
 /datum/controller/subsystem/processing/radiation/on_max_z_changed(old_z_count, new_z_count)
 	var/old = z_listeners.len
@@ -23,8 +30,34 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 	warned_atoms[ref] = TRUE
 	var/atom/master = contamination.parent
 	// SSblackbox.record_feedback("tally", "contaminated", 1, master.type)
-	var/msg = "has become contaminated with enough radiation to contaminate other objects. || Source: [contamination.source] || Strength: [contamination.strength]"
+	var/msg = "has become contaminated with enough radiation to contaminate other objects. || Strength: [contamination.strength]"
 	master.investigate_log(msg, INVESTIGATE_RADIATION)
+
+/datum/controller/subsystem/processing/radiation/proc/flush_queue()
+	for(var/turf/T as anything in queued_waves)
+		var/list/L = queued_waves[T]
+		for(var/datum/radiation_burst/B as anything in L)
+			new /datum/radiation_wave(T, NORTH, B.intensity, B.falloff, TRUE)
+			new /datum/radiation_wave(T, SOUTH, B.intensity, B.falloff, TRUE)
+			new /datum/radiation_wave(T, EAST, B.intensity, B.falloff, TRUE)
+			new /datum/radiation_wave(T, WEST, B.intensity, B.falloff, TRUE)
+
+/datum/controller/subsystem/processing/radiation/proc/queue_wave(turf/source, intensity, falloff, can_contaminate)
+	// if not contaminating we immediately release, pointless to keep going
+	if(!can_contaminate)
+		new /datum/radiation_wave(source, NORTH, intensity, falloff, FALSE)
+		new /datum/radiation_wave(source, SOUTH, intensity, falloff, FALSE)
+		new /datum/radiation_wave(source, EAST, intensity, falloff, FALSE)
+		new /datum/radiation_wave(source, WEST, intensity, falloff, FALSE)
+	var/list/datum/radiation_burst/queue = queued_waves[source]
+	if(!queue)
+		queue = list()
+		queued_waves[source] = queue
+	for(var/datum/radiation_burst/B as anything in queue)
+		if(B.falloff == falloff)
+			B.intensity += intensity
+			return
+	queue += new /datum/radiation_burst(source, intensity, falloff)
 
 /**
  * todo: comment
@@ -49,8 +82,7 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 	else
 		T = nested
 	if(waves && T)
-		for(var/dir in GLOB.cardinal)
-			new /datum/radiation_wave(source, T, dir, intensity, falloff_modifier, can_contaminate)
+		queue_wave(T, intensity, falloff_modifier, can_contaminate)
 		var/static/last_huge_pulse = 0
 		if(intensity > 1000 && world.time > last_huge_pulse + 10 SECONDS)
 			last_huge_pulse = world.time

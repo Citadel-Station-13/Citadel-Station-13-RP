@@ -6,7 +6,6 @@
 /datum/component/radioactive
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
 
-	var/source
 	/// half life in deciseconds
 	var/hl3_release_date
 	var/strength
@@ -14,9 +13,8 @@
 	/// distance falloff
 	var/falloff = RAD_FALLOFF_CONTAMINATION_NORMAL
 
-/datum/component/radioactive/Initialize(_strength=0, _source, _half_life = RAD_HALF_LIFE_DEFAULT, _can_contaminate = TRUE, falloff)
+/datum/component/radioactive/Initialize(_strength=0, _half_life = RAD_HALF_LIFE_DEFAULT, _can_contaminate = TRUE, falloff)
 	strength = _strength
-	source = _source
 	hl3_release_date = _half_life
 	can_contaminate = _can_contaminate
 	if(falloff)
@@ -79,21 +77,21 @@
 		return
 	if(C)
 		var/datum/component/radioactive/other = C
-		constructive_interference(other.strength)
+		constructive_interference(other.strength, other.strength)
 	else
-		constructive_interference(_strength)
+		constructive_interference(_strength, _strength)
 
 /**
  * returns amount added
  */
-/datum/component/radioactive/proc/constructive_interference(str)
+/datum/component/radioactive/proc/constructive_interference(limit, amt)
 	// permanent ones shouldn't
 	if(!hl3_release_date)
 		return 0
-	if(strength > str)
+	. = min(amt, limit - strength)
+	if(. < 0)
 		return 0
-	. = str - strength
-	strength = str
+	strength += .
 
 /datum/component/radioactive/proc/rad_examine(datum/source, mob/user, list/examine_list)
 	var/atom/master = parent

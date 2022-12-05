@@ -10,9 +10,9 @@
 
 //? Only defaults are defined for the above reasons.
 /// default falloff
-#define RAD_FALLOFF_NORMAL 1
+#define RAD_FALLOFF_NORMAL 0.8
 /// default falloff for contaminated objects
-#define RAD_FALLOFF_CONTAMINATION_NORMAL 2
+#define RAD_FALLOFF_CONTAMINATION_NORMAL 1.6
 /// default falloff for anomalies
 #define RAD_FALLOFF_ANOMALY 0.33
 /// default falloff for smashed anomalies
@@ -147,7 +147,8 @@
 #define RAD_HALF_LIFE_ANOMALY_SMASH (1 MINUTES)
 
 //! contamination - uh oh
-// WARNING: The deines below could have disastrous consequences if tweaked incorrectly. See: The great SM purge of Oct.6.2017
+//? WARNING: The deines below could have disastrous consequences if tweaked incorrectly. See: The great SM purge of Oct.6.2017
+//? Touching them without mathing it out and extensive testing is not a great idea.
 // contamination_chance = 		(strength-RAD_MINIMUM_CONTAMINATION) * RAD_CONTAMINATION_CHANCE_COEFFICIENT * min(1/(steps*RAD_DISTANCE_COEFFICIENT), 1))
 // contamination_strength = 	(strength-RAD_MINIMUM_CONTAMINATION) * RAD_CONTAMINATION_STR_COEFFICIENT
 #define RAD_MINIMUM_CONTAMINATION 200				// How strong does a radiation wave have to be to contaminate objects
