@@ -9,3 +9,4 @@
 	key = "z"
 	space_chance = 20
 	syllables = list("z", "dz", "i", "iv", "ti", "az", "hix", "xo", "av", "xo", "x", "za", "at", "vi")
+	shorthand = "ZAD"
