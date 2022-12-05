@@ -11,10 +11,6 @@
 	},
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
-"ah" = (
-/obj/structure/fence/door,
-/turf/simulated/floor/lythios43c/indoors,
-/area/rift/geothermal)
 "al" = (
 /obj/machinery/atmospherics/component/unary/heater{
 	dir = 1;
@@ -148,6 +144,10 @@
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
+"aX" = (
+/obj/effect/mist,
+/turf/simulated/floor/outdoors/rocks/lythios43c,
 /area/rift/surfacebase/outside/west)
 "aZ" = (
 /obj/effect/floor_decal/industrial/halfstair{
@@ -1499,6 +1499,9 @@
 "hj" = (
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/exterior/checkpoint/south)
+"hm" = (
+/turf/simulated/mineral/ignore_cavegen/lythios43c,
+/area/rift/surfacebase/outside/west)
 "ho" = (
 /obj/structure/fence{
 	dir = 4
@@ -1592,6 +1595,11 @@
 /obj/structure/simple_door,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/exterior/nuketown/bunker)
+"hF" = (
+/obj/effect/mist,
+/obj/effect/mist,
+/turf/simulated/floor/water/indoors/lythios43c,
+/area/rift/surfacebase/outside/west)
 "hH" = (
 /obj/machinery/atmospherics/pipe/simple/visible/black{
 	dir = 4
@@ -2252,11 +2260,9 @@
 /turf/simulated/floor,
 /area/maintenance/substation/outpost)
 "kQ" = (
-/obj/structure/fence/door{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/geothermal)
+/obj/effect/mist,
+/turf/simulated/floor/water/indoors/lythios43c,
+/area/rift/surfacebase/outside/west)
 "kS" = (
 /obj/structure/closet/excavation,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -2741,12 +2747,6 @@
 	},
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/west)
-"nl" = (
-/obj/structure/fence/corner{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/geothermal)
 "nn" = (
 /turf/simulated/wall,
 /area/rnd/outpost/xenoarch_storage)
@@ -3963,6 +3963,12 @@
 /obj/structure/loot_pile/mecha/ripley/random_sprite,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
 /area/rift/surfacebase/outside/west)
+"tl" = (
+/obj/structure/fence/corner{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/geothermal)
 "to" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -7162,6 +7168,9 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/facility/exterior)
+"JT" = (
+/turf/simulated/floor/outdoors/rocks/lythios43c,
+/area/rift/surfacebase/outside/west)
 "JV" = (
 /obj/structure/cable/green{
 	icon_state = "1-8"
@@ -7996,6 +8005,12 @@
 /obj/structure/barricade/cutout,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/exterior/bunker)
+"NI" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/geothermal)
 "NL" = (
 /obj/item/banner/green,
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
@@ -8211,10 +8226,8 @@
 /turf/simulated/wall,
 /area/rift/exterior/nuketown)
 "OJ" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/obj/structure/fence/door,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/geothermal)
 "ON" = (
 /obj/structure/cable/green{
@@ -8569,6 +8582,12 @@
 /obj/machinery/suspension_gen,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenoarch_storage)
+"Qy" = (
+/obj/structure/fence/door{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/geothermal)
 "QH" = (
 /obj/structure/railing{
 	dir = 8
@@ -33458,9 +33477,9 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
+PP
+PP
+PP
 sv
 sv
 sv
@@ -33651,12 +33670,12 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
+PP
+PP
+PP
+PP
+PP
+PP
 sv
 sv
 sv
@@ -33844,15 +33863,15 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
+PP
 sv
 sv
 sv
@@ -34037,18 +34056,18 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+PP
+PP
+PP
+PP
+PP
+hm
+hm
+hm
+hm
+hm
+JT
+JT
 sv
 sv
 sv
@@ -34231,20 +34250,20 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+PP
+PP
+PP
+PP
+hm
+hm
+hm
+JT
+JT
+JT
+JT
+JT
+JT
+JT
 sv
 dQ
 dQ
@@ -34424,22 +34443,22 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+PP
+PP
+PP
+PP
+hm
+hm
+JT
+JT
+JT
+JT
+JT
+JT
+JT
+JT
+JT
+JT
 dQ
 dQ
 dQ
@@ -34618,22 +34637,22 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+PP
+PP
+PP
+hm
+hm
+hm
+JT
+JT
+aX
+aX
+JT
+JT
+JT
+JT
+JT
+JT
 dQ
 dQ
 dQ
@@ -34813,21 +34832,21 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+PP
+hm
+hm
+JT
+JT
+JT
+kQ
+kQ
+kQ
+JT
+JT
+JT
+JT
+JT
+JT
 dQ
 dQ
 dQ
@@ -35007,21 +35026,21 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+PP
+hm
+JT
+JT
+JT
+aX
+hF
+hF
+hF
+kQ
+JT
+JT
+JT
+JT
+JT
 dQ
 dQ
 dQ
@@ -35201,21 +35220,21 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+PP
+hm
+JT
+JT
+JT
+JT
+hF
+hF
+hF
+kQ
+JT
+JT
+JT
+JT
+JT
 dQ
 dQ
 dQ
@@ -35395,21 +35414,21 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+PP
+hm
+JT
+JT
+JT
+JT
+kQ
+kQ
+aX
+aX
+JT
+JT
+JT
+JT
+JT
 dQ
 dQ
 dQ
@@ -35589,20 +35608,20 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+PP
+PP
+JT
+JT
+JT
+JT
+JT
+aX
+JT
+JT
+JT
+JT
+JT
+JT
 sv
 dQ
 dQ
@@ -35785,13 +35804,13 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+JT
+JT
+JT
+JT
+JT
+JT
+JT
 Tq
 Tq
 Tq
@@ -35979,13 +35998,13 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+JT
+JT
+JT
+JT
+JT
+JT
+JT
 Tq
 rd
 rd
@@ -36174,8 +36193,8 @@ sv
 sv
 sv
 sv
-sv
-sv
+JT
+JT
 Tq
 Tq
 Tq
@@ -36368,15 +36387,15 @@ sv
 sv
 sv
 sv
-sv
-sv
+JT
+JT
 Tq
 sL
 Rg
 qo
-ah
 OJ
-OJ
+NI
+NI
 Mr
 sv
 sv
@@ -36562,16 +36581,16 @@ sv
 sv
 sv
 sv
-sv
-sv
+JT
+JT
 Tq
 KO
 YM
 ku
 Tq
-kQ
-kQ
-nl
+Qy
+Qy
+tl
 sv
 sv
 dQ
@@ -36756,8 +36775,8 @@ sv
 sv
 sv
 sv
-sv
-sv
+JT
+JT
 Tq
 Tq
 Tq
@@ -36950,10 +36969,10 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
+JT
+JT
+JT
+JT
 sv
 mW
 sv
@@ -37145,8 +37164,8 @@ sv
 sv
 sv
 sv
-sv
-sv
+JT
+JT
 sv
 sv
 mW
