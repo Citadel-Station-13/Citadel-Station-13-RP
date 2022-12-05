@@ -24,7 +24,7 @@
 	. = ..(mapload)
 	if(!material_name)
 		material_name = MAT_STEEL
-	material = get_material_by_name(material_name)
+	material = GET_MATERIAL_REF(material_name)
 	if(!material)
 		qdel(src)
 		return
@@ -135,9 +135,9 @@
 	else if(istype(W,/obj/item)) //not sure, can't not just weapons get passed to this proc?
 		hardness -= W.force/10
 		visible_message("<span class='danger'>[user] hits [src] with [W]!</span>")
-		if(material == get_material_by_name(MAT_RESIN))
+		if(material == GET_MATERIAL_REF(MAT_RESIN))
 			playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
-		else if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD) || get_material_by_name(MAT_HARDWOOD)))
+		else if(material == (GET_MATERIAL_REF(MAT_WOOD) || GET_MATERIAL_REF(MAT_SIFWOOD) || GET_MATERIAL_REF(MAT_HARDWOOD)))
 			playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
 		else
 			playsound(src, 'sound/weapons/smash.ogg', 50, 1)
@@ -160,9 +160,9 @@
 
 /obj/structure/simple_door/attack_generic(var/mob/user, var/damage, var/attack_verb)
 	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
-	if(material == get_material_by_name(MAT_RESIN))
+	if(material == GET_MATERIAL_REF(MAT_RESIN))
 		playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
-	else if(material == (get_material_by_name(MAT_WOOD) || get_material_by_name(MAT_SIFWOOD) || get_material_by_name(MAT_HARDWOOD)))
+	else if(material == (GET_MATERIAL_REF(MAT_WOOD) || GET_MATERIAL_REF(MAT_SIFWOOD) || GET_MATERIAL_REF(MAT_HARDWOOD)))
 		playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
 	else
 		playsound(src, 'sound/weapons/smash.ogg', 50, 1)

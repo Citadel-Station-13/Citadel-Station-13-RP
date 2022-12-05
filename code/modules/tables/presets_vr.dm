@@ -7,7 +7,7 @@
 	can_plate = FALSE
 
 /obj/structure/table/darkglass/New()
-	material = get_material_by_name("darkglass")
+	material = GET_MATERIAL_REF("darkglass")
 	verbs -= /obj/structure/table/verb/do_flip
 	verbs -= /obj/structure/table/proc/do_put
 
@@ -30,7 +30,7 @@
 	can_plate = FALSE
 
 /obj/structure/table/fancyblack/Initialize(mapload)
-	material = get_material_by_name("fancyblack")
+	material = GET_MATERIAL_REF("fancyblack")
 	verbs -= /obj/structure/table/verb/do_flip
 	verbs -= /obj/structure/table/proc/do_put
 	. = ..()
@@ -44,5 +44,5 @@
 	color = "#FFFF00"
 
 /obj/structure/table/gold/Initialize(mapload)
-	material = get_material_by_name(MAT_GOLD)
+	material = GET_MATERIAL_REF(MAT_GOLD)
 	. = ..()

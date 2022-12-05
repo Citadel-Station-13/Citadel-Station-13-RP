@@ -492,7 +492,7 @@
 	ext_cooldown = 1
 	cooldown_per_use = 10
 	var/static/list/mtypes = list(
-		/datum/material/iron,
+		/datum/material/solid/metal/iron,
 		/datum/material/glass,
 		/datum/material/silver,
 		/datum/material/gold,

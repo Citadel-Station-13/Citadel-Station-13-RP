@@ -145,29 +145,6 @@
 	stack_type = /obj/item/stack/material/marble
 
 
-/datum/material/steel
-	name = MAT_STEEL
-	stack_type = /obj/item/stack/material/steel
-	integrity = 150
-	conductivity = 11 // Assuming this is carbon steel, it would actually be slightly less conductive than iron, but lets ignore that.
-	protectiveness = 10 // 33%
-	wall_icon = 'icons/turf/walls/solid.dmi'
-	table_icon = 'icons/obj/structures/tables/metal.dmi'
-	wall_reinf_icon = 'icons/turf/walls/reinf.dmi'
-	color = "#666666"
-
-/datum/material/steel/hull
-	name = MAT_STEELHULL
-	stack_type = /obj/item/stack/material/steel/hull
-	integrity = 250
-	explosion_resistance = 10
-	wall_icon = 'icons/turf/walls/hull.dmi'
-	texture_layer_icon_state = "mesh"
-	color = "#666677"
-
-/datum/material/steel/hull/place_sheet(turf/target) //Deconstructed into normal steel sheets.
-	new /obj/item/stack/material/steel(target)
-
 /datum/material/diona
 	name = "biomass"
 	color = null
@@ -181,85 +158,6 @@
 
 /datum/material/diona/place_dismantled_girder(var/turf/target)
 	spawn_diona_nymph(target)
-
-/datum/material/steel/holographic
-	name = "holo" + MAT_STEEL
-	display_name = MAT_STEEL
-	stack_type = null
-	shard_type = SHARD_NONE
-
-/datum/material/plasteel
-	name = "plasteel"
-	stack_type = /obj/item/stack/material/plasteel
-	integrity = 400
-	melting_point = 6000
-	wall_icon = 'icons/turf/walls/solid.dmi'
-	table_icon = 'icons/obj/structures/tables/metal.dmi'
-	wall_reinf_icon = 'icons/turf/walls/reinf.dmi'
-	color = "#777777"
-	explosion_resistance = 25
-	hardness = 80
-	weight = 23
-	protectiveness = 20 // 50%
-	conductivity = 13 // For the purposes of balance.
-	stack_origin_tech = list(TECH_MATERIAL = 2)
-	composite_material = list(MAT_STEEL = SHEET_MATERIAL_AMOUNT, MAT_PLATINUM = SHEET_MATERIAL_AMOUNT) //todo
-	radiation_resistance = 14
-
-/datum/material/plasteel/hull
-	name = MAT_PLASTEELHULL
-	stack_type = /obj/item/stack/material/plasteel/hull
-	integrity = 600
-	wall_icon = 'icons/turf/walls/hull.dmi'
-	wall_reinf_icon = 'icons/turf/walls/reinf_mesh.dmi'
-	color = "#777788"
-	explosion_resistance = 40
-
-/datum/material/plasteel/hull/place_sheet(var/turf/target) //Deconstructed into normal plasteel sheets.
-	new /obj/item/stack/material/plasteel(target)
-
-// Very rare alloy that is reflective, should be used sparingly.
-/datum/material/durasteel
-	name = "durasteel"
-	stack_type = /obj/item/stack/material/durasteel
-	integrity = 600
-	melting_point = 7000
-	wall_icon = 'icons/turf/walls/metal.dmi'
-	wall_reinf_icon = 'icons/turf/walls/reinf_metal.dmi'
-	color = "#6EA7BE"
-	explosion_resistance = 75
-	hardness = 100
-	weight = 28
-	protectiveness = 60 // 75%
-	reflectivity = 0.7 // Not a perfect mirror, but close.
-	stack_origin_tech = list(TECH_MATERIAL = 8)
-	composite_material = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT, MAT_DIAMOND = SHEET_MATERIAL_AMOUNT) //shrug
-
-/datum/material/durasteel/hull //The 'Hardball' of starship hulls.
-	name = MAT_DURASTEELHULL
-	wall_icon = 'icons/turf/walls/hull.dmi'
-	wall_reinf_icon = 'icons/turf/walls/reinf_mesh.dmi'
-	color = "#45829a"
-	explosion_resistance = 90
-	reflectivity = 0.9
-
-/datum/material/durasteel/hull/place_sheet(var/turf/target) //Deconstructed into normal durasteel sheets.
-	new /obj/item/stack/material/durasteel(target)
-
-/datum/material/plasteel/titanium
-	name = MAT_TITANIUM
-	stack_type = /obj/item/stack/material/titanium
-	conductivity = 2.38
-	wall_icon = 'icons/turf/walls/metal.dmi'
-	door_icon_base = "metal"
-	color = "#D1E6E3"
-	wall_reinf_icon = 'icons/turf/walls/reinf_metal.dmi'
-
-/datum/material/plasteel/titanium/hull
-	name = MAT_TITANIUMHULL
-	stack_type = null
-	wall_icon = 'icons/turf/walls/hull.dmi'
-	wall_reinf_icon = 'icons/turf/walls/reinf_mesh.dmi'
 
 /datum/material/glass
 	name = "glass"
@@ -476,15 +374,6 @@
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
 
-/datum/material/iron
-	name = "iron"
-	stack_type = /obj/item/stack/material/iron
-	color = "#5C5454"
-	weight = 22
-	conductivity = 10
-	sheet_singular_name = "ingot"
-	sheet_plural_name = "ingots"
-
 /datum/material/lead
 	name = MAT_LEAD
 	stack_type = /obj/item/stack/material/lead
@@ -533,7 +422,6 @@
 	shard_type = SHARD_SHARD
 	weight = 30
 	negation = 25
-	explosion_resistance = 85
 	reflectivity = 0.2
 	radiation_resistance = 10
 	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_MAGNET = 8, TECH_PHORON = 6, TECH_BLUESPACE = 6, TECH_ARCANE = 3)
@@ -574,7 +462,6 @@
 	color = "#6C7364"
 	integrity = 1200
 	melting_point = 6000       // Hull plating.
-	explosion_resistance = 200 // Hull plating.
 	hardness = 500
 	weight = 500
 	protectiveness = 80 // 80%
@@ -616,7 +503,6 @@
 	sheet_singular_name = "blob"
 	sheet_plural_name = "blobs"
 	conductive = 0
-	explosion_resistance = 60
 	radiation_resistance = 10
 	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_PHORON = 4, TECH_BLUESPACE = 4, TECH_BIO = 7)
 	stack_type = /obj/item/stack/material/resin
@@ -639,69 +525,6 @@
 		return 1
 	return 0
 
-/datum/material/wood
-	name = MAT_WOOD
-	stack_type = /obj/item/stack/material/wood
-	color = "#9c5930"
-	integrity = 50
-	wall_icon = 'icons/turf/walls/wood.dmi'
-	explosion_resistance = 2
-	shard_type = SHARD_SPLINTER
-	shard_can_repair = 0 // you can't weld splinters back into planks
-	hardness = 15
-	weight = 18
-	protectiveness = 8 // 28%
-	conductive = 0
-	conductivity = 1
-	melting_point = T0C+300 //okay, not melting in this case, but hot enough to destroy wood
-	ignition_point = T0C+288
-	stack_origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 1)
-	dooropen_noise = 'sound/effects/doorcreaky.ogg'
-	door_icon_base = "wood"
-	destruction_desc = "splinters"
-	sheet_singular_name = "plank"
-	sheet_plural_name = "planks"
-
-/datum/material/wood/log
-	name = MAT_LOG
-	wall_icon = 'icons/turf/walls/logs.dmi'
-	stack_type = /obj/item/stack/material/log
-	sheet_singular_name = null
-	sheet_plural_name = "pile"
-
-/datum/material/wood/log/sif
-	name = MAT_SIFLOG
-	color = "#0099cc" // Cyan-ish
-	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2)
-	stack_type = /obj/item/stack/material/log/sif
-
-/datum/material/wood/log/hard
-	name = MAT_HARDLOG
-	color = "#6f432a"
-	stack_type = /obj/item/stack/material/log/hard
-
-/datum/material/wood/holographic
-	name = "holowood"
-	display_name = "wood"
-	stack_type = null
-	shard_type = SHARD_NONE
-
-/datum/material/wood/sif
-	name = MAT_SIFWOOD
-	stack_type = /obj/item/stack/material/wood/sif
-	color = "#0099cc" // Cyan-ish
-	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2) // Alien wood would presumably be more interesting to the analyzer.
-
-/datum/material/wood/hardwood
-	name = MAT_HARDWOOD
-	stack_type = /obj/item/stack/material/wood/hard
-	color = "#42291a"
-	wall_icon = 'icons/turf/walls/stone.dmi'
-	wall_reinf_icon = 'icons/turf/walls/reinf_stone.dmi'
-	icon_reinf_directionals = TRUE
-	integrity = 65	//a bit stronger than regular wood
-	hardness = 20
-	weight = 20	//likewise, heavier
 
 /datum/material/cardboard
 	name = "cardboard"
@@ -805,7 +628,6 @@
 	sheet_singular_name = "glob"
 	sheet_plural_name = "globs"
 	conductive = 0
-	explosion_resistance = 60
 	radiation_resistance = 10
 	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_PHORON = 4, TECH_BLUESPACE = 4, TECH_BIO = 7)
 
@@ -836,7 +658,6 @@
 	sheet_singular_name = "fragment"
 	sheet_plural_name = "fragments"
 	conductive = 0
-	explosion_resistance = 60
 	radiation_resistance = 10
 	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_PHORON = 4, TECH_BLUESPACE = 4, TECH_BIO = 7)
 
@@ -1026,7 +847,6 @@
 	sheet_plural_name = "meats"
 	integrity = 1200
 	melting_point = 6000
-	explosion_resistance = 200
 	hardness = 500
 	weight = 500
 
@@ -1102,7 +922,6 @@
 	sheet_singular_name = "bar"
 	sheet_plural_name = "bars"
 	conductive = 0
-	explosion_resistance = 20//normal resin has 60, we are much softer
 	radiation_resistance = 10
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2)
 	stack_type = /obj/item/stack/material/hybrid_resin

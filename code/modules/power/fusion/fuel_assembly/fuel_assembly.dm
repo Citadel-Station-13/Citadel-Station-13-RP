@@ -19,7 +19,7 @@
 
 /obj/item/fuel_assembly/Initialize(mapload)
 	. = ..()
-	var/datum/material/material = get_material_by_name(fuel_type)
+	var/datum/material/material = GET_MATERIAL_REF(fuel_type)
 	if(istype(material))
 		name = "[material.use_name] fuel rod assembly"
 		desc = "A fuel rod for a fusion reactor. This one is made from [material.use_name]."

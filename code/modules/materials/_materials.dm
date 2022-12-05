@@ -73,7 +73,7 @@ var/list/name_to_material
 
 
 /proc/material_display_name(name)
-	var/datum/material/material = get_material_by_name(name)
+	var/datum/material/material = GET_MATERIAL_REF(name)
 	if(material)
 		return material.display_name
 	return null
@@ -81,6 +81,8 @@ var/list/name_to_material
 
 //! Material definition and procs follow.
 /datum/material
+	abstract_type = /datum/material
+
 	//! Intrisics
 	/// Unique name for use in indexing the list.
 	var/name
@@ -179,8 +181,6 @@ var/list/name_to_material
 	var/protectiveness = 10
 	/// How reflective to light is the material?  Currently used for laser reflection and defense.
 	var/reflectivity = 0
-	/// Only used by walls currently.
-	var/explosion_resistance = 5
 	/// Objects that respect this will randomly absorb impacts with this var as the percent chance.
 	var/negation = 0
 	/// Objects that have trouble staying in the same physical space by sheer laws of nature have this. Percent for respecting items to cause teleportation.
@@ -211,7 +211,7 @@ var/list/name_to_material
 	/// Prob of wall destruction by hulk, used for edge damage in weapons.  Also used for bullet protection in armor.
 	var/hardness = 60
 	/// Determines blunt damage/throw_force for weapons.
-	var/weight = 20
+	var/weight = MAT_VALUE_NORMAL
 
 	/// Noise when someone is faceplanted onto a table made of this material.
 	var/tableslam_noise = 'sound/weapons/tablehit1.ogg'
@@ -255,7 +255,7 @@ var/list/name_to_material
 			source.alpha = alpha
 		if(texture_layer_icon_state)
 			ADD_KEEP_TOGETHER(source, MATERIAL_SOURCE(src))
-			source.add_filter("material_texture_[name]",1,layering_filter(icon=cached_texture_filter_icon,blend_mode=BLEND_INSET_OVERLAY))
+			source.add_filter("material_texture_[name]", 1, layering_filter(icon = cached_texture_filter_icon, blend_mode = BLEND_INSET_OVERLAY))
 
 	if(alpha < 255)
 		source.opacity = FALSE

@@ -16,7 +16,7 @@
 	. = ..()
 	if(!material_name)
 		material_name = "wood"
-	material = get_material_by_name("[material_name]")
+	material = GET_MATERIAL_REF("[material_name]")
 	if(!material)
 		qdel(src)
 		return
@@ -66,7 +66,7 @@
 	. = ..(mapload)
 	if(!material_name)
 		material_name = "wood"
-	material = get_material_by_name("[material_name]")
+	material = GET_MATERIAL_REF("[material_name]")
 	if(!material)
 		qdel(src)
 		return

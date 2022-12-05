@@ -43,7 +43,7 @@
 
 
 /obj/structure/girder/proc/set_material(var/new_material)
-	girder_material = get_material_by_name(new_material)
+	girder_material = GET_MATERIAL_REF(new_material)
 	if(!girder_material)
 		qdel(src)
 	name = "[girder_material.display_name] [initial(name)]"
@@ -251,7 +251,7 @@
 	var/turf/Tsrc = get_turf(src)
 	Tsrc.PlaceOnTop(/turf/simulated/wall)
 	var/turf/simulated/wall/T = get_turf(src)
-	T.set_material(M, reinf_material, girder_material)
+	T.set_materials(M, reinf_material, girder_material)
 	if(wall_fake)
 		T.can_open = 1
 	T.add_hiddenprint(usr)
@@ -402,7 +402,7 @@
 			// Apparently set_material(...) for walls requires refs to the material singletons and not strings.
 			// This is different from how other material objects with their own set_material(...) do it, but whatever.
 			var/datum/material/M = name_to_material[the_rcd.material_to_use]
-			new_T.set_material(M, the_rcd.make_rwalls ? M : null, girder_material)
+			new_T.set_materials(M, the_rcd.make_rwalls ? M : null, girder_material)
 			new_T.add_hiddenprint(user)
 			qdel(src)
 			return TRUE

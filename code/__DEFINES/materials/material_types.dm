@@ -48,7 +48,6 @@
 #define MAT_VERDANTIUM     "verdantium"
 #define MAT_WOOD           "wood"
 
-
 #define SHARD_SHARD        "shard"
 #define SHARD_SHRAPNEL     "shrapnel"
 #define SHARD_STONE_PIECE  "piece"

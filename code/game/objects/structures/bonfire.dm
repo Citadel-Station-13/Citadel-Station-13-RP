@@ -31,7 +31,7 @@
 
 	if(!material_name)
 		material_name = MAT_WOOD
-	material = get_material_by_name("[material_name]")
+	material = GET_MATERIAL_REF("[material_name]")
 	if(!material)
 		qdel(src)
 		return

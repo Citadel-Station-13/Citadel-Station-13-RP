@@ -214,7 +214,7 @@
 
 /obj/structure/bed/chair/sofa/update_icon()
 	if(applies_material_colour && sofa_material)
-		var/datum/material/color_material = get_material_by_name(sofa_material)
+		var/datum/material/color_material = GET_MATERIAL_REF(sofa_material)
 		color = color_material.color
 
 		if(sofa_material == "carpet")
@@ -402,7 +402,7 @@
 	. = ..(mapload)
 	if(!new_material)
 		new_material = MAT_WOOD
-	material = get_material_by_name(new_material)
+	material = GET_MATERIAL_REF(new_material)
 	update_icon()
 
 /obj/structure/bed/chair/pew/left

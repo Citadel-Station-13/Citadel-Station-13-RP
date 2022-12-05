@@ -361,7 +361,7 @@ var/list/table_icon_cache = list()
 	if(full_return || prob(20))
 		new /obj/item/stack/material/steel(src.loc)
 	else
-		var/datum/material/M = get_material_by_name(MAT_STEEL)
+		var/datum/material/M = GET_MATERIAL_REF(MAT_STEEL)
 		S = M.place_shard(loc)
 		if(S) shards += S
 	qdel(src)

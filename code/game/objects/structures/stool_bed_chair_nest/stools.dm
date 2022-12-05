@@ -20,9 +20,9 @@ var/global/list/stool_cache = list() //haha stool
 	. = ..(mapload)
 	if(!new_material)
 		new_material = MAT_STEEL
-	material = get_material_by_name(new_material)
+	material = GET_MATERIAL_REF(new_material)
 	if(new_padding_material)
-		padding_material = get_material_by_name(new_padding_material)
+		padding_material = GET_MATERIAL_REF(new_padding_material)
 	if(!istype(material))
 		qdel(src)
 		return
@@ -60,7 +60,7 @@ var/global/list/stool_cache = list() //haha stool
 		desc = "A stool. Apply butt with care. It's made of [material.use_name]."
 
 /obj/item/stool/proc/add_padding(var/padding_type)
-	padding_material = get_material_by_name(padding_type)
+	padding_material = GET_MATERIAL_REF(padding_type)
 	update_icon()
 
 /obj/item/stool/proc/remove_padding()

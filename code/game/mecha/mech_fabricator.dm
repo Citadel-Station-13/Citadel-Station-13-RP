@@ -699,7 +699,7 @@
 	var/contains = materials[matstring]
 	if(!contains)
 		return
-	var/datum/material/M = get_material_by_name(matstring)
+	var/datum/material/M = GET_MATERIAL_REF(matstring)
 
 	var/obj/item/stack/material/S = M.place_sheet(get_turf(src))
 	if(amount <= 0)

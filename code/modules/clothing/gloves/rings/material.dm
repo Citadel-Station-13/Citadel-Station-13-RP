@@ -8,7 +8,7 @@
 	. = ..()
 	if(!new_material)
 		new_material = MAT_STEEL
-	material = get_material_by_name(new_material)
+	material = GET_MATERIAL_REF(new_material)
 	if(!istype(material))
 		qdel(src)
 		return

@@ -437,7 +437,7 @@
 	. = ..(mapload)
 	if(!new_material)
 		new_material = MAT_STEEL
-	material = get_material_by_name(new_material)
+	material = GET_MATERIAL_REF(new_material)
 	if(!istype(material))
 		return INITIALIZE_HINT_QDEL
 	name = "[material.display_name] bracelet"

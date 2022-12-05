@@ -68,7 +68,7 @@
 	//	to_chat(world, "[src] has force [force] and throw_force [throw_force] when made from default material [material.name]")
 
 /obj/item/material/proc/set_material(var/new_material)
-	material = get_material_by_name(new_material)
+	material = GET_MATERIAL_REF(new_material)
 	if(!material)
 		qdel(src)
 	else

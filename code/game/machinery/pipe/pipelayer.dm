@@ -143,7 +143,7 @@
 /obj/machinery/pipelayer/proc/eject_metal()
 	var/amount_ejected = 0
 	while (metal >= 1)
-		var/datum/material/M = get_material_by_name(MAT_STEEL)
+		var/datum/material/M = GET_MATERIAL_REF(MAT_STEEL)
 		var/obj/item/stack/material/S = new M.stack_type(get_turf(src))
 		S.amount = min(metal, S.max_amount)
 		metal -= S.amount

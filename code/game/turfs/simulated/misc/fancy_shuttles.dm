@@ -91,7 +91,7 @@ GLOBAL_LIST_EMPTY(fancy_shuttles)
 			material.place_dismantled_product(src)
 
 	clear_plants()
-	material = get_material_by_name("placeholder")
+	material = GET_MATERIAL_REF("placeholder")
 	reinf_material = null
 	girder_material = null
 

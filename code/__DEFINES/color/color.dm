@@ -63,3 +63,14 @@
 #define COLOR_DARKMODE_BACKGROUND		"#202020"
 #define COLOR_DARKMODE_DARKBACKGROUND	"#171717"
 #define COLOR_DARKMODE_TEXT				"#a4bad6"
+
+/// WOOD
+#define WOOD_COLOR_GENERIC              "#d5a66e"
+#define WOOD_COLOR_RICH                 "#792f27"
+#define WOOD_COLOR_PALE                 "#d2bc9d"
+#define WOOD_COLOR_PALE2                "#e6d2ba"
+#define WOOD_COLOR_BLACK                "#332521"
+#define WOOD_COLOR_CHOCOLATE            "#543c30"
+#define WOOD_COLOR_YELLOW               "#e3994e"
+#define WOOD_COLOR_SIF                  "#0099cc"
+#define WOOD_COLOR_HARD                 "#6f432a"

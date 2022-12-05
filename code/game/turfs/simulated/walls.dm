@@ -24,36 +24,60 @@
 	var/static/list/damage_overlays = generate_wall_damage_overlays()
 	var/active
 	var/can_open = FALSE
-	var/datum/material/girder_material
-	var/datum/material/material
+	var/datum/material/girder_material = /datum/material/solid/metal/steel
+	var/datum/material/material = /datum/material/solid/metal/steel
 	var/datum/material/reinf_material
 	var/last_state
 	var/construction_stage
+
+	/// Paint color of which the wall has been painted with.
+	var/wall_paint
+	/// Paint color of which the stripe has been painted with. Will not overlay a stripe if no paint is applied.
+	var/stripe_paint
 
 // Walls always hide the stuff below them.
 /turf/simulated/wall/levelupdate()
 	for(var/obj/O in src)
 		O.hide(1)
 
-/turf/simulated/wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
+/turf/simulated/wall/Initialize(mapload, new_material, new_reinf_material, new_girder_material)
 	. = ..()
-	icon_state = "blank"
-	if(!materialtype)
-		materialtype = MAT_STEEL
-	material = get_material_by_name(materialtype)
-	if(!girdertype)
-		girdertype = MAT_STEEL
-	girder_material = get_material_by_name(girdertype)
-	if(!isnull(rmaterialtype))
-		reinf_material = get_material_by_name(rmaterialtype)
-	update_material(TRUE)
+
+	// Clear mapping icons.
+	icon = 'icons/turf/walls/solid.dmi'
+	icon_state = "solid"
+	color = null
+
+	if(new_material)
+		material = GET_MATERIAL_REF(new_material)
+	if(new_reinf_material)
+		reinf_material = GET_MATERIAL_REF(new_reinf_material)
+	if(new_girder_material)
+		girder_material = GET_MATERIAL_REF(new_girder_material)
+
+	set_materials(material, reinf_material, girder_material)
+	// material = new_material
+	// if(ispath(material, /datum/material))
+	// 	material = GET_MATERIAL_REF(material)
+	// else if(!istype(material))
+	// 	strack_trace("Wall has been supplied non-material '[newmaterial]'.")
+	// 	material = GET_MATERIAL_REF(get_default_material())
+
+	// if(!ispath(reinf_material, /datum/material))
+	// 	reinf_material = new_reinf
+	// if(ispath(reinf_material, /datum/material))
+	// 	reinf_material = GET_MATERIAL_REF(reinf_material)
+
+	// if(ispath(girder_material, /datum/material))
+	// 	girder_material = GET_MATERIAL_REF(girder_material)
+
 	if(material?.radioactivity || reinf_material?.radioactivity || girder_material?.radioactivity)
 		START_PROCESSING(SSturfs, src)
 
 /turf/simulated/wall/Destroy()
 	STOP_PROCESSING(SSturfs, src)
 	clear_plants()
-	material = get_material_by_name("placeholder")
+	material = GET_MATERIAL_REF("debugium")
 	reinf_material = null
 	girder_material = null
 	return ..()
@@ -68,6 +92,9 @@
 
 /turf/simulated/wall/proc/get_material()
 	return material
+
+/turf/simulated/wall/proc/get_default_material()
+	. = MAT_STEEL
 
 /turf/simulated/wall/bullet_act(obj/item/projectile/Proj)
 	if(istype(Proj,/obj/item/projectile/beam))
@@ -219,8 +246,8 @@
 /turf/simulated/wall/legacy_ex_act(severity)
 	switch(severity)
 		if(1.0)
-			if(girder_material.explosion_resistance >= 25 && prob(girder_material.explosion_resistance))
-				new /obj/structure/girder/displaced(src, girder_material.name)
+			// if(girder_material.explosion_resistance >= 25 && prob(girder_material.explosion_resistance))
+			// 	new /obj/structure/girder/displaced(src, girder_material.name)
 			ScrapeAway()
 		if(2.0)
 			if(prob(75))

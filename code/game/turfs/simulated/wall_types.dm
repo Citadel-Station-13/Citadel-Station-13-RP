@@ -1,29 +1,67 @@
 /turf/simulated/wall/r_wall
 	icon_state = "solid-reinf"
-/turf/simulated/wall/r_wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, "plasteel","plasteel") //3strong
+	// material = /datum/material/solid/metal/plasteel
+	reinf_material = /datum/material/solid/metal/plasteel
 
-/turf/simulated/wall/shull/Initialize(mapload, materialtype, rmaterialtype, girdertype)	//Spaaaace ship.
-	return ..(mapload, MAT_STEELHULL, null, MAT_STEELHULL)
-/turf/simulated/wall/rshull/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_STEELHULL, MAT_STEELHULL, MAT_STEELHULL)
-/turf/simulated/wall/pshull/Initialize(mapload, materialtype, rmaterialtype, girdertype)	//Spaaaace-er ship.
-	return ..(mapload, MAT_PLASTEELHULL, null, MAT_PLASTEELHULL)
-/turf/simulated/wall/rpshull/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_PLASTEELHULL, MAT_PLASTEELHULL, MAT_PLASTEELHULL)
-/turf/simulated/wall/dshull/Initialize(mapload, materialtype, rmaterialtype, girdertype)	//Spaaaace-est ship.
-	return ..(mapload, MAT_DURASTEELHULL, null, MAT_DURASTEELHULL)
-/turf/simulated/wall/rdshull/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_DURASTEELHULL, MAT_DURASTEELHULL, MAT_DURASTEELHULL)
-/turf/simulated/wall/thull/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_TITANIUMHULL, null, MAT_TITANIUMHULL)
-/turf/simulated/wall/rthull/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_TITANIUMHULL, MAT_TITANIUMHULL, MAT_TITANIUMHULL)
+/turf/simulated/wall/shull // Spaaaace ship.
+	icon_state = "hull"
+	color = "#666677"
+	material = /datum/material/solid/metal/steel/hull
+	girder_material = /datum/material/solid/metal/steel/hull
+
+/turf/simulated/wall/rshull
+	icon_state = "hull"
+	color = "#666677"
+	material = /datum/material/solid/metal/steel/hull
+	reinf_material = /datum/material/solid/metal/steel/hull
+	girder_material = /datum/material/solid/metal/steel/hull
+
+/turf/simulated/wall/pshull // Spaaaace-er ship.
+	icon_state = "hull"
+	color = "#777788"
+	material = /datum/material/solid/metal/plasteel/hull
+	girder_material = /datum/material/solid/metal/plasteel/hull
+
+/turf/simulated/wall/rpshull
+	icon_state = "hull"
+	color = "#777788"
+	material = /datum/material/solid/metal/plasteel/hull
+	reinf_material = /datum/material/solid/metal/plasteel/hull
+	girder_material = /datum/material/solid/metal/plasteel/hull
+
+/turf/simulated/wall/dshull // Spaaaace-est ship.
+	icon_state = "hull"
+	color = "#45829a"
+	material = /datum/material/solid/metal/durasteel/hull
+	girder_material = /datum/material/solid/metal/durasteel/hull
+
+/turf/simulated/wall/rdshull
+	icon_state = "hull"
+	color = "#45829a"
+	material = /datum/material/solid/metal/durasteel/hull
+	reinf_material = /datum/material/solid/metal/durasteel/hull
+	girder_material = /datum/material/solid/metal/durasteel/hull
+
+/turf/simulated/wall/thull
+	icon_state = "hull"
+	color = "#D1E6E3"
+	material = /datum/material/solid/metal/plasteel/titanium/hull
+	girder_material = /datum/material/solid/metal/plasteel/titanium/hull
+
+/turf/simulated/wall/rthull
+	icon_state = "hull"
+	color = "#D1E6E3"
+	material = /datum/material/solid/metal/plasteel/titanium/hull
+	reinf_material = /datum/material/solid/metal/plasteel/titanium/hull
+	girder_material = /datum/material/solid/metal/plasteel/titanium/hull
 
 /turf/simulated/wall/cult
 	icon_state = "cult"
-/turf/simulated/wall/cult/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"cult","cult2","cult")
+
+/turf/simulated/wall/cult
+	material = /datum/material/cult
+	reinf_material = /datum/material/cult/reinf
+	girder_material = /datum/material/cult
 
 /turf/unsimulated/wall/cult
 	name = "cult wall"
@@ -31,8 +69,10 @@
 	icon = 'icons/turf/walls/_previews.dmi'
 	icon_state = "cult"
 
-/turf/simulated/wall/iron/Initialize(mapload, materialtype, rmaterialtype, girdertype)
+/turf/simulated/wall/iron
+	material = /datum/material/solid/metal/iron
 	return ..(mapload, MAT_IRON)
+
 /turf/simulated/wall/uranium/Initialize(mapload, materialtype, rmaterialtype, girdertype)
 	return ..(mapload, MAT_URANIUM)
 /turf/simulated/wall/diamond/Initialize(mapload, materialtype, rmaterialtype, girdertype)

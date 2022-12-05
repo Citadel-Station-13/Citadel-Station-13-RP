@@ -28,12 +28,12 @@
 	remove_atom_colour(FIXED_COLOUR_PRIORITY)
 	if(!new_material)
 		new_material = MAT_STEEL
-	material = get_material_by_name(new_material)
+	material = GET_MATERIAL_REF(new_material)
 	if(!istype(material))
 		qdel(src)
 		return
 	if(new_padding_material)
-		padding_material = get_material_by_name(new_padding_material)
+		padding_material = GET_MATERIAL_REF(new_padding_material)
 	update_icon()
 
 /obj/structure/bed/get_material()
@@ -142,7 +142,7 @@
 	update_icon()
 
 /obj/structure/bed/proc/add_padding(var/padding_type)
-	padding_material = get_material_by_name(padding_type)
+	padding_material = GET_MATERIAL_REF(padding_type)
 	update_icon()
 
 /obj/structure/bed/proc/dismantle()
