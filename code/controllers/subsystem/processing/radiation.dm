@@ -37,10 +37,10 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 	for(var/turf/T as anything in queued_waves)
 		var/list/L = queued_waves[T]
 		for(var/datum/radiation_burst/B as anything in L)
-			new /datum/radiation_wave(T, NORTH, B.intensity, B.falloff, TRUE)
-			new /datum/radiation_wave(T, SOUTH, B.intensity, B.falloff, TRUE)
-			new /datum/radiation_wave(T, EAST, B.intensity, B.falloff, TRUE)
-			new /datum/radiation_wave(T, WEST, B.intensity, B.falloff, TRUE)
+			new /datum/radiation_wave(T, NORTH, B.intensity, B.falloff, B.highest, TRUE)
+			new /datum/radiation_wave(T, SOUTH, B.intensity, B.falloff, B.highest, TRUE)
+			new /datum/radiation_wave(T, EAST, B.intensity, B.falloff, B.highest, TRUE)
+			new /datum/radiation_wave(T, WEST, B.intensity, B.falloff, B.highest, TRUE)
 	queued_waves.len = 0
 
 /datum/controller/subsystem/processing/radiation/proc/queue_wave(turf/source, intensity, falloff, can_contaminate)
@@ -57,6 +57,7 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 	for(var/datum/radiation_burst/B as anything in queue)
 		if(B.falloff == falloff)
 			B.intensity += intensity
+			B.highest = max(B.highest, intensity)
 			return
 	queue += new /datum/radiation_burst(intensity, falloff)
 

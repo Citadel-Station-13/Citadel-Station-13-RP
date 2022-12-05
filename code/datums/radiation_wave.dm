@@ -3,9 +3,11 @@
 	var/intensity
 	/// falloff
 	var/falloff
+	/// max intensity
+	var/highest
 
 /datum/radiation_burst/New(intensity, falloff)
-	src.intensity = intensity
+	src.intensity = src.highest = intensity
 	src.falloff = falloff
 
 /datum/radiation_wave
@@ -15,6 +17,8 @@
 	var/steps = 0
 	/// original intensity
 	var/starting_intensity
+	/// maximum intensity of this collated wave; used to prevent radiation cascades
+	var/max_intensity
 	/// current intensity
 	var/current_intensity
 	/// falloff modifier - 0.5 is half falloff, etc
@@ -28,10 +32,11 @@
 	/// mobs we already hit - we REALLY do not want to double hit mobs and turn 1500 intensity one-off to lethal.
 	var/list/hit_mobs
 
-/datum/radiation_wave/New(turf/starting, dir, intensity = 0, falloff_modifier = RAD_FALLOFF_NORMAL, can_contaminate = TRUE)
+/datum/radiation_wave/New(turf/starting, dir, intensity = 0, falloff_modifier = RAD_FALLOFF_NORMAL, max_intensity, can_contaminate = TRUE)
 	src.current = starting
 	src.dir = dir
 	src.starting_intensity = src.current_intensity = intensity
+	src.max_intensity = max_intensity || intensity
 	src.remaining_contam = intensity * RAD_CONTAMINATION_STR_COEFFICIENT
 	src.falloff_modifier = falloff_modifier
 	src.can_contaminate = can_contaminate
@@ -121,7 +126,7 @@
 	. = 0
 	if(length(contaminating))
 		// maximum we can contaminate them up to
-		var/max_str = strength * RAD_CONTAMINATION_STR_COEFFICIENT
+		var/max_str = min(strength, max_intensity) * RAD_CONTAMINATION_STR_COEFFICIENT
 		// how much we're going to apply
 		var/apply_str = min(max_str, remaining_contam / length(contaminating))
 		for(var/atom/A as anything in contaminating)
