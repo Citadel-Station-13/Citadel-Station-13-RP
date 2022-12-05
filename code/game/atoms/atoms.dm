@@ -97,8 +97,10 @@
 	//! Radiation
 	/// radiation flags
 	var/rad_flags = RAD_NO_CONTAMINATE	// overridden to NONe in /obj and /mob base
-	/// radiation insulation
+	/// radiation insulation - does *not* affect rad_act!
 	var/rad_insulation = RAD_INSULATION_NONE
+	/// contamination insulation; null defaults to rad_insulation
+	var/rad_stickiness
 
 	//! ## Overlays
 	/// a very temporary list of overlays to remove

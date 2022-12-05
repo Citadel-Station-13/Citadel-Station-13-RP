@@ -1,5 +1,7 @@
 /turf/simulated/wall/r_wall
 	icon_state = "rgeneric"
+	rad_insulation = RAD_INSULATION_EXTREME
+
 /turf/simulated/wall/r_wall/Initialize(mapload, materialtype, rmaterialtype, girdertype)
 	return ..(mapload, "plasteel","plasteel") //3strong
 

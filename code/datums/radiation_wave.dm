@@ -55,16 +55,18 @@
 		qdel(src)
 		return
 	++steps
-	var/list/atom/atoms = atoms_within_line()
 	var/effective_steps = max(falloff_modifier * steps, 1)
 	var/strength = steps > 1? INVERSE_SQUARE(current_intensity, effective_steps, 1) : current_intensity
 	if(strength < RAD_BACKGROUND_RADIATION)
 		qdel(src)
 		return
+	var/list/atom/atoms = atoms_within_line()
+	// block **first**
+	process_obstructions(atoms)
+	// then radiate/contaminate
 	var/contaminated = radiate(atoms, strength)
 	if(contaminated)
 		remaining_contam = max(0, remaining_contam - contaminated)
-	process_obstructions(atoms) // reduce our overall strength if there are radiation insulators
 
 /datum/radiation_wave/proc/atoms_within_line()
 	. = list()
@@ -132,9 +134,11 @@
 		var/apply_str = min(max_str, remaining_contam / length(contaminating))
 		for(var/atom/A as anything in contaminating)
 			var/datum/component/radioactive/R = A.GetComponent(/datum/component/radioactive)
-			var/effective = A.rad_insulation * apply_str	// rad insulation helps against contamination by blocking it too
+			var/effective_stack = (isnull(A.rad_stickiness)? A.rad_insulation : A.rad_stickiness) * max_str	// rad insulation helps against contamination by blocking it too
+			if(effective_stack < RAD_CONTAMINATION_MEANINGFUL)
+				continue
 			if(!R)
-				A.AddComponent(/datum/component/radioactive, effective)
+				A.AddComponent(/datum/component/radioactive, min(apply_str, effective_stack))
 				. += apply_str
 			else
-				. += R.constructive_interference(max_str, effective)
+				. += R.constructive_interference(effective_stack, apply_str)

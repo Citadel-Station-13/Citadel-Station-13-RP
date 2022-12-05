@@ -54,7 +54,7 @@
 	// delta time is in seconds, not deciseconds
 	// strength -= (1 / 2) ** ((delta_time * 0.1) / RAD_HALF_LIFE_DEFAULT
 	var/becoming = strength * ((1 / 2) ** (delta_time / (hl3_release_date * 0.1)))
-	radiation_pulse(parent, strength - becoming, falloff, FALSE, can_contaminate)
+	radiation_pulse(parent, (strength - becoming) * RAD_CONTAMINATION_CHEAT_FACTOR, falloff, FALSE, can_contaminate)
 	strength = becoming
 	if(strength <= RAD_BACKGROUND_RADIATION)
 		addtimer(CALLBACK(src, .proc/check_dissipate), 5 SECONDS)

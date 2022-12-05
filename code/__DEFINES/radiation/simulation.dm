@@ -11,8 +11,8 @@
 //? Only defaults are defined for the above reasons.
 /// default falloff
 #define RAD_FALLOFF_NORMAL 0.5
-/// default falloff for contaminated objects - low because of conservation of energy
-#define RAD_FALLOFF_CONTAMINATION_NORMAL 0.75
+/// default falloff for contaminated objects
+#define RAD_FALLOFF_CONTAMINATION_NORMAL 2
 /// default falloff for anomalies
 #define RAD_FALLOFF_ANOMALY 0.33
 /// default falloff for smashed anomalies
@@ -151,9 +151,14 @@
 //? Touching them without mathing it out and extensive testing is not a great idea.
 // contamination_chance = 		(strength-RAD_MINIMUM_CONTAMINATION) * RAD_CONTAMINATION_CHANCE_COEFFICIENT * min(1/(steps*RAD_DISTANCE_COEFFICIENT), 1))
 // contamination_strength = 	(strength-RAD_MINIMUM_CONTAMINATION) * RAD_CONTAMINATION_STR_COEFFICIENT
-#define RAD_MINIMUM_CONTAMINATION 200				// How strong does a radiation wave have to be to contaminate objects
+/// weakest wave strength to contaminate
+#define RAD_MINIMUM_CONTAMINATION 200
+/// lowest meaningful contamination strength
+#define RAD_CONTAMINATION_MEANINGFUL 5
 #define RAD_CONTAMINATION_CHANCE_COEFFICIENT 0.005	// Higher means higher strength scaling contamination chance
 #define RAD_CONTAMINATION_STR_COEFFICIENT 0.8		// Higher means higher strength scaling contamination strength
+/// additional times radiation contamination lets out when decaying; BE CAREFUL
+#define RAD_CONTAMINATION_CHEAT_FACTOR 2
 #define RAD_CONTAMINATION_MAXIMUM_OBJECT_RATIO 0.1	// max amount of starting intensity that can be imparted to one object at a time
 /// percentage of current intensity that can stack onto objects
 //! disabled until radiation conserves energy to avoid cascades.
