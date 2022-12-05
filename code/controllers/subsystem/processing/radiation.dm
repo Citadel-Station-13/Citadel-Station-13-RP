@@ -12,7 +12,7 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 
 /datum/controller/subsystem/processing/radiation/fire(resumed)
 	if(!resumed)
-		queued_waves = list()
+		flush_queue()
 	..()
 
 /datum/controller/subsystem/processing/radiation/on_max_z_changed(old_z_count, new_z_count)
@@ -41,6 +41,7 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 			new /datum/radiation_wave(T, SOUTH, B.intensity, B.falloff, TRUE)
 			new /datum/radiation_wave(T, EAST, B.intensity, B.falloff, TRUE)
 			new /datum/radiation_wave(T, WEST, B.intensity, B.falloff, TRUE)
+	queued_waves.len = 0
 
 /datum/controller/subsystem/processing/radiation/proc/queue_wave(turf/source, intensity, falloff, can_contaminate)
 	// if not contaminating we immediately release, pointless to keep going
