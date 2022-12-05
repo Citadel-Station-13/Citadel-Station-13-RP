@@ -48,13 +48,14 @@
 /datum/component/radioactive/process(delta_time)
 	if(!prob(50))
 		return
-	radiation_pulse(parent, strength, falloff, FALSE, can_contaminate)
-
 	if(!hl3_release_date)
+		radiation_pulse(parent, strength, falloff, FALSE, can_contaminate)
 		return
 	// delta time is in seconds, not deciseconds
 	// strength -= (1 / 2) ** ((delta_time * 0.1) / RAD_HALF_LIFE_DEFAULT
-	strength = strength * ((1 / 2) ** (delta_time / (hl3_release_date * 0.1)))
+	var/becoming = strength * ((1 / 2) ** (delta_time / (hl3_release_date * 0.1)))
+	radiation_pulse(parent, strength - becoming, falloff, FALSE, can_contaminate)
+	strength = becoming
 	if(strength <= RAD_BACKGROUND_RADIATION)
 		addtimer(CALLBACK(src, .proc/check_dissipate), 5 SECONDS)
 		return PROCESS_KILL

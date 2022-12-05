@@ -1,7 +1,7 @@
 //! /atom rad_insulation
 //? is a multiplier to radiation going through!
 
-#define RAD_INSULATION_NONE 0
+#define RAD_INSULATION_NONE 1
 #define RAD_INSULATION_VERY_LIGHT 0.9
 #define RAD_INSULATION_LIGHT 0.8
 #define RAD_INSULATION_MEDIUM 0.7

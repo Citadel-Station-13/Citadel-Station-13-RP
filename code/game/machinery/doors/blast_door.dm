@@ -16,7 +16,7 @@
 	icon = 'icons/obj/doors/rapid_pdoor.dmi'
 	icon_state = null
 	min_force = 20 //minimum amount of force needed to damage the door with a melee weapon
-	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
+	rad_flags = RAD_NO_CONTAMINATE
 	rad_insulation = RAD_INSULATION_HIGH
 	var/datum/material/implicit_material
 	// Icon states for different shutter types. Simply change this instead of rewriting the update_icon proc.

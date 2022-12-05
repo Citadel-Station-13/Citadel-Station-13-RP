@@ -11,7 +11,7 @@
 	icon = 'icons/obj/doors/Doorint.dmi'
 	icon_state = "door_closed"
 	power_channel = ENVIRON
-	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
+	rad_flags = RAD_BLOCK_CONTENTS
 	rad_insulation = RAD_INSULATION_MEDIUM
 
 	explosion_resistance = 10

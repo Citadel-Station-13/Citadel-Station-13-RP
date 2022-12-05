@@ -10,9 +10,9 @@
 
 //? Only defaults are defined for the above reasons.
 /// default falloff
-#define RAD_FALLOFF_NORMAL 0.8
-/// default falloff for contaminated objects
-#define RAD_FALLOFF_CONTAMINATION_NORMAL 1.6
+#define RAD_FALLOFF_NORMAL 0.5
+/// default falloff for contaminated objects - low because of conservation of energy
+#define RAD_FALLOFF_CONTAMINATION_NORMAL 0.75
 /// default falloff for anomalies
 #define RAD_FALLOFF_ANOMALY 0.33
 /// default falloff for smashed anomalies

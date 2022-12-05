@@ -10,7 +10,7 @@
 	density = 1
 	CanAtmosPass = ATMOS_PASS_PROC
 	layer = DOOR_OPEN_LAYER
-	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
+	rad_flags = RAD_BLOCK_CONTENTS
 	// todo: rad_insulation_open/closed
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER
