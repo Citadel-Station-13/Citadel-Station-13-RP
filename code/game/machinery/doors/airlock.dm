@@ -108,7 +108,7 @@
 /obj/machinery/door/airlock/get_material()
 	if(mineral)
 		return GET_MATERIAL_REF(mineral)
-	return GET_MATERIAL_REF(MAT_STEEL)
+	return GET_MATERIAL_REF(/datum/material/solid/metal/steel)
 
 /obj/machinery/door/airlock/command
 	name = "Command Airlock"

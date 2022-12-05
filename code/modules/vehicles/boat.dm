@@ -12,11 +12,11 @@
 	riding_handler_type = /datum/component/riding_handler/vehicle/boat/small
 	var/datum/material/material = null
 
-/obj/vehicle/ridden/boat/Initialize(mapload, material_name)
+/obj/vehicle/ridden/boat/Initialize(mapload, material_type)
 	. = ..()
-	if(!material_name)
-		material_name = "wood"
-	material = GET_MATERIAL_REF("[material_name]")
+	if(!material_type)
+		material_type = /datum/material/solid/wood
+	material = GET_MATERIAL_REF(material_type)
 	if(!material)
 		qdel(src)
 		return
@@ -26,7 +26,7 @@
 	return !!user.get_held_item_of_type(/obj/item/oar)
 
 /obj/vehicle/ridden/boat/sifwood/Initialize(mapload, material_name)
-	return ..(mapload, MAT_SIFWOOD)
+	return ..(mapload, /datum/material/solid/wood/sif)
 
 /obj/vehicle/ridden/boat/dragon
 	name = "dragon boat"
@@ -47,7 +47,7 @@
 	underlays += I
 
 /obj/vehicle/ridden/boat/dragon/sifwood/Initialize(mapload, material_name)
-	return ..(mapload, MAT_SIFWOOD)
+	return ..(mapload, /datum/material/solid/wood/sif)
 
 // Oars, which must be held inhand while in a boat to move it.
 /obj/item/oar
@@ -60,13 +60,13 @@
 	var/datum/material/material = null
 
 /obj/item/oar/sifwood/Initialize(mapload, material_name)
-	return ..(mapload, MAT_SIFWOOD)
+	return ..(mapload, /datum/material/solid/wood/sif)
 
-/obj/item/oar/Initialize(mapload, material_name)
+/obj/item/oar/Initialize(mapload, material_type)
 	. = ..(mapload)
-	if(!material_name)
-		material_name = "wood"
-	material = GET_MATERIAL_REF("[material_name]")
+	if(!material_type)
+		material_type = /datum/material/solid/wood
+	material = GET_MATERIAL_REF(material_type)
 	if(!material)
 		qdel(src)
 		return

@@ -19,11 +19,11 @@
 
 	var/datum/material/material
 
-/obj/structure/gravemarker/Initialize(mapload, material_name)
+/obj/structure/gravemarker/Initialize(mapload, material_type)
 	. = ..()
-	if(!material_name)
-		material_name = "wood"
-	material = GET_MATERIAL_REF("[material_name]")
+	if(!material_type)
+		material_type = /datum/material/solid/wood
+	material = GET_MATERIAL_REF(material_type)
 	if(!material)
 		qdel(src)
 		return

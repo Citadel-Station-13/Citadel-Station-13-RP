@@ -22,8 +22,8 @@
 
 /obj/item/stack/material/Initialize(mapload, new_amount, merge = TRUE)
 	if(!default_type)
-		default_type = MAT_STEEL
-	material = GET_MATERIAL_REF("[default_type]")
+		default_type = /datum/material/solid/metal/steel
+	material = GET_MATERIAL_REF(default_type)
 	if(!material)
 		return INITIALIZE_HINT_QDEL
 

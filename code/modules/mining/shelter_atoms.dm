@@ -166,7 +166,7 @@
 	icon_state = "table"
 
 /obj/structure/table/survival_pod/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_STEEL)
+	material = GET_MATERIAL_REF(/datum/material/solid/metal/steel)
 	verbs -= /obj/structure/table/verb/do_flip
 	verbs -= /obj/structure/table/proc/do_put
 	return ..()

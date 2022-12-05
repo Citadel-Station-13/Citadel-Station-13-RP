@@ -71,7 +71,6 @@
 
 /turf/simulated/wall/iron
 	material = /datum/material/solid/metal/iron
-	return ..(mapload, MAT_IRON)
 
 /turf/simulated/wall/uranium/Initialize(mapload, materialtype, rmaterialtype, girdertype)
 	return ..(mapload, MAT_URANIUM)

@@ -77,7 +77,7 @@
 /turf/simulated/wall/Destroy()
 	STOP_PROCESSING(SSturfs, src)
 	clear_plants()
-	material = GET_MATERIAL_REF("debugium")
+	material = GET_MATERIAL_REF(/datum/material/debug)
 	reinf_material = null
 	girder_material = null
 	return ..()

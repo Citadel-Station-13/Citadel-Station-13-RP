@@ -131,8 +131,8 @@
 	// Make it a wood-reinforced wooden table.
 	// There are cult materials available, but it'd make the table non-deconstructable with how holotables work.
 	// Could possibly use a new material var for holographic-ness?
-	material = GET_MATERIAL_REF(MAT_WOOD)
-	reinforced = GET_MATERIAL_REF(MAT_WOOD)
+	material = GET_MATERIAL_REF(/datum/material/solid/wood)
+	reinforced = GET_MATERIAL_REF(/datum/material/solid/wood)
 	update_desc()
 	update_connections(1)
 	update_icon()

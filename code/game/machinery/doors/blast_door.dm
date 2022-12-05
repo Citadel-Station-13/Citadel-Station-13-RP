@@ -34,7 +34,7 @@
 
 /obj/machinery/door/blast/Initialize(mapload)
 	. = ..()
-	implicit_material = GET_MATERIAL_REF("plasteel")
+	implicit_material = GET_MATERIAL_REF(/datum/material/solid/metal/plasteel)
 
 /obj/machinery/door/blast/get_material()
 	return implicit_material

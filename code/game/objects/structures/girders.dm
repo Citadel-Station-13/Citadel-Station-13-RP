@@ -42,7 +42,7 @@
 	return total_radiation
 
 
-/obj/structure/girder/proc/set_material(var/new_material)
+/obj/structure/girder/proc/set_material(new_material)
 	girder_material = GET_MATERIAL_REF(new_material)
 	if(!girder_material)
 		qdel(src)

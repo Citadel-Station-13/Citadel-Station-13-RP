@@ -23,7 +23,7 @@
 /obj/structure/simple_door/Initialize(mapload, material_name)
 	. = ..(mapload)
 	if(!material_name)
-		material_name = MAT_STEEL
+		material_name = /datum/material/solid/metal/steel
 	material = GET_MATERIAL_REF(material_name)
 	if(!material)
 		qdel(src)
@@ -135,12 +135,12 @@
 	else if(istype(W,/obj/item)) //not sure, can't not just weapons get passed to this proc?
 		hardness -= W.force/10
 		visible_message("<span class='danger'>[user] hits [src] with [W]!</span>")
-		if(material == GET_MATERIAL_REF(MAT_RESIN))
-			playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
-		else if(material == (GET_MATERIAL_REF(MAT_WOOD) || GET_MATERIAL_REF(MAT_SIFWOOD) || GET_MATERIAL_REF(MAT_HARDWOOD)))
-			playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
+		if(material == GET_MATERIAL_REF(/datum/material/resin))
+			playsound(loc, 'sound/effects/attackblob.ogg', 100, TRUE)
+		else if(material == (GET_MATERIAL_REF(/datum/material/solid/wood) || GET_MATERIAL_REF(/datum/material/solid/wood/sif) || GET_MATERIAL_REF(/datum/material/solid/wood/hardwood)))
+			playsound(loc, 'sound/effects/woodcutting.ogg', 100, TRUE)
 		else
-			playsound(src, 'sound/weapons/smash.ogg', 50, 1)
+			playsound(src, 'sound/weapons/smash.ogg', 50, TRUE)
 		CheckHardness()
 	else if(istype(W,/obj/item/weldingtool))
 		var/obj/item/weldingtool/WT = W
@@ -150,22 +150,22 @@
 		attack_hand(user)
 	return
 
-/obj/structure/simple_door/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/simple_door/bullet_act(obj/item/projectile/Proj)
 	hardness -= Proj.force/10
 	CheckHardness()
 
-/obj/structure/simple_door/take_damage(var/damage)
+/obj/structure/simple_door/take_damage(damage)
 	hardness -= damage/10
 	CheckHardness()
 
-/obj/structure/simple_door/attack_generic(var/mob/user, var/damage, var/attack_verb)
+/obj/structure/simple_door/attack_generic(mob/user, damage, attack_verb)
 	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
-	if(material == GET_MATERIAL_REF(MAT_RESIN))
-		playsound(loc, 'sound/effects/attackblob.ogg', 100, 1)
-	else if(material == (GET_MATERIAL_REF(MAT_WOOD) || GET_MATERIAL_REF(MAT_SIFWOOD) || GET_MATERIAL_REF(MAT_HARDWOOD)))
-		playsound(loc, 'sound/effects/woodcutting.ogg', 100, 1)
+	if(material == GET_MATERIAL_REF(/datum/material/resin))
+		playsound(loc, 'sound/effects/attackblob.ogg', 100, TRUE)
+	else if(material == (GET_MATERIAL_REF(/datum/material/solid/wood) || GET_MATERIAL_REF(/datum/material/solid/wood/sif) || GET_MATERIAL_REF(/datum/material/solid/wood/hardwood)))
+		playsound(loc, 'sound/effects/woodcutting.ogg', 100, TRUE)
 	else
-		playsound(src, 'sound/weapons/smash.ogg', 50, 1)
+		playsound(src, 'sound/weapons/smash.ogg', 50, TRUE)
 	user.do_attack_animation(src)
 	hardness -= damage/10
 	CheckHardness()

@@ -26,12 +26,12 @@
 	var/set_temperature = T0C + 30	//K
 	var/heating_power = 80000
 
-/obj/structure/bonfire/Initialize(mapload, material_name)
+/obj/structure/bonfire/Initialize(mapload, material_type)
 	. = ..()
 
-	if(!material_name)
-		material_name = MAT_WOOD
-	material = GET_MATERIAL_REF("[material_name]")
+	if(!material_type)
+		material_type = /datum/material/solid/wood
+	material = GET_MATERIAL_REF(material_type)
 	if(!material)
 		qdel(src)
 		return
@@ -39,14 +39,14 @@
 
 // Blue wood.
 /obj/structure/bonfire/sifwood/Initialize(mapload)
-	. = ..(mapload, MAT_SIFWOOD)
+	. = ..(mapload, /datum/material/solid/wood/sif)
 
-/obj/structure/bonfire/permanent/Initialize(mapload, material_name)
+/obj/structure/bonfire/permanent/Initialize(mapload, material_type)
 	. = ..()
 	ignite()
 
 /obj/structure/bonfire/permanent/sifwood/Initialize(mapload)
-	. = ..(mapload, MAT_SIFWOOD)
+	. = ..(mapload, /datum/material/solid/wood/sif)
 
 /obj/structure/bonfire/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stack/rods) && !buckle_allowed && !grill)

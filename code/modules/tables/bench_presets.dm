@@ -4,7 +4,7 @@
 	color = "#EEEEEE"
 
 /obj/structure/table/bench/standard/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_PLASTIC)
+	material = GET_MATERIAL_REF(/datum/material/plastic)
 	return ..()
 
 /obj/structure/table/bench/steel
@@ -12,7 +12,7 @@
 	color = "#666666"
 
 /obj/structure/table/bench/steel/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_STEEL)
+	material = GET_MATERIAL_REF(/datum/material/solid/metal/steel)
 	return ..()
 
 /obj/structure/table/bench/marble
@@ -20,7 +20,7 @@
 	color = "#CCCCCC"
 
 /obj/structure/table/bench/marble/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_MARBLE)
+	material = GET_MATERIAL_REF(/datum/material/stone/marble)
 	return ..()
 
 /*
@@ -29,8 +29,8 @@
 	color = "#EEEEEE"
 
 /obj/structure/table/bench/reinforced/New()
-	material = GET_MATERIAL_REF(MAT_PLASTIC)
-	reinforced = GET_MATERIAL_REF(MAT_STEEL)
+	material = GET_MATERIAL_REF(/datum/material/plastic)
+	reinforced = GET_MATERIAL_REF(/datum/material/solid/metal/steel)
 	..()
 
 /obj/structure/table/bench/steel_reinforced
@@ -38,8 +38,8 @@
 	color = "#666666"
 
 /obj/structure/table/bench/steel_reinforced/New()
-	material = GET_MATERIAL_REF(MAT_STEEL)
-	reinforced = GET_MATERIAL_REF(MAT_STEEL)
+	material = GET_MATERIAL_REF(/datum/material/solid/metal/steel)
+	reinforced = GET_MATERIAL_REF(/datum/material/solid/metal/steel)
 	..()
 
 /obj/structure/table/bench/wooden_reinforced
@@ -47,8 +47,8 @@
 	color = "#824B28"
 
 /obj/structure/table/bench/wooden_reinforced/New()
-	material = GET_MATERIAL_REF("wood")
-	reinforced = GET_MATERIAL_REF(MAT_STEEL)
+	material = GET_MATERIAL_REF(datum/material/solid/wood)
+	reinforced = GET_MATERIAL_REF(/datum/material/solid/metal/steel)
 	..()
 */
 /obj/structure/table/bench/wooden
@@ -56,7 +56,7 @@
 	color = "#824B28"
 
 /obj/structure/table/bench/wooden/Initialize(mapload)
-	material = GET_MATERIAL_REF("wood")
+	material = GET_MATERIAL_REF(/datum/material/solid/wood)
 	return ..()
 
 /obj/structure/table/bench/sifwooden
@@ -64,7 +64,7 @@
 	color = "#824B28"
 
 /obj/structure/table/bench/sifwooden/Initialize(mapload)
-	material = GET_MATERIAL_REF("alien wood")
+	material = GET_MATERIAL_REF(/datum/material/solid/wood/sif)
 	return ..()
 
 /obj/structure/table/bench/sifwooden/padded
@@ -75,7 +75,7 @@
 	icon_state = "padded"
 
 /obj/structure/table/bench/padded/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_STEEL)
+	material = GET_MATERIAL_REF(/datum/material/solid/metal/steel)
 	carpeted = TRUE
 	return ..()
 
@@ -85,7 +85,7 @@
 	alpha = 77 // 0.3 * 255
 
 /obj/structure/table/bench/glass/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_GLASS)
+	material = GET_MATERIAL_REF(/datum/material/glass)
 	return ..()
 
 /*
@@ -94,13 +94,13 @@
 	color = "#EEEEEE"
 
 /obj/structure/table/bench/holotable/New()
-	material = GET_MATERIAL_REF("holo[MAT_PLASTIC]")
+	material = GET_MATERIAL_REF(/datum/material/plastic/holographic)
 	..()
 
 /obj/structure/table/bench/wooden/holotable
 	icon_state = "holo_preview"
 
 /obj/structure/table/bench/wooden/holotable/New()
-	material = GET_MATERIAL_REF("holowood")
+	material = GET_MATERIAL_REF(/datum/material/solid/wood/holographic)
 	..()
 */

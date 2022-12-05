@@ -151,7 +151,7 @@
 	recipes += new/datum/stack_recipe("rubberized wheels", /obj/item/skate_wheels, 12, time = 24)
 	recipes += new/datum/stack_recipe("plastic raincoat", /obj/item/clothing/suit/storage/hooded/rainponcho, 5, time = 10)
 
-/datum/material/wood/generate_recipes()
+/datum/material/solid/wood/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("oar", /obj/item/oar, 2, time = 30, supplied_material = "[name]", pass_stack_color = TRUE)
 	recipes += new/datum/stack_recipe("boat", /obj/vehicle/ridden/boat, 20, time = 10 SECONDS, supplied_material = "[name]", pass_stack_color = TRUE)
@@ -184,7 +184,7 @@
 	recipes += new/datum/stack_recipe("rifle stock", /obj/item/weaponcrafting/stock, 5, time = 5)
 	recipes += new/datum/stack_recipe("wooden panel", /obj/structure/window/wooden, 1, time = 10, one_per_turf = 0, on_floor = 1)
 
-/datum/material/wood/hardwood/generate_recipes()
+/datum/material/solid/wood/hardwood/generate_recipes()
 	//we're not going to ..() since we want to override the list entirely, to cut out all the stuff it'd inherit from wood - important, or else we'd have to fuss around with more subtypes to stop people turning hardwood into regular wood
 	recipes = list()
 	recipes += new/datum/stack_recipe("[display_name] baseball bat", /obj/item/material/twohanded/baseballbat, 10, time = 20, one_per_turf = 0, on_floor = 1, supplied_material = "[name]", pass_stack_color = TRUE)
@@ -219,7 +219,7 @@
 	recipes += new/datum/stack_recipe("hardwood bokken blade", /obj/item/bokken_blade/hardwood, 10, time = 20)
 	recipes += new/datum/stack_recipe("hardwood wakibokken blade", /obj/item/wakibokken_blade/hardwood, 5, time = 10)
 
-/datum/material/wood/log/generate_recipes()
+/datum/material/solid/wood/log/generate_recipes()
 	recipes = list()
 	recipes += new/datum/stack_recipe("bonfire", /obj/structure/bonfire, 5, time = 50, supplied_material = "[name]", pass_stack_color = TRUE)
 
@@ -264,7 +264,7 @@
 	recipes += new/datum/stack_recipe("[display_name] wall girders", /obj/structure/girder, 2, time = 50, one_per_turf = 1, on_floor = 1, supplied_material = "[name]")
 	recipes += new/datum/stack_recipe("[display_name] ashtray", /obj/item/material/ashtray, 2, one_per_turf = 1, on_floor = 1, supplied_material = "[name]")
 
-/datum/material/wood/sif/generate_recipes()
+/datum/material/solid/wood/sif/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("alien wood floor tile", /obj/item/stack/tile/wood/sif, 1, 4, 20, pass_stack_color = TRUE)
 	for(var/datum/stack_recipe/r_recipe in recipes)
@@ -346,7 +346,7 @@
 		))
 	recipes += new/datum/stack_recipe("silver floor tile", /obj/item/stack/tile/silver, 1, 4, 20)
 
-/datum/material/gold/generate_recipes()
+/datum/material/solid/metal/gold/generate_recipes()
 	..()
 	recipes += new/datum/stack_recipe("golden crown", /obj/item/clothing/head/crown, 10, time = 30)
 	recipes += new/datum/stack_recipe_list("statues", list( \

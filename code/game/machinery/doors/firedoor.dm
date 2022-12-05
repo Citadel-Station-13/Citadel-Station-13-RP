@@ -75,7 +75,7 @@
 	return ..()
 
 /obj/machinery/door/firedoor/get_material()
-	return GET_MATERIAL_REF(MAT_STEEL)
+	return GET_MATERIAL_REF(/datum/material/solid/metal/steel)
 
 /obj/machinery/door/firedoor/examine(mob/user)
 	. = ..()

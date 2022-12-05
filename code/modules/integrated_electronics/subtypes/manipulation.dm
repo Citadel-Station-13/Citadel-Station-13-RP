@@ -495,7 +495,7 @@
 		/datum/material/solid/metal/iron,
 		/datum/material/glass,
 		/datum/material/silver,
-		/datum/material/gold,
+		/datum/material/solid/metal/gold,
 		/datum/material/diamond,
 		/datum/material/uranium,
 		/datum/material/plasma,

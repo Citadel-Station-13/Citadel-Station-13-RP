@@ -4,7 +4,7 @@
 	color = "#EEEEEE"
 
 /obj/structure/table/standard/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_PLASTIC)
+	material = GET_MATERIAL_REF(/datum/material/plastic)
 	return ..()
 
 /obj/structure/table/steel
@@ -12,7 +12,7 @@
 	color = "#666666"
 
 /obj/structure/table/steel/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_STEEL)
+	material = GET_MATERIAL_REF(/datum/material/solid/metal/steel)
 	return ..()
 
 /obj/structure/table/marble
@@ -20,7 +20,7 @@
 	color = "#CCCCCC"
 
 /obj/structure/table/marble/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_MARBLE)
+	material = GET_MATERIAL_REF(/datum/material/stone/marble)
 	return ..()
 
 /obj/structure/table/reinforced
@@ -28,8 +28,8 @@
 	color = "#EEEEEE"
 
 /obj/structure/table/reinforced/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_PLASTIC)
-	reinforced = GET_MATERIAL_REF(MAT_STEEL)
+	material = GET_MATERIAL_REF(/datum/material/plastic)
+	reinforced = GET_MATERIAL_REF(/datum/material/solid/metal/steel)
 	return ..()
 
 /obj/structure/table/steel_reinforced
@@ -37,8 +37,8 @@
 	color = "#666666"
 
 /obj/structure/table/steel_reinforced/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_STEEL)
-	reinforced = GET_MATERIAL_REF(MAT_STEEL)
+	material = GET_MATERIAL_REF(/datum/material/solid/metal/steel)
+	reinforced = GET_MATERIAL_REF(/datum/material/solid/metal/steel)
 	return ..()
 
 /obj/structure/table/wooden_reinforced
@@ -46,8 +46,8 @@
 	color = "#824B28"
 
 /obj/structure/table/wooden_reinforced/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_WOOD)
-	reinforced = GET_MATERIAL_REF(MAT_STEEL)
+	material = GET_MATERIAL_REF(/datum/material/solid/wood)
+	reinforced = GET_MATERIAL_REF(/datum/material/solid/metal/steel)
 	return ..()
 
 /obj/structure/table/woodentable
@@ -55,7 +55,7 @@
 	color = "#824B28"
 
 /obj/structure/table/woodentable/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_WOOD)
+	material = GET_MATERIAL_REF(/datum/material/solid/wood)
 	return ..()
 
 /obj/structure/table/sifwoodentable
@@ -63,7 +63,7 @@
 	color = "#824B28"
 
 /obj/structure/table/sifwoodentable/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_SIFWOOD)
+	material = GET_MATERIAL_REF(/datum/material/solid/wood/sif)
 	return ..()
 
 /obj/structure/table/sifwooden_reinforced
@@ -71,8 +71,8 @@
 	color = "#824B28"
 
 /obj/structure/table/sifwooden_reinforced/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_SIFWOOD)
-	reinforced = GET_MATERIAL_REF(MAT_STEEL)
+	material = GET_MATERIAL_REF(/datum/material/solid/wood/sif)
+	reinforced = GET_MATERIAL_REF(/datum/material/solid/metal/steel)
 	return ..()
 
 /obj/structure/table/hardwoodtable
@@ -80,14 +80,14 @@
 	color = "#42291a"
 
 /obj/structure/table/hardwoodtable/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_HARDWOOD)
+	material = GET_MATERIAL_REF(/datum/material/solid/wood/hardwood)
 	return ..()
 
 /obj/structure/table/gamblingtable
 	icon_state = "gamble"
 
 /obj/structure/table/gamblingtable/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_WOOD)
+	material = GET_MATERIAL_REF(/datum/material/solid/wood)
 	carpeted = 1
 	return ..()
 
@@ -97,7 +97,7 @@
 	alpha = 77 // 0.3 * 255
 
 /obj/structure/table/glass/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_GLASS)
+	material = GET_MATERIAL_REF(/datum/material/glass)
 	return ..()
 
 /obj/structure/table/borosilicate
@@ -106,7 +106,7 @@
 	alpha = 77
 
 /obj/structure/table/borosilicate/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_GLASS_BS)
+	material = GET_MATERIAL_REF(/datum/material/glass/phoron)
 	return ..()
 
 /obj/structure/table/holotable
@@ -114,14 +114,14 @@
 	color = "#EEEEEE"
 
 /obj/structure/table/holotable/Initialize(mapload)
-	material = GET_MATERIAL_REF("holo[MAT_PLASTIC]")
+	material = GET_MATERIAL_REF(/datum/material/plastic/holographic)
 	return ..()
 
 /obj/structure/table/woodentable/holotable
 	icon_state = "holo"
 
 /obj/structure/table/woodentable/holotable/Initialize(mapload)
-	material = GET_MATERIAL_REF("holowood")
+	material = GET_MATERIAL_REF(/datum/material/solid/wood/holographic)
 	return ..()
 
 /obj/structure/table/alien
@@ -132,7 +132,7 @@
 	can_plate = FALSE
 
 /obj/structure/table/alien/Initialize(mapload)
-	material = GET_MATERIAL_REF("alium")
+	material = GET_MATERIAL_REF(/datum/material/alienalloy/alium)
 	verbs -= /obj/structure/table/verb/do_flip
 	verbs -= /obj/structure/table/proc/do_put
 	return ..()
@@ -155,5 +155,5 @@
 
 /obj/structure/table/bananium_reinforced/Initialize(mapload)
 	material = GET_MATERIAL_REF("bananium")
-	reinforced = GET_MATERIAL_REF(MAT_STEEL)
+	reinforced = GET_MATERIAL_REF(/datum/material/solid/metal/steel)
 	return ..()

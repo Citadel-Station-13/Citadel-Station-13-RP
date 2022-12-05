@@ -4,7 +4,7 @@
 	block_tele = TRUE // Anti-cheese.
 
 /turf/simulated/wall/dungeon/Initialize(mapload, materialtype, rmaterialtype, girder_material)
-	return ..(mapload, "dungeonium")
+	return ..(mapload, /datum/material/alienalloy/dungeonium)
 
 /turf/simulated/wall/dungeon/attackby()
 	return

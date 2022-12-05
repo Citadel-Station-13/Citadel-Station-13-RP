@@ -131,7 +131,7 @@
 /datum/material/solid/metal/durasteel/hull/place_sheet(turf/target) //Deconstructed into normal durasteel sheets.
 	new /obj/item/stack/material/durasteel(target)
 
-/datum/material/iron
+/datum/material/solid/metal/iron
 	name = "iron"
 	stack_type = /obj/item/stack/material/iron
 	color = "#5C5454"
@@ -139,3 +139,28 @@
 	conductivity = 10
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
+
+/datum/material/solid/metal/lead
+	name = MAT_LEAD
+	stack_type = /obj/item/stack/material/lead
+	color = "#273956"
+	weight = 23 // Lead is a bit more dense than silver IRL, and silver has 22 ingame.
+	conductivity = 10
+	sheet_singular_name = "ingot"
+	sheet_plural_name = "ingots"
+	radiation_resistance = 25 // Lead is Special and so gets to block more radiation than it normally would with just weight, totalling in 48 protection.
+
+/datum/material/solid/metal/gold
+	name = MAT_GOLD
+	stack_type = /obj/item/stack/material/gold
+	color = "#EDD12F"
+	weight = 24
+	hardness = 40
+	conductivity = 41
+	stack_origin_tech = list(TECH_MATERIAL = 4)
+	sheet_singular_name = "ingot"
+	sheet_plural_name = "ingots"
+
+/datum/material/solid/metal/gold/bronze //placeholder for ashtrays
+	name = MAT_BRONZE
+	color = "#EDD12F"

@@ -44,5 +44,5 @@
 	color = "#FFFF00"
 
 /obj/structure/table/gold/Initialize(mapload)
-	material = GET_MATERIAL_REF(MAT_GOLD)
+	material = GET_MATERIAL_REF(/datum/material/solid/metal/gold)
 	. = ..()

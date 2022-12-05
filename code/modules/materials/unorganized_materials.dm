@@ -42,21 +42,6 @@
 	hardness = 100
 	stack_origin_tech = list(TECH_MATERIAL = 6)
 
-/datum/material/gold
-	name = "gold"
-	stack_type = /obj/item/stack/material/gold
-	color = "#EDD12F"
-	weight = 24
-	hardness = 40
-	conductivity = 41
-	stack_origin_tech = list(TECH_MATERIAL = 4)
-	sheet_singular_name = "ingot"
-	sheet_plural_name = "ingots"
-
-/datum/material/gold/bronze //placeholder for ashtrays
-	name = "bronze"
-	color = "#EDD12F"
-
 /datum/material/silver
 	name = "silver"
 	stack_type = /obj/item/stack/material/silver
@@ -373,16 +358,6 @@
 	stack_origin_tech = list(TECH_MATERIAL = 2)
 	sheet_singular_name = "ingot"
 	sheet_plural_name = "ingots"
-
-/datum/material/lead
-	name = MAT_LEAD
-	stack_type = /obj/item/stack/material/lead
-	color = "#273956"
-	weight = 23 // Lead is a bit more dense than silver IRL, and silver has 22 ingame.
-	conductivity = 10
-	sheet_singular_name = "ingot"
-	sheet_plural_name = "ingots"
-	radiation_resistance = 25 // Lead is Special and so gets to block more radiation than it normally would with just weight, totalling in 48 protection.
 
 // Particle Smasher and other exotic materials.
 

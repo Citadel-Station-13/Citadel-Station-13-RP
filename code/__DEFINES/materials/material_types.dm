@@ -1,6 +1,7 @@
 //! Material Defines
 #define MAT_ALGAE          "algae"
 #define MAT_BANANIUM       "bananium"
+#define MAT_BRONZE         "bronze"
 #define MAT_CARBON         "carbon"
 #define MAT_CHITIN         "chitin"
 #define MAT_COPPER         "copper"

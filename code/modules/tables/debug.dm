@@ -4,5 +4,5 @@
 
 /obj/structure/table/debug
 	New()
-		material = GET_MATERIAL_REF("debugium")
+		material = GET_MATERIAL_REF(/datum/material/debug)
 		..()

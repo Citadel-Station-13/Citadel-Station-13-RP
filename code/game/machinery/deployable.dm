@@ -17,11 +17,11 @@ Barricades
 	var/maxhealth = 100
 	var/datum/material/material
 
-/obj/structure/barricade/Initialize(mapload, material_name)
+/obj/structure/barricade/Initialize(mapload, material_type)
 	. = ..()
-	if(!material_name)
-		material_name = "wood"
-	material = GET_MATERIAL_REF("[material_name]")
+	if(!material_type)
+		material_type = /datum/material/solid/wood
+	material = GET_MATERIAL_REF(material_type)
 	if(!material)
 		qdel(src)
 		return
@@ -57,7 +57,7 @@ Barricades
 				health -= W.force * 1
 			if("brute")
 				health -= W.force * 0.75
-		if(material == (GET_MATERIAL_REF(MAT_WOOD) || GET_MATERIAL_REF(MAT_SIFWOOD) || GET_MATERIAL_REF(MAT_HARDWOOD)))
+		if(material == (GET_MATERIAL_REF(/datum/material/solid/wood) || GET_MATERIAL_REF(/datum/material/solid/wood/sif) || GET_MATERIAL_REF(/datum/material/solid/wood/hardwood)))
 			playsound(loc, 'sound/effects/woodcutting.ogg', 100, TRUE)
 		else
 			playsound(src, 'sound/weapons/smash.ogg', 50, TRUE)
@@ -77,9 +77,9 @@ Barricades
 /obj/structure/barricade/attack_generic(mob/user, damage, attack_verb)
 	visible_message(SPAN_DANGER("[user] [attack_verb] \the [src]!"))
 
-	if(material == GET_MATERIAL_REF("resin"))
+	if(material == GET_MATERIAL_REF(/datum/material/resin))
 		playsound(loc, 'sound/effects/attackblob.ogg', 100, TRUE)
-	else if(material == (GET_MATERIAL_REF(MAT_WOOD) || GET_MATERIAL_REF(MAT_SIFWOOD) || GET_MATERIAL_REF(MAT_HARDWOOD)))
+	else if(material == (GET_MATERIAL_REF(/datum/material/solid/wood) || GET_MATERIAL_REF(/datum/material/solid/wood/sif) || GET_MATERIAL_REF(/datum/material/solid/wood/hardwood)))
 		playsound(loc, 'sound/effects/woodcutting.ogg', 100, TRUE)
 	else
 		playsound(src, 'sound/weapons/smash.ogg', 50, TRUE)
