@@ -5,7 +5,6 @@
 	var/falloff
 
 /datum/radiation_burst/New(intensity, falloff)
-	src.source = source
 	src.intensity = intensity
 	src.falloff = falloff
 
