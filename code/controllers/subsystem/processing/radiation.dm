@@ -58,7 +58,7 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 		if(B.falloff == falloff)
 			B.intensity += intensity
 			return
-	queue += new /datum/radiation_burst(source, intensity, falloff)
+	queue += new /datum/radiation_burst(intensity, falloff)
 
 /**
  * todo: comment
