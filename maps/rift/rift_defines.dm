@@ -33,10 +33,10 @@
 #define Z_LEVEL_BEACH					27
 #define Z_LEVEL_BEACH_CAVE				28
 #define Z_LEVEL_DESERT					29
-/*
+
 #define Z_LEVEL_AEROSTAT				30
 #define Z_LEVEL_AEROSTAT_SURFACE		31
-*/
+
 /datum/map/rift
 	name = "Rift"
 	full_name = "NSB Atlas"
@@ -192,8 +192,8 @@
 		list("Away Mission - Trade Port"), // Trading Post
 		list("Away Mission - Lava Land", "Away Mission - Lava Land (East)"),
 		list("Asteroid Belt 1","Asteroid Belt 2","Asteroid Belt 3","Asteroid Belt 4"),
-		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave","Desert Planet - Z3 Desert")
-	//	list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface")
+		list("Desert Planet - Z1 Beach","Desert Planet - Z2 Cave","Desert Planet - Z3 Desert"),
+		list("Remmi Aerostat - Z1 Aerostat","Remmi Aerostat - Z2 Surface")
 	)
 
 	ai_shell_restricted = TRUE
