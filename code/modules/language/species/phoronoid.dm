@@ -8,3 +8,4 @@
 	colour = "changeling"
 	key = "c"
 	syllables = list("clatter","tink","chink","clack","rattle","clink","clunk","dink","tonk","donk","plink,","plonk")
+	shorthand = "PHO"

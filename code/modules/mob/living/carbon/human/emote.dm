@@ -1142,9 +1142,26 @@
 				to_chat(src, "<span class='warning'>You can't *flip in your current state!</span>")
 				return 1
 			else
-				src.SpinAnimation(7,1)
-				// message = "does a flip!"
 				m_type = 1
+				if(!spam_flag)
+					src.SpinAnimation(7,1)
+					message = "does a flip!"
+					spam_flag = TRUE
+					addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+				else
+					if(prob(30)) // Little known fact: HRP is /tg/ + 10
+						src.Weaken(2)
+						if(prob(50))
+							src.adjustBruteLoss(1)
+							message = "attempts to do a flip and falls on their face. Ouch!"
+						else
+							message = "attempts to do a flip and falls over, what a doofus!"
+					else
+						src.SpinAnimation(7,1)
+						message = "lands another flip. Smooth!"
+						spam_flag = TRUE
+						addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+
 // New emotes below this line
 		if ("purr")
 			message = "purrs softly."
