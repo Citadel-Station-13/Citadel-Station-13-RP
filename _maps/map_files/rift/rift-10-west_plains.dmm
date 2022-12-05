@@ -11,6 +11,10 @@
 	},
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
+"ah" = (
+/obj/structure/fence/door,
+/turf/simulated/floor/lythios43c/indoors,
+/area/rift/geothermal)
 "al" = (
 /obj/machinery/atmospherics/component/unary/heater{
 	dir = 1;
@@ -513,7 +517,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
-/turf/simulated/floor/plating/lythios43c,
+/turf/simulated/floor/lythios43c/indoors,
 /area/rift/geothermal)
 "cG" = (
 /obj/machinery/atmospherics/pipe/simple/heat_exchanging{
@@ -1108,10 +1112,6 @@
 "fz" = (
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/facility/exterior)
-"fA" = (
-/obj/structure/fence/door,
-/turf/simulated/floor/lythios43c/indoors,
-/area/rift/geothermal)
 "fD" = (
 /obj/effect/floor_decal/rust/mono_rusted3,
 /obj/structure/table/standard,
@@ -2251,6 +2251,12 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/outpost)
+"kQ" = (
+/obj/structure/fence/door{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/geothermal)
 "kS" = (
 /obj/structure/closet/excavation,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -2735,6 +2741,12 @@
 	},
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/surfacebase/outside/west)
+"nl" = (
+/obj/structure/fence/corner{
+	dir = 6
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/geothermal)
 "nn" = (
 /turf/simulated/wall,
 /area/rnd/outpost/xenoarch_storage)
@@ -2946,12 +2958,6 @@
 "or" = (
 /turf/simulated/wall/r_wall,
 /area/rift/surfacebase/outside/west)
-"ou" = (
-/obj/structure/fence/corner{
-	dir = 6
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/geothermal)
 "ov" = (
 /obj/structure/window/wooden{
 	dir = 8
@@ -2992,12 +2998,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
-"oE" = (
-/obj/structure/fence/door{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/geothermal)
 "oG" = (
 /obj/structure/bonfire/permanent,
 /turf/simulated/mineral/floor/icerock/lythios43c/indoors/ignore_cavegen,
@@ -5122,12 +5122,6 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
-"yt" = (
-/obj/effect/floor_decal/industrial/warning{
-	dir = 8
-	},
-/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
-/area/rift/geothermal)
 "yx" = (
 /obj/effect/shuttle_landmark/automatic,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -8216,6 +8210,12 @@
 "OI" = (
 /turf/simulated/wall,
 /area/rift/exterior/nuketown)
+"OJ" = (
+/obj/effect/floor_decal/industrial/warning{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
+/area/rift/geothermal)
 "ON" = (
 /obj/structure/cable/green{
 	icon_state = "1-2"
@@ -36374,9 +36374,9 @@ Tq
 sL
 Rg
 qo
-fA
-yt
-yt
+ah
+OJ
+OJ
 Mr
 sv
 sv
@@ -36569,9 +36569,9 @@ KO
 YM
 ku
 Tq
-oE
-oE
-ou
+kQ
+kQ
+nl
 sv
 sv
 dQ
