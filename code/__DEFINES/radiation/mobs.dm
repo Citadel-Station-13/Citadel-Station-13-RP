@@ -12,18 +12,23 @@
 #define RAD_MOB_PASSIVE_LOSS_FOR(amt, dt) ((amt > 1000? ((amt / 1000) ** 1.5) : 1) * dt)
 /// radiation below which we don't tick effects at all
 #define RAD_MOB_NEGLIGIBLE 500
+//? warning
+/// minimum amount for warning
+#define RAD_MOB_WARNING_THRESHOLD 750
+/// chance per second of warning
+#define RAD_MOB_WARNING_CHANCE(rads, dt) (dt * 1)
 //? toxins
 /// minimum amount for toxins
 #define RAD_MOB_TOXIN_THRESHOLD 500
 /// toxin damage per tick
-#define RAD_MOB_TOXIN_DAMAGE_FOR(amt, dt) (min(3, ((amt / 500) ** 1.5) * 0.1) * dt)
+#define RAD_MOB_TOXIN_DAMAGE_FOR(amt, dt) (min(3, ((amt / 500) ** 1.2) * 0.1) * dt)
 /// toxin damage per tick, synths
 #define RAD_MOB_SYNTH_INSTABILITY_FOR(amt, dt) RAD_MOB_TOXIN_DAMAGE_FOR(amt, dt) // same for now
 //? burns
 	/// minimum amount for burns
 	#define RAD_MOB_BURN_THRESHOLD 1500 // boy you fucked up if your skin is blistering
 	/// burn per tick
-	#define RAD_MOB_BURN_DAMAGE_FOR(amt, dt) (min(5, (((amt - 1500) / 750) ** 2) * 0.1) * dt)
+	#define RAD_MOB_BURN_DAMAGE_FOR(amt, dt) (min(5, (((amt - 1500) / 750) ** 1.5) * 0.1) * dt)
 /// do we burn synths
 // #define RAD_MOB_BURNS_SYNTHETICS
 /// burn per tick, synths

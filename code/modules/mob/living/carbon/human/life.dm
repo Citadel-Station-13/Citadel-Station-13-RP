@@ -308,6 +308,9 @@
 		return
 
 	if(mister_robot)
+		if(radiation >= RAD_MOB_WARNING_THRESHOLD)
+			if(prob(RAD_MOB_WARNING_CHANCE(radiation, seconds)))
+				to_chat(src, SPAN_WARNING("Warning: Ionization detected in control routes. Radiological threat suspected."))
 #ifdef RAD_MOB_BURNS_SYNTHETICS
 		if(radiation >= RAD_MOB_BURN_THRESHOLD)
 			take_overall_damage(burn = RAD_MOB_BURN_DAMAGE_FOR(radiation, seconds), used_weapon = "Radiation Burns")
@@ -317,12 +320,15 @@
 #ifdef RAD_MOB_KNOCKDOWN_SYNTHETICS
 		if(radiation >= RAD_MOB_KNOCKDOWN_THRESHOLD)
 			if(prob(RAD_MOB_KNOCKDOWN_CHANCE(radiation, seconds)))
-				to_chat(src, SPAN_WARNING("You feel weak..."))
+				to_chat(src, SPAN_WARNING("Ionization detected in systems. Rebooting..."))
 				if(!lying)
 					emote("collapse")
 				Weaken(RAD_MOB_KNOCKDOWN_AMOUNT(radiation, seconds))
 #endif
 	else
+		if(radiation >= RAD_MOB_WARNING_THRESHOLD)
+			if(prob(RAD_MOB_WARNING_CHANCE(radiation, seconds)))
+				to_chat(src, SPAN_WARNING("You feel nauseous, and a hot presence burning through your flesh."))
 		if(radiation >= RAD_MOB_BURN_THRESHOLD)
 			take_overall_damage(burn = RAD_MOB_BURN_DAMAGE_FOR(radiation, seconds), used_weapon = "Radiation Burns")
 		if(radiation >= RAD_MOB_TOXIN_THRESHOLD)
