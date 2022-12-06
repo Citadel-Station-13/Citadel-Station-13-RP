@@ -414,6 +414,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
+"rF" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research)
 "si" = (
 /obj/machinery/camera/network/command{
 	dir = 4
@@ -501,6 +507,10 @@
 /obj/machinery/light,
 /turf/simulated/floor/bluegrid,
 /area/ai)
+"ye" = (
+/obj/structure/ladder/up,
+/turf/simulated/floor/reinforced,
+/area/space)
 "yC" = (
 /obj/structure/stairs/spawner/south,
 /obj/structure/railing/grey{
@@ -12213,10 +12223,10 @@ sZ
 sZ
 sZ
 sZ
-sZ
-sZ
-sZ
-sZ
+ZJ
+ZJ
+ZJ
+ZJ
 sZ
 sZ
 kL
@@ -12407,10 +12417,10 @@ sZ
 sZ
 sZ
 sZ
-sZ
-sZ
-sZ
-sZ
+ZJ
+ZJ
+ZJ
+ZJ
 sZ
 sZ
 kL
@@ -12601,10 +12611,10 @@ sZ
 sZ
 sZ
 sZ
-sZ
-sZ
-sZ
-sZ
+ZJ
+ZJ
+ZJ
+ye
 sZ
 sZ
 kL
@@ -12634,7 +12644,7 @@ IJ
 IJ
 IJ
 IJ
-IJ
+rF
 Am
 IJ
 IJ
@@ -12795,10 +12805,10 @@ sZ
 sZ
 sZ
 sZ
-sZ
-sZ
-sZ
-sZ
+ZJ
+ZJ
+ZJ
+ZJ
 sZ
 sZ
 kL
@@ -12989,10 +12999,10 @@ sZ
 sZ
 sZ
 sZ
-sZ
-sZ
-sZ
-sZ
+ZJ
+ZJ
+ZJ
+ZJ
 sZ
 sZ
 kL
@@ -13183,10 +13193,10 @@ sZ
 sZ
 sZ
 sZ
-sZ
-sZ
-sZ
-sZ
+ZJ
+ZJ
+ZJ
+ZJ
 sZ
 sZ
 kL
