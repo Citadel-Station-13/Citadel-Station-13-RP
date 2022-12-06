@@ -168,9 +168,9 @@
 /// can z-wide radiatoin contaminate by default?
 #define RAD_ZLEVEL_CONTAMINATION_DEFAULT TRUE
 /// amount of contamination washed out by a single tick of a shower, or 10 units of water
-#define RAD_CONTAMINATION_CLEANSE_POWER 25
+#define RAD_CONTAMINATION_CLEANSE_POWER 20
 /// amount of contamination washed out as a multiplier
-#define RAD_CONTAMINATION_CLEANSE_FACTOR 0.33
+#define RAD_CONTAMINATION_CLEANSE_FACTOR 0.1
 
 //! z_radiate_flags
 /// respect rad shielded maint

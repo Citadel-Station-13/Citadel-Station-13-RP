@@ -119,7 +119,7 @@
 	strength -= strength / hl3_release_date
 
 /datum/component/radioactive/proc/clean(str, mul)
-	strength = strength * mul - str
+	strength -= strength * mul - str
 	if(strength < RAD_BACKGROUND_RADIATION)
 		qdel(src)
 
