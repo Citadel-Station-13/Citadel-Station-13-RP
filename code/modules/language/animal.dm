@@ -5,11 +5,12 @@
 	speech_verb = "barks"
 	ask_verb = "woofs"
 	exclaim_verb = "howls"
-	key = "n"
+	key = null	// demoted
 	language_flags = RESTRICTED
 	machine_understands = 0
 	space_chance = 100
 	syllables = list("bark", "woof", "bowwow", "yap", "arf")
+	shorthand = "DOG"
 
 /datum/language/cat
 	id = LANGUAGE_ID_CAT
@@ -18,11 +19,12 @@
 	speech_verb = "meows"
 	ask_verb = "mrowls"
 	exclaim_verb = "yowls"
-	key = "c"
+	key = null	// demoted 
 	language_flags = RESTRICTED
 	machine_understands = 0
 	space_chance = 100
 	syllables = list("meow", "mrowl", "purr", "meow", "meow", "meow")
+	shorthand = "CAT"
 
 /datum/language/mouse
 	id = LANGUAGE_ID_MOUSE
@@ -31,11 +33,12 @@
 	speech_verb = "squeaks"
 	ask_verb = "squeaks"
 	exclaim_verb = "squeaks"
-	key = "m"
+	key = null	// demoted
 	language_flags = RESTRICTED
 	machine_understands = 0
 	space_chance = 100
 	syllables = list("squeak")	// , "gripes", "oi", "meow")
+	shorthand = "MSE"
 
 /datum/language/bird
 	id = LANGUAGE_ID_BIRD
@@ -44,8 +47,9 @@
 	speech_verb = "chirps"
 	ask_verb = "tweets"
 	exclaim_verb = "squawks"
-	key = "m"
+	key = null	// demoted
 	language_flags = RESTRICTED
 	machine_understands = 0
 	space_chance = 100
 	syllables = list("chirp", "squawk", "tweet")
+	shorthand = "BIRD"

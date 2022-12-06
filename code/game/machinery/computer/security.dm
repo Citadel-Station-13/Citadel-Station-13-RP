@@ -391,7 +391,7 @@
 						answer = text2num(answer)
 
 					if(field == "rank")
-						if(answer in joblist)
+						if(answer in SSjob.all_job_titles())
 							active1.fields["real_rank"] = answer
 
 					if(field == "criminal")

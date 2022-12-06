@@ -87,7 +87,7 @@ GLOBAL_LIST(paired_paper_tag_lookup)
  * For now, this is what you get.
  */
 /datum/paper_tag
-	var/abstract_type = /datum/paper_tag
+	abstract_type = /datum/paper_tag
 
 /**
  * simple macros

@@ -234,12 +234,12 @@
 /area/centcom/specops)
 "aI" = (
 /obj/structure/closet/crate/medical,
-/obj/item/storage/mre/menu11,
-/obj/item/storage/mre/menu11,
-/obj/item/storage/mre/menu11,
-/obj/item/storage/mre/menu11,
-/obj/item/storage/mre/menu11,
-/obj/item/storage/mre/menu11,
+/obj/item/storage/single_use/mre/menu11,
+/obj/item/storage/single_use/mre/menu11,
+/obj/item/storage/single_use/mre/menu11,
+/obj/item/storage/single_use/mre/menu11,
+/obj/item/storage/single_use/mre/menu11,
+/obj/item/storage/single_use/mre/menu11,
 /turf/unsimulated/floor{
 	dir = 5;
 	icon_state = "vault"

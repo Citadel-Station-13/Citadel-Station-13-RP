@@ -186,7 +186,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	var/gas_flags
 
 	var/gas_reagent_id //What is the ID of the reagent we want to apply
-	var/gas_reagent_amount = 0//How much of the reagent is applied 
+	var/gas_reagent_amount = 0//How much of the reagent is applied
 	//For a gas that makes up 21% of the atmos you need to be above 1.39, for it to instill any reagents, for lower percentages the number needs to be higher,and viceversa
 
 /datum/gas/oxygen
@@ -277,7 +277,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	//gas_symbol = "CH3Br"
 	//taste_description = "pestkiller"
 	/*vapor_products = list(
-		/decl/material/gas/methyl_bromide = 1
+		/singleton/material/gas/methyl_bromide = 1
 	)
 	value = 0.25*/
 
@@ -379,7 +379,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	toxicity = 15*/
 	gas_overlay = "chlorine"
 	moles_visible = 1
-	
+
 	gas_reagent_id = "sacid"
 	gas_reagent_amount = 10
 
@@ -392,8 +392,8 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	/*gas_symbol_html = "SO<sub>2</sub>"
 	gas_symbol = "SO2"
 	dissolves_into = list(
-		/decl/material/solid/sulfur = 0.5,
-		/decl/material/gas/oxygen = 0.5
+		/singleton/material/solid/sulfur = 0.5,
+		/singleton/material/gas/oxygen = 0.5
 	)*/
 
 /datum/gas/hydrogen
@@ -406,11 +406,11 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 	specific_heat = 100
 	molar_mass = 0.002
 	gas_flags = GAS_FLAG_FUEL | GAS_FLAG_FUSION_FUEL
-	/*burn_product = /decl/material/liquid/water
+	/*burn_product = /singleton/material/liquid/water
 	gas_symbol_html = "H<sub>2</sub>"
 	gas_symbol = "H2"
 	dissolves_into = list(
-		/decl/material/liquid/fuel/hydrazine = 1
+		/singleton/material/liquid/fuel/hydrazine = 1
 	)
 	value = 0.4*/
 
@@ -441,7 +441,7 @@ GLOBAL_LIST_INIT(meta_gas_reagent_amount, meta_gas_reagent_amount_list())
 		INTERACTION_ABSORPTION = 1250
 	)
 	absorption_products = list(
-		/decl/material/gas/hydrogen/tritium = 1
+		/singleton/material/gas/hydrogen/tritium = 1
 	)
 	neutron_absorption = 5
 	neutron_cross_section = 3*/

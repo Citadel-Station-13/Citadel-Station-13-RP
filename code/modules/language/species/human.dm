@@ -8,6 +8,7 @@
 	colour = "solcom"
 	key = "1"
 	//syllables are at the bottom of the file
+	shorthand = "SC"
 
 /datum/language/human/get_random_name(gender)
 	if (prob(80))
@@ -23,13 +24,14 @@
 	name = LANGUAGE_SLAVIC
 	desc = "Was established in 2122 by the short-lived United Slavic Confederation on Earth."
 	colour = "solcom"
-	key = "g"
+	key = "G"
 	syllables = list(
 		"rus", "zem", "ave", "groz", "ski", "ska", "ven", "konst", "pol", "lin", "svy",
 		"danya", "da", "mied", "zan", "das", "krem", "myka", "to", "st", "no", "na", "ni",
 		"ko", "ne", "en", "po", "ra", "li", "on", "byl", "cto", "eni", "ost", "ol", "ego",
 		"ver", "stv", "pro"
 	)
+	shorthand = "SLAV"
 
 //Syllable Lists
 /*

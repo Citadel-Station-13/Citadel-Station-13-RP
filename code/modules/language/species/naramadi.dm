@@ -7,3 +7,4 @@
 	colour = "sergal"
 	key = "T"
 	syllables = list ("grr", "gah", "woof", "arf", "arra", "rah", "wor", "sarg")
+	shorthand = "SAG"

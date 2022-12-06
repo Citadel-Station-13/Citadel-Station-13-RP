@@ -10,7 +10,7 @@
 /turf/simulated/mineral/floor/classh,
 /area/class_h/explored)
 "r" = (
-/obj/item/storage/mre/random,
+/obj/item/storage/single_use/mre/random,
 /turf/simulated/mineral/floor/classh,
 /area/class_h/explored)
 "s" = (

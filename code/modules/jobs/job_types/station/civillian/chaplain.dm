@@ -16,8 +16,7 @@
 	desc = "The Chaplain ministers to the spiritual needs of the crew."
 	alt_titles = list(
 		"Counselor" = /datum/alt_title/counselor,
-		"Religious Affairs Advisor" = /datum/alt_title/chaplain/advisor,
-		"Paracausal Scholar" = /datum/alt_title/chaplain/scholar
+		"Religious Affairs Advisor" = /datum/alt_title/chaplain/advisor
 		)
 
 // Chaplain Alt Titles
@@ -27,9 +26,6 @@
 
 /datum/alt_title/chaplain/advisor
 	title = "Religious Affairs Advisor"
-
-/datum/alt_title/chaplain/scholar
-	title = "Paracausal Scholar"
 
 /datum/job/station/chaplain/equip(mob/living/carbon/human/H, src)
 	. = ..()

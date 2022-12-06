@@ -6,7 +6,7 @@
 	ask_verb = "rings"
 	exclaim_verb = "peals"
 	colour = "adherent"
-	key = "p"
+	key = "P"
 	language_flags = WHITELISTED
 	syllables = list("\[Ab\]", "\[Bb\]", "\[Cb\]", "\[Db\]", "\[Eb\]", "\[Fb\]",
 		"\[Gb\]", "\[A#\]", "\[B#\]", "\[C#\]", "\[D#\]", "\[E#\]", "\[F#\]",
@@ -14,3 +14,4 @@
 		"\[harmonic\]", "\[disharmonic\]", "\[choral\]"
 	)
 	space_chance = 0
+	shorthand = "ADH"

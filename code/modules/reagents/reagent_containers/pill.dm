@@ -258,7 +258,7 @@
 	color = reagents.get_color()
 
 /obj/item/reagent_containers/pill/spaceacillin
-	name = "Spaceacillin (10u)"
+	name = "Spaceacillin (15u)"
 	desc = "A theta-lactam antibiotic. Effective against many diseases likely to be encountered in space."
 	icon_state = "pill3"
 
