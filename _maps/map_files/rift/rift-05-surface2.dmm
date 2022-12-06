@@ -1199,11 +1199,7 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/chemistry)
 "aTl" = (
-/obj/machinery/hologram/holopad,
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
+/turf/simulated/floor/carpet,
 /area/crew_quarters/coffee_shop)
 "aTy" = (
 /turf/simulated/floor/plating,
@@ -3694,12 +3690,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
-"cKp" = (
-/obj/effect/floor_decal/spline/plain{
-	dir = 8
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/coffee_shop)
 "cKs" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 27
@@ -4345,6 +4335,11 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/medical/sleeper)
 "dqp" = (
+/obj/item/toy/plushie/coffee_fox{
+	name = "Cream";
+	pixel_x = 16;
+	pixel_y = 3
+	},
 /turf/simulated/floor/carpet,
 /area/crew_quarters/coffee_shop)
 "dqr" = (
@@ -5436,12 +5431,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/tactical)
-"dWj" = (
-/obj/structure/bed/chair/sofa/brown/right{
-	dir = 1
-	},
-/turf/simulated/floor/carpet,
-/area/crew_quarters/coffee_shop)
 "dWw" = (
 /obj/structure/railing{
 	dir = 4
@@ -6431,6 +6420,12 @@
 /obj/structure/flora/pottedplant/flower,
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_hallway)
+"eMz" = (
+/obj/structure/bed/chair/sofa/brown/right{
+	dir = 1
+	},
+/turf/simulated/floor/carpet,
+/area/crew_quarters/coffee_shop)
 "eMD" = (
 /turf/simulated/wall/r_wall,
 /area/medical/morgue)
@@ -7715,7 +7710,9 @@
 	name = "brown curtain";
 	pixel_x = -32
 	},
-/obj/effect/floor_decal/spline/plain,
+/obj/effect/floor_decal/spline/plain{
+	dir = 1
+	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "fIf" = (
@@ -10098,11 +10095,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/crew_quarters/heads/hor)
 "hoN" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/bed/chair/wood{
-	dir = 4
+/obj/effect/floor_decal/spline/plain{
+	dir = 8
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
@@ -10283,6 +10277,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
+"hwx" = (
+/obj/structure/bed/chair/sofa/brown/left,
+/turf/simulated/floor/carpet,
+/area/crew_quarters/coffee_shop)
 "hwE" = (
 /obj/structure/table/bench/steel,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -10506,6 +10504,16 @@
 /obj/machinery/hologram/holopad,
 /turf/simulated/floor/tiled/monotile,
 /area/rnd/lockers)
+"hFy" = (
+/obj/structure/table/wooden_reinforced,
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/coffee_shop)
 "hFA" = (
 /obj/machinery/light/small/emergency{
 	dir = 4
@@ -12346,10 +12354,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/simulated/floor/tiled/monotile,
 /area/medical/reception)
-"iRt" = (
-/obj/structure/sign/warning/nosmoking_2,
-/turf/simulated/wall,
-/area/medical/morgue)
 "iRx" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -12622,6 +12626,18 @@
 	},
 /turf/simulated/floor/reinforced,
 /area/rnd/outpost/xenobiology/outpost_slimepens)
+"jde" = (
+/obj/structure/curtain/open/bed{
+	name = "brown curtain";
+	pixel_x = -32
+	},
+/obj/effect/floor_decal/spline/plain,
+/obj/structure/sink/kitchen{
+	dir = 4;
+	pixel_x = -15
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/coffee_shop)
 "jdp" = (
 /obj/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -13340,6 +13356,13 @@
 /obj/effect/floor_decal/borderfloorblack/full,
 /turf/simulated/floor/tiled/dark,
 /area/security/interrogation)
+"jKD" = (
+/obj/structure/bed/chair/wood,
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/coffee_shop)
 "jLp" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/red/border,
@@ -13809,16 +13832,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
-"kax" = (
-/obj/structure/curtain/open/bed{
-	name = "brown curtain";
-	pixel_x = -32
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 1
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/coffee_shop)
 "kaY" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/purple/border,
@@ -14271,6 +14284,12 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers,
 /turf/simulated/floor/tiled/monotile,
 /area/hallway/primary/surfacetwo)
+"koN" = (
+/obj/structure/bed/chair/wood{
+	pixel_x = 16
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/coffee_shop)
 "kpD" = (
 /obj/machinery/door/firedoor/border_only,
 /obj/machinery/door/airlock/research{
@@ -17828,14 +17847,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/security/briefing_room)
-"mXk" = (
-/obj/structure/table/wooden_reinforced,
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = -12;
-	pixel_y = 4
-	},
-/turf/simulated/floor/carpet,
-/area/crew_quarters/coffee_shop)
 "mXs" = (
 /obj/machinery/light_construct,
 /turf/simulated/floor/plating,
@@ -18996,16 +19007,6 @@
 /obj/item/stool/padded,
 /turf/simulated/floor/tiled/steel,
 /area/holodeck_control)
-"nRE" = (
-/obj/structure/table/wooden_reinforced,
-/obj/machinery/atmospherics/component/unary/vent_pump/on{
-	dir = 4
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/coffee_shop)
 "nRN" = (
 /obj/machinery/door/blast/regular{
 	density = 0;
@@ -20393,6 +20394,23 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/surgery_hallway)
+"oWo" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/obj/structure/table/wooden_reinforced,
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 4
+	},
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/obj/effect/floor_decal/spline/plain{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/crew_quarters/coffee_shop)
 "oWB" = (
 /turf/simulated/wall,
 /area/maintenance/engineering/pumpstation)
@@ -21075,12 +21093,13 @@
 /turf/simulated/floor/tiled/monotile,
 /area/crew_quarters/sleep)
 "pqG" = (
-/obj/item/toy/plushie/coffee_fox{
-	name = "Cream";
-	pixel_x = 16;
-	pixel_y = 3
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
-/turf/simulated/floor/carpet,
+/obj/structure/bed/chair/wood{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
 "pqQ" = (
 /obj/effect/floor_decal/spline/plain{
@@ -26194,6 +26213,10 @@
 /obj/machinery/recharge_station,
 /turf/simulated/floor/tiled/steel_ridged,
 /area/assembly/chargebay)
+"tAO" = (
+/obj/structure/sign/warning/nosmoking_2,
+/turf/simulated/wall,
+/area/medical/morgue)
 "tAT" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -27124,12 +27147,6 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacetwo)
-"uoV" = (
-/obj/structure/bed/chair/wood{
-	pixel_x = 16
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/coffee_shop)
 "upg" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -28449,7 +28466,7 @@
 /turf/simulated/floor/tiled/steel,
 /area/security/security_lockerroom)
 "viJ" = (
-/obj/structure/bed/chair/wood,
+/obj/machinery/hologram/holopad,
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
@@ -28752,10 +28769,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
-"vtj" = (
-/obj/structure/bed/chair/sofa/brown/left,
-/turf/simulated/floor/carpet,
-/area/crew_quarters/coffee_shop)
 "vtq" = (
 /obj/machinery/light{
 	dir = 8
@@ -29723,6 +29736,14 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/sleeper)
+"wgD" = (
+/obj/structure/table/wooden_reinforced,
+/obj/item/reagent_containers/food/drinks/cup{
+	pixel_x = -12;
+	pixel_y = 4
+	},
+/turf/simulated/floor/carpet,
+/area/crew_quarters/coffee_shop)
 "wgH" = (
 /obj/structure/closet/crate,
 /obj/random/maintenance/clean,
@@ -31172,23 +31193,6 @@
 	},
 /turf/simulated/floor/tiled/monowhite,
 /area/medical/surgery2)
-"xmd" = (
-/obj/structure/cable/green{
-	icon_state = "4-8"
-	},
-/obj/structure/table/wooden_reinforced,
-/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
-	dir = 4
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = 3;
-	pixel_y = 2
-	},
-/obj/effect/floor_decal/spline/plain{
-	dir = 4
-	},
-/turf/simulated/floor/wood,
-/area/crew_quarters/coffee_shop)
 "xmA" = (
 /obj/structure/table/standard,
 /obj/item/hand_labeler,
@@ -43364,11 +43368,11 @@ uik
 xVu
 tlj
 pRF
-fHU
+jde
 dJH
 nCx
 rnE
-kax
+fHU
 kHx
 jrj
 qGO
@@ -43552,18 +43556,18 @@ tRT
 qXG
 vUk
 cHW
-iRt
+tAO
 ovs
 vKQ
 fIg
 neF
 uMP
 wPX
-vtj
-mXk
-dWj
+hwx
+wgD
+eMz
 ghf
-uoV
+koN
 cwF
 qGO
 eBi
@@ -43748,14 +43752,14 @@ jQD
 cHW
 nXX
 qjh
-pqG
 dqp
+aTl
 ghf
-hoN
+pqG
 neF
-cKp
-cKp
-cKp
+hoN
+hoN
+hoN
 neF
 neF
 mkA
@@ -43942,14 +43946,14 @@ rNr
 cHW
 nXX
 aRq
-dqp
-dqp
-ghf
-xmd
-wlU
 aTl
+aTl
+ghf
+oWo
+wlU
 viJ
-nRE
+jKD
+hFy
 tGt
 neF
 ipQ
