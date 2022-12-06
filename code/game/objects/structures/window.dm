@@ -6,7 +6,7 @@
 	pass_flags_self = ATOM_PASS_GLASS
 	CanAtmosPass = ATMOS_PASS_PROC
 	w_class = ITEMSIZE_NORMAL
-	rad_flags = RAD_BLOCK_CONTENTS
+	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
 
 	layer = WINDOW_LAYER
 	pressure_resistance = 4*ONE_ATMOSPHERE

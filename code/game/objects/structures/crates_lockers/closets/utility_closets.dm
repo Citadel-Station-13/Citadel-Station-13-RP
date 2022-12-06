@@ -153,6 +153,7 @@
 	icon_state = "radsuitcloset"
 	icon_opened = "toolclosetopen"
 	icon_closed = "radsuitcloset"
+	rad_flags = RAD_BLOCK_CONTENTS
 
 	starts_with = list(
 		/obj/item/clothing/suit/radiation = 2,
