@@ -10,11 +10,11 @@
 	var/displaced_health = 50
 	var/current_damage = 0
 	var/cover = 50 //how much cover the girder provides against projectiles.
-	var/default_material = MAT_STEEL
-	var/datum/material/girder_material
-	var/datum/material/reinf_material
 	var/reinforcing = 0
 	var/applies_material_colour = 1
+
+	var/default_material = MAT_STEEL
+	var/datum/material/girder_material
 
 /obj/structure/girder/Initialize(mapload, material_key)
 	. = ..()
@@ -103,8 +103,9 @@
 	if(!istype(Proj, /obj/item/projectile/beam))
 		damage *= 0.4 //non beams do reduced damage
 
-	else if(girder_material && girder_material.reflectivity >= 0.5) // Reflect lasers.
-		var/new_damage = damage * girder_material.reflectivity
+	//TODO: Better Material armor
+	else if(girder_material && girder_material.reflectiveness >= MAT_VALUE_RIGID) // Reflect lasers.
+		var/new_damage = damage * girder_material.reflectiveness
 		var/outgoing_damage = damage - new_damage
 		damage = round(new_damage)
 		Proj.damage = outgoing_damage

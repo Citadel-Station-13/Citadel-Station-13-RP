@@ -11,24 +11,24 @@ SUBSYSTEM_DEF(materials)
 	name = "Materials"
 	subsystem_flags = SS_NO_FIRE | SS_NO_INIT
 
-	/// Dictionary of material.id || material ref.
+	/// Dictionary of material.uid || material ref.
 	var/list/materials
 	/// Dictionary of type || list of material refs.
 	var/list/materials_by_type
-	/// Dictionary of type || list of material ids.
-	var/list/materialids_by_type
+	/// Dictionary of type || list of material uid.
+	var/list/material_uids_by_type
 
 
 /// Ran on initialize, populated the materials and materials_by_category dictionaries with their appropiate vars (See these variables for more info)
-/datum/controller/subsystem/materials/proc/InitializeMaterials()
+/datum/controller/subsystem/materials/proc/initialize_materials()
 	materials = list()
 	materials_by_type = list()
-	materialids_by_type = list()
+	material_uids_by_type = list()
 	for(var/type in subtypesof(/datum/material))
 		var/datum/material/mat_type = type
 		if(!(initial(mat_type.init_flags) & MATERIAL_INIT_MAPLOAD))
 			continue // Do not initialize at mapload
-		InitializeMaterial(list(mat_type))
+		initialize_material(list(mat_type))
 
 /**
  *! Creates and caches a material datum.
@@ -37,19 +37,19 @@ SUBSYSTEM_DEF(materials)
  * - [arguments][/list]: The arguments to use to create the material datum
  *   - The first element is the type of material to initialize.
  */
-/datum/controller/subsystem/materials/proc/InitializeMaterial(list/arguments)
+/datum/controller/subsystem/materials/proc/initialize_material(list/arguments)
 	var/datum/material/mat_type = arguments[1]
 	if(initial(mat_type.init_flags) & MATERIAL_INIT_BESPOKE)
-		arguments[1] = GetIdFromArguments(arguments)
+		arguments[1] = get_uid_from_arguments(arguments)
 
 	var/datum/material/mat_ref = new mat_type
 	if(!mat_ref.Initialize(arglist(arguments)))
 		return null
 
-	var/mat_id = mat_ref.id
-	materials[mat_id] = mat_ref
+	var/mat_uid = mat_ref.uid
+	materials[mat_uid] = mat_ref
 	materials_by_type[mat_type] += list(mat_ref)
-	materialids_by_type[mat_type] += list(mat_id)
+	material_uids_by_type[mat_type] += list(mat_uid)
 
 	SEND_SIGNAL(src, COMSIG_MATERIALS_INIT_MAT, mat_ref)
 	return mat_ref
@@ -63,22 +63,22 @@ SUBSYSTEM_DEF(materials)
  *     - [Material datums][/datum/material] are assumed to be references to the cached datum and are returned
  *     - Text is assumed to be the text ID of a material and the corresponding material is fetched from the cache
  *     - A material type is checked for bespokeness:
- *       - If the material type is not bespoke the type is assumed to be the id for a material and the corresponding material is loaded from the cache.
+ *       - If the material type is not bespoke the type is assumed to be the uid for a material and the corresponding material is loaded from the cache.
  *       - If the material type is bespoke a text ID is generated from the arguments list and used to load a material datum from the cache.
  *   - The following elements are used to generate bespoke IDs
  */
-/datum/controller/subsystem/materials/proc/_GetMaterialRef(list/arguments)
+/datum/controller/subsystem/materials/proc/_get_material_ref(list/arguments)
 	if(!materials)
-		InitializeMaterials()
+		initialize_materials()
 
 	var/datum/material/key = arguments[1]
 	if(istype(key))
-		return key // We are assuming here that the only thing allowed to create material datums is [/datum/controller/subsystem/materials/proc/InitializeMaterial]
+		return key // We are assuming here that the only thing allowed to create material datums is [/datum/controller/subsystem/materials/proc/initialize_material]
 
-	if(istext(key)) // Handle text id
+	if(istext(key)) // Handle text uid
 		. = materials[key]
 		if(!.)
-			WARNING("Attempted to fetch material ref with invalid text id '[key]'")
+			WARNING("Attempted to fetch material ref with invalid text uid '[key]'")
 		return
 
 	if(!ispath(key, /datum/material))
@@ -90,21 +90,21 @@ SUBSYSTEM_DEF(materials)
 			WARNING("Attempted to fetch reference to an abstract material with key [key]")
 		return
 
-	key = GetIdFromArguments(arguments)
-	return materials[key] || InitializeMaterial(arguments)
+	key = get_uid_from_arguments(arguments)
+	return materials[key] || initialize_material(arguments)
 
 /**
  *! I'm not going to lie, this was swiped from [SSdcs][/datum/controller/subsystem/processing/dcs].
- * Credit does to ninjanomnom
+ * Credit does to @ninjanomnom
  *
- * Generates an id for bespoke ~~elements~~ materials when given the argument list
- * Generating the id here is a bit complex because we need to support named arguments
+ * Generates an uid for bespoke ~~elements~~ materials when given the argument list
+ * Generating the uid here is a bit complex because we need to support named arguments
  * Named arguments can appear in any order and we need them to appear after ordered arguments
  * We assume that no one will pass in a named argument with a value of null
  **/
-/datum/controller/subsystem/materials/proc/GetIdFromArguments(list/arguments)
+/datum/controller/subsystem/materials/proc/get_uid_from_arguments(list/arguments)
 	var/datum/material/mattype = arguments[1]
-	var/list/fullid = list("[initial(mattype.id) || mattype]")
+	var/list/full_uid = list("[initial(mattype.uid) || mattype]")
 	var/list/named_arguments = list()
 	for(var/i in 2 to length(arguments))
 		var/key = arguments[i]
@@ -119,9 +119,9 @@ SUBSYSTEM_DEF(materials)
 				value = REF(value)
 			named_arguments["[key]"] = value
 		else
-			fullid += "[key]"
+			full_uid += "[key]"
 
 	if(length(named_arguments))
 		named_arguments = sort_list(named_arguments)
-		fullid += named_arguments
-	return list2params(fullid)
+		full_uid += named_arguments
+	return list2params(full_uid)

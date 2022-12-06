@@ -123,7 +123,7 @@
 	return ((H && H.isSynthetic()) ? 1 : virus_immune)
 
 /datum/species/proc/get_flesh_colour(mob/living/carbon/human/H)
-	return ((H && H.isSynthetic()) ? SYNTH_FLESH_COLOUR : flesh_color)
+	return ((H && H.isSynthetic()) ? SYNTH_FLESH_COLOR : flesh_color)
 
 /datum/species/proc/get_environment_discomfort(mob/living/carbon/human/H, msg_type)
 

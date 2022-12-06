@@ -22,3 +22,27 @@
 #define MAT_VALUE_NORMAL          50 // Steel tier
 #define MAT_VALUE_HEAVY           70 // Silver tier
 #define MAT_VALUE_VERY_HEAVY      80 // Uranium tier
+
+#define MAT_SOLVENT_NONE     0
+#define MAT_SOLVENT_MILD     1
+#define MAT_SOLVENT_MODERATE 2
+#define MAT_SOLVENT_STRONG   3
+
+#define MAT_RARITY_NOWHERE  0
+#define MAT_RARITY_EXOTIC   5
+#define MAT_RARITY_UNCOMMON 10
+#define MAT_RARITY_MUNDANE  20
+
+#define GENERIC_SMELTING_HEAT_POINT 5000
+#define HIGH_SMELTING_HEAT_POINT 10000
+
+#define ORE_SURFACE  "surface minerals"
+#define ORE_PRECIOUS "precious metals"
+#define ORE_NUCLEAR  "nuclear fuel"
+#define ORE_EXOTIC   "exotic matter"
+
+//Phase of matter placeholders
+#define MAT_PHASE_SOLID     "solid"
+#define MAT_PHASE_LIQUID    "liquid"
+#define MAT_PHASE_GAS       "gas"
+#define MAT_PHASE_PLASMA    "plasma"

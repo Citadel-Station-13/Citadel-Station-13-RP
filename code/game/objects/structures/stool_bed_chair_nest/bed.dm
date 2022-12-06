@@ -18,7 +18,6 @@
 	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 	buckle_dir = SOUTH
 	buckle_lying = 90
-	var/datum/material/material
 	var/datum/material/padding_material
 	var/base_icon = "bed"
 	var/applies_material_colour = 1

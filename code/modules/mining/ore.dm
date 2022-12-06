@@ -84,7 +84,7 @@
 /obj/item/ore/osmium
 	name = "raw platinum"
 	icon_state = "ore_platinum"
-	material = "platinum"
+	material = /datum/material/solid/metal/platinum
 
 /obj/item/ore/hydrogen
 	name = "raw hydrogen"
@@ -136,5 +136,5 @@
 /obj/item/ore/vaudium
 	name = "raw vaudium"
 	icon_state = "ore_vaudium"
-	material = MAT_VAUDIUM
+	material = "vaudium"
 	origin_tech = list(TECH_MATERIAL = 7)

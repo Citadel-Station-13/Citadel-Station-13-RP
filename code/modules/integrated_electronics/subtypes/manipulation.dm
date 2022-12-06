@@ -493,16 +493,16 @@
 	cooldown_per_use = 10
 	var/static/list/mtypes = list(
 		/datum/material/solid/metal/iron,
-		/datum/material/glass,
-		/datum/material/silver,
+		/datum/material/solid/glass,
+		/datum/material/solid/metal/silver,
 		/datum/material/solid/metal/gold,
-		/datum/material/diamond,
-		/datum/material/uranium,
+		/datum/material/solid/gemstone/diamond,
+		/datum/material/solid/metal/uranium,
 		/datum/material/plasma,
 		/datum/material/bluespace,
-		/datum/material/bananium,
+		/datum/material/solid/metal/bananium,
 		/datum/material/titanium,
-		/datum/material/plastic
+		/datum/material/solid/plastic
 		)
 
 /obj/item/integrated_circuit/manipulation/matman/ComponentInitialize()

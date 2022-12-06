@@ -6,7 +6,7 @@ They are also fragile based on material data and many can break/smash apart when
 
 Materials has a var called protectiveness which plays a major factor in how good it is for armor.
 With the coefficent being 0.05, this is how strong different levels of protectiveness are (for melee)
-For bullets and lasers, material hardness and reflectivity also play a major role, respectively.
+For bullets and lasers, material hardness and reflectiveness also play a major role, respectively.
 
 
 Protectiveness | Armor %
@@ -27,7 +27,7 @@ Protectiveness | Armor %
 
 // Putting these at /clothing/ level saves a lot of code duplication in armor/helmets/gauntlets/etc
 /obj/item/clothing
-	var/datum/material/material = null // Why isn't this a datum?
+	var/datum/material/material = null
 	var/applies_material_color = TRUE
 	var/unbreakable = FALSE
 	var/default_material = null // Set this to something else if you want material attributes on init.
@@ -68,7 +68,7 @@ Protectiveness | Armor %
 /obj/item/clothing/proc/clothing_impact(var/obj/source, var/damage)
 	if(material && damage)
 		material_impact(source, damage)
-
+Bes
 /obj/item/clothing/proc/material_impact(var/obj/source, var/damage)
 	if(!material || unbreakable)
 		return
@@ -131,14 +131,14 @@ Protectiveness | Armor %
 		user.loc = picked
 		return PROJECTILE_FORCE_MISS
 
-	if(material.reflectivity)
+	if(material.reflectiveness)
 		if(istype(damage_source, /obj/item/projectile/energy) || istype(damage_source, /obj/item/projectile/beam))
 			var/obj/item/projectile/P = damage_source
 
 			if(P.reflected) // Can't reflect twice
 				return ..()
 
-			var/reflectchance = (40 * material.reflectivity) - round(damage/3)
+			var/reflectchance = (40 * material.reflectiveness) - round(damage/3)
 			reflectchance *= material_armor_modifer
 			if(!(def_zone in list(BP_TORSO, BP_GROIN)))
 				reflectchance /= 2
@@ -171,11 +171,11 @@ Protectiveness | Armor %
 
 		bullet_armor = calculate_material_armor((material.protectiveness * (material.hardness / 100) * material_armor_modifer) * 0.7)
 
-		laser_armor = calculate_material_armor((material.protectiveness * (material.reflectivity + 1) * material_armor_modifer) * 0.7)
+		laser_armor = calculate_material_armor((material.protectiveness * (material.reflectiveness / 100) * material_armor_modifer) * 0.7)
 		if(material.opacity != 1)
 			laser_armor *= max(material.opacity - 0.3, 0) // Glass and such has an opacity of 0.3, but lasers should go through glass armor entirely.
 
-		energy_armor = calculate_material_armor((material.protectiveness * material_armor_modifer) * 0.4)
+		energy_armor = calculate_material_armor((material.protectiveness * (material.reflectiveness / 100) * material_armor_modifer) * 0.4)
 
 		bomb_armor = calculate_material_armor((material.protectiveness * material_armor_modifer) * 0.5)
 

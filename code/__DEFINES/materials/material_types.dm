@@ -1,53 +1,51 @@
 //! Material Defines
-#define MAT_ALGAE          "algae"
-#define MAT_BANANIUM       "bananium"
-#define MAT_BRONZE         "bronze"
-#define MAT_CARBON         "carbon"
-#define MAT_CHITIN         "chitin"
-#define MAT_COPPER         "copper"
-#define MAT_DIAMOND        "diamond"
-#define MAT_DURASTEEL      "durasteel"
-#define MAT_DURASTEELHULL  "durasteel hull"
-#define MAT_GLASS          "glass"
-#define MAT_GLASS_BS       "borosilicate glass"
-#define MAT_GOLD           "gold"
-#define MAT_GRAPHITE       "graphite"
-#define MAT_HARDLOG        "hardwood log"
-#define MAT_HARDWOOD       "hardwood"
-#define MAT_HEMATITE       "hematite"
-#define MAT_IRON           "iron"
-#define MAT_LEAD           "lead"
-#define MAT_LEATHER        "leather"
-#define MAT_LOG            "log"
-#define MAT_MARBLE         "marble"
-#define MAT_METALHYDROGEN  "mhydrogen"
-#define MAT_MORPHIUM       "morphium"
-#define MAT_MORPHIUMHULL   "morphium hull"
-#define MAT_OSMIUM         "osmium"
-#define MAT_PHORON         "phoron"
-#define MAT_PLASTEEL       "plasteel"
-#define MAT_PLASTEELHULL   "plasteel hull"
-#define MAT_PLASTIC        "plastic"
-#define MAT_PLATINUM       "platinum"
-#define MAT_RESIN          "resin"
-#define MAT_RESIN_COMPOUND "resin compound"
-#define MAT_SANDSTONE      "sandstone"
-#define MAT_SIFLOG         "alien log"
-#define MAT_SIFWOOD        "alien wood"
-#define MAT_SILENCIUM      "silencium"
-#define MAT_SILVER         "silver"
-#define MAT_SNOW           "snow"
-#define MAT_SNOW_PACKED    "packed snow"
-#define MAT_STEEL          "steel"
-#define MAT_STEELHULL      "steel hull"
-#define MAT_SUPERMATTER    "supermatter"
-#define MAT_TITANIUM       "titanium"
-#define MAT_TITANIUMHULL   "titanium hull"
-#define MAT_URANIUM        "uranium"
-#define MAT_VALHOLLIDE     "valhollide"
-#define MAT_VAUDIUM        "vaudium"
-#define MAT_VERDANTIUM     "verdantium"
-#define MAT_WOOD           "wood"
+#define MAT_ALGAE          /datum/material/solid/algae
+#define MAT_BANANIUM       /datum/material/solid/metal/bananium
+#define MAT_BRONZE         /datum/material/solid/metal/bronze
+#define MAT_CARBON         /datum/material/solid/carbon
+#define MAT_CHITIN         /datum/material/solid/skin/insect
+#define MAT_COPPER         /datum/material/solid/metal/copper
+#define MAT_DIAMOND        /datum/material/solid/gemstone/diamond
+#define MAT_DURASTEEL      /datum/material/solid/metal/durasteel
+#define MAT_DURASTEELHULL  /datum/material/solid/metal/durasteel/hull
+#define MAT_GLASS          /datum/material/solid/glass
+#define MAT_GLASS_BS       /datum/material/solid/glass/borosilicate
+#define MAT_GOLD           /datum/material/solid/metal/gold
+#define MAT_HARDLOG        /datum/material/solid/wood/log/hardwood
+#define MAT_HARDWOOD       /datum/material/solid/wood/hardwood
+#define MAT_HEMATITE       /datum/material/solid/hematite
+#define MAT_IRON           /datum/material/solid/metal/iron
+#define MAT_LEAD           /datum/material/solid/metal/lead
+#define MAT_LEATHER        /datum/material/solid/leather
+#define MAT_LOG            /datum/material/solid/wood/log
+#define MAT_MARBLE         /datum/material/solid/stone/marble
+#define MAT_METALHYDROGEN  /datum/material/solid/metallic_hydrogen
+#define MAT_MORPHIUM       /datum/material/solid/metal/morphium
+#define MAT_MORPHIUMHULL   /datum/material/solid/metal/morphium/hull
+#define MAT_OSMIUM         /datum/material/solid/metal/osmium
+#define MAT_PHORON         /datum/material/solid/phoron
+#define MAT_PLASTEEL       /datum/material/solid/metal/plasteel
+#define MAT_PLASTEELHULL   /datum/material/solid/metal/plasteel/hull
+#define MAT_PLASTIC        /datum/material/solid/plastic
+#define MAT_PLATINUM       /datum/material/solid/metal/platinum
+#define MAT_RESIN          /datum/material/solid/resin
+#define MAT_RESIN_COMPOUND /datum/material/solid/resin/hybrid
+#define MAT_SANDSTONE      /datum/material/solid/stone/sandstone
+#define MAT_SIFLOG         /datum/material/solid/wood/log/sif
+#define MAT_SIFWOOD        /datum/material/solid/wood/sif
+#define MAT_SILENCIUM      /datum/material/solid/stone/silencium
+#define MAT_SILVER         /datum/material/solid/metal/silver
+#define MAT_SNOW           /datum/material/solid/snow
+#define MAT_SNOW_PACKED    /datum/material/solid/snow/brick
+#define MAT_STEEL          /datum/material/solid/metal/steel
+#define MAT_STEELHULL      /datum/material/solid/metal/steel/hull
+#define MAT_SUPERMATTER    /datum/material/solid/super_matter
+#define MAT_TITANIUM       /datum/material/solid/metal/titanium
+#define MAT_TITANIUMHULL   /datum/material/solid/metal/titanium/hull
+#define MAT_URANIUM        /datum/material/solid/metal/uranium
+#define MAT_VALHOLLIDE     /datum/material/solid/metal/valhollide
+#define MAT_VERDANTIUM     /datum/material/solid/metal/verdantium
+#define MAT_WOOD           /datum/material/solid/wood
 
 #define SHARD_SHARD        "shard"
 #define SHARD_SHRAPNEL     "shrapnel"

@@ -4,7 +4,7 @@
 	color = "#EEEEEE"
 
 /obj/structure/table/bench/standard/Initialize(mapload)
-	material = GET_MATERIAL_REF(/datum/material/plastic)
+	material = GET_MATERIAL_REF(/datum/material/solid/plastic)
 	return ..()
 
 /obj/structure/table/bench/steel
@@ -20,7 +20,7 @@
 	color = "#CCCCCC"
 
 /obj/structure/table/bench/marble/Initialize(mapload)
-	material = GET_MATERIAL_REF(/datum/material/stone/marble)
+	material = GET_MATERIAL_REF(/datum/material/solid/stone/marble)
 	return ..()
 
 /*
@@ -29,7 +29,7 @@
 	color = "#EEEEEE"
 
 /obj/structure/table/bench/reinforced/New()
-	material = GET_MATERIAL_REF(/datum/material/plastic)
+	material = GET_MATERIAL_REF(/datum/material/solid/plastic)
 	reinforced = GET_MATERIAL_REF(/datum/material/solid/metal/steel)
 	..()
 
@@ -85,7 +85,7 @@
 	alpha = 77 // 0.3 * 255
 
 /obj/structure/table/bench/glass/Initialize(mapload)
-	material = GET_MATERIAL_REF(/datum/material/glass)
+	material = GET_MATERIAL_REF(/datum/material/solid/glass)
 	return ..()
 
 /*
@@ -94,7 +94,7 @@
 	color = "#EEEEEE"
 
 /obj/structure/table/bench/holotable/New()
-	material = GET_MATERIAL_REF(/datum/material/plastic/holographic)
+	material = GET_MATERIAL_REF(/datum/material/solid/plastic/holographic)
 	..()
 
 /obj/structure/table/bench/wooden/holotable

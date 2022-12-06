@@ -19,7 +19,7 @@
 /// From base of [/datum/reagent/proc/expose_atom]: (/turf, reac_volume)
 ////#define COMSIG_REAGENT_EXPOSE_TURF "reagent_expose_turf"
 
-/// From base of [/datum/controller/subsystem/materials/proc/InitializeMaterial]: (/datum/material)
+/// From base of [/datum/controller/subsystem/materials/proc/initialize_material]: (/datum/material)
 #define COMSIG_MATERIALS_INIT_MAT "SSmaterials_init_mat"
 
 /// From base of [/datum/component/multiple_lives/proc/respawn]: (mob/respawned_mob, gibbed, lives_left)

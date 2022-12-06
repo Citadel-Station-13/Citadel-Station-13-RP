@@ -17,6 +17,9 @@
 	icon = 'icons/obj/stacks.dmi'
 	var/list/datum/stack_recipe/recipes
 	var/singular_name
+	var/plural_name
+	var/plural_icon_state
+	var/max_icon_state
 	var/amount = 1
 	/// See stack recipes initialisation, param "max_res_amount" must be equal to this max_amount.
 	var/max_amount = 50
@@ -90,59 +93,58 @@
 	list_recipes(user)
 
 /obj/item/stack/proc/list_recipes(mob/user, recipes_sublist)
-	if (!recipes)
+	var/list/recipes = get_recipes()
+	if(!islist(recipes) || !length(recipes))
 		return
 	if (!src || get_amount() <= 0)
-		user << browse(null, "window=stack")
+		close_browser(user, "window=stack")
 	user.set_machine(src) //for correct work of onclose
 	var/list/recipe_list = recipes
 	if (recipes_sublist && recipe_list[recipes_sublist] && istype(recipe_list[recipes_sublist], /datum/stack_recipe_list))
 		var/datum/stack_recipe_list/srl = recipe_list[recipes_sublist]
 		recipe_list = srl.recipes
-	var/t1 = text("<HTML><HEAD><title>Constructions from []</title></HEAD><body><TT>Amount Left: []<br>", src, src.get_amount())
+	var/t1 = list()
+	t1 += "<HTML><HEAD><title>Constructions from [src]</title></HEAD><body><TT>Amount Left: [src.get_amount()]<br>"
 	for(var/i=1;i<=recipe_list.len,i++)
 		var/E = recipe_list[i]
 		if (isnull(E))
-			t1 += "<hr>"
 			continue
 
-		if (i>1 && !isnull(recipe_list[i-1]))
-			t1+="<br>"
-
 		if (istype(E, /datum/stack_recipe_list))
+			t1+="<br>"
 			var/datum/stack_recipe_list/srl = E
-			t1 += "<a href='?src=\ref[src];sublist=[i]'>[srl.title]</a>"
+			t1 += "\[Sub-menu] <a href='?src=\ref[src];sublist=[i]'>[srl.title]</a>"
+
 
 		if (istype(E, /datum/stack_recipe))
 			var/datum/stack_recipe/R = E
+			t1+="<br>"
 			var/max_multiplier = round(src.get_amount() / R.req_amount)
 			var/title
 			var/can_build = 1
 			can_build = can_build && (max_multiplier>0)
 			if (R.res_amount>1)
-				title+= "[R.res_amount]x [R.title]\s"
+				title+= "[R.res_amount]x [R.display_name()]\s"
 			else
-				title+= "[R.title]"
+				title+= "[R.display_name()]"
 			title+= " ([R.req_amount] [src.singular_name]\s)"
 			if (can_build)
 				t1 += text("<A href='?src=\ref[src];sublist=[recipes_sublist];make=[i];multiplier=1'>[title]</A>  ")
 			else
 				t1 += text("[]", title)
-				continue
 			if (R.max_res_amount>1 && max_multiplier>1)
 				max_multiplier = min(max_multiplier, round(R.max_res_amount/R.res_amount))
 				t1 += " |"
 				var/list/multipliers = list(5,10,25)
 				for (var/n in multipliers)
 					if (max_multiplier>=n)
-						t1 += " <A href='?src=\ref[src];make=[i];multiplier=[n]'>[n*R.res_amount]x</A>"
+						t1 += " <A href='?src=\ref[src];make=[i];sublist=[recipes_sublist];multiplier=[n]'>[n*R.res_amount]x</A>"
 				if (!(max_multiplier in multipliers))
-					t1 += " <A href='?src=\ref[src];make=[i];multiplier=[max_multiplier]'>[max_multiplier*R.res_amount]x</A>"
+					t1 += " <A href='?src=\ref[src];make=[i];sublist=[recipes_sublist];multiplier=[max_multiplier]'>[max_multiplier*R.res_amount]x</A>"
 
 	t1 += "</TT></body></HTML>"
-	user << browse(t1, "window=stack")
+	show_browser(user, JOINTEXT(t1), "window=stack")
 	onclose(user, "stack")
-	return
 
 /obj/item/stack/proc/produce_recipe(datum/stack_recipe/recipe, quantity, mob/user)
 	var/required = quantity*recipe.req_amount
@@ -462,6 +464,9 @@
 	if(from.fingerprintslast)
 		fingerprintslast = from.fingerprintslast
 
+/obj/item/stack/proc/get_recipes()
+	return
+
 /*
  * Recipe datum
  */
@@ -477,6 +482,9 @@
 	var/one_per_turf = 0
 	var/on_floor = 0
 	var/use_material
+	var/use_reinf_material
+	var/apply_material_name = TRUE //Whether the recipe will prepend a material name to the title - 'steel clipboard' vs 'clipboard'
+	var/set_dir_on_spawn = TRUE
 	var/pass_color
 
 /datum/stack_recipe/New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, supplied_material = null, pass_stack_color)
@@ -489,7 +497,29 @@
 	src.one_per_turf = one_per_turf
 	src.on_floor = on_floor
 	src.use_material = supplied_material
+	// src.use_reinf_material = supplied_reinf_material
 	src.pass_color = pass_stack_color
+
+/datum/stack_recipe/proc/display_name()
+	if(!use_material || !apply_material_name)
+		return title
+	var/datum/material/material = GET_MATERIAL_REF(use_material)
+	. = "[material.solid_name] [title]"
+	if(use_reinf_material)
+		material = GET_MATERIAL_REF(use_reinf_material)
+		. = "[material.solid_name]-reinforced [.]"
+
+/datum/stack_recipe/proc/can_make(mob/user)
+	if (one_per_turf && (locate(result_type) in user.loc))
+		to_chat(user, SPAN_WARNING("There is another [display_name()] here!"))
+		return FALSE
+
+	var/turf/T = get_turf(user.loc)
+	if (on_floor && !T.is_floor())
+		to_chat(user, SPAN_WARNING("\The [display_name()] must be constructed on the floor!"))
+		return FALSE
+
+	return TRUE
 
 /*
  * Recipe list datum

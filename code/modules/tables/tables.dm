@@ -21,7 +21,6 @@ var/list/table_icon_cache = list()
 	var/can_plate = 1
 
 	var/manipulating = 0
-	var/datum/material/material = null
 	var/datum/material/reinforced = null
 
 	// Gambling tables. I'd prefer reinforced with carpet/felt/cloth/whatever, but AFAIK it's either harder or impossible to get /obj/item/stack/material of those.

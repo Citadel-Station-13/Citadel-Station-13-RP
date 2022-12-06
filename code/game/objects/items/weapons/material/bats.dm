@@ -14,25 +14,25 @@
 
 // Predefined materials go here.
 /obj/item/material/twohanded/baseballbat/metal/Initialize(mapload, material_key)
-	return ..(mapload,"steel")
+	return ..(mapload, MAT_STEEL)
 
 /obj/item/material/twohanded/baseballbat/uranium/Initialize(mapload, material_key)
-	return ..(mapload,"uranium")
+	return ..(mapload, MAT_URANIUM)
 
 /obj/item/material/twohanded/baseballbat/gold/Initialize(mapload, material_key)
-	return ..(mapload,"gold")
+	return ..(mapload, MAT_GOLD)
 
 /obj/item/material/twohanded/baseballbat/platinum/Initialize(mapload, material_key)
-	return ..(mapload,"platinum")
+	return ..(mapload, MAT_PLATINUM)
 
 /obj/item/material/twohanded/baseballbat/diamond/Initialize(mapload, material_key)
-	return ..(mapload,"diamond")
+	return ..(mapload, MAT_DIAMOND)
 
 /obj/item/material/twohanded/baseballbat/plasteel/Initialize(mapload, material_key)
-	return ..(mapload,"plasteel")
+	return ..(mapload, MAT_PLASTEEL)
 
 /obj/item/material/twohanded/baseballbat/durasteel/Initialize(mapload, material_key)
-	return ..(mapload,"durasteel")
+	return ..(mapload, MAT_DURASTEEL)
 
 /obj/item/material/twohanded/baseballbat/penbat
 	name = "penetrator"
@@ -42,7 +42,7 @@
 	force = 0
 	throw_force = 0
 	attack_verb = list("smacked", "slapped", "thwapped", "struck", "bapped", "bonked")
-	default_material = "plastic"
+	default_material = MAT_PLASTIC
 	force_divisor = 0
 	unwielded_force_divisor = 0
 	dulled_divisor = 0

@@ -1,5 +1,6 @@
 /turf/simulated/wall/r_wall
 	icon_state = "solid-reinf"
+	color = "#666666"
 	// material = /datum/material/solid/metal/plasteel
 	reinf_material = /datum/material/solid/metal/plasteel
 
@@ -45,23 +46,21 @@
 /turf/simulated/wall/thull
 	icon_state = "hull"
 	color = "#D1E6E3"
-	material = /datum/material/solid/metal/plasteel/titanium/hull
-	girder_material = /datum/material/solid/metal/plasteel/titanium/hull
+	material = /datum/material/solid/metal/titanium/hull
+	girder_material = /datum/material/solid/metal/titanium/hull
 
 /turf/simulated/wall/rthull
 	icon_state = "hull"
 	color = "#D1E6E3"
-	material = /datum/material/solid/metal/plasteel/titanium/hull
-	reinf_material = /datum/material/solid/metal/plasteel/titanium/hull
-	girder_material = /datum/material/solid/metal/plasteel/titanium/hull
+	material = /datum/material/solid/metal/titanium/hull
+	reinf_material = /datum/material/solid/metal/titanium/hull
+	girder_material = /datum/material/solid/metal/titanium/hull
 
 /turf/simulated/wall/cult
 	icon_state = "cult"
-
-/turf/simulated/wall/cult
-	material = /datum/material/cult
-	reinf_material = /datum/material/cult/reinf
-	girder_material = /datum/material/cult
+	material = /datum/material/solid/stone/cult
+	reinf_material = /datum/material/solid/stone/cult/reinf
+	girder_material = /datum/material/solid/stone/cult
 
 /turf/unsimulated/wall/cult
 	name = "cult wall"
@@ -70,63 +69,91 @@
 	icon_state = "cult"
 
 /turf/simulated/wall/iron
+	icon_state = "iron"
 	material = /datum/material/solid/metal/iron
 
-/turf/simulated/wall/uranium/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_URANIUM)
-/turf/simulated/wall/diamond/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_DIAMOND)
-/turf/simulated/wall/gold/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_GOLD)
-/turf/simulated/wall/silver/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_SILVER)
-/turf/simulated/wall/lead/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_LEAD)
-/turf/simulated/wall/r_lead/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_LEAD, MAT_LEAD)
-/turf/simulated/wall/phoron/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_PHORON)
-/turf/simulated/wall/sandstone/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_SANDSTONE)
-/turf/simulated/wall/ironphoron/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_IRON, MAT_PHORON)
-/turf/simulated/wall/golddiamond/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_GOLD, MAT_DIAMOND)
-/turf/simulated/wall/silvergold/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_SILVER, MAT_GOLD)
-/turf/simulated/wall/sandstonediamond/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_SANDSTONE, MAT_DIAMOND)
-/turf/simulated/wall/snowbrick/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_SNOW_PACKED)
+/turf/simulated/wall/uranium
+	icon_state = "uranium"
+	material = /datum/material/solid/metal/uranium
 
-/turf/simulated/wall/resin/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_RESIN, null, MAT_RESIN)
+/turf/simulated/wall/diamond
+	icon_state = "diamond"
+	material = /datum/material/solid/gemstone/diamond
+
+/turf/simulated/wall/gold
+	icon_state = "gold"
+	material = /datum/material/solid/metal/gold
+
+/turf/simulated/wall/silver
+	icon_state = "silver"
+	material = /datum/material/solid/metal/silver
+
+/turf/simulated/wall/lead
+	icon_state = "lead"
+	material = /datum/material/solid/metal/lead
+
+/turf/simulated/wall/r_lead
+	material = /datum/material/solid/metal/lead
+	reinf_material = /datum/material/solid/metal/lead
+
+/turf/simulated/wall/phoron
+	material = /datum/material/solid/phoron
+
+/turf/simulated/wall/sandstone
+	material = /datum/material/solid/stone/sandstone
+
+/turf/simulated/wall/ironphoron
+	material = /datum/material/solid/metal/iron
+	reinf_material = /datum/material/solid/phoron
+
+/turf/simulated/wall/golddiamond
+	material = /datum/material/solid/metal/gold
+	reinf_material = /datum/material/solid/gemstone/diamond
+
+/turf/simulated/wall/silvergold
+	material = /datum/material/solid/metal/silver
+	reinf_material = /datum/material/solid/metal/gold
+
+/turf/simulated/wall/sandstonediamond
+	material = /datum/material/solid/stone/sandstone
+	reinf_material = /datum/material/solid/gemstone/diamond
+
+/turf/simulated/wall/snowbrick
+	material = /datum/material/solid/snow/brick
+
+/turf/simulated/wall/resin
+	material = /datum/material/solid/resin
+	reinf_material = null
+	girder_material = /datum/material/solid/resin
 
 // Kind of wondering if this is going to bite me in the butt.
-/turf/simulated/wall/skipjack/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"alienalloy")
+/turf/simulated/wall/skipjack
+	material = /datum/material/alienalloy
+
 /turf/simulated/wall/skipjack/attackby()
 	return
-/turf/simulated/wall/titanium/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"titanium")
 
-/turf/simulated/wall/durasteel/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload,"durasteel", "durasteel")
+/turf/simulated/wall/titanium
+	material = /datum/material/solid/metal/titanium
 
-/turf/simulated/wall/wood/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_WOOD)
+/turf/simulated/wall/durasteel
+	material = /datum/material/solid/metal/durasteel
+	reinf_material = /datum/material/solid/metal/durasteel
 
-/turf/simulated/wall/sifwood/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_SIFWOOD)
+/turf/simulated/wall/wood
+	material = /datum/material/solid/wood
 
-/turf/simulated/wall/hardwood/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_HARDWOOD)
+/turf/simulated/wall/sifwood
+	material = /datum/material/solid/wood/sif
 
-/turf/simulated/wall/log/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_LOG)
+/turf/simulated/wall/hardwood
+	material = /datum/material/solid/wood/hardwood
 
-/turf/simulated/wall/log_sif/Initialize(mapload, materialtype, rmaterialtype, girdertype)
-	return ..(mapload, MAT_SIFLOG)
+/turf/simulated/wall/log
+	material = /datum/material/solid/wood/log
+
+/turf/simulated/wall/log_sif
+	material = /datum/material/solid/wood/log/sif
 
 // Shuttle Walls
 /turf/simulated/shuttle/wall
@@ -136,20 +163,25 @@
 	density = 1
 	blocks_air = 1
 
-	var/base_state = "light" //The base iconstate to base sprites on
-	var/hard_corner = 0 //Forces hard corners (as opposed to diagonals)
-	var/true_name = "wall" //What to rename this to on init
+	/// The base iconstate to base sprites on.
+	var/base_state = "light"
+	/// Forces hard corners. (as opposed to diagonals)
+	var/hard_corner = 0
+	/// What to rename this to on init.
+	var/true_name = "wall"
 
-	//Extra things this will try to locate and act like we're joining to. You can put doors, or whatever.
-	//Carefully means only if it's on a /turf/simulated/shuttle subtype turf.
+	/**
+	 * Extra things this will try to locate and act like we're joining to. You can put doors, or whatever.
+	 * Carefully means only if it's on a /turf/simulated/shuttle subtype turf.
+	 */
 	var/static/list/join_carefully = list(
-	/obj/structure/grille,
-	/obj/machinery/door/blast/regular
+		/obj/machinery/door/blast/regular,
+		/obj/structure/grille,
 	)
 	var/static/list/join_always = list(
-	/obj/structure/shuttle/engine,
-	/obj/structure/shuttle/window,
-	/obj/machinery/door/airlock/voidcraft
+		/obj/machinery/door/airlock/voidcraft,
+		/obj/structure/shuttle/engine,
+		/obj/structure/shuttle/window,
 	)
 
 /turf/simulated/shuttle/wall/hard_corner

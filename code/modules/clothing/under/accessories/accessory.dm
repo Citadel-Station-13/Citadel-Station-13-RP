@@ -448,31 +448,31 @@
 	return material
 
 /obj/item/clothing/accessory/bracelet/material/wood/Initialize(mapload, material_key)
-	return ..(mapload, "wood")
+	return ..(mapload, MAT_WOOD)
 
 /obj/item/clothing/accessory/bracelet/material/plastic/Initialize(mapload, material_key)
-	return ..(mapload, "plastic")
+	return ..(mapload, MAT_PLASTIC)
 
 /obj/item/clothing/accessory/bracelet/material/iron/Initialize(mapload, material_key)
-	return ..(mapload, "iron")
+	return ..(mapload, MAT_IRON)
 
 /obj/item/clothing/accessory/bracelet/material/steel/Initialize(mapload, material_key)
-	return ..(mapload, "steel")
+	return ..(mapload, MAT_STEEL)
 
 /obj/item/clothing/accessory/bracelet/material/silver/Initialize(mapload, material_key)
-	return ..(mapload, "silver")
+	return ..(mapload, MAT_SILVER)
 
 /obj/item/clothing/accessory/bracelet/material/gold/Initialize(mapload, material_key)
-	return ..(mapload, "gold")
+	return ..(mapload, MAT_GOLD)
 
 /obj/item/clothing/accessory/bracelet/material/platinum/Initialize(mapload, material_key)
-	return ..(mapload, "platinum")
+	return ..(mapload, MAT_PLATINUM)
 
 /obj/item/clothing/accessory/bracelet/material/phoron/Initialize(mapload, material_key)
-	return ..(mapload, "phoron")
+	return ..(mapload, MAT_PHORON)
 
 /obj/item/clothing/accessory/bracelet/material/glass/Initialize(mapload, material_key)
-	return ..(mapload, "glass")
+	return ..(mapload, MAT_GLASS)
 
 /obj/item/clothing/accessory/halfcape
 	name = "half cape"

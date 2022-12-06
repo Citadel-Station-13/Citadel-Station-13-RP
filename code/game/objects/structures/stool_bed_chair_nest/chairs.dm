@@ -101,38 +101,39 @@
 
 // Leaving this in for the sake of compilation.
 /obj/structure/bed/chair/comfy
+	name = "comfy chair"
 	desc = "It's a chair. It looks comfy."
 	icon_state = "comfychair_preview"
 
-/obj/structure/bed/chair/comfy/brown/Initialize(mapload, newmaterial)
-	return ..(mapload, "steel", "leather")
+/obj/structure/bed/chair/comfy/brown
+	reinf_material = /datum/material/solid/leather
 
-/obj/structure/bed/chair/comfy/red/Initialize(mapload, newmaterial)
-	return ..(mapload, "steel", "carpet")
+/obj/structure/bed/chair/comfy/red
+	reinf_material = /datum/material/solid/carpet
 
-/obj/structure/bed/chair/comfy/teal/Initialize(mapload, newmaterial)
-	return ..(mapload, "steel", "teal")
+/obj/structure/bed/chair/comfy/teal
+	reinf_material = /datum/material/solid/cloth/teal
 
-/obj/structure/bed/chair/comfy/black/Initialize(mapload, newmaterial)
-	return ..(mapload, "steel", "black")
+/obj/structure/bed/chair/comfy/black
+	reinf_material = /datum/material/solid/cloth/black
 
-/obj/structure/bed/chair/comfy/green/Initialize(mapload, newmaterial)
-	return ..(mapload, "steel", "green")
+/obj/structure/bed/chair/comfy/green
+	reinf_material = /datum/material/solid/cloth/green
 
-/obj/structure/bed/chair/comfy/purp/Initialize(mapload, newmaterial)
-	return ..(mapload, "steel", "purple")
+/obj/structure/bed/chair/comfy/purple
+	reinf_material = /datum/material/solid/cloth/purple
 
-/obj/structure/bed/chair/comfy/blue/Initialize(mapload, newmaterial)
-	return ..(mapload, "steel", "blue")
+/obj/structure/bed/chair/comfy/blue
+	reinf_material = /datum/material/solid/cloth/blue
 
-/obj/structure/bed/chair/comfy/beige/Initialize(mapload, newmaterial)
-	return ..(mapload, "steel", "beige")
+/obj/structure/bed/chair/comfy/beige
+	reinf_material = /datum/material/solid/cloth/beige
 
-/obj/structure/bed/chair/comfy/lime/Initialize(mapload, newmaterial)
-	return ..(mapload, "steel", "lime")
+/obj/structure/bed/chair/comfy/lime
+	reinf_material = /datum/material/solid/cloth/lime
 
-/obj/structure/bed/chair/comfy/orange/Initialize(mapload, newmaterial)
-	return ..(mapload, "steel", "orange")
+/obj/structure/bed/chair/comfy/yellow
+	reinf_material = /datum/material/solid/cloth/yellow
 
 /obj/structure/bed/chair/office
 	anchored = FALSE

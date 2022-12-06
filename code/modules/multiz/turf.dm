@@ -167,6 +167,9 @@
 	plane = min(OPENSPACE_PLANE_END, OPENSPACE_PLANE + src.z)
 	queue()
 
+/turf/simulated/open/is_open()
+	return TRUE
+
 /turf/simulated/open/Entered(var/atom/movable/mover)
 	..()
 	if(mover.movement_type & GROUND)

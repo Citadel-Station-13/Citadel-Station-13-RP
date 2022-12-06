@@ -9,7 +9,6 @@
 	var/hardness = 1
 	var/oreAmount = 7
 	var/materialType = "steel"
-	var/material = "steel"
 
 /obj/structure/statue/Destroy()
 	density = 0

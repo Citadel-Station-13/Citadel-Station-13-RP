@@ -42,6 +42,9 @@
 	has_resources = 1
 
 
+/turf/simulated/mineral/is_floor()
+	return !density && !is_open()
+
 
 // Alternatives that ignore ore_gen and cavegen
 /turf/simulated/mineral/ignore_oregen

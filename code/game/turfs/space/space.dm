@@ -39,7 +39,10 @@
 	return ..()
 
 /turf/space/is_space()	// Hmmm this Space is made of Space.
-	return 1
+	return TRUE
+
+/turf/space/is_open()
+	return TRUE
 
 // Override for space turfs, since they should never hide anything
 /turf/space/levelupdate()

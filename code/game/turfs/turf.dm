@@ -410,3 +410,9 @@
 			return TRUE
 */
 	return SSmapping.level_trait(z, ZTRAIT_GRAVITY)
+
+/turf/proc/is_floor()
+	return FALSE
+
+/turf/proc/is_open()
+	return FALSE

@@ -97,14 +97,6 @@ VIRGO2_TURF_CREATE(/turf/simulated/mineral/floor/ignore_mapgen)
 	anchored = TRUE
 	density = TRUE
 
-/obj/structure/metal_edge
-	name = "metal underside"
-	desc = "A metal wall that extends downwards."
-	icon = 'icons/turf/cliff.dmi'
-	icon_state = "metal"
-	anchored = TRUE
-	density = FALSE
-
 // -- Turfs -- //
 
 /turf/simulated/floor/sky/virgo2_sky

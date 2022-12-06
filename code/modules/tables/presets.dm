@@ -4,7 +4,7 @@
 	color = "#EEEEEE"
 
 /obj/structure/table/standard/Initialize(mapload)
-	material = GET_MATERIAL_REF(/datum/material/plastic)
+	material = GET_MATERIAL_REF(/datum/material/solid/plastic)
 	return ..()
 
 /obj/structure/table/steel
@@ -20,7 +20,7 @@
 	color = "#CCCCCC"
 
 /obj/structure/table/marble/Initialize(mapload)
-	material = GET_MATERIAL_REF(/datum/material/stone/marble)
+	material = GET_MATERIAL_REF(/datum/material/solid/stone/marble)
 	return ..()
 
 /obj/structure/table/reinforced
@@ -28,7 +28,7 @@
 	color = "#EEEEEE"
 
 /obj/structure/table/reinforced/Initialize(mapload)
-	material = GET_MATERIAL_REF(/datum/material/plastic)
+	material = GET_MATERIAL_REF(/datum/material/solid/plastic)
 	reinforced = GET_MATERIAL_REF(/datum/material/solid/metal/steel)
 	return ..()
 
@@ -97,7 +97,7 @@
 	alpha = 77 // 0.3 * 255
 
 /obj/structure/table/glass/Initialize(mapload)
-	material = GET_MATERIAL_REF(/datum/material/glass)
+	material = GET_MATERIAL_REF(/datum/material/solid/glass)
 	return ..()
 
 /obj/structure/table/borosilicate
@@ -106,7 +106,7 @@
 	alpha = 77
 
 /obj/structure/table/borosilicate/Initialize(mapload)
-	material = GET_MATERIAL_REF(/datum/material/glass/phoron)
+	material = GET_MATERIAL_REF(/datum/material/solid/glass/borosilicate)
 	return ..()
 
 /obj/structure/table/holotable
@@ -114,7 +114,7 @@
 	color = "#EEEEEE"
 
 /obj/structure/table/holotable/Initialize(mapload)
-	material = GET_MATERIAL_REF(/datum/material/plastic/holographic)
+	material = GET_MATERIAL_REF(/datum/material/solid/plastic/holographic)
 	return ..()
 
 /obj/structure/table/woodentable/holotable
@@ -146,7 +146,7 @@
 	color = "#d6c100"
 
 /obj/structure/table/bananium/Initialize(mapload)
-	material = GET_MATERIAL_REF("bananium")
+	material = GET_MATERIAL_REF(/datum/material/solid/metal/bananium)
 	return ..()
 
 /obj/structure/table/bananium_reinforced
@@ -154,6 +154,6 @@
 	color = "#d6c100"
 
 /obj/structure/table/bananium_reinforced/Initialize(mapload)
-	material = GET_MATERIAL_REF("bananium")
+	material = GET_MATERIAL_REF(/datum/material/solid/metal/bananium)
 	reinforced = GET_MATERIAL_REF(/datum/material/solid/metal/steel)
 	return ..()

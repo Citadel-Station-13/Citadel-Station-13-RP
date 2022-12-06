@@ -2,6 +2,9 @@
 	icon = 'icons/obj/structures.dmi'
 	w_class = ITEMSIZE_NO_CONTAINER
 
+	var/datum/material/material
+	var/datum/material/reinf_material
+
 	var/climbable
 	var/climb_delay = 3.5 SECONDS
 	var/breakable

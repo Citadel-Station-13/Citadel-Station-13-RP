@@ -7,7 +7,6 @@
 	icon = 'icons/obj/doors/material_doors.dmi'
 	icon_state = "metal"
 
-	var/datum/material/material
 	var/state = 0 //closed, 1 == open
 	var/isSwitchingStates = 0
 	var/hardness = 1
@@ -135,7 +134,7 @@
 	else if(istype(W,/obj/item)) //not sure, can't not just weapons get passed to this proc?
 		hardness -= W.force/10
 		visible_message("<span class='danger'>[user] hits [src] with [W]!</span>")
-		if(material == GET_MATERIAL_REF(/datum/material/resin))
+		if(material == GET_MATERIAL_REF(/datum/material/solid/resin))
 			playsound(loc, 'sound/effects/attackblob.ogg', 100, TRUE)
 		else if(material == (GET_MATERIAL_REF(/datum/material/solid/wood) || GET_MATERIAL_REF(/datum/material/solid/wood/sif) || GET_MATERIAL_REF(/datum/material/solid/wood/hardwood)))
 			playsound(loc, 'sound/effects/woodcutting.ogg', 100, TRUE)
@@ -160,7 +159,7 @@
 
 /obj/structure/simple_door/attack_generic(mob/user, damage, attack_verb)
 	visible_message("<span class='danger'>[user] [attack_verb] the [src]!</span>")
-	if(material == GET_MATERIAL_REF(/datum/material/resin))
+	if(material == GET_MATERIAL_REF(/datum/material/solid/resin))
 		playsound(loc, 'sound/effects/attackblob.ogg', 100, TRUE)
 	else if(material == (GET_MATERIAL_REF(/datum/material/solid/wood) || GET_MATERIAL_REF(/datum/material/solid/wood/sif) || GET_MATERIAL_REF(/datum/material/solid/wood/hardwood)))
 		playsound(loc, 'sound/effects/woodcutting.ogg', 100, TRUE)

@@ -35,7 +35,7 @@
 	return
 
 /obj/structure/simple_door/hybrid_resin/Initialize(mapload, material_name)
-	return ..(mapload, "resin compound")
+	return ..(mapload, MAT_RESIN_COMPOUND)
 
 /obj/structure/bed/hybrid_nest
 	name = "alien nest"
@@ -43,8 +43,8 @@
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "nest"
 	color = "#321a49"
-	material = "resin compound"
-	padding_material = "resin compound"
+	material = MAT_RESIN_COMPOUND
+	padding_material = MAT_RESIN_COMPOUND
 	var/health = 100
 
 /obj/structure/bed/hybrid_nest/update_icon()

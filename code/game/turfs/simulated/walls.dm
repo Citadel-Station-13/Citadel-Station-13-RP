@@ -43,9 +43,7 @@
 /turf/simulated/wall/Initialize(mapload, new_material, new_reinf_material, new_girder_material)
 	. = ..()
 
-	// Clear mapping icons.
-	icon = 'icons/turf/walls/solid.dmi'
-	icon_state = "solid"
+	// Clear mapper stuff.
 	color = null
 
 	if(new_material)
@@ -56,20 +54,6 @@
 		girder_material = GET_MATERIAL_REF(new_girder_material)
 
 	set_materials(material, reinf_material, girder_material)
-	// material = new_material
-	// if(ispath(material, /datum/material))
-	// 	material = GET_MATERIAL_REF(material)
-	// else if(!istype(material))
-	// 	strack_trace("Wall has been supplied non-material '[newmaterial]'.")
-	// 	material = GET_MATERIAL_REF(get_default_material())
-
-	// if(!ispath(reinf_material, /datum/material))
-	// 	reinf_material = new_reinf
-	// if(ispath(reinf_material, /datum/material))
-	// 	reinf_material = GET_MATERIAL_REF(reinf_material)
-
-	// if(ispath(girder_material, /datum/material))
-	// 	girder_material = GET_MATERIAL_REF(girder_material)
 
 	if(material?.radioactivity || reinf_material?.radioactivity || girder_material?.radioactivity)
 		START_PROCESSING(SSturfs, src)
@@ -111,9 +95,10 @@
 		if(thermite)
 			thermitemelt()
 
+	//TODO: Better Material armor
 	if(istype(Proj,/obj/item/projectile/beam))
-		if(material && material.reflectivity >= 0.5) // Time to reflect lasers.
-			var/new_damage = damage * material.reflectivity
+		if(material && material.reflectiveness >= MAT_VALUE_SHINY) // Time to reflect lasers.
+			var/new_damage = damage * material.reflectiveness
 			var/outgoing_damage = damage - new_damage
 			damage = new_damage
 			Proj.damage = outgoing_damage

@@ -7,7 +7,7 @@
 	can_plate = FALSE
 
 /obj/structure/table/darkglass/New()
-	material = GET_MATERIAL_REF("darkglass")
+	material = GET_MATERIAL_REF(/datum/material/solid/glass/darkglass)
 	verbs -= /obj/structure/table/verb/do_flip
 	verbs -= /obj/structure/table/proc/do_put
 
@@ -30,7 +30,7 @@
 	can_plate = FALSE
 
 /obj/structure/table/fancyblack/Initialize(mapload)
-	material = GET_MATERIAL_REF("fancyblack")
+	material = GET_MATERIAL_REF(/datum/material/solid/cloth/fancyblack)
 	verbs -= /obj/structure/table/verb/do_flip
 	verbs -= /obj/structure/table/proc/do_put
 	. = ..()

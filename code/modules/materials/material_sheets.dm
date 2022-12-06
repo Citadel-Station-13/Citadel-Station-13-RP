@@ -12,13 +12,17 @@
 		SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 		)
 
+	pickup_sound = 'sound/foley/tooldrop3.ogg'
+	drop_sound = 'sound/foley/tooldrop2.ogg'
+
 	var/default_type = MAT_STEEL
 	var/datum/material/material
+	var/datum/material/reinf_material
+
 	var/perunit = SHEET_MATERIAL_AMOUNT
 	var/apply_colour //temp pending icon rewrite
 	var/allow_window_autobuild = TRUE
-	drop_sound = 'sound/items/drop/axe.ogg'
-	pickup_sound = 'sound/items/pickup/axe.ogg'
+
 
 /obj/item/stack/material/Initialize(mapload, new_amount, merge = TRUE)
 	if(!default_type)
@@ -90,450 +94,225 @@
 		return
 	return ..()
 
-/obj/item/stack/material/iron
-	name = "iron"
-	icon_state = "sheet-silver"
-	default_type = "iron"
-	apply_colour = 1
-	no_variants = FALSE
-
-/obj/item/stack/material/lead
-	name = "lead"
-	icon_state = "sheet-adamantine"
-	default_type = "lead"
-	apply_colour = 1
-	no_variants = FALSE
-
-/obj/item/stack/material/sandstone
-	name = "sandstone brick"
-	icon_state = "sheet-sandstone"
-	default_type = "sandstone"
-	no_variants = FALSE
-	drop_sound = 'sound/items/drop/boots.ogg'
-	pickup_sound = 'sound/items/pickup/boots.ogg'
-
-/obj/item/stack/material/marble
-	name = "marble brick"
-	icon_state = "sheet-marble"
-	default_type = "marble"
-	no_variants = FALSE
-	drop_sound = 'sound/items/drop/boots.ogg'
-	pickup_sound = 'sound/items/pickup/boots.ogg'
-
-/obj/item/stack/material/diamond
-	name = "diamond"
-	icon_state = "sheet-diamond"
-	default_type = "diamond"
-	drop_sound = 'sound/items/drop/glass.ogg'
-	pickup_sound = 'sound/items/pickup/glass.ogg'
-
-/obj/item/stack/material/uranium
-	name = "uranium"
-	icon_state = "sheet-uranium"
-	default_type = "uranium"
-	no_variants = FALSE
-
-/obj/item/stack/material/phoron
-	name = "solid phoron"
-	icon_state = "sheet-phoron"
-	default_type = "phoron"
-	no_variants = FALSE
-
-/obj/item/stack/material/plastic
-	name = "plastic"
-	icon_state = "sheet-plastic"
-	default_type = "plastic"
-	no_variants = FALSE
-
-/obj/item/stack/material/gold
-	name = "gold"
-	icon_state = "sheet-gold"
-	default_type = "gold"
-	no_variants = FALSE
-
-/obj/item/stack/material/silver
-	name = "silver"
-	icon_state = "sheet-silver"
-	default_type = "silver"
-	no_variants = FALSE
-
-//Valuable resource, cargo can sell it.
-/obj/item/stack/material/platinum
-	name = "platinum"
-	icon_state = "sheet-adamantine"
-	default_type = "platinum"
-	no_variants = FALSE
-
-//Extremely valuable to Research.
-/obj/item/stack/material/mhydrogen
-	name = "metallic hydrogen"
-	icon_state = "sheet-mythril"
-	default_type = "mhydrogen"
-	no_variants = FALSE
-
-//Fuel for MRSPACMAN generator.
-/obj/item/stack/material/tritium
-	name = "tritium"
-	icon_state = "sheet-silver"
-	default_type = "tritium"
-	apply_colour = 1
-	no_variants = FALSE
-
-/obj/item/stack/material/osmium
-	name = "osmium"
-	icon_state = "sheet-silver"
-	default_type = "osmium"
-	apply_colour = 1
-	no_variants = FALSE
-
-//R-UST port
-// Fusion fuel.
-/obj/item/stack/material/deuterium
-	name = "deuterium"
-	icon_state = "sheet-silver"
-	default_type = "deuterium"
-	apply_colour = 1
-	no_variants = FALSE
-
-/obj/item/stack/material/steel
-	name = MAT_STEEL
-	icon_state = "sheet-metal"
-	default_type = MAT_STEEL
-	no_variants = FALSE
-
-/obj/item/stack/material/steel/hull
-	name = MAT_STEELHULL
-	default_type = MAT_STEELHULL
-
-/obj/item/stack/material/plasteel
-	name = "plasteel"
-	icon_state = "sheet-plasteel"
-	default_type = "plasteel"
-	no_variants = FALSE
-
-/obj/item/stack/material/plasteel/hull
-	name = MAT_PLASTEELHULL
-	default_type = MAT_PLASTEELHULL
-
-/obj/item/stack/material/durasteel
-	name = "durasteel"
-	icon_state = "sheet-durasteel"
-	item_state = "sheet-metal"
-	default_type = "durasteel"
-	no_variants = FALSE
-
-/obj/item/stack/material/durasteel/hull
-	name = MAT_DURASTEELHULL
-
-/obj/item/stack/material/titanium
-	name = MAT_TITANIUM
-	icon_state = "sheet-silver"
-	item_state = "sheet-silver"
-	default_type = MAT_TITANIUM
-	no_variants = FALSE
-
-/obj/item/stack/material/titanium/hull
-	name = MAT_TITANIUMHULL
-	default_type = MAT_TITANIUMHULL
-
-// Particle Smasher and Exotic material.
-/obj/item/stack/material/verdantium
-	name = MAT_VERDANTIUM
-	icon_state = "sheet-wavy"
-	item_state = "mhydrogen"
-	default_type = MAT_VERDANTIUM
-	no_variants = FALSE
-	apply_colour = TRUE
-
-/obj/item/stack/material/morphium
-	name = MAT_MORPHIUM
-	icon_state = "sheet-wavy"
-	item_state = "mhydrogen"
-	default_type = MAT_MORPHIUM
-	no_variants = FALSE
-	apply_colour = TRUE
-
-/obj/item/stack/material/morphium/hull
-	name = MAT_MORPHIUMHULL
-	default_type = MAT_MORPHIUMHULL
-
-/obj/item/stack/material/valhollide
-	name = MAT_VALHOLLIDE
-	icon_state = "sheet-gem"
-	item_state = "diamond"
-	default_type = MAT_VALHOLLIDE
-	no_variants = FALSE
-	apply_colour = TRUE
-
-// Forged in the equivalent of Hell, one piece at a time.
-/obj/item/stack/material/supermatter
-	name = MAT_SUPERMATTER
-	icon_state = "sheet-super"
-	item_state = "diamond"
-	default_type = MAT_SUPERMATTER
-	no_variants = FALSE
-	apply_colour = TRUE
-
-/obj/item/stack/material/supermatter/proc/update_mass()	// Due to how dangerous they can be, the item will get heavier and larger the more are in the stack.
-	slowdown = amount / 10
-	w_class = min(5, round(amount / 10) + 1)
-	throw_range = round(amount / 7) + 1
-
-/obj/item/stack/material/supermatter/use(var/used)
+/obj/item/stack/material/update_icon_state()
 	. = ..()
-	update_mass()
-	return
+	color = material.color
+	alpha = 100 + max(1, amount/25)*(material.opacity * 255)
+	if(plural_icon_state || max_icon_state) // TEMP CHECK FOR NEW STACK SYSTEM
+		update_state_from_amount()
 
-/obj/item/stack/material/supermatter/attack_hand(mob/user)
-	. = ..()
-
-	update_mass()
-	SSradiation.radiate(src, 5 + amount)
-	var/mob/living/M = user
-	if(!istype(M))
-		return
-
-	var/burn_user = TRUE
-	if(istype(M, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		var/obj/item/clothing/gloves/G = H.gloves
-		if(istype(G) && ((G.clothing_flags & THICKMATERIAL && prob(70)) || istype(G, /obj/item/clothing/gloves/gauntlets)))
-			burn_user = FALSE
-
-		if(burn_user)
-			H.visible_message("<span class='danger'>\The [src] flashes as it scorches [H]'s hands!</span>")
-			H.apply_damage(amount / 2 + 5, BURN, "r_hand", used_weapon="Supermatter Chunk")
-			H.apply_damage(amount / 2 + 5, BURN, "l_hand", used_weapon="Supermatter Chunk")
-			H.drop_item_to_ground(src)
-			return
-
-	if(istype(user, /mob/living/silicon/robot))
-		burn_user = FALSE
-
-	if(burn_user)
-		M.apply_damage(amount, BURN, null, used_weapon="Supermatter Chunk")
-
-/obj/item/stack/material/supermatter/legacy_ex_act(severity)	// An incredibly hard to manufacture material, SM chunks are unstable by their 'stabilized' nature.
-	if(prob((4 / severity) * 20))
-		SSradiation.radiate(get_turf(src), amount * 4)
-		explosion(get_turf(src),round(amount / 12) , round(amount / 6), round(amount / 3), round(amount / 25))
-		qdel(src)
-		return
-	SSradiation.radiate(get_turf(src), amount * 2)
-	..()
-
-/obj/item/stack/material/wood
-	name = "wooden plank"
-	icon_state = "sheet-wood"
-	default_type = MAT_WOOD
-	strict_color_stacking = TRUE
-	drop_sound = 'sound/items/drop/wooden.ogg'
-	pickup_sound = 'sound/items/pickup/wooden.ogg'
-
-/obj/item/stack/material/wood/sif
-	name = "alien wooden plank"
-	color = "#0099cc"
-	default_type = MAT_SIFWOOD
-
-/obj/item/stack/material/wood/hard
-	name = "hardwood plank"
-	color = "#42291a"
-	default_type = MAT_HARDWOOD
-	description_info = "Rich, lustrous hardwood, imported from offworld at moderate expense. Mostly used for luxurious furniture, and not very good for weapons or other structures."
-
-/obj/item/stack/material/log
-	name = "log"
-	icon_state = "sheet-log"
-	default_type = MAT_LOG
-	no_variants = FALSE
-	color = "#824B28"
-	max_amount = 25
-	w_class = ITEMSIZE_HUGE
-	description_info = "Use inhand to craft things, or use a sharp and edged object on this to convert it into two wooden planks."
-	var/plank_type = /obj/item/stack/material/wood
-	drop_sound = 'sound/items/drop/wooden.ogg'
-	pickup_sound = 'sound/items/pickup/wooden.ogg'
-
-/obj/item/stack/material/log/sif
-	name = "alien log"
-	default_type = MAT_SIFLOG
-	color = "#0099cc"
-	plank_type = /obj/item/stack/material/wood/sif
-
-/obj/item/stack/material/log/hard
-	name = "hardwood log"
-	default_type = MAT_HARDLOG
-	color = "#6f432a"
-	plank_type = /obj/item/stack/material/wood/hard
-
-/obj/item/stack/material/log/attackby(var/obj/item/W, var/mob/user)
-	if(!istype(W) || W.force <= 0)
-		return ..()
-	if(W.sharp && W.edge)
-		var/time = (3 SECONDS / max(W.force / 10, 1)) * W.tool_speed
-		user.setClickCooldown(time)
-		if(do_after(user, time, src) && use(1))
-			to_chat(user, "<span class='notice'>You cut up a log into planks.</span>")
-			playsound(get_turf(src), 'sound/effects/woodcutting.ogg', 50, 1)
-			var/obj/item/stack/material/wood/existing_wood = null
-			for(var/obj/item/stack/material/wood/M in user.loc)
-				if(M.material.name == src.material.name)
-					existing_wood = M
-					break
-
-			var/obj/item/stack/material/wood/new_wood = new plank_type(user.loc)
-			new_wood.amount = 2
-			if(existing_wood && new_wood.transfer_to(existing_wood))
-				to_chat(user, "<span class='notice'>You add the newly-formed wood to the stack. It now contains [existing_wood.amount] planks.</span>")
+/obj/item/stack/material/proc/update_state_from_amount()
+	if(max_icon_state && amount == max_amount)
+		icon_state = max_icon_state
+	else if(plural_icon_state && amount > 2)
+		icon_state = plural_icon_state
 	else
-		return ..()
+		icon_state = base_icon_state
 
+/obj/item/stack/material/ingot
+	name = "ingots"
+	singular_name = "ingot"
+	plural_name = "ingots"
+	icon_state = "ingot"
+	plural_icon_state = "ingot-mult"
+	max_icon_state = "ingot-max"
+	// stack_merge_type = /obj/item/stack/material/ingot
 
-/obj/item/stack/material/cloth
-	name = "cloth"
-	icon_state = "sheet-cloth"
-	default_type = "cloth"
-	no_variants = FALSE
-	pass_color = TRUE
-	strict_color_stacking = TRUE
-	drop_sound = 'sound/items/drop/cloth.ogg'
-	pickup_sound = 'sound/items/pickup/cloth.ogg'
+/obj/item/stack/material/sheet
+	name = "sheets"
+	icon_state = "sheet"
+	plural_icon_state = "sheet-mult"
+	max_icon_state = "sheet-max"
+	// stack_merge_type = /obj/item/stack/material/sheet
 
-/obj/item/stack/material/resin
-	name = MAT_RESIN
-	icon_state = "sheet-resin"
-	default_type = "resin"
-	no_variants = TRUE
-	apply_colour = TRUE
-	pass_color = TRUE
-	strict_color_stacking = TRUE
+/obj/item/stack/material/panel
+	name = "panels"
+	icon_state = "sheet-plastic"
+	plural_icon_state = "sheet-plastic-mult"
+	max_icon_state = "sheet-plastic-max"
+	singular_name = "panel"
+	plural_name = "panels"
+	// stack_merge_type = /obj/item/stack/material/panel
 
-/obj/item/stack/material/cardboard
-	name = "cardboard"
-	icon_state = "sheet-card"
-	default_type = "cardboard"
-	no_variants = FALSE
-	pass_color = TRUE
-	strict_color_stacking = TRUE
-	drop_sound = 'sound/items/drop/cardboardbox.ogg'
-	pickup_sound = 'sound/items/pickup/cardboardbox.ogg'
+/obj/item/stack/material/skin
+	name = "skin"
+	icon_state = "skin"
+	plural_icon_state = "skin-mult"
+	max_icon_state = "skin-max"
+	singular_name = "length"
+	plural_name = "lengths"
+	// stack_merge_type = /obj/item/stack/material/skin
 
-/obj/item/stack/material/snow
-	name = "snow"
-	desc = "The temptation to build a snowman rises."
-	icon_state = "sheet-snow"
-	default_type = "snow"
+/obj/item/stack/material/skin/pelt
+	name = "pelts"
+	singular_name = "pelt"
+	plural_name = "pelts"
+	// stack_merge_type = /obj/item/stack/material/skin/pelt
 
-/obj/item/stack/material/snowbrick
-	name = "snow brick"
-	desc = "For all of your igloo building needs."
-	icon_state = "sheet-snowbrick"
-	default_type = MAT_SNOW_PACKED
-
-/obj/item/stack/material/leather
-	name = "leather"
-	desc = "The by-product of mob grinding."
-	icon_state = "sheet-leather"
-	default_type = MAT_LEATHER
-	no_variants = FALSE
-	pass_color = TRUE
-	strict_color_stacking = TRUE
-	drop_sound = 'sound/items/drop/leather.ogg'
-	pickup_sound = 'sound/items/pickup/leather.ogg'
-
-/obj/item/stack/material/chitin
-	name = "chitin"
-	desc = "The by-product of mob grinding."
-	icon_state = "chitin"
-	default_type = MAT_CHITIN
-	no_variants = FALSE
-	pass_color = TRUE
-	strict_color_stacking = TRUE
-	drop_sound = 'sound/items/drop/leather.ogg'
-	pickup_sound = 'sound/items/pickup/leather.ogg'
-
-/obj/item/stack/material/glass
-	name = "glass"
-	icon_state = "sheet-glass"
-	default_type = "glass"
-	no_variants = FALSE
-	drop_sound = 'sound/items/drop/glass.ogg'
-	pickup_sound = 'sound/items/pickup/glass.ogg'
-
-/obj/item/stack/material/glass/reinforced
-	name = "reinforced glass"
-	icon_state = "sheet-rglass"
-	default_type = "rglass"
-	no_variants = FALSE
-
-/obj/item/stack/material/glass/phoronglass
-	name = "borosilicate glass"
-	desc = "This sheet is special platinum-glass alloy designed to withstand large temperatures"
-	singular_name = "borosilicate glass sheet"
-	icon_state = "sheet-phoronglass"
-	default_type = "borosilicate glass"
-	no_variants = FALSE
-
-/obj/item/stack/material/glass/phoronrglass
-	name = "reinforced borosilicate glass"
-	desc = "This sheet is special platinum-glass alloy designed to withstand large temperatures. It is reinforced with few rods."
-	singular_name = "reinforced borosilicate glass sheet"
-	icon_state = "sheet-phoronrglass"
-	default_type = "reinforced borosilicate glass"
-	no_variants = FALSE
-
-/obj/item/stack/material/bananium
-	name = "bananium"
-	desc = "When smelted, Vaudium takes on a bright yellow hue and remains pliable, growing rigid when met with a forceful impact."
-	icon_state = "sheet-clown"
-	default_type = "bananium"
-	no_variants = FALSE
-	drop_sound = 'sound/items/drop/boots.ogg'
-	pickup_sound = 'sound/items/pickup/boots.ogg'
-
-/obj/item/stack/material/silencium
-	name = "silencium"
-	desc = "When compressed, Vaudium loses its color, gaining distinctive black bands and becoming intensely rigid."
-	icon_state = "sheet-mime"
-	default_type = "silencium"
-	no_variants = FALSE
-	drop_sound = 'sound/items/drop/boots.ogg'
-	pickup_sound = 'sound/items/drop/boots.ogg'
-
-/obj/item/stack/material/brass
-	name = "brass"
-	desc = "This stable alloy is often used in complex mechanisms due to its versatility, softness, and solid head conduction."
-	icon_state = "sheet-brass"
-	default_type = "brass"
-	no_variants = FALSE
-	drop_sound = 'sound/items/drop/boots.ogg'
-	pickup_sound = 'sound/items/drop/boots.ogg'
+/obj/item/stack/material/skin/feathers
+	name = "feathers"
+	singular_name = "feather"
+	plural_name = "feathers"
+	// stack_merge_type = /obj/item/stack/material/skin/feathers
 
 /obj/item/stack/material/bone
-	name = "bone"
-	desc = "These dense calcium structures are a common support system for organic life."
-	icon_state = "sheet-bone"
-	default_type = "bone"
-	no_variants = FALSE
-	drop_sound = 'sound/items/drop/boots.ogg'
-	pickup_sound = 'sound/items/drop/boots.ogg'
+	name = "bones"
+	icon_state = "bone"
+	plural_icon_state = "bone-mult"
+	max_icon_state = "bone-max"
+	singular_name = "length"
+	plural_name = "lengths"
+	// stack_merge_type = /obj/item/stack/material/bone
 
-/obj/item/stack/material/copper
-	name = "copper"
-	desc = "This common metal remains a popular choice as an electrical and thermal conductor due to how easily it can be worked."
-	icon_state = "sheet-copper"
-	default_type = "copper"
-	no_variants = FALSE
-	drop_sound = 'sound/items/drop/boots.ogg'
-	pickup_sound = 'sound/items/drop/boots.ogg'
+/obj/item/stack/material/brick
+	name = "bricks"
+	singular_name = "brick"
+	plural_name = "bricks"
+	icon_state = "brick"
+	plural_icon_state = "brick-mult"
+	max_icon_state = "brick-max"
+	// stack_merge_type = /obj/item/stack/material/brick
 
-//Moved out of beehive.dm in conjunction with the primary material.
-/obj/item/stack/material/wax
-	name = "wax"
-	singular_name = "wax piece"
-	desc = "Soft substance produced by bees. Used to make candles."
-	icon_state = "sheet-rtransparent"
-	apply_colour = 1
-	default_type = "wax"
-	no_variants = FALSE
-	pass_color = TRUE
+/obj/item/stack/material/bolt
+	name = "bolts"
+	icon_state = "sheet-cloth"
+	singular_name = "bolt"
+	plural_name = "bolts"
+	// stack_merge_type = /obj/item/stack/material/bolt
+
+/obj/item/stack/material/pane
+	name = "panes"
+	singular_name = "pane"
+	plural_name = "panes"
+	icon_state = "sheet-clear"
+	plural_icon_state = "sheet-clear-mult"
+	max_icon_state = "sheet-clear-max"
+	// stack_merge_type = /obj/item/stack/material/pane
+
+/obj/item/stack/material/pane/update_state_from_amount()
+	if(material)
+		icon_state = "sheet-glass-reinf"
+		base_icon_state = icon_state
+		plural_icon_state = "sheet-glass-reinf-mult"
+		max_icon_state = "sheet-glass-reinf-max"
+	else
+		icon_state = "sheet-clear"
+		base_icon_state = icon_state
+		plural_icon_state = "sheet-clear-mult"
+		max_icon_state = "sheet-clear-max"
+	..()
+
+/obj/item/stack/material/cardstock
+	icon_state = "sheet-card"
+	plural_icon_state = "sheet-card-mult"
+	max_icon_state = "sheet-card-max"
+	// stack_merge_type = /obj/item/stack/material/cardstock
+
+/obj/item/stack/material/gemstone
+	name = "gems"
+	singular_name = "gem"
+	plural_name = "gems"
+	icon_state = "diamond"
+	plural_icon_state = "diamond-mult"
+	max_icon_state = "diamond-max"
+	// stack_merge_type = /obj/item/stack/material/gemstone
+
+/obj/item/stack/material/puck
+	name = "pucks"
+	singular_name = "puck"
+	plural_name = "pucks"
+	icon_state = "puck"
+	plural_icon_state = "puck-mult"
+	max_icon_state = "puck-max"
+	// stack_merge_type = /obj/item/stack/material/puck
+
+/obj/item/stack/material/aerogel
+	name = "aerogel"
+	singular_name = "gel block"
+	plural_name = "gel blocks"
+	icon_state = "puck"
+	plural_icon_state = "puck-mult"
+	max_icon_state = "puck-max"
+	// atom_flags = ATOM_FLAG_NO_TEMP_CHANGE
+	// stack_merge_type = /obj/item/stack/material/aerogel
+
+/obj/item/stack/material/plank
+	name = "planks"
+	singular_name = "plank"
+	plural_name = "planks"
+	icon_state = "sheet-wood"
+	plural_icon_state = "sheet-wood-mult"
+	max_icon_state = "sheet-wood-max"
+	// stack_merge_type = /obj/item/stack/material/plank
+
+/obj/item/stack/material/segment
+	name = "segments"
+	singular_name = "segment"
+	plural_name = "segments"
+	icon_state = "sheet-mythril"
+	// stack_merge_type = /obj/item/stack/material/segment
+
+/obj/item/stack/material/reinforced
+	icon_state = "sheet-reinf"
+	item_state = "sheet-metal"
+	plural_icon_state = "sheet-reinf-mult"
+	max_icon_state = "sheet-reinf-max"
+	// stack_merge_type = /obj/item/stack/material/reinforced
+/obj/item/stack/material/shiny
+	icon_state = "sheet-sheen"
+	item_state = "sheet-shiny"
+	plural_icon_state = "sheet-sheen-mult"
+	max_icon_state = "sheet-sheen-max"
+	// stack_merge_type = /obj/item/stack/material/shiny
+
+/obj/item/stack/material/cubes
+	name = "cube"
+	desc = "Some featureless cubes."
+	singular_name = "cube"
+	plural_name = "cubes"
+	icon_state = "cube"
+	plural_icon_state = "cube-mult"
+	max_icon_state = "cube-max"
+	max_amount = 100
+	attack_verb = list("cubed")
+	// stack_merge_type = /obj/item/stack/material/cubes
+
+/obj/item/stack/material/lump
+	name = "lumps"
+	singular_name = "lump"
+	plural_name = "lumps"
+	icon_state = "lump"
+	plural_icon_state = "lump-mult"
+	max_icon_state = "lump-max"
+	// stack_merge_type = /obj/item/stack/material/lump
+
+/obj/item/stack/material/slab
+	name = "slabs"
+	singular_name = "slab"
+	plural_name = "slabs"
+	icon_state = "puck"
+	plural_icon_state = "puck-mult"
+	max_icon_state = "puck-max"
+	// stack_merge_type = /obj/item/stack/material/slab
+
+/obj/item/stack/material/strut
+	name = "struts"
+	singular_name = "strut"
+	plural_name = "struts"
+	icon_state = "sheet-strut"
+	plural_icon_state = "sheet-strut-mult"
+	max_icon_state = "sheet-strut-max"
+	// stack_merge_type = /obj/item/stack/material/strut
+
+/obj/item/stack/material/strut/cyborg
+	name = "metal strut synthesizer"
+	desc = "A device that makes metal strut."
+	gender = NEUTER
+	matter = null
+	uses_charge = 1
+	charge_costs = list(500)
+	material = /datum/material/solid/metal/steel
+	// max_health = ITEM_HEALTH_NO_DAMAGE
+
+/obj/item/stack/material/strut/get_recipes()
+	return material.get_strut_recipes(material && material.type)

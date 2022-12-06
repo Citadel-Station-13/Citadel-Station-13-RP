@@ -14,14 +14,6 @@
 	.  = ..()
 	reagents.add_reagent(pick("condensedcapsaicin_v", "hydrophoron"), 50)
 
-/obj/structure/metal_edge
-	name = "metal underside"
-	desc = "A metal wall that extends downwards."
-	icon = 'icons/turf/cliff.dmi'
-	icon_state = "metal"
-	anchored = TRUE
-	density = FALSE
-
 /obj/effect/step_trigger/teleporter/planetary_fall/lythios43c/find_planet()
 	planet = planet_lythios43c
 
@@ -521,4 +513,3 @@
 		/mob/living/simple_mob/animal/passive/woolie = 3,
 		/mob/living/simple_mob/animal/passive/furnacegrub
 	)
-

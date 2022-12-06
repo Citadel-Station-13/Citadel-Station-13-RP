@@ -86,13 +86,16 @@ var/list/name_to_material
 	//! Intrisics
 	/// Unique name for use in indexing the list.
 	var/name
+	/// Override for the codex article name.
+	var/codex_name
 	/// A short description of the material. Not used anywhere, yet...
-	var/desc = "its..stuff."
+	var/lore_text = "It's... stuff."
 	/// What the material is indexed by in the SSmaterials.materials list. Defaults to the type of the material.
-	var/id
+	var/uid
 
 	/// Prettier name for display.
 	var/display_name
+	var/adjective_name
 	var/solid_name
 	var/gas_name
 	var/liquid_name
@@ -100,6 +103,12 @@ var/list/name_to_material
 	var/sheet_singular_name = "sheet"
 	var/sheet_plural_name = "sheets"
 	var/is_fusion_fuel
+
+	/// Path to resulting stacktype. Todo remove need for this.
+	var/stack_type
+	var/default_solid_form = /obj/item/stack/material/sheet
+	/// Wallrot crumble message.
+	var/rotting_touch_message = "crumbles under your touch"
 
 	//! Flags
 	/// Bitflags that influence how SSmaterials handles this material.
@@ -118,6 +127,8 @@ var/list/name_to_material
 	var/shard_can_repair = 1
 	/// Holder for all recipes usable with a sheet of this material.
 	var/list/recipes
+	/// Holder for all the recipes you can build with the struct stack type.
+	var/list/strut_recipes
 	/// Fancy string for barricades/tables/objects exploding.
 	var/destruction_desc = "breaks apart"
 
@@ -142,6 +153,8 @@ var/list/name_to_material
 	var/icon_reinf_directionals = FALSE
 	/// Will stacks made from this material pass their colors onto objects?
 	var/pass_stack_colors = FALSE
+	/// Which wall icon types walls of this material type will consider blending with. Assoc list (icon path = TRUE/FALSE)
+	var/list/wall_blend_icons = list()
 
 	/// Door base icon tag. See header.
 	var/door_icon_base = "metal"
@@ -169,6 +182,13 @@ var/list/name_to_material
 	var/ignition_point
 	/// K, walls will take damage if they're next to a fire hotter than this
 	var/melting_point = 1800
+	/// K, point that material will become a gas.
+	var/boiling_point = 3000
+	/// kJ/kg, enthalpy of vaporization.
+	var/latent_heat = 7000
+
+	/// kg/mol,
+	var/molar_mass = 0.06
 
 	/// General-use HP value for products. //! DEPRECATED
 	var/integrity = 150
@@ -177,10 +197,13 @@ var/list/name_to_material
 	///This is a modifier for integrity, and resembles the strength of the material
 	var/integrity_modifier = 1
 
+	/// Used for checking if a material can function as a wall support.
+	var/wall_support_value = 30
+
 	/// How well this material works as armor.  Higher numbers are better, diminishing returns applies.
 	var/protectiveness = 10
 	/// How reflective to light is the material?  Currently used for laser reflection and defense.
-	var/reflectivity = 0
+	var/reflectiveness = MAT_VALUE_DULL
 	/// Objects that respect this will randomly absorb impacts with this var as the percent chance.
 	var/negation = 0
 	/// Objects that have trouble staying in the same physical space by sheer laws of nature have this. Percent for respecting items to cause teleportation.
@@ -200,39 +223,97 @@ var/list/name_to_material
 	/// This is the amount of value per 1 unit of the material.
 	var/value_per_unit = 0
 
-	//! Placeholder vars for the time being, todo properly integrate windows/light tiles/rods.
+	//! Armor
+	/// Armor values generated from properties.
+	var/list/basic_armor
+	var/armor_degradation_speed
+
+	//! Damage values
+	/// Prob of wall destruction by hulk, used for edge damage in weapons.  Also used for bullet protection in armor.
+	var/hardness = 60
+	/// Determines blunt damage/throw_force for weapons.
+	var/weight = MAT_VALUE_NORMAL
+
+	//! Sounds
+	/// Noise when someone is faceplanted onto a table made of this material.
+	var/tableslam_noise = 'sound/weapons/tablehit1.ogg'
+	/// Noise made when a simple door made of this material opens or closes.
+	var/dooropen_noise = 'sound/effects/stonedoor_openclose.ogg'
+	/// Noise made when you hit structure made of this material.
+	var/hitsound = 'sound/weapons/genhit.ogg'
+
+	/// Default sound something like a material stack made of this material does when picked up.
+	var/sound_manipulate
+	/// Default sound something like a material stack made of this material does when hitting the ground or placed down.
+	var/sound_dropped
+
+	//! Placeholder vars for the time being, todo properly integrate windows/light tiles/rods
 	var/created_window
 	var/created_fulltile_window
 	var/rod_product
 	var/wire_product
 	var/list/window_options = list()
 
-	//! Damage values.
-	/// Prob of wall destruction by hulk, used for edge damage in weapons.  Also used for bullet protection in armor.
-	var/hardness = 60
-	/// Determines blunt damage/throw_force for weapons.
-	var/weight = MAT_VALUE_NORMAL
+	//! Mining behavior
+	var/ore_name
+	var/ore_desc
+	var/ore_compresses_to
+	var/ore_result_amount
+	var/ore_spread_chance
+	var/ore_scan_icon
+	var/ore_icon_overlay
+	var/ore_type_value
+	var/ore_data_value
 
-	/// Noise when someone is faceplanted onto a table made of this material.
-	var/tableslam_noise = 'sound/weapons/tablehit1.ogg'
-	/// Noise made when a simple door made of this material opens or closes.
-	var/dooropen_noise = 'sound/effects/stonedoor_openclose.ogg'
-	/// Path to resulting stacktype. Todo remove need for this.
-	var/stack_type
-	/// Wallrot crumble message.
-	var/rotting_touch_message = "crumbles under your touch"
+	//! Gas behavior
+	var/gas_overlay_limit
+	var/gas_specific_heat = 20 // J/(mol*K)
+	var/gas_symbol_html
+	var/gas_symbol
+	var/gas_flags = 0
+	var/gas_tile_overlay = "generic"
+	var/gas_condensation_point = null
+	/// If false, material will move into the bloodstream when breathed.
+	var/gas_metabolically_inert = FALSE
 
+	//! Matter state data
+	var/dissolve_message = "dissolves in"
+	var/dissolve_sound = 'sound/effects/bubbles.ogg'
+	var/dissolves_in = MAT_SOLVENT_STRONG
+	/// Used with the grinder and a solvent to extract other materials.
+	var/list/dissolves_into
+
+	var/chilling_point
+	var/chilling_message = "crackles and freezes!"
+	var/chilling_sound = 'sound/effects/bubbles.ogg'
+	var/list/chilling_products
+	var/bypass_cooling_products_for_root_type
+
+	var/heating_point
+	var/heating_message = "begins to boil!"
+	var/heating_sound = 'sound/effects/bubbles.ogg'
+	var/list/heating_products
+	var/bypass_heating_products_for_root_type
+	var/fuel_value = 0
+	var/burn_product
+	/// If splashed, releases these gasses in these proportions. // TODO add to unit test after solvent PR is merged
+	var/list/vapor_products
+
+	var/scent //refer to _scent.dm
+	var/scent_intensity //= /decl/scent_intensity/normal
+	var/scent_descriptor //= SCENT_DESC_SMELL
+	var/scent_range = 1
 
 /** Handles initializing the material.
  *
  * Arugments:
  * - _id: The ID the material should use. Overrides the existing ID.
  */
-/datum/material/proc/Initialize(_id, ...)
-	if(_id)
-		id = _id
-	else if(isnull(id))
-		id = type
+/datum/material/proc/Initialize(_uid, ...)
+	if(_uid)
+		uid = _uid
+	else if(isnull(uid))
+		uid = type
 
 	if(!display_name)
 		display_name = name
@@ -244,11 +325,13 @@ var/list/name_to_material
 	if(texture_layer_icon_state)
 		cached_texture_filter_icon = icon('icons/materials/composite.dmi', texture_layer_icon_state)
 
+	generate_armor_values()
+
 	return TRUE
 
 /// This proc is called when the material is added to an object.
 /datum/material/proc/on_applied(atom/source, amount, material_flags)
-	if(material_flags & MATERIAL_COLOR) //Prevent changing things with pre-set colors, to keep colored toolboxes their looks for example
+	if(material_flags & MATERIAL_FLAG_COLOR) //Prevent changing things with pre-set colors, to keep colored toolboxes their looks for example
 		if(color) //Do we have a custom color?
 			source.add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 		if(alpha)
@@ -259,7 +342,7 @@ var/list/name_to_material
 
 	if(alpha < 255)
 		source.opacity = FALSE
-	if(material_flags & MATERIAL_ADD_PREFIX)
+	if(material_flags & MATERIAL_FLAG_ADD_PREFIX)
 		source.name = "[name] [source.name]"
 
 	if(isobj(source)) //objs
@@ -278,7 +361,7 @@ var/list/name_to_material
 
 ///This proc is called when the material is added to an object specifically.
 /datum/material/proc/on_applied_obj(obj/o, amount, material_flags)
-	if(material_flags & MATERIAL_AFFECT_STATISTICS)
+	if(material_flags & MATERIAL_FLAG_AFFECT_STATISTICS)
 		var/new_max_integrity = CEILING(o.max_integrity * integrity_modifier, 1)
 		// o.modify_max_integrity(new_max_integrity)
 		o.max_integrity = new_max_integrity

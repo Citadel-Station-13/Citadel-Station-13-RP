@@ -82,7 +82,7 @@ var/const/cyberbeast_monitor_styles= "blank=cyber_blank;\
 	/// If set, applies skin color rather than part color.
 	var/skin_color
 	/// If set, applies the limb's blood color rather than species' blood color.
-	var/blood_color = SYNTH_BLOOD_COLOUR
+	var/blood_color = SYNTH_BLOOD_COLOR
 	/// If set, applies the limb's blood name rather than species' blood name.
 	var/blood_name = "oil"
 	/// If empty, the model of limbs offers a head compatible with monitors.

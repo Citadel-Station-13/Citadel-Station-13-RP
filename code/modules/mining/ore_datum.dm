@@ -125,8 +125,8 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 /datum/ore/platinum
 	name = "platinum"
 	display_name = "raw platinum"
-	smelts_to = "platinum"
-	compresses_to = "osmium"
+	smelts_to = MAT_PLATINUM
+	compresses_to = MAT_OSMIUM
 	alloy = 1
 	result_amount = 5
 	spread_chance = 15
@@ -137,11 +137,11 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 	name = "mhydrogen"
 	display_name = "metallic hydrogen"
 	smelts_to = "tritium"
-	compresses_to = "mhydrogen"
+	compresses_to = MAT_METALHYDROGEN
 	scan_icon = "mineral_rare"
 
 /datum/ore/verdantium
-	name = MAT_VERDANTIUM
+	name = "verdantium"
 	display_name = "crystalline verdantite"
 	compresses_to = MAT_VERDANTIUM
 	result_amount = 4
@@ -154,37 +154,37 @@ GLOBAL_LIST_INIT(ore_data, initialize_ore_data())
 		)
 
 /datum/ore/marble
-	name = MAT_MARBLE
+	name = "marble"
 	display_name = "recrystallized carbonate"
-	compresses_to = "marble"
+	compresses_to = MAT_MARBLE
 	result_amount = 2
 	spread_chance = 10
 	ore = /obj/item/ore/marble
 	scan_icon = "mineral_common"
 
 /datum/ore/lead
-	name = MAT_LEAD
+	name = "lead"
 	display_name = "lead glance"
-	smelts_to = "lead"
+	smelts_to = MAT_LEAD
 	result_amount = 4
 	spread_chance = 20
 	ore = /obj/item/ore/lead
 	scan_icon = "mineral_rare"
 
 /datum/ore/vaudium
-	name = MAT_VAUDIUM
+	name = "vaudium"
 	display_name = "raw vaudium"
-	smelts_to = "bananium"
-	compresses_to = "silencium"
+	smelts_to = MAT_BANANIUM
+	compresses_to = MAT_SILENCIUM
 	result_amount = 5
 	spread_chance = 20
 	ore = /obj/item/ore/vaudium
 	scan_icon = "mineral_rare"
 
 /datum/ore/copper
-	name = MAT_COPPER
+	name = "copper"
 	display_name = "raw copper"
-	smelts_to = "copper"
+	smelts_to = MAT_COPPER
 	result_amount = 4
 	spread_chance = 20
 	ore = /obj/item/ore/copper

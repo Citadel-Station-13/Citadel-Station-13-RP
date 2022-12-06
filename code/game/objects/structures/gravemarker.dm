@@ -17,8 +17,6 @@
 	var/epitaph = ""		//A quick little blurb
 //	var/dir_locked = 0		//Can it be spun?	Not currently implemented
 
-	var/datum/material/material
-
 /obj/structure/gravemarker/Initialize(mapload, material_type)
 	. = ..()
 	if(!material_type)

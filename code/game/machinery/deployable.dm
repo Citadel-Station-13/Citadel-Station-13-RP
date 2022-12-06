@@ -15,12 +15,11 @@ Barricades
 	density = TRUE
 	var/health = 100
 	var/maxhealth = 100
-	var/datum/material/material
 
 /obj/structure/barricade/Initialize(mapload, material_type)
 	. = ..()
 	if(!material_type)
-		material_type = /datum/material/solid/wood
+		material_type = MAT_WOOD
 	material = GET_MATERIAL_REF(material_type)
 	if(!material)
 		qdel(src)
@@ -77,7 +76,7 @@ Barricades
 /obj/structure/barricade/attack_generic(mob/user, damage, attack_verb)
 	visible_message(SPAN_DANGER("[user] [attack_verb] \the [src]!"))
 
-	if(material == GET_MATERIAL_REF(/datum/material/resin))
+	if(material == GET_MATERIAL_REF(/datum/material/solid/resin))
 		playsound(loc, 'sound/effects/attackblob.ogg', 100, TRUE)
 	else if(material == (GET_MATERIAL_REF(/datum/material/solid/wood) || GET_MATERIAL_REF(/datum/material/solid/wood/sif) || GET_MATERIAL_REF(/datum/material/solid/wood/hardwood)))
 		playsound(loc, 'sound/effects/woodcutting.ogg', 100, TRUE)

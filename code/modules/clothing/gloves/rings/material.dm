@@ -20,37 +20,37 @@
 	return material
 
 /obj/item/clothing/gloves/ring/material/wood/Initialize(mapload, material_key)
-	return ..(mapload, "wood")
+	return ..(mapload, MAT_WOOD)
 
 /obj/item/clothing/gloves/ring/material/plastic/Initialize(mapload, material_key)
-	return ..(mapload, "plastic")
+	return ..(mapload, MAT_PLASTIC)
 
 /obj/item/clothing/gloves/ring/material/iron/Initialize(mapload, material_key)
-	return ..(mapload, "iron")
+	return ..(mapload, MAT_IRON)
 
 /obj/item/clothing/gloves/ring/material/steel/Initialize(mapload, material_key)
-	return ..(mapload, "steel")
+	return ..(mapload, MAT_STEEL)
 
 /obj/item/clothing/gloves/ring/material/silver/Initialize(mapload, material_key)
-	return ..(mapload, "silver")
+	return ..(mapload, MAT_SILVER)
 
 /obj/item/clothing/gloves/ring/material/gold/Initialize(mapload, material_key)
-	return ..(mapload, "gold")
+	return ..(mapload, MAT_GOLD)
 
 /obj/item/clothing/gloves/ring/material/platinum/Initialize(mapload, material_key)
-	return ..(mapload, "platinum")
+	return ..(mapload, MAT_PLATINUM)
 
 /obj/item/clothing/gloves/ring/material/phoron/Initialize(mapload, material_key)
-	return ..(mapload, "phoron")
+	return ..(mapload, MAT_PHORON)
 
 /obj/item/clothing/gloves/ring/material/glass/Initialize(mapload, material_key)
-	return ..(mapload, "glass")
+	return ..(mapload, MAT_GLASS)
 
 /obj/item/clothing/gloves/ring/material/uranium/Initialize(mapload, material_key)
-	return ..(mapload, "uranium")
+	return ..(mapload, MAT_URANIUM)
 
 /obj/item/clothing/gloves/ring/material/osmium/Initialize(mapload, material_key)
-	return ..(mapload, "osmium")
+	return ..(mapload, MAT_OSMIUM)
 
 /obj/item/clothing/gloves/ring/material/mhydrogen/Initialize(mapload, material_key)
-	return ..(mapload, "mhydrogen")
+	return ..(mapload, MAT_METALHYDROGEN)

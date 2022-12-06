@@ -22,7 +22,6 @@
 	var/next_fuel_consumption = 0
 	/// If the bonfire has a grill attached.
 	var/grill = FALSE
-	var/datum/material/material
 	var/set_temperature = T0C + 30	//K
 	var/heating_power = 80000
 
@@ -30,7 +29,7 @@
 	. = ..()
 
 	if(!material_type)
-		material_type = /datum/material/solid/wood
+		material_type = MAT_WOOD
 	material = GET_MATERIAL_REF(material_type)
 	if(!material)
 		qdel(src)
@@ -39,7 +38,7 @@
 
 // Blue wood.
 /obj/structure/bonfire/sifwood/Initialize(mapload)
-	. = ..(mapload, /datum/material/solid/wood/sif)
+	. = ..(mapload, MAT_SIFWOOD)
 
 /obj/structure/bonfire/permanent/Initialize(mapload, material_type)
 	. = ..()

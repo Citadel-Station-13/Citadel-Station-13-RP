@@ -20,16 +20,36 @@
 
 // overridden find type
 /turf/simulated/wall/find_type_in_direction(direction)
-	if(!material)
+	if(!material) //? Skip calcs if we don't have a material.
 		return NO_ADJ_FOUND
-	var/turf/simulated/wall/T = get_step(src, direction)
-	if(!T)
+
+	var/turf/simulated/wall/target_turf = get_step(src, direction)
+	if(!target_turf)
 		return NULLTURF_BORDER
-	return (istype(T) && (material.wall_icon == T.material?.wall_icon))? ADJ_FOUND : NO_ADJ_FOUND
+
+	return (istype(target_turf) && (get_wall_icon() == target_turf.get_wall_icon())) ? ADJ_FOUND : NO_ADJ_FOUND
 
 /turf/simulated/wall/custom_smooth(dirs)
 	smoothing_junction = dirs
 	update_icon()
+
+/turf/simulated/wall/update_name(updates)
+	. = ..()
+
+	// if(rusted)
+	// 	name = "rusted "
+	if(reinf_material)
+		name = "reinforced [material.display_name] wall"
+	else
+		name = "[material.display_name] wall"
+
+/turf/simulated/wall/update_desc(updates)
+	. = ..()
+
+	if(reinf_material)
+		desc = "It seems to be a section of hull reinforced with [reinf_material.display_name] and plated with [material.display_name]."
+	else
+		desc = "It seems to be a section of hull plated with [material.display_name]."
 
 /turf/simulated/wall/update_overlays()
 	// materrialless walls don't use this system.

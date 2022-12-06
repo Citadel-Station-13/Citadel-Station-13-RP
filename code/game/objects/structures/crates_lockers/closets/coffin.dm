@@ -1,21 +1,24 @@
 /obj/structure/closet/coffin
 	name = "coffin"
 	desc = "It's a burial receptacle for the dearly departed."
-	icon_state = "coffin"
-	icon_closed = "coffin"
-	icon_opened = "coffin_open"
+	icon = 'icons/obj/closets/coffin.dmi'
 	seal_tool = /obj/item/tool/screwdriver
 	breakout_sound = 'sound/weapons/tablehit1.ogg'
-
-/obj/structure/closet/coffin/comfy
-	name = "extra comfortable coffin"
-	desc = "It's a burial receptacle for the dearly departed. This one has been modified with new upholstery to make it more comfortable to lay in."
 
 /obj/structure/closet/coffin/update_icon()
 	if(!opened)
 		icon_state = icon_closed
 	else
 		icon_state = icon_opened
+
+/obj/structure/closet/coffin/comfy
+	name = "extra comfortable coffin"
+	desc = "It's a burial receptacle for the dearly departed. This one has been modified with new upholstery to make it more comfortable to lay in."
+
+/obj/structure/closet/coffin/wooden
+	name = "coffin"
+	desc = "It's a burial receptacle for the dearly departed."
+	icon = 'icons/obj/closets/coffin_wood.dmi'
 
 /* Graves */
 /obj/structure/closet/grave
