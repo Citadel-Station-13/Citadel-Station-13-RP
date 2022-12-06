@@ -672,7 +672,8 @@
 					/obj/item/reagent_containers/food/condiment/small/packet/matchapowder = 5,
 					/obj/item/reagent_containers/food/condiment/small/packet/taropowder = 5,
 					/obj/item/glass_extra/stick = 30,
-					/obj/item/glass_extra/straw = 30)
+					/obj/item/glass_extra/straw = 30,
+					/obj/item/storage/single_use/med_pouch/overdose = 2)
 	contraband = list()
 	vend_delay = 15
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
@@ -846,7 +847,10 @@
 					/obj/item/healthanalyzer = 5,/obj/item/reagent_containers/glass/beaker = 4, /obj/item/reagent_containers/dropper = 2,
 					/obj/item/stack/medical/advanced/bruise_pack = 6, /obj/item/stack/medical/advanced/ointment = 6, /obj/item/stack/medical/splint = 4,
 					/obj/item/storage/pill_bottle/carbon = 2, /obj/item/storage/pill_bottle = 3, /obj/item/storage/box/vmcrystal = 4,
-					/obj/item/clothing/glasses/omnihud/med = 4, /obj/item/glasses_kit = 1,  /obj/item/storage/quickdraw/syringe_case = 4)
+					/obj/item/clothing/glasses/omnihud/med = 4, /obj/item/glasses_kit = 1,  /obj/item/storage/quickdraw/syringe_case = 4,
+					/obj/item/storage/single_use/med_pouch/overdose = 3, /obj/item/storage/single_use/med_pouch/radiation = 3,
+					/obj/item/storage/single_use/med_pouch/toxin = 3, /obj/item/storage/single_use/med_pouch/oxyloss = 3,
+					/obj/item/storage/single_use/med_pouch/burn = 3, /obj/item/storage/single_use/med_pouch/trauma = 3)
 	contraband = list(/obj/item/reagent_containers/pill/tox = 3,/obj/item/reagent_containers/pill/stox = 4,/obj/item/reagent_containers/pill/antitox = 6)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
 	req_log_access = access_cmo
@@ -868,14 +872,32 @@
 	icon_state = "wallmed"
 	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
-	products = list(/obj/item/stack/medical/bruise_pack = 2,/obj/item/stack/medical/ointment = 2,/obj/item/reagent_containers/hypospray/autoinjector = 4,/obj/item/healthanalyzer = 1)
-	contraband = list(/obj/item/reagent_containers/syringe/antitoxin = 4,/obj/item/reagent_containers/syringe/antiviral = 4,/obj/item/reagent_containers/pill/tox = 1)
+	products = list(
+		/obj/item/stack/medical/bruise_pack = 2,
+		/obj/item/storage/single_use/med_pouch/trauma = 1,
+		/obj/item/stack/medical/ointment = 2,
+		/obj/item/storage/single_use/med_pouch/burn = 1,
+		/obj/item/reagent_containers/hypospray/autoinjector = 4,
+		/obj/item/healthanalyzer = 1,
+	)
+	contraband = list(
+		/obj/item/reagent_containers/syringe/antitoxin = 4,
+		/obj/item/reagent_containers/syringe/antiviral = 4,
+		/obj/item/reagent_containers/pill/tox = 1,
+	)
 	req_log_access = access_cmo
 	has_logs = 1
 
 // Modified version from tether_things.dm
 /obj/machinery/vending/wallmed1/public
-	products = list(/obj/item/stack/medical/bruise_pack = 8,/obj/item/stack/medical/ointment = 8,/obj/item/reagent_containers/hypospray/autoinjector = 16,/obj/item/healthanalyzer = 4)
+	products = list(
+		/obj/item/stack/medical/bruise_pack = 8,
+		/obj/item/storage/single_use/med_pouch/trauma = 2,
+		/obj/item/stack/medical/ointment = 8,
+		/obj/item/storage/single_use/med_pouch/burn = 2,
+		/obj/item/reagent_containers/hypospray/autoinjector = 16,
+		/obj/item/healthanalyzer = 4,
+	)
 
 //Airlock antitox vendor. Used on the tether map and a few other POIS and such
 /obj/machinery/vending/wallmed_airlock
@@ -883,7 +905,12 @@
 	desc = "Wall-mounted Medical Equipment dispenser. This limited-use version dispenses antitoxins with mild painkillers for surface EVAs."
 	icon_state = "wallmed"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
-	products = list(/obj/item/reagent_containers/pill/airlock = 20,/obj/item/healthanalyzer = 1)
+	products = list(
+		/obj/item/reagent_containers/pill/airlock = 20,
+		/obj/item/storage/single_use/med_pouch/oxyloss = 2,
+		/obj/item/storage/single_use/med_pouch/toxin = 2,
+    /obj/item/healthanalyzer = 1,
+	)
 	contraband = list(/obj/item/reagent_containers/pill/tox = 2)
 	req_log_access = access_cmo
 	has_logs = 1
@@ -894,8 +921,18 @@
 	icon_state = "wallmed"
 	icon_deny = "wallmed-deny"
 	density = 0 //It is wall-mounted, and thus, not dense. --Superxpdude
-	products = list(/obj/item/reagent_containers/hypospray/autoinjector = 5,/obj/item/reagent_containers/syringe/antitoxin = 3,/obj/item/stack/medical/bruise_pack = 3,
-					/obj/item/stack/medical/ointment =3,/obj/item/healthanalyzer = 3)
+	products = list(
+		/obj/item/reagent_containers/hypospray/autoinjector = 5,
+		/obj/item/reagent_containers/syringe/antitoxin = 3,
+		/obj/item/stack/medical/bruise_pack = 3,
+		/obj/item/storage/single_use/med_pouch/oxyloss = 1,
+		/obj/item/storage/single_use/med_pouch/trauma = 1,
+		/obj/item/storage/single_use/med_pouch/burn = 1,
+		/obj/item/storage/single_use/med_pouch/toxin = 1,
+		/obj/item/storage/single_use/med_pouch/radiation = 1,
+		/obj/item/storage/single_use/med_pouch/overdose = 1,
+		/obj/item/stack/medical/ointment =3,/obj/item/healthanalyzer = 3
+		)
 	contraband = list(/obj/item/reagent_containers/pill/tox = 3)
 	req_log_access = access_cmo
 	has_logs = 1

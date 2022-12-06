@@ -6,12 +6,14 @@
 	speech_verb = "enunciates"
 	colour = "say_quote"
 	key = "2"
+	shorthand = "TBND"
 	syllables = list(
 "fea","vea","vei","veh","vee","feh","fa","soa","su","sua","sou","se","seh","twa","twe","twi",
 "ahm","lea","lee","nae","nah","pa","pau","fae","fai","soh","mou","ahe","ll","ea","ai","thi",
 "hie","zei","zie","ize","ehy","uy","oya","dor","di","ja","ej","er","um","in","qu","is","re",
 "nt","ti","us","it","en","at","tu","te","ri","es","et","ra","ta","an","ni","li","on","or","se",
 "am","ae","ia","di","ue","em","ar","ui","st","si","de","ci","iu","ne","pe","co","os","ur","ru")
+
 
 // Criminal language.
 /datum/language/gutter
@@ -23,6 +25,7 @@
 	space_chance = 45
 	machine_understands = FALSE
 	partial_understanding = list(LANGUAGE_GALCOM = 10, LANGUAGE_TRADEBAND = 20, LANGUAGE_SOL_COMMON = 20)
+	shorthand = "GUT"
 	syllables = list (
 "gra","ba","ba","breh","bra","rah","dur","ra","ro","gro","go","ber","bar","geh","heh", "gra",
 "a", "ai", "an", "ang", "ao", "ba", "bai", "ban", "bang", "bao", "bei", "ben", "beng", "bi", "bian", "biao",

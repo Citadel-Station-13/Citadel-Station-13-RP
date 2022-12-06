@@ -10,3 +10,4 @@
 	syllables = list ("sque", "uik", "squeak", "squee", "eak", "eek", "uek", "squik",
 			"squeek", "sq", "eek", "squeee", "ee", "ek", "ak", "ueak", "squea")
 	machine_understands = 1
+	shorthand = "SQ"

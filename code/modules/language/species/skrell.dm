@@ -10,6 +10,7 @@
 	key = "k"
 	space_chance = 30
 	syllables = list("qr","qrr","xuq","qil","quum","xuqm","vol","xrim","zaoo","qu-uu","qix","qoo","zix")
+	shorthand = "SKRL"
 
 
 /datum/language/skrellfar
@@ -25,6 +26,7 @@
 	space_chance = 30
 	language_flags = WHITELISTED
 	syllables = list("qr","qrr","xuq","qil","quum","xuqm","vol","xrim","zaoo","qu-uu","qix","qoo","zix", "...", "oo", "q", "nq", "x", "xq", "ll", "...", "...", "...") //should sound like there's holes in it
+	shorthand = "SKRLFR"
 
 /datum/language/skrell/get_random_name(gender)
 	var/list/first_name = GLOB.skrell_first_names

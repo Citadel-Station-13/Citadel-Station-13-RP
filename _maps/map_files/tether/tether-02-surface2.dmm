@@ -9318,7 +9318,7 @@
 	},
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/structure/table/standard,
-/obj/item/storage/mre/random,
+/obj/item/storage/single_use/mre/random,
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 8
 	},
@@ -23115,9 +23115,9 @@
 /area/tether/surfacebase/east_stairs_two)
 "aRB" = (
 /obj/structure/closet,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
 /turf/simulated/floor/plating,
 /area/maintenance/lower/public_garden_maintenence/upper)
 "aRC" = (
@@ -33251,7 +33251,7 @@
 /obj/machinery/smartfridge/survival_pod,
 /obj/item/fbp_backup_cell,
 /obj/item/fbp_backup_cell,
-/obj/item/storage/mre/random,
+/obj/item/storage/single_use/mre/random,
 /obj/effect/floor_decal/rust,
 /obj/random/junk,
 /obj/random/junk,

@@ -13,6 +13,7 @@
 			"ce", "re", "me", "se", "ne", "te", "le", "she", "sche", "e", "e",
 			"ci", "ri", "mi", "si", "ni", "ti", "li", "shi", "schi", "i", "i"
 		)
+	shorthand = "SCH"
 
 /datum/language/teshari/get_random_name(gender)
 	return ..(gender, 2, 4, 1.5)

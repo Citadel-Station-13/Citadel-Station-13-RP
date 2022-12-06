@@ -65,6 +65,9 @@
 	else
 		var/message_to_send = null
 		if(language)
+			//Hivemind languages already say their names. Also, no indicator if you don't know the language.
+			if(client && !(language.language_flags & HIVEMIND) && say_understands(speaker, language) && client.is_preference_enabled(/datum/client_preference/language_indicator))
+				verb += " ([language.shorthand])"
 			message_to_send = "<span class='game say'><span class='name'>[speaker_name]</span>[alt_name] [track][language.format_message(message, verb)]</span>"
 		else
 			message_to_send = "<span class='game say'><span class='name'>[speaker_name]</span>[alt_name] [track][verb], <span class='message'><span class='body'>\"[message]\"</span></span></span>"
@@ -104,7 +107,7 @@
 	valid_names += nicknames
 	valid_names += special_mentions()
 	for(var/name in valid_names)
-		if(findtext_char(message, regex("\\b[name]\\b", "i"))) // This is to stop 'ai' from triggering if someone says 'wait'.
+		if(findtext_char(message, regex("\\b[REGEX_QUOTE(name)]\\b", "i"))) // This is to stop 'ai' from triggering if someone says 'wait'.
 			return TRUE
 	return FALSE
 
@@ -239,6 +242,8 @@
 
 	var/formatted
 	if(language)
+		if(client && !(language.language_flags & HIVEMIND) && say_understands(speaker, language) && client.is_preference_enabled(/datum/client_preference/language_indicator))
+			verb += " ([language.shorthand])"
 		formatted = "[language.format_message_radio(message, verb)][part_c]"
 	else
 		formatted = "[verb], <span class=\"body\">\"[message]\"</span>[part_c]"
