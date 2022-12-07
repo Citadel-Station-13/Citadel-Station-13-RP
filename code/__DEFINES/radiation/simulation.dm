@@ -172,8 +172,10 @@
 #define RAD_ZLEVEL_CONTAMINATION_DEFAULT TRUE
 /// amount of contamination washed out by a single tick of a shower, or 10 units of water
 #define RAD_CONTAMINATION_CLEANSE_POWER 20
+	#define RAD_CONTAMINATION_CLEANSE_POWER_WASHING_MACHINE 200
 /// amount of contamination washed out as a multiplier
 #define RAD_CONTAMINATION_CLEANSE_FACTOR 0.1
+	#define RAD_CONTAMINATION_CLEANSE_FACTOR_WASHING_MACHINE 0.9
 
 //! z_radiate_flags
 /// respect rad shielded maint
