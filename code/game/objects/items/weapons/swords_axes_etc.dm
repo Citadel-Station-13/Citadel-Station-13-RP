@@ -177,7 +177,7 @@
 /obj/item/melee/stool/faiza
 	name = "Faiza's Stool"
 	desc = "Apply munchkin cat."
-	icon = 'icons/obj/furniture.dmi'
+	icon = 'icons/obj/structures/furniture.dmi'
 	icon_state = "cn_stool_c"
 	force = 10
 	throw_force = 10

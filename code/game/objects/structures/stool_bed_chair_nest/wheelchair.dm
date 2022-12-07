@@ -16,7 +16,7 @@
 /obj/structure/bed/chair/wheelchair/setDir()
 	..()
 	overlays = null
-	var/image/O = image(icon = 'icons/obj/furniture.dmi', icon_state = "w_overlay", layer = FLY_LAYER, dir = src.dir)
+	var/image/O = image(icon = 'icons/obj/structures/furniture.dmi', icon_state = "w_overlay", layer = FLY_LAYER, dir = src.dir)
 	overlays += O
 	if(has_buckled_mobs())
 		for(var/A in buckled_mobs)
@@ -187,7 +187,7 @@
 /obj/item/wheelchair
 	name = "wheelchair"
 	desc = "A folded wheelchair that can be carried around."
-	icon = 'icons/obj/furniture.dmi'
+	icon = 'icons/obj/structures/furniture.dmi'
 	icon_state = "wheelchair_folded"
 	item_state = "wheelchair"
 	w_class = ITEMSIZE_HUGE // Can't be put in backpacks. Oh well.
@@ -225,7 +225,7 @@
 /obj/structure/bed/chair/wheelchair/dolly/setDir()
 	..()
 	overlays = null
-	var/image/O = image(icon = 'icons/obj/furniture.dmi', icon_state = "d_overlay", layer = FLY_LAYER, dir = src.dir)
+	var/image/O = image(icon = 'icons/obj/structures/furniture.dmi', icon_state = "d_overlay", layer = FLY_LAYER, dir = src.dir)
 	overlays += O
 	if(has_buckled_mobs())
 		for(var/A in buckled_mobs)

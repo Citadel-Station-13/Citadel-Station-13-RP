@@ -11,7 +11,7 @@
 	var/current_damage = 0
 	var/cover = 50 //how much cover the girder provides against projectiles.
 	var/reinforcing = 0
-	var/applies_material_colour = 1
+	var/applies_material_color = 1
 
 	var/default_material = MAT_STEEL
 	var/datum/material/girder_material
@@ -50,7 +50,7 @@
 	max_health = round(girder_material.integrity) //Should be 150 with default integrity (steel). Weaker than ye-olden Girders now.
 	health = max_health
 	displaced_health = round(max_health/4)
-	if(applies_material_colour)
+	if(applies_material_color)
 		color = girder_material.color
 	if(girder_material.products_need_process()) //Am I radioactive or some other? Process me!
 		START_PROCESSING(SSobj, src)
@@ -325,7 +325,7 @@
 	health = 250
 	cover = 70
 	girder_material = "cult"
-	applies_material_colour = 0
+	applies_material_color = 0
 
 /obj/structure/girder/cult/update_icon()
 	if(anchored)

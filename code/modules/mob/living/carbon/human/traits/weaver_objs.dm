@@ -70,7 +70,7 @@ var/global/list/weavable_items = list()
 	desc = "A nest of some kind, made of fiberous material."
 	icon = 'icons/vore/weaver_icons_vr.dmi'
 	icon_state = "nest"
-	base_icon = "nest"
+	base_icon_state = "nest"
 
 /obj/structure/bed/double/weaversilk_nest/update_icon()
 	return
@@ -131,4 +131,3 @@ var/global/list/weavable_items = list()
 	item_state = "web_bindings_mob"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS|HANDS
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDETAIL
-

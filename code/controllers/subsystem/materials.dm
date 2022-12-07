@@ -78,16 +78,16 @@ SUBSYSTEM_DEF(materials)
 	if(istext(key)) // Handle text uid
 		. = materials[key]
 		if(!.)
-			WARNING("Attempted to fetch material ref with invalid text uid '[key]'")
+			WARNING("Attempted to fetch material ref with invalid text uid '[isnull(key) ? "null" : key]'")
 		return
 
 	if(!ispath(key, /datum/material))
-		CRASH("Attempted to fetch material ref with invalid key [key]")
+		CRASH("Attempted to fetch material ref with invalid key [isnull(key) ? "null" : key]")
 
 	if(!(initial(key.init_flags) & MATERIAL_INIT_BESPOKE))
 		. = materials[key]
 		if(!.)
-			WARNING("Attempted to fetch reference to an abstract material with key [key]")
+			WARNING("Attempted to fetch reference to an abstract material with key [isnull(key) ? "null" : key]")
 		return
 
 	key = get_uid_from_arguments(arguments)

@@ -444,6 +444,6 @@
 	desc = "Soft substance produced by bees. Used to make candles."
 	icon_state = "sheet-rtransparent"
 	apply_colour = 1
-	default_type = "wax"
+	default_type = MAT_WAX
 	no_variants = FALSE
 	pass_color = TRUE

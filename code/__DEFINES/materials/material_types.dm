@@ -3,6 +3,8 @@
 #define MAT_BANANIUM       /datum/material/solid/metal/bananium
 #define MAT_BRONZE         /datum/material/solid/metal/bronze
 #define MAT_CARBON         /datum/material/solid/carbon
+#define MAT_CARPET         /datum/material/solid/carpet
+#define MAT_CLOTH          /datum/material/solid/cloth
 #define MAT_CHITIN         /datum/material/solid/skin/insect
 #define MAT_COPPER         /datum/material/solid/metal/copper
 #define MAT_DIAMOND        /datum/material/solid/gemstone/diamond
@@ -45,6 +47,7 @@
 #define MAT_URANIUM        /datum/material/solid/metal/uranium
 #define MAT_VALHOLLIDE     /datum/material/solid/metal/valhollide
 #define MAT_VERDANTIUM     /datum/material/solid/metal/verdantium
+#define MAT_WAX            /datum/material/solid/wax
 #define MAT_WOOD           /datum/material/solid/wood
 
 #define SHARD_SHARD        "shard"

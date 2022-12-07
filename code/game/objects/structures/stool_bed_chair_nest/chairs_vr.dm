@@ -1,15 +1,15 @@
 /obj/structure/bed/chair/modern_chair
 	name = "modern chair"
 	desc = "It's like sitting in an egg."
-	icon = 'icons/obj/furniture_vr.dmi'
+	icon = 'icons/obj/structures/furniture_vr.dmi'
 	icon_state = "modern_chair"
 	color = null
-	base_icon = "modern_chair"
-	applies_material_colour = 0
+	base_icon_state = "modern_chair"
+	applies_material_color = 0
 
 /obj/structure/bed/chair/modern_chair/Initialize(mapload)
 	. = ..()
-	var/image/I = image(icon, "[base_icon]_over")
+	var/image/I = image(icon, "[base_icon_state]_over")
 	I.layer = ABOVE_MOB_LAYER
 	I.plane = MOB_PLANE
 	add_overlay(I)
@@ -18,35 +18,35 @@
 	name = "bar stool"
 	desc = "How vibrant!"
 	icon_state = "bar"
-	base_icon = "bar"
+	base_icon_state = "bar"
 	color = null
-	applies_material_colour = 0
+	applies_material_color = 0
 
 /obj/structure/bed/chair/backed_grey
 	name = "grey chair"
 	desc = "Also available in red."
-	icon = 'icons/obj/furniture_vr.dmi'
+	icon = 'icons/obj/structures/furniture_vr.dmi'
 	icon_state = "onestar_chair_grey"
 	color = null
-	base_icon = "onestar_chair_grey"
-	applies_material_colour = 0
+	base_icon_state = "onestar_chair_grey"
+	applies_material_color = 0
 
 /obj/structure/bed/chair/backed_red
 	name = "red chair"
 	desc = "Also available in grey."
-	icon = 'icons/obj/furniture_vr.dmi'
+	icon = 'icons/obj/structures/furniture_vr.dmi'
 	icon_state = "onestar_chair_red"
 	color = null
-	base_icon = "onestar_chair_red"
-	applies_material_colour = 0
+	base_icon_state = "onestar_chair_red"
+	applies_material_color = 0
 
 // Baystation12 chairs with their larger update_icons proc
 /obj/structure/bed/chair/bay/update_icon()
 	// Strings.
 	desc = initial(desc)
-	if(padding_material)
-		name = "[padding_material.display_name] [initial(name)]" //this is not perfect but it will do for now.
-		desc += " It's made of [material.use_name] and covered with [padding_material.use_name]."
+	if(reinf_material)
+		name = "[reinf_material.display_name] [initial(name)]" //this is not perfect but it will do for now.
+		desc += " It's made of [material.use_name] and covered with [reinf_material.use_name]."
 	else
 		name = "[material.display_name] [initial(name)]"
 		desc += " It's made of [material.use_name]."
@@ -56,185 +56,186 @@
 	cut_overlays()
 
 	// Base icon (base material color)
-	var/cache_key = "[base_icon]-[material.name]"
+	var/cache_key = "[base_icon_state]-[material.name]"
 	if(isnull(stool_cache[cache_key]))
-		var/image/I = image(icon, base_icon)
-		if(applies_material_colour)
+		var/image/I = image(icon, base_icon_state)
+		if(applies_material_color)
 			I.color = material.color
 		stool_cache[cache_key] = I
 	add_overlay(stool_cache[cache_key])
 
 	// Padding ('_padding') (padding material color)
-	if(padding_material)
-		var/padding_cache_key = "[base_icon]-padding-[padding_material.name]"
+	if(reinf_material)
+		var/padding_cache_key = "[base_icon_state]-padding-[reinf_material.name]"
 		if(isnull(stool_cache[padding_cache_key]))
-			var/image/I =  image(icon, "[base_icon]_padding")
-			I.color = padding_material.color
+			var/image/I =  image(icon, "[base_icon_state]_padding")
+			I.color = reinf_material.color
 			stool_cache[padding_cache_key] = I
 		add_overlay(stool_cache[padding_cache_key])
 
 	// Over ('_over') (base material color)
-	cache_key = "[base_icon]-[material.name]-over"
+	cache_key = "[base_icon_state]-[material.name]-over"
 	if(isnull(stool_cache[cache_key]))
-		var/image/I = image(icon, "[base_icon]_over")
+		var/image/I = image(icon, "[base_icon_state]_over")
 		I.plane = MOB_PLANE
 		I.layer = ABOVE_MOB_LAYER
-		if(applies_material_colour)
+		if(applies_material_color)
 			I.color = material.color
 		stool_cache[cache_key] = I
 	add_overlay(stool_cache[cache_key])
 
 	// Padding Over ('_padding_over') (padding material color)
-	if(padding_material)
-		var/padding_cache_key = "[base_icon]-padding-[padding_material.name]-over"
+	if(reinf_material)
+		var/padding_cache_key = "[base_icon_state]-padding-[reinf_material.name]-over"
 		if(isnull(stool_cache[padding_cache_key]))
-			var/image/I =  image(icon, "[base_icon]_padding_over")
-			I.color = padding_material.color
+			var/image/I =  image(icon, "[base_icon_state]_padding_over")
+			I.color = reinf_material.color
 			I.plane = MOB_PLANE
 			I.layer = ABOVE_MOB_LAYER
 			stool_cache[padding_cache_key] = I
 		add_overlay(stool_cache[padding_cache_key])
 
 	if(has_buckled_mobs())
-		if(padding_material)
-			cache_key = "[base_icon]-armrest-[padding_material.name]"
+		if(reinf_material)
+			cache_key = "[base_icon_state]-armrest-[reinf_material.name]"
 		// Armrest ('_armrest') (base material color)
 		if(isnull(stool_cache[cache_key]))
-			var/image/I = image(icon, "[base_icon]_armrest")
+			var/image/I = image(icon, "[base_icon_state]_armrest")
 			I.plane = MOB_PLANE
 			I.layer = ABOVE_MOB_LAYER
-			if(applies_material_colour)
+			if(applies_material_color)
 				I.color = material.color
 			stool_cache[cache_key] = I
 		add_overlay(stool_cache[cache_key])
-		if(padding_material)
-			cache_key = "[base_icon]-padding-armrest-[padding_material.name]"
+		if(reinf_material)
+			cache_key = "[base_icon_state]-padding-armrest-[reinf_material.name]"
 			// Padding Armrest ('_padding_armrest') (padding material color)
 			if(isnull(stool_cache[cache_key]))
-				var/image/I = image(icon, "[base_icon]_padding_armrest")
+				var/image/I = image(icon, "[base_icon_state]_padding_armrest")
 				I.plane = MOB_PLANE
 				I.layer = ABOVE_MOB_LAYER
-				I.color = padding_material.color
+				I.color = reinf_material.color
 				stool_cache[cache_key] = I
 			add_overlay(stool_cache[cache_key])
 
 /obj/structure/bed/chair/bay
-	icon = 'icons/obj/furniture_vr.dmi'
+	icon = 'icons/obj/structures/furniture_vr.dmi'
 
 /obj/structure/bed/chair/bay/chair
 	name = "mounted chair"
 	desc = "Like a normal chair, but more stationary."
 	icon_state = "bay_chair_preview"
-	base_icon = "bay_chair"
+	base_icon_state = "bay_chair"
 
-/obj/structure/bed/chair/bay/chair/padded/red/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "carpet")
+/obj/structure/bed/chair/bay/chair/padded/red
+	reinf_material = /datum/material/solid/cloth/red
 
-/obj/structure/bed/chair/bay/chair/padded/brown/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "leather")
+/obj/structure/bed/chair/bay/chair/padded/brown
+	reinf_material = /datum/material/solid/leather
 
-/obj/structure/bed/chair/bay/chair/padded/teal/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "teal")
+/obj/structure/bed/chair/bay/chair/padded/teal
+	reinf_material = /datum/material/solid/cloth/teal
 
-/obj/structure/bed/chair/bay/chair/padded/black/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "black")
+/obj/structure/bed/chair/bay/chair/padded/black
+	reinf_material = /datum/material/solid/cloth/black
 
-/obj/structure/bed/chair/bay/chair/padded/green/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "green")
+/obj/structure/bed/chair/bay/chair/padded/green
+	reinf_material = /datum/material/solid/cloth/green
 
-/obj/structure/bed/chair/bay/chair/padded/purple/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "purple")
+/obj/structure/bed/chair/bay/chair/padded/purple
+	reinf_material = /datum/material/solid/cloth/purple
 
-/obj/structure/bed/chair/bay/chair/padded/blue/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "bllue")
+/obj/structure/bed/chair/bay/chair/padded/blue
+	reinf_material = /datum/material/solid/cloth/blue
 
-/obj/structure/bed/chair/bay/chair/padded/beige/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "beige")
+/obj/structure/bed/chair/bay/chair/padded/beige
+	reinf_material = /datum/material/solid/cloth/beige
 
-/obj/structure/bed/chair/bay/chair/padded/lime/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "lime")
+/obj/structure/bed/chair/bay/chair/padded/lime
+	reinf_material = /datum/material/solid/cloth/lime
 
-/obj/structure/bed/chair/bay/chair/padded/yellow/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "yellow")
+/obj/structure/bed/chair/bay/chair/padded/yellow
+	reinf_material = /datum/material/solid/cloth/yellow
 
 /obj/structure/bed/chair/bay/comfy
 	name = "comfy mounted chair"
 	desc = "Like a normal chair, but more stationary, and with more padding."
 	icon_state = "bay_comfychair_preview"
-	base_icon = "bay_comfychair"
+	base_icon_state = "bay_comfychair"
 
-/obj/structure/bed/chair/bay/comfy/red/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "carpet")
+/obj/structure/bed/chair/bay/comfy/red
+	reinf_material = /datum/material/solid/cloth/red
 
-/obj/structure/bed/chair/bay/comfy/brown/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "leather")
+/obj/structure/bed/chair/bay/comfy/brown
+	reinf_material = /datum/material/solid/leather
 
-/obj/structure/bed/chair/bay/comfy/teal/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "teal")
+/obj/structure/bed/chair/bay/comfy/teal
+	reinf_material = /datum/material/solid/cloth/teal
 
-/obj/structure/bed/chair/bay/comfy/black/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "black")
+/obj/structure/bed/chair/bay/comfy/black
+	reinf_material = /datum/material/solid/cloth/black
 
-/obj/structure/bed/chair/bay/comfy/green/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "green")
+/obj/structure/bed/chair/bay/comfy/green
+	reinf_material = /datum/material/solid/cloth/green
 
-/obj/structure/bed/chair/bay/comfy/purple/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "purple")
+/obj/structure/bed/chair/bay/comfy/purple
+	reinf_material = /datum/material/solid/cloth/purple
 
-/obj/structure/bed/chair/bay/comfy/blue/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "bllue")
+/obj/structure/bed/chair/bay/comfy/blue
+	reinf_material = /datum/material/solid/cloth/blue
 
-/obj/structure/bed/chair/bay/comfy/beige/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "beige")
+/obj/structure/bed/chair/bay/comfy/beige
+	reinf_material = /datum/material/solid/cloth/beige
 
-/obj/structure/bed/chair/bay/comfy/lime/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "lime")
+/obj/structure/bed/chair/bay/comfy/lime
+	reinf_material = /datum/material/solid/cloth/lime
 
-/obj/structure/bed/chair/bay/comfy/yellow/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, new_material, "yellow")
+/obj/structure/bed/chair/bay/comfy/yellow
+	reinf_material = /datum/material/solid/cloth/yellow
 
 /obj/structure/bed/chair/bay/comfy/captain
 	name = "captain chair"
 	desc = "It's a chair. Only for the highest ranked asses."
 	icon_state = "capchair_preview"
-	base_icon = "capchair"
+	base_icon_state = "capchair"
 
 /obj/structure/bed/chair/bay/comfy/captain/update_icon()
 	..()
-	var/image/I = image(icon, "[base_icon]_special")
+	var/image/I = image(icon, "[base_icon_state]_special")
 	I.plane = MOB_PLANE
 	I.layer = ABOVE_MOB_LAYER
 	add_overlay(I)
 
-/obj/structure/bed/chair/bay/comfy/captain/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, MAT_STEEL, "blue")
+/obj/structure/bed/chair/bay/comfy/captain
+	material = MAT_STEEL
+	reinf_material = /datum/material/solid/cloth/blue
 
 /obj/structure/bed/chair/bay/shuttle
 	name = "shuttle seat"
 	desc = "A comfortable, secure seat. It has a sturdy-looking buckling system for smoother flights."
-	base_icon = "shuttle_chair"
+	base_icon_state = "shuttle_chair"
 	icon_state = "shuttle_chair_preview"
 	var/buckling_sound = 'sound/effects/metal_close.ogg'
 	var/padding = "blue"
 
-/obj/structure/bed/chair/bay/shuttle/Initialize(mapload, new_material, new_padding_material)
-	return ..(mapload, MAT_STEEL, padding)
+/obj/structure/bed/chair/bay/shuttle
+	material = MAT_STEEL
 
 /obj/structure/bed/chair/bay/shuttle/mob_buckled(mob/M, flags, mob/user, semantic)
 	. = ..()
-	playsound(src,buckling_sound,75,1)
+	playsound(src,buckling_sound, 75, TRUE)
 	if(has_buckled_mobs())
-		base_icon = "shuttle_chair-b"
+		base_icon_state = "shuttle_chair-b"
 	else
-		base_icon = "shuttle_chair"
+		base_icon_state = "shuttle_chair"
 
 /obj/structure/bed/chair/bay/shuttle/update_icon()
 	..()
 	if(!has_buckled_mobs())
-		var/image/I = image(icon, "[base_icon]_special")
+		var/image/I = image(icon, "[base_icon_state]_special")
 		I.plane = MOB_PLANE
 		I.layer = ABOVE_MOB_LAYER
-		if(applies_material_colour)
+		if(applies_material_color)
 			I.color = material.color
 		add_overlay(I)
 
@@ -242,9 +243,9 @@
 	name = "teshari nest"
 	desc = "Smells like cleaning products."
 	icon_state = "nest_chair"
-	base_icon = "nest_chair"
+	base_icon_state = "nest_chair"
 
 /obj/structure/bed/chair/bay/chair/padded/red/bignest
 	name = "large teshari nest"
 	icon_state = "nest_chair_large"
-	base_icon = "nest_chair_large"
+	base_icon_state = "nest_chair_large"

@@ -10,63 +10,75 @@
 /obj/structure/bed
 	name = "bed"
 	desc = "This is used to lie in, sleep in or strap on."
-	icon = 'icons/obj/furniture.dmi'
+	icon = 'icons/obj/structures/furniture.dmi'
 	icon_state = "bed"
+	base_icon_state = "bed"
 	pressure_resistance = 15
 	anchored = TRUE
 	buckle_allowed = TRUE
 	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 	buckle_dir = SOUTH
 	buckle_lying = 90
-	var/datum/material/padding_material
-	var/base_icon = "bed"
-	var/applies_material_colour = 1
 
-/obj/structure/bed/Initialize(mapload, new_material, new_padding_material)
-	. = ..(mapload)
+	var/applies_material_color = TRUE
+
+/obj/structure/bed/Initialize(mapload, new_material, new_reinf_material)
+	. = ..()
 	remove_atom_colour(FIXED_COLOUR_PRIORITY)
-	if(!new_material)
-		new_material = /datum/material/solid/metal/steel
-	material = GET_MATERIAL_REF(new_material)
+
+	material = GET_MATERIAL_REF(new_material ? new_material : material)
+	reinf_material = GET_MATERIAL_REF(new_reinf_material? new_reinf_material : reinf_material)
+
 	if(!istype(material))
 		qdel(src)
-		return
-	if(new_padding_material)
-		padding_material = GET_MATERIAL_REF(new_padding_material)
-	update_icon()
+		stack_trace("[src] Initialized without a material!")
 
-/obj/structure/bed/get_material()
-	return material
+	update_appearance()
+
+/obj/structure/bed/get_default_material()
+	return /datum/material/solid/metal/steel
+
+/obj/structure/bed/get_default_reinf_material()
+	return null
 
 // Reuse the cache/code from stools, todo maybe unify.
-/obj/structure/bed/update_icon()
+/obj/structure/bed/update_overlays()
+	. = ..()
 	// Prep icon.
 	icon_state = ""
-	overlays.Cut()
+	cut_overlays()
 	// Base icon.
-	var/cache_key = "[base_icon]-[material.name]"
+	var/cache_key = "[base_icon_state]-[material.name]"
 	if(isnull(stool_cache[cache_key]))
-		var/image/I = image(icon, base_icon)
-		if(applies_material_colour)
-			I.color = material.color
+		var/image/I = image(icon, base_icon_state)
+		if(applies_material_color)
+			I.color = reinf_material ? reinf_material.color : material.color
 		stool_cache[cache_key] = I
-	overlays |= stool_cache[cache_key]
+	add_overlay(stool_cache[cache_key])
 	// Padding overlay.
-	if(padding_material)
-		var/padding_cache_key = "[base_icon]-padding-[padding_material.name]"
+	if(reinf_material)
+		var/padding_cache_key = "[base_icon_state]-padding-[reinf_material.name]"
 		if(isnull(stool_cache[padding_cache_key]))
-			var/image/I =  image(icon, "[base_icon]_padding")
-			I.color = padding_material.color
+			var/image/I =  image(icon, "[base_icon_state]_padding")
+			I.color = reinf_material ? reinf_material.color : material.color
 			stool_cache[padding_cache_key] = I
-		overlays |= stool_cache[padding_cache_key]
-	// Strings.
-	desc = initial(desc)
-	if(padding_material)
-		name = "[padding_material.display_name] [initial(name)]" //this is not perfect but it will do for now.
-		desc += " It's made of [material.use_name] and covered with [padding_material.use_name]."
+		add_overlay(stool_cache[padding_cache_key])
+
+/obj/structure/bed/update_name(updates)
+	. = ..()
+	if(reinf_material)
+		name = "[reinf_material.display_name] [initial(name)]" //this is not perfect but it will do for now.
 	else
 		name = "[material.display_name] [initial(name)]"
+
+/obj/structure/bed/update_desc(updates)
+	. = ..()
+	desc = initial(desc)
+	if(reinf_material)
+		desc += " It's made of [material.use_name] and covered with [reinf_material.use_name]."
+	else
 		desc += " It's made of [material.use_name]."
+
 
 /obj/structure/bed/legacy_ex_act(severity)
 	switch(severity)
@@ -88,7 +100,7 @@
 		dismantle()
 		qdel(src)
 	else if(istype(W,/obj/item/stack))
-		if(padding_material)
+		if(reinf_material)
 			to_chat(user, "\The [src] is already padded.")
 			return
 		var/obj/item/stack/C = W
@@ -108,7 +120,7 @@
 		return
 
 	else if(W.is_wirecutter())
-		if(!padding_material)
+		if(!reinf_material)
 			to_chat(user, "\The [src] has no padding to remove.")
 			return
 		to_chat(user, "You remove the padding from \the [src].")
@@ -119,58 +131,61 @@
 		var/obj/item/grab/G = W
 		var/mob/living/affecting = G.affecting
 		if(has_buckled_mobs()) //Handles trying to buckle someone else to a chair when someone else is on it
-			to_chat(user, "<span class='notice'>\The [src] already has someone buckled to it.</span>")
+			to_chat(user, SPAN_NOTICE("\The [src] already has someone buckled to it."))
 			return
-		user.visible_message("<span class='notice'>[user] attempts to buckle [affecting] into \the [src]!</span>")
+		user.visible_message(SPAN_NOTICE("[user] attempts to buckle [affecting] into \the [src]!"))
 		if(do_after(user, 20, G.affecting))
 			affecting.forceMove(loc)
 			spawn(0)
 				if(buckle_mob(affecting))
-					affecting.visible_message(\
-						"<span class='danger'>[affecting.name] is buckled to [src] by [user.name]!</span>",\
-						"<span class='danger'>You are buckled to [src] by [user.name]!</span>",\
-						"<span class='notice'>You hear metal clanking.</span>")
+					affecting.visible_message(
+						SPAN_DANGER("[affecting.name] is buckled to [src] by [user.name]!"),
+						SPAN_DANGER("You are buckled to [src] by [user.name]!"),
+						SPAN_NOTICE("You hear metal clanking."),
+					)
 			qdel(W)
 	else
 		..()
 
 /obj/structure/bed/proc/remove_padding()
-	if(padding_material)
-		padding_material.place_sheet(get_turf(src))
-		padding_material = null
-	update_icon()
+	if(reinf_material)
+		reinf_material.place_sheet(get_turf(src))
+		reinf_material = null
+	update_appearance()
 
 /obj/structure/bed/proc/add_padding(padding_type)
-	padding_material = GET_MATERIAL_REF(padding_type)
-	update_icon()
+	reinf_material = GET_MATERIAL_REF(padding_type)
+	update_appearance()
 
 /obj/structure/bed/proc/dismantle()
 	material.place_sheet(get_turf(src))
-	if(padding_material)
-		padding_material.place_sheet(get_turf(src))
+	if(reinf_material)
+		reinf_material.place_sheet(get_turf(src))
 
 /obj/structure/bed/psych
 	name = "psychiatrist's couch"
 	desc = "For prime comfort during psychiatric evaluations."
 	icon_state = "psychbed"
-	base_icon = "psychbed"
+	base_icon_state = "psychbed"
 	icon_dimension_y = 32
 
-/obj/structure/bed/psych/Initialize(mapload)
-	. = ..(mapload, "wood", "leather")
+/obj/structure/bed/psych
+	material = MAT_WOOD
+	reinf_material = MAT_LEATHER
 
-/obj/structure/bed/padded/Initialize(mapload)
-	. = ..(mapload, "plastic", "cotton")
+/obj/structure/bed/padded
+	material = MAT_PLASTIC
+	reinf_material = MAT_CLOTH
 
 /obj/structure/bed/double
 	name = "double bed"
 	icon_state = "doublebed"
-	base_icon = "doublebed"
+	base_icon_state = "doublebed"
 	buckle_max_mobs = 2
 	icon_dimension_y = 32
 
-/obj/structure/bed/double/padded/Initialize(mapload)
-	. = ..(mapload, "wood", "cotton")
+	material = MAT_WOOD
+	reinf_material = MAT_CLOTH
 
 /obj/structure/bed/double/padded/get_centering_pixel_y_offset(dir, atom/aligning)
 	if(!aligning)
@@ -244,8 +259,8 @@
 		for(var/mob/M in old_buckled)
 			buckle_mob(M, BUCKLE_OP_FORCE)
 
-/obj/structure/bed/roller/update_icon()
-	return
+/obj/structure/bed/roller/update_appearance(updates=NONE)
+	return ..()
 
 /obj/structure/bed/roller/attackby(obj/item/W as obj, mob/user as mob)
 	if(W.is_wrench() || istype(W,/obj/item/stack) || W.is_wirecutter())
@@ -284,7 +299,7 @@
 	if(istype(W,/obj/item/roller_holder))
 		var/obj/item/roller_holder/RH = W
 		if(!RH.held)
-			to_chat(user, "<span class='notice'>You collect the roller bed.</span>")
+			to_chat(user, SPAN_NOTICE("You collect the roller bed."))
 			forceMove(RH)
 			RH.held = src
 			return
@@ -313,10 +328,10 @@
 /obj/item/roller_holder/attack_self(mob/user as mob)
 
 	if(!held)
-		to_chat(user, "<span class='notice'>The rack is empty.</span>")
+		to_chat(user, SPAN_NOTICE("The rack is empty."))
 		return
 
-	to_chat(user, "<span class='notice'>You deploy the roller bed.</span>")
+	to_chat(user, SPAN_NOTICE("You deploy the roller bed."))
 	var/obj/structure/bed/roller/R = new held.bedtype(user.loc)
 	R.add_fingerprint(user)
 	qdel(held)
@@ -343,7 +358,7 @@
 		return
 	density = FALSE
 	icon_state = "[initial(icon_state)]"
-	update_icon()
+	update_appearance()
 
 /obj/structure/bed/roller/OnMouseDropLegacy(over_object, src_location, over_location)
 	if((over_object == usr && (in_range(src, usr) || usr.contents.Find(src))))
@@ -381,8 +396,8 @@
 	icon = 'icons/obj/abductor.dmi'
 	icon_state = "bed"
 
-/obj/structure/bed/alien/update_icon()
-	return // Doesn't care about material or anything else.
+/obj/structure/bed/alien/update_appearance(updates=NONE)
+	return ..() // Doesn't care about material or anything else.
 
 /obj/structure/bed/alien/attackby(obj/item/W, mob/user)
 	return // No deconning.

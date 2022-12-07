@@ -4,14 +4,14 @@ var/global/list/stool_cache = list() //haha stool
 /obj/item/stool
 	name = "stool"
 	desc = "Apply butt."
-	icon = 'icons/obj/furniture_vr.dmi'
+	icon = 'icons/obj/structures/furniture_vr.dmi'
 	icon_state = "stool_preview" //set for the map
+	base_icon_state = "stool_base"
 	force = 10
 	throw_force = 10
 	w_class = ITEMSIZE_HUGE
-	var/base_icon = "stool_base"
 	var/datum/material/material
-	var/datum/material/padding_material
+	var/datum/material/reinf_material
 
 /obj/item/stool/padded
 	icon_state = "stool_padded_preview" //set for the map
@@ -22,7 +22,7 @@ var/global/list/stool_cache = list() //haha stool
 		new_material = MAT_STEEL
 	material = GET_MATERIAL_REF(new_material)
 	if(new_padding_material)
-		padding_material = GET_MATERIAL_REF(new_padding_material)
+		reinf_material = GET_MATERIAL_REF(new_padding_material)
 	if(!istype(material))
 		qdel(src)
 		return
@@ -39,34 +39,34 @@ var/global/list/stool_cache = list() //haha stool
 	// Base icon.
 	var/cache_key = "stool-[material.name]"
 	if(isnull(stool_cache[cache_key]))
-		var/image/I = image(icon, base_icon)
+		var/image/I = image(icon, base_icon_state)
 		I.color = material.color
 		stool_cache[cache_key] = I
 	overlays |= stool_cache[cache_key]
 	// Padding overlay.
-	if(padding_material)
-		var/padding_cache_key = "stool-padding-[padding_material.name]"
+	if(reinf_material)
+		var/padding_cache_key = "stool-padding-[reinf_material.name]"
 		if(isnull(stool_cache[padding_cache_key]))
 			var/image/I =  image(icon, "stool_padding")
-			I.color = padding_material.color
+			I.color = reinf_material.color
 			stool_cache[padding_cache_key] = I
 		overlays |= stool_cache[padding_cache_key]
 	// Strings.
-	if(padding_material)
-		name = "[padding_material.display_name] [initial(name)]" //this is not perfect but it will do for now.
-		desc = "A padded stool. Apply butt. It's made of [material.use_name] and covered with [padding_material.use_name]."
+	if(reinf_material)
+		name = "[reinf_material.display_name] [initial(name)]" //this is not perfect but it will do for now.
+		desc = "A padded stool. Apply butt. It's made of [material.use_name] and covered with [reinf_material.use_name]."
 	else
 		name = "[material.display_name] [initial(name)]"
 		desc = "A stool. Apply butt with care. It's made of [material.use_name]."
 
 /obj/item/stool/proc/add_padding(var/padding_type)
-	padding_material = GET_MATERIAL_REF(padding_type)
+	reinf_material = GET_MATERIAL_REF(padding_type)
 	update_icon()
 
 /obj/item/stool/proc/remove_padding()
-	if(padding_material)
-		padding_material.place_sheet(get_turf(src))
-		padding_material = null
+	if(reinf_material)
+		reinf_material.place_sheet(get_turf(src))
+		reinf_material = null
 	update_icon()
 
 /obj/item/stool/attack(mob/M as mob, mob/user as mob)
@@ -100,8 +100,8 @@ var/global/list/stool_cache = list() //haha stool
 /obj/item/stool/proc/dismantle()
 	if(material)
 		material.place_sheet(get_turf(src))
-	if(padding_material)
-		padding_material.place_sheet(get_turf(src))
+	if(reinf_material)
+		reinf_material.place_sheet(get_turf(src))
 	qdel(src)
 
 /obj/item/stool/attackby(obj/item/W as obj, mob/user as mob)
@@ -110,7 +110,7 @@ var/global/list/stool_cache = list() //haha stool
 		dismantle()
 		qdel(src)
 	else if(istype(W,/obj/item/stack))
-		if(padding_material)
+		if(reinf_material)
 			to_chat(user, "\The [src] is already padded.")
 			return
 		var/obj/item/stack/C = W
@@ -131,7 +131,7 @@ var/global/list/stool_cache = list() //haha stool
 		add_padding(padding_type)
 		return
 	else if (W.is_wirecutter())
-		if(!padding_material)
+		if(!reinf_material)
 			to_chat(user, "\The [src] has no padding to remove.")
 			return
 		to_chat(user, "You remove the padding from \the [src].")

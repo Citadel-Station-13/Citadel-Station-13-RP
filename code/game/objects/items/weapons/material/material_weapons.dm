@@ -1,3 +1,5 @@
+//! WTF. That is all. @Zandario
+
 // SEE code/modules/materials/materials.dm FOR DETAILS ON INHERITED DATUM.
 // This class of weapons takes force and appearance data from a material datum.
 // They are also fragile based on material data and many can break/smash apart.
@@ -16,7 +18,7 @@
 			SLOT_ID_RIGHT_HAND = 'icons/mob/items/righthand_material.dmi',
 			)
 
-	var/applies_material_colour = 1
+	var/applies_material_color = 1
 	var/unbreakable = 0		//Doesn't lose health
 	var/fragile = 0			//Shatters when it dies
 	var/dulled = 0			//Has gone dull
@@ -31,7 +33,7 @@
 /obj/item/material/Initialize(mapload, material_key)
 	. = ..()
 	if(!material_key)
-		material_key = default_material
+		material_key = GET_MATERIAL_REF(default_material)
 	set_material(material_key)
 	if(!material)
 		qdel(src)
@@ -47,7 +49,7 @@
 		src.flags |= NOCONDUCT
 
 /obj/item/material/get_material()
-	return material
+	return GET_MATERIAL_REF(material)
 
 /obj/item/material/proc/update_force()
 	if(edge || sharp)
@@ -74,7 +76,7 @@
 	else
 		name = "[material.display_name] [initial(name)]"
 		health = round(material.integrity/10)
-		if(applies_material_colour)
+		if(applies_material_color)
 			color = material.color
 		if(material.products_need_process())
 			START_PROCESSING(SSobj, src)

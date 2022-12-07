@@ -2,18 +2,63 @@
 	icon = 'icons/obj/structures.dmi'
 	w_class = ITEMSIZE_NO_CONTAINER
 
+	//! Material Variables
+	/// Primary Material this structure is made of.
 	var/datum/material/material
+	/// Material type used to reinforce this structure.
 	var/datum/material/reinf_material
 
+	// TODO: Kill these off. @Zandario
 	var/climbable
 	var/climb_delay = 3.5 SECONDS
 	var/breakable
 	var/list/climbers = list()
 
+	// TODO: KILL THESE OFF. @Zandario
 	var/list/connections
 	var/list/other_connections
-	var/list/blend_objects = newlist() // Objects which to blend with
-	var/list/noblend_objects = newlist() //Objects to avoid blending with (such as children of listed blend objects.
+	/// Objects which to blend with.
+	var/list/blend_objects = newlist()
+	/// Objects to avoid blending with (such as children of listed blend objects.
+	var/list/noblend_objects = newlist()
+
+/obj/structure/Initialize(mapload)
+	. = ..()
+	if(climbable)
+		verbs += /obj/structure/proc/climb_on
+
+	if(material || reinf_material)
+		update_materials()
+
+
+/obj/structure/proc/get_reinf_material()
+	return reinf_material
+
+/obj/structure/proc/get_default_reinf_material()
+	return null
+
+/**
+ *! update_materials()
+ *
+ * @desc
+ *  This is mainly used to validate materials on a structure.
+ *  Though you can also use this set materials, but I don't recommend you use this.
+ *  @Zandario
+ */
+/obj/structure/proc/update_materials()
+
+	// Handle material
+	if(!ispath(material, /datum/material))
+		material ||= get_default_material() // Only apply default if material is empty.
+	if(ispath(material, /datum/material))
+		material = GET_MATERIAL_REF(material)
+
+	// Handle reinf_material
+	if(!ispath(reinf_material, /datum/material))
+		reinf_material ||= get_default_reinf_material() // Only apply default if material is empty.
+	if(ispath(reinf_material, /datum/material))
+		reinf_material = GET_MATERIAL_REF(reinf_material)
+
 
 /obj/structure/attack_hand(mob/user)
 	if(breakable)
@@ -26,8 +71,11 @@
 				attack_generic(user,1,"slices")
 
 	if(climbers.len && !(user in climbers))
-		user.visible_message("<span class='warning'>[user.name] shakes \the [src].</span>", \
-					"<span class='notice'>You shake \the [src].</span>")
+		user.visible_message(
+			SPAN_WARNING("[user.name] shakes \the [src]."),
+			SPAN_NOTICE("You shake \the [src]."),
+			SPAN_HEAR("You hear something shaking."),
+		)
 		structure_shaken()
 
 	return ..()
@@ -46,11 +94,6 @@
 				return
 		if(3.0)
 			return
-
-/obj/structure/Initialize(mapload)
-	. = ..()
-	if(climbable)
-		verbs += /obj/structure/proc/climb_on
 
 /obj/structure/proc/climb_on()
 

@@ -1,5 +1,5 @@
 /datum/material/solid/wood
-	name = MAT_WOOD
+	name = "wood"
 	destruction_desc = "splinters"
 	sheet_singular_name = "plank"
 	sheet_plural_name = "planks"
@@ -34,26 +34,26 @@
 	texture_layer_icon_state = "woodgrain"
 
 /datum/material/solid/wood/log
-	name = MAT_LOG
+	name = "wood log"
 	wall_icon = 'icons/turf/walls/logs.dmi'
 	stack_type = /obj/item/stack/material/log
 	sheet_singular_name = null
 	sheet_plural_name = "pile"
 
 /datum/material/solid/wood/sif
-	name = MAT_SIFWOOD
+	name = "alien wood"
 	stack_type = /obj/item/stack/material/wood/sif
 	color = WOOD_COLOR_SIF
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2) // Alien wood would presumably be more interesting to the analyzer.
 
 /datum/material/solid/wood/log/sif
-	name = MAT_SIFLOG
+	name = "alien wood log"
 	color = WOOD_COLOR_SIF
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2)
 	stack_type = /obj/item/stack/material/log/sif
 
 /datum/material/solid/wood/hardwood
-	name = MAT_HARDWOOD
+	name = "hardwood"
 	stack_type = /obj/item/stack/material/wood/hard
 	color = WOOD_COLOR_HARD
 	wall_icon = 'icons/turf/walls/stone.dmi'
@@ -64,7 +64,7 @@
 	weight = MAT_VALUE_RIGID
 
 /datum/material/solid/wood/log/hardwood
-	name = MAT_HARDLOG
+	name = "hardwood log"
 	color = WOOD_COLOR_HARD
 	stack_type = /obj/item/stack/material/log/hard
 

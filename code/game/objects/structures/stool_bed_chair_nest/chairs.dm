@@ -1,13 +1,17 @@
+//TODO: REPATH TO /obj/structure/chair @Zandario
 /obj/structure/bed/chair //YES, chairs are a type of bed, which are a type of stool. This works, believe me. -Pete //TODO: Not this.
 	name = "chair"
 	desc = "You sit in this. Either by will or force."
-	icon = 'icons/obj/furniture_vr.dmi' // Using Eris furniture //TODO: Ew how about not.
+	icon = 'icons/obj/structures/furniture_vr.dmi' // Using Eris furniture //TODO: Ew how about not.
 	icon_state = "chair_preview"
+	base_icon_state = "chair"
 	color = "#666666"
-	base_icon = "chair"
 	buckle_dir = 0
 	buckle_lying = 0 //force people to sit up in chairs when buckled
 	icon_dimension_y = 32
+
+	material = MAT_STEEL
+
 	var/propelled = 0 // Check for fire-extinguisher-driven chairs
 
 /obj/structure/bed/chair/Initialize(mapload)
@@ -18,9 +22,12 @@
 	. = ..()
 	update_layer()
 
+/obj/structure/bed/chair/get_default_material()
+	return MAT_STEEL
+
 /obj/structure/bed/chair/attackby(obj/item/W, mob/user)
 	..()
-	if(!padding_material && istype(W, /obj/item/assembly/shock_kit))
+	if(!reinf_material && istype(W, /obj/item/assembly/shock_kit))
 		var/obj/item/assembly/shock_kit/SK = W
 		if(!SK.status)
 			to_chat(user, SPAN_NOTICE("\The [SK] is not ready to be attached!"))
@@ -51,20 +58,20 @@
 	update_icon()
 
 /obj/structure/bed/chair/update_icon()
-	..()
-	if(has_buckled_mobs() && padding_material)
-		var/cache_key = "[base_icon]-armrest-[padding_material.name]"
+	. = ..()
+	if(has_buckled_mobs() && reinf_material)
+		var/cache_key = "[base_icon_state]-armrest-[reinf_material.name]"
 		if(isnull(stool_cache[cache_key]))
-			var/image/I = image(icon, "[base_icon]_armrest")
+			var/image/I = image(icon, "[base_icon_state]_armrest")
 			I.layer = MOB_LAYER + 0.1
 			I.plane = MOB_PLANE
-			I.color = padding_material.color
+			I.color = reinf_material.color
 			stool_cache[cache_key] = I
 		overlays |= stool_cache[cache_key]
 
 /obj/structure/bed/chair/proc/update_layer()
 	if(src.dir == NORTH)
-		plane = MOB_PLANE
+		plane = ABOVE_PLANE
 		layer = MOB_LAYER + 0.1
 	else
 		reset_plane_and_layer()
@@ -96,8 +103,8 @@
 	desc = "You sit in this. Either by will or force."
 	icon_state = "shuttle_chair"
 	color = null
-	base_icon = "shuttle_chair"
-	applies_material_colour = 0
+	base_icon_state = "shuttle_chair"
+	applies_material_color = 0
 
 // Leaving this in for the sake of compilation.
 /obj/structure/bed/chair/comfy
@@ -163,7 +170,7 @@
 			occupant.apply_effect(6, WEAKEN, blocked)
 			occupant.apply_effect(6, STUTTER, blocked)
 			occupant.apply_damage(10, BRUTE, def_zone, blocked, soaked)
-			playsound(src.loc, 'sound/weapons/punch1.ogg', 50, 1, -1)
+			playsound(src.loc, 'sound/weapons/punch1.ogg', 50, TRUE, -1)
 			if(istype(A, /mob/living))
 				var/mob/living/victim = A
 				def_zone = ran_zone()
@@ -173,7 +180,7 @@
 				victim.apply_effect(6, WEAKEN, blocked)
 				victim.apply_effect(6, STUTTER, blocked)
 				victim.apply_damage(10, BRUTE, def_zone, blocked, soaked)
-			occupant.visible_message("<span class='danger'>[occupant] crashed into \the [A]!</span>")
+			occupant.visible_message(SPAN_DANGER("[occupant] crashed into \the [A]!"))
 
 /obj/structure/bed/chair/office/light
 	icon_state = "officechair_white"
@@ -186,6 +193,8 @@
 	name = "wooden chair"
 	desc = "Old is never too old to not be in fashion."
 	icon_state = "wooden_chair"
+	material = MAT_WOOD
+
 
 /obj/structure/bed/chair/wood/update_icon()
 	return
@@ -202,201 +211,13 @@
 	icon_state = "wooden_chair_wings"
 
 
-//sofa
-
-/obj/structure/bed/chair/sofa
-	name = "sofa"
-	desc = "It's a sofa. You sit on it. Possibly with someone else."
-	icon = 'icons/obj/sofas.dmi'
-	base_icon = "sofamiddle"
-	icon_state = "sofamiddle"
-	applies_material_colour = 1
-	var/sofa_material = "carpet"
-
-/obj/structure/bed/chair/sofa/update_icon()
-	if(applies_material_colour && sofa_material)
-		var/datum/material/color_material = GET_MATERIAL_REF(sofa_material)
-		color = color_material.color
-
-		if(sofa_material == "carpet")
-			name = "red [initial(name)]"
-		else
-			name = "[sofa_material] [initial(name)]"
-
-/obj/structure/bed/chair/update_layer()
-	// Corner east/west should be on top of mobs, any other state's north should be.
-	if((icon_state == "sofacorner" && ((dir & EAST) || (dir & WEST))) || (icon_state != "sofacorner" && (dir & NORTH)))
-		plane = MOB_PLANE
-		layer = MOB_LAYER + 0.1
-	else
-		reset_plane_and_layer()
-
-/obj/structure/bed/chair/sofa/left
-	icon_state = "sofaend_left"
-	base_icon = "sofaend_left"
-
-/obj/structure/bed/chair/sofa/right
-	icon_state = "sofaend_right"
-	base_icon = "sofaend_right"
-
-/obj/structure/bed/chair/sofa/corner
-	icon_state = "sofacorner"
-	base_icon = "sofacorner"
-
-//color variations
-
-/obj/structure/bed/chair/sofa
-	sofa_material = "black"
-
-/obj/structure/bed/chair/sofa/brown
-	sofa_material = "leather"
-
-/obj/structure/bed/chair/sofa/red
-	sofa_material = "carpet"
-
-/obj/structure/bed/chair/sofa/teal
-	sofa_material = "teal"
-
-/obj/structure/bed/chair/sofa/black
-	sofa_material = "black"
-
-/obj/structure/bed/chair/sofa/green
-	sofa_material = "green"
-
-/obj/structure/bed/chair/sofa/purp
-	sofa_material = "purple"
-
-/obj/structure/bed/chair/sofa/blue
-	sofa_material = "blue"
-
-/obj/structure/bed/chair/sofa/beige
-	sofa_material = "beige"
-
-/obj/structure/bed/chair/sofa/lime
-	sofa_material = "lime"
-
-/obj/structure/bed/chair/sofa/yellow
-	sofa_material = "yellow"
-
-/obj/structure/bed/chair/sofa/orange
-	sofa_material = "orange"
-
-//sofa directions
-
-/obj/structure/bed/chair/sofa/left
-	icon_state = "sofaend_left"
-
-/obj/structure/bed/chair/sofa/right
-	icon_state = "sofaend_right"
-
-/obj/structure/bed/chair/sofa/corner
-	icon_state = "sofacorner"
-
-/obj/structure/bed/chair/sofa/brown/left
-	icon_state = "sofaend_left"
-
-/obj/structure/bed/chair/sofa/brown/right
-	icon_state = "sofaend_right"
-
-/obj/structure/bed/chair/sofa/brown/corner
-	icon_state = "sofacorner"
-
-/obj/structure/bed/chair/sofa/teal/left
-	icon_state = "sofaend_left"
-
-/obj/structure/bed/chair/sofa/teal/right
-	icon_state = "sofaend_right"
-
-/obj/structure/bed/chair/sofa/teal/corner
-	icon_state = "sofacorner"
-
-/obj/structure/bed/chair/sofa/black/left
-	icon_state = "sofaend_left"
-
-/obj/structure/bed/chair/sofa/black/right
-	icon_state = "sofaend_right"
-
-/obj/structure/bed/chair/sofa/black/corner
-	icon_state = "sofacorner"
-
-/obj/structure/bed/chair/sofa/red/left
-	icon_state = "sofaend_left"
-
-/obj/structure/bed/chair/sofa/red/right
-	icon_state = "sofaend_right"
-
-/obj/structure/bed/chair/sofa/red/corner
-	icon_state = "sofacorner"
-
-/obj/structure/bed/chair/sofa/green/left
-	icon_state = "sofaend_left"
-
-/obj/structure/bed/chair/sofa/green/right
-	icon_state = "sofaend_right"
-
-/obj/structure/bed/chair/sofa/green/corner
-	icon_state = "sofacorner"
-
-/obj/structure/bed/chair/sofa/purp/left
-	icon_state = "sofaend_left"
-
-/obj/structure/bed/chair/sofa/purp/right
-	icon_state = "sofaend_right"
-
-/obj/structure/bed/chair/sofa/purp/corner
-	icon_state = "sofacorner"
-
-/obj/structure/bed/chair/sofa/blue/left
-	icon_state = "sofaend_left"
-
-/obj/structure/bed/chair/sofa/blue/right
-	icon_state = "sofaend_right"
-
-/obj/structure/bed/chair/sofa/blue/corner
-	icon_state = "sofacorner"
-
-/obj/structure/bed/chair/sofa/beige/left
-	icon_state = "sofaend_left"
-
-/obj/structure/bed/chair/sofa/beige/right
-	icon_state = "sofaend_right"
-
-/obj/structure/bed/chair/sofa/beige/corner
-	icon_state = "sofacorner"
-
-/obj/structure/bed/chair/sofa/lime/left
-	icon_state = "sofaend_left"
-
-/obj/structure/bed/chair/sofa/lime/right
-	icon_state = "sofaend_right"
-
-/obj/structure/bed/chair/sofa/lime/corner
-	icon_state = "sofacorner"
-
-/obj/structure/bed/chair/sofa/yellow/left
-	icon_state = "sofaend_left"
-
-/obj/structure/bed/chair/sofa/yellow/right
-	icon_state = "sofaend_right"
-
-/obj/structure/bed/chair/sofa/yellow/corner
-	icon_state = "sofacorner"
-
-/obj/structure/bed/chair/sofa/orange/left
-	icon_state = "sofaend_left"
-
-/obj/structure/bed/chair/sofa/orange/right
-	icon_state = "sofaend_right"
-
-/obj/structure/bed/chair/sofa/orange/corner
-	icon_state = "sofacorner"
-
 /obj/structure/bed/chair/pew
 	name = "pew"
 	desc = "It's a wooden bench. You sit on it. Possibly with someone else."
-	icon = 'icons/obj/sofas.dmi'
-	base_icon = "pewmiddle"
+	icon = 'icons/obj/structures/sofas.dmi'
+	base_icon_state = "pewmiddle"
 	icon_state = "pewmiddle"
+	material = MAT_WOOD
 
 
 /obj/structure/bed/chair/pew/Initialize(mapload, new_material)
@@ -408,28 +229,25 @@
 
 /obj/structure/bed/chair/pew/left
 	icon_state = "pewend_left"
-	base_icon = "pewend_left"
+	base_icon_state = "pewend_left"
 
 /obj/structure/bed/chair/pew/right
 	icon_state = "pewend_right"
-	base_icon = "pewend_right"
+	base_icon_state = "pewend_right"
 
 //Apidean Chairs!
 /obj/structure/bed/chair/apidean
 	name = "\improper Apidean throne"
 	desc = "This waxy chair is designed to allow creatures with insectoid abdomens to lounge comfortably. Typically reserved for the Apidean upper class."
 	icon_state = "queenthrone"
-	base_icon = "queenthrone"
+	base_icon_state = "queenthrone"
+	material = MAT_WAX
 
-/obj/structure/bed/chair/apidean/Initialize(mapload, new_material)
-	. = ..(mapload, "wax", null)
 
 //Wax Stools for Bees! I've put it here because it shouldn't inherit stool properties.
 /obj/structure/bed/chair/apidean_stool
 	name = "\improper Apidean stool"
 	desc = "A specially crafted stool made out of hardened wax. Often found on Apidean colonies and vessels."
 	icon_state = "stool_apidean"
-	base_icon = "stool_apidean"
-
-/obj/structure/bed/chair/apidean_stool/Initialize(mapload, new_material)
-	. = ..(mapload, "wax", null)
+	base_icon_state = "stool_apidean"
+	material = MAT_WAX

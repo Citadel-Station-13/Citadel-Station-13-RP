@@ -1,5 +1,5 @@
 //! Cloth
-/datum/material/solid/cloth/ //todo
+/datum/material/solid/cloth
 	name = "cotton"
 	uid = "solid_cotton"
 	use_name = "cotton"
@@ -64,6 +64,12 @@
 	use_name = "beige cloth"
 	color = "#CEB689"
 
+/datum/material/solid/cloth/green
+	name = "green"
+	uid = "solid_cotton_green"
+	use_name = "green cloth"
+	color = "#B7F27D"
+
 /datum/material/solid/cloth/lime
 	name = "lime"
 	uid = "solid_cotton_lime"
@@ -85,7 +91,7 @@
 
 //! Carpet
 
-/datum/material/carpet
+/datum/material/solid/carpet
 	name = "red"
 	uid = "solid_carpet"
 	use_name = "red upholstery"
@@ -93,14 +99,19 @@
 	sheet_plural_name = "tiles"
 	color = "#9D2300"
 	legacy_flags = MATERIAL_PADDING
-	reflectiveness = MAT_VALUE_DULL
-	hardness = MAT_VALUE_SOFT
-	weight = MAT_VALUE_EXTREMELY_LIGHT
 	ignition_point = T0C+232
 	melting_point = T0C+300
 	conductive = 0
+	// construction_difficulty = MAT_VALUE_NORMAL_DIY
+	reflectiveness = MAT_VALUE_DULL
+	hardness = MAT_VALUE_SOFT
+	weight = MAT_VALUE_EXTREMELY_LIGHT
+	wall_support_value = MAT_VALUE_EXTREMELY_LIGHT
 	protectiveness = 1 // 4%
+	default_solid_form = /obj/item/stack/material/bolt
+	// exoplanet_rarity = MAT_RARITY_NOWHERE
 
 	// exoplanet_rarity = MAT_RARITY_NOWHERE
+	// hidden_from_codex = TRUE
 	sound_manipulate = 'sound/foley/paperpickup2.ogg'
 	sound_dropped = 'sound/foley/paperpickup1.ogg'

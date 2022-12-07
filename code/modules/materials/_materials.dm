@@ -46,6 +46,12 @@ var/list/name_to_material
 /obj/proc/get_material()
 	return null
 
+/**
+ * Used to set global material fallbacks for types.
+ */
+/obj/proc/get_default_material()
+	return null
+
 /// mostly for convenience.
 /obj/proc/get_material_name()
 	var/datum/material/material = get_material()

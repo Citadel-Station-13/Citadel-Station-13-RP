@@ -1,10 +1,10 @@
 #define STACK_SUBTYPES(MAT_ID, MAT_NAME, MAT_TYPE, STACK_TYPE, REINF_TYPE) \
 /obj/item/stack/material/##STACK_TYPE/mapped/##MAT_ID {                    \
     name = "1 " + #MAT_NAME;                                               \
-    material = /datum/material/MAT_TYPE;                                    \
+    material = /datum/material/MAT_TYPE;                                   \
     reinf_material = REINF_TYPE;                                           \
     amount = 1;                                                            \
-    /*is_spawnable_type = TRUE;*/                                              \
+    /*is_spawnable_type = TRUE;*/                                          \
 }                                                                          \
 /obj/item/stack/material/##STACK_TYPE/mapped/##MAT_ID/five {               \
     name = "5 " + MAT_NAME;                                                \
@@ -39,8 +39,8 @@
     amount = 50;                                                           \
 }
 
-// STACK_SUBTYPES(tritium,        "tritium",                       gas/hydrogen/tritium,       aerogel,    null)
-// STACK_SUBTYPES(deuterium,      "deuterium",                     gas/hydrogen/deuterium,     aerogel,    null)
+STACK_SUBTYPES(tritium,        "tritium",                       gas/hydrogen/tritium,       aerogel,    null)
+STACK_SUBTYPES(deuterium,      "deuterium",                     gas/hydrogen/deuterium,     aerogel,    null)
 STACK_SUBTYPES(iron,           "iron",                          solid/metal/iron,           ingot,      null)
 STACK_SUBTYPES(copper,         "copper",                        solid/metal/copper,         ingot,      null)
 STACK_SUBTYPES(sandstone,      "sandstone",                     solid/stone/sandstone,      brick,      null)
@@ -84,7 +84,7 @@ STACK_SUBTYPES(brass,          "brass",                         solid/metal/bras
 // STACK_SUBTYPES(blackbronze,    "black bronze",                  solid/metal/blackbronze,    ingot,      null)
 // STACK_SUBTYPES(redgold,        "red gold",                      solid/metal/redgold,        ingot,      null)
 // STACK_SUBTYPES(stainlesssteel, "stainless steel",               solid/metal/stainlesssteel, ingot,      null)
-// STACK_SUBTYPES(ice,            "ice",                           liquid/water,               cubes,      null)
+STACK_SUBTYPES(ice,            "ice",                           liquid/water,               cubes,      null)
 
 STACK_SUBTYPES(cloth,          "cloth",                         solid/cloth,                bolt,       null)
 STACK_SUBTYPES(yellow,         "yellow cloth",                  solid/cloth/yellow,         bolt,       null)

@@ -74,11 +74,13 @@
 /turf/simulated/wall/proc/get_wall_icon()
 	. = (istype(material) && material.wall_icon) || 'icons/turf/walls/solid.dmi'
 
+//TODO: Maybe make these two generic procs? @Zandario
 /turf/simulated/wall/proc/get_material()
 	return material
 
 /turf/simulated/wall/proc/get_default_material()
-	. = MAT_STEEL
+	return MAT_STEEL
+
 
 /turf/simulated/wall/bullet_act(obj/item/projectile/Proj)
 	if(istype(Proj,/obj/item/projectile/beam))

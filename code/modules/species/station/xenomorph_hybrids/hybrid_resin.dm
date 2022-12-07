@@ -44,7 +44,7 @@
 	icon_state = "nest"
 	color = "#321a49"
 	material = MAT_RESIN_COMPOUND
-	padding_material = MAT_RESIN_COMPOUND
+	reinf_material = MAT_RESIN_COMPOUND
 	var/health = 100
 
 /obj/structure/bed/hybrid_nest/update_icon()
