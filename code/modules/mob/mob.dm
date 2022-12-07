@@ -1239,6 +1239,8 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 //! Radioactivity
 /mob/clean_radiation(str, mul, cheap)
 	. = ..()
+	if(cheap)
+		return
 	for(var/obj/item/I as anything in get_equipped_items(TRUE, TRUE))
 		I.clean_radiation(str, mul, cheap)
 
