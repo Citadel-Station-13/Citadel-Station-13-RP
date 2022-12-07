@@ -2,8 +2,8 @@
 //? add/remove
 /// radiation applied via rad_act is multiplied by this
 #define RAD_MOB_ACT_COEFFICIENT 0.20
-/// flat loss to radiation hitting mobs via rad_act
-#define RAD_MOB_ACT_PROTECTION 0
+/// flat loss to radiation hitting mobs via rad_act per wave source
+#define RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE 15
 /// rad overdose coefficient. calculates radiation ** 2 * this threshold = number of times less radiation to take
 #define RAD_MOB_OVERDOSE_REDUCTION 0.000001
 /// add radiation taking into account overdose
