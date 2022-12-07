@@ -7,7 +7,7 @@
 /// rad overdose coefficient. calculates radiation ** 2 * this threshold = number of times less radiation to take
 #define RAD_MOB_OVERDOSE_REDUCTION 0.000001
 /// add radiation taking into account overdose
-#define RAD_MOB_ADDITIONAL(amt, rads) amt * (1 / (((rads ** 1.5) * RAD_MOB_OVERDOSE_REDUCTION) + 1))
+#define RAD_MOB_ADDITIONAL(amt, rads) (amt * (1 / (((rads ** 1.5) * RAD_MOB_OVERDOSE_REDUCTION) + 1)))
 /// radiation to drop every second
 #define RAD_MOB_PASSIVE_LOSS_FOR(amt, dt) ((amt > 1000? ((amt / 1000) ** 1.5) : 1) * dt)
 /// radiation below which we don't tick effects at all

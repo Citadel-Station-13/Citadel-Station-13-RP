@@ -122,6 +122,8 @@
  * - def_zone - zone to check if we do
  */
 /mob/living/proc/afflict_radiation(amt, run_armor, def_zone)
+	if(amt <= 0)
+		return
 	if(run_armor)
 		amt *= 1 - ((run_mob_armor(def_zone, ARMOR_RAD)) / 100)
 	radiation += max(0, RAD_MOB_ADDITIONAL(amt, radiation))
@@ -133,5 +135,7 @@
  * - amt - how much
  */
 /mob/living/proc/cure_radiation(amt)
+	if(amt <= 0)
+		return
 	radiation = max(0, radiation - amt)
 
