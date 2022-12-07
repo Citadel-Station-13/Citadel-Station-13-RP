@@ -1,10 +1,20 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ay" = (
+/obj/structure/bookcase{
+	name = "bookcase (Non-Fiction)"
+	},
+/obj/item/book/manual/barman_recipes,
+/turf/simulated/floor/wood,
+/area/space)
 "az" = (
 /obj/machinery/camera/network/command{
 	dir = 1
 	},
 /turf/simulated/floor/greengrid,
 /area/ai)
+"aD" = (
+/turf/simulated/floor/carpet/bcarpet,
+/area/library)
 "aM" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -31,6 +41,13 @@
 	},
 /turf/simulated/floor/plating,
 /area/space)
+"bE" = (
+/obj/structure/cable/heavyduty,
+/obj/machinery/power/pointdefense{
+	id_tag = "forward_pd"
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/space)
 "bM" = (
 /obj/structure/railing/grey{
 	dir = 1
@@ -43,6 +60,13 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
+"bP" = (
+/obj/item/radio/intercom{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
 "bT" = (
 /obj/machinery/camera/network/research,
 /turf/simulated/floor/tiled/techfloor,
@@ -52,6 +76,18 @@
 /obj/structure/target_stake,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
+"cf" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/structure/bed/chair/comfy/brown{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/library)
 "ck" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -63,6 +99,13 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
+"cs" = (
+/obj/landmark/spawnpoint/job/librarian,
+/obj/structure/bed/chair/comfy/brown{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
 "cu" = (
 /obj/structure/closet/crate,
 /obj/item/target,
@@ -85,6 +128,26 @@
 "cB" = (
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
+"cN" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/structure/table/woodentable,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/pen/invisible,
+/obj/machinery/button/windowtint{
+	id = "library_study";
+	pixel_x = 26;
+	pixel_y = -26
+	},
+/obj/item/radio/intercom{
+	pixel_y = -28
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
 "cW" = (
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
@@ -104,14 +167,73 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
+"dR" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/wood,
+/area/library)
+"eg" = (
+/obj/structure/cable{
+	icon_state = "16-0"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/space)
+"en" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library)
 "es" = (
 /obj/structure/stairs/spawner/east,
 /obj/structure/railing/grey,
 /turf/simulated/floor/plating,
 /area/ai_upload)
+"ez" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/library)
 "eC" = (
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
+"eV" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
+"fr" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
+"ft" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/carpet/bcarpet,
+/area/library)
+"fy" = (
+/obj/structure/bookcase{
+	name = "bookcase (Religious)"
+	},
+/obj/item/book/custom_library/religious,
+/turf/simulated/floor/wood,
+/area/library)
 "fD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -121,6 +243,20 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
+"fI" = (
+/obj/structure/bookcase{
+	name = "bookcase (Non-Fiction)"
+	},
+/obj/item/book/custom_library/nonfiction,
+/turf/simulated/floor/wood,
+/area/library)
+"fJ" = (
+/obj/structure/window/wooden,
+/obj/structure/bed/chair/comfy/brown{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/library)
 "fQ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -194,6 +330,12 @@
 	},
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rnd/research)
+"hc" = (
+/obj/machinery/newscaster{
+	pixel_x = 32
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
 "hx" = (
 /obj/structure/stairs/spawner/east,
 /obj/structure/railing/grey{
@@ -201,6 +343,16 @@
 	},
 /turf/simulated/floor/plating,
 /area/ai_upload)
+"hA" = (
+/obj/structure/table/woodentable,
+/obj/item/duct_tape_piece,
+/obj/item/camera,
+/obj/item/retail_scanner/civilian{
+	dir = 1
+	},
+/obj/item/tape_recorder,
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
 "hM" = (
 /turf/simulated/wall,
 /area/space)
@@ -212,6 +364,10 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research/testingrange)
+"hR" = (
+/obj/machinery/camera/network/civilian,
+/turf/simulated/floor/wood,
+/area/library)
 "hV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -226,15 +382,33 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
-"ih" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "0-2"
+"iu" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/table/woodentable,
+/obj/item/flashlight/lamp/green,
+/turf/simulated/floor/wood,
+/area/library)
+"iH" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/bookcase{
+	name = "bookcase (Reference)"
 	},
-/obj/machinery/power/pointdefense{
-	id_tag = "forward_pd"
-	},
-/turf/simulated/floor/hull/airless,
+/obj/item/book/manual/engineering_particle_accelerator,
+/obj/item/book/custom_library/reference,
+/turf/simulated/floor/wood,
 /area/space)
+"iU" = (
+/obj/structure/bookcase/legal/combo,
+/obj/item/book/manual/standard_operating_procedure,
+/obj/item/book/manual/security_space_law,
+/obj/item/book/manual/command_guide,
+/obj/structure/window/wooden{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/library)
 "je" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -247,6 +421,13 @@
 /obj/machinery/message_server,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
+"jG" = (
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = -28
+	},
+/turf/simulated/floor/wood,
+/area/library)
 "ko" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
@@ -254,6 +435,13 @@
 "kw" = (
 /turf/simulated/wall/r_wall,
 /area/rnd/research)
+"kz" = (
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
 "kD" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
@@ -271,12 +459,26 @@
 /obj/structure/flora/tree/jungle,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rnd/research)
+"lr" = (
+/obj/machinery/firealarm{
+	layer = 3.3;
+	pixel_x = 4;
+	pixel_y = 26
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
 "lu" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
+"lD" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/wood,
+/area/library)
 "lG" = (
 /obj/structure/railing{
 	dir = 8
@@ -320,12 +522,35 @@
 "mR" = (
 /turf/simulated/floor/bluegrid,
 /area/ai)
+"mV" = (
+/obj/structure/bookcase/legal/combo,
+/obj/item/book/manual/standard_operating_procedure,
+/obj/item/book/manual/security_space_law,
+/obj/item/book/manual/command_guide,
+/obj/structure/window/wooden{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/library)
 "mX" = (
 /turf/simulated/wall/r_wall,
 /area/ai)
+"mY" = (
+/turf/simulated/wall/r_wall,
+/area/library/study)
 "na" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/rnd/research)
+"nd" = (
+/turf/simulated/wall/r_wall,
+/area/library)
+"nf" = (
+/obj/structure/table/woodentable,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/wood,
+/area/library)
 "od" = (
 /obj/machinery/alarm{
 	pixel_y = 22
@@ -369,6 +594,16 @@
 	},
 /turf/simulated/floor/greengrid,
 /area/ai)
+"oW" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
+"oX" = (
+/obj/machinery/door/airlock/maintenance,
+/turf/simulated/floor/plating,
+/area/library)
 "pb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -378,6 +613,19 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
+"pc" = (
+/obj/structure/window/wooden,
+/obj/structure/bed/chair/comfy/brown{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/library)
+"pg" = (
+/obj/structure/bookcase{
+	name = "bookcase (Non-Fiction)"
+	},
+/turf/simulated/floor/wood,
+/area/library)
 "pk" = (
 /turf/simulated/wall/durasteel,
 /area/space)
@@ -400,19 +648,73 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
+"pT" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/techfloor,
+/area/rnd/research)
 "pW" = (
-/obj/structure/railing,
-/obj/structure/railing{
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/machinery/light/small{
 	dir = 1
 	},
-/turf/simulated/floor/plating,
+/turf/simulated/floor/carpet/bcarpet,
 /area/space)
 "qg" = (
 /turf/simulated/floor/greengrid,
 /area/ai)
+"qk" = (
+/obj/structure/table/woodentable,
+/obj/item/flashlight/lamp/green,
+/turf/simulated/floor/wood,
+/area/library)
 "qq" = (
 /turf/simulated/floor/grass,
 /area/space)
+"qr" = (
+/turf/simulated/wall,
+/area/library)
+"qu" = (
+/obj/structure/bookcase/legal/combo,
+/obj/item/book/manual/standard_operating_procedure,
+/obj/item/book/manual/security_space_law,
+/obj/item/book/manual/command_guide,
+/turf/simulated/floor/wood,
+/area/space)
+"qA" = (
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
+	},
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -22
+	},
+/obj/effect/floor_decal/borderfloor{
+	dir = 8
+	},
+/obj/effect/floor_decal/corner/brown/border{
+	dir = 8
+	},
+/obj/effect/floor_decal/borderfloor/corner2{
+	dir = 10
+	},
+/obj/effect/floor_decal/corner/brown/bordercorner2{
+	dir = 10
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
+"qZ" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/simulated/floor/wood,
+/area/library)
 "ra" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/space)
@@ -424,17 +726,41 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
+"rm" = (
+/obj/structure/bookcase{
+	name = "bookcase (Fiction)"
+	},
+/obj/item/book/custom_library/fiction,
+/obj/item/book/manual/the_humanized_mice,
+/turf/simulated/floor/wood,
+/area/library)
 "rv" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
+"rA" = (
+/obj/spawner/window/borosillicate/reinforced/full/firelocks,
+/turf/simulated/floor/plating,
+/area/library)
+"sh" = (
+/obj/structure/table/wooden_reinforced,
+/obj/machinery/bookbinder,
+/turf/simulated/floor/wood,
+/area/library)
 "si" = (
 /obj/machinery/camera/network/command{
 	dir = 4
 	},
 /turf/space,
+/area/space)
+"ss" = (
+/obj/structure/bookcase{
+	name = "bookcase (Non-Fiction)"
+	},
+/obj/item/book/custom_library/nonfiction,
+/turf/simulated/floor/wood,
 /area/space)
 "sE" = (
 /turf/simulated/floor/bluegrid,
@@ -452,6 +778,26 @@
 "sZ" = (
 /turf/simulated/floor/plating,
 /area/space)
+"tu" = (
+/obj/structure/closet,
+/obj/item/clothing/under/suit_jacket/red,
+/obj/item/barcodescanner,
+/obj/item/pen/invisible,
+/obj/item/pen/invisible,
+/obj/item/pen/invisible,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
+"tx" = (
+/obj/structure/bookcase{
+	name = "bookcase (Fiction)"
+	},
+/obj/item/book/custom_library/fiction,
+/obj/item/book/custom_library/fiction,
+/turf/simulated/floor/wood,
+/area/library)
 "tK" = (
 /obj/structure/stairs/spawner/north,
 /obj/structure/railing/grey{
@@ -473,6 +819,24 @@
 "tZ" = (
 /turf/simulated/floor/airless/ceiling,
 /area/space)
+"ul" = (
+/turf/simulated/wall,
+/area/library/study)
+"us" = (
+/obj/structure/table/woodentable,
+/obj/machinery/photocopier/faxmachine{
+	department = "Library Conference Room"
+	},
+/turf/simulated/floor/wood,
+/area/library)
+"uC" = (
+/obj/structure/bookcase{
+	name = "bookcase (Non-Fiction)"
+	},
+/obj/item/book/manual/tesla_engine,
+/obj/item/book/custom_library/nonfiction,
+/turf/simulated/floor/wood,
+/area/library)
 "uJ" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 6
@@ -483,21 +847,38 @@
 "uX" = (
 /turf/simulated/wall/r_wall,
 /area/rnd/research/testingrange)
-"vn" = (
-/obj/structure/stairs/spawner/east,
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/simulated/floor/plating,
-/area/space)
+"uZ" = (
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled,
+/area/exploration)
 "wk" = (
 /turf/simulated/floor/tiled/steel,
+/area/space)
+"wU" = (
+/obj/machinery/alarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
+"wW" = (
+/obj/structure/bookcase{
+	name = "bookcase (Fiction)"
+	},
+/obj/item/book/custom_library/fiction,
+/obj/item/book/manual/the_humanized_mice,
+/turf/simulated/floor/wood,
 /area/space)
 "xp" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on,
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
+"xx" = (
+/obj/machinery/atmospherics/component/unary/vent_scrubber/on{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
 "xB" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -515,12 +896,25 @@
 "xE" = (
 /turf/simulated/wall/rshull,
 /area/space)
+"xK" = (
+/obj/machinery/librarycomp,
+/obj/structure/table/woodentable,
+/obj/machinery/light_switch{
+	dir = 8;
+	pixel_x = 24
+	},
+/turf/simulated/floor/wood,
+/area/library)
 "xP" = (
 /obj/structure/railing/grey{
 	dir = 4
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
+"ya" = (
+/obj/machinery/power/apc/direction_bump/south,
+/turf/simulated/floor/carpet/bcarpet,
+/area/library)
 "yb" = (
 /obj/machinery/light,
 /turf/simulated/floor/bluegrid,
@@ -532,12 +926,36 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
+"yG" = (
+/obj/structure/bookcase{
+	name = "bookcase (Reference)"
+	},
+/obj/item/book/manual/chef_recipes,
+/turf/simulated/floor/wood,
+/area/library)
 "yH" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/railing,
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rnd/research)
+"yK" = (
+/obj/structure/table/woodentable,
+/obj/machinery/light/small,
+/obj/machinery/light_switch{
+	pixel_y = -26
+	},
+/obj/item/flashlight/lamp/green{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
+"yR" = (
+/obj/structure/table/woodentable,
+/obj/item/book/codex/lore/news,
+/turf/simulated/floor/wood,
+/area/library)
 "yS" = (
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "E-W-Pass"
@@ -550,8 +968,43 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
+"zo" = (
+/obj/structure/closet,
+/obj/item/clothing/under/suit_jacket/red,
+/obj/item/barcodescanner,
+/obj/item/pen/invisible,
+/obj/item/pen/invisible,
+/obj/item/pen/invisible,
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_y = 28
+	},
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
+"zx" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/bookcase{
+	name = "bookcase (Religious)"
+	},
+/obj/item/book/manual/robotics_cyborgs,
+/turf/simulated/floor/wood,
+/area/space)
 "zD" = (
 /turf/simulated/floor/tiled/steel_grid,
+/area/space)
+"zE" = (
+/obj/structure/bookcase{
+	name = "bookcase (Reference)"
+	},
+/obj/item/book/manual/evaguide,
+/obj/item/book/custom_library/reference,
+/turf/simulated/floor/wood,
 /area/space)
 "zH" = (
 /obj/machinery/light{
@@ -566,6 +1019,15 @@
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /turf/simulated/floor/bluegrid,
 /area/ai)
+"zS" = (
+/obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
 "zV" = (
 /obj/machinery/door/airlock/maintenance/rnd,
 /turf/simulated/floor/plating,
@@ -576,6 +1038,38 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
+"Ap" = (
+/obj/item/radio/intercom{
+	dir = 1;
+	name = "Station Intercom (General)";
+	pixel_y = 26
+	},
+/obj/machinery/camera/network/civilian{
+	dir = 9
+	},
+/obj/structure/bookcase/legal/combo,
+/obj/item/book/manual/standard_operating_procedure,
+/obj/item/book/manual/security_space_law,
+/obj/item/book/manual/command_guide,
+/turf/simulated/floor/wood,
+/area/space)
+"Aq" = (
+/obj/structure/ladder/up,
+/turf/simulated/floor/reinforced,
+/area/space)
+"Av" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/bookcase{
+	name = "bookcase (Non-Fiction)"
+	},
+/obj/item/book/manual/tesla_engine,
+/obj/item/book/custom_library/nonfiction,
+/turf/simulated/floor/wood,
+/area/space)
+"AB" = (
+/turf/simulated/wall/r_wall,
+/area/exploration)
 "AI" = (
 /obj/machinery/light,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -609,6 +1103,19 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
+"Bd" = (
+/obj/machinery/power/apc/direction_bump/east,
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
+"Bq" = (
+/obj/structure/window/wooden,
+/obj/structure/table/woodentable,
+/obj/item/flashlight/lamp/green{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/turf/simulated/floor/wood,
+/area/library)
 "BO" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /turf/simulated/floor/tiled,
@@ -627,6 +1134,39 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
+"BX" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/space)
+"Ci" = (
+/obj/structure/bookcase{
+	name = "bookcase (Religious)"
+	},
+/obj/item/book/manual/robotics_cyborgs,
+/turf/simulated/floor/wood,
+/area/library)
+"Cx" = (
+/obj/structure/closet,
+/obj/item/clothing/under/suit_jacket/red,
+/obj/item/barcodescanner,
+/obj/item/pen/invisible,
+/obj/item/pen/invisible,
+/obj/item/pen/invisible,
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
+"CQ" = (
+/obj/machinery/alarm{
+	dir = 4;
+	pixel_x = -23
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/libraryscanner,
+/turf/simulated/floor/wood,
+/area/library)
 "Do" = (
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "NE-SW"
@@ -687,12 +1227,6 @@
 	},
 /turf/space,
 /area/space)
-"EC" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/simulated/floor/tiled/techfloor,
-/area/rnd/research)
 "EF" = (
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/rnd/research)
@@ -717,6 +1251,12 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
+"EM" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/space)
 "EO" = (
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
@@ -724,12 +1264,24 @@
 /obj/structure/railing/grey,
 /turf/simulated/floor/plating,
 /area/ai_upload)
+"Fr" = (
+/obj/structure/railing,
+/turf/simulated/floor/carpet/bcarpet,
+/area/library)
 "FB" = (
 /turf/simulated/wall/r_wall,
 /area/ai_upload)
 "FC" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
+"FJ" = (
+/obj/structure/bookcase{
+	name = "bookcase (Reference)"
+	},
+/obj/item/book/manual/engineering_particle_accelerator,
+/obj/item/book/custom_library/reference,
+/turf/simulated/floor/wood,
+/area/library)
 "FK" = (
 /obj/machinery/light{
 	dir = 1
@@ -761,12 +1313,44 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
-"Go" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-8"
+"GF" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
-/turf/simulated/floor/hull/airless,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/glass,
+/obj/machinery/door/morgue{
+	dir = 2;
+	name = "Private Study";
+	req_access = list(37)
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
+"GO" = (
+/obj/structure/table/wooden_reinforced,
+/obj/machinery/photocopier/faxmachine{
+	department = "Library Conference Room"
+	},
+/turf/simulated/floor/wood,
+/area/library)
+"GQ" = (
+/obj/machinery/light/small,
+/turf/simulated/floor/wood,
+/area/library)
+"Hh" = (
+/obj/structure/bookcase{
+	name = "bookcase (Fiction)"
+	},
+/turf/simulated/floor/wood,
 /area/space)
+"Hj" = (
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
 "Hq" = (
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
@@ -801,14 +1385,46 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
+"IG" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
+"II" = (
+/obj/structure/bookcase{
+	name = "bookcase (Reference)"
+	},
+/obj/item/book/manual/atmospipes,
+/obj/item/book/manual/rust_engine,
+/obj/item/book/manual/supermatter_engine,
+/obj/item/book/manual/tesla_engine,
+/obj/item/book/manual/engineering_particle_accelerator,
+/obj/item/book/manual/engineering_singularity_safety,
+/obj/item/book/manual/fission_engine,
+/turf/simulated/floor/wood,
+/area/space)
 "IJ" = (
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research)
+"Jc" = (
+/obj/structure/bookcase/legal/combo,
+/obj/item/book/manual/standard_operating_procedure,
+/obj/item/book/manual/security_space_law,
+/obj/item/book/manual/command_guide,
+/turf/simulated/floor/wood,
+/area/library)
 "Jf" = (
 /turf/simulated/open,
 /area/space)
 "Ji" = (
-/turf/simulated/floor/hull/airless,
+/turf/simulated/floor/reinforced/airless,
 /area/space)
 "Jn" = (
 /obj/machinery/power/terminal{
@@ -827,6 +1443,14 @@
 /obj/effect/floor_decal/industrial/warning,
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
+"Jz" = (
+/obj/structure/table/wooden_reinforced,
+/obj/item/flashlight/lamp/green{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/turf/simulated/floor/wood,
+/area/library)
 "JH" = (
 /obj/structure/table/reinforced,
 /obj/machinery/recharger/wallcharger{
@@ -854,18 +1478,36 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
+"Kr" = (
+/obj/structure/bookcase{
+	name = "bookcase (Non-Fiction)"
+	},
+/obj/item/book/manual/barman_recipes,
+/turf/simulated/floor/wood,
+/area/library)
 "KB" = (
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "E-W-Pass"
 	},
 /turf/space,
 /area/space)
-"LL" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "2-8"
+"KJ" = (
+/obj/structure/closet,
+/obj/item/clothing/under/suit_jacket/red,
+/obj/item/barcodescanner,
+/obj/item/pen/invisible,
+/obj/item/pen/invisible,
+/obj/item/pen/invisible,
+/obj/machinery/newscaster{
+	pixel_y = 30
 	},
-/turf/simulated/floor/hull/airless,
-/area/space)
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
+"Lj" = (
+/obj/landmark/spawnpoint/job/librarian,
+/obj/structure/bed/chair/comfy/brown,
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
 "LO" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 1
@@ -883,8 +1525,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "Mp" = (
-/turf/simulated/floor/reinforced/airless,
-/area/space)
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
 "My" = (
 /obj/structure/railing/grey{
 	dir = 8
@@ -894,6 +1536,11 @@
 "MA" = (
 /turf/simulated/floor/plating,
 /area/rnd/research)
+"MI" = (
+/obj/structure/table/woodentable,
+/obj/machinery/librarycomp,
+/turf/simulated/floor/wood,
+/area/library)
 "ML" = (
 /obj/machinery/light{
 	dir = 8
@@ -904,6 +1551,42 @@
 /obj/machinery/porta_turret/ai_defense,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai_upload)
+"MV" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
+"Nb" = (
+/obj/structure/closet/firecloset,
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
+"Nm" = (
+/obj/landmark/spawnpoint/job/librarian,
+/obj/machinery/newscaster{
+	pixel_x = -27
+	},
+/obj/structure/bed/chair/comfy/brown,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
+"Nz" = (
+/obj/machinery/computer/ship/navigation/telescreen{
+	pixel_y = 27
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"NA" = (
+/obj/structure/stairs/spawner/west,
+/obj/structure/railing,
+/turf/simulated/floor/carpet/bcarpet,
+/area/library)
 "NC" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -919,9 +1602,53 @@
 	},
 /turf/simulated/floor/plating,
 /area/ai_upload)
+"NK" = (
+/obj/structure/table/wooden_reinforced,
+/obj/item/book/codex/lore/news,
+/turf/simulated/floor/wood,
+/area/library)
+"Od" = (
+/obj/structure/sign/department/biblio,
+/turf/simulated/wall,
+/area/library)
+"Oe" = (
+/obj/structure/bookcase{
+	name = "bookcase (Non-Fiction)"
+	},
+/turf/simulated/floor/wood,
+/area/space)
 "Om" = (
 /turf/simulated/floor/tiled/white,
 /area/space)
+"OC" = (
+/obj/structure/bookcase{
+	name = "bookcase (Fiction)"
+	},
+/obj/item/book/custom_library/fiction,
+/obj/item/book/custom_library/fiction,
+/turf/simulated/floor/wood,
+/area/space)
+"OL" = (
+/obj/structure/bookcase{
+	name = "bookcase (Reference)"
+	},
+/obj/item/book/manual/atmospipes,
+/obj/item/book/manual/rust_engine,
+/obj/item/book/manual/supermatter_engine,
+/obj/item/book/manual/tesla_engine,
+/obj/item/book/manual/engineering_particle_accelerator,
+/obj/item/book/manual/engineering_singularity_safety,
+/obj/item/book/manual/fission_engine,
+/turf/simulated/floor/wood,
+/area/library)
+"ON" = (
+/obj/machinery/door/morgue{
+	dir = 2;
+	name = "Private Study";
+	req_access = list(37)
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
 "OO" = (
 /turf/simulated/floor/tiled/dark,
 /area/space)
@@ -932,6 +1659,12 @@
 /obj/structure/window/reinforced,
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
+"OS" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/space)
 "OV" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
@@ -939,6 +1672,43 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/bluegrid,
 /area/ai)
+"OX" = (
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
+/turf/simulated/floor/wood,
+/area/library)
+"Pg" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 6
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"Pi" = (
+/obj/effect/floor_decal/steeldecal/steel_decals5{
+	dir = 8
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals9{
+	dir = 1
+	},
+/turf/simulated/floor/tiled,
+/area/hallway/primary/aft)
+"Pp" = (
+/obj/structure/table/woodentable,
+/obj/item/duct_tape_piece,
+/obj/item/camera,
+/obj/item/retail_scanner/civilian{
+	dir = 1
+	},
+/obj/item/tape_recorder,
+/obj/machinery/camera/network/civilian{
+	dir = 8
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
 "Pq" = (
 /obj/machinery/camera/network/command{
 	dir = 9
@@ -962,13 +1732,53 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/research/testingrange)
+"PS" = (
+/obj/machinery/camera/network/civilian{
+	dir = 9
+	},
+/obj/structure/bookcase{
+	name = "bookcase (Religious)"
+	},
+/obj/item/book/custom_library/religious,
+/turf/simulated/floor/wood,
+/area/space)
+"PT" = (
+/obj/machinery/atmospherics/component/unary/vent_pump/on{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"Qd" = (
+/obj/machinery/bookbinder,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/wood,
+/area/library)
+"Qh" = (
+/obj/structure/window/wooden,
+/obj/structure/simple_door/wood,
+/turf/simulated/floor/carpet/bcarpet,
+/area/library)
 "Qj" = (
 /turf/simulated/floor/airless,
 /area/space)
+"Qk" = (
+/obj/structure/closet/firecloset,
+/turf/simulated/floor/plating,
+/area/space)
+"QH" = (
+/obj/machinery/libraryscanner,
+/turf/simulated/floor/wood,
+/area/library)
 "QI" = (
 /obj/machinery/porta_turret/ai_defense,
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
+"QK" = (
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/plating,
+/area/space)
 "QV" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "AI Chamber";
@@ -982,13 +1792,25 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /turf/simulated/floor/greengrid,
 /area/ai_upload)
+"QW" = (
+/obj/structure/table/wooden_reinforced,
+/turf/simulated/floor/wood,
+/area/library)
 "QX" = (
-/turf/space/basic,
-/area/space)
+/obj/structure/stairs/spawner/west,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library)
 "RM" = (
-/obj/structure/lattice,
-/turf/space/basic,
-/area/space)
+/obj/structure/grille,
+/obj/machinery/door/firedoor/border_only,
+/obj/structure/window/reinforced/polarized/full{
+	id = "library_study"
+	},
+/turf/simulated/floor/plating,
+/area/library/study)
 "Ss" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -1042,6 +1864,15 @@
 /obj/item/storage/bag/trash,
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
+"SN" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/pointdefense{
+	id_tag = "forward_pd"
+	},
+/turf/simulated/floor/reinforced/airless,
+/area/space)
 "SX" = (
 /turf/simulated/floor/tiled/neutral,
 /area/space)
@@ -1056,12 +1887,37 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
+"Tm" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/supply,
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/turf/simulated/floor/wood,
+/area/library)
+"Tq" = (
+/obj/structure/table/woodentable,
+/turf/simulated/floor/wood,
+/area/library)
 "TJ" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 1
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai_upload)
+"TO" = (
+/obj/structure/table/wooden_reinforced,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/pen{
+	pixel_y = 4
+	},
+/obj/item/pen{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/item/pen,
+/turf/simulated/floor/wood,
+/area/library)
 "TQ" = (
 /obj/machinery/turretid/stun{
 	control_area = "\improper AI Chamber";
@@ -1091,6 +1947,31 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/ai)
+"TY" = (
+/obj/machinery/alarm{
+	dir = 1;
+	pixel_y = -22
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library)
+"TZ" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 9
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"Ug" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
 "Up" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -1107,9 +1988,23 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
+"UL" = (
+/obj/structure/stairs/spawner/east,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
+/area/space)
 "UY" = (
 /turf/simulated/shuttle/plating/airless/carry,
 /area/space)
+"Vf" = (
+/obj/machinery/camera/network/civilian{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/library)
 "Vj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 5
@@ -1119,6 +2014,14 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
+"Vr" = (
+/obj/structure/bookcase{
+	name = "bookcase (Reference)"
+	},
+/obj/item/book/manual/evaguide,
+/obj/item/book/custom_library/reference,
+/turf/simulated/floor/wood,
+/area/library)
 "VI" = (
 /turf/simulated/floor/carpet/sblucarpet,
 /area/space)
@@ -1144,43 +2047,71 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
-"VZ" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
-/turf/simulated/floor/hull/airless,
-/area/space)
 "Wb" = (
 /obj/machinery/hologram/holopad,
 /obj/landmark/spawnpoint/job/scientist,
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
-"Wy" = (
-/obj/structure/cable{
-	icon_state = "16-0"
+"Wf" = (
+/obj/machinery/light/small{
+	dir = 1
 	},
-/obj/structure/cable/heavyduty{
-	icon_state = "0-4"
+/obj/item/tvcamera,
+/obj/item/tvcamera,
+/obj/structure/table/woodentable,
+/obj/machinery/newscaster{
+	pixel_y = 30
 	},
-/turf/simulated/floor/hull/airless,
-/area/space)
-"WI" = (
-/obj/structure/ladder/up,
-/turf/simulated/floor/reinforced,
-/area/space)
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
 "WX" = (
 /turf/simulated/floor/tiled/monotile,
+/area/space)
+"Xp" = (
+/turf/simulated/floor/wood,
+/area/library)
+"Xr" = (
+/obj/machinery/camera/network/civilian{
+	dir = 4
+	},
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/bookbinder,
+/turf/simulated/floor/wood,
+/area/library)
+"Xw" = (
+/obj/structure/closet/emcloset,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/floor/plating,
+/area/space)
+"XB" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/carpet/bcarpet,
 /area/space)
 "XF" = (
 /obj/structure/girder/reinforced,
 /turf/simulated/floor/reinforced/airless,
 /area/space)
-"XX" = (
-/obj/structure/cable/heavyduty,
-/obj/machinery/power/pointdefense{
-	id_tag = "forward_pd"
+"XP" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
+	dir = 4
 	},
-/turf/simulated/floor/hull/airless,
+/obj/machinery/atmospherics/pipe/simple/hidden/supply{
+	dir = 4
+	},
+/turf/simulated/floor/carpet/bcarpet,
+/area/space)
+"Ye" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/floor/plating,
 /area/space)
 "Yk" = (
 /obj/structure/cable/green{
@@ -1213,6 +2144,13 @@
 	},
 /turf/simulated/floor/greengrid,
 /area/ai)
+"YE" = (
+/obj/structure/bookcase{
+	name = "bookcase (Reference)"
+	},
+/obj/item/book/manual/chef_recipes,
+/turf/simulated/floor/wood,
+/area/space)
 "YK" = (
 /obj/machinery/recharger/wallcharger{
 	pixel_x = 4;
@@ -1230,6 +2168,12 @@
 "YS" = (
 /turf/simulated/floor/outdoors/grass/heavy/interior,
 /area/space)
+"YV" = (
+/obj/item/tvcamera,
+/obj/item/tvcamera,
+/obj/structure/table/woodentable,
+/turf/simulated/floor/carpet/bcarpet,
+/area/library/study)
 "Za" = (
 /turf/space,
 /area/space)
@@ -1237,6 +2181,14 @@
 /obj/machinery/door/airlock/maintenance/rnd,
 /turf/simulated/floor/plating,
 /area/rnd/research/testingrange)
+"Zp" = (
+/obj/structure/window/wooden,
+/obj/structure/table/woodentable,
+/obj/item/flashlight/lamp{
+	pixel_y = 12
+	},
+/turf/simulated/floor/wood,
+/area/library)
 "Zr" = (
 /obj/structure/railing{
 	dir = 1
@@ -1255,6 +2207,12 @@
 	},
 /turf/simulated/floor/bluegrid,
 /area/ai)
+"Zx" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/wood,
+/area/library)
 "ZF" = (
 /obj/machinery/computer/message_monitor{
 	dir = 1
@@ -4701,13 +5659,13 @@ Ji
 Ji
 Ji
 Ji
-py
-py
-py
-py
-py
-py
-py
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
 Ji
 Ji
 Ji
@@ -4892,19 +5850,19 @@ Ji
 Ji
 Ji
 Ji
+kL
+kL
+kL
 Ji
 Ji
 Ji
-py
-py
-py
-py
-py
-py
-py
 Ji
 Ji
 Ji
+Ji
+kL
+kL
+kL
 Ji
 Ji
 Ji
@@ -5088,15 +6046,15 @@ Ji
 kL
 kL
 kL
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
 kL
 kL
 kL
@@ -5280,9 +6238,9 @@ kL
 kL
 kL
 kL
-Mp
-Mp
-Mp
+Ji
+Ji
+Ji
 py
 py
 py
@@ -5290,9 +6248,9 @@ py
 py
 py
 py
-Mp
-Mp
-Mp
+Ji
+Ji
+Ji
 kL
 kL
 kL
@@ -5474,8 +6432,8 @@ kL
 sZ
 sZ
 kL
-Mp
-Mp
+Ji
+Ji
 Za
 Za
 Za
@@ -5485,8 +6443,8 @@ Za
 Za
 Za
 Za
-Mp
-Mp
+Ji
+Ji
 kL
 sZ
 sZ
@@ -5668,8 +6626,8 @@ sZ
 sZ
 sZ
 kL
-Mp
-Mp
+Ji
+Ji
 Za
 Za
 Za
@@ -5679,8 +6637,8 @@ Za
 Za
 Za
 Za
-Mp
-Mp
+Ji
+Ji
 kL
 sZ
 sZ
@@ -5862,8 +6820,8 @@ sZ
 sZ
 sZ
 kL
-Mp
-Mp
+Ji
+Ji
 Za
 Za
 Za
@@ -5873,8 +6831,8 @@ Za
 Za
 Za
 Za
-Mp
-Mp
+Ji
+Ji
 kL
 sZ
 sZ
@@ -6037,9 +6995,9 @@ Za
 Ji
 Ji
 Ji
-py
-py
-py
+Ji
+Ji
+Ji
 Ji
 kL
 kL
@@ -6056,8 +7014,8 @@ sZ
 sZ
 sZ
 kL
-Mp
-Mp
+Ji
+Ji
 Za
 Za
 Za
@@ -6067,8 +7025,8 @@ Za
 Za
 Za
 Za
-Mp
-Mp
+Ji
+Ji
 kL
 sZ
 sZ
@@ -6231,9 +7189,9 @@ Ji
 Ji
 kL
 kL
-py
-py
-py
+Ji
+Ji
+Ji
 kL
 kL
 sZ
@@ -6250,8 +7208,8 @@ sZ
 sZ
 sZ
 kL
-Mp
-Mp
+Ji
+Ji
 Za
 Za
 Za
@@ -6261,8 +7219,8 @@ Za
 Za
 Za
 Za
-Mp
-Mp
+Ji
+Ji
 kL
 sZ
 sZ
@@ -6425,9 +7383,9 @@ Ji
 kL
 kL
 kL
-Mp
-Mp
-Mp
+Ji
+Ji
+Ji
 kL
 kL
 sZ
@@ -6444,8 +7402,8 @@ sZ
 sZ
 sZ
 kL
-Mp
-Mp
+Ji
+Ji
 Za
 Za
 Za
@@ -6455,8 +7413,8 @@ Za
 Za
 Za
 Za
-Mp
-Mp
+Ji
+Ji
 kL
 sZ
 sZ
@@ -6481,9 +7439,9 @@ kL
 kL
 Ji
 Ji
-py
-py
-py
+Ji
+Ji
+Ji
 Ji
 Ji
 Ji
@@ -6638,8 +7596,8 @@ sZ
 sZ
 sZ
 kL
-Mp
-Mp
+Ji
+Ji
 Za
 Za
 Za
@@ -6649,8 +7607,8 @@ Za
 Za
 Za
 Za
-Mp
-Mp
+Ji
+Ji
 kL
 sZ
 sZ
@@ -6675,9 +7633,9 @@ hM
 kL
 kL
 kL
-py
-py
-py
+Ji
+Ji
+Ji
 Ji
 Ji
 Ji
@@ -6832,8 +7790,8 @@ sZ
 sZ
 sZ
 kL
-Mp
-Mp
+Ji
+Ji
 Za
 Za
 Za
@@ -6843,8 +7801,8 @@ Za
 Za
 Za
 Za
-Mp
-Mp
+Ji
+Ji
 kL
 sZ
 sZ
@@ -6869,9 +7827,9 @@ sZ
 sZ
 kL
 kL
-Mp
-Mp
-Mp
+Ji
+Ji
+Ji
 kL
 kL
 kL
@@ -7026,8 +7984,8 @@ sZ
 sZ
 sZ
 kL
-Mp
-Mp
+Ji
+Ji
 Za
 Za
 Za
@@ -7037,8 +7995,8 @@ Za
 Za
 Za
 Za
-Mp
-Mp
+Ji
+Ji
 kL
 sZ
 sZ
@@ -7220,8 +8178,8 @@ sZ
 sZ
 sZ
 kL
-Mp
-Mp
+Ji
+Ji
 Za
 Za
 Za
@@ -7231,8 +8189,8 @@ Za
 Za
 Za
 Za
-Mp
-Mp
+Ji
+Ji
 kL
 sZ
 sZ
@@ -7414,8 +8372,8 @@ sZ
 sZ
 sZ
 kL
-Mp
-Mp
+Ji
+Ji
 Za
 Za
 Za
@@ -7425,8 +8383,8 @@ Za
 Za
 Za
 Za
-Mp
-Mp
+Ji
+Ji
 kL
 sZ
 sZ
@@ -7609,8 +8567,8 @@ sZ
 kL
 kL
 kL
-Mp
-Mp
+Ji
+Ji
 py
 py
 py
@@ -7618,8 +8576,8 @@ py
 py
 py
 py
-Mp
-Mp
+Ji
+Ji
 kL
 kL
 kL
@@ -7803,17 +8761,17 @@ sZ
 kL
 kL
 kL
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
 kL
 kL
 kL
@@ -7997,8 +8955,8 @@ sZ
 kL
 kL
 kL
-Mp
-Mp
+Ji
+Ji
 py
 py
 py
@@ -8006,8 +8964,8 @@ py
 py
 py
 py
-Mp
-Mp
+Ji
+Ji
 kL
 kL
 kL
@@ -8190,8 +9148,8 @@ sZ
 sZ
 sZ
 kL
-Mp
-Mp
+Ji
+Ji
 Za
 Za
 Za
@@ -8201,8 +9159,8 @@ Za
 Za
 Za
 Za
-Mp
-Mp
+Ji
+Ji
 kL
 sZ
 sZ
@@ -8364,28 +9322,28 @@ sZ
 sZ
 sZ
 kL
+kL
+py
+py
+py
+kL
+kL
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+kL
 Ji
-py
-py
-py
-kL
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-kL
-Mp
-Mp
+Ji
 Za
 Za
 Za
@@ -8395,8 +9353,8 @@ Za
 Za
 Za
 Za
-Mp
-Mp
+Ji
+Ji
 kL
 sZ
 sZ
@@ -8558,10 +9516,10 @@ sZ
 sZ
 sZ
 kL
+kL
 Ji
-Mp
-Mp
-Mp
+Ji
+Ji
 kL
 kL
 kL
@@ -8579,7 +9537,7 @@ kL
 kL
 kL
 kL
-Mp
+Ji
 Za
 Za
 Za
@@ -8589,7 +9547,7 @@ Za
 Za
 Za
 Za
-Mp
+Ji
 kL
 kL
 kL
@@ -8615,9 +9573,9 @@ kL
 kL
 kL
 kL
-Mp
-Mp
-Mp
+Ji
+Ji
+Ji
 kL
 kL
 sZ
@@ -8752,7 +9710,7 @@ sZ
 sZ
 sZ
 kL
-Ji
+kL
 py
 py
 py
@@ -8773,7 +9731,7 @@ Ji
 kL
 kL
 kL
-Mp
+Ji
 Za
 Za
 Za
@@ -8783,7 +9741,7 @@ Za
 Za
 Za
 Za
-Mp
+Ji
 kL
 kL
 kL
@@ -8951,7 +9909,7 @@ Za
 Za
 Za
 py
-Mp
+Ji
 py
 Za
 Za
@@ -8965,8 +9923,9 @@ Za
 Za
 Za
 py
-Mp
-py
+Ji
+Ji
+Ji
 Za
 Za
 Za
@@ -8976,10 +9935,9 @@ Za
 Za
 Za
 Za
-Za
-Za
-py
-Mp
+Ji
+Ji
+Ji
 py
 Za
 Za
@@ -9001,7 +9959,7 @@ Za
 Za
 Za
 py
-Mp
+Ji
 py
 Za
 Za
@@ -9145,7 +10103,7 @@ Za
 Za
 Za
 py
-Mp
+Ji
 py
 Za
 Za
@@ -9159,8 +10117,9 @@ Za
 Za
 Za
 py
-Mp
-py
+Ji
+Ji
+Ji
 Za
 Za
 Za
@@ -9170,10 +10129,9 @@ Za
 Za
 Za
 Za
-Za
-Za
-py
-Mp
+Ji
+Ji
+Ji
 py
 Za
 Za
@@ -9195,7 +10153,7 @@ Za
 Za
 Za
 py
-Mp
+Ji
 py
 Za
 Za
@@ -9339,7 +10297,7 @@ Za
 Za
 Za
 py
-Mp
+Ji
 py
 Za
 Za
@@ -9353,8 +10311,9 @@ Za
 Za
 Za
 py
-Mp
-py
+Ji
+Ji
+Ji
 Za
 Za
 Za
@@ -9364,10 +10323,9 @@ Za
 Za
 Za
 Za
-Za
-Za
-py
-Mp
+Ji
+Ji
+Ji
 py
 Za
 Za
@@ -9389,7 +10347,7 @@ Za
 Za
 Za
 py
-Mp
+Ji
 py
 Za
 Za
@@ -9728,9 +10686,9 @@ kL
 kL
 kL
 kL
-Mp
-Mp
-Mp
+Ji
+Ji
+Ji
 kL
 kL
 kL
@@ -9766,9 +10724,9 @@ kL
 kL
 kL
 kL
-Mp
+Ji
 yS
-Mp
+Ji
 kL
 kL
 kL
@@ -10315,7 +11273,7 @@ Za
 Za
 Ji
 kL
-sZ
+LS
 sZ
 sZ
 sZ
@@ -10715,13 +11673,13 @@ sZ
 sZ
 kL
 kL
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
 kL
 kL
 kL
@@ -11855,7 +12813,7 @@ sZ
 kL
 py
 py
-Mp
+Ji
 Za
 Za
 Za
@@ -11868,7 +12826,7 @@ Za
 Za
 Za
 Za
-Mp
+Ji
 py
 py
 kL
@@ -12241,7 +13199,7 @@ sZ
 sZ
 sZ
 kL
-Mp
+Ji
 mX
 mR
 mR
@@ -12258,7 +13216,7 @@ bN
 mR
 mR
 mX
-Mp
+Ji
 kL
 LS
 sZ
@@ -12649,7 +13607,7 @@ mX
 Za
 Za
 Za
-Mp
+Ji
 py
 py
 kL
@@ -12672,7 +13630,7 @@ sZ
 ZJ
 ZJ
 ZJ
-WI
+ZJ
 sZ
 kL
 Ji
@@ -12702,7 +13660,7 @@ IJ
 IJ
 IJ
 IJ
-EC
+pT
 Am
 IJ
 IJ
@@ -12847,7 +13805,7 @@ FB
 FB
 py
 py
-Mp
+Ji
 XF
 Za
 Za
@@ -13041,7 +13999,7 @@ MU
 FB
 FB
 py
-Mp
+Ji
 XF
 Za
 Za
@@ -13234,8 +14192,8 @@ lX
 lX
 jg
 FB
-Mp
-Mp
+Ji
+Ji
 XF
 Za
 Za
@@ -13254,7 +14212,7 @@ sZ
 ZJ
 ZJ
 ZJ
-ZJ
+Aq
 sZ
 kL
 Ji
@@ -13428,7 +14386,7 @@ lX
 lX
 ZF
 FB
-Mp
+Ji
 kL
 kL
 Za
@@ -13622,7 +14580,7 @@ lX
 lX
 os
 FB
-Mp
+Ji
 kL
 kL
 Za
@@ -13816,8 +14774,8 @@ lX
 lX
 FB
 FB
-Mp
-Mp
+Ji
+Ji
 XF
 Za
 Za
@@ -14010,8 +14968,8 @@ bM
 Fo
 FB
 py
-RM
-Mp
+py
+Ji
 XF
 Za
 Za
@@ -14569,7 +15527,7 @@ sZ
 sZ
 sZ
 kL
-Mp
+Ji
 mX
 mR
 mR
@@ -14586,8 +15544,8 @@ UC
 mR
 mR
 mX
-RM
-Mp
+py
+Ji
 Za
 Za
 py
@@ -14959,7 +15917,7 @@ sZ
 kL
 py
 py
-Mp
+Ji
 Za
 Za
 Za
@@ -14972,7 +15930,7 @@ Za
 Za
 Za
 Za
-Mp
+Ji
 py
 py
 kL
@@ -15371,13 +16329,13 @@ sZ
 sZ
 kL
 Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
+Za
+Za
+Za
+Za
+Za
+Za
+Za
 Ji
 kL
 sZ
@@ -15554,14 +16512,14 @@ py
 kL
 kL
 sZ
+kL
+kL
+kL
 sZ
 sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+kL
+kL
+kL
 sZ
 kL
 kL
@@ -15575,14 +16533,14 @@ py
 kL
 kL
 sZ
+kL
+kL
+kL
 sZ
 sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+kL
+kL
+kL
 sZ
 kL
 kL
@@ -15747,42 +16705,42 @@ XF
 XF
 kL
 kL
-hM
-hM
-hM
-hM
-hM
-hM
-hM
-hM
-hM
-hM
-hM
-kL
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
-kL
-hM
-hM
-hM
-hM
-hM
-hM
-hM
-hM
-hM
-hM
-hM
+sZ
 kL
 kL
-Mp
-Mp
-Mp
+kL
+sZ
+sZ
+kL
+kL
+kL
+sZ
+kL
+kL
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
+kL
+kL
+sZ
+kL
+kL
+kL
+sZ
+sZ
+kL
+kL
+kL
+sZ
+kL
+kL
+Ji
+Ji
+Ji
 kL
 kL
 hM
@@ -15942,14 +16900,14 @@ py
 kL
 kL
 sZ
+kL
+kL
+kL
 sZ
 sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+kL
+kL
+kL
 sZ
 kL
 kL
@@ -15963,14 +16921,14 @@ py
 kL
 kL
 sZ
+kL
+kL
+kL
 sZ
 sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+kL
+kL
+kL
 sZ
 kL
 kL
@@ -16147,13 +17105,13 @@ sZ
 sZ
 kL
 Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
-Ji
+Za
+Za
+Za
+Za
+Za
+Za
+Za
 Ji
 kL
 sZ
@@ -20980,9 +21938,9 @@ hM
 hM
 kL
 kL
-Mp
-Mp
-Mp
+Ji
+Ji
+Ji
 kL
 kL
 hM
@@ -20997,30 +21955,30 @@ hM
 hM
 kL
 kL
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
 kL
-hM
-hM
-hM
-hM
-hM
-hM
-hM
-hM
-hM
-hM
+nd
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+qr
+QK
 hM
 kL
 kL
-Mp
-Mp
-Mp
+Ji
+Ji
+Ji
 kL
 kL
 hM
@@ -21199,15 +22157,15 @@ py
 py
 py
 kL
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+nd
+Bq
+OL
+Zx
+Vr
+tx
+aD
+aD
+qr
 sZ
 sZ
 kL
@@ -21393,15 +22351,15 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+rA
+pc
+FJ
+Xp
+yG
+rm
+aD
+ft
+qr
 sZ
 sZ
 kL
@@ -21587,15 +22545,15 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+nd
+Qh
+Xp
+Xp
+Xp
+Xp
+aD
+aD
+qr
 sZ
 sZ
 kL
@@ -21781,15 +22739,15 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+nd
+Xp
+Xp
+Xp
+Xp
+Xp
+aD
+Vf
+qr
 sZ
 sZ
 kL
@@ -21975,15 +22933,15 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+nd
+Qh
+Xp
+Xp
+Xp
+Xp
+aD
+aD
+qr
 sZ
 sZ
 kL
@@ -22169,15 +23127,15 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+rA
+fJ
+fI
+Xp
+pg
+fy
+aD
+ft
+qr
 sZ
 sZ
 kL
@@ -22363,15 +23321,15 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+nd
+Zp
+Kr
+qZ
+uC
+Ci
+aD
+aD
+qr
 sZ
 sZ
 kL
@@ -22557,15 +23515,15 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+nd
+qr
+qr
+qr
+qr
+mV
+aD
+TY
+qr
 sZ
 sZ
 kL
@@ -22576,15 +23534,15 @@ Za
 Ji
 kL
 sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+mY
+mY
+mY
+mY
+mY
+mY
+mY
+AB
+uZ
 sZ
 sZ
 kL
@@ -22751,15 +23709,15 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+nd
+Xp
+QX
+NA
+qr
+Jc
+aD
+aD
+qr
 sZ
 sZ
 kL
@@ -22770,15 +23728,15 @@ Za
 Ji
 kL
 sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+mY
+Cx
+bP
+kz
+Nm
+cN
+ul
+qA
+Pi
 sZ
 sZ
 kL
@@ -22945,15 +23903,15 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+nd
+Xp
+en
+Fr
+qr
+iU
+aD
+aD
+qr
 sZ
 sZ
 kL
@@ -22964,15 +23922,15 @@ Za
 Ji
 kL
 sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+mY
+Wf
+cs
+MV
+Ug
+yK
+ul
+lr
+Hj
 sZ
 sZ
 kL
@@ -23139,15 +24097,15 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+nd
+ez
+aD
+aD
+TO
+QW
+aD
+ft
+qr
 sZ
 sZ
 kL
@@ -23158,15 +24116,15 @@ Za
 Ji
 kL
 sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+mY
+zo
+oW
+eV
+IG
+hA
+ul
+Nb
+fr
 sZ
 sZ
 kL
@@ -23333,15 +24291,15 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+rA
+Xp
+aD
+aD
+aD
+aD
+aD
+ya
+qr
 sZ
 sZ
 kL
@@ -23352,15 +24310,15 @@ Za
 Ji
 kL
 sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+mY
+ul
+ul
+RM
+GF
+RM
+ul
+qr
+Od
 sZ
 sZ
 kL
@@ -23527,15 +24485,15 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+rA
+Xp
+aD
+aD
+aD
+aD
+aD
+aD
+oX
 sZ
 sZ
 kL
@@ -23546,15 +24504,15 @@ Za
 Ji
 kL
 sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+nd
+MI
+jG
+Zx
+dR
+Qd
+nf
+CQ
+Xr
 sZ
 sZ
 kL
@@ -23721,16 +24679,16 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+rA
+Xp
+Xp
+Xp
+Xp
+Xp
+Xp
+OX
+qr
+Qk
 sZ
 kL
 Ji
@@ -23740,15 +24698,15 @@ Za
 Ji
 kL
 sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+nd
+Xp
+Xp
+Xp
+cf
+lD
+iu
+Tm
+Tm
 sZ
 sZ
 kL
@@ -23915,16 +24873,16 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+nd
+ez
+QW
+Jz
+NK
+GO
+Xp
+GQ
+qr
+Xw
 sZ
 kL
 Ji
@@ -23934,15 +24892,15 @@ Za
 Ji
 kL
 sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+nd
+hR
+qk
+Tq
+yR
+Tq
+us
+Xp
+Xp
 sZ
 sZ
 kL
@@ -24109,15 +25067,15 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+nd
+Xp
+Xp
+Xp
+Xp
+QW
+Xp
+Xp
+qr
 sZ
 sZ
 kL
@@ -24303,15 +25261,15 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+nd
+xK
+Xp
+qZ
+Xp
+sh
+Xp
+QH
+qr
 sZ
 sZ
 kL
@@ -24497,15 +25455,15 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+mY
+ul
+ON
+ul
+RM
+RM
+ul
+qr
+qr
 sZ
 sZ
 kL
@@ -24691,13 +25649,13 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+mY
+KJ
+Mp
+bP
+Lj
+cN
+ul
 sZ
 sZ
 sZ
@@ -24846,6 +25804,10 @@ Za
 Za
 Za
 kL
+sZ
+sZ
+sZ
+sZ
 kL
 kL
 kL
@@ -24856,13 +25818,9 @@ kL
 kL
 kL
 kL
-kL
-kL
-kL
-kL
-Mp
-Mp
-Mp
+Ji
+Ji
+Ji
 kL
 kL
 sZ
@@ -24885,22 +25843,22 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-kL
-kL
+RM
+YV
+cs
 Mp
 Mp
-Mp
+yK
+ul
+sZ
+sZ
+sZ
+sZ
+kL
+kL
+Ji
+Ji
+Ji
 kL
 kL
 kL
@@ -24911,10 +25869,10 @@ kL
 kL
 kL
 kL
-kL
-kL
-kL
-kL
+sZ
+sZ
+sZ
+sZ
 kL
 Za
 Za
@@ -25040,10 +25998,10 @@ Za
 Za
 Za
 kL
-Ji
-Ji
-kL
-kL
+sZ
+sZ
+sZ
+sZ
 kL
 Ji
 Ji
@@ -25079,13 +26037,13 @@ Za
 Za
 Za
 Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
+RM
+tu
+wU
+Bd
+hc
+Pp
+ul
 sZ
 sZ
 sZ
@@ -25105,10 +26063,10 @@ Ji
 Ji
 Ji
 kL
-kL
-kL
-kL
-Ji
+sZ
+sZ
+sZ
+sZ
 kL
 Za
 Za
@@ -25236,39 +26194,18 @@ Za
 kL
 kL
 kL
-Ji
-Ji
-kL
-Ji
-Ji
-Za
-Za
-Za
-Ji
-Ji
-Ji
-Ji
-Za
-Za
-Za
-Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
 sZ
 sZ
 kL
 Ji
+Ji
 Za
 Za
 Za
-Za
+Ji
+Ji
+Ji
+Ji
 Za
 Za
 Za
@@ -25289,6 +26226,27 @@ Ji
 Za
 Za
 Za
+Za
+Za
+Za
+Za
+Ji
+mY
+ul
+ul
+ul
+ul
+ul
+ul
+sZ
+sZ
+sZ
+sZ
+kL
+Ji
+Za
+Za
+Za
 Ji
 Ji
 Ji
@@ -25299,8 +26257,8 @@ Za
 Ji
 Ji
 kL
-Ji
-Ji
+sZ
+sZ
 kL
 kL
 kL
@@ -25430,31 +26388,6 @@ Za
 Za
 Za
 kL
-Ji
-Ji
-kL
-Ji
-Za
-Za
-Za
-Za
-Za
-Ji
-Ji
-Ji
-Za
-Za
-Za
-Ji
-kL
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
-sZ
 sZ
 sZ
 kL
@@ -25463,6 +26396,10 @@ Za
 Za
 Za
 Za
+Za
+Ji
+Ji
+Ji
 Za
 Za
 Za
@@ -25483,6 +26420,27 @@ Ji
 Za
 Za
 Za
+Za
+Za
+Za
+Za
+Ji
+kL
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+sZ
+kL
+Ji
+Za
+Za
+Za
 Ji
 Ji
 Ji
@@ -25493,8 +26451,8 @@ Za
 Za
 Ji
 kL
-Ji
-Ji
+sZ
+sZ
 kL
 Za
 Za
@@ -25624,8 +26582,8 @@ Za
 Za
 Za
 kL
-kL
-kL
+sZ
+sZ
 kL
 Za
 Za
@@ -25687,8 +26645,8 @@ Za
 Za
 Za
 kL
-kL
-kL
+sZ
+sZ
 kL
 Za
 Za
@@ -25818,8 +26776,8 @@ Za
 Za
 Za
 kL
-kL
-kL
+sZ
+sZ
 kL
 Za
 Za
@@ -25847,13 +26805,13 @@ sZ
 sZ
 kL
 kL
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
 kL
 kL
 sZ
@@ -25881,8 +26839,8 @@ Za
 Za
 Za
 kL
-kL
-kL
+sZ
+sZ
 kL
 Za
 Za
@@ -26012,8 +26970,8 @@ Za
 Za
 Za
 kL
-Ji
-Ji
+sZ
+sZ
 kL
 Za
 Za
@@ -26075,8 +27033,8 @@ Za
 Za
 Za
 kL
-Ji
-Ji
+sZ
+sZ
 kL
 Za
 Za
@@ -26412,9 +27370,9 @@ Za
 Za
 Za
 Ji
-Mp
-Mp
-Mp
+Ji
+Ji
+Ji
 kL
 kL
 hM
@@ -26450,9 +27408,9 @@ kL
 sZ
 kL
 kL
-Mp
-Mp
-Mp
+Ji
+Ji
+Ji
 Ji
 Za
 Za
@@ -27396,7 +28354,7 @@ kL
 sZ
 sZ
 sZ
-pW
+Ye
 kL
 Ji
 Za
@@ -27408,7 +28366,7 @@ Za
 Za
 Ji
 kL
-pW
+Ye
 sZ
 sZ
 sZ
@@ -27590,7 +28548,7 @@ kL
 kL
 sZ
 sZ
-vn
+UL
 kL
 Ji
 Za
@@ -27602,7 +28560,7 @@ Za
 Za
 Ji
 kL
-vn
+UL
 sZ
 sZ
 kL
@@ -27812,11 +28770,11 @@ Za
 Za
 Za
 Za
-Za
-Za
-Za
-Za
-Za
+PT
+Oe
+cB
+II
+Pg
 Za
 Za
 Za
@@ -28006,11 +28964,11 @@ Za
 Za
 Za
 Za
-Za
-Za
-Za
-Za
-Za
+pW
+Av
+zS
+iH
+TZ
 Za
 Za
 Za
@@ -28200,11 +29158,11 @@ Za
 Za
 Za
 Za
-Za
-Za
-Za
-Za
-Za
+xx
+ss
+XP
+zE
+cB
 Za
 Za
 Za
@@ -28382,10 +29340,10 @@ sZ
 sZ
 sZ
 kL
-QX
-QX
-QX
-QX
+Za
+Za
+Za
+Za
 Za
 Ji
 Ji
@@ -28394,11 +29352,11 @@ Za
 Za
 Za
 Za
-Za
-Za
-Za
-Za
-Za
+cB
+ay
+XP
+YE
+cB
 Za
 Za
 Za
@@ -28576,10 +29534,10 @@ sZ
 sZ
 sZ
 kL
-QX
-QX
-QX
-QX
+Za
+Za
+Za
+Za
 Za
 Za
 Ji
@@ -28588,11 +29546,11 @@ Za
 Za
 Za
 Za
-Za
-Za
-Za
-Za
-Za
+XB
+cB
+cB
+cB
+cB
 Za
 Za
 Za
@@ -28770,10 +29728,6 @@ kL
 kL
 kL
 kL
-QX
-QX
-QX
-QX
 Za
 Za
 Za
@@ -28786,7 +29740,11 @@ Za
 Za
 Za
 Za
-Za
+Hh
+OC
+wW
+cB
+cB
 Za
 Za
 Za
@@ -28948,7 +29906,7 @@ Za
 Za
 Za
 Ji
-Wy
+eg
 Ji
 Ji
 Za
@@ -28960,14 +29918,10 @@ Za
 Za
 Ji
 Ji
-Wy
+eg
 Ji
 Za
 Za
-QX
-QX
-QX
-QX
 Za
 Za
 Za
@@ -28980,7 +29934,11 @@ Za
 Za
 Za
 Za
-Za
+Nz
+cB
+cB
+cB
+cB
 Za
 Za
 Za
@@ -29142,7 +30100,7 @@ Za
 Za
 Za
 Ji
-VZ
+BX
 Ji
 Ji
 Za
@@ -29154,14 +30112,10 @@ Za
 Za
 Ji
 Ji
-VZ
+BX
 Ji
 Za
 Za
-QX
-QX
-QX
-QX
 Za
 Za
 Za
@@ -29174,7 +30128,11 @@ Za
 Za
 Za
 Za
-Za
+Ap
+qu
+qu
+zx
+PS
 Za
 Za
 Za
@@ -29336,7 +30294,7 @@ Za
 Za
 Za
 Ji
-VZ
+BX
 Ji
 Ji
 Za
@@ -29348,7 +30306,7 @@ Za
 Za
 Ji
 Ji
-VZ
+BX
 Ji
 Za
 Za
@@ -29529,8 +30487,8 @@ Za
 Za
 Za
 Za
-ih
-Go
+SN
+EM
 kL
 kL
 py
@@ -29542,8 +30500,8 @@ py
 py
 kL
 kL
-LL
-XX
+OS
+bE
 Za
 Za
 Za
@@ -29727,13 +30685,13 @@ Za
 Za
 kL
 kL
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
-Mp
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
+Ji
 kL
 kL
 Za
@@ -30884,7 +31842,7 @@ Za
 Za
 Za
 Za
-QX
+Za
 Za
 Za
 Za
@@ -31078,7 +32036,7 @@ Za
 Za
 Za
 Za
-QX
+Za
 Za
 Za
 Za
@@ -31272,7 +32230,7 @@ Za
 Za
 Za
 Za
-QX
+Za
 Za
 Za
 Za
@@ -31466,7 +32424,7 @@ Za
 Za
 Za
 Za
-QX
+Za
 Za
 Za
 Za
@@ -31660,22 +32618,22 @@ Za
 Za
 Za
 Za
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
 Za
 Za
 Za
@@ -31854,22 +32812,22 @@ Za
 Za
 Za
 Za
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
 Za
 Za
 Za
@@ -32048,22 +33006,22 @@ Za
 Za
 Za
 Za
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
 Za
 Za
 Za
@@ -32242,22 +33200,22 @@ Za
 Za
 Za
 Za
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
-QX
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
+Za
 Za
 Za
 Za
