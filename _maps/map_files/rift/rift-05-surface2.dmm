@@ -15463,23 +15463,55 @@
 /area/security/armory/red)
 "liI" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/accessory/armor/armguards{
-	pixel_y = 4
+/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = 5
 	},
-/obj/item/clothing/accessory/armor/armguards,
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = -5
+	},
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = -5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = 5
+	},
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = -5
+	},
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/legguards{
+	pixel_x = -5;
+	pixel_y = 8
+	},
+/obj/item/clothing/accessory/armor/armguards{
+	pixel_y = -9
+	},
 /obj/item/clothing/accessory/armor/armguards{
 	pixel_y = -4
 	},
+/obj/item/clothing/accessory/armor/armguards,
 /obj/item/clothing/accessory/armor/armguards{
-	pixel_y = -9
+	pixel_y = 4
 	},
 /obj/item/clothing/accessory/armor/armguards{
 	pixel_y = -9
 	},
+/obj/item/clothing/accessory/armor/armguards{
+	pixel_y = -4
+	},
 /obj/item/clothing/accessory/armor/armguards,
-/obj/item/clothing/accessory/armor/armguards,
-/obj/item/clothing/accessory/armor/armguards,
-/obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/clothing/accessory/armor/armguards{
+	pixel_y = 4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "ljf" = (
@@ -22247,6 +22279,16 @@
 /obj/item/gunbox/lethal{
 	pixel_y = -4
 	},
+/obj/item/gunbox/lethal{
+	pixel_y = 8
+	},
+/obj/item/gunbox/lethal{
+	pixel_y = 4
+	},
+/obj/item/gunbox/lethal,
+/obj/item/gunbox/lethal{
+	pixel_y = -4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "qqk" = (
@@ -22989,27 +23031,27 @@
 /area/crew_quarters/sleep/Dorm_3)
 "qWZ" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/clothing/accessory/armor/legguards,
-/obj/item/clothing/accessory/armor/legguards,
-/obj/item/clothing/accessory/armor/legguards,
-/obj/item/clothing/accessory/armor/legguards{
-	pixel_x = 8
-	},
-/obj/item/clothing/accessory/armor/legguards{
-	pixel_x = -6
-	},
-/obj/item/clothing/accessory/armor/legguards{
-	pixel_x = 5;
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/legguards{
-	pixel_y = 8
-	},
-/obj/item/clothing/accessory/armor/legguards{
-	pixel_x = -5;
-	pixel_y = 8
-	},
 /obj/effect/floor_decal/industrial/outline/yellow,
+/obj/item/gun/energy/taser{
+	pixel_y = -4
+	},
+/obj/item/gun/energy/taser{
+	pixel_y = -2
+	},
+/obj/item/gun/energy/taser,
+/obj/item/gun/energy/taser{
+	pixel_y = 2
+	},
+/obj/item/gun/energy/taser{
+	pixel_y = -4
+	},
+/obj/item/gun/energy/taser{
+	pixel_y = -2
+	},
+/obj/item/gun/energy/taser,
+/obj/item/gun/energy/taser{
+	pixel_y = 2
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "qXe" = (
@@ -29510,10 +29552,14 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /obj/item/clothing/suit/armor/pcarrier/medium/security{
 	pixel_x = 6;
-	pixel_y = 4
+	pixel_y = -4
 	},
 /obj/item/clothing/suit/armor/pcarrier/medium/security{
-	pixel_x = 1;
+	pixel_x = -3;
+	pixel_y = -4
+	},
+/obj/item/clothing/suit/armor/pcarrier/medium/security{
+	pixel_x = 6;
 	pixel_y = 4
 	},
 /obj/item/clothing/suit/armor/pcarrier/medium/security{
@@ -29525,12 +29571,16 @@
 	pixel_y = -4
 	},
 /obj/item/clothing/suit/armor/pcarrier/medium/security{
-	pixel_x = 1;
+	pixel_x = -3;
 	pixel_y = -4
 	},
 /obj/item/clothing/suit/armor/pcarrier/medium/security{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/clothing/suit/armor/pcarrier/medium/security{
 	pixel_x = -3;
-	pixel_y = -4
+	pixel_y = 4
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
