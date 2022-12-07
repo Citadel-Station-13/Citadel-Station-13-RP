@@ -60,8 +60,6 @@
 			//number_of_collectors++
 			power_total += col.power_provided
 			//LAZYADD(collectors, col)
-	if(power_total <= 0)
-
 
 /obj/machinery/power/geothermal_controller/attackby(obj/item/W, mob/user)
 	if(scanner && istype(scanner))
