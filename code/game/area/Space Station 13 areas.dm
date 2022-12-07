@@ -70,6 +70,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	requires_power = 0
 	area_flags = AREA_RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
+	area_limited_icon_smoothing = /area/shuttle
 
 /area/shuttle/arrival
 	name = "\improper Arrival Shuttle"
