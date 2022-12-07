@@ -1,9 +1,6 @@
 /**
  * Idea: a solar esqu controller that has a HE pipe looking thing running out from it which runs over Lava
  * 			or any turf with special temp high enough.
- *
- *
- *
  */
 // Admin editable variable for power gen
 
@@ -12,7 +9,7 @@
 	desc = "The Akureyri Geothermal Power Controller is the specialised geothermal Power solution offered to you by Frag Felix Storage."
 
 	icon = 'icons/obj/machines/power/geothermal.dmi'
-	icon_state = "controller_off"
+	icon_state = "controller_idle"
 
 	dir = NORTH
 	anchored = TRUE
@@ -21,21 +18,22 @@
 	idle_power_usage = 0
 	active_power_usage = 0
 
-	var/range = 7
-	var/number_of_collectors = 0
-	var/list/collectors = list()
+	var/obj/item/scanning_array/scanner
+	var/power_factor = 400 //number by which the power_total is divided before adding it to the grid
+	//var/number_of_collectors = 0
+	//var/list/collectors = list()
 	var/power_total = 0
 
 /obj/machinery/power/geothermal_controller/can_drain_energy(datum/actor, flags)
 	return FALSE
 
-/obj/machinery/power/geothermal_controller/process(delta_time)//TODO: remove/add this from machines to save on processing as needed ~Carn PRIORITY
+/obj/machinery/power/geothermal_controller/process(delta_time)
 	if(machine_stat & BROKEN)
 		return
 	update_icon()
 	if(powernet)
-		if(use_power)
-			add_avail(power_total)
+		if(power_total > 0)
+			add_avail(power_total/power_factor)
 
 
 /obj/machinery/power/geothermal_controller/update_icon_state()
@@ -50,28 +48,44 @@
 			icon_state = "controller_vhigh"
 		else
 			icon_state = "controller_idle"
-	if(use_power == USE_POWER_OFF)
-		icon_state = "controller_off"
 	return ..()
 
 
-/obj/machinery/power/geothermal_controller/Initialize(mapload)
-	. = ..()
-	for (var/obj/machinery/power/geothermal_collector/col in range(7, src))
+/obj/machinery/power/geothermal_controller/proc/scan_for_collectors()
+	power_total = 0
+	if(!scanner)
+		return
+	for (var/obj/machinery/power/geothermal_collector/col in range(scanner.range, src))
 		if(istype(col))
-			number_of_collectors++
+			//number_of_collectors++
 			power_total += col.power_provided
-			LAZYADD(collectors, col)
+			//LAZYADD(collectors, col)
+	if(power_total <= 0)
 
-/obj/machinery/power/geothermal_controller/examine(mob/user)
-	. = ..()
-	if(use_power == USE_POWER_OFF)
-		. += "Use a multitool to set it up."
 
 /obj/machinery/power/geothermal_controller/attackby(obj/item/W, mob/user)
-	if(W.is_multitool())
-		update_use_power(USE_POWER_IDLE)
-		to_chat(user, "You set the [src.name] up to siphon geothermal power.")
+	if(scanner && istype(scanner))
+		if(W.is_multitool())
+			//update_use_power(USE_POWER_IDLE)
+			to_chat(user, "The [scanner] allows the Controller to gather [power_total/power_factor] kW from Collectors up to [scanner.range] meters away.")
+		if(W.is_screwdriver())
+			update_use_power(USE_POWER_OFF)
+			to_chat(user, "You remove the [scanner] from [src]")
+			scanner.forceMove(src.loc)
+			scanner = null
+			scan_for_collectors()
+	else
+		if(W.is_multitool())
+			to_chat(user, "No scanning array detected, unable to gather power.")
+		if(W.is_screwdriver())
+			to_chat(user, "No scanning array present, unable to remove scanning array.")
+		if(istype(W, /obj/item/scanning_array))
+			to_chat(user, "You install the [W].")
+			scanner = W
+			W.forceMove(src)
+			scan_for_collectors()
+	update_icon_state()
+
 
 /obj/machinery/power/geothermal_collector
 	name = "Akureyri Geothermal Power Collector"
@@ -94,7 +108,7 @@
 	var/turf/simulated/T = src.loc
 	if(istype(T))
 		local_special_temp = T.special_temperature
-		power_provided = max(0, local_special_temp - 273) / 250
+		power_provided = local_special_temp
 		if(local_special_temp > 500)
 			var/icon_temperature = local_special_temp
 
@@ -115,3 +129,20 @@
 
 /obj/machinery/power/geothermal_collector/fourway
 	icon_state = "fourway"
+
+/obj/item/scanning_array
+	name = "Scanning array"
+	desc = "An array of scanning modules, used by the Akureyri Geothermal Power Controller to locate collectors and establish a connection with them"
+	icon = 'icons/obj/stock_parts.dmi'
+	icon_state = "scan_module"
+	var/range = 5
+
+/obj/item/scanning_array_adv
+	name = "Advanced Scanning array"
+	desc = "An array of scanning modules, used by the Akureyri Geothermal Power Controller to locate collectors and establish a connection with them"
+	var/range = 11
+
+/obj/item/scanning_array_phasic
+	name = "Phasic Scanning array"
+	desc = "An array of scanning modules, used by the Akureyri Geothermal Power Controller to locate collectors and establish a connection with them"
+	var/range = 17
