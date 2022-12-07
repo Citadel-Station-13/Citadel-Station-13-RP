@@ -115,7 +115,7 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 					var/area/checking = get_area(A)
 					if(checking.area_flags & AREA_RAD_SHIELDED)
 						continue
-				var/dist = get_dist(A, T)
+				var/dist = get_dist(A, T) * falloff_modifier
 				A.z_rad_act(INVERSE_SQUARE(intensity, dist, 1))
 		else
 			for(var/atom/A as anything in z_listeners[z])
@@ -128,7 +128,7 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 	else
 		if(falloff_modifier && T)
 			for(var/atom/A as anything in z_listeners[z])
-				var/dist = get_dist(A, T)
+				var/dist = get_dist(A, T) * falloff_modifier
 				A.z_rad_act(INVERSE_SQUARE(intensity, dist, 1))
 		else
 			for(var/atom/A as anything in z_listeners[z])
