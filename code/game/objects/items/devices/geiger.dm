@@ -15,6 +15,7 @@
 	icon_state = "geiger_off"
 	item_state = "multitool"
 	w_class = ITEMSIZE_SMALL
+	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
 	matter = list(MAT_STEEL = 200, MAT_GLASS = 100)
 
 	var/grace = RAD_GRACE_PERIOD

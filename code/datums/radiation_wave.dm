@@ -134,9 +134,11 @@
 	if(length(contaminating))
 		// maximum we can contaminate them up to
 		// var/max_str = min(strength, max_intensity) * RAD_CONTAMINATION_STR_COEFFICIENT
-		var/max_str = strength * RAD_CONTAMINATION_STR_COEFFICIENT
+		var/max_str = min(strength, max_intensity) * RAD_CONTAMINATION_STR_COEFFICIENT - RAD_CONTAMINATION_STR_ADJUST
 		// how much we're going to apply
-		var/apply_str = min(max_str, remaining_contam / length(contaminating))
+		var/apply_str = min(max_str, remaining_contam / length(contaminating), starting_intensity * RAD_CONTAMINATION_MAXIMUM_OBJECT_RATIO)
+		if(apply_str <= 0)
+			return
 		for(var/atom/A as anything in contaminating)
 			var/datum/component/radioactive/R = A.GetComponent(/datum/component/radioactive)
 			var/effective_stack = (isnull(A.rad_stickiness)? A.rad_insulation : A.rad_stickiness) * max_str	// rad insulation helps against contamination by blocking it too

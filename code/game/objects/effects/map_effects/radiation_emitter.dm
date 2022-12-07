@@ -3,6 +3,7 @@
 	name = "radiation emitter"
 	icon_state = "radiation_emitter"
 	var/radiation_power = 200 // Bigger numbers means more radiation.
+	var/radiation_falloff = 1
 
 /obj/effect/map_effect/radiation_emitter/Initialize(mapload)
 	START_PROCESSING(SSobj, src)

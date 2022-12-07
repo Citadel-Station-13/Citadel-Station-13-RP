@@ -142,7 +142,7 @@
 /**
  * the **default** half life of a radioactive atom, in ds
  */
-#define RAD_HALF_LIFE_DEFAULT (9 SECONDS)
+#define RAD_HALF_LIFE_DEFAULT (20 SECONDS)
 /// broken anomaly decay
 #define RAD_HALF_LIFE_ANOMALY_SMASH (1 MINUTES)
 
@@ -156,7 +156,10 @@
 /// lowest meaningful contamination strength
 #define RAD_CONTAMINATION_MEANINGFUL 5
 #define RAD_CONTAMINATION_CHANCE_COEFFICIENT 0.005	// Higher means higher strength scaling contamination chance
-#define RAD_CONTAMINATION_STR_COEFFICIENT 0.8		// Higher means higher strength scaling contamination strength
+/// factor for max contamination strength from source strength
+#define RAD_CONTAMINATION_STR_COEFFICIENT 0.8
+/// adjust for max contamination strength from soruce strength - this is **sutracted**, so should never be < 0.
+#define RAD_CONTAMINATION_STR_ADJUST 5
 /// additional times radiation contamination lets out when decaying; BE CAREFUL
 #define RAD_CONTAMINATION_CHEAT_FACTOR 2
 #define RAD_CONTAMINATION_MAXIMUM_OBJECT_RATIO 0.1	// max amount of starting intensity that can be imparted to one object at a time
