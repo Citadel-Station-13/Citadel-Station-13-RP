@@ -1,10 +1,11 @@
-// Redone a lot of airlock things:
-/*
-- Specific department maintenance doors
-- Named doors properly according to type
-- Gave them default access levels with the access constants
-- Improper'd all of the names in the new()
-*/
+/**
+ * Redone a lot of airlock things:
+ *
+ * Specific department maintenance doors
+ * Named doors properly according to type
+ * Gave them default access levels with the access constants
+ * Improper'd all of the names in the new()
+ */
 
 /obj/machinery/door/airlock
 	name = "Airlock"
@@ -15,29 +16,44 @@
 	rad_insulation = RAD_INSULATION_MEDIUM
 
 	explosion_resistance = 10
-	var/aiControlDisabled = 0 //If 1, AI control is disabled until the AI hacks back in and disables the lock. If 2, the AI has bypassed the lock. If -1, the control is enabled but the AI had bypassed it earlier, so if it is disabled again the AI would have no trouble getting back in.
-	var/hackProof = 0 // if 1, this door can't be hacked by the AI
-	var/electrified_until = 0			//World time when the door is no longer electrified. -1 if it is permanently electrified until someone fixes it.
-	var/main_power_lost_until = 0	 	//World time when main power is restored.
-	var/backup_power_lost_until = -1	//World time when backup power is restored.
-	var/has_beeped = 0					//If 1, will not beep on failed closing attempt. Resets when door closes.
+	autoclose = 1
+	normalspeed = 1
+
+	smoothing_groups = list(SMOOTH_GROUP_AIRLOCK)
+
+	/**
+	 * If -1, the control is enabled but the AI had bypassed it earlier, so if it is disabled again the AI would have no trouble getting back in.
+	 * If 1, AI control is disabled until the AI hacks back in and disables the lock.
+	 * If 2, the AI has bypassed the lock.
+	 */
+	var/aiControlDisabled = 0
+	/// If 1, this door can't be hacked by the AI.
+	var/hackProof = 0
+	/// World time when the door is no longer electrified. -1 if it is permanently electrified until someone fixes it.
+	var/electrified_until = 0
+	/// World time when main power is restored.
+	var/main_power_lost_until = 0
+	/// World time when backup power is restored.
+	var/backup_power_lost_until = -1
+	/// If 1, will not beep on failed closing attempt. Resets when door closes.
+	var/has_beeped = 0
 	var/spawnPowerRestoreRunning = 0
 	var/welded = null
 	var/locked = 0
-	var/lights = 1 // bolt lights show by default
+	/// Bolt lights show by default.
+	var/lights = 1
 	var/aiDisabledIdScanner = 0
 	var/aiHacking = 0
 	var/obj/machinery/door/airlock/closeOther = null
 	var/closeOtherId = null
 	var/lockdownbyai = 0
-	autoclose = 1
 	var/assembly_type = /obj/structure/door_assembly
 	var/mineral = null
 	var/justzap = 0
 	var/safe = 1
-	normalspeed = 1
 	var/obj/item/airlock_electronics/electronics = null
-	var/hasShocked = 0 //Prevents multiple shocks from happening
+	/// Prevents multiple shocks from happening.
+	var/hasShocked = 0
 	var/secured_wires = 0
 	var/datum/wires/airlock/wires = null
 
@@ -48,7 +64,7 @@
 	var/bolt_up_sound = 'sound/machines/boltsup.ogg'
 	var/bolt_down_sound = 'sound/machines/boltsdown.ogg'
 
-	// bandaid around a problem
+	/// Bandaid around a problem.
 	var/last_spark = 0
 
 /obj/machinery/door/airlock/attack_generic(var/mob/living/user, var/damage)

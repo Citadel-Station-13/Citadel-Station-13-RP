@@ -3,6 +3,9 @@
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "Floor3"
 
+	//! NOTICE: UNSIMULATED TURFS DO NOT SMOOTH, THIS IS MORESO FOR OTHER TURFS
+	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_OPEN_FLOOR)
+
 /turf/unsimulated/mask
 	name = "mask"
 	icon = 'icons/turf/walls.dmi'

@@ -9,13 +9,19 @@
 	density = FALSE
 	anchored = TRUE
 	rad_flags = RAD_NO_CONTAMINATE
+
+	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_LATTICE, SMOOTH_GROUP_CATWALK, SMOOTH_GROUP_OPEN_FLOOR)
+	canSmoothWith = list(SMOOTH_GROUP_CATWALK)
+
 	var/health = 100
 	var/maxhealth = 100
 	var/obj/item/stack/tile/plated_tile = null
 	var/static/plating_color = list(
 		/obj/item/stack/tile/floor = "#858a8f",
 		/obj/item/stack/tile/floor/dark = "#4f4f4f",
-		/obj/item/stack/tile/floor/white = "#e8e8e8")
+		/obj/item/stack/tile/floor/white = "#e8e8e8",
+	)
 
 /obj/structure/catwalk/Initialize(mapload)
 	. = ..()
@@ -215,4 +221,3 @@
 		icon_state = "[initial(icon_state)]_rickety"
 	if(health < 25)
 		icon_state = "[initial(icon_state)]_dangerous"
-
