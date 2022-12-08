@@ -51,6 +51,7 @@
 	icon_state = "darkmatter"
 	density = 1
 	anchored = 0
+	rad_flags = RAD_NO_CONTAMINATE | RAD_BLOCK_CONTENTS
 	light_range = 4
 
 	var/gasefficency = 0.25
