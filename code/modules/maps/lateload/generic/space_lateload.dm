@@ -1,24 +1,18 @@
-
-////////////////////////////////////////////////
-/////// Overmap Space Templates  ///////////////
-////////////////////////////////////////////////
-
-/*
-This is for objects in space that are accessible from the overmap.
-
-If you are wanting to add a map like lavaland that isn't accessible
-from the overmap and *are not* gateway missions please put it in unique_lateload.dm
-
-For overmap things that are planets and accessible from the overmap please put them
-in planets_lateload.dm
-
-For gateway missions please put them in gateway_lateload.dm
-
-*/
-
-
-
-
+/**
+ *! Overmap Space Templates
+ *? This is for objects in space that are accessible from the overmap.
+ *
+ *! NOTICE
+ *
+ *? unique_lateload.dm
+ *  * For maps that aren't accessible from overmaps or gateway missions.
+ *
+ *? space_lateloads.dm
+ *  * For overmap locations that are in space and *are not* planets.
+ *
+ *? gateway_lateload.dm
+ *  * For gateway missions.
+ */
 /datum/map_template/space_lateload
 	allow_duplicates = FALSE
 	var/associated_map_datum
