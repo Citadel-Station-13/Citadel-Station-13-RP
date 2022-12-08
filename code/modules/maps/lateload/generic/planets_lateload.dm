@@ -1,21 +1,18 @@
-
-////////////////////////////////////////////////
-/////// Overmap Planet Templates ///////////////
-////////////////////////////////////////////////
-/*
-This is for planets that are accessible from the overmap.
-
-If you are wanting to add a map like lavaland that isn't accessible
-from the overmap and *are not* gateway missions please put it in unique_lateload.dm
-
-For overmap things that aren't planets (like stations, ships, asteroid
-belts, etc) that you want to load in please put them in space_lateloads.dm
-
-For gateway missions please put them in gateway_lateload.dm
-
-
-*/
-
+/**
+ *! Overmap Planet Templates
+ *? This is for planets that are accessible from the overmap.
+ * 
+ *! NOTICE
+ *
+ *? unique_lateload.dm
+ *  * For maps that aren't accessible from overmaps or gateway missions.
+ *
+ *? space_lateloads.dm
+ *  * For overmap locations that are in space and *are not* planets.
+ * 
+ *? gateway_lateload.dm
+ *  * For gateway missions.
+ */
 /datum/map_template/planets_lateload
 	allow_duplicates = FALSE
 	var/associated_map_datum
