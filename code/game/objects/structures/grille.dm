@@ -9,6 +9,11 @@
 	pressure_resistance = 5*ONE_ATMOSPHERE
 	layer = TABLE_LAYER
 	explosion_resistance = 1
+
+	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_GRILLE)
+	canSmoothWith = list(SMOOTH_GROUP_GRILLE)
+
 	var/health = 10
 	var/destroyed = 0
 

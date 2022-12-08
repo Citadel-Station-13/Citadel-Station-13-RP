@@ -5,22 +5,29 @@
 	icon_state = "rock-dark"
 	density = 1
 
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_MINERAL_WALLS)
+
 /turf/simulated/mineral //wall piece
 	name = "rock"
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "rock"
 	smoothing_flags = SMOOTH_CUSTOM
-	var/sand_icon = 'icons/turf/flooring/asteroid.dmi'
-	var/rock_side_icon_state = "rock_side"
-	var/sand_icon_state = "asteroid"
-	var/rock_icon_state = "rock"
-	var/random_icon = 0
 	initial_gas_mix = GAS_STRING_VACUUM
 	opacity = 1
 	density = 1
 	blocks_air = 1
 	can_dirty = FALSE
+	has_resources = 1
 
+	// smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_MINERAL_WALLS)
+	canSmoothWith = list(SMOOTH_GROUP_MINERAL_WALLS)
+
+	var/sand_icon = 'icons/turf/flooring/asteroid.dmi'
+	var/rock_side_icon_state = "rock_side"
+	var/sand_icon_state = "asteroid"
+	var/rock_icon_state = "rock"
+	var/random_icon = 0
 
 	var/datum/ore/mineral
 	var/sand_dug
@@ -39,7 +46,6 @@
 	var/ignore_mapgen
 	var/ignore_oregen = FALSE
 	var/ignore_cavegen = FALSE
-	has_resources = 1
 
 
 /turf/simulated/mineral/is_floor()

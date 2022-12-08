@@ -16,8 +16,8 @@
 	dynamic_lighting = FALSE
 
 /turf/unsimulated/fake_space/Initialize(mapload)
+	icon_state = SPACE_ICON_STATE(x, y, z) // So realistic!
 	. = ..()
-	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
 
 
 // Better nip this just in case.

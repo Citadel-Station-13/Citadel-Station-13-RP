@@ -3,10 +3,13 @@
 	desc = "Unfinished flooring."
 	icon = 'icons/turf/flooring/plating_vr.dmi'
 	icon_state = "plating"
-	smoothing_flags = SMOOTH_CUSTOM
 	base_icon_state = "plating"
 	thermal_conductivity = 0.040
 	heat_capacity = 10000
+
+	smoothing_flags = SMOOTH_CUSTOM
+	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_OPEN_FLOOR)
+	canSmoothWith = list(SMOOTH_GROUP_OPEN_FLOOR, SMOOTH_GROUP_TURF_OPEN)
 
 	// Damage to flooring.
 	var/broken

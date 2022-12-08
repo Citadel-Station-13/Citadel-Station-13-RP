@@ -11,6 +11,11 @@ var/list/table_icon_cache = list()
 	climbable = TRUE
 	layer = TABLE_LAYER
 	surgery_odds = 66
+	connections = list("nw0", "ne0", "sw0", "se0")
+
+	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_TABLES)
+	canSmoothWith = list(SMOOTH_GROUP_TABLES)
 
 	var/flipped = 0
 	var/maxhealth = 10
@@ -27,8 +32,6 @@ var/list/table_icon_cache = list()
 	// Convert if/when you can easily get stacks of these.
 	var/carpeted = 0
 	var/carpeted_type = /obj/item/stack/tile/carpet
-
-	connections = list("nw0", "ne0", "sw0", "se0")
 
 	/// Can people place items on us by clicking on us?
 	var/item_place = TRUE

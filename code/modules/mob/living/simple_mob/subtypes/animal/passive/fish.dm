@@ -118,7 +118,7 @@
 		SpinAnimation(7,1)
 		if(prob(75))
 			if(sting(M))
-				to_chat(M, "<span class='warning'>You feel a tiny prick.</span>")
+				M.custom_pain(SPAN_WARNING("You feel a tiny prick."), 1, TRUE)
 		if(is_dead())
 			return
 		for(var/i = 1 to 3)

@@ -60,6 +60,28 @@
 		reinf_material = GET_MATERIAL_REF(reinf_material)
 
 
+/obj/structure/Initialize(mapload)
+	. = ..()
+
+	if(climbable)
+		verbs += /obj/structure/proc/climb_on
+
+	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		QUEUE_SMOOTH(src)
+		QUEUE_SMOOTH_NEIGHBORS(src)
+		if(smoothing_flags & SMOOTH_CORNERS)
+			icon_state = ""
+
+	GLOB.cameranet.updateVisibility(src)
+
+/obj/structure/Destroy()
+	GLOB.cameranet.updateVisibility(src)
+
+	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		QUEUE_SMOOTH_NEIGHBORS(src)
+
+	return ..()
+
 /obj/structure/attack_hand(mob/user)
 	if(breakable)
 		if(MUTATION_HULK in user.mutations)

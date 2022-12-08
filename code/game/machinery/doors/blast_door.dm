@@ -16,6 +16,17 @@
 	icon = 'icons/obj/doors/rapid_pdoor.dmi'
 	icon_state = null
 	min_force = 20 //minimum amount of force needed to damage the door with a melee weapon
+
+	dir = 1
+	explosion_resistance = 25
+	closed_layer = ON_WINDOW_LAYER // Above airlocks when closed
+
+	//Most blast doors are infrequently toggled and sometimes used with regular doors anyways,
+	//turning this off prevents awkward zone geometry in places like medbay lobby, for example.
+	block_air_zones = 0
+
+	smoothing_groups = list(SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
+
 	var/datum/material/implicit_material
 	// Icon states for different shutter types. Simply change this instead of rewriting the update_icon proc.
 	var/icon_state_open = null
@@ -23,14 +34,8 @@
 	var/icon_state_closed = null
 	var/icon_state_closing = null
 
-	closed_layer = ON_WINDOW_LAYER // Above airlocks when closed
 	var/id = 1.0
-	dir = 1
-	explosion_resistance = 25
 
-	//Most blast doors are infrequently toggled and sometimes used with regular doors anyways,
-	//turning this off prevents awkward zone geometry in places like medbay lobby, for example.
-	block_air_zones = 0
 
 /obj/machinery/door/blast/Initialize(mapload)
 	. = ..()
