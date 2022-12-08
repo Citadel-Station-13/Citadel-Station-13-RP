@@ -67,7 +67,7 @@
 	. = ..()
 
 	if(Adjacent(user))
-		. += SPAN_NOTICE("... from this distance, they seem to be made of [material.name] ...")
+		. += SPAN_NOTICE("... from this distance, they seem to be made of [material.use_name] ...")
 
 /obj/structure/barricade/cutout/attackby(obj/I, mob/user)
 	if(is_type_in_list(I, painters))

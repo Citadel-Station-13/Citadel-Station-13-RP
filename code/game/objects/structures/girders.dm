@@ -4,6 +4,10 @@
 	density = 1
 	plane = PLATING_PLANE
 	w_class = ITEMSIZE_HUGE
+	material = MAT_STEEL
+
+	var/datum/material/girder_material
+
 	var/state = 0
 	var/health = 200
 	var/max_health = 200
@@ -13,13 +17,11 @@
 	var/reinforcing = 0
 	var/applies_material_color = 1
 
-	var/default_material = MAT_STEEL
-	var/datum/material/girder_material
 
 /obj/structure/girder/Initialize(mapload, material_key)
 	. = ..()
 	if(!material_key)
-		material_key = default_material
+		material_key = material
 	set_material(material_key)
 	update_icon()
 

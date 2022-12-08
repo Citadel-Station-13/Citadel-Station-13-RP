@@ -122,7 +122,7 @@
 
 /obj/item/material/knife/tacknife/combatknife/bone
 	icon_state = "boneknife"
-	default_material = "bone"
+	material = MAT_BONE
 
 // Identical to the tactical knife but nowhere near as stabby.
 // Kind of like the toy esword compared to the real thing.
@@ -162,7 +162,8 @@
 	attack_verb = list("slashed", "chopped", "gouged", "ripped", "cut")
 	can_cleave = TRUE //Now hatchets inherit from the machete, and thus knives. Tables turned.
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
-	default_material = "plasteel"
+	material = MAT_PLASTEEL
+
 /obj/item/material/knife/machete/armblade
 	name = "arm-mounted blade"
 	desc = "A long, machete-like blade, mounted to your arm. The size and location of it lends itself to parrying blows in melee."
@@ -181,7 +182,7 @@
 	return FALSE
 
 /obj/item/material/knife/machete/armblade/rig
-	default_material = MAT_STEEL
+	material = MAT_STEEL
 	var/obj/item/rig_module/armblade/storing_module
 
 /obj/item/material/knife/machete/armblade/rig/dropped(mob/user, flags, atom/newLoc)
@@ -205,14 +206,14 @@
 	icon_state = "survivalknife"
 	item_state = "knife"
 	applies_material_color = FALSE
-	default_material = "plasteel"
+	material = MAT_PLASTEEL
 	tool_speed = 2 // Use a real axe if you want to chop logs.
 
 /obj/item/material/knife/tacknife/survival/bone
 	name = "primitive survival knife"
 	desc = "A hunting grade survival knife with a sleek leather grip."
 	applies_material_color =TRUE
-	default_material = "bone"
+	material = MAT_BONE
 /obj/item/material/knife/machete/deluxe
 	name = "deluxe machete"
 	desc = "A fine example of a machete, with a polished blade, wooden handle and a leather cord loop."
@@ -228,7 +229,7 @@
 	icon_state = "dataknife"
 	item_state = "knife"
 	applies_material_color = FALSE
-	default_material = "plasteel"
+	material = MAT_PLASTEEL
 	tool_speed = 2 // Use a real axe if you want to chop logs.
 
 /obj/item/material/knife/tacknife/dataknife/Initialize(mapload)
@@ -238,60 +239,62 @@
 /obj/item/material/knife/tacknife/dataknife/is_multitool()
 	return TRUE
 
+// TODO: Macro these creations ffs @Zandario
+
 // Knife Material Variants
 /obj/item/material/butterfly/plasteel
-	default_material = "plasteel"
+	material = MAT_PLASTEEL
 
 /obj/item/material/butterfly/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL
 
 /obj/item/material/butterfly/switchblade/plasteel
-	default_material = "plasteel"
+	material = MAT_PLASTEEL
 
 /obj/item/material/butterfly/switchblade/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL
 
 /obj/item/material/butterfly/boxcutter/plasteel
-	default_material = "plasteel"
+	material = MAT_PLASTEEL
 
 /obj/item/material/butterfly/boxcutter/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL
 
 /obj/item/material/knife/tacknife/plasteel
-	default_material = "plasteel"
+	material = MAT_PLASTEEL
 
 /obj/item/material/knife/tacknife/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL
 
 /obj/item/material/knife/tacknife/combatknife/plasteel
-	default_material = "plasteel"
+	material = MAT_PLASTEEL
 
 /obj/item/material/knife/tacknife/combatknife/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL
 
 /obj/item/material/knife/hook/plasteel
-	default_material = "plasteel"
+	material = MAT_PLASTEEL
 
 /obj/item/material/knife/hook/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL
 
 /obj/item/material/knife/ritual/plasteel
-	default_material = "plasteel"
+	material = MAT_PLASTEEL
 
 /obj/item/material/knife/ritual/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL
 
 /obj/item/material/knife/butch/plasteel
-	default_material = "plasteel"
+	material = MAT_PLASTEEL
 
 /obj/item/material/knife/butch/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL
 
 /obj/item/material/knife/machete/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL
 
 /obj/item/material/knife/machete/deluxe/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL
 
 /obj/item/material/knife/tacknife/survival/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL

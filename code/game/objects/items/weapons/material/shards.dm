@@ -12,20 +12,14 @@
 	thrown_force_divisor = 0.5
 	item_state = "shard-glass"
 	attack_verb = list("stabbed", "slashed", "sliced", "cut")
-	default_material = "glass"
+	material = MAT_GLASS
 	unbreakable = 1 //It's already broken.
 	drops_debris = 0
 
-/obj/item/material/shard/suicide_act(mob/user)
-	var/datum/gender/TU = GLOB.gender_datums[user.get_visible_gender()]
-	viewers(user) << pick("<span class='danger'>\The [user] is slitting [TU.his] wrists with \the [src]! It looks like [TU.hes] trying to commit suicide.</span>",
-	                      "<span class='danger'>\The [user] is slitting [TU.his] throat with \the [src]! It looks like [TU.hes] trying to commit suicide.</span>")
-	return (BRUTELOSS)
-
-/obj/item/material/shard/set_material(var/new_material)
-	..(new_material)
+/obj/item/material/shard/set_material(new_material)
 	if(!istype(material))
 		return
+	..(new_material)
 
 	icon_state = "[material.shard_icon][pick("large", "medium", "small")]"
 	pixel_x = rand(-8, 8)
@@ -148,11 +142,11 @@
 			return
 
 // Preset types - left here for the code that uses them
-/obj/item/material/shard/shrapnel/Initialize(mapload, material_key)
-	. = ..(mapload, "steel")
+/obj/item/material/shard/shrapnel
+	material = MAT_STEEL
 
-/obj/item/material/shard/phoron/Initialize(mapload, material_key)
-	. = ..(mapload, "phglass")
+/obj/item/material/shard/phoron
+	material = MAT_GLASS_BS
 
-/obj/item/material/shard/wood/Initialize(mapload, material_key)
-	. = ..(mapload, "wood")
+/obj/item/material/shard/wood
+	material = MAT_WOOD

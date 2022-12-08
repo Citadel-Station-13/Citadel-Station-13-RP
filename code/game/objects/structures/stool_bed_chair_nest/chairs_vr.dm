@@ -56,7 +56,7 @@
 	cut_overlays()
 
 	// Base icon (base material color)
-	var/cache_key = "[base_icon_state]-[material.name]"
+	var/cache_key = "[base_icon_state]-[material ? material.uid : "null"]-[reinf_material ? reinf_material.uid : "null"]"
 	if(isnull(stool_cache[cache_key]))
 		var/image/I = image(icon, base_icon_state)
 		if(applies_material_color)
@@ -66,7 +66,7 @@
 
 	// Padding ('_padding') (padding material color)
 	if(reinf_material)
-		var/padding_cache_key = "[base_icon_state]-padding-[reinf_material.name]"
+		var/padding_cache_key = "[base_icon_state]-padding-[material ? material.uid : "null"]-[reinf_material ? reinf_material.uid : "null"]"
 		if(isnull(stool_cache[padding_cache_key]))
 			var/image/I =  image(icon, "[base_icon_state]_padding")
 			I.color = reinf_material.color
@@ -74,7 +74,7 @@
 		add_overlay(stool_cache[padding_cache_key])
 
 	// Over ('_over') (base material color)
-	cache_key = "[base_icon_state]-[material.name]-over"
+	cache_key = "[base_icon_state]-[material ? material.uid : "null"]-[reinf_material ? reinf_material.uid : "null"]-over"
 	if(isnull(stool_cache[cache_key]))
 		var/image/I = image(icon, "[base_icon_state]_over")
 		I.plane = MOB_PLANE
@@ -86,7 +86,7 @@
 
 	// Padding Over ('_padding_over') (padding material color)
 	if(reinf_material)
-		var/padding_cache_key = "[base_icon_state]-padding-[reinf_material.name]-over"
+		var/padding_cache_key = "[base_icon_state]-padding-[material ? material.uid : "null"]-[reinf_material ? reinf_material.uid : "null"]-over"
 		if(isnull(stool_cache[padding_cache_key]))
 			var/image/I =  image(icon, "[base_icon_state]_padding_over")
 			I.color = reinf_material.color
@@ -97,7 +97,7 @@
 
 	if(has_buckled_mobs())
 		if(reinf_material)
-			cache_key = "[base_icon_state]-armrest-[reinf_material.name]"
+			cache_key = "[base_icon_state]-armrest-[material ? material.uid : "null"]-[reinf_material ? reinf_material.uid : "null"]"
 		// Armrest ('_armrest') (base material color)
 		if(isnull(stool_cache[cache_key]))
 			var/image/I = image(icon, "[base_icon_state]_armrest")
@@ -108,7 +108,7 @@
 			stool_cache[cache_key] = I
 		add_overlay(stool_cache[cache_key])
 		if(reinf_material)
-			cache_key = "[base_icon_state]-padding-armrest-[reinf_material.name]"
+			cache_key = "[base_icon_state]-padding-armrest-[material ? material.uid : "null"]-[reinf_material ? reinf_material.uid : "null"]"
 			// Padding Armrest ('_padding_armrest') (padding material color)
 			if(isnull(stool_cache[cache_key]))
 				var/image/I = image(icon, "[base_icon_state]_padding_armrest")

@@ -82,7 +82,7 @@ SUBSYSTEM_DEF(materials)
 		return
 
 	if(!ispath(key, /datum/material))
-		CRASH("Attempted to fetch material ref with invalid key [isnull(key) ? "null" : key]")
+		CRASH("Attempted to fetch material ref with invalid [isnull(key) ? "null" : "key [key]"]")
 
 	if(!(initial(key.init_flags) & MATERIAL_INIT_BESPOKE))
 		. = materials[key]

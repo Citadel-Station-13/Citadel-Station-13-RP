@@ -92,7 +92,7 @@
 //! Carpet
 
 /datum/material/solid/carpet
-	name = "red"
+	name = "capret"
 	uid = "solid_carpet"
 	use_name = "red upholstery"
 	sheet_singular_name = "tile"

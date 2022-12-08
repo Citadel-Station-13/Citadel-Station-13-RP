@@ -60,7 +60,7 @@
 /obj/structure/bed/chair/update_icon()
 	. = ..()
 	if(has_buckled_mobs() && reinf_material)
-		var/cache_key = "[base_icon_state]-armrest-[reinf_material.name]"
+		var/cache_key = "[base_icon_state]-armrest-[material ? material.uid : "null"]-[reinf_material ? reinf_material.uid : "null"]"
 		if(isnull(stool_cache[cache_key]))
 			var/image/I = image(icon, "[base_icon_state]_armrest")
 			I.layer = MOB_LAYER + 0.1
@@ -204,8 +204,8 @@
 		return
 	..()
 
-/obj/structure/bed/chair/wood/Initialize(mapload, material_key)
-	return ..(mapload, "wood")
+/obj/structure/bed/chair/wood
+	material = MAT_WOOD
 
 /obj/structure/bed/chair/wood/wings
 	icon_state = "wooden_chair_wings"
@@ -218,14 +218,6 @@
 	base_icon_state = "pewmiddle"
 	icon_state = "pewmiddle"
 	material = MAT_WOOD
-
-
-/obj/structure/bed/chair/pew/Initialize(mapload, new_material)
-	. = ..(mapload)
-	if(!new_material)
-		new_material = MAT_WOOD
-	material = GET_MATERIAL_REF(new_material)
-	update_icon()
 
 /obj/structure/bed/chair/pew/left
 	icon_state = "pewend_left"

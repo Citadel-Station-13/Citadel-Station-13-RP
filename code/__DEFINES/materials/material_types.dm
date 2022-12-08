@@ -1,9 +1,9 @@
 //! Material Defines
 #define MAT_ALGAE          /datum/material/solid/algae
 #define MAT_BANANIUM       /datum/material/solid/metal/bananium
-#define MAT_BRONZE         /datum/material/solid/metal/bronze
+#define MAT_BONE           /datum/material/solid/bone
+#define MAT_BRONZE         /datum/material/solid/metal/gold/bronze
 #define MAT_CARBON         /datum/material/solid/carbon
-#define MAT_CARPET         /datum/material/solid/carpet
 #define MAT_CLOTH          /datum/material/solid/cloth
 #define MAT_CHITIN         /datum/material/solid/skin/insect
 #define MAT_COPPER         /datum/material/solid/metal/copper

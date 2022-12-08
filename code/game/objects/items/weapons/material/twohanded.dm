@@ -18,6 +18,10 @@
  */
 /obj/item/material/twohanded
 	w_class = ITEMSIZE_LARGE
+	hitsound = "swing_hit"
+	drop_sound = 'sound/items/drop/sword.ogg'
+	pickup_sound = 'sound/items/pickup/sword.ogg'
+
 	var/wielded = 0
 	var/force_wielded = 0
 	var/force_unwielded
@@ -26,9 +30,6 @@
 	var/base_icon
 	var/base_name
 	var/unwielded_force_divisor = 0.25
-	hitsound = "swing_hit"
-	drop_sound = 'sound/items/drop/sword.ogg'
-	pickup_sound = 'sound/items/pickup/sword.ogg'
 
 /obj/item/material/twohanded/update_held_icon()
 	var/mob/living/M = loc
@@ -62,7 +63,7 @@
 	force_unwielded = round(force_wielded*unwielded_force_divisor)
 	force = force_unwielded
 	throw_force = round(force*thrown_force_divisor)
-	//to_chat(world, "[src] has unwielded force [force_unwielded], wielded force [force_wielded] and throw_force [throw_force] when made from default material [material.name]")
+	//to_chat(world, "[src] has unwielded force [force_unwielded], wielded force [force_wielded] and throw_force [throw_force] when made from default material [material.use_name]")
 
 /obj/item/material/twohanded/Initialize(mapload, material_key)
 	. = ..()
@@ -140,6 +141,8 @@
 			P.die_off()
 
 /obj/item/material/twohanded/fireaxe/foam
+	desc = "This is a toy version of the mighty fire axe! Charge at your friends for maximum enjoyment while screaming at them."
+	description_info = "This is a toy version of the mighty fire axe! Charge at your friends for maximum enjoyment while screaming at them."
 	attack_verb = list("bonked","whacked")
 	force_wielded = 0
 	force_divisor = 0
@@ -151,36 +154,29 @@
 	sharp = 0
 	edge = 0
 	can_cleave = FALSE
-	desc = "This is a toy version of the mighty fire axe! Charge at your friends for maximum enjoyment while screaming at them."
-	description_info = "This is a toy version of the mighty fire axe! Charge at your friends for maximum enjoyment while screaming at them."
-
-/obj/item/material/twohanded/fireaxe/foam/Initialize(mapload, material_key)
-	return ..(mapload,"foam")
+	material = /datum/material/solid/foam
 
 /obj/item/material/twohanded/fireaxe/foam/afterattack()
 	return
 
 /obj/item/material/twohanded/fireaxe/bone
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
-	default_material = "bone"
+	material = MAT_BONE
 	icon_state = "fireaxe_mask0"
 	base_icon = "fireaxe_mask"
 	applies_material_color = 1
 
-/obj/item/material/twohanded/fireaxe/bone/Initialize(mapload, material_key)
-	return ..(mapload,"bone")
-
 /obj/item/material/twohanded/fireaxe/plasteel
-	default_material = "plasteel"
+	material = MAT_PLASTEEL
 
 /obj/item/material/twohanded/fireaxe/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL
 
 /obj/item/material/twohanded/fireaxe/scythe/plasteel
-	default_material = "plasteel"
+	material = MAT_PLASTEEL
 
 /obj/item/material/twohanded/fireaxe/scythe/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL
 
 /obj/item/material/twohanded/fireaxe/scythe
 	icon_state = "scythe0"
@@ -193,11 +189,11 @@
 
 //spears, bay edition
 /obj/item/material/twohanded/spear
-	icon_state = "spearglass0"
-	base_icon = "spearglass"
 	name = "spear"
 	desc = "A haphazardly-constructed yet still deadly weapon of ancient design."
 	description_info = "This weapon can strike from two tiles away, and over certain objects such as tables, or other people."
+	icon_state = "spearglass0"
+	base_icon = "spearglass"
 	force = 10
 	w_class = ITEMSIZE_LARGE
 	slot_flags = SLOT_BACK
@@ -210,7 +206,7 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	mob_throw_hit_sound =  'sound/weapons/pierce.ogg'
 	attack_verb = list("attacked", "poked", "jabbed", "torn", "gored")
-	default_material = "glass"
+	material = MAT_GLASS
 	applies_material_color = 0
 	fragile = 1	//It's a haphazard thing of glass, wire, and steel
 	reach = 2 // Spears are long.
@@ -268,19 +264,16 @@
 /obj/item/material/twohanded/spear/bone
 	name = "spear"
 	desc = "A primitive yet deadly weapon of ancient design."
-	default_material = "bone"
+	material = MAT_BONE
 	icon_state = "spear_mask0"
 	base_icon = "spear_mask"
 	applies_material_color = 1
 
-/obj/item/material/twohanded/spear/bone/Initialize(mapload, material_key)
-	..(mapload,"bone")
-
 /obj/item/material/twohanded/spear/plasteel
-	default_material = "plasteel"
+	material = MAT_PLASTEEL
 
 /obj/item/material/twohanded/spear/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL
 
 //Sledgehammers. Slightly less force than fire axes, but breaks bones easier.
 

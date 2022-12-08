@@ -30,7 +30,6 @@ Protectiveness | Armor %
 	var/datum/material/material = null
 	var/applies_material_color = TRUE
 	var/unbreakable = FALSE
-	var/default_material = null // Set this to something else if you want material attributes on init.
 	var/material_armor_modifer = 1 // Adjust if you want seperate types of armor made from the same material to have different protectiveness (e.g. makeshift vs real armor)
 	/// multiplier for mat slowdown from weight
 	var/material_weight_factor
@@ -38,7 +37,7 @@ Protectiveness | Armor %
 /obj/item/clothing/Initialize(mapload, material_key)
 	. = ..()
 	if(!material_key)
-		material_key = default_material
+		material_key = material
 	if(material_key) // May still be null if a material was not specified as a default.
 		set_material(material_key)
 
@@ -50,7 +49,7 @@ Protectiveness | Armor %
 	return material
 
 // Debating if this should be made an /obj/item/ proc.
-/obj/item/clothing/proc/set_material(var/new_material)
+/obj/item/clothing/proc/set_material(new_material)
 	material = GET_MATERIAL_REF(new_material)
 	if(!material)
 		qdel(src)
@@ -195,7 +194,7 @@ Bes
 
 /obj/item/clothing/suit/armor/material
 	name = "armor"
-	default_material = MAT_STEEL
+	material = MAT_STEEL
 
 /obj/item/clothing/suit/armor/material/makeshift
 	name = "sheet armor"
@@ -203,10 +202,10 @@ Bes
 	icon_state = "material_armor_makeshift"
 
 /obj/item/clothing/suit/armor/material/makeshift/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL
 
 /obj/item/clothing/suit/armor/material/makeshift/glass
-	default_material = "glass"
+	material = MAT_GLASS
 
 // Used to craft sheet armor, and possibly other things in the Future(tm).
 /obj/item/material/armor_plating
@@ -282,7 +281,7 @@ Bes
 /obj/item/clothing/head/helmet/material
 	name = "helmet"
 	flags_inv = HIDEEARS|HIDEEYES|BLOCKHAIR
-	default_material = MAT_STEEL
+	material = MAT_STEEL
 
 /obj/item/clothing/head/helmet/material/makeshift
 	name = "bucket"
@@ -291,4 +290,4 @@ Bes
 	icon_state = "material_armor_makeshift"
 
 /obj/item/clothing/head/helmet/material/makeshift/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL

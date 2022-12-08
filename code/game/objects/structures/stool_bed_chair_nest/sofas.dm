@@ -9,7 +9,7 @@
 	//TODO: ATOM_MATERIAL_FLAGS @Zandario
 	applies_material_color = TRUE
 	material = MAT_WOOD
-	reinf_material = MAT_CARPET
+	reinf_material = /datum/material/solid/cloth/red
 
 	var/mutable_appearance/armrest
 
@@ -28,10 +28,10 @@
 	gen_armrest()
 
 /obj/structure/bed/chair/sofa/get_default_material()
-	return MAT_WOOD
+	return /datum/material/solid/wood
 
 /obj/structure/bed/chair/sofa/get_default_reinf_material()
-	return MAT_CARPET
+	return /datum/material/solid/cloth/red
 
 /obj/structure/bed/chair/sofa/update_layer() //only the armrest/back of this chair should cover the mob.
 	return

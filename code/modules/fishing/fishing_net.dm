@@ -8,9 +8,6 @@
 	It has a reach of two tiles, and can be emptied by activating it in-hand. \
 	This version will not keep creatures inside in stasis, and will be heavier if it contains a mob."
 
-	var/empty_state = "net"
-	var/contain_state = "net_full"
-
 	w_class = ITEMSIZE_SMALL
 	item_flags = ITEM_NOBLUDGEON
 
@@ -18,7 +15,10 @@
 
 	reach = 2
 
-	default_material = "cloth"
+	material = MAT_CLOTH
+
+	var/empty_state = "net"
+	var/contain_state = "net_full"
 
 	var/list/accepted_mobs = list(/mob/living/simple_mob/animal/passive/fish)
 

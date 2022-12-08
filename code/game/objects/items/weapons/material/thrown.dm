@@ -21,10 +21,10 @@
 		M.adjustToxLoss(rand(20,40))
 
 /obj/item/material/star/ninja
-	default_material = "uranium"
+	material = MAT_URANIUM // Why is this made of Uranium. Whatever. @Zandario
 
 /obj/item/material/star/plasteel
-	default_material = "plasteel"
+	material = MAT_PLASTEEL
 
 /obj/item/material/star/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL

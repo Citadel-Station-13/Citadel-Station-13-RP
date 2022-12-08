@@ -1,4 +1,4 @@
-//Todo: add leather and cloth for arbitrary coloured stools.
+//TODO: MURDER THIS WITH NEW SMOOTHING
 var/global/list/stool_cache = list() //haha stool
 
 /obj/item/stool
@@ -10,7 +10,7 @@ var/global/list/stool_cache = list() //haha stool
 	force = 10
 	throw_force = 10
 	w_class = ITEMSIZE_HUGE
-	var/datum/material/material
+	var/datum/material/material = /datum/material/solid/metal/steel
 	var/datum/material/reinf_material
 
 /obj/item/stool/padded
@@ -19,7 +19,7 @@ var/global/list/stool_cache = list() //haha stool
 /obj/item/stool/Initialize(mapload, new_material, new_padding_material)
 	. = ..(mapload)
 	if(!new_material)
-		new_material = MAT_STEEL
+		new_material = /datum/material/solid/metal/steel
 	material = GET_MATERIAL_REF(new_material)
 	if(new_padding_material)
 		reinf_material = GET_MATERIAL_REF(new_padding_material)
@@ -27,17 +27,20 @@ var/global/list/stool_cache = list() //haha stool
 		qdel(src)
 		return
 	force = round(material.get_blunt_damage()*0.4)
-	update_icon()
+	update_appearance()
 
-/obj/item/stool/padded/Initialize(mapload, new_material)
-	. = ..(mapload, "steel", "carpet")
+/obj/item/stool/padded
+	reinf_material = /datum/material/solid/cloth/red
 
 /obj/item/stool/update_icon()
 	// Prep icon.
 	icon_state = ""
 	overlays.Cut()
 	// Base icon.
-	var/cache_key = "stool-[material.name]"
+	var/datum/material/reinf_mat_ref
+	if(reinf_material)
+		reinf_mat_ref = GET_MATERIAL_REF(reinf_material)
+	var/cache_key = "stool-[material.name]-[reinf_material ? reinf_mat_ref.name : "none"]"
 	if(isnull(stool_cache[cache_key]))
 		var/image/I = image(icon, base_icon_state)
 		I.color = material.color
@@ -45,33 +48,50 @@ var/global/list/stool_cache = list() //haha stool
 	overlays |= stool_cache[cache_key]
 	// Padding overlay.
 	if(reinf_material)
-		var/padding_cache_key = "stool-padding-[reinf_material.name]"
+		var/padding_cache_key = "stool-padding-[reinf_mat_ref.name]"
 		if(isnull(stool_cache[padding_cache_key]))
 			var/image/I =  image(icon, "stool_padding")
-			I.color = reinf_material.color
+			I.color = reinf_mat_ref.color
 			stool_cache[padding_cache_key] = I
 		overlays |= stool_cache[padding_cache_key]
-	// Strings.
+
+
+/obj/item/stool/update_name(updates)
+	. = ..()
+	var/datum/material/reinf_mat_ref
 	if(reinf_material)
-		name = "[reinf_material.display_name] [initial(name)]" //this is not perfect but it will do for now.
-		desc = "A padded stool. Apply butt. It's made of [material.use_name] and covered with [reinf_material.use_name]."
+		reinf_mat_ref = GET_MATERIAL_REF(reinf_material)
+	if(ispath(reinf_mat_ref, /datum/material))
+		name = "[reinf_mat_ref.display_name] [initial(name)]" //this is not perfect but it will do for now.
 	else
 		name = "[material.display_name] [initial(name)]"
-		desc = "A stool. Apply butt with care. It's made of [material.use_name]."
 
-/obj/item/stool/proc/add_padding(var/padding_type)
+/obj/item/stool/update_desc(updates)
+	. = ..()
+	if(!reinf_material)
+		desc = "A stool. Apply butt with care. It's made of [material.use_name]."
+		return
+
+	var/datum/material/reinf_mat_ref
+	if(reinf_material)
+		reinf_mat_ref = GET_MATERIAL_REF(reinf_material)
+	if(ispath(reinf_mat_ref, /datum/material))
+		desc = "A padded stool. Apply butt. It's made of [material.use_name] and covered with [reinf_mat_ref.use_name]."
+
+
+/obj/item/stool/proc/add_padding(padding_type)
 	reinf_material = GET_MATERIAL_REF(padding_type)
-	update_icon()
+	update_appearance()
 
 /obj/item/stool/proc/remove_padding()
 	if(reinf_material)
 		reinf_material.place_sheet(get_turf(src))
 		reinf_material = null
-	update_icon()
+	update_appearance()
 
 /obj/item/stool/attack(mob/M as mob, mob/user as mob)
 	if (prob(5) && istype(M,/mob/living))
-		user.visible_message("<span class='danger'>[user] breaks [src] over [M]'s back!</span>")
+		user.visible_message(SPAN_DANGER("[user] breaks [src] over [M]'s back!"))
 		user.setClickCooldown(user.get_attack_speed())
 		user.do_attack_animation(M)
 		user.drop_item_to_ground(src, INV_OP_FORCE)

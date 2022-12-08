@@ -10,10 +10,10 @@ var/global/list/ashtray_cache = list()
 	var/max_butts = 10
 
 /obj/item/material/ashtray/Initialize(mapload, material_name)
-	. = ..(mapload, material_name)
 	if(!material)
 		qdel(src)
 		return
+	. = ..(mapload, material_name)
 	max_butts = round(material.hardness/5) //This is arbitrary but whatever.
 	src.pixel_y = rand(-5, 5)
 	src.pixel_x = rand(-6, 6)
@@ -23,7 +23,7 @@ var/global/list/ashtray_cache = list()
 /obj/item/material/ashtray/update_icon()
 	color = null
 	overlays.Cut()
-	var/cache_key = "base-[material.name]"
+	var/cache_key = "base-[material ? material.name : "null"]"
 	if(!ashtray_cache[cache_key])
 		var/image/I = image('icons/obj/objects.dmi',"ashtray")
 		I.color = material.color
@@ -93,10 +93,10 @@ var/global/list/ashtray_cache = list()
 	return ..()
 
 /obj/item/material/ashtray/plastic/Initialize(mapload, material_key)
-	return ..(mapload, "plastic")
+	return ..(mapload, MAT_PLASTIC)
 
 /obj/item/material/ashtray/bronze/Initialize(mapload, material_key)
-	return ..(mapload, "bronze")
+	return ..(mapload, MAT_BRONZE)
 
 /obj/item/material/ashtray/glass/Initialize(mapload, material_key)
-	return ..(mapload, "glass")
+	return ..(mapload, MAT_GLASS)

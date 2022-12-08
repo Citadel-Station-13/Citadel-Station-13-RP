@@ -26,19 +26,25 @@
 	var/force_divisor = 0.3
 	var/thrown_force_divisor = 0.3
 	var/dulled_divisor = 0.1	//Just drops the damage to a tenth
-	var/default_material = MAT_STEEL
-	var/datum/material/material
+	var/datum/material/material = MAT_STEEL
 	var/drops_debris = 1
 
 /obj/item/material/Initialize(mapload, material_key)
 	. = ..()
-	if(!material_key)
-		material_key = GET_MATERIAL_REF(default_material)
+
+	// BEHOLD ME REALLY MAKING SURE I GET THE MATERIAL REFERENCE AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA @Zandario
+	if(ispath(material_key, /datum/material))
+		material_key = GET_MATERIAL_REF(material_key)
+	if(material_key)
+		material = GET_MATERIAL_REF(material_key)
+	else
+		material = GET_MATERIAL_REF(get_default_material())
+	set_material(material)
+
 	set_material(material_key)
 	if(!material)
 		qdel(src)
 		return
-
 	matter = material.get_matter()
 	if(matter.len)
 		for(var/material_type in matter)
@@ -48,8 +54,11 @@
 	if(!(material.conductive))
 		src.flags |= NOCONDUCT
 
-/obj/item/material/get_material()
-	return GET_MATERIAL_REF(material)
+/obj/item/material/get_default_material()
+	if (initial(material)) // plz
+		return initial(material)
+	else
+		return MAT_STEEL // oh no
 
 /obj/item/material/proc/update_force()
 	if(edge || sharp)
@@ -67,13 +76,14 @@
 		throw_force = 150
 
 	//spawn(1)
-	//	to_chat(world, "[src] has force [force] and throw_force [throw_force] when made from default material [material.name]")
+	//	to_chat(world, "[src] has force [force] and throw_force [throw_force] when made from default material [material.use_name]")
 
-/obj/item/material/proc/set_material(var/new_material)
-	material = GET_MATERIAL_REF(new_material)
-	if(!material)
+/obj/item/material/proc/set_material(mateiral_key)
+	if(!ispath(mateiral_key, /datum/material) && !material)
 		qdel(src)
+		stack_trace("set_material called on [src] with [isnull(mateiral_key) ? "a null mateiral_key" : mateiral_key ]!")
 	else
+		material = GET_MATERIAL_REF(mateiral_key || material)
 		name = "[material.display_name] [initial(name)]"
 		health = round(material.integrity/10)
 		if(applies_material_color)

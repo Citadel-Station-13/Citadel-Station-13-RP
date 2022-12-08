@@ -26,8 +26,12 @@
 	. = ..()
 	remove_atom_colour(FIXED_COLOUR_PRIORITY)
 
-	material = GET_MATERIAL_REF(new_material ? new_material : material)
-	reinf_material = GET_MATERIAL_REF(new_reinf_material? new_reinf_material : reinf_material)
+	material = GET_MATERIAL_REF(new_material ? new_material : get_default_material())
+
+	if(new_reinf_material)
+		reinf_material = new_reinf_material
+	if(reinf_material) // We require a material, but don't require a reinf_material.
+		reinf_material = GET_MATERIAL_REF(reinf_material)
 
 	if(!istype(material))
 		qdel(src)
@@ -36,10 +40,10 @@
 	update_appearance()
 
 /obj/structure/bed/get_default_material()
-	return /datum/material/solid/metal/steel
+	return initial(material) || /datum/material/solid/metal/steel
 
 /obj/structure/bed/get_default_reinf_material()
-	return null
+	return null || initial(reinf_material)
 
 // Reuse the cache/code from stools, todo maybe unify.
 /obj/structure/bed/update_overlays()
@@ -48,7 +52,7 @@
 	icon_state = ""
 	cut_overlays()
 	// Base icon.
-	var/cache_key = "[base_icon_state]-[material.name]"
+	var/cache_key = "[base_icon_state]-[material ? material.uid : "null"]-[reinf_material ? reinf_material.uid : "null"]"
 	if(isnull(stool_cache[cache_key]))
 		var/image/I = image(icon, base_icon_state)
 		if(applies_material_color)
@@ -57,7 +61,7 @@
 	add_overlay(stool_cache[cache_key])
 	// Padding overlay.
 	if(reinf_material)
-		var/padding_cache_key = "[base_icon_state]-padding-[reinf_material.name]"
+		var/padding_cache_key = "[base_icon_state]-padding-[material ? material.uid : "null"]-[reinf_material ? reinf_material.uid : "null"]"
 		if(isnull(stool_cache[padding_cache_key]))
 			var/image/I =  image(icon, "[base_icon_state]_padding")
 			I.color = reinf_material ? reinf_material.color : material.color

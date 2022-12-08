@@ -51,6 +51,7 @@
 	attack_verb = list("hit", "bludgeoned", "whacked", "bonked")
 	force_divisor = 0.1
 	thrown_force_divisor = 0.1
+	material = MAT_STEEL
 
 /obj/item/material/wirerod/attackby(var/obj/item/I, mob/user as mob)
 	..()

@@ -15,6 +15,7 @@
 	edge = 1
 	force_divisor = 0.1 // 6 when wielded with hardness 60 (steel)
 	thrown_force_divisor = 0.25 // 5 when thrown with weight 20 (steel)
+	material = MAT_STEEL
 	var/loaded      //Descriptive string for currently loaded food object.
 	var/scoop_food = 1
 
@@ -62,31 +63,31 @@
 	edge = 0
 
 /obj/item/material/kitchen/utensil/fork/plastic
-	default_material = "plastic"
+	material = MAT_PLASTIC
 
 /obj/item/material/kitchen/utensil/fork/plasteel
-	default_material = "plasteel"
+	material = MAT_PLASTEEL
 
 /obj/item/material/kitchen/utensil/fork/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL
 
 /obj/item/material/kitchen/utensil/spoon/plasteel
-	default_material = "plasteel"
+	material = MAT_PLASTEEL
 
 /obj/item/material/kitchen/utensil/spoon/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL
 
 /obj/item/material/knife/plasteel
-	default_material = "plasteel"
+	material = MAT_PLASTEEL
 
 /obj/item/material/knife/durasteel
-	default_material = "durasteel"
+	material = MAT_DURASTEEL
 
 /obj/item/material/kitchen/rollingpin/plasteel
-  default_material = "plasteel"
+  material = MAT_PLASTEEL
 
 /obj/item/material/kitchen/rollingpin/durasteel
-  default_material = "durasteel"
+  material = MAT_DURASTEEL
 
 /obj/item/material/kitchen/utensil/spoon
 	name = "spoon"
@@ -98,7 +99,7 @@
 	force_divisor = 0.1 //2 when wielded with weight 20 (steel)
 
 /obj/item/material/kitchen/utensil/spoon/plastic
-	default_material = "plastic"
+	material = MAT_PLASTIC
 
 /*
  * Knives
@@ -113,7 +114,7 @@
 	return ..()
 */
 /obj/item/material/knife/plastic
-	default_material = "plastic"
+	material = MAT_PLASTIC
 
 /*
  * Rolling Pins
@@ -124,7 +125,7 @@
 	desc = "Used to knock out the Bartender."
 	icon_state = "rolling_pin"
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
-	default_material = "wood"
+	material = MAT_WOOD
 	force_divisor = 0.7 // 10 when wielded with weight 15 (wood)
 	dulled_divisor = 0.75	// Still a club
 	thrown_force_divisor = 1 // as above

@@ -50,22 +50,22 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	var/protofilter //String to filter protolathe designs by
 	var/circuitfilter //String to filter circuit designs by
 
-/obj/machinery/computer/rdconsole/proc/CallMaterialName(var/ID)
+/obj/machinery/computer/rdconsole/proc/CallMaterialName(ID)
 	var/return_name = ID
 	switch(return_name)
-		if("metal")
+		if(MAT_STEEL)
 			return_name = "Metal"
-		if("glass")
+		if(MAT_GLASS)
 			return_name = "Glass"
-		if("gold")
+		if(MAT_GOLD)
 			return_name = "Gold"
-		if("silver")
+		if(MAT_SILVER)
 			return_name = "Silver"
-		if("phoron")
+		if(MAT_PHORON)
 			return_name = "Solid Phoron"
-		if("uranium")
+		if(MAT_URANIUM)
 			return_name = "Uranium"
-		if("diamond")
+		if(MAT_DIAMOND)
 			return_name = "Diamond"
 	return return_name
 

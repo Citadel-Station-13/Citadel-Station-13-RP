@@ -94,12 +94,12 @@
 		stack_paths[S.name] = stacktype
 		qdel(S)
 
-	stack_storage["glass"] = 0
-	stack_paths["glass"] = /obj/item/stack/material/glass
+	stack_storage[MAT_GLASS] = 0
+	stack_paths[MAT_GLASS] = /obj/item/stack/material/glass
 	stack_storage[MAT_STEEL] = 0
 	stack_paths[MAT_STEEL] = /obj/item/stack/material/steel
-	stack_storage["plasteel"] = 0
-	stack_paths["plasteel"] = /obj/item/stack/material/plasteel
+	stack_storage[MAT_PLASTEEL] = 0
+	stack_paths[MAT_PLASTEEL] = /obj/item/stack/material/plasteel
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/mineral/stacking_machine/LateInitialize()
