@@ -1,4 +1,20 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"at" = (
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 9
+	},
+/obj/structure/curtain/open/shower,
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
+	},
+/obj/machinery/shower{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/white,
+/area/quartermaster/mining_airlock)
 "aW" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/outdoors/safeice/lythios43c/indoors,
@@ -357,6 +373,26 @@
 "vr" = (
 /turf/simulated/floor/plating,
 /area/quartermaster/mining_airlock)
+"vD" = (
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 10
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals10{
+	dir = 9
+	},
+/obj/structure/curtain/open/shower,
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
+	},
+/obj/machinery/shower{
+	dir = 1
+	},
+/obj/structure/sign/signnew/radiation{
+	pixel_x = -32;
+	pixel_y = -32
+	},
+/turf/simulated/floor/tiled/white,
+/area/quartermaster/mining_airlock)
 "wH" = (
 /obj/effect/zone_divider,
 /turf/simulated/floor/outdoors/snow/lythios43c,
@@ -472,6 +508,10 @@
 	},
 /turf/simulated/floor/plating,
 /area/quartermaster/mining_airlock)
+"AF" = (
+/obj/machinery/washing_machine,
+/turf/simulated/floor/tiled/techmaint,
+/area/quartermaster/mining_airlock)
 "AN" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -551,6 +591,9 @@
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c/indoors,
 /area/rift/surfacebase/underground/under1)
+"Iw" = (
+/turf/simulated/floor/tiled/techmaint,
+/area/quartermaster/mining_airlock)
 "Ji" = (
 /obj/machinery/atmospherics/component/binary/passive_gate/on{
 	dir = 8;
@@ -631,7 +674,7 @@
 	},
 /obj/structure/sign/signnew/radiation{
 	pixel_x = -32;
-	pixel_y = 32
+	pixel_y = -32
 	},
 /obj/structure/sign/warning{
 	pixel_x = -32
@@ -667,9 +710,7 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/quartermaster/mining_airlock)
 "Qt" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/obj/machinery/door/firedoor/glass,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/quartermaster/mining_airlock)
 "QE" = (
@@ -19375,9 +19416,9 @@ PG
 jJ
 yh
 sc
+vD
 jJ
 Yr
-KS
 KS
 KS
 KS
@@ -19569,8 +19610,8 @@ JZ
 jJ
 yh
 bk
-Qt
-KS
+at
+jJ
 KS
 KS
 KS
@@ -19763,8 +19804,8 @@ RA
 Zn
 gi
 pj
-Qt
-KS
+Iw
+jJ
 KS
 KS
 KS
@@ -19957,8 +19998,8 @@ ux
 oE
 mv
 Ki
-Qt
-KS
+AF
+jJ
 KS
 KS
 KS
@@ -20151,9 +20192,9 @@ et
 jJ
 Qn
 Es
+AF
 jJ
 Yr
-KS
 KS
 KS
 dq
@@ -20345,8 +20386,8 @@ uH
 jJ
 jJ
 jJ
+jJ
 QE
-KS
 KS
 KS
 KS
