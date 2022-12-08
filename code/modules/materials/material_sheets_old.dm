@@ -2,6 +2,7 @@
 
 /obj/item/stack/material/iron
 	name = "iron"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-silver"
 	default_type = "iron"
 	apply_colour = 1
@@ -9,6 +10,7 @@
 
 /obj/item/stack/material/lead
 	name = "lead"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-adamantine"
 	default_type = "lead"
 	apply_colour = 1
@@ -16,6 +18,7 @@
 
 /obj/item/stack/material/sandstone
 	name = "sandstone brick"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-sandstone"
 	default_type = "sandstone"
 	no_variants = FALSE
@@ -24,6 +27,7 @@
 
 /obj/item/stack/material/marble
 	name = "marble brick"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-marble"
 	default_type = "marble"
 	no_variants = FALSE
@@ -32,6 +36,7 @@
 
 /obj/item/stack/material/diamond
 	name = "diamond"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-diamond"
 	default_type = "diamond"
 	drop_sound = 'sound/items/drop/glass.ogg'
@@ -39,30 +44,35 @@
 
 /obj/item/stack/material/uranium
 	name = "uranium"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-uranium"
 	default_type = "uranium"
 	no_variants = FALSE
 
 /obj/item/stack/material/phoron
 	name = "solid phoron"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-phoron"
 	default_type = "phoron"
 	no_variants = FALSE
 
 /obj/item/stack/material/plastic
 	name = "plastic"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-plastic"
 	default_type = "plastic"
 	no_variants = FALSE
 
 /obj/item/stack/material/gold
 	name = "gold"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-gold"
 	default_type = "gold"
 	no_variants = FALSE
 
 /obj/item/stack/material/silver
 	name = "silver"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-silver"
 	default_type = "silver"
 	no_variants = FALSE
@@ -70,6 +80,7 @@
 //Valuable resource, cargo can sell it.
 /obj/item/stack/material/platinum
 	name = "platinum"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-adamantine"
 	default_type = /datum/material/solid/metal/platinum
 	no_variants = FALSE
@@ -77,6 +88,7 @@
 //Extremely valuable to Research.
 /obj/item/stack/material/mhydrogen
 	name = "metallic hydrogen"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-mythril"
 	default_type = "mhydrogen"
 	no_variants = FALSE
@@ -84,6 +96,7 @@
 //Fuel for MRSPACMAN generator.
 /obj/item/stack/material/tritium
 	name = "tritium"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-silver"
 	default_type = "tritium"
 	apply_colour = 1
@@ -91,6 +104,7 @@
 
 /obj/item/stack/material/osmium
 	name = "osmium"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-silver"
 	default_type = "osmium"
 	apply_colour = 1
@@ -100,6 +114,7 @@
 // Fusion fuel.
 /obj/item/stack/material/deuterium
 	name = "deuterium"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-silver"
 	default_type = "deuterium"
 	apply_colour = 1
@@ -107,6 +122,7 @@
 
 /obj/item/stack/material/steel
 	name = "steel"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-metal"
 	default_type = MAT_STEEL
 	no_variants = FALSE
@@ -117,6 +133,7 @@
 
 /obj/item/stack/material/plasteel
 	name = "plasteel"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-plasteel"
 	default_type = "plasteel"
 	no_variants = FALSE
@@ -127,6 +144,7 @@
 
 /obj/item/stack/material/durasteel
 	name = "durasteel"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-durasteel"
 	item_state = "sheet-metal"
 	default_type = "durasteel"
@@ -137,6 +155,7 @@
 
 /obj/item/stack/material/titanium
 	name = "titanium"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-silver"
 	item_state = "sheet-silver"
 	default_type = MAT_TITANIUM
@@ -149,6 +168,7 @@
 // Particle Smasher and Exotic material.
 /obj/item/stack/material/verdantium
 	name = "verdantium"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-wavy"
 	item_state = "mhydrogen"
 	default_type = MAT_VERDANTIUM
@@ -157,6 +177,7 @@
 
 /obj/item/stack/material/morphium
 	name = "morphium"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-wavy"
 	item_state = "mhydrogen"
 	default_type = MAT_MORPHIUM
@@ -169,6 +190,7 @@
 
 /obj/item/stack/material/valhollide
 	name = "valhollide"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-gem"
 	item_state = "diamond"
 	default_type = MAT_VALHOLLIDE
@@ -178,6 +200,7 @@
 // Forged in the equivalent of Hell, one piece at a time.
 /obj/item/stack/material/supermatter
 	name = "supermatter"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-super"
 	item_state = "diamond"
 	default_type = MAT_SUPERMATTER
@@ -234,6 +257,7 @@
 
 /obj/item/stack/material/wood
 	name = "wooden plank"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-wood"
 	default_type = MAT_WOOD
 	strict_color_stacking = TRUE
@@ -253,6 +277,7 @@
 
 /obj/item/stack/material/log
 	name = "log"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-log"
 	default_type = MAT_LOG
 	no_variants = FALSE
@@ -301,6 +326,7 @@
 
 /obj/item/stack/material/cloth
 	name = "cloth"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-cloth"
 	default_type = "cloth"
 	no_variants = FALSE
@@ -311,6 +337,7 @@
 
 /obj/item/stack/material/resin
 	name = "resin"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-resin"
 	default_type = "resin"
 	no_variants = TRUE
@@ -320,6 +347,7 @@
 
 /obj/item/stack/material/cardboard
 	name = "cardboard"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-card"
 	default_type = "cardboard"
 	no_variants = FALSE
@@ -331,18 +359,21 @@
 /obj/item/stack/material/snow
 	name = "snow"
 	desc = "The temptation to build a snowman rises."
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-snow"
 	default_type = "snow"
 
 /obj/item/stack/material/snowbrick
 	name = "snow brick"
 	desc = "For all of your igloo building needs."
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-snowbrick"
 	default_type = MAT_SNOW_PACKED
 
 /obj/item/stack/material/leather
 	name = "leather"
 	desc = "The by-product of mob grinding."
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-leather"
 	default_type = MAT_LEATHER
 	no_variants = FALSE
@@ -354,6 +385,7 @@
 /obj/item/stack/material/chitin
 	name = "chitin"
 	desc = "The by-product of mob grinding."
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "chitin"
 	default_type = MAT_CHITIN
 	no_variants = FALSE
@@ -364,6 +396,7 @@
 
 /obj/item/stack/material/glass
 	name = "glass"
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-glass"
 	default_type = "glass"
 	no_variants = FALSE
@@ -395,6 +428,7 @@
 /obj/item/stack/material/bananium
 	name = "bananium"
 	desc = "When smelted, Vaudium takes on a bright yellow hue and remains pliable, growing rigid when met with a forceful impact."
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-clown"
 	default_type = "bananium"
 	no_variants = FALSE
@@ -404,6 +438,7 @@
 /obj/item/stack/material/silencium
 	name = "silencium"
 	desc = "When compressed, Vaudium loses its color, gaining distinctive black bands and becoming intensely rigid."
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-mime"
 	default_type = "silencium"
 	no_variants = FALSE
@@ -413,6 +448,7 @@
 /obj/item/stack/material/brass
 	name = "brass"
 	desc = "This stable alloy is often used in complex mechanisms due to its versatility, softness, and solid head conduction."
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-brass"
 	default_type = "brass"
 	no_variants = FALSE
@@ -422,6 +458,7 @@
 /obj/item/stack/material/bone
 	name = "bone"
 	desc = "These dense calcium structures are a common support system for organic life."
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-bone"
 	default_type = "bone"
 	no_variants = FALSE
@@ -431,6 +468,7 @@
 /obj/item/stack/material/copper
 	name = "copper"
 	desc = "This common metal remains a popular choice as an electrical and thermal conductor due to how easily it can be worked."
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-copper"
 	default_type = "copper"
 	no_variants = FALSE
@@ -442,6 +480,7 @@
 	name = "wax"
 	singular_name = "wax piece"
 	desc = "Soft substance produced by bees. Used to make candles."
+	icon = 'icons/obj/stacks.dmi'
 	icon_state = "sheet-rtransparent"
 	apply_colour = 1
 	default_type = MAT_WAX
