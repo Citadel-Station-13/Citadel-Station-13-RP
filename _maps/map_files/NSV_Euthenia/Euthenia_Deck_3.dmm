@@ -8373,6 +8373,15 @@
 	},
 /turf/simulated/floor/tiled/monotile,
 /area/security/brig)
+"hVt" = (
+/obj/structure/sign/deck3{
+	pixel_y = 32
+	},
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/space)
 "hWz" = (
 /turf/simulated/floor,
 /area/quartermaster/warehouse)
@@ -15595,6 +15604,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/psych_ward)
+"ous" = (
+/obj/structure/cable/green{
+	icon_state = "32-8"
+	},
+/turf/simulated/open,
+/area/space)
 "ouC" = (
 /obj/machinery/atmospherics/pipe/simple/visible/cyan{
 	dir = 5
@@ -48357,7 +48372,7 @@ oTA
 oTA
 oTA
 lyN
-vWE
+ohL
 vWE
 rvq
 orT
@@ -48551,7 +48566,7 @@ oTA
 oTA
 oTA
 lyN
-eXV
+hVt
 vWE
 rvq
 bIq
@@ -48745,7 +48760,7 @@ oTA
 oTA
 oTA
 lyN
-vWE
+cHo
 cBg
 rvq
 fzv
@@ -48939,7 +48954,7 @@ oTA
 oTA
 oTA
 lyN
-vWE
+ous
 kdM
 rvq
 dam

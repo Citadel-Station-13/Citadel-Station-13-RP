@@ -663,6 +663,9 @@
 /area/library/study)
 "oX" = (
 /obj/machinery/door/airlock/maintenance,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
 /turf/simulated/floor/plating,
 /area/library)
 "pb" = (
@@ -710,11 +713,11 @@
 /turf/simulated/floor/plating,
 /area/space)
 "pt" = (
-/obj/structure/transit_tube/high_velocity{
-	icon_state = "S-NE"
+/obj/structure/cable/green{
+	icon_state = "2-8"
 	},
-/turf/space,
-/area/space)
+/turf/simulated/floor/carpet/bcarpet,
+/area/library)
 "py" = (
 /obj/structure/lattice,
 /turf/space,
@@ -1075,6 +1078,9 @@
 /area/ai)
 "ya" = (
 /obj/machinery/power/apc/direction_bump/south,
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
 /turf/simulated/floor/carpet/bcarpet,
 /area/library)
 "yb" = (
@@ -1133,10 +1139,10 @@
 /turf/simulated/floor/wood,
 /area/library)
 "yS" = (
-/obj/structure/transit_tube/high_velocity{
-	icon_state = "E-W-Pass"
+/obj/structure/cable/green{
+	icon_state = "4-8"
 	},
-/turf/simulated/floor/reinforced/airless,
+/turf/simulated/floor/plating,
 /area/space)
 "zj" = (
 /obj/machinery/light{
@@ -1373,10 +1379,13 @@
 /turf/simulated/floor/wood,
 /area/library)
 "Do" = (
-/obj/structure/transit_tube/high_velocity{
-	icon_state = "NE-SW"
+/obj/structure/cable/green{
+	icon_state = "16-0"
 	},
-/turf/space,
+/obj/structure/cable/green{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/plating,
 /area/space)
 "Dz" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
@@ -1434,11 +1443,10 @@
 /turf/simulated/floor/tiled,
 /area/rnd/research/testingrange)
 "Es" = (
-/obj/structure/lattice,
-/obj/structure/transit_tube/high_velocity{
-	icon_state = "E-W-Pass"
+/obj/structure/cable/green{
+	icon_state = "1-8"
 	},
-/turf/space,
+/turf/simulated/floor/plating,
 /area/space)
 "EF" = (
 /turf/simulated/floor/outdoors/grass/heavy/interior,
@@ -1606,11 +1614,10 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "If" = (
-/obj/structure/lattice,
-/obj/structure/transit_tube/high_velocity{
-	icon_state = "E-SW-NW"
+/obj/structure/cable/green{
+	icon_state = "1-4"
 	},
-/turf/space,
+/turf/simulated/floor/plating,
 /area/space)
 "Ik" = (
 /obj/structure/cable/green,
@@ -1740,10 +1747,10 @@
 /turf/simulated/floor/wood,
 /area/library)
 "KB" = (
-/obj/structure/transit_tube/high_velocity{
-	icon_state = "E-W-Pass"
+/obj/structure/cable/green{
+	icon_state = "1-2"
 	},
-/turf/space,
+/turf/simulated/floor/plating,
 /area/space)
 "KJ" = (
 /obj/structure/closet,
@@ -10289,7 +10296,7 @@ Za
 Za
 Za
 Za
-pt
+Za
 Za
 Za
 Za
@@ -10482,7 +10489,7 @@ Za
 Za
 Za
 Za
-Do
+Za
 Za
 Za
 Za
@@ -10675,7 +10682,7 @@ Za
 Za
 Za
 Za
-Do
+Za
 Za
 Za
 Za
@@ -10868,7 +10875,7 @@ Ji
 kL
 kL
 py
-If
+py
 py
 kL
 kL
@@ -11062,7 +11069,7 @@ kL
 kL
 kL
 Ji
-yS
+Ji
 Ji
 kL
 kL
@@ -11256,7 +11263,7 @@ sZ
 kL
 kL
 py
-Es
+py
 py
 kL
 kL
@@ -11450,7 +11457,7 @@ sZ
 kL
 Ji
 Za
-KB
+Za
 Za
 Ji
 kL
@@ -11644,7 +11651,7 @@ sZ
 kL
 Ji
 Za
-KB
+Za
 Za
 Ji
 kL
@@ -11838,7 +11845,7 @@ sZ
 kL
 Ji
 Za
-KB
+Za
 Za
 Ji
 kL
@@ -12032,7 +12039,7 @@ sZ
 kL
 Ji
 Za
-KB
+Za
 Za
 Ji
 kL
@@ -12226,7 +12233,7 @@ sZ
 kL
 Ji
 Za
-KB
+Za
 Za
 Ji
 kL
@@ -12420,7 +12427,7 @@ sZ
 kL
 Ji
 Za
-KB
+Za
 Za
 Ji
 kL
@@ -12614,7 +12621,7 @@ sZ
 kL
 Ji
 Za
-KB
+Za
 Za
 Ji
 kL
@@ -12808,7 +12815,7 @@ sZ
 kL
 Ji
 Za
-KB
+Za
 Za
 Ji
 kL
@@ -13002,7 +13009,7 @@ sZ
 kL
 Ji
 Za
-KB
+Za
 Za
 Ji
 kL
@@ -13196,7 +13203,7 @@ sZ
 kL
 Ji
 Za
-KB
+Za
 Za
 Ji
 kL
@@ -13390,7 +13397,7 @@ sZ
 kL
 Ji
 Za
-KB
+Za
 Za
 Ji
 kL
@@ -13584,7 +13591,7 @@ sZ
 kL
 Ji
 Za
-KB
+Za
 Za
 Ji
 kL
@@ -13778,7 +13785,7 @@ sZ
 kL
 Ji
 Za
-KB
+Za
 Za
 Ji
 kL
@@ -13972,7 +13979,7 @@ sZ
 kL
 Ji
 Za
-KB
+Za
 Za
 Ji
 kL
@@ -21336,8 +21343,8 @@ sZ
 sZ
 sZ
 sZ
-sZ
-sZ
+cB
+cB
 sZ
 sZ
 sZ
@@ -21530,8 +21537,8 @@ sZ
 sZ
 sZ
 sZ
-sZ
-sZ
+cB
+cB
 sZ
 sZ
 sZ
@@ -21724,8 +21731,8 @@ sZ
 sZ
 sZ
 sZ
-sZ
-sZ
+cB
+cB
 sZ
 sZ
 sZ
@@ -21918,8 +21925,8 @@ sZ
 sZ
 sZ
 sZ
-sZ
-sZ
+cB
+cB
 sZ
 sZ
 sZ
@@ -22112,8 +22119,8 @@ sZ
 sZ
 sZ
 sZ
-sZ
-sZ
+cB
+cB
 sZ
 sZ
 sZ
@@ -22306,8 +22313,8 @@ qr
 qr
 qr
 qr
-qr
-qr
+aD
+aD
 qr
 QK
 hM
@@ -24829,10 +24836,10 @@ aD
 aD
 aD
 aD
-aD
+pt
 oX
-sZ
-sZ
+KB
+If
 kL
 Ji
 Za
@@ -25026,7 +25033,7 @@ Xp
 OX
 qr
 Qk
-sZ
+yS
 kL
 Ji
 Za
@@ -25220,7 +25227,7 @@ Xp
 GQ
 qr
 Xw
-sZ
+yS
 kL
 Ji
 Za
@@ -25409,12 +25416,12 @@ Xp
 Xp
 Xp
 Xp
-QW
+sh
 Xp
-Xp
+QH
 qr
 sZ
-sZ
+yS
 kL
 Ji
 Za
@@ -25603,12 +25610,12 @@ xK
 Xp
 qZ
 Xp
-sh
-Xp
-QH
+QW
+qr
+qr
 qr
 sZ
-sZ
+yS
 kL
 Ji
 Za
@@ -25799,10 +25806,10 @@ ul
 RM
 RM
 ul
-qr
-qr
-sZ
-sZ
+Do
+KB
+KB
+Es
 kL
 Ji
 Za
