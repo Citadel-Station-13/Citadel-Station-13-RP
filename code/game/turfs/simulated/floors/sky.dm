@@ -76,7 +76,7 @@
 
 /turf/simulated/sky/lythios43c/Initialize()
 	. = ..()
-	set_light(2, 2, "#DAFFFA")
+	set_light(2, 2, src.color)
 
 /turf/simulated/sky/lythios43c/north
 	dir = NORTH
