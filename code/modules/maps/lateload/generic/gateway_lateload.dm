@@ -59,45 +59,45 @@ Use a subtype of this please if you are wanting to have your gateway map be acce
 /datum/map_z_level/gateway_lateload/gateway_destination
 	name = "Gateway Destination"
 
-//////////////////////////////
-/// Snow Outpost		   ///
-//////////////////////////////
+//////////////////////
+/// Snow Outpost   ///
+//////////////////////
 /datum/map_template/gateway_lateload/gateway/snow_outpost
 	name = "Snow Outpost"
 	desc = "Big snowy area with various outposts."
 	mappath = '_maps/away_missions/140x140/snow_outpost.dmm'
 	associated_map_datum = /datum/map_z_level/gateway_lateload/gateway_destination
 
-//////////////////////////////
-/// Zoo? 				   ///
-//////////////////////////////
+////////////
+/// Zoo? ///
+////////////
 /datum/map_template/gateway_lateload/gateway/zoo
 	name = "Zoo"
 	desc = "Gigantic space zoo"
 	mappath = '_maps/away_missions/140x140/zoo.dmm'
 	associated_map_datum = /datum/map_z_level/gateway_lateload/gateway_destination
 
-//////////////////////////////
-/// Carp Farm   		   ///
-//////////////////////////////
+///////////////////
+/// Carp Farm   ///
+///////////////////
 /datum/map_template/gateway_lateload/gateway/carpfarm
 	name = "Carp Farm"
 	desc = "Asteroid base surrounded by carp"
 	mappath = '_maps/away_missions/140x140/carpfarm.dmm'
 	associated_map_datum = /datum/map_z_level/gateway_lateload/gateway_destination
 
-//////////////////////////////
-/// Snow Field  		   ///
-//////////////////////////////
+///////////////////
+/// Snow Field  ///
+///////////////////
 /datum/map_template/gateway_lateload/gateway/snowfield
 	name = "Snow Field"
 	desc = "An old base in middle of snowy wasteland"
 	mappath = '_maps/away_missions/140x140/snowfield.dmm'
 	associated_map_datum = /datum/map_z_level/gateway_lateload/gateway_destination
 
-//////////////////////////////
-/// Listening Post		   ///
-//////////////////////////////
+//////////////////////
+/// Listening Post ///
+//////////////////////
 /datum/map_template/gateway_lateload/gateway/listeningpost
 	name = "Listening Post"
 	desc = "Asteroid-bound mercenary listening post"

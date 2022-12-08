@@ -1,5 +1,4 @@
 // Shuttle Path for lava land
-
 // -- Datums -- //
 /*/obj/effect/overmap/visitable/sector/lavaland
 	name = "Mineral Rich Planet"			// The name of the destination
@@ -8,15 +7,11 @@
 	color = "#4e4e4e"	// Bright yellow
 	initial_generic_waypoints = list("poid_main")
 */
-
-
 /obj/landmark/lavaland_entry
 	name = "lavaland_entry"
 
-
 /obj/landmark/lavaland_exit
 	name = "lavaland_exit"
-
 
 /obj/machinery/lavaland_entryportal
 	name = "Magmatic Rift Teleporter"
