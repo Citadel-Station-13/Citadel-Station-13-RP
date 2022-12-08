@@ -105,7 +105,7 @@
 
 /turf/simulated/sky/triumph/Initialize(mapload)
 	. = ..()
-	set_light(2, 2, "#FFBBBB")
+	set_light(2, 2, src.color)
 
 /turf/simulated/sky/triumph/north
 	dir = NORTH
