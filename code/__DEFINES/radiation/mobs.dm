@@ -9,7 +9,7 @@
 /// add radiation taking into account overdose
 #define RAD_MOB_ADDITIONAL(amt, rads) (amt * (1 / (((rads ** 1.5) * RAD_MOB_OVERDOSE_REDUCTION) + 1)))
 /// radiation to drop every second
-#define RAD_MOB_PASSIVE_LOSS_FOR(amt, dt) ((amt > 1000? ((amt / 1000) ** 1.5) : 1) * dt)
+#define RAD_MOB_PASSIVE_LOSS_FOR(amt, dt) ((amt > 1000? ((amt / 1000) ** 1.3) : 1) * dt)
 /// radiation below which we don't tick effects at all
 #define RAD_MOB_NEGLIGIBLE 500
 //? warning
@@ -21,14 +21,15 @@
 /// minimum amount for toxins
 #define RAD_MOB_TOXIN_THRESHOLD 500
 /// toxin damage per tick
-#define RAD_MOB_TOXIN_DAMAGE_FOR(amt, dt) (min(3, ((amt / 500) ** 1.2) * 0.1) * dt)
+#define RAD_MOB_TOXIN_DAMAGE_FOR(amt, dt) (min(3, (amt / 1000) * 0.1) * dt)
+// #define RAD_MOB_TOXIN_DAMAGE_FOR(amt, dt) (min(3, ((amt / 500) ** 1.2) * 0.1) * dt)
 /// toxin damage per tick, synths
 #define RAD_MOB_SYNTH_INSTABILITY_FOR(amt, dt) RAD_MOB_TOXIN_DAMAGE_FOR(amt, dt) // same for now
 //? burns
-	/// minimum amount for burns
-	#define RAD_MOB_BURN_THRESHOLD 1500 // boy you fucked up if your skin is blistering
-	/// burn per tick
-	#define RAD_MOB_BURN_DAMAGE_FOR(amt, dt) (min(5, (((amt - 1500) / 750) ** 1.5) * 0.1) * dt)
+/// minimum amount for burns
+#define RAD_MOB_BURN_THRESHOLD 1500 // boy you fucked up if your skin is blistering
+/// burn per tick
+#define RAD_MOB_BURN_DAMAGE_FOR(amt, dt) (min(5, (((amt - 1500) / 750) ** 1.3) * 0.1) * dt)
 /// do we burn synths
 // #define RAD_MOB_BURNS_SYNTHETICS
 /// burn per tick, synths
@@ -93,12 +94,12 @@
 
 #define RAD_MOB_CURE_STRENGTH_HYRONALIN(removed) (50 * removed)
 #define RAD_MOB_CURE_STRENGTH_ARITHRAZINE(removed) (100 * removed)
-#define RAD_MOB_CURE_STRENGTH_CLEANSALAZE(removed) (25 * removed)
-#define RAD_MOB_CURE_STRENGTH_MEDIGUN 150
+#define RAD_MOB_CURE_STRENGTH_CLEANSALAZE(removed) (50 * removed)
+#define RAD_MOB_CURE_STRENGTH_MEDIGUN 100
 #define RAD_MOB_CURE_STRENGTH_VODKA(removed) (20 * removed)
 #define RAD_MOB_CURE_STRENGTH_GODKA(removed) (100 * removed)
-#define RAD_MOB_CURE_ADHERENT_BATH 125
-#define RAD_MOB_CURE_SYNTH_CHARGER 100
+#define RAD_MOB_CURE_ADHERENT_BATH 75
+#define RAD_MOB_CURE_SYNTH_CHARGER 75
 #define RAD_MOB_CURE_PROTEAN_REGEN 50
 #define RAD_MOB_CURE_ANOMALY_BURST 500
 

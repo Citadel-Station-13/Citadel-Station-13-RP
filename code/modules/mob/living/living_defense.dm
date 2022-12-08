@@ -102,9 +102,9 @@
 /mob/living/rad_act(strength, datum/radiation_wave/wave)
 	. = ..()
 	if(wave)
-		afflict_radiation(strength * RAD_MOB_ACT_COEFFICIENT - RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE * wave.relevant_count)
+		afflict_radiation(strength * RAD_MOB_ACT_COEFFICIENT - RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE * wave.relevant_count, TRUE)
 	else
-		afflict_radiation(strength * RAD_MOB_ACT_COEFFICIENT - RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE)
+		afflict_radiation(strength * RAD_MOB_ACT_COEFFICIENT - RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE, TRUE)
 
 /mob/living/bullet_act(var/obj/item/projectile/P, var/def_zone)
 

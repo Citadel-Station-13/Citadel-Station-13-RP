@@ -238,14 +238,14 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 
 /* DEPRECATED - TODO: REMOVE EVERYWHERE */
 
-/datum/reagent/proc/reaction_turf(var/turf/target)
-	touch_turf(target)
+/datum/reagent/proc/reaction_turf(var/turf/target, amt)
+	touch_turf(target, amt)
 
-/datum/reagent/proc/reaction_obj(var/obj/target)
-	touch_obj(target)
+/datum/reagent/proc/reaction_obj(var/obj/target, amt)
+	touch_obj(target, amt)
 
-/datum/reagent/proc/reaction_mob(var/mob/target)
-	touch_mob(target)
+/datum/reagent/proc/reaction_mob(var/mob/target, amt)
+	touch_mob(target, amt)
 
 /datum/reagent/proc/on_move(mob/M)
 	return

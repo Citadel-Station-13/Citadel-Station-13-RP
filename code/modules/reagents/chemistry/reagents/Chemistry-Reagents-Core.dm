@@ -200,7 +200,8 @@
 			cube.Expand()
 	else
 		O.water_act(amount / 5)
-	O.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (amount / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (amount / 10)))
+	var/effective = amount || 10
+	O.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (effective / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (effective / 10)))
 
 /datum/reagent/water/touch_mob(var/mob/living/L, var/amount)
 	if(istype(L))
@@ -216,7 +217,8 @@
 			L.ExtinguishMob()
 		L.adjust_fire_stacks(-(amount / 5))
 		remove_self(needed)
-	L.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (amount / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (amount / 10)))
+	var/effective = amount || 10
+	L.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER * (effective / 10), RAD_CONTAMINATION_CLEANSE_FACTOR ** (1 / (effective / 10)))
 
 /datum/reagent/water/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	//if(alien == IS_SLIME)

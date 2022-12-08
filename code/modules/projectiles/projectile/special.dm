@@ -140,7 +140,7 @@
 		if((H.species.species_flags & IS_PLANT) && (M.nutrition < 500))
 			if(prob(15))
 				// todo: less stunlock capability
-				M.afflict_radiation(RAD_MOB_AFFLICT_FLORARAY_ON_PLANT)
+				M.afflict_radiation(RAD_MOB_AFFLICT_FLORARAY_ON_PLANT, TRUE)
 				M.Weaken(5)
 				var/datum/gender/TM = GLOB.gender_datums[M.get_visible_gender()]
 				for (var/mob/V in viewers(src))
