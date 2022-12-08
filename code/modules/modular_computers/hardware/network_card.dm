@@ -1,118 +1,87 @@
-var/global/ntnet_card_uid = 1
-
-/obj/item/computer_hardware/network_card/
-	name = "basic NTNet network card"
-	desc = "A basic network card for usage with standard NTNet frequencies."
+/obj/item/stock_parts/computer/network_card
+	name = "basic network card"
+	desc = "A basic network card for usage with standard network protocols."
 	power_usage = 50
-	origin_tech = list(TECH_DATA = 2, TECH_ENGINEERING = 1)
+	origin_tech = "{'programming':2,'engineering':1}"
 	critical = 0
 	icon_state = "netcard_basic"
 	hardware_size = 1
-	var/identification_id = null	// Identification ID. Technically MAC address of this device. Can't be changed by user.
-	var/identification_string = "" 	// Identification string, technically nickname seen in the network. Can be set by user.
+	material = /decl/material/solid/fiberglass
+
 	var/long_range = 0
-	var/ethernet = 0 // Hard-wired, therefore always on, ignores NTNet wireless checks.
-	malfunction_probability = 1
+	var/ethernet = 0 // Hard-wired, therefore always on, ignores wireless checks.
+	// TODO: Reimplement proxy_id
 
-/obj/item/computer_hardware/network_card/diagnostics(var/mob/user)
-	..()
-	to_chat(user, "NIX Unique ID: [identification_id]")
-	to_chat(user, "NIX User Tag: [identification_string]")
-	to_chat(user, "Supported protocols:")
-	to_chat(user, "511.m SFS (Subspace) - Standard Frequency Spread")
-	if(long_range)
-		to_chat(user, "511.n WFS/HB (Subspace) - Wide Frequency Spread/High Bandiwdth")
-	if(ethernet)
-		to_chat(user, "OpenEth (Physical Connection) - Physical network connection port")
-
-/obj/item/computer_hardware/network_card/Initialize(mapload)
+/obj/item/stock_parts/computer/network_card/diagnostics()
 	. = ..()
-	identification_id = ntnet_card_uid
-	ntnet_card_uid++
+	var/datum/extension/network_device/D = get_extension(src, /datum/extension/network_device)
+	. += "NIX Unique ID: [D.address]"
+	. += "NIX User Tag: [D.network_tag]"
+	. += "Network ID: [D.network_id]"
+	. += "Supported protocols:"
+	. += "511.m SFS (Subspace) - Standard Frequency Spread"
+	if(long_range)
+		. += "511.n WFS/HB (Subspace) - Wide Frequency Spread/High Bandiwdth"
+	if(ethernet)
+		. += "OpenEth (Physical Connection) - Physical network connection port"
 
-/obj/item/computer_hardware/network_card/advanced
-	name = "advanced NTNet network card"
-	desc = "An advanced network card for usage with standard NTNet frequencies. It's transmitter is strong enough to connect even when far away."
+/obj/item/stock_parts/computer/network_card/Initialize()
+	set_extension(src, /datum/extension/network_device/stock_part, null, null, long_range ? RECEIVER_STRONG_WIRELESS : RECEIVER_WIRELESS)
+	. = ..()
+
+/obj/item/stock_parts/computer/network_card/advanced
+	name = "advanced network card"
+	desc = "An advanced network card for usage with standard network protocols. It's transmitter is strong enough to connect even when far away."
 	long_range = 1
-	origin_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 2)
+	origin_tech = "{'programming':4,'engineering':2}"
 	power_usage = 100 // Better range but higher power usage.
 	icon_state = "netcard_advanced"
 	hardware_size = 1
-
-/obj/item/computer_hardware/network_card/quantum
-	name = "quantum NTNet network card"
-	desc = "A network card that can connect to NTnet from anywhere, using quantum entanglement."
-	long_range = 1
-	origin_tech = list(TECH_DATA = 6, TECH_ENGINEERING = 7)
-	power_usage = 200 // Infinite range but higher power usage.
-	icon_state = "netcard_advanced"
-	hardware_size = 1
-
-/obj/item/computer_hardware/network_card/quantum/get_signal(var/specific_action = 0)
-	if(!holder2)
-		return 0
-	if(!enabled)
-		return 0
-	if(!check_functionality() || !ntnet_global || is_banned())
-		return 0
-	return 2
-
-/obj/item/computer_hardware/network_card/wired
-	name = "wired NTNet network card"
-	desc = "An advanced network card for usage with standard NTNet frequencies. This one also supports wired connection."
-	ethernet = 1
-	origin_tech = list(TECH_DATA = 5, TECH_ENGINEERING = 3)
-	power_usage = 100 // Better range but higher power usage.
-	icon_state = "netcard_ethernet"
-	hardware_size = 3
-
-/obj/item/computer_hardware/network_card/Destroy()
-	if(holder2 && (holder2.network_card == src))
-		holder2.network_card = null
-	holder2 = null
-	return ..()
 
 // Returns a string identifier of this network card
-/obj/item/computer_hardware/network_card/proc/get_network_tag()
-	return "[identification_string] (NID [identification_id])"
+/obj/item/stock_parts/computer/network_card/proc/get_network_tag()
+	var/datum/extension/network_device/D = get_extension(src, /datum/extension/network_device)
+	return D.network_tag
 
-/obj/item/computer_hardware/network_card/proc/is_banned()
-	return ntnet_global.check_banned(identification_id)
+/obj/item/stock_parts/computer/network_card/proc/get_nid()
+	var/datum/extension/network_device/D = get_extension(src, /datum/extension/network_device)
+	return D.address
+
+/obj/item/stock_parts/computer/network_card/proc/is_banned()
+	var/datum/extension/network_device/D = get_extension(src, /datum/extension/network_device)
+	return D.is_banned()
 
 // 0 - No signal, 1 - Low signal, 2 - High signal. 3 - Wired Connection
-/obj/item/computer_hardware/network_card/proc/get_signal(var/specific_action = 0)
-	if(!holder2) // Hardware is not installed in anything. No signal. How did this even get called?
-		return 0
-
+/obj/item/stock_parts/computer/network_card/proc/get_signal(var/specific_action = 0)
+	. = 0
 	if(!enabled)
-		return 0
+		return
 
-	if(!check_functionality() || !ntnet_global || is_banned())
-		return 0
+	var/datum/extension/network_device/D = get_extension(src, /datum/extension/network_device)
+	var/list/signal_data = D.check_connection(specific_action)
+	if(!islist(signal_data))
+		return
+	return signal_data[1]
 
-	if(ethernet) // Computer is connected via wired connection.
-		return 3
+/obj/item/stock_parts/computer/network_card/on_disable()
+	var/datum/extension/network_device/D = get_extension(src, /datum/extension/network_device)
+	if(D)
+		D.disconnect()
 
-	if(!ntnet_global.check_function(specific_action)) // NTNet is down and we are not connected via wired connection. No signal.
-		return 0
+/obj/item/stock_parts/computer/network_card/on_enable(var/datum/extension/interactive/os/os)
+	var/datum/extension/network_device/D = get_extension(src, /datum/extension/network_device)
+	if(D)
+		D.connect()
 
-	if(holder2)
-		var/turf/T = get_turf(holder2)
-		if(!istype(T)) //no reception in nullspace
-			return 0
-		if(T.z in GLOB.using_map.station_levels)
-			// Computer is on station. Low/High signal depending on what type of network card you have
-			if(long_range)
-				return 2
-			else
-				return 1
-		if(T.z in GLOB.using_map.contact_levels) //not on station, but close enough for radio signal to travel
-			if(long_range) // Computer is not on station, but it has upgraded network card. Low signal.
-				return 1
-
-	return 0 // Computer is not on station and does not have upgraded network card. No signal.
-
-/obj/item/computer_hardware/network_card/Destroy()
-	if(holder2 && (holder2.network_card == src))
-		holder2.network_card = null
+/obj/item/stock_parts/computer/network_card/on_install(var/obj/machinery/machine)
 	..()
+	var/datum/extension/interactive/os/os = get_extension(machine, /datum/extension/interactive/os)
+	if(os)
+		on_enable(os)
+
+/obj/item/stock_parts/computer/network_card/on_uninstall(var/obj/machinery/machine, var/temporary = FALSE)
+	..()
+	on_disable()
+
+/obj/item/stock_parts/computer/network_card/nano_host()
+	return loc ? loc.nano_host() : ..()

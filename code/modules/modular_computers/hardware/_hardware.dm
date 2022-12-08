@@ -1,95 +1,63 @@
-/obj/item/computer_hardware/
+/obj/item/stock_parts/computer/
 	name = "Hardware"
 	desc = "Unknown Hardware."
-	icon = 'icons/obj/modular_components.dmi'
-	var/obj/item/modular_computer/holder2 = null
-	/// If the hardware uses extra power, change this.
-	var/power_usage = 0
-	/// If the hardware is turned off set this to FALSE.
-	var/enabled = TRUE
-	/// Prevent disabling for important component, like the HDD.
-	var/critical = 1
-	/// Limits which devices can contain this component. 1: Tablets/Laptops/Consoles, 2: Laptops/Consoles, 3: Consoles only.
-	var/hardware_size = 1
-	/// Current damage level.
-	var/damage = 0
-	/// Maximal damage level.
-	var/max_damage = 100
-	/// "Malfunction" threshold. When damage exceeds this value the hardware piece will semi-randomly fail and do !!FUN!! things.
-	var/damage_malfunction = 20
-	/// "Failure" threshold. When damage exceeds this value the hardware piece will not work at all.
-	var/damage_failure = 50
-	/// Chance of malfunction when the component is damaged.
-	var/malfunction_probability = 10
+	icon = 'icons/obj/items/stock_parts/modular_components.dmi'
+	part_flags = PART_FLAG_HAND_REMOVE
+	var/power_usage = 0 			// If the hardware uses extra power, change this.
+	var/enabled = 1					// If the hardware is turned off set this to 0.
+	var/critical = 1				// Prevent disabling for important component, like the HDD.
+	var/hardware_size = 1			// Limits which devices can contain this component. 1: Tablets/Laptops/Consoles, 2: Laptops/Consoles, 3: Consoles only
+	var/usage_flags = PROGRAM_ALL
+	var/external_slot				// Whether attackby will be passed on it even with a closed panel
 
-/obj/item/computer_hardware/attackby(var/obj/item/W as obj, var/mob/living/user as mob)
+/obj/item/stock_parts/computer/attackby(var/obj/item/W, var/mob/user)
 	// Multitool. Runs diagnostics
-	if(istype(W, /obj/item/multitool))
+	if(IS_MULTITOOL(W))
 		to_chat(user, "***** DIAGNOSTICS REPORT *****")
-		diagnostics(user)
+		to_chat(user, jointext(diagnostics(), "\n"))
 		to_chat(user, "******************************")
-		return TRUE
-	// Nanopaste. Repair all damage if present for a single unit.
-	var/obj/item/stack/S = W
-	if(istype(S, /obj/item/stack/nanopaste))
-		if(!damage)
-			to_chat(user, "\The [src] doesn't seem to require repairs.")
-			return TRUE
-		if(S.use(1))
-			to_chat(user, "You apply a bit of \the [W] to \the [src]. It immediately repairs all damage.")
-			damage = 0
-		return TRUE
-	// Cable coil. Works as repair method, but will probably require multiple applications and more cable.
-	if(istype(S, /obj/item/stack/cable_coil))
-		if(!damage)
-			to_chat(user, "\The [src] doesn't seem to require repairs.")
-			return TRUE
-		if(S.use(1))
-			to_chat(user, "You patch up \the [src] with a bit of \the [W].")
-			take_damage(-10)
-		return TRUE
+		return 1
 	return ..()
 
+/obj/item/stock_parts/computer/on_install(obj/machinery/machine)
+	. = ..()
+	do_after_install(machine, TRUE)
 
-/// Called on multitool click, prints diagnostic information to the user.
-/obj/item/computer_hardware/proc/diagnostics(var/mob/user)
-	to_chat(user, "Hardware Integrity Test... (Corruption: [damage]/[max_damage]) [damage > damage_failure ? "FAIL" : damage > damage_malfunction ? "WARN" : "PASS"]")
+/obj/item/stock_parts/computer/on_uninstall(obj/machinery/machine, temporary)
+	do_before_uninstall(machine, TRUE)
+	. = ..()
 
-/obj/item/computer_hardware/Initialize(mapload)
+// Called on multitool click, prints diagnostic information to the user.
+/obj/item/stock_parts/computer/proc/diagnostics()
+	return list("Hardware Integrity Test... (Corruption: [get_percent_damage()]%)")
+
+/obj/item/stock_parts/computer/Initialize()
+	. = ..()
 	w_class = hardware_size
+
+/obj/item/stock_parts/computer/Destroy()
 	if(istype(loc, /obj/item/modular_computer))
-		holder2 = loc
+		var/datum/extension/assembly/modular_computer/assembly = get_extension(loc, /datum/extension/assembly)
+		if(assembly)
+			assembly.uninstall_component(null, src)
 	return ..()
 
-/obj/item/computer_hardware/Destroy()
-	holder2 = null
-	return ..()
-
-/// Handles damage checks.
-/obj/item/computer_hardware/proc/check_functionality()
+// Handles damage checks
+/obj/item/stock_parts/computer/proc/check_functionality()
 	// Turned off
 	if(!enabled)
-		return FALSE
-	// Too damaged to work at all.
-	if(damage > damage_failure)
-		return FALSE
-	// Still working. Well, sometimes...
-	if(damage > damage_malfunction)
-		if(prob(malfunction_probability))
-			return FALSE
-	// Good to go.
-	return TRUE
+		return 0
+	return is_functional()
 
-/obj/item/computer_hardware/examine(mob/user)
-	. = ..()
-	if(damage > damage_failure)
-		. += SPAN_DANGER("It seems to be severely damaged!")
-	else if(damage > damage_malfunction)
-		. += SPAN_NOTICE("It seems to be damaged!")
-	else if(damage)
-		. += "It seems to be slightly damaged."
+// Called when component is disabled/enabled by the OS
+/obj/item/stock_parts/computer/proc/on_disable()
+/obj/item/stock_parts/computer/proc/on_enable(var/datum/extension/interactive/os/os)
 
-// Damages the component. Contains necessary checks. Negative damage "heals" the component.
-/obj/item/computer_hardware/take_damage(amount)
-	damage += round(amount) // We want nice rounded numbers here.
-	damage = clamp( damage, 0,  max_damage) // Clamp the value.
+/obj/item/stock_parts/computer/proc/update_power_usage()
+	var/datum/extension/interactive/os/os = get_extension(loc, /datum/extension/interactive/os)
+	if(os)
+		os.recalc_power_usage()
+
+/obj/item/stock_parts/computer/proc/do_after_install(atom/device, loud)
+
+/obj/item/stock_parts/computer/proc/do_before_uninstall(atom/device, loud)

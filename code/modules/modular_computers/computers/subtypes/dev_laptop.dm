@@ -1,48 +1,45 @@
 /obj/item/modular_computer/laptop
 	anchored = TRUE
 	name = "laptop computer"
-	desc = "A portable computer."
-	hardware_flag = PROGRAM_LAPTOP
-	icon_state_unpowered = "laptop-open"
-	icon = 'icons/obj/modular_laptop.dmi'
+	desc = "A portable clamshell computer."
+	icon = 'icons/obj/modular_computers/modular_laptop.dmi'
 	icon_state = "laptop-open"
-	icon_state_screensaver = "standby"
-	base_idle_power_usage = 25
-	base_active_power_usage = 200
-	max_hardware_size = 2
+	w_class = ITEM_SIZE_NORMAL
 	light_strength = 3
-	max_damage = 200
-	broken_damage = 100
-	w_class = ITEMSIZE_NORMAL
+	interact_sounds = list("keyboard", "keystroke")
+	interact_sound_volume = 20
+	computer_type = /datum/extension/assembly/modular_computer/laptop
+	matter = list(
+		/decl/material/solid/metal/aluminium = MATTER_AMOUNT_SECONDARY,
+		/decl/material/solid/metal/copper    = MATTER_AMOUNT_REINFORCEMENT,
+		/decl/material/solid/silicon         = MATTER_AMOUNT_REINFORCEMENT,
+	)
 	var/icon_state_closed = "laptop-closed"
-
-/obj/item/modular_computer/laptop/AltClick(mob/living/carbon/user)
-	// We need to be close to it to open it
-	if((!in_range(src, user)) || user.stat || user.restrained())
-		return
-	// Prevents carrying of open laptops inhand.
-	// While they work inhand, i feel it'd make tablets lose some of their high-mobility advantage they have over laptops now.
-	if(!istype(loc, /turf/))
-		to_chat(usr, "\The [src] has to be on a stable surface first!")
-		return
-	var/supported = FALSE
-	for(var/obj/structure/table/S in loc)
-		supported = TRUE
-	if(!supported && !anchored)
-		to_chat(usr, "You will need a better supporting surface before opening \the [src]!")
-		return
-	anchored = !anchored
-	screen_on = anchored
-	update_icon()
-
-/obj/item/modular_computer/laptop/update_icon()
+	
+/obj/item/modular_computer/laptop/on_update_icon()
 	if(anchored)
 		..()
+		icon_state = initial(icon_state)
 	else
-		overlays.Cut()
-		set_light(0)		// No glow from closed laptops
+		cut_overlays()
 		icon_state = icon_state_closed
 
 /obj/item/modular_computer/laptop/preset
 	anchored = FALSE
-	screen_on = FALSE
+
+/obj/item/modular_computer/laptop/get_alt_interactions(var/mob/user)
+	. = ..()
+	LAZYADD(., /decl/interaction_handler/laptop_open)
+
+/decl/interaction_handler/laptop_open
+	name = "Open Laptop"
+	expected_target_type = /obj/item/modular_computer/laptop
+	interaction_flags = INTERACTION_NEEDS_PHYSICAL_INTERACTION | INTERACTION_NEEDS_TURF
+
+/decl/interaction_handler/laptop_open/invoked(atom/target, mob/user, obj/item/prop)
+	var/obj/item/modular_computer/laptop/L = target
+	L.anchored = !L.anchored
+	var/datum/extension/assembly/modular_computer/assembly = get_extension(L, L.computer_type)
+	if(assembly)
+		assembly.screen_on = L.anchored
+	L.update_icon()

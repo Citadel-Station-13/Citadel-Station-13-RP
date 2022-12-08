@@ -1,22 +1,22 @@
 /datum/computer_file/program/chatclient
 	filename = "ntnrc_client"
-	filedesc = "NTNet Relay Chat Client"
+	filedesc = "Intranet Relay Chat Client"
 	program_icon_state = "command"
 	program_key_state = "med_key"
 	program_menu_icon = "comment"
-	extended_desc = "This program allows communication over NTNRC network"
+	extended_desc = "This program allows communication over the local network"
 	size = 8
-	requires_ntnet = 1
-	requires_ntnet_feature = NTNET_COMMUNICATION
-	network_destination = "NTNRC server"
+	requires_network_feature = NET_FEATURE_COMMUNICATION
+	network_destination = "chat server"
 	ui_header = "ntnrc_idle.gif"
-	available_on_ntnet = 1
-	nanomodule_path = /datum/nano_module/program/computer_chatclient/
+	available_on_network = 1
+	nanomodule_path = /datum/nano_module/program/computer_chatclient
 	var/last_message = null				// Used to generate the toolbar icon
 	var/username
-	var/datum/ntnet_conversation/channel = null
+	var/datum/chat_conversation/channel = null
 	var/operator_mode = 0		// Channel operator mode
 	var/netadmin_mode = 0		// Administrator mode (invisible to other users + bypasses passwords)
+	usage_flags = PROGRAM_ALL
 
 /datum/computer_file/program/chatclient/New()
 	username = "DefaultUser[rand(100, 999)]"
@@ -24,7 +24,10 @@
 /datum/computer_file/program/chatclient/Topic(href, href_list)
 	if(..())
 		return 1
-
+	var/datum/computer_network/network = computer.get_network()
+	if(!network)
+		to_chat(usr, SPAN_WARNING("Network error."))
+		return 1
 	if(href_list["PRG_speak"])
 		. = 1
 		if(!channel)
@@ -37,8 +40,8 @@
 
 	if(href_list["PRG_joinchannel"])
 		. = 1
-		var/datum/ntnet_conversation/C
-		for(var/datum/ntnet_conversation/chan in ntnet_global.chat_channels)
+		var/datum/chat_conversation/C
+		for(var/datum/chat_conversation/chan in network.chat_channels)
 			if(chan.id == text2num(href_list["PRG_joinchannel"]))
 				C = chan
 				break
@@ -67,10 +70,10 @@
 	if(href_list["PRG_newchannel"])
 		. = 1
 		var/mob/living/user = usr
-		var/channel_title = sanitizeSafe(input(user,"Enter channel name or leave blank to cancel:"), 64)
+		var/channel_title = sanitize_safe(input(user,"Enter channel name or leave blank to cancel:"), 64)
 		if(!channel_title)
 			return
-		var/datum/ntnet_conversation/C = new/datum/ntnet_conversation()
+		var/datum/chat_conversation/C = new/datum/chat_conversation(network)
 		C.add_client(src)
 		C.operator = src
 		channel = C
@@ -84,7 +87,7 @@
 				channel = null
 			return 1
 		var/mob/living/user = usr
-		if(can_run(usr, 1, access_network))
+		if(has_access(list(access_network), usr.GetAccess()))
 			if(channel)
 				var/response = alert(user, "Really engage admin-mode? You will be disconnected from your current channel!", "NTNRC Admin mode", "Yes", "No")
 				if(response == "Yes")
@@ -120,15 +123,8 @@
 			logfile.stored_data += "[logstring]\[BR\]"
 		logfile.stored_data += "\[b\]Logfile dump completed.\[/b\]"
 		logfile.calculate_size()
-		if(!computer || !computer.hard_drive || !computer.hard_drive.store_file(logfile))
-			if(!computer)
-				// This program shouldn't even be runnable without computer.
-				. = TRUE
-				CRASH("Var computer is null!")
-			if(!computer.hard_drive)
-				computer.visible_message("\The [computer] shows an \"I/O Error - Hard drive connection error\" warning.")
-			else	// In 99.9% cases this will mean our HDD is full
-				computer.visible_message("\The [computer] shows an \"I/O Error - Hard drive may be full. Please free some space and try again. Required space: [logfile.size]GQ\" warning.")
+		if(!computer.store_file(logfile, OS_LOGS_DIR, create_directories = TRUE))
+			computer.show_error(user, "I/O Error - Check hard drive and free space. Required space: [logfile.size]GQ.")
 	if(href_list["PRG_renamechannel"])
 		. = 1
 		if(!operator_mode || !channel)
@@ -161,6 +157,12 @@
 
 /datum/computer_file/program/chatclient/process_tick()
 	..()
+	var/datum/computer_network/network = computer.get_network()
+
+	if(channel && (!network || !(channel in network.chat_channels)))
+		channel.remove_client(src)
+		channel = null
+
 	if(program_state != PROGRAM_STATE_KILLED)
 		ui_header = "ntnrc_idle.gif"
 		if(channel)
@@ -169,22 +171,24 @@
 		else
 			last_message = null
 		return 1
+
 	if(channel && channel.messages && channel.messages.len)
 		ui_header = last_message == channel.messages[channel.messages.len - 1] ? "ntnrc_idle.gif" : "ntnrc_new.gif"
 	else
 		ui_header = "ntnrc_idle.gif"
 
-/datum/computer_file/program/chatclient/kill_program(var/forced = 0)
+/datum/computer_file/program/chatclient/on_shutdown(var/forced = 0)
 	if(channel)
 		channel.remove_client(src)
 		channel = null
 	..(forced)
 
 /datum/nano_module/program/computer_chatclient
-	name = "NTNet Relay Chat Client"
+	name = "Intranet Relay Chat Client"
 
-/datum/nano_module/program/computer_chatclient/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
-	if(!ntnet_global || !ntnet_global.chat_channels)
+/datum/nano_module/program/computer_chatclient/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = global.default_topic_state)
+	var/datum/computer_network/network = program?.computer?.get_network()
+	if(!network || !network.chat_channels)
 		return
 
 	var/list/data = list()
@@ -215,7 +219,7 @@
 
 	else // Channel selection screen
 		var/list/all_channels[0]
-		for(var/datum/ntnet_conversation/conv in ntnet_global.chat_channels)
+		for(var/datum/chat_conversation/conv in network.chat_channels)
 			if(conv && conv.title)
 				all_channels.Add(list(list(
 					"chan" = conv.title,
@@ -223,9 +227,9 @@
 				)))
 		data["all_channels"] = all_channels
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
-		ui = new(user, src, ui_key, "ntnet_chat.tmpl", "NTNet Relay Chat Client", 575, 700, state = state)
+		ui = new(user, src, ui_key, "chat_app.tmpl", name, 575, 700, state = state)
 		ui.auto_update_layout = 1
 		ui.set_initial_data(data)
 		ui.open()

@@ -1,16 +1,18 @@
 /datum/computer_file/program/alarm_monitor
-	filename = "alarmmonitoreng"
-	filedesc = "Alarm Monitoring (Engineering)"
+	filename = "alarmmonitor"
+	filedesc = "Alarm Monitoring"
 	nanomodule_path = /datum/nano_module/alarm_monitor/engineering
 	ui_header = "alarm_green.gif"
 	program_icon_state = "alert-green"
 	program_key_state = "atmos_key"
 	program_menu_icon = "alert"
-	extended_desc = "This program provides visual interface for the engineering alarm system."
-	required_access = access_engine
-	requires_ntnet = 1
+	extended_desc = "This program provides visual interface for the alarm system."
+	requires_network = 1
+	requires_network_feature = NET_FEATURE_SYSTEMCONTROL
+
 	network_destination = "alarm monitoring network"
 	size = 5
+	category = PROG_MONITOR
 	var/has_alert = 0
 
 /datum/computer_file/program/alarm_monitor/process_tick()
@@ -32,21 +34,23 @@
 
 /datum/nano_module/alarm_monitor
 	name = "Alarm monitor"
-	var/list_cameras = 0						// Whether or not to list camera references. A future goal would be to merge this with the enginering/security camera console. Currently really only for AI-use.
 	var/list/datum/alarm_handler/alarm_handlers // The particular list of alarm handlers this alarm monitor should present to the user.
-	//available_to_ai = FALSE
+	available_to_ai = FALSE
 
 /datum/nano_module/alarm_monitor/New()
 	..()
 	alarm_handlers = list()
 
+/datum/nano_module/alarm_monitor/all
+	available_to_ai = TRUE
+
 /datum/nano_module/alarm_monitor/all/New()
 	..()
-	alarm_handlers = SSalarms.all_handlers
+	alarm_handlers = SSalarm.all_handlers
 
 /datum/nano_module/alarm_monitor/engineering/New()
 	..()
-	alarm_handlers = list(atmosphere_alarm, fire_alarm, power_alarm)
+	alarm_handlers = list(atmosphere_alarm, camera_alarm, fire_alarm, power_alarm)
 
 /datum/nano_module/alarm_monitor/security/New()
 	..()
@@ -63,21 +67,21 @@
 /datum/nano_module/alarm_monitor/proc/all_alarms()
 	var/list/all_alarms = new()
 	for(var/datum/alarm_handler/AH in alarm_handlers)
-		all_alarms += AH.visible_alarms()
+		all_alarms += AH.alarms(get_host_z())
 
 	return all_alarms
 
 /datum/nano_module/alarm_monitor/proc/major_alarms()
 	var/list/all_alarms = new()
 	for(var/datum/alarm_handler/AH in alarm_handlers)
-		all_alarms += AH.major_alarms()
+		all_alarms += AH.major_alarms(get_host_z())
 
 	return all_alarms
 
 // Modified version of above proc that uses slightly less resources, returns 1 if there is a major alarm, 0 otherwise.
 /datum/nano_module/alarm_monitor/proc/has_major_alarms()
 	for(var/datum/alarm_handler/AH in alarm_handlers)
-		if(AH.has_major_alarms())
+		if(AH.has_major_alarms(get_host_z()))
 			return 1
 
 	return 0
@@ -85,7 +89,7 @@
 /datum/nano_module/alarm_monitor/proc/minor_alarms()
 	var/list/all_alarms = new()
 	for(var/datum/alarm_handler/AH in alarm_handlers)
-		all_alarms += AH.minor_alarms()
+		all_alarms += AH.minor_alarms(get_host_z())
 
 	return all_alarms
 
@@ -93,26 +97,27 @@
 	if(..())
 		return 1
 	if(href_list["switchTo"])
-		var/obj/machinery/camera/C = locate(href_list["switchTo"]) in GLOB.cameranet.cameras
+		var/obj/machinery/camera/C = locate(href_list["switchTo"]) in cameranet.cameras
 		if(!C)
 			return
 
 		usr.switch_to_camera(C)
 		return 1
 
-/datum/nano_module/alarm_monitor/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = default_state)
+/datum/nano_module/alarm_monitor/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/datum/topic_state/state = global.default_topic_state)
 	var/list/data = host.initial_data()
 
 	var/categories[0]
 	for(var/datum/alarm_handler/AH in alarm_handlers)
 		categories[++categories.len] = list("category" = AH.category, "alarms" = list())
-		for(var/datum/alarm/A in AH.major_alarms())
+		for(var/datum/alarm/A in AH.major_alarms(get_host_z()))
+
 			var/cameras[0]
 			var/lost_sources[0]
 
 			if(isAI(user))
 				for(var/obj/machinery/camera/C in A.cameras())
-					cameras[++cameras.len] = C.ui_structure()
+					cameras[++cameras.len] = C.nano_structure()
 			for(var/datum/alarm_source/AS in A.sources)
 				if(!AS.source)
 					lost_sources[++lost_sources.len] = AS.source_name
@@ -125,7 +130,7 @@
 					"lost_sources" = lost_sources.len ? sanitize(english_list(lost_sources, nothing_text = "", and_text = ", ")) : ""))
 	data["categories"] = categories
 
-	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
+	ui = SSnano.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)
 		ui = new(user, src, ui_key, "alarm_monitor.tmpl", "Alarm Monitoring Console", 800, 800, state = state)
 		if(host.update_layout()) // This is necessary to ensure the status bar remains updated along with rest of the UI.
