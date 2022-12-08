@@ -187,9 +187,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "az" = (
-/obj/structure/bed/chair/sofa/right{
-	sofa_material = "black"
-	},
+/obj/structure/bed/chair/sofa/black/right,
 /obj/effect/floor_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 1
@@ -197,9 +195,7 @@
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "aA" = (
-/obj/structure/bed/chair/sofa/left{
-	sofa_material = "black"
-	},
+/obj/structure/bed/chair/sofa/black/left,
 /obj/effect/floor_decal/techfloor/orange{
 	icon_state = "techfloororange_edges";
 	dir = 1
@@ -236,7 +232,7 @@
 /obj/item/perfect_tele_beacon{
 	icon_state = "beacon";
 	tele_name = "Hybrid Shuttle";
-
+	
 	},
 /obj/effect/floor_decal/industrial/outline/grey,
 /turf/simulated/floor/tiled/techfloor/grid,
@@ -312,19 +308,17 @@
 /turf/simulated/shuttle/floor/alien,
 /area/shuttle/blue_fo)
 "aQ" = (
-/obj/structure/bed/chair/sofa/left{
+/obj/structure/bed/chair/sofa/black/left{
 	dir = 1;
-	icon_state = "sofaend_left";
-	sofa_material = "black"
+	
 	},
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/shuttle/blue_fo)
 "aR" = (
-/obj/structure/bed/chair/sofa/right{
+/obj/structure/bed/chair/sofa/black/right{
 	dir = 1;
-	icon_state = "sofaend_right";
-	sofa_material = "black"
+	
 	},
 /obj/effect/floor_decal/techfloor/orange,
 /turf/simulated/floor/tiled/techfloor/grid,
