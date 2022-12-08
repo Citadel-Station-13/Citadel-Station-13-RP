@@ -335,6 +335,7 @@
 	id_tag = "engineering_main";
 	pixel_y = 26
 	},
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "aoM" = (
@@ -12004,6 +12005,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/green{
 	dir = 4
 	},
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "kcH" = (
@@ -12227,6 +12229,17 @@
 	},
 /turf/simulated/floor/tiled/techfloor,
 /area/rnd/research/researchdivision)
+"kld" = (
+/obj/machinery/door/airlock/glass_external,
+/obj/machinery/atmospherics/pipe/simple/visible/cyan{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/visible/aux{
+	dir = 4
+	},
+/obj/map_helper/airlock/door/int_door,
+/turf/simulated/floor/plating,
+/area/engineering/engine_eva)
 "klk" = (
 /turf/simulated/floor/plating,
 /area/security/brig)
@@ -15811,13 +15824,11 @@
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
 "ngx" = (
-/obj/structure/cable/green{
-	icon_state = "0-8"
+/obj/structure/railing{
+	dir = 1
 	},
-/obj/structure/cable/green{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/plating,
+/obj/structure/lattice,
+/turf/simulated/open,
 /area/space)
 "nhm" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -17585,9 +17596,14 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/barrestroom)
 "oNC" = (
-/obj/structure/catwalk,
 /obj/structure/cable/green{
-	icon_state = "1-2"
+	icon_state = "4-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "0-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "16-0"
 	},
 /turf/simulated/floor/plating,
 /area/space)
@@ -17695,6 +17711,8 @@
 /obj/machinery/airlock_sensor{
 	pixel_y = 24
 	},
+/obj/map_helper/airlock/sensor/chamber_sensor,
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "oSA" = (
@@ -20036,6 +20054,7 @@
 /area/rnd/anomaly_lab)
 "qWl" = (
 /obj/structure/grille,
+/obj/structure/girder/reinforced,
 /turf/simulated/floor/reinforced/carbon_dioxide,
 /area/space)
 "qXr" = (
@@ -20309,13 +20328,11 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/showers)
 "riA" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/sign/vacuum,
 /obj/machinery/atmospherics/pipe/simple/hidden{
 	dir = 4
 	},
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "riB" = (
@@ -24180,7 +24197,8 @@
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_b)
 "uwV" = (
-/turf/simulated/floor/tiled/kafel_full,
+/obj/structure/girder,
+/turf/simulated/floor/plating,
 /area/space)
 "uxl" = (
 /obj/effect/floor_decal/industrial/warning{
@@ -27556,6 +27574,14 @@
 	},
 /turf/simulated/floor/plating,
 /area/engineering/engine_gas)
+"wXn" = (
+/obj/machinery/door/airlock/glass_external,
+/obj/machinery/atmospherics/pipe/simple/visible/green{
+	dir = 4
+	},
+/obj/map_helper/airlock/door/int_door,
+/turf/simulated/floor/plating,
+/area/engineering/engine_eva)
 "wXN" = (
 /obj/machinery/atmospherics/pipe/simple/visible/blue,
 /obj/machinery/atmospherics/pipe/simple/visible/purple{
@@ -27706,6 +27732,11 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/simulated/floor/tiled/techfloor,
 /area/crew_quarters/sleep/cryo)
+"xdO" = (
+/obj/machinery/door/airlock/multi_tile/metal/mait,
+/obj/machinery/door/firedoor/multi_tile,
+/turf/simulated/floor/plating,
+/area/space)
 "xef" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
@@ -28225,6 +28256,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
 	dir = 4
 	},
+/obj/map_helper/airlock/door/ext_door,
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "xyM" = (
@@ -28624,6 +28656,7 @@
 /obj/machinery/atmospherics/pipe/simple/visible/aux{
 	dir = 4
 	},
+/obj/map_helper/airlock/atmos/chamber_pump,
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "xOu" = (
@@ -28990,10 +29023,8 @@
 /turf/simulated/floor/tiled/techfloor,
 /area/space)
 "ydo" = (
-/obj/machinery/door/firedoor/glass,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
 /obj/structure/sign/vacuum,
+/obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/engineering/engine_eva)
 "yeW" = (
@@ -36254,10 +36285,10 @@ nbh
 nbh
 nbh
 bgG
-yao
-yao
-yao
-yao
+rHE
+eqy
+rHE
+rHE
 hLm
 qSx
 sxi
@@ -38356,9 +38387,9 @@ msz
 wHS
 wHS
 wSY
-kbG
+wXn
 riA
-xyL
+kld
 wSY
 wHS
 wHS
@@ -39356,7 +39387,7 @@ rxM
 xyM
 axC
 rTt
-oNC
+brQ
 oBZ
 rHE
 ktE
@@ -39550,8 +39581,8 @@ nPL
 cYp
 nPL
 nPL
-nsj
-ncc
+eqy
+rHE
 rHE
 ktE
 uFI
@@ -39745,7 +39776,7 @@ ktE
 yao
 eqy
 nsj
-ncc
+ngx
 rHE
 ktE
 tKR
@@ -39939,7 +39970,7 @@ hlN
 yao
 rHE
 nsj
-ncc
+ngx
 rHE
 ktE
 tKR
@@ -40133,7 +40164,7 @@ mRB
 mRB
 rHE
 nsj
-ncc
+ngx
 rHE
 ktE
 tKR
@@ -41472,7 +41503,7 @@ sAv
 yao
 ktE
 yao
-yao
+uwV
 yao
 yao
 yao
@@ -41661,12 +41692,12 @@ yao
 yao
 yao
 yao
-yao
+xdO
 yao
 yao
 ktE
 yao
-yao
+uwV
 yao
 yao
 yao
@@ -41860,11 +41891,11 @@ seS
 seS
 qxa
 yao
-yao
-yao
-yao
-yao
-yao
+uwV
+uwV
+uwV
+uwV
+uwV
 mRB
 arp
 arp
@@ -42043,15 +42074,15 @@ iHh
 mRB
 mRB
 mRB
-yao
-yao
+uwV
+uwV
+uwV
 yao
 yao
 yao
 rHE
-rHE
-rHE
-rHE
+yao
+yao
 ktE
 yao
 yao
@@ -42239,13 +42270,13 @@ eWI
 mRB
 yao
 yao
+uwV
 yao
 yao
 yao
 rHE
 yao
 yao
-rHE
 nRT
 seS
 seS
@@ -42254,7 +42285,7 @@ seS
 seS
 seS
 seS
-seS
+rVE
 seS
 seS
 seS
@@ -42433,12 +42464,12 @@ fCC
 mRB
 yao
 yao
-yao
+uwV
 yao
 yao
 rHE
-yao
-yao
+rHE
+rHE
 rHE
 rHE
 rHE
@@ -42627,18 +42658,18 @@ eHZ
 mRB
 yao
 yao
-yao
+uwV
 yao
 yao
 rHE
+yao
+yao
+yao
 uwV
+yao
+yao
+yao
 uwV
-uwV
-yao
-yao
-yao
-yao
-yao
 yao
 yao
 yao
@@ -42653,7 +42684,7 @@ seS
 seS
 seS
 seS
-seS
+jqv
 seS
 tLx
 seS
@@ -42825,14 +42856,14 @@ vnd
 yao
 yao
 rHE
+yao
+yao
+yao
 uwV
+yao
+yao
+yao
 uwV
-uwV
-yao
-yao
-yao
-yao
-yao
 yao
 yao
 yao
@@ -43007,7 +43038,7 @@ jJz
 jJz
 mRB
 yao
-yao
+hlI
 mRB
 mRB
 mRB
@@ -43019,14 +43050,14 @@ vnd
 yao
 yao
 rHE
+yao
+yao
+yao
 uwV
+yao
+yao
+yao
 uwV
-uwV
-yao
-yao
-yao
-yao
-yao
 yao
 yao
 yao
@@ -43037,14 +43068,14 @@ suH
 rHE
 ktE
 yao
-yao
-yao
-yao
-yao
-yao
-yao
-yao
-yao
+uwV
+uwV
+uwV
+uwV
+rHE
+uwV
+uwV
+uwV
 ktE
 yao
 yao
@@ -43204,7 +43235,7 @@ yao
 yao
 yao
 yao
-yao
+ouC
 vnd
 iCP
 iCP
@@ -43213,14 +43244,14 @@ vnd
 yao
 yao
 rHE
+yao
+yao
+yao
 uwV
+yao
+yao
+yao
 uwV
-uwV
-yao
-yao
-yao
-yao
-yao
 yao
 yao
 yao
@@ -43231,14 +43262,14 @@ uYx
 rHE
 ktE
 yao
+uwV
 yao
 yao
 yao
+rHE
 yao
 yao
-yao
-yao
-yao
+uwV
 ktE
 yao
 yao
@@ -43394,11 +43425,11 @@ jOU
 adz
 jOU
 jOU
-jOU
-jOU
-jOU
-jOU
-jOU
+vnd
+vnd
+vnd
+vnd
+vnd
 gxO
 aoM
 aoM
@@ -43426,13 +43457,13 @@ vnd
 uSZ
 vnd
 vnd
-yao
-yao
-yao
-yao
-yao
-yao
-yao
+rHE
+rHE
+rHE
+rHE
+rHE
+rHE
+rHE
 ktE
 yao
 rHE
@@ -43620,12 +43651,12 @@ euh
 bTS
 bFD
 vnd
-rHE
-rHE
-rHE
-rHE
-rHE
-rHE
+yao
+yao
+yao
+yao
+yao
+yao
 rHE
 ktE
 yao
@@ -43822,7 +43853,7 @@ yao
 yao
 rHE
 ktE
-yao
+rhe
 rHE
 rmh
 yao
@@ -50379,7 +50410,7 @@ yao
 yao
 yao
 ktE
-cdR
+oNC
 yao
 sLY
 sLY
@@ -50573,7 +50604,7 @@ kYh
 brQ
 brQ
 rAo
-ngx
+lpu
 yao
 sLY
 qRq

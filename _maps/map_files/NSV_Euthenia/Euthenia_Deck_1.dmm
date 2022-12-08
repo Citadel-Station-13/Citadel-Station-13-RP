@@ -3530,6 +3530,11 @@
 	},
 /turf/simulated/floor/carpet/sblucarpet,
 /area/crew_quarters/sleep/Dorm_4)
+"deG" = (
+/turf/simulated/wall{
+	can_open = 1
+	},
+/area/space)
 "dfk" = (
 /obj/landmark{
 	name = "lightsout"
@@ -11503,9 +11508,15 @@
 /turf/simulated/floor/tiled/dark,
 /area/space)
 "kqf" = (
-/obj/structure/cable/green{
-	icon_state = "32-4"
+/obj/structure/railing{
+	dir = 1
 	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/lattice,
+/obj/machinery/door/firedoor/glass,
 /turf/simulated/open,
 /area/space)
 "kqo" = (
@@ -13776,6 +13787,7 @@
 /area/space)
 "mqS" = (
 /obj/structure/grille,
+/obj/structure/girder/reinforced,
 /turf/simulated/floor/reinforced/carbon_dioxide,
 /area/space)
 "mrm" = (
@@ -19626,6 +19638,11 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_8)
+"sgn" = (
+/obj/structure/ladder,
+/obj/structure/bookcase,
+/turf/simulated/floor/plating,
+/area/space)
 "shw" = (
 /obj/structure/railing{
 	dir = 1
@@ -23738,6 +23755,21 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay)
+"vYs" = (
+/obj/structure/cable/green{
+	icon_state = "32-8"
+	},
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/lattice,
+/obj/machinery/door/firedoor/glass,
+/turf/simulated/open,
+/area/space)
 "vYy" = (
 /turf/simulated/floor/plating,
 /area/space)
@@ -31448,9 +31480,9 @@ jch
 isG
 isG
 aBR
-vYy
-vYy
-vYy
+rrG
+nxk
+rrG
 aBR
 iac
 aBR
@@ -32612,9 +32644,9 @@ jch
 isG
 aBR
 aBR
-svg
+rrG
 nxk
-vYy
+rrG
 aBR
 iac
 pGe
@@ -32807,7 +32839,7 @@ isG
 aBR
 vYy
 vYy
-nxk
+vYy
 vYy
 aBR
 iac
@@ -32986,7 +33018,7 @@ vYy
 vYy
 vYy
 vYy
-aBR
+mTt
 isG
 vJy
 apD
@@ -32998,10 +33030,10 @@ oeA
 apD
 von
 isG
-mTt
+aBR
 vYy
 vYy
-nxk
+vYy
 vYy
 aBR
 iac
@@ -33180,7 +33212,7 @@ vYy
 vYy
 vYy
 vYy
-aBR
+mTt
 isG
 vJy
 apD
@@ -33192,10 +33224,10 @@ oeA
 apD
 von
 isG
-mTt
+aBR
 vYy
 vYy
-nxk
+vYy
 vYy
 aBR
 iac
@@ -33374,7 +33406,7 @@ aBR
 aBR
 aBR
 vYy
-aBR
+mTt
 isG
 vJy
 apD
@@ -33386,10 +33418,10 @@ oeA
 apD
 von
 isG
-mTt
+aBR
 vYy
 vYy
-nxk
+vYy
 vYy
 aBR
 iac
@@ -33568,7 +33600,7 @@ jIL
 jIL
 aBR
 vYy
-aBR
+mTt
 isG
 vJy
 apD
@@ -33580,10 +33612,10 @@ oeA
 apD
 jch
 isG
-mTt
+aBR
 vYy
 vYy
-nxk
+vYy
 vYy
 aBR
 iac
@@ -33762,7 +33794,7 @@ aBR
 aBR
 aBR
 vYy
-aBR
+mTt
 isG
 oeA
 apD
@@ -33774,11 +33806,11 @@ oeA
 apD
 jch
 isG
-mTt
-vYy
-vYy
+aBR
+rrG
+rrG
+rrG
 nxk
-vYy
 aBR
 aBR
 aBR
@@ -33971,8 +34003,8 @@ isG
 aBR
 vYy
 vYy
-nxk
 vYy
+rrG
 vYy
 vYy
 aBR
@@ -34163,10 +34195,10 @@ apD
 von
 isG
 aBR
-nxk
-svg
-nxk
 vYy
+vYy
+vYy
+rrG
 vYy
 vYy
 aBR
@@ -34359,8 +34391,8 @@ isG
 aBR
 vYy
 vYy
-nxk
 vYy
+rrG
 vYy
 vYy
 aBR
@@ -34553,8 +34585,8 @@ isG
 aBR
 vYy
 vYy
-nxk
 vYy
+rrG
 vYy
 vYy
 aBR
@@ -34745,12 +34777,12 @@ apD
 jch
 isG
 aBR
-vYy
-vYy
+rrG
+rrG
+rrG
 nxk
-vYy
-vYy
-vYy
+rrG
+rrG
 aBR
 iac
 aBR
@@ -34941,8 +34973,8 @@ isG
 aBR
 vYy
 vYy
-nxk
 vYy
+rrG
 vYy
 vYy
 aBR
@@ -35135,8 +35167,8 @@ isG
 aBR
 vYy
 vYy
-nxk
 vYy
+rrG
 vYy
 vYy
 aBR
@@ -35329,8 +35361,8 @@ isG
 aBR
 vYy
 vYy
-nxk
-nxk
+vYy
+rrG
 vYy
 vYy
 aBR
@@ -35524,7 +35556,7 @@ aBR
 vYy
 vYy
 vYy
-nxk
+rrG
 vYy
 vYy
 aBR
@@ -35718,7 +35750,7 @@ aBR
 vYy
 vYy
 vYy
-svg
+rrG
 vYy
 vYy
 aBR
@@ -35913,8 +35945,8 @@ edq
 aAL
 edq
 edq
-vYy
-vYy
+rrG
+rrG
 aBR
 ubb
 ubb
@@ -39973,7 +40005,7 @@ rkk
 rkk
 sZJ
 aBR
-vYy
+deG
 jpc
 bcx
 bcx
@@ -40167,7 +40199,7 @@ ryG
 rkk
 fKV
 aBR
-vYy
+sgn
 jpc
 bcx
 bcx
@@ -41533,7 +41565,7 @@ vFe
 uCs
 aBR
 pTw
-vYy
+rrG
 vYy
 vYy
 usl
@@ -41574,7 +41606,7 @@ lDd
 fEr
 lKJ
 aiY
-phd
+lLO
 lLO
 lLO
 lLO
@@ -41768,7 +41800,7 @@ gfp
 yhL
 dsY
 oSa
-phd
+lLO
 lLO
 lLO
 lLO
@@ -41962,7 +41994,7 @@ cXH
 oeT
 qws
 oSa
-phd
+lLO
 lLO
 lLO
 lLO
@@ -42156,7 +42188,7 @@ cXH
 tPq
 qws
 oSa
-phd
+lLO
 lLO
 lLO
 lLO
@@ -42350,7 +42382,7 @@ cXH
 tPq
 bpW
 aiY
-phd
+lLO
 lLO
 lLO
 lLO
@@ -42544,7 +42576,7 @@ cXH
 tPq
 mbb
 oSa
-phd
+lLO
 lLO
 lLO
 lLO
@@ -42738,7 +42770,7 @@ cXH
 qPq
 itg
 oSa
-phd
+lLO
 lLO
 lLO
 lLO
@@ -42932,7 +42964,7 @@ rHa
 fEr
 swy
 oSa
-phd
+lLO
 lLO
 lLO
 lLO
@@ -43115,8 +43147,8 @@ nxn
 xnn
 jAs
 uFM
-vYy
-vYy
+svg
+nxk
 aiY
 jjL
 fde
@@ -43126,7 +43158,7 @@ dmf
 idX
 fUW
 aiY
-phd
+lLO
 lLO
 lLO
 lLO
@@ -43320,7 +43352,7 @@ kIF
 aiY
 aiY
 aiY
-phd
+lLO
 lLO
 lLO
 lLO
@@ -43514,7 +43546,7 @@ vYy
 vYy
 vYy
 aBR
-phd
+lLO
 lLO
 lLO
 lLO
@@ -43708,7 +43740,7 @@ vYy
 vYy
 vYy
 aBR
-phd
+lLO
 lLO
 lLO
 lLO
@@ -43902,7 +43934,7 @@ vYy
 vYy
 vYy
 aBR
-phd
+lLO
 lLO
 lLO
 lLO
@@ -44096,7 +44128,7 @@ vYy
 vYy
 vYy
 aBR
-phd
+lLO
 lLO
 lLO
 lLO
@@ -44280,17 +44312,17 @@ hXT
 hXT
 hXT
 vYy
-vYy
+rrG
 aBR
 aBR
 aBR
 aBR
+rrG
+rrG
 vYy
-vYy
-vYy
-vYy
+rrG
 aBR
-phd
+lLO
 lLO
 lLO
 lLO
@@ -44472,19 +44504,19 @@ vYy
 vYy
 vYy
 vYy
+nxk
 vYy
 vYy
 vYy
 vYy
 vYy
-vYy
-vYy
+nxk
 vYy
 vYy
 vYy
 vYy
 aBR
-phd
+lLO
 lLO
 lLO
 lLO
@@ -44666,19 +44698,19 @@ vYy
 vYy
 vYy
 vYy
+nxk
 vYy
 vYy
 vYy
 vYy
 vYy
-vYy
-vYy
+nxk
 vYy
 vYy
 vYy
 vYy
 aBR
-phd
+lLO
 lLO
 lLO
 bmU
@@ -44860,19 +44892,19 @@ vYy
 vYy
 vYy
 vYy
+svg
 vYy
 vYy
 vYy
 vYy
 vYy
-vYy
-vYy
+svg
 vYy
 vYy
 vYy
 vYy
 aBR
-phd
+lLO
 lLO
 lLO
 bmU
@@ -45054,19 +45086,19 @@ bYD
 msy
 vYy
 vYy
+nxk
 vYy
 vYy
 vYy
 vYy
 vYy
-vYy
-vYy
+nxk
 vYy
 vYy
 vYy
 vYy
 aBR
-phd
+lLO
 lLO
 lLO
 bmU
@@ -45248,19 +45280,19 @@ sYi
 cKt
 vYy
 vYy
+nxk
 vYy
 vYy
 vYy
 vYy
 vYy
-vYy
-vYy
+nxk
 vYy
 vYy
 aBR
 aBR
 aBR
-peB
+lLO
 lLO
 bmU
 bmU
@@ -45442,7 +45474,7 @@ qAb
 hDK
 vYy
 vYy
-vYy
+nxk
 vYy
 vYy
 vYy
@@ -45452,9 +45484,9 @@ aBR
 aBR
 aBR
 aBR
-peB
-peB
-peB
+lLO
+lLO
+lLO
 lLO
 bmU
 bmU
@@ -45636,17 +45668,17 @@ aak
 vYy
 vYy
 vYy
+nxk
 vYy
 vYy
-vYy
 aBR
 aBR
 aBR
 aBR
-peB
-peB
-peB
-peB
+lLO
+lLO
+lLO
+lLO
 lLO
 lLO
 lLO
@@ -45827,17 +45859,17 @@ wNW
 cUp
 xll
 aak
+rrG
+rrG
 vYy
-vYy
-vYy
-vYy
+nxk
 aBR
 aBR
 aBR
-peB
-peB
-peB
-peB
+lLO
+lLO
+lLO
+lLO
 lLO
 lLO
 lLO
@@ -46026,9 +46058,9 @@ vYy
 vYy
 vYy
 aBR
-peB
-peB
-peB
+lLO
+lLO
+lLO
 lLO
 lLO
 lLO
@@ -46220,7 +46252,7 @@ vYy
 vYy
 vYy
 aBR
-peB
+lLO
 lLO
 lLO
 lLO
@@ -46373,7 +46405,7 @@ afU
 hin
 vYy
 iFd
-vYy
+rrG
 vYy
 vYy
 vYy
@@ -46414,7 +46446,7 @@ vYy
 vYy
 vYy
 aBR
-peB
+lLO
 lLO
 lLO
 lLO
@@ -46567,7 +46599,7 @@ jQE
 hin
 vYy
 iFd
-vYy
+rrG
 vYy
 vYy
 vYy
@@ -46608,7 +46640,7 @@ vYy
 vYy
 vYy
 aBR
-peB
+lLO
 lLO
 lLO
 lLO
@@ -46761,7 +46793,7 @@ jQE
 hin
 vYy
 iFd
-vYy
+rrG
 vYy
 vYy
 vYy
@@ -46802,7 +46834,7 @@ vYy
 vYy
 vYy
 aBR
-peB
+lLO
 lLO
 lLO
 lLO
@@ -46955,7 +46987,7 @@ jQE
 hin
 vYy
 iFd
-vYy
+rrG
 vYy
 vYy
 vYy
@@ -46991,12 +47023,12 @@ aak
 cKt
 lLO
 aBR
-vYy
-vYy
-vYy
-vYy
+nxk
+nxk
+svg
+nxk
 aBR
-peB
+lLO
 lLO
 lLO
 lLO
@@ -47148,10 +47180,10 @@ kkI
 dJU
 hin
 vYy
-pkl
-sEi
-vYy
-vYy
+iFd
+rrG
+rrG
+rrG
 hPU
 hPU
 hPU
@@ -47190,7 +47222,7 @@ vYy
 vYy
 vYy
 aBR
-peB
+lLO
 lLO
 lLO
 lLO
@@ -47341,9 +47373,9 @@ oAf
 oAf
 jQE
 hin
-lMW
-lMW
-iFd
+apA
+vYs
+vYy
 vYy
 vYy
 hPU
@@ -47384,7 +47416,7 @@ vYy
 vYy
 vYy
 aBR
-peB
+lLO
 lLO
 lLO
 lLO
@@ -47535,9 +47567,9 @@ oAf
 oAf
 jQE
 hin
-lMW
+apA
 kqf
-iFd
+vYy
 vYy
 vYy
 hPU
@@ -47578,7 +47610,7 @@ vYy
 vYy
 vYy
 aBR
-peB
+lLO
 lLO
 lLO
 bmU
@@ -47730,8 +47762,8 @@ gkH
 jQE
 hin
 vYy
-pkl
-bAW
+vYy
+vYy
 vYy
 vYy
 hPU
@@ -47766,13 +47798,13 @@ oAf
 oAf
 oAf
 oAf
-hin
+bSj
 vYy
 vYy
 vYy
 vYy
 aBR
-peB
+lLO
 lLO
 lLO
 bmU
@@ -47966,7 +47998,7 @@ vYy
 vYy
 vYy
 aBR
-peB
+lLO
 lLO
 lLO
 bmU
@@ -48160,7 +48192,7 @@ vYy
 vYy
 vYy
 aBR
-peB
+lLO
 lLO
 bmU
 bmU
@@ -48354,7 +48386,7 @@ hin
 hin
 vYy
 aBR
-peB
+lLO
 lLO
 bmU
 bmU
@@ -48548,7 +48580,7 @@ egk
 rwl
 aBR
 aBR
-peB
+lLO
 lLO
 bmU
 bmU
@@ -48740,9 +48772,9 @@ hin
 egk
 egk
 rwl
-peB
-peB
-peB
+lLO
+lLO
+lLO
 bmU
 bmU
 bmU
@@ -48918,7 +48950,7 @@ lcw
 vYy
 vYy
 vYy
-vYy
+rrG
 vYy
 vYy
 vYy
@@ -48934,7 +48966,7 @@ hin
 egk
 egk
 rwl
-peB
+lLO
 lLO
 lLO
 bmU
@@ -49112,7 +49144,7 @@ cNl
 vYy
 vYy
 vYy
-vYy
+rrG
 vYy
 vYy
 vYy
@@ -49128,7 +49160,7 @@ oAf
 oAf
 oAf
 rwl
-peB
+lLO
 lLO
 lLO
 bmU
@@ -49322,7 +49354,7 @@ oAf
 oAf
 oAf
 rwl
-peB
+lLO
 lLO
 bmU
 bmU
@@ -49500,7 +49532,7 @@ nxk
 vYy
 vYy
 vYy
-vYy
+rrG
 vYy
 vYy
 vYy
