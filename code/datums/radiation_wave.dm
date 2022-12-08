@@ -36,12 +36,12 @@
 	/// how many emitters of atleast RAD_MOB_ACT_PROTECTION we're from
 	var/relevant_count
 
-/datum/radiation_wave/New(turf/starting, dir, intensity = 0, falloff_modifier = RAD_FALLOFF_NORMAL, max_intensity, can_contaminate = TRUE, relevant_count = 1)
+/datum/radiation_wave/New(turf/starting, dir, intensity = 0, falloff_modifier = RAD_FALLOFF_NORMAL, max_intensity, can_contaminate = TRUE, relevant_count = 1, contam_left)
 	src.current = starting
 	src.dir = dir
 	src.starting_intensity = src.current_intensity = intensity
 	src.max_intensity = max_intensity || intensity
-	src.remaining_contam = intensity * RAD_CONTAMINATION_STR_COEFFICIENT
+	src.remaining_contam = contam_left || intensity
 	src.falloff_modifier = falloff_modifier
 	src.can_contaminate = can_contaminate
 	src.relevant_count = relevant_count
