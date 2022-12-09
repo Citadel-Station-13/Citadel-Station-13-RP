@@ -58,7 +58,6 @@
 	// return QDEL_HINT_IWILLGC
 
 /datum/radiation_pulse/proc/init()
-	lines = list()
 	diagonal_edges = list()
 
 /**
@@ -116,11 +115,51 @@
 
 /datum/radiation_line/proc/propagate()
 	if(!current)
-
-	radiate(current)
+		CRASH("no current")
+	// order:
+	// 1. stage outer turf if needed
+	// 2. radiate current turf
+	// 3. falloff
+	// 4. split if outer
+	radiate(current, strength)
+	if(outer)
+		outer--
+		if(!outer)
+			split(TRUE)
 	current = get_step(current, dir)
 
-/datum/radiation_line/proc/radiate(turf/T)
+/datum/radiation_line/proc/split(outer_split)
+	var/turf/splitting
+	var/datum/radiation_line/split
+	if(d1)
+		splitting = get_step(current, d1)
+		split = new /datum/radiation_line
+		split.current = splitting
+		split.dir = dir
+		split.d1 = d1
+		split.outer = outer_split?
+		split.strength = strength
+		split.prev = src
+		split.next = next
+		next = split
+	if(d2)
+		splitting = get_step(current, d2)
+		split = new /datum/radiation_line
+		split.current = splitting
+		split.dir = dir
+		split.d2 = d2
+		split.outer = outer
+		split.strength = strength
+		split.prev = src
+		split.next = next
+		next = split
+
+/datum/radiation_line/proc/radiate(turf/T, str)
+	// cache
+	var/datum/radiation_pulse/pulse = parent
+	T.rad_act(str, pulse)
+	for(var/atom/movable/AM as anything in T)
+		AM.irradiate(str, pulse)
 
 /**
  * returns amount contaminated
