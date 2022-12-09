@@ -12,6 +12,8 @@
 	var/can_contaminate
 	/// distance falloff
 	var/falloff = RAD_FALLOFF_CONTAMINATION_NORMAL
+	/// in limbo before del
+	var/fading = FALSE
 
 /datum/component/radioactive/Initialize(_strength=0, _half_life = RAD_HALF_LIFE_DEFAULT, _can_contaminate = TRUE, falloff)
 	strength = _strength
@@ -45,24 +47,26 @@
 	return ..()
 
 /datum/component/radioactive/proc/emit(ds)
-	if(!prob(50))
-		return
 	if(!hl3_release_date)
+		if(strength <= RAD_BACKGROUND_RADIATION)
+			qdel(src)
+			return
 		radiation_pulse(parent, strength, falloff, FALSE, can_contaminate)
+		return
+	if(strength <= RAD_BACKGROUND_RADIATION)
+		if(!fading)
+			fading = TRUE
+			addtimer(CALLBACK(src, .proc/check_dissipate), 5 SECONDS)
 		return
 	var/becoming = strength * ((1 / 2) ** (ds / (hl3_release_date)))
 	radiation_pulse(parent, (strength - becoming) * RAD_CONTAMINATION_CHEAT_FACTOR, falloff, FALSE, can_contaminate)
 	strength = becoming
-	if(strength <= RAD_BACKGROUND_RADIATION)
-		addtimer(CALLBACK(src, .proc/check_dissipate), 5 SECONDS)
-		return PROCESS_KILL
 
 /datum/component/radioactive/proc/check_dissipate()
 	if(strength <= RAD_BACKGROUND_RADIATION)
 		qdel(src)
 		return
-	if(!(datum_flags & DF_ISPROCESSING))	// keep going
-		START_PROCESSING(SSradiation, src)
+	fading = FALSE
 
 /datum/component/radioactive/proc/glow_loop(atom/movable/master)
 	var/filter = master.get_filter("rad_glow")

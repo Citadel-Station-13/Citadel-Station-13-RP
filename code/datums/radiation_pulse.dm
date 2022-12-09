@@ -328,7 +328,7 @@
 	if((rad_flags & RAD_NO_CONTAMINATE) || radiation_infect_ignore[type])
 	else
 		var/limit = pulse.highest_intensity * RAD_CONTAMINATION_STR_COEFFICIENT - RAD_CONTAMINATION_STR_ADJUST
-		var/amount = max(0, amount * RAD_CONTAMINATION_STR_COEFFICIENT - RAD_CONTAMINATION_STR_ADJUST)
+		var/contamination = max(0, amount * RAD_CONTAMINATION_STR_COEFFICIENT - RAD_CONTAMINATION_STR_ADJUST)
 		if(contamination)
 			var/datum/component/radioactive/R = GetComponent(/datum/component/radioactive)
 			if(R)
