@@ -32,13 +32,13 @@ SUBSYSTEM_DEF(radiation)
 		while(currentrun_sources.len)
 			var/datum/component/radioactive/R = currentrun_sources[1]
 			currentrun_sources.Cut(1,2)
-			R.emit()
+			R.emit(dt)
 			if(MC_TICK_CHECK)
 				return
 	else
 		// process as many pulses as we can
 		while(currentrun_pulses.len)
-			for(var/i in 1 to currentrun_pulses)
+			for(var/i in 1 to currentrun_pulses.len)
 				var/datum/radiation_pulse/P = currentrun_pulses[i]
 				if(P.gc_destroyed)
 					continue
