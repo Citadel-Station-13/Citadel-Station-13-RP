@@ -1,12 +1,13 @@
 #ifdef REFERENCE_TRACKING
 
+#warn Reference tracking is enabled.
+
 /datum/verb/find_refs()
 	set category = "Debug"
 	set name = "Find References"
 	set src in world
 
 	find_references(FALSE)
-
 
 /datum/proc/find_references(skip_alert)
 	running_find_references = type

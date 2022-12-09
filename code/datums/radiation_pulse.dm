@@ -139,7 +139,7 @@
 
 /datum/radiation_pulse/proc/propagate()
 	var/datum/radiation_line/head = line_head
-	if(!head)
+	if(!head || !head.parent)
 		qdel(src)
 		return
 	if(++steps == 50)
@@ -152,7 +152,6 @@
 			head = head.detach()
 		else
 			head = head.propagate()
-	line_head = head
 	for(var/turf/T as anything in diagonal_edges)
 		var/power = diagonal_edges[T]
 		turf_radiate(T, power)
@@ -161,7 +160,7 @@
 /datum/radiation_line
 	/// current turf
 	var/turf/current
-	/// parent pulse
+	/// parent pulse - setting this to null is what actually instructs the pulse that we're done
 	var/datum/radiation_pulse/parent
 	/// direction
 	var/dir
