@@ -62,11 +62,11 @@
 	// return QDEL_HINT_IWILLGC
 
 /datum/radiation_pulse/proc/init()
-	ASSERT(Source)
+	ASSERT(source)
 	diagonal_edges = list()
 	var/starting_insulation = init_radiate(source)
 	var/str = original_intensity
-	var/datum/radiation_line/line/line
+	var/datum/radiation_line/line
 	line = new
 	line_head = line
 	line.dir = NORTH
@@ -250,11 +250,11 @@
  * returns amount contaminated
  */
 /atom/proc/irradiate(amount, datum/radiation_pulse/pulse)
-	rad_act(amount, line)
+	rad_act(amount, pulse)
 	if(rad_flags & RAD_BLOCK_CONTENTS)
 	else
 		for(var/atom/A as anything in contents)
-			A.irradiate(amount, line)
+			A.irradiate(amount, pulse)
 	if(rad_flags & RAD_NO_CONTAMINATE)
 	else
 		var/contamination = max(0, min(amount, pulse.highest_intensity) * RAD_CONTAMINATION_STR_COEFFICIENT - RAD_CONTAMINATION_STR_ADJUST) * rad_stickiness

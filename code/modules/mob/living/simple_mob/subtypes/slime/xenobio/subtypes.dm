@@ -526,10 +526,10 @@
 
 /mob/living/simple_mob/slime/xenobio/green/handle_special()
 	if(stat != DEAD)
-		irradiate()
+		rad_pulse()
 	..()
 
-/mob/living/simple_mob/slime/xenobio/green/proc/irradiate()
+/mob/living/simple_mob/slime/xenobio/green/proc/rad_pulse()
 	radiation_pulse(src, RAD_INTENSITY_GREEN_SLIME_TICK)
 
 /mob/living/simple_mob/slime/xenobio/pink
