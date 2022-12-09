@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(radiation)
 	/// sources
 	var/static/list/datum/component/radioactive/sources = list()
 	/// emitting sources (currentrun)
-	var/list/datum/compnent/radioactive/emitting = list()
+	var/list/datum/component/radioactive/emitting = list()
 	/// pulses
 	var/static/list/datum/radiation_pulse/pulses = list()
 
@@ -35,9 +35,9 @@ SUBSYSTEM_DEF(radiation)
 
 /datum/controller/subsystem/radiation/proc/process_sources()
 	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag) : (wait)
-	while(length(sources))
-		var/datum/component/radioactive/R = sources[1]
-		sources.Cut(1,2)
+	while(length(emitting))
+		var/datum/component/radioactive/R = emitting[1]
+		emitting.Cut(1,2)
 		R.emit(dt)
 		if(MC_TICK_CHECK)
 			return
