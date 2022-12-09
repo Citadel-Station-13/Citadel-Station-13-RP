@@ -132,7 +132,10 @@
 	if(!head)
 		qdel(src)
 		return
-	++steps
+	if(++steps == 50)
+		qdel(src)
+		// you would need RAD_BACKGROUND_RADIATION * 2 ^ 50 to get here; someone fucked up.
+		CRASH("normal radiation pulse reached to 50 tiles; what is going on?")
 	current = INVERSE_SQUARE(original_intensity, steps * falloff, 1)
 	while(head)
 		if(!head.current)
@@ -140,8 +143,7 @@
 			head.prev.next = head.next
 			head = head.next
 			continue
-		head.propagate()
-		head = head.next
+		while((head = head.propagate()))
 	for(var/turf/T as anything in diagonal_edges)
 		var/power = diagonal_edges[T]
 		turf_radiate(T, power)
@@ -176,6 +178,14 @@
 /datum/radiation_line/proc/propagate()
 	if(!current)
 		CRASH("no current")
+	if(strength < RAD_BACKGROUND_RADIATION)
+		// detach if we're done
+		prev?.next = next
+		next?.prev = prev
+		. = next
+		next = null
+		prev = null
+		return
 	// order:
 	// 1. stage outer turf if needed
 	// 2. radiate current turf
@@ -208,6 +218,8 @@
 		strength = insulation * parent.current
 		// just move
 		current = get_step(current, dir)
+	// go to next
+	return next
 
 /datum/radiation_line/proc/split(outer_split)
 	var/turf/splitting
