@@ -1,3 +1,5 @@
+//TODO: /datum/mutation @Zandario
+
 /**
  * Gene Datum
  *
@@ -68,13 +70,13 @@
 	return message
 
 /**
- * Called after the mob runs update_icons.
+ * Called after the mob runs update_icon.
  *
  * @params M The subject.
  * @params g Gender (m or f)
  * @params fat Fat? (0 or 1)
  */
-/datum/gene/proc/OnDrawUnderlays(mob/M, g, fat)
+/datum/gene/proc/on_mob_update_icon(mob/M, g, fat)
 	return 0
 
 

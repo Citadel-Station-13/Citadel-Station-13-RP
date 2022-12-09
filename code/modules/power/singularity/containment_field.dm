@@ -9,6 +9,8 @@
 	density = 0
 	unacidable = 1
 	use_power = USE_POWER_OFF
+	interaction_flags_atom = NONE
+	interaction_flags_machine = NONE
 	light_range = 4
 	var/obj/machinery/field_generator/FG1 = null
 	var/obj/machinery/field_generator/FG2 = null

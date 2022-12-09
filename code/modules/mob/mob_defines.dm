@@ -336,3 +336,6 @@
 	//! Typing Indicator
 	var/typing = FALSE
 	var/mutable_appearance/typing_indicator
+
+	/// How far a mob has to be to interact with something without caring about obsctruction, defaulted to 0 tiles.
+	var/interaction_range = 0

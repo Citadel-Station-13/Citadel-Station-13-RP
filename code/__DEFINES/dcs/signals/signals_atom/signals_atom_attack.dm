@@ -32,13 +32,13 @@
 //* Attack signals. They should share the returned flags, to standardize the attack chain. *//
 /// tool_act -> pre_attack -> target.attackby (item.attack) -> afterattack
 	///? Ends the attack chain. If sent early might cause posterior attacks not to happen.
-	////#define COMPONENT_CANCEL_ATTACK_CHAIN (1<<0)
+	#define COMPONENT_CANCEL_ATTACK_CHAIN (1<<0)
 	///? Skips the specific attack step, continuing for the next one to happen.
-	////#define COMPONENT_SKIP_ATTACK (1<<1)
+	#define COMPONENT_SKIP_ATTACK (1<<1)
 /// From base of atom/attack_ghost(): (mob/observer/dead/ghost)
 #define COMSIG_ATOM_ATTACK_GHOST "atom_attack_ghost"
 /// From base of atom/attack_hand(): (mob/user, list/modifiers)
-////#define COMSIG_ATOM_ATTACK_HAND "atom_attack_hand"
+#define COMSIG_ATOM_ATTACK_HAND "atom_attack_hand"
 /// From base of atom/attack_paw(): (mob/user)
 ////#define COMSIG_ATOM_ATTACK_PAW "atom_attack_paw"
 	///? Works on all 3.

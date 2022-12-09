@@ -511,7 +511,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		if(!gene.block)
 			continue
 		if(gene.is_active(src))
-			var/underlay = gene.OnDrawUnderlays(src,g,fat)
+			var/underlay = gene.on_mob_update_icon(src ,g, fat)
 			if(underlay)
 				standing.underlays += underlay
 

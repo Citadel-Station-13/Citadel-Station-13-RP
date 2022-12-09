@@ -81,7 +81,7 @@
 	if(probinj(_prob,(flags&MUTCHK_FORCED)))
 		return 1
 
-/datum/gene/basic/heat_resist/OnDrawUnderlays(mob/M, g, fat)
+/datum/gene/basic/heat_resist/on_mob_update_icon(mob/M, g, fat)
 	return "cold[fat]_~s"
 */
 
@@ -104,7 +104,7 @@
 	if(probinj(_prob,(flags & MUTCHK_FORCED)))
 		return 1
 
-/datum/gene/basic/cold_resist/OnDrawUnderlays(mob/M, g, fat)
+/datum/gene/basic/cold_resist/on_mob_update_icon(mob/M, g, fat)
 	return "fire[fat]_s"
 
 /datum/gene/basic/noprints
@@ -159,7 +159,7 @@
 		return 0
 	return ..(M,flags)
 
-/datum/gene/basic/hulk/OnDrawUnderlays(mob/M, g, fat)
+/datum/gene/basic/hulk/on_mob_update_icon(mob/M, g, fat)
 	if(fat)
 		return "hulk_[fat]_s"
 	else
@@ -190,7 +190,45 @@
 	activation_prob=15
 
 /datum/gene/basic/tk/New()
-		block = DNABLOCK_TELE
+	block = DNABLOCK_TELE
 
-/datum/gene/basic/tk/OnDrawUnderlays(mob/M, g, fat)
+/datum/gene/basic/tk/on_mob_update_icon(mob/M, g, fat)
 	return "telekinesishead[fat]_s"
+
+/datum/gene/basic/laser_eyes
+	name = "Laser Eyes"
+	activation_messages = list("You feel pressure building up behind your eyes.")
+	mutation = MUTATION_LASER
+
+/datum/gene/basic/laser_eyes/New()
+	block = DNABLOCK_LASER
+
+
+/datum/gene/basic/laser_eyes/activate(mob/living/carbon/human/H, connected, flags)
+	. = ..()
+	if(.)
+		return
+	RegisterSignal(H, COMSIG_MOB_ATTACK_RANGED, .proc/on_ranged_attack)
+
+/datum/gene/basic/laser_eyes/deactivate(mob/living/carbon/human/H, connected, flags)
+	. = ..()
+	if(.)
+		return
+	UnregisterSignal(H, COMSIG_MOB_ATTACK_RANGED)
+
+///Triggers on COMSIG_MOB_ATTACK_RANGED. Does the projectile shooting.
+/datum/gene/basic/laser_eyes/proc/on_ranged_attack(mob/living/carbon/human/source, atom/target, modifiers)
+	SIGNAL_HANDLER
+
+	if (source.a_intent != INTENT_HARM)
+		return
+
+	var/obj/item/projectile/beam/LE = new(source.loc)
+	to_chat(source, SPAN_WARNING("You shoot with your laser eyes!"))
+	LE.icon = 'icons/effects/genetics.dmi'
+	LE.icon_state = "eyelasers"
+	LE.firer = source
+	LE.def_zone = ran_zone(source.zone_sel.selecting)
+	LE.preparePixelProjectile(target, source, modifiers)
+	INVOKE_ASYNC(LE, /obj/item/projectile.proc/fire)
+	playsound(usr.loc, 'sound/weapons/taser2.ogg', 75, TRUE)

@@ -10,6 +10,8 @@
 	density = 1
 	CanAtmosPass = ATMOS_PASS_PROC
 	layer = DOOR_OPEN_LAYER
+	interaction_flags_atom = INTERACT_ATOM_UI_INTERACT
+
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER
 

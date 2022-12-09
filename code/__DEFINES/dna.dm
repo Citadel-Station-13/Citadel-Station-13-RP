@@ -43,30 +43,30 @@
 
 // The way blocks are handled badly needs a rewrite, this is horrible.
 // Too much of a project to handle at the moment, TODO for later.
-var/DNABLOCK_BLIND    = 0
-var/DNABLOCK_DEAF     = 0
-var/DNABLOCK_HULK     = 0
-var/DNABLOCK_TELE     = 0
-var/DNABLOCK_FIRE     = 0
-var/DNABLOCK_XRAY     = 0
-var/DNABLOCK_CLUMSY   = 0
-var/DNABLOCK_FAKE     = 0
-var/DNABLOCK_COUGH    = 0
-var/DNABLOCK_GLASSES  = 0
-var/DNABLOCK_EPILEPSY = 0
-var/DNABLOCK_TWITCH   = 0
-var/DNABLOCK_NERVOUS  = 0
-var/DNABLOCK_MONKEY   = STRUCDNASIZE
-
-var/DNABLOCK_HEADACHE      = 0
-var/DNABLOCK_NOBREATH      = 0
-var/DNABLOCK_REMOTEVIEW    = 0
-var/DNABLOCK_REGENERATE    = 0
-var/DNABLOCK_INCREASERUN   = 0
-var/DNABLOCK_REMOTETALK    = 0
-var/DNABLOCK_MORPH         = 0
 var/DNABLOCK_BLEND         = 0
+var/DNABLOCK_BLIND         = 0
+var/DNABLOCK_CLUMSY        = 0
+var/DNABLOCK_COUGH         = 0
+var/DNABLOCK_DEAF          = 0
+var/DNABLOCK_DWARFISM      = 0
+var/DNABLOCK_EPILEPSY      = 0
+var/DNABLOCK_FAKE          = 0
+var/DNABLOCK_FIRE          = 0
+var/DNABLOCK_GLASSES       = 0
 var/DNABLOCK_HALLUCINATION = 0
+var/DNABLOCK_HEADACHE      = 0
+var/DNABLOCK_HULK          = 0
+var/DNABLOCK_INCREASERUN   = 0
+var/DNABLOCK_LASER         = 0
+var/DNABLOCK_MONKEY        = STRUCDNASIZE
+var/DNABLOCK_MORPH         = 0
+var/DNABLOCK_NERVOUS       = 0
+var/DNABLOCK_NOBREATH      = 0
 var/DNABLOCK_NOPRINTS      = 0
 var/DNABLOCK_NOSHOCK       = 0
-var/DNABLOCK_DWARFISM      = 0
+var/DNABLOCK_REGENERATE    = 0
+var/DNABLOCK_REMOTETALK    = 0
+var/DNABLOCK_REMOTEVIEW    = 0
+var/DNABLOCK_TELE          = 0
+var/DNABLOCK_TWITCH        = 0
+var/DNABLOCK_XRAY          = 0

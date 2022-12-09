@@ -1,22 +1,24 @@
 /mob/observer/dead/DblClickOn(atom/A, params)
+	if(can_reenter_corpse && mind?.current)
+		if(A == mind.current || (mind.current in A)) // double click your corpse or whatever holds it
+			reenter_corpse() // (body bag, closet, mech, etc)
+			return // seems legit.
+
 	if(client.buildmode)
 		build_click(src, client.buildmode, params, A)
 		return
-	if(can_reenter_corpse && mind && mind.current)
-		if(A == mind.current || (mind.current in A)) // double click your corpse or whatever holds it
-			reenter_corpse()						// (cloning scanner, body bag, closet, mech, etc)
-			return
 
-	// Things you might plausibly want to follow
+	// Things you might plausibly want to follow.
 	if(ismovable(A))
 		ManualFollow(A)
 
-	// Otherwise jump
+	// Otherwise jump.
 	else if(A.loc)
 		forceMove(get_turf(A))
-//		update_parallax_contents()
+		// update_parallax_contents()
 
-/client/var/inquisitive_ghost = 1
+/client/var/inquisitive_ghost = TRUE
+
 /mob/observer/dead/verb/toggle_inquisition() // warning: unexpected inquisition
 	set name = "Toggle Inquisitiveness"
 	set desc = "Sets whether your ghost examines everything on click by default"
@@ -24,19 +26,41 @@
 	if(!client) return
 	client.inquisitive_ghost = !client.inquisitive_ghost
 	if(client.inquisitive_ghost)
-		to_chat(src, "<span class='notice'>You will now examine everything you click on.</span>")
+		to_chat(src, SPAN_NOTICE("You will now examine everything you click on."))
 	else
-		to_chat(src, "<span class='notice'>You will no longer examine things you click on.</span>")
+		to_chat(src, SPAN_NOTICE("You will no longer examine things you click on."))
 
-/mob/observer/dead/ClickOn(var/atom/A, var/params)
+/mob/observer/dead/ClickOn(atom/A, params)
 	if(client.buildmode)
 		build_click(src, client.buildmode, params, A)
 		return
+
 	var/list/modifiers = params2list(params)
-	if(modifiers["shift"] && modifiers["middle"])
-		ShiftMiddleClickOn(A)
+	if(LAZYACCESS(modifiers, SHIFT_CLICK))
+		if(LAZYACCESS(modifiers, MIDDLE_CLICK))
+			ShiftMiddleClickOn(A)
+			return
+		if(LAZYACCESS(modifiers, CTRL_CLICK))
+			CtrlShiftClickOn(A)
+			return
+		ShiftClickOn(A)
 		return
-	if(!canClick()) return
+	if(LAZYACCESS(modifiers, MIDDLE_CLICK))
+		if(LAZYACCESS(modifiers, CTRL_CLICK))
+			CtrlMiddleClickOn(A)
+		else
+			MiddleClickOn(A, params)
+		return
+	if(LAZYACCESS(modifiers, ALT_CLICK))
+		AltClickNoInteract(src, A)
+		return
+	if(LAZYACCESS(modifiers, CTRL_CLICK))
+		CtrlClickOn(A)
+		return
+
+	if(world.time <= next_move)
+		return
+
 	setClickCooldown(4)
 	// You are responsible for checking config_legacy.ghost_interaction when you override this function
 	// Not all of them require checking, see below
@@ -46,16 +70,15 @@
 /atom/proc/attack_ghost(mob/observer/dead/user)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_ATTACK_GHOST, user)
-	// TODO: main ai interact bay code fucking disgusts me wtf
-	if(IsAdminGhost(user))		// admin AI interact
-		AdminAIInteract(user)
-		return
-	if(user.client && user.client.inquisitive_ghost)
-		user.examinate(src)
+	if(user.client)
+		// if(user.gas_scan && atmos_scan(user=user, target=src, silent=TRUE))
+		// 	return TRUE
+		if(isAdminGhostAI(user))
+			attack_ai(user)
 
-// defaults to just attack_ai
-/atom/proc/AdminAIInteract(mob/user)
-	return attack_ai(user)
+		else if(user.client && user.client.inquisitive_ghost)
+			user.examinate(src)
+	return FALSE
 
 // ---------------------------------------
 // And here are some good things for free:

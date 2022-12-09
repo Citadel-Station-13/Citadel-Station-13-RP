@@ -11,6 +11,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	item_state = "electronic"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_ID | SLOT_BELT
+	interaction_flags_atom = INTERACT_ATOM_ALLOW_USER_LOCATION
 
 	//Main variables
 	var/pdachoice = 1
