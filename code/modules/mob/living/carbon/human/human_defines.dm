@@ -258,3 +258,6 @@
 	 * Only used for camera monitors currently.
 	 */
 	var/obj/machinery/machine_visual
+
+	// ignore ssd status
+	var/override_ssd = FALSE

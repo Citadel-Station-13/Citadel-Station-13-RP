@@ -51,6 +51,8 @@
  * defaults to alias itself if not found, so passing in a valid sound datum is fine
  */
 /datum/controller/subsystem/sounds/proc/fetch_asset(alias)
+	if(!istext(alias))
+		return alias
 	return fetch_soundbyte(alias)?.get_asset() || alias
 
 /**

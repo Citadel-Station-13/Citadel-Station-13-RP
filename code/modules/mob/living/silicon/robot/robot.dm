@@ -170,8 +170,12 @@
 	spark_system.attach(src)
 
 	add_language("Robot Talk", 1)
-	add_language(LANGUAGE_GALCOM, 1)
-	add_language(LANGUAGE_EAL, 1)
+	// todo: translation contexts on language holder?
+	// this is messy
+	for(var/datum/language/L as anything in SScharacters.all_languages())
+		if(!(L.translation_class & TRANSLATION_CLASSES_CYBORG_SPEAKS))
+			continue
+		add_language(L, TRUE)
 
 	wires = new(src)
 
@@ -246,8 +250,8 @@
 	if(!cell)
 		return 0
 
-	if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_POWER_DRAIN_WARNING))
-		TIMER_COOLDOWN_START(src, COOLDOWN_POWER_DRAIN_WARNING, 2 SECONDS)
+	if(!TIMER_COOLDOWN_CHECK(src, CD_INDEX_POWER_DRAIN_WARNING))
+		TIMER_COOLDOWN_START(src, CD_INDEX_POWER_DRAIN_WARNING, 2 SECONDS)
 		to_chat(src, SPAN_DANGER("Warning: Abnormal usage on power channel [rand(11, 29)] detected!"))
 	return cell.drain_energy(actor, amount, flags)
 

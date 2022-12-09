@@ -568,3 +568,16 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define WINDOW_STATE_CROWBRARED_IN 2
 /// window is secured to frame
 #define WINDOW_STATE_SECURED_TO_FRAME 3
+
+//! cassette tapes
+//* data list
+#define CASSETTE_TAPE_DATA_MESSAGE 1
+#define CASSETTE_TAPE_DATA_NAME 2
+#define CASSETTE_TAPE_DATA_LANGUAGE 3
+#define CASSETTE_TAPE_DATA_DELAY 4
+#define CASSETTE_TAPE_DATA_OPCODE 5
+/// list length for data reads
+#define CASSETTE_TAPE_DATA_LEN 5
+//* metadata
+#define CASSETTE_METADATA_LANGUAGE "%"
+#define CASSETTE_METADATA_NAME "^"

@@ -7,6 +7,13 @@
  *
  * todo: autodetect length with rust
  *
+ * this stuff is obviously expensive and shouldn't be used at a whim
+ *
+ * todo: refactor soundbytes; they should be resolved via get_sfx global proc
+ * todo: and automatically register their sounds in global list by id
+ * todo: have var/direct_access for this; global list lookup for sound asset is WAY cheaper than
+ * todo: subsystem resolve, use that in cases of short sounds like terminal clicks.
+ *
  * currently holds:
  * - path/file - required for preload
  * - name - defaults to filename

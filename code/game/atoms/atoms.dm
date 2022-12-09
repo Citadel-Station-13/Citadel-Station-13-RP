@@ -813,7 +813,7 @@
 /// message is the message output to anyone who can hear.
 /// deaf_message (optional) is what deaf people will see.
 /// hearing_distance (optional) is the range, how many tiles away the message can be heard.
-/atom/proc/audible_message(var/message, var/deaf_message, var/hearing_distance)
+/atom/proc/audible_message(var/message, var/deaf_message, var/hearing_distance, datum/language/lang)
 
 	var/range = hearing_distance || world.view
 	var/list/hear = get_mobs_and_objs_in_view_fast(get_turf(src),range,remote_ghosts = FALSE)
@@ -825,13 +825,16 @@
 		var/obj/O = obj
 		O.show_message(message, 2, deaf_message, 1)
 
+	var/no_runechat = FALSE
 	for(var/mob in hearing_mobs)
 		var/mob/M = mob
 		var/msg = message
+		if(lang && !(lang.name in M.languages))
+			msg = lang.scramble(msg)
 		M.show_message(msg, 2, deaf_message, 1)
 		heard_to_floating_message += M
-	INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, (message ? message : deaf_message), null, FALSE, heard_to_floating_message, 30)
-
+	if(!no_runechat)
+		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, (message ? message : deaf_message), null, FALSE, heard_to_floating_message, 30)
 
 /atom/movable/proc/dropInto(var/atom/destination)
 	while(istype(destination))
@@ -869,16 +872,22 @@
 /atom/proc/GenerateTag()
 	return
 
-/atom/proc/atom_say(message)
+// todo: refactor this shit to be unified saycode, christ
+/atom/proc/atom_say(message, datum/language/L)
 	if(!message)
 		return
 	var/list/speech_bubble_hearers = list()
+	var/no_runechat = FALSE
 	for(var/mob/M in get_hearers_in_view(MESSAGE_RANGE_COMBAT_LOUD, src))
-		M.show_message("<span class='game say'><span class='name'>[src]</span> [atom_say_verb], \"[message]\"</span>", 2, null, 1)
+		var/processed = message
+		if(L && !(L.name in M.languages))
+			processed = L.scramble(message)
+			no_runechat = TRUE
+		M.show_message("<span class='game say'><span class='name'>[src]</span> [L?.speech_verb || atom_say_verb], \"[processed]\"</span>", 2, null, 1)
 		if(M.client)
 			speech_bubble_hearers += M.client
 
-	if(length(speech_bubble_hearers))
+	if(length(speech_bubble_hearers) && !no_runechat)
 		var/image/I = generate_speech_bubble(src, "[bubble_icon][say_test(message)]", FLY_LAYER)
 		I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 		INVOKE_ASYNC(GLOBAL_PROC, /.proc/flick_overlay, I, speech_bubble_hearers, 30)
