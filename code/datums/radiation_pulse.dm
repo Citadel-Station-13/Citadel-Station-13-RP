@@ -212,6 +212,7 @@
 /datum/radiation_line/proc/split(outer_split)
 	var/turf/splitting
 	var/datum/radiation_line/split
+	// we inject them behind us so we don't intsantly propagate
 	if(d1)
 		splitting = get_step(current, d1)
 		split = new /datum/radiation_line
@@ -220,11 +221,12 @@
 		split.d1 = d1
 		split.outer = TRUE
 		split.strength = strength
-		split.prev = src
-		split.next = next
 		split.insulation = insulation
 		split.parent = parent
-		next = split
+		prev?.next = split
+		split.prev = prev
+		split.next = src
+		prev = split
 	if(d2)
 		splitting = get_step(current, d2)
 		split = new /datum/radiation_line
@@ -233,11 +235,12 @@
 		split.d2 = d2
 		split.outer = TRUE
 		split.strength = strength
-		split.prev = src
-		split.next = next
 		split.insulation = insulation
 		split.parent = parent
-		next = split
+		prev?.next = split
+		split.prev = prev
+		split.next = src
+		prev = split
 
 /datum/radiation_line/proc/radiate(turf/T, str)
 	// cache
