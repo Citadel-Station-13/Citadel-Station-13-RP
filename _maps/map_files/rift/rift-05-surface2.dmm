@@ -17883,9 +17883,27 @@
 /area/security/security_lockerroom)
 "mZs" = (
 /obj/structure/table/rack/shelf/steel,
-/obj/item/gun/energy/phasegun/rifle,
-/obj/item/gun/energy/phasegun/rifle,
 /obj/effect/floor_decal/industrial/outline/red,
+/obj/item/gunbox/lethal{
+	pixel_y = 8
+	},
+/obj/item/gunbox/lethal{
+	pixel_y = 4
+	},
+/obj/item/gunbox/lethal,
+/obj/item/gunbox/lethal{
+	pixel_y = -4
+	},
+/obj/item/gunbox/lethal{
+	pixel_y = 8
+	},
+/obj/item/gunbox/lethal{
+	pixel_y = 4
+	},
+/obj/item/gunbox/lethal,
+/obj/item/gunbox/lethal{
+	pixel_y = -4
+	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/red)
 "mZy" = (
@@ -22269,24 +22287,24 @@
 "qpY" = (
 /obj/structure/table/rack/shelf/steel,
 /obj/effect/floor_decal/industrial/outline/yellow,
-/obj/item/gunbox/lethal{
+/obj/item/gunbox{
 	pixel_y = 8
 	},
-/obj/item/gunbox/lethal{
+/obj/item/gunbox{
 	pixel_y = 4
 	},
-/obj/item/gunbox/lethal,
-/obj/item/gunbox/lethal{
+/obj/item/gunbox,
+/obj/item/gunbox{
 	pixel_y = -4
 	},
-/obj/item/gunbox/lethal{
+/obj/item/gunbox{
 	pixel_y = 8
 	},
-/obj/item/gunbox/lethal{
+/obj/item/gunbox{
 	pixel_y = 4
 	},
-/obj/item/gunbox/lethal,
-/obj/item/gunbox/lethal{
+/obj/item/gunbox,
+/obj/item/gunbox{
 	pixel_y = -4
 	},
 /turf/simulated/floor/tiled/dark,
@@ -30118,9 +30136,9 @@
 /obj/structure/cable/green{
 	icon_state = "4-8"
 	},
-/obj/item/gun/energy/phasegun/pistol,
-/obj/item/gun/energy/phasegun/pistol,
 /obj/structure/table/rack/shelf/steel,
+/obj/item/gun/energy/phasegun/rifle,
+/obj/item/gun/energy/phasegun/rifle,
 /turf/simulated/floor/tiled/dark,
 /area/security/armory/blue)
 "wvJ" = (
