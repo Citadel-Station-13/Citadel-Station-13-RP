@@ -1,6 +1,22 @@
+/datum/radiation_burst
+	/// numbers of emitters we're from
+	var/emitter_count = 1
+	/// intensity
+	var/intensity
+	/// falloff
+	var/falloff
+	/// max intensity
+	var/highest
+
+/datum/radiation_burst/New(intensity, falloff)
+	src.intensity = src.highest = intensity
+	src.falloff = falloff
+
 /datum/radiation_pulse
 	/// source
 	var/turf/source
+	/// falloff
+	var/falloff
 	/// casted lines - linked list
 	var/datum/radiation_line/line_head
 	/// remaining contamination
@@ -16,11 +32,13 @@
 	/// diagonal edges, cached by outermost and set to their intensities
 	var/list/turf/diagonal_edges
 
-/datum/radiation_pulse/New(intensity, highest, count, can_contaminate = TRUE, remaining_contamination)
+/datum/radiation_pulse/New(turf/T, intensity, falloff, highest, count, can_contaminate = TRUE, remaining_contamination)
+	src.source = T
+	src.falloff = falloff
 	src.original_intensity = intensity
 	src.highest_intensity = highest || intensity
 	src.emitter_count = count || 1
-	src.no_contaminate = !can_Contaminate
+	src.no_contaminate = !can_contaminate
 	src.remaining_contamination = intensity || remaining_contamination
 	init()
 	START_PROCESSING(SSradiation, src)
