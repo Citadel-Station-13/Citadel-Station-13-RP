@@ -44,9 +44,10 @@ export const WarningParameter = new Juke.Parameter({
 export const DmMapsIncludeTarget = new Juke.Target({
   executes: async () => {
     const folders = [
-      ...Juke.glob('_maps/RandomRuins/**/*.dmm'),
-      ...Juke.glob('_maps/RandomZLevels/**/*.dmm'),
-      ...Juke.glob('_maps/shuttles/**/*.dmm'),
+      // Everything but primary station map files.
+      ...Juke.glob('_maps/away_missions/**/*.dmm'),
+      ...Juke.glob('_maps/map_levels/**/*.dmm'),
+      ...Juke.glob('_maps/submaps/**/*.dmm'),
       ...Juke.glob('_maps/templates/**/*.dmm'),
     ];
     const content = folders
@@ -65,7 +66,6 @@ export const DmTarget = new Juke.Target({
   inputs: [
     '_maps/map_files/generic/**',
     'code/**',
-    'goon/**',
     'html/**',
     'icons/**',
     'interface/**',

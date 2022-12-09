@@ -104,14 +104,18 @@
 		#endif
 
 		SET_BITFLAG_LIST(smoothing_groups)
+
 	if (length(canSmoothWith))
 		#ifdef UNIT_TESTS
 		assert_sorted(canSmoothWith, "[type].canSmoothWith")
 		#endif
 
-		if(canSmoothWith[length(canSmoothWith)] > MAX_S_TURF) //If the last element is higher than the maximum turf-only value, then it must scan turf contents for smoothing targets.
+		// If the last element is higher than the maximum turf-only value, then it must scan turf contents for smoothing targets.
+		if(canSmoothWith[length(canSmoothWith)] > MAX_S_TURF)
 			smoothing_flags |= SMOOTH_OBJ
+
 		SET_BITFLAG_LIST(canSmoothWith)
+
 	if (smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
 		QUEUE_SMOOTH(src)
 
