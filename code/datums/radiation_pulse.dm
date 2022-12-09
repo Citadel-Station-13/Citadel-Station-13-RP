@@ -297,6 +297,8 @@
 	insulation *= T.rad_insulation
 	T.rad_act(str, pulse)
 	for(var/atom/movable/AM as anything in T)
+		if(radiation_full_ignore[AM.type])
+			continue
 		insulation *= AM.rad_insulation
 		AM.irradiate(str, pulse)
 
@@ -308,8 +310,10 @@
 	if(rad_flags & RAD_BLOCK_CONTENTS)
 	else
 		for(var/atom/A as anything in contents)
+			if(radiation_full_ignore[AM.type])
+				continue
 			A.irradiate(amount, pulse)
-	if(rad_flags & RAD_NO_CONTAMINATE)
+	if((rad_flags & RAD_NO_CONTAMINATE) || radiation_infect_ignore[type])
 	else
 		var/contamination = max(0, min(amount, pulse.highest_intensity) * RAD_CONTAMINATION_STR_COEFFICIENT - RAD_CONTAMINATION_STR_ADJUST) * rad_stickiness
 		if(contamination)
