@@ -89,6 +89,9 @@
 /obj/structure/cable/green{
 	icon_state = "1-8"
 	},
+/obj/machinery/camera/network/mining{
+	dir = 1
+	},
 /turf/simulated/floor,
 /area/outpost/mining_main/outpost/substation)
 "be" = (
@@ -611,6 +614,15 @@
 	},
 /turf/simulated/open/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
+"gY" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/item/clothing/suit/storage/hooded/wintercoat,
+/obj/item/clothing/shoes/black,
+/obj/machinery/camera/network/mining{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/steel_grid,
+/area/outpost/mining_main/outpost/storage)
 "hd" = (
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "N-S-Pass"
@@ -1887,6 +1899,9 @@
 /obj/structure/transit_tube/high_velocity{
 	icon_state = "S-NE"
 	},
+/obj/machinery/camera/network/mining{
+	dir = 4
+	},
 /turf/simulated/floor/tiled/techfloor,
 /area/outpost/mining_main/outpost)
 "wg" = (
@@ -2730,6 +2745,9 @@
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "Et" = (
+/obj/machinery/camera/network/mining{
+	dir = 8
+	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/maintenance)
 "EB" = (
@@ -2876,8 +2894,15 @@
 	on = 1;
 	scrub_id = "mining_outpost1_airlock_scrubber"
 	},
+/obj/machinery/camera/network/mining{
+	dir = 1
+	},
 /turf/simulated/floor/plating,
 /area/outpost/mining_main/outpost/airlock/three)
+"Gg" = (
+/obj/machinery/hologram/holopad,
+/turf/simulated/floor/tiled,
+/area/outpost/mining_main/outpost)
 "Gm" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/supply,
 /obj/structure/cable/green{
@@ -3643,6 +3668,9 @@
 	dir = 8
 	},
 /obj/structure/table/steel_reinforced,
+/obj/machinery/camera/network/mining{
+	dir = 4
+	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost)
 "Qa" = (
@@ -3883,6 +3911,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/facility/interior/command)
+"SC" = (
+/obj/machinery/camera/network/mining{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel/lythios43c,
+/area/outpost/mining_main/outpost)
 "SK" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -4552,6 +4586,16 @@
 	},
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/surfacebase/outside/west_caves)
+"Zo" = (
+/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/obj/machinery/camera/network/mining{
+	dir = 4
+	},
+/turf/simulated/floor/tiled/white,
+/area/outpost/mining_main/outpost/washrooms)
 "Zp" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -35344,7 +35388,7 @@ Jl
 PB
 TR
 QQ
-ui
+SC
 gq
 gq
 GF
@@ -35920,7 +35964,7 @@ Ku
 ga
 rM
 gU
-iO
+Gg
 gU
 iO
 Qa
@@ -37084,7 +37128,7 @@ Sv
 PO
 tB
 KA
-KA
+gY
 WJ
 Xl
 Uj
@@ -37097,7 +37141,7 @@ vV
 FC
 jw
 uJ
-oM
+Zo
 oM
 Xz
 UH
