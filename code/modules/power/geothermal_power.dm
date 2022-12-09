@@ -20,8 +20,7 @@
 
 	var/obj/item/scanning_array/scanner
 	var/power_factor = 400 //number by which the power_total is divided before adding it to the grid
-	//var/number_of_collectors = 0
-	//var/list/collectors = list()
+	var/active_for = -1
 	var/power_total = 0
 
 /obj/machinery/power/geothermal_controller/can_drain_energy(datum/actor, flags)
@@ -31,6 +30,11 @@
 	if(machine_stat & BROKEN)
 		return
 	update_icon()
+	if(active_for > 0)
+		active_for -= delta_time
+		if(active_for <= 0)
+			active_for = 0
+			scan_for_collectors(0)
 	if(powernet)
 		if(power_total > 0)
 			add_avail(power_total/power_factor)
@@ -51,11 +55,9 @@
 	return ..()
 
 
-/obj/machinery/power/geothermal_controller/proc/scan_for_collectors()
+/obj/machinery/power/geothermal_controller/proc/scan_for_collectors(var/ran)
 	power_total = 0
-	if(!scanner)
-		return
-	for (var/obj/machinery/power/geothermal_collector/col in range(scanner.range, src))
+	for (var/obj/machinery/power/geothermal_collector/col in range(ran, src))
 		if(istype(col))
 			//number_of_collectors++
 			power_total += col.power_provided
@@ -81,9 +83,17 @@
 			to_chat(user, "You install the [W].")
 			scanner = W
 			W.forceMove(src)
-			scan_for_collectors()
+			scan_for_collectors(scanner.range)
 	update_icon_state()
 
+/obj/machinery/power/geothermal_controller/attack_robot(mob/user)
+	if (scanner)
+		to_chat(user, "There is a scanner array already present, nothing left to do.")
+	else
+		if (get_dist(user, src) <= 1)
+			to_chat(user, "You allow [src] to use your sensors as a sensor array. It can keep on working for the next 30 minutes.")
+			scan_for_collectors(5)//scan with default part range
+			active_for = 30
 
 /obj/machinery/power/geothermal_collector
 	name = "Akureyri Geothermal Power Collector"
