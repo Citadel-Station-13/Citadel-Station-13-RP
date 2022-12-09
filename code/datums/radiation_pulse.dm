@@ -147,6 +147,9 @@
 		// you would need RAD_BACKGROUND_RADIATION * 2 ^ 50 to get here; someone fucked up.
 		CRASH("normal radiation pulse reached to 50 tiles; what is going on?")
 	current = INVERSE_SQUARE(original_intensity, steps * falloff, 1)
+	if(current <= RAD_BACKGROUND_RADIATION)
+		qdel(src)
+		return
 	while(head)
 		if(!head.current)
 			head = head.detach()
@@ -188,6 +191,8 @@
  * detaches us from the hcain
  */
 /datum/radiation_line/proc/detach()
+	if(parent?.line_head == src)
+		parent.line_head = next
 	prev?.next = next
 	next?.prev = prev
 	. = next
@@ -271,10 +276,15 @@
 		split.strength = strength
 		split.insulation = insulation
 		split.parent = parent
-		prev?.next = split
-		split.prev = prev
-		split.next = src
-		prev = split
+		if(parent.line_head == src)
+			parent.line_head = split
+			split.next = src
+			prev = split
+		else
+			prev.next = split
+			split.prev = prev
+			split.next = src
+			prev = split
 	if(d2)
 		splitting = get_step(current, d2)
 		split = new /datum/radiation_line
@@ -285,10 +295,15 @@
 		split.strength = strength
 		split.insulation = insulation
 		split.parent = parent
-		prev?.next = split
-		split.prev = prev
-		split.next = src
-		prev = split
+		if(parent.line_head == src)
+			parent.line_head = split
+			split.next = src
+			prev = split
+		else
+			prev.next = split
+			split.prev = prev
+			split.next = src
+			prev = split
 	outer = FALSE
 
 /datum/radiation_line/proc/radiate(turf/T, str)
@@ -310,7 +325,7 @@
 	if(rad_flags & RAD_BLOCK_CONTENTS)
 	else
 		for(var/atom/A as anything in contents)
-			if(radiation_full_ignore[AM.type])
+			if(radiation_full_ignore[A.type])
 				continue
 			A.irradiate(amount, pulse)
 	if((rad_flags & RAD_NO_CONTAMINATE) || radiation_infect_ignore[type])
