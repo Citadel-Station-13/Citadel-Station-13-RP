@@ -172,6 +172,8 @@
 					"Pupdozer" = "pupdozer",
 					"V2 Engidog" = "thottbot",
 					"Borgi" = "borgi-eng",
+					"Engineering Hound" = "engihound",
+					"Engineering Hound Dark" = "engihounddark",
 					"F3-LINE" = "FELI-Engineer"
 					)
 	channels = list("Engineering" = 1)
