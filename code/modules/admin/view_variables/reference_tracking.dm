@@ -1,7 +1,5 @@
 #ifdef REFERENCE_TRACKING
 
-#warn Reference tracking is enabled.
-
 /datum/verb/find_refs()
 	set category = "Debug"
 	set name = "Find References"
@@ -10,7 +8,10 @@
 	find_references(FALSE)
 
 /datum/proc/find_references(skip_alert)
-	UNLINT(TRUE)	// you should never have this enabled in live anyways
+	// you should never be running this on live, and i'm sick of this throwing linter issues.
+	UNLINT(_find_references(skip_alert))
+
+/datum/proc/_find_references(skip_alert)
 	running_find_references = type
 	if(usr?.client)
 		if(usr.client.running_find_references)
