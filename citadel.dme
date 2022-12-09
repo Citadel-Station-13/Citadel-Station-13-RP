@@ -282,6 +282,7 @@
 #include "code\__HELPERS\icons\flatten.dm"
 #include "code\__HELPERS\icons\flatten_old.dm"
 #include "code\__HELPERS\lists\_string_lists.dm"
+#include "code\__HELPERS\lists\asset_sorted.dm"
 #include "code\__HELPERS\lists\associations.dm"
 #include "code\__HELPERS\lists\bitflag_lists.dm"
 #include "code\__HELPERS\lists\copy.dm"
