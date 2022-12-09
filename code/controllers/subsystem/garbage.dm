@@ -146,9 +146,6 @@ SUBSYSTEM_DEF(garbage)
 		fail_counts[level]++
 		switch(level)
 			if(GC_QUEUE_CHECK)
-				#ifdef REFERENCE_TRACKING
-				D.find_references()
-				#elif defined(REFERENCE_TRACKING)
 				if(reference_find_on_fail[refID])
 					D.find_references()
 				#ifdef GC_FAILURE_HARD_LOOKUP

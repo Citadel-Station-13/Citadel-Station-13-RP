@@ -257,7 +257,7 @@
 	// go to next
 	return next
 
-/datum/radiation_line/proc/split(outer_split)
+/datum/radiation_line/proc/split()
 	var/turf/splitting
 	var/datum/radiation_line/split
 	// we inject them behind us so we don't intsantly propagate
@@ -289,6 +289,7 @@
 		split.prev = prev
 		split.next = src
 		prev = split
+	outer = FALSE
 
 /datum/radiation_line/proc/radiate(turf/T, str)
 	// cache
