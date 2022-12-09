@@ -1,22 +1,50 @@
-PROCESSING_SUBSYSTEM_DEF(radiation)
+SUBSYSTEM_DEF(radiation)
 	name = "Radiation"
 	subsystem_flags = SS_NO_INIT | SS_BACKGROUND
 	wait = 1 SECONDS
 
+	/// we alternate between ticking sources and waves
+	var/static/alternating = FALSE
+	/// currentrun sources
+	var/list/currentrun_sources = list()
+	/// currentrun pulses
+	var/list/currentrun_pulses = list()
 	/// atom refs we warned about already
 	var/list/warned_atoms = list()
 	/// z radiation listeners - nested list
 	var/static/list/z_listeners = list()
 	/// waves about to be sent out on next tick; list [ turf = list(burst) ]
 	var/static/list/queued_waves = list()
+	/// sources
+	var/static/list/datum/component/radioactive/sources = list()
+	/// pulses
+	var/static/list/datum/radiation_pulse/pulses = list()
 
 /datum/controller/subsystem/processing/radiation/fire(resumed)
-	if(times_fired == 5)
-		can_fire = FALSE	// stop
-		return
-	if(!resumed)
-		flush_queue()
-	..()
+	if(!currentrun_pulses.len)
+		flush_queue()	// emit
+		currentrun_pulses = pulses.Copy()
+	if(!currentrun_sources.len)
+		currentrun_sources = sources.Copy()	// queue next set
+	if((alternating = !alternating))
+		// do sources
+		var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag) : (wait)
+		while(currentrun_sources.len)
+			var/datum/component/radioactive/R = currentrun_sources[1]
+			currentrun_sources.Cut(1,2)
+			R.emit()
+			if(MC_TICK_CHECK)
+				return
+	else
+		// process as many pulses as we can
+		while(currentrun_pulses.len)
+			for(var/i in 1 to currentrun_pulses)
+				var/datum/radiation_pulse/P = currentrun_pulses[i]
+				if(P.gc_destroyed)
+					continue
+				P.propagate()
+				if(MC_TICK_CHECK)
+					return
 
 /datum/controller/subsystem/processing/radiation/on_max_z_changed(old_z_count, new_z_count)
 	var/old = z_listeners.len

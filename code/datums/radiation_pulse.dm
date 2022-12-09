@@ -49,11 +49,11 @@
 	src.no_contaminate = !can_contaminate
 	src.remaining_contamination = intensity || remaining_contamination
 	init()
-	START_PROCESSING(SSradiation, src)
+	SSradiation.pulses += src
 
 /datum/radiation_pulse/Destroy()
 	SHOULD_CALL_PARENT(FALSE)
-	STOP_PROCESSING(SSradiation, src)
+	SSradiation.pulses -= src
 	var/datum/radiation_line/line = line_head
 	while(line)
 		// we unlink backwards
@@ -133,9 +133,6 @@
 /datum/radiation_pulse/proc/turf_radiate(turf/T, power)
 	for(var/atom/movable/AM as anything in T)
 		AM.irradiate(power, src)
-
-/datum/radiation_pulse/process()
-	propagate()
 
 /datum/radiation_pulse/proc/propagate()
 	var/datum/radiation_line/head = line_head
@@ -330,10 +327,11 @@
 			A.irradiate(amount, pulse)
 	if((rad_flags & RAD_NO_CONTAMINATE) || radiation_infect_ignore[type])
 	else
-		var/contamination = max(0, min(amount, pulse.highest_intensity) * RAD_CONTAMINATION_STR_COEFFICIENT - RAD_CONTAMINATION_STR_ADJUST) * rad_stickiness
+		var/limit = pulse.highest_intensity * RAD_CONTAMINATION_STR_COEFFICIENT - RAD_CONTAMINATION_STR_ADJUST
+		var/amount = max(0, amount * RAD_CONTAMINATION_STR_COEFFICIENT - RAD_CONTAMINATION_STR_ADJUST)
 		if(contamination)
 			var/datum/component/radioactive/R = GetComponent(/datum/component/radioactive)
 			if(R)
-				R.constructive_interference(contamination)
+				R.constructive_interference(pulse.highest_intensity, contamination)
 			else
 				AddComponent(/datum/component/radioactive, contamination)

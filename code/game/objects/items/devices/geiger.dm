@@ -57,6 +57,7 @@
 		grace--
 		if(grace <= 0)
 			radiation_count = 0
+			last_tick_amount = 0
 
 	current_tick_amount = 0
 
@@ -121,7 +122,7 @@
 	loop.last_radiation = radiation_count
 	loop.start()
 
-/obj/item/geiger_counter/rad_act(amount)
+/obj/item/geiger_counter/rad_act(amount, datum/radiation_pulse/pulse)
 	. = ..()
 	if(amount <= RAD_BACKGROUND_RADIATION || !scanning)
 		return
