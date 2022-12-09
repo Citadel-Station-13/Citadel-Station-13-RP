@@ -47,7 +47,7 @@ export const DmMapsIncludeTarget = new Juke.Target({
       // Everything but primary station map files.
       ...Juke.glob('_maps/away_missions/**/*.dmm'),
       // ...Juke.glob('_maps/map_levels/**/*.dmm'),
-      ...Juke.glob('_maps/submaps/**/*.dmm'),
+      // ...Juke.glob('_maps/submaps/**/*.dmm'),
       ...Juke.glob('_maps/templates/**/*.dmm'),
     ];
     const content = folders
