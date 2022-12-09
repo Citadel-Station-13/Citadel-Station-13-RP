@@ -62,18 +62,18 @@
 		update_canmove()	//updates lying, canmove and icons
 	return
 
-/mob/proc/Paralyse(amount)
+/mob/proc/Unconscious(amount)
 	if(status_flags & CANPARALYSE)
 		facing_dir = null
 		paralysis = max(max(paralysis,amount),0)
 	return
 
-/mob/proc/SetParalysis(amount)
+/mob/proc/SetUnconscious(amount)
 	if(status_flags & CANPARALYSE)
 		paralysis = max(amount,0)
 	return
 
-/mob/proc/AdjustParalysis(amount)
+/mob/proc/AdjustUnconscious(amount)
 	if(status_flags & CANPARALYSE)
 		paralysis = max(paralysis + amount,0)
 	return
@@ -113,20 +113,4 @@
 
 /mob/proc/AdjustBlinded(amount)
 	eye_blind = max(eye_blind + amount,0)
-	return
-
-/mob/proc/Resting(amount)
-	facing_dir = null
-	resting = max(max(resting,amount),0)
-	update_canmove()
-	return
-
-/mob/proc/SetResting(amount)
-	resting = max(amount,0)
-	update_canmove()
-	return
-
-/mob/proc/AdjustResting(amount)
-	resting = max(resting + amount,0)
-	update_canmove()
 	return

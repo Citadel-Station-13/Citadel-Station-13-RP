@@ -84,6 +84,7 @@
 	return TRUE
 
 /datum/preferences/proc/load_skin()
+	LAZYINITLIST(skin)	// umm maybe don't be null when menus read this??
 	if(!path)
 		return FALSE
 	// heyooo no interruptions please

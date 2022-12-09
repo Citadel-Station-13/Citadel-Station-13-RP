@@ -137,8 +137,7 @@
 			return TRUE
 
 /obj/structure/adherent_bath/proc/crystal_heal_damage(mob/living/carbon/human/patient)
-	if(patient.radiation > 0)
-		patient.radiation = max(patient.radiation - rand(5, 15), 0)
+	patient.cure_radiation(RAD_MOB_CURE_ADHERENT_BATH)
 	for(var/thing in patient.organs)
 		var/obj/item/organ/external/E = thing
 		if(BP_IS_CRYSTAL(E))

@@ -32,7 +32,6 @@
 #define COLD_GAS_DAMAGE_LEVEL_2 1.5
 ///Amount of damage applied when the current breath's temperature passes the 120K point
 #define COLD_GAS_DAMAGE_LEVEL_3 3
-#define RADIATION_SPEED_COEFFICIENT 0.1
 
 /mob/living/carbon/human
 	var/oxygen_alert = 0
@@ -216,7 +215,7 @@
 				if(O == src)
 					continue
 				O.show_message(text("<span class='danger'>[src] starts having a seizure!</span>"), 1)
-			Paralyse(10)
+			Unconscious(10)
 			make_jittery(1000)
 	if (disabilities & DISABILITY_COUGHING)
 		if ((prob(5) && paralysis <= 1))
@@ -255,106 +254,115 @@
 		if(10 <= rn && rn <= 12)
 			if(prob(50))
 				to_chat(src, "<span class='danger'>You suddenly black out!</span>")
-				Paralyse(10)
+				Unconscious(10)
 			else if(!lying)
 				to_chat(src, "<span class='danger'>Your legs won't respond properly, you fall down!</span>")
 				Weaken(10)
 
-/mob/living/carbon/human/handle_mutations_and_radiation()
+/mob/living/carbon/human/handle_mutations_and_radiation(seconds)
 	if(inStasisNow())
 		return
-
-	if(getFireLoss())
-		if((MUTATION_COLD_RESIST in mutations) || (prob(1)))
-			heal_organ_damage(0,1)
-
 	// DNA2 - Gene processing.
 	// The MUTATION_HULK stuff that was here is now in the hulk gene.
-	if(!isSynthetic())
+	var/mister_robot = !!isSynthetic()
+	if(!mister_robot)
 		for(var/datum/gene/gene in dna_genes)
 			if(!gene.block)
 				continue
 			if(gene.is_active(src))
 				gene.OnMobLife(src)
-
-	radiation = clamp(radiation,0,250)
-
+	// no radiation: stop
 	if(!radiation)
 		if(species.species_appearance_flags & RADIATION_GLOWS)
 			set_light(0)
+		return
+	// todo: SPECIES GLOWS - probably refactor this shit
+	if(species.species_appearance_flags & RADIATION_GLOWS)
+		var/lrange = clamp(sqrt(radiation) / 8, 0, 7)
+		var/lpower = clamp(sqrt(radiation) / 40, 0, 1)
+		var/lcolor = species.get_flesh_colour(src)
+		if(glow_toggle)
+			lpower = max(lpower, glow_intensity)
+			lrange = max(lrange, glow_range)
+			lcolor = glow_color
+		set_light(lrange, lpower, lcolor)
+	// todo: DIONA - probably refactor this shit
+	var/obj/item/organ/internal/diona/nutrients/rad_organ = locate() in internal_organs
+	if(rad_organ && !rad_organ.is_broken())
+		var/rads = radiation / 100
+		nutrition += rads
+		adjustBruteLoss(-rads)
+		adjustFireLoss(-rads)
+		adjustOxyLoss(-rads)
+		adjustToxLoss(-rads)
+		updatehealth()
+		cure_radiation(RAD_MOB_PASSIVE_LOSS_FOR(radiation, seconds) + rads)
+		return
+	// not enough to care: stop
+	if(radiation < RAD_MOB_NEGLIGIBLE)
+		cure_radiation(RAD_MOB_PASSIVE_LOSS_FOR(radiation, seconds))
+		return
+	// todo: PROMETHEANS - refactor this shit
+	var/obj/item/organ/internal/brain/slime/core = locate() in internal_organs
+	if(core)
+		return
+
+	if(mister_robot)
+		if(radiation >= RAD_MOB_WARNING_THRESHOLD)
+			if(prob(RAD_MOB_WARNING_CHANCE(radiation, seconds)))
+				to_chat(src, SPAN_WARNING("Warning: Ionization detected in control routes. Radiological threat suspected."))
+#ifdef RAD_MOB_BURNS_SYNTHETICS
+		if(radiation >= RAD_MOB_BURN_THRESHOLD)
+			take_overall_damage(burn = RAD_MOB_BURN_DAMAGE_FOR(radiation, seconds), used_weapon = "Radiation Burns")
+#endif
+		if(radiation >= RAD_MOB_TOXIN_THRESHOLD)
+			adjustToxLoss(RAD_MOB_SYNTH_INSTABILITY_FOR(radiation, seconds))
+#ifdef RAD_MOB_KNOCKDOWN_SYNTHETICS
+		if(radiation >= RAD_MOB_KNOCKDOWN_THRESHOLD)
+			if(prob(RAD_MOB_KNOCKDOWN_CHANCE(radiation, seconds)))
+				to_chat(src, SPAN_WARNING("Ionization detected in systems. Rebooting..."))
+				if(!lying)
+					emote("collapse")
+				Weaken(RAD_MOB_KNOCKDOWN_AMOUNT(radiation, seconds))
+#endif
 	else
-		if(species.species_appearance_flags & RADIATION_GLOWS)
-			var/rad_glow_range = max(1,min(5,radiation/15))
-			var/rad_glow_intensity = max(1,min(10,radiation/25))
-			if(glow_toggle)//if body glow is larger or brighter than rad glow, it wins
-				if(glow_range > rad_glow_range || glow_intensity > rad_glow_intensity)
-					set_light(glow_range, glow_intensity, glow_color)
-			else
-				set_light(rad_glow_range, rad_glow_intensity, species.get_flesh_colour(src))
-		// END DOGSHIT SNOWFLAKE
+		if(radiation >= RAD_MOB_WARNING_THRESHOLD)
+			if(prob(RAD_MOB_WARNING_CHANCE(radiation, seconds)))
+				to_chat(src, SPAN_WARNING("You feel nauseous, and a hot presence burning through your flesh."))
+		if(radiation >= RAD_MOB_BURN_THRESHOLD)
+			take_overall_damage(burn = RAD_MOB_BURN_DAMAGE_FOR(radiation, seconds), used_weapon = "Radiation Burns")
+		if(radiation >= RAD_MOB_TOXIN_THRESHOLD)
+			adjustToxLoss(RAD_MOB_TOXIN_DAMAGE_FOR(radiation, seconds))
+			// todo: autopsy data
+		if(radiation >= RAD_MOB_KNOCKDOWN_THRESHOLD)
+			if(prob(RAD_MOB_KNOCKDOWN_CHANCE(radiation, seconds)))
+				to_chat(src, SPAN_WARNING("You feel weak..."))
+				if(!lying)
+					emote("collapse")
+				Weaken(RAD_MOB_KNOCKDOWN_AMOUNT(radiation, seconds))
+		if(radiation >= RAD_MOB_HAIRLOSS_THRESHOLD)
+			if(prob(RAD_MOB_HAIRLOSS_CHANCE(radiation, seconds)))
+				to_chat(src, SPAN_WARNING("Your hair starts falling out in clumps..."))
+				addtimer(CALLBACK(src, .proc/radiation_hairloss), 8 SECONDS)
+		if(radiation >= RAD_MOB_DECLONE_THRESHOLD)
+			if(prob(RAD_MOB_DECLONE_CHANCE(radiation, seconds)))
+				to_chat(src, SPAN_WARNING("You feel a sharp pain, and a strange, numb feeling."))
+				adjustCloneLoss(RAD_MOB_DECLONE_DAMAGE(radiation, seconds))
+				emote("gasp")
+		if(radiation >= RAD_MOB_VOMIT_THRESHOLD)
+			if(prob(RAD_MOB_VOMIT_CHANCE(radiation, seconds)))
+				to_chat(src, SPAN_WARNING("You throw up!"))
+				// todo: blood vomit
+				vomit()
 
-		var/obj/item/organ/internal/diona/nutrients/rad_organ = locate() in internal_organs
-		if(rad_organ && !rad_organ.is_broken())
-			var/rads = radiation/25
-			radiation -= rads
-			nutrition += rads
-			adjustBruteLoss(-(rads))
-			adjustFireLoss(-(rads))
-			adjustOxyLoss(-(rads))
-			adjustToxLoss(-(rads))
-			updatehealth()
-			return
+	cure_radiation(RAD_MOB_PASSIVE_LOSS_FOR(radiation, seconds))
 
-		var/obj/item/organ/internal/brain/slime/core = locate() in internal_organs
-		if(core)
-			return
+/mob/living/carbon/human/proc/radiation_hairloss()
+	f_style = "Shaved"
+	h_style = "Bald"
+	update_hair()
 
-		var/damage = 0
-		radiation -= 1 * RADIATION_SPEED_COEFFICIENT
-		if(prob(25))
-			damage = 1
-
-		if (radiation > 50)
-			damage = 1
-			radiation -= 1 * RADIATION_SPEED_COEFFICIENT
-			if(!isSynthetic())
-				if(prob(5) && prob(100 * RADIATION_SPEED_COEFFICIENT))
-					radiation -= 5 * RADIATION_SPEED_COEFFICIENT
-					to_chat(src, "<span class='warning'>You feel weak.</span>")
-					Weaken(3)
-					if(!lying)
-						emote("collapse")
-				if(prob(5) && prob(100 * RADIATION_SPEED_COEFFICIENT) && species.get_bodytype_legacy() == SPECIES_HUMAN) //apes go bald
-					if((h_style != "Bald" || f_style != "Shaved" ))
-						to_chat(src, "<span class='warning'>Your hair falls out.</span>")
-						h_style = "Bald"
-						f_style = "Shaved"
-						update_hair()
-
-		if (radiation > 75)
-			damage = 3
-			radiation -= 1 * RADIATION_SPEED_COEFFICIENT
-			if(!isSynthetic())
-				if(prob(5))
-					take_overall_damage(0, 5 * RADIATION_SPEED_COEFFICIENT, used_weapon = "Radiation Burns")
-				if(prob(1))
-					to_chat(src, "<span class='warning'>You feel strange!</span>")
-					adjustCloneLoss(5 * RADIATION_SPEED_COEFFICIENT)
-					emote("gasp")
-
-		if (radiation > 150)
-			damage = 6
-			radiation -= 4 * RADIATION_SPEED_COEFFICIENT
-
-		if(damage)
-			damage *= species.radiation_mod
-			adjustToxLoss(damage * RADIATION_SPEED_COEFFICIENT)
-			updatehealth()
-			if(!isSynthetic() && organs.len)
-				var/obj/item/organ/external/O = pick(organs)
-				if(istype(O)) O.add_autopsy_data("Radiation Poisoning", damage)
-
-	/** breathing **/
+/** breathing **/
 
 /mob/living/carbon/human/handle_chemical_smoke(var/datum/gas_mixture/environment)
 	if(wear_mask && (wear_mask.clothing_flags & BLOCK_GAS_SMOKE_EFFECT))
@@ -558,7 +566,7 @@
 		if(SA_pp > SA_para_min)
 
 			// 3 gives them one second to wake up and run away a bit!
-			Paralyse(3)
+			Unconscious(3)
 
 			// Enough to make us sleep as well
 			if(SA_pp > SA_sleep_min)
@@ -1056,7 +1064,7 @@
 
 		//UNCONSCIOUS. NO-ONE IS HOME
 		if((getOxyLoss() > (species.total_health/2)) || (health <= config_legacy.health_threshold_crit))
-			Paralyse(3)
+			Unconscious(3)
 
 		if(hallucination)
 			if(hallucination >= 20 && !(species.species_flags & (NO_POISON|IS_PLANT|NO_HALLUCINATION)) )
@@ -1085,7 +1093,7 @@
 		if(halloss >= species.total_health)
 			to_chat(src, "<span class='notice'>You're in too much pain to keep going...</span>")
 			src.visible_message("<B>[src]</B> slumps to the ground, too weak to continue fighting.")
-			Paralyse(10)
+			Unconscious(10)
 			setHalLoss(species.total_health - 1)
 
 		if(paralysis || sleeping)
@@ -1183,7 +1191,7 @@
 			eye_blurry = max(2, eye_blurry)
 			if (prob(5))
 				Sleeping(1)
-				Paralyse(5)
+				Unconscious(5)
 
 		// If you're dirty, your gloves will become dirty, too.
 		if(gloves && germ_level > gloves.germ_level && prob(10))
@@ -1688,7 +1696,7 @@
 	if(shock_stage >= 120)
 		if (prob(2))
 			to_chat(src, "<span class='danger'>[pick("You black out", "You feel like you could die any moment now", "You are about to lose consciousness")]!</span>")
-			Paralyse(5)
+			Unconscious(5)
 
 	if(shock_stage == 150)
 		emote("me",1,"can no longer stand, collapsing!")

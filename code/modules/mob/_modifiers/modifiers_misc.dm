@@ -87,7 +87,7 @@ the artifact triggers the rage.
 	holder.visible_message("<span class='critical'>\The [holder] descends into an all consuming rage!</span>")
 
 	// End all stuns.
-	holder.SetParalysis(0)
+	holder.SetUnconscious(0)
 	holder.SetStunned(0)
 	holder.SetWeakened(0)
 	holder.setHalLoss(0)
@@ -106,7 +106,7 @@ the artifact triggers the rage.
 
 		if(prob(last_shock_stage))
 			to_chat(holder, "<span class='warning'>You pass out from the pain you were suppressing.</span>")
-			holder.Paralyse(5)
+			holder.Unconscious(5)
 
 		if(ishuman(holder))
 			var/mob/living/carbon/human/H = holder
@@ -302,11 +302,11 @@ the artifact triggers the rage.
 /datum/modifier/poisoned/paralysis/tick()
 	..()
 	if(prob(5))
-		holder.Paralyse(3)
+		holder.Unconscious(3)
 
 /datum/modifier/poisoned/paralysis/on_applied()
 	..()
-	holder.Paralyse(4)
+	holder.Unconscious(4)
 
 // Pulse modifier.
 /datum/modifier/false_pulse

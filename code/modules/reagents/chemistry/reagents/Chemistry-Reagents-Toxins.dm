@@ -450,8 +450,8 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		overdose_mod *= H.species.chemOD_mod
-	M.apply_effect(2 * removed,IRRADIATE, 0, 0)
-	M.apply_effect(5 * removed,DROWSY, 0, 0)
+	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_SIFSLURRY_OD(removed))
+	M.apply_effect(5 * removed, DROWSY, 0, 0)
 
 /datum/reagent/toxin/sifslurry/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
 	affect_blood(M, alien, removed * 0.7)
@@ -640,7 +640,7 @@
 		if(prob(removed * 40)) //Additionally, let's make it so there's an 8% chance per tick for a random cosmetic/not guranteed good/bad mutation.
 			randmuti(M)//This should equate to 4 random cosmetic mutations per 10 injected/20 ingested/30 touching units
 			to_chat(M, "<span class='warning'>You feel odd!</span>")
-	M.apply_effect(10 * removed, IRRADIATE, 0)
+	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_MUTAGEN(removed))
 
 /datum/reagent/slimejelly
 	name = "Slime Jelly"
@@ -1049,7 +1049,7 @@
 		if(prob(removed * 40))
 			randmuti(M)
 			to_chat(M, "<span class='warning'>You feel odd!</span>")
-	M.apply_effect(16 * removed, IRRADIATE, 0)
+	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_SLIMETOXIN(removed))
 
 /datum/reagent/aslimetoxin
 	name = "Docility Toxin"
@@ -1079,7 +1079,7 @@
 		if(prob(removed * 40))
 			randmuti(M)
 			to_chat(M, "<span class='warning'>You feel odd!</span>")
-	M.apply_effect(6 * removed, IRRADIATE, 0)
+	M.afflict_radiation(RAD_MOB_AFFLICT_STRENGTH_ASLIMETOXIN(removed))
 
 /*
  * Hostile nanomachines.
@@ -1111,8 +1111,12 @@
 	affects_robots = TRUE
 
 /datum/reagent/irradiated_nanites/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	SSradiation.radiate(get_turf(M), 20)	// Irradiate people around you.
-	M.radiation = max(M.radiation + 5 * removed, 0)	// Irradiate you. Because it's inside you.
+	// todo: this should be more brutal on people around the person without being too brutal on the person
+	// new radiation just kind of scales pretty badly
+	/// rads to everyone around you
+	radiation_pulse(M, RAD_INTENSITY_CHEM_IRRADIATED_NANITES)
+	/// radiate the person a bit just in case they're armored
+	M.rad_act(RAD_INTENSITY_CHEM_IRRADIATED_NANITES_SELF)
 
 /datum/reagent/neurophage_nanites
 	name = "Restorative Nanites"

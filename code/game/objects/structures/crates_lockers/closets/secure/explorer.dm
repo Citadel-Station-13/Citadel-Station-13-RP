@@ -21,7 +21,7 @@
 		/obj/item/flashlight,
 		/obj/item/gps/explorer,
 		/obj/item/storage/box/flare,
-		/obj/item/geiger,
+		/obj/item/geiger_counter,
 		/obj/item/cell/device,
 		/obj/item/radio,
 		/obj/item/stack/marker_beacon/thirty,
@@ -74,7 +74,7 @@
 		/obj/item/clothing/accessory/storage/white_vest,
 		/obj/item/barrier_tape_roll/medical,
 		/obj/item/gps/medical,
-		/obj/item/geiger,
+		/obj/item/geiger_counter,
 		/obj/item/bodybag/cryobag,
 		/obj/item/cataloguer/compact)
 
@@ -140,7 +140,7 @@
 		/obj/item/storage/belt/explorer,
 		/obj/item/storage/box/flare,
 		/obj/item/storage/box/explorerkeys,
-		/obj/item/geiger,
+		/obj/item/geiger_counter,
 		/obj/item/cell/device,
 		/obj/item/radio,
 		/obj/item/bluespace_radio,

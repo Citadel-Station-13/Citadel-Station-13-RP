@@ -1,6 +1,6 @@
 #define FUSION_ENERGY_KW_PER_K 0.02
 ///radiation divisior. plasma temp / divisor = radiation.
-#define PLASMA_TEMP_RADIATION_DIVISIOR 20
+#define PLASMA_TEMP_RADIATION_DIVISIOR 10
 GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 
 /obj/effect/fusion_em_field
@@ -321,7 +321,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 	radiation += plasma_temperature/2
 	plasma_temperature = 0
 
-	SSradiation.radiate(src, radiation)
+	radiation_pulse(src, clamp(radiation, 0, 50000), RAD_FALLOFF_ENGINE_FUSION)
 	Radiate()
 
 /obj/effect/fusion_em_field/proc/Radiate()
@@ -511,7 +511,7 @@ GLOBAL_VAR_INIT(max_fusion_air_heat, INFINITY)
 
 //Reaction radiation is fairly buggy and there's at least three procs dealing with radiation here, this is to ensure constant radiation output.
 /obj/effect/fusion_em_field/proc/radiation_scale()
-	SSradiation.radiate(src, 2 + plasma_temperature / PLASMA_TEMP_RADIATION_DIVISIOR)
+	radiation_pulse(src, 2 + plasma_temperature / PLASMA_TEMP_RADIATION_DIVISIOR)
 
 //Somehow fixing the radiation issue managed to break this, but moving it to it's own proc seemed to have fixed it. I don't know.
 /obj/effect/fusion_em_field/proc/temp_dump()

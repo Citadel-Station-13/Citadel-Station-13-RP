@@ -113,14 +113,13 @@
 				H.adjustBrainLoss(-(rand(1,3)))
 
 			// Also recharge their internal battery.
-			if(H.isSynthetic() && H.nutrition < H.species.max_nutrition)
+			if(H.nutrition < H.species.max_nutrition)
 				var/needed = clamp(H.species.max_nutrition - H.nutrition, 0, 20)
 				var/drained = cell.use(DYNAMIC_KJ_TO_CELL_UNITS(needed * SYNTHETIC_NUTRITION_KJ_PER_UNIT))
 				H.nutrition += DYNAMIC_CELL_UNITS_TO_KJ(drained) / SYNTHETIC_NUTRITION_KJ_PER_UNIT
 
 			// And clear up radiation
-			if(H.radiation > 0)
-				H.radiation = max(H.radiation - rand(5, 15), 0)
+			H.cure_radiation(RAD_MOB_CURE_SYNTH_CHARGER)
 		var/obj/item/rig/wornrig = H.get_rig()
 		if(wornrig) // just to make sure
 			for(var/obj/item/rig_module/storedmod in wornrig)

@@ -94,6 +94,14 @@
 	/// Shows up under a UV light.
 	var/fluorescent
 
+	//! Radiation
+	/// radiation flags
+	var/rad_flags = RAD_NO_CONTAMINATE	// overridden to NONe in /obj and /mob base
+	/// radiation insulation - does *not* affect rad_act!
+	var/rad_insulation = RAD_INSULATION_NONE
+	/// contamination insulation; null defaults to rad_insulation
+	var/rad_stickiness
+
 	//! ## Overlays
 	/// a very temporary list of overlays to remove
 	var/list/remove_overlays
@@ -902,6 +910,34 @@
 
 /atom/proc/speech_bubble(bubble_state = "", bubble_loc = src, list/bubble_recipients = list())
 	return
+
+//! Radiation
+/**
+ * called when we're hit by a radiation wave
+ */
+/atom/proc/rad_act(strength, datum/radiation_wave/wave)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_RAD_ACT, strength)
+
+/**
+ * called when we're hit by z radiation
+ */
+/atom/proc/z_rad_act(strength)
+	SHOULD_CALL_PARENT(TRUE)
+	rad_act(strength)
+
+/atom/proc/add_rad_block_contents(source)
+	ADD_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS, source)
+	rad_flags |= RAD_BLOCK_CONTENTS
+
+/atom/proc/remove_rad_block_contents(source)
+	REMOVE_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS, source)
+	if(!HAS_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS))
+		rad_flags &= ~RAD_BLOCK_CONTENTS
+
+/atom/proc/clean_radiation(str, mul, cheap)
+	var/datum/component/radioactive/RA = GetComponent(/datum/component/radioactive)
+	RA?.clean(str, mul)
 
 //! ## Atom Colour Priority System
 /**

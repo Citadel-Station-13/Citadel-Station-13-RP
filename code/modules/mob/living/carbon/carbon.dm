@@ -177,7 +177,7 @@
 					M.adjust_fire_stacks(-1)
 				if(M.on_fire)
 					src.IgniteMob()
-			AdjustParalysis(-3)
+			AdjustUnconscious(-3)
 			AdjustStunned(-3)
 			AdjustWeakened(-3)
 

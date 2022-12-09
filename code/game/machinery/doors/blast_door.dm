@@ -16,8 +16,9 @@
 	icon = 'icons/obj/doors/rapid_pdoor.dmi'
 	icon_state = null
 	min_force = 20 //minimum amount of force needed to damage the door with a melee weapon
-
-	dir = 1
+	rad_flags = RAD_NO_CONTAMINATE
+	rad_insulation = RAD_INSULATION_SUPER
+	dir = NORTH
 	explosion_resistance = 25
 	closed_layer = ON_WINDOW_LAYER // Above airlocks when closed
 
@@ -61,8 +62,6 @@
 		icon_state = icon_state_closed
 	else
 		icon_state = icon_state_open
-	SSradiation.resistance_cache.Remove(get_turf(src))
-	return
 
 // Has to be in here, comment at the top is older than the emag_act code on doors proper
 /obj/machinery/door/blast/emag_act()
@@ -84,6 +83,7 @@
 	src.set_opacity(0)
 	sleep(15)
 	src.layer = open_layer
+	rad_insulation = RAD_INSULATION_NONE
 	src.operating = 0
 
 // Proc: force_close()
@@ -98,6 +98,7 @@
 	src.update_icon()
 	src.set_opacity(initial(opacity))
 	sleep(15)
+	rad_insulation = initial(rad_insulation)
 	src.operating = 0
 
 // Proc: force_toggle()

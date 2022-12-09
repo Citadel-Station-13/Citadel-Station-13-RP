@@ -46,6 +46,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 /obj/structure/cable
 	level = 1
 	anchored =1
+	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
 	var/datum/powernet/powernet
 	name = "power cable"
 	desc = "A flexible superconducting cable for heavy-duty power transfer."
