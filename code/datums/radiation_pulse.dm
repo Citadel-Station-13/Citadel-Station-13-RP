@@ -25,6 +25,10 @@
 	var/original_intensity
 	/// highest intensity in batch
 	var/highest_intensity
+	/// current intensity
+	var/current
+	/// current steps
+	var/steps = 0
 	/// emitter count in batch that are above radiation mob minimum/background
 	var/emitter_count
 	/// can we contaminate
@@ -35,7 +39,7 @@
 /datum/radiation_pulse/New(turf/T, intensity, falloff, highest, count, can_contaminate = TRUE, remaining_contamination)
 	src.source = T
 	src.falloff = falloff
-	src.original_intensity = intensity
+	src.original_intensity = src.current = intensity
 	src.highest_intensity = highest || intensity
 	src.emitter_count = count || 1
 	src.no_contaminate = !can_contaminate
@@ -60,13 +64,18 @@
 /datum/radiation_pulse/proc/init()
 	diagonal_edges = list()
 
+
 /**
  * return insulation
  */
 /datum/radiation_pulse/proc/init_radiate(turf/T)
 	. = 1
 
+
+
 /datum/radiation_pulse/proc/turf_radiate(turf/T, power)
+	for(var/atom/movable/AM as anything in T)
+		AM.irradiate(power, src)
 
 /datum/radiation_pulse/process()
 	propagate()
@@ -76,6 +85,8 @@
 	if(!head)
 		qdel(src)
 		return
+	++steps
+	current = INVERSE_SQUARE(original_intensity, steps * falloff, 1)
 	while(head)
 		if(!head.current)
 			head.next.prev = head.prev
@@ -108,6 +119,8 @@
 	var/datum/radiation_line/next
 	/// prev line
 	var/datum/radiation_line/prev
+	/// current insulation
+	var/insulation = 1
 
 /datum/radiation_line/Destroy()
 	SHOULD_CALL_PARENT(FALSE)
@@ -119,14 +132,35 @@
 	// order:
 	// 1. stage outer turf if needed
 	// 2. radiate current turf
+	//? sike; 1/2 swapped so insulation protects outer.
 	// 3. falloff
-	// 4. split if outer
+	// 4. move forwards
+	// 5. split if outer
 	radiate(current, strength)
 	if(outer)
-		outer--
-		if(!outer)
-			split(TRUE)
-	current = get_step(current, dir)
+		// stage
+		var/turf/staging
+		var/existing
+		var/list/staged = parent.diagonal_edges
+		if(d1)
+			staging = get_step(current, d1)
+			existing = staged[staging]
+			staged[staging] = clamp(existing + strength * 0.75, existing, max(strength, existing))
+		if(d2)
+			staging = get_step(current, d2)
+			existing = staged[staging]
+			staged[staging] = clamp(existing + strength * 0.75, existing, max(strength, existing))
+		// falloff
+		strength = insulation * parent.current
+		// move
+		current = get_step(current, dir)
+		// split
+		split()
+	else
+		// falloff
+		strength = insulation * parent.current
+		// just move
+		current = get_step(current, dir)
 
 /datum/radiation_line/proc/split(outer_split)
 	var/turf/splitting
@@ -137,10 +171,11 @@
 		split.current = splitting
 		split.dir = dir
 		split.d1 = d1
-		split.outer = outer_split?
+		split.outer = TRUE
 		split.strength = strength
 		split.prev = src
 		split.next = next
+		split.insulation = insulation
 		next = split
 	if(d2)
 		splitting = get_step(current, d2)
@@ -148,23 +183,26 @@
 		split.current = splitting
 		split.dir = dir
 		split.d2 = d2
-		split.outer = outer
+		split.outer = TRUE
 		split.strength = strength
 		split.prev = src
 		split.next = next
+		split.insulation = insulation
 		next = split
 
 /datum/radiation_line/proc/radiate(turf/T, str)
 	// cache
 	var/datum/radiation_pulse/pulse = parent
+	insulation *= T.rad_insulation
 	T.rad_act(str, pulse)
 	for(var/atom/movable/AM as anything in T)
+		insulation *= AM.rad_insulation
 		AM.irradiate(str, pulse)
 
 /**
  * returns amount contaminated
  */
-/atom/proc/irradiate(amount, datum/radiation_line/line)
+/atom/proc/irradiate(amount, datum/radiation_pulse/pulse)
 	rad_act(amount, line)
 	if(rad_flags & RAD_BLOCK_CONTENTS)
 	else
@@ -172,7 +210,7 @@
 			A.irradiate(amount, line)
 	if(rad_flags & RAD_NO_CONTAMINATE)
 	else
-		var/contamination = max(0, amount * RAD_CONTAMINATION_STR_COEFFICIENT - RAD_CONTAMINATION_STR_ADJUST)
+		var/contamination = max(0, min(amount, pulse.highest_intensity) * RAD_CONTAMINATION_STR_COEFFICIENT - RAD_CONTAMINATION_STR_ADJUST) * rad_stickiness
 		if(contamination)
 			var/datum/component/radioactive/R = GetComponent(/datum/component/radioactive)
 			if(R)
