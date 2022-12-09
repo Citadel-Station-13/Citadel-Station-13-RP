@@ -11,7 +11,7 @@
  * By using the testing("message") proc you can create debug-feedback for people with this uncommented,
  * but not visible in the release version
  */
-// #define TESTING
+#define TESTING
 
 /// Enables the ability to cache datum vars and retrieve later for debugging which vars changed.
 // #define DATUMVAR_DEBUGGING_MODE
@@ -21,7 +21,6 @@
 #define USE_CUSTOM_ERROR_HANDLER
 #define DEBUG_SHUTTLES
 #endif
-
 
 #ifdef TESTING
 #define DATUMVAR_DEBUGGING_MODE
@@ -59,10 +58,10 @@
  * Also enables some debug vars on sslighting that can be used to modify
  * how extensively we prune lighting corners to update.
  */
-#define VISUALIZE_LIGHT_UPDATES
+// #define VISUALIZE_LIGHT_UPDATES
 
 /// Highlights atmos active turfs in green.
-#define VISUALIZE_ACTIVE_TURFS
+// #define VISUALIZE_ACTIVE_TURFS
 #endif //ifdef TESTING
 
 /// If this is uncommented, we do a single run though of the game setup and tear down process with unit tests in between

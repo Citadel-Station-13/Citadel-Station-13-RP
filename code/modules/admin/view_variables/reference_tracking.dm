@@ -10,6 +10,7 @@
 	find_references(FALSE)
 
 /datum/proc/find_references(skip_alert)
+	UNLINT(TRUE)	// you should never have this enabled in live anyways
 	running_find_references = type
 	if(usr?.client)
 		if(usr.client.running_find_references)
