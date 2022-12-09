@@ -76,6 +76,7 @@
 	var/starting_insulation = init_radiate(source)
 	var/str = original_intensity
 	var/datum/radiation_line/line
+	steps = 1
 	line = new
 	line_head = line
 	line.dir = NORTH
@@ -151,6 +152,7 @@
 			head = head.detach()
 		else
 			head = head.propagate()
+	line_head = head
 	for(var/turf/T as anything in diagonal_edges)
 		var/power = diagonal_edges[T]
 		turf_radiate(T, power)
@@ -233,7 +235,7 @@
 		// falloff
 		strength = insulation * parent.current
 		// done
-		if(strength > RAD_BACKGROUND_RADIATION)
+		if(strength <= RAD_BACKGROUND_RADIATION)
 			return detach()
 		// move
 		current = get_step(current, dir)
@@ -246,7 +248,7 @@
 		// falloff
 		strength = insulation * parent.current
 		// done
-		if(strength > RAD_BACKGROUND_RADIATION)
+		if(strength <= RAD_BACKGROUND_RADIATION)
 			return detach()
 		// just move
 		current = get_step(current, dir)
