@@ -1,47 +1,14 @@
-
-////////////////////////////////////////////////
-///////   Unique Map Templates   ///////////////
-////////////////////////////////////////////////
-
-/*
-This is for maps that are not overmap accessible but are also not gateway maps. There shouldn't be much of these right now
-unless a large shift in design philosophy occurs
-
-For overmap things that are planets and accessible from the overmap please put them
-in planets_lateload.dm
-
-For overmap things that are in space but *are not* planets put them in space_lateload.dm
-
-For gateway missions please put them in gateway_lateload.dm
-
-*/
-
-
-/datum/map_template/unique_lateload
-	allow_duplicates = FALSE
-	var/associated_map_datum
-
-/datum/map_template/unique_lateload/on_map_loaded(z)
-	if(!associated_map_datum || !ispath(associated_map_datum))
-		log_game("Extra z-level [src] has no associated map datum")
-		return
-
-	new associated_map_datum(GLOB.using_map, z)
-
-/datum/map_z_level/unique_lateload
-	z = 0
-
-/datum/map_z_level/unique_lateload/New(var/datum/map/map, mapZ)
-	if(mapZ && !z)
-		z = mapZ
-	return ..(map)
-
+/**
+ *! Unique Map Templates
+ *? This is for maps that are not overmap accessible but are also not gateway maps. There shouldn't be much of these right now
+ *? unless a large shift in design philosophy occurs
+ */
 
 ////////////////////////////////////////////////////////
 /// Lava Land - Otherwise known as Surt or something ///
 ////////////////////////////////////////////////////////
 
-/datum/map_template/unique_lateload/lavaland
+/datum/map_template/lateload/unique/lavaland
 	name = "Away Mission - Lava Land"
 	desc = "The fabled."
 	mappath = "_maps/map_levels/192x192/lavaland.dmm"
@@ -52,7 +19,7 @@ For gateway missions please put them in gateway_lateload.dm
 	name = "Away Mission - Lava Land"
 	base_turf = /turf/simulated/mineral/floor/lavaland
 
-/datum/map_template/unique_lateload/lavaland/on_map_loaded(z)
+/datum/map_template/lateload/unique/lavaland/on_map_loaded(z)
 	. = ..()
 	seed_submaps(list(z), 40, /area/lavaland/central/unexplored, /datum/map_template/submap/level_specific/lavaland)
 	new /datum/random_map/noise/ore/lavaland(null, 1, 1, z, 64, 64)         // Create the mining ore distribution map.
@@ -65,7 +32,7 @@ For gateway missions please put them in gateway_lateload.dm
 ////////////////////////////////////////////////////////
 
 // This one is not permanent. Comment this out once it's done.
-/datum/map_template/unique_lateload/lavaland_dungeon
+/datum/map_template/lateload/unique/lavaland_dungeon
 	name = "Away Mission - Lava Land (Dungeon)"
 	desc = "The flooded."
 	mappath = "_maps/map_levels/192x192/lavaland_dungeon.dmm"
@@ -75,7 +42,7 @@ For gateway missions please put them in gateway_lateload.dm
 /datum/map_z_level/unique_lateload/lavaland_dungeon
 	name = "Away Mission - Lava Land (Dungeon)"
 
-/datum/map_template/unique_lateload/lavaland_dungeon/on_map_loaded(z)
+/datum/map_template/lateload/unique/lavaland_dungeon/on_map_loaded(z)
 	. = ..()
 	seed_submaps(list(z), 0, /area/lavaland/east/unexplored, /datum/map_template/submap/level_specific/lavaland)
 	new /datum/random_map/noise/ore/lavaland(null, 1, 1, z, 64, 64)
@@ -86,7 +53,7 @@ For gateway missions please put them in gateway_lateload.dm
 /// Lava Land - East								 ///
 ////////////////////////////////////////////////////////
 
-/datum/map_template/unique_lateload/lavaland_east
+/datum/map_template/lateload/unique/lavaland_east
 	name = "Away Mission - Lava Land (East)"
 	desc = "The forgotten."
 	mappath = "_maps/map_levels/192x192/lavaland_east.dmm"
@@ -97,7 +64,7 @@ For gateway missions please put them in gateway_lateload.dm
 	name = "Away Mission - Lava Land (East)"
 	base_turf = /turf/simulated/mineral/floor/lavaland
 
-/datum/map_template/unique_lateload/lavaland_east/on_map_loaded(z)
+/datum/map_template/lateload/unique/lavaland_east/on_map_loaded(z)
 	. = ..()
 	seed_submaps(list(z), 0, /area/lavaland/east/unexplored, /datum/map_template/submap/level_specific/lavaland)
 	new /datum/random_map/noise/ore/lavaland(null, 1, 1, z, 64, 64)
