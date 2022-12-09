@@ -5,6 +5,7 @@
 	plane = TURF_PLANE
 	luminosity = 1
 	level = 1
+	rad_flags = RAD_NO_CONTAMINATE
 
 	/// turf flags
 	var/turf_flags = NONE

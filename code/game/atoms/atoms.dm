@@ -915,7 +915,7 @@
 /**
  * called when we're hit by a radiation wave
  */
-/atom/proc/rad_act(strength, datum/radiation_wave/wave)
+/atom/proc/rad_act(strength, datum/radiation_pulse/pulse)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_RAD_ACT, strength)
 
