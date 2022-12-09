@@ -223,6 +223,7 @@
 		split.prev = src
 		split.next = next
 		split.insulation = insulation
+		split.parent = parent
 		next = split
 	if(d2)
 		splitting = get_step(current, d2)
@@ -235,6 +236,7 @@
 		split.prev = src
 		split.next = next
 		split.insulation = insulation
+		split.parent = parent
 		next = split
 
 /datum/radiation_line/proc/radiate(turf/T, str)
