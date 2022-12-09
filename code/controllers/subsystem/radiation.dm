@@ -5,10 +5,6 @@ SUBSYSTEM_DEF(radiation)
 
 	/// we alternate between ticking sources and waves
 	var/static/alternating = FALSE
-	/// currentrun sources
-	var/list/currentrun_sources = list()
-	/// currentrun pulses
-	var/list/currentrun_pulses = list()
 	/// atom refs we warned about already
 	var/list/warned_atoms = list()
 	/// z radiation listeners - nested list
@@ -17,34 +13,41 @@ SUBSYSTEM_DEF(radiation)
 	var/static/list/queued_waves = list()
 	/// sources
 	var/static/list/datum/component/radioactive/sources = list()
+	/// emitting sources (currentrun)
+	var/list/datum/compnent/radioactive/emitting = list()
 	/// pulses
 	var/static/list/datum/radiation_pulse/pulses = list()
 
 /datum/controller/subsystem/radiation/fire(resumed)
-	if(!currentrun_pulses.len)
-		flush_queue()	// emit
-		currentrun_pulses = pulses.Copy()
-	if(!currentrun_sources.len)
-		currentrun_sources = sources.Copy()	// queue next set
-	if((alternating = !alternating))
-		// do sources
-		var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag) : (wait)
-		while(currentrun_sources.len)
-			var/datum/component/radioactive/R = currentrun_sources[1]
-			currentrun_sources.Cut(1,2)
-			R.emit(dt)
+	if(!resumed)
+		emitting = sources.Copy()
+	if(length(emitting))
+		process_sources()
+	if(state != SS_RUNNING)
+		return
+	else
+		// processed full cycle; emit
+		flush_queue()
+	if(MC_TICK_CHECK)	// if flushing queue pushed us over
+		return
+	if(length(pulses))
+		process_pulses()
+
+/datum/controller/subsystem/radiation/proc/process_sources()
+	var/dt = (subsystem_flags & SS_TICKER)? (wait * world.tick_lag) : (wait)
+	while(length(sources))
+		var/datum/component/radioactive/R = sources[1]
+		sources.Cut(1,2)
+		R.emit(dt)
+		if(MC_TICK_CHECK)
+			return
+
+/datum/controller/subsystem/radiation/proc/process_pulses()
+	while(length(pulses))
+		for(var/datum/radiation_pulse/pulse as anything in pulses)
+			pulse.propagate()
 			if(MC_TICK_CHECK)
 				return
-	else
-		// process as many pulses as we can
-		while(currentrun_pulses.len)
-			for(var/i in 1 to currentrun_pulses.len)
-				var/datum/radiation_pulse/P = currentrun_pulses[i]
-				if(P.gc_destroyed)
-					continue
-				P.propagate()
-				if(MC_TICK_CHECK)
-					return
 
 /datum/controller/subsystem/radiation/on_max_z_changed(old_z_count, new_z_count)
 	var/old = z_listeners.len

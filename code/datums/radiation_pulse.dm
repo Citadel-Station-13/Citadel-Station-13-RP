@@ -332,6 +332,6 @@
 		if(contamination)
 			var/datum/component/radioactive/R = GetComponent(/datum/component/radioactive)
 			if(R)
-				R.constructive_interference(pulse.highest_intensity, contamination)
+				R.constructive_interference(limit, contamination)
 			else
 				AddComponent(/datum/component/radioactive, contamination)
