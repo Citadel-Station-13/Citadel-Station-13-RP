@@ -27,7 +27,7 @@
 #define DATUMVAR_DEBUGGING_MODE
 
 /// Used to find the sources of harddels, quite laggy, don't be surpised if it freezes your client for a good while
-// #define REFERENCE_TRACKING
+#define REFERENCE_TRACKING
 #ifdef REFERENCE_TRACKING
 
 /// Used for doing dry runs of the reference finder, to test for feature completeness

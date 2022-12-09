@@ -52,14 +52,19 @@
 	STOP_PROCESSING(SSradiation, src)
 	var/datum/radiation_line/line = line_head
 	while(line)
-		line.parent = null
-		line.prev = null
-		line = line.next
-		// todo: comment this line when we're sure it'll work
-		qdel(line)
+		// we unlink backwards
+		line = line.dispose()
+	line_head = null
 	diagonal_edges = null
 	return QDEL_HINT_QUEUE
 	// return QDEL_HINT_IWILLGC
+
+/datum/radiation_pulse/proc/count()
+	. = 0
+	var/datum/radiation_line/line = line_head
+	while(line)
+		line = line.next
+		.++
 
 /datum/radiation_pulse/proc/init()
 	ASSERT(source)
@@ -139,11 +144,9 @@
 	current = INVERSE_SQUARE(original_intensity, steps * falloff, 1)
 	while(head)
 		if(!head.current)
-			head.next.prev = head.prev
-			head.prev.next = head.next
-			head = head.next
-			continue
-		while((head = head.propagate()))
+			head = head.detach()
+		else
+			head = head.propagate()
 	for(var/turf/T as anything in diagonal_edges)
 		var/power = diagonal_edges[T]
 		turf_radiate(T, power)
@@ -172,20 +175,36 @@
 	var/insulation = 1
 
 /datum/radiation_line/Destroy()
+	detach()
 	SHOULD_CALL_PARENT(FALSE)
-	return QDEL_HINT_QUEUE
+	return QDEL_HINT_IWILLGC
+
+/**
+ * detaches us from the hcain
+ */
+/datum/radiation_line/proc/detach()
+	prev?.next = next
+	next?.prev = prev
+	. = next
+	next = null
+	prev = null
+	parent = null
+
+/**
+ * assumes we're gcing the entire chain
+ */
+/datum/radiation_line/proc/dispose()
+	. = next
+	next?.prev = null
+	next = null
+	parent = null
 
 /datum/radiation_line/proc/propagate()
 	if(!current)
-		CRASH("no current")
+		return detach()
 	if(strength < RAD_BACKGROUND_RADIATION)
 		// detach if we're done
-		prev?.next = next
-		next?.prev = prev
-		. = next
-		next = null
-		prev = null
-		return
+		return detach()
 	// order:
 	// 1. stage outer turf if needed
 	// 2. radiate current turf
@@ -209,15 +228,27 @@
 			staged[staging] = clamp(existing + strength * 0.75, existing, max(strength, existing))
 		// falloff
 		strength = insulation * parent.current
+		// done
+		if(strength > RAD_BACKGROUND_RADIATION)
+			return detach()
 		// move
 		current = get_step(current, dir)
+		// done
+		if(!current)
+			return detach()
 		// split
 		split()
 	else
 		// falloff
 		strength = insulation * parent.current
+		// done
+		if(strength > RAD_BACKGROUND_RADIATION)
+			return detach()
 		// just move
 		current = get_step(current, dir)
+		// done
+		if(!current)
+			return detach()
 	// go to next
 	return next
 

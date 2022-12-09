@@ -11,6 +11,9 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 	var/static/list/queued_waves = list()
 
 /datum/controller/subsystem/processing/radiation/fire(resumed)
+	if(times_fired == 5)
+		can_fire = FALSE	// stop
+		return
 	if(!resumed)
 		flush_queue()
 	..()
