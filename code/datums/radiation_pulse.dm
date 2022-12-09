@@ -12,6 +12,10 @@
 	src.intensity = src.highest = intensity
 	src.falloff = falloff
 
+/**
+ * do not touch this datum unless you know what you are doing
+ * it is extremely sensitive to gc changes and you WILL cause a memory leak.
+ */
 /datum/radiation_pulse
 	/// source
 	var/turf/source
@@ -175,8 +179,8 @@
 	var/insulation = 1
 
 /datum/radiation_line/Destroy()
-	detach()
 	SHOULD_CALL_PARENT(FALSE)
+	detach()
 	return QDEL_HINT_IWILLGC
 
 /**
