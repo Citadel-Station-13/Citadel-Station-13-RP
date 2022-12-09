@@ -62,16 +62,63 @@
 	// return QDEL_HINT_IWILLGC
 
 /datum/radiation_pulse/proc/init()
+	ASSERT(Source)
 	diagonal_edges = list()
-
+	var/starting_insulation = init_radiate(source)
+	var/str = original_intensity
+	var/datum/radiation_line/line/line
+	line = new
+	line_head = line
+	line.dir = NORTH
+	line.outer = TRUE
+	line.current = source
+	line.parent = src
+	line.d1 = EAST
+	line.d2 = WEST
+	line.strength = str
+	line.insulation = starting_insulation
+	line.next = new
+	line.next.prev = line
+	line = line.next
+	line.dir = SOUTH
+	line.outer = TRUE
+	line.current = source
+	line.parent = src
+	line.d1 = EAST
+	line.d2 = WEST
+	line.strength = str
+	line.insulation = starting_insulation
+	line.next = new
+	line.next.prev = line
+	line = line.next
+	line.dir = EAST
+	line.outer = TRUE
+	line.current = source
+	line.parent = src
+	line.d1 = NORTH
+	line.d2 = SOUTH
+	line.strength = str
+	line.insulation = starting_insulation
+	line.next = new
+	line.next.prev = line
+	line = line.next
+	line.dir = WEST
+	line.outer = TRUE
+	line.current = source
+	line.parent = src
+	line.d1 = NORTH
+	line.d2 = SOUTH
+	line.strength = str
+	line.insulation = starting_insulation
 
 /**
  * return insulation
  */
 /datum/radiation_pulse/proc/init_radiate(turf/T)
 	. = 1
-
-
+	for(var/atom/movable/AM as anything in T)
+		. *= AM.rad_insulation
+		AM.irradiate(original_intensity, src)
 
 /datum/radiation_pulse/proc/turf_radiate(turf/T, power)
 	for(var/atom/movable/AM as anything in T)
