@@ -1,4 +1,7 @@
 // todo: element
+// todo: make it modify rad_insulation so we can save a signal call :^)
+// if you really need this i guess you can add the call into new radiation
+/*
 /datum/component/rad_insulation
 	can_transfer = FALSE
 	var/amount					// Multiplier for radiation strength passing through
@@ -32,3 +35,4 @@
 /datum/component/rad_insulation/proc/rad_pass(datum/source, datum/radiation_wave/wave, width)
 	wave.current_intensity = wave.current_intensity*(1-((1-amount)/width)) // The further out the rad wave goes the less it's affected by insulation (larger width)
 	return COMPONENT_RAD_WAVE_HANDLED
+*/

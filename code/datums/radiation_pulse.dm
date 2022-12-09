@@ -44,8 +44,15 @@
 	START_PROCESSING(SSradiation, src)
 
 /datum/radiation_pulse/Destroy()
+	SHOULD_CALL_PARENT(FALSE)
 	STOP_PROCESSING(SSradiation, src)
-	QDEL_NULL(line_head)
+	var/datum/radiation_line/line = line_head
+	while(line)
+		line.parent = null
+		line.prev = null
+		line = line.next
+		// todo: comment this line when we're sure it'll work
+		qdel(line)
 	diagonal_edges = null
 	return QDEL_HINT_QUEUE
 	// return QDEL_HINT_IWILLGC
@@ -67,6 +74,9 @@
 
 /datum/radiation_pulse/proc/propagate()
 	var/datum/radiation_line/head = line_head
+	if(!head)
+		qdel(src)
+		return
 	while(head)
 		if(!head.current)
 			head.next.prev = head.prev
@@ -101,12 +111,8 @@
 	var/datum/radiation_line/prev
 
 /datum/radiation_line/Destroy()
-	prev = null
-	parent = null
-	qdel(next)
-	next = null
+	SHOULD_CALL_PARENT(FALSE)
 	return QDEL_HINT_QUEUE
-	// return QDEL_HINT_IWILLGC
 
 /datum/radiation_line/proc/propagate()
 	if(!current)
