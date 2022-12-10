@@ -18,6 +18,10 @@
 	name = "80's"
 	icon_state = "hair_80s"
 
+/datum/sprite_accessory/hair/fluffyshort
+	name = "Fluffy Short"
+	icon_state = "hair_fluffy_short"
+
 /datum/sprite_accessory/hair/eighties_alt
 	name = "80's (Alternative)"
 	icon_state = "hair_80s_alt"
