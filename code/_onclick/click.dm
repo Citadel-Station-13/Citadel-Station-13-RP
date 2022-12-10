@@ -172,12 +172,12 @@
  * used for figuring out different properties of the click, mostly right vs left and such.
  */
 
-/mob/proc/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
+/mob/proc/UnarmedAttack(atom/A, clickchain_flags, list/modifiers)
 	// if(ismob(A))
 	// 	changeNext_move(CLICK_CD_MELEE)
 	return
 
-/mob/living/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
+/mob/living/UnarmedAttack(atom/A, clickchain_flags, list/modifiers)
 	if(is_incorporeal())
 		return FALSE
 
@@ -194,7 +194,7 @@
  * for things like ranged glove touches, spitting alien acid/neurotoxin,
  * animals lunging, etc.
  */
-/mob/proc/RangedAttack(atom/A, proximity_flag, modifiers)
+/mob/proc/RangedAttack(atom/A, clickchain_flags, list/modifiers)
 	if(SEND_SIGNAL(src, COMSIG_MOB_ATTACK_RANGED, A, modifiers) & COMPONENT_CANCEL_ATTACK_CHAIN)
 		return TRUE
 
@@ -205,7 +205,7 @@
  * instead initialized via a right click, this will trigger instead.
  * Useful for mobs that have their abilities mapped to right click.
  */
-// /mob/proc/ranged_secondary_attack(atom/target, modifiers)
+// /mob/proc/ranged_secondary_attack(atom/target, list/modifiers)
 // 	if(SEND_SIGNAL(src, COMSIG_MOB_ATTACK_RANGED_SECONDARY, target, modifiers) & COMPONENT_CANCEL_ATTACK_CHAIN)
 // 		return TRUE
 
