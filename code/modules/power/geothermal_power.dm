@@ -93,7 +93,7 @@
 		if (get_dist(user, src) <= 1)
 			to_chat(user, "You allow [src] to use your sensors as a sensor array. It can keep on working for the next 30 minutes.")
 			scan_for_collectors(5)//scan with default part range
-			active_for = 30
+			active_for = 1800
 
 /obj/machinery/power/geothermal_collector
 	name = "Akureyri Geothermal Power Collector"
