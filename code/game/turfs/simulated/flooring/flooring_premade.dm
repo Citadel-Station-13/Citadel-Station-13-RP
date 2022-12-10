@@ -115,6 +115,9 @@
 	icon_state = "techmaint"
 	initial_flooring = /singleton/flooring/tiling/new_tile/techmaint
 
+/turf/simulated/floor/tiled/techmaint/airless
+	initial_gas_mix = GAS_STRING_VACUUM
+
 /turf/simulated/floor/tiled/monofloor
 	name = "floor"
 	icon = 'icons/turf/flooring/tiles_vr.dmi'
