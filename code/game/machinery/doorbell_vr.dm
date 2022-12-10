@@ -160,5 +160,5 @@
 	chime_sound = 'sound/effects/adminhelp.ogg'
 
 /obj/machinery/doorbell_chime/soft
-chime_sound = 'sound/machines/achime.ogg'
+	chime_sound = 'sound/machines/achime.ogg'
 
