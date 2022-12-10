@@ -100,6 +100,13 @@
 /obj/effect/floor_decal/spline/fancy,
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/exterior/mineshaft)
+"aN" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "aO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 4
@@ -148,6 +155,15 @@
 "aX" = (
 /obj/effect/mist,
 /turf/simulated/floor/outdoors/rocks/lythios43c,
+/area/rift/surfacebase/outside/west)
+"aY" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
 "aZ" = (
 /obj/effect/floor_decal/industrial/halfstair{
@@ -350,6 +366,14 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/rnd/outpost/anomaly_lab/testing)
+"bY" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced/full,
+/turf/simulated/floor,
+/area/rift/surfacebase/outside/west)
 "ca" = (
 /obj/effect/floor_decal/industrial/halfstair,
 /turf/simulated/floor/wood,
@@ -553,6 +577,13 @@
 /obj/tether_away_spawner/lythios_animals,
 /turf/simulated/floor/outdoors/snow/lythios43c,
 /area/rift/surfacebase/outside/west)
+"cO" = (
+/obj/machinery/power/solar,
+/obj/structure/cable/yellow{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "cR" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -652,6 +683,22 @@
 	},
 /obj/structure/railing,
 /turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
+"dg" = (
+/obj/machinery/camera/network/engineering{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/rift/surfacebase/outside/west)
+"dh" = (
+/obj/machinery/power/smes/buildable{
+	RCon_tag = "Power - Solar Array";
+	cur_coils = 3;
+	output_attempt = 0;
+	outputting = 0
+	},
+/obj/structure/cable/heavyduty,
+/turf/simulated/floor,
 /area/rift/surfacebase/outside/west)
 "di" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -938,6 +985,12 @@
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/floor,
 /area/rnd/outpost)
+"eF" = (
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "eG" = (
 /obj/machinery/atmospherics/pipe/simple/visible/supply{
 	dir = 4
@@ -951,6 +1004,12 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
+"eK" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
 "eL" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -985,6 +1044,15 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/facility/exterior)
+"eU" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 10
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "eV" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/full,
@@ -1174,6 +1242,12 @@
 /obj/structure/bed/double,
 /turf/simulated/floor/wood,
 /area/rnd/outpost/breakroom)
+"fT" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor,
+/area/rift/surfacebase/outside/west)
 "fU" = (
 /obj/machinery/light/small,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
@@ -1192,6 +1266,15 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/xenoarch_storage)
+"gc" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 6
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "gf" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -1683,6 +1766,15 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid/lythios43c/indoors,
 /area/rift/exterior/mineshaft)
+"hY" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
 "ia" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 8
@@ -1841,6 +1933,9 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"iP" = (
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
 "iQ" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 9
@@ -1875,6 +1970,15 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/exterior/checkpoint/south)
+"iT" = (
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "iV" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/table/rack/shelf,
@@ -2081,6 +2185,18 @@
 /obj/machinery/bomb_tester,
 /turf/simulated/floor/tiled/steel_grid,
 /area/rnd/outpost/testing_lab)
+"jS" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "jT" = (
 /obj/structure/cable/green{
 	icon_state = "0-2"
@@ -2158,6 +2274,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab/airlock)
+"kp" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "4-8"
+	},
+/obj/structure/grille,
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/simulated/floor,
+/area/rift/surfacebase/outside/west)
 "kr" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 9
@@ -2302,6 +2429,17 @@
 /obj/machinery/vending/coffee,
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost/airlock/one)
+"kX" = (
+/obj/machinery/power/apc{
+	dir = 4;
+	name = "east bump";
+	pixel_x = 28
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-2"
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
 "lb" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
@@ -2413,6 +2551,18 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/exterior/shuttle)
+"lG" = (
+/obj/effect/floor_decal/industrial/warning/dust/corner{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "lH" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/closet/crate/mimic,
@@ -2615,6 +2765,15 @@
 /obj/structure/loot_pile/mecha/ripley/random_sprite,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/exterior/shuttle)
+"mG" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "mJ" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -3326,6 +3485,15 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/atmos)
+"qc" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "qf" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 8
@@ -3475,6 +3643,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"qS" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
 "qW" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 9
@@ -3593,6 +3767,10 @@
 	},
 /turf/simulated/floor,
 /area/maintenance/substation/outpost)
+"ru" = (
+/obj/structure/symbol/em,
+/turf/simulated/wall,
+/area/rift/surfacebase/outside/west)
 "rw" = (
 /obj/effect/overlay/snow/floor/pointy,
 /obj/structure/railing{
@@ -3601,6 +3779,16 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/facility/exterior)
+"rx" = (
+/obj/machinery/power/apc{
+	name = "south bump";
+	pixel_y = -28
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor,
+/area/rift/surfacebase/outside/west)
 "rB" = (
 /obj/random/trash,
 /obj/structure/bed/chair/shuttle{
@@ -3627,6 +3815,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
+"rH" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "rI" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
@@ -3706,6 +3903,18 @@
 /obj/structure/fence/door/opened,
 /turf/simulated/floor/outdoors/gravsnow/lythios43c,
 /area/rift/exterior/bunker)
+"rV" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "rY" = (
 /obj/effect/floor_decal/industrial/warning/dust,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
@@ -3953,6 +4162,15 @@
 /obj/machinery/light,
 /turf/simulated/floor/wood,
 /area/rnd/outpost/breakroom)
+"tg" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-8"
+	},
+/turf/simulated/floor,
+/area/rift/surfacebase/outside/west)
 "ti" = (
 /obj/structure/grille/broken,
 /obj/effect/overlay/snow/floor,
@@ -3976,6 +4194,13 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/geothermal)
+"tn" = (
+/obj/item/stool,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor,
+/area/rift/surfacebase/outside/west)
 "to" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 6
@@ -4524,6 +4749,13 @@
 /obj/effect/overlay/snow/floor,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/facility/exterior/shuttle)
+"vC" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "vE" = (
 /obj/effect/overlay/snow/floor,
 /obj/random/trash_pile,
@@ -4957,6 +5189,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
+"xu" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "xw" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -5022,6 +5263,15 @@
 /obj/effect/floor_decal/corner/purple,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
+"xM" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 5
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "xO" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -5205,6 +5455,18 @@
 /obj/machinery/door/firedoor/glass/hidden/steel,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
+"yH" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "yI" = (
 /obj/machinery/portable_atmospherics/powered/scrubber/huge/stationary/phoronlock{
 	frequency = 1379;
@@ -5300,6 +5562,16 @@
 "zh" = (
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/exterior/checkpoint/south)
+"zi" = (
+/obj/structure/cable/yellow{
+	icon_state = "0-4"
+	},
+/obj/structure/cable/yellow,
+/obj/machinery/power/solar_control{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/rift/surfacebase/outside/west)
 "zk" = (
 /obj/machinery/airlock_sensor/phoron{
 	frequency = 1452;
@@ -5319,6 +5591,24 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab/airlock)
+"zm" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
+"zn" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "zq" = (
 /obj/machinery/atmospherics/pipe/manifold/visible/yellow{
 	dir = 1
@@ -5373,6 +5663,18 @@
 	},
 /turf/simulated/floor/tiled/steel_grid/lythios43c,
 /area/rift/exterior/nuketown)
+"zC" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "zD" = (
 /obj/machinery/atmospherics/pipe/simple/visible/blue{
 	dir = 5
@@ -5744,6 +6046,12 @@
 /obj/structure/sign/department/toxins,
 /turf/simulated/wall,
 /area/rnd/outpost/airlock)
+"BP" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "BS" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -6068,6 +6376,10 @@
 	},
 /turf/simulated/open,
 /area/rnd/outpost)
+"DC" = (
+/obj/machinery/door/airlock/multi_tile/metal/mait,
+/turf/simulated/floor,
+/area/rift/surfacebase/outside/west)
 "DD" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -6078,6 +6390,15 @@
 /obj/machinery/meter,
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/mixing)
+"DF" = (
+/obj/structure/table/standard,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/item/stack/cable_coil/yellow,
+/obj/machinery/cell_charger,
+/turf/simulated/floor,
+/area/rift/surfacebase/outside/west)
 "DH" = (
 /obj/machinery/alarm{
 	dir = 8;
@@ -6094,6 +6415,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
+"DI" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "DJ" = (
 /obj/effect/floor_decal/rust,
 /obj/structure/reagent_dispensers/coolanttank,
@@ -6349,6 +6679,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/breakroom)
+"Fq" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/simulated/floor,
+/area/rift/surfacebase/outside/west)
 "Fr" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 4
@@ -6477,6 +6816,15 @@
 	dir = 4
 	},
 /turf/simulated/floor/outdoors/snow/lythios43c,
+/area/rift/surfacebase/outside/west)
+"FQ" = (
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/surfacebase/outside/west)
 "FR" = (
 /obj/structure/salvageable/machine_os,
@@ -6717,6 +7065,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
+"GS" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "GT" = (
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable/green{
@@ -6730,6 +7090,12 @@
 /obj/structure/girder,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/exterior/mineshaft)
+"GY" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 8
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "GZ" = (
 /obj/effect/floor_decal/industrial/halfstair{
 	dir = 8
@@ -6756,6 +7122,36 @@
 	},
 /turf/simulated/floor,
 /area/rnd/outpost/anomaly_lab/storage)
+"Hg" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "0-8"
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Solar Farm Output";
+	name_tag = "Solar Farm Output"
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
+"Hl" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/structure/railing,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-2"
+	},
+/obj/machinery/power/sensor{
+	name = "Powernet Sensor - Solar Farm Input";
+	name_tag = "Solar Farm Input"
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Ho" = (
 /obj/effect/floor_decal/industrial/warning/corner{
 	dir = 1
@@ -6943,6 +7339,12 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/rnd/outpost/heating)
+"Im" = (
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "In" = (
 /obj/effect/floor_decal/rust/mono_rusted3,
 /obj/machinery/door/blast/shutters,
@@ -7078,6 +7480,13 @@
 	name = "glacier wall"
 	},
 /area/rift/facility/exterior)
+"IZ" = (
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 1
+	},
+/obj/machinery/camera/network/engineering,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Je" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on,
 /obj/machinery/light_switch{
@@ -7131,6 +7540,16 @@
 "Jq" = (
 /turf/simulated/shuttle/wall/voidcraft,
 /area/rift/facility/interior/elevator)
+"Ju" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
+/obj/structure/closet/crate/solar,
+/turf/simulated/floor,
+/area/rift/surfacebase/outside/west)
 "Jv" = (
 /turf/simulated/shuttle/wall/voidcraft/hard_corner,
 /area/rift/facility/interior/elevator)
@@ -7702,6 +8121,16 @@
 	},
 /turf/simulated/floor/reinforced/airless,
 /area/rnd/outpost/chamber)
+"Mc" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/structure/cable/yellow{
+	icon_state = "1-4"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Md" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -7800,6 +8229,10 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty,
 /area/rnd/outpost/storage)
+"MC" = (
+/obj/machinery/space_heater,
+/turf/simulated/floor,
+/area/rift/surfacebase/outside/west)
 "ME" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/floor_decal/rust,
@@ -8032,6 +8465,14 @@
 /obj/structure/barricade/cutout,
 /turf/simulated/floor/tiled/steel_dirty/lythios43c,
 /area/rift/exterior/bunker)
+"NG" = (
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'HIGH VOLTAGE'";
+	icon_state = "shock";
+	name = "HIGH VOLTAGE"
+	},
+/turf/simulated/wall,
+/area/rift/surfacebase/outside/west)
 "NI" = (
 /obj/effect/floor_decal/industrial/warning{
 	dir = 8
@@ -8106,6 +8547,17 @@
 /obj/machinery/door/airlock/lift,
 /turf/simulated/floor/lythios43c/indoors,
 /area/rift/facility/exterior)
+"NY" = (
+/obj/effect/floor_decal/rust,
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Oc" = (
 /obj/effect/floor_decal/industrial/warning/dust{
 	dir = 4
@@ -8581,6 +9033,17 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
+"Qs" = (
+/obj/structure/grille,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/window/reinforced/full,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/simulated/floor,
+/area/rift/surfacebase/outside/west)
 "Qt" = (
 /obj/machinery/atmospherics/pipe/simple/hidden,
 /obj/machinery/access_button/airlock_interior{
@@ -8615,6 +9078,13 @@
 	},
 /turf/simulated/floor/tiled/steel_dirty/lythios43c/indoors,
 /area/rift/geothermal)
+"QD" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/closet/crate/solar,
+/turf/simulated/floor,
+/area/rift/surfacebase/outside/west)
 "QH" = (
 /obj/structure/railing{
 	dir = 8
@@ -8821,6 +9291,9 @@
 	},
 /turf/simulated/floor/reinforced/lythios43c,
 /area/rift/facility/exterior)
+"Rw" = (
+/turf/simulated/floor,
+/area/rift/surfacebase/outside/west)
 "Ry" = (
 /obj/machinery/light/flamp/noshade,
 /obj/machinery/camera/network/mining,
@@ -8873,6 +9346,14 @@
 /obj/item/reagent_containers/dropper,
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
+"RO" = (
+/obj/structure/table/standard,
+/obj/item/clothing/gloves/yellow,
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor,
+/area/rift/surfacebase/outside/west)
 "RQ" = (
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
@@ -8927,6 +9408,11 @@
 /obj/structure/girder,
 /turf/simulated/floor/lythios43c,
 /area/rift/exterior/nuketown/interior)
+"RZ" = (
+/obj/effect/floor_decal/industrial/warning/dust,
+/obj/effect/floor_decal/rust,
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Sa" = (
 /obj/machinery/camera/network/research_outpost,
 /obj/structure/railing{
@@ -9049,6 +9535,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/airlock)
+"SI" = (
+/obj/effect/floor_decal/industrial/warning/dust/corner,
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "SL" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -9139,6 +9632,18 @@
 	},
 /turf/simulated/floor/plating,
 /area/rift/exterior/nuketown/interior)
+"Te" = (
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-2"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Tk" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -9464,6 +9969,13 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost)
+"Uq" = (
+/obj/machinery/power/tracker,
+/obj/structure/cable/yellow{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Ur" = (
 /obj/effect/overlay/snow/floor/edges{
 	dir = 4
@@ -9917,6 +10429,10 @@
 "Xf" = (
 /turf/simulated/wall/wood,
 /area/rift/exterior/nuketown)
+"Xj" = (
+/obj/structure/railing,
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Xk" = (
 /obj/machinery/atmospherics/portables_connector{
 	dir = 1
@@ -10096,6 +10612,15 @@
 	},
 /turf/simulated/floor/tiled,
 /area/rnd/outpost/anomaly_lab)
+"XT" = (
+/obj/structure/cable/yellow{
+	icon_state = "2-4"
+	},
+/obj/effect/floor_decal/industrial/warning/dust{
+	dir = 9
+	},
+/turf/simulated/floor/tiled/steel_dirty/lythios43c,
+/area/rift/surfacebase/outside/west)
 "XV" = (
 /obj/structure/fence/door/opened{
 	dir = 1
@@ -10346,6 +10871,18 @@
 	},
 /turf/simulated/floor/tiled,
 /area/outpost/mining_main/outpost/airlock/one)
+"Zk" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "2-8"
+	},
+/turf/simulated/floor/lythios43c,
+/area/rift/surfacebase/outside/west)
 "Zm" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
@@ -27664,32 +28201,32 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+XT
+rV
+rV
+rV
+rV
+zm
+iT
+rV
+rV
+rV
+rV
+zm
+GY
+GY
+iT
+zC
+zC
+zC
+zC
+zm
+iT
+zC
+zC
+zC
+zC
+eU
 sv
 sv
 sv
@@ -27858,32 +28395,32 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+rH
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+lb
+lb
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+aN
 sv
 sv
 sv
@@ -28052,32 +28589,32 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+GS
+zn
+zn
+zn
+zn
+Im
+FQ
+zn
+zn
+zn
+zn
+Im
+lb
+lb
+eF
+DI
+DI
+DI
+DI
+xu
+eF
+DI
+DI
+DI
+DI
+Mc
 sv
 sv
 sv
@@ -28246,32 +28783,32 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+rH
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+lb
+lb
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+aN
 sv
 sv
 sv
@@ -28440,32 +28977,32 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+GS
+zn
+zn
+zn
+zn
+Im
+FQ
+zn
+zn
+zn
+zn
+Im
+lb
+lb
+eF
+DI
+DI
+DI
+DI
+xu
+eF
+DI
+DI
+DI
+DI
+Mc
 sv
 sv
 sv
@@ -28634,32 +29171,32 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+rH
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+lb
+lb
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+aN
 sv
 sv
 sv
@@ -28828,32 +29365,32 @@ sv
 sv
 PP
 PP
-PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+rH
+lb
+lb
+lb
+lb
+lb
+BP
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+BP
+lb
+lb
+lb
+lb
+lb
+aN
 sv
 sv
 sv
@@ -29022,32 +29559,32 @@ sv
 PP
 PP
 PP
-PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+GS
+zn
+zn
+zn
+zn
+Im
+FQ
+zn
+zn
+zn
+zn
+Im
+lb
+lb
+eF
+DI
+DI
+DI
+DI
+xu
+eF
+DI
+DI
+DI
+DI
+Mc
 sv
 sv
 sv
@@ -29216,32 +29753,32 @@ PP
 PP
 PP
 PP
-PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+rH
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+lb
+lb
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+aN
 sv
 sv
 sv
@@ -29410,32 +29947,32 @@ PP
 PP
 PP
 PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+GS
+zn
+zn
+zn
+zn
+Im
+FQ
+zn
+zn
+zn
+zn
+Im
+lb
+lb
+eF
+DI
+DI
+DI
+DI
+xu
+eF
+DI
+DI
+DI
+DI
+Mc
 sv
 sv
 sv
@@ -29604,32 +30141,32 @@ PP
 PP
 PP
 PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+rH
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+lb
+lb
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+aN
 sv
 sv
 sv
@@ -29798,32 +30335,32 @@ PP
 PP
 PP
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+GS
+zn
+zn
+zn
+zn
+Im
+FQ
+zn
+zn
+zn
+zn
+Im
+lb
+lb
+eF
+DI
+DI
+DI
+DI
+xu
+eF
+DI
+DI
+DI
+DI
+Mc
 sv
 sv
 sv
@@ -29992,32 +30529,32 @@ PP
 PP
 PP
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+rH
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+lb
+lb
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+aN
 sv
 sv
 sv
@@ -30186,32 +30723,32 @@ PP
 PP
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+rH
+lb
+lb
+lb
+lb
+lb
+BP
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+BP
+lb
+lb
+lb
+lb
+lb
+aN
 sv
 sv
 sv
@@ -30380,32 +30917,32 @@ PP
 PP
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+GS
+zn
+zn
+zn
+zn
+Im
+FQ
+zn
+zn
+zn
+zn
+Im
+lb
+lb
+eF
+DI
+DI
+DI
+DI
+xu
+eF
+DI
+DI
+DI
+DI
+Mc
 sv
 sv
 sv
@@ -30574,32 +31111,32 @@ PP
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+rH
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+lb
+lb
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+aN
 sv
 sv
 sv
@@ -30768,32 +31305,32 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+GS
+zn
+zn
+zn
+zn
+Im
+FQ
+zn
+zn
+zn
+zn
+Im
+lb
+lb
+eF
+DI
+DI
+DI
+DI
+xu
+eF
+DI
+DI
+DI
+DI
+Mc
 sv
 sv
 sv
@@ -30962,32 +31499,32 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-PP
-PP
-PP
-PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+rH
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+lb
+lb
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+aN
 sv
 sv
 sv
@@ -31156,32 +31693,32 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-PP
-PP
-PP
-PP
-PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+GS
+zn
+zn
+zn
+zn
+Im
+FQ
+zn
+zn
+zn
+zn
+Im
+lb
+lb
+eF
+DI
+DI
+DI
+DI
+xu
+eF
+DI
+DI
+DI
+DI
+Mc
 sv
 sv
 sv
@@ -31350,32 +31887,32 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-PP
-PP
-PP
-PP
-PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+rH
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+lb
+lb
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+aN
 sv
 sv
 sv
@@ -31544,32 +32081,32 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-PP
-PP
-PP
-PP
-PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+rH
+lb
+lb
+lb
+lb
+lb
+BP
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+lb
+BP
+lb
+lb
+lb
+lb
+lb
+aN
 sv
 sv
 sv
@@ -31738,32 +32275,32 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-PP
-PP
-PP
-PP
-PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+GS
+zn
+zn
+zn
+zn
+Im
+FQ
+zn
+zn
+zn
+zn
+Im
+lb
+lb
+eF
+DI
+DI
+DI
+DI
+xu
+eF
+DI
+DI
+DI
+DI
+Mc
 sv
 sv
 sv
@@ -31932,32 +32469,32 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-PP
-PP
-PP
-PP
-PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+rH
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+lb
+lb
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+aN
 sv
 sv
 sv
@@ -32126,32 +32663,32 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-PP
-PP
-PP
-PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+GS
+zn
+zn
+zn
+zn
+Im
+FQ
+zn
+zn
+zn
+zn
+Im
+lb
+lb
+eF
+DI
+DI
+DI
+DI
+xu
+eF
+DI
+DI
+DI
+DI
+Mc
 sv
 sv
 sv
@@ -32320,32 +32857,32 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-PP
-PP
-PP
-PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+rH
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+lb
+lb
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+aN
 sv
 sv
 sv
@@ -32514,32 +33051,32 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-PP
-PP
-PP
-PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+GS
+zn
+zn
+zn
+zn
+Im
+FQ
+zn
+zn
+zn
+zn
+Im
+lb
+lb
+eF
+DI
+DI
+DI
+DI
+xu
+eF
+DI
+DI
+DI
+DI
+Mc
 sv
 sv
 sv
@@ -32708,32 +33245,32 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-PP
-PP
-PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+rH
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+lb
+lb
+cO
+cO
+cO
+cO
+cO
+BP
+cO
+cO
+cO
+cO
+cO
+aN
 sv
 sv
 sv
@@ -32902,32 +33439,32 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-PP
-PP
-PP
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+xM
+qc
+qc
+qc
+qc
+qc
+jS
+qc
+qc
+qc
+qc
+qc
+lG
+SI
+qc
+qc
+qc
+qc
+qc
+yH
+qc
+qc
+qc
+qc
+qc
+gc
 sv
 sv
 sv
@@ -33108,8 +33645,8 @@ sv
 sv
 sv
 sv
-sv
-PP
+rH
+rY
 sv
 sv
 sv
@@ -33302,8 +33839,8 @@ sv
 sv
 sv
 sv
-sv
-PP
+rH
+rY
 sv
 sv
 sv
@@ -33496,6 +34033,8 @@ sv
 sv
 sv
 sv
+rH
+rY
 sv
 sv
 sv
@@ -33508,8 +34047,6 @@ sv
 sv
 sv
 sv
-sv
-PP
 PP
 PP
 sv
@@ -33685,13 +34222,13 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+iP
+Uq
+iP
+iP
+Xj
+rH
+rY
 sv
 sv
 sv
@@ -33879,13 +34416,13 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+kX
+Te
+qS
+qS
+Hl
+aY
+RZ
 sv
 sv
 sv
@@ -34073,13 +34610,13 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+mq
+Qs
+mq
+mq
+mq
+IZ
+wU
 sv
 sv
 sv
@@ -34267,14 +34804,13 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+mq
+Ju
+tn
+zi
+mq
+VH
+wU
 sv
 sv
 sv
@@ -34286,6 +34822,7 @@ PP
 PP
 PP
 PP
+hm
 hm
 hm
 hm
@@ -34461,13 +34998,13 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+mq
+QD
+Rw
+rx
+mq
+VH
+RZ
 sv
 sv
 sv
@@ -34478,7 +35015,7 @@ sv
 PP
 PP
 PP
-PP
+hm
 hm
 hm
 JT
@@ -34655,13 +35192,13 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+mq
+RO
+Rw
+MC
+mq
+VH
+RZ
 sv
 sv
 sv
@@ -34671,7 +35208,7 @@ sv
 sv
 PP
 PP
-PP
+hm
 hm
 hm
 hm
@@ -34849,14 +35386,13 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+mq
+DF
+Rw
+dg
+mq
+mG
+RZ
 sv
 sv
 sv
@@ -34865,6 +35401,7 @@ sv
 sv
 sv
 PP
+hm
 hm
 hm
 JT
@@ -35043,14 +35580,13 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+bY
+Fq
+Rw
+Rw
+DC
+wU
+wU
 sv
 sv
 sv
@@ -35059,6 +35595,7 @@ sv
 sv
 sv
 PP
+hm
 hm
 JT
 JT
@@ -35237,14 +35774,13 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+bY
+Rw
+Rw
+Rw
+Rw
+lb
+RZ
 sv
 sv
 sv
@@ -35253,6 +35789,7 @@ sv
 sv
 sv
 PP
+hm
 hm
 JT
 JT
@@ -35431,14 +35968,13 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+mq
+fT
+dh
+tg
+ru
+vC
+wU
 sv
 sv
 sv
@@ -35447,6 +35983,7 @@ sv
 sv
 sv
 PP
+hm
 hm
 JT
 JT
@@ -35618,7 +36155,6 @@ qX
 qX
 jn
 jn
-jn
 sv
 sv
 sv
@@ -35626,13 +36162,13 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+mq
+kp
+mq
+mq
+NG
+wU
+RZ
 sv
 sv
 sv
@@ -35641,8 +36177,9 @@ sv
 sv
 sv
 PP
-PP
-JT
+hm
+hm
+hm
 JT
 JT
 JT
@@ -35812,8 +36349,6 @@ lb
 lb
 hS
 hS
-ce
-Do
 sv
 sv
 sv
@@ -35822,21 +36357,23 @@ sv
 sv
 sv
 sv
+Hg
+eK
+eK
+hY
+NY
+wU
+dQ
 sv
 sv
 sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-JT
+PP
+PP
+hm
+hm
 JT
 JT
 JT
@@ -36006,9 +36543,21 @@ wU
 wU
 wU
 wU
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+sv
+iP
+iP
+iP
+iP
+je
 wU
-ce
-Do
+dQ
 sv
 sv
 sv
@@ -36016,21 +36565,9 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-JT
+PP
+PP
+hm
 JT
 JT
 JT
@@ -36212,6 +36749,9 @@ sv
 sv
 sv
 sv
+mW
+wU
+dQ
 sv
 sv
 sv
@@ -36220,11 +36760,8 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
+PP
+PP
 JT
 JT
 Tq
@@ -36406,6 +36943,9 @@ sv
 sv
 sv
 sv
+mW
+wU
+dQ
 sv
 sv
 sv
@@ -36415,10 +36955,7 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
+PP
 JT
 JT
 Tq
@@ -36600,9 +37137,9 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
+mW
+wU
+dQ
 sv
 sv
 sv
@@ -36794,9 +37331,9 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
+mW
+wU
+dQ
 sv
 sv
 sv
@@ -36988,10 +37525,10 @@ sv
 sv
 sv
 sv
+mW
+wU
 sv
-sv
-sv
-sv
+dQ
 sv
 sv
 sv
@@ -37182,9 +37719,9 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
+mW
+wU
+dQ
 sv
 sv
 sv
@@ -37376,9 +37913,9 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
+mW
+wU
+dQ
 sv
 sv
 sv
@@ -37570,9 +38107,9 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
+mW
+wU
+dQ
 sv
 sv
 sv
@@ -37764,9 +38301,9 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
+mW
+wU
+dQ
 sv
 sv
 sv
@@ -37958,10 +38495,10 @@ sv
 sv
 sv
 sv
+mW
+wU
 sv
-sv
-sv
-sv
+dQ
 sv
 sv
 sv
@@ -38152,9 +38689,9 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
+mW
+wU
+dQ
 sv
 sv
 sv
@@ -38346,9 +38883,9 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
+mW
+lb
+dQ
 sv
 sv
 sv
@@ -38540,9 +39077,9 @@ sv
 sv
 sv
 sv
+mW
 sv
-sv
-sv
+dQ
 sv
 sv
 sv
@@ -38734,10 +39271,10 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
+mW
+dQ
+dQ
+dQ
 sv
 sv
 sv
@@ -38928,10 +39465,10 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
+mW
+dQ
+dQ
+dQ
 sv
 sv
 sv
@@ -39122,10 +39659,10 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
+mW
+dQ
+dQ
+dQ
 sv
 sv
 sv
@@ -39316,9 +39853,9 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
+mW
+dQ
+dQ
 sv
 sv
 sv
@@ -39510,9 +40047,9 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
+mW
+dQ
+dQ
 sv
 sv
 sv
@@ -39704,9 +40241,9 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
+mW
+dQ
+dQ
 sv
 sv
 sv
@@ -39898,15 +40435,15 @@ sv
 sv
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+mW
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
 sv
 dQ
 sv
@@ -40092,15 +40629,15 @@ Pq
 Pq
 sv
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+mW
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
+dQ
 dQ
 dQ
 dQ
@@ -40286,16 +40823,16 @@ ag
 Pq
 sv
 sv
+mW
+dQ
+dQ
 sv
+dQ
+dQ
+dQ
 sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
-sv
+dQ
+dQ
 dQ
 sv
 sv
@@ -40480,7 +41017,7 @@ lz
 Az
 eg
 eg
-eg
+Zk
 eg
 eg
 eg
