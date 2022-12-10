@@ -4,6 +4,10 @@
 	icon_state = "carpet"
 	initial_flooring = /singleton/flooring/carpet
 
+	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_CARPET)
+	canSmoothWith = list(SMOOTH_GROUP_CARPET)
+
 /turf/simulated/floor/carpet/bcarpet
 	name = "black carpet"
 	icon_state = "bcarpet"

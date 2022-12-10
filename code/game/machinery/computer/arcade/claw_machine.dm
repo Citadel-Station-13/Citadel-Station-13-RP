@@ -205,15 +205,15 @@
 
 	if(action == "pointless" && wintick >= 10)
 		instructions = "Insert 1 thaler or swipe a card to play!"
-		clawvend()
+		clawvend(usr)
 
 /// True to a real claw machine, it's NEARLY impossible to win.
-/obj/machinery/computer/arcade/clawmachine/proc/clawvend()
+/obj/machinery/computer/arcade/clawmachine/proc/clawvend(mob/user)
 	winprob += 1 /// Yeah.
 
 	if(prob(winprob)) /// YEAH.
 		if(!emagged)
-			prizevend()
+			prizevend(user)
 			winscreen = "You won!"
 		else if(emagged)
 			gameprice = 1
