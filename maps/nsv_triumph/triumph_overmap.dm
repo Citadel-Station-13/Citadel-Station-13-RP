@@ -1,29 +1,3 @@
-/obj/effect/overmap/visitable/ship/triumph
-	name = "NSV Triumph"	// Name of the location on the overmap.
-	desc = "The Triumph is one of the many ships that is a part of the NDV Marksmans Fleet in this sector"
-
-	scanner_desc = @{"[i]Registration[/i]: NSV Triumph
-[i]Class[/i]: Science Vessel
-[i]Transponder[/i]: Transmitting (CIV), NanoTrasen IFF
-[b]Notice[/b]: NanoTrasen Vessel, authorized personnel only"}
-
-	icon_state = "ship"
-	vessel_mass = 25000
-	burn_delay = 2 SECONDS
-	fore_dir = EAST	// Which direction the ship/z-level is facing.  It will move dust particles from that direction when moving.
-	base = TRUE		// Honestly unsure what this does but it seems the main sector or "Map" we're at has this so here it stays
-	// The waypoints that are avaliable once you are at this Navpoint
-	initial_generic_waypoints = list("nav_capitalship_docking2", "triumph_excursion_hangar", "triumph_space_SW", "triumph_mining_port")
-
-	initial_restricted_waypoints = list(
-		"Excursion Shuttle" = list("triumph_excursion_hangar"),
-		"Courser Scouting Vessel" = list("triumph_courser_hangar"),
-		"Civilian Transport" = list("triumph_civvie_home"),
-		"Dart EMT Shuttle" = list("triumph_emt_dock"),
-		"Beruang Trade Ship" = list("triumph_annex_dock"),
-		"Mining Shuttle" = list("triumph_mining_port")
-		)
-
 //////////////////////////////////////////////////////////////////////////
 // There is literally a dm file for triumph shuttles, why are these here//
 //////////////////////////////////////////////////////////////////////////
@@ -72,28 +46,6 @@
 	shuttle = "Civilian Transport"
 
 
-// Vox Pirate ship (Yaya, yous be giving us all your gear now.)
-
-/obj/effect/overmap/visitable/ship/landable/pirate
-	name = "Pirate Skiff"
-	desc = "Yous need not care about this."
-	fore_dir = WEST
-	vessel_mass = 7000
-	vessel_size = SHIP_SIZE_SMALL
-	shuttle = "Pirate Skiff"
-
-/*/datum/shuttle/autodock/overmap/pirate
-	name = "Pirate Skiff"
-	warmup_time = 3
-	shuttle_area = list(/area/shuttle/pirate/cockpit, /area/shuttle/pirate/general, /area/shuttle/pirate/cargo)
-	current_location = "piratebase_hanger"
-	docking_controller_tag = "pirate_docker"
-	fuel_consumption = 5
-
-/obj/machinery/computer/shuttle_control/explore/pirate
-	name = "short jump raiding console"
-	shuttle_tag = "Pirate Skiff"
-*/
 
 // Mining Shuttle
 
@@ -126,28 +78,6 @@
 	shuttle = "Dart EMT Shuttle"
 
 // STATIC PLANET/BASE LOCATIONS
-
-// -- Datums -- //
-/obj/effect/overmap/visitable/sector/debrisfield
-	name = "Debris Field"
-	desc = "Space junk galore."
-	scanner_desc = @{"[i]Information[/i]: A collection of ruins from ages ago.."}
-	icon_state = "dust2"
-	color = "#BBBBBB"
-	known = FALSE
-	in_space = 1
-	initial_generic_waypoints = list("triumph_excursion_debrisfield")
-
-/* Old Class D waypoint, new one is being handled in classd.dm . Please use that one -Bloop
-/obj/effect/overmap/visitable/sector/class_d
-	name = "Unidentified Planet"
-	desc = "ASdlke ERROR%%%% UNABLE TO----."
-	scanner_desc = @{"[i]Information[/i]: Scans report a planet with nearly no atmosphere, but life-signs are registered."}
-	in_space = 0
-	icon_state = "globe"
-	known = FALSE
-	color = "#882933"
-*/
 
 /obj/effect/overmap/visitable/sector/class_h
 	name = "Desert Planet"
@@ -213,24 +143,3 @@ Allignment: Neutral to NanoTrasen. No Discount for services expected."}
 	known = FALSE
 	in_space = 0
 
-/*
-/obj/effect/overmap/visitable/sector/trade_post
-	name = "Nebula Gas Food Mart"
-	desc = "A ubiquitous chain of traders common in this area of the Galaxy."
-	scanner_desc = @{"[i]Information[/i]: A trade post and fuel depot. Possible life signs detected."}
-	in_space = 1
-	known = TRUE
-	icon_state = "fueldepot"
-	color = "#8F6E4C"
-
-	initial_generic_waypoints = list("nebula_space_SW")
-
-	initial_restricted_waypoints = list(
-		"Beruang Trade Ship" = list("tradeport_hangar"),
-		"Mining Shuttle" = list("nebula_pad_2"),
-		"Excursion Shuttle" = list("nebula_pad_3"),
-		"Pirate Skiff" = list("nebula_pad_4"),
-		"Dart EMT Shuttle" = list("nebula_pad_5"),
-		"Civilian Transport" = list("nebula_pad_6")
-		)
-*/
