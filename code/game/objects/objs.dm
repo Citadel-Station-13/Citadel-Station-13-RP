@@ -109,7 +109,7 @@
 	. = ..()
 	if(.)
 		return
-	SEND_SIGNAL(src, COMSIG_ATOM_UI_INTERACT, user)
+	// SEND_SIGNAL(src, COMSIG_ATOM_UI_INTERACT, user)
 	ui_interact(user)
 	nano_ui_interact(user)
 

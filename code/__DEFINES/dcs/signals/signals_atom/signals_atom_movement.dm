@@ -26,7 +26,7 @@
 /// (atom/movable/being_pushed)
 ////#define COMSIG_LIVING_PUSHING_MOVABLE "living_pushing_movable"
 /// From base of [/atom/proc/interact]: (mob/user)
-#define COMSIG_ATOM_UI_INTERACT "atom_ui_interact"
+////#define COMSIG_ATOM_UI_INTERACT "atom_ui_interact"
 /// From base of atom/setDir(): (old_dir, new_dir). Called before the direction changes.
 #define COMSIG_ATOM_DIR_CHANGE "atom_dir_change"
 /// From /datum/component/singularity/proc/can_move(), as well as /obj/energy_ball/proc/can_move()

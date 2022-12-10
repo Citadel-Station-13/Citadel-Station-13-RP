@@ -16,28 +16,28 @@
 /// From base of mob/set_stat(): (new_stat, old_stat)
 ////#define COMSIG_MOB_STATCHANGE "mob_statchange"
 /// From base of mob/clickon(): (atom/A, params)
-#define COMSIG_MOB_CLICKON "mob_clickon"
+////#define COMSIG_MOB_CLICKON "mob_clickon"
 /// From base of mob/MiddleClickOn(): (atom/A)
-#define COMSIG_MOB_MIDDLECLICKON "mob_middleclickon"
+////#define COMSIG_MOB_MIDDLECLICKON "mob_middleclickon"
 /// From base of mob/AltClickOn(): (atom/A)
-#define COMSIG_MOB_ALTCLICKON "mob_altclickon"
-	#define COMSIG_MOB_CANCEL_CLICKON (1<<0)
+////#define COMSIG_MOB_ALTCLICKON "mob_altclickon"
+	////#define COMSIG_MOB_CANCEL_CLICKON (1<<0)
 /// From base of mob/alt_click_on_secodary(): (atom/A)
-#define COMSIG_MOB_ALTCLICKON_SECONDARY "mob_altclickon_secondary"
+////#define COMSIG_MOB_ALTCLICKON_SECONDARY "mob_altclickon_secondary"
 /// From base of /mob/living/simple_animal/bot/proc/bot_step()
 ////#define COMSIG_MOB_BOT_PRE_STEP "mob_bot_pre_step"
-	///? Should always match COMPONENT_MOVABLE_BLOCK_PRE_MOVE as these are interchangeable and used to block movement.
+	//? Should always match COMPONENT_MOVABLE_BLOCK_PRE_MOVE as these are interchangeable and used to block movement.
 	////#define COMPONENT_MOB_BOT_BLOCK_PRE_STEP COMPONENT_MOVABLE_BLOCK_PRE_MOVE
 /// From base of /mob/living/simple_animal/bot/proc/bot_step()
 ////#define COMSIG_MOB_BOT_STEP "mob_bot_step"
 
 /// From base of /client/Move()
 ////#define COMSIG_MOB_CLIENT_PRE_MOVE "mob_client_pre_move"
-	///? Should always match COMPONENT_MOVABLE_BLOCK_PRE_MOVE as these are interchangeable and used to block movement.
+	//? Should always match COMPONENT_MOVABLE_BLOCK_PRE_MOVE as these are interchangeable and used to block movement.
 	////#define COMSIG_MOB_CLIENT_BLOCK_PRE_MOVE COMPONENT_MOVABLE_BLOCK_PRE_MOVE
 /// From base of /client/Move()
 ////#define COMSIG_MOB_CLIENT_PRE_LIVING_MOVE "mob_client_pre_living_move"
-	///? Should we stop the current living movement attempt
+	//? Should we stop the current living movement attempt
 	////#define COMSIG_MOB_CLIENT_BLOCK_PRE_LIVING_MOVE COMPONENT_MOVABLE_BLOCK_PRE_MOVE
 /// From base of /client/Move()
 ////#define COMSIG_MOB_CLIENT_MOVED "mob_client_moved"
@@ -71,10 +71,10 @@
 /// From base of /mob/throw_item(): (atom/target)
 ////#define COMSIG_MOB_THROW "mob_throw"
 /// From base of /mob/verb/examinate(): (atom/target)
-#define COMSIG_MOB_EXAMINATE "mob_examinate"
+//// #define COMSIG_MOB_EXAMINATE "mob_examinate"
 /// From /mob/living/handle_eye_contact(): (mob/living/other_mob)
 #define COMSIG_MOB_EYECONTACT "mob_eyecontact"
-	///? return this if you want to block printing this message to this person, if you want to print your own (does not affect the other person's message)
+	//? return this if you want to block printing this message to this person, if you want to print your own (does not affect the other person's message)
 	#define COMSIG_BLOCK_EYECONTACT (1<<0)
 /// From base of /mob/update_sight(): ()
 #define COMSIG_MOB_UPDATE_SIGHT "mob_update_sight"
@@ -143,9 +143,9 @@
 /// From base of mob/RangedAttack(): (atom/A, modifiers)
 #define COMSIG_MOB_ATTACK_RANGED "mob_attack_ranged"
 /// From base of mob/ranged_secondary_attack(): (atom/target, modifiers)
-#define COMSIG_MOB_ATTACK_RANGED_SECONDARY "mob_attack_ranged_secondary"
+////#define COMSIG_MOB_ATTACK_RANGED_SECONDARY "mob_attack_ranged_secondary"
 /// From base of atom/ctrl_click(): (atom/A)
-#define COMSIG_MOB_CTRL_CLICKED "mob_ctrl_clicked"
+////#define COMSIG_MOB_CTRL_CLICKED "mob_ctrl_clicked"
 /// From base of mob/update_movespeed():area
 ////#define COMSIG_MOB_MOVESPEED_UPDATED "mob_update_movespeed"
 /// From /atom/movable/screen/zone_sel/proc/set_selected_zone.
@@ -153,7 +153,7 @@
 ////#define COMSIG_MOB_SELECTED_ZONE_SET "mob_set_selected_zone"
 /// From base of [/client/proc/handle_spam_prevention] (message, mute_type)
 ////#define COMSIG_MOB_AUTOMUTE_CHECK "client_automute_check" // The check is performed by the client.
-	///? Prevents the automute system checking this client for repeated messages.
+	//? Prevents the automute system checking this client for repeated messages.
 	////#define WAIVE_AUTOMUTE_CHECK (1<<0)
 
 /// From base of mob/Life(): (seconds, times_fired)

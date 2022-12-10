@@ -93,7 +93,7 @@
 	else
 		add_fingerprint(user)
 	if(interaction_flags_atom & INTERACT_ATOM_UI_INTERACT)
-		SEND_SIGNAL(src, COMSIG_ATOM_UI_INTERACT, user)
+		// SEND_SIGNAL(src, COMSIG_ATOM_UI_INTERACT, user)
 		ui_interact(user)
 		nano_ui_interact(user)
 		return

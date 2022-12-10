@@ -34,9 +34,9 @@
 
 /// From /obj/machinery/can_interact(mob/user): Called on user when attempting to interact with a machine (obj/machinery/machine)
 ////#define COMSIG_TRY_USE_MACHINE "try_use_machine"
-	///? Can't interact with the machine
+	//? Can't interact with the machine
 	////#define COMPONENT_CANT_USE_MACHINE_INTERACT (1<<0)
-	///? Can't use tools on the machine
+	//? Can't use tools on the machine
 	////#define COMPONENT_CANT_USE_MACHINE_TOOLS (1<<1)
 
 /// From obj/machinery/iv_drip/IV_attach(target, usr) : (attachee)
@@ -141,11 +141,11 @@
 ////#define COMSIG_ITEM_RECHARGED "item_recharged"
 /// Called when an item is being offered, from [/obj/item/proc/on_offered(mob/living/carbon/offerer)]
 ////#define COMSIG_ITEM_OFFERING "item_offering"
-	///? Interrupts the offer proc
+	//? Interrupts the offer proc
 	////#define COMPONENT_OFFER_INTERRUPT (1<<0)
 /// Called when an someone tries accepting an offered item, from [/obj/item/proc/on_offer_taken(mob/living/carbon/offerer, mob/living/carbon/taker)]
 ////#define COMSIG_ITEM_OFFER_TAKEN "item_offer_taken"
-	///? Interrupts the offer acceptance
+	//? Interrupts the offer acceptance
 	////#define COMPONENT_OFFER_TAKE_INTERRUPT (1<<0)
 /// sent from obj/effect/attackby(): (/obj/effect/hit_effect, /mob/living/attacker, params)
 ////#define COMSIG_ITEM_ATTACK_EFFECT "item_effect_attacked"
@@ -163,12 +163,12 @@
 
 /// From /obj/item/storage/book/bible/afterattack(): (mob/user, proximity)
 ////#define COMSIG_BIBLE_SMACKED "bible_smacked"
-	///? Stops the bible chain from continuing. When all of the effects of the bible smacking have been moved to a signal we can kill this
+	//? Stops the bible chain from continuing. When all of the effects of the bible smacking have been moved to a signal we can kill this
 	////#define COMSIG_END_BIBLE_CHAIN (1<<0)
 /// Closets
 /// From base of [/obj/structure/closet/proc/insert]: (atom/movable/inserted)
 ////#define COMSIG_CLOSET_INSERT "closet_insert"
-	///? Used to interrupt insertion
+	//? Used to interrupt insertion
 	////#define COMPONENT_CLOSET_INSERT_INTERRUPT (1<<0)
 
 /// From open: (forced)
@@ -194,11 +194,11 @@
 //! /obj/item signals for economy
 /// Called before an item is sold by the exports system.
 ////#define COMSIG_ITEM_PRE_EXPORT "item_pre_sold"
-	///? Stops the export from calling sell_object() on the item, so you can handle it manually.
+	//? Stops the export from calling sell_object() on the item, so you can handle it manually.
 	////#define COMPONENT_STOP_EXPORT (1<<0)
 /// Called when an item is sold by the exports subsystem
 ////#define COMSIG_ITEM_EXPORTED "item_sold"
-	///? Stops the export from adding the export information to the report, so you can handle it manually.
+	//? Stops the export from adding the export information to the report, so you can handle it manually.
 	////#define COMPONENT_STOP_EXPORT_REPORT (1<<0)
 /// Called when a wrapped up item is opened by hand
 ////#define COMSIG_ITEM_UNWRAPPED "item_unwrapped"
@@ -221,7 +221,7 @@
 	////#define COMPONENT_STOP_IMPLANTING (1<<0)
 /// Called on already installed implants when a new one is being added in /obj/item/implant/proc/implant(): (list/args, obj/item/implant/new_implant)
 ////#define COMSIG_IMPLANT_OTHER "implant_other"
-	///? The name makes sense for both
+	//? The name makes sense for both
 	////#define COMPONENT_STOP_IMPLANTING (1<<0)
 	////#define COMPONENT_DELETE_NEW_IMPLANT (1<<1)
 	////#define COMPONENT_DELETE_OLD_IMPLANT (1<<2)
@@ -234,14 +234,14 @@
 
 /// Called as a mindshield is implanted: (mob/user)
 ////#define COMSIG_PRE_MINDSHIELD_IMPLANT "pre_mindshield_implant"
-	///? Did they successfully get mindshielded?
+	//? Did they successfully get mindshielded?
 	////#define COMPONENT_MINDSHIELD_PASSED (NONE)
-	///? Did they resist the mindshield?
+	//? Did they resist the mindshield?
 	////#define COMPONENT_MINDSHIELD_RESISTED (1<<0)
 
 /// Called once a mindshield is implanted: (mob/user)
 ////#define COMSIG_MINDSHIELD_IMPLANTED "mindshield_implanted"
-	///? Are we the reason for deconversion?
+	//? Are we the reason for deconversion?
 	////#define COMPONENT_MINDSHIELD_DECONVERTED (1<<0)
 
 /// Called on implants being implanted into someone with an uplink implant: (datum/component/uplink)
@@ -277,7 +277,7 @@
 //! /obj/effect/proc_holder/spell signals
 /// Called from /obj/effect/proc_holder/spell/cast_check (src)
 ////#define COMSIG_MOB_PRE_CAST_SPELL "mob_cast_spell"
-	///? Return to cancel the cast from beginning.
+	//? Return to cancel the cast from beginning.
 	////#define COMPONENT_CANCEL_SPELL (1<<0)
 /// Called from /obj/effect/proc_holder/spell/perform (src)
 ////#define COMSIG_MOB_CAST_SPELL "mob_cast_spell"
@@ -320,18 +320,18 @@
 
 /// Sent from clicking while you have no equipment selected. Sent before cooldown and adjacency checks, so you can use this for infinite range things if you want.
 ////#define COMSIG_MECHA_MELEE_CLICK "mecha_action_melee_click"
-	///? Prevents click from happening.
+	//? Prevents click from happening.
 	////#define COMPONENT_CANCEL_MELEE_CLICK (1<<0)
 /// Sent from clicking while you have equipment selected.
 ////#define COMSIG_MECHA_EQUIPMENT_CLICK "mecha_action_equipment_click"
-	///? Prevents click from happening.
+	//? Prevents click from happening.
 	////#define COMPONENT_CANCEL_EQUIPMENT_CLICK (1<<0)
 
 ////#define COMSIG_ITEM_ATTACK "item_attack"
 /// From base of obj/item/attack_self(): (/mob)
 #define COMSIG_ITEM_ATTACK_SELF "item_attack_self"
 /// From base of obj/item/attack_self_secondary(): (/mob)
-#define COMSIG_ITEM_ATTACK_SELF_SECONDARY "item_attack_self_secondary"
+////#define COMSIG_ITEM_ATTACK_SELF_SECONDARY "item_attack_self_secondary"
 /// From base of obj/item/attack_atom(): (/obj, /mob)
 ////#define COMSIG_ITEM_ATTACK_OBJ "item_attack_obj"
 /// From base of obj/item/pre_attack(): (atom/target, mob/user, params)

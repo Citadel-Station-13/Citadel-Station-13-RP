@@ -29,9 +29,9 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	interact(user)
 
 /// Called when the item is in the active hand, and right-clicked. Intended for alternate or opposite functions, such as lowering reagent transfer amount. At the moment, there is no verb or hotkey.
-/obj/item/proc/attack_self_secondary(mob/user, modifiers)
-	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF_SECONDARY, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
-		return TRUE
+// /obj/item/proc/attack_self_secondary(mob/user, modifiers)
+// 	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF_SECONDARY, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
+// 		return TRUE
 
 
 // Called at the start of resolve_attackby(), before the actual attack.

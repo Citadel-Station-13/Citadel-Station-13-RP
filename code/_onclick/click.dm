@@ -54,8 +54,8 @@
 
 	var/list/modifiers = params2list(params)
 
-	if(SEND_SIGNAL(src, COMSIG_MOB_CLICKON, A, modifiers) & COMSIG_MOB_CANCEL_CLICKON)
-		return
+	// if(SEND_SIGNAL(src, COMSIG_MOB_CLICKON, A, modifiers) & COMSIG_MOB_CANCEL_CLICKON)
+	// 	return
 
 	if(LAZYACCESS(modifiers, SHIFT_CLICK))
 		if(LAZYACCESS(modifiers, MIDDLE_CLICK))
@@ -113,17 +113,12 @@
 	var/obj/item/I = get_active_held_item()
 
 	if(I == A) //? Handle special cases
-
-		if(LAZYACCESS(modifiers, RIGHT_CLICK))
-			I.attack_self_secondary(src, modifiers)
-			// update_held_items()
-			return
-		else
-			I.attack_self(src, modifiers)
-			// update_held_items()
-			// todo: refactor
-			trigger_aiming(TARGET_CAN_CLICK)
-			return
+		// TODO: Add Right Click support when we need it. @Zandario
+		I.attack_self(src, modifiers)
+		// update_held_items()
+		// todo: refactor
+		trigger_aiming(TARGET_CAN_CLICK)
+		return
 
 	//? check if we can click from our current location
 	var/ranged_generics_allowed = loc?.AllowClick(src, A, I)
@@ -182,14 +177,14 @@
 	// 	changeNext_move(CLICK_CD_MELEE)
 	return
 
-/mob/living/UnarmedAttack(var/atom/A, var/proximity_flag)
+/mob/living/UnarmedAttack(atom/A, proximity_flag, list/modifiers)
 	if(is_incorporeal())
-		return 0
+		return FALSE
 
 	if(stat)
-		return 0
+		return FALSE
 
-	return 1
+	return TRUE
 
 /**
  * Ranged unarmed attack:
@@ -199,7 +194,7 @@
  * for things like ranged glove touches, spitting alien acid/neurotoxin,
  * animals lunging, etc.
  */
-/mob/proc/RangedAttack(atom/A, modifiers)
+/mob/proc/RangedAttack(atom/A, proximity_flag, modifiers)
 	if(SEND_SIGNAL(src, COMSIG_MOB_ATTACK_RANGED, A, modifiers) & COMPONENT_CANCEL_ATTACK_CHAIN)
 		return TRUE
 
@@ -210,9 +205,9 @@
  * instead initialized via a right click, this will trigger instead.
  * Useful for mobs that have their abilities mapped to right click.
  */
-/mob/proc/ranged_secondary_attack(atom/target, modifiers)
-	if(SEND_SIGNAL(src, COMSIG_MOB_ATTACK_RANGED_SECONDARY, target, modifiers) & COMPONENT_CANCEL_ATTACK_CHAIN)
-		return TRUE
+// /mob/proc/ranged_secondary_attack(atom/target, modifiers)
+// 	if(SEND_SIGNAL(src, COMSIG_MOB_ATTACK_RANGED_SECONDARY, target, modifiers) & COMPONENT_CANCEL_ATTACK_CHAIN)
+// 		return TRUE
 
 
 /**
@@ -230,9 +225,9 @@
  * Mainly used for swapping hands
  */
 /mob/proc/MiddleClickOn(atom/A, params)
-	. = SEND_SIGNAL(src, COMSIG_MOB_MIDDLECLICKON, A, params)
-	if(. & COMSIG_MOB_CANCEL_CLICKON)
-		return
+	// . = SEND_SIGNAL(src, COMSIG_MOB_MIDDLECLICKON, A, params)
+	// if(. & COMSIG_MOB_CANCEL_CLICKON)
+	// 	return
 	swap_hand()
 
 // In case of use break glass
@@ -267,7 +262,7 @@
 
 /atom/proc/CtrlClick(mob/user)
 	SEND_SIGNAL(src, COMSIG_CLICK_CTRL, user)
-	SEND_SIGNAL(user, COMSIG_MOB_CTRL_CLICKED, src)
+	// SEND_SIGNAL(user, COMSIG_MOB_CTRL_CLICKED, src)
 	var/mob/living/ML = user
 	if(istype(ML))
 		ML.pulled(src)
@@ -279,6 +274,7 @@
 		user.start_pulling(src)
 	return ..()
 
+// TODO: tag_datum @Zandario
 /mob/proc/CtrlMiddleClickOn(atom/A)
 	// if(check_rights_for(client, R_ADMIN))
 	// 	client.toggle_tag_datum(A)
@@ -290,12 +286,11 @@
 
 /**
  * Alt click
- * Unused except for AI
  */
 /mob/proc/AltClickOn(atom/A)
-	. = SEND_SIGNAL(src, COMSIG_MOB_ALTCLICKON, A)
-	if(. & COMSIG_MOB_CANCEL_CLICKON)
-		return
+	// . = SEND_SIGNAL(src, COMSIG_MOB_ALTCLICKON, A)
+	// if(. & COMSIG_MOB_CANCEL_CLICKON)
+	// 	return
 	A.AltClick(src)
 
 /atom/proc/AltClick(mob/user)
@@ -307,19 +302,21 @@
 	if(T && (isturf(loc) || isturf(src)) && user.TurfAdjacent(T))
 		user.set_listed_turf(T)
 
-///The base proc of when something is right clicked on when alt is held - generally use alt_click_secondary instead
+/// The base proc of when something is right clicked on when alt is held - generally use alt_click_secondary instead.
 /atom/proc/alt_click_on_secondary(atom/A)
-	. = SEND_SIGNAL(src, COMSIG_MOB_ALTCLICKON_SECONDARY, A)
-	if(. & COMSIG_MOB_CANCEL_CLICKON)
-		return
-	A.alt_click_secondary(src)
+// 	. = SEND_SIGNAL(src, COMSIG_MOB_ALTCLICKON_SECONDARY, A)
+// 	if(. & COMSIG_MOB_CANCEL_CLICKON)
+// 		return
+	// A.alt_click_secondary(src)
+	return
 
-///The base proc of when something is right clicked on when alt is held
-/atom/proc/alt_click_secondary(mob/user)
-	if(!user.can_interact_with(src))
-		return FALSE
-	if(SEND_SIGNAL(src, COMSIG_CLICK_ALT_SECONDARY, user) & COMPONENT_CANCEL_CLICK_ALT_SECONDARY)
-		return
+/// The base proc of when something is right clicked on when alt is held.
+// /atom/proc/alt_click_secondary(mob/user)
+// 	if(!user.can_interact_with(src))
+// 		return FALSE
+// 	if(SEND_SIGNAL(src, COMSIG_CLICK_ALT_SECONDARY, user) & COMPONENT_CANCEL_CLICK_ALT_SECONDARY)
+// 		return
+	// TODO: tag_datum @Zandario
 	// if(isobserver(user) && user.client && check_rights_for(user.client, R_DEBUG))
 	// 	user.client.toggle_tag_datum(src)
 	// 	return
