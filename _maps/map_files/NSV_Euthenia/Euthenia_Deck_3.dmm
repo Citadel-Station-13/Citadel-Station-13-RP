@@ -7081,9 +7081,7 @@
 	dir = 8
 	},
 /obj/structure/cable/yellow{
-	d2 = 2;
-	dir = 4;
-	icon_state = "0-2"
+	icon_state = "0-4"
 	},
 /obj/structure/cable/green,
 /obj/effect/floor_decal/industrial/outline/yellow,
@@ -12113,9 +12111,7 @@
 /area/tether/exploration/pilot_office)
 "llr" = (
 /obj/structure/cable/yellow{
-	d2 = 2;
-	dir = 8;
-	icon_state = "0-2"
+	icon_state = "0-8"
 	},
 /obj/machinery/power/port_gen/pacman/mrs{
 	anchored = 1
@@ -13104,7 +13100,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
@@ -19373,7 +19368,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
@@ -19857,7 +19851,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
@@ -25344,7 +25337,6 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
 /obj/structure/cable/green{
-	dir = 1;
 	icon_state = "1-2"
 	},
 /turf/simulated/floor/tiled,
