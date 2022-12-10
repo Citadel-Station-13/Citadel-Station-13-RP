@@ -73,7 +73,7 @@
 	name = "virgo 2 atmosphere"
 	desc = "Be careful where you step!"
 	color = "#eacd7c"
-	VIRGO2_SET_ATMOS
+	initial_gas_mix = ATMOSPHERE_ID_VIRGO2
 
 /turf/simulated/floor/sky/virgo2_sky/Initialize(mapload)
 	skyfall_levels = list(z+1)

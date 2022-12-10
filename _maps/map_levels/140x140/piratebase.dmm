@@ -178,7 +178,7 @@
 /turf/simulated/floor/reinforced,
 /area/piratebase/facility)
 "hY" = (
-/obj/effect/shuttle_landmark/triumph/pirate,
+/obj/effect/shuttle_landmark/shuttle_initializer/pirate,
 /obj/effect/overmap/visitable/ship/landable/pirate,
 /turf/simulated/floor/reinforced,
 /area/shuttle/pirate/general)
