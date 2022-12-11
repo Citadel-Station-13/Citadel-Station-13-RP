@@ -1,3 +1,4 @@
+// todo: can element this by usign 3 signals instead of 2, one to receive a keybind signal.
 /datum/component/wielding
 	/// hands needed
 	var/hands
@@ -34,7 +35,7 @@
 
 /datum/component/wielding/proc/signal_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
-	examine_list += SPAN_NOTICE("[parent] seems to be intended to be used with [hands] hands. Press your \"Wield Item\" keybind to toggle wielding.")
+	examine_list += SPAN_NOTICE("[parent] seems to be able to be used with [hands] hands. Press your \"Wield Item\" keybind to toggle wielding.")
 
 /datum/component/wielding/proc/signal_dropped(datum/source, mob/user, flags, atom/newloc)
 	unwield()
