@@ -7,6 +7,7 @@
 */
 
 /datum/sprite_accessory/facial_hair
+	abstract_type = /datum/sprite_accessory/facial_hair
 	icon = 'icons/mob/human_face_or_vr.dmi'
 	color_blend_mode = ICON_MULTIPLY
 	apply_restrictions = FALSE

@@ -1,4 +1,5 @@
 /datum/sprite_accessory/marking
+	abstract_type = /datum/sprite_accessory/marking
 	icon = "icons/mob/sprite_accessories/markings.dmi"
 	do_colouration = 1 //Almost all of them have it, COLOR_ADD
 	color_blend_mode = ICON_ADD

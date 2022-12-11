@@ -11,7 +11,10 @@
 		if(initial(S.abstract_type) == path)
 			continue
 		S = new path
-		if(ids[S.id])
+		if(isnull(S.id))
+			Fail("null ID on [path]")
+			continue
+		else if(ids[S.id])
 			Fail("duplicate id [S.id] on [path] against [ids[S.id]:type]")
 		else
 			ids[S.id] = S
