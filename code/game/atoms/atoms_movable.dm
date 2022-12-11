@@ -131,6 +131,25 @@
 	/// Used to manually offset buckle pixel offsets. Ignored if we have a riding component.
 	var/buckle_pixel_y = 0
 
+	//! Emissives
+	/// Either FALSE, [EMISSIVE_BLOCK_GENERIC], or [EMISSIVE_BLOCK_UNIQUE]
+	var/blocks_emissive = FALSE
+	/// Internal holder for emissive blocker object, do not use directly use; use blocks_emissive
+	var/atom/movable/emissive_blocker/em_block
+	/// Internal holder for emissives. Definitely don't directly use, this is absolutely an insane Citadel Moment(tm).
+	var/atom/movable/emissive_render/em_render
+
+/atom/movable/Initialize(mapload)
+	. = ..()
+	switch(blocks_emissive)
+		if(EMISSIVE_BLOCK_GENERIC)
+			var/mutable_appearance/gen_emissive_blocker = mutable_appearance(icon, icon_state, plane = EMISSIVE_PLANE, alpha = src.alpha)
+			gen_emissive_blocker.color = GLOB.em_block_color
+			gen_emissive_blocker.dir = dir
+			gen_emissive_blocker.appearance_flags |= appearance_flags
+			add_overlay(list(gen_emissive_blocker))
+		if(EMISSIVE_BLOCK_UNIQUE)
+			add_emissive_blocker()
 /atom/movable/Destroy(force)
 	if(reagents)
 		QDEL_NULL(reagents)
@@ -425,6 +444,15 @@
 	if(!self_perspective)
 		make_perspective()
 
+//! Layers
+/atom/movable/set_base_layer(new_layer)
+	. = ..()
+	update_emissive_layers()
+
+/atom/movable/set_relative_layer(new_layer)
+	. = ..()
+	update_emissive_layers()
+
 //! Pixel Offsets
 /atom/movable/get_centering_pixel_x_offset(dir, atom/aligning)
 	. = ..()
@@ -433,3 +461,60 @@
 /atom/movable/get_centering_pixel_y_offset(dir, atom/aligning)
 	. = ..()
 	. *= icon_scale_y
+
+//! Emissives
+/atom/movable/proc/update_emissive_layers()
+	em_block?.layer = MANGLE_PLANE_AND_LAYER(plane, layer - LAYER_RESOLUTION_FULL)
+	em_render?.layer = MANGLE_PLANE_AND_LAYER(plane, layer - LAYER_RESOLUTION_FULL)
+
+/atom/movable/proc/add_emissive_blocker(full_copy = TRUE)
+	if(em_block)
+		em_block.render_source = full_copy? render_target : null
+		update_emissive_blocker()
+		return
+	render_target = ref(src)
+	em_block = new(src, full_copy? render_target : null)
+	update_emissive_blocker()
+
+/atom/movable/proc/update_emissive_blocker()
+	if(!em_block)
+		return
+	// layer it BELOW us incase WE wanna be fuh-nee with our own emissives
+	em_block.layer = MANGLE_PLANE_AND_LAYER(plane, layer - LAYER_RESOLUTION_FULL)
+
+/atom/movable/proc/remove_emissive_blocker()
+	if(!em_block)
+		return
+	vis_contents -= em_block
+	qdel(em_block)
+	em_block = null
+
+/atom/movable/proc/add_emissive_render(full_copy = TRUE)
+	if(em_render)
+		em_render.render_source = full_copy? render_target : null
+		update_emissive_render()
+		return
+	render_target = ref(src)
+	em_render = new(src, full_copy? render_target : null)
+	update_emissive_render()
+
+/atom/movable/proc/add_or_update_emissive_render()
+	if(!em_render)
+		add_emissive_render()
+	else
+		update_emissive_render()
+
+/atom/movable/proc/update_emissive_render()
+	if(!em_render)
+		return
+	// layer it at our layer
+	em_render.layer = MANGLE_PLANE_AND_LAYER(plane, layer - LAYER_RESOLUTION_FULL)
+
+/atom/movable/proc/remove_emissive_render()
+	if(!em_render)
+		return
+	vis_contents -= em_render
+	qdel(em_render)
+	em_render = null
+
+// todo: we should probably have a way to just copy an appearance clone or something without render-targeting
