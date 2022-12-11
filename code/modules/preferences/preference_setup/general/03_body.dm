@@ -473,7 +473,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		var/datum/sprite_accessory/current = GLOB.sprite_accessory_hair[pref.h_style_id]
 		var/new_h_style = input(user, "Choose your character's hair style:", "Character Preference", current.name)  as null|anything in valid_hairstyles
 		if(new_h_style && CanUseTopic(user))
-			var/datum/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[new_h_style]
+			var/datum/sprite_accessory/S = valid_hairstyles[new_h_style]
 			pref.h_style_id = S.id
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
@@ -552,7 +552,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		var/datum/sprite_accessory/current = GLOB.sprite_accessory_hair[pref.f_style_id]
 		var/new_f_style = input(user, "Choose your character's facial-hair style:", "Character Preference", current.name)  as null|anything in valid_facialhairstyles
 		if(new_f_style && CanUseTopic(user))
-			var/datum/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[new_f_style]
+			var/datum/sprite_accessory/S = valid_facialhairstyles[new_f_style]
 			pref.f_style_id = S.id
 			return PREFERENCES_REFRESH_UPDATE_PREVIEW
 
