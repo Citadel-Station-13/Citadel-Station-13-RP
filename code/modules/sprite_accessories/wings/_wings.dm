@@ -1,4 +1,5 @@
 /datum/sprite_accessory/wing
+	abstract_type = /datum/sprite_accessory/wing
 	name = "You should not see this..."
 	icon = 'icons/mob/sprite_accessories/wings.dmi'
 	dimension_x = 64
