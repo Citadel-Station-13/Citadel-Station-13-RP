@@ -402,7 +402,7 @@
 	else if(href_list["horn_style"])
 		// Construct the list of names allowed for this user.
 		var/list/pretty_horn_styles = list("Normal" = null)
-		var/datum/sprite_accessory/ears/current = pref.horn_tsyle_id && GLOB.sprite_accessory_ears[pref.horn_style_id]
+		var/datum/sprite_accessory/ears/current = pref.horn_style_id && GLOB.sprite_accessory_ears[pref.horn_style_id]
 		for(var/id in GLOB.sprite_accessory_ears)
 			var/datum/sprite_accessory/ears/instance = GLOB.sprite_accessory_ears[id]
 			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
