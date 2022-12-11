@@ -921,6 +921,9 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
+"aWR" = (
+/turf/simulated/wall,
+/area/maintenance/deck_one)
 "aWW" = (
 /obj/machinery/light{
 	dir = 4
@@ -3530,6 +3533,12 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
+"dzJ" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/open,
+/area/maintenance/deck_one)
 "dAM" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 8
@@ -5959,6 +5968,12 @@
 "fLu" = (
 /turf/simulated/floor/carpet,
 /area/crew_quarters/heads/hop)
+"fLP" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/command)
 "fMC" = (
 /obj/machinery/alarm{
 	pixel_y = 30
@@ -7613,7 +7628,7 @@
 	icon_state = "32-8"
 	},
 /turf/simulated/open,
-/area/space)
+/area/maintenance/substation/command)
 "hsw" = (
 /obj/machinery/light{
 	dir = 1
@@ -8745,7 +8760,7 @@
 	},
 /obj/structure/lattice,
 /turf/simulated/open,
-/area/space)
+/area/maintenance/deck_one)
 "ixd" = (
 /obj/machinery/button/remote/airlock{
 	id = "dorm7";
@@ -8816,6 +8831,9 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
+"izy" = (
+/turf/simulated/floor/plating,
+/area/maintenance/deck_one)
 "izz" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor,
@@ -8974,7 +8992,7 @@
 	icon_state = "4-8"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/maintenance/deck_one)
 "iFS" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal{
 	dir = 4
@@ -9407,7 +9425,7 @@
 	dir = 1
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/maintenance/deck_one)
 "jch" = (
 /obj/structure/cable/green,
 /obj/machinery/power/solar,
@@ -10709,7 +10727,7 @@
 /obj/structure/lattice,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/open,
-/area/space)
+/area/maintenance/deck_one)
 "kqo" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
 	dir = 4
@@ -11019,7 +11037,7 @@
 	},
 /obj/structure/lattice,
 /turf/simulated/open,
-/area/space)
+/area/maintenance/deck_one)
 "kGP" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -11031,6 +11049,10 @@
 /obj/structure/table/glass,
 /turf/simulated/floor/tiled,
 /area/rnd/xenobiology/xenoflora)
+"kHo" = (
+/obj/machinery/door/airlock/maintenance,
+/turf/simulated/floor/plating,
+/area/maintenance/deck_one)
 "kHF" = (
 /obj/effect/floor_decal/corner/paleblue/diagonal,
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
@@ -11617,7 +11639,7 @@
 	},
 /obj/structure/lattice,
 /turf/simulated/open,
-/area/space)
+/area/maintenance/deck_one)
 "ldC" = (
 /obj/structure/railing,
 /turf/simulated/floor/tiled,
@@ -12835,7 +12857,7 @@
 	},
 /obj/structure/railing,
 /turf/simulated/open,
-/area/space)
+/area/maintenance/deck_one)
 "msK" = (
 /obj/effect/floor_decal/corner/red{
 	dir = 10
@@ -15408,7 +15430,7 @@
 	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/maintenance/substation/command)
 "pkO" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -15969,6 +15991,9 @@
 /obj/structure/sign/deck/first,
 /turf/simulated/wall,
 /area/space)
+"pSM" = (
+/turf/simulated/wall/r_wall,
+/area/maintenance/substation/command)
 "pTe" = (
 /obj/random/medical,
 /obj/random/medical,
@@ -16693,7 +16718,7 @@
 	},
 /obj/structure/lattice,
 /turf/simulated/open,
-/area/space)
+/area/maintenance/deck_one)
 "qIc" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -16828,6 +16853,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
+"qRm" = (
+/obj/structure/catwalk,
+/turf/simulated/open,
+/area/maintenance/deck_one)
 "qRu" = (
 /obj/structure/cable/green{
 	icon_state = "4-8"
@@ -17882,6 +17911,10 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
+"sco" = (
+/obj/structure/catwalk,
+/turf/simulated/floor/plating,
+/area/maintenance/deck_one)
 "sde" = (
 /obj/machinery/cryopod/robot/door/shuttle,
 /turf/simulated/floor/tiled/techmaint,
@@ -18029,6 +18062,12 @@
 	},
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/crew_quarters/sleep/cryo)
+"spY" = (
+/obj/structure/cable/green{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/command)
 "sqo" = (
 /turf/simulated/wall/r_wall,
 /area/crew_quarters/heads/hop)
@@ -18320,7 +18359,7 @@
 	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating,
-/area/space)
+/area/maintenance/deck_one)
 "sEK" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 8
@@ -18562,7 +18601,7 @@
 	},
 /obj/machinery/door/airlock/maintenance/common,
 /turf/simulated/floor/plating,
-/area/space)
+/area/maintenance/deck_one)
 "sRf" = (
 /obj/effect/floor_decal/corner_techfloor_grid{
 	dir = 5
@@ -19016,6 +19055,12 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
+"too" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/maintenance/deck_one)
 "tov" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -19409,6 +19454,10 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
+"tIX" = (
+/obj/structure/railing,
+/turf/simulated/open,
+/area/maintenance/deck_one)
 "tJW" = (
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
@@ -19612,7 +19661,14 @@
 /obj/structure/lattice,
 /obj/structure/railing,
 /turf/simulated/open,
-/area/space)
+/area/maintenance/deck_one)
+"tUc" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/simulated/open,
+/area/maintenance/deck_one)
 "tUd" = (
 /obj/effect/floor_decal/corner/lightgrey/border{
 	dir = 4
@@ -19942,6 +19998,10 @@
 	},
 /turf/simulated/floor/tiled,
 /area/medical/reception)
+"uns" = (
+/obj/structure/girder,
+/turf/simulated/floor/plating,
+/area/maintenance/deck_one)
 "uoJ" = (
 /obj/structure/cable/green{
 	icon_state = "2-8"
@@ -20193,7 +20253,7 @@
 "uzR" = (
 /obj/machinery/door/airlock/maintenance/command,
 /turf/simulated/floor/plating,
-/area/space)
+/area/maintenance/substation/command)
 "uAq" = (
 /obj/spawner/window/reinforced/full/firelocks,
 /obj/machinery/door/blast/shutters{
@@ -21058,7 +21118,7 @@
 "vpY" = (
 /obj/structure/lattice,
 /turf/simulated/open,
-/area/space)
+/area/maintenance/deck_one)
 "vqk" = (
 /obj/structure/table/steel_reinforced,
 /obj/item/storage/box/masks{
@@ -21344,6 +21404,9 @@
 	dir = 1
 	},
 /obj/structure/lattice,
+/obj/structure/sign/deck1{
+	pixel_y = -32
+	},
 /turf/simulated/open,
 /area/maintenance/deck_one/port)
 "vzP" = (
@@ -21827,7 +21890,7 @@
 /obj/structure/lattice,
 /obj/machinery/door/firedoor/glass,
 /turf/simulated/open,
-/area/space)
+/area/maintenance/deck_one)
 "vYy" = (
 /turf/simulated/floor/plating,
 /area/space)
@@ -21873,6 +21936,9 @@
 "wcR" = (
 /turf/simulated/floor/carpet/purcarpet,
 /area/crew_quarters/sleep/Dorm_7)
+"wdA" = (
+/turf/simulated/floor/plating,
+/area/maintenance/substation/command)
 "wdB" = (
 /obj/effect/floor_decal/spline/fancy/wood{
 	dir = 5
@@ -22575,6 +22641,12 @@
 /obj/structure/closet/wardrobe,
 /turf/simulated/floor/wood,
 /area/crew_quarters/sleep/Dorm_1)
+"wSz" = (
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/command)
 "wSD" = (
 /obj/machinery/atmospherics/pipe/manifold/hidden/scrubbers{
 	dir = 4
@@ -22862,6 +22934,12 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/security/armoury)
+"xjW" = (
+/obj/structure/cable/green{
+	icon_state = "1-2"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/deck_one)
 "xll" = (
 /obj/machinery/airlock_sensor{
 	pixel_y = -28
@@ -23326,7 +23404,7 @@
 /obj/structure/lattice,
 /obj/structure/railing,
 /turf/simulated/open,
-/area/space)
+/area/maintenance/deck_one)
 "xDG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -23519,6 +23597,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/reception)
+"xNO" = (
+/obj/machinery/door/airlock/maintenance/common,
+/turf/simulated/floor/plating,
+/area/maintenance/deck_one)
 "xNY" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -31
@@ -37067,19 +37149,19 @@ oFr
 oFr
 oFr
 oFr
-nxk
-vYy
-vYy
-vYy
-vYy
-vYy
-vYy
-nxk
-vYy
-vYy
-vYy
-vYy
-vYy
+aWR
+izy
+izy
+izy
+izy
+izy
+izy
+aWR
+izy
+izy
+izy
+izy
+izy
 jpc
 pXp
 pXp
@@ -37261,19 +37343,19 @@ oFr
 oFr
 oFr
 oFr
-jEq
-vYy
-vYy
-vYy
-vYy
-vYy
-vYy
-svg
-vYy
-vYy
-vYy
-vYy
-vYy
+kHo
+izy
+izy
+izy
+izy
+izy
+izy
+xNO
+izy
+izy
+izy
+izy
+izy
 jpc
 rKw
 rKw
@@ -37455,19 +37537,19 @@ oFr
 oFr
 oFr
 oFr
-nxk
-vYy
-vYy
-vYy
-vYy
-vYy
-vYy
-nxk
-vYy
-vYy
-vYy
-vYy
-vYy
+aWR
+izy
+izy
+izy
+izy
+izy
+izy
+aWR
+izy
+izy
+izy
+izy
+izy
 jpc
 rKw
 rKw
@@ -37650,10 +37732,10 @@ llL
 llL
 llL
 llL
-nxk
-svg
-nxk
-nxk
+aWR
+xNO
+aWR
+aWR
 aBR
 aBR
 aBR
@@ -37844,10 +37926,10 @@ vfz
 cPo
 sMU
 llL
-vYy
-vYy
-vYy
-vYy
+izy
+izy
+izy
+izy
 aBR
 aMO
 kMt
@@ -38038,10 +38120,10 @@ wQM
 xcH
 rbW
 llL
-vYy
-vYy
-vYy
-vYy
+izy
+izy
+izy
+izy
 aBR
 nxk
 nxk
@@ -38232,10 +38314,10 @@ wdB
 xfr
 gCG
 llL
-vYy
-vYy
-vYy
-vYy
+izy
+izy
+izy
+izy
 aBR
 wLS
 reA
@@ -38426,8 +38508,8 @@ cPo
 cPo
 iEZ
 llL
-vYy
-vYy
+izy
+izy
 hGe
 hGe
 hGe
@@ -38620,8 +38702,8 @@ eqn
 eqn
 eqn
 eqn
-vYy
-vYy
+izy
+izy
 hGe
 nHL
 nHL
@@ -38814,8 +38896,8 @@ nvx
 wIk
 fIX
 eqn
-vYy
-vYy
+izy
+izy
 hGe
 tBe
 iyz
@@ -39008,8 +39090,8 @@ pvU
 iuK
 eFc
 eqn
-vYy
-vYy
+izy
+izy
 hGe
 eRO
 nHL
@@ -39202,8 +39284,8 @@ hwv
 cOV
 nJA
 eqn
-vYy
-vYy
+izy
+izy
 hGe
 uzd
 uzd
@@ -39396,8 +39478,8 @@ wIk
 wIk
 xBY
 eqn
-vYy
-vYy
+izy
+izy
 nWV
 fBj
 fBj
@@ -39590,8 +39672,8 @@ hiO
 hiO
 hiO
 hiO
-vYy
-vYy
+izy
+izy
 nWV
 sPX
 qte
@@ -39784,8 +39866,8 @@ nsF
 lSF
 aax
 hiO
-vYy
-vYy
+izy
+izy
 nWV
 jJP
 fBj
@@ -39978,8 +40060,8 @@ oSi
 dNL
 sPs
 hiO
-vYy
-vYy
+izy
+izy
 nWV
 jGv
 jGv
@@ -40172,8 +40254,8 @@ eTH
 hzV
 vgc
 hiO
-vYy
-vYy
+izy
+izy
 sqo
 gqX
 qXI
@@ -40366,8 +40448,8 @@ vgc
 vgc
 ppG
 hiO
-vYy
-vYy
+izy
+izy
 sqo
 nUE
 hBb
@@ -40560,8 +40642,8 @@ cPK
 cPK
 cPK
 cPK
-vYy
-vYy
+izy
+izy
 sqo
 eUu
 fLu
@@ -40754,8 +40836,8 @@ toK
 iBF
 peW
 cPK
-vYy
-vYy
+izy
+izy
 sqo
 iHX
 iHX
@@ -40948,8 +41030,8 @@ ttV
 mYB
 iBF
 cPK
-vYy
-vYy
+izy
+izy
 hAb
 pUp
 pUp
@@ -41142,8 +41224,8 @@ nnM
 adb
 cal
 cPK
-vYy
-vYy
+izy
+izy
 hAb
 nsR
 sBy
@@ -41336,8 +41418,8 @@ iBF
 toM
 tBJ
 cPK
-vYy
-vYy
+izy
+izy
 hAb
 uzi
 pUp
@@ -41530,18 +41612,18 @@ rhT
 rhT
 rhT
 rhT
-vYy
-vYy
+izy
+izy
 hAb
 hAb
 hAb
 hAb
 hAb
 hAb
-aBR
-iFd
-vYy
-vYy
+pSM
+wSz
+wdA
+wdA
 nju
 iKP
 xrY
@@ -41724,18 +41806,18 @@ pat
 dSS
 ekp
 rhT
-vYy
-vYy
+izy
+izy
 sQW
-apA
-apA
-apA
+qRm
+qRm
+qRm
 jbM
-apA
-aBR
+qRm
+pSM
 pkl
-eMc
-sEi
+fLP
+spY
 nju
 hER
 vSs
@@ -41918,17 +42000,17 @@ xyl
 jwl
 imO
 rhT
-vYy
-vYy
+izy
+izy
 hin
 hin
 hin
 hin
 hin
-apA
-aBR
+qRm
+pSM
 uzR
-aBR
+pSM
 hsk
 nju
 hTF
@@ -42112,18 +42194,18 @@ mNw
 lKs
 dSS
 rhT
-vYy
-vYy
+izy
+izy
 hin
 egk
 egk
 egk
 hin
-pTw
-pTw
-pTw
-aBR
-aBR
+sco
+sco
+sco
+pSM
+pSM
 nju
 rtx
 nmp
@@ -42306,17 +42388,17 @@ dSS
 dSS
 dSS
 rhT
-vYy
-vYy
+izy
+izy
 hin
 egk
 egk
 egk
 hin
-apA
+qRm
 qHQ
 iwH
-eof
+dzJ
 msy
 nju
 ecv
@@ -42500,18 +42582,18 @@ rhT
 rhT
 rhT
 rhT
-vYy
-vYy
+izy
+izy
 hin
 egk
 egk
 egk
 hin
-apA
+qRm
 ldz
 vpY
-xaj
-cKt
+too
+tIX
 nju
 pPZ
 nmp
@@ -42693,19 +42775,19 @@ oFr
 oFr
 oFr
 oFr
-jEq
-vYy
-vYy
+kHo
+izy
+izy
 hin
 oAf
 oAf
 oAf
 hin
-apA
+qRm
 ldz
 tTU
-vYy
-gfx
+izy
+tUc
 nju
 pzC
 mZM
@@ -42887,19 +42969,19 @@ oFr
 oFr
 oFr
 oFr
-nxk
-vYy
-vYy
+aWR
+izy
+izy
 bSj
 oAf
 oAf
 oAf
 hin
-apA
+qRm
 kGw
 xDF
-vYy
-gfx
+izy
+tUc
 nju
 nju
 eHd
@@ -43089,12 +43171,12 @@ uoY
 uoY
 uoY
 qQk
-vYy
-vYy
-vYy
-vYy
-vYy
-vYy
+izy
+izy
+izy
+izy
+izy
+izy
 nju
 nju
 nju
@@ -43283,12 +43365,12 @@ pdK
 oAf
 oAf
 hin
-vYy
-vYy
-vYy
-vYy
-vYy
-vYy
+izy
+izy
+izy
+izy
+izy
+izy
 aBR
 eqt
 dIO
@@ -43477,12 +43559,12 @@ jQE
 oAf
 oAf
 hin
-vYy
-vYy
-vYy
-vYy
-vYy
-vYy
+izy
+izy
+izy
+izy
+izy
+izy
 aBR
 oVG
 cKt
@@ -43671,8 +43753,8 @@ jQE
 gkH
 oAf
 hin
-vYy
-vYy
+izy
+izy
 nxk
 nxk
 nxk
@@ -43865,7 +43947,7 @@ aKe
 klo
 rcu
 knv
-eMc
+xjW
 sEi
 sWP
 maU
@@ -44059,7 +44141,7 @@ gkH
 gkH
 afU
 hin
-vYy
+izy
 iFd
 nxk
 nxk
@@ -44253,12 +44335,12 @@ gkH
 gkH
 afU
 hin
-vYy
+izy
 iFd
-rrG
-vYy
-vYy
-vYy
+uns
+izy
+izy
+izy
 aBR
 wPz
 uYt
@@ -44447,12 +44529,12 @@ oAf
 gkH
 jQE
 hin
-vYy
+izy
 iFd
-rrG
-vYy
-vYy
-vYy
+uns
+izy
+izy
+izy
 aBR
 kth
 ubb
@@ -44641,12 +44723,12 @@ oAf
 oAf
 jQE
 hin
-vYy
+izy
 iFd
-rrG
-vYy
-vYy
-vYy
+uns
+izy
+izy
+izy
 aBR
 aBR
 boT
@@ -44835,13 +44917,13 @@ oAf
 oAf
 jQE
 hin
-vYy
+izy
 iFd
-rrG
-vYy
-vYy
-vYy
-vYy
+uns
+izy
+izy
+izy
+izy
 aBR
 aBR
 aBR
@@ -45029,11 +45111,11 @@ kkI
 kkI
 dJU
 hin
-vYy
+izy
 iFd
-rrG
-rrG
-rrG
+uns
+uns
+uns
 hPU
 hPU
 hPU
@@ -45223,11 +45305,11 @@ oAf
 oAf
 jQE
 hin
-apA
+qRm
 vYs
-vYy
-vYy
-vYy
+izy
+izy
+izy
 hPU
 oJp
 agL
@@ -45417,11 +45499,11 @@ oAf
 oAf
 jQE
 hin
-apA
+qRm
 kqf
-vYy
-vYy
-vYy
+izy
+izy
+izy
 hPU
 agL
 agL
@@ -45611,11 +45693,11 @@ oAf
 gkH
 jQE
 hin
-vYy
-vYy
-vYy
-vYy
-vYy
+izy
+izy
+izy
+izy
+izy
 hPU
 agL
 agL

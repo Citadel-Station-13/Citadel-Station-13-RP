@@ -1,6 +1,6 @@
 #if !defined(USING_MAP_DATUM)
 
-	#include "tether_defines.dm"
+	#include "euthenia_defines.dm"
 	#include "tether_shuttle_defs.dm"
 	#include "tether_shuttles.dm"
 	#include "tether_telecomms.dm"
