@@ -112,7 +112,18 @@
 	description = "Wield an item with two, or more hands (if it's supported)."
 
 /datum/keybinding/mob/multihand_wield/down(client/user)
-	#warn impl
+	// yes, get component is asinine
+	// i don't care though, this is such a small feature
+	var/obj/item/I = user.mob.get_active_held_item()
+	if(!I)
+		return
+	var/datum/component/wielding/comp = I.GetComponent(/datum/component/wielding)
+	if(!comp)
+		return
+	if(comp.wielder)
+		comp.unwield()
+	else
+		comp.wield(user.mob)
 
 /datum/keybinding/mob/say
 	hotkey_keys = list("T", "F3")
