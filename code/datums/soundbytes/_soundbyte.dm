@@ -6,6 +6,7 @@
  * because for Speed and Efficiency(tm) we are not going to distinguish between the two in the list pick()!
  *
  * todo: autodetect length with rust
+ * todo: in hindsight i'm shit at writing sound backend, this works but it could be a lot better.
  *
  * currently holds:
  * - path/file - required for preload
@@ -26,6 +27,8 @@
 	var/alias
 	/// is runtime sound - detected from path
 	var/runtime_loaded
+	/// should we register by type to global lookup? obviously this only works if we're NOT runtime loaded!
+	var/is_sfx = FALSE
 
 /datum/soundbyte/Destroy()
 	// it's okay
@@ -44,7 +47,7 @@
 
 /**
  * managed sound file groups holding filenames
- * has no length support, or runtime load detection
+ * has no runtime load detection
  */
 /datum/soundbyte/grouped
 	path = list()
@@ -54,4 +57,4 @@
 	return pick(path)
 
 /datum/soundbyte/grouped/get_length()
-	CRASH("attempted to grab length of a grouped soundbyte")
+	return length
