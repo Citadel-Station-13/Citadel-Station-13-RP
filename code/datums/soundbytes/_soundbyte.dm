@@ -7,6 +7,7 @@
  *
  * todo: autodetect length with rust
  * todo: in hindsight i'm shit at writing sound backend, this works but it could be a lot better.
+ * todo: "is_sfx" only works to put typepaths & alias in for compiled in sounds. maybe we can have runtime soundbytes later? if needed.
  *
  * currently holds:
  * - path/file - required for preload
