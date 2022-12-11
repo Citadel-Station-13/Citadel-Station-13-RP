@@ -306,6 +306,7 @@ SUBSYSTEM_DEF(air)
   * Preprocess a gas string, replacing it with a specific atmosphere's if necessary.
   */
 /datum/controller/subsystem/air/proc/preprocess_gas_string(gas_string, turf/T)
+	#warn god damnit this isn't even being called right (no turf)
 	if(!generated_atmospheres)
 		generate_atmospheres()
 	if(gas_string == ATMOSPHERE_ID_USE_ZTRAIT)

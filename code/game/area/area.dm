@@ -4,20 +4,29 @@
  * A grouping of tiles into a logical space, mostly used by map editors
  */
 /area
-	/// area flags
-	var/area_flags = NONE
-
-	var/fire = null
-	var/atmos = 1
-	var/atmosalm = 0
-	var/poweralm = 1
-	var/party = null
 	level = null
 	name = "Unknown"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"
 	plane = ABOVE_LIGHTING_PLANE //In case we color them
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+	//! intrinsics
+	/// area flags
+	var/area_flags = NONE
+
+	//! defaults
+	/// outdoors by default?
+	var/initial_outdoors = FALSE
+	/// default initial gas mix
+	var/initial_gas_mis = GAS_STRING_STP
+
+	//! unsorted
+	var/fire = null
+	var/atmos = 1
+	var/atmosalm = 0
+	var/poweralm = 1
+	var/party = null
 	var/lightswitch = 1
 
 	var/eject = null

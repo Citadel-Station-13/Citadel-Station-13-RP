@@ -234,7 +234,7 @@
 #include "code\__DEFINES\tools\misc.dm"
 #include "code\__DEFINES\tools\procs.dm"
 #include "code\__DEFINES\turfs\change_turf.dm"
-#include "code\__DEFINES\turfs\turfmakers.dm"
+#include "code\__DEFINES\turfs\type_generation.dm"
 #include "code\__HELPERS\_auxtools_api.dm"
 #include "code\__HELPERS\_global_objects.dm"
 #include "code\__HELPERS\_lists_tg.dm"
