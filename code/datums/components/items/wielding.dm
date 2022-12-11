@@ -5,24 +5,30 @@
 	var/list/obj/item/offhand/wielding/offhands
 	/// wielded user
 	var/mob/wielder
+	/// callback on wield
+	var/datum/callback/on_wield
+	/// callback on unwield
+	var/datum/callback/on_unwield
 
-/datum/component/wielding/Initialize(hands = 2)
+/datum/component/wielding/Initialize(hands = 2, datum/callback/on_wield, datum/callback/on_unwield)
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
 	if((. = ..()) & COMPONENT_INCOMPATIBLE)
 		return
 	src.hands = hands
+	src.on_wield = on_wield
+	src.on_unwield = on_unwield
 
 /datum/component/wielding/RegisterWithParent()
 	. = ..()
-	RegisterSignal(parent, COMSIG_ITEM_EXAMINE, .proc/signal_examine)
+	RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/signal_examine)
 	RegisterSignal(parent, COMSIG_ITEM_DROPPED, .proc/signal_dropped)
 
 /datum/component/wielding/UnregisterFromParent()
 	unwield()
 	. = ..()
 	UnregisterSignal(parent, list(
-		COMSIG_ITEM_EXAMINE,
+		COMSIG_PARENT_EXAMINE,
 		COMSIG_ITEM_DROPPED
 	))
 
@@ -50,7 +56,14 @@
 		made += creating
 	offhands = made
 	src.wielder = wielder
-	to_chat(wielder, SPAN_WARNING("You start wielding [parent] with [hands == 2? "both" : "[hands]"] hands."))
+	to_chat(src.wielder, SPAN_WARNING("You start wielding [parent] with [hands == 2? "both" : "[hands]"] hands."))
+	post_wield(src.wielder, hands)
+
+/datum/component/wielding/proc/post_wield(mob/user, hands)
+	if(on_wield)
+		on_wield.Invoke(user, hands)
+	var/obj/item/I = parent
+	I.on_wield(user, hands)
 
 /datum/component/wielding/proc/unwield(gcing)
 	if(!wielder)
@@ -60,15 +73,21 @@
 		offhands = null
 		QDEL_LIST(old)
 	var/obj/item/I = parent
-	I.on_wield(hands)
+	var/mob/unwielding = wielder
 	I.item_flags &= ~ITEM_MULTIHAND_WIELDED
 	if(wielder && !gcing)
 		to_chat(wielder, SPAN_WARNING("You stop wielding [parent] with [hands == 2? "both" : "[hands]"] hands."))
 	wielder = null
+	post_unwield(unwielding, hands)
+
+/datum/component/wielding/proc/post_unwield(mob/user, hands)
+	if(on_unwield)
+		on_unwield.Invoke(user, hands)
+	var/obj/item/I = parent
+	I.on_unwield(user, hands)
 
 /datum/component/wielding/proc/offhand_destroyed(obj/item/offhand/wielding/I)
 	unwield()
-
 /obj/item/offhand/wielding
 	name = "wielding offhand"
 	desc = "You shouldn't be able to see this."
@@ -76,12 +95,14 @@
 	var/datum/component/wielding/host
 
 /obj/item/offhand/wielding/Destroy()
-	host?.offhand_destroyed(src)
+	if(host)
+		host.offhand_destroyed(src)
+		host = null
 	return ..()
 
 // item procs
-/obj/item/proc/on_wield(hands)
+/obj/item/proc/on_wield(mob/user, hands)
 	return
 
-/obj/item/proc/on_unwield(hands)
+/obj/item/proc/on_unwield(mob/user, hands)
 	return
