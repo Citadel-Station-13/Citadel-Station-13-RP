@@ -362,4 +362,4 @@
 #define PLANE_MANGLING_FACTOR 40
 // todo: optimize
 /// Check if a mob can "logically" see an atom plane
-#define 	MOB_CAN_SEE_PLANE(M, P) (P <= PLANE_WORLD || (P in M.planes_visible) || P >= PLANE_PLAYER_HUD)
+#define MOB_CAN_SEE_PLANE(M, P) (P <= PLANE_WORLD || (P in M.planes_visible) || P >= PLANE_PLAYER_HUD)
