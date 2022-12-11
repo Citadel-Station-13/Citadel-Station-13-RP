@@ -150,6 +150,7 @@
 			add_overlay(list(gen_emissive_blocker))
 		if(EMISSIVE_BLOCK_UNIQUE)
 			add_emissive_blocker()
+
 /atom/movable/Destroy(force)
 	if(reagents)
 		QDEL_NULL(reagents)
@@ -472,8 +473,11 @@
 		em_block.render_source = full_copy? render_target : null
 		update_emissive_blocker()
 		return
-	render_target = ref(src)
+	if(render_target && render_target != REF(src))
+		CRASH("already had render target; refusing to overwrite.")
+	render_target = REF(src)
 	em_block = new(src, full_copy? render_target : null)
+	vis_contents += em_block
 	update_emissive_blocker()
 
 /atom/movable/proc/update_emissive_blocker()
@@ -494,8 +498,11 @@
 		em_render.render_source = full_copy? render_target : null
 		update_emissive_render()
 		return
-	render_target = ref(src)
+	if(render_target && render_target != REF(src))
+		CRASH("already had render target; refusing to overwrite.")
+	render_target = REF(src)
 	em_render = new(src, full_copy? render_target : null)
+	vis_contents += em_render
 	update_emissive_render()
 
 /atom/movable/proc/add_or_update_emissive_render()
