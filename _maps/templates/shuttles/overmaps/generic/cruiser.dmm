@@ -4577,7 +4577,6 @@
 /obj/structure/closet/medical_wall{
 	pixel_y = -32
 	},
-/obj/item/storage/box/body_record_disk,
 /obj/item/storage/firstaid/clotting,
 /obj/item/storage/firstaid/bonemed,
 /obj/item/storage/firstaid/adv{

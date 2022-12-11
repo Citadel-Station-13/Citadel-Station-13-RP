@@ -24733,10 +24733,6 @@
 	pixel_x = 10;
 	pixel_y = 14
 	},
-/obj/item/storage/box/body_record_disk{
-	pixel_x = -3;
-	pixel_y = -3
-	},
 /turf/simulated/floor/tiled/white,
 /area/tether/surfacebase/medical/lobby)
 "aTL" = (
@@ -32786,7 +32782,6 @@
 	name = "Body Designer Note"
 	},
 /obj/item/sleevemate,
-/obj/item/storage/box/body_record_disk,
 /obj/machinery/light{
 	dir = 4
 	},

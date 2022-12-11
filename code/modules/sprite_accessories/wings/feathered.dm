@@ -27,8 +27,12 @@
 	do_colouration = 1
 	color_blend_mode = ICON_MULTIPLY
 
+// the below two weren't my doing
+// check blame, it wasn't me ~silicons
+// yikes.
+
 /datum/sprite_accessory/wing/Harpywings_alt
-	name = "harpy wings alt, archeopteryx"
+	name = "harpy wings alt, archeopteryx 2"
 	id = "wing_harpy_archeopterx"
 	icon_state = "Harpywings_alt"
 	do_colouration = 1
