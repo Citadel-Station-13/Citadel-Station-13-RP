@@ -1,4 +1,5 @@
 /datum/sprite_accessory/tail
+	abstract_type = /datum/sprite_accessory/tail
 	name = "You should not see this..."
 	icon = 'icons/mob/sprite_accessories/tails.dmi'
 	do_colouration = 0 //Set to 1 to enable coloration using the tail color.
