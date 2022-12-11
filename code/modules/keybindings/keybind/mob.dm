@@ -104,6 +104,16 @@
 	M.mode()
 	return TRUE
 
+/datum/keybinding/mob/multihand_wield
+	hotkey_keys = list("ShiftX")
+	classic_keys = list("X")
+	name = "multihand_wield"
+	full_name = "Wield Item"
+	description = "Wield an item with two, or more hands (if it's supported)."
+
+/datum/keybinding/mob/multihand_wield/down(client/user)
+	#warn impl
+
 /datum/keybinding/mob/say
 	hotkey_keys = list("T", "F3")
 	name = "say"
