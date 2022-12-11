@@ -36,7 +36,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	S["mirror"]				>> pref.mirror
 	S["organ_data"]			>> pref.organ_data
 	S["rlimb_data"]			>> pref.rlimb_data
-	S["body_markings_ids"]		>> pref.body_marking_ids
+	S["body_marking_ids"]		>> pref.body_marking_ids
 	S["synth_color"]		>> pref.synth_color
 	S["synth_red"]			>> pref.r_synth
 	S["synth_green"]		>> pref.g_synth
@@ -222,7 +222,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		O.markings.Cut()
 
 	for(var/id in pref.body_marking_ids)
-		var/datum/sprite_accessory/marking/mark_datum = GLOB.sprite_accessory_markings[name]
+		var/datum/sprite_accessory/marking/mark_datum = GLOB.sprite_accessory_markings[id]
 		var/mark_color = "[pref.body_marking_ids[id]]"
 
 		for(var/BP in mark_datum.body_parts)
