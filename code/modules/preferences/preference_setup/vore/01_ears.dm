@@ -359,14 +359,14 @@
 	else if(href_list["ear_style"])
 		// Construct the list of names allowed for this user.
 		var/list/pretty_ear_styles = list("Normal" = null)
-		var/datum/sprite_accessory/ears/current = GLOB.sprite_accessory_ears[pref.ear_style_id]
+		var/datum/sprite_accessory/ears/current = pref.ear_style_id && GLOB.sprite_accessory_ears[pref.ear_style_id]
 		for(var/id in GLOB.sprite_accessory_ears)
 			var/datum/sprite_accessory/ears/instance = GLOB.sprite_accessory_ears[id]
 			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_ear_styles[instance.name] = id
 
 		// Present choice to user
-		var/new_ear_style = input(user, "Pick ears", "Character Preference", current.name) as null|anything in pretty_ear_styles
+		var/new_ear_style = input(user, "Pick ears", "Character Preference", current?.name) as null|anything in pretty_ear_styles
 		if(new_ear_style)
 			pref.ear_style_id = pretty_ear_styles[new_ear_style]
 
@@ -402,14 +402,14 @@
 	else if(href_list["horn_style"])
 		// Construct the list of names allowed for this user.
 		var/list/pretty_horn_styles = list("Normal" = null)
-		var/datum/sprite_accessory/ears/current = GLOB.sprite_accessory_ears[pref.horn_style_id]
+		var/datum/sprite_accessory/ears/current = pref.horn_tsyle_id && GLOB.sprite_accessory_ears[pref.horn_style_id]
 		for(var/id in GLOB.sprite_accessory_ears)
-			var/datum/sprite_accessory/ears/instance = GLOB.sprite_accessory_ears
+			var/datum/sprite_accessory/ears/instance = GLOB.sprite_accessory_ears[id]
 			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_horn_styles[instance.name] = id
 
 		// Present choice to user
-		var/new_horn_style = input(user, "Pick Secondary Ears", "Character Preference", current.name) as null|anything in pretty_horn_styles
+		var/new_horn_style = input(user, "Pick Secondary Ears", "Character Preference", current?.name) as null|anything in pretty_horn_styles
 		if(new_horn_style)
 			pref.horn_style_id = pretty_horn_styles[new_horn_style]
 
@@ -445,14 +445,14 @@
 	else if(href_list["tail_style"])
 		// Construct the list of names allowed for this user.
 		var/list/pretty_tail_styles = list("Normal" = null)
-		var/datum/sprite_accessory/tail/current = GLOB.sprite_accessory_tails[pref.tail_style_id]
+		var/datum/sprite_accessory/tail/current = pref.tail_style_id && GLOB.sprite_accessory_tails[pref.tail_style_id]
 		for(var/id in GLOB.sprite_accessory_tails)
 			var/datum/sprite_accessory/tail/instance = GLOB.sprite_accessory_tails[id]
 			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_tail_styles[instance.name] = id
 
 		// Present choice to user
-		var/new_tail_style = input(user, "Pick tails", "Character Preference", current.name) as null|anything in pretty_tail_styles
+		var/new_tail_style = input(user, "Pick tails", "Character Preference", current?.name) as null|anything in pretty_tail_styles
 		if(new_tail_style)
 			pref.tail_style_id = pretty_tail_styles[new_tail_style]
 
@@ -488,14 +488,14 @@
 	else if(href_list["wing_style"])
 		// Construct the list of names allowed for this user.
 		var/list/pretty_wing_styles = list("Normal" = null)
-		var/datum/sprite_accessory/wing/current = GLOB.sprite_accessory_wings[pref.wing_style_id]
+		var/datum/sprite_accessory/wing/current = pref.wing_style_id && GLOB.sprite_accessory_wings[pref.wing_style_id]
 		for(var/id in GLOB.sprite_accessory_wings)
 			var/datum/sprite_accessory/wing/instance = GLOB.sprite_accessory_wings[id]
 			if(((!instance.ckeys_allowed) || (usr.ckey in instance.ckeys_allowed)) && ((!instance.apply_restrictions) || (species_name in instance.species_allowed)))
 				pretty_wing_styles[instance.name] = id
 
 		// Present choice to user
-		var/new_wing_style = input(user, "Pick wings", "Character Preference", current.name) as null|anything in pretty_wing_styles
+		var/new_wing_style = input(user, "Pick wings", "Character Preference", current?.name) as null|anything in pretty_wing_styles
 		if(new_wing_style)
 			pref.wing_style_id = pretty_wing_styles[new_wing_style]
 
