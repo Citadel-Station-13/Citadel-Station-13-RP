@@ -222,6 +222,8 @@
 		S.cd = "/"
 		WRITE_FILE(S["slot_[i]"], character_data)
 
+// the oh god oh fuck proc that migrates every file at once
+/*
 /proc/___migrate_all_savefiles()
 	// oh fuck you
 	. = 0
@@ -241,3 +243,5 @@
 		CHECK_TICK
 	var/took = REALTIMEOFDAY - timer
 	to_chat(world, SPAN_DANGER("Migrated [.] savefiles in [round(took * 0.1, 0.1)] seconds."))
+*/
+
