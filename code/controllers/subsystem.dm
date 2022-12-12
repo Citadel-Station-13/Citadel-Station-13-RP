@@ -98,6 +98,12 @@
 /datum/controller/subsystem/proc/PreInit()
 	return
 
+// Used to initialize the subsystem AFTER globals init, but BEFORE the map loads
+// Called AFTER Recover if that is called
+// Prefer to use Initialize if possible
+/datum/controller/subsystem/proc/Preload()
+	return
+
 /// This is used so the mc knows when the subsystem sleeps. do not override.
 /datum/controller/subsystem/proc/ignite(resumed = 0)
 	SHOULD_NOT_OVERRIDE(TRUE)
@@ -272,6 +278,7 @@
 //usually called via datum/controller/subsystem/New() when replacing a subsystem (i.e. due to a recurring crash)
 //should attempt to salvage what it can from the old instance of subsystem
 /datum/controller/subsystem/Recover()
+	return
 
 /datum/controller/subsystem/vv_edit_var(var_name, var_value)
 	switch (var_name)

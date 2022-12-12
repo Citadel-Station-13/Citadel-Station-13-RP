@@ -14,6 +14,15 @@
 	//! intrinsics
 	/// area flags
 	var/area_flags = NONE
+	/// stores the next uid to use
+	var/global/global_uid = 0
+	/// our uid
+	var/uid
+	/**
+	 * If false, loading multiple maps with this area type will create multiple instances.
+	 * This is not a flag because you probably should not be touching this at runtime!
+	 */
+	var/unique = TRUE
 
 	//! defaults
 	/// outdoors by default?
@@ -60,11 +69,8 @@
 	/// Parallax move dir - degrees clockwise from north
 	var/parallax_move_angle = 0
 
-	var/music = null
-
 	var/has_gravity = TRUE
 	var/obj/machinery/power/apc/apc = null
-	var/no_air = null
 //	var/list/lights				// list of all lights on this area
 	var/list/all_doors = null		//Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
 	var/list/all_arfgs = null		//Similar, but a list of all arfgs adjacent to this area
@@ -75,11 +81,6 @@
 	var/list/forced_ambience = null
 	/// Used to decide what kind of reverb the area makes sound have
 	var/sound_env = STANDARD_STATION
-	var/global/global_uid = 0
-	var/uid
-
-	/// If false, loading multiple maps with this area type will create multiple instances.
-	var/unique = TRUE
 
 	/// Color on minimaps, if it's null (which is default) it makes one at random.
 	var/minimap_color

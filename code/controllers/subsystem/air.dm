@@ -37,13 +37,9 @@ SUBSYSTEM_DEF(air)
 
 /datum/controller/subsystem/air/PreInit()
 	air_master = src
-	cached_strings = list()
-	generate_atmospheres()
 
-/datum/controller/subsystem/air/Recover()
-	. = ..()
+/datum/controller/subsystem/air/Preload()
 	cached_strings = list()
-	// todo: tossing this out is a bad idea if we do planet-mos generation...
 	generate_atmospheres()
 
 /datum/controller/subsystem/air/Initialize(timeofday)

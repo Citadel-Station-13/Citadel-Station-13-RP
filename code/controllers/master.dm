@@ -11,7 +11,7 @@
 GLOBAL_REAL(Master, /datum/controller/master) = new
 
 //THIS IS THE INIT ORDER
-//Master -> SSPreInit -> GLOB -> world -> config -> SSInit -> Failsafe
+//Master -> SSPreInit -> GLOB -> SSSetup() -> world -> config -> SSInit -> Failsafe
 //GOT IT MEMORIZED?
 
 /datum/controller/master
@@ -72,6 +72,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		random_seed = (TEST_RUN_PARAMETER in world.params) ? 29051994 : rand(1, 1e9)
 		rand_seed(random_seed)
 
+	// 2. create subsystems
 	var/list/_subsystems = list()
 	subsystems = _subsystems
 	if (Master != src)
@@ -85,8 +86,15 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				_subsystems += new I
 		Master = src
 
+	// 3. set up globals
 	if(!GLOB)
 		new /datum/controller/global_vars
+
+	// 4. call Preload() on all subsystems
+	// we iterate on _subsystems because if we Recover(), we don't make any subsystems into _subsystems,
+	// as we instead have the old subsystems added to our normal subsystems list.
+	for(var/datum/controller/subsystem/S in _subsystems)
+		S.Preload()
 
 /datum/controller/master/Destroy()
 	..()

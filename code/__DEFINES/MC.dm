@@ -82,6 +82,7 @@ DEFINE_BITFIELD(subsystem_flags, list(
 /datum/controller/subsystem/##X/New(){\
     NEW_SS_GLOBAL(SS##X);\
     PreInit();\
+	Preload();\
 }\
 /datum/controller/subsystem/##X
 
@@ -89,6 +90,7 @@ DEFINE_BITFIELD(subsystem_flags, list(
 /datum/controller/subsystem/processing/##X/New(){\
     NEW_SS_GLOBAL(SS##X);\
     PreInit();\
+	Preload();\
 }\
 /datum/controller/subsystem/processing/##X
 
