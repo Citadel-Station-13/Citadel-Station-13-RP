@@ -315,22 +315,6 @@ SUBSYSTEM_DEF(air)
 		generated_atmospheres[A.id] = A
 
 /**
-  * Preprocess a gas string, replacing it with a specific atmosphere's if necessary.
-  */
-/datum/controller/subsystem/air/proc/preprocess_gas_string(gas_string, turf/T)
-
-	#warn god damnit this isn't even being called right (no turf)
-	if(!generated_atmospheres)
-		generate_atmospheres()
-	if(gas_string == ATMOSPHERE_ID_USE_ZTRAIT)
-		gas_string = SSmapping.level_trait(T.z, ZTRAIT_DEFAULT_ATMOS) || GAS_STRING_VACUUM
-	gas_string = "[gas_string]"
-	if(!generated_atmospheres[gas_string])
-		return gas_string
-	var/datum/atmosphere/mix = generated_atmospheres[gas_string]
-	return mix.gas_string
-
-/**
  * parses a gas string
  * returns list(gas list, temp)
  *
