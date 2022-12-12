@@ -340,7 +340,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 	var/turf/newT
 	if(flags & CHANGETURF_SKIP) // We haven't been initialized
-		if(src.flags & ATOM_INITIALIZED)
+		if(src.atom_flags & ATOM_INITIALIZED)
 			stack_trace("CHANGETURF_SKIP was used in a PlaceOnTop call for a turf that's initialized. This is a mistake. [src]([type])")
 		assemble_baseturfs()
 	if(fake_turf_type)

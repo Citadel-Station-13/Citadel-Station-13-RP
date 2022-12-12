@@ -103,7 +103,7 @@
 /obj/item/clothing/mask/gas/swat/vox
 	name = "\improper alien mask"
 	desc = "Clearly not designed for a human face."
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | ALLOWINTERNALS
 	species_restricted = list(SPECIES_VOX)
 	filtered_gases = list(/datum/gas/oxygen, /datum/gas/nitrous_oxide)

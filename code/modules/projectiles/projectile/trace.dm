@@ -1,6 +1,6 @@
 // Helper proc to check if you can hit them or not.
 // Will return a list of hit mobs/objects.
-/proc/check_trajectory(atom/target as mob|obj, atom/firer as mob|obj, var/pass_flags=ATOM_PASS_TABLE|ATOM_PASS_GLASS|ATOM_PASS_GRILLE, flags=null)
+/proc/check_trajectory(atom/target, atom/firer, pass_flags=ATOM_PASS_TABLE|ATOM_PASS_GLASS|ATOM_PASS_GRILLE, atom_flags)
 	if(!istype(target) || !istype(firer))
 		return 0
 
@@ -8,13 +8,13 @@
 
 	//Set the flags and pass flags to that of the real projectile...
 	if(!isnull(flags))
-		trace.flags = flags
+		trace.atom_flags = atom_flags
 	trace.pass_flags = pass_flags
 
 	return trace.launch_projectile(target) //Test it!
 
 /obj/item/projectile/proc/_check_fire(atom/target as mob, var/mob/living/user as mob)  //Checks if you can hit them or not.
-	check_trajectory(target, user, pass_flags, flags)
+	check_trajectory(target, user, pass_flags, atom_flags)
 
 //"Tracing" projectile
 /obj/item/projectile/test //Used to see if you can hit them.
