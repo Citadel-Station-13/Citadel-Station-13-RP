@@ -281,7 +281,7 @@
 	icon_override = 'icons/vore/custom_items_vr.dmi'
 	item_state = "holochain_mob"
 
-	flags = NOBLOODY
+	atom_flags = NOBLOODY
 	slot_flags = SLOT_BELT
 	force = 10
 	throw_force = 3
