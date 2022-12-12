@@ -19,7 +19,7 @@
 	/// outdoors by default?
 	var/initial_outdoors = FALSE
 	/// default initial gas mix
-	var/initial_gas_mis = GAS_STRING_STP
+	var/initial_gas_mix = GAS_STRING_STP
 
 	//! unsorted
 	var/fire = null

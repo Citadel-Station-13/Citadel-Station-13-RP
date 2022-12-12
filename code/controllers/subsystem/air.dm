@@ -335,7 +335,7 @@ SUBSYSTEM_DEF(air)
 			gas_string = SSmapping.level_trait(turf_context.z, ZTRAIT_DEFAULT_ATMOS) || GAS_STRING_VACUUM
 	// 3: process atmosphere
 	if(generated_atmospheres[gas_string])
-		var/datum/atomsphere/A = generated_atmospheres[gas_string]
+		var/datum/atmosphere/A = generated_atmospheres[gas_string]
 		gas_string = A.gas_string
 	. = cached_strings[gas_string]
 	if(.)
