@@ -549,7 +549,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 
 	else if(href_list["facial_style"])
 		var/list/valid_facialhairstyles = pref.get_valid_facialhairstyles()
-		var/datum/sprite_accessory/current = GLOB.sprite_accessory_hair[pref.f_style_id]
+		var/datum/sprite_accessory/current = GLOB.sprite_accessory_facial_hair[pref.f_style_id]
 		var/new_f_style = input(user, "Choose your character's facial-hair style:", "Character Preference", current.name)  as null|anything in valid_facialhairstyles
 		if(new_f_style && CanUseTopic(user))
 			var/datum/sprite_accessory/S = valid_facialhairstyles[new_f_style]
