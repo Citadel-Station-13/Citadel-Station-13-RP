@@ -195,9 +195,9 @@
 /atom/proc/Initialize(mapload, ...)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
-	if(atom_flags & INITIALIZED)
+	if(atom_flags & ATOM_INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
-	atom_flags |= INITIALIZED
+	atom_flags |= ATOM_INITIALIZED
 
 	if (is_datum_abstract())
 		log_debug("Abstract atom [type] created!")

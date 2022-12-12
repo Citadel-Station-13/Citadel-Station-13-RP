@@ -8,7 +8,7 @@
 	climbable = TRUE
 	layer = WINDOW_LAYER
 	anchored = TRUE
-	atom_flags = ON_BORDER
+	atom_flags = ATOM_BORDER
 	icon_state = "railing0"
 	var/broken = FALSE
 	var/health = 70
@@ -322,5 +322,5 @@
 		if(istype(O,/obj/structure))
 			var/obj/structure/S = O
 			if(S.climbable) continue
-		if(O && O.density && !(O.atom_flags & ON_BORDER && !(turn(O.dir, 180) & dir)))
+		if(O && O.density && !(O.atom_flags & ATOM_BORDER && !(turn(O.dir, 180) & dir)))
 			return O

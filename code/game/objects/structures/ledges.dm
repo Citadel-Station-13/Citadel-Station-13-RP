@@ -7,7 +7,7 @@
 	climbable = TRUE
 	anchored = TRUE
 	var/solidledge = 1
-	atom_flags = ON_BORDER
+	atom_flags = ATOM_BORDER
 	layer = STAIRS_LAYER
 	icon_state = "ledge"
 

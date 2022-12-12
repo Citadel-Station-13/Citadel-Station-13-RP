@@ -45,7 +45,7 @@ var/const/enterloopsanity = 100
 					mover.Bump(thing)
 					continue
 				else
-					if(!firstbump || ((thing.layer > firstbump.layer || thing.atom_flags & ON_BORDER) && !(firstbump.atom_flags & ON_BORDER)))
+					if(!firstbump || ((thing.layer > firstbump.layer || thing.atom_flags & ATOM_BORDER) && !(firstbump.atom_flags & ATOM_BORDER)))
 						firstbump = thing
 	if(QDELETED(mover))					//Mover deleted from Cross/CanAllowThrough/Bump, do not proceed.
 		return FALSE
@@ -65,7 +65,7 @@ var/const/enterloopsanity = 100
 			continue
 		var/atom/movable/thing = i
 		if(!thing.Uncross(mover, newloc))
-			if(thing.atom_flags & ON_BORDER)
+			if(thing.atom_flags & ATOM_BORDER)
 				mover.Bump(thing)
 			if(!(mover.movement_type & UNSTOPPABLE))
 				return FALSE

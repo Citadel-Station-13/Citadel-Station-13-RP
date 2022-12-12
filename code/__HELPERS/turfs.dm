@@ -174,7 +174,7 @@
  * This assumes that the atom is located inside the target turf.
  */
 /atom/proc/is_between_turfs(turf/origin, turf/target)
-	if (atom_flags & ON_BORDER)
+	if (atom_flags & ATOM_BORDER)
 		var/testdir = get_dir(target, origin)
 		return (dir & testdir)
 	return TRUE

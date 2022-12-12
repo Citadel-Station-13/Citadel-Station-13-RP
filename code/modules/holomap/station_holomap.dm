@@ -35,7 +35,7 @@
 	holomap_datum = new
 	original_zLevel = loc.z
 	SSholomaps.station_holomaps += src
-	atom_flags |= ON_BORDER // Why? It doesn't help if its not density
+	atom_flags |= ATOM_BORDER // Why? It doesn't help if its not density
 	if(SSholomaps.holomaps_initialized)
 		setup_holomap()
 	return ..()

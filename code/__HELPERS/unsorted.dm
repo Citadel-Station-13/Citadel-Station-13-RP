@@ -1185,9 +1185,9 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 /// Properly prevents this mob from gaining huds or joining any global lists.
 /mob/dview/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
-	if(atom_flags & INITIALIZED)
+	if(atom_flags & ATOM_INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
-	atom_flags |= INITIALIZED
+	atom_flags |= ATOM_INITIALIZED
 	return INITIALIZE_HINT_NORMAL
 
 /mob/dview/Destroy(force = FALSE)

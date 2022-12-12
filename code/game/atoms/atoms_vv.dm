@@ -11,7 +11,7 @@
   */
 /atom/vv_edit_var(var_name, var_value)
 	if(!GLOB.Debug2)
-		atom_flags |= ADMIN_SPAWNED
+		atom_flags |= ATOM_ADMINSPAWNED
 	switch(var_name)
 		if(NAMEOF(src, smoothing_junction))
 			set_smoothed_icon_state(var_value)
@@ -40,7 +40,7 @@
 		return
 
 	if(!GLOB.Debug2)
-		atom_flags |= ADMIN_SPAWNED
+		atom_flags |= ATOM_ADMINSPAWNED
 
 	. = ..()
 

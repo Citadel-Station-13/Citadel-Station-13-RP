@@ -88,7 +88,7 @@
 	var/i = 0
 	while(i < length(processing))
 		var/atom/A = processing[++i]
-		if(A.atom_flags & HEAR)
+		if(A.atom_flags & ATOM_HEAR)
 			. += A
 			SEND_SIGNAL(A, COMSIG_ATOM_HEARER_IN_VIEW, processing, .)
 		processing += A.contents

@@ -4,7 +4,7 @@
 	layer = MOB_LAYER
 	plane = MOB_PLANE
 	animate_movement = 2
-	atom_flags = HEAR
+	atom_flags = ATOM_HEAR
 	pass_flags_self = ATOM_PASS_MOB | ATOM_PASS_OVERHEAD_THROW
 	sight = SIGHT_FLAGS_DEFAULT
 

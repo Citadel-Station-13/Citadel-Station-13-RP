@@ -951,7 +951,7 @@
 	icon_state = "recorder"
 	complexity = 8
 	inputs = list()
-	atom_flags = HEAR
+	atom_flags = ATOM_HEAR
 	outputs = list(
 	"speaker" = IC_PINTYPE_STRING,
 	"message" = IC_PINTYPE_STRING

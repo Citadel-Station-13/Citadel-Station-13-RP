@@ -158,7 +158,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 
 //BASE MOB SPRITE
 /mob/living/carbon/human/update_icons_body()
-	if(QDESTROYING(src) || !(atom_flags & INITIALIZED))
+	if(QDESTROYING(src) || !(atom_flags & ATOM_INITIALIZED))
 		return
 
 	var/husk_color_mod = rgb(96,88,80)
