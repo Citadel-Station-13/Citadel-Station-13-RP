@@ -1,6 +1,11 @@
-/// Intended to be used in ship maps, figured I should make these as usefully generic as possible to hopefully encourage other mappers to use them instead of making new ones themselves //appearance
+/**
+ *! Ship/Space Station Areas
+ *? Generic Maint Areas for use in ship maps and potentially space maps. Uses proper nautical terms for funzies
+ */
 
-
+/**
+ *! Deck One Maint Areas
+ */
 /area/maintenance/deck_one
 	name = "\improper Deck 1 Maintenance"
 	icon_state = "maintcentral"
@@ -17,10 +22,29 @@
 	name = "\improper Deck 1 Forward Maintenance"
 	icon_state = "fmaint"
 
+/area/maintenance/deck_one/forward/port
+	name = "\improper Deck 1 Forward Port Maintenance"
+	icon_state = "fpmaint"
+
+/area/maintenance/deck_one/forward/starboard
+	name = "\improper Deck 1 Forward Starboard Maintenance"
+	icon_state = "fsmaint"
+
 /area/maintenance/deck_one/aft
 	name = "\improper Deck 1 Aft Maintenance"
 	icon_state = "amaint"
 
+/area/maintenance/deck_one/aft/port
+	name = "\improper Deck 1 Aft Port Maintenance"
+	icon_state = "apmaint"
+
+/area/maintenance/deck_one/aft/starboard
+	name = "\improper Deck 1 Aft Starboard Maintenance"
+	icon_state = "asmaint"
+
+/**
+ *! Deck Two Maint Areas
+ */
 /area/maintenance/deck_two
 	name = "\improper Deck 2 Maintenance"
 	icon_state = "maintcentral"
@@ -37,11 +61,30 @@
 	name = "\improper Deck 2 Forward Maintenance"
 	icon_state = "fmaint"
 
+/area/maintenance/deck_two/forward/port
+	name = "\improper Deck 2 Forward Port Maintenance"
+	icon_state = "fpmaint"
+
+/area/maintenance/deck_two/forward/starboard
+	name = "\improper Deck 2 Forward Starboard Maintenance"
+	icon_state = "fsmaint"
+
 /area/maintenance/deck_two/aft
 	name = "\improper Deck 2 Aft Maintenance"
 	icon_state = "amaint"
 
+/area/maintenance/deck_two/aft/port
+	name = "\improper Deck 2 Aft Port Maintenance"
+	icon_state = "apmaint"
 
+/area/maintenance/deck_two/aft/starboard
+	name = "\improper Deck 2 Aft Starboard Maintenance"
+	icon_state = "asmaint"
+
+
+/**
+ *! Deck Three Maint Areas
+ */
 /area/maintenance/deck_three
 	name = "\improper Deck 3 Maintenance"
 	icon_state = "maintcentral"
@@ -57,10 +100,30 @@
 	name = "\improper Deck 3 Forward Maintenance"
 	icon_state = "fmaint"
 
+/area/maintenance/deck_three/forward/port
+	name = "\improper Deck 3 Forward Port Maintenance"
+	icon_state = "fpmaint"
+
+/area/maintenance/deck_three/forward/starboard
+	name = "\improper Deck 3 Forward Starboard Maintenance"
+	icon_state = "fsmaint"
+
 /area/maintenance/deck_three/aft
 	name = "\improper Deck 3 Aft Maintenance"
 	icon_state = "amaint"
 
+/area/maintenance/deck_three/aft/port
+	name = "\improper Deck 3 Aft Port Maintenance"
+	icon_state = "apmaint"
+
+/area/maintenance/deck_three/aft/starboard
+	name = "\improper Deck 3 Aft Starboard Maintenance"
+	icon_state = "asmaint"
+
+
+/**
+ *! Deck Four Maint Areas
+ */
 /area/maintenance/deck_four
 	name = "\improper Deck 4 Maintenance"
 	icon_state = "maintcentral"
@@ -77,7 +140,22 @@
 	name = "\improper Deck 4 Forward Maintenance"
 	icon_state = "fmaint"
 
+/area/maintenance/deck_four/forward/port
+	name = "\improper Deck 4 Forward Port Maintenance"
+	icon_state = "fpmaint"
+
+/area/maintenance/deck_four/forward/starboard
+	name = "\improper Deck 4 Forward Starboard Maintenance"
+	icon_state = "fsmaint"
+
 /area/maintenance/deck_four/aft
 	name = "\improper Deck 4 Aft Maintenance"
 	icon_state = "amaint"
 
+/area/maintenance/deck_four/aft/port
+	name = "\improper Deck 4 Aft Port Maintenance"
+	icon_state = "apmaint"
+
+/area/maintenance/deck_four/aft/starboard
+	name = "\improper Deck 4 Aft Starboard Maintenance"
+	icon_state = "asmaint"
