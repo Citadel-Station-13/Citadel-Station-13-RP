@@ -349,13 +349,17 @@ SUBSYSTEM_DEF(air)
 /datum/controller/subsystem/air/proc/unpack_gas_string(gas_string)
 	var/list/built = new /list(2)
 	var/list/unpacked = params2list(gas_string)
+	var/list/gases = list()
 	built[2] = unpacked["TEMP"]	// null allowed
 	unpacked -= "TEMP"
 	// convert id to path
 	// todo: remove when we convert gas to ids and not paths why did we ever make it paths aough
 	for(var/i in 1 to length(unpacked))
-		unpacked[i] = GLOB.meta_gas_id_lookup[unpacked[i]]
-	built[1] = unpacked
+		var/id = unpacked[i]
+		var/amount = unpacked[id]
+		var/path = GLOB.meta_gas_id_lookup[id]
+		gases[path] = amount
+	built[1] = gases
 	return built
 
 #undef SSAIR_TURFS
