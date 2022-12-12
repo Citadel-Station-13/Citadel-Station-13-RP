@@ -30,7 +30,7 @@
 
 /datum/atmosphere/New()
 	if(!id)
-		id = "[type]"
+		id = type
 	generate_gas_string()
 
 /datum/atmosphere/proc/generate_gas_string()
