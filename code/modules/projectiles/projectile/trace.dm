@@ -7,7 +7,7 @@
 	var/obj/item/projectile/test/trace = new /obj/item/projectile/test(get_turf(firer)) //Making the test....
 
 	//Set the flags and pass flags to that of the real projectile...
-	if(!isnull(flags))
+	if(!isnull(atom_flags))
 		trace.atom_flags = atom_flags
 	trace.pass_flags = pass_flags
 
