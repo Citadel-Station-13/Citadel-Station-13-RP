@@ -92,16 +92,30 @@
 //Do not override
 ///datum/controller/subsystem/New()
 
-// Used to initialize the subsystem BEFORE the map has loaded
-// Called AFTER Recover if that is called
-// Prefer to use Initialize if possible
-/datum/controller/subsystem/proc/PreInit()
+/**
+ * Called before global vars are initialized
+ * Called before Recover()
+ *
+ * ! Warning: Old subsystem won't be cleaned up yet if recovering,
+ * ! be sure to reference us normally and not with SSname. pattern,
+ * ! unless you are doing it on purpose.
+ *
+ * ? Prefer Initialize() where possible, don't put anything laggy in here please.
+ */
+/datum/controller/subsystem/proc/PreInit(recovering)
 	return
 
-// Used to initialize the subsystem AFTER globals init, but BEFORE the map loads
-// Called AFTER Recover if that is called
-// Prefer to use Initialize if possible
-/datum/controller/subsystem/proc/Preload()
+/**
+ * Called after global vars are initialized
+ * Called before Recover()
+ *
+ * ! Warning: Old subsystem won't be cleaned up yet if recovering,
+ * ! be sure to reference us normally and not with SSname. pattern,
+ * ! unless you are doing it on purpose.
+ *
+ * ? Prefer Initialize() where possible, don't put anything laggy in here please.
+ */
+/datum/controller/subsystem/proc/Preload(recovering)
 	return
 
 /// This is used so the mc knows when the subsystem sleeps. do not override.

@@ -17,7 +17,7 @@
 #define MC_AVG_FAST_UP_SLOW_DOWN(average, current) (average > current ? MC_AVERAGE_SLOW(average, current) : MC_AVERAGE_FAST(average, current))
 #define MC_AVG_SLOW_UP_FAST_DOWN(average, current) (average < current ? MC_AVERAGE_SLOW(average, current) : MC_AVERAGE_FAST(average, current))
 
-#define NEW_SS_GLOBAL(varname) if(varname != src){if(istype(varname)){Recover();qdel(varname);}varname = src;}
+#define NEW_SS_GLOBAL(varname) if(varname != src){if(istype(varname)){PreInit(TRUE);Preload(TRUE);Recover();qdel(varname);}varname = src;}
 
 #define START_PROCESSING(Processor, Datum) if (!(Datum.datum_flags & DF_ISPROCESSING)) {Datum.datum_flags |= DF_ISPROCESSING;Processor.processing += Datum}
 #define STOP_PROCESSING(Processor, Datum) Datum.datum_flags &= ~DF_ISPROCESSING;Processor.processing -= Datum
@@ -81,16 +81,12 @@ DEFINE_BITFIELD(subsystem_flags, list(
 #define SUBSYSTEM_DEF(X) GLOBAL_REAL(SS##X, /datum/controller/subsystem/##X);\
 /datum/controller/subsystem/##X/New(){\
     NEW_SS_GLOBAL(SS##X);\
-    PreInit();\
-	Preload();\
 }\
 /datum/controller/subsystem/##X
 
 #define PROCESSING_SUBSYSTEM_DEF(X) GLOBAL_REAL(SS##X, /datum/controller/subsystem/processing/##X);\
 /datum/controller/subsystem/processing/##X/New(){\
     NEW_SS_GLOBAL(SS##X);\
-    PreInit();\
-	Preload();\
 }\
 /datum/controller/subsystem/processing/##X
 

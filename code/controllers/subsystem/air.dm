@@ -35,12 +35,20 @@ SUBSYSTEM_DEF(air)
 	// This is used to tell Travis WHERE the edges are.
 	var/list/startup_active_edge_log = list()
 
-/datum/controller/subsystem/air/PreInit()
+/datum/controller/subsystem/air/PreInit(recovering)
 	air_master = src
 
-/datum/controller/subsystem/air/Preload()
+/datum/controller/subsystem/air/Preload(recovering)
 	cached_strings = list()
 	generate_atmospheres()
+
+/datum/controller/subsystem/air/Recover()
+	// Preload() already generated stock ones
+	if(islist(SSair?.generated_atmospheres))
+		for(var/id in SSair.generated_atmospheres)
+			if(generated_atmospheres[id])
+				continue
+			generated_atmospheres[id] = SSair.generated_atmospheres[id]
 
 /datum/controller/subsystem/air/Initialize(timeofday)
 #ifndef FASTBOOT_DISABLE_ZONES

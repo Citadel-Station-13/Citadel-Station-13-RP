@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(overlays)
 	var/list/queue						// Queue of atoms needing overlay compiling (TODO-VERIFY!)
 	var/list/stats
 
-/datum/controller/subsystem/overlays/PreInit()
+/datum/controller/subsystem/overlays/PreInit(recovering)
 	queue = list()
 	stats = list()
 

@@ -83,8 +83,15 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			var/list/subsytem_types = subtypesof(/datum/controller/subsystem)
 			tim_sort(subsytem_types, /proc/cmp_subsystem_init)
 			for(var/I in subsytem_types)
-				_subsystems += new I
+				var/datum/controller/subsystem/S = new I
+				_subsystems += S
 		Master = src
+
+	// 2. call PreInit() on all subsystems
+	// we iterate on _subsystems because if we Recover(), we don't make any subsystems into _subsystems,
+	// as we instead have the old subsystems added to our normal subsystems list.
+	for(var/datum/controller/subsystem/S in _subsystems)
+		S.PreInit(FALSE)
 
 	// 3. set up globals
 	if(!GLOB)
@@ -94,7 +101,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	// we iterate on _subsystems because if we Recover(), we don't make any subsystems into _subsystems,
 	// as we instead have the old subsystems added to our normal subsystems list.
 	for(var/datum/controller/subsystem/S in _subsystems)
-		S.Preload()
+		S.Preload(FALSE)
 
 /datum/controller/master/Destroy()
 	..()
