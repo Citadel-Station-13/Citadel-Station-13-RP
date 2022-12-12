@@ -338,7 +338,7 @@ SUBSYSTEM_DEF(air)
  * - gas_string - gas string
  * - turf_context - turf location
  */
-/datum/controller/subsystem/air/proc/parse_gas_string(gas_string, turf/turf_context)
+/datum/controller/subsystem/air/proc/_parse_gas_string(gas_string, turf/turf_context)
 	// 1. check if area
 	if(gas_string == ATMOSPHERE_USE_AREA)
 		var/area/A = turf_context.loc
@@ -363,6 +363,10 @@ SUBSYSTEM_DEF(air)
 	var/list/unpacked = params2list(gas_string)
 	built[2] = unpacked["TEMP"]	// null allowed
 	unpacked -= "TEMP"
+	// convert id to path
+	// todo: remove when we convert gas to ids and not paths why did we ever make it paths aough
+	for(var/i in 1 to length(unpacked))
+		unpacked[i] = GLOB.meta_gas_id_lookup[unpacked[i]]
 	built[1] = unpacked
 	return built
 
