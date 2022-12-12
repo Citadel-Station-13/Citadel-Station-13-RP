@@ -1,0 +1,8 @@
+//! skill levels
+#define SKILL_UNTRAINED 0
+#define SKILL_BASIC 1
+#define SKILL_NOVICE 2
+#define SKILL_TRAINED 3
+#define SKILL_EXPERIENCED 4
+#define SKILL_PROFESSIONAL 5
+

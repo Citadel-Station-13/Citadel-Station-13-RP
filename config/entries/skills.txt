@@ -1,5 +1,5 @@
-## Do we have the skill system at all?
-SKILLS_ENABLED
+## Do we have the characteristics system at all?
+CHARACTERISTICS_ENABLED
 
 ## Are skills in use?
-# SKILLS_ACTIVE
+# CHARACTERISTICS_ACTIVE
