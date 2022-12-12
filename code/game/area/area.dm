@@ -69,6 +69,8 @@
 	/// Parallax move dir - degrees clockwise from north
 	var/parallax_move_angle = 0
 
+	var/music = null
+
 	var/has_gravity = TRUE
 	var/obj/machinery/power/apc/apc = null
 //	var/list/lights				// list of all lights on this area
