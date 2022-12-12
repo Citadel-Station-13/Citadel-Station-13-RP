@@ -350,13 +350,13 @@ SUBSYSTEM_DEF(air)
 	var/list/built = new /list(2)
 	var/list/unpacked = params2list(gas_string)
 	var/list/gases = list()
-	built[2] = unpacked["TEMP"]	// null allowed
+	built[2] = text2num(unpacked["TEMP"])	// null allowed
 	unpacked -= "TEMP"
 	// convert id to path
 	// todo: remove when we convert gas to ids and not paths why did we ever make it paths aough
 	for(var/i in 1 to length(unpacked))
 		var/id = unpacked[i]
-		var/amount = unpacked[id]
+		var/amount = text2num(unpacked[id])
 		var/path = GLOB.meta_gas_id_lookup[id]
 		gases[path] = amount
 	built[1] = gases
