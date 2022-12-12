@@ -220,12 +220,27 @@
  */
 #define PLANE_PLANETLIGHTING 4
 
+/**
+ * Emissives
+ */
+#define EMISSIVE_BLOCKER_PLANE 7
+#define EMISSIVE_BLOCKER_LAYER 12
+#define EMISSIVE_BLOCKER_RENDER_TARGET "*EMISSIVE_BLOCKER_PLANE"
+
+#define EMISSIVE_PLANE 8
+#define EMISSIVE_LAYER 13
+
+#define EMISSIVE_UNBLOCKABLE_PLANE 9
+#define EMISSIVE_UNBLOCKABLE_LAYER 14
+#define EMISSIVE_LAYER_UNBLOCKABLE 14
+#define EMISSIVE_UNBLOCKABLE_RENDER_TARGET "*EMISSIVE_UNBLOCKABLE_PLANE"
+#define EMISSIVE_RENDER_TARGET "*EMISSIVE_PLANE"
 
 /**
  *! -- Lighting Plane
  *? Where the lighting (and darkness) lives (ignoring all other higher planes)
  */
-#define LIGHTING_PLANE 5
+#define LIGHTING_PLANE 10
 
 #define LIGHTBULB_LAYER      0 // Unused.
 #define LIGHTING_LAYER       1
@@ -236,7 +251,7 @@
  *! -- Lighting Plane
  *? For glowy eyes etc. that shouldn't be affected by darkness.
  */
-#define ABOVE_LIGHTING_PLANE 6
+#define ABOVE_LIGHTING_PLANE 15
 
 #define EYE_GLOW_LAYER         1
 #define BEAM_PROJECTILE_LAYER  2
@@ -246,7 +261,7 @@
 /**
  *! -- Sonar Plane
  */
-#define SONAR_PLANE 8
+#define SONAR_PLANE 16
 
 
 /**
@@ -254,14 +269,14 @@
  *? Where ghosts live.
  * ~ Spooooooooky ghooooooosts ~
  */
-#define PLANE_GHOSTS 10
+#define PLANE_GHOSTS 20
 
 
 /**
  *! -- AI Eye Plane
  *? The AI eye lives here.
  */
-#define PLANE_AI_EYE 11
+#define PLANE_AI_EYE 29
 
 
 /**
