@@ -1,0 +1,5 @@
+## Do we have the skill system at all?
+SKILLS_ENABLED
+
+## Are skills in use?
+# SKILLS_ACTIVE
