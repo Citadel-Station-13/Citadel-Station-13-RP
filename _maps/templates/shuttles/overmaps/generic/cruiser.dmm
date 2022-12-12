@@ -41,7 +41,6 @@
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
 	base_turf = /turf/space;
-	flags = 2;
 	landmark_tag = "cruiser_fore";
 	name = "Vessel fore"
 	},
@@ -4338,7 +4337,6 @@
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
 	base_turf = /turf/space;
-	flags = 2;
 	landmark_tag = "cruiser_port";
 	name = "Vessel port"
 	},
@@ -7871,7 +7869,6 @@
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
 	base_turf = /turf/space;
-	flags = 2;
 	landmark_tag = "cruiser_starboard";
 	name = "Vessel starboard"
 	},
@@ -8622,7 +8619,6 @@
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
 	base_turf = /turf/space;
-	flags = 2;
 	landmark_tag = "cruiser_aft";
 	name = "Vessel aft"
 	},
