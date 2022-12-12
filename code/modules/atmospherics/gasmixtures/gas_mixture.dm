@@ -413,6 +413,7 @@
   * Sets our gas/temperature equal to a turf's initial gas mix.
   */
 /datum/gas_mixture/proc/copy_from_turf(turf/model)
+	#warn impl
 	parse_gas_string(model.initial_gas_mix)
 
 	//acounts for changes in temperature
@@ -464,11 +465,11 @@
 // todo: sort above
 
 //! Gas Strings
-
 /**
   * Copies from a specially formatted gas string, taking on its gas values as our own as well as their temperature.
   */
 /datum/gas_mixture/proc/parse_gas_string(gas_string)
+	#warn impl
 	gas_string = SSair.preprocess_gas_string(gas_string)
 	var/list/gases = src.gas
 	var/list/gas = params2list(gas_string)
@@ -578,7 +579,7 @@
 	// update
 	update_values()
 	other.update_values()
-	
+
 	// if empty
 	if(!total_moles)
 		return compare(other)
@@ -643,7 +644,7 @@
 
 	// update
 	update_values()
-	
+
 	if(!total_moles)
 		return compare_virtual(gases, src.volume, temperature)
 

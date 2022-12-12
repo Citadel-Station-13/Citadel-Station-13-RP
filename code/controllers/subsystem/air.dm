@@ -17,6 +17,8 @@ SUBSYSTEM_DEF(air)
 
 	/// Associative id = datum list of generated /datum/atmosphere's.
 	var/list/generated_atmospheres
+	/// cached lists of unpacked gas-strings
+	var/list/cached_strings
 
 	var/cost_turfs = 0
 	var/cost_edges = 0
@@ -35,6 +37,14 @@ SUBSYSTEM_DEF(air)
 
 /datum/controller/subsystem/air/PreInit()
 	air_master = src
+	cached_strings = list()
+	generate_atmospheres()
+
+/datum/controller/subsystem/air/Recover()
+	. = ..()
+	cached_strings = list()
+	// todo: tossing this out is a bad idea if we do planet-mos generation...
+	generate_atmospheres()
 
 /datum/controller/subsystem/air/Initialize(timeofday)
 #ifndef FASTBOOT_DISABLE_ZONES
@@ -294,6 +304,8 @@ SUBSYSTEM_DEF(air)
   * Initializes all subtypes of /datum/atmosphere and indexes them by key.
   */
 /datum/controller/subsystem/air/proc/generate_atmospheres()
+	// todo: pretty world init progress reporter for everyone
+	report_progress("SSair: Generating atmospheres...")
 	generated_atmospheres = list()
 	for(var/T in subtypesof(/datum/atmosphere))
 		var/datum/atmosphere/A = T
@@ -306,6 +318,7 @@ SUBSYSTEM_DEF(air)
   * Preprocess a gas string, replacing it with a specific atmosphere's if necessary.
   */
 /datum/controller/subsystem/air/proc/preprocess_gas_string(gas_string, turf/T)
+
 	#warn god damnit this isn't even being called right (no turf)
 	if(!generated_atmospheres)
 		generate_atmospheres()
@@ -316,6 +329,42 @@ SUBSYSTEM_DEF(air)
 		return gas_string
 	var/datum/atmosphere/mix = generated_atmospheres[gas_string]
 	return mix.gas_string
+
+/**
+ * parses a gas string
+ * returns list(gas list, temp)
+ *
+ * @params
+ * - gas_string - gas string
+ * - turf_context - turf location
+ */
+/datum/controller/subsystem/air/proc/parse_gas_string(gas_string, turf/turf_context)
+	// 1. check if area
+	if(gas_string == ATMOSPHERE_USE_AREA)
+		var/area/A = turf_context.loc
+		gas_string = A.initial_gas_mix
+	// 2. check if it's special and should look up the level's defaults
+	switch(gas_string)
+		if(ATMOSPHERE_USE_INDOORS)
+			gas_string = GAS_STRING_STP
+		if(ATMOSPHERE_USE_OUTDOORS)
+			gas_string = SSmapping.level_trait(turf_context.z, ZTRAIT_DEFAULT_ATMOS) || GAS_STRING_VACUUM
+	// 3: process atmosphere
+	if(generated_atmospheres[gas_string])
+		var/datum/atomsphere/A = generated_atmospheres[gas_string]
+		gas_string = A.gas_string
+	. = cached_strings[gas_string]
+	if(.)
+		return
+	return (cached_strings[gas_string] = unpack_gas_string(gas_string))
+
+/datum/controller/subsystem/air/proc/unpack_gas_string(gas_string)
+	var/list/built = new /list(2)
+	var/list/unpacked = params2list(gas_string)
+	built[2] = unpacked["TEMP"]	// null allowed
+	unpacked -= "TEMP"
+	built[1] = unpacked
+	return built
 
 #undef SSAIR_TURFS
 #undef SSAIR_EDGES
