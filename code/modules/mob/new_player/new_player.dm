@@ -19,7 +19,7 @@
 /mob/new_player/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)	// "yes i know what I'm doing"
 	GLOB.mob_list += src
-	flags |= INITIALIZED
+	atom_flags |= INITIALIZED
 	return INITIALIZE_HINT_NORMAL
 
 /mob/new_player/verb/new_player_panel()

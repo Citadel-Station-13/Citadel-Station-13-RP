@@ -11,7 +11,7 @@
 	possible_transfer_amounts = list(5,10,15,25,30,60)
 	volume = 60
 	w_class = ITEMSIZE_SMALL
-	flags = NOCONDUCT
+	atom_flags = NOCONDUCT
 	unacidable = 0 //tissues does dissolve in acid
 	drop_sound = 'sound/effects/splat.ogg'
 	pickup_sound = 'sound/effects/squelch1.ogg'
@@ -68,7 +68,7 @@
 	else
 		to_chat(usr, "<span class = 'notice'>You peel the wax layer off \the [src].</span>")
 		playsound(loc, 'sound/effects/pageturn2.ogg', 50, 1)
-		flags |= OPENCONTAINER
+		atom_flags |= OPENCONTAINER
 	update_icon()
 
 /obj/item/reagent_containers/organic/update_icon()
@@ -134,7 +134,7 @@
 		..()
 	if(istype(W,/obj/item/reagent_containers/glass) || istype(W,/obj/item/reagent_containers/food/drinks) || istype(W,/obj/item/reagent_containers/food/condiment))
 		return
-	if(W && W.w_class <= w_class && (flags & OPENCONTAINER))
+	if(W && W.w_class <= w_class && (atom_flags & OPENCONTAINER))
 		to_chat(user, "<span class='notice'>You dip \the [W] into \the [src].</span>")
 		reagents.touch_obj(W, reagents.total_volume)
 

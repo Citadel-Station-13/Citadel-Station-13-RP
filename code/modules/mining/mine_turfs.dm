@@ -343,7 +343,7 @@ GLOBAL_LIST_EMPTY(mining_overlay_cache)
 					target_turf.MineralSpread()
 
 /turf/simulated/mineral/proc/UpdateMineral(update_neighbors)
-	if(!(flags & INITIALIZED))
+	if(!(atom_flags & INITIALIZED))
 		return	// /Initialize() will handle us
 	clear_ore_effects()
 	if(mineral && density)

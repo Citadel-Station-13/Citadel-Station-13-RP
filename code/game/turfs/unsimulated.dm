@@ -6,7 +6,7 @@
 	initial_gas_mix = GAS_STRING_STP
 
 /turf/unsimulated/Initialize(mapload)
-	flags |= INITIALIZED
+	atom_flags |= INITIALIZED
 	return INITIALIZE_HINT_NORMAL
 
 /turf/unsimulated/fake_space

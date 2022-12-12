@@ -152,7 +152,7 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 			"lead" = 1))
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
-		if(flags & INITIALIZED)
+		if(atom_flags & INITIALIZED)
 			UpdateMineral()
 
 /turf/simulated/mineral/icerock/lythios43c/rich/make_ore(var/rare_ore)
@@ -185,7 +185,7 @@ LYTHIOS43C_TURF_CREATE_UN(/turf/simulated/mineral/icerock/floor/ignore_cavegen)
 			"verdantium" = 1))
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
-		if(flags & INITIALIZED)
+		if(atom_flags & INITIALIZED)
 			UpdateMineral()
 
 

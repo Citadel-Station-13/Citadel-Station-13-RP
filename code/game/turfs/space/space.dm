@@ -16,7 +16,7 @@
 	var/forced_dirs = 0	// Force this one to pretend it's an overedge turf
 
 /turf/space/basic
-	flags = INITIALIZED
+	atom_flags = INITIALIZED
 
 /turf/space/basic/New()	//Do not convert to Initialize
 	//This is used to optimize the map loader

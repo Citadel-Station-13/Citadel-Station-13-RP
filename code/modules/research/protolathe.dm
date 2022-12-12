@@ -3,7 +3,7 @@
 	icon = 'icons/obj/machines/fabricators/protolathe.dmi'
 	icon_state = "protolathe"
 	base_icon_state = "protolathe"
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	circuit = /obj/item/circuitboard/protolathe
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 30

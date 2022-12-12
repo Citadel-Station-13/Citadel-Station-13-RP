@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////Alchohol bottles! -Agouri //////////////////////////
 //Functionally identical to regular drinks. The only difference is that the default bottle size is 100. - Darem
 //Bottles now weaken and break when smashed on people's heads. - Giacom
-//remember to set flags = 0 on a bottle subtype to require opening, otherwise its just an open container by default -buffy
+//remember to set atom_flags = 0 on a bottle subtype to require opening, otherwise its just an open container by default -buffy
 
 /obj/item/reagent_containers/food/drinks/bottle
 	amount_per_transfer_from_this = 10
@@ -118,7 +118,7 @@
 	if(user.attempt_insert_item_for_installation(R, src))
 		to_chat(user, "<span class='notice'>You stuff [R] into [src].</span>")
 		rag = R
-		flags &= ~OPENCONTAINER
+		atom_flags &= ~OPENCONTAINER
 		update_icon()
 
 /obj/item/reagent_containers/food/drinks/bottle/proc/remove_rag(mob/user)
@@ -126,7 +126,7 @@
 		return
 	user.put_in_hands_or_drop(rag)
 	rag = null
-	flags |= (initial(flags) & OPENCONTAINER)
+	atom_flags |= (initial(atom_flags) & OPENCONTAINER)
 	update_icon()
 
 /obj/item/reagent_containers/food/drinks/bottle/open(mob/user)
@@ -182,7 +182,7 @@
 	throw_speed = 3
 	throw_range = 5
 	item_state = "beer"
-	flags = NOCONDUCT
+	atom_flags = NOCONDUCT
 	attack_verb = list("stabbed", "slashed", "attacked")
 	sharp = 1
 	edge = 0
@@ -576,7 +576,7 @@
 /obj/item/reagent_containers/food/drinks/bottle/small
 	volume = 50
 	smash_duration = 1
-	flags = 0 //starts closed
+	atom_flags = NONE //starts closed
 	rag_underlay = "rag_small"
 
 /obj/item/reagent_containers/food/drinks/bottle/small/beer

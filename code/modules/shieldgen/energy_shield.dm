@@ -32,7 +32,7 @@
 		overlays.Cut() //NOT ssoverlays
 	else
 		icon_state = enabled_icon_state
-		flags |= OVERLAY_QUEUED //Trick SSoverlays
+		atom_flags |= OVERLAY_QUEUED //Trick SSoverlays
 		SSoverlays.queue += src
 
 /obj/effect/shield/proc/update_color()

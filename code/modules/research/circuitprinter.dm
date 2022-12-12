@@ -9,7 +9,7 @@ using metal and glass, it uses glass and reagents (usually sulphuric acid).
 	icon = 'icons/obj/machines/fabricators/imprinter.dmi'
 	icon_state = "imprinter"
 	base_icon_state = "imprinter"
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	circuit = /obj/item/circuitboard/circuit_imprinter
 	var/list/datum/design/queue = list()
 	var/progress = 0

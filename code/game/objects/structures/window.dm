@@ -10,7 +10,7 @@
 	layer = WINDOW_LAYER
 	pressure_resistance = 4*ONE_ATMOSPHERE
 	anchored = TRUE
-	flags = ON_BORDER
+	atom_flags = ON_BORDER
 
 	/// are we reinforced? this is only to modify our construction state/steps.
 	var/considered_reinforced = FALSE
@@ -42,7 +42,7 @@
 		fulltile = TRUE
 	if(fulltile)
 		// clickcode requires this :(
-		flags &= ~ON_BORDER
+		atom_flags &= ~ON_BORDER
 
 /obj/structure/window/examine(mob/user)
 	. = ..()
