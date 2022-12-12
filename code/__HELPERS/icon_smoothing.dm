@@ -150,7 +150,7 @@
  */
 /atom/proc/smooth_icon()
 	smoothing_flags &= ~SMOOTH_QUEUED
-	flags |= HTML_USE_INITAL_ICON
+	atom_flags |= HTML_USE_INITAL_ICON
 	if (!z)
 		CRASH("[type] called smooth_icon() without being on a z-level")
 	if(smoothing_flags & SMOOTH_CORNERS)

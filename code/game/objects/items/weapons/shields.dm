@@ -289,7 +289,7 @@
 	icon_state = "eshield"
 	item_state = "eshield"
 	slot_flags = SLOT_EARS
-	flags = NOCONDUCT
+	atom_flags = NOCONDUCT
 	force = 3.0
 	throw_force = 5.0
 	throw_speed = 1

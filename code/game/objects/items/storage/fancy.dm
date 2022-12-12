@@ -245,9 +245,9 @@
 
 /obj/item/storage/fancy/cigarettes/Initialize(mapload)
 	. = ..()
-	flags |= NOREACT
+	atom_flags |= NOREACT
 	create_reagents(15 * storage_slots)//so people can inject cigarettes without opening a packet, now with being able to inject the whole one
-	flags |= OPENCONTAINER
+	atom_flags |= OPENCONTAINER
 	if(brand)
 		for(var/obj/item/clothing/mask/smokable/cigarette/C in src)
 			C.brand = brand
@@ -359,7 +359,7 @@
 
 /obj/item/storage/fancy/cigar/Initialize(mapload)
 	. = ..()
-	flags |= NOREACT
+	atom_flags |= NOREACT
 	create_reagents(15 * storage_slots)
 
 /obj/item/storage/fancy/cigar/update_icon()
