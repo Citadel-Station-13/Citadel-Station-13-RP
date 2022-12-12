@@ -5,12 +5,12 @@ var/global/const
 	SKILL_EXPERT = 3
 	SKILL_PROF = 4
 
-/datum/skill/var
-	ID = "none"		// ID of the skill, used in code
-	name = "None"	// Name of the skill
-	desc = "Placeholder skill" // Detailed description of the skill
-	field = "Misc"	// The field under which the skill will be listed
-	secondary = 0	// Secondary skills only have two levels and cost significantly less
+/datum/skill
+	var/ID = "none"		// ID of the skill, used in code
+	var/name = "None"	// Name of the skill
+	var/desc = "Placeholder skill" // Detailed description of the skill
+	var/field = "Misc"	// The field under which the skill will be listed
+	var/secondary = 0	// Secondary skills only have two levels and cost significantly less
 
 var/global/list/SKILLS = null
 var/list/SKILL_ENGINEER = list("field" = "Engineering", "EVA" = SKILL_BASIC, "construction" = SKILL_ADEPT, "electrical" = SKILL_BASIC, "engines" = SKILL_ADEPT)
