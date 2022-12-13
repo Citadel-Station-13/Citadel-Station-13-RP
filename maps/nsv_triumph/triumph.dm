@@ -1,20 +1,11 @@
 #if !defined(USING_MAP_DATUM)
 
 	#include "triumph_defines.dm"
-	#include "triumph_turfs.dm"
-	#include "triumph_things.dm"
 	#include "triumph_shuttle_defs.dm"
 	#include "triumph_shuttles.dm"
 	#include "triumph_telecomms.dm"
 	#include "triumph_overmap.dm"
-	#include "classg.dm"
-	#include "classd.dm"
-	#include "classh.dm"
-	#include "classp.dm"
-	#include "classm.dm"
-	#include "lavaland.dm"
-
-	#include "submaps/_triumph_submaps.dm"
+	#include "triumph_weather.dm"
 
 	#define USING_MAP_DATUM /datum/map/triumph
 

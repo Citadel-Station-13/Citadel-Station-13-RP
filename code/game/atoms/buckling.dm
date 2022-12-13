@@ -17,6 +17,9 @@
 /**
  * use this hook for processing attempted drag/drop buckles
  *
+ * @params
+ * - A - thing something's trying to buckle to us
+ * - user - who's trying to buckle that something to us
  * @return TRUE if the calling proc should consider it as an interaction (aka don't do other click stuff)
  */
 /atom/movable/proc/drag_drop_buckle_interaction(atom/A, mob/user)
@@ -24,7 +27,7 @@
 	. = TRUE
 	if(A == src)
 		return FALSE
-	if(!isliving(A))	// no ghosts, only entities
+	if(!isliving(A) || !isliving(user))	// no ghosts, only entities
 		return FALSE
 	if(!user.Adjacent(src) || !A.Adjacent(src))
 		return FALSE
