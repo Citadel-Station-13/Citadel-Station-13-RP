@@ -1,4 +1,4 @@
 /**
- * holds skills
+ * holds characteristics data
  */
-/datum/skill_holder
+/datum/characteristics_holder

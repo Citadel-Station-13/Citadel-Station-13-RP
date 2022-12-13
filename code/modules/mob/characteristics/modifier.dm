@@ -1,4 +1,4 @@
 /**
- * skill modifiers applied to skill holders temporarily
+ * modifiers applied to characteristics holders temporarily
  */
-/datum/skill_modifier
+/datum/characteristic_modifier

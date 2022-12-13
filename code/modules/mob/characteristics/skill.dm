@@ -7,7 +7,7 @@ GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
  *
  * use typepaths whenever possible for compile time!
  */
-/proc/resolve_characteristics_skill(datum/skill/typepath_or_id)
+/proc/resolve_characteristics_skill(datum/characteristic_skill/typepath_or_id)
 	if(ispath(typepath_or_id))
 		return GLOB.characteristics_skills[initial(typepath_or_id[id])]
 	ASSERT(istext(typepath_or_id))
@@ -17,6 +17,6 @@ GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
  * skills - more enum-like numerics/whatnot than boolean-like talents
  * are held in skill holder
  */
-/datum/skill
+/datum/characteristic_skill
 	var/id
 

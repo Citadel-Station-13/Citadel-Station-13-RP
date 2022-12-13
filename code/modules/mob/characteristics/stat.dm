@@ -7,7 +7,7 @@ GLOBAL_LIST_INIT(characteristics_stats, _create_characteristics_stats())
  *
  * use typepaths whenever possible for compile time!
  */
-/proc/resolve_characteristics_stat(datum/stat/typepath_or_id)
+/proc/resolve_characteristics_stat(datum/characteristic_stat/typepath_or_id)
 	if(ispath(typepath_or_id))
 		return GLOB.characteristics_stats[initial(typepath_or_id[id])]
 	ASSERT(istext(typepath_or_id))
@@ -18,6 +18,6 @@ GLOBAL_LIST_INIT(characteristics_stats, _create_characteristics_stats())
  * you usually don't want players to be able to touch these or minmax them too hard
  * use skills whenever possible
  */
-/datum/stat
+/datum/characteristic_stat
 	var/id
 

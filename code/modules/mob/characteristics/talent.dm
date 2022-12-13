@@ -9,7 +9,7 @@ GLOBAL_LIST_INIT(characteristics_talents, _create_characteristics_talents())
  *
  * use typepaths whenever possible for compile time!
  */
-/proc/resolve_characteristics_talent(datum/talent/typepath_or_id)
+/proc/resolve_characteristics_talent(datum/characteristic_talent/typepath_or_id)
 	if(ispath(typepath_or_id))
 		return GLOB.characteristics_talents[initial(typepath_or_id[id])]
 	ASSERT(istext(typepath_or_id))
@@ -20,9 +20,9 @@ GLOBAL_LIST_INIT(characteristics_talents, _create_characteristics_talents())
  * these are **global singletons** to better do things like synchronization
  * make sure to gc your stuff properly on Destroy().
  */
-/datum/talent
+/datum/characteristic_talent
 	var/id
 
-/datum/talent/proc/attach(mob/M)
+/datum/characteristic_talent/proc/attach(mob/M)
 
-/datum/talent/proc/detach(mob/M)
+/datum/characteristic_talent/proc/detach(mob/M)
