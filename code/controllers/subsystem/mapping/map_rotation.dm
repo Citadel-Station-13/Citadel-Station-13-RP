@@ -2,6 +2,8 @@
 	/// next map datum - only set via SetNextMap, as GetNextMap can be called roundstart before rotation happens
 	var/datum/map_config/station/next_map
 
+#warn Recover()
+
 /datum/controller/subsystem/mapping/proc/map_rotate()
 	var/players = GLOB.clients.len
 	var/list/mapvotes = list()

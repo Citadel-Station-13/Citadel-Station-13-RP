@@ -1,5 +1,7 @@
 /datum/controller/subsystem/mapping
 
+#warn Recover()
+
 /**
  * Handles generating whatever map_type the station map is
  */

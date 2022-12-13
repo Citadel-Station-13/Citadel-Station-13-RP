@@ -23,6 +23,8 @@
 	/// Singleton area holding all unreserved turfs
 	var/static/area/unused_reservation_area/unallocated_reserve_area = new
 
+#warn Recover()
+
 /datum/controller/subsystem/mapping/proc/WipeSpaceReservations(wipe_safety_delay = 100)
 	if(clearing_reserved_turfs || !initialized)		// unneeded if so
 		return
@@ -85,7 +87,7 @@
 		if(reserve.Reserve(width, height, z))
 			return reserve
 	//If we didn't return at this point, theres a good chance we ran out of room on the exisiting reserved z levels, so lets try a new one
-	var/datum/space_level/L = CreateReservedLevel()
+	var/datum/space_level/L = create_reserved_level()
 	if(!L.instantiated)
 		CRASH("Failed to instance new reserved level")
 	if(!L.z_value)
@@ -99,16 +101,16 @@
 /**
  * Creates and initializes a new reserved level
  */
-/datum/controller/subsystem/mapping/proc/CreateReservedLevel()
+/datum/controller/subsystem/mapping/proc/create_reserved_level()
 	var/datum/space_level/L = new
 	InstantiateMapLevel(L)
-	InitializeReservedLevel(L.z_value)
+	initialize_reserved_level(L.z_value)
 	return L
 
 /**
  * Initializes and registers a reserved level
  */
-/datum/controller/subsystem/mapping/proc/InitializeReservedLevel(z)
+/datum/controller/subsystem/mapping/proc/initialize_reserved_level(z)
 	if(!z)
 		CRASH("invalid Z")
 	if(z in reserve_levels)

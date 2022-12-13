@@ -10,6 +10,8 @@
 	/// loaded map levels from disk?
 	var/map_levels_loaded = FALSE
 
+#warn Recover()
+
 /datum/controller/subsystem/mapping/proc/InitMapLevels()
 	if(map_levels_loaded)
 		return

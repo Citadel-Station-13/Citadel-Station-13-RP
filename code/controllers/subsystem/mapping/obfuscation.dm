@@ -7,6 +7,8 @@
 	/// "secret" key
 	var/obfuscation_secret
 
+#warn Recover()
+
 /datum/controller/subsystem/mapping/PreInit()
 	. = ..()
 	if(!obfuscation_secret)

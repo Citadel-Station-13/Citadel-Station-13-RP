@@ -1,6 +1,8 @@
 /datum/controller/subsystem/mapping
 	// Can add a trait caching system for fast access later.
 
+#warn Recover()
+
 /datum/controller/subsystem/mapping/proc/OnTraitAdd(datum/space_level/level, trait)
 	return
 

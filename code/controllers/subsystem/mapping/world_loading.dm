@@ -8,6 +8,8 @@
 	/// map datums initialized?
 	var/static/map_datums_loaded = FALSE
 
+#warn Recover()
+
 /datum/controller/subsystem/mapping/proc/InitMapDatums()
 	if(map_datums_loaded)
 		return

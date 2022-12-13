@@ -26,6 +26,8 @@
 	/// World struct lookup by level
 	var/static/list/datum/world_struct/struct_by_z = list()
 
+#warn Recover()
+
 /datum/controller/subsystem/mapping/proc/max_z_changed()
 	synchronize_datastructures()
 
