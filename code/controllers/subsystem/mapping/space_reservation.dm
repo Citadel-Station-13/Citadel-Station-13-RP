@@ -120,7 +120,7 @@
 	for(var/trait in L.traits)
 		L.RemoveTrait(trait)
 	for(var/key in L.attributes)
-		L.SetAttribute(key, null)
+		L.set_attribute(key, null)
 	L.AddTrait(ZTRAIT_RESERVED)
 	++reserved_level_count
 	var/list/turfs = block(

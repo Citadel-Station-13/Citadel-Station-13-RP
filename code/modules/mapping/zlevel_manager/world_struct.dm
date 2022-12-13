@@ -99,31 +99,32 @@
 		var/datum/space_level/them
 		var/has_up_down = FALSE
 		var/has_adjacent = FALSE
+		#warn fuck
 		// we can build horizontals now, since they aren't as complicated
 		them = _scan_dir(z_grid, x, y, z, EAST)
 		if(them)
-			L.SetEast(them)
+			L.set_east(them)
 			has_adjacent = TRUE
 		them = _scan_dir(z_grid, x, y, z, WEST)
 		if(them)
-			L.SetWest(them)
+			L.set_west(them)
 			has_adjacent = TRUE
 		them = _scan_dir(z_grid, x, y, z, NORTH)
 		if(them)
-			L.SetNorth(them)
+			L.set_north(them)
 			has_adjacent = TRUE
 		them = _scan_dir(z_grid, x, y, z, SOUTH)
 		if(them)
-			L.SetSouth(them)
+			L.set_south(them)
 			has_adjacent = TRUE
 		// build verticals too
 		them = _scan_dir(z_grid, x, y, z, UP)
 		if(them)
-			L.SetUp(them)
+			L.set_up(them)
 			has_up_down = TRUE
 		them = _scan_dir(z_grid, x, y, z, DOWN)
 		if(them)
-			L.SetDown(them)
+			L.set_down(them)
 			has_up_down = TRUE
 		if(rebuild)
 			if(has_adjacent)
@@ -225,15 +226,15 @@
 	if(!constructed)
 		CRASH("Tried to deconstruct a world_struct that isn't constructed.")
 	for(var/datum/space_level/L as anything in levels)
-		var/had_up_down = L.GetLevelInDir(UP) || L.GetLevelInDir(DOWN)
-		var/had_adjacent = L.GetLevelInDir(NORTH) || L.GetLevelInDir(SOUTH) || L.GetLevelInDir(EAST) || L.GetLevelInDir(WEST)
+		var/had_up_down = L.resolve_level_in_dir(UP) || L.resolve_level_in_dir(DOWN)
+		var/had_adjacent = L.resolve_level_in_dir(NORTH) || L.resolve_level_in_dir(SOUTH) || L.resolve_level_in_dir(EAST) || L.resolve_level_in_dir(WEST)
 		L.struct = null
-		L.SetDown(null)
-		L.SetEast(null)
-		L.SetWest(null)
-		L.SetSouth(null)
-		L.SetNorth(null)
-		L.SetUp(null)
+		L.set_down(null)
+		L.set_east(null)
+		L.set_west(null)
+		L.set_south(null)
+		L.set_north(null)
+		L.set_up(null)
 		L.struct_x = 0
 		L.struct_y = 0
 		L.struct_z = 0

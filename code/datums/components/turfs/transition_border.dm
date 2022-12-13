@@ -16,6 +16,8 @@
 	var/turf/force_destination
 
 #warn deal with
+#warn this is shitcode upon shitcode
+#warn rewrite this as well as levels to do this faster.
 
 /datum/component/transition_border/Initialize(range = TRANSITION_VISUAL_SIZE, dir, render, force_z_target, force_destination)
 	if(!isturf(parent))
@@ -113,7 +115,7 @@
 	ASSERT(dir & (dir - 1))
 	var/turf/T = parent
 	var/datum/space_level/L = SSmapping.space_levels[T.z]
-	var/datum/space_level/target_level = isnull(force_target) && L.GetLevelInDir(dir)
+	var/datum/space_level/target_level = isnull(force_target) && L.resolve_level_in_dir(dir)
 	if(!target_level && !force_target)
 		return list()
 	var/turf/target = locate(
@@ -135,7 +137,7 @@
 	ASSERT(dir)
 	var/turf/T = parent
 	var/datum/space_level/L = SSmapping.space_levels[T.z]
-	var/datum/space_level/target_level = isnull(force_target) && L.GetLevelInDir(dir)
+	var/datum/space_level/target_level = isnull(force_target) && L.resolve_level_in_dir(dir)
 	if(!target_level && !force_target)
 		return list()
 

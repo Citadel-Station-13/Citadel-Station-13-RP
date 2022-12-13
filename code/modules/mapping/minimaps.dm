@@ -52,7 +52,7 @@
 			color_area_names[meta_color] = A.name
 		meta_icon.DrawBox(meta_color, img_x, img_y)
 
-		if(istype(T, /turf/closed/wall))
+		if(istype(T, /turf/wall))
 			map_icon.DrawBox("#000000", img_x, img_y)
 
 		else if(!istype(A, /area/space))

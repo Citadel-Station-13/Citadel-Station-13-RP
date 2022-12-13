@@ -4,23 +4,25 @@
  * Used by the zlevel manager, contains all data about a zlevel.
  */
 /datum/space_level
-	// Basic information
+	//! Basic information
 	/// Name
 	var/name
-	/// Our z value
-	var/z_value
-	/// Are we physically made yet?
-	var/instantiated = FALSE
 	/// ID - defaults to null
 	var/id
 	/// id was autogen'd
 	var/random_id
-	#warn don't keep raw jsson
-	/// Loaded JSON data
-	var/list/raw_json
+
+	//! Instantiation
+	/// Our z value
+	var/tmp/z_value
+	/// Are we physically made yet?
+	var/tmp/instantiated = FALSE
+
+	//! Map File / Loading
 	/// Path to .dmm - this must be relative to the folder the .json was loaded from.
 	/// Yeah, this means you can't link outside of nested directories, only deeper, but frankly, sue me.
-	/// Use path_absolute to path from execution directory.
+	/// To set this use "path" in the .json
+	/// you can start with maps/, config/, to absolutely path from those folders.
 	var/map_path
 	/// load orientation
 	var/orientation = SOUTH
@@ -31,41 +33,63 @@
 
 	#warn hook these into load process and generation
 	// bounds - for when we had to fill void.
-	/// start x
+	/// start x inclusive
 	var/bottomleft_x
-	/// start y
+	/// start y inclusive
 	var/bottomleft_y
-	/// end x
+	/// end x inclusive
 	var/topright_x
-	/// end y
+	/// end y inclusive
 	var/topright_y
-	#warn we probably need to store width/height too
+	/// width
+	var/width
+	/// height
+	var/height
 
-	// Linkage/MultiZ - what zlevels are where. References by ID, or direct ref to a space_level datum
+	//! Linkage - IDs
+	// Linkage/MultiZ - what zlevels are where. References by ID only!
 	VAR_PRIVATE/up
 	VAR_PRIVATE/down
-	// Linkage - what zlevels are where - cardinals. Visual and movement transitions are automatically applied. References by ID, or direct ref to a space_level datum.
+	// Linkage - what zlevels are where - cardinals. Visual and movement transitions are automatically applied. References by ID only!
 	VAR_PRIVATE/east
 	VAR_PRIVATE/west
 	VAR_PRIVATE/north
 	VAR_PRIVATE/south
 
+	//! Linkage - info
 	/// Linkage mode
 	var/linkage_mode = Z_LINKAGE_NORMAL
+	/// Transition mode
+	var/transition_mode = Z_TRANSITION_NORMAL
 
+	//! Traits
 	/// Traits - binary yes/no's
 	var/list/traits = list()
+
+	//! Attributes
 	/// Attributes - key-value lists, value can be string/number/null only. Recursing lists are supported.
 	var/list/attributes = list()
-	/// baseturf - path
-	var/baseturf
-	#warn base area - impl and hook
 
-	// TRANSIENT VARIABLES
+	//! Baseturf
+	/// base turf - path
+	var/base_turf
+	/// base area - path
+	var/base_area
+
+	//! Crosslinking
 	/// Current crosslinking x in grid
 	var/tmp/cl_x
 	/// Current crosslinking y in grid
 	var/tmp/cl_y
+
+	//! Level modules
+	/// /datum/level_module to execute
+	var/level_module_type
+	/// Instanced level module we hold onto
+	var/datum/level_module/level_module
+	#warn - impl and hook level modules
+
+	//! Structs
 	/// The world_struct we're in, if any
 	var/tmp/datum/world_struct/struct
 	/// x value in struct
@@ -74,13 +98,14 @@
 	var/tmp/struct_y
 	/// z value in struct
 	var/tmp/struct_z
+
+	//! Performance metrics
 	/// how many times we rebuilt turfs
 	var/tmp/turfs_rebuild_count = 0
 	/// how many times we rebuilt transitions
 	var/tmp/transitions_rebuild_count = 0
 
 #warn parse this file
-#warn /datum/level_module
 
 /datum/space_level/New(id, list/traits, list/attributes, map_path)
 	if(id)
@@ -94,10 +119,10 @@
 		src.map_path = map_path
 	if(traits)
 		for(var/trait in traits)
-			AddTrait(trait)
+			add_trait(trait)
 	if(attributes)
 		for(var/key in attributes)
-			SetAttribute(key, attributes[key])
+			set_attribute(key, attributes[key])
 
 /datum/space_level/Destroy(force)
 	if(instantiated && !force)
@@ -116,7 +141,10 @@
  * - data - data list passed in by subsystem during mapload
  * - pathroot - root path of the .json
  */
-/datum/space_level/proc/ParseJSONList(list/data, pathroot)
+/datum/space_level/proc/parse(list/data, pathroot)
+	#warn make sure everything matches the vars
+	#warn default base_turf to world.turf
+	#warn default base_area to world.area
 	if(instantiated)
 		CRASH("attempted to reload json while already instantiated")
 	if(!islist(data))
@@ -147,7 +175,7 @@
 				else
 					orientation = SOUTH
 		else if(isnum(orientation))
-			if(!(orientation in GLOB.cardinals))
+			if(!(orientation in GLOB.cardinal))
 				orientation = SOUTH
 	if(data["center"])
 		center = data["center"]
@@ -173,10 +201,10 @@
 			stack_trace("Invalid baseturf [data["baseturf"]].")
 	if(data["traits"])
 		for(var/i in data["traits"])
-			AddTrait(i)
+			add_trait(i)
 	if(data["attributes"])
 		for(var/key in data["attributes"])
-			SetAttribute(key, data["attributes"][key])
+			set_attribute(key, data["attributes"][key])
 	if(data["linkage_mode"])
 		linkage_mode = data["linkage_mode"]
 
@@ -199,56 +227,6 @@
 /datum/space_level/proc/GetPath()
 	return map_path
 
-/**
- * Sets a multiz/transition point to another level.
- *
- * WARNING: As with all core map/zlevel management backend procs, this is a dangerous proc to use.
- * Do not use this unless you know what you are doing.
- *
- * This proc does NOT automatically rebuild/update multiz and transitions - YOU have to do this.
- * SSmapping will also not update its lookups automatically.
- *
- * @param
- * - other - map level id to set this to link to, or direct reference
- */
-/datum/space_level/proc/SetEast(other)
-	if(struct)
-		CRASH("Attempted to set transition while in world_struct.")
-	ASSERT(istext(other) || istype(other, /datum/space_level))
-	east = other
-
-/datum/space_level/proc/SetWest(other)
-	if(struct)
-		CRASH("Attempted to set transition while in world_struct.")
-	ASSERT(istext(other) || istype(other, /datum/space_level))
-	west = other
-
-/datum/space_level/proc/SetNorth(other)
-	if(struct)
-		CRASH("Attempted to set transition while in world_struct.")
-	ASSERT(istext(other) || istype(other, /datum/space_level))
-	north = other
-
-/datum/space_level/proc/SetSouth(other)
-	if(struct)
-		CRASH("Attempted to set transition while in world_struct.")
-	ASSERT(istext(other) || istype(other, /datum/space_level))
-	south = other
-
-/datum/space_level/proc/SetUp(other)
-	if(struct)
-		CRASH("Attempted to set transition while in world_struct.")
-	ASSERT(istext(other) || istype(other, /datum/space_level))
-	up = other
-
-/datum/space_level/proc/SetDown(other)
-	if(struct)
-		CRASH("Attempted to set transition while in world_struct.")
-	ASSERT(istext(other) || istype(other, /datum/space_level))
-	down = other
-
-#warn getters
-
 /datum/space_level/proc/SetID(id)
 	if(instantiated)
 		CRASH("attempted to change id of instantiated level; this will usually break things if allowed.")
@@ -256,6 +234,8 @@
 	src.id = id
 	#warn check to make sure
 	SSmapping.level_by_id[src.id] = src
+
+#warn everything below
 
 /**
  * call to rebuild all turfs for vertical multiz
@@ -266,7 +246,7 @@
 	for(var/turf/T as anything in block(locate(1,1,z_value), locate(world.maxx, world.maxy, z_value)))
 		T.UpdateMultiZ()
 		CHECK_TICK
-	turfs_rebuild_count = TRUE
+	turfs_rebuild_count++
 
 /**
  * call to rebuild all turfs for horizontal transitions
@@ -283,15 +263,19 @@
 	for(var/turf/T in checking)
 		T.UpdateTransitions()
 		CHECK_TICK
-	transitions_rebuild_count = TRUE
+	transitions_rebuild_count++
+
+#warn all of this shit is sihtcode above and below redo it
+#warn add Z_TRANSITION_X handling
+#warn Z_TRANSITION_DEFAULT should detect turf changes to automatically make transitions when adminbus happens
 
 /**
  * Rebuild turfs up/down of us
  */
 /datum/space_level/proc/RebuildVerticalLevels()
 	for(var/datum/space_level/L in list(
-		GetLevelInDir(UP),
-		GetLevelInDir(DOWN)
+		resolve_level_in_dir(UP),
+		resolve_level_in_dir(DOWN)
 	))
 		L.RebuildTurfs()
 
@@ -300,77 +284,12 @@
  */
 /datum/space_level/proc/RebuildAdjacentLevels()
 	for(var/datum/space_level/L in list(
-		GetLevelInDir(NORTH),
-		GetLevelInDir(SOUTH),
-		GetLevelInDir(EAST),
-		GetLevelInDir(WEST)
+		resolve_level_in_dir(NORTH),
+		resolve_level_in_dir(SOUTH),
+		resolve_level_in_dir(EAST),
+		resolve_level_in_dir(WEST)
 	))
 		L.RebuildTransitions()
-
-/**
- * Do we have a certain trait?
- */
-/datum/space_level/proc/level_trait(trait)
-	return trait in traits
-
-/**
- * Removes a trait
- */
-/datum/space_level/proc/RemoveTrait(trait)
-	traits -= trait
-	SSmapping.on_trait_del(src, trait)
-
-/**
- * Adds a trait
- */
-/datum/space_level/proc/AddTrait(trait)
-	traits |= trait
-	SSmapping.on_trait_add(src, trait)
-
-/**
- * Get value of attribute
- */
-/datum/space_level/proc/level_attribute(attr)
-	return attributes[attr]
-
-/**
- * Set value of attribute
- */
-/datum/space_level/proc/SetAttribute(attr, val)
-	attributes[attr] = val
-	SSmapping.on_attribute_set(src, attr, val)
-
-/**
- * Gets neighbor in dir
- */
-/datum/space_level/proc/GetLevelInDir(dir)
-	RETURN_TYPE(/datum/space_level)
-	// diagonal
-	if(dir & (dir - 1))
-		var/datum/space_level/NS = GetLevelInDir(NSCOMPONENT(dir))
-		var/datum/space_level/EW = GetLevelInDir(EWCOMPONENT(dir))
-		if(!NS || !EW)
-			return null
-		// both exist, check for "agreement"
-		var/datum/space_level/potential = NS.GetLevelInDir(EWCOMPONENT(dir))
-		return (EW.GetLevelInDir(NSCOMPONENT(dir)) == potential) && potential
-	// cardinal
-	else
-		switch(dir)
-			if(NORTH)
-				return istype(north, /datum/space_level)? north : SSmapping.level_by_id[north]
-			if(SOUTH)
-				return istype(south, /datum/space_level)? south : SSmapping.level_by_id[south]
-			if(EAST)
-				return istype(east, /datum/space_level)? east : SSmapping.level_by_id[east]
-			if(WEST)
-				return istype(west, /datum/space_level)? west : SSmapping.level_by_id[west]
-			if(UP)
-				return istype(up, /datum/space_level)? up : SSmapping.level_by_id[up]
-			if(DOWN)
-				return istype(down, /datum/space_level)? down : SSmapping.level_by_id[down]
-			else
-				CRASH("Invalid dir: [dir]")
 
 /**
  * expand the level to fill the entire level, wiping void turfs on the way
@@ -398,4 +317,127 @@
 		if(istype(T, VOID_TURF_TYPE))
 			T.ChangeTurf(world.turf)
 		if(istype(T.loc, VOID_AREA_TYPE))
-			new_area.contents.Add(T)
+			T.loc = new_area
+
+//! Attributes
+/**
+ * Get value of attribute
+ */
+/datum/space_level/proc/get_attribute(attr)
+	return attributes[attr]
+
+/**
+ * Set value of attribute
+ */
+/datum/space_level/proc/set_attribute(attr, val)
+	attributes[attr] = val
+	SSmapping.on_attribute_set(src, attr, val)
+
+//! Traits
+/**
+ * Do we have a certain trait?
+ */
+/datum/space_level/proc/has_trait(trait)
+	return traits[trait]
+
+/**
+ * Removes a trait
+ */
+/datum/space_level/proc/remove_triat(trait)
+	traits -= trait
+	SSmapping.on_trait_del(src, trait)
+
+/**
+ * Adds a trait
+ */
+/datum/space_level/proc/add_trait(trait)
+	traits[trait] = TRUE
+	SSmapping.on_trait_add(src, trait)
+
+/**
+ * clear traits
+ */
+/datum/space_level/proc/clear_traits()
+	for(var/trait in traits)
+		remove_trait(trait)
+
+//! Linkage
+/**
+ * Sets a multiz/transition point to another level.
+ *
+ * WARNING: As with all core map/zlevel management backend procs, this is a dangerous proc to use.
+ * Do not use this unless you know what you are doing.
+ *
+ * This proc does NOT automatically rebuild/update multiz and transitions - YOU have to do this.
+ * SSmapping will also not update its lookups automatically.
+ *
+ * @param
+ * - other - map level id to set this to link to, or direct reference
+ */
+/datum/space_level/proc/set_east(other)
+	if(struct)
+		CRASH("Attempted to set transition while in world_struct.")
+	ASSERT(istext(other))
+	east = other
+
+/datum/space_level/proc/set_west(other)
+	if(struct)
+		CRASH("Attempted to set transition while in world_struct.")
+	ASSERT(istext(other))
+	west = other
+
+/datum/space_level/proc/set_north(other)
+	if(struct)
+		CRASH("Attempted to set transition while in world_struct.")
+	ASSERT(istext(other))
+	north = other
+
+/datum/space_level/proc/set_south(other)
+	if(struct)
+		CRASH("Attempted to set transition while in world_struct.")
+	ASSERT(istext(other))
+	south = other
+
+/datum/space_level/proc/set_up(other)
+	if(struct)
+		CRASH("Attempted to set transition while in world_struct.")
+	ASSERT(istext(other))
+	up = other
+
+/datum/space_level/proc/set_down(other)
+	if(struct)
+		CRASH("Attempted to set transition while in world_struct.")
+	ASSERT(istext(other))
+	down = other
+
+/**
+ * Gets neighbor *datum* in dir
+ */
+/datum/space_level/proc/resolve_level_in_dir(dir)
+	RETURN_TYPE(/datum/space_level)
+	// diagonal
+	if(dir & (dir - 1))
+		var/datum/space_level/NS = resolve_level_in_dir(NSCOMPONENT(dir))
+		var/datum/space_level/EW = resolve_level_in_dir(EWCOMPONENT(dir))
+		if(!NS || !EW)
+			return null
+		// both exist, check for "agreement"
+		var/datum/space_level/potential = NS.resolve_level_in_dir(EWCOMPONENT(dir))
+		return (EW.resolve_level_in_dir(NSCOMPONENT(dir)) == potential)? potential : null
+	// cardinal
+	else
+		switch(dir)
+			if(NORTH)
+				return istype(north, /datum/space_level)? north : SSmapping.level_by_id[north]
+			if(SOUTH)
+				return istype(south, /datum/space_level)? south : SSmapping.level_by_id[south]
+			if(EAST)
+				return istype(east, /datum/space_level)? east : SSmapping.level_by_id[east]
+			if(WEST)
+				return istype(west, /datum/space_level)? west : SSmapping.level_by_id[west]
+			if(UP)
+				return istype(up, /datum/space_level)? up : SSmapping.level_by_id[up]
+			if(DOWN)
+				return istype(down, /datum/space_level)? down : SSmapping.level_by_id[down]
+			else
+				CRASH("Invalid dir: [dir]")

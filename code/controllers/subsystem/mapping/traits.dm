@@ -17,7 +17,7 @@
 	if(z < 1 || z > world.maxz)
 		CRASH("Invalid z")
 	var/datum/space_level/L = space_levels[z]
-	return !!L.traits.Find(trait)
+	return L.traits[trait]
 
 /**
  * Checks if a z level has any of these traits
@@ -35,7 +35,7 @@
 	if(z < 1 || z > world.maxz)
 		CRASH("Invalid z")
 	var/datum/space_level/L = space_levels[z]
-	return !length(L.traits - traits)
+	return !length(traits - L.traits)
 
 /**
  * Returns a list of z indices with a trait
@@ -44,7 +44,7 @@
 	RETURN_TYPE(/list)
 	. = list()
 	for(var/datum/space_level/L as anything in space_levels)
-		if(L.traits.Find(trait))
+		if(L.traits[trait])
 			. += L.z_value
 
 /**
@@ -64,7 +64,7 @@
 	RETURN_TYPE(/list)
 	. = list()
 	for(var/datum/space_level/L as anything in space_levels)
-		if(!length(L.traits - traits))
+		if(!length(traits - L.traits))
 			. += L.z_value
 
 /**

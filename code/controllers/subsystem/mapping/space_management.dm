@@ -66,8 +66,8 @@
 		multiz_lookup_down.len = world.maxz
 		for(var/i in 1 to world.maxz)
 			var/datum/space_level/level = space_levels[i]
-			multiz_lookup_up[i] = level.GetLevelInDir(UP)?.z_value
-			multiz_lookup_down[i] = level.GetLevelInDir(DOWN)?.z_value
+			multiz_lookup_up[i] = level.resolve_level_in_dir(UP)?.z_value
+			multiz_lookup_down[i] = level.resolve_level_in_dir(DOWN)?.z_value
 	else
 		// smart rebuild
 		ASSERT(dir)
@@ -77,9 +77,9 @@
 		var/datum/space_level/level = updated
 		switch(dir)
 			if(UP)
-				multiz_lookup_up[level.z_value] = level.GetLevelInDir(UP)?.z_value
+				multiz_lookup_up[level.z_value] = level.resolve_level_in_dir(UP)?.z_value
 			if(DOWN)
-				multiz_lookup_down[level.z_value] = level.GetLevelInDir(DOWN)?.z_value
+				multiz_lookup_down[level.z_value] = level.resolve_level_in_dir(DOWN)?.z_value
 			else
 				CRASH("Invalid dir: [dir]")
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MULTIZ_UPDATE_VERTICAL)
@@ -99,10 +99,10 @@
 		transition_lookup_east.len = transition_lookup_west.len = transition_lookup_north.len = transition_lookup_south.len = world.maxz
 		for(var/i in 1 to world.maxz)
 			var/datum/space_level/level = space_levels[i]
-			transition_lookup_north[i] = level.GetLevelInDir(NORTH)?.z_value
-			transition_lookup_south[i] = level.GetLevelInDir(SOUTH)?.z_value
-			transition_lookup_east[i] = level.GetLevelInDir(EAST)?.z_value
-			transition_lookup_west[i] = level.GetLevelInDir(WEST)?.z_value
+			transition_lookup_north[i] = level.resolve_level_in_dir(NORTH)?.z_value
+			transition_lookup_south[i] = level.resolve_level_in_dir(SOUTH)?.z_value
+			transition_lookup_east[i] = level.resolve_level_in_dir(EAST)?.z_value
+			transition_lookup_west[i] = level.resolve_level_in_dir(WEST)?.z_value
 	else
 		// smart rebuild
 		if(!updated.instantiated)
@@ -112,13 +112,13 @@
 		var/datum/space_level/other
 		switch(dir)
 			if(NORTH)
-				transition_lookup_north[level.z_value] = level.GetLevelInDir(NORTH)?.z_value
+				transition_lookup_north[level.z_value] = level.resolve_level_in_dir(NORTH)?.z_value
 			if(SOUTH)
-				transition_lookup_south[level.z_value] = level.GetLevelInDir(SOUTH)?.z_value
+				transition_lookup_south[level.z_value] = level.resolve_level_in_dir(SOUTH)?.z_value
 			if(EAST)
-				transition_lookup_east[level.z_value] = level.GetLevelInDir(EAST)?.z_value
+				transition_lookup_east[level.z_value] = level.resolve_level_in_dir(EAST)?.z_value
 			if(WEST)
-				transition_lookup_west[level.z_value] = level.GetLevelInDir(WEST)?.z_value
+				transition_lookup_west[level.z_value] = level.resolve_level_in_dir(WEST)?.z_value
 			else
 				CRASH("Invalid dir: [dir]")
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MULTIZ_UPDATE_HORIZONTAL)
@@ -455,16 +455,6 @@
 	return struct.plane_lookup[struct.real_indices.Find(z)]
 
 /**
- * Gets the full list of Z indices in the same world_struct as another z level
- *
- * Returns list(itself) if not in struct
- */
-/datum/controller/subsystem/mapping/proc/LevelsInStruct(z)
-	if(!struct_by_z[z])
-		return list(z)
-	return struct_by_z[z].real_indices
-
-/**
  * Rebuilds world struct lookup
  */
 /datum/controller/subsystem/mapping/proc/RebuildStructLookup()
@@ -473,144 +463,3 @@
 	for(var/datum/world_struct/struct as anything in structs)
 		for(var/z in struct.real_indices)
 			struct_by_z[z] = struct
-
-/**
- * Get a coordinate set of list(x, y, z) of virtual coordinates for an atom.
- *
- * Note: Z should be interpreted as DEPTH here, not real sector Z. Every world_struct starts at z = 1.
- * Also, x, y, and z can all be negative here.
- */
-/datum/controller/subsystem/mapping/proc/GetVirtualCoords(atom/A)
-	A = get_turf(A)
-	if(!struct_by_z[A.z])
-		return list(A.x, A.y, A.z)
-	var/datum/world_struct/struct = struct_by_z[A.z]
-	var/datum/space_level/S = space_levels[A.z]
-	return list((S.struct_x * world.maxx) + A.x , (S.struct_y * world.maxy) + A.y, S.struct_z)
-
-/**
- * Get virtual distance between two atoms
- *
- * If the atoms aren't in managed space, acts ilke get_dist
- *
- * z_dist refers to the distance that zlevels count for - defaults to the z_canonical_dist of a struct, or 0 otherwise.
- *
- * Returns -1 for unreachable,
- * If A is in managed and B isn't, or vice versa,
- * OR if they both aren't and they aren't the same zlevel,
- * Or if they both are and aren't in the same struct.
- */
-/datum/controller/subsystem/mapping/proc/GetVirtualDist(atom/A, atom/B, z_dist)
-	A = get_turf(A)
-	B = get_turf(B)
-	if(A.z == B.z)
-		return get_dist(A, B)
-	if(!IsManagedLevel(A) || !IsManagedLevel(B))
-		return -1
-	if(struct_by_z[A.z] != struct_by_z[B.z])
-		return -1
-	var/datum/space_level/S1 = space_levels[A.z]
-	var/datum/space_level/S2 = space_levels[B.z]
-	return sqrt(((S2.struct_x * world.maxx + B.x) - (S1.struct_x * world.maxx + A.x)) ** 2 + ((S2.struct_y * world.maxy + B.y) - (S1.struct_y * world.maxy + A.y)) ** 2 + ((S2.struct_z - S1.struct_z) * z_dist) ** 2)
-
-/**
- * Gets virual direction between two atoms
- *
- * If the atoms aren't in managed space, acts like get_dir_multiz - works on zstacks only or same level.
- *
- * Returns NONE for unreachable,
- * if A is in managed space and B isn't or vice versa,
- * OR if they both aren't and aren't in the same zlevel or zstack,
- * OR if hey both are and aren't in the same struct
- */
-/datum/controller/subsystem/mapping/proc/GetVirtualDir(atom/A, atom/B)
-	A = get_turf(A)
-	B = get_turf(B)
-	if(A.z == B.z)
-		return get_dir(A, B)
-	if(!IsManagedLevel(A) || !IsManagedLevel(B))
-		// last ditch - check stacks
-		var/list/stack = z_stack_lookup
-		var/pos = stack.Find(B.z)
-		if(!pos)
-			return NONE		// couldn't find
-		// found, old get_dir_multiz
-		. = get_dir(A, B)
-		if(stack.Find(A.z) < pos)
-			. |= UP
-		else
-			. |= DOWN
-		return
-	if(struct_by_z[A.z] != struct_by_z[B.z])
-		return NONE
-	var/datum/space_level/S1 = space_levels[A.z]
-	var/datum/space_level/S2 = space_levels[B.z]
-	. = NONE
-	if(S1.struct_z > S2.struct_z)
-		. |= DOWN
-	else if(S1.struct_z < S2.struct_z)
-		. |= UP
-	if(S1.struct_x == S2.struct_x)
-		return . | (S1.struct_y > S2.struct_y? SOUTH : NORTH)
-	else if(S1.struct_y == S2.struct_y)
-		return . | (S1.struct_x > S2.struct_x? WEST : EAST)
-	else
-		. |= (S1.struct_y > S2.struct_y)? SOUTH : NORTH
-		. |= (S1.struct_x > S2.struct_x)? WEST : EAST
-
-/**
- * Gets virual angle between two angles in horizontal terms
- * IGNORES STRUCT Z DEPTH!
- *
- * If the atoms aren't in managed space, acts like GetAngle
- *
- * Returns null for unreachable,
- * if A is in managed space and B isn't or vice versa,
- * OR if they both aren't and aren't in the same zlevel,
- * OR if hey both are and aren't in the same struct
- */
-/datum/controller/subsystem/mapping/proc/GetVirtualAngle(atom/A, atom/B)
-	A = get_turf(A)
-	B = get_turf(B)
-	if(A.z == B.z)
-		return get_physics_angle(A, B)
-	if(!IsManagedLevel(A) || !IsManagedLevel(B))
-		return null
-	if(struct_by_z[A.z] != struct_by_z[B.z])
-		return null
-	var/datum/space_level/S1 = space_levels[A.z]
-	var/datum/space_level/S2 = space_levels[B.z]
-	return get_angle_direct(S1.struct_x * world.maxx + A.x, S1.struct_y * world.maxy + A.y, S2.struct_x * world.maxx + B.x, S2.struct_y * world.maxy + B.y)
-
-/**
- * GAME PROC: GetAccessibleLevels()
- * Default implementation of bidirectionally accessible Zlevels
- *
- * Three behaviors:
- * If a zlevel is crosslinked, all crosslinked zlevels are returned
- * Otherwise, if a zlevel is in a world_struct, all levels in said world struct are returned
- * Otherwise, the zstack is returned.
- */
-/datum/controller/subsystem/mapping/proc/GetAccessibleLevels(z, allow_crosslink = TRUE)
-	var/datum/space_level/L = space_levels[z]
-	if(L.struct)
-		. = LevelsInStruct(z)
-	. = GetZStack(z)
-	if(allow_crosslink && (L.linkage_mode == Z_LINKAGE_CROSSLINKED))
-		. |= crosslinked_levels()
-
-/**
- * GAME PROC: IsManagedLevel(z)
- * Checks if we should use GetVirtualCoords or similar for things like GPSes, radios
- *
- * Returns TRUE if:
- * z is in a world_struct
- */
-/datum/controller/subsystem/mapping/proc/IsManagedLevel(z)
-	return !!struct_by_z[z]
-
-/**
- * Get logical step in dir
- */
-/datum/controller/subsystem/mapping/proc/GetVirtualStep(atom/A, dir)
-	#warn impl also make sure border is 2 from edge aka 1 from edge is hte teleport loc

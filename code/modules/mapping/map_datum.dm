@@ -48,6 +48,7 @@
 #warn world struct support
 #warn planet support on level and world struct
 #warn support circular references and cross referencing for structs and planets!
+#warn automatic world struct generation based on closure
 
 /datum/map_config/New(file_jsonstr_list, path)
 	if(file_jsonstr_list)
@@ -57,7 +58,7 @@
 				data = safe_json_decode(file2text(data))
 			else if(istext(data))
 				data = safe_json_decode(data)
-		ParseJSONList(data, path)
+		parse(data, path)
 	original_path = path
 
 /datum/map_config/Destroy(force)
@@ -67,7 +68,7 @@
 	QDEL_LIST(levels)
 	return ..()
 
-/datum/map_config/proc/ParseJSONList(list/data, path)
+/datum/map_config/proc/parse(list/data, path)
 	original_datalist = data
 	ASSERT(istext(data["id"]) && length(data["id"]))
 	id = data["id"]
@@ -82,7 +83,7 @@
 	for(var/L in data["levels"])
 		var/list/level_data = L
 		var/datum/space_level/L = new
-		L.ParseJSONList(level_data, pathroot)
+		L.parse(level_data, pathroot)
 		levels += L
 	z_count = levels.len
 	ASSERT(z_count > 0)
@@ -153,7 +154,7 @@
 	//? MISC / UNSORTED - ported from legacy; some of these should probably be rethought, some should be organized later.
 
 
-/datum/map_config/station/ParseJSONList(list/data)
+/datum/map_config/station/parse(list/data)
 	. = ..()
 	// map type
 	if(data["maptype"])
@@ -192,7 +193,7 @@
 	/// Group
 	var/group
 
-/datum/map_config/level/ParseJSONList(list/data)
+/datum/map_config/level/parse(list/data)
 	. = ..()
 	if(!istext(data["group"]) || !length(data["group"]))
 		errored = TRUE
