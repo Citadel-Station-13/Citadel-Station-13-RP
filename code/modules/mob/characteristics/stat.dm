@@ -22,7 +22,15 @@ GLOBAL_LIST_INIT(characteristics_stats, _create_characteristics_stats())
 	abstract_type = /datum/characteristic_stat
 	/// unique id
 	var/id
+	/// name
+	var/name = "ERROR"
+	/// description
+	var/desc = "An unknown stat. Someone needs to change this."
+	/// cateogry - just a string, no defines for now, surely no one will typo..
+	var/category = "General"
 	/// datatype
 	var/datatype = CHARACTER_STAT_UNKNOWN
 	/// default value when characteristics are disabled
 	var/default
+	/// default value when *unset* - MAKE SURE TO SET THIS
+	var/baseline

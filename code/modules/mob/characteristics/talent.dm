@@ -21,7 +21,13 @@ GLOBAL_LIST_INIT(characteristics_talents, _create_characteristics_talents())
  * make sure to gc your stuff properly on Destroy().
  */
 /datum/characteristic_talent
+	abstract_type = /datum/characteristic_talent
+	/// unique id
 	var/id
+	/// name
+	var/name = "ERROR"
+	/// desc
+	var/desc = "An unknown talent. Someone needs to set this."
 
 /datum/characteristic_talent/proc/gain(datum/mind/M)
 
