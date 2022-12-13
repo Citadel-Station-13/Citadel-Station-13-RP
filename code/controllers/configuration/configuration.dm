@@ -59,7 +59,7 @@
 	loaded = TRUE
 
 	if (Master)
-		Master.OnConfigLoad()
+		Master.on_config_load()
 
 /datum/controller/configuration/proc/full_wipe()
 	if(IsAdminAdvancedProcCall())

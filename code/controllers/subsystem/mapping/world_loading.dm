@@ -10,7 +10,7 @@
 
 #warn Recover()
 
-/datum/controller/subsystem/mapping/proc/InitMapDatums()
+/datum/controller/subsystem/mapping/proc/init_map_datums()
 	if(map_datums_loaded)
 		return
 	map_datums_loaded = TRUE
@@ -40,21 +40,21 @@
 			continue
 		map_datums[map.id] = map
 
-/datum/controller/subsystem/mapping/proc/LoadWorld(id, default = "boxstation")
+/datum/controller/subsystem/mapping/proc/load_world(id, default = "boxstation")
 	if(map)
 		CRASH("Tried to load the world datum while a datum was already set.")
 	if(!map_datums)
-		InitMapDatums()
+		init_map_datums()
 	if(!map_datums[id])
 		if(id == default)
 			init_fatal("[default] was unable to be loaded, even though it is the default map. The server will not be playable. Please contact an admin or coder IMMEDIATELY.")
 			return
 		init_error("Failed to load map config [id]. Defaulting to [default].")
-		return LoadWorld(default, default)
+		return load_world(default, default)
 	map = map_datums[id]
 	init_log("Chosen station map - [map.name].")
 
-/datum/controller/subsystem/mapping/proc/InstantiateWorld()
+/datum/controller/subsystem/mapping/proc/instantiate_world()
 	if(world_loaded)
 		CRASH("Tried to load the world when world was already loaded.")
 	var/start_time = REALTIMEOFDAY
@@ -74,13 +74,13 @@
 /**
  * Gets the current persistence key of the loaded station map.
  */
-/datum/controller/subsystem/mapping/proc/getPersistenceKey()
+/datum/controller/subsystem/mapping/proc/get_persistence_key()
 	return map?.persistence_key
 
 /**
  * Gets the current map OOC name, or the name of a map ID
  */
-/datum/controller/subsystem/mapping/proc/getMapName(id)
+/datum/controller/subsystem/mapping/proc/get_map_name(id)
 	if(id)
 		var/datum/map_config/config = map_datums[config]
 		return config?.name || "ERROR"
@@ -89,14 +89,14 @@
 /**
  * Gets the map datum of an ID
  */
-/datum/controller/subsystem/mapping/proc/getMapDatum(id)
+/datum/controller/subsystem/mapping/proc/get_map_datum(id)
 	RETURN_TYPE(/datum/map_config/station)
 	return map_datums[id]
 
 /**
  * Gets all possible map IDs
  */
-/datum/controller/subsystem/mapping/proc/getAllMapIDs()
+/datum/controller/subsystem/mapping/proc/get_all_map_ids()
 	. = list()
 	for(var/i in map_datums)
 		. += i
@@ -104,10 +104,10 @@
 /**
  * Gets the current map ID, used for things like databases and persistence saves.
  */
-/datum/controller/subsystem/mapping/proc/getMapID()
+/datum/controller/subsystem/mapping/proc/get_map_id()
 	return map?.id || "UNKNOWN"
 
-/datum/controller/subsystem/mapping/OnConfigLoad()
+/datum/controller/subsystem/mapping/on_config_load()
 	. = ..()
 	map_datums_loaded = FALSE
-	InitMapDatums()
+	init_map_datums()

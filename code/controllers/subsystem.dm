@@ -217,7 +217,7 @@
 			state = SS_PAUSING
 
 /// Called after the config has been loaded or reloaded.
-/datum/controller/subsystem/proc/OnConfigLoad()
+/datum/controller/subsystem/proc/on_config_load()
 
 /datum/controller/subsystem/proc/subsystem_log(msg)
 	return log_subsystem(name, msg)
@@ -302,3 +302,27 @@
 
 /datum/controller/subsystem/proc/max_z_changed()
 	return
+
+//! init announces
+// todo: better init reporting system
+// todo: just port tg's init failure checking
+
+/datum/controller/subsystem/proc/init_log(msg)
+	to_chat(world, "<span class='boldnotice'>INIT - SS[name] - [msg]</span>")
+	log_subsystem(src, "Init - Log - [msg]")
+
+/datum/controller/subsystem/proc/init_warning(msg)
+	to_chat(world, "<span class='boldwarning'>INIT - SS[name]- [msg]</span>")
+	log_subsystem(src, "Init - Warning - [msg]")
+
+/// This will fail integration tests.
+/datum/controller/subsystem/proc/init_error(msg)
+	to_chat(world, "<span class='boldwarning'>ERROR - SS[name] - [msg]</span>")
+	log_subsystem(src, "Init - Error - [msg]")
+	Master.subsystem_init_errored = TRUE
+
+/// This will fail integration tests.
+/datum/controller/subsystem/proc/init_fatal(msg)
+	to_chat(world, "<span class='boldwarning'>FATAL - SS[name] - [msg]</span>")
+	log_subsystem(src, "Init - Fatal - [msg]")
+	Master.subsystem_init_errored = TRUE

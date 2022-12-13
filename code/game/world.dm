@@ -223,6 +223,8 @@ GLOBAL_LIST(topic_status_cache)
 #endif
 		if(!GLOB.log_directory)
 			LAZYADD(fail_reasons, "Missing GLOB.log_directory!")
+		if(Master.subsystem_init_errored)
+			LAZYADD(fail_reasons, "A subsystem encountered a severe error during world startup.")
 	else
 		fail_reasons = list("Missing GLOB!")
 	if(!fail_reasons)

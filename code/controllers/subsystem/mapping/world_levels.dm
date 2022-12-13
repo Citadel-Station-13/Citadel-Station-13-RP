@@ -137,7 +137,7 @@
 			var/seconds = round((REALTIMEOFDAY - start) / 0.1, 0.01)
 			to_chat(usr, "<span class='danger'>Loaded [group]:[id] on [loaded_indices.len == 1? "z-[loaded_indices[1]]]" : "Z-levels [english_list(loaded_indices)]"] in [seconds] seconds.</span>")
 
-/datum/controller/subsystem/mapping/OnConfigLoad()
+/datum/controller/subsystem/mapping/on_config_load()
 	. = ..()
 	map_levels_loaded = FALSE
 	InitMapLevels()

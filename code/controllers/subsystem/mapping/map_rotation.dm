@@ -68,7 +68,7 @@
 
 /datum/controller/subsystem/mapping/proc/set_next_map(id, force = FALSE)
 	if(!map_datums)
-		InitMapDatums()
+		init_map_datums()
 	if(!force && !map_datums[id])
 		stack_trace("Failed to locate [id] in map datums.")
 		return FALSE
@@ -83,7 +83,7 @@
 
 /datum/controller/subsystem/mapping/proc/get_next_map()
 	if(!map_datums)
-		InitMapDatums()
+		init_map_datums()
 	if(next_map)
 		return next_map.id
 	var/list/json_list = safe_json_decode(file2text(file("data/next_map.json")))

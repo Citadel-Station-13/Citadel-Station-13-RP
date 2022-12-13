@@ -61,6 +61,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	//used by CHECK_TICK as well so that the procs subsystems call can obey that SS's tick limits
 	var/static/current_ticklimit = TICK_LIMIT_RUNNING
 
+	/// If a subsystem init had a severe error
+	var/subsystem_init_errored = FALSE
+
 /datum/controller/master/New()
 	if(!config_legacy)
 		load_configuration()
@@ -621,7 +624,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		processing = CONFIG_GET(number/mc_tick_rate/high_pop_mc_tick_rate)
 */
 
-/datum/controller/master/proc/OnConfigLoad()
+/datum/controller/master/proc/on_config_load()
 	for (var/thing in subsystems)
 		var/datum/controller/subsystem/SS = thing
-		SS.OnConfigLoad()
+		SS.on_config_load()
