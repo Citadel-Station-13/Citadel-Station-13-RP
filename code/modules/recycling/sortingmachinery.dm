@@ -98,12 +98,11 @@
 		overlays += I
 
 /obj/structure/bigDelivery/examine(mob/user)
-	if(..(user, 4))
-		if(sortTag)
-			to_chat(user, "<span class='notice'>It is labeled \"[sortTag]\"</span>")
-		if(examtext)
-			to_chat(user, "<span class='notice'>It has a note attached which reads, \"[examtext]\"</span>")
-	return
+	. = ..()
+	if(sortTag)
+		. +=  "<span class='notice'>It is labeled \"[sortTag]\"</span>"
+	if(examtext)
+		. += "<span class='notice'>It has a note attached which reads, \"[examtext]\"</span>"
 
 /obj/structure/bigDelivery/Destroy()
 	if(wrapped) //sometimes items can disappear. For example, bombs. --rastaf0
@@ -216,12 +215,11 @@
 		overlays += I
 
 /obj/item/smallDelivery/examine(mob/user)
-	if(..(user, 4))
-		if(sortTag)
-			to_chat(user, "<span class='notice'>It is labeled \"[sortTag]\"</span>")
-		if(examtext)
-			to_chat(user, "<span class='notice'>It has a note attached which reads, \"[examtext]\"</span>")
-	return
+	. = ..()
+	if(sortTag)
+		. += "<span class='notice'>It is labeled \"[sortTag]\"</span>"
+	if(examtext)
+		. += "<span class='notice'>It has a note attached which reads, \"[examtext]\"</span>"
 
 /obj/item/packageWrap
 	name = "package wrapper"
@@ -314,10 +312,8 @@
 	return
 
 /obj/item/packageWrap/examine(mob/user)
-	if(..(user, 0))
-		to_chat(user, "<font color=#4F49AF>There are [amount] units of package wrap left!</font>")
-
-	return
+	. = ..()
+	. += "<font color=#4F49AF>There are [amount] units of package wrap left!</font>"
 
 /obj/item/destTagger
 	name = "destination tagger"
