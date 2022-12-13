@@ -282,3 +282,23 @@
 		if (NAMEOF(src, queued_priority)) //editing this breaks things.
 			return FALSE
 	. = ..()
+
+//! zlevel hooks
+/**
+ * called when a zlevel is beginning to be cleared by SSmapping.
+ */
+/datum/controller/subsystem/proc/begin_level_erasure(z)
+	return
+
+/**
+ * called when a zlevel is cleared entirely by SSmapping.
+ */
+/datum/controller/subsystem/proc/finish_level_erasure(z)
+	return
+
+/**
+ * called when world.maxz is changed
+ */
+
+/datum/controller/subsystem/proc/max_z_changed()
+	return

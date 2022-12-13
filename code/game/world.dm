@@ -410,6 +410,8 @@ GLOBAL_LIST(topic_status_cache)
 
 // Things to do when a new z-level was just made.
 /world/proc/max_z_changed()
+	for(var/datum/controller/subsystem/S in Master.subsystems)
+		S.max_z_changed()
 	assert_players_by_zlevel_list()
 
 /proc/assert_players_by_zlevel_list()

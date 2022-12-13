@@ -22,4 +22,4 @@
 /datum/controller/subsystem/mapping/proc/get_obfuscated_id(original, id_type = "GENERAL")
 	if(!original)
 		return	// no.
-	return md5("[obfuscation_secret]%[lowertext(original)]%[lowertext(id_type)]")
+	return sha1("[obfuscation_secret]%[lowertext(original)]%[lowertext(id_type)]")
