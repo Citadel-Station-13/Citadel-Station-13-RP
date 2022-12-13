@@ -304,3 +304,5 @@
 	else
 		log_debug(SPAN_DEBUG("Submaps loaded."))
 	log_debug(SPAN_DEBUG("Loaded: [english_list(pretty_submap_list)]"))
+
+#warn deal with this file

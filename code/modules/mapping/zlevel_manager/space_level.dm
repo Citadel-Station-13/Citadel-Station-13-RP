@@ -76,6 +76,7 @@
 	var/tmp/transitions_rebuild_count = 0
 
 #warn parse this file
+#warn /datum/level_module
 
 /datum/space_level/New(id, list/traits, list/attributes, map_path)
 	if(id)

@@ -42,6 +42,7 @@
 
 #warn parse this file
 #warn lazyload everything, don't instantly json read
+#warn /datum/map_module
 
 /datum/map_config/New(file_jsonstr_list, path)
 	if(file_jsonstr_list)
