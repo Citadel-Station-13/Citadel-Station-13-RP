@@ -54,15 +54,17 @@
 	// hair/fhair
 	var/list/valid_hair = get_valid_hairstyles()
 	var/list/valid_fhair = get_valid_facialhairstyles()
-	if(!(h_style in valid_hair))
+	var/datum/sprite_accessory/HS = GLOB.sprite_accessory_hair[h_style_id]
+	var/datum/sprite_accessory/FS = GLOB.sprite_accessory_facial_hair[f_style_id]
+	if(!(HS.name in valid_hair))
 		var/datum/sprite_accessory/hair/H = /datum/sprite_accessory/hair/bald
-		h_style = initial(H.name)
-	if(!(f_style in valid_fhair))
+		h_style_id = initial(H.id)
+	if(!(FS.name in valid_fhair))
 		var/datum/sprite_accessory/facial_hair/FH = /datum/sprite_accessory/facial_hair/shaved
-		f_style = initial(FH.name)
+		f_style_id = initial(FH.id)
 	// limbs/markings
 	reset_limbs()
-	body_markings.Cut()
+	body_marking_ids.Cut()
 	// age
 	age = clamp(age, CS.min_age, CS.max_age)
 	//! END

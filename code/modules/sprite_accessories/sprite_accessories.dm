@@ -46,38 +46,14 @@
 	/// use front/behind, citadel snowflake for now; only usable on wings/tails
 	var/front_behind_system = FALSE
 
-//skin styles - WIP
-//going to have to re-integrate this with surgery
-//let the icon_state hold an icon preview for now
-/datum/sprite_accessory/skin
-	icon = 'icons/mob/species/human/body.dmi'
-
-/datum/sprite_accessory/skin/human
-	name = "Default human skin"
-	icon_state = "default"
-	species_allowed = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN)
-
-/datum/sprite_accessory/skin/human_tatt01
-	name = "Tatt01 human skin"
-	icon_state = "tatt1"
-	icon = 'icons/mob/species/human/tatt1.dmi'
-	species_allowed = list(SPECIES_HUMAN, SPECIES_HUMAN_VATBORN)
-
-/datum/sprite_accessory/skin/tajaran
-	name = "Default tajaran skin"
-	icon_state = "default"
-	icon = 'icons/mob/species/tajaran/body.dmi'
-	species_allowed = list(SPECIES_TAJ)
-	apply_restrictions = TRUE
-
-/datum/sprite_accessory/skin/unathi
-	name = "Default Unathi skin"
-	icon_state = "default"
-	icon = 'icons/mob/species/unathi/body.dmi'
-	species_allowed = list(SPECIES_UNATHI)
-
-/datum/sprite_accessory/skin/skrell
-	name = "Default skrell skin"
-	icon_state = "default"
-	icon = 'icons/mob/species/skrell/body.dmi'
-	species_allowed = list(SPECIES_SKRELL)
+	// Ckey of person allowed to use this, if defined.
+	var/list/ckeys_allowed = null
+	var/apply_restrictions = FALSE		//whether to apply restrictions for specific tails/ears/wings
+	var/center = FALSE
+	var/dimension_x = 32
+	var/dimension_y = 32
+	/// id
+	var/id
+	// these two are moved up for now
+	var/extra_overlay // Icon state of an additional overlay to blend in.
+	var/extra_overlay2
