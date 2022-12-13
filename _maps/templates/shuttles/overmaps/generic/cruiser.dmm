@@ -4171,9 +4171,6 @@
 /turf/simulated/floor/tiled/steel_grid,
 /area/mothership/processing)
 "jp" = (
-/obj/machinery/computer/transhuman/designer{
-	dir = 4
-	},
 /turf/simulated/floor/tiled/white,
 /area/mothership/resleeving)
 "jq" = (
@@ -4580,7 +4577,6 @@
 /obj/structure/closet/medical_wall{
 	pixel_y = -32
 	},
-/obj/item/storage/box/body_record_disk,
 /obj/item/storage/firstaid/clotting,
 /obj/item/storage/firstaid/bonemed,
 /obj/item/storage/firstaid/adv{

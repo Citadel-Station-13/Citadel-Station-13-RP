@@ -698,3 +698,33 @@
 	category = CAT_MISCELLANEOUS
 	subcategory = CAT_MISCELLANEOUS
 	tools = list(TOOL_WRENCH, TOOL_WELDER)
+
+/datum/crafting_recipe/scanning_array
+	name = "Geothermal Scanning Array"
+	result = /obj/item/scanning_array
+	time = 30
+	reqs = list(/obj/item/stock_parts/scanning_module = 2,
+				/obj/item/stack/cable_coil = 4)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
+	tools = list(TOOL_SCREWDRIVER, TOOL_MULTITOOL)
+
+/datum/crafting_recipe/scanning_array_adv
+	name = "Advanced Geothermal Scanning Array"
+	result = /obj/item/scanning_array_adv
+	time = 30
+	reqs = list(/obj/item/stock_parts/scanning_module/adv = 2,
+				/obj/item/stack/cable_coil = 4)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
+	tools = list(TOOL_SCREWDRIVER, TOOL_MULTITOOL)
+
+/datum/crafting_recipe/scanning_array_phasic
+	name = "Phasic Geothermal Scanning Array"
+	result = /obj/item/scanning_array_phasic
+	time = 30
+	reqs = list(/obj/item/stock_parts/scanning_module/phasic = 2,
+				/obj/item/stack/cable_coil = 4)
+	category = CAT_MISCELLANEOUS
+	subcategory = CAT_MISCELLANEOUS
+	tools = list(TOOL_SCREWDRIVER, TOOL_MULTITOOL)

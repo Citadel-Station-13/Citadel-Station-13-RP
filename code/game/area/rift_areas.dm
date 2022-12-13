@@ -418,7 +418,6 @@
 /area/tether/outpost/solars_shed
 	name = "\improper Solar Farm Shed"
 
-
 // Geothermal power areas
 /area/rift/geothermal
 	name = "\improper Geothermal Power Plant"
