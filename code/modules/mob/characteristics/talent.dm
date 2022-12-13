@@ -23,6 +23,10 @@ GLOBAL_LIST_INIT(characteristics_talents, _create_characteristics_talents())
 /datum/characteristic_talent
 	var/id
 
+/datum/characteristic_talent/proc/gain(datum/mind/M)
+
+/datum/characteristic_talent/proc/lose(datum/mind/M)
+
 /datum/characteristic_talent/proc/attach(mob/M)
 
 /datum/characteristic_talent/proc/detach(mob/M)

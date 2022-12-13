@@ -2816,6 +2816,7 @@
 #include "code\modules\mob\_modifiers\traits.dm"
 #include "code\modules\mob\_modifiers\traits_phobias.dm"
 #include "code\modules\mob\_modifiers\unholy.dm"
+#include "code\modules\mob\characteristics\helpers.dm"
 #include "code\modules\mob\characteristics\holder.dm"
 #include "code\modules\mob\characteristics\mob.dm"
 #include "code\modules\mob\characteristics\modifier.dm"

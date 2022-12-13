@@ -18,5 +18,7 @@ GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
  * are held in skill holder
  */
 /datum/characteristic_skill
+	abstract_type = /datum/characteristic_skill
+	/// unique id
 	var/id
 

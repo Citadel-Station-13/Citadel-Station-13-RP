@@ -14,10 +14,18 @@ GLOBAL_LIST_INIT(characteristics_stats, _create_characteristics_stats())
 	return GLOB.characteristics_stats[typepath_or_id]
 
 /**
- * stats - heavily numeric skills
+ * stats - basically raw skills that can theoretically hold anything
  * you usually don't want players to be able to touch these or minmax them too hard
  * use skills whenever possible
  */
 /datum/characteristic_stat
+	abstract_type = /datum/characteristic_stat
+	/// unique id
 	var/id
+	/// datatype
+	var/datatype = CHARACTER_STAT_UNKNOWN
+	/// value
+	var/value
+	/// default value when characteristics are disabled
+	var/default
 
