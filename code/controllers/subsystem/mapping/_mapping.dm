@@ -55,6 +55,7 @@ SUBSYSTEM_DEF(mapping)
 
 	repopulate_sorted_areas()
 #warn reconcile
+#warn initialize default zlevels needs to check if there's unexpected amounts.
 /*
 	// Make sure we're not being reran
 	if(initialized)
