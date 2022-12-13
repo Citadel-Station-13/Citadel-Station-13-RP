@@ -22,3 +22,4 @@ GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
 	/// unique id
 	var/id
 
+

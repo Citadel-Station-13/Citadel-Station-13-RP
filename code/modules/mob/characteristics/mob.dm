@@ -21,14 +21,26 @@
 /mob/proc/get_characteristic_stat(datum/characteristic_stat/typepath_or_id)
 	#warn impl
 
+//! our old stuff below
+// We don't actually have a skills system, so return max skill for everything.
+/mob/proc/get_skill_value(skill_path)
+	return SKILL_EXPERT
+
+// A generic way of modifying success probabilities via skill values. Higher factor means skills have more effect. fail_chance is the chance at SKILL_NONE.
+/mob/proc/skill_fail_chance(skill_path, fail_chance, no_more_fail = SKILL_EXPERT, factor = 1)
+	var/points = get_skill_value(skill_path)
+	if(points >= no_more_fail)
+		return 0
+	else
+		return fail_chance * 2 ** (factor*(SKILL_BASIC - points))
+
+
 //! bay stuff below
 /*
-// Use to perform skill checks
 /mob/proc/skill_check(skill_path, needed)
     var/points = get_skill_value(skill_path)
     return points >= needed
 
-//Passing a list in format of 'skill = level_needed'
 /mob/proc/skill_check_multiple(skill_reqs)
     for(var/skill in skill_reqs)
         . = skill_check(skill, skill_reqs[skill])
@@ -38,7 +50,6 @@
 /mob/proc/get_skill_difference(skill_path, mob/opponent)
     return get_skill_value(skill_path) - opponent.get_skill_value(skill_path)
 
-// A generic way of modifying times via skill values
 /mob/proc/skill_delay_mult(skill_path, factor = 0.3)
     var/points = get_skill_value(skill_path)
     switch(points)
@@ -52,7 +63,6 @@
 /mob/proc/do_skilled(base_delay, skill_path , atom/target = null, factor = 0.3, do_flags = DO_DEFAULT)
     return do_after(src, base_delay * skill_delay_mult(skill_path, factor), target, do_flags)
 
-// A generic way of modifying success probabilities via skill values. Higher factor means skills have more effect. fail_chance is the chance at SKILL_UNTRAINED.
 /mob/proc/skill_fail_chance(skill_path, fail_chance, no_more_fail = SKILL_MAX, factor = 1)
     var/points = get_skill_value(skill_path)
     if(points >= no_more_fail)
@@ -60,7 +70,6 @@
     else
         return fail_chance * 2 ** (factor*(SKILL_MIN - points))
 
-// Simple prob using above
 /mob/proc/skill_fail_prob(skill_path, fail_chance, no_more_fail = SKILL_MAX, factor = 1)
     return prob(skill_fail_chance(skill_path, fail_chance, no_more_fail, factor ))
 	*/

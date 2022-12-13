@@ -24,8 +24,5 @@ GLOBAL_LIST_INIT(characteristics_stats, _create_characteristics_stats())
 	var/id
 	/// datatype
 	var/datatype = CHARACTER_STAT_UNKNOWN
-	/// value
-	var/value
 	/// default value when characteristics are disabled
 	var/default
-
