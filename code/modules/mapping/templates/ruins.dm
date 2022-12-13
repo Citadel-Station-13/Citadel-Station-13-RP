@@ -1,3 +1,5 @@
+#warn deal with
+
 /datum/map_template/ruin/proc/try_to_place(z,allowed_areas,turf/forced_turf)
 	var/sanity = forced_turf ? 1 : PLACEMENT_TRIES
 	if(SSmapping.level_trait(z,ZTRAIT_ISOLATED_RUINS))
