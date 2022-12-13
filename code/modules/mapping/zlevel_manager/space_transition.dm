@@ -45,6 +45,9 @@
 		return
 	AddComponent(/datum/component/transition_border, TRANSITION_VISUAL_SIZE, dir)
 
+#warn istransition turf shouldn't get comp
+#warn this file is shitcode
+
 /**
  * Returns if we're on the edge of a zlevel
  */

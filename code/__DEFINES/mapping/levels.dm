@@ -23,3 +23,5 @@
 #define ZTRAIT_GRAVITY "gravity"
 /// level should generate on minimaps
 #define ZTRAIT_MINIMAP "minimap"
+/// level is reserved space
+#define ZTRAIT_RESERVED "reserved"

@@ -40,6 +40,7 @@
 	var/static/regex/grid_parser = new(@"([\n]+),([\n)]+,([\n]+)", "g")
 
 #warn parse this file
+#warn vvguard the parser
 
 /datum/world_struct/Destroy(force)
 	if(constructed)

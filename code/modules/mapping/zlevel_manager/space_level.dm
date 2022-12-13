@@ -13,6 +13,9 @@
 	var/instantiated = FALSE
 	/// ID - defaults to null
 	var/id
+	/// id was autogen'd
+	var/random_id
+	#warn don't keep raw jsson
 	/// Loaded JSON data
 	var/list/raw_json
 	/// Path to .dmm - this must be relative to the folder the .json was loaded from.
@@ -23,7 +26,7 @@
 	var/orientation = SOUTH
 	/// load centered?
 	var/center = TRUE
-	/// load "void" tiles for blank areas when we're smaller than the world zlevel size?
+	/// load "void" tiles for blank areas when we're smaller than the world zlevel size as opposed to baseturf
 	var/fill_void = FALSE
 
 	#warn hook these into load process and generation
@@ -36,6 +39,7 @@
 	var/topright_x
 	/// end y
 	var/topright_y
+	#warn we probably need to store width/height too
 
 	// Linkage/MultiZ - what zlevels are where. References by ID, or direct ref to a space_level datum
 	VAR_PRIVATE/up
@@ -83,6 +87,9 @@
 		src.id = id
 	if(!src.id)
 		src.id = "[GUID()]"
+		src.random_id = TRUE
+	else
+		src.random_id = FALSE
 	if(map_path)
 		src.map_path = map_path
 	if(traits)
@@ -236,9 +243,13 @@
 	ASSERT(istext(other) || istype(other, /datum/space_level))
 	down = other
 
+#warn getters
+
 /datum/space_level/proc/SetID(id)
 	SSmapping.level_by_id -= src.id
 	src.id = id
+	#warn check to make sure
+	#warn literally stack trace on this proc because this'll break shit
 	SSmapping.level_by_id[src.id] = src
 
 /**

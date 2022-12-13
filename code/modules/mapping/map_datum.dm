@@ -45,6 +45,9 @@
 #warn /datum/map_module
 #warn allow all map configs to "require" other map configs for loading
 #warn when admin loading a level, make sure to confirm with them what they'll load in.
+#warn world struct support
+#warn planet support on level and world struct
+#warn support circular references and cross referencing for structs and planets!
 
 /datum/map_config/New(file_jsonstr_list, path)
 	if(file_jsonstr_list)
