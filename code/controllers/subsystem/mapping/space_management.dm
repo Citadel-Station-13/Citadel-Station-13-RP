@@ -26,10 +26,13 @@
 	/// World struct lookup by level
 	var/static/list/datum/world_struct/struct_by_z = list()
 
+/datum/controller/subsystem/mapping/proc/max_z_changed()
+	synchronize_datastructures()
+
 /**
  * Ensure all synchronized lists are valid
  */
-/datum/controller/subsystem/mapping/proc/SynchronizeDatastructures()
+/datum/controller/subsystem/mapping/proc/synchronize_datastructures()
 #define SYNC(var) if(!var) { var = list() ; } ; if(var.len != world.maxz) { . = TRUE ; var.len = world.maxz; }
 	. = FALSE
 	SYNC(space_levels)
@@ -132,8 +135,6 @@
 	var/new_z = GetInstantiationLevel(level.baseturf)
 	#warn above --> void turf behavior??
 
-	SynchronizeDatastructures()
-
 	if(new_z in reusable_levels)
 		reusable_levels -= new_z
 
@@ -145,6 +146,7 @@
 	if(load_from_path)
 		var/path = level.GetPath()
 		// can be file or path, NO .DMM STRINGS I SWEAR TO GOD
+		// currently we do not support lists
 		if(fexists(path) || isfile(path))
 			var/datum/parsed_map/parsed = new(isfile(path)? path : file(level.GetPath()))
 			var/width = parsed.width
