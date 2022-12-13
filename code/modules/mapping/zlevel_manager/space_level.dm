@@ -76,6 +76,12 @@
 	/// base area - path
 	var/base_area
 
+	//! Air
+	/// indoors gas string
+	var/air_indoors = GAS_STRING_STP
+	/// outdoors gas string
+	var/air_outdoors = GAS_STRING_VACUUM
+
 	//! Crosslinking
 	/// Current crosslinking x in grid
 	var/tmp/cl_x

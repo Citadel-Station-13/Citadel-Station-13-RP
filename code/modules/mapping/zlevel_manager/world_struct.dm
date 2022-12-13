@@ -6,6 +6,7 @@
  * Needed until BYOND can natively support this.
  */
 /datum/world_struct
+	#warn add id, random_id
 	/// Z grid - list("x,y,z" = level). Spaces are allowed.
 	var/list/z_grid
 	/// Horizontally loop
