@@ -38,7 +38,7 @@
  * Picks a random space turf from crosslinked levels
  */
 /datum/controller/subsystem/mapping/proc/random_crosslinked_space_turf()
-	var/list/levels = GetCrosslinked()
+	var/list/levels = crosslinked_levels()
 	levels = shuffle(levels)
 	for(var/z in levels)
 		var/list/potential = list()
@@ -52,7 +52,7 @@
  * Picks a random space turf from station levels
  */
 /datum/controller/subsystem/mapping/proc/random_station_space_turf()
-	var/list/levels = LevelsByTrait(ZTRAIT_STATION)
+	var/list/levels = levels_by_trait(ZTRAIT_STATION)
 	levels = shuffle(levels)
 	for(var/z in levels)
 		var/list/potential = list()
@@ -66,7 +66,7 @@
  * Finds the center turf of the "first" (UNSORTED, SO MIGHT BE RANDOM) station leve.
  */
 /datum/controller/subsystem/mapping/proc/get_station_center()
-	var/list/station_z = LevelsByTrait(ZTRAIT_STATION)
+	var/list/station_z = levels_by_trait(ZTRAIT_STATION)
 	if(!station_z.len)		// wtf...
 		return
 	return locate(round(world.maxx * 0.5, 1), round(world.maxy * 0.5, 1), station_z[1])

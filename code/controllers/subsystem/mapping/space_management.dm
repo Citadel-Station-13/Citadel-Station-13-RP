@@ -161,7 +161,7 @@
 		else if(path)	// didn't find, vs non existant
 			stack_trace("Invalid path [path] in [level]")
 
-	var/baseturf = GetBaseturf(new_z)
+	var/baseturf = level_baseturf(new_z)
 	// for any turfs not changed,
 	#warn this is a garbage fucking check, remove it with world.turf change god fucking DAMN
 	for(var/turf/T as anything in block(locate(1, 1, new_z), locate(world.maxx, world.maxy, new_z)))
@@ -597,7 +597,7 @@
 		. = LevelsInStruct(z)
 	. = GetZStack(z)
 	if(allow_crosslink && (L.linkage_mode == Z_LINKAGE_CROSSLINKED))
-		. |= GetCrosslinked()
+		. |= crosslinked_levels()
 
 /**
  * GAME PROC: IsManagedLevel(z)

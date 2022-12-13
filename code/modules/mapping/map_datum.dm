@@ -99,6 +99,11 @@
 			SSjob.EnableMapJobs(enable_jobs)
 			#warn the above needs job refactor
 
+/datum/map_config/proc/validate()
+	. = list()
+	if(!isnum(width) || width <= 0)
+#warn validation needs to happen in unit tests AND spit errors out into to_chat world LOUDLY.
+
 /**
  * Called after loading with a list of z indices corrosponding to each level in the map.
  */
@@ -112,26 +117,18 @@
  * Called a station map config, but this doesn't have to be a station.
  */
 /datum/map_config/station
-	// Config from maps.txt
-	var/config_max_users = 0
-	var/config_min_users = 0
-	var/voteweight = 1
-	/// Enabled? Map is on maps.txt if so
-	var/enabled = FALSE
-	/// Votable?
-	var/votable = TRUE
-
-	// Actual JSON options start
+	//? map type
 	/// This should be used to adjust ingame behavior depending on the specific type of map being played. For instance, if an overmap were added, it'd be appropriate for it to only generate with a MAP_TYPE_SHIP
 	var/maptype = MAP_TYPE_STATION
+	//? persistence
 	/// Persistence key: Defaults to ckey(map_name). If set to "NO_PERSIST", this map will have NO persistence.
 	var/persistence_key
 
+	#warn hoist this to base config see #warn's there
 	/// Extra map levels to load. Should be {"integral" = ["centcom", "lavaland"], "planet" = ["blah"]}, etc.
 	var/list/lateload
 
-	/// The offset of ingame year from the actual IRL year. You know you want to make a map that takes place in the 90's. Don't lie.
-	var/year_offset = 540
+	//? job data
 	// Job overrides - these process on job datum creation!
 	/// Jobs whitelist - if this is not empty, ONLY these jobs are allowed. Overrides blacklist.
 	var/list/job_whitelist
@@ -148,29 +145,21 @@
 	/// Override job accesses - type = list() - overrides everything else
 	var/list/job_access_override
 	// Job overrides end
-	/// do we allow custom shuttle creation?
-	var/allow_custom_shuttles = TRUE
-	/// Determines the announcer the map uses. standard uses the default announcer, classic, but has a random chance to use other similarly-themed announcers, like medibot
-	var/announcertype = "standard"
+	#warn impl job overrides
 
-	// Map type - Standard
-	var/space_ruin_levels = 4
-	var/space_empty_levels = 1
-	var/station_ruin_budget = -1 // can be set to manually override the station ruins budget on maps that don't support station ruins, stopping the error from being unable to place the ruins.
-	var/shuttles = list(
-		"cargo" = "cargo_box",
-		"ferry" = "ferry_fancy",
-		"whiteship" = "whiteship_box",
-		"emergency" = "emergency_box")
+	//? MISC / UNSORTED - ported from legacy; some of these should probably be rethought, some should be organized later.
+
 
 /datum/map_config/station/ParseJSONList(list/data)
 	. = ..()
+	// map type
 	if(data["maptype"])
 		maptype = data["maptype"]
+	// persistence
 	if("persistence_key" in data)
 		persistence_key = data["persistence_key"] || id
-	if("year_offset" in data)
-		year_offset = data["year_offset"]
+
+	// job data
 	job_whitelist = data["job_whitelist"]
 	job_blacklist = data["job_blacklist"]
 	job_override_spawn_positions = data["job_override_spawn_positions"]

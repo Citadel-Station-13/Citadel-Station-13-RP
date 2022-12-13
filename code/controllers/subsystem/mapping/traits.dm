@@ -3,19 +3,19 @@
 
 #warn Recover()
 
-/datum/controller/subsystem/mapping/proc/OnTraitAdd(datum/space_level/level, trait)
+/datum/controller/subsystem/mapping/proc/on_trait_add(datum/space_level/level, trait)
 	return
 
-/datum/controller/subsystem/mapping/proc/OnTraitDel(datum/space_level/level, trait)
+/datum/controller/subsystem/mapping/proc/on_trait_del(datum/space_level/level, trait)
 	return
 
-/datum/controller/subsystem/mapping/proc/OnAttributeSet(datum/space_level/level, attribute, value)
+/datum/controller/subsystem/mapping/proc/on_attribute_set(datum/space_level/level, attribute, value)
 	return
 
 /**
  * Checks if a z level has a trait
  */
-/datum/controller/subsystem/mapping/proc/HasTrait(z, trait)
+/datum/controller/subsystem/mapping/proc/level_trait(z, trait)
 	if(z < 1 || z > world.maxz)
 		CRASH("Invalid z")
 	var/datum/space_level/L = space_levels[z]
@@ -24,7 +24,7 @@
 /**
  * Checks if a z level has any of these traits
  */
-/datum/controller/subsystem/mapping/proc/HasAnyTrait(z, list/traits)
+/datum/controller/subsystem/mapping/proc/level_trait_any(z, list/traits)
 	if(z < 1 || z > world.maxz)
 		CRASH("Invalid z")
 	var/datum/space_level/L = space_levels[z]
@@ -33,7 +33,7 @@
 /**
  * Checks if a z level has all of these traits
  */
-/datum/controller/subsystem/mapping/proc/HasAllTraits(z, list/traits)
+/datum/controller/subsystem/mapping/proc/level_traits_all(z, list/traits)
 	if(z < 1 || z > world.maxz)
 		CRASH("Invalid z")
 	var/datum/space_level/L = space_levels[z]
@@ -42,7 +42,7 @@
 /**
  * Returns a list of z indices with a trait
  */
-/datum/controller/subsystem/mapping/proc/LevelsByTrait(trait)
+/datum/controller/subsystem/mapping/proc/levels_by_trait(trait)
 	RETURN_TYPE(/list)
 	. = list()
 	for(var/datum/space_level/L as anything in space_levels)
@@ -52,7 +52,7 @@
 /**
  * Returns a list of z indices with any of these traits
  */
-/datum/controller/subsystem/mapping/proc/LevelsByAnyTrait(list/traits)
+/datum/controller/subsystem/mapping/proc/levels_by_any_trait(list/traits)
 	RETURN_TYPE(/list)
 	. = list()
 	for(var/datum/space_level/L as anything in space_levels)
@@ -62,7 +62,7 @@
 /**
  * Returns a list of z indices with any of these traits
  */
-/datum/controller/subsystem/mapping/proc/LevelsByAllTraits(list/traits)
+/datum/controller/subsystem/mapping/proc/levels_by_all_trait(list/traits)
 	RETURN_TYPE(/list)
 	. = list()
 	for(var/datum/space_level/L as anything in space_levels)
@@ -72,7 +72,7 @@
 /**
  * Returns an attribute of a zlevel
  */
-/datum/controller/subsystem/mapping/proc/GetAttribute(z, key)
+/datum/controller/subsystem/mapping/proc/level_attribute(z, key)
 	if(z < 1 || z > world.maxz)
 		CRASH("Invalid z")
 	var/datum/space_level/L = space_levels[z]
@@ -81,7 +81,7 @@
 /**
  * Returns the z indices of levels with a certain attribute set to a certain value
  */
-/datum/controller/subsystem/mapping/proc/LevelsByAttribute(key, value)
+/datum/controller/subsystem/mapping/proc/levels_by_attribute(key, value)
 	RETURN_TYPE(/list)
 	. = list()
 	for(var/datum/space_level/L as anything in space_levels)
@@ -91,7 +91,7 @@
 /**
  * Returns all crosslinked z indices
  */
-/datum/controller/subsystem/mapping/proc/GetCrosslinked()
+/datum/controller/subsystem/mapping/proc/crosslinked_levels()
 	RETURN_TYPE(/list)
 	. = list()
 	for(var/datum/space_level/L as anything in space_levels)
@@ -101,12 +101,8 @@
 /**
  * Gets baseturf type of a zlevel
  */
-/datum/controller/subsystem/mapping/proc/GetBaseturf(z)
+/datum/controller/subsystem/mapping/proc/level_baseturf(z)
 	var/datum/space_level/L = space_levels[z]
 	return L.baseturf || world.turf
 
-/**
- * Gets deault air of a zlevel
- */
-/datum/controller/subsystem/mapping/proc/GetDefaultAir(z)
-	return GetAttribute(z, ZATTRIBUTE_GAS_STRING) || AIRLESS_ATMOS
+#warn indoors / outdoors airmix, maybe we should cache?

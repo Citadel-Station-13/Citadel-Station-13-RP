@@ -169,6 +169,8 @@
 	if(data["linkage_mode"])
 		linkage_mode = data["linkage_mode"]
 
+#warn validate()
+
 /**
  * Called after the level is physically created.
  *
@@ -292,7 +294,7 @@
 /**
  * Do we have a certain trait?
  */
-/datum/space_level/proc/HasTrait(trait)
+/datum/space_level/proc/level_trait(trait)
 	return trait in traits
 
 /**
@@ -300,19 +302,19 @@
  */
 /datum/space_level/proc/RemoveTrait(trait)
 	traits -= trait
-	SSmapping.OnTraitDel(src, trait)
+	SSmapping.on_trait_del(src, trait)
 
 /**
  * Adds a trait
  */
 /datum/space_level/proc/AddTrait(trait)
 	traits |= trait
-	SSmapping.OnTraitAdd(src, trait)
+	SSmapping.on_trait_add(src, trait)
 
 /**
  * Get value of attribute
  */
-/datum/space_level/proc/GetAttribute(attr)
+/datum/space_level/proc/level_attribute(attr)
 	return attributes[attr]
 
 /**
@@ -320,7 +322,7 @@
  */
 /datum/space_level/proc/SetAttribute(attr, val)
 	attributes[attr] = val
-	SSmapping.OnAttributeSet(src, attr, val)
+	SSmapping.on_attribute_set(src, attr, val)
 
 /**
  * Gets neighbor in dir

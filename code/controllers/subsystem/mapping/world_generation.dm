@@ -32,32 +32,32 @@
 
 			// Generate mining ruins
 			loading_ruins = TRUE
-			var/list/lava_ruins = LevelsByTrait(ZTRAIT_LAVA_RUINS)
+			var/list/lava_ruins = levels_by_trait(ZTRAIT_LAVA_RUINS)
 			if (lava_ruins.len)
 				seedRuins(lava_ruins, CONFIG_GET(number/lavaland_budget), list(/area/lavaland/surface/outdoors/unexplored), lava_ruins_templates)
 				for (var/lava_z in lava_ruins)
 					spawn_rivers(lava_z)
 
-			var/list/ice_ruins = LevelsByTrait(ZTRAIT_ICE_RUINS)
+			var/list/ice_ruins = levels_by_trait(ZTRAIT_ICE_RUINS)
 			if (ice_ruins.len)
 				// needs to be whitelisted for underground too so place_below ruins work
 				seedRuins(ice_ruins, CONFIG_GET(number/icemoon_budget), list(/area/icemoon/surface/outdoors/unexplored, /area/icemoon/underground/unexplored), ice_ruins_templates)
 				for (var/ice_z in ice_ruins)
 					spawn_rivers(ice_z, 4, /turf/open/openspace/icemoon, /area/icemoon/surface/outdoors/unexplored/rivers)
 
-			var/list/ice_ruins_underground = LevelsByTrait(ZTRAIT_ICE_RUINS_UNDERGROUND)
+			var/list/ice_ruins_underground = levels_by_trait(ZTRAIT_ICE_RUINS_UNDERGROUND)
 			if (ice_ruins_underground.len)
 				seedRuins(ice_ruins_underground, CONFIG_GET(number/icemoon_budget), list(/area/icemoon/underground/unexplored), ice_ruins_underground_templates)
 				for (var/ice_z in ice_ruins_underground)
-					spawn_rivers(ice_z, 4, GetBaseturf(ice_z), /area/icemoon/underground/unexplored/rivers)
+					spawn_rivers(ice_z, 4, level_baseturf(ice_z), /area/icemoon/underground/unexplored/rivers)
 
 			// Generate deep space ruins
-			var/list/space_ruins = LevelsByTrait(ZTRAIT_SPACE_RUINS)
+			var/list/space_ruins = levels_by_trait(ZTRAIT_SPACE_RUINS)
 			if (space_ruins.len)
 				seedRuins(space_ruins, CONFIG_GET(number/space_budget), list(/area/space), space_ruins_templates)
 
 			// Generate station space ruins
-			var/list/station_ruins = LevelsByTrait(ZTRAIT_STATION)
+			var/list/station_ruins = levels_by_trait(ZTRAIT_STATION)
 			if (station_ruins.len)
 				seedRuins(station_ruins, (SSmapping.map.station_ruin_budget < 0) ? CONFIG_GET(number/station_space_budget) : SSmapping.map.station_ruin_budget, list(/area/space/station_ruins), station_ruins_templates)
 			SSmapping.seedStation()
