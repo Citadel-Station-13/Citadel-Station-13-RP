@@ -1,3 +1,8 @@
+//! General
+
+//? skillcheck types used for specializations and skill checks
+
+
 //! Skills
 
 //? skill levels

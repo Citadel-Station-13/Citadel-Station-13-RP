@@ -25,10 +25,6 @@ GLOBAL_LIST_INIT(characteristics_specializations, _create_characteristics_specia
 	var/name = "ERROR"
 	/// desc
 	var/desc = "An unknown specialization. Someone needs to set this!"
-	/// category - just strings for now, don't need defines yet
-	var/category = "Unsorted"
-	/// what to return if characteristics are disabled
-	var/default
 
 	#warn specializations?
 
