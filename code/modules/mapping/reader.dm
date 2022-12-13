@@ -48,6 +48,9 @@
 	var/turfsSkipped = 0
 	#endif
 
+	/// Allow maxx/maxy expand? Don't ever turn this on outside of debugging
+	var/allow_expand = FALSE
+
 /// Shortcut function to parse a map and apply it to the world.
 ///
 /// - `dmm_file`: A .dmm file to load (Required).
@@ -213,6 +216,7 @@
 	var/list/modelCache = build_cache(no_changeturf)
 	var/space_key = modelCache[SPACE_KEY]
 	var/list/bounds
+	var/did_expand = FALSE
 	src.bounds = bounds = list(1.#INF, 1.#INF, 1.#INF, -1.#INF, -1.#INF, -1.#INF)
 	var/datum/map_orientation_pattern/mode = forced_pattern || GLOB.map_orientation_patterns["[orientation]"] || GLOB.map_orientation_patterns["[SOUTH]"]
 	var/invert_y = mode.invert_y
@@ -224,6 +228,8 @@
 	var/delta_swap = x_offset - y_offset
 	// less checks later
 	var/do_crop = x_lower > -INFINITY || x_upper < INFINITY || y_lower > -INFINITY || y_upper < INFINITY
+	/// Did we try to run out of bounds?
+	var/overflowed = FALSE
 
 	for(var/__I in gridSets)
 		var/datum/grid_set/gridset = __I
@@ -235,6 +241,7 @@
 			else
 				while(parsed_z > world.maxz)
 					world.incrementMaxZ()
+					did_expand = TRUE
 			if(!no_changeturf)
 				WARNING("Z-level expansion occurred without no_changeturf set, this may cause problems when /turf/AfterChange is called")
 		//these values are the same until a new gridset is reached.
@@ -255,12 +262,22 @@
 						actual_x += xi
 						continue
 					else
-						world.maxx = placement_x
+						if(!allow_expand)
+							overflowed = TRUE
+							actual_x += xi
+						else
+							world.maxx = placement_x
+						did_expand = TRUE
 				if(placement_y > world.maxy)
 					if(cropMap)
 						break
 					else
-						world.maxy = placement_y
+						if(!allow_expand)
+							overflowed = TRUE
+							actual_y += yi
+						else
+							world.maxy = placement_y
+						did_expand = TRUE
 				if(placement_x < 1)
 					actual_x += xi
 					continue
@@ -295,6 +312,12 @@
 			var/turf/T = t
 			//we do this after we load everything in. if we don't; we'll have weird atmos bugs regarding atmos adjacent turfs
 			T.AfterChange(CHANGETURF_IGNORE_AIR)
+
+	// if(did_expand)
+	// 	world.refresh_atmos_grid()
+
+	if(overflowed)
+		stack_trace("[src] was stopped from expanding world.maxx/world.maxy. This shouldn't happen.")
 
 	#ifdef TESTING
 	if(turfsSkipped)
@@ -334,7 +357,7 @@
 
 			if(!ispath(atom_def, /atom)) // Skip the item if the path does not exist.  Fix your crap, mappers!
 				if(bad_paths)
-					LAZYDISTINCTADD(bad_paths[path_text], model_key)
+					LAZYOR(bad_paths[path_text], model_key)
 				continue
 			members.Add(atom_def)
 

@@ -52,7 +52,7 @@
 			color_area_names[meta_color] = A.name
 		meta_icon.DrawBox(meta_color, img_x, img_y)
 
-		if(iswall(T))
+		if(istype(T, /turf/closed/wall))
 			map_icon.DrawBox("#000000", img_x, img_y)
 
 		else if(!istype(A, /area/space))
@@ -60,7 +60,7 @@
 			if(locate(/obj/machinery/power/solar) in T)
 				color = "#02026a"
 
-			if((locate(/obj/structure/window) in T) || (locate(/obj/structure/grille) in T))
+			if((locate(/obj/spawner/window) in T) || (locate(/obj/structure/grille) in T))
 				color = BlendRGB(color, "#000000", 0.5)
 			map_icon.DrawBox(color, img_x, img_y)
 
@@ -134,12 +134,13 @@
 			return num;
 		}
 		window.onload = function() {
-			var datas = \[[jointext(datas, ",")]]
-			if(!window.HTMLCanvasElement){
-				//something has gone horribly wrong!
+			if(!window.HTMLCanvasElement) {
+				var label = document.getElementById("label-1");
+				label.textContent = "<h1>WARNING! HTMLCanvasElement not found!</h1>"
 				return false
 			}
-			for(var i = 0; i < [length(minimaps)]; i++){
+			var datas = \[[jointext(datas, ",")]]
+			for(var i = 0; i < [length(minimaps)]; i++) {
 				//the fuck is this wrapped?
 				var data = datas\[i];
 				var img = document.getElementById("map-" + (i + 1));
@@ -160,13 +161,16 @@
 				ctx.drawImage(document.getElementById("map-" + (i+1) + "-meta"), 0, 0);
 
 				var imagedata = ctx.getImageData(0, 0, img.width, img.height);
-				var label = document.getElementById("label-" + (i+1));
+
 				canvas.onmousemove = function(e){
 					var rect = canvas.getBoundingClientRect();
 					var x = Math.floor(e.offsetX * img.width / rect.width);
 					var y = Math.floor(e.offsetY * img.height / rect.height);
+
 					var color_idx = x * 4 + (y * 4 * imagedata.width);
 					var color = "#" + hexify(imagedata.data\[color_idx]) + hexify(imagedata.data\[color_idx+1]) + hexify(imagedata.data\[color_idx+2]);
+					var label = document.getElementById("label-" + (i+1)); //label-String(n)
+
 					label.textContent = data\[color];
 					canvas.title = data\[color];
 				}
