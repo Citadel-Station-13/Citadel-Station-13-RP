@@ -117,6 +117,8 @@
  * - pathroot - root path of the .json
  */
 /datum/space_level/proc/ParseJSONList(list/data, pathroot)
+	if(instantiated)
+		CRASH("attempted to reload json while already instantiated")
 	if(!islist(data))
 		CRASH("Invalid data list")
 	raw_json = data
@@ -124,6 +126,8 @@
 		name = data["name"]
 	if(data["id"])
 		SetID(data["id"])
+		random_id = FALSE
+		#warn this shouldn't use set id
 	if(data["path_absolute"])
 		map_path = data["path_absolute"]
 	else if(data["path"])
@@ -246,10 +250,11 @@
 #warn getters
 
 /datum/space_level/proc/SetID(id)
+	if(instantiated)
+		CRASH("attempted to change id of instantiated level; this will usually break things if allowed.")
 	SSmapping.level_by_id -= src.id
 	src.id = id
 	#warn check to make sure
-	#warn literally stack trace on this proc because this'll break shit
 	SSmapping.level_by_id[src.id] = src
 
 /**
