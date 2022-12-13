@@ -54,6 +54,61 @@ SUBSYSTEM_DEF(mapping)
 	populate_spawn_points()
 
 	repopulate_sorted_areas()
+#warn reconcile
+/*
+	// Make sure we're not being reran
+	if(initialized)
+		return
+
+	// init all datums
+	InitMapDatums()
+	InitMapLevels()
+
+	// set map config
+	EnsureConfigLoaded()
+
+	// Init map levels for compiled in maps
+	InitializeDefaultZLevels()
+	if(!reserved_level_count)
+		CreateReservedLevel()
+
+	// load world
+	InstantiateWorld()
+
+	// init vr/away
+	if(CONFIG_GET(flag/roundstart_away))
+		LoadAway()
+	if(CONFIG_GET(flag/roundstart_vr))
+		LoadVR()
+
+	// finalize
+	var/rebuild_start = REALTIMEOFDAY
+	RebuildCrosslinking()		// THIS GOES FIRST
+	RebuildVerticality()
+	RebuildTransitions()
+	RebuildMapLevelTurfs(null, TRUE, TRUE)
+	repopulate_sorted_areas()
+	init_log("Zlevels rebuilt in [(REALTIMEOFDAY - rebuild_start) / 10]s.")
+
+	setup_station_z_index()
+
+	initialize_biomes()
+
+	PerformMapGeneration()
+
+	GLOB.year_integer += map.year_offset
+	GLOB.announcertype = (map.announcertype == "standard" ? (prob(1) ? "medibot" : "classic") : map.announcertype)
+
+	repopulate_sorted_areas()
+	process_teleport_locs()			//Sets up the wizard teleport locations
+	preloadTemplates()
+
+	repopulate_sorted_areas()
+	// Set up Z-level transitions.
+	generate_station_area_list()
+	Feedback()
+	return ..()
+*/
 	return ..()
 
 //
