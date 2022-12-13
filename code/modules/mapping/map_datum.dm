@@ -43,6 +43,8 @@
 #warn parse this file
 #warn lazyload everything, don't instantly json read
 #warn /datum/map_module
+#warn allow all map configs to "require" other map configs for loading
+#warn when admin loading a level, make sure to confirm with them what they'll load in.
 
 /datum/map_config/New(file_jsonstr_list, path)
 	if(file_jsonstr_list)
