@@ -135,7 +135,7 @@
 #define BUILTIN_DECAL_LAYER (TURF_LAYER+0.01) /// For floors that automatically add decal overlays.
 #define MAPPER_DECAL_LAYER  (TURF_LAYER+0.02) /// For intentionally placed floor decal overlays.
 #define AO_LAYER            (TURF_LAYER+0.04) /// Ambient Occlusion layer.
-#define UNDERWATER_LAYER    (TURF_LAYER+0.5)   /// Anything on this layer will render under the water layer.
+#define UNDERWATER_LAYER    (TURF_LAYER+0.5)  /// Anything on this layer will render under the water layer.
 //! Turf/Obj layer boundary
 #define WATER_LAYER         (OBJ_LAYER)       /// Layer for water overlays.
 #define ABOVE_TURF_LAYER    (OBJ_LAYER+0.1)   /// Snow and wallmounted/floormounted equipment.
