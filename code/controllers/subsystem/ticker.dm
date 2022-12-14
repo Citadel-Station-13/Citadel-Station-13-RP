@@ -3,6 +3,7 @@ SUBSYSTEM_DEF(ticker)
 	wait = 20
 	init_order = INIT_ORDER_TICKER
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
+
 	/// Current state of the game
 	var/static/current_state = GAME_STATE_INIT
 
@@ -14,14 +15,18 @@ SUBSYSTEM_DEF(ticker)
 
 	/// Should we immediately start?
 	var/start_immediately = FALSE
-	/// Is everything in order for us to start a timed reboot?
+	/// All roundend preparation done with, all that's left is reboot.
 	var/ready_for_reboot = FALSE
 	/// Is round end delayed?
 	var/delay_end = FALSE
+	/// A message to display to anyone who tries to restart the world after a delay.
+	var/admin_delay_notice = ""
+
 	/// Force round end
 	var/force_ending = FALSE
 
-	var/timeLeft						//pregame timer
+	/// Pregame timer.
+	var/timeLeft
 	var/start_at
 
 	var/hide_mode = 0
@@ -30,18 +35,27 @@ SUBSYSTEM_DEF(ticker)
 	var/event_time = null
 	var/event = 0
 
-	var/list/datum/mind/minds = list()//The people in the game. Used for objective tracking.
+	/// The people in the game. Used for objective tracking.
+	var/list/datum/mind/minds = list()
 
-	var/Bible_icon_state	// icon_state the chaplain has chosen for his bible
-	var/Bible_item_state	// item_state the chaplain has chosen for his bible
-	var/Bible_name			// name of the bible
+	//! Why is this in Ticker??? @Zandario
+	/// icon_state the chaplain has chosen for his bible.
+	var/Bible_icon_state
+	/// item_state the chaplain has chosen for his bible.
+	var/Bible_item_state
+	/// Name of the bible.
+	var/Bible_name
 	var/Bible_deity_name
 
-	var/random_players = 0 	// if set to nonzero, ALL players who latejoin or declare-ready join will have random appearances/genders
+	/// If set to nonzero, ALL players who latejoin or declare-ready join will have random appearances/genders.
+	var/random_players = 0
 
-	var/list/syndicate_coalition = list() // list of traitor-compatible factions
-	var/list/factions = list()			  // list of all factions
-	var/list/availablefactions = list()	  // list of factions with openings
+	/// List of traitor-compatible factions.
+	var/list/syndicate_coalition = list()
+	/// List of all factions.
+	var/list/factions = list()
+	/// List of factions with openings.
+	var/list/availablefactions = list()
 
 	var/triai = 0//Global holder for Triumvirate
 
@@ -107,7 +121,7 @@ SUBSYSTEM_DEF(ticker)
 			SSvote.autogamemode()
 		//end
 
-/datum/controller/subsystem/ticker/proc/Reboot(reason, delay)
+/datum/controller/subsystem/ticker/proc/Reboot(reason, end_string, delay)
 	set waitfor = FALSE
 	if(usr && !check_rights(R_SERVER, TRUE))
 		return
