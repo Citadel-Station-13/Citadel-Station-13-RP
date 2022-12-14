@@ -77,33 +77,33 @@
 		if ((R.dir == Lturn) && R.anchored)
 			check |= 32
 			if (UpdateNeighbors)
-				R.update_icon(0)
+				R.update_icon()
 		if ((R.dir == Rturn) && R.anchored)
 			check |= 2
 			if (UpdateNeighbors)
-				R.update_icon(0)
+				R.update_icon()
 
 	for (var/obj/structure/railing/R in get_step(src, Lturn))
 		if ((R.dir == src.dir) && R.anchored)
 			check |= 16
 			if (UpdateNeighbors)
-				R.update_icon(0)
+				R.update_icon()
 	for (var/obj/structure/railing/R in get_step(src, Rturn))
 		if ((R.dir == src.dir) && R.anchored)
 			check |= 1
 			if (UpdateNeighbors)
-				R.update_icon(0)
+				R.update_icon()
 
 	for (var/obj/structure/railing/R in get_step(src, (Lturn + src.dir)))
 		if ((R.dir == Rturn) && R.anchored)
 			check |= 64
 			if (UpdateNeighbors)
-				R.update_icon(0)
+				R.update_icon()
 	for (var/obj/structure/railing/R in get_step(src, (Rturn + src.dir)))
 		if ((R.dir == Lturn) && R.anchored)
 			check |= 4
 			if (UpdateNeighbors)
-				R.update_icon(0)
+				R.update_icon()
 
 /obj/structure/railing/update_icon(var/UpdateNeighgors = 1)
 	NeighborsCheck(UpdateNeighgors)
