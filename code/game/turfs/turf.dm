@@ -165,6 +165,10 @@
 	flags &= ~INITIALIZED
 	// requires_activation = FALSE
 
+	if (ao_queued)
+		SSao.queue -= src
+		ao_queued = 0
+
 	vis_contents.len = 0
 
 	..()
