@@ -117,11 +117,13 @@
 #define ATMOS_LAYER    (TURF_LAYER+0.4) /// Pipe-like atmos machinery that goes on the floor, like filters.
 #define ABOVE_UTILITY  (TURF_LAYER+0.5) /// Above stuff like pipes and wires.
 
+
 /**
  *! Decal Plane (secretly just PLATING_PLANE for now) as this is to be removed.
  * TODO: kill all these useless goddamn arbitrary planes and unify things to 3-5 of turf, floor, obj, mob, there is no excuse for this utter charade.
  */
 #define DECAL_PLANE -44
+
 
 /**
  *! -- Turfs Plane
@@ -132,10 +134,12 @@
 #define WATER_FLOOR_LAYER   (TURF_LAYER)      /// The 'bottom' of water tiles.
 #define BUILTIN_DECAL_LAYER (TURF_LAYER+0.01) /// For floors that automatically add decal overlays.
 #define MAPPER_DECAL_LAYER  (TURF_LAYER+0.02) /// For intentionally placed floor decal overlays.
-#define UNDERWATER_LAYER    (TURF_LAYER+0.5)  /// Anything on this layer will render under the water layer.
+#define AO_LAYER            (TURF_LAYER+0.04) /// Ambient Occlusion layer.
+#define UNDERWATER_LAYER    (TURF_LAYER+0.5)   /// Anything on this layer will render under the water layer.
 //! Turf/Obj layer boundary
 #define WATER_LAYER         (OBJ_LAYER)       /// Layer for water overlays.
 #define ABOVE_TURF_LAYER    (OBJ_LAYER+0.1)   /// Snow and wallmounted/floormounted equipment.
+
 
 /**
  *! -- Obj Plane

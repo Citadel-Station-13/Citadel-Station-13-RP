@@ -7,13 +7,17 @@
 
 	light_power = 0.25
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	permit_ao = FALSE
 
 	initial_gas_mix = GAS_STRING_VACUUM
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 	temperature = 2.7
 	can_build_into_floor = TRUE
-	var/edge = 0		// If we're an edge
-	var/forced_dirs = 0	// Force this one to pretend it's an overedge turf
+
+	/// If we're an edge.
+	var/edge = 0
+	/// Force this one to pretend it's an overedge turf.
+	var/forced_dirs = 0
 
 /turf/space/basic
 	flags = INITIALIZED

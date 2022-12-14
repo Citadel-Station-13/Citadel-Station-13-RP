@@ -1,5 +1,7 @@
 /// Any floor or wall. What makes up the station and the rest of the map.
 /turf
+	abstract_type = /turf
+
 	icon = 'icons/turf/floors.dmi'
 	layer = TURF_LAYER
 	plane = TURF_PLANE
@@ -127,6 +129,9 @@
 
 	if (opacity)
 		has_opaque_atom = TRUE
+
+	if (mapload && permit_ao)
+		queue_ao()
 
 	//Pathfinding related
 	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.

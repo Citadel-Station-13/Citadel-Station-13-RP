@@ -158,6 +158,7 @@
 	can_build_into_floor = TRUE
 	allow_gas_overlays = FALSE
 	z_flags = Z_AIR_UP | Z_AIR_DOWN | Z_OPEN_UP | Z_OPEN_DOWN | Z_CONSIDERED_OPEN
+	permit_ao = FALSE
 
 	var/turf/below
 

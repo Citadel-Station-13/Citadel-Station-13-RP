@@ -86,6 +86,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	var/old_lc_topleft = lc_topleft
 	var/old_lc_bottomright = lc_bottomright
 	var/old_lc_bottomleft = lc_bottomleft
+	var/old_ao_neighbors = ao_neighbors
 
 	// store/invalidae atmos
 	var/atom/movable/fire/old_fire = fire
@@ -135,12 +136,17 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	if(flags & CHANGETURF_PRESERVE_OUTDOORS)
 		outdoors = old_outdoors
 
+	// Regen AO
+	if (permit_ao)
+		regenerate_ao()
+
 	// restore/update atmos
 	if(old_fire)
 		fire = old_fire
 	queue_zone_update()
 
 	// restore lighting
+	W.ao_neighbors = old_ao_neighbors
 	if(SSlighting.initialized)
 		recalc_atom_opacity()
 		lighting_object = old_lighting_object
