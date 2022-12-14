@@ -242,10 +242,10 @@
 //				overlays -= last_charged_icon
 //	else
 //		icon_state = "[spell_base]_spell_ready"
-	overlays.Cut()
+	cut_overlays()
 	icon_state = "[background_base_state]_spell_base"
 
-	overlays += ability_icon_state
+	add_overlay(ability_icon_state)
 
 //	last_charge = spell.charge_counter
 

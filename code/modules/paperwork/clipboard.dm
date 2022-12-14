@@ -16,13 +16,17 @@
 	update_icon()
 
 /obj/item/clipboard/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	if(toppaper)
-		overlays += toppaper.icon_state
-		overlays += toppaper.overlays
+		overlays_to_add += toppaper.icon_state
+		overlays_to_add += toppaper.overlays
 	if(haspen)
-		overlays += "clipboard_pen"
-	overlays += "clipboard_over"
+		overlays_to_add += "clipboard_pen"
+	overlays_to_add += "clipboard_over"
+
+	add_overlay(overlays_to_add)
+
 	return
 
 /obj/item/clipboard/attackby(obj/item/W as obj, mob/user as mob)

@@ -192,7 +192,7 @@
 			var/icon/test = get_flat_icon(W)
 			test.Shift(NORTH,1)
 			test.Shift(EAST,6)
-			overlays += test
+			add_overlay(test)
 
 	return ..()
 
@@ -388,11 +388,11 @@
 
 /obj/structure/reagent_dispensers/water_cooler/update_icon()
 	icon_state = "water_cooler"
-	overlays.Cut()
+	cut_overlays()
 	var/image/I
 	if(bottle)
 		I = image(icon, "water_cooler_bottle")
-		overlays += I
+		add_overlay(I)
 	return
 
 /obj/structure/reagent_dispensers/beerkeg

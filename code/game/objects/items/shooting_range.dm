@@ -23,7 +23,7 @@
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		var/obj/item/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
-			overlays.Cut()
+			cut_overlays()
 			to_chat(usr, "You slice off [src]'s uneven chunks of aluminum and scorch marks.")
 	else
 		return ..()

@@ -9,9 +9,9 @@
 
 /obj/vehicle/ridden/wheelchair/update_icon()
 	..()
-	overlays.Cut()
+	cut_overlays()
 	var/image/O = image(icon = 'icons/obj/furniture.dmi', icon_state = "w_overlay", layer = src.layer + 1)
-	overlays += O
+	add_overlay(O)
 	return
 
 

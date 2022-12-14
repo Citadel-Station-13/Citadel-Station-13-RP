@@ -19,10 +19,10 @@
 	update_icon()
 
 /obj/machinery/space_heater/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	icon_state = "sheater[on]"
 	if(panel_open)
-		overlays  += "sheater-open"
+		add_overlay("sheater-open")
 	if(on)
 		set_light(3, 3, "#FFCC00")
 	else
@@ -288,14 +288,16 @@
 	env.merge(removed)
 
 /obj/machinery/power/thermoregulator/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	if(on)
-		overlays += "lasergen-on"
+		overlays_to_add += "lasergen-on"
 		switch(mode)
 			if(MODE_HEATING)
-				overlays += "lasergen-heat"
+				overlays_to_add += "lasergen-heat"
 			if(MODE_COOLING)
-				overlays += "lasergen-cool"
+				overlays_to_add += "lasergen-cool"
+	add_overlay(overlays_to_add)
 
 /obj/machinery/power/thermoregulator/proc/turn_off()
 	on = 0
