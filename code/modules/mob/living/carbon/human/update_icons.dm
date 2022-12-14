@@ -151,7 +151,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		else
 			DI = GLOB.damage_icon_parts[cache_index]
 
-		standing_image.overlays += DI
+		standing_image.add_overlay(DI)
 
 	overlays_standing[DAMAGE_LAYER]	= standing_image
 	apply_layer(DAMAGE_LAYER)
@@ -1046,7 +1046,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	for(var/datum/modifier/M in modifiers)
 		if(M.mob_overlay_state)
 			var/image/I = image(icon = 'icons/mob/modifier_effects.dmi', icon_state = M.mob_overlay_state)
-			effects.overlays += I //TODO, this compositing is annoying.
+			effects.add_overlay(I) //TODO, this compositing is annoying.
 
 	overlays_standing[MODIFIER_EFFECTS_LAYER] = effects
 
@@ -1128,7 +1128,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 	for(var/obj/item/organ/external/E in organs)
 		if(E.open)
 			var/image/I = image(icon = 'icons/mob/surgery.dmi',  icon_state = "[E.icon_name][round(E.open)]", layer = BODY_LAYER+SURGERY_LAYER)
-			total.overlays += I //TODO: This compositing is annoying
+			total.add_overlay(I) //TODO: This compositing is annoying
 
 	if(total.overlays.len)
 		overlays_standing[SURGERY_LAYER] = total

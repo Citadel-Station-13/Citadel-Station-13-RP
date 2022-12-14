@@ -136,7 +136,7 @@ SUBSYSTEM_DEF(air)
 		T.update_air_properties()
 		T.post_update_air_properties()
 		#ifdef ZAS_DEBUG_GRAPHICS
-		T.overlays -= mark
+		T.cut_overlay(mark)
 		#endif
 		if(MC_TICK_CHECK)
 			return
@@ -153,7 +153,7 @@ SUBSYSTEM_DEF(air)
 		T.update_air_properties()
 		T.post_update_air_properties()
 		#ifdef ZAS_DEBUG_GRAPHICS
-		T.overlays -= mark
+		T.cut_overlay(mark)
 		#endif
 		if(MC_TICK_CHECK)
 			return

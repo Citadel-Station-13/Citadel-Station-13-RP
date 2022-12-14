@@ -24,7 +24,7 @@ GLOBAL_LIST_BOILERPLATE(all_pai_cards, /obj/item/paicard)
 
 /obj/item/paicard/Initialize(mapload)
 	. = ..()
-	overlays += "pai-off"
+	add_overlay("pai-off")
 
 /obj/item/paicard/Destroy()
 	//Will stop people throwing friend pAIs into the singularity so they can respawn

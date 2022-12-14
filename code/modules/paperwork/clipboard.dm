@@ -20,7 +20,7 @@
 	var/list/overlays_to_add = list()
 	if(toppaper)
 		overlays_to_add += toppaper.icon_state
-		overlays_to_add += toppaper.overlays
+		overlays_to_add += copy_overlays(toppaper)
 	if(haspen)
 		overlays_to_add += "clipboard_pen"
 	overlays_to_add += "clipboard_over"

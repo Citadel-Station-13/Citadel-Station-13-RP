@@ -180,7 +180,7 @@
 				break
 		icon_state = (new_state)? new_state : initial(icon_state)
 	if(ammo_mark)
-		overlays += "[initial(icon_state)]_[ammo_mark]"
+		add_overlay("[initial(icon_state)]_[ammo_mark]")
 
 /obj/item/ammo_magazine/examine(mob/user)
 	. = ..()

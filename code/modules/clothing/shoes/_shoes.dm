@@ -59,7 +59,7 @@
 	if(usr.put_in_hands(holding))
 		usr.visible_message("<span class='danger'>\The [usr] pulls a knife out of their boot!</span>")
 		holding = null
-		overlays -= image(icon, "[icon_state]_knife")
+		cut_overlay(image(icon, "[icon_state]_knife"))
 	else
 		to_chat(usr, "<span class='warning'>Your need an empty, unbroken hand to do that.</span>")
 	if(!holding)

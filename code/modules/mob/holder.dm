@@ -67,19 +67,19 @@
 	var/obj/item/I = GetID()
 	return I ? I.GetAccess() : ..()
 
-/obj/item/holder/proc/sync(var/mob/living/M)
+/obj/item/holder/proc/sync(mob/living/M)
 	dir = SOUTH
-	overlays.len = 0
+	cut_overlays()
 	// appearance clone their ass
 	var/mutable_appearance/MA = new
 	MA.appearance = M
 	MA.plane = plane
 	MA.dir = SOUTH
-	// ok this was a bad idea 
+	// ok this was a bad idea
 	// todo: refactor holders entirely, we shouldn't be cloning mob state???
 	// icon = M.icon	// legacy
 	icon_state = M.icon_state	// legacy
-	overlays += MA
+	add_overlay(MA)
 	name = M.name
 	desc = M.desc
 	update_worn_icon()

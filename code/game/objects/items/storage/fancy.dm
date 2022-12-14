@@ -124,9 +124,9 @@
 
 /obj/item/storage/fancy/crayons/update_icon()
 	var/mutable_appearance/ma = new(src)
-	ma.overlays = list()
+	ma.cut_overlays()
 	for(var/obj/item/pen/crayon/crayon in contents)
-		ma.overlays += image('icons/obj/crayons.dmi',crayon.colourName)
+		ma.add_overlay(image('icons/obj/crayons.dmi',crayon.colourName))
 	appearance = ma
 
 /obj/item/storage/fancy/crayons/attackby(obj/item/W as obj, mob/user as mob)
@@ -168,7 +168,7 @@
 	var/mutable_appearance/ma = new(src)
 	ma.overlays = list()
 	for(var/obj/item/pen/crayon/marker/marker in contents)
-		ma.overlays += image('icons/obj/crayons.dmi',"m"+marker.colourName)
+		ma.add_overlay(image('icons/obj/crayons.dmi',"m"+marker.colourName))
 	appearance = ma
 
 /obj/item/storage/fancy/markers/attackby(obj/item/W as obj, mob/user as mob)
@@ -207,7 +207,7 @@
 	var/mutable_appearance/ma = new(src)
 	ma.overlays = list()
 	for(var/obj/item/pen/crayon/chalk/chalk in contents)
-		ma.overlays += image('icons/obj/crayons.dmi',"c"+chalk.colourName)
+		ma.add_overlay(image('icons/obj/crayons.dmi',"c"+chalk.colourName))
 	appearance = ma
 
 /*

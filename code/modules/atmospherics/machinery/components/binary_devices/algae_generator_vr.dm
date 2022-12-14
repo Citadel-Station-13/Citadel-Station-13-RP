@@ -42,13 +42,15 @@
 	desc = initial(desc) + " Its outlet port is to the [dir2text(dir)]."
 	default_apply_parts()
 	update_icon()
+	var/list/overlays_to_add = list()
 	// TODO - Make these in actual icon states so its not silly like this
 	var/image/I = image(icon = icon, icon_state = "algae-pipe-overlay", dir = dir)
 	I.color = PIPE_COLOR_BLUE
-	overlays += I
+	overlays_to_add += I
 	I = image(icon = icon, icon_state = "algae-pipe-overlay", dir = GLOB.reverse_dir[dir])
 	I.color = PIPE_COLOR_BLACK
-	overlays += I
+	overlays_to_add += I
+	add_overlay(overlays_to_add)
 
 /obj/machinery/atmospherics/component/binary/algae_farm/Destroy()
 	. = ..()

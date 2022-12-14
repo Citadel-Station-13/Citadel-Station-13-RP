@@ -850,7 +850,7 @@
 					var/old_icon_state1 = T.icon_state
 					var/old_icon1 = T.icon
 					var/old_decals = T.decals?.Copy()
-					var/old_overlays = T.overlays.Copy()
+					var/old_overlays = copy_overlays(T)
 					var/old_underlays = T.underlays.Copy()
 
 					if(platingRequired)

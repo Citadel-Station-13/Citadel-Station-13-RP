@@ -89,9 +89,9 @@
 		return
 
 	if(affected_mob.lying)
-		affected_mob.overlays += image('icons/mob/alien.dmi', loc = affected_mob, icon_state = "burst_lie")
+		affected_mob.add_overlay(image('icons/mob/alien.dmi', loc = affected_mob, icon_state = "burst_lie"))
 	else
-		affected_mob.overlays += image('icons/mob/alien.dmi', loc = affected_mob, icon_state = "burst_stand")
+		affected_mob.add_overlay(image('icons/mob/alien.dmi', loc = affected_mob, icon_state = "burst_stand"))
 	spawn(6)
 		var/mob/living/carbon/alien/larva/new_xeno = new(affected_mob.loc)
 		new_xeno.key = picked

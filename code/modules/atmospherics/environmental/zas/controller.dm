@@ -158,7 +158,7 @@ Class Procs:
 	#endif
 	tiles_to_update += T
 	#ifdef ZAS_DEBUG_GRAPHICS
-	T.overlays += mark
+	T.add_overlay(mark)
 	#endif
 
 /datum/controller/subsystem/air/proc/mark_zone_update(datum/zas_zone/Z)
