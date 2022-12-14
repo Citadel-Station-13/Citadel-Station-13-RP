@@ -496,11 +496,16 @@ SUBSYSTEM_DEF(ticker)
 	return 1
 
 /datum/controller/subsystem/ticker/proc/declare_completion()
-	to_chat(world, "<br><br><br><H1>A round of [mode.name] has ended!</H1>")
-	for(var/I in round_end_events)
-		var/datum/callback/cb = I
-		cb.InvokeAsync()
+	set waitfor = FALSE
+
+	to_chat(world, "<span class='infoplain'><BR><BR><BR><span class='big bold'>The round has ended.</span></span>")
+	log_game("The round has ended.")
+
+	for(var/datum/callback/roundend_callbacks as anything in round_end_events)
+		roundend_callbacks.InvokeAsync()
 	LAZYCLEARLIST(round_end_events)
+
+
 	for(var/mob/Player in GLOB.player_list)
 		if(Player.mind && !isnewplayer(Player))
 			if(Player.stat != DEAD)
@@ -525,6 +530,8 @@ SUBSYSTEM_DEF(ticker)
 					to_chat(Player, "<font color='red'><b>You did not survive the events on [station_name()]...</b></font>")
 	to_chat(world, "<br>")
 
+	CHECK_TICK
+
 	for (var/mob/living/silicon/ai/aiPlayer in GLOB.mob_list)
 		if (aiPlayer.stat != 2)
 			to_chat(world, "<b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws at the end of the round were:</b>")
@@ -537,6 +544,8 @@ SUBSYSTEM_DEF(ticker)
 			for(var/mob/living/silicon/robot/robo in aiPlayer.connected_robots)
 				robolist += "[robo.name][robo.stat?" (Deactivated) (Played by: [robo.key]), ":" (Played by: [robo.key]), "]"
 			to_chat(world, "[robolist]")
+
+	CHECK_TICK
 
 	var/dronecount = 0
 
@@ -555,10 +564,14 @@ SUBSYSTEM_DEF(ticker)
 			if(robo) //How the hell do we lose robo between here and the world messages directly above this?
 				robo.laws.show_laws(world)
 
+	CHECK_TICK
+
 	if(dronecount)
 		to_chat(world, "<b>There [dronecount>1 ? "were" : "was"] [dronecount] industrious maintenance [dronecount>1 ? "drones" : "drone"] at the end of this round.</b>")
 
 	mode.declare_completion()//To declare normal completion.
+
+	CHECK_TICK
 
 	//Ask the event manager to print round end information
 	SSevents.RoundEnd()
@@ -580,4 +593,17 @@ SUBSYSTEM_DEF(ticker)
 	for(var/i in total_antagonists)
 		log_game("[i]s[total_antagonists[i]].")
 
-	return 1
+	CHECK_TICK
+
+	sleep(5 SECONDS)
+	ready_for_reboot = TRUE
+	standard_reboot()
+
+/datum/controller/subsystem/ticker/proc/standard_reboot()
+	if(ready_for_reboot)
+		if(mode.station_was_nuked)
+			Reboot("Station destroyed by Nuclear Device.", "nuke", 60 SECONDS)
+		else
+			Reboot("Round ended.", "proper completion")
+	else
+		CRASH("Attempted standard reboot without ticker roundend completion")
