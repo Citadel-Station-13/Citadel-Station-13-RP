@@ -149,8 +149,6 @@
 					SPAN_NOTICE("You shake [src], but [T.he] [T.does] not respond... Maybe [T.he] [T.has] S.S.D?"))
 			else if(lying || src.sleeping)
 				AdjustSleeping(-5)
-				if(src.sleeping == 0)
-					src.resting = 0
 				if(H) H.in_stasis = 0
 				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [T.him] up!"),
 					SPAN_NOTICE("You shake [src] trying to wake [T.him] up!"))
