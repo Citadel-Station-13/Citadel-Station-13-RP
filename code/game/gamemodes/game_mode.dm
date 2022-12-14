@@ -281,18 +281,25 @@ var/global/list/additional_antag_types = list()
 		)
 	command_announcement.Announce("The presence of [pick(reasons)] in the region is tying up all available local emergency resources; emergency response teams cannot be called at this time, and post-evacuation recovery efforts will be substantially delayed.","Emergency Transmission")
 
-/datum/game_mode/proc/check_finished()
+/datum/game_mode/proc/check_finished(force_ending) // To be called by SSticker
+	if(!SSticker.setup_done)
+		return FALSE
 	if(SSemergencyshuttle.returned() || station_was_nuked)
-		return 1
+		return TRUE
+	if(station_was_nuked)
+		return TRUE
+
 	if(end_on_antag_death && antag_templates && antag_templates.len)
 		for(var/datum/antagonist/antag in antag_templates)
 			if(!antag.antags_are_dead())
-				return 0
+				return FALSE
 		if(config_legacy.continous_rounds)
-			SSemergencyshuttle.auto_recall = 0
-			return 0
-		return 1
-	return 0
+			SSemergencyshuttle.auto_recall = FALSE
+			return FALSE
+		return TRUE
+
+	if(force_ending)
+		return TRUE
 
 /datum/game_mode/proc/cleanup()	//This is called when the round has ended but not the game, if any cleanup would be necessary in that case.
 	return

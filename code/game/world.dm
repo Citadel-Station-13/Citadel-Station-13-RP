@@ -112,7 +112,7 @@ GLOBAL_LIST(topic_status_cache)
 	if(NO_INIT_PARAMETER in params)
 		return
 
-	Master.Initialize(10, FALSE)
+	Master.Initialize(10, FALSE, TRUE)
 
 	#ifdef UNIT_TESTS
 	HandleTestRun()
@@ -235,8 +235,8 @@ GLOBAL_LIST(topic_status_cache)
 	set waitfor = FALSE
 	var/list/fail_reasons
 	if(GLOB)
-		if(global.total_runtimes != 0)
-			fail_reasons = list("Total runtimes: [global.total_runtimes] - if you don't see any runtimes above, launch locally with `dreamseeker -trusted -verbose citadel.dmb` after compile and check Options and Messages. Inform a maintainer too, if this happens..")
+		if(GLOB.total_runtimes != 0)
+			fail_reasons = list("Total runtimes: [GLOB.total_runtimes]")
 #ifdef UNIT_TESTS
 		if(GLOB.failed_any_test)
 			LAZYADD(fail_reasons, "Unit Tests failed!")
@@ -249,8 +249,8 @@ GLOBAL_LIST(topic_status_cache)
 		text2file("Success!", "[GLOB.log_directory]/clean_run.lk")
 	else
 		log_world("Test run failed!\n[fail_reasons.Join("\n")]")
-	sleep(0)	//yes, 0, this'll let Reboot finish and prevent byond memes
-	qdel(src)	//shut it down
+	sleep(0) //yes, 0, this'll let Reboot finish and prevent byond memes
+	qdel(src) //shut it down
 
 /world/Reboot(reason = 0, fast_track = FALSE)
 	if (reason || fast_track) //special reboot, do none of the normal stuff

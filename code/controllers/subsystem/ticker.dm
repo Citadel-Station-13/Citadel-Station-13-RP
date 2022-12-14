@@ -22,6 +22,8 @@ SUBSYSTEM_DEF(ticker)
 	/// A message to display to anyone who tries to restart the world after a delay.
 	var/admin_delay_notice = ""
 
+	/// Boolean to track and check if our subsystem setup is done.
+	var/setup_done = FALSE
 	/// Force round end
 	var/force_ending = FALSE
 
@@ -71,7 +73,7 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/Initialize()
 	if(!syndicate_code_phrase)
-		syndicate_code_phrase	= generate_code_phrase()
+		syndicate_code_phrase = generate_code_phrase()
 	if(!syndicate_code_response)
 		syndicate_code_response = generate_code_phrase()
 
@@ -84,12 +86,44 @@ SUBSYSTEM_DEF(ticker)
 		if(GAME_STATE_INIT)
 			// We fire after init finishes
 			on_mc_init_finish()
+
 		if(GAME_STATE_PREGAME)
 			process_pregame()
+
 		if(GAME_STATE_SETTING_UP)
 			setup()
+			setup_done = TRUE
+
 		if(GAME_STATE_PLAYING)
 			round_process()
+
+			if(!mode.explosion_in_progress && mode.check_finished(force_ending) || force_ending)
+				current_state = GAME_STATE_FINISHED
+				round_end_time = world.time
+				declare_completion()
+				Master.SetRunLevel(RUNLEVEL_POSTGAME)
+
+				callHook("roundend")
+
+				if (mode.station_was_nuked)
+					feedback_set_details("end_proper","nuke")
+				else
+					feedback_set_details("end_proper","proper completion")
+
+
+				if(blackbox)
+					blackbox.save_all_data_to_sql()
+
+				send2irc("Server", "A round of [mode.name] just ended.")
+				if(CONFIG_GET(string/chat_roundend_notice_tag))
+					var/broadcastmessage = "The round has ended."
+					if(CONFIG_GET(string/chat_reboot_role))
+						broadcastmessage += "\n\n<@&[CONFIG_GET(string/chat_reboot_role)]>, the server will reboot shortly!"
+					send2chat(broadcastmessage, CONFIG_GET(string/chat_roundend_notice_tag))
+
+				SSdbcore.SetRoundEnd()
+				SSpersistence.SavePersistence()
+
 
 /datum/controller/subsystem/ticker/proc/on_mc_init_finish()
 	send2irc("Server lobby is loaded and open at byond://[config_legacy.serverurl ? config_legacy.serverurl : (config_legacy.server ? config_legacy.server : "[world.address]:[world.port]")]")
@@ -129,11 +163,12 @@ SUBSYSTEM_DEF(ticker)
 	if(!delay)
 		delay = CONFIG_GET(number/round_end_countdown) * 10
 
-	if(delay_end)
-		to_chat(world, "<span class='boldannounce'>An admin has delayed the round end.</span>")
+	var/skip_delay = check_rights()
+	if(delay_end && !skip_delay)
+		to_chat(world, SPAN_BOLDANNOUNCE("An admin has delayed the round end."))
 		return
 
-	to_chat(world, "<span class='boldannounce'>Rebooting World in [DisplayTimeText(delay)]. [reason]</span>")
+	to_chat(world, SPAN_BOLDANNOUNCE("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
 
 	var/start_wait = world.time
 	//UNTIL(round_end_sound_sent || (world.time - start_wait) > (delay * 2))	//don't wait forever
@@ -143,22 +178,25 @@ SUBSYSTEM_DEF(ticker)
 		var/timeleft = delay - (world.time - start_wait)
 		// If we have less than 10 seconds left.
 		if(timeleft <= 10 SECONDS)
-			to_chat(world, "<span class='boldannounce'>Rebooting in [DisplayTimeText(timeleft, 1)]</span>")
+			to_chat(world, SPAN_BOLDANNOUNCE("Rebooting in [DisplayTimeText(timeleft, 1)]"))
 			sleep(10)
 		//If we have 30 seconds left, announce and sleep for the rest of the time.
 		if(timeleft <= 30 SECONDS)
 			var/time = timeleft - 10 SECONDS
-			to_chat(world, "<span class='boldannounce'>Rebooting in [DisplayTimeText(timeleft, 1)]</span>")
+			to_chat(world, SPAN_BOLDANNOUNCE("Rebooting in [DisplayTimeText(timeleft, 1)]"))
 			sleep(time)
 		// Otherwise, per minute.
 		else
-			to_chat(world, "<span class='boldannounce'>Rebooting in [DisplayTimeText(timeleft, 1)]</span>")
+			to_chat(world, SPAN_BOLDANNOUNCE("Rebooting in [DisplayTimeText(timeleft, 1)]"))
 			sleep(60 SECONDS)
 
-	if(delay_end)
-		to_chat(world, "<span class='boldannounce'>Reboot was cancelled by an admin.</span>")
+	if(delay_end && !skip_delay)
+		to_chat(world, SPAN_BOLDANNOUNCE("Reboot was cancelled by an admin."))
 		return
-	log_game("<span class='boldannounce'>World reboot triggered by ticker. [reason]</span>")
+	// if(end_string)
+	// 	end_state = end_string
+
+	log_game(SPAN_BOLDANNOUNCE("Rebooting World. [reason]"))
 
 	world.Reboot()
 
@@ -464,38 +502,7 @@ SUBSYSTEM_DEF(ticker)
 		game_finished = (mode.check_finished() || (SSemergencyshuttle.returned() && SSemergencyshuttle.evac == 1)) || universe_has_ended
 		mode_finished = game_finished
 
-	if(force_ending || (!mode.explosion_in_progress && game_finished && (mode_finished || post_game)))
-		current_state = GAME_STATE_FINISHED
-		round_end_time = world.time
-		Master.SetRunLevel(RUNLEVEL_POSTGAME)
-
-		declare_completion()
-
-		callHook("roundend")
-
-		if (mode.station_was_nuked)
-			feedback_set_details("end_proper","nuke")
-		else
-			feedback_set_details("end_proper","proper completion")
-
-
-		if(blackbox)
-			blackbox.save_all_data_to_sql()
-
-		send2irc("Server", "A round of [mode.name] just ended.")
-		if(CONFIG_GET(string/chat_roundend_notice_tag))
-			var/broadcastmessage = "The round has ended."
-			if(CONFIG_GET(string/chat_reboot_role))
-				broadcastmessage += "\n\n<@&[CONFIG_GET(string/chat_reboot_role)]>, the server will reboot shortly!"
-			send2chat(broadcastmessage, CONFIG_GET(string/chat_roundend_notice_tag))
-
-		SSdbcore.SetRoundEnd()
-		SSpersistence.SavePersistence()
-		ready_for_reboot = TRUE
-		standard_reboot()
-
-
-	else if (mode_finished)
+	if (mode_finished)
 		post_game = 1
 
 		mode.cleanup()
@@ -609,8 +616,8 @@ SUBSYSTEM_DEF(ticker)
 
 	CHECK_TICK
 
-	sleep(5 SECONDS)
 	ready_for_reboot = TRUE
+	sleep(5 SECONDS)
 	standard_reboot()
 
 /datum/controller/subsystem/ticker/proc/standard_reboot()

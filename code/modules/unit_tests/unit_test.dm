@@ -207,6 +207,7 @@ GLOBAL_VAR_INIT(focused_test, focused_test())
 	file(file_name) << json_encode(test_results)
 
 	SSticker.force_ending = TRUE
+	sleep(5 SECONDS)
 	//We have to call this manually because del_text can preceed us, and SSticker doesn't fire in the post game
 	SSticker.standard_reboot()
 
