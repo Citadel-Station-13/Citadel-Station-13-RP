@@ -84,6 +84,7 @@
 #include "bespoke_id.dm"
 // #include "card_mismatch.dm"
 // #include "chain_pull_through_space.dm"
+// #include "character_saving.dm"
 // #include "combat.dm"
 #include "component_tests.dm"
 // #include "confusion.dm"
@@ -119,9 +120,6 @@
 // #include "teleporters.dm"
 #include "timer_sanity.dm"
 #include "unit_test.dm"
-
-/// CIT TESTS
-// #include "character_saving.dm"
 
 #undef TEST_ASSERT
 #undef TEST_ASSERT_EQUAL
