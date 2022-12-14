@@ -221,23 +221,7 @@
 	if(light_power && light_range)
 		update_light()
 
-	if (length(smoothing_groups))
-		#ifdef UNIT_TESTS
-		assert_sorted(smoothing_groups, "[type].smoothing_groups")
-		#endif
-
-		SET_BITFLAG_LIST(smoothing_groups)
-
-	if (length(canSmoothWith))
-		#ifdef UNIT_TESTS
-		assert_sorted(canSmoothWith, "[type].canSmoothWith")
-		#endif
-
-		// If the last element is higher than the maximum turf-only value, then it must scan turf contents for smoothing targets.
-		if(canSmoothWith[length(canSmoothWith)] > MAX_S_TURF)
-			smoothing_flags |= SMOOTH_OBJ
-
-		SET_BITFLAG_LIST(canSmoothWith)
+	SETUP_SMOOTHING()
 
 	if(opacity && isturf(loc))
 		var/turf/T = loc

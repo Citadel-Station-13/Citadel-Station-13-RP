@@ -65,6 +65,37 @@
 	} while(FALSE)
 
 /**
+ * Performs the work to set smoothing_groups and canSmoothWith.
+ * An inlined function used in both turf/Initialize and atom/Initialize.
+ */
+#define SETUP_SMOOTHING(...) \
+	if (smoothing_groups) { \
+		if (PERFORM_ALL_TESTS(focus_only/sorted_smoothing_groups)) { \
+			ASSERT_SORTED_SMOOTHING_GROUPS(smoothing_groups); \
+		} \
+		SET_BITFLAG_LIST(smoothing_groups); \
+	} \
+\
+	if (canSmoothWith) { \
+		if (PERFORM_ALL_TESTS(focus_only/sorted_smoothing_groups)) { \
+			ASSERT_SORTED_SMOOTHING_GROUPS(canSmoothWith); \
+		} \
+		if (canSmoothWith[1] == "-") { \
+			smoothing_flags |= SMOOTH_OBJ; \
+		} \
+		SET_BITFLAG_LIST(canSmoothWith); \
+	}
+
+/// Given a smoothing groups variable, will set out to the actual numbers inside it.
+#define UNWRAP_SMOOTHING_GROUPS(smoothing_groups, out) \
+	json_decode("\[[##smoothing_groups]0\]"); \
+	##out.len--;
+
+#define ASSERT_SORTED_SMOOTHING_GROUPS(smoothing_group_variable) \
+	var/list/unwrapped = UNWRAP_SMOOTHING_GROUPS(smoothing_group_variable, unwrapped); \
+	assert_sorted(unwrapped, "[#smoothing_group_variable] ([type])"); \
+
+/**
  * Stole this from @DaedalusDock - @Zandario
  * Checks if `src` can smooth with `target`, based on the [/area/var/area_limited_icon_smoothing] variable of their areas.
  *

@@ -14,8 +14,8 @@ var/list/table_icon_cache = list()
 	connections = list("nw0", "ne0", "sw0", "se0")
 
 	// smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_TABLES)
-	canSmoothWith = list(SMOOTH_GROUP_TABLES)
+	smoothing_groups = (SMOOTH_GROUP_TABLES)
+	canSmoothWith = (SMOOTH_GROUP_TABLES)
 
 	var/flipped = 0
 	var/maxhealth = 10

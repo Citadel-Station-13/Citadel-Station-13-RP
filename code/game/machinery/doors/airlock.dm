@@ -17,7 +17,7 @@
 	autoclose = 1
 	normalspeed = 1
 
-	smoothing_groups = list(SMOOTH_GROUP_AIRLOCK)
+	smoothing_groups = (SMOOTH_GROUP_AIRLOCK)
 
 	/**
 	 * If -1, the control is enabled but the AI had bypassed it earlier, so if it is disabled again the AI would have no trouble getting back in.
