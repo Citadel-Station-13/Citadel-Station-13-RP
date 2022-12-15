@@ -71,8 +71,10 @@
 
 	for(var/i = 1; i <= spell_objects.len; i++)
 		var/atom/movable/screen/spell/S = spell_objects[i]
-		var/xpos = x_position + (opens_to_left? -1 : 1) * ((i % 7) + 1)
-		var/ypos = y_position + (opens_downwards? -1 : 1) * (round(i / 7) + 0)
+		// TODO: WARNING THIS IS SHITCODE AND MONKEY PATCHED AND WILL BREAK VERY SOON
+		// Pray we finish abilities refactor by then!
+		var/xpos = x_position + (opens_to_left? -1 : 1) * ((i % 7) + 1) - 1
+		var/ypos = y_position + (opens_downwards? -1 : 1) * (round(i / 7) + 0) - 1
 		if(spell_holder && spell_holder.client)
 			S.screen_loc = "[encode_screen_X(xpos)]:[x_pix],[encode_screen_Y(ypos)]:[y_pix]"
 			spell_holder.client.screen += S
