@@ -113,7 +113,7 @@
 			log_admin("Custom load of [F] failed.")
 		else
 			var/seconds = round((REALTIMEOFDAY - start) / 0.1, 0.01)
-			to_chat(usr, "<span class='danger'>Loaded [F] on[loaded_indices.len == 1? "z-[loaded_indices[1]]]" : "Z-levels [english_list(loaded_indices)]"] in [seconds] seconds.</span>")
+			to_chat(usr, "<span class='danger'>Loaded [F] on [loaded_indices.len == 1? "z-[loaded_indices[1]]" : "Z-levels [english_list(loaded_indices)]"] in [seconds] seconds.</span>")
 
 	else if(group)
 		var/list/levels
@@ -135,7 +135,7 @@
 			log_admin("Custom load of [group]:[id] failed.")
 		else
 			var/seconds = round((REALTIMEOFDAY - start) / 0.1, 0.01)
-			to_chat(usr, "<span class='danger'>Loaded [group]:[id] on [loaded_indices.len == 1? "z-[loaded_indices[1]]]" : "Z-levels [english_list(loaded_indices)]"] in [seconds] seconds.</span>")
+			to_chat(usr, "<span class='danger'>Loaded [group]:[id] on [loaded_indices.len == 1? "z-[loaded_indices[1]]" : "Z-levels [english_list(loaded_indices)]"] in [seconds] seconds.</span>")
 
 /datum/controller/subsystem/mapping/on_config_load()
 	. = ..()

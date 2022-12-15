@@ -327,7 +327,7 @@
  * this will sleep
  */
 /datum/space_level/proc/rebuild_turfs()
-	for(var/turf/T as anything in block(locate(x_min || 1, y_min || 1, z_value), locate(x_max || world.maxx, y_max || world.maxx, z_value))
+	for(var/turf/T as anything in block(locate(x_min || 1, y_min || 1, z_value), locate(x_max || world.maxx, y_max || world.maxx, z_value)))
 		T.update_multiz()
 		CHECK_TICK
 	turfs_rebuild_count++
@@ -348,7 +348,7 @@
 				T._make_transition_border(SOUTH, TRUE)
 				CHECK_TICK
 			// top
-			for(var/turf/T as anything in block(locate((x_min || 1) + 1, topright_Y || world.maxy, z_value), locate((x_max || world.maxx) - 1, y_max || world.maxy, z_value)))
+			for(var/turf/T as anything in block(locate((x_min || 1) + 1, topright_y || world.maxy, z_value), locate((x_max || world.maxx) - 1, y_max || world.maxy, z_value)))
 				T._make_transition_border(NORTH, TRUE)
 				CHECK_TICK
 			// left

@@ -5,7 +5,7 @@ var/list/z_levels = list()// Each bit re... haha just kidding this is a list of 
 
 // If the height is more than 1, we mark all contained levels as connected.
 /obj/landmark/map_data/New()
-	for(var/i = (z  height + 1) to (z1))
+	for(var/i = (z - height + 1) to (z1))
 		if (z_levels.len <i)
 			z_levels.len = i
 		z_levels[i] = TRUE
@@ -21,9 +21,9 @@ var/list/z_levels = list()// Each bit re... haha just kidding this is a list of 
 	return z_levels[z]
 
 /proc/HasBelow(var/z)
-	if(z > world.maxz || z < 2 || (z1) > z_levels.len)
+	if(z > world.maxz || z < 2 || (z - 1) > z_levels.len)
 		return 0
-	return z_levels[z1]
+	return z_levels[z - 1]
 
 // Thankfully, no bitwise magic is needed here.
 /proc/GetAbove(var/atom/atom)

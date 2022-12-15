@@ -79,9 +79,12 @@
 		var/datum/space_level/L = SSmapping.level_by_id[id]
 		real_indices += L.z_value
 		grid_parser.Find(key)
-		var/x = L.struct_x = text2num(grid_parser.group[1])
-		var/y = L.struct_y = text2num(grid_parser.group[2])
-		var/z = L.struct_z = text2num(grid_parser.group[3])
+		var/x = text2num(grid_parser.group[1])
+		var/y = text2num(grid_parser.group[2])
+		var/z = text2num(grid_parser.group[3])
+		L.struct_x = x
+		L.struct_y = y
+		L.struct_z = z
 		if(!plane_cache["[z]"])
 			plane_cache["[z]"] = list(z)
 		else
@@ -191,9 +194,12 @@
 		var/datum/space_level/L = SSmapping.level_by_id[id]
 		possible.Cut(1,2)
 		grid_parser.Find(key)
-		var/x = L.struct_x = text2num(grid_parser.group[1])
-		var/y = L.struct_y = text2num(grid_parser.group[2])
-		var/z = L.struct_z = text2num(grid_parser.group[3])
+		var/x = text2num(grid_parser.group[1])
+		var/y = text2num(grid_parser.group[2])
+		var/z = text2num(grid_parser.group[3])
+		L.struct_x = x
+		L.struct_y = y
+		L.struct_z = z
 		// continually cut everything above us
 		var/datum/space_level/L2 = _scan_dir(z_grid, x, y, z, UP)
 		if(reverse[L2.id] in possible)

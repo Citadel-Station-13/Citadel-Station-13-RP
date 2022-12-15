@@ -135,7 +135,7 @@
 
 /datum/component/transition_border/proc/GetTurfsInCardinal(dir)
 	#warn support less-than-world-size levels
-	ASSERT(dir)
+	// ASSERT(dir)
 	var/turf/T = parent
 	var/datum/space_level/L = SSmapping.space_levels[T.z]
 	var/datum/space_level/target_level = isnull(force_target) && L.resolve_level_in_dir(dir)
@@ -146,7 +146,7 @@
 	return block(
 		target,
 		locate(
-			(dir == EAST)? range + 1 : ((dir == WEST)? world.maxx - range: T.x),
+			(dir == EAST)? range + 1 : ((dir == WEST)? world.maxx - range : T.x),
 			(dir == NORTH)? range + 1 : ((dir == SOUTH)? world.maxy - range : T.y),
 			force_target || target_level.z_value
 		)
