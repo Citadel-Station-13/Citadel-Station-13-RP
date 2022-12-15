@@ -117,12 +117,12 @@
 
 	. = ..()
 
-/obj/item/fbp_backup_cell/proc/use(var/mob/living/user, var/mob/living/target)
+/obj/item/fbp_backup_cell/proc/use(mob/living/user, mob/living/target)
 	if(used)
 		return
 	used = TRUE
 	desc += " This one has already been used."
-	overlays.Cut()
+	cut_overlays()
 	target.nutrition += amount
 	user.custom_emote(message = "connects \the [src] to [user == target ? "their" : "[target]'s"] charging port, expending it.")
 

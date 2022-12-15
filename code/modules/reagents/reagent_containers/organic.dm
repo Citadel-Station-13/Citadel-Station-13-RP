@@ -72,11 +72,11 @@
 	update_icon()
 
 /obj/item/reagent_containers/organic/update_icon()
-	overlays.Cut()
+	cut_overlays()
 
 	if (!is_open_container())
 		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
-		overlays += lid
+		add_overlay(lid)
 
 /obj/item/reagent_containers/organic/attack(mob/M as mob, mob/user as mob, def_zone)
 	if(force && !(item_flags & ITEM_NOBLUDGEON) && user.a_intent == INTENT_HARM)

@@ -18,7 +18,8 @@
 	)
 
 /obj/item/gun/energy/netgun/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 
 	if(power_supply)
 		var/ratio = power_supply.charge / power_supply.maxcharge
@@ -28,6 +29,8 @@
 		else
 			ratio = max(round(ratio, 0.25) * 100, 25)
 
-		overlays += "[initial(icon_state)]_cell"
-		overlays += "[initial(icon_state)]_[ratio]"
-		overlays += "[initial(icon_state)]_[mode_name]"
+		overlays_to_add += "[initial(icon_state)]_cell"
+		overlays_to_add += "[initial(icon_state)]_[ratio]"
+		overlays_to_add += "[initial(icon_state)]_[mode_name]"
+
+	add_overlay(overlays_to_add)

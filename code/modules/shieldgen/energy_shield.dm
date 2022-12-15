@@ -27,6 +27,7 @@
 	if(!enabled_icon_state)
 		enabled_icon_state = icon_state
 
+	// HACK: This is dumb, but whatever.
 	if(disabled_for || diffused_for)
 		icon_state = "shield_broken"
 		overlays.Cut() //NOT ssoverlays

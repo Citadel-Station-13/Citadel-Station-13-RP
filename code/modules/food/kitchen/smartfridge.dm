@@ -164,7 +164,8 @@
 		update_icon()
 
 /obj/machinery/smartfridge/drying_rack/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	var/not_working = machine_stat & (BROKEN|NOPOWER)
 	if(not_working)
 		icon_state = icon_off
@@ -176,9 +177,10 @@
 			hasItems = 1
 			break
 	if(hasItems)
-		overlays += "drying_rack_filled"
+		overlays_to_add += "drying_rack_filled"
 		if(!not_working)
-			overlays += "drying_rack_drying"
+			overlays_to_add += "drying_rack_drying"
+	add_overlay(overlays_to_add)
 
 /obj/machinery/smartfridge/drying_rack/attackby(var/obj/item/O as obj, mob/user)
 	. = ..()
@@ -239,14 +241,14 @@
 *   Item Adding
 ********************/
 
-/obj/machinery/smartfridge/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/machinery/smartfridge/attackby(obj/item/O, mob/user)
 	if(O.is_screwdriver())
 		panel_open = !panel_open
 		user.visible_message("[user] [panel_open ? "opens" : "closes"] the maintenance panel of \the [src].", "You [panel_open ? "open" : "close"] the maintenance panel of \the [src].")
 		playsound(src, O.tool_sound, 50, 1)
-		overlays.Cut()
+		cut_overlays()
 		if(panel_open)
-			overlays += image(icon, icon_panel)
+			add_overlay(image(icon, icon_panel))
 		SSnanoui.update_uis(src)
 		return
 

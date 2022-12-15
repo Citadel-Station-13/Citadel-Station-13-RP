@@ -65,7 +65,7 @@
 			message_admins("[key_name(user, user.client)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) planted [src.name] on [target.name] at ([target.x],[target.y],[target.z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[target.x];Y=[target.y];Z=[target.z]'>JMP</a>) with [timer] second fuse",0,1)
 			log_game("[key_name(user)] planted [src.name] on [target.name] at ([target.x],[target.y],[target.z]) with [timer] second fuse")
 
-		target.overlays += image_overlay
+		target.add_overlay(image_overlay)
 		to_chat(user, "Bomb has been planted. Timer counting down from [timer].")
 		spawn(timer*10)
 			explode(get_turf(target))
@@ -87,7 +87,7 @@
 		else
 			LEGACY_EX_ACT(target, 1, null)
 	if(target)
-		target.overlays -= image_overlay
+		target.cut_overlay(image_overlay)
 	qdel(src)
 
 /obj/item/plastique/attack(mob/M as mob, mob/user as mob, def_zone)
@@ -130,7 +130,7 @@
 	var/turf/T = get_turf(target)
 	if(onstation_weapon_locked(T.z))
 		target.visible_message("<span class='danger'>\The [src] lets out a loud beep as safeties trigger, before imploding and falling apart.</span>")
-		target.overlays -= image_overlay
+		target.cut_overlay(image_overlay)
 		qdel(src)
 		return 0
 	else

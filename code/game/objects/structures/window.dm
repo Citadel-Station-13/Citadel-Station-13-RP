@@ -102,13 +102,13 @@
 
 /obj/structure/window/proc/updateSilicate()
 	if (overlays)
-		overlays.Cut()
+		cut_overlays()
 	update_icon()
 
 	var/image/img = image(src)
 	img.color = "#ffffff"
 	img.alpha = silicate * 255 / 100
-	overlays += img
+	add_overlay(img)
 
 /obj/structure/window/proc/shatter(var/display_message = 1)
 	playsound(src, "shatter", 70, 1)
@@ -442,7 +442,8 @@
 /obj/structure/window/update_icon()
 	//A little cludge here, since I don't know how it will work with slim windows. Most likely VERY wrong.
 	//this way it will only update full-tile ones
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	if(!is_fulltile())
 		icon_state = "[basestate]"
 		return
@@ -457,16 +458,19 @@
 	icon_state = ""
 	for(var/i = 1 to 4)
 		var/image/I = image(icon, "[basestate][connections[i]]", dir = 1<<(i-1))
-		overlays += I
+		overlays_to_add += I
 
 	// Damage overlays.
 	var/ratio = health / maxhealth
 	ratio = CEILING(ratio * 4, 1) * 25
 
 	if(ratio > 75)
+		add_overlay(overlays_to_add)
 		return
 	var/image/I = image(icon, "damage[ratio]", layer = layer + 0.1)
-	overlays += I
+	overlays_to_add += I
+
+	add_overlay(overlays_to_add)
 
 	return
 

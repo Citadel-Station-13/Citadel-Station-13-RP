@@ -172,7 +172,8 @@
 	update_icon()
 
 /obj/item/reagent_containers/glass/beaker/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 
 	if(reagents.total_volume)
 		var/image/filling = image('icons/obj/medical/reagentfillings.dmi', src, "[base_icon_state]10")
@@ -188,11 +189,13 @@
 			if(91 to INFINITY)	filling.icon_state = "[base_icon_state]100"
 
 		filling.color = reagents.get_color()
-		overlays += filling
+		overlays_to_add += filling
 
 	if (!is_open_container())
 		var/image/lid = image(icon, src, "lid_[base_icon_state]")
-		overlays += lid
+		overlays_to_add += lid
+
+	add_overlay(overlays_to_add)
 
 /obj/item/reagent_containers/glass/beaker/large
 	name = "large beaker"
@@ -298,10 +301,10 @@
 		return ..()
 
 /obj/item/reagent_containers/glass/bucket/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if (!is_open_container())
 		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
-		overlays += lid
+		add_overlay(lid)
 
 /obj/item/reagent_containers/glass/bucket/wood
 	desc = "An old wooden bucket."
