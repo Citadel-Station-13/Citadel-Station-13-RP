@@ -420,13 +420,13 @@
  *
  * this will sleep
  */
-/datum/space_levey/proc/destroy_transitions()
+/datum/space_level/proc/destroy_transitions()
 	// bottom
 	for(var/turf/T as anything in block(locate(x_min || 1, y_min || 1, z_value), locate(x_max || world.maxx, y_min || 1, z_value)))
 		T._dispose_transition_border()
 		CHECK_TICK
 	// top
-	for(var/turf/T as anything in block(locate(x_min || 1, topright_Y || world.maxy, z_value), locate(x_max || world.maxx, y_max || world.maxy, z_value)))
+	for(var/turf/T as anything in block(locate(x_min || 1, y_max || world.maxy, z_value), locate(x_max || world.maxx, y_max || world.maxy, z_value)))
 		T._dispose_transition_border()
 		CHECK_TICK
 	// left
@@ -477,7 +477,7 @@
 	if(y_max < world.maxy)
 		turfs += block(locate(x_min, y_max + 1, z_value), locate(x_max, world.maxy, z_value))
 	var/area/new_area = base_area
-	if(initial(new_area.area_flags) & UNIQUE_AREA)
+	if(initial(new_area.unique))
 		new_area = GLOB.areas_by_type[world.area]
 		if(!new_area)
 			stack_trace("No area found even though unique?")

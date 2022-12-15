@@ -45,7 +45,7 @@
 	if(!area_type)
 		area_type = world.area
 	var/area/A = area_type
-	if(initial(A.area_flags) & UNIQUE_AREA)
+	if(initial(A.unique))
 		A = GLOB.areas_by_type[area_type]
 		if(!A)
 			GLOB.areas_by_type[area_type] = new area_type
@@ -60,12 +60,12 @@
 	for(var/i in avail)
 		CHECK_TICK
 		BL = i
-		if(!(BL.flags_1 & UNUSED_RESERVATION_TURF_1))
+		if(!(BL.turf_flags & TURF_UNUSED_RESERVATION))
 			continue
 		if(BL.x + width > world.maxx || BL.y + height > world.maxy)
 			continue
 		TR = locate(BL.x + width - 1, BL.y + height - 1, BL.z)
-		if(!(TR.flags_1 & UNUSED_RESERVATION_TURF_1))
+		if(!(TR.turf_flags & TURF_UNUSED_RESERVATION))
 			continue
 		final = block(BL, TR)
 		if(!final)
@@ -73,7 +73,7 @@
 		passing = TRUE
 		for(var/I in final)
 			var/turf/checking = I
-			if(!(checking.flags_1 & UNUSED_RESERVATION_TURF_1))
+			if(!(checking.turf_flags & TURF_UNUSED_RESERVATION))
 				passing = FALSE
 				break
 		if(!passing)
@@ -86,7 +86,7 @@
 	for(var/i in final)
 		var/turf/T = i
 		reserved_turfs |= T
-		T.flags_1 &= ~UNUSED_RESERVATION_TURF_1
+		T.turf_flags &= ~TURF_UNUSED_RESERVATION
 		SSmapping.free_reserve_turfs["[T.z]"] -= T
 		SSmapping.allocated_reserve_turfs[T] = src
 		if(borderturf && (T.x == BL.x || T.x == TR.x || T.y == BL.y || T.y == TR.y))

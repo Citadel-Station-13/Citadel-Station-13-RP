@@ -131,6 +131,12 @@
 			above.queue()
 
 /**
+ * hook called by maploader and other sources when multiz linkages are changed
+ */
+/turf/proc/update_multiz()
+	update_vertical_turf_graphics()
+
+/**
  * called during AfterChange() to request the turfs above and below us update their graphics.
  */
 /turf/proc/update_vertical_turf_graphics()
