@@ -40,6 +40,12 @@
 	 */
 	var/list/enable_jobs
 
+	//! Map Modules
+	/// /datum/map_module to load
+	var/map_module_type
+	/// instanced map module
+	var/datum/map_module/map_module
+
 #warn parse this file
 #warn lazyload everything, don't instantly json read
 #warn /datum/map_module
@@ -103,7 +109,7 @@
 			SSjob.EnableMapJobs(enable_jobs)
 			#warn the above needs job refactor
 
-/datum/map_config/proc/validate()
+/datum/map_config/proc/validate(recurse)
 	. = list()
 	if(!isnum(width) || width <= 0)
 #warn validation needs to happen in unit tests AND spit errors out into to_chat world LOUDLY.

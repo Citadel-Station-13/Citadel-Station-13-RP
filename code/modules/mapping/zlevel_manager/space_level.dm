@@ -30,21 +30,22 @@
 	var/center = TRUE
 	/// load "void" tiles for blank areas when we're smaller than the world zlevel size as opposed to baseturf
 	var/fill_void = FALSE
-
-	#warn hook these into load process and generation
-	// bounds - for when we had to fill void.
-	/// start x inclusive
-	var/x_min
-	/// start y inclusive
-	var/y_min
-	/// end x inclusive
-	var/x_max
-	/// end y inclusive
-	var/y_max
 	/// width
 	var/width
 	/// height
 	var/height
+	#warn when loading, assert width/height matches
+
+	#warn hook these into load process and generation
+	//! bounds - for when we had to fill void.
+	/// start x inclusive
+	var/tmp/x_min
+	/// start y inclusive
+	var/tmp/y_min
+	/// end x inclusive
+	var/tmp/x_max
+	/// end y inclusive
+	var/tmp/y_max
 
 	//! Linkage - IDs
 	// Linkage/MultiZ - what zlevels are where. References by ID only!
@@ -90,7 +91,7 @@
 
 	//! Level modules
 	/// /datum/level_module to execute
-	var/level_module_type
+	var/level_module_type = NOT_IMPLEMENTED
 	/// Instanced level module we hold onto
 	var/datum/level_module/level_module
 	#warn - impl and hook level modules
@@ -115,9 +116,9 @@
 
 /datum/space_level/New(id, list/traits, list/attributes, map_path)
 	if(id)
-		src.id = id
+		src.set_id(id)
 	if(!src.id)
-		src.id = "[GUID()]"
+		src.set_id(GUID())
 		src.random_id = TRUE
 	else
 		src.random_id = FALSE
@@ -125,10 +126,10 @@
 		src.map_path = map_path
 	if(traits)
 		for(var/trait in traits)
-			add_trait(trait)
+			src.add_trait(trait)
 	if(attributes)
 		for(var/key in attributes)
-			set_attribute(key, attributes[key])
+			src.set_attribute(key, attributes[key])
 
 /datum/space_level/Destroy(force)
 	if(instantiated && !force)
@@ -148,6 +149,50 @@
  * - pathroot - root path of the .json
  */
 /datum/space_level/proc/parse(list/data, pathroot)
+	if(instantiated)
+		CRASH("attempted to reload json while already instantiated")
+	ASSERT(islist(data))
+
+	//? basics
+	if(data["name"])
+		name = data["name"]
+	if(data["id"])
+		set_id(data["id"])
+		random_id = FALSE
+
+	//? files / loading
+
+	//? linkage info
+
+	//? linkage overrides
+
+	//? traits
+	if(length(data["traits"]))
+		for(var/trait in data["traits"])
+			add_trait(trait)
+
+	//? attributes
+	if(length(data["attributes"]))
+		for(var/attribute in data["attributes"])
+			set_attribute(attribute, data["attributes"])
+
+	//? baseturf
+	if(data["base_turf"])
+		base_turf = text2path(data["base_turf"])
+	if(data["base_area"])
+		base_area = text2path(data["base_area"])
+
+	//? air
+	if(data["air_indoors"])
+		air_indoors = data["air_indoors"]
+	if(data["air_outdoors"])
+		air_outdoors = data["air_outdoors"]
+
+	//? module
+	if(data["module"])
+		level_module_type = text2path(data["module"])
+
+
 	#warn make sure everything matches the vars
 	#warn default base_turf to world.turf
 	#warn default base_area to world.area
@@ -200,17 +245,6 @@
 		north = data["north"]
 	if(data["south"])
 		south = data["south"]
-	if(data["baseturf"])
-		baseturf = text2path(data["baseturf"])
-		if(!ispath(baseturf))
-			baseturf = down? /turf/open/openspace : world.turf
-			stack_trace("Invalid baseturf [data["baseturf"]].")
-	if(data["traits"])
-		for(var/i in data["traits"])
-			add_trait(i)
-	if(data["attributes"])
-		for(var/key in data["attributes"])
-			set_attribute(key, data["attributes"][key])
 	if(data["linkage_mode"])
 		linkage_mode = data["linkage_mode"]
 
@@ -424,6 +458,8 @@
  */
 /datum/space_level/proc/set_attribute(attr, val)
 	attributes[attr] = val
+	if(!instantiated)
+		return
 	SSmapping.on_attribute_set(src, attr, val)
 
 //! Traits
@@ -438,6 +474,8 @@
  */
 /datum/space_level/proc/remove_triat(trait)
 	traits -= trait
+	if(!instantiated)
+		return
 	SSmapping.on_trait_del(src, trait)
 
 /**
@@ -445,6 +483,8 @@
  */
 /datum/space_level/proc/add_trait(trait)
 	traits[trait] = TRUE
+	if(!instantiated)
+		return
 	SSmapping.on_trait_add(src, trait)
 
 /**
