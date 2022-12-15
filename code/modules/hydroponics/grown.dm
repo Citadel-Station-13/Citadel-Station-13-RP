@@ -5,7 +5,7 @@
 	icon = 'icons/obj/hydroponics_products.dmi'
 	icon_state = "blank"
 	desc = "Nutritious! Probably."
-	flags = NOCONDUCT
+	atom_flags = NOCONDUCT
 	slot_flags = SLOT_HOLSTER
 	drop_sound = 'sound/items/drop/herb.ogg'
 	pickup_sound = 'sound/items/pickup/herb.ogg'
@@ -154,7 +154,7 @@
 				var/mob/living/carbon/human/H = M
 				if(H.shoes && H.shoes.clothing_flags & NOSLIP)
 					return
-				if(H.flags & NO_SLIP)//Species that dont slip naturally
+				if(H.species.species_flags & NO_SLIP)//Species that dont slip naturally
 					return
 			M.stop_pulling()
 			to_chat(M, "<span class='notice'>You slipped on the [name]!</span>")

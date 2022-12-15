@@ -36,7 +36,7 @@
 	desc = "A versatile wooden baton from Old Earth, designed for both attack and defense."
 	icon_state = "tonfa"
 	item_state = "tonfa"
-	flags = NOBLOODY
+	atom_flags = NOBLOODY
 	defend_chance = 15
 
 //Telescopic baton

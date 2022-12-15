@@ -214,7 +214,7 @@ BLIND     // can't see anything
 	icon_state = "plaingoggles"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	body_parts_covered = EYES
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 
 /obj/item/clothing/glasses/night
 	name = "night vision goggles"
@@ -233,7 +233,7 @@ BLIND     // can't see anything
 /obj/item/clothing/glasses/night/vox
 	name = "Alien Optics"
 	species_restricted = list(SPECIES_VOX)
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 
 /obj/item/clothing/glasses/night/Initialize(mapload)
 	. = ..()
@@ -636,7 +636,7 @@ BLIND     // can't see anything
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "sunglasses", SLOT_ID_LEFT_HAND = "sunglasses")
 	toggleable = 1
 	action_button_name = "Toggle Monocle"
-	flags = null //doesn't protect eyes because it's a monocle, duh
+	atom_flags = NONE //doesn't protect eyes because it's a monocle, duh
 
 	body_parts_covered = 0
 
@@ -661,7 +661,7 @@ BLIND     // can't see anything
 	icon_state = "orange-g"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "glasses", SLOT_ID_LEFT_HAND = "glasses")
 	action_button_name = "Adjust Orange Goggles"
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 	var/up = 0
 	body_parts_covered = EYES
 	species_restricted = list(SPECIES_TESHARI)

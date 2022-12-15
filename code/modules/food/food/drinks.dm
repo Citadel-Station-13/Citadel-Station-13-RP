@@ -10,7 +10,7 @@
 	drop_sound = 'sound/items/drop/bottle.ogg'
 	pickup_sound = 'sound/items/pickup/bottle.ogg'
 	icon_state = null
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = list(5,10,15,25,30)
 	volume = 50
@@ -35,7 +35,7 @@
 	else
 		playsound(loc,"canopen", rand(10,50), 1)
 	to_chat(user, "<span class='notice'>You open [src] with an audible pop!</span>")
-	flags |= OPENCONTAINER
+	atom_flags |= OPENCONTAINER
 
 /obj/item/reagent_containers/food/drinks/attack(mob/M as mob, mob/user as mob, def_zone)
 	if(force && !(item_flags & ITEM_NOBLUDGEON) && user.a_intent == INTENT_HARM)
@@ -110,7 +110,7 @@
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = null
 	volume = 150
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 
 /obj/item/reagent_containers/food/drinks/golden_cup/on_reagent_change()
 	..()

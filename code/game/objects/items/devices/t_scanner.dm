@@ -133,7 +133,7 @@
 
 	user_client = new_client
 
-/obj/item/t_scanner/dropped(mob/user, flags, atom/newLoc)
+/obj/item/t_scanner/dropped(mob/user, atom_flags, atom/newLoc)
 	. = ..()
 	set_user_client(null)
 
