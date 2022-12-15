@@ -1537,6 +1537,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	. += new /atom/movable/screen/plane_master/fullbright
 	/// Lighting system (but different!)
 	. += new /atom/movable/screen/plane_master/lighting
+	. += new /atom/movable/screen/plane_master/emissive
 	/// Ghosts!
 	. += new /atom/movable/screen/plane_master/ghosts
 	/// AI Eye!
