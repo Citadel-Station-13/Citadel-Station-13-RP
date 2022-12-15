@@ -245,8 +245,10 @@ Protectiveness | Armor %
 			return
 		if(!user.attempt_void_item_for_installation(second_plate))
 			return
-		var/obj/item/clothing/suit/armor/material/makeshift/new_armor = new(null, material.name)
-		user.put_in_hands(new_armor)
+		var/obj/item/clothing/suit/armor/material/makeshift/new_armor = new(loc, material.name)
+		user.temporarily_remove_from_inventory(second_plate, INV_OP_FORCE | INV_OP_DELETING | INV_OP_SILENT)
+		user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_DELETING | INV_OP_SILENT)
+		user.put_in_hands_or_drop(new_armor)
 		qdel(second_plate)
 		qdel(src)
 	else
@@ -270,8 +272,9 @@ Protectiveness | Armor %
 		var/obj/item/stack/material/S = O
 		if(S.use(2))
 			to_chat(user, "<span class='notice'>You apply some [S.material.use_name] to \the [src].  Hopefully it'll make the makeshift helmet stronger.</span>")
-			var/obj/item/clothing/head/helmet/material/makeshift/helmet = new(null, S.material.name)
-			user.put_in_hands(helmet)
+			var/obj/item/clothing/head/helmet/material/makeshift/helmet = new(loc, S.material.name)
+			user.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SILENT | INV_OP_DELETING)
+			user.put_in_hands_or_drop(helmet)
 			qdel(src)
 			return
 		else

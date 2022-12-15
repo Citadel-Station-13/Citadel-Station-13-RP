@@ -12,6 +12,7 @@
 	layer = DOOR_OPEN_LAYER
 	rad_flags = RAD_BLOCK_CONTENTS
 	// todo: rad_insulation_open/closed
+	pass_flags = NONE
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER
 
