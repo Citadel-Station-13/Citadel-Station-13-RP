@@ -270,6 +270,7 @@
 	return 1
 
 /datum/material/algae
+	id = "algae"
 	name = MATERIAL_ALGAE
 	stack_type = /obj/item/stack/material/algae
 	icon_colour = "#557722"
@@ -289,6 +290,7 @@
 	amount = 10
 
 /datum/material/carbon
+	id = "carbon"
 	name = MATERIAL_CARBON
 	stack_type = /obj/item/stack/material/carbon
 	icon_colour = "#303030"
