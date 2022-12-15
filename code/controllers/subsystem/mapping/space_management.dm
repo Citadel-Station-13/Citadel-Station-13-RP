@@ -136,6 +136,8 @@
 	// make new level
 	var/new_z = GetInstantiationLevel(level.baseturf)
 	#warn above --> void turf behavior??
+	#warn MAKE SURE WIDTH/HEIGHT MATCHES PROMISED VALUEs, IF NOT, REJECT
+	#warn if promised values are null, we set for them
 
 	if(new_z in reusable_levels)
 		reusable_levels -= new_z
@@ -177,6 +179,7 @@
 
 	// call postload
 	level.post_load(., load_from_path)
+	#warn we need to register to by id and we need to check for collisions BEFORE we load at all!
 
 	// rebuild caches
 	if(rebuild_datastructures_immediately)
@@ -200,11 +203,11 @@
 	return InstantiateMapLevel(level, FALSE, rebuild_immediately)
 
 /**
- * Called to instantiate a /datum/map_config's physical levels.
+ * Called to instantiate a /datum/map_data's physical levels.
  *
  * Returns an ordered list of zlevel indices used/created, or null if failed
  */
-/datum/controller/subsystem/mapping/proc/InstantiateMapDatum(datum/map_config/config, load_from_path = TRUE, rebuild_datastructures_immediately = TRUE, rebuild_turfs_immediately = TRUE)
+/datum/controller/subsystem/mapping/proc/InstantiateMapDatum(datum/map_data/config, load_from_path = TRUE, rebuild_datastructures_immediately = TRUE, rebuild_turfs_immediately = TRUE)
 	loaded_levels += config
 
 	var/list/indices = list()

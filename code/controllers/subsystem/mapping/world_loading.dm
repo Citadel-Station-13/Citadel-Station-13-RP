@@ -2,7 +2,7 @@
 	/// List of map datums by id, made at world start.
 	var/list/map_datums
 	/// Currently loaded map datum
-	var/static/datum/map_config/station/map
+	var/static/datum/map_data/station/map
 	/// World loaded?
 	var/static/world_loaded = FALSE
 	/// map datums initialized?
@@ -16,7 +16,7 @@
 	map_datums_loaded = TRUE
 	// wipe old map datums
 	for(var/id in map_datums)
-		var/datum/map_config/config = map_datums[id]
+		var/datum/map_data/config = map_datums[id]
 		if(!istype(config))
 			continue
 		if(config == map)
@@ -29,7 +29,7 @@
 	map_datums = list()
 	var/list/json_paths = directory_walk_exts(list("maps/map_files", "config/map_files"), list("json"))
 	for(var/path in json_paths)
-		var/datum/map_config/station/map = new(file(path), path)
+		var/datum/map_data/station/map = new(file(path), path)
 		if(map.errored)
 			qdel(map)
 			init_error("Failed to load [map.id] ([path]).")
@@ -82,7 +82,7 @@
  */
 /datum/controller/subsystem/mapping/proc/get_map_name(id)
 	if(id)
-		var/datum/map_config/config = map_datums[config]
+		var/datum/map_data/config = map_datums[config]
 		return config?.name || "ERROR"
 	return map?.name || "UNKNOWN"
 
@@ -90,7 +90,7 @@
  * Gets the map datum of an ID
  */
 /datum/controller/subsystem/mapping/proc/get_map_datum(id)
-	RETURN_TYPE(/datum/map_config/station)
+	RETURN_TYPE(/datum/map_data/station)
 	return map_datums[id]
 
 /**

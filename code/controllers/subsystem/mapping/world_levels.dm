@@ -18,7 +18,7 @@
 	// wipe old map datums
 	if(islist(level_datums))
 		for(var/id in level_datums)
-			var/datum/map_config/level/config = map_datums[id]
+			var/datum/map_data/level/config = map_datums[id]
 			if(!istype(config))
 				continue
 			if(config in loaded_levels)
@@ -31,7 +31,7 @@
 	level_datums = list()
 	var/list/json_paths = directory_walk_exts(list("maps/space_levels", "config/space_levels"), list("json"))
 	for(var/path in json_paths)
-		var/datum/map_config/level/map = new(file(path), path)
+		var/datum/map_data/level/map = new(file(path), path)
 		if(map.errored)
 			qdel(map)
 			init_error("Failed to load [map.id] ([path]).")
@@ -49,7 +49,7 @@
 		CRASH("Failed to find [group]")
 	if(!level_datums[group][id])
 		CRASH("Failed to find [id]")
-	var/datum/map_config/level/level = level_datums[group][id]
+	var/datum/map_data/level/level = level_datums[group][id]
 	if(level in loaded_levels)
 		CRASH("Tried to load [level] twice.")
 	. = InstantiateMapDatum(level)
@@ -59,7 +59,7 @@
 
 /datum/controller/subsystem/mapping/proc/IsLevelLoaded(group, id)
 	. = FALSE
-	for(var/datum/map_config/level/L in loaded_levels)
+	for(var/datum/map_data/level/L in loaded_levels)
 		if(L.group == group && L.id == id)
 			return TRUE
 
@@ -118,7 +118,7 @@
 	else if(group)
 		var/list/levels
 		var/id = input(src, "Choose a map.", "Load Map Level") as null|anything in levels[group]
-		var/datum/map_config/L = levels[id]
+		var/datum/map_data/L = levels[id]
 		if(!istype(L))
 			to_chat(usr, "<span class='danger'>Invalid level datum.</span>")
 			return

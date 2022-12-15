@@ -1,6 +1,6 @@
 /datum/controller/subsystem/mapping
 	/// next map datum - only set via SetNextMap, as GetNextMap can be called roundstart before rotation happens
-	var/datum/map_config/station/next_map
+	var/datum/map_data/station/next_map
 
 #warn Recover()
 
@@ -55,7 +55,7 @@
 		message_admins("Failed to map_rotate() - no maps.")
 		subsystem_log("Failed to rotate maps due to no maps.")
 		return
-	var/datum/map_config/station/VM = map_datums[pickedmap]
+	var/datum/map_data/station/VM = map_datums[pickedmap]
 	if(!VM)
 		subsystem_log("MapRotate failed to locate map ID [pickedmap]. Exiting.")
 		message_admins("WARNING: Failed to proc map rotation due to [pickedmap] being missing from map datums.")

@@ -30,11 +30,10 @@
 	var/center = TRUE
 	/// load "void" tiles for blank areas when we're smaller than the world zlevel size as opposed to baseturf
 	var/fill_void = FALSE
-	/// width
+	/// width - automatically set if omitted, but you should set it where possible for error checking.
 	var/width
-	/// height
+	/// height - automatically set if omitted, but you should set it where possible for error checking.
 	var/height
-	#warn when loading, assert width/height matches
 
 	#warn hook these into load process and generation
 	//! bounds - for when we had to fill void.
@@ -48,6 +47,7 @@
 	var/tmp/y_max
 
 	//! Linkage - IDs
+	// todo: support overriding world_struct linkage
 	// Linkage/MultiZ - what zlevels are where. References by ID only!
 	VAR_PRIVATE/up
 	VAR_PRIVATE/down
@@ -161,10 +161,55 @@
 		random_id = FALSE
 
 	//? files / loading
+	if(data["orientation"])
+		orientation = data["orientation"]
+		if(istext(orientation))
+			switch(lowertext(orientation))
+				if("north")
+					orientation = NORTH
+				if("south")
+					orientation = SOUTH
+				if("east")
+					orientation = EAST
+				if("west")
+					orientation = WEST
+	if(data["center"])
+		center = !!data["center"]
+	if(data["fill_void"])
+		fill_void = !!data["fill_void"]
+	if(data["width"])
+		width = text2num(data["width"])
+	if(data["height"])
+		height = text2num(data["height"])
+
+	#warn make sure everything matches the vars
+	#warn default base_turf to world.turf
+	#warn default base_area to world.area
+	if(data["path_absolute"])
+		map_path = data["path_absolute"]
+	else if(data["path"])
+		map_path = pathroot + data["path"]
+
 
 	//? linkage info
+	if(data["transition"])
+		transition_mode = data["transition"]
+	if(data["linkage"])
+		linkage_mode = data["linkage"]
 
 	//? linkage overrides
+	if(data["up"])
+		up = data["up"]
+	if(data["down"])
+		down = data["down"]
+	if(data["east"])
+		east = data["east"]
+	if(data["west"])
+		west = data["west"]
+	if(data["north"])
+		north = data["north"]
+	if(data["south"])
+		south = data["south"]
 
 	//? traits
 	if(length(data["traits"]))
@@ -193,62 +238,61 @@
 		level_module_type = text2path(data["module"])
 
 
-	#warn make sure everything matches the vars
-	#warn default base_turf to world.turf
-	#warn default base_area to world.area
-	if(instantiated)
-		CRASH("attempted to reload json while already instantiated")
-	if(!islist(data))
-		CRASH("Invalid data list")
-	raw_json = data
-	if(data["name"])
-		name = data["name"]
-	if(data["id"])
-		set_id(data["id"])
-		random_id = FALSE
-		#warn this shouldn't use set id
-	if(data["path_absolute"])
-		map_path = data["path_absolute"]
-	else if(data["path"])
-		map_path = pathroot + data["path"]
-	if(data["orientation"])
-		orientation = data["orientation"]
-		if(istext(orientation))
-			switch(lowertext(orientation))
-				if("north")
-					orientation = NORTH
-				if("south")
-					orientation = SOUTH
-				if("east")
-					orientation = EAST
-				if("west")
-					orientation = WEST
-				else
-					orientation = SOUTH
-		else if(isnum(orientation))
-			if(!(orientation in GLOB.cardinal))
-				orientation = SOUTH
-	if(data["center"])
-		center = data["center"]
-	if(data["fill_void"])
-		fill_void = data["fill_void"]
-	// This part links us based on index.
-	if(data["up"])
-		up = data["up"]
-	if(data["down"])
-		down = data["down"]
-	if(data["east"])
-		east = data["east"]
-	if(data["west"])
-		west = data["west"]
-	if(data["north"])
-		north = data["north"]
-	if(data["south"])
-		south = data["south"]
-	if(data["linkage_mode"])
-		linkage_mode = data["linkage_mode"]
-
 #warn validate()
+
+/**
+ * first validation pass, verifies all values are up to spec
+ */
+/datum/space_level/proc/validate()
+	. = FALSE
+	//? basic
+	ASSERTION(istext(id), "instead [id]")
+	ASSERTION(map_path, "(was null)")
+	//? map
+	ASSERTION(orientation in GLOB.cardinal, "not cardinal instead [orientation]")
+	ASSERTION(center == TRUE || center == FALSE, "not bool instead [center]")
+	ASSERTION(fill_void == TRUE || fill_void == FALSE, "not bool instead [fill_void]")
+	ASSERTION(!width || isnum(width), "not num or null instead [width]")
+	ASSERTION(!height || isnum(height), "not num or null instead [height]")
+	#warn map path
+	//? linkage - ids
+	ASSERTION(!up || istext(up), "not text or null instead [up]")
+	ASSERTION(!down || istext(down), "not text or null instead [down]")
+	ASSERTION(!east || istext(east), "not text or null instead [east]")
+	ASSERTION(!west || istext(west), "not text or null instead [west]")
+	ASSERTION(!north || istext(north), "not text or null instead [north]")
+	ASSERTION(!south || istext(south), "not text or null instead [south]")
+	//? linkage - mode
+	ASSERTION(linkage_mode in list(
+		Z_LINKAGE_NORMAL,
+		Z_LINKAGE_CROSSLINKED,
+		Z_LINKAGE_SELFLOOP,
+	), "was [linkage_mode]")
+	ASSERTION(transition_mode in list(
+		Z_TRANSITION_FORCED,
+		Z_TRANSITION_DISABLED,
+		Z_TRANSITION_DEFAULT,
+		Z_TRANSITION_INVISIBLE,
+	), "was [transition_mode]")
+	//? baseturfs
+	ASSERTION(!base_turf || ispath(base_turf, /turf), "instead [base_turf]")
+	ASSERTION(!base_area || ispath(base_area, /area), "instead [base_area]")
+	//? air
+	#warn air
+	//? module
+	ASSERTION(!level_module_type || ispath(level_module_type, /datum/level_module), "not null or correct path, instead [level_module_type]")
+	return TRUE
+
+/**
+ * validation called with context for cross-validation
+ *
+ * @params
+ * - map_data - (optional) map data we're loading in from
+ * - level_by_id - (optional) id-associative list of relevant other levels
+ */
+/datum/space_level/proc/cross_validate(datum/map_data/map, list/level_by_id)
+	#warn width/height matches
+	#warn didn't override linkage ids when in struct
 
 /**
  * Called after the level is physically created.

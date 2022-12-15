@@ -3,7 +3,7 @@
  *
  * Holds all the data necessary to load, instantiate, and use a map.
  */
-/datum/map_config
+/datum/map_data
 	// Basic data
 	/// Unique ID
 	var/id
@@ -56,7 +56,7 @@
 #warn support circular references and cross referencing for structs and planets!
 #warn automatic world struct generation based on closure
 
-/datum/map_config/New(file_jsonstr_list, path)
+/datum/map_data/New(file_jsonstr_list, path)
 	if(file_jsonstr_list)
 		var/list/data = file_jsonstr_list
 		if(!istype(data))
@@ -67,14 +67,14 @@
 		parse(data, path)
 	original_path = path
 
-/datum/map_config/Destroy(force)
+/datum/map_data/Destroy(force)
 	if(instantiated && !force)
 		. = QDEL_HINT_LETMELIVE
 		CRASH("Attempted to qdel an instantiated map config. This is going to cause problems - SSmapping will cache all loaded levels for data retrieval.")
 	QDEL_LIST(levels)
 	return ..()
 
-/datum/map_config/proc/parse(list/data, path)
+/datum/map_data/proc/parse(list/data, path)
 	original_datalist = data
 	ASSERT(istext(data["id"]) && length(data["id"]))
 	id = data["id"]
@@ -109,7 +109,7 @@
 			SSjob.EnableMapJobs(enable_jobs)
 			#warn the above needs job refactor
 
-/datum/map_config/proc/validate(recurse)
+/datum/map_data/proc/validate(recurse)
 	. = list()
 	if(!isnum(width) || width <= 0)
 #warn validation needs to happen in unit tests AND spit errors out into to_chat world LOUDLY.
@@ -117,7 +117,7 @@
 /**
  * Called after loading with a list of z indices corrosponding to each level in the map.
  */
-/datum/map_config/proc/post_load(list/ordered_z)
+/datum/map_data/proc/post_load(list/ordered_z)
 	for(var/list/data in world_structs)
 		var/datum/world_struct/S = new
 		S.Construct(data)
@@ -126,7 +126,7 @@
  * Represents map configs that are loaded as the primary station map.
  * Called a station map config, but this doesn't have to be a station.
  */
-/datum/map_config/station
+/datum/map_data/station
 	//? map type
 	/// This should be used to adjust ingame behavior depending on the specific type of map being played. For instance, if an overmap were added, it'd be appropriate for it to only generate with a MAP_TYPE_SHIP
 	var/maptype = MAP_TYPE_STATION
@@ -160,7 +160,7 @@
 	//? MISC / UNSORTED - ported from legacy; some of these should probably be rethought, some should be organized later.
 
 
-/datum/map_config/station/parse(list/data)
+/datum/map_data/station/parse(list/data)
 	. = ..()
 	// map type
 	if(data["maptype"])
@@ -195,11 +195,11 @@
 /**
  * Represents a miscellaneous level to be loaded at will
  */
-/datum/map_config/level
+/datum/map_data/level
 	/// Group
 	var/group
 
-/datum/map_config/level/parse(list/data)
+/datum/map_data/level/parse(list/data)
 	. = ..()
 	if(!istext(data["group"]) || !length(data["group"]))
 		errored = TRUE

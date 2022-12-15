@@ -15,6 +15,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 //define THIS_PROC_TYPE_WEIRD_STR_WITH_ARGS "[THIS_PROC_TYPE_WEIRD]([args.Join(",")])" //Ditto
 
 #define NOT_IMPLEMENTED	"NOT_IMPLEMENTED"
+#define ASSERTION(check, msg) if(!(check)) CRASH("Assertion failed: [#check] - [msg]")
 
 // Invisibility constants. These should only be used for TRUE invisibility, AKA nothing living players touch
 #define INVISIBILITY_LIGHTING		20

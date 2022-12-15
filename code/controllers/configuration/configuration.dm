@@ -9,7 +9,7 @@
 	var/list/entries_by_type
 
 	var/list/maplist
-	var/datum/map_config/defaultmap
+	var/datum/map_data/defaultmap
 
 	/*
 	var/list/modes			// allowed modes
@@ -286,7 +286,7 @@
 	filename = "[directory]/[filename]"
 	var/list/Lines = world.file2list(filename)
 
-	var/datum/map_config/currentmap = null
+	var/datum/map_data/currentmap = null
 	for(var/t in Lines)
 		if(!t)
 			continue
@@ -315,7 +315,7 @@
 
 		switch (command)
 			if ("map")
-				currentmap = load_map_config("_maps/[data].json")
+				currentmap = load_map_data("_maps/[data].json")
 				if(currentmap.defaulted)
 					log_config("Failed to load map config for [data]!")
 					currentmap = null
