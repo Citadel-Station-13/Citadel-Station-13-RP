@@ -111,7 +111,7 @@
 /**
  * Called after loading with a list of z indices corrosponding to each level in the map.
  */
-/datum/map_config/proc/PostLoad(list/ordered_z)
+/datum/map_config/proc/post_load(list/ordered_z)
 	for(var/list/data in world_structs)
 		var/datum/world_struct/S = new
 		S.Construct(data)

@@ -86,7 +86,7 @@ SUBSYSTEM_DEF(mapping)
 	var/rebuild_start = REALTIMEOFDAY
 	RebuildCrosslinking()		// THIS GOES FIRST
 	RebuildVerticality()
-	RebuildTransitions()
+	rebuild_transitions()
 	RebuildMapLevelTurfs(null, TRUE, TRUE)
 	repopulate_sorted_areas()
 	init_log("Zlevels rebuilt in [(REALTIMEOFDAY - rebuild_start) / 10]s.")

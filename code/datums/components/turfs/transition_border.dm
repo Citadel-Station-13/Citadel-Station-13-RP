@@ -18,6 +18,7 @@
 #warn deal with
 #warn this is shitcode upon shitcode
 #warn rewrite this as well as levels to do this faster.
+#warn verify transfer code
 
 /datum/component/transition_border/Initialize(range = TRANSITION_VISUAL_SIZE, dir, render, force_z_target, force_destination)
 	if(!isturf(parent))
@@ -61,9 +62,9 @@
 
 /datum/component/transition_border/proc/Build()
 	// reset first
-	holder1?.Reset()
-	holder2?.Reset()
-	holder3?.Reset()
+	holder1?.reset()
+	holder2?.reset()
+	holder3?.reset()
 
 	#warn can avoid needing 2-2 spacing and have 1-1 spacing
 	#warn where first tile from edge teleports to second tile from edge
@@ -157,15 +158,21 @@
 	plane = PLANE_SPACE
 	density = FALSE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	vis_flags = VIS_HIDE	// THIS IS VERY FUCKING IMPORTANT; WILL CRASH SERVER IF IT LOOPS.
 
 /atom/movable/mirage_border/forceMove()
 	return
 
 /atom/movable/mirage_border/Destroy()
-	Reset()
+	reset()
 	return ..()
 
-/atom/movable/mirage_border/proc/Reset()
+/atom/movable/mirage_border/proc/reset()
 	pixel_x = 0
 	pixel_y = 0
 	vis_contents = list()
+
+/atom/movable/mirage_border/vv_edit_var(var_name, var_value, raw_edit)
+	if(var_value == NAMEOF(src, vis_flags))	// NO
+		return FALSE
+	return ..()

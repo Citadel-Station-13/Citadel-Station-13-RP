@@ -1673,6 +1673,7 @@
 #include "code\game\objects\structures\stool_bed_chair_nest\stools.dm"
 #include "code\game\objects\structures\stool_bed_chair_nest\wheelchair.dm"
 #include "code\game\turfs\baseturfs.dm"
+#include "code\game\turfs\border.dm"
 #include "code\game\turfs\change_turf.dm"
 #include "code\game\turfs\simulated.dm"
 #include "code\game\turfs\turf.dm"

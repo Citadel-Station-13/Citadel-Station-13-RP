@@ -129,9 +129,9 @@
 			has_up_down = TRUE
 		if(rebuild)
 			if(has_adjacent)
-				L.RebuildTransitions()
+				L.rebuild_transitions()
 			if(has_up_down)
-				L.RebuildTurfs()
+				L.rebuild_turfs()
 	for(var/z_text in plane_cache)
 		planes += plane_cache[z_text]
 	width = max_x - min_x + 1
@@ -241,9 +241,9 @@
 		L.struct_z = 0
 		if(rebuild)
 			if(had_adjacent)
-				INVOKE_ASYNC(L, /datum/space_level/proc/RebuildTransitions)
+				INVOKE_ASYNC(L, /datum/space_level/proc/rebuild_transitions)
 			if(had_up_down)
-				INVOKE_ASYNC(L, /datum/space_level/proc/RebuildTurfs)
+				INVOKE_ASYNC(L, /datum/space_level/proc/rebuild_turfs)
 	Unregister(rebuild)
 	constructed = FALSE
 
@@ -253,7 +253,7 @@
 	if(rebuild)
 		SSmapping.RebuildStructLookup()
 		SSmapping.RebuildVerticality()
-		SSmapping.RebuildTransitions()
+		SSmapping.rebuild_transitions()
 		SSmapping.RebuildCrosslinking()
 
 /datum/world_struct/proc/Unregister(rebuild = TRUE)
@@ -262,7 +262,7 @@
 	if(rebuild)
 		SSmapping.RebuildStructLookup()
 		SSmapping.RebuildVerticality()
-		SSmapping.RebuildTransitions()
+		SSmapping.rebuild_transitions()
 		SSmapping.RebuildCrosslinking()
 
 /**

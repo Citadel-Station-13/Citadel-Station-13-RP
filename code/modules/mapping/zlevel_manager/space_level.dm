@@ -34,13 +34,13 @@
 	#warn hook these into load process and generation
 	// bounds - for when we had to fill void.
 	/// start x inclusive
-	var/bottomleft_x
+	var/x_min
 	/// start y inclusive
-	var/bottomleft_y
+	var/y_min
 	/// end x inclusive
-	var/topright_x
+	var/x_max
 	/// end y inclusive
-	var/topright_y
+	var/y_max
 	/// width
 	var/width
 	/// height
@@ -159,7 +159,7 @@
 	if(data["name"])
 		name = data["name"]
 	if(data["id"])
-		SetID(data["id"])
+		set_id(data["id"])
 		random_id = FALSE
 		#warn this shouldn't use set id
 	if(data["path_absolute"])
@@ -223,17 +223,17 @@
  * - z_index - physical z value
  * - maploaded - did our map_path get used to create us or are we a bare level at time of call?
  */
-/datum/space_level/proc/PostLoad(z_index, maploaded)
+/datum/space_level/proc/post_load(z_index, maploaded)
 	if(isnull(name))
 		name = "Unknown Level [z_index]"
 
 /**
  * Gets DMM path
  */
-/datum/space_level/proc/GetPath()
+/datum/space_level/proc/get_path()
 	return map_path
 
-/datum/space_level/proc/SetID(id)
+/datum/space_level/proc/set_id(id)
 	if(instantiated)
 		CRASH("attempted to change id of instantiated level; this will usually break things if allowed.")
 	SSmapping.level_by_id -= src.id
@@ -241,16 +241,16 @@
 	#warn check to make sure
 	SSmapping.level_by_id[src.id] = src
 
-#warn everything below
+#warn everything above
 
 /**
  * call to rebuild all turfs for vertical multiz
  *
  * this will sleep
  */
-/datum/space_level/proc/RebuildTurfs()
-	for(var/turf/T as anything in block(locate(1,1,z_value), locate(world.maxx, world.maxy, z_value)))
-		T.UpdateMultiZ()
+/datum/space_level/proc/rebuild_turfs()
+	for(var/turf/T as anything in block(locate(x_min || 1, y_min || 1, z_value), locate(x_max || world.maxx, y_max || world.maxx, z_value))
+		T.update_multiz()
 		CHECK_TICK
 	turfs_rebuild_count++
 
@@ -259,59 +259,146 @@
  *
  * this will sleep
  */
-/datum/space_level/proc/RebuildTransitions()
-	var/list/checking = list()
-	#warn support less-than-world-size levels
-	checking += block(locate(1, 1, z_value), locate(world.maxx, 1, z_value))
-	checking += block(locate(1, world.maxy, z_value), locate(world.maxx, world.maxy, z_value))
-	checking += block(locate(1, 2, z_value), locate(1, world.maxy - 1, z_value))
-	checking += block(locate(world.maxx, 2, z_value), locate(world.maxx, world.maxy - 1, z_value))
-	for(var/turf/T in checking)
-		T.UpdateTransitions()
-		CHECK_TICK
+/datum/space_level/proc/rebuild_transitions()
+	switch(transition_mode)
+		// do nothing
+		if(Z_TRANSITION_DISABLED)
+		// default not implemented
+		if(Z_TRANSITION_FORCED, Z_TRANSITION_DEFAULT)
+			// bottom
+			for(var/turf/T as anything in block(locate((x_min || 1) + 1, y_min || 1, z_value), locate((x_max || world.maxx) - 1, y_min || 1, z_value)))
+				T._make_transition_border(SOUTH, TRUE)
+				CHECK_TICK
+			// top
+			for(var/turf/T as anything in block(locate((x_min || 1) + 1, topright_Y || world.maxy, z_value), locate((x_max || world.maxx) - 1, y_max || world.maxy, z_value)))
+				T._make_transition_border(NORTH, TRUE)
+				CHECK_TICK
+			// left
+			for(var/turf/T as anything in block(locate(x_min || 1, (y_min || 1) + 1, z_value), locate(x_min || 1, (y_max || world.maxy) - 1, z_value)))
+				T._make_transition_border(WEST, TRUE)
+				CHECK_TICK
+			// right
+			for(var/turf/T as anything in block(locate(x_max || world.maxx, (y_min || 1) + 1, z_value), locate(x_max || world.maxx, (y_max || world.maxy) - 1, z_value)))
+				T._make_transition_border(EAST, TRUE)
+				CHECK_TICK
+
+			var/turf/T
+			// bottomleft
+			T = locate(x_min || 1, y_min || 1, z_value)
+			T._make_transition_border(SOUTHWEST, TRUE)
+			CHECK_TICK
+			// bottomright
+			T = locate(x_max || world.maxx, y_min || 1, z_value)
+			T._make_transition_border(SOUTHEAST, TRUE)
+			CHECK_TICK
+			// topleft
+			T = locate(x_min || 1, y_max || world.maxy, z_value)
+			T._make_transition_border(NORTHWEST, TRUE)
+			CHECK_TICK
+			// topright
+			T = locate(x_max || world.maxx, y_max || world.maxy, z_value)
+			T._make_transition_border(NORTHEAST, TRUE)
+			CHECK_TICK
+		if(Z_TRANSITION_INVISIBLE)
+			// bottom
+			for(var/turf/T as anything in block(locate((x_min || 1) + 1, y_min || 1, z_value), locate((x_max || world.maxx) - 1, y_min || 1, z_value)))
+				T._make_transition_border(SOUTH, FALSE)
+				CHECK_TICK
+			// top
+			for(var/turf/T as anything in block(locate((x_min || 1) + 1, topright_Y || world.maxy, z_value), locate((x_max || world.maxx) - 1, y_max || world.maxy, z_value)))
+				T._make_transition_border(NORTH, FALSE)
+				CHECK_TICK
+			// left
+			for(var/turf/T as anything in block(locate(x_min || 1, (y_min || 1) + 1, z_value), locate(x_min || 1, (y_max || world.maxy) - 1, z_value)))
+				T._make_transition_border(WEST, FALSE)
+				CHECK_TICK
+			// right
+			for(var/turf/T as anything in block(locate(x_max || world.maxx, (y_min || 1) + 1, z_value), locate(x_max || world.maxx, (y_max || world.maxy) - 1, z_value)))
+				T._make_transition_border(EAST, FALSE)
+				CHECK_TICK
+
+			var/turf/T
+			// bottomleft
+			T = locate(x_min || 1, y_min || 1, z_value)
+			T._make_transition_border(SOUTHWEST, FALSE)
+			CHECK_TICK
+			// bottomright
+			T = locate(x_max || world.maxx, y_min || 1, z_value)
+			T._make_transition_border(SOUTHEAST, FALSE)
+			CHECK_TICK
+			// topleft
+			T = locate(x_min || 1, y_max || world.maxy, z_value)
+			T._make_transition_border(NORTHWEST, FALSE)
+			CHECK_TICK
+			// topright
+			T = locate(x_max || world.maxx, y_max || world.maxy, z_value)
+			T._make_transition_border(NORTHEAST, FALSE)
+			CHECK_TICK
 	transitions_rebuild_count++
 
-#warn all of this shit is sihtcode above and below redo it
-#warn add Z_TRANSITION_X handling
-#warn Z_TRANSITION_DEFAULT should detect turf changes to automatically make transitions when adminbus happens
+/**
+ * destroys all transitions on border turfs
+ * call when changing level size
+ *
+ * this will sleep
+ */
+/datum/space_levey/proc/destroy_transitions()
+	// bottom
+	for(var/turf/T as anything in block(locate(x_min || 1, y_min || 1, z_value), locate(x_max || world.maxx, y_min || 1, z_value)))
+		T._dispose_transition_border()
+		CHECK_TICK
+	// top
+	for(var/turf/T as anything in block(locate(x_min || 1, topright_Y || world.maxy, z_value), locate(x_max || world.maxx, y_max || world.maxy, z_value)))
+		T._dispose_transition_border()
+		CHECK_TICK
+	// left
+	for(var/turf/T as anything in block(locate(x_min || 1, (y_min || 1) + 1, z_value), locate(x_min || 1, (y_max || world.maxy) - 1, z_value)))
+		T._dispose_transition_border()
+		CHECK_TICK
+	// right
+	for(var/turf/T as anything in block(locate(x_max || world.maxx, (y_min || 1) + 1, z_value), locate(x_max || world.maxx, (y_max || world.maxy) - 1, z_value)))
+		T._dispose_transition_border()
+		CHECK_TICK
 
 /**
  * Rebuild turfs up/down of us
+ * This will sleep
  */
-/datum/space_level/proc/RebuildVerticalLevels()
+/datum/space_level/proc/rebuild_vertical_levels()
 	for(var/datum/space_level/L in list(
 		resolve_level_in_dir(UP),
 		resolve_level_in_dir(DOWN)
 	))
-		L.RebuildTurfs()
+		L.rebuild_turfs()
 
 /**
  * Rebuild turfs adjacent of us
+ * This will sleep
  */
-/datum/space_level/proc/RebuildAdjacentLevels()
+/datum/space_level/proc/rebuild_adjacent_levels()
 	for(var/datum/space_level/L in list(
 		resolve_level_in_dir(NORTH),
 		resolve_level_in_dir(SOUTH),
 		resolve_level_in_dir(EAST),
 		resolve_level_in_dir(WEST)
 	))
-		L.RebuildTransitions()
+		L.rebuild_transitions()
 
 /**
  * expand the level to fill the entire level, wiping void turfs on the way
  */
-/datum/space_level/proc/RemoveVoid()
-	ASSERT(bottomleft_x && bottomleft_y && topright_x && topright_y)
+/datum/space_level/proc/remove_void()
+	ASSERT(x_min && y_min && x_max && y_max)
 	var/list/turf/turfs = list()
-	if(bottomleft_x > 1)
-		turfs += block(locate(1, 1, z_value), locate(bottomleft_x - 1, world.maxy, z_value))
-	if(topright_x < world.maxx)
-		turfs += block(locate(topright_x + 1, 1, z_value), locate(world.maxx, world.maxy, z_value))
-	if(bottomleft_y > 1)
-		turfs += block(locate(bottomleft_x, 1, z_value), locate(topright_x, bottomleft_y - 1, z_value))
-	if(topright_y < world.maxy)
-		turfs += block(locate(bottomleft_x, topright_y + 1, z_value), locate(topright_x, world.maxy, z_value))
-	var/area/new_area = world.area
+	if(x_min > 1)
+		turfs += block(locate(1, 1, z_value), locate(x_min - 1, world.maxy, z_value))
+	if(x_max < world.maxx)
+		turfs += block(locate(x_max + 1, 1, z_value), locate(world.maxx, world.maxy, z_value))
+	if(y_min > 1)
+		turfs += block(locate(x_min, 1, z_value), locate(x_max, y_min - 1, z_value))
+	if(y_max < world.maxy)
+		turfs += block(locate(x_min, y_max + 1, z_value), locate(x_max, world.maxy, z_value))
+	var/area/new_area = base_area
 	if(initial(new_area.area_flags) & UNIQUE_AREA)
 		new_area = GLOB.areas_by_type[world.area]
 		if(!new_area)
@@ -321,7 +408,7 @@
 		new_area = new world.area
 	for(var/turf/T in turfs)
 		if(istype(T, VOID_TURF_TYPE))
-			T.ChangeTurf(world.turf)
+			T.ChangeTurf(base_turf)
 		if(istype(T.loc, VOID_AREA_TYPE))
 			T.loc = new_area
 

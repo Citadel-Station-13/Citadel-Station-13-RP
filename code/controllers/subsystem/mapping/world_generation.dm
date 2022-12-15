@@ -27,7 +27,7 @@
 				InstantiateMapLevel(L, null, FALSE)
 
 			RebuildVerticality()
-			RebuildTransitions()
+			rebuild_transitions()
 			RebuildCrosslinking()
 
 			// Generate mining ruins

@@ -89,7 +89,7 @@
  *
  * This does NOT rebuild turf graphics - call it on each level for that.
  */
-/datum/controller/subsystem/mapping/proc/RebuildTransitions(datum/space_level/updated, datum/space_level/targeted, dir)
+/datum/controller/subsystem/mapping/proc/rebuild_transitions(datum/space_level/updated, datum/space_level/targeted, dir)
 	if(!updated || !transition_lookup_east || !transition_lookup_west || !transition_lookup_north || !transition_lookup_south)
 		// full rebuild
 		transition_lookup_east = list()
@@ -146,11 +146,11 @@
 
 	// load path
 	if(load_from_path)
-		var/path = level.GetPath()
+		var/path = level.get_path()
 		// can be file or path, NO .DMM STRINGS I SWEAR TO GOD
 		// currently we do not support lists
 		if(fexists(path) || isfile(path))
-			var/datum/parsed_map/parsed = new(isfile(path)? path : file(level.GetPath()))
+			var/datum/parsed_map/parsed = new(isfile(path)? path : file(level.get_path()))
 			var/width = parsed.width
 			var/height = parsed.height
 			var/x = level.center? max(round((world.maxx - width) / 2), 1) : 1
@@ -176,19 +176,19 @@
 	level.instantiated = TRUE
 
 	// call postload
-	level.PostLoad(., load_from_path)
+	level.post_load(., load_from_path)
 
 	// rebuild caches
 	if(rebuild_datastructures_immediately)
 		RebuildCrosslinking()
-		RebuildTransitions()
+		rebuild_transitions()
 		RebuildVerticality()
 
 	if(rebuild_turfs_immediately)
 		// we don't have to rebuild our own, because mapload should have done that for up/down, but we do have to do transitions
-		level.RebuildTransitions()
-		level.RebuildAdjacentLevels()
-		level.RebuildVerticalLevels()
+		level.rebuild_transitions()
+		level.rebuild_adjacent_levels()
+		level.rebuild_vertical_levels()
 
 	return new_z
 
@@ -223,11 +223,11 @@
 			var/datum/world_struct/struct = new
 			struct.Construct(L, FALSE)
 
-	config.PostLoad(indices)
+	config.post_load(indices)
 
 	if(rebuild_datastructures_immediately)
 		RebuildCrosslinking()
-		RebuildTransitions()
+		rebuild_transitions()
 		RebuildVerticality()
 
 	if(rebuild_turfs_immediately)
@@ -249,9 +249,9 @@
 	for(var/number in indices)
 		var/datum/space_level/L = space_levels[number]
 		if(transitions)
-			L.RebuildTransitions()
+			L.rebuild_transitions()
 		if(turfs)
-			L.RebuildTurfs()
+			L.rebuild_turfs()
 		CHECK_TICK
 
 #define CL_GRID(x, y, size) ((y - 1) * size + x)

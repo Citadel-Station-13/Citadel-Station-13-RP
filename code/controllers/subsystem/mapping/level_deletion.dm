@@ -59,11 +59,11 @@
 	level.SetNorth(null)
 	level.SetSouth(null)
 	// 3. rebuild
-	RebuildTransitions()
+	rebuild_transitions()
 	RebuildVerticality()
 	// 4. ensure nothing gets in or out
-	level.RebuildTransitions()
-	level.RebuildTurfs()
+	level.rebuild_transitions()
+	level.rebuild_turfs()
 	var/elapsed = round((REALTIMEOFDAY - start) * 0.1, 0.01)
 	message_admins("ZClear: Stage 0 for [z] finished in [elapsed] seconds. Adding to subsystem and igniting...")
 	subsystem_log("Stage 0 for [z] finished in [elapsed] seconds. Adding + igniting subsystem.")
