@@ -11,7 +11,7 @@
 	/// Free reserved turfs - kept so allocation can be fast. "[zlevel]" = list(turfs)
 	var/static/list/free_reserve_turfs = list()
 	/// Allocated space reservations
-	var/static/list/datum/space_reservation/space_reservations
+	var/static/list/datum/turf_reservation/space_reservations
 	/// Allocated reserved turfs - list(turf = space reservation datum reference)
 	var/static/list/allocated_reserve_turfs = list()
 	/// List of reserved zlevels
@@ -73,10 +73,10 @@
 /**
  * Requests a block reservation of a certain size and type
  */
-/datum/controller/subsystem/mapping/proc/RequestBlockReservation(width, height, z, type = /datum/space_reservation, turf_type_override, border_type_override, area_type_override)
+/datum/controller/subsystem/mapping/proc/RequestBlockReservation(width, height, z, type = /datum/turf_reservation, turf_type_override, border_type_override, area_type_override)
 	UNTIL(!reformatting_reserved_turfs)
-	ASSERT(ispath(type, /datum/space_reservation))
-	var/datum/space_reservation/reserve = new type
+	ASSERT(ispath(type, /datum/turf_reservation))
+	var/datum/turf_reservation/reserve = new type
 	if(turf_type_override)
 		reserve.turf_type = turf_type_override
 	if(border_type_override)
@@ -150,7 +150,7 @@
 /datum/controller/subsystem/mapping/proc/DoWipeSpaceReservations()
 	if(!initialized)		// but why?
 		return
-	for(var/datum/space_reservation/R as anything in space_reservations)
+	for(var/datum/turf_reservation/R as anything in space_reservations)
 		if(!QDELETED(R))
 			qdel(R, TRUE)
 	if(!istype(unallocated_reserve_area))

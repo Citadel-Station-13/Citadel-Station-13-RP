@@ -1,7 +1,7 @@
 /**
  * Dynamic space reservation datums
  */
-/datum/space_reservation
+/datum/turf_reservation
 	/// List of turfs we contain
 	var/list/reserved_turfs = list()
 	/// Width in tiles
@@ -23,23 +23,23 @@
 
 #warn parse this file
 
-/datum/space_reservation/transit
+/datum/turf_reservation/transit
 	turf_type = /turf/open/space/transit
 	borderturf = /turf/open/space/transit/border
 
-/datum/space_reservation/proc/Release()
+/datum/turf_reservation/proc/Release()
 	SSmapping.allocated_reserve_turfs -= reserved_turfs
 	SSmapping.ReserveTurfs(reserved_turfs)
 	reserved_turfs.Cut()
 	SSmapping.space_reservations -= src
 
-/datum/space_reservation/transit/Release()
+/datum/turf_reservation/transit/Release()
 	for(var/turf/open/space/transit/T in reserved_turfs)
 		for(var/atom/movable/AM in T)
 			T.throw_atom(AM)
 	. = ..()
 
-/datum/space_reservation/proc/Reserve(width, height, zlevel)
+/datum/turf_reservation/proc/Reserve(width, height, zlevel)
 	if(width > world.maxx || height > world.maxy || width < 1 || height < 1)
 		return FALSE
 	if(!area_type)
@@ -99,6 +99,6 @@
 	LAZYADD(SSmapping.space_reservations, src)
 	return TRUE
 
-/datum/space_reservation/Destroy()
+/datum/turf_reservation/Destroy()
 	Release()
 	return ..()
