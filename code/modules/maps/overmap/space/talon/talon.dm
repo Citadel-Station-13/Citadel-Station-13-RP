@@ -494,13 +494,13 @@ Once in open space, consider disabling nonessential power-consuming electronics 
 /datum/map_template/triumph_lateload/offmap/talon1
 	name = "Offmap Ship - Talon Z1"
 	desc = "Offmap spawn ship, the Talon."
-	mappath = "_maps/map_levels/140x140/talon/talon1.dmm"
+	mappath = "maps/map_levels/140x140/talon/talon1.dmm"
 	associated_map_datum = /datum/map_z_level/triumph_lateload/talon1
 
 /datum/map_template/triumph_lateload/offmap/talon2
 	name = "Offmap Ship - Talon Z2"
 	desc = "Offmap spawn ship, the Talon."
-	mappath = "_maps/map_levels/140x140/talon/talon2.dmm"
+	mappath = "maps/map_levels/140x140/talon/talon2.dmm"
 	associated_map_datum = /datum/map_z_level/triumph_lateload/talon2
 
 /datum/map_z_level/triumph_lateload/talon1

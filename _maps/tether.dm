@@ -1,1 +1,3 @@
-#define FORCE_MAP "_maps/tether.json"
+#ifndef FORCE_MAP
+	#define FORCE_MAP "tether"
+#endif

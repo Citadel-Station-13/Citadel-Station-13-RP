@@ -12,7 +12,7 @@
 	/// too verbose. For changing what people see in game when they scan it you will need to edit the overmap effect itself
 	/// (overmap effect as of me writing this are in the overmap folder)
 
-	mappath = "_maps/map_levels/192x192/Class_G.dmm"
+	mappath = "maps/map_levels/192x192/Class_G.dmm"
 	/// ^ The direct file path for your map. Is case sensitive and you need to use /'s not \'s
 	/// Make sure your map file is in a sensible location please for organization sake
 

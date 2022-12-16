@@ -259,4 +259,4 @@
 /datum/map_template/admin_use/fun/spa
 	name = "Space Spa"
 	desc = "A pleasant spa located in a spaceship."
-	mappath = '_maps/templates/admin/spa.dmm'
+	mappath = 'maps/templates/admin/spa.dmm'

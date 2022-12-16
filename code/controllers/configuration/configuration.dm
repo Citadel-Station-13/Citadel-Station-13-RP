@@ -8,8 +8,6 @@
 	var/list/entries
 	var/list/entries_by_type
 
-	var/list/maplist
-	var/datum/map_data/defaultmap
 
 	/*
 	var/list/modes			// allowed modes
@@ -52,7 +50,7 @@
 				for(var/J in legacy_configs)
 					LoadEntries(J)
 				break
-	loadmaplist(CONFIG_MAPS_FILE)
+	LoadMapConfig("config/maps.txt")
 	LoadWhitelists()
 	LoadMOTD()
 
@@ -280,61 +278,6 @@
 	var/tm_info = GLOB.revdata.GetTestMergeInfo()
 	if(motd || tm_info)
 		motd = motd ? "[motd]<br>[tm_info]" : tm_info
-
-/datum/controller/configuration/proc/loadmaplist(filename)
-	log_config("Loading config file [filename]...")
-	filename = "[directory]/[filename]"
-	var/list/Lines = world.file2list(filename)
-
-	var/datum/map_data/currentmap = null
-	for(var/t in Lines)
-		if(!t)
-			continue
-
-		t = trim(t)
-		if(length(t) == 0)
-			continue
-		else if(t[1] == "#")
-			continue
-
-		var/pos = findtext(t, " ")
-		var/command = null
-		var/data = null
-
-		if(pos)
-			command = lowertext(copytext(t, 1, pos))
-			data = copytext(t, pos + length(t[pos]))
-		else
-			command = lowertext(t)
-
-		if(!command)
-			continue
-
-		if (!currentmap && command != "map")
-			continue
-
-		switch (command)
-			if ("map")
-				currentmap = load_map_data("_maps/[data].json")
-				if(currentmap.defaulted)
-					log_config("Failed to load map config for [data]!")
-					currentmap = null
-			if ("minplayers","minplayer")
-				currentmap.config_min_users = text2num(data)
-			if ("maxplayers","maxplayer")
-				currentmap.config_max_users = text2num(data)
-			if ("weight","voteweight")
-				currentmap.voteweight = text2num(data)
-			if ("default","defaultmap")
-				defaultmap = currentmap
-			if ("endmap")
-				LAZYINITLIST(maplist)
-				maplist[currentmap.map_name] = currentmap
-				currentmap = null
-			if ("disabled")
-				currentmap = null
-			else
-				log_config("Unknown command in map vote config: '[command]'")
 
 /*
 /datum/controller/configuration/proc/pick_mode(mode_name)

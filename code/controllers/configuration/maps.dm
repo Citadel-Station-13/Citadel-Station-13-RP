@@ -10,6 +10,7 @@
 	var/default_map
 
 #warn do maps.txt
+#warn lower_case_procs()
 
 /**
  * Gets currently configured map IDs

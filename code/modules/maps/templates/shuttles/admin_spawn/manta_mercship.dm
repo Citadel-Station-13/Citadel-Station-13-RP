@@ -4,7 +4,7 @@
 /datum/map_template/shuttle/overmap/generic/manta_ship
 	name = "OM Ship - Mercenary Cruiser Manta Class (New Z)"
 	desc = "Mercenary Manta Cruiser."
-	mappath = "_maps/templates/admin/kk_mercship.dmm"
+	mappath = "maps/templates/admin/kk_mercship.dmm"
 
 // The ship's area(s)
 /area/ship/manta

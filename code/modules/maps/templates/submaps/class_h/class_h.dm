@@ -2,7 +2,7 @@
 	name = "Class H POIs"
 	desc = "Submaps for Class H Worlds"
 	allow_duplicates = TRUE
-	prefix = "_maps/submaps/level_specific/class_h/"
+	prefix = "maps/submaps/level_specific/class_h/"
 
 /datum/map_template/submap/level_specific/class_h/landing_padH
 	name = "Prefabricated Landing Pad"

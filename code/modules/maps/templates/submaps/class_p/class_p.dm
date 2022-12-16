@@ -2,7 +2,7 @@
 	name = "Class P POIs"
 	desc = "Submaps for Class P Worlds"
 	allow_duplicates = TRUE
-	prefix = "_maps/submaps/level_specific/class_p/"
+	prefix = "maps/submaps/level_specific/class_p/"
 
 /datum/map_template/submap/level_specific/class_p/ruins1
 	name = "Ruins 1"

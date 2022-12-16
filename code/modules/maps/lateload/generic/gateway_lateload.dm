@@ -36,7 +36,7 @@ This overmap effect is a generic one that can be used if you do not have anythin
 /datum/map_template/lateload/gateway/snow_outpost
 	name = "Snow Outpost"
 	desc = "Big snowy area with various outposts."
-	mappath = '_maps/away_missions/140x140/snow_outpost.dmm'
+	mappath = 'maps/away_missions/140x140/snow_outpost.dmm'
 	associated_map_datum = /datum/map_z_level/gateway/gateway_destination
 
 ////////////
@@ -45,7 +45,7 @@ This overmap effect is a generic one that can be used if you do not have anythin
 /datum/map_template/lateload/gateway/zoo
 	name = "Zoo"
 	desc = "Gigantic space zoo"
-	mappath = '_maps/away_missions/140x140/zoo.dmm'
+	mappath = 'maps/away_missions/140x140/zoo.dmm'
 	associated_map_datum = /datum/map_z_level/gateway/gateway_destination
 
 ///////////////////
@@ -54,7 +54,7 @@ This overmap effect is a generic one that can be used if you do not have anythin
 /datum/map_template/lateload/gateway/carpfarm
 	name = "Carp Farm"
 	desc = "Asteroid base surrounded by carp"
-	mappath = '_maps/away_missions/140x140/carpfarm.dmm'
+	mappath = 'maps/away_missions/140x140/carpfarm.dmm'
 	associated_map_datum = /datum/map_z_level/gateway/gateway_destination
 
 ///////////////////
@@ -63,7 +63,7 @@ This overmap effect is a generic one that can be used if you do not have anythin
 /datum/map_template/lateload/gateway/snowfield
 	name = "Snow Field"
 	desc = "An old base in middle of snowy wasteland"
-	mappath = '_maps/away_missions/140x140/snowfield.dmm'
+	mappath = 'maps/away_missions/140x140/snowfield.dmm'
 	associated_map_datum = /datum/map_z_level/gateway/gateway_destination
 
 //////////////////////
@@ -72,5 +72,5 @@ This overmap effect is a generic one that can be used if you do not have anythin
 /datum/map_template/lateload/gateway/listeningpost
 	name = "Listening Post"
 	desc = "Asteroid-bound mercenary listening post"
-	mappath = '_maps/away_missions/140x140/listeningpost.dmm'
+	mappath = 'maps/away_missions/140x140/listeningpost.dmm'
 	associated_map_datum = /datum/map_z_level/gateway/gateway_destination

@@ -1,1 +1,3 @@
-#define FORCE_MAP "_maps/rift.json"
+#ifndef FORCE_MAP
+	#define FORCE_MAP "rift"
+#endif
