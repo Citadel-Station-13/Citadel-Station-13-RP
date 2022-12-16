@@ -5040,7 +5040,9 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/obj/machinery/power/breakerbox/activated,
+/obj/machinery/power/breakerbox/activated{
+	RCon_tag = "Surface - 3"
+	},
 /obj/structure/cable{
 	icon_state = "0-8"
 	},
