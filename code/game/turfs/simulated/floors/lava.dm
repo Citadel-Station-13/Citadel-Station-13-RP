@@ -16,8 +16,8 @@
 	special_temperature = T0C + 2200
 
 	// smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_FLOOR_LAVA)
-	canSmoothWith = list(SMOOTH_GROUP_FLOOR_LAVA)
+	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_FLOOR_LAVA)
+	canSmoothWith = (SMOOTH_GROUP_FLOOR_LAVA)
 
 /turf/simulated/floor/outdoors/lava/indoors
 	outdoors = FALSE

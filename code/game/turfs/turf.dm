@@ -98,17 +98,9 @@
 
 	levelupdate()
 
-	if(length(smoothing_groups))
-		// In case it's not properly ordered, let's avoid duplicate entries with the same values.
-		tim_sort(smoothing_groups)
-		SET_BITFLAG_LIST(smoothing_groups)
-	if(length(canSmoothWith))
-		tim_sort(canSmoothWith)
-		// If the last element is higher than the maximum turf-only value, then it must scan turf contents for smoothing targets.
-		if(canSmoothWith[length(canSmoothWith)] > MAX_S_TURF)
-			smoothing_flags |= SMOOTH_OBJ
-		SET_BITFLAG_LIST(canSmoothWith)
-	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+	SETUP_SMOOTHING()
+
+	if (smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
 		QUEUE_SMOOTH(src)
 
 	//atom color stuff

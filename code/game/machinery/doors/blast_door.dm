@@ -25,7 +25,7 @@
 	//turning this off prevents awkward zone geometry in places like medbay lobby, for example.
 	block_air_zones = 0
 
-	smoothing_groups = list(SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
+	smoothing_groups = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS)
 
 	var/datum/material/implicit_material
 	// Icon states for different shutter types. Simply change this instead of rewriting the update_icon proc.
