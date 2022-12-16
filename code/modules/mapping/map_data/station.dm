@@ -18,9 +18,9 @@
 
 	//? job data
 	// Job overrides - these process on job datum creation!
-	/// Jobs whitelist - if this is not empty, ONLY these jobs are allowed. Overrides blacklist.
+	/// Jobs whitelist - if this is not empty, ONLY these jobs are allowed. Overrides blacklist. Overrided by enable_jobs on loaded sectors.
 	var/list/job_whitelist
-	/// Jobs blacklist - if this is not empty, jobs in this aren't allowed.
+	/// Jobs blacklist - if this is not empty, jobs in this aren't allowed. Overrides enable_jobs on loaded sectors.
 	var/list/job_blacklist
 	/// Job spawn position mod - type = number
 	var/list/job_override_spawn_positions

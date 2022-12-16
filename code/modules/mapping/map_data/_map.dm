@@ -35,6 +35,8 @@
 	var/orientation = SOUTH		//byond defaults to placing everyting SOUTH.
 	/// default fill void
 	var/fill_void = FALSE
+	/// level dependencies - these will be loaded with this
+	var/list/dependencies
 
 	//! Levels
 	/// zlevel datums - ordered list
@@ -133,6 +135,11 @@
 		fill_void = !!data["fill_void"]
 	else
 		fill_void = initial(fill_void)
+	dependencies = list()
+	if(!isnull(data["dependencies"]))
+		for(var/group in data["dependencies"])
+			for(var/id in data["dependencies"][group])
+				dependencies += "[group]:[id]"
 	//? levels
 	if(levels)
 		QDEL_LIST(levels)
@@ -217,6 +224,10 @@
 		if(!level.cross_validate(errors, src, level_ids))
 			. = FALSE
 	LAZYOR(src.errors, errors)
+
+/datum/map_data/proc/asset_validate()
+	for(var/id in dependencies)
+		#warn this is in group:id format, convert subsystem to match
 
 #warn for both this and space levels, validation errors need to go into unit tests AND
 #warn spit errors at to chat world LOUDLY if it's mid-load.
