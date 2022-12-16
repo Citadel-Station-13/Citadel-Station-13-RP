@@ -11,8 +11,6 @@
 	var/name
 	/// Loaded correctly?
 	var/errored = TRUE
-	/// JSON loaded data - we will need this later, as we don't immediately instantiate
-	var/list/original_datalist
 	/// originally loaded from this path
 	var/original_path
 	/// Width

@@ -17,6 +17,7 @@ GLOBAL_DATUM_INIT(join_menu, /datum/join_menu, new)
 /datum/join_menu/ui_state(mob/user)
 	return GLOB.explicit_new_player_state
 
+#warn spawnpoints
 /datum/join_menu/ui_static_data(mob/user)
 	var/list/data = ..()
 	// every entry will have:

@@ -33,6 +33,7 @@
 						/area/mine,
 						/area/vacant/vacant_shop
 						)
+	#warn AOUGH
 
 	// Some maps have areas specific to the map, so include those.
 	exempt_areas += GLOB.using_map.unit_test_exempt_areas.Copy()

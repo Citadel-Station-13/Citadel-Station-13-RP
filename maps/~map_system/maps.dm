@@ -3,22 +3,8 @@
 	var/full_name = "Unnamed Map"
 	var/path
 
-	var/zlevel_datum_type			 // If populated, all subtypes of this type will be instantiated and used to populate the *_levels lists.
-
-	// Z-levels available to various consoles, such as the crew monitor. Defaults to station_levels if unset.
-	var/list/map_levels
-
 	// E-mail TLDs to use for NTnet modular computer e-mail addresses
 	var/list/usable_email_tlds = list("freemail.nt")
-
-	// This list contains the z-level numbers which can be accessed via space travel and the percentile chances to get there.
-	var/list/accessible_z_levels = list()
-
-	//List of additional z-levels to load above the existing .dmm file z-levels using the maploader. Must be map template >>> NAMES <<<.
-	var/list/lateload_z_levels = list()
-
-	//Similar to above, but only pick ONE to load, useful for random away missions and whatnot
-	var/list/lateload_single_pick = list()
 
 	var/list/allowed_jobs = list()	// Job datums to use.
 									// Works a lot better so if we get to a point where three-ish maps are used
@@ -35,17 +21,6 @@
 	var/list/meteor_strike_areas		 // Areas meteor strikes may choose to hit.
 	var/ai_shell_restricted = FALSE		 // Are there z-levels restricted?
 	var/ai_shell_allowed_levels = list() // Which z-levels ARE we allowed to visit?
-
-	// Belter stuff
-	var/list/belter_docked_z = list()
-	var/list/belter_transit_z = list()
-	var/list/belter_belt_z = list()
-
-	var/list/mining_station_z = list()
-	var/list/mining_outpost_z = list()
-
-	//Lavaland Stuff
-	var/list/lavaland_levels = list()
 
 	var/station_name  = "BAD Station"
 	var/station_short = "Baddy"
@@ -72,13 +47,6 @@
 
 	var/bot_patrolling = TRUE				// Determines if this map supports automated bot patrols
 
-	var/allowed_spawns = list("Arrivals Shuttle","Gateway", "Cryogenic Storage", "Cyborg Storage")
-
-	// Persistence!
-	var/datum/spawnpoint/spawnpoint_died = /datum/spawnpoint/arrivals	// Used if you end the round dead.
-	var/datum/spawnpoint/spawnpoint_left = /datum/spawnpoint/arrivals	// Used of you end the round at centcom.
-	var/datum/spawnpoint/spawnpoint_stayed = /datum/spawnpoint/cryo		// Used if you end the round on the station.
-
 	var/use_overmap = 0			// If overmap should be used (including overmap space travel override)
 	var/overmap_size = 20		// Dimensions of overmap zlevel if overmap is used.
 	var/overmap_z = 0			// If 0 will generate overmap zlevel on init. Otherwise will populate the zlevel provided.
@@ -88,14 +56,6 @@
 	var/list/lobby_screens = list("mockingjay00")	// The list of lobby screen to pick() from. If left unset the first icon state is always selected.
 
 	var/default_law_type = /datum/ai_laws/nanotrasen	// The default lawset use by synth units, if not overriden by their laws var.
-
-	// Some maps include areas for that map only and don't exist when not compiled, so Travis needs this to learn of new areas that are specific to a map.
-	var/list/unit_test_exempt_areas = list()
-	var/list/unit_test_exempt_from_atmos = list()
-	var/list/unit_test_exempt_from_apc = list()
-	var/list/unit_test_z_levels	// To test more than Z1, set your z-levels to test here.
-
-	var/list/planet_datums_to_make = list() // Types of `/datum/planet`s that will be instantiated by SSPlanets.
 
 /datum/map/New()
 	..()

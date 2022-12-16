@@ -17,6 +17,8 @@
 	var/tmp/z_value
 	/// Are we physically made yet?
 	var/tmp/instantiated = FALSE
+	/// Errored - validation failed
+	var/tmp/errored
 
 	//! Map File / Loading
 	/// Path to .dmm - this must be relative to the folder the .json was loaded from.
