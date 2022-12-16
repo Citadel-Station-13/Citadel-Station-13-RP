@@ -20,8 +20,8 @@
 	initial_flooring = /singleton/flooring/carpet
 
 	// smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_CARPET)
-	canSmoothWith = list(SMOOTH_GROUP_CARPET)
+	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET)
+	canSmoothWith = (SMOOTH_GROUP_CARPET)
 
 /turf/simulated/floor/holofloor/tiled
 	name = "floor"

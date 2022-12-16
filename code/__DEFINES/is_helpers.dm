@@ -14,6 +14,8 @@
 
 //Turfs
 
+#define isfloorturf(A) (istype(A, /turf/simulated/floor))
+
 #define isopenturf(A) istype(A, /turf/simulated/open)
 
 #define isspaceturf(A) istype(A, /turf/space)
