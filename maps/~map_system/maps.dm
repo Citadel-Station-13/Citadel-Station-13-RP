@@ -1,64 +1,13 @@
 /datum/map
-	var/list/allowed_jobs = list()	// Job datums to use.
-									// Works a lot better so if we get to a point where three-ish maps are used
-									// We don't have to C&P ones that are only common between two of them
-									// That doesn't mean we have to include them with the rest of the jobs though, especially for map specific ones.
-									// Also including them lets us override already created jobs, letting us keep the datums to a minimum mostly.
-									// This is probably a lot longer explanation than it needs to be.
-
 	var/list/holomap_smoosh		// List of lists of zlevels to smoosh into single icons
 	var/list/holomap_offset_x = list()
 	var/list/holomap_offset_y = list()
 	var/list/holomap_legend_x = list()
 	var/list/holomap_legend_y = list()
 	var/list/meteor_strike_areas		 // Areas meteor strikes may choose to hit.
-	var/ai_shell_restricted = FALSE		 // Are there z-levels restricted?
-	var/ai_shell_allowed_levels = list() // Which z-levels ARE we allowed to visit?
-
-	var/station_name  = "BAD Station"
-	var/station_short = "Baddy"
-	var/dock_name	  = "THE PirateBay"
-	var/dock_type	  = "station"	// For a list of valid types see the switch block in air_traffic.dm at line 148
-	var/boss_name	  = "Captain Roger"
-	var/boss_short	  = "Cap'"
-	var/company_name  = "BadMan"
-	var/company_short = "BM"
-	var/starsys_name  = "Dull Star"
-
-	var/shuttle_docked_message
-	var/shuttle_leaving_dock
-	var/shuttle_called_message
-	var/shuttle_recall_message
-	var/shuttle_name  = "NAS |Hawking|"
-	var/emergency_shuttle_docked_message
-	var/emergency_shuttle_leaving_dock
-	var/emergency_shuttle_called_message
-	var/emergency_shuttle_recall_message
-
-	var/list/station_networks = list()		// Camera networks that will show up on the console.
-	var/list/secondary_networks = list()	// Camera networks that exist, but don't show on regular camera monitors.
-
-	var/bot_patrolling = TRUE				// Determines if this map supports automated bot patrols
-
-	var/use_overmap = 0			// If overmap should be used (including overmap space travel override)
-	var/overmap_size = 20		// Dimensions of overmap zlevel if overmap is used.
-	var/overmap_z = 0			// If 0 will generate overmap zlevel on init. Otherwise will populate the zlevel provided.
-	var/overmap_event_areas = 0	// How many event "clouds" will be generated
 
 	var/lobby_icon = 'icons/misc/title.dmi'			// The icon which contains the lobby image(s)
 	var/list/lobby_screens = list("mockingjay00")	// The list of lobby screen to pick() from. If left unset the first icon state is always selected.
-
-	var/default_law_type = /datum/ai_laws/nanotrasen	// The default lawset use by synth units, if not overriden by their laws var.
-
-/datum/map/New()
-	..()
-	if(zlevel_datum_type)
-		for(var/type in subtypesof(zlevel_datum_type))
-			new type(src)
-	if(!map_levels)
-		map_levels = station_levels.Copy()
-	if(!allowed_jobs || !allowed_jobs.len)
-		allowed_jobs = subtypesof(/datum/job)
 
 // Gets the current time on a current zlevel, and returns a time datum
 /datum/map/proc/get_zlevel_time(var/z)
@@ -93,34 +42,6 @@
 /datum/map/proc/get_nightshift()
 	return get_night(1) //Defaults to z1, customize however you want on your own maps
 
-/datum/map/proc/setup_map()
-	return
-
-/datum/map/proc/perform_map_generation()
-	return
-
-/datum/map/proc/get_network_access(var/network)
-	return 0
-
-// By default transition randomly to another zlevel
-/datum/map/proc/get_transit_zlevel(var/current_z_level)
-	var/list/candidates = using_map_legacy.accessible_z_levels.Copy()
-	candidates.Remove(num2text(current_z_level))
-
-	if(!candidates.len)
-		return current_z_level
-	return text2num(pickweight(candidates))
-
-/datum/map/proc/get_empty_zlevel()
-	if(empty_levels == null)
-		world.increment_max_z()
-		empty_levels = list(world.maxz)
-		if(islist(player_levels))
-			player_levels |= world.maxz
-		else
-			player_levels = list(world.maxz)
-	return pick(empty_levels)
-
 // Get the list of zlevels that a computer on srcz can see maps of (for power/crew monitor, cameras, etc)
 // The long_range parameter expands the coverage.  Default is to return map_levels for long range otherwise just srcz.
 // zLevels outside station_levels will return an empty list.
@@ -154,25 +75,6 @@
 /datum/map/proc/get_zlevel_name(var/index)
 	var/datum/map_z_level/Z = zlevels["[index]"]
 	return Z?.name
-
-// Access check is of the type requires one. These have been carefully selected to avoid allowing the janitor to see channels he shouldn't
-// This list needs to be purged but people insist on adding more cruft to the radio.
-/datum/map/proc/default_internal_channels()
-	return list(
-		num2text(PUB_FREQ)   = list(),
-		num2text(AI_FREQ)    = list(access_synth),
-		num2text(ENT_FREQ)   = list(),
-		num2text(ERT_FREQ)   = list(access_cent_specops),
-		num2text(COMM_FREQ)  = list(access_heads),
-		num2text(ENG_FREQ)   = list(access_engine_equip, access_atmospherics),
-		num2text(MED_FREQ)   = list(access_medical_equip),
-		num2text(MED_I_FREQ) = list(access_medical_equip),
-		num2text(SEC_FREQ)   = list(access_security),
-		num2text(SEC_I_FREQ) = list(access_security),
-		num2text(SCI_FREQ)   = list(access_tox,access_robotics,access_xenobiology),
-		num2text(SUP_FREQ)   = list(access_cargo),
-		num2text(SRV_FREQ)   = list(access_janitor, access_hydroponics),
-	)
 
 // Another way to setup the map datum that can be convenient.  Just declare all your zlevels as subtypes of a common
 // 	subtype of /datum/map_z_level and set zlevel_datum_type on /datum/map to have the lists auto-initialized.

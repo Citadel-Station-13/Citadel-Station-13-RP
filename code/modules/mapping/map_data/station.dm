@@ -40,6 +40,36 @@
 	var/list/station_networks = list()
 	/// cameranets that don't show up on regular monitors
 	var/list/secondary_networks = list()
+	//? silicons
+	var/default_law_type = /datum/ai_laws/nanotrasen	// The default lawset use by synth units, if not overriden by their laws var.
+	//? holomaps
+	//? bots
+	var/bot_patrolling = TRUE				// Determines if this map supports automated bot patrols
+	//? overmaps
+	var/use_overmap = 0			// If overmap should be used (including overmap space travel override)
+	var/overmap_size = 20		// Dimensions of overmap zlevel if overmap is used.
+	var/overmap_z = 0			// If 0 will generate overmap zlevel on init. Otherwise will populate the zlevel provided.
+	var/overmap_event_areas = 0	// How many event "clouds" will be generated
+	//? names
+	var/station_name  = "BAD Station"
+	var/station_short = "Baddy"
+	var/dock_name	  = "THE PirateBay"
+	var/dock_type	  = "station"	// For a list of valid types see the switch block in air_traffic.dm at line 148
+	var/boss_name	  = "Captain Roger"
+	var/boss_short	  = "Cap'"
+	var/company_name  = "BadMan"
+	var/company_short = "BM"
+	var/starsys_name  = "Dull Star"
+
+	var/shuttle_docked_message
+	var/shuttle_leaving_dock
+	var/shuttle_called_message
+	var/shuttle_recall_message
+	var/shuttle_name  = "NAS |Hawking|"
+	var/emergency_shuttle_docked_message
+	var/emergency_shuttle_leaving_dock
+	var/emergency_shuttle_called_message
+	var/emergency_shuttle_recall_message
 
 /**
  * returns the current map config
@@ -83,3 +113,24 @@
 		lateload = data["lateload"]
 
 #undef VALIDATION
+
+//? legacy shit
+// Access check is of the type requires one. These have been carefully selected to avoid allowing the janitor to see channels he shouldn't
+// This list needs to be purged but people insist on adding more cruft to the radio.
+/datum/map_data/proc/default_internal_channels()
+	return list(
+		num2text(PUB_FREQ)   = list(),
+		num2text(AI_FREQ)    = list(access_synth),
+		num2text(ENT_FREQ)   = list(),
+		num2text(ERT_FREQ)   = list(access_cent_specops),
+		num2text(COMM_FREQ)  = list(access_heads),
+		num2text(ENG_FREQ)   = list(access_engine_equip, access_atmospherics),
+		num2text(MED_FREQ)   = list(access_medical_equip),
+		num2text(MED_I_FREQ) = list(access_medical_equip),
+		num2text(SEC_FREQ)   = list(access_security),
+		num2text(SEC_I_FREQ) = list(access_security),
+		num2text(SCI_FREQ)   = list(access_tox,access_robotics,access_xenobiology),
+		num2text(SUP_FREQ)   = list(access_cargo),
+		num2text(SRV_FREQ)   = list(access_janitor, access_hydroponics),
+	)
+
