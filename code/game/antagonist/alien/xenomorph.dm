@@ -30,12 +30,7 @@ var/datum/antagonist/xenos/xenomorphs
 	if(config_legacy.aliens_allowed) ..()
 
 /datum/antagonist/xenos/proc/get_vents()
-	var/list/vents = list()
-	for(var/obj/machinery/atmospherics/component/unary/vent_pump/temp_vent in GLOB.machines)
-		if(!temp_vent.welded && temp_vent.network && (temp_vent.loc.z in using_map_legacy().station_levels))
-			if(temp_vent.network.normal_members.len > 50)
-				vents += temp_vent
-	return vents
+	vents = ventcrawl_station_vents()	return vents
 
 /datum/antagonist/xenos/create_objectives(var/datum/mind/player)
 	if(!..())

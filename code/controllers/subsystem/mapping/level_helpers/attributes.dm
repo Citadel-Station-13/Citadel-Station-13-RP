@@ -2,8 +2,6 @@
  * Returns an attribute of a zlevel
  */
 /datum/controller/subsystem/mapping/proc/level_attribute(z, key)
-	if(z < 1 || z > world.maxz)
-		CRASH("Invalid z")
 	var/datum/space_level/L = space_levels[z]
 	return L.attributes[key]
 

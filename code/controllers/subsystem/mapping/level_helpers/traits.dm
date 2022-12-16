@@ -2,8 +2,6 @@
  * Checks if a z level has a trait
  */
 /datum/controller/subsystem/mapping/proc/level_trait(z, trait)
-	if(z < 1 || z > world.maxz)
-		CRASH("Invalid z")
 	var/datum/space_level/L = space_levels[z]
 	return L.traits[trait]
 
@@ -11,8 +9,6 @@
  * Checks if a z level has any of these traits
  */
 /datum/controller/subsystem/mapping/proc/level_trait_any(z, list/traits)
-	if(z < 1 || z > world.maxz)
-		CRASH("Invalid z")
 	var/datum/space_level/L = space_levels[z]
 	return !!length(L.traits & traits)
 
@@ -20,8 +16,6 @@
  * Checks if a z level has all of these traits
  */
 /datum/controller/subsystem/mapping/proc/level_traits_all(z, list/traits)
-	if(z < 1 || z > world.maxz)
-		CRASH("Invalid z")
 	var/datum/space_level/L = space_levels[z]
 	return !length(traits - L.traits)
 
