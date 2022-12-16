@@ -63,7 +63,7 @@
 	/// Linkage mode
 	var/linkage_mode = Z_LINKAGE_NORMAL
 	/// Transition mode
-	var/transition_mode = Z_TRANSITION_NORMAL
+	var/transition_mode = Z_TRANSITION_DEFAULT
 
 	//! Traits
 	/// Traits - binary yes/no's
@@ -78,6 +78,7 @@
 	var/base_turf
 	/// base area - path
 	var/base_area
+	#warn anything reading this should be able to handle nulls as world default
 
 	//! Air
 	/// indoors gas string
@@ -184,9 +185,7 @@
 	if(data["height"])
 		height = text2num(data["height"])
 
-	#warn make sure everything matches the vars
-	#warn default base_turf to world.turf
-	#warn default base_area to world.area
+	#warn path needs to support maps/ and config/ as well as relative.
 	if(data["path_absolute"])
 		map_path = data["path_absolute"]
 	else if(data["path"])
@@ -238,9 +237,6 @@
 	//? module
 	if(data["module"])
 		level_module_type = text2path(data["module"])
-
-
-#warn validate()
 
 /**
  * first validation pass, verifies all values are up to spec
