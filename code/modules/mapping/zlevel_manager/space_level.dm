@@ -348,7 +348,7 @@
 				T._make_transition_border(SOUTH, TRUE)
 				CHECK_TICK
 			// top
-			for(var/turf/T as anything in block(locate((x_min || 1) + 1, topright_y || world.maxy, z_value), locate((x_max || world.maxx) - 1, y_max || world.maxy, z_value)))
+			for(var/turf/T as anything in block(locate((x_min || 1) + 1, y_max || world.maxy, z_value), locate((x_max || world.maxx) - 1, y_max || world.maxy, z_value)))
 				T._make_transition_border(NORTH, TRUE)
 				CHECK_TICK
 			// left
@@ -383,7 +383,7 @@
 				T._make_transition_border(SOUTH, FALSE)
 				CHECK_TICK
 			// top
-			for(var/turf/T as anything in block(locate((x_min || 1) + 1, topright_Y || world.maxy, z_value), locate((x_max || world.maxx) - 1, y_max || world.maxy, z_value)))
+			for(var/turf/T as anything in block(locate((x_min || 1) + 1, y_max || world.maxy, z_value), locate((x_max || world.maxx) - 1, y_max || world.maxy, z_value)))
 				T._make_transition_border(NORTH, FALSE)
 				CHECK_TICK
 			// left
@@ -516,7 +516,7 @@
 /**
  * Removes a trait
  */
-/datum/space_level/proc/remove_triat(trait)
+/datum/space_level/proc/remove_trait(trait)
 	traits -= trait
 	if(!instantiated)
 		return
