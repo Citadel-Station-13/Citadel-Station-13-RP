@@ -21,7 +21,7 @@
 	endWhen = worst_case_end()
 
 /datum/event/meteor_wave/start()
-	affecting_z -= using_map_legacy.sealed_levels	// Space levels only please!
+	affecting_z -= using_map_legacy().sealed_levels	// Space levels only please!
 	..()
 
 /datum/event/meteor_wave/announce()

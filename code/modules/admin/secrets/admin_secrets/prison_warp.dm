@@ -8,7 +8,7 @@
 	for(var/mob/living/carbon/human/H in GLOB.mob_list)
 		var/turf/T = get_turf(H)
 		var/security = 0
-		if((T && (T in using_map_legacy.admin_levels)) || prisonwarped.Find(H))
+		if((T && (T in using_map_legacy().admin_levels)) || prisonwarped.Find(H))
 		//don't warp them if they aren't ready or are already there
 			continue
 		H.Paralyse(5)

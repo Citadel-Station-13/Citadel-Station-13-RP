@@ -425,8 +425,8 @@
 	// EMAIL GENERATION
 	// Email addresses will be created under this domain name. Mostly for the looks.
 	var/domain = "freemail.nt"
-	if(using_map_legacy && LAZYLEN(using_map_legacy.usable_email_tlds))
-		domain = using_map_legacy.usable_email_tlds[1]
+	if(using_map_legacy() && LAZYLEN(using_map_legacy().usable_email_tlds))
+		domain = using_map_legacy().usable_email_tlds[1]
 	var/sanitized_name = sanitize(replacetext(replacetext(lowertext(H.real_name), " ", "."), "'", ""))
 	var/complete_login = "[sanitized_name]@[domain]"
 
@@ -538,7 +538,7 @@
 
 	//Spawn them at their preferred one
 	if(C && C.prefs.spawnpoint)
-		if(!(C.prefs.spawnpoint in using_map_legacy.allowed_spawns))
+		if(!(C.prefs.spawnpoint in using_map_legacy().allowed_spawns))
 			if(fail_deadly)
 				to_chat(C, SPAN_WARNING("Your chosen spawnpoint is unavailable for this map and your job requires a specific spawnpoint.  Please correct your spawn point choice."))
 				return

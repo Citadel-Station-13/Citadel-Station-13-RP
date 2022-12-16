@@ -92,7 +92,7 @@
 
 /obj/effect/overmap/Initialize(mapload)
 	. = ..()
-	if(!using_map_legacy.use_overmap)
+	if(!using_map_legacy().use_overmap)
 		return INITIALIZE_HINT_QDEL
 
 	if(known && !mapload)

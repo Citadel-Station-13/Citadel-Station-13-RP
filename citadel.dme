@@ -13,11 +13,7 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
-#include "_maps\_basemap.dm"
-#include "_maps\minitest.dm"
-#include "_maps\rift.dm"
-#include "_maps\map_files\generic\reservation_base_level.dmm"
-#include "_maps\submaps\level_specific\debrisfield_vr\debrisfield_things.dm"
+#include "_mapload\_basemap.dm"
 #include "code\___compile_options.dm"
 #include "code\__global_init.dm"
 #include "code\_macros.dm"
@@ -4217,8 +4213,6 @@
 #include "code\modules\turbolift\turbolift_map.dm"
 #include "code\modules\turbolift\turbolift_turfs.dm"
 #include "code\modules\unit_tests\_unit_tests.dm"
-#include "code\modules\unit_tests\map\_map.dm"
-#include "code\modules\unit_tests\map\map_data.dm"
 #include "code\modules\variable_settings\variable_setting_controller.dm"
 #include "code\modules\variable_settings\variable_setting_entry.dm"
 #include "code\modules\vehicles\_vehicle.dm"

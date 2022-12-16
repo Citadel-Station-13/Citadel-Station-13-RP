@@ -613,7 +613,7 @@ var/list/teleportlocs = list()
 			continue
 		var/station = FALSE
 		for(var/turf/T in AR.contents)
-			if(T.z in using_map_legacy.station_levels)
+			if(T.z in using_map_legacy().station_levels)
 				station = TRUE
 				break
 			else
@@ -634,7 +634,7 @@ var/list/ghostteleportlocs = list()
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 		var/turf/picked = pick(get_area_turfs(AR.type))
-		if (picked.z in using_map_legacy.player_levels)
+		if (picked.z in using_map_legacy().player_levels)
 			ghostteleportlocs += AR.name
 			ghostteleportlocs[AR.name] = AR
 

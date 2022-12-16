@@ -9,7 +9,7 @@ var/list/cached_space = list()
 	known = 0
 
 /obj/effect/overmap/visitable/sector/temporary/New(var/nx, var/ny, var/nz)
-	loc = locate(nx, ny, using_map_legacy.overmap_z)
+	loc = locate(nx, ny, using_map_legacy().overmap_z)
 	x = nx
 	y = ny
 	map_z += nz
@@ -30,7 +30,7 @@ var/list/cached_space = list()
 	return 1
 
 /proc/get_deepspace(x, y)
-	var/turf/unsimulated/map/overmap_turf = locate(x,y,using_map_legacy.overmap_z)
+	var/turf/unsimulated/map/overmap_turf = locate(x,y,using_map_legacy().overmap_z)
 	if(!istype(overmap_turf))
 		CRASH("Attempt to get deepspace at ([x],[y]) which is not on overmap: [overmap_turf]")
 	var/obj/effect/overmap/visitable/sector/temporary/res = locate() in overmap_turf
@@ -42,7 +42,7 @@ var/list/cached_space = list()
 		res.forceMove(overmap_turf)
 		return res
 	else
-		return new /obj/effect/overmap/visitable/sector/temporary(x, y, using_map_legacy.get_empty_zlevel())
+		return new /obj/effect/overmap/visitable/sector/temporary(x, y, using_map_legacy().get_empty_zlevel())
 
 /atom/movable/proc/lost_in_space()
 	for(var/atom/movable/AM in contents)
@@ -108,25 +108,25 @@ var/list/cached_space = list()
 	var/ny = 1
 	var/nz = 1
 
-	if(T.x <= TRANSITIONEDGE)
-		nx = world.maxx - TRANSITIONEDGE - 2
-		ny = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
+	if(T.x <= TRANSITION_EDGE)
+		nx = world.maxx - TRANSITION_EDGE - 2
+		ny = rand(TRANSITION_EDGE + 2, world.maxy - TRANSITION_EDGE - 2)
 
-	else if (A.x >= (world.maxx - TRANSITIONEDGE - 1))
-		nx = TRANSITIONEDGE + 2
-		ny = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
+	else if (A.x >= (world.maxx - TRANSITION_EDGE - 1))
+		nx = TRANSITION_EDGE + 2
+		ny = rand(TRANSITION_EDGE + 2, world.maxy - TRANSITION_EDGE - 2)
 
-	else if (T.y <= TRANSITIONEDGE)
-		ny = world.maxy - TRANSITIONEDGE -2
-		nx = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
+	else if (T.y <= TRANSITION_EDGE)
+		ny = world.maxy - TRANSITION_EDGE -2
+		nx = rand(TRANSITION_EDGE + 2, world.maxx - TRANSITION_EDGE - 2)
 
-	else if (A.y >= (world.maxy - TRANSITIONEDGE - 1))
-		ny = TRANSITIONEDGE + 2
-		nx = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
+	else if (A.y >= (world.maxy - TRANSITION_EDGE - 1))
+		ny = TRANSITION_EDGE + 2
+		nx = rand(TRANSITION_EDGE + 2, world.maxx - TRANSITION_EDGE - 2)
 
 	testing("[A] spacemoving from [M] ([M.x], [M.y]).")
 
-	var/turf/map = locate(M.x,M.y,using_map_legacy.overmap_z)
+	var/turf/map = locate(M.x,M.y,using_map_legacy().overmap_z)
 	var/obj/effect/overmap/visitable/TM
 	for(var/obj/effect/overmap/visitable/O in map)
 		if(O != M && O.in_space && prob(50))

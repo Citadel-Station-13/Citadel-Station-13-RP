@@ -35,11 +35,11 @@ SUBSYSTEM_DEF(mapping)
 	loadEngine()
 	preloadShelterTemplates()
 	// Mining generation probably should be here too
-	using_map_legacy.perform_map_generation()
+	using_map_legacy().perform_map_generation()
 	// TODO - Other stuff related to maps and areas could be moved here too.  Look at /tg
-	if(using_map_legacy)
+	if(using_map_legacy())
 		loadLateMaps()
-	if(!using_map_legacy.overmap_z)
+	if(!using_map_legacy().overmap_z)
 		build_overmap()
 
 	// basemap - REEVALUATE when runtime maploading is in
@@ -178,8 +178,8 @@ SUBSYSTEM_DEF(mapping)
 
 /datum/controller/subsystem/mapping/proc/loadLateMaps()
 #ifndef FASTBOOT_DISABLE_LATELOAD
-	var/list/deffo_load = using_map_legacy.lateload_z_levels
-	var/list/maybe_load = using_map_legacy.lateload_single_pick
+	var/list/deffo_load = using_map_legacy().lateload_z_levels
+	var/list/maybe_load = using_map_legacy().lateload_single_pick
 
 	for(var/list/maplist in deffo_load)
 		if(!islist(maplist))

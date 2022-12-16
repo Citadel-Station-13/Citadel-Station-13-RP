@@ -36,11 +36,11 @@
 	#warn AOUGH
 
 	// Some maps have areas specific to the map, so include those.
-	exempt_areas += using_map_legacy.unit_test_exempt_areas.Copy()
-	exempt_from_atmos += using_map_legacy.unit_test_exempt_from_atmos.Copy()
-	exempt_from_apc += using_map_legacy.unit_test_exempt_from_apc.Copy()
+	exempt_areas += using_map_legacy().unit_test_exempt_areas.Copy()
+	exempt_from_atmos += using_map_legacy().unit_test_exempt_from_atmos.Copy()
+	exempt_from_apc += using_map_legacy().unit_test_exempt_from_apc.Copy()
 
-	var/list/zs_to_test = using_map_legacy.unit_test_z_levels || list(1) //Either you set it, or you just get z1
+	var/list/zs_to_test = using_map_legacy().unit_test_z_levels || list(1) //Either you set it, or you just get z1
 
 	for(var/area/A in GLOB.sortedAreas)
 		if((A.z in zs_to_test) && !(A.type in exempt_areas))

@@ -71,6 +71,8 @@
 	var/emergency_shuttle_called_message
 	var/emergency_shuttle_recall_message
 
+	#warn parse, don't validate legacy tho
+
 /**
  * returns the current map config
  * use on old things converted to the new system without reorganization for easy regexing

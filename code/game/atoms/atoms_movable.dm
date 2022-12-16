@@ -196,10 +196,10 @@
 	return
 
 /atom/movable/proc/touch_map_edge()
-	if(z in using_map_legacy.sealed_levels)
+	if(z in using_map_legacy().sealed_levels)
 		return
 
-	if(using_map_legacy.use_overmap)
+	if(using_map_legacy().use_overmap)
 		overmap_spacetravel(get_turf(src), src)
 		return
 
@@ -209,21 +209,21 @@
 		var/new_x
 		var/new_y
 
-		if(x <= TRANSITIONEDGE)
-			new_x = world.maxx - TRANSITIONEDGE - 2
-			new_y = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
+		if(x <= TRANSITION_EDGE)
+			new_x = world.maxx - TRANSITION_EDGE - 2
+			new_y = rand(TRANSITION_EDGE + 2, world.maxy - TRANSITION_EDGE - 2)
 
-		else if (x >= (world.maxx - TRANSITIONEDGE + 1))
-			new_x = TRANSITIONEDGE + 1
-			new_y = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
+		else if (x >= (world.maxx - TRANSITION_EDGE + 1))
+			new_x = TRANSITION_EDGE + 1
+			new_y = rand(TRANSITION_EDGE + 2, world.maxy - TRANSITION_EDGE - 2)
 
-		else if (y <= TRANSITIONEDGE)
-			new_y = world.maxy - TRANSITIONEDGE -2
-			new_x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
+		else if (y <= TRANSITION_EDGE)
+			new_y = world.maxy - TRANSITION_EDGE -2
+			new_x = rand(TRANSITION_EDGE + 2, world.maxx - TRANSITION_EDGE - 2)
 
-		else if (y >= (world.maxy - TRANSITIONEDGE + 1))
-			new_y = TRANSITIONEDGE + 1
-			new_x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
+		else if (y >= (world.maxy - TRANSITION_EDGE + 1))
+			new_y = TRANSITION_EDGE + 1
+			new_x = rand(TRANSITION_EDGE + 2, world.maxx - TRANSITION_EDGE - 2)
 
 		if(SSticker && istype(SSticker.mode, /datum/game_mode/nuclear))	// Only really care if the game mode is nuclear
 			var/datum/game_mode/nuclear/G = SSticker.mode
@@ -235,7 +235,7 @@
 
 //by default, transition randomly to another zlevel
 /atom/movable/proc/get_transit_zlevel()
-	var/list/candidates = using_map_legacy.accessible_z_levels.Copy()
+	var/list/candidates = using_map_legacy().accessible_z_levels.Copy()
 	candidates.Remove("[src.z]")
 
 	if(!candidates.len)

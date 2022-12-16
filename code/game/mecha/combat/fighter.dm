@@ -64,7 +64,7 @@
 //We don't get lost quite as easy.
 /obj/mecha/combat/fighter/touch_map_edge()
 	//No overmap enabled or no driver to choose
-	if(!using_map_legacy.use_overmap || !occupant || !can_ztravel())
+	if(!using_map_legacy().use_overmap || !occupant || !can_ztravel())
 		return ..()
 
 	var/obj/effect/overmap/visitable/our_ship = get_overmap_sector(z)
@@ -85,25 +85,25 @@
 	var/new_y
 	var/new_z
 
-	if(x <= TRANSITIONEDGE)
+	if(x <= TRANSITION_EDGE)
 		what_edge = WEST
-		new_x = world.maxx - TRANSITIONEDGE - 2
-		new_y = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
+		new_x = world.maxx - TRANSITION_EDGE - 2
+		new_y = rand(TRANSITION_EDGE + 2, world.maxy - TRANSITION_EDGE - 2)
 
-	else if (x >= (world.maxx - TRANSITIONEDGE + 1))
+	else if (x >= (world.maxx - TRANSITION_EDGE + 1))
 		what_edge = EAST
-		new_x = TRANSITIONEDGE + 1
-		new_y = rand(TRANSITIONEDGE + 2, world.maxy - TRANSITIONEDGE - 2)
+		new_x = TRANSITION_EDGE + 1
+		new_y = rand(TRANSITION_EDGE + 2, world.maxy - TRANSITION_EDGE - 2)
 
-	else if (y <= TRANSITIONEDGE)
+	else if (y <= TRANSITION_EDGE)
 		what_edge = SOUTH
-		new_y = world.maxy - TRANSITIONEDGE -2
-		new_x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
+		new_y = world.maxy - TRANSITION_EDGE -2
+		new_x = rand(TRANSITION_EDGE + 2, world.maxx - TRANSITION_EDGE - 2)
 
-	else if (y >= (world.maxy - TRANSITIONEDGE + 1))
+	else if (y >= (world.maxy - TRANSITION_EDGE + 1))
 		what_edge = NORTH
-		new_y = TRANSITIONEDGE + 1
-		new_x = rand(TRANSITIONEDGE + 2, world.maxx - TRANSITIONEDGE - 2)
+		new_y = TRANSITION_EDGE + 1
+		new_x = rand(TRANSITION_EDGE + 2, world.maxx - TRANSITION_EDGE - 2)
 
 	var/list/choices = list()
 	for(var/obj/effect/overmap/visitable/V in range(1, our_ship))

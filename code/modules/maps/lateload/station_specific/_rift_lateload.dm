@@ -7,7 +7,7 @@
 		log_game("Extra z-level [src] has no associated map datum")
 		return
 
-	new associated_map_datum(using_map_legacy, z)
+	new associated_map_datum(using_map_legacy(), z)
 
 /datum/map_z_level/rift_lateload
 	z = 0

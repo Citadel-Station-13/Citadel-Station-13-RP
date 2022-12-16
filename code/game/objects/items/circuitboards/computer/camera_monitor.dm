@@ -12,7 +12,7 @@
 
 /obj/item/circuitboard/security/Initialize(mapload)
 	. = ..()
-	network = using_map_legacy.station_networks
+	network = using_map_legacy().station_networks
 
 /obj/item/circuitboard/security/tv
 	name = T_BOARD("security camera monitor - television")

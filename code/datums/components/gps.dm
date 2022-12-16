@@ -98,10 +98,10 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	dat["curr_x"] = curr.x
 	dat["curr_y"] = curr.y
 	dat["curr_z"] = curr.z
-	dat["curr_z_name"] = using_map_legacy.get_zlevel_name(curr.z)
+	dat["curr_z_name"] = using_map_legacy().get_zlevel_name(curr.z)
 	var/list/gps_list = list()
 	dat["gps_list"] = gps_list
-	dat["z_level_detection"] = using_map_legacy.get_map_levels(curr.z, long_range)
+	dat["z_level_detection"] = using_map_legacy().get_map_levels(curr.z, long_range)
 
 	for(var/gps in GLOB.GPS_list - src)
 		var/datum/component/gps/G = gps
@@ -123,7 +123,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 		if(istype(A, /area/submap))
 			gps_data["area_name"] = "Unknown Area" // Avoid spoilers.
 
-		gps_data["z_name"] = using_map_legacy.get_zlevel_name(T.z)
+		gps_data["z_name"] = using_map_legacy().get_zlevel_name(T.z)
 		gps_data["direction"] = get_adir(curr, T)
 		gps_data["degrees"] = round(Get_Angle(curr,T))
 		gps_data["distX"] = T.x - curr.x

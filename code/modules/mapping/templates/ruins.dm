@@ -6,8 +6,8 @@
 		return place_on_isolated_level(z)
 	while(sanity > 0)
 		sanity--
-		var/width_border = TRANSITIONEDGE + SPACERUIN_MAP_EDGE_PAD + round(width / 2)
-		var/height_border = TRANSITIONEDGE + SPACERUIN_MAP_EDGE_PAD + round(height / 2)
+		var/width_border = TRANSITION_EDGE + SPACERUIN_MAP_EDGE_PAD + round(width / 2)
+		var/height_border = TRANSITION_EDGE + SPACERUIN_MAP_EDGE_PAD + round(height / 2)
 		var/turf/central_turf = forced_turf ? forced_turf : locate(rand(width_border, world.maxx - width_border), rand(height_border, world.maxy - height_border), z)
 		var/valid = TRUE
 

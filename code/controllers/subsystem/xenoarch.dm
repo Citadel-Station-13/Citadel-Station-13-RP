@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(xenoarch)
 	var/list/faster = list()
 	var/start
 	for(var/i in 1 to world.maxz)
-		faster += (i in using_map_legacy.xenoarch_exempt_levels)
+		faster += (i in using_map_legacy().xenoarch_exempt_levels)
 
 	var/list/digsites_to_make = list()
 	start = world.timeofday

@@ -365,7 +365,7 @@ GLOBAL_LIST(topic_status_cache)
 	// ---Hub title---
 	var/servername = config_legacy?.server_name
 	var/stationname = station_name()
-	var/defaultstation = using_map_legacy ? using_map_legacy.station_name : stationname
+	var/defaultstation = using_map_legacy() ? using_map_legacy().station_name : stationname
 	if(servername || stationname != defaultstation)
 		. += (servername ? "<b>[servername]" : "<b>")
 		. += (stationname != defaultstation ? "[servername ? " - " : ""][stationname]</b>\] " : "</b>\] ")
@@ -384,8 +384,8 @@ GLOBAL_LIST(topic_status_cache)
 
 	// ---Hub footer---
 	. += "\["
-	if(using_map_legacy)
-		. += "[using_map_legacy.station_short], "
+	if(using_map_legacy())
+		. += "[using_map_legacy().station_short], "
 
 	. += "[get_security_level()] alert, "
 

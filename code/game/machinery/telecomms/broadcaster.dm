@@ -62,7 +62,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		if(signal.data["slow"] > 0)
 			sleep(signal.data["slow"]) // simulate the network lag if necessary
 
-		signal.data["level"] |= using_map_legacy.get_map_levels(listening_level, TRUE, overmap_range)
+		signal.data["level"] |= using_map_legacy().get_map_levels(listening_level, TRUE, overmap_range)
 
 		var/list/forced_radios
 		for(var/datum/weakref/wr in linked_radios_weakrefs)
@@ -157,7 +157,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		return
 
 	// Why did you use this subtype?
-	if(!using_map_legacy.use_overmap)
+	if(!using_map_legacy().use_overmap)
 		return
 
 	// Someone else handling it?
@@ -165,7 +165,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		return
 
 	// Where are we able to hear from (and talk to, since we're AIO) anyway?
-	var/map_levels = using_map_legacy.get_map_levels(z, TRUE, overmap_range)
+	var/map_levels = using_map_legacy().get_map_levels(z, TRUE, overmap_range)
 
 	//Bluespace can skip this check
 	if(signal.transmission_method != TRANSMISSION_BLUESPACE)
@@ -244,7 +244,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 
 		// For some reason level is both used as a list and not a list, and now it needs to be a list.
 		// Because this is a 'all in one' machine, we're gonna just cheat.
-		//signal.data["level"] = using_map_legacy.contact_levels.Copy()
+		//signal.data["level"] = using_map_legacy().contact_levels.Copy()
 
 		if(signal.data["slow"] > 0)
 			sleep(signal.data["slow"]) // simulate the network lag if necessary

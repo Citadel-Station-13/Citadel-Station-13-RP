@@ -14,7 +14,7 @@
 			var/turf/T = get_turf(C)
 			if(!T)
 				continue
-			if(!(T.z in using_map_legacy.station_levels))
+			if(!(T.z in using_map_legacy().station_levels))
 				continue
 			place_ian(T)
 

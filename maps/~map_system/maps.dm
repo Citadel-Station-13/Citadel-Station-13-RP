@@ -133,6 +133,6 @@
 	stack_trace("Attempt to delete a map_z_level instance [log_info_line(src)]")
 	if(!force)
 		return QDEL_HINT_LETMELIVE // No.
-	if (using_map_legacy.zlevels["[z]"] == src)
-		using_map_legacy.zlevels -= "[z]"
+	if (using_map_legacy().zlevels["[z]"] == src)
+		using_map_legacy().zlevels -= "[z]"
 	return ..()

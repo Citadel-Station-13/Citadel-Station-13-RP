@@ -31,25 +31,25 @@ The "dust" will damage the hull of the station causin minor hull breaches.
 		var/endx = 0
 		switch(startside)
 			if(NORTH)
-				starty = world.maxy-TRANSITIONEDGE-1
-				startx = rand(TRANSITIONEDGE+1, world.maxx-TRANSITIONEDGE-1)
-				endy = TRANSITIONEDGE
-				endx = rand(TRANSITIONEDGE+1, world.maxx-TRANSITIONEDGE-1)
+				starty = world.maxy-TRANSITION_EDGE-1
+				startx = rand(TRANSITION_EDGE+1, world.maxx-TRANSITION_EDGE-1)
+				endy = TRANSITION_EDGE
+				endx = rand(TRANSITION_EDGE+1, world.maxx-TRANSITION_EDGE-1)
 			if(EAST)
-				starty = rand(TRANSITIONEDGE+1, world.maxy-TRANSITIONEDGE-1)
-				startx = world.maxx-TRANSITIONEDGE-1
-				endy = rand(TRANSITIONEDGE, world.maxy-TRANSITIONEDGE)
-				endx = TRANSITIONEDGE
+				starty = rand(TRANSITION_EDGE+1, world.maxy-TRANSITION_EDGE-1)
+				startx = world.maxx-TRANSITION_EDGE-1
+				endy = rand(TRANSITION_EDGE, world.maxy-TRANSITION_EDGE)
+				endx = TRANSITION_EDGE
 			if(SOUTH)
-				starty = TRANSITIONEDGE+1
-				startx = rand(TRANSITIONEDGE+1, world.maxx-TRANSITIONEDGE-1)
-				endy = world.maxy-TRANSITIONEDGE
-				endx = rand(TRANSITIONEDGE, world.maxx-TRANSITIONEDGE)
+				starty = TRANSITION_EDGE+1
+				startx = rand(TRANSITION_EDGE+1, world.maxx-TRANSITION_EDGE-1)
+				endy = world.maxy-TRANSITION_EDGE
+				endx = rand(TRANSITION_EDGE, world.maxx-TRANSITION_EDGE)
 			if(WEST)
-				starty = rand(TRANSITIONEDGE+1, world.maxy-TRANSITIONEDGE-1)
-				startx = TRANSITIONEDGE+1
-				endy = rand(TRANSITIONEDGE, world.maxy-TRANSITIONEDGE)
-				endx = world.maxx-TRANSITIONEDGE
+				starty = rand(TRANSITION_EDGE+1, world.maxy-TRANSITION_EDGE-1)
+				startx = TRANSITION_EDGE+1
+				endy = rand(TRANSITION_EDGE, world.maxy-TRANSITION_EDGE)
+				endx = world.maxx-TRANSITION_EDGE
 
 		var/randomz = pick(affecting_z)
 		var/turf/startloc = locate(startx, starty, randomz)

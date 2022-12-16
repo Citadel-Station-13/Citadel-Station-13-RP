@@ -40,7 +40,7 @@
 /**
  * Picks a turf that is clearance tiles away from the map edge given by dir, on z-level Z.
  */
-/proc/pick_random_edge_turf(dir, Z, clearance = TRANSITIONEDGE + 1)
+/proc/pick_random_edge_turf(dir, Z, clearance = TRANSITION_EDGE + 1)
 	if(!dir)
 		return
 	switch(dir)

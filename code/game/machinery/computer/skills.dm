@@ -65,7 +65,7 @@
 /obj/machinery/computer/skills/attack_hand(mob/user as mob)
 	if(..())
 		return
-	if (using_map_legacy && !(src.z in using_map_legacy.contact_levels))
+	if (using_map_legacy() && !(src.z in using_map_legacy().contact_levels))
 		to_chat(user, "<span class='danger'>Unable to establish a connection:</span> You're too far away from the station!")
 		return
 	ui_interact(user)

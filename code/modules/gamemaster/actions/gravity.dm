@@ -7,7 +7,7 @@
 /datum/gm_action/gravity/set_up()
 	length = rand(length, length * 5)
 	// Setup which levels we will disrupt gravit on.
-	zLevels = using_map_legacy.station_levels.Copy()
+	zLevels = using_map_legacy().station_levels.Copy()
 	for(var/datum/planet/P in SSplanets.planets)
 		zLevels -= P.expected_z_levels
 

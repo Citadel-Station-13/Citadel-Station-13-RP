@@ -21,7 +21,7 @@
 
 		// For some reason level is both used as a list and not a list, and now it needs to be a list.
 		// Because this is a 'all in one' machine, we're gonna just cheat.
-		//signal.data["level"] = using_map_legacy.contact_levels.Copy()
+		//signal.data["level"] = using_map_legacy().contact_levels.Copy()
 
 		if(signal.data["slow"] > 0)
 			sleep(signal.data["slow"]) // simulate the network lag if necessary

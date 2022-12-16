@@ -4,8 +4,8 @@
 
 /datum/event/meteor_strike/setup()
 	startWhen = rand(8,15)
-	if(LAZYLEN(using_map_legacy.meteor_strike_areas))
-		strike_target = pick(get_area_turfs(pick(using_map_legacy.meteor_strike_areas)))
+	if(LAZYLEN(using_map_legacy().meteor_strike_areas))
+		strike_target = pick(get_area_turfs(pick(using_map_legacy().meteor_strike_areas)))
 
 	if(!strike_target)
 		kill()
