@@ -3121,19 +3121,7 @@
 /turf/simulated/floor/tiled/white,
 /area/crew_quarters/sleep/Dorm_2)
 "coX" = (
-/obj/machinery/door/airlock/command{
-	name = "Bridge";
-	req_access = list(19)
-	},
-/obj/machinery/door/firedoor,
-/obj/machinery/door/blast/regular{
-	density = 0;
-	icon_state = "pdoor0";
-	id = "bridge_lockdown";
-	name = "Bridge Lockdown";
-	opacity = 0
-	},
-/turf/simulated/floor/tiled/techfloor,
+/turf/space/basic,
 /area/bridge/bunker)
 "cpi" = (
 /obj/machinery/atmospherics/component/unary/vent_pump/on{
@@ -3642,15 +3630,6 @@
 /obj/structure/railing,
 /turf/simulated/open,
 /area/space)
-"cKF" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/open,
-/area/tether/exploration/pilot_office)
 "cLb" = (
 /obj/structure/table/steel,
 /obj/item/folder/red,
@@ -4402,10 +4381,7 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
 "dzJ" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/simulated/open,
+/turf/simulated/wall/r_wall,
 /area/maintenance/deck_one)
 "dAM" = (
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
@@ -6106,10 +6082,6 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/medbay)
-"eOa" = (
-/obj/machinery/door/airlock/maintenance/command,
-/turf/simulated/floor/plating,
-/area/space)
 "eOV" = (
 /obj/effect/floor_decal/techfloor{
 	dir = 1
@@ -10604,13 +10576,6 @@
 /obj/structure/dogbed,
 /turf/simulated/floor/tiled,
 /area/space)
-"iwH" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/lattice,
-/turf/simulated/open,
-/area/maintenance/deck_one)
 "ixd" = (
 /obj/machinery/button/remote/airlock{
 	id = "dorm7";
@@ -11412,7 +11377,6 @@
 /turf/simulated/floor/plating,
 /area/maintenance/solars)
 "jbM" = (
-/obj/structure/catwalk,
 /obj/machinery/door/firedoor/glass/hidden/steel{
 	dir = 1
 	},
@@ -13331,16 +13295,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
-"kGw" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/lattice,
-/turf/simulated/open,
-/area/maintenance/deck_one)
 "kGP" = (
 /obj/effect/floor_decal/borderfloor{
 	dir = 1
@@ -14059,13 +14013,6 @@
 	},
 /turf/simulated/shuttle/wall/voidcraft/blue,
 /area/shuttle/escape)
-"ldz" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/obj/structure/lattice,
-/turf/simulated/open,
-/area/maintenance/deck_one)
 "ldC" = (
 /obj/structure/railing,
 /turf/simulated/floor/tiled,
@@ -15152,17 +15099,13 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
 "maU" = (
-/obj/structure/railing{
-	dir = 8
+/obj/machinery/door/airlock/glass{
+	name = "Helm";
+	req_one_access = list(19,67)
 	},
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/simulated/open,
-/area/tether/exploration/pilot_office)
+/obj/machinery/door/firedoor,
+/turf/simulated/floor/tiled/techfloor,
+/area/maintenance/deck_one)
 "mbb" = (
 /obj/effect/floor_decal/borderfloor,
 /obj/effect/floor_decal/corner/mauve/border,
@@ -15499,13 +15442,6 @@
 	},
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/iaa)
-"msy" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/structure/railing,
-/turf/simulated/open,
-/area/maintenance/deck_one)
 "msK" = (
 /obj/effect/floor_decal/corner/red{
 	dir = 10
@@ -20105,13 +20041,13 @@
 /turf/simulated/floor/carpet/bcarpet,
 /area/space)
 "qHQ" = (
-/obj/structure/railing{
-	dir = 8
-	},
+/obj/structure/railing,
 /obj/structure/railing{
 	dir = 1
 	},
-/obj/structure/lattice,
+/obj/structure/railing{
+	dir = 8
+	},
 /turf/simulated/open,
 /area/maintenance/deck_one)
 "qIc" = (
@@ -21631,10 +21567,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
-"sco" = (
-/obj/structure/catwalk,
-/turf/simulated/floor/plating,
-/area/maintenance/deck_one)
 "sde" = (
 /obj/machinery/cryopod/robot/door/shuttle,
 /turf/simulated/floor/tiled/techmaint,
@@ -22646,10 +22578,6 @@
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/maintenance/solars)
-"sWP" = (
-/obj/structure/sign/deck1,
-/turf/simulated/wall,
-/area/space)
 "sXB" = (
 /obj/effect/floor_decal/industrial/warning,
 /obj/machinery/light/small{
@@ -23077,12 +23005,6 @@
 /obj/effect/floor_decal/industrial/outline/yellow,
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
-"too" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/simulated/open,
-/area/maintenance/deck_one)
 "tov" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 10
@@ -23510,8 +23432,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/security/security_equiptment_storage)
 "tIX" = (
-/obj/structure/railing,
-/turf/simulated/open,
+/obj/machinery/door/airlock/maintenance/command,
+/turf/simulated/floor/plating,
 /area/maintenance/deck_one)
 "tJt" = (
 /turf/simulated/wall/r_wall,
@@ -23757,9 +23679,19 @@
 /turf/simulated/floor/tiled,
 /area/tether/surfacebase/security/iaa)
 "tTU" = (
-/obj/structure/lattice,
-/obj/structure/railing,
-/turf/simulated/open,
+/obj/machinery/door/airlock/command{
+	name = "Bridge";
+	req_access = list(19)
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/blast/regular{
+	density = 0;
+	icon_state = "pdoor0";
+	id = "bridge_lockdown";
+	name = "Bridge Lockdown";
+	opacity = 0
+	},
+/turf/simulated/floor/tiled/techfloor,
 /area/maintenance/deck_one)
 "tUc" = (
 /obj/structure/railing,
@@ -24542,10 +24474,8 @@
 /turf/simulated/floor/plating,
 /area/medical/reception)
 "uBF" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/plating,
-/area/space)
+/turf/space/basic,
+/area/maintenance/deck_one)
 "uBX" = (
 /obj/structure/table/marble,
 /obj/item/retail_scanner/civilian,
@@ -25550,10 +25480,6 @@
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/recreation_area)
-"vpY" = (
-/obj/structure/lattice,
-/turf/simulated/open,
-/area/maintenance/deck_one)
 "vqb" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply,
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,
@@ -28196,14 +28122,6 @@
 	},
 /turf/simulated/floor/tiled/dark,
 /area/tether/surfacebase/security/armory)
-"xDF" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/lattice,
-/obj/structure/railing,
-/turf/simulated/open,
-/area/maintenance/deck_one)
 "xDG" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 5
@@ -47178,9 +47096,9 @@ egk
 egk
 egk
 hin
-sco
-sco
-sco
+izy
+izy
+izy
 pSM
 pSM
 nju
@@ -47372,11 +47290,11 @@ egk
 egk
 egk
 hin
-qRm
-qHQ
-iwH
+izy
+izy
+izy
 dzJ
-msy
+izy
 nju
 ecv
 nmp
@@ -47566,11 +47484,11 @@ egk
 egk
 egk
 hin
-qRm
-ldz
-vpY
-too
-tIX
+izy
+izy
+izy
+dzJ
+izy
 nju
 pPZ
 nmp
@@ -47760,11 +47678,11 @@ oAf
 oAf
 oAf
 hin
-qRm
-ldz
-tTU
+qHQ
 izy
-tUc
+izy
+dzJ
+izy
 nju
 pzC
 mZM
@@ -47954,11 +47872,11 @@ oAf
 oAf
 oAf
 hin
-qRm
-kGw
-xDF
-izy
 tUc
+izy
+izy
+dzJ
+izy
 nju
 nju
 eHd
@@ -48151,7 +48069,7 @@ qQk
 izy
 izy
 izy
-izy
+dzJ
 izy
 izy
 nju
@@ -48343,18 +48261,18 @@ oAf
 oAf
 hin
 izy
+tTU
+izy
+tIX
 izy
 izy
-izy
-izy
-izy
-eOa
-eqt
-dIO
-apA
-sYi
-lMW
-uBF
+wQG
+wQG
+wQG
+wQG
+wQG
+wQG
+wQG
 dpB
 dpB
 dpB
@@ -48538,17 +48456,17 @@ oAf
 hin
 izy
 izy
-uns
-uns
-uns
-uns
-aBR
-oVG
-cKt
-apA
-sYi
-lMW
-uBF
+izy
+dzJ
+izy
+izy
+wQG
+wQG
+wQG
+wQG
+wQG
+wQG
+wQG
 qwr
 qwr
 dpB
@@ -48732,17 +48650,17 @@ oAf
 hin
 izy
 izy
-nxk
-nxk
-nxk
-nxk
-aBR
-bPM
-aBR
-owK
-aBR
-aBR
-aBR
+izy
+dzJ
+izy
+izy
+wQG
+wQG
+wQG
+wQG
+wQG
+wQG
+wQG
 hMl
 hMl
 rRH
@@ -48926,17 +48844,17 @@ rcu
 knv
 xjW
 sEi
-sWP
+izy
 maU
-cKF
-cKF
-owK
-mZx
-vEu
-bVJ
-vEu
-cey
-aBR
+izy
+izy
+wQG
+wQG
+wQG
+wQG
+wQG
+wQG
+wQG
 lMW
 lMW
 pSE
@@ -49120,17 +49038,17 @@ afU
 hin
 izy
 iFd
-nxk
-nxk
-nxk
-nxk
-aBR
-ffA
-ubb
-ubb
-ubb
-fsb
-aBR
+izy
+dzJ
+izy
+izy
+wQG
+wQG
+wQG
+wQG
+wQG
+wQG
+wQG
 lMW
 lMW
 nxk
@@ -49315,16 +49233,16 @@ hin
 izy
 iFd
 uns
+dzJ
 izy
 izy
-izy
-aBR
-wPz
-uYt
-bJD
-gFW
-moj
-aBR
+wQG
+wQG
+wQG
+wQG
+wQG
+wQG
+wQG
 lMW
 lMW
 nxk
@@ -49509,16 +49427,16 @@ hin
 izy
 iFd
 uns
+dzJ
 izy
 izy
-izy
-aBR
-vLy
-ubb
-noz
-ubb
-kth
-aBR
+wQG
+wQG
+wQG
+wQG
+wQG
+wQG
+wQG
 ayH
 ayH
 nxk
@@ -49703,16 +49621,16 @@ hin
 izy
 iFd
 uns
+dzJ
 izy
 izy
-izy
-aBR
-aBR
-boT
-pUa
-hbl
-aBR
-aBR
+wQG
+wQG
+wQG
+wQG
+wQG
+wQG
+wQG
 vYy
 vYy
 jEq
@@ -49900,13 +49818,13 @@ uns
 izy
 izy
 izy
-izy
-aBR
-aBR
-aBR
-aBR
-aBR
-vYy
+uBF
+wQG
+wQG
+wQG
+wQG
+wQG
+wQG
 vYy
 vYy
 nxk
@@ -58015,13 +57933,13 @@ bmU
 bmU
 bmU
 bmU
-bmU
-bmU
-bmU
-bmU
-bmU
-bmU
-bmU
+vYy
+eqt
+dIO
+apA
+sYi
+lMW
+vYy
 bmU
 bmU
 bmU
@@ -58209,13 +58127,13 @@ bmU
 bmU
 bmU
 bmU
-bmU
-bmU
-bmU
-bmU
-bmU
-bmU
-bmU
+vYy
+oVG
+cKt
+apA
+sYi
+lMW
+vYy
 bmU
 bmU
 bmU
@@ -58403,13 +58321,13 @@ bmU
 bmU
 bmU
 bmU
-bmU
-bmU
-bmU
-bmU
-bmU
-bmU
-bmU
+vYy
+bPM
+aBR
+owK
+aBR
+aBR
+aBR
 bmU
 bmU
 bmU
@@ -58597,13 +58515,13 @@ bmU
 bmU
 bmU
 bmU
-bmU
-bmU
-bmU
-bmU
-bmU
-bmU
-bmU
+vYy
+mZx
+vEu
+bVJ
+vEu
+cey
+aBR
 bmU
 bmU
 bmU
@@ -58791,13 +58709,13 @@ bmU
 bmU
 bmU
 bmU
-bmU
-bmU
-bmU
-bmU
-bmU
-bmU
-bmU
+vYy
+ffA
+ubb
+ubb
+ubb
+fsb
+aBR
 bmU
 bmU
 bmU
@@ -58985,13 +58903,13 @@ bmU
 bmU
 bmU
 bmU
-bmU
-bmU
-bmU
-bmU
-bmU
-bmU
-bmU
+vYy
+wPz
+uYt
+bJD
+gFW
+moj
+aBR
 bmU
 bmU
 bmU
@@ -59179,13 +59097,13 @@ bmU
 bmU
 bmU
 bmU
-bmU
-bmU
-bmU
-bmU
-bmU
-bmU
-bmU
+vYy
+vLy
+ubb
+noz
+ubb
+kth
+aBR
 bmU
 bmU
 bmU
@@ -59373,13 +59291,13 @@ bmU
 bmU
 bmU
 bmU
-bmU
-bmU
-bmU
-bmU
-bmU
-bmU
-bmU
+vYy
+aBR
+boT
+pUa
+hbl
+aBR
+aBR
 bmU
 bmU
 bmU
@@ -59567,13 +59485,13 @@ bmU
 bmU
 bmU
 bmU
-bmU
-bmU
-bmU
-bmU
-bmU
-bmU
-bmU
+vYy
+aBR
+aBR
+aBR
+aBR
+aBR
+vYy
 bmU
 bmU
 bmU
