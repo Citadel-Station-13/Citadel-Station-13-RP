@@ -8,7 +8,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	anchored = 0
 	density = 1
 	climbable = 1
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	//copypaste sorry
 	var/amount_per_transfer_from_this = 5 //shit I dunno, adding this so syringes stop runtime erroring. --NeoFite
 	var/obj/item/storage/bag/trash/mybag	= null
@@ -151,18 +151,21 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 
 
 /obj/structure/janitorialcart/update_icon()
-	overlays = null
-	if(mybag)
-		overlays += "cart_garbage"
-	if(mymop)
-		overlays += "cart_mop"
-	if(myspray)
-		overlays += "cart_spray"
-	if(myreplacer)
-		overlays += "cart_replacer"
-	if(signs)
-		overlays += "cart_sign[signs]"
+	cut_overlays()
+	var/list/overlays_to_add = list()
 
+	if(mybag)
+		overlays_to_add += "cart_garbage"
+	if(mymop)
+		overlays_to_add += "cart_mop"
+	if(myspray)
+		overlays_to_add += "cart_spray"
+	if(myreplacer)
+		overlays_to_add += "cart_replacer"
+	if(signs)
+		overlays_to_add += "cart_sign[signs]"
+
+	add_overlay(overlays_to_add)
 
 //old style stupido-cart
 /obj/structure/bed/chair/janicart
@@ -171,7 +174,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	icon_state = "pussywagon"
 	anchored = 1
 	density = 1
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	//copypaste sorry
 	var/amount_per_transfer_from_this = 5 //shit I dunno, adding this so syringes stop runtime erroring. --NeoFite
 	var/obj/item/storage/bag/trash/mybag	= null

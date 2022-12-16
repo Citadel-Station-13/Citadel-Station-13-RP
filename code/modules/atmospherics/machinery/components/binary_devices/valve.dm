@@ -132,7 +132,7 @@
 
 /obj/machinery/atmospherics/valve/attack_hand(mob/user as mob)
 	src.add_fingerprint(usr)
-	update_icon(1)
+	update_icon()
 	sleep(10)
 	if (src.open)
 		src.close()

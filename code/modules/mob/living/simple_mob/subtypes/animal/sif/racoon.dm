@@ -144,7 +144,7 @@
 	..()
 
 /mob/living/simple_mob/animal/sif/sakimm/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	..()
 	if(hat)
 		var/mutable_appearance/MA = hat.render_mob_appearance(src, SLOT_ID_HEAD, BODYTYPE_STRING_DEFAULT)

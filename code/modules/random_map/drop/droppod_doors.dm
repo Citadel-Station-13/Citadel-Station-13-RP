@@ -53,11 +53,11 @@
 
 	// Destroy turf contents.
 	for(var/obj/O in origin)
-		if((O.flags & ATOM_ABSTRACT))
+		if((O.atom_flags & ATOM_ABSTRACT))
 			continue
 		qdel(O) //crunch
 	for(var/obj/O in T)
-		if((O.flags & ATOM_ABSTRACT))
+		if((O.atom_flags & ATOM_ABSTRACT))
 			continue
 		qdel(O) //crunch
 

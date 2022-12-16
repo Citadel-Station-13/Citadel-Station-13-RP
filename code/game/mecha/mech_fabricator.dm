@@ -93,7 +93,9 @@
 	. = ..()
 
 	//Go through all materials, and add them to the possible storage, but hide them unless we contain them.
-	for(var/Name in name_to_material)
+	// todo: WHY ARE YOU dOING ThiS JUST DONT STORE THE MATERIAL
+	for(var/datum/material/M as anything in SSmaterials.all_materials())
+		var/Name = M.name
 		if(Name in materials)
 			continue
 

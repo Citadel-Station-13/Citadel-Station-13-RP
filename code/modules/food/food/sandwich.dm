@@ -46,7 +46,8 @@
 	var/fullname = "" //We need to build this from the contents of the var.
 	var/i = 0
 
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 
 	for(var/obj/item/reagent_containers/food/snacks/O in ingredients)
 
@@ -62,16 +63,19 @@
 		I.color = O.filling_color
 		I.pixel_x = pick(list(-1,0,1))
 		I.pixel_y = (i*2)+1
-		overlays += I
+		overlays_to_add += (I)
 
 	var/image/T = new(src.icon, "sandwich_top")
 	T.pixel_x = pick(list(-1,0,1))
 	T.pixel_y = (ingredients.len * 2)+1
-	overlays += T
+	overlays_to_add += T
 
 	name = lowertext("[fullname] sandwich")
-	if(length(name) > 80) name = "[pick(list("absurd","colossal","enormous","ridiculous"))] sandwich"
+	if(length(name) > 80)
+		name = "[pick(list("absurd","colossal","enormous","ridiculous"))] sandwich"
 	w_class = CEILING(clamp((ingredients.len/2),2,4), 1)
+
+	add_overlay(overlays_to_add)
 
 /obj/item/reagent_containers/food/snacks/csandwich/Destroy()
 	for(var/obj/item/O in ingredients)

@@ -711,7 +711,7 @@
 
 /datum/crafting_recipe/scanning_array_adv
 	name = "Advanced Geothermal Scanning Array"
-	result = /obj/item/scanning_array_adv
+	result = /obj/item/scanning_array/adv
 	time = 30
 	reqs = list(/obj/item/stock_parts/scanning_module/adv = 2,
 				/obj/item/stack/cable_coil = 4)
@@ -721,7 +721,7 @@
 
 /datum/crafting_recipe/scanning_array_phasic
 	name = "Phasic Geothermal Scanning Array"
-	result = /obj/item/scanning_array_phasic
+	result = /obj/item/scanning_array/phasic
 	time = 30
 	reqs = list(/obj/item/stock_parts/scanning_module/phasic = 2,
 				/obj/item/stack/cable_coil = 4)

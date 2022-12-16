@@ -39,4 +39,4 @@
 /obj/machinery/computer/rcon/update_icon()
 	..()
 	if(!(machine_stat & (NOPOWER|BROKEN)))
-		overlays += image(icon, "ai-fixer-empty", overlay_layer)
+		add_overlay(image(icon, "ai-fixer-empty", overlay_layer))

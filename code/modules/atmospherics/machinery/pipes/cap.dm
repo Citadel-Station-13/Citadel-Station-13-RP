@@ -47,14 +47,14 @@
 	if(node)
 		node.update_underlays()
 
-/obj/machinery/atmospherics/pipe/cap/update_icon(var/safety = 0)
+/obj/machinery/atmospherics/pipe/cap/update_icon(safety = 0)
 	if(!check_icon_cache())
 		return
 
 	alpha = 255
 
-	overlays.Cut()
-	overlays += icon_manager.get_atmos_icon("pipe", , pipe_color, "cap[icon_connect_type]")
+	cut_overlays()
+	add_overlay(icon_manager.get_atmos_icon("pipe", , pipe_color, "cap[icon_connect_type]"))
 
 /obj/machinery/atmospherics/pipe/cap/atmos_init()
 	for(var/obj/machinery/atmospherics/target in get_step(src, dir))

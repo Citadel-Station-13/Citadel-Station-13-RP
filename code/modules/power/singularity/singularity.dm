@@ -116,6 +116,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 	if (force_size)
 		temp_allowed_size = force_size
 
+	cut_overlays()
 	switch (temp_allowed_size)
 		if (STAGE_ONE)
 			name = "gravitational singularity"
@@ -130,9 +131,8 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 			dissipate_delay = 10
 			dissipate_track = 0
 			dissipate_strength = 1
-			overlays = 0
 			if(chained)
-				overlays = "chain_s1"
+				add_overlay("chain_s1")
 			visible_message("<span class='notice'>The singularity has shrunk to a rather pitiful size.</span>")
 		if (STAGE_TWO)
 			if(check_cardinals_range(1, TRUE))
@@ -148,9 +148,8 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 				dissipate_delay = 10
 				dissipate_track = 0
 				dissipate_strength = 5
-				overlays = 0
 				if(chained)
-					overlays = "chain_s3"
+					add_overlay("chain_s3")
 				if(growing)
 					visible_message("<span class='notice'>The singularity noticeably grows in size.</span>")
 				else
@@ -169,9 +168,8 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 				dissipate_delay = 4
 				dissipate_track = 0
 				dissipate_strength = 20
-				overlays = 0
 				if(chained)
-					overlays = "chain_s5"
+					add_overlay("chain_s5")
 				if(growing)
 					visible_message("<span class='notice'>The singularity expands to a reasonable size.</span>")
 				else
@@ -190,9 +188,8 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 				dissipate_delay = 10
 				dissipate_track = 0
 				dissipate_strength = 8
-				overlays = 0
 				if(chained)
-					overlays = "chain_s7"
+					add_overlay("chain_s7")
 				if(growing)
 					visible_message("<span class='warning'>The singularity expands to a dangerous size.</span>")
 				else
@@ -208,9 +205,8 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 			grav_pull = 10
 			consume_range = 4
 			dissipate = 0 //It cant go smaller due to e loss.
-			overlays = 0
 			if(chained)
-				overlays = "chain_s9"
+				add_overlay("chain_s9")
 			if(growing)
 				visible_message("<span class='danger'><font size='2'>The singularity has grown out of control!</font></span>")
 			else
@@ -228,7 +224,7 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 			dissipate = 0 //It cant go smaller due to e loss
 			event_chance = 25 //Events will fire off more often.
 			if(chained)
-				overlays = "chain_s9"
+				add_overlay("chain_s9")
 			visible_message("<span class='sinister'><font size='3'>You witness the creation of a destructive force that cannot possibly be stopped by human hands.</font></span>")
 
 	if (current_size == allowed_size)
@@ -464,30 +460,30 @@ GLOBAL_LIST_BOILERPLATE(all_singularities, /obj/singularity)
 
 /obj/singularity/proc/on_capture()
 	chained = 1
-	overlays = 0
+	cut_overlays()
 	move_self = 0
 	switch (current_size)
 		if(STAGE_ONE)
-			overlays += image('icons/obj/singularity.dmi',"chain_s1")
+			add_overlay(image('icons/obj/singularity.dmi',"chain_s1"))
 		if(STAGE_TWO)
-			overlays += image('icons/effects/96x96.dmi',"chain_s3")
+			add_overlay(image('icons/effects/96x96.dmi',"chain_s3"))
 		if(STAGE_THREE)
-			overlays += image('icons/effects/160x160.dmi',"chain_s5")
+			add_overlay(image('icons/effects/160x160.dmi',"chain_s5"))
 		if(STAGE_FOUR)
-			overlays += image('icons/effects/224x224.dmi',"chain_s7")
+			add_overlay(image('icons/effects/224x224.dmi',"chain_s7"))
 		if(STAGE_FIVE)
-			overlays += image('icons/effects/288x288.dmi',"chain_s9")
+			add_overlay(image('icons/effects/288x288.dmi',"chain_s9"))
 
 /obj/singularity/proc/on_release()
 	chained = 0
-	overlays = 0
+	cut_overlays()
 	move_self = 1
 
 /obj/singularity/singularity_act(S, size)
-    if(current_size <= size)
-        var/gain = (energy/2)
-        var/dist = max((current_size - 2), 1)
-        explosion(src.loc,(dist),(dist*2),(dist*4))
-        spawn(0)
-            qdel(src)
-        return gain
+	if(current_size <= size)
+		var/gain = (energy/2)
+		var/dist = max((current_size - 2), 1)
+		explosion(src.loc,(dist),(dist*2),(dist*4))
+		spawn(0)
+			qdel(src)
+		return gain

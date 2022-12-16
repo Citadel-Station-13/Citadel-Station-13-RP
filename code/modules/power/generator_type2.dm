@@ -26,14 +26,13 @@
 	updateicon()
 
 /obj/machinery/power/generator_type2/proc/updateicon()
+	cut_overlays()
 
 	if(machine_stat & (NOPOWER|BROKEN))
-		overlays.Cut()
-	else
-		overlays.Cut()
+		return
 
-		if(lastgenlev != 0)
-			overlays += image('icons/obj/power.dmi', "teg-op[lastgenlev]")
+	if(lastgenlev != 0)
+		add_overlay(image('icons/obj/power.dmi', "teg-op[lastgenlev]"))
 
 /// generator output coefficient from Q
 #define GENRATE 800

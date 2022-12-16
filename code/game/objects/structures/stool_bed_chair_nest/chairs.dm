@@ -60,7 +60,7 @@
 			I.plane = MOB_PLANE
 			I.color = padding_material.icon_colour
 			stool_cache[cache_key] = I
-		overlays |= stool_cache[cache_key]
+		add_overlay(stool_cache[cache_key])
 
 /obj/structure/bed/chair/proc/update_layer()
 	if(src.dir == NORTH)

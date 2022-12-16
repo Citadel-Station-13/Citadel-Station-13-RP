@@ -220,14 +220,15 @@
 * Update icon and overlays of open space to be that of the turf below, plus any visible objects on that turf.
 */
 /turf/simulated/open/update_icon()
-	overlays.len = 0
+	cut_overlays()
+
 	var/turf/below = GetBelow(src)
 	if(below)
 		var/below_is_open = isopenturf(below)
 
 		if(below_is_open)
 			underlays = below.underlays
-			overlays = below.overlays
+			copy_overlays(below)
 		else
 			var/image/bottom_turf = image(icon = below.icon, icon_state = below.icon_state, dir=below.dir, layer=below.layer)
 			bottom_turf.plane = src.plane
@@ -240,15 +241,17 @@
 		// Get objects (not mobs, they are handled by /obj/zshadow)
 		var/list/o_img = list()
 		for(var/obj/O in below)
-			if(O.invisibility) continue	// Ignore objects that have any form of invisibility
-			if(O.loc != below) continue	// Ignore multi-turf objects not directly below
+			if(O.invisibility)
+				continue // Ignore objects that have any form of invisibility
+			if(O.loc != below)
+				continue // Ignore multi-turf objects not directly below
 			var/image/temp2 = image(O, dir = O.dir, layer = O.layer)
 			temp2.plane = src.plane
 			temp2.color = O.color
-			temp2.overlays += O.overlays
+			temp2.add_overlay(O.overlays)
 			// TODO Is pixelx/y needed?
 			o_img += temp2
-		overlays += o_img
+		add_overlay(o_img)
 		overlays |= /obj/effect/abstract/over_openspace_darkness
 		return
 	return PROCESS_KILL

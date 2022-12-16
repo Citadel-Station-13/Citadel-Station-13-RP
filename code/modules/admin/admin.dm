@@ -1507,7 +1507,7 @@ datum/admins/var/obj/item/paper/admin/faxreply // var to hold fax replies in
 		if(!P.stamped)
 			P.stamped = new
 		P.stamped += /obj/item/stamp/centcomm
-		P.overlays += stampoverlay
+		P.add_overlay(stampoverlay)
 
 	var/obj/item/rcvdcopy
 	rcvdcopy = destination.copy(P)

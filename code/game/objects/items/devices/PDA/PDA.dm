@@ -984,9 +984,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/update_icon()
 	..()
 
-	overlays.Cut()
+	cut_overlays()
 	if(new_message || new_news)
-		overlays += image(icon, "pda-r")
+		add_overlay(image(icon, "pda-r"))
 
 /obj/item/pda/proc/detonate_act(var/obj/item/pda/P)
 	//TODO: sometimes these attacks show up on the message server

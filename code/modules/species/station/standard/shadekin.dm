@@ -47,7 +47,7 @@
 	heat_level_2 = 1000
 	heat_level_3 = 1150
 
-	flags =  NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE	//shadekin biology is still unknown to the universe (unless some bullshit lore says otherwise); CitadelRP: Now able to walk over shards of glass like regular shadekins
+	species_flags =  NO_SCAN | NO_MINOR_CUT | CONTAMINATION_IMMUNE	//shadekin biology is still unknown to the universe (unless some bullshit lore says otherwise); CitadelRP: Now able to walk over shards of glass like regular shadekins
 	species_spawn_flags = SPECIES_SPAWN_CHARACTER | SPECIES_SPAWN_WHITELISTED
 
 	reagent_tag = IS_SHADEKIN // for shadekin-unique chem interactions

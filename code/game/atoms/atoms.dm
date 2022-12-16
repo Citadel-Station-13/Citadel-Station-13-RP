@@ -11,7 +11,7 @@
 	/// Used for changing icon states for different base sprites.
 	var/base_icon_state
 	/// Atom flags.
-	var/flags = NONE
+	var/atom_flags = NONE
 	/// Intearaction flags.
 	var/interaction_flags_atom = NONE
 	/// Holder for the last time we have been bumped.
@@ -195,9 +195,9 @@
 /atom/proc/Initialize(mapload, ...)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
-	if(flags & INITIALIZED)
+	if(atom_flags & ATOM_INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
-	flags |= INITIALIZED
+	atom_flags |= ATOM_INITIALIZED
 
 	if (is_datum_abstract())
 		log_debug("Abstract atom [type] created!")
@@ -290,7 +290,7 @@
 
 /// Convenience proc to see if a container is open for chemistry handling.
 /atom/proc/is_open_container()
-	return flags & OPENCONTAINER
+	return atom_flags & OPENCONTAINER
 
 ///Is this atom within 1 tile of another atom
 /atom/proc/HasProximity(atom/movable/proximity_check_mob as mob|obj)
@@ -612,7 +612,7 @@
 		return
 	if(!M || !M.key)
 		return
-	if(istype(tool) && (tool.flags & NOPRINT))
+	if(istype(tool) && (tool.atom_flags & NOPRINT))
 		return
 	if (ishuman(M))
 		//Add the list if it does not exist.
@@ -738,7 +738,7 @@
 /// Returns 1 if made bloody, returns 0 otherwise
 /atom/proc/add_blood(mob/living/carbon/human/M as mob)
 
-	if(flags & NOBLOODY)
+	if(atom_flags & NOBLOODY)
 		return 0
 
 	if(!blood_DNA || !istype(blood_DNA, /list))	//if our list of DNA doesn't exist yet (or isn't a list) initialise it.
@@ -766,7 +766,7 @@
 			this.icon_state = "vomittox_[pick(1,4)]"
 
 /atom/proc/clean_blood()
-	if(flags & ATOM_ABSTRACT)
+	if(atom_flags & ATOM_ABSTRACT)
 		return
 	fluorescent = 0
 	src.germ_level = 0

@@ -22,13 +22,13 @@
 	update_icon()
 
 /obj/machinery/tele_pad/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(com?.projector?.engaged)
 		update_use_power(USE_POWER_ACTIVE)
 		var/image/I = image(icon, src, "[initial(icon_state)]_active_overlay")
 		I.plane = ABOVE_LIGHTING_PLANE
 		I.layer = ABOVE_LIGHTING_LAYER
-		overlays += I
+		add_overlay(I)
 		set_light(0.4, 1.2, 4, 10)
 	else
 		set_light(0)
@@ -37,7 +37,7 @@
 			var/image/I = image(icon, src, "[initial(icon_state)]_idle_overlay")
 			I.plane = ABOVE_LIGHTING_PLANE
 			I.layer = ABOVE_LIGHTING_LAYER
-			overlays += I
+			add_overlay(I)
 
 /obj/machinery/tele_pad/Bumped(M as mob|obj)
 	if(com?.projector?.engaged)

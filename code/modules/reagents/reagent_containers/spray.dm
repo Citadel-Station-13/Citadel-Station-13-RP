@@ -5,7 +5,7 @@
 	icon_state = "cleaner"
 	item_state = "cleaner"
 	item_flags = ITEM_NOBLUDGEON
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	slot_flags = SLOT_BELT | SLOT_HOLSTER
 	throw_force = 3
 	w_class = ITEMSIZE_SMALL

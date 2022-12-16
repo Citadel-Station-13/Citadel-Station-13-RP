@@ -202,11 +202,12 @@
 
 /obj/item/weldingtool/update_icon()
 	..()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	// Welding overlay.
 	if(welding)
 		var/image/I = image(icon, src, "[icon_state]-on")
-		overlays.Add(I)
+		overlays_to_add += I
 		item_state = "[initial(item_state)]1"
 	else
 		item_state = initial(item_state)
@@ -216,7 +217,9 @@
 		var/ratio = get_fuel() / get_max_fuel()
 		ratio = CEILING(ratio * 4, 1) * 25
 		var/image/I = image(icon, src, "[icon_state][ratio]")
-		overlays.Add(I)
+		overlays_to_add += I
+
+	add_overlay(overlays_to_add)
 
 	// Lights
 	if(welding && flame_intensity)
