@@ -17,24 +17,24 @@
 	var/width = 255
 	/// Height
 	var/height = 255
-	/// Zlevel count
-	var/z_count = 1
 	/// Center this map?
 	var/center = TRUE
 	/// did instantiation happen on us? levels can still be instantiated without us being specifically instantiated!
 	var/instantiated = FALSE
 	/// zlevel datums - ordered list
 	var/list/datum/space_level/levels
-	/// world_structs to set up - list(struct z_grid, struct z_grid 2, etc)
+	/// world_structs to set up - list("id" = z_grid, "id2" = z_grid 2, etc)
 	var/list/world_structs
 	/// Orientation to load in by default.
 	var/orientation = SOUTH		//byond defaults to placing everyting SOUTH.
 	/*
-	* job ids/typepaths to enable for level-specific jobs - if loaded midround, the jobs will be instantiated on the spot if it's not already there
+	 * job ids/typepaths to enable for level-specific jobs - if loaded midround, the jobs will be instantiated on the spot if it's not already there
 	 * if this is present roundstart, it'll make the job instantiate as normal in normal job instantiation
 	 * note: there's no job slot override system other than on the station itself. this is intentional,
 	 * because if you're making a job specifically for one map level, the job itself should just have the vars set correctly,
 	 * not the map datum!
+	 *
+	 * This will override job whitelist.
 	 */
 	var/list/enable_jobs
 

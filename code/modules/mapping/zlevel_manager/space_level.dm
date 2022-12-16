@@ -19,6 +19,8 @@
 	var/tmp/instantiated = FALSE
 	/// Errored - validation failed
 	var/tmp/errored
+	/// Absolute path we loaded from
+	var/tmp/loaded_path
 
 	//! Map File / Loading
 	/// Path to .dmm - this must be relative to the folder the .json was loaded from.
