@@ -34,10 +34,10 @@ SUBSYSTEM_DEF(machines)
 
 /datum/controller/subsystem/machines/Initialize(timeofday)
 	makepowernets()
-	admin_notice("<span class='danger'>Initializing atmos machinery.</span>", R_DEBUG)
+	admin_notice(SPAN_DEBUGINFO("Initializing atmos machinery."), R_DEBUG)
 	setup_atmos_machinery(GLOB.machines)
 	fire()
-	..()
+	return ..()
 
 /datum/controller/subsystem/machines/fire(resumed = 0)
 	var/timer = TICK_USAGE

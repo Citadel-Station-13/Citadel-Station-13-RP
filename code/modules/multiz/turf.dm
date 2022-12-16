@@ -1,7 +1,3 @@
-/turf
-	/// multiz behavior flags
-	var/z_flags = Z_AIR_UP | Z_OPEN_UP
-
 /**
  * WARNING: This proc is unique. Read the doc here, especially the return value.
  * Check if an atom can move into us from either above or below
@@ -125,7 +121,7 @@
 
 /turf/smooth_icon()
 	. = ..()
-	if(SSopenspace.initialized)
+	if(SSzmimic.initialized)
 		var/turf/simulated/open/above = GetAbove(src)
 		if(istype(above))
 			above.queue()
@@ -143,32 +139,28 @@
 		// To add or remove the 'ceiling-less' overlay.
 		below.update_icon()
 
-//
-// Open Space - "empty" turf that lets stuff fall thru it to the layer below
-//
-
+/**
+ *! Open Space
+ *? "empty" turf that lets stuff fall thru it to the layer below.
+ */
 /turf/simulated/open
 	name = "open space"
+	desc = "\..."
 	icon = 'icons/turf/space.dmi'
 	icon_state = ""
-	desc = "\..."
-	density = 0
-	plane = OPENSPACE_PLANE_START
-	pathweight = 100000		// Seriously, don't try and path over this one numbnuts
+	density = FALSE
+	pathweight = 100000 // Seriously, don't try and path over this one numbnuts.
 	can_build_into_floor = TRUE
 	allow_gas_overlays = FALSE
-	z_flags = Z_AIR_UP | Z_AIR_DOWN | Z_OPEN_UP | Z_OPEN_DOWN | Z_CONSIDERED_OPEN
+	z_flags = ZM_MIMIC_DEFAULTS | ZM_MIMIC_OVERWRITE | ZM_MIMIC_NO_AO | ZM_ALLOW_ATMOS
 	permit_ao = FALSE
-
-	var/turf/below
 
 /turf/simulated/open/Initialize(mapload)
 	. = ..()
 	ASSERT(HasBelow(z))
-	plane = min(OPENSPACE_PLANE_END, OPENSPACE_PLANE + src.z)
 	queue()
 
-/turf/simulated/open/Entered(var/atom/movable/mover)
+/turf/simulated/open/Entered(atom/movable/mover)
 	..()
 	if(mover.movement_type & GROUND)
 		mover.fall()
@@ -183,19 +175,10 @@
 	if(smoothing_flags & SMOOTH_QUEUED)
 		return
 	smoothing_flags |= SMOOTH_QUEUED
-	SSopenspace.add_turf(src)
 
-//! we hijack smoothing flags.
+//! We hijack smoothing flags.
 /turf/simulated/open/smooth_icon()
-	return		// nope
-
-/turf/simulated/open/proc/update()
-	below = GetBelow(src)
-	below.update_icon()	// So the 'ceiling-less' overlay gets added.
-	for(var/atom/movable/A in src)
-		if(A.movement_type & GROUND)
-			A.fall()
-	SSopenspace.add_turf(src, 1)
+	return // Nope.amv
 
 // Override to make sure nothing is hidden
 /turf/simulated/open/levelupdate()
@@ -209,53 +192,23 @@
 		depth += 1
 	. += "It is about [depth] levels deep."
 
-// todo: we either need vis conetents rendering or zmimic overlays; this is a fucked system and is really just unsalvagable.
+// Most things use is_plating to test if there is a cover tile on top (like regular floors)
+/turf/simulated/open/is_plating()
+	return TRUE
 
-/**
-* Update icon and overlays of open space to be that of the turf below, plus any visible objects on that turf.
-*/
-/turf/simulated/open/update_icon()
-	cut_overlays()
-
+/turf/simulated/open/is_space()
 	var/turf/below = GetBelow(src)
-	if(below)
-		var/below_is_open = isopenturf(below)
+	return !below || below.is_space()
 
-		if(below_is_open)
-			underlays = below.underlays
-			copy_overlays(below)
-		else
-			var/image/bottom_turf = image(icon = below.icon, icon_state = below.icon_state, dir=below.dir, layer=below.layer)
-			bottom_turf.plane = src.plane
-			bottom_turf.color = below.color
-			bottom_turf.copy_overlays(below)
-			// todo: zmimic
-			bottom_turf.appearance_flags = KEEP_TOGETHER
-			underlays = list(bottom_turf)
+/turf/simulated/open/is_solid_structure()
+	return locate(/obj/structure/lattice, src)	// Counts as solid structure if it has a lattice (same as space)
 
-		// Get objects (not mobs, they are handled by /obj/zshadow)
-		var/list/o_img = list()
-		for(var/obj/O in below)
-			if(O.invisibility)
-				continue // Ignore objects that have any form of invisibility
-			if(O.loc != below)
-				continue // Ignore multi-turf objects not directly below
-			var/image/temp2 = image(O, dir = O.dir, layer = O.layer)
-			temp2.plane = src.plane
-			temp2.color = O.color
-			temp2.add_overlay(O.overlays)
-			// TODO Is pixelx/y needed?
-			o_img += temp2
-		add_overlay(o_img)
-		overlays |= /obj/effect/abstract/over_openspace_darkness
-		return
-	return PROCESS_KILL
+/turf/simulated/open/is_safe_to_enter(mob/living/L)
+	if(L.can_fall())
+		if(!locate(/obj/structure/stairs) in GetBelow(src))
+			return FALSE
+	return ..()
 
-/obj/effect/abstract/over_openspace_darkness
-	icon = 'icons/turf/open_space.dmi'
-	icon_state = "black_open"
-	plane = OVER_OPENSPACE_PLANE
-	layer = TURF_LAYER
 
 // Straight copy from space.
 /turf/simulated/open/attackby(obj/item/C as obj, mob/user as mob)
@@ -289,19 +242,11 @@
 		var/obj/item/stack/cable_coil/coil = C
 		coil.turf_place(src, user)
 
-// Most things use is_plating to test if there is a cover tile on top (like regular floors)
-/turf/simulated/open/is_plating()
-	return TRUE
 
-/turf/simulated/open/is_space()
-	var/turf/below = GetBelow(src)
-	return !below || below.is_space()
+/obj/effect/abstract/over_openspace_darkness
+	icon = 'icons/turf/open_space.dmi'
+	icon_state = "black_open"
+	plane = OVER_OPENSPACE_PLANE
+	layer = TURF_LAYER
 
-/turf/simulated/open/is_solid_structure()
-	return locate(/obj/structure/lattice, src)	// Counts as solid structure if it has a lattice (same as space)
-
-/turf/simulated/open/is_safe_to_enter(mob/living/L)
-	if(L.can_fall())
-		if(!locate(/obj/structure/stairs) in GetBelow(src))
-			return FALSE
-	return ..()
+#warn Delete zshadow.dm & turf_obj_hooks.dm

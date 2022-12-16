@@ -13,6 +13,7 @@
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 	temperature = 2.7
 	can_build_into_floor = TRUE
+	z_eventually_space = TRUE
 
 	/// If we're an edge.
 	var/edge = 0

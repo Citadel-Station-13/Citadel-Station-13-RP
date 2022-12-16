@@ -110,8 +110,11 @@
 #define OPENSPACE_PLANE       -75
 #define OPENSPACE_PLANE_START -73
 #define OPENSPACE_PLANE_END   -58
-#define OVER_OPENSPACE_PLANE  -57
+#warn remove these.
 
+// Openspace uses planes -80 through -69.
+
+#define OVER_OPENSPACE_PLANE -50
 
 /**
  *! -- Plating Plane
@@ -139,15 +142,16 @@
  */
 #define TURF_PLANE -45
 
-#define WATER_FLOOR_LAYER   (TURF_LAYER)      /// The 'bottom' of water tiles.
-#define BUILTIN_DECAL_LAYER (TURF_LAYER+0.01) /// For floors that automatically add decal overlays.
-#define MAPPER_DECAL_LAYER  (TURF_LAYER+0.02) /// For intentionally placed floor decal overlays.
-#define AO_LAYER            (TURF_LAYER+0.04) /// Ambient Occlusion layer.
-#define UNDERWATER_LAYER    (TURF_LAYER+0.5)  /// Anything on this layer will render under the water layer.
+#define WATER_FLOOR_LAYER      (TURF_LAYER)      /// The 'bottom' of water tiles.
+#define BUILTIN_DECAL_LAYER    (TURF_LAYER+0.01) /// For floors that automatically add decal overlays.
+#define MAPPER_DECAL_LAYER     (TURF_LAYER+0.02) /// For intentionally placed floor decal overlays.
+#define AO_LAYER               (TURF_LAYER+0.04) /// Ambient Occlusion layer.
+#define UNDERWATER_LAYER       (TURF_LAYER+0.5)  /// Anything on this layer will render under the water layer.
 //! Turf/Obj layer boundary
-#define WATER_LAYER         (OBJ_LAYER)       /// Layer for water overlays.
-#define ABOVE_TURF_LAYER    (OBJ_LAYER+0.1)   /// Snow and wallmounted/floormounted equipment.
+#define WATER_LAYER            (OBJ_LAYER)       /// Layer for water overlays.
+#define ABOVE_TURF_LAYER       (OBJ_LAYER+0.1)   /// Snow and wallmounted/floormounted equipment.
 
+#define MIMICED_LIGHTING_LAYER (TURF_LAYER+0.21) /// Z-Mimic-managed lighting
 
 /**
  *! -- Obj Plane

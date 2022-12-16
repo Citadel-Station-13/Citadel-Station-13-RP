@@ -752,15 +752,12 @@
 
 					//Move the mobs unless it's an AI eye or other eye type.
 					for(var/mob/M in T)
-						if(istype(M, /mob/observer/eye)) continue // If we need to check for more mobs, I'll add a variable
+						if(istype(M, /mob/observer/eye))
+							continue // If we need to check for more mobs, I'll add a variable
 						M.loc = X
 
 						if(z_level_change) // Same goes for mobs.
 							M.onTransitZ(T.z, X.z)
-
-						if(istype(M, /mob/living))
-							var/mob/living/LM = M
-							LM.check_shadow() // Need to check their Z-shadow, which is normally done in forceMove().
 
 					if(turftoleave)
 						T.ChangeTurf(turftoleave)

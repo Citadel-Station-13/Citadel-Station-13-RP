@@ -97,23 +97,24 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_MACHINES        10
 #define INIT_ORDER_SHUTTLES        3
 #define INIT_ORDER_DEFAULT         0
-#define INIT_ORDER_LIGHTING        0
 #define INIT_ORDER_AIR            -1
 #define INIT_ORDER_PLANETS        -2
+#define INIT_ORDER_PERSISTENCE    -3
 #define INIT_ORDER_ASSETS         -4
 #define INIT_ORDER_MISC_LATE      -5
 #define INIT_ORDER_HOLOMAPS       -5
-#define INIT_ORDER_NIGHTSHIFT     -6
+#define INIT_ORDER_NIGHTSHIFT     -5
+#define INIT_ORDER_ICON_SMOOTHING -6
 #define INIT_ORDER_OVERLAY        -7
-#define INIT_ORDER_EVENTS         -8
-#define INIT_ORDER_OVERMAPS       -9
-#define INIT_ORDER_TICKER         -10
-#define INIT_ORDER_XENOARCH       -20
-#define INIT_ORDER_CIRCUIT        -21
-#define INIT_ORDER_AI             -22
-#define INIT_ORDER_PERSISTENCE    -95
+#define INIT_ORDER_EVENTS         -10
+#define INIT_ORDER_OVERMAPS       -20
+#define INIT_ORDER_TICKER         -30
+#define INIT_ORDER_LIGHTING       -40
+#define INIT_ORDER_ZMIMIC         -45
+#define INIT_ORDER_XENOARCH       -50
+#define INIT_ORDER_CIRCUIT        -60
+#define INIT_ORDER_AI             -70
 #define INIT_ORDER_PATH           -98
-#define INIT_ORDER_ICON_SMOOTHING -99
 #define INIT_ORDER_OPENSPACE      -99
 #define INIT_ORDER_CHAT           -100  //! Should be last to ensure chat remains smooth during init.
 
@@ -131,6 +132,7 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_AI           10
 #define FIRE_PRIORITY_VIS          10
 #define FIRE_PRIORITY_SERVER_MAINT 10
+#define FIRE_PRIORITY_ZMIMIC       10
 #define FIRE_PRIORITY_GARBAGE      15
 #define FIRE_PRIORITY_ALARMS       20
 #define FIRE_PRIORITY_CHARSETUP    25
@@ -152,7 +154,7 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_OVERLAYS     500
 #define FIRE_PRIORITY_SMOOTHING    500
 #define FIRE_PRIORITY_TIMER        700
-#define FIRE_PRIORITY_INPUT        1000  //! Never drop input
+#define FIRE_PRIORITY_INPUT        1000  //! Never drop input.
 
 /**
  * Create a new timer and add it to the queue.

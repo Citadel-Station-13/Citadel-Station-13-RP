@@ -87,7 +87,7 @@
  *
  * Doesn't call parent, see [/atom/proc/Initialize]
  */
-/turf/Initialize(mapload)
+/turf/Initialize(mapload, ...)
 	SHOULD_CALL_PARENT(FALSE)
 	if(atom_flags & ATOM_INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
@@ -133,6 +133,9 @@
 	if (mapload && permit_ao)
 		queue_ao()
 
+	if (z_flags & ZM_MIMIC_BELOW)
+		setup_zmimic(mapload)
+
 	//Pathfinding related
 	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.
 		pathweight = movement_cost
@@ -168,6 +171,9 @@
 	if (ao_queued)
 		SSao.queue -= src
 		ao_queued = 0
+
+	if (bound_overlay)
+		QDEL_NULL(bound_overlay)
 
 	vis_contents.len = 0
 
