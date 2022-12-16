@@ -347,6 +347,60 @@ var/list/wrapped_species_by_ref = list()
 
 	update_hair() //Includes Virgo ears
 
+/mob/living/carbon/human/proc/shapeshifter_select_horn()
+	set name = "Select Secondary Ears"
+	set category = "Abilities"
+
+	if(stat || world.time < last_special)
+		return
+
+	last_special = world.time + 10
+	// Construct the list of names allowed for this user.
+	var/list/pretty_horn_styles = list("Normal" = null)
+	for(var/path in horn_styles_list)
+		var/datum/sprite_accessory/ears/instance = horn_styles_list[path]
+		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
+			pretty_horn_styles[instance.name] = path
+
+	// Present choice to user
+	var/new_horn_style = tgui_input_list(src, "Pick your second set of ears!", "Character Preference", pretty_horn_styles)
+	if(!new_horn_style)
+		return
+
+	//Set new style
+	horn_style = horn_styles_list[pretty_horn_styles[new_horn_style]]
+
+	//Allow color picks
+	var/current_pri_color = rgb(r_horn,g_horn,b_horn)
+
+	var/new_pri_color = input("Pick primary ear color:","Ear Color (Pri)", current_pri_color) as null|color
+	if(new_pri_color)
+		var/list/new_color_rgb_list = hex2rgb(new_pri_color)
+		r_horn = new_color_rgb_list[1]
+		g_horn = new_color_rgb_list[2]
+		b_horn = new_color_rgb_list[3]
+
+		//Indented inside positive primary color choice, don't bother if they clicked cancel
+		var/current_sec_color = rgb(r_horn2,g_horn2,b_horn2)
+
+		var/new_sec_color = input("Pick secondary ear color (only applies to some ears):","Ear Color (sec)", current_sec_color) as null|color
+		if(new_sec_color)
+			new_color_rgb_list = hex2rgb(new_sec_color)
+			r_horn2 = new_color_rgb_list[1]
+			g_horn2 = new_color_rgb_list[2]
+			b_horn2 = new_color_rgb_list[3]
+
+		var/current_ter_color = rgb(r_horn3,g_horn3,b_horn3)
+
+		var/new_ter_color = input("Pick tertiary ear color (only applies to some ears):","Ear Color (sec)", current_ter_color) as null|color
+		if(new_ter_color)
+			new_color_rgb_list = hex2rgb(new_sec_color)
+			r_horn3 = new_color_rgb_list[1]
+			g_horn3 = new_color_rgb_list[2]
+			b_horn3 = new_color_rgb_list[3]
+
+	update_hair() //Includes Virgo ears
+
 /mob/living/carbon/human/proc/shapeshifter_select_tail()
 	set name = "Select Tail"
 	set category = "Abilities"
