@@ -49,7 +49,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		if(null)
 			return
 		if(/turf/baseturf_bottom)
-			path = SSmapping.level_trait(z, ZTRAIT_BASETURF) || GLOB.using_map.base_turf_by_z["[z]"] || /turf/space
+			path = SSmapping.level_trait(z, ZTRAIT_BASETURF) || using_map_legacy.base_turf_by_z["[z]"] || /turf/space
 			if(!ispath(path))
 				path = text2path(path)
 				if (!ispath(path))

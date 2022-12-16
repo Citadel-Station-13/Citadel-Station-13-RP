@@ -25,8 +25,8 @@
 	. = ..()
 
 	default_apply_parts()
-	desc = "This machine is one of many, many nodes inside [GLOB.using_map.starsys_name]'s section of the Exonet, connecting the \
-	[GLOB.using_map.station_short] to the rest of the system, at least electronically."
+	desc = "This machine is one of many, many nodes inside [using_map_legacy.starsys_name]'s section of the Exonet, connecting the \
+	[using_map_legacy.station_short] to the rest of the system, at least electronically."
 	update_desc()
 
 // Proc: update_icon()

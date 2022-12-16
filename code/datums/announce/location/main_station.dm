@@ -9,4 +9,4 @@
 			. += z
 
 /datum/announce_location/render_proper_possessive_name()
-	return "The [GLOB.using_map.station_name]'s"
+	return "The [using_map_legacy.station_name]'s"

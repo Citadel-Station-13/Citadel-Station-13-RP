@@ -11,17 +11,17 @@
 /proc/is_on_same_plane_or_station(z1, z2)
 	if (z1 == z2)
 		return TRUE
-	if ((z1 in GLOB.using_map.station_levels) &&	(z2 in GLOB.using_map.station_levels))
+	if ((z1 in using_map_legacy.station_levels) &&	(z2 in using_map_legacy.station_levels))
 		return TRUE
 	return FALSE
 
 /proc/max_default_z_level()
 	var/max_z = 0
-	for(var/z in GLOB.using_map.station_levels)
+	for(var/z in using_map_legacy.station_levels)
 		max_z = max(z, max_z)
-	for(var/z in GLOB.using_map.admin_levels)
+	for(var/z in using_map_legacy.admin_levels)
 		max_z = max(z, max_z)
-	for(var/z in GLOB.using_map.player_levels)
+	for(var/z in using_map_legacy.player_levels)
 		max_z = max(z, max_z)
 	return max_z
 
@@ -94,16 +94,16 @@
 		processing += A.contents
 
 /proc/isStationLevel(level)
-	return level in GLOB.using_map.station_levels
+	return level in using_map_legacy.station_levels
 
 /proc/isNotStationLevel(level)
 	return !isStationLevel(level)
 
 /proc/isPlayerLevel(level)
-	return level in GLOB.using_map.player_levels
+	return level in using_map_legacy.player_levels
 
 /proc/isAdminLevel(level)
-	return level in GLOB.using_map.admin_levels
+	return level in using_map_legacy.admin_levels
 
 /proc/isNotAdminLevel(level)
 	return !isAdminLevel(level)

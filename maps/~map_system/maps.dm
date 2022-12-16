@@ -1,11 +1,4 @@
 /datum/map
-	var/name = "Unnamed Map"
-	var/full_name = "Unnamed Map"
-	var/path
-
-	// E-mail TLDs to use for NTnet modular computer e-mail addresses
-	var/list/usable_email_tlds = list("freemail.nt")
-
 	var/list/allowed_jobs = list()	// Job datums to use.
 									// Works a lot better so if we get to a point where three-ish maps are used
 									// We don't have to C&P ones that are only common between two of them
@@ -111,7 +104,7 @@
 
 // By default transition randomly to another zlevel
 /datum/map/proc/get_transit_zlevel(var/current_z_level)
-	var/list/candidates = GLOB.using_map.accessible_z_levels.Copy()
+	var/list/candidates = using_map_legacy.accessible_z_levels.Copy()
 	candidates.Remove(num2text(current_z_level))
 
 	if(!candidates.len)
@@ -238,6 +231,6 @@
 	stack_trace("Attempt to delete a map_z_level instance [log_info_line(src)]")
 	if(!force)
 		return QDEL_HINT_LETMELIVE // No.
-	if (GLOB.using_map.zlevels["[z]"] == src)
-		GLOB.using_map.zlevels -= "[z]"
+	if (using_map_legacy.zlevels["[z]"] == src)
+		using_map_legacy.zlevels -= "[z]"
 	return ..()

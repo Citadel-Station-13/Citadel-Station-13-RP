@@ -44,7 +44,7 @@
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread()
 		sparks.set_up(3, 0, D.loc)
 		sparks.start()
-		D.z = GLOB.using_map.admin_levels[1]
+		D.z = using_map_legacy.admin_levels[1]
 		D.loot_list = list()
 
 		qdel(D)

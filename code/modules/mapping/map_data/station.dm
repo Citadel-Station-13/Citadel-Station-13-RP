@@ -11,10 +11,8 @@
 	//? persistence
 	/// Persistence key: Defaults to ckey(map_name). If set to "NO_PERSIST", this map will have NO persistence.
 	var/persistence_key
-
-	#warn hoist this to base config see #warn's there
-	/// Extra map levels to load. Should be {"integral" = ["centcom", "lavaland"], "planet" = ["blah"]}, etc.
-	var/list/lateload
+	//? Full name
+	var/full_name
 
 	//? job data
 	// Job overrides - these process on job datum creation!
@@ -32,11 +30,25 @@
 	var/list/job_access_remove
 	/// Override job accesses - type = list() - overrides everything else
 	var/list/job_access_override
-	// Job overrides end
 	#warn impl job overrides
 
 	//? MISC / UNSORTED - ported from legacy; some of these should probably be rethought, some should be organized later.
+	//? networks
+	/// usable email tlds
+	var/list/usable_email_tlds = list("freemail.nt")
+	/// primary cameranets
+	var/list/station_networks = list()
+	/// cameranets that don't show up on regular monitors
+	var/list/secondary_networks = list()
 
+/**
+ * returns the current map config
+ * use on old things converted to the new system without reorganization for easy regexing
+ * e.g. direct access of station_name, etc.
+ */
+/proc/using_map_legacy()
+	RETURN_TYPE(/datum/map_data/station)
+	return SSmapping.map
 
 /datum/map_data/station/parse(list/data)
 	. = ..()

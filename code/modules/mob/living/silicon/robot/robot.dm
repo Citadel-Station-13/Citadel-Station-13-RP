@@ -1401,7 +1401,7 @@
 
 /mob/living/silicon/robot/onTransitZ(old_z, new_z)
 	if(shell)
-		if(deployed && GLOB.using_map.ai_shell_restricted && !(new_z in GLOB.using_map.ai_shell_allowed_levels))
+		if(deployed && using_map_legacy.ai_shell_restricted && !(new_z in using_map_legacy.ai_shell_allowed_levels))
 			to_chat(src,"<span class='warning'>Your connection with the shell is suddenly interrupted!</span>")
 			undeploy()
 	..()

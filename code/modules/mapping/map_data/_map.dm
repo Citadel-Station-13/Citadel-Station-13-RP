@@ -94,7 +94,7 @@
 			else if(istext(data))
 				data = safe_json_decode(data)
 		parse(data, path)
-	original_path = path
+	loaded_path = path
 
 /datum/map_data/Destroy(force)
 	if(instantiated && !force)
@@ -208,7 +208,7 @@
 			enable_jobs -= id
 			continue
 	//? module
-	VALIDATION(isnull(level_module_type) || ispath(level_module_type, /datum/level_module), "not null or correct path, instead [level_module_type]")
+	VALIDATION(isnull(map_module_type) || ispath(map_module_type, /datum/map_module), "not null or correct path, instead [map_module_type]")
 	//? levels
 	for(var/datum/space_level/level as anything in levels)
 		if(level_ids[level.id])

@@ -936,7 +936,7 @@
 	var/turf/uT = get_turf(user)
 	var/turf/dT = get_turf(destination)
 	var/list/dat = list()
-	dat["z_level_detection"] = GLOB.using_map.get_map_levels(uT.z, TRUE)
+	dat["z_level_detection"] = using_map_legacy.get_map_levels(uT.z, TRUE)
 
 	if(!uT || !dT)
 		return FALSE

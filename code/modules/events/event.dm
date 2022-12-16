@@ -41,7 +41,7 @@
 	return total_weight
 
 /datum/event_meta/no_overmap/get_weight()	// These events have overmap equivalents, and shouldn't fire randomly if overmap is used
-	return GLOB.using_map.use_overmap ? 0 : ..()
+	return using_map_legacy.use_overmap ? 0 : ..()
 
 // Event datums define and execute the actual events themselves.
 /datum/event			//NOTE: Times are measured in master controller ticks!
@@ -162,7 +162,7 @@
 	startedAt = world.time
 
 	if(!affecting_z)
-		affecting_z = GLOB.using_map.station_levels.Copy()
+		affecting_z = using_map_legacy.station_levels.Copy()
 
 	setup()
 	..()
