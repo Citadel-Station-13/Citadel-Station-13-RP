@@ -52,15 +52,15 @@ var/global/ingredientLimit = 20
 
 		ingredients += S
 
-		if(src.addTop)
-			overlays -= topping //thank you Comic
+		if(addTop)
+			cut_overlay(topping) //thank you Comic
 		if(!fullyCustom && !stackIngredients && overlays.len)
-			overlays -= filling //we can't directly modify the overlay, so we have to remove it and then add it again
+			cut_overlay(filling) //we can't directly modify the overlay, so we have to remove it and then add it again
 			var/newcolor = S.filling_color != "#FFFFFF" ? S.filling_color : AverageColor(get_flat_icon(S, S.dir, 0), 1, 1)
 			filling.color = BlendRGB(filling.color, newcolor, 1/ingredients.len)
-			overlays += filling
+			add_overlay(filling)
 		else
-			overlays += generateFilling(S)
+			add_overlay(generateFilling(S))
 		if(addTop)
 			drawTopping()
 
@@ -70,7 +70,7 @@ var/global/ingredientLimit = 20
 		. = ..()
 	return
 
-/obj/item/reagent_containers/food/snacks/customizable/proc/generateFilling(var/obj/item/reagent_containers/food/snacks/S, params)
+/obj/item/reagent_containers/food/snacks/customizable/proc/generateFilling(obj/item/reagent_containers/food/snacks/S, params)
 	var/image/I
 	if(fullyCustom)
 		var/icon/C = get_flat_icon(S, S.dir, 0)
@@ -82,11 +82,12 @@ var/global/ingredientLimit = 20
 			I.color = S.filling_color
 		else
 			I.color = AverageColor(get_flat_icon(S, S.dir, 0), 1, 1)
-		if(src.stackIngredients)
-			I.pixel_y = src.ingredients.len * 2
+		if(stackIngredients)
+			I.pixel_y = ingredients.len * 2
 		else
-			src.overlays.len = 0
-	if(src.fullyCustom || src.stackIngredients)
+			cut_overlays()
+
+	if(fullyCustom || stackIngredients)
 		var/clicked_x = text2num(params2list(params)["icon-x"])
 		if (isnull(clicked_x))
 			I.pixel_x = 0
@@ -127,7 +128,7 @@ var/global/ingredientLimit = 20
 /obj/item/reagent_containers/food/snacks/customizable/proc/drawTopping()
 	var/image/I = topping
 	I.pixel_y = (ingredients.len+1)*2
-	overlays += I
+	add_overlay(I)
 
 
 // Sandwiches //////////////////////////////////////////////////

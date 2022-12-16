@@ -11,9 +11,10 @@ var/image/mark = image('icons/Testing/Zone.dmi', icon_state = "mark")
 
 /turf/var/tmp/dbg_img
 /turf/proc/dbg(image/img, d = 0)
-	if(d > 0) img.dir = d
-	overlays -= dbg_img
-	overlays += img
+	if(d > 0)
+		img.dir = d
+	cut_overlay(dbg_img)
+	add_overlay(img)
 	dbg_img = img
 
 /proc/soft_assert(thing,fail)

@@ -124,9 +124,9 @@
 
 /obj/item/storage/fancy/crayons/update_icon()
 	var/mutable_appearance/ma = new(src)
-	ma.overlays = list()
+	ma.cut_overlays()
 	for(var/obj/item/pen/crayon/crayon in contents)
-		ma.overlays += image('icons/obj/crayons.dmi',crayon.colourName)
+		ma.add_overlay(image('icons/obj/crayons.dmi',crayon.colourName))
 	appearance = ma
 
 /obj/item/storage/fancy/crayons/attackby(obj/item/W as obj, mob/user as mob)
@@ -168,7 +168,7 @@
 	var/mutable_appearance/ma = new(src)
 	ma.overlays = list()
 	for(var/obj/item/pen/crayon/marker/marker in contents)
-		ma.overlays += image('icons/obj/crayons.dmi',"m"+marker.colourName)
+		ma.add_overlay(image('icons/obj/crayons.dmi',"m"+marker.colourName))
 	appearance = ma
 
 /obj/item/storage/fancy/markers/attackby(obj/item/W as obj, mob/user as mob)
@@ -207,7 +207,7 @@
 	var/mutable_appearance/ma = new(src)
 	ma.overlays = list()
 	for(var/obj/item/pen/crayon/chalk/chalk in contents)
-		ma.overlays += image('icons/obj/crayons.dmi',"c"+chalk.colourName)
+		ma.add_overlay(image('icons/obj/crayons.dmi',"c"+chalk.colourName))
 	appearance = ma
 
 /*
@@ -245,9 +245,9 @@
 
 /obj/item/storage/fancy/cigarettes/Initialize(mapload)
 	. = ..()
-	flags |= NOREACT
+	atom_flags |= NOREACT
 	create_reagents(15 * storage_slots)//so people can inject cigarettes without opening a packet, now with being able to inject the whole one
-	flags |= OPENCONTAINER
+	atom_flags |= OPENCONTAINER
 	if(brand)
 		for(var/obj/item/clothing/mask/smokable/cigarette/C in src)
 			C.brand = brand
@@ -359,7 +359,7 @@
 
 /obj/item/storage/fancy/cigar/Initialize(mapload)
 	. = ..()
-	flags |= NOREACT
+	atom_flags |= NOREACT
 	create_reagents(15 * storage_slots)
 
 /obj/item/storage/fancy/cigar/update_icon()
@@ -426,16 +426,22 @@
 	. = ..()
 	update_icon()
 
-/obj/item/storage/lockbox/vials/update_icon(var/itemremoved = 0)
+/obj/item/storage/lockbox/vials/update_icon(itemremoved = 0)
 	var/total_contents = contents.len - itemremoved
 	icon_state = "vialbox[total_contents]"
-	overlays.Cut()
+
+	cut_overlays()
+
+	var/list/overlays_to_add = list()
 	if (!broken)
-		overlays += image(icon, src, "led[locked]")
+		overlays_to_add += image(icon, src, "led[locked]")
 		if(locked)
-			overlays += image(icon, src, "cover")
+			overlays_to_add += image(icon, src, "cover")
 	else
-		overlays += image(icon, src, "ledb")
+		overlays_to_add += image(icon, src, "ledb")
+
+	add_overlay(overlays_to_add)
+
 	return
 
 /obj/item/storage/lockbox/vials/attackby(obj/item/W as obj, mob/user as mob)

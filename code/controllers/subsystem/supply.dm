@@ -168,7 +168,7 @@ SUBSYSTEM_DEF(supply)
 				continue
 			var/occupied = 0
 			for(var/atom/A in T.contents)
-				if((A.flags & ATOM_ABSTRACT))
+				if((A.atom_flags & ATOM_ABSTRACT))
 					continue
 				occupied = 1
 				break

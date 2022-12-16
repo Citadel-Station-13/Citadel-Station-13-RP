@@ -83,7 +83,7 @@
 	see_invisible = SEE_INVISIBLE_LEVEL_TWO
 
 	if(healths)
-		healths.overlays = null // This is specific to humans but the relevant code is here; shouldn't mess with other mobs.
+		healths.cut_overlays() // This is specific to humans but the relevant code is here; shouldn't mess with other mobs.
 		healths.icon_state = "health6"
 
 	timeofdeath = world.time

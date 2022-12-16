@@ -64,11 +64,11 @@
 	return ..()
 
 
-/obj/machinery/atmospherics/component/unary/vent_scrubber/update_icon(var/safety = 0)
+/obj/machinery/atmospherics/component/unary/vent_scrubber/update_icon(safety = 0)
 	if(!check_icon_cache())
 		return
 
-	overlays.Cut()
+	cut_overlays()
 
 	var/scrubber_icon = "scrubber"
 
@@ -83,7 +83,7 @@
 	else
 		scrubber_icon += "[use_power ? "[scrubbing ? "on" : "in"]" : "off"]"
 
-	overlays += icon_manager.get_atmos_icon("device", , , scrubber_icon)
+	add_overlay(icon_manager.get_atmos_icon("device", , , scrubber_icon))
 
 /obj/machinery/atmospherics/component/unary/vent_scrubber/update_underlays()
 	if(..())

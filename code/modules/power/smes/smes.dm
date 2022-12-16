@@ -105,23 +105,28 @@ GLOBAL_LIST_EMPTY(smeses)
 	return 0
 
 /obj/machinery/power/smes/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(machine_stat & BROKEN)
 		return
 
-	overlays += image('icons/obj/power.dmi', "smes-op[outputting]")
+	var/list/overlays_to_add = list()
+
+	overlays_to_add += image('icons/obj/power.dmi', "smes-op[outputting]")
 
 	if(inputting == 2)
-		overlays += image('icons/obj/power.dmi', "smes-oc2")
+		overlays_to_add += image('icons/obj/power.dmi', "smes-oc2")
 	else if (inputting == 1)
-		overlays += image('icons/obj/power.dmi', "smes-oc1")
+		overlays_to_add += image('icons/obj/power.dmi', "smes-oc1")
 	else
 		if(input_attempt)
-			overlays += image('icons/obj/power.dmi', "smes-oc0")
+			overlays_to_add += image('icons/obj/power.dmi', "smes-oc0")
 
 	var/clevel = chargedisplay()
 	if(clevel>0)
-		overlays += image('icons/obj/power.dmi', "smes-og[clevel]")
+		overlays_to_add += image('icons/obj/power.dmi', "smes-og[clevel]")
+
+	add_overlay(overlays_to_add)
+
 	return
 
 

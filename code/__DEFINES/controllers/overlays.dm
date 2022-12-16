@@ -18,5 +18,5 @@
 				AA.copy_overlays(A, TRUE);\
 			}\
 		}\
-		A.flags &= ~OVERLAY_QUEUED;\
+		A.atom_flags &= ~ATOM_OVERLAY_QUEUED;\
 	} while (FALSE)

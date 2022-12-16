@@ -20,7 +20,7 @@
 	var/forced_dirs = 0
 
 /turf/space/basic
-	flags = INITIALIZED
+	atom_flags = ATOM_INITIALIZED
 
 /turf/space/basic/New()	//Do not convert to Initialize
 	//This is used to optimize the map loader

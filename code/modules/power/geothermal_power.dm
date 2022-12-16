@@ -145,12 +145,14 @@
 	icon_state = "scan_module"
 	var/range = 5
 
-/obj/item/scanning_array_adv
+/obj/item/scanning_array/adv
 	name = "Advanced Scanning array"
 	desc = "An array of scanning modules, used by the Akureyri Geothermal Power Controller to locate collectors and establish a connection with them"
-	var/range = 11
+	icon_state = "scan_module_adv"
+	range = 11
 
-/obj/item/scanning_array_phasic
+/obj/item/scanning_array/phasic
 	name = "Phasic Scanning array"
 	desc = "An array of scanning modules, used by the Akureyri Geothermal Power Controller to locate collectors and establish a connection with them"
-	var/range = 17
+	icon_state = "scan_module_phasic"
+	range = 17

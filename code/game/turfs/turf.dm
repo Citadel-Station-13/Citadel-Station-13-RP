@@ -89,9 +89,9 @@
  */
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
-	if(flags & INITIALIZED)
+	if(atom_flags & ATOM_INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
-	flags |= INITIALIZED
+	atom_flags |= ATOM_INITIALIZED
 
 	// by default, vis_contents is inherited from the turf that was here before
 	vis_contents.len = 0
@@ -162,7 +162,7 @@
 	// SSair.remove_from_active(src)
 	// visibilityChanged()
 	// QDEL_LIST(blueprint_data)
-	flags &= ~INITIALIZED
+	atom_flags &= ~ATOM_INITIALIZED
 	// requires_activation = FALSE
 
 	if (ao_queued)
@@ -325,7 +325,7 @@
 	if(density)
 		return 1
 	for(var/atom/A in src)
-		if(A.density && !(A.flags & ON_BORDER))
+		if(A.density && !(A.atom_flags & ATOM_BORDER))
 			return 1
 	return 0
 
