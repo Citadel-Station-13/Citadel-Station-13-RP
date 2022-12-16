@@ -313,7 +313,6 @@
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
 	base_turf = /turf/space;
-	flags = 2;
 	landmark_tag = "tether_excursion_listeningpost";
 	name = "Near Asteroid (SE)"
 	},
