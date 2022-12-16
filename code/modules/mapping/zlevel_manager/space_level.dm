@@ -1,3 +1,5 @@
+#define VALIDATION(cond, msg) if(!(cond)) {errors += "validation failed on [id || "\[NO ID\]"] / [name || "\[NO NAME\]"]: [#cond] ; [msg]"; . = FALSE;}
+
 /**
  * Map level datums
  *
@@ -18,9 +20,13 @@
 	/// Are we physically made yet?
 	var/tmp/instantiated = FALSE
 	/// Errored - validation failed
-	var/tmp/errored
+	var/tmp/errored = TRUE
 	/// Absolute path we loaded from
 	var/tmp/loaded_path
+	/// loading errors
+	var/tmp/list/errors
+
+	// todo: lazy validation
 
 	//! Map File / Loading
 	/// Path to .dmm - this must be relative to the folder the .json was loaded from.
@@ -31,9 +37,9 @@
 	/// load orientation
 	var/orientation = SOUTH
 	/// load centered?
-	var/center = TRUE
+	var/center
 	/// load "void" tiles for blank areas when we're smaller than the world zlevel size as opposed to baseturf
-	var/fill_void = FALSE
+	var/fill_void
 	/// width - automatically set if omitted, but you should set it where possible for error checking.
 	var/width
 	/// height - automatically set if omitted, but you should set it where possible for error checking.
@@ -146,6 +152,12 @@
 	up = down = east = west = north = south = null
 	return ..()
 
+/datum/space_level/proc/parse_and_validate(list/data, pathroot)
+	errors = null
+	parse(data, pathroot)
+	validate()
+	cross_validate()
+
 /**
  * Builds data from a decoded JSON list
  *
@@ -159,14 +171,17 @@
 	ASSERT(islist(data))
 
 	//? basics
-	if(data["name"])
+	if(!isnull(data["name"]))
 		name = data["name"]
-	if(data["id"])
+	if(!isnull(data["id"]))
 		set_id(data["id"])
 		random_id = FALSE
+	// still not set? set to id.
+	if(!name)
+		name = id
 
 	//? files / loading
-	if(data["orientation"])
+	if(!isnull(data["orientation"]))
 		orientation = data["orientation"]
 		if(istext(orientation))
 			switch(lowertext(orientation))
@@ -178,40 +193,40 @@
 					orientation = EAST
 				if("west")
 					orientation = WEST
-	if(data["center"])
+	if(!isnull(data["center"]))
 		center = !!data["center"]
-	if(data["fill_void"])
+	if(!isnull(data["fill_void"]))
 		fill_void = !!data["fill_void"]
-	if(data["width"])
+	if(!isnull(data["width"]))
 		width = text2num(data["width"])
-	if(data["height"])
+	if(!isnull(data["height"]))
 		height = text2num(data["height"])
 
 	#warn path needs to support maps/ and config/ as well as relative.
 	if(data["path_absolute"])
 		map_path = data["path_absolute"]
-	else if(data["path"])
+	else if(!isnull(data["path"]))
 		map_path = pathroot + data["path"]
 
 
 	//? linkage info
-	if(data["transition"])
+	if(!isnull(data["transition"]))
 		transition_mode = data["transition"]
-	if(data["linkage"])
+	if(!isnull(data["linkage"]))
 		linkage_mode = data["linkage"]
 
 	//? linkage overrides
-	if(data["up"])
+	if(!isnull(data["up"]))
 		up = data["up"]
-	if(data["down"])
+	if(!isnull(data["down"]))
 		down = data["down"]
-	if(data["east"])
+	if(!isnull(data["east"]))
 		east = data["east"]
-	if(data["west"])
+	if(!isnull(data["west"]))
 		west = data["west"]
-	if(data["north"])
+	if(!isnull(data["north"]))
 		north = data["north"]
-	if(data["south"])
+	if(!isnull(data["south"]))
 		south = data["south"]
 
 	//? traits
@@ -225,74 +240,81 @@
 			set_attribute(attribute, data["attributes"])
 
 	//? baseturf
-	if(data["base_turf"])
+	if(!isnull(data["base_turf"]))
 		base_turf = text2path(data["base_turf"])
-	if(data["base_area"])
+	if(!isnull(data["base_area"]))
 		base_area = text2path(data["base_area"])
 
 	//? air
-	if(data["air_indoors"])
+	if(!isnull(data["air_indoors"]))
 		air_indoors = data["air_indoors"]
-	if(data["air_outdoors"])
+	if(!isnull(data["air_outdoors"]))
 		air_outdoors = data["air_outdoors"]
 
 	//? module
-	if(data["module"])
+	if(!isnull(data["module"]))
 		level_module_type = text2path(data["module"])
 
 /**
  * first validation pass, verifies all values are up to spec
  */
-/datum/space_level/proc/validate()
-	. = FALSE
+/datum/space_level/proc/validate(list/errors = list())
+	. = TRUE
 	//? basic
-	ASSERTION(istext(id), "instead [id]")
-	ASSERTION(map_path, "(was null)")
+	VALIDATION(istext(id) && length(id), "instead [id]")
+	VALIDATION(istext(name) && length(name), "instead [name]")
+	VALIDATION(istext(map_path) && length(map_path), "(was null)")
 	//? map
-	ASSERTION(orientation in GLOB.cardinal, "not cardinal instead [orientation]")
-	ASSERTION(center == TRUE || center == FALSE, "not bool instead [center]")
-	ASSERTION(fill_void == TRUE || fill_void == FALSE, "not bool instead [fill_void]")
-	ASSERTION(!width || isnum(width), "not num or null instead [width]")
-	ASSERTION(!height || isnum(height), "not num or null instead [height]")
+	VALIDATION(orientation in GLOB.cardinal, "not cardinal instead [orientation]")
+	VALIDATION(center == TRUE || center == FALSE, "not bool instead [center]")
+	VALIDATION(fill_void == TRUE || fill_void == FALSE, "not bool instead [fill_void]")
+	VALIDATION(isnull(width) || isnum(width), "not num or null instead [width]")
+	VALIDATION(isnull(height) || isnum(height), "not num or null instead [height]")
 	#warn map path
 	//? linkage - ids
-	ASSERTION(!up || istext(up), "not text or null instead [up]")
-	ASSERTION(!down || istext(down), "not text or null instead [down]")
-	ASSERTION(!east || istext(east), "not text or null instead [east]")
-	ASSERTION(!west || istext(west), "not text or null instead [west]")
-	ASSERTION(!north || istext(north), "not text or null instead [north]")
-	ASSERTION(!south || istext(south), "not text or null instead [south]")
+	VALIDATION(isnull(up) || (istext(up) && length(up)), "not text or null instead [up]")
+	VALIDATION(isnull(down) || (istext(down) && length(up)), "not text or null instead [down]")
+	VALIDATION(isnull(east) || (istext(east) && length(up)), "not text or null instead [east]")
+	VALIDATION(isnull(west) || (istext(west) && length(up)), "not text or null instead [west]")
+	VALIDATION(isnull(north) || (istext(north) && length(up)), "not text or null instead [north]")
+	VALIDATION(isnull(south) || (istext(south) && length(up)), "not text or null instead [south]")
 	//? linkage - mode
-	ASSERTION(linkage_mode in list(
+	VALIDATION(linkage_mode in list(
 		Z_LINKAGE_NORMAL,
 		Z_LINKAGE_CROSSLINKED,
 		Z_LINKAGE_SELFLOOP,
 	), "was [linkage_mode]")
-	ASSERTION(transition_mode in list(
+	VALIDATION(transition_mode in list(
 		Z_TRANSITION_FORCED,
 		Z_TRANSITION_DISABLED,
 		Z_TRANSITION_DEFAULT,
 		Z_TRANSITION_INVISIBLE,
 	), "was [transition_mode]")
 	//? baseturfs
-	ASSERTION(!base_turf || ispath(base_turf, /turf), "instead [base_turf]")
-	ASSERTION(!base_area || ispath(base_area, /area), "instead [base_area]")
+	VALIDATION(isnull(base_turf) || ispath(base_turf, /turf), "instead [base_turf]")
+	VALIDATION(isnull(base_area) || ispath(base_area, /area), "instead [base_area]")
 	//? air
 	#warn air
 	//? module
-	ASSERTION(!level_module_type || ispath(level_module_type, /datum/level_module), "not null or correct path, instead [level_module_type]")
-	return TRUE
+	VALIDATION(isnull(level_module_type) || ispath(level_module_type, /datum/level_module), "not null or correct path, instead [level_module_type]")
+	LAZYOR(src.errors, errors)
 
 /**
  * validation called with context for cross-validation
  *
  * @params
+ * - errors - error list
  * - map_data - (optional) map data we're loading in from
  * - level_by_id - (optional) id-associative list of relevant other levels
  */
-/datum/space_level/proc/cross_validate(datum/map_data/map, list/level_by_id)
+/datum/space_level/proc/cross_validate(list/errors = list(), datum/map_data/map, list/level_by_id)
+	. = TRUE
+
 	#warn width/height matches
 	#warn didn't override linkage ids when in struct
+	#warn inherit air, center, orientation, fill void if null
+
+	LAZYOR(src.errors, errors)
 
 /**
  * Called after the level is physically created.
@@ -304,6 +326,7 @@
 /datum/space_level/proc/post_load(z_index, maploaded)
 	if(isnull(name))
 		name = "Unknown Level [z_index]"
+	#warn trigger level
 
 /**
  * Gets DMM path
@@ -618,3 +641,5 @@
 				return istype(down, /datum/space_level)? down : SSmapping.level_by_id[down]
 			else
 				CRASH("Invalid dir: [dir]")
+
+#undef VALIDATION

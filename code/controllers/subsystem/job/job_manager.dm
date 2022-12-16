@@ -1,6 +1,14 @@
 // todo: refactor _job.dm
 /datum/controller/subsystem/job
 
+/**
+ * fetches a job by ID or typepath
+ */
+/datum/controller/subsystem/job/proc/fetch_job(datum/job/id_or_path)
+	if(ispath(id_or_path))
+		id_or_path = initial(id_or_path.id)
+	return job_lookup[id]
+
 /datum/controller/subsystem/job/proc/job_by_id(id)
 	RETURN_TYPE(/datum/job)
 	return job_lookup[id]

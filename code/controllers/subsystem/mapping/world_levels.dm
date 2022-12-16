@@ -29,7 +29,7 @@
 			qdel(config)
 			level_datums -= id
 	level_datums = list()
-	var/list/json_paths = directory_walk_exts(list("maps/space_levels", "config/space_levels"), list("json"))
+	var/list/json_paths = directory_walk_exts(list("maps/levels", "config/maps/levels"), list("json"))
 	for(var/path in json_paths)
 		var/datum/map_data/level/map = new(file(path), path)
 		if(map.errored)

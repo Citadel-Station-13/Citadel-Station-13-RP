@@ -27,7 +27,7 @@
 		qdel(config)
 		map_datums -= id
 	map_datums = list()
-	var/list/json_paths = directory_walk_exts(list("maps/map_files", "config/map_files"), list("json"))
+	var/list/json_paths = directory_walk_exts(list("maps/worlds", "config/maps/worlds"), list("json"))
 	for(var/path in json_paths)
 		var/datum/map_data/station/map = new(file(path), path)
 		if(map.errored)
