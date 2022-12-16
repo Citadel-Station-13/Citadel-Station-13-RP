@@ -7,12 +7,10 @@
 /datum/map_data/station
 	//? map type
 	/// This should be used to adjust ingame behavior depending on the specific type of map being played. For instance, if an overmap were added, it'd be appropriate for it to only generate with a MAP_TYPE_SHIP
-	var/maptype = MAP_TYPE_STATION
+	var/maptype
 	//? persistence
 	/// Persistence key: Defaults to ckey(map_name). If set to "NO_PERSIST", this map will have NO persistence.
 	var/persistence_key
-	//? Full name
-	var/full_name
 
 	//? job data
 	// Job overrides - these process on job datum creation!
@@ -35,14 +33,16 @@
 	//? MISC / UNSORTED - ported from legacy; some of these should probably be rethought, some should be organized later.
 	//? networks
 	/// usable email tlds
-	var/list/usable_email_tlds = list("freemail.nt")
+	var/list/usable_email_tlds
 	/// primary cameranets
-	var/list/station_networks = list()
+	var/list/station_networks
 	/// cameranets that don't show up on regular monitors
-	var/list/secondary_networks = list()
+	var/list/secondary_networks
 	//? silicons
-	var/default_law_type = /datum/ai_laws/nanotrasen	// The default lawset use by synth units, if not overriden by their laws var.
+	/// The default lawset use by synth units, if not overriden by their laws var.
+	var/default_law_type
 	//? holomaps
+	#warn impl + parse
 	//? bots
 	var/bot_patrolling = TRUE				// Determines if this map supports automated bot patrols
 	//? overmaps
@@ -84,14 +84,11 @@
 
 /datum/map_data/station/parse(list/data)
 	. = ..()
-	// map type
-	if(data["maptype"])
-		maptype = data["maptype"]
-	// persistence
-	if("persistence_key" in data)
-		persistence_key = data["persistence_key"] || id
-
-	// job data
+	//? map type
+	maptype = data["maptype"]
+	//? persistence
+	persistence_key = data["persistence_key"]
+	//? job data
 	job_whitelist = data["job_whitelist"]
 	job_blacklist = data["job_blacklist"]
 	job_override_spawn_positions = data["job_override_spawn_positions"]
@@ -99,20 +96,38 @@
 	job_access_add = data["job_access_add"]
 	job_access_remove = data["job_access_remove"]
 	job_access_override = data["job_access_override"]
-	if("allow_custom_shuttles" in data)
-		allow_custom_shuttles = data["allow_custom_shuttles"]? TRUE : FALSE
-	if("announcertype" in data)
-		announcertype = data["announcertype"]
-	if("space_ruin_levels" in data)
-		space_ruin_levels = data["space_ruin_levels"]
-	if("space_empty_levels" in data)
-		space_empty_levels = data["space_empty_levels"]
-	if("station_ruin_budget" in data && data["station_ruin_budget"] != -1)
-		station_ruin_budget = data["station_ruin_budget"]
-	if("shutles" in data)
-		shuttles = data["shuttles"]
-	if("lateload" in data)
-		lateload = data["lateload"]
+	//? legacy shit
+	var/list/legacy = data["legacy"]
+	usable_email_tlds = legacy["usable_email_tlds"] || list("freemail.nt")
+	station_networks = legacy["station_networks"] || list()
+	secondary_networks = legacy["secondary_networks"] || list()
+	default_law_type = text2path(legacy["default_law_type"])
+	if(!ispath(default_law_type, /datum/ai_laws))
+		default_law_type = /datum/ai_laws/nanotrasen
+	bot_patrolling = isnull(legacy["bot_patrolling"])? TRUE : legacy["bot_patrolling"]
+	use_overmap = isnull(legacy["use_overmap"])? TRUE: legacy["use_overmap"]
+	overmap_size = data["overmap_size"] || 20
+	overmap_z = data["overmap_z"] || 0
+	overmap_event_areas = data["overmap_event_areas"] || 0
+	station_name = data["station_name"] || "ERR - NO STATION NAME"
+	station_short = data["station_short"] || "ERR - NO STAITON SHORT"
+	dock_name = data["dock_name"] || "ERR - NO DOCK NAME"
+	dock_type = data["dock_type"] || "ERR - NO DOCK TYPE"
+	boss_name
+
+/datum/map_data/station/validate(list/errors, list/level_ids)
+	. = ..()
+	//? map type
+	VALIDATION(maptype in list(
+		MAP_TYPE_MINIMAL,
+		MAP_TYPE_PLANET,
+		MAP_TYPE_SHIP,
+		MAP_TYPE_STATION
+	), "invalid maptype: [maptype]")
+	//? persistence
+	VALIDATION(isnull(persistence_key) || (istext(persistence_key) && length(persistence_key)), "invalid persistence key - must be null or text")
+	//? jobs
+	// todo
 
 #undef VALIDATION
 
