@@ -357,8 +357,8 @@ var/list/wrapped_species_by_ref = list()
 	last_special = world.time + 10
 	// Construct the list of names allowed for this user.
 	var/list/pretty_horn_styles = list("Normal" = null)
-	for(var/path in horn_styles_list)
-		var/datum/sprite_accessory/ears/instance = horn_styles_list[path]
+	for(var/path in ear_styles_list)
+		var/datum/sprite_accessory/ears/instance = ear_styles_list[path]
 		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
 			pretty_horn_styles[instance.name] = path
 
@@ -368,7 +368,7 @@ var/list/wrapped_species_by_ref = list()
 		return
 
 	//Set new style
-	horn_style = horn_styles_list[pretty_horn_styles[new_horn_style]]
+	horn_style = ear_styles_list[pretty_horn_styles[new_horn_style]]
 
 	//Allow color picks
 	var/current_pri_color = rgb(r_horn,g_horn,b_horn)
