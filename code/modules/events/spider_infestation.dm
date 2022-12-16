@@ -15,7 +15,7 @@
 
 
 /datum/event/spider_infestation/start()
-	vents = ventcrawl_station_vents()
+	var/list/vents = ventcrawl_station_vents()
 	while((spawncount >= 1) && vents.len)
 		var/obj/vent = pick(vents)
 		new /obj/effect/spider/spiderling/virgo(vent.loc)

@@ -11,12 +11,12 @@
 
 	spawncount = rand(2 * severity, 6 * severity)
 
-	for(var/obj/machinery/atmospherics/component/unary/vent_pump/temp_vent in GLOB.machines)
+	for(var/obj/machinery/atmospherics/component/unary/vent_pump/temp_vent as anything in station_ventcrawl_vents())
 		if(istype(get_area(temp_vent), /area/crew_quarters/sleep))
 			continue
-		if(!temp_vent.welded && temp_vent.network && (temp_vent.loc.z in using_map_legacy().station_levels))
-			if(temp_vent.network.normal_members.len > 50)
-				vents += temp_vent
+		if(temp_vent.network.normal_members.len < 50)
+			continue
+		vents += temp_vent
 
 /datum/event/grub_infestation/announce()
 	command_announcement.Announce("Solargrubs detected coming aboard [station_name()]. Please clear them out before this starts to affect productivity. All crew efforts are appreciated and encouraged.", "Lifesign Alert", new_sound = 'sound/AI/aliens.ogg')

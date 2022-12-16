@@ -30,7 +30,7 @@ var/datum/antagonist/xenos/xenomorphs
 	if(config_legacy.aliens_allowed) ..()
 
 /datum/antagonist/xenos/proc/get_vents()
-	vents = ventcrawl_station_vents()	return vents
+	var/list/vents = ventcrawl_station_vents()	return vents
 
 /datum/antagonist/xenos/create_objectives(var/datum/mind/player)
 	if(!..())

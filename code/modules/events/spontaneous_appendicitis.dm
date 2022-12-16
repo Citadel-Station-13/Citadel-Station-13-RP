@@ -3,7 +3,8 @@
 		var/area/A = get_area(H)
 		if(!A)
 			continue
-		if(!(A.z in using_map_legacy().station_levels))
+		var/turf/T = get_turf(H)
+		if(!SSmapping.level_trait(T.z, ZTRAIT_STATION))
 			continue
 		if(A.area_flags & AREA_RAD_SHIELDED)
 			continue

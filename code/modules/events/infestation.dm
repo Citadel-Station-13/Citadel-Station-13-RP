@@ -107,7 +107,7 @@
 	for(var/areapath in typesof(spawn_area_type))
 		var/area/A = locate(areapath)
 		for(var/obj/machinery/atmospherics/component/unary/vent_pump/temp_vent in A.contents)
-			if(!temp_vent.welded && temp_vent.network && (temp_vent.loc.z in using_map_legacy().station_levels))
+			if(!temp_vent.welded && temp_vent.network && SSmapping.level_trait(temp_vent.z, ZTRAIT_STATION))
 				vents += temp_vent
 
 	spawn(0)

@@ -39,3 +39,5 @@
 #define ZTRAIT_MINIMAP "minimap"
 /// level is reserved space
 #define ZTRAIT_RESERVED "reserved"
+/// level is admin space, don't let people fuck around with it
+#define ZTRAIT_ADMIN "admin"
