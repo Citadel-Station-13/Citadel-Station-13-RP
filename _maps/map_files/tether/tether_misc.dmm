@@ -6509,9 +6509,6 @@
 /turf/simulated/floor/tiled/white,
 /area/centcom/simulated/medical)
 "Zd" = (
-/obj/machinery/computer/transhuman/designer{
-	dir = 8
-	},
 /obj/effect/floor_decal/borderfloorwhite{
 	dir = 4
 	},

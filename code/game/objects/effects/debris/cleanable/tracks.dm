@@ -127,7 +127,7 @@ var/global/list/image/fluidtrack_cache=list()
 		update_icon()
 
 /obj/effect/debris/cleanable/blood/tracks/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	color = "#FFFFFF"
 	var/truedir=0
 
@@ -148,7 +148,7 @@ var/global/list/image/fluidtrack_cache=list()
 		track.fresh=0
 		track.overlay=I
 		stack[stack_idx]=track
-		overlays += I
+		add_overlay(I)
 	updatedtracks=0 // Clear our memory of updated tracks.
 
 /obj/effect/debris/cleanable/blood/tracks/footprints

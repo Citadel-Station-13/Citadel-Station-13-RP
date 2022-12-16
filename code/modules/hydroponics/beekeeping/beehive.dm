@@ -13,22 +13,25 @@
 	var/maxFrames = 5
 
 /obj/machinery/beehive/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	icon_state = "beehive"
 	if(closed)
-		overlays += "lid"
+		overlays_to_add += "lid"
 	if(frames)
-		overlays += "empty[frames]"
+		overlays_to_add += "empty[frames]"
 	if(honeycombs >= 100)
-		overlays += "full[round(honeycombs / 100)]"
+		overlays_to_add += "full[round(honeycombs / 100)]"
 	if(!smoked)
 		switch(bee_count)
 			if(1 to 40)
-				overlays += "bees1"
+				overlays_to_add += "bees1"
 			if(41 to 80)
-				overlays += "bees2"
+				overlays_to_add += "bees2"
 			if(81 to 100)
-				overlays += "bees3"
+				overlays_to_add += "bees3"
+
+	add_overlay(overlays_to_add)
 
 /obj/machinery/beehive/examine(mob/user)
 	. = ..()

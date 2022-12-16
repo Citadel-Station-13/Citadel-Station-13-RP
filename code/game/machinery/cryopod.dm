@@ -715,12 +715,12 @@
 		G.update_icon()
 
 /obj/machinery/cryopod/robot/door/gateway/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(occupant)
 		var/image/I = image(icon, src, "[base_icon_state]_active_overlay")
 		I.plane = ABOVE_LIGHTING_PLANE
 		I.layer = ABOVE_LIGHTING_LAYER
-		overlays += I
+		add_overlay(I)
 		set_light(0.4, 1.2, 4, 10)
 	else
 		set_light(0)
@@ -728,7 +728,7 @@
 			var/image/I = image(icon, src, "[base_icon_state]_idle_overlay")
 			I.plane = ABOVE_LIGHTING_PLANE
 			I.layer = ABOVE_LIGHTING_LAYER
-			overlays += I
+			add_overlay(I)
 
 /obj/machinery/computer/cryopod/gateway
 	name = "teleport oversight console"

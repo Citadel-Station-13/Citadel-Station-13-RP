@@ -1,3 +1,5 @@
+// TODO: ZCOPY / ZMIMIC @Zandario
+
 SUBSYSTEM_DEF(openspace)
 	name = "Open Space"
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_LOBBY | RUNLEVEL_POSTGAME
@@ -36,6 +38,7 @@ SUBSYSTEM_DEF(openspace)
 
 // Do the initial updates of open space turfs when the game starts. This will lag!
 /datum/controller/subsystem/openspace/proc/initialize_open_space()
+	set waitfor = FALSE
 	// Do initial setup from bottom to top.
 	for(var/zlevel = 1 to world.maxz)
 		for(var/turf/simulated/open/T in block(locate(1, 1, zlevel), locate(world.maxx, world.maxy, zlevel)))

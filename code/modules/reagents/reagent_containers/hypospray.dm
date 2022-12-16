@@ -12,7 +12,7 @@
 	unacidable = 1
 	volume = 30
 	possible_transfer_amounts = null
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	slot_flags = SLOT_BELT
 	drop_sound = 'sound/items/drop/gun.ogg'
 	pickup_sound = 'sound/items/pickup/gun.ogg'
@@ -121,7 +121,7 @@
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return
 			if(W.is_open_container())
-				W.flags ^= OPENCONTAINER
+				W.atom_flags ^= OPENCONTAINER
 				W.update_icon()
 			loaded_vial = W
 			reagents.maximum_volume = loaded_vial.reagents.maximum_volume
@@ -156,13 +156,13 @@
 
 /obj/item/reagent_containers/hypospray/autoinjector/used/Initialize(mapload)
 	. = ..()
-	flags &= ~OPENCONTAINER
+	atom_flags &= ~OPENCONTAINER
 	icon_state = "[initial(icon_state)]0"
 
 /obj/item/reagent_containers/hypospray/autoinjector/do_injection(mob/living/carbon/human/H, mob/living/user)
 	. = ..()
 	if(.) // Will occur if successfully injected.
-		flags &= ~OPENCONTAINER
+		atom_flags &= ~OPENCONTAINER
 		update_icon()
 
 /obj/item/reagent_containers/hypospray/autoinjector/update_icon()
@@ -375,7 +375,7 @@
 	amount_per_transfer_from_this = 20
 	volume = 20
 	filled = 1
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	origin_tech = list(TECH_BIO = 4, TECH_ILLEGAL = 3)
 	filled_reagents = list("impedrezene" = 15, "toxin" = 5)
 	preserve_item = 0
@@ -390,7 +390,7 @@
 
 /obj/item/reagent_containers/hypospray/glukoz/used/Initialize(mapload)
 	. = ..()
-	flags &= ~OPENCONTAINER
+	atom_flags &= ~OPENCONTAINER
 
 	icon_state = "[initial(icon_state)]_used"
 
@@ -418,7 +418,7 @@
 /obj/item/reagent_containers/hypospray/glukoz/do_injection(mob/living/carbon/human/H, mob/living/user)
 	. = ..()
 	if(.) // Will occur if successfully injected.
-		flags &= ~OPENCONTAINER
+		atom_flags &= ~OPENCONTAINER
 		to_chat(user, "<span class='notice'>You jab the [src] needle into your skin!</span>")
 		icon_state = "[initial(icon_state)]_used"
 		filled = 0

@@ -167,12 +167,12 @@
 	else
 		return ..()
 
-/obj/item/duct_tape_piece/proc/attach(var/obj/item/W)
+/obj/item/duct_tape_piece/proc/attach(obj/item/W)
 	stuck = W
 	W.forceMove(src)
 	icon_state = W.icon_state + "_taped"
 	name = W.name + " (taped)"
-	overlays = W.overlays
+	copy_overlays(W)
 
 /obj/item/duct_tape_piece/attack_self(mob/user)
 	if(!stuck)
@@ -183,7 +183,7 @@
 	if(!user.put_in_hands(stuck))
 		stuck.forceMove(user.drop_location())
 	stuck = null
-	overlays = null
+	cut_overlays()
 	qdel(src)
 
 /obj/item/duct_tape_piece/attackby(var/obj/item/I, var/mob/user)

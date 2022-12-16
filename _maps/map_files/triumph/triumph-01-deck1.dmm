@@ -13830,10 +13830,6 @@
 /obj/item/circuitboard/resleeving_control{
 	pixel_y = 1
 	},
-/obj/item/circuitboard/body_designer{
-	pixel_x = 1;
-	pixel_y = -1
-	},
 /obj/item/circuitboard/med_data{
 	pixel_x = 5;
 	pixel_y = -3

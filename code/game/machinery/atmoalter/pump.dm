@@ -29,7 +29,8 @@
 	src.air_contents.adjust_multi(/datum/gas/oxygen, air_mix[/datum/gas/oxygen], /datum/gas/nitrogen, air_mix[/datum/gas/nitrogen])
 
 /obj/machinery/portable_atmospherics/powered/pump/update_icon()
-	src.overlays = 0
+	cut_overlays()
+	var/list/overlays_to_add = list()
 
 	if(on && cell && cell.charge)
 		icon_state = "psiphon:1"
@@ -37,11 +38,11 @@
 		icon_state = "psiphon:0"
 
 	if(holding)
-		overlays += "siphon-open"
+		overlays_to_add += "siphon-open"
 
 	if(connected_port)
-		overlays += "siphon-connector"
-
+		overlays_to_add += "siphon-connector"
+	add_overlay(overlays_to_add)
 	return
 
 /obj/machinery/portable_atmospherics/powered/pump/emp_act(severity)
@@ -219,7 +220,7 @@
 	to_chat(user, "<span class='notice'>You can't directly interact with this machine. Use the pump control console.</span>")
 
 /obj/machinery/portable_atmospherics/powered/pump/huge/update_icon()
-	overlays.Cut()
+	cut_overlays()
 
 	if(on && !(machine_stat & (NOPOWER|BROKEN)))
 		icon_state = "siphon:1"

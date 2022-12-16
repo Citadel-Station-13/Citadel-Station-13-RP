@@ -5,7 +5,7 @@
 	icon_state = "rock-dark"
 	density = 1
 
-	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_MINERAL_WALLS)
+	smoothing_groups = (SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS)
 
 /turf/simulated/mineral //wall piece
 	name = "rock"
@@ -20,8 +20,8 @@
 	has_resources = 1
 
 	// smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
-	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_MINERAL_WALLS)
-	canSmoothWith = list(SMOOTH_GROUP_MINERAL_WALLS)
+	smoothing_groups = (SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS)
+	canSmoothWith = (SMOOTH_GROUP_MINERAL_WALLS)
 
 	var/sand_icon = 'icons/turf/flooring/asteroid.dmi'
 	var/rock_side_icon_state = "rock_side"
@@ -192,7 +192,7 @@
 		if(density)
 			MineralSpread()
 		else
-			UpdateMineral()	// this'll work because we're INITIALIZED
+			UpdateMineral()	// this'll work because we're initialized
 
 /* custom smoothing code */
 /turf/simulated/mineral/find_type_in_direction(direction)
@@ -343,7 +343,7 @@ GLOBAL_LIST_EMPTY(mining_overlay_cache)
 					target_turf.MineralSpread()
 
 /turf/simulated/mineral/proc/UpdateMineral(update_neighbors)
-	if(!(flags & INITIALIZED))
+	if(!(atom_flags & ATOM_INITIALIZED))
 		return	// /Initialize() will handle us
 	clear_ore_effects()
 	if(mineral && density)

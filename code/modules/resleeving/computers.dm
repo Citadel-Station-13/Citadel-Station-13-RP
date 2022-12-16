@@ -78,15 +78,15 @@
 			return
 		disk = W
 		to_chat(user, "<span class='notice'>You insert \the [W] into \the [src].</span>")
-	if(istype(W, /obj/item/disk/body_record))
-		var/obj/item/disk/body_record/brDisk = W
-		if(!brDisk.stored)
-			to_chat(user, "<span class='warning'>\The [W] does not contain a stored body record.</span>")
-			return
-		active_br = new /datum/transhuman/body_record(brDisk.stored) // Loads a COPY!
-		menu = 4
-		to_chat(user, "<span class='notice'>\The [src] loads the body record from \the [W] before ejecting it.</span>")
-		attack_hand(user)
+	// if(istype(W, /obj/item/disk/body_record))
+	// 	var/obj/item/disk/body_record/brDisk = W
+	// 	if(!brDisk.stored)
+	// 		to_chat(user, "<span class='warning'>\The [W] does not contain a stored body record.</span>")
+	// 		return
+	// 	active_br = new /datum/transhuman/body_record(brDisk.stored) // Loads a COPY!
+	// 	menu = 4
+	// 	to_chat(user, "<span class='notice'>\The [src] loads the body record from \the [W] before ejecting it.</span>")
+	// 	attack_hand(user)
 	if(istype(W, /obj/item/implant/mirror))
 		if(!user.attempt_insert_item_for_installation(W, src))
 			return

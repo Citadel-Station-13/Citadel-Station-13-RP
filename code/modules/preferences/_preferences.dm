@@ -79,7 +79,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// PDA type.
 	var/pdachoice = 1
 	/// Hair type.
-	var/h_style = "Bald"
+	var/h_style_id
 	/// Hair color.
 	var/r_hair = 0
 	/// Hair color.
@@ -97,7 +97,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// Gradient style.
 	var/grad_wingstyle = "None"
 	/// Face hair type.
-	var/f_style = "Shaved"
+	var/f_style_id
 	/// Face hair color.
 	var/r_facial = 0
 	/// Face hair color.
@@ -181,7 +181,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// Set to 1 when altering limb states. fix for prosthetic > normal changes not working on preview.
 	var/regen_limbs = 0
 
-	var/list/body_markings = list() //? "name" = "#rgbcolor"
+	var/list/body_marking_ids = list() //? "id" = "#rgbcolor"
 
 	var/list/flavor_texts = list()
 	var/list/flavour_texts_robot = list()
@@ -263,6 +263,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	client?.update_movement_keys(src)
+	LAZYINITLIST(character)
+	LAZYINITLIST(options)
+	LAZYINITLIST(skin)
 	initialized = TRUE
 
 /datum/preferences/proc/block_until_initialized()

@@ -80,11 +80,13 @@
 
 /obj/vehicle_old/train/engine/quadbike/update_icon()
 	..()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
+
 	if(custom_frame)
 		var/image/Bodypaint = new(icon = 'icons/obj/custom_items_vehicle.dmi', icon_state = "[frame_state]_a", layer = src.layer)
 		Bodypaint.color = paint_color
-		overlays += Bodypaint
+		overlays_to_add += Bodypaint
 
 		var/image/Overmob = new(icon = 'icons/obj/custom_items_vehicle.dmi', icon_state = "[frame_state]_overlay", layer = src.layer + 0.2) //over mobs
 		var/image/Overmob_color = new(icon = 'icons/obj/custom_items_vehicle.dmi', icon_state = "[frame_state]_overlay_a", layer = src.layer + 0.2) //over the over mobs, gives the color.
@@ -92,13 +94,14 @@
 		Overmob_color.plane = MOB_PLANE
 		Overmob_color.color = paint_color
 
-		overlays += Overmob
-		overlays += Overmob_color
+		overlays_to_add += Overmob
+		overlays_to_add += Overmob_color
+		add_overlay(overlays_to_add)
 		return
 
 	var/image/Bodypaint = new(icon = 'icons/obj/vehicles_64x64.dmi', icon_state = "[frame_state]_a", layer = src.layer)
 	Bodypaint.color = paint_color
-	overlays += Bodypaint
+	overlays_to_add += Bodypaint
 
 	var/image/Overmob = new(icon = 'icons/obj/vehicles_64x64.dmi', icon_state = "[frame_state]_overlay", layer = src.layer + 0.2) //over mobs
 	var/image/Overmob_color = new(icon = 'icons/obj/vehicles_64x64.dmi', icon_state = "[frame_state]_overlay_a", layer = src.layer + 0.2) //over the over mobs, gives the color.
@@ -106,8 +109,10 @@
 	Overmob_color.plane = MOB_PLANE
 	Overmob_color.color = paint_color
 
-	overlays += Overmob
-	overlays += Overmob_color
+	overlays_to_add += Overmob
+	overlays_to_add += Overmob_color
+
+	add_overlay(overlays_to_add)
 
 /obj/vehicle_old/train/engine/quadbike/Bump(atom/Obstacle)
 	if(!istype(Obstacle, /atom/movable))
@@ -239,11 +244,11 @@
 
 /obj/vehicle_old/train/trolley/trailer/update_icon()
 	..()
-	overlays.Cut()
+	cut_overlay()
 
 	var/image/Bodypaint = new(icon = 'icons/obj/vehicles_64x64.dmi', icon_state = "[initial(icon_state)]_a", layer = src.layer)
 	Bodypaint.color = paint_color
-	overlays += Bodypaint
+	add_overlay(Bodypaint)
 
 /obj/vehicle_old/train/trolley/trailer/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/multitool) && open)

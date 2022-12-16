@@ -83,8 +83,15 @@
 	. = ..()
 	controller = new(src)
 	update_nearby_tiles()
+	SSshuttle.unary_engines += src
 	if(SSshuttle.initialized)
 		link_to_ship()
+
+/obj/machinery/atmospherics/component/unary/engine/Destroy()
+	QDEL_NULL(controller)
+	SSshuttle.unary_engines -= src
+	update_nearby_tiles()
+	. = ..()
 
 /obj/machinery/atmospherics/component/unary/engine/proc/link_to_ship()
 	for(var/ship in SSshuttle.ships)
@@ -96,11 +103,6 @@
 			else
 				set_broken(FALSE)
 			linked = TRUE
-
-/obj/machinery/atmospherics/component/unary/engine/Destroy()
-	QDEL_NULL(controller)
-	update_nearby_tiles()
-	. = ..()
 
 /obj/machinery/atmospherics/component/unary/engine/proc/get_status()
 	. = list()

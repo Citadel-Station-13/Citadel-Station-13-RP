@@ -11,8 +11,8 @@
 	explosion_resistance = 1
 
 	// smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_GRILLE)
-	canSmoothWith = list(SMOOTH_GROUP_GRILLE)
+	smoothing_groups = (SMOOTH_GROUP_GRILLE)
+	canSmoothWith = (SMOOTH_GROUP_GRILLE)
 
 	var/health = 10
 	var/destroyed = 0
@@ -140,7 +140,7 @@
 		return
 //window placing end
 
-	else if((W.flags & NOCONDUCT) || !shock(user, 70))
+	else if((W.atom_flags & NOCONDUCT) || !shock(user, 70))
 		user.setClickCooldown(user.get_attack_speed(W))
 		user.do_attack_animation(src)
 		playsound(loc, 'sound/effects/grillehit.ogg', 80, 1)

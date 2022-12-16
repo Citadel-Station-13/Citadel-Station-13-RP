@@ -168,12 +168,14 @@
 		playsound(src, 'sound/weapons/smash5.ogg', 100, 1)
 		var/obj/item/material/twohanded/sledgehammer/sledge = new(loc, material.name)
 		var/put_in_hands
-		var/mob/M = src
+		var/mob/M = loc
 		if(istype(M))
 			put_in_hands = M == user
 			M.temporarily_remove_from_inventory(src, INV_OP_FORCE | INV_OP_SHOULD_NOT_INTERCEPT | INV_OP_SILENT)
 		if(put_in_hands)
-			user.put_in_hands(sledge)
+			user.put_in_hands_or_drop(sledge)
+		else
+			sledge.forceMove(drop_location())
 		qdel(src)
 		return
 
