@@ -51,6 +51,9 @@
 	if(!below.density && (A.area_flags & AREA_FLAG_EXTERNAL))
 		return INITIALIZE_HINT_NORMAL
 
+	if (CONFIG_GET(flag/starlight))
+		update_starlight()
+
 	return ..()
 
 /turf/space/Destroy()
@@ -76,17 +79,23 @@
 	return locate(/obj/structure/lattice, src)	// Counts as solid structure if it has a lattice
 
 /turf/space/proc/update_starlight()
-	var/power = CONFIG_GET(number/starlight)
-	if(power)
-		for(var/t in RANGE_TURFS(1,src)) //RANGE_TURFS is in code\__HELPERS\game.dm
-			if(isspaceturf(t))
-				//let's NOT update this that much pls
-				continue
-			set_light(power)
-			return
-		set_light(0)
-	else
-		set_light(0)
+	if(!(CONFIG_GET(flag/starlight)))
+		return
+
+	for (var/turf/T in RANGE_TURFS(1, src))
+		// Fuck if I know how these turfs are located in an area that is not an area.
+		if (!isloc(T.loc) || !TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
+			continue
+
+		// set_ambient_light(SSskybox.background_color)
+		//! Kill me for writing this. @Zandario
+		var/datum/planet/our_planet = GLOB.using_map.planet_datums_to_make[1]
+		set_ambient_light(our_planet.weather_holder.current_weather.light_color)
+		return
+
+	if (ambient_light)
+		clear_ambient_light()
+
 
 /turf/space/attackby(obj/item/C as obj, mob/user as mob)
 

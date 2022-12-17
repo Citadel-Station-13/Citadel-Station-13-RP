@@ -1,22 +1,25 @@
-/turf
-	var/dynamic_lighting = TRUE
-	var/ambient_light	// If non-null, a hex RGB light color that should be applied to this turf.
-	var/ambient_light_multiplier = 0.3	// The power of the above is multiplied by this. Setting too high may drown out normal lights on the same turf.
-	luminosity           = 1
+/turf/var/dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+/turf/var/ambient_light	// If non-null, a hex RGB light color that should be applied to this turf.
+/turf/var/ambient_light_multiplier = 0.3	// The power of the above is multiplied by this. Setting too high may drown out normal lights on the same turf.
+/turf/luminosity           = 1
 
-	var/tmp/lighting_corners_initialised = FALSE
+/turf/var/tmp/lighting_corners_initialised = FALSE
 
-	var/tmp/list/datum/light_source/affecting_lights       // List of light sources affecting this turf.
-	var/tmp/atom/movable/lighting_overlay/lighting_overlay // Our lighting overlay.
-	var/tmp/list/datum/lighting_corner/corners
-	var/tmp/has_opaque_atom = FALSE // Not to be confused with opacity, this will be TRUE if there's any opaque atom on the tile.
-	var/tmp/ambient_has_indirect = FALSE // If this is TRUE, an above turf's ambient light is affecting this turf.
+/// List of light sources affecting this turf.
+/turf/var/tmp/list/datum/light_source/affecting_lights
+/// Our lighting overlay.
+/turf/var/tmp/atom/movable/lighting_overlay/lighting_overlay
+/turf/var/tmp/list/datum/lighting_corner/corners
+/// Not to be confused with opacity, this will be TRUE if there's any opaque atom on the tile.
+/turf/var/tmp/has_opaque_atom = FALSE
+/// If this is TRUE, an above turf's ambient light is affecting this turf.
+/turf/var/tmp/ambient_has_indirect = FALSE
 
-	// Record-keeping, do not touch -- that means you, admins.
-	var/tmp/ambient_light_old
-	var/tmp/ambient_light_old_r = 0
-	var/tmp/ambient_light_old_g = 0
-	var/tmp/ambient_light_old_b = 0
+//! Record-keeping, do not touch -- that means you, admins.
+/turf/var/tmp/ambient_light_old
+/turf/var/tmp/ambient_light_old_r = 0
+/turf/var/tmp/ambient_light_old_g = 0
+/turf/var/tmp/ambient_light_old_b = 0
 
 /turf/proc/set_ambient_light(color, multiplier)
 	if (color == ambient_light && multiplier == ambient_light_multiplier)

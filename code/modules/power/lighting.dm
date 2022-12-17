@@ -907,18 +907,23 @@ var/global/list/light_type_cache = list()
 	force = 2
 	throw_force = 5
 	w_class = ITEMSIZE_TINY
-	var/status = 0		// LIGHT_OK, LIGHT_BURNED or LIGHT_BROKEN
-	var/base_state
-	var/switchcount = 0	// number of times switched
 	matter = list(MAT_STEEL = 60)
-	var/rigged = 0		// true if rigged to explode
-	var/broken_chance = 0
-
-	var/brightness_range = 2 //how much light it gives off
-	var/brightness_power = 1
-	var/brightness_color = LIGHT_COLOR_HALOGEN
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
+
+	/// LIGHT_OK, LIGHT_BURNED or LIGHT_BROKEN
+	var/status = 0
+	var/base_state
+	/// number of times switched
+	var/switchcount = 0
+	/// true if rigged to explode
+	var/rigged = 0
+	var/broken_chance = 0
+
+	///how much light it gives off
+	var/brightness_range = 2
+	var/brightness_power = 1
+	var/brightness_color = LIGHT_COLOR_HALOGEN
 
 	var/nightshift_range = 8
 	var/nightshift_power = 0.7
@@ -933,6 +938,7 @@ var/global/list/light_type_cache = list()
 	matter = list(MAT_GLASS = 100)
 	brightness_range = 8	// luminosity when on, also used in power calculation	brightness_power = 1
 	brightness_power = 0.8
+	brightness_color = LIGHT_COLOR_HALOGEN
 
 	nightshift_range = 7
 	nightshift_power = 0.5
@@ -940,35 +946,35 @@ var/global/list/light_type_cache = list()
 /obj/item/light/tube/large
 	w_class = ITEMSIZE_SMALL
 	name = "large light tube"
+	brightness_power = 4
 	brightness_range = 12
-	brightness_power = 1
 
 //Colored Light Tubes
 
 //Standard Rainbow
 /obj/item/light/tube/red
-	color = "#da0205"
-	brightness_color = "#da0205"
+	color = LIGHT_COLOR_RED
+	brightness_color = LIGHT_COLOR_RED
 
 /obj/item/light/tube/orange
-	color = "#da7c02"
-	brightness_color = "#da7c02"
+	color = LIGHT_COLOR_ORANGE
+	brightness_color = LIGHT_COLOR_ORANGE
 
 /obj/item/light/tube/yellow
-	color = "#e0d100"
-	brightness_color = "#e0d100"
+	color = LIGHT_COLOR_YELLOW
+	brightness_color = LIGHT_COLOR_YELLOW
 
 /obj/item/light/tube/green
-	color = "#1db100"
-	brightness_color = "#1db100"
+	color = LIGHT_COLOR_GREEN
+	brightness_color = LIGHT_COLOR_GREEN
 
 /obj/item/light/tube/blue
-	color = "#0011ff"
-	brightness_color = "#0011ff"
+	color = LIGHT_COLOR_BLUE
+	brightness_color = LIGHT_COLOR_BLUE
 
 /obj/item/light/tube/purple
-	color = "#7902da"
-	brightness_color = "#7902da"
+	color = LIGHT_COLOR_PURPLE
+	brightness_color = LIGHT_COLOR_PURPLE
 
 //Neons
 /obj/item/light/tube/neon_pink
@@ -998,9 +1004,7 @@ var/global/list/light_type_cache = list()
 	base_state = "lbulb"
 	item_state = "contvapour"
 	matter = list(MAT_GLASS = 100)
-	brightness_range = 5
-	brightness_power = 1
-	brightness_color = LIGHT_COLOR_INCANDESCENT_BULB
+	brightness_color = LIGHT_COLOR_TUNGSTEN
 
 	nightshift_range = 3
 	nightshift_power = 0.45

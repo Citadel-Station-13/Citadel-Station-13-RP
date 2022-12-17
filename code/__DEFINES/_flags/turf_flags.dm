@@ -29,3 +29,14 @@ DEFINE_BITFIELD(turf_flags, list(
 	BITFIELD(TURF_PLANET_REGISTERED),
 	BITFIELD(TURF_ZONE_REBUILD_QUEUED),
 ))
+
+// /turf/turf_movement_flags
+/// Allow atom movement through top.
+#define Z_OPEN_UP   (1<<0)
+/// Allow atom movement through bottom.
+#define Z_OPEN_DOWN (1<<1)
+
+DEFINE_BITFIELD(turf_movement_flags, list(
+	BITFIELD(Z_OPEN_UP),
+	BITFIELD(Z_OPEN_DOWN),
+))

@@ -10,6 +10,7 @@
 
 	/// turf flags
 	var/turf_flags = NONE
+	var/turf_movement_flags = NONE
 
 	var/holy = 0
 
@@ -89,6 +90,22 @@
 	/// For if you explicitly want a turf to not be affected by shield generators
 	var/noshield = FALSE
 
+	// Some quick notes on the vars below: is_outside should be left set to OUTSIDE_AREA unless you
+	// EXPLICITLY NEED a turf to have a different outside state to its area (ie. you have used a
+	// roofing tile). By default, it will ask the area for the state to use, and will update on
+	// area change. When dealing with weather, it will check the entire z-column for interruptions
+	// that will prevent it from using its own state, so a floor above a level will generally
+	// override both area is_outside, and turf is_outside. The only time the base value will be used
+	// by itself is if you are dealing with a non-multiz level, or the top level of a multiz chunk.
+
+	// Weather relies on is_outside to determine if it should apply to a turf or not and will be
+	// automatically updated on ChangeTurf set_outside etc. Don't bother setting it manually, it will
+	// get overridden almost immediately.
+
+	// TL;DR: just leave these vars alone.
+	// var/tmp/obj/abstract/weather_system/weather
+	var/tmp/is_outside = OUTSIDE_AREA
+
 /turf/vv_edit_var(var_name, new_value)
 	var/static/list/banned_edits = list(NAMEOF(src, x), NAMEOF(src, y), NAMEOF(src, z))
 	if(var_name in banned_edits)
@@ -131,6 +148,8 @@
 
 	if (light_power && light_range)
 		update_light()
+
+	SSambience.queued += src
 
 	if (opacity)
 		has_opaque_atom = TRUE
@@ -452,3 +471,40 @@
 			return TRUE
 */
 	return SSmapping.level_trait(z, ZTRAIT_GRAVITY)
+
+/turf/proc/is_outside()
+
+	// Can't rain inside or through solid walls.
+	// TODO: dense structures like full windows should probably also block weather.
+	if(density)
+		return OUTSIDE_NO
+
+	// What would we like to return in an ideal world?
+	if(is_outside == OUTSIDE_AREA)
+		var/area/A = get_area(src)
+		. = A ? A.is_outside : OUTSIDE_NO
+	else
+		. = is_outside
+
+	// Notes for future self when confused: is_open() on higher
+	// turfs must match effective is_outside value if the turf
+	// should get to use the is_outside value it wants to. If it
+	// doesn't line up, we invert the outside value (roof is not
+	// open but turf wants to be outside, invert to OUTSIDE_NO).
+
+	// Do we have a roof over our head? Should we care?
+	if(HasAbove(z))
+		var/turf/top_of_stack = src
+		while(HasAbove(top_of_stack.z))
+			top_of_stack = GetAbove(top_of_stack)
+			if(top_of_stack.is_open() != . || (top_of_stack.is_outside != OUTSIDE_AREA && top_of_stack.is_outside != .))
+				return !.
+
+/turf/proc/set_outside(new_outside, skip_weather_update = FALSE)
+	if(is_outside != new_outside)
+		is_outside = new_outside
+		// if(!skip_weather_update)
+		// 	update_weather()
+		SSambience.queued += src
+		return TRUE
+	return FALSE

@@ -35,12 +35,6 @@ DEFINE_BITFIELD(z_flags, list(
 	BITFIELD(ZM_MIMIC_BASETURF),
 ))
 
-// /turf/z_flags
-/// Allow atom movement through top
-#define Z_OPEN_UP			(1<<2)
-/// Allow atom movement through bottom
-#define Z_OPEN_DOWN			(1<<3)
-
 
 //! Movable z_flags.
 #define ZMM_IGNORE         1 /// Do not copy this movable.

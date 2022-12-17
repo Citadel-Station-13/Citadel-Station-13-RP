@@ -86,6 +86,8 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 	var/old_corners          = corners
 	var/old_ao_neighbors     = ao_neighbors
 	// var/old_is_open          = is_open()
+	var/old_ambience =         ambient_light
+	var/old_ambience_mult =    ambient_light_multiplier
 
 	// store/invalidae atmos
 	var/atom/movable/fire/old_fire = fire
@@ -163,9 +165,10 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 			else
 				lighting_clear_overlay()
 
-		// todo: non dynamic lighting space starlight
-		for(var/turf/space/S in RANGE_TURFS(1, src)) //RANGE_TURFS is in code\__HELPERS\game.dm
-			S.update_starlight()
+		if (old_ambience != ambient_light || old_ambience_mult != ambient_light_multiplier)
+			update_ambient_light(FALSE)
+
+
 
 	QUEUE_SMOOTH(src)
 	QUEUE_SMOOTH_NEIGHBORS(src)

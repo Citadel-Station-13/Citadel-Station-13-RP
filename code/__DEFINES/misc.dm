@@ -570,3 +570,8 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define WINDOW_STATE_SECURED_TO_FRAME 3
 
 #define Z_ALL_TURFS(Z) block(locate(1, 1, Z), locate(world.maxx, world.maxy, Z))
+
+//Turf/area values for 'this space is outside' checks
+#define OUTSIDE_AREA null
+#define OUTSIDE_NO   FALSE
+#define OUTSIDE_YES  TRUE

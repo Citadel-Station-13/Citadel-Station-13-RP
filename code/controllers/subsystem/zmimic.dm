@@ -467,7 +467,7 @@ SUBSYSTEM_DEF(zmimic)
 		var/atom/movable/openspace/turf_proxy/TO = T.mimic_underlay
 		TO.appearance = new_appearance
 		TO.name = T.name
-		TO.gender = T.gender	// Need to grab this too so PLURAL works properly in examine.
+		TO.gender = T.gender // Need to grab this too so PLURAL works properly in examine.
 		TO.mouse_opacity = initial(TO.mouse_opacity)
 		if (TO.plane == 0 && target_plane)
 			TO.plane = target_plane

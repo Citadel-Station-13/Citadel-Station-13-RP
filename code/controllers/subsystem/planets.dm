@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(planets)
 	var/static/list/needs_temp_update = list()
 
 /datum/controller/subsystem/planets/Initialize(timeofday)
-	admin_notice("<span class='danger'>Initializing planetary weather.</span>", R_DEBUG)
+	report_progress("Initializing planetary weather.")
 	createPlanets()
 	allocateTurfs(TRUE)
 	return ..()
@@ -179,7 +179,7 @@ SUBSYSTEM_DEF(planets)
 		if(MC_TICK_CHECK)
 			return
 
-/datum/controller/subsystem/planets/proc/updateSunlight(var/datum/planet/P)
+/datum/controller/subsystem/planets/proc/updateSunlight(datum/planet/P)
 	// Remove old value from corners
 	var/list/sunlit_corners = P.sunlit_corners
 	var/old_lum_r = -P.sun["lum_r"]
@@ -214,7 +214,7 @@ SUBSYSTEM_DEF(planets)
 	P.sun["lum_g"] = lum_g
 	P.sun["lum_b"] = lum_b
 
-/datum/controller/subsystem/planets/proc/updateTemp(var/datum/planet/P)
+/datum/controller/subsystem/planets/proc/updateTemp(datum/planet/P)
 	//Set new temperatures
 	for(var/W in P.planet_walls)
 		var/turf/unsimulated/wall/planetary/wall = W

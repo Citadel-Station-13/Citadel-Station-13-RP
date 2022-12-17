@@ -79,12 +79,11 @@
 	name = "openspace multiplier"
 	desc = "You shouldn't see this."
 	icon = LIGHTING_ICON
-	icon_state = LIGHTING_TRANSPARENT_ICON_STATE
+	icon_state = LIGHTING_DARKNESS_ICON_STATE
 	plane = OPENTURF_MAX_PLANE
 	layer = MIMICED_LIGHTING_LAYER
-	// blend_mode = BLEND_MULTIPLY
-	color = "#0000004b"
-	// color = SHADOWER_DARKENING_COLOR
+	blend_mode = BLEND_MULTIPLY
+	color = SHADOWER_DARKENING_COLOR
 
 /atom/movable/openspace/multiplier/Destroy(force)
 	if(!force)
@@ -120,7 +119,6 @@
 	else
 		// Not a color matrix, so we can just use the color var ourselves.
 		color = SHADOWER_DARKENING_COLOR
-
 
 	if (our_overlays || priority_overlays)
 		compile_overlays()

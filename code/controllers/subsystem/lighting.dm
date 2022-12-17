@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(lighting)
 	name = "Lighting"
 	wait = LIGHTING_INTERVAL
-	priority = FIRE_PROIRITY_LIGHTING
+	priority = FIRE_PRIORITY_LIGHTING
 	init_order = INIT_ORDER_LIGHTING
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 

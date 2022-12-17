@@ -25,8 +25,8 @@
 */
 //! BYONd world.view is immutable, this config is left here as a todo. If it's still immutable by, say, 516, remove it.
 
-/datum/config_entry/number/starlight
-	default = 2
+/datum/config_entry/flag/starlight
+	default = TRUE
 
 /datum/config_entry/keyed_list/engine_submap
 	key_mode = KEY_MODE_TEXT
