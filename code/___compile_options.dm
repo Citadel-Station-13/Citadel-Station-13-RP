@@ -14,8 +14,8 @@
 
 /// Comment this out if you are debugging problems that might be obscured by custom error handling in world/Error.
 #ifdef DEBUG
-	#define USE_CUSTOM_ERROR_HANDLER
-	#define DEBUG_SHUTTLES
+#define USE_CUSTOM_ERROR_HANDLER
+#define DEBUG_SHUTTLES
 #endif
 
 
@@ -25,51 +25,53 @@
  */
 // #define TESTING
 #ifdef TESTING
-	#warn compiling in TESTING mode. testing() debug messages will be visible.
 
-	#define DATUMVAR_DEBUGGING_MODE
+#warn compiling in TESTING mode. testing() debug messages will be visible.
 
-	/// Used to find the sources of harddels, quite laggy, don't be surpised if it freezes your client for a good while.
-	// #define REFERENCE_TRACKING
-	#ifdef REFERENCE_TRACKING
-		/**
-		 * Used for doing dry runs of the reference finder, to test for feature completeness.
-		 * Slightly slower, higher in memory. Just not optimal.
-		 */
-		// #define REFERENCE_TRACKING_DEBUG
+#define DATUMVAR_DEBUGGING_MODE
 
-
-		/// Run a lookup on things hard deleting by default.
-		// #define GC_FAILURE_HARD_LOOKUP
-		#ifdef GC_FAILURE_HARD_LOOKUP
-			/// Don't stop when searching, go till you're totally done.
-			#define FIND_REF_NO_CHECK_TICK
-		#endif //ifdef GC_FAILURE_HARD_LOOKUP
-	#endif
+/// Used to find the sources of harddels, quite laggy, don't be surpised if it freezes your client for a good while.
+// #define REFERENCE_TRACKING
+#ifdef REFERENCE_TRACKING
+/**
+ * Used for doing dry runs of the reference finder, to test for feature completeness.
+ * Slightly slower, higher in memory. Just not optimal.
+ */
+// #define REFERENCE_TRACKING_DEBUG
 
 
-	/**
-	 * Enables debug messages for every single reaction step.
-	 * This is 1 message per 0.5s for a SINGLE reaction.
-	 * Useful for tracking down bugs/asking me for help in the main reaction handiler (equilibrium.dm).
-	 *
-	 * * Requires TESTING to be defined to work.
-	 * ! Not implemented yet.
-	 */
-	// #define REAGENTS_TESTING
+/// Run a lookup on things hard deleting by default.
+// #define GC_FAILURE_HARD_LOOKUP
+#ifdef GC_FAILURE_HARD_LOOKUP
+/// Don't stop when searching, go till you're totally done.
+#define FIND_REF_NO_CHECK_TICK
+#endif //ifdef GC_FAILURE_HARD_LOOKUP
+#endif
 
 
-	/**
-	 * Displays static object lighting updates.
-	 *
-	 * Also enables some debug vars on sslighting that can be used to modify
-	 * how extensively we prune lighting corners to update.
-	 */
-	// #define VISUALIZE_LIGHT_UPDATES
+/**
+ * Enables debug messages for every single reaction step.
+ * This is 1 message per 0.5s for a SINGLE reaction.
+ * Useful for tracking down bugs/asking me for help in the main reaction handiler (equilibrium.dm).
+ *
+ * * Requires TESTING to be defined to work.
+ * ! Not implemented yet.
+ */
+// #define REAGENTS_TESTING
 
 
-	/// Highlights atmos active turfs in green.
-	// #define VISUALIZE_ACTIVE_TURFS
+/**
+ * Displays static object lighting updates.
+ *
+ * Also enables some debug vars on sslighting that can be used to modify
+ * how extensively we prune lighting corners to update.
+ */
+// #define VISUALIZE_LIGHT_UPDATES
+
+
+/// Highlights atmos active turfs in green.
+// #define VISUALIZE_ACTIVE_TURFS
+
 #endif
 
 
@@ -109,59 +111,59 @@
  * If this is uncommented, force our verb processing into just the 2% of a tick.
  * We normally reserve for it.
  *! NEVER run this on live, it's for simulating highpop only.
- */
+*/
 // #define VERB_STRESS_TEST
 #ifdef VERB_STRESS_TEST
-	#warn Hey brother, you're running in LAG MODE.
-	#warn IF YOU PUT THIS ON LIVE I WILL FIND YOU AND MAKE YOU WISH YOU WERE NEVE-
+#warn Hey brother, you're running in LAG MODE.
+#warn IF YOU PUT THIS ON LIVE I WILL FIND YOU AND MAKE YOU WISH YOU WERE NEVE-
 
-	/**
-	 * Uncomment this to force all verbs to run into overtime all of the time.
-	 * Essentially negating the reserve 2%.
-	 */
-	// #define FORCE_VERB_OVERTIME
+/**
+ * Uncomment this to force all verbs to run into overtime all of the time.
+ * Essentially negating the reserve 2%.
+ */
+// #define FORCE_VERB_OVERTIME
 #endif
 
 
 #ifndef PRELOAD_RSC
-	/**
-	 * Set to:
-	 * * 0 to allow using external resources or on-demand behaviour;
-	 * * 1 to use the default behaviour;
-	 * * 2 for preloading absolutely everything;
-	 */
-	#define PRELOAD_RSC	2
+/**
+ * Set to:
+ * * 0 to allow using external resources or on-demand behaviour;
+ * * 1 to use the default behaviour;
+ * * 2 for preloading absolutely everything;
+ */
+#define PRELOAD_RSC	2
 #endif
 
 
 #ifdef LOWMEMORYMODE
-	#define FORCE_MAP "minitest"
+#define FORCE_MAP "minitest"
 #endif
 
 
 //! CBT BUILD DEFINES
 
 #ifdef CIBUILDING
-	#define UNIT_TESTS
+#define UNIT_TESTS
 #endif
 
 #ifdef CITESTING
-	#define TESTING
+#define TESTING
 #endif
 
 
 //! LEGACY WARNING
 #if !defined(CBT) && !defined(SPACEMAN_DMM)
-	#warn Building with Dream Maker is no longer supported and will result in errors.
-	#warn In order to build, run BUILD.bat in the root directory.
-	#warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
+#warn Building with Dream Maker is no longer supported and will result in errors.
+#warn In order to build, run BUILD.bat in the root directory.
+#warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
 #endif
 
 
 
 /**
  ** Modules follow
- */
+*/
 
 
 //! Atmospherics
@@ -189,7 +191,7 @@
 
 
 #ifdef ZAS_DEBUG_GRAPHICS
-	#define ZAS_BREAKPOINT_HOOKS
+#define ZAS_BREAKPOINT_HOOKS
 #endif
 
 
