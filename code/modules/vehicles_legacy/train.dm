@@ -113,6 +113,8 @@
 	else
 		if(!load(C, user))
 			to_chat(user, "<font color='red'>You were unable to load [C] on [src].</font>")
+			return CLICKCHAIN_DO_NOT_PROPAGATE
+	return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/vehicle_old/train/attack_hand(mob/user as mob)
 	if(user.stat || user.restrained() || !Adjacent(user))
