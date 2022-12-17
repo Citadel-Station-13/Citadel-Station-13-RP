@@ -1,8 +1,7 @@
-/area
-	luminosity           = TRUE
-	var/dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+/area/luminosity = TRUE
+/area/var/dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 
-/area/proc/set_dynamic_lighting(var/new_dynamic_lighting = DYNAMIC_LIGHTING_ENABLED)
+/area/proc/set_dynamic_lighting(new_dynamic_lighting = DYNAMIC_LIGHTING_ENABLED)
 	if (new_dynamic_lighting == dynamic_lighting)
 		return FALSE
 

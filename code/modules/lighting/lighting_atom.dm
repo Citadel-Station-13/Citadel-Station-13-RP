@@ -1,18 +1,26 @@
+/// Intensity of the light.
+/atom/var/light_power = 1
+/// Range in tiles of the light.
+/atom/var/light_range = 0
+/// Hexadecimal RGB string representing the colour of the light.
+/atom/var/light_color
 
-/atom
-	var/light_power = 1 // Intensity of the light.
-	var/light_range = 0 // Range in tiles of the light.
-	var/light_color     // Hexadecimal RGB string representing the colour of the light.
+//!  Useful for objects like light fixtures that aren't visually in the middle of the turf, but aren't offset either.
+/atom/var/light_offset_x
+/atom/var/light_offset_y
 
-	var/tmp/datum/light_source/light // Our light source. Don't fuck with this directly unless you have a good reason!
-	var/tmp/list/light_sources       // Any light sources that are "inside" of us, for example, if src here was a mob that's carrying a flashlight, that flashlight's light source would be part of this list.
+/// Our light source. Don't fuck with this directly unless you have a good reason!
+/atom/var/tmp/datum/light_source/light
+/// Any light sources that are "inside" of us, for example, if src here was a mob that's carrying a flashlight, that flashlight's light source would be part of this list.
+/atom/var/tmp/list/light_sources
 
-// The proc you should always use to set the light of this atom.
 // Nonesensical value for l_color default, so we can detect if it gets set to null.
 #define NONSENSICAL_VALUE -99999
-/atom/proc/set_light(var/l_range, var/l_power, var/l_color = NONSENSICAL_VALUE)
+
+// The proc you should always use to set the light of this atom.
+/atom/proc/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE, no_update = FALSE)
 	if(l_range > 0 && l_range < MINIMUM_USEFUL_LIGHT_RANGE)
-		l_range = MINIMUM_USEFUL_LIGHT_RANGE	//Brings the range up to 1.4, which is just barely brighter than the soft lighting that surrounds players.
+		l_range = MINIMUM_USEFUL_LIGHT_RANGE	//Brings the range up to 1.4
 	if (l_power != null)
 		light_power = l_power
 
@@ -21,6 +29,12 @@
 
 	if (l_color != NONSENSICAL_VALUE)
 		light_color = l_color
+
+	// if (angle != NONSENSICAL_VALUE)
+	// 	light_wedge = angle
+
+	if (no_update)
+		return
 
 	SEND_SIGNAL(src, COMSIG_ATOM_SET_LIGHT, l_range, l_power, l_color)
 
@@ -58,10 +72,24 @@
 		if (old_has_opaque_atom != T.has_opaque_atom)
 			T.reconsider_lights()
 
+/**
+ * Updates the atom's opacity value.
+ *
+ * This exists to act as a hook for associated behavior.
+ * It notifies (potentially) affected light sources so they can update (if needed).
+ */
+/atom/proc/set_opacity(new_opacity)
+	if (new_opacity == opacity)
+		return
+	SEND_SIGNAL(src, COMSIG_ATOM_SET_OPACITY, new_opacity)
+	. = opacity
+	opacity = new_opacity
+
 // Should always be used to change the opacity of an atom.
 // It notifies (potentially) affected light sources so they can update (if needed).
-/atom/proc/set_opacity(var/new_opacity)
-	if (new_opacity == opacity)
+/atom/set_opacity(new_opacity)
+	. = ..()
+	if(isnull(.))
 		return
 
 	opacity = new_opacity
@@ -72,6 +100,9 @@
 	if (new_opacity == TRUE)
 		T.has_opaque_atom = TRUE
 		T.reconsider_lights()
+#ifdef AO_USE_LIGHTING_OPACITY
+		T.regenerate_ao()
+#endif
 	else
 		var/old_has_opaque_atom = T.has_opaque_atom
 		T.recalc_atom_opacity()

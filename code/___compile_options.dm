@@ -202,6 +202,11 @@
 #define MAX_ATOM_OVERLAYS 100
 
 
-
 //! Timers
+
 // #define TIMER_LOOP_DEBUGGING
+
+
+//! Lighting
+
+#define AO_USE_LIGHTING_OPACITY

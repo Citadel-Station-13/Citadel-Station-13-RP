@@ -2,31 +2,41 @@
 // These are the main datums that emit light.
 
 /datum/light_source
-	var/atom/top_atom        // The atom we're emitting light from (for example a mob if we're from a flashlight that's being held).
-	var/atom/source_atom     // The atom that we belong to.
+	/// The atom we're emitting light from (for example a mob if we're from a flashlight that's being held).
+	var/atom/top_atom
+	/// The atom that we belong to.
+	var/atom/source_atom
 
-	var/turf/source_turf     // The turf under the above.
-	var/turf/pixel_turf      // The turf the top_atom appears to over.
-	var/light_power    // Intensity of the emitter light.
-	var/light_range      // The range of the emitted light.
-	var/light_color    // The colour of the light, string, decomposed by PARSE_LIGHT_COLOR()
+	/// The turf under the above.
+	var/turf/source_turf
+	/// The turf the top_atom appears to over.
+	var/turf/pixel_turf
+	/// Intensity of the emitter light.
+	var/light_power
+	/// The range of the emitted light.
+	var/light_range
+	/// The colour of the light, string, decomposed by PARSE_LIGHT_COLOR()
+	var/light_color
 
-	// Variables for keeping track of the colour.
+	//! Variables for keeping track of the colour.
 	var/lum_r
 	var/lum_g
 	var/lum_b
 
-	// The lumcount values used to apply the light.
+	//! The lumcount values used to apply the light.
 	var/tmp/applied_lum_r
 	var/tmp/applied_lum_g
 	var/tmp/applied_lum_b
 
-	var/list/datum/lighting_corner/effect_str     // List used to store how much we're affecting corners.
+	/// List used to store how much we're affecting corners.
+	var/list/datum/lighting_corner/effect_str
 	var/list/turf/affecting_turfs
 
-	var/applied = FALSE // Whether we have applied our light yet or not.
+	/// Whether we have applied our light yet or not.
+	var/applied = FALSE
 
-	var/needs_update = LIGHTING_NO_UPDATE    // Whether we are queued for an update.
+	/// Whether we are queued for an update.
+	var/needs_update = LIGHTING_NO_UPDATE
 
 // Thanks to Lohikar for flinging this tiny bit of code at me, increasing my brain cell count from 1 to 2 in the process.
 // This macro will only offset up to 1 tile, but anything with a greater offset is an outlier and probably should handle its own lighting offsets.
@@ -97,51 +107,12 @@
 /datum/light_source/proc/vis_update()
 	EFFECT_UPDATE(LIGHTING_VIS_UPDATE)
 
-// Macro that applies light to a new corner.
-// It is a macro in the interest of speed, yet not having to copy paste it.
-// If you're wondering what's with the backslashes, the backslashes cause BYOND to not automatically end the line.
-// As such this all gets counted as a single line.
-// The braces and semicolons are there to be able to do this on a single line.
-
-//Original lighting falloff calculation. This looks the best out of the three. However, this is also the most expensive.
-//#define LUM_FALLOFF(C, T) (1 - CLAMP01(sqrt((C.x - T.x) ** 2 + (C.y - T.y) ** 2 + LIGHTING_HEIGHT) / max(1, light_range)))
-
-//Cubic lighting falloff. This has the *exact* same range as the original lighting falloff calculation, down to the exact decimal, but it looks a little unnatural due to the harsher falloff and how it's generally brighter across the board.
-//#define LUM_FALLOFF(C, T) (1 - CLAMP01((((C.x - T.x) * (C.x - T.x)) + ((C.y - T.y) * (C.y - T.y)) + LIGHTING_HEIGHT) / max(1, light_range*light_range)))
-
-//Linear lighting falloff. This resembles the original lighting falloff calculation the best, but results in lights having a slightly larger range, which is most noticable with large light sources. This also results in lights being diamond-shaped, fuck. This looks the darkest out of the three due to how lights are brighter closer to the source compared to the original falloff algorithm. This falloff method also does not at all take into account lighting height, as it acts as a flat reduction to light range with this method.
-//#define LUM_FALLOFF(C, T) (1 - CLAMP01(((abs(C.x - T.x) + abs(C.y - T.y))) / max(1, light_range+1)))
-
-//Linear lighting falloff but with an octagonal shape in place of a diamond shape. Lummox JR please add pointer support.
-#define GET_LUM_DIST(DISTX, DISTY) (DISTX + DISTY + abs(DISTX - DISTY)*0.4)
-#define LUM_FALLOFF(C, T) (1 - CLAMP01(max(GET_LUM_DIST(abs(C.x - T.x), abs(C.y - T.y)),LIGHTING_HEIGHT) / max(1, light_range+1)))
-
-#define APPLY_CORNER(C)                      \
-	. = LUM_FALLOFF(C, pixel_turf);          \
-	. *= light_power;                        \
-	var/OLD = effect_str[C];                 \
-	effect_str[C] = .;                       \
-                                             \
-	C.update_lumcount                        \
-	(                                        \
-		(. * lum_r) - (OLD * applied_lum_r), \
-		(. * lum_g) - (OLD * applied_lum_g), \
-		(. * lum_b) - (OLD * applied_lum_b)  \
-	);
-
-#define REMOVE_CORNER(C)                     \
-	. = -effect_str[C];                      \
-	C.update_lumcount                        \
-	(                                        \
-		. * applied_lum_r,                   \
-		. * applied_lum_g,                   \
-		. * applied_lum_b                    \
-	);
 
 // This is the define used to calculate falloff.
 
-/datum/light_source/proc/remove_lum()
+/datum/light_source/proc/remove_lum(now = FALSE)
 	applied = FALSE
+
 	var/thing
 	for (thing in affecting_turfs)
 		var/turf/T = thing
@@ -149,25 +120,32 @@
 
 	affecting_turfs = null
 
-	var/datum/lighting_corner/C
 	for (thing in effect_str)
-		C = thing
-		REMOVE_CORNER(C)
+		var/datum/lighting_corner/C = thing
+		REMOVE_CORNER(C,now)
 
 		LAZYREMOVE(C.affecting, src)
 
 	effect_str = null
 
-/datum/light_source/proc/recalc_corner(var/datum/lighting_corner/C)
+/datum/light_source/proc/recalc_corner(datum/lighting_corner/C, now = FALSE)
 	LAZYINITLIST(effect_str)
 	if (effect_str[C]) // Already have one.
-		REMOVE_CORNER(C)
+		REMOVE_CORNER(C, now)
 		effect_str[C] = 0
 
-	APPLY_CORNER(C)
+	var/actual_range = light_range
+
+	var/Sx = pixel_turf.x
+	var/Sy = pixel_turf.y
+	var/Sz = pixel_turf.z
+
+	var/height = C.z == Sz ? LIGHTING_HEIGHT : CALCULATE_CORNER_HEIGHT(C.z, Sz)
+	APPLY_CORNER(C, now, Sx, Sy, height)
+
 	UNSETEMPTY(effect_str)
 
-/datum/light_source/proc/update_corners()
+/datum/light_source/proc/update_corners(now = FALSE)
 	var/update = FALSE
 	var/atom/source_atom = src.source_atom
 
@@ -230,6 +208,12 @@
 	var/list/turf/turfs                    = list(source_turf)
 	var/thing
 	var/turf/T
+	var/Sx = pixel_turf.x // these are used by APPLY_CORNER_BY_HEIGHT
+	var/Sy = pixel_turf.y
+	var/Sz = pixel_turf.z
+	var/corner_height = LIGHTING_HEIGHT
+	// var/actual_range = (light_angle && facing_opaque) ? light_range * LIGHTING_BLOCKED_FACTOR : light_range
+	var/actual_range = light_range
 
 	if (source_turf)
 		var/oldlum = source_turf.luminosity
@@ -247,6 +231,7 @@
 		source_turf.luminosity = oldlum
 
 	LAZYINITLIST(affecting_turfs)
+
 	var/list/L = turfs - affecting_turfs // New turfs, add us to the affecting lights of them.
 	affecting_turfs += L
 	for (thing in L)
@@ -261,35 +246,39 @@
 
 	LAZYINITLIST(effect_str)
 	if (needs_update == LIGHTING_VIS_UPDATE)
-		for (thing in  corners - effect_str) // New corners
+		for (thing in corners - effect_str)
 			C = thing
 			LAZYADD(C.affecting, src)
 			if (!C.active)
 				effect_str[C] = 0
 				continue
-			APPLY_CORNER(C)
+
+			APPLY_CORNER_BY_HEIGHT(now)
 	else
 		L = corners - effect_str
-		for (thing in L) // New corners
+		for (thing in L)
 			C = thing
 			LAZYADD(C.affecting, src)
 			if (!C.active)
 				effect_str[C] = 0
 				continue
-			APPLY_CORNER(C)
 
-		for (thing in corners - L) // Existing corners
+			APPLY_CORNER_BY_HEIGHT(now)
+
+		for (thing in corners - L)
 			C = thing
 			if (!C.active)
 				effect_str[C] = 0
 				continue
-			APPLY_CORNER(C)
+
+			APPLY_CORNER_BY_HEIGHT(now)
 
 	L = effect_str - corners
-	for (thing in L) // Old, now gone, corners.
+	for (thing in L)
 		C = thing
-		REMOVE_CORNER(C)
+		REMOVE_CORNER(C, now)
 		LAZYREMOVE(C.affecting, src)
+
 	effect_str -= L
 
 	applied_lum_r = lum_r
@@ -298,9 +287,3 @@
 
 	UNSETEMPTY(effect_str)
 	UNSETEMPTY(affecting_turfs)
-
-#undef EFFECT_UPDATE
-#undef LUM_FALLOFF
-#undef GET_LUM_DIST
-#undef REMOVE_CORNER
-#undef APPLY_CORNER
