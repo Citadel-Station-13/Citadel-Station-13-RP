@@ -13,6 +13,9 @@
 // END_PREFERENCES
 
 // BEGIN_INCLUDE
+#include "code\__DEFINES\_bitfields.dm"
+#include "code\__DEFINES\_globals.dm"
+#include "code\__DEFINES\time.dm"
 #include "_mapload\_basemap.dm"
 #include "code\___compile_options.dm"
 #include "code\__byond_version_compat.dm"

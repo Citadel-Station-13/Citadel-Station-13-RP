@@ -65,11 +65,11 @@
 	 * Also enables some debug vars on sslighting that can be used to modify
 	 * how extensively we prune lighting corners to update.
 	 */
-	#define VISUALIZE_LIGHT_UPDATES
+	// #define VISUALIZE_LIGHT_UPDATES
 
 
 	/// Highlights atmos active turfs in green.
-	#define VISUALIZE_ACTIVE_TURFS
+	// #define VISUALIZE_ACTIVE_TURFS
 #endif
 
 
