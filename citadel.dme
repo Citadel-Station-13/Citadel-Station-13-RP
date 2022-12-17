@@ -342,6 +342,7 @@
 #include "code\_globals\lists\mobs.dm"
 #include "code\_globals\lists\names.dm"
 #include "code\_globals\lists\objects.dm"
+#include "code\_globals\lists\sounds.dm"
 #include "code\_js\byjax.dm"
 #include "code\_js\menus.dm"
 #include "code\_onclick\adjacency.dm"
