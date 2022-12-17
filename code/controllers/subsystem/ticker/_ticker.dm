@@ -1,3 +1,8 @@
+/**
+ * # Ticker
+ *
+ * Controls game state.
+ */
 SUBSYSTEM_DEF(ticker)
 	name = "Ticker"
 	wait = 20

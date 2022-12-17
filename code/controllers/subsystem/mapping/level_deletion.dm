@@ -51,16 +51,16 @@
 	if(struct_by_z[z])
 		struct_by_z[z].Deconstruct(FALSE)
 	// 2. level
-	var/datum/space_level/level = space_levels[z]
+	var/datum/space_level/level = ordered_levels[z]
 	level.SetDown(null)
 	level.SetUp(null)
-	level.SetEast(null)
-	level.SetWest(null)
-	level.SetNorth(null)
-	level.SetSouth(null)
+	level.set_east(null)
+	level.set_west(null)
+	level.set_north(null)
+	level.set_south(null)
 	// 3. rebuild
 	rebuild_transitions()
-	RebuildVerticality()
+	rebuild_verticality()
 	// 4. ensure nothing gets in or out
 	level.rebuild_transitions()
 	level.rebuild_turfs()

@@ -37,7 +37,7 @@
 #define ZTRAIT_GRAVITY "gravity"
 /// level should generate on minimaps
 #define ZTRAIT_MINIMAP "minimap"
-/// level is reserved space
+/// level is reserved space, we cannot treat the entire level as the same logical level
 #define ZTRAIT_RESERVED "reserved"
-/// level is admin space, don't let people fuck around with it
+/// level is admin space, don't let people fuck around with it via teleportation/otherwise
 #define ZTRAIT_ADMIN "admin"

@@ -10,5 +10,5 @@
 	if(!struct_by_z[A.z])
 		return list(A.x, A.y, A.z)
 	var/datum/world_struct/struct = struct_by_z[A.z]
-	var/datum/space_level/S = space_levels[A.z]
+	var/datum/space_level/S = ordered_levels[A.z]
 	return list((S.struct_x * world.maxx) + A.x , (S.struct_y * world.maxy) + A.y, S.struct_z)

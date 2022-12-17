@@ -217,6 +217,7 @@
 		level.validate(errors)
 		level_ids[level.id] = level
 	LAZYOR(src.errors, errors)
+	#warn validate structs
 
 /datum/map_data/proc/cross_validate(list/errors = list(), list/level_ids = list())
 	. = TRUE

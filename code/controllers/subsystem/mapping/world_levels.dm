@@ -52,7 +52,7 @@
 	var/datum/map_data/level/level = level_datums[group][id]
 	if(level in loaded_levels)
 		CRASH("Tried to load [level] twice.")
-	. = InstantiateMapDatum(level)
+	. = instantiate_map_datum(level)
 	if(isnull(.))
 		CRASH("Failed to load [group] - [id]")
 	loaded_levels += level
@@ -107,7 +107,7 @@
 		log_admin("Admin [key_name_admin(src)] is loading map file [F] ([length(F)] bytes).")
 
 		var/start = REALTIMEOFDAY
-		var/list/loaded_indices = SSmapping.InstantiateMapLevel(L)
+		var/list/loaded_indices = SSmapping.instantiate_map_level(L)
 		if(!loaded_indices)
 			message_admins("[F] loading failed or runtimed.")
 			log_admin("Custom load of [F] failed.")

@@ -115,7 +115,7 @@
 	#warn support less-than-world-size levels
 	ASSERT(dir & (dir - 1))
 	var/turf/T = parent
-	var/datum/space_level/L = SSmapping.space_levels[T.z]
+	var/datum/space_level/L = SSmapping.ordered_levels[T.z]
 	var/datum/space_level/target_level = isnull(force_target) && L.resolve_level_in_dir(dir)
 	if(!target_level && !force_target)
 		return list()
@@ -137,7 +137,7 @@
 	#warn support less-than-world-size levels
 	// ASSERT(dir)
 	var/turf/T = parent
-	var/datum/space_level/L = SSmapping.space_levels[T.z]
+	var/datum/space_level/L = SSmapping.ordered_levels[T.z]
 	var/datum/space_level/target_level = isnull(force_target) && L.resolve_level_in_dir(dir)
 	if(!target_level && !force_target)
 		return list()

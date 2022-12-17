@@ -17,16 +17,16 @@
 				var/datum/space_level/L = new
 				L.linkage_mode = Z_LINKAGE_CROSSLINKED
 				L.name = "Empty Area [space_levels_so_far]"
-				InstantiateMapLevel(L, null, FALSE)
+				instantiate_map_level(L, null, FALSE)
 			// and one level with no ruins
 			for (var/i in 1 to map.space_empty_levels)
 				++space_levels_so_far
 				var/datum/space_level/L = new
 				L.linkage_mode = Z_LINKAGE_CROSSLINKED
 				L.name = "Empty Area [space_levels_so_far]"
-				InstantiateMapLevel(L, null, FALSE)
+				instantiate_map_level(L, null, FALSE)
 
-			RebuildVerticality()
+			rebuild_verticality()
 			rebuild_transitions()
 			RebuildCrosslinking()
 

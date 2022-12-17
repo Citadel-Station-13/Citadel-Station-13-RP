@@ -40,9 +40,7 @@
 	if(. == INITIALIZE_HINT_QDEL)
 		return
 
-	#warn register in struct
-	find_z_levels() // This populates map_z and assigns z levels to the ship.
-	register_z_levels() // This makes external calls to update global z level information.
+	register_struct()
 
 	if(!using_map_legacy().overmap_z)
 		build_overmap()
@@ -75,7 +73,7 @@
 // You generally shouldn't destroy these.
 /obj/effect/overmap/visitable/Destroy()
 	testing("Deleting [src] overmap sector at [x],[y]")
-	unregister_z_levels()
+	unregister_struct()
 	return ..()
 
 //This is called later in the init order by SSshuttles to populate sector objects. Importantly for subtypes, shuttles will be created by then.
@@ -83,30 +81,8 @@
 
 /obj/effect/overmap/visitable/proc/get_areas()
 	. = list()
-	for(var/area/A)
-		if (A.z in map_z)
-			. += A
-
-/obj/effect/overmap/visitable/proc/find_z_levels()
-	if(!LAZYLEN(map_z)) // If map_z is already populated use it as-is, otherwise start with connected z-levels.
-		map_z = GetConnectedZlevels(z)
-	if(LAZYLEN(extra_z_levels))
-		map_z |= extra_z_levels
-
-/obj/effect/overmap/visitable/proc/register_z_levels()
-	for(var/zlevel in map_z)
-		map_sectors["[zlevel]"] = src
-
-	using_map_legacy().player_levels |= map_z
-	if(!in_space)
-		using_map_legacy().sealed_levels |= map_z
-
-/obj/effect/overmap/visitable/proc/unregister_z_levels()
-	map_sectors -= map_z
-
-	using_map_legacy().player_levels -= map_z
-	if(!in_space)
-		using_map_legacy().sealed_levels -= map_z
+	for(var/z in map_struct.direct_z_list())
+		. |= SSmapping.areas_in_z["[z]"]
 
 /obj/effect/overmap/visitable/get_scan_data()
 	if(!known)
@@ -118,10 +94,10 @@
 	return ..()
 
 /obj/effect/overmap/visitable/proc/get_space_zlevels()
-	if(in_space)
-		return map_z
-	else
-		return list()
+	return in_space? get_levels() : list()
+
+/obj/effect/overmap/visitable/proc/get_levels()
+	return map_struct?.fetch_z_list() || list()
 
 //Helper for init.
 /obj/effect/overmap/visitable/proc/check_ownership(obj/object)
@@ -240,3 +216,22 @@
 
 	testing("Overmap build complete.")
 	return 1
+
+//! struct handling
+/obj/effect/overmap/visitable/proc/register_struct()
+	// look for struct or make one
+	var/datum/world_struct/struct = SSmapping.ensure_struct(z)
+	if(!struct)
+		CRASH("couldn't get a struct for zlevel")
+	if(struct.overmap_sector)
+		CRASH("was on struct with existing overmap sector; crashing out.")
+	if(!struct.constructed)
+		CRASH("was on non-instantiated struct; crashing out.")
+	struct.overmap_sector = src
+	map_struct = struct
+
+/obj/effect/overmap/visitable/proc/unregister_struct()
+	ASSERT(map_struct)
+	ASSERT(map_struct.overmap_sector == src)
+	map_struct.overmap_sector = null
+	map_struct = null

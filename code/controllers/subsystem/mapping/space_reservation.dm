@@ -103,7 +103,7 @@
  */
 /datum/controller/subsystem/mapping/proc/create_reserved_level()
 	var/datum/space_level/L = new
-	InstantiateMapLevel(L)
+	instantiate_map_level(L)
 	initialize_reserved_level(L.z_value)
 	return L
 
@@ -116,7 +116,7 @@
 	if(z in reserve_levels)
 		CRASH("[z] is already in reserve_levels")
 	reformatting_reserved_turfs = TRUE
-	var/datum/space_level/L = space_levels[z]
+	var/datum/space_level/L = ordered_levels[z]
 	for(var/trait in L.traits)
 		L.RemoveTrait(trait)
 	for(var/key in L.attributes)

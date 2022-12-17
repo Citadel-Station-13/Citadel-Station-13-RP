@@ -79,7 +79,7 @@
 	expire_skybox_representation()
 	build_skybox_representation()
 	for(var/obj/effect/overmap/visitable/O in loc)
-		for(var/z in O.map_z)
+		for(var/z in O.get_levels())
 			SSparallax.queue_z_vis_update(z)
 
 /obj/effect/overmap/proc/get_scan_data(mob/user)
@@ -102,13 +102,13 @@
 /obj/effect/overmap/Crossed(var/obj/effect/overmap/visitable/other)
 	. = ..()
 	if(istype(other))
-		for(var/z in other.map_z)
+		for(var/z in other.get_levels())
 			SSparallax.queue_z_vis_update(z)
 
 /obj/effect/overmap/Uncrossed(var/obj/effect/overmap/visitable/other)
 	. = ..()
 	if(istype(other))
-		for(var/z in other.map_z)
+		for(var/z in other.get_levels())
 			SSparallax.queue_z_vis_update(z)
 
 /obj/effect/overmap/update_icon()

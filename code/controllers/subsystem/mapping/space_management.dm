@@ -1,20 +1,20 @@
 /datum/controller/subsystem/mapping
 	/// Ordered list of /datum/space_level - corrosponds to real z values!
-	var/static/list/datum/space_level/space_levels = list()
+	var/static/list/datum/space_level/ordered_levels = list()
 	/// id to map level datum
-	var/static/list/datum/space_level/level_by_id = list()
+	var/static/list/datum/space_level/keyed_levels = list()
 	/// Ordered lookup list for multiz up
-	var/list/multiz_lookup_up
+	var/list/cached_level_up
 	/// Ordered lookup list for multiz down
-	var/list/multiz_lookup_down
+	var/list/cached_level_down
 	/// Ordered lookup list for east transition
-	var/list/transition_lookup_east
+	var/list/cached_level_east
 	/// Ordered lookup list for west transition
-	var/list/transition_lookup_west
+	var/list/cached_level_west
 	/// Ordered lookup list for north transition
-	var/list/transition_lookup_north
+	var/list/cached_level_north
 	/// Ordered lookup list for south transition
-	var/list/transition_lookup_south
+	var/list/cached_level_south
 	/// 2d array for crosslink lookups
 	var/list/crosslinking_grid
 	/// Z access lookup - z = list() of zlevels it can access. For performance, this is currently only including bidirectional links, AND does not support looping.
@@ -37,13 +37,13 @@
 /datum/controller/subsystem/mapping/proc/synchronize_datastructures()
 #define SYNC(var) if(!var) { var = list() ; } ; if(var.len != world.maxz) { . = TRUE ; var.len = world.maxz; }
 	. = FALSE
-	SYNC(space_levels)
-	SYNC(multiz_lookup_up)
-	SYNC(multiz_lookup_down)
-	SYNC(transition_lookup_east)
-	SYNC(transition_lookup_west)
-	SYNC(transition_lookup_north)
-	SYNC(transition_lookup_south)
+	SYNC(ordered_levels)
+	SYNC(cached_level_up)
+	SYNC(cached_level_down)
+	SYNC(cached_level_east)
+	SYNC(cached_level_west)
+	SYNC(cached_level_north)
+	SYNC(cached_level_south)
 	SYNC(z_stack_lookup)
 	SYNC(struct_by_z)
 	z_stack_dirty = FALSE
@@ -56,18 +56,18 @@
  *
  * This does NOT rebuild turf graphics - call it on each level for that.
  */
-/datum/controller/subsystem/mapping/proc/RebuildVerticality(datum/space_level/updated, datum/space_level/targeted, dir)
-	if(!updated || !multiz_lookup_up || !multiz_lookup_down)
+/datum/controller/subsystem/mapping/proc/rebuild_verticality(datum/space_level/updated, datum/space_level/targeted, dir)
+	if(!updated || !cached_level_up || !cached_level_down)
 		// full rebuild
 		z_stack_dirty = TRUE
-		multiz_lookup_up = list()
-		multiz_lookup_down = list()
-		multiz_lookup_up.len = world.maxz
-		multiz_lookup_down.len = world.maxz
+		cached_level_up = list()
+		cached_level_down = list()
+		cached_level_up.len = world.maxz
+		cached_level_down.len = world.maxz
 		for(var/i in 1 to world.maxz)
-			var/datum/space_level/level = space_levels[i]
-			multiz_lookup_up[i] = level.resolve_level_in_dir(UP)?.z_value
-			multiz_lookup_down[i] = level.resolve_level_in_dir(DOWN)?.z_value
+			var/datum/space_level/level = ordered_levels[i]
+			cached_level_up[i] = level.resolve_level_in_dir(UP)?.z_value
+			cached_level_down[i] = level.resolve_level_in_dir(DOWN)?.z_value
 	else
 		// smart rebuild
 		ASSERT(dir)
@@ -77,9 +77,9 @@
 		var/datum/space_level/level = updated
 		switch(dir)
 			if(UP)
-				multiz_lookup_up[level.z_value] = level.resolve_level_in_dir(UP)?.z_value
+				cached_level_up[level.z_value] = level.resolve_level_in_dir(UP)?.z_value
 			if(DOWN)
-				multiz_lookup_down[level.z_value] = level.resolve_level_in_dir(DOWN)?.z_value
+				cached_level_down[level.z_value] = level.resolve_level_in_dir(DOWN)?.z_value
 			else
 				CRASH("Invalid dir: [dir]")
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MULTIZ_UPDATE_VERTICAL)
@@ -90,19 +90,19 @@
  * This does NOT rebuild turf graphics - call it on each level for that.
  */
 /datum/controller/subsystem/mapping/proc/rebuild_transitions(datum/space_level/updated, datum/space_level/targeted, dir)
-	if(!updated || !transition_lookup_east || !transition_lookup_west || !transition_lookup_north || !transition_lookup_south)
+	if(!updated || !cached_level_east || !cached_level_west || !cached_level_north || !cached_level_south)
 		// full rebuild
-		transition_lookup_east = list()
-		transition_lookup_west = list()
-		transition_lookup_north = list()
-		transition_lookup_south = list()
-		transition_lookup_east.len = transition_lookup_west.len = transition_lookup_north.len = transition_lookup_south.len = world.maxz
+		cached_level_east = list()
+		cached_level_west = list()
+		cached_level_north = list()
+		cached_level_south = list()
+		cached_level_east.len = cached_level_west.len = cached_level_north.len = cached_level_south.len = world.maxz
 		for(var/i in 1 to world.maxz)
-			var/datum/space_level/level = space_levels[i]
-			transition_lookup_north[i] = level.resolve_level_in_dir(NORTH)?.z_value
-			transition_lookup_south[i] = level.resolve_level_in_dir(SOUTH)?.z_value
-			transition_lookup_east[i] = level.resolve_level_in_dir(EAST)?.z_value
-			transition_lookup_west[i] = level.resolve_level_in_dir(WEST)?.z_value
+			var/datum/space_level/level = ordered_levels[i]
+			cached_level_north[i] = level.resolve_level_in_dir(NORTH)?.z_value
+			cached_level_south[i] = level.resolve_level_in_dir(SOUTH)?.z_value
+			cached_level_east[i] = level.resolve_level_in_dir(EAST)?.z_value
+			cached_level_west[i] = level.resolve_level_in_dir(WEST)?.z_value
 	else
 		// smart rebuild
 		if(!updated.instantiated)
@@ -112,13 +112,13 @@
 		var/datum/space_level/other
 		switch(dir)
 			if(NORTH)
-				transition_lookup_north[level.z_value] = level.resolve_level_in_dir(NORTH)?.z_value
+				cached_level_north[level.z_value] = level.resolve_level_in_dir(NORTH)?.z_value
 			if(SOUTH)
-				transition_lookup_south[level.z_value] = level.resolve_level_in_dir(SOUTH)?.z_value
+				cached_level_south[level.z_value] = level.resolve_level_in_dir(SOUTH)?.z_value
 			if(EAST)
-				transition_lookup_east[level.z_value] = level.resolve_level_in_dir(EAST)?.z_value
+				cached_level_east[level.z_value] = level.resolve_level_in_dir(EAST)?.z_value
 			if(WEST)
-				transition_lookup_west[level.z_value] = level.resolve_level_in_dir(WEST)?.z_value
+				cached_level_west[level.z_value] = level.resolve_level_in_dir(WEST)?.z_value
 			else
 				CRASH("Invalid dir: [dir]")
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MULTIZ_UPDATE_HORIZONTAL)
@@ -128,7 +128,7 @@
  *
  * Returns the zlevel index used/created.
  */
-/datum/controller/subsystem/mapping/proc/InstantiateMapLevel(datum/space_level/level, load_from_path = TRUE, rebuild_datastructures_immediately = TRUE, rebuild_turfs_immediately = TRUE)
+/datum/controller/subsystem/mapping/proc/instantiate_map_level(datum/space_level/level, load_from_path = TRUE, rebuild_datastructures_immediately = TRUE, rebuild_turfs_immediately = TRUE)
 	ASSERT(istype(level))
 	#warn add support for filling void tiles where there's no map!
 	#warn not-so-microoptimization - change world.turf before z increase!
@@ -142,7 +142,7 @@
 	if(new_z in reusable_levels)
 		reusable_levels -= new_z
 
-	space_levels[new_z] = level
+	ordered_levels[new_z] = level
 
 	var/list/datum/parsed_map/parsed_maps = list()
 
@@ -185,7 +185,7 @@
 	if(rebuild_datastructures_immediately)
 		RebuildCrosslinking()
 		rebuild_transitions()
-		RebuildVerticality()
+		rebuild_verticality()
 
 	if(rebuild_turfs_immediately)
 		// we don't have to rebuild our own, because mapload should have done that for up/down, but we do have to do transitions
@@ -198,16 +198,16 @@
 /**
  * Creates a naked level
  */
-/datum/controller/subsystem/mapping/proc/InstantiateRawLevel(rebuild_immediately)
+/datum/controller/subsystem/mapping/proc/instantiate_raw_level(rebuild_immediately)
 	var/datum/space_level/level = new
-	return InstantiateMapLevel(level, FALSE, rebuild_immediately)
+	return instantiate_map_level(level, FALSE, rebuild_immediately)
 
 /**
  * Called to instantiate a /datum/map_data's physical levels.
  *
  * Returns an ordered list of zlevel indices used/created, or null if failed
  */
-/datum/controller/subsystem/mapping/proc/InstantiateMapDatum(datum/map_data/config, load_from_path = TRUE, rebuild_datastructures_immediately = TRUE, rebuild_turfs_immediately = TRUE)
+/datum/controller/subsystem/mapping/proc/instantiate_map_datum(datum/map_data/config, load_from_path = TRUE, rebuild_datastructures_immediately = TRUE, rebuild_turfs_immediately = TRUE)
 	loaded_levels += config
 
 	var/list/indices = list()
@@ -216,7 +216,7 @@
 		if(!istype(L))
 			stack_trace("Invalid level [L] in [config]")
 			continue
-		indices += InstantiateMapLevel(L, load_from_path, FALSE, FALSE)
+		indices += instantiate_map_level(L, load_from_path, FALSE, FALSE)
 
 	if(config.world_structs)
 		for(var/list/L as anything in config.world_structs)
@@ -231,7 +231,7 @@
 	if(rebuild_datastructures_immediately)
 		RebuildCrosslinking()
 		rebuild_transitions()
-		RebuildVerticality()
+		rebuild_verticality()
 
 	if(rebuild_turfs_immediately)
 		RebuildMapLevelTurfs(indices)
@@ -250,7 +250,7 @@
 		for(var/i in 1 to world.maxz)
 			indices += i
 	for(var/number in indices)
-		var/datum/space_level/L = space_levels[number]
+		var/datum/space_level/L = ordered_levels[number]
 		if(transitions)
 			L.rebuild_transitions()
 		if(turfs)
@@ -266,7 +266,7 @@
 /datum/controller/subsystem/mapping/proc/RebuildCrosslinking()
 	// gather levels
 	var/list/datum/space_level/linking = list()
-	for(var/datum/space_level/potential as anything in space_levels)
+	for(var/datum/space_level/potential as anything in ordered_levels)
 		if(potential.linkage_mode == Z_LINKAGE_CROSSLINKED)
 			linking += potential
 	// lay levels out in a 2d grid, the smallest square that can fit them all
@@ -289,10 +289,10 @@
 	if(size == 1)
 		// wew
 		var/datum/space_level/L = linking[1]
-		L.SetEast(L)
-		L.SetWest(L)
-		L.SetNorth(L)
-		L.SetSouth(L)
+		L.set_east(L)
+		L.set_west(L)
+		L.set_north(L)
+		L.set_south(L)
 		return
 	for(var/i in 1 to linking.len)
 		var/datum/space_level/L = linking[i]
@@ -315,7 +315,7 @@
 		if(x == 0)
 			x = size
 		if(grid[CL_GRID(x, y, size)])
-			SetWest(grid[CL_GRID(x, y, size)])
+			set_west(grid[CL_GRID(x, y, size)])
 		--x
 	while(x != cl_x)
 	// scan right
@@ -326,7 +326,7 @@
 		if(x == size)
 			x = 1
 		if(grid[CL_GRID(x, y, size)])
-			SetWest(grid[CL_GRID(x, y, size)])
+			set_west(grid[CL_GRID(x, y, size)])
 		++x
 	while(x != cl_x)
 	// scan up
@@ -337,7 +337,7 @@
 		if(y == size)
 			y = 1
 		if(grid[CL_GRID(x, y, size)])
-			SetWest(grid[CL_GRID(x, y, size)])
+			set_west(grid[CL_GRID(x, y, size)])
 		++y
 	while(y != cl_y)
 	// scan down
@@ -348,7 +348,7 @@
 		if(y == 0)
 			y = size
 		if(grid[CL_GRID(x, y, size)])
-			SetWest(grid[CL_GRID(x, y, size)])
+			set_west(grid[CL_GRID(x, y, size)])
 		++y
 	while(y != cl_y)
 	ASSERT(east)
@@ -359,30 +359,37 @@
 #undef CL_GRID
 
 /**
- * Gets the /datum/space_level of a zlevel
+ * Gets the /datum/space_level of a zlevel or id
  */
-/datum/controller/subsystem/mapping/proc/GetLevelDatum(z)
+/datum/controller/subsystem/mapping/proc/fetch_level_datum(id_or_z)
+	if(istext(z))
+		return keyed_levels[id_or_z]
 	if(z < 1 || z > world.maxz)
 		CRASH("Z out of bounds")
-	return space_levels[z]
+	return ordered_levels[z]
+
+/**
+ * Gets the /datum/world_struct of a zlevel or id
+ */
+/datum/controller/subsystem/mapping/proc/fetch_struct_datum(id_or_z)
 
 /**
  * Gets the sorted Z stack list of a level - the levels accessible from a single level, in multiz
  */
-/datum/controller/subsystem/mapping/proc/GetZStack(z)
+/datum/controller/subsystem/mapping/proc/get_z_stack(z)
 	if(z_stack_dirty)
-		RecalculateZStack()
+		recalculate_z_stack()
 	var/list/L = z_stack_lookup[z]
 	return L.Copy()
 
 /**
  * Recalculates Z stack
  *
- * **Warning**: RebuildVerticality must be called to recalculate up/down lookups,
+ * **Warning**: rebuild_verticality must be called to recalculate up/down lookups,
  * as this proc uses them for speed!
  */
-/datum/controller/subsystem/mapping/proc/RecalculateZStack()
-	ValidateNoLoops()
+/datum/controller/subsystem/mapping/proc/recalculate_z_stack()
+	validate_no_loops()
 	z_stack_lookup = list()
 	z_stack_lookup.len = world.maxz
 	var/list/left = list()
@@ -395,7 +402,7 @@
 	var/list/datum/space_level/bottoms = list()
 	// let's sing the bottom song
 	for(var/z in left)
-		if(multiz_lookup_down[z])
+		if(cached_level_down[z])
 			continue
 		bottoms += z
 	for(var/datum/space_level/bottom as anything in bottoms)
@@ -403,23 +410,23 @@
 		var/list/stack = list(bottom.z_value)
 		z_stack_lookup[bottom.z_value] = stack
 		// let's sing the list manipulation song
-		var/datum/space_level/next = space_levels[multiz_lookup_up[bottom.z_value]]
+		var/datum/space_level/next = ordered_levels[cached_level_up[bottom.z_value]]
 		while(next)
 			stack += next.z_value
 			z_stack_lookup[next.z_value] = stack
-			next = space_levels[multiz_lookup_up[next.z_value]]
+			next = ordered_levels[cached_level_up[next.z_value]]
 
 /**
  * Ensures there's no up/down infinite loops
  */
-/datum/controller/subsystem/mapping/proc/ValidateNoLoops()
+/datum/controller/subsystem/mapping/proc/validate_no_loops()
 	var/list/loops = list()
 	for(var/z in 1 to world.maxz)
 		var/list/found
 		found = list(z)
 		var/next = z
 		while(next)
-			next = multiz_lookup_up[next]
+			next = cached_level_up[next]
 			if(next in found)
 				loops += next
 				break
@@ -427,7 +434,7 @@
 				found += next
 		next = z
 		while(next)
-			next = multiz_lookup_down[next]
+			next = cached_level_down[next]
 			if(next in found)
 				loops += next
 				break
@@ -436,7 +443,7 @@
 	if(!loops.len)
 		return
 	for(var/z in loops)
-		var/datum/space_level/level = space_levels[z]
+		var/datum/space_level/level = ordered_levels[z]
 		level.SetUp(null)
 		level.SetDown(null)
 		if(struct_by_z[z])
@@ -444,14 +451,14 @@
 			struct.Deconstruct()
 			qdel(struct)
 	stack_trace("WARNING: Up/Down loops found in zlevels [english_list(loops)]. This is not allowed and will cause both falling and zcopy to infinitely loop. All zlevels involved have been disconnected, and any structs involved have been destroyed.")
-	RebuildVerticality()
+	rebuild_verticality()
 
 /**
  * Gets the list of Z indices on the same horizontal plane as a zlevel in a world_struct
  *
  * Returns list(itself) if not in struct
  */
-/datum/controller/subsystem/mapping/proc/LevelsInPlane(z)
+/datum/controller/subsystem/mapping/proc/levels_in_plane(z)
 	if(!struct_by_z[z])
 		return list(z)
 	var/datum/world_struct/struct = struct_by_z[z]
@@ -460,9 +467,18 @@
 /**
  * Rebuilds world struct lookup
  */
-/datum/controller/subsystem/mapping/proc/RebuildStructLookup()
+/datum/controller/subsystem/mapping/proc/rebuild_struct_lookup()
 	struct_by_z = list()
 	struct_by_z.len = world.maxz
 	for(var/datum/world_struct/struct as anything in structs)
 		for(var/z in struct.real_indices)
 			struct_by_z[z] = struct
+
+/**
+ * ensures that a level has a struct; make one with just that level at 0, 0, 0, if needed
+ *
+ * returns existing OR new struct
+ */
+/datum/controller/subsystem/mapping/proc/ensure_struct(z)
+	RETURN_TYPE(/datum/world_struct)
+	#warn impl

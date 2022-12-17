@@ -13,7 +13,7 @@
 	B = get_turf(B)
 	if(A.z == B.z)
 		return get_dir(A, B)
-	if(!IsManagedLevel(A) || !IsManagedLevel(B))
+	if(!is_managed_level(A) || !is_managed_level(B))
 		// last ditch - check stacks
 		var/list/stack = z_stack_lookup
 		var/pos = stack.Find(B.z)
@@ -28,8 +28,8 @@
 		return
 	if(struct_by_z[A.z] != struct_by_z[B.z])
 		return NONE
-	var/datum/space_level/S1 = space_levels[A.z]
-	var/datum/space_level/S2 = space_levels[B.z]
+	var/datum/space_level/S1 = ordered_levels[A.z]
+	var/datum/space_level/S2 = ordered_levels[B.z]
 	. = NONE
 	if(S1.struct_z > S2.struct_z)
 		. |= DOWN

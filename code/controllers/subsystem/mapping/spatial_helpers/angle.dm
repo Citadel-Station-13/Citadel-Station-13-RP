@@ -14,10 +14,10 @@
 	B = get_turf(B)
 	if(A.z == B.z)
 		return get_physics_angle(A, B)
-	if(!IsManagedLevel(A) || !IsManagedLevel(B))
+	if(!is_managed_level(A) || !is_managed_level(B))
 		return null
 	if(struct_by_z[A.z] != struct_by_z[B.z])
 		return null
-	var/datum/space_level/S1 = space_levels[A.z]
-	var/datum/space_level/S2 = space_levels[B.z]
+	var/datum/space_level/S1 = ordered_levels[A.z]
+	var/datum/space_level/S2 = ordered_levels[B.z]
 	return get_angle_direct(S1.struct_x * world.maxx + A.x, S1.struct_y * world.maxy + A.y, S2.struct_x * world.maxx + B.x, S2.struct_y * world.maxy + B.y)

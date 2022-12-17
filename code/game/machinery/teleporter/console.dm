@@ -97,7 +97,7 @@
 		var/turf/T = get_turf(R)
 		if(!T)
 			continue
-		if(!(T.z in using_map_legacy().player_levels))
+		if(SSmapping.level_trait(T.z, ZTRAIT_ADMIN))
 			continue
 		var/tmpname = T.loc.name
 		if(areaindex[tmpname])
@@ -117,7 +117,7 @@
 			var/turf/T = get_turf(M)
 			if(!T)
 				continue
-			if(!(T.z in using_map_legacy().player_levels))
+			if(SSmapping.level_trait(T.z, ZTRAIT_ADMIN))
 				continue
 			var/tmpname = M.real_name
 			if(areaindex[tmpname])

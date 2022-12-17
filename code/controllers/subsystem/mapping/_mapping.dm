@@ -85,7 +85,7 @@ SUBSYSTEM_DEF(mapping)
 	// finalize
 	var/rebuild_start = REALTIMEOFDAY
 	RebuildCrosslinking()		// THIS GOES FIRST
-	RebuildVerticality()
+	rebuild_verticality()
 	rebuild_transitions()
 	RebuildMapLevelTurfs(null, TRUE, TRUE)
 	repopulate_sorted_areas()

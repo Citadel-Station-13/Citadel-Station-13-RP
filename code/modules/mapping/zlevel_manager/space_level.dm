@@ -7,12 +7,15 @@
  */
 /datum/space_level
 	//! Basic information
-	/// Name
+	/// Name - NOT IC FACING
 	var/name
 	/// ID - defaults to null
 	var/id
 	/// id was autogen'd
 	var/random_id
+	/// fluff ID - seen IC by players
+	var/fluff_id
+	#warn fluff id impl parse rand
 
 	//! Instantiation
 	/// Our z value
@@ -305,9 +308,9 @@
  * @params
  * - errors - error list
  * - map_data - (optional) map data we're loading in from
- * - level_by_id - (optional) id-associative list of relevant other levels
+ * - keyed_levels - (optional) id-associative list of relevant other levels
  */
-/datum/space_level/proc/cross_validate(list/errors = list(), datum/map_data/map, list/level_by_id)
+/datum/space_level/proc/cross_validate(list/errors = list(), datum/map_data/map, list/keyed_levels)
 	. = TRUE
 
 	#warn width/height matches
@@ -337,10 +340,10 @@
 /datum/space_level/proc/set_id(id)
 	if(instantiated)
 		CRASH("attempted to change id of instantiated level; this will usually break things if allowed.")
-	SSmapping.level_by_id -= src.id
+	SSmapping.keyed_levels -= src.id
 	src.id = id
 	#warn check to make sure
-	SSmapping.level_by_id[src.id] = src
+	SSmapping.keyed_levels[src.id] = src
 
 #warn everything above
 
@@ -628,17 +631,17 @@
 	else
 		switch(dir)
 			if(NORTH)
-				return istype(north, /datum/space_level)? north : SSmapping.level_by_id[north]
+				return istype(north, /datum/space_level)? north : SSmapping.keyed_levels[north]
 			if(SOUTH)
-				return istype(south, /datum/space_level)? south : SSmapping.level_by_id[south]
+				return istype(south, /datum/space_level)? south : SSmapping.keyed_levels[south]
 			if(EAST)
-				return istype(east, /datum/space_level)? east : SSmapping.level_by_id[east]
+				return istype(east, /datum/space_level)? east : SSmapping.keyed_levels[east]
 			if(WEST)
-				return istype(west, /datum/space_level)? west : SSmapping.level_by_id[west]
+				return istype(west, /datum/space_level)? west : SSmapping.keyed_levels[west]
 			if(UP)
-				return istype(up, /datum/space_level)? up : SSmapping.level_by_id[up]
+				return istype(up, /datum/space_level)? up : SSmapping.keyed_levels[up]
 			if(DOWN)
-				return istype(down, /datum/space_level)? down : SSmapping.level_by_id[down]
+				return istype(down, /datum/space_level)? down : SSmapping.keyed_levels[down]
 			else
 				CRASH("Invalid dir: [dir]")
 

@@ -5,19 +5,11 @@ GLOBAL_DATUM_INIT(lobby_image, /obj/effect/lobby_image, new)
 	desc = "How are you reading this?"
 	screen_loc = "CENTER-7,CENTER-7"
 
-/obj/effect/lobby_image/Initialize(mapload)
-	icon = using_map_legacy().lobby_icon
-	var/known_icon_states = icon_states(icon)
-	for(var/lobby_screen in using_map_legacy().lobby_screens)
-		if(!(lobby_screen in known_icon_states))
-			log_world("Lobby screen '[lobby_screen]' did not exist in the icon set [icon].")
-			using_map_legacy().lobby_screens -= lobby_screen
+// todo: the image needs to be autocentered for widescreen/variable screens
 
-	if(using_map_legacy().lobby_screens.len)
-		icon_state = pick(using_map_legacy().lobby_screens)
-	else
-		icon_state = known_icon_states[1]
-	. = ..()
+/obj/effect/lobby_image/Initialize(mapload)
+	SSticker.build_lobby_screen(src)
+	return ..()
 
 /mob/new_player/Login()
 	update_Login_details()	//handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying

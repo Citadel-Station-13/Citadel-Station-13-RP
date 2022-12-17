@@ -152,6 +152,7 @@
 /area/proc/reg_in_areas_in_z()
 	if(!length(contents))
 		return
+	// todo: transition it to a non-text lookup
 	var/list/areas_in_z = SSmapping.areas_in_z
 	// update_areasize()
 	if(!z)

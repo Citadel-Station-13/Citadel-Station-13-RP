@@ -2,7 +2,7 @@
  * Returns an attribute of a zlevel
  */
 /datum/controller/subsystem/mapping/proc/level_attribute(z, key)
-	var/datum/space_level/L = space_levels[z]
+	var/datum/space_level/L = ordered_levels[z]
 	return L.attributes[key]
 
 /**
@@ -11,6 +11,6 @@
 /datum/controller/subsystem/mapping/proc/levels_by_attribute(key, value)
 	RETURN_TYPE(/list)
 	. = list()
-	for(var/datum/space_level/L as anything in space_levels)
+	for(var/datum/space_level/L as anything in ordered_levels)
 		if(L.attributes[key] == value)
 			. += L.z_value

@@ -1,9 +1,9 @@
 /**
  * # World Structs
  *
- * WARNING: Advanced structure, only use if you know what you're doing
- * Used in seamless zlevel wrapping, like on Z-gridded planets
- * Needed until BYOND can natively support this.
+ * Used to bunch zlevels up into managed sectors
+ * Internally is used by overmaps to act as level-collections
+ * Internally is used to resolve what levels corrospond to what world-sectors.
  */
 /datum/world_struct
 	#warn add id, random_id
@@ -39,6 +39,10 @@
 	var/tmp/list/stack_lookup
 	/// Regex
 	var/static/regex/grid_parser = new(@"([\n]+),([\n)]+,([\n]+)", "g")
+	/// the overmap object we're attached to
+	var/tmp/obj/effect/overmap/visitable/overmap_sector
+	#warn hook/impl
+	#warn if we're deconstructed this needs to be delinked and instructed to create its own struct later
 
 #warn parse this file
 #warn vvguard the parser
@@ -76,7 +80,7 @@
 	var/list/plane_cache = list()
 	for(var/key in z_grid)
 		var/id = z_grid[key]
-		var/datum/space_level/L = SSmapping.level_by_id[id]
+		var/datum/space_level/L = SSmapping.keyed_levels[id]
 		real_indices += L.z_value
 		grid_parser.Find(key)
 		var/x = text2num(grid_parser.group[1])
@@ -173,7 +177,7 @@
 /datum/world_struct/proc/build_stacks(list/z_grid, list/bottom_keys)
 	. = list()
 	for(var/bottom in bottom_keys)
-		var/datum/space_level/B = SSmapping.level_by_id[bottom]
+		var/datum/space_level/B = SSmapping.keyed_levels[bottom]
 		var/list/constructed = list()
 		do
 			constructed += B.z_value
@@ -191,7 +195,7 @@
 		// pop one
 		var/key = possible[1]
 		var/id = z_grid[key]
-		var/datum/space_level/L = SSmapping.level_by_id[id]
+		var/datum/space_level/L = SSmapping.keyed_levels[id]
 		possible.Cut(1,2)
 		grid_parser.Find(key)
 		var/x = text2num(grid_parser.group[1])
@@ -227,7 +231,7 @@
 			. = grid["[x],[y+1],[z]"]
 		if(SOUTH)
 			. = grid["[x],[y-1],[z]"]
-	return SSmapping.level_by_id[.]
+	return SSmapping.keyed_levels[.]
 
 /datum/world_struct/proc/Deconstruct(rebuild = TRUE)
 	if(!constructed)
@@ -257,8 +261,8 @@
 	SSmapping.structs += src
 	SSmapping.z_stack_dirty = TRUE
 	if(rebuild)
-		SSmapping.RebuildStructLookup()
-		SSmapping.RebuildVerticality()
+		SSmapping.rebuild_struct_lookup()
+		SSmapping.rebuild_verticality()
 		SSmapping.rebuild_transitions()
 		SSmapping.RebuildCrosslinking()
 
@@ -266,8 +270,8 @@
 	SSmapping.structs -= src
 	SSmapping.z_stack_dirty = TRUE
 	if(rebuild)
-		SSmapping.RebuildStructLookup()
-		SSmapping.RebuildVerticality()
+		SSmapping.rebuild_struct_lookup()
+		SSmapping.rebuild_verticality()
 		SSmapping.rebuild_transitions()
 		SSmapping.RebuildCrosslinking()
 
@@ -289,13 +293,27 @@
 			stack_trace("Invalid key [key].")
 			. = FALSE
 		var/id = z_grid[key]
-		if(!SSmapping.level_by_id[id])
-			stack_trace("Couldn't locate level id [id] in SSmapping level_by_id list.")
+		if(!SSmapping.keyed_levels[id])
+			stack_trace("Couldn't locate level id [id] in SSmapping keyed_levels list.")
 			. = FALSE
-		if(SSmapping.level_by_id[id].struct)
+		if(SSmapping.keyed_levels[id].struct)
 			stack_trace("Level id [id] was already in a struct.")
 			. = FALSE
 		if(idmap[id])
 			stack_trace("Duplicate level ID [id]")
 			. = FALSE
 		idmap[id] = TRUE
+
+//! level fetching
+/**
+ * returns mutable copy of real_indices
+ */
+/datum/world_struct/proc/fetch_z_list()
+	return real_indices.Copy()
+
+/**
+ * directly fetches real indices
+ * DO NOT MODIFY RETURNED LIST
+ */
+/datum/world_struct/proc/direct_z_list()
+	return real_indices

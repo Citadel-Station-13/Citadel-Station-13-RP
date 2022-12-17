@@ -60,7 +60,7 @@
 	var/start_time = REALTIMEOFDAY
 	init_log("Loading [map.name]...")
 	station_start = world.maxz + 1
-	InstantiateMapDatum(map)
+	instantiate_map_datum(map)
 	if(islist(map.lateload))
 		for(var/group in map.lateload)
 			if(!islist(map.lateload[group]))

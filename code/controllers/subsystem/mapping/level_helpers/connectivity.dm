@@ -77,7 +77,7 @@
  */
 /datum/controller/subsystem/mapping/proc/get_connected_levels_crosslink(z)
 	RETURN_TYPE(/list)
-	var/datum/space_level/L = space_levels[z]
+	var/datum/space_level/L = ordered_levels[z]
 	if(L.linkage_mode != Z_LINKAGE_CROSSLINKED)
 		return list(z)
 	return crosslinked_levels()

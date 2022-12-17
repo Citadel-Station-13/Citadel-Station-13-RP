@@ -23,10 +23,29 @@
 	var/keep_cached_map = FALSE
 	/// Default annihilate bounds option
 	var/default_annihilate = FALSE
+
+	//! for when loading new zlevels
 	/// Traits for load_new_z
 	var/list/level_traits
 	/// Attributes for load_new_z
 	var/list/level_attributes
+	/// baseturf for load_new_z
+	var/level_baseturf
+	/// basearea for load_new_z
+	var/level_basearea
+	/// indoors air
+	var/level_air_indoors
+	/// outdoors air
+	var/level_air_outdoors
+	/// default level linkage
+	var/level_linkage = Z_LINKAGE_NORMAL
+	/// default level transition
+	var/level_transition = Z_TRANSITION_DEFAULT
+	/// level id; null to random
+	var/level_id
+	/// IC fluff ID that players can see; null to random
+	var/level_fluff_id
+	#warn impl 8 above
 
 /datum/map_template/New(path = null, rename = null, cache = FALSE)
 	if(path)
@@ -112,7 +131,7 @@
 	var/y = centered? max(round((world.maxy - height) / 2), 1) : 1
 
 	var/datum/space_level/level = new(id, traits, attributes)
-	SSmapping.InstantiateMapLevel(level)
+	SSmapping.instantiate_map_level(level)
 	if(!level.instantiated)
 		CRASH("Level didn't instantiate (instantiated is false)")
 	if(!level.z_value)

@@ -52,7 +52,7 @@
 /obj/machinery/computer/communications/Topic(href, href_list)
 	if(..())
 		return 1
-	if (using_map_legacy() && !(src.z in using_map_legacy().contact_levels))
+	if (!SSmapping.level_trait(get_z(src), ZTRAIT_STATION))
 		to_chat(usr, "<font color='red'><b>Unable to establish a connection:</b></font> <font color='black'>You're too far away from the station!</font>")
 		return
 	usr.set_machine(src)

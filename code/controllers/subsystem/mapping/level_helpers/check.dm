@@ -1,5 +1,5 @@
 /**
- * GAME PROC: IsManagedLevel(z)
+ * GAME PROC: is_managed_level(z)
  * Checks if we should use GetVirtualCoords or similar for things like GPSes, radios
  *
  * Returns TRUE if:

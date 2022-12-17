@@ -76,43 +76,49 @@
 	name = "Asteroid Belt 1"
 	desc = "Mining, but rogue. Zone 1"
 	mappath = "maps/map_levels/192x192/roguemining_192x192/rogue_mine1.dmm"
-	associated_map_datum = /datum/map_z_level/space_lateload/roguemines1
-
-/datum/map_z_level/space_lateload/roguemines1
-	name = "Belt 1"
-	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
+	level_traits = list()
+	level_attributes = list()
+	level_baseturf = /turf/space
+	level_linkage = Z_LINKAGE_SELFLOOP
+	level_transition = Z_TRANSITION_FORCED
+	level_id = "roguemine_1"
+	level_fluff_id = "Belter Zone 1"
 
 /datum/map_template/lateload/space/roguemines2
 	name = "Asteroid Belt 2"
 	desc = "Mining, but rogue. Zone 2"
 	mappath = "maps/map_levels/192x192/roguemining_192x192/rogue_mine2.dmm"
-
-	associated_map_datum = /datum/map_z_level/space_lateload/roguemines2
-
-/datum/map_z_level/space_lateload/roguemines2
-	name = "Belt 2"
-	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
+	level_traits = list()
+	level_attributes = list()
+	level_baseturf = /turf/space
+	level_linkage = Z_LINKAGE_SELFLOOP
+	level_transition = Z_TRANSITION_FORCED
+	level_id = "roguemine_2"
+	level_fluff_id = "Belter Zone 2"
 
 /datum/map_template/lateload/space/roguemines3
 	name = "Asteroid Belt 3"
 	desc = "Mining, but rogue. Zone 3"
 	mappath = "maps/map_levels/192x192/roguemining_192x192/rogue_mine3.dmm"
-	associated_map_datum = /datum/map_z_level/space_lateload/roguemines3
-
-/datum/map_z_level/space_lateload/roguemines3
-	name = "Belt 3"
-	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
-
+	level_traits = list()
+	level_attributes = list()
+	level_baseturf = /turf/space
+	level_linkage = Z_LINKAGE_SELFLOOP
+	level_transition = Z_TRANSITION_FORCED
+	level_id = "roguemine_3"
+	level_fluff_id = "Belter Zone 3"
 
 /datum/map_template/lateload/space/roguemines4
 	name = "Asteroid Belt 4"
 	desc = "Mining, but rogue. Zone 4"
 	mappath = "maps/map_levels/192x192/roguemining_192x192/rogue_mine4.dmm"
-	associated_map_datum = /datum/map_z_level/space_lateload/roguemines1
-
-/datum/map_z_level/space_lateload/roguemines4
-	name = "Belt 4"
-	flags = MAP_LEVEL_CONTACT|MAP_LEVEL_PLAYER
+	level_traits = list()
+	level_attributes = list()
+	level_baseturf = /turf/space
+	level_linkage = Z_LINKAGE_SELFLOOP
+	level_transition = Z_TRANSITION_FORCED
+	level_id = "roguemine_4"
+	level_fluff_id = "Belter Zone 4"
 
 //////////////////////////
 // Alien Ship          ///
