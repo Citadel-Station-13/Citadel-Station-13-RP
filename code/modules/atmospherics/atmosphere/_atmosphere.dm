@@ -6,6 +6,7 @@
 	var/gas_string
 	/// Unique ID. MUST be different for every atmosphere! Defaults to typepath.
 	var/id
+	// todo: allow id to be set but still allow typepath lookup
 
 	/// A list of gases to always have. Associative gas datum typepath:mols
 	var/list/base_gases
@@ -30,7 +31,7 @@
 
 /datum/atmosphere/New()
 	if(!id)
-		id = "[type]"
+		id = type
 	generate_gas_string()
 
 /datum/atmosphere/proc/generate_gas_string()
