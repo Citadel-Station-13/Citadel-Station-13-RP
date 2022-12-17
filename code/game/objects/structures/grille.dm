@@ -11,8 +11,8 @@
 	explosion_resistance = 1
 
 	// smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_GRILLE)
-	canSmoothWith = list(SMOOTH_GROUP_GRILLE)
+	smoothing_groups = (SMOOTH_GROUP_GRILLE)
+	canSmoothWith = (SMOOTH_GROUP_GRILLE)
 
 	var/health = 10
 	var/destroyed = 0

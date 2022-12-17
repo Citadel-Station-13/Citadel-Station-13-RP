@@ -21,6 +21,9 @@ $include entries/hub.txt
 # Which explicitly disables LOG_TWITTER, as well as locking it.
 # There are various options which are hard-locked for security reasons.
 
+## Uncomment to set the number of /world/Reboot()s before the DreamDaemon restarts itself. 0 means restart every round. Requires tgstation server tools.
+#ROUNDS_UNTIL_HARD_RESTART 5
+
 ## Uncomment to enable minimap generation
 MINIMAPS_ENABLED
 

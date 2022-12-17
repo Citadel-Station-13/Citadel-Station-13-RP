@@ -9,8 +9,8 @@
 	plane = TURF_PLANE
 
 	// smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_LATTICE)
-	canSmoothWith = list(SMOOTH_GROUP_LATTICE, SMOOTH_GROUP_OPEN_FLOOR, SMOOTH_GROUP_WALLS)
+	smoothing_groups = (SMOOTH_GROUP_LATTICE)
+	canSmoothWith = (SMOOTH_GROUP_LATTICE + SMOOTH_GROUP_WALLS + SMOOTH_GROUP_OPEN_FLOOR)
 
 /obj/structure/lattice/Initialize(mapload)
 	. = ..()

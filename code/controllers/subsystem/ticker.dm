@@ -3,6 +3,7 @@ SUBSYSTEM_DEF(ticker)
 	wait = 20
 	init_order = INIT_ORDER_TICKER
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
+
 	/// Current state of the game
 	var/static/current_state = GAME_STATE_INIT
 
@@ -14,14 +15,20 @@ SUBSYSTEM_DEF(ticker)
 
 	/// Should we immediately start?
 	var/start_immediately = FALSE
-	/// Is everything in order for us to start a timed reboot?
+	/// All roundend preparation done with, all that's left is reboot.
 	var/ready_for_reboot = FALSE
 	/// Is round end delayed?
 	var/delay_end = FALSE
+	/// A message to display to anyone who tries to restart the world after a delay.
+	var/admin_delay_notice = ""
+
+	/// Boolean to track and check if our subsystem setup is done.
+	var/setup_done = FALSE
 	/// Force round end
 	var/force_ending = FALSE
 
-	var/timeLeft						//pregame timer
+	/// Pregame timer.
+	var/timeLeft
 	var/start_at
 
 	var/hide_mode = 0
@@ -30,18 +37,27 @@ SUBSYSTEM_DEF(ticker)
 	var/event_time = null
 	var/event = 0
 
-	var/list/datum/mind/minds = list()//The people in the game. Used for objective tracking.
+	/// The people in the game. Used for objective tracking.
+	var/list/datum/mind/minds = list()
 
-	var/Bible_icon_state	// icon_state the chaplain has chosen for his bible
-	var/Bible_item_state	// item_state the chaplain has chosen for his bible
-	var/Bible_name			// name of the bible
+	//! Why is this in Ticker??? @Zandario
+	/// icon_state the chaplain has chosen for his bible.
+	var/Bible_icon_state
+	/// item_state the chaplain has chosen for his bible.
+	var/Bible_item_state
+	/// Name of the bible.
+	var/Bible_name
 	var/Bible_deity_name
 
-	var/random_players = 0 	// if set to nonzero, ALL players who latejoin or declare-ready join will have random appearances/genders
+	/// If set to nonzero, ALL players who latejoin or declare-ready join will have random appearances/genders.
+	var/random_players = 0
 
-	var/list/syndicate_coalition = list() // list of traitor-compatible factions
-	var/list/factions = list()			  // list of all factions
-	var/list/availablefactions = list()	  // list of factions with openings
+	/// List of traitor-compatible factions.
+	var/list/syndicate_coalition = list()
+	/// List of all factions.
+	var/list/factions = list()
+	/// List of factions with openings.
+	var/list/availablefactions = list()
 
 	var/triai = 0//Global holder for Triumvirate
 
@@ -57,7 +73,7 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/Initialize()
 	if(!syndicate_code_phrase)
-		syndicate_code_phrase	= generate_code_phrase()
+		syndicate_code_phrase = generate_code_phrase()
 	if(!syndicate_code_response)
 		syndicate_code_response = generate_code_phrase()
 
@@ -70,12 +86,44 @@ SUBSYSTEM_DEF(ticker)
 		if(GAME_STATE_INIT)
 			// We fire after init finishes
 			on_mc_init_finish()
+
 		if(GAME_STATE_PREGAME)
 			process_pregame()
+
 		if(GAME_STATE_SETTING_UP)
 			setup()
+			setup_done = TRUE
+
 		if(GAME_STATE_PLAYING)
 			round_process()
+
+			if(!mode.explosion_in_progress && mode.check_finished(force_ending) || force_ending)
+				current_state = GAME_STATE_FINISHED
+				round_end_time = world.time
+				declare_completion()
+				Master.SetRunLevel(RUNLEVEL_POSTGAME)
+
+				callHook("roundend")
+
+				if (mode.station_was_nuked)
+					feedback_set_details("end_proper","nuke")
+				else
+					feedback_set_details("end_proper","proper completion")
+
+
+				if(blackbox)
+					blackbox.save_all_data_to_sql()
+
+				send2irc("Server", "A round of [mode.name] just ended.")
+				if(CONFIG_GET(string/chat_roundend_notice_tag))
+					var/broadcastmessage = "The round has ended."
+					if(CONFIG_GET(string/chat_reboot_role))
+						broadcastmessage += "\n\n<@&[CONFIG_GET(string/chat_reboot_role)]>, the server will reboot shortly!"
+					send2chat(broadcastmessage, CONFIG_GET(string/chat_roundend_notice_tag))
+
+				SSdbcore.SetRoundEnd()
+				SSpersistence.SavePersistence()
+
 
 /datum/controller/subsystem/ticker/proc/on_mc_init_finish()
 	send2irc("Server lobby is loaded and open at byond://[config_legacy.serverurl ? config_legacy.serverurl : (config_legacy.server ? config_legacy.server : "[world.address]:[world.port]")]")
@@ -107,7 +155,7 @@ SUBSYSTEM_DEF(ticker)
 			SSvote.autogamemode()
 		//end
 
-/datum/controller/subsystem/ticker/proc/Reboot(reason, delay)
+/datum/controller/subsystem/ticker/proc/Reboot(reason, end_string, delay)
 	set waitfor = FALSE
 	if(usr && !check_rights(R_SERVER, TRUE))
 		return
@@ -115,11 +163,12 @@ SUBSYSTEM_DEF(ticker)
 	if(!delay)
 		delay = CONFIG_GET(number/round_end_countdown) * 10
 
-	if(delay_end)
-		to_chat(world, "<span class='boldannounce'>An admin has delayed the round end.</span>")
+	var/skip_delay = check_rights()
+	if(delay_end && !skip_delay)
+		to_chat(world, SPAN_BOLDANNOUNCE("An admin has delayed the round end."))
 		return
 
-	to_chat(world, "<span class='boldannounce'>Rebooting World in [DisplayTimeText(delay)]. [reason]</span>")
+	to_chat(world, SPAN_BOLDANNOUNCE("Rebooting World in [DisplayTimeText(delay)]. [reason]"))
 
 	var/start_wait = world.time
 	//UNTIL(round_end_sound_sent || (world.time - start_wait) > (delay * 2))	//don't wait forever
@@ -129,22 +178,25 @@ SUBSYSTEM_DEF(ticker)
 		var/timeleft = delay - (world.time - start_wait)
 		// If we have less than 10 seconds left.
 		if(timeleft <= 10 SECONDS)
-			to_chat(world, "<span class='boldannounce'>Rebooting in [DisplayTimeText(timeleft, 1)]</span>")
+			to_chat(world, SPAN_BOLDANNOUNCE("Rebooting in [DisplayTimeText(timeleft, 1)]"))
 			sleep(10)
 		//If we have 30 seconds left, announce and sleep for the rest of the time.
 		if(timeleft <= 30 SECONDS)
 			var/time = timeleft - 10 SECONDS
-			to_chat(world, "<span class='boldannounce'>Rebooting in [DisplayTimeText(timeleft, 1)]</span>")
+			to_chat(world, SPAN_BOLDANNOUNCE("Rebooting in [DisplayTimeText(timeleft, 1)]"))
 			sleep(time)
 		// Otherwise, per minute.
 		else
-			to_chat(world, "<span class='boldannounce'>Rebooting in [DisplayTimeText(timeleft, 1)]</span>")
+			to_chat(world, SPAN_BOLDANNOUNCE("Rebooting in [DisplayTimeText(timeleft, 1)]"))
 			sleep(60 SECONDS)
 
-	if(delay_end)
-		to_chat(world, "<span class='boldannounce'>Reboot was cancelled by an admin.</span>")
+	if(delay_end && !skip_delay)
+		to_chat(world, SPAN_BOLDANNOUNCE("Reboot was cancelled by an admin."))
 		return
-	log_game("<span class='boldannounce'>World reboot triggered by ticker. [reason]</span>")
+	// if(end_string)
+	// 	end_state = end_string
+
+	log_game(SPAN_BOLDANNOUNCE("Rebooting World. [reason]"))
 
 	world.Reboot()
 
@@ -450,38 +502,7 @@ SUBSYSTEM_DEF(ticker)
 		game_finished = (mode.check_finished() || (SSemergencyshuttle.returned() && SSemergencyshuttle.evac == 1)) || universe_has_ended
 		mode_finished = game_finished
 
-	if(force_ending || (!mode.explosion_in_progress && game_finished && (mode_finished || post_game)))
-		current_state = GAME_STATE_FINISHED
-		round_end_time = world.time
-		Master.SetRunLevel(RUNLEVEL_POSTGAME)
-
-		declare_completion()
-
-		callHook("roundend")
-
-		if (mode.station_was_nuked)
-			feedback_set_details("end_proper","nuke")
-		else
-			feedback_set_details("end_proper","proper completion")
-
-
-		if(blackbox)
-			blackbox.save_all_data_to_sql()
-
-		send2irc("Server", "A round of [mode.name] just ended.")
-		if(CONFIG_GET(string/chat_roundend_notice_tag))
-			var/broadcastmessage = "The round has ended."
-			if(CONFIG_GET(string/chat_reboot_role))
-				broadcastmessage += "\n\n<@&[CONFIG_GET(string/chat_reboot_role)]>, the server will reboot shortly!"
-			send2chat(broadcastmessage, CONFIG_GET(string/chat_roundend_notice_tag))
-
-		SSdbcore.SetRoundEnd()
-		SSpersistence.SavePersistence()
-		ready_for_reboot = TRUE
-		standard_reboot()
-
-
-	else if (mode_finished)
+	if (mode_finished)
 		post_game = 1
 
 		mode.cleanup()
@@ -496,11 +517,16 @@ SUBSYSTEM_DEF(ticker)
 	return 1
 
 /datum/controller/subsystem/ticker/proc/declare_completion()
-	to_chat(world, "<br><br><br><H1>A round of [mode.name] has ended!</H1>")
-	for(var/I in round_end_events)
-		var/datum/callback/cb = I
-		cb.InvokeAsync()
+	set waitfor = FALSE
+
+	to_chat(world, "<span class='infoplain'><BR><BR><BR><span class='big bold'>The round has ended.</span></span>")
+	log_game("The round has ended.")
+
+	for(var/datum/callback/roundend_callbacks as anything in round_end_events)
+		roundend_callbacks.InvokeAsync()
 	LAZYCLEARLIST(round_end_events)
+
+
 	for(var/mob/Player in GLOB.player_list)
 		if(Player.mind && !isnewplayer(Player))
 			if(Player.stat != DEAD)
@@ -525,6 +551,8 @@ SUBSYSTEM_DEF(ticker)
 					to_chat(Player, "<font color='red'><b>You did not survive the events on [station_name()]...</b></font>")
 	to_chat(world, "<br>")
 
+	CHECK_TICK
+
 	for (var/mob/living/silicon/ai/aiPlayer in GLOB.mob_list)
 		if (aiPlayer.stat != 2)
 			to_chat(world, "<b>[aiPlayer.name] (Played by: [aiPlayer.key])'s laws at the end of the round were:</b>")
@@ -537,6 +565,8 @@ SUBSYSTEM_DEF(ticker)
 			for(var/mob/living/silicon/robot/robo in aiPlayer.connected_robots)
 				robolist += "[robo.name][robo.stat?" (Deactivated) (Played by: [robo.key]), ":" (Played by: [robo.key]), "]"
 			to_chat(world, "[robolist]")
+
+	CHECK_TICK
 
 	var/dronecount = 0
 
@@ -555,10 +585,14 @@ SUBSYSTEM_DEF(ticker)
 			if(robo) //How the hell do we lose robo between here and the world messages directly above this?
 				robo.laws.show_laws(world)
 
+	CHECK_TICK
+
 	if(dronecount)
 		to_chat(world, "<b>There [dronecount>1 ? "were" : "was"] [dronecount] industrious maintenance [dronecount>1 ? "drones" : "drone"] at the end of this round.</b>")
 
 	mode.declare_completion()//To declare normal completion.
+
+	CHECK_TICK
 
 	//Ask the event manager to print round end information
 	SSevents.RoundEnd()
@@ -580,4 +614,17 @@ SUBSYSTEM_DEF(ticker)
 	for(var/i in total_antagonists)
 		log_game("[i]s[total_antagonists[i]].")
 
-	return 1
+	CHECK_TICK
+
+	ready_for_reboot = TRUE
+	sleep(5 SECONDS)
+	standard_reboot()
+
+/datum/controller/subsystem/ticker/proc/standard_reboot()
+	if(ready_for_reboot)
+		if(mode.station_was_nuked)
+			Reboot("Station destroyed by Nuclear Device.", "nuke", 60 SECONDS)
+		else
+			Reboot("Round ended.", "proper completion")
+	else
+		CRASH("Attempted standard reboot without ticker roundend completion")
