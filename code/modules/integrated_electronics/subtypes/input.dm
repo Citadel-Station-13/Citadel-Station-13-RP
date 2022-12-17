@@ -956,7 +956,7 @@ GLOBAL_DATUM_INIT(circuit_translation_context, /datum/translation_context/simple
 	icon_state = "recorder"
 	complexity = 8
 	inputs = list()
-	flags = HEAR
+	atom_flags = ATOM_HEAR
 	outputs = list(
 	"speaker" = IC_PINTYPE_STRING,
 	"message" = IC_PINTYPE_STRING

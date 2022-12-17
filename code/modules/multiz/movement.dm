@@ -364,7 +364,7 @@
 
 // Called on everything that falling_atom might hit. Return TRUE if you're handling it so find_fall_target() will stop checking.
 /atom/proc/CheckFall(var/atom/movable/falling_atom)
-	if(density && !(flags & ON_BORDER))
+	if(density && !(atom_flags & ATOM_BORDER))
 		return TRUE
 	return prevent_z_fall(falling_atom, 0, NONE) & (FALL_TERMINATED | FALL_BLOCKED)
 

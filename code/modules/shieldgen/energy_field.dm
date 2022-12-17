@@ -108,8 +108,9 @@
 		update_icon()
 		update_nearby_tiles()
 
-/obj/effect/energy_field/update_icon(var/update_neightbors = 0)
-	overlays.Cut()
+/obj/effect/energy_field/update_icon(update_neightbors = 0)
+	cut_overlays()
+
 	var/list/adjacent_shields_dir = list()
 	for(var/direction in GLOB.cardinal)
 		var/turf/T = get_step(src, direction)
@@ -127,10 +128,12 @@
 		icon_state = "shield_broken"
 		set_light(3, 5, "#FF9900")
 
+	var/list/overlays_to_add = list()
 	// Edge overlays
 	for(var/found_dir in adjacent_shields_dir)
-		overlays += image(src.icon, src, icon_state = "shield_edge", dir = found_dir)
+		overlays_to_add += image(src.icon, src, icon_state = "shield_edge", dir = found_dir)
 
+	add_overlay(overlays_to_add)
 
 // Small visual effect, makes the shield tiles brighten up by becoming more opaque for a moment, and spreads to nearby shields.
 /obj/effect/energy_field/proc/impact_effect(var/i, var/list/affected_shields = list())

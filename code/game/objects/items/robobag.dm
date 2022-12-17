@@ -32,7 +32,7 @@
 		. += "<span class='notice'>\The [src] has a [corptag] attached to it.</span>"
 
 /obj/structure/closet/body_bag/cryobag/robobag/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	..()
 	if(corptag)
 		var/corptag_icon_state = "tag_blank"
@@ -46,7 +46,7 @@
 			corptag_icon_state = corptag.icon_state
 
 		var/image/I = image(icon, corptag_icon_state)
-		overlays += I
+		add_overlay(I)
 
 /obj/structure/closet/body_bag/cryobag/robobag/AltClick(mob/user)
 	if(!Adjacent(user))

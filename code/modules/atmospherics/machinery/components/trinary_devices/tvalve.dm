@@ -28,10 +28,10 @@
 	state = 1
 
 /obj/machinery/atmospherics/tvalve/update_icon(animation)
-	if(animation)
-		flick("tvalve[mirrored ? "m" : ""][src.state][!src.state]",src)
-	else
-		icon_state = "tvalve[mirrored ? "m" : ""][state]"
+	icon_state = "tvalve[mirrored ? "m" : ""][state]"
+
+/obj/machinery/atmospherics/tvalve/proc/animation()
+	flick("tvalve[mirrored ? "m" : ""][src.state][!src.state]",src)
 
 /obj/machinery/atmospherics/tvalve/update_underlays()
 	if(..())
@@ -162,7 +162,7 @@
 
 /obj/machinery/atmospherics/tvalve/attack_hand(mob/user as mob)
 	src.add_fingerprint(usr)
-	update_icon(1)
+	animation()
 	sleep(10)
 	if (src.state)
 		src.go_straight()

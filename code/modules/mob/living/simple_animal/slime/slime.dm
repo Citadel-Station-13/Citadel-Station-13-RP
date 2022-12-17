@@ -167,20 +167,21 @@
 		else
 			icon_state = "[icon_state_override ? "[icon_state_override] slime" : "slime"] [is_adult ? "adult" : "baby"][victim ? " eating":""]"
 
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	if(stat != DEAD)
 		var/image/I = image(icon, src, "slime light")
 		I.appearance_flags = RESET_COLOR
-		overlays += I
+		overlays_to_add += I
 
 		if(shiny)
 			I = image(icon, src, "slime shiny")
 			I.appearance_flags = RESET_COLOR
-			overlays += I
+			overlays_to_add += I
 
 		I = image(icon, src, "aslime-[mood]")
 		I.appearance_flags = RESET_COLOR
-		overlays += I
+		overlays_to_add += I
 
 		if(glows)
 			set_light(3, 2, color)
@@ -190,10 +191,12 @@
 		var/image/I = image('icons/mob/head.dmi', src, hat_state)
 		I.pixel_y = -7 // Slimes are small.
 		I.appearance_flags = RESET_COLOR
-		overlays += I
+		overlays_to_add += I
 
 	if(modifier_overlay) // Restore our modifier overlay.
-		overlays += modifier_overlay
+		overlays_to_add += modifier_overlay
+
+	add_overlay(overlays_to_add)
 
 /mob/living/simple_animal/slime/proc/update_mood()
 	var/old_mood = mood

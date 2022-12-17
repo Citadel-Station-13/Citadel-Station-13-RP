@@ -202,7 +202,7 @@
 	icon_state = "book"
 	throw_speed = 1
 	throw_range = 5
-	flags = NOCONDUCT
+	atom_flags = NOCONDUCT
 	worn_render_flags = WORN_RENDER_INHAND_NO_RENDER | WORN_RENDER_SLOT_NO_RENDER
 	w_class = ITEMSIZE_NORMAL		 //upped to three because books are, y'know, pretty big. (and you could hide them inside eachother recursively forever)
 	attack_verb = list("bashed", "whacked", "educated")

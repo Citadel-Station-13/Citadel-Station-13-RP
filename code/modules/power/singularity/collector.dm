@@ -128,13 +128,18 @@ var/global/list/rad_collectors = list()
 		last_power_new = power_produced
 
 /obj/machinery/power/rad_collector/proc/update_icons()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	if(P)
-		overlays += image('icons/obj/singularity.dmi', "ptank")
-	if(machine_stat & (NOPOWER|BROKEN))
-		return
-	if(active)
-		overlays += image('icons/obj/singularity.dmi', "on")
+		overlays_to_add += image('icons/obj/singularity.dmi', "ptank")
+
+	if(!(machine_stat & (NOPOWER|BROKEN)) && active)
+		overlays_to_add += image('icons/obj/singularity.dmi', "on")
+
+	add_overlay(overlays_to_add)
+
+	return
+
 
 /obj/machinery/power/rad_collector/proc/toggle_power()
 	active = !active

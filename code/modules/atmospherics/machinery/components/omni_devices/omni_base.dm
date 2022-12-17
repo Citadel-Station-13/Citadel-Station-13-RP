@@ -48,12 +48,13 @@
 	build_icons()
 
 /obj/machinery/atmospherics/component/quaternary/update_icon()
+	cut_overlays()
 	if(machine_stat & NOPOWER)
-		overlays = overlays_off
+		add_overlay(overlays_off)
 	else if(error_check())
-		overlays = overlays_error
+		add_overlay(overlays_error)
 	else
-		overlays = use_power ? (overlays_on) : (overlays_off)
+		add_overlay(use_power ? (overlays_on) : (overlays_off))
 
 	underlays = underlays_current
 

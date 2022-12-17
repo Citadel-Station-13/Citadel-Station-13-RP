@@ -40,7 +40,7 @@
 	else if(!on && light_applied)
 		set_light(0)
 		light_applied = 0
-	update_icon(user)
+	update_icon()
 	user.update_action_buttons()
 
 /obj/item/clothing/head/attack_ai(var/mob/user)

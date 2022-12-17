@@ -64,15 +64,17 @@
 		simulation_finish()
 
 /obj/machinery/bomb_tester/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	if(tank1)
-		overlays += image(icon, "[icon_name]-tank1")
+		overlays_to_add += image(icon, "[icon_name]-tank1")
 	if(tank2)
-		overlays += image(icon, "[icon_name]-tank2")
+		overlays_to_add += image(icon, "[icon_name]-tank2")
 	if(machine_stat & NOPOWER)
 		icon_state = "[icon_name]-p"
 	else
 		icon_state = "[icon_name][simulating]"
+	add_overlay(overlays_to_add)
 
 /obj/machinery/bomb_tester/power_change()
 	..()

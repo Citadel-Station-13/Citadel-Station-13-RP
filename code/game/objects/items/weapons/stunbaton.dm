@@ -10,7 +10,7 @@
 	sharp = 0
 	edge = 0
 	throw_force = 7
-	flags = NOCONDUCT
+	atom_flags = NOCONDUCT
 	w_class = ITEMSIZE_NORMAL
 	drop_sound = 'sound/items/drop/metalweapon.ogg'
 	pickup_sound = 'sound/items/pickup/metalweapon.ogg'

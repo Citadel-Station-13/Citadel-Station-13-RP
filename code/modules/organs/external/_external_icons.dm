@@ -6,7 +6,7 @@ GLOBAL_LIST_EMPTY(limb_icon_cache)
 	for(var/obj/item/organ/external/organ in contents)
 		if(organ.children && organ.children.len)
 			for(var/obj/item/organ/external/child in organ.children)
-				overlays += child.mob_icon
+				add_overlay(child.mob_icon)
 		add_overlay(organ.mob_icon)
 
 /obj/item/organ/external/proc/sync_colour_to_human(var/mob/living/carbon/human/human)

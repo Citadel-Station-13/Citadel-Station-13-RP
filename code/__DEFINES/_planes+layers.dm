@@ -58,6 +58,14 @@
 
 // TODO: UNFUCK PLANES. HALF OF THESE HAVE NO REASON TO EXIST. WHOEVER ADDED THEM IS AN IDIOT!
 
+/// smallest reasonable base layer resolution - YOU SHOULD NOT VIOLATE THIS
+#define LAYER_RESOLUTION_BASE 0.01
+/// smallest relative layer resolution - YOU SHOULD NOT VIOLATE THIS
+#define LAYER_RESOLUTION_FULL 0.001
+
+/// lowest reasonable plane; this should stay at -99. NO, YOU DON'T NEED MORE.
+#define LOWEST_PLANE -99
+
 //! todo: layers still need to be linear regardless of plane. stuff like projectiles DO CARE.
 
 /**
@@ -166,7 +174,6 @@
 #define BELOW_MOB_LAYER (OBJ_LAYER+0.9)
 #define ABOVE_MOB_LAYER (MOB_LAYER+0.1)
 
-
 /**
  *! -- Cloaked Plane
  *? Invisible things plane.
@@ -213,12 +220,27 @@
  */
 #define PLANE_PLANETLIGHTING 4
 
+/**
+ * Emissives
+ */
+#define EMISSIVE_BLOCKER_PLANE 7
+#define EMISSIVE_BLOCKER_LAYER 12
+#define EMISSIVE_BLOCKER_RENDER_TARGET "*EMISSIVE_BLOCKER_PLANE"
+
+#define EMISSIVE_PLANE 8
+#define EMISSIVE_LAYER 13
+
+#define EMISSIVE_UNBLOCKABLE_PLANE 9
+#define EMISSIVE_UNBLOCKABLE_LAYER 14
+#define EMISSIVE_LAYER_UNBLOCKABLE 14
+#define EMISSIVE_UNBLOCKABLE_RENDER_TARGET "*EMISSIVE_UNBLOCKABLE_PLANE"
+#define EMISSIVE_RENDER_TARGET "*EMISSIVE_PLANE"
 
 /**
  *! -- Lighting Plane
  *? Where the lighting (and darkness) lives (ignoring all other higher planes)
  */
-#define LIGHTING_PLANE 5
+#define LIGHTING_PLANE 10
 
 #define LIGHTBULB_LAYER      0 // Unused.
 #define LIGHTING_LAYER       1
@@ -229,7 +251,7 @@
  *! -- Lighting Plane
  *? For glowy eyes etc. that shouldn't be affected by darkness.
  */
-#define ABOVE_LIGHTING_PLANE 6
+#define ABOVE_LIGHTING_PLANE 15
 
 #define EYE_GLOW_LAYER         1
 #define BEAM_PROJECTILE_LAYER  2
@@ -239,7 +261,7 @@
 /**
  *! -- Sonar Plane
  */
-#define SONAR_PLANE 8
+#define SONAR_PLANE 16
 
 
 /**
@@ -247,14 +269,14 @@
  *? Where ghosts live.
  * ~ Spooooooooky ghooooooosts ~
  */
-#define PLANE_GHOSTS 10
+#define PLANE_GHOSTS 20
 
 
 /**
  *! -- AI Eye Plane
  *? The AI eye lives here.
  */
-#define PLANE_AI_EYE 11
+#define PLANE_AI_EYE 29
 
 
 /**
@@ -329,7 +351,30 @@
 #define PLANE_ADMIN3 99
 
 
+/// Highest plane. This should stay at 99. No, you don't need more than that.
+#define HIGHEST_PLANE 99
+/// Master rendering plane - we actually render onto this plane
+// todo: unified rendering and a single game render master plane?
+// #define MASTER_RENDERER_PLANE
+
 //////////////////////////
 
+//! Helpers
+/**
+ * "mangle" a plane and layer to get a layer that'll always layer it correctly
+ * this is useful for multiz/emissive purposes if you don't want to make multiple sets of planes.
+ *
+ * luckily, as of right now, lowest is -99 and highest is 99
+ * and we don't do /tg/'s planecube thing
+ * thus, we can get away with stuffing everything with those assumptions
+ *
+ * we also can't be negative because of FLOAT_LAYER behavior so..
+ *
+ * oh yeah and this does NOT work well with FLOAT_LAYER.
+ */
+#define MANGLE_PLANE_AND_LAYER(P, L) ((P - LOWEST_PLANE + 1) * (PLANE_MANGLING_FACTOR) + L)
+/// computed based on highest/lowest plane, and highest/lowest layer (which I assume to be 10k.)
+#define PLANE_MANGLING_FACTOR 40
+// todo: optimize
 /// Check if a mob can "logically" see an atom plane
 #define MOB_CAN_SEE_PLANE(M, P) (P <= PLANE_WORLD || (P in M.planes_visible) || P >= PLANE_PLAYER_HUD)

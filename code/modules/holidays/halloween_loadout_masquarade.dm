@@ -3,7 +3,7 @@
 	desc = "A costume of unknown origin.";																		\
 	w_class = WEIGHT_CLASS_SMALL; 																				\
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0);		\
-	flags = PHORONGUARD;																						\
+	atom_flags = PHORONGUARD;																						\
 	flags_inv = HIDEHOLSTER|HIDEFACE|BLOCKHAIR;																	\
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE;
 
@@ -12,7 +12,7 @@
 	desc = "A costume of unknown origin.";																		\
 	w_class = WEIGHT_CLASS_SMALL; 																				\
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0);		\
-	flags = PHORONGUARD;																						\
+	atom_flags = PHORONGUARD;																						\
 	flags_inv = HIDEHOLSTER;																					\
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE;
 

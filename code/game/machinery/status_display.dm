@@ -187,7 +187,7 @@
 	if(!picture || picture_state != state)
 		picture_state = state
 		picture = image('icons/obj/status_display.dmi', icon_state=picture_state)
-	overlays |= picture
+	add_overlay(picture)
 
 /obj/machinery/status_display/proc/update_display(line1, line2)
 	line1 = uppertext(line1)
@@ -226,7 +226,7 @@
 
 /obj/machinery/status_display/proc/remove_display()
 	if(overlays.len)
-		overlays.Cut()
+		cut_overlays()
 	if(maptext)
 		maptext = ""
 

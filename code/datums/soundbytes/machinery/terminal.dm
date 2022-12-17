@@ -1,6 +1,7 @@
 /datum/soundbyte/grouped/terminal_keyboard
 	name = "Terminal Click"
 	alias = SFX_ALIAS_TERMINAL
+	is_sfx = TRUE
 	length = 0.2 SECONDS
 	path = list(
 		'sound/soundbytes/machinery/terminal/terminal_button01.ogg',
