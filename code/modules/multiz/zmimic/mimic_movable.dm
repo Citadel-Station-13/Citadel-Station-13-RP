@@ -120,7 +120,7 @@
 		// Not a color matrix, so we can just use the color var ourselves.
 		color = SHADOWER_DARKENING_COLOR
 
-	if (our_overlays || priority_overlays)
+	if (add_overlays || remove_overlays)
 		compile_overlays()
 	else if (bound_overlay)
 		// compile_overlays() calls update_above().
