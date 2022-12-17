@@ -41,12 +41,13 @@
 // Thanks to Lohikar for flinging this tiny bit of code at me, increasing my brain cell count from 1 to 2 in the process.
 // This macro will only offset up to 1 tile, but anything with a greater offset is an outlier and probably should handle its own lighting offsets.
 // Anything pixelshifted 16px or more will be considered on the next tile.
-#define GET_APPROXIMATE_PIXEL_DIR(PX, PY) ((!(PX) ? 0 : ((PX >= 16 ? EAST : (PX <= -16 ? WEST : 0)))) | (!PY ? 0 : (PY >= 16 ? NORTH : (PY <= -16 ? SOUTH : 0))))
-#define UPDATE_APPROXIMATE_PIXEL_TURF var/_mask = GET_APPROXIMATE_PIXEL_DIR(top_atom.pixel_x, top_atom.pixel_y); pixel_turf = _mask ? (get_step(source_turf, _mask) || source_turf) : source_turf
+#define GET_APPROXIMATE_PIXEL_DIR(PX, PY) ((!(PX) ? 0 : (((PX) >= 16 ? EAST : ((PX) <= -16 ? WEST : 0)))) | (!(PY) ? 0 : ((PY) >= 16 ? NORTH : ((PY) <= -16 ? SOUTH : 0))))
+#define UPDATE_APPROXIMATE_PIXEL_TURF var/px = top_atom.light_offset_x || top_atom.pixel_x; var/py = top_atom.light_offset_y || top_atom.pixel_y; var/_dir = GET_APPROXIMATE_PIXEL_DIR(px, py); pixel_turf = _dir ? (get_step(source_turf, _dir) || source_turf) : source_turf
 
-/datum/light_source/New(var/atom/owner, var/atom/top)
+/datum/light_source/New(atom/owner, atom/top)
 	source_atom = owner // Set our new owner.
 	LAZYADD(source_atom.light_sources, src)
+
 	top_atom = top
 	if (top_atom != source_atom)
 		LAZYADD(top_atom.light_sources, src)
@@ -57,6 +58,7 @@
 	light_power = source_atom.light_power
 	light_range = source_atom.light_range
 	light_color = source_atom.light_color
+	// light_angle = source_atom.light_wedge
 
 	PARSE_LIGHT_COLOR(src)
 
@@ -74,6 +76,8 @@
 		GLOB.lighting_update_lights -= src
 
 	. = ..()
+	if (!force)
+		return QDEL_HINT_IWILLGC
 
 // Yes this doesn't align correctly on anything other than 4 width tabs.
 // If you want it to go switch everybody to elastic tab stops.
@@ -166,6 +170,11 @@
 		top_atom = source_atom
 		update = TRUE
 
+	if (top_atom.loc != source_turf)
+		source_turf = top_atom.loc
+		UPDATE_APPROXIMATE_PIXEL_TURF
+		update = TRUE
+
 	if (!light_range || !light_power)
 		stack_trace("Source processed with no light range/light power on source atom [source_atom] ([source_atom? "[REF(source_atom)] - [source_atom.type]" : "NULL"]). This should not happen.")
 		qdel(src)
@@ -181,10 +190,8 @@
 		UPDATE_APPROXIMATE_PIXEL_TURF
 		update = TRUE
 
-	if (!isturf(source_turf))
-		if (applied)
-			remove_lum()
-		return
+	if (!source_turf)
+		return	// Somehow we've got a light in nullspace, no-op.
 
 	if (light_range && light_power && !applied)
 		update = TRUE
@@ -197,17 +204,57 @@
 	else if (applied_lum_r != lum_r || applied_lum_g != lum_g || applied_lum_b != lum_b)
 		update = TRUE
 
+	/*
+	if (source_atom.light_wedge != light_angle)
+		light_angle = source_atom.light_wedge
+		update = TRUE
+
+	if (light_angle)
+		var/ndir
+		if (istype(top_atom, /mob) && top_atom:facing_dir)
+			ndir = top_atom:facing_dir
+		else
+			ndir = top_atom.dir
+
+		if (old_direction != ndir)	// If our direction has changed, we need to regenerate all the angle info.
+			regenerate_angle(ndir)
+			update = TRUE
+		else // Check if it was just a x/y translation, and update our vars without an regenerate_angle() call if it is.
+			var/co_updated = FALSE
+			if (source_turf.x != cached_origin_x)
+				test_x_offset += source_turf.x - cached_origin_x
+				cached_origin_x = source_turf.x
+
+				co_updated = TRUE
+
+			if (source_turf.y != cached_origin_y)
+				test_y_offset += source_turf.y - cached_origin_y
+				cached_origin_y = source_turf.y
+
+				co_updated = TRUE
+
+			if (co_updated)
+				// We might be facing a wall now.
+				var/turf/front = get_step(source_turf, old_direction)
+				var/new_fo = (front && front.has_opaque_atom)
+				if (new_fo != facing_opaque)
+					facing_opaque = new_fo
+					regenerate_angle(ndir)
+
+				update = TRUE
+	*/
+
 	if (update)
 		needs_update = LIGHTING_CHECK_UPDATE
-		applied = TRUE
 	else if (needs_update == LIGHTING_CHECK_UPDATE)
-		return //nothing's changed
+		return	// No change.
 
 	var/list/datum/lighting_corner/corners = list()
-	var/datum/lighting_corner/C
 	var/list/turf/turfs                    = list(source_turf)
-	var/thing
+	var/datum/lighting_corner/C
 	var/turf/T
+	var/list/Tcorners
+	var/thing
 	var/Sx = pixel_turf.x // these are used by APPLY_CORNER_BY_HEIGHT
 	var/Sy = pixel_turf.y
 	var/Sz = pixel_turf.z
@@ -215,20 +262,51 @@
 	// var/actual_range = (light_angle && facing_opaque) ? light_range * LIGHTING_BLOCKED_FACTOR : light_range
 	var/actual_range = light_range
 
-	if (source_turf)
-		var/oldlum = source_turf.luminosity
-		source_turf.luminosity = CEILING(light_range, 1)
-		for(T in oview(CEILING(light_range, 1), source_turf))
-			turfs += T
+	FOR_DVIEW(T, CEILING(actual_range, 1), source_turf, 0) do
+
+		if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T) || T.light_sources)
+			Tcorners = T.corners
 			if((!IS_DYNAMIC_LIGHTING(T) && !T.light_sources) || T.has_opaque_atom )
 				continue
 			if(!T.lighting_corners_initialised)
-				T.generate_missing_corners()
-			corners[T.lc_topright] = 0
-			corners[T.lc_bottomright] = 0
-			corners[T.lc_bottomleft] = 0
-			corners[T.lc_topleft] = 0
-		source_turf.luminosity = oldlum
+				T.lighting_corners_initialised = TRUE
+
+				if (!Tcorners)
+					T.corners = list(null, null, null, null)
+					Tcorners = T.corners
+
+				Tcorners[T.lc_topright]    = new /datum/lighting_corner(T, LIGHTING_CORNER_DIAGONAL[NORTHEAST])
+				Tcorners[T.lc_bottomright] = new /datum/lighting_corner(T, LIGHTING_CORNER_DIAGONAL[SOUTHEAST])
+				Tcorners[T.lc_bottomleft]  = new /datum/lighting_corner(T, LIGHTING_CORNER_DIAGONAL[SOUTHWEST])
+				Tcorners[T.lc_topleft]     = new /datum/lighting_corner(T, LIGHTING_CORNER_DIAGONAL[NORTHWEST])
+
+			if (!T.has_opaque_atom)
+				for (var/v in 1 to 4)
+					var/val = Tcorners[v]
+					if (val)
+						corners[val] = 0
+
+		turfs += T
+		// if (TURF_IS_DYNAMICALLY_LIT_UNSAFE(T) || T.light_sources)
+		// // if (source_turf)
+		// 	var/oldlum = source_turf.luminosity
+		// 	source_turf.luminosity = CEILING(light_range, 1)
+		// 	for(T in oview(CEILING(light_range, 1), source_turf))
+		// 		turfs += T
+		// 		if((!IS_DYNAMIC_LIGHTING(T) && !T.light_sources) || T.has_opaque_atom )
+		// 			continue
+		// 		if(!T.lighting_corners_initialised)
+		// 			T.generate_missing_corners()
+		// 		corners[T.lc_topright] = 0
+		// 		corners[T.lc_bottomright] = 0
+		// 		corners[T.lc_bottomleft] = 0
+		// 		corners[T.lc_topleft] = 0
+		// 	source_turf.luminosity = oldlum
+
+	// Upwards lights are handled at the corner level, so only search down.
+	//  This is a do-while associated with the FOR_DVIEW above.
+	while (T && (T.z_flags & ZM_ALLOW_LIGHTING) && (T = T.below))
+	FOR_DVIEW_END
 
 	LAZYINITLIST(affecting_turfs)
 
