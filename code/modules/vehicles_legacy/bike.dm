@@ -117,7 +117,7 @@
 /obj/vehicle_old/bike/MouseDroppedOnLegacy(var/atom/movable/C, var/mob/user as mob)
 	if(!load(C, user))
 		to_chat(user, "<span class='warning'> You were unable to load \the [C] onto \the [src].</span>")
-		return
+		return CLICKCHAIN_DO_NOT_PROPAGATE
 
 /obj/vehicle_old/bike/attack_hand(var/mob/user as mob)
 	if(user == load)
