@@ -1,3 +1,11 @@
+var/global/datum/lighting_corner/dummy/dummy_lighting_corner = new
+
+// This list is what the code that assigns corners listens to, the order in this list is the order in which corners are added to the /turf/corners list.
+var/global/list/LIGHTING_CORNER_DIAGONAL = list(NORTHEAST, SOUTHEAST, SOUTHWEST, NORTHWEST)
+
+// This is the reverse of the above - the position in the array is a dir. Update this if the above changes.
+var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 2, 1)
+
 /**
  * Because we can control each corner of every lighting object.
  * And corners get shared between multiple turfs (unless you're on the corners of the map, then 1 corner doesn't).

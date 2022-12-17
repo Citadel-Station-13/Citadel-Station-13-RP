@@ -77,9 +77,6 @@
 	// Oh it's also shorter line wise.
 	// Including with these comments.
 
-	// See LIGHTING_CORNER_DIAGONAL in lighting_corner.dm for why these values are what they are.
-	var/static/datum/lighting_corner/dummy/dummy_lighting_corner = new
-
 #ifdef VISUALIZE_LIGHT_UPDATES
 	myturf.add_atom_colour(LIGHT_COLOR_LIGHT_CYAN, ADMIN_COLOUR_PRIORITY)
 	animate(myturf, 10, color = null)

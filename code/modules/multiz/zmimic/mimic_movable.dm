@@ -100,7 +100,6 @@
 	layer = MIMICED_LIGHTING_LAYER
 	plane = OPENTURF_MAX_PLANE
 	invisibility = 0
-	blend_mode = BLEND_MULTIPLY
 
 	if (icon_state == LIGHTING_BASE_ICON_STATE)
 		// We're using a color matrix, so just darken the colors across the board.
@@ -121,11 +120,7 @@
 	else
 		// Not a color matrix, so we can just use the color var ourselves.
 		color = SHADOWER_DARKENING_COLOR
-		color = list(
-			SHADOWER_DARKENING_FACTOR, 0, 0,
-			0, SHADOWER_DARKENING_FACTOR, 0,
-			0, 0, SHADOWER_DARKENING_FACTOR
-		)
+
 
 	if (our_overlays || priority_overlays)
 		compile_overlays()
@@ -193,7 +188,7 @@
 // This thing holds the mimic appearance for non-OVERWRITE turfs.
 /atom/movable/openspace/turf_proxy
 	plane = OPENTURF_MAX_PLANE
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	z_flags = ZMM_IGNORE  // Only one of these should ever be visible at a time, the mimic logic will handle that.
 
 /atom/movable/openspace/turf_proxy/attackby(obj/item/W, mob/user)
@@ -215,7 +210,7 @@
 // A type for copying non-overwrite turfs' self-appearance.
 /atom/movable/openspace/turf_mimic
 	plane = OPENTURF_MAX_PLANE	// These *should* only ever be at the top?
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/turf/delegate
 
 /atom/movable/openspace/turf_mimic/Initialize(mapload, ...)
