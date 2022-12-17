@@ -916,7 +916,7 @@ var/global/list/light_type_cache = list()
 
 	var/brightness_range = 2 //how much light it gives off
 	var/brightness_power = 1
-	var/brightness_color = LIGHT_COLOR_INCANDESCENT_TUBE
+	var/brightness_color = LIGHT_COLOR_HALOGEN
 	drop_sound = 'sound/items/drop/glass.ogg'
 	pickup_sound = 'sound/items/pickup/glass.ogg'
 
@@ -931,7 +931,8 @@ var/global/list/light_type_cache = list()
 	base_state = "ltube"
 	item_state = "c_tube"
 	matter = list(MAT_GLASS = 100)
-	brightness_range = 12	// luminosity when on, also used in power calculation	brightness_power = 1
+	brightness_range = 8	// luminosity when on, also used in power calculation	brightness_power = 1
+	brightness_power = 0.8
 
 	nightshift_range = 7
 	nightshift_power = 0.5

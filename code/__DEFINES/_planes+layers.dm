@@ -106,37 +106,27 @@
 // Openspace uses planes -80 through -70.
 #define OVER_OPENSPACE_PLANE -50
 
-/**
- *! -- Plating Plane
- * TODO: kill these too because frankly, fuck off.
- */
-#define PLATING_PLANE -44 //! Notice how Plating is above turfs. :) @Zandario
-
-#define DISPOSAL_LAYER (TURF_LAYER+0.1) /// Under objects, even when planeswapped.
-#define PIPES_LAYER    (TURF_LAYER+0.2) /// Under objects, even when planeswapped.
-#define WIRES_LAYER    (TURF_LAYER+0.3) /// Under objects, even when planeswapped.
-#define ATMOS_LAYER    (TURF_LAYER+0.4) /// Pipe-like atmos machinery that goes on the floor, like filters.
-#define ABOVE_UTILITY  (TURF_LAYER+0.5) /// Above stuff like pipes and wires.
-
-
-/**
- *! Decal Plane (secretly just PLATING_PLANE for now) as this is to be removed.
- * TODO: kill all these useless goddamn arbitrary planes and unify things to 3-5 of turf, floor, obj, mob, there is no excuse for this utter charade.
- */
-#define DECAL_PLANE -44
-
 
 /**
  *! -- Turfs Plane
  *? Turfs themselves, most flooring.
  */
 #define TURF_PLANE -45
+#define PLATING_LAYER          (AREA_LAYER)
+#define DISPOSAL_LAYER         (AREA_LAYER+0.1)  /// Under objects, even when planeswapped.
+#define PIPES_LAYER            (AREA_LAYER+0.2)  /// Under objects, even when planeswapped.
+#define WIRES_LAYER            (AREA_LAYER+0.3)  /// Under objects, even when planeswapped.
+#define ATMOS_LAYER            (AREA_LAYER+0.4)  /// Pipe-like atmos machinery that goes on the floor, like filters.
+#define ABOVE_UTILITY          (AREA_LAYER+0.5)  /// Above stuff like pipes and wires.
+
+//? ABOVE PLATING
 
 #define WATER_FLOOR_LAYER      (TURF_LAYER)      /// The 'bottom' of water tiles.
-#define BUILTIN_DECAL_LAYER    (TURF_LAYER+0.01) /// For floors that automatically add decal overlays.
+#define DECAL_LAYER            (TURF_LAYER+0.01) /// For floors that automatically add decal overlays.
 #define MAPPER_DECAL_LAYER     (TURF_LAYER+0.02) /// For intentionally placed floor decal overlays.
 #define AO_LAYER               (TURF_LAYER+0.04) /// Ambient Occlusion layer.
 #define UNDERWATER_LAYER       (TURF_LAYER+0.5)  /// Anything on this layer will render under the water layer.
+#define PLANT_LAYER            (TURF_LAYER+0.12)
 //! Turf/Obj layer boundary
 #define WATER_LAYER            (OBJ_LAYER)       /// Layer for water overlays.
 #define ABOVE_TURF_LAYER       (OBJ_LAYER+0.1)   /// Snow and wallmounted/floormounted equipment.

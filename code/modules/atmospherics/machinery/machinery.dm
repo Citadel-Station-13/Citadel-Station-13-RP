@@ -15,7 +15,7 @@ Pipelines + Other Objects -> Pipe network
 	active_power_usage = 0
 	power_channel = ENVIRON
 	layer = ATMOS_LAYER
-	plane = PLATING_PLANE
+	plane = TURF_PLANE
 	obj_flags = CAN_BE_HIT | ON_BLUEPRINTS
 
 	///The color of the pipe

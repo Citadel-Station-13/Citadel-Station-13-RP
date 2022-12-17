@@ -14,7 +14,7 @@
 	//It'd be nice to lazy init these but some of them are important to just EXIST. Like without ghost planemaster, you can see ghosts. Go figure.
 
 	// 'Utility' planes
-	plane_masters[VIS_FULLBRIGHT] 	= new /atom/movable/screen/plane_master/fullbright						//Lighting system (lighting_overlay objects)
+	plane_masters[VIS_FULLBRIGHT] 	= new /atom/movable/screen/plane_master/fullbright						//Lighting system (lighting_object objects)
 	plane_masters[VIS_LIGHTING] 	= new /atom/movable/screen/plane_master/lighting						//Lighting system (but different
 	plane_masters[VIS_EMISSIVE]     = new /atom/movable/screen/plane_master/emissive
 	plane_masters[VIS_GHOSTS] 		= new /atom/movable/screen/plane_master/ghosts							//Ghosts!

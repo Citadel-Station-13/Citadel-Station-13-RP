@@ -2,8 +2,8 @@
 /obj/structure/catwalk
 	name = "catwalk"
 	desc = "Cats really don't like these things."
-	plane = DECAL_PLANE
-	layer = ABOVE_UTILITY
+	plane = TURF_PLANE
+	layer = DECAL_LAYER
 	icon = 'icons/turf/catwalks.dmi'
 	icon_state = "catwalk"
 	density = FALSE
@@ -133,8 +133,8 @@
 	density = 1
 	anchored = 1.0
 	var/activated = FALSE
-	plane = DECAL_PLANE
-	layer = ABOVE_UTILITY
+	plane = TURF_PLANE
+	layer = DECAL_LAYER
 	var/tile = /obj/item/stack/tile/floor
 	var/platecolor = "#858a8f"
 
@@ -184,8 +184,8 @@
 /obj/structure/catwalk/plank
 	name = "plank bridge"
 	desc = "Some flimsy wooden planks, generally set across a hazardous area."
-	plane = DECAL_PLANE
-	layer = ABOVE_UTILITY
+	plane = TURF_PLANE
+	layer = DECAL_LAYER
 	icon = 'icons/turf/catwalks.dmi'
 	icon_state = "plank"
 	density = 0

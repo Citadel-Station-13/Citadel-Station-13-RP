@@ -139,7 +139,7 @@
 /obj/machinery/atmospherics/component/unary/engine/proc/check_blockage()
 	var/exhaust_dir = REVERSE_DIR(dir)
 	var/turf/T = get_step(src, exhaust_dir)		// turf we're on is blocked by ourselves
-	while(!(isspaceturf(T) || (T.z_flags & (Z_AIR_UP | Z_AIR_DOWN))))
+	while(!(isspaceturf(T) || (T.z_flags & (ZM_ALLOW_ATMOS))))
 		var/turf/next = get_step(T, exhaust_dir)
 		if(!next)
 			// not found

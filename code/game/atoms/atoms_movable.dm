@@ -163,10 +163,13 @@
 	// kick perspectives before moving
 	if(self_perspective)
 		QDEL_NULL(self_perspective)
+
 	throwing?.terminate()
 	if(pulling)
 		stop_pulling()
+
 	. = ..()
+
 	moveToNullspace()
 	if(un_opaque)
 		un_opaque.recalc_atom_opacity()

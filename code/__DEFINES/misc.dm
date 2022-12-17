@@ -568,3 +568,5 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define WINDOW_STATE_CROWBRARED_IN 2
 /// window is secured to frame
 #define WINDOW_STATE_SECURED_TO_FRAME 3
+
+#define Z_ALL_TURFS(Z) block(locate(1, 1, Z), locate(world.maxx, world.maxy, Z))

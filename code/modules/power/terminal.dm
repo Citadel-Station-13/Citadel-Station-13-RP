@@ -10,7 +10,7 @@
 	level = 1
 	var/obj/machinery/power/master = null
 	anchored = 1
-	plane = PLATING_PLANE
+	plane = TURF_PLANE
 	layer = WIRES_LAYER+0.01
 
 

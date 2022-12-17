@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(machines)
 
 /datum/controller/subsystem/machines/Initialize(timeofday)
 	makepowernets()
-	admin_notice(SPAN_DEBUGINFO("Initializing atmos machinery."), R_DEBUG)
+	report_progress("Initializing atmos machinery.")
 	setup_atmos_machinery(GLOB.machines)
 	fire()
 	return ..()

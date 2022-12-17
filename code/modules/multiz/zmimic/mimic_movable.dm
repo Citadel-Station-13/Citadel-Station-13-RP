@@ -95,7 +95,7 @@
 		myturf.shadower = null
 	return ..()
 
-/atom/movable/openspace/multiplier/proc/copy_lighting(atom/movable/lighting_overlay/LO)
+/atom/movable/openspace/multiplier/proc/copy_lighting(atom/movable/lighting_object/LO)
 	appearance = LO
 	layer = MIMICED_LIGHTING_LAYER
 	plane = OPENTURF_MAX_PLANE

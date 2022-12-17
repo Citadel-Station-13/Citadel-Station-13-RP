@@ -118,7 +118,7 @@ var/list/flooring_types
 /singleton/flooring/proc/get_plating_type(turf/T)
 	return plating_type
 
-/singleton/flooring/proc/get_flooring_overlay(cache_key, icon_base, icon_dir = 0, layer = BUILTIN_DECAL_LAYER)
+/singleton/flooring/proc/get_flooring_overlay(cache_key, icon_base, icon_dir = 0, layer = DECAL_LAYER)
 	if(!flooring_cache[cache_key])
 		var/image/I = image(icon = icon, icon_state = icon_base, dir = icon_dir)
 		I.layer = layer

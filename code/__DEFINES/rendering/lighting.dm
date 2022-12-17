@@ -1,17 +1,14 @@
 //Bay lighting engine shit, not in /code/modules/lighting because BYOND is being shit about it
 /// frequency, in 1/10ths of a second, of the lighting process
-#define LIGHTING_INTERVAL       5
+#define LIGHTING_INTERVAL 1
 #define MINIMUM_USEFUL_LIGHT_RANGE 1.4
 
-/// Type of falloff to use for lighting; 1 for circular, 2 for square
-#define LIGHTING_FALLOFF        1
-/// Use lambertian shading for light sources
-#define LIGHTING_LAMBERTIAN     0
-/// Height off the ground of light sources on the pseudo-z-axis, you should probably leave this alone
-#define LIGHTING_HEIGHT         1
-/// Value used to round lumcounts, values smaller than 1/129 don't matter (if they do, thanks sinking points),
-/// greater values will make lighting less precise, but in turn increase performance, VERY SLIGHTLY.
-#define LIGHTING_ROUND_VALUE    (1 / 64)
+/// Height off the ground of light sources on the pseudo-z-axis, you should probably leave this alone.
+#define LIGHTING_HEIGHT 1
+/// Z diff is multiplied by this and LIGHTING_HEIGHT to get the final height of a light source. Affects how much darker A Z light gets with each level transitioned.
+#define LIGHTING_Z_FACTOR 10
+/// Value used to round lumcounts, values smaller than 1/255 don't matter (if they do, thanks sinking points), greater values will make lighting less precise, but in turn increase performance, VERY SLIGHTLY.
+#define LIGHTING_ROUND_VALUE (1 / 200)
 
 /// Icon used for lighting shading effects
 #define LIGHTING_ICON 'icons/effects/lighting_object.dmi'
@@ -23,9 +20,23 @@
 #define LIGHTING_DARKNESS_ICON_STATE "dark"
 #define LIGHTING_TRANSPARENT_ICON_STATE "transparent"
 
-// If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting objects.
-// Set to zero to disable soft lighting. Luminosity changes then work if it's lit at all.
-#define LIGHTING_SOFT_THRESHOLD 0
+/// If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting overlays.
+#define LIGHTING_SOFT_THRESHOLD 0.001
+/// How much the range of a directional light will be reduced while facing a wall.
+#define LIGHTING_BLOCKED_FACTOR 0.5
+
+/**
+ * If defined, instant updates will be used whenever server load permits.
+ * Otherwise queued updates are always used.
+ */
+#define USE_INTELLIGENT_LIGHTING_UPDATES
+
+/**
+ * Mostly identical to below, but doesn't make sure T is valid first.
+ * Should only be used by lighting code.
+ */
+#define TURF_IS_DYNAMICALLY_LIT_UNSAFE(T) ((T:dynamic_lighting && T:loc:dynamic_lighting))
+#define TURF_IS_DYNAMICALLY_LIT(T) (isturf(T) && TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
 
 //! If I were you I'd leave this alone.
 #define LIGHTING_BASE_MATRIX \
@@ -60,15 +71,29 @@
 #define CL_MATRIX_CB 19
 #define CL_MATRIX_CA 20
 
-// This color of overlay is very common - most of the station is this color when lit fully.
-// Tube lights are a bluish-white, so we can't just assume 1-1-1 is full-illumination.
-// -- If you want to change these, find them *by checking in-game*, just converting tubes' RGB color into floats will not work!
+//! Higher numbers override lower.
+#define LIGHTING_NO_UPDATE    0
+#define LIGHTING_VIS_UPDATE   1
+#define LIGHTING_CHECK_UPDATE 2
+#define LIGHTING_FORCE_UPDATE 3
+
+/**
+ * This color of overlay is very common - most of the station is this color when lit fully.
+ * Tube lights are a bluish-white, so we can't just assume 1-1-1 is full-illumination.
+ * -- If you want to change these, find them *by checking in-game*, just converting tubes' RGB color into floats will not work!
+ */
 #define LIGHTING_DEFAULT_TUBE_R 0.96
 #define LIGHTING_DEFAULT_TUBE_G 1
 #define LIGHTING_DEFAULT_TUBE_B 1
 
+//! Some angle presets for directional lighting.
+#define LIGHT_OMNI null
+#define LIGHT_SEMI 180
+#define LIGHT_WIDE 90
+#define LIGHT_NARROW 45
 /// How many tiles standard fires glow.
 #define LIGHT_RANGE_FIRE 3
+
 
 #define LIGHTING_PLANE_ALPHA_VISIBLE          255
 #define LIGHTING_PLANE_ALPHA_NV_TRAIT         223
@@ -81,31 +106,25 @@
 
 //! ## DYNAMIC LIGHTING STATE
 /// Dynamic lighting disabled. (area stays at full brightness)
-#define DYNAMIC_LIGHTING_DISABLED 0
+#define DYNAMIC_LIGHTING_DISABLED    0
 /// Dynamic lighting enabled.
-#define DYNAMIC_LIGHTING_ENABLED 1
+#define DYNAMIC_LIGHTING_ENABLED     1
 /// Dynamic lighting enabled even if the area doesn't require power.
-#define DYNAMIC_LIGHTING_FORCED 2
+#define DYNAMIC_LIGHTING_FORCED      2
 /// Dynamic lighting enabled only if starlight is.
 #define DYNAMIC_LIGHTING_IFSTARLIGHT 3
 #define IS_DYNAMIC_LIGHTING(A) A.dynamic_lighting
 
 
-// Code assumes higher numbers override lower numbers.
-#define LIGHTING_NO_UPDATE    0
-#define LIGHTING_VIS_UPDATE   1
-#define LIGHTING_CHECK_UPDATE 2
-#define LIGHTING_FORCE_UPDATE 3
-
 #define FLASH_LIGHT_DURATION 2
 #define FLASH_LIGHT_POWER    3
 #define FLASH_LIGHT_RANGE    3.8
 
-// Emissive blocking.
+//! Emissive blocking.
 /// Uses vis_overlays to leverage caching so that very few new items need to be made for the overlay. For anything that doesn't change outline or opaque area much or at all.
 #define EMISSIVE_BLOCK_GENERIC 1
 /// Uses a dedicated render_target object to copy the entire appearance in real time to the blocking layer. For things that can change in appearance a lot from the base state, like humans.
-#define EMISSIVE_BLOCK_UNIQUE 2
+#define EMISSIVE_BLOCK_UNIQUE  2
 
 /// The color matrix applied to all emissive overlays. Should be solely dependent on alpha and not have RGB overlap with [EM_BLOCK_COLOR].
 #define EMISSIVE_COLOR list(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,1, 1,1,1,0)

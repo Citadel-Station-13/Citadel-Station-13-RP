@@ -56,6 +56,9 @@
 	else
 		return QDEL_HINT_LETMELIVE
 
+// This is a macro PURELY so that the if below is actually readable.
+#define ALL_EQUAL ((rr == gr && gr == br && br == ar) && (rg == gg && gg == bg && bg == ag) && (rb == gb && gb == bb && bb == ab))
+
 /atom/movable/lighting_object/proc/update()
 	if (loc != myturf)
 		if (loc)
@@ -89,6 +92,7 @@
 	var/datum/lighting_corner/ca = myturf.lc_topright    || dummy_lighting_corner
 
 	var/max = max(cr.cache_mx, cg.cache_mx, cb.cache_mx, ca.cache_mx)
+	luminosity = max > LIGHTING_SOFT_THRESHOLD
 
 	var/rr = cr.cache_r
 	var/rg = cr.cache_g
@@ -106,37 +110,43 @@
 	var/ag = ca.cache_g
 	var/ab = ca.cache_b
 
-	#if LIGHTING_SOFT_THRESHOLD != 0
-	var/set_luminosity = max > LIGHTING_SOFT_THRESHOLD
-	#else
-	// Because of floating points�?, it won't even be a flat 0.
-	// This number is mostly arbitrary.
-	var/set_luminosity = max > 1e-6
-	#endif
-
-	if((rr & gr & br & ar) && (rg + gg + bg + ag + rb + gb + bb + ab == 8))
-	//anything that passes the first case is very likely to pass the second, and addition is a little faster in this case
+	if(rr + rg + rb + gr + gg + gb + br + bg + bb + ar + ag + ab >= 12)
 		icon_state = LIGHTING_TRANSPARENT_ICON_STATE
 		color = null
-	else if(!set_luminosity)
+	else if (!luminosity)
 		icon_state = LIGHTING_DARKNESS_ICON_STATE
+		color = null
+	else if (rr == LIGHTING_DEFAULT_TUBE_R && rg == LIGHTING_DEFAULT_TUBE_G && rb == LIGHTING_DEFAULT_TUBE_B && ALL_EQUAL)
+		icon_state = LIGHTING_STATION_ICON_STATE
 		color = null
 	else
 		icon_state = LIGHTING_BASE_ICON_STATE
-		color = list(
-			rr, rg, rb, 00,
-			gr, gg, gb, 00,
-			br, bg, bb, 00,
-			ar, ag, ab, 00,
-			00, 00, 00, 01,
-		)
+		if (islist(color))
+			// Does this even save a list alloc?
+			var/list/c_list = color
+			c_list[CL_MATRIX_RR] = rr
+			c_list[CL_MATRIX_RG] = rg
+			c_list[CL_MATRIX_RB] = rb
+			c_list[CL_MATRIX_GR] = gr
+			c_list[CL_MATRIX_GG] = gg
+			c_list[CL_MATRIX_GB] = gb
+			c_list[CL_MATRIX_BR] = br
+			c_list[CL_MATRIX_BG] = bg
+			c_list[CL_MATRIX_BB] = bb
+			c_list[CL_MATRIX_AR] = ar
+			c_list[CL_MATRIX_AG] = ag
+			c_list[CL_MATRIX_AB] = ab
+			color = c_list
+		else
+			color = list(
+				rr, rg, rb, 0,
+				gr, gg, gb, 0,
+				br, bg, bb, 0,
+				ar, ag, ab, 0,
+				0, 0, 0, 1
+			)
 
-	luminosity = set_luminosity
-
-	update_shadowers()
-
-/// If there's a Z-turf above and/or below us, update its shadower.
-/atom/movable/lighting_object/proc/update_shadowers()
+	// If there's a Z-turf above and/or below us, update its shadower.
 	if (!myturf.above)
 		if (myturf.above.shadower)
 			myturf.above.shadower.copy_lighting(src)

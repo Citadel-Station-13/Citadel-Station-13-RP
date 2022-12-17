@@ -139,6 +139,11 @@
 	for(var/obj/O in src)
 		O.hide(O.hides_under_flooring() && src.flooring)
 
+	if(flooring)
+		layer = TURF_LAYER
+	else
+		layer = PLATING_LAYER
+
 /turf/simulated/floor/rcd_values(mob/living/user, obj/item/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_FLOORWALL)

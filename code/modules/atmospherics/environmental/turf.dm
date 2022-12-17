@@ -23,10 +23,10 @@
 	if(v)
 		switch(d)
 			if(UP)
-				if(!(z_flags & Z_AIR_UP))
+				if(!(z_flags & ZM_ALLOW_ATMOS))
 					return ATMOS_PASS_AIR_BLOCKED
 			if(DOWN)
-				if(!(z_flags & Z_AIR_DOWN))
+				if(!(z_flags & ZM_ALLOW_ATMOS))
 					return ATMOS_PASS_AIR_BLOCKED
 		. = ATMOS_PASS_NOT_BLOCKED
 		for(var/atom/movable/AM as anything in contents)

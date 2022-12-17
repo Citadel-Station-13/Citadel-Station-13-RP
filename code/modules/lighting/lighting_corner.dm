@@ -100,13 +100,14 @@
 	var/lum_g = src.lum_g
 	var/lum_b = src.lum_b
 	var/mx = max(lum_r, lum_g, lum_b) // Scale it so one of them is the strongest lum, if it is above 1.
-	. = 1 // factor
-	if (mx > 1)
-		. = 1 / mx
 
 	var/old_r = cache_r
 	var/old_g = cache_g
 	var/old_b = cache_b
+
+	. = 1 // factor
+	if (mx > 1)
+		. = 1 / mx
 
 	#if LIGHTING_SOFT_THRESHOLD != 0
 	else if (mx < LIGHTING_SOFT_THRESHOLD)

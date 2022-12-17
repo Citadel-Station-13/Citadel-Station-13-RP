@@ -4071,7 +4071,6 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/simulated/floor/outdoors/snow/lythios43c,
 /turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfacebase/outside/outside1)
 "cVJ" = (
@@ -5343,6 +5342,13 @@
 	},
 /turf/simulated/floor/tiled/steel,
 /area/quartermaster/office)
+"dFo" = (
+/obj/effect/zone_divider,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
+/area/rift/surfacebase/outside/outside1)
 "dFq" = (
 /obj/machinery/hologram/holopad,
 /obj/machinery/camera/network/research/xenobio,
@@ -30455,8 +30461,7 @@
 "teB" = (
 /obj/effect/zone_divider,
 /obj/effect/floor_decal/industrial/halfstair,
-/turf/simulated/floor/outdoors/snow/lythios43c,
-/turf/simulated/floor/plating/lythios43c,
+/turf/simulated/floor/outdoors/snow/noblend/lythios43c,
 /area/rift/surfaceeva/aa/surface_south)
 "teC" = (
 /obj/effect/floor_decal/borderfloor{
@@ -48743,10 +48748,10 @@ lcN
 gxt
 mfX
 mfX
-mfX
+aqe
 cUP
-fiX
-mfX
+dFo
+aqe
 mfX
 iFN
 iFN
@@ -48936,11 +48941,11 @@ gxt
 mfX
 iFN
 iFN
-iFN
-jZZ
+lPZ
+mUL
 wSo
 teB
-iFN
+lPZ
 iFN
 iFN
 iFN
@@ -49129,13 +49134,13 @@ mfX
 iFN
 iFN
 iFN
-iFN
-iFN
+lPZ
+lPZ
 rPa
 cTN
 rMj
-arS
-iFN
+dER
+lPZ
 iFN
 iFN
 iFN
@@ -49323,7 +49328,7 @@ iFN
 iFN
 iFN
 iFN
-iFN
+lPZ
 wSo
 nYy
 cTN
@@ -49523,7 +49528,7 @@ rPa
 cTN
 fWO
 dER
-iFN
+lPZ
 hgE
 hgE
 hgE

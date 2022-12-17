@@ -27,12 +27,12 @@ var/list/mimic_defines = list(
 
 DEFINE_BITFIELD(z_flags, list(
 	BITFIELD(ZM_MIMIC_BELOW),
-	BITFIELD("ZM_MIMIC_OVERWRITE"),
-	BITFIELD("ZM_ALLOW_LIGHTING"),
-	BITFIELD("ZM_ALLOW_ATMOS"),
-	BITFIELD("ZM_MIMIC_NO_AO"),
-	BITFIELD("ZM_NO_OCCLUDE"),
-	BITFIELD("ZM_MIMIC_BASETURF"),
+	BITFIELD(ZM_MIMIC_OVERWRITE),
+	BITFIELD(ZM_ALLOW_LIGHTING),
+	BITFIELD(ZM_ALLOW_ATMOS),
+	BITFIELD(ZM_MIMIC_NO_AO),
+	BITFIELD(ZM_NO_OCCLUDE),
+	BITFIELD(ZM_MIMIC_BASETURF),
 ))
 
 // /turf/z_flags
@@ -44,8 +44,6 @@ DEFINE_BITFIELD(z_flags, list(
 #define Z_OPEN_UP			(1<<2)
 /// Allow atom movement through bottom
 #define Z_OPEN_DOWN			(1<<3)
-/// Considered open - below turfs will get the openspace overlay if so
-#define Z_CONSIDERED_OPEN	(1<<4)
 
 
 //! Movable z_flags.

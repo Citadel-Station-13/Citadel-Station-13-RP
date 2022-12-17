@@ -267,7 +267,7 @@
 	return TRUE
 
 // These didn't fall anyways but better to nip this now just incase.
-/atom/movable/lighting_overlay/can_fall()
+/atom/movable/lighting_object/can_fall()
 	return FALSE
 
 // Mechas are anchored, so we need to override.

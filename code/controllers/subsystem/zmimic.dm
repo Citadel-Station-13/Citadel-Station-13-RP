@@ -6,9 +6,9 @@
 /// The maxiumum number of planes deep we'll go before we just dump everything on the same plane.
 #define OPENTURF_MAX_DEPTH 10
 /// The multiplication factor for openturf shadower darkness. Lighting will be multiplied by this.
-#define SHADOWER_DARKENING_FACTOR 0.5
+#define SHADOWER_DARKENING_FACTOR 0.6
 /// The above, but as an RGB string for lighting-less turfs.
-#define SHADOWER_DARKENING_COLOR "#7F7F7F"
+#define SHADOWER_DARKENING_COLOR "#999999"
 
 SUBSYSTEM_DEF(zmimic)
 	name = "Z-Mimic"
@@ -306,7 +306,7 @@ SUBSYSTEM_DEF(zmimic)
 				continue
 
 			// Special case: these are merged into the shadower to reduce memory usage.
-			if (object.type == /atom/movable/lighting_overlay)
+			if (object.type == /atom/movable/lighting_object)
 				T.shadower.copy_lighting(object)
 				continue
 

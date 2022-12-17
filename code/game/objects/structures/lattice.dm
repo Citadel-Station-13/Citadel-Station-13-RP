@@ -6,7 +6,7 @@
 	density = 0
 	anchored = 1.0
 	w_class = ITEMSIZE_NORMAL
-	plane = PLATING_PLANE
+	plane = TURF_PLANE
 
 	// smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_LATTICE)

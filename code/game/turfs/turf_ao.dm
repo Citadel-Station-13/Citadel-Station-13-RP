@@ -10,9 +10,9 @@
 /turf/var/ao_queued = AO_UPDATE_NONE
 
 /turf/proc/regenerate_ao()
-	for (var/thing in RANGE_TURFS(1, src))
+	for(var/thing in RANGE_TURFS(1, src))
 		var/turf/T = thing
-		if (T.permit_ao)
+		if(istype(T) && T.permit_ao)
 			T.queue_ao(TRUE)
 
 /turf/proc/calculate_ao_neighbors()
@@ -50,6 +50,7 @@
 /turf/proc/queue_ao(rebuild = TRUE)
 	if (!ao_queued)
 		SSao.queue += src
+
 	var/new_level = rebuild ? AO_UPDATE_REBUILD : AO_UPDATE_OVERLAY
 	if (ao_queued < new_level)
 		ao_queued = new_level
@@ -75,7 +76,7 @@
 
 #define CUT_AO(TARGET, AO_LIST) \
 	if (AO_LIST) { \
-		TARGET.overlays -= AO_LIST; \
+		TARGET.cut_overlay(AO_LIST, TRUE); \
 		AO_LIST.Cut(); \
 	}
 
@@ -89,7 +90,7 @@
 	} \
 	UNSETEMPTY(AO_LIST); \
 	if (AO_LIST) { \
-		TARGET.overlays |= AO_LIST; \
+		TARGET.add_overlay(AO_LIST, TRUE); \
 	}
 
 /turf/proc/update_ao()
