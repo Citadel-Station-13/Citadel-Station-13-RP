@@ -306,7 +306,7 @@ SUBSYSTEM_DEF(zmimic)
 				continue
 
 			// Special case: these are merged into the shadower to reduce memory usage.
-			if (object.type == /atom/movable/lighting_object)
+			if (object.type == /atom/movable/lighting_overlay)
 				T.shadower.copy_lighting(object)
 				continue
 

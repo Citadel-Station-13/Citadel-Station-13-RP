@@ -202,7 +202,7 @@ SUBSYSTEM_DEF(planets)
 	for(var/turf/simulated/T as anything in P.planet_floors)
 		if(!T.lighting_corners_initialised)
 			T.generate_missing_corners()
-		for(var/C in list(T.lc_bottomleft, T.lc_bottomright, T.lc_topleft, T.lc_topright))
+		for(var/C in T.corners)
 			var/datum/lighting_corner/LC = C
 			if(LC.update_gen != update_gen && LC.active)
 				sunlit_corners += LC

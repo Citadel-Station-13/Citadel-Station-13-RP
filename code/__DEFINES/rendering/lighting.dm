@@ -6,19 +6,19 @@
 /// Height off the ground of light sources on the pseudo-z-axis, you should probably leave this alone.
 #define LIGHTING_HEIGHT 1
 /// Z diff is multiplied by this and LIGHTING_HEIGHT to get the final height of a light source. Affects how much darker A Z light gets with each level transitioned.
-#define LIGHTING_Z_FACTOR 20
+#define LIGHTING_Z_FACTOR 10
 /// Value used to round lumcounts, values smaller than 1/255 don't matter (if they do, thanks sinking points), greater values will make lighting less precise, but in turn increase performance, VERY SLIGHTLY.
 #define LIGHTING_ROUND_VALUE (1 / 200)
 
 /// Icon used for lighting shading effects
-#define LIGHTING_ICON 'icons/effects/lighting_object.dmi'
+#define LIGHTING_ICON 'icons/effects/lighting_overlay.dmi'
 /// icon_state used for normal color-matrix based lighting overlays.
 #define LIGHTING_BASE_ICON_STATE "matrix"
 /// icon_state used for lighting overlays that are just displaying standard station lighting.
 #define LIGHTING_STATION_ICON_STATE "tubedefault"
 /// icon_state used for lighting overlays with no luminosity.
-#define LIGHTING_DARKNESS_ICON_STATE "dark"
-#define LIGHTING_TRANSPARENT_ICON_STATE "transparent"
+#define LIGHTING_DARKNESS_ICON_STATE "black"
+#define LIGHTING_TRANSPARENT_ICON_STATE "blank"
 
 /// If the max of the lighting lumcounts of each spectrum drops below this, disable luminosity on the lighting overlays.
 #define LIGHTING_SOFT_THRESHOLD 0.001

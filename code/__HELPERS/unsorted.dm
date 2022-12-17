@@ -1481,7 +1481,7 @@ var/list/WALLITEMS = list(
 	. = list()
 
 	//! 'Utility' planes
-	/// Lighting system (lighting_object objects)
+	/// Lighting system (lighting_overlay objects)
 	. += new /atom/movable/screen/plane_master/fullbright
 	/// Lighting system (but different!)
 	. += new /atom/movable/screen/plane_master/lighting
