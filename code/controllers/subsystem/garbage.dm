@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(garbage)
 	#endif
 
 
-/datum/controller/subsystem/garbage/PreInit()
+/datum/controller/subsystem/garbage/PreInit(recovering)
 	queues = new(GC_QUEUE_COUNT)
 	pass_counts = new(GC_QUEUE_COUNT)
 	fail_counts = new(GC_QUEUE_COUNT)
@@ -157,6 +157,7 @@ SUBSYSTEM_DEF(garbage)
 				#endif
 				var/type = D.type
 				var/datum/qdel_item/I = items[type]
+
 				#ifdef TESTING
 				log_world("## TESTING: GC: -- \ref[D] | [type] was unable to be GC'd --")
 				for(var/c in GLOB.admins) //Using testing() here would fill the logs with ADMIN_VV garbage
@@ -167,6 +168,7 @@ SUBSYSTEM_DEF(garbage)
 				testing("GC: -- \ref[src] | [type] was unable to be GC'd --")
 				#endif
 				I.failures++
+
 			if (GC_QUEUE_HARDDELETE)
 				HardDelete(D)
 				if (MC_TICK_CHECK)

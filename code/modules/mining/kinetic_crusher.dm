@@ -85,14 +85,6 @@
 		return TRUE
 	return !ishuman(victim) && !issilicon(victim)
 
-/// triggered on wield of two handed item
-/obj/item/kinetic_crusher/proc/on_wield(obj/item/source, mob/user)
-	wielded = TRUE
-
-/// triggered on unwield of two handed item
-/obj/item/kinetic_crusher/proc/on_unwield(obj/item/source, mob/user)
-	wielded = FALSE
-
 /obj/item/kinetic_crusher/examine(mob/living/user)
 	. = ..()
 	. += "<span class='notice'>Mark a large creature with the destabilizing force, then hit them in melee to do <b>[force + detonation_damage]</b> damage.</span>"

@@ -595,4 +595,3 @@
 	reagent_state = REAGENT_SOLID
 	color = "#464650"
 	taste_description = "salt"
-

@@ -152,16 +152,19 @@
 
 /mob/living/silicon/robot/drone/updateicon()
 
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	if(stat == 0)
-		overlays += "eyes-[icon_state]"
+		overlays_to_add += "eyes-[icon_state]"
 	else
-		overlays -= "eyes"
+		overlays_to_add -= "eyes"
 	if(hat) // Let the drones wear hats.
 		var/mutable_appearance/MA = hat.render_mob_appearance(src, SLOT_ID_HEAD, BODYTYPE_DEFAULT)
 		MA.pixel_x = hat_x_offset
 		MA.pixel_y = hat_y_offset
-		overlays |= MA
+		overlays_to_add += MA
+
+	add_overlay(overlays_to_add)
 
 /mob/living/silicon/robot/drone/choose_icon()
 	return

@@ -35,8 +35,7 @@
 			wood
 */
 
-// Assoc list containing all material datums indexed by name.
-var/list/name_to_material
+// todo: put everything into their own files
 
 //Returns the material the object is made of, if applicable.
 //Will we ever need to return more than one value here? Or should we just return the "dominant" material.
@@ -49,23 +48,6 @@ var/list/name_to_material
 	if(material)
 		return material.name
 
-// Builds the datum list above.
-/proc/populate_material_list(force_remake=0)
-	if(name_to_material && !force_remake) return // Already set up!
-	name_to_material = list()
-	for(var/type in typesof(/datum/material) - /datum/material)
-		var/datum/material/new_mineral = new type
-		if(!new_mineral.name)
-			continue
-		name_to_material[lowertext(new_mineral.name)] = new_mineral
-	return 1
-
-// Safety proc to make sure the material list exists before trying to grab from it.
-/proc/get_material_by_name(name)
-	if(!name_to_material)
-		populate_material_list()
-	return name_to_material[name]
-
 /proc/material_display_name(name)
 	var/datum/material/material = get_material_by_name(name)
 	if(material)
@@ -74,6 +56,9 @@ var/list/name_to_material
 
 // Material definition and procs follow.
 /datum/material
+	abstract_type = /datum/material
+	/// ID. Must be unique. HArdcoded materials can be looked up by typepath too and must never have their ids changed under the current implementation.
+	var/id
 	var/name	                          // Unique name for use in indexing the list.
 	var/display_name                      // Prettier name for display.
 	var/use_name
@@ -248,6 +233,7 @@ var/list/name_to_material
 
 // Datum definitions follow.
 /datum/material/uranium
+	id = "uranium"
 	name = "uranium"
 	stack_type = /obj/item/stack/material/uranium
 	radioactivity = RAD_INTENSITY_MAT_URANIUM
@@ -260,6 +246,7 @@ var/list/name_to_material
 	door_icon_base = "stone"
 
 /datum/material/diamond
+	id = "diamond"
 	name = "diamond"
 	stack_type = /obj/item/stack/material/diamond
 	flags = MATERIAL_UNMELTABLE
@@ -274,6 +261,7 @@ var/list/name_to_material
 	stack_origin_tech = list(TECH_MATERIAL = 6)
 
 /datum/material/gold
+	id = "gold"
 	name = "gold"
 	stack_type = /obj/item/stack/material/gold
 	icon_colour = "#EDD12F"
@@ -285,10 +273,12 @@ var/list/name_to_material
 	sheet_plural_name = "ingots"
 
 /datum/material/gold/bronze //placeholder for ashtrays
+	id = "bronze"
 	name = "bronze"
 	icon_colour = "#EDD12F"
 
 /datum/material/silver
+	id = "silver"
 	name = "silver"
 	stack_type = /obj/item/stack/material/silver
 	icon_colour = "#D1E6E3"
@@ -301,6 +291,7 @@ var/list/name_to_material
 
 //R-UST port
 /datum/material/supermatter
+	id = "supermatter"
 	name = "supermatter"
 	icon_colour = "#FFFF00"
 	stack_type = /obj/item/stack/material/supermatter
@@ -318,6 +309,7 @@ var/list/name_to_material
 	stack_origin_tech = list(TECH_MATERIAL = 8, TECH_PHORON = 5, TECH_BLUESPACE = 4)
 
 /datum/material/phoron
+	id = "phoron"
 	name = "phoron"
 	stack_type = /obj/item/stack/material/phoron
 	ignition_point = PHORON_MINIMUM_BURN_TEMPERATURE
@@ -348,6 +340,7 @@ var/list/name_to_material
 */
 
 /datum/material/stone
+	id = "sandstone"
 	name = "sandstone"
 	stack_type = /obj/item/stack/material/sandstone
 	icon_base = "stone"
@@ -365,6 +358,7 @@ var/list/name_to_material
 	sheet_plural_name = "bricks"
 
 /datum/material/stone/marble
+	id = "marble"
 	name = "marble"
 	icon_colour = "#AAAAAA"
 	weight = 26
@@ -374,6 +368,7 @@ var/list/name_to_material
 
 
 /datum/material/steel
+	id = "steel"
 	name = MAT_STEEL
 	stack_type = /obj/item/stack/material/steel
 	integrity = 150
@@ -384,6 +379,7 @@ var/list/name_to_material
 	icon_colour = "#666666"
 
 /datum/material/steel/hull
+	id = "steel_hull"
 	name = MAT_STEELHULL
 	stack_type = /obj/item/stack/material/steel/hull
 	integrity = 250
@@ -396,6 +392,7 @@ var/list/name_to_material
 	new /obj/item/stack/material/steel(target)
 
 /datum/material/diona
+	id = "biomass_diona"
 	name = "biomass"
 	icon_colour = null
 	stack_type = null
@@ -410,12 +407,14 @@ var/list/name_to_material
 	spawn_diona_nymph(target)
 
 /datum/material/steel/holographic
+	id = "steel_holo"
 	name = "holo" + MAT_STEEL
 	display_name = MAT_STEEL
 	stack_type = null
 	shard_type = SHARD_NONE
 
 /datum/material/plasteel
+	id = "plasteel"
 	name = "plasteel"
 	stack_type = /obj/item/stack/material/plasteel
 	integrity = 400
@@ -433,6 +432,7 @@ var/list/name_to_material
 	radiation_resistance = 14
 
 /datum/material/plasteel/hull
+	id = "plasteel_hull"
 	name = MAT_PLASTEELHULL
 	stack_type = /obj/item/stack/material/plasteel/hull
 	integrity = 600
@@ -446,6 +446,7 @@ var/list/name_to_material
 
 // Very rare alloy that is reflective, should be used sparingly.
 /datum/material/durasteel
+	id = "durasteel"
 	name = "durasteel"
 	stack_type = /obj/item/stack/material/durasteel
 	integrity = 600
@@ -462,6 +463,7 @@ var/list/name_to_material
 	composite_material = list(MAT_PLASTEEL = SHEET_MATERIAL_AMOUNT, MAT_DIAMOND = SHEET_MATERIAL_AMOUNT) //shrug
 
 /datum/material/durasteel/hull //The 'Hardball' of starship hulls.
+	id = "durasteel_hull"
 	name = MAT_DURASTEELHULL
 	icon_base = "hull"
 	icon_reinf = "reinf_mesh"
@@ -473,6 +475,7 @@ var/list/name_to_material
 	new /obj/item/stack/material/durasteel(target)
 
 /datum/material/plasteel/titanium
+	id = "titanium"
 	name = MAT_TITANIUM
 	stack_type = /obj/item/stack/material/titanium
 	conductivity = 2.38
@@ -482,12 +485,14 @@ var/list/name_to_material
 	icon_reinf = "reinf_metal"
 
 /datum/material/plasteel/titanium/hull
+	id = "titanium_hull"
 	name = MAT_TITANIUMHULL
 	stack_type = null
 	icon_base = "hull"
 	icon_reinf = "reinf_mesh"
 
 /datum/material/glass
+	id = "glass"
 	name = "glass"
 	stack_type = /obj/item/stack/material/glass
 	flags = MATERIAL_BRITTLE
@@ -585,6 +590,7 @@ var/list/name_to_material
 	return (hardness > 35) //todo
 
 /datum/material/glass/reinforced
+	id = "glass_reinf"
 	name = "rglass"
 	display_name = "reinforced glass"
 	stack_type = /obj/item/stack/material/glass/reinforced
@@ -605,6 +611,7 @@ var/list/name_to_material
 	rod_product = null
 
 /datum/material/glass/phoron
+	id = "glass_boro"
 	name = "borosilicate glass"
 	display_name = "borosilicate glass"
 	stack_type = /obj/item/stack/material/glass/phoronglass
@@ -619,6 +626,7 @@ var/list/name_to_material
 	rod_product = /obj/item/stack/material/glass/phoronrglass
 
 /datum/material/glass/phoron/reinforced
+	id = "glass_boro_reinf"
 	name = "reinforced borosilicate glass"
 	display_name = "reinforced borosilicate glass"
 	stack_type = /obj/item/stack/material/glass/phoronrglass
@@ -635,6 +643,7 @@ var/list/name_to_material
 
 /datum/material/plastic
 	name = "plastic"
+	id = "plastic"
 	stack_type = /obj/item/stack/material/plastic
 	flags = MATERIAL_BRITTLE
 	icon_base = "solid"
@@ -650,12 +659,14 @@ var/list/name_to_material
 
 /datum/material/plastic/holographic
 	name = "holoplastic"
+	id = "plastic_holo"
 	display_name = "plastic"
 	stack_type = null
 	shard_type = SHARD_NONE
 
 /datum/material/osmium
 	name = "osmium"
+	id = "osmium"
 	stack_type = /obj/item/stack/material/osmium
 	icon_colour = "#9999FF"
 	stack_origin_tech = list(TECH_MATERIAL = 5)
@@ -665,6 +676,7 @@ var/list/name_to_material
 
 /datum/material/tritium
 	name = "tritium"
+	id = "tritium"
 	stack_type = /obj/item/stack/material/tritium
 	icon_colour = "#777777"
 	stack_origin_tech = list(TECH_MATERIAL = 5)
@@ -675,6 +687,7 @@ var/list/name_to_material
 
 /datum/material/deuterium
 	name = "deuterium"
+	id = "deuterium"
 	stack_type = /obj/item/stack/material/deuterium
 	icon_colour = "#999999"
 	stack_origin_tech = list(TECH_MATERIAL = 3)
@@ -685,6 +698,7 @@ var/list/name_to_material
 
 /datum/material/mhydrogen
 	name = "mhydrogen"
+	id = "mhydrogen"
 	stack_type = /obj/item/stack/material/mhydrogen
 	icon_colour = "#E6C5DE"
 	stack_origin_tech = list(TECH_MATERIAL = 6, TECH_POWER = 6, TECH_MAGNET = 5)
@@ -693,6 +707,7 @@ var/list/name_to_material
 
 /datum/material/platinum
 	name = "platinum"
+	id = "platinum"
 	stack_type = /obj/item/stack/material/platinum
 	icon_colour = "#9999FF"
 	weight = 27
@@ -703,6 +718,7 @@ var/list/name_to_material
 
 /datum/material/iron
 	name = "iron"
+	id = "iron"
 	stack_type = /obj/item/stack/material/iron
 	icon_colour = "#5C5454"
 	weight = 22
@@ -712,6 +728,7 @@ var/list/name_to_material
 
 /datum/material/lead
 	name = MAT_LEAD
+	id = "lead"
 	stack_type = /obj/item/stack/material/lead
 	icon_colour = "#273956"
 	weight = 23 // Lead is a bit more dense than silver IRL, and silver has 22 ingame.
@@ -724,6 +741,7 @@ var/list/name_to_material
 
 /datum/material/verdantium
 	name = MAT_VERDANTIUM
+	id = "verdantium"
 	stack_type = /obj/item/stack/material/verdantium
 	icon_base = "metal"
 	door_icon_base = "metal"
@@ -745,6 +763,7 @@ var/list/name_to_material
 //exotic wonder material
 /datum/material/morphium
 	name = MAT_MORPHIUM
+	id = "morphium"
 	stack_type = /obj/item/stack/material/morphium
 	icon_base = "metal"
 	door_icon_base = "metal"
@@ -765,12 +784,14 @@ var/list/name_to_material
 
 /datum/material/morphium/hull
 	name = MAT_MORPHIUMHULL
+	id = "morphium_hull"
 	stack_type = /obj/item/stack/material/morphium/hull
 	icon_base = "hull"
 	icon_reinf = "reinf_mesh"
 
 /datum/material/valhollide
 	name = MAT_VALHOLLIDE
+	id = "valhollide"
 	stack_type = /obj/item/stack/material/valhollide
 	icon_base = "stone"
 	door_icon_base = "stone"
@@ -794,6 +815,7 @@ var/list/name_to_material
 // Adminspawn only, do not let anyone get this.
 /datum/material/alienalloy
 	name = "alienalloy"
+	id = "alien_alloy"
 	display_name = "durable alloy"
 	stack_type = null
 	icon_colour = "#6C7364"
@@ -805,31 +827,38 @@ var/list/name_to_material
 	protectiveness = 80 // 80%
 
 // Likewise.
+// todo: kill with fire
 /datum/material/alienalloy/elevatorium
+	id = "elevatorium"
 	name = "elevatorium"
 	display_name = "elevator panelling"
 	icon_colour = "#666666"
 
 // Ditto.
+// todo: KILL WITH FIRE
 /datum/material/alienalloy/dungeonium
+	id = "dungeonium"
 	name = "dungeonium"
 	display_name = "ultra-durable"
 	icon_base = "dungeon"
 	icon_colour = "#FFFFFF"
 
 /datum/material/alienalloy/bedrock
+	id = "bedrock"
 	name = "bedrock"
 	display_name = "impassable rock"
 	icon_base = "rock"
 	icon_colour = "#FFFFFF"
 
 /datum/material/alienalloy/alium
+	id = "abductor_alloy"
 	name = "alium"
 	display_name = "alien"
 	icon_base = "alien"
 	icon_colour = "#FFFFFF"
 
 /datum/material/resin
+	id = "xenoresin"
 	name = "resin"
 	icon_colour = "#261438"
 	icon_base = "resin"
@@ -864,6 +893,7 @@ var/list/name_to_material
 	return 0
 
 /datum/material/wood
+	id = "wood"
 	name = MAT_WOOD
 	stack_type = /obj/item/stack/material/wood
 	icon_colour = "#9c5930"
@@ -887,6 +917,7 @@ var/list/name_to_material
 	sheet_plural_name = "planks"
 
 /datum/material/wood/log
+	id = "log"
 	name = MAT_LOG
 	icon_base = "log"
 	stack_type = /obj/item/stack/material/log
@@ -894,29 +925,34 @@ var/list/name_to_material
 	sheet_plural_name = "pile"
 
 /datum/material/wood/log/sif
+	id = "log_sif"
 	name = MAT_SIFLOG
 	icon_colour = "#0099cc" // Cyan-ish
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2)
 	stack_type = /obj/item/stack/material/log/sif
 
 /datum/material/wood/log/hard
+	id = "log_hardwood"
 	name = MAT_HARDLOG
 	icon_colour = "#6f432a"
 	stack_type = /obj/item/stack/material/log/hard
 
 /datum/material/wood/holographic
+	id = "wood_holo"
 	name = "holowood"
 	display_name = "wood"
 	stack_type = null
 	shard_type = SHARD_NONE
 
 /datum/material/wood/sif
+	id = "wood_sif"
 	name = MAT_SIFWOOD
 	stack_type = /obj/item/stack/material/wood/sif
 	icon_colour = "#0099cc" // Cyan-ish
 	stack_origin_tech = list(TECH_MATERIAL = 2, TECH_BIO = 2) // Alien wood would presumably be more interesting to the analyzer.
 
 /datum/material/wood/hardwood
+	id = "wood_hardwood"
 	name = MAT_HARDWOOD
 	stack_type = /obj/item/stack/material/wood/hard
 	icon_colour = "#42291a"
@@ -928,6 +964,7 @@ var/list/name_to_material
 	weight = 20	//likewise, heavier
 
 /datum/material/cardboard
+	id = "cardboard"
 	name = "cardboard"
 	stack_type = /obj/item/stack/material/cardboard
 	flags = MATERIAL_BRITTLE
@@ -948,6 +985,7 @@ var/list/name_to_material
 	pass_stack_colors = TRUE
 
 /datum/material/snow
+	id = "snow"
 	name = MAT_SNOW
 	stack_type = /obj/item/stack/material/snow
 	flags = MATERIAL_BRITTLE
@@ -966,6 +1004,7 @@ var/list/name_to_material
 	radiation_resistance = 1
 
 /datum/material/snowbrick //only slightly stronger than snow, used to make igloos mostly
+	id = "snow_packed"
 	name = "packed snow"
 	flags = MATERIAL_BRITTLE
 	stack_type = /obj/item/stack/material/snowbrick
@@ -985,6 +1024,7 @@ var/list/name_to_material
 	radiation_resistance = 1
 
 /datum/material/cloth //todo
+	id = "cloth"
 	name = "cloth"
 	stack_origin_tech = list(TECH_MATERIAL = 2)
 	door_icon_base = "wood"
@@ -996,6 +1036,7 @@ var/list/name_to_material
 	pass_stack_colors = TRUE
 
 /datum/material/cult
+	id = "cult"
 	name = "cult"
 	display_name = "disturbing stone"
 	icon_base = "cult"
@@ -1012,6 +1053,7 @@ var/list/name_to_material
 	new /obj/effect/debris/cleanable/blood(target)
 
 /datum/material/cult/reinf
+	id = "cult_reinforced"
 	name = "cult2"
 	display_name = "human remains"
 
@@ -1019,6 +1061,7 @@ var/list/name_to_material
 	new /obj/effect/decal/remains/human(target)
 
 /datum/material/flesh
+	id = "flesh"
 	name = "flesh"
 	icon_colour = "#35343a"
 	icon_base = "flesh"
@@ -1052,6 +1095,7 @@ var/list/name_to_material
 	return 0
 
 /datum/material/bone
+	id = "bone"
 	name = "bone"
 	icon_colour = "#e6dfc8"
 	icon_base = "bone"
@@ -1077,7 +1121,9 @@ var/list/name_to_material
 	return 0
 
 //TODO PLACEHOLDERS:
+// todo: wtf are these they need to be subtyped properly and uhh yea
 /datum/material/leather
+	id = "leather"
 	name = "leather"
 	icon_colour = "#5C4831"
 	stack_origin_tech = list(TECH_MATERIAL = 2)
@@ -1088,6 +1134,7 @@ var/list/name_to_material
 	conductive = 0
 
 /datum/material/carpet
+	id = "carpet"
 	name = "carpet"
 	display_name = "comfy"
 	use_name = "red upholstery"
@@ -1100,6 +1147,7 @@ var/list/name_to_material
 	protectiveness = 1 // 4%
 
 /datum/material/cotton
+	id = "cotton"
 	name = "cotton"
 	display_name ="cotton"
 	icon_colour = "#FFFFFF"
@@ -1111,6 +1159,7 @@ var/list/name_to_material
 
 // This all needs to be OOP'd and use inheritence if its ever used in the future.
 /datum/material/cloth_teal
+	id = "cloth_teal"
 	name = "teal"
 	display_name ="teal"
 	use_name = "teal cloth"
@@ -1122,6 +1171,7 @@ var/list/name_to_material
 	conductive = 0
 
 /datum/material/cloth_black
+	id = "cloth_black"
 	name = "black"
 	display_name = "black"
 	use_name = "black cloth"
@@ -1133,6 +1183,7 @@ var/list/name_to_material
 	conductive = 0
 
 /datum/material/cloth_green
+	id = "cloth_green"
 	name = "green"
 	display_name = "green"
 	use_name = "green cloth"
@@ -1144,6 +1195,7 @@ var/list/name_to_material
 	conductive = 0
 
 /datum/material/cloth_puple
+	id = "cloth_purple"
 	name = "purple"
 	display_name = "purple"
 	use_name = "purple cloth"
@@ -1155,6 +1207,7 @@ var/list/name_to_material
 	conductive = 0
 
 /datum/material/cloth_blue
+	id = "cloth_blue"
 	name = "blue"
 	display_name = "blue"
 	use_name = "blue cloth"
@@ -1166,6 +1219,7 @@ var/list/name_to_material
 	conductive = 0
 
 /datum/material/cloth_beige
+	id = "cloth_beige"
 	name = "beige"
 	display_name = "beige"
 	use_name = "beige cloth"
@@ -1177,6 +1231,7 @@ var/list/name_to_material
 	conductive = 0
 
 /datum/material/cloth_lime
+	id = "cloth_lime"
 	name = "lime"
 	display_name = "lime"
 	use_name = "lime cloth"
@@ -1188,6 +1243,7 @@ var/list/name_to_material
 	conductive = 0
 
 /datum/material/toy_foam
+	id = "foam"
 	name = "foam"
 	display_name = "foam"
 	use_name = "foam"
@@ -1202,6 +1258,7 @@ var/list/name_to_material
 
 //Vaudium products
 /datum/material/bananium
+	id = "bananium"
 	name = "bananium"
 	stack_type = /obj/item/stack/material/bananium
 	integrity = 150
@@ -1210,6 +1267,7 @@ var/list/name_to_material
 	icon_colour = "#d6c100"
 
 /datum/material/stone/silencium
+	id = "silencium"
 	name = "silencium"
 	icon_colour = "#AAAAAA"
 	weight = 26
@@ -1218,12 +1276,14 @@ var/list/name_to_material
 	stack_type = /obj/item/stack/material/silencium
 
 /datum/material/brass
+	id = "brass"
 	name = "brass"
 	icon_colour = "#CAC955"
 	integrity = 150
 	stack_type = /obj/item/stack/material/brass
 
 /datum/material/copper
+	id = "copper"
 	name = "copper"
 	icon_colour = "#b45c13"
 	weight = 15
@@ -1233,6 +1293,7 @@ var/list/name_to_material
 
 //Moving this here. It was in beehive.dm for some reason.
 /datum/material/wax
+	id = "wax"
 	name = "wax"
 	stack_type = /obj/item/stack/material/wax
 	icon_colour = "#ebe6ac"
@@ -1241,3 +1302,43 @@ var/list/name_to_material
 	hardness = 20
 	integrity = 100
 	pass_stack_colors = TRUE
+
+/datum/material/flesh
+	id = "flesh"
+	name = "flesh"
+	display_name = "chunk of flesh"
+	icon_colour = "#dd90aa"
+	sheet_singular_name = "meat"
+	sheet_plural_name = "meats"
+	integrity = 1200
+	melting_point = 6000
+	explosion_resistance = 200
+	hardness = 500
+	weight = 500
+
+/datum/material/fluff //This is to allow for 2 handed weapons that don't want to have a prefix.
+	id = "fluff"
+	name = " "
+	display_name = ""
+	icon_colour = "#000000"
+	sheet_singular_name = "fluff"
+	sheet_plural_name = "fluffs"
+	hardness = 60
+	weight = 20 //Strong as iron.
+
+// what the fuck?
+/datum/material/darkglass
+	id = "glass_dark"
+	name = "darkglass"
+	display_name = "darkglass"
+	icon_base = "darkglass"
+	icon_colour = "#FFFFFF"
+
+// what the fuck?
+/datum/material/fancyblack
+	id = "black_fancy"
+	name = "fancyblack"
+	display_name = "fancyblack"
+	icon_base = "fancyblack"
+	icon_colour = "#FFFFFF"
+

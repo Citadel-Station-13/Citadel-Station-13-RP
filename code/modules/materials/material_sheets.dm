@@ -42,7 +42,7 @@
 		color = material.icon_colour
 
 	if(!material.conductive)
-		flags |= NOCONDUCT
+		atom_flags |= NOCONDUCT
 
 	matter = material.get_matter()
 	update_strings()

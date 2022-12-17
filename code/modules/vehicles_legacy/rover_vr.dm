@@ -309,7 +309,7 @@
 //This prevents the object from being interacted with until it has
 // been unloaded. A dummy object is loaded instead so the loading
 // code knows to handle it correctly.
-/obj/vehicle_old/train/rover/trolley/proc/load_object(var/atom/movable/C)
+/obj/vehicle_old/train/rover/trolley/proc/load_object(atom/movable/C)
 	if(!isturf(C.loc)) //To prevent loading things from someone's inventory, which wouldn't get handled properly.
 		return 0
 	if(load || C.anchored)
@@ -328,7 +328,7 @@
 		C.pixel_y += load_offset_y
 		C.layer = layer
 
-		overlays += C
+		add_overlay(C)
 
 		//we can set these back now since we have already cloned the icon into the overlay
 		C.pixel_x = initial(C.pixel_x)
@@ -341,7 +341,7 @@
 		load = dummy_load.actual_load
 		dummy_load.actual_load = null
 		qdel(dummy_load)
-		overlays.Cut()
+		cut_overlay()
 	..()
 
 //-------------------------------------------

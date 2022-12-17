@@ -129,6 +129,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		/mob/living/carbon/human/proc/shapeshifter_select_wings,
 		/mob/living/carbon/human/proc/shapeshifter_select_tail,
 		/mob/living/carbon/human/proc/shapeshifter_select_ears,
+		/mob/living/carbon/human/proc/shapeshifter_select_horns,
 		/mob/living/proc/eat_trash,
 		/mob/living/carbon/human/proc/sonar_ping,
 		/mob/living/carbon/human/proc/succubus_drain,

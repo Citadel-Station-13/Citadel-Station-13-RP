@@ -8,7 +8,7 @@
 	climbable = TRUE
 	layer = WINDOW_LAYER
 	anchored = TRUE
-	flags = ON_BORDER
+	atom_flags = ATOM_BORDER
 	icon_state = "railing0"
 	var/broken = FALSE
 	var/health = 70
@@ -105,30 +105,34 @@
 			if (UpdateNeighbors)
 				R.update_icon()
 
-/obj/structure/railing/update_icon(var/UpdateNeighgors = 1)
+/obj/structure/railing/update_icon(UpdateNeighgors = TRUE)
 	NeighborsCheck(UpdateNeighgors)
 	//layer = (dir == SOUTH) ? FLY_LAYER : initial(layer) // wtf does this even do
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
+
 	if (!check || !anchored)//|| !anchored
 		icon_state = "railing0"
 	else
 		icon_state = "railing1"
 		if (check & 32)
-			overlays += image ('icons/obj/railing.dmi', src, "corneroverlay")
+			overlays_to_add += image ('icons/obj/railing.dmi', src, "corneroverlay")
 		if ((check & 16) || !(check & 32) || (check & 64))
-			overlays += image ('icons/obj/railing.dmi', src, "frontoverlay_l")
+			overlays_to_add += image ('icons/obj/railing.dmi', src, "frontoverlay_l")
 		if (!(check & 2) || (check & 1) || (check & 4))
-			overlays += image ('icons/obj/railing.dmi', src, "frontoverlay_r")
+			overlays_to_add += image ('icons/obj/railing.dmi', src, "frontoverlay_r")
 			if(check & 4)
 				switch (src.dir)
 					if (NORTH)
-						overlays += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_x = 32)
+						overlays_to_add += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_x = 32)
 					if (SOUTH)
-						overlays += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_x = -32)
+						overlays_to_add += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_x = -32)
 					if (EAST)
-						overlays += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_y = -32)
+						overlays_to_add += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_y = -32)
 					if (WEST)
-						overlays += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_y = 32)
+						overlays_to_add += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_y = 32)
+
+	add_overlay(overlays_to_add)
 
 /obj/structure/railing/verb/rotate_counterclockwise()
 	set name = "Rotate Railing Counter-Clockwise"
@@ -322,5 +326,5 @@
 		if(istype(O,/obj/structure))
 			var/obj/structure/S = O
 			if(S.climbable) continue
-		if(O && O.density && !(O.flags & ON_BORDER && !(turn(O.dir, 180) & dir)))
+		if(O && O.density && !(O.atom_flags & ATOM_BORDER && !(turn(O.dir, 180) & dir)))
 			return O

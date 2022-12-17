@@ -12,25 +12,50 @@ SUBSYSTEM_DEF(shuttle)
 	subsystem_flags = SS_KEEP_TIMING|SS_NO_TICK_CHECK
 	runlevels = RUNLEVEL_GAME|RUNLEVEL_POSTGAME
 
-	var/overmap_halted = FALSE						// Whether ships can move on the overmap; used for adminbus.
-	var/list/ships = list()							// List of all ships.
+	/// Whether ships can move on the overmap; used for adminbus.
+	var/overmap_halted = FALSE
+	/// List of all ships.
+	var/list/ships = list()
 
-	var/list/shuttles = list()						// Maps shuttle tags to shuttle datums, so that they can be looked up.
-	var/list/process_shuttles = list()				// Simple list of shuttles, for processing
+	/// Maps shuttle tags to shuttle datums, so that they can be looked up.
+	var/list/shuttles = list()
+	/// Simple list of shuttles, for processing
+	var/list/process_shuttles = list()
 
-	var/list/registered_shuttle_landmarks = list()	// Maps shuttle landmark tags to instances
-	var/last_landmark_registration_time				// world.time of most recent addition to registered_shuttle_landmarks
-	var/list/shuttle_logs = list()					// (Not Implemented) Keeps records of shuttle movement, format is list(datum/shuttle = datum/shuttle_log)
-	var/list/shuttle_areas = list()					// All the areas of all shuttles.
-	var/list/docking_registry = list()				// Docking controller tag -> docking controller program, mostly for init purposes.
+	/// Maps shuttle landmark tags to instances
+	var/list/registered_shuttle_landmarks = list()
+	/// world.time of most recent addition to registered_shuttle_landmarks
+	var/last_landmark_registration_time
+	/// (Not Implemented) Keeps records of shuttle movement, format is list(datum/shuttle = datum/shuttle_log)
+	var/list/shuttle_logs = list()
+	/// All the areas of all shuttles.
+	var/list/shuttle_areas = list()
+	/// Docking controller tag -> docking controller program, mostly for init purposes.
+	var/list/docking_registry = list()
 
-	var/list/landmarks_awaiting_sector = list()		// Stores automatic landmarks that are waiting for a sector to finish loading.
-	var/list/landmarks_still_needed = list()		// Stores landmark_tags that need to be assigned to the sector (landmark_tag = sector) when registered.
-	var/list/shuttles_to_initialize					// A queue for shuttles to initialize at the appropriate time.
-	var/list/sectors_to_initialize					// Used to find all sector objects at the appropriate time.
-	var/block_init_queue = TRUE						// Block initialization of new shuttles/sectors
+	/// Stores automatic landmarks that are waiting for a sector to finish loading.
+	var/list/landmarks_awaiting_sector = list()
+	/// Stores landmark_tags that need to be assigned to the sector (landmark_tag = sector) when registered.
+	var/list/landmarks_still_needed = list()
+	/// A queue for shuttles to initialize at the appropriate time.
+	var/list/shuttles_to_initialize
+	/// Used to find all sector objects at the appropriate time.
+	var/list/sectors_to_initialize
+	/// Block initialization of new shuttles/sectors
+	var/block_init_queue = TRUE
 
-	var/tmp/list/current_run						// Shuttles remaining to process this fire() tick
+	/// Shuttles remaining to process this fire() tick
+	var/tmp/list/current_run
+
+
+	/**
+	 *! I made these shitty vars so we don't search for these in GOD DAMN WORLD
+	 *! If I find these are still here in 2023 I'll be very upset.
+	 * @Zandario
+	 */
+
+	var/list/unary_engines = list()
+	var/list/ion_engines = list()
 
 /datum/controller/subsystem/shuttle/Initialize(timeofday)
 	last_landmark_registration_time = world.time
@@ -80,12 +105,12 @@ SUBSYSTEM_DEF(shuttle)
 	hook_up_motherships(shuttles_made)
 	hook_up_shuttle_objects(shuttles_made)
 	shuttles_to_initialize = null
-	/// citadel edit - initialize overmaps shuttles here until we rewrite overmaps to not be a dumpster fire god damnit
-	for(var/obj/machinery/atmospherics/component/unary/engine/E in world)
+	//! citadel edit - initialize overmaps shuttles here until we rewrite overmaps to not be a dumpster fire god damnit
+	for(var/obj/machinery/atmospherics/component/unary/engine/E in unary_engines)
 		if(E.linked)
 			continue
 		E.link_to_ship()
-	for(var/obj/machinery/ion_engine/E in world)
+	for(var/obj/machinery/ion_engine/E in ion_engines)
 		if(E.linked)
 			continue
 		E.link_to_ship()

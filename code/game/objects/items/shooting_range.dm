@@ -23,7 +23,7 @@
 		. = CLICKCHAIN_DO_NOT_PROPAGATE
 		var/obj/item/weldingtool/WT = W
 		if(WT.remove_fuel(0, user))
-			overlays.Cut()
+			cut_overlays()
 			to_chat(usr, "You slice off [src]'s uneven chunks of aluminum and scorch marks.")
 	else
 		return ..()
@@ -127,7 +127,7 @@
 			virtualIcon.DrawBox(null, B.b1x1, B.b1y,  B.b1x2, B.b1y) // horizontal line, left to right
 			virtualIcon.DrawBox(null, B.b2x, B.b2y1,  B.b2x, B.b2y2) // vertical line, top to bottom
 
-		overlays += bmark // add the decal
+		add_overlay(bmark) // add the decal
 
 		icon = virtualIcon // apply bulletholes over decals
 

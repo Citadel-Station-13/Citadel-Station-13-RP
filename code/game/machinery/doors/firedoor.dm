@@ -436,29 +436,34 @@
 
 
 /obj/machinery/door/firedoor/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
+
 	if(density)
 		icon_state = "door_closed"
 		if(prying)
 			icon_state = "prying_closed"
 		if(hatch_open)
-			overlays += "hatch"
+			overlays_to_add += "hatch"
 		if(blocked)
-			overlays += "welded"
+			overlays_to_add += "welded"
 		if(pdiff_alert)
-			overlays += "palert"
+			overlays_to_add += "palert"
 		if(dir_alerts)
 			for(var/d=1;d<=4;d++)
 				var/cdir = GLOB.cardinal[d]
 				for(var/i=1;i<=ALERT_STATES.len;i++)
 					if(dir_alerts[d] & (1<<(i-1)))
-						overlays += new/icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir)
+						overlays_to_add += new/icon(icon,"alert_[ALERT_STATES[i]]", dir=cdir)
 	else
 		icon_state = "door_open"
 		if(prying)
 			icon_state = "prying_open"
 		if(blocked)
-			overlays += "welded_open"
+			overlays_to_add += "welded_open"
+
+	add_overlay(overlays_to_add)
+
 	return
 
 //These are playing merry hell on ZAS.  Sorry fellas :(

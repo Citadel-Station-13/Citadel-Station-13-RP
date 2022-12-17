@@ -286,7 +286,7 @@ emp_act
 		if(!((I.damtype == BRUTE) || (I.damtype == HALLOSS)))
 			return
 
-		if(!(I.flags & NOBLOODY))
+		if(!(I.atom_flags & NOBLOODY))
 			I.add_blood(src)
 
 		var/bloody = 0

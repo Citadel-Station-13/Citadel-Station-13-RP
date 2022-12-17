@@ -27,12 +27,13 @@
 	if(!enabled_icon_state)
 		enabled_icon_state = icon_state
 
+	// HACK: This is dumb, but whatever.
 	if(disabled_for || diffused_for)
 		icon_state = "shield_broken"
 		overlays.Cut() //NOT ssoverlays
 	else
 		icon_state = enabled_icon_state
-		flags |= OVERLAY_QUEUED //Trick SSoverlays
+		atom_flags |= ATOM_OVERLAY_QUEUED //Trick SSoverlays
 		SSoverlays.queue += src
 
 /obj/effect/shield/proc/update_color()

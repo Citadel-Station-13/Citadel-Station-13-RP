@@ -1,6 +1,7 @@
 //contains the relavant data for the xenohybrid resin, a more versitile, and legaly distinct material.
 
 /datum/material/hybrid_resin
+	id = "xenoresin_hybrid"
 	name = "resin compound"
 	icon_colour = "#321a49"
 	icon_base = "resin"

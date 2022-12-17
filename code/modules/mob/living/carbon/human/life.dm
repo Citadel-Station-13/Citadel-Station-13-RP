@@ -1262,12 +1262,18 @@
 		if(hurtdamage)
 			var/severity = 0
 			switch(hurtdamage)
-				if(10 to 25)		severity = 1
-				if(25 to 40)		severity = 2
-				if(40 to 55)		severity = 3
-				if(55 to 70)		severity = 4
-				if(70 to 85)		severity = 5
-				if(85 to INFINITY)	severity = 6
+				if(10 to 25)
+					severity = 1
+				if(25 to 40)
+					severity = 2
+				if(40 to 55)
+					severity = 3
+				if(55 to 70)
+					severity = 4
+				if(70 to 85)
+					severity = 5
+				if(85 to INFINITY)
+					severity = 6
 			overlay_fullscreen("brute", /atom/movable/screen/fullscreen/scaled/brute, severity)
 		else
 			clear_fullscreen("brute")
@@ -1279,7 +1285,7 @@
 				// Generate a by-limb health display.
 				var/mutable_appearance/healths_ma = new(healths)
 				healths_ma.icon_state = "blank"
-				healths_ma.overlays = null
+				healths_ma.cut_overlays()
 				healths_ma.plane = PLANE_PLAYER_HUD
 
 				var/no_damage = 1
@@ -1308,62 +1314,93 @@
 				else if(no_damage)
 					health_images += image('icons/mob/screen1_health.dmi',"fullhealth")
 
-				healths_ma.overlays += health_images
+				healths_ma.add_overlay(health_images)
 				healths.appearance = healths_ma
 
 		if(nutrition_icon)
 			switch(nutrition/species.max_nutrition)
-				if(1 to INFINITY)				nutrition_icon.icon_state = "nutrition0"
-				if(0.778 to 1)					nutrition_icon.icon_state = "nutrition1"
-				if(0.556 to 0.778)				nutrition_icon.icon_state = "nutrition2"
-				if(0.333 to 0.556)				nutrition_icon.icon_state = "nutrition3"
-				else							nutrition_icon.icon_state = "nutrition4"
+				if(1 to INFINITY)
+					nutrition_icon.icon_state = "nutrition0"
+				if(0.778 to 1)
+					nutrition_icon.icon_state = "nutrition1"
+				if(0.556 to 0.778)
+					nutrition_icon.icon_state = "nutrition2"
+				if(0.333 to 0.556)
+					nutrition_icon.icon_state = "nutrition3"
+				else
+					nutrition_icon.icon_state = "nutrition4"
 
 		if(hydration_icon)
 			switch(hydration)
-				if(450 to INFINITY)				hydration_icon.icon_state = "hydration0"
-				if(350 to 450)					hydration_icon.icon_state = "hydration1"
-				if(250 to 350)					hydration_icon.icon_state = "hydration2"
-				if(150 to 250)					hydration_icon.icon_state = "hydration3"
-				else							hydration_icon.icon_state = "hydration4"
+				if(450 to INFINITY)
+					hydration_icon.icon_state = "hydration0"
+				if(350 to 450)
+					hydration_icon.icon_state = "hydration1"
+				if(250 to 350)
+					hydration_icon.icon_state = "hydration2"
+				if(150 to 250)
+					hydration_icon.icon_state = "hydration3"
+				else
+					hydration_icon.icon_state = "hydration4"
 
 		if(synthbattery_icon)
 			switch(nutrition)
-				if(350 to INFINITY)				synthbattery_icon.icon_state = "charge4"
-				if(250 to 350)					synthbattery_icon.icon_state = "charge3"
-				if(100 to 250)					synthbattery_icon.icon_state = "charge2"
-				else							synthbattery_icon.icon_state = "charge1"
+				if(350 to INFINITY)
+					synthbattery_icon.icon_state = "charge4"
+				if(250 to 350)
+					synthbattery_icon.icon_state = "charge3"
+				if(100 to 250)
+					synthbattery_icon.icon_state = "charge2"
+				else
+					synthbattery_icon.icon_state = "charge1"
 			if(stat == DEAD)
 				synthbattery_icon.icon_state = "charge0"
 
 		if(pressure)
 			pressure.icon_state = "pressure[pressure_alert]"
 
-//			if(rest)	//Not used with new UI
-//				if(resting || lying || sleeping)		rest.icon_state = "rest1"
-//				else									rest.icon_state = "rest0"
+			// if(rest)	//Not used with new UI
+			// 	if(resting || lying || sleeping)
+			// 		rest.icon_state = "rest1"
+			// 	else
+			// 		rest.icon_state = "rest0"
 		if(toxin)
-			if(hal_screwyhud == 4 || (phoron_alert && !does_not_breathe))	toxin.icon_state = "tox1"
-			else									toxin.icon_state = "tox0"
+			if(hal_screwyhud == 4 || (phoron_alert && !does_not_breathe))
+				toxin.icon_state = "tox1"
+			else
+				toxin.icon_state = "tox0"
 		if(oxygen)
-			if(hal_screwyhud == 3 || (oxygen_alert && !does_not_breathe))	oxygen.icon_state = "oxy1"
-			else									oxygen.icon_state = "oxy0"
+			if(hal_screwyhud == 3 || (oxygen_alert && !does_not_breathe))
+				oxygen.icon_state = "oxy1"
+			else
+				oxygen.icon_state = "oxy0"
 		if(fire)
-			if(fire_alert)							fire.icon_state = "fire[fire_alert]" //fire_alert is either 0 if no alert, 1 for cold and 2 for heat.
-			else									fire.icon_state = "fire0"
+			if(fire_alert)
+				fire.icon_state = "fire[fire_alert]" //fire_alert is either 0 if no alert, 1 for cold and 2 for heat.
+			else
+				fire.icon_state = "fire0"
 
 		if(bodytemp)
 			if (!species)
 				switch(bodytemperature) //310.055 optimal body temp
-					if(370 to INFINITY)		bodytemp.icon_state = "temp4"
-					if(350 to 370)			bodytemp.icon_state = "temp3"
-					if(335 to 350)			bodytemp.icon_state = "temp2"
-					if(320 to 335)			bodytemp.icon_state = "temp1"
-					if(300 to 320)			bodytemp.icon_state = "temp0"
-					if(295 to 300)			bodytemp.icon_state = "temp-1"
-					if(280 to 295)			bodytemp.icon_state = "temp-2"
-					if(260 to 280)			bodytemp.icon_state = "temp-3"
-					else					bodytemp.icon_state = "temp-4"
+					if(370 to INFINITY)
+						bodytemp.icon_state = "temp4"
+					if(350 to 370)
+						bodytemp.icon_state = "temp3"
+					if(335 to 350)
+						bodytemp.icon_state = "temp2"
+					if(320 to 335)
+						bodytemp.icon_state = "temp1"
+					if(300 to 320)
+						bodytemp.icon_state = "temp0"
+					if(295 to 300)
+						bodytemp.icon_state = "temp-1"
+					if(280 to 295)
+						bodytemp.icon_state = "temp-2"
+					if(260 to 280)
+						bodytemp.icon_state = "temp-3"
+					else
+						bodytemp.icon_state = "temp-4"
 			else
 				//TODO: precalculate all of this stuff when the species datum is created
 				var/base_temperature = species.body_temperature

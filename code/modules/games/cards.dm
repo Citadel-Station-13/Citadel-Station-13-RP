@@ -392,7 +392,7 @@
 		qdel(src)
 	return
 
-/obj/item/hand/update_icon(var/direction = 0)
+/obj/item/hand/update_icon(direction = 0)
 	if(!cards.len)
 		return		// about to be deleted
 	if(cards.len > 1)
@@ -402,7 +402,7 @@
 		name = "a playing card"
 		desc = "A playing card."
 
-	overlays.Cut()
+	cut_overlays()
 
 
 	if(cards.len == 1)
@@ -410,7 +410,7 @@
 		var/image/I = new(src.icon, (concealed ? "[P.back_icon]" : "[P.card_icon]") )
 		I.pixel_x += (-5+rand(10))
 		I.pixel_y += (-5+rand(10))
-		overlays += I
+		add_overlay(I)
 		return
 
 	var/offset = FLOOR(20/cards.len, 1)
@@ -442,7 +442,7 @@
 			else
 				I.pixel_x = -7+(offset*i)
 		I.transform = M
-		overlays += I
+		add_overlay(I)
 		i++
 
 /obj/item/hand/dropped(mob/user, flags, atom/newLoc)

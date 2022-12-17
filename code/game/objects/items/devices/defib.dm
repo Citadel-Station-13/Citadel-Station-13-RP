@@ -41,6 +41,8 @@
 
 
 /obj/item/defib_kit/update_icon()
+
+	cut_overlays()
 	var/list/new_overlays = list()
 
 	if(paddles && paddles.loc == src) //in case paddles got destroyed somehow.
@@ -59,7 +61,7 @@
 	else
 		new_overlays += "[initial(icon_state)]-nocell"
 
-	overlays = new_overlays
+	add_overlay(new_overlays)
 
 /obj/item/defib_kit/ui_action_click()
 	toggle_paddles()

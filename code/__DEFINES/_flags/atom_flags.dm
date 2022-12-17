@@ -1,17 +1,18 @@
 ///FLAG BITMASKS - Used in /atom/var/flags
 /// The atom is initialized
-#define INITIALIZED					(1<<0)
+#define ATOM_INITIALIZED					(1<<0)
 /// Item has priority to check when entering or leaving.
-#define ON_BORDER					(1<<1)
+#define ATOM_BORDER					(1<<1)
 /// Atom is admin spawned
-#define ADMIN_SPAWNED				(1<<2)
+#define ATOM_ADMINSPAWNED				(1<<2)
 /// get_hearers_in_view() returns us, meaning we intercept usually for-players messages. Mobs, mechas, etc should all have this!
-#define HEAR						(1<<3)
+#define ATOM_HEAR						(1<<3)
 /// Atom queued to SSoverlay for COMPILE_OVERLAYS
-#define OVERLAY_QUEUED				(1<<4)
+#define ATOM_OVERLAY_QUEUED				(1<<4)
 /// atom is absolute-abstract - should not be interactable or movable in any way shape or form
 #define ATOM_ABSTRACT				(1<<5)
 /// we are an holographic atom from a holodeck/AR system
+// todo: should this be an atom flag?
 #define HOLOGRAM					(1<<6)
 /// Used for items if they don't want to get a blood overlay.
 // TODO: item flag
@@ -48,12 +49,12 @@
 */
 #define HTML_USE_INITAL_ICON		(1<<23)
 
-DEFINE_BITFIELD(flags, list(
-	BITFIELD(INITIALIZED),
-	BITFIELD(ON_BORDER),
-	BITFIELD(ADMIN_SPAWNED),
-	BITFIELD(HEAR),
-	BITFIELD(OVERLAY_QUEUED),
+DEFINE_BITFIELD(atom_flags, list(
+	BITFIELD(ATOM_INITIALIZED),
+	BITFIELD(ATOM_BORDER),
+	BITFIELD(ATOM_ADMINSPAWNED),
+	BITFIELD(ATOM_HEAR),
+	BITFIELD(ATOM_OVERLAY_QUEUED),
 	BITFIELD(ATOM_ABSTRACT),
 	BITFIELD(HOLOGRAM),
 	BITFIELD(NOBLOODY),

@@ -58,10 +58,10 @@
 				to_chat(H, "<span class='warning'>You're already wearing something on your head!</span>")
 				return
 			else
-				if(flags & PHORONGUARD)
-					hood.flags |= PHORONGUARD
+				if(atom_flags & PHORONGUARD)
+					hood.atom_flags |= PHORONGUARD
 				else
-					hood.flags &= ~PHORONGUARD
+					hood.atom_flags &= ~PHORONGUARD
 				H.equip_to_slot_if_possible(hood, SLOT_ID_HEAD)
 				if(armor)
 					hood.armor = armor.Copy()
@@ -128,7 +128,7 @@
 	icon_state = "coatwinter"
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "coatwinter", SLOT_ID_LEFT_HAND = "coatwinter")
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 	flags_inv = HIDEHOLSTER
 	cold_protection = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
@@ -428,7 +428,7 @@
 	desc = "An armoured suit for exploring harsh environments."
 	icon_state = "explorer"
 	item_state = "explorer"
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 	clothing_flags = THICKMATERIAL
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_COLD_PROTECTION_TEMPERATURE
@@ -453,7 +453,7 @@
 	desc = "An armoured suit for mining in harsh environments."
 	icon = 'icons/clothing/suit/mining.dmi'
 	icon_state = "miner"
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
 	clothing_flags = THICKMATERIAL
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS

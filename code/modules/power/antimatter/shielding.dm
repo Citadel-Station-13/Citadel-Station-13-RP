@@ -106,17 +106,22 @@
 
 
 /obj/machinery/am_shielding/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
+
 	for(var/direction in GLOB.alldirs)
 		var/machine = locate(/obj/machinery, get_step(loc, direction))
 		if((istype(machine, /obj/machinery/am_shielding) && machine:control_unit == control_unit)||(istype(machine, /obj/machinery/power/am_control_unit) && machine == control_unit))
-			overlays += "shield_[direction]"
+			overlays_to_add += "shield_[direction]"
 
 	if(core_check())
-		overlays += "core"
-		if(!processing) setup_core()
-	else if(processing) shutdown_core()
+		overlays_to_add += "core"
+		if(!processing)
+			setup_core()
+	else if(processing)
+		shutdown_core()
 
+	add_overlay(overlays_to_add)
 
 /obj/machinery/am_shielding/attackby(obj/item/W, mob/user)
 	if(!istype(W) || !user) return

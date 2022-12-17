@@ -1,7 +1,7 @@
 /atom/movable/lighting_object
 	name = ""
 	anchored = TRUE
-	flags = ATOM_ABSTRACT
+	atom_flags = ATOM_ABSTRACT
 
 	icon = LIGHTING_ICON
 	icon_state = "transparent"

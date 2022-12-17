@@ -71,7 +71,7 @@
 	name = "vox magclaws"
 	item_state = "boots-vox"
 	icon_state = "boots-vox"
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 	species_restricted = list(SPECIES_VOX)
 
 	action_button_name = "Toggle the magclaws"
