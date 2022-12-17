@@ -36,10 +36,6 @@ DEFINE_BITFIELD(z_flags, list(
 ))
 
 // /turf/z_flags
-/// Allow air passage through top
-#define Z_AIR_UP			(1<<0)
-/// Allow air passage through bottom
-#define Z_AIR_DOWN			(1<<1)
 /// Allow atom movement through top
 #define Z_OPEN_UP			(1<<2)
 /// Allow atom movement through bottom
