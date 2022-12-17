@@ -401,7 +401,7 @@
 
 /area/outpost/mining_main/outpost/maintenance
 	name = "\improper Outpost Maintence"
-	area_flags = AREA_RAD_SHIELDED
+	area_flags = AREA_FLAG_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = new /datum/turf_initializer/maintenance()
 	ambience = AMBIENCE_MAINTENANCE
@@ -1041,6 +1041,3 @@ Do this eventually. */
 
 /area/rift/exterior/mineshaft
 	name = "\improper Abandoned Mineshaft"
-
-
-

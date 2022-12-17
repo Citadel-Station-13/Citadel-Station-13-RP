@@ -1,10 +1,12 @@
+// TODO: Grab Nebula/O7 Lighting. @Zandario
+
 /atom/movable/lighting_object
 	name = ""
 	anchored = TRUE
 	atom_flags = ATOM_ABSTRACT
 
 	icon = LIGHTING_ICON
-	icon_state = "transparent"
+	icon_state = LIGHTING_TRANSPARENT_ICON_STATE
 	color = null //we manually set color in init instead
 	plane = LIGHTING_PLANE
 	layer = LIGHTING_LAYER
@@ -13,6 +15,10 @@
 
 	var/needs_update = FALSE
 	var/turf/myturf
+
+	#if WORLD_ICON_SIZE != 32
+	transform = matrix(WORLD_ICON_SIZE / 32, 0, (WORLD_ICON_SIZE - 32) / 2, 0, WORLD_ICON_SIZE / 32, (WORLD_ICON_SIZE - 32) / 2)
+	#endif
 
 /atom/movable/lighting_object/Initialize(mapload)
 	. = ..()
@@ -110,24 +116,38 @@
 
 	if((rr & gr & br & ar) && (rg + gg + bg + ag + rb + gb + bb + ab == 8))
 	//anything that passes the first case is very likely to pass the second, and addition is a little faster in this case
-		icon_state = "transparent"
+		icon_state = LIGHTING_TRANSPARENT_ICON_STATE
 		color = null
 	else if(!set_luminosity)
-		icon_state = "dark"
+		icon_state = LIGHTING_DARKNESS_ICON_STATE
 		color = null
 	else
-		icon_state = null
+		icon_state = LIGHTING_BASE_ICON_STATE
 		color = list(
 			rr, rg, rb, 00,
 			gr, gg, gb, 00,
 			br, bg, bb, 00,
 			ar, ag, ab, 00,
-			00, 00, 00, 01
+			00, 00, 00, 01,
 		)
 
 	luminosity = set_luminosity
-	// if (T.above && T.above.shadower)
-	// 	T.above.shadower.copy_lighting(src)
+
+	update_shadowers()
+
+/// If there's a Z-turf above and/or below us, update its shadower.
+/atom/movable/lighting_object/proc/update_shadowers()
+	if (!myturf.above)
+		if (myturf.above.shadower)
+			myturf.above.shadower.copy_lighting(src)
+		else
+			myturf.above.update_mimic()
+
+	if (myturf.below)
+		if (myturf.below.shadower)
+			myturf.below.shadower.copy_lighting(src)
+		else
+			myturf.below.update_mimic()
 
 // Variety of overrides so the overlays don't get affected by weird things.
 

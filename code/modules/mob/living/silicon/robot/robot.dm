@@ -49,6 +49,11 @@
 	mob_bump_flag = ROBOT
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY //trundle trundle
+
+	z_flags = ZMM_MANGLE_PLANES
+
+	can_be_antagged = TRUE
+
 	/// Is our integrated light on?
 	var/lights_on = 0
 	var/used_power_this_tick = 0
@@ -63,8 +68,6 @@
 	var/crisis_override = 0
 	var/integrated_light_power = 6
 	var/datum/wires/robot/wires
-
-	can_be_antagged = TRUE
 
 //! ## Icon stuff
 	/// Persistent icontype tracking allows for cleaner icon updates

@@ -194,3 +194,32 @@ SUBSYSTEM_DEF(overlays)
 		overlays = cached_other
 	else
 		overlays |= cached_other
+
+/atom/proc/compile_overlays()
+	var/list/oo = our_overlays
+	var/list/po = priority_overlays
+	if(LAZYLEN(po) && LAZYLEN(oo))
+		overlays = oo + po
+	else if(LAZYLEN(oo))
+		overlays = oo
+	else if(LAZYLEN(po))
+		overlays = po
+	else
+		overlays.len = 0
+
+	overlay_queued = FALSE
+
+/atom/movable/compile_overlays()
+	..()
+	UPDATE_OO_IF_PRESENT
+
+/turf/compile_overlays()
+	..()
+	if (above)
+		update_above()
+
+/// Our local copy of (non-priority) overlays without byond magic. Use procs in SSoverlays to manipulate.
+/atom/var/tmp/list/our_overlays
+/// Overlays that should remain on top and not normally removed when using cut_overlay functions, like c4.
+/atom/var/tmp/list/priority_overlays
+/atom/var/tmp/overlay_queued

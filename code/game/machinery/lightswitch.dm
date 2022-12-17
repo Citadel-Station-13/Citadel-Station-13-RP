@@ -10,6 +10,8 @@
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 10
 	power_channel = LIGHT
+	z_flags = ZMM_MANGLE_PLANES
+
 	var/on = TRUE
 	var/area/area = null
 	var/otherarea = null

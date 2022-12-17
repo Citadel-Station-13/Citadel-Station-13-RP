@@ -409,7 +409,8 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 //If you modify this function, ensure it works correctly with lateloaded map templates.
 /turf/proc/AfterChange(flags, oldType) //called after a turf has been replaced in ChangeTurf()
 	levelupdate()
-	update_vertical_turf_graphics()
+	if (above)
+		above.update_mimic()
 
 /turf/proc/RemoveLattice()
 	for(var/obj/structure/lattice/L in src)
@@ -417,4 +418,5 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 
 /turf/proc/ReplaceWithLattice()
 	ScrapeAway(flags = CHANGETURF_INHERIT_AIR)
-	new /obj/structure/lattice(locate(x, y, z))
+	if(!(locate(/obj/structure/lattice) in .))
+		new /obj/structure/lattice(.)

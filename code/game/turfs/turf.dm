@@ -172,25 +172,31 @@
 		SSao.queue -= src
 		ao_queued = 0
 
-	if (bound_overlay)
-		QDEL_NULL(bound_overlay)
+	if (z_flags & ZM_MIMIC_BELOW)
+		cleanup_zmimic()
+
+	if (mimic_proxy)
+		QDEL_NULL(mimic_proxy)
 
 	vis_contents.len = 0
 
 	..()
 
 /turf/legacy_ex_act(severity)
-	return 0
+	return FALSE
 
 /turf/proc/is_space()
-	return 0
+	return FALSE
+
+/turf/proc/is_open()
+	return FALSE
 
 /turf/proc/is_intact()
-	return 0
+	return FALSE
 
 // Used by shuttle code to check if this turf is empty enough to not crush want it lands on.
 /turf/proc/is_solid_structure()
-	return 1
+	return TRUE
 
 /turf/attack_hand(mob/user)
 	. = ..()

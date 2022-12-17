@@ -56,6 +56,8 @@
  * BACKGROUND_LAYER 20000
  */
 
+//TODO: Deplanify. @Zandario
+
 // TODO: UNFUCK PLANES. HALF OF THESE HAVE NO REASON TO EXIST. WHOEVER ADDED THEM IS AN IDIOT!
 
 /// smallest reasonable base layer resolution - YOU SHOULD NOT VIOLATE THIS
@@ -101,19 +103,7 @@
 #define PLANE_LOOKINGGLASS_IMG -76
 
 
-
-/**
- *! -- Openspace Planes
- *? OPENSPACE_PLANE reserves all planes between OPENSPACE_PLANE_START and OPENSPACE_PLANE_END inclusive
- *? /turf/simulated/open will use OPENSPACE_PLANE + z (Valid z's being 2 thru 17)
- */
-#define OPENSPACE_PLANE       -75
-#define OPENSPACE_PLANE_START -73
-#define OPENSPACE_PLANE_END   -58
-#warn remove these.
-
-// Openspace uses planes -80 through -69.
-
+// Openspace uses planes -80 through -70.
 #define OVER_OPENSPACE_PLANE -50
 
 /**
@@ -151,7 +141,7 @@
 #define WATER_LAYER            (OBJ_LAYER)       /// Layer for water overlays.
 #define ABOVE_TURF_LAYER       (OBJ_LAYER+0.1)   /// Snow and wallmounted/floormounted equipment.
 
-#define MIMICED_LIGHTING_LAYER (TURF_LAYER+0.21) /// Z-Mimic-managed lighting
+#define MIMICED_LIGHTING_LAYER (MOB_LAYER+0.22) /// Z-Mimic-managed lighting
 
 /**
  *! -- Obj Plane

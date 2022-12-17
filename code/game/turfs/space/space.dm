@@ -3,7 +3,6 @@
 	name = "\proper space"
 	icon_state = "0"
 	plane = SPACE_PLANE
-	z_flags = Z_OPEN_DOWN | Z_OPEN_UP | Z_CONSIDERED_OPEN | Z_AIR_DOWN | Z_AIR_UP
 
 	light_power = 0.25
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
@@ -41,10 +40,32 @@
 	else if(x == world.maxx || forced_dirs & EAST)
 		edge |= EAST
 
+	if(!HasBelow(z))
+		return INITIALIZE_HINT_NORMAL
+
+	var/turf/below = GetBelow(src)
+	if(isspaceturf(below))
+		return INITIALIZE_HINT_NORMAL
+
+	var/area/A = below.loc
+	if(!below.density && (A.area_flags & AREA_FLAG_EXTERNAL))
+		return INITIALIZE_HINT_NORMAL
+
+	return ..()
+
+/turf/space/Destroy()
+	// Cleanup cached z_eventually_space values above us.
+	if (above)
+		var/turf/T = src
+		while ((T = GetAbove(T)))
+			T.z_eventually_space = FALSE
 	return ..()
 
 /turf/space/is_space()	// Hmmm this Space is made of Space.
-	return 1
+	return TRUE
+
+/turf/space/is_open()
+	return TRUE
 
 // Override for space turfs, since they should never hide anything
 /turf/space/levelupdate()

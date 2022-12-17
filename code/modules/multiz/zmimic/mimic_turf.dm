@@ -1,30 +1,33 @@
-/// Reference to any open turf that might be above us to speed up atom Entered() updates.
+
+//! Reference to any open turf that might be above us to speed up atom Entered() updates.
 /turf/var/tmp/turf/above
 /turf/var/tmp/turf/below
-/turf/var/tmp/atom/movable/openspace/turf_overlay/bound_overlay
+/// If we're a non-overwrite z-turf, this holds the appearance of the bottom-most Z-turf in the z-stack.
+/turf/var/tmp/atom/movable/openspace/turf_proxy/mimic_proxy
 /// Overlay used to multiply color of all OO overlays at once.
 /turf/var/tmp/atom/movable/openspace/multiplier/shadower
+/// If this is a delegate (non-overwrite) Z-turf with a z-turf above, this is the delegate copy that's copying us.
+/turf/var/tmp/atom/movable/openspace/turf_mimic/mimic_above_copy
+/// If we're at the bottom of the stack, a proxy used to fake a below space turf.
+/turf/var/tmp/atom/movable/openspace/turf_proxy/mimic_underlay
 /// How many times this turf is currently queued - multiple queue occurrences are allowed to ensure update consistency.
 /turf/var/tmp/z_queued = 0
+/// If this Z-turf leads to space, uninterrupted.
 /turf/var/tmp/z_eventually_space = FALSE
 /turf/var/z_flags = NONE
 
-/turf/Entered(atom/movable/thing, turf/oldLoc)
-	. = ..()
-	if (thing.bound_overlay || thing.no_z_overlay || !TURF_IS_MIMICING(above))
-		return
-	above.update_mimic()
+//! debug
+/turf/var/tmp/z_depth
+/turf/var/tmp/z_generation = 0
 
 /turf/update_above()
-	if (TURF_IS_MIMICING(above))
+	if (TURF_IS_MIMICKING(above))
 		above.update_mimic()
 
 /turf/proc/update_mimic()
-	if (!(z_flags & ZM_MIMIC_BELOW))
-		return
-
-	if (below)
+	if(z_flags & ZM_MIMIC_BELOW)
 		z_queued += 1
+		// This adds duplicates for a reason. Do not change this unless you understand how ZM queues work.
 		SSzmimic.queued_turfs += src
 
 /// Enables Z-mimic for a turf that didn't already have it enabled.
@@ -43,6 +46,7 @@
 
 	z_flags &= ~ZM_MIMIC_BELOW
 	cleanup_zmimic()
+	return TRUE
 
 /// Sets up Z-mimic for this turf. You shouldn't call this directly 99% of the time.
 /turf/proc/setup_zmimic(mapload)
@@ -55,19 +59,25 @@
 		below = under
 		below.above = src
 
+	if (!(z_flags & (ZM_MIMIC_OVERWRITE|ZM_NO_OCCLUDE)) && mouse_opacity)
+		mouse_opacity = 2
+
 	update_mimic(!mapload)	// Only recursively update if the map isn't loading.
 
 /// Cleans up Z-mimic objects for this turf. You shouldn't call this directly 99% of the time.
 /turf/proc/cleanup_zmimic()
 	SSzmimic.openspace_turfs -= 1
-	if (z_queued)
-		while (z_queued)
-			SSzmimic.queued_turfs -= src
-			z_queued -= 1
+	// Don't remove ourselves from the queue, the subsystem will explode. We'll naturally fall out of the queue.
+	z_queued = 0
 
-	QDEL_NULL(shadower)
+	// can't use QDEL_NULL as we need to supply force to qdel
+	if(shadower)
+		qdel(shadower, TRUE)
+		shadower = null
+	QDEL_NULL(mimic_above_copy)
+	QDEL_NULL(mimic_underlay)
 
-	for (var/atom/movable/openspace/overlay/OO in src)
+	for (var/atom/movable/openspace/mimic/OO in src)
 		OO.owning_turf_changed()
 
 	if (above)
@@ -76,19 +86,3 @@
 	if (below)
 		below.above = null
 		below = null
-
-// Movable for mimicing turfs that don't allow appearance mutation.
-/atom/movable/openspace/turf_overlay
-	plane = OPENTURF_MAX_PLANE
-
-/atom/movable/openspace/turf_overlay/attackby(obj/item/W, mob/user)
-	loc.attackby(W, user)
-
-/atom/movable/openspace/turf_overlay/attack_hand(mob/user)
-	loc.attack_hand(user)
-
-/atom/movable/openspace/turf_overlay/attack_generic(mob/user)
-	loc.attack_generic(user)
-
-/atom/movable/openspace/turf_overlay/examine(mob/examiner)
-	return loc.examine(examiner)

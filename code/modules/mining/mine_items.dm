@@ -319,9 +319,11 @@
 	name = "flags"
 	desc = "Some colourful flags."
 	singular_name = "flag"
+	icon = 'icons/obj/mining.dmi'
 	amount = 10
 	max_amount = 10
-	icon = 'icons/obj/mining.dmi'
+	z_flags = ZMM_MANGLE_PLANES
+
 	var/upright = 0
 	var/base_state
 

@@ -75,13 +75,28 @@
  */
 
 /turf/simulated/floor/proc/set_flooring(singleton/flooring/newflooring, init)
+	if(flooring == newflooring)
+		return
 	make_plating(null, TRUE, TRUE)
 	flooring = newflooring
+
 	footstep_sounds = newflooring.footstep_sounds
 	// We are plating switching to flooring, swap out old_decals for decals
 	var/list/overfloor_decals = old_decals
 	old_decals = decals
 	decals = overfloor_decals
+
+	var/check_z_flags
+	if(flooring)
+		check_z_flags = flooring.z_flags
+	else
+		check_z_flags = initial(z_flags)
+
+	if(check_z_flags & ZM_MIMIC_BELOW)
+		enable_zmimic(check_z_flags)
+	else
+		disable_zmimic()
+
 	if(!init)
 		QUEUE_SMOOTH(src)
 		QUEUE_SMOOTH_NEIGHBORS(src)
