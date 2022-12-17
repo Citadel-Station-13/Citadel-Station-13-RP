@@ -413,7 +413,7 @@
   * Sets our gas/temperature equal to a turf's initial gas mix.
   */
 /datum/gas_mixture/proc/copy_from_turf(turf/model)
-	parse_gas_string(model.initial_gas_mix)
+	parse_gas_string(model.initial_gas_mix, model)
 
 	//acounts for changes in temperature
 	var/turf/model_parent = model.parent_type
@@ -464,24 +464,20 @@
 // todo: sort above
 
 //! Gas Strings
-
 /**
   * Copies from a specially formatted gas string, taking on its gas values as our own as well as their temperature.
+  * if the gas string does not specify temperature, it'll remain unchanged.
+  *
+  * @params
+  * - gas_string - gas string, atmosphere, etc
+  * - turf_context - required for the special atmospheres to look up what zlevel it is
   */
-/datum/gas_mixture/proc/parse_gas_string(gas_string)
-	gas_string = SSair.preprocess_gas_string(gas_string)
-	var/list/gases = src.gas
-	var/list/gas = params2list(gas_string)
-	if(gas["TEMP"])
-		temperature = text2num(gas["TEMP"])
-		gas -= "TEMP"
-	gases.Cut()
-	for(var/id in gas)
-		var/path = id
-		if(!ispath(path))
-			path = gas_id2path(path) //a lot of these strings can't have embedded expressions (especially for mappers), so support for IDs needs to stick around
-		gases[path] = text2num(gas[id])
-	//archive()
+/datum/gas_mixture/proc/parse_gas_string(gas_string, turf/turf_context)
+	var/list/parsed = SSair._parse_gas_string(gas_string, turf_context)
+	gas = parsed[1]
+	gas = gas.Copy()	// why? because we don't want to fuck with cached list.
+	if(parsed[2])
+		temperature = parsed[2]
 	update_values()
 	return TRUE
 
@@ -578,7 +574,7 @@
 	// update
 	update_values()
 	other.update_values()
-	
+
 	// if empty
 	if(!total_moles)
 		return compare(other)
@@ -643,7 +639,7 @@
 
 	// update
 	update_values()
-	
+
 	if(!total_moles)
 		return compare_virtual(gases, src.volume, temperature)
 

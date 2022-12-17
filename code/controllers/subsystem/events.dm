@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(events)
 
 	var/datum/event_meta/new_event = new
 
-/datum/controller/subsystem/events/PreInit()
+/datum/controller/subsystem/events/PreInit(recovering)
 	// unfortunately, character setup server startup hooks fire before /Initialize so :/
 	// SScharactersetup but not shit when :)
 	InitializeHolidays(force = TRUE)
