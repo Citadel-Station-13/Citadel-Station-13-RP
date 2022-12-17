@@ -1,8 +1,9 @@
 /datum/trait/positive/speed_fast
 	name = "Haste"
 	desc = "Allows you to move faster on average than baseline."
-	cost = 3
+	cost = 2
 	var_changes = list("slowdown" = -0.25)
+	excludes = list(/datum/trait/positive/hardy, /datum/trait/positive/hardy_plus)
 
 /datum/trait/positive/hardy
 	name = "Hardy"
