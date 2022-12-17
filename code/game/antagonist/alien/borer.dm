@@ -66,4 +66,5 @@ var/datum/antagonist/borer/borers
 	if(config_legacy.aliens_allowed) ..()
 
 /datum/antagonist/borer/proc/get_vents()
-	var/list/vents = ventcrawl_station_vents()	return vents
+	var/list/vents = ventcrawl_station_vents()
+	return vents
