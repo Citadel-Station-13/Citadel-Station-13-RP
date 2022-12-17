@@ -30,6 +30,8 @@
 #define ITEM_THROW_UNCATCHABLE	(1<<15)
 /// we cannot be used a tool on click, no matter what
 #define ITEM_NO_TOOL_ATTACK		(1<<16)
+/// we're dual wielded - multi-wielding coming later tm
+#define ITEM_MULTIHAND_WIELDED	(1<<17)
 
 DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(IN_INVENTORY),
@@ -41,6 +43,7 @@ DEFINE_BITFIELD(item_flags, list(
 	BITFIELD(IN_STORAGE),
 	BITFIELD(ITEM_THROW_UNCATCHABLE),
 	BITFIELD(ITEM_NO_TOOL_ATTACK),
+	BITFIELD(ITEM_MULTIHAND_WIELDED),
 ))
 
 //! Flags for the clothing_flags var on /obj/item
