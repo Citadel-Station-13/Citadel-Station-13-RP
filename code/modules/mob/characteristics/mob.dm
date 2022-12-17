@@ -1,4 +1,6 @@
-//! file contains mob helpers and whatnot
+//? file contains mob helpers and whatnot
+
+//! direct lookup
 /**
  * checks if we have a characteristic talent
  *
@@ -16,16 +18,36 @@
  * @params
  * - typepath_or_id - typepath or id; prefer typepath during compile time
  *
- * @return TRUE/FALSE
+ * @return raw value
  */
 /mob/proc/get_characteristic_stat(datum/characteristic_stat/typepath_or_id)
 	#warn impl
 
-//! our old stuff below
-// We don't actually have a skills system, so return max skill for everything.
-/mob/proc/get_skill_value(skill_path)
-	return SKILL_EXPERT
+/**
+ * gets the skill value enum of one of our characteristic skills
+ *
+ * @params
+ * - typepath_or_id - typepath or id; prefer typepath during compile time
+ *
+ * @return skill level
+ */
+/mob/proc/get_characteristic_skill(datum/characteristic_skill/typepath_or_id)
+	#warn impl
 
+//! checks
+
+//? no stat check ; stats are raw values
+
+//? no talent check ; talents are boolean for checks
+
+//? skill checks
+/mob/proc/check_characteristic_skill(datum/characteristic_skill/typepath_or_id, )
+
+//! abstracted computations
+
+
+
+//! our old stuff below
 // A generic way of modifying success probabilities via skill values. Higher factor means skills have more effect. fail_chance is the chance at SKILL_NONE.
 /mob/proc/skill_fail_chance(skill_path, fail_chance, no_more_fail = SKILL_EXPERT, factor = 1)
 	var/points = get_skill_value(skill_path)
