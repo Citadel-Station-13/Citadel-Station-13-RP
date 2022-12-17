@@ -42,7 +42,12 @@
 	/// The default lawset use by synth units, if not overriden by their laws var.
 	var/default_law_type
 	//? holomaps
+
 	#warn impl + parse
+	//? events
+
+	//? lobby
+
 	//? bots
 	var/bot_patrolling = TRUE				// Determines if this map supports automated bot patrols
 	//? overmaps
@@ -70,8 +75,6 @@
 	var/emergency_shuttle_leaving_dock
 	var/emergency_shuttle_called_message
 	var/emergency_shuttle_recall_message
-
-	#warn parse, don't validate legacy tho
 
 /**
  * returns the current map config
