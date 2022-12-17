@@ -106,14 +106,28 @@
 		default_law_type = /datum/ai_laws/nanotrasen
 	bot_patrolling = isnull(legacy["bot_patrolling"])? TRUE : legacy["bot_patrolling"]
 	use_overmap = isnull(legacy["use_overmap"])? TRUE: legacy["use_overmap"]
-	overmap_size = data["overmap_size"] || 20
-	overmap_z = data["overmap_z"] || 0
-	overmap_event_areas = data["overmap_event_areas"] || 0
-	station_name = data["station_name"] || "ERR - NO STATION NAME"
-	station_short = data["station_short"] || "ERR - NO STAITON SHORT"
-	dock_name = data["dock_name"] || "ERR - NO DOCK NAME"
-	dock_type = data["dock_type"] || "ERR - NO DOCK TYPE"
-	boss_name
+	overmap_size = legacy["overmap_size"] || 20
+	overmap_z = legacy["overmap_z"] || 0
+	overmap_event_areas = legacy["overmap_event_areas"] || 0
+	station_name = legacy["station_name"] || "ERR - NO STATION NAME"
+	station_short = legacy["station_short"] || "ERR - NO STAITON SHORT"
+	dock_name = legacy["dock_name"] || "ERR - NO DOCK NAME"
+	dock_type = legacy["dock_type"] || "ERR - NO DOCK TYPE"
+	boss_name = legacy["boss_name"] || "ERR - NO BOSS NAME"
+	boss_short = legacy["boss_short"] || "ERR - NO BOSS SHORT"
+	company_name = legacy["company_name"] || "ERR - NO COMPANY NAME"
+	company_short = legacy["company_short"] || "ERR - NO COMPANY SHORT"
+	starsys_name = legacy["starsys_name"] || "ERR - NO STARSYS NAME"
+	shuttle_docked_message = legacy["shuttle_docked_message"] || "ERR - NO SHUTTLE DOCKED MSG"
+	shuttle_leaving_dock = legacy["shuttle_leaving_dock"] || "ERR - NO SHUTTLE LEAVING DOCK MSG"
+	shuttle_called_message = legacy["shuttle_called_message"] || "ERR - NO SHUTTLE CALLED MSG"
+	shuttle_recall_message = legacy["shuttle_recall_message"] || "ERR - NO SHUTTLE RECALL MSG"
+	shuttle_name = legacy["shuttle_name"] || "ERR - NO SHUTTLE NAME"
+	emergency_shuttle_docked_message = legacy["emergency_shuttle_docked_message"] || "ERR - NO ESHUTTLE DOCKED MSG"
+	emergency_shuttle_leaving_dock = legacy["emergency_shuttle_leaving_dock"] || "ERR - NO ESHUTTLE LEAVE MSG"
+	emergency_shuttle_called_message = legacy["emergency_shuttle_called_message"] || "ERR - NO ESHUTTLE CALL MSG"
+	emergency_shuttle_recall_message = legacy["emergency_shuttle_recall_message"] || "ERR - NO ESHUTTLE RCALL MSG"
+
 
 /datum/map_data/station/validate(list/errors, list/level_ids)
 	. = ..()
