@@ -129,6 +129,7 @@ SUBSYSTEM_DEF(zmimic)
 	calculate_zstack_limits()
 	// Flush the queue.
 	fire(FALSE, TRUE)
+	return ..()
 
 // If you add a new Zlevel or change Z-connections, call this.
 /datum/controller/subsystem/zmimic/proc/calculate_zstack_limits()

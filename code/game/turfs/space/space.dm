@@ -3,6 +3,7 @@
 	name = "\proper space"
 	icon_state = "0"
 	plane = SPACE_PLANE
+	mz_flags = MZ_ATMOS_BOTH | MZ_OPEN_BOTH
 
 	light_power = 0.25
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
@@ -27,6 +28,10 @@
 	return
 
 /turf/space/Initialize(mapload)
+
+	SHOULD_CALL_PARENT(FALSE)
+	atom_flags |= ATOM_INITIALIZED
+
 	icon_state = SPACE_ICON_STATE(x, y, z)
 
 	// We might be an edge
@@ -54,7 +59,7 @@
 	if (CONFIG_GET(flag/starlight))
 		update_starlight()
 
-	return ..()
+	return INITIALIZE_HINT_LATELOAD // oh no! we need to switch to being a different kind of turf!
 
 /turf/space/Destroy()
 	// Cleanup cached z_eventually_space values above us.
