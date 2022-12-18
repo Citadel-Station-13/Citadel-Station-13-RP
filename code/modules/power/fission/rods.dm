@@ -1,4 +1,4 @@
-#define ROD_RADIATION_MULTIPLIER 1.5
+#define ROD_RADIATION_MULTIPLIER 15
 #define ROD_TEMPERATURE_CUTOFF 10000
 #define ROD_EXPOSED_POWER 0.1
 
@@ -42,7 +42,7 @@
 				insertion_multiplier = 1
 			var/power = (tick_life(0, insertion_multiplier) / REACTOR_RADS_TO_MJ)
 			adjust_thermal_energy(power)
-			SSradiation.radiate(src, max(power * ROD_RADIATION_MULTIPLIER, 0))
+			radiation_pulse(src, max(power * ROD_RADIATION_MULTIPLIER, 0))
 
 /obj/item/fuelrod/proc/equalize(var/E, var/efficiency)
 	var/our_heatcap = heat_capacity()

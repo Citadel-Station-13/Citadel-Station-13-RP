@@ -424,8 +424,10 @@ GLOBAL_LIST(topic_status_cache)
 		hub_password = "SORRYNOPASSWORD"
 
 // Things to do when a new z-level was just made.
-/world/proc/max_z_changed()
+/world/proc/max_z_changed(old_z_count, new_z_count)
 	assert_players_by_zlevel_list()
+	for(var/datum/controller/subsystem/S in Master.subsystems)
+		S.on_max_z_changed(old_z_count, new_z_count)
 
 /proc/assert_players_by_zlevel_list()
 	if(!islist(GLOB.players_by_zlevel))
@@ -436,7 +438,7 @@ GLOBAL_LIST(topic_status_cache)
 // Call this to make a new blank z-level, don't modify maxz directly.
 /world/proc/increment_max_z()
 	. = ++maxz
-	max_z_changed()
+	max_z_changed(. - 1, .)
 
 //! LOG SHUNTER STUFF, LEAVE THIS ALONE
 /**

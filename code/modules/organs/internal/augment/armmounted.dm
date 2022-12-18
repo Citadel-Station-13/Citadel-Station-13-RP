@@ -177,7 +177,7 @@
 			if(!integrated_tools[path])
 				integrated_tools[path] = new path(src)
 			var/obj/item/I = integrated_tools[path]
-			ADD_TRAIT(I, TRAIT_NODROP, AUGMENT_TRAIT)
+			ADD_TRAIT(I, TRAIT_ITEM_NODROP, AUGMENT_TRAIT)
 			I.tool_speed = tool_speed
 			I.name = "integrated [I.name]"
 

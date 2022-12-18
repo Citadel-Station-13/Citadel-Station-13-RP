@@ -293,7 +293,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// resolve database data
 	// this is down here because player_lookup won't have an entry for us until log_client_to_db() runs!!
 	database = new(ckey)
-	database.LogConnect()
+	database.log_connect()
 
 	if (byond_version >= 512)
 		if (!byond_build || byond_build < 1386)

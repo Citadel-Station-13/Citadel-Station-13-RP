@@ -5,6 +5,7 @@
 	icon_state = "latticefull"
 	density = 0
 	anchored = 1.0
+	rad_flags = RAD_NO_CONTAMINATE
 	w_class = ITEMSIZE_NORMAL
 	plane = TURF_PLANE
 

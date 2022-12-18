@@ -237,7 +237,7 @@
 	M.AdjustStunned(-4)
 	M.AdjustWeakened(-4)
 	M.AdjustStunned(-4)
-	M.Paralyse(2)
+	M.Unconscious(2)
 	M.Weaken(2)
 	M.Stun(2)
 	if(M.reagents.get_reagent_amount("inaprovaline") < 5)

@@ -23,8 +23,10 @@
 // INDEXES FOR VAR COOLDOWNS - DO NOT USE UPPERCASE, DO NOT USE cooldown_, APPENDS ADDED AUTOMATICALLY
 
 // INDEXES FOR TIMER COOLDOWNS - Must be unique!
-#define COOLDOWN_SONAR_PULSE				"sonar_pulse"
-#define COOLDOWN_POWER_DRAIN_WARNING		"power_drain_warning"
+#define CD_INDEX_SONAR_PULSE				"sonar_pulse"
+#define CD_INDEX_POWER_DRAIN_WARNING		"power_drain_warning"
+#define CD_INDEX_TAPE_TRANSLATION			"tape_translation"
+#define CD_INDEX_TAPE_PRINT					"tape_print"
 
 //TIMER COOLDOWN MACROS
 

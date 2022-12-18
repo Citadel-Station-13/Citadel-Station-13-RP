@@ -113,7 +113,7 @@
 	id = "translator_all"
 	req_tech = list(TECH_DATA = 5, TECH_ENGINEERING = 5)
 	materials = list(MAT_STEEL = 3000, MAT_GLASS = 3000, MAT_GOLD = 500, MAT_SILVER = 500)
-	build_path = /obj/item/universal_translator/all
+	build_path = /obj/item/universal_translator/adaptive
 	sort_string = "TAACC"
 
 /datum/design/item/general/ear_translator_all
@@ -121,7 +121,7 @@
 	id = "ear_translator_all"
 	req_tech = list(TECH_DATA = 6, TECH_ENGINEERING = 6)	//dude what hte fuck lmao
 	materials = list(MAT_STEEL = 2000, MAT_GLASS = 2000, MAT_GOLD = 2000, MAT_SILVER = 2000)
-	build_path = /obj/item/universal_translator/ear/all
+	build_path = /obj/item/universal_translator/ear/adaptive
 	sort_string = "TAACD"
 
 /datum/design/item/advmop

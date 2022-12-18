@@ -279,6 +279,8 @@
 	return (available_in_days(C) == 0)	// Available in 0 days = available right now = player is old enough to play.
 
 /datum/job/proc/available_in_days(client/C)
+	if(C.has_jexp_bypass())
+		return 0
 	if(C && config_legacy.use_age_restriction_for_jobs && isnum(C.player_age) && isnum(minimal_player_age))
 		return max(0, minimal_player_age - C.player_age)
 	return 0

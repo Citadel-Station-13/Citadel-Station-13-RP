@@ -91,10 +91,10 @@
 
 	//?3 Modules can be activated at any one time.
 	var/obj/item/robot_module/module = null
-	var/module_active = null
-	var/module_state_1 = null
-	var/module_state_2 = null
-	var/module_state_3 = null
+	var/obj/item/module_active = null
+	var/obj/item/module_state_1 = null
+	var/obj/item/module_state_2 = null
+	var/obj/item/module_state_3 = null
 
 	var/obj/item/radio/borg/radio = null
 	var/obj/item/communicator/integrated/communicator = null
@@ -173,8 +173,12 @@
 	spark_system.attach(src)
 
 	add_language("Robot Talk", 1)
-	add_language(LANGUAGE_GALCOM, 1)
-	add_language(LANGUAGE_EAL, 1)
+	// todo: translation contexts on language holder?
+	// this is messy
+	for(var/datum/language/L as anything in SScharacters.all_languages())
+		if(!(L.translation_class & TRANSLATION_CLASSES_CYBORG_SPEAKS))
+			continue
+		add_language(L, TRUE)
 
 	wires = new(src)
 
@@ -249,8 +253,8 @@
 	if(!cell)
 		return 0
 
-	if(!TIMER_COOLDOWN_CHECK(src, COOLDOWN_POWER_DRAIN_WARNING))
-		TIMER_COOLDOWN_START(src, COOLDOWN_POWER_DRAIN_WARNING, 2 SECONDS)
+	if(!TIMER_COOLDOWN_CHECK(src, CD_INDEX_POWER_DRAIN_WARNING))
+		TIMER_COOLDOWN_START(src, CD_INDEX_POWER_DRAIN_WARNING, 2 SECONDS)
 		to_chat(src, SPAN_DANGER("Warning: Abnormal usage on power channel [rand(11, 29)] detected!"))
 	return cell.drain_energy(actor, amount, flags)
 

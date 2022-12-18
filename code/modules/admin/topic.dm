@@ -1046,7 +1046,7 @@
 			M.transfer_item_to_loc(I, locker, INV_OP_FORCE)
 
 		//so they black out before warping
-		M.Paralyse(5)
+		M.Unconscious(5)
 		sleep(5)
 		if(!M)	return
 
@@ -1077,7 +1077,7 @@
 		for(var/obj/item/I in M.get_equipped_items(TRUE, TRUE))
 			M.drop_item_to_ground(I, INV_OP_FORCE)
 
-		M.Paralyse(5)
+		M.Unconscious(5)
 		sleep(5)
 		M.loc = pick(tdome1)
 		spawn(50)
@@ -1102,7 +1102,7 @@
 		for(var/obj/item/I in M.get_equipped_items(TRUE, TRUE))
 			M.drop_item_to_ground(I, INV_OP_FORCE)
 
-		M.Paralyse(5)
+		M.Unconscious(5)
 		sleep(5)
 		M.loc = pick(tdome2)
 		spawn(50)
@@ -1124,7 +1124,7 @@
 			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
 			return
 
-		M.Paralyse(5)
+		M.Unconscious(5)
 		sleep(5)
 		M.loc = pick(tdomeadmin)
 		spawn(50)
@@ -1153,7 +1153,7 @@
 			var/mob/living/carbon/human/observer = M
 			observer.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket(observer), SLOT_ID_UNIFORM)
 			observer.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(observer), SLOT_ID_SHOES)
-		M.Paralyse(5)
+		M.Unconscious(5)
 		sleep(5)
 		M.loc = pick(tdomeobserve)
 		spawn(50)

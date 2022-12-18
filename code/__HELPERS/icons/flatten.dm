@@ -174,7 +174,7 @@
 			--current_layer
 
 		// inject with insertion sort
-		for(i in 1 to gathered)
+		for(i in 1 to gathered.len)
 			comparing = gathered[i]
 			if(current_layer < gathered[comparing])
 				gathered.Insert(i, copying)
