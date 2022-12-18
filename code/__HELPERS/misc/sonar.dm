@@ -89,16 +89,16 @@
 		if(SONAR_RESOLUTION_VISIBLE)
 			MA = vfx_clone_as_outline(127)
 			MA.pixel_x = MA.pixel_y = VFX_SEE_ANYWHERE_PIXEL_SHIFT
-			holder.overlays += MA
+			holder.add_overlay(MA)
 		if(SONAR_RESOLUTION_WALLHACK)
 			MA = vfx_clone_as_greyscale()
 			MA.pixel_x = MA.pixel_y = VFX_SEE_ANYWHERE_PIXEL_SHIFT
-			holder.overlays += MA
+			holder.add_overlay(MA)
 		if(SONAR_RESOLUTION_BLOCKY)
 			MA = make_sonar_shape()
 			MA.pixel_x = MA.pixel_y = VFX_SEE_ANYWHERE_PIXEL_SHIFT
 			if(MA)
-				holder.overlays += MA
+				holder.add_overlay(MA)
 
 /atom/proc/make_sonar_shape()
 	return

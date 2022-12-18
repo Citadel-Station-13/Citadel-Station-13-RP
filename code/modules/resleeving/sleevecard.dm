@@ -80,13 +80,13 @@
 /obj/item/sleevecard/proc/turnOff()
 	if(infomorph)
 		infomorph.close_up()
-	overlays.Cut()
+	cut_overlays()
 	name = "[initial(name)]"
 
-/obj/item/sleevecard/proc/setEmotion(var/emotion)
+/obj/item/sleevecard/proc/setEmotion(emotion)
 	if(infomorph && emotion)
-		overlays.Cut()
-		overlays += emotion
+		cut_overlays()
+		add_overlay(emotion)
 		current_emotion = emotion
 
 /obj/item/sleevecard/emp_act(severity)

@@ -255,7 +255,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		shock(user, 5, 0.2)
 
 	else
-		if(!(W.flags & NOCONDUCT))
+		if(!(W.atom_flags & NOCONDUCT))
 			shock(user, 50, 0.7)
 
 	src.add_fingerprint(user)

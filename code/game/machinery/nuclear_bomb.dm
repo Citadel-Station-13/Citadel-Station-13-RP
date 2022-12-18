@@ -61,19 +61,19 @@ var/bomb_set
 		if(auth)
 			if(opened == FALSE)
 				opened = TRUE
-				overlays += image(icon, "npanel_open")
+				add_overlay(image(icon, "npanel_open"))
 				to_chat(user, "You unscrew the control panel of [src].")
 
 			else
 				opened = FALSE
-				overlays -= image(icon, "npanel_open")
+				cut_overlay(image(icon, "npanel_open"))
 				to_chat(user, "You screw the control panel of [src] back on.")
 		else
 			if(opened == FALSE)
 				to_chat(user, "The [src] emits a buzzing noise, the panel staying locked in.")
 			if(opened == TRUE)
 				opened = FALSE
-				overlays -= image(icon, "npanel_open")
+				cut_overlay(image(icon, "npanel_open"))
 				to_chat(user, "You screw the control panel of [src] back on.")
 			flick("nuclearbombc", src)
 

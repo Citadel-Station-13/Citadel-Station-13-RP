@@ -7,11 +7,10 @@
   * almost guaranteed to be doing something wrong.
   */
 /atom/movable/emissive_blocker
-	name = ""
-	plane = EMISSIVE_BLOCKER_PLANE
-	layer = EMISSIVE_BLOCKER_LAYER
+	name = "emissive blocker"
+	plane = EMISSIVE_PLANE
+	layer = FLOAT_LAYER
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	rad_flags = RAD_NO_CONTAMINATE | RAD_PROTECT_CONTENTS
 	//Why?
 	//render_targets copy the transform of the target as well, but vis_contents also applies the transform
 	//to what's in it. Applying RESET_TRANSFORM here makes vis_contents not apply the transform.
@@ -21,25 +20,16 @@
 /atom/movable/emissive_blocker/Initialize(mapload, source)
 	. = ..()
 	verbs.Cut() //Cargo culting from lighting object, this maybe affects memory usage?
-
 	render_source = source
+	color = GLOB.em_block_color
 
-/atom/movable/emissive_blocker/legacy_ex_act(severity)
-	return FALSE
+/atom/movable/emissive_blocker/Destroy()
+	if(ismovable(loc))
+		var/atom/movable/AM = loc
+		AM.vis_contents -= src
+		if(AM.em_block == src)
+			AM.em_block = null
+	return ..()
 
-/atom/movable/emissive_blocker/singularity_act()
-	return
-
-/atom/movable/emissive_blocker/singularity_pull()
-	return
-
-/atom/movable/emissive_blocker/blob_act()
-	return
-
-/atom/movable/emissive_blocker/onTransitZ()
-	return
-
-//Prevents people from moving these after creation, because they shouldn't be.
-/atom/movable/emissive_blocker/forceMove(atom/destination, no_tp=FALSE, harderforce = FALSE)
-	if(harderforce)
-		return ..()
+/atom/movable/emissive_blocker/forceMove(atom/destination)
+	return FALSE	// nope.

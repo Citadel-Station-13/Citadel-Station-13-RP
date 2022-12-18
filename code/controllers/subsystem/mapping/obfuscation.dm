@@ -7,7 +7,7 @@
 	/// "secret" key
 	var/obfuscation_secret
 
-/datum/controller/subsystem/mapping/PreInit()
+/datum/controller/subsystem/mapping/PreInit(recovering)
 	. = ..()
 	if(!obfuscation_secret)
 		obfuscation_secret = md5(GUID())

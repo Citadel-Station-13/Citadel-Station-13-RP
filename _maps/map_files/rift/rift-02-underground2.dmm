@@ -9778,6 +9778,13 @@
 	pixel_y = 7
 	},
 /obj/item/pen/red,
+/obj/item/folder/yellow{
+	pixel_x = 9
+	},
+/obj/item/folder/yellow{
+	pixel_x = 9;
+	pixel_y = 5
+	},
 /turf/simulated/floor/tiled,
 /area/engineering/engineering_monitoring)
 "IQ" = (
@@ -10517,8 +10524,8 @@
 "Mb" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/single_use/med_pouch/radiation{
-	pixel_y = -7;
-	pixel_x = -6
+	pixel_x = -6;
+	pixel_y = -7
 	},
 /obj/item/storage/single_use/med_pouch/trauma{
 	pixel_x = -7;
@@ -13003,6 +13010,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 10
 	},
+/obj/machinery/papershredder,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "Xq" = (
@@ -13408,6 +13416,7 @@
 /obj/machinery/alarm{
 	pixel_y = 22
 	},
+/obj/machinery/photocopier,
 /turf/simulated/floor/wood,
 /area/engineering/break_room)
 "Zj" = (

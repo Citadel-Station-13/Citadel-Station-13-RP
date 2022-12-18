@@ -1764,12 +1764,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/vacant/vacant_restaurant_upper
 	name = "\improper Vacant Restaurant"
 	icon_state = "vacant_site"
-	flags = null
 
 /area/vacant/vacant_restaurant_lower
 	name = "\improper Vacant Restaurant"
 	icon_state = "vacant_site"
-	flags = null
 
 /area/vacant/vacant_office
 	name = "\improper Vacant Office"

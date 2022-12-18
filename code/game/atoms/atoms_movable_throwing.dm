@@ -251,7 +251,7 @@
 
 // wrapper to be replaced
 /atom/movable/proc/throw_at_old(atom/target, range, speed, mob/thrower, spin = TRUE, datum/callback/callback)
-	return throw_at(target, range, speed, flags, thrower, callback, null, null)
+	return throw_at(target, range, speed, NONE, thrower, callback, null, null)
 
 /atom/movable/proc/overhand_throw_delay(mob/user)
 	return 1 SECONDS

@@ -91,10 +91,10 @@
 		if(istype(scanned, /obj/machinery/atmospherics/pipe))
 			var/obj/machinery/atmospherics/pipe/P = scanned
 			I.color = P.pipe_color
-			I.overlays += P.overlays
+			I.add_overlay(P.overlays)
 
 		I.alpha = 128
-		I.mouse_opacity = 0
+		I.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		. = I
 
 	// Add it to cache, cutting old entries if the list is too long
@@ -133,7 +133,7 @@
 
 	user_client = new_client
 
-/obj/item/t_scanner/dropped(mob/user, flags, atom/newLoc)
+/obj/item/t_scanner/dropped(mob/user, atom_flags, atom/newLoc)
 	. = ..()
 	set_user_client(null)
 

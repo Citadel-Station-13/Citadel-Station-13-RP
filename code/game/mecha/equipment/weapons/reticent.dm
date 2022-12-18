@@ -114,10 +114,10 @@
 	desc = "A Silencium infused linear combat shield. Its faint presence cannot be easily detected."
 	icon_state = "shield_mime"
 
-/obj/item/mecha_parts/mecha_equipment/combat_shield/reticent/add_equip_overlay(obj/mecha/M as obj)
+/obj/item/mecha_parts/mecha_equipment/combat_shield/reticent/add_equip_overlay(obj/mecha/M)
 	if(!drone_overlay)
 		drone_overlay = new(src.icon, icon_state = "shield_droid_mime")
-	M.overlays += drone_overlay
+	M.add_overlay(drone_overlay)
 	return
 
 //The shield effect.

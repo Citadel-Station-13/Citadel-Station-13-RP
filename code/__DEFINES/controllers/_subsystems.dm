@@ -32,7 +32,7 @@
 ///type and all subtypes should always immediately call Initialize in New()
 #define INITIALIZE_IMMEDIATE(X) ##X/New(loc, ...){\
 	..();\
-	if(!(flags & INITIALIZED)) {\
+	if(!(atom_flags & ATOM_INITIALIZED)) {\
 		args[1] = TRUE;\
 		SSatoms.InitAtom(src, args);\
 	}\
@@ -84,7 +84,7 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_EARLY_ASSETS		48
 #define INIT_ORDER_SQLITE			40
 #define INIT_ORDER_CHEMISTRY		35
-#define INIT_ORDER_SKYBOX			30
+#define INIT_ORDER_MATERIALS		30
 #define INIT_ORDER_MAPPING			25
 #define INIT_ORDER_DECALS			20
 #define INIT_ORDER_PLANTS			19
@@ -151,6 +151,6 @@ DEFINE_BITFIELD(runlevels, list(
 	* Arguments:
 	* * callback the callback to call on timer finish
 	* * wait deciseconds to run the timer for
-	* * flags flags for this timer, see: code\__DEFINES\subsystems.dm
+	* * atom_flags atom_flags for this timer, see: code\__DEFINES\subsystems.dm
 */
 #define addtimer(args...) _addtimer(args, file = __FILE__, line = __LINE__)

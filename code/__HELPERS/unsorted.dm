@@ -850,7 +850,7 @@
 					var/old_icon_state1 = T.icon_state
 					var/old_icon1 = T.icon
 					var/old_decals = T.decals?.Copy()
-					var/old_overlays = T.overlays.Copy()
+					var/old_overlays = copy_overlays(T)
 					var/old_underlays = T.underlays.Copy()
 
 					if(platingRequired)
@@ -1185,9 +1185,9 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 /// Properly prevents this mob from gaining huds or joining any global lists.
 /mob/dview/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
-	if(flags & INITIALIZED)
+	if(atom_flags & ATOM_INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
-	flags |= INITIALIZED
+	atom_flags |= ATOM_INITIALIZED
 	return INITIALIZE_HINT_NORMAL
 
 /mob/dview/Destroy(force = FALSE)
@@ -1537,6 +1537,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	. += new /atom/movable/screen/plane_master/fullbright
 	/// Lighting system (but different!)
 	. += new /atom/movable/screen/plane_master/lighting
+	. += new /atom/movable/screen/plane_master/emissive
 	/// Ghosts!
 	. += new /atom/movable/screen/plane_master/ghosts
 	/// AI Eye!

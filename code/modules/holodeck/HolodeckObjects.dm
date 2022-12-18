@@ -20,8 +20,8 @@
 	initial_flooring = /singleton/flooring/carpet
 
 	// smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_CARPET)
-	canSmoothWith = list(SMOOTH_GROUP_CARPET)
+	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET)
+	canSmoothWith = (SMOOTH_GROUP_CARPET)
 
 /turf/simulated/floor/holofloor/tiled
 	name = "floor"
@@ -280,7 +280,7 @@
 	throw_range = 5
 	throw_force = 0
 	w_class = ITEMSIZE_SMALL
-	flags = NOBLOODY
+	atom_flags = NOBLOODY
 	var/active = 0
 
 /obj/item/holo/esword/green

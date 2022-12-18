@@ -110,9 +110,9 @@ var/global/list/active_radio_jammers = list()
 
 	// Only Cut() if we need to.
 	if(overlay_percent != last_overlay_percent)
-		overlays.Cut()
+		cut_overlays()
 		var/image/I = image(src.icon, src, "jammer_overlay_[overlay_percent]")
-		overlays += I
+		add_overlay(I)
 		last_overlay_percent = overlay_percent
 
 //Unlimited use, unlimited range jammer for admins. Turn it on, drop it somewhere, it works.
