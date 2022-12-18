@@ -88,10 +88,10 @@
 
 	//?3 Modules can be activated at any one time.
 	var/obj/item/robot_module/module = null
-	var/module_active = null
-	var/module_state_1 = null
-	var/module_state_2 = null
-	var/module_state_3 = null
+	var/obj/item/module_active = null
+	var/obj/item/module_state_1 = null
+	var/obj/item/module_state_2 = null
+	var/obj/item/module_state_3 = null
 
 	var/obj/item/radio/borg/radio = null
 	var/obj/item/communicator/integrated/communicator = null

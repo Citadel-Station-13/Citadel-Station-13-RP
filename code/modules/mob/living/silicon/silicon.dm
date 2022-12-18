@@ -23,6 +23,7 @@
 	gender = NEUTER
 	voice_name = "synthesized voice"
 	silicon_privileges = PRIVILEGES_SILICON
+	rad_flags = RAD_BLOCK_CONTENTS
 	var/syndicate = 0
 	var/const/MAIN_CHANNEL = "Main Frequency"
 	var/lawchannel = MAIN_CHANNEL // Default channel on which to state laws

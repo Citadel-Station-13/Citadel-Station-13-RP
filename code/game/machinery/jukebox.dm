@@ -249,7 +249,7 @@
 				//M.Weaken(3)
 				//if(prob(30))
 					//M.Stun(10)
-					//M.Paralyse(4)
+					//M.Unconscious(4)
 				//else
 					//M.make_jittery(500)
 			//spawn(15)

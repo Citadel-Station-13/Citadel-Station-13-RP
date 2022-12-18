@@ -149,7 +149,7 @@ Contains helper procs for airflow, handled in /connection_group.
 	GET_VSC_PROP(atmos_vsc, /atmos/airflow/impact_stun, impact_stun)
 
 	if(airflow_speed > 10)
-		Paralyse(round(airflow_speed * impact_stun))
+		Unconscious(round(airflow_speed * impact_stun))
 		Stun(paralysis + 3)
 	else
 		Stun(round(airflow_speed * impact_stun/2))

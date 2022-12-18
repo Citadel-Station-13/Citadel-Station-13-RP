@@ -8293,9 +8293,9 @@
 	dir = 1
 	},
 /obj/structure/table/rack/shelf,
-/obj/item/geiger,
-/obj/item/geiger,
-/obj/item/geiger,
+/obj/item/geiger_counter,
+/obj/item/geiger_counter,
+/obj/item/geiger_counter,
 /turf/simulated/floor/tiled/techfloor,
 /area/ship/expe/expedition)
 "pO" = (

@@ -161,7 +161,7 @@
 		C.setToxLoss(0)
 		C.setOxyLoss(0)
 		C.setCloneLoss(0)
-		C.SetParalysis(0)
+		C.SetUnconscious(0)
 		C.SetStunned(0)
 		C.SetWeakened(0)
 		C.radiation = 0

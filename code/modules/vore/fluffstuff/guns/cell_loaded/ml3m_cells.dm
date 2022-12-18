@@ -111,7 +111,7 @@
 /obj/item/projectile/beam/medical_cell/antirad/on_hit(var/mob/living/carbon/human/target)
 	if(istype(target, /mob/living/carbon/human))
 		target.adjustToxLoss(-2.5)
-		target.radiation = max(target.radiation - 150, 0) //same as 5 units of arithrazine, sans the brute damage
+		target.cure_radiation(RAD_MOB_CURE_STRENGTH_MEDIGUN)
 	else
 		return 1
 

@@ -88,7 +88,7 @@
 		if(!(technomancers.is_antagonist(wearer.mind))) // In case someone tries to wear a stolen core.
 			wearer.adjust_instability(20)
 	if(!wearer || wearer.stat == DEAD) // Unlock if we're dead or not worn.
-		REMOVE_TRAIT(src, TRAIT_NODROP, TECHNOMANCER_TRAIT)
+		REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, TECHNOMANCER_TRAIT)
 
 /obj/item/technomancer_core/proc/regenerate()
 	energy = min(max(energy + regen_rate, 0), max_energy)
@@ -346,9 +346,9 @@
 	set category = "Object"
 	set desc = "Toggles the locking mechanism on your manipulation core."
 
-	var/had = HAS_TRAIT_FROM(src, TRAIT_NODROP, TECHNOMANCER_TRAIT)
+	var/had = HAS_TRAIT_FROM(src, TRAIT_ITEM_NODROP, TECHNOMANCER_TRAIT)
 	if(had)
-		REMOVE_TRAIT(src, TRAIT_NODROP, TECHNOMANCER_TRAIT)
+		REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, TECHNOMANCER_TRAIT)
 	else
-		ADD_TRAIT(src, TRAIT_NODROP, TECHNOMANCER_TRAIT)
+		ADD_TRAIT(src, TRAIT_ITEM_NODROP, TECHNOMANCER_TRAIT)
 	to_chat(usr, "<span class='notice'>You [had ? "de" : ""] activate the locking mechanism on [src].</span>")
