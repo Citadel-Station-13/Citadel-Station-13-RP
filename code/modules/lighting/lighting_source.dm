@@ -2,42 +2,61 @@
 // These are the main datums that emit light.
 
 /datum/light_source
-	var/atom/top_atom        // The atom we're emitting light from (for example a mob if we're from a flashlight that's being held).
-	var/atom/source_atom     // The atom that we belong to.
+	/// The atom we're emitting light from (for example a mob if we're from a flashlight that's being held).
+	var/atom/top_atom
+	/// The atom that we belong to.
+	var/atom/source_atom
 
-	var/turf/source_turf // The turf under the above.
-	var/turf/pixel_turf  // The turf the top_atom _appears_ to be on
-	var/light_power      // Intensity of the emitter light.
-	var/light_range      // The range of the emitted light.
-	var/light_color      // The colour of the light, string, decomposed by parse_light_color()
-	var/light_angle      // The light's emission angle, in degrees.
+	/// The turf under the above.
+	var/turf/source_turf
+	/// The turf the top_atom _appears_ to be on
+	var/turf/pixel_turf
+	/// Intensity of the emitter light.
+	var/light_power
+	/// The range of the emitted light.
+	var/light_range
+	/// The colour of the light, string, decomposed by parse_light_color()
+	var/light_color
+	/// The light's emission angle, in degrees.
+	var/light_angle
 
-	// Variables for keeping track of the colour.
+	//! Variables for keeping track of the colour.
 	var/lum_r
 	var/lum_g
 	var/lum_b
 
-	// The lumcount values used to apply the light.
+	//! The lumcount values used to apply the light.
 	var/tmp/applied_lum_r
 	var/tmp/applied_lum_g
 	var/tmp/applied_lum_b
 
-	// Variables used to keep track of the atom's angle.
-	var/tmp/limit_a_x       // The first test point's X coord for the cone.
-	var/tmp/limit_a_y       // The first test point's Y coord for the cone.
-	var/tmp/limit_b_x       // The second test point's X coord for the cone.
-	var/tmp/limit_b_y       // The second test point's Y coord for the cone.
-	var/tmp/cached_origin_x // The last known X coord of the origin.
-	var/tmp/cached_origin_y // The last known Y coord of the origin.
-	var/tmp/old_direction   // The last known direction of the origin.
-	var/tmp/test_x_offset   // How much the X coord should be offset due to direction.
-	var/tmp/test_y_offset   // How much the Y coord should be offset due to direction.
+	//! Variables used to keep track of the atom's angle.
+	/// The first test point's X coord for the cone.
+	var/tmp/limit_a_x
+	/// The first test point's Y coord for the cone.
+	var/tmp/limit_a_y
+	/// The second test point's X coord for the cone.
+	var/tmp/limit_b_x
+	/// The second test point's Y coord for the cone.
+	var/tmp/limit_b_y
+	/// The last known X coord of the origin.
+	var/tmp/cached_origin_x
+	/// The last known Y coord of the origin.
+	var/tmp/cached_origin_y
+	/// The last known direction of the origin.
+	var/tmp/old_direction
+	/// How much the X coord should be offset due to direction.
+	var/tmp/test_x_offset
+	/// How much the Y coord should be offset due to direction.
+	var/tmp/test_y_offset
 	var/tmp/facing_opaque = FALSE
 
-	var/list/datum/lighting_corner/effect_str     // List used to store how much we're affecting corners.
+	/// List used to store how much we're affecting corners.
+	var/list/datum/lighting_corner/effect_str
 	var/list/turf/affecting_turfs
 
-	var/applied = FALSE // Whether we have applied our light yet or not.
+	/// Whether we have applied our light yet or not.
+	var/applied = FALSE
 
 	var/needs_update = LIGHTING_NO_UPDATE
 

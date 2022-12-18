@@ -1,21 +1,28 @@
 /atom
-	var/light_power = 1 // Intensity of the light.
-	var/light_range = 0 // Range in tiles of the light.
-	var/light_color     // Hexadecimal RGB string representing the colour of the light.
-	var/light_wedge     // The angle that the light's emission should be restricted to. null for omnidirectional.
+	/// Intensity of the light.
+	var/light_power = 1
+	/// Range in tiles of the light.
+	var/light_range = 0
+	/// Hexadecimal RGB string representing the colour of the light.
+	var/light_color
+	/// The angle that the light's emission should be restricted to. null for omnidirectional.
+	var/light_wedge
 	// These two vars let you override the default light offset detection (pixel_x/y).
 	//  Useful for objects like light fixtures that aren't visually in the middle of the turf, but aren't offset either.
 	var/light_offset_x
 	var/light_offset_y
 
-	var/tmp/datum/light_source/light // Our light source. Don't fuck with this directly unless you have a good reason!
-	var/tmp/list/light_source_multi       // Any light sources that are "inside" of us, for example, if src here was a mob that's carrying a flashlight, that flashlight's light source would be part of this list.
-	var/tmp/datum/light_source/light_source_solo    // Same as above - this is a shortcut to avoid allocating the above list if we can
+	/// Our light source. Don't fuck with this directly unless you have a good reason!
+	var/tmp/datum/light_source/light
+	/// Any light sources that are "inside" of us, for example, if src here was a mob that's carrying a flashlight, that flashlight's light source would be part of this list.
+	var/tmp/list/light_source_multi
+	/// Same as above - this is a shortcut to avoid allocating the above list if we can
+	var/tmp/datum/light_source/light_source_solo
 
 // Nonsensical value for l_color default, so we can detect if it gets set to null.
 #define NONSENSICAL_VALUE -99999
 
-// The proc you should always use to set the light of this atom.
+/// The proc you should always use to set the light of this atom.
 /atom/proc/set_light(l_range, l_power, l_color = NONSENSICAL_VALUE, angle = NONSENSICAL_VALUE, no_update = FALSE)
 	if(l_range > 0 && l_range < MINIMUM_USEFUL_LIGHT_RANGE)
 		l_range = MINIMUM_USEFUL_LIGHT_RANGE	//Brings the range up to 1.4
@@ -105,3 +112,27 @@
 		for (thing in light_source_multi)
 			L = thing
 			L.source_atom.update_light()
+
+/atom/vv_edit_var(var_name, var_value)
+	switch (var_name)
+		if (NAMEOF(src, light_range))
+			set_light(l_range=var_value)
+			datum_flags |= DF_VAR_EDITED
+			return TRUE
+
+		if (NAMEOF(src, light_power))
+			set_light(l_power=var_value)
+			datum_flags |= DF_VAR_EDITED
+			return TRUE
+
+		if (NAMEOF(src, light_color))
+			set_light(l_color=var_value)
+			datum_flags |= DF_VAR_EDITED
+			return TRUE
+
+		if (NAMEOF(src, light_wedge))
+			set_light(angle=var_value)
+			datum_flags |= DF_VAR_EDITED
+			return TRUE
+
+	return ..()
