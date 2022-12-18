@@ -322,7 +322,7 @@
 	icon = 'icons/obj/mining.dmi'
 	amount = 10
 	max_amount = 10
-	z_flags = ZMM_MANGLE_PLANES
+	mz_flags = ZMM_MANGLE_PLANES
 
 	var/upright = 0
 	var/base_state

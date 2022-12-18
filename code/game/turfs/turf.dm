@@ -11,8 +11,8 @@
 	//! Flags
 	/// turf flags
 	var/turf_flags = NONE
-	/// multiz movement flags (this is for allowance, it's shitty)
-	var/turf_movement_flags = Z_OPEN_UP
+	/// multiz flags
+	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
 
 	var/holy = 0
 
@@ -159,7 +159,7 @@
 	if (mapload && permit_ao)
 		queue_ao()
 
-	if (z_flags & ZM_MIMIC_BELOW)
+	if (mz_flags & MZ_MIMIC_BELOW)
 		setup_zmimic(mapload)
 
 	//Pathfinding related
@@ -201,7 +201,7 @@
 		SSao.queue -= src
 		ao_queued = 0
 
-	if (z_flags & ZM_MIMIC_BELOW)
+	if (mz_flags & MZ_MIMIC_BELOW)
 		cleanup_zmimic()
 
 	if (mimic_proxy)

@@ -1,7 +1,7 @@
 /// The mimic (if any) that's *directly* copying us.
 /atom/movable/var/tmp/atom/movable/openspace/mimic/bound_overlay
 /// Movable-level Z-Mimic flags. This uses ZMM_* flags, not ZM_* flags.
-/atom/movable/var/z_flags = NONE
+/atom/movable/var/mz_flags = NONE
 
 /atom/movable/forceMove(atom/dest)
 	. = ..(dest)
@@ -197,7 +197,7 @@
 /atom/movable/openspace/turf_proxy
 	plane = OPENTURF_MAX_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	z_flags = ZMM_IGNORE  // Only one of these should ever be visible at a time, the mimic logic will handle that.
+	mz_flags = ZMM_IGNORE  // Only one of these should ever be visible at a time, the mimic logic will handle that.
 
 /atom/movable/openspace/turf_proxy/attackby(obj/item/W, mob/user)
 	loc.attackby(W, user)

@@ -113,7 +113,7 @@ var/list/flooring_types
 	var/list/movable_atom_blacklist = list()
 
 	/// Same z flags used for turfs, i.e ZMIMIC_DEFAULT etc.
-	var/z_flags
+	var/mz_flags = MZ_ATMOS_UP | MZ_OPEN_UP
 
 /singleton/flooring/proc/get_plating_type(turf/T)
 	return plating_type

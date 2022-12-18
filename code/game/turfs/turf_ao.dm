@@ -22,9 +22,9 @@
 		return
 
 	var/turf/T
-	if (z_flags & ZM_MIMIC_BELOW)
-		CALCULATE_NEIGHBORS(src, ao_neighbors_mimic, T, (T.z_flags & ZM_MIMIC_BELOW))
-	if (AO_SELF_CHECK(src) && !(z_flags & ZM_MIMIC_NO_AO))
+	if (mz_flags & MZ_MIMIC_BELOW)
+		CALCULATE_NEIGHBORS(src, ao_neighbors_mimic, T, (T.mz_flags & MZ_MIMIC_BELOW))
+	if (AO_SELF_CHECK(src) && !(mz_flags & MZ_MIMIC_NO_AO))
 		CALCULATE_NEIGHBORS(src, ao_neighbors, T, AO_TURF_CHECK(T))
 
 // TODO: Prebaked AO? @Zandario
@@ -97,9 +97,9 @@
 	var/list/cache = SSao.image_cache
 	CUT_AO(shadower, ao_overlays_mimic)
 	CUT_AO(src, ao_overlays)
-	if (z_flags & ZM_MIMIC_BELOW)
+	if (mz_flags & MZ_MIMIC_BELOW)
 		REGEN_AO(shadower, ao_overlays_mimic, ao_neighbors_mimic)
-	if (AO_TURF_CHECK(src) && !(z_flags & ZM_MIMIC_NO_AO))
+	if (AO_TURF_CHECK(src) && !(mz_flags & MZ_MIMIC_NO_AO))
 		REGEN_AO(src, ao_overlays, ao_neighbors)
 
 	update_above()

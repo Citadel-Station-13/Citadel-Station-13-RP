@@ -27,7 +27,7 @@ Public API:
 	Changing state:
 	- turf/enable_zmimic(extra_flags = 0)
 		- return: bool - FALSE if this turf was already mimicking, TRUE otherwise
-		- Enables z-mimic for this turf, potentially adding extra z_flags.
+		- Enables z-mimic for this turf, potentially adding extra mz_flags.
 		- This will automatically queue the turf for update.
 
 	- turf/disable_zmimic()
@@ -36,16 +36,23 @@ Public API:
 		- This will clean up associated mimic objects, but they may hang around for a few additional seconds.
 
 	Vars:
-	- turf/z_flags
+	- turf/mz_flags
 		- bitfield
-			- ZM_MIMIC_BELOW: copy below atoms
-			- ZM_MIMIC_OVERWRITE: z-mimic can overwrite this turf's appearance
-			- ZM_ALLOW_LIGHTING: lighting should pass through this turf
-			- ZM_ALLOW_ATMOS: air should pass through this turf
-			- ZM_MIMIC_NO_AO: normal turf AO should be skipped, only do openspace AO (if your turf is not solid, you probably want this)
-			- ZM_NO_OCCLUDE: don't block clicking on below atoms if not OVERWRITE
+			- MZ_MIMIC_BELOW: copy below atoms
+			- MZ_MIMIC_OVERWRITE: z-mimic can overwrite this turf's appearance
+			- MZ_MIMIC_NO_AO: normal turf AO should be skipped, only do openspace AO (if your turf is not solid, you probably want this)
+			- MZ_MIMIC_BASETURF: Mimic baseturf instead of the below atom. Sometimes useful for elevators.
 
-	- atom/movable/z_flags
+			- MZ_ALLOW_LIGHTING: lighting should pass through this turf
+			- MZ_NO_OCCLUDE: don't block clicking on below atoms if not OVERWRITE
+
+			- MZ_OPEN_UP: Allow atom movement through top.
+			- MZ_OPEN_DOWN: Allow atom movement through bottom.
+
+			- MZ_ATMOS_UP: Allow atmos passage through top.
+			- MZ_ATMOS_DOWN: Allow atmos passage through bottom.
+
+	- atom/movable/mz_flags
 		- bitfield
 			- ZMM_IGNORE: Do not copy this atom. Atoms with INVISIBILITY_ABSTRACT are automatically not copied.
 			- ZMM_MANGLE_PLANES: Scan this atom's overlays and monkeypatch explicit plane sets. Fixes emissive overlays shining through floors, but expensive -- use only if necessary.
@@ -67,7 +74,7 @@ Implementation details:
 	- Z-Stacks will not be changed (note: adding new Z-stacks is OK) after an openturf has been initialized on that z-stack.
 		- If violated: Z-Turfs may act as if they are still connected even though they are not.
 	- /turf/space is never above another turf type in the Z-Stack.
-	- Turfs that are setting ZM_MIMIC_OVERWRITE do not care about their appearance.
+	- Turfs that are setting MZ_MIMIC_OVERWRITE do not care about their appearance.
 		- If violated: Appearance of turf is lost.
 	- Multiturf movable atoms are symmetric, and centered on their visual center.
 		- If violated: Multitile atoms may not render in cases where they should.

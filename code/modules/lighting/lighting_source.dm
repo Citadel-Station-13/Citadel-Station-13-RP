@@ -383,7 +383,7 @@
 		turfs += T
 
 		// Upwards lights are handled at the corner level, so only search down.
-		if (T && (T.z_flags & ZM_ALLOW_LIGHTING) && T.below)
+		if (T && (T.mz_flags & MZ_ALLOW_LIGHTING) && T.below)
 			T = T.below
 			goto check_t
 

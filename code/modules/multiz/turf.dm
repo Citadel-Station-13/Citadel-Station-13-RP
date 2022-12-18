@@ -14,7 +14,7 @@
  * The atom that's blocking. Returns NULL if there's no obstruction.
  */
 /turf/proc/z_pass_in_obstruction(atom/movable/mover, dir, turf/source)
-	if(!(turf_movement_flags & (dir == UP? Z_OPEN_UP : Z_OPEN_DOWN)))
+	if(!(mz_flags & (dir == UP? MZ_OPEN_UP : MZ_OPEN_DOWN)))
 		return src
 	for(var/atom/movable/AM as anything in contents)
 		if(!AM.z_pass_in(mover, dir, source))
@@ -36,7 +36,7 @@
  * The atom that's blocking. Returns NULL if there's no obstruction.
  */
 /turf/proc/z_pass_out_obstruction(atom/movable/mover, dir, turf/dest)
-	if(!(turf_movement_flags & (dir == UP? Z_OPEN_UP : Z_OPEN_DOWN)))
+	if(!(mz_flags & (dir == UP? MZ_OPEN_UP : MZ_OPEN_DOWN)))
 		return src
 	for(var/atom/movable/AM as anything in contents)
 		if(!AM.z_pass_out(mover, dir, dest))
@@ -94,7 +94,7 @@
  * simple boolean check to see if something's physically blocked from falling through us
  */
 /turf/proc/z_fall_check(atom/movable/mover, levels, fall_flags)
-	if(!(turf_movement_flags & Z_OPEN_DOWN))
+	if(!(mz_flags & MZ_OPEN_DOWN))
 		return FALSE
 	return isnull(z_fall_obstruction(mover, levels, fall_flags))
 
@@ -106,7 +106,7 @@
 
 // todo: redo
 /turf/CheckFall(atom/movable/falling_atom)
-	if(!(turf_movement_flags & Z_OPEN_DOWN))
+	if(!(mz_flags & MZ_OPEN_DOWN))
 		return TRUE	// impact!
 	return ..()
 

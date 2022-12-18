@@ -14,7 +14,6 @@
 /turf/var/tmp/z_queued = 0
 /// If this Z-turf leads to space, uninterrupted.
 /turf/var/tmp/z_eventually_space = FALSE
-/turf/var/z_flags = NONE
 
 //! debug
 /turf/var/tmp/z_depth
@@ -25,26 +24,26 @@
 		above.update_mimic()
 
 /turf/proc/update_mimic()
-	if(z_flags & ZM_MIMIC_BELOW)
+	if(mz_flags & MZ_MIMIC_BELOW)
 		z_queued += 1
 		// This adds duplicates for a reason. Do not change this unless you understand how ZM queues work.
 		SSzmimic.queued_turfs += src
 
 /// Enables Z-mimic for a turf that didn't already have it enabled.
 /turf/proc/enable_zmimic(additional_flags = 0)
-	if (z_flags & ZM_MIMIC_BELOW)
+	if (mz_flags & MZ_MIMIC_BELOW)
 		return FALSE
 
-	z_flags |= ZM_MIMIC_BELOW | additional_flags
+	mz_flags |= MZ_MIMIC_BELOW | additional_flags
 	setup_zmimic(FALSE)
 	return TRUE
 
 /// Disables Z-mimic for a turf.
 /turf/proc/disable_zmimic()
-	if (!(z_flags & ZM_MIMIC_BELOW))
+	if (!(mz_flags & MZ_MIMIC_BELOW))
 		return FALSE
 
-	z_flags &= ~ZM_MIMIC_BELOW
+	mz_flags &= ~MZ_MIMIC_BELOW
 	cleanup_zmimic()
 	return TRUE
 
@@ -59,7 +58,7 @@
 		below = under
 		below.above = src
 
-	if (!(z_flags & (ZM_MIMIC_OVERWRITE|ZM_NO_OCCLUDE)) && mouse_opacity)
+	if (!(mz_flags & (MZ_MIMIC_OVERWRITE|MZ_NO_OCCLUDE)) && mouse_opacity)
 		mouse_opacity = MOUSE_OPACITY_OPAQUE
 
 	update_mimic(!mapload) // Only recursively update if the map isn't loading.

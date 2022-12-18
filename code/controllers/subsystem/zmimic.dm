@@ -55,7 +55,7 @@ SUBSYSTEM_DEF(zmimic)
 	for (var/atom/A in world)
 		if (isturf(A))
 			T = A
-			if (T.z_flags & ZM_MIMIC_BELOW)
+			if (T.mz_flags & MZ_MIMIC_BELOW)
 				T.update_mimic()
 				num_upd += 1
 
@@ -98,7 +98,7 @@ SUBSYSTEM_DEF(zmimic)
 	for (var/atom/A in world)
 		if (isturf(A))
 			T = A
-			if (T.z_flags & ZM_MIMIC_BELOW)
+			if (T.mz_flags & MZ_MIMIC_BELOW)
 				T.update_mimic()
 				num_turfs += 1
 
@@ -161,7 +161,7 @@ SUBSYSTEM_DEF(zmimic)
 
 	for (var/zlev in 1 to world.maxz)
 		for (var/turf/T in block(locate(1, 1, zlev), locate(world.maxx, world.maxy, zlev)))
-			if (T.z_flags & ZM_MIMIC_BELOW)
+			if (T.mz_flags & MZ_MIMIC_BELOW)
 				flush_z_state(T)
 				T.below = GetAbove(T)
 				T.above = GetBelow(T)
@@ -187,7 +187,7 @@ SUBSYSTEM_DEF(zmimic)
 		curr_turfs[qt_idex] = null
 		qt_idex += 1
 
-		if (!isturf(T) || !(T.z_flags & ZM_MIMIC_BELOW) || !T.z_queued)
+		if (!isturf(T) || !(T.mz_flags & MZ_MIMIC_BELOW) || !T.z_queued)
 			if (no_mc_tick)
 				CHECK_TICK
 			else if (MC_TICK_CHECK)
@@ -208,7 +208,7 @@ SUBSYSTEM_DEF(zmimic)
 		// It's impossible for anything to be on the synthetic turf, so ignore the rest of the ZM machinery.
 		if (!T.below)
 			flush_z_state(T)
-			if (T.z_flags & ZM_MIMIC_BASETURF)
+			if (T.mz_flags & MZ_MIMIC_BASETURF)
 				simple_appearance_copy(T, T.baseturfs, OPENTURF_MAX_PLANE)
 			// else
 				// TODO SSparallax skybox support.
@@ -238,7 +238,7 @@ SUBSYSTEM_DEF(zmimic)
 		var/t_target = OPENTURF_MAX_PLANE - turf_depth	// This is where the turf (but not the copied atoms) gets put.
 
 		// Turf is set to mimic baseturf, handle that and bail.
-		if (T.z_flags & ZM_MIMIC_BASETURF)
+		if (T.mz_flags & MZ_MIMIC_BASETURF)
 			flush_z_state(T)
 			simple_appearance_copy(T, T.baseturfs, t_target)
 
@@ -248,7 +248,7 @@ SUBSYSTEM_DEF(zmimic)
 				break
 			continue
 
-		// If we previously were ZM_MIMIC_BASETURF, there might be an orphaned proxy.
+		// If we previously were MZ_MIMIC_BASETURF, there might be an orphaned proxy.
 		else if (T.mimic_underlay)
 			QDEL_NULL(T.mimic_underlay)
 
@@ -258,7 +258,7 @@ SUBSYSTEM_DEF(zmimic)
 			T.z_eventually_space = TRUE
 			t_target = SPACE_PLANE
 
-		if (T.z_flags & ZM_MIMIC_OVERWRITE)
+		if (T.mz_flags & MZ_MIMIC_OVERWRITE)
 			// This openturf doesn't care about its icon, so we can just overwrite it.
 			if (T.below.mimic_proxy)
 				QDEL_NULL(T.below.mimic_proxy)
@@ -284,7 +284,7 @@ SUBSYSTEM_DEF(zmimic)
 
 		// Explicitly copy turf delegates so they show up properly on below levels.
 		//   I think it's possible to get this to work without discrete delegate copy objects, but I'd rather this just work.
-		if ((T.below.z_flags & (ZM_MIMIC_BELOW|ZM_MIMIC_OVERWRITE)) == ZM_MIMIC_BELOW)
+		if ((T.below.mz_flags & (MZ_MIMIC_BELOW|MZ_MIMIC_OVERWRITE)) == MZ_MIMIC_BELOW)
 			// Below is a delegate, gotta explicitly copy it for recursive copy.
 			if (!T.below.mimic_above_copy)
 				T.below.mimic_above_copy = new(T)
@@ -301,7 +301,7 @@ SUBSYSTEM_DEF(zmimic)
 		// Add everything below us to the update queue.
 		for (var/thing in T.below)
 			var/atom/movable/object = thing
-			if (QDELETED(object) || (object.z_flags & ZMM_IGNORE) || object.loc != T.below || object.invisibility == INVISIBILITY_ABSTRACT)
+			if (QDELETED(object) || (object.mz_flags & ZMM_IGNORE) || object.loc != T.below || object.invisibility == INVISIBILITY_ABSTRACT)
 				// Don't queue deleted stuff, stuff that's not visible, blacklisted stuff, or stuff that's centered on another tile but intersects ours.
 				continue
 
@@ -418,14 +418,14 @@ SUBSYSTEM_DEF(zmimic)
 			OO.particles = OO.associated_atom.particles
 
 		OO.appearance = OO.associated_atom
-		OO.z_flags = OO.associated_atom.z_flags
+		OO.mz_flags = OO.associated_atom.mz_flags
 		OO.plane = OPENTURF_MAX_PLANE - OO.depth
 
 		OO.opacity = FALSE
 		OO.queued = 0
 
 		// If an atom has explicit plane sets on its overlays/underlays, we need to replace the appearance so they can be mangled to work with our planing.
-		if (OO.z_flags & ZMM_MANGLE_PLANES)
+		if (OO.mz_flags & ZMM_MANGLE_PLANES)
 			var/new_appearance = fixup_appearance_planes(OO.appearance)
 			if (new_appearance)
 				OO.appearance = new_appearance
@@ -453,7 +453,7 @@ SUBSYSTEM_DEF(zmimic)
 			qdel(OO)
 
 /datum/controller/subsystem/zmimic/proc/simple_appearance_copy(turf/T, new_appearance, target_plane)
-	if (T.z_flags & ZM_MIMIC_OVERWRITE)
+	if (T.mz_flags & MZ_MIMIC_OVERWRITE)
 		T.appearance = new_appearance
 		T.name = initial(T.name)
 		T.desc = initial(T.desc)
@@ -596,7 +596,7 @@ SUBSYSTEM_DEF(zmimic)
 		"<h1>Analysis of [T] at [T.x],[T.y],[T.z]</h1>",
 		"<b>Queue occurrences:</b> [T.z_queued]",
 		"<b>Above space:</b> Apparent [T.z_eventually_space ? "Yes" : "No"], Actual [is_above_space ? "Yes" : "No"] - [T.z_eventually_space == is_above_space ? "<font color='green'>OK</font>" : "<font color='red'>MISMATCH</font>"]",
-		"<b>Z Flags</b>: [english_list(bitfield2list(T.z_flags, global.mimic_defines), "(none)")]",
+		"<b>Z Flags</b>: [english_list(bitfield2list(T.mz_flags, global.mimic_defines), "(none)")]",
 		"<b>Has Shadower:</b> [T.shadower ? "Yes" : "No"]",
 		"<b>Has turf proxy:</b> [T.mimic_proxy ? "Yes" : "No"]",
 		"<b>Has above copy:</b> [T.mimic_above_copy ? "Yes" : "No"]",
@@ -608,7 +608,7 @@ SUBSYSTEM_DEF(zmimic)
 		"<ul>"
 	)
 
-	if (T.z_flags & ZM_MIMIC_BASETURF)
+	if (T.mz_flags & MZ_MIMIC_BASETURF)
 		out += "<h3>Using synthetic rendering (BASETURF).</h3>"
 
 	var/list/found_oo = list(T)

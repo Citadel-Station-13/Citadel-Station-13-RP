@@ -50,7 +50,7 @@
 	mob_swap_flags = ~HEAVY
 	mob_push_flags = ~HEAVY //trundle trundle
 
-	z_flags = ZMM_MANGLE_PLANES
+	mz_flags = ZMM_MANGLE_PLANES
 
 	can_be_antagged = TRUE
 
