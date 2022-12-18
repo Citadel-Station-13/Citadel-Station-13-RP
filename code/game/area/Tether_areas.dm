@@ -21,14 +21,6 @@
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "tether3"
 
-// Elevator areas.
-/area/turbolift
-	delay_time = 2 SECONDS
-	forced_ambience = list('sound/music/elevator1.ogg', 'sound/music/elevator2.ogg')
-	dynamic_lighting = FALSE //Temporary fix for elevator lighting
-
-	requires_power = FALSE
-
 /area/turbolift/tether/transit
 	name = "tether (midway)"
 	lift_floor_label = "Tether Midpoint"

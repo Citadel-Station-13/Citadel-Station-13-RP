@@ -3419,8 +3419,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 // Used for creating the exchange areas.
 /area/turbolift
 	name = "Turbolift"
-	requires_power = 0
-	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
+	requires_power = FALSE
+	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 	sound_env = SMALL_ENCLOSED
 	forced_ambience = list('sound/music/elevator1.ogg', 'sound/music/elevator2.ogg')
 	requires_power = FALSE
