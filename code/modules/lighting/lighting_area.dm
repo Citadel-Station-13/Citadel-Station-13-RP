@@ -1,6 +1,6 @@
 /area
-	luminosity           = TRUE
-	var/dynamic_lighting = TRUE
+	luminosity = TRUE
+	var/dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 
 /area/Initialize()
 	. = ..()
@@ -8,7 +8,7 @@
 	if (dynamic_lighting)
 		luminosity = FALSE
 
-/area/proc/set_dynamic_lighting(var/new_dynamic_lighting = TRUE)
+/area/proc/set_dynamic_lighting(new_dynamic_lighting = DYNAMIC_LIGHTING_ENABLED)
 	if (new_dynamic_lighting == dynamic_lighting)
 		return FALSE
 
@@ -25,3 +25,10 @@
 				T.lighting_clear_overlay()
 
 	return TRUE
+
+/area/vv_edit_var(var_name, var_value)
+	switch(var_name)
+		if(NAMEOF(src, dynamic_lighting))
+			set_dynamic_lighting(var_value)
+			return TRUE
+	return ..()
