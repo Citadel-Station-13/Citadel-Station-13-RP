@@ -4,10 +4,6 @@
 	var/list/holomap_offset_y = list()
 	var/list/holomap_legend_x = list()
 	var/list/holomap_legend_y = list()
-	var/list/meteor_strike_areas		 // Areas meteor strikes may choose to hit.
-
-	var/lobby_icon = 'icons/misc/title.dmi'			// The icon which contains the lobby image(s)
-	var/list/lobby_screens = list("mockingjay00")	// The list of lobby screen to pick() from. If left unset the first icon state is always selected.
 
 // Gets the current time on a current zlevel, and returns a time datum
 /datum/map/proc/get_zlevel_time(var/z)

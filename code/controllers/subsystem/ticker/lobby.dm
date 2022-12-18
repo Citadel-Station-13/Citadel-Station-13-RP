@@ -2,6 +2,8 @@
 	#warn impl
 
 // todo: the image needs to be autocentered for widescreen/variable screens
+#warn besure to check map for config + have fallback for no config image!
+#warn fexists() directly
 
 /*
 /obj/effect/lobby_image/Initialize(mapload)

@@ -45,8 +45,16 @@
 
 	#warn impl + parse
 	//? events
+	/// list of area typepaths that can be meteor struck fro above
+	var/list/meteor_strike_areas
+	#warn impl + parse
 
 	//? lobby
+	/// icon states for lobby; these are files in icons/runtime/lobby/*
+	var/list/lobby_screens
+	/// use config lobby screen png?
+	var/lobby_custom = FALSE
+	#warn impl + parse
 
 	//? bots
 	var/bot_patrolling = TRUE				// Determines if this map supports automated bot patrols
