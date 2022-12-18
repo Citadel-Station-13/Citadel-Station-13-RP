@@ -38,39 +38,6 @@
 /datum/map/proc/get_nightshift()
 	return get_night(1) //Defaults to z1, customize however you want on your own maps
 
-// Get the list of zlevels that a computer on srcz can see maps of (for power/crew monitor, cameras, etc)
-// The long_range parameter expands the coverage.  Default is to return map_levels for long range otherwise just srcz.
-// zLevels outside station_levels will return an empty list.
-/datum/map/proc/get_map_levels(var/srcz, var/long_range = TRUE, var/om_range = 0)
-	// Overmap behavior
-	if(use_overmap)
-		var/obj/effect/overmap/visitable/O = get_overmap_sector(srcz)
-		if(!istype(O))
-			return list(srcz)
-
-		// Just the sector we're in
-		if(!long_range || (om_range < 0))
-			return O.map_z.Copy()
-
-		// Otherwise every sector we're on top of
-		var/list/connections = list()
-		var/turf/T = get_turf(O)
-		for(var/obj/effect/overmap/visitable/V in range(om_range, T))
-			connections |= V.map_z	// Adding list to list adds contents
-		return connections
-
-	// Traditional behavior
-	else
-		if (long_range && (srcz in map_levels))
-			return map_levels
-		else if (srcz in station_levels)
-			return list(srcz)
-		else
-			return list(srcz)
-
-/datum/map/proc/get_zlevel_name(var/index)
-	var/datum/map_z_level/Z = zlevels["[index]"]
-	return Z?.name
 
 // Another way to setup the map datum that can be convenient.  Just declare all your zlevels as subtypes of a common
 // 	subtype of /datum/map_z_level and set zlevel_datum_type on /datum/map to have the lists auto-initialized.
@@ -91,20 +58,6 @@
 
 // Default constructor applies itself to the parent map datum
 /datum/map_z_level/New(var/datum/map/map, _z)
-	if(_z)
-		src.z = _z
-	if(!z)
-		return
-	map.zlevels["[z]"] = src
-	if(flags & MAP_LEVEL_STATION) map.station_levels |= z
-	if(flags & MAP_LEVEL_ADMIN) map.admin_levels |= z
-	if(flags & MAP_LEVEL_CONTACT) map.contact_levels |= z
-	if(flags & MAP_LEVEL_PLAYER) map.player_levels |= z
-	if(flags & MAP_LEVEL_SEALED) map.sealed_levels |= z
-	if(flags & MAP_LEVEL_XENOARCH_EXEMPT) map.xenoarch_exempt_levels |= z
-	if(flags & MAP_LEVEL_EMPTY)
-		if(!map.empty_levels) map.empty_levels = list()
-		map.empty_levels |= z
 	if(flags & MAP_LEVEL_CONSOLES)
 		if (!map.map_levels)
 			map.map_levels = list()

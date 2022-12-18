@@ -85,10 +85,15 @@
 /**
  * default logic for getting all connected zlevels
  *
- * 1. if using overmaps, returns overmap object levels
+ * 1. if using overmaps, returns overmap object levels; else, check crosslinked if long range
  * 2. if using struct, struct levels are added ontop of that
+ *
+ * @params
+ * - z - level
+ * - radius - overmap radius to search in; *NULL* to disable and use current object only
+ * - long_range - check crosslinked if not overmaps; overmaps behavior is nothing for now.
  */
-/datum/controller/subsystem/mapping/proc/get_connected_levels(z)
+/datum/controller/subsystem/mapping/proc/get_connected_levels(z, radius, long_range)
 	RETURN_TYPE(/list)
 	. = list()
 	#warn impl
