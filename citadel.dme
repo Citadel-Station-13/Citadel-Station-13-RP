@@ -134,7 +134,6 @@
 #include "code\__DEFINES\combat\explosions.dm"
 #include "code\__DEFINES\controllers\_subsystems.dm"
 #include "code\__DEFINES\controllers\dbcore.dm"
-#include "code\__DEFINES\controllers\overlays.dm"
 #include "code\__DEFINES\controllers\persistence.dm"
 #include "code\__DEFINES\controllers\throwing.dm"
 #include "code\__DEFINES\controllers\ticker.dm"
