@@ -382,8 +382,6 @@
 
 		turfs += T
 
-		// Note: above is defined on ALL turfs, but below is only defined on OPEN TURFS.
-
 		// Upwards lights are handled at the corner level, so only search down.
 		if (T && (T.z_flags & ZM_ALLOW_LIGHTING) && T.below)
 			T = T.below
