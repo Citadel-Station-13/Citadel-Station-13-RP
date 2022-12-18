@@ -238,7 +238,7 @@
 		return emote(copytext(message, 2))
 
 	var/datum/language/L = parse_language(message)
-	if(L && L.language_flags & HIVEMIND)
+	if(L && L.language_flags & LANGUAGE_HIVEMIND)
 		L.broadcast(src,trim(copytext(message,3)), src.true_name)
 		return
 

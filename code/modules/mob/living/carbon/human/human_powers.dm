@@ -189,13 +189,13 @@
 	for(var/mob/living/carbon/alien/diona/D in src)
 		nymphs++
 		D.forceMove(T)
-		transfer_languages(src, D, WHITELISTED|RESTRICTED)
+		transfer_languages(src, D, LANGUAGE_WHITELISTED|LANGUAGE_RESTRICTED)
 		D.setDir(pick(NORTH, SOUTH, EAST, WEST))
 
 	if(nymphs < number_of_resulting_nymphs)
 		for(var/i in nymphs to (number_of_resulting_nymphs - 1))
 			var/mob/M = new /mob/living/carbon/alien/diona(T)
-			transfer_languages(src, M, WHITELISTED|RESTRICTED)
+			transfer_languages(src, M, LANGUAGE_WHITELISTED|LANGUAGE_RESTRICTED)
 			M.setDir(pick(NORTH, SOUTH, EAST, WEST))
 
 
@@ -308,10 +308,10 @@
 	if(!get_turf(src))
 		to_chat(src, SPAN_WARNING("Not from here you can't."))
 		return
-	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_SONAR_PULSE))
+	if(TIMER_COOLDOWN_CHECK(src, CD_INDEX_SONAR_PULSE))
 		to_chat(src, SPAN_WARNING("You need to wait some more to do that!"))
 		return
-	TIMER_COOLDOWN_START(src, COOLDOWN_SONAR_PULSE, 2 SECONDS)
+	TIMER_COOLDOWN_START(src, CD_INDEX_SONAR_PULSE, 2 SECONDS)
 
 	visible_message(
 		SPAN_WARNING("[src] emits a quiet click."),
