@@ -14,7 +14,7 @@
 		else	// Not a turf, so we need to destroy immediately instead of waiting for the destruction timer to proc.
 			qdel(bound_overlay)
 
-/atom/movable/Move()
+/atom/movable/Move(...)
 	. = ..()
 	if (. && bound_overlay)
 		bound_overlay.forceMove(get_step(src, UP))

@@ -49,9 +49,11 @@ SUBSYSTEM_DEF(ambience)
 		// 		return TRUE
 		// else
 		if(CONFIG_GET(flag/starlight))
-			var/datum/planet/our_planet = GLOB.using_map.planet_datums_to_make[1]
-			set_ambient_light(our_planet.weather_holder.current_weather.light_color)
 			// set_ambient_light(SSskybox.background_color, config.starlight)
+			var/datum/planet/planet = SSplanets.z_to_planet["[z]"]
+			if(istype(planet))
+				if(planet.sun_position)
+					set_ambient_light(planet.sun["color"], planet.sun["brightness"])
 			return TRUE
 
 	clear_ambient_light()

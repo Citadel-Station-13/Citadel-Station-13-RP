@@ -372,7 +372,6 @@ var/list/channel_to_radio_key = new
 	images_to_clients[speech_bubble] = list()
 
 	// Attempt Multi-Z Talking
-	#warn TODO: Make this work with the new Z-Mimic System
 	/*
 	var/mob/above = src.shadow
 	while(!QDELETED(above))

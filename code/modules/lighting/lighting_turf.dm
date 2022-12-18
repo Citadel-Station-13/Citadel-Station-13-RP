@@ -1,7 +1,9 @@
 /turf/var/dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
-/turf/var/ambient_light	// If non-null, a hex RGB light color that should be applied to this turf.
-/turf/var/ambient_light_multiplier = 0.3	// The power of the above is multiplied by this. Setting too high may drown out normal lights on the same turf.
-/turf/luminosity           = 1
+/// If non-null, a hex RGB light color that should be applied to this turf.
+/turf/var/ambient_light
+/// The power of the above is multiplied by this. Setting too high may drown out normal lights on the same turf.
+/turf/var/ambient_light_multiplier = 0.3
+/turf/luminosity = 1
 
 /turf/var/tmp/lighting_corners_initialised = FALSE
 

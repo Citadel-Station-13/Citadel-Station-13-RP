@@ -180,39 +180,12 @@ SUBSYSTEM_DEF(planets)
 			return
 
 /datum/controller/subsystem/planets/proc/updateSunlight(datum/planet/P)
-	// Remove old value from corners
-	var/list/sunlit_corners = P.sunlit_corners
-	var/old_lum_r = -P.sun["lum_r"]
-	var/old_lum_g = -P.sun["lum_g"]
-	var/old_lum_b = -P.sun["lum_b"]
-	if(old_lum_r || old_lum_g || old_lum_b)
-		for(var/C in sunlit_corners)
-			var/datum/lighting_corner/LC = C
-			LC.update_lumcount(old_lum_r, old_lum_g, old_lum_b)
-			CHECK_TICK
-	sunlit_corners.Cut()
-
 	// Calculate new values to apply
 	var/new_brightness = P.sun["brightness"]
 	var/new_color = P.sun["color"]
-	var/lum_r = new_brightness * GetRedPart  (new_color) / 255
-	var/lum_g = new_brightness * GetGreenPart(new_color) / 255
-	var/lum_b = new_brightness * GetBluePart (new_color) / 255
-	var/static/update_gen = -1 // Used to prevent double-processing corners. Otherwise would happen when looping over adjacent turfs.
 	for(var/turf/simulated/T as anything in P.planet_floors)
-		if(!T.lighting_corners_initialised)
-			T.generate_missing_corners()
-		for(var/C in T.corners)
-			var/datum/lighting_corner/LC = C
-			if(LC.update_gen != update_gen && LC.active)
-				sunlit_corners += LC
-				LC.update_gen = update_gen
-				LC.update_lumcount(lum_r, lum_g, lum_b)
+		T.set_ambient_light(new_color, new_brightness)
 		CHECK_TICK
-	update_gen--
-	P.sun["lum_r"] = lum_r
-	P.sun["lum_g"] = lum_g
-	P.sun["lum_b"] = lum_b
 
 /datum/controller/subsystem/planets/proc/updateTemp(datum/planet/P)
 	//Set new temperatures

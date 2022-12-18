@@ -422,7 +422,12 @@
 
 	lights_on = !lights_on
 	to_chat(usr, "You [lights_on ? "enable" : "disable"] your integrated light.")
-	handle_light()
+
+	if (lights_on)
+		radio.set_light(integrated_light_power)
+	else
+		radio.set_light(0)
+
 	updateicon()
 
 /mob/living/silicon/robot/verb/self_diagnosis_verb()

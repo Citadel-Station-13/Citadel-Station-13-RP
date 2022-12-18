@@ -8,13 +8,17 @@ SUBSYSTEM_DEF(lighting)
 	var/total_lighting_overlays = 0
 	var/total_lighting_sources = 0
 	var/total_ambient_turfs = 0
-	var/list/lighting_corners = list()	// List of all lighting corners in the world.
+	/// List of all lighting corners in the world.
+	var/list/lighting_corners = list()
 
-	var/list/light_queue   = list() // lighting sources  queued for update.
+	/// lighting sources  queued for update.
+	var/list/light_queue   = list()
 	var/lq_idex = 1
-	var/list/corner_queue  = list() // lighting corners  queued for update.
+	/// lighting corners  queued for update.
+	var/list/corner_queue  = list()
 	var/cq_idex = 1
-	var/list/overlay_queue = list() // lighting overlays queued for update.
+	/// lighting overlays queued for update.
+	var/list/overlay_queue = list()
 	var/oq_idex = 1
 
 	var/tmp/processed_lights = 0
@@ -26,7 +30,8 @@ SUBSYSTEM_DEF(lighting)
 
 #ifdef USE_INTELLIGENT_LIGHTING_UPDATES
 	var/force_queued = TRUE
-	var/force_override = FALSE	// For admins.
+	/// For admins.
+	var/force_override = FALSE
 #endif
 
 /datum/controller/subsystem/lighting/stat_entry()

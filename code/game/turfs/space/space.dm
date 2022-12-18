@@ -87,10 +87,10 @@
 		if (!isloc(T.loc) || !TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
 			continue
 
-		// set_ambient_light(SSskybox.background_color)
-		//! Kill me for writing this. @Zandario
-		var/datum/planet/our_planet = GLOB.using_map.planet_datums_to_make[1]
-		set_ambient_light(our_planet.weather_holder.current_weather.light_color)
+		var/datum/planet/planet = SSplanets.z_to_planet["[z]"]
+		if(istype(planet))
+			if(planet.sun_position)
+				set_ambient_light(planet.sun["color"], planet.sun["brightness"])
 		return
 
 	if (ambient_light)
