@@ -3482,7 +3482,7 @@
 /obj/structure/lattice,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
-	icon_state = "32-4"
+	icon_state = "32-5"
 	},
 /turf/simulated/open,
 /area/maintenance/substation/surface_three)
@@ -5037,14 +5037,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
 "jf" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
 /obj/machinery/power/breakerbox/activated{
 	RCon_tag = "Surface - 3"
-	},
-/obj/structure/cable{
-	icon_state = "0-8"
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
@@ -11163,7 +11157,7 @@
 /area/shuttle/emt/general)
 "uW" = (
 /obj/structure/cable{
-	icon_state = "2-4"
+	icon_state = "4-10"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_three)
