@@ -9,16 +9,16 @@
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, newdir)
 	dir = newdir
-	if (.)
-		if (light_source_solo)
-			if (light_source_solo.light_angle)
-				light_source_solo.source_atom.update_light()
-		else if (light_source_multi)
-			var/datum/light_source/L
-			for (var/thing in light_source_multi)
-				L = thing
-				if (L.light_angle)
-					L.source_atom.update_light()
+
+	if (light_source_solo)
+		if (light_source_solo.light_angle)
+			light_source_solo.source_atom.update_light()
+	else if (light_source_multi)
+		var/datum/light_source/L
+		for (var/thing in light_source_multi)
+			L = thing
+			if (L.light_angle)
+				L.source_atom.update_light()
 	return TRUE
 
 ////////////////////////////////////////

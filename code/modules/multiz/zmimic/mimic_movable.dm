@@ -21,6 +21,15 @@
 		if (bound_overlay.dir != dir)
 			bound_overlay.setDir(dir)
 
+	if (light_source_solo)
+		light_source_solo.source_atom.update_light()
+	else if (light_source_multi)
+		var/datum/light_source/L
+		var/thing
+		for (thing in light_source_multi)
+			L = thing
+			L.source_atom.update_light()
+
 /atom/movable/setDir(ndir)
 	. = ..()
 	if (. && bound_overlay)
@@ -98,6 +107,7 @@
 	appearance = LO
 	layer = MIMICED_LIGHTING_LAYER
 	plane = OPENTURF_MAX_PLANE
+	blend_mode ||= BLEND_MULTIPLY
 	invisibility = 0
 
 	if (icon_state == LIGHTING_BASE_ICON_STATE)

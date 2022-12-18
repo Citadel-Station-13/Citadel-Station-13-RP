@@ -53,7 +53,7 @@ SUBSYSTEM_DEF(ambience)
 			var/datum/planet/planet = SSplanets.z_to_planet["[z]"]
 			if(istype(planet))
 				if(planet.sun_position)
-					set_ambient_light(planet.sun["color"], planet.sun["brightness"])
+					set_ambient_light(planet.sun["color"])
 			return TRUE
 
 	clear_ambient_light()

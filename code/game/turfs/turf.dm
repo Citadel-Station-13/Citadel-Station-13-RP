@@ -8,9 +8,11 @@
 	luminosity = 1
 	level = 1
 
+	//! Flags
 	/// turf flags
 	var/turf_flags = NONE
-	var/turf_movement_flags = NONE
+	/// multiz movement flags (this is for allowance, it's shitty)
+	var/turf_movement_flags = Z_OPEN_UP
 
 	var/holy = 0
 

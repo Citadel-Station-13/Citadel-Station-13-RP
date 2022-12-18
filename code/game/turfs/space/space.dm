@@ -87,10 +87,7 @@
 		if (!isloc(T.loc) || !TURF_IS_DYNAMICALLY_LIT_UNSAFE(T))
 			continue
 
-		var/datum/planet/planet = SSplanets.z_to_planet["[z]"]
-		if(istype(planet))
-			if(planet.sun_position)
-				set_ambient_light(planet.sun["color"], planet.sun["brightness"])
+		set_ambient_light(COLOR_WHITE)
 		return
 
 	if (ambient_light)

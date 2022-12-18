@@ -1,15 +1,18 @@
 /atom/movable/lighting_overlay
-	name          = ""
-	anchored      = TRUE
-	icon          = LIGHTING_ICON
-	icon_state    = LIGHTING_BASE_ICON_STATE
-	color         = LIGHTING_BASE_MATRIX
+	name = ""
+	anchored = TRUE
+	atom_flags = ATOM_ABSTRACT
+
+	icon = LIGHTING_ICON
+	icon_state = LIGHTING_BASE_ICON_STATE
+
+	plane = LIGHTING_PLANE
+	layer = LIGHTING_LAYER
+	color = LIGHTING_BASE_MATRIX
+
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	plane         = LIGHTING_PLANE
-	layer         = LIGHTING_LAYER
-	invisibility  = INVISIBILITY_LIGHTING
-	// simulated     = FALSE
-	blend_mode    = BLEND_MULTIPLY
+	invisibility = INVISIBILITY_LIGHTING
+	// simulated = FALSE
 
 	var/needs_update = FALSE
 
