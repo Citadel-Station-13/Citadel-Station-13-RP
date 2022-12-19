@@ -16,6 +16,20 @@
 		/mob/living/silicon/robot/drone
 		)
 
+/obj/structure/plasticflaps/Initialize(mapload)
+	. = ..()
+	loc?.air_update_self()
+
+/obj/structure/plasticflaps/Destroy()
+	CanAtmosPass = ATMOS_PASS_NOT_BLOCKED
+	loc?.air_update_self()
+	return ..()
+
+/obj/structure/plasticflaps/Moved(atom/oldloc)
+	. = ..()
+	oldloc?.air_update_self()
+	loc?.air_update_self()
+
 /obj/structure/plasticflaps/attackby(obj/item/P, mob/user)
 	if(P.is_wirecutter())
 		playsound(src, P.tool_sound, 50, 1)
@@ -79,15 +93,3 @@
 	name = "airtight plastic flaps"
 	desc = "Heavy duty, airtight, plastic flaps. Have extra safety installed, preventing passage of living beings."
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
-
-/obj/structure/plasticflaps/mining/Initialize(mapload)
-	. = ..()
-	air_update_turf()
-
-/obj/structure/plasticflaps/mining/Destroy()
-	. = ..()
-
-
-/obj/structure/plasticflaps/mining/Moved(atom/oldloc)
-	. = ..()
-	air_update_turf_moved()

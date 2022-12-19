@@ -399,12 +399,12 @@
 
 	health = maxhealth
 
-	update_nearby_tiles()
+	loc?.air_update_self()
 	update_nearby_icons()
 
 /obj/structure/window/Destroy()
-	density = 0
-	update_nearby_tiles()
+	CanAtmosPass = ATMOS_PASS_NOT_BLOCKED
+	loc?.air_update_self()
 	var/turf/location = loc
 	. = ..()
 	for(var/obj/structure/window/W in orange(location, 1))
@@ -418,9 +418,8 @@
 
 /obj/structure/window/Moved(atom/oldloc)
 	. = ..()
-	if(isturf(oldloc))
-		var/turf/T = oldloc
-		T.queue_zone_update()
+	oldloc?.air_update_self()
+	loc?.air_update_self()
 
 //checks if this window is full-tile one
 /obj/structure/window/proc/is_fulltile()
@@ -502,7 +501,7 @@
 		user.action_feedback(SPAN_NOTICE("You [unsecuring? "unfasten" : "fasten"] the frame [unsecuring? "from" : "to"] the floor."), src)
 		construction_state = unsecuring? WINDOW_STATE_UNSECURED : WINDOW_STATE_SCREWED_TO_FLOOR
 		anchored = !unsecuring
-		air_update_turf()
+		loc?.air_update_self()
 		update_verbs()
 		return
 	if(construction_state != WINDOW_STATE_CROWBRARED_IN && construction_state != WINDOW_STATE_SECURED_TO_FRAME)
