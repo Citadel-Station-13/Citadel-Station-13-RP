@@ -121,7 +121,6 @@
 		pda.owner = text("[]", src)
 		pda.name = pda.owner + " (" + pda.ownjob + ")"
 		pda.toff = 1
-	..()
 
 /mob/living/silicon/pai/Login()
 	..()
