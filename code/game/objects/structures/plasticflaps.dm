@@ -79,3 +79,15 @@
 	name = "airtight plastic flaps"
 	desc = "Heavy duty, airtight, plastic flaps. Have extra safety installed, preventing passage of living beings."
 	CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
+
+/obj/structure/plasticflaps/mining/Initialize(mapload)
+	. = ..()
+	air_update_turf()
+
+/obj/structure/plasticflaps/mining/Destroy()
+	. = ..()
+
+
+/obj/structure/plasticflaps/mining/Moved(atom/oldloc)
+	. = ..()
+	air_update_turf_moved()

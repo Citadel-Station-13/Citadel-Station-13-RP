@@ -415,9 +415,11 @@
 	setDir(moving_right_now)
 	moving_right_now = null
 
-/obj/structure/window/Moved()
+/obj/structure/window/Moved(atom/oldloc)
 	. = ..()
-	update_nearby_tiles()
+	if(isturf(oldloc))
+		var/turf/T = oldloc
+		T.queue_zone_update()
 
 //checks if this window is full-tile one
 /obj/structure/window/proc/is_fulltile()
