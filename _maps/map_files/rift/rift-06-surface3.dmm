@@ -3478,7 +3478,7 @@
 /obj/structure/lattice,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
-	icon_state = "32-5"
+	icon_state = "32-4"
 	},
 /turf/simulated/open,
 /area/maintenance/substation/surface_three)
@@ -5029,11 +5029,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
 "jf" = (
-/obj/machinery/power/breakerbox/activated{
-	RCon_tag = "Surface - 3"
-	},
 /obj/structure/cable{
-	icon_state = "0-4"
+	icon_state = "1-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_three)
@@ -6239,8 +6236,15 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
+/obj/machinery/power/smes/buildable{
+	RCon_tag = "Substation - Surface Three";
+	cur_coils = 2
+	},
+/obj/structure/cable{
+	dir = 4
+	},
 /obj/structure/cable/green{
-	icon_state = "6-8"
+	icon_state = "0-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_three)
@@ -9094,7 +9098,8 @@
 	dir = 9
 	},
 /obj/structure/cable{
-	icon_state = "32-2"
+	icon_state = "32-2";
+	dir = sssssssssssssssssssssssssssssddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
 	},
 /turf/simulated/open,
 /area/maintenance/engineering/pumpstation)
@@ -9309,6 +9314,12 @@
 /obj/spawner/window/reinforced/full/firelocks,
 /turf/simulated/floor/plating,
 /area/crew_quarters/bar)
+"rt" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/simulated/floor/plating,
+/area/maintenance/substation/surface_three)
 "ru" = (
 /obj/machinery/door/airlock/glass_external/public{
 	name = "Public External Airlock"
@@ -11152,8 +11163,15 @@
 /turf/simulated/floor/tiled/white,
 /area/shuttle/emt/general)
 "uW" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
 /obj/structure/cable{
-	icon_state = "4-10"
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-8";
+	dir = 4
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_three)
@@ -21600,15 +21618,8 @@
 /turf/simulated/floor/tiled/steel,
 /area/hydroponics)
 "PC" = (
-/obj/machinery/power/terminal,
 /obj/structure/cable/green{
-	icon_state = "2-4"
-	},
-/obj/structure/cable{
-	icon_state = "0-8"
-	},
-/obj/structure/cable/green{
-	icon_state = "4-9"
+	icon_state = "1-4"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_three)
@@ -24599,13 +24610,16 @@
 /turf/simulated/floor/plating,
 /area/maintenance/bar/lower)
 "Vi" = (
-/obj/machinery/power/smes/buildable{
-	RCon_tag = "Substation - Surface Three";
-	cur_coils = 2
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
 	},
-/obj/structure/cable/green,
-/obj/structure/cable{
+/obj/structure/cable/green{
 	icon_state = "0-8"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_three)
@@ -25960,13 +25974,8 @@
 /turf/simulated/floor/tiled/dark,
 /area/exploration/showers)
 "XE" = (
-/obj/machinery/power/apc{
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/obj/structure/cable/green{
-	icon_state = "0-4"
+/obj/machinery/power/breakerbox/activated{
+	RCon_tag = "Surface - 3"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_three)
@@ -39429,7 +39438,7 @@ ZP
 KI
 Fm
 XE
-Lh
+rt
 ge
 Fm
 BM
@@ -39816,9 +39825,9 @@ Nw
 pH
 Xo
 Fm
-Lh
-PC
 Vi
+PC
+Lh
 Fm
 FF
 Ck
