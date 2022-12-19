@@ -32,11 +32,38 @@
 	var/glasstype = null // Set this in subtypes. Null is assumed strange osr otherwise impossible to dismantle, such as for shuttle glass.
 	var/silicate = 0 // number of units of silicate
 
-/obj/structure/window/Initialize(mapload)
+/obj/structure/window/Initialize(mapload, start_dir, constructed = FALSE)
+	. = ..(mapload)
 	/// COMPATIBILITY PATCH - Replace this crap with a better solution (maybe copy /tg/'s ASAP!!)
 	// unfortunately no longer a compatibility patch ish due to clickcode...
 	check_fullwindow()
-	return ..()
+	if (start_dir)
+		setDir(start_dir)
+	//player-constructed windows
+	if (constructed)
+		anchored = 0
+		construction_state = 0
+		update_verbs()
+	health = maxhealth
+	AIR_UPDATE_ON_INITIALIZE_AUTO
+	update_nearby_icons()
+
+/obj/structure/window/Destroy()
+	AIR_UPDATE_ON_DESTROY_AUTO
+	var/turf/location = loc
+	. = ..()
+	for(var/obj/structure/window/W in orange(location, 1))
+		W.update_icon()
+
+/obj/structure/window/Move()
+	moving_right_now = dir
+	. = ..()
+	setDir(moving_right_now)
+	moving_right_now = null
+
+/obj/structure/window/Moved(atom/oldloc)
+	. = ..()
+	AIR_UPDATE_ON_MOVED_AUTO
 
 /obj/structure/window/proc/check_fullwindow()
 	if(dir & (dir - 1))		//diagonal!
@@ -44,6 +71,8 @@
 	if(fulltile)
 		// clickcode requires this :(
 		atom_flags &= ~ATOM_BORDER
+		// update: atmos code now requires tihs :(
+		CanAtmosPass = ATMOS_PASS_AIR_BLOCKED
 
 /obj/structure/window/examine(mob/user)
 	. = ..()
@@ -386,41 +415,6 @@
 
 	return TRUE
 
-/obj/structure/window/Initialize(mapload, start_dir, constructed = FALSE)
-	. = ..(mapload)
-	if (start_dir)
-		setDir(start_dir)
-
-	//player-constructed windows
-	if (constructed)
-		anchored = 0
-		construction_state = 0
-		update_verbs()
-
-	health = maxhealth
-
-	loc?.air_update_self()
-	update_nearby_icons()
-
-/obj/structure/window/Destroy()
-	CanAtmosPass = ATMOS_PASS_NOT_BLOCKED
-	loc?.air_update_self()
-	var/turf/location = loc
-	. = ..()
-	for(var/obj/structure/window/W in orange(location, 1))
-		W.update_icon()
-
-/obj/structure/window/Move()
-	moving_right_now = dir
-	. = ..()
-	setDir(moving_right_now)
-	moving_right_now = null
-
-/obj/structure/window/Moved(atom/oldloc)
-	. = ..()
-	oldloc?.air_update_self()
-	loc?.air_update_self()
-
 //checks if this window is full-tile one
 /obj/structure/window/proc/is_fulltile()
 	return fulltile
@@ -501,7 +495,7 @@
 		user.action_feedback(SPAN_NOTICE("You [unsecuring? "unfasten" : "fasten"] the frame [unsecuring? "from" : "to"] the floor."), src)
 		construction_state = unsecuring? WINDOW_STATE_UNSECURED : WINDOW_STATE_SCREWED_TO_FLOOR
 		anchored = !unsecuring
-		loc?.air_update_self()
+		CanAtmosPass = anchored? (is_fulltile()? ATMOS_PASS_AIR_BLOCKED : ATMOS_PASS_PROC) : ATMOS_PASS_NOT_BLOCKED
 		update_verbs()
 		return
 	if(construction_state != WINDOW_STATE_CROWBRARED_IN && construction_state != WINDOW_STATE_SECURED_TO_FRAME)

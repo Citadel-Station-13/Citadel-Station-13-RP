@@ -18,17 +18,15 @@
 
 /obj/structure/plasticflaps/Initialize(mapload)
 	. = ..()
-	loc?.air_update_self()
+	AIR_UPDATE_ON_INITIALIZE_AUTO
 
 /obj/structure/plasticflaps/Destroy()
-	CanAtmosPass = ATMOS_PASS_NOT_BLOCKED
-	loc?.air_update_self()
+	AIR_UPDATE_ON_DESTROY_AUTO
 	return ..()
 
 /obj/structure/plasticflaps/Moved(atom/oldloc)
 	. = ..()
-	oldloc?.air_update_self()
-	loc?.air_update_self()
+	AIR_UPDATE_ON_MOVED_AUTO
 
 /obj/structure/plasticflaps/attackby(obj/item/P, mob/user)
 	if(P.is_wirecutter())
