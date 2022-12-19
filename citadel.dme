@@ -2653,6 +2653,8 @@
 #include "code\modules\lore_hardcoded\origin\hegemony\unathi.dm"
 #include "code\modules\lore_hardcoded\origin\oricon\_oricon.dm"
 #include "code\modules\lore_hardcoded\origin\oricon\sol.dm"
+#include "code\modules\lore_hardcoded\religion\hegemony\_hegemony.dm"
+#include "code\modules\lore_hardcoded\religion\hegemony\unathi.dm"
 #include "code\modules\mapping\map_config.dm"
 #include "code\modules\mapping\map_orientation_patterns.dm"
 #include "code\modules\mapping\minimaps.dm"
