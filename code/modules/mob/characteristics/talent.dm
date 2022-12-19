@@ -10,15 +10,15 @@ GLOBAL_LIST_INIT(characteristics_talents, _create_characteristics_talents())
  * use typepaths whenever possible for compile time!
  */
 /proc/resolve_characteristics_talent(datum/characteristic_talent/typepath_or_id)
-	if(ispath(typepath_or_id))
-		return GLOB.characteristics_talents[initial(typepath_or_id[id])]
-	ASSERT(istext(typepath_or_id))
-	return GLOB.characteristics_talents[typepath_or_id]
+	RETURN_TYPE(/datum/characteristic_talent)
+	return GLOB.characteristics_talents[ispath(typepath_or_id)? initial(typepath_or_id.id) : typepath_or_id]
 
 /**
  * barotrauma-like talents
  * these are **global singletons** to better do things like synchronization
  * make sure to gc your stuff properly on Destroy().
+ *
+ * talents default to not being there when characteristics are disabled
  */
 /datum/characteristic_talent
 	abstract_type = /datum/characteristic_talent

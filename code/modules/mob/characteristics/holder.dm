@@ -29,13 +29,13 @@
 	stats[ispath(id_or_typepath)? initial(id_or_typepath.id) : id_or_typepath] = val
 
 /datum/characteristics_holder/proc/set_skill(datum/characteristic_skill/id_or_typepath, val)
-	stats[ispath(id_or_typepath)? initial(id_or_typepath.id) : id_or_typepath] = val
+	skills[ispath(id_or_typepath)? initial(id_or_typepath.id) : id_or_typepath] = val
 
 /datum/characteristics_holder/proc/get_stat(datum/characteristic_stat/id_or_typepath)
-	return stats[ispath(id_or_typepath)? initial(id_or_typepath.id) : id_or_typepath]
+	. = stats[ispath(id_or_typepath)? initial(id_or_typepath.id) : id_or_typepath]
 
 /datum/characteristics_holder/proc/get_skill(datum/characteristic_skill/id_or_typepath)
-	return stats[ispath(id_or_typepath)? initial(id_or_typepath.id) : id_or_typepath]
+	. = skills[ispath(id_or_typepath)? initial(id_or_typepath.id) : id_or_typepath] || CHARACTER_SKILL_UNTRAINED
 
 /datum/characteristics_holder/proc/add_talent(datum/characteristic_talent/id_or_typepath, ...)
 	#warn impl
