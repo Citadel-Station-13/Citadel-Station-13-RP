@@ -63,7 +63,7 @@
 			/obj/item/gps,
 			/obj/item/radio/beacon,
 			/obj/item/robotanalyzer,
-			/obj/item/geiger,
+			/obj/item/geiger_counter,
 			/obj/item/tool,
 			/obj/item/weldingtool,
 			/obj/item/cell,

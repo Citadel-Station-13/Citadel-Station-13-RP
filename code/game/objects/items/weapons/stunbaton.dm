@@ -5,6 +5,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "stunbaton"
 	item_state = "baton"
+	rad_flags = RAD_BLOCK_CONTENTS
 	slot_flags = SLOT_BELT
 	force = 15
 	sharp = 0

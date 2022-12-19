@@ -135,6 +135,6 @@
 	if ((MUTATION_CLUMSY in user.mutations) && prob(50))
 		to_chat(user, "<span class='warning'>\The [src] slips out of your hand and hits your head.</span>")
 		user.take_organ_damage(10)
-		user.Paralyse(2)
+		user.Unconscious(2)
 		return
 	return ..()

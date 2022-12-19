@@ -607,6 +607,12 @@
 	return 1
 
 /obj/item/organ/proc/handle_organ_mod_special(var/removed = FALSE)	// Called when created, transplanted, and removed.
+	// todo: better way
+	if(owner)
+		rad_flags |= RAD_NO_CONTAMINATE
+	else
+		rad_flags &= ~RAD_NO_CONTAMINATE
+
 	if(!istype(owner))
 		return
 

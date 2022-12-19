@@ -1081,7 +1081,7 @@
 	icon_state = "engivend"
 	icon_deny = "engivend-deny"
 	req_access = list(access_engine_equip)
-	products = list(/obj/item/geiger = 4,/obj/item/clothing/glasses/meson = 2,/obj/item/multitool = 4,/obj/item/cell/high = 10,
+	products = list(/obj/item/geiger_counter = 4,/obj/item/clothing/glasses/meson = 2,/obj/item/multitool = 4,/obj/item/cell/high = 10,
 					/obj/item/airlock_electronics = 10,/obj/item/module/power_control = 10,
 					/obj/item/circuitboard/airalarm = 10,/obj/item/circuitboard/firealarm = 10,/obj/item/circuitboard/status_display = 2,
 					/obj/item/circuitboard/ai_status_display = 2,/obj/item/circuitboard/newscaster = 2,/obj/item/circuitboard/holopad = 2,

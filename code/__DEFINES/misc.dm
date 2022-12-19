@@ -413,14 +413,6 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 /// Should be sufficiently hard to achieve without a broken mouse or autoclicker while still fulfilling its intended goal.
 #define PREF_SAVELOAD_COOLDOWN	2
 
-
-// Radiation 'levels'. Used for the geiger counter, for visuals and sound. They are in different files so this goes here.
-/// Around the level at which radiation starts to become harmful
-#define RAD_LEVEL_LOW        0.5
-#define RAD_LEVEL_MODERATE   5
-#define RAD_LEVEL_HIGH      25
-#define RAD_LEVEL_VERY_HIGH 75
-
 /// Radiation will not affect a tile when below this value.
 #define RADIATION_THRESHOLD_CUTOFF	0.1
 
@@ -568,3 +560,16 @@ GLOBAL_LIST_EMPTY(##LIST_NAME);\
 #define WINDOW_STATE_CROWBRARED_IN 2
 /// window is secured to frame
 #define WINDOW_STATE_SECURED_TO_FRAME 3
+
+//! cassette tapes
+//* data list
+#define CASSETTE_TAPE_DATA_MESSAGE 1
+#define CASSETTE_TAPE_DATA_NAME 2
+#define CASSETTE_TAPE_DATA_LANGUAGE 3
+#define CASSETTE_TAPE_DATA_DELAY 4
+#define CASSETTE_TAPE_DATA_OPCODE 5
+/// list length for data reads
+#define CASSETTE_TAPE_DATA_LEN 5
+//* metadata
+#define CASSETTE_METADATA_LANGUAGE "%"
+#define CASSETTE_METADATA_NAME "^"

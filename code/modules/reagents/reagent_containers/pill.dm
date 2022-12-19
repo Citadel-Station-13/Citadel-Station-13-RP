@@ -10,6 +10,7 @@
 	item_state = "pill"
 	drop_sound = 'sound/items/drop/food.ogg'
 	pickup_sound = 'sound/items/pickup/food.ogg'
+	rad_flags = RAD_NO_CONTAMINATE
 
 	possible_transfer_amounts = null
 	w_class = ITEMSIZE_TINY
@@ -258,7 +259,7 @@
 	color = reagents.get_color()
 
 /obj/item/reagent_containers/pill/spaceacillin
-	name = "Spaceacillin (15u)"
+	name = "Spaceacillin (10u)"
 	desc = "A theta-lactam antibiotic. Effective against many diseases likely to be encountered in space."
 	icon_state = "pill3"
 

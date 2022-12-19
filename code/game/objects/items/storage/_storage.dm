@@ -720,3 +720,10 @@
 
 /obj/item/storage/AllowDrop()
 	return TRUE
+
+/obj/item/storage/clean_radiation(str, mul, cheap)
+	. = ..()
+	if(cheap)
+		return
+	for(var/atom/A as anything in contents)
+		A.clean_radiation(str, mul, cheap)

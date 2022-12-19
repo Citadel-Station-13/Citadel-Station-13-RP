@@ -24,6 +24,13 @@
 		flat_list[flat_list[i]] = TRUE
 	return flat_list
 
+/proc/make_associative_inplace_keep_values(list/flat_list)
+	for(var/i in 1 to length(flat_list))
+		if(!isnull(flat_list[flat_list[i]]))
+			continue
+		flat_list[flat_list[i]] = TRUE
+	return flat_list
+
 /proc/assoc_list_strip_value_inplace(list/input)
 	for(var/i in 1 to length(input))
 		input[input[i]] = null
