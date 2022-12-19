@@ -777,7 +777,7 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 	if(!width || !height || width < 0 || height < 0)
 		reset_temporary_view()
 		return
-	using_temporary_viewsize = FALSE
+	using_temporary_viewsize = TRUE
 	temporary_viewsize_width = width
 	temporary_viewsize_height = height
 	request_viewport_update()
