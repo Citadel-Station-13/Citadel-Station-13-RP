@@ -7,6 +7,7 @@
 	atom_flags = ATOM_HEAR
 	pass_flags_self = ATOM_PASS_MOB | ATOM_PASS_OVERHEAD_THROW
 	sight = SIGHT_FLAGS_DEFAULT
+	rad_flags = NONE
 
 //! Core
 	/// mobs use ids as ref tags instead of actual refs.
@@ -235,7 +236,6 @@
 	var/can_pull_mobs = MOB_PULL_LARGER
 
 	var/datum/dna/dna = null//?Carbon
-	var/radiation = 0 //?Carbon
 
 	var/list/mutations = list() //?Carbon
 	//see: setup.dm for list of mutations

@@ -2489,9 +2489,9 @@
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)
 "Wv" = (
-/obj/item/geiger,
-/obj/item/geiger,
-/obj/item/geiger,
+/obj/item/geiger_counter,
+/obj/item/geiger_counter,
+/obj/item/geiger_counter,
 /obj/structure/table/steel,
 /turf/simulated/floor/tiled,
 /area/lavaland/central/base/common)

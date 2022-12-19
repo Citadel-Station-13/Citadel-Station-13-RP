@@ -143,14 +143,13 @@
 			var/show_ssd
 			var/mob/living/carbon/human/H = src
 			var/datum/gender/T = GLOB.gender_datums[H.get_visible_gender()] // make sure to cast to human before using get_gender() or get_visible_gender()!
-			if(istype(H)) show_ssd = H.species.show_ssd
-			if(show_ssd && !client && !teleop)
+			if(istype(H))
+				show_ssd = H.species.show_ssd
+			if(show_ssd && !client && !teleop && (!istype(H) || !H.override_ssd))
 				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [T.him] up!"),
 					SPAN_NOTICE("You shake [src], but [T.he] [T.does] not respond... Maybe [T.he] [T.has] S.S.D?"))
 			else if(lying || src.sleeping)
 				AdjustSleeping(-5)
-				if(src.sleeping == 0)
-					src.resting = 0
 				if(H) H.in_stasis = 0
 				M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [T.him] up!"),
 					SPAN_NOTICE("You shake [src] trying to wake [T.him] up!"))
@@ -177,7 +176,7 @@
 					M.adjust_fire_stacks(-1)
 				if(M.on_fire)
 					src.IgniteMob()
-			AdjustParalysis(-3)
+			AdjustUnconscious(-3)
 			AdjustStunned(-3)
 			AdjustWeakened(-3)
 

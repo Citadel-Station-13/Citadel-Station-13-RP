@@ -11201,8 +11201,8 @@
 /turf/simulated/floor/plating,
 /area/maintenance/lower/mining)
 "OT" = (
-/obj/item/geiger,
-/obj/item/geiger,
+/obj/item/geiger_counter,
+/obj/item/geiger_counter,
 /obj/structure/table/steel_reinforced,
 /obj/machinery/alarm{
 	pixel_y = 22

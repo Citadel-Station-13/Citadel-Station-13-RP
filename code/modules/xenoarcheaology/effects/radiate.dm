@@ -4,21 +4,19 @@
 
 /datum/artifact_effect/radiate/New()
 	..()
-	radiation_amount = rand(1, 10)
+	radiation_amount = rand(RAD_INTENSITY_ANOMALY_PULSE_LOW, RAD_INTENSITY_ANOMALY_PULSE_LOW)
 	effect_type = pick(EFFECT_PARTICLE, EFFECT_ORGANIC)
 
 /datum/artifact_effect/radiate/DoEffectTouch(var/mob/living/user)
-	if(user)
-		user.apply_effect(radiation_amount * 5,IRRADIATE,0)
-		user.updatehealth()
-		return 1
+	radiation_pulse(holder, radiation_amount, RAD_FALLOFF_ANOMALY)
+	return 1
 
 /datum/artifact_effect/radiate/DoEffectAura()
 	if(holder)
-		SSradiation.flat_radiate(holder, radiation_amount, src.effectrange)
+		radiation_pulse(holder, radiation_amount, RAD_FALLOFF_ANOMALY)
 		return 1
 
 /datum/artifact_effect/radiate/DoEffectPulse()
 	if(holder)
-		SSradiation.radiate(holder, ((radiation_amount * 3) * (sqrt(src.effectrange))))
+		radiation_pulse(holder, radiation_amount, RAD_FALLOFF_ANOMALY)
 		return 1

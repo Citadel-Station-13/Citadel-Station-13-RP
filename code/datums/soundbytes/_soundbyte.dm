@@ -9,6 +9,13 @@
  * todo: in hindsight i'm shit at writing sound backend, this works but it could be a lot better.
  * todo: "is_sfx" only works to put typepaths & alias in for compiled in sounds. maybe we can have runtime soundbytes later? if needed.
  *
+ * this stuff is obviously expensive and shouldn't be used at a whim
+ *
+ * todo: refactor soundbytes; they should be resolved via get_sfx global proc
+ * todo: and automatically register their sounds in global list by id
+ * todo: have var/direct_access for this; global list lookup for sound asset is WAY cheaper than
+ * todo: subsystem resolve, use that in cases of short sounds like terminal clicks.
+ *
  * currently holds:
  * - path/file - required for preload
  * - name - defaults to filename

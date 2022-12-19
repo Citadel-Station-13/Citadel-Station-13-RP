@@ -593,12 +593,13 @@
 	return 1
 
 /obj/item/shockpaddles/standalone/checked_use(var/charge_amt)
-	SSradiation.radiate(src, charge_amt/12) //just a little bit of radiation. It's the price you pay for being powered by magic I guess
+	radiation_pulse(src, RAD_INTENSITY_STANDALONE_DEFIB)
 	return 1
 
 /obj/item/shockpaddles/standalone/process(delta_time)
 	if(fail_counter > 0)
-		SSradiation.radiate(src, fail_counter--)
+		fail_counter--
+		radiation_pulse(src, RAD_INTENSITY_STANDALONE_DEFIB_FAIL)
 	else
 		STOP_PROCESSING(SSobj, src)
 

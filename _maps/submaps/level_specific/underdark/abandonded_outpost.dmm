@@ -368,7 +368,7 @@
 /turf/simulated/floor/tiled/steel_dirty/virgo3b,
 /area/mine/explored/underdark)
 "bE" = (
-/obj/item/geiger,
+/obj/item/geiger_counter,
 /turf/simulated/mineral/floor/ignore_cavegen/virgo3b,
 /area/mine/explored/underdark)
 "DS" = (

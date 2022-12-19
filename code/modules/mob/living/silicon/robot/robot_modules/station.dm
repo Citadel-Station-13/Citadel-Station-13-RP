@@ -86,7 +86,7 @@ GLOBAL_LIST_INIT(robot_modules, list(
 	INVOKE_ASYNC(R, /mob/living/silicon/robot/proc/choose_icon, R.module_sprites.len + 1, R.module_sprites)
 
 	for(var/obj/item/I in modules)
-		ADD_TRAIT(I, TRAIT_NODROP, CYBORG_MODULE_TRAIT)
+		ADD_TRAIT(I, TRAIT_ITEM_NODROP, CYBORG_MODULE_TRAIT)
 
 /obj/item/robot_module/proc/Reset(var/mob/living/silicon/robot/R)
 	remove_camera_networks(R)
