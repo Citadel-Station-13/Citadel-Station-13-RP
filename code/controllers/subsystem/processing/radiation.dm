@@ -9,10 +9,15 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 	var/static/list/z_listeners = list()
 	/// waves about to be sent out on next tick; list [ turf = list(burst) ]
 	var/static/list/queued_waves = list()
+	/// queue not processed
+	var/list/next_wave_set = list()
 
 /datum/controller/subsystem/processing/radiation/fire(resumed)
 	if(!resumed)
 		flush_queue()
+	if(length(next_wave_set))
+		emit_waves()
+		return
 	..()
 
 /datum/controller/subsystem/processing/radiation/on_max_z_changed(old_z_count, new_z_count)
@@ -34,7 +39,14 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 	master.investigate_log(msg, INVESTIGATE_RADIATION)
 
 /datum/controller/subsystem/processing/radiation/proc/flush_queue()
-	for(var/turf/T as anything in queued_waves)
+	next_wave_set = queued_waves
+	queued_waves = list()
+
+/datum/controller/subsystem/processing/radiation/proc/emit_waves()
+	var/i
+	var/list/next_wave_set = src.next_wave_set
+	for(i in 1 to length(next_wave_set))
+		var/turf/T = next_wave_set[i]
 		var/list/radiating = get_rad_contents(T)
 		var/list/L = queued_waves[T]
 		for(var/datum/radiation_burst/B as anything in L)
@@ -77,7 +89,9 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 			new /datum/radiation_wave(T, SOUTH, intensity * insulation, B.falloff, B.highest, TRUE, B.emitter_count, left)
 			new /datum/radiation_wave(T, EAST, intensity * insulation, B.falloff, B.highest, TRUE, B.emitter_count, left)
 			new /datum/radiation_wave(T, WEST, intensity * insulation, B.falloff, B.highest, TRUE, B.emitter_count, left)
-	queued_waves.len = 0
+		if(MC_TICK_CHECK)
+			next_wave_set.Cut(1, i)
+			return
 
 /datum/controller/subsystem/processing/radiation/proc/queue_wave(turf/source, intensity, falloff, can_contaminate)
 	// if not contaminating we immediately release, pointless to keep going

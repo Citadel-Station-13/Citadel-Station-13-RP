@@ -140,7 +140,7 @@
 	zone_sel = null
 
 /// Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
-/mob/proc/show_message(msg, type, alt, alt_type)
+/mob/show_message(msg, type, alt, alt_type)
 
 	if(!client && !teleop)	return
 
