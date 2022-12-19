@@ -5,7 +5,7 @@
 
 //! Skills
 
-//? skill levels
+//? skill levels.
 #define CHARACTER_SKILL_UNTRAINED 0
 #define CHARACTER_SKILL_BASIC 1
 #define CHARACTER_SKILL_NOVICE 2
