@@ -14,8 +14,7 @@ GLOBAL_LIST_INIT(characteristics_specializations, _create_characteristics_specia
 	return GLOB.characteristics_specializations[typepath_or_id]
 
 /**
- * specializations - more enum-like numerics/whatnot than boolean-like talents
- * are held in specialization holder
+ *
  */
 /datum/characteristic_specialization
 	abstract_type = /datum/characteristic_specialization

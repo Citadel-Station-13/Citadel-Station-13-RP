@@ -36,6 +36,7 @@ GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
 	var/max_value = CHARACTER_SKILL_ENUM_MAX
 
 	//! costs
+	var/cost_multiplier = 1
 	var/cost_basic = 2
 	var/cost_novice = 4
 	var/cost_trained = 6
@@ -56,6 +57,20 @@ GLOBAL_LIST_INIT(characteristics_skills, _create_characteristics_skills())
 	#warn scaling
 
 /datum/characteristic_skill/proc/level_cost(level)
+	switch(level)
+		if(CHARACTER_SKILL_UNTRAINED)
+			return 0
+		if(CHARACTER_SKILL_BASIC)
+			. = cost_basic
+		if(CHARACTER_SKILL_NOVICE)
+			. = cost_novice
+		if(CHARACTER_SKILL_TRAINED)
+			. = cost_trained
+		if(CHARACTER_SKILL_EXPERIENCED)
+			. = cost_experienced
+		if(CHARACTER_SKILL_PROFESSIONAL)
+			. = cost_professional
+	. *= cost_multiplier
 
 /datum/characteristic_skill/proc/level_description(level)
 	switch(level)
