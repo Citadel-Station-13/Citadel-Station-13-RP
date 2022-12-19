@@ -9099,7 +9099,7 @@
 	},
 /obj/structure/cable{
 	icon_state = "32-2";
-	dir = sssssssssssssssssssssssssssssddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+	dir = 6
 	},
 /turf/simulated/open,
 /area/maintenance/engineering/pumpstation)
