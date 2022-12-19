@@ -264,7 +264,7 @@
  * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
  * for why this isn't atom/verb/examine()
  */
-/mob/verb/examinate(atom/A as mob|obj|turf in view(get_turf(src))) //It used to be oview(12), but I can't really say why
+/mob/verb/examinate(atom/A as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
 	set name = "Examine"
 	set category = "IC"
 
@@ -339,19 +339,35 @@
 	new_layer = clamp(new_layer, -100, 100)
 	set_relative_layer(new_layer)
 
-/mob/verb/shift_relative_behind(mob/M as mob in get_relative_shift_targets())
+/mob/verb/shift_relative_behind()
 	set name = "Move Behind"
 	set desc = "Move behind of a mob with the same base layer as yourself"
 	set src = usr
 	set category = "IC"
 
+	if(!client.throttle_verb())
+		return
+
+	var/mob/M = input(src, "What mob to move behind?", "Move Behind") as null|anything in get_relative_shift_targets()
+
+	if(QDELETED(M))
+		return
+
 	set_relative_layer(M.relative_layer - 1)
 
-/mob/verb/shift_relative_infront(mob/M as mob in get_relative_shift_targets())
+/mob/verb/shift_relative_infront()
 	set name = "Move Infront"
 	set desc = "Move infront of a mob with the same base layer as yourself"
 	set src = usr
 	set category = "IC"
+
+	if(!client.throttle_verb())
+		return
+
+	var/mob/M = input(src, "What mob to move behind?", "Move Behind") as null|anything in get_relative_shift_targets()
+
+	if(QDELETED(M))
+		return
 
 	set_relative_layer(M.relative_layer + 1)
 
