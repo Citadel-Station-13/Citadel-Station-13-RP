@@ -9555,6 +9555,12 @@
 "hho" = (
 /turf/simulated/wall,
 /area/quartermaster/warehouse)
+"hhv" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/simulated/open,
+/area/space)
 "hhB" = (
 /obj/machinery/atmospherics/tvalve/digital/mirrored{
 	dir = 8
@@ -10414,6 +10420,10 @@
 	},
 /turf/simulated/floor/tiled/white,
 /area/medical/patient_d)
+"hPa" = (
+/obj/machinery/light,
+/turf/simulated/open,
+/area/space)
 "hPc" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
@@ -22366,6 +22376,7 @@
 /area/rnd/rdoffice)
 "qLd" = (
 /obj/structure/railing,
+/obj/machinery/light,
 /turf/simulated/floor/reinforced,
 /area/space)
 "qLl" = (
@@ -27717,6 +27728,10 @@
 	},
 /turf/simulated/floor/tiled/techmaint,
 /area/space)
+"uEW" = (
+/obj/spawner/window/borosillicate/full/firelocks,
+/turf/simulated/floor/reinforced,
+/area/space)
 "uFd" = (
 /obj/machinery/atmospherics/pipe/simple/visible/red{
 	dir = 6
@@ -27859,6 +27874,12 @@
 /obj/machinery/portable_atmospherics/canister/phoron,
 /turf/simulated/floor/tiled/techfloor/grid,
 /area/space)
+"uLJ" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/simulated/floor/tiled/techmaint,
+/area/maintenance/deck_two/aft/port)
 "uLP" = (
 /obj/structure/closet/secure_closet/atmos_personal,
 /obj/machinery/light{
@@ -31451,6 +31472,10 @@
 	},
 /turf/simulated/floor/carpet/blue,
 /area/bridge/meeting_room)
+"xgg" = (
+/obj/machinery/light,
+/turf/simulated/floor/tiled/techmaint,
+/area/space)
 "xgj" = (
 /obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{
 	dir = 4
@@ -39472,7 +39497,7 @@ kLI
 kLI
 kLI
 mRB
-sBf
+xRi
 xRi
 pFc
 wRk
@@ -39665,8 +39690,8 @@ kLI
 kLI
 kLI
 kLI
-mRB
-sBf
+sQK
+xRi
 xRi
 tqn
 tqn
@@ -39859,8 +39884,8 @@ kLI
 kLI
 kLI
 kLI
-mRB
-sBf
+sQK
+xRi
 xRi
 wRk
 wRk
@@ -40053,8 +40078,8 @@ kLI
 kLI
 kLI
 kLI
-mRB
-sBf
+sQK
+xRi
 xRi
 wRk
 wRk
@@ -40247,8 +40272,8 @@ kLI
 kLI
 kLI
 kLI
-mRB
-sBf
+sQK
+xRi
 xRi
 tqn
 tqn
@@ -40441,8 +40466,8 @@ kLI
 kLI
 kLI
 kLI
-mRB
-sBf
+sQK
+xRi
 xRi
 pFc
 wRk
@@ -40454,7 +40479,7 @@ wRk
 pFc
 xRi
 sBf
-sBf
+xgg
 xph
 xph
 xph
@@ -40635,8 +40660,8 @@ kLI
 kLI
 kLI
 kLI
-mRB
-sBf
+sQK
+xRi
 xRi
 pFc
 pFc
@@ -40829,8 +40854,8 @@ kLI
 kLI
 kLI
 kLI
-mRB
-sBf
+sQK
+xRi
 xRi
 xRi
 xRi
@@ -40845,7 +40870,7 @@ sBf
 sBf
 aoJ
 bRO
-bRO
+hPa
 qmn
 nUf
 isT
@@ -41023,7 +41048,7 @@ kLI
 kLI
 kLI
 kLI
-mRB
+sQK
 xRi
 xRi
 xRi
@@ -41209,9 +41234,9 @@ hts
 hts
 hts
 hts
-hts
+uDM
 gZu
-kLI
+xQM
 kLI
 kLI
 kLI
@@ -41403,15 +41428,15 @@ hts
 hts
 hts
 hts
-hts
+uDM
 gZu
+xQM
 kLI
 kLI
 kLI
 kLI
 kLI
-kLI
-sQK
+mRB
 xRi
 xRi
 xRi
@@ -41597,16 +41622,16 @@ hts
 hts
 hts
 hts
-hts
+uDM
 gZu
+xQM
 kLI
 kLI
 kLI
 kLI
 kLI
-kLI
-sQK
-xRi
+mRB
+sBf
 xRi
 xRi
 xRi
@@ -41791,16 +41816,16 @@ hts
 hts
 hts
 hts
-hts
+uDM
 gZu
+xQM
 kLI
 kLI
 kLI
 kLI
 kLI
-kLI
-sQK
-xRi
+uEW
+sBf
 xRi
 xRi
 xRi
@@ -41985,16 +42010,16 @@ hts
 hts
 hts
 hts
-hts
+uDM
 gZu
+xQM
 kLI
 kLI
 kLI
 kLI
 kLI
-kLI
-sQK
-xRi
+uEW
+sBf
 xRi
 xRi
 xRi
@@ -42179,16 +42204,16 @@ hts
 hts
 hts
 hts
-hts
+uDM
 gZu
+xQM
 kLI
 kLI
 kLI
 kLI
 kLI
-kLI
-sQK
-xRi
+uEW
+sBf
 xRi
 xRi
 xRi
@@ -42200,7 +42225,7 @@ xRi
 xRi
 xRi
 sBf
-sBf
+xgg
 mRB
 nHy
 nHy
@@ -42373,16 +42398,16 @@ hts
 hts
 hts
 hts
-hts
+uDM
 gZu
+xQM
 kLI
 kLI
 kLI
 kLI
 kLI
-kLI
-sQK
-xRi
+uEW
+sBf
 xRi
 xRi
 xRi
@@ -42567,16 +42592,16 @@ hts
 hts
 hts
 hts
-hts
+uDM
 gZu
+xQM
 kLI
 kLI
 kLI
 kLI
 kLI
-kLI
-sQK
-xRi
+mRB
+sBf
 xRi
 xRi
 xRi
@@ -42761,15 +42786,15 @@ hts
 hts
 hts
 hts
-hts
+uDM
 gZu
+xQM
 kLI
 kLI
 kLI
 kLI
 kLI
-kLI
-sQK
+mRB
 xRi
 xRi
 xRi
@@ -42955,7 +42980,7 @@ hts
 hts
 hts
 hts
-kLI
+tAx
 gZu
 xQM
 kLI
@@ -42963,7 +42988,7 @@ kLI
 kLI
 kLI
 kLI
-mRB
+sQK
 xRi
 xRi
 xRi
@@ -43067,7 +43092,7 @@ kLI
 kLI
 tAx
 gZu
-kLI
+xQM
 hts
 iDG
 uMs
@@ -43149,7 +43174,7 @@ hts
 hts
 hts
 hts
-kLI
+tAx
 gZu
 xQM
 kLI
@@ -43157,8 +43182,8 @@ kLI
 kLI
 kLI
 kLI
-mRB
-sBf
+sQK
+xRi
 xRi
 xRi
 xRi
@@ -43261,7 +43286,7 @@ kLI
 kLI
 tAx
 gZu
-kLI
+xQM
 hts
 pmL
 hSV
@@ -43343,7 +43368,7 @@ hts
 hts
 hts
 hts
-kLI
+tAx
 gZu
 xQM
 kLI
@@ -43351,8 +43376,8 @@ kLI
 kLI
 kLI
 kLI
-mRB
-sBf
+sQK
+xRi
 xRi
 xRi
 xRi
@@ -43455,7 +43480,7 @@ kLI
 kLI
 tAx
 gZu
-kLI
+xQM
 hts
 wpB
 hmC
@@ -43537,7 +43562,7 @@ hts
 hts
 hts
 hts
-kLI
+tAx
 gZu
 xQM
 kLI
@@ -43545,8 +43570,8 @@ kLI
 kLI
 kLI
 kLI
-mRB
-sBf
+sQK
+xRi
 xRi
 xRi
 xRi
@@ -43649,7 +43674,7 @@ kLI
 kLI
 tAx
 gZu
-kLI
+xQM
 hts
 fSY
 flD
@@ -43731,7 +43756,7 @@ hts
 hts
 hts
 hts
-kLI
+tAx
 gZu
 xQM
 kLI
@@ -43739,8 +43764,8 @@ kLI
 kLI
 kLI
 kLI
-mRB
-sBf
+sQK
+xRi
 xRi
 xRi
 xRi
@@ -43843,7 +43868,7 @@ kLI
 kLI
 tAx
 gZu
-kLI
+xQM
 hts
 eZJ
 hHr
@@ -43925,7 +43950,7 @@ hts
 hts
 hts
 hts
-kLI
+tAx
 gZu
 xQM
 kLI
@@ -43933,8 +43958,8 @@ kLI
 kLI
 kLI
 kLI
-mRB
-sBf
+sQK
+xRi
 xRi
 xRi
 xRi
@@ -44037,7 +44062,7 @@ kLI
 kLI
 tAx
 gZu
-kLI
+xQM
 hts
 hts
 hts
@@ -44119,7 +44144,7 @@ hts
 hts
 hts
 hts
-kLI
+tAx
 gZu
 xQM
 kLI
@@ -44127,8 +44152,8 @@ kLI
 kLI
 kLI
 kLI
-mRB
-sBf
+sQK
+xRi
 xRi
 xRi
 xRi
@@ -44231,7 +44256,7 @@ kLI
 kLI
 tAx
 gZu
-kLI
+xQM
 hts
 hts
 hts
@@ -44313,7 +44338,7 @@ hts
 hts
 hts
 hts
-kLI
+tAx
 gZu
 xQM
 kLI
@@ -44321,8 +44346,8 @@ kLI
 kLI
 kLI
 kLI
-mRB
-sBf
+sQK
+xRi
 xRi
 xRi
 xRi
@@ -44425,7 +44450,7 @@ kLI
 kLI
 tAx
 gZu
-kLI
+xQM
 hts
 hts
 hts
@@ -44507,7 +44532,7 @@ hts
 hts
 hts
 hts
-kLI
+tAx
 gZu
 xQM
 kLI
@@ -44515,8 +44540,8 @@ kLI
 kLI
 kLI
 kLI
-mRB
-sBf
+sQK
+xRi
 xRi
 xRi
 xRi
@@ -44619,7 +44644,7 @@ kLI
 kLI
 tAx
 gZu
-kLI
+xQM
 hts
 hts
 hts
@@ -44701,7 +44726,7 @@ hts
 hts
 hts
 kLI
-kLI
+tAx
 gZu
 xQM
 kLI
@@ -44710,7 +44735,7 @@ kLI
 kLI
 kLI
 mRB
-sBf
+xRi
 xRi
 xRi
 xRi
@@ -44813,7 +44838,7 @@ kLI
 kLI
 tAx
 gZu
-kLI
+xQM
 kLI
 hts
 hts
@@ -44895,7 +44920,7 @@ hts
 hts
 kLI
 kLI
-kLI
+tAx
 gZu
 xQM
 kLI
@@ -45007,7 +45032,7 @@ kLI
 kLI
 tAx
 gZu
-kLI
+xQM
 kLI
 kLI
 hts
@@ -45089,7 +45114,7 @@ hts
 kLI
 kLI
 kLI
-kLI
+tAx
 gZu
 xQM
 kLI
@@ -45201,7 +45226,7 @@ kLI
 kLI
 tAx
 gZu
-kLI
+xQM
 kLI
 kLI
 kLI
@@ -45283,7 +45308,7 @@ kLI
 kLI
 kLI
 kLI
-kLI
+tAx
 gZu
 xQM
 kLI
@@ -45395,7 +45420,7 @@ kLI
 kLI
 tAx
 gZu
-kLI
+xQM
 kLI
 kLI
 kLI
@@ -45477,7 +45502,7 @@ kLI
 kLI
 kLI
 kLI
-kLI
+tAx
 gZu
 xQM
 kLI
@@ -45589,7 +45614,7 @@ kLI
 kLI
 uuF
 gZu
-kLI
+xQM
 kLI
 kLI
 kLI
@@ -45671,7 +45696,7 @@ kLI
 kLI
 kLI
 kLI
-kLI
+tAx
 gZu
 xQM
 kLI
@@ -45686,7 +45711,7 @@ sBf
 sBf
 rHE
 bRO
-bRO
+hhv
 bRO
 dXX
 sBf
@@ -45783,7 +45808,7 @@ kLI
 kLI
 tAx
 gZu
-kLI
+xQM
 kLI
 kLI
 kLI
@@ -45865,7 +45890,7 @@ kLI
 kLI
 kLI
 kLI
-kLI
+tAx
 gZu
 xQM
 kLI
@@ -45977,7 +46002,7 @@ kLI
 kLI
 tAx
 gZu
-kLI
+xQM
 kLI
 kLI
 kLI
@@ -46171,7 +46196,7 @@ mRB
 mRB
 wvw
 gZu
-kLI
+xQM
 kLI
 kLI
 kLI
@@ -46365,7 +46390,7 @@ yao
 yao
 mRB
 gZu
-kLI
+xQM
 kLI
 kLI
 kLI
@@ -46559,7 +46584,7 @@ yao
 yao
 mRB
 gZu
-kLI
+xQM
 kLI
 kLI
 kLI
@@ -46661,7 +46686,7 @@ eNF
 cyd
 eNF
 eNF
-qQp
+uLJ
 qQp
 azT
 fkE
@@ -46753,7 +46778,7 @@ yao
 yao
 mRB
 gZu
-kLI
+xQM
 kLI
 kLI
 kLI
@@ -46947,7 +46972,7 @@ yao
 yao
 mRB
 gZu
-kLI
+xQM
 kLI
 kLI
 kLI
@@ -47141,7 +47166,7 @@ mRB
 yao
 mRB
 gZu
-kLI
+xQM
 kLI
 kLI
 kLI
@@ -47335,7 +47360,7 @@ tKL
 mRB
 mRB
 gZu
-kLI
+xQM
 kLI
 kLI
 hts
@@ -47529,7 +47554,7 @@ tKL
 gZu
 gZu
 gZu
-kLI
+xQM
 kLI
 hts
 hts
@@ -47723,7 +47748,7 @@ tKL
 kLI
 kLI
 kLI
-kLI
+xQM
 hts
 hts
 hts
