@@ -9386,10 +9386,6 @@
 	pixel_x = -2;
 	pixel_y = -2
 	},
-/obj/item/storage/box/body_record_disk{
-	pixel_x = 6;
-	pixel_y = -4
-	},
 /obj/structure/table/reinforced,
 /obj/effect/floor_decal/corner/paleblue{
 	dir = 10
