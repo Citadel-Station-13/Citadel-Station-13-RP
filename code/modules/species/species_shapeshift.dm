@@ -108,8 +108,8 @@ var/list/wrapped_species_by_ref = list()
 	var/list/valid_hairstyles = list()
 	var/list/valid_facialhairstyles = list()
 	var/list/valid_gradstyles = GLOB.hair_gradients
-	for(var/hairstyle in hair_styles_list)
-		var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
+	for(var/hairstyle in GLOB.legacy_hair_lookup)
+		var/datum/sprite_accessory/S = GLOB.legacy_hair_lookup[hairstyle]
 		if(gender == MALE && S.gender == FEMALE)
 			continue
 		if(gender == FEMALE && S.gender == MALE)
@@ -117,8 +117,8 @@ var/list/wrapped_species_by_ref = list()
 		if(S.apply_restrictions && !(species.get_bodytype_legacy(src) in S.species_allowed))
 			continue
 		valid_hairstyles += hairstyle
-	for(var/facialhairstyle in facial_hair_styles_list)
-		var/datum/sprite_accessory/S = facial_hair_styles_list[facialhairstyle]
+	for(var/facialhairstyle in GLOB.legacy_facial_hair_lookup)
+		var/datum/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[facialhairstyle]
 		if(gender == MALE && S.gender == FEMALE)
 			continue
 		if(gender == FEMALE && S.gender == MALE)
@@ -303,8 +303,8 @@ var/list/wrapped_species_by_ref = list()
 	last_special = world.time + 10
 	// Construct the list of names allowed for this user.
 	var/list/pretty_ear_styles = list("Normal" = null)
-	for(var/path in ear_styles_list)
-		var/datum/sprite_accessory/ears/instance = ear_styles_list[path]
+	for(var/path in GLOB.legacy_ears_lookup)
+		var/datum/sprite_accessory/ears/instance = GLOB.legacy_ears_lookup[path]
 		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
 			pretty_ear_styles[instance.name] = path
 
@@ -314,7 +314,7 @@ var/list/wrapped_species_by_ref = list()
 		return
 
 	//Set new style
-	ear_style = ear_styles_list[pretty_ear_styles[new_ear_style]]
+	ear_style = GLOB.legacy_ears_lookup[pretty_ear_styles[new_ear_style]]
 
 	//Allow color picks
 	var/current_pri_color = rgb(r_ears,g_ears,b_ears)
@@ -347,6 +347,60 @@ var/list/wrapped_species_by_ref = list()
 
 	update_hair() //Includes Virgo ears
 
+/mob/living/carbon/human/proc/shapeshifter_select_horns()
+	set name = "Select Secondary Ears"
+	set category = "Abilities"
+
+	if(stat || world.time < last_special)
+		return
+
+	last_special = world.time + 10
+	// Construct the list of names allowed for this user.
+	var/list/pretty_horn_styles = list("Normal" = null)
+	for(var/path in GLOB.legacy_ears_lookup)
+		var/datum/sprite_accessory/ears/instance = GLOB.legacy_ears_lookup[path]
+		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
+			pretty_horn_styles[instance.name] = path
+
+	// Present choice to user
+	var/new_horn_style = tgui_input_list(src, "Pick some secondary ears!", "Character Preference", pretty_horn_styles)
+	if(!new_horn_style)
+		return
+
+	//Set new style
+	horn_style = GLOB.legacy_ears_lookup[pretty_horn_styles[new_horn_style]]
+
+	//Allow color picks
+	var/current_pri_color = rgb(r_horn,g_horn,b_horn)
+
+	var/new_pri_color = input("Pick primary ear color:","Ear Color (Pri)", current_pri_color) as null|color
+	if(new_pri_color)
+		var/list/new_color_rgb_list = hex2rgb(new_pri_color)
+		r_horn = new_color_rgb_list[1]
+		g_horn = new_color_rgb_list[2]
+		b_horn = new_color_rgb_list[3]
+
+		//Indented inside positive primary color choice, don't bother if they clicked cancel
+		var/current_sec_color = rgb(r_horn2,g_horn2,b_horn2)
+
+		var/new_sec_color = input("Pick secondary ear color (only applies to some ears):","Ear Color (sec)", current_sec_color) as null|color
+		if(new_sec_color)
+			new_color_rgb_list = hex2rgb(new_sec_color)
+			r_horn2 = new_color_rgb_list[1]
+			g_horn2 = new_color_rgb_list[2]
+			b_horn2 = new_color_rgb_list[3]
+
+		var/current_ter_color = rgb(r_horn3,g_horn3,b_horn3)
+
+		var/new_ter_color = input("Pick tertiary ear color (only applies to some ears):","Ear Color (sec)", current_ter_color) as null|color
+		if(new_ter_color)
+			new_color_rgb_list = hex2rgb(new_sec_color)
+			r_horn3 = new_color_rgb_list[1]
+			g_horn3 = new_color_rgb_list[2]
+			b_horn3 = new_color_rgb_list[3]
+
+	update_hair() //Includes Virgo ears
+
 /mob/living/carbon/human/proc/shapeshifter_select_tail()
 	set name = "Select Tail"
 	set category = "Abilities"
@@ -357,8 +411,8 @@ var/list/wrapped_species_by_ref = list()
 	last_special = world.time + 10
 	// Construct the list of names allowed for this user.
 	var/list/pretty_tail_styles = list("Normal" = null)
-	for(var/path in tail_styles_list)
-		var/datum/sprite_accessory/tail/instance = tail_styles_list[path]
+	for(var/path in GLOB.legacy_tail_lookup)
+		var/datum/sprite_accessory/tail/instance = GLOB.legacy_tail_lookup[path]
 		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
 			pretty_tail_styles[instance.name] = path
 
@@ -368,7 +422,7 @@ var/list/wrapped_species_by_ref = list()
 		return
 
 	//Set new style
-	tail_style = tail_styles_list[pretty_tail_styles[new_tail_style]]
+	tail_style = GLOB.legacy_tail_lookup[pretty_tail_styles[new_tail_style]]
 
 	//Allow color picks
 	var/current_pri_color = rgb(r_tail,g_tail,b_tail)
@@ -411,8 +465,8 @@ var/list/wrapped_species_by_ref = list()
 	last_special = world.time + 10
 	// Construct the list of names allowed for this user.
 	var/list/pretty_wing_styles = list("None" = null)
-	for(var/path in wing_styles_list)
-		var/datum/sprite_accessory/wing/instance = wing_styles_list[path]
+	for(var/path in GLOB.legacy_wing_lookup)
+		var/datum/sprite_accessory/wing/instance = GLOB.legacy_wing_lookup[path]
 		if((!instance.ckeys_allowed) || (ckey in instance.ckeys_allowed))
 			pretty_wing_styles[instance.name] = path
 
@@ -422,7 +476,7 @@ var/list/wrapped_species_by_ref = list()
 		return
 
 	//Set new style
-	wing_style = wing_styles_list[pretty_wing_styles[new_wing_style]]
+	wing_style = GLOB.legacy_wing_lookup[pretty_wing_styles[new_wing_style]]
 
 	//Allow color picks
 	var/current_color = rgb(r_wing,g_wing,b_wing)

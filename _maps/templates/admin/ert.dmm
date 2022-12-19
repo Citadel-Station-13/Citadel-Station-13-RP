@@ -4400,10 +4400,10 @@
 /area/ship/ert/armoury_dl)
 "HC" = (
 /obj/structure/closet/crate/medical,
-/obj/item/storage/mre/menu11,
-/obj/item/storage/mre/menu11,
-/obj/item/storage/mre/menu11,
-/obj/item/storage/mre/menu11,
+/obj/item/storage/single_use/mre/menu11,
+/obj/item/storage/single_use/mre/menu11,
+/obj/item/storage/single_use/mre/menu11,
+/obj/item/storage/single_use/mre/menu11,
 /obj/item/stack/nanopaste/advanced,
 /obj/item/stack/nanopaste/advanced,
 /obj/item/stack/nanopaste/advanced,

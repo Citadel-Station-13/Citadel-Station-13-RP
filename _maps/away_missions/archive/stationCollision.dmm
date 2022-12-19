@@ -58,12 +58,6 @@
 	},
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
-"as" = (
-/obj/machinery/power/solar_control{
-	stat = 1
-	},
-/turf/simulated/floor,
-/area/awaymission/northblock)
 "at" = (
 /obj/machinery/power/solar_control,
 /turf/simulated/floor,
@@ -781,15 +775,11 @@
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "dy" = (
-/obj/machinery/message_server{
-	stat = 1
-	},
+/obj/machinery/message_server,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "dz" = (
-/obj/machinery/computer/message_monitor{
-	stat = 1
-	},
+/obj/machinery/computer/message_monitor,
 /turf/simulated/floor/airless,
 /area/awaymission/northblock)
 "dB" = (
@@ -1148,9 +1138,7 @@
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "eX" = (
-/obj/machinery/r_n_d/server{
-	stat = 1
-	},
+/obj/machinery/r_n_d/server,
 /turf/simulated/floor/airless,
 /area/awaymission/research)
 "fb" = (
@@ -5248,7 +5236,7 @@ aa
 aa
 aa
 aj
-as
+at
 ap
 ap
 aL

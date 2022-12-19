@@ -272,7 +272,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 		I.dir = dir
 
 	// Show the overlay to the clients
-	flick_overlay(I, viewing, 5, TRUE) // 5 ticks/half a second
+	flick_overlay(I, viewing, 5) // 5 ticks/half a second
 
 	// Set the direction of the icon animation.
 	var/direction = get_dir(src, A)

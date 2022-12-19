@@ -1,15 +1,15 @@
 /atom/movable/lighting_object
-	name			= ""
-	anchored		= TRUE
-	flags			= ATOM_ABSTRACT
+	name = ""
+	anchored = TRUE
+	atom_flags = ATOM_ABSTRACT
 
-	icon			= LIGHTING_ICON
-	icon_state		= "transparent"
-	color			= null //we manually set color in init instead
-	plane			= LIGHTING_PLANE
-	mouse_opacity	= MOUSE_OPACITY_TRANSPARENT
-	layer			= LIGHTING_LAYER
-	invisibility	= INVISIBILITY_LIGHTING
+	icon = LIGHTING_ICON
+	icon_state = "transparent"
+	color = null //we manually set color in init instead
+	plane = LIGHTING_PLANE
+	layer = LIGHTING_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	invisibility = INVISIBILITY_LIGHTING
 
 	var/needs_update = FALSE
 	var/turf/myturf
@@ -33,9 +33,9 @@
 	needs_update = TRUE
 	GLOB.lighting_update_objects += src
 
-/atom/movable/lighting_object/Destroy(var/force)
+/atom/movable/lighting_object/Destroy(force)
 	if (force)
-		GLOB.lighting_update_objects     -= src
+		GLOB.lighting_update_objects -= src
 		if (loc != myturf)
 			var/turf/oldturf = get_turf(myturf)
 			var/turf/newturf = get_turf(loc)
@@ -71,10 +71,16 @@
 	// See LIGHTING_CORNER_DIAGONAL in lighting_corner.dm for why these values are what they are.
 	var/static/datum/lighting_corner/dummy/dummy_lighting_corner = new
 
-	var/datum/lighting_corner/cr = myturf.lc_bottomleft || dummy_lighting_corner
+#ifdef VISUALIZE_LIGHT_UPDATES
+	myturf.add_atom_colour(LIGHT_COLOR_LIGHT_CYAN, ADMIN_COLOUR_PRIORITY)
+	animate(myturf, 10, color = null)
+	addtimer(CALLBACK(myturf, /atom/proc/remove_atom_colour, ADMIN_COLOUR_PRIORITY, LIGHT_COLOR_LIGHT_CYAN), 10, TIMER_UNIQUE|TIMER_OVERRIDE)
+#endif
+
+	var/datum/lighting_corner/cr = myturf.lc_bottomleft  || dummy_lighting_corner
 	var/datum/lighting_corner/cg = myturf.lc_bottomright || dummy_lighting_corner
-	var/datum/lighting_corner/cb = myturf.lc_topleft || dummy_lighting_corner
-	var/datum/lighting_corner/ca = myturf.lc_topright || dummy_lighting_corner
+	var/datum/lighting_corner/cb = myturf.lc_topleft     || dummy_lighting_corner
+	var/datum/lighting_corner/ca = myturf.lc_topright    || dummy_lighting_corner
 
 	var/max = max(cr.cache_mx, cg.cache_mx, cb.cache_mx, ca.cache_mx)
 

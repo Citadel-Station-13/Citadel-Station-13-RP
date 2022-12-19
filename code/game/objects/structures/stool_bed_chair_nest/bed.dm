@@ -43,7 +43,8 @@
 /obj/structure/bed/update_icon()
 	// Prep icon.
 	icon_state = ""
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	// Base icon.
 	var/cache_key = "[base_icon]-[material.name]"
 	if(isnull(stool_cache[cache_key]))
@@ -51,7 +52,7 @@
 		if(applies_material_colour)
 			I.color = material.icon_colour
 		stool_cache[cache_key] = I
-	overlays |= stool_cache[cache_key]
+	overlays_to_add += stool_cache[cache_key]
 	// Padding overlay.
 	if(padding_material)
 		var/padding_cache_key = "[base_icon]-padding-[padding_material.name]"
@@ -59,7 +60,7 @@
 			var/image/I =  image(icon, "[base_icon]_padding")
 			I.color = padding_material.icon_colour
 			stool_cache[padding_cache_key] = I
-		overlays |= stool_cache[padding_cache_key]
+		overlays_to_add += stool_cache[padding_cache_key]
 	// Strings.
 	desc = initial(desc)
 	if(padding_material)
@@ -68,6 +69,8 @@
 	else
 		name = "[material.display_name] [initial(name)]"
 		desc += " It's made of [material.use_name]."
+
+	add_overlay(overlays_to_add)
 
 /obj/structure/bed/legacy_ex_act(severity)
 	switch(severity)
@@ -197,7 +200,7 @@
 /obj/structure/bed/roller
 	name = "roller bed"
 	desc = "A portable bed-on-wheels made for transporting medical patients."
-	icon = 'icons/obj/rollerbed.dmi'
+	icon = 'icons/obj/medical/rollerbed.dmi'
 	icon_state = "rollerbed"
 	base_icon_state = "rollerbed"
 	anchored = FALSE
@@ -266,7 +269,7 @@
 /obj/item/roller
 	name = "roller bed"
 	desc = "A collapsed roller bed that can be carried around."
-	icon = 'icons/obj/rollerbed.dmi'
+	icon = 'icons/obj/medical/rollerbed.dmi'
 	icon_state = "folded_rollerbed"
 	slot_flags = SLOT_BACK
 	w_class = ITEMSIZE_LARGE
@@ -303,7 +306,7 @@
 /obj/item/roller_holder
 	name = "roller bed rack"
 	desc = "A rack for carrying a collapsed roller bed."
-	icon = 'icons/obj/rollerbed.dmi'
+	icon = 'icons/obj/medical/rollerbed.dmi'
 	icon_state = "rollerbed"
 	var/obj/item/roller/held
 

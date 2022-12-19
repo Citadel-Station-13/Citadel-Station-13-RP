@@ -367,12 +367,12 @@
 /turf/simulated/shuttle/floor/darkred/airless,
 /area/submap/debrisfield_vr/misc_debris)
 "bd" = (
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
 /obj/structure/closet/crate,
 /turf/simulated/shuttle/floor/darkred/airless,
 /area/submap/debrisfield_vr/misc_debris)

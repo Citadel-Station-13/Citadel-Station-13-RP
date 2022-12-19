@@ -39,11 +39,11 @@
 			"icon" = 'icons/mob/screen_gen.dmi',
 			"icon_state" = "[is_left_hand? "l_hand" : "r_hand"]_hud_handcuffs"
 		)
-	overlays.Cut()
+	cut_overlays()
 	if(iscarbon(hud?.mymob))
 		var/mob/living/carbon/C = hud.mymob
 		if(C.handcuffed)
-			overlays += handcuff_overlay
+			add_overlay(handcuff_overlay)
 
 /atom/movable/screen/inventory/hand/left
 	name = "l_hand"

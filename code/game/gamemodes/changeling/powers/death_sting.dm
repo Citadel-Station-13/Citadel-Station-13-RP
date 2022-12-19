@@ -16,7 +16,7 @@
 	add_attack_logs(src,T,"Death sting (changeling)")
 	to_chat(T, "<span class='danger'>You feel a small prick and your chest becomes tight.</span>")
 	T.silent = 10
-	T.Paralyse(10)
+	T.Unconscious(10)
 	T.make_jittery(100)
 	if(T.reagents)	T.reagents.add_reagent("lexorin", 40)
 	feedback_add_details("changeling_powers","DTHS")

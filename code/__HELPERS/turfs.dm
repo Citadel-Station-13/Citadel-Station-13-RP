@@ -16,7 +16,7 @@
 
 /proc/turf_clear(turf/T)
 	for(var/atom/A in T)
-		if(!(A.flags & ATOM_ABSTRACT))
+		if(!(A.atom_flags & ATOM_ABSTRACT))
 			return 0
 	return 1
 
@@ -76,7 +76,7 @@
 
 		var/turf/target = locate(dst_origin.x + x_pos, dst_origin.y + y_pos, dst_origin.z + z_pos)
 		if(!target)
-			log_debug("Null turf in translation @ ([dst_origin.x + x_pos], [dst_origin.y + y_pos], [dst_origin.z + z_pos])")
+			log_debug(SPAN_DEBUGERROR("Null turf in translation @ ([dst_origin.x + x_pos], [dst_origin.y + y_pos], [dst_origin.z + z_pos] [ADMIN_JMP(dst_origin)])"))
 		// If target is null, preserve that information in the turf map.
 		turf_map[source] = target
 
@@ -103,7 +103,7 @@
 
 	// You can stay, though.
 	if (istype(Origin, /turf/space))
-		log_debug("Tried to translate a space turf: src=[log_info_line(Origin)] dst=[log_info_line(Destination)]")
+		log_debug(SPAN_DEBUGERROR("Tried to translate a space turf: src=[log_info_line(Origin)][ADMIN_JMP(Origin)] dst=[log_info_line(Destination)][ADMIN_JMP(Destination)]"))
 		return FALSE	// TODO - Is this really okay to do nothing?
 
 	var/turf/X	// New Destination Turf
@@ -136,7 +136,7 @@
 
 	// Move the objects. Not forceMove because the object isn't "moving" really, it's supposed to be on the "same" turf.
 	for(var/obj/O in Origin)
-		if(O.flags & ATOM_ABSTRACT)
+		if(O.atom_flags & ATOM_ABSTRACT)
 			continue
 		O.loc = X
 		O.update_light()
@@ -146,7 +146,7 @@
 
 	// Move the mobs unless it's an AI eye or other eye type.
 	for(var/mob/M in Origin)
-		if (M.flags & ATOM_ABSTRACT)
+		if (M.atom_flags & ATOM_ABSTRACT)
 			continue
 		if (isEye(M))
 			// If we need to check for more mobs, I'll add a variable.
@@ -174,7 +174,7 @@
  * This assumes that the atom is located inside the target turf.
  */
 /atom/proc/is_between_turfs(turf/origin, turf/target)
-	if (flags & ON_BORDER)
+	if (atom_flags & ATOM_BORDER)
 		var/testdir = get_dir(target, origin)
 		return (dir & testdir)
 	return TRUE

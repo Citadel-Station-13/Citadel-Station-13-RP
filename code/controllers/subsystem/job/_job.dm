@@ -193,4 +193,4 @@ SUBSYSTEM_DEF(job)
 
 /datum/controller/subsystem/job/proc/job_debug_message(message)
 	if(debug_messages)
-		log_debug("JOB DEBUG: [message]")
+		log_debug(SPAN_DEBUG("JOB DEBUG: [message]"))

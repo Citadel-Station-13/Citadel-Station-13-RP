@@ -70,6 +70,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	requires_power = 0
 	area_flags = AREA_RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
+	area_limited_icon_smoothing = /area/shuttle
 
 /area/shuttle/arrival
 	name = "\improper Arrival Shuttle"
@@ -269,19 +270,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Courser Vessel Battery"
 
 
-// Pirate Skiff
-/area/shuttle/pirate
-	requires_power = 1
-	icon_state = "shuttle2"
-
-/area/shuttle/pirate/general
-	name = "\improper Pirate Skiff Shuttle"
-
-/area/shuttle/pirate/cockpit
-	name = "\improper Pirate Skiff Shuttle Cockpit"
-
-/area/shuttle/pirate/cargo
-	name = "\improper Pirate Skiff Shuttle Cockpit"
 
 // Civilian Transport
 /area/shuttle/civvie
@@ -1776,12 +1764,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/vacant/vacant_restaurant_upper
 	name = "\improper Vacant Restaurant"
 	icon_state = "vacant_site"
-	flags = null
 
 /area/vacant/vacant_restaurant_lower
 	name = "\improper Vacant Restaurant"
 	icon_state = "vacant_site"
-	flags = null
 
 /area/vacant/vacant_office
 	name = "\improper Vacant Office"

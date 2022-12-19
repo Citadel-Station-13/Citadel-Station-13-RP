@@ -102,13 +102,18 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	w_class = ITEMSIZE_NO_CONTAINER
 	layer = UNDER_JUNK_LAYER
+	// todo: don't block rad contents and just have component parts be unable to be contaminated while inside
+	// todo: wow rad contents is a weird system
+	rad_flags = RAD_BLOCK_CONTENTS
 
 	var/machine_stat = 0
 	var/emagged = FALSE
+	/**
+	 * USE_POWER_OFF = dont run the auto
+	 * USE_POWER_IDLE = run auto, use idle
+	 * USE_POWER_ACTIVE = run auto, use active
+	 */
 	var/use_power = USE_POWER_IDLE
-		//0 = dont run the auto
-		//1 = run auto, use idle
-		//2 = run auto, use active
 	/// idle power usage in watts
 	var/idle_power_usage = 0
 	/// active power usage in watts
@@ -456,7 +461,8 @@
 
 /obj/machinery/proc/dismantle()
 	playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
-	//TFF 3/6/19 - port Cit RP fix of infinite frames. If it doesn't have a circuit board, don't create a frame. Return a smack instead. BONK!
+	on_deconstruction()
+	// If it doesn't have a circuit board, don't create a frame. Return a smack instead. BONK!
 	if(!circuit)
 		return 0
 	var/obj/structure/frame/A = new /obj/structure/frame(src.loc)
@@ -501,3 +507,39 @@
 	M.after_deconstruct(src)
 	qdel(src)
 	return 1
+
+//called on machinery construction (i.e from frame to machinery) but not on initialization
+// /obj/machinery/proc/on_construction() //! Not used yet.
+// 	return
+
+//called on deconstruction before the final deletion
+/obj/machinery/proc/on_deconstruction()
+	return
+
+/**
+ * Puts passed object in to user's hand
+ *
+ * Puts the passed object in to the users hand if they are adjacent.
+ * If the user is not adjacent then place the object on top of the machine.
+ *
+ * Vars:
+ * * object (obj) The object to be moved in to the users hand.
+ * * user (mob/living) The user to recive the object
+ */
+/obj/machinery/proc/try_put_in_hand(obj/object, mob/living/user)
+	if(!issilicon(user) && in_range(src, user))
+		user.grab_item_from_interacted_with(object, src)
+		// todo: probably split this proc into something that isn't try
+		// because if this fails and something nulls, something bad happens
+		// i bandaided this to drop location but that's inflexible
+	else
+		object.forceMove(drop_location())
+
+/// Adjust item drop location to a 3x3 grid inside the tile, returns slot id from 0 to 8.
+/obj/machinery/proc/adjust_item_drop_location(atom/movable/dropped_atom)
+	var/md5 = md5(dropped_atom.name) // Oh, and it's deterministic too. A specific item will always drop from the same slot.
+	for (var/i in 1 to 32)
+		. += hex2num(md5[i])
+	. = . % 9
+	dropped_atom.pixel_x = -8 + ((.%3)*8)
+	dropped_atom.pixel_y = -8 + (round( . / 3)*8)

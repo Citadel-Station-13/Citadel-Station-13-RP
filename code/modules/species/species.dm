@@ -18,9 +18,10 @@
  * - A global cache of species by typepath will still be maintained for "static" usages of these datums, like for preferences rendering.
  */
 /datum/species
+	/// Abstract type.
+	abstract_type = /datum/species
+
 	//! Intrinsics
-	/// abstract type
-	var/abstract_type = /datum/species
 	/// uid - **must be unique**
 	var/uid
 	/// if we're a subspecies, real id
@@ -155,6 +156,7 @@
 	/// Name for the species' blood.
 	var/blood_name = "blood"
 	/// Initial blood volume.
+	/// TODO: Put this on living so this is moreso an override. @Zandario
 	var/blood_volume = 560
 	/// Multiplier for how fast a species bleeds out. Higher = Faster
 	var/bloodloss_rate = 1

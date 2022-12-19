@@ -281,18 +281,25 @@ var/global/list/additional_antag_types = list()
 		)
 	command_announcement.Announce("The presence of [pick(reasons)] in the region is tying up all available local emergency resources; emergency response teams cannot be called at this time, and post-evacuation recovery efforts will be substantially delayed.","Emergency Transmission")
 
-/datum/game_mode/proc/check_finished()
+/datum/game_mode/proc/check_finished(force_ending) // To be called by SSticker
+	if(!SSticker.setup_done)
+		return FALSE
 	if(SSemergencyshuttle.returned() || station_was_nuked)
-		return 1
+		return TRUE
+	if(station_was_nuked)
+		return TRUE
+
 	if(end_on_antag_death && antag_templates && antag_templates.len)
 		for(var/datum/antagonist/antag in antag_templates)
 			if(!antag.antags_are_dead())
-				return 0
+				return FALSE
 		if(config_legacy.continous_rounds)
-			SSemergencyshuttle.auto_recall = 0
-			return 0
-		return 1
-	return 0
+			SSemergencyshuttle.auto_recall = FALSE
+			return FALSE
+		return TRUE
+
+	if(force_ending)
+		return TRUE
 
 /datum/game_mode/proc/cleanup()	//This is called when the round has ended but not the game, if any cleanup would be necessary in that case.
 	return
@@ -390,7 +397,7 @@ var/global/list/additional_antag_types = list()
 			if(istype(player, /mob/observer/dead) && !ghosts_only)
 				continue
 			if(!role || (player.client.prefs.be_special & role))
-				log_debug("[player.key] had [antag_id] enabled, so we are drafting them.")
+				log_debug(SPAN_DEBUG("[player.key] had [antag_id] enabled, so we are drafting them."))
 				candidates |= player.mind
 	else
 		// Assemble a list of active players without jobbans.
@@ -401,7 +408,7 @@ var/global/list/additional_antag_types = list()
 		// Get a list of all the people who want to be the antagonist for this round
 		for(var/mob/new_player/player in players)
 			if(!role || (player.client.prefs.be_special & role))
-				log_debug("[player.key] had [antag_id] enabled, so we are drafting them.")
+				log_debug(SPAN_DEBUG("[player.key] had [antag_id] enabled, so we are drafting them."))
 				candidates += player.mind
 				players -= player
 
@@ -411,7 +418,7 @@ var/global/list/additional_antag_types = list()
 		if(candidates.len < required_enemies)
 			for(var/mob/new_player/player in players)
 				if(player.ckey in round_voters)
-					log_debug("[player.key] voted for this round, so we are drafting them.")
+					log_debug(SPAN_DEBUG("[player.key] voted for this round, so we are drafting them."))
 					candidates += player.mind
 					players -= player
 					break

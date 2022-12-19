@@ -310,10 +310,14 @@
 		if ("clap")
 			if (!src.restrained())
 				message = "claps."
-				playsound(src.loc, 'sound/misc/clapping.ogg')
-				m_type = 2
-				if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
-					m_type = 1
+				var/use_sound
+				use_sound = pick('sound/misc/clapping.ogg','sound/voice/clap2.ogg','sound/voice/clap3.ogg','sound/voice/clap4.ogg')
+				playsound(src.loc, use_sound, 50, 0)
+
+		if("golfclap")
+			if (!src.restrained())
+				message = "claps very slowly."
+				playsound(src.loc, 'sound/voice/golfclap.ogg', 50, 0)
 
 		if ("flap")
 			if (!src.restrained())
@@ -764,7 +768,7 @@
 					m_type = 1
 
 		if ("collapse")
-			Paralyse(2)
+			Unconscious(2)
 			message = "collapses!"
 			m_type = 2
 			if HAS_TRAIT_FROM(src, TRAIT_MUTE, TRAIT_MIME)
@@ -1138,9 +1142,26 @@
 				to_chat(src, "<span class='warning'>You can't *flip in your current state!</span>")
 				return 1
 			else
-				src.SpinAnimation(7,1)
-				// message = "does a flip!"
 				m_type = 1
+				if(!spam_flag)
+					src.SpinAnimation(7,1)
+					message = "does a flip!"
+					spam_flag = TRUE
+					addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+				else
+					if(prob(30)) // Little known fact: HRP is /tg/ + 10
+						src.Weaken(2)
+						if(prob(50))
+							src.adjustBruteLoss(1)
+							message = "attempts to do a flip and falls on their face. Ouch!"
+						else
+							message = "attempts to do a flip and falls over, what a doofus!"
+					else
+						src.SpinAnimation(7,1)
+						message = "lands another flip. Smooth!"
+						spam_flag = TRUE
+						addtimer(CALLBACK(src, .proc/spam_flag_false), 18)
+
 // New emotes below this line
 		if ("purr")
 			message = "purrs softly."

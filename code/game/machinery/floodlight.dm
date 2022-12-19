@@ -68,12 +68,7 @@
 
 /obj/machinery/floodlight/attack_hand(mob/user)
 	if(open && cell)
-		if(ishuman(user))
-			if(!user.get_active_held_item())
-				user.put_in_hands(cell)
-				cell.loc = user.loc
-		else
-			cell.loc = src.loc
+		user.grab_item_from_interacted_with(cell, src)
 
 		cell.add_fingerprint(user)
 		cell.update_icon()
@@ -107,7 +102,7 @@
 		if(unlocked)
 			if(open)
 				open = FALSE
-				overlays = null
+				cut_overlays()
 				to_chat(user, SPAN_NOTICE("You crowbar the battery panel in place."))
 			else
 				if(unlocked)

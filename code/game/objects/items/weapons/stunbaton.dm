@@ -5,12 +5,13 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "stunbaton"
 	item_state = "baton"
+	rad_flags = RAD_BLOCK_CONTENTS
 	slot_flags = SLOT_BELT
 	force = 15
 	sharp = 0
 	edge = 0
 	throw_force = 7
-	flags = NOCONDUCT
+	atom_flags = NOCONDUCT
 	w_class = ITEMSIZE_NORMAL
 	drop_sound = 'sound/items/drop/metalweapon.ogg'
 	pickup_sound = 'sound/items/pickup/metalweapon.ogg'

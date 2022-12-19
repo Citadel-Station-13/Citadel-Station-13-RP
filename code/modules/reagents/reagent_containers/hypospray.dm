@@ -5,14 +5,14 @@
 /obj/item/reagent_containers/hypospray
 	name = "hypospray"
 	desc = "The DeForest Medical Corporation hypospray is a sterile, air-needle autoinjector for rapid administration of drugs to patients."
-	icon = 'icons/obj/syringe.dmi'
+	icon = 'icons/obj/medical/syringe.dmi'
 	item_state = "hypo"
 	icon_state = "hypo"
 	amount_per_transfer_from_this = 5
 	unacidable = 1
 	volume = 30
 	possible_transfer_amounts = null
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	slot_flags = SLOT_BELT
 	drop_sound = 'sound/items/drop/gun.ogg'
 	pickup_sound = 'sound/items/pickup/gun.ogg'
@@ -70,7 +70,7 @@
 
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 	to_chat(user, SPAN_NOTICE("You inject \the [H] with \the [src]."))
-	to_chat(H, SPAN_WARNING( "You feel a tiny prick!"))
+	H.custom_pain(SPAN_WARNING("You feel a tiny prick!"), 1, TRUE)
 
 	if(hyposound)
 		playsound(src, hyposound, 25)
@@ -121,7 +121,7 @@
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return
 			if(W.is_open_container())
-				W.flags ^= OPENCONTAINER
+				W.atom_flags ^= OPENCONTAINER
 				W.update_icon()
 			loaded_vial = W
 			reagents.maximum_volume = loaded_vial.reagents.maximum_volume
@@ -156,13 +156,13 @@
 
 /obj/item/reagent_containers/hypospray/autoinjector/used/Initialize(mapload)
 	. = ..()
-	flags &= ~OPENCONTAINER
+	atom_flags &= ~OPENCONTAINER
 	icon_state = "[initial(icon_state)]0"
 
 /obj/item/reagent_containers/hypospray/autoinjector/do_injection(mob/living/carbon/human/H, mob/living/user)
 	. = ..()
 	if(.) // Will occur if successfully injected.
-		flags &= ~OPENCONTAINER
+		atom_flags &= ~OPENCONTAINER
 		update_icon()
 
 /obj/item/reagent_containers/hypospray/autoinjector/update_icon()
@@ -375,7 +375,7 @@
 	amount_per_transfer_from_this = 20
 	volume = 20
 	filled = 1
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	origin_tech = list(TECH_BIO = 4, TECH_ILLEGAL = 3)
 	filled_reagents = list("impedrezene" = 15, "toxin" = 5)
 	preserve_item = 0
@@ -390,7 +390,7 @@
 
 /obj/item/reagent_containers/hypospray/glukoz/used/Initialize(mapload)
 	. = ..()
-	flags &= ~OPENCONTAINER
+	atom_flags &= ~OPENCONTAINER
 
 	icon_state = "[initial(icon_state)]_used"
 
@@ -418,7 +418,7 @@
 /obj/item/reagent_containers/hypospray/glukoz/do_injection(mob/living/carbon/human/H, mob/living/user)
 	. = ..()
 	if(.) // Will occur if successfully injected.
-		flags &= ~OPENCONTAINER
+		atom_flags &= ~OPENCONTAINER
 		to_chat(user, "<span class='notice'>You jab the [src] needle into your skin!</span>")
 		icon_state = "[initial(icon_state)]_used"
 		filled = 0

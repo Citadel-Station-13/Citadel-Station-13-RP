@@ -98,13 +98,6 @@
 	item_state_slots = list(SLOT_ID_RIGHT_HAND = "blackberet", SLOT_ID_LEFT_HAND = "blackberet")
 	body_parts_covered = HEAD
 
-/obj/item/clothing/head/donator/woolhat //ckey vfivesix. delete this later
-	name = "Army Garrison Cap"
-	desc = "A vintage wool cap, neatly shaven down the grain, adorning a golden oak leaf on its left half."
-	icon_state = "woolhat"
-	icon = 'icons/obj/clothing/donatorclothing.dmi'
-	icon_override = 'icons/mob/clothing/donatorclothing.dmi'
-
 /obj/item/clothing/under/carcharodon
 	name = "Carcharodon Suit"
 	desc = "A hardened leather maillot meant to be worn under denim shorts and chaps. This suit was cut specifically to aid flexibility without sacrificing protection. A small tag bearing an embroidered 'K' is the only manufacturer's mark."

@@ -137,14 +137,14 @@
 	airlock_type = "/multi_tile/glass"
 	glass = -1 //To prevent bugs in deconstruction process.
 
-/obj/structure/door_assembly/multi_tile/New()
+/obj/structure/door_assembly/multi_tile/Initialize(mapload)
 	if(dir in list(EAST, WEST))
 		bound_width = width * world.icon_size
 		bound_height = world.icon_size
 	else
 		bound_width = world.icon_size
 		bound_height = width * world.icon_size
-	update_state()
+	return ..()
 
 /obj/structure/door_assembly/multi_tile/Move()
 	. = ..()

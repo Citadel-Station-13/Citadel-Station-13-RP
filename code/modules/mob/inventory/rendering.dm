@@ -217,7 +217,7 @@
 	/// vv only; set to override layer
 	VAR_PRIVATE/worn_layer_override
 
-/obj/item/proc/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype = BODYTYPE_STRING_DEFAULT)
+/obj/item/proc/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype = BODYTYPE_DEFAULT)
 	// SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.
 	// todo: eh reevaluate later
 	// determine if in hands

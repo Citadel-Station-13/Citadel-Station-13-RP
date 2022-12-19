@@ -3,7 +3,7 @@
 	name = "synthmorph bag"
 	desc = "A reusable polymer bag designed to slow down synthetic functions such as data corruption and coolant flow, \
 	especially useful if short on time or in a hostile enviroment."
-	icon = 'icons/obj/robobag.dmi'
+	icon = 'icons/obj/medical/robobag.dmi'
 	icon_state = "bodybag_folded"
 	item_state = "bodybag_cryo_folded"
 	origin_tech = list(TECH_ENGINEERING = 3)
@@ -20,7 +20,7 @@
 	name = "synthmorph bag"
 	desc = "A reusable polymer bag designed to slow down synthetic functions such as data corruption and coolant flow, \
 	especially useful if short on time or in a hostile enviroment."
-	icon = 'icons/obj/robobag.dmi'
+	icon = 'icons/obj/medical/robobag.dmi'
 	item_path = /obj/item/bodybag/cryobag/robobag
 	tank_type = /obj/item/tank/stasis/nitro_cryo
 	stasis_level = 2	// Lower than the normal cryobag, because it's not made for meat that dies. It's made for robots and is freezing.
@@ -32,7 +32,7 @@
 		. += "<span class='notice'>\The [src] has a [corptag] attached to it.</span>"
 
 /obj/structure/closet/body_bag/cryobag/robobag/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	..()
 	if(corptag)
 		var/corptag_icon_state = "tag_blank"
@@ -46,7 +46,7 @@
 			corptag_icon_state = corptag.icon_state
 
 		var/image/I = image(icon, corptag_icon_state)
-		overlays += I
+		add_overlay(I)
 
 /obj/structure/closet/body_bag/cryobag/robobag/AltClick(mob/user)
 	if(!Adjacent(user))

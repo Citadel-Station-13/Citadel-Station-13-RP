@@ -7,14 +7,14 @@
 	var/base_name = " "
 	desc = " "
 	var/base_desc = " "
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "null"
 	item_state = "null"
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60)
 	volume = 60
 	w_class = ITEMSIZE_SMALL
-	flags = OPENCONTAINER | NOCONDUCT
+	atom_flags = OPENCONTAINER | NOCONDUCT
 	unacidable = 1 //glass doesn't dissolve in acid
 	drop_sound = 'sound/items/drop/bottle.ogg'
 	pickup_sound = 'sound/items/pickup/bottle.ogg'
@@ -65,10 +65,10 @@
 	..()
 	if(is_open_container())
 		to_chat(usr, "<span class = 'notice'>You put the lid on \the [src].</span>")
-		flags ^= OPENCONTAINER
+		atom_flags ^= OPENCONTAINER
 	else
 		to_chat(usr, "<span class = 'notice'>You take the lid off \the [src].</span>")
-		flags |= OPENCONTAINER
+		atom_flags |= OPENCONTAINER
 	update_icon()
 
 /obj/item/reagent_containers/glass/attack(mob/M as mob, mob/user as mob, def_zone)
@@ -127,7 +127,7 @@
 		..()
 	if(istype(W,/obj/item/reagent_containers/glass) || istype(W,/obj/item/reagent_containers/food/drinks) || istype(W,/obj/item/reagent_containers/food/condiment))
 		return
-	if(W && W.w_class <= w_class && (flags & OPENCONTAINER))
+	if(W && W.w_class <= w_class && (atom_flags & OPENCONTAINER))
 		to_chat(user, "<span class='notice'>You dip \the [W] into \the [src].</span>")
 		reagents.touch_obj(W, reagents.total_volume)
 
@@ -144,8 +144,9 @@
 /obj/item/reagent_containers/glass/beaker
 	name = "beaker"
 	desc = "A beaker."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "beaker"
+	base_icon_state = "beaker"
 	item_state = "beaker"
 	matter = list(MAT_GLASS = 500)
 	drop_sound = 'sound/items/drop/glass.ogg'
@@ -171,67 +172,74 @@
 	update_icon()
 
 /obj/item/reagent_containers/glass/beaker/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 
 	if(reagents.total_volume)
-		var/image/filling = image('icons/obj/reagentfillings.dmi', src, "[icon_state]10")
+		var/image/filling = image('icons/obj/medical/reagentfillings.dmi', src, "[base_icon_state]10")
 
 		var/percent = round((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0 to 9)		filling.icon_state = "[icon_state]-10"
-			if(10 to 24) 	filling.icon_state = "[icon_state]10"
-			if(25 to 49)	filling.icon_state = "[icon_state]25"
-			if(50 to 74)	filling.icon_state = "[icon_state]50"
-			if(75 to 79)	filling.icon_state = "[icon_state]75"
-			if(80 to 90)	filling.icon_state = "[icon_state]80"
-			if(91 to INFINITY)	filling.icon_state = "[icon_state]100"
+			if(0 to 9)		filling.icon_state = "[base_icon_state]-10"
+			if(10 to 24) 	filling.icon_state = "[base_icon_state]10"
+			if(25 to 49)	filling.icon_state = "[base_icon_state]25"
+			if(50 to 74)	filling.icon_state = "[base_icon_state]50"
+			if(75 to 79)	filling.icon_state = "[base_icon_state]75"
+			if(80 to 90)	filling.icon_state = "[base_icon_state]80"
+			if(91 to INFINITY)	filling.icon_state = "[base_icon_state]100"
 
 		filling.color = reagents.get_color()
-		overlays += filling
+		overlays_to_add += filling
 
 	if (!is_open_container())
-		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
-		overlays += lid
+		var/image/lid = image(icon, src, "lid_[base_icon_state]")
+		overlays_to_add += lid
+
+	add_overlay(overlays_to_add)
 
 /obj/item/reagent_containers/glass/beaker/large
 	name = "large beaker"
 	desc = "A large beaker."
 	icon_state = "beakerlarge"
+	base_icon_state = "beakerlarge"
 	matter = list(MAT_GLASS = 1000)
 	volume = 120
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60,120)
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 
 /obj/item/reagent_containers/glass/beaker/noreact
 	name = "cryostasis beaker"
 	desc = "A cryostasis beaker that allows for chemical storage without reactions."
 	icon_state = "beakernoreact"
+	base_icon_state = "beakernoreact"
 	matter = list(MAT_GLASS = 500)
 	volume = 60
 	amount_per_transfer_from_this = 10
-	flags = OPENCONTAINER | NOREACT
+	atom_flags = OPENCONTAINER | NOREACT
 
 /obj/item/reagent_containers/glass/beaker/bluespace
 	name = "bluespace beaker"
 	desc = "A bluespace beaker, powered by experimental bluespace technology."
 	icon_state = "beakerbluespace"
+	base_icon_state = "beakerbluespace"
 	matter = list(MAT_GLASS = 5000)
 	volume = 300
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60,120,300)
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 
 /obj/item/reagent_containers/glass/beaker/vial
 	name = "vial"
 	desc = "A small glass vial."
-	icon_state = "vial"
+	icon_state = "vial0"
+	base_icon_state = "vial"
 	matter = list(MAT_GLASS = 250)
 	volume = 30
 	w_class = ITEMSIZE_TINY
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,30)
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 
 /obj/item/reagent_containers/glass/beaker/cryoxadone
 	prefill = list("cryoxadone" = 30)
@@ -247,13 +255,14 @@
 	name = "bucket"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "bucket"
+	base_icon_state = "bucket"
 	item_state = "bucket"
 	matter = list(MAT_STEEL = 200)
 	w_class = ITEMSIZE_NORMAL
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
 	volume = 120
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	unacidable = 0
 	drop_sound = 'sound/items/drop/helm.ogg'
 	pickup_sound = 'sound/items/pickup/helm.ogg'
@@ -292,23 +301,24 @@
 		return ..()
 
 /obj/item/reagent_containers/glass/bucket/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if (!is_open_container())
 		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
-		overlays += lid
+		add_overlay(lid)
 
 /obj/item/reagent_containers/glass/bucket/wood
 	desc = "An old wooden bucket."
 	name = "wooden bucket"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "woodbucket"
+	base_icon_state = "woodbucket"
 	item_state = "woodbucket"
 	matter = list(MAT_WOOD = 50)
 	w_class = ITEMSIZE_LARGE
 	amount_per_transfer_from_this = 20
 	possible_transfer_amounts = list(10,20,30,60,120)
 	volume = 120
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	unacidable = 0
 	drop_sound = 'sound/items/drop/wooden.ogg'
 	pickup_sound = 'sound/items/pickup/wooden.ogg'
@@ -338,6 +348,7 @@
 	name = "water-cooler bottle"
 	icon = 'icons/obj/vending.dmi'
 	icon_state = "water_cooler_bottle"
+	base_icon_state = "water_cooler_bottle"
 	matter = list(MAT_GLASS = 2000)
 	w_class = ITEMSIZE_NORMAL
 	amount_per_transfer_from_this = 20
@@ -350,6 +361,7 @@
 	desc = "A small fuel canister used to refuel tools and gear in the field."
 	icon = 'icons/obj/tank.dmi'
 	icon_state = "portable_fuelcan"
+	base_icon_state = "portable_fuelcan"
 	matter = list("metal" = 2000)
 	w_class = ITEMSIZE_SMALL
 	amount_per_transfer_from_this = 10
@@ -377,6 +389,7 @@
 	name = "miniature fuel canister"
 	desc = "A tiny fuel canister used to refuel tools and gear in the field. Useful for single recharges."
 	icon_state = "portable_fuelcan_tiny"
+	base_icon_state = "portable_fuelcan_tiny"
 	matter = list("metal" = 500)
 	w_class = ITEMSIZE_TINY
 	volume = 20
@@ -385,6 +398,7 @@
 	name = "stone mortar"
 	desc = "A hand-crafted stone mortar, designed to hold ground up herbs and reagents."
 	icon_state = "stonebeaker"
+	base_icon_state = "stonebeaker"
 
 //Vials
 /obj/item/reagent_containers/glass/beaker/vial/bicaridine

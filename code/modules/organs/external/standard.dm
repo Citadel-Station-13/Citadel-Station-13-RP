@@ -268,8 +268,8 @@
 		cannot_gib = FALSE
 	return ..()
 
-/obj/item/organ/external/head/robotize(company, skip_prosthetics, keep_organs)
-	return ..(company, skip_prosthetics, 1)
+/obj/item/organ/external/head/robotize(company, skip_prosthetics, keep_organs, force)
+	return ..(company, skip_prosthetics, 1, force)
 
 /obj/item/organ/external/head/removed()
 	if(owner)

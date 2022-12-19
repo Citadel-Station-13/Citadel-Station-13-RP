@@ -32,7 +32,7 @@
 ///type and all subtypes should always immediately call Initialize in New()
 #define INITIALIZE_IMMEDIATE(X) ##X/New(loc, ...){\
 	..();\
-	if(!(flags & INITIALIZED)) {\
+	if(!(atom_flags & ATOM_INITIALIZED)) {\
 		args[1] = TRUE;\
 		SSatoms.InitAtom(src, args);\
 	}\
@@ -81,9 +81,10 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_SERVER_MAINT		65
 #define INIT_ORDER_TIMER			60
 #define INIT_ORDER_INSTRUMENTS		50
+#define INIT_ORDER_EARLY_ASSETS		48
 #define INIT_ORDER_SQLITE			40
 #define INIT_ORDER_CHEMISTRY		35
-#define INIT_ORDER_SKYBOX			30
+#define INIT_ORDER_MATERIALS		30
 #define INIT_ORDER_MAPPING			25
 #define INIT_ORDER_DECALS			20
 #define INIT_ORDER_PLANTS			19
@@ -135,6 +136,7 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_PLANETS		75
 #define FIRE_PRIORITY_INSTRUMENTS	90
 #define FIRE_PRIORITY_MACHINES		100
+#define FIRE_PRIORITY_ASSETS		105
 #define FIRE_PRIORITY_TGUI			110
 #define FIRE_PRIORITY_PROJECTILES	150
 #define FIRE_PRIORITY_THROWING		150
@@ -142,14 +144,13 @@ DEFINE_BITFIELD(runlevels, list(
 #define FIRE_PRIORITY_OVERLAYS		500
 #define FIRE_PRIORITY_SMOOTHING		500
 #define FIRE_PRIORITY_TIMER			700
-///never drop input
-#define FIRE_PRIORITY_INPUT			1000
+#define FIRE_PRIORITY_INPUT			1000 //! Never drop input
 
 /**
 	Create a new timer and add it to the queue.
 	* Arguments:
 	* * callback the callback to call on timer finish
 	* * wait deciseconds to run the timer for
-	* * flags flags for this timer, see: code\__DEFINES\subsystems.dm
+	* * atom_flags atom_flags for this timer, see: code\__DEFINES\subsystems.dm
 */
 #define addtimer(args...) _addtimer(args, file = __FILE__, line = __LINE__)

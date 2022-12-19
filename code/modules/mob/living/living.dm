@@ -1,5 +1,6 @@
 /mob/living/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/z_radiation_listener)
 
 	//I'll just hang my coat up over here
 	dsoverlay = image('icons/mob/darksight.dmi', GLOB.global_hud.darksight) //This is a secret overlay! Go look at the file, you'll see.
@@ -395,7 +396,7 @@ default behaviour is:
 	else
 		add_status_indicator("weakened")
 
-/mob/living/Paralyse(amount)
+/mob/living/Unconscious(amount)
 	for(var/datum/modifier/M in modifiers)
 		if(!isnull(M.disable_duration_percent))
 			amount = round(amount * M.disable_duration_percent)
@@ -403,14 +404,14 @@ default behaviour is:
 	if(paralysis > 0)
 		add_status_indicator("paralysis")
 
-/mob/living/SetParalysis(amount)
+/mob/living/SetUnconscious(amount)
 	..()
 	if(paralysis <= 0)
 		remove_status_indicator("paralysis")
 	else
 		add_status_indicator("paralysis")
 
-/mob/living/AdjustParalysis(amount)
+/mob/living/AdjustUnconscious(amount)
 	if(amount > 0)
 		for(var/datum/modifier/M in modifiers)
 			if(!isnull(M.disable_duration_percent))
@@ -636,7 +637,7 @@ default behaviour is:
 	setOxyLoss(0)
 	setCloneLoss(0)
 	setBrainLoss(0)
-	SetParalysis(0)
+	SetUnconscious(0)
 	SetStunned(0)
 	SetWeakened(0)
 
@@ -1098,3 +1099,15 @@ default behaviour is:
 	. = ..()
 	// since we're shifted up by transforms..
 	. += ((size_multiplier * icon_scale_y) - 1) * 16
+
+/mob/living/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE)
+	if(incapacitated())
+		to_chat(src, SPAN_WARNING("You can't do that right now!"))
+		return FALSE
+	if(be_close && !in_range(M, src))
+		to_chat(src, SPAN_WARNING("You are too far away!"))
+		return FALSE
+	if(!no_dexterity && !IsAdvancedToolUser())
+		to_chat(src, SPAN_WARNING("You don't have the dexterity to do this!"))
+		return FALSE
+	return TRUE

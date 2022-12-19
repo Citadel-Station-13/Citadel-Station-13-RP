@@ -1,12 +1,10 @@
 // TODO: MAKE FALSEWALLS A F*CKING STRUCTURE
 // WHOEVER WROTE THIS IS HIGH
+// I might do this soon, if I don't, bully me. @Zandario
 //Interactions
 /turf/simulated/wall/proc/toggle_open(var/mob/user)
-
 	if(can_open == WALL_OPENING)
 		return
-
-	SSradiation.resistance_cache.Remove(src)
 
 	if(density)
 		can_open = WALL_OPENING

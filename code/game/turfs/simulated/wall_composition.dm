@@ -32,6 +32,5 @@
 		name = "[material.display_name] wall"
 		desc = "It seems to be a section of hull plated with [material.display_name]."
 
-	SSradiation.resistance_cache.Remove(src)
 	if(!defer_icon)
 		update_icon()

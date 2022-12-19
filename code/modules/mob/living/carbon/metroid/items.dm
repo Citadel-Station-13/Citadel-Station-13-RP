@@ -11,7 +11,7 @@
 	origin_tech = list(TECH_BIO = 4)
 	var/uses = 1 // uses before it goes inert
 	var/enhanced = 0 //has it been enhanced before?
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 /*
 /obj/item/slime_extract/attackby(obj/item/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/slimesteroid2))
@@ -120,7 +120,7 @@
 	icon_state = "rainbow slime extract"
 
 /obj/item/slimepotion
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 
 ////Pet Slime Creation///
 /*
@@ -183,7 +183,7 @@
 /obj/item/slimepotion2
 	name = "advanced docility potion"
 	desc = "A potent chemical mix that will nullify a slime's powers, causing it to become docile and tame. This one is meant for adult slimes"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle19"
 
 	attack(mob/living/carbon/slime/M as mob, mob/user as mob)
@@ -215,7 +215,7 @@
 /obj/item/slimesteroid
 	name = "slime steroid"
 	desc = "A potent chemical mix that will cause a slime to generate more extract."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle16"
 
 	attack(mob/living/carbon/slime/M as mob, mob/user as mob)
@@ -239,7 +239,7 @@
 /obj/item/slimesteroid2
 	name = "extract enhancer"
 	desc = "A potent chemical mix that will give a slime extract three uses."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle17"
 
 	/*afterattack(obj/target, mob/user , flag)

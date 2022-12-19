@@ -84,7 +84,7 @@
 			/obj/item/paper/solar
 			)
 	cost = 20
-	container_type = /obj/structure/closet/crate/engineering
+	container_type = /obj/structure/closet/crate/focalpoint
 	container_name = "Solar pack crate"
 
 /datum/supply_pack/eng/engine
@@ -146,6 +146,7 @@
 	cost = 80
 	container_type = /obj/structure/closet/crate/engineering
 	container_name = "shield generator construction kit crate"
+	
 /datum/supply_pack/eng/smbig
 	name = "Supermatter Core"
 	contains = list(/obj/machinery/power/supermatter)

@@ -85,14 +85,6 @@
 		return TRUE
 	return !ishuman(victim) && !issilicon(victim)
 
-/// triggered on wield of two handed item
-/obj/item/kinetic_crusher/proc/on_wield(obj/item/source, mob/user)
-	wielded = TRUE
-
-/// triggered on unwield of two handed item
-/obj/item/kinetic_crusher/proc/on_unwield(obj/item/source, mob/user)
-	wielded = FALSE
-
 /obj/item/kinetic_crusher/examine(mob/living/user)
 	. = ..()
 	. += "<span class='notice'>Mark a large creature with the destabilizing force, then hit them in melee to do <b>[force + detonation_damage]</b> damage.</span>"
@@ -184,7 +176,7 @@
 			C.total_damage += target_health - L.health //we did some damage, but let's not assume how much we did
 		new /obj/effect/temp_visual/kinetic_blast(get_turf(L))
 		var/backstab_dir = get_dir(user, L)
-		var/def_check = L.getarmor(type = "bomb")
+		var/def_check = L.run_mob_armor(type = "bomb")
 		var/detonation_damage = src.detonation_damage * (!ishuman(L)? 1 : human_damage_nerf)
 		var/backstab_bonus = src.backstab_bonus * (!ishuman(L)? 1 : human_backstab_nerf)
 		var/thrown_bonus = thrown? (src.thrown_bonus * (!ishuman(L)? 1 : human_damage_nerf)) : 0

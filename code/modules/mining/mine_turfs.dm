@@ -5,22 +5,29 @@
 	icon_state = "rock-dark"
 	density = 1
 
+	smoothing_groups = (SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS)
+
 /turf/simulated/mineral //wall piece
 	name = "rock"
 	icon = 'icons/turf/walls.dmi'
 	icon_state = "rock"
 	smoothing_flags = SMOOTH_CUSTOM
-	var/sand_icon = 'icons/turf/flooring/asteroid.dmi'
-	var/rock_side_icon_state = "rock_side"
-	var/sand_icon_state = "asteroid"
-	var/rock_icon_state = "rock"
-	var/random_icon = 0
 	initial_gas_mix = GAS_STRING_VACUUM
 	opacity = 1
 	density = 1
 	blocks_air = 1
 	can_dirty = FALSE
+	has_resources = 1
 
+	// smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
+	smoothing_groups = (SMOOTH_GROUP_CLOSED_TURFS + SMOOTH_GROUP_MINERAL_WALLS)
+	canSmoothWith = (SMOOTH_GROUP_MINERAL_WALLS)
+
+	var/sand_icon = 'icons/turf/flooring/asteroid.dmi'
+	var/rock_side_icon_state = "rock_side"
+	var/sand_icon_state = "asteroid"
+	var/rock_icon_state = "rock"
+	var/random_icon = 0
 
 	var/datum/ore/mineral
 	var/sand_dug
@@ -39,9 +46,9 @@
 	var/ignore_mapgen
 	var/ignore_oregen = FALSE
 	var/ignore_cavegen = FALSE
-	has_resources = 1
 
-
+/turf/simulated/mineral/rich
+	//Placeholder, go to the oregen stuff at the bottom to see the oregen weight
 
 // Alternatives that ignore ore_gen and cavegen
 /turf/simulated/mineral/ignore_oregen
@@ -185,7 +192,7 @@
 		if(density)
 			MineralSpread()
 		else
-			UpdateMineral()	// this'll work because we're INITIALIZED
+			UpdateMineral()	// this'll work because we're initialized
 
 /* custom smoothing code */
 /turf/simulated/mineral/find_type_in_direction(direction)
@@ -336,7 +343,7 @@ GLOBAL_LIST_EMPTY(mining_overlay_cache)
 					target_turf.MineralSpread()
 
 /turf/simulated/mineral/proc/UpdateMineral(update_neighbors)
-	if(!(flags & INITIALIZED))
+	if(!(atom_flags & ATOM_INITIALIZED))
 		return	// /Initialize() will handle us
 	clear_ore_effects()
 	if(mineral && density)
@@ -684,14 +691,24 @@ GLOBAL_LIST_EMPTY(mining_overlay_cache)
 				M.flash_eyes()
 				if(prob(50))
 					M.Stun(5)
-			SSradiation.flat_radiate(src, 25, 100)
-			if(prob(25))
-				excavate_find(prob(5), finds[1])
+		new /obj/item/artifact_shards(src, 1000, rand(0.5 MINUTES, 3 MINUTES), RAD_FALLOFF_ANOMALY_SHARDS)
+		if(prob(25))
+			excavate_find(prob(5), finds[1])
 	else if(rand(1,500) == 1)
 		visible_message("<span class='notice'>An old dusty crate was buried within!</span>")
 		new /obj/structure/closet/crate/secure/loot(src)
 
 	make_floor()
+
+/obj/item/artifact_shards
+	name = "sickening fragments"
+	icon = 'icons/obj/shards.dmi'
+	icon_state = "splinterslarge"
+	desc = "Looking at this makes you feel sick. You should probably get away from it."
+
+/obj/item/artifact_shards/Initialize(mapload, intensity = 1000, half_life = rand(0.5 MINUTES, 3 MINUTES), falloff = RAD_FALLOFF_ANOMALY_SHARDS)
+	. = ..()
+	AddComponent(/datum/component/radioactive, intensity, half_life, falloff = falloff)
 
 /turf/simulated/mineral/proc/excavate_find(var/is_clean = 0, var/datum/find/F)
 	//with skill and luck, players can cleanly extract finds
@@ -753,11 +770,75 @@ GLOBAL_LIST_EMPTY(mining_overlay_cache)
 
 	var/mineral_name
 	if(rare_ore)
-		mineral_name = pickweight(list(MAT_MARBLE = 5, MAT_URANIUM = 10, MAT_PLATINUM = 10, MAT_HEMATITE = 20, MAT_CARBON = 20, MAT_DIAMOND = 2, MAT_GOLD = 10, MAT_SILVER = 10, MAT_COPPER = 15, MAT_PHORON = 20, MAT_LEAD = 5, MAT_VERDANTIUM = 1))
+		mineral_name = pickweight(list(
+			MAT_MARBLE = 5,
+			MAT_URANIUM = 10,
+			MAT_PLATINUM = 10,
+			MAT_HEMATITE = 20,
+			MAT_CARBON = 20,
+			MAT_DIAMOND = 2,
+			MAT_GOLD = 10,
+			MAT_SILVER = 10,
+			MAT_COPPER = 15,
+			MAT_PHORON = 20,
+			MAT_LEAD = 5,
+			MAT_VERDANTIUM = 1))
 
 	else
-		mineral_name = pickweight(list(MAT_MARBLE = 3, MAT_URANIUM = 10, MAT_PLATINUM = 10, MAT_HEMATITE = 70, MAT_CARBON = 70, MAT_DIAMOND = 2, MAT_GOLD = 10, MAT_SILVER = 10, MAT_COPPER = 15, MAT_PHORON = 20, MAT_LEAD = 2, MAT_VERDANTIUM = 1))
+		mineral_name = pickweight(list(
+			MAT_MARBLE = 3,
+			MAT_URANIUM = 10,
+			MAT_PLATINUM = 10,
+			MAT_HEMATITE = 70,
+			MAT_CARBON = 70,
+			MAT_DIAMOND = 2,
+			MAT_GOLD = 10,
+			MAT_SILVER = 10,
+			MAT_COPPER = 15,
+			MAT_PHORON = 20,
+			MAT_LEAD = 2,
+			MAT_VERDANTIUM = 1))
 
+	if(mineral_name && (mineral_name in GLOB.ore_data))
+		mineral = GLOB.ore_data[mineral_name]
+		UpdateMineral()
+
+
+/turf/simulated/mineral/rich/make_ore(var/rare_ore)
+	if(mineral || ignore_mapgen)
+		return
+	var/mineral_name
+	if(rare_ore)
+		mineral_name = pickweight(list(
+			MAT_MARBLE = 7,
+			MAT_URANIUM = 10,
+			MAT_PLATINUM = 10,
+			MAT_HEMATITE = 10,
+			MAT_CARBON = 10,
+			MAT_DIAMOND = 4,
+			MAT_GOLD = 15,
+			MAT_SILVER = 15,
+			MAT_COPPER = 10,
+			MAT_PHORON = 10,
+			MAT_LEAD = 5,
+			MAT_VERDANTIUM = 2))
+
+
+
+	else
+		mineral_name = pickweight(list(
+			MAT_MARBLE = 5,
+			MAT_URANIUM = 7,
+			MAT_PLATINUM = 7,
+			MAT_HEMATITE = 28,
+			MAT_CARBON = 28,
+			MAT_DIAMOND = 2,
+			MAT_GOLD = 7,
+			MAT_SILVER = 7,
+			MAT_COPPER = 7,
+			MAT_PHORON = 7,
+			MAT_LEAD = 4,
+			MAT_VERDANTIUM = 1))
 	if(mineral_name && (mineral_name in GLOB.ore_data))
 		mineral = GLOB.ore_data[mineral_name]
 		UpdateMineral()

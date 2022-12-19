@@ -6,7 +6,7 @@
 /obj/item/defib_kit
 	name = "defibrillator"
 	desc = "A device that delivers powerful shocks to detachable paddles that resuscitate incapacitated patients."
-	icon = 'icons/obj/defibrillator.dmi'
+	icon = 'icons/obj/medical/defibrillator.dmi'
 	icon_state = "defibunit"
 	item_state = "defibunit"
 	slot_flags = SLOT_BACK
@@ -41,6 +41,8 @@
 
 
 /obj/item/defib_kit/update_icon()
+
+	cut_overlays()
 	var/list/new_overlays = list()
 
 	if(paddles && paddles.loc == src) //in case paddles got destroyed somehow.
@@ -59,7 +61,7 @@
 	else
 		new_overlays += "[initial(icon_state)]-nocell"
 
-	overlays = new_overlays
+	add_overlay(new_overlays)
 
 /obj/item/defib_kit/ui_action_click()
 	toggle_paddles()
@@ -187,7 +189,7 @@
 /obj/item/shockpaddles
 	name = "defibrillator paddles"
 	desc = "A pair of plastic-gripped paddles with flat metal surfaces that are used to deliver powerful electric shocks."
-	icon = 'icons/obj/defibrillator.dmi'
+	icon = 'icons/obj/medical/defibrillator.dmi'
 	icon_state = "defibpaddles"
 	item_state = "defibpaddles"
 	gender = PLURAL
@@ -591,12 +593,13 @@
 	return 1
 
 /obj/item/shockpaddles/standalone/checked_use(var/charge_amt)
-	SSradiation.radiate(src, charge_amt/12) //just a little bit of radiation. It's the price you pay for being powered by magic I guess
+	radiation_pulse(src, RAD_INTENSITY_STANDALONE_DEFIB)
 	return 1
 
 /obj/item/shockpaddles/standalone/process(delta_time)
 	if(fail_counter > 0)
-		SSradiation.radiate(src, fail_counter--)
+		fail_counter--
+		radiation_pulse(src, RAD_INTENSITY_STANDALONE_DEFIB_FAIL)
 	else
 		STOP_PROCESSING(SSobj, src)
 

@@ -50,7 +50,7 @@
 		for(var/obj/item/clothing/accessory/A in accessories)
 			var/image/I = new(A.get_mob_overlay())
 			I.pixel_x = 16 //Opposite of the pixel_x on the suit (-16) from taurization to cancel it out and puts the accessory in the correct place on the body.
-			MA.overlays += I
+			MA.add_overlay(I)
 		return MA
 	else
 		return ..()

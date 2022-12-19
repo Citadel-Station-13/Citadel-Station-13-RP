@@ -313,6 +313,7 @@
 #define STRUCTURE_MIN_DAMAGE_THRESHOLD 5
 
 //Vision flags, for dealing with plane visibility
+// todo: kill this shit, why are we using ordered indexed lists for something only on players and therefore cheap to spam?
 #define VIS_FULLBRIGHT		1
 #define VIS_LIGHTING		2
 #define VIS_GHOSTS			3
@@ -334,8 +335,9 @@
 #define VIS_STATUS			15
 #define VIS_SPACE			16
 #define VIS_SONAR			17
+#define VIS_EMISSIVE		18
 ///Must be highest number from above.
-#define VIS_COUNT			17
+#define VIS_COUNT			18
 
 // Clothing flags, organized in roughly top-bottom
 #define EXAMINE_SKIPHELMET			0x0001
@@ -369,3 +371,14 @@
 #define EXAMINE_MORE_TIME 1 SECONDS
 
 #define SLEEP_CHECK_DEATH(X) sleep(X); if(QDELETED(src) || stat == DEAD) return;
+
+//! Blood levels
+#define BLOOD_VOLUME_MAX_LETHAL  2150
+#define BLOOD_VOLUME_EXCESS      2100
+#define BLOOD_VOLUME_MAXIMUM     2000
+#define BLOOD_VOLUME_SLIME_SPLIT 1120
+#define BLOOD_VOLUME_NORMAL      560
+#define BLOOD_VOLUME_SAFE        475
+#define BLOOD_VOLUME_OKAY        336
+#define BLOOD_VOLUME_BAD         224
+#define BLOOD_VOLUME_SURVIVE     122

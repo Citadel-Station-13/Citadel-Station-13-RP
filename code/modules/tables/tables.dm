@@ -11,6 +11,12 @@ var/list/table_icon_cache = list()
 	climbable = TRUE
 	layer = TABLE_LAYER
 	surgery_odds = 66
+	connections = list("nw0", "ne0", "sw0", "se0")
+
+	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_TABLES)
+	canSmoothWith = (SMOOTH_GROUP_TABLES)
+
 	var/flipped = 0
 	var/maxhealth = 10
 	var/health = 10
@@ -27,8 +33,6 @@ var/list/table_icon_cache = list()
 	// Convert if/when you can easily get stacks of these.
 	var/carpeted = 0
 	var/carpeted_type = /obj/item/stack/tile/carpet
-
-	connections = list("nw0", "ne0", "sw0", "se0")
 
 	/// Can people place items on us by clicking on us?
 	var/item_place = TRUE
@@ -354,33 +358,34 @@ var/list/table_icon_cache = list()
 	return I
 
 /obj/structure/table/update_icon()
+	cut_overlays()
+	var/list/overlays_to_add = list()
+
 	if(flipped != 1)
 		icon_state = "blank"
-		overlays.Cut()
 
 		// Base frame shape. Mostly done for glass/diamond tables, where this is visible.
 		for(var/i = 1 to 4)
 			var/image/I = get_table_image(icon, connections[i], 1<<(i-1))
-			overlays += I
+			overlays_to_add += I
 
 		// Standard table image
 		if(material)
 			for(var/i = 1 to 4)
 				var/image/I = get_table_image(icon, "[material.icon_base]_[connections[i]]", 1<<(i-1), material.icon_colour, 255 * material.opacity)
-				overlays += I
+				overlays_to_add += I
 
 		// Reinforcements
 		if(reinforced)
 			for(var/i = 1 to 4)
 				var/image/I = get_table_image(icon, "[reinforced.icon_reinf]_[connections[i]]", 1<<(i-1), reinforced.icon_colour, 255 * reinforced.opacity)
-				overlays += I
+				overlays_to_add += I
 
 		if(carpeted)
 			for(var/i = 1 to 4)
 				var/image/I = get_table_image(icon, "carpet_[connections[i]]", 1<<(i-1))
-				overlays += I
+				overlays_to_add += I
 	else
-		overlays.Cut()
 		var/type = 0
 		var/tabledirs = 0
 		for(var/direction in list(turn(dir,90), turn(dir,-90)) )
@@ -401,7 +406,7 @@ var/list/table_icon_cache = list()
 			var/image/I = image(icon, "[material.icon_base]_flip[type]")
 			I.color = material.icon_colour
 			I.alpha = 255 * material.opacity
-			overlays += I
+			overlays_to_add += I
 			name = "[material.display_name] table"
 		else
 			name = "table frame"
@@ -410,10 +415,12 @@ var/list/table_icon_cache = list()
 			var/image/I = image(icon, "[reinforced.icon_reinf]_flip[type]")
 			I.color = reinforced.icon_colour
 			I.alpha = 255 * reinforced.opacity
-			overlays += I
+			overlays_to_add += I
 
 		if(carpeted)
-			overlays += "carpet_flip[type]"
+			overlays_to_add += "carpet_flip[type]"
+
+	add_overlay(overlays_to_add)
 
 // set propagate if you're updating a table that should update tables around it too, for example if it's a new table or something important has changed (like material).
 /obj/structure/table/update_connections(propagate=0)

@@ -4,7 +4,7 @@
 	var/mob/living/carbon/occupant
 	var/locked
 	name = "Body Scanner"
-	icon = 'icons/obj/Cryogenic2.dmi'
+	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "scanner_open"
 	density = 1
 	anchored = 1
@@ -166,7 +166,7 @@
 	var/delete
 	var/temphtml
 	name = "Body Scanner Console"
-	icon = 'icons/obj/Cryogenic2.dmi'
+	icon = 'icons/obj/medical/cryogenic2.dmi'
 	icon_state = "scanner_terminal_off"
 	dir = 8
 	density = 1
@@ -467,7 +467,7 @@
 			extra_font = "<font color=[occupant.getFireLoss() < 60 ? "blue" : "red"]>"
 			dat += "[extra_font]\t-Burn Severity %: [occupant.getFireLoss()]</font><br>"
 
-			extra_font = "<font color=[occupant.radiation < 10 ? "blue" : "red"]>"
+			extra_font = "<font color=[occupant.radiation < 400 ? "blue" : "red"]>"
 			dat += "[extra_font]\tRadiation Level %: [occupant.radiation]</font><br>"
 
 			extra_font = "<font color=[occupant.getCloneLoss() < 1 ? "blue" : "red"]>"

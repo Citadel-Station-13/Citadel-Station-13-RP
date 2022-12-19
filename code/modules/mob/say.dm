@@ -77,7 +77,7 @@
 			return 1
 		return 0
 
-	if(speaking.language_flags & INNATE)
+	if(speaking.language_flags & LANGUAGE_INNATE)
 		return 1
 
 	//Language check.
@@ -152,11 +152,14 @@
 		if (can_speak(L))
 			return L
 		else
-			var/alert_result = alert(src, "You dont know the LANGUAGE you are about to speak, instead you will speak Babel. Do you want to?", "Unknown Language Alert","No","Yes")
-			if(alert_result == "Yes")
-				return SScharacters.resolve_language_name(LANGUAGE_GIBBERISH)
-			else
-				if(isliving(src))
-					var/mob/living/caller = src
-					return SScharacters.resolve_language_name(caller.default_language)
+			var/alert_result = alert(src, "You don't know that language. Would you rather speak your default language, gibberish, or nothing?", "Unknown Language Alert","Default Language","Gibberish", "Whoops I made a typo!")
+			switch(alert_result)
+				if("Default Language")
+					if(isliving(src))
+						var/mob/living/caller = src
+						return SScharacters.resolve_language_name(caller.default_language)
+				if("Gibberish")
+					return SScharacters.resolve_language_name(LANGUAGE_GIBBERISH)
+				if("Whoops I made a typo!")
+					return -1
 	return null

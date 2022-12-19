@@ -169,7 +169,7 @@
 	//List to JSON
 	var/json_TO_FILE = json_encode(settings_list)
 	if(!json_TO_FILE)
-		log_debug("Saving: [path] failed jsonencode")
+		log_debug(SPAN_DEBUG("Saving: [path] failed jsonencode"))
 		return FALSE
 
 	//Write it out
@@ -178,7 +178,7 @@
 		fdel(path) //Byond only supports APPENDING to files, not replacing.
 	text2file(json_TO_FILE, path)
 	if(!fexists(path))
-		log_debug("Saving: [path] failed file write")
+		log_debug(SPAN_DEBUG("Saving: [path] failed file write"))
 		return FALSE
 
 	return TRUE

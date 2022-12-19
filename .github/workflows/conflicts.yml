@@ -5,9 +5,13 @@ on:
       - master
 jobs:
   triage:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
+    if: github.repository == 'Citadel-Station-13/Citadel-Station-13-RP'
     steps:
-      - uses: mschilde/auto-label-merge-conflicts@2e8fcc76c6430272ec8bb64fb74ec1592156aa6a
+      - uses: prince-chrismc/label-merge-conflicts-action@v3
         with:
           CONFLICT_LABEL_NAME: 'Merge Conflict'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MAX_RETRIES: 12
+          WAIT_MS: 10000
+          conflict_comment: ''

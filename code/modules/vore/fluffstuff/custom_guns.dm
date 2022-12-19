@@ -381,12 +381,12 @@ END OF CITADEL CHANGES */
 	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 4)
 
 /obj/item/gun/projectile/lamia/update_icon()
-	overlays.Cut()
+	cut_overlay()
 	if(!ammo_magazine)
 		return
 	var/ratio = ammo_magazine.stored_ammo.len * 100 / ammo_magazine.max_ammo
 	ratio = round(ratio, 33)
-	overlays += "deagle_[ratio]"*/ // Fugly.
+	add_overlay("deagle_[ratio]")*/ // Fugly.
 
 
 //Civilian gun
@@ -471,11 +471,11 @@ END OF CITADEL CHANGES */
 	if(ratio < 0.25 && ratio != 0)
 		ratio = 0.25
 	ratio = round(ratio, 0.25) * 100
-	overlays += "smg_[ratio]"
+	add_overlay("smg_[ratio]")
 
 /obj/item/gun/projectile/automatic/sol/update_icon()
 	icon_state = (ammo_magazine)? "SMG-IS" : "SMG-IS-empty"
-	overlays.Cut()
+	cut_overlay()
 	update_charge()
 
 //HoP gun

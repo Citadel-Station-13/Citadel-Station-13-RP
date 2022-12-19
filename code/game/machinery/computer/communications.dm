@@ -29,6 +29,7 @@
 	var/const/STATE_ALERT_LEVEL = 8
 	var/const/STATE_CONFIRM_LEVEL = 9
 	var/const/STATE_CREWTRANSFER = 10
+	var/const/STATE_NIGHTSHIFT = 11
 
 	var/status_display_freq = "1435"
 	var/stat_msg1
@@ -164,6 +165,9 @@
 		if("status")
 			src.state = STATE_STATUSDISPLAY
 
+		if("nightshift")
+			src.state = STATE_NIGHTSHIFT
+
 		// Status display stuff
 		if("setstat")
 			switch(href_list["statdisp"])
@@ -190,7 +194,7 @@
 				var/input = sanitize(input("Please choose a message to transmit to [GLOB.using_map.boss_short] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination.  Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
 				if(!input || !(usr in view(1,src)))
 					return
-				CentCom_announce(input, usr)
+				message_centcom(input, usr)
 				to_chat(usr, "<font color=#4F49AF>Message transmitted.</font>")
 				log_game("[key_name(usr)] has made an IA [GLOB.using_map.boss_short] announcement: [input]")
 				centcomm_message_cooldown = 1
@@ -207,7 +211,7 @@
 				var/input = sanitize(input(usr, "Please choose a message to transmit to \[ABNORMAL ROUTING CORDINATES\] via quantum entanglement.  Please be aware that this process is very expensive, and abuse will lead to... termination. Transmission does not guarantee a response. There is a 30 second delay before you may send another message, be clear, full and concise.", "To abort, send an empty message.", ""))
 				if(!input || !(usr in view(1,src)))
 					return
-				Syndicate_announce(input, usr)
+				message_syndicate(input, usr)
 				to_chat(usr, "<font color=#4F49AF>Message transmitted.</font>")
 				log_game("[key_name(usr)] has made an illegal announcement: [input]")
 				centcomm_message_cooldown = 1
@@ -254,6 +258,8 @@
 			src.aistate = STATE_MESSAGELIST
 		if("ai-status")
 			src.aistate = STATE_STATUSDISPLAY
+		if("ai-nightshift")
+			src.aistate = STATE_NIGHTSHIFT
 
 		if("securitylevel")
 			src.tmp_alertlevel = text2num( href_list["newalertlevel"] )
@@ -263,8 +269,22 @@
 		if("changeseclevel")
 			state = STATE_ALERT_LEVEL
 
-
-
+		if("setnightshift")
+			var/oldactive = SSnightshift.nightshift_active
+			var/newactive
+			switch(href_list["newsetting"])
+				if("auto")
+					SSnightshift.overridden = FALSE
+					newactive = oldactive
+				if("on")
+					SSnightshift.overridden = TRUE
+					newactive = TRUE
+				if("off")
+					SSnightshift.overridden = TRUE
+					newactive = FALSE
+			if(oldactive != newactive)
+				SSnightshift.update_nightshift(newactive)
+			src.state = STATE_DEFAULT
 	src.updateUsrDialog()
 
 /obj/machinery/computer/communications/emag_act(var/remaining_charges, var/mob/user)
@@ -318,6 +338,7 @@
 						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=callshuttle'>Call Emergency Shuttle</A> \]"
 
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=status'>Set Status Display</A> \]"
+				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=nightshift'>Set Nightshift Setting</A> \]"
 			else
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=login'>Log In</A> \]"
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=messagelist'>Message List</A> \]"
@@ -358,6 +379,22 @@
 			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=redalert'>Red Alert</A> |"
 			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=lockdown'>Lockdown</A> |"
 			dat += " <A HREF='?src=\ref[src];operation=setstat;statdisp=alert;alert=biohazard'>Biohazard</A> \]<BR><HR>"
+		if(STATE_NIGHTSHIFT)
+			if(!SSnightshift.overridden)
+				dat += "Current Nightshift Setting: <b>Auto ([SSnightshift.nightshift_active ? "On" : "Off"])</b><BR>"
+				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=off'>Off</A> \]<BR>"
+				dat += "Auto<BR>"
+				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=on'>On</A> \]<BR>"
+			else if(SSnightshift.nightshift_active)
+				dat += "Current Nightshift Setting: <b>On</b><BR>"
+				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=off'>Off</A> \]<BR>"
+				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=auto'>Auto</A> \]<BR>"
+				dat += "On<BR>"
+			else
+				dat += "Current Nightshift Setting: <b>Off</b><BR>"
+				dat += "Off<BR>"
+				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=auto'>Auto</A> \]<BR>"
+				dat += "\[ <A HREF='?src=\ref[src];operation=setnightshift;newsetting=on'>On</A> \]<BR>"
 		if(STATE_ALERT_LEVEL)
 			dat += "Current alert level: [get_security_level()]<BR>"
 			if(GLOB.security_level == SEC_LEVEL_DELTA)
@@ -389,6 +426,7 @@
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-messagelist'>Message List</A> \]"
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-status'>Set Status Display</A> \]"
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=toggleatc'>[ATC.squelched ? "Enable" : "Disable"] ATC Relay</A> \]"
+			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-nightshift'>Set Nightshift Setting</A> \]"
 		if(STATE_CALLSHUTTLE)
 			dat += "Are you sure you want to call the shuttle? \[ <A HREF='?src=\ref[src];operation=ai-callshuttle2'>OK</A> | <A HREF='?src=\ref[src];operation=ai-main'>Cancel</A> \]"
 		if(STATE_MESSAGELIST)
@@ -559,3 +597,11 @@
 			status_signal.data["picture_state"] = data1
 
 	frequency.post_signal(src, status_signal)
+
+//TODO: Convert to proper cooldowns. A bool for cooldowns is insanely dumb.
+/// Override the cooldown for special actions
+/// Used in places such as CentCom messaging back so that the crew can answer right away
+/obj/machinery/computer/communications/proc/override_cooldown()
+	// COOLDOWN_RESET(src, important_action_cooldown)
+	centcomm_message_cooldown = 0
+	message_cooldown = 0

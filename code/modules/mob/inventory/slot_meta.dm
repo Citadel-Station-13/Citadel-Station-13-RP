@@ -77,6 +77,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
  * Can equip supports some abstract slots but not others.
  */
 /datum/inventory_slot_meta
+	/// abstract type
+	abstract_type = /datum/inventory_slot_meta
+
 	//! Intrinsics
 	/// slot name
 	var/name = "unknown"
@@ -84,8 +87,6 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/id
 	/// next id
 	var/static/id_next = 0
-	/// abstract type
-	var/abstract_type = /datum/inventory_slot_meta
 	/// flags
 	var/inventory_slot_flags = INV_SLOT_IS_RENDERED
 	/// display order - higher is upper. a <hr> is applied on 0.
@@ -741,6 +742,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		INHAND_DEFAULT_ICON_GUNS = 'icons/mob/items/lefthand_guns.dmi',
 		INHAND_DEFAULT_ICON_HATS = 'icons/mob/items/lefthand_hats.dmi',
 		INHAND_DEFAULT_ICON_HOLDERS = 'icons/mob/items/lefthand_holder.dmi',
+		INHAND_DEFAULT_ICON_KITCHEN = 'icons/mob/items/lefthand_kitchen.dmi',
 		INHAND_DEFAULT_ICON_MAGIC = 'icons/mob/items/lefthand_magic.dmi',
 		INHAND_DEFAULT_ICON_MASKS = 'icons/mob/items/lefthand_masks.dmi',
 		INHAND_DEFAULT_ICON_MATERIAL = 'icons/mob/items/lefthand_material.dmi',
@@ -768,6 +770,7 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 		INHAND_DEFAULT_ICON_GUNS = 'icons/mob/items/righthand_guns.dmi',
 		INHAND_DEFAULT_ICON_HATS = 'icons/mob/items/righthand_hats.dmi',
 		INHAND_DEFAULT_ICON_HOLDERS = 'icons/mob/items/righthand_holder.dmi',
+		INHAND_DEFAULT_ICON_KITCHEN = 'icons/mob/items/righthand_kitchen.dmi',
 		INHAND_DEFAULT_ICON_MAGIC = 'icons/mob/items/righthand_magic.dmi',
 		INHAND_DEFAULT_ICON_MASKS = 'icons/mob/items/righthand_masks.dmi',
 		INHAND_DEFAULT_ICON_MATERIAL = 'icons/mob/items/righthand_material.dmi',

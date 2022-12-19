@@ -136,16 +136,13 @@
 /obj/machinery/particle_smasher/process(delta_time)
 	if(!src.anchored)	// Rapidly loses focus.
 		if(energy)
-			SSradiation.radiate(src, round(((src.energy-150)/50)*5,1))
+			radiation_pulse(src, RAD_INTENSITY_PARTICLE_SMASHER_ENERGY_LOSS(30))
 			energy = max(0, energy - 30)
 			update_icon()
-		return
 
 	if(energy)
-		SSradiation.radiate(src, round(((src.energy-150)/50)*5,1))
+		radiation_pulse(src, RAD_INTENSITY_PARTICLE_SMASHER_ENERGY_LOSS(5))
 		energy = clamp(energy - 5, 0, max_energy)
-
-	return
 
 /obj/machinery/particle_smasher/proc/prepare_recipes()
 	if(!recipes)

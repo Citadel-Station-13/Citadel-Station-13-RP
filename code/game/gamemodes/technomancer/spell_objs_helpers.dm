@@ -9,7 +9,7 @@
 					continue
 				else if(ignore_mobs && isliving(stuff)) // Ghosts aren't dense but keeping this limited to living type will probably save headaches in the future.
 					continue
-				else if(ignore_border && (stuff.flags & ON_BORDER))
+				else if(ignore_border && (stuff.atom_flags & ATOM_BORDER))
 					continue
 				else
 					return TRUE

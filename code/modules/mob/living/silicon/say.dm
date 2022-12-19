@@ -56,6 +56,8 @@
 			return 1
 		if (istype(other, /mob/living/carbon/brain))
 			return 1
+	if(translation_context.can_translate(speaking, require_perfect = TRUE))
+		return TRUE
 	return ..()
 
 //For holopads only. Usable by AI.

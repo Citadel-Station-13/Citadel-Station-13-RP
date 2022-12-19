@@ -41,9 +41,10 @@
  * /datum/character_species is a singleton type stored on SScharacters.
  */
 /datum/character_species
+	/// Abstract type (i'm addicted to abstract types) @silicons
+	abstract_type = /datum/character_species
+
 	//! Intrinsics
-	/// abstract type (i'm addicted to abstract types)
-	var/abstract_type = /datum/character_species
 	/// uid (this must be unique with both species and minor species, don't be outrageous with it, don't be stupid)
 	var/uid
 	/// master species id
@@ -157,4 +158,3 @@
 	return S.uid
 
 //! LORE PEOPLE, SHOVE YOUR SNOWFLAKE HERE
-

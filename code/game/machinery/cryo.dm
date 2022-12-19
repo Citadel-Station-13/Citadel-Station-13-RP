@@ -2,7 +2,7 @@
 #define HEAT_CAPACITY_HUMAN 100
 /obj/machinery/atmospherics/component/unary/cryo_cell
 	name = "cryo cell"
-	icon = 'icons/obj/cryogenics.dmi' // map only
+	icon = 'icons/obj/medical/cryogenics.dmi' // map only
 	icon_state = "pod_preview"
 	density = TRUE
 	anchored = TRUE
@@ -27,7 +27,7 @@
 /obj/machinery/atmospherics/component/unary/cryo_cell/Initialize(mapload)
 	. = ..()
 
-	icon = 'icons/obj/cryogenics_split.dmi'
+	icon = 'icons/obj/medical/cryogenics_split.dmi'
 	icon_state = "base"
 	initialize_directions = dir
 
@@ -232,7 +232,7 @@
 		occupant.dir = SOUTH
 		if(occupant.bodytemperature < T0C)
 			occupant.Sleeping(max(5, (1/occupant.bodytemperature)*2000))
-			occupant.Paralyse(max(5, (1/occupant.bodytemperature)*3000))
+			occupant.Unconscious(max(5, (1/occupant.bodytemperature)*3000))
 			if(air_contents.gas[/datum/gas/oxygen] > 2)
 				if(occupant.getOxyLoss()) occupant.adjustOxyLoss(-1)
 			else

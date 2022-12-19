@@ -1,6 +1,6 @@
 /obj/machinery/chemical_dispenser
 	name = "chemical dispenser"
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "dispenser"
 
 	var/list/spawn_cartridges = null // Set to a list of types to spawn one of each on New()
@@ -165,13 +165,12 @@
 			else if(amount == -1) // Isolate
 				R.isolate_reagent(id)
 		if("ejectBeaker")
-			if(container)
-				container.forceMove(get_turf(src))
-
-				if(Adjacent(usr)) // So the AI doesn't get a beaker somehow.
-					usr.put_in_hands(container)
-
-				container = null
+			if(!container)
+				return
+			if(!usr)
+				return
+			usr.grab_item_from_interacted_with(container, src)
+			container = null
 		else
 			return FALSE
 

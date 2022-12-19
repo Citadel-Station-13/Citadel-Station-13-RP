@@ -12,7 +12,7 @@
 	origin_tech = list(TECH_BIO = 4)
 	var/uses = 1 // uses before it goes inert
 	var/enhanced = FALSE
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 
 
 /obj/item/slime_extract/Initialize(mapload)
@@ -140,7 +140,7 @@
 /obj/item/reagent_containers/glass/bottle/metamorphic
 	name = "Metamorphic Metal Bottle"
 	desc = "A small bottle. Contains some really weird liquid metal."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle-4"
 	prefill = list("metamorphic" = 60)
 
@@ -211,7 +211,7 @@
 /obj/item/reagent_containers/glass/bottle/binding
 	name = "Binding Metal Bottle"
 	desc = "A small bottle. Contains some really weird liquid metal."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "bottle-4"
 	prefill = list("binding" = 60)
 

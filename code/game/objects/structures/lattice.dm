@@ -5,8 +5,13 @@
 	icon_state = "latticefull"
 	density = 0
 	anchored = 1.0
+	rad_flags = RAD_NO_CONTAMINATE
 	w_class = ITEMSIZE_NORMAL
 	plane = PLATING_PLANE
+
+	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_LATTICE)
+	canSmoothWith = (SMOOTH_GROUP_LATTICE + SMOOTH_GROUP_WALLS + SMOOTH_GROUP_OPEN_FLOOR)
 
 /obj/structure/lattice/Initialize(mapload)
 	. = ..()
@@ -82,7 +87,7 @@
 	//if(!(istype(src.loc, /turf/space)))
 	//	qdel(src)
 	spawn(1)
-		overlays = list()
+		cut_overlays()
 
 		var/dir_sum = 0
 
