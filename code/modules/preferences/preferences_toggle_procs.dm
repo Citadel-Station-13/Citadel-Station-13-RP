@@ -316,7 +316,7 @@
 	toggle_preference(pref_path)
 	SScharacters.queue_preferences_save(prefs)
 
-	to_chat(src, "You will now [(is_preference_enabled(/datum/client_preference/subtle_see)) ? "see" : "not see"] status indicators.")
+	to_chat(src, "You will now [(is_preference_enabled(/datum/client_preference/subtle_see)) ? "see" : "not see"] subtle emotes.")
 
 	feedback_add_details("admin_verb","TSubtleEmote")
 //Toggles for Staff
