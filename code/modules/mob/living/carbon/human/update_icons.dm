@@ -108,6 +108,7 @@ GLOBAL_LIST_EMPTY(damage_icon_parts)
 		set_base_layer(MOB_LAYER)
 
 	animate(src, transform = M, time = anim_time)
+	appearance_flags = fuzzy? (appearance_flags & ~(PIXEL_SCALE)) : (appearance_flags | PIXEL_SCALE)
 	update_icon_special() //May contain transform-altering things
 
 //DAMAGE OVERLAYS

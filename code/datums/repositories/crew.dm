@@ -29,6 +29,9 @@ var/global/datum/repository/crew/crew_repository = new()
 				var/mob/living/carbon/human/H = C.loc
 				if(H.w_uniform != C)
 					continue
+				// no more vore
+				if(istype(H.loc, /obj/belly))
+					continue
 
 				var/list/crewmemberData = list("dead"=0, "oxy"=-1, "tox"=-1, "fire"=-1, "brute"=-1, "area"="", "x"=-1, "y"=-1, "ref" = "\ref[H]")
 

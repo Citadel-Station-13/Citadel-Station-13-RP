@@ -34,6 +34,8 @@
 	has made the securing of rights for Cyborgs a difficult proposition."
 	value = CATALOGUER_REWARD_TRIVIAL
 
+// todo: automatic subtypes for modules
+
 /mob/living/silicon/robot
 	name = "Cyborg"
 	real_name = "Cyborg"
@@ -1045,11 +1047,8 @@
 /mob/living/silicon/robot/proc/radio_menu()
 	radio.interact(src)//Just use the radio's Topic() instead of bullshit special-snowflake code
 
-
-/mob/living/silicon/robot/Move(a, b, flag)
-
+/mob/living/silicon/robot/Moved()
 	. = ..()
-
 	if(module)
 		if(module.type == /obj/item/robot_module/robot/janitor)
 			var/turf/tile = loc
