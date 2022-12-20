@@ -257,7 +257,8 @@ SUBSYSTEM_DEF(zmimic)
 		// Handle space parallax & starlight.
 		if (T.below.z_eventually_space)
 			T.z_eventually_space = TRUE
-			t_target = SPACE_PLANE
+			if ((T.below.mz_flags & MZ_MIMIC_OVERWRITE) || T.below.type == /turf/space)
+				t_target = SPACE_PLANE
 
 		if (T.mz_flags & MZ_MIMIC_OVERWRITE)
 			// This openturf doesn't care about its icon, so we can just overwrite it.
