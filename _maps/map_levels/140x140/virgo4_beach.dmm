@@ -61,8 +61,7 @@
 "ap" = (
 /obj/effect/overlay/palmtree_r,
 /turf/simulated/floor/water/beach/corner{
-	dir = 8;
-	icon_state = "beachcorner"
+	dir = 8
 	},
 /area/tether_away/beach/jungle)
 "aq" = (
@@ -266,15 +265,14 @@
 /turf/simulated/floor/outdoors/beach/sand/desert,
 /area/tether_away/beach/jungle)
 "bi" = (
-/turf/simulated/wall,
+/turf/unsimulated/wall/planetary/normal,
 /area/tether_away/beach/water)
 "bj" = (
 /turf/simulated/floor/water,
 /area/tether_away/beach/jungle)
 "bk" = (
 /turf/simulated/floor/water/beach{
-	dir = 1;
-	icon_state = "beach"
+	dir = 1
 	},
 /area/tether_away/beach/water)
 "bl" = (
@@ -353,8 +351,7 @@
 /area/tether_away/beach/cavebase)
 "cA" = (
 /turf/simulated/floor/water/beach{
-	dir = 10;
-	icon_state = "beach"
+	dir = 10
 	},
 /area/tether_away/beach/water)
 "cN" = (
@@ -396,8 +393,7 @@
 /area/tether_away/beach/resort/lockermed)
 "dY" = (
 /turf/simulated/floor/water/beach/corner{
-	dir = 8;
-	icon_state = "beachcorner"
+	dir = 8
 	},
 /area/tether_away/beach)
 "et" = (
@@ -516,8 +512,7 @@
 /area/tether_away/beach/cavebase)
 "gA" = (
 /turf/simulated/floor/water/beach{
-	dir = 6;
-	icon_state = "beach"
+	dir = 6
 	},
 /area/tether_away/beach/water)
 "gU" = (
@@ -588,8 +583,7 @@
 /area/tether_away/beach/cavebase)
 "hR" = (
 /obj/machinery/power/terminal{
-	dir = 8;
-	icon_state = "term"
+	dir = 8
 	},
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -607,7 +601,6 @@
 "hV" = (
 /obj/structure/undies_wardrobe{
 	density = 0;
-	pixel_x = 0;
 	pixel_y = 18
 	},
 /obj/structure/cable/cyan{
@@ -704,7 +697,6 @@
 "kR" = (
 /obj/structure/undies_wardrobe{
 	density = 0;
-	pixel_x = 0;
 	pixel_y = 18
 	},
 /obj/structure/cable/cyan{
@@ -747,8 +739,7 @@
 /area/tether_away/beach/resort/janibar)
 "le" = (
 /turf/simulated/floor/water/beach{
-	dir = 5;
-	icon_state = "beach"
+	dir = 5
 	},
 /area/tether_away/beach/jungle)
 "lh" = (
@@ -807,9 +798,7 @@
 "mF" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /turf/simulated/floor/tiled/eris/cafe,
 /area/tether_away/beach/resort/kitchen)
@@ -819,8 +808,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/light/small{
-	dir = 4;
-	pixel_y = 0
+	dir = 4
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/powershed)
@@ -880,6 +868,9 @@
 	},
 /turf/simulated/floor/wood,
 /area/tether_away/beach/resort/dorm1)
+"om" = (
+/turf/unsimulated/mineral,
+/area/tether_away/beach)
 "oq" = (
 /obj/item/bedsheet/rainbow,
 /obj/machinery/button/remote/airlock{
@@ -893,8 +884,7 @@
 /area/tether_away/beach/resort/dorm1)
 "oC" = (
 /turf/simulated/floor/water/beach{
-	dir = 4;
-	icon_state = "beach"
+	dir = 4
 	},
 /area/tether_away/beach/jungle)
 "oF" = (
@@ -992,8 +982,7 @@
 /area/tether_away/beach/resort)
 "pS" = (
 /turf/simulated/floor/water/beach{
-	dir = 1;
-	icon_state = "beach"
+	dir = 1
 	},
 /area/tether_away/beach/jungle)
 "qi" = (
@@ -1027,7 +1016,6 @@
 "rJ" = (
 /obj/structure/undies_wardrobe{
 	density = 0;
-	pixel_x = 0;
 	pixel_y = 18
 	},
 /obj/structure/cable/cyan{
@@ -1058,16 +1046,13 @@
 /area/tether_away/beach/resort)
 "tj" = (
 /turf/simulated/floor/water/beach{
-	dir = 5;
-	icon_state = "beach"
+	dir = 5
 	},
 /area/tether_away/beach/water)
 "tl" = (
 /obj/machinery/shower{
 	dir = 4;
-	icon_state = "shower";
-	pixel_x = 2;
-	pixel_y = 0
+	pixel_x = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -1365,8 +1350,7 @@
 /area/tether_away/beach/resort/dorm3)
 "BG" = (
 /turf/simulated/floor/water/beach/corner{
-	dir = 8;
-	icon_state = "beachcorner"
+	dir = 8
 	},
 /area/tether_away/beach/jungle)
 "BP" = (
@@ -1384,6 +1368,9 @@
 	},
 /turf/simulated/floor/outdoors/beach/sand,
 /area/tether_away/beach/resort)
+"Cg" = (
+/turf/unsimulated/mineral,
+/area/tether_away/beach/water)
 "Cr" = (
 /obj/structure/cable/cyan{
 	icon_state = "2-4"
@@ -1406,8 +1393,7 @@
 /area/tether_away/beach/resort/kitchen)
 "CP" = (
 /turf/simulated/floor/water/beach{
-	dir = 10;
-	icon_state = "beach"
+	dir = 10
 	},
 /area/tether_away/beach/jungle)
 "Dq" = (
@@ -1449,8 +1435,7 @@
 /area/tether_away/beach/resort/dorm2)
 "DL" = (
 /turf/simulated/floor/water/beach/corner{
-	dir = 8;
-	icon_state = "beachcorner"
+	dir = 8
 	},
 /area/tether_away/beach/water)
 "Ed" = (
@@ -1461,8 +1446,7 @@
 /area/tether_away/beach/cavebase)
 "Ee" = (
 /turf/simulated/floor/water/beach/corner{
-	dir = 4;
-	icon_state = "beachcorner"
+	dir = 4
 	},
 /area/tether_away/beach/jungle)
 "Eh" = (
@@ -1485,8 +1469,7 @@
 /area/tether_away/beach/resort/dorm4)
 "Ey" = (
 /turf/simulated/floor/water/beach{
-	dir = 6;
-	icon_state = "beach"
+	dir = 6
 	},
 /area/tether_away/beach/jungle)
 "EG" = (
@@ -1539,8 +1522,7 @@
 /area/tether_away/beach/resort/dorm3)
 "Ij" = (
 /turf/simulated/floor/water/beach/corner{
-	dir = 4;
-	icon_state = "beachcorner"
+	dir = 4
 	},
 /area/tether_away/beach/water)
 "IA" = (
@@ -1618,8 +1600,7 @@
 /area/tether_away/beach/resort/kitchen)
 "Kw" = (
 /turf/simulated/floor/water/beach{
-	dir = 8;
-	icon_state = "beach"
+	dir = 8
 	},
 /area/tether_away/beach/jungle)
 "KN" = (
@@ -1634,6 +1615,9 @@
 	name = "dirt"
 	},
 /area/tether_away/beach/cavebase)
+"Lj" = (
+/turf/unsimulated/mineral,
+/area/tether_away/beach/coast)
 "Lp" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/item/clothing/shoes/sandal,
@@ -1659,9 +1643,7 @@
 "LO" = (
 /obj/machinery/shower{
 	dir = 4;
-	icon_state = "shower";
-	pixel_x = 2;
-	pixel_y = 0
+	pixel_x = 2
 	},
 /obj/effect/floor_decal/steeldecal/steel_decals10,
 /obj/effect/floor_decal/steeldecal/steel_decals10{
@@ -1702,6 +1684,9 @@
 	outdoors = 1
 	},
 /area/tether_away/beach/resort)
+"MA" = (
+/turf/unsimulated/mineral,
+/area/tether_away/beach/jungle)
 "ME" = (
 /obj/structure/cable{
 	icon_state = "1-8"
@@ -1895,8 +1880,7 @@
 /area/tether_away/beach/resort)
 "RQ" = (
 /turf/simulated/floor/water/beach{
-	dir = 8;
-	icon_state = "beach"
+	dir = 8
 	},
 /area/tether_away/beach/water)
 "RX" = (
@@ -1909,16 +1893,13 @@
 /area/tether_away/beach/resort)
 "Sv" = (
 /turf/simulated/floor/water/beach{
-	dir = 9;
-	icon_state = "beach"
+	dir = 9
 	},
 /area/tether_away/beach/jungle)
 "Sz" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /turf/simulated/floor/tiled/asteroid_steel,
 /area/tether_away/beach/resort/janibar)
@@ -1965,6 +1946,9 @@
 	},
 /turf/simulated/floor/tiled/kafel_full/white,
 /area/tether_away/beach/resort/lockermed)
+"TK" = (
+/turf/unsimulated/wall/planetary/desert/standard_temp,
+/area/tether_away/beach/jungle)
 "TU" = (
 /obj/tether_away_spawner/beach_outside,
 /turf/simulated/floor/outdoors/beach/sand/desert,
@@ -2002,8 +1986,7 @@
 /area/tether_away/beach/resort/lockermed)
 "Va" = (
 /turf/simulated/floor/water/beach/corner{
-	dir = 1;
-	icon_state = "beachcorner"
+	dir = 1
 	},
 /area/tether_away/beach/water)
 "Vo" = (
@@ -2018,8 +2001,7 @@
 /area/tether_away/beach/jungle)
 "VS" = (
 /turf/simulated/floor/water/beach/corner{
-	dir = 1;
-	icon_state = "beachcorner"
+	dir = 1
 	},
 /area/tether_away/beach/jungle)
 "Wc" = (
@@ -2055,7 +2037,6 @@
 "WS" = (
 /obj/structure/undies_wardrobe{
 	density = 0;
-	pixel_x = 0;
 	pixel_y = 18
 	},
 /obj/structure/cable/cyan{
@@ -2069,8 +2050,7 @@
 /area/tether_away/beach/resort/lockermed)
 "WX" = (
 /turf/simulated/floor/water/beach{
-	dir = 9;
-	icon_state = "beach"
+	dir = 9
 	},
 /area/tether_away/beach/water)
 "Xd" = (
@@ -2177,132 +2157,132 @@
 /area/tether_away/beach/resort)
 
 (1,1,1) = {"
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-ba
-ba
-bg
-nD
-nD
-nD
-nD
-nD
-nD
-nD
-nD
-nD
-nD
-nD
-nD
-nD
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+om
+om
+Lj
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
 bi
 bi
 bi
@@ -2319,7 +2299,7 @@ bi
 bi
 "}
 (2,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -2461,7 +2441,7 @@ hx
 bi
 "}
 (3,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -2603,7 +2583,7 @@ am
 bi
 "}
 (4,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -2745,7 +2725,7 @@ am
 bi
 "}
 (5,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -2887,7 +2867,7 @@ am
 bi
 "}
 (6,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -3029,7 +3009,7 @@ am
 bi
 "}
 (7,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -3171,7 +3151,7 @@ am
 bi
 "}
 (8,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -3313,7 +3293,7 @@ am
 bi
 "}
 (9,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -3455,7 +3435,7 @@ am
 bi
 "}
 (10,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -3597,7 +3577,7 @@ am
 bi
 "}
 (11,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -3739,7 +3719,7 @@ am
 bi
 "}
 (12,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -3881,7 +3861,7 @@ am
 bi
 "}
 (13,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -4023,7 +4003,7 @@ am
 bi
 "}
 (14,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -4165,7 +4145,7 @@ am
 bi
 "}
 (15,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -4307,7 +4287,7 @@ am
 bi
 "}
 (16,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -4449,7 +4429,7 @@ am
 bi
 "}
 (17,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -4591,7 +4571,7 @@ am
 bi
 "}
 (18,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -4733,7 +4713,7 @@ am
 bi
 "}
 (19,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -4875,7 +4855,7 @@ am
 bi
 "}
 (20,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -5017,7 +4997,7 @@ am
 bi
 "}
 (21,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -5159,7 +5139,7 @@ am
 bi
 "}
 (22,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -5301,7 +5281,7 @@ am
 bi
 "}
 (23,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -5443,7 +5423,7 @@ am
 bi
 "}
 (24,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -5585,7 +5565,7 @@ am
 bi
 "}
 (25,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -5727,7 +5707,7 @@ am
 bi
 "}
 (26,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -5869,7 +5849,7 @@ am
 bi
 "}
 (27,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -6011,7 +5991,7 @@ am
 bi
 "}
 (28,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -6153,7 +6133,7 @@ am
 bi
 "}
 (29,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -6295,7 +6275,7 @@ am
 bi
 "}
 (30,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -6437,7 +6417,7 @@ am
 bi
 "}
 (31,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -6579,7 +6559,7 @@ am
 bi
 "}
 (32,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -6721,7 +6701,7 @@ am
 bi
 "}
 (33,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -6863,7 +6843,7 @@ am
 bi
 "}
 (34,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -7005,7 +6985,7 @@ am
 bi
 "}
 (35,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -7147,7 +7127,7 @@ am
 bi
 "}
 (36,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -7289,7 +7269,7 @@ am
 bi
 "}
 (37,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -7431,7 +7411,7 @@ am
 bi
 "}
 (38,1,1) = {"
-bq
+MA
 bq
 bq
 ae
@@ -7573,7 +7553,7 @@ am
 bi
 "}
 (39,1,1) = {"
-bq
+MA
 bq
 bq
 ae
@@ -7715,7 +7695,7 @@ am
 bi
 "}
 (40,1,1) = {"
-bq
+MA
 bq
 bq
 ae
@@ -7857,7 +7837,7 @@ am
 bi
 "}
 (41,1,1) = {"
-bq
+MA
 bq
 ae
 ae
@@ -7999,8 +7979,8 @@ am
 bi
 "}
 (42,1,1) = {"
-bq
-bq
+MA
+MA
 ce
 ae
 ae
@@ -8141,8 +8121,8 @@ am
 bi
 "}
 (43,1,1) = {"
+TK
 px
-ce
 ce
 ce
 aa
@@ -8283,8 +8263,8 @@ am
 bi
 "}
 (44,1,1) = {"
+TK
 bR
-ce
 ce
 ce
 ce
@@ -8425,8 +8405,8 @@ am
 bi
 "}
 (45,1,1) = {"
+TK
 bR
-ce
 ce
 ce
 bp
@@ -8567,8 +8547,8 @@ am
 bi
 "}
 (46,1,1) = {"
+TK
 bR
-bp
 bp
 ce
 ce
@@ -8709,8 +8689,8 @@ am
 bi
 "}
 (47,1,1) = {"
+TK
 bR
-ce
 bp
 bp
 ce
@@ -8851,8 +8831,8 @@ am
 bi
 "}
 (48,1,1) = {"
+TK
 eX
-ce
 ce
 ce
 ce
@@ -8993,8 +8973,8 @@ am
 bi
 "}
 (49,1,1) = {"
+TK
 bR
-ce
 ce
 ce
 ce
@@ -9135,8 +9115,8 @@ am
 bi
 "}
 (50,1,1) = {"
-bq
-ae
+MA
+MA
 ae
 ce
 ce
@@ -9277,7 +9257,7 @@ am
 bi
 "}
 (51,1,1) = {"
-bq
+MA
 bq
 ae
 ae
@@ -9419,7 +9399,7 @@ am
 bi
 "}
 (52,1,1) = {"
-bq
+MA
 bq
 bq
 ae
@@ -9561,7 +9541,7 @@ am
 bi
 "}
 (53,1,1) = {"
-bq
+MA
 bq
 bq
 ae
@@ -9703,7 +9683,7 @@ am
 bi
 "}
 (54,1,1) = {"
-bq
+MA
 bq
 bq
 ae
@@ -9845,7 +9825,7 @@ am
 bi
 "}
 (55,1,1) = {"
-bq
+MA
 bq
 bq
 ae
@@ -9987,7 +9967,7 @@ am
 bi
 "}
 (56,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -10129,7 +10109,7 @@ am
 bi
 "}
 (57,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -10271,7 +10251,7 @@ am
 bi
 "}
 (58,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -10413,7 +10393,7 @@ am
 bi
 "}
 (59,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -10555,7 +10535,7 @@ am
 bi
 "}
 (60,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -10697,7 +10677,7 @@ am
 bi
 "}
 (61,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -10839,7 +10819,7 @@ am
 bi
 "}
 (62,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -10981,7 +10961,7 @@ am
 bi
 "}
 (63,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -11123,7 +11103,7 @@ am
 bi
 "}
 (64,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -11265,7 +11245,7 @@ am
 bi
 "}
 (65,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -11407,7 +11387,7 @@ am
 bi
 "}
 (66,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -11549,7 +11529,7 @@ am
 bi
 "}
 (67,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -11691,7 +11671,7 @@ am
 bi
 "}
 (68,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -11833,7 +11813,7 @@ am
 bi
 "}
 (69,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -11975,7 +11955,7 @@ am
 bi
 "}
 (70,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -12117,7 +12097,7 @@ am
 bi
 "}
 (71,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -12259,7 +12239,7 @@ am
 bi
 "}
 (72,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -12401,7 +12381,7 @@ am
 bi
 "}
 (73,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -12543,7 +12523,7 @@ am
 bi
 "}
 (74,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -12685,7 +12665,7 @@ am
 bi
 "}
 (75,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -12827,7 +12807,7 @@ am
 bi
 "}
 (76,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -12969,7 +12949,7 @@ am
 bi
 "}
 (77,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -13111,7 +13091,7 @@ am
 bi
 "}
 (78,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -13253,7 +13233,7 @@ am
 bi
 "}
 (79,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -13395,7 +13375,7 @@ am
 bi
 "}
 (80,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -13537,7 +13517,7 @@ am
 bi
 "}
 (81,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -13679,7 +13659,7 @@ am
 bi
 "}
 (82,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -13821,7 +13801,7 @@ am
 bi
 "}
 (83,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -13963,7 +13943,7 @@ am
 bi
 "}
 (84,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -14105,7 +14085,7 @@ am
 bi
 "}
 (85,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -14247,7 +14227,7 @@ am
 bi
 "}
 (86,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -14389,7 +14369,7 @@ am
 bi
 "}
 (87,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -14531,7 +14511,7 @@ am
 bi
 "}
 (88,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -14673,7 +14653,7 @@ am
 bi
 "}
 (89,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -14815,7 +14795,7 @@ am
 bi
 "}
 (90,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -14957,7 +14937,7 @@ am
 bi
 "}
 (91,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -15099,7 +15079,7 @@ am
 bi
 "}
 (92,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -15241,7 +15221,7 @@ am
 bi
 "}
 (93,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -15383,7 +15363,7 @@ am
 bi
 "}
 (94,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -15525,7 +15505,7 @@ am
 bi
 "}
 (95,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -15667,7 +15647,7 @@ am
 bi
 "}
 (96,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -15809,7 +15789,7 @@ am
 bi
 "}
 (97,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -15951,7 +15931,7 @@ am
 bi
 "}
 (98,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -16093,7 +16073,7 @@ am
 bi
 "}
 (99,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -16235,7 +16215,7 @@ am
 bi
 "}
 (100,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -16377,7 +16357,7 @@ am
 bi
 "}
 (101,1,1) = {"
-bq
+MA
 bq
 bq
 an
@@ -16519,8 +16499,8 @@ am
 bi
 "}
 (102,1,1) = {"
-bq
-bq
+MA
+MA
 an
 an
 an
@@ -16661,8 +16641,8 @@ am
 bi
 "}
 (103,1,1) = {"
+MA
 bo
-an
 an
 an
 an
@@ -16803,8 +16783,8 @@ am
 bi
 "}
 (104,1,1) = {"
+MA
 br
-an
 an
 an
 an
@@ -16945,8 +16925,8 @@ am
 bi
 "}
 (105,1,1) = {"
+MA
 br
-an
 an
 an
 an
@@ -17087,8 +17067,8 @@ am
 bi
 "}
 (106,1,1) = {"
+MA
 br
-an
 an
 an
 an
@@ -17229,8 +17209,8 @@ am
 bi
 "}
 (107,1,1) = {"
+MA
 br
-an
 an
 an
 an
@@ -17371,8 +17351,8 @@ am
 bi
 "}
 (108,1,1) = {"
+MA
 br
-an
 an
 an
 an
@@ -17513,8 +17493,8 @@ am
 bi
 "}
 (109,1,1) = {"
-bq
-bq
+MA
+MA
 an
 an
 an
@@ -17655,7 +17635,7 @@ am
 bi
 "}
 (110,1,1) = {"
-bq
+MA
 bq
 an
 an
@@ -17797,7 +17777,7 @@ am
 bi
 "}
 (111,1,1) = {"
-bq
+MA
 bq
 bq
 an
@@ -17939,7 +17919,7 @@ am
 bi
 "}
 (112,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -18081,7 +18061,7 @@ am
 bi
 "}
 (113,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -18223,7 +18203,7 @@ am
 bi
 "}
 (114,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -18365,7 +18345,7 @@ am
 bi
 "}
 (115,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -18507,7 +18487,7 @@ am
 bi
 "}
 (116,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -18649,7 +18629,7 @@ am
 bi
 "}
 (117,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -18791,7 +18771,7 @@ am
 bi
 "}
 (118,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -18933,7 +18913,7 @@ am
 bi
 "}
 (119,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -19075,7 +19055,7 @@ am
 bi
 "}
 (120,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -19217,7 +19197,7 @@ am
 bi
 "}
 (121,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -19359,7 +19339,7 @@ am
 bi
 "}
 (122,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -19501,7 +19481,7 @@ am
 bi
 "}
 (123,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -19643,7 +19623,7 @@ am
 bi
 "}
 (124,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -19785,7 +19765,7 @@ am
 bi
 "}
 (125,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -19927,7 +19907,7 @@ am
 bi
 "}
 (126,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -20069,7 +20049,7 @@ am
 bi
 "}
 (127,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -20211,7 +20191,7 @@ am
 bi
 "}
 (128,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -20353,7 +20333,7 @@ am
 bi
 "}
 (129,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -20495,7 +20475,7 @@ am
 bi
 "}
 (130,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -20637,7 +20617,7 @@ am
 bi
 "}
 (131,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -20779,7 +20759,7 @@ am
 bi
 "}
 (132,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -20921,7 +20901,7 @@ am
 bi
 "}
 (133,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -21063,7 +21043,7 @@ am
 bi
 "}
 (134,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -21205,7 +21185,7 @@ am
 bi
 "}
 (135,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -21347,7 +21327,7 @@ am
 bi
 "}
 (136,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -21489,7 +21469,7 @@ am
 bi
 "}
 (137,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -21631,7 +21611,7 @@ am
 bi
 "}
 (138,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -21773,7 +21753,7 @@ am
 bi
 "}
 (139,1,1) = {"
-bq
+MA
 bq
 bq
 bq
@@ -21915,134 +21895,134 @@ am
 bi
 "}
 (140,1,1) = {"
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-bq
-ba
-ba
-bg
-nD
-nD
-nD
-nD
-nD
-nD
-nD
-nD
-nD
-nD
-nD
-nD
-nD
-nD
-nD
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+MA
+om
+om
+Lj
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
+Cg
 bi
 bi
 bi

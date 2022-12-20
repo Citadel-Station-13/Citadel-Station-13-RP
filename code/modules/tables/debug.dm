@@ -8,6 +8,7 @@
 		..()
 
 /datum/material/debug
+	id = "debug"	// copium
 	name = "debugium"
 	stack_type = /obj/item/stack/material/debug
 	icon_base = "debug"

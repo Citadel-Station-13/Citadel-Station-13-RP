@@ -5,8 +5,8 @@
 	initial_flooring = /singleton/flooring/carpet
 
 	// smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_TURF_OPEN, SMOOTH_GROUP_CARPET)
-	canSmoothWith = list(SMOOTH_GROUP_CARPET)
+	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_CARPET)
+	canSmoothWith = (SMOOTH_GROUP_CARPET)
 
 /turf/simulated/floor/carpet/bcarpet
 	name = "black carpet"
@@ -114,6 +114,9 @@
 	icon = 'icons/turf/flooring/tiles_vr.dmi'
 	icon_state = "techmaint"
 	initial_flooring = /singleton/flooring/tiling/new_tile/techmaint
+
+/turf/simulated/floor/tiled/techmaint/airless
+	initial_gas_mix = GAS_STRING_VACUUM
 
 /turf/simulated/floor/tiled/monofloor
 	name = "floor"

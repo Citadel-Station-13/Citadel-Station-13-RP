@@ -17,7 +17,7 @@
 	my_tool = new tooltype(src)
 	my_tool.name = name
 	my_tool.anchored = TRUE
-	ADD_TRAIT(my_tool, TRAIT_NODROP, GENERIC_TRAIT)
+	ADD_TRAIT(my_tool, TRAIT_ITEM_NODROP, GENERIC_TRAIT)
 	return ..()
 
 /obj/item/mecha_parts/mecha_equipment/tool/powertool/Destroy()

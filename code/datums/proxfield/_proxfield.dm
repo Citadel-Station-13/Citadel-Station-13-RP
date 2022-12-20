@@ -109,7 +109,7 @@
 	opacity = FALSE
 	alpha = 0
 	pass_flags_self = ALL
-	flags = ATOM_ABSTRACT
+	atom_flags = ATOM_ABSTRACT
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = INVISIBILITY_ABSTRACT		// our ONE JOB is to detect Crossed(). NOTHING ELSE.
 

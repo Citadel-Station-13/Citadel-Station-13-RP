@@ -147,12 +147,11 @@
 
 /obj/structure/closet/crate/secure/Initialize(mapload)
 	. = ..()
+	cut_overlays()
 	if(locked)
-		overlays.Cut()
-		overlays += redlight
+		add_overlay(redlight)
 	else
-		overlays.Cut()
-		overlays += greenlight
+		add_overlay(greenlight)
 
 /obj/structure/closet/crate/secure/can_open()
 	return !locked
@@ -170,14 +169,15 @@
 		to_chat(user, "<span class='notice'>Access Denied</span>")
 
 /obj/structure/closet/crate/secure/proc/set_locked(var/newlocked, mob/user = null)
-	if(locked == newlocked) return
+	if(locked == newlocked)
+		return
 
 	locked = newlocked
 	if(user)
 		for(var/mob/O in viewers(user, 3))
 			O.show_message( "<span class='notice'>The crate has been [locked ? null : "un"]locked by [user].</span>", 1)
-	overlays.Cut()
-	overlays += locked ? redlight : greenlight
+	cut_overlays()
+	add_overlay(locked ? redlight : greenlight)
 
 /obj/structure/closet/crate/secure/verb/verb_togglelock()
 	set src in oview(1) // One square distance
@@ -210,15 +210,18 @@
 		return
 	return ..()
 
-/obj/structure/closet/crate/secure/emag_act(var/remaining_charges, var/mob/user)
+/obj/structure/closet/crate/secure/emag_act(remaining_charges, mob/user)
 	if(!broken)
-		overlays.Cut()
-		overlays += emag
-		overlays += sparks
-		spawn(6) overlays -= sparks //Tried lots of stuff but nothing works right. so i have to use this *sadface*
+		cut_overlays()
+		var/list/overlays_to_add = list()
+		overlays_to_add += emag
+		overlays_to_add += sparks
+		add_overlay(overlays_to_add)
+		spawn(6)
+			cut_overlay(sparks) //Tried lots of stuff but nothing works right. so i have to use this *sadface*
 		playsound(src.loc, "sparks", 60, 1)
-		src.locked = 0
-		src.broken = 1
+		locked = 0
+		broken = 1
 		to_chat(user, "<span class='notice'>You unlock \the [src].</span>")
 		return 1
 
@@ -226,23 +229,25 @@
 	for(var/obj/O in src)
 		O.emp_act(severity)
 	if(!broken && !opened  && prob(50/severity))
+		cut_overlays()
+		var/list/overlays_to_add = list()
 		if(!locked)
-			src.locked = 1
-			overlays.Cut()
-			overlays += redlight
+			locked = 1
+			overlays_to_add += redlight
 		else
-			overlays.Cut()
-			overlays += emag
-			overlays += sparks
-			spawn(6) overlays -= sparks //Tried lots of stuff but nothing works right. so i have to use this *sadface*
+			overlays_to_add += emag
+			overlays_to_add += sparks
+			add_overlay(overlays_to_add)
+			spawn(6)
+				cut_overlay(sparks) //Tried lots of stuff but nothing works right. so i have to use this *sadface*
 			playsound(src.loc, 'sound/effects/sparks4.ogg', 75, 1)
-			src.locked = 0
+			locked = 0
 	if(!opened && prob(20/severity))
 		if(!locked)
 			open()
 		else
-			src.req_access = list()
-			src.req_access += pick(get_all_station_access())
+			req_access = list()
+			req_access += pick(get_all_station_access())
 	..()
 
 /obj/structure/closet/crate/secure/bullet_act(var/obj/item/projectile/Proj)

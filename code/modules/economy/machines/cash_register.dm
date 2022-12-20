@@ -47,7 +47,7 @@
 		if(cash_stored)
 			spawn_money(cash_stored, loc, user)
 			cash_stored = 0
-			overlays -= "register_cash"
+			cut_overlay("register_cash")
 		else
 			open_cash_box()
 	else
@@ -178,7 +178,7 @@
 		if(cash_open)
 			to_chat(user, "You neatly sort the cash into the box.")
 			cash_stored += SC.worth
-			overlays |= "register_cash"
+			add_overlay("register_cash")
 			qdel(SC)
 		else
 			scan_cash(SC)
@@ -455,19 +455,24 @@
 	set desc = "Open/closes the register's cash box."
 	set src in view(1)
 
-	if(usr.stat) return
+	if(usr.stat)
+		return
 
 	if(cash_open)
 		cash_open = 0
-		overlays -= "register_approve"
-		overlays -= "register_open"
-		overlays -= "register_cash"
+		var/list/overlays_to_remove = list()
+		overlays_to_remove.Add("register_approve")
+		overlays_to_remove.Add("register_open")
+		overlays_to_remove.Add("register_cash")
+		cut_overlays(overlays_to_remove)
 	else if(!cash_locked)
+		var/list/overlays_to_add = list()
 		cash_open = 1
-		overlays += "register_approve"
-		overlays += "register_open"
+		overlays_to_add.Add("register_approve")
+		overlays_to_add.Add("register_open")
 		if(cash_stored)
-			overlays += "register_cash"
+			overlays_to_add.Add("register_cash")
+		add_overlay(overlays_to_add)
 	else
 		to_chat(usr, "<span class='warning'>The cash box is locked.</span>")
 

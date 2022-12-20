@@ -1284,3 +1284,11 @@ var/list/floor_decals = list()
 
 /obj/effect/floor_decal/corner/yellow/border/shifted
 	icon_state = "bordercolor_shifted"
+
+/obj/effect/floor_decal/transit/orange
+	icon = 'icons/turf/transit_vr.dmi'
+	icon_state = "transit_techfloororange_edges"
+
+/obj/effect/transit/light
+	icon = 'icons/turf/transit_128.dmi'
+	icon_state = "tube1-2"

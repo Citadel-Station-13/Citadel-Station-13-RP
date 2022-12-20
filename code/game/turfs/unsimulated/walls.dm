@@ -7,7 +7,7 @@
 	blocks_air = TRUE
 
 	//! NOTICE: UNSIMULATED TURFS DO NOT SMOOTH, THIS IS MORESO FOR OTHER TURFS
-	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_WALLS)
+	smoothing_groups = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_CLOSED_TURFS)
 
 /turf/unsimulated/wall/fakeglass
 	name = "window"
@@ -16,3 +16,11 @@
 
 /turf/unsimulated/wall/other
 	icon_state = "r_wall"
+
+/turf/unsimulated/wall/seperator //to block vision between transit zones
+	name = ""
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "1"
+
+/turf/unsimulated/wall/transit
+	icon = 'icons/turf/transit_vr.dmi'

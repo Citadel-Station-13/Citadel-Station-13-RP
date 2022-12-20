@@ -11,7 +11,7 @@
 	/// Used for changing icon states for different base sprites.
 	var/base_icon_state
 	/// Atom flags.
-	var/flags = NONE
+	var/atom_flags = NONE
 	/// Intearaction flags.
 	var/interaction_flags_atom = NONE
 	/// Holder for the last time we have been bumped.
@@ -68,9 +68,17 @@
 	var/bottom_left_corner
 	/// Smoothing variable
 	var/bottom_right_corner
-	/// What smoothing groups does this atom belongs to, to match canSmoothWith. If null, nobody can smooth with it.
+	/**
+	 * What smoothing groups does this atom belongs to, to match canSmoothWith.
+	 * If null, nobody can smooth with it.
+	 *! Must be sorted.
+	 */
 	var/list/smoothing_groups = null
-	/// List of smoothing groups this atom can smooth with. If this is null and atom is smooth, it smooths only with itself.
+	/**
+	 * List of smoothing groups this atom can smooth with.
+	 * If this is null and atom is smooth, it smooths only with itself.
+	 *! Must be sorted.
+	 */
 	var/list/canSmoothWith = null
 
 	//! ## Chemistry
@@ -93,6 +101,14 @@
 	var/blood_color
 	/// Shows up under a UV light.
 	var/fluorescent
+
+	//! Radiation
+	/// radiation flags
+	var/rad_flags = RAD_NO_CONTAMINATE	// overridden to NONe in /obj and /mob base
+	/// radiation insulation - does *not* affect rad_act!
+	var/rad_insulation = RAD_INSULATION_NONE
+	/// contamination insulation; null defaults to rad_insulation
+	var/rad_stickiness
 
 	//! ## Overlays
 	/// a very temporary list of overlays to remove
@@ -195,9 +211,9 @@
 /atom/proc/Initialize(mapload, ...)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
-	if(flags & INITIALIZED)
+	if(atom_flags & ATOM_INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
-	flags |= INITIALIZED
+	atom_flags |= ATOM_INITIALIZED
 
 	if (is_datum_abstract())
 		log_debug("Abstract atom [type] created!")
@@ -213,14 +229,7 @@
 	if(light_power && light_range)
 		update_light()
 
-	if (length(smoothing_groups))
-		tim_sort(smoothing_groups) //In case it's not properly ordered, let's avoid duplicate entries with the same values.
-		SET_BITFLAG_LIST(smoothing_groups)
-	if (length(canSmoothWith))
-		tim_sort(canSmoothWith)
-		if(canSmoothWith[length(canSmoothWith)] > MAX_S_TURF) //If the last element is higher than the maximum turf-only value, then it must scan turf contents for smoothing targets.
-			smoothing_flags |= SMOOTH_OBJ
-		SET_BITFLAG_LIST(canSmoothWith)
+	SETUP_SMOOTHING()
 
 	if(opacity && isturf(loc))
 		var/turf/T = loc
@@ -290,7 +299,7 @@
 
 /// Convenience proc to see if a container is open for chemistry handling.
 /atom/proc/is_open_container()
-	return flags & OPENCONTAINER
+	return atom_flags & OPENCONTAINER
 
 ///Is this atom within 1 tile of another atom
 /atom/proc/HasProximity(atom/movable/proximity_check_mob as mob|obj)
@@ -612,7 +621,7 @@
 		return
 	if(!M || !M.key)
 		return
-	if(istype(tool) && (tool.flags & NOPRINT))
+	if(istype(tool) && (tool.atom_flags & NOPRINT))
 		return
 	if (ishuman(M))
 		//Add the list if it does not exist.
@@ -738,7 +747,7 @@
 /// Returns 1 if made bloody, returns 0 otherwise
 /atom/proc/add_blood(mob/living/carbon/human/M as mob)
 
-	if(flags & NOBLOODY)
+	if(atom_flags & NOBLOODY)
 		return 0
 
 	if(!blood_DNA || !istype(blood_DNA, /list))	//if our list of DNA doesn't exist yet (or isn't a list) initialise it.
@@ -766,7 +775,7 @@
 			this.icon_state = "vomittox_[pick(1,4)]"
 
 /atom/proc/clean_blood()
-	if(flags & ATOM_ABSTRACT)
+	if(atom_flags & ATOM_ABSTRACT)
 		return
 	fluorescent = 0
 	src.germ_level = 0
@@ -813,7 +822,7 @@
 /// message is the message output to anyone who can hear.
 /// deaf_message (optional) is what deaf people will see.
 /// hearing_distance (optional) is the range, how many tiles away the message can be heard.
-/atom/proc/audible_message(var/message, var/deaf_message, var/hearing_distance)
+/atom/proc/audible_message(var/message, var/deaf_message, var/hearing_distance, datum/language/lang)
 
 	var/range = hearing_distance || world.view
 	var/list/hear = get_mobs_and_objs_in_view_fast(get_turf(src),range,remote_ghosts = FALSE)
@@ -825,13 +834,16 @@
 		var/obj/O = obj
 		O.show_message(message, 2, deaf_message, 1)
 
+	var/no_runechat = FALSE
 	for(var/mob in hearing_mobs)
 		var/mob/M = mob
 		var/msg = message
+		if(lang && !(lang.name in M.languages))
+			msg = lang.scramble(msg)
 		M.show_message(msg, 2, deaf_message, 1)
 		heard_to_floating_message += M
-	INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, (message ? message : deaf_message), null, FALSE, heard_to_floating_message, 30)
-
+	if(!no_runechat)
+		INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, (message ? message : deaf_message), null, FALSE, heard_to_floating_message, 30)
 
 /atom/movable/proc/dropInto(var/atom/destination)
 	while(istype(destination))
@@ -869,16 +881,22 @@
 /atom/proc/GenerateTag()
 	return
 
-/atom/proc/atom_say(message)
+// todo: refactor this shit to be unified saycode, christ
+/atom/proc/atom_say(message, datum/language/L)
 	if(!message)
 		return
 	var/list/speech_bubble_hearers = list()
+	var/no_runechat = FALSE
 	for(var/mob/M in get_hearers_in_view(MESSAGE_RANGE_COMBAT_LOUD, src))
-		M.show_message("<span class='game say'><span class='name'>[src]</span> [atom_say_verb], \"[message]\"</span>", 2, null, 1)
+		var/processed = message
+		if(L && !(L.name in M.languages))
+			processed = L.scramble(message)
+			no_runechat = TRUE
+		M.show_message("<span class='game say'><span class='name'>[src]</span> [L?.speech_verb || atom_say_verb], \"[processed]\"</span>", 2, null, 1)
 		if(M.client)
 			speech_bubble_hearers += M.client
 
-	if(length(speech_bubble_hearers))
+	if(length(speech_bubble_hearers) && !no_runechat)
 		var/image/I = generate_speech_bubble(src, "[bubble_icon][say_test(message)]", FLY_LAYER)
 		I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 		INVOKE_ASYNC(GLOBAL_PROC, /.proc/flick_overlay, I, speech_bubble_hearers, 30)
@@ -902,6 +920,34 @@
 
 /atom/proc/speech_bubble(bubble_state = "", bubble_loc = src, list/bubble_recipients = list())
 	return
+
+//! Radiation
+/**
+ * called when we're hit by a radiation wave
+ */
+/atom/proc/rad_act(strength, datum/radiation_wave/wave)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_RAD_ACT, strength)
+
+/**
+ * called when we're hit by z radiation
+ */
+/atom/proc/z_rad_act(strength)
+	SHOULD_CALL_PARENT(TRUE)
+	rad_act(strength)
+
+/atom/proc/add_rad_block_contents(source)
+	ADD_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS, source)
+	rad_flags |= RAD_BLOCK_CONTENTS
+
+/atom/proc/remove_rad_block_contents(source)
+	REMOVE_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS, source)
+	if(!HAS_TRAIT(src, TRAIT_ATOM_RAD_BLOCK_CONTENTS))
+		rad_flags &= ~RAD_BLOCK_CONTENTS
+
+/atom/proc/clean_radiation(str, mul, cheap)
+	var/datum/component/radioactive/RA = GetComponent(/datum/component/radioactive)
+	RA?.clean(str, mul)
 
 //! ## Atom Colour Priority System
 /**

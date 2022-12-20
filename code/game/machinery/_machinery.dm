@@ -102,7 +102,11 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	w_class = ITEMSIZE_NO_CONTAINER
 	layer = UNDER_JUNK_LAYER
+
 	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND | INTERACT_ATOM_UI_INTERACT
+	// todo: don't block rad contents and just have component parts be unable to be contaminated while inside
+	// todo: wow rad contents is a weird system
+	rad_flags = RAD_BLOCK_CONTENTS
 
 	var/machine_stat = 0
 	var/emagged = FALSE

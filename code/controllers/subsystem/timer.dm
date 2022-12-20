@@ -61,7 +61,7 @@ SUBSYSTEM_DEF(timer)
 	var/log_all_loop_flagged = FALSE
 #endif
 
-/datum/controller/subsystem/timer/PreInit()
+/datum/controller/subsystem/timer/PreInit(recovering)
 	bucket_list.len = BUCKET_LEN
 	head_offset = world.time
 	bucket_resolution = world.tick_lag

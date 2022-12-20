@@ -10,7 +10,11 @@
 	density = 1
 	CanAtmosPass = ATMOS_PASS_PROC
 	layer = DOOR_OPEN_LAYER
+
 	interaction_flags_atom = INTERACT_ATOM_UI_INTERACT
+	rad_flags = RAD_BLOCK_CONTENTS
+	// todo: rad_insulation_open/closed
+	pass_flags = NONE
 
 	var/open_layer = DOOR_OPEN_LAYER
 	var/closed_layer = DOOR_CLOSED_LAYER
@@ -384,9 +388,6 @@
 		icon_state = "door1"
 	else
 		icon_state = "door0"
-	SSradiation.resistance_cache.Remove(get_turf(src))
-	return
-
 
 /obj/machinery/door/proc/do_animate(animation)
 	switch(animation)
@@ -429,6 +430,7 @@
 	explosion_resistance = 0
 	update_icon()
 	set_opacity(0)
+	rad_insulation = RAD_INSULATION_NONE
 	operating = 0
 
 	if(autoclose)
@@ -455,6 +457,7 @@
 	update_icon()
 	if(visible && !glass)
 		set_opacity(1)	//caaaaarn!
+	rad_insulation = initial(rad_insulation)
 	operating = 0
 
 	//I shall not add a check every x ticks if a door has closed over some fire.

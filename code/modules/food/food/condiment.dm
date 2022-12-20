@@ -10,7 +10,7 @@
 	desc = "Just your average condiment container."
 	icon = 'icons/obj/food.dmi'
 	icon_state = "emptycondiment"
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	possible_transfer_amounts = list(1,5,10)
 	center_of_mass = list("x"=16, "y"=6)
 	volume = 50
@@ -433,3 +433,14 @@
 /obj/item/reagent_containers/food/condiment/spacespice/Initialize(mapload)
 	. = ..()
 	reagents.add_reagent("spacespice", 40)
+
+
+/// Meme stuff that someone made for Lythios. Moved here cause we hate map dependent items!
+/obj/item/reagent_containers/food/condiment/cursed
+	name = "NileRed's Red Hot, Hot Sauce"
+	desc = "An unknown brand of supposedly synthetic hotsauce. A disclaimer sticker says, 'Do not try at home.' Good thing you're at work."
+	icon_state = "ketchup"
+
+/obj/item/reagent_containers/food/condiment/cursed/Initialize()
+	.  = ..()
+	reagents.add_reagent(pick("condensedcapsaicin_v", "hydrophoron"), 50)

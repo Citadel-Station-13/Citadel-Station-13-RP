@@ -11,16 +11,16 @@
 		return
 
 	if(h_style)
-		var/datum/sprite_accessory/hair/hair_style = hair_styles_list[h_style]
+		var/datum/sprite_accessory/hair/hair_style = GLOB.legacy_hair_lookup[h_style]
 		var/selected_string
-		if(!(hair_style.flags & HAIR_TIEABLE))
+		if(!(hair_style.hair_flags & HAIR_TIEABLE))
 			to_chat(src, SPAN_WARNING("Your hair isn't long enough to tie."))
 			return
 		else
 			var/list/datum/sprite_accessory/hair/valid_hairstyles = list()
-			for(var/hair_string in hair_styles_list)
-				var/datum/sprite_accessory/hair/test = hair_styles_list[hair_string]
-				if(test.flags & HAIR_TIEABLE)
+			for(var/hair_string in GLOB.legacy_hair_lookup)
+				var/datum/sprite_accessory/hair/test = GLOB.legacy_hair_lookup[hair_string]
+				if(test.hair_flags & HAIR_TIEABLE)
 					valid_hairstyles.Add(hair_string)
 			selected_string = input("Select a new hairstyle", "Your hairstyle", hair_style) as null|anything in valid_hairstyles
 		if(incapacitated())
@@ -189,13 +189,13 @@
 	for(var/mob/living/carbon/alien/diona/D in src)
 		nymphs++
 		D.forceMove(T)
-		transfer_languages(src, D, WHITELISTED|RESTRICTED)
+		transfer_languages(src, D, LANGUAGE_WHITELISTED|LANGUAGE_RESTRICTED)
 		D.setDir(pick(NORTH, SOUTH, EAST, WEST))
 
 	if(nymphs < number_of_resulting_nymphs)
 		for(var/i in nymphs to (number_of_resulting_nymphs - 1))
 			var/mob/M = new /mob/living/carbon/alien/diona(T)
-			transfer_languages(src, M, WHITELISTED|RESTRICTED)
+			transfer_languages(src, M, LANGUAGE_WHITELISTED|LANGUAGE_RESTRICTED)
 			M.setDir(pick(NORTH, SOUTH, EAST, WEST))
 
 
@@ -308,10 +308,10 @@
 	if(!get_turf(src))
 		to_chat(src, SPAN_WARNING("Not from here you can't."))
 		return
-	if(TIMER_COOLDOWN_CHECK(src, COOLDOWN_SONAR_PULSE))
+	if(TIMER_COOLDOWN_CHECK(src, CD_INDEX_SONAR_PULSE))
 		to_chat(src, SPAN_WARNING("You need to wait some more to do that!"))
 		return
-	TIMER_COOLDOWN_START(src, COOLDOWN_SONAR_PULSE, 2 SECONDS)
+	TIMER_COOLDOWN_START(src, CD_INDEX_SONAR_PULSE, 2 SECONDS)
 
 	visible_message(
 		SPAN_WARNING("[src] emits a quiet click."),

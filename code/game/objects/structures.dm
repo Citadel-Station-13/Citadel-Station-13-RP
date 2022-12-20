@@ -106,7 +106,7 @@
 		if(istype(O,/obj/structure))
 			var/obj/structure/S = O
 			if(S.climbable) continue
-		if(O && O.density && !(O.flags & ON_BORDER)) //ON_BORDER structures are handled by the Adjacent() check.
+		if(O && O.density && !(O.atom_flags & ATOM_BORDER)) //ATOM_BORDER structures are handled by the Adjacent() check.
 			return O
 	return 0
 

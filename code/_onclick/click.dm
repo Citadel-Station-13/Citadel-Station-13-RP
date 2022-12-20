@@ -16,13 +16,13 @@
  * Note that this proc can be overridden, and is in the case of screen objects.
  */
 /atom/Click(location, control, params)
-	if(flags & INITIALIZED)
+	if(atom_flags & ATOM_INITIALIZED)
 		SEND_SIGNAL(src, COMSIG_CLICK, location, control, params, usr)
 
 		usr.ClickOn(src, params)
 
 /atom/DblClick(location, control, params)
-	if(flags & INITIALIZED)
+	if(atom_flags & ATOM_INITIALIZED)
 		usr.DblClickOn(src,params)
 
 /atom/MouseWheel(delta_x, delta_y, location, control, params)

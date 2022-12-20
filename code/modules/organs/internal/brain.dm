@@ -164,7 +164,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	decays = FALSE
 	parent_organ = BP_TORSO
 	clone_source = TRUE
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	var/list/owner_flavor_text = list()
 
 	var/owner_species
@@ -257,7 +257,7 @@ GLOBAL_LIST_BOILERPLATE(all_brain_organs, /obj/item/organ/internal/brain)
 	H.nutrition = 260 //Enough to try to regenerate ONCE.
 	H.adjustBruteLoss(40)
 	H.adjustFireLoss(40)
-	H.Paralyse(4)
+	H.Unconscious(4)
 	H.updatehealth()
 	for(var/obj/item/organ/external/E in H.organs) //They've still gotta congeal, but it's faster than the clone sickness they'd normally get.
 		if(E && E.organ_tag == BP_L_ARM || E.organ_tag == BP_R_ARM || E.organ_tag == BP_L_LEG || E.organ_tag == BP_R_LEG)

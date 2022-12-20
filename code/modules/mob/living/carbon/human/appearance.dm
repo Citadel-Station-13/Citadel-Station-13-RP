@@ -40,7 +40,7 @@
 	if(h_style == hair_style)
 		return
 
-	if(!(hair_style in hair_styles_list))
+	if(!(hair_style in GLOB.legacy_hair_lookup))
 		return
 
 	h_style = hair_style
@@ -85,7 +85,7 @@
 	if(f_style == facial_hair_style)
 		return
 
-	if(!(facial_hair_style in facial_hair_styles_list))
+	if(!(facial_hair_style in GLOB.legacy_facial_hair_lookup))
 		return
 
 	f_style = facial_hair_style
@@ -208,8 +208,8 @@
 	if(H) use_species = H.species.get_bodytype_legacy(src)
 
 	var/list/valid_hairstyles = new()
-	for(var/hairstyle in hair_styles_list)
-		var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
+	for(var/hairstyle in GLOB.legacy_hair_lookup)
+		var/datum/sprite_accessory/S = GLOB.legacy_hair_lookup[hairstyle]
 
 		if(check_gender && gender != NEUTER)
 			if(gender == MALE && S.gender == FEMALE)
@@ -230,8 +230,8 @@
 	if(H) use_species = H.species.get_bodytype_legacy(src)
 
 	var/list/valid_facial_hairstyles = new()
-	for(var/facialhairstyle in facial_hair_styles_list)
-		var/datum/sprite_accessory/S = facial_hair_styles_list[facialhairstyle]
+	for(var/facialhairstyle in GLOB.legacy_facial_hair_lookup)
+		var/datum/sprite_accessory/S = GLOB.legacy_facial_hair_lookup[facialhairstyle]
 
 		if(gender != NEUTER)
 			if(gender == MALE && S.gender == FEMALE)

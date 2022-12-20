@@ -61,7 +61,7 @@
 	icon_state = M.icon_state
 	//color = M.color
 	color = "#848484"
-	overlays = M.overlays
+	copy_overlays(M)
 	transform = M.transform
 	dir = M.dir
 	invisibility = M.invisibility
@@ -126,10 +126,10 @@
 		typing_indicator.icon = 'icons/mob/talk_vr.dmi'
 		typing_indicator.icon_state = "typing"
 	if(state && !typing)
-		overlays += typing_indicator
+		add_overlay(typing_indicator)
 		typing = 1
 	else if(!state && typing)
-		overlays -= typing_indicator
+		cut_overlay(typing_indicator)
 		typing = 0
 	if(shadow)
 		shadow.set_typing_indicator(state)

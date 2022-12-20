@@ -16,7 +16,7 @@
 	var/forced_dirs = 0	// Force this one to pretend it's an overedge turf
 
 /turf/space/basic
-	flags = INITIALIZED
+	atom_flags = ATOM_INITIALIZED
 
 /turf/space/basic/New()	//Do not convert to Initialize
 	//This is used to optimize the map loader
@@ -125,3 +125,27 @@
 /turf/space/proc/on_atom_edge_touch(atom/movable/AM)
 	if(!QDELETED(AM) && (AM.loc == src))
 		AM.touch_map_edge()
+
+
+//// Special variants used in various maps ////
+
+// Bluespace jump turf!
+/turf/space/bluespace
+	name = "bluespace"
+	icon = 'icons/turf/space.dmi'
+	icon_state = "bluespace"
+
+/turf/space/bluespace/Initialize(mapload)
+	. = ..()
+	icon = 'icons/turf/space.dmi'
+	icon_state = "bluespace"
+
+// Desert jump turf!
+/turf/space/sandyscroll
+	name = "sand transit"
+	icon = 'icons/turf/transit_vr.dmi'
+	icon_state = "desert_ns"
+
+/turf/space/sandyscroll/Initialize(mapload)
+	. = ..()
+	icon_state = "desert_ns"
