@@ -17,8 +17,9 @@
 		"html",
 		"gif",
 		"tmpl",
+		"png",
 	)
-	// DO recurse
+	// DO NOT recurse
 	for(var/path in directory_walk_exts(dirs, exts, 0))
 		var/fname = filepath_extract_name(path)
 		assets[fname] = file(path)
