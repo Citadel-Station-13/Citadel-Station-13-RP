@@ -348,7 +348,7 @@
 	if(!client.throttle_verb())
 		return
 
-	var/mob/M = input(src, "What mob to move behind?", "Move Behind") as null|anything in get_relative_shift_targets()
+	var/mob/M = tgui_input_list(src, "What mob to move behind?", "Move Behind", get_relative_shift_targets())
 
 	if(QDELETED(M))
 		return
@@ -364,7 +364,7 @@
 	if(!client.throttle_verb())
 		return
 
-	var/mob/M = input(src, "What mob to move behind?", "Move Behind") as null|anything in get_relative_shift_targets()
+	var/mob/M = tgui_input_list(src, "What mob to move infront?", "Move Infront", get_relative_shift_targets())
 
 	if(QDELETED(M))
 		return
