@@ -2,23 +2,24 @@
 	keep_local_name = TRUE
 
 /datum/asset/simple/namespaced/nanoui/register()
-	var/list/static_dirs = list(
+	var/list/dirs = list(
 		"nano/css/",
 		"nano/images/",
 		"nano/images/status_icons/",
 		"nano/images/modular_computers/",
-	)
-
-	var/list/parent_dirs = list(
+		"nano/templates/",
 		"nano/js/",
-		"nano/templates/"
+		"nano/js/libraries/",
 	)
-
-	var/list/filenames = null
-	for(var/path in directory_walk_exts(static_dirs, ".js"))
-		var/fname = filepath_extract_name(path)
-		assets[fname] = file(path)
-	for(var/path in parent_dirs)
+	var/list/exts = list(
+		"js",
+		"css",
+		"html",
+		"gif",
+		"tmpl",
+	)
+	// DO recurse
+	for(var/path in directory_walk_exts(dirs, exts, 0))
 		var/fname = filepath_extract_name(path)
 		assets[fname] = file(path)
 	..()
