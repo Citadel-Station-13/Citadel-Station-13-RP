@@ -15,18 +15,10 @@
 	)
 
 	var/list/filenames = null
-	for(var/path in static_dirs)
-		filenames = flist(path)
-		for(var/filename in filenames)
-			if(copytext(filename, length(filename)) == "/") // filenames which end in "/" are actually directories, which we want to ignore
-				continue
-			if(fexists(path + filename))
-				assets[filename] = file(path + filename)
+	for(var/path in directory_walk_exts(static_dirs, ".js"))
+		var/fname = filepath_extract_name(path)
+		assets[fname] = file(path)
 	for(var/path in parent_dirs)
-		filenames = flist(path)
-		for(var/filename in filenames)
-			if(copytext(filename, length(filename)) == "/") // filenames which end in "/" are actually directories, which we want to ignore
-				continue
-			if(fexists(path + filename))
-				parents[filename] = file(path + filename)
-	. = ..()
+		var/fname = filepath_extract_name(path)
+		assets[fname] = file(path)
+	..()
