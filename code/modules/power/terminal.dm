@@ -11,7 +11,7 @@
 	var/obj/machinery/power/master = null
 	anchored = 1
 	plane = TURF_PLANE
-	layer = WIRES_LAYER+0.01
+	layer = EXPOSED_WIRE_TERMINAL_LAYER
 
 
 /obj/machinery/power/terminal/Initialize(mapload, newdir)
