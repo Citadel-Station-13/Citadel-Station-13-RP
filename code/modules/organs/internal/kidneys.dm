@@ -28,8 +28,12 @@
 
 /obj/item/organ/internal/kidneys/handle_germ_effects()
 	. = ..() //Up should return an infection level as an integer
-	if(!.) return
+	if(!.)
+		return
 
+	if(!owner?.client)	// we don't care
+		return
+	
 	//Pyelonephritis
 	if (. >= 1)
 		if(prob(1))
