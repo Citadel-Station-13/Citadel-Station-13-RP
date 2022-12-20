@@ -50,7 +50,9 @@
 	var/hudmode = null
 
 	/// our translation context
-	var/datum/translation_context/translation_context = /datum/translation_context/simple/silicons
+	var/datum/translation_context/translation_context
+	/// default translation context type
+	var/translation_context_type = /datum/translation_context/simple/silicons
 
 /mob/living/silicon/Initialize(mapload)
 	silicon_mob_list |= src
