@@ -26,7 +26,7 @@
 		usr.DblClickOn(src,params)
 
 /atom/MouseWheel(delta_x, delta_y, location, control, params)
-	if(flags & INITIALIZED)
+	if(atom_flags & ATOM_INITIALIZED)
 		usr.MouseWheelOn(src, delta_x, delta_y, params)
 
 
