@@ -5,7 +5,7 @@
 	density = TRUE
 	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 	anchored = TRUE
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	volume = 100
 
 	var/mechanical = 1         // Set to 0 to stop it from drawing the alert lights.

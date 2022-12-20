@@ -215,9 +215,9 @@
 		panel_open = !panel_open
 		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
 		playsound(src, W.tool_sound, 50, 1)
-		overlays.Cut()
+		cut_overlays()
 		if(panel_open)
-			overlays += image(icon, "[initial(icon_state)]-panel")
+			add_overlay(image(icon, "[initial(icon_state)]-panel"))
 
 		SSnanoui.update_uis(src)  // Speaker switch is on the main UI, not wires UI
 		return
@@ -909,6 +909,7 @@
 		/obj/item/reagent_containers/pill/airlock = 20,
 		/obj/item/storage/single_use/med_pouch/oxyloss = 2,
 		/obj/item/storage/single_use/med_pouch/toxin = 2,
+		/obj/item/healthanalyzer = 1,
 	)
 	contraband = list(/obj/item/reagent_containers/pill/tox = 2)
 	req_log_access = access_cmo
@@ -1080,7 +1081,7 @@
 	icon_state = "engivend"
 	icon_deny = "engivend-deny"
 	req_access = list(access_engine_equip)
-	products = list(/obj/item/geiger = 4,/obj/item/clothing/glasses/meson = 2,/obj/item/multitool = 4,/obj/item/cell/high = 10,
+	products = list(/obj/item/geiger_counter = 4,/obj/item/clothing/glasses/meson = 2,/obj/item/multitool = 4,/obj/item/cell/high = 10,
 					/obj/item/airlock_electronics = 10,/obj/item/module/power_control = 10,
 					/obj/item/circuitboard/airalarm = 10,/obj/item/circuitboard/firealarm = 10,/obj/item/circuitboard/status_display = 2,
 					/obj/item/circuitboard/ai_status_display = 2,/obj/item/circuitboard/newscaster = 2,/obj/item/circuitboard/holopad = 2,

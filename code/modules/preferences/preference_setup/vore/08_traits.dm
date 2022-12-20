@@ -112,7 +112,7 @@
 	character.custom_exclaim = lowertext(trim(pref.custom_exclaim))
 
 	var/datum/species/S = character.species
-	var/SB = S.selects_bodytype ? pref.custom_base : pref.real_species_datum()
+	var/SB = S.selects_bodytype ? (pref.custom_base || /datum/species/human) : pref.real_species_datum()
 	S.copy_from(SB, pref.pos_traits + pref.neu_traits + pref.neg_traits, character)
 
 	//Any additional non-trait settings can be applied here
@@ -134,8 +134,8 @@
 		. += "<b>Icon Base: </b> "
 		. += "<a href='?src=\ref[src];custom_base=1'>[pref.custom_base ? pref.custom_base : SPECIES_HUMAN]</a><br>"
 
-	var/traits_left = pref.max_traits
-	. += "<b>Traits Left:</b> [traits_left]<br>"
+	var/traits_left = pref.max_traits - length(pref.pos_traits) - length(pref.neg_traits)
+	. += "<b>Traits Left:</b> [traits_left > 0? traits_left : "<font color='red'>[traits_left]</font>"]<br>"
 	if(pref.real_species_id() == SPECIES_ID_CUSTOM)
 		var/points_left = pref.starting_trait_points
 		for(var/T in pref.pos_traits + pref.neg_traits)

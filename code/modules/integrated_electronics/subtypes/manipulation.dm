@@ -990,8 +990,3 @@
 	attached_grenade = null
 	size = initial(size)
 	desc = initial(desc)
-
-/obj/item/integrated_circuit/manipulation/grenade/frag
-	pre_attached_grenade_type = /obj/item/grenade/explosive
-	origin_tech = list(TECH_ENGINEERING = 3, TECH_DATA = 3, TECH_COMBAT = 10)
-	spawn_flags = null			// Used for world initializing, see the #defines above.

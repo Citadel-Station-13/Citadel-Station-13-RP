@@ -293,7 +293,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// resolve database data
 	// this is down here because player_lookup won't have an entry for us until log_client_to_db() runs!!
 	database = new(ckey)
-	database.LogConnect()
+	database.log_connect()
 
 	if (byond_version >= 512)
 		if (!byond_build || byond_build < 1386)
@@ -777,7 +777,7 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 	if(!width || !height || width < 0 || height < 0)
 		reset_temporary_view()
 		return
-	using_temporary_viewsize = FALSE
+	using_temporary_viewsize = TRUE
 	temporary_viewsize_width = width
 	temporary_viewsize_height = height
 	request_viewport_update()

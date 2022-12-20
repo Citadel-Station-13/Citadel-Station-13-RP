@@ -4,7 +4,7 @@
 
 /obj/item/clothing/head/helmet/space/rig
 	name = "helmet"
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 	clothing_flags = THICKMATERIAL | ALLOW_SURVIVALFOOD | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB | ALLOWINTERNALS
 	flags_inv      = HIDEEARS|HIDEEYES|HIDEFACE|BLOCKHAIR
 	body_parts_covered = HEAD|FACE|EYES
@@ -45,7 +45,7 @@
 /obj/item/clothing/gloves/gauntlets/rig
 	name = "gauntlets"
 	clothing_flags = THICKMATERIAL | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 	body_parts_covered = HANDS
 	heat_protection    = HANDS
 	cold_protection    = HANDS
@@ -78,7 +78,7 @@
 
 /obj/item/clothing/shoes/magboots/rig
 	name = "boots"
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 	clothing_flags = EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
 	body_parts_covered = FEET
 	cold_protection    = FEET
@@ -121,7 +121,7 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	clothing_flags     = THICKMATERIAL | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
 	cold_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
-	flags              = PHORONGUARD
+	atom_flags              = PHORONGUARD
 	flags_inv          = HIDEJUMPSUIT|HIDETAIL
 	heat_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
@@ -216,7 +216,7 @@
 /obj/item/clothing/head/lightrig
 	name = "mask"
 	clothing_flags = THICKMATERIAL | ALLOWINTERNALS | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 	body_parts_covered = HEAD|FACE|EYES
 	heat_protection    = HEAD|FACE|EYES
 	cold_protection    = HEAD|FACE|EYES
@@ -226,14 +226,14 @@
 	allowed = list(/obj/item/flashlight)
 	flags_inv = HIDEJUMPSUIT
 	clothing_flags = THICKMATERIAL | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	heat_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 	cold_protection    = UPPER_TORSO|LOWER_TORSO|LEGS|ARMS
 
 /obj/item/clothing/shoes/lightrig
 	name = "boots"
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 	clothing_flags = EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
 	species_restricted = null
 	body_parts_covered = FEET
@@ -243,7 +243,7 @@
 /obj/item/clothing/gloves/gauntlets/lightrig
 	name = "gloves"
 	clothing_flags = THICKMATERIAL | EQUIP_IGNORE_BELTLINK | EQUIP_IGNORE_DELIMB
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 	species_restricted = null
 	body_parts_covered = HANDS
 	heat_protection    = HANDS

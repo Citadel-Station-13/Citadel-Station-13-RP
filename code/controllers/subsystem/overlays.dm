@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(overlays)
 	var/list/queue						// Queue of atoms needing overlay compiling (TODO-VERIFY!)
 	var/list/stats
 
-/datum/controller/subsystem/overlays/PreInit()
+/datum/controller/subsystem/overlays/PreInit(recovering)
 	queue = list()
 	stats = list()
 
@@ -96,16 +96,16 @@ SUBSYSTEM_DEF(overlays)
 		if(!overlay)
 			continue
 		if (istext(overlay))
-// todo: enable
+
+// TODO: Enable in its own PR. @Zandario
 /*
-#ifdef UNIT_TESTS
-			// This is too expensive to run normally but running it during CI is a good test
-			var/list/icon_states_available = icon_states(icon)
-			if(!(overlay in icon_states_available))
-				var/icon_file = "[icon]" || "Unknown Generated Icon"
-				stack_trace("Invalid overlay: Icon object '[icon_file]' [REF(icon)] used in '[src]' [type] is missing icon state [overlay].")
-				continue
-#endif
+			//! Unit Testing
+			if (PERFORM_ALL_TESTS(focus_only/invalid_overlays))
+				var/list/icon_states_available = icon_states(icon)
+				if(!(overlay in icon_states_available))
+					var/icon_file = "[icon]" || "Unknown Generated Icon"
+					stack_trace("Invalid overlay: Icon object '[icon_file]' [REF(icon)] used in '[src]' [type] is missing icon state [overlay].")
+					continue
 */
 			new_overlays += iconstate2appearance(icon, overlay)
 		else if(isicon(overlay))
@@ -113,7 +113,7 @@ SUBSYSTEM_DEF(overlays)
 		else
 			if(isloc(overlay))
 				var/atom/A = overlay
-				if (A.flags & OVERLAY_QUEUED)
+				if (A.atom_flags & ATOM_OVERLAY_QUEUED)
 					COMPILE_OVERLAYS(A)
 			appearance_bro.appearance = overlay //this works for images and atoms too!
 			if(!ispath(overlay))
@@ -122,8 +122,8 @@ SUBSYSTEM_DEF(overlays)
 			new_overlays += appearance_bro.appearance
 	return new_overlays
 
-#define NOT_QUEUED_ALREADY (!(flags & OVERLAY_QUEUED))
-#define QUEUE_FOR_COMPILE flags |= OVERLAY_QUEUED; SSoverlays.queue += src;
+#define NOT_QUEUED_ALREADY (!(atom_flags & ATOM_OVERLAY_QUEUED))
+#define QUEUE_FOR_COMPILE atom_flags |= ATOM_OVERLAY_QUEUED; SSoverlays.queue += src;
 /atom/proc/cut_overlays()
 	LAZYINITLIST(remove_overlays)
 	remove_overlays = overlays.Copy()
@@ -159,7 +159,7 @@ SUBSYSTEM_DEF(overlays)
 		return
 
 	// so it's up to date
-	if(other.flags & OVERLAY_QUEUED)
+	if(other.atom_flags & ATOM_OVERLAY_QUEUED)
 		COMPILE_OVERLAYS(other)
 	var/list/cached_other = other.overlays.Copy()
 	if(cut_old || !length(overlays))
@@ -187,7 +187,7 @@ SUBSYSTEM_DEF(overlays)
 			cut_overlays()
 		return
 
-	if(other.flags & OVERLAY_QUEUED)
+	if(other.atom_flags & ATOM_OVERLAY_QUEUED)
 		COMPILE_OVERLAYS(other)
 	var/list/cached_other = other.overlays.Copy()
 	if(cut_old || !overlays.len)

@@ -114,7 +114,7 @@
 	..()
 	if(phasing)
 		phasing = FALSE
-		SSradiation.radiate(get_turf(src), 30)
+		radiation_pulse(src, RAD_INTENSITY_MECH_JANUS_FORCED_UNPHASE)
 		log_append_to_last("WARNING: BLUESPACE DRIVE INSTABILITY DETECTED. DISABLING DRIVE.",1)
 		visible_message("<span class='alien'>The [src.name] appears to flicker, before its silhouette stabilizes!</span>")
 	return

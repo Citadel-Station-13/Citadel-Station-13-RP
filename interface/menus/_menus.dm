@@ -61,6 +61,12 @@
 			. += E
 
 /datum/skin_menu/proc/load_settings(client/C)
+	set waitfor = FALSE
+	_load_settings(C)
+
+//! async version of load_settings to prevent /New from being blocked.
+/datum/skin_menu/proc/_load_settings(client/C)
+	PRIVATE_PROC(TRUE)
 	// let's like, not do that before they load
 	UNTIL(C.prefs.initialized)
 	// basically we need to load saved settings, and default if not

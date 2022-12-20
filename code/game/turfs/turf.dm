@@ -11,10 +11,26 @@
 
 	var/holy = 0
 
-	// Atmospherics / ZAS Environmental
-	/// Initial air contents, as a specially formatted gas string.
+	//! atmospherics
+	/**
+	 * the gas we start out as
+	 * can be:
+	 * - a gas string (will be parsed)
+	 * - an atmosphere id (use defines please)
+	 */
 	var/initial_gas_mix = GAS_STRING_TURF_DEFAULT
-	// End
+	//! outdoors
+	/**
+	 * are we considered outdoors for things like weather effects?
+	 * todo: single var doing this is inefficient & bad, flags maybe?
+	 * todo: we aren't going to touch this for a while tbh
+	 *
+	 * possible values:
+	 * TRUE - as it implies
+	 * FALSE - as it implies
+	 * null - use area default
+	 */
+	var/outdoors = FALSE
 
 	// Properties for airtight tiles (/wall)
 	var/thermal_conductivity = 0.05
@@ -62,9 +78,6 @@
 
 	var/list/footstep_sounds = null
 
-	// Outdoors var determines if the game should consider the turf to be 'outdoors', which controls certain things such as weather effects.
-	var/outdoors = FALSE
-
 	/// If true, most forms of teleporting to or from this turf tile will fail.
 	var/block_tele = FALSE
 	/// Used for things like RCDs (and maybe lattices/floor tiles in the future), to see if a floor should replace it.
@@ -87,23 +100,25 @@
  */
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE)
-	if(flags & INITIALIZED)
+	if(atom_flags & ATOM_INITIALIZED)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
-	flags |= INITIALIZED
+	atom_flags |= ATOM_INITIALIZED
 
 	// by default, vis_contents is inherited from the turf that was here before
 	vis_contents.len = 0
 
 	assemble_baseturfs()
 
+	levelupdate()
+
+	SETUP_SMOOTHING()
+
+	if (smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+		QUEUE_SMOOTH(src)
+
 	//atom color stuff
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
-
-/*
-	if (canSmoothWith)
-		canSmoothWith = typelist("canSmoothWith", canSmoothWith)
-*/
 
 	for(var/atom/movable/AM in src)
 		Entered(AM)
@@ -121,6 +136,9 @@
 	//Pathfinding related
 	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.
 		pathweight = movement_cost
+
+	if(isnull(outdoors))
+		outdoors = A.initial_outdoors
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -147,8 +165,11 @@
 	// SSair.remove_from_active(src)
 	// visibilityChanged()
 	// QDEL_LIST(blueprint_data)
-	flags &= ~INITIALIZED
+	atom_flags &= ~ATOM_INITIALIZED
 	// requires_activation = FALSE
+
+	vis_contents.len = 0
+
 	..()
 
 /turf/legacy_ex_act(severity)
@@ -303,7 +324,7 @@
 	if(density)
 		return 1
 	for(var/atom/A in src)
-		if(A.density && !(A.flags & ON_BORDER))
+		if(A.density && !(A.atom_flags & ATOM_BORDER))
 			return 1
 	return 0
 

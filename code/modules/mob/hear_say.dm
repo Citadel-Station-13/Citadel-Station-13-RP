@@ -25,14 +25,15 @@
 		return
 
 	//non-verbal languages are garbled if you can't see the speaker. Yes, this includes if they are inside a closet.
-	if (language && (language.language_flags & NONVERBAL))
+	if (language && (language.language_flags & LANGUAGE_NONVERBAL))
 		if (!speaker || (src.sdisabilities & SDISABILITY_NERVOUS || src.blinded) || !(speaker in view(src)))
 			message = stars(message)
 
-	if(!(language && (language.language_flags & INNATE))) // skip understanding checks for INNATE languages
+
+	if(!(language && (language.language_flags & LANGUAGE_INNATE))) // skip understanding checks for LANGUAGE_INNATE languages
 		if(!say_understands(speaker,language))
 			if(language)
-				message = language.scramble(message, languages)
+				message = language_scramble(language, message)
 			else
 				message = stars(message)
 
@@ -57,7 +58,7 @@
 			message = "<b>[message]</b>"
 
 	if(is_deaf())
-		if(!language || !(language.language_flags & INNATE)) // INNATE is the flag for audible-emote-language, so we don't want to show an "x talks but you cannot hear them" message if it's set
+		if(!language || !(language.language_flags & LANGUAGE_INNATE)) // LANGUAGE_INNATE is the flag for audible-emote-language, so we don't want to show an "x talks but you cannot hear them" message if it's set
 			if(speaker == src)
 				to_chat(src, "<span class='warning'>You cannot hear yourself speak!</span>")
 			else
@@ -65,6 +66,9 @@
 	else
 		var/message_to_send = null
 		if(language)
+			//Hivemind languages already say their names. Also, no indicator if you don't know the language.
+			if(client && !(language.language_flags & LANGUAGE_HIVEMIND) && say_understands(speaker, language) && language.shorthand && client.is_preference_enabled(/datum/client_preference/language_indicator))
+				verb += " ([language.shorthand])"
 			message_to_send = "<span class='game say'><span class='name'>[speaker_name]</span>[alt_name] [track][language.format_message(message, verb)]</span>"
 		else
 			message_to_send = "<span class='game say'><span class='name'>[speaker_name]</span>[alt_name] [track][verb], <span class='message'><span class='body'>\"[message]\"</span></span></span>"
@@ -83,6 +87,17 @@
 	..()
 	if(has_AI()) // Won't happen if no ai_holder exists or there's a player inside w/o autopilot active.
 		ai_holder.on_hear_say(speaker, message)
+
+/mob/proc/language_scramble(datum/language/L, str)
+	return L.scramble(str, languages)
+
+//! "silicons, why are you putting this here?"
+//? Because saycode needs a full rewrite so I'm shoving stuff in here until we do
+//? as if I don't, it's just harder to find later.
+/mob/living/silicon/language_scramble(datum/language/L, str)
+	// todo: this still does the "unknown language" highlighting potentially, oops
+	var/translated = translation_context.attempt_translation(L, msg = str)
+	return isnull(translated)? L.scramble(str, languages) : translated
 
 /mob/proc/on_hear_say(var/message)
 	to_chat(src, message)
@@ -153,14 +168,14 @@
 	var/track = null
 
 	//non-verbal languages are garbled if you can't see the speaker. Yes, this includes if they are inside a closet.
-	if (language && (language.language_flags & NONVERBAL))
+	if (language && (language.language_flags & LANGUAGE_NONVERBAL))
 		if (!speaker || (src.sdisabilities & SDISABILITY_NERVOUS || src.blinded) || !(speaker in view(src)))
 			message = stars(message)
 
-	if(!(language && (language.language_flags & INNATE))) // skip understanding checks for INNATE languages
+	if(!(language && (language.language_flags & LANGUAGE_INNATE))) // skip understanding checks for LANGUAGE_INNATE languages
 		if(!say_understands(speaker,language))
 			if(language)
-				message = language.scramble(message, languages)
+				message = language_scramble(language, message)
 			else
 				message = stars(message)
 
@@ -239,6 +254,8 @@
 
 	var/formatted
 	if(language)
+		if(client && !(language.language_flags & LANGUAGE_HIVEMIND) && say_understands(speaker, language) && language.shorthand && client.is_preference_enabled(/datum/client_preference/language_indicator))
+			verb += " ([language.shorthand])"
 		formatted = "[language.format_message_radio(message, verb)][part_c]"
 	else
 		formatted = "[verb], <span class=\"body\">\"[message]\"</span>[part_c]"

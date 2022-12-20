@@ -6,7 +6,7 @@
 	initial_gas_mix = GAS_STRING_STP
 
 /turf/unsimulated/Initialize(mapload)
-	flags |= INITIALIZED
+	atom_flags |= ATOM_INITIALIZED
 	return INITIALIZE_HINT_NORMAL
 
 /turf/unsimulated/fake_space
@@ -16,8 +16,8 @@
 	dynamic_lighting = FALSE
 
 /turf/unsimulated/fake_space/Initialize(mapload)
+	icon_state = SPACE_ICON_STATE(x, y, z) // So realistic!
 	. = ..()
-	icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
 
 
 // Better nip this just in case.

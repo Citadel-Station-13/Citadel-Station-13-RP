@@ -24,7 +24,7 @@
 	volume = 4
 	can_be_placed_into = null
 	item_flags = ITEM_NOBLUDGEON
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	unacidable = 0
 	drop_sound = 'sound/items/drop/cloth.ogg'
 	pickup_sound = 'sound/items/pickup/cloth.ogg'

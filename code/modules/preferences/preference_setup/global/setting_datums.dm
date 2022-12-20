@@ -379,3 +379,9 @@ var/list/_client_preferences_by_type
 	key = "EXAMINE_LOOK"
 	enabled_description = "Show"
 	disabled_description = "Hide"
+
+/datum/client_preference/language_indicator
+	description = "Language Indicators"
+	key = "LANGUAGE_INDICATOR"
+	enabled_description = "Show"
+	disabled_description = "Hide"

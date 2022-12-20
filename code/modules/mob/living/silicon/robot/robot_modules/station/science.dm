@@ -75,7 +75,9 @@
 	sprites = list(
 					"Research Hound" = "science",
 					"Borgi" = "borgi-sci",
-					"F3-LINE" = "FELI-Research"
+					"F3-LINE" = "FELI-Research",
+					"Sci-9" = "scihound",
+					"Sci-9 Dark" = "scihounddark"
 					)
 	channels = list("Science" = 1)
 	can_be_pushed = 0

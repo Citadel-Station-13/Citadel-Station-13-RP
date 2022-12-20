@@ -198,7 +198,7 @@
 	var/grab_resist = 0
 	/// Damage reduction for all types
 	var/resistance = 0
-	/// Values for normal getarmor() checks
+	/// Values for normal run_mob_armor() checks
 	var/list/armor = list(
 				"melee" = 0,
 				"bullet" = 0,
@@ -208,7 +208,7 @@
 				"bio" = 100,
 				"rad" = 100
 				)
-	/// Values for getsoak() checks.
+	/// Values for run_mob_soak() checks.
 	var/list/armor_soak = list(
 				"melee" = 0,
 				"bullet" = 0,

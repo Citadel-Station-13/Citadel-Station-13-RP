@@ -392,7 +392,7 @@ Loot piles can be depleted, if loot_depleted is turned on.  Note that players wh
 		/obj/item/radio,
 		/obj/item/hailer,
 		/obj/item/gps,
-		/obj/item/geiger,
+		/obj/item/geiger_counter,
 		/obj/item/mass_spectrometer,
 		/obj/item/tool/wrench,
 		/obj/item/tool/screwdriver,

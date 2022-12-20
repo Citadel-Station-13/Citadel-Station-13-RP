@@ -33,34 +33,89 @@
 			}; \
 		}; \
 		else { \
-			if(!isnull(neighbor.smoothing_groups)) { \
-				for(var/target in source.canSmoothWith) { \
-					if(!(source.canSmoothWith[target] & neighbor.smoothing_groups[target])) { \
-						continue; \
-					}; \
-					junction |= direction_flag; \
-					break; \
-				}; \
-			}; \
-			if(!(junction & direction_flag) && source.smoothing_flags & SMOOTH_OBJ) { \
-				for(var/obj/thing in neighbor) { \
-					if(!thing.anchored || isnull(thing.smoothing_groups)) { \
-						continue; \
-					}; \
+			if(source.can_area_smooth(neighbor)) { \
+				if(!isnull(neighbor.smoothing_groups)) { \
 					for(var/target in source.canSmoothWith) { \
-						if(!(source.canSmoothWith[target] & thing.smoothing_groups[target])) { \
+						if(!(source.canSmoothWith[target] & neighbor.smoothing_groups[target])) { \
 							continue; \
 						}; \
 						junction |= direction_flag; \
 						break; \
 					}; \
-					if(junction & direction_flag) { \
-						break; \
+				}; \
+				if(!(junction & direction_flag) && source.smoothing_flags & SMOOTH_OBJ) { \
+					for(var/obj/thing in neighbor) { \
+						if(!thing.anchored || isnull(thing.smoothing_groups)) { \
+							continue; \
+						}; \
+						for(var/target in source.canSmoothWith) { \
+							if(!(source.canSmoothWith[target] & thing.smoothing_groups[target])) { \
+								continue; \
+							}; \
+							junction |= direction_flag; \
+							break; \
+						}; \
+						if(junction & direction_flag) { \
+							break; \
+						}; \
 					}; \
 				}; \
 			}; \
 		}; \
 	} while(FALSE)
+
+/**
+ * Performs the work to set smoothing_groups and canSmoothWith.
+ * An inlined function used in both turf/Initialize and atom/Initialize.
+ */
+#define SETUP_SMOOTHING(...) \
+	if (smoothing_groups) { \
+		if (PERFORM_ALL_TESTS(focus_only/sorted_smoothing_groups)) { \
+			ASSERT_SORTED_SMOOTHING_GROUPS(smoothing_groups); \
+		} \
+		SET_BITFLAG_LIST(smoothing_groups); \
+	} \
+\
+	if (canSmoothWith) { \
+		if (PERFORM_ALL_TESTS(focus_only/sorted_smoothing_groups)) { \
+			ASSERT_SORTED_SMOOTHING_GROUPS(canSmoothWith); \
+		} \
+		if (canSmoothWith[1] == "-") { \
+			smoothing_flags |= SMOOTH_OBJ; \
+		} \
+		SET_BITFLAG_LIST(canSmoothWith); \
+	}
+
+/// Given a smoothing groups variable, will set out to the actual numbers inside it.
+#define UNWRAP_SMOOTHING_GROUPS(smoothing_groups, out) \
+	json_decode("\[[##smoothing_groups]0\]"); \
+	##out.len--;
+
+#define ASSERT_SORTED_SMOOTHING_GROUPS(smoothing_group_variable) \
+	var/list/unwrapped = UNWRAP_SMOOTHING_GROUPS(smoothing_group_variable, unwrapped); \
+	assert_sorted(unwrapped, "[#smoothing_group_variable] ([type])"); \
+
+/**
+ * Stole this from @DaedalusDock - @Zandario
+ * Checks if `src` can smooth with `target`, based on the [/area/var/area_limited_icon_smoothing] variable of their areas.
+ *
+ * * If `target` doesn't have an area (E.g. the edge of the z level), return `FALSE`.
+ * * If one area has `area_limited_icon_smoothing` set, and the other area's type doesn't match it, return `FALSE`.
+ * * Else, return `TRUE`.
+ *
+ * Arguments:
+ * * target - The atom we're trying to smooth with.
+ */
+/atom/proc/can_area_smooth(atom/target)
+	var/area/target_area = get_area(target)
+	var/area/source_area = get_area(src)
+	if(!target_area)
+		return FALSE
+	if(target_area.area_limited_icon_smoothing && !istype(source_area, target_area.area_limited_icon_smoothing))
+		return FALSE
+	if(source_area.area_limited_icon_smoothing && !istype(target_area, source_area.area_limited_icon_smoothing))
+		return FALSE
+	return TRUE
 
 /**
  * Scans all adjacent turfs to find targets to smooth with.
@@ -126,7 +181,7 @@
  */
 /atom/proc/smooth_icon()
 	smoothing_flags &= ~SMOOTH_QUEUED
-	flags |= HTML_USE_INITAL_ICON
+	atom_flags |= HTML_USE_INITAL_ICON
 	if (!z)
 		CRASH("[type] called smooth_icon() without being on a z-level")
 	if(smoothing_flags & SMOOTH_CORNERS)
@@ -271,9 +326,7 @@
 	if(!target_turf)
 		return NULLTURF_BORDER
 
-	var/area/target_area = get_area(target_turf)
-	var/area/source_area = get_area(src)
-	if((source_area.area_limited_icon_smoothing && !istype(target_area, source_area.area_limited_icon_smoothing)) || (target_area.area_limited_icon_smoothing && !istype(source_area, target_area.area_limited_icon_smoothing)))
+	if(!can_area_smooth(target_turf))
 		return NO_ADJ_FOUND
 
 	if(isnull(canSmoothWith)) //special case in which it will only smooth with itself

@@ -139,7 +139,8 @@
 		var/mob/living/carbon/human/H = M
 		if((H.species.species_flags & IS_PLANT) && (M.nutrition < 500))
 			if(prob(15))
-				M.apply_effect((rand(30,80)),IRRADIATE)
+				// todo: less stunlock capability
+				M.afflict_radiation(RAD_MOB_AFFLICT_FLORARAY_ON_PLANT, TRUE)
 				M.Weaken(5)
 				var/datum/gender/TM = GLOB.gender_datums[M.get_visible_gender()]
 				for (var/mob/V in viewers(src))
@@ -278,7 +279,7 @@
 		if(ishuman(L))
 			var/mob/living/carbon/human/H = L
 
-			var/target_armor = H.getarmor(def_zone, check_armour)
+			var/target_armor = H.run_mob_armor(def_zone, check_armour)
 			var/obj/item/organ/external/target_limb = H.get_organ(def_zone)
 
 			var/armor_special = 0

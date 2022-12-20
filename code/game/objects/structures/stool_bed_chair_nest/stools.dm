@@ -35,14 +35,15 @@ var/global/list/stool_cache = list() //haha stool
 /obj/item/stool/update_icon()
 	// Prep icon.
 	icon_state = ""
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	// Base icon.
 	var/cache_key = "stool-[material.name]"
 	if(isnull(stool_cache[cache_key]))
 		var/image/I = image(icon, base_icon)
 		I.color = material.icon_colour
 		stool_cache[cache_key] = I
-	overlays |= stool_cache[cache_key]
+	overlays_to_add += stool_cache[cache_key]
 	// Padding overlay.
 	if(padding_material)
 		var/padding_cache_key = "stool-padding-[padding_material.name]"
@@ -50,7 +51,7 @@ var/global/list/stool_cache = list() //haha stool
 			var/image/I =  image(icon, "stool_padding")
 			I.color = padding_material.icon_colour
 			stool_cache[padding_cache_key] = I
-		overlays |= stool_cache[padding_cache_key]
+		overlays_to_add += stool_cache[padding_cache_key]
 	// Strings.
 	if(padding_material)
 		name = "[padding_material.display_name] [initial(name)]" //this is not perfect but it will do for now.
@@ -58,6 +59,8 @@ var/global/list/stool_cache = list() //haha stool
 	else
 		name = "[material.display_name] [initial(name)]"
 		desc = "A stool. Apply butt with care. It's made of [material.use_name]."
+
+	add_overlay(overlays_to_add)
 
 /obj/item/stool/proc/add_padding(var/padding_type)
 	padding_material = get_material_by_name(padding_type)

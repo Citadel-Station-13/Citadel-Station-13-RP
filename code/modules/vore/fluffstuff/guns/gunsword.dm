@@ -52,7 +52,7 @@
 	sharp = 0
 	edge = 0
 	armor_penetration = 50
-	flags = NOBLOODY
+	atom_flags = NOBLOODY
 	var/lrange = 2
 	var/lpower = 2
 	var/lcolor = "#800080"
@@ -124,4 +124,4 @@
 		return (BRUTELOSS|FIRELOSS)
 
 /obj/item/cell/device/weapon/gunsword/update_icon()
-	overlays.Cut()
+	cut_overlay()

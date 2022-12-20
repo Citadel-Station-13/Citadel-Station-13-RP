@@ -11,6 +11,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	item_state = "electronic"
 	w_class = ITEMSIZE_SMALL
 	slot_flags = SLOT_ID | SLOT_BELT
+	rad_flags = RAD_BLOCK_CONTENTS
 
 	//Main variables
 	var/pdachoice = 1
@@ -984,9 +985,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 /obj/item/pda/update_icon()
 	..()
 
-	overlays.Cut()
+	cut_overlays()
 	if(new_message || new_news)
-		overlays += image(icon, "pda-r")
+		add_overlay(image(icon, "pda-r"))
 
 /obj/item/pda/proc/detonate_act(var/obj/item/pda/P)
 	//TODO: sometimes these attacks show up on the message server

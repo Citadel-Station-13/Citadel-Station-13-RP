@@ -105,10 +105,10 @@ About the Holder:
 			Calls each reagent's touch_obj(target).
 
 		trans_to(var/atom/target, var/amount = 1, var/multiplier = 1, var/copy = 0)
-			The general proc for applying reagents to things externally (as opposed to directly injected into the contents). 
+			The general proc for applying reagents to things externally (as opposed to directly injected into the contents).
 			It first calls touch, then the appropriate trans_to_*() or splash_mob().
 			If for some reason you want touch effects to be bypassed (e.g. injecting stuff directly into a reagent container or person), call the appropriate trans_to_*() proc.
-			
+
 			Calls touch() before checking the type of [target], calling splash_mob(target, amount), trans_to_turf(target, amount, multiplier, copy), or trans_to_obj(target, amount, multiplier, copy).
 
 		trans_id_to(var/atom/target, var/id, var/amount = 1)
@@ -295,7 +295,7 @@ About the Tools:
 			'pouring' our reagents into something else.
 
 		atom/proc/is_open_container()
-			Checks atom/var/flags & OPENCONTAINER.
+			Checks atom/var/atom_flags & OPENCONTAINER.
 			If this returns 1 , you can use syringes, beakers etc
 			to manipulate the contents of this object.
 			If it's 0, you'll need to write your own custom reagent

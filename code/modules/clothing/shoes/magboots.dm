@@ -71,7 +71,7 @@
 	name = "vox magclaws"
 	item_state = "boots-vox"
 	icon_state = "boots-vox"
-	flags = PHORONGUARD
+	atom_flags = PHORONGUARD
 	species_restricted = list(SPECIES_VOX)
 
 	action_button_name = "Toggle the magclaws"
@@ -80,7 +80,7 @@
 	if(src.magpulse)
 		clothing_flags &= ~NOSLIP
 		magpulse = 0
-		REMOVE_TRAIT(src, TRAIT_NODROP, MAGBOOT_TRAIT)
+		REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, MAGBOOT_TRAIT)
 		to_chat(user, "You relax your deathgrip on the flooring.")
 	else
 		//make sure these can only be used when equipped.
@@ -93,7 +93,7 @@
 
 		clothing_flags |= NOSLIP
 		magpulse = 1
-		ADD_TRAIT(src, TRAIT_NODROP, MAGBOOT_TRAIT)
+		ADD_TRAIT(src, TRAIT_ITEM_NODROP, MAGBOOT_TRAIT)
 		to_chat(user, "You dig your claws deeply into the flooring, bracing yourself.")
 	user.update_action_buttons()
 
@@ -104,7 +104,7 @@
 		user.visible_message("The [src] go limp as they are removed from [usr]'s feet.", "The [src] go limp as they are removed from your feet.")
 		clothing_flags &= ~NOSLIP
 		magpulse = 0
-		REMOVE_TRAIT(src, TRAIT_NODROP, MAGBOOT_TRAIT)
+		REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, MAGBOOT_TRAIT)
 
 /obj/item/clothing/shoes/magboots/vox/examine(mob/user)
 	. = ..()

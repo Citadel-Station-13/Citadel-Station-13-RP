@@ -102,6 +102,9 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	w_class = ITEMSIZE_NO_CONTAINER
 	layer = UNDER_JUNK_LAYER
+	// todo: don't block rad contents and just have component parts be unable to be contaminated while inside
+	// todo: wow rad contents is a weird system
+	rad_flags = RAD_BLOCK_CONTENTS
 
 	var/machine_stat = 0
 	var/emagged = FALSE
@@ -525,7 +528,10 @@
  */
 /obj/machinery/proc/try_put_in_hand(obj/object, mob/living/user)
 	if(!issilicon(user) && in_range(src, user))
-		user.put_in_hands(object)
+		user.grab_item_from_interacted_with(object, src)
+		// todo: probably split this proc into something that isn't try
+		// because if this fails and something nulls, something bad happens
+		// i bandaided this to drop location but that's inflexible
 	else
 		object.forceMove(drop_location())
 

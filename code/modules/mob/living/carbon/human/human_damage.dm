@@ -204,7 +204,7 @@
 		return
 	..()
 
-/mob/living/carbon/human/Paralyse(amount)
+/mob/living/carbon/human/Unconscious(amount)
 	if(MUTATION_HULK in mutations)
 		return
 	// Notify our AI if they can now control the suit.

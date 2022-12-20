@@ -15,7 +15,7 @@ var/global/list/cached_icons = list()
 	possible_transfer_amounts = list(10,20,30,60)
 	volume = 60
 	unacidable = 0
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	var/paint_type = "red"
 
 /obj/item/reagent_containers/glass/paint/afterattack(turf/simulated/target, mob/user, proximity)

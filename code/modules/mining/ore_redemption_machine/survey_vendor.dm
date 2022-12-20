@@ -19,7 +19,7 @@
 		new /datum/data/mining_equipment("Cigar",						/obj/item/clothing/mask/smokable/cigarette/cigar/havana,	15),
 		new /datum/data/mining_equipment("Soap",						/obj/item/soap/nanotrasen,									20),
 		new /datum/data/mining_equipment("Laser Pointer",				/obj/item/laser_pointer,									90),
-		new /datum/data/mining_equipment("Geiger Counter",				/obj/item/geiger,											75),
+		new /datum/data/mining_equipment("Geiger Counter",				/obj/item/geiger_counter,											75),
 		new /datum/data/mining_equipment("Plush Toy",					/obj/random/plushie,										30),
 		new /datum/data/mining_equipment("Extraction Equipment - Fulton Beacon",	/obj/item/fulton_core,							300),
 		new /datum/data/mining_equipment("Extraction Equipment - Fulton Pack",		/obj/item/extraction_pack,						125),
@@ -88,7 +88,7 @@
 		if(istype(inserted_id))
 			if(href_list["choice"] == "eject")
 				to_chat(usr, "<span class='notice'>You eject the ID from [src]'s card slot.</span>")
-				usr.put_in_hands(inserted_id)
+				usr.put_in_hands_or_drop(inserted_id)
 				inserted_id = null
 		else if(href_list["choice"] == "insert")
 			var/obj/item/card/id/I = usr.get_active_held_item()

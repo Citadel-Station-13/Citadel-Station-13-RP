@@ -8,7 +8,7 @@
 	sharp = 0
 	edge = 0
 	armor_penetration = 50
-	flags = NOCONDUCT | NOBLOODY
+	atom_flags = NOCONDUCT | NOBLOODY
 	var/lrange = 2
 	var/lpower = 2
 	var/lcolor = "#0099FF"
@@ -250,7 +250,7 @@
 	throw_speed = 1
 	throw_range = 5
 	w_class = ITEMSIZE_SMALL
-	flags = NOBLOODY
+	atom_flags = NOBLOODY
 	origin_tech = list(TECH_MAGNET = 3, TECH_ILLEGAL = 4)
 	sharp = 1
 	edge = 1
@@ -259,7 +259,7 @@
 	pickup_sound = 'sound/items/pickup/sword.ogg'
 	projectile_parry_chance = 65
 
-/obj/item/melee/energy/sword/dropped(mob/user, flags, atom/newLoc)
+/obj/item/melee/energy/sword/dropped(mob/user, atom_flags, atom/newLoc)
 	. = ..()
 	if(!istype(loc,/mob))
 		deactivate(user)
@@ -309,8 +309,8 @@
 
 /obj/item/melee/energy/sword/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/melee/energy/sword))
-		if(HAS_TRAIT(W, TRAIT_NODROP) || HAS_TRAIT(src, TRAIT_NODROP))
-			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_NODROP) ? W : src]!</span>")
+		if(HAS_TRAIT(W, TRAIT_ITEM_NODROP) || HAS_TRAIT(src, TRAIT_ITEM_NODROP))
+			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? W : src]!</span>")
 			return
 		if(istype(W, /obj/item/melee/energy/sword/charge))
 			to_chat(user,"<span class='warning'>These blades are incompatible, you can't attach them to each other!</span>")
@@ -375,7 +375,7 @@
 	sharp = 1
 	edge = 1
 	armor_penetration = 0
-	flags = NOBLOODY
+	atom_flags = NOBLOODY
 	lrange = 2
 	lpower = 2
 	lcolor = "#0000FF"
@@ -433,8 +433,8 @@
 
 /obj/item/melee/energy/sword/charge/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/melee/energy/sword/charge))
-		if(HAS_TRAIT(W, TRAIT_NODROP) || HAS_TRAIT(src, TRAIT_NODROP))
-			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_NODROP) ? W : src]!</span>")
+		if(HAS_TRAIT(W, TRAIT_ITEM_NODROP) || HAS_TRAIT(src, TRAIT_ITEM_NODROP))
+			to_chat(user, "<span class='warning'>\the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? src : W] is stuck to your hand, you can't attach it to \the [HAS_TRAIT(src, TRAIT_ITEM_NODROP) ? W : src]!</span>")
 			return
 		else
 			to_chat(user, "<span class='notice'>You combine the two charge swords, making a single supermassive blade! You're cool.</span>")
@@ -489,7 +489,7 @@
 	throw_speed = 1
 	throw_range = 1
 	w_class = ITEMSIZE_LARGE//So you can't hide it in your pocket or some such.
-	flags = NOBLOODY
+	atom_flags = NOBLOODY
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	var/mob/living/creator
 	var/datum/effect_system/spark_spread/spark_system
@@ -512,7 +512,7 @@
 /obj/item/melee/energy/blade/attack_self(mob/user as mob)
 	qdel(src)
 
-/obj/item/melee/energy/blade/dropped(mob/user, flags, atom/newLoc)
+/obj/item/melee/energy/blade/dropped(mob/user, atom_flags, atom/newLoc)
 	. = ..()
 	qdel(src)
 
@@ -677,7 +677,7 @@
 			P.die_off()
 
 /*
-/obj/item/melee/energy/hfmachete/dropped(mob/user, flags, atom/newLoc)
+/obj/item/melee/energy/hfmachete/dropped(mob/user, atom_flags, atom/newLoc)
 	user.lazy_unregister_event(/lazy_event/on_moved, src, .proc/mob_moved)
 
 /obj/item/melee/energy/hfmachete/throw_at_old(atom/target, range, speed, thrower) // todo: get silicons to interpret this because >sleeps

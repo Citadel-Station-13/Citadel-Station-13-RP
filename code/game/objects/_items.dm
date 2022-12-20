@@ -2,6 +2,8 @@
 	name = "item"
 	icon = 'icons/obj/items.dmi'
 	w_class = ITEMSIZE_NORMAL
+	// todo: better way, for now, block all rad contamination to interior
+	rad_flags = RAD_BLOCK_CONTENTS
 
 	/// flags relating to items - see [code/__DEFINES/_flags/item_flags.dm]
 	var/item_flags = NONE
@@ -526,7 +528,7 @@
 					to_chat(M, "<span class='warning'>You drop what you're holding and clutch at your eyes!</span>")
 					M.drop_active_held_item()
 				M.eye_blurry += 10
-				M.Paralyse(1)
+				M.Unconscious(1)
 				M.Weaken(4)
 			if (eyes.damage >= eyes.min_broken_damage)
 				if(M.stat != 2)
@@ -542,7 +544,7 @@
 /obj/item/clean_blood()
 	. = ..()
 	if(blood_overlay)
-		overlays.Remove(blood_overlay)
+		cut_overlay(blood_overlay)
 	if(istype(src, /obj/item/clothing/gloves))
 		var/obj/item/clothing/gloves/G = src
 		G.transfer_blood = 0
@@ -567,7 +569,7 @@
 
 	//Make the blood_overlay have the proper color then apply it.
 	blood_overlay.color = blood_color
-	overlays += blood_overlay
+	add_overlay(blood_overlay)
 
 	//if this blood isn't already in the list, add it
 	if(istype(M))
@@ -598,7 +600,7 @@
 	set category = "Object"
 
 	var/obj/item/I = get_active_held_item()
-	if(I && !(I.flags & ATOM_ABSTRACT))
+	if(I && !(I.atom_flags & ATOM_ABSTRACT))
 		I.showoff(src)
 
 /*

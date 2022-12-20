@@ -6,11 +6,12 @@
 	pass_flags_self = ATOM_PASS_GLASS
 	CanAtmosPass = ATMOS_PASS_PROC
 	w_class = ITEMSIZE_NORMAL
+	rad_flags = RAD_BLOCK_CONTENTS | RAD_NO_CONTAMINATE
 
 	layer = WINDOW_LAYER
 	pressure_resistance = 4*ONE_ATMOSPHERE
 	anchored = TRUE
-	flags = ON_BORDER
+	atom_flags = ATOM_BORDER
 
 	/// are we reinforced? this is only to modify our construction state/steps.
 	var/considered_reinforced = FALSE
@@ -28,7 +29,7 @@
 	var/force_threshold = 0
 	var/basestate
 	var/shardtype = /obj/item/material/shard
-	var/glasstype = null // Set this in subtypes. Null is assumed strange or otherwise impossible to dismantle, such as for shuttle glass.
+	var/glasstype = null // Set this in subtypes. Null is assumed strange osr otherwise impossible to dismantle, such as for shuttle glass.
 	var/silicate = 0 // number of units of silicate
 
 /obj/structure/window/Initialize(mapload)
@@ -42,7 +43,7 @@
 		fulltile = TRUE
 	if(fulltile)
 		// clickcode requires this :(
-		flags &= ~ON_BORDER
+		atom_flags &= ~ATOM_BORDER
 
 /obj/structure/window/examine(mob/user)
 	. = ..()
@@ -102,13 +103,13 @@
 
 /obj/structure/window/proc/updateSilicate()
 	if (overlays)
-		overlays.Cut()
+		cut_overlays()
 	update_icon()
 
 	var/image/img = image(src)
 	img.color = "#ffffff"
 	img.alpha = silicate * 255 / 100
-	overlays += img
+	add_overlay(img)
 
 /obj/structure/window/proc/shatter(var/display_message = 1)
 	playsound(src, "shatter", 70, 1)
@@ -442,7 +443,8 @@
 /obj/structure/window/update_icon()
 	//A little cludge here, since I don't know how it will work with slim windows. Most likely VERY wrong.
 	//this way it will only update full-tile ones
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	if(!is_fulltile())
 		icon_state = "[basestate]"
 		return
@@ -457,16 +459,19 @@
 	icon_state = ""
 	for(var/i = 1 to 4)
 		var/image/I = image(icon, "[basestate][connections[i]]", dir = 1<<(i-1))
-		overlays += I
+		overlays_to_add += I
 
 	// Damage overlays.
 	var/ratio = health / maxhealth
 	ratio = CEILING(ratio * 4, 1) * 25
 
 	if(ratio > 75)
+		add_overlay(overlays_to_add)
 		return
 	var/image/I = image(icon, "damage[ratio]", layer = layer + 0.1)
-	overlays += I
+	overlays_to_add += I
+
+	add_overlay(overlays_to_add)
 
 	return
 
@@ -585,6 +590,10 @@
 	maxhealth = 24
 	fulltile = TRUE
 
+	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
+
 /obj/structure/window/phoronbasic
 	name = "phoron window"
 	desc = "A borosilicate alloy window. It seems to be quite strong."
@@ -601,6 +610,10 @@
 	icon_state = "phoronwindow-full"
 	maxhealth = 80
 	fulltile = TRUE
+
+	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
 /obj/structure/window/phoronreinforced
 	name = "reinforced borosilicate window"
@@ -620,6 +633,11 @@
 	maxhealth = 160
 	fulltile = TRUE
 
+	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
+
+
 /obj/structure/window/reinforced
 	name = "reinforced window"
 	desc = "It looks rather strong. Might take a few good hits to shatter it."
@@ -636,6 +654,10 @@
 	icon_state = "rwindow-full"
 	maxhealth = 80
 	fulltile = TRUE
+
+	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
 /obj/structure/window/reinforced/tinted
 	name = "tinted window"
@@ -664,6 +686,10 @@
 	dir = 5
 	force_threshold = 7
 
+	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE)
+	canSmoothWith = (SMOOTH_GROUP_WALLS + SMOOTH_GROUP_WINDOW_FULLTILE_SHUTTLE + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_SHUTTLE_PARTS)
+
 /obj/structure/window/reinforced/polarized
 	name = "electrochromic window"
 	desc = "Adjusts its tint with voltage. Might take a few good hits to shatter it."
@@ -673,6 +699,10 @@
 	icon_state = "rwindow-full"
 	maxhealth = 80
 	fulltile = TRUE
+
+	// smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = (SMOOTH_GROUP_WINDOW_FULLTILE)
+	canSmoothWith = (SMOOTH_GROUP_SHUTTERS_BLASTDOORS + SMOOTH_GROUP_AIRLOCK + SMOOTH_GROUP_WINDOW_FULLTILE + SMOOTH_GROUP_WALLS)
 
 /obj/structure/window/reinforced/polarized/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/multitool) && !anchored) // Only allow programming if unanchored!

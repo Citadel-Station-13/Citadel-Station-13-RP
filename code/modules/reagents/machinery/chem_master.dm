@@ -10,7 +10,7 @@
 	circuit = /obj/item/circuitboard/chem_master
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	clicksound = "button"
 
 	/// Input reagents container.

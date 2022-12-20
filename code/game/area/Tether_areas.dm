@@ -69,12 +69,10 @@
 /area/vacant/vacant_restaurant_upper
 	name = "\improper Vacant Restaurant"
 	icon_state = "vacant_site"
-	flags = null
 
 /area/vacant/vacant_restaurant_lower
 	name = "\improper Vacant Restaurant"
 	icon_state = "vacant_site"
-	flags = null
 
 /area/engineering/engineering_airlock
 	name = "\improper Engineering Airlock"
@@ -243,7 +241,7 @@
 	icon_state = "dk_yellow"
 /area/vacant/vacant_site/east
 	name = "\improper East Base Vacant Site"
-	flags = null
+
 /area/vacant/vacant_library
 	name = "\improper Atrium Construction Site"
 /area/vacant/vacant_bar
@@ -936,7 +934,7 @@
 	area_flags = AREA_RAD_SHIELDED
 /area/tether/surfacebase/vacant_site
 	name = "\improper Vacant Site"
-	flags = null
+
 /area/crew_quarters/freezer
 	name = "\improper Kitchen Freezer"
 /area/crew_quarters/panic_shelter
