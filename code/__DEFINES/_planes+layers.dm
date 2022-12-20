@@ -137,7 +137,7 @@
 #define EXPOSED_PIPE_LAYER          (TURF_LAYER+0.06)
 #define EXPOSED_WIRE_LAYER          (TURF_LAYER+0.07)
 #define EXPOSED_WIRE_TERMINAL_LAYER (TURF_LAYER+0.08)
-#define EXPOSED_ATMOS_LAYER         (AREA_LAYER+0.09) /// Pipe-like atmos machinery that goes on the floor, like filters.
+#define EXPOSED_ATMOS_LAYER         (TURF_LAYER+0.09) /// Pipe-like atmos machinery that goes on the floor, like filters.
 #define CATWALK_LAYER               (TURF_LAYER+0.10)
 #define PLANT_LAYER                 (TURF_LAYER+0.12)
 
