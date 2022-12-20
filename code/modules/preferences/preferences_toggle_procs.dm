@@ -334,7 +334,7 @@
 		to_chat(src,"You will [ (is_preference_enabled(pref_path)) ? "now" : "no longer"] receive debug logs.")
 		SScharacters.queue_preferences_save(prefs)
 
-	feedback_add_details("admin_verb","TBeSpecial") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!"
+	feedback_add_details("admin_verb","TBeSpecial") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 //Mods
 /client/proc/toggle_attack_logs()
