@@ -35,7 +35,7 @@
 
 //Medical
 /datum/gear/restricted/medical
-	allowed_roles = list("Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic")
+	allowed_roles = list("Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic", "Head Nurse")
 
 /datum/gear/restricted/medical/eyes
 	slot = SLOT_ID_GLASSES
@@ -60,7 +60,7 @@
 
 //Engineering
 /datum/gear/restricted/engineering
-	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician")
+	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Senior Engineer")
 
 /datum/gear/restricted/engineering/eyes
 	slot = SLOT_ID_GLASSES
@@ -107,7 +107,7 @@
 
 //Science
 /datum/gear/restricted/science
-	allowed_roles = list("Research Director", "Scientist", "Xenobiologist", "Roboticist", "Explorer", "Pathfinder")
+	allowed_roles = list("Research Director", "Scientist", "Xenobiologist", "Roboticist", "Explorer", "Pathfinder", "Senior Researcher")
 
 /datum/gear/restricted/science/eyes
 	slot = SLOT_ID_GLASSES
@@ -191,7 +191,7 @@
 
 //Engineering + Science + Supply
 /datum/gear/restricted/eng_sci_supply
-	allowed_roles = list("Station Engineer", "Chief Engineer", "Atmospheric Technician", "Scientist", "Xenobiologist",  "Roboticist", "Explorer", "Pathfinder", "Research Director", "Shaft Miner", "Cargo Technician", "Quartermaster")
+	allowed_roles = list("Senior Engineer", "Station Engineer", "Chief Engineer", "Atmospheric Technician", "Scientist", "Xenobiologist",  "Roboticist", "Senior Researcher", "Explorer", "Pathfinder", "Research Director", "Shaft Miner", "Cargo Technician", "Quartermaster")
 
 /datum/gear/restricted/eng_sci_supply/eyes
 	slot = SLOT_ID_GLASSES
@@ -199,7 +199,7 @@
 
 //Medical + Science
 /datum/gear/restricted/med_sci
-	allowed_roles = list("Research Director", "Scientist", "Xenobiologist", "Roboticist", "Explorer", "Pathfinder", "Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic")
+	allowed_roles = list("Research Director", "Scientist", "Xenobiologist", "Roboticist", "Explorer", "Senior Researcher", "Pathfinder", "Medical Doctor", "Chief Medical Officer", "Chemist", "Paramedic", "Geneticist", "Psychiatrist", "Field Medic", "Head Nurse")
 
 /datum/gear/restricted/med_sci/head
 	slot = SLOT_ID_HEAD

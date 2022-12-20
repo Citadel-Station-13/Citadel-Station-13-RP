@@ -48,7 +48,7 @@
 		if(isnull(parallax_image_holder))
 			return
 	parallax_image_holder.layer = PARALLAX_PLANE
-	parallax_image_holder.overlays = list(I)
+	parallax_image_holder.add_overlay(I)
 	return parallax_image_holder
 
 //Overlay of how this object should look on other skyboxes

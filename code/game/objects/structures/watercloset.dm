@@ -119,8 +119,6 @@
 			else
 				to_chat(user, "<span class='notice'>You need a tighter grip.</span>")
 
-
-
 /obj/machinery/shower
 	name = "shower"
 	desc = "The HS-451. Installed in the 2550s by the Hygiene Division."
@@ -183,13 +181,13 @@
 			add_fingerprint(user)
 
 /obj/machinery/shower/update_icon()	//this is terribly unreadable, but basically it makes the shower mist up
-	overlays.Cut()					//once it's been on for a while, in addition to handling the water overlay.
+	cut_overlays()					//once it's been on for a while, in addition to handling the water overlay.
 	if(mymist)
 		qdel(mymist)
 		mymist = null
 
 	if(on)
-		overlays += image('icons/obj/watercloset.dmi', src, "water", MOB_LAYER + 1, dir)
+		add_overlay(image('icons/obj/watercloset.dmi', src, "water", MOB_LAYER + 1, dir))
 		if(temperature_settings[watertemp] < T20C)
 			return //no mist for cold water
 		if(!ismist)
@@ -211,7 +209,10 @@
 
 //Yes, showers are super powerful as far as washing goes.
 /obj/machinery/shower/proc/wash(atom/movable/O as obj|mob)
-	if(!on) return
+	if(!on)
+		return
+
+	O.clean_radiation(RAD_CONTAMINATION_CLEANSE_POWER, RAD_CONTAMINATION_CLEANSE_FACTOR)
 
 	if(isliving(O))
 		var/mob/living/L = O
@@ -308,7 +309,7 @@
 	for(var/thing in loc)
 		var/atom/movable/AM = thing
 		var/mob/living/L = thing
-		if(istype(AM) && !(AM.flags & ATOM_ABSTRACT))
+		if(istype(AM) && !(AM.atom_flags & ATOM_ABSTRACT))
 			wash(AM)
 			if(istype(L))
 				process_heat(L)

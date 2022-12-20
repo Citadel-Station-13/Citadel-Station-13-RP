@@ -77,6 +77,9 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
  * Can equip supports some abstract slots but not others.
  */
 /datum/inventory_slot_meta
+	/// abstract type
+	abstract_type = /datum/inventory_slot_meta
+
 	//! Intrinsics
 	/// slot name
 	var/name = "unknown"
@@ -84,8 +87,6 @@ GLOBAL_LIST_EMPTY(inventory_slot_type_cache)
 	var/id
 	/// next id
 	var/static/id_next = 0
-	/// abstract type
-	var/abstract_type = /datum/inventory_slot_meta
 	/// flags
 	var/inventory_slot_flags = INV_SLOT_IS_RENDERED
 	/// display order - higher is upper. a <hr> is applied on 0.

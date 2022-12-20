@@ -86,6 +86,8 @@
 	else
 		to_chat(user, "Scanning array is recharging.")
 
+/obj/item/ano_scanner/integrated
+
 /obj/item/depth_scanner
 	name = "depth analysis scanner"
 	desc = "Used to check spatial depth and density of rock outcroppings."
@@ -332,7 +334,7 @@
 
 /obj/item/xenoarch_multi_tool/Initialize(mapload)
 	. = ..()
-	anomaly_scanner = new/obj/item/ano_scanner(src)
+	anomaly_scanner = new/obj/item/ano_scanner/integrated(src)
 	depth_scanner = new/obj/item/depth_scanner(src)
 
 /obj/item/xenoarch_multi_tool/attack_self(var/mob/living/user)
@@ -354,4 +356,4 @@
 	set desc = "Scan for artifacts and anomalies within your vicinity."
 	if(!(src in usr))
 		return
-	anomaly_scanner.ui_interact(usr)
+	anomaly_scanner.interact(usr)

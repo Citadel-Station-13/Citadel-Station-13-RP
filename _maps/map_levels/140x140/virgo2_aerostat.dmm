@@ -156,7 +156,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/solars)
 "aw" = (
-/turf/unsimulated/floor/sky/virgo2_sky,
+/turf/simulated/floor/sky/virgo2_sky,
 /area/tether_away/aerostat)
 "ax" = (
 /obj/machinery/power/solar,
@@ -273,12 +273,6 @@
 /turf/simulated/floor/bluegrid/virgo2,
 /area/tether_away/aerostat/inside)
 "aL" = (
-/turf/simulated/floor/bluegrid/virgo2,
-/area/tether_away/aerostat/inside)
-"aM" = (
-/obj/structure/cable{
-	icon_state = "2-4"
-	},
 /turf/simulated/floor/bluegrid/virgo2,
 /area/tether_away/aerostat/inside)
 "aN" = (
@@ -424,11 +418,6 @@
 "be" = (
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/inside)
-"bf" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
-/turf/simulated/floor/plating/virgo2,
-/area/tether_away/aerostat/inside)
 "bg" = (
 /turf/simulated/shuttle/floor/yellow,
 /area/shuttle/aerostat)
@@ -467,9 +456,7 @@
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/inside)
 "bo" = (
-/obj/structure/grille,
-/obj/structure/grille,
-/obj/structure/window/reinforced/full,
+/obj/spawner/window/reinforced/full,
 /turf/simulated/floor/plating/virgo2,
 /area/tether_away/aerostat/inside)
 "bp" = (
@@ -820,7 +807,7 @@
 	landmark_tag = "aerostat_west";
 	name = "Virgo 2 Aerostat (W)"
 	},
-/turf/unsimulated/floor/sky/virgo2_sky,
+/turf/simulated/floor/sky/virgo2_sky,
 /area/tether_away/aerostat)
 "cw" = (
 /obj/effect/floor_decal/rust,
@@ -1005,7 +992,7 @@
 /area/tether_away/aerostat/inside)
 "cZ" = (
 /obj/effect/blocker,
-/turf/unsimulated/floor/sky/virgo2_sky,
+/turf/unsimulated/wall/planetary/virgo2,
 /area/tether_away/aerostat)
 "da" = (
 /obj/effect/floor_decal/plaque{
@@ -1210,7 +1197,7 @@
 /area/tether_away/aerostat/solars)
 "dw" = (
 /obj/structure/metal_edge,
-/turf/unsimulated/floor/sky/virgo2_sky,
+/turf/simulated/floor/sky/virgo2_sky,
 /area/tether_away/aerostat/solars)
 "dx" = (
 /obj/structure/cable/yellow{
@@ -1535,19 +1522,14 @@
 	landmark_tag = "aerostat_northwest";
 	name = "Virgo 2 Aerostat (NW)"
 	},
-/turf/unsimulated/floor/sky/virgo2_sky,
+/turf/simulated/floor/sky/virgo2_sky,
 /area/tether_away/aerostat)
 "kF" = (
 /obj/random/action_figure,
 /turf/simulated/floor/tiled/techfloor/virgo2,
 /area/tether_away/aerostat/inside)
 "pd" = (
-/obj/effect/shuttle_landmark{
-	base_area = /area/tether_away/aerostat;
-	base_turf = /turf/unsimulated/floor/sky/virgo2_sky;
-	landmark_tag = "aerostat_east";
-	name = "Virgo 2 Aerostat (E)"
-	},
+/obj/effect/shuttle_landmark/shuttle_initializer/map_specifc/virgo2_ferry,
 /turf/simulated/shuttle/floor/yellow,
 /area/shuttle/aerostat)
 "tZ" = (
@@ -1577,7 +1559,7 @@
 	landmark_tag = "aerostat_south";
 	name = "Virgo 2 Aerostat (S)"
 	},
-/turf/unsimulated/floor/sky/virgo2_sky,
+/turf/simulated/floor/sky/virgo2_sky,
 /area/tether_away/aerostat)
 "AS" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -1593,7 +1575,7 @@
 	landmark_tag = "aerostat_northeast";
 	name = "Virgo 2 Aerostat (NE)"
 	},
-/turf/unsimulated/floor/sky/virgo2_sky,
+/turf/simulated/floor/sky/virgo2_sky,
 /area/tether_away/aerostat)
 "Du" = (
 /obj/effect/floor_decal/industrial/warning/dust{
@@ -1625,7 +1607,7 @@
 /area/tether_away/aerostat/inside)
 "JG" = (
 /obj/structure/metal_edge,
-/turf/unsimulated/floor/sky/virgo2_sky,
+/turf/simulated/floor/sky/virgo2_sky,
 /area/tether_away/aerostat)
 "Lw" = (
 /obj/structure/table/standard,
@@ -1658,7 +1640,7 @@
 /area/tether_away/aerostat/inside)
 "Tq" = (
 /obj/effect/overmap/visitable/sector/virgo2,
-/turf/unsimulated/floor/sky/virgo2_sky,
+/turf/simulated/floor/sky/virgo2_sky,
 /area/tether_away/aerostat)
 "TR" = (
 /obj/structure/salvageable/computer,
@@ -8974,16 +8956,16 @@ ac
 ac
 ac
 ac
-bf
-bf
+bo
+bo
 ac
 ac
-bf
-bf
+bo
+bo
 ac
 ac
-bf
-bf
+bo
+bo
 ac
 ac
 ac
@@ -9167,16 +9149,16 @@ ac
 ac
 ac
 ac
-bf
-bf
+bo
+bo
 ac
 ac
-bf
-bf
+bo
+bo
 ac
 ac
-bf
-bf
+bo
+bo
 ac
 ac
 ac
@@ -9258,16 +9240,16 @@ ac
 ac
 ac
 ac
-bf
-bf
-ac
-ac
-bf
-bf
+bo
+bo
 ac
 ac
 bo
-bf
+bo
+ac
+ac
+bo
+bo
 ac
 ac
 ac
@@ -9451,16 +9433,16 @@ ce
 ac
 ac
 ac
-bf
-bf
-ac
-ac
-bf
-bf
+bo
+bo
 ac
 ac
 bo
-bf
+bo
+ac
+ac
+bo
+bo
 ac
 ac
 ac
@@ -10876,12 +10858,12 @@ be
 be
 be
 be
-be
-bf
-bf
-bf
-bf
-bf
+bo
+bo
+bo
+bo
+bo
+bo
 aw
 aw
 aw
@@ -10959,12 +10941,12 @@ aw
 aw
 aw
 aw
-bf
-bf
-bf
-bf
-bf
-be
+bo
+bo
+bo
+bo
+bo
+bo
 be
 be
 be
@@ -11023,7 +11005,7 @@ be
 be
 be
 be
-bf
+bo
 aw
 aw
 aw
@@ -11101,7 +11083,7 @@ aw
 aw
 aw
 aw
-bf
+bo
 Wk
 be
 be
@@ -11165,7 +11147,7 @@ be
 be
 be
 be
-bf
+bo
 aw
 aw
 aw
@@ -11243,7 +11225,7 @@ aw
 aw
 aw
 aw
-bf
+bo
 be
 be
 bi
@@ -11380,11 +11362,11 @@ aw
 aw
 ac
 bo
-bf
+bo
 ac
 ac
 bo
-bf
+bo
 ac
 be
 be
@@ -11452,11 +11434,11 @@ bq
 ac
 ac
 bo
-bf
+bo
 ac
 ac
 bo
-bf
+bo
 ac
 aw
 aw
@@ -11700,7 +11682,7 @@ aw
 bq
 be
 ac
-aM
+aQ
 cP
 dK
 dM
@@ -11806,11 +11788,11 @@ aw
 aw
 ac
 bo
-bf
+bo
 ac
 ac
 bo
-bf
+bo
 ac
 be
 be
@@ -11878,11 +11860,11 @@ bq
 ac
 ac
 bo
-bf
+bo
 ac
 ac
 bo
-bf
+bo
 ac
 aw
 aw
@@ -11953,7 +11935,7 @@ aw
 aw
 aw
 aw
-bf
+bo
 be
 be
 bk
@@ -12095,7 +12077,7 @@ aw
 aw
 aw
 aw
-bf
+bo
 be
 be
 be
@@ -12159,7 +12141,7 @@ be
 be
 be
 be
-bf
+bo
 aw
 aw
 aw
@@ -12237,12 +12219,12 @@ aw
 aw
 aw
 aw
-bf
-bf
-bf
-bf
-bf
-be
+bo
+bo
+bo
+bo
+bo
+bo
 be
 be
 be
@@ -12301,7 +12283,7 @@ be
 be
 be
 be
-bf
+bo
 aw
 aw
 aw
@@ -12439,11 +12421,11 @@ be
 be
 be
 be
-bf
-bf
-bf
-bf
-bf
+bo
+bo
+bo
+bo
+bo
 aw
 aw
 aw
@@ -13853,16 +13835,16 @@ ce
 ac
 ac
 ac
-bf
-bf
+bo
+bo
 ac
 ac
-bf
-bf
+bo
+bo
 ac
 ac
-bf
-bf
+bo
+bo
 ac
 ac
 ac
@@ -13944,16 +13926,16 @@ ac
 ac
 ac
 ac
-bf
-bf
+bo
+bo
 ac
 ac
-bf
-bf
+bo
+bo
 ac
 ac
-bf
-bf
+bo
+bo
 ac
 ac
 ac
@@ -14137,16 +14119,16 @@ ac
 ac
 ac
 ac
-bf
-bf
-ac
-ac
-bf
-bf
+bo
+bo
 ac
 ac
 bo
-bf
+bo
+ac
+ac
+bo
+bo
 ac
 ac
 ac
@@ -14228,16 +14210,16 @@ ac
 ac
 ac
 ac
-bf
-bf
-ac
-ac
-bf
-bf
+bo
+bo
 ac
 ac
 bo
-bf
+bo
+ac
+ac
+bo
+bo
 ac
 ac
 ac

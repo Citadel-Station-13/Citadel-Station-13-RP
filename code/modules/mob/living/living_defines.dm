@@ -1,3 +1,10 @@
+/**
+ * # /mob/living
+ *
+ * mob/living is the base type of mobs that have health
+ * there's probably a better explanation we can type someday but for that, uh
+ * yeah.
+ */
 /mob/living
 	see_invisible = SEE_INVISIBLE_LIVING
 	movable_flags = MOVABLE_NO_THROW_SPIN | MOVABLE_NO_THROW_DAMAGE_SCALING | MOVABLE_NO_THROW_SPEED_SCALING
@@ -29,6 +36,8 @@
 	var/brainloss = 0
 	/// Hallucination damage. 'Fake' damage obtained through hallucinating or the holodeck. Sleeping should cause it to wear off.
 	var/halloss = 0
+	/// radiation stored in us
+	var/radiation = 0
 
 	/// Directly affects how long a mob will hallucinate for
 	var/hallucination = 0

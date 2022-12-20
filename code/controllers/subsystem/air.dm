@@ -17,6 +17,8 @@ SUBSYSTEM_DEF(air)
 
 	/// Associative id = datum list of generated /datum/atmosphere's.
 	var/list/generated_atmospheres
+	/// cached lists of unpacked gas-strings
+	var/list/cached_strings
 
 	var/cost_turfs = 0
 	var/cost_edges = 0
@@ -33,8 +35,20 @@ SUBSYSTEM_DEF(air)
 	// This is used to tell Travis WHERE the edges are.
 	var/list/startup_active_edge_log = list()
 
-/datum/controller/subsystem/air/PreInit()
+/datum/controller/subsystem/air/PreInit(recovering)
 	air_master = src
+
+/datum/controller/subsystem/air/Preload(recovering)
+	cached_strings = list()
+	generate_atmospheres()
+
+/datum/controller/subsystem/air/Recover()
+	// Preload() already generated stock ones
+	if(islist(SSair?.generated_atmospheres))
+		for(var/id in SSair.generated_atmospheres)
+			if(generated_atmospheres[id])
+				continue
+			generated_atmospheres[id] = SSair.generated_atmospheres[id]
 
 /datum/controller/subsystem/air/Initialize(timeofday)
 #ifndef FASTBOOT_DISABLE_ZONES
@@ -47,14 +61,17 @@ SUBSYSTEM_DEF(air)
 		S.update_air_properties()
 		CHECK_TICK
 
-	var/to_send = "<blockquote class ='info'>"
+	// var/to_send = "<blockquote class ='info'>"
+	var/to_send = ""
 	to_send += SPAN_DEBUG("<b>Geometry initialized in [round(0.1*(REALTIMEOFDAY-timeofday),0.1)] seconds.</b><hr>")
 	to_send += SPAN_DEBUGINFO("Total Simulated Turfs: [simulated_turf_count]")
 	to_send += SPAN_DEBUGINFO("\nTotal Zones: [zones.len]")
 	to_send += SPAN_DEBUGINFO("\nTotal Edges: [edges.len]")
 	to_send += SPAN_DEBUGINFO("\nTotal Active Edges: [active_edges.len ? SPAN_DANGER("[active_edges.len]") : "None"]")
 	to_send += SPAN_DEBUGINFO("\nTotal Unsimulated Turfs: [world.maxx*world.maxy*world.maxz - simulated_turf_count]")
-	to_send += SPAN_DEBUGINFO("</blockquote>")
+	// to_send += SPAN_DEBUGINFO("</blockquote>")
+
+	to_send = SPAN_BLOCKQUOTE(JOINTEXT(to_send), "info")
 
 	admin_notice(to_send, R_DEBUG)
 
@@ -133,7 +150,7 @@ SUBSYSTEM_DEF(air)
 		T.update_air_properties()
 		T.post_update_air_properties()
 		#ifdef ZAS_DEBUG_GRAPHICS
-		T.overlays -= mark
+		T.cut_overlay(mark)
 		#endif
 		if(MC_TICK_CHECK)
 			return
@@ -150,7 +167,7 @@ SUBSYSTEM_DEF(air)
 		T.update_air_properties()
 		T.post_update_air_properties()
 		#ifdef ZAS_DEBUG_GRAPHICS
-		T.overlays -= mark
+		T.cut_overlay(mark)
 		#endif
 		if(MC_TICK_CHECK)
 			return
@@ -291,6 +308,8 @@ SUBSYSTEM_DEF(air)
   * Initializes all subtypes of /datum/atmosphere and indexes them by key.
   */
 /datum/controller/subsystem/air/proc/generate_atmospheres()
+	// todo: pretty world init progress reporter for everyone
+	report_progress("SSair: Generating atmospheres...")
 	generated_atmospheres = list()
 	for(var/T in subtypesof(/datum/atmosphere))
 		var/datum/atmosphere/A = T
@@ -300,18 +319,48 @@ SUBSYSTEM_DEF(air)
 		generated_atmospheres[A.id] = A
 
 /**
-  * Preprocess a gas string, replacing it with a specific atmosphere's if necessary.
-  */
-/datum/controller/subsystem/air/proc/preprocess_gas_string(gas_string, turf/T)
-	if(!generated_atmospheres)
-		generate_atmospheres()
-	if(gas_string == ATMOSPHERE_ID_USE_ZTRAIT)
-		gas_string = SSmapping.level_trait(T.z, ZTRAIT_DEFAULT_ATMOS) || GAS_STRING_VACUUM
-	gas_string = "[gas_string]"
-	if(!generated_atmospheres[gas_string])
-		return gas_string
-	var/datum/atmosphere/mix = generated_atmospheres[gas_string]
-	return mix.gas_string
+ * parses a gas string
+ * returns list(gas list, temp)
+ *
+ * @params
+ * - gas_string - gas string
+ * - turf_context - turf location
+ */
+/datum/controller/subsystem/air/proc/_parse_gas_string(gas_string, turf/turf_context)
+	// 1. check if area
+	if(gas_string == ATMOSPHERE_USE_AREA)
+		var/area/A = turf_context.loc
+		gas_string = A.initial_gas_mix
+	// 2. check if it's special and should look up the level's defaults
+	switch(gas_string)
+		if(ATMOSPHERE_USE_INDOORS)
+			gas_string = GAS_STRING_STP
+		if(ATMOSPHERE_USE_OUTDOORS)
+			gas_string = SSmapping.level_trait(turf_context.z, ZTRAIT_DEFAULT_ATMOS) || GAS_STRING_VACUUM
+	// 3: process atmosphere
+	if(generated_atmospheres[gas_string])
+		var/datum/atmosphere/A = generated_atmospheres[gas_string]
+		gas_string = A.gas_string
+	. = cached_strings[gas_string]
+	if(.)
+		return
+	return (cached_strings[gas_string] = unpack_gas_string(gas_string))
+
+/datum/controller/subsystem/air/proc/unpack_gas_string(gas_string)
+	var/list/built = new /list(2)
+	var/list/unpacked = params2list(gas_string)
+	var/list/gases = list()
+	built[2] = text2num(unpacked["TEMP"])	// null allowed
+	unpacked -= "TEMP"
+	// convert id to path
+	// todo: remove when we convert gas to ids and not paths why did we ever make it paths aough
+	for(var/i in 1 to length(unpacked))
+		var/id = unpacked[i]
+		var/amount = text2num(unpacked[id])
+		var/path = GLOB.meta_gas_id_lookup[id]
+		gases[path] = amount
+	built[1] = gases
+	return built
 
 #undef SSAIR_TURFS
 #undef SSAIR_EDGES

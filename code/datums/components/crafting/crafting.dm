@@ -119,7 +119,7 @@
 		return
 
 	for(var/atom/movable/AM in range(radius_range, a))
-		if(AM.flags & HOLOGRAM)
+		if(AM.atom_flags & HOLOGRAM)
 			continue
 		. += AM
 
@@ -129,7 +129,7 @@
 	.["other"] = list()
 	.["instances"] = list()
 	for(var/obj/item/I in get_environment(a))
-		if(I.flags & HOLOGRAM)
+		if(I.atom_flags & HOLOGRAM)
 			continue
 		if(.["instances"][I.type])
 			.["instances"][I.type] += I

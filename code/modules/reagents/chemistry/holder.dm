@@ -93,7 +93,7 @@
 	set waitfor = FALSE		// shitcode. reagents shouldn't ever sleep but hey :^)
 	if(QDELETED(my_atom))
 		return FALSE
-	if(my_atom.flags & NOREACT)
+	if(my_atom.atom_flags & NOREACT)
 		return FALSE
 	var/reaction_occurred
 	var/list/eligible_reactions = list()

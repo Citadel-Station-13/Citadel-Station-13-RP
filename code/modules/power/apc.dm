@@ -516,19 +516,22 @@ GLOBAL_LIST_EMPTY(apcs)
 
 	if(!(update_state & UPDATE_ALLGOOD))
 		if(overlays.len)
-			overlays = 0
+			cut_overlays()
 			return
 
 	if(update & 2)
 		if(overlays.len)
-			overlays.len = 0
+			cut_overlays()
 		if(!(machine_stat & (BROKEN|MAINT)) && update_state & UPDATE_ALLGOOD)
-			overlays += status_overlays_lock[locked+1]
-			overlays += status_overlays_charging[charging+1]
+			var/list/overlays_to_add = list()
+			overlays_to_add += status_overlays_lock[locked+1]
+			overlays_to_add += status_overlays_charging[charging+1]
 			if(operating)
-				overlays += status_overlays_equipment[equipment+1]
-				overlays += status_overlays_lighting[lighting+1]
-				overlays += status_overlays_environ[environ+1]
+				overlays_to_add += status_overlays_equipment[equipment+1]
+				overlays_to_add += status_overlays_lighting[lighting+1]
+				overlays_to_add += status_overlays_environ[environ+1]
+
+			add_overlay(overlays_to_add)
 
 	if(update & 3)
 		if(update_state & UPDATE_BLUESCREEN)
@@ -1231,7 +1234,7 @@ GLOBAL_LIST_EMPTY(apcs)
 		main_status = 2
 
 	if(debug)
-		log_debug("Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light] - Longterm: [longtermpower]")
+		log_debug(SPAN_DEBUGINFO("Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light] - Longterm: [longtermpower]"))
 
 	if(cell && !shorted && !grid_check)
 		// draw power from cell as before to power the area

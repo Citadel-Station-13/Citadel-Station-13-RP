@@ -115,7 +115,7 @@
 
 	// Get the clone body ready
 	H.adjustCloneLoss(150) // New damage var so you can't eject a clone early then stab them to abuse the current damage system --NeoFite
-	H.Paralyse(4)
+	H.Unconscious(4)
 
 	// Here let's calculate their health so the pod doesn't immediately eject them!!!
 	H.updatehealth()
@@ -187,7 +187,7 @@
 			return
 
 		else if(occupant.health < heal_level && occupant.getCloneLoss() > 0)
-			occupant.Paralyse(4)
+			occupant.Unconscious(4)
 
 			 //Slowly get that clone healed and finished.
 			occupant.adjustCloneLoss(-2 * heal_rate)

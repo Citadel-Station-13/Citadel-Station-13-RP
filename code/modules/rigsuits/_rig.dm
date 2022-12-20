@@ -172,7 +172,7 @@
 	for(var/obj/item/piece in list(gloves,helmet,boots,chest))
 		if(!istype(piece))
 			continue
-		ADD_TRAIT(piece, TRAIT_NODROP, RIG_TRAIT)
+		ADD_TRAIT(piece, TRAIT_ITEM_NODROP, RIG_TRAIT)
 		piece.name = "[suit_type] [initial(piece.name)]"
 		piece.desc = "It seems to be part of a [src.name]."
 		piece.icon_state = "[suit_state]"
@@ -239,7 +239,7 @@
 
 /obj/item/rig/proc/reset()
 	set_activation_state(RIG_ACTIVATION_OFF)
-	REMOVE_TRAIT(src, TRAIT_NODROP, RIG_TRAIT)
+	REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
 	//Reset the trap and upgrade it. Won't affect standard rigs.
 	trapSprung = 0
 	springtrapped = 1
@@ -317,7 +317,7 @@
 		M.client.screen += booting_L
 		M.client.screen += booting_R
 
-	ADD_TRAIT(src, TRAIT_NODROP, RIG_TRAIT)
+	ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
 	set_activation_state(is_sealing? RIG_ACTIVATION_STARTUP : RIG_ACTIVATION_SHUTDOWN)
 
 	if(is_sealing && !suit_is_deployed())
@@ -395,9 +395,9 @@
 			piece.update_worn_icon()
 
 		if(is_activated())
-			ADD_TRAIT(src, TRAIT_NODROP, RIG_TRAIT)
+			ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
 		else
-			REMOVE_TRAIT(src, TRAIT_NODROP, RIG_TRAIT)
+			REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
 		if(airtight)
 			update_component_sealed()
 		update_icon(1)
@@ -406,10 +406,10 @@
 	// Success!
 	if(is_sealing)
 		set_activation_state(RIG_ACTIVATION_ON)
-		ADD_TRAIT(src, TRAIT_NODROP, RIG_TRAIT)
+		ADD_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
 	else
 		set_activation_state(RIG_ACTIVATION_OFF)
-		REMOVE_TRAIT(src, TRAIT_NODROP, RIG_TRAIT)
+		REMOVE_TRAIT(src, TRAIT_ITEM_NODROP, RIG_TRAIT)
 
 	if(M.hud_used)
 		if(!is_activated())
@@ -705,10 +705,10 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/item/rig/update_icon(var/update_mob_icon)
+/obj/item/rig/update_icon(update_mob_icon)
 
 	//TODO: Maybe consider a cache for this (use mob_icon as blank canvas, use suit icon overlay).
-	overlays.Cut()
+	cut_overlays()
 	if(!mob_icon || update_mob_icon)
 		var/species_icon = 'icons/mob/clothing/rig_back.dmi'
 		// Since setting mob_icon will override the species checks in
@@ -720,7 +720,7 @@
 	if(installed_modules.len)
 		for(var/obj/item/rig_module/module in installed_modules)
 			if(module.suit_overlay)
-				chest.overlays += image("icon" = 'icons/mob/clothing/rig_modules.dmi', "icon_state" = "[module.suit_overlay]", "dir" = SOUTH)
+				chest.add_overlay(image("icon" = 'icons/mob/clothing/rig_modules.dmi', "icon_state" = "[module.suit_overlay]", "dir" = SOUTH))
 
 	if(wearer)
 		wearer.update_inv_shoes()

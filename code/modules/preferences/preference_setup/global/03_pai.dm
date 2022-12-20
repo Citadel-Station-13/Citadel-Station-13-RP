@@ -25,7 +25,7 @@
 /datum/category_item/player_setup_item/player_global/pai/content(datum/preferences/prefs, mob/user, data)
 	. += "<b>pAI:</b><br>"
 	if(!candidate)
-		log_debug("[user] pAI prefs have a null candidate var.")
+		log_debug(SPAN_DEBUGWARNING("[user] pAI prefs have a null candidate var."))
 		return .
 	. += "Name: <a href='?src=\ref[src];option=name'>[candidate.name ? candidate.name : "None Set"]</a><br>"
 	. += "Description: <a href='?src=\ref[src];option=desc'>[candidate.description ? TextPreview(candidate.description, 40) : "None Set"]</a><br>"

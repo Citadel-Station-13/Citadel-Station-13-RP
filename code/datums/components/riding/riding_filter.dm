@@ -239,7 +239,7 @@
 
 /**
  * grab all necessary offhands
- * qdel the entire list on failure.
+ * qdel the entire list on failure.T
  */
 
 /obj/item/offhand/riding

@@ -179,7 +179,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 	initiator_ckey = initiator.ckey
 	initiator_key_name = key_name(initiator, FALSE, TRUE)
 	if(initiator.current_ticket)	//This is a bug
-		log_debug("Multiple ahelp current_tickets")
+		log_debug(SPAN_DEBUG("Multiple ahelp current_tickets"))
 		initiator.current_ticket.AddInteraction("Ticket erroneously left open by code")
 		initiator.current_ticket.Close()
 	initiator.current_ticket = src
@@ -218,7 +218,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 //private
 /datum/admin_help/proc/FullMonty(ref_src)
 	if(!ref_src)
-		ref_src = "\ref[src]"
+		ref_src = "[REF(src)]"
 	. = ADMIN_FULLMONTY_NONAME(initiator.mob)
 	if(state == AHELP_ACTIVE)
 		. += ClosureLinks(ref_src)
@@ -226,12 +226,8 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 //private
 /datum/admin_help/proc/ClosureLinks(ref_src)
 	if(!ref_src)
-		ref_src = "\ref[src]"
-	. = " (<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=reject'>REJT</A>)"
-	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=icissue'>IC</A>)"
-	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
-	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
-	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=handleissue'>HANDLE</A>)"
+		ref_src = "[REF(src)]"
+	. = ADMIN_AHELP_FULLMONTY(ref_src)
 
 //private
 /datum/admin_help/proc/LinkedReplyName(ref_src)
@@ -249,9 +245,9 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick/ticket_list)
 //won't bug irc
 /datum/admin_help/proc/MessageNoRecipient(msg)
 	var/ref_src = "\ref[src]"
-	var/chat_msg = "<span class='adminnotice'><span class='adminhelp'>Ticket [TicketHref("#[id]", ref_src)]</span><b>: [LinkedReplyName(ref_src)] [FullMonty(ref_src)]:</b> [msg]</span>"
+	var/chat_msg = SPAN_ADMINNOTICE("<span class='adminhelp'>Ticket [TicketHref(SPAN_TOOLTIP("Open the ticket in a new window.","#[id]"), ref_src)]</span><b>: [SPAN_TOOLTIP("Open a prompt to reply to this ticket.","[LinkedReplyName(ref_src)]")] [FullMonty(ref_src)]:</b> [msg]")
 
-	AddInteraction("<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>")
+	AddInteraction(SPAN_DANGER("[SPAN_TOOLTIP("Open a prompt to reply to this ticket.","[LinkedReplyName(ref_src)]")]: [msg]"))
 	//send this msg to all admins
 
 	for(var/client/X in GLOB.admins)

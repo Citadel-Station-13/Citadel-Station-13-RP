@@ -14,7 +14,7 @@
 /obj/structure/outcrop/Initialize(mapload)
 	. = ..()
 	if(prob(1))
-		overlays += image(icon, "[initial(icon_state)]-egg")
+		add_overlay(image(icon, "[initial(icon_state)]-egg"))
 
 /obj/structure/outcrop/diamond
 	name = "shiny outcrop"

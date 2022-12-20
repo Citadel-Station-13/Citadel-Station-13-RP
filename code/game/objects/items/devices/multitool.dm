@@ -39,9 +39,9 @@
 	if(colorable)
 		switch(pick("red","green","yellow"))
 			if ("red")
-				overlays += "multi_r"
+				add_overlay("multi_r")
 			if ("green")
-				overlays += "multi_g"
+				add_overlay("multi_g")
 			if ("yellow")
 				return
 		update_icon()

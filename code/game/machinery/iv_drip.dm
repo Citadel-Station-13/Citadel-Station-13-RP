@@ -17,9 +17,9 @@
 	pass_flags_self = ATOM_PASS_TABLE | ATOM_PASS_OVERHEAD_THROW
 
 	/// Who are we sticking our needle in?
-	var/mob/living/carbon/attached
+	var/mob/living/carbon/attached_victim
 	/// Are we donating or injecting?
-	var/mode = IV_INJECTING
+	var/injection_mode = IV_INJECTING
 	/// Whether we feed slower.
 	var/transfer_rate = MAX_IV_TRANSFER_RATE
 	/// Internal beaker.
@@ -35,12 +35,10 @@
 /obj/machinery/iv_drip/Initialize(mapload)
 	. = ..()
 	update_appearance()
-	// if(use_internal_storage)
-	// 	create_reagents(100, TRANSPARENT)
 	interaction_flags_machine |= INTERACT_MACHINE_OFFLINE
 
 /obj/machinery/iv_drip/Destroy()
-	attached = null
+	attached_victim = null
 	QDEL_NULL(reagent_container)
 	return ..()
 
@@ -55,10 +53,9 @@
 	data["transferRate"] = transfer_rate
 	data["maxInjectRate"] = MAX_IV_TRANSFER_RATE
 	data["minInjectRate"] = MIN_IV_TRANSFER_RATE
-	data["mode"] = mode == IV_INJECTING ? TRUE : FALSE
-	data["connected"] = attached ? TRUE : FALSE
+	data["mode"] = injection_mode == IV_INJECTING ? TRUE : FALSE
+	data["connected"] = attached_victim ? TRUE : FALSE
 	data["beakerAttached"] = reagent_container ? TRUE : FALSE
-	// data["useInternalStorage"] = use_internal_storage
 	return data
 
 /obj/machinery/iv_drip/ui_act(action, params)
@@ -81,10 +78,10 @@
 	update_appearance()
 
 /obj/machinery/iv_drip/update_icon_state()
-	if(attached)
-		icon_state = "[base_icon_state]_[mode ? "injecting" : "donating"]"
+	if(attached_victim)
+		icon_state = "[base_icon_state]_[injection_mode ? "injecting" : "donating"]"
 	else
-		icon_state = "[base_icon_state]_[mode ? "injectidle" : "donateidle"]"
+		icon_state = "[base_icon_state]_[injection_mode ? "injectidle" : "donateidle"]"
 	return ..()
 
 /obj/machinery/iv_drip/update_overlays()
@@ -93,7 +90,7 @@
 	if(!reagent_container)
 		return
 
-	. += attached ? "beakeractive" : "beakeridle"
+	. += attached_victim ? "beakeractive" : "beakeridle"
 	var/datum/reagents/target_reagents = get_reagent_holder()
 	if(!target_reagents)
 		return
@@ -124,9 +121,9 @@
 	if(!ishuman(usr) || !usr.canUseTopic(src, be_close = TRUE) || !isliving(target))
 		return
 
-	if(attached)
-		visible_message(SPAN_WARNING("[attached] is detached from [src]."))
-		attached = null
+	if(attached_victim)
+		visible_message(SPAN_WARNING("[attached_victim] is detached from [src]."))
+		attached_victim = null
 		update_appearance()
 		return
 
@@ -141,9 +138,6 @@
 			to_chat(usr, SPAN_WARNING("There's nothing attached to the IV drip!"))
 
 /obj/machinery/iv_drip/attackby(obj/item/W, mob/user, params)
-	// if(use_internal_storage)
-	// 	return ..()
-
 	if(is_type_in_typecache(W, drip_containers))
 		if(reagent_container)
 			to_chat(user, SPAN_WARNING("[reagent_container] is already loaded on [src]!"))
@@ -152,7 +146,7 @@
 			return
 		reagent_container = W
 		to_chat(user, SPAN_NOTICE("You attach [W] to [src]."))
-		// user.log_message("attached a [W] to [src] at [AREACOORD(src)] containing ([reagent_container.reagents.get_reagent_log_string()])", LOG_ATTACK)
+		// user.log_message("attached_victim a [W] to [src] at [AREACOORD(src)] containing ([reagent_container.reagents.get_reagent_log_string()])", LOG_ATTACK)
 		add_fingerprint(user)
 		update_appearance()
 		return
@@ -181,13 +175,13 @@
 		return ..()
 
 /obj/machinery/iv_drip/process(delta_time)
-	if(!attached)
+	if(!attached_victim)
 		return PROCESS_KILL
 
-	if(!(get_dist(src, attached) <= 1 && isturf(attached.loc)))
-		to_chat(attached, SPAN_USERDANGER("The IV drip needle is ripped out of you, leaving an open bleeding wound!"))
+	if(!(get_dist(src, attached_victim) <= 1 && isturf(attached_victim.loc)))
+		to_chat(attached_victim, SPAN_USERDANGER("The IV drip needle is ripped out of you, leaving an open bleeding wound!"))
 		var/list/arm_zones = shuffle(list(BP_R_ARM, BP_L_ARM))
-		var/obj/item/organ/external/chosen_limb = attached.get_organ(arm_zones[1]) || attached.get_organ(arm_zones[2]) || attached.get_organ(BP_TORSO)
+		var/obj/item/organ/external/chosen_limb = attached_victim.get_organ(arm_zones[1]) || attached_victim.get_organ(arm_zones[2]) || attached_victim.get_organ(BP_TORSO)
 		chosen_limb.take_damage(3)
 		chosen_limb.createwound(CUT, 5)
 		detach_iv()
@@ -196,17 +190,17 @@
 	var/datum/reagents/target_reagents = get_reagent_holder()
 	if(target_reagents)
 		// Give blood
-		if(mode)
+		if(injection_mode == IV_INJECTING)
 			if(target_reagents.total_volume)
 				var/real_transfer_amount = transfer_rate
 				if(istype(reagent_container, /obj/item/reagent_containers/blood))
 					// speed up transfer on blood packs
 					real_transfer_amount *= 2
-				target_reagents.trans_to_mob(attached, real_transfer_amount * delta_time * 0.5, type = CHEM_BLOOD)
+				target_reagents.trans_to_mob(attached_victim, real_transfer_amount * delta_time * 0.5, type = CHEM_BLOOD)
 				update_appearance()
 
 		// Take blood
-		else
+		else //? injection_mode == IV_TAKING
 			var/amount = target_reagents.maximum_volume - target_reagents.total_volume
 			amount = min(amount, 4) * delta_time * 0.5
 			// If the beaker is full, ping
@@ -216,15 +210,14 @@
 				return
 
 			// If the human is losing too much blood, beep.
-			if(attached.species.blood_volume < BLOOD_VOLUME_SAFE && prob(5))
+			if(attached_victim.species.blood_volume < BLOOD_VOLUME_SAFE && prob(5))
 				visible_message(SPAN_HEAR("[src] beeps loudly."))
 				playsound(loc, 'sound/machines/twobeep_high.ogg', 50, TRUE)
-			// var/atom/movable/target = use_internal_storage ? src : reagent_container
 			var/atom/movable/target = reagent_container
-			attached.inject_blood(target, amount)
+			attached_victim.inject_blood(target, amount)
 			update_appearance()
 
-/// called when an IV is attached.
+/// Called when an IV is attached.
 /obj/machinery/iv_drip/proc/attach_iv(mob/living/target, mob/user)
 	user.visible_message(
 		SPAN_WARNING("[usr] begins attaching [src] to [target]..."),
@@ -237,10 +230,13 @@
 		SPAN_NOTICE("You attach [src] to [target]."),
 	)
 	// var/datum/reagents/container = get_reagent_holder()
-	// log_combat(usr, target, "attached", src, "containing: ([container.get_reagent_log_string()])")
+	// log_combat(usr, target, "attached_victim", src, "containing: ([container.get_reagent_log_string()])")
 	add_fingerprint(usr)
-	attached = target
-	// START_PROCESSING(SSmachines, src)
+	attached_victim = target
+	if(!speed_process)
+		START_MACHINE_PROCESSING(src)
+	else
+		START_PROCESSING(SSfastprocess, src)
 	update_appearance()
 
 	//! Plumbing Signal
@@ -252,13 +248,11 @@
  */
 /obj/machinery/iv_drip/proc/detach_iv()
 	//! Plumbing Signal
-	// SEND_SIGNAL(src, COMSIG_IV_DETACH, attached)
-
-	attached = null
+	// SEND_SIGNAL(src, COMSIG_IV_DETACH, attached_victim)
+	attached_victim = null
 	update_appearance()
 
 /obj/machinery/iv_drip/proc/get_reagent_holder()
-	// return use_internal_storage ? reagents : reagent_container?.reagents
 	return reagent_container?.reagents
 
 /obj/machinery/iv_drip/verb/eject_beaker()
@@ -274,8 +268,8 @@
 	if(usr.incapacitated())
 		return
 	if(reagent_container)
-		if(attached)
-			visible_message(SPAN_WARNING("[attached] is detached from [src]."))
+		if(attached_victim)
+			visible_message(SPAN_WARNING("[attached_victim] is detached from [src]."))
 			detach_iv()
 		reagent_container.forceMove(drop_location())
 		reagent_container = null
@@ -293,8 +287,8 @@
 		return
 	if(usr.incapacitated())
 		return
-	mode = !mode
-	to_chat(usr, SPAN_NOTICE("The IV drip is now [mode ? "injecting" : "taking blood"]."))
+	injection_mode = !injection_mode
+	to_chat(usr, SPAN_NOTICE("The IV drip is now [injection_mode ? "injecting" : "taking blood"]."))
 	update_appearance()
 
 /obj/machinery/iv_drip/examine(mob/user)
@@ -302,19 +296,16 @@
 	if(get_dist(user, src) > 2)
 		return
 
-	. += "[src] is [mode ? "injecting" : "taking blood"]."
+	. += "[src] is [injection_mode ? "injecting" : "taking blood"]."
 
 	if(reagent_container)
 		if(reagent_container.reagents && reagent_container.reagents.reagent_list.len)
 			. += SPAN_NOTICE("Attached is \a [reagent_container] with [reagent_container.reagents.total_volume] units of liquid.")
 		else
 			. += SPAN_NOTICE("Attached is an empty [reagent_container.name].")
-	// else if(use_internal_storage)
-	// 	. += SPAN_NOTICE("It has an internal chemical storage.")
-	// else
-		. += SPAN_NOTICE("No chemicals are attached.")
 
-	. += SPAN_NOTICE("[attached ? attached : "No one"] is attached.")
+	. += SPAN_NOTICE("[attached_victim ? attached_victim : "No one"] is attached_victim.")
+
 /*
 /obj/machinery/iv_drip/saline
 	name = "saline drip"

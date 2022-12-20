@@ -329,7 +329,7 @@
 
 ////#define COMSIG_ITEM_ATTACK "item_attack"
 /// From base of obj/item/attack_self(): (/mob)
-////#define COMSIG_ITEM_ATTACK_SELF "item_attack_self"
+#define COMSIG_ITEM_ATTACK_SELF "item_attack_self"
 /// From base of obj/item/attack_self_secondary(): (/mob)
 ////#define COMSIG_ITEM_ATTACK_SELF_SECONDARY "item_attack_self_secondary"
 /// From base of obj/item/attack_atom(): (/obj, /mob)

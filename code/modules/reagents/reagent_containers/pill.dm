@@ -10,6 +10,7 @@
 	item_state = "pill"
 	drop_sound = 'sound/items/drop/food.ogg'
 	pickup_sound = 'sound/items/pickup/food.ogg'
+	rad_flags = RAD_NO_CONTAMINATE
 
 	possible_transfer_amounts = null
 	w_class = ITEMSIZE_TINY

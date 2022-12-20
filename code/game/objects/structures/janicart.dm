@@ -8,7 +8,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	anchored = 0
 	density = 1
 	climbable = 1
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	//copypaste sorry
 	var/amount_per_transfer_from_this = 5 //shit I dunno, adding this so syringes stop runtime erroring. --NeoFite
 	var/obj/item/storage/bag/trash/mybag	= null
@@ -117,29 +117,29 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 		switch(href_list["take"])
 			if("garbage")
 				if(mybag)
-					user.put_in_hands(mybag)
+					user.grab_item_from_interacted_with(mybag, src)
 					to_chat(user, "<span class='notice'>You take [mybag] from [src].</span>")
 					mybag = null
 			if("mop")
 				if(mymop)
-					user.put_in_hands(mymop)
+					user.grab_item_from_interacted_with(mymop, src)
 					to_chat(user, "<span class='notice'>You take [mymop] from [src].</span>")
 					mymop = null
 			if("spray")
 				if(myspray)
-					user.put_in_hands(myspray)
+					user.grab_item_from_interacted_with(myspray, src)
 					to_chat(user, "<span class='notice'>You take [myspray] from [src].</span>")
 					myspray = null
 			if("replacer")
 				if(myreplacer)
-					user.put_in_hands(myreplacer)
+					user.grab_item_from_interacted_with(myreplacer, src)
 					to_chat(user, "<span class='notice'>You take [myreplacer] from [src].</span>")
 					myreplacer = null
 			if("sign")
 				if(signs)
 					var/obj/item/caution/Sign = locate() in src
 					if(Sign)
-						user.put_in_hands(Sign)
+						user.grab_item_from_interacted_with(Sign, src)
 						to_chat(user, "<span class='notice'>You take \a [Sign] from [src].</span>")
 						signs--
 					else
@@ -151,18 +151,21 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 
 
 /obj/structure/janitorialcart/update_icon()
-	overlays = null
-	if(mybag)
-		overlays += "cart_garbage"
-	if(mymop)
-		overlays += "cart_mop"
-	if(myspray)
-		overlays += "cart_spray"
-	if(myreplacer)
-		overlays += "cart_replacer"
-	if(signs)
-		overlays += "cart_sign[signs]"
+	cut_overlays()
+	var/list/overlays_to_add = list()
 
+	if(mybag)
+		overlays_to_add += "cart_garbage"
+	if(mymop)
+		overlays_to_add += "cart_mop"
+	if(myspray)
+		overlays_to_add += "cart_spray"
+	if(myreplacer)
+		overlays_to_add += "cart_replacer"
+	if(signs)
+		overlays_to_add += "cart_sign[signs]"
+
+	add_overlay(overlays_to_add)
 
 //old style stupido-cart
 /obj/structure/bed/chair/janicart
@@ -171,7 +174,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 	icon_state = "pussywagon"
 	anchored = 1
 	density = 1
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	//copypaste sorry
 	var/amount_per_transfer_from_this = 5 //shit I dunno, adding this so syringes stop runtime erroring. --NeoFite
 	var/obj/item/storage/bag/trash/mybag	= null
@@ -207,8 +210,7 @@ GLOBAL_LIST_BOILERPLATE(all_janitorial_carts, /obj/structure/janitorialcart)
 
 /obj/structure/bed/chair/janicart/attack_hand(mob/user)
 	if(mybag)
-		if(!user.put_in_hands(mybag))
-			mybag.forceMove(user.drop_location())
+		user.grab_item_from_interacted_with(mybag, src)
 		mybag = null
 	else
 		..()

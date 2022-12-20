@@ -3,8 +3,13 @@
 	icon_state = "snow"
 	edge_blending_priority = 1
 	movement_cost = 2
-	initial_flooring = /decl/flooring/snow
+	initial_flooring = /singleton/flooring/snow
 	baseturfs = /turf/simulated/floor/outdoors/dirt
+
+	// smoothing_flags = SMOOTH_BITMASK | SMOOTH_BORDER
+	smoothing_groups = (SMOOTH_GROUP_TURF_OPEN + SMOOTH_GROUP_FLOOR_SNOW)
+	canSmoothWith = (SMOOTH_GROUP_FLOOR_SNOW)
+
 	var/list/crossed_dirs = list()
 
 /turf/simulated/floor/outdoors/snow/Entered(atom/A)
@@ -84,5 +89,5 @@
 	icon_state = "gravsnow"
 	desc = "A layer of coarse ice pebbles and assorted gravel."
 	edge_blending_priority = 0
-	initial_flooring = /decl/flooring/snow/gravsnow
+	initial_flooring = /singleton/flooring/snow/gravsnow
 	baseturfs = /turf/simulated/floor/outdoors/dirt

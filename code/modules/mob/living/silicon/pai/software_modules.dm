@@ -471,31 +471,34 @@
 /datum/pai_software/med_hud/is_active(mob/living/silicon/pai/user)
 	return user.medHUD
 
-/datum/pai_software/translator
-	name = "Universal Translator"
-	ram_cost = 35
-	id = "translator"
+// todo: translation context
 
-/datum/pai_software/translator/toggle(mob/living/silicon/pai/user)
-	// 	Sol Common, Tradeband, Terminus and Gutter are added with New() and are therefore the current default, always active languages
-	user.translator_on = !user.translator_on
-	if(user.translator_on)
-		user.add_language(LANGUAGE_UNATHI)
-		user.add_language(LANGUAGE_SIIK)
-		user.add_language(LANGUAGE_AKHANI)
-		user.add_language(LANGUAGE_SKRELLIAN)
-		user.add_language(LANGUAGE_ZADDAT)
-		user.add_language(LANGUAGE_SCHECHI)
-	else
-		user.remove_language(LANGUAGE_UNATHI)
-		user.remove_language(LANGUAGE_SIIK)
-		user.remove_language(LANGUAGE_AKHANI)
-		user.remove_language(LANGUAGE_SKRELLIAN)
-		user.remove_language(LANGUAGE_ZADDAT)
-		user.remove_language(LANGUAGE_SCHECHI)
+// /datum/pai_software/translator
+// 	name = "Universal Translator"
+// 	ram_cost = 35
+// 	id = "translator"
 
-/datum/pai_software/translator/is_active(mob/living/silicon/pai/user)
-	return user.translator_on
+// /datum/pai_software/translator/toggle(mob/living/silicon/pai/user)
+// 	// 	Sol Common, Tradeband, Terminus and Gutter are added with New() and are therefore the current default, always active languages
+// 	// todo: translation contexts for pais
+// 	user.translator_on = !user.translator_on
+// 	if(user.translator_on)
+// 		user.add_language(LANGUAGE_UNATHI)
+// 		user.add_language(LANGUAGE_SIIK)
+// 		user.add_language(LANGUAGE_AKHANI)
+// 		user.add_language(LANGUAGE_SKRELLIAN)
+// 		user.add_language(LANGUAGE_ZADDAT)
+// 		user.add_language(LANGUAGE_SCHECHI)
+// 	else
+// 		user.remove_language(LANGUAGE_UNATHI)
+// 		user.remove_language(LANGUAGE_SIIK)
+// 		user.remove_language(LANGUAGE_AKHANI)
+// 		user.remove_language(LANGUAGE_SKRELLIAN)
+// 		user.remove_language(LANGUAGE_ZADDAT)
+// 		user.remove_language(LANGUAGE_SCHECHI)
+
+// /datum/pai_software/translator/is_active(mob/living/silicon/pai/user)
+// 	return user.translator_on
 
 /datum/pai_software/signaller
 	name = "Remote Signaller"

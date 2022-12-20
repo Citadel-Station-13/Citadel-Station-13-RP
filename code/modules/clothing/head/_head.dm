@@ -40,7 +40,8 @@
 	else if(!on && light_applied)
 		set_light(0)
 		light_applied = 0
-	update_icon(user)
+	update_icon()
+	update_worn_icon()
 	user.update_action_buttons()
 
 /obj/item/clothing/head/attack_ai(var/mob/user)
@@ -78,10 +79,8 @@
 		to_chat(user, "<span class='notice'>You crawl under \the [src].</span>")
 	return 1
 
-/obj/item/clothing/head/update_icon(var/mob/user)
-	var/mob/living/carbon/human/H
-	if(ishuman(user))
-		H = user
+/obj/item/clothing/head/update_icon()
+	var/mob/living/carbon/human/H = worn_mob()
 
 	if(on)
 		// Generate object icon.
@@ -100,5 +99,3 @@
 	else if(helmet_light)
 		cut_overlay(helmet_light)
 		helmet_light = null
-
-	user.update_inv_head() //Will redraw the helmet with the light on the mob

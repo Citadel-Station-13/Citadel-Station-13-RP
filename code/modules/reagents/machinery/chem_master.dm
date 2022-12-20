@@ -10,7 +10,7 @@
 	circuit = /obj/item/circuitboard/chem_master
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 20
-	flags = OPENCONTAINER
+	atom_flags = OPENCONTAINER
 	clicksound = "button"
 
 	/// Input reagents container.
@@ -350,7 +350,7 @@
 			else if (item_type == "pill_bottle")
 				vol_each_max = min(30, vol_each_max)
 			else if (item_type == "bottle")
-				vol_each_max = min(30, vol_each_max)
+				vol_each_max = min(60, vol_each_max)
 			else if (item_type == "condiment_pack")
 				vol_each_max = min(10, vol_each_max)
 			else if (item_type == "condiment_bottle")
@@ -437,6 +437,16 @@
 					reagents.trans_to_obj(P, vol_each,/* transfered_by = usr*/)
 				return TRUE
 
+			if(item_type == "bottle")
+				var/obj/item/reagent_containers/glass/bottle/P
+				for(var/i in 1 to amount)
+					P = new/obj/item/reagent_containers/glass/bottle(drop_location())
+					P.name = trim("[name] bottle")
+					P.icon_state = "bottle-[chosen_bottle_style]"
+					P.renamed_by_player = TRUE
+					reagents.trans_to_obj(P, vol_each,/* transfered_by = usr*/)
+				return TRUE
+
 			// if(item_type == "condiment_pack")
 			// 	var/obj/item/reagent_containers/condiment/pack/P
 			// 	for(var/i in 1 to amount)
@@ -446,16 +456,6 @@
 			// 		P.desc = "A small condiment pack. The label says it contains [name]."
 			// 		reagents.trans_to_obj(P, vol_each,/* transfered_by = usr*/)
 			// 	return TRUE
-
-			if(item_type == "bottle")
-				var/obj/item/reagent_containers/glass/bottle/P
-				for(var/i in 1 to amount)
-					P = new/obj/item/reagent_containers/glass/bottle(drop_location())
-					P.name = trim("[name] bottle")
-					P.icon_state = "bottle[chosen_bottle_style]"
-					P.renamed_by_player = TRUE
-					reagents.trans_to_obj(P, vol_each,/* transfered_by = usr*/)
-				return TRUE
 
 			if(item_type == "condiment_bottle")
 				var/obj/item/reagent_containers/food/condiment/P

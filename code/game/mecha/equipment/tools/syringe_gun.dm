@@ -20,7 +20,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/Initialize(mapload)
 	. = ..()
-	flags |= NOREACT
+	atom_flags |= NOREACT
 	syringes = new
 	known_reagents = list("inaprovaline"="Inaprovaline","anti_toxin"="Dylovene")
 	processed_reagents = new
@@ -33,7 +33,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/critfail()
 	..()
-	flags &= ~NOREACT
+	atom_flags &= ~NOREACT
 	return
 
 /obj/item/mecha_parts/mecha_equipment/tool/syringe_gun/get_equip_info()
@@ -370,7 +370,7 @@
 			if(clone_heal)
 				tallydamage += Potential.getCloneLoss()
 			if(rad_heal)
-				tallydamage += Potential.radiation / 2
+				tallydamage += Potential.radiation / 5
 
 			if(tallydamage > TargDamage)
 				Target = Potential
@@ -422,7 +422,7 @@
 	if(clone_heal)
 		tallydamage += L.getCloneLoss()
 	if(rad_heal)
-		tallydamage += L.radiation / 2
+		tallydamage += L.radiation / 5
 
 	if(tallydamage < damcap)
 		return FALSE
@@ -448,7 +448,7 @@
 		L.adjustOxyLoss(oxy_heal * -1)
 		L.adjustCloneLoss(clone_heal * -1)
 		L.adjustHalLoss(hal_heal * -1)
-		L.radiation = max(0, L.radiation - rad_heal)
+		L.cure_radiation(rad_heal)
 
 		if(ishuman(L) && bone_heal)
 			var/mob/living/carbon/human/H = L
@@ -493,7 +493,7 @@
 	beam_state = "g_beam"
 
 	tox_heal = 0.5
-	rad_heal = 5
+	rad_heal = 25
 	clone_heal = 0.2
 	hal_heal = 0.2
 

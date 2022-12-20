@@ -3,10 +3,11 @@
 
 //A single piece of NIF software
 /datum/nifsoft
+	abstract_type = /datum/nifsoft
+
 	var/name = "Prototype"
 	var/desc = "Contact a dev!"
 
-	var/abstract_type = /datum/nifsoft
 
 	/// The NIF that the software is stored in
 	var/obj/item/nif/nif

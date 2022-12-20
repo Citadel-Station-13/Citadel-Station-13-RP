@@ -187,6 +187,9 @@ var/list/channel_to_radio_key = new
 	if(!speaking)
 		speaking = parse_language(message)
 
+	if(speaking == -1)
+		return
+		
 	if(!speaking)
 		speaking = get_default_language()
 
@@ -206,8 +209,8 @@ var/list/channel_to_radio_key = new
 	if(speaking && speaking == SScharacters.resolve_language_name("Noise"))
 		message = copytext_char(message,2)
 
-	//HIVEMIND languages always send to all people with that language
-	if(speaking && (speaking.language_flags & HIVEMIND))
+	//LANGUAGE_HIVEMIND languages always send to all people with that language
+	if(speaking && (speaking.language_flags & LANGUAGE_HIVEMIND))
 		speaking.broadcast(src,trim(message))
 		return 1
 
@@ -216,7 +219,7 @@ var/list/channel_to_radio_key = new
 		return
 
 	//Self explanatory.
-	if(is_muzzled() && !(speaking && (speaking.language_flags & SIGNLANG)))
+	if(is_muzzled() && !(speaking && (speaking.language_flags & LANGUAGE_SIGNLANG)))
 		to_chat(src, "<span class='danger'>You're muzzled and cannot speak!</span>")
 		return
 
@@ -247,7 +250,7 @@ var/list/channel_to_radio_key = new
 		w_not_heard = "[speaking.speech_verb] something [w_adverb]"
 
 	//For speech disorders (hulk, slurring, stuttering)
-	if(!(speaking && (speaking.language_flags & NO_STUTTER || speaking.language_flags & SIGNLANG)))
+	if(!(speaking && (speaking.language_flags & LANGUAGE_NO_STUTTER || speaking.language_flags & LANGUAGE_SIGNLANG)))
 		var/list/message_data = list(message, verb, whispering)
 		if(handle_speech_problems(message_data))
 			message = message_data[1]
@@ -286,7 +289,7 @@ var/list/channel_to_radio_key = new
 		if(speaking)
 			message_range = speaking.get_talkinto_msg_range(message)
 		var/msg
-		if(!speaking || !(speaking.language_flags & NO_TALK_MSG))
+		if(!speaking || !(speaking.language_flags & LANGUAGE_NO_TALK_MSG))
 			msg = "<span class='notice'>\The [src] talks into \the [used_radios[1]]</span>"
 		for(var/mob/living/M in hearers(7, src))
 			if((M != src) && msg)
@@ -315,11 +318,11 @@ var/list/channel_to_radio_key = new
 
 	//Handle nonverbal and sign languages here
 	if (speaking)
-		if (speaking.language_flags & SIGNLANG)
+		if (speaking.language_flags & LANGUAGE_SIGNLANG)
 			log_say("(SIGN) [message]", src)
 			return say_signlang(message, pick(speaking.signlang_verb), speaking)
 
-		if (speaking.language_flags & NONVERBAL)
+		if (speaking.language_flags & LANGUAGE_NONVERBAL)
 			if (prob(30))
 				src.custom_emote(1, "[pick(speaking.signlang_verb)].")
 

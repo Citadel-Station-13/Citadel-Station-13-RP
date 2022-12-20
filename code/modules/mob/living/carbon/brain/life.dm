@@ -1,37 +1,40 @@
 /mob/living/carbon/brain/handle_breathing()
 	return
 
-/mob/living/carbon/brain/handle_mutations_and_radiation()
-	if (radiation)
-		if (radiation > 100)
-			radiation = 100
-			if(!container)//If it's not in an MMI
-				to_chat(src, "<font color='red'>You feel weak.</font>")
-			else//Fluff-wise, since the brain can't detect anything itself, the MMI handles thing like that
-				to_chat(src, "<font color='red'>STATUS: CRITICAL AMOUNTS OF RADIATION DETECTED.</font>")
+/mob/living/carbon/brain/handle_mutations_and_radiation(seconds)
+	// todo; deal with this
+	// removed for now because why do we even tick brains this way??
 
-		switch(radiation)
-			if(1 to 49)
-				radiation--
-				if(prob(25))
-					adjustToxLoss(1)
-					updatehealth()
+	// if (radiation)
+	// 	if (radiation > 100)
+	// 		radiation = 100
+	// 		if(!container)//If it's not in an MMI
+	// 			to_chat(src, "<font color='red'>You feel weak.</font>")
+	// 		else//Fluff-wise, since the brain can't detect anything itself, the MMI handles thing like that
+	// 			to_chat(src, "<font color='red'>STATUS: CRITICAL AMOUNTS OF RADIATION DETECTED.</font>")
 
-			if(50 to 74)
-				radiation -= 2
-				adjustToxLoss(1)
-				if(prob(5))
-					radiation -= 5
-					if(!container)
-						to_chat(src, "<font color='red'>You feel weak.</font>")
-					else
-						to_chat(src, "<font color='red'>STATUS: DANGEROUS LEVELS OF RADIATION DETECTED.</font>")
-				updatehealth()
+	// 	switch(radiation)
+	// 		if(1 to 49)
+	// 			radiation--
+	// 			if(prob(25))
+	// 				adjustToxLoss(1)
+	// 				updatehealth()
 
-			if(75 to 100)
-				radiation -= 3
-				adjustToxLoss(3)
-				updatehealth()
+	// 		if(50 to 74)
+	// 			radiation -= 2
+	// 			adjustToxLoss(1)
+	// 			if(prob(5))
+	// 				radiation -= 5
+	// 				if(!container)
+	// 					to_chat(src, "<font color='red'>You feel weak.</font>")
+	// 				else
+	// 					to_chat(src, "<font color='red'>STATUS: DANGEROUS LEVELS OF RADIATION DETECTED.</font>")
+	// 			updatehealth()
+
+	// 		if(75 to 100)
+	// 			radiation -= 3
+	// 			adjustToxLoss(3)
+	// 			updatehealth()
 
 
 /mob/living/carbon/brain/handle_environment(datum/gas_mixture/environment)

@@ -306,14 +306,13 @@
 /turf/simulated/floor/greengrid,
 /area/mine/explored)
 "W" = (
-/obj/effect/overmap/visitable/sector/tether_gateway/listeningpost,
+/obj/effect/overmap/visitable/sector/gateway/listeningpost,
 /turf/space,
 /area/space)
 "Y" = (
 /obj/effect/shuttle_landmark{
 	base_area = /area/space;
 	base_turf = /turf/space;
-	flags = 2;
 	landmark_tag = "tether_excursion_listeningpost";
 	name = "Near Asteroid (SE)"
 	},

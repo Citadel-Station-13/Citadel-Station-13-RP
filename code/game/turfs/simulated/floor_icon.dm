@@ -141,7 +141,7 @@ var/list/flooring_cache = list()
 
 //Tests whether this flooring will smooth with the specified turf
 //You can override this if you want a flooring to have super special snowflake smoothing behaviour
-/decl/flooring/proc/test_link(var/turf/origin, var/turf/T, var/countercheck = FALSE)
+/singleton/flooring/proc/test_link(var/turf/origin, var/turf/T, var/countercheck = FALSE)
 
 	var/is_linked = FALSE
 	if (countercheck)

@@ -16,6 +16,7 @@
 	slot_flags = SLOT_EARS
 	sharp = 1
 	unacidable = 1 //glass
+	rad_flags = RAD_NO_CONTAMINATE
 	var/mode = SYRINGE_DRAW
 	var/image/filling //holds a reference to the current filling overlay
 	var/visible_name = "a syringe"
@@ -125,6 +126,7 @@
 					to_chat(user, "<span class='notice'>You take a blood sample from [target].</span>")
 					for(var/mob/O in viewers(4, user))
 						O.show_message("<span class='notice'>[user] takes a blood sample from [target].</span>", 1)
+						T.custom_pain(SPAN_WARNING("The needle stings a bit."), 2, TRUE)
 
 			else //if not mob
 				if(!target.reagents.total_volume)
@@ -220,6 +222,7 @@
 				to_chat(user, "<span class='notice'>You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units.</span>")
 				if(ismob(target))
 					add_attack_logs(user,target,"Injected with [src.name] containing [contained], trasferred [trans] units")
+					H.custom_pain(SPAN_WARNING("The needle stings a bit."), 2, TRUE)
 			else
 				to_chat(user, "<span class='notice'>The syringe is empty.</span>")
 
@@ -244,7 +247,7 @@
 		if((user != target) && H.check_shields(7, src, user, "\the [src]"))
 			return
 
-		if (target != user && H.getarmor(target_zone, "melee") > 5 && prob(50))
+		if (target != user && H.run_mob_armor(target_zone, "melee") > 5 && prob(50))
 			for(var/mob/O in viewers(world.view, user))
 				O.show_message(text("<font color='red'><B>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</B></font>"), 1)
 			qdel(src)

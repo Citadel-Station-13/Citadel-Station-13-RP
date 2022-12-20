@@ -1360,6 +1360,8 @@
 "bfj" = (
 /obj/structure/table/steel,
 /obj/item/storage/box/handcuffs,
+/obj/item/storage/single_use/med_pouch/trauma,
+/obj/item/storage/single_use/med_pouch/trauma,
 /turf/simulated/floor/tiled/red,
 /area/security/security_cell_hallway)
 "bfm" = (
@@ -7810,6 +7812,7 @@
 /obj/machinery/atmospherics/pipe/simple/hidden/supply{
 	dir = 8
 	},
+/obj/item/storage/single_use/med_pouch/toxin,
 /turf/simulated/floor/tiled/monotile,
 /area/janitor)
 "fqa" = (
@@ -25300,6 +25303,8 @@
 /obj/structure/table/reinforced,
 /obj/fiftyspawner/rods,
 /obj/item/duct_tape_roll,
+/obj/item/storage/single_use/med_pouch/burn,
+/obj/item/storage/single_use/med_pouch/oxyloss,
 /turf/simulated/floor/tiled/steel,
 /area/storage/surface_eva)
 "pNx" = (
@@ -30858,8 +30863,7 @@
 	dir = 1
 	},
 /obj/machinery/computer/guestpass{
-	pixel_y = 26;
-	rad_resistance = 1
+	pixel_y = 26
 	},
 /obj/machinery/holoposter{
 	pixel_x = 32

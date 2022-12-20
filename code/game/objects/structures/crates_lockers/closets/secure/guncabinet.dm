@@ -18,9 +18,10 @@
 	update_icon()
 
 /obj/structure/closet/secure_closet/guncabinet/update_icon()
-	overlays.Cut()
+	cut_overlays()
+	var/list/overlays_to_add = list()
 	if(opened)
-		overlays += icon(icon,"door_open")
+		overlays_to_add += icon(icon,"door_open")
 	else
 		var/lazors = 0
 		var/shottas = 0
@@ -39,19 +40,21 @@
 					shottas--
 					gun.icon_state = "projectile"
 				gun.pixel_x = i*4
-				overlays += gun
+				overlays_to_add += gun
 
-		overlays += icon(src.icon, "door")
+		overlays_to_add += icon(src.icon, "door")
 
 		if(sealed)
-			overlays += icon(src.icon,"sealed")
+			overlays_to_add += icon(src.icon,"sealed")
 
 		if(broken)
-			overlays += icon(src.icon,"broken")
+			overlays_to_add += icon(src.icon,"broken")
 		else if (locked)
-			overlays += icon(src.icon,"locked")
+			overlays_to_add += icon(src.icon,"locked")
 		else
-			overlays += icon(src.icon,"open")
+			overlays_to_add += icon(src.icon,"open")
+
+	add_overlay(overlays_to_add)
 
 //SC Guncabinet files
 /obj/structure/closet/secure_closet/guncabinet/sidearm

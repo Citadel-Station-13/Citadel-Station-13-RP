@@ -88,7 +88,7 @@
 	var/i = 0
 	while(i < length(processing))
 		var/atom/A = processing[++i]
-		if(A.flags & HEAR)
+		if(A.atom_flags & ATOM_HEAR)
 			. += A
 			SEND_SIGNAL(A, COMSIG_ATOM_HEARER_IN_VIEW, processing, .)
 		processing += A.contents
@@ -368,26 +368,6 @@
 			if(T.opacity)
 				return FALSE
 	return TRUE
-
-/proc/flick_overlay(image/I, list/show_to, duration, gc_after)
-	for(var/client/C in show_to)
-		C.images += I
-	spawn(duration)
-		if(gc_after)
-			qdel(I)
-		for(var/client/C in show_to)
-			C.images -= I
-
-/**
- * Wrapper for flick_overlay, flicks to everyone who can see the target atom.
- */
-/proc/flick_overlay_view(image/I, atom/target, duration, gc_after)
-	var/list/viewing = list()
-	for(var/m in viewers(target))
-		var/mob/M = m
-		if(M.client)
-			viewing += M.client
-	flick_overlay(I, viewing, duration, gc_after)
 
 /proc/isInSight(atom/A, atom/B)
 	var/turf/Aturf = get_turf(A)

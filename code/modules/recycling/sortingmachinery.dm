@@ -69,7 +69,7 @@
 	return
 
 /obj/structure/bigDelivery/update_icon()
-	overlays = new()
+	cut_overlays()
 	if(nameset || examtext)
 		var/image/I = new/image('icons/obj/storage.dmi',"delivery_label")
 		if(icon_state == "deliverycloset")
@@ -82,8 +82,8 @@
 				label_x = rand(-8, 6)
 			I.pixel_x = label_x
 			I.pixel_y = -3
-		overlays += I
-	if(src.sortTag)
+		add_overlay(I)
+	if(sortTag)
 		var/image/I = new/image('icons/obj/storage.dmi',"delivery_tag")
 		if(icon_state == "deliverycloset")
 			if(tag_x == null)
@@ -95,15 +95,14 @@
 				tag_x = rand(-8, 6)
 			I.pixel_x = tag_x
 			I.pixel_y = -3
-		overlays += I
+		add_overlay(I)
 
 /obj/structure/bigDelivery/examine(mob/user)
-	if(..(user, 4))
-		if(sortTag)
-			to_chat(user, "<span class='notice'>It is labeled \"[sortTag]\"</span>")
-		if(examtext)
-			to_chat(user, "<span class='notice'>It has a note attached which reads, \"[examtext]\"</span>")
-	return
+	. = ..()
+	if(sortTag)
+		. +=  "<span class='notice'>It is labeled \"[sortTag]\"</span>"
+	if(examtext)
+		. += "<span class='notice'>It has a note attached which reads, \"[examtext]\"</span>"
 
 /obj/structure/bigDelivery/Destroy()
 	if(wrapped) //sometimes items can disappear. For example, bombs. --rastaf0
@@ -191,13 +190,13 @@
 	return
 
 /obj/item/smallDelivery/update_icon()
-	overlays = new()
+	cut_overlays()
 	if((nameset || examtext) && icon_state != "deliverycrate1")
 		var/image/I = new/image('icons/obj/storage.dmi',"delivery_label")
 		if(icon_state == "deliverycrate5")
 			I.pixel_y = -1
-		overlays += I
-	if(src.sortTag)
+		add_overlay(I)
+	if(sortTag)
 		var/image/I = new/image('icons/obj/storage.dmi',"delivery_tag")
 		switch(icon_state)
 			if("deliverycrate1")
@@ -213,15 +212,14 @@
 				I.pixel_y = 3
 			if("deliverycrate5")
 				I.pixel_y = -3
-		overlays += I
+		add_overlay(I)
 
 /obj/item/smallDelivery/examine(mob/user)
-	if(..(user, 4))
-		if(sortTag)
-			to_chat(user, "<span class='notice'>It is labeled \"[sortTag]\"</span>")
-		if(examtext)
-			to_chat(user, "<span class='notice'>It has a note attached which reads, \"[examtext]\"</span>")
-	return
+	. = ..()
+	if(sortTag)
+		. += "<span class='notice'>It is labeled \"[sortTag]\"</span>"
+	if(examtext)
+		. += "<span class='notice'>It has a note attached which reads, \"[examtext]\"</span>"
 
 /obj/item/packageWrap
 	name = "package wrapper"
@@ -314,10 +312,8 @@
 	return
 
 /obj/item/packageWrap/examine(mob/user)
-	if(..(user, 0))
-		to_chat(user, "<font color=#4F49AF>There are [amount] units of package wrap left!</font>")
-
-	return
+	. = ..()
+	. += "<font color=#4F49AF>There are [amount] units of package wrap left!</font>"
 
 /obj/item/destTagger
 	name = "destination tagger"

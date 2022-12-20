@@ -2698,6 +2698,8 @@
 /obj/structure/table/marble,
 /obj/item/reagent_containers/food/drinks/shaker,
 /obj/item/reagent_containers/glass/rag,
+/obj/item/storage/single_use/med_pouch/overdose,
+/obj/item/storage/single_use/med_pouch/toxin,
 /turf/simulated/floor/lino,
 /area/crew_quarters/bar)
 "eL" = (
@@ -2744,6 +2746,9 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable/green{
+	icon_state = "4-8"
+	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
 "eS" = (
@@ -4819,11 +4824,11 @@
 "iS" = (
 /obj/machinery/light,
 /obj/structure/table/woodentable,
-/obj/item/storage/mre/random{
+/obj/item/storage/single_use/mre/random{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/storage/mre/random{
+/obj/item/storage/single_use/mre/random{
 	pixel_x = -2;
 	pixel_y = -2
 	},
@@ -6178,6 +6183,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 5
 	},
+/obj/item/storage/single_use/med_pouch/burn,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "lz" = (
@@ -9022,12 +9028,12 @@
 /obj/structure/closet/crate{
 	name = "MRE crate"
 	},
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/random,
-/obj/item/storage/mre/menu9,
-/obj/item/storage/mre/menu10,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/random,
+/obj/item/storage/single_use/mre/menu9,
+/obj/item/storage/single_use/mre/menu10,
 /turf/simulated/floor/tiled/steel,
 /area/exploration)
 "rn" = (
@@ -13171,6 +13177,27 @@
 	},
 /turf/simulated/floor/tiled/old_tile/green,
 /area/shuttle/civvie/cockpit)
+"zr" = (
+/obj/effect/floor_decal/borderfloor{
+	dir = 1
+	},
+/obj/effect/floor_decal/corner/lightgrey/border{
+	dir = 1
+	},
+/obj/machinery/door/firedoor/glass/hidden{
+	dir = 2
+	},
+/obj/effect/floor_decal/steeldecal/steel_decals5,
+/obj/machinery/power/apc{
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
+	},
+/obj/structure/cable/green{
+	icon_state = "0-4"
+	},
+/turf/simulated/floor/tiled/steel,
+/area/hallway/primary/surfacethree)
 "zs" = (
 /obj/machinery/computer/rcon{
 	dir = 8
@@ -15345,6 +15372,8 @@
 	dir = 8;
 	pixel_x = 24
 	},
+/obj/item/storage/single_use/med_pouch/overdose,
+/obj/item/storage/single_use/med_pouch/overdose,
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar_backroom)
 "DO" = (
@@ -18768,13 +18797,13 @@
 /turf/simulated/floor/wood,
 /area/crew_quarters/bar)
 "KJ" = (
-/obj/machinery/suit_cycler/exploration,
 /obj/effect/floor_decal/borderfloor{
 	dir = 4
 	},
 /obj/effect/floor_decal/corner/beige/border{
 	dir = 4
 	},
+/obj/machinery/suit_cycler/pathfinder,
 /turf/simulated/floor/tiled/steel,
 /area/exploration/pathfinder_office)
 "KK" = (
@@ -21118,6 +21147,7 @@
 /obj/effect/floor_decal/steeldecal/steel_decals6{
 	dir = 6
 	},
+/obj/item/storage/single_use/med_pouch/burn,
 /turf/simulated/floor/tiled/steel,
 /area/hallway/secondary/docking_hallway)
 "Px" = (
@@ -23143,7 +23173,11 @@
 	icon_state = "2-4"
 	},
 /obj/structure/cable/green{
-	icon_state = "1-4"
+	dir = 1;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/green{
+	icon_state = "2-8"
 	},
 /turf/simulated/floor/tiled/steel,
 /area/hallway/primary/surfacethree)
@@ -25973,6 +26007,8 @@
 	pixel_y = 8
 	},
 /obj/item/robotanalyzer,
+/obj/item/storage/single_use/med_pouch/oxyloss,
+/obj/item/storage/single_use/med_pouch/toxin,
 /turf/simulated/floor/tiled/white,
 /area/shuttle/excursion/general)
 "YY" = (
@@ -43089,7 +43125,7 @@ vj
 xl
 xl
 xl
-zX
+zr
 ty
 YT
 ty

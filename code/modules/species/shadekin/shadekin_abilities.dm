@@ -62,7 +62,7 @@
 	if(watcher>0)
 		ability_cost = ability_cost + ( 15 * watcher )
 	if(!(ability_flags & AB_PHASE_SHIFTED))
-		log_debug("[src] attempted to shift with [watcher] visible Carbons with a  cost of [ability_cost] in a darkness level of [darkness]")
+		log_debug(SPAN_DEBUGWARNING("[src] attempted to shift with [watcher] visible Carbons with a  cost of [ability_cost] in a darkness level of [darkness]"))
 
 	if(!(ability_flags & AB_PHASE_SHIFTED))
 		shadekin_adjust_energy(-ability_cost)
@@ -96,7 +96,7 @@
 			var/obj/belly/B = belly
 			B.escapable = initial(B.escapable)
 
-		//overlays.Cut()
+		// cut_overlays()
 		invisibility = initial(invisibility)
 		see_invisible = initial(see_invisible)
 		incorporeal_move = initial(incorporeal_move)
@@ -156,7 +156,7 @@
 		sleep(5)
 		invisibility = INVISIBILITY_LEVEL_TWO
 		see_invisible = INVISIBILITY_LEVEL_TWO
-		//overlays.Cut()
+		// cut_overlays()
 		update_icon()
 		alpha = 127
 

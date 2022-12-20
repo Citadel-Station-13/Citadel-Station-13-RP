@@ -8,10 +8,11 @@
 	tim_sort(., /proc/cmp_name_asc)
 
 /datum/outfit
+	/// Abstract type - set to self type for abstract outfits.
+	abstract_type = /datum/outfit
+
 	/// the outfit's name
 	var/name = "Naked"
-	/// abstract type - set to self type for abstract outfits.
-	var/abstract_type = /datum/outfit
 
 	var/uniform = null
 	var/suit = null

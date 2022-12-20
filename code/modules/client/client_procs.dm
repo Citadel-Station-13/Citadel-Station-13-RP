@@ -186,16 +186,14 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
 	//Admin Authorisation
 	holder = admin_datums[ckey]
-	var/debug_tools_allowed = FALSE			//CITADEL EDIT
+	var/debug_tools_allowed = FALSE
 	if(holder)
 		GLOB.admins |= src
 		holder.owner = src
 		connecting_admin = TRUE
-		//CITADEL EDIT
 		//if(check_rights_for(src, R_DEBUG))
 		if(R_DEBUG & holder?.rights) //same wiht this, check_rights when?
 			debug_tools_allowed = TRUE
-		//END CITADEL EDIT
 	/*
 	else if(GLOB.deadmins[ckey])
 		verbs += /client/proc/readmin
@@ -295,7 +293,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	// resolve database data
 	// this is down here because player_lookup won't have an entry for us until log_client_to_db() runs!!
 	database = new(ckey)
-	database.LogConnect()
+	database.log_connect()
 
 	if (byond_version >= 512)
 		if (!byond_build || byond_build < 1386)
@@ -779,7 +777,7 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 	if(!width || !height || width < 0 || height < 0)
 		reset_temporary_view()
 		return
-	using_temporary_viewsize = FALSE
+	using_temporary_viewsize = TRUE
 	temporary_viewsize_width = width
 	temporary_viewsize_height = height
 	request_viewport_update()

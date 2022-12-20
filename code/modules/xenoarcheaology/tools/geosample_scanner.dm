@@ -231,7 +231,7 @@
 					radiation = rand() * 15 + 85
 					if(!rad_shield)
 						//irradiate nearby mobs
-						SSradiation.radiate(src, radiation / 25)
+						radiation_pulse(src, radiation)
 				else
 					t_left_radspike = pick(10,15,25)
 
@@ -301,7 +301,7 @@
 		var/obj/item/paper/P = new(src)
 		P.name = "[src] report #[++report_num]: [scanned_item.name]"
 		P.stamped = list(/obj/item/stamp)
-		P.overlays = list("paper_stamped")
+		P.add_overlay(list("paper_stamped"))
 
 		//work out data
 		var/data = " - Mundane object: [scanned_item.desc ? scanned_item.desc : "No information on record."]<br>"

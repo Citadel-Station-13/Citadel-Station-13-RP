@@ -259,5 +259,5 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 	to_chat(src, SPAN_NOTICE("We stealthily sting [T]."))
 	if(!T.mind || !T.mind.changeling)
 		return T // T will be affected by the sting.
-	to_chat(T, SPAN_WARNING("You feel a tiny prick."))
+	T.custom_pain(SPAN_WARNING("You feel a tiny prick."), 1, TRUE)
 	return

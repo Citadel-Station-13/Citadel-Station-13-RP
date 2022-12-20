@@ -313,6 +313,7 @@
 #define STRUCTURE_MIN_DAMAGE_THRESHOLD 5
 
 //Vision flags, for dealing with plane visibility
+// todo: kill this shit, why are we using ordered indexed lists for something only on players and therefore cheap to spam?
 #define VIS_FULLBRIGHT		1
 #define VIS_LIGHTING		2
 #define VIS_GHOSTS			3
@@ -334,8 +335,9 @@
 #define VIS_STATUS			15
 #define VIS_SPACE			16
 #define VIS_SONAR			17
+#define VIS_EMISSIVE		18
 ///Must be highest number from above.
-#define VIS_COUNT			17
+#define VIS_COUNT			18
 
 // Clothing flags, organized in roughly top-bottom
 #define EXAMINE_SKIPHELMET			0x0001

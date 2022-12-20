@@ -1,7 +1,7 @@
 
 //moved these here from code/defines/obj/weapon.dm
 //please preference put stuff where it's easy to find - C
-
+// todo: redo autopsy
 /obj/item/autopsy_scanner
 	name = "biopsy scanner"
 	desc = "Extracts information on wounds."
