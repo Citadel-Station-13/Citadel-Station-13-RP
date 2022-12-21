@@ -5,8 +5,6 @@
 /datum/configuration_legacy
 	var/time_off = FALSE
 	var/pto_job_change = FALSE
-	var/limit_interns = -1 //Unlimited by default
-	var/limit_visitors = -1 //Unlimited by default
 	var/pto_cap = 100 //Hours
 	var/require_flavor = FALSE
 
@@ -41,10 +39,6 @@
 				config_legacy.chat_webhook_key = value
 			if ("items_survive_digestion")
 				config_legacy.items_survive_digestion = 1
-			if ("limit_interns")
-				config_legacy.limit_interns = text2num(value)
-			if ("limit_visitors")
-				config_legacy.limit_visitors = text2num(value)
 			if ("pto_cap")
 				config_legacy.pto_cap = text2num(value)
 			if ("time_off")
