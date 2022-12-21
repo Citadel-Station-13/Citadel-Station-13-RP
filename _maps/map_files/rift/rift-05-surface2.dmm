@@ -22880,15 +22880,14 @@
 /obj/machinery/atmospherics/component/unary/vent_scrubber/on{
 	dir = 4
 	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = -7;
-	pixel_y = 4
-	},
 /obj/effect/floor_decal/spline/plain{
 	dir = 4
 	},
 /obj/item/flame/candle/candelabra{
 	pixel_y = 8
+	},
+/obj/item/reagent_containers/food/drinks/h_chocolate{
+	pixel_x = 9
 	},
 /turf/simulated/floor/wood,
 /area/crew_quarters/coffee_shop)
@@ -26199,10 +26198,6 @@
 /obj/structure/cable/green{
 	icon_state = "1-2"
 	},
-/obj/machinery/chemical_dispenser/bar_coffee/full{
-	dir = 4;
-	pixel_y = -16
-	},
 /obj/structure/table/hardwoodtable,
 /obj/machinery/light{
 	dir = 8
@@ -28504,12 +28499,11 @@
 /area/rift/station/public_garden/gantry)
 "uVO" = (
 /obj/structure/table/wooden_reinforced,
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = -12;
-	pixel_y = 4
-	},
 /obj/item/flame/candle/candelabra{
 	pixel_y = 8
+	},
+/obj/item/reagent_containers/food/drinks/h_chocolate{
+	pixel_x = 9
 	},
 /turf/simulated/floor/carpet,
 /area/crew_quarters/coffee_shop)
@@ -32400,6 +32394,10 @@
 /obj/item/reagent_containers/food/condiment/sugar,
 /obj/item/reagent_containers/food/condiment/sugar,
 /obj/item/reagent_containers/food/condiment/sugar,
+/obj/machinery/light{
+	dir = 4;
+	use_power = 0
+	},
 /turf/simulated/floor/tiled/freezer/cold,
 /area/crew_quarters/coffee_shop)
 "xOs" = (
@@ -32645,28 +32643,16 @@
 /obj/structure/cable/green{
 	icon_state = "0-2"
 	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_y = 8;
-	pixel_x = 8
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_y = 8;
-	pixel_x = -8
-	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_y = 8
-	},
 /obj/structure/table/hardwoodtable,
 /obj/item/reagent_containers/glass/rag{
 	pixel_x = -6;
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/drinks/cup{
-	pixel_x = 6;
-	pixel_y = -2
-	},
 /obj/structure/sign/christmas/lights{
 	dir = 8
+	},
+/obj/item/reagent_containers/food/drinks/h_chocolate{
+	pixel_x = 9
 	},
 /turf/simulated/floor/tiled/dark,
 /area/crew_quarters/coffee_shop)
