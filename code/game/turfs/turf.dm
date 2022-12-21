@@ -11,10 +11,26 @@
 
 	var/holy = 0
 
-	// Atmospherics / ZAS Environmental
-	/// Initial air contents, as a specially formatted gas string.
+	//! atmospherics
+	/**
+	 * the gas we start out as
+	 * can be:
+	 * - a gas string (will be parsed)
+	 * - an atmosphere id (use defines please)
+	 */
 	var/initial_gas_mix = GAS_STRING_TURF_DEFAULT
-	// End
+	//! outdoors
+	/**
+	 * are we considered outdoors for things like weather effects?
+	 * todo: single var doing this is inefficient & bad, flags maybe?
+	 * todo: we aren't going to touch this for a while tbh
+	 *
+	 * possible values:
+	 * TRUE - as it implies
+	 * FALSE - as it implies
+	 * null - use area default
+	 */
+	var/outdoors = FALSE
 
 	// Properties for airtight tiles (/wall)
 	var/thermal_conductivity = 0.05
@@ -61,9 +77,6 @@
 	var/movement_cost = 0
 
 	var/list/footstep_sounds = null
-
-	// Outdoors var determines if the game should consider the turf to be 'outdoors', which controls certain things such as weather effects.
-	var/outdoors = FALSE
 
 	/// If true, most forms of teleporting to or from this turf tile will fail.
 	var/block_tele = FALSE
@@ -123,6 +136,9 @@
 	//Pathfinding related
 	if(movement_cost && pathweight == 1)	// This updates pathweight automatically.
 		pathweight = movement_cost
+
+	if(isnull(outdoors))
+		outdoors = A.initial_outdoors
 
 	return INITIALIZE_HINT_NORMAL
 

@@ -119,7 +119,7 @@ var/list/spells = typesof(/spell) //needed for the badmin verb for now
 		if("weakened")
 			target.AdjustWeakened(amount)
 		if("paralysis")
-			target.AdjustParalysis(amount)
+			target.AdjustUnconscious(amount)
 		else
 			target.vars[type] += amount //I bear no responsibility for the runtimes that'll happen if you try to adjust non-numeric or even non-existant vars
 	return

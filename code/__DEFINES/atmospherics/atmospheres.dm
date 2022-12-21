@@ -1,7 +1,9 @@
 // Atmosphere IDs
 
-/// SPECIAL ATMOSPHERE ID THAT FORCES ATMOS TO BE WHATEVER IS DEFINED AS A ZTRAIT, DEFAULTING TO SPACE.
-#define ATMOSPHERE_ID_USE_ZTRAIT		"USE_ZTRAIT"
+//? abstract ids
+#define ATMOSPHERE_USE_OUTDOORS "!OUTDOORS"
+#define ATMOSPHERE_USE_INDOORS "!INDOORS"
+#define ATMOSPHERE_USE_AREA "!AREA"
 
 // Tethermap
 /// Virgo 2 planetary atmosphere ID
@@ -17,7 +19,7 @@
 /// Frozen World Atmos ID
 #define ATMOSPHERE_ID_FROZEN			/datum/atmosphere/planet/classp
 /// Mining Planet PlanetAtmos IDs
-#define ATMOSPHERE_ID_MININGPLANET				/datum/atmosphere/planet/classg
+#define ATMOSPHERE_ID_MININGPLANET		/datum/atmosphere/planet/classg
 /// Triumph Planet Atmos ID (If needed)
 
 #define ATMOSPHERE_ID_TRIUMPH			/datum/atmosphere/planet/virgo3b

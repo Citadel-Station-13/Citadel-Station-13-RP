@@ -471,7 +471,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		to_chat(source, "<span class='notice'>You feel a sudden surge of energy!</span>")
 		source.SetStunned(0)
 		source.SetWeakened(0)
-		source.SetParalysis(0)
+		source.SetUnconscious(0)
 
 	return
 

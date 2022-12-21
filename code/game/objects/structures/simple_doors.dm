@@ -197,7 +197,7 @@
 /obj/structure/simple_door/process(delta_time)
 	if(!material.radioactivity)
 		return
-	SSradiation.radiate(src, round(material.radioactivity/3))
+	radiation_pulse(src, round(material.radioactivity / RAD_INTENSITY_DIVISOR_SIMPLE_DOOR))
 
 /obj/structure/simple_door/iron/Initialize(mapload, material_name)
 	return ..(mapload, "iron")

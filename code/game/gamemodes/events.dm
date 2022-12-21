@@ -48,9 +48,9 @@ var/hadevent    = 0
 		if(isNotStationLevel(T.z))
 			continue
 		if(istype(H,/mob/living/carbon/human))
-			H.apply_effect((rand(15,75)),IRRADIATE,0)
+			H.afflict_radiation(rand(200, 1000))
 			if (prob(5))
-				H.apply_effect((rand(90,150)),IRRADIATE,0)
+				H.afflict_radiation(rand(200, 1000))
 			if (prob(25))
 				if (prob(75))
 					randmutb(H)

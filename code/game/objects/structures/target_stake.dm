@@ -10,7 +10,7 @@
 
 /obj/structure/target_stake/Moved()
 	. = ..()
-	if(pinned_target.loc != loc)
+	if(pinned_target && (pinned_target.loc != loc))
 		// Move the pinned target along with the stake
 		pinned_target.forceMove(loc)
 

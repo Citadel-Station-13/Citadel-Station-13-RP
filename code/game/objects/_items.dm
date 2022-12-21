@@ -2,6 +2,8 @@
 	name = "item"
 	icon = 'icons/obj/items.dmi'
 	w_class = ITEMSIZE_NORMAL
+	// todo: better way, for now, block all rad contamination to interior
+	rad_flags = RAD_BLOCK_CONTENTS
 
 	/// flags relating to items - see [code/__DEFINES/_flags/item_flags.dm]
 	var/item_flags = NONE
@@ -526,7 +528,7 @@
 					to_chat(M, "<span class='warning'>You drop what you're holding and clutch at your eyes!</span>")
 					M.drop_active_held_item()
 				M.eye_blurry += 10
-				M.Paralyse(1)
+				M.Unconscious(1)
 				M.Weaken(4)
 			if (eyes.damage >= eyes.min_broken_damage)
 				if(M.stat != 2)

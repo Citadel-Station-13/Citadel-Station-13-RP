@@ -192,7 +192,7 @@ var/global/floorIsLava = 0
 	body += "<br><br><b>Languages:</b><br>"
 	var/f = 1
 	for(var/datum/language/L as anything in SScharacters.all_languages())
-		if(!(L.language_flags & INNATE))
+		if(!(L.language_flags & LANGUAGE_INNATE))
 			if(!f) body += " | "
 			else f = 0
 			if(L in M.languages)
@@ -1418,12 +1418,12 @@ var/datum/legacy_announcement/minor/admin_min_announcer = new
 
 	if(check_rights(R_ADMIN|R_MOD))
 		if (H.paralysis == 0)
-			H.SetParalysis(8000)
+			H.SetUnconscious(8000)
 			msg = "has paralyzed [key_name(H)]."
 			log_and_message_admins(msg)
 		else
 			if(alert(src, "[key_name(H)] is paralyzed, would you like to unparalyze them?",,"Yes","No") == "Yes")
-				H.SetParalysis(0)
+				H.SetUnconscious(0)
 				msg = "has unparalyzed [key_name(H)]."
 				log_and_message_admins(msg)
 

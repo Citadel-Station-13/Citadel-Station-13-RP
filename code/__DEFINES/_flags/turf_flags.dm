@@ -10,7 +10,6 @@
 /// queued for ZAS rebuild
 #define TURF_ZONE_REBUILD_QUEUED	(1<<5)
 
-
 ///CITMAIN TURF FLAGS - Completely unused
 /*
 /// If a turf can be made dirty at roundstart. This is also used in areas.
@@ -26,6 +25,9 @@
 DEFINE_BITFIELD(turf_flags, list(
 	BITFIELD(TURF_NO_JAUNT),
 	BITFIELD(TURF_UNUSED_RESERVATION),
+	BITFIELD(TURF_PLANET_QUEUED),
+	BITFIELD(TURF_PLANET_REGISTERED),
+	BITFIELD(TURF_ZONE_REBUILD_QUEUED),
 ))
 
 // /turf/z_flags

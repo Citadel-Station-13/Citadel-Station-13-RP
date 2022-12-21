@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(garbage)
 	#endif
 
 
-/datum/controller/subsystem/garbage/PreInit()
+/datum/controller/subsystem/garbage/PreInit(recovering)
 	queues = new(GC_QUEUE_COUNT)
 	pass_counts = new(GC_QUEUE_COUNT)
 	fail_counts = new(GC_QUEUE_COUNT)
@@ -147,8 +147,6 @@ SUBSYSTEM_DEF(garbage)
 		switch(level)
 			if(GC_QUEUE_CHECK)
 				#ifdef REFERENCE_TRACKING
-				D.find_references()
-				#elif defined(REFERENCE_TRACKING)
 				if(reference_find_on_fail[refID])
 					D.find_references()
 				#ifdef GC_FAILURE_HARD_LOOKUP

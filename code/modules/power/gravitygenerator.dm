@@ -380,7 +380,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 
 
 /obj/machinery/gravity_generator/main/proc/pulse_radiation()
-	SSradiation.radiate(src, 200)
+	radiation_pulse(src, RAD_INTENSITY_GRAVGEN_OPERATING_TICK)
 
 /obj/machinery/gravity_generator/main/proc/update_gravity(var/on)
 	for(var/area/A in src.areas)

@@ -13,12 +13,12 @@
 */
 /mob/living/proc/run_armor_check(var/def_zone = null, var/attack_flag = "melee", var/armour_pen = 0, var/absorb_text = null, var/soften_text = null)
 	if(GLOB.Debug2)
-		log_world("## DEBUG: getarmor() was called.")
+		log_world("## DEBUG: run_mob_armor() was called.")
 
 	if(armour_pen >= 100)
 		return 0 //might as well just skip the processing
 
-	var/armor = getarmor(def_zone, attack_flag)
+	var/armor = run_mob_armor(def_zone, attack_flag)
 	if(armor)
 		var/armor_variance_range = round(armor * 0.25) //Armor's effectiveness has a +25%/-25% variance.
 		var/armor_variance = rand(-armor_variance_range, armor_variance_range) //Get a random number between -25% and +25% of the armor's base value
@@ -47,7 +47,7 @@
 	if(armour_pen >= 100)
 		return 0 //might as well just skip the processing
 
-	var/armor = getarmor(def_zone, attack_flag)
+	var/armor = run_mob_armor(def_zone, attack_flag)
 	var/absorb = 0
 
 	//Roll armour
@@ -79,17 +79,17 @@
 
 //Certain pieces of armor actually absorb flat amounts of damage from income attacks
 /mob/living/proc/get_armor_soak(var/def_zone = null, var/attack_flag = "melee", var/armour_pen = 0)
-	var/soaked = getsoak(def_zone, attack_flag)
+	var/soaked = run_mob_soak(def_zone, attack_flag)
 	//5 points of armor pen negate one point of soak
 	if(armour_pen)
 		soaked = max(soaked - (armour_pen/5), 0)
 	return soaked
 
 //if null is passed for def_zone, then this should return something appropriate for all zones (e.g. area effect damage)
-/mob/living/proc/getarmor(var/def_zone, var/type)
+/mob/living/proc/run_mob_armor(var/def_zone, var/type)
 	return 0
 
-/mob/living/proc/getsoak(var/def_zone, var/type)
+/mob/living/proc/run_mob_soak(var/def_zone, var/type)
 	return 0
 
 // Clicking with an empty hand
@@ -98,6 +98,13 @@
 	if(istype(L) && L.a_intent != INTENT_HELP)
 		if(ai_holder) // Using disarm, grab, or harm intent is considered a hostile action to the mob's AI.
 			ai_holder.react_to_attack(L)
+
+/mob/living/rad_act(strength, datum/radiation_wave/wave)
+	. = ..()
+	if(wave)
+		afflict_radiation(strength * RAD_MOB_ACT_COEFFICIENT - RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE * wave.relevant_count, TRUE)
+	else
+		afflict_radiation(strength * RAD_MOB_ACT_COEFFICIENT - RAD_MOB_ACT_PROTECTION_PER_WAVE_SOURCE, TRUE)
 
 /mob/living/bullet_act(var/obj/item/projectile/P, var/def_zone)
 
@@ -123,7 +130,7 @@
 		proj_sharp = 0
 		proj_edge = 0
 
-	if ((proj_sharp || proj_edge) && prob(getarmor(def_zone, P.check_armour)))
+	if ((proj_sharp || proj_edge) && prob(run_mob_armor(def_zone, P.check_armour)))
 		proj_sharp = 0
 		proj_edge = 0
 
@@ -246,11 +253,11 @@
 	var/weapon_sharp = is_sharp(I)
 	var/weapon_edge = has_edge(I)
 
-	if(getsoak(hit_zone, "melee",) - (I.armor_penetration/5) > round(effective_force*0.8)) //soaking a hit turns sharp attacks into blunt ones
+	if(run_mob_soak(hit_zone, "melee",) - (I.armor_penetration/5) > round(effective_force*0.8)) //soaking a hit turns sharp attacks into blunt ones
 		weapon_sharp = 0
 		weapon_edge = 0
 
-	if(prob(max(getarmor(hit_zone, "melee") - I.armor_penetration, 0))) //melee armour provides a chance to turn sharp/edge weapon attacks into blunt ones
+	if(prob(max(run_mob_armor(hit_zone, "melee") - I.armor_penetration, 0))) //melee armour provides a chance to turn sharp/edge weapon attacks into blunt ones
 		weapon_sharp = 0
 		weapon_edge = 0
 
@@ -438,7 +445,7 @@
 // Called when struck by lightning.
 /mob/living/proc/lightning_act()
 	// The actual damage/electrocution is handled by the tesla_zap() that accompanies this.
-	Paralyse(5)
+	Unconscious(5)
 	stuttering += 20
 	make_jittery(150)
 	emp_act(1)

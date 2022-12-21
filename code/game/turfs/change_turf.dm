@@ -206,7 +206,7 @@ GLOBAL_LIST_INIT(multiz_hole_baseturfs, typecacheof(list(
 		// reset air
 		if(!air)
 			air = new /datum/gas_mixture(CELL_VOLUME)
-		air.parse_gas_string(initial_gas_mix)
+		air.parse_gas_string(initial_gas_mix, src)
 
 /// Take off the top layer turf and replace it with the next baseturf down
 /turf/proc/ScrapeAway(amount=1, flags)

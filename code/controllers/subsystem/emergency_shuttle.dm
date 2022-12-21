@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(emergencyshuttle)
 	var/datum/legacy_announcement/priority/emergency_shuttle_called = new(0, new_sound = sound('sound/AI/shuttlecalled.ogg'))
 	var/datum/legacy_announcement/priority/emergency_shuttle_recalled = new(0, new_sound = sound('sound/AI/shuttlerecalled.ogg'))
 
-/datum/controller/subsystem/emergencyshuttle/PreInit()
+/datum/controller/subsystem/emergencyshuttle/PreInit(recovering)
 	escape_pods = list()
 
 /datum/controller/subsystem/emergencyshuttle/fire()
