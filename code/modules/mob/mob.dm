@@ -980,18 +980,22 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 /mob/verb/northfaceperm()
 	set hidden = 1
+	set src = usr
 	set_face_dir(client.client_dir(NORTH))
 
 /mob/verb/southfaceperm()
 	set hidden = 1
+	set src = usr
 	set_face_dir(client.client_dir(SOUTH))
 
 /mob/verb/eastfaceperm()
 	set hidden = 1
+	set src = usr
 	set_face_dir(client.client_dir(EAST))
 
 /mob/verb/westfaceperm()
 	set hidden = 1
+	set src = usr
 	set_face_dir(client.client_dir(WEST))
 
 /mob/proc/adjustEarDamage()
@@ -1110,6 +1114,7 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 	set name = "diceroll"
 	set category = "OOC"
 	set desc = "Roll a random number between 1 and a chosen number."
+	set src = usr
 
 	n = round(n)		// why are you putting in floats??
 	if(n < 2)

@@ -358,6 +358,7 @@
 	set name = "Toggle Pain Messages"
 	set category = "Preferences"
 	set desc = "Toggles pain messages."
+	set src = usr
 
 	if(painmsg)
 		src.painmsg = 0
@@ -371,6 +372,7 @@
 	set name = "Feign Impairment"
 	set category = "IC"
 	set desc = "Allows user to manually enable drunkenness, stutter, jitter, etc."
+	set src = usr
 
 	var/list/choices = list("Drunkenness", "Stuttering", "Jittering")
 	if(src.slurring >= 10 || src.stuttering >= 10 || src.jitteriness >= 100)
