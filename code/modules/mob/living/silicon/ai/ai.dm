@@ -59,7 +59,7 @@ var/list/ai_verbs_default = list(
 	can_be_antagged = TRUE
 	status_flags = CANSTUN|CANPARALYSE|CANPUSH
 	catalogue_data = list(/datum/category_item/catalogue/fauna/silicon/ai)
-	translation_context = /datum/translation_context/variable/learning/silicons	// ai gets the gamer context by default
+	translation_context_type = /datum/translation_context/variable/learning/silicons	// ai gets the gamer context by default
 
 	/// The network we have access to.
 	var/list/network = list(NETWORK_DEFAULT)

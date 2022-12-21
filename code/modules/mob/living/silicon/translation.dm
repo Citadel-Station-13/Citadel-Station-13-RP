@@ -18,7 +18,7 @@
 		to_chat(src, SPAN_NOTICE("New language identified: [L.name]. Registering and beginning adaptive translation."))
 	sync_translation_context(L)
 
-/mob/living/silicon/proc/create_translation_context(path = translation_context)
+/mob/living/silicon/proc/create_translation_context(path = translation_context_type)
 	if(istype(translation_context))
 		qdel(translation_context)
 	translation_context = new path
