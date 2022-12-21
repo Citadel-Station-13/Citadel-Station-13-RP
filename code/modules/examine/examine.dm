@@ -63,6 +63,8 @@
 	. = ..()
 	if(client && statpanel("Examine"))
 		var/description_holders = client.description_holders
+		if(!description_holders)
+			return	// piece of shit don't update when it's not there
 		stat(null,"[description_holders["icon"]]    <font size='5'>[description_holders["name"]]</font>") //The name, written in big letters.
 		stat(null,"[description_holders["desc"]]") //the default examine text.
 		if(description_holders["info"])
