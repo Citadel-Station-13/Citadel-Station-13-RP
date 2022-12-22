@@ -90,7 +90,7 @@
 /obj/item/clothing/accessory/holster/on_attached(obj/item/clothing/under/S, mob/user as mob)
 	..()
 	if(has_suit)
-		has_suit.verbs += /obj/item/clothing/accessory/holster/verb/holster_verb
+		add_obj_verb(has_suit, /obj/item/clothing/accessory/holster/verb/holster_verb)
 
 /obj/item/clothing/accessory/holster/on_removed(mob/user as mob)
 	if(has_suit)

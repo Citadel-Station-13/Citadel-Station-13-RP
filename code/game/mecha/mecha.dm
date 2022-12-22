@@ -1611,7 +1611,7 @@
 		brainmob.reset_perspective(src)
 		brainmob.canmove = 1
 		mmi_as_oc.mecha = src
-		src.verbs += /obj/mecha/verb/eject
+		add_obj_verb(src, /obj/mecha/verb/eject)
 		src.Entered(mmi_as_oc)
 		src.Move(src.loc)
 		update_icon()

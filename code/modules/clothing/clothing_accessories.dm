@@ -122,7 +122,7 @@
 /obj/item/clothing/proc/attach_accessory(mob/user, obj/item/clothing/accessory/A)
 	LAZYADD(accessories,A)
 	A.on_attached(src, user)
-	src.verbs |= /obj/item/clothing/proc/removetie_verb
+	add_obj_verb(src, /obj/item/clothing/proc/removetie_verb)
 	update_accessory_slowdown()
 	update_worn_icon()
 

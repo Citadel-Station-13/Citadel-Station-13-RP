@@ -428,7 +428,7 @@ var/list/admin_verbs_event_manager = list(
 		if(holder.rights & R_DEBUG)
 			add_verb(src, admin_verbs_debug)
 			if(config_legacy.debugparanoid && !(holder.rights & R_ADMIN))
-				verbs.Remove(admin_verbs_paranoid_debug)			//Right now it's just callproc but we can easily add others later on.
+				remove_verb(src, admin_verbs_paranoid_debug)			//Right now it's just callproc but we can easily add others later on.
 		if(holder.rights & R_POSSESS)		add_verb(src, admin_verbs_possess)
 		if(holder.rights & R_PERMISSIONS)	add_verb(src, admin_verbs_permissions)
 		if(holder.rights & R_STEALTH)		add_verb(src, /client/proc/stealth)
@@ -460,7 +460,7 @@ var/list/admin_verbs_event_manager = list(
 	set name = "Adminverbs - Hide Most"
 	set category = "Admin"
 
-	verbs.Remove(/client/proc/hide_most_verbs, admin_verbs_hideable)
+	remove_verb(src, list(/client/proc/hide_most_verbs, admin_Verbs_hideable))
 	add_verb(src, /client/proc/show_verbs)
 
 	to_chat(src, "<span class='interface'>Most of your adminverbs have been hidden.</span>")
