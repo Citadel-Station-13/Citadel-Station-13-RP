@@ -1,6 +1,7 @@
 //! external - state
 
 /client/proc/statpanel_init()
+	src << browse(null, "statbrowser:byond_init")
 	#warn send initial data
 
 /client/proc/statpanel_check()
@@ -16,7 +17,7 @@
 	statpanel_ready = FALSE
 	statpanel_tab = null
 	statpanel_tabs = null
-	#warn listed turf
+	unlist_turf()
 	src << browse(null, "statbrowser:byond_shutdown")
 	#warn impl shutdown
 
@@ -28,6 +29,54 @@
 /client/proc/statpanel_reload()
 	statpanel_create()
 	statpanel_init()
+
+/client/proc/statpanel_token(token)
+	if(!token)
+		src << browse(null, "statbrowser:byond_dispose_token")
+		return
+	src << browse(token, "statbrowser:byond_grant_token")
+
+/client/proc/list_turf(turf/T)
+	if(statpanel_turf)
+		unlist_turf()
+	if(!T)
+		return
+	statpanel_turf = T
+	#warn icon
+	var/list/data = list()
+	for(var/atom/movable/AM as anything in T)
+		var/list/got = statpanel_encode_atom(AM)
+		if(!got)
+			continue
+		data[++data.len] = got
+	src << browse("[url_encode(T.name)];[];[url_encode(REF(T))];[url_encode(json_encode(data))]", "statbrowser:byond_turf_set")
+
+
+/client/proc/unlist_turf()
+	if(!statpanel_turf)
+		return
+	src << browse(null, "statbrowser:byond_turf_unset")
+	UnregisterSignal(statpanel_turf, list(
+		COMSIG_ATOM_ENTERED,
+		COMSIG_ATOM_EXITED,
+	))
+	statpanel_turf = null
+
+/**
+ * must return list(name, icon, ref).
+ */
+/client/proc/statpanel_encode_atom(AM)
+	RETURN_TYPE(/list)
+	#warn look at subsystem
+
+/client/proc/__stat_hook_turf_enter(datum/source, atom/movable/AM)
+	var/list/got = statpanel_encode_atom(AM)
+	if(!got)
+		return
+	src << browse("[url_encode(json_encode(got))]", "statbrowser:byond_turf_add")
+
+/client/proc/__stat_hook_turf_exit(datum/source, atom/movable/AM)
+	src << browse("[url_encode(REF(AM))]", "statbrowser:byond_turf_del")
 
 //! external - load
 /// compiles a full list of verbs and sends it to the browser
