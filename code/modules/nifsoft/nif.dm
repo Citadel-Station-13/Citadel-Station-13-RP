@@ -677,7 +677,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 	set category = "OOC"
 
 	if(!nif)
-		verbs -= /mob/living/carbon/human/proc/set_nif_examine
+		remove_verb(src, /mob/living/carbon/human/proc/set_nif_examine)
 		to_chat(src,"<span class='warning'>You don't have a NIF, not sure why this was here.</span>")
 		return
 

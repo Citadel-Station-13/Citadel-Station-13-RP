@@ -74,7 +74,7 @@
 	var/core_removal_stage = 0 //For removing cores.
 
 /mob/living/carbon/slime/Initialize(mapload, colour = "grey")
-	verbs += /mob/living/proc/ventcrawl
+	add_verb(src, /mob/living/proc/ventcrawl)
 
 	src.colour = colour
 	number = rand(1, 1000)

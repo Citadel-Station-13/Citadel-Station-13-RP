@@ -265,7 +265,7 @@
 		update_icons()
 
 /mob/living/simple_mob/Initialize(mapload)
-	verbs -= /mob/verb/observe
+	remove_verb(src, /mob/verb/observe)
 	health = maxHealth
 	randomize()
 

@@ -21,7 +21,7 @@
 	user.teleop = src
 	radio.channels = user.aiRadio.keyslot2.channels
 	controlling_ai = user
-	verbs += /mob/living/silicon/robot/drone/proc/release_ai_control_verb
+	add_verb(src, /mob/living/silicon/robot/drone/proc/release_ai_control_verb)
 	local_transmit = FALSE
 	languages = controlling_ai.languages.Copy()
 	speech_synthesizer_langs = controlling_ai.speech_synthesizer_langs.Copy()
@@ -92,7 +92,7 @@
 		controlling_ai = null
 
 	radio.channels = module.channels
-	verbs -= /mob/living/silicon/robot/drone/proc/release_ai_control_verb
+	remove_verb(src, /mob/living/silicon/robot/drone/proc/release_ai_control_verb)
 	module.remove_languages(src) //Removes excess, adds 'default'.
 	remove_language("Robot Talk")
 	add_language("Robot Talk", 0)

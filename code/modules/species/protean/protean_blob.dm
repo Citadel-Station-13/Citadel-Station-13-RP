@@ -67,11 +67,11 @@
 	if(H)
 		humanform = H
 		refactory = locate() in humanform.internal_organs
-		verbs |= /mob/living/proc/hide
-		verbs |= /mob/living/simple_mob/protean_blob/proc/useradio
-		verbs |= /mob/living/simple_mob/protean_blob/proc/appearanceswitch
-		verbs |= /mob/living/simple_mob/protean_blob/proc/rig_transform
-		verbs |= /mob/living/proc/usehardsuit
+		add_verb(src, /mob/living/proc/hide)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/useradio)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/appearanceswitch)
+		add_verb(src, /mob/living/simple_mob/protean_blob/proc/rig_transform)
+		add_verb(src, /mob/living/proc/usehardsuit)
 		INVOKE_ASYNC(src, /mob/living/proc/updatehealth)
 	else
 		update_icon()
