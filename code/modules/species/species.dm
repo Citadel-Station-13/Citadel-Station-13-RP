@@ -708,16 +708,12 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 					"<span class='notice'>You hug [target] to make [t_him] feel better!</span>")
 
 /datum/species/proc/remove_inherent_verbs(var/mob/living/carbon/human/H)
-	if(inherent_verbs)
-		for(var/verb_path in inherent_verbs)
-			H.verbs -= verb_path
-	return
+	if(!inherent_verbs)
+		return
+	remove_verb(H, inherent_verbs)
 
 /datum/species/proc/add_inherent_verbs(var/mob/living/carbon/human/H)
-	if(inherent_verbs)
-		for(var/verb_path in inherent_verbs)
-			H.verbs |= verb_path
-	return
+	add_verb(H, inherent_verbs)
 
 /datum/species/proc/add_inherent_spells(var/mob/living/carbon/human/H)
 	if(inherent_spells)

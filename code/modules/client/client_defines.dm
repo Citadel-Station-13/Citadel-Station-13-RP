@@ -77,10 +77,17 @@
 	/// temporary view active?
 	var/using_temporary_viewsize = FALSE
 
-	//! menu button statuses
+	//! Datum Menus
+	/// menu button statuses
 	var/list/menu_buttons_checked = list()
-	//! menu group statuses
+	/// menu group statuses
 	var/list/menu_group_status = list()
+
+	//! Statpanel
+	/// statpanel tab
+	var/statpanel_tab
+	/// statpanel initialized
+	var/statpanel_ready = FALSE
 
 		////////////////
 		//ADMIN THINGS//

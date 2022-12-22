@@ -34,10 +34,10 @@
 		to_chat(player.current, "<span class='notice'>Once you decide on a goal to pursue, you can optionally display it to \
 			everyone at the end of the shift with the <b>Set Ambition</b> verb, located in the IC tab.  You can change this at any time, \
 			and it otherwise has no bearing on your round.</span>")
-	player.current.verbs |= /mob/living/proc/write_ambition
 
+	add_verb(player.current, /mob/living/proc/write_ambition)
 	if(can_speak_aooc)
-		player.current.client.verbs += /client/proc/aooc
+		add_verb(player.current.client, /client/proc/aooc)
 
 	// Handle only adding a mind and not bothering with gear etc.
 	if(nonstandard_role_type)
@@ -60,8 +60,8 @@
 		update_icons_removed(player)
 		player.current.update_hud_antag()
 		if(!is_special_character(player))
-			player.current.verbs -= /mob/living/proc/write_ambition
-			player.current.client.verbs -= /client/proc/aooc
+			remove_verb(player.current, /mob/living/proc/write_ambition)
+			remove_verb(player.current.client, /client/proc/aooc)
 			player.ambitions = ""
 		return 1
 	return 0
