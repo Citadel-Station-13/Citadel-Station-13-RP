@@ -153,8 +153,8 @@
 
 /obj/structure/table/alien/Initialize(mapload)
 	material = get_material_by_name("alium")
-	verbs -= /obj/structure/table/verb/do_flip
-	verbs -= /obj/structure/table/proc/do_put
+	remove_obj_verb(src, /obj/structure/table/verb/do_flip)
+	remove_obj_verb(src, /obj/structure/table/proc/do_put)
 	return ..()
 
 /obj/structure/table/alien/dismantle(obj/item/tool/wrench/W, mob/user)

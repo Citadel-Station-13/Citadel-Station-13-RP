@@ -140,9 +140,9 @@
 	if(dna_lock)
 		attached_lock = new /obj/item/dnalockingchip(src)
 	if(!dna_lock)
-		verbs -= /obj/item/gun/verb/remove_dna
-		verbs -= /obj/item/gun/verb/give_dna
-		verbs -= /obj/item/gun/verb/allow_dna
+		remove_obj_verb(src, /obj/item/gun/verb/remove_dna)
+		remove_obj_verb(src, /obj/item/gun/verb/give_dna)
+		remove_obj_verb(src, /obj/item/gun/verb/allow_dna)
 
 	if(pin)
 		pin = new pin(src)
@@ -271,9 +271,9 @@
 		to_chat(user, "<span class='notice'>You insert \the [A] into \the [src].</span>")
 		attached_lock = A
 		dna_lock = 1
-		verbs += /obj/item/gun/verb/remove_dna
-		verbs += /obj/item/gun/verb/give_dna
-		verbs += /obj/item/gun/verb/allow_dna
+		add_obj_verb(src, /obj/item/gun/verb/remove_dna)
+		add_obj_verb(src, /obj/item/gun/verb/give_dna)
+		add_obj_verb(src, /obj/item/gun/verb/allow_dna)
 		return
 
 	if(A.is_screwdriver())
@@ -285,9 +285,9 @@
 				user.put_in_hands(attached_lock)
 				dna_lock = 0
 				attached_lock = null
-				verbs -= /obj/item/gun/verb/remove_dna
-				verbs -= /obj/item/gun/verb/give_dna
-				verbs -= /obj/item/gun/verb/allow_dna
+				remove_obj_verb(src, /obj/item/gun/verb/remove_dna)
+				remove_obj_verb(src, /obj/item/gun/verb/give_dna)
+				remove_obj_verb(src, /obj/item/gun/verb/allow_dna)
 		else
 			to_chat(user, "<span class='warning'>\The [src] is not accepting modifications at this time.</span>")
 

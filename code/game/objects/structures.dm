@@ -16,7 +16,7 @@
 	. = ..()
 
 	if(climbable)
-		verbs += /obj/structure/proc/climb_on
+		add_obj_verb(src, /obj/structure/proc/climb_on)
 
 	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
 		QUEUE_SMOOTH(src)

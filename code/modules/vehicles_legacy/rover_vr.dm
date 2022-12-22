@@ -97,7 +97,7 @@
 			if(!user.attempt_insert_item_for_installation(W, src))
 				return
 			key = W
-			verbs += /obj/vehicle_old/train/rover/engine/verb/remove_key
+			add_obj_verb(src, /obj/vehicle_old/train/rover/engine/verb/remove_key)
 		return
 	..()
 
@@ -149,24 +149,24 @@
 		..()
 		update_stats()
 
-		verbs -= /obj/vehicle_old/train/rover/engine/verb/stop_engine
-		verbs -= /obj/vehicle_old/train/rover/engine/verb/start_engine
+		remove_obj_verb(src, /obj/vehicle_old/train/rover/engine/verb/stop_engine)
+		remove_obj_verb(src, /obj/vehicle_old/train/rover/engine/verb/start_engine)
 
 		if(on)
-			verbs += /obj/vehicle_old/train/rover/engine/verb/stop_engine
+			add_obj_verb(src, /obj/vehicle_old/train/rover/engine/verb/stop_engine)
 		else
-			verbs += /obj/vehicle_old/train/rover/engine/verb/start_engine
+			add_obj_verb(src, /obj/vehicle_old/train/rover/engine/verb/start_engine)
 
 /obj/vehicle_old/train/rover/engine/turn_off()
 	..()
 
-	verbs -= /obj/vehicle_old/train/rover/engine/verb/stop_engine
-	verbs -= /obj/vehicle_old/train/rover/engine/verb/start_engine
+	remove_obj_verb(src, /obj/vehicle_old/train/rover/engine/verb/stop_engine)
+	remove_obj_verb(src, /obj/vehicle_old/train/rover/engine/verb/start_engine)
 
 	if(!on)
-		verbs += /obj/vehicle_old/train/rover/engine/verb/start_engine
+		add_obj_verb(src, /obj/vehicle_old/train/rover/engine/verb/start_engine)
 	else
-		verbs += /obj/vehicle_old/train/rover/engine/verb/stop_engine
+		add_obj_verb(src, /obj/vehicle_old/train/rover/engine/verb/stop_engine)
 
 /obj/vehicle_old/train/rover/RunOver(var/mob/living/M)
 	var/list/parts = list(BP_HEAD, BP_TORSO, BP_L_LEG, BP_R_LEG, BP_L_ARM, BP_R_ARM)
@@ -269,7 +269,7 @@
 		usr.put_in_hands(key)
 	key = null
 
-	verbs -= /obj/vehicle_old/train/rover/engine/verb/remove_key
+	remove_obj_verb(src, /obj/vehicle_old/train/rover/engine/verb/remove_key)
 
 //-------------------------------------------
 // Loading/unloading procs

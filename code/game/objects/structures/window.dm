@@ -433,11 +433,11 @@
 //Updates the availabiliy of the rotation verbs
 /obj/structure/window/proc/update_verbs()
 	if(anchored || is_fulltile())
-		verbs -= /obj/structure/window/verb/rotate_counterclockwise
-		verbs -= /obj/structure/window/verb/rotate_clockwise
+		remove_obj_verb(src, /obj/structure/window/verb/rotate_counterclockwise)
+		remove_obj_verb(src, /obj/structure/window/verb/rotate_clockwise)
 	else if(!is_fulltile())
-		verbs += /obj/structure/window/verb/rotate_counterclockwise
-		verbs += /obj/structure/window/verb/rotate_clockwise
+		add_obj_verb(src, /obj/structure/window/verb/rotate_counterclockwise)
+		add_obj_verb(src, /obj/structure/window/verb/rotate_clockwise)
 
 //merges adjacent full-tile windows into one (blatant ripoff from game/smoothwall.dm)
 /obj/structure/window/update_icon()

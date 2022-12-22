@@ -973,7 +973,7 @@ GLOBAL_LIST_INIT(possible_cable_coil_colours, list(
 		else
 			embed_chance = force/(w_class*3)
 	update_icon()
-	verbs -= /obj/item/stack/cable_coil/verb/make_restraint
+	remove_obj_verb(src, /obj/item/stack/cable_coil/verb/make_restraint)
 
 /obj/item/stack/cable_coil/alien/update_icon()
 	icon_state = initial(icon_state)
