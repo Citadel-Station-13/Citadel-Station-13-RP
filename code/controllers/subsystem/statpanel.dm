@@ -195,35 +195,3 @@ SUBSYSTEM_DEF(statpanels)
 
 /atom/proc/remove_from_cache()
 	SSstatpanels.cached_images -= REF(src)
-
-/// verbs that send information from the browser UI
-/client/verb/set_tab(tab as text|null)
-	set name = "Set Tab"
-	set hidden = TRUE
-
-	stat_tab = tab
-
-/client/verb/send_tabs(tabs as text|null)
-	set name = "Send Tabs"
-	set hidden = TRUE
-
-	panel_tabs |= tabs
-
-/client/verb/remove_tabs(tabs as text|null)
-	set name = "Remove Tabs"
-	set hidden = TRUE
-
-	panel_tabs -= tabs
-
-/client/verb/reset_tabs()
-	set name = "Reset Tabs"
-	set hidden = TRUE
-
-	panel_tabs = list()
-
-/client/verb/panel_ready()
-	set name = "Panel Ready"
-	set hidden = TRUE
-
-	statbrowser_ready = TRUE
-	init_verbs()

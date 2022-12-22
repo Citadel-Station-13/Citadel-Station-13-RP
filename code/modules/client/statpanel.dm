@@ -1,3 +1,35 @@
+//! external - state
+
+/client/proc/statpanel_init()
+	#warn send initial data
+
+/client/proc/statpanel_check()
+	if(statpanel_ready)
+		return
+	to_chat(src, SPAN_USERDANGER("Statpanel failed to load, click <a href='?src=[REF(src)];statpanel=reload'>here</a> to reload the panel "))
+
+/client/proc/statpanel_create()
+	src << browse(file('html/statbrowser.html'), "window=statbrowser")
+	addtimer(CALLBACK(src, /client/proc/statpanel_check), 30 SECONDS)
+
+/client/proc/statpanel_dispose()
+	statpanel_ready = FALSE
+	statpanel_tab = null
+	statpanel_tabs = null
+	#warn listed turf
+	src << browse(null, "statbrowser:byond_shutdown")
+	#warn impl shutdown
+
+/client/proc/statpanel_ready()
+	statpanel_tabs = list()
+	statpanel_init()
+	statpanel_ready = TRUE
+
+/client/proc/statpanel_reload()
+	statpanel_create()
+	statpanel_init()
+
+//! external - load
 /// compiles a full list of verbs and sends it to the browser
 /client/proc/init_verbs()
 	if(IsAdminAdvancedProcCall())
@@ -22,32 +54,7 @@
 		verblist[++verblist.len] = list(verb_to_init.category, verb_to_init.name)
 	src << output("[url_encode(json_encode(panel_tabs))];[url_encode(json_encode(verblist))]", "statbrowser:init_verbs")
 
-/client/proc/statpanel_init()
-	#warn send initial data
-
-/client/proc/statpanel_check()
-	if(statpanel_ready)
-		return
-	to_chat(src, SPAN_USERDANGER("Statpanel failed to load, click <a href='?src=[REF(src)];statpanel=reload'>here</a> to reload the panel "))
-
-/client/proc/statpanel_create()
-	src << browse(file('html/statbrowser.html'), "window=statbrowser")
-	addtimer(CALLBACK(src, /client/proc/statpanel_check), 30 SECONDS)
-
-/client/proc/statpanel_dispose()
-	statpanel_ready = FALSE
-	statpanel_tab = null
-	#warn listed turf
-	src << browse(null, "statbrowser:shutdown")
-	#warn impl shutdown
-
-/client/proc/statpanel_ready()
-	statpanel_init()
-	statpanel_ready = TRUE
-
-/client/proc/statpanel_reload()
-	statpanel_create()
-	statpanel_init()
+//! data
 
 /**
  * the big, bad, Citadel Station in house stat proc.
@@ -84,3 +91,35 @@
  * grabs initial statpanel data
  */
 /client/proc/_statpanel_static()
+
+//! verb hooks
+
+/client/verb/hook_statpanel_ready()
+	set name = ".statpanel_ready"
+	set hidden = TRUE
+
+	statpanel_ready()
+
+/client/verb/hook_statpanel_add_tab(tab as text)
+	set name = ".statpanel_tab_add"
+	set hidden = TRUE
+
+	statpanel_tabs += tab
+
+/client/verb/hook_statpanel_remove_tab(tab as text)
+	set name = ".statpanel_tab_remove"
+	set hidden = TRUE
+
+	statpanel_tabs -= tab
+
+/client/verb/hook_statpanel_wipe_tabs()
+	set name = ".statpanel_tab_wipe"
+	set hidden = TRUE
+
+	statpanel_tabs = list()
+
+/client/verb/hook_statpanel_set_tab(tab as text)
+	set name = ".statpanel_tab"
+	set hidden = TRUE
+
+	statpanel_tab = tab

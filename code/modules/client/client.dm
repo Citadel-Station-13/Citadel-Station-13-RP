@@ -90,6 +90,8 @@
 	var/statpanel_ready = FALSE
 	/// turf being listed
 	var/turf/statpanel_turf
+	/// tabs the panel has that do not include varbs
+	var/list/statpanel_tabs
 
 		////////////////
 		//ADMIN THINGS//
