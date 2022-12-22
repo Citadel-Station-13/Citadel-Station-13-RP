@@ -11,7 +11,7 @@
 		LANGUAGE_ID_UNATHI,
 		LANGUAGE_ID_NARAMADI
 	)
-	language_amount_mod = -2
+	language_amount_mod = -1
 
 /datum/lore/character_background/origin/hegemony/naramadi/nameless
 	name = "Nameless"
@@ -23,7 +23,7 @@
 		LANGUAGE_ID_NARAMADI,
 		LANGUAGE_ID_UNATHI
 	)
-	language_amount_mod = -2
+	language_amount_mod = -1
 
 /datum/lore/character_background/origin/hegemony/naramadi/exiles
 	name = "Naramadi Exiles"
@@ -38,4 +38,3 @@
 	innate_languages = list(
 		LANGUAGE_ID_NARAMADI
 	)
-	language_amount_mod = -1
