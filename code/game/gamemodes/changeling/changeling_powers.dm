@@ -123,7 +123,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 		return
 	for(var/datum/power/changeling/P in mind.changeling.purchased_powers)
 		if(P.isVerb)
-			verbs -= P.verbpath
+			remove_verb(src, P.verbpath)
 			var/atom/movable/screen/ability/verb_based/changeling/C = ability_master.get_ability_by_proc_ref(P.verbpath)
 			if(C)
 				ability_master.remove_ability(C)
