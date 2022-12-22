@@ -106,7 +106,7 @@
 		lore_religion_datum(),
 		lore_faction_datum()
 	)
-	var/tally = characters_species_datum().max_additional_languages
+	var/tally = character_species_datum().max_additional_languages
 	for(var/datum/lore/character_background/B in backgrounds)	// eh let's type filter
 		tally += B.language_amount_mod
 	return max(tally, 0)
