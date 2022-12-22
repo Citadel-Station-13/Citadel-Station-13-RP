@@ -325,7 +325,7 @@
 		add_delay *= SQRT_2
 
 	// round to tick to prevent lurching instead of preserving momentum
-	mob.move_delay = world.time + round(add_delay, 0.05)
+	mob.move_delay = world.time + round(add_delay, world.tick_lag)
 
 /*
 	// preserve momentum: for non-evenly-0.5-multiple movespeeds (HELLO, DIAGONAL MOVES),
