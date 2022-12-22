@@ -17,6 +17,14 @@ GLOBAL_VAR_INIT(default_glide_size, 0)
 /// Not very readable but it works
 #define DELAY_TO_GLIDE_SIZE(delay) (clamp(((world.icon_size / max((delay) / world.tick_lag, 1)) * GLOB.glide_size_multiplier), MIN_GLIDE_SIZE, MAX_GLIDE_SIZE) + world.tick_lag * 2)
 
+//? tg's
+// (clamp(((world.icon_size / max((delay) / world.tick_lag, 1)) * GLOB.glide_size_multiplier), MIN_GLIDE_SIZE, MAX_GLIDE_SIZE))
+//? lohikar's
+// if (current_map.map_is_laggy || !config.use_movement_smoothing)
+//     mob.glide_size = 0
+// else
+//     mob.glide_size = NONUNIT_CEILING(WORLD_ICON_SIZE / max(move_delay, world.tick_lag) * world.tick_lag, world.tick_lag) + world.tick_lag * 2
+
 /// Enables smooth movement
 #define SMOOTH_MOVEMENT
 

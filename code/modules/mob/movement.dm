@@ -234,10 +234,6 @@
 	var/add_delay = mob.movement_delay()
 	// for grabs (legacy code moment)
 	var/add_delay_grab = 0
-	// preserve momentum: for non-evenly-0.5-multiple movespeeds (HELLO, DIAGONAL MOVES),
-	// we need to store how much we're cheated out of our tick and carry it through
-	// make an intelligent guess at if they're trying to keep moving, tho!
-	var/preserving_momentum = (old_delay > (world.time - add_delay * 2))? (world.time - old_delay) : 0
 
 	//! WARNING: LEGACY CODE; I don't know how this works and I'm afraid to ask.
 	if(mob.pulledby || mob.buckled) // Wheelchair driving!		//this is shitcode
@@ -327,19 +323,15 @@
 	if((direct & (direct - 1)) && mob.loc == n)
 		add_delay *= SQRT_2
 
-	// tick up
-	mob.move_delay = world.time + add_delay - preserving_momentum
-	// var/computed = WORLD_ICON_SIZE / max(mob.move_delay, world.tick_lag) * world.tick_lag
-	// computed = CEILING(computed) + world.tick_lag * 2
-	// SMOOTH_GLIDE_SIZE(mob, computed)
-	SMOOTH_GLIDE_SIZE(mob, DELAY_TO_GLIDE_SIZE(mob.move_delay))
+	// preserve momentum: for non-evenly-0.5-multiple movespeeds (HELLO, DIAGONAL MOVES),
+	// we need to store how much we're cheated out of our tick and carry it through
+	// make an intelligent guess at if they're trying to keep moving, tho!
+	if(mob.last_move_time > (world.time - add_delay * 1.25))
+		mob.move_delay = old_delay + add_delay
+	else
+		mob.move_delay = world.time + add_delay
 
-/*
-        if (current_map.map_is_laggy || !config.use_movement_smoothing)
-            mob.glide_size = 0
-        else
-            mob.glide_size = NONUNIT_CEILING(WORLD_ICON_SIZE / max(move_delay, world.tick_lag) * world.tick_lag, world.tick_lag) + world.tick_lag * 2
-*/
+	SMOOTH_GLIDE_SIZE(mob, DELAY_TO_GLIDE_SIZE(add_delay))
 
 	mob.last_move_time = world.time
 

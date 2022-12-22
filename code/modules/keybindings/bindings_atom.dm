@@ -17,5 +17,8 @@
 	if((movement_dir & EAST) && (movement_dir & WEST))
 		movement_dir &= ~(EAST|WEST)
 	if(!movement_dir)
+		// ok but also reset this lol
+		user.next_move_dir_add = NONE
+		user.next_move_dir_sub = NONE
 		return		// WHY are you running?
 	user.Move(get_step(src, movement_dir), movement_dir)
