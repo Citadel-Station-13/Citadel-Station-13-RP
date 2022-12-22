@@ -63,3 +63,39 @@ SUBSYSTEM_DEF(nightshift)
 		if(apc.z in using_map_legacy().station_levels)
 			apc.set_nightshift(active, TRUE)
 			CHECK_TICK
+
+// TODO: WORLD SECTOR TIME SYSTEM
+
+// Gets the current time on a current zlevel, and returns a time datum
+/proc/get_zlevel_time(var/z)
+	if(!z)
+		z = 1
+	var/datum/planet/P = z <= SSplanets.z_to_planet.len ? SSplanets.z_to_planet[z] : null
+	// We found a planet tied to that zlevel, give them the time
+	if(P?.current_time)
+		return P.current_time
+
+	// We have to invent a time
+	else
+		var/datum/time/T = new (station_time_in_ds)
+		return T
+
+// Returns a boolean for if it's night or not on a particular zlevel
+/proc/get_night(var/z)
+	if(!z)
+		z = 1
+	var/datum/time/now = get_zlevel_time(z)
+	var/percent = now.seconds_stored / now.seconds_in_day //practically all of these are in DS
+	testing("get_night is [percent] through the day on [z]")
+
+	// First quarter, last quarter
+	if(percent < 0.25 || percent > 0.75)
+		return TRUE
+	// Second quarter, third quarter
+	else
+		return FALSE
+
+// Boolean for if we should use SSnightshift night hours
+/proc/get_nightshift()
+	return get_night(1) //Defaults to z1, customize however you want on your own maps
+

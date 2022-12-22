@@ -233,13 +233,13 @@
 /obj/machinery/power/supermatter/get_transit_zlevel()
 	//don't send it back to the station -- most of the time
 	if(prob(99))
-		var/list/candidates = using_map_legacy().accessible_z_levels.Copy()
-		for(var/zlevel in using_map_legacy().station_levels)
-			candidates.Remove("[zlevel]")
-		candidates.Remove("[src.z]")
-
-		if(candidates.len)
-			return text2num(pickweight(candidates))
+		var/list/potential = list()
+		for(var/z in SSmapping.crosslinked_levels())
+			if(SSmapping.level_trait(z, ZTRAIT_STATION))
+				continue
+			potential += z
+		if(length(potential))
+			return pick(potential)
 
 	return ..()
 
