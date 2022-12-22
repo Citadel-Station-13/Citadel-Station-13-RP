@@ -3478,7 +3478,7 @@
 /obj/structure/lattice,
 /obj/machinery/door/firedoor/glass,
 /obj/structure/cable{
-	icon_state = "32-4"
+	icon_state = "32-1"
 	},
 /turf/simulated/open,
 /area/maintenance/substation/surface_three)
@@ -5028,12 +5028,6 @@
 /obj/structure/catwalk,
 /turf/simulated/floor/plating,
 /area/maintenance/station/exploration)
-"jf" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/simulated/floor/plating,
-/area/maintenance/substation/surface_three)
 "jg" = (
 /obj/structure/table/woodentable{
 	carpeted = 1
@@ -6240,11 +6234,11 @@
 	RCon_tag = "Substation - Surface Three";
 	cur_coils = 2
 	},
-/obj/structure/cable{
-	dir = 4
-	},
 /obj/structure/cable/green{
 	icon_state = "0-4"
+	},
+/obj/structure/cable{
+	icon_state = "0-8"
 	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_three)
@@ -9318,6 +9312,9 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
 /turf/simulated/floor/plating,
 /area/maintenance/substation/surface_three)
 "ru" = (
@@ -11167,10 +11164,6 @@
 	dir = 1
 	},
 /obj/structure/cable{
-	dir = 1
-	},
-/obj/structure/cable{
-	icon_state = "1-8";
 	dir = 4
 	},
 /turf/simulated/floor/plating,
@@ -39633,7 +39626,7 @@ nL
 Fm
 lu
 uW
-jf
+Lh
 Fm
 zR
 Ts
