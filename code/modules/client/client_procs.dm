@@ -916,3 +916,10 @@ GLOBAL_VAR_INIT(log_clicks, FALSE)
 	window_flash(src)
 	src << browse(message,"window=dropmessage;size=480x360;can_close=1")
 	qdel(src)
+
+/client/verb/toggle_verbs()
+	set name = "Toggle Verbs"
+	set category = "OOC"
+	set desc = "temporary lagfix"
+	
+	show_verb_panel = !show_verb_panel
