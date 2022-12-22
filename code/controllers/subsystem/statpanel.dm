@@ -10,12 +10,19 @@ SUBSYSTEM_DEF(statpanels)
 	var/list/currentrun = list()
 
 	//! caching
+	/// cached mc data
+	var/cache_mc_data
+	/// cached server-wide data
 
 	var/encoded_global_data
 	var/mc_data_encoded
 	var/list/cached_images = list()
 
 /datum/controller/subsystem/statpanels/fire(resumed = FALSE)
+	if(!resumed)
+		// dispose caches
+		cache_mc_data = null
+
 	if (!resumed)
 		var/datum/map_config/cached = SSmapping.next_map_config
 		var/round_time = world.time - SSticker.round_start_time
@@ -175,6 +182,16 @@ SUBSYSTEM_DEF(statpanels)
 		mc_data[++mc_data.len] = list("\[[sub_system.state_letter()]][sub_system.name]", sub_system.stat_entry(), "\ref[sub_system]")
 	mc_data[++mc_data.len] = list("Camera Net", "Cameras: [GLOB.cameranet.cameras.len] | Chunks: [GLOB.cameranet.chunks.len]", "\ref[GLOB.cameranet]")
 	mc_data_encoded = url_encode(json_encode(mc_data))
+
+/datum/controller/subsystem/statpanels/proc/fetch_mc_data()
+	if(cache_mc_data)
+		return cache_mc_data
+	#warn impl
+
+/datum/controller/subsystem/statpanels/proc/fetch_server_data()
+	if(cache_server_data)
+		return cache_server_data
+	#warn impl
 
 /atom/proc/remove_from_cache()
 	SSstatpanels.cached_images -= REF(src)

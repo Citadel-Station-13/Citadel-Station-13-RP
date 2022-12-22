@@ -84,7 +84,7 @@
 	var/list/menu_group_status = list()
 
 	//! Statpanel
-	/// statpanel tab
+	/// statpanel tab ; can be null (e.g. we're looking at verb tabs)
 	var/statpanel_tab
 	/// statpanel initialized
 	var/statpanel_ready = FALSE
