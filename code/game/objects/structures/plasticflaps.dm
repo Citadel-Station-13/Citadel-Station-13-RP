@@ -5,6 +5,7 @@
 	icon_state = "plasticflaps"
 	density = 0
 	anchored = 1
+	pass_flags = NONE
 	layer = MOB_LAYER
 	plane = MOB_PLANE
 	explosion_resistance = 5

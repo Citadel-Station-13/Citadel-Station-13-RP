@@ -91,6 +91,8 @@ DEFINE_BITFIELD(movable_flags, list(
 #define ATOM_PASS_CLICK				(1<<6)
 /// let overhand thrown objects pass, unless it's directly targeting us
 #define ATOM_PASS_OVERHEAD_THROW	(1<<7)
+/// let buckled mobs pass always
+#define ATOM_PASS_BUCKLED			(1<<8)
 
 DEFINE_BITFIELD(pass_flags, list(
 	BITFIELD(ATOM_PASS_TABLE),
@@ -101,6 +103,7 @@ DEFINE_BITFIELD(pass_flags, list(
 	BITFIELD(ATOM_PASS_THROWN),
 	BITFIELD(ATOM_PASS_CLICK),
 	BITFIELD(ATOM_PASS_OVERHEAD_THROW),
+	BITFIELD(ATOM_PASS_BUCKLED),
 ))
 
 DEFINE_BITFIELD(pass_flags_self, list(
@@ -111,6 +114,8 @@ DEFINE_BITFIELD(pass_flags_self, list(
 	BITFIELD(ATOM_PASS_MOB),
 	BITFIELD(ATOM_PASS_THROWN),
 	BITFIELD(ATOM_PASS_CLICK),
+	BITFIELD(ATOM_PASS_OVERHEAD_THROW),
+	BITFIELD(ATOM_PASS_BUCKLED),
 ))
 
 // /atom/movable movement_type

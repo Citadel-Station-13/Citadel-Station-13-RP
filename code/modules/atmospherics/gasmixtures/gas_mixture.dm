@@ -212,13 +212,6 @@
 	if(!total_moles)
 		temperature = TCMB
 
-//Returns the pressure of the gas mix.  Only accurate if there have been no gas modifications since update_values() has been called.
-/datum/gas_mixture/proc/return_pressure()
-#ifdef GASMIXTURE_ASSERTIONS
-	ASSERT(volume > 0)
-#endif
-	return (total_moles * R_IDEAL_GAS_EQUATION * temperature) / volume
-
 //Removes moles from the gas mixture and returns a gas_mixture containing the removed air.
 /datum/gas_mixture/proc/remove(amount)
 	amount = min(amount, total_moles * group_multiplier) //Can not take more air than the gas mixture has!
@@ -462,6 +455,13 @@
 		. += gas[g] * GLOB.meta_gas_molar_mass[g] * group_multiplier
 
 // todo: sort above
+
+
+
+//! Getters
+//Returns the pressure of the gas mix.  Only accurate if there have been no gas modifications since update_values() has been called.
+/datum/gas_mixture/proc/return_pressure()
+	return (total_moles * R_IDEAL_GAS_EQUATION * temperature) / volume
 
 //! Gas Strings
 /**
