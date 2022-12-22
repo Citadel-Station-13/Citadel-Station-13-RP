@@ -29,6 +29,7 @@ var/global/list/light_type_cache = list()
 	anchored = 1
 	plane = MOB_PLANE
 	layer = ABOVE_MOB_LAYER
+
 	var/stage = 1
 	var/fixture_type = /obj/machinery/light
 	var/sheets_refunded = 2
@@ -238,6 +239,7 @@ var/global/list/light_type_cache = list()
 	idle_power_usage = 2
 	active_power_usage = 10
 	power_channel = LIGHT //Lights are calc'd via area so they dont need to be in the machine list
+
 	var/on = 0					// 1 if on, 0 if off
 	var/brightness_range
 	var/brightness_power
@@ -354,6 +356,16 @@ var/global/list/light_type_cache = list()
 // create a new lighting fixture
 /obj/machinery/light/Initialize(mapload, obj/machinery/light_construct/construct)
 	. = ..(mapload)
+
+	switch (dir)
+		if (NORTH)
+			light_offset_y = WORLD_ICON_SIZE * 0.5
+		if (SOUTH)
+			light_offset_y = WORLD_ICON_SIZE * -0.5
+		if (EAST)
+			light_offset_x = WORLD_ICON_SIZE * 0.5
+		if (WEST)
+			light_offset_x = WORLD_ICON_SIZE * -0.5
 
 	if(construct)
 		start_with_cell = FALSE

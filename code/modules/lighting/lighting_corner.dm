@@ -186,15 +186,15 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 	var/turf/T
 	var/Ti
 	// Grab the first master that's a Z-turf, if one exists.
-	if (t1 && (T = GET_ABOVE(t1)) && (T.mz_flags & MZ_ALLOW_LIGHTING))
+	if (t1 && (T = t1.above || GET_ABOVE(t1)) && (T.mz_flags & MZ_ALLOW_LIGHTING))
 		Ti = t1i
-	else if (t2 && (T = GET_ABOVE(t2)) && (T.mz_flags & MZ_ALLOW_LIGHTING))
+	else if (t2 && (T = t2.above || GET_ABOVE(t2)) && (T.mz_flags & MZ_ALLOW_LIGHTING))
 		Ti = t2i
-	else if (t3 && (T = GET_ABOVE(t3)) && (T.mz_flags & MZ_ALLOW_LIGHTING))
+	else if (t3 && (T = t3.above || GET_ABOVE(t3)) && (T.mz_flags & MZ_ALLOW_LIGHTING))
 		Ti = t3i
-	else if (t4 && (T = GET_ABOVE(t4)) && (T.mz_flags & MZ_ALLOW_LIGHTING))
+	else if (t4 && (T = t4.above || GET_ABOVE(t4)) && (T.mz_flags & MZ_ALLOW_LIGHTING))
 		Ti = t4i
-	else	// Nothing above us that cares about below light.
+	else // Nothing above us that cares about below light.
 		T = null
 
 	if (TURF_IS_DYNAMICALLY_LIT(T))

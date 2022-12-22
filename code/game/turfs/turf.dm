@@ -151,7 +151,7 @@
 	if (light_power && light_range)
 		update_light()
 
-	SSambience.queued += src
+	SSambient_lighting.queued += src
 
 	if (opacity)
 		has_opaque_atom = TRUE
@@ -507,6 +507,6 @@
 		is_outside = new_outside
 		// if(!skip_weather_update)
 		// 	update_weather()
-		SSambience.queued += src
+		SSambient_lighting.queued += src
 		return TRUE
 	return FALSE

@@ -1,16 +1,17 @@
-SUBSYSTEM_DEF(ambience)
+SUBSYSTEM_DEF(ambient_lighting)
 	name = "Ambient Lighting"
 	wait = 1
 	priority = FIRE_PRIORITY_LIGHTING
 	init_order = INIT_ORDER_LIGHTING
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT // Copied from icon update subsystem.
-	subsystem_flags = SS_NO_INIT
+	// subsystem_flags = SS_NO_INIT
+
 	var/list/queued = list()
 
-/datum/controller/subsystem/ambience/stat_entry()
+/datum/controller/subsystem/ambient_lighting/stat_entry()
 	..("P:[length(queued)]")
 
-/datum/controller/subsystem/ambience/fire(resumed = FALSE, no_mc_tick = FALSE)
+/datum/controller/subsystem/ambient_lighting/fire(resumed = FALSE, no_mc_tick = FALSE)
 	var/list/curr = queued
 	while (curr.len)
 		var/turf/target = curr[curr.len]
