@@ -32,21 +32,39 @@
 	update_icon()
 
 /obj/item/ammo_casing/attackby(obj/item/W as obj, mob/user as mob)
-	if(W.is_screwdriver())
-		if(!BB)
-			to_chat(user, "<font color=#4F49AF>There is no bullet in the casing to inscribe anything into.</font>")
-			return
+	var/obj/item/ammo_magazine/box = W
+	if(istype(W, /obj/item/ammo_magazine))
+		if(isturf(loc))
+			var/boolets = 0
+			for(var/obj/item/ammo_casing/bullet in loc)
+				if(box.stored_ammo.len >= box.max_ammo)
+					break
+				if(bullet.BB)
+					if(box.give_round(bullet, 0))
+						boolets++
+				else
+					continue
+			if(boolets > 0)
+				box.update_icon()
+				to_chat(user, "<span class='notice'>You collect [boolets] shell\s. [box] now contains [box.stored_ammo.len] shell\s.</span>")
+			else
+				to_chat(user, "<span class='warning'>You fail to collect anything!</span>")
+	else
+		if(W.is_screwdriver())
+			if(!BB)
+				to_chat(user, "<font color=#4F49AF>There is no bullet in the casing to inscribe anything into.</font>")
+				return
 
-		var/tmp_label = ""
-		var/label_text = sanitizeSafe(input(user, "Inscribe some text into \the [initial(BB.name)]","Inscription",tmp_label), MAX_NAME_LEN)
-		if(length(label_text) > 20)
-			to_chat(user, "<font color='red'>The inscription can be at most 20 characters long.</font>")
-		else if(!label_text)
-			to_chat(user, "<font color=#4F49AF>You scratch the inscription off of [initial(BB)].</font>")
-			BB.name = initial(BB.name)
-		else
-			to_chat(user, "<font color=#4F49AF>You inscribe \"[label_text]\" into \the [initial(BB.name)].</font>")
-			BB.name = "[initial(BB.name)] (\"[label_text]\")"
+			var/tmp_label = ""
+			var/label_text = sanitizeSafe(input(user, "Inscribe some text into \the [initial(BB.name)]","Inscription",tmp_label), MAX_NAME_LEN)
+			if(length(label_text) > 20)
+				to_chat(user, "<font color='red'>The inscription can be at most 20 characters long.</font>")
+			else if(!label_text)
+				to_chat(user, "<font color=#4F49AF>You scratch the inscription off of [initial(BB)].</font>")
+				BB.name = initial(BB.name)
+			else
+				to_chat(user, "<font color=#4F49AF>You inscribe \"[label_text]\" into \the [initial(BB.name)].</font>")
+				BB.name = "[initial(BB.name)] (\"[label_text]\")"
 
 /obj/item/ammo_casing/update_icon()
 	if(!BB)
@@ -102,6 +120,30 @@
 		for(var/i in 1 to initial_ammo)
 			stored_ammo += new ammo_type(src)
 	update_icon()
+
+/obj/item/ammo_magazine/proc/give_round(obj/item/ammo_casing/R, replace_spent = 0)
+	// Boxes don't have a caliber type, magazines do. Not sure if it's intended or not, but if we fail to find a caliber, then we fall back to ammo_type.
+	if(!R || (caliber && R.caliber != caliber) || (!caliber && R.type != ammo_type))
+		return 0
+
+	if(stored_ammo.len < max_ammo)
+		stored_ammo += R
+		R.loc = src
+		//update_mat_value()
+		return 1
+	//for accessibles magazines (e.g internal ones) when full, start replacing spent ammo
+	else if(replace_spent)
+		for(var/obj/item/ammo_casing/AC in stored_ammo)
+			if(!AC.BB)//found a spent ammo
+				stored_ammo -= AC
+				AC.loc = get_turf(loc)
+
+				stored_ammo += R
+				R.loc = src
+				//update_mat_value()
+				return 1
+
+	return 0
 
 /obj/item/ammo_magazine/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/ammo_casing))
