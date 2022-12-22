@@ -28,7 +28,7 @@
 	current_antagonists |= player
 
 	if(faction_verb && player.current)
-		player.current.verbs |= faction_verb
+		player.add_verb(current, faction_verb)
 
 	spawn(1 SECOND) //Added a delay so that this should pop up at the bottom and not the top of the text flood the new antag gets.
 		to_chat(player.current, "<span class='notice'>Once you decide on a goal to pursue, you can optionally display it to \

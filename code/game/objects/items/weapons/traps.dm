@@ -23,7 +23,7 @@
 	if(ishuman(src.loc))
 		var/mob/living/carbon/human/H = src.loc
 		if(H.wear_mask == src)
-			H.verbs |= /mob/living/proc/shred_limb_temp
+			add_verb(H, /mob/living/proc/shred_limb_temp)
 		else
 			H.verbs -= /mob/living/proc/shred_limb_temp
 	..()

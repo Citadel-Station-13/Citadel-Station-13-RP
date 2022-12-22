@@ -59,7 +59,7 @@
 	user.teleop = new_drone
 	new_drone.radio.channels = user.aiRadio.keyslot2.channels
 	new_drone.controlling_ai = user
-	new_drone.verbs += /mob/living/silicon/robot/drone/proc/release_ai_control_verb
+	add_verb(new_drone, /mob/living/silicon/robot/drone/proc/release_ai_control_verb)
 	new_drone.local_transmit = FALSE
 	new_drone.languages = new_drone.controlling_ai.languages.Copy()
 	new_drone.speech_synthesizer_langs = new_drone.controlling_ai.speech_synthesizer_langs.Copy()

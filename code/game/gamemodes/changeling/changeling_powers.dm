@@ -94,7 +94,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 		if(P.isVerb)
 			if(lesser_form && !P.allowduringlesserform)	continue
 			if(!(P in src.verbs))
-				src.verbs += P.verbpath
+				add_verb(src, P.verbpath)
 			if(P.make_hud_button)
 				if(!src.ability_master)
 					src.ability_master = new /atom/movable/screen/movable/ability_master(src)
@@ -254,7 +254,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 	changeling.sting_range = 1
 	src.verbs -= verb_path
 	spawn(10)
-		src.verbs += verb_path
+		add_verb(src, verb_path)
 
 	to_chat(src, SPAN_NOTICE("We stealthily sting [T]."))
 	if(!T.mind || !T.mind.changeling)

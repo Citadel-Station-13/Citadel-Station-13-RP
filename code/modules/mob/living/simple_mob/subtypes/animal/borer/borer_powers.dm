@@ -165,11 +165,11 @@
 	H.add_language("Cortical Link")
 
 	if(host.stat == 2)
-		H.verbs |= /mob/living/carbon/human/proc/jumpstart
+		add_verb(H, /mob/living/carbon/human/proc/jumpstart)
 
-	H.verbs |= /mob/living/carbon/human/proc/psychic_whisper
-	H.verbs |= /mob/living/carbon/human/proc/tackle
-	H.verbs |= /mob/living/carbon/proc/spawn_larvae
+	add_verb(H, /mob/living/carbon/human/proc/psychic_whisper)
+	add_verb(H, /mob/living/carbon/human/proc/tackle)
+	add_verb(H, /mob/living/carbon/proc/spawn_larvae)
 
 	if(H.client)
 		H.ghostize(0)
@@ -330,9 +330,9 @@
 
 			controlling = 1
 
-			host.verbs += /mob/living/carbon/proc/release_control
-			host.verbs += /mob/living/carbon/proc/punish_host
-			host.verbs += /mob/living/carbon/proc/spawn_larvae
+			add_verb(host, /mob/living/carbon/proc/release_control)
+			add_verb(host, /mob/living/carbon/proc/punish_host)
+			add_verb(host, /mob/living/carbon/proc/spawn_larvae)
 
 			return
 

@@ -60,7 +60,7 @@
 
 		if(victim.mind.special_verbs.len)//To add all the special verbs for the original caster.
 			for(var/V in caster.mind.special_verbs)//Not too important but could come into play.
-				caster.verbs += V
+				add_verb(caster, V)
 
 		ghost.mind.transfer_to(caster)
 		caster.key = ghost.key	//have to transfer the key since the mind was not active
@@ -70,7 +70,7 @@
 
 		if(caster.mind.special_verbs.len)//If they had any special verbs, we add them here.
 			for(var/V in caster.mind.special_verbs)
-				caster.verbs += V
+				add_verb(caster, V)
 		//MIND TRANSFER END
 
 		//Target is handled in ..(), so we handle the caster here

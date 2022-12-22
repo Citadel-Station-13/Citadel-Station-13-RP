@@ -676,7 +676,7 @@
 
 /obj/item/fluff/dragor_dot/attack_self(mob/user)
 	if(user.ckey == "pontifexminimus")
-		user.verbs |= /mob/living/carbon/human/proc/shapeshifter_select_gender
+		add_verb(user, /mob/living/carbon/human/proc/shapeshifter_select_gender)
 	else
 		return
 
@@ -1278,7 +1278,7 @@
 /obj/item/implant/reagent_generator/evian/post_implant(mob/living/carbon/source)
 	START_PROCESSING(SSobj, src)
 	to_chat(source, "<span class='notice'>You implant [source] with \the [src].</span>")
-	source.verbs |= assigned_proc
+	add_verb(source, assigned_proc)
 	return 1
 
 /obj/item/implanter/reagent_generator/evian

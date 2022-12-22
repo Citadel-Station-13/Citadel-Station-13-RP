@@ -59,7 +59,7 @@
 
 	src.loc = get_turf(src)
 	src.verbs -= /mob/living/carbon/alien/diona/proc/split
-	src.verbs += /mob/living/carbon/alien/diona/proc/merge
+	add_verb(src, /mob/living/carbon/alien/diona/proc/merge)
 
 	if(istype(M))
 		for(var/atom/A in M.contents)

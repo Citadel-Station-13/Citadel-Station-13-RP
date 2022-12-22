@@ -253,9 +253,9 @@
 	R.dogborg = TRUE
 	R.wideborg = TRUE
 	R.icon_dimension_x = 64
-	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
-	R.verbs |= /mob/living/proc/shred_limb
-	R.verbs |= /mob/living/silicon/robot/proc/rest_style
+	add_verb(R, /mob/living/silicon/robot/proc/ex_reserve_refill)
+	add_verb(R, /mob/living/proc/shred_limb)
+	add_verb(R, /mob/living/silicon/robot/proc/rest_style)
 
 // Uses modified K9 sprites.
 /obj/item/robot_module/robot/clerical/quad_serv
@@ -325,8 +325,8 @@
 	R.dogborg = TRUE
 	R.wideborg = TRUE
 	R.icon_dimension_x = 64
-	R.verbs |= /mob/living/silicon/robot/proc/ex_reserve_refill
-	R.verbs |= /mob/living/silicon/robot/proc/rest_style
+	add_verb(R, /mob/living/silicon/robot/proc/ex_reserve_refill)
+	add_verb(R, /mob/living/silicon/robot/proc/rest_style)
 
 
 /obj/item/robot_module/Reset(var/mob/living/silicon/robot/R)
