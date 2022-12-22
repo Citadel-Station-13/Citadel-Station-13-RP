@@ -196,7 +196,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			debug_tools_allowed = TRUE
 	/*
 	else if(GLOB.deadmins[ckey])
-		verbs += /client/proc/readmin
+		add_verb(src, /client/proc/readmin)
 		connecting_admin = TRUE
 	if(CONFIG_GET(flag/autoadmin))
 		if(!GLOB.admin_datums[ckey])
