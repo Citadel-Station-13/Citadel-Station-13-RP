@@ -17,7 +17,9 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 		flush_queue()
 	if(length(next_wave_set))
 		emit_waves()
-		return
+		if(state != SS_RUNNING)
+			// pause if it's pausing, otherwise go to main processing
+			return
 	..()
 
 /datum/controller/subsystem/processing/radiation/on_max_z_changed(old_z_count, new_z_count)
