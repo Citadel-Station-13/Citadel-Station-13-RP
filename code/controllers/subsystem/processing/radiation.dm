@@ -90,7 +90,7 @@ PROCESSING_SUBSYSTEM_DEF(radiation)
 			new /datum/radiation_wave(T, EAST, intensity * insulation, B.falloff, B.highest, TRUE, B.emitter_count, left)
 			new /datum/radiation_wave(T, WEST, intensity * insulation, B.falloff, B.highest, TRUE, B.emitter_count, left)
 		if(MC_TICK_CHECK)
-			next_wave_set.Cut(1, i)
+			next_wave_set.Cut(1, i + 1)
 			return
 
 /datum/controller/subsystem/processing/radiation/proc/queue_wave(turf/source, intensity, falloff, can_contaminate)
