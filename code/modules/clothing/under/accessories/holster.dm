@@ -94,7 +94,7 @@
 
 /obj/item/clothing/accessory/holster/on_removed(mob/user as mob)
 	if(has_suit)
-		has_suit.verbs -= /obj/item/clothing/accessory/holster/verb/holster_verb
+		remove_verb(has_suit, /obj/item/clothing/accessory/holster/verb/holster_verb)
 	..()
 
 //For the holster hotkey

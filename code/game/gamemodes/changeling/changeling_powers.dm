@@ -252,7 +252,7 @@ var/global/list/possible_changeling_IDs = list("Alpha","Beta","Gamma","Delta","E
 
 	changeling.chem_charges -= required_chems
 	changeling.sting_range = 1
-	src.verbs -= verb_path
+	remove_verb(src, verb_path)
 	spawn(10)
 		add_verb(src, verb_path)
 

@@ -326,7 +326,7 @@ Ccomp's first proc.
 	if(config_legacy.antag_hud_allowed)
 		for(var/mob/observer/dead/g in get_ghosts())
 			if(!g.client.holder)						//Remove the verb from non-admin ghosts
-				g.verbs -= /mob/observer/dead/verb/toggle_antagHUD
+				remove_verb(g, /mob/observer/dead/verb/toggle_antagHUD)
 			if(g.antagHUD)
 				g.antagHUD = 0						// Disable it on those that have it enabled
 				g.has_enabled_antagHUD = 2				// We'll allow them to respawn

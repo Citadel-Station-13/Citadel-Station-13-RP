@@ -719,7 +719,7 @@
 	set category = "Superpower"
 
 	if(!(MUTATION_MORPH in mutations))
-		src.verbs -= /mob/living/carbon/human/proc/morph
+		remove_verb(src, /mob/living/carbon/human/proc/morph)
 		return
 
 	var/new_facial = input("Please select facial hair color.", "Character Generation",rgb(r_facial,g_facial,b_facial)) as color
@@ -789,7 +789,7 @@
 	set category = "Superpower"
 
 	if(!(MUTATION_REMOTE_TALK in src.mutations))
-		src.verbs -= /mob/living/carbon/human/proc/remotesay
+		remove_verb(src, /mob/living/carbon/human/proc/remotesay)
 		return
 
 	var/list/creatures = list()
@@ -821,7 +821,7 @@
 	if(!(MUTATION_REMOTE_VIEW in src.mutations))
 		remoteview_target = null
 		reset_perspective()
-		src.verbs -= /mob/living/carbon/human/proc/remoteobserve
+		remove_verb(src, /mob/living/carbon/human/proc/remoteobserve)
 		return
 
 	if(IsRemoteViewing())

@@ -81,11 +81,11 @@
 				verbs_list += element_or_list
 
 	if(mob_target)
-		mob_target.verbs -= verbs_list
+		remove_verb(mob_target, verbs_list)
 		if(!target)
 			return //Our work is done.
 	else
-		target.verbs -= verbs_list
+		remove_verb(target, verbs_list)
 
 	var/list/output_list = list()
 	for(var/thing in verbs_list)

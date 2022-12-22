@@ -41,11 +41,11 @@
 		//MIND TRANSFER BEGIN
 		if(caster.mind.special_verbs.len)//If the caster had any special verbs, remove them from the mob verb list.
 			for(var/V in caster.mind.special_verbs)//Since the caster is using an object spell system, this is mostly moot.
-				caster.verbs -= V//But a safety nontheless.
+				remove_verb(caster, V) //But a safety nontheless.
 
 		if(victim.mind.special_verbs.len)//Now remove all of the victim's verbs.
 			for(var/V in victim.mind.special_verbs)
-				victim.verbs -= V
+				remove_verb(victim, V)
 
 		var/mob/observer/dead/ghost = victim.ghostize(0)
 		ghost.spell_list += victim.spell_list//If they have spells, transfer them. Now we basically have a backup mob.

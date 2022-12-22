@@ -392,8 +392,8 @@
 		new_hat.forceMove(src)
 
 	blob.update_icon()
-	blob.verbs -= /mob/living/proc/ventcrawl // Absolutely not.
-	//blob.verbs -= /mob/living/simple_mob/proc/set_name // We already have a name.
+	remove_verb(blob, /mob/living/proc/ventcrawl) // Absolutely not.
+	//remove_verb(blob, /mob/living/simple_mob/proc/set_name) // We already have a name.
 	temporary_form = blob
 	//Mail them to nullspace
 	moveToNullspace()

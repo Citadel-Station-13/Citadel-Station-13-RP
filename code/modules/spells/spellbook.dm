@@ -346,11 +346,11 @@
 
 	if(user.mind.special_verbs.len)
 		for(var/V in user.mind.special_verbs)
-			user.verbs -= V
+			remove_verb(user, V)
 
 	if(stored_swap.mind.special_verbs.len)
 		for(var/V in stored_swap.mind.special_verbs)
-			stored_swap.verbs -= V
+			remove_verb(stored_swap, V)
 
 	var/mob/observer/dead/ghost = stored_swap.ghostize(0)
 	ghost.spell_list = stored_swap.spell_list

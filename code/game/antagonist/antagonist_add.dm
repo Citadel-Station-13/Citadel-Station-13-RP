@@ -28,7 +28,7 @@
 	current_antagonists |= player
 
 	if(faction_verb && player.current)
-		player.add_verb(current, faction_verb)
+		add_verb(player.current, faction_verb)
 
 	spawn(1 SECOND) //Added a delay so that this should pop up at the bottom and not the top of the text flood the new antag gets.
 		to_chat(player.current, "<span class='notice'>Once you decide on a goal to pursue, you can optionally display it to \
@@ -51,7 +51,7 @@
 
 /datum/antagonist/proc/remove_antagonist(var/datum/mind/player, var/show_message, var/implanted)
 	if(player.current && faction_verb)
-		player.current.verbs -= faction_verb
+		remove_verb(player.current, faction_verb)
 	if(player in current_antagonists)
 		to_chat(player.current, "<span class='danger'><font size = 3>You are no longer a [role_text]!</font></span>")
 		current_antagonists -= player

@@ -1145,7 +1145,7 @@
 	if(R)
 		R.UnlinkSelf()
 		to_chat(R, "Buffers flushed and reset. Camera system shutdown.  All systems operational.")
-		src.verbs -= /mob/living/silicon/robot/proc/ResetSecurityCodes
+		remove_verb(src, /mob/living/silicon/robot/proc/ResetSecurityCodes)
 
 /mob/living/silicon/robot/proc/SetLockdown(var/state = 1)
 	// They stay locked down if their wire is cut.
@@ -1218,8 +1218,8 @@
 	add_verb(src, silicon_subsystems)
 
 /mob/living/silicon/robot/proc/remove_robot_verbs()
-	src.verbs -= robot_verbs_default
-	src.verbs -= silicon_subsystems
+	remove_verb(src, robot_verbs_default)
+	remove_verb(src, silicon_subsystems)
 
 // Uses power from cyborg's cell. Returns 1 on success or 0 on failure.
 // Properly converts using CELLRATE now! Amount is in Joules.

@@ -187,7 +187,7 @@ GLOBAL_LIST_INIT(nif_id_lookup, init_nif_id_lookup())
 		SC.brainmobs = list()
 	stat = NIF_PREINSTALL
 	vis_update()
-	H.verbs -= /mob/living/carbon/human/proc/set_nif_examine
+	remove_verb(H, /mob/living/carbon/human/proc/set_nif_examine)
 	QDEL_NULL(menu)
 	H.nif = null
 	human = null

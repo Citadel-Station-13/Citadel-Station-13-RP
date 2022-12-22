@@ -337,6 +337,6 @@
 	R.wideborg = FALSE
 	R.base_pixel_x = initial(pixel_x)
 	R.scrubbing = FALSE
-	R.verbs -= /mob/living/silicon/robot/proc/ex_reserve_refill
-	R.verbs -= /mob/living/proc/shred_limb
-	R.verbs -= /mob/living/silicon/robot/proc/rest_style
+	remove_verb(R, /mob/living/silicon/robot/proc/ex_reserve_refill)
+	remove_verb(R, /mob/living/proc/shred_limb)
+	remove_verb(R, /mob/living/silicon/robot/proc/rest_style)

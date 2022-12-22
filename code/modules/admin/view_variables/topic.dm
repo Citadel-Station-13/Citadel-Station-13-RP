@@ -546,7 +546,7 @@
 		if(!verb)
 			return
 		else
-			H.verbs -= verb
+			remove_verb(H, verb)
 
 	else if(href_list["addorgan"])
 		if(!check_rights(R_SPAWN))	return

@@ -46,7 +46,7 @@
 			UnregisterSignal(screen_icon, COMSIG_CLICK)
 			QDEL_NULL(screen_icon)
 		if(ishuman(parent))
-			owner.verbs -= /mob/living/carbon/human/proc/nif_menu
+			remove_verb(owner, /mob/living/carbon/human/proc/nif_menu)
 
 
 /datum/component/nif_menu/proc/create_mob_button(mob/user)

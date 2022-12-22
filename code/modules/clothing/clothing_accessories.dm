@@ -160,7 +160,7 @@
 	if(A)
 		remove_accessory(usr,A)
 	if(!LAZYLEN(accessories))
-		src.verbs -= /obj/item/clothing/proc/removetie_verb
+		remove_verb(src, /obj/item/clothing/proc/removetie_verb)
 		accessories = null
 
 /obj/item/clothing/emp_act(severity)

@@ -25,11 +25,11 @@
 		if(H.wear_mask == src)
 			add_verb(H, /mob/living/proc/shred_limb_temp)
 		else
-			H.verbs -= /mob/living/proc/shred_limb_temp
+			remove_verb(H, /mob/living/proc/shred_limb_temp)
 	..()
 
 /obj/item/beartrap/dropped(mob/user, flags, atom/newLoc)
-	user.verbs -= /mob/living/proc/shred_limb_temp
+	remove_verb(user, /mob/living/proc/shred_limb_temp)
 	..()
 
 /obj/item/beartrap/suicide_act(mob/user)

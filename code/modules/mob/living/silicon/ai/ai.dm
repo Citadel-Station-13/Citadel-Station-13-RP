@@ -130,8 +130,8 @@ var/list/ai_verbs_default = list(
 	add_verb(src, silicon_subsystems)
 
 /mob/living/silicon/ai/proc/remove_ai_verbs()
-	src.verbs -= ai_verbs_default
-	src.verbs -= silicon_subsystems
+	remove_verb(src, ai_verbs_default)
+	remove_verb(src, silicon_subsystems)
 
 /mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, obj/item/mmi/B, safety = TRUE)
 	announcement = new()
