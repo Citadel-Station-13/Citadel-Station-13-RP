@@ -22,8 +22,65 @@
 		verblist[++verblist.len] = list(verb_to_init.category, verb_to_init.name)
 	src << output("[url_encode(json_encode(panel_tabs))];[url_encode(json_encode(verblist))]", "statbrowser:init_verbs")
 
-/client/proc/check_panel_loaded()
-	if(statbrowser_ready)
-		return
-	to_chat(src, span_userdanger("Statpanel failed to load, click <a href='?src=[REF(src)];reload_statbrowser=1'>here</a> to reload the panel "))
+/client/proc/statpanel_init()
+	#warn send initial data
 
+/client/proc/statpanel_check()
+	if(statpanel_ready)
+		return
+	to_chat(src, SPAN_USERDANGER("Statpanel failed to load, click <a href='?src=[REF(src)];statpanel=reload'>here</a> to reload the panel "))
+
+/client/proc/statpanel_create()
+	src << browse(file('html/statbrowser.html'), "window=statbrowser")
+	addtimer(CALLBACK(src, /client/proc/statpanel_check), 30 SECONDS)
+
+/client/proc/statpanel_dispose()
+	statpanel_ready = FALSE
+	statpanel_tab = null
+	#warn listed turf
+	src << browse(null, "statbrowser:shutdown")
+	#warn impl shutdown
+
+/client/proc/statpanel_ready()
+	statpanel_init()
+	statpanel_ready = TRUE
+
+/client/proc/statpanel_reload()
+	statpanel_create()
+	statpanel_init()
+
+/**
+ * the big, bad, Citadel Station in house stat proc.
+ * returns a list of "panel name" : list(entry, ...)
+ * where entry is either:
+ * 1. a text string
+ * 2. a text string associated to a value
+ */
+/datum/proc/statpanel_data(client/C)
+
+/client/statpanel_data()
+	return statobj?.statpanel_data(src) || list()
+
+/client/statpanel_static()
+	return statobj?.statpanel_static(src) || list()
+
+
+/**
+ * routes actions from statpanel
+ */
+/client/proc/_statpanel_act(action, list/params)
+	switch(action)
+		if("reload")
+			statpanel_reload()
+		if("ready")
+			statpanel_ready()
+
+/**
+ * grabs statpanel data to send on tick
+ */
+/client/proc/_statpanel_data()
+
+/**
+ * grabs initial statpanel data
+ */
+/client/proc/_statpanel_static()

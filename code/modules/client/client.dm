@@ -88,6 +88,8 @@
 	var/statpanel_tab
 	/// statpanel initialized
 	var/statpanel_ready = FALSE
+	/// turf being listed
+	var/turf/statpanel_turf
 
 		////////////////
 		//ADMIN THINGS//

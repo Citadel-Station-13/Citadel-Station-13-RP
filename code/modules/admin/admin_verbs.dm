@@ -460,7 +460,7 @@ var/list/admin_verbs_event_manager = list(
 	set name = "Adminverbs - Hide Most"
 	set category = "Admin"
 
-	remove_verb(src, list(/client/proc/hide_most_verbs, admin_Verbs_hideable))
+	remove_verb(src, list(/client/proc/hide_most_verbs, admin_verbs_hideable))
 	add_verb(src, /client/proc/show_verbs)
 
 	to_chat(src, "<span class='interface'>Most of your adminverbs have been hidden.</span>")

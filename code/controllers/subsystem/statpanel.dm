@@ -4,7 +4,13 @@ SUBSYSTEM_DEF(statpanels)
 	init_order = INIT_ORDER_STATPANELS
 	priority = FIRE_PRIORITY_STATPANEL
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
+
+	//! ticking
+	/// current clients we're pushing to
 	var/list/currentrun = list()
+
+	//! caching
+
 	var/encoded_global_data
 	var/mc_data_encoded
 	var/list/cached_images = list()
