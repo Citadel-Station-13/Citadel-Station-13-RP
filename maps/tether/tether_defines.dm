@@ -1,28 +1,4 @@
 //Normal map defs
-#define Z_LEVEL_SURFACE_LOW					2
-#define Z_LEVEL_SURFACE_MID					3
-#define Z_LEVEL_SURFACE_HIGH				4
-#define Z_LEVEL_TRANSIT						5
-#define Z_LEVEL_SPACE_LOW					6
-#define Z_LEVEL_SPACE_HIGH					7
-#define Z_LEVEL_SURFACE_MINE				8
-#define Z_LEVEL_SOLARS						9
-#define Z_LEVEL_MISC						10
-#define Z_LEVEL_UNDERDARK					11
-#define Z_LEVEL_PLAINS						12
-#define Z_LEVEL_OFFMAP1						13
-#define Z_LEVEL_OFFMAP2						14
-#define Z_LEVEL_ROGUEMINE_1					15
-#define Z_LEVEL_ROGUEMINE_2					16
-#define Z_LEVEL_BEACH						17
-#define Z_LEVEL_BEACH_CAVE					18
-#define Z_LEVEL_DESERT						19
-#define Z_LEVEL_AEROSTAT					20
-#define Z_LEVEL_AEROSTAT_SURFACE			21
-#define Z_LEVEL_DEBRISFIELD					22
-#define Z_LEVEL_FUELDEPOT					23
-#define Z_LEVEL_GATEWAY						24
-#define Z_LEVEL_CLASS_D						25
 
 //Camera networks
 #define NETWORK_TETHER "Tether"
