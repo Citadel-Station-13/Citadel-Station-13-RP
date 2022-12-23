@@ -93,38 +93,6 @@ SUBSYSTEM_DEF(statpanels)
 			var/ping_str = url_encode("Ping: [round(target.lastping, 1)]ms (Average: [round(target.avgping, 1)]ms)")
 			var/other_str = url_encode(json_encode(target.mob.get_status_tab_items()))
 			target << output("[encoded_global_data];[ping_str];[other_str]", "statbrowser:update")
-			if(SSvote.mode)
-				var/list/vote_arry = list(
-					list("Vote active!", "There is currently a vote running. Question: [SSvote.question]")
-					) //see the MC on how this works.
-				if(!(SSvote.vote_system in list(PLURALITY_VOTING, APPROVAL_VOTING, SCHULZE_VOTING, INSTANT_RUNOFF_VOTING)))
-					vote_arry[++vote_arry.len] += list("STATPANEL VOTING DISABLED!", "The current vote system is not supported by statpanel rendering. Please vote manually by opening the vote popup using the action button or chat link.", "disabled")
-					//does not return.
-				else
-					vote_arry[++vote_arry.len] += list("Time Left:", " [DisplayTimeText(SSvote.end_time - world.time)] seconds")
-					vote_arry[++vote_arry.len] += list("Choices:", "")
-					for(var/choice in SSvote.choice_statclicks)
-						var/choice_id = SSvote.choice_statclicks[choice]
-						if(target.ckey)
-							switch(SSvote.vote_system)
-								if(PLURALITY_VOTING, APPROVAL_VOTING)
-									var/ivotedforthis = FALSE
-									if(SSvote.vote_system == APPROVAL_VOTING)
-										ivotedforthis = SSvote.voted[target.ckey] && (text2num(choice_id) in SSvote.voted[target.ckey])
-									else
-										ivotedforthis = (SSvote.voted[target.ckey] == text2num(choice_id))
-									vote_arry[++vote_arry.len] += list(ivotedforthis ? "\[X\]" : "\[ \]", choice, "[REF(SSvote)];vote=[choice_id];statpannel=1")
-								if(SCHULZE_VOTING, INSTANT_RUNOFF_VOTING)
-									var/list/vote = SSvote.voted[target.ckey]
-									var/vote_position = " "
-									if(vote)
-										vote_position = vote.Find(text2num(choice_id))
-									vote_arry[++vote_arry.len] += list("\[[vote_position]\]", choice, "[REF(SSvote)];vote=[choice_id];statpannel=1")
-				var/vote_str = url_encode(json_encode(vote_arry))
-				target << output("[vote_str]", "statbrowser:update_voting")
-			else
-				var/null_bullet = url_encode(json_encode(list(list(null))))
-				target << output("[null_bullet]", "statbrowser:update_voting")
 		if(!target.holder)
 			target << output("", "statbrowser:remove_admin_tabs")
 		else
@@ -217,14 +185,14 @@ SUBSYSTEM_DEF(statpanels)
 	STATPANEL_DATA_ENTRY("CPU:", num2text(world.cpu))
 	STATPANEL_DATA_ENTRY("Instances:", num2text(world.contents.len, 10))
 	STATPANEL_DATA_ENTRY("World Time:", num2text(world.time))
-	STATPANEL_DATA_ACT(GLOB.stat_key(), GLOB.stat_entry(), "\ref[GLOB]")
-	STATPANEL_DATA_ACT(config.stat_key(), config.stat_entry(), "\ref[config]")
+	STATPANEL_DATA_CLICK(GLOB.stat_key(), GLOB.stat_entry(), "\ref[GLOB]")
+	STATPANEL_DATA_CLICK(config.stat_key(), config.stat_entry(), "\ref[config]")
 	STATPANEL_DATA_ENTRY("BYOND:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%)) (Internal Tick Usage: [round(MAPTICK_LAST_INTERNAL_TICK_USAGE,0.1)]%)")
-	STATPANEL_DATA_ACT(Master.stat_key(), Master.stat_entry(), "\ref[Master]")
-	STATPANEL_DATA_ACT(Failsafe.stat_key(), Failsafe.stat_entry(), "\ref[Failsafe]")
+	STATPANEL_DATA_CLICK(Master.stat_key(), Master.stat_entry(), "\ref[Master]")
+	STATPANEL_DATA_CLICK(Failsafe.stat_key(), Failsafe.stat_entry(), "\ref[Failsafe]")
 	STATPANEL_DATA_LINE("")
 	for(var/datum/controller/subsystem/S as anything in Master.subsystems)
-		STATPANEL_DATA_ACT(S.stat_key(), S.stat_entry(), "\ref[S]")
+		STATPANEL_DATA_CLICK(S.stat_key(), S.stat_entry(), "\ref[S]")
 	cache_mc_data = url_encode(json_encode(.))
 
 /datum/controller/subsystem/statpanels/proc/build_server_data()
