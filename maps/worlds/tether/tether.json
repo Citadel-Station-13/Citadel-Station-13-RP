@@ -1,12 +1,87 @@
 {
+	"id": "tether",
+	"name": "Tether",
+	"maptype": "planet",
+	"persistency_key": "tether",
+	"dependencies": [
 
-
-
+	],
 	"levels" : [
 		{
 
 		},
-	]
+		{
 
+		},
+		{
 
+		},
+		{
+
+		},
+		{
+
+		},
+		{
+
+		},
+		{
+
+		},
+		{
+
+		},
+		{
+
+		},
+		{
+
+		},
+		{
+
+		}
+	],
+	"world_structs": {
+		"tether": [
+
+		]
+	},
+	"base_turf": ,
+	"base_area": ,
+	"air_indoors": ,
+	"air_outdoors": ,
+	"map_module_type"; ,
+
+	"usable_email_tlds": [],
+	"station_networks": [],
+	"secondary_networks": [],
+	"belter_docked_z": ,
+	"belter_transit_z": ,
+	"belter_belt_z": ,
+	"meteor_strike_areas": [],
+	"lobby_screens": [],
+	"lobby_custom": false,
+	"bot_patrolling": false,
+	"use_overmap": ,
+	"overmap_size": ,
+	"overmap_z": ,
+	"overmap_event_areas": ,
+	"station_name": "NSB Adephagia",
+	"station_short": "Adephagia",
+	"dock_name": ,
+	"dock_type": ,
+	"boss_name": ,
+	"boss_short": ,
+	"company_name": "NanoTrasen",
+	"company_short": "NT",
+	"starsys_name": ,
+	"shuttle_docked_message": ,
+	"shuttle_leaving_dock": ,
+	"shuttle_called_message": ,
+	"shuttle_recall_message": ,
+	"shuttle_name": ,
+	"emergency_shuttle_docked_message": ,
+	"emergency_shuttle_leaving_dock": ,
+	"emergency_shuttle_called_message": ,
+	"emergency_shuttle_recall_message":
 }

@@ -47,9 +47,6 @@
 	var/belter_belt_z
 	#warn parse
 
-	//? holomaps
-
-	#warn impl + parse
 	//? events
 	/// list of area typepaths that can be meteor struck fro above
 	var/list/meteor_strike_areas

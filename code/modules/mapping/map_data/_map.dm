@@ -84,6 +84,7 @@
 #warn planet support on level and world struct
 #warn support circular references and cross referencing for structs and planets!
 #warn automatic world struct generation based on closure
+#warn procedural chance-based inclusion of lateload / dependencies.
 
 /datum/map_data/New(file_jsonstr_list, path)
 	if(file_jsonstr_list)
@@ -137,9 +138,7 @@
 		fill_void = initial(fill_void)
 	dependencies = list()
 	if(!isnull(data["dependencies"]))
-		for(var/group in data["dependencies"])
-			for(var/id in data["dependencies"][group])
-				dependencies += "[group]:[id]"
+		dependencies = data["dependencies"]
 	//? levels
 	if(levels)
 		QDEL_LIST(levels)
