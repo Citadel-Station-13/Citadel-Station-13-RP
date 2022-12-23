@@ -73,7 +73,7 @@
 		if (PERFORM_ALL_TESTS(focus_only/sorted_smoothing_groups)) { \
 			ASSERT_SORTED_SMOOTHING_GROUPS(smoothing_groups); \
 		} \
-		SET_BITFLAG_LIST(smoothing_groups); \
+		SET_BITFLAG_LIST(smoothing_groups, MAX_S_TURF); \
 	} \
 \
 	if (canSmoothWith) { \
@@ -83,7 +83,7 @@
 		if (canSmoothWith[1] == "-") { \
 			smoothing_flags |= SMOOTH_OBJ; \
 		} \
-		SET_BITFLAG_LIST(canSmoothWith); \
+		SET_BITFLAG_LIST(canSmoothWith, MAX_S_TURF); \
 	}
 
 /// Given a smoothing groups variable, will set out to the actual numbers inside it.

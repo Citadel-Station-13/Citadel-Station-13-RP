@@ -10,8 +10,9 @@ GLOBAL_LIST_EMPTY(bitflag_lists)
  *
  * Arguments:
  * * target - List of integers.
+ * * partition - max of positive integers; neg integers get added ontop
  */
-#define SET_BITFLAG_LIST(target) \
+#define SET_BITFLAG_LIST(target, partition) \
 	do { \
 		var/txt_signature = target; \
 		target = GLOB.bitflag_lists[txt_signature]; \
@@ -21,7 +22,7 @@ GLOBAL_LIST_EMPTY(bitflag_lists)
 			decoded.len--; \
 			for(var/value in decoded) { \
 				if (value < 0) { \
-					value = MAX_S_TURF + 1 + abs(value); \
+					value = partition + 1 + abs(value); \
 				} \
 				new_bitflag_list["[round(value / 24)]"] |= (1 << (value % 24)); \
 			}; \
