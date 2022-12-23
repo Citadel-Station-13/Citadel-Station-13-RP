@@ -45,4 +45,4 @@ GLOBAL_LIST_EMPTY(bitflag_lists)
 	return FALSE
 
 // fast-ish ; carefully use for performance critical. this one works in if()'s.
-#define CHECK_BITFLAG_LIST(L1, FLAG) (L1[num2text(round(bt / 24))] & (1 << (bt % 24)))
+#define CHECK_BITFLAG_LIST(L1, FLAG) (L1[num2text(round(FLAG / 24))] & (1 << (FLAG % 24)))
