@@ -24,8 +24,6 @@
 /datum/controller/proc/stat_entry()
 	return "\[DEBUG\]"
 
-/datum/controller/statpanel_act(client/C, action, list/params)
-	. = ..()
-	if(action == "debug")
-		C.debug_variables(target)
-		message_admins("Admin [key_name_admin(C)] is debugging the [name] controller.")
+/datum/controller/statpanel_click(client/C)
+	C.debug_variables(src)
+	message_admins("Admin [key_name_admin(C)] is debugging the [name] controller.")

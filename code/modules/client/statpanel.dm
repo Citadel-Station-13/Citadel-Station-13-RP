@@ -135,13 +135,9 @@
 	return statobj?.statpanel_data(C) || list()
 
 /**
- * acts on a statpanel action / press; return TRUE if handled
+ * acts on a statpanel action / press
  */
-/datum/proc/statpanel_act(client/C, action, list/params)
-	return FALSE
-
-/client/statpanel_act(client/C, action, list/params)
-	return statobj?.statpanel_act(C, action, params)
+/datum/proc/statpanel_click(client/C)
 
 /**
  * routes actions from statpanel
@@ -154,8 +150,10 @@
 		if("ready")
 			statpanel_ready()
 			return
-		else
-			statpanel_act(src, action, params)
+		if("act")
+			var/datum/D = locate(params["ref"])
+			if(istype(D))
+				D.statpanel_click(src)
 			return
 
 /**
