@@ -22,5 +22,5 @@
 	icon = 'icons/donator/jackson_backpack.dmi'
 	icon_state = "bag"
 	worn_render_flags = WORN_RENDER_SLOT_ONE_FOR_ALL
-	worn_bodytypes = BODYTYPE_DEFAULT
+	worn_bodytypes = BODYTYPE_DEFAULT)
 	icon_override = null

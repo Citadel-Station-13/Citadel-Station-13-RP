@@ -1,75 +1,86 @@
-//! !!! WHAT TO DO IF THE CODEBASE RUNS OUT OF BODYTYPE FLAGS (24 IS MAXIMUM) !!!
-//? For now, bodytypes are flags.
-//? Hopefully we can get a system where stuff like helmets get mutated to
-//? specific types like "snout", "vaguely a cat", "vaguely a fox", "how about all of these"
-//? If not, we're going to run out of bodytypes.
-//? Hopefully not, because lists are expensive and we don't like them.
-//? --------------------------------------------------------------------------------------
-//? If the day comes when we run out of bodytypes and I'm not around to do the above,
-//? and no one else wants to do something smarter,
-//? you can still convert our bodytypes system back to string. You just have to be smart.
-//?
-//? 1. Don't do anything until you read everything. Regex can destroy semantic information,
-//?    and the way I designed this makes it easy to turn into string lists, but if you
-//?    mess it up, you just sunk the possibility of doing this at all.
-//? 2. BODYTYPE_STRING_whatever's can stay; all overrides, defaults, etc, use them as string IDs.
-//?    Don't fucking touch them at all.
-//?    For bodytype flags, you will need a regex that converts the worn_bodytypes var
-//?    to a list. You might even want to macro it if there's a chance of doing the better system
-//?    later.
-//?    For worn_bodytypes_fallback, well, not many people should use it; all bodytypes should
-//?    generally convert if no state is available for species defaults. You don't have to worry about
-//?    that.
-//? 3. Once you convert the bodytypes to lists, you're not done yet.
-//?    While it technically works if you just change the procs in modules/mob/inventory/rendering.dm,
-//?    you're just putting numbers in a list, which is pointless if they're not fields.
-//?    Rename all BODYTYPE_STRING_X defines to BODYTYPE_KEY_X, and use them for your icon state keys.
-//?    No one should ever be touching them anyways, as that involves .dmi edits.
-//?    Then.. DON'T rename BODYTYPE_X defines. Just make them strings instead. Again,
-//?    rendering procs need to take it into accout, but since they were used as enums and not list
-//?    keys already, it should just magically work.
-//? 4. We're back to what it was before bodytypes as a concept were made, but somewhat better because
-//?    at the very least, we're not doing species names anymore.
+//! bodytypes - they are lists for var storage, but should only be passed one at a time to rendering!
 
-//! bodytypes - they are flags for var storage, but should only be passed one at a time to rendering!
+//? special - do not use directly in item defs
+/// should be the only element in the list if used; represents all-except-these
+#define BODYTYPE_EXCEPT "except"
+
+//? helpers - use these to make your lists in item definitions
+/// all bodytypes
+#define BODYTYPES_ALL "all"
+/// these bodytypes
+#define BODYTYPES(types...) list(types)
+/// all but these bodytypes
+#define BODYTYPES_EXCEPT(types...) list(BODYTYPE_EXCEPT, ##types)
+/// no bodytypes
+#define BODYTYPES_NONE "none"
+/// default obdytypes
+#define BODYTYPES_DEFAULT list(BODYTYPE_DEFAULT)
+
+//? bodytype defs
 /// normal human bodytype (or generally everyone else)
-#define BODYTYPE_DEFAULT			(1<<0)
+#define BODYTYPE_DEFAULT			"default"
 /// teshari bodytype (or generally tiny birds)
-#define BODYTYPE_TESHARI			(1<<2)
+#define BODYTYPE_TESHARI			"teshari""
 /// adherent bodytype (or generally giant serpent creatures)
-#define BODYTYPE_ADHERENT			(1<<3)
+#define BODYTYPE_ADHERENT			"adherent"
 /// unathi bodytype (or generally lizard)
-#define BODYTYPE_UNATHI				(1<<4)
+#define BODYTYPE_UNATHI				"unathi"
 /// tajaran bodytype (or generally cat)
-#define BODYTYPE_TAJARAN			(1<<5)
+#define BODYTYPE_TAJARAN			"tajaran"
 /// vulp bodytype (or generally foxes)
-#define BODYTYPE_VULPKANIN			(1<<6)
+#define BODYTYPE_VULPKANIN			"vulpkanin"
 /// skrell bodytype (or generally weird fleshy fishpeople)
-#define BODYTYPE_SKRELL				(1<<7)
+#define BODYTYPE_SKRELL				"skrell"
 /// sergal bodytype (or generally cheese)
-#define BODYTYPE_SERGAL				(1<<8)
+#define BODYTYPE_SERGAL				"sergal"
 /// akula bodytype (or generally shark)
-#define BODYTYPE_AKULA				(1<<9)
+#define BODYTYPE_AKULA				"akula"
 /// vox bodytype
-#define BODYTYPE_VOX				(1<<10)
+#define BODYTYPE_VOX				"vox"
 /// neverean bodytype
-#define BODYTYPE_NEVREAN			(1<<11)
+#define BODYTYPE_NEVREAN			"nevrean"
 /// promethean bodytype
-#define BODYTYPE_PROMETHEAN			(1<<12)
+#define BODYTYPE_PROMETHEAN			"promethean"
 /// highlander zorren
-#define BODYTYPE_ZORREN_HIGH		(1<<13)
+#define BODYTYPE_ZORREN_HIGH		"zorren-high"
 /// flatlander zorren
-#define BODYTYPE_ZORREN_FLAT		(1<<14)
+#define BODYTYPE_ZORREN_FLAT		"zorren-flat"
 /// zaddat
-#define BODYTYPE_ZADDAT				(1<<15)
+#define BODYTYPE_ZADDAT				"zaddat"
 /// phoronoid
-#define BODYTYPE_PHORONOID			(1<<16)
+#define BODYTYPE_PHORONOID			"phoronoid"
 /// werebeast
-#define BODYTYPE_WEREBEAST			(1<<17)
+#define BODYTYPE_WEREBEAST			"werebeast"
 /// xenomorph hybrid
-#define BODYTYPE_XENOHYBRID			(1<<18)
+#define BODYTYPE_XENOHYBRID			"xenohybrid"
 /// digitigrade unathi
-#define BODYTYPE_UNATHI_DIGI        (1<<19)
+#define BODYTYPE_UNATHI_DIGI        "unathi-digi"
+
+//! keep this number (count) up to date
+#define BODYTYPES_TOTAL 19
+
+//? automatically typelist bodytypes if it's a list
+#define CACHE_BODYTYPES(LIST) if(islist(LIST)) LIST = typelist(NAMEOF(src, LIST), LIST)
+//? check bodytype lists matching
+#define COMPARE_BODYTYPES(L1, L2) compare_bodytypes(L1, L2)
+//? check bodytype list membership
+#define CHECK_BODYTYPE(L, BT) (L != BODYTYPE_NONE) && ((L == BODYTYPE_ALL) || (BODYTYPE_EXCLUDE in L? !(bt in L) : (bt in L)))
+
+/proc/compare_bodytypes(list/L1, list/L2)
+	if(L1 == BODYTYPE_NONE || L2 == BODYTYPE_NONE)
+		return FALSE
+	if(L1 == BODYTYPE_ALL || L2 == BODYTYPE_ALL)
+		return TRUE
+	if(BODYTYPE_EXCLUDE in L1)
+		if(BODYTYPE_EXCLUDE in L2)
+			return length(L1 | L2) != BODYTYPES_TOTAL
+		else
+			return !!length(L2 - L1) // l2 has something not excluded from l1
+	else
+		if(BODYTYPE_EXCLUDE in L2)
+			return !!length(L1 - L2) // l1 has something not excluded from l2
+		else
+			return !!length(L1 & L2) // l1 has something in l2
 
 // todo: what are we going to do with these?
 //? we should probably standardize bodytypes as entirely different sprites, and also
@@ -88,7 +99,7 @@
 #define BODYTYPE_DIGITIGRADE		(1<<23)
 */
 
-//! bodytypes as strings
+//! bodytypes as strings - these must never change as .dmis store with these!
 #define BODYTYPE_STRING_DEFAULT "default"
 #define BODYTYPE_STRING_TESHARI "teshari"
 #define BODYTYPE_STRING_ADHERENT "adherent"
@@ -102,14 +113,15 @@
 #define BODYTYPE_STRING_VOX "vox"
 #define BODYTYPE_STRING_NEVREAN "nevrean"
 #define BODYTYPE_STRING_PROMETHEAN "promethean"
-#define BODYTYPE_STRING_ZORREN_HIGH "zorren_highlander"
-#define BODYTYPE_STRING_ZORREN_FLAT "zorren_flatlander"
+#define BODYTYPE_STRING_ZORREN_HIGH "highzorren"
+#define BODYTYPE_STRING_ZORREN_FLAT "flatzorren"
 #define BODYTYPE_STRING_ZADDAT "zaddat"
 #define BODYTYPE_STRING_PHORONOID "phoronoid"
 #define BODYTYPE_STRING_WEREBEAST "werebeast"
 #define BODYTYPE_STRING_XENOHYBRID "xenohybrid"
 
 /proc/bodytype_to_string(bodytype)
+	// todo: assoc list lookup
 	switch(bodytype)
 		if(BODYTYPE_DEFAULT)
 			return BODYTYPE_STRING_DEFAULT

@@ -72,6 +72,8 @@
 
 /obj/item/clothing/under/Initialize(mapload)
 	. = ..()
+	CACHE_BODYTYPES(worn_Rolldown_bodytypes)
+	CACHE_BODYTYPES(worn_rollsleeve_bodytypes)
 	// for NOW, we need to autoset if null.
 	// todo: remove this lol
 	if(isnull(snowflake_worn_state))
@@ -123,7 +125,7 @@
 		detected_bodytype = H.species.get_effective_bodytype(H, src, worn_slot)
 	switch(worn_has_rolldown)
 		if(UNIFORM_HAS_ROLL)
-			has_roll = (worn_rolldown_bodytypes & detected_bodytype)
+			has_roll = CHECK_BODYTYPE(worn_rolldown_bodytypes, detected_bodytype)
 		if(UNIFORM_HAS_NO_ROLL)
 			has_roll = FALSE
 		if(UNIFORM_AUTODETECT_ROLL)
@@ -147,11 +149,11 @@
 		detected_bodytype = H.species.get_effective_bodytype(H, src, worn_slot)
 	switch(worn_has_rollsleeve)
 		if(UNIFORM_HAS_ROLL)
-			has_sleeves = (worn_rollsleeve_bodytypes & detected_bodytype)
+			has_sleeves = CHECK_BODYTYPE(worn_rollsleeve_bodytypes, detected_bodytype)
 		if(UNIFORM_HAS_NO_ROLL)
 			has_sleeves = FALSE
 		if(UNIFORM_AUTODETECT_ROLL)
-			has_sleeves  = autodetect_rollsleeve(detected_bodytype)
+			has_sleeves = autodetect_rollsleeve(detected_bodytype)
 
 	if(!has_sleeves)
 		verbs -= /obj/item/clothing/under/verb/rollsleeves
