@@ -28,13 +28,11 @@
 #define HOLOMAP_AREACOLOR_ESCAPE		"#FF0000CC"
 #define HOLOMAP_AREACOLOR_DORMS			"#CCCC0099"
 
-#define LIST_NUMERIC_SET(L, I, V) if(!L) { L = list(); } if (L.len < I) { L.len = I; } L[I] = V
-
 // Handy defines to lookup the pixel offsets for this Z-level.  Cache these if you use them in a loop tho.
-#define HOLOMAP_PIXEL_OFFSET_X(zLevel) ((using_map_legacy().holomap_offset_x.len >= zLevel) ? using_map_legacy().holomap_offset_x[zLevel] : 0)
-#define HOLOMAP_PIXEL_OFFSET_Y(zLevel) ((using_map_legacy().holomap_offset_y.len >= zLevel) ? using_map_legacy().holomap_offset_y[zLevel] : 0)
-#define HOLOMAP_LEGEND_X(zLevel) ((using_map_legacy().holomap_legend_x.len >= zLevel) ? using_map_legacy().holomap_legend_x[zLevel] : 96)
-#define HOLOMAP_LEGEND_Y(zLevel) ((using_map_legacy().holomap_legend_y.len >= zLevel) ? using_map_legacy().holomap_legend_y[zLevel] : 96)
+#define HOLOMAP_PIXEL_OFFSET_X(zLevel) (SSmapping.fetch_level_datum(zLevel)?.holomap_offset_x || 0)
+#define HOLOMAP_PIXEL_OFFSET_Y(zLevel) (SSmapping.fetch_level_datum(zLevel)?.holomap_offset_y || 0)
+#define HOLOMAP_LEGEND_X(zLevel) (SSmapping.fetch_level_datum(zLevel).holomap_legend_x || 96)
+#define HOLOMAP_LEGEND_Y(zLevel) (SSmapping.fetch_level_datum(zLevel).holomap_legend_y || 96)
 
 // VG stuff we probably won't use
 // #define HOLOMAP_FILTER_DEATHSQUAD				1

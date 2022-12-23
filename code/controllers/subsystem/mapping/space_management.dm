@@ -372,6 +372,7 @@
  * Gets the /datum/world_struct of a zlevel or id
  */
 /datum/controller/subsystem/mapping/proc/fetch_struct_datum(id_or_z)
+	#warn impl
 
 /**
  * Gets the sorted Z stack list of a level - the levels accessible from a single level, in multiz

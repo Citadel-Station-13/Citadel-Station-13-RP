@@ -4415,5 +4415,4 @@
 #include "maps\submaps\_helpers.dm"
 #include "maps\submaps\_readme.dm"
 #include "maps\submaps\engine_submaps\engine.dm"
-#include "maps\~map_system\maps.dm"
 // END_INCLUDE

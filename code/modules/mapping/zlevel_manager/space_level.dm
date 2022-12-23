@@ -126,6 +126,12 @@
 	/// how many times we rebuilt transitions
 	var/tmp/transitions_rebuild_count = 0
 
+	//! legacy stuff refactor pending
+	var/holomap_offset_x = -1
+	var/holomap_offset_y = -1
+	var/holomap_legend_x = 96
+	var/holomap_legend_y = 96
+
 #warn parse this file
 
 /datum/space_level/New(id, list/traits, list/attributes, map_path)
@@ -257,6 +263,21 @@
 	//? module
 	if(!isnull(data["module"]))
 		level_module_type = text2path(data["module"])
+
+	//? legacy - not validated
+	if(!isnull(data["holomap_offset_x"]))
+		holomap_offset_x = data["holomap_offset_x"]
+	if(!isnull(data["holomap_offset_y"]))
+		holomap_offset_x = data["holomap_offset_y"]
+	if(!isnull(data["holomap_legend_x"]))
+		holomap_offset_x = data["holomap_legend_x"]
+	if(!isnull(data["holomap_legend_y"]))
+		holomap_offset_x = data["holomap_legend_y"]
+	// Auto-center the map if needed (Guess based on maxx/maxy)
+	if (holomap_offset_x < 0)
+		holomap_offset_x = ((HOLOMAP_ICON_SIZE - world.maxx) / 2)
+	if (holomap_offset_x < 0)
+		holomap_offset_y = ((HOLOMAP_ICON_SIZE - world.maxy) / 2)
 
 /**
  * first validation pass, verifies all values are up to spec
