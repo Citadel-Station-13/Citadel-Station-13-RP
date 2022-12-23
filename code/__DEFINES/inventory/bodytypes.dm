@@ -13,14 +13,12 @@
 #define BODYTYPES_EXCEPT(types...) list(BODYTYPE_EXCEPT, ##types)
 /// no bodytypes
 #define BODYTYPES_NONE "none"
-/// default obdytypes
-#define BODYTYPES_DEFAULT list(BODYTYPE_DEFAULT)
 
 //? bodytype defs
 /// normal human bodytype (or generally everyone else)
 #define BODYTYPE_DEFAULT			"default"
 /// teshari bodytype (or generally tiny birds)
-#define BODYTYPE_TESHARI			"teshari""
+#define BODYTYPE_TESHARI			"teshari"
 /// adherent bodytype (or generally giant serpent creatures)
 #define BODYTYPE_ADHERENT			"adherent"
 /// unathi bodytype (or generally lizard)
