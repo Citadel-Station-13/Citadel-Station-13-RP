@@ -70,7 +70,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/shuttle
 	requires_power = 0
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
 	area_limited_icon_smoothing = /area/shuttle
 
@@ -293,7 +293,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/trade_ship
 	requires_power = 1
 	icon_state = "shuttle2"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 
 /area/shuttle/trade_ship/general
 	name = "\improper Beruang Trade Shuttle"
@@ -572,7 +572,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Independent Station"
 	icon_state = "yellow"
 	requires_power = 0
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	ambience = AMBIENCE_HIGHSEC
 
 /area/syndicate_station/start
@@ -757,7 +757,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 //Maintenance
 
 /area/maintenance
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = new /datum/turf_initializer/maintenance()
 	ambience = AMBIENCE_MAINTENANCE
@@ -1335,7 +1335,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/crew_quarters
 	name = "Dormitories"
 	icon_state = "crew_quarters"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	ambience = AMBIENCE_GENERIC
 
 /area/crew_quarters/toilet
@@ -1741,7 +1741,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "holodeck_control"
 
 /area/vacant
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 
 /area/vacant/vacant_shop
 	name = "\improper Vacant Shop"
@@ -2740,7 +2740,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/rnd/outpost/maintenance
 	name = "\improper Research Outpost Maintenence"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = new /datum/turf_initializer/maintenance()
 	ambience = AMBIENCE_MAINTENANCE
@@ -3242,7 +3242,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/alien
 	name = "\improper Alien base"
 	icon_state = "yellow"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	requires_power = 0
 
 /area/alien/unknown
@@ -3291,7 +3291,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/bigship
 	name = "Bigship"
 	requires_power = 0
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
 	icon_state = "red2"
 
@@ -3301,7 +3301,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/houseboat
 	name = "Small Cruiser"
 	requires_power = 0
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	icon_state = "red2"
 	lightswitch = TRUE
 

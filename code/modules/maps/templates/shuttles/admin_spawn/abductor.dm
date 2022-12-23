@@ -10,7 +10,7 @@
 
 /area/abductor/
 	name = "Abductor Ship"
-	area_flags = AREA_FLAG_RAD_SHIELDED | AREA_FLAG_BLUE_SHIELDED
+	area_flags = AREA_RAD_SHIELDED | AREA_FLAG_BLUE_SHIELDED
 
 /area/abductor/interior
 	name = "Abductor Ship Interior"

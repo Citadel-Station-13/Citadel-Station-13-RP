@@ -923,7 +923,7 @@
 	name = "\improper Reading Room"
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "green"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 /area/tether/surfacebase/vacant_site
 	name = "\improper Vacant Site"
 
@@ -931,7 +931,7 @@
 	name = "\improper Kitchen Freezer"
 /area/crew_quarters/panic_shelter
 	name = "\improper Panic Shelter"
-	area_flags = AREA_FLAG_RAD_SHIELDED	//It just makes sense
+	area_flags = AREA_RAD_SHIELDED	//It just makes sense
 
 /area/tether/station/public_meeting_room
 	name = "Public Meeting Room"
@@ -966,7 +966,7 @@
 /area/maintenance/station/abandonedholodeck
 	name = "\improper Old Holodeck"
 	icon_state = "dk_yellow"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 
 /area/tether/station/burial
 	name = "\improper Burial"
@@ -980,200 +980,200 @@
 /area/crew_quarters/sleep/maintDorm1
 	name = "\improper Construction Dorm 1"
 	icon_state = "crew_quarters"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/maintDorm2
 	name = "\improper Construction Dorm 2"
 	icon_state = "crew_quarters"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/maintDorm3
 	name = "\improper Construction Dorm 3"
 	icon_state = "crew_quarters"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/maintDorm4
 	name = "\improper Construction Dorm 4"
 	icon_state = "crew_quarters"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 //TFF 28/8/19 - cleanup of areas placement
 /area/crew_quarters/sleep/vistor_room_1
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_2
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_3
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_4
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_5
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_6
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_7
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_8
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_9
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_10
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_11
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/vistor_room_12
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_1
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_2
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_3
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_4
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_5
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_6
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_7
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_8
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_9
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_10
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_1/holo
 	name = "\improper Dorm 1 Holodeck"
 	icon_state = "dk_yellow"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_3/holo
 	name = "\improper Dorm 3 Holodeck"
 	icon_state = "dk_yellow"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_5/holo
 	name = "\improper Dorm 5 Holodeck"
 	icon_state = "dk_yellow"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/Dorm_7/holo
 	name = "\improper Dorm 7 Holodeck"
 	icon_state = "dk_yellow"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/crew_quarters/sleep/spacedorm1
 	name = "\improper Visitor Lodging 1"
 	icon_state = "dk_yellow"
 	lightswitch = 0
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 /area/crew_quarters/sleep/spacedorm2
 	name = "\improper Visitor Lodging 2"
 	icon_state = "dk_yellow"
 	lightswitch = 0
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 /area/crew_quarters/sleep/spacedorm3
 	name = "\improper Visitor Lodging 3"
 	icon_state = "dk_yellow"
 	lightswitch = 0
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 /area/crew_quarters/sleep/spacedorm4
 	name = "\improper Visitor Lodging 4"
 	icon_state = "dk_yellow"
 	lightswitch = 0
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/holodeck/holodorm/source_basic
 	name = "\improper Holodeck Source"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 /area/holodeck/holodorm/source_desert
 	name = "\improper Holodeck Source"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 /area/holodeck/holodorm/source_seating
 	name = "\improper Holodeck Source"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 /area/holodeck/holodorm/source_beach
 	name = "\improper Holodeck Source"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 /area/holodeck/holodorm/source_garden
 	name = "\improper Holodeck Source"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 /area/holodeck/holodorm/source_boxing
 	name = "\improper Holodeck Source"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 /area/holodeck/holodorm/source_snow
 	name = "\improper Holodeck Source"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 /area/holodeck/holodorm/source_space
 	name = "\improper Holodeck Source"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 /area/holodeck/holodorm/source_off
 	name = "\improper Holodeck Source"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	//soundproofed = TRUE
 
 /area/ai_core_foyer
@@ -1485,13 +1485,13 @@
 
 // Add rad shielding to maintenance and construction sites
 /area/vacant
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 
 /area/maintenance
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 
 /area/rnd/research_storage	//Located entirely in maint under public access, so why not that too
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 
 // New shuttles
 /area/shuttle/administration/transit
@@ -1525,7 +1525,7 @@
 /area/bigship
 	name = "Bigship"
 	requires_power = 0
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	sound_env = SMALL_ENCLOSED
 	icon_state = "red2"
 
@@ -1535,7 +1535,7 @@
 //////// Abductor Areas ////////
 /area/unknown
 	requires_power = 0
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	icon_state = "red2"
 
 /area/unknown/dorm1
@@ -1581,7 +1581,7 @@
 	icon_state = "yellow"
 	requires_power = 0
 	dynamic_lighting = 0
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	ambience = AMBIENCE_HIGHSEC
 
 /area/skipjack_station/transit
@@ -1601,7 +1601,7 @@
 	name = "\improper Ninja Base"
 	icon_state = "green"
 	requires_power = 0
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	area_flags = AREA_RAD_SHIELDED
 	ambience = AMBIENCE_HIGHSEC
 
 /area/ninja_dojo/dojo
