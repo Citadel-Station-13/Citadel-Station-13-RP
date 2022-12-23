@@ -335,7 +335,12 @@ function window_boot() {
 
 // for verbs ; tab name = list ( verb1, verb2, ... );
 var verbs = [];
-// for stat ; list(entry, ...) ; entry: 1. text OR 2. text = text OR 3. [key, value, act]
+// for stat ; list(entry, ...)
+// entry format:
+// 1. text: displayed verbatim, html allowed
+// 2. text = text: displayed as key --> value with the obligatory tab/spacing
+// 3. array [key, value, act]: clicking on the entry will trigger act with that act.
+var data = []
 // admin href token
 var admin_token = null;
 
@@ -358,7 +363,32 @@ function byond_init() {
 }
 
 /// called on data update
-function byond_data() {
+function byond_push(data) {
+	data = [];
+	_push_data(data)
+}
+
+/// called on data update to append
+function byond_append(data) {
+	_push_data(data)
+}
+
+function _push_data(data) {
+	var parsed = JSON.parse(data);
+	for(var i = 0; i < parsed.length; i++){
+		if(parsed[i] == null){
+			data.push(parsed[i]);
+		}
+	}
+}
+
+/// called to add tab
+function byond_add_tab(tab) {
+
+}
+
+/// called to remove tab
+function byond_remove_tab(tab) {
 
 }
 

@@ -36,6 +36,23 @@
 		return
 	src << browse(token, "statbrowser:byond_grant_token")
 
+/**
+ * returns TRUE if the tab should exist and we are on the tab
+ *
+ * @params
+ * - status: use to set if the panel should exist
+ */
+/client/proc/statpanel_tab(tab, status)
+	. = (statpanel_tab == tab) && (tab in statpanel_tabs)
+	if(isnull(status))
+		return
+	if(tab in statpanel_tabs)
+		if(!status)
+			src << browse(url_encode(tab), "statbrowser:byond_remove_tab")
+	else
+		if(status)
+			src << browse(url_encode(tab), "statbrowser:byond_add_tab")
+
 /client/proc/list_turf(turf/T)
 	if(statpanel_turf)
 		unlist_turf()
@@ -50,7 +67,6 @@
 			continue
 		data[++data.len] = got
 	src << browse("[url_encode(T.name)];[];[url_encode(REF(T))];[url_encode(json_encode(data))]", "statbrowser:byond_turf_set")
-
 
 /client/proc/unlist_turf()
 	if(!statpanel_turf)
@@ -113,13 +129,19 @@
  * 2. a text string associated to a value
  */
 /datum/proc/statpanel_data(client/C)
+	return list()
 
-/client/statpanel_data()
-	return statobj?.statpanel_data(src) || list()
+/client/statpanel_data(client/C)
+	return statobj?.statpanel_data(C) || list()
 
-/client/statpanel_static()
-	return statobj?.statpanel_static(src) || list()
+/**
+ * acts on a statpanel action / press; return TRUE if handled
+ */
+/datum/proc/statpanel_act(client/C, action, list/params)
+	return FALSE
 
+/client/statpanel_act(client/C, action, list/params)
+	return statobj?.statpanel_act(C, action, params)
 
 /**
  * routes actions from statpanel
@@ -128,18 +150,19 @@
 	switch(action)
 		if("reload")
 			statpanel_reload()
+			return
 		if("ready")
 			statpanel_ready()
+			return
+		else
+			statpanel_act(src, action, params)
+			return
 
 /**
  * grabs statpanel data to send on tick
  */
 /client/proc/_statpanel_data()
-
-/**
- * grabs initial statpanel data
- */
-/client/proc/_statpanel_static()
+	return statpanel_data(src)
 
 //! verb hooks
 
