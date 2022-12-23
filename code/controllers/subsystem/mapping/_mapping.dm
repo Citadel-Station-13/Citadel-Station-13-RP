@@ -40,6 +40,7 @@ SUBSYSTEM_DEF(mapping)
 	stat_map_name = config.map_name
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
+	report_progress("Initializing [name] subsystem...")
 	HACK_LoadMapConfig()
 	if(initialized)
 		return
@@ -47,7 +48,7 @@ SUBSYSTEM_DEF(mapping)
 		var/old_config = config
 		config = global.config.defaultmap
 		if(!config || config.defaulted)
-			to_chat(world, "<span class='boldannounce'>Unable to load next or default map config, defaulting to Tethermap</span>")
+			to_chat(world, SPAN_BOLDANNOUNCE("Unable to load next or default map config, defaulting to Tethermap"))
 			config = old_config
 	loadWorld()
 	repopulate_sorted_areas()

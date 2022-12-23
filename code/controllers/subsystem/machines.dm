@@ -32,9 +32,23 @@ SUBSYSTEM_DEF(machines)
 
 	var/list/current_run = list()
 
+/datum/controller/subsystem/machines/stat_entry(msg)
+	msg = "\n<b>Count:</b>"
+	msg += "\n\tPipenet:[global.pipe_networks.len]"
+	msg += "\n\tMachinery:[global.processing_machines.len]"
+	msg += "\n\tPowernet:[global.powernets.len]"
+	msg += "\n\tObjects:[global.processing_power_items.len]"
+	msg += "\n<b>Costs:</b>"
+	msg += "\n\tCost per Machine:[round((cost ? global.processing_machines.len/cost_machinery : 0),0.1)]"
+	msg += "\n\tPipenet:[round(cost_pipenets,1)]"
+	msg += "\n\tMachinery:[round(cost_machinery,1)]"
+	msg += "\n\tPowernet:[round(cost_powernets,1)]"
+	msg += "\n\tObjects:[round(cost_power_objects,1)]"
+	..(JOINTEXT(msg))
+
 /datum/controller/subsystem/machines/Initialize(timeofday)
 	makepowernets()
-	report_progress("Initializing atmos machinery.")
+	report_progress("Initializing atmos machinery...")
 	setup_atmos_machinery(GLOB.machines)
 	fire()
 	return ..()
@@ -80,21 +94,6 @@ SUBSYSTEM_DEF(machines)
 			var/obj/machinery/atmospherics/component/unary/vent_scrubber/T = U
 			T.broadcast_status()
 		CHECK_TICK
-
-/datum/controller/subsystem/machines/stat_entry()
-	var/msg = list()
-	msg += "C:{"
-	msg += "PI:[round(cost_pipenets,1)]|"
-	msg += "MC:[round(cost_machinery,1)]|"
-	msg += "PN:[round(cost_powernets,1)]|"
-	msg += "PO:[round(cost_power_objects,1)]"
-	msg += "} "
-	msg += "PI:[global.pipe_networks.len]|"
-	msg += "MC:[global.processing_machines.len]|"
-	msg += "PN:[global.powernets.len]|"
-	msg += "PO:[global.processing_power_items.len]|"
-	msg += "MC/MS:[round((cost ? global.processing_machines.len/cost_machinery : 0),0.1)]"
-	..(jointext(msg, null))
 
 /datum/controller/subsystem/machines/proc/process_pipenets(resumed = 0)
 	if (!resumed)

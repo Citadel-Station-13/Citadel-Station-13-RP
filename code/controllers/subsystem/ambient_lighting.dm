@@ -9,7 +9,12 @@ SUBSYSTEM_DEF(ambient_lighting)
 	var/list/queued = list()
 
 /datum/controller/subsystem/ambient_lighting/stat_entry()
-	..("P:[length(queued)]")
+	..("Queue:[length(queued)]")
+
+/datum/controller/subsystem/ambient_lighting/Initialize(timeofday)
+	// Fire once to pre-bake ambient lighting before the round begins.
+	fire()
+	return ..()
 
 /datum/controller/subsystem/ambient_lighting/fire(resumed = FALSE, no_mc_tick = FALSE)
 	var/list/curr = queued
@@ -43,19 +48,15 @@ SUBSYSTEM_DEF(ambient_lighting)
 	if(.)
 		// Grab what we need to set ambient light.
 		// TODO: z-level data handlers should store this information in a cheaply accessible way.
-		// var/obj/effect/overmap/visitable/sector/exoplanet/planet = GLOB.overmap_sectors["[z]"]
-		// if(istype(planet))
-		// 	if(planet.lightlevel)
-		// 		set_ambient_light(COLOR_WHITE, planet.lightlevel)
-		// 		return TRUE
-		// else
-		if(CONFIG_GET(flag/starlight))
-			// set_ambient_light(SSskybox.background_color, config.starlight)
-			var/datum/planet/planet = SSplanets.z_to_planet["[z]"]
-			if(istype(planet))
-				if(planet.sun_position)
-					set_ambient_light(planet.sun["color"])
-			return TRUE
+		var/datum/planet/planet = SSplanets.z_to_planet["[z]"]
+		if(istype(planet))
+			if(planet.sun_brightness_modifier)
+				SSplanets.updateSunlight(planet)
+				return TRUE
+		else
+			if(CONFIG_GET(flag/starlight))
+				set_ambient_light(COLOR_WHITE, 1)
+				return TRUE
 
 	clear_ambient_light()
 	return FALSE

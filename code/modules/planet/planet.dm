@@ -11,7 +11,10 @@
 
 	var/datum/weather_holder/weather_holder
 
-	var/sun_position = 0 // 0 means midnight, 1 means noon.
+	/// 0 means midnight, 1 means noon.
+	var/sun_position = 0
+	/// This a multiplier used to apply to the brightness of ambient lighting.  0.3 means 30% of the brightness of the sun.
+	var/sun_brightness_modifier = 0.5
 	var/list/sun = list(
 		"range",
 		"brightness",

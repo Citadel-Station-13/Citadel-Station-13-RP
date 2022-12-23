@@ -117,13 +117,29 @@ SUBSYSTEM_DEF(zmimic)
 
 /datum/controller/subsystem/zmimic/stat_entry()
 	var/list/entries = list(
-		"Mx:[json_encode(zlev_maximums)]",
-		"Q: { T: [queued_turfs.len - (qt_idex - 1)] O: [queued_overlays.len - (qo_idex - 1)] }",
-		"T: { T: [openspace_turfs] O: [openspace_overlays] }",
-		"Sk: { T: [multiqueue_skips_turf] O: [multiqueue_skips_object] }",
-		"F: { H: [fixup_hit] M: [fixup_miss] N: [fixup_noop] FC: [fixup_cache.len] FKG: [fixup_known_good.len] }",
+		"\n<b>Z-Maximums:</b>",
+		"\n\t[json_encode(zlev_maximums)]",
+
+		"\n<b>Queues:</b>",
+		"\n\tTurfs: [queued_turfs.len - (qt_idex - 1)]",
+		"\n\tOverlays: [queued_overlays.len - (qo_idex - 1)]",
+
+		"\n<b>Openspace Count:</b>",
+		"\n\tTurfs: [openspace_turfs]",
+		"\n\tOverlays: [openspace_overlays]",
+
+		"\n<b>Skipped Count:</b>",
+		"\n\tTurfs: [multiqueue_skips_turf]",
+		"\n\tObjects: [multiqueue_skips_object]",
+
+		"\n<b>Fixups:</b>",
+		"\n\tHits: [fixup_hit]",
+		"\n\tMisses: [fixup_miss]",
+		"\n\tNoops: [fixup_noop]",
+		"\n\tCache: [fixup_cache.len]",
+		"\n\tKnown Good: [fixup_known_good.len]"
 	)
-	..(entries.Join("\n\t"))
+	..(entries.Join())
 
 /datum/controller/subsystem/zmimic/Initialize(timeofday)
 	calculate_zstack_limits()
@@ -446,10 +462,12 @@ SUBSYSTEM_DEF(zmimic)
 		qo_idex = 1
 
 /datum/controller/subsystem/zmimic/proc/flush_z_state(turf/T)
-	if (T.below.mimic_above_copy)
-		QDEL_NULL(T.below.mimic_above_copy)
-	if (T.below.mimic_proxy)
-		QDEL_NULL(T.below.mimic_proxy)
+	if (T.below) // Z-Mimic turfs aren't necessarily above another turf.
+		if (T.below.mimic_above_copy)
+			QDEL_NULL(T.below.mimic_above_copy)
+		if (T.below.mimic_proxy)
+			QDEL_NULL(T.below.mimic_proxy)
+	QDEL_NULL(T.mimic_underlay)
 	for (var/atom/movable/openspace/OO in T)
 		if (istype(OO, /atom/movable/openspace/mimic))
 			qdel(OO)

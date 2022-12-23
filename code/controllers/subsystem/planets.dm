@@ -21,6 +21,7 @@ SUBSYSTEM_DEF(planets)
 	report_progress("Initializing planetary weather.")
 	createPlanets()
 	allocateTurfs(TRUE)
+	fire() // Fire once to preemptively set up weather and planetary ambient lighting.
 	return ..()
 
 /datum/controller/subsystem/planets/proc/createPlanets()
@@ -32,7 +33,7 @@ SUBSYSTEM_DEF(planets)
 			if(Z > z_to_planet.len)
 				z_to_planet.len = Z
 			if(z_to_planet[Z])
-				admin_notice("<span class='danger'>Z[Z] is shared by more than one planet!</span>", R_DEBUG)
+				admin_notice(SPAN_DEBUGTRACE("Z[Z] is shared by more than one planet!"), R_DEBUG)
 				continue
 			z_to_planet[Z] = NP
 
@@ -135,7 +136,7 @@ SUBSYSTEM_DEF(planets)
 		if(MC_TICK_CHECK)
 			return
 
-/datum/controller/subsystem/planets/fire(resumed = 0)
+/datum/controller/subsystem/planets/fire(resumed = FALSE)
 	if(new_outdoor_turfs.len || new_outdoor_walls.len)
 		allocateTurfs()
 
@@ -181,10 +182,10 @@ SUBSYSTEM_DEF(planets)
 
 /datum/controller/subsystem/planets/proc/updateSunlight(datum/planet/P)
 	// Calculate new values to apply
-	// var/new_brightness = P.sun["brightness"]Ah
+	var/new_brightness = P.sun["brightness"] * (P.sun_position * P.sun_brightness_modifier)
 	var/new_color = P.sun["color"]
 	for(var/turf/simulated/T as anything in P.planet_floors)
-		T.set_ambient_light(new_color)
+		T.set_ambient_light(new_color, new_brightness)
 		CHECK_TICK
 
 /datum/controller/subsystem/planets/proc/updateTemp(datum/planet/P)
