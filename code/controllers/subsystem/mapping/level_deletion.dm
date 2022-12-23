@@ -52,8 +52,8 @@
 		struct_by_z[z].Deconstruct(FALSE)
 	// 2. level
 	var/datum/space_level/level = ordered_levels[z]
-	level.SetDown(null)
-	level.SetUp(null)
+	level.set_down(null)
+	level.set_up(null)
 	level.set_east(null)
 	level.set_west(null)
 	level.set_north(null)

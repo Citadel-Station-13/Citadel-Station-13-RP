@@ -134,7 +134,7 @@
 	#warn not-so-microoptimization - change world.turf before z increase!
 
 	// make new level
-	var/new_z = GetInstantiationLevel(level.baseturf)
+	var/new_z = allocate_zlevel(level.baseturf)
 	#warn above --> void turf behavior??
 	#warn MAKE SURE WIDTH/HEIGHT MATCHES PROMISED VALUEs, IF NOT, REJECT
 	#warn if promised values are null, we set for them
@@ -362,11 +362,11 @@
  * Gets the /datum/space_level of a zlevel or id
  */
 /datum/controller/subsystem/mapping/proc/fetch_level_datum(id_or_z)
-	if(istext(z))
+	if(istext(id_or_z))
 		return keyed_levels[id_or_z]
-	if(z < 1 || z > world.maxz)
+	if(id_or_z < 1 || id_or_z > world.maxz)
 		CRASH("Z out of bounds")
-	return ordered_levels[z]
+	return ordered_levels[id_or_z]
 
 /**
  * Gets the /datum/world_struct of a zlevel or id
@@ -444,8 +444,8 @@
 		return
 	for(var/z in loops)
 		var/datum/space_level/level = ordered_levels[z]
-		level.SetUp(null)
-		level.SetDown(null)
+		level.set_up(null)
+		level.set_down(null)
 		if(struct_by_z[z])
 			var/datum/world_struct/struct = struct_by_z[z]
 			struct.Deconstruct()

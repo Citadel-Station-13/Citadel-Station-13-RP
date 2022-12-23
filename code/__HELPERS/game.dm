@@ -8,22 +8,9 @@
 	src:Topic(href, href_list)
 	return null
 
+// TODO: DEPRECATED, REMOVED
 /proc/is_on_same_plane_or_station(z1, z2)
-	if (z1 == z2)
-		return TRUE
-	if ((z1 in using_map_legacy().station_levels) &&	(z2 in using_map_legacy().station_levels))
-		return TRUE
-	return FALSE
-
-/proc/max_default_z_level()
-	var/max_z = 0
-	for(var/z in using_map_legacy().station_levels)
-		max_z = max(z, max_z)
-	for(var/z in using_map_legacy().admin_levels)
-		max_z = max(z, max_z)
-	for(var/z in using_map_legacy().player_levels)
-		max_z = max(z, max_z)
-	return max_z
+	return SSmapping.level_connectivity_loose(z1, z2)
 
 /proc/get_area(atom/A)
 	RETURN_TYPE(/area)
@@ -93,20 +80,25 @@
 			SEND_SIGNAL(A, COMSIG_ATOM_HEARER_IN_VIEW, processing, .)
 		processing += A.contents
 
+// TODO: DEPRECATED, REMOVED
 /proc/isStationLevel(level)
-	return level in using_map_legacy().station_levels
+	return SSmapping.level_trait(level, ZTRAIT_STATION)
 
+// TODO: DEPRECATED, REMOVED
 /proc/isNotStationLevel(level)
 	return !isStationLevel(level)
 
+// TODO: DEPRECATED, REMOVED
 /proc/isPlayerLevel(level)
-	return level in using_map_legacy().player_levels
-
-/proc/isAdminLevel(level)
-	return level in using_map_legacy().admin_levels
-
-/proc/isNotAdminLevel(level)
 	return !isAdminLevel(level)
+
+// TODO: DEPRECATED, REMOVED
+/proc/isAdminLevel(level)
+	return SSmapping.level_trait(level, ZTRAIT_ADMIN)
+
+// TODO: DEPRECATED, REMOVED
+/proc/isNotAdminLevel(level)
+	return !SSmapping.level_trait(level, ZTRAIT_ADMIN)
 
 /proc/circlerange(center = usr, radius = 3)
 

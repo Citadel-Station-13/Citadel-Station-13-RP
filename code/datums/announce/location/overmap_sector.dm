@@ -10,7 +10,7 @@
 	desc = "Announces to the overmap sector \"[sector]\""
 
 /datum/announce_location/overmap_sector/get_affected_levels()
-	return sector?.map_z.Copy() || list()
+	return sector?.map_struct.fetch_z_list() || list()
 
 /datum/announce_location/overmap_sector/render_proper_possessive_name()
 	return "The [sector]'s"

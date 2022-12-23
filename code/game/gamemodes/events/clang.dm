@@ -83,7 +83,7 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	sleep(1)
 	while (immrod)
 		if (isNotStationLevel(immrod.z))
-			immrod.z = pick(using_map_legacy().station_levels)
+			immrod.z = pick(SSmapping.levels_by_trait(ZTRAIT_STATION))
 		if(immrod.loc == end)
 			qdel(immrod)
 		sleep(10)

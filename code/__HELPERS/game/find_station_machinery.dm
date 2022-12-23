@@ -10,7 +10,7 @@
 
 /proc/station_smes()
 	. = list()
-	for(var/obj/machinery/smes/S in GLOB.machines)
+	for(var/obj/machinery/power/smes/S in GLOB.machines)
 		if(!S.z || !SSmapping.level_trait(S.z, ZTRAIT_STATION))
 			continue
 		. += S

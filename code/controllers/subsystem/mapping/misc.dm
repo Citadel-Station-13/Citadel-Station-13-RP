@@ -8,15 +8,19 @@
 		for(var/turf/T as anything in block(locate(1, 1, z), locate(world.maxx, world.maxy, z)))
 			if(istype(T, type_or_cache))
 				. += T
+			CHECK_TICK
 	else if(islist(type_or_cache))
 		for(var/turf/T as anything in block(locate(1, 1, z), locate(world.maxx, world.maxy, z)))
 			if(type_or_cache[T.type])
 				. += T
+			CHECK_TICK
 	else
 		CRASH("What?")
 
 /**
  * *sigh*
+ *
+ * do not fucking use this.
  */
 /datum/controller/subsystem/mapping/proc/throw_movables_on_z_turfs_of_type(z, list/type_or_cache, dir)
 	ASSERT(dir in GLOB.cardinal)
@@ -31,8 +35,10 @@
 				qdel(AM)
 				continue
 			throwing += AM
+		CHECK_TICK
 	for(var/atom/movable/AM as anything in throwing)
 		AM.throw_at_old(get_step(AM, dir), 5, 1)
+		CHECK_TICK
 
 /**
  * Picks a random space turf from crosslinked levels
@@ -42,9 +48,10 @@
 	levels = shuffle(levels)
 	for(var/z in levels)
 		var/list/potential = list()
-		for(var/turf/open/space/S in block(locate(2, 2, z), locate(world.maxx - 1, world.maxy - 1, z)))
+		for(var/turf/space/S in block(locate(2, 2, z), locate(world.maxx - 1, world.maxy - 1, z)))
 			potential += S
-		. = safepick(potential)
+			CHECK_TICK
+		. = SAFEPICK(potential)
 		if(.)
 			break
 
@@ -56,9 +63,10 @@
 	levels = shuffle(levels)
 	for(var/z in levels)
 		var/list/potential = list()
-		for(var/turf/open/space/S in block(locate(2, 2, z), locate(world.maxx - 1, world.maxy - 1, z)))
+		for(var/turf/space/S in block(locate(2, 2, z), locate(world.maxx - 1, world.maxy - 1, z)))
 			potential += S
-		. = safepick(potential)
+			CHECK_TICK
+		. = SAFEPICK(potential)
 		if(.)
 			break
 

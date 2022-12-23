@@ -374,7 +374,7 @@ SUBSYSTEM_DEF(ticker)
 			switch(M.z)
 				if(0)	//inside a crate or something
 					var/turf/T = get_turf(M)
-					if(T && (T.z in using_map_legacy().station_levels))				//we don't use M.death(0) because it calls a for(/mob) loop and
+					if(T && SSmapping.level_trait(T.z, ZTRAIT_STATION))				//we don't use M.death(0) because it calls a for(/mob) loop and
 						M.health = 0
 						M.set_stat(DEAD)
 				if(1)	//on a z-level 1 turf.
@@ -434,7 +434,10 @@ SUBSYSTEM_DEF(ticker)
 					SEND_SOUND(world, sound('sound/soundbytes/effects/explosion/explosionfar.ogg'))
 					cinematic.icon_state = "summary_selfdes"
 			for(var/mob/living/M in living_mob_list)
-				if(M.loc.z in using_map_legacy().station_levels)
+				var/turf/T = get_turf(M)
+				if(!T)
+					continue
+				if(SSmapping.level_trait(T.z, ZTRAIT_STATION))
 					M.death()//No mercy
 	//If its actually the end of the round, wait for it to end.
 	//Otherwise if its a verb it will continue on afterwards.

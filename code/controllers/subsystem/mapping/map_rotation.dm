@@ -47,7 +47,7 @@
 		if (VM.maxplayers > 0 && players > VM.maxplayers)
 			mapvotes.Remove(map)
 			continue
-		if(amv)
+		if(VM.voteweight)
 			mapvotes[map] = mapvotes[map]*VM.voteweight
 
 	var/pickedmap = pickweight(mapvotes)

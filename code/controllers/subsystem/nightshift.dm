@@ -28,8 +28,8 @@ SUBSYSTEM_DEF(nightshift)
 
 /datum/controller/subsystem/nightshift/proc/announce(message)
 	var/announce_z
-	if(using_map_legacy().station_levels.len)
-		announce_z = pick(using_map_legacy().station_levels)
+	var/list/possible = SSmapping.levels_by_trait(ZTRAIT_STATION)
+	announce_z = SAFEPICK(possible)
 	priority_announcement.Announce(message, new_title = "Automated Lighting System Announcement", new_sound = 'sound/misc/notice2.ogg', zlevel = announce_z)
 
 /datum/controller/subsystem/nightshift/proc/check_nightshift(check_canfire=FALSE) //This is called from elsewhere, like setting the alert levels
@@ -60,9 +60,10 @@ SUBSYSTEM_DEF(nightshift)
 		else
 			announce("Good morning, crew. As it is now day time, all of the lights aboard the station have been restored to their former brightness.")
 	for(var/obj/machinery/power/apc/apc in GLOB.apcs)
-		if(apc.z in using_map_legacy().station_levels)
-			apc.set_nightshift(active, TRUE)
-			CHECK_TICK
+		if(!SSmapping.level_trait(apc.z, ZTRAIT_STATION))
+			continue
+		apc.set_nightshift(active, TRUE)
+		CHECK_TICK
 
 // TODO: WORLD SECTOR TIME SYSTEM
 

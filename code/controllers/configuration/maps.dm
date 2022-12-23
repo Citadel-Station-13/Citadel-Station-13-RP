@@ -2,9 +2,9 @@
 	/// loaded map data, keyed by id and associated to a /datum/map_settings
 	var/list/datum/map_settings/map_data
 	/// allowed away missions
-	var/list/away_data
+	// var/list/away_data
 	/// allowed vr missions
-	var/list/vr_data
+	// var/list/vr_data
 
 	/// id of default map
 	var/default_map
@@ -27,11 +27,11 @@
 	RETURN_TYPE(/datum/map_settings)
 	return map_data[id]
 
-/datum/controller/configuration/proc/LoadAwayConfig(filename)
-	away_data = ParseSimpleMapList(filename)
+// /datum/controller/configuration/proc/LoadAwayConfig(filename)
+// 	away_data = ParseSimpleMapList(filename)
 
-/datum/controller/configuration/proc/LoadVRConfig(filename)
-	vr_data = ParseSimpleMapList(filename)
+// /datum/controller/configuration/proc/LoadVRConfig(filename)
+// 	vr_data = ParseSimpleMapList(filename)
 
 /**
  * All this proc does is filter out comment lines beginning with #

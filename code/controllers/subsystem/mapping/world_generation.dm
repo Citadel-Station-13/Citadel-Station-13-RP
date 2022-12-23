@@ -1,5 +1,9 @@
 /datum/controller/subsystem/mapping
 
+#warn get stuff in here from _mapping.dm
+
+/*
+
 #warn Recover()
 
 /**
@@ -83,3 +87,4 @@
 	if(GLOB.stationroom_landmarks.len)
 		seedStation() //I'm sure we can trust everyone not to insert a 1x1 rooms which loads a landmark which loads a landmark which loads a la...
 
+*/

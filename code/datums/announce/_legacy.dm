@@ -49,8 +49,8 @@
 	message_title = sanitizeSafe(message_title)
 
 	var/list/zlevels
-	if(zlevel && zlevel >= 1)
-		zlevels = using_map_legacy().get_map_levels(zlevel, TRUE)
+	if(zlevel)
+		zlevels = SSmapping.get_connected_levels(zlevel, radius = 0, long_range = TRUE)
 	else if(zlevel && zlevel == -1)//If we get a -1 just announce it to every z, safes us some loops else where
 		zlevels = list()
 		for(var/z in 1 to world.maxz)

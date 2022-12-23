@@ -65,9 +65,8 @@
 	entries_by_type.Cut()
 	QDEL_LIST_ASSOC_VAL(entries)
 	entries = null
-	QDEL_LIST_ASSOC_VAL(maplist)
-	maplist = null
-	QDEL_NULL(defaultmap)
+	QDEL_LIST_ASSOC_VAL(map_data)
+	map_data = null
 
 /datum/controller/configuration/Destroy()
 	full_wipe()

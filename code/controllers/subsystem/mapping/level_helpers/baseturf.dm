@@ -3,4 +3,4 @@
  */
 /datum/controller/subsystem/mapping/proc/level_baseturf(z)
 	var/datum/space_level/L = ordered_levels[z]
-	return L.baseturf || world.turf
+	return L.base_turf || world.turf
