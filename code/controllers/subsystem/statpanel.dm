@@ -166,27 +166,27 @@ SUBSYSTEM_DEF(statpanels)
 
 
 /datum/controller/subsystem/statpanels/proc/generate_mc_data()
-	var/list/mc_data = list(
-		list("CPU:", world.cpu),
-		list("Instances:", "[num2text(world.contents.len, 10)]"),
-		list("World Time:", "[world.time]"),
-		list("Globals:", GLOB.stat_entry(), "\ref[GLOB]"),
-		list("[config]:", config.stat_entry(), "\ref[config]"),
-		list("Byond:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%)) (Internal Tick Usage: [round(MAPTICK_LAST_INTERNAL_TICK_USAGE,0.1)]%)"),
-		list("Master Controller:", Master.stat_entry(), "\ref[Master]"),
-		list("Failsafe Controller:", Failsafe.stat_entry(), "\ref[Failsafe]"),
-		list("","")
-	)
 	for(var/ss in Master.subsystems)
 		var/datum/controller/subsystem/sub_system = ss
+		#warn move to subsystem + check them for stat entry stuff
 		mc_data[++mc_data.len] = list("\[[sub_system.state_letter()]][sub_system.name]", sub_system.stat_entry(), "\ref[sub_system]")
-	mc_data[++mc_data.len] = list("Camera Net", "Cameras: [GLOB.cameranet.cameras.len] | Chunks: [GLOB.cameranet.chunks.len]", "\ref[GLOB.cameranet]")
-	mc_data_encoded = url_encode(json_encode(mc_data))
 
 /datum/controller/subsystem/statpanels/proc/fetch_mc_data()
 	if(cache_mc_data)
 		return cache_mc_data
-	#warn impl
+	. = list()
+	STATPANEL_DATA_ENTRY("CPU:", num2text(world.cpu))
+	STATPANEL_DATA_ENTRY("Instances:", num2text(world.contents.len, 10))
+	STATPANEL_DATA_ENTRY("World Time:", num2text(world.time))
+	STATPANEL_DATA_ACT(GLOB.stat_key(), GLOB.stat_entry(), "\ref[GLOB]", "debug")
+	STATPANEL_DATA_ACT(config.stat_key(), config.stat_entry(), "\ref[config]", "debug")
+	STATPANEL_DATA_ENTRY("BYOND:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%)) (Internal Tick Usage: [round(MAPTICK_LAST_INTERNAL_TICK_USAGE,0.1)]%)")
+	STATPANEL_DATA_ACT(Master.stat_key(), Master.stat_entry(), "\ref[Master]", "debug")
+	STATPANEL_DATA_ACT(Failsafe.stat_key(), Failsafe.stat_entry(), "\ref[Failsafe]", "debug")
+	STATPANEL_DATA_LINE("")
+	for(var/datum/controller/subsystem/S as anything in Master.subsystems)
+		STATPANEL_DATA_ACT(S.stat_key(), S.stat_entry(), "\ref[S]", "debug")
+	cache_mc_data = url_encode(json_encode(.))
 
 /datum/controller/subsystem/statpanels/proc/fetch_server_data()
 	if(cache_server_data)
