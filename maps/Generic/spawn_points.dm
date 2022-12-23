@@ -17,7 +17,7 @@
 	on_store_visible_message_1 = "'s speakers chime, anouncing a tram has arrived to take"
 	on_store_visible_message_2 = "to the colony"
 	time_till_despawn = 10 SECONDS
-	spawnpoint_type = /datum/spawnpoint/tram
+	spawnpoint_type = /obj/landmark/spawnpoint/latejoin/station/tram
 
 /obj/machinery/cryopod/robot/door/tram/process()
 	if(SSemergencyshuttle.online() || SSemergencyshuttle.returned())
@@ -41,12 +41,8 @@
 		newghost.timeofdeath = world.time
 		despawn_occupant(user)
 
-/datum/spawnpoint/tram
-	display_name = "Tram Station"
-	method = LATEJOIN_METHOD_TRAM
-
 /obj/machinery/cryopod/robot/door/dorms
-	spawnpoint_type = /datum/spawnpoint/tram
+	spawnpoint_type = /obj/landmark/spawnpoint/latejoin/station/tram
 
 ////////////////////////////////////////////////////////////////
 
@@ -66,7 +62,7 @@
 	on_store_visible_message_1 = "'s speakers chime, anouncing a shuttle has arrived to take"
 	on_store_visible_message_2 = "to the commanding ship"
 	time_till_despawn = 10 SECONDS
-	spawnpoint_type = /datum/spawnpoint/shuttle
+	spawnpoint_type = /obj/landmark/spawnpoint/latejoin/station/shuttle_dock
 
 /obj/machinery/cryopod/robot/door/shuttle/process(delta_time)
 	if(SSemergencyshuttle.online() || SSemergencyshuttle.returned())
@@ -90,13 +86,9 @@
 		newghost.timeofdeath = world.time
 		despawn_occupant(user)
 
-/datum/spawnpoint/shuttle
-	display_name = "Shuttle Bay"
-	method = LATEJOIN_METHOD_SHUTTLE_DOCK
-
 // Used at centcomm for the elevator
 /obj/machinery/cryopod/robot/door/dorms
-	spawnpoint_type = /datum/spawnpoint/shuttle
+	spawnpoint_type = /obj/landmark/spawnpoint/latejoin/station/shuttle_dock
 
 ///////////////////////////////////////////////////////////////////////////
 

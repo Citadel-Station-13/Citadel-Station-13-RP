@@ -13,7 +13,7 @@
 	B = get_turf(B)
 	if(A.z == B.z)
 		return get_dir(A, B)
-	if(!is_managed_level(A) || !is_managed_level(B))
+	if(!is_level_virtualized(A) || !is_level_virtualized(B))
 		// last ditch - check stacks
 		var/list/stack = z_stack_lookup
 		var/pos = stack.Find(B.z)

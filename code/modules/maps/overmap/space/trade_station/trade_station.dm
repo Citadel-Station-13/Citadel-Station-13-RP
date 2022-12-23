@@ -42,10 +42,6 @@
 ///////////////////////////
 //// Spawning and despawning
 
-/datum/spawnpoint/trade
-	display_name = "Beruang Trading Corp Cryo"
-	restrict_job = list("Trader")
-	announce_channel = "Trade"
 
 /obj/machinery/cryopod/trade
 	announce_channel = "Trade"
@@ -55,6 +51,7 @@
 	on_enter_occupant_message = "You feel cool air surround you. You go numb as your senses turn inward."
 	on_store_visible_message_1 = "hums and hisses as it moves"
 	on_store_visible_message_2 = "into cryogenic storage."
+	spawnpoint_type = /obj/landmark/spawnpoint/latejoin/tradeport
 
 /obj/machinery/cryopod/robot/trade
 	announce_channel = "Trade"

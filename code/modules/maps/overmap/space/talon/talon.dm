@@ -1,10 +1,6 @@
 ///////////////////////////
 //// Spawning and despawning
 
-/datum/spawnpoint/talon
-	display_name = "ITV Talon Cryo"
-	restrict_job = list("Talon Captain", "Talon Pilot", "Talon Engineer", "Talon Doctor", "Talon Guard")
-	announce_channel = "Talon"
 
 /obj/machinery/cryopod/talon
 	announce_channel = "Talon"
@@ -14,6 +10,7 @@
 	on_enter_occupant_message = "You feel cool air surround you. You go numb as your senses turn inward."
 	on_store_visible_message_1 = "hums and hisses as it moves"
 	on_store_visible_message_2 = "into cryogenic storage."
+	spawnpoint_type = /obj/landmark/spawnpoint/latejoin/talon
 
 /obj/machinery/cryopod/robot/talon
 	announce_channel = "Talon"

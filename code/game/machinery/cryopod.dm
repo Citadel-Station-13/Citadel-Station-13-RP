@@ -226,10 +226,13 @@
 	var/last_no_computer_message = 0
 	var/applies_stasis = 0 // Allow people to change their mind
 
+	/// spawnpoint type, if any
+	var/spawnpoint_type = /obj/landmark/spawnpoint/latejoin/station/cryogenics
+
 /obj/machinery/crypod/Initialize(mapload)
 	. = ..()
-	if(type == /obj/machinery/cryopod) // sue me
-		AddComponent(/datum/component/slaved_atom_to_loc, /obj/landmark/spawnpoint/latejoin/station/cryogenics, TRUE)
+	if(spawnpoint_type)
+		AddComponent(/datum/component/slaved_atom_to_loc, spawnpoint_type, TRUE)
 
 /obj/machinery/cryopod/robot
 	name = "robotic storage unit"
@@ -685,13 +688,8 @@
 //! ## VR FILE MERGE ## !//
 //Overrides!
 
-/obj/machinery/cryopod
-	// The corresponding spawn point type that user despawning here will return at next round.
-	// Note: We use a type instead of name so that its validity is checked at compile time.
-	var/spawnpoint_type = /datum/spawnpoint/cryo
-
 /obj/machinery/cryopod/robot
-	spawnpoint_type = /datum/spawnpoint/cyborg
+	spawnpoint_type = /obj/landmark/spawnpoint/latejoin/station/cyborg
 
 /obj/machinery/cryopod/robot/door/gateway
 	name = "public teleporter"
@@ -702,7 +700,7 @@
 	occupied_icon_state = "pad_active"
 	on_store_message = "has departed via short-range teleport."
 	on_enter_occupant_message = "The teleporter activates, and you step into the swirling portal."
-	spawnpoint_type = /datum/spawnpoint/gateway
+	spawnpoint_type = /obj/landmark/spawnpoint/latejoin/station/gateway
 
 /obj/machinery/cryopod/robot/door/gateway/move_inside()
 	..()

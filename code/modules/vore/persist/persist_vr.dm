@@ -13,28 +13,6 @@
 	var/loaded_from_ckey = null
 	var/loaded_from_slot = null
 
-// Handle people leaving due to round ending.
-/hook/roundend/proc/persist_locations()
-	for(var/mob/Player in human_mob_list)
-		if(!Player.mind || isnewplayer(Player))
-			continue // No mind we can do nothing, new players we care not for
-		else if(Player.stat == DEAD)
-			if(istype(Player,/mob/observer/dead))
-				var/mob/observer/dead/O = Player
-				if(O.started_as_observer)
-					continue // They are just a pure observer, ignore
-			// Died and were not cloned - Respawn at centcomm
-			persist_interround_data(Player, using_map_legacy().spawnpoint_died)
-		else
-			var/turf/playerTurf = get_turf(Player)
-			if(isAdminLevel(playerTurf.z))
-				// Evac'd - Next round they arrive on the shuttle.
-				persist_interround_data(Player, using_map_legacy().spawnpoint_left)
-			else
-				// Stayed on station, go to dorms
-				persist_interround_data(Player, using_map_legacy().spawnpoint_stayed)
-	return 1
-
 /**
  * Prep for save: returns a preferences object if we're ready and allowed to save this mob.
  */
@@ -68,11 +46,10 @@
  */
 /hook/despawn/proc/persist_despawned_mob(var/mob/occupant, var/obj/machinery/cryopod/pod)
 	ASSERT(istype(pod))
-	ASSERT(ispath(pod.spawnpoint_type, /datum/spawnpoint))
-	persist_interround_data(occupant, pod.spawnpoint_type)
+	persist_interround_data(occupant)
 	return 1
 
-/proc/persist_interround_data(var/mob/occupant, var/datum/spawnpoint/new_spawn_point_type)
+/proc/persist_interround_data(var/mob/occupant)
 	if(!istype(occupant))
 		stack_trace("Persist (PID): Given non-mob [occupant].")
 		return
@@ -90,8 +67,6 @@
 		return // Persistence disabled by preference settings
 
 	// Okay we can start saving the data
-	if(new_spawn_point_type && prefs.persistence_settings & PERSIST_SPAWN)
-		prefs.spawnpoint = initial(new_spawn_point_type.display_name)
 	if(ishuman(occupant) && occupant.stat != DEAD)
 		var/mob/living/carbon/human/H = occupant
 		testing("Persist (PID): Saving stuff from [H] to [prefs] (\ref[prefs]).")

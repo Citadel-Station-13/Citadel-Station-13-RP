@@ -3622,7 +3622,6 @@
 #include "code\modules\preferences\preferences_factions.dm"
 #include "code\modules\preferences\preferences_savefile.dm"
 #include "code\modules\preferences\preferences_setup.dm"
-#include "code\modules\preferences\preferences_spawnpoints.dm"
 #include "code\modules\preferences\preferences_toggle_procs.dm"
 #include "code\modules\preferences\shims.dm"
 #include "code\modules\preferences\ui.dm"

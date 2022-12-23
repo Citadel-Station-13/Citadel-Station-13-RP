@@ -534,20 +534,7 @@
 	var/datum/job/J = SSjob.get_job(rank)
 	fail_deadly = J?.offmap_spawn
 	var/preferred_method
-	var/datum/spawnpoint/spawnpos
-
-	//Spawn them at their preferred one
-	if(C && C.prefs.spawnpoint)
-		if(!(C.prefs.spawnpoint in using_map_legacy().allowed_spawns))
-			if(fail_deadly)
-				to_chat(C, SPAN_WARNING("Your chosen spawnpoint is unavailable for this map and your job requires a specific spawnpoint.  Please correct your spawn point choice."))
-				return
-			else
-				to_chat(C, SPAN_WARNING("Your chosen spawnpoint ([C.prefs.spawnpoint]) is unavailable for the current map.  Spawning you at one of the enabled spawn points instead."))
-		else
-			spawnpos = spawntypes[C.prefs.spawnpoint]
-
-	preferred_method = spawnpos?.method
+	#warn hell - this needs to be fed the preferred method from latejoin panel!
 	var/obj/landmark/spawnpoint/S
 
 	. = list("spawnpoint")
@@ -557,10 +544,10 @@
 			.["spawnpoint"] = S
 			.["channel"] = spawnpos.announce_channel
 		else
-			if(fail_deadly)
-				to_chat(C, SPAN_WARNING("Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job.  Please correct your spawn point choice."))
-				return
-			to_chat(C, SPAN_WARNING("Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job. Spawning you at the Arrivals shuttle instead."))
+			// if(fail_deadly)
+			// 	to_chat(C, SPAN_WARNING("Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job.  Please correct your spawn point choice."))
+			// 	return
+			// to_chat(C, SPAN_WARNING("Your chosen spawnpoint ([spawnpos.display_name]) is unavailable for your chosen job. Spawning you at the Arrivals shuttle instead."))
 			.["spawnpoint"] = SSjob.get_latejoin_spawnpoint(J.faction)
 	else if(!fail_deadly)
 		.["spawnpoint"] = SSjob.get_latejoin_spawnpoint(J.faction)

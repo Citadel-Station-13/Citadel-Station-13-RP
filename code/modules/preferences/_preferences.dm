@@ -70,8 +70,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/nickname
 	/// Age of character
 	var/age = 30
-	/// Where this character will spawn. (0-2)
-	var/spawnpoint = "Arrivals Shuttle"
 	/// Blood type. (not-chooseable)
 	var/b_type = "A+"
 	/// Backpack type.

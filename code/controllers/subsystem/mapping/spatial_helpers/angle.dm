@@ -14,7 +14,7 @@
 	B = get_turf(B)
 	if(A.z == B.z)
 		return get_physics_angle(A, B)
-	if(!is_managed_level(A) || !is_managed_level(B))
+	if(!is_level_virtualized(A) || !is_level_virtualized(B))
 		return null
 	if(struct_by_z[A.z] != struct_by_z[B.z])
 		return null

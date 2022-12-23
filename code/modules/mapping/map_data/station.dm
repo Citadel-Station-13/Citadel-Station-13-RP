@@ -41,6 +41,12 @@
 	//? silicons
 	/// The default lawset use by synth units, if not overriden by their laws var.
 	var/default_law_type
+	//? belter
+	var/belter_docked_z
+	var/belter_transit_z
+	var/belter_belt_z
+	#warn parse
+
 	//? holomaps
 
 	#warn impl + parse
