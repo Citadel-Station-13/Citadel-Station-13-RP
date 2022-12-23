@@ -7,7 +7,6 @@
 	anchored = FALSE
 	density = TRUE
 	req_access = list(access_engine_equip)
-	rad_insulation = RAD_INSULATION_EXTREME
 //	use_power = 0
 	var/obj/item/tank/phoron/P = null
 	/// stored power in kilojoules
@@ -26,6 +25,10 @@
 	var/gas_usage_factor = 30 / ((60 * 60 * 1) * 5000 * RAD_MISC_COLLECTOR_MULTIPLIER)
 	/// last KW
 	var/last_output
+	/// rad insulation when on
+	var/rad_insulation_active = RAD_INSULATION_HIGH
+	/// rad insulation when off
+	var/rad_insulation_inactive = RAD_INSULATION_NONE
 	/// amount of rads to toss
 	var/flat_loss = RAD_MISC_COLLECTOR_FLAT_LOSS
 	/// kj per rad
@@ -36,6 +39,10 @@
 	var/push_ratio = 0.05
 	var/active = 0
 	var/locked = 0
+
+/obj/machinery/power/rad_collector/Initialize(mapload)
+	. = ..()
+	rad_insulation = active? rad_insulation_active : rad_insulation_inactive
 
 /obj/machinery/power/rad_collector/attack_hand(mob/user as mob)
 	if(anchored)
@@ -156,6 +163,7 @@
 
 /obj/machinery/power/rad_collector/proc/toggle_power()
 	active = !active
+	rad_insulation = active? rad_insulation_active : rad_insulation_inactive
 	if(active)
 		icon_state = "ca_on"
 		flick("ca_active", src)
