@@ -120,6 +120,9 @@
 	.+= "Propellant used per burn: [round(air_contents.get_mass() * volume_per_burn * thrust_limit / air_contents.volume,0.01)] kg."
 	.+= "Propellant pressure: [round(air_contents.return_pressure()/1000,0.1)] MPa."
 
+/obj/machinery/atmospherics/component/unary/engine/legacy_ex_act()
+	return
+
 /obj/machinery/atmospherics/component/unary/engine/power_change()
 	. = ..()
 	if(machine_stat & NOPOWER)
