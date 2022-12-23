@@ -39,7 +39,8 @@
 	if(scanning)
 		scanning = FALSE
 		STOP_PROCESSING(SSobj, src)
-	QDEL_NULL(scanning)
+	if(soundloop)
+		QDEL_NULL(soundloop)
 	return ..()
 
 /obj/item/geiger_counter/process(delta_time)
