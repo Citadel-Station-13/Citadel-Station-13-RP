@@ -51,7 +51,7 @@
  *    A full list of slot ids are in [code/modules/mob/inventory/slot_meta.dm].
  * 5. Do you care about bodytypes? If so, set worn_bodytypes to the bodytypes you want
  *    to implement with bitfield notation, aka
- *    worn_bodytypes = BODYTYPE_TESHARI | BODYTYPE_UNATHI
+ *    worn_bodytypes = BODYTYPE_TESHARI + BODYTYPE_UNATHI
  *    Then, put in states for the bodytypes in question like so:
  *        pickaxe_back_teshari
  *        pickaxe_back_unathi
@@ -199,14 +199,17 @@
 	/**
 	 * bodytypes that *can* get trampled to default if the default icon is not found on species
 	 *
+	 * null = ALL
+	 * NONE = NONE
+	 *
 	 * for slot defaults, this means using the default icon state.
 	 * for new rendering, this means using the fallback state on the slot for a bodytype.
 	 */
-	var/worn_bodytypes_fallback = ALL
+	var/worn_bodytypes_fallback = BODYTYPE_ALL
 	/// bodytypes that are implemented. Anything not in here is converted to default, if slot fallback state is unavailable.
 	var/worn_bodytypes = BODYTYPE_DEFAULT
 	/// bodytypes that just skip rendering (i hate teshari)
-	var/worn_bodytypes_invisible = NONE
+	var/worn_bodytypes_invisible = BODYTYPE_NONE
 	/// worn rendering flags
 	var/worn_render_flags = WORN_RENDER_INHAND_ALLOW_DEFAULT | WORN_RENDER_SLOT_ALLOW_DEFAULT
 	//? support for adminbus
@@ -216,6 +219,13 @@
 	VAR_PRIVATE/list/worn_state_override
 	/// vv only; set to override layer
 	VAR_PRIVATE/worn_layer_override
+
+/obj/item/Initialize(mapload)
+	. = ..()
+	// todo: assert sorted during tests once preprocessor isn't dogshit and lets us do better interfaces
+	SET_BITFLAG_LIST(worn_bodytypes, S_BODYTYPE_MAX)
+	SET_BITFLAG_LIST(worn_bodytypes_invisible, S_BODYTYPE_MAX)
+	SET_BITFLAG_LIST(worn_bodytypes_fallback, S_BODYTYPE_MAX)
 
 /obj/item/proc/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype = BODYTYPE_DEFAULT)
 	// SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.
@@ -239,7 +249,7 @@
 	var/list/additional = render_additional(icon_used, state_used, layer_used, dim_x, dim_y, bodytype, inhands, slot_meta)
 	// todo: signal with (args, add)
 	// todo: args' indices should be defines
-	var/no_render = inhands? (worn_render_flags & WORN_RENDER_INHAND_NO_RENDER) : ((worn_render_flags & WORN_RENDER_SLOT_NO_RENDER) || (worn_bodytypes_invisible & bodytype))
+	var/no_render = inhands? (worn_render_flags & WORN_RENDER_INHAND_NO_RENDER) : ((worn_render_flags & WORN_RENDER_SLOT_NO_RENDER) || CHECK_BITFLAG_LIST(worn_bodytypes_invisible, bodytype))
 	var/mutable_appearance/MA
 	// worn_state_guard makes us not render if we'd render the same as in-inventory icon.
 	if(no_render)		// don't bother
@@ -342,7 +352,7 @@
 	//* inventory slot defaults
 	else if(inhands? (worn_render_flags & WORN_RENDER_INHAND_ALLOW_DEFAULT) : (worn_render_flags & WORN_RENDER_SLOT_ALLOW_DEFAULT))
 		var/list/resolved = slot_meta.resolve_default_assets(bodytype, data[WORN_DATA_STATE], M, src, inhand_default_type)
-		if(!resolved && (bodytype != BODYTYPE_DEFAULT) && (bodytype & worn_bodytypes_fallback))
+		if(!resolved && (bodytype != BODYTYPE_DEFAULT) && CHECK_BITFLAG_LIST(worn_bodytypes_fallback, bodytype))
 			// attempt 2 - use fallback if available
 			if(!(slot_meta.handle_worn_fallback(bodytype, data)))
 				// attempt 3 - convert to default if specified to convert
@@ -355,7 +365,7 @@
 	//* Now, the actual intended render system.
 	if(!data[WORN_DATA_ICON])
 		// grab icon based on priority
-		if(!inhands && !(bodytype & worn_bodytypes) && (bodytype & worn_bodytypes_fallback) && slot_meta.handle_worn_fallback(bodytype, data))
+		if(!inhands && !CHECK_BITFLAG_LIST(worn_bodytypes, bodytype) && CHECK_BITFLAG_LIST(worn_bodytypes_fallback, bodytype) && slot_meta.handle_worn_fallback(bodytype, data))
 			// special: if bodytypes isn't in, and species has fallback
 			// .. well don't do anything as handle_sprite_fallback will write to the data list.
 		else if(inhands && inhand_icon)
@@ -409,7 +419,8 @@
 	// PRIVATE_PROC(TRUE)
 	if(inhands)
 		return "[base_worn_state(inhands, slot_key, bodytype)][(worn_render_flags & WORN_RENDER_INHAND_ONE_FOR_ALL)? "_all" : "_[slot_key]"]"
-	return "[base_worn_state(inhands, slot_key, bodytype)][(worn_render_flags & WORN_RENDER_SLOT_ONE_FOR_ALL)? "_all" : "_[slot_key]"][((worn_bodytypes & (~BODYTYPE_DEFAULT)) & bodytype)? "_[bodytype_to_string(bodytype)]" : ""]"
+	var/include_bodytype_str = (bodytype != BODYTYPE_DEFAULT) && CHECK_BITFLAG_LIST(worn_bodytypes, bodytype)
+	return "[base_worn_state(inhands, slot_key, bodytype)][(worn_render_flags & WORN_RENDER_SLOT_ONE_FOR_ALL)? "_all" : "_[slot_key]"][include_bodytype_str? "_[bodytype_to_string(bodytype)]" : ""]"
 
 /obj/item/proc/base_worn_state(inhands, slot_key, bodytype)
 	if(inhands)

@@ -72,6 +72,9 @@
 
 /obj/item/clothing/under/Initialize(mapload)
 	. = ..()
+	// todo: assert sorted during tests once preprocessor isn't dogshit and lets us do better interfaces
+	SET_BITFLAG_LIST(worn_rolldown_bodytypes, S_BODYTYPE_MAX)
+	SET_BITFLAG_LIST(worn_rollsleeve_bodytypes, S_BODYTYPE_MAX)
 	// for NOW, we need to autoset if null.
 	// todo: remove this lol
 	if(isnull(snowflake_worn_state))
@@ -123,7 +126,7 @@
 		detected_bodytype = H.species.get_effective_bodytype(H, src, worn_slot)
 	switch(worn_has_rolldown)
 		if(UNIFORM_HAS_ROLL)
-			has_roll = (worn_rolldown_bodytypes & detected_bodytype)
+			has_roll = CHECK_BITFLAG_LIST(worn_rolldown_bodytypes, detected_bodytype)
 		if(UNIFORM_HAS_NO_ROLL)
 			has_roll = FALSE
 		if(UNIFORM_AUTODETECT_ROLL)
@@ -147,7 +150,7 @@
 		detected_bodytype = H.species.get_effective_bodytype(H, src, worn_slot)
 	switch(worn_has_rollsleeve)
 		if(UNIFORM_HAS_ROLL)
-			has_sleeves = (worn_rollsleeve_bodytypes & detected_bodytype)
+			has_sleeves = CHECK_BITFLAG_LIST(worn_rollsleeve_bodytypes, detected_bodytype)
 		if(UNIFORM_HAS_NO_ROLL)
 			has_sleeves = FALSE
 		if(UNIFORM_AUTODETECT_ROLL)

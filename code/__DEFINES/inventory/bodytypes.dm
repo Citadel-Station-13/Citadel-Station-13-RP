@@ -42,6 +42,14 @@
 
 //! KEEP THIS UP TO DATE
 #define S_BODYTYPE_MAX 18
+//! KEEP THIS UP TO DATE
+#define S_BODYTYPE_MAX_PLUS_ONE 19
+
+//! special - set to assert all bodytypes
+#define BODYTYPE_ALL null
+//! special - set to assert no bodytypes
+#define BODYTYPE_NONE S_BODYTYPE(S_BODYTYPE_MAX_PLUS_ONE)
+//? why do we do the above? so the last one cannot ever match any bodytypes.
 
 // todo: what are we going to do with these?
 //? we should probably standardize bodytypes as entirely different sprites, and also
