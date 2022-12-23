@@ -24,11 +24,6 @@
 
 //? "attributes"
 
-/// general indoors airmix as gas string or atmosphere; if none, defaults to standard station air
-#define ZATTRIBUTE_INDOORS_AIR "air_indoors"
-/// general outdoors airmix as gas string or atmosphere; if none, defaults to default
-#define ZATTRIBUTE_OUTDOORS_AIR "air_outdoors"
-
 //? "traits"
 
 /// level is considered main station (if there's two both will have this; adding support for multi-station later)

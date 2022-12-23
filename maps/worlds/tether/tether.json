@@ -6,9 +6,27 @@
 	"dependencies": [
 
 	],
+	"width": 140,
+	"height": 140,
+	"center": true,
+	"fill_void": false,
 	"levels" : [
 		{
-
+			"name": ,
+			"id": ,
+			"fluff_id": ,
+			"map_path": "tether-01-surface1.dmm",
+			"traits": [
+				"Station",
+				"Minimap"
+			],
+			"attributes": {},
+			"base_turf": ,
+			"base_area": ,
+			"holomap_offset_x": ,
+			"holomap_offset_y": ,
+			"holomap_legend_x": ,
+			"holomap_legend_y":
 		},
 		{
 
