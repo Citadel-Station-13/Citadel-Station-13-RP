@@ -607,6 +607,11 @@
 	id = "hair_parted_alt"
 	icon_state = "hair_partedalt"
 
+/datum/sprite_accessory/hair/pixie
+	name = "Pixie"
+	id = "hair_pixie"
+	icon_state = "hair_pixie"
+
 /datum/sprite_accessory/hair/pompadour
 	name = "Pompadour"
 	id = "hair_pompadour"
@@ -741,6 +746,12 @@
 	name = "Row Braid"
 	id = "hair_row_braid"
 	icon_state = "hair_rowbraid"
+	hair_flags = HAIR_TIEABLE
+
+/datum/sprite_accessory/hair/sabitsuki
+	name = "Sabitsuki"
+	id = "hair_sabitsuki"
+	icon_state = "hair_sabitsuki"
 	hair_flags = HAIR_TIEABLE
 
 /datum/sprite_accessory/hair/scully
