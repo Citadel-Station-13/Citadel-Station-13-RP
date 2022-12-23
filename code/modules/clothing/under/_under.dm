@@ -72,7 +72,7 @@
 
 /obj/item/clothing/under/Initialize(mapload)
 	. = ..()
-	CACHE_BODYTYPES(worn_Rolldown_bodytypes)
+	CACHE_BODYTYPES(worn_rolldown_bodytypes)
 	CACHE_BODYTYPES(worn_rollsleeve_bodytypes)
 	// for NOW, we need to autoset if null.
 	// todo: remove this lol

@@ -62,20 +62,20 @@
 //? check bodytype lists matching
 #define COMPARE_BODYTYPES(L1, L2) compare_bodytypes(L1, L2)
 //? check bodytype list membership
-#define CHECK_BODYTYPE(L, BT) (L != BODYTYPE_NONE) && ((L == BODYTYPE_ALL) || (BODYTYPE_EXCLUDE in L? !(bt in L) : (bt in L)))
+#define CHECK_BODYTYPE(L, BT) (L != BODYTYPES_NONE) && ((L == BODYTYPES_ALL) || (BODYTYPE_EXCEPT in L? !(BT in L) : (BT in L)))
 
 /proc/compare_bodytypes(list/L1, list/L2)
-	if(L1 == BODYTYPE_NONE || L2 == BODYTYPE_NONE)
+	if(L1 == BODYTYPES_NONE || L2 == BODYTYPES_NONE)
 		return FALSE
-	if(L1 == BODYTYPE_ALL || L2 == BODYTYPE_ALL)
+	if(L1 == BODYTYPES_ALL || L2 == BODYTYPES_ALL)
 		return TRUE
-	if(BODYTYPE_EXCLUDE in L1)
-		if(BODYTYPE_EXCLUDE in L2)
+	if(BODYTYPE_EXCEPT in L1)
+		if(BODYTYPE_EXCEPT in L2)
 			return length(L1 | L2) != BODYTYPES_TOTAL
 		else
 			return !!length(L2 - L1) // l2 has something not excluded from l1
 	else
-		if(BODYTYPE_EXCLUDE in L2)
+		if(BODYTYPE_EXCEPT in L2)
 			return !!length(L1 - L2) // l1 has something not excluded from l2
 		else
 			return !!length(L1 & L2) // l1 has something in l2
