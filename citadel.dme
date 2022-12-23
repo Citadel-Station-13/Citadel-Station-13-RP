@@ -613,7 +613,7 @@
 #include "code\datums\elements\conflict_checking.dm"
 #include "code\datums\elements\icon_scaling.dm"
 #include "code\datums\elements\persistence.dm"
-#include "code\datums\elements\z_radiation_listener.dm"
+#include "code\datums\elements\atoms\z_radiation_listener.dm"
 #include "code\datums\elements\clothing\_clothing.dm"
 #include "code\datums\elements\clothing\hud_granter.dm"
 #include "code\datums\helper_datums\construction_datum.dm"
