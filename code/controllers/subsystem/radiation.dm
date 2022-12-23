@@ -161,6 +161,7 @@ SUBSYSTEM_DEF(radiation)
 		if(MC_TICK_CHECK)
 			next_wave_set.Cut(1, i + 1)
 			return
+	next_wave_set.Cut(1, i + 1)
 
 /datum/controller/subsystem/radiation/proc/queue_wave(turf/source, intensity, falloff, can_contaminate)
 	// if not contaminating we immediately release, pointless to keep going
