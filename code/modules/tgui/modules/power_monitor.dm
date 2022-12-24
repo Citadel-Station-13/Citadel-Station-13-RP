@@ -16,7 +16,7 @@
 	var/obj/machinery/power/sensor/focus = null
 
 	var/z = get_z(user)
-	var/list/map_levels = using_map_legacy().get_map_levels(z)
+	var/list/map_levels = SSmapping.get_connected_levels(z)
 
 	// Build list of data from sensor readings.
 	for(var/obj/machinery/power/sensor/S in grid_sensors)

@@ -33,7 +33,7 @@
 
 /datum/tgui_module/crew_monitor/ui_interact(mob/user, datum/tgui/ui = null)
 	var/z = get_z(user)
-	var/list/map_levels = using_map_legacy().get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE)
+	var/list/map_levels = SSmapping.get_connected_levels(z, long_range = TRUE)
 
 	if(!map_levels.len)
 		to_chat(user, SPAN_WARNING("The crew monitor doesn't seem like it'll work here."))
@@ -54,7 +54,7 @@
 	data["isAI"] = isAI(user)
 
 	var/z = get_z(user)
-	var/list/map_levels = uniqueList(using_map_legacy().get_map_levels(z, TRUE, om_range = DEFAULT_OVERMAP_RANGE))
+	var/list/map_levels = SSmapping.get_connected_levels(z)
 	data["map_levels"] = map_levels
 
 	var/list/crewmembers = list()

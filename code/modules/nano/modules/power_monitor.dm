@@ -26,7 +26,7 @@
 	data["all_sensors"] = sensors
 	if(focus)
 		data["focus"] = focus.return_reading_data()
-	data["map_levels"] = using_map_legacy().get_map_levels(T.z)
+	data["map_levels"] = SSmapping.get_connected_levels(T.z)
 
 	ui = SSnanoui.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if (!ui)

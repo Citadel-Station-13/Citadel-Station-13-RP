@@ -36,7 +36,7 @@
 
 	var/list/drones = list()
 	for(var/mob/living/silicon/robot/drone/D in GLOB.mob_list)
-		if(!(D.z in using_map_legacy().get_map_levels(z, TRUE, 0)))
+		if(!(SSmapping.level_connectivity(D.z, z)))
 			continue
 		if(D.foreign_droid)
 			continue

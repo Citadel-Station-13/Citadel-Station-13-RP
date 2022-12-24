@@ -62,7 +62,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		if(signal.data["slow"] > 0)
 			sleep(signal.data["slow"]) // simulate the network lag if necessary
 
-		signal.data["level"] |= using_map_legacy().get_map_levels(listening_level, TRUE, overmap_range)
+		signal.data["level"] |= SSmapping.get_connected_levels(listening_level, overmap_range, TRUE)
 
 		var/list/forced_radios
 		for(var/datum/weakref/wr in linked_radios_weakrefs)
@@ -165,7 +165,7 @@ var/message_delay = 0 // To make sure restarting the recentmessages list is kept
 		return
 
 	// Where are we able to hear from (and talk to, since we're AIO) anyway?
-	var/map_levels = using_map_legacy().get_map_levels(z, TRUE, overmap_range)
+	var/map_levels = SSmapping.get_connected_levels(z, overmap_range, TRUE)
 
 	//Bluespace can skip this check
 	if(signal.transmission_method != TRANSMISSION_BLUESPACE)

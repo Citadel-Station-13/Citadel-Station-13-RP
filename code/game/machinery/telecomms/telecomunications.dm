@@ -401,7 +401,7 @@
 
 	// Add our level and send it back
 	if(can_send(signal))
-		signal.data["level"] |= using_map_legacy().get_map_levels(listening_level)
+		signal.data["level"] |= SSmapping.get_connected_levels(listening_level)
 
 // Checks to see if it can send/receive.
 

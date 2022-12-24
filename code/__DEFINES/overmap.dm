@@ -15,4 +15,7 @@
 #define OVERMAP_WEAKNESS_MINING		4
 #define OVERMAP_WEAKNESS_EXPLOSIVE	8
 
+/// default overmaps range
 #define DEFAULT_OVERMAP_RANGE 0
+/// disable overmaps range
+#define NO_OVERMAP_RANGE -1

@@ -54,7 +54,7 @@ var/global/datum/repository/crew/crew_repository = new()
 					crewmemberData["area"] = sanitize(A.name)
 					crewmemberData["x"] = pos.x
 					crewmemberData["y"] = pos.y
-					crewmemberData["z"] = pos.z
+					crewmemberData["z"] = SSmapping.fluff_level_id(pos.z)
 
 				crewmembers[++crewmembers.len] = crewmemberData
 

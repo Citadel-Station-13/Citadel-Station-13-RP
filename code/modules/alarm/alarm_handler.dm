@@ -104,7 +104,7 @@
 /datum/alarm_handler/proc/visible_alarms(var/z)
 	if(!LAZYLEN(alarms))
 		return list()
-	var/list/map_levels = using_map_legacy().get_map_levels(z)
+	var/list/map_levels = SSmapping.get_connected_levels(z)
 	var/list/visible_alarms = new()
 	for(var/datum/alarm/A in alarms)
 		if(A.hidden || (z && !(A.origin?.z in map_levels)))
