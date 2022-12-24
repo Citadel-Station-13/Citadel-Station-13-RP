@@ -13,9 +13,8 @@ SUBSYSTEM_DEF(lighting)
 	init_order = INIT_ORDER_LIGHTING
 	subsystem_flags = SS_TICKER
 
-/datum/controller/subsystem/lighting/stat_entry(msg)
-	msg = "L:[length(GLOB.lighting_update_lights)]|C:[length(GLOB.lighting_update_corners)]|O:[length(GLOB.lighting_update_objects)]"
-	return ..()
+/datum/controller/subsystem/lighting/stat_entry()
+	return ..() + " L:[length(GLOB.lighting_update_lights)]|C:[length(GLOB.lighting_update_corners)]|O:[length(GLOB.lighting_update_objects)]"
 
 /datum/controller/subsystem/lighting/Initialize(timeofday)
 	if(!initialized)

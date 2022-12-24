@@ -198,17 +198,30 @@ SUBSYSTEM_DEF(statpanels)
 /datum/controller/subsystem/statpanels/proc/build_server_data()
 	if(cache_server_data)
 		return cache_server_data
-	#warn impl
+	. = list()
+	STATPANEL_DATA_ENTRY("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
+	//L += SSmapping.stat_map_name
+	STATPANEL_DATA_ENTRY("Round ID", "[GLOB.round_id || "ERROR"]")
+	// VIRGO START
+	STATPANEL_DATA_ENTRY("Station Time", stationtime2text())
+	STATPANEL_DATA_ENTRY("Station Date", stationdate2text())
+	STATPANEL_DATA_ENTRY("Round Duration", roundduration2text())
+	// VIRGO END
+	STATPANEL_DATA_ENTRY("Time dilation", SStime_track.stat_time_text)
+	//L += SSshuttle.emergency_shuttle_stat_text
+#warn impl
 
 /datum/controller/subsystem/statpanels/proc/fetch_ticket_data()
 	if(cache_ticket_data)
 		return cache_ticket_data
+	. = list()
 	#warn impl
 
 /datum/controller/subsystem/statpanels/proc/fetch_sdql2_data()
 	if(cache_sdql2_data)
 		return cache_sdql2_data
-	#warn impl
+	. = list()
+ 	#warn impl
 
 /atom/proc/remove_from_cache()
 	SSstatpanels.cached_images -= REF(src)

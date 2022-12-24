@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(overlays)
 	return ..()
 
 /datum/controller/subsystem/overlays/stat_entry()
-	..("Ov:[length(queue)]")
+	return ..() + " Ov:[length(queue)]"
 
 /datum/controller/subsystem/overlays/Shutdown()
 	text2file(render_stats(stats), "[GLOB.log_directory]/overlay.log")

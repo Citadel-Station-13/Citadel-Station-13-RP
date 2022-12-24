@@ -238,8 +238,8 @@ SUBSYSTEM_DEF(air)
 		if(MC_TICK_CHECK)
 			return
 
-/datum/controller/subsystem/air/stat_entry(msg_prefix)
-	var/list/msg = list(msg_prefix)
+/datum/controller/subsystem/air/stat_entry()
+	var/list/msg = list()
 	msg += "S:[current_step ? part_names[current_step] : ""] "
 	msg += "C:{"
 	msg += "T [round(cost_turfs, 1)] | "
@@ -257,7 +257,7 @@ SUBSYSTEM_DEF(air)
 	msg += "H [active_hotspots.len] | "
 	msg += "Z [zones_to_update.len] "
 	msg += "}"
-	..(msg.Join())
+	return ..() + " [msg.Join()]"
 
 // ZAS might displace objects as the map loads if an air tick is processed mid-load.
 /datum/controller/subsystem/air/StartLoadingMap(var/quiet = TRUE)

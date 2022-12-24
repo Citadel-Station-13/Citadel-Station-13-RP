@@ -720,20 +720,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 
 	//This is only called from client/Stat(), let's assume client exists.
 
-	if(statpanel("Status"))
-		//var/list/L = list()
-		stat("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
-		//L += SSmapping.stat_map_name
-		stat("Round ID", "[GLOB.round_id || "ERROR"]")
-		// VIRGO START
-		stat("Station Time", stationtime2text())
-		stat("Station Date", stationdate2text())
-		stat("Round Duration", roundduration2text())
-		// VIRGO END
-		stat("Time dilation", SStime_track.stat_time_text)
-		//L += SSshuttle.emergency_shuttle_stat_text
-		//stat(null, "[L.Join("\n\n")]")
-
 	if(listed_turf && client)
 		if(!TurfAdjacent(listed_turf))
 			listed_turf = null
@@ -757,29 +743,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 				statpanel(listed_turf.name, null, A)
 
 	if(client.holder)
-		if(statpanel("MC"))
-			var/turf/T = get_turf(client.eye)
-			stat("Location:", COORD(T))
-			stat("CPU:", "[world.cpu]")
-			stat("Instances:", "[num2text(world.contents.len, 10)]")
-			stat("World Time:", "[world.time]")
-			stat("Real time of day:", REALTIMEOFDAY)
-			GLOB.stat_entry()
-			config.stat_entry()
-			stat(null)
-			if(Master)
-				Master.stat_entry()
-			else
-				stat("Master Controller:", "ERROR")
-			if(Failsafe)
-				Failsafe.stat_entry()
-			else
-				stat("Failsafe Controller:", "ERROR")
-			if(Master)
-				stat(null)
-				for(var/datum/controller/subsystem/SS in Master.subsystems)
-					SS.stat_entry()
-			//GLOB.GLOB.cameranet.stat_entry()
 		if(statpanel("Tickets"))
 			GLOB.ahelp_tickets.stat_entry()
 		if(length(GLOB.sdql2_queries))

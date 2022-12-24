@@ -94,7 +94,7 @@ SUBSYSTEM_DEF(machines)
 	msg += "PN:[global.powernets.len]|"
 	msg += "PO:[global.processing_power_items.len]|"
 	msg += "MC/MS:[round((cost ? global.processing_machines.len/cost_machinery : 0),0.1)]"
-	..(jointext(msg, null))
+	return ..() + " [jointext(msg, null)]"
 
 /datum/controller/subsystem/machines/proc/process_pipenets(resumed = 0)
 	if (!resumed)
