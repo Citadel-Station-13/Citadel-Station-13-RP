@@ -218,6 +218,7 @@ SUBSYSTEM_DEF(statpanels)
 	if(cache_ticket_data)
 		return cache_ticket_data
 	. = list()
+
 	#warn impl
 
 /datum/controller/subsystem/statpanels/proc/fetch_sdql2_data()

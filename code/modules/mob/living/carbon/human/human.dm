@@ -110,7 +110,7 @@
 				STATPANEL_DATA_ENTRY("Genetic Damage Time", mind.changeling.geneticdamage)
 				STATPANEL_DATA_ENTRY("Re-Adaptations", "[mind.changeling.readapts]/[mind.changeling.max_readapts]")
 	if(species)
-		. += species.statpanel_entry(src, C)
+		. += species.statpanel_entry(src)
 
 /mob/living/carbon/human/legacy_ex_act(severity)
 	if(!blinded)
