@@ -209,7 +209,10 @@ SUBSYSTEM_DEF(statpanels)
 	// VIRGO END
 	STATPANEL_DATA_ENTRY("Time dilation", SStime_track.stat_time_text)
 	//L += SSshuttle.emergency_shuttle_stat_text
-#warn impl
+	var/shuttle_eta = SSemergencyshuttle.get_status_panel_eta()
+	if(shuttle_eta)
+		STATPANEL_DATA_ENTRY("Shuttle", shuttle_eta)
+	cache_server_data = url_encode(json_encode(.))
 
 /datum/controller/subsystem/statpanels/proc/fetch_ticket_data()
 	if(cache_ticket_data)

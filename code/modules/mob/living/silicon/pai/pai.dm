@@ -128,19 +128,17 @@
 	if(client.prefs)
 		ooc_notes = client.prefs.metadata
 
-
 // this function shows the information about being silenced as a pAI in the Status panel
 /mob/living/silicon/pai/proc/show_silenced()
+	. = list()
 	if(src.silence_time)
 		var/timeleft = round((silence_time - world.timeofday)/10 ,1)
-		stat(null, "Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
+		STATPANEL_DATA_LINE("Communications system reboot in -[(timeleft / 60) % 60]:[add_zero(num2text(timeleft % 60), 2)]")
 
-
-/mob/living/silicon/pai/Stat()
-	..()
-	statpanel("Status")
-	if (src.client.statpanel == "Status")
-		show_silenced()
+/mob/living/silicon/pai/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		. += show_silenced()
 
 /mob/living/silicon/pai/check_eye(var/mob/user as mob)
 	if (!src.current)

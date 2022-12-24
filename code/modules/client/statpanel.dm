@@ -43,7 +43,7 @@
  * - status: use to set if the panel should exist
  */
 /client/proc/statpanel_tab(tab, status)
-	. = (statpanel_tab == tab) && (tab in statpanel_tabs)
+	. = (statpanel_tab == tab)
 	if(isnull(status))
 		return
 	if(tab in statpanel_tabs)
