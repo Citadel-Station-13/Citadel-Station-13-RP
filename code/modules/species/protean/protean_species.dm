@@ -262,8 +262,9 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 /datum/species/protean/get_additional_examine_text(var/mob/living/carbon/human/H)
 	return ..() //Hmm, what could be done here?
 
-/datum/species/protean/Stat(var/mob/living/carbon/human/H)
-	..()
+/datum/species/protean/statpanel_entry(mob/living/carbon/human/H)
+	. = ..()
+	#warn oh fucking hell
 	if(statpanel(SPECIES_PROTEAN))
 		var/obj/item/organ/internal/nano/refactory/refactory = H.nano_get_refactory()
 		if(refactory && !(refactory.status & ORGAN_DEAD))

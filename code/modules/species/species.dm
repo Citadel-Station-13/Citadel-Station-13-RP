@@ -814,8 +814,8 @@ GLOBAL_LIST_INIT(species_oxygen_tank_by_gas, list(
 	return FALSE
 
 // Allow species to display interesting information in the human stat panels
-/datum/species/proc/Stat(var/mob/living/carbon/human/H)
-	return
+/datum/species/proc/statpanel_status(mob/living/carbon/human/H)
+	return list()
 
 /datum/species/proc/update_attack_types()
 	unarmed_attacks = list()
