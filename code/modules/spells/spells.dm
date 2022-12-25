@@ -28,11 +28,11 @@
 			continue
 		switch(S.charge_type)
 			if(Sp_RECHARGE)
-				STATPANEL_DATA_CLICK(S.panel,"[S.charge_counter/10.0]/[S.charge_max/10]", "[S.connected_button]", "\ref[S.connected_button]")
+				STATPANEL_DATA_CLICK("[S.charge_counter/10.0]/[S.charge_max/10]", "[S.connected_button]", "\ref[S.connected_button]")
 			if(Sp_CHARGES)
-				STATPANEL_DATA_CLICK(S.panel,"[S.charge_counter]/[S.charge_max]", "[S.connected_button]", "\ref[S.connected_button]")
+				STATPANEL_DATA_CLICK("[S.charge_counter]/[S.charge_max]", "[S.connected_button]", "\ref[S.connected_button]")
 			if(Sp_HOLDVAR)
-				STATPANEL_DATA_CLICK(S.panel,"[S.holder_var_type] [S.holder_var_amount]", "[S.connected_button]", "\ref[S.connected_button]"n)
+				STATPANEL_DATA_CLICK("[S.holder_var_type] [S.holder_var_amount]", "[S.connected_button]", "\ref[S.connected_button]"n)
 	// process tabs
 	var/list/removing = C.statpanel_spell_last - collected
 	var/list/adding = collected - C.statpanel_spell_last

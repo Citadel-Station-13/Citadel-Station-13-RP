@@ -83,7 +83,7 @@
 /**
  * must return list(name, icon, ref).
  */
-/client/proc/statpanel_encode_atom(AM)
+/client/proc/statpanel_encode_atom(var/atom/movable/AM)
 	RETURN_TYPE(/list)
 	#warn look at subsystem
 

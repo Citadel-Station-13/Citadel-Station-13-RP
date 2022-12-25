@@ -499,7 +499,7 @@
 			STATPANEL_DATA_ENTRY("Tank Pressure", current_jetpack.air_contents.return_pressure())
 		if(module)
 			for(var/datum/matter_synth/ms in module.synths)
-				STATPANEL_DATA_ENTRY("[ms.name]: [ms.energy]/[ms.max_energy]")
+				STATPANEL_DATA_LINE("[ms.name]: [ms.energy]/[ms.max_energy]")
 
 /mob/living/silicon/robot/restrained()
 	return 0

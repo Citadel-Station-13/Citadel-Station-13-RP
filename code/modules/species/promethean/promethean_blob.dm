@@ -62,10 +62,10 @@
 		qdel(stored_blob)
 	return ..()
 
-/mob/living/simple_mob/slime/promethean/Stat()
-	..()
+/mob/living/simple_mob/slime/promethean/statpanel_data(client/C)
+	. = ..()
 	if(humanform)
-		humanform.species.Stat(humanform)
+		. += humanform.species.statpanel_status(C, humanform)
 
 /mob/living/simple_mob/slime/promethean/handle_special() // Should disable default slime healing, we'll use nutrition based heals instead.
 	if(rad_glow)

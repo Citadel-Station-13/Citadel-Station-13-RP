@@ -88,11 +88,10 @@
 /mob/living/simple_mob/protean_blob/init_vore()
 	return //Don't make a random belly, don't waste your time
 
-/mob/living/simple_mob/protean_blob/Stat()
-	..()
+/mob/living/simple_mob/protean_blob/statpanel_data(client/C)
+	. = ..()
 	if(humanform)
-		humanform.species.Stat(humanform)
-
+		. += humanform.species.statpanel_status(C, humanform)
 
 /mob/living/simple_mob/protean_blob/updatehealth()
 	if(humanform)

@@ -240,7 +240,7 @@
 
 /mob/proc/legacy_rig_stat(obj/item/rig/R, client/C)
 	var/needed = R.is_activated() && length(R.installed_modules)
-	. = = list()
+	. = list()
 	if(!C.statpanel_tab("Hardsuit Modules", needed))
 		return
 	if(R?.is_activated() && R.installed_modules.len && statpanel("Hardsuit Modules"))
