@@ -111,6 +111,7 @@ DEFINE_BITFIELD(runlevels, list(
 #define INIT_ORDER_TICKER         -30
 #define INIT_ORDER_LIGHTING       -40
 #define INIT_ORDER_ZMIMIC         -45
+#define INIT_ORDER_AMBIENT_LIGHT  -46
 #define INIT_ORDER_XENOARCH       -50
 #define INIT_ORDER_CIRCUIT        -60
 #define INIT_ORDER_AI             -70

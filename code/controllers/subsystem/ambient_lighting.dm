@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(ambient_lighting)
 	name = "Ambient Lighting"
 	wait = 1
 	priority = FIRE_PRIORITY_LIGHTING
-	init_order = INIT_ORDER_LIGHTING
+	init_order = INIT_ORDER_AMBIENT_LIGHT
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT // Copied from icon update subsystem.
 	// subsystem_flags = SS_NO_INIT
 
@@ -10,11 +10,6 @@ SUBSYSTEM_DEF(ambient_lighting)
 
 /datum/controller/subsystem/ambient_lighting/stat_entry()
 	..("Queue:[length(queued)]")
-
-/datum/controller/subsystem/ambient_lighting/Initialize(timeofday)
-	// Fire once to pre-bake ambient lighting before the round begins.
-	fire()
-	return ..()
 
 /datum/controller/subsystem/ambient_lighting/fire(resumed = FALSE, no_mc_tick = FALSE)
 	var/list/curr = queued

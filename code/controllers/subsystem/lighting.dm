@@ -47,7 +47,7 @@ SUBSYSTEM_DEF(lighting)
 		"\n<b>Queues:</b>",
 		"\n\tLights: [light_queue.len - (lq_idex - 1)]",
 		"\n\tCorners: [corner_queue.len - (cq_idex - 1)]",
-		"\n\tOverlays: [overlay_queue.len - (oq_idex - 1)]}",
+		"\n\tOverlays: [overlay_queue.len - (oq_idex - 1)]",
 		"\n<b>Processed:</b>",
 		"\n\tLights: [processed_lights]",
 		"\n\tCorners: [processed_corners]",

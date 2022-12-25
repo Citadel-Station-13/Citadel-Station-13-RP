@@ -138,6 +138,8 @@
 /area/tether/surfacebase/outside
 	name = "Outside - Surface"
 	sound_env = MOUNTAINS
+	is_outside = OUTSIDE_YES
+
 /area/tether/surfacebase/outside/outside1
 	icon_state = "outside1"
 /area/tether/surfacebase/outside/outside2
@@ -310,6 +312,7 @@
 // Solars map areas
 /area/tether/outpost/solars_outside
 	name = "\improper Solar Farm"
+	is_outside = OUTSIDE_YES
 /area/tether/outpost/solars_shed
 	name = "\improper Solar Farm Shed"
 

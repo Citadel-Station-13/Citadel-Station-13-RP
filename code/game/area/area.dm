@@ -204,9 +204,11 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-// Changes the area of T to A. Do not do this manually.
-// Area is expected to be a non-null instance.
-/proc/ChangeArea(var/turf/T, var/area/A)
+/**
+ * Changes the area of T to A. Do not do this manually.
+ * Area is expected to be a non-null instance.
+ */
+/proc/ChangeArea(turf/T, area/A)
 	if(!istype(A))
 		CRASH("Area change attempt failed: invalid area supplied.")
 	var/area/old_area = get_area(T)
@@ -224,10 +226,15 @@
 				T.lighting_clear_overlay()
 		for(var/atom/movable/AM in T)
 			old_area.Exited(AM, A)
+
 	for(var/atom/movable/AM in T)
 		A.Entered(AM, old_area)
+
 	for(var/obj/machinery/M in T)
 		M.power_change()
+
+	// if(T.is_outside == OUTSIDE_AREA && T.is_outside() != old_outside)
+	// 	T.update_weather()
 
 // compatibility wrapper, remove posthaste by making sure nothing checks area has_gravity.
 /area/has_gravity()

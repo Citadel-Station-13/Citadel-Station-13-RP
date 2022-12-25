@@ -474,6 +474,34 @@
 */
 	return SSmapping.level_trait(z, ZTRAIT_GRAVITY)
 
+/* // TODO: Implement this. @Zandario
+/turf/proc/update_weather(obj/abstract/weather_system/new_weather, force_update_below = FALSE)
+
+	if(isnull(new_weather))
+		new_weather = global.weather_by_z["[z]"]
+
+	// We have a weather system and we are exposed to it; update our vis contents.
+	if(istype(new_weather) && is_outside())
+		if(weather != new_weather)
+			if(weather)
+				remove_vis_contents(src, weather.vis_contents_additions)
+			weather = new_weather
+			add_vis_contents(src, weather.vis_contents_additions)
+			. = TRUE
+
+	// We are indoors or there is no local weather system, clear our vis contents.
+	else if(weather)
+		remove_vis_contents(src, weather.vis_contents_additions)
+		weather = null
+		. = TRUE
+
+	// Propagate our weather downwards if we permit it.
+	if(force_update_below || (is_open() && .))
+		var/turf/below = GetBelow(src)
+		if(below)
+			below.update_weather(new_weather)
+*/
+
 /turf/proc/is_outside()
 
 	// Can't rain inside or through solid walls.

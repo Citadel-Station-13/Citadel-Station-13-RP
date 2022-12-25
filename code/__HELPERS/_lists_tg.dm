@@ -372,8 +372,6 @@ proc/dd_sortedObjectList(list/incoming)
 	return "[sanitize_old(last_name)]"
 
 
-//
-//
 /**
  * Creates every subtype of prototype (excluding prototype) and adds it to list L.
  * If no list/L is provided, one is created.
