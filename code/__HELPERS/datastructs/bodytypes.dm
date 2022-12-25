@@ -67,7 +67,7 @@
 /**
  * checks if we contain an element
  */
-/datum/bodytypes/proc/operator[](elem)
+/datum/bodytypes/proc/contains(elem)
 	return values? (inverted? !(elem in values) : (elem in values)) : (inverted? TRUE : FALSE)
 
 /datum/bodytypes/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
