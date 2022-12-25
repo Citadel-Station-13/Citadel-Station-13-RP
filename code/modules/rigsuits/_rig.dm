@@ -622,14 +622,6 @@
 	cell.use(cost*10)
 	return 1
 
-// this function displays the current cell charge in the stat panel
-/obj/item/rig/proc/show_cell_power()
-	if(cell)
-		stat(null, text("Charge Left: [round(cell.percent())]%"))
-		stat(null, text("Cell Rating: [round(cell.maxcharge)]")) // Round just in case we somehow get crazy values
-	else
-		stat(null, text("No Cell Inserted!"))
-
 /obj/item/rig/nano_ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1, var/nano_state = inventory_state)
 	if(!user)
 		return
@@ -1158,13 +1150,6 @@
 //Shows cell charge on screen, ideally.
 
 var/atom/movable/screen/cells = null
-
-// update the status screen display
-/obj/item/rig/Stat()
-	..()
-	if (statpanel("Status"))
-		show_cell_power()
-
 
 #undef ONLY_DEPLOY
 #undef ONLY_RETRACT

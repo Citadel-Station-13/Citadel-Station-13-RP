@@ -59,23 +59,23 @@
 	description_holders["icon"] = "\icon[A]" //this is icon not icon2html
 	description_holders["desc"] = A.desc
 
-/mob/Stat()
+/mob/statpanel_data(client/C)
 	. = ..()
-	if(client && statpanel("Examine"))
-		var/description_holders = client.description_holders
+	if(C.statpanel_tab("Examine", TRUE))
+		var/description_holders = C.description_holders
 		if(!description_holders)
 			return	// piece of shit don't update when it's not there
-		stat(null,"[description_holders["icon"]]    <font size='5'>[description_holders["name"]]</font>") //The name, written in big letters.
-		stat(null,"[description_holders["desc"]]") //the default examine text.
+		STATPANEL_DATA_LINE("[description_holders["icon"]]    <font size='5'>[description_holders["name"]]</font>") //The name, written in big letters.
+		STATPANEL_DATA_LINE("[description_holders["desc"]]") //the default examine text.
 		if(description_holders["info"])
-			stat(null,"<font color='#084B8A'><b>[description_holders["info"]]</b></font>") //Blue, informative text.
+			STATPANEL_DATA_LINE("<font color='#084B8A'><b>[description_holders["info"]]</b></font>") //Blue, informative text.
 		if(description_holders["interactions"])
 			for(var/line in description_holders["interactions"])
-				stat(null, "<font color='#084B8A'><b>[line]</b></font>")
+				STATPANEL_DATA_LINE("<font color='#084B8A'><b>[line]</b></font>")
 		if(description_holders["fluff"])
-			stat(null,"<font color='#298A08'><b>[description_holders["fluff"]]</b></font>") //Yellow, fluff-related text.
+			STATPANEL_DATA_LINE("<font color='#298A08'><b>[description_holders["fluff"]]</b></font>") //Yellow, fluff-related text.
 		if(description_holders["antag"])
-			stat(null,"<font color='#8A0808'><b>[description_holders["antag"]]</b></font>") //Red, malicious antag-related text
+			STATPANEL_DATA_LINE("<font color='#8A0808'><b>[description_holders["antag"]]</b></font>") //Red, malicious antag-related text
 
 //override examinate verb to update description holders when things are examined
 /mob/examinate(atom/A as mob|obj|turf in view())

@@ -10,6 +10,7 @@
 
 /mob/Stat()
 	. = ..()
+	#warn a
 	if(. && spell_list && spell_list.len)
 		for(var/spell/S in spell_list)
 			if((!S.connected_button) || !statpanel(S.panel))

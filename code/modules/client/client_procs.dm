@@ -333,7 +333,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	//! Initialize UI
 	// initialize statbrowser
-	statbrowser_init()
+	statpanel_init()
 	// Initialize tgui panel
 	tgui_panel.initialize()
 
