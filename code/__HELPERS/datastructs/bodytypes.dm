@@ -7,6 +7,8 @@
  * compare will check for this.
  */
 /datum/bodytypes
+	/// for VV
+	var/name
 	/// entries - null for inverted = none, null for non-inverted = all
 	var/list/values
 	/// inverted?
@@ -68,7 +70,7 @@
  * checks if we contain an element
  */
 /datum/bodytypes/proc/contains(elem)
-	return values? (inverted? !(elem in values) : (elem in values)) : (inverted? TRUE : FALSE)
+	return values? (inverted? !(elem in values) : (elem in values)) : (inverted? FALSE : TRUE)
 
 /datum/bodytypes/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
 	if(raw_edit)
@@ -96,15 +98,18 @@ GLOBAL_LIST_EMPTY(struct_bodytypes)
 	var/datum/bodytypes/struct
 	if(encoded == BODYTYPES_ALL)
 		struct = new(null, FALSE)
+		struct.name = "All"
 		GLOB.struct_bodytypes[encoded] = struct
 		return struct
 	if(encoded == BODYTYPES_NONE)
 		struct = new(null, TRUE)
+		struct.name = "None"
 		GLOB.struct_bodytypes[encoded] = struct
 		return struct
 	var/inverted = (BODYTYPE_EXCEPT in original)
 	if(inverted)
 		original = original - BODYTYPE_EXCEPT
 	struct = new(original, inverted)
+	struct.name = "[inverted? "All but " : ""][jointext(original, ", ")]"
 	GLOB.struct_bodytypes[encoded] = struct
 	return struct
