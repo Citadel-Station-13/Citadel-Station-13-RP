@@ -2391,6 +2391,8 @@
 #include "code\modules\ghostroles\roles\hermit.dm"
 #include "code\modules\ghosttrap\trap.dm"
 #include "code\modules\holidays\_holiday.dm"
+#include "code\modules\holidays\christmas.dm"
+#include "code\modules\holidays\christmas_loadout.dm"
 #include "code\modules\holidays\halloween.dm"
 #include "code\modules\holidays\halloween_loadout.dm"
 #include "code\modules\holidays\halloween_loadout_masquarade.dm"
