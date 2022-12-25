@@ -1,4 +1,11 @@
 //! bodytypes - they are lists for var storage, but should only be passed one at a time to rendering!
+//* these are going to guzzle init times oops well unfortunately it's either that or:
+//* - string concat, but since we need lookups to not include the "," we'd have to have three defines per bodytype
+//*    instead of two
+//* - datum paths and cached datums, which is nice but requires /datum/bodytypes/x for every
+//*    new set of bodytypes which is not something we'd like to do
+//* for now it's fine because majority of items do BODYTYPES_ALL, BODYTYPES_NONE, which is costless
+//* but later this might be a problem
 
 //? special - do not use directly in item defs
 /// should be the only element in the list if used; represents all-except-these
@@ -81,6 +88,10 @@
 #define BODYTYPE_DIGITIGRADE		(1<<23)
 */
 
+//* why do these exist?
+//* because bodytypes can be added/deleted all you want but as long as
+//* these stay intact, .dmis don't need editing
+//* thus we will just keep these around and use a list lookup later to lookup bodytype --> these.
 //! bodytypes as strings - these must never change as .dmis store with these!
 #define BODYTYPE_STRING_DEFAULT "default"
 #define BODYTYPE_STRING_TESHARI "teshari"
