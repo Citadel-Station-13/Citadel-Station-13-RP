@@ -298,6 +298,11 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 
 #undef UPDATE_APPARENT
 
+//? This tonemap is nice, but rounding kills a lot of the details.
+// #define ACES_RRT_ODT_TONEMAP(X) clamp((X * (X + 0.0245786) - 0.000090537) / (X * (0.983729 * X + 0.4329510) + 0.238081), 0, 1)
+
+#define ACES_TONEMAP(X) clamp((X * (2.51 * X + 0.03)) / (X * (2.43 * X + 0.59) + 0.14), 0, 1)
+
 /datum/lighting_corner/proc/update_overlays(now = FALSE)
 	var/lr = apparent_r
 	var/lg = apparent_g
@@ -312,10 +317,11 @@ var/global/list/REVERSE_LIGHTING_CORNER_DIAGONAL = list(0, 0, 0, 0, 3, 4, 0, 0, 
 	else if (mx < LIGHTING_SOFT_THRESHOLD)
 		. = 0 // 0 means soft lighting.
 
+
 	if (.)
-		cache_r = round(lr * ., LIGHTING_ROUND_VALUE) || LIGHTING_SOFT_THRESHOLD
-		cache_g = round(lg * ., LIGHTING_ROUND_VALUE) || LIGHTING_SOFT_THRESHOLD
-		cache_b = round(lb * ., LIGHTING_ROUND_VALUE) || LIGHTING_SOFT_THRESHOLD
+		cache_r = round(ACES_TONEMAP(lr), LIGHTING_ROUND_VALUE) || LIGHTING_SOFT_THRESHOLD
+		cache_g = round(ACES_TONEMAP(lg), LIGHTING_ROUND_VALUE) || LIGHTING_SOFT_THRESHOLD
+		cache_b = round(ACES_TONEMAP(lb), LIGHTING_ROUND_VALUE) || LIGHTING_SOFT_THRESHOLD
 	else
 		cache_r = cache_g = cache_b = LIGHTING_SOFT_THRESHOLD
 
