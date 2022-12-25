@@ -6,13 +6,13 @@
  * total *must* be provided/known for compare to make it fast.
  * compare will check for this.
  */
-/datum/invertible_list
+/datum/bodytypes
 	/// entries - null for inverted = none, null for non-inverted = all
 	var/list/values
 	/// inverted?
 	var/inverted
 
-/datum/invertible_list/New(list/values, inverted = FALSE)
+/datum/bodytypes/New(list/values, inverted = FALSE)
 	src.values = values
 	src.inverted = inverted
 
@@ -23,7 +23,7 @@
  * * other - other list
  * * total - total values possible; this MUST be known for anything involving inversions, so we can do quick comparisons.
  */
-/datum/invertible_list/proc/compare(datum/invertible_list/other, total)
+/datum/bodytypes/proc/compare(datum/bodytypes/other, total)
 	if(inverted)
 		// ensure total is set as inversions are present
 		if(!total)
@@ -63,22 +63,21 @@
 				// either of us are all
 				return TRUE
 			return !!length(values - other.values) // l1 has something in l2
-	CRASH("unexpected end of proc")
 
 /**
  * checks if we contain an element
  */
-/datum/invertible_list/proc/contains(elem)
+/datum/bodytypes/proc/operator[](elem)
 	return values? (inverted? !(elem in values) : (elem in values)) : (inverted? TRUE : FALSE)
 
-/datum/invertible_list/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
+/datum/bodytypes/vv_edit_var(var_name, var_value, mass_edit, raw_edit)
 	if(raw_edit)
 		// allow
 		return ..()
 	switch(var_name)
 		if(NAMEOF(src, inverted), NAMEOF(src, values))
 			if(!mass_edit)
-				to_chat(usr, SPAN_DANGER("VV: /datum/invertible_list cannot have its contents edited. Create a new one with a proccall, please!"))
+				to_chat(usr, SPAN_DANGER("VV: /datum/bodytypes cannot have its contents edited. Create a new one with a proccall, please!"))
 			return FALSE
 	return ..()
 
@@ -94,7 +93,7 @@ GLOBAL_LIST_EMPTY(struct_bodytypes)
 	if(GLOB.struct_bodytypes[encoded])
 		return GLOB.struct_bodytypes[encoded]
 	// not found, create
-	var/datum/invertible_list/struct
+	var/datum/bodytypes/struct
 	if(encoded == BODYTYPES_ALL)
 		struct = new(null, FALSE)
 		GLOB.struct_bodytypes[encoded] = struct
@@ -103,7 +102,7 @@ GLOBAL_LIST_EMPTY(struct_bodytypes)
 		struct = new(null, TRUE)
 		GLOB.struct_bodytypes[encoded] = struct
 		return struct
-	var/inverted = BODYTYPE_EXCEPT in original
+	var/inverted = (BODYTYPE_EXCEPT in original)
 	if(inverted)
 		original = original - BODYTYPE_EXCEPT
 	struct = new(original, inverted)

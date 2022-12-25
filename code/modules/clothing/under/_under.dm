@@ -30,9 +30,9 @@
 	/// if true, we assume *all* bodytypes have rollsleeve states, and to use the new system.
 	var/worn_has_rollsleeve = UNIFORM_AUTODETECT_ROLL
 	/// these bodytypes have rolldown if not autodetecting
-	var/worn_rolldown_bodytypes = ALL
+	var/datum/bodytypes/worn_rolldown_bodytypes = BODYTYPES_ALL
 	/// these bodytypes have rollsleeve if not autodetecting
-	var/worn_rollsleeve_bodytypes = ALL
+	var/datum/bodytypes/worn_rollsleeve_bodytypes = BODYTYPES_ALL
 	/// rolldown status
 	var/worn_rolled_down = UNIFORM_ROLL_NULLED
 	/// rollsleeve status
@@ -72,8 +72,8 @@
 
 /obj/item/clothing/under/Initialize(mapload)
 	. = ..()
-	CACHE_BODYTYPES(worn_rolldown_bodytypes)
-	CACHE_BODYTYPES(worn_rollsleeve_bodytypes)
+	CONSTRUCT_BODYTYPES(worn_rolldown_bodytypes)
+	CONSTRUCT_BODYTYPES(worn_rollsleeve_bodytypes)
 	// for NOW, we need to autoset if null.
 	// todo: remove this lol
 	if(isnull(snowflake_worn_state))

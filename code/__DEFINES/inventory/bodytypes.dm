@@ -58,7 +58,7 @@
 #define BODYTYPES_TOTAL 19
 
 //? automatically typelist bodytypes if it's a list
-#define CACHE_BODYTYPES(LIST) LIST = fetch_bodytypes_struct(LIST)
+#define CONSTRUCT_BODYTYPES(LIST) LIST = fetch_bodytypes_struct(LIST)
 //? check bodytype lists matching
 #define COMPARE_BODYTYPES(L1, L2) L1.compare(L2)
 //? check bodytype list membership

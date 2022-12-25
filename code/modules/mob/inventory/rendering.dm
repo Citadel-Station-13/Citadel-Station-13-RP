@@ -202,11 +202,11 @@
 	 * for slot defaults, this means using the default icon state.
 	 * for new rendering, this means using the fallback state on the slot for a bodytype.
 	 */
-	var/worn_bodytypes_fallback = BODYTYPES_ALL
+	var/datum/bodytypes/worn_bodytypes_fallback = BODYTYPES_ALL
 	/// bodytypes that are implemented. Anything not in here is converted to default, if slot fallback state is unavailable.
-	var/worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
+	var/datum/bodytypes/worn_bodytypes = BODYTYPES(BODYTYPE_DEFAULT)
 	/// bodytypes that just skip rendering (i hate teshari)
-	var/worn_bodytypes_invisible = BODYTYPES_NONE
+	var/datum/bodytypes/worn_bodytypes_invisible = BODYTYPES_NONE
 	/// worn rendering flags
 	var/worn_render_flags = WORN_RENDER_INHAND_ALLOW_DEFAULT | WORN_RENDER_SLOT_ALLOW_DEFAULT
 	//? support for adminbus
@@ -219,9 +219,9 @@
 
 /obj/item/Initialize(mapload)
 	. = ..()
-	CACHE_BODYTYPES(worn_bodytypes)
-	CACHE_BODYTYPES(worn_bodytypes_invisible)
-	CACHE_BODYTYPES(worn_bodytypes_fallback)
+	CONSTRUCT_BODYTYPES(worn_bodytypes)
+	CONSTRUCT_BODYTYPES(worn_bodytypes_invisible)
+	CONSTRUCT_BODYTYPES(worn_bodytypes_fallback)
 
 /obj/item/proc/render_mob_appearance(mob/M, slot_id_or_hand_index, bodytype = BODYTYPE_DEFAULT)
 	// SHOULD_NOT_OVERRIDE(TRUE) // if you think you need to, rethink.
