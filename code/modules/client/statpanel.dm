@@ -30,6 +30,9 @@
 	statpanel_create()
 	statpanel_init()
 
+/client/proc/statpanel_reset()
+	#warn impl - re-init verbs and reset panels
+
 /client/proc/statpanel_token(token)
 	if(!token)
 		src << browse(null, "statbrowser:byond_dispose_token")
@@ -68,7 +71,7 @@
 		if(!got)
 			continue
 		data[++data.len] = got
-	src << browse("[url_encode(T.name)];[];[url_encode(REF(T))];[url_encode(json_encode(data))]", "statbrowser:byond_turf_set")
+	src << browse("[url_encode(T.name)];[url_encode(REF(T))];[icon2html(T, src, sourceonly = TRUE)];[url_encode(json_encode(data))]", "statbrowser:byond_turf_set")
 
 /client/proc/unlist_turf()
 	if(!statpanel_turf)
@@ -83,9 +86,23 @@
 /**
  * must return list(name, icon, ref).
  */
-/client/proc/statpanel_encode_atom(var/atom/movable/AM)
+/client/proc/statpanel_encode_atom(atom/movable/AM)
 	RETURN_TYPE(/list)
-	#warn look at subsystem
+	if(AM.mouse_opacity == MOUSE_OPACITY_TRANSPARENT)
+		return
+	if(AM.invisibility > mob.see_invisible)
+		return
+	// not gonna bother for now - this is to prevent alt clicking to see past override image
+	// if(AM in overrides)
+	// 	return
+	// meanwhile this is just a shit check in a proc because it's N^2, need proper turf obscure flags.
+	// if(AM.IsObscued())
+	// 	return
+	return list(
+		"[AM.name]",
+		REF(AM),
+		ismob(AM) ||(length(AM.overlays) > 2)? costly_icon2html(AM, src, sourceonly = TRUE) : icon2html(AM, src, sourceonly = TRUE)
+	)
 
 /client/proc/__stat_hook_turf_enter(datum/source, atom/movable/AM)
 	var/list/got = statpanel_encode_atom(AM)

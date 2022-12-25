@@ -146,6 +146,7 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 		/mob/living/carbon/human/proc/lick_wounds,
 		/mob/living/carbon/human/proc/rig_transform,
 		/mob/living/proc/usehardsuit) //prots get all the special verbs since they can't select traits.
+	species_statpanel = TRUE
 	var/global/list/abilities = list()
 
 	var/monochromatic = FALSE //IGNORE ME
@@ -264,22 +265,21 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 
 /datum/species/protean/statpanel_status(client/C, mob/living/carbon/human/H)
 	. = ..()
-	if(C.statpanel_tab("Protean"))
-		var/obj/item/organ/internal/nano/refactory/refactory = H.nano_get_refactory()
-		if(refactory && !(refactory.status & ORGAN_DEAD))
-			STATPANEL_DATA_LINE("- -- --- Refactory Metal Storage --- -- -")
-			var/max = refactory.max_storage
-			for(var/material in refactory.materials)
-				var/amount = refactory.get_stored_material(material)
-				STATPANEL_DATA_ENTRY("[capitalize(material)]", "[amount]/[max]")
-		else
-			STATPANEL_DATA_LINE("- -- --- REFACTORY ERROR! --- -- -")
+	var/obj/item/organ/internal/nano/refactory/refactory = H.nano_get_refactory()
+	if(refactory && !(refactory.status & ORGAN_DEAD))
+		STATPANEL_DATA_LINE("- -- --- Refactory Metal Storage --- -- -")
+		var/max = refactory.max_storage
+		for(var/material in refactory.materials)
+			var/amount = refactory.get_stored_material(material)
+			STATPANEL_DATA_ENTRY("[capitalize(material)]", "[amount]/[max]")
+	else
+		STATPANEL_DATA_LINE("- -- --- REFACTORY ERROR! --- -- -")
 
-		STATPANEL_DATA_LINE("- -- --- Abilities (Shift+LMB Examines) --- -- -")
-		for(var/ability in abilities)
-			var/obj/effect/protean_ability/A = ability
-			A.atom_button_text()
-			STATPANEL_DATA_CLICK("[A.ability_name]", "[A.name]", "\ref[A]")
+	STATPANEL_DATA_LINE("- -- --- Abilities (Shift+LMB Examines) --- -- -")
+	for(var/ability in abilities)
+		var/obj/effect/protean_ability/A = ability
+		A.atom_button_text()
+		STATPANEL_DATA_CLICK("[A.ability_name]", "[A.name]", "\ref[A]")
 
 // Various modifiers
 /datum/modifier/protean

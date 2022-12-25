@@ -451,6 +451,8 @@
 	var/wing_animation
 	var/icobase_wing
 	var/wikilink = null //link to wiki page for species
+	/// do we have a species statpanel?
+	var/species_statpanel = FALSE
 
 	//!Weaver abilities
 	var/is_weaver = FALSE

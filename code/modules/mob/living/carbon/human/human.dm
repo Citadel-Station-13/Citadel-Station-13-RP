@@ -109,8 +109,8 @@
 				STATPANEL_DATA_ENTRY("Chemical Storage", mind.changeling.chem_charges)
 				STATPANEL_DATA_ENTRY("Genetic Damage Time", mind.changeling.geneticdamage)
 				STATPANEL_DATA_ENTRY("Re-Adaptations", "[mind.changeling.readapts]/[mind.changeling.max_readapts]")
-	if(species)
-		. += species.statpanel_status(C, src)
+	if(C.statpanel_tab("Species", species?.species_statpanel))
+		. += species.statpanel_status(C, src, C.statpanel_tab("Species"))
 
 /mob/living/carbon/human/legacy_ex_act(severity)
 	if(!blinded)
