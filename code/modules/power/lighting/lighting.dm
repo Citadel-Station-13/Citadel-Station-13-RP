@@ -229,7 +229,7 @@ var/global/list/light_type_cache = list()
 /obj/machinery/light
 	name = "light fixture"
 	icon = 'icons/obj/lighting_vr.dmi'
-	var/base_state = "tube" // base description and icon_state
+	base_icon_state = "tube"
 	icon_state = "tube1"
 	desc = "A lighting fixture."
 	anchored = 1
@@ -238,35 +238,57 @@ var/global/list/light_type_cache = list()
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 2
 	active_power_usage = 10
-	power_channel = LIGHT //Lights are calc'd via area so they dont need to be in the machine list
+	power_channel = LIGHT // Lights are calc'd via area so they dont need to be in the machine list
 
-	var/on = 0					// 1 if on, 0 if off
+	light_power = 0.75
+	light_range = 4
+
+	/// 1 if on, 0 if off
+	var/on = 0
 	var/brightness_range
 	var/brightness_power
 	var/brightness_color
-	var/status = LIGHT_OK		// LIGHT_OK, _EMPTY, _BURNED or _BROKEN
+	/// LIGHT_OK, _EMPTY, _BURNED or _BROKEN
+	var/status = LIGHT_OK
 	var/flickering = 0
-	var/light_type = /obj/item/light/tube		// the type of light item
+	/// the type of light item
+	var/light_type = /obj/item/light/tube
 	var/construct_type = /obj/machinery/light_construct
-	var/switchcount = 0			// count of number of times switched on/off
-								// this is used to calc the probability the light burns out
+	/**
+	 * Count of number of times switched on/off
+	 * This is used to calc the probability the light burns out
+	 */
+	var/switchcount = 0
 
-	var/rigged = 0				// true if rigged to explode
-	var/needsound = FALSE		// Flag to prevent playing turn-on sound multiple times, and from playing at roundstart
-	var/shows_alerts = TRUE		// Flag for if this fixture should show alerts.  Make sure icon states exist!
-	var/current_alert = null	// Which alert are we showing right now?
 
-	var/auto_flicker = FALSE // If true, will constantly flicker, so long as someone is around to see it (otherwise its a waste of CPU).
+	/// TRUE if rigged to explode.
+	var/rigged = 0
+	/// Flag to prevent playing turn-on sound multiple times, and from playing at roundstart
+	var/needsound = FALSE
+	/// Flag for if this fixture should show alerts.  Make sure icon states exist!
+	var/shows_alerts = TRUE
+	/// Which alert are we showing right now?
+	var/current_alert = null
+
+	/// If TRUE, will constantly flicker, so long as someone is around to see it (otherwise its a waste of CPU).
+	var/auto_flicker = FALSE
 
 	var/obj/item/cell/emergency_light/cell
-	var/start_with_cell = TRUE	// if true, this fixture generates a very weak cell at roundstart
+	/// If TRUE, this fixture generates a very weak cell at roundstart.
+	var/start_with_cell = TRUE
 
-	var/emergency_mode = FALSE	// if true, the light is in emergency mode
-	var/no_emergency = FALSE	// if true, this light cannot ever have an emergency mode
-	var/bulb_emergency_brightness_mul = 0.25	// multiplier for this light's base brightness in emergency power mode
-	var/bulb_emergency_colour = "#FF3232"	// determines the colour of the light while it's in emergency mode
-	var/bulb_emergency_pow_mul = 0.75	// the multiplier for determining the light's power in emergency mode
-	var/bulb_emergency_pow_min = 0.5	// the minimum value for the light's power in emergency mode
+	/// If TRUE, the light is in emergency mode.
+	var/emergency_mode = FALSE
+	/// If TRUE, this light cannot ever have an emergency mode.
+	var/no_emergency = FALSE
+	/// Multiplier for this light's base brightness in emergency power mode.
+	var/bulb_emergency_brightness_mul = 0.25
+	/// Determines the colour of the light while it's in emergency mode.
+	var/bulb_emergency_colour = "#FF3232"
+	/// The multiplier for determining the light's power in emergency mode.
+	var/bulb_emergency_pow_mul = 0.75
+	/// The minimum value for the light's power in emergency mode.
+	var/bulb_emergency_pow_min = 0.5
 
 	var/nightshift_enabled = FALSE
 	var/nightshift_allowed = TRUE
@@ -284,7 +306,7 @@ var/global/list/light_type_cache = list()
 
 /obj/machinery/light/small
 	icon_state = "bulb1"
-	base_state = "bulb"
+	base_icon_state = "bulb"
 	desc = "A small lighting fixture."
 	light_type = /obj/item/light/bulb
 	construct_type = /obj/machinery/light_construct/small
@@ -303,7 +325,7 @@ var/global/list/light_type_cache = list()
 	name = "fairy lights"
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "fairy1"
-	base_state = "fairy"
+	base_icon_state = "fairy"
 	desc = "Soft white lights that flicker and dance to and fro."
 	light_type = /obj/item/light/bulb/fairy
 	construct_type = /obj/machinery/light_construct/fairy
@@ -312,7 +334,7 @@ var/global/list/light_type_cache = list()
 /obj/machinery/light/flamp
 	icon = 'icons/obj/lighting.dmi'
 	icon_state = "flamp1"
-	base_state = "flamp"
+	base_icon_state = "flamp"
 	plane = OBJ_PLANE
 	layer = OBJ_LAYER
 	desc = "A floor lamp."
@@ -397,38 +419,38 @@ var/global/list/light_type_cache = list()
 	switch(status) // set icon_states
 		if(LIGHT_OK)
 			if(shows_alerts && current_alert && on)
-				icon_state = "[base_state]-alert-[current_alert]"
+				icon_state = "[base_icon_state]-alert-[current_alert]"
 			else
-				icon_state = "[base_state][on]"
+				icon_state = "[base_icon_state][on]"
 		if(LIGHT_EMPTY)
-			icon_state = "[base_state]-empty"
+			icon_state = "[base_icon_state]-empty"
 			on = 0
 		if(LIGHT_BURNED)
-			icon_state = "[base_state]-burned"
+			icon_state = "[base_icon_state]-burned"
 			on = 0
 		if(LIGHT_BROKEN)
-			icon_state = "[base_state]-broken"
+			icon_state = "[base_icon_state]-broken"
 			on = 0
 	return
 
 /obj/machinery/light/flamp/update_icon()
 	if(lamp_shade)
-		base_state = "flampshade"
+		base_icon_state = "flampshade"
 		switch(status)		// set icon_states
 			if(LIGHT_OK)
-				icon_state = "[base_state][on]"
+				icon_state = "[base_icon_state][on]"
 			if(LIGHT_EMPTY)
 				on = 0
-				icon_state = "[base_state][on]"
+				icon_state = "[base_icon_state][on]"
 			if(LIGHT_BURNED)
 				on = 0
-				icon_state = "[base_state][on]"
+				icon_state = "[base_icon_state][on]"
 			if(LIGHT_BROKEN)
 				on = 0
-				icon_state = "[base_state][on]"
+				icon_state = "[base_icon_state][on]"
 		return
 	else
-		base_state = "flamp"
+		base_icon_state = "flamp"
 		..()
 
 /obj/machinery/light/proc/set_alert_atmos()
@@ -909,269 +931,6 @@ var/global/list/light_type_cache = list()
 		explosion(T, 0, 0, 2, 2)
 		sleep(1)
 		qdel(src)
-
-// the light item
-// can be tube or bulb subtypes
-// will fit into empty /obj/machinery/light of the corresponding type
-
-/obj/item/light
-	icon = 'icons/obj/lighting.dmi'
-	force = 2
-	throw_force = 5
-	w_class = ITEMSIZE_TINY
-	matter = list(MAT_STEEL = 60)
-	drop_sound = 'sound/items/drop/glass.ogg'
-	pickup_sound = 'sound/items/pickup/glass.ogg'
-
-	/// LIGHT_OK, LIGHT_BURNED or LIGHT_BROKEN
-	var/status = 0
-	var/base_state
-	/// number of times switched
-	var/switchcount = 0
-	/// true if rigged to explode
-	var/rigged = 0
-	var/broken_chance = 0
-
-	///how much light it gives off
-	var/brightness_range = 2
-	var/brightness_power = 1
-	var/brightness_color = LIGHT_COLOR_HALOGEN
-
-	var/nightshift_range = 8
-	var/nightshift_power = 0.7
-	var/nightshift_color = LIGHT_COLOR_NIGHTSHIFT
-
-/obj/item/light/tube
-	name = "light tube"
-	desc = "A replacement light tube."
-	icon_state = "ltube"
-	base_state = "ltube"
-	item_state = "c_tube"
-	matter = list(MAT_GLASS = 100)
-	brightness_range = 8	// luminosity when on, also used in power calculation	brightness_power = 1
-	brightness_power = 0.8
-	brightness_color = LIGHT_COLOR_HALOGEN
-
-	nightshift_range = 7
-	nightshift_power = 0.5
-
-/obj/item/light/tube/large
-	w_class = ITEMSIZE_SMALL
-	name = "large light tube"
-	brightness_power = 4
-	brightness_range = 12
-
-//Colored Light Tubes
-
-//Standard Rainbow
-/obj/item/light/tube/red
-	color = LIGHT_COLOR_RED
-	brightness_color = LIGHT_COLOR_RED
-
-/obj/item/light/tube/orange
-	color = LIGHT_COLOR_ORANGE
-	brightness_color = LIGHT_COLOR_ORANGE
-
-/obj/item/light/tube/yellow
-	color = LIGHT_COLOR_YELLOW
-	brightness_color = LIGHT_COLOR_YELLOW
-
-/obj/item/light/tube/green
-	color = LIGHT_COLOR_GREEN
-	brightness_color = LIGHT_COLOR_GREEN
-
-/obj/item/light/tube/blue
-	color = LIGHT_COLOR_BLUE
-	brightness_color = LIGHT_COLOR_BLUE
-
-/obj/item/light/tube/purple
-	color = LIGHT_COLOR_PURPLE
-	brightness_color = LIGHT_COLOR_PURPLE
-
-//Neons
-/obj/item/light/tube/neon_pink
-	color = "#e00f8e"
-	brightness_color = "#e00f8e"
-
-/obj/item/light/tube/neon_blue
-	color = "#0fa7e0"
-	brightness_color = "#0fa7e0"
-
-/obj/item/light/tube/neon_green
-	color = "#91ff00"
-	brightness_color = "#91ff00"
-
-/obj/item/light/tube/neon_yellow
-	color = "#fbff00"
-	brightness_color = "#fbff00"
-
-/obj/item/light/tube/neon_white
-	color = "#ffffff"
-	brightness_color = "#ffffff"
-
-/obj/item/light/bulb
-	name = "light bulb"
-	desc = "A replacement light bulb."
-	icon_state = "lbulb"
-	base_state = "lbulb"
-	item_state = "contvapour"
-	matter = list(MAT_GLASS = 100)
-	brightness_color = LIGHT_COLOR_TUNGSTEN
-
-	nightshift_range = 3
-	nightshift_power = 0.45
-
-/obj/item/light/throw_impact(atom/hit_atom)
-	..()
-	shatter()
-
-//Colored Light Bulbs
-
-//Standard Rainbow
-/obj/item/light/bulb/red
-	brightness_range = 4
-	color = "#da0205"
-	brightness_color = "#da0205"
-
-/obj/item/light/bulb/orange
-	brightness_range = 4
-	color = "#da7c02"
-	brightness_color = "#da7c02"
-
-/obj/item/light/bulb/yellow
-	brightness_range = 4
-	color = "#e0d100"
-	brightness_color = "#e0d100"
-
-/obj/item/light/bulb/green
-	brightness_range = 4
-	color = "#1db100"
-	brightness_color = "#1db100"
-
-/obj/item/light/bulb/blue
-	brightness_range = 4
-	color = "#0011ff"
-	brightness_color = "#0011ff"
-
-/obj/item/light/bulb/purple
-	brightness_range = 4
-	color = "#7902da"
-	brightness_color = "#7902da"
-
-//Neons
-/obj/item/light/bulb/neon_pink
-	brightness_range = 4
-	color = "#e00f8e"
-	brightness_color = "#e00f8e"
-
-/obj/item/light/bulb/neon_blue
-	brightness_range = 4
-	color = "#0fa7e0"
-	brightness_color = "#0fa7e0"
-
-/obj/item/light/bulb/neon_green
-	brightness_range = 4
-	color = "#91ff00"
-	brightness_color = "#91ff00"
-
-/obj/item/light/bulb/neon_yellow
-	brightness_range = 4
-	color = "#fbff00"
-	brightness_color = "#fbff00"
-
-/obj/item/light/bulb/neon_white
-	brightness_range = 4
-	color = "#ffffff"
-	brightness_color = "#ffffff"
-
-/obj/item/light/bulb/fire
-	name = "fire bulb"
-	desc = "A replacement fire bulb."
-	icon_state = "fbulb"
-	base_state = "fbulb"
-	item_state = "egg4"
-	matter = list(MAT_GLASS = 100)
-
-//Fairylights
-/obj/item/light/bulb/fairy
-	name = "fairy light bulb"
-	desc = "A tiny replacement light bulb."
-	icon_state = "fbulb"
-	base_state = "fbulb"
-	matter = list(MAT_GLASS = 10)
-	brightness_range = 5
-
-// update the icon state and description of the light
-/obj/item/light/update_icon()
-	switch(status)
-		if(LIGHT_OK)
-			icon_state = base_state
-			desc = "A replacement [name]."
-		if(LIGHT_BURNED)
-			icon_state = "[base_state]-burned"
-			desc = "A burnt-out [name]."
-		if(LIGHT_BROKEN)
-			icon_state = "[base_state]-broken"
-			desc = "A broken [name]."
-
-
-/obj/item/light/Initialize(mapload, obj/machinery/light/fixture)
-	. = ..()
-	if(fixture)
-		status = fixture.status
-		rigged = fixture.rigged
-		switchcount = fixture.switchcount
-		fixture.transfer_fingerprints_to(src)
-
-		//shouldn't be necessary to copy these unless someone varedits stuff, but just in case
-		brightness_range = fixture.brightness_range
-		brightness_power = fixture.brightness_power
-		brightness_color = fixture.brightness_color
-	update_icon()
-
-
-// attack bulb/tube with object
-// if a syringe, can inject phoron to make it explode
-/obj/item/light/attackby(var/obj/item/I, var/mob/user)
-	..()
-	if(istype(I, /obj/item/reagent_containers/syringe))
-		var/obj/item/reagent_containers/syringe/S = I
-
-		to_chat(user, "You inject the solution into the [src].")
-
-		if(S.reagents.has_reagent("phoron", 5))
-
-			log_admin("LOG: [user.name] ([user.ckey]) injected a light with phoron, rigging it to explode.")
-			message_admins("LOG: [user.name] ([user.ckey]) injected a light with phoron, rigging it to explode.")
-
-			rigged = 1
-
-		S.reagents.clear_reagents()
-	else
-		..()
-	return
-
-// called after an attack with a light item
-// shatter light, unless it was an attempt to put it in a light socket
-// now only shatter if the intent was harm
-
-/obj/item/light/afterattack(atom/target, mob/user, proximity)
-	if(!proximity) return
-	if(istype(target, /obj/machinery/light))
-		return
-	if(user.a_intent != INTENT_HARM)
-		return
-
-	shatter()
-
-/obj/item/light/proc/shatter()
-	if(status == LIGHT_OK || status == LIGHT_BURNED)
-		src.visible_message("<font color='red'>[name] shatters.</font>","<font color='red'> You hear a small glass object shatter.</font>")
-		status = LIGHT_BROKEN
-		force = 5
-		sharp = 1
-		playsound(src.loc, 'sound/effects/Glasshit.ogg', 75, 1)
-		update_icon()
 
 //Lamp Shade
 /obj/item/lampshade
