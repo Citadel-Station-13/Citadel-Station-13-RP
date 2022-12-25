@@ -121,15 +121,11 @@
 	add_verb(src, /mob/living/proc/ventcrawl)
 	add_verb(src, /mob/living/proc/hide)
 
-/mob/living/simple_mob/animal/sif/leech/Stat()
-	..()
-	if(client.statpanel == "Status")
-		statpanel("Status")
-		if(SSemergencyshuttle)
-			var/eta_status = SSemergencyshuttle.get_status_panel_eta()
-			if(eta_status)
-				stat(null, eta_status)
-		stat("Chemicals", chemicals)
+/mob/living/simple_mob/animal/sif/leech/statpanel_data(client/C)
+	. = ..()
+	if(C.statpanel_tab("Status"))
+		STATPANEL_DATA_LINE("")
+		STATPANEL_DATA_ENTRY("Chemicals", chemicals)
 
 /mob/living/simple_mob/animal/sif/leech/do_special_attack(atom/A)
 	. = TRUE

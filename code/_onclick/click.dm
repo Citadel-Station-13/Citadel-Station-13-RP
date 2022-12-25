@@ -260,17 +260,22 @@
 
 /mob/proc/altclick_listed_turf(atom/A)
 	var/turf/T = get_turf(A)
-	if(T == A.loc || T == A)
-		if(T == listed_turf)
-			listed_turf = null
-		else if(TurfAdjacent(T))
-			listed_turf = T
-			client.statpanel = T.name
+	if(!T)
+		return
+	if(!TurfAdjacent(T))
+		return
+	if(!client)
+		return
+	if(T == client.statpanel_turf)
+		client.unlist_turf()
+		return
+	client.list_turf(T)
 
 /atom/proc/AltClick(var/mob/user)
 	SEND_SIGNAL(src, COMSIG_CLICK_ALT, user)
 	return FALSE
 
+// todo: rework
 /mob/proc/TurfAdjacent(var/turf/T)
 	return T.AdjacentQuick(src)
 

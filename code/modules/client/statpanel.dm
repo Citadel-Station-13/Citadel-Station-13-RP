@@ -136,8 +136,13 @@
 
 /**
  * acts on a statpanel action / press
+ *
+ * @params
+ * * C - who pressed us
+ * * action - (optional) action; in some cases there is none.
  */
-/datum/proc/statpanel_click(client/C)
+/datum/proc/statpanel_click(client/C, action)
+	return
 
 /**
  * routes actions from statpanel

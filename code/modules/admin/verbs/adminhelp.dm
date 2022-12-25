@@ -88,19 +88,20 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	usr << browse(dat.Join(), "window=ahelp_list[state];size=600x480")
 
 //Tickets statpanel
-/datum/admin_help_tickets/proc/stat_entry()
+/datum/admin_help_tickets/proc/stat_data()
+	. = list()
 	var/num_disconnected = 0
-	stat("Active Tickets:", astatclick.update("[active_tickets.len]"))
+	STATPANEL_DATA_CLICK("Active Tickets:", "[active_tickets.len]", "\ref[astatclick]")
 	for(var/I in active_tickets)
 		var/datum/admin_help/AH = I
 		if(AH.initiator)
-			stat("#[AH.id]. [AH.initiator_key_name]:", AH.statclick.update())
+			STATPANEL_DATA_CLICK("#[AH.id]. [AH.initiator_key_name]:", "[AH.statclick.update()]", "\ref[AH.statclick]")
 		else
 			++num_disconnected
 	if(num_disconnected)
-		stat("Disconnected:", astatclick.update("[num_disconnected]"))
-	stat("Closed Tickets:", cstatclick.update("[closed_tickets.len]"))
-	stat("Resolved Tickets:", rstatclick.update("[resolved_tickets.len]"))
+		STATPANEL_DATA_CLICK("Disconnected:", "[num_disconnected]", "\ref[astatclick]")
+	STATPANEL_DATA_CLICK("Closed Tickets:", "[closed_tickets.len]", "\ref[cstatclick]")
+	STATPANEL_DATA_CLICK("Resolved Tickets:", "[resolved_tickets.len]", "\ref[rstatclick]")
 
 //Reassociate still open ticket if one exists
 /datum/admin_help_tickets/proc/ClientLogin(client/C)

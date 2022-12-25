@@ -742,17 +742,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 */
 				statpanel(listed_turf.name, null, A)
 
-	if(client.holder)
-		if(statpanel("Tickets"))
-			GLOB.ahelp_tickets.stat_entry()
-		if(length(GLOB.sdql2_queries))
-			if(statpanel("SDQL2"))
-				stat("Access Global SDQL2 List", GLOB.sdql2_vv_statobj)
-				for(var/i in GLOB.sdql2_queries)
-					var/datum/SDQL2_query/Q = i
-					Q.generate_stat()
-
-
 /// Not sure what to call this. Used to check if humans are wearing an AI-controlled exosuit and hence don't need to fall over yet.
 /mob/proc/can_stand_overridden()
 	return 0
@@ -760,8 +749,6 @@ GLOBAL_VAR_INIT(exploit_warn_spam_prevention, 0)
 /// This might need a rename but it should replace the can this mob use things check
 /mob/proc/IsAdvancedToolUser()
 	return 0
-
-
 
 /mob/proc/AdjustLosebreath(amount)
 	losebreath = clamp(0, losebreath + amount, 25)

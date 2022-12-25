@@ -68,9 +68,10 @@
 
 	return ..()
 
-/mob/living/carbon/alien/Stat()
-	..()
-	stat(null, "Progress: [amount_grown]/[max_grown]")
+/mob/living/carbon/alien/statpanel_data(client/C)
+	. = ..()
+	STATPANEL_DATA_LINE("")
+	STATPANEL_DATA_LINE("Progress: [amount_grown]/[max_grown]")
 
 /mob/living/carbon/alien/restrained()
 	return 0

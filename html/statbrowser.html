@@ -407,6 +407,8 @@ function byond_turf_set(name, icon, ref, contents){
 	listed_turf_ref = ref;
 	listed_turf_contents = JSON.parse(contents);
 	ensure_turf_tab();
+	// switch to it
+	change_tab("Turf");
 }
 
 /// called to add an atom from listed turf

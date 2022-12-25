@@ -18,11 +18,11 @@ INITIALIZE_IMMEDIATE(/obj/effect/statclick)
 	name = text
 	return src
 
+/obj/effect/statclick/statpanel_click(client/C, action)
+	Click()
+
 /obj/effect/statclick/debug
 	var/class
-
-/obj/effect/statclick/debug/statpanel_click(client/C)
-	Click()
 
 /obj/effect/statclick/debug/Click()
 	if(!usr.client.holder || !target)

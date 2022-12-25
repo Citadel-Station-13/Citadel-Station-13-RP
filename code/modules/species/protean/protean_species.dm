@@ -262,24 +262,24 @@ I redid the calculations, as the burn weakness has been changed. This should be 
 /datum/species/protean/get_additional_examine_text(var/mob/living/carbon/human/H)
 	return ..() //Hmm, what could be done here?
 
-/datum/species/protean/statpanel_entry(mob/living/carbon/human/H)
+/datum/species/protean/statpanel_status(client/C, mob/living/carbon/human/H)
 	. = ..()
-	#warn oh fucking hell
-	if(statpanel(SPECIES_PROTEAN))
+	if(C.statpanel_tab("Protean"))
 		var/obj/item/organ/internal/nano/refactory/refactory = H.nano_get_refactory()
 		if(refactory && !(refactory.status & ORGAN_DEAD))
-			stat(null, "- -- --- Refactory Metal Storage --- -- -")
+			STATPANEL_DATA_LINE("- -- --- Refactory Metal Storage --- -- -")
 			var/max = refactory.max_storage
 			for(var/material in refactory.materials)
 				var/amount = refactory.get_stored_material(material)
-				stat("[capitalize(material)]", "[amount]/[max]")
+				STATPANEL_DATA_ENTRY("[capitalize(material)]", "[amount]/[max]")
 		else
-			stat(null, "- -- --- REFACTORY ERROR! --- -- -")
+			STATPANEL_DATA_LINE("- -- --- REFACTORY ERROR! --- -- -")
 
-		stat(null, "- -- --- Abilities (Shift+LMB Examines) --- -- -")
+		STATPANEL_DATA_LINE("- -- --- Abilities (Shift+LMB Examines) --- -- -")
 		for(var/ability in abilities)
 			var/obj/effect/protean_ability/A = ability
-			stat("[A.ability_name]",A.atom_button_text())
+			A.atom_button_text()
+			STATPANEL_DATA_CLICK("[A.ability_name]", "[A.name]", "\ref[A]")
 
 // Various modifiers
 /datum/modifier/protean
