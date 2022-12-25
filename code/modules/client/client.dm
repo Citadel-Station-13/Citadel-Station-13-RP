@@ -90,8 +90,10 @@
 	var/statpanel_ready = FALSE
 	/// turf being listed
 	var/turf/statpanel_turf
-	/// tabs the panel has that do not include varbs
+	/// tabs the panel has
 	var/list/statpanel_tabs
+	/// statpanel variable tabs: spells / other "simple" action button frameworks
+	var/list/statpanel_spell_last
 
 		////////////////
 		//ADMIN THINGS//

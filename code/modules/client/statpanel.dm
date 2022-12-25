@@ -49,9 +49,11 @@
 	if(tab in statpanel_tabs)
 		if(!status)
 			src << browse(url_encode(tab), "statbrowser:byond_remove_tab")
+			return FALSE	// removing
 	else
 		if(status)
 			src << browse(url_encode(tab), "statbrowser:byond_add_tab")
+			return FALSE	// don't add yet, this is unfortunate but we'll add one tick of update delay to let it add first
 
 /client/proc/list_turf(turf/T)
 	if(statpanel_turf)

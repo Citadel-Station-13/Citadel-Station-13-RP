@@ -158,7 +158,7 @@ SUBSYSTEM_DEF(statpanels)
 
 /datum/controller/subsystem/statpanels/proc/fetch_sdql2_data()
 	if(cache_sdql_data)
-		return cache_sdql_data
+		return cache_sdql2_data
 	. = list()
 	STATPANEL_DATA_CLICK("Global SDQL2 List:", "\[Edit\]", "\ref[GLOB.sdql2_vv_statobj]")
 	for(var/datum/SDQL2_query/Q in GLOB.sdql2_queries)

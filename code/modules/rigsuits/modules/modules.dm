@@ -227,17 +227,22 @@
 /obj/item/rig_module/proc/accepts_item(var/obj/item/input_device)
 	return 0
 
-/mob/living/carbon/human/Stat()
+/mob/living/carbon/human/statpanel_data(client/C)
 	. = ..()
 	if(istype(back,/obj/item/rig))
 		var/obj/item/rig/R = back
-		SetupStat(R)
-
+		. += legacy_rig_stat(R, C)
 	else if(istype(belt,/obj/item/rig))
 		var/obj/item/rig/R = belt
-		SetupStat(R)
+		. += legacy_rig_stat(R, C)
+	else
+		C.statpanel_tab("Hardsuit Modules", FALSE)
 
-/mob/proc/SetupStat(var/obj/item/rig/R)
+/mob/proc/legacy_rig_stat(obj/item/rig/R, client/C)
+	var/needed = R.is_activated() && length(R.installed_modules)
+	. = = list()
+	if(!C.statpanel_tab("Hardsuit Modules", needed))
+		return
 	if(R?.is_activated() && R.installed_modules.len && statpanel("Hardsuit Modules"))
 		var/cell_status = R.cell ? "[R.cell.charge]/[R.cell.maxcharge]" : "ERROR"
 		stat("Suit charge", cell_status)
