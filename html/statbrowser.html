@@ -380,15 +380,47 @@ function _push_data(data) {
 			data.push(parsed[i]);
 		}
 	}
+	redraw_content();
 }
 
 /// called to add tab
 function byond_add_tab(tab) {
-
+	ensure_tab(tab);
 }
 
 /// called to remove tab
 function byond_remove_tab(tab) {
+	erase_tab(tab);
+}
+
+/// called to clear tabs
+function byond_clear_tabs() {
+	erase_tabs();
+}
+
+/// called to add verb
+function byond_add_verb(name, category) {
+
+}
+
+/// called to remove verb
+function byond_remove_verb(name, category) {
+
+}
+
+/// called to add multiple verbs: same format as init verbs
+function byond_add_verbs(data) {
+
+
+}
+
+/// called to remove multiple verbs: same format as init verbs
+function byond_remove_verbs(data) {
+
+}
+
+/// called to init verbs: takes object of categories to lists of names
+function byond_init_verbs(data) {
 
 }
 
@@ -401,7 +433,7 @@ function byond_turf_unset(){
 }
 
 /// called to set listed turf
-function byond_turf_set(name, icon, ref, contents){
+function byond_turf_set(name, ref, icon, contents){
 	listed_turf_name = name;
 	listed_turf_icon = icon;
 	listed_turf_ref = ref;
@@ -521,6 +553,11 @@ function ensure_tab(name) {
 
 /// ensure a tab *isn't* there
 function erase_tab(name) {
+
+}
+
+/// clear tabs that don't have verbs
+function erase_tabs() {
 
 }
 
