@@ -116,24 +116,19 @@
 //! external - load
 /// compiles a full list of verbs and sends it to the browser
 /client/proc/init_verbs()
-	if(IsAdminAdvancedProcCall())
-		return
 	var/list/verblist = list()
 	var/list/verbstoprocess = verbs.Copy()
 	if(mob)
 		verbstoprocess += mob.verbs
-	panel_tabs.Cut() // panel_tabs get reset in init_verbs on JS side anyway
 	for(var/thing in verbstoprocess)
 		var/procpath/verb_to_init = thing
-		if(!verb_to_init)
-			continue
 		if(verb_to_init.hidden)
 			continue
 		if(!istext(verb_to_init.category))
 			continue
-		panel_tabs |= verb_to_init.category
-		verblist[++verblist.len] = list(verb_to_init.category, verb_to_init.name)
-	src << output("[url_encode(json_encode(panel_tabs))];[url_encode(json_encode(verblist))]", "statbrowser:init_verbs")
+		LAZYINITLIST(verblist[verb_to_init.category])
+		verblist[verb_to_init.category] += verb_to_init.name
+	src << output("[url_encode(json_encode(verblist))]", "statbrowser:byond_init_verbs")
 
 //! data
 

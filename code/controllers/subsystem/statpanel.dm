@@ -82,7 +82,6 @@ SUBSYSTEM_DEF(statpanels)
 	if(cache_server_data)
 		return cache_server_data
 	. = list()
-	STATPANEL_DATA_ENTRY("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
 	//L += SSmapping.stat_map_name
 	STATPANEL_DATA_ENTRY("Round ID", "[GLOB.round_id || "ERROR"]")
 	// VIRGO START

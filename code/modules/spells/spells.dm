@@ -32,7 +32,7 @@
 			if(Sp_CHARGES)
 				STATPANEL_DATA_CLICK("[S.charge_counter]/[S.charge_max]", "[S.connected_button]", "\ref[S.connected_button]")
 			if(Sp_HOLDVAR)
-				STATPANEL_DATA_CLICK("[S.holder_var_type] [S.holder_var_amount]", "[S.connected_button]", "\ref[S.connected_button]"n)
+				STATPANEL_DATA_CLICK("[S.holder_var_type] [S.holder_var_amount]", "[S.connected_button]", "\ref[S.connected_button]")
 	// process tabs
 	var/list/removing = C.statpanel_spell_last - collected
 	var/list/adding = collected - C.statpanel_spell_last

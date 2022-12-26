@@ -139,6 +139,10 @@
 	spell_masters = null
 	zone_sel = null
 
+/mob/statpanel_data(client/C)
+	. = ..()
+	STATPANEL_DATA_ENTRY("Ping", "[round(client.lastping,1)]ms (Avg: [round(client.avgping,1)]ms)")
+
 /// Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 /mob/proc/show_message(msg, type, alt, alt_type)
 
