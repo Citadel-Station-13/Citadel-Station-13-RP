@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(statpanels)
 	name = "Stat Panels"
 	wait = 4
 	init_order = INIT_ORDER_STATPANELS
-	priority = FIRE_PRIORITY_STATPANEL
+	priority = FIRE_PRIORITY_STATPANELS
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 
 	//! ticking
@@ -100,7 +100,6 @@ SUBSYSTEM_DEF(statpanels)
 	if(cache_ticket_data)
 		return cache_ticket_data
 	cache_ticket_data = url_encode(json_encode(GLOB.ahelp_tickets.stat_data()))
-	#warn impl
 
 /datum/controller/subsystem/statpanels/proc/fetch_sdql2_data()
 	if(cache_sdql_data)
@@ -110,8 +109,6 @@ SUBSYSTEM_DEF(statpanels)
 	for(var/datum/SDQL2_query/Q in GLOB.sdql2_queries)
 		. += Q.generate_stat()
 	cache_sdql_data = url_encode(json_encode(.))
-
- 	#warn impl
 
 /atom/proc/remove_from_cache()
 	SSstatpanels.cached_images -= REF(src)

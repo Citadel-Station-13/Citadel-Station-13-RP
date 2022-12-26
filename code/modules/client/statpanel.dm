@@ -2,7 +2,7 @@
 
 /client/proc/statpanel_init()
 	src << browse(null, "statbrowser:byond_init")
-	#warn send initial data
+	init_verbs()
 
 /client/proc/statpanel_check()
 	if(statpanel_ready)
@@ -17,9 +17,9 @@
 	statpanel_ready = FALSE
 	statpanel_tab = null
 	statpanel_tabs = null
+	statpanel_spell_last = null
 	unlist_turf()
 	src << browse(null, "statbrowser:byond_shutdown")
-	#warn impl shutdown
 
 /client/proc/statpanel_ready()
 	statpanel_tabs = list()
@@ -31,7 +31,8 @@
 	statpanel_init()
 
 /client/proc/statpanel_reset()
-	#warn impl - re-init verbs and reset panels
+	init_verbs()
+	src << browse(null, "statbrowser:byond_clear_tabs")
 
 /client/proc/statpanel_token(token)
 	if(!token)
@@ -64,7 +65,6 @@
 	if(!T)
 		return
 	statpanel_turf = T
-	#warn icon
 	var/list/data = list()
 	for(var/atom/movable/AM as anything in T)
 		var/list/got = statpanel_encode_atom(AM)
@@ -143,7 +143,8 @@
 	return list()
 
 /client/statpanel_data(client/C)
-	return statobj?.statpanel_data(C) || list()
+	var/datum/D = statobj
+	return (istype(D) && D?.statpanel_data(C)) || list()
 
 /**
  * acts on a statpanel action / press
