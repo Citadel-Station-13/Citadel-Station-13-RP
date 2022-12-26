@@ -28,7 +28,7 @@
 	reagents = R
 	R.my_atom = src
 	if (!possible_transfer_amounts)
-		src.remove_obj_verb(src, /obj/structure/reagent_dispensers/verb/set_APTFT)
+		remove_obj_verb(src, /obj/structure/reagent_dispensers/verb/set_APTFT)
 
 	// InputSocket = new(src)
 	// InputSocket.carrier = src
