@@ -9,6 +9,7 @@
 #define SHADOWER_DARKENING_FACTOR 0.6
 /// The above, but as an RGB string for lighting-less turfs.
 #define SHADOWER_DARKENING_COLOR "#999999"
+#define READ_BASETURF(T) (islist(T.baseturfs) ? T.baseturfs[1] : T.baseturfs)
 
 SUBSYSTEM_DEF(zmimic)
 	name = "Z-Mimic"
@@ -117,29 +118,33 @@ SUBSYSTEM_DEF(zmimic)
 
 /datum/controller/subsystem/zmimic/stat_entry()
 	var/list/entries = list(
-		"\n<b>Z-Maximums:</b>",
-		"\n\t[json_encode(zlev_maximums)]",
-
-		"\n<b>Queues:</b>",
-		"\n\tTurfs: [queued_turfs.len - (qt_idex - 1)]",
-		"\n\tOverlays: [queued_overlays.len - (qo_idex - 1)]",
-
-		"\n<b>Openspace Count:</b>",
-		"\n\tTurfs: [openspace_turfs]",
-		"\n\tOverlays: [openspace_overlays]",
-
-		"\n<b>Skipped Count:</b>",
-		"\n\tTurfs: [multiqueue_skips_turf]",
-		"\n\tObjects: [multiqueue_skips_object]",
-
-		"\n<b>Fixups:</b>",
-		"\n\tHits: [fixup_hit]",
-		"\n\tMisses: [fixup_miss]",
-		"\n\tNoops: [fixup_noop]",
-		"\n\tCache: [fixup_cache.len]",
-		"\n\tKnown Good: [fixup_known_good.len]"
+		"",	// newline
+		"ZSt: [build_zstack_display()]",	// This is a human-readable list of the z-stacks known to ZM.
+		"ZMx: [zlev_maximums.Join(", ")]",	// And this is the raw internal state.
+		// In order: Total, Queued, Skipped
+		"T: { T: [openspace_turfs] O: [openspace_overlays] } Q: { T: [queued_turfs.len - (qt_idex - 1)] O: [queued_overlays.len - (qo_idex - 1)] } Sk: { T: [multiqueue_skips_turf] O: [multiqueue_skips_object] }",
+		"F: { H: [fixup_hit] M: [fixup_miss] N: [fixup_noop] FC: [fixup_cache.len] FKG: [fixup_known_good.len] }",	// Fixup stats.
 	)
-	..(entries.Join())
+	..(entries.Join("\n\t"))
+
+// 1, 2, 3..=7, 8
+/datum/controller/subsystem/zmimic/proc/build_zstack_display()
+	if (!zlev_maximums.len)
+		return "<none>"
+	var/list/zmx = list()
+	var/idx = 1
+	var/span_ctr = 0
+	do
+		if (zlev_maximums[idx] != idx)
+			span_ctr += 1
+		else if (span_ctr)
+			zmx += "[idx - span_ctr]..=[idx]"
+			span_ctr = 0
+		else
+			zmx += "[idx]"
+		idx += 1
+	while (idx <= zlev_maximums.len)
+	return jointext(zmx, ", ")
 
 /datum/controller/subsystem/zmimic/Initialize(timeofday)
 	calculate_zstack_limits()
@@ -215,6 +220,7 @@ SUBSYSTEM_DEF(zmimic)
 		if (T.z_queued > 1)
 			T.z_queued -= 1
 			multiqueue_skips_turf += 1
+
 			if (no_mc_tick)
 				CHECK_TICK
 			else if (MC_TICK_CHECK)
@@ -226,10 +232,15 @@ SUBSYSTEM_DEF(zmimic)
 		if (!T.below)
 			flush_z_state(T)
 			if (T.mz_flags & MZ_MIMIC_BASETURF)
-				simple_appearance_copy(T, T.baseturfs, OPENTURF_MAX_PLANE)
-			// else
-				// TODO SSparallax skybox support.
-				// simple_appearance_copy(T, SSskybox.dust_cache["[((T.x + T.y) ^ ~(T.x * T.y) + T.z) % 25]"])
+				simple_appearance_copy(T, READ_BASETURF(T), OPENTURF_MAX_PLANE)
+			else
+				simple_appearance_copy(T, /turf/space)
+
+			T.z_generation += 1
+			T.z_queued -= 1
+
+			if (T.above)
+				T.above.update_mimic()
 
 			if (no_mc_tick)
 				CHECK_TICK
@@ -257,7 +268,12 @@ SUBSYSTEM_DEF(zmimic)
 		// Turf is set to mimic baseturf, handle that and bail.
 		if (T.mz_flags & MZ_MIMIC_BASETURF)
 			flush_z_state(T)
-			simple_appearance_copy(T, T.baseturfs, t_target)
+			simple_appearance_copy(T, READ_BASETURF(T), t_target)
+
+			if (T.above)
+				T.above.update_mimic()
+
+			T.z_queued -= 1
 
 			if (no_mc_tick)
 				CHECK_TICK
@@ -422,6 +438,7 @@ SUBSYSTEM_DEF(zmimic)
 		if (OO.queued > 1)
 			OO.queued -= 1
 			multiqueue_skips_object += 1
+
 			if (no_mc_tick)
 				CHECK_TICK
 			else if (MC_TICK_CHECK)
@@ -516,12 +533,15 @@ SUBSYSTEM_DEF(zmimic)
 		return null
 
 	var/plane_needs_fix = FALSE
+	var/obliterate = FALSE
 
 	// Don't fixup the root object's plane.
 	if (depth > 0)
 		switch (appearance:plane)
 			if (TURF_PLANE, FLOAT_PLANE)
 				// fine
+			if (EMISSIVE_PLANE)
+				obliterate = TRUE
 			else
 				plane_needs_fix = TRUE
 
@@ -560,7 +580,7 @@ SUBSYSTEM_DEF(zmimic)
 					fixed_underlays[i] = appearance:underlays[i]
 
 	// If we did nothing (no violations), don't bother creating a new appearance
-	if (!plane_needs_fix && !fixed_overlays && !fixed_underlays)
+	if (!plane_needs_fix && !obliterate && !fixed_overlays && !fixed_underlays)
 		fixup_noop += 1
 		fixup_known_good[appearance] = TRUE
 		return null
@@ -571,6 +591,9 @@ SUBSYSTEM_DEF(zmimic)
 	if (plane_needs_fix)
 		MA.plane = depth == 0 ? TURF_PLANE : FLOAT_PLANE
 		MA.layer = FLY_LAYER	// probably fine
+	if (obliterate)
+		// Emissive blocker, hide it.
+		MA.invisibility = INVISIBILITY_ABSTRACT
 
 	if (fixed_overlays)
 		MA.overlays = fixed_overlays
@@ -590,6 +613,14 @@ SUBSYSTEM_DEF(zmimic)
 /atom/movable/openspace/debug/turf
 	var/turf/parent
 	var/computed_depth
+
+var/list/zmimic_fixed_planes = list(
+	"0" = "World plane (Non-Z)",
+	"-25" = "Mob plane (Non-Z)",
+	"-15" = "Cloaked plane (Non-Z)",
+	"-35" = "Object plane (Non-Z)",
+	"-45" = "Turf plane (Non-Z)"
+)
 
 /client/proc/analyze_openturf(turf/T)
 	set name = "Analyze Openturf"
@@ -628,7 +659,9 @@ SUBSYSTEM_DEF(zmimic)
 		"<ul>"
 	)
 
-	if (T.mz_flags & MZ_MIMIC_BASETURF)
+	if (!T.below)
+		out += "<h3>Using synthetic rendering (Not Z).<h3>"
+	else if (T.mz_flags & MZ_MIMIC_BASETURF)
 		out += "<h3>Using synthetic rendering (BASETURF).</h3>"
 
 	var/list/found_oo = list(T)
@@ -663,11 +696,12 @@ SUBSYSTEM_DEF(zmimic)
 		LAZYINITLIST(atoms_list_list[pl])
 		atoms_list_list[pl] += A
 
-	if (atoms_list_list["0"])
-		out += "<strong>Non-Z</strong>"
-		SSzmimic.debug_fmt_planelist(atoms_list_list["0"], out, T)
+	for (var/plane_str in zmimic_fixed_planes)
+		if (atoms_list_list[plane_str])
+			out += "<strong>[zmimic_fixed_planes[plane_str]]</strong>"
+			SSzmimic.debug_fmt_planelist(atoms_list_list[plane_str], out, T)
 
-		atoms_list_list -= "0"
+			atoms_list_list -= plane_str
 
 	for (var/d in 0 to OPENTURF_MAX_DEPTH)
 		var/pl = OPENTURF_MAX_PLANE - d
@@ -751,3 +785,5 @@ SUBSYSTEM_DEF(zmimic)
 		out += "<em>No atoms.</em>"
 
 #undef FMT_DEPTH
+#undef READ_BASETURF
+#undef CT_OR
