@@ -16,7 +16,10 @@
 
 /atom/movable/Move(...)
 	. = ..()
-	if (. && bound_overlay)
+	if (!.)
+		return
+
+	if (bound_overlay)
 		bound_overlay.forceMove(get_step(src, UP))
 		if (bound_overlay.dir != dir)
 			bound_overlay.setDir(dir)
