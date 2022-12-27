@@ -722,29 +722,29 @@
 /// Use for objects performing visible actions
 /// message is output to anyone who can see, e.g. "The [src] does something!"
 /// blind_message (optional) is what blind people will hear e.g. "You hear something!"
+// todo: refactor
 /atom/proc/visible_message(message, self_message, blind_message, range = world.view)
-
 	var/list/see
 	if(isbelly(loc))
 		var/obj/belly/B = loc
-		see = B.get_mobs_and_objs_in_belly()
+		see = B.effective_emote_hearers()
 	else
-		see = get_mobs_and_objs_in_view_fast(get_turf(src),range,remote_ghosts = FALSE)
+		see = get_hearers_in_view(range, src)
+	for(var/atom/movable/AM as anything in see)
+		if(ismob(AM))
+			var/mob/M = AM
+			if(self_message && (M == src))
+				M.show_message(self_message, 1, blind_message, 2)
+			else if((M.see_invisible >= invisibility) && MOB_CAN_SEE_PLANE(M, plane))
+				M.show_message(message, 1, blind_message, 2)
+			else if(blind_message)
+				M.show_message(blind_message, 2)
+		else
+			AM.show_message(message, 1, blind_message, 2)
 
-	var/list/seeing_mobs = see["mobs"]
-	var/list/seeing_objs = see["objs"]
-
-	for(var/obj in seeing_objs)
-		var/obj/O = obj
-		O.show_message(message, 1, blind_message, 2)
-	for(var/mob in seeing_mobs)
-		var/mob/M = mob
-		if(self_message && (M == src))
-			M.show_message(self_message, 1, blind_message, 2)
-		else if((M.see_invisible >= invisibility) && MOB_CAN_SEE_PLANE(M, plane))
-			M.show_message(message, 1, blind_message, 2)
-		else if(blind_message)
-			M.show_message(blind_message, 2)
+// todo: refactor
+/atom/movable/proc/show_message(msg, type, alt, alt_type)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
+	return
 
 /// Show a message to all mobs and objects in earshot of this atom
 /// Use for objects performing audible actions

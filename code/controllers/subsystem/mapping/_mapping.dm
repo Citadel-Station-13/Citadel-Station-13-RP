@@ -41,6 +41,8 @@ SUBSYSTEM_DEF(mapping)
 
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	report_progress("Initializing [name] subsystem...")
+	// shim: this goes at the top
+	world.max_z_changed(0, world.maxz) // This is to set up the player z-level list, maxz hasn't actually changed (probably)
 	HACK_LoadMapConfig()
 	if(initialized)
 		return
@@ -52,7 +54,6 @@ SUBSYSTEM_DEF(mapping)
 			config = old_config
 	loadWorld()
 	repopulate_sorted_areas()
-	world.max_z_changed() // This is to set up the player z-level list, maxz hasn't actually changed (probably)
 	maploader = new()
 	load_map_templates()
 
