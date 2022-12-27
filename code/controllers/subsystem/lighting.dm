@@ -37,21 +37,11 @@ SUBSYSTEM_DEF(lighting)
 /datum/controller/subsystem/lighting/stat_entry()
 	var/list/out = list(
 #ifdef USE_INTELLIGENT_LIGHTING_UPDATES
-		"\n<b>IUR:</b> [total_ss_updates ? round(total_instant_updates/(total_instant_updates+total_ss_updates)*100, 0.1) : "NaN"]%\n",
+		"IUR: [total_ss_updates ? round(total_instant_updates/(total_instant_updates+total_ss_updates)*100, 0.1) : "NaN"]%\n",
 #endif
-		"\n<b>Sources:</b>",
-		"\n\tLights: [total_lighting_sources]",
-		"\n\tCorners: [lighting_corners.len]",
-		"\n\tOverlays: [total_lighting_overlays]",
-		"\n\tAmbient Turfs: [total_ambient_turfs]",
-		"\n<b>Queues:</b>",
-		"\n\tLights: [light_queue.len - (lq_idex - 1)]",
-		"\n\tCorners: [corner_queue.len - (cq_idex - 1)]",
-		"\n\tOverlays: [overlay_queue.len - (oq_idex - 1)]",
-		"\n<b>Processed:</b>",
-		"\n\tLights: [processed_lights]",
-		"\n\tCorners: [processed_corners]",
-		"\n\tOverlays: [processed_overlays]"
+		"\tT:{L:[total_lighting_sources] C:[lighting_corners.len] O:[total_lighting_overlays]}\n",
+		"\tP:{L:[light_queue.len - (lq_idex - 1)]|C:[corner_queue.len - (cq_idex - 1)]|O:[overlay_queue.len - (oq_idex - 1)]}\n",
+		"\tL:{L:[processed_lights]|C:[processed_corners]|O:[processed_overlays]}\n"
 	)
 	..(out.Join())
 

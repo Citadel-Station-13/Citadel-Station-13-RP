@@ -36,25 +36,13 @@ SUBSYSTEM_DEF(air)
 	var/list/startup_active_edge_log = list()
 
 /datum/controller/subsystem/air/stat_entry(msg_prefix)
-	var/list/msg = list(msg_prefix)
-	msg += "\n<b>Current Step:</b>[current_step ? part_names[current_step] : "NULL"]"
-	msg += "\n<b>Costs:</b>"
-	msg += "\n\tTurf [round(cost_turfs, 1)]"
-	msg += "\n\tEdge [round(cost_edges, 1)]"
-	msg += "\n\tFirezone [round(cost_firezones, 1)]"
-	msg += "\n\tHotspot [round(cost_hotspots, 1)]"
-	msg += "\n\tZones [round(cost_zones, 1)]"
-	msg += "\n<b>Count:</b>"
-	msg += "\n\tZones: [zones.len]"
-	msg += "\n\tEdges: [edges.len]"
-	msg += "\n<b>Updates:</b>"
-	msg += "\n\tCycle: [current_cycle]"
-	msg += "\n\tTiles [tiles_to_update.len]"
-	msg += "\n\tEdges [active_edges.len]"
-	msg += "\n\tFires [active_fire_zones.len]"
-	msg += "\n\tHotspots [active_hotspots.len]"
-	msg += "\n\tZones [zones_to_update.len]"
-	..(JOINTEXT(msg))
+	var/list/msg = list(
+		msg_prefix,
+		"\tSt: [current_step ? part_names[current_step] : ""] Z: [zones.len] E: [edges.len] ",
+		"\tCost: { T: [round(cost_turfs, 1)] | E: [round(cost_edges, 1)] | F: [round(cost_firezones, 1)] | H: [round(cost_hotspots, 1)] | Z: [round(cost_zones, 1)] } ",
+		"\tCyc: [current_cycle] U: { T: [tiles_to_update.len] | E: [active_edges.len] | F: [active_fire_zones.len] | H: [active_hotspots.len] | Z: [zones_to_update.len]  }",
+	)
+	..(msg.Join("\n"))
 
 /datum/controller/subsystem/air/PreInit(recovering)
 	air_master = src

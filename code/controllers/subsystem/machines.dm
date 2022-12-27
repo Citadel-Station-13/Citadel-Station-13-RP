@@ -32,19 +32,13 @@ SUBSYSTEM_DEF(machines)
 
 	var/list/current_run = list()
 
-/datum/controller/subsystem/machines/stat_entry(msg)
-	msg = "\n<b>Count:</b>"
-	msg += "\n\tPipenet:[global.pipe_networks.len]"
-	msg += "\n\tMachinery:[global.processing_machines.len]"
-	msg += "\n\tPowernet:[global.powernets.len]"
-	msg += "\n\tObjects:[global.processing_power_items.len]"
-	msg += "\n<b>Costs:</b>"
-	msg += "\n\tCost per Machine:[round((cost ? global.processing_machines.len/cost_machinery : 0),0.1)]"
-	msg += "\n\tPipenet:[round(cost_pipenets,1)]"
-	msg += "\n\tMachinery:[round(cost_machinery,1)]"
-	msg += "\n\tPowernet:[round(cost_powernets,1)]"
-	msg += "\n\tObjects:[round(cost_power_objects,1)]"
-	..(JOINTEXT(msg))
+/datum/controller/subsystem/machines/stat_entry()
+	var/msg = list(
+		"MC/MS: [round((cost ? global.processing_machines.len/cost_machinery : 0),0.1)]",
+		"\tCost: { PiNet: [round(cost_pipenets,1)] | M: [round(cost_machinery,1)] | PowNet: [round(cost_powernets,1)] | PowObj: [round(cost_power_objects,1)] }",
+		"\tTotal: { PiNet [global.pipe_networks.len] | M: [global.processing_machines.len] | PowNet: [global.powernets.len] | PowObj: [global.processing_power_items.len] }"
+	)
+	..(jointext(msg, "\n"))
 
 /datum/controller/subsystem/machines/Initialize(timeofday)
 	makepowernets()
