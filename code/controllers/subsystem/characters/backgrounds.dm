@@ -56,6 +56,8 @@
 	. = list()
 	for(var/id in character_religions)
 		var/datum/lore/character_background/religion/L = character_religions[id]
+		if(category && (L.category != category))
+			continue
 		if(L.check_species_id(species_id))
 			. += L
 
